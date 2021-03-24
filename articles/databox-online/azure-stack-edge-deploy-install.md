@@ -10,10 +10,10 @@ ms.date: 01/17/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Azure Stack Edge Pro in datacenter so I can use it to transfer data to Azure.
 ms.openlocfilehash: 9aa02521d91d41380b1bdac3efe50ab3d196a856
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90894208"
 ---
 # <a name="tutorial-install-azure-stack-edge-pro"></a>Tutorial: Installieren von Azure Stack Edge Pro
@@ -58,7 +58,7 @@ Führen Sie folgende Schritte aus, bevor Sie ein Gerät bereitstellen:
 
 Vorbereitungen
 
-- Lesen Sie die Netzwerkanforderungen für die Bereitstellung eines Azure Stack Edge Pro-Geräts, und konfigurieren Sie das Netzwerk des Rechenzentrums gemäß den Anforderungen. Weitere Informationen finden Sie im Abschnitt mit den [Azure Stack Edge Pro-Netzwerkanforderungen](azure-stack-edge-system-requirements.md#networking-port-requirements).
+- Sehen Sie sich die Netzwerkanforderungen für die Bereitstellung eines Azure Stack Edge Pro-Geräts an, und konfigurieren Sie das Rechenzentrumsnetzwerk gemäß diesen Anforderungen. Weitere Informationen finden Sie im Abschnitt zu den [Azure Stack Edge Pro-Netzwerkanforderungen](azure-stack-edge-system-requirements.md#networking-port-requirements).
 
 - Vergewissern Sie sich, dass die Internetbandbreite mindestens 20 MBit/s beträgt, damit das Gerät optimal funktioniert.
 
@@ -83,7 +83,7 @@ Sollten Sie nicht alle oben aufgeführten Teile erhalten haben, wenden Sie sich 
 Das Gerät muss in einem standardmäßigen 19-Zoll-Rack installiert werden. Gehen Sie wie folgt vor, um Ihr Gerät in einem 19-Zoll-Standardrack zu montieren.
 
 > [!IMPORTANT]
-> Azure Stack Edge Pro-Geräte müssen für den ordnungsgemäßen Betrieb in ein Rack eingebaut werden.
+> Für den ordnungsgemäßen Betrieb müssen Azure Stack Edge Pro-Geräte in ein Rack eingebaut werden.
 
 
 ### <a name="prerequisites"></a>Voraussetzungen
@@ -117,7 +117,7 @@ Für die Installation der Schienenbaugruppe benötigen Sie folgende Komponenten:
 ### <a name="install-and-remove-tooled-rails-threaded-hole-racks"></a>Installieren und Entfernen der Schienen mit Werkzeug (Racks mit Gewindelöchern)
 
 > [!TIP]
-> Bei dieser Option wird ein Schlitzschraubendreher_benötigt_, um die Schienen unter Verwendung der runden Gewindelöcher des Racks zu installieren und zu entfernen.
+> Bei dieser Option wird ein Schlitzschraubendreher _benötigt_, um die Schienen unter Verwendung der runden Gewindelöcher des Racks zu installieren und zu entfernen.
 
 1. Entfernen Sie die Stifte an der vorderen und hinteren Befestigungsklammer mithilfe eines Schlitzschraubendrehers.
 2. Ziehen und drehen Sie die Schienenarretierungen, um sie von den Befestigungsklammern zu entfernen.
@@ -161,7 +161,7 @@ Verlegen Sie die Kabel, und verkabeln Sie Ihr Gerät. In diesem Abschnitt erfahr
 
 Bevor Sie mit der Verkabelung Ihres Geräts beginnen, benötigen Sie Folgendes:
 
-- Das physische Azure Stack Edge Pro-Gerät (ausgepackt und im Rack montiert)
+- Das physische Azure Stack Edge Pro-Gerät (ausgepackt und im Rack montiert).
 - Zwei Netzkabel
 - Mindestens ein Netzwerkkabel (1 GbE, RJ45) zum Anschließen an die Verwaltungsschnittstelle. Das Gerät verfügt über zwei 1-GbE-Netzwerkschnittstellen: eine für die Verwaltung und eine für Daten.
 - Ein SFP+-Kupferkabel (25 GbE) für jede zu konfigurierende Datennetzwerkschnittstelle. Mindestens eine Datennetzwerkschnittstelle („PORT 2“, „PORT 3“, „PORT 4“, „PORT 5“ oder PORT 6“) muss mit dem Internet verbunden sein und über Azure-Konnektivität verfügen.  

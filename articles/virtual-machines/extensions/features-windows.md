@@ -8,12 +8,12 @@ author: amjads1
 ms.author: amjads
 ms.collection: windows
 ms.date: 03/30/2018
-ms.openlocfilehash: eb1b05afbaa57fb86033c568142da32443adc1f9
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: b9b10e2ed58a41cee99e7e6ef1c3994035460407
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102559781"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104601859"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Erweiterungen und Features für virtuelle Computer für Windows
 
@@ -120,7 +120,7 @@ Set-AzVMCustomScriptExtension -ResourceGroupName "myResourceGroup" `
     -Run "Create-File.ps1" -Location "West US"
 ```
 
-Im folgenden Beispiel wird die VM-Zugriffserweiterung verwendet, um das Administratorkennwort eines virtuellen Windows-Computers auf ein vorübergehendes zurückzusetzen. Weitere Informationen über die VM-Zugriffserweiterung finden Sie unter [Zurücksetzen des Remotedesktopdiensts oder seines Anmeldekennworts in einer Windows-VM](../troubleshooting/reset-rdp.md). Sobald Sie dies durchgeführt haben, sollten Sie bei der ersten Anmeldung das Kennwort zurücksetzen:
+Im folgenden Beispiel wird die VM-Zugriffserweiterung verwendet, um das Administratorkennwort eines virtuellen Windows-Computers auf ein vorübergehendes zurückzusetzen. Weitere Informationen über die VM-Zugriffserweiterung finden Sie unter [Zurücksetzen des Remotedesktopdiensts oder seines Anmeldekennworts in einer Windows-VM](/troubleshoot/azure/virtual-machines/reset-rdp). Sobald Sie dies durchgeführt haben, sollten Sie bei der ersten Anmeldung das Kennwort zurücksetzen:
 
 ```powershell
 $cred=Get-Credential

@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 03/13/2020
 ms.author: sagupt
 ms.openlocfilehash: a9c86a7ae510d9657f64c71db2aa8c4e3e558f52
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90968585"
 ---
 # <a name="quick-fix-remediation-for-advisor"></a>Schnelle Problembehebung für Advisor
@@ -26,7 +26,7 @@ Die Funktion ist über das Azure-Portal nur für bestimmte Empfehlungen verfügb
 
 2. Auf der Seite mit den Empfehlungsdetails sehen Sie eine Liste der Ressourcen, für die Sie diese Empfehlung erhalten. Wählen Sie alle Ressourcen aus, die Sie für die Empfehlung warten möchten.
 
-   :::image type="content" source="./media/quick-fix-2.png" alt-text="{Screenshot: Azure Advisor zeigt Bezeichnungen für die schnelle Problembehebung in den Empfehlungen.}":::
+   :::image type="content" source="./media/quick-fix-2.png" alt-text="Screenshot: Fenster „Betroffene Ressourcen“ mit hervorgehobenen Listenelementen und der Schaltfläche „Schnelle Problembehebung“.":::
    
    *Die Preise in der Abbildung dienen nur als Beispiel*
 

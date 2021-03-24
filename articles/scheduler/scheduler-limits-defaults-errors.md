@@ -9,10 +9,10 @@ ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/18/2016
 ms.openlocfilehash: 610232dab776648bb3dcc7c301ec292e9acad9fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "78898526"
 ---
 # <a name="limits-quotas-and-throttle-thresholds-in-azure-scheduler"></a>Grenzwerte, Kontingente und Drosselungsschwellenwerte in Azure Scheduler
@@ -28,7 +28,7 @@ ms.locfileid: "78898526"
 
 ## <a name="x-ms-request-id-header"></a>x-ms-request-id header
 
-Jede Anforderung für den Scheduler-Dienst gibt einen Antwortheader namens **x-ms-request-id**zurück. Dieser Header enthält einen opaken Wert, der die Anforderung eindeutig identifiziert. Wenn also eine Anforderung immer wieder fehlschlägt und Sie bestätigt haben, dass die Anforderung ordnungsgemäß formatiert ist, können Sie den Fehler an Microsoft melden, indem Sie den Antwortheaderwert **x-ms-request id** und die folgenden Details angeben: 
+Jede Anforderung für den Scheduler-Dienst gibt einen Antwortheader namens **x-ms-request-id** zurück. Dieser Header enthält einen opaken Wert, der die Anforderung eindeutig identifiziert. Wenn also eine Anforderung immer wieder fehlschlägt und Sie bestätigt haben, dass die Anforderung ordnungsgemäß formatiert ist, können Sie den Fehler an Microsoft melden, indem Sie den Antwortheaderwert **x-ms-request id** und die folgenden Details angeben: 
 
 * Den **x-ms-request-id**-Wert
 * Die ungefähre Zeit, zu der die Anforderung vorgenommen wurde 

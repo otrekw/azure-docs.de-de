@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: surmb
 ms.openlocfilehash: 047ce9b33836e2c23a37b1383942323d7c382485
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93397534"
 ---
 # <a name="application-gateway-request-routing-rules"></a>Routingregeln für Application Gateway-Anforderungen
 
-Wenn Sie im Azure-Portal ein Anwendungsgateway erstellen, wird dabei eine Standardregel ( *rule1* ) erstellt. Mit dieser Regel wird der Standardlistener ( *appGatewayHttpListener* ) an den Standard-Back-End-Pool ( *appGatewayBackendPool* ) und die Back-End-HTTP-Standardeinstellungen ( *appGatewayBackendHttpSettings* ) gebunden. Nachdem Sie das Gateway erstellt haben, können Sie die Einstellungen der Standardregel bearbeiten oder neue Regeln erstellen.
+Wenn Sie im Azure-Portal ein Anwendungsgateway erstellen, wird dabei eine Standardregel (*rule1*) erstellt. Mit dieser Regel wird der Standardlistener (*appGatewayHttpListener*) an den Standard-Back-End-Pool (*appGatewayBackendPool*) und die Back-End-HTTP-Standardeinstellungen ( *appGatewayBackendHttpSettings*) gebunden. Nachdem Sie das Gateway erstellt haben, können Sie die Einstellungen der Standardregel bearbeiten oder neue Regeln erstellen.
 
 ## <a name="rule-type"></a>Regeltyp
 
@@ -31,7 +31,7 @@ Für die v1- und v2-SKU wird die Musterzuordnung eingehender Anforderungen in de
 
 ## <a name="associated-listener"></a>Zugeordneter Listener
 
-Ordnen Sie der Regel einen Listener zu, damit die *Anforderungsroutingregel* , die dem Listener zugeordnet ist, ausgewertet wird, um den Back-End-Pool zu bestimmen, an den die Anforderung weitergeleitet werden soll.
+Ordnen Sie der Regel einen Listener zu, damit die *Anforderungsroutingregel*, die dem Listener zugeordnet ist, ausgewertet wird, um den Back-End-Pool zu bestimmen, an den die Anforderung weitergeleitet werden soll.
 
 ## <a name="associated-back-end-pool"></a>Zugeordneter Back-End-Pool
 

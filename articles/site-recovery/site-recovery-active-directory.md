@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: mayg
 ms.openlocfilehash: 528a24bb64aa8d323b5d63a27af0a52ccdf1abb6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86132328"
 ---
 # <a name="set-up-disaster-recovery-for-active-directory-and-dns"></a>Einrichten der Notfallwiederherstellung für Active Directory und DNS
@@ -79,7 +79,7 @@ Bei den meisten Anwendungen muss ein Domänencontroller oder ein DNS-Server vorh
 1. Erstellen Sie ein isoliertes Netzwerk. Jedes in Azure erstellte virtuelle Netzwerk ist standardmäßig von anderen Netzwerken isoliert. Sie sollten denselben IP-Adressbereich für dieses Netzwerk verwenden, den Sie in Ihrem Produktionsnetzwerk verwenden. Aktivieren Sie nicht die Standort-zu-Standort-Konnektivität in diesem Netzwerk.
 1. Geben Sie eine DNS-IP-Adresse im isolierten Netzwerk an. Verwenden Sie die IP-Adresse, die der virtuelle DNS-Computer abrufen soll. Wenn Sie in Azure replizieren, geben Sie die IP-Adresse für den virtuellen Computer an, der bei einem Failover verwendet wird. Um die IP-Adresse einzugeben, wählen Sie im replizierten virtuellen Computer in den Einstellungen für **Compute und Netzwerk** die **Ziel-IP-** Einstellungen.
 
-   :::image type="content" source="./media/site-recovery-active-directory/azure-test-network.png" alt-text="Azure-Netzwerk":::
+   :::image type="content" source="./media/site-recovery-active-directory/azure-test-network.png" alt-text="Azure-Testnetzwerk":::
 
    > [!TIP]
    > Site Recovery versucht, virtuelle Testcomputer in einem Subnetz mit demselben Namen und derselben IP-Adresse zu erstellen, die in den Einstellungen des virtuellen Computers unter **Compute und Netzwerk** angegeben sind. Wenn ein Subnetz mit demselben Namen nicht im virtuellen Azure-Netzwerk für das Testfailover verfügbar ist, wird ein virtueller Testcomputer im (in alphabetischer Reihenfolge) ersten Subnetz erstellt.
@@ -118,21 +118,21 @@ Wenn Virtualisierungssicherheitsmechanismen nach einem Testfailover ausgelöst w
 
 - Der **GenerationID**-Wert ändert sich:
 
-  :::image type="content" source="./media/site-recovery-active-directory/Event2170.png" alt-text="Azure-Netzwerk":::
+  :::image type="content" source="./media/site-recovery-active-directory/Event2170.png" alt-text="Änderung der Generierungs-ID":::
 
 - Der **InvocationID**-Wert ändert sich:
 
-  :::image type="content" source="./media/site-recovery-active-directory/Event1109.png" alt-text="Azure-Netzwerk":::
+  :::image type="content" source="./media/site-recovery-active-directory/Event1109.png" alt-text="Änderung der Aufruf-ID":::
 
 - `SYSVOL`-Ordner und `NETLOGON`-Freigaben sind nicht verfügbar.
 
-  :::image type="content" source="./media/site-recovery-active-directory/sysvolshare.png" alt-text="Azure-Netzwerk":::
+  :::image type="content" source="./media/site-recovery-active-directory/sysvolshare.png" alt-text="SYSVOL-Ordnerfreigabe":::
 
-  :::image type="content" source="./media/site-recovery-active-directory/Event13565.png" alt-text="Azure-Netzwerk":::
+  :::image type="content" source="./media/site-recovery-active-directory/Event13565.png" alt-text="NtFrs SYSVOL-Ordner":::
 
 - DFSR-Datenbanken werden gelöscht.
 
-  :::image type="content" source="./media/site-recovery-active-directory/Event2208.png" alt-text="Azure-Netzwerk":::
+  :::image type="content" source="./media/site-recovery-active-directory/Event2208.png" alt-text="DFSR-Datenbanken werden gelöscht":::
 
 ### <a name="troubleshoot-domain-controller-issues-during-test-failover"></a>Behandlung von Domänencontrollerproblemen während des Testfailovers
 

@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d12679e64d690614aaf788837a02af007448f83d
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93393675"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>Anleitung: Verwalten von veralteten Geräte in Azure AD
@@ -97,7 +97,7 @@ Ihre in Hybrid-Azure AD eingebundenen Geräte sollten an Ihren Richtlinien für 
 
 Bereinigen Sie Azure AD wie folgt:
 
-- **Windows 10-Geräte** : Deaktivieren oder löschen Sie Windows 10-Geräte auf Ihrer lokalen AD-Instanz, und lassen Sie den geänderten Gerätestatus von Azure AD Connect mit Azure AD synchronisieren.
+- **Windows 10-Geräte**: Deaktivieren oder löschen Sie Windows 10-Geräte auf Ihrer lokalen AD-Instanz, und lassen Sie den geänderten Gerätestatus von Azure AD Connect mit Azure AD synchronisieren.
 - **Windows 7/8:** Deaktivieren oder löschen Sie Windows 7/8-Geräte zunächst in Ihrem lokalen AD. Sie können Azure AD Connect nicht verwenden, um Windows 7/8-Geräte in Azure AD zu deaktivieren oder zu löschen. Stattdessen müssen Sie, wenn Sie lokal Änderungen vornehmen, das Deaktivieren/Löschen in Azure AD durchführen.
 
 > [!NOTE]
@@ -175,9 +175,9 @@ Weitere Informationen zu den unterschiedlichen Typen finden Sie in der [Übersic
 
 Alle Authentifizierungen, bei denen ein Gerät für die Authentifizierung gegenüber Azure AD genutzt wird, werden abgelehnt. Typische Beispiele:
 
-- **Hybrid in Azure AD eingebundenes Gerät** : Benutzer können das Gerät ggf. zur Anmeldung in ihrer lokalen Domäne verwenden. Sie können aber nicht auf Azure AD-Ressourcen, z. B. Microsoft 365, zugreifen.
-- **In Azure AD eingebundenes Gerät** : Benutzer können das Gerät nicht verwenden, um sich anzumelden. 
-- **Mobile Geräte** : Der Benutzer kann nicht auf Azure AD-Ressourcen, z. B. Microsoft 365, zugreifen. 
+- **Hybrid in Azure AD eingebundenes Gerät**: Benutzer können das Gerät ggf. zur Anmeldung in ihrer lokalen Domäne verwenden. Sie können aber nicht auf Azure AD-Ressourcen, z. B. Microsoft 365, zugreifen.
+- **In Azure AD eingebundenes Gerät**: Benutzer können das Gerät nicht verwenden, um sich anzumelden. 
+- **Mobile Geräte**: Der Benutzer kann nicht auf Azure AD-Ressourcen, z. B. Microsoft 365, zugreifen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

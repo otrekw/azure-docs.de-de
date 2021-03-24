@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
 ms.openlocfilehash: 114be810ea50f984c3211291691b4c4dd45ac2c7
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93395239"
 ---
 # <a name="back-up-and-restore-databases-in-azure-sql-edge"></a>Sichern und Wiederherstellen von Datenbanken in Azure SQL Edge 
@@ -35,7 +35,7 @@ Azure SQL Edge unterstützt die gleichen Sicherungstypen wie SQL Server. Eine vo
 
 ### <a name="back-up-to-local-disk"></a>Sichern auf lokalem Datenträger
 
-Im folgenden Beispiel erstellen Sie mit dem Transact-SQL-Befehl `BACKUP DATABASE` eine Datenbanksicherung im Container. Im Rahmen dieses Beispiels erstellen Sie einen neuer Ordner mit dem Namen *backup* , in dem die Sicherungsdateien gespeichert werden.
+Im folgenden Beispiel erstellen Sie mit dem Transact-SQL-Befehl `BACKUP DATABASE` eine Datenbanksicherung im Container. Im Rahmen dieses Beispiels erstellen Sie einen neuer Ordner mit dem Namen *backup*, in dem die Sicherungsdateien gespeichert werden.
 
 1. Erstellen Sie einen Ordner für die Sicherungen. Führen Sie diesen Befehl auf dem Host aus, auf dem sich der Azure SQL Edge-Container befindet. Ersetzen Sie im folgenden Befehl **<AzureSQLEdge_Container_Name>** durch den Namen des Azure SQL Edge-Containers in Ihrer Bereitstellung.
 

@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: b826c986a0af26bb79fb0823e4e8626f0165d460
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86250021"
 ---
 # <a name="azure-api-management-page-controls"></a>Seitensteuerelemente in Azure API Management
@@ -86,7 +86,7 @@ Weitere Informationen zum Arbeiten mit Vorlagen finden Sie unter [So passen Sie 
 ### <a name="developer-portal-templates"></a>Entwicklerportal: Vorlagen  
  Das Steuerelement `basic-signin` kann in den folgenden Vorlagen des Entwicklerportals verwendet werden:  
   
--   [Anmelden](api-management-page-templates.md#SignIn)  
+-   [Melden Sie sich an:](api-management-page-templates.md#SignIn)  
   
 ##  <a name="paging-control"></a><a name="paging-control"></a> paging-control  
  `paging-control` stellt eine Seitennavigation für Entwicklerportalseiten bereit, auf denen eine Liste von Elementen angezeigt wird.  
@@ -128,7 +128,7 @@ Weitere Informationen zum Arbeiten mit Vorlagen finden Sie unter [So passen Sie 
 ### <a name="developer-portal-templates"></a>Entwicklerportal: Vorlagen  
  Das Steuerelement `providers` kann in den folgenden Vorlagen des Entwicklerportals verwendet werden:  
   
--   [Anmelden](api-management-page-templates.md#SignIn)  
+-   [Melden Sie sich an:](api-management-page-templates.md#SignIn)  
   
 ##  <a name="search-control"></a><a name="search-control"></a> search-control  
  `search-control` stellt eine Suchfunktion für Entwicklerportalseiten bereit, auf denen eine Liste von Elementen angezeigt wird.  

@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
 ms.openlocfilehash: 3b424ece9207328d87068160f78ebc78a3bd1a8d
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93395222"
 ---
 # <a name="configure-replication-to-azure-sql-edge"></a>Konfigurieren der Replikation in Azure SQL Edge 
@@ -83,7 +83,7 @@ Die folgenden Optionen werden für Azure SQL Edge-Abonnements nicht unterstützt
 Erstellen Sie eine Veröffentlichung und ein Pushabonnement. Weitere Informationen finden Sie unter
   
 - [Erstellen einer Veröffentlichung](/sql/relational-databases/replication/publish/create-a-publication)
-- [Erstellen Sie ein Pushabonnement](/sql/relational-databases/replication/create-a-push-subscription/), indem Sie den Azure SQL Edge-Servernamen bzw. die IP-Adresse als Abonnenten (z. B. **myEdgeinstance,1433** ) und einen Datenbanknamen für die Azure SQL Edge-Instanz als Zieldatenbank (z. B. **AdventureWorks** ) verwenden.  
+- [Erstellen Sie ein Pushabonnement](/sql/relational-databases/replication/create-a-push-subscription/), indem Sie den Azure SQL Edge-Servernamen bzw. die IP-Adresse als Abonnenten (z. B. **myEdgeinstance,1433**) und einen Datenbanknamen für die Azure SQL Edge-Instanz als Zieldatenbank (z. B. **AdventureWorks**) verwenden.  
 
 ## <a name="next-steps"></a>Nächste Schritte  
 

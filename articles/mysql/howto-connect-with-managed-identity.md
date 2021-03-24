@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 74530b861b4dc7a35fa8b192ecc0e79ce5fa59c2
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 898f568d285c3b4b4360ea4dda8c63a1e0f13a42
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92742990"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "101091810"
 ---
 # <a name="connect-with-managed-identity-to-azure-database-for-mysql"></a>Herstellen einer Verbindung zu Azure Database for MySQL mithilfe von verwalteten Identitäten
 
@@ -31,7 +31,7 @@ Folgendes wird vermittelt:
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Wenn Sie mit der Funktion für verwaltete Identitäten für Azure-Ressourcen nicht vertraut sind, finden Sie hier eine [Übersicht](../../articles/active-directory/managed-identities-azure-resources/overview.md). Wenn Sie kein Azure-Konto haben, sollten Sie sich [für ein kostenloses Konto registrieren](https://azure.microsoft.com/free/), bevor Sie fortfahren.
-- Ihr Konto muss für den entsprechenden Gültigkeitsbereich (Ihr Abonnement oder die Ressourcengruppe) über die Berechtigung „Besitzer“ verfügen, um die erforderliche Ressourcenerstellung und eine Rollenverwaltung durchführen zu können. Wenn Sie Unterstützung bei der Rollenzuweisung benötigen, lesen Sie unter [Verwenden der rollenbasierten Zugriffssteuerung in Azure (RBAC) zum Verwalten des Zugriffs auf Ihre Azure-Abonnementressourcen](../../articles/role-based-access-control/role-assignments-portal.md) nach.
+- Ihr Konto muss für den entsprechenden Gültigkeitsbereich (Ihr Abonnement oder die Ressourcengruppe) über die Berechtigung „Besitzer“ verfügen, um die erforderliche Ressourcenerstellung und eine Rollenverwaltung durchführen zu können. Wenn Sie Unterstützung bei der Rollenzuweisung benötigen, finden Sie weitere Informationen unter [Zuweisen von Azure-Rollen zum Verwalten des Zugriffs auf Ihre Azure-Abonnementressourcen](../../articles/role-based-access-control/role-assignments-portal.md).
 - Sie benötigen eine Azure-VM (z. B. unter Ubuntu Linux), mit der Sie mithilfe von verwalteten Identitäten auf Ihre Datenbank zugreifen.
 - Sie benötigen einen Azure Database for MySQL-Datenbankserver, auf dem die [Azure AD-Authentifizierung](howto-configure-sign-in-azure-ad-authentication.md) konfiguriert ist.
 - Für das C#-Beispiel sollten Sie zuerst den Leitfaden zur [Verbindungsherstellung mithilfe von C#](connect-csharp.md) lesen.

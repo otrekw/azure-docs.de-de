@@ -14,10 +14,10 @@ ms.date: 05/07/2019
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a0efc4bc8f89b0fbefbba171d80a3f8a1ed5e7f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89318929"
 ---
 # <a name="whats-new-for-azure-active-directory-in-microsoft-365-government"></a>Neuerungen bei Azure Active Directory in Microsoft 365 Government
@@ -63,7 +63,7 @@ Die folgende Tabelle enthält die Endpunkte für alle Kunden:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen und Beispiele finden Sie in diesen Artikeln:
+Weitere Informationen finden Sie in folgenden Artikeln:
 
 - [Was ist Azure Government?](../../azure-government/documentation-government-welcome.md)
 
