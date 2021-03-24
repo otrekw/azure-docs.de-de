@@ -3,17 +3,17 @@ title: Hotpatch für Windows Server Azure Edition (Vorschau)
 description: Erfahren Sie, wie Hotpatch für Windows Server Azure Edition funktioniert und wie Sie es aktivieren.
 author: ju-shim
 ms.service: virtual-machines
-ms.subservice: automanage
+ms.subservice: hotpatch
 ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: jushiman
-ms.openlocfilehash: 710e6902be6ebe28caaf40fb446e4ee7cd2bf4dc
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 92b8bf240dfd73cc9191675db07f20816b7156a8
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101687565"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104953390"
 ---
 # <a name="hotpatch-for-new-virtual-machines-preview"></a>Hotpatch für neue VMs (Vorschau)
 
@@ -129,21 +129,21 @@ az provider register --namespace Microsoft.Compute
 
 ## <a name="patch-installation"></a>Patchinstallation
 
-Während der Vorschau wird die Option für [Automatische VM-Gastpatches](https://docs.microsoft.com/azure/virtual-machines/automatic-vm-guest-patching) automatisch für alle mit _Windows Server 2019 Datacenter: Azure Edition_ erstellten virtuellen Computern aktiviert. Mit aktivierten automatischen VM-Gastpatches:
+Während der Vorschau wird die Option für [Automatische VM-Gastpatches](../virtual-machines/automatic-vm-guest-patching.md) automatisch für alle mit _Windows Server 2019 Datacenter: Azure Edition_ erstellten virtuellen Computern aktiviert. Mit aktivierten automatischen VM-Gastpatches:
 * Patches, die als Kritisch oder Sicherheit klassifiziert werden, werden automatisch heruntergeladen und auf die VM angewendet.
 * Patches werden außerhalb der Spitzenzeiten in der Zeitzone der VM angewendet.
-* Die Patchorchestrierung wird von Azure verwaltet, und Patches werden nach den [verfügbarkeitsbasierten Prinzipien](https://docs.microsoft.com/azure/virtual-machines/automatic-vm-guest-patching#availability-first-patching) angewendet.
+* Die Patchorchestrierung wird von Azure verwaltet, und Patches werden nach den [verfügbarkeitsbasierten Prinzipien](../virtual-machines/automatic-vm-guest-patching.md#availability-first-patching) angewendet.
 * Die Integrität des virtuellen Computers wird anhand von Integritätssignalen der Plattform ermittelt und überwacht, um Patchfehler zu erkennen.
 
 ### <a name="how-does-automatic-vm-guest-patching-work"></a>Wie funktioniert automatisches VM-Gastpatchen?
 
-Wenn die Option für [Automatische VM-Gastpatches](https://docs.microsoft.com/azure/virtual-machines/automatic-vm-guest-patching) auf einer VM aktiviert ist, werden die verfügbaren kritischen und Sicherheitspatches heruntergeladen und automatisch angewendet. Dieser Prozess wird jeden Monat automatisch gestartet, wenn neue Patches freigegeben werden. Die Patchbewertung und -installation erfolgt automatisch, und der Vorgang umfasst einen Neustart der VM bei Bedarf.
+Wenn die Option für [Automatische VM-Gastpatches](../virtual-machines/automatic-vm-guest-patching.md) auf einer VM aktiviert ist, werden die verfügbaren kritischen und Sicherheitspatches heruntergeladen und automatisch angewendet. Dieser Prozess wird jeden Monat automatisch gestartet, wenn neue Patches freigegeben werden. Die Patchbewertung und -installation erfolgt automatisch, und der Vorgang umfasst einen Neustart der VM bei Bedarf.
 
 Wenn Hotpatch für virtuelle Computer mit _Windows Server 2019 Datacenter: Azure Edition_ aktiviert ist, werden die meisten monatlichen Sicherheitsupdates als Hotpatches bereitgestellt, die keinen Neustart erfordern. Aktuelle kumulative Updates, die an Monaten mit geplanten oder nicht geplanten Baselines gesendet werden, erfordern einen Neustart des virtuellen Computers. Zusätzliche kritische oder sicherheitsrelevante Patches können ebenfalls in regelmäßigen Abständen verfügbar sein, was einen Neustart des virtuellen Computers erforderlich machen kann.
 
 Der virtuelle Computer wird automatisch alle paar Tage und mehrmals innerhalb eines 30-Tage-Zeitraums überprüft, um die anwendbaren Patches für diese VM zu ermitteln. Diese automatische Bewertung stellt sicher, dass alle fehlenden Patches zum frühestmöglichen Zeitpunkt erkannt werden.
 
-Patches werden innerhalb von 30 Tagen nach den monatlichen Patchreleases installiert, wobei die [verfügbarkeitsbasierten Prinzipien](https://docs.microsoft.com/azure/virtual-machines/automatic-vm-guest-patching#availability-first-patching) gelten. Patches werden nur außerhalb der Spitzenzeiten für die VM installiert, abhängig von der Zeitzone der VM. Die VM muss außerhalb der Spitzenzeiten ausgeführt werden, damit Patches automatisch installiert werden können. Wenn eine VM während einer periodischen Bewertung ausgeschaltet wird, wird die VM bewertet, und die anwendbaren Patches werden bei der nächsten periodischen Bewertung automatisch installiert, wenn die VM eingeschaltet wird. Die nächste regelmäßige Bewertung erfolgt normalerweise innerhalb weniger Tage.
+Patches werden innerhalb von 30 Tagen nach den monatlichen Patchreleases installiert, wobei die [verfügbarkeitsbasierten Prinzipien](../virtual-machines/automatic-vm-guest-patching.md#availability-first-patching) gelten. Patches werden nur außerhalb der Spitzenzeiten für die VM installiert, abhängig von der Zeitzone der VM. Die VM muss außerhalb der Spitzenzeiten ausgeführt werden, damit Patches automatisch installiert werden können. Wenn eine VM während einer periodischen Bewertung ausgeschaltet wird, wird die VM bewertet, und die anwendbaren Patches werden bei der nächsten periodischen Bewertung automatisch installiert, wenn die VM eingeschaltet wird. Die nächste regelmäßige Bewertung erfolgt normalerweise innerhalb weniger Tage.
 
 Definitionsupdates und andere Patches, die nicht als „Kritisch“ oder „Sicherheit“ eingestuft sind, werden nicht über automatische VM-Gastpatches installiert.
 
@@ -151,7 +151,7 @@ Definitionsupdates und andere Patches, die nicht als „Kritisch“ oder „Sich
 
 Um den Patchstatus für Ihre VM anzuzeigen, navigieren Sie im Azure-Portal zum Abschnitt **Gast- und Hostupdates** für Ihre VM. Klicken Sie unter dem Abschnitt **Updates für das Gastbetriebssystem** auf „Zu Hotpatch wechseln (Vorschau)“, um den neuesten Patchstatus für Ihre VM anzuzeigen.
 
-Auf diesem Bildschirm wird der Hotpatch-Status für Ihre VM angezeigt. Sie können auch überprüfen, ob es verfügbare Patches für Ihre VM gibt, die noch nicht installiert wurden. Wie im obigen Abschnitt zur Patchinstallation beschrieben, werden alle sicherheitsbezogenen und kritischen Updates mithilfe [automatischer VM-Gastpatches](https://docs.microsoft.com/azure/virtual-machines/automatic-vm-guest-patching) automatisch auf Ihrer VM installiert, ohne dass zusätzliche Aktionen erforderlich sind. Patches mit anderen Updateklassifizierungen werden nicht automatisch installiert. Stattdessen werden sie in der Liste der verfügbaren Patches auf der Registerkarte „Updatekonformität“ angezeigt. Sie können auch den Verlauf der Bereitstellung von Updates auf Ihrer VM über den „Updateverlauf“ anzeigen. Der Updateverlauf der letzten 30 Tage wird zusammen mit den Details zur Patchinstallation angezeigt.
+Auf diesem Bildschirm wird der Hotpatch-Status für Ihre VM angezeigt. Sie können auch überprüfen, ob es verfügbare Patches für Ihre VM gibt, die noch nicht installiert wurden. Wie im obigen Abschnitt zur Patchinstallation beschrieben, werden alle sicherheitsbezogenen und kritischen Updates mithilfe [automatischer VM-Gastpatches](../virtual-machines/automatic-vm-guest-patching.md) automatisch auf Ihrer VM installiert, ohne dass zusätzliche Aktionen erforderlich sind. Patches mit anderen Updateklassifizierungen werden nicht automatisch installiert. Stattdessen werden sie in der Liste der verfügbaren Patches auf der Registerkarte „Updatekonformität“ angezeigt. Sie können auch den Verlauf der Bereitstellung von Updates auf Ihrer VM über den „Updateverlauf“ anzeigen. Der Updateverlauf der letzten 30 Tage wird zusammen mit den Details zur Patchinstallation angezeigt.
 
 
 :::image type="content" source="media\automanage-hotpatch\hotpatch-management-ui.png" alt-text="Hotpatch-Verwaltung":::
@@ -225,5 +225,5 @@ Es gibt einige wichtige Überlegungen zum Betrieb einer VM mit Windows Server Az
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zur Azure-Updateverwaltung finden Sie [hier](https://docs.microsoft.com/azure/automation/update-management/overview).
-* Weitere Informationen zu automatischen VM-Gastpatches finden Sie [hier](https://docs.microsoft.com/azure/virtual-machines/automatic-vm-guest-patching).
+* Weitere Informationen zur Azure-Updateverwaltung finden Sie [hier](../automation/update-management/overview.md).
+* Weitere Informationen zu automatischen VM-Gastpatches finden Sie [hier](../virtual-machines/automatic-vm-guest-patching.md).

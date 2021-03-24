@@ -16,17 +16,17 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
 ms.openlocfilehash: 748d10b994080b667885e5d0d5f4d688269e86ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "68728047"
 ---
 # <a name="microsoft-threat-modeling-tool-mitigations"></a>Microsoft Threat Modeling Tool-Entschärfungen
 
 Das Threat Modeling Tool ist ein Kernelement im Microsoft Security Development Lifecycle (SDL). Es ermöglicht Softwarearchitekten, potenzielle Sicherheitslücken früh zu identifizieren und zu entschärfen, wenn sie relativ einfach und kostengünstig gelöst werden können. Daher werden mit dem Tool die Gesamtkosten der Entwicklung erheblich reduziert. Außerdem wurde das Tool nicht speziell für Sicherheitsexperten entwickelt. Es erleichtert die Modellierung von Bedrohungen für alle Entwickler, indem klare Leitlinien zum Erstellen und Analysieren von Gefahrenmodellen bereitgestellt werden.
 
-**[Laden Sie das Threat Modeling Tool herunter](threat-modeling-tool.md)** , um noch heute die ersten Schritte zu unternehmen!
+**[Laden Sie das Threat Modeling Tool herunter](threat-modeling-tool.md)**, um noch heute die ersten Schritte zu unternehmen!
 
 ## <a name="mitigation-categories"></a>Kategorien von Entschärfungen
 
@@ -36,7 +36,7 @@ Die Gegenmaßnahmen im Threat Modeling Tool sind gemäß dem Sicherheitsrahmen f
 | -------- | ----------- |
 | **[Überwachung und Protokollierung](threat-modeling-tool-auditing-and-logging.md)** | Wer hat was wann gemacht? Überwachung und Protokollierung beziehen sich darauf, wie Ihre Anwendung Sicherheitsereignisse aufzeichnet. |
 | **[Authentifizierung](threat-modeling-tool-authentication.md)** | Wer sind Sie? Authentifizierung ist der Prozess, in dem eine Entität die Identität einer anderen Entität beweist, in der Regel durch Anmeldeinformationen wie Benutzername und Kennwort. |
-| **[Autorisierung](threat-modeling-tool-authorization.md)** | Was können Sie tun? Die Autorisierung legt fest, wie Ihre Anwendung Zugriffssteuerung für Ressourcen und Vorgänge bereitstellt. |
+| **[Authorization](threat-modeling-tool-authorization.md)** | Was können Sie tun? Die Autorisierung legt fest, wie Ihre Anwendung Zugriffssteuerung für Ressourcen und Vorgänge bereitstellt. |
 | **[Kommunikationssicherheit](threat-modeling-tool-communication-security.md)** | Mit wem kommunizieren Sie? Durch Kommunikationssicherheit wird gewährleistet, dass die gesamte Kommunikation so sicher wie möglich abläuft. |
 | **[Konfigurationsverwaltung](threat-modeling-tool-configuration-management.md)** | Mit welchem Konto wird die Anwendung ausgeführt? Mit welchen Datenbanken stellt sie Verbindungen her? Wie wird Ihre Anwendung verwaltet? Wie werden diese Einstellungen gesichert? Die Konfigurationsverwaltung bezieht sich darauf, wie Ihre Anwendung diese Betriebsprobleme behandelt. |
 | **[Kryptografie](threat-modeling-tool-cryptography.md)** | Wie werden geheime Schlüssel aufbewahrt (Vertraulichkeit)? Wie sichern Sie Ihre Daten oder Bibliotheken gegen Manipulationen (Integrität)? Wie stellen Sie Startwerte für Zufallswerte bereit, die kryptografisch sicher sein müssen? Kryptografie bezieht sich darauf, wie die Anwendung Vertraulichkeit und Integrität erzwingt. |
@@ -50,8 +50,8 @@ Damit können Sie Folgendes identifizieren:
 * Wo werden die häufigsten Fehler gemacht
 * Wo sind die am besten umsetzbaren Verbesserungen möglich
 
-So können Sie diese Kategorien verwenden, um Ihre Bemühungen um Sicherheit zu konzentrieren und zu priorisieren. Wenn Sie z.B. wissen, dass die häufigsten Sicherheitsprobleme in den Kategorien Eingabeüberprüfung, Authentifizierung und Autorisierung auftreten, können Sie mit diesen Kategorien beginnen. Klicken Sie auf **[diesen Link zum Patent](https://www.google.com/patents/US7818788)** , um weitere Informationen zu erhalten.
+So können Sie diese Kategorien verwenden, um Ihre Bemühungen um Sicherheit zu konzentrieren und zu priorisieren. Wenn Sie z.B. wissen, dass die häufigsten Sicherheitsprobleme in den Kategorien Eingabeüberprüfung, Authentifizierung und Autorisierung auftreten, können Sie mit diesen Kategorien beginnen. Klicken Sie auf **[diesen Link zum Patent](https://www.google.com/patents/US7818788)**, um weitere Informationen zu erhalten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Besuchen Sie **[Threat Modeling Tool-Bedrohungen](threat-modeling-tool-threats.md)** , um mehr über die Bedrohungskategorien zu erfahren, die das Tool verwendet, um mögliche Entwurfsbedrohungen zu generieren.
+Besuchen Sie **[Threat Modeling Tool-Bedrohungen](threat-modeling-tool-threats.md)**, um mehr über die Bedrohungskategorien zu erfahren, die das Tool verwendet, um mögliche Entwurfsbedrohungen zu generieren.

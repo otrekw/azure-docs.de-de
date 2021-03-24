@@ -1,18 +1,14 @@
 ---
 title: Beschleunigen von Warnungsworkflows
 description: Verbessern Sie Warnungs- und Incidentworkflows.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 12/02/2020
-ms.service: azure
 ms.topic: how-to
-ms.openlocfilehash: 0a445abe0f448c28742282aedd1a886fae0f5a43
-ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
+ms.openlocfilehash: c12d1135b7a7bc87a38a609aeeb6ada8caa9a25e
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100526288"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104779119"
 ---
 # <a name="accelerate-alert-workflows"></a>Beschleunigen von Warnungsworkflows
 
@@ -81,16 +77,29 @@ Diese Felder sollten in der Partnerlösung so konfiguriert werden, dass der Name
 ### <a name="default-alert-groups"></a>Standardwarnungsgruppen
 
 Die folgenden Warnungsgruppen werden automatisch definiert:
-|  |  |  |
-|--|--|--|
-| Ungewöhnliches Kommunikationsverhalten | Benutzerdefinierte Warnungen | Remotezugriff |
-| Ungewöhnliches Verhalten bei der HTTP-Kommunikation | Ermittlung | Befehle zum Neustarten und Abbrechen |
-| Authentifizierung | Firmware-Änderung | Scannen |
-| Unautorisiertes Kommunikationsverhalten | Unzulässige Befehle | Sensordatenverkehr |
-| Bandbreitenauffälligkeiten | Zugriff auf das Internet | Verdacht auf Schadsoftware |
-| Pufferüberlauf | Vorgangsfehler | Verdacht auf schädliche Aktivität |
-| Befehlsfehler | Betriebsprobleme |  |
-| Konfigurationsänderungen | Programmieren |  |
+
+- Ungewöhnliches Kommunikationsverhalten
+- Benutzerdefinierte Warnungen
+- Remotezugriff
+- Ungewöhnliches Verhalten bei der HTTP-Kommunikation
+- Ermittlung
+- Befehle zum Neustarten und Abbrechen
+- Authentifizierung
+- Firmware-Änderung
+- Scannen
+- Unautorisiertes Kommunikationsverhalten
+- Unzulässige Befehle
+- Sensordatenverkehr
+- Bandbreitenauffälligkeiten
+- Zugriff auf das Internet
+- Verdacht auf Schadsoftware
+- Pufferüberlauf 
+- Vorgangsfehler
+- Verdacht auf schädliche Aktivität
+- Befehlsfehler
+- Betriebsprobleme
+- Konfigurationsänderungen
+- Programmieren
 
 Warnungsgruppen sind vordefiniert. Weitere Informationen zu Warnungen, die mit Warnungsgruppen verknüpft sind, und zum Erstellen benutzerdefinierter Warnungsgruppen erhalten Sie beim [Microsoft-Support](https://support.microsoft.com/supportforbusiness/productselection?sapId=82c8f35-1b8e-f274-ec11-c6efdd6dd099).
 

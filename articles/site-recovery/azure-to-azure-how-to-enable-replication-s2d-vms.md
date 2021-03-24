@@ -6,10 +6,10 @@ manager: rochakm
 ms.topic: how-to
 ms.date: 01/29/2019
 ms.openlocfilehash: f438fadb73f7e3bd25cd7ab9aef0bc46285e30e2
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92424823"
 ---
 # <a name="replicate-azure-vms-running-storage-spaces-direct-to-another-region"></a>Replizieren von virtuellen Azure-Computern mit direkten Speicherplätzen in eine andere Region
@@ -80,7 +80,7 @@ Für beide Knoten der VMs muss ein Failover mithilfe des Site Recovery-[Wiederhe
 3.  Wählen Sie **Testfailover** aus.
 4.  Wählen Sie den Wiederherstellungspunkt und das virtuelle Azure-Netzwerk aus, um den Prozess für das Testfailover zu starten.
 5.  Wenn die sekundäre Umgebung aktiv ist, können Sie Überprüfungen durchführen.
-6.  Klicken Sie nach Abschluss der Überprüfungen auf **Testfailover bereinigen** , um die Failoverumgebung zu bereinigen.
+6.  Klicken Sie nach Abschluss der Überprüfungen auf **Testfailover bereinigen**, um die Failoverumgebung zu bereinigen.
 
 Weitere Informationen finden Sie unter [Testfailover nach Azure in Site Recovery](site-recovery-test-failover-to-azure.md).
 

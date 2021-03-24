@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
 ms.openlocfilehash: 0c49f5ab9f10456c32f7f8516cba0e851fa80e74
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93392332"
 ---
 # <a name="configure-azure-sql-edge"></a>Konfigurieren von Azure SQL Edge
@@ -47,7 +47,7 @@ Die folgenden Umgebungsvariablen für SQL Server unter Linux werden von Azure SQ
 | **MSSQL_ENABLE_HADR** | Aktivieren der Verfügbarkeitsgruppe. Beispielsweise bedeutet **1** aktiviert und **0** deaktiviert. |
 
 > [!IMPORTANT]
-> Die **MSSQL_PID** -Umgebungsvariable für SQL Edge akzeptiert nur **Premium** und **Developer** als gültige Werte. Azure SQL Edge unterstützt keine Initialisierung mithilfe eines Product Key.
+> Die **MSSQL_PID**-Umgebungsvariable für SQL Edge akzeptiert nur **Premium** und **Developer** als gültige Werte. Azure SQL Edge unterstützt keine Initialisierung mithilfe eines Product Key.
 
 ### <a name="specify-the-environment-variables"></a>Angeben der Umgebungsvariablen
 

@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0498ee1c57cfa661884fe3209d4e089b54996fae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89231060"
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Latenzen bei Azure Active Directory-Berichten
@@ -72,11 +72,11 @@ Die folgende Tabelle enthält Latenzzeitinformationen für Risikoerkennungen.
 
 | Bericht | Minimum | Average | Maximum |
 | :-- | --- | --- | --- |
-| Anmeldungen von anonymen IP-Adressen |5 Minuten |15 Minuten |2 Stunden |
-| Anmeldungen von unbekannten Standorten |5 Minuten |15 Minuten |2 Stunden |
+| Anmeldungen über anonyme IP-Adressen |5 Minuten |15 Minuten |2 Stunden |
+| Anmeldungen über unbekannte Standorte |5 Minuten |15 Minuten |2 Stunden |
 | Benutzer mit kompromittierten Anmeldeinformationen |2 Stunden |4 Stunden |8 Stunden |
 | Unmöglicher Ortswechsel zu atypischen Orten |5 Minuten |1 Stunde |8 Stunden  |
-| Anmeldungen von infizierten Geräten |2 Stunden |4 Stunden |8 Stunden  |
+| Anmeldungen über infizierte Geräte |2 Stunden |4 Stunden |8 Stunden  |
 | Anmeldungen von IP-Adressen mit verdächtigen Aktivitäten |2 Stunden |4 Stunden |8 Stunden  |
 
 

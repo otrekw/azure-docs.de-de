@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/09/2019
 ms.author: mayg
 ms.openlocfilehash: ba1979c940d4a92b3d1a7a52a4f356b2896ece55
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74082619"
 ---
 # <a name="run-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>Ausführen des Azure Site Recovery-Bereitstellungsplaners für die Hyper-V-Notfallwiederherstellung in Azure
@@ -157,7 +157,7 @@ Wenn der Name des Speicherkontos und der dazugehörige Schlüssel übergeben wer
 Azure Site Recovery unterstützt keine VMs, die über iSCSI- und Pass-Through-Datenträger verfügen. Das Tool kann keine iSCSI- und Pass-Through-Datenträger erkennen, die an VMs angefügt sind, und auch keine Profilerstellung dafür durchführen.
 
 ## <a name="generate-a-report"></a>Generieren eines Berichts
-Das Tool generiert eine makrofähige Microsoft Excel-Datei (XLSM) als Berichtsausgabe. Darin werden alle Empfehlungen zur Bereitstellung zusammengefasst. Der Bericht hat den Namen „DeploymentPlannerReport_*eindeutiger numerischer Bezeichner*.xlsm“ und wird im angegebenen Verzeichnis gespeichert.
+Das Tool generiert eine makrofähige Microsoft Excel-Datei (XLSM) als Berichtsausgabe. Darin werden alle Empfehlungen zur Bereitstellung zusammengefasst. Der Bericht hat den Namen „DeploymentPlannerReport_ *eindeutiger numerischer Bezeichner*.xlsm“ und wird im angegebenen Verzeichnis gespeichert.
 
 Nach Abschluss der Profilerstellung können Sie das Tool im Berichterstellungsmodus ausführen. 
 
@@ -259,9 +259,9 @@ Der erstellte Microsoft Excel-Bericht enthält die folgenden Informationen:
 * [VM-storage placement](hyper-v-deployment-planner-analyze-report.md#vm-storage-placement-recommendation) (VM/Speicher-Anordnung)
 * [Compatible VMs](hyper-v-deployment-planner-analyze-report.md#compatible-vms) (Kompatible VMs)
 * [Incompatible VMs](hyper-v-deployment-planner-analyze-report.md#incompatible-vms) (Inkompatible VMs)
-* [On-premises Storage Requirement](hyper-v-deployment-planner-analyze-report.md#on-premises-storage-requirement) (Bedarf an lokalem Speicher)
-* [IR batching](hyper-v-deployment-planner-analyze-report.md#initial-replication-batching) (IR-Batchverarbeitung)
-* [Cost Estimation](hyper-v-deployment-planner-cost-estimation.md) (Kostenvorkalkulation)
+* [On-premises Storage Requirement (Bedarf an lokalem Speicher)](hyper-v-deployment-planner-analyze-report.md#on-premises-storage-requirement)
+* [IR-Batchverarbeitung](hyper-v-deployment-planner-analyze-report.md#initial-replication-batching)
+* [Cost Estimation (Kostenvorkalkulation)](hyper-v-deployment-planner-cost-estimation.md)
 
 ![Bereitstellungsplaner-Bericht](media/hyper-v-deployment-planner-run/deployment-planner-report-h2a.png)
 
@@ -292,7 +292,7 @@ ASRDeploymentPlanner.exe -Operation GetThroughput -Virtualization Hyper-V -Direc
 
 ### <a name="throughput-considerations"></a>Aspekte des Durchsatzes
 
-Mit dem Tool werden im angegebenen Verzeichnis mehrere Dateien vom Typ „asrvhdfile*Anzahl*.vhd“ (wobei *Anzahl* für die Anzahl von Dateien steht) mit einer Größe von 64 MB erstellt. Mit dem Tool werden diese Dateien in das Speicherkonto hochgeladen, um den Durchsatz zu ermitteln. Nach dem Messen des Durchsatzes löscht das Tool diese Dateien aus dem Speicherkonto und vom lokalen Server. Wenn das Tool während der Berechnung des Durchsatzes aus irgendeinem Grund beendet wird, werden die Dateien nicht aus dem Speicherkonto oder vom lokalen Server gelöscht. Sie müssen sie manuell löschen.
+Mit dem Tool werden im angegebenen Verzeichnis mehrere Dateien vom Typ „asrvhdfile *Anzahl*.vhd“ (wobei *Anzahl* für die Anzahl von Dateien steht) mit einer Größe von 64 MB erstellt. Mit dem Tool werden diese Dateien in das Speicherkonto hochgeladen, um den Durchsatz zu ermitteln. Nach dem Messen des Durchsatzes löscht das Tool diese Dateien aus dem Speicherkonto und vom lokalen Server. Wenn das Tool während der Berechnung des Durchsatzes aus irgendeinem Grund beendet wird, werden die Dateien nicht aus dem Speicherkonto oder vom lokalen Server gelöscht. Sie müssen sie manuell löschen.
 
 Der Durchsatz wird für einen bestimmten Zeitpunkt gemessen. Dies ist der maximale Durchsatz, der von Azure Site Recovery während der Replikation erreicht werden kann, sofern alle anderen Faktoren gleich bleiben. Falls eine Anwendung beispielsweise in demselben Netzwerk auf einmal mehr Bandbreite verbraucht, variiert der tatsächliche Durchsatz während der Replikation. Das Ergebnis des gemessenen Durchsatzes ist anders, wenn der GetThroughput-Vorgang ausgeführt wird, während die geschützten VMs über eine hohe Datenänderungsrate verfügen. 
 

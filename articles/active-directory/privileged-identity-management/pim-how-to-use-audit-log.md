@@ -15,10 +15,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8481c562ecbab1f26e877e55a5a9454695ddf4c0
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92370830"
 ---
 # <a name="view-audit-history-for-azure-ad-roles-in-privileged-identity-management"></a>Anzeigen des Überwachungsverlaufs für Azure AD-Rollen in Privileged Identity Management
@@ -30,7 +30,7 @@ Im Überwachungsverlauf von Privileged Identity Management (PIM) können Sie all
 Ab November 2019 werden die Azure AD Rollen von Privileged Identity Management auf eine neue Version aktualisiert, die dem Verhalten von Azure-Ressourcenrollen entspricht. Dadurch werden zusätzliche Features verfügbar, und es kommt zu [Änderungen an der vorhandenen API](azure-ad-roles-features.md#api-changes). Welche Verfahren Sie in diesem Artikel während der Einführung der neuen Version befolgen, hängt von Ihrer aktuellen Version von Privileged Identity Management ab. Führen Sie die Schritte in diesem Abschnitt aus, um Ihre Version von Privileged Identity Management zu ermitteln. Nachdem Sie Ihre Version von Privileged Identity Management kennen, können Sie die Verfahren in diesem Artikel auswählen, die dieser Version entsprechen.
 
 1. Melden Sie sich am [Azure-Portal](https://portal.azure.com/) als Benutzer mit der Rolle [Administrator für privilegierte Rollen](../roles/permissions-reference.md#privileged-role-administrator) an.
-1. Öffnen Sie **Azure AD Privileged Identity Management** . Wenn sich oben auf der Übersichtsseite ein Banner befindet, befolgen Sie die Anweisungen auf der Registerkarte **Neue Version** dieses Artikels. Andernfalls befolgen Sie die Anweisungen auf der Registerkarte **Vorherige Version** .
+1. Öffnen Sie **Azure AD Privileged Identity Management**. Wenn sich oben auf der Übersichtsseite ein Banner befindet, befolgen Sie die Anweisungen auf der Registerkarte **Neue Version** dieses Artikels. Andernfalls befolgen Sie die Anweisungen auf der Registerkarte **Vorherige Version**.
 
     [![Der Screenshot zeigt die Seite „Azure AD-Rollen – Verlauf der Verzeichnisrollenüberwachung“.](media/pim-how-to-use-audit-log/directory-roles-audit-history.png "Auswählen der Registerkarte für Ihre Version")](media/pim-how-to-use-audit-log/directory-roles-audit-history.png)
 
@@ -42,7 +42,7 @@ Führen Sie die folgenden Schritte aus, um den Überwachungsverlauf für Azure A
 
 Mit der Ressourcenüberwachung erhalten Sie eine Übersicht über alle Aktivitäten, die Ihren Azure AD Rollen zugeordnet sind.
 
-1. Öffnen Sie **Azure AD Privileged Identity Management** .
+1. Öffnen Sie **Azure AD Privileged Identity Management**.
 
 1. Wählen Sie **Azure AD-Rollen** aus.
 
@@ -56,7 +56,7 @@ Mit der Ressourcenüberwachung erhalten Sie eine Übersicht über alle Aktivitä
 
 In der eigenen Überwachung können Sie Ihre persönliche Rollenaktivität anzeigen.
 
-1. Öffnen Sie **Azure AD Privileged Identity Management** .
+1. Öffnen Sie **Azure AD Privileged Identity Management**.
 
 1. Wählen Sie **Azure AD-Rollen** aus.
 
@@ -76,7 +76,7 @@ Führen Sie die folgenden Schritte aus, um den Überwachungsverlauf für Azure A
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) mit einem Benutzer an, der ein Mitglied der Rolle [Administrator für privilegierte Rollen](../roles/permissions-reference.md#privileged-role-administrator) ist.
 
-1. Öffnen Sie **Azure AD Privileged Identity Management** .
+1. Öffnen Sie **Azure AD Privileged Identity Management**.
 
 1. Wählen Sie **Azure AD-Rollen** aus.
 
@@ -98,11 +98,11 @@ Führen Sie die folgenden Schritte aus, um den Überwachungsverlauf für Azure A
     | Erläuterung | Text, der während der Aktivierung in das Feld „Grund“ eingegeben wurde. |
     | Ablauf | Zeitpunkt, an dem die aktivierte Rolle abläuft. Gilt nur für berechtigte Rollenzuweisungen. |
 
-1. Um den Überwachungsverlauf zu sortieren, klicken Sie auf **Zeit** , **Aktion** und **Rolle** .
+1. Um den Überwachungsverlauf zu sortieren, klicken Sie auf **Zeit**, **Aktion** und **Rolle**.
 
 ## <a name="filter-audit-history"></a>Filtern des Überwachungsverlaufs
 
-1. Klicken Sie am oberen Rand der Seite mit dem Überwachungsverlauf auf die Schaltfläche **Filter** .
+1. Klicken Sie am oberen Rand der Seite mit dem Überwachungsverlauf auf die Schaltfläche **Filter**.
 
     Der Bereich **Diagrammparameter aktualisieren** wird angezeigt.
 
@@ -118,7 +118,7 @@ Führen Sie die folgenden Schritte aus, um den Überwachungsverlauf für Azure A
 
 1. Melden Sie sich beim [Azure-Portal](https://aad.portal.azure.com) mit den Berechtigungen der Rolle „Administrator für privilegierte Rollen“ an, und öffnen Sie Azure AD.
 1. Wählen Sie **Überwachungsprotokolle** aus.
-1. Verwenden Sie den Filter **Dienst** , um lediglich Überwachungsereignisse für den Dienst Privileged Identity Management anzuzeigen. Auf der Seite **Überwachungsprotokoll** haben Sie folgende Möglichkeiten:
+1. Verwenden Sie den Filter **Dienst**, um lediglich Überwachungsereignisse für den Dienst Privileged Identity Management anzuzeigen. Auf der Seite **Überwachungsprotokoll** haben Sie folgende Möglichkeiten:
 
     - Zeigen Sie Gründe für ein Überwachungsereignis in der Spalte **Statusursache** an.
     - Zeigen Sie die genehmigenden Person in der Spalte **Initiiert von (Akteur)** für das Ereignis „Anforderung zum Hinzufügen von Mitglied zur Rolle genehmigt“ an.
@@ -131,8 +131,8 @@ Führen Sie die folgenden Schritte aus, um den Überwachungsverlauf für Azure A
 
 1. Sie können den Anforderer (Person, die die Rolle aktiviert) auf der Registerkarte **Ziele** im **Detailbereich** für ein Überwachungsereignis anzeigen. Für Azure AD-Rollen gibt es zwei Zieltypen:
 
-    - Die Rolle ( **Typ** = Rolle)
-    - Den Anforderer ( **Typ** = Benutzer)
+    - Die Rolle (**Typ** = Rolle)
+    - Den Anforderer (**Typ** = Benutzer)
 
 In der Regel ist das Überwachungsprotokollereignis direkt oberhalb des Genehmigungsereignisses ein Ereignis für „Hinzufügen von Mitglied zur Rolle abgeschlossen“, wobei unter **Initiiert von (Akteur)** der Anforderer steht. In den meisten Fällen ist es für die Überwachung nicht erforderlich, die anfordernde Person in der Genehmigungsanforderung zu ermitteln.
 

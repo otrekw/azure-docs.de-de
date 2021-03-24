@@ -1,18 +1,14 @@
 ---
 title: Erstellen von Data Mining-Berichten
 description: Es wird beschrieben, wie Sie umfassende und detaillierte Informationen zu Ihren Netzwerkgeräten auf unterschiedlichen Ebenen generieren, z. B. Protokolle, Firmwareversionen oder Programmierbefehle.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 01/20/2021
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: 0738dc7f2b7012002fc6ddf5cc68dd0c8e42b04d
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 99754959e7a3a08b4d763b85b0b9315476969774
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100522478"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104779068"
 ---
 # <a name="sensor-data-mining-queries"></a>Data Mining-Abfragen für Sensoren
 
@@ -285,7 +281,3 @@ So erstellen Sie einen Bericht
 3. Wählen Sie in der rechten Dropdownliste den Bericht aus, den Sie generieren möchten.
 
 4. Zum Erstellen einer PDF-Datei mit den Berichtsergebnissen wählen Sie :::image type="icon" source="media/how-to-generate-reports/pdf-report-icon.png" border="false"::: aus.
-
-## <a name="next-steps"></a>Nächste Schritte
-
-[Sensortrend- und Statistikberichte](how-to-create-trends-and-statistics-reports.md)

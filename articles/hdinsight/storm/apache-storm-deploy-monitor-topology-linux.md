@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/18/2019
-ms.openlocfilehash: 417819cad3bc2ee258381426dfcee7c800b69d42
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: fb57992c8e26560061faf68443c4993801f9713d
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98929170"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871570"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Bereitstellen und Verwalten von Apache Storm-Topologien in Azure HDInsight
 
@@ -43,7 +43,7 @@ Mit den Data Lake-Tools für Visual Studio können Sie C#-Code oder Hybridtopolo
 
 1. Geben Sie im Fenster **Neues Projekt konfigurieren** einen **Projektnamen** ein, und navigieren Sie zum **Speicherort** für das neue Projekt, oder erstellen Sie einen. Klicken Sie anschließend auf **Erstellen**.
 
-    ![Fenster „Neues Projekt konfigurieren“, Visual Studio](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-sample1.png)
+    :::image type="content" source="./media/apache-storm-deploy-monitor-topology-linux/apache-storm-sample1.png" alt-text="Fenster „Neues Projekt konfigurieren“, Visual Studio" border="true":::
 
 1. Klicken Sie im **Server-Explorer** mit der rechten Maustaste auf **Azure**, wählen Sie **Verbindung mit Microsoft Azure-Abonnement herstellen** aus, und melden Sie sich an.
 
@@ -71,7 +71,7 @@ Mit den Data Lake-Tools für Visual Studio können Sie C#-Code oder Hybridtopolo
     Dieser Befehl startet die WordCount-Beispieltopologie auf dem Cluster. Diese Topologie generiert nach dem Zufallsprinzip Sätze und zählt dann die Instanzen jedes Worts in den Sätzen.
 
     > [!NOTE]  
-    > Beim Übermitteln der Topologie an den Cluster müssen Sie zunächst die JAR-Datei mit dem Cluster kopieren, bevor Sie den Befehl `storm` verwenden. Um die Datei auf den Cluster zu kopieren, können Sie den `scp`-Befehl verwenden. Geben Sie z. B. `scp FILENAME.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.jar` ein
+    > Beim Übermitteln der Topologie an den Cluster müssen Sie zunächst die JAR-Datei mit dem Cluster kopieren, bevor Sie den Befehl `storm` verwenden. Um die Datei auf den Cluster zu kopieren, können Sie den `scp`-Befehl verwenden. Geben Sie beispielsweise `scp FILENAME.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.jar` ein.
     >
     > Das Beispiel *WordCount* und andere Storm Starter-Beispiele sind unter `/usr/hdp/current/storm-client/contrib/storm-starter/` bereits im Cluster enthalten.
 
@@ -83,7 +83,7 @@ Sie können mit dem Nimbus-Dienst programmgesteuert eine Topologie bereitstellen
 
 Wenn Sie eine Topologie in Visual Studio übermitteln, wird das Fenster **Storm-Topologien anzeigen** angezeigt. Wählen Sie die Topologie aus der Liste aus, um Informationen zur aktiven Topologie anzuzeigen.
 
-![Überwachen der Topologie, Fenster „Storm-Topologien anzeigen“, Visual Studio](./media/apache-storm-deploy-monitor-topology-linux/visual-studio-monitor.png)
+:::image type="content" source="./media/apache-storm-deploy-monitor-topology-linux/visual-studio-monitor.png" alt-text="Überwachen der Topologie, Fenster „Storm-Topologien anzeigen“, Visual Studio" border="true":::
 
 > [!NOTE]  
 > Sie können sich **Storm-Topologien** auch über den **Server-Explorer** anzeigen lassen. Erweitern Sie **Azure** > **HDInsight**, klicken Sie mit der rechten Maustaste auf einen Storm im HDInsight-Cluster, und wählen Sie anschließend **Storm-Topologien anzeigen** aus.
@@ -160,7 +160,7 @@ storm rebalance TOPOLOGYNAME
 
 ## <a name="monitor-and-manage-a-topology-using-the-storm-ui"></a>Überwachen und Verwalten einer Topologie in der Storm-Benutzeroberfläche
 
-Die Storm-Benutzeroberfläche ist eine Weboberfläche zum Arbeiten mit ausgeführten Topologien und befindet sich im HDInsight-Cluster. Zum Anzeigen der Storm-Benutzeroberfläche öffnen Sie `https://CLUSTERNAME.azurehdinsight.net/stormui` in einem Webbrowser, wobei *CLUSTERNAME* der Name Ihres Clusters ist.
+Die Storm-Benutzeroberfläche ist eine Weboberfläche zum Arbeiten mit ausgeführten Topologien und befindet sich im HDInsight-Cluster. Wenn Sie die Storm-Benutzeroberfläche anzeigen möchten, öffnen Sie `https://CLUSTERNAME.azurehdinsight.net/stormui` in einem Browser, wobei *CLUSTERNAME* der Name Ihres Clusters ist.
 
 > [!NOTE]  
 > Wenn Sie aufgefordert werden, einen Benutzernamen und ein Kennwort anzugeben, geben Sie den Benutzernamen des Clusteradministrators und das entsprechende Kennwort ein, die Sie beim Erstellen des Clusters verwendet haben.
@@ -179,7 +179,7 @@ Die Hauptseite der Storm-Benutzeroberfläche bietet die folgenden Informationen:
 
 Die Hauptseite der Storm-Benutzeroberfläche ähnelt der folgenden Webseite:
 
-![Hauptseite, Storm-Benutzeroberfläche, Apache Storm-Topologien, Azure](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-main-page.png)
+:::image type="content" source="./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-main-page.png" alt-text="Hauptseite, Storm-Benutzeroberfläche, Apache Storm-Topologien, Azure" border="true":::
 
 #### <a name="topology-summary"></a>Topologiezusammenfassung:
 
@@ -198,11 +198,11 @@ Wenn Sie einen Link aus dem Abschnitt **Topologiezusammenfassung** auswählen, w
 
 Die Seite „Topologiezusammenfassung“ in Storm ähnelt der folgenden Webseite:
 
-![Seite „Topology summary“ (Topologiezusammenfassung), Storm-Benutzeroberfläche, Apache Storm, Azure](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-topology-summary.png)
+:::image type="content" source="./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-topology-summary.png" alt-text="Seite „Topology summary“ (Topologiezusammenfassung), Storm-Benutzeroberfläche, Apache Storm, Azure" border="true":::
 
 Im Abschnitt **Topologieaktionen** können Sie die folgenden Schaltflächen auswählen, um eine Aktion auszuführen:
 
-| Taste | BESCHREIBUNG |
+| Schaltfläche | Beschreibung |
 | --- | --- |
 | Aktivieren | Setzt die Verarbeitung einer deaktivierten Topologie fort. |
 | Deaktivieren | Hält eine aktive Topologie an. |
@@ -229,7 +229,7 @@ Wenn Sie im Abschnitt **Spouts** oder **Bolts** einen Spout auswählen, werden d
 
 Die Zusammenfassungsseite für einen Bolt in Storm ähnelt der folgenden Webseite:
 
-![Zusammenfassungsseite für einen Bolt, Storm-Benutzeroberfläche, Apache Storm, Azure](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-bolt-summary.png)
+:::image type="content" source="./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-bolt-summary.png" alt-text="Zusammenfassungsseite für einen Bolt, Storm-Benutzeroberfläche, Apache Storm, Azure" border="true":::
 
 ## <a name="monitor-and-manage-the-topology-using-the-rest-api"></a>Überwachen und Verwalten der Topologie mithilfe der REST-API
 
@@ -252,7 +252,7 @@ Sie können den vollqualifizierten Domänennamen (FQDN) für den Clusterhauptkno
 | Ambari-Web | Wählen Sie auf der Webseite des Ambari-Clusters (`https://CLUSTERNAME.azurehdinsight.net`) oben auf der Seite die Option **Dienste** und dann **Storm** aus. Wählen Sie auf der Registerkarte **Zusammenfassung** die Option **Storm UI-Server**. Der vollqualifizierte Domänenname des Hosts, auf dem die Storm UI und die REST-API ausgeführt werden, wird oben auf der Seite angezeigt. |
 | Ambari-REST-API | Verwenden Sie den Befehl `curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/STORM/components/STORM_UI_SERVER"`, um Informationen zu dem Knoten abzurufen, auf dem die Storm UI und die REST-API ausgeführt werden. Ersetzen Sie die beiden Instanzen von *CLUSTERNAME* durch den Namen des Clusters. Geben Sie bei entsprechender Aufforderung das Kennwort für das Benutzerkonto (Administrator) ein. In der Antwort enthält der Eintrag „host_name“ der JSON-Ausgabe den vollqualifizierten Domänennamen des Knotens. |
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Authentifizierung
 
 In Anforderungen an die REST-API muss die *Standardauthentifizierung* verwendet werden: Sie müssen also den Benutzernamen und das Kennwort des Administrators für den HDInsight-Cluster verwenden.
 

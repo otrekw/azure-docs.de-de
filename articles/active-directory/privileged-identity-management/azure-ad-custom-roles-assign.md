@@ -17,10 +17,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 75e004980ada23a616b57e3c7eb1afb241e09598
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92371646"
 ---
 # <a name="assign-an-azure-ad-custom-role-in-privileged-identity-management"></a>Zuweisen einer benutzerdefinierten Azure AD-Rolle in Privileged Identity Management
@@ -58,11 +58,11 @@ In Privileged Identity Management können Sie benutzerdefinierte Rollen verwalte
 
     ![Auswählen der berechtigten Rolle, die einem Benutzer zugewiesen werden soll](./media/azure-ad-custom-roles-assign/select-role.png)
 
-1. Wählen Sie die Rolle aus, die Sie zuweisen möchten, und klicken Sie dann auf **Auswählen** . Die Liste **Mitglied auswählen** wird geöffnet.
+1. Wählen Sie die Rolle aus, die Sie zuweisen möchten, und klicken Sie dann auf **Auswählen**. Die Liste **Mitglied auswählen** wird geöffnet.
 
     ![Auswählen des Benutzers, dem Sie die Rolle zuweisen](./media/azure-ad-custom-roles-assign/select-member.png)
 
-1. Wählen Sie einen Benutzer aus, dem Sie die Rolle zuweisen möchten, und klicken Sie dann auf **Auswählen** . Die Liste **Mitgliedschaftseinstellungen** wird geöffnet.
+1. Wählen Sie einen Benutzer aus, dem Sie die Rolle zuweisen möchten, und klicken Sie dann auf **Auswählen**. Die Liste **Mitgliedschaftseinstellungen** wird geöffnet.
 
     ![Festlegen des Rollenzuweisungstyps auf „berechtigt“ oder „aktiv“](./media/azure-ad-custom-roles-assign/membership-settings.png)
 
@@ -72,7 +72,7 @@ In Privileged Identity Management können Sie benutzerdefinierte Rollen verwalte
     - Bei **aktiven** Zuweisungen muss der zugewiesene Benutzer keine Aktion durchführen, um die Rolle verwenden zu können. Bei aktiven Benutzern sind die Berechtigungen der Rolle ständig zugewiesen.
 
 1. Wenn das Kontrollkästchen **Permanent** vorhanden und verfügbar ist (dies hängt von den Rolleneinstellungen ab), können Sie angeben, ob die Zuweisung dauerhaft ist. Aktivieren Sie das Kontrollkästchen, um die Zuweisung als „dauerhaft berechtigt“ oder „dauerhaft zugewiesen“ festzulegen. Deaktivieren Sie das Kontrollkästchen, um die Dauer einer Zuweisung anzugeben.
-1. Klicken Sie auf **Speichern** und dann auf **Hinzufügen** , um die neue Rollenzuweisung zu erstellen. Eine Benachrichtigung zum Status des Zuweisungsprozesses wird angezeigt.
+1. Klicken Sie auf **Speichern** und dann auf **Hinzufügen**, um die neue Rollenzuweisung zu erstellen. Eine Benachrichtigung zum Status des Zuweisungsprozesses wird angezeigt.
 
 Um die Rollenzuweisung zu überprüfen, wählen Sie in einer offenen Rolle **Zuweisungen** > **Zuweisen** aus, und überprüfen Sie, ob die Rollenzuweisung ordnungsgemäß als „berechtigt“ oder „aktiv“ identifiziert wird.
 

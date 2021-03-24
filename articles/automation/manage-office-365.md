@@ -5,10 +5,10 @@ services: automation
 ms.date: 11/05/2020
 ms.topic: conceptual
 ms.openlocfilehash: 70c8892969a3b13175c60a4e20e0cf9086112abe
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93398044"
 ---
 # <a name="manage-office-365-services"></a>Verwalten von Office 365-Diensten
@@ -43,7 +43,7 @@ Fügen Sie nun die installierten Module MSOnline und MSOnlineExt hinzu, um die F
 2. Wählen Sie Ihr Automation-Konto aus.
 3. Wählen Sie unter **Freigegebene Ressourcen** die Option **Modulkatalog** aus.
 4. Suchen Sie nach MSOnline.
-5. Wählen Sie das PowerShell-Modul `MSOnline` aus, und klicken Sie auf **Importieren** , um das Modul als Objekt zu importieren.
+5. Wählen Sie das PowerShell-Modul `MSOnline` aus, und klicken Sie auf **Importieren**, um das Modul als Objekt zu importieren.
 6. Wiederholen Sie die Schritte 4 und 5, um das `MSOnlineExt`-Modul zu suchen und zu importieren.
 
 ## <a name="create-a-credential-asset-optional"></a>Erstellen eines Anmeldeinformationsobjekts (optional)
@@ -98,9 +98,9 @@ Sie können Ihr Skript in einem Azure Automation-Runbook verwenden. Zu Demonstra
 2. Wählen Sie in Ihrem Automation-Konto unter **Prozessautomatisierung** die Option **Runbooks** aus.
 3. Wählen Sie das neue Runbook aus, und klicken Sie auf **Bearbeiten**.
 4. Kopieren Sie Ihr Skript, und fügen Sie es in den Text-Editor für das Runbook ein.
-5. Wählen Sie **OBJEKTE** aus, erweitern Sie dann **Anmeldeinformationen** , und überprüfen Sie, ob das Office 365-Anmeldeinformationsobjekt vorhanden ist.
+5. Wählen Sie **OBJEKTE** aus, erweitern Sie dann **Anmeldeinformationen**, und überprüfen Sie, ob das Office 365-Anmeldeinformationsobjekt vorhanden ist.
 6. Klicken Sie auf **Speichern**.
-7. Wählen Sie **Testbereich** aus, und klicken Sie dann auf **Starten** , um das Runbook zu testen. Siehe [Verwalten von Runbooks in Azure Automation](./manage-runbooks.md).
+7. Wählen Sie **Testbereich** aus, und klicken Sie dann auf **Starten**, um das Runbook zu testen. Siehe [Verwalten von Runbooks in Azure Automation](./manage-runbooks.md).
 8. Wenn die Tests fertig sind, beenden Sie den Testbereich.
 
 ## <a name="publish-and-schedule-the-runbook"></a>Veröffentlichen und Planen des Runbooks

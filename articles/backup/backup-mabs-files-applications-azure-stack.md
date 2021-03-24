@@ -4,10 +4,10 @@ description: Verwenden Sie Azure Backup, um Azure Stack-Dateien und -Anwendungen
 ms.topic: conceptual
 ms.date: 06/05/2018
 ms.openlocfilehash: cae95c10c510969cc0553a54a506789d6be427d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89180982"
 ---
 # <a name="back-up-files-and-applications-on-azure-stack"></a>Sichern von Dateien und Anwendungen in Azure Stack
@@ -24,7 +24,7 @@ In diesem Artikel wird nicht die Installation von Azure Backup Server in der Azu
 
 Um Azure Backup Server zum Schutz von Dateien auf virtuellen Azure Stack-Computern zu konfigurieren, öffnen Sie die Azure Backup Server-Konsole. Sie verwenden die Konsole, um Schutzgruppen zu konfigurieren und die Daten auf Ihren virtuellen Computern zu schützen.
 
-1. Wählen Sie in der Azure Backup Server-Konsole **Schutz** und dann auf der Symbolleiste **Neu** aus, um den**Assistenten zum Erstellen einer neuen Schutzgruppe zu** öffnen.
+1. Wählen Sie in der Azure Backup Server-Konsole **Schutz** und dann auf der Symbolleiste **Neu** aus, um den **Assistenten zum Erstellen einer neuen Schutzgruppe zu** öffnen.
 
    ![Konfigurieren des Schutzes in der Azure Backup Server-Konsole](./media/backup-mabs-files-applications-azure-stack/1-mabs-menu-create-protection-group.png)
 

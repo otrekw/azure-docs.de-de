@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 04/24/2020
 ms.author: b-juche
 ms.openlocfilehash: fcede16619e8488796adc6f4c60af30643c1aadf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "82160152"
 ---
 # <a name="benefits-of-using-azure-netapp-files-for-electronic-design-automation"></a>Vorteile der Verwendung von Azure NetApp Files für die elektronische Entwurfsautomatisierung
@@ -31,7 +31,7 @@ Die Tests umfassen drei Szenarien mit den folgenden Konfigurationen.
 
 |    Szenario    |    Volumes    |    Clients<br> SLES15 D16s_v3  |
 |----------------|---------------|--------------------------------|
-|    Eine         |    1          |    1                           |
+|    Einen         |    1          |    1                           |
 |    Zwei         |    6          |    24                          |
 |    drei       |    12         |    24                          |
 
@@ -43,7 +43,7 @@ Im zweiten und dritten Szenario werden die Grenzwerte eines einzelnen Azure NetA
 
 In der folgenden Tabelle werden die Ergebnisse der Testszenarien zusammengefasst.
 
-|    Szenario       |    E/A-Rate<br>  bei 2 ms     |    E/A-Rate<br>  an der Belastungsgrenze     |    Throughput<br>  bei 2 ms     |    Throughput<br>  an der Belastungsgrenze     |
+|    Szenario       |    E/A-Rate<br>  bei 2 ms     |    E/A-Rate<br>  an der Belastungsgrenze     |    Durchsatz<br>  bei 2 ms     |    Durchsatz<br>  an der Belastungsgrenze     |
 |-------------------|---------------------------|--------------------------------|-----------------------------|----------------------------------|
 |    1 Volume       |    39.601                 |    49.502                      |    692 MiB/s                 |    866 MiB/s                      |
 |    6 Volumes      |    255.613                |    317.000                     |    4\.577 MiB/s               |    5\.568 MiB/s                    |

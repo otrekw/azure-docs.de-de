@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: peterpr
 ms.openlocfilehash: 83d8c04765bf9aecc9029cdc8d12461231d191f2
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97795954"
 ---
 # <a name="manage-your-personal-application-preferences"></a>Verwalten Ihrer persönlichen Anwendungseinstellungen
@@ -39,4 +39,4 @@ Es wird ein dunkles und ein helles Design unterstützt. Das helle Design ist zwa
 Nachdem Sie nun erfahren haben, wie Sie Ihr Profil in Azure IoT Central verwalten, empfehlen wir Ihnen als nächsten Schritt Folgendes:
 
 > [!div class="nextstepaction"]
-> [Livechat ein-/ausschalten](howto-show-hide-chat.md)
+> [Ein-/Ausschalten des Livechats](howto-show-hide-chat.md)

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: surmb
 ms.openlocfilehash: 15f68e8cbca65e7b970944f7ca5ef1952140cc6b
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93397638"
 ---
 # <a name="application-gateway-listener-configuration"></a>Application Gateway-Listenerkonfiguration
@@ -20,7 +20,7 @@ ms.locfileid: "93397638"
 
 Ein Listener ist eine logische Entität, die mithilfe von Port, Protokoll, Host und IP-Adresse auf eingehende Verbindungsanforderungen prüft. Wenn Sie den Listener konfigurieren, müssen Sie Werte für diese eingeben, die den entsprechenden Werten in der eingehenden Anforderung auf dem Gateway entsprechen.
 
-Wenn Sie ein Application Gateway mithilfe des Azure-Portals erstellen, erstellen Sie außerdem einen Standardlistener durch Auswählen von Protokoll und Port für den Listener. Sie können wahlweise HTTP2-Unterstützung auf dem Listener aktivieren. Nach der Erstellung des Application Gateways können Sie die Einstellungen dieses Standardlisteners ( *appGatewayHttpListener* ) bearbeiten oder neue Listener erstellen.
+Wenn Sie ein Application Gateway mithilfe des Azure-Portals erstellen, erstellen Sie außerdem einen Standardlistener durch Auswählen von Protokoll und Port für den Listener. Sie können wahlweise HTTP2-Unterstützung auf dem Listener aktivieren. Nach der Erstellung des Application Gateways können Sie die Einstellungen dieses Standardlisteners (*appGatewayHttpListener*) bearbeiten oder neue Listener erstellen.
 
 ## <a name="listener-type"></a>Listenertyp
 
@@ -87,7 +87,7 @@ Wie Sie eine globale benutzerdefinierte Fehlerseite konfigurieren, erfahren Sie 
 
 ## <a name="tls-policy"></a>TLS-Richtlinie
 
-Sie können die TLS/SSL-Zertifikatverwaltung zentralisieren sowie den Ver- und Entschlüsselungsaufwand für eine Back-End-Serverfarm verringern. Diese zentralisierte TLS-Behandlung ermöglicht auch die Angabe einer zentralen TLS-Richtlinie, die auf Ihre Sicherheitsanforderungen abgestimmt ist. Sie können zwischen einer *standardmäßig vorhandenen* , *vordefinierten* oder *benutzerdefinierten* TLS-Richtlinie auswählen.
+Sie können die TLS/SSL-Zertifikatverwaltung zentralisieren sowie den Ver- und Entschlüsselungsaufwand für eine Back-End-Serverfarm verringern. Diese zentralisierte TLS-Behandlung ermöglicht auch die Angabe einer zentralen TLS-Richtlinie, die auf Ihre Sicherheitsanforderungen abgestimmt ist. Sie können zwischen einer *standardmäßig vorhandenen*, *vordefinierten* oder *benutzerdefinierten* TLS-Richtlinie auswählen.
 
 Sie konfigurieren die TLS-Richtlinie, um die TLS-Protokollversionen zu steuern. Sie können eine Application Gateway-Instanz so konfigurieren, dass es eine Mindestprotokollversion für TLS-Handshakes von TLS 1.0, TLS 1.1 und TLS 1.2 verwendet. Standardmäßig sind SSL 2.0 und 3.0 deaktiviert und nicht konfigurierbar. Weitere Informationen finden Sie unter [TLS-Richtlinienübersicht für Azure Application Gateway](./application-gateway-ssl-policy-overview.md).
 

@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: bb5561ced93c3f5a899c6e48fdab0f14e52914bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89291550"
 ---
 # <a name="filters"></a>Filter
@@ -28,7 +28,7 @@ Bei der Inhaltsbereitstellung für Ihre Kunden (Livestreaming von Ereignissen od
 
 Filter sind serverseitige Regeln, die Ihren Kunden Folgendes ermöglichen: 
 
-- Wiedergabe von einzelnen Abschnitten eines Videos (anstelle des gesamten Videos) Beispiel:
+- Wiedergabe von einzelnen Abschnitten eines Videos (anstelle des gesamten Videos) Zum Beispiel:
   - Reduzieren des Manifests, um einen Subclip eines Liveereignisses anzuzeigen („Filtern von Subclips“), oder
   - Kürzen des Starts eines Videos ("Kürzen eines Videos").
 - Ausschließliche Bereitstellung der angegebenen Wiedergaben und/oder Sprachspuren, die vom Gerät für die Inhaltswiedergabe unterstützt werden („Filtern der Wiedergabe“) 

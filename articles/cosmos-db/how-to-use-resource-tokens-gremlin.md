@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/06/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 22c048b748806404ccfa580e660552a1744f3781
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93361692"
 ---
 # <a name="use-azure-cosmos-db-resource-tokens-with-the-gremlin-sdk"></a>Verwenden von Azure Cosmos DB-Ressourcentoken mit dem Gremlin SDK
@@ -26,11 +26,11 @@ Das Apache TinkerPop Gremlin SDK enthält keine API zum Erstellen von Ressourcen
 
 Die Objektmodellhierarchie über Ressourcentoken ist in der folgenden Gliederung dargestellt:
 
-- **Azure Cosmos DB-Konto** : Entität der höchsten Ebene, der ein DNS zugeordnet ist (z. B. `contoso.gremlin.cosmos.azure.com`).
+- **Azure Cosmos DB-Konto**: Entität der höchsten Ebene, der ein DNS zugeordnet ist (z. B. `contoso.gremlin.cosmos.azure.com`).
   - **Azure Cosmos DB-Datenbank**
     - **Benutzer**
       - **Berechtigung**
-        - **Token** : Eine Eigenschaft des Permission-Objekts, die angibt, welche Aktionen zugelassen oder verweigert werden
+        - **Token**: Eine Eigenschaft des Permission-Objekts, die angibt, welche Aktionen zugelassen oder verweigert werden
 
 Ein Ressourcentoken verwendet das folgende Format: `"type=resource&ver=1&sig=<base64 string>;<base64 string>;"`. Diese Zeichenfolge ist für die Clients nicht transparent und muss unverändert verwendet werden.
 

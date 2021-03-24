@@ -12,12 +12,12 @@ ms.date: 01/28/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a8ff94acbd9ffd491bf628ae61ee87634a9c6dd6
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 41336d59d51685d5daf78a1809ce6c0df2cd6124
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102033621"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104781312"
 ---
 # <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>Verwalten von Azure AD B2C mit Microsoft Graph
 
@@ -140,7 +140,7 @@ Weitere Informationen zum Zugriff auf Azure AD B2C-Überwachungsprotokolle finde
 
 ## <a name="conditional-access"></a>Bedingter Zugriff
 
-- [Auflisten aller Richtlinien für bedingten Zugriff](/graph/api/resources/conditionalaccessroot-list-policies)
+- [Auflisten aller Richtlinien für bedingten Zugriff](/graph/api/conditionalaccessroot-list-policies?view=graph-rest-beta&tabs=http)
 - [Lesezugriffeigenschaften und Beziehungen einer Richtlinie für bedingten Zugriff](/graph/api/conditionalaccesspolicy-get)
 - [Erstellen einer neuen Richtlinie für bedingten Zugriff](/graph/api/resources/application)
 - [Aktualisieren einer Richtlinie für bedingten Zugriff](/graph/api/conditionalaccesspolicy-update)

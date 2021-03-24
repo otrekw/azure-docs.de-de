@@ -10,10 +10,10 @@ ms.date: 02/21/2020
 ms.author: chrande
 ms.custom: devx-track-dotnet
 ms.openlocfilehash: 1953f4a21df6f550320592fbe009834a7b573887
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93360529"
 ---
 # <a name="quickstart-build-a-net-framework-or-core-application-using-the-azure-cosmos-db-gremlin-api-account"></a>Schnellstart: Erstellen einer .NET Framework- oder Core-Anwendung mithilfe des Gremlin-API-Kontos für Azure Cosmos DB
@@ -107,15 +107,15 @@ Wechseln Sie nun zurück zum Azure-Portal, um die Informationen der Verbindungsz
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) zu Ihrem Graphdatenbankkonto. Auf der Registerkarte **Übersicht** werden zwei Endpunkte angezeigt: 
  
-   **.NET SDK-URI** : Dieser Wert wird verwendet, wenn Sie unter Verwendung der Bibliothek „Microsoft.Azure.Graphs“ eine Verbindung mit dem Graphkonto herstellen. 
+   **.NET SDK-URI**: Dieser Wert wird verwendet, wenn Sie unter Verwendung der Bibliothek „Microsoft.Azure.Graphs“ eine Verbindung mit dem Graphkonto herstellen. 
 
-   **Gremlin-Endpunkt** : Dieser Wert wird verwendet, wenn Sie unter Verwendung der Bibliothek „Gremlin.Net“ eine Verbindung mit dem Graphkonto herstellen.
+   **Gremlin-Endpunkt**: Dieser Wert wird verwendet, wenn Sie unter Verwendung der Bibliothek „Gremlin.Net“ eine Verbindung mit dem Graphkonto herstellen.
 
     :::image type="content" source="./media/create-graph-dotnet/endpoint.png" alt-text="Kopieren des Endpunkts":::
 
-   Kopieren Sie für dieses Beispiel den Wert für **Gremlin-Endpunkt** , und löschen Sie die Portnummer am Ende. Der URI sieht dann wie folgt aus: `https://<your cosmos db account name>.gremlin.cosmosdb.azure.com`. Der Endpunktwert sollte wie folgt aussehen: `testgraphacct.gremlin.cosmosdb.azure.com`
+   Kopieren Sie für dieses Beispiel den Wert für **Gremlin-Endpunkt**, und löschen Sie die Portnummer am Ende. Der URI sieht dann wie folgt aus: `https://<your cosmos db account name>.gremlin.cosmosdb.azure.com`. Der Endpunktwert sollte wie folgt aussehen: `testgraphacct.gremlin.cosmosdb.azure.com`
 
-1. Navigieren Sie als Nächstes zur Registerkarte **Schlüssel** , und kopieren Sie den Wert für **Primärschlüssel** aus dem Azure-Portal. 
+1. Navigieren Sie als Nächstes zur Registerkarte **Schlüssel**, und kopieren Sie den Wert für **Primärschlüssel** aus dem Azure-Portal. 
 
 1. Nachdem Sie den URI und den Primärschlüssel Ihres Kontos kopiert haben, können Sie diese Werte in einer neuen Umgebungsvariablen auf dem lokalen Computer speichern, auf dem die Anwendung ausgeführt wird. Öffnen Sie zum Festlegen der Umgebungsvariablen ein Eingabeaufforderungsfenster, und führen Sie den folgenden Befehl aus. Ersetzen Sie dabei <Your_Azure_Cosmos_account_URI> und <Your_Azure_Cosmos_account_PRIMARY_KEY> durch den URI bzw. durch den Primärschlüssel Ihres Azure Cosmos-Kontos.
 
@@ -124,7 +124,7 @@ Wechseln Sie nun zurück zum Azure-Portal, um die Informationen der Verbindungsz
    setx PrimaryKey "<Your_Azure_Cosmos_account_PRIMARY_KEY>"
    ```
 
-1. Öffnen Sie die Datei *Program.cs* , und aktualisieren Sie die Variablen „database“ und „container“ mit den weiter oben erstellten Namen für die Datenbank und den Container. (Der Containername ist zugleich auch der Diagrammname.)
+1. Öffnen Sie die Datei *Program.cs*, und aktualisieren Sie die Variablen „database“ und „container“ mit den weiter oben erstellten Namen für die Datenbank und den Container. (Der Containername ist zugleich auch der Diagrammname.)
 
     `private static string database = "your-database-name";` `private static string container = "your-container-or-graph-name";`
 
@@ -144,7 +144,7 @@ Sie können nun zum Daten-Explorer im Azure-Portal zurückkehren und die neuen G
 
 1. Im Daten-Explorer wird die neue Datenbank im Diagrammbereich angezeigt. Erweitern Sie den Datenbank- und den Containerknoten, und klicken Sie anschließend auf **Graph**.
 
-2. Klicken Sie auf die Schaltfläche **Filter anwenden** , um die Standardabfrage zum Anzeigen aller Scheitelpunkte im Diagramm zu verwenden. Die von der Beispiel-App generierten Daten werden im Graphen-Bereich angezeigt.
+2. Klicken Sie auf die Schaltfläche **Filter anwenden**, um die Standardabfrage zum Anzeigen aller Scheitelpunkte im Diagramm zu verwenden. Die von der Beispiel-App generierten Daten werden im Graphen-Bereich angezeigt.
 
     Sie können die Diagrammansicht vergrößern und verkleinern, den Anzeigebereich des Diagramms erweitern, zusätzliche Scheitelpunkte hinzufügen und Scheitelpunkte auf der Anzeigeoberfläche verschieben.
 

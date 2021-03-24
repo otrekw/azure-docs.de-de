@@ -15,10 +15,10 @@ ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4662e9fb537a93cb87c554e319256e2eca40d2e7
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92372428"
 ---
 # <a name="discovery-and-insights-preview-for-azure-ad-roles-formerly-security-wizard"></a>„Ermittlung und Erkenntnisse (Vorschau)“ für Azure AD-Rollen (früher Sicherheits-Assistent)
@@ -37,13 +37,13 @@ Verwenden Sie außerdem permanente Rollenzuweisungen, wenn ein Benutzer über ei
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
-1. Öffnen Sie **Azure AD Privileged Identity Management** .
+1. Öffnen Sie **Azure AD Privileged Identity Management**.
 
 1. Wählen Sie **Azure AD-Rollen** und dann **Ermittlung und Erkenntnisse (Vorschau)** aus. Beim Öffnen der Seite beginnt der Ermittlungsvorgang, relevante Rollenzuweisungen zu suchen.
 
     ![Azure AD-Rollen – Seite „Ermittlung und Erkenntnisse“ mit den drei Optionen](./media/pim-security-wizard/new-preview-link.png)
 
-1. Wählen Sie **Anzahl globaler Administratoren verringern** .
+1. Wählen Sie **Anzahl globaler Administratoren verringern**.
 
     ![Screenshot: „Ermittlung und Erkenntnisse (Vorschau)“ mit der ausgewählten Aktion „Anzahl globaler Administratoren verringern“](./media/pim-security-wizard/new-preview-page.png)
 

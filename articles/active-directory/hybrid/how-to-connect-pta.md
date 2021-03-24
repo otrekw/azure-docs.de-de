@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0b8f613cb7c75d9dd6af1fcf62f9d484398072c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89279464"
 ---
 # <a name="user-sign-in-with-azure-active-directory-pass-through-authentication"></a>Benutzeranmeldung mit der Azure Active Directory-Passthrough-Authentifizierung
@@ -47,7 +47,7 @@ Sie können die Passthrough-Authentifizierung mit dem Feature zum [nahtlosen ein
   - Bereitstellungen oder Netzwerkkonfigurationen müssen nicht mehr komplex und lokal sein.
   - Es muss nur ein einfacher Agent lokal installiert werden.
   - Es gibt keinen zusätzlichen Verwaltungsaufwand. Der Agent empfängt Verbesserungen und Fehlerbehebungen automatisch.
-- *Schützen*
+- *Sicher*
   - Lokale Kennwörter werden niemals in irgendeiner Form in der Cloud gespeichert.
   - Ihre Benutzerkonten werden durch die nahtlose Kompatibilität mit [Azure AD-Richtlinien für bedingten Zugriff](../conditional-access/overview.md), einschließlich der Multi-Factor Authentication (MFA), durch das [Blockieren der Legacyauthentifizierung](../conditional-access/concept-conditional-access-conditions.md) und durch das [Herausfiltern von Brute-Force-Kennwortangriffen](../authentication/howto-password-smart-lockout.md) geschützt.
   - Der Agent stellt innerhalb des Netzwerks nur ausgehende Verbindungen her. Daher muss der Agent nicht in einem Umkreisnetzwerk (auch als DMZ bezeichnet) installiert werden.
@@ -72,11 +72,11 @@ Sie können die Passthrough-Authentifizierung mit dem Feature zum [nahtlosen ein
 
 - [Schnellstart](how-to-connect-pta-quick-start.md): Einrichten und Ausführen der Passthrough-Authentifizierung mit Azure AD.
 - [Migrieren von AD FS zur Passthrough-Authentifizierung](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx?raw=true): Ein detaillierter Leitfaden zur Migration von AD FS (oder anderen Verbundtechnologien) zur Passthrough-Authentifizierung
-- [Smart Lockout](../authentication/howto-password-smart-lockout.md): Konfigurieren der Smart Lockout-Funktion für Ihren Mandanten zum Schutz der Benutzerkonten
+- [Smart Lockout](../authentication/howto-password-smart-lockout.md): Konfigurieren der Smart Lockout-Funktion für Ihren Mandanten zum Schutz der Benutzerkonten.
 - [Aktuelle Einschränkungen](how-to-connect-pta-current-limitations.md): Informationen zu den unterstützten und nicht unterstützten Szenarien
-- [Technische Einzelheiten](how-to-connect-pta-how-it-works.md): Funktionsweise dieses Features verstehen
-- [Häufig gestellte Fragen](how-to-connect-pta-faq.md): Antworten auf häufig gestellte Fragen
-- [Problembehandlung](tshoot-connect-pass-through-authentication.md): Beheben häufig auftretender Probleme mit dieser Funktion
-- [Ausführliche Informationen zur Sicherheit](how-to-connect-pta-security-deep-dive.md): Zusätzliche ausführliche technische Informationen zum Feature
-- [Nahtloses SSO mit Azure AD](how-to-connect-sso.md): Informationen zu diesem ergänzendem Feature
-- [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): Verfassen neuer Featureanforderungen
+- [Technische Einzelheiten](how-to-connect-pta-how-it-works.md) – Funktionsweise dieses Features verstehen
+- [Häufig gestellte Fragen:](how-to-connect-pta-faq.md)  Antworten auf häufig gestellte Fragen
+- [Problembehandlung](tshoot-connect-pass-through-authentication.md) – Beheben von häufig auftretenden Problemen mit diesem Feature
+- [Ausführliche Informationen zur Sicherheit](how-to-connect-pta-security-deep-dive.md): zusätzliche ausführliche technische Informationen zum Feature.
+- [Nahtlose SSO mit Azure AD](how-to-connect-sso.md): Informationen zu dieser Ergänzungsfunktion
+- [UserVoice:](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect)  Verfassen neuer Feature-Anforderungen

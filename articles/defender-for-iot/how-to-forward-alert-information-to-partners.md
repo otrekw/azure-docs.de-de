@@ -1,18 +1,14 @@
 ---
 title: Weiterleiten von Warnungsinformation
 description: Sie können Weiterleitungsregeln verwenden, um Warnungsinformation an Partnersysteme zu senden.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 12/02/2020
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: 528ea5a6b05dea59cb397bf32297f05b6cdc9be2
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: bc405f7d4837bf81d9cfcd859d562b7152cfc54b
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100522732"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104778796"
 ---
 # <a name="forward-alert-information"></a>Weiterleiten von Warnungsinformation
 
@@ -203,6 +199,6 @@ Der Administrator hat möglicherweise Warnungsausschlussregeln definiert. Diese 
 
 Das bedeutet, dass die von Ihnen definierten Weiterleitungsregeln möglicherweise aufgrund von Ausschlussregeln, die Ihr Administrator erstellt hat, ignoriert werden. Ausschlussregeln werden in der lokalen Verwaltungskonsole definiert.
 
-## <a name="next-steps"></a>Nächste Schritte
+## <a name="see-also"></a>Weitere Informationen
 
 [Beschleunigen des Warnungsworkflows](how-to-accelerate-alert-incident-response.md)

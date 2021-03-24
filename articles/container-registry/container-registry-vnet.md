@@ -3,12 +3,12 @@ title: Beschränken des Zugriffs mithilfe eines Dienstendpunkts
 description: Hier erfahren Sie, wie Sie den Zugriff auf eine Azure-Containerregistrierung mithilfe eines Dienstendpunkts in einem virtuellen Azure-Netzwerk beschränken. Der Zugriff auf Dienstendpunkte ist ein Feature der Dienstebene „Premium“.
 ms.topic: article
 ms.date: 05/04/2020
-ms.openlocfilehash: 5f9bc7c9a6c8f2061765510a6396611502fd4a2a
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: c49595ee4ee79aef264a87dd48bccd03f3d4f5a5
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93026223"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104773894"
 ---
 # <a name="restrict-access-to-a-container-registry-using-a-service-endpoint-in-an-azure-virtual-network"></a>Beschränken des Zugriffs auf eine Containerregistrierung mithilfe eines Dienstendpunkts in einem virtuellen Azure-Netzwerk
 
@@ -26,7 +26,6 @@ Ein Endpunkt für den Registrierungsdienst kann im Tarif **Premium** des Contain
 * Momentan ist für Azure Container Registry keine Weiterentwicklung von Dienstendpunkten geplant. Es wird empfohlen, stattdessen [private Endpunkte](container-registry-private-link.md) zu verwenden.
 * Dienstendpunkte für eine Registrierung können nicht über das Azure-Portal konfiguriert werden.
 * Als Host für den Zugriff auf eine Containerregistrierung mit einem Dienstendpunkt kann nur ein [Azure Kubernetes Service](../aks/intro-kubernetes.md)-Cluster oder ein [virtueller Azure-Computer](../virtual-machines/linux/overview.md) verwendet werden. *Andere Azure-Dienste (einschließlich Azure Container Instances) werden nicht unterstützt.*
-* Pro Registrierung werden maximal 100 Netzwerkzugriffsregeln unterstützt.
 * Dienstendpunkte für Azure Container Registry werden in der Azure US Government-Cloud oder in der Azure China-Cloud nicht unterstützt.
 
 [!INCLUDE [container-registry-scanning-limitation](../../includes/container-registry-scanning-limitation.md)]
@@ -72,7 +71,7 @@ Ausgabe:
 ]
 ```
 
-Verwenden Sie den Befehl [az network vnet subnet update][az-network-vnet-subnet-update], um Ihrem Subnetz einen **Microsoft.ContainerRegistry** -Dienstendpunkt hinzuzufügen. Ersetzen Sie im folgenden Befehl die Werte durch die Namen Ihres virtuellen Netzwerks und Ihres Subnetzes:
+Verwenden Sie den Befehl [az network vnet subnet update][az-network-vnet-subnet-update], um Ihrem Subnetz einen **Microsoft.ContainerRegistry**-Dienstendpunkt hinzuzufügen. Ersetzen Sie im folgenden Befehl die Werte durch die Namen Ihres virtuellen Netzwerks und Ihres Subnetzes:
 
 ```azurecli
 az network vnet subnet update \

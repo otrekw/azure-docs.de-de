@@ -14,10 +14,10 @@ ms.workload: tbd
 ms.date: 9/20/2017
 ms.author: raiye
 ms.openlocfilehash: fbe9b3379799fe3cf0a56d921ab257bc87606ca9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "68945451"
 ---
 # <a name="azure-guest-os-supportability-and-retirement-policy"></a>Unterstützungs- und Deaktivierungsrichtlinie für Azure-Gastbetriebssysteme
@@ -27,7 +27,7 @@ Microsoft verfügt über eine veröffentlichte [Unterstützungsrichtlinie für d
 
 Die Richtlinie lautet:
 
-1. Microsoft unterstützt **mindestens die beiden neuesten Gastbetriebssystemfamilien**. Wenn eine Familie deaktiviert wird, haben die Kunden ab dem offiziellen Deaktivierungsdatum 12 Monate Zeit, um auf eine neuere unterstützte Gastbetriebssystemfamilie zu aktualisieren.
+1. Microsoft unterstützt **mindestens die letzten beiden Familien des Gastbetriebssystems**. Wenn eine Familie deaktiviert wird, haben die Kunden ab dem offiziellen Deaktivierungsdatum 12 Monate Zeit, um auf eine neuere unterstützte Gastbetriebssystemfamilie zu aktualisieren.
 2. Microsoft unterstützt **mindestens die beiden neuesten Versionen der unterstützten Gastbetriebssystemfamilien**.
 3. Microsoft unterstützt **mindestens die beiden neuesten Versionen des Azure SDK**. Wenn eine SDK-Version deaktiviert wird, haben die Kunden ab dem offiziellen Deaktivierungsdatum 12 Monate Zeit, um auf eine neuere Version zu aktualisieren.
 

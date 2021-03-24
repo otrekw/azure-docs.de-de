@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 68251270b6273f5a07391138e5c7210f1c46ba5a
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93420528"
 ---
 # <a name="azure-ad-connect-when-you-have-an-existing-tenant"></a>Azure AD Connect: Wenn Sie bereits über einen Mandanten verfügen
@@ -34,7 +34,7 @@ Sie können einige Benutzer lokal und andere in der Cloud verwalten. Ein häufig
 Wenn Sie damit begonnen haben, Benutzer in Azure AD zu verwalten, die sich auch im lokalen Azure Directory befinden, und später Connect verwenden möchten, sind einige weitere Aspekte zu berücksichtigen.
 
 ## <a name="sync-with-existing-users-in-azure-ad"></a>Synchronisieren mit vorhandenen Benutzern in Azure AD
-Wenn Sie Azure AD Connect installieren und mit der Synchronisierung beginnen, überprüft der Azure AD-Synchronisierungsdienst jedes neue Objekt (in Azure AD) und versucht, ein entsprechendes vorhandenes Objekt zu finden. Für diesen Prozess werden drei Attribute verwendet: **userPrincipalName** , **proxyAddresses** und **sourceAnchor**/**immutableID**. Eine Übereinstimmung bei **userPrincipalName** und **proxyAddresses** wird als **Soft Match** bezeichnet. Eine Übereinstimmung bei **sourceAnchor** wird als **Hard Match** bezeichnet. Für das Attribut **proxyAddresses** wird zur Auswertung nur der Wert mit **SMTP:** verwendet – dies ist die primäre E-Mail-Adresse.
+Wenn Sie Azure AD Connect installieren und mit der Synchronisierung beginnen, überprüft der Azure AD-Synchronisierungsdienst jedes neue Objekt (in Azure AD) und versucht, ein entsprechendes vorhandenes Objekt zu finden. Für diesen Prozess werden drei Attribute verwendet: **userPrincipalName**, **proxyAddresses** und **sourceAnchor**/**immutableID**. Eine Übereinstimmung bei **userPrincipalName** und **proxyAddresses** wird als **Soft Match** bezeichnet. Eine Übereinstimmung bei **sourceAnchor** wird als **Hard Match** bezeichnet. Für das Attribut **proxyAddresses** wird zur Auswertung nur der Wert mit **SMTP:** verwendet – dies ist die primäre E-Mail-Adresse.
 
 Die Übereinstimmung wird nur für neue, aus Connect eingehende Objekte ausgewertet. Wenn Sie ein vorhandenes Objekt so ändern, dass es einem dieser Attribute entspricht, wird stattdessen ein Fehler angezeigt.
 

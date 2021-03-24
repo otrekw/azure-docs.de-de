@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3ac799203cade3a907acbe28dee3a8023891db2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 119540738ac2703afd79891d9bf8a4a9ff0c7472
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93077641"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952761"
 ---
 # <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>Beheben von Problemen mit dem What If-Tool beim bedingten Zugriff
 
@@ -24,11 +24,13 @@ ms.locfileid: "93077641"
 
 In diesem Artikel wird erläutert, wie Sie dieses Tool zum Testen Ihrer Richtlinien für den bedingten Zugriff verwenden können.
 
+> [!VIDEO https://www.youtube.com/embed/M_iQVM-3C3E]
+
 ## <a name="what-it-is"></a>Funktionsbeschreibung
 
 Mit dem **Was-wäre-wenn-Tool für den bedingten Zugriff** erhalten Sie Einblicke in die Auswirkungen Ihrer Richtlinien für den bedingten Zugriff auf Ihre Umgebung. Anstelle von Tests Ihrer Richtlinien mithilfe mehrerer manueller Anmeldevorgänge ermöglicht dieses Tool die Auswertung simulierter Benutzeranmeldungen. Die Simulation schätzt die Auswirkungen dieser Anmeldungen auf Ihre Richtlinien ab und generiert einen Simulationsbericht. Der Bericht listet nicht nur die angewendeten Richtlinien für den bedingten Zugriff auf, sondern auch [klassische Richtlinien](policy-migration.md#classic-policies) (sofern vorhanden).    
 
-Das **Was-wäre-wenn** -Tool stellt auch eine Möglichkeit dar, die Richtlinien zu ermitteln, die für einen bestimmten Benutzer gelten. Sie können diese Informationen z.B. nutzen, um ein Problem zu beheben.    
+Das **Was-wäre-wenn**-Tool stellt auch eine Möglichkeit dar, die Richtlinien zu ermitteln, die für einen bestimmten Benutzer gelten. Sie können diese Informationen z.B. nutzen, um ein Problem zu beheben.    
 
 ## <a name="how-it-works"></a>Funktionsweise
 
@@ -79,8 +81,8 @@ Diese Einstellung imitiert die [Geräteplattformbedingung](concept-conditional-a
 Diese Einstellung imitiert die [Client-Apps-Bedingung](concept-conditional-access-conditions.md#client-apps).
 Standardmäßig bewirkt diese Einstellung eine Auswertung aller Richtlinien, bei denen **Browser** und/oder **Mobile Apps und Desktopclients** aktiviert ist. Damit werden außerdem Richtlinien erkannt, die **Exchange ActiveSync (EAS)** erzwingen. Sie können diese Einstellung eingrenzen, indem Sie Folgendes auswählen:
 
-- **Browser** , um alle Richtlinien auszuwerten, für die mindestens **Browser** ausgewählt wurde. 
-- **Mobile Apps und Desktopclients** , um alle Richtlinien auszuwerten, für die mindestens **Mobile Apps und Desktopclients** ausgewählt wurde. 
+- **Browser**, um alle Richtlinien auszuwerten, für die mindestens **Browser** ausgewählt wurde. 
+- **Mobile Apps und Desktopclients**, um alle Richtlinien auszuwerten, für die mindestens **Mobile Apps und Desktopclients** ausgewählt wurde. 
 
 ### <a name="sign-in-risk"></a>Anmelderisiko
 

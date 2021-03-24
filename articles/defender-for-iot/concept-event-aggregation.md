@@ -1,21 +1,16 @@
 ---
-title: Ereignisaggregation
-titleSuffix: Azure Defender for IoT
+title: Ereignisaggregation (Vorschau)
 description: Defender für IoT-Sicherheits-Agents erfassen Daten und Systemereignisse von Ihrem lokalen Gerät und senden die Daten zur Verarbeitung und Analyse an die Azure-Cloud.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 1/20/2021
 ms.topic: conceptual
-ms.service: azure
-ms.openlocfilehash: 53811c20330d96b279eeb24e1aa90248b60fcb32
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: c0280e97549009a1e4911c072a7a8ec052684b4e
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102120044"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104779323"
 ---
-# <a name="event-aggregation"></a>Ereignisaggregation 
+# <a name="event-aggregation-preview"></a>Ereignisaggregation (Vorschau)
 
 Defender für IoT-Sicherheits-Agents erfassen Daten und Systemereignisse von Ihrem lokalen Gerät und senden die Daten zur Verarbeitung und Analyse an die Azure-Cloud. Der Defender für IoT-Micro-Agent sammelt viele Arten von Geräteereignissen, einschließlich neuer Prozess- und Verbindungsereignisse. Die neuen Prozess- und Verbindungsereignisse können auf einem Gerät innerhalb einer Sekunde vielfach auftreten. Diese Fähigkeit ist für eine umfassende Sicherheit wichtig. Die Anzahl der von den Sicherheits-Agents gesendeten Nachrichten kann jedoch schnell Ihre IoT Hub-Kontingente und Kostenlimits erreichen oder überschreiten. Diese Ereignisse enthalten allerdings äußerst wertvolle Sicherheitsinformationen, die für den Schutz Ihres Geräts von entscheidender Bedeutung sind. 
 

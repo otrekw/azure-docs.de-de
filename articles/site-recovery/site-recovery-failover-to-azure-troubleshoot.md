@@ -10,10 +10,10 @@ ms.workload: storage-backup-recovery
 ms.date: 01/08/2020
 ms.author: mayg
 ms.openlocfilehash: d2a0444483c382da7c54accf7dca49d097671771
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92371986"
 ---
 # <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>Beheben von Fehlern beim Ausführen eines Failovers einer VMware-VM oder eines physischen Computers nach Azure
@@ -84,12 +84,12 @@ Ausführliche Anweisungen zur Behandlung von SSH-Problemen finden Sie in der Dok
 
 Wenn die Schaltfläche **Verbinden** auf dem fehlerhaften virtuellen Computer abgeblendet ist und Sie nicht über ExpressRoute oder Site-to-Site-VPN mit Azure verbunden sind, gehen Sie wie folgt vor:
 
-1. Navigieren Sie zu **VM** > **Netzwerk** , und klicken Sie auf den Namen der jeweiligen Netzwerkschnittstelle.  ![Screenshot der Netzwerkseite für einen virtuellen Computer mit dem ausgewählten Namen der Netzwerkschnittstelle](media/site-recovery-failover-to-azure-troubleshoot/network-interface.PNG)
-2. Navigieren Sie zu **IP-Konfigurationen** , und klicken Sie dann auf das Namensfeld der gewünschten IP-Konfiguration. ![Screenshot zeigt die Seite „IP-Konfigurationen“ für die Netzwerkschnittstelle mit dem ausgewählten Namen der IP-Konfiguration](media/site-recovery-failover-to-azure-troubleshoot/IpConfigurations.png)
-3. Um die öffentliche IP-Adresse zu aktivieren, klicken Sie auf **Aktivieren** . ![Aktivieren der IP-Adresse](media/site-recovery-failover-to-azure-troubleshoot/Enable-Public-IP.png)
-4. Klicken Sie auf **Erforderliche Einstellungen konfigurieren** > **Neue erstellen** . ![Neu erstellen](media/site-recovery-failover-to-azure-troubleshoot/Create-New-Public-IP.png)
-5. Geben Sie den Namen der öffentliche Adresse ein, wählen Sie die Standardoptionen für **SKU** und **Zuweisung** , und klicken Sie dann auf **OK** .
-6. Um die Änderungen nun zu speichern, klicken Sie auf **Speichern** .
+1. Navigieren Sie zu **VM** > **Netzwerk**, und klicken Sie auf den Namen der jeweiligen Netzwerkschnittstelle.  ![Screenshot der Netzwerkseite für einen virtuellen Computer mit dem ausgewählten Namen der Netzwerkschnittstelle](media/site-recovery-failover-to-azure-troubleshoot/network-interface.PNG)
+2. Navigieren Sie zu **IP-Konfigurationen**, und klicken Sie dann auf das Namensfeld der gewünschten IP-Konfiguration. ![Screenshot zeigt die Seite „IP-Konfigurationen“ für die Netzwerkschnittstelle mit dem ausgewählten Namen der IP-Konfiguration](media/site-recovery-failover-to-azure-troubleshoot/IpConfigurations.png)
+3. Um die öffentliche IP-Adresse zu aktivieren, klicken Sie auf **Aktivieren**. ![Aktivieren der IP-Adresse](media/site-recovery-failover-to-azure-troubleshoot/Enable-Public-IP.png)
+4. Klicken Sie auf **Erforderliche Einstellungen konfigurieren** > **Neue erstellen**. ![Neu erstellen](media/site-recovery-failover-to-azure-troubleshoot/Create-New-Public-IP.png)
+5. Geben Sie den Namen der öffentliche Adresse ein, wählen Sie die Standardoptionen für **SKU** und **Zuweisung**, und klicken Sie dann auf **OK**.
+6. Um die Änderungen nun zu speichern, klicken Sie auf **Speichern**.
 7. Schließen Sie die Bereiche, und navigieren Sie zum Abschnitt **Übersicht** des virtuellen Computers, mit dem per RDP eine Verbindung hergestellt werden soll.
 
 ## <a name="unable-to-connectrdpssh---vm-connect-button-available"></a>Verbindung nicht möglich/RDP/SSH – Schaltfläche zum Verbinden des virtuellen Computers verfügbar

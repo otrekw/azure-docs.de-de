@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.date: 10/20/2020
 ms.author: rohink
 ms.openlocfilehash: ee6dde6b34cccd415f9bf2052f65dcbe940715c1
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92424393"
 ---
 # <a name="quickstart-create-an-azure-private-dns-zone-using-azure-powershell"></a>Schnellstart: Erstellen einer privaten Azure DNS-Zone mithilfe von Azure PowerShell
@@ -108,7 +108,7 @@ Dies nimmt einige Minuten in Anspruch.
 
 ## <a name="create-an-additional-dns-record"></a>Erstellen eines zusätzlichen DNS-Eintrags
 
-Sie erstellen Ressourceneintragssätze mit dem Cmdlet `New-AzPrivateDnsRecordSet`. Im folgenden Beispiel wird ein Eintrag mit dem relativen Namen **db** in der DNS-Zone **private.contoso.com** in der Ressourcengruppe **MyAzureResourceGroup** erstellt. Der vollqualifizierte Name des Ressourceneintragssatzes lautet **db.private.contoso.com** . Der Eintragstyp ist „A“, die IP-Adresse lautet 10.2.0.4, und die Gültigkeitsdauer beträgt 3.600 Sekunden.
+Sie erstellen Ressourceneintragssätze mit dem Cmdlet `New-AzPrivateDnsRecordSet`. Im folgenden Beispiel wird ein Eintrag mit dem relativen Namen **db** in der DNS-Zone **private.contoso.com** in der Ressourcengruppe **MyAzureResourceGroup** erstellt. Der vollqualifizierte Name des Ressourceneintragssatzes lautet **db.private.contoso.com**. Der Eintragstyp ist „A“, die IP-Adresse lautet 10.2.0.4, und die Gültigkeitsdauer beträgt 3.600 Sekunden.
 
 ```azurepowershell
 New-AzPrivateDnsRecordSet -Name db -RecordType A -ZoneName private.contoso.com `
@@ -167,7 +167,7 @@ Wiederholen Sie den Schritt für „myVM02“.
    PS C:\>
    ```
 
-2. Pingen Sie jetzt den Namen **db** , den Sie zuvor erstellt haben:
+2. Pingen Sie jetzt den Namen **db**, den Sie zuvor erstellt haben:
 
    ```
    ping db.private.contoso.com
@@ -193,7 +193,7 @@ Wiederholen Sie den Schritt für „myVM02“.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Löschen Sie die Ressourcengruppe **MyAzureResourceGroup** , um die in diesem Artikel erstellten Ressourcen zu löschen, falls sie nicht mehr benötigt werden.
+Löschen Sie die Ressourcengruppe **MyAzureResourceGroup**, um die in diesem Artikel erstellten Ressourcen zu löschen, falls sie nicht mehr benötigt werden.
 
 ```azurepowershell
 Remove-AzResourceGroup -Name MyAzureResourceGroup
