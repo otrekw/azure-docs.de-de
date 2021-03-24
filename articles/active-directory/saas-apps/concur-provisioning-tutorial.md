@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 01/26/2018
 ms.author: jeedes
 ms.openlocfilehash: edb21287b30f8ba77d6312ec6b456e20aa260598
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94358210"
 ---
 # <a name="tutorial-configure-concur-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Concur für die automatische Benutzerbereitstellung
@@ -70,7 +70,7 @@ Aus den folgenden Gründen sollte diese Aktion nicht mit dem Profil ausgeführt 
 
 **Um die Benutzerbereitstellung zu konfigurieren, führen Sie die folgenden Schritte durch:**
 
-1. Melden Sie sich bei Ihrem **Concur** -Mandanten an.
+1. Melden Sie sich bei Ihrem **Concur**-Mandanten an.
 
 2. Klicken Sie im Menü **Verwaltung** auf **Webdienste**.
    
@@ -84,13 +84,13 @@ Aus den folgenden Gründen sollte diese Aktion nicht mit dem Profil ausgeführt 
    
     ![Microsoft Azure Active Directory](./media/concur-provisioning-tutorial/ic721731.png "Microsoft Azure Active Directory")
 
-5. Klicken Sie auf **Ja** , um das Dialogfeld **Aktion bestätigen** zu schließen.
+5. Klicken Sie auf **Ja**, um das Dialogfeld **Aktion bestätigen** zu schließen.
    
     ![Aktion bestätigen](./media/concur-provisioning-tutorial/ic721732.png "Aktion bestätigen")
 
 6. Wechseln Sie im [Azure-Portal](https://portal.azure.com) zum Abschnitt **Azure Active Directory > Unternehmens-Apps > Alle Anwendungen**.
 
-7. Suchen Sie über das Suchfeld nach Ihrer Concur-Instanz, wenn Sie Concur bereits für einmaliges Anmelden konfiguriert haben. Wählen Sie andernfalls **Hinzufügen** , und suchen Sie im Anwendungskatalog nach **Concur**. Wählen Sie „Concur“ in den Suchergebnissen aus, und fügen Sie es Ihrer Anwendungsliste hinzu.
+7. Suchen Sie über das Suchfeld nach Ihrer Concur-Instanz, wenn Sie Concur bereits für einmaliges Anmelden konfiguriert haben. Wählen Sie andernfalls **Hinzufügen**, und suchen Sie im Anwendungskatalog nach **Concur**. Wählen Sie „Concur“ in den Suchergebnissen aus, und fügen Sie es Ihrer Anwendungsliste hinzu.
 
 8. Wählen Sie Ihre Concur-Instanz aus, und wählen Sie dann die Registerkarte **Bereitstellung**.
 
@@ -100,7 +100,7 @@ Aus den folgenden Gründen sollte diese Aktion nicht mit dem Profil ausgeführt 
 
 10. Geben Sie im Abschnitt **Administratoranmeldeinformationen** den **Benutzernamen** und das **Kennwort** Ihres Concur-Administrators ein.
 
-11. Klicken Sie im Azure-Portal auf **Verbindung testen** , um sicherzustellen, dass Azure AD eine Verbindung mit Ihrer Concur-App herstellen kann. Wenn die Verbindung nicht hergestellt werden kann, sollten Sie sicherstellen, dass Ihr Concur-Konto über Teamadministratorberechtigungen verfügt.
+11. Klicken Sie im Azure-Portal auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Ihrer Concur-App herstellen kann. Wenn die Verbindung nicht hergestellt werden kann, sollten Sie sicherstellen, dass Ihr Concur-Konto über Teamadministratorberechtigungen verfügt.
 
 12. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder einer Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen.
 

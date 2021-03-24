@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 10/21/2019
 ms.author: mayg
 ms.openlocfilehash: f230445ecdb046c2b631e89567df71e1d09c3234
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95999228"
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>Analysieren des Azure Site Recovery-Bereitstellungsplaner-Berichts
@@ -25,13 +25,13 @@ Das Arbeitsblatt „On-premises Summary“ (Lokale Zusammenfassung) enthält ein
 
 **Start date** (Startdatum) und **End date** (Enddatum): Das Start- und Enddatum der Profilerstellungsdaten, die bei der Berichterstellung berücksichtigt werden. Das Startdatum ist standardmäßig das Datum, an dem die Profilerstellung beginnt, und das Enddatum ist das Datum, an dem die Profilerstellung beendet wird. Bei diesen Informationen kann es sich um die Werte von „StartDate“ und „EndDate“ handeln, wenn der Bericht mit diesen Parametern erstellt wird.
 
-**Total number of profiling days** (Gesamtzahl von Profilerstellungstagen): Die gesamte Anzahl von Tagen der Profilerstellung zwischen dem Start- und Enddatum, für die der Bericht erstellt wird.
+**Total number of profiling days** (Gesamtanzahl von Profilerstellungstagen): Die gesamte Anzahl von Tagen der Profilerstellung zwischen dem Start- und dem Enddatum, für die der Bericht erstellt wird.
 
 **Number of compatible virtual machines** (Anzahl von kompatiblen virtuellen Computern): Die Gesamtzahl von kompatiblen VMs, für die die erforderliche Netzwerkbandbreite, die erforderliche Anzahl von Speicherkonten und die Azure-Kerne berechnet werden.
 
 **Total number of disks across all compatible virtual machines** (Gesamtzahl von Datenträgern für alle kompatiblen virtuellen Computer): Die Gesamtzahl von Datenträgern auf allen kompatiblen VMs.
 
-**Average number of disks per compatible virtual machine** (Durchschnittliche Anzahl von Datenträgern pro kompatiblem virtuellem Computer): Die durchschnittliche Anzahl von Datenträgern, die über alle kompatiblen VMs hinweg berechnet wird.
+**Average number of disks per compatible virtual machine** (Durchschnittliche Anzahl von Datenträgern pro kompatiblem virtuellem Computer): Durchschnittliche Anzahl von Datenträgern, die über alle kompatiblen VMs hinweg berechnet wird.
 
 **Average disk size (GB)** (Durchschnittliche Datenträgergröße (GB)): Durchschnittliche Datenträgergröße, die über alle kompatiblen VMs hinweg berechnet wird.
 
@@ -39,7 +39,7 @@ Das Arbeitsblatt „On-premises Summary“ (Lokale Zusammenfassung) enthält ein
 
 **Desired bandwidth (Mbps)** (Gewünschte Bandbreite (MBit/s)): Der Wert, den Sie für den Parameter „Bandwidth“ zum Zeitpunkt der Berichterstellung übergeben haben, um den erreichbaren RPO-Wert (Recovery Point Objective) zu schätzen.
 
-**Observed typical data churn per day (GB)** (Beobachtete typische Datenänderungsrate pro Tag (GB)): Durchschnittliche Datenänderungsrate über alle Tage der Profilerstellung hinweg.
+**Observed typical data churn per day (GB)** (Beobachtete typische Datenänderungsrate pro Tag (GB)): Die durchschnittliche, über alle Tage der Profilerstellung hinweg beobachtete Datenänderungsrate.
 
 ## <a name="recommendations"></a>Empfehlungen 
 Die Tabelle „Recommendations“ (Empfehlungen) des Berichts für „Hyper-V zu Azure“ enthält je nach ausgewähltem gewünschtem RPO-Wert die folgenden Details:
@@ -58,13 +58,13 @@ Die Tabelle „Recommendations“ (Empfehlungen) des Berichts für „Hyper-V zu
 ### <a name="profiling-overview"></a>Übersicht über die Profilerstellung
 ![Übersicht über die Profilerstellung](media/hyper-v-deployment-planner-analyze-report/profiling-overview-h2a.png)
 
-**Total Profiled Virtual Machines** (VMs mit Profilerstellung gesamt): Die Gesamtzahl der VMs, für die Profilerstellungsdaten verfügbar sind. Wenn „VMListFile“ Namen von VMs enthält, für die keine Profile erstellt wurden, werden diese VMs in der Berichterstellung nicht berücksichtigt und aus der Gesamtzahl von VMs für die Profilerstellung ausgeschlossen.
+**Total Profiled Virtual Machines** (VMs mit Profilerstellung insgesamt): Die Gesamtanzahl der VMs, deren Profilerstellungsdaten verfügbar sind. Wenn „VMListFile“ Namen von VMs enthält, für die keine Profile erstellt wurden, werden diese VMs in der Berichterstellung nicht berücksichtigt und aus der Gesamtzahl von VMs für die Profilerstellung ausgeschlossen.
 
 **Compatible Virtual Machines** (Kompatible virtuelle Computer): Die Anzahl von VMs, die mit Azure Site Recovery in Azure geschützt werden können. Dies ist die Gesamtzahl von kompatiblen VMs, für die die erforderliche Netzwerkbandbreite, die Anzahl von Speicherkonten und die Anzahl von Azure-Kernen berechnet werden. Die Details der einzelnen kompatiblen VMs sind im Abschnitt „Kompatible VMs“ enthalten.
 
-**Incompatible Virtual Machines** (Inkompatible virtuelle Computer): Die Anzahl von VMs, für die Profile erstellt wurden, die für den Schutz mit Site Recovery inkompatibel sind. Die Gründe für die Inkompatibilität sind im Abschnitt „Inkompatible VMs“ beschrieben. Wenn „VMListFile“ Namen von VMs enthält, für die keine Profile erstellt wurden, werden diese VMs aus der Anzahl von inkompatiblen VMs ausgeschlossen. Diese VMs werden unten im Abschnitt „Incompatible VMs“ (Inkompatible VMs) unter „Data not found“ (Daten nicht gefunden) aufgeführt.
+**Incompatible Virtual Machines** (Inkompatible virtuelle Computer): Die Anzahl von VMs, für die Profile erstellt wurden und die mit dem Schutz mit Site Recovery inkompatibel sind. Die Gründe für die Inkompatibilität sind im Abschnitt „Inkompatible VMs“ beschrieben. Wenn „VMListFile“ Namen von VMs enthält, für die keine Profile erstellt wurden, werden diese VMs aus der Anzahl von inkompatiblen VMs ausgeschlossen. Diese VMs werden unten im Abschnitt „Incompatible VMs“ (Inkompatible VMs) unter „Data not found“ (Daten nicht gefunden) aufgeführt.
 
-**Desired RPO** (Gewünschter RPO-Wert): Der gewünschte RPO-Wert (Recovery Point Objective) in Minuten. Der Bericht wird für drei RPO-Werte erstellt: 15 (Standard), 30 und 60 Minuten. Die Bandbreitenempfehlung im Bericht wird basierend auf Ihrer Auswahl in der Dropdownliste **Desired RPO** (Gewünschter RPO-Wert) oben rechts in der Tabelle geändert. Wenn Sie den Bericht mit dem Parameter „-DesiredRPO“ und einem benutzerdefinierten Wert erstellt haben, wird dieser benutzerdefinierte Wert in der Dropdownliste **Desired RPO** (Gewünschter RPO-Wert) als Standardwert angezeigt.
+**Desired RPO** (Gewünschter RPO-Wert): Ihr gewünschter RPO-Wert (Recovery Point Objective) in Minuten. Der Bericht wird für drei RPO-Werte erstellt: 15 (Standard), 30 und 60 Minuten. Die Bandbreitenempfehlung im Bericht wird basierend auf Ihrer Auswahl in der Dropdownliste **Desired RPO** (Gewünschter RPO-Wert) oben rechts in der Tabelle geändert. Wenn Sie den Bericht mit dem Parameter „-DesiredRPO“ und einem benutzerdefinierten Wert erstellt haben, wird dieser benutzerdefinierte Wert in der Dropdownliste **Desired RPO** (Gewünschter RPO-Wert) als Standardwert angezeigt.
 
 ### <a name="required-network-bandwidth-mbps"></a>Erforderliche Netzwerkbandbreite (MBit/s)
 ![Erforderliche Netzwerkbandbreite](media/hyper-v-deployment-planner-analyze-report/required-network-bandwidth-h2a.png)
@@ -275,7 +275,7 @@ Die folgende Tabelle enthält die Site Recovery-Grenzwerte. Diese Grenzwerte bas
 ---|---|---|---
 Standardspeicher | 8 KB | 2 MB/s pro virtuellem Computer | 168 GB pro virtuellem Computer
 Storage Premium | 8 KB  | 5 MB/s pro virtuellem Computer | 421 GB pro virtuellem Computer
-Storage Premium | 16 KB oder höher| 20 MB/s pro virtuellem Computer | 1\.684 GB pro virtuellem Computer
+Storage Premium | 16 KB oder höher| 20 MB/s pro virtuellem Computer | 1.684 GB pro virtuellem Computer
 
 Diese Grenzwerte sind Durchschnittswerte, bei denen eine E/A-Überlappung von 30% angenommen wird. Site Recovery kann einen höheren Durchsatz basierend auf dem Überlappungsverhältnis, höheren Schreibgrößen und dem tatsächlichen Workload-E/A-Verhalten verarbeiten. Für die obigen Zahlen wurde ein typischer Backlog von ca. fünf Minuten vorausgesetzt. Dies bedeutet, dass die Daten nach dem Hochladen verarbeitet werden und innerhalb von fünf Minuten ein Wiederherstellungspunkt erstellt wird.
 

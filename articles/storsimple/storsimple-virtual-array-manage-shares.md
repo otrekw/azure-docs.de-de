@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
 ms.openlocfilehash: 340b910319cabe3379bdb1bad1c09bc71c17f072
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95994943"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-shares-on-the-storsimple-virtual-array"></a>Verwenden des StorSimple-Geräte-Manager-Diensts zum Verwalten von Freigaben auf dem StorSimple Virtual Array
@@ -42,9 +42,9 @@ In der folgenden Tabelle finden Sie die bereitgestellte Maximalkapazität für d
 
 | **Begrenzungsbezeichner** | **Begrenzung** |
 | --- | --- |
-| Mindestgröße einer mehrstufigen Freigabe |500 GB |
+| Mindestgröße einer mehrstufigen Freigabe |500 GB |
 | Maximale Größe einer mehrstufigen Freigabe |20 TB |
-| Mindestgröße einer lokalen Freigabe |50 GB |
+| Mindestgröße einer lokalen Freigabe |50 GB |
 | Maximale Größe einer lokalen Freigabe |2 TB |
 
 ## <a name="the-shares-blade"></a>Das Blatt „Freigaben“
@@ -101,7 +101,7 @@ Verwenden Sie die Anweisungen in diesem Tutorial, um die folgenden Aufgaben ausz
 #### <a name="to-modify-a-share"></a>So ändern Sie eine Freigabe
 
 1. Wählen Sie auf dem StorSimple-Dienstübersichtsblatt aus den Einstellungen **Freigaben** das virtuelle Array aus, auf dem sich die Freigabe befindet, die Sie ändern möchten.
-2. **Wählen Sie**  die Freigabe aus, um die aktuelle Beschreibung anzuzeigen, und ändern Sie sie.
+2. **Wählen Sie** die Freigabe aus, um die aktuelle Beschreibung anzuzeigen, und ändern Sie sie.
 3. Speichern Sie die Änderungen, indem Sie in der Befehlsleiste auf **Speichern** klicken. Die angegebenen Einstellungen werden angewendet, und Sie erhalten eine Benachrichtigung.
    
     ![ Bearbeiten der Freigabe](./media/storsimple-virtual-array-manage-shares/share-edit.png)

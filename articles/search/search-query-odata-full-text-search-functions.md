@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 78f9e4d8fa80fdf74bdb5cd79f4489d12696fcc2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88935788"
 ---
 # <a name="odata-full-text-search-functions-in-azure-cognitive-search---searchismatch-and-searchismatchscoring"></a>Funktionen der OData-Volltextsuche in der kognitiven Azure-Suche: `search.ismatch` und `search.ismatchscoring`
@@ -69,7 +69,7 @@ Die Funktion `search.ismatch` wertet eine Volltextsuchabfrage als Teil eines Fil
 
 Die Parameter werden in der folgenden Tabelle definiert:
 
-| Parametername | type | BESCHREIBUNG |
+| Parametername | Typ | BESCHREIBUNG |
 | --- | --- | --- |
 | `search` | `Edm.String` | Die Suchabfrage (in der [einfachen](query-simple-syntax.md) oder [vollständigen](query-lucene-syntax.md) Lucene-Abfragesyntax). |
 | `searchFields` | `Edm.String` | Durch Trennzeichen getrennte Liste von durchsuchbaren Feldern, in denen gesucht werden soll. Standardmäßig werden alle durchsuchbaren Felder im Index durchsucht. Wenn Sie die [feldbezogene Suche](query-lucene-syntax.md#bkmk_fields) im Parameter `search` verwenden, überschreiben die Feldspezifizierer in der Lucene-Abfrage alle in diesem Parameter angegebenen Felder. |

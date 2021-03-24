@@ -9,10 +9,10 @@ ms.date: 03/02/2021
 ms.author: tisande
 ms.reviewer: sngun
 ms.openlocfilehash: 5302cb7bb3f4683d200f6f9ea106991bb934fc17
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101659901"
 ---
 # <a name="troubleshoot-query-issues-when-using-the-azure-cosmos-db-api-for-mongodb"></a>Behandeln von Abfrageproblemen bei Verwendung der Azure Cosmos DB-API für MongoDB
@@ -113,7 +113,7 @@ db.coll.find({foodGroup: "Baby Foods"}).explain({"executionStatistics": true })
 
 Die Ausgabe des `$explain`-Befehls ist langwierig und enthält ausführliche Informationen zur Abfrageausführung. Im Allgemeinen gibt es jedoch einige Abschnitte, in denen Sie sich auf die Optimierung der Abfrageleistung konzentrieren sollten:
 
-| Metrik | BESCHREIBUNG | 
+| Metrik | Beschreibung | 
 | ------ | ----------- |
 | `timeInclusiveMS` | Wartezeit der Back-End-Abfrage |
 | `pathsIndexed` | Zeigt die von der Abfrage verwendeten Indizes an. | 

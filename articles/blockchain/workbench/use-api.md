@@ -5,10 +5,10 @@ ms.date: 03/05/2020
 ms.topic: how-to
 ms.reviewer: brendal
 ms.openlocfilehash: 696f1f2f96034f7a044f6a39182774c02804518f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96004839"
 ---
 # <a name="using-the-azure-blockchain-workbench-preview-rest-api"></a>Verwenden der REST-API der Vorschauversion von Azure Blockchain Workbench
@@ -23,12 +23,12 @@ Der Zugriff auf Blockchain Workbench-APIs erfolgt über einen Endpunkt für Ihre
 1. Wählen Sie im linken Navigationsbereich **Ressourcengruppen** aus.
 1. Wählen Sie den Namen der Ressourcengruppe für die bereitgestellte Blockchain Workbench aus.
 1. Klicken Sie auf die Spaltenüberschrift **TYP**, um die Liste alphabetisch nach Typ zu sortieren.
-1. Es gibt zwei Ressourcen vom Typ **App-Dienst**. Wählen Sie die Ressource vom Typ **App Service** *mit* dem Suffix „-api“ aus.
+1. Es gibt zwei Ressourcen vom Typ **App-Dienst**. Wählen Sie die Ressource vom Typ **App-Dienst** *mit* dem Suffix „-api“ aus.
 1. Kopieren Sie in der **Übersicht** des App-Diensts den Wert für **URL**. Dieser stellt die URL des API-Endpunkts für die bereitgestellte Blockchain Workbench dar.
 
     ![URL des API-Endpunkts für den App-Dienst](media/use-api/app-service-api.png)
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Authentifizierung
 
 Anforderungen an die Blockchain Workbench-REST-API werden durch Azure Active Directory (Azure AD) geschützt.
 
@@ -74,7 +74,7 @@ Laden Sie die Solidity-Codedatei der Anwendung über die [Anwendungen-Vertragsco
 
 Ersetzen Sie die folgenden Werte:
 
-| Parameter | value |
+| Parameter | Wert |
 |-----------|-------|
 | {applicationId} | Rückgabewert der Anwendungs-POST-API. |
 | {ledgerId} | Der Index des Ledgers. Der Wert ist in der Regel 1. Sie können den Wert auch in der [Tabelle „Ledger“](data-sql-management-studio.md) überprüfen. |
@@ -104,7 +104,7 @@ Erstellen Sie mithilfe der [Anwendungs-Rollenzuweisungs-POST-API](/rest/api/azur
 
 Ersetzen Sie die folgenden Werte:
 
-| Parameter | value |
+| Parameter | Wert |
 |-----------|-------|
 | {applicationId} | Rückgabewert der Anwendungs-POST-API. |
 | {userId} | Der Benutzer-ID-Wert aus der [Tabelle „User“](data-sql-management-studio.md). |
@@ -134,8 +134,8 @@ HTTP/1.1 200
 
 Verwenden Sie die [Anwendungs-GET-API](/rest/api/azure-blockchain-workbench/applications/applicationsget), um alle Blockchain Workbench-Anwendungen für den Benutzer abzurufen. In diesem Beispiel hat der angemeldete Benutzer Zugriff auf zwei Anwendungen:
 
-- [AssetTransfer](https://github.com/Azure-Samples/blockchain/blob/master/blockchain-workbench/application-and-smart-contract-samples/asset-transfer/readme.md) (Vermögensübertragung)
-- [RefrigeratedTransportation](https://github.com/Azure-Samples/blockchain/blob/master/blockchain-workbench/application-and-smart-contract-samples/refrigerated-transportation/readme.md) (Transport mit Kühlkette)
+- [Vermögensübertragung](https://github.com/Azure-Samples/blockchain/blob/master/blockchain-workbench/application-and-smart-contract-samples/asset-transfer/readme.md)
+- [Transport mit Kühlkette](https://github.com/Azure-Samples/blockchain/blob/master/blockchain-workbench/application-and-smart-contract-samples/refrigerated-transportation/readme.md)
 
 ### <a name="applications-get-request"></a>Anwendungs-GET-Anforderung
 
@@ -223,7 +223,7 @@ Verwenden Sie [Vertrags-POST-API V2](/rest/api/azure-blockchain-workbench/contr
 
 Ersetzen Sie die folgenden Werte:
 
-| Parameter | value |
+| Parameter | Wert |
 |-----------|-------|
 | {workflowId} | Der Workflow-ID-Wert ist die ConstructorID des Vertrags aus der [Tabelle „Workflow“](data-sql-management-studio.md). |
 | {contractCodeId} | Der Vertragscode-ID-Wert aus der [Tabelle „ContractCode“](data-sql-management-studio.md). Korrelieren Sie die Anwendungs-ID und die Ledger-ID für die Vertragsinstanz, die Sie erstellen möchten. |
@@ -231,7 +231,7 @@ Ersetzen Sie die folgenden Werte:
 
 Legen Sie für den Anforderungstext mithilfe der folgenden Informationen Werte fest:
 
-| Parameter | value |
+| Parameter | Wert |
 |-----------|-------|
 | workflowFunctionID | Die ID aus der [Tabelle „WorkflowFunction“](data-sql-management-studio.md). |
 | workflowActionParameters | Name-Wert-Paare von Parametern, die an den Konstruktor übergeben werden. Verwenden Sie für jeden Parameter den Wert workflowFunctionParameterID aus der Tabelle [WorkflowFunctionParameter](data-sql-management-studio.md). |

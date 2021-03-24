@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
 ms.openlocfilehash: babf2c8208732a194184549dfa5ed3228b376d0f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91710259"
 ---
 # <a name="query-performance-insight"></a>Query Performance Insight 
@@ -40,7 +40,7 @@ In der Tabelle unter dem Diagramm finden Sie weitere Informationen zu Abfragen m
 
 Auf der Registerkarte **Wartestatistik** werden die entsprechenden Visualisierungen zu Wartevorgängen angezeigt.
 
-:::image type="content" source="./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png" alt-text="Abfragen mit langer Ausführungszeit in Query Performance Insight":::
+:::image type="content" source="./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png" alt-text="Query Performance Insight-Wartestatistiken":::
 
 ## <a name="considerations"></a>Überlegungen
 * Query Performance Insight ist für [Lesereplikate](concepts-read-replicas.md) nicht verfügbar.

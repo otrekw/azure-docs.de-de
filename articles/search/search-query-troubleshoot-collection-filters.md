@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 3050f701c11773207aa6054d4d08d908d87b2ce7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88932065"
 ---
 # <a name="troubleshooting-odata-collection-filters-in-azure-cognitive-search"></a>Problembehandlung von OData-Sammlungsfiltern in der kognitiven Azure-Suche
@@ -171,10 +171,10 @@ Es gibt jedoch Einschränkungen in Bezug darauf, wie solche Vergleichsausdrücke
 
     Und der folgende Ausdruck ist zwar zulässig, aber nicht sinnvoll, weil sich die Bedingungen überschneiden:
     - `ratings/any(r: r ne 5 or r gt 7)`
-  - Einfache Vergleichsausdrücke in Verbindung mit `eq`, `lt`, `le`, `gt` oder `ge` können mit `and`/`or` kombiniert werden. Beispiel:
+  - Einfache Vergleichsausdrücke in Verbindung mit `eq`, `lt`, `le`, `gt` oder `ge` können mit `and`/`or` kombiniert werden. Zum Beispiel:
     - `ratings/any(r: r gt 2 and r le 5)`
     - `ratings/any(r: r le 5 or r gt 7)`
-  - Mit `and` (Konjunktionen) kombinierte Vergleichsausdrücke können mit `or` weiter kombiniert werden. Diese Form wird in boolescher Logik als „[disjunktive Normalform](https://en.wikipedia.org/wiki/Disjunctive_normal_form)“ (DNF) bezeichnet. Beispiel:
+  - Mit `and` (Konjunktionen) kombinierte Vergleichsausdrücke können mit `or` weiter kombiniert werden. Diese Form wird in boolescher Logik als „[disjunktive Normalform](https://en.wikipedia.org/wiki/Disjunctive_normal_form)“ (DNF) bezeichnet. Zum Beispiel:
     - `ratings/any(r: (r gt 2 and r le 5) or (r gt 7 and r lt 10))`
 - Regeln für `all`:
   - Einfache Gleichheitsausdrücke können nicht sinnvoll mit anderen Ausdrücken kombiniert werden. Beispielsweise ist der folgende Ausdruck zulässig:
@@ -185,10 +185,10 @@ Es gibt jedoch Einschränkungen in Bezug darauf, wie solche Vergleichsausdrücke
 
     Und der folgende Ausdruck ist zwar zulässig, aber nicht sinnvoll, weil sich die Bedingungen überschneiden:
     - `ratings/all(r: r eq 5 and r le 7)`
-  - Einfache Vergleichsausdrücke in Verbindung mit `ne`, `lt`, `le`, `gt` oder `ge` können mit `and`/`or` kombiniert werden. Beispiel:
+  - Einfache Vergleichsausdrücke in Verbindung mit `ne`, `lt`, `le`, `gt` oder `ge` können mit `and`/`or` kombiniert werden. Zum Beispiel:
     - `ratings/all(r: r gt 2 and r le 5)`
     - `ratings/all(r: r le 5 or r gt 7)`
-  - Mit `or` (Disjunktionen) kombinierte Vergleichsausdrücke können mit `and` weiter kombiniert werden. Diese Form wird in boolescher Logik als „[konjunktive Normalform](https://en.wikipedia.org/wiki/Conjunctive_normal_form)“ (KNF) bezeichnet. Beispiel:
+  - Mit `or` (Disjunktionen) kombinierte Vergleichsausdrücke können mit `and` weiter kombiniert werden. Diese Form wird in boolescher Logik als „[konjunktive Normalform](https://en.wikipedia.org/wiki/Conjunctive_normal_form)“ (KNF) bezeichnet. Zum Beispiel:
     - `ratings/all(r: (r le 2 or gt 5) and (r lt 7 or r ge 10))`
 
 <a name="bkmk_complex"></a>

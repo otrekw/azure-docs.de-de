@@ -10,10 +10,10 @@ ms.service: storage
 ms.subservice: queues
 ms.custom: devx-track-csharp
 ms.openlocfilehash: d54b8f15c90aa8f6ffcc04453fee0349e501f47d
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97585750"
 ---
 # <a name="get-started-with-azure-queue-storage-using-net"></a>Erste Schritte mit Azure Queue Storage mit .NET
@@ -319,7 +319,7 @@ queue.UpdateMessage(message,
 
 # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
-Sie können eine Nachricht in zwei Schritten aus einer Warteschlange entfernen. Wenn Sie [`ReceiveMessages`](/dotnet/api/azure.storage.queues.queueclient.receivemessages) aufrufen, wird die nächste Nachricht aus der Warteschlange abgerufen. Die für `ReceiveMessages` zurückgegebene Nachricht ist für anderen Code, mit dem Nachrichten aus dieser Warteschlange gelesen werden, nicht mehr sichtbar. Standardmäßig bleibt die Nachricht 30 Sekunden lang unsichtbar. Wenn Sie die Nachricht endgültig aus der Warteschlange entfernen möchten, müssen Sie [`DeleteMessage`](/dotnet/api/azure.storage.queues.queueclient.deletemessage) aufrufen. Dieser zweistufige Prozess zum Entfernen von Nachrichten stellt sicher, dass eine andere Codeinstanz dieselbe Nachricht erneut abrufen kann, falls die Verarbeitung aufgrund eines Hardware- oder Softwarefehlers fehlschlägt. In Ihrem Code wird `DeleteMessage` direkt nach der Verarbeitung der Nachricht aufgerufen.
+Sie können eine Nachricht in zwei Schritten aus einer Warteschlange entfernen. Wenn Sie [`ReceiveMessages`](/dotnet/api/azure.storage.queues.queueclient.receivemessages) aufrufen, wird die nächste Nachricht aus der Warteschlange abgerufen. Die für `ReceiveMessages` zurückgegebene Nachricht ist für anderen Code, mit dem Nachrichten aus dieser Warteschlange gelesen werden, nicht mehr sichtbar. Standardmäßig bleibt die Nachricht 30 Sekunden lang unsichtbar. Wenn Sie die Nachricht endgültig aus der Warteschlange entfernen möchten, müssen Sie auch [`DeleteMessage`](/dotnet/api/azure.storage.queues.queueclient.deletemessage) aufrufen. Dieser zweistufige Prozess zum Entfernen von Nachrichten stellt sicher, dass eine andere Codeinstanz dieselbe Nachricht erneut abrufen kann, falls die Verarbeitung aufgrund eines Hardware- oder Softwarefehlers fehlschlägt. In Ihrem Code wird `DeleteMessage` direkt nach der Verarbeitung der Nachricht aufgerufen.
 
 :::code language="csharp" source="~/azure-storage-snippets/queues/howto/dotnet/dotnet-v12/QueueBasics.cs" id="snippet_DequeueMessage":::
 

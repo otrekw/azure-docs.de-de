@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 12/1/2016
 ms.author: alkohli
 ms.openlocfilehash: 6bea9c9b7807ffb32b6071c968d3186965477009
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96000928"
 ---
 # <a name="use-the-web-ui-to-administer-your-storsimple-virtual-array"></a>Verwaltung des StorSimple Virtual Array mithilfe der Web-UI
@@ -84,7 +84,7 @@ Sie können Ihr virtuelles Gerät über die lokale Web-UI herunterfahren oder ne
 2. Klicken Sie unten auf der Seite auf **Herunterfahren**.
    
     ![Herunterfahren des Geräts 1](./media/storsimple-ova-web-ui-admin/image36.png)
-3. Eine Warnung wird angezeigt, die besagt, dass durch ein Herunterfahren des Geräts alle ausgeführten IOs unterbrochen werden und ein Ausfall verursacht wird. Klicken Sie auf das Häkchen ![Häkchensymbol](./media/storsimple-ova-web-ui-admin/image3.png)erforderlich.
+3. Eine Warnung wird angezeigt, die besagt, dass durch ein Herunterfahren des Geräts alle ausgeführten IOs unterbrochen werden und ein Ausfall verursacht wird. Klicken Sie auf das Häkchen ![Häkchensymbol](./media/storsimple-ova-web-ui-admin/image3.png).
    
     ![Warnung vor Herunterfahren des Geräts](./media/storsimple-ova-web-ui-admin/image37.png)
    
@@ -99,7 +99,7 @@ Sie können Ihr virtuelles Gerät über die lokale Web-UI herunterfahren oder ne
 2. Klicken Sie unten auf der Seite auf **Neu starten**.
    
     ![Geräteneustart](./media/storsimple-ova-web-ui-admin/image36.png)
-3. Eine Warnung wird angezeigt, die besagt, dass durch einen Neustart des Geräts alle ausgeführten IOs unterbrochen werden und ein Ausfall verursacht wird. Klicken Sie auf das Häkchen ![Häkchensymbol](./media/storsimple-ova-web-ui-admin/image3.png)erforderlich.
+3. Eine Warnung wird angezeigt, die besagt, dass durch einen Neustart des Geräts alle ausgeführten IOs unterbrochen werden und ein Ausfall verursacht wird. Klicken Sie auf das Häkchen ![Häkchensymbol](./media/storsimple-ova-web-ui-admin/image3.png).
    
     ![Warnung vor Neustart](./media/storsimple-ova-web-ui-admin/image37.png)
    

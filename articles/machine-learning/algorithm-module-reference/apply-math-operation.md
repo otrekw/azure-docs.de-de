@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
 ms.openlocfilehash: 3b2925a532d722598ccf16c001c9e2591aed1f2b
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99584989"
 ---
 # <a name="apply-math-operation"></a>Anwenden einer mathematischen Operation
@@ -303,7 +303,7 @@ Gibt die Untergrenze für die Werte in **Column set** mit der angegebenen Genaui
 
 ### <a name="mod"></a>Mod
 
-Gibt die Nachkommastellen der Werte in **Spaltensatz** entsprechend der angegebenen Genauigkeit zurück.  
+Gibt den Bruchteil der Werte in **Column set** mit der angegebenen Genauigkeit zurück.  
 
 ### <a name="quotient"></a>Quotient
 

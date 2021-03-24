@@ -7,10 +7,10 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/26/2017
 ms.openlocfilehash: 3fe98160cc10eb3607b8309a9a263d63380dcfb5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89073215"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Erstellen benutzerdefinierter APIs, die über Azure Logic Apps aufgerufen werden können
@@ -136,7 +136,7 @@ Richten Sie für dieses Muster zwei Endpunkte auf dem Controller ein: `subscribe
 
 ![Webhookaktionsmuster](./media/logic-apps-create-api-app/custom-api-webhook-action-pattern.png)
 
-Der Logic App-Designer unterstützt derzeit keine Ermittlung von Webhookendpunkten über Swagger. Also müssen Sie für dieses Muster eine [**Webhook**aktion](../connectors/connectors-native-webhook.md) hinzufügen und URL, Header und Text für die Anforderung angeben. Siehe auch [Workflow-Aktionen und -Trigger](logic-apps-workflow-actions-triggers.md#apiconnection-webhook-action). Ein Beispiel für Webhookmuster finden Sie in diesem [Webhooktriggerbeispiel in GitHub](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs).
+Der Logic App-Designer unterstützt derzeit keine Ermittlung von Webhookendpunkten über Swagger. Also müssen Sie für dieses Muster eine [**Webhook** aktion](../connectors/connectors-native-webhook.md) hinzufügen und URL, Header und Text für die Anforderung angeben. Siehe auch [Workflow-Aktionen und -Trigger](logic-apps-workflow-actions-triggers.md#apiconnection-webhook-action). Ein Beispiel für Webhookmuster finden Sie in diesem [Webhooktriggerbeispiel in GitHub](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs).
 
 Hier finden Sie weitere Tipps und Hinweise:
 
@@ -200,7 +200,7 @@ Webhooktrigger fungieren ähnlich wie die zuvor in diesem Thema beschriebenen [W
 
 ![Webhooktriggermuster](./media/logic-apps-create-api-app/custom-api-webhook-trigger-pattern.png)
 
-Der Logic App-Designer unterstützt derzeit keine Ermittlung von Webhookendpunkten über Swagger. Also müssen Sie für dieses Muster einen [**Webhook**trigger](../connectors/connectors-native-webhook.md) hinzufügen und URL, Header und Text für die Anforderung angeben. Siehe auch [HTTPWebhook-Trigger](logic-apps-workflow-actions-triggers.md#httpwebhook-trigger). Ein Beispiel für Webhookmuster finden Sie in diesem [Webhooktriggercontroller-Beispiel in GitHub](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs).
+Der Logic App-Designer unterstützt derzeit keine Ermittlung von Webhookendpunkten über Swagger. Also müssen Sie für dieses Muster einen [**Webhook** trigger](../connectors/connectors-native-webhook.md) hinzufügen und URL, Header und Text für die Anforderung angeben. Siehe auch [HTTPWebhook-Trigger](logic-apps-workflow-actions-triggers.md#httpwebhook-trigger). Ein Beispiel für Webhookmuster finden Sie in diesem [Webhooktriggercontroller-Beispiel in GitHub](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs).
 
 Hier finden Sie weitere Tipps und Hinweise:
 

@@ -15,10 +15,10 @@ ms.author: curtand
 ms.reviewer: shaunliu
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 45144f64789a19390984c3f9f6a660e3c3300215
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96002492"
 ---
 # <a name="view-activity-and-audit-history-for-azure-resource-roles-in-privileged-identity-management"></a>Anzeigen von Aktivitäten und des Überwachungsverlaufs für Azure-Ressourcenrollen in Privileged Identity Management
@@ -26,7 +26,7 @@ ms.locfileid: "96002492"
 Mit Azure Active Directory (Azure AD) Privileged Identity Management (PIM) können Sie Aktivitäten, Aktivierungen und den Überwachungsverlauf für Azure-Ressourcenrollen innerhalb Ihrer Organisation anzeigen. Dies schließt Abonnements, Ressourcengruppen und sogar virtuelle Computer ein. Alle Ressourcen im Azure-Portal, die die Azure-Funktion für die rollenbasierte Zugriffssteuerung nutzen, können von den Sicherheits- und Lebenszyklusverwaltungsfunktionen von Privileged Identity Management profitieren.
 
 > [!NOTE]
-> Wenn Ihre Organisation Verwaltungsfunktionen an einen Dienstanbieter ausgelagert hat, der die [Delegierte Azure-Ressourcenverwaltung](../../lighthouse/concepts/azure-delegated-resource-management.md) verwendet, werden die von diesem Dienstanbieter autorisierten Rollenzuweisungen hier nicht angezeigt.
+> Wenn Ihre Organisation Verwaltungsfunktionen an einen Dienstanbieter ausgelagert hat, der die [delegierte Azure-Ressourcenverwaltung](../../lighthouse/concepts/azure-delegated-resource-management.md) verwendet, werden die von diesem Dienstanbieter autorisierten Rollenzuweisungen hier nicht angezeigt.
 
 ## <a name="view-activity-and-activations"></a>Anzeigen von Aktivitäten und Aktivierungen
 
@@ -90,7 +90,7 @@ Die Ressourcenüberwachung bietet einen Überblick über alle Rollenaktivitäten
 
     [![Nach Überwachungstyp „Aktivieren“ gefilterte Ressourcenüberwachungsliste](media/azure-pim-resource-rbac/rbac-audit-activity.png "Nach Überwachungstyp „Aktivieren“ gefilterte Ressourcenüberwachungsliste")](media/azure-pim-resource-rbac/rbac-audit-activity.png) ![Nach Überwachungstyp „Aktivieren“ gefilterte Ressourcenüberwachungsliste](media/azure-pim-resource-rbac/rbac-audit-activity.png)
 
-1. Klicken Sie unter **Aktion** für einen Benutzer auf **(Aktivität)** , um Details zur Aktivität des Benutzers in Azure-Ressourcen anzuzeigen.
+1. Klicken Sie unter **Aktion** für einen Benutzer auf **(Aktivität)**, um Details zur Aktivität des Benutzers in Azure-Ressourcen anzuzeigen.
 
     ![Benutzeraktivitätsdetails für eine bestimmte Aktion](media/azure-pim-resource-rbac/rbac-audit-activity-details.png)
 
@@ -142,4 +142,4 @@ In der Regel ist das Protokollereignis direkt oberhalb des Genehmigungsereigniss
 
 - [Zuweisen von Azure-Ressourcenrollen in PIM](pim-resource-roles-assign-roles.md)
 - [Genehmigen oder Ablehnen von Anforderungen für Azure-Ressourcenrollen in PIM](pim-resource-roles-approval-workflow.md)
-- [Anzeigen des Überwachungsverlaufs für Azure AD-Rollen in PIM](pim-how-to-use-audit-log.md)
+- [Anzeigen des Überwachungsverlaufs für Azure AD-Rollen in Privileged Identity Management](pim-how-to-use-audit-log.md)

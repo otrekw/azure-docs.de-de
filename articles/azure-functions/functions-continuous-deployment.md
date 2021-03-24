@@ -5,10 +5,10 @@ ms.assetid: 361daf37-598c-4703-8d78-c77dbef91643
 ms.topic: conceptual
 ms.date: 09/25/2019
 ms.openlocfilehash: e49c235e11eea17fdd1a7ff7751cc0493934d725
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "83123669"
 ---
 # <a name="continuous-deployment-for-azure-functions"></a>Continuous Deployment für Azure Functions
@@ -42,7 +42,7 @@ Gehen Sie wie folgt vor, um Continuous Deployment für eine vorhandene Funktions
 
 3. Wählen Sie in GitHub **AzureAppService autorisieren** aus.
 
-    :::image type="content" source="./media/functions-continuous-deployment/authorize.png" alt-text="Azure App Service Deployment Center":::
+    :::image type="content" source="./media/functions-continuous-deployment/authorize.png" alt-text="Autorisieren von Azure App Service":::
 
     Geben Sie Ihr GitHub-Kennwort ein, und wählen Sie dann **Weiter** aus.
 
@@ -55,7 +55,7 @@ Gehen Sie wie folgt vor, um Continuous Deployment für eine vorhandene Funktions
 
 5. Konfigurieren Sie Informationen, die für die von Ihnen angegebene Option der Quellcodeverwaltung spezifisch sind. Für GitHub müssen Werte für **Organisation**, **Repository** und **Branch** eingegeben bzw. ausgewählt werden. Die Werte basieren auf dem Ort, an dem sich Ihr Code befindet. Wählen Sie anschließend **Weiter** aus.
 
-    :::image type="content" source="./media/functions-continuous-deployment/github-specifics.png" alt-text="Azure App Service Deployment Center":::
+    :::image type="content" source="./media/functions-continuous-deployment/github-specifics.png" alt-text="Konfigurieren von GitHub":::
 
 6. Überprüfen Sie alle Angaben, und wählen Sie anschließend **Fertig stellen** aus, um die Bereitstellungskonfiguration abzuschließen.
 
