@@ -4,12 +4,12 @@ description: Hier erfahren Sie, wie Sie außerhalb von Azure gehostete Server mi
 keywords: Azure Automation, DSC, PowerShell, Desired State Configuration, Updateverwaltung, Änderungsnachverfolgung, Bestand, Runbooks, Python, grafisch, Hybrid
 ms.date: 02/18/2021
 ms.topic: overview
-ms.openlocfilehash: 5692dfaceb15086b04ee951b8ecdf88f73c7d122
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 92de3b1a9cf07c25b13e2d038534e93318882bb1
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101686222"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175973"
 ---
 # <a name="what-is-azure-arc-enabled-servers"></a>Was sind Server mit Azure Arc-Aktivierung?
 
@@ -23,7 +23,7 @@ Wenn Sie Ihren Computer mit Servern mit Azure Arc-Unterstützung verbinden, kö
 
 - Zuweisen von [Azure Policy-Gastkonfigurationen](../../governance/policy/concepts/guest-configuration.md) mit der gleichen Vorgehensweise wie bei der Richtlinienzuweisung für virtuelle Azure-Computer Derzeit werden von den meisten Gastkonfigurationsrichtlinien keine Konfigurationen angewendet, sondern sie dienen lediglich zur Überwachung der Einstellungen des Computers. Informationen zu den Kosten der Nutzung von Azure Policy-Gastkonfigurationsrichtlinien mit Arc-fähigen Servern finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/details/azure-policy/).
 
-- Melden Sie Konfigurationsänderungen zu installierter Software, Microsoft-Diensten, Windows-Registrierung und -Dateien und Linux-Daemons auf überwachten Servern mit [Änderungsnachverfolgung und Bestand](../../automation/change-tracking/overview.md) von Azure Automation.
+- Erstellen Sie mit [Änderungsnachverfolgung und Bestand](../../automation/change-tracking/overview.md) in Azure Automation und mit der [Überwachung der Dateiintegrität in Azure Security Center ](https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring) für Server, auf denen [Azure Defender für Server](https://docs.microsoft.com/azure/security-center/defender-for-servers-introduction) aktiviert ist, Berichte zu Konfigurationsänderungen an installierter Software, an Microsoft-Diensten, an der Windows-Registrierung und Windows-Dateien sowie an Linux-Daemons auf überwachten Servern.
 
 - Überwachen der Leistung des Gastbetriebssystems des verbundenen Computers und Erkennen von Anwendungskomponenten, um deren Prozesse und Abhängigkeiten mit anderen, von der Anwendung kommunizierten Ressourcen über [Azure Monitor für VMs](../../azure-monitor/vm/vminsights-overview.md) zu überwachen
 

@@ -3,19 +3,19 @@ title: Erstellen einer neuen Azure Application Insights-Ressource | Microsoft Do
 description: Richten Sie manuell die Application Insights-Überwachung für eine neue Liveanwendung ein.
 ms.topic: conceptual
 ms.date: 02/10/2021
-ms.openlocfilehash: 1ec5e929f591c0b7ada36f345d86c6de591892c8
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 459f61d9e13a2098403f3e78c7a529e49bf65e59
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100575626"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100932"
 ---
 # <a name="create-an-application-insights-resource"></a>Erstellen einer Application Insights-Ressource
 
 Azure Application Insights zeigt Daten über Ihre Anwendung in einer Microsoft Azure-*Ressource* an. Die Erstellung einer neuen Ressource gehört daher zur [Einrichtung von Application Insights zur Überwachung einer neuen Anwendung][start]. Nach dem Erstellen der neuen Ressource erhalten Sie den Instrumentierungsschlüssel, den Sie zum Konfigurieren des Application Insights SDK verwenden. Der Instrumentierungsschlüssel verknüpft Ihre Telemetriedaten mit der Ressource.
 
 > [!IMPORTANT]
-> Klassisches Application Insights ist veraltet. Befolgen Sie diese [Anweisungen zur Vorgehensweise beim Upgrade auf arbeitsbereichsbasierte Application Insights-Ressourcen](convert-classic-resource.md).
+> [Klassisches Application Insights ist veraltet](https://azure.microsoft.com/updates/we-re-retiring-classic-application-insights-on-29-february-2024/). Befolgen Sie diese [Anweisungen zur Vorgehensweise beim Upgrade auf arbeitsbereichsbasierte Application Insights-Ressourcen](convert-classic-resource.md).
 
 ## <a name="sign-in-to-microsoft-azure"></a>Anmelden bei Microsoft Azure
 

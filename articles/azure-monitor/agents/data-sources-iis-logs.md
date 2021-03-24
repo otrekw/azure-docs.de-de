@@ -1,17 +1,16 @@
 ---
 title: Sammeln von IIS-Protokollen mit dem Log Analytics-Agent in Azure Monitor
 description: IIS (Internet Information Services, Internetinformationsdienste) speichern Benutzeraktivitäten in Protokolldateien, die von Azure Monitor gesammelt werden können.  In diesem Artikel wird erläutert, wie Sie das Sammeln von IIS-Protokollen konfigurieren. Darüber hinaus enthält der Artikel Details zu den Datensätzen, die in Azure Monitor erstellt werden.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 11/13/2020
-ms.openlocfilehash: 96eab2d93ae0212568f8ef23e32a35016cb17248
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 02/26/2021
+ms.openlocfilehash: 484e49219b94f5974661b1e76f533236666ebcfb
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101732053"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050731"
 ---
 # <a name="collect-iis-logs-with-log-analytics-agent-in-azure-monitor"></a>Sammeln von IIS-Protokollen mit dem Log Analytics-Agent in Azure Monitor
 IIS (Internet Information Services, Internetinformationsdienste) speichern Benutzeraktivitäten in Protokolldateien, die vom Log Analytics-Agent gesammelt und in [Azure Monitor-Protokollen](../data-platform.md) gespeichert werden können.
@@ -26,7 +25,7 @@ Azure Monitor sammelt Einträge aus von IIS erstellten Protokolldateien. Daher m
 
 Azure Monitor unterstützt nur IIS-Protokolldateien im W3C-Format, aber keine benutzerdefinierten Felder oder die erweiterte IIS-Protokollierung. Protokolle im NCSA- oder nativen IIS-Format werden nicht gesammelt.
 
-IIS-Protokolle können in Azure Monitor über das Menü [Erweiterte Einstellungen](../agents/agent-data-sources.md#configuring-data-sources) für den Log Analytics-Agent konfiguriert werden.  Abgesehen von der Auswahl der Option **IIS-Protokolldateien im W3C-Format sammeln** ist keine Konfiguration erforderlich.
+IIS-Protokolle können in Azure Monitor über das [Menü „Agent-Konfiguration“](../agents/agent-data-sources.md#configuring-data-sources) für den Log Analytics-Agent konfiguriert werden.  Abgesehen von der Auswahl der Option **IIS-Protokolldateien im W3C-Format sammeln** ist keine Konfiguration erforderlich.
 
 
 ## <a name="data-collection"></a>Datensammlung

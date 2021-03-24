@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 9cf2f4876d62572ace118562fe5760f2b4010fa5
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: fedf1bc37661100404106859d3aef52b3eddf06d
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92891158"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102048136"
 ---
 # <a name="add-a-line-layer-to-the-map"></a>Hinzufügen einer Linienebene zur Karte
 
@@ -66,7 +66,7 @@ Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azure
 
 ## <a name="add-a-stroke-gradient-to-a-line"></a>Hinzufügen eines Strichverlaufs zu einer Linie
 
-Sie können eine einzelne Strichfarbe auf eine Linie anwenden. Sie können auch eine Linie mit einem Farbverlauf füllen, um den Übergang von einem Liniensegment zum nächsten anzuzeigen. Linienverläufe können z. B. dazu verwendet werden, um Veränderungen über Zeit und Entfernung, aber auch Temperaturunterschiede bei verbundenen Objekten anzuzeigen. Damit dieses Feature auf eine Linie angewendet werden kann, muss für die Datenquelle die Option `lineMetrics` auf „true“ festgelegt sein. Dann kann ein Farbverlaufsausdruck an die Option `strokeColor` der Linie übergeben werden. Der Ausdruck des Strichverlaufs muss auf den Datenausdruck `['line-progress']` verweisen, der die berechneten Linienmetriken für den Ausdruck bereitstellt.
+Sie können eine einzelne Strichfarbe auf eine Linie anwenden. Sie können auch eine Linie mit einem Farbverlauf füllen, um den Übergang von einem Liniensegment zum nächsten anzuzeigen. Linienverläufe können z. B. dazu verwendet werden, um Veränderungen über Zeit und Entfernung, aber auch Temperaturunterschiede bei verbundenen Objekten anzuzeigen. Damit dieses Feature auf eine Linie angewendet werden kann, muss für die Datenquelle die Option `lineMetrics` auf `true` festgelegt sein. Dann kann ein Farbverlaufsausdruck an die Option `strokeColor` der Linie übergeben werden. Der Ausdruck des Strichverlaufs muss auf den Datenausdruck `['line-progress']` verweisen, der die berechneten Linienmetriken für den Ausdruck bereitstellt.
 
 <br/>
 

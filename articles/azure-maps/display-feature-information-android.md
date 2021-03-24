@@ -3,21 +3,24 @@ title: Anzeigen von Featureinformationen in Android-Karten | Microsoft Azure Map
 description: Hier erfahren Sie, wie Sie Informationen anzeigen, wenn Benutzer mit Kartenfunktionen interagieren. Verwenden Sie das Azure Maps Android SDK, um Popupmeldungen und andere Arten von Meldungen anzuzeigen.
 author: rbrundritt
 ms.author: richbrun
-ms.date: 08/08/2019
+ms.date: 2/26/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 37b5ab1c144ed81d995da40b87edeaccdcad7253
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+zone_pivot_groups: azure-maps-android
+ms.openlocfilehash: b9926d5d6a70d959c0baacd9602341bb69abe924
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97679986"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102097243"
 ---
 # <a name="display-feature-information"></a>Anzeigen von Featureinformationen
 
 Räumliche Daten werden häufig mithilfe von Punkten, Linien und Polygonen dargestellt. Diesen Daten sind häufig Metadateninformationen zugeordnet. Ein Punkt kann beispielsweise den Standort eines Restaurants darstellen, und die Metadaten zu diesem Restaurant können den Namen, die Adresse und die Art des Speisenangebots umfassen. Diese Metadaten können als Eigenschaften eines GeoJSON-Features (`Feature`) hinzugefügt werden. Der folgende Code erstellt ein einfaches Punktmerkmal mit einer Eigenschaft vom Typ `title` und dem Wert „Hello World!“:
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 //Create a data source and add it to the map.
@@ -34,9 +37,32 @@ feature.addStringProperty("title", "Hello World!");
 source.add(feature);
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+//Create a data source and add it to the map.
+val source = DataSource()
+map.sources.add(source)
+
+//Create a point feature.
+val feature = Feature.fromGeometry(Point.fromLngLat(-122.33, 47.64))
+
+//Add a property to the feature.
+feature.addStringProperty("title", "Hello World!")
+
+//Create a point feature, pass in the metadata properties, and add it to the data source.
+source.add(feature)
+```
+
+::: zone-end
+
 Informationen zu den Möglichkeiten zum Erstellen und Hinzufügen von Daten zur Karte finden Sie in der Dokumentation [Erstellen einer Datenquelle](create-data-source-android-sdk.md).
 
 Wenn ein Benutzer mit einem Merkmal auf der Karte interagiert, kann mithilfe von Ereignissen auf diese Aktionen reagiert werden. Ein gängiges Szenario ist das Anzeigen einer Nachricht, die sich aus den Metadateneigenschaften eines Merkmals zusammensetzt, mit dem der Benutzer interagiert hat. Das Ereignis `OnFeatureClick` ist das Hauptereignis, das verwendet wird, um zu erkennen, wann der Benutzer auf ein Merkmal auf der Karte getippt hat. Es gibt auch ein Ereignis vom Typ `OnLongFeatureClick`. Wenn der Karte das Ereignis `OnFeatureClick` hinzugefügt wird, kann es auf eine einzelne Ebene begrenzt werden, indem die ID einer Ebene übergeben wird, auf die es begrenzt werden soll. Wird keine Ebenen-ID übergeben, wird das Ereignis ausgelöst, wenn auf ein beliebiges Merkmal auf der Karte getippt wird (unabhängig von der Ebene, auf der sich das Merkmal befindet). Der folgende Code erstellt eine Symbolebene zum Rendern von Punktdaten auf der Karte. Anschließend wird ein Ereignis vom Typ `OnFeatureClick` hinzugefügt und auf diese Symbolebene beschränkt.
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 //Create a symbol and add it to the map.
@@ -52,9 +78,31 @@ map.events.add((OnFeatureClick) (features) -> {
 }, layer.getId());    //Limit this event to the symbol layer.
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+//Create a symbol and add it to the map.
+val layer = SymbolLayer(source)
+map.layers.add(layer)
+
+//Add a feature click event to the map.
+map.events.add(OnFeatureClick { features: List<Feature> ->
+    //Retrieve the title property of the feature as a string.
+    val msg = features[0].getStringProperty("title")
+
+    //Do something with the message.
+}, layer.getId()) //Limit this event to the symbol layer.
+```
+
+::: zone-end
+
 ## <a name="display-a-toast-message"></a>Anzeigen einer Popupmeldung
 
 Eine Popupmeldung ist eine der einfachsten Methoden, um dem Benutzer Informationen anzuzeigen, und steht in allen Versionen von Android zur Verfügung. Sie unterstützt keinerlei Benutzereingaben und wird nur kurz angezeigt. Wenn Sie den Benutzer schnell über etwas informieren möchten, worauf er getippt hat, ist eine Popupmeldung ggf. eine gute Option. Der folgende Code zeigt, wie eine Popupmeldung mit dem Ereignis `OnFeatureClick` verwendet werden kann:
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 //Add a feature click event to the map.
@@ -67,7 +115,24 @@ map.events.add((OnFeatureClick) (features) -> {
 }, layer.getId());    //Limit this event to the symbol layer.
 ```
 
-![Animation: Tippen auf ein Merkmal und Anzeigen einer Popupmeldung](./media/display-feature-information-android/symbol-layer-click-toast-message.gif)
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+//Add a feature click event to the map.
+map.events.add(OnFeatureClick { features: List<Feature> ->
+    //Retrieve the title property of the feature as a string.
+    val msg = features[0].getStringProperty("title")
+
+    //Display a toast message with the title information.
+    Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
+}, layer.getId()) //Limit this event to the symbol layer.
+```
+
+::: zone-end
+
+![Animation: Tippen auf ein Merkmal und Anzeigen einer Popupmeldung](media/display-feature-information-android/symbol-layer-click-toast-message.gif)
 
 Neben Popupmeldungen gibt es aber auch noch verschiedene andere Möglichkeiten, um die Metadateneigenschaften eines Merkmals zu präsentieren:
 
@@ -75,6 +140,129 @@ Neben Popupmeldungen gibt es aber auch noch verschiedene andere Möglichkeiten, 
 - [Dialogfelder:](https://developer.android.com/guide/topics/ui/dialogs) Ein Dialogfeld ist ein kleines Fenster, in dem der Benutzer zu einer Entscheidung oder zur Eingabe zusätzlicher Informationen aufgefordert wird. Ein Dialogfeld füllt nicht den gesamten Bildschirm aus und wird in der Regel für modale Ereignisse verwendet, bei denen der Benutzer eine Aktion ausführen muss, damit ein Vorgang fortgesetzt wird.
 - Fügen Sie der aktuellen Aktivität ein [Fragment](https://developer.android.com/guide/components/fragments) hinzu.
 - Navigieren Sie zu einer anderen Aktivität oder Ansicht.
+
+## <a name="display-a-popup"></a>Anzeigen eines Popups
+
+Das Azure Maps Android SDK bietet eine `Popup`-Klasse, mit der Anmerkungselemente auf der Benutzeroberfläche, die an einer Position auf der Karte verankert sind, auf einfache Weise erstellt werden können. Für Popups müssen Sie eine Ansicht mit einem relativen Layout in der Option `content` des Popups übergeben. Es folgt ein Beispiel eines einfachen Layouts, das einen dunklen Text vor einem weißen Hintergrund zeigt.
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="#ffffff"
+    android:layout_margin="8dp"
+    android:padding="10dp"
+
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/message"
+        android:layout_width="wrap_content"
+        android:text=""
+        android:textSize="18dp"
+        android:textColor="#222"
+        android:layout_height="wrap_content"
+        android:width="200dp"/>
+
+</RelativeLayout>
+```
+
+Angenommen, das obige Layout ist in einer Datei mit dem Namen `popup_text.xml` im Ordner `res -> layout` einer App gespeichert, dann wird mit dem folgenden Code ein Popup erstellt und der Karte hinzugefügt. Beim Klicken auf ein Feature wird die Eigenschaft `title` mit dem Layout von `popup_text.xml` angezeigt, wobei die untere Mitte des Layouts an der angegebenen Position auf der Karte verankert ist.
+
+::: zone pivot="programming-language-java-android"
+
+```java
+//Create a popup and add it to the map.
+Popup popup = new Popup();
+map.popups.add(popup);
+
+map.events.add((OnFeatureClick)(feature) -> {
+    //Get the first feature and it's properties.
+    Feature f = feature.get(0);
+    JsonObject props = f.properties();
+
+    //Retrieve the custom layout for the popup.
+    View customView = LayoutInflater.from(this).inflate(R.layout.popup_text, null);
+
+    //Access the text view within the custom view and set the text to the title property of the feature.
+    TextView tv = customView.findViewById(R.id.message);
+    tv.setText(props.get("title").getAsString());
+
+    //Get the coordinates from the clicked feature and create a position object.
+    List<Double> c = ((Point)(f.geometry())).coordinates();
+    Position pos = new Position(c.get(0), c.get(1));
+
+    //Set the options on the popup.
+    popup.setOptions(
+        //Set the popups position.
+        position(pos),
+
+        //Set the anchor point of the popup content.
+        anchor(AnchorType.BOTTOM),
+
+        //Set the content of the popup.
+        content(customView)
+
+        //Optionally, hide the close button of the popup.
+        //, closeButton(false)
+    );
+
+    //Open the popup.
+    popup.open();
+});
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+//Create a popup and add it to the map.
+val popup = Popup()
+map.popups.add(popup)
+
+map.events.add(OnFeatureClick { feature: List<Feature> ->
+    //Get the first feature and it's properties.
+    val f = feature[0]
+    val props = f.properties()
+
+    //Retrieve the custom layout for the popup.
+    val customView: View = LayoutInflater.from(this).inflate(R.layout.popup_text, null)
+
+    //Access the text view within the custom view and set the text to the title property of the feature.
+    val tv: TextView = customView.findViewById(R.id.message)
+    tv.text = props!!["title"].asString
+
+    //Get the coordinates from the clicked feature and create a position object.
+    val c: List<Double> = (f.geometry() as Point?).coordinates()
+    val pos = Position(c[0], c[1])
+
+    //Set the options on the popup.
+    popup.setOptions( 
+        //Set the popups position.
+        position(pos),  
+
+        //Set the anchor point of the popup content.
+        anchor(AnchorType.BOTTOM),  
+
+        //Set the content of the popup.
+        content(customView) 
+
+        //Optionally, hide the close button of the popup.
+        //, closeButton(false)
+    )
+
+    //Open the popup.
+    popup.open()
+})
+```
+
+::: zone-end
+
+Der folgende Screenshot zeigt Popups, die beim Klicken auf Features angezeigt und beim Verschieben der Karte an der angegebenen Position verankert bleiben.
+
+![Animation eines Popups, das angezeigt wird und beim Verschieben der Karte an einer Position auf der Karte verankert bleibt](./media/display-feature-information-android/android-popup.gif)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

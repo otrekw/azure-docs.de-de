@@ -3,17 +3,18 @@ title: Hinzufügen einer Kachelebene zu Android-Karten | Microsoft Azure Maps
 description: Erfahren Sie, wie Sie einer Karte eine Kachelebene hinzufügen. Sehen Sie sich ein Beispiel an, in dem das Azure Maps Android SDK verwendet wird, um einer Karte eine Wetterradarüberlagerung hinzuzufügen.
 author: rbrundritt
 ms.author: richbrun
-ms.date: 12/08/2020
+ms.date: 2/26/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 8ea6f44c47c5cd4d223b053640f65827f46db482
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+zone_pivot_groups: azure-maps-android
+ms.openlocfilehash: 6a920dc222cae4aedd77b667644de317637bbb69
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97679297"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102047501"
 ---
 # <a name="add-a-tile-layer-to-a-map-android-sdk"></a>Hinzufügen einer Kachelebene zu einer Karte (Android SDK)
 
@@ -36,6 +37,7 @@ Die in eine Kachelebene übergebene Kachel-URL muss eine HTTP/HTTPS-URL zu einer
 * `{quadkey}`: Kachel-Quadkey-Bezeichner basierend auf der Namenskonvention des Bing Maps-Kachelsystems.
 * `{bbox-epsg-3857}`: Eine Begrenzungsrahmen-Zeichenfolge mit dem Format `{west},{south},{east},{north}` im Raumbezugssystem EPSG 3857.
 * `{subdomain}`: Ein Platzhalter für die Unterdomänenwerte, sofern angegeben.
+* `azmapsdomain.invalid`: Ein Platzhalter zum Ausrichten der Domäne und Authentifizierung von Kachelanforderungen an dieselben Werte, die von der Karte verwendet werden. Verwenden Sie diesen, wenn Sie einen von Azure Maps gehosteten Kacheldienst aufrufen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -44,6 +46,8 @@ Um den Vorgang in diesem Artikel abzuschließen, müssen Sie das [Android SDK f�
 ## <a name="add-a-tile-layer-to-the-map"></a>Hinzufügen einer Kachelebene zur Karte
 
 In diesem Beispiel wird das Erstellen einer Kachelebene veranschaulicht, die auf mehrere Kacheln verweisen. In diesem Beispiel wird das Kachelsystem „X, Y, Zoom“ verwendet. Die Quelle dieser Kachelebene stellt das [OpenSeaMap-Projekt](https://openseamap.org/index.php) dar, das per Crowdsourcing erworbene Seekarten enthält. Bei der Anzeige von Kachelebenen ist es oft wünschenswert, dass die Bezeichnungen der Städte auf der Karte deutlich zu sehen sind. Dieses Verhalten wird erreicht, indem die Kachelebene unter den Kartenbezeichnungsebenen eingefügt wird.
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 TileLayer layer = new TileLayer(
@@ -57,16 +61,31 @@ TileLayer layer = new TileLayer(
 map.layers.add(layer, "labels");
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+val layer = TileLayer(
+    tileUrl("https://tiles.openseamap.org/seamark/{z}/{x}/{y}.png"),
+    opacity(0.8f),
+    tileSize(256),
+    minSourceZoom(7),
+    maxSourceZoom(17)
+)
+
+map.layers.add(layer, "labels")
+```
+
+::: zone-end
+
 Der folgende Screenshot zeigt, wie durch den oben aufgeführten Code eine Kachelebene mit nautischen Informationen auf einer Karte mit dem Stil „Graustufen dunkel“ angezeigt wird.
 
 ![Android-Karte mit einer Kachelebene](media/how-to-add-tile-layer-android-map/xyz-tile-layer-android.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Im folgenden Artikel erfahren Sie mehr zum Festlegen von Kartenstilen.
+Im folgenden Artikel erfahren Sie mehr über Möglichkeiten zum Überlagern mit Bildern auf einer Karte.
 
 > [!div class="nextstepaction"]
-> [Ändern des Kartenstils](set-android-map-styles.md)
-
-> [!div class="nextstepaction"]
-> [Hinzufügen eines Wärmebilds](map-add-heat-map-layer-android.md)
+> [Bildebene](map-add-image-layer-android.md)

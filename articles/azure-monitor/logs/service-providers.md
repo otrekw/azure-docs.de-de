@@ -1,17 +1,16 @@
 ---
 title: Azure Monitor-Protokolle für Dienstanbieter | Microsoft-Dokumentation
 description: Mit Azure Monitor-Protokollen können Managed Service Provider (MSPs), Großunternehmen, unabhängige Softwarehersteller (Independent Software Vendors, ISVs) und Hostingdienstanbieter Server in der lokalen oder Cloudinfrastruktur des Kunden verwalten und überwachen.
-ms.subservice: logs
 ms.topic: conceptual
 author: MeirMen
 ms.author: meirm
 ms.date: 02/03/2020
-ms.openlocfilehash: 5f69de583dea14be3c7ce3ab6779af549e95de75
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 5f1421da10c4748dd78e4c6790568285fa646979
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100602100"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102047110"
 ---
 # <a name="azure-monitor-logs-for-service-providers"></a>Azure Monitor-Protokolle für Dienstanbieter
 
@@ -48,7 +47,7 @@ Die verteilte Architektur bietet folgende Vorteile:
 
 Nachteile der verteilten Architektur:
 
-* Durch die zentrale Visualisierung und Analyse von Daten mehrerer Kundenmandanten mit Tools wie z. B. Azure Monitor-Arbeitsmappen können sich Vorgänge verlangsamen, insbesondere bei der Analyse von Daten für mehr als 50 Arbeitsbereiche.
+* Durch die zentrale Visualisierung und Analyse von Daten [mehrerer Kundenmandanten](cross-workspace-query.md) mit Tools wie z. B. Azure Monitor-Arbeitsmappen können sich Vorgänge verlangsamen, insbesondere bei der Analyse von Daten für mehr als 50 Arbeitsbereiche.
 * Wenn für Kunden kein Onboarding für die delegierte Azure-Ressourcenverwaltung durchgeführt wird, müssen Administratoren des Dienstanbieters im Kundenverzeichnis bereitgestellt werden, und für den Dienstanbieter ist es schwieriger, eine große Anzahl von Kundenmandanten gleichzeitig zu verwalten.
 
 ### <a name="2-central---logs-are-stored-in-a-workspace-located-in-the-service-provider-tenant"></a>2. Zentral: Protokolle werden in einem Arbeitsbereich gespeichert, der sich im Mandanten des Dienstanbieters befindet
@@ -85,7 +84,7 @@ Es bestehen zwei Optionen zum Implementieren von Protokollen an einem zentralen 
 
 * Automatisieren Sie mit [PowerShell](../logs/powershell-workspace-configuration.md) die Erstellung von Arbeitsbereichen.
 
-* Verwenden Sie [Warnungen](../platform/alerts-overview.md) für die Integration in vorhandene Systeme.
+* Verwenden Sie [Warnungen](../alerts/alerts-overview.md) für die Integration in vorhandene Systeme.
 
 * Generieren Sie Zusammenfassungsberichte mit [Power BI](../visualize/powerbi.md).
 

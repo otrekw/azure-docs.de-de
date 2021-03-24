@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: lizross
 ms.custom: include file
-ms.openlocfilehash: 062956e4895287d943cfffa0e8e078ca8412dafc
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 5bf486da8fc17b08c4e4cc3abf163312426d5f72
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186801"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102096359"
 ---
->[!NOTE] 
->Informationen über Anzeigen oder Löschen von personenbezogenen Daten finden Sie unter [Anträge betroffener Personen für Azure im Rahmen der DSGVO](/microsoft-365/compliance/gdpr-dsr-azure). Allgemeine Informationen zur DSGVO finden Sie im [Abschnitt über DSGVO für Service Trust Portal](https://servicetrust.microsoft.com/ViewPage/GDPRGetStarted).
+> [!NOTE]
+> Informationen über Anzeigen oder Löschen von personenbezogenen Daten finden Sie unter [Anträge betroffener Personen für Azure im Rahmen der DSGVO](/microsoft-365/compliance/gdpr-dsr-azure). Weitere Informationen zur DSGVO finden Sie im [Abschnitt zur DSGVO im Microsoft Trust Center](https://www.microsoft.com/trust-center/privacy/gdpr-overview) und im [Abschnitt zur DSGVO im Service Trust Portal](https://servicetrust.microsoft.com/ViewPage/GDPRGetStarted).

@@ -1,23 +1,18 @@
 ---
 title: Durchführen des Onboardings für eine Verwaltungsgruppe in Azure Security Center
 description: Es wird beschrieben, wie Sie eine bereitgestellte Azure Policy-Definition verwenden, um Azure Security Center für alle Abonnements einer Verwaltungsgruppe zu aktivieren.
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
 ms.service: security-center
-ms.devlang: na
-ms.topic: overview
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 10/10/2020
+ms.topic: how-to
+ms.date: 03/11/2021
 ms.author: memildin
-ms.openlocfilehash: 31472b0a0eedee03d5cfcb6ff47a97033a8c78e0
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 01036343e2585adf7c09ad3f0d236948a537fc29
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98796063"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103016558"
 ---
 # <a name="enable-security-center-on-all-subscriptions-in-a-management-group"></a>Aktivieren von Security Center in allen Abonnements einer Verwaltungsgruppe
 
@@ -60,7 +55,7 @@ Es gibt verschiedene Möglichkeiten, wie Sie die Azure Policy-Definition ändern
     Mit der bereitgestellten Definition werden *beide* unten angegebenen Preiseinstellungen als konform festgelegt. Dies bedeutet, dass ein Abonnement, das auf „Standard“ oder „Free“ festgelegt ist, konform ist.
 
     > [!TIP]
-    > Wenn ein Azure Defender-Plan aktiviert wird, wird er so beschrieben, dass die Einstellung „Standard“ gilt. Wenn er deaktiviert ist, gilt „Free“. [Erfahren Sie mehr zu Azure Defender-Plänen](security-center-pricing.md).
+    > Wenn ein Azure Defender-Plan aktiviert ist, wird er in einer Richtliniendefinition als auf „Standard“ festgelegt beschrieben. Wenn er deaktiviert ist, gilt „Free“. Weitere Informationen zu den Unterschieden zwischen diesen Plänen finden Sie unter [Security Center Free und Azure Defender-Aktivierung](security-center-pricing.md). 
 
     ```
     "existenceCondition": {
@@ -98,4 +93,4 @@ Es gibt verschiedene Möglichkeiten, wie Sie die Azure Policy-Definition ändern
 Nachdem Sie nun das Onboarding für eine komplette Verwaltungsgruppe durchgeführt haben, aktivieren Sie als Nächstes den erweiterten Schutz von Azure Defender. 
 
 > [!div class="nextstepaction"]
-> [Aktivieren von Azure Defender](security-center-pricing.md#enable-azure-defender)
+> [Aktivieren von Azure Defender](enable-azure-defender.md)

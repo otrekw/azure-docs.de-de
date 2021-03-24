@@ -1,26 +1,21 @@
 ---
 title: Anzeigen von Aktivitätsprotokollen für Azure RBAC-Änderungen
-description: Anzeigen von Aktivitätsprotokollen für Azure RBAC-Änderungen (Azure Role-Based Access Control, auf Azure-Rollen basierte Zugriffssteuerung) an Azure-Ressourcen für die letzten 90 Tage.
+description: Anzeigen von Aktivitätsprotokollen für Azure RBAC-Änderungen (Azure Role-Based Access Control, auf Azure-Rollen basierte Zugriffssteuerung) für die letzten 90 Tage.
 services: active-directory
-documentationcenter: ''
 author: rolyon
 manager: mtillman
-ms.assetid: 2bc68595-145e-4de3-8b71-3a21890d13d9
 ms.service: role-based-access-control
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/27/2020
+ms.date: 03/01/2021
 ms.author: rolyon
-ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017, devx-track-azurecli
-ms.openlocfilehash: 53b72ac22df845f88dc82b14aa5dfaa57973b0d1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d9b39bc9a2f00fe83cae0ff78c6346042967e8bf
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100595844"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042124"
 ---
 # <a name="view-activity-logs-for-azure-rbac-changes"></a>Anzeigen von Aktivitätsprotokollen für Azure RBAC-Änderungen
 
@@ -41,6 +36,10 @@ Der einfachste Einstieg besteht im Anzeigen der Aktivitätsprotokolle im Azure-P
 
 ![Screenshot: Aktivitätsprotokolle im Portal](./media/change-history-report/activity-log-portal.png)
 
+Um weitere Informationen zu erhalten, klicken Sie auf einen Eintrag, um den Zusammenfassungsbereich zu öffnen. Klicken Sie auf die Registerkarte **JSON**, um ein detailliertes Protokoll zu erhalten.
+
+![Aktivitätsprotokolle über das Portal mit geöffnetem Zusammenfassungsbereich – Screenshot](./media/change-history-report/activity-log-summary-portal.png)
+
 Das Aktivitätsprotokoll im Portal verfügt über mehrere Filter. Im Folgenden die Filter für die auf Azure-Rollen basierte Zugriffssteuerung:
 
 | Filtern | value |
@@ -50,9 +49,24 @@ Das Aktivitätsprotokoll im Portal verfügt über mehrere Filter. Im Folgenden d
 
 Weitere Informationen zu Aktivitätsprotokollen finden Sie unter [Anzeigen von Aktivitätsprotokollen, um Aktionen an Ressourcen zu überwachen](../azure-resource-manager/management/view-activity-logs.md?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json).
 
-## <a name="azure-powershell"></a>Azure PowerShell
 
-[!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
+## <a name="interpret-a-log-entry"></a>Interpretieren eines Protokolleintrags
+
+Die Protokollausgabe der Registerkarte „JSON“, von Azure PowerShell oder Azure CLI kann viele Informationen enthalten. Im Folgenden finden Sie einige der Schlüsseleigenschaften, nach denen Sie suchen können, wenn Sie versuchen, einen Protokolleintrag zu interpretieren. Möglichkeiten zum Filtern der Protokollausgabe mit Azure PowerShell oder Azure CLI finden Sie in den folgenden Abschnitten.
+
+> [!div class="mx-tableFixed"]
+> | Eigenschaft | Beispielwerte | BESCHREIBUNG |
+> | --- | --- | --- |
+> | authorization:action | Microsoft.Authorization/roleAssignments/write | Erstellen von Rollenzuweisungen |
+> |  | Microsoft.Authorization/roleAssignments/delete | Löschen von Rollenzuweisungen |
+> |  | Microsoft.Authorization/roleDefinitions/write | Erstellen oder Aktualisieren einer Rollendefinition |
+> |  | Microsoft.Authorization/roleDefinitions/delete | Löschen einer Rollendefinition |
+> | authorization:scope | /subscriptions/{subscriptionId}<br/>/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId} | Bereich für die Aktion |
+> | caller | admin@example.com<br/>{objectId} | Der Benutzer oder das System, von dem die Aktion initiiert wurde |
+> | eventTimestamp | 2021-03-01T22:07:41.126243Z | Zeitpunkt der Aktion |
+> | status:value | Gestartet<br/>Erfolgreich<br/>Fehler | Status der Aktion |
+
+## <a name="azure-powershell"></a>Azure PowerShell
 
 Verwenden Sie den Befehl [Get-AzLog](/powershell/module/Az.Monitor/Get-AzLog), um Aktivitätsprotokolle mit Azure PowerShell anzuzeigen.
 
@@ -68,56 +82,115 @@ Dieser Befehl führt alle Änderungen an der Rollendefinition in einer Ressource
 Get-AzLog -ResourceGroupName pharma-sales -StartTime (Get-Date).AddDays(-7) | Where-Object {$_.Authorization.Action -like 'Microsoft.Authorization/roleDefinitions/*'}
 ```
 
-Dieser Befehl führt alle Änderungen an der Rollenzuweisung und der Rollendefinition in einem Abonnement für die letzten sieben Tage auf und stellt die Ergebnisse in einer Liste dar:
+### <a name="filter-log-output"></a>Filtern der Protokollausgabe
+
+Die Protokollausgabe kann viele Informationen enthalten. Dieser Befehl führt alle Änderungen an der Rollenzuweisung und der Rollendefinition in einem Abonnement für die letzten sieben Tage auf und filtert die Ausgabe:
 
 ```azurepowershell
 Get-AzLog -StartTime (Get-Date).AddDays(-7) | Where-Object {$_.Authorization.Action -like 'Microsoft.Authorization/role*'} | Format-List Caller,EventTimestamp,{$_.Authorization.Action},Properties
 ```
 
-```Example
-Caller                  : alain@example.com
-EventTimestamp          : 2/27/2020 9:18:07 PM
+Folgendes zeigt ein Beispiel für die gefilterte Protokollausgabe beim Erstellen einer Rollenzuweisung:
+
+```azurepowershell
+Caller                  : admin@example.com
+EventTimestamp          : 3/1/2021 10:07:42 PM
 $_.Authorization.Action : Microsoft.Authorization/roleAssignments/write
 Properties              :
                           statusCode     : Created
-                          serviceRequestId: 11111111-1111-1111-1111-111111111111
+                          serviceRequestId: {serviceRequestId}
                           eventCategory  : Administrative
+                          entity         : /subscriptions/{subscriptionId}/resourceGroups/example-group/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId}
+                          message        : Microsoft.Authorization/roleAssignments/write
+                          hierarchy      : {tenantId}/{subscriptionId}
 
-Caller                  : alain@example.com
-EventTimestamp          : 2/27/2020 9:18:05 PM
+Caller                  : admin@example.com
+EventTimestamp          : 3/1/2021 10:07:41 PM
 $_.Authorization.Action : Microsoft.Authorization/roleAssignments/write
 Properties              :
-                          requestbody    : {"Id":"22222222-2222-2222-2222-222222222222","Properties":{"PrincipalId":"33333333-3333-3333-3333-333333333333","RoleDefinitionId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers
-                          /Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c","Scope":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales"}}
+                          requestbody    : {"Id":"{roleAssignmentId}","Properties":{"PrincipalId":"{principalId}","PrincipalType":"User","RoleDefinitionId":"/providers/Microsoft.Authorization/roleDefinitions/fa23ad8b-c56e-40d8-ac0c-ce449e1d2c64","Scope":"/subscriptions/
+                          {subscriptionId}/resourceGroups/example-group"}}
+                          eventCategory  : Administrative
+                          entity         : /subscriptions/{subscriptionId}/resourceGroups/example-group/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId}
+                          message        : Microsoft.Authorization/roleAssignments/write
+                          hierarchy      : {tenantId}/{subscriptionId}
 
 ```
 
-Wenn Sie einen Dienstprinzipal zum Erstellen von Rollenzuweisungen verwenden, ist der Wert der Caller-Eigenschaft eine Objekt-ID. Sie können mithilfe von [Get-AzADServicePrincipal](/powershell/module/az.resources/get-azadserviceprincipal) Informationen zum Dienstprinzipal abrufen.
+Wenn Sie einen Dienstprinzipal zum Erstellen von Rollenzuweisungen verwenden, ist der Wert der Caller-Eigenschaft eine Objekt-ID des Dienstprinzipals. Sie können mithilfe von [Get-AzADServicePrincipal](/powershell/module/az.resources/get-azadserviceprincipal) Informationen zum Dienstprinzipal abrufen.
 
 ```Example
-Caller                  : 44444444-4444-4444-4444-444444444444
-EventTimestamp          : 6/4/2020 9:43:08 PM
+Caller                  : {objectId}
+EventTimestamp          : 3/1/2021 9:43:08 PM
 $_.Authorization.Action : Microsoft.Authorization/roleAssignments/write
 Properties              : 
                           statusCode     : Created
-                          serviceRequestId: 55555555-5555-5555-5555-555555555555
-                          category       : Administrative
+                          serviceRequestId: {serviceRequestId}
+                          eventCategory  : Administrative
 ```
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Verwenden Sie den Befehl [az monitor activity-log list](/cli/azure/monitor/activity-log#az-monitor-activity-log-list), um Aktivitätsprotokolle mit der Azure CLI anzuzeigen.
+Verwenden Sie den Befehl [az monitor activity-log list](/cli/azure/monitor/activity-log#az_monitor_activity_log_list), um Aktivitätsprotokolle mit der Azure CLI anzuzeigen.
 
-Dieser Befehl listet die Aktivitätsprotokolle in einer Ressourcengruppe vom 27. Februar auf und blickt sieben Tage voraus:
+Dieser Befehl listet die Aktivitätsprotokolle in einer Ressourcengruppe vom 1. März auf und blickt sieben Tage voraus:
 
 ```azurecli
-az monitor activity-log list --resource-group pharma-sales --start-time 2020-02-27 --offset 7d
+az monitor activity-log list --resource-group example-group --start-time 2021-03-01 --offset 7d
 ```
 
-Dieser Befehl listet die Aktivitätsprotokolle für den Autorisierungsressourcenanbieter vom 27. Februar auf und blickt sieben Tage voraus:
+Dieser Befehl listet die Aktivitätsprotokolle für den Autorisierungsressourcenanbieter vom 1. März auf und blickt sieben Tage voraus:
 
 ```azurecli
-az monitor activity-log list --namespace "Microsoft.Authorization" --start-time 2020-02-27 --offset 7d
+az monitor activity-log list --namespace "Microsoft.Authorization" --start-time 2021-03-01 --offset 7d
+```
+
+### <a name="filter-log-output"></a>Filtern der Protokollausgabe
+
+Die Protokollausgabe kann viele Informationen enthalten. Dieser Befehl führt alle Änderungen an der Rollenzuweisung und der Rollendefinition in einem Abonnement sieben Tage vorausblickend auf und filtert die Ausgabe:
+
+```azurecli
+az monitor activity-log list --namespace "Microsoft.Authorization" --start-time 2021-03-01 --offset 7d --query '[].{authorization:authorization, caller:caller, eventTimestamp:eventTimestamp, properties:properties}'
+```
+
+Folgendes zeigt ein Beispiel für die gefilterte Protokollausgabe beim Erstellen einer Rollenzuweisung:
+
+```azurecli
+[
+ {
+    "authorization": {
+      "action": "Microsoft.Authorization/roleAssignments/write",
+      "role": null,
+      "scope": "/subscriptions/{subscriptionId}/resourceGroups/example-group/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId}"
+    },
+    "caller": "admin@example.com",
+    "eventTimestamp": "2021-03-01T22:07:42.456241+00:00",
+    "properties": {
+      "entity": "/subscriptions/{subscriptionId}/resourceGroups/example-group/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId}",
+      "eventCategory": "Administrative",
+      "hierarchy": "{tenantId}/{subscriptionId}",
+      "message": "Microsoft.Authorization/roleAssignments/write",
+      "serviceRequestId": "{serviceRequestId}",
+      "statusCode": "Created"
+    }
+  },
+  {
+    "authorization": {
+      "action": "Microsoft.Authorization/roleAssignments/write",
+      "role": null,
+      "scope": "/subscriptions/{subscriptionId}/resourceGroups/example-group/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId}"
+    },
+    "caller": "admin@example.com",
+    "eventTimestamp": "2021-03-01T22:07:41.126243+00:00",
+    "properties": {
+      "entity": "/subscriptions/{subscriptionId}/resourceGroups/example-group/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId}",
+      "eventCategory": "Administrative",
+      "hierarchy": "{tenantId}/{subscriptionId}",
+      "message": "Microsoft.Authorization/roleAssignments/write",
+      "requestbody": "{\"Id\":\"{roleAssignmentId}\",\"Properties\":{\"PrincipalId\":\"{principalId}\",\"PrincipalType\":\"User\",\"RoleDefinitionId\":\"/providers/Microsoft.Authorization/roleDefinitions/fa23ad8b-c56e-40d8-ac0c-ce449e1d2c64\",\"Scope\":\"/subscriptions/{subscriptionId}/resourceGroups/example-group\"}}"
+    }
+  }
+]
 ```
 
 ## <a name="azure-monitor-logs"></a>Azure Monitor-Protokolle
@@ -139,7 +212,7 @@ Folgende Schritte sind für den Einstieg grundlegend:
 
    ![Option „Azure Monitor-Protokolle“ im Portal](./media/change-history-report/azure-log-analytics-option.png)
 
-1. Verwenden Sie optional [Azure Monitor Log Analytics](../azure-monitor/logs/log-analytics-tutorial.md), um die Protokolle abzufragen und anzuzeigen. Weitere Informationen finden Sie unter [Erste Schritte mit Azure Monitor-Protokollabfragen](../azure-monitor/logs/get-started-queries.md).
+1. Verwenden Sie optional [Azure Monitor Log Analytics](../azure-monitor/logs/log-analytics-tutorial.md), um die Protokolle abzufragen und anzuzeigen. Weitere Informationen finden Sie unter [Erste Schritte mit Protokollabfragen in Azure Monitor](../azure-monitor/logs/get-started-queries.md).
 
 Im Folgenden finden Sie eine Abfrage, die neue Rollenzuweisungen zurückgibt, die vom Anbieter der Zielressource geordnet wurden:
 
@@ -162,5 +235,5 @@ AzureActivity
 ![Screenshot: Aktivitätsprotokolle im Advanced Analytics-Portal](./media/change-history-report/azure-log-analytics.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Anzeigen von Ereignissen im Aktivitätsprotokoll](../azure-resource-manager/management/view-activity-logs.md?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)
-* [Monitor Subscription Activity with the Azure Activity Log (Überwachen der Abonnementaktivität per Azure-Aktivitätsprotokoll)](../azure-monitor/essentials/platform-logs-overview.md)
+* [Anzeigen von Aktivitätsprotokollen zur Überwachung von Aktionen in Ressourcen](../azure-resource-manager/management/view-activity-logs.md?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)
+* [Überwachen der Abonnementaktivität per Azure-Aktivitätsprotokoll](../azure-monitor/essentials/platform-logs-overview.md)

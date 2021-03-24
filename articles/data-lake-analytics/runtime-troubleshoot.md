@@ -5,12 +5,12 @@ ms.reviewer: jasonh
 ms.service: data-lake-analytics
 ms.topic: troubleshooting
 ms.date: 10/10/2019
-ms.openlocfilehash: 41b7c80c85331f288343351749e6b2e5292b30c6
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 1236b83b410057e55015391772e37bd461a448d0
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95241606"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102030612"
 ---
 # <a name="learn-how-to-troubleshoot-u-sql-runtime-failures-due-to-runtime-changes"></a>Problembehandlung für U-SQL-Laufzeitfehler aufgrund von Laufzeitänderungen
 
@@ -55,7 +55,7 @@ Es können zwei Probleme mit der Laufzeitversion auftreten:
 
 ## <a name="known-issues"></a>Bekannte Probleme
 
-* Das Verweisen auf die Datei „Newtonsoft.Json“ ab Version 12.0.3 in einem USQL-Skript führt zu folgendem Kompilierungsfehler:
+1. Das Verweisen auf die Datei „Newtonsoft.Json“ ab Version 12.0.3 in einem USQL-Skript führt zu folgendem Kompilierungsfehler:
 
     *„In Ihrem Data Lake Analytics-Konto ausgeführte Aufträge werden wahrscheinlich langsamer ausgeführt oder können nicht erfolgreich abgeschlossen werden. Ein unerwartetes Problem verhindert eine automatische Wiederherstellung dieser Funktionalität für Ihr Azure Data Lake Analytics-Konto. Die Azure Data Lake-Techniker wurden informiert, um das Problem zu untersuchen.“*  
 
@@ -65,6 +65,10 @@ Es können zwei Probleme mit der Laufzeitversion auftreten:
     `...`
 
     **Lösung**: Verwenden Sie höchstens Version 12.0.2 der Datei „Newtonsoft.Json“.
+2. Kunden sehen möglicherweise temporäre Dateien und Ordner in ihrem Speicher. Diese werden im Rahmen der normalen Auftragsausführung erstellt, aber normalerweise gelöscht, bevor sie von den Kunden gesehen werden. Unter bestimmten Umständen, die selten und zufällig sind, bleiben sie möglicherweise für einen bestimmten Zeitraum sichtbar. Sie werden schließlich gelöscht und nie als Teil des Benutzerspeichers gezählt und generieren keinerlei Gebühren. Abhängig von der Auftragslogik des Kunden kann dies zu Problemen führen. Wenn der Auftrag z. B. alle Dateien im Ordner aufzählt und dann Dateilisten vergleicht, kann dies möglicherweise fehlschlagen, weil unerwartete temporäre Dateien vorhanden sind. Wenn ein Downstreamauftrag für die weitere Verarbeitung alle Dateien aus einem bestimmten Ordner aufzählt, zählt er möglicherweise auch die temporären Dateien auf.  
+
+    **Lösung**: Eine Korrektur wird in der Laufzeit identifiziert, in der die temporären Dateien in einem temporären Ordner auf Kontoebene gespeichert werden und nicht im aktuellen Ausgabeordner. Die temporären Dateien werden in diesen neuen temporären Ordner geschrieben und am Ende der Auftragsausführung gelöscht.  
+    Da diese Korrektur die Kundendaten verarbeitet, ist es äußerst wichtig, diese Korrektur in MSFT vor der Veröffentlichung zu validieren. Es wird davon ausgegangen, dass diese Korrektur in der Mitte des Jahres 2021 als Beta-Laufzeit und in der zweiten Hälfte des Jahres 2021 als Standardlaufzeit verfügbar ist. 
 
 
 ## <a name="see-also"></a>Weitere Informationen
