@@ -6,12 +6,12 @@ ms.author: nisgoel
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: 4859ff098bf3fdffbecc70608cb147d17d9d7f59
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 7957041c9d445f4239b8f0100128a531d982b451
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98941167"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871553"
 ---
 # <a name="integrate-apache-zeppelin-with-hive-warehouse-connector-in-azure-hdinsight"></a>Integrieren von Apache Zeppelin mit Hive Warehouse Connector in Azure HDInsight
 
@@ -97,11 +97,11 @@ Die folgenden Konfigurationen sind für den Zugriff auf Hive-Tabellen über Zepp
 
     * Navigieren Sie in einem Webbrowser zu `https://CLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/summary`. Hierbei ist „CLUSTERNAME“ der Name Ihres Interactive Query-Clusters. Klicken Sie auf **HiveServer2 Interactive**. Sie sehen den vollqualifizierten Domänennamen (FQDN) des Hauptknotens, auf dem LLAP ausgeführt wird, wie im Screenshot gezeigt. Ersetzen Sie `<llap-headnode>` durch diesen Wert.
 
-        ![Hauptknoten des Hive Warehouse Connectors](./media/apache-hive-warehouse-connector/head-node-hive-server-interactive.png)
+        :::image type="content" source="./media/apache-hive-warehouse-connector/head-node-hive-server-interactive.png" alt-text="Hauptknoten des Hive Warehouse Connectors" border="true":::
 
     * Verwenden Sie den [Befehl „ssh“](../hdinsight-hadoop-linux-use-ssh-unix.md), um eine Verbindung mit Ihrem Interactive Query-Cluster herzustellen. Suchen Sie in der Datei `/etc/krb5.conf` nach dem Parameter `default_realm`. Ersetzen Sie `<AAD-DOMAIN>` durch diesen Wert als Zeichenfolge in Großbuchstaben, da die Anmeldeinformationen andernfalls nicht gefunden werden.
 
-        ![Hive Warehouse Connector Azure AD-Domäne](./media/apache-hive-warehouse-connector/aad-domain.png)
+        :::image type="content" source="./media/apache-hive-warehouse-connector/aad-domain.png" alt-text="Hive Warehouse Connector Azure AD-Domäne" border="true":::
 
     * Beispielsweise `hive/hn0-ng36ll.mjry42ikpruuxgs2qy2kpg4q5e.cx.internal.cloudapp.net@PKRSRVUQVMAE6J85.D2.INTERNAL.CLOUDAPP.NET`.
 

@@ -17,17 +17,17 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 963c59cc002fec7ad0d882db19a83f4299a506c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85357153"
 ---
 # <a name="sync-service-manager-metaverse-search"></a>Synchronization Service Manager – Metaverse Search
 
 ![Synchronization Service Manager](./media/how-to-connect-sync-service-manager-ui-mvsearch/mvsearch.png)
 
-Die Registerkarte „Metaverse Search“ ist nützlich für die Behandlung von Datenproblemen. In der oberen Hälfte können Sie eine auf einer Kombination von Attributen basierende Abfrage erstellen. Wenn Sie mit Ihrer Abfrage zufrieden sind, klicken Sie auf **Suchen**. Das Ergebnis wird im unteren Raster angezeigt. Mit **Spalteneinstellungen**können Sie auswählen, welche Spalten sichtbar sein sollen.
+Die Registerkarte „Metaverse Search“ ist nützlich für die Behandlung von Datenproblemen. In der oberen Hälfte können Sie eine auf einer Kombination von Attributen basierende Abfrage erstellen. Wenn Sie mit Ihrer Abfrage zufrieden sind, klicken Sie auf **Suchen**. Das Ergebnis wird im unteren Raster angezeigt. Mit **Spalteneinstellungen** können Sie auswählen, welche Spalten sichtbar sein sollen.
 
 Wählen Sie in den Suchergebnissen ein Objekt und **Eigenschaften** aus, um die [Metaverse-Objekteigenschaften](tshoot-connect-object-not-syncing.md#metaverse-object-properties)anzuzeigen.
 

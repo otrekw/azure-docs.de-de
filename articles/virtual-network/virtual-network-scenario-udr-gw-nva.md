@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2016
 ms.author: kumud
 ms.openlocfilehash: 1d2dde4e77a39b114f721cd6d2be250141984e7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86231708"
 ---
 # <a name="virtual-appliance-scenario"></a>Szenario für virtuelle Geräte
@@ -72,7 +72,7 @@ Dieses Beispiel umfasst ein Abonnement, das Folgendes enthält:
 ## <a name="user-defined-routing-udr"></a>Benutzerdefiniertes Routing
 Jedes Subnetz in Azure kann mit einer benutzerdefinierten Routingtabelle verknüpft werden, in der definiert wird, wie der im jeweiligen Subnetz initiierte Datenverkehr weitergeleitet wird. Wenn keine benutzerdefinierten Routen definiert sind, werden Standardrouten verwendet, um die Weiterleitung des Datenverkehrs zwischen den Subnetzen zu ermöglichen. Weiterführende Informationen zu benutzerdefinierten Routen finden Sie unter [Was sind benutzerdefinierte Routen und IP-Weiterleitung?](virtual-networks-udr-overview.md).
 
-Um sicherzustellen, dass die Kommunikation basierend auf der letzten oben angeführten Anforderung über das richtige Firewallgerät erfolgt, müssen Sie in **azurevnet**die folgende Routingtabelle mit benutzerdefinierten Routen erstellen.
+Um sicherzustellen, dass die Kommunikation basierend auf der letzten oben angeführten Anforderung über das richtige Firewallgerät erfolgt, müssen Sie in **azurevnet** die folgende Routingtabelle mit benutzerdefinierten Routen erstellen.
 
 ### <a name="azgwudr"></a>azgwudr
 In diesem Szenario wird nur der Datenverkehr von lokalen Quellen zu Azure zum Verwalten der Firewalls durch Verbinden mit **AZF3** verwendet. Dieser Datenverkehr muss über die interne Firewall **AZF2** geleitet werden. Daher ist nur eine Route im **GatewaySubnet** erforderlich (siehe unten).
@@ -121,7 +121,7 @@ Als Beispiel soll die folgende Konfiguration in einem Azure-VNET dienen:
 
 Wenn nun **onpremvm1** versucht, eine Verbindung mit **onpremvm2** herzustellen, wird die benutzerdefinierte Route verwendet, und der Datenverkehr wird an **OPFW** als nächsten Hop gesendet. Bedenken Sie dabei, dass das eigentliche Paketziel nicht geändert wird, als Ziel ist weiterhin **onpremvm2** angegeben. 
 
-Wenn die IP-Weiterleitung für **OPFW**nicht aktiviert ist, werden die Pakete in der virtuellen Azure-Netzwerklogik ausgelassen, da Pakete nur an einen virtuellen Computer gesendet werden können, wenn die IP-Adresse des virtuellen Computers als Ziel für das Paket festgelegt ist.
+Wenn die IP-Weiterleitung für **OPFW** nicht aktiviert ist, werden die Pakete in der virtuellen Azure-Netzwerklogik ausgelassen, da Pakete nur an einen virtuellen Computer gesendet werden können, wenn die IP-Adresse des virtuellen Computers als Ziel für das Paket festgelegt ist.
 
 Mit der IP-Weiterleitung werden die Pakete an OPFW weitergeleitet, ohne dass die ursprüngliche Zieladresse geändert wird. **OPFW** muss die Pakete verarbeiten. Zudem muss festgelegt werden, wie mit den Paketen weiter verfahren wird.
 
@@ -163,8 +163,8 @@ In diesem Szenario werden keine Netzwerksicherheitsgruppen verwendet. Sie könne
 Führen Sie zum Bereitstellen dieses Szenarios die oben beschriebenen Schritte aus.
 
 1. Melden Sie sich bei Ihrem Azure-Abonnement an.
-2. Wenn Sie ein VNET zum Imitieren des lokalen Netzwerks bereitstellen möchten, geben Sie die Ressourcen an, die zu **ONPREMRG**gehören.
-3. Geben Sie die Ressourcen an, die zu **AZURERG**gehören.
+2. Wenn Sie ein VNET zum Imitieren des lokalen Netzwerks bereitstellen möchten, geben Sie die Ressourcen an, die zu **ONPREMRG** gehören.
+3. Geben Sie die Ressourcen an, die zu **AZURERG** gehören.
 4. Geben Sie den Tunnel zwischen **onpremvnet** und **azurevnet** an.
 5. Nachdem Sie alle Ressourcen angegeben haben, melden Sie sich bei **onpremvm2** an, und pingen Sie 10.0.3.101, um die Verbindung zwischen **onpremsn2** und **azsn3** zu testen.
 

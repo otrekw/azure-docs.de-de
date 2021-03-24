@@ -6,12 +6,12 @@ ms.author: nisgoel
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/22/2020
-ms.openlocfilehash: 20567a1e38686b5d452a5353bc459e7e1125f499
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 1799aff8bff96d404ddcbefbf58a5f5014cdba6a
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98941294"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871587"
 ---
 # <a name="apache-spark-operations-supported-by-hive-warehouse-connector-in-azure-hdinsight"></a>Vom Hive Warehouse Connector unterstützte Apache Spark-Vorgänge in Azure HDInsight
 
@@ -37,7 +37,7 @@ Führen Sie die folgenden Schritte aus, um eine spark-shell-Sitzung zu starten:
     ls /usr/hdp/current/hive_warehouse_connector
     ```
 
-1. Fügen Sie die oben ermittelte Version von `hive-warehouse-connector-assembly` an der entsprechenden Stelle im Code ein. Führen Sie anschließend den Befehl aus, um die Spark-Shell zu starten:
+1. Bearbeiten Sie den unten angegebenen Code, indem Sie die oben ermittelte Version für `hive-warehouse-connector-assembly` verwenden. Führen Sie anschließend den Befehl aus, um die Spark-Shell zu starten:
 
     ```bash
     spark-shell --master yarn \
@@ -86,7 +86,7 @@ Spark bietet keine native Unterstützung für das Schreiben in verwaltete ACID-T
     hive.table("sampletable_colorado").show()
     ```
     
-    ![Hive Warehouse Connector – Anzeigen der Hive-Tabelle](./media/apache-hive-warehouse-connector/hive-warehouse-connector-show-hive-table.png)
+    :::image type="content" source="./media/apache-hive-warehouse-connector/hive-warehouse-connector-show-hive-table.png" alt-text="Hive Warehouse Connector – Anzeigen der Hive-Tabelle" border="true":::
 
 
 ## <a name="structured-streaming-writes"></a>Schreibvorgänge per strukturiertem Stream

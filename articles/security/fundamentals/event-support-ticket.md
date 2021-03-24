@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/13/2017
 ms.author: terrylan
 ms.openlocfilehash: fc5899fe5aca4bbaa9250cf41b240816e2cbedb0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "80548585"
 ---
 # <a name="how-to-log-a-security-event-support-ticket"></a>Erstellen eines Tickets beim Support für Sicherheitsereignisse
@@ -43,7 +43,7 @@ ms.locfileid: "80548585"
     - Geben Sie in jeder problembezogenen Korrespondenz die Bestätigungsnummer an.
     - Sie können den Status Ihres Problems jederzeit einsehen.
 
-5. Was geschieht als Nächstes? Je nach Problem und Schweregrad wird einer der folgenden Schritte unternommen:
+5. Wie geht es weiter? Je nach Problem und Schweregrad wird einer der folgenden Schritte unternommen:
 
     - Wir teilen Ihnen das Ergebnis unserer Bewertung mit. Je nach Ergebnis der Bewertung fordern wir Sie auf, Ihr Angebot zu entfernen oder zu überarbeiten. In diesem Fall arbeiten wir gemeinsam mit Ihnen daran, die Störungen für betroffene Kunden so gering wie möglich zu halten.
     - Wir arbeiten mit Ihnen zusammen, um die Auswirkungen des Incidents/des Sicherheitsrisikos für unsere gemeinsamen Kunden abzumildern.

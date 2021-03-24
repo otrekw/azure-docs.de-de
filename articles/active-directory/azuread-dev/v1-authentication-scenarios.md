@@ -15,10 +15,10 @@ ms.reviewer: saeeda, sureshja, hirsin
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 36b39f3706db615e40ebfadebf36be4d8b29c33e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "80154728"
 ---
 # <a name="what-is-authentication"></a>Was ist Authentifizierung?
@@ -133,9 +133,9 @@ Die folgende Tabelle enthält eine kurze Beschreibung der einzelnen Anspruchsart
 | Issuer (Aussteller) | Der STS, der das Token ausgestellt hat, sowie der Azure AD-Mandant. |
 | Last Name (Nachname) | Der Nachname des Benutzers gemäß Angabe in Azure AD. |
 | Name | Ein lesbarer Wert, der Aufschluss über den Antragsteller des Tokens gibt. |
-| ObjectID | Ein unveränderlicher, eindeutiger Bezeichner des Antragstellers in Azure AD. |
+| Objekt-ID | Ein unveränderlicher, eindeutiger Bezeichner des Antragstellers in Azure AD. |
 | Rollen | Anzeigenamen von Azure AD-Anwendungsrollen, die dem Benutzer erteilt wurden. |
-| `Scope` | Die Berechtigungen, die der Clientanwendung gewährt wurden. |
+| Bereich | Die Berechtigungen, die der Clientanwendung gewährt wurden. |
 | Subject | Der Prinzipal, für den das Token Informationen bestätigt. |
 | Mandanten-ID | Ein unveränderlicher, eindeutiger Bezeichner des Verzeichnismandanten, der das Token ausgestellt hat. |
 | Tokengültigkeitsdauer | Das Zeitintervall, für das ein Token gültig ist. |

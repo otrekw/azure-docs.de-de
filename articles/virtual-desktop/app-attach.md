@@ -7,10 +7,10 @@ ms.date: 12/14/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 5e45c51735e0b7ab4b263d3f3047b5848c82439d
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98185766"
 ---
 # <a name="create-powershell-scripts-for-msix-app-attach-preview"></a>Erstellen von PowerShell-Skripts für MSIX App Attach (Vorschau)
@@ -23,7 +23,7 @@ ms.locfileid: "98185766"
 In diesem Thema erfahren Sie, wie Sie PowerShell-Skripts für MSIX App Attach einrichten.
 
 >[!IMPORTANT]
->Bevor Sie beginnen, sollten Sie [dieses Formular](https://aka.ms/enablemsixappattach) ausfüllen und übermitteln, um MSIX App Attach in Ihrem Abonnement zu aktivieren. Wenn Ihre Anforderung noch nicht genehmigt wurde, funktioniert MSIX App Attach nicht. Die Genehmigung von Anforderungen kann an Werktagen bis zu 24 Stunden dauern. Sie erhalten eine E-Mail, wenn Ihre Anforderung akzeptiert und abgeschlossen wurde.
+>Bevor Sie beginnen, sollten Sie [dieses Formular](https://aka.ms/enablemsixappattach) ausfüllen und übermitteln, um MSIX App Attach in Ihrem Abonnement zu aktivieren. Wenn Ihre Anforderung noch nicht genehmigt wurde, funktioniert das MSIX-Feature zum Anfügen von Apps nicht. Die Genehmigung von Anforderungen kann an Werktagen bis zu 24 Stunden dauern. Sie erhalten eine E-Mail, wenn Ihre Anforderung akzeptiert und abgeschlossen wurde.
 
 ## <a name="install-certificates"></a>Installieren von Zertifikaten
 
@@ -87,7 +87,7 @@ Bevor Sie die PowerShell-Skripts aktualisieren, stellen Sie sicher, dass Sie üb
     Possible values for VolumeName along with current mount points are:
 
     \\?\Volume{a12b3456-0000-0000-0000-10000000000}\
-    **_ NO MOUNT POINTS _*_
+    *** NO MOUNT POINTS ***
 
     \\?\Volume{c78d9012-0000-0000-0000-20000000000}\
         E:\
@@ -98,7 +98,7 @@ Bevor Sie die PowerShell-Skripts aktualisieren, stellen Sie sicher, dass Sie üb
     ```
 
 
-6.  Aktualisieren Sie die Variable _ *$volumeGuid** mit der soeben kopierten Volume-GUID.
+6.  Aktualisieren Sie die Variable **$volumeGuid** mit der soeben kopierten Volume-GUID.
 
 7. Öffnen Sie eine PowerShell-Eingabeaufforderung mit Administratorrechten, und aktualisieren Sie das folgende PowerShell-Skript mit den Variablen, die für Ihre Umgebung gelten.
 

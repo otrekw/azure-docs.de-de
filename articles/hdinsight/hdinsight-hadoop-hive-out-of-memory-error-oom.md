@@ -6,12 +6,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive
 ms.date: 11/28/2019
-ms.openlocfilehash: c0810d33f3ac939b9382bf321448ed72b6d87474
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: d1e8f596ee022a59baa89e7f78648c98420eb44b
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945711"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868867"
 ---
 # <a name="fix-an-apache-hive-out-of-memory-error-in-azure-hdinsight"></a>Beheben eines Fehlers vom Typ „Nicht genügend Apache Hive-Arbeitsspeicher“ in Azure HDInsight
 
@@ -104,7 +104,7 @@ In der Datei „hive-site.xml“ war **hive.auto.convert.join.noconditionaltask*
 
 Wahrscheinlich war der Kartenjoin die Ursache für den OOM-Fehler im Java-Heapspeicher. Wie im Blogbeitrag [Hadoop Yarn memory settings in HDInsight](/archive/blogs/shanyu/hadoop-yarn-memory-settings-in-hdinsight) (Hadoop Yarn-Arbeitsspeichereinstellungen in HDInsight) erläutert, gehört der bei Einsatz der Tez-Ausführungs-Engine verwendete Heapspeicher tatsächlich zum Tez-Container. In der folgenden Abbildung ist der Tez-Containerspeicher dargestellt.
 
-![Diagramm des Tez-Containerspeichers: Fehler vom Typ „Nicht genügend Hive-Arbeitsspeicher“](./media/hdinsight-hadoop-hive-out-of-memory-error-oom/hive-out-of-memory-error-oom-tez-container-memory.png)
+:::image type="content" source="./media/hdinsight-hadoop-hive-out-of-memory-error-oom/hive-out-of-memory-error-oom-tez-container-memory.png" alt-text="Diagramm des Tez-Containerspeichers: Fehler vom Typ „Nicht genügend Hive-Arbeitsspeicher“" border="false":::
 
 Wie im Blogbeitrag schon erwähnt, definieren die folgenden zwei Einstellungen den Containerspeicher für den Heap: **hive.tez.container.size** und **hive.tez.java.opts**. Nach unserer Erfahrung bedeutet die Ausnahme „Nicht genügend Arbeitsspeicher“ nicht, dass der Container zu klein ist. Es bedeutet, dass der Java-Heap (hive.tez.java.opts) zu klein ist. Wenn Sie also eine Fehlermeldung vom Typ „Nicht genügend Arbeitsspeicher“ erhalten, können Sie versuchen, **hive.tez.java.opts** heraufzusetzen. Ggf. müsse Sie **hive.tez.container.size** heraufsetzen. Die Einstellung **java.opts** sollte ungefähr 80 Prozent von **container.size** betragen.
 

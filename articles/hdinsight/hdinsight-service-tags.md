@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 08/11/2020
-ms.openlocfilehash: d17d067b88add3006bc5c7fb10caa6b80a80a827
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 99a61d3e445bf6887db0c97e365e6e4489eb79e1
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98931765"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104872012"
 ---
 # <a name="nsg-service-tags-for-azure-hdinsight"></a>Diensttags von Netzwerksicherheitsgruppen für Azure HDInsight
 
@@ -40,7 +40,7 @@ Die einfachste Möglichkeit, Diensttags mit Ihrem HDInsight-Cluster zu verwenden
 
 1. Wählen Sie in der Dropdownliste **Quelldiensttag** den Eintrag **HDInsight** aus.
 
-    ![Hinzufügen eines Diensttags aus dem Azure-Portal](./media/hdinsight-service-tags/azure-portal-add-service-tag.png)
+    :::image type="content" source="./media/hdinsight-service-tags/azure-portal-add-service-tag.png" alt-text="Hinzufügen eines Diensttags aus dem Azure-Portal":::
 
 Dieses Tag enthält die IP-Adressen von Integritäts- und Verwaltungsdiensten für alle Regionen, in denen HDInsight verfügbar ist. Das Tag stellt sicher, dass Ihr Cluster mit den erforderlichen Integritäts- und Verwaltungsdiensten kommunizieren kann, unabhängig davon, wo er erstellt wurde.
 

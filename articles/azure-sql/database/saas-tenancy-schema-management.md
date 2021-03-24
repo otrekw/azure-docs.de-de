@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/19/2018
 ms.openlocfilehash: e4328be0aade0658dedb034dbbb6980b810f771a
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92793193"
 ---
 # <a name="manage-schema-in-a-saas-application-using-the-database-per-tenant-pattern-with-azure-sql-database"></a>Verwalten von Schemas in einer SaaS-Anwendung mit dem Muster für eine Datenbank pro Mandant in Azure SQL-Datenbank
@@ -62,14 +62,14 @@ Der Quellcode der Anwendung und die Verwaltungsskripts sind im GitHub-Repository
 
 Für dieses Tutorial müssen Sie mit PowerShell den Auftrags-Agent und die unterstützende Auftrags-Agent-Datenbank erstellen. Die Auftrags-Agent-Datenbank enthält Auftragsdefinitionen, den Auftragsstatus und den Verlauf. Wenn der Auftrags-Agent und die zugehörige Datenbank erstellt wurden, können Sie sofort Aufträge erstellen und überwachen.
 
-1. Öffnen Sie „…\\Learning Modules\\Schema Management\\*Demo-SchemaManagement.ps1* “ in der **PowerShell ISE** .
+1. Öffnen Sie „…\\Learning Modules\\Schema Management\\*Demo-SchemaManagement.ps1*“ in der **PowerShell ISE**.
 1. Drücken Sie **F5** , um das Skript auszuführen.
 
 Das Skript *Demo-SchemaManagement.ps1* ruft das Skript *Deploy-SchemaManagement.ps1* auf, um die Datenbank *osagent* auf dem Katalogserver zu erstellen. Anschließend erstellt es den Auftrags-Agent mit der Datenbank als Parameter.
 
 ## <a name="create-a-job-to-deploy-new-reference-data-to-all-tenants"></a>Erstellen eines Auftrags, um neue Verweisdaten für alle Mandanten bereitzustellen
 
-In der Wingtip Tickets-App gehört zu jeder Mandantendatenbank ein Satz von unterstützten Veranstaltungsorttypen. Jeder Veranstaltungsort weist einen bestimmten Veranstaltungsorttyp auf, der die Art der möglichen Veranstaltungen definiert und das Hintergrundbild in der App festlegt. Wenn die Anwendung neue Arten von Ereignissen unterstützen soll, müssen diese Verweisdaten aktualisiert und neue Veranstaltungsorttypen hinzugefügt werden.  In dieser Übung stellen Sie ein Update für alle Mandantendatenbanken bereit, wobei zwei weitere Veranstaltungsorttypen hinzugefügt werden: *Motorcycle Racing* und *Swimming Club* .
+In der Wingtip Tickets-App gehört zu jeder Mandantendatenbank ein Satz von unterstützten Veranstaltungsorttypen. Jeder Veranstaltungsort weist einen bestimmten Veranstaltungsorttyp auf, der die Art der möglichen Veranstaltungen definiert und das Hintergrundbild in der App festlegt. Wenn die Anwendung neue Arten von Ereignissen unterstützen soll, müssen diese Verweisdaten aktualisiert und neue Veranstaltungsorttypen hinzugefügt werden.  In dieser Übung stellen Sie ein Update für alle Mandantendatenbanken bereit, wobei zwei weitere Veranstaltungsorttypen hinzugefügt werden: *Motorcycle Racing* und *Swimming Club*.
 
 Prüfen Sie zunächst die in jeder Mandantendatenbank enthaltenen Veranstaltungsorttypen. Stellen Sie in SQL Server Management Studio (SSMS) eine Verbindung mit einer der Mandantendatenbanken her, und überprüfen Sie die Tabelle VenueTypes.  Sie können diese Tabelle auch im Azure-Portal im Abfrage-Editor abfragen, den Sie über die Seite „Datenbank“ aufrufen können. 
 
@@ -80,19 +80,19 @@ Nun erstellen Sie einen Auftrag zum Aktualisieren der Tabelle *VenueTypes* in al
 
 Zum Erstellen eines neuen Auftrags verwenden Sie eine Gruppe von gespeicherten Systemprozeduren für Aufträge, die beim Erstellen des Auftrags-Agents in der Datenbank _jobagent_ erstellt wurden.
 
-1. Stellen Sie in SSMS eine Verbindung mit dem Katalogserver her: *catalog-dpt-&lt;Benutzer&gt;.database.windows.net* . 
+1. Stellen Sie in SSMS eine Verbindung mit dem Katalogserver her: *catalog-dpt-&lt;Benutzer&gt;.database.windows.net*. 
 1. Öffnen Sie in SSMS die Datei „…\\Learning Modules\\Schema Management\\DeployReferenceData.sql“.
 1. Ändern Sie diese Anweisung: „SET @wtpUser = &lt;Benutzer&gt;“. Ersetzen Sie den Wert „Benutzer“ durch den Benutzer, der beim Bereitstellen der App „Wingtip Tickets SaaS Database Per Tenant“ verwendet wurde.
-1. Stellen Sie sicher, dass Sie mit der Datenbank _jobagent_ verbunden sind, und drücken Sie **F5** , um das Skript auszuführen.
+1. Stellen Sie sicher, dass Sie mit der Datenbank _jobagent_ verbunden sind, und drücken Sie **F5**, um das Skript auszuführen.
 
-Beachten Sie die folgenden Elemente im Skript *DeployReferenceData.sql* :
+Beachten Sie die folgenden Elemente im Skript *DeployReferenceData.sql*:
 * **sp\_add\_target\_group** erstellt den Zielgruppennamen „DemoServerGroup“.
 * Mithilfe von **sp\_add\_target\_group\_member** wird der Satz von Zieldatenbanken erstellt.  Zuerst wird der Server _tenants1-dpt-&lt;Benutzer&gt;_ hinzugefügt.  Das Hinzufügen des Servers als Ziel führt dazu, dass die Datenbanken auf diesem Server zum Zeitpunkt der Auftragsausführung in den Auftrag eingeschlossen werden. Die Datenbanken _basetenantdb_ und *adhocreporting* (in einem späteren Tutorial verwendet) werden als Ziele hinzugefügt.
 * **sp\_add\_job** erstellt einen Auftrag mit dem Namen _Reference Data Deployment_ (Verweisdatenbereitstellung).
 * **sp\_add\_jobstep** erstellt den Auftragsschritt mit dem T-SQL-Befehlstext zum Aktualisieren der Verweistabelle „VenueTypes“.
 * Die übrigen Ansichten im Skript zeigen das Vorhandensein der Objekte an und überwachen die Auftragsausführung. Verwenden Sie diese Abfragen, um den Statuswert in der Spalte **lifecycle** zu überprüfen und zu ermitteln, wann der Auftrag für alle Zieldatenbanken abgeschlossen wurde.
 
-Nach Abschluss des Skripts können Sie überprüfen, ob die Verweisdaten aktualisiert wurden.  Navigieren Sie in SSMS zur Datenbank *contosoconcerthall* auf dem Server *tenants1-dpt-&lt;Benutzer&gt;* , und fragen Sie die Tabelle *VenueTypes* ab.  Vergewissern Sie sich, dass *Motorcycle Racing* und *Swimming Club* jetzt **vorhanden sind** .
+Nach Abschluss des Skripts können Sie überprüfen, ob die Verweisdaten aktualisiert wurden.  Navigieren Sie in SSMS zur Datenbank *contosoconcerthall* auf dem Server *tenants1-dpt-&lt;Benutzer&gt;* , und fragen Sie die Tabelle *VenueTypes* ab.  Vergewissern Sie sich, dass *Motorcycle Racing* und *Swimming Club* jetzt **vorhanden sind**.
 
 
 ## <a name="create-a-job-to-manage-the-reference-table-index"></a>Erstellen eines Auftrags zum Verwalten des Index der Verweistabelle
@@ -102,14 +102,14 @@ In dieser Übung wird ein Auftrag verwendet, um den Index für den Primärschlü
 Erstellen Sie einen Auftrag mit den gleichen gespeicherten Systemprozeduren für Aufträge.
 
 1. Öffnen Sie SSMS, und stellen Sie eine Verbindung mit dem Server _catalog-dpt-&lt;Benutzer&gt;.database.windows.net_ her.
-1. Öffnen Sie die Datei _…\\Learning Modules\\Schema Management\\OnlineReindex.sql_ .
+1. Öffnen Sie die Datei _…\\Learning Modules\\Schema Management\\OnlineReindex.sql_.
 1. Klicken Sie mit der rechten Maustaste, wählen Sie die Option „Verbindung“ aus, und stellen Sie eine Verbindung mit dem Server _catalog-dpt-&lt;Benutzer&gt;.database.windows.net_ her, sofern dies noch nicht geschehen ist.
-1. Stellen Sie sicher, dass Sie mit der Datenbank _jobagent_ verbunden sind, und drücken Sie **F5** , um das Skript auszuführen.
+1. Stellen Sie sicher, dass Sie mit der Datenbank _jobagent_ verbunden sind, und drücken Sie **F5**, um das Skript auszuführen.
 
-Beachten Sie die folgenden Elemente im Skript _OnlineReindex.sql_ :
+Beachten Sie die folgenden Elemente im Skript _OnlineReindex.sql_:
 * **sp\_add\_job** erstellt einen neuen Auftrag mit dem Namen „Online Reindex PK\_\_VenueTyp\_\_265E44FD7FD4C885“.
 * **sp\_add\_jobstep** erstellt den Auftragsschritt mit dem T-SQL-Befehlstext zum Aktualisieren des Index.
-* Die verbleibenden Ansichten im Skript überwachen die Auftragsausführung. Verwenden Sie diese Abfragen, um den Statuswert in der **lifecycle** -Spalte zu überprüfen und zu ermitteln, wann der Auftrag für alle Zielgruppenelemente erfolgreich abgeschlossen wurde.
+* Die verbleibenden Ansichten im Skript überwachen die Auftragsausführung. Verwenden Sie diese Abfragen, um den Statuswert in der **lifecycle**-Spalte zu überprüfen und zu ermitteln, wann der Auftrag für alle Zielgruppenelemente erfolgreich abgeschlossen wurde.
 
 
 

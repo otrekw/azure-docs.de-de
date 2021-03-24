@@ -4,10 +4,10 @@ description: Informieren Sie sich über die Fehlerbehandlung in Batch-Dienstwork
 ms.topic: article
 ms.date: 05/15/2020
 ms.openlocfilehash: 3bd460598dae08fa18415e1c9865249f3ca4c9c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85964276"
 ---
 # <a name="error-handling-and-detection-in-azure-batch"></a>Fehlerbehandlung und -erkennung in Azure Batch
@@ -55,7 +55,7 @@ Batch kann so konfiguriert werden, dass der Task im Fall eines Anwendungsfehlers
 
 ### <a name="constraint-errors"></a>Einschränkungsfehler
 
-Mit der Einschränkung *maxWallClockTime*können Sie die maximale Ausführungsdauer für einen Auftrag oder Task angeben. Dies kann nützlich sein für das Beenden von Tasks, bei denen kein Fortschritt stattfindet.
+Mit der Einschränkung *maxWallClockTime* können Sie die maximale Ausführungsdauer für einen Auftrag oder Task angeben. Dies kann nützlich sein für das Beenden von Tasks, bei denen kein Fortschritt stattfindet.
 
 Wenn die maximal zulässige Zeitspanne überschritten wurde, wird der Task als *abgeschlossen* gekennzeichnet. Als Exitcode wird jedoch `0xC000013A` zurückgegeben, und das Feld *schedulingError* wird als `{ category:"ServerError", code="TaskEnded"}` markiert.
 

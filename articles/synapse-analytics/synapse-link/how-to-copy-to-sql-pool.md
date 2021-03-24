@@ -9,12 +9,13 @@ ms.subservice: synapse-link
 ms.date: 08/10/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 13891f9614e658be39adbb69fed1503a0c66d5e4
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: cosmos-db
+ms.openlocfilehash: 755782b117ef5a5619ddde3e1573fe1805117e77
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93309226"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868561"
 ---
 # <a name="copy-data-from-azure-cosmos-db-into-a-dedicated-sql-pool-using-apache-spark"></a>Kopieren von Daten aus Azure Cosmos DB in einen dedizierten SQL-Pool mithilfe von Apache Spark
 
@@ -50,7 +51,7 @@ In diesem Beispiel verwenden wir einen HTAP-Container namens **RetailSales**. Er
 * weekStarting: long (nullable = true)
 * _etag: string (nullable = true)
 
-Die Verkäufe ( *quantity* , *revenue* (Preis × Menge) werden zur Berichterstellung nach *productCode* und *weekStarting* aggregiert. Schließlich werden diese Daten in eine Tabelle im dedizierten SQL-Pool mit dem Namen **dbo.productsales** exportiert.
+Die Verkäufe (*quantity*, *revenue* (Preis × Menge) werden zur Berichterstellung nach *productCode* und *weekStarting* aggregiert. Schließlich werden diese Daten in eine Tabelle im dedizierten SQL-Pool mit dem Namen **dbo.productsales** exportiert.
 
 ## <a name="configure-a-spark-notebook"></a>Konfigurieren eines Spark-Notebooks
 Erstellen Sie ein Spark-Notebook mit Scala as Spark (Scala) als Hauptsprache. Für die Sitzung wird die Standardeinstellung des Notebooks verwendet.

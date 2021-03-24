@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 01/21/2021
 ms.custom: seodec18
 ms.openlocfilehash: ee66e68216933c410092865a1cdb781476a944c6
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/14/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103461133"
 ---
 # <a name="add-an-event-hub-event-source-to-your-azure-time-series-insights-environment"></a>Hinzufügen einer Event Hub-Ereignisquelle zu Ihrer Azure Time Series Insights-Umgebung
@@ -76,7 +76,7 @@ So fügen Sie Ihrem Event Hub eine neue Consumergruppe hinzu
 
        [![Details zu Abonnements und Event Hub](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-configure-create-confirm.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-configure-create-confirm.png#lightbox)
 
-       | Eigenschaft | Beschreibung |
+       | Eigenschaft | BESCHREIBUNG |
        | --- | --- |
        | Subscription | Das Abonnement, zu dem die gewünschte Event Hub-Instanz und der Namespace gehören. |
        | Event Hub-Namespace | Der Event Hub-Namespace, zu dem die gewünschte Event Hub-Instanz gehört. |

@@ -11,10 +11,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: d2afd88500801f1e2b1e4da5a1e267bddfa69fc7
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96453015"
 ---
 # <a name="what-is-azure-internet-of-things-iot"></a>Was ist Azure IoT (Internet der Dinge)?
@@ -23,7 +23,7 @@ Azure IoT (Internet der Dinge) ist eine Sammlung von Clouddiensten, die von Micr
 
 ## <a name="iot-devices"></a>IoT-Geräte
 
-Ein IoT-Gerät besteht in der Regel aus einer Leiterplatte mit Sensoren, das per WLAN mit dem Internet verbunden ist. Beispiel:
+Ein IoT-Gerät besteht in der Regel aus einer Leiterplatte mit Sensoren, das per WLAN mit dem Internet verbunden ist. Zum Beispiel:
 
 * Ein Drucksensor einer Ölpumpe an einem entfernten Ort
 * Temperatur- und Luftfeuchtigkeitssensoren in einer Klimaanlage

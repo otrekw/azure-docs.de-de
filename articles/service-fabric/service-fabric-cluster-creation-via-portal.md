@@ -4,10 +4,10 @@ description: Erfahren Sie, wie Sie über das Azure-Portal und mithilfe von Azure
 ms.topic: conceptual
 ms.date: 09/06/2018
 ms.openlocfilehash: c679a804db09b1034f31e9d8da1f7d2ad206f684
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90563725"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Erstellen eines Service Fabric-Clusters in Azure über das Azure-Portal
@@ -112,7 +112,7 @@ Konfigurieren Sie die Clusterknoten. Knotentypen definieren die Größe, die Anz
 7. **Aktivieren Sie den Reverseproxy**.  Der [Service Fabric-Reverseproxy](service-fabric-reverseproxy.md) unterstützt die in einem Service Fabric-Cluster ausgeführten Microservices beim Ermitteln von und Kommunizieren mit anderen Diensten mit HTTP-Endpunkten.
 8. Konfigurieren Sie zurück auf dem Blatt **Clusterkonfiguration** unter **+ Optionale Einstellungen anzeigen** die **Diagnose** für den Cluster. Die Diagnose ist standardmäßig in Ihrem Cluster aktiviert, um die Behebung von Problemen in Ihrem Cluster zu vereinfachen. Zum Deaktivieren der Diagnose ändern Sie den **Status** in **Aus**. Das Ausschalten der Diagnose wird **nicht** empfohlen. Wenn Sie bereits ein Application Insights-Projekt erstellt haben, geben Sie seinen Schlüssel an, damit die Anwendungsablaufverfolgungen an dieses Projekt weitergeleitet werden.
 9. **Schließen Sie den DNS-Dienst ein**.  Der [DNS-Dienst](service-fabric-dnsservice.md) ist ein optionaler Dienst, der es Ihnen ermöglicht, andere Dienste zu finden, die das DNS-Protokoll verwenden.
-10. Wählen Sie den gewünschten **Fabric-Upgrademodus** für Ihren Cluster aus. Wählen Sie **Automatisch**aus, wenn für Ihren Cluster automatisch ein Upgrade auf die neueste verfügbare Version durchgeführt werden soll. Legen Sie den Modus auf **Manuell**fest, wenn Sie selbst eine unterstützte Version auswählen möchten. Weitere Informationen zum Fabric-Upgrademodus finden Sie unter [Upgrade von Service Fabric-Clustern][service-fabric-cluster-upgrade].
+10. Wählen Sie den gewünschten **Fabric-Upgrademodus** für Ihren Cluster aus. Wählen Sie **Automatisch** aus, wenn für Ihren Cluster automatisch ein Upgrade auf die neueste verfügbare Version durchgeführt werden soll. Legen Sie den Modus auf **Manuell** fest, wenn Sie selbst eine unterstützte Version auswählen möchten. Weitere Informationen zum Fabric-Upgrademodus finden Sie unter [Upgrade von Service Fabric-Clustern][service-fabric-cluster-upgrade].
 
 > [!NOTE]
 > Wir unterstützen nur Cluster, die unterstützte Versionen von Service Fabric ausführen. Bei Verwendung des **manuellen** Modus müssen Sie Ihren Cluster eigenverantwortlich auf eine unterstützte Version upgraden.

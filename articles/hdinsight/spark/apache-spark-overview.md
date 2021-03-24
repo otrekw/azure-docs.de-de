@@ -5,24 +5,24 @@ ms.service: hdinsight
 ms.custom: contperf-fy21q1
 ms.topic: overview
 ms.date: 09/21/2020
-ms.openlocfilehash: 8bcdb87e04d90aeb3d807e43c53e74d74299091b
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 754b82cb0473e13ee7fb0649ef68c70ab5abe900
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102040004"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868731"
 ---
 # <a name="what-is-apache-spark-in-azure-hdinsight"></a>Was ist Apache Spark in Azure HDInsight?
 
 Apache Spark ist ein Framework für die Parallelverarbeitung, das In-Memory-Verarbeitung unterstützt, um die Leistung von Big Data-Analyseanwendungen zu steigern. Apache Spark in Azure HDInsight ist die Microsoft-Implementierung von Apache Spark in der Cloud. HDInsight vereinfacht das Erstellen und Konfigurieren eines Spark-Clusters in Azure. Spark-Cluster in HDInsight sind mit [Azure Blob Storage](../../storage/common/storage-introduction.md), [Azure Data Lake Storage Gen1](../../data-lake-store/data-lake-store-overview.md) oder [Azure Data Lake Storage Gen2](../../storage/blobs/data-lake-storage-introduction.md) kompatibel. Dadurch können Sie HDInsight Spark-Cluster für die Verarbeitung Ihrer in Azure gespeicherten Daten verwenden. Informationen zu den Komponenten und Versionen finden Sie unter [Welche Apache Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](../hdinsight-component-versioning.md).
 
-![Spark: ein einheitliches Framework](./media/apache-spark-overview/hdinsight-spark-overview.png)
+:::image type="content" source="./media/apache-spark-overview/hdinsight-spark-overview.png" alt-text="Spark: ein einheitliches Framework" border="false":::
 
 ## <a name="what-is-apache-spark"></a>Was ist Apache Spark?
 
 Spark stellt Primitive für das In-Memory-Clustercomputing bereit. Bei einem Spark-Auftrag können Daten in den Arbeitsspeicher geladen, zwischengespeichert und dann wiederholt abgefragt werden. In-Memory-Computing ist deutlich schneller als datenträgerbasierte Anwendungen wie Hadoop, die Daten über das Hadoop Distributed File System (HDFS) freigeben. Spark kann auch in die Scala-Programmiersprache integriert werden, damit Sie verteilte Datasets bearbeiten können, z.B. lokale Sammlungen. Es ist nicht erforderlich, alles in Form von Mapper- und Reducer-Vorgängen zu strukturieren.
 
-![Vergleich von herkömmlichem MapReduce mit Spark](./media/apache-spark-overview/map-reduce-vs-spark1.png)
+:::image type="content" source="./media/apache-spark-overview/map-reduce-vs-spark1.png" alt-text="Vergleich von herkömmlichem MapReduce mit Spark" border="false":::
 
 Spark-Cluster in HDInsight bieten einen vollständig verwalteten Spark-Dienst. Im Anschluss sind die Vorteile der Erstellung eines Spark-Clusters in HDInsight aufgeführt.
 
@@ -54,7 +54,7 @@ HDInsight Spark-Cluster verfügen über einen [ODBC-Treiber](/sql/connect/odbc/
 
 ## <a name="spark-cluster-architecture"></a>Spark-Clusterarchitektur
 
-![Die Architektur von HDInsight Spark](./media/apache-spark-overview/hdi-spark-architecture.png)
+:::image type="content" source="./media/apache-spark-overview/hdi-spark-architecture.png" alt-text="Die Architektur von HDInsight Spark" border="false":::
 
 Die Komponenten von Spark können Sie ganz einfach verstehen, wenn Sie sich mit der Ausführung von Spark in HDInsight-Clustern vertraut machen.
 

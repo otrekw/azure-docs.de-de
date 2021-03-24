@@ -12,20 +12,20 @@ ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
 ms.openlocfilehash: c815256e60e5ca6582220d247d587a4488c4a55a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74534770"
 ---
 # <a name="azure-active-directory-operations-reference-guide"></a>Referenzleitfaden zu Azure Active Directory-Vorgängen
 
 In diesem Referenzleitfaden zu Vorgängen werden die Überprüfungen und Aktionen beschrieben, die Sie zum Schutz und zur Pflege der folgenden Bereiche durchführen sollten:
 
-- **[Identitäts- und Zugriffsverwaltung](active-directory-ops-guide-iam.md)** : Verwalten des Lebenszyklus von Identitäten und deren Berechtigungen.
-- **[Authentifizierungsverwaltung](active-directory-ops-guide-auth.md)** : Verwalten von Anmeldeinformationen, Definieren der Authentifizierungsumgebung, Delegatzuweisung, Messen der Nutzung und Definieren von Zugriffsrichtlinien basierend auf dem Sicherheitsstatus Ihres Unternehmens.
-- **[Governance](active-directory-ops-guide-govern.md)** : Bewerten und Bestätigen des Zugriffs für privilegierte und nicht privilegierte Identitäten sowie zum Überwachen und Steuern von Änderungen an der Umgebung.
-- **[Vorgänge](active-directory-ops-guide-ops.md)** : Optimieren der Azure Active Directory (Azure AD)-Vorgänge.
+- **[Identitäts- und Zugriffsverwaltung](active-directory-ops-guide-iam.md)**: Verwalten des Lebenszyklus von Identitäten und deren Berechtigungen.
+- **[Authentifizierungsverwaltung](active-directory-ops-guide-auth.md)**: Verwalten von Anmeldeinformationen, Definieren der Authentifizierungsumgebung, Delegatzuweisung, Messen der Nutzung und Definieren von Zugriffsrichtlinien basierend auf dem Sicherheitsstatus Ihres Unternehmens.
+- **[Governance](active-directory-ops-guide-govern.md)**: Bewerten und Bestätigen des Zugriffs für privilegierte und nicht privilegierte Identitäten sowie zum Überwachen und Steuern von Änderungen an der Umgebung.
+- **[Vorgänge](active-directory-ops-guide-ops.md)**: Optimieren der Azure Active Directory (Azure AD)-Vorgänge.
 
 Einige der hier aufgeführten Empfehlungen gelten u. U. nicht für alle Kundenumgebungen. Zum Beispiel werden die bewährten AD FS-Methoden wahrscheinlich nicht angewendet, wenn Ihre Organisation die Kennworthashsynchronisierung verwendet.
 

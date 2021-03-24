@@ -4,10 +4,10 @@ description: Erfahren Sie, wie Sie einen virtuellen Computer in Azure DevTest La
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: a38b112165b893d877733b967c21bb62b20ca2f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90530317"
 ---
 # <a name="redeploy-a-vm-in-a-lab-in-azure-devtest-labs"></a>Erneute Bereitstellung eines virtuellen Computers in einem Lab in Azure DevTest Labs

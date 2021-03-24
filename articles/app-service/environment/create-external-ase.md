@@ -8,10 +8,10 @@ ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: c953c31792b8d01199d409cbd91124138a6ebb15
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92927446"
 ---
 # <a name="create-an-external-app-service-environment"></a>Erstellen einer externen App Service-Umgebung
@@ -75,7 +75,7 @@ Um eine ASE zu erstellen, während Sie einen App Service-Plan erstellen, gehen S
 
 6. Wählen Sie in der Dropdownliste **Speicherort** die Region aus, in der Sie die ASE erstellen möchten. Wenn Sie eine vorhandene ASE auswählen, wird keine neue ASE erstellt. Der App Service-Plan wird in der von Ihnen ausgewählten ASE erstellt. 
 
-7. Wählen Sie **Tarif** , und wählen Sie eine der SKUs in der Preisstufe **Isolated** aus. Wenn Sie eine SKU vom Typ **Isolated** und einen Speicherort auswählen, der keine ASE ist, wird an diesem Speicherort eine neue ASE erstellt. Um den Erstellungsprozess für eine ASE zu starten, klicken Sie auf **Auswählen**. Eine **Isolated** -SKU ist nur zusammen mit einer ASE verfügbar. Es ist außerdem nicht möglich, einen anderen SKU-Tarif als **Isolated** in einer ASE zu verwenden. 
+7. Wählen Sie **Tarif**, und wählen Sie eine der SKUs in der Preisstufe **Isolated** aus. Wenn Sie eine SKU vom Typ **Isolated** und einen Speicherort auswählen, der keine ASE ist, wird an diesem Speicherort eine neue ASE erstellt. Um den Erstellungsprozess für eine ASE zu starten, klicken Sie auf **Auswählen**. Eine **Isolated**-SKU ist nur zusammen mit einer ASE verfügbar. Es ist außerdem nicht möglich, einen anderen SKU-Tarif als **Isolated** in einer ASE zu verwenden. 
 
     ![Auswahl des Tarifs][3]
 
@@ -93,7 +93,7 @@ Um eine ASE zu erstellen, während Sie einen App Service-Plan erstellen, gehen S
 
     d. Wählen Sie den IP-Bereich des Subnetzes aus.
 
-10. Wählen Sie **Erstellen** , um die ASE zu erstellen. Dieser Prozess erstellt auch den App Service-Plan und die App. Die ASE, der App Service-Plan und die App befinden sich im gleichen Abonnement und in der gleichen Ressourcengruppe. Wenn für Ihre ASE eine separate Ressourcengruppe erforderlich ist oder Sie eine ILB-ASE benötigen, führen Sie die Schritte zum Erstellen einer eigenständigen ASE aus.
+10. Wählen Sie **Erstellen**, um die ASE zu erstellen. Dieser Prozess erstellt auch den App Service-Plan und die App. Die ASE, der App Service-Plan und die App befinden sich im gleichen Abonnement und in der gleichen Ressourcengruppe. Wenn für Ihre ASE eine separate Ressourcengruppe erforderlich ist oder Sie eine ILB-ASE benötigen, führen Sie die Schritte zum Erstellen einer eigenständigen ASE aus.
 
 ## <a name="create-an-ase-and-a-linux-web-app-using-a-custom-docker-image-together"></a>Gemeinsames Erstellen einer ASE und einer Linux-Web-App mit einem benutzerdefinierten Docker-Image
 
@@ -111,7 +111,7 @@ Um eine ASE zu erstellen, während Sie einen App Service-Plan erstellen, gehen S
 
 1. Wählen Sie in der Dropdownliste **Speicherort** die Region aus, in der Sie die ASE erstellen möchten. Wenn Sie eine vorhandene ASE auswählen, wird keine neue ASE erstellt. Der App Service-Plan wird in der von Ihnen ausgewählten ASE erstellt. 
 
-1. Wählen Sie **Tarif** , und wählen Sie eine der SKUs in der Preisstufe **Isolated** aus. Wenn Sie eine SKU vom Typ **Isolated** und einen Speicherort auswählen, der keine ASE ist, wird an diesem Speicherort eine neue ASE erstellt. Um den Erstellungsprozess für eine ASE zu starten, klicken Sie auf **Auswählen**. Eine **Isolated** -SKU ist nur zusammen mit einer ASE verfügbar. Es ist außerdem nicht möglich, einen anderen SKU-Tarif als **Isolated** in einer ASE zu verwenden. 
+1. Wählen Sie **Tarif**, und wählen Sie eine der SKUs in der Preisstufe **Isolated** aus. Wenn Sie eine SKU vom Typ **Isolated** und einen Speicherort auswählen, der keine ASE ist, wird an diesem Speicherort eine neue ASE erstellt. Um den Erstellungsprozess für eine ASE zu starten, klicken Sie auf **Auswählen**. Eine **Isolated**-SKU ist nur zusammen mit einer ASE verfügbar. Es ist außerdem nicht möglich, einen anderen SKU-Tarif als **Isolated** in einer ASE zu verwenden. 
 
     ![Auswahl des Tarifs][3]
 
@@ -134,14 +134,14 @@ Um eine ASE zu erstellen, während Sie einen App Service-Plan erstellen, gehen S
 
     ![Container konfigurieren][9]
 
-1. Wählen Sie **Erstellen** , um die ASE zu erstellen. Dieser Prozess erstellt auch den App Service-Plan und die App. Die ASE, der App Service-Plan und die App befinden sich im gleichen Abonnement und in der gleichen Ressourcengruppe. Wenn für Ihre ASE eine separate Ressourcengruppe erforderlich ist oder Sie eine ILB-ASE benötigen, führen Sie die Schritte zum Erstellen einer eigenständigen ASE aus.
+1. Wählen Sie **Erstellen**, um die ASE zu erstellen. Dieser Prozess erstellt auch den App Service-Plan und die App. Die ASE, der App Service-Plan und die App befinden sich im gleichen Abonnement und in der gleichen Ressourcengruppe. Wenn für Ihre ASE eine separate Ressourcengruppe erforderlich ist oder Sie eine ILB-ASE benötigen, führen Sie die Schritte zum Erstellen einer eigenständigen ASE aus.
 
 
 ## <a name="create-an-ase-by-itself"></a>Erstellen einer eigenständigen ASE
 
 Wenn Sie eine eigenständige ASE erstellen, enthält sie keinerlei Elemente. Für eine leere ASE fällt trotzdem eine monatliche Gebühr für die Infrastruktur an. Führen Sie diese Schritte aus, um eine ASE mit einem ILB oder eine ASE in einer eigenen Ressourcengruppe zu erstellen. Nach dem Erstellen der ASE können Sie mit der ganz normalen Vorgehensweise Apps darin erstellen. Wählen Sie Ihre neue ASE als Standort aus.
 
-1. Suchen Sie im Azure Marketplace nach **App Service-Umgebung** , oder wählen Sie **Neu** > **Web + Mobil** > **App Service-Umgebung** aus. 
+1. Suchen Sie im Azure Marketplace nach **App Service-Umgebung**, oder wählen Sie **Neu** > **Web + Mobil** > **App Service-Umgebung** aus. 
 
 1. Geben Sie den Namen Ihrer ASE ein. Dieser Name wird für die in der ASE erstellten Apps verwendet. Wenn der Name *mynewdemoase* lautet, ist der Name der Unterdomäne *.mynewdemoase.p.azurewebsites.net*. Wenn Sie eine App namens *mytestapp* erstellen, kann sie unter der Adresse „mytestapp.mynewdemoase.p.azurewebsites.net“ aufgerufen werden. Sie dürfen keine Leerzeichen im Namen verwenden. Bei Verwendung von Großbuchstaben wird der entsprechende Domänenname dennoch vollständig in Kleinbuchstaben geschrieben. Bei Verwendung eines ILB wird Ihr ASE-Name nicht in Ihrer Unterdomäne verwendet, sondern stattdessen explizit während der ASE-Erstellung angegeben.
 

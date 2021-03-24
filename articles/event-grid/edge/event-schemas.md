@@ -8,10 +8,10 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: ea36c40f2038d016afb0c45944a98d4d90df6240
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86171566"
 ---
 # <a name="event-schemas"></a>Ereignisschemas
@@ -54,14 +54,14 @@ Alle Ereignisse weisen die folgenden Daten auf oberster Ebene auf:
 
 | Eigenschaft | type | Erforderlich | BESCHREIBUNG |
 | -------- | ---- | ----------- |-----------
-| topic | string | Nein | Sollte dem Thema entsprechen, für das es veröffentlicht wurde. Event Grid füllt dies mit dem Namen des Themas auf, für das es veröffentlicht wird, wenn nichts angegeben ist. |
-| subject | string | Ja | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
-| eventType | string | Ja | Der Ereignistyp für diese Ereignisquelle, z. B. BlobCreated. |
-| eventTime | string | Ja | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
-| id | string | Nein | Eindeutiger Bezeichner für das Ereignis. |
+| topic | Zeichenfolge | Nein | Sollte dem Thema entsprechen, für das es veröffentlicht wurde. Event Grid füllt dies mit dem Namen des Themas auf, für das es veröffentlicht wird, wenn nichts angegeben ist. |
+| subject | Zeichenfolge | Ja | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
+| eventType | Zeichenfolge | Ja | Der Ereignistyp für diese Ereignisquelle, z. B. BlobCreated. |
+| eventTime | Zeichenfolge | Ja | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
+| id | Zeichenfolge | Nein | Eindeutiger Bezeichner für das Ereignis. |
 | data | Objekt (object) | Nein | Wird zum Erfassen von Ereignisdaten verwendet, die für die Veröffentlichungsentität spezifisch sind. |
-| dataVersion | string | Ja | Die Schemaversion des Datenobjekts. Der Herausgeber definiert die Schemaversion. |
-| metadataVersion | string | Nein | Die Schemaversion der Ereignismetadaten. Event Grid definiert das Schema der Eigenschaften der obersten Ebene. Dieser Wert wird von Event Grid bereitgestellt. |
+| dataVersion | Zeichenfolge | Ja | Die Schemaversion des Datenobjekts. Der Herausgeber definiert die Schemaversion. |
+| metadataVersion | Zeichenfolge | Nein | Die Schemaversion der Ereignismetadaten. Event Grid definiert das Schema der Eigenschaften der obersten Ebene. Dieser Wert wird von Event Grid bereitgestellt. |
 
 ### <a name="example--eventgrid-schema-event"></a>Beispiel – EventGrid-Schemaereignis
 

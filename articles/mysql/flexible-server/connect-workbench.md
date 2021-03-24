@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 9/21/2020
 ms.openlocfilehash: d604ca8c8979ec98b990f8002ce29d0df92ac2af
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90945068"
 ---
 # <a name="quickstart-use-mysql-workbench-to-connect-and-query-data-in-azure-database-for-mysql---flexible-server-preview"></a>Schnellstart: Verwenden von MySQL Workbench zum Herstellen einer Verbindung und zum Abfragen von Daten in Azure Database for MySQL Flexible Server (Vorschau)
@@ -30,8 +30,8 @@ In diesem Schnellstart werden die Ressourcen, die in den folgenden Anleitungen e
 - [Erstellen einer Azure Database for MySQL Flexible Server-Instanz mit der Azure CLI](./quickstart-create-server-cli.md)
 
 ## <a name="preparing-your-client-workstation"></a>Vorbereiten der Clientarbeitsstation
-- Wenn Sie Ihren flexiblen Server mit *privatem Zugriff (VNET-Integration)* erstellt haben, müssen Sie eine Verbindung mit Ihrem Server über eine Ressource innerhalb desselben virtuellen Netzwerks herstellen. Sie können einen virtuellen Computer erstellen und dem virtuellen Netzwerk hinzufügen, das mit Ihrem flexiblen Server erstellt wurde. Weitere Informationen finden Sie unter [Erstellen und Verwalten eines virtuellen Netzwerks mit Azure Database for MySQL Flexible Server mithilfe der Azure CLI](./how-to-manage-virtual-network-cli.md).
-- Wenn Sie Ihren flexiblen Server mit *öffentlichem Zugriff (zulässige IP-Adressen)* erstellt haben, können Sie die lokale IP-Adresse der Liste der Firewallregeln auf dem Server hinzufügen. Weitere Informationen finden Sie unter [Erstellen und Verwalten von Firewallregeln für Azure Database for MySQL Flexible Server mit der Azure CLI](./how-to-manage-firewall-cli.md).
+- Wenn Sie Ihre Flexible Server-Instanz mit *Privater Zugriff (VNET-Integration)* erstellt haben, müssen Sie eine Verbindung mit Ihrem Server über eine Ressource innerhalb desselben virtuellen Netzwerks herstellen. Sie können einen virtuellen Computer erstellen und zum virtuellen Netzwerk hinzufügen, das mit Ihrer Flexible Server-Instanz erstellt wurde. Weitere Informationen finden Sie unter [Erstellen und Verwalten eines virtuellen Netzwerks mit Azure Database for MySQL Flexible Server mithilfe der Azure CLI](./how-to-manage-virtual-network-cli.md).
+- Wenn Sie Ihre Flexible Server-Instanz mit *öffentlichem Zugriff (zulässige IP-Adressen)* erstellt haben, können Sie die lokale IP-Adresse der Liste der Firewallregeln auf Ihrem Server hinzufügen. Weitere Informationen finden Sie unter [Erstellen und Verwalten von Firewallregeln für Azure Database for MySQL Flexible Server mit der Azure CLI](./how-to-manage-firewall-cli.md).
 
 - Laden Sie MySQL-Workbench von der [MySQL-Website](https://dev.mysql.com/downloads/workbench/) auf Ihren Computer herunter, und installieren Sie die Anwendung.
 
@@ -53,7 +53,7 @@ So stellen Sie mithilfe von MySQL Workbench eine Verbindung mit Azure Database f
 
 2. Geben Sie im Dialogfeld **Setup New Connection** (Neue Verbindung einrichten) auf der Registerkarte **Parameter** folgende Informationen ein:
 
-    :::image type="content" source="./media/connect-workbench/2-setup-new-connection.png" alt-text="Azure Database for MySQL Flexible Server name":::
+    :::image type="content" source="./media/connect-workbench/2-setup-new-connection.png" alt-text="Einrichten einer neuen Verbindung":::
 
     | **Parameter** | **Empfohlener Wert** | **Feldbeschreibung** |
     |---|---|---|
@@ -108,7 +108,7 @@ So stellen Sie mithilfe von MySQL Workbench eine Verbindung mit Azure Database f
 
     Der Screenshot zeigt ein Beispiel für SQL-Code in SQL Workbench und die Ausgabe nach der Ausführung.
 
-    :::image type="content" source="./media/connect-workbench/3-workbench-sql-tab.png" alt-text="Azure Database for MySQL Flexible Server name":::
+    :::image type="content" source="./media/connect-workbench/3-workbench-sql-tab.png" alt-text="SQL-Registerkarte in MySQL Workbench für die Ausführung von SQL-Beispielcode":::
 
 2. Um den SQL-Beispielcode auszuführen, klicken Sie auf der Registerkarte **SQL-Datei** auf der Symbolleiste auf das Blitzsymbol.
 3. Beachten Sie die drei im Registerkartenformat angezeigten Ergebnisse im Abschnitt **Ergebnisraster** in der Mitte der Seite.
@@ -117,7 +117,7 @@ So stellen Sie mithilfe von MySQL Workbench eine Verbindung mit Azure Database f
 Sie haben mithilfe von MySQL Workbench eine Verbindung mit Azure Database for MySQL Flexible Server hergestellt und Daten mit SQL abgefragt.
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [Verschlüsselte Konnektivität mit der Transport Layer Security (TLS 1.2) in Azure Database for MySQL Flexible Server](./how-to-connect-tls-ssl.md).
+- [Verschlüsselte Konnektivität mit der Transport Layer Security (TLS 1.2) in Azure Database for MySQL Flexible Server](./how-to-connect-tls-ssl.md)
 - In diesem Artikel erfahren Sie mehr über [Netzwerke in Azure Database for MySQL Flexible Server](./concepts-networking.md).
 - [Erstellen und Verwalten von Firewallregeln für Azure Database for MySQL Flexible Server mit dem Azure-Portal](./how-to-manage-firewall-portal.md).
 - [Erstellen und Verwalten von virtuellen Netzwerken für Azure Database for MySQL Flexible Server mit dem Azure-Portal](./how-to-manage-virtual-network-portal.md).

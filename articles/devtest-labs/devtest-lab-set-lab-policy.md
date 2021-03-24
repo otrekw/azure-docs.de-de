@@ -4,10 +4,10 @@ description: Erfahren Sie, wie Sie Labrichtlinien wie VM-Größen, die maximale 
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: a7ada980b2a251b8164f2e1a20f65da54c89ba72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90530351"
 ---
 # <a name="manage-all-policies-for-a-lab-in-azure-devtest-labs"></a>Verwalten aller Richtlinien für ein Lab in Azure DevTest Labs
@@ -77,7 +77,7 @@ Die Richtlinie „Automatisch herunterfahren“ hilft dabei, unnötigen Aufwand 
 Standardmäßig gilt diese Richtlinie nach der Aktivierung für alle virtuellen Computer im aktuellen Lab. Um diese Einstellung von einem bestimmten virtuellen Computer zu entfernen, öffnen Sie den Verwaltungsbereich des virtuellen Computers, und ändern Sie die Einstellung **Automatisch herunterfahren**.
 
 ## <a name="set-auto-shutdown-policy"></a>Festlegen der Richtlinie zum automatischen Herunterfahren
-Als Labbesitzer können Sie einen Zeitplan für das Herunterfahren für alle virtuellen Computer in Ihrem Lab konfigurieren. Auf diese Weise können Sie Kosten für aktive Computer sparen, die nicht verwendet werden (Leerlauf). Sie können eine Richtlinie für das Herunterfahren für alle virtuellen Computer Ihres Labs zentral erzwingen und Ihren Labbenutzern die Arbeit abnehmen, einen Zeitplan für ihre Computer festzulegen. Mit diesem Feature können Sie die Richtlinie für den Labzeitplan festlegen und den Labbenutzern keine, eine teilweise oder die volle Kontrolle anbieten. Als Labbesitzer können Sie diese Richtlinie mit den folgenden Schritten konfigurieren:
+Als Labbesitzer können Sie einen Zeitplan für das Herunterfahren für alle virtuellen Computer in Ihrem Lab konfigurieren. Auf diese Weise können Sie Kosten für aktive Computer sparen, die nicht verwendet werden (Leerlauf). Sie können eine Richtlinie für das Herunterfahren für alle virtuellen Computer Ihres Labs zentral erzwingen und Ihren Lab-Benutzern die Arbeit abnehmen, einen Zeitplan für ihre Computer festzulegen. Mit diesem Feature können Sie die Richtlinie für den Labzeitplan festlegen und den Lab-Benutzern keine, eine teilweise oder die volle Kontrolle anbieten. Als Labbesitzer können Sie diese Richtlinie mit den folgenden Schritten konfigurieren:
 
 1. Wählen Sie auf der Startseite Ihres Labs **Konfiguration und Richtlinien** aus.
 2. Wählen Sie im linken Menü im Abschnitt **Zeitpläne** die Option **Richtlinien zum automatischen Herunterfahren** aus.
@@ -86,17 +86,17 @@ Als Labbesitzer können Sie einen Zeitplan für das Herunterfahren für alle vir
     ![Optionen zum automatischen Herunterfahren](./media/devtest-lab-set-lab-policy/auto-shutdown-policy-options.png)
 
 ### <a name="user-sets-a-schedule-and-can-opt-out"></a>Benutzer legt Zeitplan fest und kann diesen deaktivieren
-Wenn Sie für Ihr Lab diese Richtlinie festlegen, können die Labbenutzer den Labzeitplan außer Kraft setzen oder deaktivieren. Diese Option gewährt Labbenutzern die vollständige Kontrolle über den Zeitplan für das automatische Herunterfahren ihrer virtuellen Computer. Labbenutzer sehen keine Änderungen auf der Seite mit dem Zeitplan zum automatischen Herunterfahren ihrer virtuellen Computer.
+Wenn Sie für Ihr Lab diese Richtlinie festlegen, können die Lab-Benutzer den Labzeitplan außer Kraft setzen oder deaktivieren. Diese Option gewährt Lab-Benutzern die vollständige Kontrolle über den Zeitplan für das automatische Herunterfahren ihrer virtuellen Computer. Labbenutzer sehen keine Änderungen auf der Seite mit dem Zeitplan zum automatischen Herunterfahren ihrer virtuellen Computer.
 
 ![Option 1 zum automatischen Herunterfahren](./media/devtest-lab-set-lab-policy/auto-shutdown-policy-option-1.png)
 
 ### <a name="user-sets-a-schedule-and-cannot-opt-out"></a>Benutzer legt Zeitplan fest und kann diesen nicht deaktivieren
-Wenn Sie für Ihr Lab diese Richtlinie festlegen, können die Labbenutzer den Labzeitplan außer Kraft setzen. Sie können die Richtlinie zum automatischen Herunterfahren allerdings nicht deaktivieren. Diese Option stellt sicher, dass es für jeden Computer in Ihrem Lab einen Zeitplan für das automatische Herunterfahren gibt. Labbenutzer können den Zeitplan für das automatische Herunterfahren ihrer virtuellen Computer aktualisieren und Benachrichtigungen über das Herunterfahren einrichten.
+Wenn Sie für Ihr Lab diese Richtlinie festlegen, können die Lab-Benutzer den Labzeitplan außer Kraft setzen. Sie können die Richtlinie zum automatischen Herunterfahren allerdings nicht deaktivieren. Diese Option stellt sicher, dass es für jeden Computer in Ihrem Lab einen Zeitplan für das automatische Herunterfahren gibt. Labbenutzer können den Zeitplan für das automatische Herunterfahren ihrer virtuellen Computer aktualisieren und Benachrichtigungen über das Herunterfahren einrichten.
 
 ![Option 2 zum automatischen Herunterfahren](./media/devtest-lab-set-lab-policy/auto-shutdown-policy-option-2.png)
 
 ### <a name="user-has-no-control-over-the-schedule-set-by-lab-admin"></a>Benutzer kann den vom Labadministrator festgelegten Zeitplan nicht steuern
-Wenn Sie für Ihr Lab diese Richtlinie festlegen, können die Labbenutzer den Labzeitplan nicht außer Kraft setzen oder deaktivieren. Diese Option bietet dem Labadministrator die vollständige Kontrolle über den Zeitplan für jeden Computer im Lab. Labbenutzer können nur Benachrichtigungen zum automatischen Herunterfahren für ihre virtuellen Computer einrichten.
+Wenn Sie für Ihr Lab diese Richtlinie festlegen, können die Lab-Benutzer den Labzeitplan nicht außer Kraft setzen oder deaktivieren. Diese Option bietet dem Labadministrator die vollständige Kontrolle über den Zeitplan für jeden Computer im Lab. Labbenutzer können nur Benachrichtigungen zum automatischen Herunterfahren für ihre virtuellen Computer einrichten.
 
 ![Option 3 zum automatischen Herunterfahren](./media/devtest-lab-set-lab-policy/auto-shutdown-policy-option-3.png)
 

@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.date: 09/08/2020
 ms.author: apimpm
 ms.openlocfilehash: 66d0874536b358b720b43780d6ecce879ac866ee
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90708205"
 ---
 # <a name="quickstart-create-a-new-azure-api-management-service-instance-by-using-the-azure-portal"></a>Schnellstart: Erstellen einer neuen Azure API Management-Dienstinstanz mithilfe des Azure-Portals
@@ -32,18 +32,18 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
 1. Wählen Sie im Menü des Azure-Portals die Option **Ressource erstellen** aus. Die Option **Ressource erstellen** kann auch auf der **Startseite** von Azure ausgewählt werden. 
    
-   :::image type="content" source="media/get-started-create-service-instance/00-CreateResource-01.png" alt-text="API Management-Instanz":::
+   :::image type="content" source="media/get-started-create-service-instance/00-CreateResource-01.png" alt-text="Auswählen von „Ressource erstellen“":::
 
    
 1. Klicken Sie auf der Seite **Neu** auf **Integration** > **API Management**.
 
-   :::image type="content" source="media/get-started-create-service-instance/00-CreateResource-02.png" alt-text="API Management-Instanz":::
+   :::image type="content" source="media/get-started-create-service-instance/00-CreateResource-02.png" alt-text="Neue Azure API Management-Instanz":::
    
 1. Geben Sie auf der Seite **API Management-Dienst** Einstellungen ein.
 
-   :::image type="content" source="media/get-started-create-service-instance/get-started-create-service-instance-create-new.png" alt-text="API Management-Instanz":::
+   :::image type="content" source="media/get-started-create-service-instance/get-started-create-service-instance-create-new.png" alt-text="Neue Instanz":::
    
-   | Einstellung                 | Beschreibung   |                                                                     
+   | Einstellung                 | BESCHREIBUNG   |                                                                     
    |-------------------------|-----------------------------------------------|
    | **Name**                | Ein eindeutiger Name für Ihren API Management-Dienst. Den Namen können Sie später nicht mehr ändern. Der Dienstname wird verwendet, um auf den Dienst und die entsprechende Azure-Ressource zu verweisen. <br/> Der Name des Diensts wird verwendet, um einen Standarddomänennamen in der Form *\<name\>.azure-api.net* zu generieren. Wenn Sie einen benutzerdefinierten Domänennamen verwenden möchten, lesen Sie [Configure a custom domain name](configure-custom-domain.md) (Konfigurieren eines benutzerdefinierten Domänennamens). |
    | **Abonnement**          | Das Abonnement, unter dem diese neue Dienstinstanz erstellt wird.   |
@@ -72,17 +72,17 @@ Wenn die Ressourcengruppe und alle zugehörigen Ressourcen nicht mehr benötigt 
 
 1. Suchen Sie im Azure-Portal nach **Ressourcengruppen**, und wählen Sie die entsprechende Option aus. Die Option **Ressourcengruppen** kann auch auf der **Startseite** von Azure ausgewählt werden. 
 
-   :::image type="content" source="media/get-started-create-service-instance/00-DeleteResource-01.png" alt-text="API Management-Instanz":::
+   :::image type="content" source="media/get-started-create-service-instance/00-DeleteResource-01.png" alt-text="Ressourcengruppennavigation":::
 
 1. Wählen Sie auf der Seite **Ressourcengruppen** Ihre Ressourcengruppe aus.
 
-   :::image type="content" source="media/get-started-create-service-instance/00-DeleteResource-02.png" alt-text="API Management-Instanz":::
+   :::image type="content" source="media/get-started-create-service-instance/00-DeleteResource-02.png" alt-text="Auswählen der Ressourcengruppe":::
 
 1. Wählen Sie auf der Ressourcengruppenseite die Option **Ressourcengruppe löschen** aus. 
    
 1. Geben Sie den Namen Ihrer Ressourcengruppe ein, und wählen Sie **Löschen** aus.
 
-   :::image type="content" source="media/get-started-create-service-instance/00-DeleteResource-03.png" alt-text="API Management-Instanz":::
+   :::image type="content" source="media/get-started-create-service-instance/00-DeleteResource-03.png" alt-text="Ressourcengruppe löschen":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

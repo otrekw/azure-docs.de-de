@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4f082ec896bf0542b63c8c1d0257679681334050
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85358666"
 ---
 # <a name="install-azure-ad-connect-using-sql-delegated-administrator-permissions"></a>Installieren von Azure AD Connect mit delegierten SQL-Administratorberechtigungen
@@ -28,7 +28,7 @@ Vor dem neuesten Azure AD Connect-Build wurde das Delegieren von Administratorre
 
 Mit dem neuesten Release von Azure AD Connect kann der SQL-Administrator nun eine Out-of-Band-Datenbankbereitstellung ausführen, sodass die Datenbank anschließend vom Azure AD Connect-Administrator mit Datenbankbesitzerrechten installiert werden kann.
 
-## <a name="before-you-begin"></a>Voraussetzungen
+## <a name="before-you-begin"></a>Vorbereitung
 Um dieses Feature verwenden zu können, müssen Sie beachten, dass es mehrere variable Komponenten gibt, für die jeweils ein anderer Administrator in Ihrer Organisation verantwortlich sein kann.  In der folgenden Tabelle werden die einzelnen Rollen und ihre jeweiligen Aufgaben bei der Bereitstellung von Azure AD Connect mit diesem Feature zusammengefasst.
 
 |Role|BESCHREIBUNG|

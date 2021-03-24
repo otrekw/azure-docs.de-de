@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: phjensen
-ms.openlocfilehash: 00aaa5bdc0d48adb735679fc4a71b3431970ef09
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 458f4d3f29cb08a94095167ed45133f5cd70f5f4
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737166"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869190"
 ---
 # <a name="install-azure-application-consistent-snapshot-tool-preview"></a>Installieren des Tools für anwendungskonsistente Momentaufnahmen in Azure (Vorschau)
 
@@ -239,71 +239,6 @@ Die folgenden Beispielbefehle richten einen Benutzer (AZACSNAP) in der SYSTEMDB 
     ENV : <IP_address_of_host>:
     USER: AZACSNAP
     ```
-
-### <a name="additional-instructions-for-using-the-log-trimmer-sap-hana-20-and-later"></a>Zusätzliche Anweisungen für die Verwendung der Funktion zum Kürzen von Protokollen (SAP HANA 2.0 und höher)
-
-Bei Verwendung der Funktion zum Kürzen von Protokollen richten die folgenden Beispielbefehle einen Benutzer (AZACSNAP) in den TENANT-Datenbanken in einem SAP HANA 2.0-Datenbanksystem ein. Denken Sie daran, IP-Adresse, Benutzernamen und Kennwörter entsprechend Ihren Anforderungen zu ändern:
-
-1. Stellen Sie eine Verbindung mit der TENANT-Datenbank her, um den Benutzer zu erstellen. Mandantenspezifische Informationen sind `<IP_address_of_host>` und `<SYSTEM_USER_PASSWORD>`.  Notieren Sie sich auch den Port (`30015`), der für die Kommunikation mit der TENANT-Datenbank erforderlich ist.
-
-    ```bash
-    hdbsql -n <IP_address_of_host>:30015 - i 00 -u SYSTEM -p <SYSTEM_USER_PASSWORD>
-    ```
-
-    ```output  
-    Welcome to the SAP HANA Database interactive terminal.
-
-    Type: \h for help with commands
-    \q to quit
-
-    hdbsql TENANTDB=>
-    ```
-
-1. Erstellen Sie den Benutzer.
-
-    Dieses Beispiel erstellt den Benutzer AZACSNAP in der SYSTEMDB.
-
-    ```sql
-    hdbsql TENANTDB=> CREATE USER AZACSNAP PASSWORD <AZACSNAP_PASSWORD_CHANGE_ME> NO FORCE_FIRST_PASSWORD_CHANGE;
-    ```
-
-1. Erteilen Sie dem Benutzer Berechtigungen.
-
-    Dieses Beispiel legt die Berechtigung für den Benutzer AZACSNAP fest, um die Erstellung einer datenbankkonsistenten Speichermomentaufnahme zuzulassen.
-
-    ```sql
-    hdbsql TENANTDB=> GRANT BACKUP ADMIN, CATALOG READ, MONITORING TO AZACSNAP;
-    ```
-
-1. *OPTIONAL*: Verhindern Sie, dass das Kennwort des Benutzers abläuft.
-
-    > [!NOTE]
-    > Informieren Sie sich in der entsprechenden Unternehmensrichtlinie, bevor Sie diese Änderung vornehmen.
-
-   Dieses Beispiel deaktiviert den Kennwortablauf für den Benutzer AZACSNAP. Ohne diese Änderung würde das Kennwort des Benutzers ablaufen, und Momentaufnahmen könnten nicht mehr ordnungsgemäß erstellt werden.  
-
-   ```sql
-   hdbsql TENANTDB=> ALTER USER AZACSNAP DISABLE PASSWORD LIFETIME;
-   ```
-
-> [!NOTE]  
-> Wiederholen Sie diese Schritte für alle Mandantendatenbanken. Mithilfe der folgenden SQL-Abfrage in der SYSTEMDB können die Verbindungsdetails für alle Mandanten abgerufen werden.
-
-```sql
-SELECT HOST, SQL_PORT, DATABASE_NAME FROM SYS_DATABASES.M_SERVICES WHERE SQL_PORT LIKE '3%'
-```
-
-Sehen Sie sich die folgende Beispielabfrage und -ausgabe an:
-
-```bash
-hdbsql -jaxC -n 10.90.0.31:30013 -i 00 -u SYSTEM -p <SYSTEM_USER_PASSWORD> " SELECT HOST,SQL_PORT, DATABASE_NAME FROM SYS_DATABASES.M_SERVICES WHERE SQL_PORT LIKE '3%' "
-```
-
-```output
-sapprdhdb80,30013,SYSTEMDB
-sapprdhdb80,30015,H81
-sapprdhdb80,30041,H82
-```
 
 ### <a name="using-ssl-for-communication-with-sap-hana"></a>Verwenden von SSL für die Kommunikation mit SAP HANA
 

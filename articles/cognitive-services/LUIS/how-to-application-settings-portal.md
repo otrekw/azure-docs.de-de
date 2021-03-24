@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.openlocfilehash: aabe05924e781fbab5f92bd620ddcd566365f7e8
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96436639"
 ---
 # <a name="application-and-version-settings"></a>Anwendungs- und Versionseinstellungen
@@ -22,7 +22,7 @@ Sie können Name und Beschreibung Ihrer Anwendung bearbeiten. Sie können Ihre A
 
 1. Melden Sie sich beim [LUIS-Portal](https://www.luis.ai) an.
 1. Wählen Sie in der Liste **Meine Apps** eine App aus.
-erforderlich.
+.
 1. Wählen Sie auf der oberen Navigationsleiste **Verwalten** und dann auf der linken Navigationsleiste **Einstellungen** aus.
 
 > [!div class="mx-imgBorder"]

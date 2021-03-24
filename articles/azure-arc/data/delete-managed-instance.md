@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: e531349e8f404380d9f0601caa3b66557c297062
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90931809"
 ---
 # <a name="delete-azure-arc-enabled-sql-managed-instance"></a>Löschen von Azure Arc-fähigen SQL Managed Instance-Instanzen
@@ -52,7 +52,7 @@ Deleted demo-mi from namespace arc
 
 ## <a name="reclaim-the-kubernetes-persistent-volume-claims-pvcs"></a>Freigeben von Ansprüchen für persistente Kubernetes-Volumes (PVCs)
 
-Durch das Löschen einer SQL Managed Instance-Instanz werden nicht deren zugeordnete [PVCs](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) (Persistent Volume Claims, Ansprüche für persistente Volumes) entfernt. Dies ist beabsichtigt. Auf diese Weise kann der Benutzer einfacher auf die Datenbankdateien zugreifen, falls eine Instanz versehentlich gelöscht wurde. Das Löschen von PVCs ist nicht obligatorisch. Es wird aber empfohlen. Wenn Sie diese PVCs nicht freigeben, treten letztendlich Fehler auf, da dem Kubernetes-Cluster der Speicherplatz ausgeht. Führen Sie die folgenden Schritte aus, um die PVCs freizugeben:
+Durch das Löschen einer SQL Managed Instance-Instanz werden nicht deren zugeordnete [PVCs](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) (Persistent Volume Claims, Ansprüche für persistente Volumes) entfernt. Dies ist beabsichtigt. Auf diese Weise kann der Benutzer einfacher auf die Datenbankdateien zugreifen, falls eine Instanz versehentlich gelöscht wurde. Das Löschen von PVCs ist nicht obligatorisch, Es wird aber empfohlen. Wenn Sie diese PVCs nicht freigeben, treten letztendlich Fehler auf, da dem Kubernetes-Cluster der Speicherplatz ausgeht. Führen Sie die folgenden Schritte aus, um die PVCs freizugeben:
 
 ### <a name="1-list-the-pvcs-for-the-server-group-you-deleted"></a>1. Auflisten der PVCs für die Servergruppe, die Sie gelöscht haben
 Führen Sie den folgenden Befehl aus, um die PVCs aufzulisten:
@@ -90,9 +90,9 @@ persistentvolumeclaim "logs-demo-mi-0" deleted
   
 
 > [!NOTE]
-> Wie bereits erwähnt, kann das Nichtlöschen der PVCs dazu führen, dass Ihr Kubernetes-Cluster letztlich in eine Situation gerät, in der er Fehler verursacht. Zu diesen Fehlern kann es gehören, dass Sie sich nicht mit azdata bei Ihrem Kubernetes-Cluster anmelden können, da die Pods aufgrund dieses Speicherproblems ggf. aus dem Cluster entfernt werden (normales Kubernetes-Verhalten).
+> Wie bereits erwähnt, kann das Nichtlöschen der PVCs dazu führen, dass Ihr Kubernetes-Cluster letztlich in eine Situation gerät, in der er Fehler verursacht. Diese Fehler können u. U. bewirken, dass Sie sich nicht mit azdata bei Ihrem Kubernetes-Cluster anmelden können, da die Pods aufgrund dieses Speicherproblems ggf. aus dem Cluster entfernt werden (normales Kubernetes-Verhalten).
 >
-> Beispielsweise können Meldungen in den Protokollen ähnlich den folgenden angezeigt werden:  
+> Beispielsweise können in den Protokollen Meldungen wie die folgende angezeigt werden:  
 > - Annotations: microsoft.com/ignore-pod-health: true  
 > - Status:         Fehler  
 > - Ursache:         Evicted (Entfernt)  

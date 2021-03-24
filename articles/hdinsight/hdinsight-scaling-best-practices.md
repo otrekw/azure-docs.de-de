@@ -6,12 +6,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: 3524b5d2274c52aa94fa1c3420fb0d3245d9b730
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 6e6c692e8fc13d1703df44c99e9969ba4db5f119
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98932060"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104872097"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Skalieren von Azure HDInsight-Clustern
 
@@ -36,7 +36,7 @@ Microsoft bietet die folgenden Hilfsprogramme für das Skalieren von Clustern:
 |[Klassische Azure-Befehlszeilenschnittstelle](hdinsight-administer-use-command-line.md)|`azure hdinsight cluster resize CLUSTERNAME NEWSIZE` |
 |[Azure portal](https://portal.azure.com)|Öffnen Sie Ihren HDInsight-Clusterbereich, wählen Sie im linken Menü **Clustergröße** aus, geben Sie dann im Bereich „Clustergröße“ die Anzahl der Workerknoten ein, und wählen Sie „Speichern“ aus.|  
 
-![Azure-Portal – Option zum Skalieren von Clustern](./media/hdinsight-scaling-best-practices/azure-portal-settings-nodes.png)
+:::image type="content" source="./media/hdinsight-scaling-best-practices/azure-portal-settings-nodes.png" alt-text="Azure-Portal – Option zum Skalieren von Clustern":::
 
 Mit jeder dieser Methoden können Sie Ihren HDInsight-Cluster innerhalb von Minuten zentral hoch- oder herunterskalieren.
 
@@ -82,7 +82,7 @@ Auswirkungen der Änderung der Anzahl von Datenknoten variieren für die von HDI
 
     1. Wählen Sie die Topologie aus, die Sie erneut ausgleichen möchten, und klicken Sie dann auf die Schaltfläche **Neu ausgleichen**. Geben Sie die Verzögerung ein, bevor der Neuausgleich abgeschlossen ist.
 
-        ![Ausgleichen der HDInsight Storm-Skalierung](./media/hdinsight-scaling-best-practices/hdinsight-portal-scale-cluster-storm-rebalance.png)
+        :::image type="content" source="./media/hdinsight-scaling-best-practices/hdinsight-portal-scale-cluster-storm-rebalance.png" alt-text="Ausgleichen der HDInsight Storm-Skalierung":::
 
   * Befehlszeilenschnittstelle (CLI)
 
@@ -130,13 +130,13 @@ Um eine Liste der ausstehenden und ausgeführten Aufträge anzuzeigen, können S
 3. Wählen Sie auf der Benutzeroberfläche von Ambari in der Liste mit den Diensten im linken Menü **YARN** aus.  
 4. Wählen Sie auf der Seite „YARN“ die Option **Quicklinks** aus. Zeigen Sie auf den aktiven Hauptknoten, und klicken Sie auf **Resource Manager-Benutzeroberfläche**.
 
-    ![Quicklinks > Resource Manager-Benutzeroberfläche in Apache Ambari](./media/hdinsight-scaling-best-practices/resource-manager-ui1.png)
+    :::image type="content" source="./media/hdinsight-scaling-best-practices/resource-manager-ui1.png" alt-text="Quicklinks &gt; Resource Manager-Benutzeroberfläche in Apache Ambari":::
 
 Über den folgenden Link können Sie direkt auf die Resource Manager-Benutzeroberfläche zugreifen: `https://<HDInsightClusterName>.azurehdinsight.net/yarnui/hn/cluster`.
 
 Eine Liste der Aufträge wird zusammen mit ihren aktuellen Status angezeigt. Im Screenshot wird derzeit ein Auftrag ausgeführt:
 
-![Anwendungen der Resource Manager-Benutzeroberfläche](./media/hdinsight-scaling-best-practices/resourcemanager-ui-applications.png)
+:::image type="content" source="./media/hdinsight-scaling-best-practices/resourcemanager-ui-applications.png" alt-text="Anwendungen der Resource Manager-Benutzeroberfläche":::
 
 Um die ausgeführte Anwendung manuell zu beenden, führen Sie den folgenden Befehl der SSH-Shell aus:
 

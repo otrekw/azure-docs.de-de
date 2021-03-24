@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/06/2020
 ms.openlocfilehash: 15c7ed4ca9d04e4bb314eea8b92bef749d2369b1
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92537659"
 ---
 # <a name="azure-cache-for-redis-management-faqs"></a>Häufig gestellte Fragen zur Azure Cache for Redis-Verwaltung
@@ -147,7 +147,7 @@ So konfigurieren Sie diese Einstellung:
 * Sie können außerdem die Einstellung für die Mindestanzahl von Threads mithilfe der Konfigurationseinstellungen [*minIoThreads* bzw. *minWorkerThreads*](/previous-versions/dotnet/netframework-4.0/7w2sway1(v=vs.100)) unter dem Konfigurationselement `<processModel>` in `Machine.config` angeben, das sich normalerweise in `%SystemRoot%\Microsoft.NET\Framework\[versionNumber]\CONFIG\` befindet. **Es wird generell nicht empfohlen, die Mindestanzahl von Threads auf diese Weise festzulegen, weil es sich um eine systemweite Einstellung handelt.**
 
   > [!NOTE]
-  > Der in diesem Konfigurationselement angegebene Wert ist eine Einstellung *pro Kern* . Wenn Ihr Computer z.B. über vier Kerne verfügt und Sie eine *minIoThreads* -Einstellung von 200 zur Laufzeit festlegen möchten, müssen Sie `<processModel minIoThreads="50"/>` verwenden.
+  > Der in diesem Konfigurationselement angegebene Wert ist eine Einstellung *pro Kern*. Wenn Ihr Computer z.B. über vier Kerne verfügt und Sie eine *minIoThreads*-Einstellung von 200 zur Laufzeit festlegen möchten, müssen Sie `<processModel minIoThreads="50"/>` verwenden.
   >
 
 ### <a name="enable-server-gc-to-get-more-throughput-on-the-client-when-using-stackexchangeredis"></a>Aktivieren der Garbage Collection auf dem Server-, um bei Verwenden von „StackExchange.Redis“ mehr Durchsatz auf dem Client zu erzielen
@@ -165,4 +165,4 @@ Weitere Informationen zu den verschiedenen Verbindungsgrenzwerten für die einze
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie mehr über weitere [Häufig gestellte Fragen zu Azure Cache for Redis](cache-faq.md).
+Erfahren Sie mehr über weitere [häufig gestellte Fragen zu Azure Cache for Redis](cache-faq.md).

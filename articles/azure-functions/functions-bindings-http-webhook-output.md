@@ -6,15 +6,15 @@ ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.openlocfilehash: a25658677e436edf4d001599bb4981f527016596
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84697441"
 ---
 # <a name="azure-functions-http-output-bindings"></a>HTTP-Ausgabebindungen in Azure Functions
 
-Verwenden Sie die HTTP-Ausgabebindung, um eine Antwort an den Absender der HTTP-Anforderung zu senden. Diese Bindung erfordert einen HTTP-Trigger und ermöglicht Ihnen, die Antwort, die der Anforderung des Triggers zugeordnet ist, benutzerdefiniert anzupassen.
+Verwenden Sie die HTTP-Ausgabebindung, um eine Antwort an den Absender der HTTP-Anforderung zu senden. Diese Bindung erfordert einen HTTP-Trigger und ermöglicht es Ihnen, die Antwort anzupassen, die der Anforderung des Triggers zugeordnet ist.
 
 Der Standardrückgabewert für eine HTTP-ausgelöste Funktion ist:
 
@@ -66,7 +66,7 @@ In diesem Abschnitt werden die verfügbaren globalen Konfigurationseinstellungen
 
 |Eigenschaft  |Standard | BESCHREIBUNG |
 |---------|---------|---------| 
-| customHeaders|none|Ermöglicht das Festlegen benutzerdefinierter Header in der HTTP-Antwort. Im vorherigen Beispiel wird der Antwort der `X-Content-Type-Options`-Header hinzugefügt, um die Inhaltstypermittlung zu vermeiden. |
+| customHeaders|Keine|Ermöglicht das Festlegen benutzerdefinierter Header in der HTTP-Antwort. Im vorherigen Beispiel wird der Antwort der `X-Content-Type-Options`-Header hinzugefügt, um die Inhaltstypermittlung zu vermeiden. |
 |dynamicThrottlesEnabled|true<sup>\*</sup>|Bei einer Aktivierung dieser Einstellung überprüft die Pipeline zur Anforderungsverarbeitung regelmäßig Leistungsindikatoren zur Systemleistung wie `connections/threads/processes/memory/cpu/etc`, und wenn einer dieser Leistungsindikatoren einen integrierten Schwellenwert (80 %) übersteigt, werden Anforderungen mit der Antwort `429 "Too Busy"` zurückgewiesen, bis die Leistungsindikatoren wieder ein normales Niveau erreichen.<br/><sup>\*</sup>Der Standardwert in einem Verbrauchstarif ist `true`. Der Standardwert im Tarif „Dedicated“ ist `false`.|
 |hsts|Nicht aktiviert|Wenn `isEnabled` auf `true` festgelegt ist, wird das [HSTS-Verhalten (HTTP Strict Transport Security) von .NET Core](/aspnet/core/security/enforcing-ssl?view=aspnetcore-3.0&tabs=visual-studio#hsts) erzwungen, wie in der [`HstsOptions`-Klasse](/dotnet/api/microsoft.aspnetcore.httpspolicy.hstsoptions?view=aspnetcore-3.0) definiert. Das Beispiel oben legt außerdem die [`maxAge`](/dotnet/api/microsoft.aspnetcore.httpspolicy.hstsoptions.maxage?view=aspnetcore-3.0#Microsoft_AspNetCore_HttpsPolicy_HstsOptions_MaxAge)-Eigenschaft auf 10 Tage fest. Folgende Eigenschaften von `hsts` werden unterstützt: <table><tr><th>Eigenschaft</th><th>BESCHREIBUNG</th></tr><tr><td>excludedHosts</td><td>Ein Zeichenfolgenarray mit Hostnamen, für die der HSTS-Header nicht hinzugefügt wird.</td></tr><tr><td>includeSubDomains</td><td>Boolescher Wert, der angibt, ob der „includeSubDomain“-Parameter des „Strict-Transport-Security“-Headers aktiviert wurde.</td></tr><tr><td>maxAge</td><td>Eine Zeichenfolge, die den „max-age“-Parameter des „Strict-Transport-Security“-Headers definiert.</td></tr><tr><td>preload</td><td>Boolescher Wert, der angibt, ob der „preload“-Parameter des „Strict-Transport-Security“-Headers aktiviert ist.</td></tr></table>|
 |maxConcurrentRequests|100<sup>\*</sup>|Die maximale Anzahl von HTTP-Funktionen, die parallel ausgeführt werden. Mit diesem Wert können Sie die Parallelität steuern und somit die Verwaltung der Ressourcenverwendung vereinfachen. Beispielsweise könnten Sie über eine HTTP-Funktion verfügen, die eine große Zahl von Systemressourcen (Speicher/CPU/Sockets) verbraucht und daher Probleme verursacht, wenn die Parallelität zu hoch ist. Oder eine Funktion führt ausgehende Anforderungen an einen Dienst eines Drittanbieters durch, und die Rate dieser Aufrufe muss eingeschränkt werden. In diesen Fällen kann eine Drosselung hilfreich sein. <br/><sup>*</sup>Der Standardwert für einen Verbrauchstarif ist 100. Der Standardwert im Tarif „Dedicated“ ist unbegrenzt (`-1`).|

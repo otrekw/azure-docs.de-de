@@ -15,10 +15,10 @@ ms.author: kenwith
 ms.reviewer: kasimpso
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7743a1af54b01f848c4ac6f0cb1d4526d66f8132
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99254981"
 ---
 # <a name="create-collections-on-the-my-apps-portal"></a>Erstellen von Sammlungen im Portal „Meine Apps“
@@ -61,7 +61,7 @@ Zum Erstellen einer Sammlung müssen Sie über eine Azure AD Premium P1- oder P2
 
    ![Hinzufügen einer Anwendung zur Sammlung](media/acces-panel-collections/add-applications.png)
 
-6. Wenn Sie das Hinzufügen von Anwendungen beendet haben, wählen Sie **Hinzufügen** aus. Die Liste der ausgewählten Anwendungen wird angezeigt. Mithilfe der Aufwärtspfeile können Sie die Reihenfolge der Anwendungen in der Liste ändern. Wenn Sie eine Anwendung nach unten verschieben oder aus der Sammlung löschen möchten, wählen Sie das Menü **Mehr** ( **...** ) aus.
+6. Wenn Sie das Hinzufügen von Anwendungen beendet haben, wählen Sie **Hinzufügen** aus. Die Liste der ausgewählten Anwendungen wird angezeigt. Mithilfe der Aufwärtspfeile können Sie die Reihenfolge der Anwendungen in der Liste ändern. Wenn Sie eine Anwendung nach unten verschieben oder aus der Sammlung löschen möchten, wählen Sie das Menü **Mehr** (**...**) aus.
 
 7. Wählen Sie die Registerkarte **Besitzer** aus. Wählen Sie **+ Benutzer und Gruppen hinzufügen** aus, und wählen Sie dann auf der Seite **Benutzer und Gruppen hinzufügen** die Benutzer oder Gruppen aus, denen Sie den Besitz zuweisen möchten. Wenn Sie mit der Auswahl der Benutzer und Gruppen fertig sind, wählen Sie **Auswählen** aus.
 

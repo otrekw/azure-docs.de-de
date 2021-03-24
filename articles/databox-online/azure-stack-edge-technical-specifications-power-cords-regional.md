@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/16/2020
 ms.author: alkohli
 ms.openlocfilehash: 18de1f445990f167041c755aa5e7d909819319b1
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96446465"
 ---
 # <a name="azure-stack-edge-pro-power-cord-specifications"></a>Spezifikationen für Azure Stack Edge Pro-Netzkabel
@@ -33,8 +33,8 @@ In der folgenden Tabelle finden Sie die richtigen Kabelspezifikationen für Ihre
 |Österreich|250|10|H05Z1Z1 3x0,75|CEE 7|C13|1830|
 |Aserbaidschan|250|10|H05Z1Z1 3x0,75|CEE 7|C13|1830|
 |Bahamas|125|10|SVE 18/3|NEMA 5-15P|C13|1830|
-|Bahrain|250|5|H05VV-F 3x0.75|BS1363 SS145/A|C13|1800|
-|Bangladesch|250|5|H05VV-F 3x0.75|BS1363 SS145/A|C13|1800|
+|Bahrain|250|5|H05VV-F 3x0,75|BS1363 SS145/A|C13|1800|
+|Bangladesch|250|5|H05VV-F 3x0,75|BS1363 SS145/A|C13|1800|
 |Barbados|125|10|SVE 18/3|NEMA 5-15P|C13|1830|
 |Belarus|250|10|H05Z1Z1 3x0,75|CEE 7|C13|1830|
 |Belgien|250|10|H05Z1Z1 3x0,75|CEE 7|C13|1830|
@@ -46,7 +46,7 @@ In der folgenden Tabelle finden Sie die richtigen Kabelspezifikationen für Ihre
 |Kambodscha|250|10|H05VV-F 3X0.75|CEE 7/7|C13|1800|
 |Canada|125|10|SVE 18/3|NEMA 5-15P|C13|1830|
 |Kaimaninseln|125|10|SVE 18/3|NEMA 5-15P|C13|1830|
-|Chile|250|10|H05VV-F 3x0.75|CEI 23-50|C13|1800
+|Chile|250|10|H05VV-F 3x0,75|CEI 23-50|C13|1800
 |China|250|10|RVV300/500 3X0,75|GB 2099.1|C13|2000|
 |Kolumbien|125|10|SVE 18/3|NEMA 5-15P|C13|1830|
 |Costa Rica|125|10|SVE 18/3|NEMA 5-15P|C13|1830|

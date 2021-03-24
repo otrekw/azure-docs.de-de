@@ -15,10 +15,10 @@ ms.reviewer: jmprieur
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: eaa3844bfbbef8cb71dbe8691cab894c921ce00a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "80154507"
 ---
 # <a name="understanding-the-oauth2-implicit-grant-flow-in-azure-active-directory-ad"></a>Grundlegendes zum Ablauf der impliziten OAuth2-Gewährung in Azure Active Directory (AD)
@@ -66,7 +66,7 @@ Auch wenn Sie eine Webanwendung mit einem Back-End entwickeln, die eine API übe
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere detaillierte Informationen zur Anwendungsintegration finden Sie unter [Integrieren von Anwendungen in Azure AD][ACOM-How-To-Integrate].
+* Weitere Informationen zur Anwendungsintegration finden Sie unter [Integrieren von Anwendungen in Azure AD][ACOM-How-To-Integrate].
 
 <!--Image references-->
 

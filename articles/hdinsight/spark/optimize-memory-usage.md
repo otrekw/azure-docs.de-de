@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: d54cf4e9025dfd75d9029dec534fc5dc5dd990a5
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 4e23c5977b2492d2ea8a7a8cc050c77c512c3e16
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944177"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868374"
 ---
 # <a name="memory-usage-optimization-for-apache-spark"></a>Optimierung der Speicherauslastung für Apache Spark
 
@@ -31,7 +31,7 @@ Die folgende Abbildung zeigt die Spark-Arbeitsspeicherstruktur und einige wichti
 
 Bei Verwendung von Apache Hadoop YARN steuert YARN den von allen Containern auf jedem Spark-Knoten verwendeten Gesamtarbeitsspeicher.  Das folgende Diagramm zeigt die wichtigsten Objekte und ihre Beziehungen.
 
-![Übersicht über die YARN-Spark-Arbeitsspeicherverwaltung](./media/apache-spark-perf/apache-yarn-spark-memory.png)
+:::image type="content" source="./media/apache-spark-perf/apache-yarn-spark-memory.png" alt-text="Übersicht über die YARN-Spark-Arbeitsspeicherverwaltung" border="false":::
 
 Um Meldungen zu unzureichendem Arbeitsspeicher zu beheben, versuchen Sie Folgendes:
 
