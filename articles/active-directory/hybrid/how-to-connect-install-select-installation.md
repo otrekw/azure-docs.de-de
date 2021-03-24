@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7275d115210100bdd4a3a2eb683c867a6a4a4f4a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95996609"
 ---
 # <a name="select-which-installation-type-to-use-for-azure-ad-connect"></a>Auswählen des Installationstyps für Azure AD Connect
@@ -50,7 +50,7 @@ Optionen, mit denen Sie Express weiterhin verwenden können:
 ## <a name="custom"></a>Benutzerdefiniert
 Der benutzerdefinierte Pfad bietet viel mehr Optionen als Express. Er sollte in allen Fällen verwendet werden, wo die im vorherigen Abschnitt für Express beschriebene Konfiguration für Ihre Organisation nicht repräsentativ ist.
 
-Die Verwendung empfiehlt sich unter folgenden Voraussetzungen:
+Zu verwenden in folgenden Fällen:
 
 - Sie haben in Active Directory keinen Zugriff auf ein Unternehmensadministratorkonto.
 - Sie haben mehrere Gesamtstrukturen oder planen, zukünftig mehrere Gesamtstrukturen zu synchronisieren.

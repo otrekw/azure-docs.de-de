@@ -8,10 +8,10 @@ ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
 ms.openlocfilehash: 5b1aab8b38614249d6b502044b5c4c8170f46b3c
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103492216"
 ---
 # <a name="ui-framework-capabilities"></a>Funktionen des Benutzeroberflächen-Frameworks
@@ -71,7 +71,7 @@ Mit dem Benutzeroberflächen-Framework von Azure Communication Services können 
 
 | Komponententyp            | Designs     | Layout                                                              | Datenmodelle |
 |---------------------------|------------|---------------------------------------------------------------------|-------------|
-| Zusammengesetzte Komponente       |     Nicht zutreffend    | N/V                                                                 |     Nicht zutreffend     |
+| Zusammengesetzte Komponente       |     Nicht zutreffend    | –                                                                 |     Nicht zutreffend     |
 | Basiskomponente            |     Nicht zutreffend    | Layout von Komponenten kann mit externer Formatierung geändert werden         |     Nicht zutreffend     |
 
 
@@ -79,7 +79,7 @@ Mit dem Benutzeroberflächen-Framework von Azure Communication Services können 
 
 | SDK    | Windows            | macOS                | Ubuntu   | Linux    | Android  | iOS        |
 |--------|--------------------|----------------------|----------|----------|----------|------------|
-| Benutzeroberflächen-SDK | Chrome\*, Edge (neu) | Chrome\*, Safari\*\* | Chrome\* | Chrome\* | Chrome\* | Safari\*\* |
+| Benutzeroberflächen-SDK | Chrome\*, Microsoft Edge (neu) | Chrome\*, Safari\*\* | Chrome\* | Chrome\* | Chrome\* | Safari\*\* |
 
 \*Hinweis: Neben den beiden vorherigen Releases wird auch die neueste Version von Chrome unterstützt.
 

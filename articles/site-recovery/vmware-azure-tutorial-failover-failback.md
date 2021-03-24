@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 12/16/2019
 ms.custom: MVC
 ms.openlocfilehash: bf47f08ac555cf60f59ba2b1a84750b6a9e2e0a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86132003"
 ---
 # <a name="fail-over--vmware-vms"></a>Ausführen eines Failovers für VMware-VMs
@@ -18,11 +18,11 @@ In diesem Artikel erfahren Sie, wie Sie für einen lokalen virtuellen VMware-Com
 
 Dies ist das fünfte Tutorial einer Reihe zur Einrichtung der Notfallwiederherstellung in Azure für lokale Computer.
 
-In diesem Tutorial lernen Sie Folgendes:
+In diesem Tutorial lernen Sie, wie die folgenden Aufgaben ausgeführt werden:
 
 > [!div class="checklist"]
 > * Überprüfen der VMware-VM-Eigenschaften, um die Konformität mit Azure-Anforderungen zu bestätigen
-> * Führen Sie für bestimmte VMs ein Failover auf Azure aus.
+> * Ausführen eines Failovers auf Azure für bestimmte VMs
 
 > [!NOTE]
 > In den Tutorials wird der einfachste Bereitstellungspfad für ein Szenario erläutert. Sie verwenden nach Möglichkeit Standardoptionen und zeigen nicht alle möglichen Einstellungen und Pfade. Wenn Sie sich detailliert über Failover informieren möchten, lesen Sie [Ausführen eines Failovers für virtuelle Computer und physische Server](site-recovery-failover.md).
@@ -44,7 +44,7 @@ Absolvieren Sie die vorherigen Tutorials:
 
 Gehen Sie zum Überprüfen der Eigenschaften wie folgt vor:
 
-1. Wählen Sie in **Geschützte Elemente** **Replizierte Elemente** aus, und wählen Sie dann die VM aus, die Sie überprüfen möchten.
+1. Wählen Sie in **Geschützte Elemente****Replizierte Elemente** aus, und wählen Sie dann die VM aus, die Sie überprüfen möchten.
 
 2. Im Bereich **Repliziertes Element** finden Sie eine Zusammenfassung der Informationen zu virtuellen Computern, den Integritätsstatus sowie die neuesten verfügbaren Wiederherstellungspunkte. Wählen Sie **Eigenschaften** aus, um weitere Details anzuzeigen.
 
@@ -66,7 +66,7 @@ Gehen Sie zum Überprüfen der Eigenschaften wie folgt vor:
 
 1. Wählen Sie unter **Einstellungen** > **Replizierte Elemente** den virtuellen Computer aus, für den das Failover ausgeführt werden soll, und wählen Sie dann **Failover** aus.
 2. Wählen Sie unter **Failover** einen **Wiederherstellungspunkt** für das Failover aus. Sie können eine der folgenden Optionen auswählen:
-   * **Aktuell**: Mit dieser Option werden zuerst alle an Site Recovery gesendeten Daten verarbeitet. Sie bietet die niedrigste RPO (Recovery Point Objective), da die nach dem Failover erstellte Azure-VM über alle Daten verfügt, die bei Auslösung des Failovers zu Site Recovery repliziert wurden.
+   * **Neueste**: Mit dieser Option werden zuerst alle an Site Recovery gesendeten Daten verarbeitet. Sie bietet die niedrigste RPO (Recovery Point Objective), da die nach dem Failover erstellte Azure-VM über alle Daten verfügt, die bei Auslösung des Failovers zu Site Recovery repliziert wurden.
    * **Letzte Verarbeitung**: Mit dieser Option wird das Failover des virtuellen Computers auf den letzten Wiederherstellungspunkt ausgeführt, der von Site Recovery verarbeitet wurde. Diese Option bietet eine niedrige Recovery Time Objective (RTO), da keine Zeit für die Verarbeitung unverarbeiteter Daten aufgewendet wird.
    * **Letzter anwendungskonsistenter Zeitpunkt**: Mit dieser Option wird ein Failover des virtuellen Computers auf den letzten anwendungskonsistenten Wiederherstellungspunkt ausgeführt, der von Site Recovery verarbeitet wurde.
    * **Benutzerdefiniert**: Diese Option gestattet Ihnen das Angeben eines Wiederherstellungspunkts.

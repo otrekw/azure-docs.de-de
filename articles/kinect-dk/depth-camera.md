@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Kinect, Azure, Sensor, SDK, Tiefenkamera, ToF, Prinzipien, Leistung, Invalidierung
 ms.openlocfilehash: 22f04b983ed7c6a2ab19a5c1c709621655ee31c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85276701"
 ---
 # <a name="azure-kinect-dk-depth-camera"></a>Tiefenkamera in Azure Kinect DK
@@ -56,7 +56,7 @@ Ein systematischer Fehler ist definiert als die Differenz zwischen der gemessene
 
 ![Systematischer Fehler bei der Tiefe](./media/concepts/depth-camera-systematic-error.png)
 
-*d<sub>t</sub>* gibt die gemessene Tiefe zum Zeitpunkt *t* an, *N* entspricht der Anzahl der Bilder, die für die Mittelwertbildung verwendet werden, und *d<sub>gt</sub>* gibt den Ground Truth-Wert der Tiefe an.
+*d <sub>t</sub>* gibt die gemessene Tiefe zum Zeitpunkt *t* an, *N* entspricht der Anzahl der Bilder, die für die Mittelwertbildung verwendet werden, und *d <sub>gt</sub>* gibt den Ground Truth-Wert der Tiefe an.
 
 Bei der Spezifikation der systematischen Fehler der Tiefenkamera wird die Mehrweginterferenz nicht berücksichtigt. Mehrweginterferenz tritt auf, wenn ein Sensorpixel Licht integriert, das von mehreren Objekten reflektiert wird. Die Mehrweginterferenz wird in der Tiefenkamera durch höhere Modulationsfrequenzen sowie die Tiefeninvalidierung (weiter unten beschrieben) teilweise gemindert.
 
@@ -66,7 +66,7 @@ Angenommen, es werden 100 Bilder eines Objekts aufgenommen, ohne die Kamera zu 
 
 ![Zufälliger Fehler bei der Tiefe](./media/concepts/depth-camera-random-error.png)
 
-*N* gibt die Anzahl der Tiefenmessungen an, *d<sub>t</sub>* stellt die Tiefenmessung zum Zeitpunkt *t* dar, und *d* gibt den berechneten Mittelwert für alle Tiefenmessungen *d<sub>t</sub>* an.
+*N* gibt die Anzahl der Tiefenmessungen an, *d <sub>t</sub>* stellt die Tiefenmessung zum Zeitpunkt *t* dar, und *d* gibt den berechneten Mittelwert für alle Tiefenmessungen *d <sub>t</sub>* an.
 
 ## <a name="invalidation"></a>Invalidierung
 

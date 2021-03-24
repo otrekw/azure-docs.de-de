@@ -11,18 +11,18 @@ ms.workload: ''
 ms.topic: tutorial
 ms.date: 08/24/2020
 ms.author: inhenkel
-ms.openlocfilehash: c481daf73f916ede2e7063c75448ba4d09e553cc
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 8e3b9636dfb900fa0e22bfea8bcd2d0c7edf0241
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100571871"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104596704"
 ---
 # <a name="tutorial-store-azure-media-services-events-in-azure-log-analytics"></a>Tutorial: Speichern von Azure Media Services-Ereignissen in Azure Log Analytics
 
 ## <a name="azure-media-services-events"></a>Azure Media Services-Ereignisse
 
-Azure Media Services v3 gibt Ereignisse in [Azure Event Grid](media-services-event-schemas.md) aus. Sie können Ereignisse auf vielfältige Weise abonnieren und in Datenspeichern speichern. In diesem Tutorial abonnieren Sie Media Services-Ereignisse mit einem [Logik-App-Flow](https://azure.microsoft.com/services/logic-apps/). Die Logik-App wird für jedes Ereignis ausgelöst und speichert den Textkörper des Ereignisses in Azure Log Analytics. Sobald sich die Ereignisse in Azure Log Analytics befinden, können Sie andere Azure-Dienste nutzen, um ein Dashboard, eine Überwachung und eine Warnung für diese Ereignisse zu erstellen, worauf wir in diesem Tutorial jedoch nicht eingehen werden.
+Azure Media Services v3 gibt Ereignisse in [Azure Event Grid](monitoring/media-services-event-schemas.md) aus. Sie können Ereignisse auf vielfältige Weise abonnieren und in Datenspeichern speichern. In diesem Tutorial abonnieren Sie Media Services-Ereignisse mit einem [Logik-App-Flow](https://azure.microsoft.com/services/logic-apps/). Die Logik-App wird für jedes Ereignis ausgelöst und speichert den Textkörper des Ereignisses in Azure Log Analytics. Sobald sich die Ereignisse in Azure Log Analytics befinden, können Sie andere Azure-Dienste nutzen, um ein Dashboard, eine Überwachung und eine Warnung für diese Ereignisse zu erstellen, worauf wir in diesem Tutorial jedoch nicht eingehen werden.
 
 > [!NOTE]
 > Es wäre hilfreich, wenn Sie bereits mit der Verwendung von FFmpeg als lokaler Encoder vertraut sind.  Falls nicht, ist das auch in Ordnung. Die Befehlszeile und Anweisungen zum Streamen eines Videos sind nachstehend aufgeführt.

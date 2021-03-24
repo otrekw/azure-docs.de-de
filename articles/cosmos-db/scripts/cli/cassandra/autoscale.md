@@ -8,10 +8,10 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: sample
 ms.date: 7/29/2020
 ms.openlocfilehash: 810e896f5c2c6f45ce955b240041b33dc834d3ed
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94566434"
 ---
 # <a name="create-an-azure-cosmos-cassandra-api-account-keyspace-and-table-with-autoscale-using-azure-cli"></a>Erstellen eines Kontos, eines Keyspace und einer Tabelle mit Autoskalierung für die Azure Cosmos-Cassandra-API mit der Azure-Befehlszeilenschnittstelle (Azure CLI)

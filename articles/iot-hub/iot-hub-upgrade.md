@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: robinsh
 ms.openlocfilehash: 96c3a7b2cfda23f173f4caeff4fb7a92b1ddc438
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "61440212"
 ---
 # <a name="how-to-upgrade-your-iot-hub"></a>Gewusst wie: Durchführen eines Upgrades für IoT Hub
 
-Wächst Ihre IoT-Lösung und muss hochskaliert werden, ist Azure IoT Hub zur Stelle. Azure IoT Hub bietet zwei Tarife, nämlich Basic (B) und Standard (S), für Kunden, die verschiedene Anforderungen an Features stellen. In jedem Tarif werden drei Größen (1, 2 und 3) angeboten, die die Anzahl der Nachrichten angeben, die jeden Tag gesendet werden können.
+Wächst Ihre IoT-Lösung und muss zentral hochskaliert werden, ist Azure IoT Hub zur Stelle. Azure IoT Hub bietet zwei Tarife, nämlich Basic (B) und Standard (S), für Kunden, die verschiedene Anforderungen an Features stellen. In jedem Tarif werden drei Größen (1, 2 und 3) angeboten, die die Anzahl der Nachrichten angeben, die jeden Tag gesendet werden können.
 
 Wenn Sie mehr Geräte haben und weitere Funktionen benötigen, haben Sie drei Möglichkeiten, um IoT Hub hinsichtlich Ihrer Anforderungen anzupassen:
 
@@ -39,7 +39,7 @@ Diese Beispiele sollen veranschaulichen, wie IoT Hub im Zuge von Änderungen in 
 
 2. Wählen Sie **Preise und Skalierung** aus.
 
-   ![Preise und Skalierung](./media/iot-hub-upgrade/pricing-scale.png)
+   ![Tarif und Skalierung](./media/iot-hub-upgrade/pricing-scale.png)
 
 3. Wählen Sie zum Ändern des Tarifs für Ihren Hub **Preise und Skalierung** aus. Wählen Sie den neuen Tarif aus, und klicken Sie auf **Auswählen**.
 

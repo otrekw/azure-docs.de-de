@@ -1,17 +1,16 @@
 ---
 title: Datenquellen für das Sammeln von Windows-Ereignisprotokolldaten mit dem Log Analytics-Agent in Azure Monitor
 description: Hier wird beschrieben, wie Sie das Sammeln von Windows-Ereignisprotokollen mit Azure Monitor konfigurieren und Details zu den von ihnen erstellten Datensätzen finden.
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/21/2020
-ms.openlocfilehash: b747a4b58c9c460178d415d0b45ade814723d8fe
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 02/26/2021
+ms.openlocfilehash: a3baa83e2ae306f1e43aee52e29a151bad6f85d9
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101719864"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036593"
 ---
 # <a name="collect-windows-event-log-data-sources-with-log-analytics-agent"></a>Datenquellen für das Sammeln von Windows-Ereignisprotokolldaten mit dem Log Analytics-Agent
 Windows-Ereignisprotokolle sind eine der gängigsten [Datenquellen](../agents/agent-data-sources.md) für Log Analytics-Agents auf virtuellen Windows-Computern, weil viele Anwendungen Daten in das Windows-Ereignisprotokoll schreiben.  Sie können Ereignisse aus Standardprotokollen wie beispielsweise dem System- und dem Anwendungsprotokoll sammeln und darüber hinaus benutzerdefinierte Protokolle angeben, die von den zu überwachenden Anwendungen erstellt werden.
@@ -22,13 +21,13 @@ Windows-Ereignisprotokolle sind eine der gängigsten [Datenquellen](../agents/ag
 ![Windows-Ereignisse](media/data-sources-windows-events/overview.png)     
 
 ## <a name="configuring-windows-event-logs"></a>Konfigurieren der Windows-Ereignisprotokolle
-Sie konfigurieren Windows-Ereignisprotokolle über das [Menü „Daten“ in „Erweiterte Einstellungen“](../agents/agent-data-sources.md#configuring-data-sources) für den Log Analytics-Arbeitsbereich.
+Sie konfigurieren Windows-Ereignisprotokolle über das [Menü „Agent-Konfiguration“](../agents/agent-data-sources.md#configuring-data-sources) für den Log Analytics-Arbeitsbereich.
 
 Azure Monitor sammelt nur Ereignisse aus den Windows-Ereignisprotokollen, die in den Einstellungen angegeben wurden.  Sie können ein Ereignisprotokoll hinzufügen, indem Sie den Namen des Protokolls eingeben und auf **+** klicken.  Für jedes Protokoll werden nur die Ereignisse mit den ausgewählten Schweregraden gesammelt.  Überprüfen Sie die Schweregrade für das Protokoll, aus dem Sie Daten sammeln möchten.  Sie können keine zusätzlichen Kriterien zum Filtern von Ereignissen bereitstellen.
 
 Während der Eingabe des Namens des Ereignisprotokolls bietet Azure Monitor Vorschläge gängiger Ereignisprotokollnamen an. Wenn das Protokoll, das Sie hinzufügen möchten, nicht in der Liste enthalten ist, können Sie es dennoch durch Eingabe des vollständigen Namens des Protokolls hinzufügen. Mithilfe der Ereignisanzeige können Sie den vollständigen Namen des Protokolls finden. Öffnen Sie in der Ereignisanzeige die Seite *Eigenschaften* des Protokolls, und kopieren Sie die Zeichenfolge aus dem Feld *Vollständiger Name*.
 
-![Windows-Ereignisse konfigurieren](media/data-sources-windows-events/configure.png)
+[![Windows-Ereignisse konfigurieren](media/data-sources-windows-events/configure.png)](media/data-sources-windows-events/configure.png#lightbox)
 
 > [!NOTE]
 > Kritische Ereignisse aus dem Windows-Ereignisprotokoll weisen in Azure Monitor-Protokollen den Schweregrad „Fehler“ auf.
