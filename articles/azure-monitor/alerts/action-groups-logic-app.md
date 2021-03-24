@@ -4,14 +4,13 @@ description: Erfahren Sie, wie eine Aktion einer Logik-App zum Verarbeiten von A
 author: dkamstra
 ms.author: dukek
 ms.topic: conceptual
-ms.date: 07/18/2018
-ms.subservice: alerts
-ms.openlocfilehash: d74d77abbc0d105e6772240b8a6d7f463e8d94f7
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.date: 02/19/2021
+ms.openlocfilehash: a1371e00a6d4c5db609466e25c9d94aad5e73398
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100602268"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102045716"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>Auslösen komplexer Aktionen mit Azure Monitor-Warnungen
 
@@ -19,7 +18,7 @@ Dieser Artikel zeigt Ihnen, wie eine Logik-App eingerichtet und ausgelöst wird,
 
 ## <a name="overview"></a>Übersicht
 
-Wenn eine Azure Monitor-Warnung auslöst wird, wird eine [Aktionsgruppe](../platform/action-groups.md) aufgerufen. Aktionsgruppen ermöglichen Ihnen das Auslösen von mindestens einer Aktion, um andere über eine Warnung zu benachrichtigen und diese auch zu beseitigen.
+Wenn eine Azure Monitor-Warnung auslöst wird, wird eine [Aktionsgruppe](./action-groups.md) aufgerufen. Aktionsgruppen ermöglichen Ihnen das Auslösen von mindestens einer Aktion, um andere über eine Warnung zu benachrichtigen und diese auch zu beseitigen.
 
 Der allgemeine Vorgang besteht aus den folgenden Schritten:
 
@@ -35,29 +34,15 @@ Der Vorgang ist ähnlich, wenn die Logik-App eine andere Aktion ausführen soll.
 
 ## <a name="create-an-activity-log-alert-administrative"></a>Erstellen einer Aktivitätsprotokollwarnung: Administrative
 
-1.  Wählen Sie im Azure-Portal oben links **Ressource erstellen** aus.
+1. [Erstellen einer Logik-App](~/articles/logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-2.  Suchen Sie nach **Logik-App**, und wählen Sie diese Option und dann **Erstellen** aus.
+2.  Wählen Sie den folgenden Trigger aus: **Beim Empfang einer HTTP-Anforderung**.
 
-3.  Geben Sie der Logik-App einen **Namen**, wählen Sie eine **Ressourcengruppe** aus usw.
+1. Wählen Sie im Dialogfeld unter **Beim Empfang einer HTTP-Anforderung** die Option **Beispielnutzlast zum Generieren eines Schemas verwenden** aus.
 
-    ![Erstellen einer Logik-App](media/action-groups-logic-app/create-logic-app-dialog.png "Erstellen einer Logik-App")
+    ![Screenshot mit dem Dialogfeld „Beim Empfang einer H T T P-Anforderung“ und der ausgewählten Option „Beispielnutzlast zum Generieren eines Schemas verwenden“. ](~/articles/app-service/media/tutorial-send-email/generate-schema-with-payload.png)
 
-4.  Wählen Sie **Erstellen** aus, um die Logik-App zu erstellen. Eine Popupmeldung zeigt an, dass die Logik-App erstellt ist. Wählen Sie **Ressource starten** aus, um den **Logik-App-Designer** zu öffnen.
-
-5.  Wählen Sie den folgenden Trigger aus: **Beim Empfang einer HTTP-Anforderung**.
-
-    ![Logik-App-Trigger](media/action-groups-logic-app/logic-app-triggers.png "Logik-App-Trigger")
-
-6.  Wählen Sie **Bearbeiten** aus, um den HTTP-Anforderungstrigger zu ändern.
-
-    ![HTTP-Anforderungstrigger](media/action-groups-logic-app/http-request-trigger-shape.png "HTTP-Anforderungstrigger")
-
-7.  Wählen Sie **Beispielnutzlast zum Generieren eines Schemas verwenden** aus.
-
-    ![Verwenden einer Beispielnutzlast](media/action-groups-logic-app/use-sample-payload-button.png "Verwenden einer Beispielnutzlast")
-
-8.  Kopieren Sie die folgende Beispielnutzlast, und fügen Sie sie in das Dialogfeld ein:
+3.  Kopieren Sie die folgende Beispielnutzlast, und fügen Sie sie in das Dialogfeld ein:
 
     ```json
         {
@@ -128,7 +113,7 @@ Der Vorgang ist ähnlich, wenn die Logik-App eine andere Aktion ausführen soll.
 
 14. Wählen Sie oben im **Logik-Apps-Designer** die Option **Speichern** aus, um Ihre Logik-App zu speichern.
 
-15. Öffnen Sie Ihre vorhandene Aktionsgruppe, und fügen Sie eine Aktion hinzu, um auf die Logik-App zu verweisen. Wenn Sie nicht über eine Aktionsgruppe verfügen, erfahren Sie unter [Erstellen und Verwalten von Aktionsgruppen im Azure-Portal](../platform/action-groups.md), wie Sie eine erstellen. Vergessen Sie nicht, Ihre Änderungen zu speichern.
+15. Öffnen Sie Ihre vorhandene Aktionsgruppe, und fügen Sie eine Aktion hinzu, um auf die Logik-App zu verweisen. Wenn Sie nicht über eine Aktionsgruppe verfügen, erfahren Sie unter [Erstellen und Verwalten von Aktionsgruppen im Azure-Portal](./action-groups.md), wie Sie eine erstellen. Vergessen Sie nicht, Ihre Änderungen zu speichern.
 
     ![Aktualisieren der Aktionsgruppe](media/action-groups-logic-app/update-action-group.png "Aktualisieren der Aktionsgruppe")
 
@@ -138,8 +123,8 @@ Das nächste Mal, wenn Ihre Aktionsgruppe durch eine Warnung aufgerufen wird, wi
 
 Azure Service Health-Einträge sind ein Teil des Aktivitätsprotokolls. Der Prozess zum Erstellen der Warnung ähnelt abgesehen von ein paar Änderungen dem [Erstellen einer Aktivitätsprotokollwarnung](#create-an-activity-log-alert-administrative):
 
-- Die Schritte 1 bis 7 sind identisch.
-- Verwenden Sie für Schritt 8 die folgende Beispielnutzlast für den HTTP-Anforderungstrigger:
+- Die Schritte 1 bis 3 sind identisch.
+- Verwenden Sie für Schritt 4 die folgende Beispielnutzlast für den HTTP-Anforderungstrigger:
 
     ```json
     {
@@ -183,8 +168,8 @@ Azure Service Health-Einträge sind ein Teil des Aktivitätsprotokolls. Der Proz
     }
     ```
 
--  Die Schritte 9 und 10 sind identisch.
--  Verwenden Sie für die Schritte 11 bis 14 folgenden Prozess:
+-  Die Schritte 5 und 6 sind identisch.
+-  Verwenden Sie für die Schritte 7 bis 11 folgenden Prozess:
 
    1. Wählen Sie **+** **Neuer Schritt** und anschließend **Bedingung hinzufügen** aus. Legen Sie die folgenden Bedingungen fest, sodass die Logik-App nur ausgeführt wird, wenn die Eingabedaten den folgenden Werten entsprechen.  Wenn Sie den Versionswert in das Textfeld eingeben, setzen Sie ihn in Anführungszeichen ("0.1.1"), um sicherzustellen, dass er als Zeichenfolge und nicht als numerischer Typ ausgewertet wird.  Das System zeigt die Anführungszeichen nicht an, wenn Sie zur Seite zurückzukehren, aber der zugrunde liegende Code behält den String-Datentyp bei.   
        - `schemaId == Microsoft.Insights/activityLogs`
@@ -226,8 +211,8 @@ Azure Service Health-Einträge sind ein Teil des Aktivitätsprotokolls. Der Proz
 
 Der Prozess zum Erstellen einer Metrikwarnung ähnelt abgesehen von ein paar Änderungen dem [Erstellen einer Aktivitätsprotokollwarnung](#create-an-activity-log-alert-administrative):
 
-- Die Schritte 1 bis 7 sind identisch.
-- Verwenden Sie für Schritt 8 die folgende Beispielnutzlast für den HTTP-Anforderungstrigger:
+- Die Schritte 1 bis 3 sind identisch.
+- Verwenden Sie für Schritt 4 die folgende Beispielnutzlast für den HTTP-Anforderungstrigger:
 
     ```json
     {
@@ -271,8 +256,8 @@ Der Prozess zum Erstellen einer Metrikwarnung ähnelt abgesehen von ein paar Än
     }
     ```
 
-- Die Schritte 9 und 10 sind identisch.
-- Verwenden Sie für die Schritte 11 bis 14 folgenden Prozess:
+- Die Schritte 5 und 6 sind identisch.
+- Verwenden Sie für die Schritte 7 bis 11 folgenden Prozess:
 
   1. Wählen Sie **+** **Neuer Schritt** und anschließend **Bedingung hinzufügen** aus. Legen Sie die folgenden Bedingungen fest, sodass die Logik-App nur ausgeführt wird, wenn die Eingabedaten den folgenden Werten entsprechen. Wenn Sie den Versionswert in das Textfeld eingeben, setzen Sie ihn in Anführungszeichen ("2.0"), um sicherzustellen, dass er als Zeichenfolge und nicht als numerischer Typ ausgewertet wird.  Das System zeigt die Anführungszeichen nicht an, wenn Sie zur Seite zurückzukehren, aber der zugrunde liegende Code behält den String-Datentyp bei. 
      - `schemaId == AzureMonitorMetricAlert`
@@ -294,7 +279,6 @@ Der Prozess zum Erstellen einer Metrikwarnung ähnelt abgesehen von ein paar Än
 Logic Apps verfügt über verschiedene Connectors, mit denen Sie Aktionen in einer Vielzahl von Anwendungen und Datenbanken auslösen können. Slack, SQL Server, Oracle, Salesforce sind lediglich einige Beispiele. Weitere Informationen zu Connectors finden Sie unter [Logic App-Connectors](../../connectors/apis-list.md).  
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Verschaffen Sie sich eine [Übersicht über Azure Aktivitätsprotokollwarnungen](../platform/alerts-overview.md), und erfahren Sie, wie Sie Warnungen empfangen können.  
+* Verschaffen Sie sich eine [Übersicht über Azure Aktivitätsprotokollwarnungen](./alerts-overview.md), und erfahren Sie, wie Sie Warnungen empfangen können.  
 * Erfahren Sie, wie Sie [Warnungen konfigurieren, wenn eine Azure Service Health-Benachrichtigung gesendet wird](../../service-health/alerts-activity-log-service-notifications-portal.md).
-* Weitere Informationen zu [Aktionsgruppen](../platform/action-groups.md).
-
+* Weitere Informationen zu [Aktionsgruppen](./action-groups.md).

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 211bcbf27f3a9e885a4bc2c4e5edd27db7907edf
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 19675a92101ed1a13b07bc1a4039701cd029a020
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92890767"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102044084"
 ---
 # <a name="add-a-polygon-extrusion-layer-to-the-map"></a>Hinzufügen einer Polygonextrusionsebene zur Karte
 
@@ -22,7 +22,7 @@ In diesem Artikel erfahren Sie, wie Sie mithilfe der Polygonextrusionsebene Bere
 
 ## <a name="use-a-polygon-extrusion-layer"></a>Verwenden einer Polygonextrusionsebene
 
-Verbinden Sie die [Polygonextrusionsebene](/javascript/api/azure-maps-control/atlas.layer.polygonextrusionlayer) mit einer Datenquelle. Laden Sie sie anschließend auf die Karte. Die Polygonextrusionsebene stellt die Bereiche eines `Polygon`- und `MultiPolygon`-Features als extrudierte Formen dar. Die Eigenschaften `height` und `base` der Polygonextrusionsebene definieren den Basisabstand vom Boden und die Höhe der extrudierten Form in **Metern** . Der folgende Code zeigt, wie Sie ein Polygon erstellen, dieses einer Datenquelle hinzufügen und dann mit einer Klasse für die Polygonextrusionsebene rendern.
+Verbinden Sie die [Polygonextrusionsebene](/javascript/api/azure-maps-control/atlas.layer.polygonextrusionlayer) mit einer Datenquelle. Laden Sie sie anschließend auf die Karte. Die Polygonextrusionsebene stellt die Bereiche eines `Polygon`- und `MultiPolygon`-Features als extrudierte Formen dar. Die Eigenschaften `height` und `base` der Polygonextrusionsebene definieren den Basisabstand vom Boden und die Höhe der extrudierten Form in **Metern**. Der folgende Code zeigt, wie Sie ein Polygon erstellen, dieses einer Datenquelle hinzufügen und dann mit einer Klasse für die Polygonextrusionsebene rendern.
 
 > [!Note]
 > Der in der Polygonextrusionsebene definierte Wert `base` sollte kleiner oder gleich dem Wert von `height` sein.
@@ -31,7 +31,6 @@ Verbinden Sie die [Polygonextrusionsebene](/javascript/api/azure-maps-control/at
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Extrudiertes Polygon" src="https://codepen.io/azuremaps/embed/wvvBpvE?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
 Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/wvvBpvE'>Extruded polygon</a> (Extrudiertes Polygon) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.</iframe>
-
 
 ## <a name="add-data-driven-polygons"></a>Hinzufügen von datengesteuerten Polygonen
 
