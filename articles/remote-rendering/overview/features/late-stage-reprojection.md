@@ -6,10 +6,10 @@ ms.author: sepick
 ms.date: 02/04/2020
 ms.topic: article
 ms.openlocfilehash: f0951415bba22a226dadb7f2a115cede451399bc
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92205641"
 ---
 # <a name="late-stage-reprojection"></a>LSR (Late State Reprojection)
@@ -18,7 +18,7 @@ ms.locfileid: "92205641"
 
 Bei statischen Modellen wird erwartet, dass sie ihre Position visuell beibehalten, wenn sich Benutzer darin bewegen. Wenn Sie instabil scheinen, kann dieses Verhalten auf LSR-Probleme hindeuten. Beachten Sie, dass zusätzliche dynamische Transformationen (etwa Animationen oder Explosionsansichten) dieses Verhalten maskieren können.
 
-Sie können zwischen zwei verschiedenen LSR-Modi wählen, nämlich zwischen **Planar-LSR** und **Tiefen-LSR** . Welcher Modus aktiv ist, hängt davon ab, ob die Clientanwendung einen Tiefenpuffer übermittelt.
+Sie können zwischen zwei verschiedenen LSR-Modi wählen, nämlich zwischen **Planar-LSR** und **Tiefen-LSR**. Welcher Modus aktiv ist, hängt davon ab, ob die Clientanwendung einen Tiefenpuffer übermittelt.
 
 Beide LSR-Modi verbessern die Hologrammstabilität, auch wenn sie jeweils Einschränkungen aufweisen. Beginnen Sie mit dem Testen von Tiefen-LSR, da damit in den meisten Fällen bessere Ergebnisse erzielt werden.
 
@@ -36,7 +36,7 @@ Damit Tiefen-LSR funktioniert, muss die Clientanwendung einen gültigen Tiefenpu
 
 Tiefen-LSR versucht, den Videoframe basierend auf dem Inhalt des angegebenen Tiefenpuffers zu stabilisieren. Folglich können Inhalte, die nicht in ihm gerendert wurden (z. B. transparente Objekte), nicht von LSR angepasst werden, und es kann zu Instabilität und Umprojizierungsartefakten kommen. 
 
-Um Instabilitäten der Neuprojektion bei transparenten Objekten zu vermeiden, können Sie das Schreiben von Tiefenpuffern erzwingen. Weitere Informationen zu den [Farb](color-materials.md)- und [PBR](pbr-materials.md)-Materialien finden Sie im Materialflag *TransparencyWritesDepth* . Beachten Sie jedoch, dass die visuelle Qualität der Interaktion zwischen transparenten/nicht transparenten Objekten beim Aktivieren dieses Flags beeinträchtigt werden kann.
+Um Instabilitäten der Neuprojektion bei transparenten Objekten zu vermeiden, können Sie das Schreiben von Tiefenpuffern erzwingen. Weitere Informationen zu den [Farb](color-materials.md)- und [PBR](pbr-materials.md)-Materialien finden Sie im Materialflag *TransparencyWritesDepth*. Beachten Sie jedoch, dass die visuelle Qualität der Interaktion zwischen transparenten/nicht transparenten Objekten beim Aktivieren dieses Flags beeinträchtigt werden kann.
 
 ## <a name="planar-lsr"></a>Planar-LSR
 

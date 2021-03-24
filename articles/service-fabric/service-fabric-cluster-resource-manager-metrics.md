@@ -7,10 +7,10 @@ ms.date: 08/18/2017
 ms.author: masnider
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 2a7dedea2937c9cafb4216da3628aa1360ad6993
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92173006"
 ---
 # <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>Verwalten von Ressourcenverbrauch und Auslastung in Service Fabric mit Metriken
@@ -139,7 +139,7 @@ Im Folgenden betrachten wir jede dieser Einstellungen eingehender und diskutiere
 Metriken werden definiert, um eine Auslastung darzustellen. Die *Auslastung* gibt an, welcher Anteil einer bestimmten Metrik von einer Dienstinstanz oder von einem Replikat auf einem bestimmten Knoten verbraucht wird. Die Auslastung kann an beinahe jedem Punkt konfiguriert werden. Beispiel:
 
   - Die Auslastung kann beim Erstellen eines Diensts definiert werden. Diese Art der Auslastungskonfiguration wird als _Standardauslastung_ bezeichnet.
-  - Die Metrikinformationen für einen Dienst, einschließlich der Standardauslastungen, können nach dem Erstellen des Diensts aktualisiert werden. Diese Metrikaktualisierung erfolgt durch _Aktualisieren eines Dienst_ .
+  - Die Metrikinformationen für einen Dienst, einschließlich der Standardauslastungen, können nach dem Erstellen des Diensts aktualisiert werden. Diese Metrikaktualisierung erfolgt durch _Aktualisieren eines Dienst_.
   - Die Auslastungen für eine bestimmte Partition können auf die Standardwerte für den betreffenden Dienst zurückgesetzt werden. Diese Metrikaktualisierung wird als _Zurücksetzen der Partitionsauslastung_ bezeichnet.
   - Die Auslastung kann dynamisch während der Laufzeit für einzelne Dienstobjekte gemeldet werden. Diese Metrikaktualisierung wird als _Melden der Auslastung_ bezeichnet.
   - Die Auslastung für Replikate oder Instanzen der Partition kann auch aktualisiert werden, indem Auslastungswerte über einen Fabric-API-Aufruf gemeldet werden. Diese Metrikaktualisierung wird als _Melden der Auslastung für eine Partition_ bezeichnet.

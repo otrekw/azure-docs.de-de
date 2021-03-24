@@ -10,10 +10,10 @@ ms.date: 09/06/2016
 ms.author: robinsh
 ms.custom: amqp
 ms.openlocfilehash: f52d1d1c5f264550076688d5e25e110de230eff4
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92152226"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-serializer"></a>Azure IoT-Geräte-SDK für C – weitere Informationen zum Serialisierungsprogramm
@@ -234,7 +234,7 @@ WITH_DATA(HumidityEvent, Humidity)
 END_NAMESPACE(Contoso);
 ```
 
-Beachten Sie, dass das Modell zwei Datenereignisse enthält: **Temperature** (Temperatur) und **Humidity** (Luftfeuchtigkeit). Im Gegensatz zu den vorherigen Beispielen ist der Typ jedes Ereignisses eine Struktur, die mithilfe von **DECLARE\_STRUCT** definiert wird. **TemperatureEvent** enthält eine Temperaturmessung und einen Zeitstempel, **HumidityEven**t enthält eine Luftfeuchtigkeitsmessung und einen Zeitstempel. Dieses Modell stellt eine natürliche Möglichkeit bereit, die Daten für das oben beschriebene Szenario zu modellieren. Beim Senden eines Ereignisses an die Cloud wird entweder ein Temperatur/Zeitstempel-Paar oder ein Luftfeuchtigkeit/Zeitstempel-Paar gesendet.
+Beachten Sie, dass das Modell zwei Datenereignisse enthält: **Temperature** (Temperatur) und **Humidity** (Luftfeuchtigkeit). Im Gegensatz zu den vorherigen Beispielen ist der Typ jedes Ereignisses eine Struktur, die mithilfe von **DECLARE\_STRUCT** definiert wird. **TemperatureEvent** enthält eine Temperaturmessung und einen Zeitstempel, **HumidityEven** t enthält eine Luftfeuchtigkeitsmessung und einen Zeitstempel. Dieses Modell stellt eine natürliche Möglichkeit bereit, die Daten für das oben beschriebene Szenario zu modellieren. Beim Senden eines Ereignisses an die Cloud wird entweder ein Temperatur/Zeitstempel-Paar oder ein Luftfeuchtigkeit/Zeitstempel-Paar gesendet.
 
 Wir können ein Temperaturereignis mithilfe von folgendem Code an die Cloud senden:
 
@@ -432,7 +432,7 @@ Mitunter sollen jedoch nur *einige* Eigenschaften des Modells an die Cloud gesen
 {"Temperature":75, "Time":"2015-09-17T18:45:56Z"}
 ```
 
-Damit wird exakt das gleiche serialisierte Ereignis generiert wie beim Definieren von **TemperatureEven**t mit **Temperature** und **Time** (siehe Modell 1). In diesem Fall konnten wir mithilfe eines anderen Modells (Modell 2) exakt dasselbe serialisierte Ereignis generieren, weil wir **SERIALIZE** auf andere Weise aufgerufen haben.
+Damit wird exakt das gleiche serialisierte Ereignis generiert wie beim Definieren von **TemperatureEven** t mit **Temperature** und **Time** (siehe Modell 1). In diesem Fall konnten wir mithilfe eines anderen Modells (Modell 2) exakt dasselbe serialisierte Ereignis generieren, weil wir **SERIALIZE** auf andere Weise aufgerufen haben.
 
 Hierbei ist Folgendes entscheidend: Wenn Sie mehrere Datenereignisse an **SERIALIZE** übergeben, wird davon ausgegangen, dass jedes Ereignis eine Eigenschaft in einem einzelnen JSON-Objekt ist.
 
@@ -582,7 +582,7 @@ Wie bereits erwähnt, handelt es sich bei **DECLARE\_MODEL** nur um ein C-Makro.
 
   ![Screenshot von Compilerfehlern durch die Makroparameter](media/iot-hub-device-sdk-c-serializer/02-nMacroParametersCompilerErrors.png)
 
-Der **nArithmetic** -Parameter ist mehr für die interne Funktionsweise der Makrosprache und weniger für Ihre Anwendung relevant.  Er steuert die Gesamtanzahl von Elementen, die in Ihrem Modell vorhanden sein können (einschließlich **DECLARE_STRUCT**-Makros). Wenn Sie Compilerfehler wie den folgenden erhalten, versuchen Sie, **nArithmetic**zu erhöhen:
+Der **nArithmetic** -Parameter ist mehr für die interne Funktionsweise der Makrosprache und weniger für Ihre Anwendung relevant.  Er steuert die Gesamtanzahl von Elementen, die in Ihrem Modell vorhanden sein können (einschließlich **DECLARE_STRUCT**-Makros). Wenn Sie Compilerfehler wie den folgenden erhalten, versuchen Sie, **nArithmetic** zu erhöhen:
 
    ![Screenshot von arithmetischen Compilerfehlern](media/iot-hub-device-sdk-c-serializer/03-nArithmeticCompilerErrors.png)
 
@@ -640,7 +640,7 @@ sprintf_s(propText, sizeof(propText), "%d", i);
 Map_AddOrUpdate(propMap, "SequenceNumber", propText);
 ```
 
-Dabei spielt es keine Rolle, ob das Ereignis über die Bibliothek des **Serialisierungsprogramm**s generiert oder manuell unter Verwendung der **IoTHubClient**-Bibliothek erstellt wurde.
+Dabei spielt es keine Rolle, ob das Ereignis über die Bibliothek des **Serialisierungsprogramm** s generiert oder manuell unter Verwendung der **IoTHubClient**-Bibliothek erstellt wurde.
 
 Was die Verwendung alternativer Geräteanmeldeinformationen angeht: Ein **IOTHUB\_CLIENT\_HANDLE** lässt sich mit **IoTHubClient\_LL\_Create** ebenso gut zuordnen wie mit **IoTHubClient\_CreateFromConnectionString**.
 

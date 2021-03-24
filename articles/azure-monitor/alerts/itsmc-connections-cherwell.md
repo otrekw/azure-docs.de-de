@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 12/21/2020
-ms.openlocfilehash: d1fe5e20c06648aa6efc899fabb3ced3345ab41f
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 0f488b047cf1323619d9603204877a55b413c295
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102045410"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802470"
 ---
 # <a name="connect-cherwell-with-it-service-management-connector"></a>Verbinden von Cherwell mit dem ITSM-Connector
 
@@ -37,7 +37,7 @@ Verwenden Sie das folgende Verfahren, um eine Cherwell-Verbindung zu erstellen:
 1. Navigieren Sie im Azure-Portal zu **Alle Ressourcen**, und suchen Sie nach **ServiceDesk(YourWorkspaceName)** .
 
 2. Klicken Sie unter **ARBEITSBEREICHSDATENQUELLEN** auf **ITSM-Verbindungen**.
-    ![Neue Verbindung](/media/itsmc-overview/add-new-itsm-connection.png)
+    ![Neue Verbindung](/azure/azure-monitor/alerts/media/itsmc-connections-scsm/add-new-itsm-connection.png)
 
 3. Klicken Sie oben im rechten Bereich auf **Hinzufügen**.
 

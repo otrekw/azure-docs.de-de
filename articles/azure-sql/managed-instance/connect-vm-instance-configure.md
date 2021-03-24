@@ -13,10 +13,10 @@ ms.author: jovanpop
 ms.reviewer: sstein, srbozovi, bonova
 ms.date: 02/18/2019
 ms.openlocfilehash: a1f496d59fa626dc8750493591128f7363afa40d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91620255"
 ---
 # <a name="quickstart-configure-an-azure-vm-to-connect-to-azure-sql-managed-instance"></a>Schnellstart: Konfigurieren einer Azure-VM für das Herstellen einer Verbindung mit Azure SQL Managed Instance
@@ -49,7 +49,7 @@ In den folgenden Schritten wird im VNET der SQL Managed Instance ein neues Subne
 
 3. Füllen Sie das Formular mit den Angaben aus der folgenden Tabelle aus:
 
-   | Einstellung| Vorgeschlagener Wert | Beschreibung |
+   | Einstellung| Vorgeschlagener Wert | BESCHREIBUNG |
    | ---------------- | ----------------- | ----------- |
    | **Name** | Ein gültiger Name|Gültige Namen finden Sie unter [Benennungskonventionen](/azure/architecture/best-practices/resource-naming).|
    | **Adressbereich (CIDR-Block)** | Ein gültiger Bereich | Der Standardwert reicht für diesen Schnellstart aus.|
@@ -148,4 +148,4 @@ Nach der Verbindungsherstellung können Sie Ihre System- und Benutzerdatenbanken
 
 - Eine Schnellstartanleitung, die zeigt, wie Sie von einem lokalen Clientcomputer über eine Point-to-Site-Verbindung eine Verbindung herstellen, finden Sie unter [Konfigurieren einer Point-to-Site-Verbindung](point-to-site-p2s-configure.md).
 - Eine Übersicht über die Verbindungsoptionen für Anwendungen finden Sie unter [Herstellen einer Verbindung zwischen einer Anwendung und SQL Managed Instance](connect-application-instance.md).
-- Zur Wiederherstellung einer vorhandenen SQL Server-Datenbank aus einer lokalen Instanz in eine verwaltete Instanz können Sie entweder [Azure Database Migration Service für die Migration](../../dms/tutorial-sql-server-to-managed-instance.md) oder den [T-SQL-Befehl „RESTORE“](restore-sample-database-quickstart.md) zum Wiederherstellen aus einer Datenbanksicherungsdatei verwenden.
+- Zum Wiederherstellen einer vorhandenen SQL Server-Datenbank von einer lokalen Instanz in eine verwaltete Instanz können Sie entweder [Azure Database Migration Service für die Migration](../../dms/tutorial-sql-server-to-managed-instance.md) oder den [T-SQL-Befehl „RESTORE“](restore-sample-database-quickstart.md) zum Wiederherstellen aus einer Datenbanksicherungsdatei verwenden.

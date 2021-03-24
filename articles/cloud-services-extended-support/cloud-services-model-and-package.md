@@ -9,10 +9,10 @@ ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
 ms.openlocfilehash: 3baea92d78cf15c35d2fb36692dab1edfd950699
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98743997"
 ---
 # <a name="what-is-the-azure-cloud-service-model-and-how-do-i-package-it"></a>Was ist das Azure-Clouddienst-Modell, und wie kann es gepackt werden?
@@ -105,7 +105,7 @@ enthält die Definitionen für Zertifikate, die für eine Rolle erforderlich sin
 **LocalResources**  
 enthält die Definitionen für lokale Speicherressourcen. Eine lokale Speicherressource ist ein reserviertes Verzeichnis im Dateisystem des virtuellen Computers, in dem eine Instanz einer Rolle ausgeführt wird.
 
-**Imports**  
+**Importe**  
 enthält die Definitionen für importierte Module. Im Codebeispiel oben werden die Module für die Remotedesktopverbindung und Azure Connect verwendet.
 
 **Startup**  
@@ -263,7 +263,7 @@ cspack [DirectoryName]\[ServiceDefinition]
 
 Die Variablen sind dabei wie folgt definiert:
 
-| Variable | value |
+| Variable | Wert |
 | --- | --- |
 | \[DirectoryName\] |Das Unterverzeichnis unter dem Stammverzeichnis des Projekts, das die CSDEF-Datei des Azure-Projekts enthält. |
 | \[ServiceDefinition\] |Der Name der Dienstdefinitionsdatei. Standardmäßig heißt diese Datei "ServiceDefinition.csdef". |

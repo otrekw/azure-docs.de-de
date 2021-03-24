@@ -9,10 +9,10 @@ ms.date: 09/05/2019
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: 78440b8150a0992bed2e2a3e597fdac8e7a1c7b0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75749724"
 ---
 # <a name="latency-in-blob-storage"></a>Latenz im Blobspeicher
@@ -67,5 +67,5 @@ Bestimmen Sie zur Bewertung der Wartezeit zunächst Baselinemetriken für Ihr Sz
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Skalierbarkeits- und Leistungsziele für Blob Storage](scalability-targets.md).
+- [Skalierbarkeits- und Leistungsziele für Blob Storage](scalability-targets.md)
 - [Checkliste zu Leistung und Skalierbarkeit für Blob Storage](storage-performance-checklist.md)

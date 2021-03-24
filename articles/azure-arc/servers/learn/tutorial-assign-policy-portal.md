@@ -4,10 +4,10 @@ description: In diesem Tutorial erstellen Sie über das Azure-Portal eine Azure�
 ms.topic: tutorial
 ms.date: 10/07/2020
 ms.openlocfilehash: 9a07e490525ce532f8f843b30b3b83715e65ce3c
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91826600"
 ---
 # <a name="tutorial-create-a-policy-assignment-to-identify-non-compliant-resources"></a>Tutorial: Erstellen einer Richtlinienzuweisung zum Identifizieren nicht konformer Ressourcen
@@ -30,11 +30,11 @@ In diesem Tutorial erstellen Sie eine Richtlinienzuweisung und weisen die folgen
 
 1. Wählen Sie links auf der Seite „Azure Policy“ die Option **Zuweisungen**. Eine Zuweisung ist eine zugewiesene Richtlinie, die innerhalb eines bestimmten Bereichs angewendet werden soll.
 
-   :::image type="content" source="./media/tutorial-assign-policy-portal/select-assignment.png" alt-text="Suchen nach „Policy“ unter „Alle Dienste“" border="false":::
+   :::image type="content" source="./media/tutorial-assign-policy-portal/select-assignment.png" alt-text="Auswählen von „Zuweisungen“ auf der Übersichtsseite von Policy" border="false":::
 
 1. Wählen Sie im oberen Bereich der Seite **Richtlinien – Zuweisungen** die Option **Richtlinie zuweisen**.
 
-   :::image type="content" source="./media/tutorial-assign-policy-portal/select-assign-policy.png" alt-text="Suchen nach „Policy“ unter „Alle Dienste“" border="false":::
+   :::image type="content" source="./media/tutorial-assign-policy-portal/select-assign-policy.png" alt-text="Zuweisen einer Richtliniendefinition auf der Seite „Zuweisungen“" border="false":::
 
 1. Wählen Sie auf der Seite **Richtlinie zuweisen** den **Bereich** aus, indem Sie auf die Auslassungspunkte klicken und entweder eine Verwaltungsgruppe oder ein Abonnement auswählen. Wählen Sie optional eine Ressourcengruppe aus. Ein Bereich bestimmt, für welche Ressourcen oder Ressourcengruppe die Richtlinienzuweisung erzwungen wird. Klicken Sie dann unten im Abschnitt der Seite **Bereich** auf **Auswählen**.
 
@@ -52,7 +52,7 @@ In diesem Tutorial erstellen Sie eine Richtlinienzuweisung und weisen die folgen
 
 1. Durchsuchen Sie die Liste mit den Richtliniendefinitionen nach der Definition _\[Vorschau]: Der Log Analytics-Agent muss auf Ihren Azure Arc-Computern unter Windows installiert sein_, falls Sie den Agent für Server mit Arc-Aktivierung auf einem Windows-basierten Computer aktiviert haben. Suchen Sie für einen Linux-basierten Computer nach der Richtliniendefinition _\[Vorschau]: Der Log Analytics-Agent muss auf Ihren Azure Arc-Computern unter Linux installiert sein_. Klicken Sie auf diese Richtlinie und anschließend auf **Auswählen**.
 
-   :::image type="content" source="./media/tutorial-assign-policy-portal/select-available-definition.png" alt-text="Suchen nach „Policy“ unter „Alle Dienste“" border="false":::
+   :::image type="content" source="./media/tutorial-assign-policy-portal/select-available-definition.png" alt-text="Suchen der korrekten Richtliniendefinition" border="false":::
 
 1. Der **Zuweisungsname** wird automatisch mit dem ausgewählten Richtliniennamen gefüllt, kann aber geändert werden. Übernehmen Sie für dieses Beispiel _\[Vorschau]: Der Log Analytics-Agent muss auf Ihren Azure Arc-Computern unter Windows installiert sein_ oder _\[Vorschau]: Der Log Analytics-Agent muss auf Ihren Azure Arc-Computern unter Linux installiert sein_ (je nachdem, was Sie zuvor ausgewählt haben). Geben Sie ggf. auch eine **Beschreibung** ein. Die Beschreibung enthält Details zu dieser Richtlinienzuweisung.
    Über **Zugewiesen von** werden die Daten abhängig vom angemeldeten Benutzer automatisch ausgefüllt. Dieses Feld ist optional. Daher können auch benutzerdefinierte Werte eingegeben werden.
@@ -67,7 +67,7 @@ Sie können nun nicht konforme Ressourcen identifizieren, um den Konformitätszu
 
 Wählen Sie links auf der Seite die Option **Konformität** aus. Suchen Sie anschließend nach der von Ihnen erstellten Richtlinienzuweisung **\[Vorschau]: Der Log Analytics-Agent muss auf Ihren Azure Arc-Computern unter Windows installiert sein** oder **\[Vorschau]: Der Log Analytics-Agent muss auf Ihren Azure Arc-Computern unter Linux installiert sein**.
 
-:::image type="content" source="./media/tutorial-assign-policy-portal/policy-compliance.png" alt-text="Suchen nach „Policy“ unter „Alle Dienste“" border="false":::
+:::image type="content" source="./media/tutorial-assign-policy-portal/policy-compliance.png" alt-text="Konformitätsdetails auf der Seite zur Richtlinienkonformität" border="false":::
 
 Falls Ressourcen vorhanden sind, die mit dieser neuen Zuweisung nicht konform sind, werden diese unter **Nicht konforme Ressourcen** angezeigt.
 
@@ -91,7 +91,7 @@ Um die erstellte Zuweisung zu entfernen, gehen Sie folgendermaßen vor:
 
 1. Klicken Sie mit der rechten Maustaste auf die Richtlinienzuweisung, und wählen Sie **Zuweisung löschen** aus.
 
-   :::image type="content" source="./media/tutorial-assign-policy-portal/delete-assignment.png" alt-text="Suchen nach „Policy“ unter „Alle Dienste“" border="false":::
+   :::image type="content" source="./media/tutorial-assign-policy-portal/delete-assignment.png" alt-text="Löschen einer Zuweisung auf der Seite zur Konformität" border="false":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/18/2016
 tags: connectors
 ms.openlocfilehash: 8d3b180b6f1e9dc4ec4b09dd81786cc81e8588da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75707185"
 ---
 # <a name="manage-email-calendars-and-contacts-in-outlookcom-by-using-azure-logic-apps"></a>Verwalten von E-Mails, Kalendern und Kontakten in Outlook.com mithilfe von Azure Logic Apps
@@ -31,7 +31,7 @@ Sie können einen beliebigen Trigger verwenden, um Ihren Workflow zu starten �
 
 * Ein [Outlook.com-Konto](https://outlook.live.com/owa/)
 
-* ein Azure-Abonnement Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/). 
+* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/). 
 
 * Die Logik-App, in der Sie auf Ihr Outlook.com-Konto zugreifen möchten. Um Ihren Workflow mit einem Outlook.com-Trigger starten zu können, benötigen Sie eine [leere Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md). Wenn Sie Ihrem Workflow eine Outlook.com-Aktion hinzufügen möchten, muss Ihre Logik-App bereits über einen-Trigger verfügen.
 
@@ -45,7 +45,7 @@ Ein [Trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts) ist ein E
 
 1. Wenn eine Anmeldeanforderung angezeigt wird, geben Sie Ihre Outlook.com-Anmeldeinformationen an, damit Ihre Logik-App eine Verbindung mit Ihrem Konto herstellen kann. Falls die Verbindung bereits besteht, geben Sie die folgenden Informationen für die Triggereigenschaften an:
 
-1. Legen Sie im Trigger die Werte für **Frequenz** und **Intervall** fest.
+1. Legen Sie im Trigger die Werte für **Häufigkeit** und **Intervall** fest.
 
    Falls die Abfrage durch den Trigger also beispielsweise alle 15 Minuten erfolgen soll, legen Sie **Frequenz** auf **Minute** und **Intervall** auf **15** fest.
 

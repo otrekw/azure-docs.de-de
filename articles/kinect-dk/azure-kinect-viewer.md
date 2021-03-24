@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Azure, Kinect, Sensor, Viewer, Visualisierung, Tiefe, RGB, Farbe, IMU, Audiodaten, Mikrofon, Punktwolke
 ms.openlocfilehash: f411de5854d516586dc64701cca729c692ce40e0
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92166104"
 ---
 # <a name="azure-kinect-viewer"></a>Azure Kinect Viewer
@@ -40,7 +40,7 @@ Starten Sie die Anwendung durch Ausführen von `k4aviewer.exe`.
 
 ### <a name="use-the-viewer-with-live-data"></a>Verwenden des Viewers mit Livedaten
 
-1. Wählen Sie im Abschnitt **Open Device** (Gerät öffnen) die Seriennummer ( **Serial Number** ) des zu öffnenden Geräts aus. Wählen Sie dann **Refresh** (Aktualisieren) aus, wenn das Gerät nicht vorhanden ist.
+1. Wählen Sie im Abschnitt **Open Device** (Gerät öffnen) die Seriennummer (**Serial Number**) des zu öffnenden Geräts aus. Wählen Sie dann **Refresh** (Aktualisieren) aus, wenn das Gerät nicht vorhanden ist.
 2. Wählen Sie die Schaltfläche **Open Device** (Gerät öffnen) aus.
 3. Wählen Sie **Start** (Starten) aus, um das Streamen von Daten mit den Standardeinstellungen zu starten.
 

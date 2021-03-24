@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: abc8badf261e631dd6ceb7af9a6a0cb3676ae25d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96017592"
 ---
 # <a name="troubleshoot-errors-in-azure-active-directory-reporting-api"></a>Problembehandlung von Fehlern in der Azure Active Directory-Berichterstellungs-API
@@ -32,11 +32,11 @@ In diesem Artikel werden die häufigsten Fehlermeldungen, die beim Zugreifen auf
 
 Der Microsoft Graph v2-Endpunkt wird zurzeit nicht unterstützt. Stellen Sie sicher, dass Sie auf die Aktivitätsprotokolle mit dem Microsoft Graph v1-Endpunkt zugreifen.
 
-### <a name="error-neither-tenant-is-b2c-or-tenant-doesnt-have-premium-license"></a>Error: Kein Mandant ist B2C, oder der Mandant besitzt keine Premium-Lizenz
+### <a name="error-neither-tenant-is-b2c-or-tenant-doesnt-have-premium-license"></a>Fehler: Kein Mandant ist B2C, oder der Mandant besitzt keine Premium-Lizenz.
 
 Für den Zugriff auf Anmeldeberichte ist eine Azure Active Directory Premium 1-Lizenz (P1) erforderlich. Wenn diese Fehlermeldung beim Zugriff auf Anmeldungen angezeigt wird, stellen Sie sicher, dass Ihr Mandant mit einer Azure AD P1-Lizenz lizenziert ist.
 
-### <a name="error-user-is-not-in-the-allowed-roles"></a>Error: Der Benutzer gehört nicht den zulässigen Rollen an 
+### <a name="error-user-is-not-in-the-allowed-roles"></a>Fehler: Der Benutzer gehört nicht den zulässigen Rollen an. 
 
 Wenn Sie diese Fehlermeldung sehen, während Sie versuchen, über die API auf Überwachungsprotokolle oder Anmeldungen zuzugreifen, stellen Sie sicher, dass Ihr Konto Teil der Rolle **Sicherheitsleseberechtigter** oder **Berichtsleser** in Ihrem Azure Active Directory-Mandanten ist. 
 

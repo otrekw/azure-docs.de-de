@@ -11,10 +11,10 @@ ms.date: 04/02/2018
 ms.author: liydu
 ms.custom: mqtt
 ms.openlocfilehash: fb8bf593568825793a1a205a2955599b16fa78cf
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92151753"
 ---
 # <a name="send-messages-to-an-mqtt-server"></a>Senden von Nachrichten an einen MQTT-Server
@@ -46,10 +46,10 @@ Befolgen Sie die Anweisungen im [Leitfaden zu den ersten Schritten](./iot-hub-ar
 
 ## <a name="open-the-mqttclient-sample"></a>Öffnen des MQTTClient-Beispiels
 
-Erweitern Sie auf der linken Seite **ARDUINO-BEISPIELE** , wechseln Sie zu **Beispiele für MXCHIP AZ3166 > MQTT** , und wählen Sie **MQTTClient** . Daraufhin wird ein neues VS Code-Fenster mit einem Projektordner geöffnet.
+Erweitern Sie auf der linken Seite **ARDUINO-BEISPIELE**, wechseln Sie zu **Beispiele für MXCHIP AZ3166 > MQTT**, und wählen Sie **MQTTClient**. Daraufhin wird ein neues VS Code-Fenster mit einem Projektordner geöffnet.
 
 > [!NOTE]
-> Sie können auch ein Beispiel über die Befehlspalette öffnen. Öffnen Sie mit der Tastenkombination `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`) die Befehlspalette, geben Sie **Arduino** ein, suchen Sie dann nach **Arduino: Beispiele** , und wählen Sie sie aus.
+> Sie können auch ein Beispiel über die Befehlspalette öffnen. Öffnen Sie mit der Tastenkombination `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`) die Befehlspalette, geben Sie **Arduino** ein, suchen Sie dann nach **Arduino: Beispiele**, und wählen Sie sie aus.
 
 ## <a name="build-and-upload-the-arduino-sketch-to-the-devkit"></a>Erstellen und Hochladen des Arduino-Sketches in das DevKit
 

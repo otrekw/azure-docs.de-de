@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 10/14/2020
 ms.author: baanders
 ms.openlocfilehash: 919cc934920d922a82ceb9e30630006627af44e9
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92205483"
 ---
 ## <a name="prerequisites-permission-requirements"></a>Voraussetzungen: Berechtigungsanforderungen
@@ -18,9 +18,9 @@ Damit Sie alle in diesem Artikel beschriebenen Schritte ausführen können, ben�
 * Erstellen und Verwalten von Azure-Ressourcen
 * Verwalten des Benutzerzugriffs auf Azure-Ressourcen (einschließlich erteilen und delegieren von Berechtigungen)
 
-Allgemeine Rollen, die diese Anforderung erfüllen, heißen *Besitzer* oder *Kontoadministrator* . Ebenso können die beiden Rollen *Benutzerzugriffsadministrator* und *Mitwirkender* kombiniert werden. Ausführliche Informationen zu den Rollen und Berechtigungen, einschließlich der Berechtigungen, die für andere Rollen freigeschaltet sind, finden Sie in der Dokumentation zu Azure RBAC unter [*Administratorrollen für klassische Abonnements, Azure-Rollen und Azure AD-Rollen*](../articles/role-based-access-control/rbac-and-directory-admin-roles.md).
+Allgemeine Rollen, die diese Anforderung erfüllen, heißen *Besitzer* oder *Kontoadministrator*. Ebenso können die beiden Rollen *Benutzerzugriffsadministrator* und *Mitwirkender* kombiniert werden. Ausführliche Informationen zu den Rollen und Berechtigungen, einschließlich der Berechtigungen, die für andere Rollen freigeschaltet sind, finden Sie in der Dokumentation zu Azure RBAC unter [*Administratorrollen für klassische Abonnements, Azure-Rollen und Azure AD-Rollen*](../articles/role-based-access-control/rbac-and-directory-admin-roles.md).
 
-Wenn Sie herausfinden möchten, welche Rolle Ihnen für Ihr Abonnement zugewiesen ist, erhalten Sie weitere Informationen auf der Seite [Abonnements](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) im Azure-Portal. Sie können entweder diesen Link verwenden oder über die Suchleiste des Portals nach *Abonnements* suchen. Suchen Sie nach dem Namen des Abonnements, das Sie verwenden, und prüfen Sie Ihre Rolle in der Spalte *Meine Rolle* :
+Wenn Sie herausfinden möchten, welche Rolle Ihnen für Ihr Abonnement zugewiesen ist, erhalten Sie weitere Informationen auf der Seite [Abonnements](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) im Azure-Portal. Sie können entweder diesen Link verwenden oder über die Suchleiste des Portals nach *Abonnements* suchen. Suchen Sie nach dem Namen des Abonnements, das Sie verwenden, und prüfen Sie Ihre Rolle in der Spalte *Meine Rolle*:
 
 :::image type="content" source="../articles/digital-twins/media/how-to-set-up-instance/portal/subscriptions-role.png" alt-text="Ansicht der Seite „Abonnements“ im Azure-Portal, die den Benutzer als Besitzer anzeigt" lightbox="../articles/digital-twins/media/how-to-set-up-instance/portal/subscriptions-role.png":::
 

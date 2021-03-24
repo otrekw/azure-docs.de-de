@@ -12,10 +12,10 @@ ms.author: jaszymas
 ms.reviwer: vanto
 ms.date: 01/15/2021
 ms.openlocfilehash: 4448ce051b0c9e73865e8057cc4f224c9cbeb571
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98732743"
 ---
 # <a name="plan-for-intel-sgx-enclaves-and-attestation-in-azure-sql-database"></a>Planen im Hinblick auf Intel SGX-Enclaves und Azure Attestation in Azure SQL-Datenbank
@@ -32,7 +32,7 @@ ms.locfileid: "98732743"
 Intel SGX ist eine hardwarebasierte TEE-Technologie (Trusted Execution Environment, vertrauenswürdige Ausführungsumgebung). Intel SGX ist für Datenbanken verfügbar, die das [vCore-basierte Kaufmodell](service-tiers-vcore.md) und die Hardwaregeneration der [DC-Serie](service-tiers-vcore.md?#dc-series) verwenden. Um sicherzustellen, dass Sie Always Encrypted mit Secure Enclaves in der Datenbank verwenden können, müssen Sie beim Erstellen der Datenbank die Hardwaregeneration der DC-Serie auswählen, oder Sie können eine vorhandene Datenbank aktualisieren, sodass sie die Hardwaregeneration der DC-Serie verwendet.
 
 > [!NOTE]
-> Intel SGX ist für andere Hardwaregenerationen als die DC-Serie nicht verfügbar. So ist Intel SGX beispielsweise nicht für Gen5-Hardware oder für Datenbanken verfügbar, die das [DTU-basierte Kaufmodell](service-tiers-dtu.md) verwenden.
+> Intel SGX ist für andere Hardwaregenerationen als die DC-Serie nicht verfügbar. So ist Intel SGX beispielsweise nicht für Gen5-Hardware oder für Datenbanken verfügbar, die das [DTU-Modell](service-tiers-dtu.md) verwenden.
 
 > [!IMPORTANT]
 > Bevor Sie die Hardwaregeneration der DC-Serie für Ihre Datenbank konfigurieren, überprüfen Sie die regionale Verfügbarkeit der DC-Serie, und stellen Sie sicher, dass die Leistungseinschränkungen kein Problem darstellen. Einzelheiten dazu finden Sie unter [DC-Serie](service-tiers-vcore.md#dc-series).
@@ -63,4 +63,4 @@ In Produktionsumgebungen, in denen echte vertrauliche Daten verarbeitet werden, 
 
 ## <a name="see-also"></a>Weitere Informationen
 
-- [Tutorial: Erste Schritte mit Always Encrypted mit Secure Enclaves in Azure SQL-Datenbank](always-encrypted-enclaves-getting-started.md)
+- [Tutorial: Erste Schritte mit Always Encrypted mit Secure Enclaves in Azure SQL-Datenbank](always-encrypted-enclaves-getting-started.md)

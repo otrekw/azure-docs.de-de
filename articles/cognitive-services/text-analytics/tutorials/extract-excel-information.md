@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 02/27/2019
 ms.author: aahi
 ms.openlocfilehash: 197d28b2ac3d94b6639a6611b2919bdeb2b182e2
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93359900"
 ---
 # <a name="extract-information-in-excel-using-text-analytics-and-power-automate"></a>Extrahieren von Informationen aus Excel mithilfe von Textanalyse und Power Automate 
@@ -69,7 +69,7 @@ Initialisieren Sie auf der Seite **Geplanten Flow erstellen** den Flow mit den f
 > [!NOTE]
 > Wenn Sie eine Darstellung des fertigen Flows anzeigen möchten, können Sie sie von [GitHub](https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/TextAnalytics/flow-diagrams) herunterladen. 
 
-Erstellen Sie Variablen, die die der Excel-Datei hinzugefügten Informationen darstellen. Klicken Sie auf **Neuer Schritt** , und suchen Sie nach **Variable initialisieren**. Führen Sie dies vier Mal aus, um vier Variablen zu erstellen.
+Erstellen Sie Variablen, die die der Excel-Datei hinzugefügten Informationen darstellen. Klicken Sie auf **Neuer Schritt**, und suchen Sie nach **Variable initialisieren**. Führen Sie dies vier Mal aus, um vier Variablen zu erstellen.
 
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/initialize-variables.png" alt-text="Initialisieren von Variablen":::
@@ -88,7 +88,7 @@ Fügen Sie den erstellten Variablen die folgenden Informationen hinzu. Sie stell
 
 ## <a name="read-the-excel-file"></a>Lesen der Excel-Datei
 
-Klicken Sie auf **Neuer Schritt** , geben Sie **Excel** ein, und wählen Sie dann in der Liste der Aktionen **In Tabelle vorhandene Zeilen auflisten** aus.
+Klicken Sie auf **Neuer Schritt**, geben Sie **Excel** ein, und wählen Sie dann in der Liste der Aktionen **In Tabelle vorhandene Zeilen auflisten** aus.
 
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/list-excel-rows.png" alt-text="Hinzufügen von Excel-Zeilen":::
@@ -98,7 +98,7 @@ Sie fügen dem Flow die Excel-Datei hinzu, indem Sie die Felder in dieser Aktion
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/list-excel-rows-options.png" alt-text="Ausfüllen von Excel-Zeilen":::
 
-Klicken Sie auf **Neuer Schritt** , und fügen Sie eine Aktion **Auf alle anwenden** hinzu.
+Klicken Sie auf **Neuer Schritt**, und fügen Sie eine Aktion **Auf alle anwenden** hinzu.
 
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/add-apply-action.png" alt-text="Hinzufügen eines Anwendungsbefehls":::
@@ -132,12 +132,12 @@ Geben Sie in Ihrem Flow die folgenden Informationen ein, um eine neue Textanalys
 
 ## <a name="extract-the-excel-content"></a>Extrahieren des Excel-Inhalts 
 
-Nachdem die Verbindung erstellt wurde, suchen Sie nach **Textanalyse** , und wählen Sie **Entitäten** aus. Damit werden Informationen aus der Spalte „description“ (Beschreibung) des Problems extrahiert.
+Nachdem die Verbindung erstellt wurde, suchen Sie nach **Textanalyse**, und wählen Sie **Entitäten** aus. Damit werden Informationen aus der Spalte „description“ (Beschreibung) des Problems extrahiert.
 
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/extract-info.png" alt-text="Hinzufügen von Textanalyseentitäten":::
 
-Klicken Sie in das Feld **Text** , und wählen Sie im angezeigten Fenster mit dynamischem Inhalt **Beschreibung** aus. Geben Sie als Sprache `en` ein. (Sollte „Sprache“ nicht angezeigt werden, klicken Sie auf „Erweiterte Optionen anzeigen“.)
+Klicken Sie in das Feld **Text**, und wählen Sie im angezeigten Fenster mit dynamischem Inhalt **Beschreibung** aus. Geben Sie als Sprache `en` ein. (Sollte „Sprache“ nicht angezeigt werden, klicken Sie auf „Erweiterte Optionen anzeigen“.)
 
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/description-from-dynamic-content.png" alt-text="Hinzufügen von Textanalyseeinstellungen":::
@@ -145,17 +145,17 @@ Klicken Sie in das Feld **Text** , und wählen Sie im angezeigten Fenster mit dy
 
 ## <a name="extract-the-person-name"></a>Extrahieren des Namens der Person
 
-Als Nächstes suchen Sie den Entitätstyp „Person“ in der Ausgabe der Textanalyse. Klicken Sie in **Auf alle anwenden** auf **Aktion hinzufügen** , und erstellen Sie eine weitere Aktion **Auf alle anwenden**. Klicken Sie in das Textfeld, und wählen Sie im angezeigten Fenster mit dynamischem Inhalt **Entitäten** aus.
+Als Nächstes suchen Sie den Entitätstyp „Person“ in der Ausgabe der Textanalyse. Klicken Sie in **Auf alle anwenden** auf **Aktion hinzufügen**, und erstellen Sie eine weitere Aktion **Auf alle anwenden**. Klicken Sie in das Textfeld, und wählen Sie im angezeigten Fenster mit dynamischem Inhalt **Entitäten** aus.
 
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/add-apply-action-2.png" alt-text="Hinzufügen von Anmeldeinformationen für die Textanalyse zum Flow 2":::
 
-Klicken Sie in der neu erstellten Aktion **Auf alle anwenden 2** auf **Aktion hinzufügen** , und fügen Sie das Steuerelement **Bedingung** hinzu.
+Klicken Sie in der neu erstellten Aktion **Auf alle anwenden 2** auf **Aktion hinzufügen**, und fügen Sie das Steuerelement **Bedingung** hinzu.
 
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/create-condition.png" alt-text="Hinzufügen von Anmeldeinformationen für die Textanalyse zum Flow 3":::
 
-Klicken Sie im Fenster „Bedingung“ auf das erste Textfeld. Suchen Sie im Fenster mit dynamischem Inhalt nach **Entitätstyp** , und wählen Sie diese Option aus.
+Klicken Sie im Fenster „Bedingung“ auf das erste Textfeld. Suchen Sie im Fenster mit dynamischem Inhalt nach **Entitätstyp**, und wählen Sie diese Option aus.
 
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/choose-entities-value.png" alt-text="Hinzufügen von Anmeldeinformationen für die Textanalyse zum Flow 4":::
@@ -170,19 +170,19 @@ Geben Sie in der Bedingung **Falls ja** den Begriff „Excel“ ein, und wählen
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/yes-column-action.png" alt-text="Hinzufügen von Anmeldeinformationen für die Textanalyse zum Flow 6":::
 
-Geben Sie die Excel-Informationen ein, und aktualisieren Sie die Felder **Schlüsselspalte** , **Schlüsselwert** und **PersonName**. Dadurch wird der von der API erkannte Name an das Excel-Arbeitsblatt angehängt. 
+Geben Sie die Excel-Informationen ein, und aktualisieren Sie die Felder **Schlüsselspalte**, **Schlüsselwert** und **PersonName**. Dadurch wird der von der API erkannte Name an das Excel-Arbeitsblatt angehängt. 
 
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/yes-column-action-options.png" alt-text="Hinzufügen von Anmeldeinformationen für die Textanalyse zum Flow 7":::
 
 ## <a name="get-the-phone-number"></a>Abrufen der Telefonnummer
 
-Minimieren Sie die Aktion **Auf alle anwenden 2** , indem Sie auf den Namen klicken. Fügen Sie dann wie zuvor eine weitere Aktion **Auf alle anwenden** hinzu. Sie erhält den Namen **Auf alle anwenden 3**. Wählen Sie das Textfeld aus, und fügen Sie **Entitäten** als Ausgabe für diese Aktion hinzu. 
+Minimieren Sie die Aktion **Auf alle anwenden 2**, indem Sie auf den Namen klicken. Fügen Sie dann wie zuvor eine weitere Aktion **Auf alle anwenden** hinzu. Sie erhält den Namen **Auf alle anwenden 3**. Wählen Sie das Textfeld aus, und fügen Sie **Entitäten** als Ausgabe für diese Aktion hinzu. 
 
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/add-apply-action-3.png" alt-text="Hinzufügen von Anmeldeinformationen für die Textanalyse zum Flow 8":::
 
-Fügen Sie in **Auf alle anwenden 3** ein Steuerelement **Bedingung** hinzu. Es erhält den Namen **Bedingung 2**. Suchen Sie im ersten Textfeld nach **Entitätstyp** , und fügen Sie diese Option aus dem Fenster mit dynamischem Inhalt hinzu. Vergewissern Sie sich, dass das mittlere Feld auf **ist gleich** festgelegt ist. Geben Sie dann im rechten Textfeld `var_phone` ein. 
+Fügen Sie in **Auf alle anwenden 3** ein Steuerelement **Bedingung** hinzu. Es erhält den Namen **Bedingung 2**. Suchen Sie im ersten Textfeld nach **Entitätstyp**, und fügen Sie diese Option aus dem Fenster mit dynamischem Inhalt hinzu. Vergewissern Sie sich, dass das mittlere Feld auf **ist gleich** festgelegt ist. Geben Sie dann im rechten Textfeld `var_phone` ein. 
 
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/condition-2-options.png" alt-text="Hinzufügen von Anmeldeinformationen für die Textanalyse zum Flow 9":::
@@ -195,7 +195,7 @@ Fügen Sie in der Bedingung **Falls ja** eine Aktion **Zeile aktualisieren** hin
 
 ## <a name="get-the-plumbing-issues"></a>Abrufen von sanitären Problemen
 
-Minimieren Sie **Auf alle anwenden 3** , indem Sie auf den Namen klicken. Erstellen Sie dann eine weitere Aktion **Auf alle anwenden** in der übergeordneten Aktion. Wählen Sie das Textfeld aus, und fügen Sie **Entitäten** als Ausgabe für diese Aktion aus dem Fenster mit dynamischem Inhalt hinzu. 
+Minimieren Sie **Auf alle anwenden 3**, indem Sie auf den Namen klicken. Erstellen Sie dann eine weitere Aktion **Auf alle anwenden** in der übergeordneten Aktion. Wählen Sie das Textfeld aus, und fügen Sie **Entitäten** als Ausgabe für diese Aktion aus dem Fenster mit dynamischem Inhalt hinzu. 
 
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/add-apply-action-4.png" alt-text="Hinzufügen von Anmeldeinformationen für die Textanalyse zum Flow 11":::
@@ -209,16 +209,16 @@ Fügen Sie innerhalb der Aktion **Auf alle anwenden 4** ein Steuerelement **Bed
 > :::image type="content" source="../media/tutorials/excel/condition-3-options.png" alt-text="Hinzufügen von Anmeldeinformationen für die Textanalyse zum Flow 12":::
 
 
-Klicken Sie in der Bedingung **Falls ja** auf **Aktion hinzufügen** , und wählen Sie **Zeile aktualisieren** aus. Geben Sie dann die Informationen wie zuvor ein. Wählen Sie in der Spalte „IssueType“ die Option `var_plumbing` aus. Dadurch wird die Bezeichnung „plumbing“ (sanitärbezogen) auf die Zeile angewandt.
+Klicken Sie in der Bedingung **Falls ja** auf **Aktion hinzufügen**, und wählen Sie **Zeile aktualisieren** aus. Geben Sie dann die Informationen wie zuvor ein. Wählen Sie in der Spalte „IssueType“ die Option `var_plumbing` aus. Dadurch wird die Bezeichnung „plumbing“ (sanitärbezogen) auf die Zeile angewandt.
 
-Klicken Sie in der Bedingung **Falls nein** auf **Aktion hinzufügen** , und wählen Sie **Zeile aktualisieren** aus. Geben Sie dann die Informationen wie zuvor ein. Wählen Sie in der Spalte „IssueType“ die Option `var_other` aus. Dadurch wird die Bezeichnung „other“ (andere) auf die Zeile angewandt.
+Klicken Sie in der Bedingung **Falls nein** auf **Aktion hinzufügen**, und wählen Sie **Zeile aktualisieren** aus. Geben Sie dann die Informationen wie zuvor ein. Wählen Sie in der Spalte „IssueType“ die Option `var_other` aus. Dadurch wird die Bezeichnung „other“ (andere) auf die Zeile angewandt.
 
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/plumbing-issue-condition.png" alt-text="Hinzufügen von Anmeldeinformationen für die Textanalyse zum Flow 13":::
 
 ## <a name="test-the-workflow"></a>Testen des Workflows
 
-Klicken Sie in der rechten oberen Ecke des Bildschirms auf **Speichern** und dann auf **Testen**. Wählen Sie **Ich führe die Triggeraktion durch** aus. Klicken Sie auf **Speichern und testen** , **Flow ausführen** und **Fertig**.
+Klicken Sie in der rechten oberen Ecke des Bildschirms auf **Speichern** und dann auf **Testen**. Wählen Sie **Ich führe die Triggeraktion durch** aus. Klicken Sie auf **Speichern und testen**, **Flow ausführen** und **Fertig**.
 
 Die Excel-Datei wird in Ihrem OneDrive-Konto aktualisiert. Sie sieht wie folgt aus.
 

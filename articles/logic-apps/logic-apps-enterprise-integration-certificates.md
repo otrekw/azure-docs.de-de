@@ -9,10 +9,10 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/17/2018
 ms.openlocfilehash: 03fc17c0d071cef4c8de92c6b50d60d961d18aef
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91565258"
 ---
 # <a name="improve-security-for-b2b-messages-by-using-certificates"></a>Verbessern der Sicherheit von B2B-Nachrichten mithilfe von Zertifikaten
@@ -44,7 +44,7 @@ Um ein *öffentliches Zertifikat* in Logik-Apps mit B2B-Funktionen verwenden zu 
 
 3. Wählen Sie unter **Zertifikate** die Option **Hinzufügen** aus. Geben Sie unter **Zertifikat hinzufügen** die Details für Ihr Zertifikat an. Wählen Sie **OK** aus, wenn Sie fertig sind.
 
-   | Eigenschaft | value | BESCHREIBUNG | 
+   | Eigenschaft | Wert | BESCHREIBUNG | 
    |----------|-------|-------------|
    | **Name** | <*certificate-name*> (Zertifikatname) | Der Name Ihres Zertifikats (in diesem Beispiel „PublicCert“) | 
    | **Zertifikattyp** | Öffentlich | Der Typ Ihres Zertifikats |
@@ -83,7 +83,7 @@ Nachdem Sie die Eigenschaften in den von Ihnen erstellten [Vereinbarungen](logic
 
 5. Wählen Sie unter **Zertifikate** die Option **Hinzufügen** aus. Geben Sie unter **Zertifikat hinzufügen** die Details für Ihr Zertifikat an. Wählen Sie **OK** aus, wenn Sie fertig sind.
 
-   | Eigenschaft | value | BESCHREIBUNG | 
+   | Eigenschaft | Wert | BESCHREIBUNG | 
    |----------|-------|-------------|
    | **Name** | <*certificate-name*> (Zertifikatname) | Der Name Ihres Zertifikats (in diesem Beispiel „privateCert“) | 
    | **Zertifikattyp** | Privat | Der Typ Ihres Zertifikats |

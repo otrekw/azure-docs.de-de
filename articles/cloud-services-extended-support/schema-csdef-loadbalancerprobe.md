@@ -9,10 +9,10 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: 10e42e502a1f435d06d52d22d5c1e1924a46e575
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98744005"
 ---
 # <a name="azure-cloud-services-extended-support-definition-loadbalancerprobe-schema"></a>Azure Cloud Services (erweiterter Support): Definition des LoadBalancerProbe-Schemas
@@ -55,7 +55,7 @@ Das Element `LoadBalancerProbe` definiert den Integritätstest für ein Modell. 
 
 In der folgenden Tabelle sind die Attribute des `LoadBalancerProbe`-Elements beschrieben:
 
-|Attribut|type|Beschreibung|
+|Attribut|type|BESCHREIBUNG|
 | ------------------- | -------- | -----------------|
 | `name`              | `string` | Erforderlich. Der Name des Lastenausgleichstests. Der Name muss eindeutig sein.|
 | `protocol`          | `string` | Erforderlich. Gibt das Protokoll des Endpunkts an. Mögliche Werte sind `http` oder `tcp`. Wenn `tcp` angegeben wird, ist der Empfang einer Bestätigung erforderlich, damit der Test erfolgreich ist. Wenn `http` angegeben wird, ist eine 200 OK-Antwort vom angegebenen URI erforderlich, damit der Test erfolgreich ist.|
@@ -65,4 +65,4 @@ In der folgenden Tabelle sind die Attribute des `LoadBalancerProbe`-Elements bes
 | `timeoutInSeconds`  | `integer` | Optional. Das Zeitlimit in Sekunden für den Test, bei dem keine Antwort dazu führt, dass die Übermittlung von weiterem Datenverkehr an den Endpunkt beendet wird. Mit diesem Wert können Endpunkte schneller oder langsamer als bei den typischen, in Azure verwendeten Zeiten (Standardwerte) von der Rotation ausgenommen werden.<br /><br /> Der Standardwert beträgt 31, der Mindestwert 11.|
 
 ## <a name="see-also"></a>Siehe auch
-[Cloud Service (erweiterter Support): Definition des Schemas](schema-csdef-file.md).
+[Cloud Service (erweiterter Support): Definitionsschema](schema-csdef-file.md).

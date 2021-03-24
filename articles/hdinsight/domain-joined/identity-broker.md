@@ -4,12 +4,12 @@ description: Erfahren Sie etwas über den Azure HDInsight-Identitätsbroker zur 
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/03/2020
-ms.openlocfilehash: 47ba11260c3b58566963e5a3ffac80ca461a8a23
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: c5bc5bc702dbd54bbad43aa4e1c6c8650c18e088
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946816"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863189"
 ---
 # <a name="azure-hdinsight-id-broker-hib"></a>Azure HDInsight-Identitätsbroker (HIB)
 
@@ -34,7 +34,7 @@ Verwenden Sie die folgende Tabelle, um die beste Authentifizierungsoption basier
 
 In der folgenden Abbildung ist der moderne auf OAuth basierende Authentifizierungsablauf für alle Benutzer, einschließlich Verbundbenutzer, nach der Aktivierung des HDInsight-Identitätsbrokers dargestellt:
 
-:::image type="content" source="media/identity-broker/identity-broker-architecture.png" alt-text="Diagramm zum Authentifizierungsablauf mit HDInsight-Identitätsbroker.":::
+:::image type="content" source="media/identity-broker/identity-broker-architecture.png" alt-text="Diagramm zum Authentifizierungsablauf mit HDInsight-Identitätsbroker." border="false":::
 
 In diesem Diagramm muss der Client (d. h. ein Browser oder eine App) zuerst das OAuth-Token abrufen. Anschließend präsentiert es dem Gateway das Token in einer HTTP-Anforderung. Wenn Sie bereits bei anderen Azure-Diensten angemeldet sind, z. B. im Azure-Portal, können Sie sich mittels einmaligem Anmelden bei Ihrem HDInsight-Cluster anmelden.
 
@@ -42,8 +42,7 @@ Möglicherweise gibt es noch viele Legacyanwendungen, die nur die Standardauthen
 
 Das folgende Diagramm zeigt den Ablauf der Standardauthentifizierung für Verbundbenutzer. Zunächst versucht das Gateway, die Authentifizierung mithilfe des [ROPC-Flows](../../active-directory/develop/v2-oauth-ropc.md) abzuschließen. Falls keine Kennworthashes mit Azure AD synchronisiert sind, greift es auf die Ermittlung des AD FS-Endpunkts zurück und schließt die Authentifizierung durch Zugriff auf den AD FS-Endpunkt ab.
 
-:::image type="content" source="media/identity-broker/basic-authentication.png" alt-text="Diagramm, das eine Architektur mit Standardauthentifizierung anzeigt.":::
-
+:::image type="content" source="media/identity-broker/basic-authentication.png" alt-text="Diagramm, das eine Architektur mit Standardauthentifizierung anzeigt." border="false":::
 
 ## <a name="enable-hdinsight-id-broker"></a>Aktivieren des HDInsight-Identitätsbrokers
 
@@ -55,7 +54,7 @@ So erstellen Sie einen Enterprise-Sicherheitspaketcluster mit aktiviertem HDInsi
 
 Das Feature HDInsight-Identitätsbroker fügt dem Cluster einen weiteren virtuellen Computer hinzu. Dieser virtuelle Computer ist der HDInsight-Identitätsbrokerknoten, der Serverkomponenten zur Unterstützung der Authentifizierung enthält. Der HDInsight-Identitätsbrokerknoten ist in die Azure AD DS-Domäne eingebunden.
 
-![Diagramm, das die Option zum Aktivieren des HDInsight-Identitätsbrokers anzeigt.](./media/identity-broker/identity-broker-enable.png)
+:::image type="content" source="./media/identity-broker/identity-broker-enable.png" alt-text="Diagramm, das die Option zum Aktivieren des HDInsight-Identitätsbrokers anzeigt." border="true":::
 
 ### <a name="use-azure-resource-manager-templates"></a>Verwenden von Azure-Ressourcen-Manager-Vorlagen
 
