@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 11/20/2019
-ms.openlocfilehash: 84124f33f6aa02f63c0c47a24bd7d2a71ced2d11
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 47f0ea34fa650371d39252ce6b0ee6a15f3124d6
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101699299"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871179"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: Häufig gestellte Fragen
 
@@ -78,11 +78,11 @@ Nein, Apache Kafka und Apache Spark können nicht im selben HDInsight-Cluster au
 1. Öffnen Sie die Ambari-Webbenutzeroberfläche unter `https://CLUSTERNAME.azurehdinsight.net`. Dabei entspricht CLUSTERNAME dem Namen Ihres Clusters.
 2. Wählen Sie oben rechts „Admin (Administrator) | Settings (Einstellungen)“ aus. 
 
-   ![Ambari-Einstellungen](media/hdinsight-faq/ambari-settings.png)
+   :::image type="content" source="media/hdinsight-faq/ambari-settings.png" alt-text="Ambari-Einstellungen":::
 
 3. Wählen Sie im Fenster „User Settings“ (Benutzereinstellungen) die neue Zeitzone aus der Dropdownliste „Timezone“ (Zeitzone) aus, und klicken Sie auf „Save“ (Speichern).
 
-   ![Ambari-Benutzereinstellungen](media/hdinsight-faq/ambari-user-settings.png)
+   :::image type="content" source="media/hdinsight-faq/ambari-user-settings.png" alt-text="Ambari-Benutzereinstellungen":::
 
 ## <a name="metastore"></a>Metastore
 

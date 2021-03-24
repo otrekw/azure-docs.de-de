@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/8/2020
 ms.author: allensu
 ms.openlocfilehash: e1080aea12e70f4312fbee07b063d5a5cfbd1201
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89596214"
 ---
 # <a name="azure-load-balancer-portal-settings"></a>Azure Load Balancer – Portaleinstellungen
@@ -63,7 +63,7 @@ Wenn Sie **Intern** als Typ auswählen, werden die folgenden Informationen angez
 | IP-Adresszuweisung | Die Optionen sind **Statisch** oder **Dynamisch**. </br> „Statisch“ stellt sicher, dass die IP-Adresse sich nicht ändert. Eine dynamische IP-Adresse könnte sich ändern. |
 | Verfügbarkeitszone | Folgende Optionen sind verfügbar: </br> **Zonenredundant** </br> **Zone 1** </br> **Zone 2** </br> **Zone 3** </br> Wählen Sie zum Erstellen eines Lastenausgleichs mit hoher Verfügbarkeit und Resilienz vor Verfügbarkeitszonenausfällen eine **zonenredundante** IP aus. |
 
-:::image type="content" source="./media/manage/create-internal-load-balancer-basics.png" alt-text="Erstellen eines öffentlichen Lastenausgleichs." border="true":::
+:::image type="content" source="./media/manage/create-internal-load-balancer-basics.png" alt-text="Erstellen eines internen Lastenausgleichs." border="true":::
 
 ## <a name="frontend-ip-configuration"></a>Front-End-IP-Konfiguration
 
@@ -80,7 +80,7 @@ Wenn Sie Ihrem Lastenausgleich eine Front-End-IP-Konfiguration hinzufügen möch
 | IP-Typ | Der IP-Typ bestimmt, ob mit Ihrem Front-End eine einzelne IP-Adresse oder ein IP-Adressbereich mit einem Präfix für IP-Adressen verknüpft ist. </br> Ein [Präfix für öffentliche IP-Adressen](../virtual-network/public-ip-address-prefix.md) ist hilfreich, wenn Sie wiederholt eine Verbindung mit demselben Endpunkt herstellen müssen. Mit dem Präfix wird sichergestellt, dass genügend Ports zur Unterstützung bei SNAT-Portproblemen angegeben werden. |
 | Öffentliche IP-Adresse (oder Präfix, wenn Sie oben das Präfix gewählt haben) | Wählen oder erstellen Sie eine neue öffentliche IP-Adresse (oder ein Präfix) für das Lastenausgleichs-Front-End. |
 
-:::image type="content" source="./media/manage/frontend.png" alt-text="Erstellen eines öffentlichen Lastenausgleichs." border="true":::
+:::image type="content" source="./media/manage/frontend.png" alt-text="Erstellen einer Front-End-IP-Konfigurationsseite." border="true":::
 
 ## <a name="backend-pools"></a>Back-End-Pools
 
@@ -96,7 +96,7 @@ Wenn Sie Ihrem Lastenausgleich einen Back-End-Pool hinzufügen möchten, navigie
 
 Sie können dem Back-End-Pool Ihrer Azure Load Balancer-Instanz VMs oder VM-Skalierungsgruppen hinzufügen. Erstellen Sie zuerst die VMs oder VM-Skalierungsgruppen. Fügen Sie sie dann im Portal dem Lastenausgleich hinzu.
 
-:::image type="content" source="./media/manage/backend.png" alt-text="Erstellen eines öffentlichen Lastenausgleichs." border="true":::
+:::image type="content" source="./media/manage/backend.png" alt-text="Erstellen einer Back-End-Pool-Seite." border="true":::
 
 ## <a name="health-probes"></a>Integritätstests
 
@@ -112,7 +112,7 @@ Wenn Sie Ihrem Lastenausgleich einen Integritätstest hinzufügen möchten, navi
 | Intervall | Die Anzahl der Sekunden zwischen Testversuchen. </br> Mit dem Intervall wird bestimmt, wie häufig der Integritätstest versucht, die Back-End-Instanz zu erreichen. </br> Wenn Sie 5 auswählen, wird der zweite Testversuch nach 5 Sekunden durchgeführt usw. |
 | Fehlerhafter Schwellenwert | Die Anzahl aufeinander folgender Testfehler, die auftreten müssen, damit ein virtueller Computer als fehlerhaft eingestuft wird.</br> Wenn Sie 2 auswählen, werden nach zwei aufeinanderfolgenden Fehlern keine neuen Flows auf diese Back-End-Instanz festgelegt. |
 
-:::image type="content" source="./media/manage/health-probe.png" alt-text="Erstellen eines öffentlichen Lastenausgleichs." border="true":::
+:::image type="content" source="./media/manage/health-probe.png" alt-text="Hinzufügen des Integritätstests." border="true":::
 
 ## <a name="load-balancing-rules"></a>Lastenausgleichsregeln
 
@@ -136,7 +136,7 @@ Wenn Sie Ihrem Lastenausgleich eine Lastenausgleichsregel hinzufügen möchten, 
 | Unverankerte IP | Floating IP ist die in Azure verwendete Benennung für die Komponente **Direct Server Return (DSR)** . </br> DSR besteht aus zwei Teilen: <br> 1. Datenflusstopologie </br> 2. Ein IP-Adressen-Zuordnungsschema auf Plattformebene. </br></br> Azure Load Balancer wird immer in einer DSR-Datenflusstopologie betrieben, unabhängig davon, ob Floating IP aktiviert ist. </br> Dieser Vorgang bedeutet, dass der ausgehende Teil eines Datenflusses immer ordnungsgemäß so umgeschrieben wird, dass er direkt wieder an den Ursprung übermittelt wird. </br> Ohne Floating IP wird von Azure ein herkömmliches Zuordnungsschema für IP-Adressen für den Lastenausgleich (IP-Adresse für VM-Instanzen) verfügbar gemacht. </br> Durch die Aktivierung von Floating IP wird die Zuordnung der IP-Adressen in die Front-End-IP-Adresse des Lastenausgleichsmoduls geändert, um für zusätzliche Flexibilität zu sorgen. </br> Weitere Informationen finden Sie unter [Mehrere Front-Ends für Azure Load Balancer](load-balancer-multivip-overview.md).|
 | Erstellen impliziter Ausgangsregeln | Wählen Sie also **Nein**. </br> Standard: **disableOutboundSnat = false**  </br> In diesem Fall erfolgt der ausgehende Datenverkehr über dieselbe Front-End-IP. </br></br> **disableOutboundSnat = true** </br>In diesem Fall werden Ausgangsregeln für ausgehenden Datenverkehr benötigt. |
 
-:::image type="content" source="./media/manage/load-balancing-rule.png" alt-text="Erstellen eines öffentlichen Lastenausgleichs." border="true":::
+:::image type="content" source="./media/manage/load-balancing-rule.png" alt-text="Hinzufügen einer Lastenausgleichsregel." border="true":::
 
 ## <a name="inbound-nat-rules"></a>Eingehende NAT-Regeln
 
@@ -163,7 +163,7 @@ Wenn Sie Ihrem Lastenausgleich eine NAT-Regel für eingehenden Datenverkehr hinz
 | Virtueller Zielcomputer | Der VM-Teil des Back-End-Pools, dem diese Regel zugeordnet werden soll. |
 | Portzuordnung | Diese Einstellung kann basierend auf der Anwendungseinstellung standardmäßig oder benutzerdefiniert sein. |
 
-:::image type="content" source="./media/manage/inbound-nat-rule.png" alt-text="Erstellen eines öffentlichen Lastenausgleichs." border="true":::
+:::image type="content" source="./media/manage/inbound-nat-rule.png" alt-text="Hinzufügen einer NAT-Regel für eingehenden Datenverkehr." border="true":::
 
 ## <a name="outbound-rules"></a>Ausgangsregeln
 
@@ -193,7 +193,7 @@ Wenn Sie Ihrem Lastenausgleich eine Regel für ausgehenden Datenverkehr hinzufü
 | Auswählen nach | Wählen Sie **Ports pro Instanz** aus. |
 | Ports pro Instanz | Geben Sie **10.000** ein. |
 
-:::image type="content" source="./media/manage/outbound-rule.png" alt-text="Erstellen eines öffentlichen Lastenausgleichs." border="true":::
+:::image type="content" source="./media/manage/outbound-rule.png" alt-text="Hinzufügen einer Ein-/Ausgangsregel." border="true":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

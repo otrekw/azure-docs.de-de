@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 03/21/2018
 ms.custom: seodec18, mvc, devx-track-js
 ms.openlocfilehash: 1eca34fb5da50b15f15322a3b534556bcd3bda09
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91303113"
 ---
 # <a name="tutorial-create-a-container-image-for-deployment-to-azure-container-instances"></a>Tutorial: Erstellen eines Containerimages für die Bereitstellung in Azure Container Instances
@@ -24,7 +24,7 @@ Dieser Artikel ist der erste Teil der Reihe und umfasst Folgendes:
 
 Im zweiten und dritten Tutorialteil laden Sie eigene Images in Azure Container Registry hoch und stellen sie in Azure Container Instances bereit.
 
-## <a name="before-you-begin"></a>Voraussetzungen
+## <a name="before-you-begin"></a>Vorbereitung
 
 [!INCLUDE [container-instances-tutorial-prerequisites](../../includes/container-instances-tutorial-prerequisites.md)]
 
@@ -128,7 +128,7 @@ In diesem Tutorial haben Sie ein Containerimage erstellt, das in Azure Container
 Fahren Sie mit dem nächsten Tutorial der Reihe fort, um sich über das Speichern Ihres Containerimages in Azure Container Registry zu informieren:
 
 > [!div class="nextstepaction"]
-> [Übertragen des Images an Azure Container Registry per Pushvorgang](container-instances-tutorial-prepare-acr.md)
+> [Übertragen des Images zu Azure Container Registry mithilfe von Push](container-instances-tutorial-prepare-acr.md)
 
 <!--- IMAGES --->
 [aci-tutorial-app]:./media/container-instances-quickstart/aci-app-browser.png

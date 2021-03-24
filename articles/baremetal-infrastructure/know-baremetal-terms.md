@@ -3,12 +3,12 @@ title: Wichtige Begriffe in der Azure BareMetal-Infrastruktur
 description: Machen Sie sich mit wichtigen Begriffen in der Azure BareMetal-Infrastruktur vertraut.
 ms.topic: conceptual
 ms.date: 1/4/2021
-ms.openlocfilehash: fd7a39854c86f728ef152f8e7d858157e1ad26f4
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: b22a6cecb2647df3878cb8fd4ade93d9a7d963fd
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97861919"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104770885"
 ---
 # <a name="know-the-terms-for-baremetal-infrastructure"></a>Wichtige Begriffe in der BareMetal-Infrastruktur
 
@@ -23,4 +23,4 @@ In diesem Artikel werden einige wichtige BareMetal-Begriffe behandelt.
 - **Tenant:** Die Bereitstellung einer BareMetal-Instanz eines Kunden in einem Stamp wird in einem *Mandanten* isoliert. Ein Mandant wird in der Schicht der Netzwerke, Speicher und von Compute von anderen Mandanten isoliert. Speicher- und Compute-Einheiten, die unterschiedlichen Mandanten zugewiesen sind, können einander auf der Ebene des Stamps der BareMetal-Instanz nicht sehen und nicht miteinander kommunizieren. Ein Kunde kann Bereitstellungen in unterschiedlichen Mandanten durchführen. Auch dann ist die Kommunikation auf der Ebene des Stamps der BareMetal-Instanz nicht möglich.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Erfahren Sie mehr über die [BareMetal-Infrastruktur](workloads/sap/baremetal-overview-architecture.md) oder das [Verwalten von BareMetal-Instanzen über das Azure-Portal](workloads/sap/baremetal-infrastructure-portal.md). 
+Erfahren Sie mehr über die [BareMetal-Infrastruktur](concepts-baremetal-infrastructure-overview.md) oder das [Verwalten von BareMetal-Instanzen über das Azure-Portal](connect-baremetal-infrastructure.md). 

@@ -9,10 +9,10 @@ ms.custom: subject-armqs
 ms.date: 08/28/2020
 ms.author: victorh
 ms.openlocfilehash: 7966cbe44fc8984cf3c3d9e2d08a11bf599ff158
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89079131"
 ---
 # <a name="quickstart-create-an-azure-firewall-and-ip-groups---arm-template"></a>Schnellstart: Erstellen einer Azure Firewall-Instanz sowie von IP-Adressgruppen: ARM-Vorlage
@@ -68,7 +68,7 @@ Stellen Sie die ARM-Vorlage in Azure bereit:
    - Authentifizierung: Wählen Sie „sshPublicKey“ oder „Kennwort“ aus. 
    - Administratorkennwort: Geben Sie ein Administratorkennwort oder einen Administratorschlüssel ein.
 
-3. Wählen Sie **Ich stimme den oben genannten Geschäftsbedingungen zu** und anschließend **Kaufen** aus. Die Bereitstellung kann zehn Minuten oder länger dauern.
+3. Wählen Sie **Ich stimme den oben genannten Geschäftsbedingungen zu** und anschließend **Kaufen** aus. Die Bereitstellung kann zehn Minuten oder länger dauern.
 
 ## <a name="review-deployed-resources"></a>Überprüfen der bereitgestellten Ressourcen
 
@@ -76,7 +76,7 @@ Stellen Sie die ARM-Vorlage in Azure bereit:
 
 :::image type="content" source="media/quick-create-ipgroup-template/ipgroups.png" alt-text="IP-Adressgruppen":::
 
-:::image type="content" source="media/quick-create-ipgroup-template/network-rule.png" alt-text="IP-Adressgruppen":::
+:::image type="content" source="media/quick-create-ipgroup-template/network-rule.png" alt-text="Netzwerkregeln":::
 
 Informationen zur JSON-Syntax und zu den Eigenschaften für eine Firewall in einer Vorlage finden Sie in der Vorlagenreferenz für [Microsoft.Network/azureFirewalls](/azure/templates/Microsoft.Network/2019-11-01/azureFirewalls).
 

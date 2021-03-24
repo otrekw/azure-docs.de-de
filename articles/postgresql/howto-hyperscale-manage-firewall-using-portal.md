@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 9/11/2020
 ms.openlocfilehash: dadd04497eae0e91bdf5ea3caad38beda35f7fa3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91275420"
 ---
 # <a name="manage-firewall-rules-for-azure-database-for-postgresql---hyperscale-citus"></a>Verwalten von Firewallregeln für Azure Database for PostgreSQL – Hyperscale (Citus)
@@ -30,18 +30,18 @@ Zum Ausführen der Schritte in dieser Anleitung benötigen Sie Folgendes:
 
 1. Klicken Sie auf der Seite der PostgreSQL-Servergruppe unter der Überschrift „Sicherheit“ auf **Netzwerk**, um die Firewallregeln zu öffnen.
 
-   :::image type="content" source="./media/howto-hyperscale-manage-firewall-using-portal/1-connection-security.png" alt-text="Azure-Portal – Registerkarte „Netzwerk“":::
+   :::image type="content" source="./media/howto-hyperscale-manage-firewall-using-portal/1-connection-security.png" alt-text="Azure-Portal – Klicken auf „Netzwerk“":::
 
 2. Klicken Sie auf **Aktuelle Client-IP-Adresse hinzufügen**, um eine Firewallregel mit der öffentlichen IP-Adresse Ihres Computers zu erstellen, die vom Azure-System erkannt wird.
 
-   :::image type="content" source="./media/howto-hyperscale-manage-firewall-using-portal/2-add-my-ip.png" alt-text="Azure-Portal – Registerkarte „Netzwerk“":::
+   :::image type="content" source="./media/howto-hyperscale-manage-firewall-using-portal/2-add-my-ip.png" alt-text="Azure-Portal – Klicken auf „Client-IP hinzufügen“":::
 
 Wenn Sie alternativ auf **+Hinzufügen 0.0.0.0 – 255.255.255.255** (rechts neben Option B) klicken, kann nicht nur über die IP-Adresse, sondern über das gesamte Internet auf Port 5432 des Koordinatorknotens zugegriffen werden. In dieser Situation müssen sich Clients weiterhin mit dem richtigen Benutzernamen und Kennwort anmelden, um den Cluster zu verwenden. Trotzdem empfiehlt es sich, den weltweiten Zugriff nur für kurze Zeit und nur für Datenbanken zuzulassen, die nicht in der Produktion eingesetzt werden.
 
 3. Überprüfen Sie Ihre IP-Adresse, bevor Sie die Konfiguration speichern. In einigen Situationen weicht die vom Azure-Portal erkannte IP-Adresse von der IP-Adresse ab, die für den Zugriff auf das Internet und die Azure-Server verwendet wird. Aus diesem Grund müssen Sie die Start-IP und die End-IP ändern, damit die Regel wie erwartet funktioniert.
    Verwenden Sie eine Suchmaschine oder ein anderes Onlinetool, um Ihre eigene IP-Adresse zu überprüfen. Suchen Sie beispielsweise nach „Wie lautet meine IP?“.
 
-   :::image type="content" source="./media/howto-hyperscale-manage-firewall-using-portal/3-what-is-my-ip.png" alt-text="Azure-Portal – Registerkarte „Netzwerk“":::
+   :::image type="content" source="./media/howto-hyperscale-manage-firewall-using-portal/3-what-is-my-ip.png" alt-text="Bing-Suche für „Wie lautet meine IP?“":::
 
 4. Fügen Sie weitere Adressräume hinzu. In den Firewallregeln können Sie eine einzelne IP-Adresse oder einen Adressbereich angeben. Wenn Sie die Regel auf eine einzelne IP-Adresse beschränken möchten, geben Sie dieselbe Adresse in das Feld für Start-IP und End-IP ein. Durch das Öffnen der Firewall können Administratoren, Benutzer und Anwendungen auf den Koordinatorknoten an Port 5432 zugreifen.
 

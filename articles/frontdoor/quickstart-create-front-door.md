@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 09/16/2020
 ms.author: duau
 ms.openlocfilehash: 4846438f8479fe622570aa515a4d8b40cccc57b8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91252305"
 ---
 # <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application"></a>Schnellstart: Erstellen Sie eine „Front Door“ für eine hoch verfügbare globale Webanwendung.
@@ -58,7 +58,7 @@ Wenn Sie noch nicht über eine Web-App verfügen, richten Sie anhand der folgend
 
 1. Wählen Sie **Überprüfen und erstellen** aus, überprüfen Sie die **Zusammenfassung**, und wählen Sie dann die Option **Erstellen** aus. Es kann mehrere Minuten dauern, bis die Bereitstellung abgeschlossen ist.
 
-    :::image type="content" source="media/quickstart-create-front-door/create-web-app.png" alt-text="Erstellen einer Web-App im Azure-Portal":::
+    :::image type="content" source="media/quickstart-create-front-door/create-web-app.png" alt-text="Überprüfen der Zusammenfassung für die Web-App":::
 
 Erstellen Sie nach Abschluss der Bereitstellung eine zweite Web-App. Verwenden Sie dieselbe Prozedur mit denselben Werten, mit Ausnahme der folgenden Werte:
 
@@ -87,7 +87,7 @@ Konfigurieren Sie Azure Front Door zum Weiterleiten des Benutzerdatenverkehrs ba
 
 1. Geben Sie unter **Hostname** einen global eindeutigen Hostnamen ein. In diesem Beispiel wird *contoso-frontend* verwendet. Wählen Sie **Hinzufügen**.
 
-    :::image type="content" source="media/quickstart-create-front-door/add-frontend-host-azure-front-door.png" alt-text="Erstellen einer Web-App im Azure-Portal":::
+    :::image type="content" source="media/quickstart-create-front-door/add-frontend-host-azure-front-door.png" alt-text="Hinzufügen eines Front-End-Hosts für Azure Front Door":::
 
 Erstellen Sie als Nächstes einen Back-End-Pool, der Ihre beiden Web-Apps enthält.
 
@@ -95,7 +95,7 @@ Erstellen Sie als Nächstes einen Back-End-Pool, der Ihre beiden Web-Apps enthä
 
 1. Geben Sie unter **Name** den Namen *myBackendPool* ein, und wählen Sie anschließend **Back-End hinzufügen** aus.
 
-    :::image type="content" source="media/quickstart-create-front-door/front-door-add-backend-pool.png" alt-text="Erstellen einer Web-App im Azure-Portal":::
+    :::image type="content" source="media/quickstart-create-front-door/front-door-add-backend-pool.png" alt-text="Hinzufügen eines Back-End-Pools":::
 
 1. Wählen Sie auf dem Blatt **Back-End hinzufügen** die folgenden Informationen und dann **Hinzufügen** aus.
 
@@ -107,7 +107,7 @@ Erstellen Sie als Nächstes einen Back-End-Pool, der Ihre beiden Web-Apps enthä
 
     **Übernehmen Sie für alle anderen Felder die Standardeinstellungen.*
 
-    :::image type="content" source="media/quickstart-create-front-door/front-door-add-a-backend.png" alt-text="Erstellen einer Web-App im Azure-Portal":::
+    :::image type="content" source="media/quickstart-create-front-door/front-door-add-a-backend.png" alt-text="Hinzufügen eines Back-End-Hosts zu Front Door":::
 
 1. Wählen Sie erneut **Back-End hinzufügen** aus. Wählen Sie die folgenden Informationen und anschließend **Hinzufügen** aus.
 
@@ -121,7 +121,7 @@ Erstellen Sie als Nächstes einen Back-End-Pool, der Ihre beiden Web-Apps enthä
 
 1. Wählen Sie auf dem Blatt **Back-End-Pool hinzufügen** die Option **Hinzufügen** aus, um die Konfiguration des Back-End-Pools abzuschließen.
 
-    :::image type="content" source="media/quickstart-create-front-door/front-door-add-backend-pool-complete.png" alt-text="Erstellen einer Web-App im Azure-Portal":::
+    :::image type="content" source="media/quickstart-create-front-door/front-door-add-backend-pool-complete.png" alt-text="Hinzufügen eines Back-End-Pools für Azure Front Door":::
 
 Fügen Sie zum Schluss eine Routingregel hinzu. Eine Routingregel ordnet Ihren Front-End-Host dem Back-End-Pool zu. Die Regel leitet eine Anforderung für `contoso-frontend.azurefd.net` an **myBackendPool** weiter.
 
@@ -129,14 +129,14 @@ Fügen Sie zum Schluss eine Routingregel hinzu. Eine Routingregel ordnet Ihren F
 
 1. Geben Sie unter **Regel hinzufügen** für **Name** den Namen *LocationRule* ein. Übernehmen Sie alle Standardwerte, und wählen Sie anschließend **Hinzufügen** aus, um die Routingregel hinzuzufügen.
 
-    :::image type="content" source="media/quickstart-create-front-door/front-door-add-a-rule.png" alt-text="Erstellen einer Web-App im Azure-Portal":::
+    :::image type="content" source="media/quickstart-create-front-door/front-door-add-a-rule.png" alt-text="Hinzufügen einer Regel zu Ihrer Front Door-Instanz":::
 
    >[!WARNING]
    > Sie **müssen** sicherstellen, dass jeder Front-End-Host in Ihrer Front Door-Instanz eine Routingregel mit einem Standardpfad (`\*`) aufweist. Das bedeutet, dass für alle Ihre Routingregeln mindestens eine Routingregel für jeden Ihrer Front-End-Hosts unter dem Standardpfad (`\*`) definiert sein muss. Andernfalls wird der Datenverkehr Ihrer Endbenutzer möglicherweise nicht richtig weitergeleitet.
 
 1. Wählen Sie **Überprüfen + erstellen** und danach **Erstellen** aus.
 
-    :::image type="content" source="media/quickstart-create-front-door/configuration-azure-front-door.png" alt-text="Erstellen einer Web-App im Azure-Portal":::
+    :::image type="content" source="media/quickstart-create-front-door/configuration-azure-front-door.png" alt-text="Konfigurierte Azure Front Door-Instanz":::
 
 ## <a name="view-azure-front-door-in-action"></a>Anzeigen von Azure Front Door in Aktion
 
@@ -161,7 +161,7 @@ Führen Sie die folgenden Schritte aus, um das sofortige globale Failover in Akt
 
 1. Aktualisieren Sie Ihren Browser. Dieses Mal sollte eine Fehlermeldung angezeigt werden.
 
-   :::image type="content" source="media/quickstart-create-front-door/web-app-stopped-message.png" alt-text="Erstellen einer Web-App im Azure-Portal":::
+   :::image type="content" source="media/quickstart-create-front-door/web-app-stopped-message.png" alt-text="Beide Instanzen der Web-App beendet":::
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

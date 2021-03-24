@@ -10,10 +10,10 @@ ms.reviewer: klam, estfan
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.openlocfilehash: 66ec285554299214122a4093837d3506bf642b13
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92368127"
 ---
 # <a name="what-is-azure-scheduler"></a>Was ist Azure Scheduler?
@@ -31,7 +31,7 @@ Im Folgenden sind einige Szenarien aufgeführt, in denen Scheduler hilfreich sei
 
 * Ausführen wiederkehrender App-Aktionen: Ein Beispiel hierfür ist die regelmäßige Erfassung von Daten aus Twitter in einem Feed.
 
-* Ausführen täglicher Wartungsaufgaben: Beispiele hierfür sind die tägliche Bereinigung von Protokollen, die Erstellung von Sicherungen und die Ausführung anderer Wartungsaufgaben.
+* Durchführen täglicher Wartungsaufgaben: Beispiele hierfür sind die tägliche Bereinigung von Protokollen, die Erstellung von Sicherungen und die Ausführung anderer Wartungsaufgaben.
 
   Ein Administrator kann beispielsweise planen, dass seine Datenbank in den kommenden neun Monaten täglich um 1:00 Uhr gesichert wird.
 

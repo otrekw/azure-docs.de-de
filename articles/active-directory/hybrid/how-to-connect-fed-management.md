@@ -19,10 +19,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cc0c8c40e370579100c562e0289c97e3f5ce4236
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91274111"
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Verwaltung und Anpassung der Active Directory-Verbunddienste mit Azure AD Connect
@@ -200,7 +200,7 @@ Set-AdfsWebTheme -TargetName default -Logo @{path="c:\Contoso\logo.PNG"}
 > Der *TargetName* -Parameter ist erforderlich. Das mit AD FS veröffentlichte Standarddesign heißt „Standard“.
 
 ## <a name="add-a-sign-in-description"></a><a name="addsignindescription"></a>Hinzufügen einer Anmeldebeschreibung 
-Zum Hinzufügen einer Beschreibung für die **Anmeldeseite**verwenden Sie das folgende Windows PowerShell-Cmdlet und die folgende Syntax:
+Zum Hinzufügen einer Beschreibung für die **Anmeldeseite** verwenden Sie das folgende Windows PowerShell-Cmdlet und die folgende Syntax:
 
 ```azurepowershell-interactive
 Set-AdfsGlobalWebContent -SignInPageDescriptionText "<p>Sign-in to Contoso requires device registration. Click <A href='http://fs1.contoso.com/deviceregistration/'>here</A> for more information.</p>"

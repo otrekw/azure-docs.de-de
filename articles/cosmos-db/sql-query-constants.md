@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: tisande
 ms.openlocfilehash: b0973dca980b65b85ac66cc1b3c9ed45f0f9c779
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93339200"
 ---
 # <a name="azure-cosmos-db-sql-query-constants"></a>SQL-Abfragekonstanten in Azure Cosmos DB  
@@ -21,11 +21,11 @@ ms.locfileid: "93339200"
   
  **Unterstützte skalare Datentypen:**  
   
-|**Typ**|**Reihenfolge der Werte**|  
+|**Type**|**Reihenfolge der Werte**|  
 |-|-|  
 |**Undefiniert**|Einzelner Wert: **undefiniert**|  
 |**NULL**|Einzelner Wert: **NULL**|  
-|**Boolescher Wert**|Werte: **false** , **true**.|  
+|**Boolescher Wert**|Werte: **false**, **true**.|  
 |**Number**|Eine Gleitkommazahl mit doppelter Genauigkeit, IEEE 754-Standard.|  
 |**String**|Eine Sequenz von null (0) oder mehr Unicode-Zeichen. Zeichenfolgen müssen in einfache oder doppelte Anführungszeichen eingeschlossen sein.|  
 |**Array**|Eine Sequenz von null (0) oder mehr Elementen. Jedes Element kann einen Wert eines beliebigen skalaren Datentyps mit Ausnahme von **Undefiniert** aufweisen.|  
@@ -69,7 +69,7 @@ ms.locfileid: "93339200"
   
 * `<null_constant>; null`  
   
-  Stellt einen **NULL** -Wert des Typs **NULL** dar.  
+  Stellt einen **NULL**-Wert des Typs **NULL** dar.  
   
 * `<boolean_constant>`  
   
@@ -77,11 +77,11 @@ ms.locfileid: "93339200"
   
 * `false`  
   
-  Stellt einen **false** -Wert des Typs „Boolesch“ dar.  
+  Stellt einen **false**-Wert des Typs „Boolesch“ dar.  
   
 * `true`  
   
-  Stellt einen **true** -Wert des Typs „Boolesch“ dar.  
+  Stellt einen **true**-Wert des Typs „Boolesch“ dar.  
   
 * `<number_constant>`  
   

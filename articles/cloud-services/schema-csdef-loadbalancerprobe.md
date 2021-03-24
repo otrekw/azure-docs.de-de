@@ -9,10 +9,10 @@ author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: 3dca519f7fb4523ce9d9267f7629c1177cc5e3b6
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98739785"
 ---
 # <a name="azure-cloud-services-classic-definition-loadbalancerprobe-schema"></a>Azure Cloud Services (klassisch): Definition des LoadBalancerProbe-Schemas
@@ -58,7 +58,7 @@ Das Element `LoadBalancerProbe` definiert den Integritätstest für ein Modell. 
 
 In der folgenden Tabelle sind die Attribute des `LoadBalancerProbe`-Elements beschrieben:
 
-|Attribut|type|Beschreibung|
+|Attribut|type|BESCHREIBUNG|
 | ------------------- | -------- | -----------------|
 | `name`              | `string` | Erforderlich. Der Name des Lastenausgleichstests. Der Name muss eindeutig sein.|
 | `protocol`          | `string` | Erforderlich. Gibt das Protokoll des Endpunkts an. Mögliche Werte sind `http` oder `tcp`. Wenn `tcp` angegeben wird, ist der Empfang einer Bestätigung erforderlich, damit der Test erfolgreich ist. Wenn `http` angegeben wird, ist eine 200 OK-Antwort vom angegebenen URI erforderlich, damit der Test erfolgreich ist.|

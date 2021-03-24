@@ -9,10 +9,10 @@ author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: 2c8ab53068b71652d03d03bf79a224fe5e34dff3
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98739767"
 ---
 # <a name="azure-cloud-services-classic-definition-networktrafficrules-schema"></a>Azure Cloud Services (klassisch): Definition des NetworkTrafficRules-Schemas
@@ -75,7 +75,7 @@ Das `Destinations`-Element beschreibt eine Sammlung von RoleEndpoints, mit denen
 ##  <a name="roleendpoint-element"></a><a name="RoleEndpoint"></a> RoleEndpoint-Element
 Das `RoleEndpoint`-Element beschreibt einen Endpunkt einer Rolle, um die Kommunikation mit ihm zuzulassen. Sie können mehrere `RoleEndpoint`-Elemente angeben, wenn die Rolle mehrere Endpunkte aufweist.
 
-| Attribut      | type     | Beschreibung |
+| Attribut      | type     | BESCHREIBUNG |
 | -------------- | -------- | ----------- |
 | `endpointName` | `string` | Erforderlich. Der Name des Endpunkts, mit dem Datenverkehr zugelassen ist.|
 | `roleName`     | `string` | Erforderlich. Der Name der Webrolle, mit der Kommunikation zugelassen ist.|
@@ -86,14 +86,14 @@ Das `AllowAllTraffic`-Element ist eine Regel, die allen Rollen die Kommunikation
 ##  <a name="whensource-element"></a><a name="WhenSource"></a> WhenSource-Element
 Das `WhenSource`-Element beschreibt eine Sammlung von Rollen, die mit den im `Destinations`-Knoten definierten Endpunkten kommunizieren können.
 
-| Attribut | type     | Beschreibung |
+| Attribut | type     | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | `matches` | `string` | Erforderlich. Gibt die Regel an, die beim Zulassen von Kommunikation angewendet werden soll. Derzeit ist `AnyRule` der einzige gültige Wert.|
   
 ##  <a name="fromrole-element"></a><a name="FromRole"></a> FromRole-Element
 Das `FromRole`-Element gibt die Rollen an, die mit den im `Destinations`-Knoten definierten Endpunkten kommunizieren können. Sie können mehrere `FromRole`-Elemente angeben, wenn mehrere Rollen mit den Endpunkten kommunizieren können.
 
-| Attribut  | type     | Beschreibung |
+| Attribut  | type     | BESCHREIBUNG |
 | ---------- | -------- | ----------- |
 | `roleName` | `string` | Erforderlich. Der Name für die Rolle, von der aus Kommunikation zugelassen ist.|
 

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 09/10/2020
 ms.author: raynew
 ms.openlocfilehash: 7a71502ec361004079e0962d8bc6433316a4ba81
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90007637"
 ---
 # <a name="moving-azure-resources-across-regions"></a>Verschieben von Azure-Ressourcen zwischen Regionen
@@ -33,8 +33,8 @@ Nach dem Bereitstellen von Ressourcen in einer bestimmten Azure-Region gibt es v
 
 Ressourcen können mit [Azure Resource Mover](../../resource-mover/overview.md) in eine andere Region verschoben werden. Resource Mover bietet Folgendes:
 
-- Einen einzelnen Hub für das regionsübergreifende Verschieben von Ressourcen
-- Schnellere Verschiebung und geringere Komplexität Alles, was Sie brauchen, an einem zentralen Ort
+- Eine einzelne Anlaufstelle für das regionsübergreifende Verschieben von Ressourcen.
+- Kürzere Verschiebungszeit und verringerte Komplexität Alle erforderlichen Komponenten an einem einzelnen Ort
 - Ein einfaches und konsistentes Verfahren zum Verschieben verschiedener Arten von Azure-Ressourcen
 - Eine einfache Möglichkeit zum Erkennen von Abhängigkeiten zwischen den zu verschiebenden Ressourcen. Dies hilft Ihnen, zusammenhängende Ressourcen gemeinsam zu verschieben, damit nach der Verschiebung in der Zielregion alles wie erwartet funktioniert.
 - Automatische Bereinigung der Ressourcen in der Quellregion, falls Sie sie nach dem Verschieben löschen möchten
@@ -56,7 +56,7 @@ Mit Resource Mover können derzeit folgende Ressourcen in eine andere Region ver
 - Virtuelle Azure-Netzwerke
 - Öffentliche IP-Adressen
 - Netzwerksicherheitsgruppen (NSGs)
-- Interne und externe Lastenausgleichsmodule
+- Interne und öffentliche Load Balancer
 - Azure SQL-Datenbank-Instanzen und Pools für elastische Datenbanken
 
 ## <a name="region-move-process"></a>Regionsverschiebungsprozess

@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: cfd4d65b07cf255ac2b60d6bf8376723a997374e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "77025077"
 ---
 # <a name="azure-network-connections-overview"></a>Übersicht über Azure-Netzwerkverbindungen
@@ -64,4 +64,4 @@ Das Herstellen einer Verbindung mit dem CloudSimple-Netzwerk aus dem lokalen Net
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Verbinden des virtuellen Azure-Netzwerks mit CloudSimple mithilfe von ExpressRoute](virtual-network-connection.md)
-* [Herstellen einer Verbindung von lokalen Standorten mit CloudSimple mithilfe von ExpressRoute](on-premises-connection.md)
+* [Herstellen einer Verbindung aus der lokalen Umgebung mit CloudSimple mithilfe von ExpressRoute](on-premises-connection.md)

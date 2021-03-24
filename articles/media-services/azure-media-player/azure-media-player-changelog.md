@@ -6,11 +6,11 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 09/23/2020
-ms.openlocfilehash: 9d126f591da1bffebbfd29119c56927cfbb21dcd
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: c63a8efc4bbcf6e5a124d439e6f9f91397e2fa53
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92370575"
 ---
 # <a name="changelog"></a>Änderungsprotokoll
@@ -198,7 +198,7 @@ An aufrufende Anwendungen werden aussagekräftige KeyDelivery-Fehler zurückgege
 
 ### <a name="changes"></a>Änderungen ###
 
-- [Änderung][Live-Untertitelung] API-Name für CEA-Untertitel von 608 in 708 geändert. Weitere Informationen finden Sie auf der [Seite mit den Einstellungen für CEA708-Untertitel](/javascript/api/azuremediaplayer/cea708captionssettings)-->.
+- [Änderung][Live-Untertitelung] API-Name für CEA-Untertitel von 608 in 708 geändert. Weitere Informationen finden Sie auf der [Seite mit den Einstellungen für CEA708-Untertitel](/javascript/api/azuremediaplayer/amp.player.cea708captionssettings)-->.
 
 ## <a name="220-official-release"></a>2.2.0 (Offizielle Version) ##
 
@@ -727,7 +727,7 @@ An aufrufende Anwendungen werden aussagekräftige KeyDelivery-Fehler zurückgege
 - [Fehlerbehebung] Ladevorgang der Benutzeroberfläche für den Modus „Automatische Wiedergabe“ aktualisiert
 - [Fehlerbehebung] Problem bei AMD-Ladevorgang und Definition von Methodenkonflikten
 - [Fehlerbehebung] Problem beim Laden der Cordova-App für WP 8.1
-- [Fehlerbehebung] Für geschützten Inhalt wird der von der Plattform/Technologie unterstützte ProtectionType abgefragt, um die passende Technologie für die Wiedergabe auszuwählen.  Hierdurch wird das folgende vorherige bekannte Problem behoben: „ _Für PlayReady-Inhalt in Chrome (Desktop)/Safari 8 (OSX Yosemite) wird derzeit kein Fallback auf den Silverlight-Player durchgeführt_ “.
+- [Fehlerbehebung] Für geschützten Inhalt wird der von der Plattform/Technologie unterstützte ProtectionType abgefragt, um die passende Technologie für die Wiedergabe auszuwählen.  Hierdurch wird das folgende vorherige bekannte Problem behoben: „_Für PlayReady-Inhalt in Chrome (Desktop)/Safari 8 (OSX Yosemite) wird derzeit kein Fallback auf den Silverlight-Player durchgeführt_“.
 - [Fehlerbehebung] Nicht abgefangene Ausnahme unter WinServer 2012 R2, weil auf dem Computer standardmäßig keine Media Foundation-Installation vorhanden ist.  Es wird versucht, nicht implementierte HTML-Videotag-APIs zu verwenden, und dies führt zu einem Fehler. Die derzeitige Lösung besteht darin, den Fehler abzufangen und „false“ zurückzugeben, anstatt den Fehler auszulösen.
 - [Fehlerbehebung] init-Segment wird nach einem Such- oder HTTP-Fehler immer abgerufen, um Störungen bei der Wiedergabe zu verhindern
 - [Fehlerbehebung] Nachverfolgung des simulierten Status und von „timeupdates“ deaktivieren, wenn ein Fehler aufgetreten ist

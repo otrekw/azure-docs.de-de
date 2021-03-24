@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.date: 10/01/2018
 ms.custom: mvc, cc996988-fb4f-47
 ms.openlocfilehash: d722d420597bb459d3e7b6d2ca33fdc49bfe6f09
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90981584"
 ---
 # <a name="create-a-function-triggered-by-azure-queue-storage"></a>Erstellen einer Funktion, die durch Azure Queue Storage ausgelöst wird
@@ -34,16 +34,16 @@ Erstellen Sie als Nächstes eine Funktion in der neuen Funktions-App.
 
 1. Wählen Sie **Funktionen** und dann **+ Hinzufügen** aus, um eine neue Funktion hinzuzufügen.
 
-   :::image type="content" source="./media/functions-create-storage-queue-triggered-function/functions-app-quickstart-choose-template.png" alt-text="Die Funktions-App wurde erfolgreich erstellt." border="true":::
+   :::image type="content" source="./media/functions-create-storage-queue-triggered-function/functions-app-quickstart-choose-template.png" alt-text="Auswählen einer Funktionsvorlage im Azure-Portal." border="true":::
 
 1. Wählen Sie die Vorlage **Azure Queue Storage-Trigger** aus.
 
 1. Verwenden Sie die Einstellungen, die in der Tabelle unter der Abbildung angegeben sind.
 
-    :::image type="content" source="./media/functions-create-storage-queue-triggered-function/functions-create-queue-storage-trigger-portal.png" alt-text="Die Funktions-App wurde erfolgreich erstellt." border="true":::
+    :::image type="content" source="./media/functions-create-storage-queue-triggered-function/functions-create-queue-storage-trigger-portal.png" alt-text="Benennen und Konfigurieren der Funktion, die durch den Warteschlangenspeicher ausgelöst wird." border="true":::
 
 
-    | Einstellung | Vorgeschlagener Wert | Beschreibung |
+    | Einstellung | Vorgeschlagener Wert | BESCHREIBUNG |
     |---|---|---|
     | **Name** | Eindeutig in Ihrer Funktions-App | Der Name dieser Funktion mit Auslösung durch Warteschlange. |
     | **Warteschlangenname**   | myqueue-items    | Der Name der zu verknüpfenden Warteschlange in Ihrem Speicherkonto. |
@@ -51,7 +51,7 @@ Erstellen Sie als Nächstes eine Funktion in der neuen Funktions-App.
 
 1. Wählen Sie **Funktion erstellen** aus, um Ihre Funktion zu erstellen.
 
-    :::image type="content" source="./media/functions-create-storage-queue-triggered-function/functions-create-queue-storage-trigger-portal-3.png" alt-text="Die Funktions-App wurde erfolgreich erstellt." border="true":::
+    :::image type="content" source="./media/functions-create-storage-queue-triggered-function/functions-create-queue-storage-trigger-portal-3.png" alt-text="Erstellen der Funktion, die durch Warteschlangenspeicher ausgelöst wird." border="true":::
 
 Als Nächstes stellen Sie eine Verbindung zu Ihrem Azure Storage-Konto her und erstellen die **myqueue-items**-Speicherwarteschlange.
 
@@ -59,19 +59,19 @@ Als Nächstes stellen Sie eine Verbindung zu Ihrem Azure Storage-Konto her und e
 
 1. Wählen Sie in Ihrer Funktion auf der Seite **Übersicht** die Ressourcengruppe aus.
 
-    :::image type="content" source="./media/functions-create-storage-queue-triggered-function/functions-storage-resource-group.png" alt-text="Die Funktions-App wurde erfolgreich erstellt." border="true":::
+    :::image type="content" source="./media/functions-create-storage-queue-triggered-function/functions-storage-resource-group.png" alt-text="Auswählen der Ressourcengruppe im Azure-Portal." border="true":::
 
 1. Suchen Sie das Speicherkonto Ihrer Ressourcengruppe, und wählen Sie es aus.
 
-    :::image type="content" source="./media/functions-create-storage-queue-triggered-function/functions-storage-account-access.png" alt-text="Die Funktions-App wurde erfolgreich erstellt." border="true":::
+    :::image type="content" source="./media/functions-create-storage-queue-triggered-function/functions-storage-account-access.png" alt-text="Zugriff auf das Speicherkonto." border="true":::
 
 1. Wählen Sie **Warteschlangen** aus, und wählen Sie dann **+ Warteschlangen** aus. 
 
-    :::image type="content" source="./media/functions-create-storage-queue-triggered-function/functions-storage-add-queue.png" alt-text="Die Funktions-App wurde erfolgreich erstellt." border="true":::
+    :::image type="content" source="./media/functions-create-storage-queue-triggered-function/functions-storage-add-queue.png" alt-text="Hinzufügen einer Warteschlange zu Ihrem Speicherkonto im Azure-Portal." border="true":::
 
 1. Geben Sie im Feld **Name** den Namen `myqueue-items` ein, und wählen Sie dann **Erstellen** aus.
 
-    :::image type="content" source="./media/functions-create-storage-queue-triggered-function/functions-storage-name-queue.png" alt-text="Die Funktions-App wurde erfolgreich erstellt." border="true":::
+    :::image type="content" source="./media/functions-create-storage-queue-triggered-function/functions-storage-name-queue.png" alt-text="Benennen des Warteschlangenspeicher-Containers." border="true":::
 
 Nun verfügen Sie über eine Speicherwarteschlange und können die Funktion durch Hinzufügen einer Meldung in die Warteschlange testen.
 
@@ -79,21 +79,21 @@ Nun verfügen Sie über eine Speicherwarteschlange und können die Funktion durc
 
 1. Kehren Sie zum Azure-Portal zurück, navigieren Sie zu Ihrer Funktion, erweitern Sie die **Protokolle** am unteren Rand der Seite, und vergewissern Sie sich, dass das Protokollstreaming nicht angehalten ist.
 
-    :::image type="content" source="./media/functions-create-storage-queue-triggered-function/functions-queue-storage-log-expander.png" alt-text="Die Funktions-App wurde erfolgreich erstellt." border="true":::
+    :::image type="content" source="./media/functions-create-storage-queue-triggered-function/functions-queue-storage-log-expander.png" alt-text="Erweitern des Protokolls im Azure-Portal." border="true":::
 
 1. Navigieren Sie in einem separaten Browserfenster zu Ihrer Ressourcengruppe im Azure-Portal, und wählen Sie das Speicherkonto aus.
 
 1. Wählen Sie **Warteschlangen** aus, und wählen Sie dann den Container **myqueue-items** aus.
 
-    :::image type="content" source="./media/functions-create-storage-queue-triggered-function/functions-storage-queue.png" alt-text="Die Funktions-App wurde erfolgreich erstellt." border="true":::
+    :::image type="content" source="./media/functions-create-storage-queue-triggered-function/functions-storage-queue.png" alt-text="Navigieren zur Warteschlange „myqueue-items“ im Azure-Portal." border="true":::
 
 1. Wählen Sie **Meldung hinzufügen** aus, und geben Sie „Hello World!“ in **Meldungstext** ein. Klicken Sie auf **OK**.
 
-    :::image type="content" source="./media/functions-create-storage-queue-triggered-function/functions-storage-queue-test.png" alt-text="Die Funktions-App wurde erfolgreich erstellt." border="true":::
+    :::image type="content" source="./media/functions-create-storage-queue-triggered-function/functions-storage-queue-test.png" alt-text="Screenshot: Schaltfläche „Meldung hinzufügen“ ausgewählt und das Textfeld „Meldung“ hervorgehoben" border="true":::
 
 1. Warten Sie einige Sekunden, wechseln Sie dann zurück zu den Funktionsprotokollen, und stellen Sie sicher, dass die neue Meldung aus der Warteschlange gelesen wurde.
 
-    :::image type="content" source="./media/functions-create-storage-queue-triggered-function/function-app-in-portal-editor.png" alt-text="Die Funktions-App wurde erfolgreich erstellt." border="true":::
+    :::image type="content" source="./media/functions-create-storage-queue-triggered-function/function-app-in-portal-editor.png" alt-text="Anzeigen der Meldung in den Protokollen." border="true":::
 
 1. Wählen Sie in der Speicherwarteschlange **Aktualisieren** aus, und stellen Sie sicher, dass die Meldung verarbeitet wurde und sich nicht mehr in der Warteschlange befindet.
 

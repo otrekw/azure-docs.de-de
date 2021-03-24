@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: hdinsightactive
 ms.date: 02/25/2020
-ms.openlocfilehash: fbe4041b74f90b2ef8a9ef4384e83c7aa2d56461
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: baf41b9e66b14e4b255b6e13b22691357f9e7309
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98939273"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104870805"
 ---
 # <a name="what-is-apache-kafka-in-azure-hdinsight"></a>Was ist Apache Kafka in Azure HDInsight?
 
@@ -44,7 +44,7 @@ Dies sind spezifische Merkmale von Kafka in HDInsight:
 
 Das folgende Diagramm zeigt eine typische Kafka-Konfiguration, für die Consumergruppen, Partitionierung und Replikation verwendet werden, um eine parallele Ablesung von Ereignissen mit Fehlertoleranz zu ermöglichen:
 
-![Diagramm zur Kafka-Clusterkonfiguration](./media/apache-kafka-introduction/kafka-cluster-diagram.png)
+:::image type="content" source="./media/apache-kafka-introduction/kafka-cluster-diagram.png" alt-text="Diagramm zur Kafka-Clusterkonfiguration" border="false":::
 
 Apache ZooKeeper verwaltet den Zustand des Kafka-Clusters. ZooKeeper ist für gleichzeitige, robuste Transaktionen mit geringer Latenz konzipiert.
 

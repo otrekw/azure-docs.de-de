@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 6811a06eb3483fd53b6e566033935c3b2e00ceca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84887241"
 ---
 # <a name="real-time-alerts-in-microsoft-azure-cdn"></a>Echtzeitwarnungen in Microsoft Azure CDN
@@ -60,19 +60,19 @@ In diesem Dokument werden Echtzeitwarnungen in Microsoft Azure CDN erläutert. D
     ![Medientyp mit ausgewählter Option „HTTP Large Object“](./media/cdn-real-time-alerts/cdn-http-large.png)
    
    > [!IMPORTANT]
-   > Für **Medientyp** muss unbedingt **HTTP Large Object** ausgewählt werden.  Die anderen Optionen werden von **Azure CDN von Verizon**nicht verwendet.  Bei Verwendung einer anderen Option als **HTTP Large Object** wird die Warnung niemals ausgelöst.
+   > Für **Medientyp** muss unbedingt **HTTP Large Object** ausgewählt werden.  Die anderen Optionen werden von **Azure CDN von Verizon** nicht verwendet.  Bei Verwendung einer anderen Option als **HTTP Large Object** wird die Warnung niemals ausgelöst.
    > 
    > 
 8. Erstellen Sie einen zu überwachenden **Ausdruck**. Wählen Sie hierzu Werte für **Metrik**, **Operator** und **Triggerwert** aus.
    
-   * Wählen Sie unter **Metrik**die Art der Bedingung aus, die Sie überwachen möchten.  **Bandwidth Mbps** (Bandbreite MBit/s) ist die Bandbreitenauslastung in Megabits pro Sekunde.  **Verbindungen insgesamt** ist die Anzahl gleichzeitiger HTTP-Verbindungen mit unseren Edgeservern.  Definitionen der verschiedenen Cachestatusoptionen und Statuscodes finden Sie unter [Azure CDN Cache Status Codes (in englischer Sprache)](/previous-versions/azure/mt759237(v=azure.100)) sowie unter [Azure CDN HTTP Status Codes (in englischer Sprache)](/previous-versions/azure/mt759238(v=azure.100)).
+   * Wählen Sie unter **Metrik** die Art der Bedingung aus, die Sie überwachen möchten.  **Bandwidth Mbps** (Bandbreite MBit/s) ist die Bandbreitenauslastung in Megabits pro Sekunde.  **Verbindungen insgesamt** ist die Anzahl gleichzeitiger HTTP-Verbindungen mit unseren Edgeservern.  Definitionen der verschiedenen Cachestatusoptionen und Statuscodes finden Sie unter [Azure CDN Cache Status Codes (in englischer Sprache)](/previous-versions/azure/mt759237(v=azure.100)) sowie unter [Azure CDN HTTP Status Codes (in englischer Sprache)](/previous-versions/azure/mt759238(v=azure.100)).
    * **Operator** ist der mathematische Operator, der die Beziehung zwischen Metrik und Triggerwert herstellt.
    * **Triggerwert** ist der Schwellenwert, ab dem eine Benachrichtigung gesendet wird.
      
      Im folgenden Beispiel gibt der erstellte Ausdruck an, dass eine Benachrichtigung gesendet wird, wenn die Anzahl der 404-Statuscodes größer als 25 ist.
      
      ![Echtzeitwarnung mit Beispielausdruck](./media/cdn-real-time-alerts/cdn-expression.png)
-9. Geben Sie unter **Intervall**an, wie häufig der Ausdruck ausgewertet werden soll.
+9. Geben Sie unter **Intervall** an, wie häufig der Ausdruck ausgewertet werden soll.
 10. Wählen Sie in der Dropdownliste **Notify on** (Benachrichtigungszeitpunkt) aus, wann Sie benachrichtigt werden möchten, wenn der Ausdruck erfüllt ist.
     
     * **Condition Start** (Bedingungsbeginn) gibt an, dass eine Benachrichtigung gesendet wird, wenn die angegebene Bedingung erstmals erfüllt wird.

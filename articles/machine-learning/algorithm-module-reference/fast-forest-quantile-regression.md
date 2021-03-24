@@ -1,6 +1,6 @@
 ---
 title: Schnelle gesamtstrukturbasierte Quantilregression Modulreferenz
-titleSuffix: Azure Machine Learning
+titleSuffix: Azure Machine Learning
 description: Erfahren Sie, wie Sie das Modul „Fast Forest Quantile Regression“ (Schnelle gesamtstrukturbasierte Quantilregression) verwenden können, um ein Regressionsmodell zu erstellen, das Werte für eine angegebene Anzahl von Quantilen vorausberechnen kann.
 services: machine-learning
 ms.service: machine-learning
@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 07/13/2020
 ms.openlocfilehash: 6d59d2fabb0b74ef12e33f55467b0ba68e0b7386
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90907954"
 ---
 # <a name="fast-forest-quantile-regression"></a>Schnelle gesamtstrukturbasierte Quantilregression

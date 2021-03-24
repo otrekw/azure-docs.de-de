@@ -4,10 +4,10 @@ description: Hochladen einer VHD-Datei in das Speicherkonto eines Labs mithilfe 
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: d4e421932ebba5d4f389000c12bcf44ac2f37599
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91282526"
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-microsoft-azure-storage-explorer"></a>Hochladen einer VHD-Datei in das Speicherkonto eines Labs mithilfe des Microsoft Azure Storage-Explorers
@@ -30,7 +30,7 @@ Die folgenden Schritte führen Sie durch das Hochladen einer VHD-Datei in DevTes
     
     1. Wählen Sie in der Liste der Labs das gewünschte Lab aus.  
     
-    1. Wählen Sie auf dem Blatt des Labs **Konfiguration**aus. 
+    1. Wählen Sie auf dem Blatt des Labs **Konfiguration** aus. 
     
     1. Wählen Sie auf dem Blatt **Konfiguration** für das Lab die Option **Benutzerdefinierte Images (VHDs)** aus.
     
@@ -60,7 +60,7 @@ Die folgenden Schritte führen Sie durch das Hochladen einer VHD-Datei in DevTes
     
         ![Azure-Kontoeinstellungen][1]
     
-    1. Im linken Bereich werden die Microsoft-Konten angezeigt, bei denen Sie angemeldet sind. Wählen Sie zum Herstellen einer Verbindung mit einem anderen Konto die Option **Konto hinzufügen**aus, und führen Sie die Schritte in den Dialogfeldern durch, um sich mit einem Microsoft-Konto anzumelden, das mindestens einem aktiven Azure-Abonnement zugeordnet ist.
+    1. Im linken Bereich werden die Microsoft-Konten angezeigt, bei denen Sie angemeldet sind. Wählen Sie zum Herstellen einer Verbindung mit einem anderen Konto die Option **Konto hinzufügen** aus, und führen Sie die Schritte in den Dialogfeldern durch, um sich mit einem Microsoft-Konto anzumelden, das mindestens einem aktiven Azure-Abonnement zugeordnet ist.
     
         ![Konto hinzufügen][2]
     

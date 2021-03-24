@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 3ebff5a40528e9e3ea0e75c4b51529638de34b5d
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: d1c2fd2ac7f809b4a70a0edffbddfb6e733fed57
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102505765"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871400"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>Häufig gestellte Fragen zu Media Services v3
 
@@ -47,12 +47,6 @@ Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung (RBAC) 
 ### <a name="how-do-i-stream-to-apple-ios-devices"></a>Wie funktioniert das Streaming auf Apple iOS-Geräten?
 
 Stellen Sie sicher, dass Sie am Ende Ihres Pfads (nach dem Bereich **/manifest** der URL) **(format=m3u8-aapl)** verwenden, um den Ursprungsserver des Streamings anzuweisen, HLS-Inhalte (HTTP Live Streaming) für die Nutzung auf nativen Apple iOS-Geräten zurückzugeben. Ausführliche Informationen finden Sie unter [Bereitstellung von Inhalten](dynamic-packaging-overview.md).
-
-### <a name="how-do-i-configure-media-reserved-units"></a>Wie lassen sich reservierte Einheiten für Medien konfigurieren?
-
-Für die Audio- und Videoanalyseaufträge, die von Media Services v3 oder Video Indexer ausgelöst werden, sollten Sie Ihr Konto mit zehn S3-MRUs (Media Reserved Units, reservierte Einheiten für Medien) bereitstellen. Wenn Sie mehr als zehn S3-MRUs benötigen, erstellen Sie im [Azure-Portal](https://portal.azure.com/) ein Supportticket.
-
-Ausführliche Informationen dazu finden Sie unter [Skalieren der Medienverarbeitung](media-reserved-units-cli-how-to.md).
 
 ### <a name="what-is-the-recommended-method-to-process-videos"></a>Was ist die empfohlene Methode zum Verarbeiten von Videos?
 
@@ -86,12 +80,12 @@ Die Webanwendung sollte die Benutzer beim Schließen des Browsers fragen, ob sie
 
 #### <a name="server-side"></a>Serverseitig
 
-Sie können Liveereignisse überwachen, indem Sie Event Grid-Ereignisse abonnieren. Weitere Informationen finden Sie unter [Event Grid-Ereignisschema](media-services-event-schemas.md#live-event-types).
+Sie können Liveereignisse überwachen, indem Sie Event Grid-Ereignisse abonnieren. Weitere Informationen finden Sie unter [Event Grid-Ereignisschema](monitoring/media-services-event-schemas.md#live-event-types).
 
 Sie haben folgende Möglichkeiten:
 
-* [Abonnieren](reacting-to-media-services-events.md) Sie die Ereignisse für [Microsoft.Media.LiveEventEncoderDisconnected](media-services-event-schemas.md#liveeventencoderdisconnected) auf Streamebene, und überwachen Sie, ob für einen bestimmten Zeitraum neue Verbindungen eingehen, um Ihr Liveereignis zu beenden und zu löschen.
-* [Abonnieren](reacting-to-media-services-events.md) Sie die [Taktereignisse](media-services-event-schemas.md#liveeventingestheartbeat) auf Spurebene. Wenn die eingehende Bitrate bei allen Spuren auf 0 fällt oder wenn der letzte Zeitstempel nicht mehr ansteigt, können Sie das Liveereignis sicher beenden. Die Taktereignisse gehen alle 20 Sekunden für jede Spur ein, sodass die Informationsmenge etwas höher ausfallen könnte.
+* [Abonnieren](monitoring/reacting-to-media-services-events.md) Sie die Ereignisse für [Microsoft.Media.LiveEventEncoderDisconnected](monitoring/media-services-event-schemas.md#liveeventencoderdisconnected) auf Streamebene, und überwachen Sie, ob für einen bestimmten Zeitraum neue Verbindungen eingehen, um Ihr Liveereignis zu beenden und zu löschen.
+* [Abonnieren](monitoring/reacting-to-media-services-events.md) Sie die [Taktereignisse](monitoring/media-services-event-schemas.md#liveeventingestheartbeat) auf Spurebene. Wenn die eingehende Bitrate bei allen Spuren auf 0 fällt oder wenn der letzte Zeitstempel nicht mehr ansteigt, können Sie das Liveereignis sicher beenden. Die Taktereignisse gehen alle 20 Sekunden für jede Spur ein, sodass die Informationsmenge etwas höher ausfallen könnte.
 
 ###  <a name="how-do-i-insert-breaksvideos-and-image-slates-during-a-live-stream"></a>Wie füge ich Unterbrechungen/Videos und Bildtafeln während eines Livestreams ein?
 

@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 6a5460a691658bda1cd60e503be8c98433c9c343
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: de003025e98109599ecd69c0459e29950c9bd1fd
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101720153"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104950568"
 ---
 # <a name="examples-of-an-attestation-policy"></a>Beispiele für eine Nachweisrichtlinie
 
@@ -35,9 +35,9 @@ c:[type=="x-ms-sgx-mrsigner"] => issue(type="<custom-name>", value=c.value);
 };
 
 ```
-Weitere Informationen zu den eingehenden Ansprüchen, die von Azure Attestation erstellt werden, finden Sie unter [Anspruchsätze](/azure/attestation/claim-sets). Eingehende Ansprüche können von Richtlinienerstellern verwendet werden, um Autorisierungsregeln in einer benutzerdefinierten Richtlinie zu definieren. 
+Weitere Informationen zu den eingehenden Ansprüchen, die von Azure Attestation erstellt werden, finden Sie unter [Anspruchsätze](./claim-sets.md). Eingehende Ansprüche können von Richtlinienerstellern verwendet werden, um Autorisierungsregeln in einer benutzerdefinierten Richtlinie zu definieren. 
 
-Der Abschnitt zu Ausstellungsregeln ist nicht verpflichtend. Dieser Abschnitt kann von Benutzern verwendet werden, um weitere ausgehende Ansprüche zu erhalten, die im Nachweistoken mit benutzerdefinierten Namen erstellt werden. Weitere Informationen zu den vom Dienst im Nachweistoken erstellten ausgehenden Ansprüchen finden Sie unter [Anspruchsätze](/azure/attestation/claim-sets).
+Der Abschnitt zu Ausstellungsregeln ist nicht verpflichtend. Dieser Abschnitt kann von Benutzern verwendet werden, um weitere ausgehende Ansprüche zu erhalten, die im Nachweistoken mit benutzerdefinierten Namen erstellt werden. Weitere Informationen zu den vom Dienst im Nachweistoken erstellten ausgehenden Ansprüchen finden Sie unter [Anspruchsätze](./claim-sets.md).
 
 ## <a name="default-policy-for-an-sgx-enclave"></a>Standardrichtlinie für eine SGX-Enclave
 
@@ -59,7 +59,7 @@ issuancerules
 };
 ```
 
-Die in der Standardrichtlinie verwendeten Ansprüche werden als veraltet eingestuft, aber sie werden vollständig unterstützt und sind auch in Zukunft noch vorhanden. Wir empfehlen Ihnen, die nicht als veraltet eingestuften Anspruchsnamen zu verwenden. Weitere Informationen zu empfohlenen Anspruchsnamen finden Sie unter [Anspruchsätze](/azure/attestation/claim-sets). 
+Die in der Standardrichtlinie verwendeten Ansprüche werden als veraltet eingestuft, aber sie werden vollständig unterstützt und sind auch in Zukunft noch vorhanden. Wir empfehlen Ihnen, die nicht als veraltet eingestuften Anspruchsnamen zu verwenden. Weitere Informationen zu empfohlenen Anspruchsnamen finden Sie unter [Anspruchsätze](./claim-sets.md). 
 
 ## <a name="sample-custom-policy-to-support-multiple-sgx-enclaves"></a>Benutzerdefinierte Beispielrichtlinie mit Unterstützung für mehrere SGX-Enclaves
 

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 1dac90053797caf66af79e458b9dbb95b682cd17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85846860"
 ---
 # <a name="issue-templates-in-azure-api-management"></a>Problemvorlagen in Azure API Management
@@ -104,7 +104,7 @@ Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des En
 |`Paging`|Entität [Paging](api-management-template-data-model-reference.md#Paging).|Die Auslagerungsinformationen für die Anwendungssammlung.|  
 |`IsAuthenticated`|boolean|Gibt an, ob der aktuelle Benutzer im Entwicklerportal angemeldet ist.|  
 |`CanReportIssues`|boolean|Gibt an, ob der aktuelle Benutzer über Berechtigungen zum Melden eines Problems verfügt.|  
-|`Search`|string|Diese Eigenschaft ist veraltet und sollte nicht verwendet werden.|  
+|`Search`|Zeichenfolge|Diese Eigenschaft ist veraltet und sollte nicht verwendet werden.|  
   
 ### <a name="sample-template-data"></a>Vorlagenbeispieldaten  
   

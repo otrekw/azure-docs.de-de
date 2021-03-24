@@ -5,20 +5,20 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
-ms.openlocfilehash: 2b2dfe9da55548f2648f847a9d7c2cb3478e6bad
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 3bf036ff413f720f54deef1a62b502668d1d8ac6
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98931698"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871995"
 ---
 # <a name="streaming-at-scale-in-hdinsight"></a>Bedarfsorientiertes Streaming in HDInsight
 
-Big Data-Echtzeitlösungen verarbeiten Daten während der Übertragung. In der Regel sind diese Daten zum Zeitpunkt des Eingangs am nützlichsten. Wenn der eingehende Datenstrom aufgrund seiner Größe nicht mehr verarbeitet werden kann, müssen die Ressourcen gedrosselt werden. Alternativ kann ein HDInsight-Cluster hochskaliert werden, um die Anforderungen Ihrer Lösung durch bedarfsgerechtes Hinzufügen von Knoten zu erfüllen.
+Big Data-Echtzeitlösungen verarbeiten Daten während der Übertragung. In der Regel sind diese Daten zum Zeitpunkt des Eingangs am nützlichsten. Wenn der eingehende Datenstrom aufgrund seiner Größe nicht mehr verarbeitet werden kann, müssen die Ressourcen gedrosselt werden. Alternativ kann ein HDInsight-Cluster zentral hochskaliert werden, um die Anforderungen Ihrer Lösung durch bedarfsgerechtes Hinzufügen von Knoten zu erfüllen.
 
 Von den Datenquellen einer Streaminganwendung können pro Sekunde Millionen von Ereignissen generiert werden, die schnell und ohne den Verlust nützlicher Informationen erfasst werden müssen. Die eingehenden Ereignisse werden durch *Streampufferung* (auch *Ereignisqueuing* genannt) von einem Dienst wie [Apache Kafka](kafka/apache-kafka-introduction.md) oder [Event Hubs](https://azure.microsoft.com/services/event-hubs/) verarbeitet. Nachdem die Ereignisse erfasst wurden, können Sie die Daten innerhalb der *Streamverarbeitungsebene* mithilfe eines Echtzeitanalysesystems wie [Apache Storm](storm/apache-storm-overview.md) oder [Apache Spark Streaming](spark/apache-spark-streaming-overview.md) analysieren. Die verarbeiteten Daten können langfristig in entsprechenden Systemen wie [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/) gespeichert und in Echtzeit in einem Business Intelligence-Dashboard wie [Power BI](https://powerbi.microsoft.com) oder Tableau oder auf einer benutzerdefinierten Webseite angezeigt werden.
 
-![Azure HDInsight-Streamingmuster](./media/hdinsight-streaming-at-scale-overview/HDInsight-streaming-patterns.png)
+:::image type="content" source="./media/hdinsight-streaming-at-scale-overview/HDInsight-streaming-patterns.png" alt-text="Azure HDInsight-Streamingmuster":::
 
 ## <a name="apache-kafka"></a>Apache Kafka
 

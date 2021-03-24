@@ -9,12 +9,12 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: daveba
-ms.openlocfilehash: cd46bb1c6905747ffb98c7e950f66e648c541534
-ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
+ms.openlocfilehash: 5b645efe2bbaadeca31b4a0a3b957ff53f5ed3aa
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103601762"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104775509"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory-Anwendungsverwaltung: Neues
 
@@ -141,7 +141,6 @@ Hier erfahren Sie mehr über die Neuerungen in der Dokumentation zur Azure Acti
 
 ### <a name="new-articles"></a>Neue Artikel
 - [Konfigurieren des SAML-basierten einmaligen Anmeldens](configure-saml-single-sign-on.md)
-- [Verwenden von Azure AD für nicht im App-Katalog aufgeführten Anwendungen](non-gallery-apps.md)
 - [„Jetzt herunterladen“ – Hinzufügen einer App aus dem Azure Marketplace](get-it-now-azure-marketplace.md)
 - [Schnellstart: Konfigurieren von Eigenschaften für eine Anwendung auf Ihrem Azure AD-Mandanten (Azure Active Directory)](add-application-portal-configure.md)
 - [Schnellstart: Einrichten des einmaligen Anmeldens (Single Sign-On, SSO) für eine Anwendung in Ihrem Azure Active Directory-Mandanten (Azure AD-Mandanten)](add-application-portal-setup-sso.md)

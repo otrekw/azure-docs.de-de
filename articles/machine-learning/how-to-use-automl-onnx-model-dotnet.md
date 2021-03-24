@@ -11,10 +11,10 @@ ms.service: machine-learning
 ms.subservice: core
 ms.custom: how-to, automl
 ms.openlocfilehash: 4fb147dc5c57c3a98607a025f566fa583bf87460
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93358812"
 ---
 # <a name="make-predictions-with-an-automl-onnx-model-in-net"></a>Erstellen von Vorhersagen mit einem AutoML-ONNX-Modell in .NET
@@ -50,7 +50,7 @@ In diesem Beispiel verwenden Sie die .NET Core-CLI, um Ihre Anwendung zu erstell
 
 ## <a name="add-software-packages"></a>Hinzufügen von Softwarepaketen
 
-1. Installieren Sie die NuGet-Pakete **Microsoft.ML** , **Microsoft.ML.OnnxRuntime** und **Microsoft.ML.OnnxTransformer** mithilfe der .NET Core-CLI.
+1. Installieren Sie die NuGet-Pakete **Microsoft.ML**, **Microsoft.ML.OnnxRuntime** und **Microsoft.ML.OnnxTransformer** mithilfe der .NET Core-CLI.
 
     ```dotnetcli
     dotnet add package Microsoft.ML
@@ -60,7 +60,7 @@ In diesem Beispiel verwenden Sie die .NET Core-CLI, um Ihre Anwendung zu erstell
 
     Diese Pakete enthalten die Abhängigkeiten, die erforderlich sind, um ein ONNX-Modell in einer .NET-Anwendung zu verwenden. ML.NET stellt eine API bereit, die die [ONNX-Runtime](https://github.com/Microsoft/onnxruntime) für Vorhersagen verwendet.
 
-1. Öffnen Sie die Datei *Program.cs* , und fügen Sie oben die folgenden `using`-Anweisungen ein, um auf die entsprechenden Pakete zu verweisen.
+1. Öffnen Sie die Datei *Program.cs*, und fügen Sie oben die folgenden `using`-Anweisungen ein, um auf die entsprechenden Pakete zu verweisen.
 
     ```csharp
     using System.Linq;
@@ -76,7 +76,7 @@ Eine Möglichkeit für die Konsolenanwendung für den Zugriff auf das ONNX-Model
 Hinzufügen eines Verweises auf Ihre ONNX-Modelldatei in Ihrer Anwendung
 
 1. Kopieren Sie Ihr ONNX-Modell in das Stammverzeichnis *AutoMLONNXConsoleApp* Ihrer Anwendung.
-1. Öffnen Sie die Datei *AutoMLONNXConsoleApp.csproj* , und fügen Sie den folgenden Inhalt innerhalb des Knotens `Project` hinzu.
+1. Öffnen Sie die Datei *AutoMLONNXConsoleApp.csproj*, und fügen Sie den folgenden Inhalt innerhalb des Knotens `Project` hinzu.
 
     ```xml
     <ItemGroup>
@@ -88,7 +88,7 @@ Hinzufügen eines Verweises auf Ihre ONNX-Modelldatei in Ihrer Anwendung
 
     In diesem Fall lautet der Name der ONNX-Modelldatei *automl-model.onnx*.
 
-1. Öffnen Sie die Datei *Program.cs* , und fügen Sie die folgende Zeile innerhalb der Klasse `Program` ein.
+1. Öffnen Sie die Datei *Program.cs*, und fügen Sie die folgende Zeile innerhalb der Klasse `Program` ein.
 
     ```csharp
     static string ONNX_MODEL_PATH = "automl-model.onnx";

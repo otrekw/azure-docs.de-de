@@ -3,16 +3,16 @@ title: Aufrufen von Spark-Programmen aus Azure Data Factory
 description: Erfahren Sie, wie Sie Spark-Programme mithilfe der MapReduce-Aktivität aus einer Azure Data Factory aufrufen.
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: a7fcccad039ff6d737e10cfc57ba97f914645a9d
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 644a0d645abb186731ddb1f408cd36e5b9ba3c3f
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100382666"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104780020"
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>Aufrufen von Spark-Programmen aus Azure Data Factory-Pipelines
 
@@ -321,7 +321,7 @@ Dies ist eine JSON-Beispieldefinition einer Pipeline mit einer Spark-Aktivität:
 
 Die folgende Tabelle beschreibt die JSON-Eigenschaften, die in der JSON-Definition verwendet werden.
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | -------- | ----------- | -------- |
 | name | Der Name der Aktivität in der Pipeline. | Ja |
 | description | Text, der beschreibt, welche Aktion die Aktivität ausführt. | Nein  |
@@ -341,7 +341,7 @@ Die Spark-Aktivität unterstützt im Gegensatz zu Pig- und Hive-Aktivitäten kei
 
 Erstellen Sie folgende Ordnerstruktur in dem Blobspeicher, auf den der verknüpfte HDInsight-Dienst verweist. Laden Sie dann abhängige Dateien in die entsprechenden Unterordner in dem Stammordner hoch, der durch **entryFilePath** dargestellt wird. Python-Dateien werden beispielsweise in den Unterordner „pyFiles“ und JAR-Dateien in den Unterordner „jars“ des Stammordners hochgeladen. Zur Laufzeit erwartet der Data Factory-Dienst die folgende Ordnerstruktur im Blobspeicher:
 
-| `Path` | Beschreibung | Erforderlich | type |
+| `Path` | BESCHREIBUNG | Erforderlich | type |
 | ---- | ----------- | -------- | ---- |
 | . | Der Stammpfad des Spark-Auftrags im verknüpften Speicherdienst. | Ja | Ordner |
 | &lt;benutzerdefiniert&gt; | Der Pfad, der auf die Eingabedatei des Spark-Auftrags zeigt. | Ja | Datei |

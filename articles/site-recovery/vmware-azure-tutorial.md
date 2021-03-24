@@ -9,10 +9,10 @@ ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: bd87265140a0bfaeb7ef4dada6dd76be1269654b
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92369368"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>Einrichten der Notfallwiederherstellung in Azure für lokale VMware-VMs
@@ -104,7 +104,7 @@ All diese Komponenten werden zusammen auf dem einzelnen lokalen Computer install
 Wenn Sie dem Konfigurationsserver eine zusätzliche NIC hinzufügen möchten, führen Sie diesen Schritt aus, bevor Sie den Server im Tresor registrieren. Das Hinzufügen von zusätzlichen Adaptern nach der Registrierung wird nicht unterstützt.
 
 1. Klicken Sie im vSphere-Client mit der rechten Maustaste auf den virtuellen Computer, und wählen Sie **Einstellungen bearbeiten** aus.
-2. Klicken Sie unter **Hardware** auf **Hinzufügen** > **Ethernet-Adapter**. Wählen Sie **Weiter**aus.
+2. Klicken Sie unter **Hardware** auf **Hinzufügen** > **Ethernet-Adapter**. Wählen Sie **Weiter** aus.
 3. Wählen Sie einen Adaptertyp und ein Netzwerk aus.
 4. Um die virtuelle NIC zu verbinden, wenn der virtuelle Computer eingeschaltet wird, wählen Sie **Connect at power on** (Beim Einschalten verbinden) aus. Klicken Sie auf **Weiter** > **Fertig stellen**. Klicken Sie anschließend auf **OK**.
 
@@ -117,7 +117,7 @@ Nachdem Sie den Konfigurationsserver eingerichtet haben, registrieren Sie ihn im
 2. Der virtuelle Computer wird mit der Benutzeroberfläche für die Installation von Windows Server 2016 hochgefahren. Akzeptieren Sie den Lizenzvertrag, und geben Sie ein Administratorkennwort ein.
 3. Melden Sie sich nach Abschluss der Installation als Administrator am virtuellen Computer an.
 4. Bei der ersten Anmeldung wird das Azure Site Recovery-Konfigurationstool innerhalb weniger Sekunden gestartet.
-5. Geben Sie einen Namen ein, der für die Registrierung des Konfigurationsservers bei Site Recovery verwendet wird. Wählen Sie **Weiter**aus.
+5. Geben Sie einen Namen ein, der für die Registrierung des Konfigurationsservers bei Site Recovery verwendet wird. Wählen Sie **Weiter** aus.
 6. Das Tool überprüft, ob der virtuelle Computer eine Verbindung mit Azure herstellen kann. Klicken Sie nach der Verbindungsherstellung auf **Anmelden**, um sich bei Ihrem Azure-Abonnement anzumelden. Die Anmeldeinformationen müssen über Zugriff auf den Tresor verfügen, in dem Sie den Konfigurationsserver registrieren möchten. Stellen Sie sicher, dass diesem Benutzer die erforderlichen [Rollen](vmware-azure-deploy-configuration-server.md#azure-active-directory-permission-requirements) zugewiesen sind.
 7. Das Tool führt einige Konfigurationsaufgaben und anschließend einen Neustart durch.
 8. Melden Sie sich erneut am Computer an. Der Assistent für die Konfigurationsserververwaltung wird innerhalb weniger Sekunden automatisch gestartet.

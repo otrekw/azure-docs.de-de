@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 11/24/2020
 ms.author: Zhchia
 ms.openlocfilehash: 0479e470f5d2f3880062c45a5e14981f8a4c1e56
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98743541"
 ---
 # <a name="tutorial-configure-mondaycom-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von monday.com für die automatische Benutzerbereitstellung
@@ -123,7 +123,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 11. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Gruppenattribute, die von Azure AD mit monday.com synchronisiert werden. Beachten Sie, dass die als **Übereinstimmungseigenschaften** ausgewählten Attribute für den Abgleich der Gruppen in monday.com für Updatevorgänge verwendet werden. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-      |Attribut|type|Unterstützung für das Filtern|
+      |attribute|type|Unterstützung für das Filtern|
       |---|---|---|
       |displayName|String|&check;|
       |members|Verweis|

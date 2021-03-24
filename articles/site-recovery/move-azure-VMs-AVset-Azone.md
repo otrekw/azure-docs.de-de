@@ -9,10 +9,10 @@ ms.date: 01/28/2019
 ms.author: sideeksh
 ms.custom: MVC
 ms.openlocfilehash: 8224ae4a48bb4915492240c414b90edb86a4c258
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93393131"
 ---
 # <a name="move-azure-vms-into-availability-zones"></a>Verschieben virtueller Azure-Computer in Verfügbarkeitszonen
@@ -29,7 +29,7 @@ Wenn Sie Ihre virtuellen Computer als *Einzelinstanz* in einer bestimmten Region
 
 > [!IMPORTANT]
 > Zum Verschieben von virtuellen Azure-Computern in eine Verfügbarkeitszone in einer anderen Region empfehlen wir den Einsatz von [Azure Resource Mover](../resource-mover/move-region-availability-zone.md). Resource Mover befindet sich derzeit in der öffentlichen Vorschau und bietet folgende Features:
-> - Ein einzelner Hub für das regionsübergreifende Verschieben von Ressourcen
+> - Eine einzelne Anlaufstelle für das regionsübergreifende Verschieben von Ressourcen.
 > - Kürzere Verschiebungszeit und verringerte Komplexität Alle erforderlichen Komponenten an einem einzelnen Ort
 > - Ein einfaches und konsistentes Verfahren zum Verschieben verschiedener Arten von Azure-Ressourcen
 > - Eine einfache Möglichkeit zum Erkennen von Abhängigkeiten zwischen den zu verschiebenden Ressourcen. Dies hilft Ihnen, zusammenhängende Ressourcen gemeinsam zu verschieben, damit nach der Verschiebung in der Zielregion alles wie erwartet funktioniert.

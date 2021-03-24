@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 06/03/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath, contperf-fy20q4
-ms.openlocfilehash: 1ef6c678110037a4aed24ef40631b73a04ca6a9d
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 531e5cf274d40eae19075514d50aec5a6524aeec
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97028086"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104775339"
 ---
 # <a name="data-exploration-and-modeling-with-spark"></a>Durchsuchen von Daten und Modellierung mit Spark
 
@@ -495,7 +495,8 @@ Für die Ausführung der obigen Zelle benötigte Zeit: 0,24 Sekunden
 
 ### <a name="feature-scaling"></a>Featureskalierung
 
-Featureskalierung, auch bekannt als Datennormalisierung, stellt sicher, dass Features mit weit verteilten Werten keine übermäßige Gewichtung in der Zielfunktion erhalten. Der Code für die Featureskalierung verwendet [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) zum Skalieren der Features auf Einheitenvarianz. Er wird von MLlib für die Verwendung bei der linearen Regression mit dem stochastischen Gradientenverfahren (SGD), einem beliebten Algorithmus für das Training einer Vielzahl anderer Machine Learning-Modelle, z. B. normalisierter Regressionen oder Support Vector Machines (SVM), bereitgestellt.
+Featureskalierung, auch bekannt als Datennormalisierung, stellt sicher, dass Features mit weit verteilten Werten keine übermäßige Gewichtung in der Zielfunktion erhalten. Der Code für die Featureskalierung verwendet [StandardScaler](https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.mllib.classification.LogisticRegressionWithLBFGS.html#pyspark.mllib.classification.LogisticRegressionWithLBFGS
+) zum Skalieren der Features auf Einheitenvarianz. Er wird von MLlib für die Verwendung bei der linearen Regression mit dem stochastischen Gradientenverfahren (SGD), einem beliebten Algorithmus für das Training einer Vielzahl anderer Machine Learning-Modelle, z. B. normalisierter Regressionen oder Support Vector Machines (SVM), bereitgestellt.
 
 > [!NOTE]
 > Wir haben festgestellt, dass der LinearRegressionWithSGD-Algorithmus für die Featureskalierung zu empfindlich ist.

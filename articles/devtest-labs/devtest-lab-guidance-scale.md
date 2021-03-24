@@ -1,17 +1,17 @@
 ---
-title: Hochskalieren Ihrer Azure DevTest Labs-Infrastruktur
+title: Zentrales Hochskalieren Ihrer Azure DevTest Labs-Infrastruktur
 description: Dieser Artikel enthält Anweisungen zum zentralen Hochskalieren Ihrer Azure DevTest Labs-Infrastruktur.
 ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: 50bf08678a12a1a0499abd08c52a264d03f4a401
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85478789"
 ---
-# <a name="scale-up-your-azure-devtest-labs-infrastructure"></a>Hochskalieren Ihrer Azure DevTest Labs-Infrastruktur
+# <a name="scale-up-your-azure-devtest-labs-infrastructure"></a>Zentrales Hochskalieren Ihrer Azure DevTest Labs-Infrastruktur
 Vor der Implementierung von DevTest Labs auf Unternehmensebene sind mehrere wichtige Entscheidungspunkte zu berücksichtigen. Diese Entscheidungspunkte auf hoher Ebene zu verstehen, hilft Organisationen bei zukünftigen Entwurfsentscheidungen. Sie sollten jedoch eine Organisation nicht daran hindern, einen Proof of Concept zu starten. Die obersten drei Bereiche für die anfängliche Planung der Hochskalierung sind:
 
 - Netzwerke und Sicherheit
@@ -58,4 +58,4 @@ Ein Proof of Concept für DevTest-Labs weist drei primäre Rollen mit definierte
 - **DevTest Labs-Benutzer:** Der DevTest Labs-Benutzer kann die virtuellen Computer im Lab erstellen und nutzen. Diese Personen erfüllen einige minimale Verwaltungsfunktionen auf virtuellen Computern, die sie erstellen (Starten/Beenden/Löschen/Konfigurieren ihrer virtuellen Computer). Die Benutzer können keine VMs von anderen Benutzern verwalten.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Lesen Sie den nächsten Artikel in dieser Reihe: [Orchestrieren der Implementierung von Azure DevTest Labs](devtest-lab-guidance-orchestrate-implementation.md)
+Weitere Informationen finden Sie im nächsten Artikel dieser Serie: [Orchestrieren der Implementierung von Azure DevTest Labs](devtest-lab-guidance-orchestrate-implementation.md).

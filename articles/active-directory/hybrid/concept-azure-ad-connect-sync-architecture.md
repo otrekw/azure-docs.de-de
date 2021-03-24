@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b27055ce84bbb073045b69b942fd13f4fde4e3b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90563861"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-architecture"></a>Azure AD Connect-Synchronisierung: Grundlagen der Architektur
@@ -32,7 +32,7 @@ Das Synchronisierungsmodul erstellt eine integrierte Ansicht der Objekte, die in
 ### <a name="connected-data-sources-and-connectors"></a>Verbundene Datenquellen und Connectors
 Das Synchronisierungsmodul verarbeitet Identitätsinformationen aus verschiedenen Datenrepositorys, z.B. Active Directory oder einer SQL Server-Datenbank. Jedes Datenrepository, das seine Daten in einem datenbankähnlichen Format organisiert und standardmäßige Methoden für den Datenzugriff bereitstellt, ist ein potenzieller Datenquellenkandidat für das Synchronisierungsmodul. Die Datenrepositorys, die vom Synchronisierungsmodul synchronisiert werden, werden als **verbundene Datenquellen** oder **verbundene Verzeichnisse** (Connected Directories, CD) bezeichnet.
 
-Das Synchronisierungsmodul kapselt die Interaktion mit einer verbundenen Datenquelle in einem Modul, das als **Connector**bezeichnet wird. Jede Art von verbundener Datenquelle verfügt über einen bestimmten Connector. Der Connector übersetzt einen erforderlichen Vorgang in das Format, das von der verbundenen Datenquelle verstanden wird.
+Das Synchronisierungsmodul kapselt die Interaktion mit einer verbundenen Datenquelle in einem Modul, das als **Connector** bezeichnet wird. Jede Art von verbundener Datenquelle verfügt über einen bestimmten Connector. Der Connector übersetzt einen erforderlichen Vorgang in das Format, das von der verbundenen Datenquelle verstanden wird.
 
 Connectors führen API-Aufrufe durch, um mit einer verbundenen Datenquelle Identitätsinformationen auszutauschen (Lesen und Schreiben). Es ist auch möglich, einen benutzerdefinierten Connector mit dem Extensible Connectivity-Framework hinzuzufügen. In der folgenden Abbildung ist dargestellt, wie ein Connector eine verbundene Datenquelle mit dem Synchronisierungsmodul verbindet.
 
@@ -91,7 +91,7 @@ Ein Stagingobjekt stellt eine Instanz der angegebenen Objekttypen von der verbun
 
 Importierte Stagingobjekte weisen immer einen Wert für das Ankerattribut auf. Stagingobjekte, die vom Synchronisierungsmodul neu bereitgestellt wurden und sich in der verbundenen Datenquelle in der Phase der Erstellung befinden, haben keinen Wert für das Ankerattribut.
 
-Außerdem verfügen Stagingobjekte über aktuelle Werte von Geschäftsattributen sowie über Betriebsinformationen, die das Synchronisierungsmodul zum Durchführen des Synchronisierungsprozesses benötigt. Die Betriebsinformationen enthalten Flags, mit denen der Typ der Updates angegeben wird, die im Stagingobjekt bereitgestellt werden. Wenn ein Stagingobjekt von der verbundenen Datenquelle neue Identitätsinformationen erhalten hat, die noch nicht verarbeitet wurden, wird das Objekt mit **Import steht aus**gekennzeichnet. Wenn ein Stagingobjekt über neue Identitätsinformationen verfügt, die noch nicht in die verbundene Datenquelle exportiert wurden, wird es mit **Export steht aus**gekennzeichnet.
+Außerdem verfügen Stagingobjekte über aktuelle Werte von Geschäftsattributen sowie über Betriebsinformationen, die das Synchronisierungsmodul zum Durchführen des Synchronisierungsprozesses benötigt. Die Betriebsinformationen enthalten Flags, mit denen der Typ der Updates angegeben wird, die im Stagingobjekt bereitgestellt werden. Wenn ein Stagingobjekt von der verbundenen Datenquelle neue Identitätsinformationen erhalten hat, die noch nicht verarbeitet wurden, wird das Objekt mit **Import steht aus** gekennzeichnet. Wenn ein Stagingobjekt über neue Identitätsinformationen verfügt, die noch nicht in die verbundene Datenquelle exportiert wurden, wird es mit **Export steht aus** gekennzeichnet.
 
 Bei einem Stagingobjekt kann es sich um ein Importobjekt oder ein Exportobjekt handeln. Das Synchronisierungsmodul erstellt ein Importobjekt, indem es Objektinformationen von der verbundenen Datenquelle verwendet. Wenn das Synchronisierungsmodul Informationen zum Vorhandensein eines neuen Objekts empfängt, das mit einem der im Connector ausgewählten Objekttypen übereinstimmt, wird im Connectorbereich ein Importobjekt als Darstellung des Objekts in der verbundenen Datenquelle erstellt.
 

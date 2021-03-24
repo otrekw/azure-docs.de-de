@@ -4,10 +4,10 @@ description: Erfahren Sie, wie Sie erforderliche Elemente angeben, die vor der I
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 0677f8bea35cb34735fdcf34e717eea349fad8bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85480302"
 ---
 # <a name="specify-mandatory-artifacts-for-your-lab-in-azure-devtest-labs"></a>Festlegen verbindlicher Artefakte für Ihr Lab in Azure DevTest Labs
@@ -38,8 +38,8 @@ Sie können verbindliche Artefakte für Windows- und Linux-Computer separat fest
 8. Wiederholen Sie die Schritte, um alle verbindlichen Artefakte für virtuelle Linux-Computer anzugeben. 
     
     ![Seite mit verbindlichen Artefakten – Windows- und Linux-Artefakte](media/devtest-lab-mandatory-artifacts/windows-linux-artifacts.png)
-9. Wenn Sie ein Artefakt aus der Liste **löschen** möchten, wählen Sie **... (Auslassungspunkte)**  am Ende der Zeile und dann **Löschen**. 
-10. Wenn Sie Artefakte in der Liste **neu anordnen** möchten, bewegen Sie die Maus über das Artefakt, wählen Sie **... (Auslassungspunkte)**  am Anfang der Zeile, und ziehen Sie das Element an die neue Position. 
+9. Wenn Sie ein Artefakt aus der Liste **löschen** möchten, wählen Sie **... (Auslassungspunkte)** am Ende der Zeile und dann **Löschen**. 
+10. Wenn Sie Artefakte in der Liste **neu anordnen** möchten, bewegen Sie die Maus über das Artefakt, wählen Sie **... (Auslassungspunkte)** am Anfang der Zeile, und ziehen Sie das Element an die neue Position. 
 11. Wählen Sie **Speichern**, um verbindliche Artefakte im Lab zu speichern. 
 
     ![Seite mit verbindlichen Artefakten – Artefakte im Lab speichern](media/devtest-lab-mandatory-artifacts/save-to-lab.png)
