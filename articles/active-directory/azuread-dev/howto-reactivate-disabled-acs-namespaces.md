@@ -14,13 +14,13 @@ ms.reviewer: jlu
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 7bb572e9e22519491290e54417f5ca350d6c0b5c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85383716"
 ---
-# <a name="how-to-reactivate-disabled-access-control-service-namespaces"></a>Gewusst wie: Reaktivieren deaktivierter Access Control Service-Namespaces
+# <a name="how-to-reactivate-disabled-access-control-service-namespaces"></a>Vorgehensweise: Reaktivieren deaktivierter Access Control Service-Namespaces
 
 [!INCLUDE [active-directory-azuread-dev](../../../includes/active-directory-azuread-dev.md)]
 
@@ -126,4 +126,4 @@ Zusätzliche Verlängerungen werden dann nicht mehr automatisch genehmigt. Wenn 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Lesen Sie die Informationen zur ACS-Deaktivierung unter [ Migrieren aus dem Azure Access Control Service](active-directory-acs-migration.md).
+- Lesen Sie die Informationen zur ACS-Einstellung in [Vorgehensweise: Migrieren von Azure Access Control Service](active-directory-acs-migration.md).

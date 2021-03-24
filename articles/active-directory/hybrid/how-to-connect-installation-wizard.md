@@ -18,10 +18,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9d81836b47acb19f624075480aafef74c9c0934c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91306122"
 ---
 # <a name="azure-ad-connect-sync-running-the-installation-wizard-a-second-time"></a>Azure AD Connect Sync: Erneutes Ausführen des Installations-Assistenten
@@ -52,7 +52,7 @@ Wählen Sie eine der Aufgaben aus, und klicken Sie auf **Weiter** , um fortzufah
 
 ![Seite mit einer Liste aller Optionen und deren Status](./media/how-to-connect-installation-wizard/viewconfig.png)
 
-Um zurückzugehen, klicken Sie auf **Zurück** . Mit einem Klick auf **Beenden**schließen Sie den Installations-Assistenten.
+Um zurückzugehen, klicken Sie auf **Zurück** . Mit einem Klick auf **Beenden** schließen Sie den Installations-Assistenten.
 
 ## <a name="customize-synchronization-options"></a>Synchronisierungsoptionen anpassen
 Mit dieser Option nehmen Sie Änderungen an der Synchronisierungskonfiguration vor. Ihnen wird eine Teilmenge von Optionen im Installationspfad der Konfiguration angezeigt. Diese Option wird Ihnen auch dann angezeigt, wenn Sie zunächst die Expressinstallation verwendet haben.
@@ -85,7 +85,7 @@ Um den Status zu ändern, wählen Sie diese Option aus, und aktivieren bzw. deak
 ![Option, die auch den aktuellen Status des Stagingmodus anzeigt](./media/how-to-connect-installation-wizard/stagingmodeenable.png)
 
 ## <a name="change-user-sign-in"></a>Benutzeranmeldung ändern
-Mit dieser Option können Sie zwischen Kennworthashsynchronisierung, Pass-Through-Authentifizierung und Verbund als Benutzeranmeldemethode wechseln. Ein Wechsel zu **Nicht konfigurieren**ist nicht möglich.
+Mit dieser Option können Sie zwischen Kennworthashsynchronisierung, Pass-Through-Authentifizierung und Verbund als Benutzeranmeldemethode wechseln. Ein Wechsel zu **Nicht konfigurieren** ist nicht möglich.
 
 Weitere Informationen zu dieser Option finden Sie unter [Benutzeranmeldung](plan-connect-user-signin.md#changing-the-user-sign-in-method).
 

@@ -8,10 +8,10 @@ ms.date: 10/18/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: dea88bf93000422ce1d832be4a0f60474ff27938
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94629783"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-with-azure-storage-explorer"></a>Schnellstart: Erstellen und Verwalten von Azure-Dateifreigaben mit dem Azure Storage-Explorer
@@ -19,7 +19,7 @@ In dieser Anleitung werden Schritt für Schritt die Grundlagen der Verwendung vo
 
 Der Azure Storage-Explorer ist ein beliebtes Clienttool, das für Windows, macOS und Linux verfügbar ist. Sie können Storage-Explorer zum Verwalten von Azure-Dateifreigaben und anderen Speicherressourcen verwenden.
 
-Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Für diese Schnellstartanleitung muss Storage-Explorer installiert sein. Sie können die Anwendung unter [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/) herunterladen und dann installieren.
@@ -76,7 +76,7 @@ Sie können eine Datei von Ihrem lokalen Computer in das neue Verzeichnis Ihrer 
 Wenn Sie dies durchgeführt haben, wird die Datei im Bereich *myDirectory* in der Liste angezeigt.
 
 ### <a name="download-a-file"></a>Herunterladen einer Datei
-Klicken Sie zum Herunterladen der Kopie einer Datei Ihrer Dateifreigabe mit der rechten Maustaste auf die Datei, und wählen Sie anschließend die Option **Herunterladen**. Geben Sie an, wo Sie die Datei auf Ihrem lokalen Computer ablegen möchten, und wählen Sie anschließend **Speichern**.
+Klicken Sie zum Herunterladen der Kopie einer Datei aus Ihrer Dateifreigabe mit der rechten Maustaste auf die Datei, und wählen Sie anschließend die Option **Herunterladen** aus. Geben Sie an, wo Sie die Datei auf Ihrem lokalen Computer ablegen möchten, und wählen Sie anschließend **Speichern**.
 
 Der Status des Downloads wird unten im Fenster im Bereich **Aktivitäten** angezeigt.
 

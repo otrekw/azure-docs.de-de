@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/23/2020
 ms.author: cherylmc
 ms.openlocfilehash: 2f2184507e17e3ecae40bb33be4202c183d32b77
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91274232"
 ---
 # <a name="point-to-site-vpn-session-management"></a>Point-to-Site-VPN-Sitzungsverwaltung
@@ -44,7 +44,7 @@ So zeigen Sie eine Sitzung mithilfe von PowerShell an und trennen sie
    ```
 1. Kopieren Sie die **VpnConnectionId** der Sitzung, die Sie trennen möchten.
 
-   :::image type="content" source="./media/p2s-session-management/powershell.png" alt-text="Portal-Beispiel":::
+   :::image type="content" source="./media/p2s-session-management/powershell.png" alt-text="PowerShell-Beispiel":::
 1. Führen Sie den folgenden Befehl aus, um die Sitzung zu trennen:
 
    ```azurepowershell-interactive

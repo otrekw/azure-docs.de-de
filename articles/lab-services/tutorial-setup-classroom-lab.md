@@ -4,10 +4,10 @@ description: In diesem Tutorial richten Sie unter Verwendung von Azure Lab Servi
 ms.topic: tutorial
 ms.date: 12/03/2020
 ms.openlocfilehash: 8093a1fd270cdba8bdccaf48737bf6737bdd394d
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98787417"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Tutorial: Einrichten eines Classroom-Labs 
@@ -139,12 +139,12 @@ In der Azure Active Directory-Instanz Ihrer Organisation kann eine Azure AD-Gru
     
 1. Sie werden aufgefordert, eine vorhandene Azure AD-Gruppe auszuwählen, mit der ihr Lab synchronisiert werden soll. 
     
-    Wird keine Azure AD-Gruppe in der Liste angezeigt, kann dies folgende Gründe haben:
+    Wenn keine Azure AD-Gruppe in der Liste angezeigt wird, kommen folgende Gründe infrage:
 
     -   Sie sind ein Gastbenutzer einer Azure Active Directory-Instanz (trifft in der Regel zu, wenn Sie sich außerhalb der Organisation befinden, die die Azure AD-Instanz besitzt) und können nicht innerhalb der Azure AD-Instanz nach Gruppen suchen. In diesem Fall können Sie dem Lab keine Azure AD-Gruppe hinzufügen. 
     -   Über Teams erstellte Azure AD-Gruppen werden in dieser Liste nicht angezeigt. Sie können die Azure Lab Services-App innerhalb von Teams hinzufügen, um Labs direkt darin zu erstellen und zu verwalten. Weitere Informationen finden Sie unter [Verwalten von Lab Services-Benutzerlisten aus Teams](how-to-manage-user-lists-within-teams.md). 
 1. Nachdem Sie die Azure AD-Gruppe ausgewählt haben, mit der ihr Lab synchronisiert werden soll, klicken Sie auf **Hinzufügen**.
-1. Sobald ein Lab synchronisiert ist, werden alle Benutzer innerhalb der Azure AD-Gruppe als Benutzer in das Lab gepullt, und die Benutzerliste wird aktualisiert. Nur die Personen in dieser Azure AD-Gruppe haben Zugriff auf das Lab. Die Benutzerliste wird alle 24 Stunden aktualisiert, damit sie der aktuellen Mitgliedschaft der Azure AD-Gruppe entspricht. Sie können auch auf der Registerkarte „Benutzer“ auf die Schaltfläche „Synchronisieren“ klicken, um die neuesten Änderungen in der Azure AD-Gruppe manuell zu synchronisieren.
+1. Sobald ein Lab synchronisiert ist, werden alle Benutzer innerhalb der Azure AD-Gruppe als Benutzer in das Lab gepullt, und die Benutzerliste wird aktualisiert. Nur die Personen in dieser Azure AD-Gruppe haben Zugriff auf das Lab. Die Benutzerliste wird alle 24 Stunden aktualisiert, damit sie der aktuellen Mitgliedschaft der Azure AD-Gruppe entspricht. Sie können auch auf der Registerkarte „Benutzer“ auf die Schaltfläche „Synchronisieren“ klicken, um die neuesten Änderungen in der Azure AD-Gruppe manuell zu synchronisieren.
 1. Laden Sie die Benutzer in Ihr Lab ein, indem Sie auf die Schaltfläche **Alle einladen** klicken, sodass an alle Benutzer eine E-Mail mit dem Link zur Registrierung beim Lab gesendet wird. 
 
 ### <a name="add-users-manually-from-emails-or-csv-file"></a>Manuelles Hinzufügen von Benutzern aus E-Mails oder CSV-Dateien

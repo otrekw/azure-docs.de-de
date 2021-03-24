@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 07/10/2020
 ms.author: terrylan
 ms.openlocfilehash: 3eac3c9abda74f0414fc97512f011d235d3991f5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87076324"
 ---
 # <a name="azure-facilities-premises-and-physical-security"></a>Azure-Einrichtungen, Gelände und physische Sicherheit
@@ -70,7 +70,7 @@ Microsoft verwendet bewährte Verfahren und eine Zurücksetzungslösung, die [NI
 ## <a name="equipment-disposal"></a>Entsorgung von Ausrüstung
 Am Ende der Nutzungsdauer eines Systems befolgen die für den Betrieb zuständigen Microsoft-Mitarbeiter strenge Verfahren zum Umgang mit Daten und zur Entsorgung von Hardware, um sicherzustellen, dass Hardware, die eventuell Ihre Daten enthält, in keinem Fall nicht vertrauenswürdigen Dritten zugänglich gemacht wird. Wir verwenden ein sicheres Löschverfahren für Festplatten, die dieses Verfahren unterstützen. Bei Festplatten, die nicht zurückgesetzt werden können, verwenden wir ein Verfahren, das die Platte zerstört und eine Wiederherstellung der Daten unmöglich macht. Mögliche Zerstörungsverfahren sind Zersetzen, Schreddern, Pulverisieren oder Verbrennen. Wir bestimmen die Art der Entsorgung anhand des Ressourcentyps. Wir bewahren die Dokumentation der Zerstörung auf. Alle Azure-Dienste setzen anerkannte Dienste zur Speicherung und Entsorgung von Medien ein.
 
-## <a name="compliance"></a>Compliance
+## <a name="compliance"></a>Kompatibilität
 Wir haben die Azure-Infrastruktur zur Erfüllung einer Vielzahl von internationalen und branchenspezifischen Compliancestandards wie ISO 27001, HIPAA, FedRAMP, SOC 1 und SOC 2 konzipiert und verwalten sie entsprechend. Wir erfüllen auch länder- bzw. regionsspezifische Standards, z.B. Australia IRAP, UK G-Cloud und Singapore MTCS. In rigorosen Audits durch Drittanbieter – zum Beispiel durch das British Standards Institute – wird die Einhaltung der von diesen Standards geforderten strengen Sicherheitskontrollen überprüft.
 
 Eine vollständige Liste der von Azure eingehaltenen Compliancestandards finden Sie unter [Complianceangebote](https://www.microsoft.com/trustcenter/compliance/complianceofferings).

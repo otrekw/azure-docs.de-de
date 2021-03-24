@@ -16,10 +16,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1601c9fc750df1f8e18bdaa072ede1b5ee164329
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84743812"
 ---
 # <a name="complete-an-access-review-of-azure-resource-roles-in-privileged-identity-management"></a>Abschließen einer Zugriffsüberprüfung für Azure-Ressourcenrollen in Privileged Identity Management
@@ -66,7 +66,7 @@ Auf der Seite **Ergebnisse** können Sie eine Liste mit Ihren Ergebnissen der Ü
 
 ![Seite „Ergebnisse“ mit Benutzern, Ergebnis, Grund, Überprüft von, Angewendet von und Ergebnis anwenden](media/pim-resource-roles-complete-access-review/rbac-access-review-results.png)
 
-## <a name="reviewers"></a>Prüfer
+## <a name="reviewers"></a>Reviewer
 
 Zeigen Sie Prüfer für Ihre vorhandene Zugriffsüberprüfung an, und fügen Sie sie hinzu. Erinnern Sie Prüfer daran, ihre Überprüfungen durchzuführen.
 

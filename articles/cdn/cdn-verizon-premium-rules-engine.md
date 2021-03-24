@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 05/31/2019
 ms.author: allensu
 ms.openlocfilehash: a49912bc2275e478d657f06587c4ddc830210d3a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87040209"
 ---
 # <a name="override-http-behavior-using-the-azure-cdn-from-verizon-premium-rules-engine"></a>Überschreiben des HTTP-Verhaltens mithilfe der Regel-Engine für Azure CDN Premium von Verizon
@@ -73,7 +73,7 @@ Um auf die Regel-Engine zuzugreifen, müssen Sie für den Zugriff auf die Azure 
    >
    >
 
-5. Um ein neues Feature hinzuzufügen, klicken Sie auf die Schaltfläche **+** neben **Features**.  Wählen Sie in der Dropdownliste auf der linken Seite **Force Internal Max-Age**aus.  Geben Sie **300**in das angezeigte Textfeld ein. Ändern Sie nicht die übrigen Standardwerte.
+5. Um ein neues Feature hinzuzufügen, klicken Sie auf die Schaltfläche **+** neben **Features**.  Wählen Sie in der Dropdownliste auf der linken Seite **Force Internal Max-Age** aus.  Geben Sie **300** in das angezeigte Textfeld ein. Ändern Sie nicht die übrigen Standardwerte.
    
    ![Features der CDN-Regel-Engine](./media/cdn-rules-engine/cdn-new-feature.png)
    

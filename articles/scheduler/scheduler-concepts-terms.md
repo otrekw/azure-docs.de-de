@@ -10,10 +10,10 @@ ms.reviewer: klam, estfan
 ms.topic: conceptual
 ms.date: 08/18/2016
 ms.openlocfilehash: 899c64e818896cde18e955d6abd82594734c4b57
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92368161"
 ---
 # <a name="concepts-terminology-and-entities-in-azure-scheduler"></a>Konzepte, Terminologie und Entitäten in Microsoft Azure Scheduler
@@ -85,7 +85,7 @@ Der Auftrag enthält auch vom System bereitgestellte Daten, beispielsweise die n
 | Element | Erforderlich | BESCHREIBUNG | 
 |---------|----------|-------------| 
 | [**startTime**](#start-time) | Nein | Die Startzeit für den Auftrag mit einem Zeitzonenoffset im [ISO 8601-Format](https://en.wikipedia.org/wiki/ISO_8601) | 
-| [**action**](#action) | Ja | Die Details für die primäre Aktion (kann ein **errorAction** -Objekt enthalten) | 
+| [**action**](#action) | Ja | Die Details für die primäre Aktion (kann ein **errorAction**-Objekt enthalten) | 
 | [**errorAction**](#error-action) | Nein | Die Details für die sekundäre Aktion, die ausgeführt wird, wenn bei der primären Aktion ein Fehler auftritt |
 | [**recurrence**](#recurrence) | Nein | Die Details für einen Serienauftrag (z. B. Häufigkeit und Intervall) | 
 | [**retryPolicy**](#retry-policy) | Nein | Die Details zur Wiederholungshäufigkeit für eine Aktion | 
@@ -144,13 +144,13 @@ Das folgende Beispiel zeigt eine umfassende Auftragsdefinition für eine HTTP-Ak
 
 ## <a name="starttime"></a>startTime
 
-Im **startTime** -Objekt können Sie die Startzeit und einen Zeitzonenoffset im [ISO 8601-Format](https://en.wikipedia.org/wiki/ISO_8601) angeben.
+Im **startTime**-Objekt können Sie die Startzeit und einen Zeitzonenoffset im [ISO 8601-Format](https://en.wikipedia.org/wiki/ISO_8601) angeben.
 
 <a name="action"></a>
 
 ## <a name="action"></a>action
 
-Ihr Scheduler-Auftrag führt eine primäre **Aktion** basierend auf dem angegebenen Zeitplan aus. Scheduler unterstützt HTTP-Aktionen, Storage-Warteschlangenaktionen, Service Bus-Warteschlangenaktionen und Service Bus-Themenaktionen. Wenn bei der primären **Aktion** ein Fehler auftritt, kann Scheduler eine sekundäre Fehleraktion ( [**errorAction**](#erroraction)) zum Behandeln des Fehlers ausführen. Das **action** -Objekt beschreibt die folgenden Elemente:
+Ihr Scheduler-Auftrag führt eine primäre **Aktion** basierend auf dem angegebenen Zeitplan aus. Scheduler unterstützt HTTP-Aktionen, Storage-Warteschlangenaktionen, Service Bus-Warteschlangenaktionen und Service Bus-Themenaktionen. Wenn bei der primären **Aktion** ein Fehler auftritt, kann Scheduler eine sekundäre Fehleraktion ([**errorAction**](#erroraction)) zum Behandeln des Fehlers ausführen. Das **action**-Objekt beschreibt die folgenden Elemente:
 
 * Den Diensttyp der Aktion
 * Die Details der Aktion
@@ -220,7 +220,7 @@ Weitere Informationen zu SAS-Token (Shared Access Signature) finden Sie unter [A
 
 ## <a name="erroraction"></a>errorAction
 
-Wenn bei der primären **Aktion** Ihres Auftrags ein Fehler auftritt, kann Scheduler eine sekundäre Fehleraktion ( **errorAction** ) zum Behandeln des Fehlers ausführen. In der primären **Aktion** können Sie ein **errorAction** -Objekt angeben, damit Scheduler einen Endpunkt für die Fehlerbehandlung aufrufen oder eine Benutzerbenachrichtigung senden kann. 
+Wenn bei der primären **Aktion** Ihres Auftrags ein Fehler auftritt, kann Scheduler eine sekundäre Fehleraktion (**errorAction**) zum Behandeln des Fehlers ausführen. In der primären **Aktion** können Sie ein **errorAction**-Objekt angeben, damit Scheduler einen Endpunkt für die Fehlerbehandlung aufrufen oder eine Benutzerbenachrichtigung senden kann. 
 
 Wenn beispielsweise ein Notfall am primären Endpunkt auftritt, können Sie mit **errorAction** einen sekundären Endpunkt aufrufen oder einen Endpunkt für die Fehlerbehandlung benachrichtigen. 
 
@@ -230,7 +230,7 @@ Wie bei der primären **Aktion** können Sie auch für die Fehleraktion eine ein
 
 ## <a name="recurrence"></a>recurrence
 
-Ein Auftrag wird wiederholt, wenn die JSON-Definition des Auftrags das **recurrence** -Objekt enthält. Hier ein Beispiel:
+Ein Auftrag wird wiederholt, wenn die JSON-Definition des Auftrags das **recurrence**-Objekt enthält. Hier ein Beispiel:
 
 ```json
 "recurrence": {
@@ -250,7 +250,7 @@ Ein Auftrag wird wiederholt, wenn die JSON-Definition des Auftrags das **recurre
 |----------|----------|-------|-------------| 
 | **frequency** | Ja, wenn **recurrence** verwendet wird | Minute, Hour, Day, Week, Month, Year | Die Zeiteinheit zwischen Ausführungen. | 
 | **interval** | Nein | 1 bis einschließlich 1.000 | Eine positive ganze Zahl, die die Anzahl von Zeiteinheiten zwischen den einzelnen Ausführungen basierend auf dem Wert von **frequency** bestimmt. | 
-| **schedule** | Nein | Varies | Die Details für komplexere und erweiterte Zeitpläne. Siehe **hours** , **minutes** , **weekDays** , **months** und **monthDays** . | 
+| **schedule** | Nein | Varies | Die Details für komplexere und erweiterte Zeitpläne. Siehe **hours**, **minutes**, **weekDays**, **months** und **monthDays**. | 
 | **hours** | Nein | 1 bis 24 | Ein Array mit den Stundenmarkierungen für die Ausführung des Auftrags. | 
 | **minutes** | Nein | 0 bis 59 | Ein Array mit den Minutenmarkierungen für die Ausführung des Auftrags. | 
 | **months** | Nein | 1 bis 12 | Ein Array mit den Monaten für die Ausführung des Auftrags. | 
@@ -278,7 +278,7 @@ Für den Fall, dass bei einem Scheduler-Auftrag ein Fehler auftritt, können Sie
 
 | Eigenschaft | Erforderlich | Wert | BESCHREIBUNG | 
 |----------|----------|-------|-------------| 
-| **retryType** | Ja | **Fixed** , **None** | Bestimmt, ob Sie eine Wiederholungsrichtlinie angeben ( **fixed** ) oder nicht ( **none** ). | 
+| **retryType** | Ja | **Fixed**, **None** | Bestimmt, ob Sie eine Wiederholungsrichtlinie angeben (**fixed**) oder nicht (**none**). | 
 | **retryInterval** | Nein | PT30S | Gibt das Intervall und die Häufigkeit zwischen den Wiederholungsversuchen im [ISO 8601-Format](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) an. Der Mindestwert ist 15 Sekunden und der Höchstwert 18 Monate. | 
 | **retryCount** | Nein | 4 | Gibt die Anzahl von Wiederholungsversuchen an. Der Höchstwert ist 20. | 
 ||||
@@ -289,7 +289,7 @@ Weitere Informationen finden Sie unter [Hochverfügbarkeit und Zuverlässigkeit]
 
 ## <a name="state"></a>state
 
-Der Zustand eines Auftrags ist entweder **Enabled** , **Disabled** , **Completed** oder **Faulted** . Hier sehen Sie ein Beispiel: 
+Der Zustand eines Auftrags ist entweder **Enabled**, **Disabled**, **Completed** oder **Faulted**. Hier sehen Sie ein Beispiel: 
 
 `"state": "Disabled"`
 
@@ -300,7 +300,7 @@ Wenn ein Auftrag den Zustand **Completed** oder **Faulted** aufweist, ist es all
 
 ## <a name="status"></a>status
 
-Nachdem ein Auftrag gestartet wurde, gibt Scheduler Informationen zum Auftragsstatus über das **status** -Objekt zurück. Dieses Objekt wird nur von Scheduler gesteuert. Das **status** -Objekt ist jedoch innerhalb des **job** -Objekts zugänglich. Der Status eines Auftrags umfasst die folgenden Informationen:
+Nachdem ein Auftrag gestartet wurde, gibt Scheduler Informationen zum Auftragsstatus über das **status**-Objekt zurück. Dieses Objekt wird nur von Scheduler gesteuert. Das **status**-Objekt ist jedoch innerhalb des **job**-Objekts zugänglich. Der Status eines Auftrags umfasst die folgenden Informationen:
 
 * Zeit für die vorherige Ausführung (sofern vorhanden)
 * Zeit für die nächste geplante Ausführung für aktive Aufträge

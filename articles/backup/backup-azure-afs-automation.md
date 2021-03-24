@@ -4,10 +4,10 @@ description: In diesem Artikel erfahren Sie, wie Sie eine Azure Files-Dateifreig
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.openlocfilehash: 948931764769bc967b88e7942b7e8384b0f93dff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87077005"
 ---
 # <a name="back-up-an-azure-file-share-by-using-powershell"></a>Sichern einer Azure-Dateifreigabe mithilfe von PowerShell
@@ -168,7 +168,7 @@ $schpol.ScheduleRunTimes[0] = $UtcTime
 > [!IMPORTANT]
 > Sie können die Startzeit nur in 30-Minuten-Einheiten angeben. Im vorherigen Beispiel kann sie nur 01:00:00 oder 02:30:00 sein. 01:15:00 kann nicht als Startzeit angegeben werden.
 
-Im folgenden Beispiel werden die Zeitplanrichtlinie und die Aufbewahrungsrichtlinie in Variablen gespeichert. Anschließend werden diese Variablen als Parameter für eine neue Richtlinie (**NewAFSPolicy**) verwendet. Die Richtlinie **NewAFSPolicy**führt eine tägliche Sicherung aus und bewahrt sie 30 Tage auf.
+Im folgenden Beispiel werden die Zeitplanrichtlinie und die Aufbewahrungsrichtlinie in Variablen gespeichert. Anschließend werden diese Variablen als Parameter für eine neue Richtlinie (**NewAFSPolicy**) verwendet. Die Richtlinie **NewAFSPolicy** führt eine tägliche Sicherung aus und bewahrt sie 30 Tage auf.
 
 ```powershell
 $schPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureFiles"

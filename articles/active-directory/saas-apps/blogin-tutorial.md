@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 07/21/2020
 ms.author: jeedes
 ms.openlocfilehash: a47a3ae27fd1a18b7e9acd7d8b25748f6274c3e9
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92456992"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-blogin"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit BlogIn
@@ -40,7 +40,7 @@ Für die ersten Schritte benötigen Sie Folgendes:
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
 * BlogIn unterstützt **SP- und IDP-initiiertes** einmaliges Anmelden.
-* BlogIn unterstützt die **Just-in-Time** -Benutzerbereitstellung.
+* BlogIn unterstützt die **Just-in-Time**-Benutzerbereitstellung.
 * Nach dem Konfigurieren von BlogIn können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Daten Ihrer Organisation schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
 
 ## <a name="adding-blogin-from-the-gallery"></a>Hinzufügen von BlogIn aus dem Katalog
@@ -49,7 +49,7 @@ Zum Konfigurieren der Integration von BlogIn in Azure AD müssen Sie BlogIn aus 
 
 1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
 1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** aus.
-1. Navigieren Sie zu **Unternehmensanwendungen** , und wählen Sie dann **Alle Anwendungen** aus.
+1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie dann **Alle Anwendungen** aus.
 1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **BlogIn** in das Suchfeld ein.
 1. Wählen Sie im Ergebnisbereich die Option **BlogIn** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
@@ -72,9 +72,9 @@ Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit BlogIn m�
 
 Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **BlogIn** zum Abschnitt **Verwalten** , und wählen Sie **Einmaliges Anmelden** aus.
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **BlogIn** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
-1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration** , um die Einstellungen zu bearbeiten.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
@@ -84,12 +84,12 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
     b. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://<SUBDOMAIN>.blogin.co/sso/saml/callback`
 
-1. Klicken Sie auf **Zusätzliche URLs festlegen** , und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten** Modus konfigurieren möchten:
+1. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten** Modus konfigurieren möchten:
 
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<SUBDOMAIN>.blogin.co/`
 
     > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Sie müssen diese Werte mit dem tatsächlichen Bezeichner, der Antwort-URL und der Anmelde-URL aktualisieren. Die genauen Werte für diese Felder erhalten Sie auf der Seite **Einstellungen** auf BlogIn (Registerkarte **Benutzerauthentifizierung** > **SSO und Benutzerbereitstellung konfigurieren** ). Alternativ können Sie sich an das [Clientsupportteam von BlogIn](mailto:support@blogin.co) wenden, um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    > Hierbei handelt es sich um Beispielwerte. Sie müssen diese Werte mit dem tatsächlichen Bezeichner, der Antwort-URL und der Anmelde-URL aktualisieren. Die genauen Werte für diese Felder erhalten Sie auf der Seite **Einstellungen** auf BlogIn (Registerkarte **Benutzerauthentifizierung** > **SSO und Benutzerbereitstellung konfigurieren**). Alternativ können Sie sich an das [Clientsupportteam von BlogIn](mailto:support@blogin.co) wenden, um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
 1. Die BlogIn-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute.
 
@@ -115,16 +115,16 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
 1. Führen Sie unter den Eigenschaften für **Benutzer** die folgenden Schritte aus:
    1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.  
    1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Beispiel: `B.Simon@contoso.com`.
-   1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen** , und notieren Sie sich den Wert aus dem Feld **Kennwort**.
+   1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
    1. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
 In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf BlogIn gewähren.
 
-1. Wählen Sie im Azure-Portal **Unternehmensanwendungen**  > **Alle Anwendungen** aus.
+1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
 1. Wählen Sie in der Anwendungsliste **BlogIn** aus.
-1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten** , und wählen Sie **Benutzer und Gruppen** aus.
+1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
 
    ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
 
@@ -138,12 +138,12 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 ## <a name="configure-blogin-sso"></a>Konfigurieren von BlogIn SSO
 
-Um das einmalige Anmelden auf der **BlogIn** -Seite zu konfigurieren, melden Sie sich bei Ihrem BlogIn-Konto an, und befolgen Sie die folgenden Schritte:
+Um das einmalige Anmelden auf der **BlogIn**-Seite zu konfigurieren, melden Sie sich bei Ihrem BlogIn-Konto an, und befolgen Sie die folgenden Schritte:
 
 1. Wechseln Sie zu **Einstellungen** > **Benutzerauthentifizierung** > **SSO und Benutzerbereitstellung konfigurieren**.
-2. Ändern Sie auf dem nächsten Bildschirm den Status für das einmalige Anmelden in **Ein** , und wählen Sie einen benutzerdefinierten Namen für die Schaltfläche zur SSO-Anmeldung, die auf dem Anmeldebildschirm angezeigt wird.
+2. Ändern Sie auf dem nächsten Bildschirm den Status für das einmalige Anmelden in **Ein**, und wählen Sie einen benutzerdefinierten Namen für die Schaltfläche zur SSO-Anmeldung, die auf dem Anmeldebildschirm angezeigt wird.
 
-3. Wenn Sie die **App-Verbundmetadaten-URL** im letzten Schritt des vorigen Abschnitts gespeichert haben, wählen Sie die Konfigurationsmethode **Metadaten-URL** aus, und fügen Sie **App-Verbundmetadaten-URL** in das Feld „Metadaten-URL“ ein. Andernfalls ändern Sie die Konfigurationsmethode in **Manuell** , füllen die Felder für die **SSO-URL des Identitätsanbieters (Anmelde-URL)** und den **Aussteller des Identitätsanbieters (Entitäts-ID)** manuell aus und laden das **Zertifikat (Base64)** hoch, das Sie von Azure AD erhalten haben.
+3. Wenn Sie die **App-Verbundmetadaten-URL** im letzten Schritt des vorigen Abschnitts gespeichert haben, wählen Sie die Konfigurationsmethode **Metadaten-URL** aus, und fügen Sie **App-Verbundmetadaten-URL** in das Feld „Metadaten-URL“ ein. Andernfalls ändern Sie die Konfigurationsmethode in **Manuell**, füllen die Felder für die **SSO-URL des Identitätsanbieters (Anmelde-URL)** und den **Aussteller des Identitätsanbieters (Entitäts-ID)** manuell aus und laden das **Zertifikat (Base64)** hoch, das Sie von Azure AD erhalten haben.
 
 4. Wählen Sie die Standardbenutzerrolle für neue Benutzer aus, die BlogIn über das einmalige Anmelden (SSO) beitreten.
 

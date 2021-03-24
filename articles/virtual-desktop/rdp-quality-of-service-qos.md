@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: denisgun
 ms.openlocfilehash: b61faf74d96e2571e91f7bf9d10eac88cdbf8345
-ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94639099"
 ---
 # <a name="implement-quality-of-service-qos-for-windows-virtual-desktop-preview"></a>Implementieren von Quality of Service (QoS) für Windows Virtual Desktop (Vorschau)
@@ -91,7 +91,7 @@ Um eine QoS-Richtlinie für in die Domäne eingebundene Sitzungshosts zu erstell
 
 2. Klicken Sie mit der rechten Maustaste auf den entsprechenden Container, und wählen Sie dann **GPO in dieser Domäne erstellen und hier verknüpfen** aus.
 
-3. Geben Sie im Dialogfeld **Neues Gruppenrichtlinienobjekt** den Namen des neuen Gruppenrichtlinienobjekts in das Feld **Name** ein, und wählen Sie **OK**.
+3. Geben Sie im Dialogfeld **Neues Gruppenrichtlinienobjekt** den Namen des neuen Gruppenrichtlinienobjekts in das Feld **Name** ein, und klicken Sie auf **OK**.
 
 4. Klicken Sie mit der rechten Maustaste auf die neu erstellte Richtlinie, und wählen Sie **Bearbeiten** aus.
 
@@ -103,9 +103,9 @@ Um eine QoS-Richtlinie für in die Domäne eingebundene Sitzungshosts zu erstell
 
 8. Stellen Sie auf der dritten Seite sicher, dass sowohl **Beliebige Quell-IP-Adresse** als auch **Beliebige Ziel-IP-Adresse** ausgewählt ist, und wählen Sie dann **Weiter** aus. Diese beiden Einstellungen stellen sicher, dass die Pakete unabhängig davon verwaltet werden, welcher Computer (IP-Adresse) die Pakete gesendet hat und welcher Computer (IP-Adresse) die Pakete empfängt.
 
-9. Wählen Sie auf Seite vier in der Dropdownliste **Wählen Sie das Protokoll aus, auf das diese QoS-Richtlinie angewendet wird** die Option **UDP** aus.
+9. Wählen Sie auf Seite vier in der Dropdownliste **Protokoll auswählen, auf das diese QoS-Richtlinie angewendet wird** die Option **UDP** aus.
 
-10. Wählen Sie unter der Überschrift **Geben Sie die Quellportnummer an** die Option **Von diesem Quellport oder Bereich** aus. Geben Sie im zugehörigen Textfeld **3390** ein. Wählen Sie **Fertig stellen** aus.
+10. Wählen Sie unter der Überschrift **Quellportnummer angeben** die Option **Von diesem Quellport oder -bereich** aus. Geben Sie im zugehörigen Textfeld **3390** ein. Wählen Sie **Fertig stellen** aus.
 
 Die neuen Richtlinien, die Sie erstellt haben, werden erst wirksam, wenn die Gruppenrichtlinie auf Ihren Sitzungshostcomputern aktualisiert wurde. Obwohl die Gruppenrichtlinie regelmäßig automatisch aktualisiert wird, können Sie eine sofortige Aktualisierung erzwingen, indem Sie die folgenden Schritte ausführen:
 

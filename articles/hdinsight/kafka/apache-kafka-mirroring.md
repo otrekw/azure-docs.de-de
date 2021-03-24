@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
-ms.openlocfilehash: c2fce6d4ee95a56cc087d50184fcd69ac113620f
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 633f01d813fe4e6c56d88052cbc7440c43f350dc
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98940844"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104870499"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>Verwenden von MirrorMaker zum Replizieren von Apache Kafka-Themen mit Kafka in HDInsight
 
@@ -34,7 +34,7 @@ Am sinnvollsten ist es, die Spiegelung für die Notfallwiederherstellung mit Kaf
 
 Das folgende Diagramm veranschaulicht den Spiegelungsprozess und den Kommunikationsfluss zwischen den Clustern:
 
-![Diagramm des Spiegelungsprozesses](./media/apache-kafka-mirroring/kafka-mirroring-vnets2.png)
+:::image type="content" source="./media/apache-kafka-mirroring/kafka-mirroring-vnets2.png" alt-text="Diagramm des Spiegelungsprozesses" border="false":::
 
 Der primäre und der sekundäre Cluster können sich in Bezug auf die Anzahl von Knoten und Partitionen unterscheiden, und auch der Versatz in den Themen ist unterschiedlich. Beim Spiegeln wird der Schlüsselwert beibehalten, der für die Partitionierung verwendet wird, sodass die Datensatzreihenfolge pro Schlüssel beibehalten wird.
 
@@ -84,7 +84,7 @@ In dieser Architektur befinden sich zwei Cluster in verschiedenen Ressourcengrup
     1. Wählen Sie **Hinzufügen**.
     1. Geben Sie auf dem Bildschirm **Peering hinzufügen** die Informationen wie im Screenshot unten gezeigt ein.
 
-        ![HDInsight Kafka – Hinzufügen von VNET-Peering](./media/apache-kafka-mirroring/hdi-add-vnet-peering.png)
+        :::image type="content" source="./media/apache-kafka-mirroring/hdi-add-vnet-peering.png" alt-text="HDInsight Kafka – Hinzufügen von VNET-Peering" border="true":::
 
 ### <a name="configure-ip-advertising"></a>Konfigurieren der Ankündigung der IP-Adresse
 
@@ -107,7 +107,7 @@ Konfigurieren Sie die Ankündigung der IP-Adresse, um einem Client das Herstelle
 1. Wählen Sie für **Save Configuration Changes** (Konfigurationsänderungen speichern) die Option **OK** aus.
 1. Wählen Sie in der Benachrichtigung **Restart Required** (Neustart erforderlich) die Option **Restart** > **Restart All Affected** (Neustart > Alle betroffenen neu starten) aus. Wählen Sie **Confirm Restart All**.
 
-    ![Apache Ambari – Neustarten aller betroffenen Instanzen](./media/apache-kafka-mirroring/ambari-restart-notification.png)
+    :::image type="content" source="./media/apache-kafka-mirroring/ambari-restart-notification.png" alt-text="Apache Ambari – Neustarten aller betroffenen Instanzen" border="true":::
 
 ### <a name="configure-kafka-to-listen-on-all-network-interfaces"></a>Konfigurieren Sie Kafka zum Lauschen auf allen Netzwerkschnittstellen.
     
@@ -120,7 +120,7 @@ Konfigurieren Sie die Ankündigung der IP-Adresse, um einem Client das Herstelle
 1. Wählen Sie auf dem Ambari-Dashboard **Hosts** aus.
 1. Notieren Sie sich die IP-Adressen für Broker und Zookeeper. Die ersten beiden Buchstaben des Hostnamens lauten **wn** für die Brokerknoten und **zk** für die Zookeeperknoten.
 
-    ![Apache Ambari – Ansicht mit IP-Adressknoten](./media/apache-kafka-mirroring/view-node-ip-addresses2.png)
+    :::image type="content" source="./media/apache-kafka-mirroring/view-node-ip-addresses2.png" alt-text="Apache Ambari – Ansicht mit IP-Adressknoten" border="true":::
 
 1. Wiederholen Sie die vorangegangenen drei Schritte für den zweiten Cluster **kafka-secondary-cluster**: Konfigurieren der Ankündigung von IP-Adressen, Einrichten von Listenern und Notieren der IP-Adressen von Broker und Zookeeper.
 
@@ -256,7 +256,7 @@ Konfigurieren Sie die Ankündigung der IP-Adresse, um einem Client das Herstelle
         1. Ändern Sie den Wert von `auto.create.topics.enable` in „true“, und wählen Sie dann __Speichern__. Fügen Sie einen Hinweis hinzu, und wählen Sie dann erneut __Speichern__.
         1. Wählen Sie den Dienst __Kafka__, dann die Option __Neu starten__ und abschließend die Option __Neustart aller betroffenen__. Klicken Sie bei entsprechender Aufforderung auf __Neustart aller Dienste bestätigen__.
 
-        ![Kafka – Aktivieren der automatischen Erstellung eines Themas](./media/apache-kafka-mirroring/kafka-enable-auto-create-topics.png)
+        :::image type="content" source="./media/apache-kafka-mirroring/kafka-enable-auto-create-topics.png" alt-text="Kafka – Aktivieren der automatischen Erstellung eines Themas" border="true":::
 
 ## <a name="start-mirrormaker"></a>Starten von MirrorMaker
 

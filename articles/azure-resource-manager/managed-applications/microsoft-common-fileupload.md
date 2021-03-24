@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: tomfitz
 ms.openlocfilehash: c4eb3972be85ac7e291380f64127c20424b0d0f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87004278"
 ---
 # <a name="microsoftcommonfileupload-ui-element"></a>Benutzeroberflächenelement „Microsoft.Common.FileUpload“
@@ -78,9 +78,9 @@ Wenn für „options.multiple“ der Wert „true“ und für „options.uploadM
 
 Beim Testen eines CreateUiDefinition-Elements schneiden manche Browser (etwa Google Chrome) in der Browserkonsole URLs ab, die vom Microsoft.Common.FileUpload-Element erstellt wurden. Unter Umständen müssen Sie mit der rechten Maustaste auf einzelne Links klicken, um die vollständigen URLs zu kopieren.
 
-## <a name="remarks"></a>Bemerkungen
+## <a name="remarks"></a>Hinweise
 
-- `constraints.accept` gibt die Typen von Dateien an, die im Dateidialogfeld des Browsers angezeigt werden. Zulässige Werte finden Sie in der [HTML5-Spezifikation](https://html.spec.whatwg.org/multipage/input.html#attr-input-accept). Der Standardwert ist **NULL**.
+- `constraints.accept` gibt die Typen von Dateien an, die im Dateidialogfeld des Browsers angezeigt werden. Zulässige Werte finden Sie in der [HTML5-Spezifikation](https://html.spec.whatwg.org/multipage/input.html#attr-input-accept). Der Standardwert lautet **null**.
 - Wenn `options.multiple` auf **true** festgelegt ist, kann der Benutzer im Dateidialogfeld des Browsers mehr als eine Datei auswählen. Der Standardwert ist **false**.
 - Dieses Element unterstützt das Hochladen von Dateien basierend auf dem Wert für `options.uploadMode` in zwei Modi. Wenn **file** angegeben ist, weist die Ausgabe den Inhalt der Datei als Blob auf. Wenn **url** angegeben ist, wird die Datei an einen temporären Speicherort hochgeladen, und die Ausgabe weist die URL des Blobs auf. Temporäre Blobs werden nach 24 Stunden endgültig gelöscht. Der Standardwert ist **file**.
 - Eine hochgeladene Datei ist geschützt. Die Ausgabe-URL enthält ein [SAS-Token](../../storage/common/storage-sas-overview.md?toc=/azure/storage/blobs/toc.json) für den Zugriff auf die Datei während der Bereitstellung.

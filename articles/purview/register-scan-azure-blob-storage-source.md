@@ -8,10 +8,10 @@ ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/25/2020
 ms.openlocfilehash: b27b46c68d018d2ddf79d284b20cc05b51640891
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98880640"
 ---
 # <a name="register-and-scan-azure-blob-storage"></a>Azure Blob Storage registrieren und scannen
@@ -24,7 +24,7 @@ Für Azure Blob Storage werden vollständige und inkrementelle Überprüfungen z
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Erstellen Sie vor dem Registrieren der Datenquellen zunächst ein Azure Purview-Konto. Weitere Informationen zum Erstellen eines Purview-Kontos finden Sie unter [Schnellstart: Erstellen eines Azure Purview-Kontos im Azure-Portal](create-catalog-portal.md).
+- Erstellen Sie vor dem Registrieren der Datenquellen zunächst ein Azure Purview-Konto. Weitere Informationen zum Erstellen eines Purview-Kontos finden Sie unter [Schnellstart: Erstellen eines Azure Purview-Kontos im Azure-Portal](create-catalog-portal.md).
 - Sie müssen ein Azure Purview-Datenquellenadministrator sein.
 
 ## <a name="setting-up-authentication-for-a-scan"></a>Einrichten der Authentifizierung für eine Überprüfung
@@ -56,7 +56,7 @@ Wenn **Kontoschlüssel** als Authentifizierungsmethode ausgewählt wird, müssen
 1. Kopieren Sie Ihren *Schlüssel*, und speichern Sie ihn für die nächsten Schritte.
 1. Navigieren zum Schlüsseltresor
 1. Wählen Sie **Einstellungen > Geheimnisse** aus.
-1. Wählen Sie **+ Generieren/Importieren** aus, und geben Sie den **Namen** und den **Wert** als *Schlüssel* für Ihr Speicherkonto ein.
+1. Wählen Sie **+ Generieren/Importieren** aus, und geben Sie den **Namen** und **Wert** als *Schlüssel* für Ihr Speicherkonto ein.
 1. Wählen Sie **Erstellen** aus, um den Vorgang abzuschließen.
 1. Falls für Ihren Schlüsseltresor noch keine Verbindung mit Purview hergestellt wurde, müssen Sie eine [neue Schlüsseltresorverbindung erstellen](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account).
 1. [Erstellen Sie abschließend neue Anmeldeinformationen](manage-credentials.md#create-a-new-credential), indem Sie den Schlüssel zum Einrichten Ihrer Überprüfung verwenden.
@@ -71,7 +71,7 @@ Zur Nutzung eines Dienstprinzipals können Sie einen vorhandenen Dienstprinzipal
 > 1. Wählen Sie im Menü auf der linken Seite die Option **Azure Active Directory** aus.
 > 1. Wählen Sie **App-Registrierungen** aus.
 > 1. Wählen Sie **+ Registrierung einer neuen Anwendung** aus.
-> 1. Geben Sie einen Namen für die **Anwendung** (Dienstprinzipalname) ein.
+> 1. Geben Sie einen Namen für die **Anwendung** ein (Dienstprinzipalname).
 > 1. Wählen Sie **Nur Konten in diesem Organisationsverzeichnis** aus.
 > 1. Wählen Sie als Umleitungs-URI die Option **Web** aus, und geben Sie die gewünschte URL ein. Hierbei muss es sich nicht um eine reale oder geschäftliche URL handeln.
 > 1. Klicken Sie anschließend auf **Registrieren**.
@@ -79,10 +79,10 @@ Zur Nutzung eines Dienstprinzipals können Sie einen vorhandenen Dienstprinzipal
 Es ist erforderlich, die Anwendungs-ID und das Geheimnis des Dienstprinzipals abzurufen:
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Dienstprinzipal.
-1. Kopieren Sie die Werte von **Anwendungs-ID (Client)** unter **Übersicht** und **Geheimer Clientschlüssel** unter **Zertifikate und Geheimnisse**.
+1. Kopieren Sie die Werte von **Anwendungs-ID (Client)** unter **Übersicht** und von **Geheimer Clientschlüssel** unter **Zertifikate und Geheimnisse**.
 1. Navigieren zum Schlüsseltresor
 1. Wählen Sie **Einstellungen > Geheimnisse** aus.
-1. Wählen Sie **+ Generieren/Importieren** aus, und geben Sie den gewünschten **Namen** und den **Wert** unter **Geheimer Clientschlüssel** für den Dienstprinzipal ein.
+1. Wählen Sie **+ Generieren/Importieren** aus, und geben Sie unter **Name** einen gewünschten Namen und den **Wert** als **Geheimen Clientschlüssel** Ihres Dienstprinzipals ein.
 1. Wählen Sie **Erstellen** aus, um den Vorgang abzuschließen.
 1. Falls für Ihren Schlüsseltresor noch keine Verbindung mit Purview hergestellt wurde, müssen Sie eine [neue Schlüsseltresorverbindung erstellen](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account).
 1. [Erstellen Sie abschließend neue Anmeldeinformationen](manage-credentials.md#create-a-new-credential), indem Sie den Dienstprinzipal zum Einrichten Ihrer Überprüfung verwenden.
@@ -114,7 +114,7 @@ Gehen Sie wie folgt vor, um in Ihrem Datenkatalog ein neues Blob Storage-Konto z
 1. Wählen Sie im linken Navigationsbereich die Option **Quellen** aus.
 1. Wählen Sie **Registrieren** aus.
 1. Wählen Sie unter **Register sources** (Quellen registrieren) die Option **Azure Blob Storage** aus.
-1. Wählen Sie **Weiter**.
+1. Wählen Sie **Weiter** aus.
 
 Gehen Sie auf dem Bildschirm **Register sources (Azure Blob Storage)** (Quellen registrieren (Azure Blob Storage)) wie folgt vor:
 
@@ -130,5 +130,5 @@ Gehen Sie auf dem Bildschirm **Register sources (Azure Blob Storage)** (Quellen 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Browsen im Azure Purview-Datenkatalog](how-to-browse-catalog.md)
-- [Suchen im Azure Purview-Datenkatalog](how-to-search-catalog.md)
+- [Browsen im Azure Purview-Datenkatalog](how-to-browse-catalog.md)
+- [Suchen im Azure Purview-Datenkatalog](how-to-search-catalog.md)

@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 04/18/2016
 ms.author: alkohli
 ms.openlocfilehash: 309fa85d0a4d877522a89dd8f1e6e71fb2074744
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96022937"
 ---
 # <a name="use-storsimple-snapshot-manager-to-view-and-manage-volumes"></a>Verwenden des StorSimple Snapshot Managers zum Anzeigen und Verwalten von Volumes
@@ -40,7 +40,7 @@ In diesem Lernprogramm wird erläutert, wie Sie Volumes bereitstellen, initialis
 * Konfigurieren und Sichern eines dynamisch gespiegelten Volumes
 
 > [!NOTE]
-> Alle über den Knoten **Volume** verfügbaren Aktionen stehen auch im Bereich **Aktionen** zur Verfügung.
+> Alle für den Knoten **Volumes** ausführbaren Aktionen sind auch im Bereich **Aktionen** verfügbar.
 > 
 > 
 
@@ -53,7 +53,7 @@ Gehen Sie folgendermaßen vor, um StorSimple-Volumes bereitzustellen, zu initial
 3. Starten Sie die Datenträgerverwaltung mithilfe einer der folgenden Vorgehensweisen:
    
    * Geben Sie im Feld **Ausführen** "Diskmgmt.msc" ein.
-   * Starten Sie den Server-Manager, erweitern Sie den Knoten **Speicher**, und wählen Sie dann **Datenträgerverwaltung** aus.
+   * Starten Sie den Server-Manager, erweitern Sie den Knoten **Speicher**, und wählen Sie **Datenträgerverwaltung** aus.
    * Starten Sie **Verwaltung**, erweitern Sie den Knoten **Computerverwaltung**, und wählen Sie dann **Datenträgerverwaltung** aus. 
      
      > [!NOTE]
@@ -62,17 +62,17 @@ Gehen Sie folgendermaßen vor, um StorSimple-Volumes bereitzustellen, zu initial
      > 
 4. Schalten Sie die Volumes online:
    
-   1. Klicken Sie in der Datenträgerverwaltung mit der rechten Maustaste auf ein Volume, für das **Offline** angezeigt wird.
-   2. Klicken Sie auf **Datenträger reaktivieren**. Der Datenträger sollte nach dem erneuten Aktivieren als **Online** angezeigt werden.
+   1. Klicken Sie in der Datenträgerverwaltung mit der rechten Maustaste auf ein als **Offline** gekennzeichnetes Volume.
+   2. Klicken Sie auf **Datenträger reaktivieren**. Nach erfolgter Reaktivierung sollte der Datenträger als **Online** gekennzeichnet sein.
 5. Initialisieren Sie die Volumes:
    
    1. Klicken Sie mit der rechten Maustaste auf die ermittelten Volumes.
-   2. Wählen Sie im Menü die Option **Datenträger initialisieren** aus.
-   3. Wählen Sie im Dialogfeld **Datenträgerinitialisierung** die Datenträger aus, die Sie initialisieren möchten, und klicken Sie dann auf **OK**.
+   2. Wählen Sie im Menü **Datenträgerinitialisierung** aus.
+   3. Wählen Sie im Dialogfeld **Datenträgerinitialisierung** die zu initialisierenden Datenträger aus, und klicken Sie dann auf **OK**.
 6. Formatieren Sie einfache Volumes:
    
    1. Klicken Sie mit der rechten Maustaste auf ein zu formatierendes Volume.
-   2. Wählen Sie im Menü die Option **Neues einfaches Volume** aus.
+   2. Wählen Sie im Menü **Neues einfaches Volume** aus.
    3. Verwenden Sie den Assistenten zum Erstellen neuer einfacher Volumes, um das Volume zu formatieren:
       
       * Geben Sie die Größe des Volumes an.
@@ -93,10 +93,10 @@ Gehen Sie folgendermaßen vor, um Informationen zu lokalen und Azure StorSimple-
    
    | Ergebnisspalte | BESCHREIBUNG |
    |:--- |:--- |
-   |  Name |Die Spalte **Name** enthält den Laufwerkbuchstaben, der den jeweiligen ermittelten Volumes zugeordnet wurde. |
+   |  Name |Die Spalte **Name** enthält den Laufwerkbuchstaben, der den einzelnen ermittelten Volumes zugewiesen wurde. |
    |  Sicherungsmedium |Die Spalte **Gerät** enthält die IP-Adresse des mit dem Hostcomputer verbundenen Geräts. |
-   |  Device Volume Name |Die Spalte **Device Volume Name** enthält den Namen des Gerätevolumes, zu dem das ausgewählte Volume gehört. Dies ist der im Azure-Portal für das Volume festgelegte Volumename. |
-   |  Access Paths |Die Spalte **Access Paths** zeigt den Zugriffspfad zum Volume an. Dies ist der Laufwerkbuchstabe oder der Bereitstellungspunkt, über den auf dem Hostcomputer auf das Volume zugegriffen werden kann. |
+   |  Device Volume Name |Die Spalte **Name des Gerätevolumes** enthält den Namen des Gerätevolumes, dem das ausgewählte Volume angehört. Dies ist der im Azure-Portal für das Volume festgelegte Volumename. |
+   |  Access Paths |In der Spalte **Zugriffspfade** wird der Zugriffspfad zum Volume angezeigt. Dies ist der Laufwerkbuchstabe oder der Bereitstellungspunkt, über den auf dem Hostcomputer auf das Volume zugegriffen werden kann. |
 
 ## <a name="delete-a-volume"></a>Löschen von Volumes
 Wenden Sie das folgende Verfahren zum Löschen eines Volumes aus dem StorSimple Snapshot Manager an.
@@ -111,7 +111,7 @@ Wenden Sie das folgende Verfahren zum Löschen eines Volumes aus dem StorSimple 
 4. Klicken Sie im Menü auf **Löschen**. 
    
     ![Löschen von Volumes](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_Delete_volume.png) 
-5. Das Dialogfeld **Volume löschen** wird angezeigt. Geben Sie in das Textfeld den Text **Bestätigen** ein, und klicken Sie dann auf **OK**.
+5. Das Dialogfeld **Volume löschen** wird angezeigt. Geben Sie im Textfeld **Bestätigen** ein, und klicken Sie auf **OK**.
 6. Standardmäßig sichert der StorSimple Snapshot Manager ein Volume vor dem Löschen. Diese Vorsichtsmaßnahme schützt im Fall einer unbeabsichtigten Löschung vor Datenverlust. In StorSimple Snapshot Manager wird eine Statusmeldung für die **automatische Momentaufnahme** angezeigt, während das Volume gesichert wird. 
    
     ![Nachricht zur automatischen Momentaufnahme](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_Automatic_snap.png) 
@@ -144,45 +144,45 @@ Vorbereitungen
 5. Klicken Sie im Bereich **Ergebnisse** mit der rechten Maustaste auf das Volume, und wählen Sie dann **Volumegruppe erstellen** aus. 
    
     ![Volumegruppe erstellen](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_Create_volume_group.png) 
-6. Geben Sie im Dialogfeld **Volumegruppe erstellen** einen Namen für die Volumegruppe ein, weisen Sie Volumes zu, und klicken Sie dann auf **OK**.
+6. Geben Sie im Dialogfeld **Volumegruppe erstellen** einen Namen für die Volumegruppe ein, weisen Sie das Volume dieser Gruppe zu, und klicken Sie dann auf **OK**.
 7. Erweitern Sie im Fensterbereich **Bereich** den Knoten **Volumegruppen**. Die neue Volumegruppe sollte unter dem Knoten **Volumegruppen** angezeigt werden. 
 8. Klicken Sie mit der rechten Maustaste auf den Namen der Volumegruppe.
    
-   * Um einen interaktiven (bedarfsgesteuerten) Sicherungsauftrag zu starten, klicken Sie auf **Sicherung anlegen**. 
-   * Um eine automatische Sicherung zu planen, klicken Sie auf **Sicherungsrichtlinie erstellen**. Wählen Sie auf der Seite **Allgemein** eine Volumegruppe in der Liste aus. Geben Sie auf der Seite **Zeitplan** Details zum Zeitplan ein. Wenn Sie fertig sind, klicken Sie auf **OK**. 
+   * Um einen interaktiven (bedarfsgesteuerten) Sicherungsauftrag zu starten, klicken Sie auf **Sicherung erstellen**. 
+   * Um eine automatische Sicherung zu planen, klicken Sie auf **Sicherungsrichtlinie erstellen**. Wählen Sie auf der Seite **Allgemein** eine Volumegruppe aus der Liste aus. Geben Sie auf der Seite **Zeitplan** die Details zum Zeitplan ein. Wenn Sie fertig sind, klicken Sie auf **OK**. 
 9. Um den Start des Sicherungsauftrags zu überprüfen, erweitern Sie im Fensterbereich **Bereich** den Knoten **Aufträge**, und klicken Sie dann auf den Knoten **Wird ausgeführt**. Die Liste der zurzeit ausgeführten Aufträge wird im **Ergebnisbereich** angezeigt. 
 
 ## <a name="configure-and-back-up-a-dynamic-mirrored-volume"></a>Konfigurieren und Sichern eines dynamisch gespiegelten Volumes
 Führen Sie die folgenden Schritte aus, um die Sicherung eines dynamisch gespiegelten Volumes zu konfigurieren:
 
-* Schritt 1: Erstellen eines dynamisch gespiegelten Volumes mithilfe der Datenträgerverwaltung 
-* Schritt 2: Konfigurieren der Sicherung mit dem StorSimple Snapshot Manager
+* Schritt 1: Erstellen eines dynamisch gespiegelten Volumes mithilfe der Datenträgerverwaltung 
+* Schritt 2: Konfigurieren der Sicherung mit dem StorSimple Snapshot Manager
 
 ### <a name="prerequisites"></a>Voraussetzungen
 Vorbereitungen
 
 * Stellen Sie sicher, dass das StorSimple-Gerät und der Hostcomputer ordnungsgemäß konfiguriert sind. Weitere Informationen finden Sie unter [Bereitstellen des lokalen StorSimple-Geräts](storsimple-8000-deployment-walkthrough-u2.md).
 * Installieren und konfigurieren Sie den StorSimple Snapshot Manager. Weitere Informationen finden Sie unter [Bereitstellen des StorSimple Snapshot Managers](storsimple-snapshot-manager-deployment.md).
-* Konfigurieren Sie zwei Volumes auf dem StorSimple-Gerät. (In den Beispielen lauten die verfügbaren Volumes **Disk 1** und **Disk 2**.) 
+* Konfigurieren Sie zwei Volumes auf dem StorSimple-Gerät. (In den Beispielen lauten die verfügbaren Volumes **Datenträger 1** und **Datenträger 2**.) 
 
-### <a name="step-1-use-disk-management-to-create-a-dynamic-mirrored-volume"></a>Schritt 1: Erstellen eines dynamisch gespiegelten Volumes mithilfe der Datenträgerverwaltung
+### <a name="step-1-use-disk-management-to-create-a-dynamic-mirrored-volume"></a>Schritt 1: Erstellen eines dynamisch gespiegelten Volumes mithilfe der Datenträgerverwaltung 
 Die Datenträgerverwaltung ist ein Systemprogramm zum Verwalten von Festplatten und den darauf enthaltenen Volumes oder Partitionen. Weitere Informationen zur Datenträgerverwaltung finden Sie unter [Disk Management](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc770943(v=ws.11)) (in englischer Sprache) auf der Microsoft TechNet-Website.
 
 #### <a name="to-create-a-dynamic-mirrored-volume"></a>So erstellen Sie ein dynamisch gespiegeltes Volume
 1. Starten Sie die Datenträgerverwaltung mithilfe einer der folgenden Vorgehensweisen: 
    
-   * Öffnen Sie das Feld **Ausführen**, geben Sie **Diskmgmt.msc** ein, und drücken Sie die EINGABETASTE.
-   * Starten Sie den Server-Manager, erweitern Sie den Knoten **Speicher**, und wählen Sie dann **Datenträgerverwaltung** aus. 
+   * Öffnen Sie das Feld **Ausführen**, geben Sie **Diskmgmt.msc** ein, und drücken Sie EINGABE.
+   * Starten Sie den Server-Manager, erweitern Sie den Knoten **Speicher**, und wählen Sie **Datenträgerverwaltung** aus. 
    * Starten Sie **Verwaltung**, erweitern Sie den Knoten **Computerverwaltung**, und wählen Sie dann **Datenträgerverwaltung** aus. 
-2. Vergewissern Sie sich, dass auf dem StorSimple-Gerät zwei Volumes verfügbar sind. (Im Beispiel lauten die verfügbaren Volumes **Disk 1** und **Disk 2**.) 
-3. Klicken Sie im Fenster der Datenträgerverwaltung in der rechten Spalte des unteren Bereichs mit der rechten Maustaste auf **Disk 1**, und wählen Sie **Neues gespiegeltes Volume** aus. 
+2. Vergewissern Sie sich, dass auf dem StorSimple-Gerät zwei Volumes verfügbar sind. (Im Beispiel lauten die verfügbaren Volumes **Datenträger 1** und **Datenträger 2**.) 
+3. Klicken Sie im Fenster **Datenträgerverwaltung** in der rechten Spalte des unteren Bereichs mit der rechten Maustaste auf **Datenträger 1**, und wählen Sie Neues gespiegeltes Volume aus. 
    
     ![Neues gespiegeltes Volume](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_New_mirrored_volume.png) 
-4. Klicken Sie auf der Seite **Neues gespiegeltes Volum** e des Assistenten auf **Weiter**.
-5. Wählen Sie auf der Seite **Datenträger auswählen** im Bereich **Ausgewählt** den Eintrag **Disk 2** aus, und klicken Sie auf **Hinzufügen** und dann auf **Weiter**. 
+4. Klicken Sie auf der Assistentenseite **Neues gespiegeltes Volume** auf **Weiter**.
+5. Wählen Sie auf der Seite **Datenträger auswählen** im Bereich **Ausgewählt** die Komponente **Datenträger 2** aus, und klicken Sie auf **Hinzufügen** und dann auf **Weiter**. 
 6. Übernehmen Sie auf der Seite **Laufwerkbuchstaben oder -pfad zuordnen** die Standardeinstellungen, und klicken Sie dann auf **Weiter**. 
-7. Wählen Sie auf der Seite **Volume formatieren** im Feld **Größe der Zuordnungseinheit** den Wert **64K** aus. Aktivieren Sie das Kontrollkästchen **Schnellformatierung durchführen**, und klicken Sie dann auf **Weiter**. 
-8. Überprüfen Sie auf der Seite **Fertigstellen des Assistenten** die Einstellungen, und klicken Sie dann auf **Fertig stellen**. 
+7. Wählen Sie auf der Seite **Volume formatieren** im Feld **Größe der Zuordnungseinheit** den Wert **64 K** aus. Aktivieren Sie das Kontrollkästchen **Schnellformatierung durchführen**, und klicken Sie dann auf **Weiter**. 
+8. Überprüfen Sie die Einstellungen auf der Seite zum Fertigstellen des neuen gespiegelten Volumes, und klicken Sie dann auf **Fertig stellen**. 
 9. Es wird eine Meldung angezeigt, die angibt, dass der Basisdatenträger in einen dynamischen Datenträger konvertiert wird. Klicken Sie auf **Ja**.
    
     ![Nachricht zur Konvertierung in einen dynamischen Datenträger](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_Disk_management_msg.png) 
@@ -190,19 +190,19 @@ Die Datenträgerverwaltung ist ein Systemprogramm zum Verwalten von Festplatten 
     
     ![Datenträgerverwaltung – dynamisch gespiegelte Datenträger](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_Verify_dynamic_disks_2.png) 
 
-### <a name="step-2-use-storsimple-snapshot-manager-to-configure-backup"></a>Schritt 2: Konfigurieren der Sicherung mit dem StorSimple Snapshot Manager
+### <a name="step-2-use-storsimple-snapshot-manager-to-configure-backup"></a>Schritt 2: Konfigurieren der Sicherung mit dem StorSimple Snapshot Manager
 Verwenden Sie das folgende Verfahren zum Konfigurieren eines dynamisch gespiegelten Volumes, und starten Sie dann eine sofortige Sicherung, oder erstellen Sie eine Richtlinie für geplante Sicherungen.
 
 #### <a name="to-configure-backup-of-a-dynamic-mirrored-volume"></a>So konfigurieren Sie die Sicherung eines dynamisch gespiegelten Volumes
 1. Klicken Sie auf das StorSimple Snapshot Manager-Symbol auf Ihrem Desktop. Das Fenster des StorSimple Snapshot Managers wird angezeigt. 
 2. Klicken Sie im Fensterbereich **Bereich** mit der rechten Maustaste auf den Knoten **Volumes**, und wählen Sie **Volumes erneut überprüfen** aus. Wenn die Überprüfung abgeschlossen ist, wird im **Ergebnisbereich** eine Liste der Volumes angezeigt. Das dynamisch gespiegelte Volume wird als ein einzelnes Volume aufgeführt. 
 3. Klicken Sie im Bereich **Ergebnisse** mit der rechten Maustaste auf das dynamisch gespiegelte Volume, und klicken Sie dann auf **Volumegruppe erstellen**. 
-4. Geben Sie im Dialogfeld **Volumegruppe erstellen** einen Namen für die Volumegruppe ein, weisen Sie der Gruppe das dynamisch gespiegelte Volume zu, und klicken Sie dann auf **OK**. 
+4. Geben Sie im Dialogfeld **Volumegruppe erstellen** einen Namen für die Volumegruppe ein, weisen Sie das dynamische gespiegelte Volume dieser Gruppe zu, und klicken Sie dann auf **OK**. 
 5. Erweitern Sie im Fensterbereich **Bereich** den Knoten **Volumegruppen**. Die neue Volumegruppe sollte unter dem Knoten **Volumegruppen** angezeigt werden. 
 6. Klicken Sie mit der rechten Maustaste auf den Namen der Volumegruppe. 
    
-   * Um einen interaktiven (bedarfsgesteuerten) Sicherungsauftrag zu starten, klicken Sie auf **Sicherung anlegen**. 
-   * Um eine automatische Sicherung zu planen, klicken Sie auf **Sicherungsrichtlinie erstellen**. Wählen Sie auf der Seite **Allgemein** die Volumegruppe aus der Liste aus. Geben Sie auf der Seite **Zeitplan** Details zum Zeitplan ein. Wenn Sie fertig sind, klicken Sie auf **OK**. 
+   * Um einen interaktiven (bedarfsgesteuerten) Sicherungsauftrag zu starten, klicken Sie auf **Sicherung erstellen**. 
+   * Um eine automatische Sicherung zu planen, klicken Sie auf **Sicherungsrichtlinie erstellen**. Wählen Sie auf der Seite **Allgemein** die Volumegruppe aus der Liste aus. Geben Sie auf der Seite **Zeitplan** die Details zum Zeitplan ein. Wenn Sie fertig sind, klicken Sie auf **OK**. 
 7. Sie können den Sicherungsauftrag während der Ausführung überwachen. Erweitern Sie im Fensterbereich **Bereich** den Knoten **Aufträge**, und klicken Sie dann auf **Wird ausgeführt**. Die Auftragsdetails werden im Bereich **Ergebnisse** angezeigt. Nach Abschluss des Sicherungsauftrags werden die Details an die Auftragsliste **Letzte 24 Stunden** übertragen. 
 
 ## <a name="next-steps"></a>Nächste Schritte

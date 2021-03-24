@@ -9,17 +9,17 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: df9eee825f0becbe4efde4aacb2fe895f2d0132c
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98879138"
 ---
 # <a name="azcopy-doc"></a>azcopy doc
 
 Generiert Dokumentation zum Tool im Markdown-Format.
 
-## <a name="synopsis"></a>Zusammenfassung
+## <a name="synopsis"></a>Übersicht
 
 Generiert Dokumentation zum Tool im Markdown-Format und speichert sie am angegebenen Speicherort.
 

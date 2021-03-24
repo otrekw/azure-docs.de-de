@@ -4,10 +4,10 @@ description: Platzhalter
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: 17b1f93c18dfb013916c4c0d3756fb97a73e2675
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87042960"
 ---
 # <a name="video-playback"></a>Videowiedergabe 
@@ -16,7 +16,7 @@ ms.locfileid: "87042960"
 
 * [Übersicht zu Live Video Analytics in IoT Edge](overview.md)
 * [Terminologie zu Live Video Analytics in IoT Edge](terminology.md)
-* [Mediengraph: Konzept](media-graph-concept.md)
+* [Mediengraph: Konzepte](media-graph-concept.md)
 
 ## <a name="overview"></a>Übersicht  
 
