@@ -9,19 +9,19 @@ ms.date: 12/16/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: b46a2ea12a697afde8223cc3595365c1286512c7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86132460"
 ---
 # <a name="fail-over-hyper-v-vms-to-azure"></a>Ausführen eines Failovers auf Azure für virtuelle Hyper-V-Computer
 
-In diesem Tutorial erfahren Sie, wie Sie mit [Azure Site Recovery](site-recovery-overview.md) das Failover auf Azure für Hyper-V-VMs einrichten. Nach dem Failover erfolgt ein Failback zum lokalen Standort, wenn er verfügbar ist. In diesem Tutorial lernen Sie Folgendes:
+In diesem Tutorial erfahren Sie, wie Sie mit [Azure Site Recovery](site-recovery-overview.md) das Failover auf Azure für Hyper-V-VMs einrichten. Nach dem Failover erfolgt ein Failback zum lokalen Standort, wenn er verfügbar ist. In diesem Tutorial lernen Sie, wie die folgenden Aufgaben ausgeführt werden:
 
 > [!div class="checklist"]
 > * Überprüfen der Hyper-V-VM-Eigenschaften zum Feststellen der Konformität mit Azure-Anforderungen
-> * Führen Sie für bestimmte VMs ein Failover auf Azure aus.
+> * Ausführen eines Failovers auf Azure für bestimmte VMs
 
 
 Dies ist das fünfte Tutorial in einer Reihe. Es wird davon ausgegangen, dass Sie bereits die Aufgaben in den vorherigen Tutorials durchgearbeitet haben.    

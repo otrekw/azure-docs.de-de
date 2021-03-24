@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 6bf3eccec70619bf73397e315c6d851f753ec52f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92521831"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-uberflip"></a>Tutorial: Azure Active Directory-Integration in Uberflip
@@ -55,7 +55,7 @@ Zum Konfigurieren der Integration von Uberflip in Azure AD müssen Sie Uberflip 
 
    ![Die Option „Azure Active Directory“](common/select-azuread.png)
 
-1. Navigieren Sie zu **Unternehmensanwendungen** , und wählen Sie die Option **Alle Anwendungen** aus.
+1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen** aus.
 
    ![Bereich „Unternehmensanwendungen“](common/enterprise-applications.png)
 
@@ -115,7 +115,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Uberfli
 
      ![Screenshot: Option „Zusätzliche URLs festlegen“ zum Eingeben einer Anmelde-URL](common/both-signonurl.png)
 
-1. Klicken Sie im Bereich **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen** , um die **Verbundmetadaten-XML** aus den verfügbaren Optionen herunterzuladen und auf Ihrem Computer zu speichern.
+1. Klicken Sie im Bereich **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um die **Verbundmetadaten-XML** aus den verfügbaren Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 
    ![Downloadoption für Verbundmetadaten-XML](common/metadataxml.png)
 
@@ -151,7 +151,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
   
     1. Geben Sie in das Feld **Benutzername** den Namen **BSimon\@\<yourcompanydomain>.\<extension>** ein. Beispiel: **BSimon\@contoso.com**
 
-    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen** , und notieren Sie sich den Wert aus dem Feld **Kennwort**.
+    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
 
     1. Klicken Sie auf **Erstellen**.
 

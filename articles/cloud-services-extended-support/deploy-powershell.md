@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 08a8dde815a6dea5d69e5e2a385cbaa03fba681a
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: 0c1b67e42e7988a836ec58ac022b11d736210bca
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99832693"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865620"
 ---
 # <a name="deploy-a-cloud-service-extended-support-using-azure-powershell"></a>Bereitstellen eines Clouddiensts (erweiterter Support) mithilfe von Azure PowerShell
 
@@ -88,7 +88,7 @@ Informieren Sie sich über die [Bereitstellungsvoraussetzungen](deploy-prerequis
     $networkProfile = @{loadBalancerConfiguration = $loadBalancerConfig} 
     ```
  
-9. Erstellen einer Key Vault-Instanz Diese Key Vault-Instanz wird zum Speichern von Zertifikaten verwendet, die den Rollen des Clouddiensts (erweiterter Support) zugeordnet sind. Vergewissern Sie sich, dass Sie „Zugriffsrichtlinien“ (im Portal) für den Zugriff auf „Azure Virtual Machines für Bereitstellung“ und „Azure Resource Manager für Vorlagenbereitstellung“ aktiviert haben. Die Key Vault-Instanz muss in der gleichen Region und im gleichen Abonnement erstellt werden wie der Clouddienst und einen eindeutigen Namen besitzen. Weitere Informationen finden Sie unter [Verwenden von Zertifikaten mit Azure Cloud Services (erweiterter Support)](certificates-and-key-vault.md).
+9. Erstellen einer Key Vault-Instanz Diese Key Vault-Instanz wird zum Speichern von Zertifikaten verwendet, die den Rollen des Clouddiensts (erweiterter Support) zugeordnet sind. Die Key Vault-Instanz muss in der gleichen Region und im gleichen Abonnement erstellt werden wie der Clouddienst und einen eindeutigen Namen besitzen. Weitere Informationen finden Sie unter [Verwenden von Zertifikaten mit Azure Cloud Services (erweiterter Support)](certificates-and-key-vault.md).
 
     ```powershell
     New-AzKeyVault -Name "ContosKeyVault” -ResourceGroupName “ContosOrg” -Location “East US” 
@@ -97,6 +97,7 @@ Informieren Sie sich über die [Bereitstellungsvoraussetzungen](deploy-prerequis
 10. Aktualisieren Sie die Key Vault-Zugriffsrichtlinie, und erteilen Sie Ihrem Benutzerkonto Zertifikatberechtigungen. 
 
     ```powershell
+    Set-AzKeyVaultAccessPolicy -VaultName 'ContosKeyVault' -ResourceGroupName 'ContosOrg' -EnabledForDeployment
     Set-AzKeyVaultAccessPolicy -VaultName 'ContosKeyVault' -ResourceGroupName 'ContosOrg' -UserPrincipalName 'user@domain.com' -PermissionsToCertificates create,get,list,delete 
     ```
 

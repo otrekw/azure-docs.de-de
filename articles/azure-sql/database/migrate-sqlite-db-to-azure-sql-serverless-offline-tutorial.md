@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 01/08/2020
 ms.custom: sqldbrb=1
 ms.openlocfilehash: e2f240247cbba0f80254d504792df45be55c6a1b
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92790405"
 ---
 # <a name="how-to-migrate-your-sqlite-database-to-azure-sql-database-serverless"></a>Migrieren Ihrer SQLite-Datenbank zu „Azure SQL-Datenbank – serverlos“
@@ -59,7 +59,7 @@ Mit den im Anschluss aufgeführten Schritten wird Ihre Datenbank mit nur einigen
 
     ![Screenshot: Leeres Blatt „Verknüpfte Dienste“ in Azure Data Factory](./media/migrate-sqlite-db-to-azure-sql-serverless-offline-tutorial/linked-services-create.png)
 
-6. Klicken Sie bei **Verbindungen** unter **Verknüpfter Dienst** auf **Neu** .
+6. Klicken Sie bei **Verbindungen** unter **Verknüpfter Dienst** auf **Neu**.
 
 7. Suchen Sie nach dem Connector „ODBC“, und wählen Sie ihn aus.
 

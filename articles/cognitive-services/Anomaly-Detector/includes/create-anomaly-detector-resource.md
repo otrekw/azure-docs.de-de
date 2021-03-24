@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 09/10/2020
 ms.author: mbullwin
 ms.openlocfilehash: feb79d047a6c3b25176a13dcc3c3afd53a51459e
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102444461"
 ---
 ## <a name="create-an-anomaly-detector-resource"></a>Erstellen einer Anomalieerkennungsressource
@@ -25,7 +25,7 @@ ms.locfileid: "102444461"
     |--|--|
     |Name|Gewünschter Name (2 bis 64 Zeichen)|
     |Subscription|Wählen Sie ein passendes Abonnement aus|
-    |Location|Wählen Sie einen nahe gelegenen und verfügbaren Speicherort aus|
+    |Standort|Wählen Sie einen nahe gelegenen und verfügbaren Speicherort aus|
     |Preisstufe|`F0`: 10 Aufrufe pro Sekunde, 20.000 Transaktionen pro Monat <br> Oder:<br> `S0`: 80 Aufrufe pro Sekunde|
     |Ressourcengruppe|Wählen Sie eine verfügbare Ressourcengruppe aus|
 

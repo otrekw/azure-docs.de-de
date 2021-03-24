@@ -15,16 +15,16 @@ ms.date: 04/20/2018
 ms.author: allensu
 ms.custom: mvc
 ms.openlocfilehash: ae217352b83617600fd983a747d578f8f28e7ddd
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92779236"
 ---
 # <a name="tutorial-set-azure-cdn-caching-rules"></a>Tutorial: Festlegen der Azure CDN-Cacheregeln
 
 > [!NOTE] 
-> Cacheregeln sind nur für die Profile **Azure CDN Standard von Verizon** und **Azure CDN Standard von Akamai** verfügbar. Für Profile von **Azure CDN von Microsoft** müssen Sie die [Standard-Regel-Engine](cdn-standard-rules-engine-reference.md) verwenden und für Profile von **Azure CDN Premium von Verizon** die [Verizon Premium-Regel-Engine](./cdn-verizon-premium-rules-engine.md) im **Verwaltungsportal** , um eine ähnliche Funktionalität nutzen zu können.
+> Cacheregeln sind nur für die Profile **Azure CDN Standard von Verizon** und **Azure CDN Standard von Akamai** verfügbar. Für Profile von **Azure CDN von Microsoft** müssen Sie die [Standard-Regel-Engine](cdn-standard-rules-engine-reference.md) verwenden und für Profile von **Azure CDN Premium von Verizon** die [Verizon Premium-Regel-Engine](./cdn-verizon-premium-rules-engine.md) im **Verwaltungsportal**, um eine ähnliche Funktionalität nutzen zu können.
  
 
 In diesem Tutorial wird beschrieben, wie Sie anhand von Azure CDN-Cacheregeln (Content Delivery Network) das Standardverhalten bei Cacheablauf sowohl global als auch mit benutzerdefinierten Bedingungen (z.B. URL-Pfad und Dateierweiterungen) festlegen oder ändern können. Azure CDN bietet zwei Arten von Cacheregeln:
@@ -63,7 +63,7 @@ Erstellen Sie wie folgt eine globale Cacheregel:
 
 1. Legen Sie unter **Globale Cacheregeln** die Option **Verhalten für das Zwischenspeichern von Abfragezeichenfolgen** auf **Abfragezeichenfolgen ignorieren** fest.
 
-2. Legen Sie **Verhalten beim Zwischenspeichern** auf **Bei Fehlen festlegen** .
+2. Legen Sie **Verhalten beim Zwischenspeichern** auf **Bei Fehlen festlegen**.
        
 3. Geben Sie unter **Dauer bis Cacheablauf** in das Feld **Tage** die Zahl „10“ ein.
 
@@ -94,11 +94,11 @@ In den vorherigen Schritten haben Sie Cacheregeln erstellt. Wenn Sie diese Cache
 
 3. Legen Sie unter **Globale Cacheregeln** die Option **Verhalten beim Zwischenspeichern** auf **Nicht festgelegt** fest.
  
-4. Aktivieren Sie unter **Benutzerdefinierte Cacheregeln** , das Kontrollkästchen neben der Regel, die Sie löschen möchten.
+4. Aktivieren Sie unter **Benutzerdefinierte Cacheregeln**, das Kontrollkästchen neben der Regel, die Sie löschen möchten.
 
-5. Klicken Sie auf **Löschen** .
+5. Klicken Sie auf **Löschen**.
 
-6. Klicken Sie am oberen Rand der Seite auf **Speichern** .
+6. Klicken Sie am oberen Rand der Seite auf **Speichern**.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

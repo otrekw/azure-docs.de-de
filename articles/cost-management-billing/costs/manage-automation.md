@@ -3,17 +3,17 @@ title: Verwalten der Azure-Kosten mithilfe einer Automatisierung
 description: In diesem Artikel wird erläutert, wie Sie Azure-Kosten mithilfe einer Automatisierung verwalten können.
 author: bandersmsft
 ms.author: banders
-ms.date: 01/06/2021
+ms.date: 03/08/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.openlocfilehash: 02215bace693ac5ac36f9fc29758215d45b23eb1
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: f5cebffeaba1ce198be347758004068e8c03133b
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98051784"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102499678"
 ---
 # <a name="manage-costs-with-automation"></a>Verwalten der Kosten per Automatisierung
 
@@ -46,6 +46,8 @@ Erwägen Sie die Verwendung der [Nutzungsdetails-API](/rest/api/consumption/usag
 ## <a name="automate-retrieval-with-usage-details-api"></a>Automatischer Abruf mit der Nutzungsdetails-API
 
 Die [Nutzungsdetails-API](/rest/api/consumption/usageDetails) bietet eine einfache Möglichkeit, unformatierte, nicht aggregierte Kostendaten abzurufen, die Ihrer Azure-Rechnung entsprechen. Die API ist nützlich, wenn Ihre Organisation eine Lösung für den programmgesteuerten Datenabruf benötigt. Erwägen Sie den Einsatz der API, wenn Sie kleinere Datasets mit Kostendaten analysieren möchten. Wenn Sie hingegen über große Datasets verfügen, sollten Sie sich für eine der anderen Lösungen entscheiden, die zuvor genannt wurden. Die Daten in der Nutzungsdetails-API werden basierend auf Verbrauchseinheiten pro Tag bereitgestellt. Sie werden bei der Berechnung Ihrer monatlichen Rechnung verwendet. Die allgemein verfügbare Version dieser API ist `2019-10-01`. Verwenden Sie `2019-04-01-preview`, um per API auf die Vorschauversion für Reservierungen und Azure Marketplace-Käufe zuzugreifen.
+
+Wenn Sie in regelmäßigen Abständen große Mengen von exportierten Daten abrufen möchten, finden Sie weitere Informationen unter [Regelmäßiges Abrufen großer Datasets mit Kostendaten mithilfe von Exporten](ingest-azure-usage-at-scale.md).
 
 ### <a name="usage-details-api-suggestions"></a>Vorschläge zur Nutzungsdetails-API
 
@@ -101,81 +103,19 @@ Falls Sie für die Ist-Kosten Einkäufe anzeigen möchten, sobald diese anfallen
 GET https://management.azure.com/{scope}/providers/Microsoft.Consumption/usageDetails?metric=AmortizedCost&$filter=properties/usageStart+ge+'2019-04-01'+AND+properties/usageEnd+le+'2019-04-30'&api-version=2019-04-01-preview
 ```
 
-## <a name="retrieve-large-cost-datasets-recurringly-with-exports"></a>Regelmäßiges Abrufen großer Datasets mit Kostendaten mithilfe von Exporten
-
-Mithilfe von Exporten aus Cost Management können Sie regelmäßig große Datenmengen exportieren. Exportieren ist die empfohlene Abrufmethode für nicht aggregierte Kostendaten. Das gilt insbesondere, wenn Nutzungsdateien aufgrund ihrer Größe nicht zuverlässig mithilfe der Nutzungsdetails-API aufgerufen und heruntergeladen werden können. Die exportierten Daten werden im von Ihnen gewählten Azure Storage-Konto platziert. Von dort können Sie die Daten in Ihre eigenen Systeme laden und nach Bedarf analysieren. Informationen zum Konfigurieren von Exporten im Azure-Portal finden Sie unter [Exportieren von Daten](tutorial-export-acm-data.md).
-
-Wenn Sie Exporte in verschiedenen Bereichen automatisieren möchten, ist die exemplarische API-Anforderung aus dem nächsten Abschnitt ein guter Ausgangspunkt. Mithilfe der API für Exporte können Sie automatische Exporte als Teil Ihrer allgemeinen Umgebungskonfiguration erstellen. Automatische Exporte können dazu beitragen, dass Sie über die Daten verfügen, die Sie benötigen. Sie können in den Systemen Ihrer eigenen Organisation verwendet werden, während Sie Ihre Azure-Nutzung ausweiten.
-
-### <a name="common-export-configurations"></a>Gängige Exportkonfigurationen
-
-Machen Sie sich vor der Erstellung Ihres ersten Exports Gedanken zu Ihrem Szenario, und überlegen Sie sich, welche Konfigurationsoptionen dafür erforderlich sind. Folgende Exportoptionen stehen zur Verfügung:
-
-- **Wiederholung**: Bestimmt, wie oft der Exportauftrag ausgeführt und wann eine Datei in Ihrem Azure Storage-Konto platziert wird. Zur Auswahl stehen „Täglich“, „Wöchentlich“ und „Monatlich“. Stimmen Sie die Wiederholungskonfiguration möglichst auf die Datenimportaufträge ab, die vom internen System Ihrer Organisation verwendet werden.
-- **Wiederholungszeitraum**: Bestimmt die Gültigkeitsdauer des Exports. Dateien werden nur während des Wiederholungszeitraums exportiert.
-- **Zeitrahmen**: Bestimmt die Datenmenge, die im Rahmen einer Ausführung durch den Export generiert wird. Gängige Optionen sind „MonthToDate“ und „WeekToDate“.
-- **Startdatum**: Dient zum Konfigurieren des Beginns des Exportzeitplans. Ein Export wird zum Startdatum (StartDate) und anschließend auf der Grundlage der Wiederholung erstellt.
-- **Typ**: Es gibt drei Exporttypen:
-  - „ActualCost“: Zeigt die Gesamtnutzung und -kosten für den angegebenen Zeitraum an, die angefallen sind und auf Ihrer Rechnung ausgewiesen werden.
-  - „AmortizedCost“: Zeigt die Gesamtnutzung und -kosten für den angegebenen Zeitraum unter Berücksichtigung der Amortisierung der relevanten Kosten für Reservierungskäufe an.
-  - „Usage“: Alle Exporte, die vor dem 20. Juli 2020 erstellt wurden, sind vom Typ „Usage“. Aktualisieren Sie alle Ihre geplanten Exporte zu „ActualCost“ oder „AmortizedCost“.
-- **Spalten**: Dient zum Definieren der Datenfelder, die in Ihre Exportdatei eingeschlossen werden sollen. Sie entsprechen den Feldern, die in der Nutzungsdetails-API verfügbar sind. Weitere Informationen finden Sie [hier](/rest/api/consumption/usagedetails/list).
-
-### <a name="create-a-daily-month-to-date-export-for-a-subscription"></a>Erstellen eines täglichen Exports für den bisherigen Kalendermonat für ein Abonnement
-
-Anforderungs-URL: `PUT https://management.azure.com/{scope}/providers/Microsoft.CostManagement/exports/{exportName}?api-version=2020-06-01`
-
-```json
-{
-  "properties": {
-    "schedule": {
-      "status": "Active",
-      "recurrence": "Daily",
-      "recurrencePeriod": {
-        "from": "2020-06-01T00:00:00Z",
-        "to": "2020-10-31T00:00:00Z"
-      }
-    },
-    "format": "Csv",
-    "deliveryInfo": {
-      "destination": {
-        "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MYDEVTESTRG/providers/Microsoft.Storage/storageAccounts/{yourStorageAccount} ",
-        "container": "{yourContainer}",
-        "rootFolderPath": "{yourDirectory}"
-      }
-    },
-    "definition": {
-      "type": "ActualCost",
-      "timeframe": "MonthToDate",
-      "dataSet": {
-        "granularity": "Daily",
-        "configuration": {
-          "columns": [
-            "Date",
-            "MeterId",
-            "ResourceId",
-            "ResourceLocation",
-            "Quantity"
-          ]
-        }
-      }
-    }
-}
-```
-
-### <a name="automate-alerts-and-actions-with-budgets"></a>Automatisieren von Warnungen und Aktionen mit Budgets
+## <a name="automate-alerts-and-actions-with-budgets"></a>Automatisieren von Warnungen und Aktionen mit Budgets
 
 Die Maximierung des Nutzens Ihrer Cloudinvestition umfasst zwei wichtige Komponenten: Die eine ist die automatische Budgeterstellung. Die andere ist die Konfiguration einer kostenbasierten Orchestrierung, um auf Budgetwarnungen zu reagieren. Die Azure-Budgeterstellung kann auf verschiedene Arten automatisiert werden. Die Überschreitung Ihrer konfigurierten Warnungsschwellenwerte hat verschiedene Reaktionen zur Folge.
 
 In den folgenden Abschnitten werden die verfügbaren Optionen behandelt und exemplarische API-Anforderungen bereitgestellt, um Ihnen den Einstieg in die Budgetautomatisierung zu erleichtern.
 
-#### <a name="how-costs-are-evaluated-against-your-budget-threshold"></a>Bewerten von Kosten auf der Grundlage Ihres Budgetschwellenwerts
+### <a name="how-costs-are-evaluated-against-your-budget-threshold"></a>Bewerten von Kosten auf der Grundlage Ihres Budgetschwellenwerts
 
 Ihre Kosten werden einmal pro Tag auf der Grundlage Ihres Budgetschwellenwerts bewertet. Bei der Erstellung eines neuen Budgets oder am Tag für die Budgetzurücksetzung sind die Kosten, die mit dem Schwellenwert verglichen werden, Null bzw. NULL, da die Bewertung möglicherweise nicht stattgefunden hat.
 
 Wenn Azure erkennt, dass der Schwellenwert für Ihre Kosten überschritten wurde, wird spätestens eine Stunde nach der Erkennung eine Benachrichtigung ausgelöst.
 
-#### <a name="view-your-current-cost"></a>Anzeigen Ihrer aktuellen Kosten
+### <a name="view-your-current-cost"></a>Anzeigen Ihrer aktuellen Kosten
 
 Wenn Sie Ihre aktuellen Kosten anzeigen möchten, müssen Sie mithilfe der [Abfrage-API](/rest/api/cost-management/query) einen GET-Aufruf ausführen.
 
@@ -185,7 +125,7 @@ Bei einem GET-Aufruf für die API für Budgets werden nicht die aktuellen, in de
 
 Die Budgeterstellung kann mithilfe der [API für Budgets](/rest/api/consumption/budgets) automatisiert werden. Alternativ können Sie für die Budgeterstellung auch eine [Budgetvorlage](quick-create-budget-template.md) verwenden. Vorlagen sind eine einfache Methode, um Azure-Bereitstellungen zu standardisieren und gleichzeitig sicherzustellen, dass die Kostenkontrolle ordnungsgemäß konfiguriert ist und erzwungen wird.
 
-#### <a name="supported-locales-for-budget-alert-emails"></a>Unterstützte Gebietsschemas für Budgetwarnungs-E-Mails
+### <a name="supported-locales-for-budget-alert-emails"></a>Unterstützte Gebietsschemas für Budgetwarnungs-E-Mails
 
 Mit Budgets werden Sie benachrichtigt, wenn die Kosten einen festgelegten Schwellenwert überschreiten. Sie können bis zu fünf E-Mail-Empfänger pro Budget festlegen. Empfänger erhalten die E-Mail-Warnungen innerhalb von 24 Stunden nach der Überschreitung des Budgetschwellenwerts. Der Empfänger soll jedoch möglicherweise eine E-Mail in einer anderen Sprache erhalten. Sie können die folgenden Sprachkulturcodes mit der Budgets-API verwenden. Legen Sie den Kulturcode mit dem Parameter `locale` ähnlich wie im folgenden Beispiel fest.
 
@@ -249,7 +189,7 @@ Von einem Kulturcode unterstützte Sprachen:
 | pt-pt | Portugiesisch (Portugal) |
 | sv-SE | Schwedisch (Schweden) |
 
-#### <a name="common-budgets-api-configurations"></a>Gängige Konfigurationen für die API für Budgets
+### <a name="common-budgets-api-configurations"></a>Gängige Konfigurationen für die API für Budgets
 
 Ein Budget in Ihrer Azure-Umgebung kann auf verschiedenste Arten konfiguriert werden. Machen Sie sich zunächst Gedanken zu Ihrem Szenario, und ermitteln Sie anschließend die dafür erforderlichen Konfigurationsoptionen. Folgende Optionen stehen zur Verfügung:
 

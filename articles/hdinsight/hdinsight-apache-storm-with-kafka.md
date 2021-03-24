@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/25/2019
-ms.openlocfilehash: 304ba791d107ca497e65905657e87e84cdb9567d
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 2078ba177d68cfaa0a91b79611d92e5c68e4e245
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98942725"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868414"
 ---
 # <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>Tutorial: Verwenden von Apache Storm mit Apache Kafka in HDInsight
 
@@ -377,7 +377,7 @@ Apache Kafka in HDInsight ermöglicht keinen Zugriff auf die Kafka-Broker über 
 
 Das folgende Diagramm zeigt den Kommunikationsfluss zwischen Storm und Kafka:
 
-![Diagramm mit Storm- und Kafka-Clustern in einem virtuellen Azure-Netzwerk](./media/hdinsight-apache-storm-with-kafka/apache-storm-kafka-vnet.png)
+:::image type="content" source="./media/hdinsight-apache-storm-with-kafka/apache-storm-kafka-vnet.png" alt-text="Diagramm mit Storm- und Kafka-Clustern in einem virtuellen Azure-Netzwerk":::
 
 > [!NOTE]  
 > Auf andere Dienste im Cluster, beispielsweise SSH und [Apache Ambari](https://ambari.apache.org/), kann über das Internet zugegriffen werden. Weitere Informationen zu den öffentlichen Ports, die für HDInsight verfügbar sind, finden Sie unter [Von HDInsight verwendete Ports und URIs](hdinsight-hadoop-port-settings-for-services.md).
@@ -415,7 +415,7 @@ Führen Sie zum Erstellen eines virtuellen Azure-Netzwerks und zum anschließend
       | SSH-Benutzername | Der SSH-Benutzer, der für die Cluster erstellt werden soll. |
       | SSH-Kennwort | Das Kennwort für den SSH-Benutzer. |
    
-      ![Darstellung der Vorlagenparameter](./media/hdinsight-apache-storm-with-kafka/storm-kafka-template.png)
+      :::image type="content" source="./media/hdinsight-apache-storm-with-kafka/storm-kafka-template.png" alt-text="Darstellung der Vorlagenparameter":::
 
 3. Lesen Sie die **Geschäftsbedingungen**, und wählen Sie anschließend die Option **Ich stimme den oben genannten Geschäftsbedingungen zu**.
 

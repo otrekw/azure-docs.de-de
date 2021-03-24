@@ -8,10 +8,10 @@ ms.topic: include
 ms.custom: include file
 ms.date: 04/16/2020
 ms.openlocfilehash: b2b405e7f6babf84ef8297310a5a7a34c3f2dc11
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102623346"
 ---
 Mit Cognitive Services werden zwei Dienste für die Verarbeitung natürlicher Sprache (Natural Language Processing, NLP) bereitgestellt: [Language Understanding](../luis/what-is-luis.md) und [QnA Maker](../qnamaker/overview/overview.md). Beide dienen jeweils einem anderen Zweck. Machen Sie sich damit vertraut, wann Sie diese Dienste einsetzen sollten und wie sie sich gegenseitig ergänzen.

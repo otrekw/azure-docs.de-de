@@ -4,12 +4,12 @@ description: 'Tutorial: Erfahren Sie, wie Sie Apache Ranger-Richtlinien für HBa
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 09/04/2019
-ms.openlocfilehash: deefda126602e9b276b74752330a14cc3eb2aa95
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: a18e0b252facb4f00d9ba5c9b6bfe9fe6aefe1ef
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98933724"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866997"
 ---
 # <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package"></a>Tutorial: Konfigurieren von Apache HBase-Richtlinien in HDInsight mit dem Enterprise-Sicherheitspaket
 
@@ -86,7 +86,7 @@ Sie können SSH verwenden, um eine Verbindung mit Apache HBase-Clustern herzuste
     scan 'Customers'
     ```
 
-    ![Ausgabe der HDInsight Hadoop HBase-Shell](./media/apache-domain-joined-run-hbase/hbase-shell-scan-table.png)
+    :::image type="content" source="./media/apache-domain-joined-run-hbase/hbase-shell-scan-table.png" alt-text="Ausgabe der HDInsight Hadoop HBase-Shell" border="true":::
 
 ## <a name="create-ranger-policies"></a>Erstellen von Ranger-Richtlinien
 
@@ -94,11 +94,11 @@ Erstellen Sie eine Ranger-Richtlinie für **sales_user1** und **marketing_user1*
 
 1. Öffnen Sie die **Ranger-Administratoroberfläche**. Klicken Sie unter **HBase** auf **\<ClusterName>_hbase**.
 
-   ![Apache Ranger-Administratoroberfläche in HDInsight](./media/apache-domain-joined-run-hbase/apache-ranger-admin-login.png)
+   :::image type="content" source="./media/apache-domain-joined-run-hbase/apache-ranger-admin-login.png" alt-text="Apache Ranger-Administratoroberfläche in HDInsight" border="true":::
 
 2. Auf dem Bildschirm **Liste der Richtlinien** werden alle Ranger-Richtlinien angezeigt, die für diesen Cluster erstellt wurden. Möglicherweise ist eine vorkonfigurierte Richtlinie aufgelistet. Klicken Sie auf **Neue Richtlinie hinzufügen**.
 
-    ![Liste der Apache Ranger HBase-Richtlinien](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policies-list.png)
+    :::image type="content" source="./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policies-list.png" alt-text="Liste der Apache Ranger HBase-Richtlinien" border="true":::
 
 3. Geben Sie auf der Seite **Richtlinie erstellen** die folgenden Werte ein:
 
@@ -117,7 +117,7 @@ Erstellen Sie eine Ranger-Richtlinie für **sales_user1** und **marketing_user1*
    * `*` weist auf null oder mehr Vorkommen von Zeichen hin.
    * `?` weist auf ein einzelnes Zeichen hin.
 
-   ![Apache Ranger-Richtlinienerstellung: „sales“](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-sales.png)
+   :::image type="content" source="./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-sales.png" alt-text="Apache Ranger-Richtlinienerstellung: „sales“" border="true":::
 
    >[!NOTE]
    >Warten Sie kurz, bis Ranger mit AAD synchronisiert ist, wenn unter **Benutzer auswählen** nicht automatisch ein Domänenbenutzer eingetragen wird.
@@ -136,7 +136,7 @@ Erstellen Sie eine Ranger-Richtlinie für **sales_user1** und **marketing_user1*
    |Benutzer auswählen  | marketing_user1 |
    |Berechtigungen  | Lesen |
 
-   ![Apache Ranger-Richtlinienerstellung: „marketing“](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-marketing.png)  
+   :::image type="content" source="./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-marketing.png" alt-text="Apache Ranger-Richtlinienerstellung: „marketing“" border="true":::  
 
 6. Klicken Sie auf **Hinzufügen**, um die Richtlinie zu speichern.
 
@@ -226,7 +226,7 @@ Basierend auf den konfigurierten Ranger-Richtlinien kann **sales_user1** alle Da
 
 1. Zeigen Sie die Überwachungszugriffsereignisse in der Ranger-Benutzeroberfläche an.
 
-   ![Ranger-Benutzeroberfläche in HDInsight – Richtlinienüberwachung](./media/apache-domain-joined-run-hbase/apache-ranger-admin-audit.png)
+   :::image type="content" source="./media/apache-domain-joined-run-hbase/apache-ranger-admin-audit.png" alt-text="Ranger-Benutzeroberfläche in HDInsight – Richtlinienüberwachung" border="true":::
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

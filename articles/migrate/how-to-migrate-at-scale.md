@@ -7,10 +7,10 @@ ms.manager: bsiva
 ms.topic: how-to
 ms.date: 04/01/2019
 ms.openlocfilehash: 01196b23ce5bf9ce842da89d0773a77e6a1d5107
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96754231"
 ---
 # <a name="scale-migration-of-vms"></a>Skalieren der Migration von VMs 
@@ -52,7 +52,7 @@ Wenn alle Voraussetzungen erfüllt sind, müssen Sie eine CSV-Datei mit Daten f�
 ### <a name="script-execution"></a>Skriptausführung
 Wenn die CSV-Datei bereit ist, können Sie zur Migration der lokalen virtuellen Computer die folgenden Schritte ausführen:
 
-**Schritt** | **Skriptname** | **Beschreibung**
+**Schrittnummer** | **Skriptname** | **Beschreibung**
 --- | --- | ---
 1 | asr_startmigration.ps1 | Aktivieren Sie die Replikation für alle in der CSV-Datei aufgeführten virtuellen Computer. Das Skript erstellt eine CSV-Ausgabe mit den Auftragsdetails für jeden virtuellen Computer.
 2 | asr_replicationstatus.ps1 | Überprüfen Sie den Status der Replikation. Das Skript erstellt eine CSV-Datei mit dem Status für jeden virtuellen Computer.

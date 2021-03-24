@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
 ms.openlocfilehash: 0035d367017c92bd151c27e14d744ef41eace069
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85800147"
 ---
 # <a name="moderate-with-custom-image-lists-in-the-api-console"></a>Moderieren von Bildern mit benutzerdefinierten Bildlisten in der API-Konsole
@@ -91,7 +91,7 @@ Nachdem Sie eine Bildliste geändert haben, müssen Sie den zugehörigen Index a
 
    Fügen Sie Metadaten als Schlüssel-Wert-Paare und nicht als tatsächliche Bilder hinzu.
  
-7. Wählen Sie **Senden** aus. Ihre Liste wird erstellt. Beachten Sie den **ID**-Wert, der der neuen Liste zugeordnet ist. Sie benötigen diese ID für andere Funktionen zur Verwaltung von Bildlisten.
+7. Wählen Sie **Send** (Senden) aus. Ihre Liste wird erstellt. Beachten Sie den **ID**-Wert, der der neuen Liste zugeordnet ist. Sie benötigen diese ID für andere Funktionen zur Verwaltung von Bildlisten.
 
    ![Feld „Antwortinhalt“ in der Konsole „Bildlisten – Erstellen“ mit Anzeige der Listen-ID](images/try-terms-list-create-2.png)
  
@@ -111,7 +111,7 @@ Nachdem Sie eine Bildliste geändert haben, müssen Sie den zugehörigen Index a
 
     Die API-Konsole **Bild – Alle Bild-IDs abrufen** wird geöffnet.
   
-12. Geben Sie in das Feld **listId** die Listen-ID und dann Ihren Abonnementschlüssel ein. Wählen Sie **Senden** aus.
+12. Geben Sie in das Feld **listId** die Listen-ID und dann Ihren Abonnementschlüssel ein. Wählen Sie **Send** (Senden) aus.
 
     ![Feld „Antwortinhalt“ in der Konsole „Bild – Alle Bild-IDs abrufen“ mit den von Ihnen eingegebenen Benennungen](images/try-image-list-create-11.png)
  

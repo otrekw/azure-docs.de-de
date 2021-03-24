@@ -7,10 +7,10 @@ ms.date: 01/27/2020
 ms.topic: how-to
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
 ms.openlocfilehash: b5b5e8c11bfe164aaa3539742dac8c4d267c69e1
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96745603"
 ---
 # <a name="classic-deployment-model"></a>Klassisches Bereitstellungsmodell
@@ -29,7 +29,7 @@ Sie können eine Erhöhung der vCPU-Kontingentgrenze für das klassische Bereits
 
 Führen Sie unten stehenden Anleitungen aus, um eine Supportanfrage zu erstellen, indem Sie **Hilfe und Support** im Azure-Portal verwenden.
 
-1. Wählen Sie auf dem Menü des [Azure-Portals](https://portal.azure.com) die Option **Hilfe und Support** aus.
+1. Wählen Sie im Menü des [Azure-Portals](https://portal.azure.com) die Option **Hilfe und Support** aus.
 
    ![Auswählen von „Hilfe und Support“ im Azure-Portal](./media/resource-manager-core-quotas-request/help-plus-support.png)
 
