@@ -9,10 +9,10 @@ ms.date: 10/08/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: ac7fc5af21f11699331d41a074e88ae757170664
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91975993"
 ---
 # <a name="tutorial-configure-route-filters-for-microsoft-peering-azure-cli"></a>Tutorial: Konfigurieren von Routenfiltern für das Microsoft-Peering: Azure CLI
@@ -29,7 +29,7 @@ Das Microsoft-Peering ermöglicht den Zugriff auf Microsoft 365-Dienste wie Exc
 
 Die Konnektivität mit allen Azure- und Microsoft 365-Diensten bewirkt, dass eine große Anzahl von Präfixen über BGP angekündigt wird. Dadurch werden die Routingtabellen, die von Routern innerhalb Ihres Netzwerks verwaltet werden, erheblich größer. Wenn Sie nur eine Teilmenge der Dienste nutzen möchten, die über das Microsoft-Peering angeboten werden, können Sie die Routentabellen auf zwei Arten verringern. Ihre Möglichkeiten:
 
-* Sie filtern unerwünschte Präfixe heraus, indem Sie Routenfilter auf BGP-Communitys anwenden. Routenfilterung ist eine Standardvorgehensweise bei Netzwerken, die bei zahlreichen Netzwerken zum Einsatz kommt.
+* Sie filtern unerwünschte Präfixe heraus, indem Sie Routenfilter auf BGP-Communitys anwenden. Routenfilterung ist eine standardmäßige Vorgehensweise bei Netzwerken, die bei zahlreichen Netzwerken zum Einsatz kommt.
 
 * Sie definieren Routenfilter und wenden sie auf Ihre ExpressRoute-Verbindung an. Ein Routenfilter ist eine neue Ressource, mit der Sie die Liste der Dienste, die Sie über das Microsoft-Peering nutzen möchten, auswählen können. ExpressRoute-Router senden lediglich die Liste der Präfixe, die den im Routenfilter identifizierten Diensten zugehörig sind.
 
@@ -37,15 +37,15 @@ In diesem Tutorial lernen Sie, wie die folgenden Aufgaben ausgeführt werden:
 > [!div class="checklist"]
 > - Abrufen von BGP-Communitywerten
 > - Erstellen eines Routenfilters und einer Filterregel
-> - Verknüpfen des Routenfilters mit einer ExpressRoute-Verbindung
+> - Verknüpfen des Routenfilters mit einer ExpressRoute-Leitung
 
 ### <a name="about-route-filters"></a><a name="about"></a>Informationen zu Routenfiltern
 
 Wenn das Microsoft-Peering in Ihrer ExpressRoute-Verbindung konfiguriert wird, richten die Microsoft Edge-Router über Ihren Konnektivitätsanbieter ein BGP-Sitzungspaar mit den Edge-Routern ein. Ihrem Netzwerk werden keine Routen angekündigt. Um Routenankündigungen für Ihr Netzwerk zu aktivieren, müssen Sie einen Routenfilter zuordnen.
 
-Durch einen Routenfilter können Sie die Dienste identifizieren, die Sie über das Microsoft-Peering Ihrer ExpressRoute-Verbindung nutzen möchten. Im Wesentlichen handelt es sich um eine Positivliste für alle BGP-Communitywerte. Sobald eine Routenfilterressource definiert und an eine ExpressRoute-Verbindung angefügt ist, werden Ihrem Netzwerk alle Präfixe angekündigt, die den BGP-Communitywerten zugeordnet sind.
+Durch einen Routenfilter können Sie die Dienste identifizieren, die Sie über das Microsoft-Peering Ihrer ExpressRoute-Verbindung nutzen möchten. Im Wesentlichen handelt es sich um eine Zulassungsliste für alle BGP-Communitywerte. Sobald eine Routenfilterressource definiert und an eine ExpressRoute-Leitung angefügt ist, werden Ihrem Netzwerk alle Präfixe angekündigt, die den BGP-Communitywerten zugeordnet sind.
 
-Sie müssen zur Nutzung von Microsoft 365-Diensten über ExpressRoute autorisiert sein, um Routenfilter mit Microsoft 365-Diensten anfügen zu können. Wenn Sie nicht zur Nutzung von Microsoft 365-Diensten über ExpressRoute autorisiert sind, tritt beim Vorgang zum Anfügen von Routenfiltern ein Fehler auf. Weitere Informationen zum Autorisierungsvorgang finden Sie unter [Azure ExpressRoute für Microsoft 365](/microsoft-365/enterprise/azure-expressroute).
+Um Routenfilter mit Microsoft 365-Diensten anfügen zu können, müssen Sie zur Nutzung von Microsoft 365-Diensten über ExpressRoute autorisiert sein. Wenn Sie nicht zur Nutzung von Microsoft 365-Diensten über ExpressRoute autorisiert sind, tritt beim Vorgang zum Anfügen von Routenfiltern ein Fehler auf. Weitere Informationen zum Autorisierungsvorgang finden Sie unter [Azure ExpressRoute für Microsoft 365](/microsoft-365/enterprise/azure-expressroute).
 
 > [!IMPORTANT]
 > Beim Microsoft-Peering von ExpressRoute-Verbindungen, die vor dem 1. August 2017 konfiguriert wurden, werden alle Dienstpräfixe über das Microsoft-Peering angekündigt, auch wenn keine Routenfilter definiert sind. Beim Microsoft-Peering von ExpressRoute-Verbindungen, die am oder nach dem 1. August 2017 konfiguriert wurden, werden Präfixe erst angekündigt, wenn der Verbindung ein Routenfilter hinzugefügt wurde.
@@ -56,7 +56,7 @@ Sie müssen zur Nutzung von Microsoft 365-Diensten über ExpressRoute autorisie
 Sie müssen die folgenden Konfigurationsschritte durchführen, um mit dem Microsoft-Peering eine Verbindung mit Diensten herstellen zu können:
 
 * Sie benötigen eine aktive ExpressRoute-Verbindung, für die das Microsoft-Peering bereitgestellt ist. Zur Durchführung dieser Aufgaben können Sie folgende Anweisungen befolgen:
-  * [Erstellen Sie eine ExpressRoute-Verbindung](howto-circuit-cli.md), und lassen Sie die Verbindung von Ihrem Konnektivitätsanbieter aktivieren, bevor Sie fortfahren. Die ExpressRoute-Verbindung muss den Zustand „Provisioned“ und „Enabled“ aufweisen.
+  * [Erstellen Sie eine ExpressRoute-Leitung](howto-circuit-cli.md), und lassen Sie die Leitung von Ihrem Konnektivitätsanbieter aktivieren, bevor Sie fortfahren. Die ExpressRoute-Verbindung muss den Zustand „Provisioned“ und „Enabled“ aufweisen.
   * [Erstellen Sie das Microsoft-Peering](howto-routing-cli.md), wenn Sie die BGP-Sitzung direkt verwalten. Überlassen Sie die Bereitstellung des Microsoft-Peerings für Ihre Verbindung wahlweise Ihrem Konnektivitätsanbieter.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
@@ -129,7 +129,7 @@ az network route-filter show -g ExpressRouteResourceGroupName --name MyRouteFilt
 
 ### <a name="to-update-the-properties-of-a-route-filter"></a><a name="updateproperties"></a>Aktualisieren der Eigenschaften eines Routenfilters
 
-Wenn der Routenfilter bereits an eine Verbindung angefügt ist, geben Updates der BGP-Communityliste Änderungen an Präfixankündigungen automatisch über die eingerichtete BGP-Sitzung weiter. Sie können die BGP-Communityliste Ihres Routenfilters mit dem folgenden Befehl aktualisieren:
+Wenn der Routenfilter bereits an eine Leitung angefügt ist, geben Updates der BGP-Communityliste Änderungen an Präfixankündigungen automatisch über die eingerichtete BGP-Sitzung weiter. Sie können die BGP-Communityliste Ihres Routenfilters mit dem folgenden Befehl aktualisieren:
 
 ```azurecli-interactive
 az network route-filter rule update --filter-name MyRouteFilter -n CRM -g ExpressRouteResourceGroupName --add communities '12076:5040' --add communities '12076:5010'
@@ -153,7 +153,7 @@ az network route-filter delete -n MyRouteFilter -g MyResourceGroup
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Beispiele für Routerkonfigurationen finden Sie im folgenden Artikel:
+Beispiele für Routerkonfigurationen finden Sie hier:
 
 > [!div class="nextstepaction"]
 > [Beispiele für die Routerkonfiguration zum Einrichten und Verwalten des Routings](expressroute-config-samples-routing.md)

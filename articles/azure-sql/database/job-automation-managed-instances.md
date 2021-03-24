@@ -12,12 +12,12 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: ''
 ms.date: 02/01/2021
-ms.openlocfilehash: 6ba1ba9d8c809a805fe8691baf96350b70ec6a51
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 3be01c304a40317e0d21baf6789ef1376cd89b80
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101691891"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104608070"
 ---
 # <a name="automate-management-tasks-using-sql-agent-jobs-in-azure-sql-managed-instance"></a>Automatisieren von Verwaltungsaufgaben mithilfe von SQL-Agent-Aufträgen in Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -81,7 +81,7 @@ SQL-Agent-Auftragsschritte sind Aktionssequenzen, die der SQL-Agent ausführen s
 Der SQL-Agent ermöglicht die Erstellung verschiedener Arten von Auftragsschritten. Hierzu zählen etwa Transact-SQL-Auftragsschritte zum Ausführen eines einzelnen Transact-SQL-Batchs in der Datenbank, Betriebssystembefehls-/PowerShell-Schritte zum Ausführen eines benutzerdefinierten Betriebssystemskripts, [SSIS-Auftragsschritte](../../data-factory/how-to-invoke-ssis-package-managed-instance-agent.md) zum Laden von Daten unter Verwendung der SSIS-Runtime sowie [Replikationsschritte](../managed-instance/replication-transactional-overview.md) zum Veröffentlichen von Änderungen aus Ihrer Datenbank in anderen Datenbanken.
 
 > [!Note]
-> Weitere Informationen zum Nutzen der Azure SSIS Integration Runtime mit SSISDB gehostet von Azure SQL Managed Instance finden Sie unter [Verwenden von Azure SQL Managed Instance mit SQL Server Integration Services (SSIS) in Azure Data Factory](/../azure/data-factory/how-to-use-sql-managed-instance-with-ir.md).
+> Weitere Informationen zum Nutzen der Azure SSIS Integration Runtime mit SSISDB gehostet von Azure SQL Managed Instance finden Sie unter [Verwenden von Azure SQL Managed Instance mit SQL Server Integration Services (SSIS) in Azure Data Factory](../../data-factory/how-to-use-sql-managed-instance-with-ir.md).
 
 [Transaktionsreplikation](../managed-instance/replication-transactional-overview.md) kann die Änderungen aus Ihren Tabellen in andere Datenbanken in SQL Managed Instance, SQL-Datenbank oder SQL Server replizieren. Weitere Informationen finden Sie unter [Konfigurieren der Replikation in Azure SQL Managed Instance](../../azure-sql/managed-instance/replication-between-two-instances-configure-tutorial.md). 
 

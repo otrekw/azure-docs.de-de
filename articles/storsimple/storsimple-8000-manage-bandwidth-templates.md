@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/29/2017
 ms.author: alkohli
 ms.openlocfilehash: 56170ffbbfe14248bcfd1f94549a3565873f8646
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96005893"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-storsimple-bandwidth-templates"></a>Verwalten von StorSimple-Bandbreitenvorlagen mithilfe des StorSimple-Geräte-Manager-Diensts
@@ -40,9 +40,9 @@ Mit Zeitplänen zur Bandbreiteneinschränkung können Sie folgende Aktionen ausf
 
 Auf dem Blatt **Bandbreitenvorlagen** finden Sie alle Bandbreitenvorlagen für den Dienst in einer Tabelle mit den folgenden Informationen:
 
-* **Name:** der eindeutige Name für das Konto, der bei dessen Erstellung zugewiesen wurde.
-* **Zeitplan:** die Anzahl der Zeitpläne in einer angegebenen Bandbreitenvorlage.
-* **Used by:** die Anzahl der Datenträger, die das Speicherkonto verwenden.
+* **Name** – Ein eindeutiger Name, welcher der Bandbreitenvorlage beim Erstellen zugewiesen wurde.
+* **Zeitplan** – Die Anzahl der Zeitpläne, die in einer bestimmten Bandbreitenvorlage enthalten sind.
+* **Verwendet von** – Die Anzahl der Volumes, die die Bandbreitenvorlagen verwenden.
 
 Zusätzliche Informationen zur Konfiguration von Bandbreitenvorlagen finden Sie in den folgenden Ressourcen:
 

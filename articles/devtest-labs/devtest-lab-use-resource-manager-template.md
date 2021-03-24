@@ -4,10 +4,10 @@ description: Es wird beschrieben, wie Sie die Azure Resource Manager-Vorlage ein
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: fb7cb38dfb2c1664017f0e342fefecdd464df45f
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97696008"
 ---
 # <a name="create-virtual-machines-using-an-azure-resource-manager-template"></a>Erstellen von virtuellen Computern mit einer Azure Resource Manager-Vorlage 

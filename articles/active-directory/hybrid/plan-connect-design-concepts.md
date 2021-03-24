@@ -18,10 +18,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: baa03499cc11bda24ead986dd64621572484cbb1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89279651"
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect: Designkonzepte
@@ -56,7 +56,7 @@ Ist das ausgewählte Attribut „sourceAnchor“ nicht vom Typ „Zeichenfolge�
 
 Beim Attribut „sourceAnchor“ wird die Groß-/Kleinschreibung berücksichtigt. Der Wert "JohnDoe" ist nicht identisch mit "johndoe". Sie sollten nicht zwei verschiedene Objekte besitzen, bei denen sich nur die Groß-/Kleinschreibung unterscheidet.
 
-Wenn Sie eine einzige lokale Gesamtstruktur haben, sollten Sie das Attribut **objectGUID**verwenden. Dieses Attribut wird auch bei der Verwendung von Expresseinstellungen in Azure AD Connect und von DirSync verwendet.
+Wenn Sie eine einzige lokale Gesamtstruktur haben, sollten Sie das Attribut **objectGUID** verwenden. Dieses Attribut wird auch bei der Verwendung von Expresseinstellungen in Azure AD Connect und von DirSync verwendet.
 
 Wenn Sie mehrere Gesamtstrukturen besitzen und keine Benutzer zwischen Gesamtstrukturen und Domänen verschieben, dann ist **objectGUID** ebenfalls ein ideales Attribut.
 
@@ -144,7 +144,7 @@ Von „objectGUID“ zu „ConsistencyGuid“ als „SourceAnchor“-Attribut we
 
    ![Aktivieren Sie „ConsistencyGuid“ für die vorhandene Bereitstellung – Schritt 4](./media/plan-connect-design-concepts/consistencyguidexistingdeployment02.png)
 
-5. Klicken Sie auf dem **Ready to Configure (Bereit für die Konfiguration)** -Bildschirm auf **Konfigurieren**, um die Konfigurationsänderung vorzunehmen.
+5. Klicken Sie auf dem **Ready to Configure (Bereit für die Konfiguration)**-Bildschirm auf **Konfigurieren**, um die Konfigurationsänderung vorzunehmen.
 
    ![Aktivieren Sie „ConsistencyGuid“ für die vorhandene Bereitstellung – Schritt 5](./media/plan-connect-design-concepts/consistencyguidexistingdeployment03.png)
 
@@ -183,7 +183,7 @@ Bei Auswahl des Attributs, das den in Azure zu verwendenden UPN-Wert bereitstell
 * Die Attributwerte entsprechen der UPN-Syntax (RFC 822) und müssen somit im Format „Benutzername\@Domain“ vorliegen.
 * Das Suffix in den Werten stimmt mit einer der überprüften benutzerdefinierten Domänen in Azure AD überein.
 
-In den Expresseinstellungen wird userPrincipalName für das Attribut angenommen. Falls das userPrincipalName-Attribut nicht den Wert enthält, den Ihre Benutzer zum Anmelden bei Azure verwenden sollen, müssen Sie **Benutzerdefinierte Installation**wählen.
+In den Expresseinstellungen wird userPrincipalName für das Attribut angenommen. Falls das userPrincipalName-Attribut nicht den Wert enthält, den Ihre Benutzer zum Anmelden bei Azure verwenden sollen, müssen Sie **Benutzerdefinierte Installation** wählen.
 
 ### <a name="custom-domain-state-and-upn"></a>Benutzerdefinierter Domänenstatus und UPN
 Sie müssen unbedingt sicherstellen, dass eine überprüfte Domäne für das UPN-Suffix existiert.

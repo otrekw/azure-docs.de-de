@@ -16,10 +16,10 @@ ms.date: 02/26/2019
 ms.author: allensu
 ms.custom: seodec18
 ms.openlocfilehash: 63d1a08dc588f0303ccb1ae13bd4c28af2a393c7
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92043652"
 ---
 # <a name="tutorial-configure-port-forwarding-in-azure-load-balancer-using-the-portal"></a>Tutorial: Konfigurieren der Portweiterleitung im Azure Load Balancer mit dem Portal
@@ -246,7 +246,7 @@ Erstellen Sie eine Netzwerkadressübersetzung-Eingangsregel (NAT) für den Laste
    
 1. Klicken Sie auf **OK**.
    
-1. Wiederholen Sie die Schritte zum Hinzufügen einer NAT-Eingangsregel mit dem Namen *MyNATRuleVM2*mit **Port**: *4222* und **Virtueller Zielcomputer**: **MyVM2**.
+1. Wiederholen Sie die Schritte zum Hinzufügen einer NAT-Eingangsregel mit dem Namen *MyNATRuleVM2* mit **Port**: *4222* und **Virtueller Zielcomputer**: **MyVM2**.
 
 ## <a name="test-the-load-balancer"></a>Testen des Lastenausgleichs
 

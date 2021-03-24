@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: 999682c9bf4a4d70d886f0e85cede99f215aa046
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97694721"
 ---
 # <a name="restore-a-vm-with-azure-cli"></a>Wiederherstellen eines virtuellen Computers mit der Azure CLI
@@ -72,7 +72,7 @@ Wenn der gesicherte virtuelle Computer über verwaltete Datenträger verfügt un
         --sku Standard_LRS
     ```
 
-2. Stellen Sie den Datenträger mit [az backup restore restore-disks](/cli/azure/backup/restore#az-backup-restore-restore-disks) aus dem Wiederherstellungspunkt wieder her. Ersetzen Sie *mystorageaccount* durch den Namen des Speicherkontos, das Sie mit dem vorherigen Befehl erstellt haben. Ersetzen Sie *myRecoveryPointName* durch den Namen des Wiederherstellungspunkts, den Sie über die Ausgabe aus dem vorherigen Befehl [az backup recoverypoint list](/cli/azure/backup/recoverypoint#az-backup-recoverypoint-list) erhalten haben. ***Geben Sie auch die Zielressourcengruppe an, in der die verwalteten Datenträger wiederhergestellt werden** _.
+2. Stellen Sie den Datenträger mit [az backup restore restore-disks](/cli/azure/backup/restore#az-backup-restore-restore-disks) aus dem Wiederherstellungspunkt wieder her. Ersetzen Sie *mystorageaccount* durch den Namen des Speicherkontos, das Sie mit dem vorherigen Befehl erstellt haben. Ersetzen Sie *myRecoveryPointName* durch den Namen des Wiederherstellungspunkts, den Sie über die Ausgabe aus dem vorherigen Befehl [az backup recoverypoint list](/cli/azure/backup/recoverypoint#az-backup-recoverypoint-list) erhalten haben. ***Geben Sie auch die Zielressourcengruppe an, in der die verwalteten Datenträger wiederhergestellt werden.***
 
     ```azurecli-interactive
     az backup restore restore-disks \
@@ -86,7 +86,7 @@ Wenn der gesicherte virtuelle Computer über verwaltete Datenträger verfügt un
     ```
 
     > [!WARNING]
-    > Ohne Angabe von _ *target-resource-group** werden die verwalteten Datenträger als nicht verwaltete Datenträger für das angegebene Speicherkonto wiederhergestellt. Dies hat erhebliche Auswirkungen auf die Wiederherstellungszeit, da die Dauer der Datenträgerwiederherstellung ganz vom angegebenen Speicherkonto abhängt. Nur bei Angabe des Parameters „target-resource-group“ können Sie die Vorteile einer sofortigen Wiederherstellung nutzen. Geben Sie den Parameter **target-resource-group** nicht an, wenn verwaltete Datenträger als nicht verwaltete Datenträger wiederhergestellt werden sollen. In diesem Fall geben Sie stattdessen wie unten gezeigt den Parameter **restore-as-unmanaged-disk** an. Dieser Parameter ist ab Az 3.4.0 verfügbar.
+    > Ohne Angabe von **target-resource-group** werden die verwalteten Datenträger als nicht verwaltete Datenträger für das angegebene Speicherkonto wiederhergestellt. Dies hat erhebliche Auswirkungen auf die Wiederherstellungszeit, da die Dauer der Datenträgerwiederherstellung ganz vom angegebenen Speicherkonto abhängt. Nur bei Angabe des Parameters „target-resource-group“ können Sie die Vorteile einer sofortigen Wiederherstellung nutzen. Geben Sie den Parameter **target-resource-group** nicht an, wenn verwaltete Datenträger als nicht verwaltete Datenträger wiederhergestellt werden sollen. In diesem Fall geben Sie stattdessen wie unten gezeigt den Parameter **restore-as-unmanaged-disk** an. Dieser Parameter ist ab Az 3.4.0 verfügbar.
 
     ```azurecli-interactive
     az backup restore restore-disks \

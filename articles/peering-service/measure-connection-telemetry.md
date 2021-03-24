@@ -9,10 +9,10 @@ ms.date: 05/18/2020
 ms.author: derekol
 Customer intent: Customer wants to measure their connection telemetry per prefix to Microsoft services with Azure Peering Service.
 ms.openlocfilehash: abbe69ebbaed56ed416f85fafa7b77a1740fabe7
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96022495"
 ---
 # <a name="tutorial-measure-peering-service-connection-telemetry"></a>Tutorial: Messen von Peering Service-Verbindungstelemetrie
@@ -58,5 +58,5 @@ Führen Sie zum Anzeigen eines Latenzberichts für eine bestimmte Peering Servic
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informationen zur Peering Service-Verbindung finden Sie unter [Peering Service-Verbindung](connection.md).
+- Informationen zur Peering Service-Verbindung finden Sie unter [Peering Service-Verbindung](connection.md).
 - Informationen zur Peering Service-Verbindungstelemetrie finden Sie unter [Peering Service-Verbindungstelemetrie](connection-telemetry.md).

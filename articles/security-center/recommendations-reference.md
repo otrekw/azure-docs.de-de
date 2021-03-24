@@ -4,15 +4,15 @@ description: In diesem Artikel sind die Azure Security Center-Sicherheitsempfehl
 author: memildin
 ms.service: security-center
 ms.topic: reference
-ms.date: 02/16/2021
+ms.date: 03/14/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: d484802b35ffec26d1248e51b365ac9041fc7934
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: b4fe575039c6e913ca20198f204b6529f6c482c7
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102100405"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103466192"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>Sicherheitsempfehlungen: Referenzhandbuch
 
@@ -28,9 +28,17 @@ Ihre Sicherheitsbewertung basiert auf der Anzahl der Security Center-Empfehlung
 > Wenn es in der Beschreibung einer Empfehlung heißt: „Keine zugehörige Richtlinie“, so liegt das normalerweise daran, dass diese Empfehlung von einer anderen Empfehlung und _deren_ Richtlinie abhängig ist. Die Empfehlung „Endpoint Protection-Integritätsfehler sollten behoben werden...“ stützt sich beispielsweise auf die Empfehlung, die prüft, ob _überhaupt_ eine Endpoint Protection-Lösung installiert ist. („Endpoint Protection-Lösung sollte installiert werden...“). Die zugrunde liegende Empfehlung _verfügt_ über eine Richtlinie.
 > Die Richtlinien nur auf die grundlegende Empfehlung zu beschränken, vereinfacht die Richtlinienverwaltung.
 
+## <a name="appservices-recommendations"></a><a name='recs-appservices'></a>AppServices-Empfehlungen
+
+[!INCLUDE [asc-recs-appservices](../../includes/asc-recs-appservices.md)]
+
 ## <a name="compute-recommendations"></a><a name='recs-compute'></a>Computeempfehlungen
 
 [!INCLUDE [asc-recs-compute](../../includes/asc-recs-compute.md)]
+
+## <a name="container-recommendations"></a><a name='recs-container'></a>Containerempfehlungen
+
+[!INCLUDE [asc-recs-container](../../includes/asc-recs-container.md)]
 
 ## <a name="data-recommendations"></a><a name='recs-data'></a>Datenempfehlungen
 
@@ -58,4 +66,4 @@ Ihre Sicherheitsbewertung basiert auf der Anzahl der Security Center-Empfehlung
 Weitere Informationen zu Empfehlungen finden Sie in den folgenden Artikeln:
 
 - [Was sind Sicherheitsrichtlinien, Initiativen und Empfehlungen?](security-policy-concept.md)
-- [Überprüfen der Sicherheitsempfehlungen](security-center-recommendations.md)
+- [Überprüfen Ihrer Sicherheitsempfehlungen](security-center-recommendations.md)

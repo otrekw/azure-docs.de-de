@@ -12,10 +12,10 @@ ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 441a77823c77305e567e9e1436715bc51ca48c11
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97387053"
 ---
 # <a name="display-controls"></a>Anzeigesteuerelemente
@@ -142,7 +142,7 @@ Das **ValidationTechnicalProfile**-Element enthält das folgende Element:
 
 Das **Precondition**-Element enthält die folgenden Attribute:
 
-| attribute | Erforderlich | Beschreibung |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | `Type` | Ja | Der Typ der Überprüfung oder Abfrage, die für die Vorbedingung ausgeführt werden soll. Mögliche Werte: `ClaimsExist` oder `ClaimEquals`. `ClaimsExist` gibt an, dass die Aktionen ausgeführt werden sollen, wenn der aktuelle Anspruchssatz des Benutzers die angegebenen Ansprüche enthält. `ClaimEquals` gibt an, dass die Aktionen ausgeführt werden sollen, wenn der angegebene Anspruch vorhanden und dessen Wert gleich dem angegebenen Wert ist. |
 | `ExecuteActionsIf` | Ja | Zeigt an, ob die Aktionen in der Vorbedingung ausgeführt werden sollen, wenn der Test „true“ oder „false“ ist. |

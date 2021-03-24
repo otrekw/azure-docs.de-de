@@ -4,10 +4,10 @@ description: In diesem Tutorial verwenden Sie ein Blaupausenbeispiel, um eine Bl
 ms.date: 01/27/2021
 ms.topic: tutorial
 ms.openlocfilehash: aea3760128221d42e092e4ca45200874d54da54a
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98915556"
 ---
 # <a name="tutorial-create-an-environment-from-a-blueprint-sample"></a>Tutorial: Erstellen einer Umgebung anhand eines Blaupausenbeispiels
@@ -101,10 +101,10 @@ Nachdem die Kopie des Blaupausenbeispiels erfolgreich **veröffentlicht** wurde,
      |Artefaktname|Artefakttyp|Parametername|Wert|BESCHREIBUNG|
      |-|-|-|-|-|
      |Ressourcengruppe „ProdRG“|Resource group|Name|ProductionRG|Definiert den Namen der ersten Ressourcengruppe.|
-     |Ressourcengruppe „ProdRG“|Resource group|Position|USA, Westen 2|Legt den Ort der ersten Ressourcengruppe fest.|
+     |Ressourcengruppe „ProdRG“|Resource group|Standort|USA, Westen 2|Legt den Ort der ersten Ressourcengruppe fest.|
      |Mitwirkender|Rollenzuweisung|Benutzer oder Gruppe|{Ihre ID}|Definiert, welchem Benutzer oder welcher Gruppe die Rollenzuweisung _Mitwirkender_ in der ersten Ressourcengruppe gewährt wird.|
      |Ressourcengruppe „PreProdRG“|Resource group|Name|PreProductionRG|Definiert den Namen der zweiten Ressourcengruppe.|
-     |Ressourcengruppe „PreProdRG“|Resource group|Position|USA (Westen)|Legt den Ort der zweiten Ressourcengruppe fest.|
+     |Ressourcengruppe „PreProdRG“|Resource group|Standort|USA (Westen)|Legt den Ort der zweiten Ressourcengruppe fest.|
      |Besitzer|Rollenzuweisung|Benutzer oder Gruppe|{Ihre ID}|Definiert, welchem Benutzer oder welcher Gruppe die Rollenzuweisung _Besitzer_ in der zweiten Ressourcengruppe gewährt wird.|
      |Leser|Rollenzuweisung|Benutzer oder Gruppe|{Ihre ID}|Definiert, welchem Benutzer oder welcher Gruppe die Rollenzuweisung _Leser_ in der zweiten Ressourcengruppe gewährt wird.|
 

@@ -4,10 +4,10 @@ description: Erfahren Sie, wie Inhaltsvertrauen für Ihre Azure-Containerregistr
 ms.topic: article
 ms.date: 09/18/2020
 ms.openlocfilehash: f44cea09521dc235ad0d555264b165c9a3842a14
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92148586"
 ---
 # <a name="content-trust-in-azure-container-registry"></a>Inhaltsvertrauen in Azure Container Registry
@@ -80,7 +80,7 @@ Details zum Erteilen der Rolle `AcrImageSigner` im Azure-Portal und in der Azure
 
 ### <a name="azure-portal"></a>Azure-Portal
 
-Navigieren Sie im Azure-Portal zu Ihrer Registrierung, und wählen Sie dann **Zugriffssteuerung (IAM)**  > **Rollenzuweisung hinzufügen** aus. Wählen Sie unter **Rollenzuweisung hinzufügen** für **Rolle** die Option `AcrImageSigner` aus. Wählen Sie dann unter **Auswählen** mindestens einen Benutzer oder Dienstprinzipal aus, und klicken Sie auf **Speichern** .
+Navigieren Sie im Azure-Portal zu Ihrer Registrierung, und wählen Sie dann **Zugriffssteuerung (IAM)**  > **Rollenzuweisung hinzufügen** aus. Wählen Sie unter **Rollenzuweisung hinzufügen** für **Rolle** die Option `AcrImageSigner` aus. Wählen Sie dann unter **Auswählen** mindestens einen Benutzer oder Dienstprinzipal aus, und klicken Sie auf **Speichern**.
 
 In diesem Beispiel wurde die Rolle `AcrImageSigner` zwei Entitäten zugewiesen: einem Dienstprinzipal mit dem Namen „service-principal“ (Dienstprinzipal), und einem Benutzer mit dem Namen „Azure User“ (Azure-Benutzer).
 
@@ -112,7 +112,7 @@ Sie können auch einem [Dienstprinzipal](container-registry-auth-service-princip
 az role assignment create --scope $REGISTRY_ID --role AcrImageSigner --assignee <service principal ID>
 ```
 
-Die `<service principal ID>` kann das **appId** - oder **objectId** -Element des Dienstprinzipal oder eines seiner **ServicePrincipalNames** -Elemente sein. Weitere Informationen zum Arbeiten mit Dienstprinzipalen und Azure Container Registry finden Sie unter [Azure Container Registry-Authentifizierung mit Dienstprinzipalen](container-registry-auth-service-principal.md).
+Die `<service principal ID>` kann das **appId**- oder **objectId**-Element des Dienstprinzipal oder eines seiner **ServicePrincipalNames**-Elemente sein. Weitere Informationen zum Arbeiten mit Dienstprinzipalen und Azure Container Registry finden Sie unter [Azure Container Registry-Authentifizierung mit Dienstprinzipalen](container-registry-auth-service-principal.md).
 
 > [!IMPORTANT]
 > Führen Sie nach Rollenänderungen `az acr login` aus, um das lokale Identitätstoken für die Azure CLI zu aktualisieren, damit die neuen Rollen wirksam werden können. Informationen zur Überprüfung von Rollen für eine Identität finden Sie unter [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen mithilfe der Azure-Befehlszeilenschnittstelle](../role-based-access-control/role-assignments-cli.md) sowie unter [Behandeln von Problemen bei Azure RBAC](../role-based-access-control/troubleshooting.md).
@@ -170,7 +170,7 @@ Error: remote trust data does not exist
 Beim Ausführen von `docker pull` verwendet der Docker-Client die gleiche Bibliothek wie in der die [Notar-CLI][docker-notary-cli], um die Zuordnung des per Pull abgerufenen Tags zu SHA-256 anzufordern. Nach der Überprüfung der Signaturen der Vertrauensdaten weist der Client die Docker-Engine an, einen Pull-Vorgang per Digest auszuführen. Während des Pull-Vorgangs verwendet die Engine die SHA-256-Prüfsumme als Inhaltsadresse zum Anzufordern und Überprüfen des Image-Manifests aus der Azure-Containerregistrierung.
 
 > [!NOTE]
-> Azure Container Registry unterstützt offiziell nicht die Notary CLI, ist aber mit der Notary Server-API kompatibel, die in Docker Desktop enthalten ist. Zurzeit wird die Notary-Version  **0.6.0** empfohlen.
+> Azure Container Registry unterstützt offiziell nicht die Notary CLI, ist aber mit der Notary Server-API kompatibel, die in Docker Desktop enthalten ist. Zurzeit wird die Notary-Version **0.6.0** empfohlen.
 
 ## <a name="key-management"></a>Schlüsselverwaltung
 
@@ -193,9 +193,9 @@ Zusammen mit den lokal erstellten Stamm- und Repositoryschlüsseln werden mehrer
 Wenn Sie den Zugriff auf Ihren Stammschlüssel verlieren, verlieren Sie den Zugriff auf die signierten Tags in allen Repositorys, deren Tags mit diesem Schlüssel signiert wurden. Azure Container Registry kann den Zugriff auf Image-Tags, die mit einem verlorenen Stammschlüssel signiert sind, nicht wiederherstellen. Zum Entfernen aller Vertrauensdaten (Signaturen) für Ihre Registrierung deaktivieren Sie das Inhaltsvertrauen für die Registrierung und aktivieren es anschließend wieder.
 
 > [!WARNING]
-> Durch Deaktivieren und erneutes Aktivieren von Inhaltsvertrauen in Ihrer Registrierung **werden alle Vertrauensdaten für alle signierten Tags in jedem Repository in Ihrer Registrierung gelöscht** . Diese Aktion kann nicht rückgängig gemacht werden – Azure Container Registry kann gelöschte Vertrauensdaten nicht wiederherstellen. Die Images selbst werden durch Deaktivieren des Inhaltsvertrauens nicht gelöscht.
+> Durch Deaktivieren und erneutes Aktivieren von Inhaltsvertrauen in Ihrer Registrierung **werden alle Vertrauensdaten für alle signierten Tags in jedem Repository in Ihrer Registrierung gelöscht**. Diese Aktion kann nicht rückgängig gemacht werden – Azure Container Registry kann gelöschte Vertrauensdaten nicht wiederherstellen. Die Images selbst werden durch Deaktivieren des Inhaltsvertrauens nicht gelöscht.
 
-Zum Deaktivieren des Inhaltsvertrauens für Ihre Registrierung navigieren Sie im Azure-Portal zur Registrierung. Wählen Sie unter **Richtlinien** die Optionen **Inhaltsvertrauen** > **Deaktiviert** > **Speichern** aus. Sie werden vor dem Verlust aller Signaturen in der Registrierung gewarnt. Wählen Sie **OK** , um alle Signaturen in Ihrer Registrierung endgültig zu löschen.
+Zum Deaktivieren des Inhaltsvertrauens für Ihre Registrierung navigieren Sie im Azure-Portal zur Registrierung. Wählen Sie unter **Richtlinien** die Optionen **Inhaltsvertrauen** > **Deaktiviert** > **Speichern** aus. Sie werden vor dem Verlust aller Signaturen in der Registrierung gewarnt. Wählen Sie **OK**, um alle Signaturen in Ihrer Registrierung endgültig zu löschen.
 
 ![Deaktivieren von Inhaltsvertrauen für eine Registrierung im Azure-Portal][content-trust-03-portal]
 

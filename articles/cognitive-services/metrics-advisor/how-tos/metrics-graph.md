@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: mbullwin
 ms.openlocfilehash: bcedef4a1339dacaff3fe841e97f985c42320819
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92043152"
 ---
 # <a name="how-to-build-a-metrics-graph-to-analyze-related-metrics"></a>Gewusst wie: Erstellen eines Metrikgraphen zum Analysieren von verwandten Metriken
@@ -35,7 +35,7 @@ Als Nächstes müssen Sie einen weiteren Knoten hinzufügen und eine Beziehung z
 
 Klicken Sie auf **Add relation** (Beziehung hinzufügen). Sie können eine weitere Metrik auswählen und den Typ der Beziehung zwischen den beiden Knoten angeben. Sie können auch bestimmte Dimensionsfilter anwenden. 
 
-:::image type="content" source="../media/graph/metrics-graph-node-action.png" alt-text="Metrik auswählen":::
+:::image type="content" source="../media/graph/metrics-graph-node-action.png" alt-text="Hinzufügen eines Knotens und einer Beziehung":::
 
 Nachdem Sie die obigen Schritte wiederholt haben, verfügen Sie über einen Metrikgraphen, mit dem die Beziehungen zwischen allen verwandten Metriken beschrieben werden.
 **Hinweis zu Knotenfarben**
@@ -50,7 +50,7 @@ Beim Erstellen des Metrikgraphen können Sie bei jeder Erkennung einer Anomalie 
 
 Klicken Sie im Graphen in einen Incident, und scrollen Sie nach unten zur Option **Cross Metrics Analysis** (Metrikübergreifende Analyse), die sich unterhalb der Diagnoseinformationen befindet.
 
-:::image type="content" source="../media/graph/metrics-graph-cross-metrics-analysis.png" alt-text="Metrik auswählen":::
+:::image type="content" source="../media/graph/metrics-graph-cross-metrics-analysis.png" alt-text="Anzeigen verwandter Metriken und Anomalien":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

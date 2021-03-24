@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: d4dcd319000edb204ba188ed14b4c797dba5cd38
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75610096"
 ---
 # <a name="configuring-cluster-resource-manager-settings-for-service-fabric-services"></a>Konfigurieren von Einstellungen des Clusterressourcen-Managers für Service Fabric-Dienste
@@ -22,11 +22,11 @@ Der Clusterressourcen-Manager von Service Fabric ermöglicht eine detaillierte S
 ## <a name="placement-constraints"></a>Platzierungseinschränkungen
 Platzierungseinschränkungen steuern, an welchen Knoten im Cluster ein Dienst tatsächlich ausgeführt werden kann. Hierbei handelt es sich in der Regel um eine bestimmte benannte Dienstinstanz oder um alle Dienste eines bestimmten Typs, die auf die Ausführung auf einem bestimmten Knotentyp beschränkt sind. Platzierungseinschränkungen können erweitert werden. Sie können eine beliebige Gruppe von Eigenschaften pro Knotentyp definieren und anschließend beim Erstellen von Diensten mit Einschränkungen eine Auswahl für diese treffen. Sie können die Platzierungseinschränkungen eines Diensts auch ändern, während dieser ausgeführt wird. Dadurch können Sie auf Änderungen im Cluster oder auf die Anforderungen des Diensts reagieren. Die Eigenschaften eines Knotens können auch dynamisch im Cluster aktualisiert werden. Weitere Informationen zu Platzierungseinschränkungen und deren Konfiguration finden Sie in [diesem Artikel](service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints)
 
-## <a name="metrics"></a>metrics
+## <a name="metrics"></a>Metriken
 Bei Metriken handelt es sich um einen Satz von Ressourcen, den ein bestimmter benannter Dienst benötigt. Die Metrikkonfiguration eines Diensts gibt unter anderem den Anteil der Ressource an, den jedes zustandsbehaftete Replikat und jede zustandslose Instanz dieses Diensts standardmäßig verbraucht. Metriken enthalten auch eine Gewichtung, die angibt, wie wichtig der Ausgleich dieser Metrik für den Dienst ist, falls Kompromisse erforderlich sind.
 
 ## <a name="advanced-placement-rules"></a>Fortgeschrittene Platzierungsregeln
-Es gibt weitere Typen von Platzierungsregeln, die in weniger häufigen Szenarien hilfreich sein können. Beispiele:
+Es gibt weitere Typen von Platzierungsregeln, die in weniger häufigen Szenarien hilfreich sein können. Hier einige Beispiele:
 - Einschränkungen, die bei geografisch verteilten Clustern hilfreich sind
 - Gewisse Anwendungsarchitekturen
 
