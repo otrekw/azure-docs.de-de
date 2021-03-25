@@ -5,10 +5,10 @@ ms.date: 06/30/2020
 ms.topic: conceptual
 ms.reviewer: ravastra
 ms.openlocfilehash: 6a3113a2d28e704b188d701da13493ecd8263cab
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94335025"
 ---
 # <a name="whats-new-in-azure-blockchain-service"></a>Neues im Azure Blockchain Service
@@ -68,7 +68,7 @@ Die zweistufige Bereitstellung erleichtert die Optimierung von Szenarien, in den
 
 In Quorum v2.6.0 führen Aufrufe der Funktion *eth.estimateGas* ohne Bereitstellung des zusätzlichen Parameters *value* zu einer Ausnahme vom Typ *Absturz des Methodenhandlers*. Das Quorum-Team wurde benachrichtigt, und eine Problembehebung wird zu Ende Juli 2020 erwartet. Bis eine Korrektur verfügbar ist, können Sie die folgenden Problemumgehungen verwenden:
 
-- Vermeiden Sie die Verwendung von *eth.estimateGas* , da sie die Leistung beeinträchtigen kann. Weitere Informationen zu den Leistungsproblemen bei eth.estimateGas finden Sie unter [Aufrufen der eth.estimateGas-Funktion führt zu verringerter Leistung](#calling-ethestimategas-function-reduces-performance). Schließen Sie in jede Transaktion einen Wert für gas ein. Die meisten Bibliotheken rufen eth.estimateGas auf, wenn kein Wert für gas angegeben wird, was zu einem Absturz von Quorum v2.6.0 führen würde.
+- Vermeiden Sie die Verwendung von *eth.estimateGas*, da sie die Leistung beeinträchtigen kann. Weitere Informationen zu den Leistungsproblemen bei eth.estimateGas finden Sie unter [Aufrufen der eth.estimateGas-Funktion führt zu verringerter Leistung](#calling-ethestimategas-function-reduces-performance). Schließen Sie in jede Transaktion einen Wert für gas ein. Die meisten Bibliotheken rufen eth.estimateGas auf, wenn kein Wert für gas angegeben wird, was zu einem Absturz von Quorum v2.6.0 führen würde.
 - Wenn Sie *eth.estimateGas* aufrufen müssen, schlägt das Quorum-Team als Problemumgehung vor, dass Sie den zusätzlichen Parameter *value* als *0* übergeben.
 
 ### <a name="mining-stops-if-fewer-than-four-validator-nodes"></a>Mining wird bei weniger als vier Validierungsknoten beendet
@@ -83,7 +83,7 @@ Verwenden Sie *Standard* für Bereitstellungen für die Produktion. Verwenden Si
 
 ### <a name="blockchain-data-manager-requires-standard-tier-node"></a>Für Blockchain Data Manager ist ein Knoten im Standard-Tarif erforderlich
 
-Verwenden Sie den *Standard* -Tarif, wenn Sie Blockchain Data Manager verwenden. Der *Basic* -Tarif verfügt nur über 4 GB Arbeitsspeicher. Daher kann er nicht bis zu der Auslastung skaliert werden, die für Blockchain Data Manager und andere auf ihm ausgeführte Dienste erforderlich ist.
+Verwenden Sie den *Standard*-Tarif, wenn Sie Blockchain Data Manager verwenden. Der *Basic*-Tarif verfügt nur über 4 GB Arbeitsspeicher. Daher kann er nicht bis zu der Auslastung skaliert werden, die für Blockchain Data Manager und andere auf ihm ausgeführte Dienste erforderlich ist.
 
 Verwenden Sie *Basic* für die Entwicklung, das Testen und Proof of Concept-Vorgänge. Das Wechseln zwischen den Tarifen „Basic“ und „Standard“ nach der Erstellung eines Mitglieds wird nicht unterstützt.
 

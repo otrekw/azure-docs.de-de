@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 08/07/2020
 ms.author: allensu
 ms.openlocfilehash: ee264a22de5ce094e8a4c1335ace77cbbba49270
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94694992"
 ---
 # <a name="outbound-only-load-balancer-configuration"></a>Lastenausgleichskonfiguration (nur ausgehender Datenverkehr)
@@ -254,7 +254,7 @@ Erstellen Sie den Back-End-Adresspool **myPublicBackendPool**:
 
 2. Wählen Sie auf der Seite **Übersicht** die Option **Verbinden** und dann **Bastion** aus.
 
-4. Geben Sie den Benutzernamen mit dem zugehörigen Kennwort ein, den Sie bei der VM-Erstellung verwendet haben.
+4. Geben Sie den Benutzernamen und das Kennwort ein, die Sie bei der VM-Erstellung verwendet haben.
 
 5. Wählen Sie **Verbinden**.
 
@@ -289,7 +289,7 @@ Erstellen Sie den Back-End-Adresspool **myPublicBackendPool**:
 
 2. Wählen Sie auf der Seite **Übersicht** die Option **Verbinden** und dann **Bastion** aus.
 
-4. Geben Sie den Benutzernamen mit dem zugehörigen Kennwort ein, den Sie bei der VM-Erstellung verwendet haben.
+4. Geben Sie den Benutzernamen und das Kennwort ein, die Sie bei der VM-Erstellung verwendet haben.
 
 5. Wählen Sie **Verbinden**.
 

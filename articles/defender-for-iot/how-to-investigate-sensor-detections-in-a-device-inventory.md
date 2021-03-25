@@ -1,18 +1,14 @@
 ---
 title: Einblicke in Geräte, die von einem bestimmten Sensor erkannt werden
 description: Die Gerätebestand zeigt verschiedenste Geräteattribute an, die von einem Sensor erkannt werden.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 12/06/2020
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: 9dc6849c1b2ad5daa6142e894e36f351663ff9bd
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 4daec83f44a545d7837a7e73e847f56b1f5770e7
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100523990"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104782094"
 ---
 # <a name="investigate-sensor-detections-in-a-device-inventory"></a>Grundlagen zu Sensorerkennungen in einem Gerätebestand
 
@@ -30,7 +26,7 @@ Die Gerätebestand zeigt verschiedenste Geräteattribute an, die von einem Senso
 
 Die folgenden Attribute werden in der Gerätebestandstabelle angezeigt:
 
-| Parameter | BESCHREIBUNG |
+| Parameter | Beschreibung |
 |--|--|
 | Name | Der Name des Geräts, wie er vom Sensor erkannt oder vom Benutzer eingegeben wurde. |
 | type | Der Typ des Geräts, wie er vom Sensor ermittelt oder vom Benutzer eingegeben wurde. |
@@ -223,7 +219,7 @@ So exportieren Sie eine CSV-Datei:
 
 - Wählen Sie im Menü oben rechts im Gerätebestand das Symbol :::image type="icon" source="media/how-to-work-with-asset-inventory-information/csv-excel-export-icon.png" border="false"::: aus. Der CSV-Bericht wird generiert und heruntergeladen.
 
-## <a name="next-steps"></a>Nächste Schritte
+## <a name="see-also"></a>Weitere Informationen
 
 [Untersuchen aller Unternehmenssensorerkennungen in einem Gerätebestand](how-to-investigate-all-enterprise-sensor-detections-in-a-device-inventory.md)
 

@@ -9,10 +9,10 @@ ms.author: terrylan
 manager: rkarlin
 ms.date: 11/10/2020
 ms.openlocfilehash: feb28b1d448d0146046ed789d1389a3a42f344de
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94557379"
 ---
 # <a name="secure-boot"></a>Sicherer Start
@@ -53,7 +53,7 @@ Die Überprüfung, ob db- und dbx-Digests korrekt sind, gewährleistet Folgendes
  Durch Überprüfen der Signaturen von „KEKpub“ und „PKpub“ kann sichergestellt werden, dass nur vertrauenswürdige Parteien die Berechtigung erhalten, die Definitionen der als vertrauenswürdig eingestuften Software zu ändern. Indem sichergestellt wird, dass Secure Boot aktiv ist, wird letztlich gewährleistet, dass diese Definitionen durchgesetzt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen darüber, was wir tun, um die Integrität und Sicherheit von Plattformen voranzutreiben, finden Sie unter:
+Weitere Informationen zu unseren Anstrengungen, die Integrität und Sicherheit von Plattformen zu erhöhen, finden Sie unter:
 
 - [Firmwaresicherheit](firmware.md)
 - [Gemessener Start- und Hostnachweis](measured-boot-host-attestation.md)

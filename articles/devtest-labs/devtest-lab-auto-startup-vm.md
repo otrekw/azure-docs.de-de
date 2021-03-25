@@ -4,10 +4,10 @@ description: Erfahren Sie, wie Sie Einstellungen für den automatischen Start f�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 83e7b0836273a59eaaf66471bd0cb42d63ccf1c3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91328478"
 ---
 # <a name="auto-startup-lab-virtual-machines"></a>Automatisches Starten virtueller Labcomputer  
@@ -41,7 +41,7 @@ Im folgenden Verfahren werden die Schritte beschrieben, die für die Aktivierung
 1. Wählen Sie auf der Startseite für Ihr Lab die **VM** in der Liste **Meine virtuellen Computer** aus. 
 
     ![Menü „Konfiguration und Richtlinien“](./media/devtest-lab-auto-startup-vm/select-vm.png)
-2. Wählen Sie auf der Seite**Virtueller Computer** im linken Menü oder in der Liste **Zeitpläne** die Option **Automatischer Start** aus. 
+2. Wählen Sie auf der Seite **Virtueller Computer** im linken Menü oder in der Liste **Zeitpläne** die Option **Automatischer Start** aus. 
 
     ![Menü zum Auswählen des automatischen Starts](./media/devtest-lab-auto-startup-vm/select-auto-start.png)
 3. Wählen Sie auf der Seite **Automatischer Start** die Option **Ein** für **Planung des automatischen Starts virtueller Computer zulassen** aus.

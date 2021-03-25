@@ -4,17 +4,17 @@ description: Erfahren Sie mehr über Dateien und Verzeichnisse und deren Verwend
 ms.topic: conceptual
 ms.date: 08/03/2020
 ms.openlocfilehash: eafea6c234c3b261521f8a791b7a03e25388f02a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87552634"
 ---
 # <a name="files-and-directories-in-azure-batch"></a>Dateien und Verzeichnisse in Azure Batch
 
 In Azure Batch umfasst jeder Task ein Arbeitsverzeichnis, in dem Dateien und Verzeichnisse erstellt werden können. Dieses Arbeitsverzeichnis kann für das Speichern des von einem Task ausgeführten Programms, der dabei verarbeiteten Daten und der Ausgabe der Verarbeitung verwendet werden. Alle Dateien und Verzeichnisse eines Tasks befinden sich im Besitz des Taskbenutzers.
 
-Der Batch-Dienst stellt einen Teil des Dateisystems auf einem Knoten als *Stammverzeichnis*bereit. Dieses Stammverzeichnis befindet sich auf dem temporären Speicherlaufwerk der VM, nicht direkt auf dem Laufwerk des Betriebssystems.
+Der Batch-Dienst stellt einen Teil des Dateisystems auf einem Knoten als *Stammverzeichnis* bereit. Dieses Stammverzeichnis befindet sich auf dem temporären Speicherlaufwerk der VM, nicht direkt auf dem Laufwerk des Betriebssystems.
 
 Tasks können auf das Stammverzeichnis zugreifen, indem sie auf die Umgebungsvariable `AZ_BATCH_NODE_ROOT_DIR` verweisen. Weitere Informationen zur Verwendung von Umgebungsvariablen finden Sie unter [Umgebungseinstellungen für Tasks](jobs-and-tasks.md#environment-settings-for-tasks).
 

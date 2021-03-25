@@ -7,12 +7,12 @@ ms.date: 12/07/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 922189909da21aac65d1e2e898df58598868b929
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 903853f9f37921a68c918d09a94087548b5c562c
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100590461"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100660"
 ---
 # <a name="introduction-to-azure-defender-for-resource-manager"></a>Einführung in Azure Defender für Resource Manager
 
@@ -27,7 +27,7 @@ Azure Defender für Resource Manager überwacht automatisch die Ressourcenverwal
 |Aspekt|Details|
 |----|:----|
 |Status des Release:|Vorschau<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
-|Preise:|**Azure Defender für Resource Manager** wird gemäß den Angaben in der [Preisübersicht](security-center-pricing.md) abgerechnet.|
+|Preise:|**Azure Defender für Resource Manager** wird gemäß [Security Center – Preise](https://azure.microsoft.com/pricing/details/security-center/) abgerechnet.|
 |Clouds:|![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Nein](./media/icons/no-icon.png) National/Sovereign (US Gov, China Gov, andere Gov)|
 |||
 
@@ -75,4 +75,4 @@ In diesem Artikel haben Sie sich über Azure Defender für Resource Manager info
 - Sicherheitswarnungen können von Security Center generiert oder von Security Center aus anderen Sicherheitsprodukten empfangen werden. Gehen Sie wie unter [Fortlaufendes Exportieren von Security Center-Daten](continuous-export.md) beschrieben vor, um alle diese Warnungen in Azure Sentinel, in ein beliebiges Drittanbieter-SIEM oder in ein beliebiges anderes externes Tool zu exportieren.
 
 - > [!div class="nextstepaction"]
-    > [Aktivieren von Azure Defender](security-center-pricing.md#enable-azure-defender)
+    > [Aktivieren von Azure Defender](enable-azure-defender.md)

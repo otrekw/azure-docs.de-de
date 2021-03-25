@@ -4,10 +4,10 @@ description: Hier erfahren Sie mehr über Azure Batch Konten und deren Verwendun
 ms.topic: conceptual
 ms.date: 01/26/2021
 ms.openlocfilehash: 83108a265f91c9feef2fab424f1819939c2d58c9
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98896747"
 ---
 # <a name="batch-accounts-and-azure-storage-accounts"></a>Batch-Konten und Azure Storage-Konten

@@ -1,18 +1,14 @@
 ---
 title: Steuern, welcher Datenverkehr überwacht wird
 description: Sensoren führen automatisch eine umfassende Paketerkennung für IT- und OT-Datenverkehr durch und lösen Informationen über Netzwerkgeräte auf, wie etwa Geräteattribute und Netzwerkverhalten. Es stehen verschiedene Tools zur Verfügung, um den Typ von Datenverkehr zu steuern, der von den einzelnen Sensoren erkannt wird.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 12/07/2020
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: a7af817074400bedd8f07adaefc35309566dc931
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: b80ef4a4a1fca7383da80fda6fdf42831913f2bd
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100522392"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104784440"
 ---
 # <a name="control-what-traffic-is-monitored"></a>Steuern, welcher Datenverkehr überwacht wird
 
@@ -295,7 +291,7 @@ So zeigen Sie die Überprüfungsergebnisse an:
 
 1. Wenn die Überprüfung abgeschlossen ist, wählen Sie im Bereich **Actions** (Aktionen) **View Scan Results** (Überprüfungsergebnisse anzeigen) aus. Die CSV-Datei mit den Scanergebnissen wird auf Ihren Computer heruntergeladen.
 
-## <a name="next-steps"></a>Nächste Schritte
+## <a name="see-also"></a>Weitere Informationen
 
 [Untersuchen von Sensorerkennungen in einem Gerätebestand](how-to-investigate-sensor-detections-in-a-device-inventory.md)
 [Untersuchen von Sensorerkennungen in der Geräteübersicht](how-to-work-with-the-sensor-device-map.md)

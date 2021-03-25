@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 1/8/2019
 ms.openlocfilehash: 3d23ee6119b625e11ce44bb9ad11ce4b3ee0280d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91295735"
 ---
 # <a name="create-users-in-azure-database-for-postgresql---hyperscale-citus"></a>Erstellen von Benutzern in Azure Database for PostgreSQL: Hyperscale (Citus)
@@ -52,7 +52,7 @@ Wie bereits erwähnt, verfügt das `citus`-Administratorkonto nicht über die Be
 
 2. Geben Sie den Rollennamen und das Kennwort ein. Klicken Sie auf **Speichern**.
 
-   :::image type="content" source="media/howto-hyperscale-create-users/2-add-user-fields.png" alt-text="Die Seite „Rollen“":::
+   :::image type="content" source="media/howto-hyperscale-create-users/2-add-user-fields.png" alt-text="Hinzufügen einer Rolle":::
 
 Der Benutzer wird auf dem Koordinatorknoten der Servergruppe erstellt und an alle Workerknoten weitergegeben. Über das Azure-Portal erstellte Rollen weisen das `LOGIN`-Attribut auf. Dies bedeutet, dass es sich um echte Benutzer handelt, die sich bei der Datenbank anmelden können.
 
@@ -77,7 +77,7 @@ GRANT SELECT ON ALL TABLES IN SCHEMA public TO db_user;
 
 Um einen Benutzer zu aktualisieren, navigieren Sie zur Seite **Rollen** für Ihre Servergruppe mit Hyperscale (Citus), und klicken Sie auf die Auslassungspunkte ( **...** ) neben dem Benutzer. Die Auslassungspunkte öffnen ein Menü, in dem der Benutzer gelöscht oder sein Kennwort zurückgesetzt werden kann.
 
-   :::image type="content" source="media/howto-hyperscale-create-users/edit-role.png" alt-text="Die Seite „Rollen“":::
+   :::image type="content" source="media/howto-hyperscale-create-users/edit-role.png" alt-text="Bearbeiten einer Rolle":::
 
 Die Rolle `citus` ist privilegiert und kann nicht gelöscht werden.
 

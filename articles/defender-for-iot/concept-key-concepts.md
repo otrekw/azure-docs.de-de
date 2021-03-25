@@ -1,18 +1,14 @@
 ---
 title: Hauptvorteile
 description: Hier erfahren Sie mehr über die grundlegenden Konzepte von Defender für IoT.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 12/13/2020
 ms.topic: article
-ms.service: azure
-ms.openlocfilehash: cb984ca1a74d8b3838b857f2f5679264d1445187
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: ca1e5a4d8554b208f5275fd0e7519f2db3fafc08
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99508607"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104784746"
 ---
 # <a name="basic-concepts"></a>Grundlegende Konzepte 
 

@@ -4,10 +4,10 @@ description: 'Enthält eine Beschreibung der drei Azure-Messagingdienste: Azure 
 ms.topic: overview
 ms.date: 07/07/2020
 ms.openlocfilehash: 7a3a0cd7f63a67206053ae55f33bd71aee2c19c6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87460404"
 ---
 # <a name="choose-between-azure-messaging-services---event-grid-event-hubs-and-service-bus"></a>Auswahl von Azure-Messagingdiensten: Event Grid, Event Hubs und Service Bus
@@ -32,7 +32,7 @@ Eigenständige Ereignisse geben Statusänderungen an und erfordern Aktionen. Um 
 
 Reihenereignisse geben eine Bedingung an und können analysiert werden. Die Ereignisse sind nach Zeit sortiert und voneinander abhängig. Der Consumer benötigt die sortierte Reihe von Ereignissen, um zu analysieren, was passiert ist.
 
-### <a name="message"></a>`Message`
+### <a name="message"></a>Meldung
 
 Bei einer Nachricht handelt es sich um Rohdaten, die von einem Dienst erzeugt wurden und für die Nutzung oder Speicherung an anderer Stelle vorgesehen sind. Die Nachricht enthält die Daten, die die Nachrichtenpipeline ausgelöst haben. Der Verleger der Nachricht hat eine Erwartung dazu, wie der Consumer die Nachricht verarbeitet. Ein Vertrag besteht zwischen den beiden Seiten. Beispiel: Der Verleger sendet eine Nachricht mit den Rohdaten und erwartet, dass der Consumer eine Datei aus den Daten erstellt und eine Antwort sendet, wenn die Arbeit abgeschlossen ist.
 
@@ -42,7 +42,7 @@ Bei einer Nachricht handelt es sich um Rohdaten, die von einem Dienst erzeugt wu
 | ------- | ------- | ---- | ----------- |
 | Event Grid | Reaktive Programmierung | Ereignisverteilung (eigenständig) | Reagieren auf Statusänderungen |
 | Event Hubs | Big Data-Pipeline | Ereignisstreaming (Reihe) | Streamen von Telemetriedaten und verteilten Daten |
-| Service Bus | Hochwertiges Unternehmensmessaging | `Message` | Auftragsverarbeitung und Finanztransaktionen |
+| Service Bus | Hochwertiges Unternehmensmessaging | Meldung | Auftragsverarbeitung und Finanztransaktionen |
 
 ### <a name="event-grid"></a>Event Grid
 
@@ -52,7 +52,7 @@ Event Grid ist tief in Azure-Dienste integriert und kann in Drittanbieterdienste
 
 Event Grid unterstützt unzustellbare Nachrichten für Ereignisse, die nicht an einen Endpunkt übermittelt werden.
 
-Merkmale:
+Das Repository weist die folgenden Merkmale auf:
 
 * Dynamisch skalierbar
 * Geringe Kosten
@@ -63,7 +63,7 @@ Merkmale:
 
 Azure Event Hubs ist eine Big Data-Pipeline. Es vereinfacht die Erfassung, Aufbewahrung und Wiedergabe von Telemetrie- und Ereignisdatenstromdaten. Die Daten können aus vielen parallelen Quellen stammen. Mit Event Hubs können Telemetrie- und Ereignisdaten für eine Vielzahl von datenstromverarbeitenden Infrastrukturen und Analysediensten verfügbar gemacht werden. Die Daten sind entweder als Datenströme oder als gebündelte Ereignisbatches verfügbar. Dieser Dienst bietet eine Einzellösung zum schnellen Abrufen von Daten für die Verarbeitung in Echtzeit sowie für die wiederholte Wiedergabe gespeicherter Rohdaten. Er kann die Streamingdaten zur Verarbeitung und Analyse in einer Datei erfassen.
 
-Merkmale:
+Das Repository weist die folgenden Merkmale auf:
 
 * Geringe Wartezeit
 * Empfang und Verarbeitung von Millionen von Ereignissen pro Sekunde möglich
@@ -75,7 +75,7 @@ Service Bus ist für traditionelle Unternehmensanwendungen konzipiert. Für dies
 
 Service Bus ist ein System für Brokermessaging. Es speichert Nachrichten in einem „Broker“ (z. B. in einer Warteschlange), bis die Empfängerseite für den Empfang der Nachrichten bereit ist.
 
-Merkmale:
+Das Repository weist die folgenden Merkmale auf:
 
 * Zuverlässige asynchrone Nachrichtenübermittlung (abfragebasiertes Enterprise Messaging-as-a-Service)
 * Erweiterte Messagingfeatures wie FIFO, Batchverarbeitung/Sitzungen, Transaktionen, unzustellbare Nachrichten, zeitliche Steuerung, Routing und Filterung sowie Duplikaterkennung

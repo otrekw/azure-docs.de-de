@@ -17,10 +17,10 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 32973d063c36a45eee79db0b4da4e7419cb70013
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87798545"
 ---
 # <a name="share-link-to-request-an-access-package-in-azure-ad-entitlement-management"></a>Freigeben des Links zum Anfordern eines Zugriffspakets in der Azure AD-Berechtigungsverwaltung
@@ -37,7 +37,7 @@ Wenn der Katalog für das Zugriffspaket [für externe Benutzer aktiviert ist](en
 
 1. Klicken Sie im Menü auf der linken Seite auf **Zugriffspakete**, und öffnen Sie das Zugriffspaket.
 
-1. Kopieren Sie auf der Seite „Übersicht“ den **Link zum Portal „Mein Zugriff“** .
+1. Kopieren Sie auf der Seite „Übersicht“ den **Link zum Portal „Mein Zugriff“**.
 
     ![Zugriffspaket (Übersicht): Link zum Portal „Mein Zugriff“](./media/entitlement-management-shared/my-access-portal-link.png)
 

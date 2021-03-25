@@ -1,18 +1,14 @@
 ---
 title: Gewinnen von Erkenntnissen zu globalen, regionalen und lokalen Bedrohungen
 description: In der lokalen Verwaltungskonsole können Sie mithilfe der Siteübersicht Erkenntnisse zu globalen, regionalen und lokalen Bedrohungen gewinnen.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 12/07/2020
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: cde55f3c2a875c593c07ea05427f8075d8599196
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: db3b9fbca9acd6c4ce1cfe137a4024f66d8a6292
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97836387"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104784117"
 ---
 # <a name="gain-insight-into-global-regional-and-local-threats"></a>Gewinnen von Erkenntnissen zu globalen, regionalen und lokalen Bedrohungen
 

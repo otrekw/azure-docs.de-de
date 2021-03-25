@@ -4,10 +4,10 @@ description: 'Hier erfahren Sie, wie Sie mithilfe eines Skripts eine VM-Vorlage 
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 5ae50bd11ab9a8adb769920f6d473a2ff2ce9342
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91251494"
 ---
 # <a name="enable-nested-virtualization-on-a-template-virtual-machine-in-azure-lab-services-using-a-script"></a>Aktivieren geschachtelter Virtualisierung auf einem virtuellen Vorlagencomputer in Azure Lab Services mit einem Skript
@@ -37,7 +37,7 @@ Die Schritte in diesem Artikel konzentrieren sich auf das Einrichten der geschac
     >[!TIP]
     >Sie können das Git-Repository unter [https://github.com/Azure/azure-devtestlab.git](https://github.com/Azure/azure-devtestlab.git) auch klonen.
 
-1. Starten Sie die **PowerShell** im **Administrator**modus.
+1. Starten Sie die **PowerShell** im **Administrator** modus.
 1. Navigieren Sie im PowerShell-Fenster zu dem Ordner mit dem heruntergeladenen Skript. Wenn Sie vom obersten Ordner der Repositorydateien aus navigieren, befindet sich das Skript in `azure-devtestlab\samples\ClassroomLabs\Scripts\HyperV\`.
 1. Möglicherweise müssen Sie die Ausführungsrichtlinie ändern, damit das Skript erfolgreich ausgeführt wird. Führen Sie den folgenden Befehl aus:
 

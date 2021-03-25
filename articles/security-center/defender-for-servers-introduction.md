@@ -7,12 +7,12 @@ ms.date: 9/23/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: b7457e258cf8a9936e9a63ab9eec9edc0b54d3eb
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 36c32c4eefdaa1c7604f2b0f19e98cf6a6d4310d
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797739"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102096529"
 ---
 # <a name="introduction-to-azure-defender-for-servers"></a>Einführung in Azure Defender für Server
 
@@ -27,7 +27,7 @@ Unter Linux sammelt Azure Defender Überwachungsdatensätze von Linux-Computern 
 
 Zu den Funktionen für Bedrohungserkennung und Schutz von Azure Defender für Server gehören:
 
-- **Integrierte Lizenz für Microsoft Defender für Endpunkt (nur Windows)** : Azure Defender für Server enthält [Microsoft Defender für Endpunkt](https://www.microsoft.com/microsoft-365/security/endpoint-defender). Dadurch stehen umfassende EDR-Funktionen (Endpoint Detection and Response; Endpunkterkennung und -reaktion) zur Verfügung. [Weitere Informationen](security-center-wdatp.md)
+- **Integrierte Lizenz für Microsoft Defender für Endpunkt (nur Windows)** : Azure Defender für Server enthält [Microsoft Defender für Endpunkt](https://www.microsoft.com/microsoft-365/security/endpoint-defender). Dadurch stehen umfassende EDR-Funktionen (Endpoint Detection and Response; Endpunkterkennung und -reaktion) zur Verfügung. Weitere Informationen finden Sie unter [Schützen Ihrer Endpunkte](security-center-wdatp.md).
 
     Wenn Defender für Endpunkt eine Bedrohung erkennt, wird eine Warnung ausgelöst. Die Warnung wird in Security Center angezeigt. Über Security Center können Sie auch zur Defender für Endpunkt-Konsole wechseln und eine ausführliche Untersuchung durchführen, um das Ausmaß des Angriffs zu ermitteln. Erfahren Sie mehr zu Microsoft Defender für Endpunkt.
 
@@ -36,25 +36,25 @@ Zu den Funktionen für Bedrohungserkennung und Schutz von Azure Defender für Se
 
 - **Überprüfung auf Sicherheitsrisiken für VMs:** Die in Azure Security Center enthaltene Überprüfung auf Sicherheitsrisiken basiert auf Qualys. 
 
-    Der Scanner von Qualys ist eines der führenden Tools für die Echtzeiterkennung von Sicherheitsrisiken auf Ihren virtuellen Azure-Computern. Sie benötigen keine Qualys-Lizenz und auch kein Qualys-Konto – alles erfolgt nahtlos innerhalb von Security Center. [Weitere Informationen](deploy-vulnerability-assessment-vm.md)
+    Der Scanner von Qualys ist eines der führenden Tools für die Echtzeiterkennung von Sicherheitsrisiken auf Ihren Azure- und Hybrid-VMs. Sie benötigen keine Qualys-Lizenz und auch kein Qualys-Konto – alles erfolgt nahtlos innerhalb von Security Center. Weitere Informationen finden Sie unter [Integrierte Azure Defender-Lösung zur Sicherheitsrisikobewertung für Azure- und Hybridcomputer](deploy-vulnerability-assessment-vm.md).
 
 - **Just-In-Time-Zugriff (JIT) auf virtuellen Computer (VM):** Bedrohungsakteure suchen aktiv nach zugänglichen Computern mit offenen Verwaltungsports, z. B. für RDP oder SSH. Alle Ihre virtuellen Computer sind potenzielle Ziele für Angriffe. Wenn eine VM erfolgreich kompromittiert wurde, wird sie als Einstiegspunkt verwendet, um weitere Ressourcen in Ihrer Umgebung anzugreifen.
 
-    Wenn Sie Azure Defender für Server aktivieren, können Sie Just-In-Time-VM-Zugriff verwenden, um eingehenden Datenverkehr auf Ihren VMs zu blockieren und dadurch die Gefährdung durch Angriffe zu verringern und bei Bedarf einen einfachen Zugriff für das Verbinden mit VMs bereitzustellen. [Weitere Informationen](just-in-time-explained.md)
+    Wenn Sie Azure Defender für Server aktivieren, können Sie Just-In-Time-VM-Zugriff verwenden, um eingehenden Datenverkehr auf Ihren VMs zu blockieren und dadurch die Gefährdung durch Angriffe zu verringern und bei Bedarf einen einfachen Zugriff für das Verbinden mit VMs bereitzustellen. Weitere Informationen finden Sie unter [Grundlegendes zum JIT-VM-Zugriff](just-in-time-explained.md).
 
 - **Überwachung der Dateiintegrität:** Die Überwachung der Dateiintegrität (File Integrity Monitoring, FIM), auch als Änderungsüberwachung bezeichnet, untersucht unter anderem Dateien und Registrierungen des Betriebssystems sowie Anwendungen auf Änderungen, die auf einen Angriff hindeuten. Eine Vergleichsmethode wird verwendet, um zu bestimmen, ob der aktuelle Status der Datei sich von der letzten Überprüfung der Datei unterscheidet. Sie können diesen Vergleich nutzen, um zu bestimmen, ob gültige oder verdächtige Änderungen an Ihren Dateien vorgenommen wurden.
 
-    Wenn Sie Azure Defender für Server aktivieren, können Sie mithilfe von FIM die Integrität von Windows-Dateien, Windows-Registrierungen und Linux-Dateien überprüfen. [Weitere Informationen](security-center-file-integrity-monitoring.md)
+    Wenn Sie Azure Defender für Server aktivieren, können Sie mithilfe von FIM die Integrität von Windows-Dateien, Windows-Registrierungen und Linux-Dateien überprüfen. Weitere Informationen finden Sie unter [Überwachung der Dateiintegrität in Azure Security Center](security-center-file-integrity-monitoring.md).
 
 - **Adaptive Anwendungssteuerungen:** Adaptive Anwendungssteuerungen sind eine intelligente und automatisierte Lösung zum Definieren von Positivlisten bekannter, sicherer Anwendungen für Ihre Computer.
 
-    Wenn Sie adaptive Anwendungssteuerungen aktiviert und konfiguriert haben, erhalten Sie Sicherheitswarnungen, wenn eine Anwendung ausgeführt wird, die nicht als sicher definiert ist. [Weitere Informationen](security-center-adaptive-application.md)
+    Wenn Sie adaptive Anwendungssteuerungen aktiviert und konfiguriert haben, erhalten Sie Sicherheitswarnungen, wenn eine Anwendung ausgeführt wird, die nicht als sicher definiert ist. Weitere Informationen finden Sie unter [Verwenden von adaptiven Anwendungssteuerungen zum Verringern der Angriffsfläche Ihres Computers](security-center-adaptive-application.md).
 
 - **Adaptive Netzwerkhärtung (ANH):** Der Einsatz von Netzwerksicherheitsgruppen (NSGs) zum Filtern von ein- und ausgehendem Datenverkehr für Ressourcen verbessert den Sicherheitsstatus Ihres Netzwerks. Es gibt jedoch Situationen, in denen es sich bei dem Datenverkehr, der die NSG durchläuft, um eine Teilmenge der definierten NSG-Regeln handelt. In diesen Fällen lässt sich der Sicherheitsstatus durch eine Härtung der NSG-Regeln auf der Grundlage tatsächlicher Datenverkehrsmuster noch weiter verbessern.
 
-    Die adaptive Netzwerkhärtung liefert Empfehlungen zur weiteren Härtung der NSG-Regeln. Dabei kommt ein Machine Learning-Algorithmus zum Einsatz, der Faktoren wie tatsächlichen Datenverkehr, bekannte vertrauenswürdige Konfiguration und Bedrohungsinformationen sowie weitere Anzeichen einer Kompromittierung berücksichtigt und auf der Grundlage dieser Faktoren Empfehlungen abgibt, um nur Datenverkehr von bestimmten IP-/Port-Tupeln zuzulassen. [Weitere Informationen](security-center-adaptive-network-hardening.md)
+    Die adaptive Netzwerkhärtung liefert Empfehlungen zur weiteren Härtung der NSG-Regeln. Dabei kommt ein Machine Learning-Algorithmus zum Einsatz, der Faktoren wie tatsächlichen Datenverkehr, bekannte vertrauenswürdige Konfiguration und Bedrohungsinformationen sowie weitere Anzeichen einer Kompromittierung berücksichtigt und auf der Grundlage dieser Faktoren Empfehlungen abgibt, um nur Datenverkehr von bestimmten IP-/Port-Tupeln zuzulassen. Weitere Informationen finden Sie unter [Verbessern des Netzwerksicherheitsstatus mit adaptiver Netzwerkhärtung](security-center-adaptive-network-hardening.md).
 
-- **Docker-Hosthärtung:** Azure Security Center identifiziert nicht verwaltete Container, die auf IaaS-Linux-VMs oder anderen Linux-Computern gehostet werden, auf denen Docker-Container ausgeführt werden. Security Center bewertet kontinuierlich die Konfigurationen dieser Container. Anschließend werden sie mit dem Docker-Benchmark von Center for Internet Security (CIS) verglichen. Security Center umfasst den gesamten Regelsatz des CIS-Docker-Benchmark und benachrichtigt Sie, sobald Ihre Container eine der Steuerungen nicht erfüllen. [Weitere Informationen](harden-docker-hosts.md)
+- **Docker-Hosthärtung:** Azure Security Center identifiziert nicht verwaltete Container, die auf IaaS-Linux-VMs oder anderen Linux-Computern gehostet werden, auf denen Docker-Container ausgeführt werden. Security Center bewertet kontinuierlich die Konfigurationen dieser Container. Anschließend werden sie mit dem Docker-Benchmark von Center for Internet Security (CIS) verglichen. Security Center umfasst den gesamten Regelsatz des CIS-Docker-Benchmark und benachrichtigt Sie, sobald Ihre Container eine der Steuerungen nicht erfüllen. Weitere Informationen finden Sie unter [Härten Ihrer Docker-Hosts](harden-docker-hosts.md).
 
 - **Erkennung dateiloser Angriffe (nur Windows):** Bei dateilosen Angriffen werden schädliche Nutzlasten in den Arbeitsspeicher injiziert, um die Erkennung durch Verfahren zur datenträgerbasierten Überprüfung zu verhindern. Die Nutzlast des Angreifers nistet sich im Arbeitsspeicher von kompromittierten Prozessen ein und führt ein breites Spektrum an schädlichen Aktivitäten aus.
 
@@ -97,4 +97,4 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 - Sie können Warnungen exportieren, und zwar unabhängig davon, ob sie von Security Center generiert oder von Security Center über ein anderes Sicherheitsprodukt empfangen wurden. Befolgen Sie die Anweisungen unter [Exportieren von Sicherheitswarnungen und -empfehlungen (Vorschau)](continuous-export.md), um die Warnungen zu Azure Sentinel (oder ein Drittanbieter-SIEM) bzw. ein beliebiges anderes externes Tool zu exportieren.
 
 - > [!div class="nextstepaction"]
-    > [Aktivieren von Azure Defender](security-center-pricing.md#enable-azure-defender)
+    > [Aktivieren von Azure Defender](enable-azure-defender.md)

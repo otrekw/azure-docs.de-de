@@ -8,10 +8,10 @@ ms.date: 07/20/2020
 ms.author: surmb
 ms.topic: conceptual
 ms.openlocfilehash: 53f6f37454de886934a483b40daad24204958baf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87474324"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>Anwendungsgateways – Hosten mehrerer Websites
@@ -35,7 +35,7 @@ Application Gateway ermöglicht mithilfe von HTTP(S)-Listenern für mehrere Stan
 
 Durch ein Platzhalterzeichen im Hostnamen können Sie mehrere Hostnamen einem einzigen Listener zuordnen. So umfasst `*.contoso.com` beispielsweise `ecom.contoso.com`, `b2b.contoso.com` und auch `customer1.b2b.contoso.com`. Mithilfe eines Arrays von Hostnamen können Sie für einen Listener mehrere Hostnamen konfigurieren, um Anforderungen an einen Back-End-Pool weiterzuleiten. So kann ein Listener beispielsweise `contoso.com, fabrikam.com` enthalten und so Anforderungen für beide Hostnamen akzeptieren.
 
-:::image type="content" source="./media/multiple-site-overview/wildcard-listener-diag.png" alt-text="Anwendungsgateway für mehrere Standorte":::
+:::image type="content" source="./media/multiple-site-overview/wildcard-listener-diag.png" alt-text="Listener mit Platzhaltern":::
 
 >[!NOTE]
 > Dieses Feature befindet sich in der Vorschauphase und ist nur für die Application Gateway-SKUs „Standard_v2“ und „WAF_v2“ verfügbar. Weitere Informationen zu Vorschauversionen finden Sie in den [Nutzungsbestimmungen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).

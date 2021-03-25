@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 2d3f382635e9a8b8a562f7a7f60f256d68b90b8f
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91363204"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Autorisieren von Entwicklerkonten mithilfe von Azure Active Directory in Azure API Management
@@ -34,7 +34,7 @@ Dieser Artikel zeigt, wie Sie den Zugriff auf das Entwicklerportal für Benutzer
 ## <a name="authorize-developer-accounts-by-using-azure-ad"></a>Autorisieren von Entwicklerkonten mithilfe von Azure AD
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. 
-2. Select ![Pfeilsymbol](./media/api-management-howto-aad/arrow.png)erforderlich.
+2. Select ![Pfeilsymbol](./media/api-management-howto-aad/arrow.png).
 3. Geben Sie im Suchfeld **api** ein.
 4. Wählen Sie **API Management-Dienste** aus.
 5. Wählen Sie Ihre API Management-Dienstinstanz aus.

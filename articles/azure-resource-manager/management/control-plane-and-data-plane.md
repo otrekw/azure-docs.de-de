@@ -4,10 +4,10 @@ description: Beschreibt den Unterschied zwischen Vorgängen auf Steuerungsebene 
 ms.topic: conceptual
 ms.date: 09/10/2020
 ms.openlocfilehash: f478037c3e83c1d28cc900d64512a41619628dd7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91371268"
 ---
 # <a name="azure-control-plane-and-data-plane"></a>Azure-Steuerungsebene und -Datenebene
@@ -41,7 +41,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 Azure Resource Manager verarbeitet alle Anforderungen der Steuerungsebene. Die Azure-Features, die Sie zum Verwalten Ihrer Ressourcen implementiert haben, werden automatisch angewendet, beispielsweise:
 
-* [Rollenbasierte Zugriffssteuerung von Azure (Azure-RBAC)](../../role-based-access-control/overview.md)
+* [Rollenbasierte Zugriffssteuerung von Azure (Azure RBAC)](../../role-based-access-control/overview.md)
 * [Azure Policy](../../governance/policy/overview.md)
 * [Verwaltungssperren](lock-resources.md)
 * [Aktivitätsprotokolle](view-activity-logs.md)
