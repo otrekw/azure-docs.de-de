@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c98269f9851272e8caa9b26ae0c57ed13e9a99f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89049127"
 ---
 # <a name="conditional-access-require-compliant-devices"></a>Bedingter Zugriff: Anfordern von kompatiblen Geräten
@@ -40,10 +40,10 @@ Die folgenden Schritte helfen bei der Erstellung einer Richtlinie für bedingten
 1. Wählen Sie unter **Zuweisungen** die Option **Benutzer und Gruppen** aus.
    1. Wählen Sie unter **Einschließen** die Option **Alle Benutzer** aus.
    1. Wählen Sie unter **Ausschließen** die Option **Benutzer und Gruppen** und dann die Konten für den Notfallzugriff Ihres Unternehmens aus. 
-   1. Wählen Sie **Fertig**aus.
+   1. Wählen Sie **Fertig** aus.
 1. Wählen Sie unter **Cloud-Apps oder -aktionen** > **Einschließen** die Option **Alle Cloud-Apps** aus.
    1. Wenn Sie bestimmte Anwendungen von Ihrer Richtlinie ausschließen müssen, können Sie sie auf der Registerkarte **Ausschließen** unter **Ausgeschlossene Cloudanwendungen auswählen** die Option **Auswählen** auswählen.
-   1. Wählen Sie **Fertig**aus.
+   1. Wählen Sie **Fertig** aus.
 1. Lassen Sie unter **Bedingungen** > **Client-Apps (Vorschau)**  > **Wählen Sie die Client-Apps aus, auf die diese Richtlinie angewendet wird.** alle Standardwerte aktiviert, und klicken Sie auf **Fertig**.
 1. Wählen Sie unter **Zugriffssteuerung** > **Erteilen** die Option **Markieren des Geräts als kompatibel erforderlich** aus.
    1. Wählen Sie **Auswählen**.

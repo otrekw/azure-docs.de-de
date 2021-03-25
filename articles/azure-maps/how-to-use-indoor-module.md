@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: bc80b7dfd433911ef13906db38f59a76827db258
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: e527cf5fa6a7caaeaf56ea19d684dd0830d5ca8a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905280"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101708678"
 ---
 # <a name="use-the-azure-maps-indoor-maps-module"></a>Verwenden des Moduls „Gebäudepläne“ von Azure Maps
 
@@ -67,7 +67,7 @@ const subscriptionKey = "<Your Azure Maps Primary Subscription Key>";
 
 const map = new atlas.Map("map-id", {
   //use your facility's location
-  center: [-122.13315, 47.63637],
+  center: [-122.13203, 47.63645],
   //or, you can use bounds: [# west, # south, # east, # north] and replace # with your map's bounds
   style: "blank",
   view: 'Auto',
@@ -84,24 +84,24 @@ const map = new atlas.Map("map-id", {
 Um die Indoor-Kachelsets sowie den Kartenstil für die Kacheln zu laden, müssen Sie den *Indoor-Manager* instanziieren. Instanziieren Sie den *Indoor-Manager*, indem Sie das *Kartenobjekt* und die entsprechende `tilesetId` bereitstellen. Wenn Sie [dynamische Kartenstile](indoor-map-dynamic-styling.md) unterstützen möchten, müssen Sie die `statesetId` übergeben. Beim Namen der `statesetId`-Variablen wird die Groß- und Kleinschreibung beachtet. Ihr Code sollte dem folgenden JavaScript-Code ähneln.
 
 ```javascript
-const tilesetId = "";
-const statesetId = "";
+const tilesetId = "<tilesetId>";
+const statesetId = "<statesetId>";
 
 const indoorManager = new atlas.indoor.IndoorManager(map, {
-    tilesetId: "<tilesetId>",
-    statesetId: "<statesetId>" // Optional
+    tilesetId: tilesetId,
+    statesetId: statesetId // Optional
 });
 ```
 
 Um das Abrufen von Zustandsdaten zu ermöglichen, die Sie bereitstellen, müssen Sie die `statesetId` bereitstellen und `indoorManager.setDynamicStyling(true)` aufrufen. Durch das Abrufen von Zustandsdaten können Sie den Status dynamischer Eigenschaften oder *Zustände* dynamisch aktualisieren. Beispielsweise kann ein Feature wie z. B. ein Raum eine dynamische Eigenschaft (*Zustand* (state)) namens `occupancy` besitzen. Ihre Anwendung könnte ggf. alle *Zustand* sänderungen abfragen, um die jeweilige Änderung in der visuellen Karte anzuzeigen. Der folgende Code zeigt, wie Sie das Abrufen von Zuständen instanziieren:
 
 ```javascript
-const tilesetId = "";
-const statesetId = "";
+const tilesetId = "<tilesetId>";
+const statesetId = "<statesetId>";
 
 const indoorManager = new atlas.indoor.IndoorManager(map, {
-    tilesetId: "<tilesetId>",
-    statesetId: "<statesetId>" // Optional
+    tilesetId: tilesetId,
+    statesetId: statesetId // Optional
 });
 
 if (statesetId.length > 0) {
@@ -218,9 +218,9 @@ Ihre Datei sollte nun in etwa wie der folgende HTML-Code aussehen.
         });
 
         const indoorManager = new atlas.indoor.IndoorManager(map, {
-          levelControl, //level picker
-          tilesetId,
-          statesetId, //optional
+          levelControl: levelControl, //level picker
+          tilesetId: tilesetId,
+          statesetId: statesetId // Optional
         });
 
         if (statesetId.length > 0) {
@@ -244,6 +244,8 @@ Ihre Datei sollte nun in etwa wie der folgende HTML-Code aussehen.
 Um Ihren Gebäudeplan anzuzeigen, laden Sie ihn in einen Webbrowser. Er sollte wie die folgende Abbildung aussehen. Wenn Sie auf die Funktion „Treppenhaus“ (stairwell) klicken, wird die *Ebenenauswahl* in der oberen rechten Ecke angezeigt.
 
   ![Abbildung des Geländeplans](media/how-to-use-indoor-module/indoor-map-graphic.png)
+
+[Livedemo](https://azuremapscodesamples.azurewebsites.net/?sample=Creator%20indoor%20maps)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

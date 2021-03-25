@@ -12,17 +12,17 @@ ms.date: 05/18/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 4f98eac4305333ec7225c90da2777b7e02f050a0
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96853531"
 ---
 # <a name="analyze-video-content-for-objectionable-material-in-c"></a>Analysieren von Videoinhalten auf anstößiges Material in C#
 
 Dieser Artikel enthält Informationen und Codebeispiele, die Ihnen den Einstieg in die Verwendung des [Content Moderator SDK für .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) erleichtern, um Videos auf jugendgefährdende oder anzügliche Inhalte zu überprüfen.
 
-Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/cognitive-services/), bevor Sie beginnen. 
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/cognitive-services/) erstellen, bevor Sie beginnen. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 - Eine beliebige Edition von [Visual Studio 2015 oder 2017](https://www.visualstudio.com/downloads/)
@@ -55,7 +55,7 @@ Der Azure Media Services Explorer ist ein benutzerfreundliches Front-End für AM
 
 ## <a name="create-the-visual-studio-project"></a>Erstellen des Visual Studio-Projekts
 
-1. Erstellen Sie in Visual Studio ein neues Projekt vom Typ **Konsolen-App (.NET Framework)** , und nennen Sie es **VideoModeration**. 
+1. Erstellen Sie in Visual Studio ein neues Projekt vom Typ **Konsolen-App (.NET Framework)**, und nennen Sie es **VideoModeration**. 
 1. Sollte Ihre Projektmappe noch andere Projekte enthalten, wählen Sie dieses Projekt als das alleinige Startprojekt aus.
 1. Rufen Sie die erforderlichen NuGet-Pakete ab. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt, wählen Sie **NuGet-Pakete verwalten** aus, suchen Sie nach den folgenden Paketen, und installieren Sie sie:
     - windowsazure.mediaservices
@@ -121,7 +121,7 @@ private static readonly string CONTENT_MODERATOR_PRESET_FILE = "preset.json";
 
 Wenn Sie eine lokale Videodatei verwenden möchten (einfachster Fall), fügen Sie sie dem Projekt hinzu und geben Sie ihren Pfad als Wert `INPUT_FILE` ein (relative Pfade sind relativ zum Ausführungsverzeichnis).
 
-Sie müssen auch die Datei _preset.json_ im aktuellen Verzeichnis erstellen und damit eine Versionsnummer angeben. Beispiel:
+Sie müssen auch die Datei _preset.json_ im aktuellen Verzeichnis erstellen und damit eine Versionsnummer angeben. Beispiele:
 
 ```JSON
 {
@@ -366,7 +366,7 @@ Nachdem der Content Moderator-Auftrag abgeschlossen ist, analysieren Sie die JSO
 
 - Zusammenfassung der Videoinformationen
 - **Screenshots** als "**fragments**"
-- **Keyframes** als "**events**" mit dem Flag **reviewRecommended" (= true or false)"** , das auf **adultScore** und **racyScore** basiert.
+- **Keyframes** als "**events**" mit dem Flag **reviewRecommended" (= true or false)"**, das auf **adultScore** und **racyScore** basiert.
 - **start**, **duration**, **totalDuration** und **timestamp** werden in „Takten“ angegeben. Teilen Sie diese Werte durch **timescale**, um die Anzahl in Sekunden zu erhalten.
  
 > [!NOTE]

@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: e2ef1367cbbb1fb71159c4520c3d1481904c1769
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92779321"
 ---
 # <a name="analyze-usage-statistics-with-azure-cdn-advanced-http-reports"></a>Analysieren von Nutzungsstatistiken mit den erweiterten HTTP-Berichten in Azure CDN
@@ -33,7 +33,7 @@ In diesem Dokument werden die erweiterten HTTP-Berichte in Microsoft Azure CDN e
     ![Schaltfläche „Verwalten“ auf dem CDN-Profilblatt](./media/cdn-advanced-http-reports/cdn-manage-btn.png)
    
     Das CDN-Verwaltungsportal wird geöffnet.
-2. Zeigen Sie auf die Registerkarte **Analysen** und dann auf das Flyout **Erweiterte HTTP-Berichte** .  Klicken Sie auf **Große HTTP-Plattform** .
+2. Zeigen Sie auf die Registerkarte **Analysen** und dann auf das Flyout **Erweiterte HTTP-Berichte**.  Klicken Sie auf **Große HTTP-Plattform**.
    
     ![CDN-Verwaltungsportal – Menü „Erweiterte Berichte“](./media/cdn-advanced-http-reports/cdn-advanced-reports.png)
    
@@ -199,7 +199,7 @@ Die linke Seite des Graphen (y-Achse) gibt den Dateinamen für jedes der zehn am
 
 Direkt unterhalb des Balkendiagramms werden die folgenden Informationen für die 250 Assets aufgeführt, die am häufigsten angefordert wurden: relativer Pfad (einschließlich Dateiname), Anzahl von Anforderungen mit dem Statuscode „404 Nicht gefunden“, die Gesamtanzahl von Anforderungen für ein Asset und der Prozentsatz der Anforderungen, für die der Statuscode „404 Nicht gefunden“ zurückgegeben wurde.
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="see-also"></a>Siehe auch
 * [Übersicht über das Azure CDN](cdn-overview.md)
 * [Echtzeitstatistiken in Microsoft Azure CDN](cdn-real-time-stats.md)
 * [Überschreiben des HTTP-Standardverhaltens mithilfe der Regel-Engine](./cdn-verizon-premium-rules-engine.md)

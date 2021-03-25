@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: duau
 ms.openlocfilehash: b133f1cce4af07d8d5e50e04670741fcf7c936a4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/04/2021
 ms.locfileid: "102097073"
 ---
 # <a name="create-expressroute-direct-using-the-azure-portal"></a>Erstellen von ExpressRoute Direct mit dem Portal
@@ -22,7 +22,7 @@ ExpressRoute Direct ermöglicht es, sich direkt mit dem globalen Netzwerk von Mi
 ## <a name="before-you-begin"></a><a name="before"></a>Voraussetzungen
 
 Bevor Sie ExpressRoute Direct nutzen können, müssen Sie zunächst Ihr Abonnement registrieren. Führen Sie zu Ihrer Registrierung folgende Schritte über Azure PowerShell aus:
-1.  Melden Sie sich bei Azure an, und wählen Sie die Abonnement-ID aus, mit der Sie den Cluster entfernen möchten.
+1.  Melden Sie sich bei Azure an, und wählen Sie das Abonnement aus, für das Sie sich registrieren möchten.
 
     ```azurepowershell-interactive
     Connect-AzAccount 

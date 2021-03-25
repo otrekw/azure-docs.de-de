@@ -4,10 +4,10 @@ description: Verwenden von Firewallregeln zum Zulassen von Verbindungen von best
 ms.topic: article
 ms.date: 02/12/2021
 ms.openlocfilehash: ca5995c3e1b9923d925ddc4deae299c28261d18a
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100560850"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-from-specific-ip-addresses-or-ranges"></a>Zulassen des Zugriffs auf Azure Event Hubs-Namespaces von bestimmten IP-Adressen oder -Adressbereichen
@@ -132,7 +132,7 @@ Legen Sie beim Hinzufügen von VNET- oder Firewallregeln den Wert von `defaultAc
 Gehen Sie zum Bereitstellen der Vorlage gemäß den Anweisungen für [Azure Resource Manager][lnk-deploy] vor.
 
 > [!IMPORTANT]
-> Wenn keine IP- und VNET-Regeln vorhanden sind, fließt der gesamte Datenverkehr auch dann in den Namespace, wenn Sie `defaultAction` auf `deny` festlegen.  Der Zugriff auf den Namespace erfolgt (mithilfe des Zugriffsschlüssels) über das öffentliche Internet. Geben Sie mindestens eine IP-Regel oder VNET-Regel für den Namespace an, um nur Datenverkehr von den angegebenen IP-Adressen oder dem Subnetz eines virtuellen Netzwerks zuzulassen.  
+> Wenn keine IP- und VNET-Regeln vorliegen, fließt der gesamte Datenverkehr auch dann in den Namespace, wenn Sie für `defaultAction` den Wert `deny` festlegen.  Der Zugriff auf den Namespace erfolgt (mithilfe des Zugriffsschlüssels) über das öffentliche Internet. Geben Sie mindestens eine IP-Regel oder eine VNET-Regel für den Namespace an, um nur Datenverkehr von den angegebenen IP-Adressen oder dem Subnetz eines virtuellen Netzwerks zuzulassen.  
 
 ## <a name="next-steps"></a>Nächste Schritte
 

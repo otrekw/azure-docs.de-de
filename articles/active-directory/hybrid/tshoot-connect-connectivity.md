@@ -18,10 +18,10 @@ ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
 ms.openlocfilehash: 56e9820c5e3a750a35b7271b86750df00eb4784e
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92677056"
 ---
 # <a name="troubleshoot-azure-ad-connectivity"></a>Problembehebung bei Azure AD-Konnektivitätsproblemen
@@ -125,26 +125,26 @@ Hier nun ein Auszug eines echten Proxyprotokolls und der Seite des Installations
 | --- | --- |
 | 1/11/2016 8:31 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:31 |connect://adminwebservice.microsoftonline.com:443 |
-| 1/11/2016 8:32 |connect:// *bba800-anchor*.microsoftonline.com:443 |
+| 1/11/2016 8:32 |connect://*bba800-anchor*.microsoftonline.com:443 |
 | 1/11/2016 8:32 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:33 |connect://provisioningapi.microsoftonline.com:443 |
-| 1/11/2016 8:33 |connect:// *bwsc02-relay*.microsoftonline.com:443 |
+| 1/11/2016 8:33 |connect://*bwsc02-relay*.microsoftonline.com:443 |
 
 **Konfigurieren**
 
 | Time | URL |
 | --- | --- |
 | 1/11/2016 8:43 |connect://login.microsoftonline.com:443 |
-| 1/11/2016 8:43 |connect:// *bba800-anchor*.microsoftonline.com:443 |
+| 1/11/2016 8:43 |connect://*bba800-anchor*.microsoftonline.com:443 |
 | 1/11/2016 8:43 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:44 |connect://adminwebservice.microsoftonline.com:443 |
-| 1/11/2016 8:44 |connect:// *bba900-anchor*.microsoftonline.com:443 |
+| 1/11/2016 8:44 |connect://*bba900-anchor*.microsoftonline.com:443 |
 | 1/11/2016 8:44 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:44 |connect://adminwebservice.microsoftonline.com:443 |
-| 1/11/2016 8:44 |connect:// *bba800-anchor*.microsoftonline.com:443 |
+| 1/11/2016 8:44 |connect://*bba800-anchor*.microsoftonline.com:443 |
 | 1/11/2016 8:44 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:46 |connect://provisioningapi.microsoftonline.com:443 |
-| 1/11/2016 8:46 |connect:// *bwsc02-relay*.microsoftonline.com:443 |
+| 1/11/2016 8:46 |connect://*bwsc02-relay*.microsoftonline.com:443 |
 
 **Erste Synchronisierung**
 
@@ -152,8 +152,8 @@ Hier nun ein Auszug eines echten Proxyprotokolls und der Seite des Installations
 | --- | --- |
 | 1/11/2016 8:48 |connect://login.windows.net:443 |
 | 1/11/2016 8:49 |connect://adminwebservice.microsoftonline.com:443 |
-| 1/11/2016 8:49 |connect:// *bba900-anchor*.microsoftonline.com:443 |
-| 1/11/2016 8:49 |connect:// *bba800-anchor*.microsoftonline.com:443 |
+| 1/11/2016 8:49 |connect://*bba900-anchor*.microsoftonline.com:443 |
+| 1/11/2016 8:49 |connect://*bba800-anchor*.microsoftonline.com:443 |
 
 ## <a name="authentication-errors"></a>Authentifizierungsfehler
 Dieser Abschnitt deckt Fehler ab, die von ADAL (der von Azure AD Connect verwendeten Authentifizierungsbibliothek) und PowerShell zurückgegeben werden können. Die Fehlererläuterungen sollen Sie beim Verständnis der nächsten Schritte unterstützen.

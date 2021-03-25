@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 02/05/2018
 ms.author: jejiang
 ms.openlocfilehash: 7f251e6ba2d94c0fcede3387ac12461951de40f1
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92108744"
 ---
 # <a name="manage-azure-data-lake-storage-gen1-resources-by-using-storage-explorer"></a>Verwalten von Azure Data Lake Storage Gen1-Ressourcen mit Storage-Explorer
@@ -23,10 +23,10 @@ Ein weiterer Vorteil besteht darin, dass Sie keine Abonnementberechtigung zum Ve
 
 Damit Sie die in diesem Artikel aufgeführten Schritte ausführen können, benötigen Sie Folgendes:
 
-* ein Azure-Abonnement Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial).
+* Ein Azure-Abonnement. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial).
 * Ein Data Lake Storage Gen1-Konto. Eine Anleitung zur Erstellung finden Sie unter [Erste Schritte mit Azure Data Lake Storage Gen1](./data-lake-store-get-started-portal.md).
 
-## <a name="install-storage-explorer"></a>Installieren von Storage-Explorer
+## <a name="install-storage-explorer"></a>Installieren des Storage-Explorers
 
 Installieren Sie die neuesten Azure Storage-Explorer-Komponenten von der [Produktwebseite](https://azure.microsoft.com/features/storage-explorer/). Die Installation unterstützt Windows-, Linux- und Macintosh-Versionen.
 

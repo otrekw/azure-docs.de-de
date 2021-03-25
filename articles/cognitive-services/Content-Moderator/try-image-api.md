@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
 ms.openlocfilehash: 542fadd5e5ab91be7b7113064bf8c998dae08d12
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92912938"
 ---
 # <a name="moderate-images-from-the-api-console"></a>Moderieren von Bildern über die API-Konsole
@@ -48,9 +48,9 @@ Bevor Sie die API in der Onlinekonsole testen können, benötigen Sie Ihren Abon
 
    ![Testen des Beispielbilds in der Konsole „Bild – Auswerten“](images/sample-image.jpg) 
 
-5. Wählen Sie **Senden** aus.
+5. Wählen Sie **Send** (Senden) aus.
 
-6. Die API gibt eine Wahrscheinlichkeitsbewertung für jede Klassifizierung zurück. Sie gibt überdies zurück, ob das Bild die Bedingungen erfüllt ( **true** oder **false** ). 
+6. Die API gibt eine Wahrscheinlichkeitsbewertung für jede Klassifizierung zurück. Sie gibt überdies zurück, ob das Bild die Bedingungen erfüllt (**true** oder **false**). 
 
    ![Testen der Wahrscheinlichkeitsbewertung in der Konsole „Bild – Auswerten“ und Feststellung der Erfüllung der Bedingungen](images/try-image-api-3.PNG)
 
@@ -74,7 +74,7 @@ Bevor Sie die API in der Onlinekonsole testen können, benötigen Sie Ihren Abon
 
    ![Testen der Beispielanforderung auf der Seite „Gesichter suchen“](images/try-image-api-face-request.png)
 
-4. Wählen Sie **Senden** aus. In diesem Beispiel sucht die API nach zwei Gesichtern und gibt die jeweiligen Koordinaten innerhalb des Bilds zurück.
+4. Wählen Sie **Send** (Senden) aus. In diesem Beispiel sucht die API nach zwei Gesichtern und gibt die jeweiligen Koordinaten innerhalb des Bilds zurück.
 
    ![Testen des Inhaltsbereichs der Beispielantwort auf der Seite „Gesichter suchen“](images/try-image-api-face-response.png)
 
@@ -96,7 +96,7 @@ Mit der OCR-Funktion von Content Moderator können Sie Texte in Bildern erkennen
 
 4. Verwenden Sie im Feld **Anforderungstext** das Standardbeispielbild. Dies ist das gleiche Bild, das im vorherigen Abschnitt verwendet wurde.
 
-5. Wählen Sie **Senden** aus. Der extrahierte Text wird im JSON-Format angezeigt:
+5. Wählen Sie **Send** (Senden) aus. Der extrahierte Text wird im JSON-Format angezeigt:
 
    ![Inhaltsbereich der Beispielantwort auf der Seite „Bild – OCR](images/try-image-api-ocr.PNG)
 

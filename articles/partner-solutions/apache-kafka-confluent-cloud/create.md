@@ -7,10 +7,10 @@ ms.date: 01/15/2021
 author: tfitzmac
 ms.author: tomfitz
 ms.openlocfilehash: f4c6dacf63b1be44e826fe6841c87ccec4bf9b1a
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98253661"
 ---
 # <a name="quickstart-get-started-with-apache-kafka-for-confluent-cloud"></a>Schnellstart: Erste Schritte mit Apache Kafka in Confluent Cloud
@@ -65,7 +65,7 @@ Nachdem Sie das Angebot für Apache Kafka in Confluent Cloud ausgewählt haben, 
 
     :::image type="content" source="media/setup-basics.png" alt-text="Formular zum Einrichten der Confluent Cloud-Ressource":::
 
-    | Eigenschaft | Beschreibung |
+    | Eigenschaft | BESCHREIBUNG |
     | ---- | ---- |
     | **Abonnement** | Wählen Sie im Dropdownmenü das Azure-Abonnement für die Bereitstellung aus. Sie müssen über den Zugriffstyp _Besitzer_ oder _Mitwirkender_ verfügen. |
     | **Ressourcengruppe** | Geben Sie an, ob Sie eine neue Ressourcengruppe erstellen oder eine vorhandene verwenden möchten. Eine Ressourcengruppe ist ein Container, der verwandte Ressourcen für eine Azure-Lösung enthält. Weitere Informationen finden Sie in der [Übersicht über den Azure Resource Manager](../../azure-resource-manager/management/overview.md). |

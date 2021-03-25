@@ -9,10 +9,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.openlocfilehash: f689993ce56a1125a1d1de8f65ce05d01f776ea9
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93130067"
 ---
 # <a name="how-to-create-a-saas-offer-in-the-commercial-marketplace"></a>Erstellen eines SaaS-Angebots im kommerziellen Marketplace
@@ -21,7 +21,7 @@ Als Herausgeber im kommerziellen Marketplace können Sie ein Software-as-a-Servi
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Lesen Sie [Planen eines SaaS-Angebots für den kommerziellen Marketplace](plan-saas-offer.md), falls Sie dies noch nicht getan haben. Dort werden die technischen Anforderungen für Ihre SaaS-App erläutert. Außerdem finden Sie Informationen und Ressourcen, die Sie beim Erstellen Ihres Angebots benötigen. Sofern Sie nicht nur eine einfache Auflistung (Auflistungsoption **Kontakt mit mir aufnehmen** ) im kommerziellen Marketplace veröffentlichen möchten, muss Ihre SaaS-Anwendung technische Anforderungen an die Authentifizierung erfüllen.
+Lesen Sie [Planen eines SaaS-Angebots für den kommerziellen Marketplace](plan-saas-offer.md), falls Sie dies noch nicht getan haben. Dort werden die technischen Anforderungen für Ihre SaaS-App erläutert. Außerdem finden Sie Informationen und Ressourcen, die Sie beim Erstellen Ihres Angebots benötigen. Sofern Sie nicht nur eine einfache Auflistung (Auflistungsoption **Kontakt mit mir aufnehmen**) im kommerziellen Marketplace veröffentlichen möchten, muss Ihre SaaS-Anwendung technische Anforderungen an die Authentifizierung erfüllen.
 
 ## <a name="create-a-new-saas-offer"></a>Erstellen eines neuen SaaS-Angebots
 

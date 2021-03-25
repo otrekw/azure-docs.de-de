@@ -9,10 +9,10 @@ ms.devlang: go
 ms.topic: quickstart
 ms.date: 07/14/2020
 ms.openlocfilehash: 595ec1aaa4aedc3916d1b4d46986dcabae887aaf
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93076400"
 ---
 # <a name="quickstart-build-a-go-app-with-the-gocql-client-to-manage-azure-cosmos-db-cassandra-api-data"></a>Schnellstart: Erstellen einer Go-App mit dem `gocql`-Client zum Verwalten von Azure Cosmos DB-Cassandra-API-Daten
@@ -253,7 +253,7 @@ go run main.go
 
 3. Im Terminalfenster werden Benachrichtigungen für die verschiedenen Vorgänge angezeigt, einschließlich Keyspace- und Tabelleneinrichtung, Benutzererstellung usw.
 
-4. Öffnen Sie im Azure-Portal den **Daten-Explorer** , um diese neuen Daten abzufragen, zu ändern und zu verwenden. 
+4. Öffnen Sie im Azure-Portal den **Daten-Explorer**, um diese neuen Daten abzufragen, zu ändern und zu verwenden. 
 
     :::image type="content" source="./media/create-cassandra-go/view-data-explorer-go-app.png" alt-text="Anzeigen der Daten im Daten-Explorer: Azure Cosmos DB":::
 

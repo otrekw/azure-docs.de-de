@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
 ms.openlocfilehash: 71aad7699c5af6ce2a1b9d82a340138200cfb5e1
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92792071"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>Bereitstellen eines Split-Merge-Diensts, um Daten zwischen Sharddatenbanken zu verschieben
@@ -35,11 +35,11 @@ Mit dem Split-Merge-Tool können Sie Daten zwischen Sharddatenbanken verschieben
    nuget install Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge
    ```  
 
-Die Dateien werden in einem Verzeichnis mit dem Namen **Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge.x.x.xxx.x** abgelegt, wobei *x.x.xxx.x* der Versionsnummer entspricht. Die Split-Merge-Dienstdateien befinden sich im Unterverzeichnis **content\splitmerge\service** und die Split-Merge-PowerShell-Skripts (und erforderlichen Client-DLLs) im Unterverzeichnis **content\splitmerge\powershell** .
+Die Dateien werden in einem Verzeichnis mit dem Namen **Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge.x.x.xxx.x** abgelegt, wobei *x.x.xxx.x* der Versionsnummer entspricht. Die Split-Merge-Dienstdateien befinden sich im Unterverzeichnis **content\splitmerge\service** und die Split-Merge-PowerShell-Skripts (und erforderlichen Client-DLLs) im Unterverzeichnis **content\splitmerge\powershell**.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-1. Erstellen Sie eine Datenbank in Azure SQL-Datenbank, die als Split-Merge-Statusdatenbank verwendet wird. Öffnen Sie das [Azure-Portal](https://portal.azure.com). Erstellen Sie eine neue **SQL-Datenbank** . Geben Sie einen Namen für die Datenbank ein, und erstellen Sie einen neuen Administrator und ein neues Kennwort. Achten Sie darauf, dass Sie den Namen und das Kennwort zur späteren Verwendung notieren.
+1. Erstellen Sie eine Datenbank in Azure SQL-Datenbank, die als Split-Merge-Statusdatenbank verwendet wird. Öffnen Sie das [Azure-Portal](https://portal.azure.com). Erstellen Sie eine neue **SQL-Datenbank**. Geben Sie einen Namen für die Datenbank ein, und erstellen Sie einen neuen Administrator und ein neues Kennwort. Achten Sie darauf, dass Sie den Namen und das Kennwort zur späteren Verwendung notieren.
 
 1. Achten Sie darauf, dass Ihr Server Verbindungen mit Azure-Diensten zulässt. Stellen Sie im Portal in den **Firewalleinstellungen** sicher, dass die Einstellung **Zugriff auf Azure-Dienste erlauben** auf **Ein** festgelegt ist. Klicken Sie auf das Symbol "Speichern".
 
@@ -51,7 +51,7 @@ Die Dateien werden in einem Verzeichnis mit dem Namen **Microsoft.Azure.SqlDatab
 
 ### <a name="split-merge-service-configuration"></a>Konfiguration des Split-Merge-Diensts
 
-1. Erstellen Sie in dem Ordner, in den Sie die Split-Merge-Assemblys heruntergeladen haben, eine Kopie der Datei *ServiceConfiguration.Template.cscfg* , die zusammen mit *SplitMergeService.cspkg* bereitgestellt wurde. Benennen Sie die Datei in *ServiceConfiguration.cscfg* um.
+1. Erstellen Sie in dem Ordner, in den Sie die Split-Merge-Assemblys heruntergeladen haben, eine Kopie der Datei *ServiceConfiguration.Template.cscfg*, die zusammen mit *SplitMergeService.cspkg* bereitgestellt wurde. Benennen Sie die Datei in *ServiceConfiguration.cscfg* um.
 
 1. Öffnen Sie *ServiceConfiguration.cscfg* in einem Texteditor, z.B. Visual Studio, mit dem Eingaben wie das Format von Zertifikatfingerabdrücken überprüft werden.
 
@@ -64,9 +64,9 @@ Die Dateien werden in einem Verzeichnis mit dem Namen **Microsoft.Azure.SqlDatab
 
       `Server=<serverName>.database.windows.net; Database=<databaseName>;User ID=<userId>; Password=<password>; Encrypt=True; Connection Timeout=30`
 
-1. Geben Sie die Verbindungszeichenfolge in der *CSCFG* -Datei sowohl im Abschnitt für die **SplitMergeWeb** -Rolle als auch für die **SplitMergeWorker** -Rolle der Einstellung „ElasticScaleMetadata“ ein.
+1. Geben Sie die Verbindungszeichenfolge in der *CSCFG*-Datei sowohl im Abschnitt für die **SplitMergeWeb**-Rolle als auch für die **SplitMergeWorker**-Rolle der Einstellung „ElasticScaleMetadata“ ein.
 
-1. Geben Sie für die **SplitMergeWorker** -Rolle eine gültige Verbindungszeichenfolge für den Azure-Speicher für die Einstellung **WorkerRoleSynchronizationStorageAccountConnectionString** ein.
+1. Geben Sie für die **SplitMergeWorker**-Rolle eine gültige Verbindungszeichenfolge für den Azure-Speicher für die Einstellung **WorkerRoleSynchronizationStorageAccountConnectionString** ein.
 
 ### <a name="configure-security"></a>Konfigurieren der Sicherheit
 
@@ -99,17 +99,17 @@ Führen Sie den folgenden Befehl im gleichen Fenster aus, in dem „makecert“ 
 
 ### <a name="import-the-client-certificate-into-the-personal-store"></a>Importieren des Clientzertifikats in den persönlichen Speicher
 
-1. Doppelklicken Sie im Windows-Explorer auf *MyCert.pfx* .
-2. Wählen Sie im **Zertifikatimport-Assistenten** die Option **Aktueller Benutzer** aus, und klicken Sie auf **Weiter** .
-3. Bestätigen Sie den Dateipfad, und klicken Sie auf **Weiter** .
-4. Geben Sie das Kennwort ein, lassen Sie **Alle erweiterten Eigenschaften mit einbeziehen** aktiviert, und klicken Sie auf **Weiter** .
-5. Lassen Sie **Zertifikatspeicher automatisch auswählen[…]** aktiviert, und klicken Sie auf **Weiter** .
-6. Klicken Sie auf **Fertig stellen** und auf **OK** .
+1. Doppelklicken Sie im Windows-Explorer auf *MyCert.pfx*.
+2. Wählen Sie im **Zertifikatimport-Assistenten** die Option **Aktueller Benutzer** aus, und klicken Sie auf **Weiter**.
+3. Bestätigen Sie den Dateipfad, und klicken Sie auf **Weiter**.
+4. Geben Sie das Kennwort ein, lassen Sie **Alle erweiterten Eigenschaften mit einbeziehen** aktiviert, und klicken Sie auf **Weiter**.
+5. Lassen Sie **Zertifikatspeicher automatisch auswählen[…]** aktiviert, und klicken Sie auf **Weiter**.
+6. Klicken Sie auf **Fertig stellen** und auf **OK**.
 
 ### <a name="upload-the-pfx-file-to-the-cloud-service"></a>Hochladen der PFX-Datei in den Cloud-Dienst
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
-2. Wählen Sie **Cloud-Dienste** .
+2. Wählen Sie **Cloud-Dienste**.
 3. Wählen Sie den oben für den Split-Merge-Dienst erstellten Cloud-Dienst aus.
 4. Klicken Sie im oberen Menü auf **Zertifikate** .
 5. Klicken Sie in der unteren Leiste auf **Hochladen** .
@@ -143,8 +143,8 @@ Beachten Sie, dass in Produktionsbereitstellungen für die Zertifizierungsstelle
 
 1. [Navigieren Sie zum Azure-Portal](https://portal.azure.com).
 2. Wählen Sie den Clouddienst aus, den Sie zuvor erstellt haben.
-3. Klicken Sie auf **Overview** .
-4. Wählen Sie die Stagingumgebung aus, und klicken Sie dann auf **Hochladen** .
+3. Klicken Sie auf **Overview**.
+4. Wählen Sie die Stagingumgebung aus, und klicken Sie dann auf **Hochladen**.
 5. Geben Sie im Dialogfeld eine Bezeichnung für die Bereitstellung ein. Klicken Sie sowohl unter „Paket“ als auch „Konfiguration“ auf „Aus lokaler Ressource“, und wählen Sie die Datei *SplitMergeService.cspkg* und die zuvor konfigurierte CSCFG-Datei aus.
 6. Stellen Sie sicher, dass das Kontrollkästchen **Auch dann bereitstellen, wenn für eine oder mehrere Rollen nur eine Instanz vorhanden ist** aktiviert ist.
 7. Aktivieren Sie die Schaltfläche mit dem Häkchen unten rechts, um die Bereitstellung zu starten. Die Ausführung dauert einige Minuten.
@@ -181,9 +181,9 @@ Die enthaltenen Skriptdateien lauten:
 
 1. *SetupSampleSplitMergeEnvironment.ps1* : Richtet eine Testdatenebene für Split/Merge ein (eine ausführliche Beschreibung finden Sie in der Tabelle unten).
 2. *ExecuteSampleSplitMerge.ps1* : Führt Testvorgänge auf der Testdatenebene aus (eine ausführliche Beschreibung finden Sie in der Tabelle unten).
-3. *GetMappings.ps1* : Beispielskript auf oberster Ebene, das den aktuellen Status der Shardzuordnungen ausgibt
-4. *ShardManagement.psm1* : Hilfsskript, das die ShardManagement-API umschließt
-5. *SqlDatabaseHelpers.psm1* : Hilfsskript zum Erstellen und Verwalten von Datenbanken in Azure SQL-Datenbank
+3. *GetMappings.ps1*: Beispielskript auf oberster Ebene, das den aktuellen Status der Shardzuordnungen ausgibt
+4. *ShardManagement.psm1*: Hilfsskript, das die ShardManagement-API umschließt
+5. *SqlDatabaseHelpers.psm1*: Hilfsskript zum Erstellen und Verwalten von Datenbanken in Azure SQL-Datenbank
 
    <table style="width:100%">
      <tr>
@@ -324,8 +324,8 @@ Um einen Teilungs-/Zusammenführungsvorgang auszuführen, müssen Sie die zu ver
 1. Erstellen Sie für jede Shardtabelle ein **ShardedTableInfo** -Objekt, das den Namen des übergeordneten Schemas der Tabelle (optional, standardmäßig „dbo“), den Tabellennamen und den Spaltennamen in der Tabelle angibt, die den Shardingschlüssel enthält.
 2. Erstellen Sie für jede Verweistabelle ein **ReferenceTableInfo** -Objekt, das den Namen des übergeordneten Schemas der Tabelle (optional, standardmäßig „dbo“) und den Tabellennamen angibt.
 3. Fügen Sie die oben beschriebenen TableInfo-Objekte einem neuen **SchemaInfo** -Objekt hinzu.
-4. Rufen Sie einen Verweis auf ein **ShardMapManager** -Objekt ab, und rufen Sie **GetSchemaInfoCollection** auf.
-5. Fügen Sie **SchemaInfo** unter Angabe des Namens der Shard Map dem **SchemaInfoCollection** -Element hinzu.
+4. Rufen Sie einen Verweis auf ein **ShardMapManager**-Objekt ab, und rufen Sie **GetSchemaInfoCollection** auf.
+5. Fügen Sie **SchemaInfo** unter Angabe des Namens der Shard Map dem **SchemaInfoCollection**-Element hinzu.
 
 Ein Beispiel dazu finden Sie im Skript „SetupSampleSplitMergeEnvironment.ps1“.
 
@@ -343,7 +343,7 @@ Wenn Sie keine Anforderungen übermitteln können, wird möglicherweise Folgende
 
    `[Exception] System.Data.SqlClient.SqlException (0x80131904): Could not find stored procedure 'dbo.InsertRequest'.`
 
-Überprüfen Sie in diesem Fall Ihre Konfigurationsdatei, insbesondere die Einstellung für **WorkerRoleSynchronizationStorageAccountConnectionString** . Dieser Fehler weist normalerweise darauf hin, dass die Workerrolle die Metadaten-Datenbank bei der ersten Verwendung nicht erfolgreich initialisieren konnte.
+Überprüfen Sie in diesem Fall Ihre Konfigurationsdatei, insbesondere die Einstellung für **WorkerRoleSynchronizationStorageAccountConnectionString**. Dieser Fehler weist normalerweise darauf hin, dass die Workerrolle die Metadaten-Datenbank bei der ersten Verwendung nicht erfolgreich initialisieren konnte.
 
 [!INCLUDE [elastic-scale-include](../../../includes/elastic-scale-include.md)]
 

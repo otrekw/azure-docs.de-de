@@ -3,14 +3,14 @@ title: Übersicht über das Entfernen der Azure Automation-Funktion „VMs auße
 description: In diesem Artikel wird beschrieben, wie Sie die Funktion „VMs außerhalb der Geschäftszeiten starten/beenden“ entfernen und die Verknüpfung eines Automation-Kontos mit dem Log Analytics-Arbeitsbereich aufheben.
 services: automation
 ms.subservice: process-automation
-ms.date: 02/04/2021
+ms.date: 03/04/2021
 ms.topic: conceptual
-ms.openlocfilehash: a201274bf0c06382da790dd051bf5023337970b8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0bab5d8e82ce432e9b3834fe4c003316545eb338
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101723842"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102122084"
 ---
 # <a name="remove-startstop-vms-during-off-hours-from-automation-account"></a>Entfernen von „VMs außerhalb der Geschäftszeiten starten/beenden“ aus Automation-Konto
 
@@ -24,21 +24,7 @@ Durch das Löschen dieses Features werden nur die zugehörigen Runbooks entfernt
 
 ## <a name="delete-the-dedicated-resource-group"></a>Löschen der dedizierten Ressourcengruppe
 
-1. Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) bei Azure an.
-
-2. Navigieren Sie zu Ihrem Automation-Konto, und wählen Sie unter **Zugehörige Ressourcen** die Option **Verknüpfter Arbeitsbereich** aus.
-
-3. Klicken Sie auf **Zu Arbeitsbereich wechseln**.
-
-4. Klicken Sie unter **Allgemein** auf **Lösungen**.
-
-5. Wählen Sie auf der Seite „Lösungen“ **Start-Stop-VM[Arbeitsbereich]** aus.
-
-6. Wählen Sie auf der Seite **VMManagementSolution[Arbeitsbereich]** im Menü die Option **Löschen** aus.
-
-    ![Löschen der VM-Verwaltungsfunktion](media/automation-solution-vm-management/vm-management-solution-delete.png)
-
-7. Um die Ressourcengruppe zu löschen, die nur erstellt wurde, um „VMs außerhalb der Geschäftszeiten starten/beenden“ zu unterstützen, folgen Sie den Schritten, die im Artikel [Azure Resource Manager-Ressourcengruppe und Löschen von Ressourcen](../azure-resource-manager/management/delete-resource-group.md) beschrieben sind.
+Um die Ressourcengruppe zu löschen, befolgen Sie die Schritte, die im Artikel [Azure Resource Manager-Ressourcengruppe und Löschen von Ressourcen](../azure-resource-manager/management/delete-resource-group.md) beschrieben sind.
 
 ## <a name="delete-the-automation-account"></a>Löschen des Automation-Kontos
 

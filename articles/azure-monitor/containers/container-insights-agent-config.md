@@ -4,10 +4,10 @@ description: In diesem Artikel wird beschrieben, wie Sie den Container Insights-
 ms.topic: conceptual
 ms.date: 10/09/2020
 ms.openlocfilehash: d866fec2013daf9b8edfdbfd703c7b1098ae91bd
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101708389"
 ---
 # <a name="configure-agent-data-collection-for-container-insights"></a>Konfigurieren der Datensammlung des Container Insights-Agents

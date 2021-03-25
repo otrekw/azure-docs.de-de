@@ -4,10 +4,10 @@ description: In diesem Artikel erfahren Sie, wie ein Service Fabric-Cluster durc
 ms.topic: article
 ms.date: 02/13/2019
 ms.openlocfilehash: efd329c07b4881c6710d4173857b4186965438d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88719324"
 ---
 # <a name="scale-a-service-fabric-cluster-out-by-adding-a-virtual-machine-scale-set"></a>Skalieren eines Service Fabric-Clusters durch Hinzufügen einer VM-Skalierungsgruppe
@@ -53,7 +53,7 @@ Außerdem müssen Sie diesen neuen Knotentyp der Service Fabric-Clusterressource
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Erfahren Sie, wie der [primäre Knotentyp hochskaliert wird](service-fabric-scale-up-primary-node-type.md).
+* Erfahren Sie, wie der [primäre Knotentyp zentral hochskaliert wird](service-fabric-scale-up-primary-node-type.md).
 * Machen Sie sich mit der [Skalierbarkeit von Anwendungen](service-fabric-concepts-scalability.md) vertraut.
 * [Skalieren eines Service Fabric-Clusters](service-fabric-tutorial-scale-cluster.md) (horizontal hoch oder herunter)
 * [Programmgesteuertes Skalieren eines Service Fabric-Clusters](service-fabric-cluster-programmatic-scaling.md) (per Azure Fluent-Compute-SDK)

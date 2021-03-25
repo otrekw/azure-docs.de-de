@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: 6ab99f32932f39d5ad140b7a16d16ceae30fff54
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92896207"
 ---
 # <a name="add-a-tile-layer"></a>Hinzufügen einer Kachelebene
@@ -37,9 +37,9 @@ Der Begrenzungsrahmen und der Zoombereich, innerhalb derer ein Kacheldienst verf
 | West bound (Westliche Grenze)     | Der westliche Längengrad des Begrenzungsrahmens, in dem Kacheln verfügbar sind   |
 | Transparenz   | Transparenz der Kachelebene   |
 | Is TMS (Ist TMS)         | Tile Map Services, eine Spezifikation, die die Y-Koordinatenachse der Kachelebene umkehrt |
-| Min zoom (Minimalzoom)       | Minimaler Zoomfaktor, bei dem Kacheln verfügbar sind |
-| Max zoom (Maximalzoom)       | Maximaler Zoomfaktor, bei dem Kacheln verfügbar sind  |
-| Layer position (Ebenenposition) | Gibt die relative Position der Ebene in Bezug auf andere Kartenebenen an |
+| Min zoom (Minimalzoom)       | Mindestzoomfaktor, bei dem Kacheln verfügbar sind. |
+| Maximaler Zoom       | Maximaler Zoomfaktor, bei dem Kacheln verfügbar sind.  |
+| Ebenenposition | Gibt die relative Position der Ebene in Bezug auf andere Kartenebenen an |
 
 ## <a name="tile-url-formatting"></a>Formatierung der Kachel-URL
 

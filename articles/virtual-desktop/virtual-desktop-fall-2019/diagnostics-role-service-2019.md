@@ -7,10 +7,10 @@ ms.date: 05/13/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 7e652f04b42b132e7c1307503b1764dda7b2036b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88009340"
 ---
 # <a name="identify-and-diagnose-issues-in-windows-virtual-desktop-classic"></a>Identifizieren und Diagnostizieren von Problemen in Windows Virtual Desktop (klassisch)
@@ -150,7 +150,7 @@ In der folgenden Tabelle sind häufige Fehler aufgeführt, die für Ihre Adminis
 |6022|RemoteAppNotFound|Der von Ihnen eingegebene RemoteApp-Name stimmt nicht mit vorhandenen RemoteApps überein. Überprüfen Sie den RemoteApp-Namen auf Tippfehler, und wiederholen Sie den Vorgang.|
 |6010|PublishedItemsExist|Der Name der Ressource, die Sie veröffentlichen möchten, ist mit dem Namen einer bereits vorhandenen Ressource identisch. Ändern Sie den Namen der Ressource, und wiederholen Sie den Vorgang.|
 |7002|NameNotValidWhiteSpace|Verwenden Sie keine Leerzeichen im Namen.|
-|8\.000|InvalidAuthorizationRoleScope|Der von Ihnen eingegebene Rollenname stimmt nicht mit vorhandenen Rollennamen überein. Überprüfen Sie den Rollennamen auf Tippfehler, und wiederholen Sie den Vorgang. |
+|8.000|InvalidAuthorizationRoleScope|Der von Ihnen eingegebene Rollenname stimmt nicht mit vorhandenen Rollennamen überein. Überprüfen Sie den Rollennamen auf Tippfehler, und wiederholen Sie den Vorgang. |
 |8001|UserNotFound |Der von Ihnen eingegebene Benutzername stimmt nicht mit vorhandenen Benutzernamen überein. Überprüfen Sie den Namen auf Tippfehler, und wiederholen Sie den Vorgang.|
 |8005|UserNotFoundInAAD |Der von Ihnen eingegebene Benutzername stimmt nicht mit vorhandenen Benutzernamen überein. Überprüfen Sie den Namen auf Tippfehler, und wiederholen Sie den Vorgang.|
 |8008|TenantConsentRequired|Befolgen Sie [diese Anleitung](tenant-setup-azure-active-directory.md#grant-permissions-to-windows-virtual-desktop), um die Einwilligung für Ihren Mandanten zu erteilen.|

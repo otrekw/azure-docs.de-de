@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 07/05/2019
 ms.author: juliako
 ms.openlocfilehash: 248799d70e0741efcaea1714c12f4d92a42cef25
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93041909"
 ---
 # <a name="scenes-shots-and-keyframes"></a>Szenen, Aufnahmen und Keyframes
@@ -46,7 +46,7 @@ Um Keyframes mit hoher Auflösung für das Video zu extrahieren, müssen Sie das
 
 #### <a name="with-the-video-indexer-website"></a>Über die Video Indexer-Website
 
-Wenn Sie Keyframes über die Video Indexer-Website extrahieren möchten, laden Sie das Video hoch, und indizieren Sie es. Klicken Sie nach Abschluss des Indizierungsauftrags auf die Schaltfläche **Herunterladen** , und wählen Sie **Artefakte (ZIP)** aus. Dadurch wird der Ordner mit den Artefakten auf Ihren Computer heruntergeladen. 
+Wenn Sie Keyframes über die Video Indexer-Website extrahieren möchten, laden Sie das Video hoch, und indizieren Sie es. Klicken Sie nach Abschluss des Indizierungsauftrags auf die Schaltfläche **Herunterladen**, und wählen Sie **Artefakte (ZIP)** aus. Dadurch wird der Ordner mit den Artefakten auf Ihren Computer heruntergeladen. 
 
 ![Screenshot des Dropdownmenüs „Herunterladen“ mit ausgewählter Option „Artefakte“](./media/scenes-shots-keyframes/extracting-keyframes2.png)
  

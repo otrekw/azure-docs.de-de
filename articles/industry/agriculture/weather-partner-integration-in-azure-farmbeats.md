@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 07/09/2020
 ms.author: sunasing
 ms.openlocfilehash: f0fbd93e2a5f4e92089e10e75dc17e304ff80bf6
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93147078"
 ---
 # <a name="weather-partner-integration-with-farmbeats"></a>Integration von Anbietern von Wetterdaten in FarmBeats
@@ -117,8 +117,8 @@ Das Docker-Programm benötigt zwei Komponenten: den Bootstrap und den Auftrag. D
 
 Die Bootstrap-Komponente sollte ausgeführt werden, wenn der Kunde die Docker-Registrierung bei FarmBeats startet. Die folgenden Argumente (`arg1` und `arg2`) werden an das Programm übergeben:
 
-- **FarmBeats-API-Endpunkt** : Der FarmBeats-API-Endpunkt für API-Anforderungen. Über diesen Endpunkt werden API-Aufrufe an die FarmBeats-Bereitstellung ausgeführt.
-- **Azure Functions-URL** : Ihr eigener Endpunkt. Diese URL stellt Ihr Zugriffstoken für FarmBeats-APIs bereit. Sie können `GET` für diese URL aufrufen, um das Zugriffstoken abzurufen.
+- **FarmBeats-API-Endpunkt**: Der FarmBeats-API-Endpunkt für API-Anforderungen. Über diesen Endpunkt werden API-Aufrufe an die FarmBeats-Bereitstellung ausgeführt.
+- **Azure Functions-URL**: Ihr eigener Endpunkt. Diese URL stellt Ihr Zugriffstoken für FarmBeats-APIs bereit. Sie können `GET` für diese URL aufrufen, um das Zugriffstoken abzurufen.
 
 Vom Bootstrap werden die Metadaten erstellt, die Benutzer zum Ausführen Ihrer Aufträge benötigen, um Wetterdaten abzurufen. Weitere Informationen finden Sie in der [Referenzimplementierung](https://github.com/azurefarmbeats/noaa_docker). 
 
@@ -127,8 +127,8 @@ Wenn Sie die Datei *bootstrap_manifest.json* anpassen, werden die erforderlichen
  > [!NOTE]
  > Wenn Sie die Datei *bootstrap_manifest.json* wie in der [Referenzimplementierung](https://github.com/azurefarmbeats/noaa_docker) beschrieben aktualisieren, müssen Sie die folgenden Metadaten nicht erstellen. Das Bootstrap-Programm verwendet Ihre Manifestdatei, um die erforderlichen Metadaten zu erstellen.
 
-- /**WeatherDataModel** : Die Metadaten von WeatherDataModel stellen Wetterdaten dar. Sie entsprechen Datasets, die von der Quelle bereitgestellt werden. Beispielsweise kann ein DailyForecastSimpleModel einmal täglich Informationen zur durchschnittlichen Temperatur, zur Luftfeuchtigkeit und zum Niederschlag bereitstellen. Im Gegensatz dazu kann ein DailyForecastAdvancedModel wesentlich mehr Informationen auf stündlicher Basis liefern. Sie können beliebig viele Modelle für Wetterdaten erstellen.
-- /**JobType** : FarmBeats verfügt über ein erweiterbares Auftragsverwaltungssystem. Als Anbieter von Wetterdaten verfügen Sie über verschiedene Datasets und APIs (z. B. GetDailyForecasts). Sie können diese Datasets und APIs mithilfe von JobType in FarmBeats aktivieren. Nachdem ein Auftragstyp erstellt wurde, kann ein Kunde Aufträge dieses Typs initiieren, um Wetterdaten für seinen Standort oder einen bestimmten landwirtschaftlichen Betrieb zu erhalten. Weitere Informationen finden Sie unter [FarmBeats-Swagger](https://aka.ms/farmbeatsswagger) in den APIs „JobType“ und „Job“.
+- /**WeatherDataModel**: Die Metadaten von WeatherDataModel stellen Wetterdaten dar. Sie entsprechen Datasets, die von der Quelle bereitgestellt werden. Beispielsweise kann ein DailyForecastSimpleModel einmal täglich Informationen zur durchschnittlichen Temperatur, zur Luftfeuchtigkeit und zum Niederschlag bereitstellen. Im Gegensatz dazu kann ein DailyForecastAdvancedModel wesentlich mehr Informationen auf stündlicher Basis liefern. Sie können beliebig viele Modelle für Wetterdaten erstellen.
+- /**JobType**: FarmBeats verfügt über ein erweiterbares Auftragsverwaltungssystem. Als Anbieter von Wetterdaten verfügen Sie über verschiedene Datasets und APIs (z. B. GetDailyForecasts). Sie können diese Datasets und APIs mithilfe von JobType in FarmBeats aktivieren. Nachdem ein Auftragstyp erstellt wurde, kann ein Kunde Aufträge dieses Typs initiieren, um Wetterdaten für seinen Standort oder einen bestimmten landwirtschaftlichen Betrieb zu erhalten. Weitere Informationen finden Sie unter [FarmBeats-Swagger](https://aka.ms/farmbeatsswagger) in den APIs „JobType“ und „Job“.
 
 ### <a name="jobs"></a>Aufträge
 

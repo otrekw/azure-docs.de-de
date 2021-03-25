@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2019
-ms.openlocfilehash: c5a0b2d21f7d42b8ce96f72d58e5d0a8ab0c572c
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: ee984de22052076618728fbacfc31b73c18c073a
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98943945"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864685"
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>Übermitteln von Aufträgen über R Tools für Visual Studio
 
@@ -18,11 +18,11 @@ ms.locfileid: "98943945"
 
 RTVS verbessert den R-Workflow mit Tools wie dem [R Interactive-Fenster](/visualstudio/rtvs/interactive-repl) (REPL), IntelliSense (Codevervollständigung), [Plotvisualisierung](/visualstudio/rtvs/visualizing-data) über R-Bibliotheken wie „ggplot2“ und „ggviz“ und [R-Codedebugging](/visualstudio/rtvs/debugging).
 
-## <a name="set-up-your-environment"></a>Einrichten Ihrer Umgebung
+## <a name="set-up-your-environment"></a>Erstellen Ihrer Umgebung
 
 1. Installieren Sie [R Tools für Visual Studio](/visualstudio/rtvs/installing-r-tools-for-visual-studio).
 
-    ![Installieren von RTVS in Visual Studio 2017](./media/r-server-submit-jobs-r-tools-vs/install-r-tools-for-vs.png)
+    :::image type="content" source="./media/r-server-submit-jobs-r-tools-vs/install-r-tools-for-vs.png" alt-text="Installieren von RTVS in Visual Studio 2017" border="true":::
 
 2. Wählen Sie die Workload *Data Science und analytische Anwendungen* und anschließend die Optionen **R-Sprachunterstützung**, **Runtimeunterstützung für R-Entwicklungstools** und **Microsoft R Client** aus.
 
@@ -36,9 +36,9 @@ RTVS verbessert den R-Workflow mit Tools wie dem [R Interactive-Fenster](/visual
 6. Sie haben die Möglichkeit, die Data Science-Einstellungen auf Ihre Visual Studio-Umgebung anzuwenden. Dadurch erhalten Sie ein neues Layout für Ihren Arbeitsbereich für die R Tools.
    1. Wenn Sie Ihre aktuellen Visual Studio-Einstellungen speichern möchten, verwenden Sie den Befehl **Tools > Einstellungen importieren/exportieren**, klicken Sie auf **Ausgewählte Umgebungseinstellungen exportieren**, und geben Sie einen Dateinamen an. Wenn Sie die Einstellungen wiederherstellen möchten, verwenden Sie den gleichen Befehl, und klicken Sie auf **Ausgewählte Umgebungseinstellungen importieren**.
 
-   2. Navigieren Sie zum Menüelement **R Tools**, und klicken Sie auf **Data Science-Einstellungen...** .
+   2. Navigieren Sie zum Menüelement **R Tools**, und klicken Sie auf **Data Science-Einstellungen...**.
 
-       ![Data Science-Einstellungen in Visual Studio](./media/r-server-submit-jobs-r-tools-vs/data-science-settings.png)
+       :::image type="content" source="./media/r-server-submit-jobs-r-tools-vs/data-science-settings.png" alt-text="Data Science-Einstellungen in Visual Studio" border="true":::
 
       > [!NOTE]  
       > Mit der Vorgehensweise in Schritt 1 können Sie auch Ihr personalisiertes Data Scientist-Layout speichern und wiederherstellen, anstatt den Befehl **Data Science-Einstellungen** zu wiederholen.
@@ -53,11 +53,11 @@ RTVS verbessert den R-Workflow mit Tools wie dem [R Interactive-Fenster](/visual
 6. Beginnen Sie am Anfang der Datei, und senden Sie die einzelnen Zeilen durch Drücken von STRG+EINGABETASTE nacheinander an das R Interactive-Fenster. Bei einigen Zeilen dauert der Vorgang unter Umständen etwas, da sie Pakete installieren.
     * Alternativ können Sie alle Zeilen in der R-Datei durch Drücken von STRG+A markieren und dann entweder alle ausführen (STRG+EINGABETASTE) oder auf der Symbolleiste auf das Symbol für die interaktive Ausführung klicken.
 
-        ![Interaktive Visual Studio-Ausführung](./media/r-server-submit-jobs-r-tools-vs/execute-interactive1.png)
+        :::image type="content" source="./media/r-server-submit-jobs-r-tools-vs/execute-interactive1.png" alt-text="Interaktive Visual Studio-Ausführung" border="true":::
 
 7. Nach dem Ausführen aller Zeilen des Skripts sollte die Ausgabe in etwa wie folgt aussehen:
 
-    ![R-Tools für Visual Studio-Arbeitsbereiche](./media/r-server-submit-jobs-r-tools-vs/visual-studio-workspace.png)
+    :::image type="content" source="./media/r-server-submit-jobs-r-tools-vs/visual-studio-workspace.png" alt-text="R-Tools für Visual Studio-Arbeitsbereiche" border="true":::
 
 ## <a name="submit-jobs-to-an-hdinsight-ml-services-cluster"></a>Übermitteln von Aufträgen an einen HDInsight-ML Services-Cluster
 
@@ -93,7 +93,7 @@ Mithilfe einer Microsoft ML Server-/Microsoft R Client-Instanz auf einem Windows
     rxSetComputeContext(mySparkCluster)
     ```
 
-   ![Apache Spark: Festlegen des Kontextes](./media/r-server-submit-jobs-r-tools-vs/apache-spark-context.png)
+   :::image type="content" source="./media/r-server-submit-jobs-r-tools-vs/apache-spark-context.png" alt-text="Apache Spark: Festlegen des Kontextes" border="true":::
 
 1. Führen Sie im R Interactive-Fenster die folgenden Befehle aus:
 
@@ -105,22 +105,23 @@ Mithilfe einer Microsoft ML Server-/Microsoft R Client-Instanz auf einem Windows
 
     Es sollte eine Ausgabe angezeigt werden, die Folgendem ähnelt:
 
-    ![Erfolgreiche rx-Befehlsausführung](./media/r-server-submit-jobs-r-tools-vs/successful-rx-commands.png)
+    :::image type="content" source="./media/r-server-submit-jobs-r-tools-vs/successful-rx-commands.png" alt-text="Erfolgreiche rx-Befehlsausführung" border="true":::
+a
 1. Vergewissern Sie sich, dass `rxHadoopCopy` die Datei `people.json` erfolgreich aus dem Beispieldatenordner in den neu erstellten Ordner `/user/RevoShare/newUser` kopiert hat:
 
     1. Klicken Sie in Azure im Bereich Ihres HDInsight-ML Services-Clusters im linken Menü auf **Speicherkonten**.
 
-        ![Azure HDInsight Storage-Konten](./media/r-server-submit-jobs-r-tools-vs/hdinsight-storage-accounts.png)
+        :::image type="content" source="./media/r-server-submit-jobs-r-tools-vs/hdinsight-storage-accounts.png" alt-text="Azure HDInsight Storage-Konten" border="true":::
 
     2. Wählen Sie das Standardspeicherkonto für Ihren Cluster aus, und notieren Sie sich den Container-/Verzeichnisnamen.
 
     3. Klicken Sie im linken Menü des Speicherkontobereichs auf **Container**.
 
-        ![Azure HDInsight Storage-Container](./media/r-server-submit-jobs-r-tools-vs/hdi-storage-containers.png)
+        :::image type="content" source="./media/r-server-submit-jobs-r-tools-vs/hdi-storage-containers.png" alt-text="Azure HDInsight Storage-Container" border="true":::
 
     4. Wählen Sie den Containernamen Ihres Clusters aus, navigieren Sie zum Ordner **user** (hierzu müssen Sie ggf. am Listenende auf *Weitere laden* klicken), und wählen Sie dann *RevoShare* > **newUser** aus. Die Datei `people.json` sollte im Ordner `newUser` angezeigt werden.
 
-        ![Speicherort des kopierten HDInsight-Dateiordners](./media/r-server-submit-jobs-r-tools-vs/hdinsight-copied-file.png)
+        :::image type="content" source="./media/r-server-submit-jobs-r-tools-vs/hdinsight-copied-file.png" alt-text="Speicherort des kopierten HDInsight-Dateiordners" border="true":::
 
 1. Der aktuelle Apache Spark-Kontext muss nach der Verwendung wieder beendet werden. Es können nicht gleichzeitig mehrere Kontexte ausgeführt werden.
 

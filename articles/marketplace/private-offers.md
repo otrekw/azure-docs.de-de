@@ -6,13 +6,13 @@ ms.service: marketplace
 ms.topic: article
 author: vikrambmsft
 ms.author: vikramb
-ms.date: 01/28/2021
-ms.openlocfilehash: 786ecbf553ace6a90515347e8138eeb6e022589b
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.date: 02/22/2021
+ms.openlocfilehash: 7c02c41379cfb886fd7e6f84486d815d3cdbfb5b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063095"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102097175"
 ---
 # <a name="private-offers-in-the-microsoft-commercial-marketplace"></a>Private Angebote im kommerziellen Microsoft-Marketplace
 
@@ -22,11 +22,11 @@ Private Angebote, auch als private Pläne bezeichnet, ermöglichen Herausgebern 
 
 Mit privaten Angeboten können Herausgeber ausgewählten Kunden angepasste Lösungen mit unternehmensrelevanten Funktionen bereitstellen:
 
-- _Ausgehandelte Preise_: Hiermit können Herausgeber Rabatte und Sonderpreise aus öffentlich verfügbaren Angeboten angeben.
-- _Private Bestimmungen_ ermöglichen es Herausgebern, Geschäftsbedingungen genau an die Anforderungen eines bestimmten Kunden anzupassen.
-- Mit _speziellen Konfigurationen_ können Herausgeber ihr Angebot an Virtual Machine-Diensten, Azure-Anwendungen und SaaS-Apps (Software-as-a-Service) auf die Bedürfnisse einzelner Kunden ausrichten. Diese Option ermöglicht es Herausgebern auch, Vorschauzugriff auf neue Produktfunktionen bereitzustellen, bevor diese allen Kunden zugänglich gemacht werden.
+- *Ausgehandelte Preise*: Hiermit können Herausgeber Rabatte und Sonderpreise aus öffentlich verfügbaren Angeboten angeben.
+- *Private Bestimmungen* ermöglichen es Herausgebern, Geschäftsbedingungen genau an die Anforderungen eines bestimmten Kunden anzupassen.
+- Mit *speziellen Konfigurationen* können Herausgeber ihr Angebot an Virtual Machine-Diensten, Azure-Anwendungen und SaaS-Apps (Software-as-a-Service) auf die Bedürfnisse einzelner Kunden ausrichten. Diese Option ermöglicht es Herausgebern auch, Vorschauzugriff auf neue Produktfunktionen bereitzustellen, bevor diese allen Kunden zugänglich gemacht werden.
 
-Mit privaten Angeboten können Herausgeber von der globalen Verfügbarkeit und Größe eines öffentlichen Marktplatzes profitieren und erhalten gleichzeitig die Flexibilität und Steuerungsmöglichkeiten, um kundenspezifische Geschäftsabschlüsse auszuhandeln und die entsprechenden Konfigurationen zu liefern. Unternehmen können jetzt auf genau die Art und Weise einkaufen und verkaufen, die sie selbst erwarten. 
+Mit privaten Angeboten können Herausgeber von der globalen Verfügbarkeit und Größe eines öffentlichen Marktplatzes profitieren und erhalten gleichzeitig die Flexibilität und Steuerungsmöglichkeiten, um kundenspezifische Geschäftsabschlüsse auszuhandeln und die entsprechenden Konfigurationen zu liefern. Unternehmen können jetzt auf genau die Art und Weise einkaufen und verkaufen, die sie selbst erwarten.
 
 ## <a name="create-private-offers-using-plans"></a>Erstellen von privaten Angeboten mithilfe von Plänen
 
@@ -41,7 +41,7 @@ Private Pläne sind für die folgenden Angebotstypen verfügbar:
 - Verwalteter Dienst
 - SaaS-Angebote
 
-Private Pläne sind Komponenten eines Angebots und können nur von den jeweiligen Zielkunden angezeigt und erworben werden. Private Pläne können nur von den jeweiligen Zielkunden angezeigt und erworben werden.  Private Pläne können Kunden sowohl in Azure Global als auch Azure Government zur Verfügung gestellt werden.
+Private Pläne sind Komponenten eines Angebots und können nur von den jeweiligen Zielkunden angezeigt und erworben werden. Private Pläne können nur von den jeweiligen Zielkunden angezeigt und erworben werden. Private Pläne können Kunden sowohl in Azure Global als auch Azure Government zur Verfügung gestellt werden.
 
 Für private Pläne können die Basisimages und/oder Angebotsmetadaten wiederverwendet werden, die bereits für einen öffentlichen Plan veröffentlicht wurden. Mit dieser Option können Herausgeber mehrere private Variationen eines öffentlichen Angebots erstellen, ohne mehrere Versionen der gleichen Basisimages und Angebotsmetadaten veröffentlichen zu müssen. Nur bei Angeboten für Azure Virtual Machines und Azure-Anwendungen gilt: Wenn ein privater Plan das gleiche Basisimage nutzt wie ein öffentlicher Plan, werden alle Änderungen am Basisimage des Angebots an alle öffentlichen und privaten Pläne weitergegeben, die dieses Basisimage nutzen.
 
@@ -70,13 +70,12 @@ Nachdem sich der Kunde beim Azure-Portal angemeldet hat, kann er Ihre privaten A
 
 Private Angebote werden auch in Suchergebnissen angezeigt und können wie alle anderen Angebote über die Befehlszeile oder mithilfe von Azure Resource Manager-Vorlagen bereitgestellt werden.
 
-![[Private Angebote]](./media/marketplace-publishers-guide/private-offer.png)
+[![[Private Angebote werden in den Suchergebnissen angezeigt.]](media/marketplace-publishers-guide/private-offer.png)](media/marketplace-publishers-guide/private-offer.png#lightbox)
 
 Private Angebote werden auch in Suchergebnissen angezeigt. Achten Sie auf das Badge **Privat**.
 
 >[!Note]
 >Private Angebote werden bei Abonnements, die über einen Handelspartner des Cloud Solution Provider-Programms (CSP) eingerichtet wurden, nicht unterstützt.
-
 
 <!---
 ## Next steps

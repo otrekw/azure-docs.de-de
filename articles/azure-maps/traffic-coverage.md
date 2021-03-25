@@ -9,15 +9,15 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: 11aa0eb07ed9cb3a1a785b3155b832f8b447708f
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92896870"
 ---
 # <a name="azure-maps-traffic-coverage"></a>Verkehrsinformationen in Azure Maps
 
-Azure Maps bietet umfangreiche Verkehrsinformationen in Form von **Verkehrsfluss** und **Verkehrsvorfällen** . Diese Daten können auf Karten visualisiert oder zum Erstellen besserer Routen verwendet werden, die reale Fahrbedingungen berücksichtigen.
+Azure Maps bietet umfangreiche Verkehrsinformationen in Form von **Verkehrsfluss** und **Verkehrsvorfällen**. Diese Daten können auf Karten visualisiert oder zum Erstellen besserer Routen verwendet werden, die reale Fahrbedingungen berücksichtigen.
 
 Maps bietet allerdings nicht für alle Länder oder Regionen das gleiche Maß an Informationen und Genauigkeit. Die folgende Tabelle enthält Informationen dazu, welche Art von Verkehrsinformationen in den jeweiligen Länder oder Regionen angefordert werden kann: 
 

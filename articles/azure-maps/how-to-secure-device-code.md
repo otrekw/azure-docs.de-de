@@ -10,10 +10,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: 3833cbfd0802f334e482203d269984eb0e299797
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92895629"
 ---
 # <a name="secure-an-input-constrained-device-with-azure-ad-and-azure-maps-rest-apis"></a>Sichern eines eingabebeschränkten Geräts mit Azure AD und Azure Maps-REST-APIs
@@ -40,17 +40,17 @@ Erstellen Sie die gerätebasierte Anwendung in Azure AD, um die Azure AD-Anmel
     > [!div class="mx-imgBorder"]
     > ![Hinzufügen von App-Registrierungsdetails für Namen und Umleitungs-URI](./media/azure-maps-authentication/devicecode-app-registration.png)
 
-3. Navigieren Sie zu **Authentifizierung** , und aktivieren Sie **Anwendung als öffentlichen Client behandeln** . Hierdurch wird die Gerätecodeauthentifizierung mit Azure AD aktiviert.
+3. Navigieren Sie zu **Authentifizierung**, und aktivieren Sie **Anwendung als öffentlichen Client behandeln**. Hierdurch wird die Gerätecodeauthentifizierung mit Azure AD aktiviert.
     
     > [!div class="mx-imgBorder"]
     > ![Aktivieren der App-Registrierung als öffentlicher Client](./media/azure-maps-authentication/devicecode-public-client.png)
 
-4.  Navigieren Sie zu der Anwendung, um Azure Maps die delegierten API-Berechtigungen zuzuweisen. Wählen Sie dann **API-Berechtigungen** > **Berechtigung hinzufügen** aus. Suchen Sie unter **Von meiner Organisation verwendete APIs** die Option **Azure Maps** , und wählen Sie sie aus.
+4.  Navigieren Sie zu der Anwendung, um Azure Maps die delegierten API-Berechtigungen zuzuweisen. Wählen Sie dann **API-Berechtigungen** > **Berechtigung hinzufügen** aus. Suchen Sie unter **Von meiner Organisation verwendete APIs** die Option **Azure Maps**, und wählen Sie sie aus.
 
     > [!div class="mx-imgBorder"]
     > ![Hinzufügen von App-API-Berechtigungen](./media/how-to-manage-authentication/app-permissions.png)
 
-5. Aktivieren Sie das Kontrollkästchen neben **Auf Azure Maps zugreifen** , und wählen Sie dann **Berechtigungen hinzufügen** aus.
+5. Aktivieren Sie das Kontrollkästchen neben **Auf Azure Maps zugreifen**, und wählen Sie dann **Berechtigungen hinzufügen** aus.
 
     > [!div class="mx-imgBorder"]
     > ![Auswählen von App-API-Berechtigungen](./media/how-to-manage-authentication/select-app-permissions.png)

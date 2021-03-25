@@ -9,10 +9,10 @@ ms.date: 10/15/2020
 ms.author: duau
 ms.custom: seodec18
 ms.openlocfilehash: d142028d197f9e279b5f1e05757946dc40d2c153
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92109135"
 ---
 # <a name="tutorial-configure-route-filters-for-microsoft-peering-using-the-azure-portal"></a>Tutorial: Konfigurieren von Routenfiltern für Microsoft-Peering mithilfe des Azure-Portals
@@ -79,27 +79,27 @@ Ein Routenfilter kann nur eine Regel aufweisen, die zudem vom Typ „Zulassen“
 
 1. Platzieren Sie den Routenfilter in einer Ressourcengruppe. Stellen Sie sicher, dass sein Ort mit dem der ExpressRoute-Leitung übereinstimmt. Wählen Sie **Überprüfen + erstellen** und danach **Erstellen** aus.
 
-    :::image type="content" source="./media/how-to-routefilter-portal/create-route-filter-basic.png" alt-text="Screenshot: Seite „Routenfilter“":::
+    :::image type="content" source="./media/how-to-routefilter-portal/create-route-filter-basic.png" alt-text="Screenshot: Seite zum Erstellen eines Routenfilters mit eingegebenen Beispielwerten":::
 
 ### <a name="create-a-filter-rule"></a>Erstellen einer Filterregel
 
 1. Wählen Sie zum Hinzufügen und Aktualisieren von Regeln die Registerkarte „Regel verwalten“ für Ihren Routenfilter aus.
 
-    :::image type="content" source="./media/how-to-routefilter-portal/manage-route-filter.png" alt-text="Screenshot: Seite „Routenfilter“":::
+    :::image type="content" source="./media/how-to-routefilter-portal/manage-route-filter.png" alt-text="Screenshot: Seite „Übersicht“ mit hervorgehobener Aktion „Regel verwalten“":::
 
 1. Wählen Sie die Dienste, mit denen Sie eine Verbindung herstellen möchten, in der Dropdownliste aus, und speichern Sie die Regel, wenn Sie fertig sind.
 
-    :::image type="content" source="./media/how-to-routefilter-portal/add-route-filter-rule.png" alt-text="Screenshot: Seite „Routenfilter“":::
+    :::image type="content" source="./media/how-to-routefilter-portal/add-route-filter-rule.png" alt-text="Screenshot: Fenster „Regel verwalten“ mit ausgewählten Diensten in der Dropdownliste „Zulässige Dienstcommunitys“":::
 
 ## <a name="attach-the-route-filter-to-an-expressroute-circuit"></a><a name="attach"></a>Anfügen des Routenfilters zu einer ExpressRoute-Verbindung
 
 Fügen Sie den Routenfilter an eine Leitung an, indem Sie die Schaltfläche **+ Leitung hinzufügen** und dann die ExpressRoute-Leitung aus der Dropdownliste auswählen.
 
-:::image type="content" source="./media/how-to-routefilter-portal/add-circuit-to-route-filter.png" alt-text="Screenshot: Seite „Routenfilter“":::
+:::image type="content" source="./media/how-to-routefilter-portal/add-circuit-to-route-filter.png" alt-text="Screenshot der Seite „Übersicht“ mit ausgewählter Aktion „Leitung hinzufügen“":::
 
 Wenn der Konnektivitätsanbieter Peering für Ihre ExpressRoute-Leitung konfiguriert, aktualisieren Sie die Leitung auf der Seite „ExpressRoute-Leitung“, bevor Sie die Schaltfläche **+ Leitung hinzufügen** auswählen.
 
-:::image type="content" source="./media/how-to-routefilter-portal/refresh-express-route-circuit.png" alt-text="Screenshot: Seite „Routenfilter“":::
+:::image type="content" source="./media/how-to-routefilter-portal/refresh-express-route-circuit.png" alt-text="Screenshot: Seite „Übersicht“ mit ausgewählter Aktion „Aktualisieren“":::
 
 ## <a name="common-tasks"></a><a name="tasks"></a>Häufige Aufgaben
 
@@ -107,30 +107,30 @@ Wenn der Konnektivitätsanbieter Peering für Ihre ExpressRoute-Leitung konfigur
 
 Sie können Eigenschaften eines Routenfilters anzeigen, wenn Sie die Ressource im Portal öffnen.
 
-:::image type="content" source="./media/how-to-routefilter-portal/view-route-filter.png" alt-text="Screenshot: Seite „Routenfilter“":::
+:::image type="content" source="./media/how-to-routefilter-portal/view-route-filter.png" alt-text="Screenshot mit der Seite „Übersicht“":::
 
 ### <a name="to-update-the-properties-of-a-route-filter"></a><a name="updateproperties"></a>Aktualisieren der Eigenschaften eines Routenfilters
 
 1. Sie können die Liste der BGP-Communitywerte, die einer Leitung angefügt sind, durch Auswählen der Schaltfläche **Regel verwalten** aktualisieren.
 
-    :::image type="content" source="./media/how-to-routefilter-portal/update-route-filter.png" alt-text="Screenshot: Seite „Routenfilter“":::
+    :::image type="content" source="./media/how-to-routefilter-portal/update-route-filter.png" alt-text="Aktualisieren von Routenfiltern mit der Aktion „Regel verwalten“":::
 
 1. Wählen Sie die gewünschten Dienstcommunities und dann **Speichern** aus.
 
-    :::image type="content" source="./media/how-to-routefilter-portal/add-route-filter-rule.png" alt-text="Screenshot: Seite „Routenfilter“":::
+    :::image type="content" source="./media/how-to-routefilter-portal/add-route-filter-rule.png" alt-text="Screenshot: Fenster „Regel verwalten“ mit ausgewählten Diensten":::
 
 ### <a name="to-detach-a-route-filter-from-an-expressroute-circuit"></a><a name="detach"></a>Trennen eines Routenfilters von einer ExpressRoute-Verbindung
 
 Um eine Leitung vom Routenfilter zu trennen, klicken Sie mit der rechten Maustaste auf die Leitung, und wählen Sie dann **Zuordnung aufheben** aus.
 
-:::image type="content" source="./media/how-to-routefilter-portal/detach-route-filter.png" alt-text="Screenshot: Seite „Routenfilter“":::
+:::image type="content" source="./media/how-to-routefilter-portal/detach-route-filter.png" alt-text="Screenshot: Seite „Übersicht“ mit hervorgehobener Aktion „Zuordnung aufheben“":::
 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 Sie können einen Routenfilter durch Auswahl der Schaltfläche **Löschen** löschen. Stellen Sie vorab sicher, dass der Routenfilter keiner Leitung zugeordnet ist.
 
-:::image type="content" source="./media/how-to-routefilter-portal/delete-route-filter.png" alt-text="Screenshot: Seite „Routenfilter“":::
+:::image type="content" source="./media/how-to-routefilter-portal/delete-route-filter.png" alt-text="Löschen eines Routenfilters":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

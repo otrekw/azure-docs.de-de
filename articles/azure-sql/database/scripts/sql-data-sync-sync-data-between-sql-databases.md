@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
 ms.openlocfilehash: 3e6c7dd0a75a05f15fe6d59bbf5fa47b2940d86a
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96919882"
 ---
 # <a name="use-powershell-to-sync-data-between-multiple-databases-in-azure-sql-database"></a>Verwenden von PowerShell zum Synchronisieren von Daten zwischen mehreren Datenbanken in Azure SQL-Datenbank
@@ -318,7 +318,7 @@ Zusätzliche PowerShell-Skriptbeispiele für SQL-Datenbank finden Sie unter [Azu
 
 Weitere Informationen zur SQL-Datensynchronisierung finden Sie unter:
 
-- Übersicht: [Was ist SQL-Datensynchronisierung für Azure?](../sql-data-sync-data-sql-server-sql-database.md)
+- Übersicht: [Synchronisieren von Daten über mehrere Cloud- und lokale Datenbanken mit SQL-Datensynchronisierung in Azure](../sql-data-sync-data-sql-server-sql-database.md)
 - Einrichten der Datensynchronisierung
     - Verwenden des Azure-Portals: [Tutorial: Einrichten der SQL-Datensynchronisierung zum Synchronisieren von Daten zwischen Azure SQL-Datenbank und SQL Server](../sql-data-sync-sql-server-configure.md)
     - Verwenden von PowerShell: [Verwenden von PowerShell zum Synchronisieren von Daten zwischen Azure SQL-Datenbank und SQL Server](sql-data-sync-sync-data-between-azure-onprem.md)

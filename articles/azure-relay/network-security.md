@@ -4,10 +4,10 @@ description: In diesem Artikel wird beschrieben, wie IP-Firewallregeln und priva
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: 735a0b7dc303ad63cb301151e3e14e4488c856b1
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98217242"
 ---
 # <a name="network-security-for-azure-relay"></a>Netzwerksicherheit für Azure Relay 

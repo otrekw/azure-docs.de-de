@@ -7,10 +7,10 @@ ms.service: data-share
 ms.topic: how-to
 ms.date: 07/30/2020
 ms.openlocfilehash: 3bfa911921e9bacde2649ee8c4f0d4bc31b56f54
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92910541"
 ---
 # <a name="how-to-add-datasets-to-an-existing-share-in-azure-data-share"></a>Hinzufügen von Datasets zu einer vorhandenen Datenfreigabe in Azure Data Share
@@ -21,7 +21,7 @@ Informationen zum Hinzufügen von Datasets beim Erstellen einer Freigabe finden 
 
 ## <a name="navigate-to-a-sent-data-share"></a>Navigation zu einer gesendeten Datenfreigabe
 
-Navigieren Sie in Azure Data Share zur gesendeten Freigabe, und wählen Sie die Registerkarte **Datasets** aus. Klicken Sie auf die Schaltfläche **+ Datasets hinzufügen** , um weitere Datasets hinzuzufügen.
+Navigieren Sie in Azure Data Share zur gesendeten Freigabe, und wählen Sie die Registerkarte **Datasets** aus. Klicken Sie auf die Schaltfläche **+ Datasets hinzufügen**, um weitere Datasets hinzuzufügen.
 
 ![Screenshot mit ausgewählter Option „Datasets hinzufügen“.](./media/how-to/how-to-add-datasets/add-datasets.png)
 
