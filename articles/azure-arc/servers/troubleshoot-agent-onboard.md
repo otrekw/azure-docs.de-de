@@ -4,10 +4,10 @@ description: In diesem Artikel erfahren Sie, wie Sie Probleme mit dem Connected 
 ms.date: 09/02/2020
 ms.topic: conceptual
 ms.openlocfilehash: 36feb6a65ec52d99dfd664ae54cb099ea6a7e239
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90900681"
 ---
 # <a name="troubleshoot-the-connected-machine-agent-connection-issues"></a>Behandeln von Verbindungsproblemen für den Connected Machine-Agent
@@ -44,7 +44,7 @@ Hier sehen Sie ein Beispiel für den Befehl zum Aktivieren der ausführlichen Pr
 Hier sehen Sie ein Beispiel für den Befehl zum Aktivieren der ausführlichen Protokollierung mit dem Connected Machine-Agent für Linux bei einer interaktiven Installation:
 
 >[!NOTE]
->Sie müssen auf Linux-Computern über *Stamm*zugriffsberechtigungen verfügen, um **azcmagent** ausführen zu können.
+>Sie müssen auf Linux-Computern über *Stamm* zugriffsberechtigungen verfügen, um **azcmagent** ausführen zu können.
 
 ```bash
 azcmagent connect --resource-group "resourceGroupName" --tenant-id "tenantID" --location "regionName" --subscription-id "subscriptionID" --verbose

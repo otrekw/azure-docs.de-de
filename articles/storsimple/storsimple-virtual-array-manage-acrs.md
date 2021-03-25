@@ -16,10 +16,10 @@ ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: bad0d7adfd77dff53b1582e63a91f2cd87a9233d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85507618"
 ---
 # <a name="use-storsimple-device-manager-to-manage-access-control-records-for-storsimple-virtual-array"></a>Verwenden des StorSimple-Geräte-Managers zum Verwalten von Access Control-Datensätzen für StorSimple Virtual Array
@@ -69,9 +69,9 @@ Führen Sie die folgenden Schritte aus, um einen ACR hinzuzufügen:
    
     1. Geben Sie einen **Namen** für den ACR ein.
     
-    2. Geben Sie unter **iSCSI-Initiatorname**den IQN des Windows-Hosts an. Gehen Sie zum Abrufen des IQN des Windows Server-Hosts folgendermaßen vor:
+    2. Geben Sie unter **iSCSI-Initiatorname** den IQN des Windows-Hosts an. Gehen Sie zum Abrufen des IQN des Windows Server-Hosts folgendermaßen vor:
    
-    3. Starten Sie den Microsoft iSCSI-Initiator auf dem Windows-Host. Wählen Sie im Fenster „iSCSI Initiator Properties“ (Eigenschaften des iSCSI-Initiators) auf der Registerkarte **Konfiguration** die Zeichenfolge im Feld **Initiator Name** (Initiatorname) aus, und kopieren Sie sie.
+    3. Starten Sie den Microsoft iSCSI-Initiator auf dem Windows-Host. Wählen Sie im Fenster Eigenschaften des iSCSI-Initiators auf der Registerkarte **Konfiguration** die Zeichenfolge im Feld **Initiatorname** aus, und kopieren Sie sie.
     Fügen Sie diese Zeichenfolge in das **IQN**-Feld auf dem Blatt **ACR hinzufügen** ein.
    
     6. Klicken Sie auf **Hinzufügen**, um den ACR hinzuzufügen.  

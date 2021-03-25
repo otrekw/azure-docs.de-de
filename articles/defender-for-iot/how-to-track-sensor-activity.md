@@ -1,18 +1,14 @@
 ---
 title: Nachverfolgen der Sensoraktivität
 description: Die Ereigniszeitachse zeigt eine Zeitskala der in Ihrem Netzwerk erkannten Aktivität an, einschließlich Warnungen und Warnungsverwaltungsaktionen, Netzwerkereignisse und Benutzervorgänge wie Benutzeranmeldung und Benutzerlöschung.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 12/10/2020
 ms.topic: article
-ms.service: azure
-ms.openlocfilehash: b8a7679521096cf3d98e8f55748eb0398fdc4ab8
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 195908001fbd247ed2e0fa007bc8dcd5ebf28e60
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100523599"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104781618"
 ---
 # <a name="track-sensor-activity"></a>Nachverfolgen der Sensoraktivität
 
@@ -89,6 +85,6 @@ So filtern Sie die Zeitachse:
     
       Die PCAP-Datei enthält technische Informationen, die Netzwerktechniker dabei helfen, die genauen Parameter des Ereignisses zu ermitteln. Sie können die PCAP-Datei mit einem Tool für die Netzwerkprotokollanalyse wie der Open-Source-Anwendung „Wireshark“ analysieren.
 
-## <a name="next-steps"></a>Nächste Schritte
+## <a name="see-also"></a>Weitere Informationen
 
 [Anzeigen von Warnungen](how-to-view-alerts.md)

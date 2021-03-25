@@ -8,10 +8,10 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.openlocfilehash: 6ac4d0e0744bfc82a686671234e013b2dd717146
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92927752"
 ---
 # <a name="integrate-azure-key-vault-with-azure-policy"></a>Integrieren von Azure Key Vault in Azure Policy
@@ -29,7 +29,7 @@ Beispiele für Nutzungsszenarien:
 
 ## <a name="types-of-policy-effects-and-guidance"></a>Arten von Richtlinienauswirkungen und Anleitung
 
-**Überwachen** : Wenn die Auswirkung einer Richtlinie auf „Überwachen“ festgelegt ist, verursacht die Richtlinie keine Breaking Changes an Ihrer Umgebung. Sie werden nur auf Komponenten wie z. B. Zertifikate aufmerksam gemacht, die nicht mit den Richtliniendefinitionen innerhalb eines angegebenen Bereichs übereinstimmen. Dabei werden diese Komponenten im Dashboard für die Richtlinienkonformität als nicht konform markiert. Die Überwachung ist Standard, wenn keine Richtlinienauswirkung ausgewählt ist.
+**Überwachen**: Wenn die Auswirkung einer Richtlinie auf „Überwachen“ festgelegt ist, verursacht die Richtlinie keine Breaking Changes an Ihrer Umgebung. Sie werden nur auf Komponenten wie z. B. Zertifikate aufmerksam gemacht, die nicht mit den Richtliniendefinitionen innerhalb eines angegebenen Bereichs übereinstimmen. Dabei werden diese Komponenten im Dashboard für die Richtlinienkonformität als nicht konform markiert. Die Überwachung ist Standard, wenn keine Richtlinienauswirkung ausgewählt ist.
 
 **Verweigern:** Wenn die Auswirkung einer Richtlinie auf „Verweigern“ festgelegt ist, blockiert die Richtlinie die Erstellung neuer Komponenten wie z. B. Zertifikaten und blockiert zudem neue Versionen vorhandener Komponenten, die der Richtliniendefinition nicht entsprechen. Vorhandene nicht konforme Ressourcen innerhalb eines Schlüsseltresors sind nicht betroffen. Die Überwachungsfunktionen werden weiterhin ausgeführt.
 
@@ -91,9 +91,9 @@ Ihr Dienst kann einen Ausfall erleben, wenn ein Zertifikat, das nicht ausreichen
 
 Wenn Sie sicherstellen möchten, dass Ihre Schlüssel nicht länger als eine angegebene Anzahl von Tagen aktiv waren, können Sie mit dieser Richtlinie die Dauer der Aktivität für Schlüssel überwachen.
 
-**Wenn für Ihren Schlüssel ein Aktivierungsdatum festgelegt ist** , wird mit dieser Richtlinie die Anzahl von Tagen berechnet, die vom **Aktivierungsdatum** des Schlüssels bis zum aktuellen Datum verstrichen sind. Falls die Anzahl von Tagen den von Ihnen festgelegten Schwellenwert überschreitet, wird der Schlüssel als nicht mit der Richtlinie konform gekennzeichnet.
+**Wenn für Ihren Schlüssel ein Aktivierungsdatum festgelegt ist**, wird mit dieser Richtlinie die Anzahl von Tagen berechnet, die vom **Aktivierungsdatum** des Schlüssels bis zum aktuellen Datum verstrichen sind. Falls die Anzahl von Tagen den von Ihnen festgelegten Schwellenwert überschreitet, wird der Schlüssel als nicht mit der Richtlinie konform gekennzeichnet.
 
-**Wenn für Ihren Schlüssel kein Aktivierungsdatum festgelegt ist** , wird mit dieser Richtlinie die Anzahl von Tagen berechnet, die vom **Erstellungsdatum** des Schlüssels bis zum aktuellen Datum verstrichen sind. Falls die Anzahl von Tagen den von Ihnen festgelegten Schwellenwert überschreitet, wird der Schlüssel als nicht mit der Richtlinie konform gekennzeichnet.
+**Wenn für Ihren Schlüssel kein Aktivierungsdatum festgelegt ist**, wird mit dieser Richtlinie die Anzahl von Tagen berechnet, die vom **Erstellungsdatum** des Schlüssels bis zum aktuellen Datum verstrichen sind. Falls die Anzahl von Tagen den von Ihnen festgelegten Schwellenwert überschreitet, wird der Schlüssel als nicht mit der Richtlinie konform gekennzeichnet.
 
 ### <a name="keys-should-be-the-specified-cryptographic-type-rsa-or-ec-preview"></a>Keys should be the specified cryptographic type RSA or ECC (preview) (Schlüssel müssen den angegebenen Kryptografietyp RSA oder ECC aufweisen (Vorschauversion))
 
@@ -139,9 +139,9 @@ Hiermit werden die Konformitätsanforderungen Ihrer Organisation verwaltet, inde
 
 Wenn Sie sicherstellen möchten, dass Ihre Geheimnisse nicht länger als eine angegebene Anzahl von Tagen aktiv waren, können Sie mit dieser Richtlinie die Dauer der Aktivität für Geheimnisse überwachen.
 
-**Wenn für Ihr Geheimnis ein Aktivierungsdatum festgelegt ist** , wird mit dieser Richtlinie die Anzahl von Tagen berechnet, die vom **Aktivierungsdatum** des Geheimnisses bis zum aktuellen Datum verstrichen sind. Falls die Anzahl von Tagen den von Ihnen festgelegten Schwellenwert überschreitet, wird das Geheimnis als nicht mit der Richtlinie konform gekennzeichnet.
+**Wenn für Ihr Geheimnis ein Aktivierungsdatum festgelegt ist**, wird mit dieser Richtlinie die Anzahl von Tagen berechnet, die vom **Aktivierungsdatum** des Geheimnisses bis zum aktuellen Datum verstrichen sind. Falls die Anzahl von Tagen den von Ihnen festgelegten Schwellenwert überschreitet, wird das Geheimnis als nicht mit der Richtlinie konform gekennzeichnet.
 
-**Wenn für Ihr Geheimnis kein Aktivierungsdatum festgelegt ist** , wird mit dieser Richtlinie die Anzahl von Tagen berechnet, die vom **Erstellungsdatum** des Geheimnisses bis zum aktuellen Datum verstrichen sind. Falls die Anzahl von Tagen den von Ihnen festgelegten Schwellenwert überschreitet, wird das Geheimnis als nicht mit der Richtlinie konform gekennzeichnet.
+**Wenn für Ihr Geheimnis kein Aktivierungsdatum festgelegt ist**, wird mit dieser Richtlinie die Anzahl von Tagen berechnet, die vom **Erstellungsdatum** des Geheimnisses bis zum aktuellen Datum verstrichen sind. Falls die Anzahl von Tagen den von Ihnen festgelegten Schwellenwert überschreitet, wird das Geheimnis als nicht mit der Richtlinie konform gekennzeichnet.
 
 ### <a name="secrets-should-have-content-type-set-preview"></a>Secrets should have content type set (preview) (Für Geheimnisse muss der Inhaltstyp festgelegt werden (Vorschauversion))
 
@@ -183,7 +183,7 @@ Sie verwalten einen Schlüsseltresor mit 100 Zertifikaten, der von mehreren Tea
 
     ![Screenshot, auf dem die Option „Definitionen“ hervorgehoben ist](../media/policy-img2.png)
 
-1. Deaktivieren Sie im Kategoriefilter **Alle auswählen** , und wählen Sie **Key Vault** aus. 
+1. Deaktivieren Sie im Kategoriefilter **Alle auswählen**, und wählen Sie **Key Vault** aus. 
 
     ![Screenshot: Kategoriefilter und die ausgewählte Kategorie „Key Vault“](../media/policy-img3.png)
 
@@ -197,7 +197,7 @@ Sie verwalten einen Schlüsseltresor mit 100 Zertifikaten, der von mehreren Tea
 
     ![Screenshot: Richtlinie „Gültigkeitsdauer von Zertifikaten verwalten“](../media/policy-img5.png)
   
-1. Wählen Sie das Abonnement aus, für das die Richtlinie gelten soll. Sie können den Gültigkeitsbereich auf nur eine einzelne Ressourcengruppe innerhalb eines Abonnements beschränken. Wenn Sie die Richtlinie auf das gesamte Abonnement anwenden und einige Ressourcengruppen ausschließen möchten, können Sie auch eine Ausschlussliste konfigurieren. Legen Sie den Selektor für die Richtlinienerzwingung auf **Aktiviert** fest, wenn die Auswirkung der Richtlinie (Überwachen oder Verweigern) erfolgen soll, oder auf **Deaktiviert** , um die Auswirkung (Überwachen oder Verweigern) zu deaktivieren. 
+1. Wählen Sie das Abonnement aus, für das die Richtlinie gelten soll. Sie können den Gültigkeitsbereich auf nur eine einzelne Ressourcengruppe innerhalb eines Abonnements beschränken. Wenn Sie die Richtlinie auf das gesamte Abonnement anwenden und einige Ressourcengruppen ausschließen möchten, können Sie auch eine Ausschlussliste konfigurieren. Legen Sie den Selektor für die Richtlinienerzwingung auf **Aktiviert** fest, wenn die Auswirkung der Richtlinie (Überwachen oder Verweigern) erfolgen soll, oder auf **Deaktiviert**, um die Auswirkung (Überwachen oder Verweigern) zu deaktivieren. 
 
     ![Screenshot, der zeigt, wo Sie den Gültigkeitsbereich auf nur eine einzelne Ressourcengruppe innerhalb eines Abonnements beschränken können](../media/policy-img6.png)
 
@@ -221,7 +221,7 @@ Sie verwalten einen Schlüsseltresor mit 100 Zertifikaten, der von mehreren Tea
 
     ![Screenshot, der zeigt, wo Sie den Namen der Komponenten in einem Tresor anzeigen können, die nicht konform sind](../media/policy-img10.png)
 
-1. Wenn Sie überprüfen müssen, ob den Benutzern die Möglichkeit zum Erstellen von Ressourcen in Key Vault verweigert wird, klicken Sie auf die Registerkarte **Komponentenereignisse (Vorschau)** , um eine Zusammenfassung der verweigerten Zertifikatvorgänge mit dem Anforderer und Zeitstempeln der Anforderungen anzuzeigen. 
+1. Wenn Sie überprüfen müssen, ob den Benutzern die Möglichkeit zum Erstellen von Ressourcen in Key Vault verweigert wird, klicken Sie auf die Registerkarte **Komponentenereignisse (Vorschau)**, um eine Zusammenfassung der verweigerten Zertifikatvorgänge mit dem Anforderer und Zeitstempeln der Anforderungen anzuzeigen. 
 
 
     ![Übersicht über die Funktionsweise von Azure Key Vault](../media/policy-img11.png)

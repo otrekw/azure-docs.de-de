@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: f47a8f1edb4afed41587eac3d539b5ad7cb8180f
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 6db817999b415ebe2c4bb7cb4216ed1e9ad9c325
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103488464"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104655987"
 ---
 # <a name="quickstart-handle-sms-events"></a>Schnellstart: Behandeln von SMS-Ereignissen
 
@@ -27,7 +27,7 @@ Machen Sie Ihre ersten Schritte mit Azure Communication Services, indem Sie Azur
 
 ## <a name="about-azure-event-grid"></a>Informationen zu Azure Event Grid
 
-[Azure Event Grid](../../../event-grid/overview.md) ist ein cloudbasierter Ereignisdienst. In diesem Artikel erfahren Sie, wie Sie Ereignisse für [Communication Service-Ereignisse](../../concepts/event-handling.md) abonnieren und ein Ereignis zum Anzeigen des Ergebnisses auslösen. Üblicherweise senden Sie Ereignisse an einen Endpunkt, der die Ereignisdaten verarbeitet und entsprechende Aktionen ausführt. In diesem Artikel senden wir Ereignisse an eine Web-App, die die Nachrichten sammelt und anzeigt.
+[Azure Event Grid](../../../event-grid/overview.md) ist ein cloudbasierter Ereignisdienst. In diesem Artikel erfahren Sie, wie Sie Ereignisse für [Communication Service-Ereignisse](../../../event-grid/event-schema-communication-services.md) abonnieren und ein Ereignis zum Anzeigen des Ergebnisses auslösen. Üblicherweise senden Sie Ereignisse an einen Endpunkt, der die Ereignisdaten verarbeitet und entsprechende Aktionen ausführt. In diesem Artikel senden wir Ereignisse an eine Web-App, die die Nachrichten sammelt und anzeigt.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 - Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
@@ -68,7 +68,7 @@ Sie können spezifische Ereignisse abonnieren, um Event Grid mitzuteilen, welche
 
 Wenn Sie aufgefordert werden, einen **Namen für das Systemthema** anzugeben, können Sie eine eindeutige Zeichenfolge angeben. Dieses Feld wirkt sich nicht auf Ihre Benutzeroberflächen aus und wird für interne Telemetriezwecke verwendet.
 
-Sehen Sie sich die vollständige Liste der [von Azure Communication Services unterstützten Ereignisse](../../concepts/event-handling.md) an.
+Sehen Sie sich die vollständige Liste der [von Azure Communication Services unterstützten Ereignisse](https://docs.microsoft.com/azure/event-grid/event-schema-communication-services) an.
 
 :::image type="content" source="./media/handle-sms-events/select-events-create-eventsub.png" alt-text="Screenshot, der die Auswahl der Ereignistypen „SMS Received“ (SMS empfangen) und „SMS Delivery Report Received“ (SMS-Zustellberichte empfangen) zeigt":::
 
@@ -93,7 +93,7 @@ Zum Anzeigen von Ereignisauslösern müssen wir zuerst Ereignisse generieren.
 - `SMS Received`-Ereignisse (SMS empfangen) werden generiert, wenn die Communication Services-Telefonnummer eine Textnachricht empfängt. Um ein Ereignis auszulösen, senden Sie einfach eine Nachricht von Ihrem Telefon an die Telefonnummer, die an die Communication Services-Ressource angefügt ist.
 - `SMS Delivery Report Received`-Ereignisse (SMS-Zustellberichte empfangen) werden generiert, wenn Sie mit einer Communication Services-Nummer eine SMS an einen Benutzer senden. Zum Auslösen eines Ereignisses müssen Sie in den Optionen der [gesendeten SMS](../telephony-sms/send.md) die Option `Delivery Report` (Zustellbericht) aktivieren. Senden Sie eine Nachricht an Ihr Mobiltelefon mit einem Zustellbericht (`Delivery Report`). Für diese Aktion fallen in Ihrem Azure-Konto ggf. geringfügige Kosten im Centbereich an.
 
-Sehen Sie sich die vollständige Liste der [von Azure Communication Services unterstützten Ereignisse](../../concepts/event-handling.md) an.
+Sehen Sie sich die vollständige Liste der [von Azure Communication Services unterstützten Ereignisse](https://docs.microsoft.com/azure/event-grid/event-schema-communication-services) an.
 
 ### <a name="receiving-sms-events"></a>Empfangen von SMS-Ereignissen
 
@@ -103,7 +103,7 @@ Nachdem Sie die obigen Aktionen durchgeführt haben, stellen Sie fest, dass die 
 
 :::image type="content" source="./media/handle-sms-events/sms-delivery-report-received.png" alt-text="Screenshot, der das Event Grid-Schema für ein „SMS Delivery Report Received“-Ereignis (SMS-Zustellberichte empfangen) zeigt":::
 
-Erfahren Sie mehr über [Ereignisschemas und andere Ereigniskonzepte](../../concepts/event-handling.md).
+Erfahren Sie mehr über [Ereignisschemas und andere Ereigniskonzepte](https://docs.microsoft.com/azure/event-grid/event-schema-communication-services).
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
@@ -118,5 +118,5 @@ In diesem Schnellstart haben Sie gelernt, SMS-Ereignisse zu verwenden. Sie könn
 
 Das könnte Sie auch interessieren:
 
- - [Weitere Informationen zu Ereignisbehandlungskonzepten](../../concepts/event-handling.md)
+ - [Weitere Informationen zu Ereignisbehandlungskonzepten](../../../event-grid/event-schema-communication-services.md)
  - [Weitere Informationen zu Azure Event Grid](../../../event-grid/overview.md)

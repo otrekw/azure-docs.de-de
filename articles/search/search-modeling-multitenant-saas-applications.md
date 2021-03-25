@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.openlocfilehash: cd21197d6d1559b681ae622b974f6eb7ba95ad3d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91397367"
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-cognitive-search"></a>Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen und die kognitive Azure-Suche
@@ -28,7 +28,7 @@ Bevor wir näher auf Entwurfsmuster eingehen, müssen Sie einige grundlegende Ko
 
 Zur Verwendung der kognitiven Azure-Suche muss ein *Suchdienst* abonniert werden. Die in die kognitive Azure-Suche hochgeladenen Daten werden in einem *Index* innerhalb des Suchdiensts gespeichert. In einem einzelnen Dienst kann es mehrere Indizes geben. Analog zu den vertrauten Konzepten von Datenbanken kann der Suchdienst mit einer Datenbank verglichen werden, während die Indizes im Dienst mit Tabellen in einer Datenbank vergleichbar sind.
 
-Jeder Index in einen Suchdienst hat ein eigenes Schema, das mithilfe verschiedener anpassbarer *Felder*definiert wird. Daten werden einem Index der kognitiven Azure-Suche in Form einzelner *Dokumente* hinzugefügt. Jedes Dokument muss in einen bestimmten Index hochgeladen werden und dem Schema dieses Indexes entsprechen. Beim Durchsuchen von Daten mithilfe der kognitiven Azure-Suche werden die Volltextsuchabfragen auf einen bestimmten Index angewandt.  Wiederum analog zu Datenbanken können Felder mit den Spalten einer Tabelle und Dokumente mit Zeilen verglichen werden.
+Jeder Index in einen Suchdienst hat ein eigenes Schema, das mithilfe verschiedener anpassbarer *Felder* definiert wird. Daten werden einem Index der kognitiven Azure-Suche in Form einzelner *Dokumente* hinzugefügt. Jedes Dokument muss in einen bestimmten Index hochgeladen werden und dem Schema dieses Indexes entsprechen. Beim Durchsuchen von Daten mithilfe der kognitiven Azure-Suche werden die Volltextsuchabfragen auf einen bestimmten Index angewandt.  Wiederum analog zu Datenbanken können Felder mit den Spalten einer Tabelle und Dokumente mit Zeilen verglichen werden.
 
 ### <a name="scalability"></a>Skalierbarkeit
 Ein Dienst der kognitiven Azure-Suche im [Tarif „Standard“](https://azure.microsoft.com/pricing/details/search/) kann in zwei Bereichen skaliert werden: Speicherung und Verfügbarkeit.
@@ -95,7 +95,7 @@ Wenn die Gesamtanzahl der Indizes für einen einzelnen Dienst zu groß wird, mus
 
 ## <a name="2-service-per-tenant"></a>2. Dienst pro Mandant
 
-:::image type="content" source="media/search-modeling-multitenant-saas-applications/azure-search-service-per-tenant.png" alt-text="Eine Abbildung des Index-pro-Mandant-Modells" border="false":::
+:::image type="content" source="media/search-modeling-multitenant-saas-applications/azure-search-service-per-tenant.png" alt-text="Eine Abbildung des Dienst-pro-Mandant-Modells" border="false":::
 
 Bei einer Dienst-pro-Mandant-Architektur hat jeder Mandant einen eigenen Suchdienst.
 

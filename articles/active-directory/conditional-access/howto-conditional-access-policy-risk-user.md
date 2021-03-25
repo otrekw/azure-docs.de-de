@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d5423a61c8febee72f32935f3dee4e9f9e868630
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89049076"
 ---
 # <a name="conditional-access-user-risk-based-conditional-access"></a>Bedingter Zugriff: Auf dem Benutzerrisiko basierender bedingter Zugriff
@@ -33,9 +33,9 @@ Es gibt zwei Möglichkeiten, diese Richtlinie zuzuweisen. Organisationen sollten
 1. Klicken Sie unter **Zuweisungen** auf **Benutzer und Gruppen**.
    1. Wählen Sie unter **Einschließen** die Option **Alle Benutzer** aus.
    1. Wählen Sie unter **Ausschließen** die Option **Benutzer und Gruppen** und dann die Konten für den Notfallzugriff Ihres Unternehmens aus. 
-   1. Wählen Sie **Fertig**aus.
+   1. Wählen Sie **Fertig** aus.
 1. Wählen Sie unter **Cloud-Apps oder -aktionen** > **Einschließen** die Option **Alle Cloud-Apps** aus.
-1. Legen Sie unter **Bedingungen** > **Benutzerrisiko** die Option **Konfigurieren** auf **Ja**fest. Wählen Sie unter **Hiermit konfigurieren Sie die Benutzerrisikostufen, die für die Erzwingung der Richtlinie erforderlich sind** die Option **Hoch** und dann **Fertig** aus.
+1. Legen Sie unter **Bedingungen** > **Benutzerrisiko** die Option **Konfigurieren** auf **Ja** fest. Wählen Sie unter **Hiermit konfigurieren Sie die Benutzerrisikostufen, die für die Erzwingung der Richtlinie erforderlich sind** die Option **Hoch** und dann **Fertig** aus.
 1. Wählen Sie unter **Zugriffssteuerungen** > **Erteilen** die Option **Zugriff erteilen**, dann **Kennwortänderung erforderlich** und anschließend **Auswählen** aus.
 1. Bestätigen Sie die Einstellungen, und legen Sie **Richtlinie aktivieren** auf **Ein** fest.
 1. Wählen Sie **Erstellen** aus, um die Richtlinie zu erstellen und zu aktivieren.
@@ -48,7 +48,7 @@ Es gibt zwei Möglichkeiten, diese Richtlinie zuzuweisen. Organisationen sollten
 1. Wählen Sie unter **Zuweisungen** die Option **Benutzer** aus.
    1. Wählen Sie unter **Einschließen** die Option **Alle Benutzer** aus.
    1. Wählen Sie unter **Ausschließen** die Option **Ausgeschlossene Benutzer auswählen** und dann die Konten für den Notfallzugriff Ihres Unternehmens aus. Abschließend wählen Sie **Auswählen** aus.
-   1. Wählen Sie **Fertig**aus.
+   1. Wählen Sie **Fertig** aus.
 1. Wählen Sie unter **Bedingungen** die Option **Benutzerrisiko** und dann **Hoch** aus.
    1. Wählen Sie **Auswählen** und anschließend **Fertig** aus.
 1. Wählen Sie unter **Kontrollen** > **Zugriff** die Option **Zugriff zulassen** und dann **Kennwortänderung anfordern** aus.

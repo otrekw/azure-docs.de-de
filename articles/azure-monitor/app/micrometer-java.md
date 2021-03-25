@@ -6,16 +6,18 @@ author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
 ms.date: 11/01/2018
-ms.openlocfilehash: df3ed451776f30e8b7c13b95618f1a7f0c7688db
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 8dba7280f6abd6026fabdde500dc76b73129d557
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98937540"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "100589748"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk-not-recommended"></a>Verwenden von Micrometer mit dem Azure Application Insights Java SDK (nicht empfohlen)
 
 > [!IMPORTANT]
+> Der in diesem Dokument beschriebene Ansatz wird nicht mehr empfohlen.
+> 
 > Der empfohlene Ansatz zur Überwachung von Java-Anwendungen ist die automatische Instrumentierung ohne Änderung des Codes. Die Micrometer-Telemetrie wird automatisch mit dem Application Insights Java 3.0-Agent erfasst. Befolgen Sie die Richtlinien für den [Application Insights Java 3.0-Agent](./java-in-process-agent.md).
 
 > [!NOTE]

@@ -13,10 +13,10 @@ ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
 ms.openlocfilehash: 484dd8313710332660bb20d55f3dac2aa21bbc61
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98232521"
 ---
 # <a name="integrate-your-existing-network-policy-server-nps-infrastructure-with-azure-ad-multi-factor-authentication"></a>Integrieren Ihrer vorhandenen NPS-Infrastruktur in Azure AD Multi-Factor Authentication
@@ -116,8 +116,8 @@ Darüber hinaus ist Konnektivität mit den folgenden URLs erforderlich, um die [
 * *https:\//login.microsoftonline.com*
 * *https:\//provisioningapi.microsoftonline.com*
 * *https:\//aadcdn.msauth.net*
-* <bpt id="p1">*</bpt>https:<ph id="ph1">\/</ph>/www.powershellgallery.com<ept id="p1">*</ept>
-* <bpt id="p1">*</bpt>https:<ph id="ph1">\/</ph>/aadcdn.msftauthimages.net<ept id="p1">*</ept>
+* *https:\//www.powershellgallery.com*
+* *https:\//aadcdn.msftauthimages.net*
 
 ## <a name="prepare-your-environment"></a>Vorbereiten der Umgebung
 

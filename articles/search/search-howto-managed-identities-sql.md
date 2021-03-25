@@ -10,10 +10,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: b940da2cf754e7e1cac91df6b517ecebe55e8c40
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94358421"
 ---
 # <a name="set-up-an-indexer-connection-to-azure-sql-database-using-a-managed-identity"></a>Einrichten einer Indexerverbindung mit Azure SQL-Datenbank mithilfe einer verwalteten Identität
@@ -103,7 +103,7 @@ Beim Erstellen einer Datenquelle mit der [REST-API](/rest/api/searchservice/crea
 * **credentials**
     * Beim Verwenden einer verwalteten Identität zur Authentifizierung unterscheidet sich das Format für **credentials** von dem bei der Authentifizierung ohne verwaltete Identität. Hier geben Sie den Namen für „Initial Catalog“ oder „Initial Database“ und eine „ResourceId“ an, der kein Kontoschlüssel und kein Kennwort zugewiesen ist. Die „ResourceId“ muss die Abonnement-ID von Azure SQL-Datenbank, die Ressourcengruppe der SQL-Datenbank und den Namen der SQL-Datenbank enthalten. 
     * Format der Verbindungszeichenfolge für verwaltete Identitäten:
-        * *Initial Catalog|Database= **Datenbankname** ;ResourceId=/subscriptions/ **Ihre Abonnement-ID** /resourceGroups/ **Name Ihrer Ressourcengruppe** /providers/Microsoft.Sql/servers/ **Name Ihres SQL-Servers** /;Connection Timeout= **Dauer des Verbindungstimeouts** ;*
+        * *Initial Catalog|Database=**Datenbankname**;ResourceId=/subscriptions/**Ihre Abonnement-ID**/resourceGroups/**Name Ihrer Ressourcengruppe**/providers/Microsoft.Sql/servers/**Name Ihres SQL-Servers**/;Connection Timeout=**Dauer des Verbindungstimeouts**;*
 * **container** gibt den Namen der Tabelle oder Ansicht an, die indiziert werden soll.
 
 Beispiel für die Erstellung eines Azure SQL-Datenquellenobjekts über die [REST-API](/rest/api/searchservice/create-data-source):

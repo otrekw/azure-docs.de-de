@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/09/2020
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: da992715b5cf624592db72cacefd35c9513ac43f
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: b0e7996b71e68db371201da1f0f5c93486ae4e29
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93335771"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104592091"
 ---
 # <a name="datetimefromparts-azure-cosmos-db"></a>DateTimeFromParts (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -46,19 +46,19 @@ DateTimeFromParts(<numberYear>, <numberMonth>, <numberDay> [, numberHour]  [, nu
 
 ## <a name="return-types"></a>Rückgabetypen
 
-Gibt einen Zeichenfolgenwert für das UTC-Datum und die UTC-Uhrzeit gemäß ISO 8601 im Format `YYYY-MM-DDThh:mm:ss.fffffffZ` zurück. Hierbei gilt:
+Gibt UTC-Datum und -Uhrzeit als ISO-8601-Zeichenfolgenwert im Format `YYYY-MM-DDThh:mm:ss.fffffffZ` mit der folgenden Bedeutung zurück:
   
-  |Format|BESCHREIBUNG|
-  |-|-|
-  |YYYY|vierstellige Jahreszahl|
-  |MM|zweistellige Monatszahl (01 = Januar usw.)|
-  |DD|zweistellige Zahl für den Tag des Monats (01 bis 31)|
-  |T|Trennzeichen, das den Anfang der Uhrzeitelemente markiert|
-  |hh|zweistellige Stundenzahl (00 bis 23)|
-  |MM|zweistellige Minutenzahl (00 bis 59)|
-  |ss|zweistellige Sekundenzahl (00 bis 59)|
-  |.fffffff|siebenstellige Sekundenbruchteile|
-  |Z|UTC-Kennzeichner||
+|Format|BESCHREIBUNG|
+|-|-|
+|YYYY|vierstellige Jahreszahl|
+|MM|zweistellige Monatszahl (01 = Januar usw.)|
+|DD|zweistellige Zahl für den Tag des Monats (01 bis 31)|
+|T|Trennzeichen, das den Anfang der Uhrzeitelemente markiert|
+|hh|zweistellige Stundenzahl (00 bis 23)|
+|MM|zweistellige Minutenzahl (00 bis 59)|
+|ss|zweistellige Sekundenzahl (00 bis 59)|
+|.fffffff|siebenstellige Sekundenbruchteile|
+|Z|UTC-Kennzeichner|
   
  Weitere Informationen zum ISO 8601-Format finden Sie unter [ISO_8601](https://en.wikipedia.org/wiki/ISO_8601).
 

@@ -7,14 +7,17 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 0cece3f531d50356fdefb81a598109d7c067c5ed
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 5cbcbcf8914a663a6d039abecd6a4488eaf677b2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98805956"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739643"
 ---
 # <a name="routes-in-azure-static-web-apps-preview"></a>Routen in Azure Static Web Apps (Vorschau)
+
+> [!IMPORTANT]
+> Die in der Datei *routes.json* definierten Funktionen sind nun veraltet und in der Azure Static Web Apps-[Konfigurationsdatei](./configuration.md#routes) besser implementiert.
 
 Mit dem Routing in Azure Static Web Apps werden Back-End-Routingregeln und das Autorisierungsverhalten für statischen Inhalt und für APIs definiert<sup>1</sup>. Die Regeln werden in der Datei _routes.json_ als Array mit Regeln definiert.
 
@@ -29,6 +32,9 @@ Das Thema „Routing“ weist starke Überschneidungen mit den Authentifizierung
 Details finden Sie unter [Beispiel für eine Routendatei](#example-route-file).
 
 ## <a name="location"></a>Standort
+
+> [!IMPORTANT]
+> Die in der Datei *routes.json* definierten Funktionen sind nun veraltet und in der Azure Static Web Apps-[Konfigurationsdatei](./configuration.md#routes) besser implementiert.
 
 Die Datei _routes.json_ muss im Stammverzeichnis des Ordners mit den Buildartefakten der App enthalten sein. Wenn Ihre Web-App einen Buildschritt umfasst, bei dem erstellte Dateien aus einem bestimmten Ordner in Ihren Ordner mit den Buildartefakten kopiert werden, muss die Datei _routes.json_ in diesem Ordner enthalten sein.
 
@@ -46,6 +52,9 @@ Die obige Tabelle ist nur repräsentativ für einige wenige Frameworks und Bibli
 
 ## <a name="defining-routes"></a>Definieren von Routen
 
+> [!IMPORTANT]
+> Die in der Datei *routes.json* definierten Funktionen sind nun veraltet und in der Azure Static Web Apps-[Konfigurationsdatei](./configuration.md#routes) besser implementiert.
+
 Routen werden in der Datei _routes.json_ als Array mit Routenregeln in der Eigenschaft `routes` definiert. Jede Regel besteht aus einem Routenmuster und einer oder mehreren optionalen Regeleigenschaften. Beispiele zur Nutzung finden Sie unter [Beispiel für Routendatei](#example-route-file).
 
 | Regeleigenschaft  | Erforderlich | Standardwert | Comment                                                      |
@@ -56,6 +65,9 @@ Routen werden in der Datei _routes.json_ als Array mit Routenregeln in der Eigen
 | `statusCode`   | Nein       | 200           | Hierbei handelt es sich um die [HTTP-Statuscode](https://wikipedia.org/wiki/List_of_HTTP_status_codes)-Antwort für die Anforderung. |
 
 ## <a name="securing-routes-with-roles"></a>Schützen von Routen mit Rollen
+
+> [!IMPORTANT]
+> Die in der Datei *routes.json* definierten Funktionen sind nun veraltet und in der Azure Static Web Apps-[Konfigurationsdatei](./configuration.md#routes) besser implementiert.
 
 Routen werden geschützt, indem dem Array `allowedRoles` einer Regel mindestens ein Rollenname hinzugefügt wird. Beispiele zur Nutzung finden Sie unter [Beispiel für Routendatei](#example-route-file).
 
@@ -77,10 +89,13 @@ Sie können je nach Bedarf im Array `allowedRoles` neue Rollen erstellen. Zum Be
 }
 ```
 
-- Sie haben die vollständige Kontrolle über Rollennamen. Es gibt keine Hauptliste, an der Ihre Rollen ausgerichtet sein müssen.
+- Sie haben die volle Kontrolle über Rollennamen. Es gibt keine Liste, an die sich Ihre Rollen halten müssen.
 - Einzelne Benutzer werden Rollen mithilfe von [Einladungen](authentication-authorization.md) zugeordnet.
 
 ## <a name="wildcards"></a>Platzhalter
+
+> [!IMPORTANT]
+> Die in der Datei *routes.json* definierten Funktionen sind nun veraltet und in der Azure Static Web Apps-[Konfigurationsdatei](./configuration.md#routes) besser implementiert.
 
 Mit Platzhalterregeln werden alle Anforderungen nach einem bestimmten Routenmuster abgeglichen. Wenn Sie in Ihrer Regel den Wert `serve` definieren, wird die benannte Datei bzw. der Pfad als Antwort bereitgestellt.
 
@@ -109,6 +124,9 @@ Außerdem können Sie Routen mit Platzhaltern schützen. Im folgenden Beispiel i
 
 ## <a name="fallback-routes"></a>Fallbackrouten
 
+> [!IMPORTANT]
+> Die in der Datei *routes.json* definierten Funktionen sind nun veraltet und in der Azure Static Web Apps-[Konfigurationsdatei](./configuration.md#routes) besser implementiert.
+
 Single-Page-Anwendungen, ob sie nun Front-End-JavaScript-Frameworks oder -Bibliotheken oder WebAssembly-Plattformen wie Blazor verwenden, sind für die Navigation von Webanwendungen häufig auf clientseitiges Routing angewiesen. Diese clientseitigen Routingregeln aktualisieren den Fensterspeicherort des Browsers, ohne Anforderungen zurück an den Servern zu senden. Wenn Sie die Seite aktualisieren oder direkt zu Speicherorten navigieren, die mit clientseitigen Routingregeln generiert wurden, ist eine serverseitige Fallbackroute erforderlich, um die richtige HTML-Seite bereitzustellen.
 
 Im folgenden Beispiel wird eine häufige Fallbackroute veranschaulicht:
@@ -128,6 +146,9 @@ Im folgenden Beispiel wird eine häufige Fallbackroute veranschaulicht:
 Die Fallbackroute muss in Ihren Routingregeln an letzter Stelle aufgeführt sein, da hiermit alle Anforderungen abgefangen werden, die mit den zuvor definierten Regeln nicht abgefangen wurden.
 
 ## <a name="redirects"></a>Umleitungen
+
+> [!IMPORTANT]
+> Die in der Datei *routes.json* definierten Funktionen sind nun veraltet und in der Azure Static Web Apps-[Konfigurationsdatei](./configuration.md#routes) besser implementiert.
 
 Sie können die HTTP-Statuscodes [301](https://en.wikipedia.org/wiki/HTTP_301) und [302](https://en.wikipedia.org/wiki/HTTP_302) verwenden, um Anforderungen von einer Route zu einer anderen umzuleiten.
 
@@ -153,6 +174,9 @@ Umleitungen funktionieren auch mit Pfaden, bei denen keine einzelnen Dateien def
 
 ## <a name="custom-error-pages"></a>Benutzerdefinierte Fehlerseiten
 
+> [!IMPORTANT]
+> Die in der Datei *routes.json* definierten Funktionen sind nun veraltet und in der Azure Static Web Apps-[Konfigurationsdatei](./configuration.md#routes) besser implementiert.
+
 Für Benutzer kann es zu unterschiedlichen Situationen kommen, die ggf. zu einem Fehler führen. Mit dem Array `platformErrorOverrides` können Sie als Reaktion auf diese Fehler eine benutzerdefinierte Oberfläche bereitstellen. Informationen zur Platzierung des Arrays in der Datei _routes.json_ finden Sie unter [Beispiel für eine Routendatei](#example-route-file).
 
 > [!NOTE]
@@ -171,6 +195,9 @@ In der folgenden Tabelle sind die verfügbaren Außerkraftsetzungen für Plattfo
 | `Unauthorized_Unknown` | 401 | Beim Versuch, den Benutzer zu authentifizieren, ist ein unbekannter Fehler aufgetreten. Ein Grund für diesen Fehler ist ggf., dass der Benutzer nicht erkannt wird, weil er seine Einwilligung für die Anwendung nicht erteilt hat.|
 
 ## <a name="custom-mime-types"></a>Benutzerdefinierte MIME-Typen
+
+> [!IMPORTANT]
+> Die in der Datei *routes.json* definierten Funktionen sind nun veraltet und in der Azure Static Web Apps-[Konfigurationsdatei](./configuration.md#routes) besser implementiert.
 
 Das `mimeTypes`-Objekt, das auf derselben Ebene wie das `routes`-Array aufgelistet ist, ermöglicht es Ihnen, [MIME-Typen](https://developer.mozilla.org/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types) zu Dateierweiterungen zuzuordnen.
 
@@ -194,6 +221,9 @@ Die folgenden Überlegungen sind wichtig, wenn Sie mit MIME-Typen arbeiten:
 > Static Web Apps versteht Blazor-Anwendungen und die erwarteten MIME-Typen für die WASM- und DLL-Dateien, für die Sie keine Zuordnungen hinzufügen müssen.
 
 ## <a name="default-headers"></a>Standardheader
+
+> [!IMPORTANT]
+> Die in der Datei *routes.json* definierten Funktionen sind nun veraltet und in der Azure Static Web Apps-[Konfigurationsdatei](./configuration.md#routes) besser implementiert.
 
 Das `defaultHeaders`-Objekt, das auf derselben Ebene wie das `routes`-Array aufgelistet ist, ermöglicht es Ihnen, [Antwortheader](https://developer.mozilla.org/docs/Web/HTTP/Headers) hinzuzufügen, zu ändern oder zu entfernen.
 
@@ -221,6 +251,9 @@ Die folgenden Überlegungen sind wichtig, wenn Sie mit Headern arbeiten:
 - In _routes.json_ definierte Header gelten nur für statischen Inhalt. Sie können Antwortheader eines API-Endpunkts im Code der Funktion anpassen.
 
 ## <a name="example-route-file"></a>Beispiel für eine Routendatei
+
+> [!IMPORTANT]
+> Die in der Datei *routes.json* definierten Funktionen sind nun veraltet und in der Azure Static Web Apps-[Konfigurationsdatei](./configuration.md#routes) besser implementiert.
 
 Im folgenden Beispiel wird veranschaulicht, wie Sie Routenregeln für statischen Inhalt und APIs in der Datei _routes.json_ erstellen. Für einige Routen wird der [Systemordner _/.auth_](authentication-authorization.md) verwendet, um auf Endpunkte für die Authentifizierung zuzugreifen.
 

@@ -8,18 +8,18 @@ ms.date: 12/06/2019
 ms.topic: how-to
 ms.service: iot-central
 manager: philmea
-ms.openlocfilehash: b447f44d0c95693e560fd5bbfbff8c8daeec964e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84a723023bf8614b837ba9783bae987403921c06
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80157686"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "100585484"
 ---
 # <a name="group-multiple-actions-to-run-from-one-or-more-rules"></a>Gruppieren mehrerer Aktionen für die Ausführung über eine oder mehrere Regeln
 
 *Dieser Artikel gilt für Ersteller und Administratoren.*
 
-In Azure IoT Central erstellen Sie Regeln, um Aktionen auszuführen, wenn eine Bedingung erfüllt wird. Regeln basieren auf der Gerätetelemetrie oder Ereignissen. Sie können einen Betreiber beispielsweise benachrichtigen, wenn die Temperatur eines Geräts einen Schwellenwert überschreitet. In diesem Artikel wird die Verwendung von *Aktionsgruppen* in [Azure Monitor](../../azure-monitor/overview.md) zum Anfügen mehrerer Aktionen an eine IoT Central-Regel erläutert. Sie können eine Aktionsgruppe an mehrere Regeln anfügen. Eine [Aktionsgruppe](../../azure-monitor/platform/action-groups.md) ist eine Sammlung von Benachrichtigungseinstellungen, die vom Besitzer eines Azure-Abonnements definiert wurden.
+In Azure IoT Central erstellen Sie Regeln, um Aktionen auszuführen, wenn eine Bedingung erfüllt wird. Regeln basieren auf der Gerätetelemetrie oder Ereignissen. Sie können einen Betreiber beispielsweise benachrichtigen, wenn die Temperatur eines Geräts einen Schwellenwert überschreitet. In diesem Artikel wird die Verwendung von *Aktionsgruppen* in [Azure Monitor](../../azure-monitor/overview.md) zum Anfügen mehrerer Aktionen an eine IoT Central-Regel erläutert. Sie können eine Aktionsgruppe an mehrere Regeln anfügen. Eine [Aktionsgruppe](../../azure-monitor/alerts/action-groups.md) ist eine Sammlung von Benachrichtigungseinstellungen, die vom Besitzer eines Azure-Abonnements definiert wurden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -28,7 +28,7 @@ In Azure IoT Central erstellen Sie Regeln, um Aktionen auszuführen, wenn eine B
 
 ## <a name="create-action-groups"></a>Erstellen von Aktionsgruppen
 
-Sie können [Aktionsgruppen im Azure-Portal erstellen und verwalten](../../azure-monitor/platform/action-groups.md) oder eine [Azure Resource Manager-Vorlage](../../azure-monitor/platform/action-groups-create-resource-manager-template.md) verwenden.
+Sie können [Aktionsgruppen im Azure-Portal erstellen und verwalten](../../azure-monitor/alerts/action-groups.md) oder eine [Azure Resource Manager-Vorlage](../../azure-monitor/alerts/action-groups-create-resource-manager-template.md) verwenden.
 
 Eine Aktionsgruppe hat folgende Funktionen:
 
@@ -60,7 +60,7 @@ In der folgenden Tabelle werden die Informationen zusammengefasst, die an die un
 | Aktionstyp | Ausgabeformat |
 | ----------- | -------------- |
 | Email       | IoT Central-Standardvorlage für E-Mails |
-| sms         | Azure IoT Central-Warnung: ${applicationName} - "${ruleName}" triggered on "${deviceName}" at ${triggerDate} ${triggerTime} (${applicationName} - "${ruleName}" wurde für "${deviceName}" um ${triggerDate} ${triggerTime} ausgelöst.) |
+| SMS         | Azure IoT Central-Warnung: ${applicationName} - "${ruleName}" triggered on "${deviceName}" at ${triggerDate} ${triggerTime} (${applicationName} - "${ruleName}" wurde für "${deviceName}" um ${triggerDate} ${triggerTime} ausgelöst.) |
 | Sprache       | Azure I.O.T Central-Warnung: rule "${ruleName}" triggered on device "${deviceName}" at ${triggerDate} ${triggerTime}, in application ${applicationName} (Regel "${ruleName}" wurde auf dem Gerät "${deviceName}" um ${triggerDate} ${triggerTime}, in der Anwendung ${applicationName} ausgelöst.) |
 | Webhook     | { "schemaId" : "AzureIoTCentralRuleWebhook", "data": {[regular webhook payload](howto-create-webhooks.md#payload)}} |
 

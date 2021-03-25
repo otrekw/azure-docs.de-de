@@ -11,10 +11,10 @@ ms.author: jopapa
 ms.custom: seodec18, devx-track-js
 ms.reviewer: sngun
 ms.openlocfilehash: a3097fa539f460ef5e8ffe73598fa5d55516717e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93097803"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---use-mongoose-to-connect-to-cosmos-db"></a>Erstellen einer Angular-App mit der Azure Cosmos DB-API für MongoDB: Verwenden von Mongoose zum Herstellen einer Verbindung mit Cosmos DB
@@ -87,7 +87,7 @@ Mongoose ist eine ODM-Bibliothek (Object Data Modeling, Objektdatenmodellierung)
     
 1. Erstellen Sie im Explorer-Bereich unter **server** einen Ordner mit dem Namen **environment**. Erstellen Sie im Ordner **environment** eine Datei namens **environment.js**.
 
-1. Aus der Datei „mongo.js“ müssen wir Werte für die Parameter `dbName`, `key` und `cosmosPort` einbinden. Kopieren Sie den folgenden Code in die Datei **environment.js** :
+1. Aus der Datei „mongo.js“ müssen wir Werte für die Parameter `dbName`, `key` und `cosmosPort` einbinden. Kopieren Sie den folgenden Code in die Datei **environment.js**:
 
     ```javascript
     // TODO: replace if yours are different
@@ -137,7 +137,7 @@ Nun müssen Sie das Schema der Daten definieren, die in Azure Cosmos DB gespeich
    * Er erstellt ein neues Schema mit einer ID, einem Namen und einem Spruch.
    * Er erstellt ein Modell mithilfe des Schemas.
    * Er exportiert das Modell. 
-   * Er nennt die Sammlung **Heroes** (anstelle von **Heros** , was der Standardname der Sammlung ist, der auf Mongoose-Pluralnamensregeln basiert).
+   * Er nennt die Sammlung **Heroes** (anstelle von **Heros**, was der Standardname der Sammlung ist, der auf Mongoose-Pluralnamensregeln basiert).
 
    ```javascript
    const mongoose = require('mongoose');

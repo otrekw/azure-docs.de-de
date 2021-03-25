@@ -6,10 +6,10 @@ ms.subservice: change-inventory-management
 ms.date: 12/10/2020
 ms.topic: conceptual
 ms.openlocfilehash: dff314f3c9fb72c565a7c2d522694d533c487895
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100572648"
 ---
 # <a name="manage-change-tracking-and-inventory"></a>Verwalten der Änderungsnachverfolgung und des Bestands
@@ -148,7 +148,7 @@ Führen Sie zum Konfigurieren der Nachverfolgung von Registrierungsschlüsseln a
 
 4. Geben Sie auf der Seite **Windows-Registrierung für Änderungsnachverfolgung hinzufügen** die Informationen zu dem Schlüssel ein, der nachverfolgt werden soll, und wählen Sie dann **Speichern** aus. Die folgende Tabelle definiert die Eigenschaften, die Sie für die Informationen verwenden können. Wenn Sie einen Registrierungspfad angeben, muss es sich um den Schlüssel und nicht um einen Wert handeln.
 
-    |Eigenschaft  |BESCHREIBUNG  |
+    |Eigenschaft  |Beschreibung  |
     |---------|---------|
     |Aktiviert     | „True“, wenn eine Einstellung angewendet wird, andernfalls „False“.        |
     |Item Name     | Anzeigename des nachzuverfolgenden Registrierungsschlüssels.        |

@@ -1,18 +1,14 @@
 ---
 title: Einrichten des Netzwerks
 description: Erfahren Sie mehr über Lösungsarchitektur, Netzwerkvorbereitung, Voraussetzungen und weitere Informationen, die erforderlich sind, um sicherzustellen, dass Sie Ihr Netzwerk erfolgreich für die Arbeit mit Azure Defender für IoT-Appliances einrichten.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
-ms.date: 01/03/2021
+ms.date: 02/18/2021
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: 4ceedf4d05c6f92e5c32da95f8b54fc6c95de01c
-ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
+ms.openlocfilehash: ed75995b7cbc3b051d77942698a5d0d948e6eef0
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100526509"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104781805"
 ---
 # <a name="about-azure-defender-for-iot-network-setup"></a>Azure Defender für IoT: Netzwerkeinrichtung
 
@@ -22,7 +18,7 @@ Azure Defender für IoT bietet kontinuierliche ICS-Bedrohungsüberwachung und Ge
 
 **Defender für die lokale IoT-Verwaltungskonsole**: Die lokale Verwaltungskonsole bietet eine konsolidierte Ansicht aller Netzwerkgeräte. Sie stellt eine Echtzeitansicht der wichtigsten OT- und IoT-Leistungsindikatoren und Warnungen für alle Ihre Einrichtungen bereit. Die enge Integration in Ihre SOC-Workflows und Playbooks ermöglicht eine einfache Priorisierung von Entschärfungsaktivitäten und standortübergreifende Korrelation von Bedrohungen. 
 
-**Defender für IoT für IoT-Portal:** Die Defender for IoT-Anwendung kann Sie beim Kauf von Lösungs-Appliances, bei der Installation und Aktualisierung von Software sowie bei der Aktualisierung von TI-Paketen unterstützen. 
+**Defender für IoT-Portal:** Die Defender für IoT-Anwendung kann Sie beim Kauf von Lösungsappliances, bei der Installation und Aktualisierung von Software sowie bei der Aktualisierung von TI-Paketen unterstützen. 
 
 Dieser Artikel bietet Informationen zu Lösungsarchitektur, Netzwerkvorbereitung, Voraussetzungen und weitere Informationen, die Sie bei der erfolgreichen Einrichtung Ihres Netzwerks für die Arbeit mit Azure Defender für IoT-Appliances unterstützen. Leser, die mit den Informationen in diesem Artikel arbeiten, sollten mit Betrieb und Verwaltung von OT- und IoT-Netzwerken vertraut sein. Beispiele hierfür sind Automatisierungstechniker, Werkleiter, Anbieter von OT-Netzwerkinfrastrukturdiensten, Cybersicherheitsteams, CISOs oder CIOs.
 
@@ -563,7 +559,7 @@ Gehen Sie diese Liste vor der Bereitstellung durch:
 
 Mithilfe einer Übersicht des Industrienetzwerkdiagramms können Sie den richtigen Standort für die Defender für IoT-Ausrüstung bestimmen.
 
-1.  Sehen Sie sich ein globales Netzwerkdiagramm der industriellen OT-Umgebung an. Beispiel:
+1.  Sehen Sie sich ein globales Netzwerkdiagramm der industriellen OT-Umgebung an. Zum Beispiel:
 
     :::image type="content" source="media/how-to-set-up-your-network/ot-global-network-diagram.png" alt-text="Diagramm der industriellen OT-Umgebung für das globale Netzwerk.":::
 
@@ -605,7 +601,7 @@ Mithilfe einer Übersicht des Industrienetzwerkdiagramms können Sie den richtig
 
     Wie lautet die Richtlinie des Anbieters? __________________________________ 
 
-    Beispiel:
+    Zum Beispiel:
 
     - Siemens
 
@@ -695,6 +691,6 @@ Wenden Sie sich an einen Active Directory-Administrator, um eine Active Director
 | Kamera | |
 | Röntgengerät | |
 
-## <a name="see-also"></a>Siehe auch
+## <a name="see-also"></a>Weitere Informationen
 
 [Informationen zur Installation von Defender für IoT](how-to-install-software.md)

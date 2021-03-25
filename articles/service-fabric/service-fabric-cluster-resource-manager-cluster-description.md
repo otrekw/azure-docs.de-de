@@ -7,10 +7,10 @@ ms.date: 07/28/2020
 ms.author: masnider
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 5d27a09f0ff38ec7422636ef0933552aa310c387
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92911765"
 ---
 # <a name="describe-a-service-fabric-cluster-by-using-cluster-resource-manager"></a>Beschreiben eines Service Fabric-Clusters in Azure mithilfe des Clusterressourcen-Managers
@@ -64,7 +64,7 @@ Wie sehen nicht ausgeglichene Domänen aus? Im folgenden Diagramm werden zwei ve
 
 In Azure wird die Zuordnung eines Knotens zu einer bestimmten Fehlerdomäne automatisch vorgenommen. Je nach der Anzahl der Knoten, die Sie bereitstellen, kann es aber dennoch dazu kommen, dass einige Fehlerdomänen mehr Knoten als andere enthalten.
 
-Angenommen, Sie verfügen über fünf Fehlerdomänen im Cluster, stellen für einen Knotentyp ( **NodeType** ) aber sieben Knoten bereit. In diesem Fall verfügen die ersten beiden Fehlerdomänen über eine größere Anzahl von Knoten. Das Problem verschlimmert sich, wenn Sie damit fortfahren, mehr **NodeType** -Instanzen mit nur wenigen Instanzen bereitzustellen. Daher empfiehlt es sich, die Anzahl der Knoten in jedem Knotentyp so festzulegen, dass diese ein Vielfaches der Anzahl der Fehlerdomänen betragen.
+Angenommen, Sie verfügen über fünf Fehlerdomänen im Cluster, stellen für einen Knotentyp (**NodeType**) aber sieben Knoten bereit. In diesem Fall verfügen die ersten beiden Fehlerdomänen über eine größere Anzahl von Knoten. Das Problem verschlimmert sich, wenn Sie damit fortfahren, mehr **NodeType**-Instanzen mit nur wenigen Instanzen bereitzustellen. Daher empfiehlt es sich, die Anzahl der Knoten in jedem Knotentyp so festzulegen, dass diese ein Vielfaches der Anzahl der Fehlerdomänen betragen.
 
 ## <a name="upgrade-domains"></a>Upgradedomänen
 
@@ -204,7 +204,7 @@ Da beide Ansätze Stärken und Schwächen aufweisen, wurde ein adaptiver Ansatz 
 >
 > Bedenken Sie, dass der Clusterressourcen-Manager diesen Ansatz für zustandslose und zustandsbehaftete Dienste verwendet, obwohl der Quorumverlust für zustandslose Dienste nicht relevant ist.
 
-Im Folgenden gehen wir vom vorherigen Beispiel aus, nehmen nun jedoch an, dass sich im Cluster acht Knoten befinden. Der Cluster ist immer noch mit fünf Fehlerdomänen und fünf Upgradedomänen konfiguriert. Auch der **TargetReplicaSetSize** -Wert für einen Dienst, der in diesem Cluster gehostet ist, beträgt nach wie vor fünf.
+Im Folgenden gehen wir vom vorherigen Beispiel aus, nehmen nun jedoch an, dass sich im Cluster acht Knoten befinden. Der Cluster ist immer noch mit fünf Fehlerdomänen und fünf Upgradedomänen konfiguriert. Auch der **TargetReplicaSetSize**-Wert für einen Dienst, der in diesem Cluster gehostet ist, beträgt nach wie vor fünf.
 
 |  | FD0 | FD1 | FD2 | FD3 | FD4 |
 | --- |:---:|:---:|:---:|:---:|:---:|
@@ -225,9 +225,9 @@ Da alle erforderlichen Bedingungen erfüllt sind, nutzt der Clusterressourcen-Ma
 | **UD4** | | | | |R5 |1 |
 | **FDTotal** |2 |1 |1 |0 |1 |- |
 
-Wenn der **TargetReplicaSetSize** -Wert Ihres Diensts beispielsweise auf vier verringert wird, erkennt der Clusterressourcen-Manager diese Änderung. Daraufhin wechselt er wieder zur Logik der „maximalen Differenz“, da **TargetReplicaSetSize** nicht mehr durch die Anzahl der Fehlerdomänen und Upgradedomänen teilbar ist. Das Ergebnis sind Replikatverschiebungen, bei denen die verbleibenden vier Replikate auf die Knoten N1 bis N5 verteilt werden. Auf diese Weise wird die Logik der „maximalen Differenz“ für Fehler- und Upgradedomänen nicht verletzt.
+Wenn der **TargetReplicaSetSize**-Wert Ihres Diensts beispielsweise auf vier verringert wird, erkennt der Clusterressourcen-Manager diese Änderung. Daraufhin wechselt er wieder zur Logik der „maximalen Differenz“, da **TargetReplicaSetSize** nicht mehr durch die Anzahl der Fehlerdomänen und Upgradedomänen teilbar ist. Das Ergebnis sind Replikatverschiebungen, bei denen die verbleibenden vier Replikate auf die Knoten N1 bis N5 verteilt werden. Auf diese Weise wird die Logik der „maximalen Differenz“ für Fehler- und Upgradedomänen nicht verletzt.
 
-Wenn im vorherigen Layout der **TargetReplicaSetSize** -Wert fünf beträgt und N1 aus dem Cluster entfernt wird, beträgt die Anzahl der Upgradedomänen vier. Erneut beginnt der Clusterressourcen-Manager mit der Verwendung der Logik der „maximalen Differenz“, da der **TargetReplicaSetSize** -Wert des Diensts nicht mehr durch die Anzahl der Upgradedomänen teilbar ist. Daher muss Replikat R1 beim erneuten Erstellen auf N4 untergebracht werden, sodass die Einschränkung für die Fehler- und Upgradedomäne nicht verletzt wird.
+Wenn im vorherigen Layout der **TargetReplicaSetSize**-Wert fünf beträgt und N1 aus dem Cluster entfernt wird, beträgt die Anzahl der Upgradedomänen vier. Erneut beginnt der Clusterressourcen-Manager mit der Verwendung der Logik der „maximalen Differenz“, da der **TargetReplicaSetSize**-Wert des Diensts nicht mehr durch die Anzahl der Upgradedomänen teilbar ist. Daher muss Replikat R1 beim erneuten Erstellen auf N4 untergebracht werden, sodass die Einschränkung für die Fehler- und Upgradedomäne nicht verletzt wird.
 
 |  | FD0 | FD1 | FD2 | FD3 | FD4 | UDTotal |
 | --- |:---:|:---:|:---:|:---:|:---:|:---:|
@@ -473,7 +473,7 @@ Der Clusterressourcen-Manager von Service Fabric kann die Namen von Metriken ebe
 
 ## <a name="capacity"></a>Capacity
 
-Wenn Sie den *Lastenausgleich* für alle Ressourcen deaktivieren, kann der Clusterressourcen-Manager von Service Fabric dennoch versuchen sicherzustellen, dass kein Knoten überlastet wird. Das Verwalten von Kapazitätsüberläufen ist möglich, es sei denn, der Cluster ist zu belegt und die Workload ist größer als jeder einzelne Knoten. Die Kapazität ist eine weitere *Einschränkung* , anhand der der Clusterressourcen-Manager ermittelt, wie viele Ressourcen auf einem Knoten verfügbar sind. Auch die verbleibende Kapazität wird für den gesamten Cluster nachverfolgt.
+Wenn Sie den *Lastenausgleich* für alle Ressourcen deaktivieren, kann der Clusterressourcen-Manager von Service Fabric dennoch versuchen sicherzustellen, dass kein Knoten überlastet wird. Das Verwalten von Kapazitätsüberläufen ist möglich, es sei denn, der Cluster ist zu belegt und die Workload ist größer als jeder einzelne Knoten. Die Kapazität ist eine weitere *Einschränkung*, anhand der der Clusterressourcen-Manager ermittelt, wie viele Ressourcen auf einem Knoten verfügbar sind. Auch die verbleibende Kapazität wird für den gesamten Cluster nachverfolgt.
 
 Sowohl die Kapazität als auch der Verbrauch auf Dienstebene werden als Metrik ausgedrückt. Die Metrik kann beispielsweise „ClientConnections“ lauten, und ein Knoten kann für „ClientConnections“ eine Kapazität von 32.768 Verbindungen aufweisen. Anderen Knoten können andere Grenzwerte aufweisen. Ein Dienst, der auf diesem Knoten ausgeführt wird, kann beispielsweise melden, dass aktuell 32.256 Einheiten der Metrik „ClientConnections“ genutzt werden.
 

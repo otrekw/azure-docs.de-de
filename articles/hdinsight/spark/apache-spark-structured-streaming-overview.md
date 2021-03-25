@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/24/2019
-ms.openlocfilehash: 9f92007c271da5b6d2cb8db6c3904a62b114e7c2
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: fd65177fb6202b0396545043c2e63a87c7f01bbb
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98929490"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864600"
 ---
 # <a name="overview-of-apache-spark-structured-streaming"></a>Übersicht zu strukturiertes Apache Spark-Streaming
 
@@ -20,7 +20,7 @@ Anwendungen für strukturiertes Streaming werden auf HDInsight Spark-Clustern au
 
 Structured Streaming erstellt eine Abfrage mit langer Ausführung, in deren Verlauf Sie Vorgänge wie Auswahl, Projektion, Aggregation, Windowing und Verknüpfen der Streamingdatenrahmen mit Verweisdatenrahmen auf die Eingabedaten anwenden. Als Nächstes geben Sie die Ergebnisse mithilfe von benutzerdefiniertem Code an den Dateispeicher (Azure Storage Blob-Instanzen oder Data Lake Storage) oder einen beliebigen Datenspeicher (z.B. SQL-Datenbank oder Power BI) aus. Structured Streaming stellt auch die Ausgabe an die Konsole für lokales Debuggen und ebenso für eine In-Memory-Tabelle bereit, damit Sie die für das Debuggen generierten Daten in HDInsight sehen können.
 
-![Datenstromverarbeitung mit HDInsight und Spark Structured Streaming](./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming.png)
+:::image type="content" source="./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming.png" alt-text="Datenstromverarbeitung mit HDInsight und Spark Structured Streaming" border="false":::
 
 > [!NOTE]  
 > Spark Structured Streaming ersetzt Spark Streaming (DStreams). In Zukunft werden für Structured Streaming Verbesserungen und Wartung geboten, während DStreams nur im Wartungsmodus bleibt. Da Structured Streaming derzeit nicht so vollständig ist wie DStreams, was die einsatzbereiten Features für Quellen und Senken betrifft, bewerten Sie Ihre Anforderungen, um die geeignete Spark-Streamverarbeitungsoption auszuwählen.
@@ -29,7 +29,7 @@ Structured Streaming erstellt eine Abfrage mit langer Ausführung, in deren Verl
 
 Spark Structured Streaming stellt einen Strom von Daten als Tabelle mit unbegrenzter Tiefe dar, d.h. die Tabelle wächst mit neu eintreffenden Daten. Diese *Eingabetabelle* wird durch eine Abfrage mit langer Ausführungszeit kontinuierlich verarbeitet, und die Ergebnisse werden an eine *Ausgabetabelle* gesendet:
 
-![Das Konzept von Structured Streaming](./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming-concept.png)
+:::image type="content" source="./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming-concept.png" alt-text="Das Konzept von Structured Streaming" border="false":::
 
 In Structured Streaming werden die im System eingehenden Daten sofort in einer Eingabetabelle erfasst. Sie schreiben Abfragen (mit Datenrahmen- und Dataset-API), mit denen Vorgänge für diese Eingabetabelle ausgeführt werden. Die Abfrageausgabe erfolgt in einer anderen Tabelle, der *Ergebnistabelle*. Die Ergebnistabelle enthält die Ergebnisse Ihrer Abfrage, aus denen Sie Daten für einen externen Datenspeicher, z.B. eine relationale Datenbank, beziehen. Wann Daten aus der Eingabetabelle verarbeitet werden, wird mit dem *Triggerintervall* festgelegt. Standardmäßig ist das Triggerintervall null (0), also versucht Structured Streaming, die Daten sofort bei Eintreffen zu verarbeiten. In der Praxis bedeutet dies, dass Structured Streaming sofort nach Verarbeitung einer Abfrage mit einer weiteren Verarbeitung neu empfangener Daten beginnt. Sie können den Trigger zur Ausführung in einem Intervall konfigurieren, sodass die Streamingdaten in zeitbasierten Batches verarbeitet werden.
 
@@ -41,7 +41,7 @@ Im Anfügemodus sind nur die Zeilen, die seit der letzten Abfrageausführung der
 
 Stellen Sie sich ein Szenario vor, in dem Sie Telemetriedaten aus Temperatursensoren verarbeiten, z. B. von einem Thermostat. Nehmen Sie an, dass der erste Trigger zum Zeitpunkt 00:01 ein Ereignis für Gerät 1 mit einem Temperaturmesswert von 95 Grad verarbeitet hat. Im ersten Trigger der Abfrage wird nur die Zeile mit dem Zeitpunkt 00:01 in der Ergebnistabelle angezeigt. Zum Zeitpunkt 00:02, wenn ein anderes Ereignis eintrifft, ist die einzige neue Zeile die Zeile mit dem Zeitpunkt 00:02, sodass die Ergebnistabelle nur diese eine Zeile enthält.
 
-![Structured Streaming – Anfügemodus](./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming-append-mode.png)
+:::image type="content" source="./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming-append-mode.png" alt-text="Structured Streaming – Anfügemodus" border="false":::
 
 Bei Verwendung des Anfügemodus würde die Abfrage Projektionen anwenden (Auswählen der Spalten von Interesse), filtern (nur Auswählen der Zeilen, die bestimmten Bedingungen entsprechen) oder verknüpfen (die Daten mit Daten aus einer statischen Nachschlagetabelle erweitern). Mit dem Anfügemodus ist es einfach, nur die relevanten neuen Datenpunkte in den externen Speicher zu pushen.
 
@@ -51,7 +51,7 @@ Stellen Sie sich das gleiche Szenario vor, dieses Mal jedoch im vollständigen M
 
 Nehmen Sie an, dass bereits die Daten von fünf Sekunden verarbeitet sind, und es an der Zeit ist, die Daten für die sechste Sekunde zu verarbeiten. Die Eingabetabelle enthält Ereignisse für die Zeitpunkte 00:01 und 00:03. Das Ziel dieser Beispielabfrage besteht darin, alle fünf Sekunden die Durchschnittstemperatur des Geräts zu ermitteln. Bei der Implementierung dieser Abfrage wird ein Aggregat angewandt, das alle Werte entgegennimmt, die innerhalb jedes 5-Sekunden-Fensters liegen, die Durchschnittstemperatur ermittelt und eine Zeile für die Durchschnittstemperatur dieses Intervalls erzeugt. Am Ende des ersten 5-Sekunden-Fensters gibt es zwei Tupel: (00:01, 1, 95) und (00:03, 1, 98). Für das Fenster 00:00-00:05 erstellt die Aggregation ein Tupel mit der Durchschnittstemperatur 96,5 Grad. Im nächsten 5-Sekunden-Fenster gibt es nur einen Datenpunkt beim Zeitpunkt 00:06, sodass die resultierende Durchschnittstemperatur 98 Grad beträgt. Zum Zeitpunkt 00:10 enthält die Ergebnistabelle im vollständigen Modus die Zeilen für beide Fenster 00:00-00:05 und 00:05 00:10, da die Abfrage alle aggregierten Zeilen ausgibt, nicht nur die neuen. Aus diesem Grund wächst die Ergebnistabelle weiter an, indem neue Fenster hinzugefügt werden.
 
-![Structured Streaming – vollständiger Modus](./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming-complete-mode.png)
+:::image type="content" source="./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming-complete-mode.png" alt-text="Structured Streaming – vollständiger Modus" border="false":::
 
 Nicht alle Abfragen im vollständigen Modus bewirken, dass die Tabelle unbegrenzt wächst.  Stellen Sie sich vor, im vorherigen Beispiel sei die Durchschnittstemperatur nicht nach dem Zeitfenster, sondern der Geräte-ID berechnet worden. Die Ergebnistabelle enthält eine feste Anzahl von Zeilen (eine pro Gerät) mit der Durchschnittstemperatur für das Gerät aus allen Datenpunkten, die von diesem Gerät empfangen wurden. Wenn neue Temperaturen empfangen werden, wird die Ergebnistabelle aktualisiert, damit die Durchschnittswerte in der Tabelle immer aktuell sind.
 
@@ -111,9 +111,9 @@ Starten Sie die Streamingabfrage, und führen Sie sie aus, bis ein Beendigungssi
 val query = streamingOutDF.start() 
 ``` 
 
-### <a name="view-the-results"></a>Zeigen Sie die Ergebnisse an
+### <a name="view-the-results"></a>Anzeigen der Ergebnisse
 
-Während die Abfrage ausgeführt wird, können`temps`{2}Sie in derselben SparkSession eine SparkSQL-Abfrage der {3}-Tabelle ausführen, in der die Ergebnisse der Abfrage gespeichert werden.
+Während die Abfrage ausgeführt wird, könnenSie in derselben SparkSession eine SparkSQL-Abfrage der -Tabelle ausführen, in der die Ergebnisse der Abfrage gespeichert werden.
 
 ```sql
 select * from temps
@@ -141,7 +141,7 @@ Um Resilienz und Fehlertoleranz zu gewährleisten, stellt das Structured Streami
 
 Sie erstellen eine Spark-Streaming-Anwendung in der Regel lokal in einer JAR-Datei und stellen sie dann unter HDInsight für Spark bereit, indem Sie die JAR-Datei in den Standardspeicher kopieren, der an Ihren HDInsight-Cluster angefügt ist. Sie können Ihre Anwendung mit den [Apache LIVY](https://livy.incubator.apache.org/)-REST-APIs, die in Ihrem Cluster verfügbar sind, mit einem POST-Vorgang starten. Der POST-Textkörper enthält ein JSON-Dokument, das Folgendes angibt: den Pfad zu Ihrer JAR-Datei, den Namen der Klasse, deren Hauptmethode die Streaming-Anwendung definiert und ausführt, und optional die Ressourcenanforderungen des Auftrags (z.B. die Anzahl der Executors, Speicher und Kerne) sowie alle Konfigurationseinstellungen, die Ihr Anwendungscode erfordert.
 
-![Bereitstellen von Spark-Streaming-Anwendungen](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-livy.png)
+:::image type="content" source="./media/apache-spark-streaming-overview/hdinsight-spark-streaming-livy.png" alt-text="Bereitstellen von Spark-Streaming-Anwendungen" border="false":::
 
 Der Status aller Anwendungen kann auch mit einer GET-Anforderung an einem LIVY-Endpunkt überprüft werden. Außerdem können Sie eine ausgeführte Anwendung durch das Senden einer DELETE-Anforderung an den LIVY-Endpunkt beenden. Weitere Informationen zur LIVY-API finden Sie unter [Übermitteln von Remoteaufträgen mit Apache LIVY](apache-spark-livy-rest-interface.md)
 

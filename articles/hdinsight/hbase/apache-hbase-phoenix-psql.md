@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
-ms.openlocfilehash: d56c9b33d53be0e30769aef8934a2dbf43d06867
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: d1ddf69acda442212500200eb6dc326dcbcb3c1b
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944833"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867796"
 ---
 # <a name="bulk-load-data-into-apache-phoenix-using-psql"></a>Massenladen von Daten in Apache Phoenix mithilfe von psql
 
@@ -26,11 +26,11 @@ Das Massenladen mit MapReduce wird für deutlich größere Datenvolumen verwende
 
 Stellen Sie vor Beginn des Datenladevorgangs sicher, dass Phoenix aktiviert ist und die Einstellungen für den Abfragetimeout wie erwartet festgelegt wurden.  Greifen Sie auf das [Apache Ambari](https://ambari.apache.org/)-Dashboard Ihres HDInsight-Clusters zu, und wählen Sie „HBase“ und dann die Konfigurationsregisterkarte aus.  Scrollen Sie nach unten, um zu überprüfen, ob Apache Phoenix wie hier dargestellt auf `enabled` festgelegt ist:
 
-![Apache Phoenix – Einstellungen für HDInsight-Cluster](./media/apache-hbase-phoenix-psql/apache-ambari-phoenix.png)
+:::image type="content" source="./media/apache-hbase-phoenix-psql/apache-ambari-phoenix.png" alt-text="Apache Phoenix – Einstellungen für HDInsight-Cluster" border="true":::
 
 ### <a name="use-psql-to-bulk-load-tables"></a>Verwenden von `psql` für das Massenladen von Tabellen
 
-1. Erstellen Sie eine Datei mit dem Namen `createCustomersTable.sql`, und kopieren Sie den folgenden Code in die Datei. Speichern und schließen Sie die Datei anschließend.
+1. Erstellen Sie eine Datei mit dem Namen `createCustomersTable.sql`, und kopieren Sie den folgenden Code in die Datei. Speichern und schließen Sie dann die Datei.
 
     ```sql
     CREATE TABLE Customers (
@@ -41,13 +41,13 @@ Stellen Sie vor Beginn des Datenladevorgangs sicher, dass Phoenix aktiviert ist 
         Country varchar);
     ```
 
-1. Erstellen Sie eine Datei mit dem Namen `listCustomers.sql`, und kopieren Sie den folgenden Code in die Datei. Speichern und schließen Sie die Datei anschließend.
+1. Erstellen Sie eine Datei mit dem Namen `listCustomers.sql`, und kopieren Sie den folgenden Code in die Datei. Speichern und schließen Sie dann die Datei.
 
     ```sql
     SELECT * from Customers;
     ```
 
-1. Erstellen Sie eine Datei mit dem Namen `customers.csv`, und kopieren Sie den folgenden Code in die Datei. Speichern und schließen Sie die Datei anschließend.
+1. Erstellen Sie eine Datei mit dem Namen `customers.csv`, und kopieren Sie den folgenden Code in die Datei. Speichern und schließen Sie dann die Datei.
 
     ```txt
     1,Samantha,260000.0,18,US
@@ -55,7 +55,7 @@ Stellen Sie vor Beginn des Datenladevorgangs sicher, dass Phoenix aktiviert ist 
     3,Anton,550150.0,42,Norway
     ```
 
-1. Erstellen Sie eine Datei mit dem Namen `customers2.csv`, und kopieren Sie den folgenden Code in die Datei. Speichern und schließen Sie die Datei anschließend.
+1. Erstellen Sie eine Datei mit dem Namen `customers2.csv`, und kopieren Sie den folgenden Code in die Datei. Speichern und schließen Sie dann die Datei.
 
     ```txt
     4,Nicolle,180000.0,22,US

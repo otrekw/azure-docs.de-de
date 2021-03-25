@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/11/2020
 author: dcstwh
 ms.author: weetok
-ms.openlocfilehash: a52fad39e19bdf2edf110990c8f0e392ec5803ce
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 1cb4fcaa51e1a59ee9d09eb178faf9b250173709
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100377498"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101740023"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Überwachen einer Integrationslaufzeit in Azure Data Factory
 
@@ -224,7 +224,17 @@ Zur Überwachung Ihrer Azure-SSIS IR im Azure-Portal wechseln Sie in der ADF-Ben
 
 ![Überwachen aller Integration Runtimes](media/monitor-integration-runtime/monitor-integration-runtimes.png)
 
-Wählen Sie als Nächstes den Namen Ihrer Azure-SSIS IR aus, um die Überwachungsseite zu öffnen. Hier werden alle allgemeinen/knotenspezifischen Eigenschaften und Status angezeigt. Auf dieser Seite finden Sie verschiedene Informations-/Funktionskacheln abhängig von Ihrer Konfiguration der allgemeinen und erweiterten Einstellungen sowie der Bereitstellungseinstellungen für Ihre Azure-SSIS IR.  Die Informationskacheln **TYP** und **REGION** zeigen den Typ bzw. die Region Ihrer Azure-SSIS IR an. Die Informationskachel **KNOTENGRÖSSE** zeigt die SKU (SSIS edition_VM tier_VM-Reihe), die Anzahl der CPU-Kerne und die Größe des RAM pro Knoten für Ihre Azure-SSIS IR an. Die Informationskachel **AUSGEFÜHRTE/ANGEFORDERTE KNOTEN** vergleicht die Anzahl der aktuell ausgeführten Knoten mit der Gesamtzahl der zuvor für Ihre Azure-SSIS IR angeforderten Knoten. Die Funktionskacheln werden im Folgenden näher beschrieben.
+Wählen Sie als Nächstes den Namen Ihrer Azure-SSIS IR aus, um die Überwachungsseite zu öffnen. Hier werden alle allgemeinen/knotenspezifischen Eigenschaften und Status angezeigt. Auf dieser Seite finden Sie verschiedene Informations-/Funktionskacheln abhängig von Ihrer Konfiguration der allgemeinen und erweiterten Einstellungen sowie der Bereitstellungseinstellungen für Ihre Azure-SSIS IR.
+
+Die Informationskacheln **TYP** und **REGION** zeigen den Typ bzw. die Region Ihrer Azure-SSIS IR an.
+
+Die Informationskachel **KNOTENGRÖSSE** zeigt die SKU (SSIS edition_VM tier_VM-Reihe), die Anzahl der CPU-Kerne und die Größe des RAM pro Knoten für Ihre Azure-SSIS IR an. 
+
+Die Informationskachel **AUSGEFÜHRTE/ANGEFORDERTE KNOTEN** vergleicht die Anzahl der aktuell ausgeführten Knoten mit der Gesamtzahl der zuvor für Ihre Azure-SSIS IR angeforderten Knoten.
+
+Die Informationskachel **DUAL STANDBY-PAAR/ROLLE** zeigt den Namen des Azure-SSIS IR-Paars (Dual Standby), das synchron mit der Azure SQL-Datenbank-/Managed Instance-Failovergruppe für Business Continuity & Disaster Recovery ausgeführt wird, und die aktuelle primäre/sekundäre Rolle der Azure-SSIS IR an. Bei einem SSISDB-Failover werden die Rollen der primären und sekundären Azure-SSIS IR vertauscht (siehe [Konfigurieren von Azure-SSIS Integration Runtime für Business Continuity & Disaster Recovery (BCDR)](./configure-bcdr-azure-ssis-integration-runtime.md)).
+
+Die Funktionskacheln werden im Folgenden näher beschrieben.
 
 ![Überwachen Ihrer Azure-SSIS IR](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime.png)
 
@@ -254,13 +264,13 @@ Wenn Sie Ihre Azure-SSIS IR mit einem VNet verknüpfen, wird die Kachel **VNET/S
 
 Auf der Kachel **DIAGNOSE DER KONNEKTIVITÄT** der Azure-SSIS IR-Überwachungsseite können Sie den Link **Verbindung testen** auswählen, um ein Fenster aufzurufen, in dem Sie die Verbindungen zwischen der Azure-SSIS IR und entsprechenden Paket-/Konfigurations-/Datenspeichern sowie Verwaltungsdiensten anhand des vollqualifizierter Domänennamens (Fully Qualified Domain Name, FQDN) oder der IP-Adresse und dem jeweiligen Port prüfen können (Informationen hierzu finden Sie unter [Testen der Verbindungen von der Azure-SSIS IR](./ssis-integration-runtime-diagnose-connectivity-faq.md)).
 
-![Screenshot der Seite, auf der Sie die Verbindungen zwischen Azure-SSIS IR und relevanten Paketen/Konfigurationen/Datenspeichern testen können](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-diagnose.png)
+![Überwachen Ihrer Azure-SSIS IR – Kachel „DIAGNOSE“](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-diagnose.png)
 
 #### <a name="static-public-ip-addresses-tile"></a>Kachel „STATISCHE ÖFFENTLICHE IP-ADRESSEN“
 
 Wenn Sie Ihre eigenen statischen öffentlichen IP-Adressen für Azure-SSIS IR verwenden, wird die Kachel **STATISCHE ÖFFENTLICHE IP-ADRESSEN** auf Ihrer Azure-SSIS IR-Überwachungsseite angezeigt (siehe [Nutzung der eigenen statischen öffentlichen IP-Adressen für Azure-SSIS IR](./join-azure-ssis-integration-runtime-virtual-network.md#publicIP)). Auf dieser Kachel können Sie Links auswählen, die Ihre erste/zweite statische öffentliche IP-Adresse für Azure-SSIS IR bezeichnen, um ein Fenster zu öffnen, in dem Sie deren Ressourcen-ID (`/subscriptions/YourAzureSubscripton/resourceGroups/YourResourceGroup/providers/Microsoft.Network/publicIPAddresses/YourPublicIPAddress`) aus einem Textfeld kopieren können. Im Popupfenster können Sie auch den Link  **für Ihre erste/zweite statische öffentliche IP-Adresse anzeigen** auswählen, um Ihre erste/zweite statische öffentliche IP-Adresse im Azure-Portal zu verwalten.
 
-![Screenshot der Seite, auf der Sie Ihre erste/zweite statische öffentliche IP-Adresse festlegen können](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-static.png)
+![Überwachen der Azure-SSIS IR – Kachel „STATISCHE ÖFFENTLICHE IP-ADRESSEN“](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-static.png)
 
 #### <a name="package-stores-tile"></a>Kachel „PAKETSPEICHER“
 
@@ -272,7 +282,7 @@ Wenn Sie Ihr Paketbereitstellungsmodell dort verwenden, wo Ihre Pakete in der Da
 
 Wenn beim Starten/Beenden/Warten/Upgraden der Azure-SSIS IR Probleme auftreten, wird auf der Azure-SSIS IR-Überwachungsseite zusätzlich die Kachel **FEHLER** angezeigt. Auf dieser Kachel können Sie einen Link auswählen, der die Anzahl der von der Azure-SSIS IR generierten Fehler angibt, um ein Fenster aufzurufen, in dem diese Fehler mit mehr Details angezeigt werden. Diese können Sie kopieren, um in unserem Leitfaden zur Problembehandlung (siehe [Problembehandlung bei der Azure-SSIS IR](./ssis-integration-runtime-management-troubleshoot.md)) nach der empfohlenen Lösung zu suchen.
 
-![Überwachen Ihrer Azure-SSIS IR – Kachel „DIAGNOSE“](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-error.png)
+![Überwachen der Azure-SSIS IR – Kachel „FEHLER“](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-error.png)
 
 ### <a name="monitor-the-azure-ssis-integration-runtime-with-azure-monitor"></a>Überwachen der Azure-SSIS Integration Runtime mit Azure Monitor
 

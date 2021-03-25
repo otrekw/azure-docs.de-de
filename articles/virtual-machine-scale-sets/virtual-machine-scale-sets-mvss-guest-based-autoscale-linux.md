@@ -9,18 +9,18 @@ ms.subservice: autoscale
 ms.date: 04/26/2019
 ms.reviewer: avverma
 ms.custom: avverma
-ms.openlocfilehash: 549f8fbc1e3acf435011f223faeb5b8240f0c55d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0605780651e1a3c54ae53d13a3f99e1124fa76db
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87080419"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "100585002"
 ---
 # <a name="autoscale-using-guest-metrics-in-a-linux-scale-set-template"></a>Autoskalierung mit Gastmetriken in einer Linux-Skalierungsgruppenvorlage
 
 Es gibt zwei allgemeine Arten von Metriken in Azure, die aus VMs und Skalierungsgruppen erfasst werden: Hostmetriken und Gastmetriken. Grundsätzlich gilt: Wenn Sie standardmäßige CPU-, Datenträger- und Netzwerkmetriken verwenden möchten, sind Hostmetriken eine gute Wahl. Wenn Sie jedoch eine größere Auswahl von Metriken benötigen, sind Gastmetriken wahrscheinlich besser geeignet.
 
-Hostmetriken setzen keine zusätzlichen Einstellungen voraus, weil sie vom virtuellen Hostcomputer gesammelt werden, während für Gastmetriken die [Windows Azure Diagnostics-Erweiterung](../virtual-machines/extensions/diagnostics-template.md) oder die [Linux Azure Diagnostics-Erweiterung](../virtual-machines/extensions/diagnostics-linux.md) auf dem virtuellen Gastcomputer installiert werden muss. Ein häufiger Grund für die Verwendung von Gastmetriken anstatt von Hostmetriken ist, dass Gastmetriken eine größere Auswahl an Metriken bieten als Hostmetriken. Ein Beispiel dafür sind Speicherverbrauchsmetriken, die nur über Gastmetriken zur Verfügung stehen. Die unterstützten Hostmetriken finden Sie [hier](../azure-monitor/platform/metrics-supported.md), und häufig verwendete Gastmetriken finden Sie [hier](../azure-monitor/platform/autoscale-common-metrics.md). In diesem Artikel wird gezeigt, wie Sie die [Vorlage für die grundlegende Skalierungsgruppe](virtual-machine-scale-sets-mvss-start.md) verändern müssen, um bei Linux-Skalierungsgruppen auf Gastmetriken basierende Autoskalierungsregeln verwenden zu können.
+Hostmetriken setzen keine zusätzlichen Einstellungen voraus, weil sie vom virtuellen Hostcomputer gesammelt werden, während für Gastmetriken die [Windows Azure Diagnostics-Erweiterung](../virtual-machines/extensions/diagnostics-template.md) oder die [Linux Azure Diagnostics-Erweiterung](../virtual-machines/extensions/diagnostics-linux.md) auf dem virtuellen Gastcomputer installiert werden muss. Ein häufiger Grund für die Verwendung von Gastmetriken anstatt von Hostmetriken ist, dass Gastmetriken eine größere Auswahl an Metriken bieten als Hostmetriken. Ein Beispiel dafür sind Speicherverbrauchsmetriken, die nur über Gastmetriken zur Verfügung stehen. Die unterstützten Hostmetriken finden Sie [hier](../azure-monitor/essentials/metrics-supported.md), und häufig verwendete Gastmetriken finden Sie [hier](../azure-monitor/autoscale/autoscale-common-metrics.md). In diesem Artikel wird gezeigt, wie Sie die [Vorlage für die grundlegende Skalierungsgruppe](virtual-machine-scale-sets-mvss-start.md) verändern müssen, um bei Linux-Skalierungsgruppen auf Gastmetriken basierende Autoskalierungsregeln verwenden zu können.
 
 ## <a name="change-the-template-definition"></a>Ändern der Vorlagendefinition
 
@@ -105,7 +105,7 @@ Fügen Sie im nächsten Schritt der Skalierungsgruppe `extensionProfile` die Dia
        }
 ```
 
-Fügen Sie schließlich eine `autoscaleSettings`-Ressource hinzu, um basierend auf diesen Metriken die automatische Skalierung konfigurieren zu können. Diese Ressource verfügt über eine `dependsOn`-Klausel, die auf die Skalierungsgruppe verweist. So wird vor dem Autoskalierungsversuch sichergestellt, dass die Skalierungsgruppe existiert. Wenn Sie eine andere Metrik für die automatische Skalierung auswählen, würden Sie den `counterSpecifier` aus der Konfiguration der Diagnoseerweiterung als `metricName` in der Konfiguration der automatischen Skalierung verwenden. Weitere Informationen über das Konfigurieren der Autoskalierung finden Sie in [Bewährte Methoden für die automatische Skalierung](../azure-monitor/platform/autoscale-best-practices.md) und der Referenzdokumentation der [Azure Monitor REST-API](/rest/api/monitor/autoscalesettings).
+Fügen Sie schließlich eine `autoscaleSettings`-Ressource hinzu, um basierend auf diesen Metriken die automatische Skalierung konfigurieren zu können. Diese Ressource verfügt über eine `dependsOn`-Klausel, die auf die Skalierungsgruppe verweist. So wird vor dem Autoskalierungsversuch sichergestellt, dass die Skalierungsgruppe existiert. Wenn Sie eine andere Metrik für die automatische Skalierung auswählen, würden Sie den `counterSpecifier` aus der Konfiguration der Diagnoseerweiterung als `metricName` in der Konfiguration der automatischen Skalierung verwenden. Weitere Informationen über das Konfigurieren der Autoskalierung finden Sie in [Bewährte Methoden für die automatische Skalierung](../azure-monitor/autoscale/autoscale-best-practices.md) und der Referenzdokumentation der [Azure Monitor REST-API](/rest/api/monitor/autoscalesettings).
 
 ```diff
 +    },

@@ -4,10 +4,10 @@ description: Erfahren Sie, wie Sie mit Azure DevTest Labs ein vorhandenes virtue
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 21fe23b6be6fdc924c5502ff97f9c03a3f3e759d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87283553"
 ---
 # <a name="configure-a-virtual-network-in-azure-devtest-labs"></a>Konfigurieren eines virtuellen Netzwerks in Azure DevTest Labs
@@ -28,7 +28,7 @@ Die folgenden Schritte führen Sie durch das Hinzufügen eines vorhandenen virtu
 
     ![Zugreifen auf die Konfiguration und die Richtlinien des Labs](./media/devtest-lab-configure-vnet/policies-menu.png)
 1. Wählen Sie im Abschnitt **EXTERNE RESSOURCEN** die Option **Virtuelle Netzwerke** aus. Es wird eine Liste der virtuellen Netzwerke angezeigt, die für das aktuelle Lab konfiguriert wurden, und das für Ihr Lab erstellte virtuelle Standardnetzwerk wird ebenfalls angezeigt. 
-1. Wählen Sie **+ Hinzufügen**.
+1. Klicken Sie auf **+ Hinzufügen**.
    
     ![Fügen Sie Ihrem Lab ein vorhandenes virtuelles Netzwerk hinzu.](./media/devtest-lab-configure-vnet/lab-settings-vnet-add.png)
 1. Wählen Sie im Bereich **Virtuelles Netzwerk** die Option **[Virtuelles Netzwerk auswählen]** aus.

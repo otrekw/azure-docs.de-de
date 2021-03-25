@@ -8,10 +8,10 @@ author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 05/30/2019
 ms.openlocfilehash: 5b4aadc506b2f4a251ccef5e9488066b609ba5a5
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93130526"
 ---
 # <a name="company-work-accounts-and-partner-center"></a>Geschäftskonten und Partner Center
@@ -39,8 +39,8 @@ Führen Sie die folgenden Schritte aus, um ein neues Geschäftskonto für Ihr Un
 
 1. Melden Sie sich beim [Microsoft Azure-Portal](https://portal.azure.com)an.
 2. Wählen Sie im linken Navigationsbereich **Azure Active Directory** -> **Benutzer** aus.
-3. Wählen Sie **Neuer Benutzer** aus, und erstellen Sie ein neues Azure-Geschäftskonto, indem Sie einen Namen und eine E-Mail-Adresse eingeben. Stellen Sie sicher, dass die **Verzeichnisrolle** auf **Benutzer** festgelegt ist, und aktivieren Sie im unteren Bereich das Kontrollkästchen **Kennwort anzeigen** , um das automatisch generierte Kennwort anzuzeigen und zu notieren.
-4. Klicken Sie auf **Erstellen** , um den neuen Benutzer zu speichern.
+3. Wählen Sie **Neuer Benutzer** aus, und erstellen Sie ein neues Azure-Geschäftskonto, indem Sie einen Namen und eine E-Mail-Adresse eingeben. Stellen Sie sicher, dass die **Verzeichnisrolle** auf **Benutzer** festgelegt ist, und aktivieren Sie im unteren Bereich das Kontrollkästchen **Kennwort anzeigen**, um das automatisch generierte Kennwort anzuzeigen und zu notieren.
+4. Klicken Sie auf **Erstellen**, um den neuen Benutzer zu speichern.
 
 Die E-Mail-Adresse für das Benutzerkonto muss ein verifizierter Domänenname in Ihrem Verzeichnis sein. Wählen Sie im linken Navigationsmenü **Azure Active Directory** -> **Benutzerdefinierte Domänennamen** aus, um alle verifizierten Domänennamen in Ihrem Verzeichnis aufzulisten.
 

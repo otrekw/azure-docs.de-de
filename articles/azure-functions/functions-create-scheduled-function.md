@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.date: 04/16/2020
 ms.custom: mvc, cc996988-fb4f-47
 ms.openlocfilehash: 14d918cc41f49b954f5cabf48572db5df829fd10
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98035188"
 ---
 # <a name="create-a-function-in-the-azure-portal-that-runs-on-a-schedule"></a>Erstellen einer Funktion im Azure-Portal, die gemäß einem Zeitplan ausgeführt wird
@@ -46,7 +46,7 @@ Ihre neue Funktions-App ist einsatzbereit. Nun erstellen Sie eine Funktion in de
 
     :::image type="content" source="./media/functions-create-scheduled-function/function-configure-timer-trigger.png" alt-text="Screenshot: Seite „Neue Funktion“ mit ausgewählter Vorlage „Zeitgebertrigger“" border="true":::
     
-    | Einstellung | Vorgeschlagener Wert | Beschreibung |
+    | Einstellung | Vorgeschlagener Wert | BESCHREIBUNG |
     |---|---|---|
     | **Name** | Standard | Definiert den Namen der Funktion mit Auslösung per Timer |
     | **Zeitplan** | 0 \*/1 \* \* \* \* | Ein sechs Felder umfassender [CRON-Ausdruck](functions-bindings-timer.md#ncrontab-expressions), der die minütliche Ausführung der Funktion festlegt. |

@@ -3,12 +3,12 @@ title: Zertifikatbasierte X. 509-Authentifizierung in einem Service Fabric-Clust
 description: Erfahren Sie mehr über zertifikatbasierte Authentifizierung in Service Fabric-Clustern und wie Sie zertifikatbezogene Probleme erkennen, verringern und beheben können.
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: 8af0246e0e576f9877c4c5e3b1f1a4314ae29827
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 2d94e5cc78afbabde38eb38e0c4f89381bd67167
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901248"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101729690"
 ---
 # <a name="x509-certificate-based-authentication-in-service-fabric-clusters"></a>Zertifikatbasierte X. 509-Authentifizierung in einem Service Fabric-Cluster
 
@@ -182,7 +182,7 @@ Es wurde bereits erwähnt, dass die Sicherheitseinstellungen eines Service Fabri
 
 Wie bereits erwähnt, impliziert Zertifikatvalidierung immer das Erstellen und Auswerten der Zertifikatkette. Für von einer Zertifizierungsstelle ausgestellte Zertifikate umfasst dieser offenbar einfache Aufruf der Betriebssystem-API in der Regel mehrere ausgehende Aufrufe verschiedener Endpunkte der ausstellenden PKI, das Zwischenspeichern von Antworten usw. Angesichts der Häufigkeit von Zertifikatsvalidierungsaufrufen in einem Service Fabric-Cluster können Probleme an den Endpunkten der PKI zu einer reduzierten Verfügbarkeit des Clusters oder zu einem völligen Ausfall führen. Obwohl die ausgehenden Aufrufe nicht unterdrückt werden können (weitere Informationen dazu finden Sie weiter unten im Abschnitt mit häufig gestellten Fragen), können die folgenden Einstellungen verwendet werden, um Validierungsfehler, die durch fehlerhafte CRL-Aufrufe verursacht werden, zu maskieren.
 
-  * CrlCheckingFlag: Im Abschnitt „Security“ wird die Zeichenfolge in UINT konvertiert. Der Wert dieser Einstellung wird von Service Fabric verwendet, um Fehler im Zertifikatskettenstatus durch Änderung des Verhaltens der Kettenerstellung zu maskieren. Er wird an den Win32 CryptoAPI-Aufruf [CertGetCertificateChain](/windows/win32/api/wincrypt/nf-wincrypt-certgetcertificatechain) als Parameter „dwFlags“ übergeben und kann auf jede gültige Kombination von Flags festgelegt werden, die von der Funktion angenommen wird. Durch den Wert 0 wird die Service Fabric-Runtime gezwungen, alle Vertrauensstatusfehler zu ignorieren. Dies wird nicht empfohlen, da die Verwendung zu einem erheblichen Sicherheitsrisiko führen würde. Der Standardwert ist 0x40000000 (CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT).
+  * CrlCheckingFlag: Die Zeichenfolge im Abschnitt „Security“ wurde in UINT konvertiert. Der Wert dieser Einstellung wird von Service Fabric verwendet, um Fehler im Zertifikatskettenstatus durch Änderung des Verhaltens der Kettenerstellung zu maskieren. Er wird an den Win32 CryptoAPI-Aufruf [CertGetCertificateChain](/windows/win32/api/wincrypt/nf-wincrypt-certgetcertificatechain) als Parameter „dwFlags“ übergeben und kann auf jede gültige Kombination von Flags festgelegt werden, die von der Funktion angenommen wird. Durch den Wert 0 wird die Service Fabric-Runtime gezwungen, alle Vertrauensstatusfehler zu ignorieren. Dies wird nicht empfohlen, da die Verwendung zu einem erheblichen Sicherheitsrisiko führen würde. Der Standardwert ist 0x40000000 (CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT).
 
   Verwendungsmöglichkeiten: für lokale Tests mit selbstsignierten Zertifikaten oder Entwicklerzertifikaten, die nicht vollständig ausgebildet sind bzw. nicht über eine geeignete Public Key-Infrastruktur zur Unterstützung der Zertifikate verfügen. Kann auch während des Übergangs zwischen PKIs als Risikominderung in Air Gap-Umgebungen verwendet werden.
 

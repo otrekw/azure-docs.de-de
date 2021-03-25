@@ -8,10 +8,10 @@ ms.topic: reference
 ms.date: 11/19/2020
 ms.author: jlian
 ms.openlocfilehash: 5f0af7d6bf16a05fad1ca9df5db1729abd088010
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96603053"
 ---
 # <a name="iot-hub-data-plane-mqtt-5-api-reference"></a>MQTT 5-API-Referenz auf IoT Hub-Datenebene

@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: df6137e4e00ebd089ef7fb5efa163a513fb30728
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98061194"
 ---
 Beim Einrichten der Azure-Ressourcen für diese Schnellstartanleitung wird ein kurzes Video eines Parkplatzes auf die Linux-VM in Azure kopiert, die als IoT Edge-Gerät verwendet wird. Diese Videodatei wird zum Simulieren eines Livestreams für dieses Tutorial verwendet.

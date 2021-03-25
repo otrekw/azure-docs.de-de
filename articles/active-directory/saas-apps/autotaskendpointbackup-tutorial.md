@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 1/19/2019
 ms.author: jeedes
 ms.openlocfilehash: 349a77d2f2cd5e1c492de63919d84efb436a51a3
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97673697"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-autotask-endpoint-backup"></a>Tutorial: Azure Active Directory-Integration in Autotask Endpoint Backup
@@ -41,7 +41,7 @@ Um die Azure AD-Integration in Autotask Endpoint Backup konfigurieren zu können
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-* Autotask Endpoint Backup unterstützt **IDP-initiiertes**  einmaliges Anmelden.
+* Autotask Endpoint Backup unterstützt **IDP-initiiertes** einmaliges Anmelden.
 
 ## <a name="adding-autotask-endpoint-backup-from-the-gallery"></a>Hinzufügen von Autotask Endpoint Backup aus dem Katalog
 
@@ -73,10 +73,10 @@ Damit einmaliges Anmelden funktioniert, muss zwischen einem Azure AD-Benutzer un
 Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD mit Autotask Endpoint Backup zu konfigurieren und zu testen:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-2. **[Konfigurieren des einmaligen Anmeldens für Autotask Endpoint Backup](#configure-autotask-endpoint-backup-single-sign-on)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
+2. **[Konfigurieren des einmaligen Anmeldens für Autotask Endpoint Backup](#configure-autotask-endpoint-backup-single-sign-on)**, um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
 3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
 4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Erstellen eines Autotask Endpoint Backup-Testbenutzers](#create-autotask-endpoint-backup-test-user)** , um eine Entsprechung für Britta Simon in Autotask Endpoint Backup zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
+5. **[Erstellen eines Autotask Endpoint Backup-Testbenutzers](#create-autotask-endpoint-backup-test-user)**, um eine Entsprechung für Britta Simon in Autotask Endpoint Backup zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
 6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD

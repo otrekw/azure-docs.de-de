@@ -13,16 +13,16 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f92625131a35dc91c860923ec6523c189830f65
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: bab8e8c6dfb944e496c636d53217e63175be9fbc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102552149"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104587847"
 ---
 # <a name="securing-service-principals"></a>Sichern von Dienstprinzipalen
 
-Bei einem Azure AD-[Dienstprinzipal](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals) (Azure Active Directory) handelt es sich um die lokale Darstellung eines Anwendungsobjekts in einem einzelnen Mandanten oder Verzeichnis.  ‎Er dient als Identität der Anwendungsinstanz. Mit Dienstprinzipalen wird definiert, wer auf die Anwendung zugreifen kann und auf welche Ressourcen die Anwendung Zugriff hat. Ein Dienstprinzipal wird in jedem Mandanten erstellt, in dem die Anwendung verwendet wird, und es verweist auf das global eindeutige Anwendungsobjekt. Mit dem Mandanten werden die Anmeldung des Dienstprinzipals und den Zugriff auf Ressourcen geschützt.  
+Bei einem Azure AD-[Dienstprinzipal](../develop/app-objects-and-service-principals.md) (Azure Active Directory) handelt es sich um die lokale Darstellung eines Anwendungsobjekts in einem einzelnen Mandanten oder Verzeichnis.  ‎Er dient als Identität der Anwendungsinstanz. Mit Dienstprinzipalen wird definiert, wer auf die Anwendung zugreifen kann und auf welche Ressourcen die Anwendung Zugriff hat. Ein Dienstprinzipal wird in jedem Mandanten erstellt, in dem die Anwendung verwendet wird, und es verweist auf das global eindeutige Anwendungsobjekt. Mit dem Mandanten werden die Anmeldung des Dienstprinzipals und den Zugriff auf Ressourcen geschützt.  
 
 ### <a name="tenant-service-principal-relationships"></a>Beziehungen zwischen Mandanten und Dienstprinzipalen
 Eine Anwendung mit nur einem Mandanten verfügt auf diesem Basismandanten nur über einen Dienstprinzipal. Für eine mehrinstanzenfähige Webanwendung oder API wird ein Dienstprinzipal auf jedem Mandanten benötigt. Ein Dienstprinzipal wird erstellt, wenn ein Benutzer des entsprechenden Mandanten seine Einwilligung zur Verwendung der Anwendung bzw. API erteilt hat. Aufgrund dieser Einwilligung wird eine 1:n-Beziehung zwischen der mehrinstanzenfähigen Anwendung und den zugehörigen Dienstprinzipalen erstellt.
@@ -39,7 +39,7 @@ Eine bestimmte Anwendungsinstanz verfügt über zwei Eigenschaften: die Applicat
 
 Die ApplicationID steht für die globale Anwendung und ist für alle Anwendungsinstanzen mandantenübergreifend identisch. Die ObjectID ist ein eindeutiger Wert für ein Anwendungsobjekt und repräsentiert den Dienstprinzipal. Wie bei Benutzern, Gruppen und anderen Ressourcen auch, dient die ObjectID als Hilfe beim eindeutigen Identifizieren einer Anwendungsinstanz in Azure AD.
 
-Ausführlichere Informationen zu diesem Thema finden Sie unter [Anwendungs- und Dienstprinzipalobjekte in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals).
+Ausführlichere Informationen zu diesem Thema finden Sie unter [Anwendungs- und Dienstprinzipalobjekte in Azure Active Directory](../develop/app-objects-and-service-principals.md).
 
 Sie können auch Azure PowerShell, die Azure CLI, Microsoft Graph, das Azure-Portal und andere Tools verwenden, um eine Anwendung und das zugehörige Dienstprinzipalobjekt (ObjectID) auf einem Mandanten zu erstellen. 
 
@@ -63,7 +63,7 @@ Zertifikate sind sicherer: Verwenden Sie nach Möglichkeit Clientzertifikate. Im
 
 * Kennwörter 
 
-Weitere Informationen zu Azure Key Vault und zur Verwendung für die Verwaltung von Zertifikaten und Schlüsseln finden Sie unter [Informationen zu Azure Key Vault](https://docs.microsoft.com/azure/key-vault/general/overview) und [Zuweisen einer Key Vault-Zugriffsrichtlinie über das Azure-Portal](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal). 
+Weitere Informationen zu Azure Key Vault und zur Verwendung für die Verwaltung von Zertifikaten und Schlüsseln finden Sie unter [Informationen zu Azure Key Vault](../../key-vault/general/overview.md) und [Zuweisen einer Key Vault-Zugriffsrichtlinie über das Azure-Portal](../../key-vault/general/assign-access-policy-portal.md). 
 
  ### <a name="challenges-and-mitigations"></a>Herausforderungen und Gegenmaßnahmen
 Die folgende Tabelle enthält Gegenmaßnahmen für Herausforderungen, die bei der Verwendung von Dienstprinzipalen ggf. bewältigt werden müssen.
@@ -89,7 +89,7 @@ PowerShell
 `Get-AzureADServicePrincipal -All:$true` 
 
 
-Weitere Informationen finden Sie unter [Get-AzureADServicePrincipal](https://docs.microsoft.com/powershell/module/azuread/get-azureadserviceprincipal).
+Weitere Informationen finden Sie unter [Get-AzureADServicePrincipal](/powershell/module/azuread/get-azureadserviceprincipal).
 
 ## <a name="assess-service-principal-security"></a>Bewerten der Sicherheit von Dienstprinzipalen
 
@@ -105,7 +105,7 @@ Die Anmeldung von Dienstprinzipalen kann nicht per bedingtem Zugriff verwaltet w
 | Die standardmäßige Azure RBAC-Rolle lautet „Mitwirkender“. |Evaluieren Sie die Anforderungen, und wenden Sie die Rolle mit den geringstmöglichen Berechtigungen an, um diese Anforderungen zu erfüllen.|
 
 ## <a name="move-from-a-user-account-to-a-service-principal"></a>Wechseln von einem Benutzerkonto zu einem Dienstprinzipal  
-‎Wenn Sie ein Azure-Benutzerkonto als Dienstprinzipal verwenden, sollten Sie evaluieren, ob die Umstellung auf eine [verwaltete Identität](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet) oder einen Dienstprinzipal möglich ist. Falls Sie keine verwaltete Identität nutzen können, sollten Sie einen Dienstprinzipal bereitstellen, der über gerade ausreichende Berechtigungen und den entsprechenden Bereich für die Ausführung der erforderlichen Aufgaben verfügt. Sie können einen Dienstprinzipal erstellen, indem Sie eine [Anwendung registrieren](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) oder [PowerShell](https://docs.microsoft.com/azure/active-directory/develop/howto-authenticate-service-principal-powershell) verwenden.
+‎Wenn Sie ein Azure-Benutzerkonto als Dienstprinzipal verwenden, sollten Sie evaluieren, ob die Umstellung auf eine [verwaltete Identität](../../app-service/overview-managed-identity.md?tabs=dotnet) oder einen Dienstprinzipal möglich ist. Falls Sie keine verwaltete Identität nutzen können, sollten Sie einen Dienstprinzipal bereitstellen, der über gerade ausreichende Berechtigungen und den entsprechenden Bereich für die Ausführung der erforderlichen Aufgaben verfügt. Sie können einen Dienstprinzipal erstellen, indem Sie eine [Anwendung registrieren](../develop/howto-create-service-principal-portal.md) oder [PowerShell](../develop/howto-authenticate-service-principal-powershell.md) verwenden.
 
 Informieren Sie sich bei Verwendung von Microsoft Graph in der Dokumentation zur jeweiligen API ([wie in diesem Beispiel](/powershell/azure/create-azure-service-principal-azureps)), ‎und vergewissern Sie sich, dass der Berechtigungstyp für die Anwendung unterstützt wird.
 
@@ -115,7 +115,7 @@ Informieren Sie sich bei Verwendung von Microsoft Graph in der Dokumentation zur
 
 [Erstellen eines Dienstprinzipals](../develop/howto-create-service-principal-portal.md)
 
- [Überwachen der Anmeldungen von Dienstprinzipalen](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins#sign-ins-report)
+ [Überwachen der Anmeldungen von Dienstprinzipalen](../reports-monitoring/concept-sign-ins.md#sign-ins-report)
 
 **Weitere Informationen zum Schützen von Dienstkonten:**
 

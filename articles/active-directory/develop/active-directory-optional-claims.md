@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
 ms.openlocfilehash: 7c0394e765923c027cc15a6278ee451fb13ed1b2
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/10/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100104279"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>Gewusst wie: Bereitstellen optionaler Ansprüche für Ihre App
@@ -76,7 +76,7 @@ Diese Ansprüche sind in Azure AD v1.0-Token immer enthalten, jedoch nie in v2.0
 
 **Tabelle 3: Nur in v2.0 enthaltene optionale Ansprüche**
 
-| JWT-Anspruch     | Name                            | Beschreibung                                | Notizen |
+| JWT-Anspruch     | Name                            | BESCHREIBUNG                                | Notizen |
 |---------------|---------------------------------|-------------|-------|
 | `ipaddr`      | IP-Adresse                      | Die IP-Adresse, von der aus sich der Client angemeldet hat.   |       |
 | `onprem_sid`  | Lokale Sicherheits-ID |                                             |       |
@@ -201,7 +201,7 @@ Deklariert die von einer Anwendung angeforderten optionalen Ansprüche. Eine Anw
 
 **Tabelle 5: Eigenschaften des Typs „OptionalClaims“**
 
-| Name          | Typ                       | BESCHREIBUNG                                           |
+| Name          | type                       | BESCHREIBUNG                                           |
 |---------------|----------------------------|-------------------------------------------------------|
 | `idToken`     | Sammlung (OptionalClaim) | Die optionalen Ansprüche, die im JWT-ID-Token zurückgegeben werden.     |
 | `accessToken` | Sammlung (OptionalClaim) | Die optionalen Ansprüche, die im JWT-Zugriffstoken zurückgegeben werden. |
@@ -214,7 +214,7 @@ Wenn durch einen bestimmten Anspruch unterstützt, können Sie auch das Verhalte
 
 **Tabelle 6: Eigenschaften des Typs „OptionalClaim“**
 
-| Name                   | Typ                    | BESCHREIBUNG                                                                                                                                                                                                                                                                                                   |
+| Name                   | type                    | BESCHREIBUNG                                                                                                                                                                                                                                                                                                   |
 |------------------------|-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `name`                 | Edm.String              | Der Name des optionalen Anspruchs.                                                                                                                                                                                                                                                                               |
 | `source`               | Edm.String              | Die Quelle (Verzeichnisobjekt) des Anspruchs. Es gibt vordefinierte Ansprüche und benutzerdefinierte Ansprüche aus Erweiterungseigenschaften. Wenn der Quellwert „null“ ist, ist der Anspruch ein vordefinierter optionaler Anspruch. Wenn der Quellwert „user“ ist, ist der Wert in der „name“-Eigenschaft die Erweiterungseigenschaft aus dem Benutzerobjekt. |

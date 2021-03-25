@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 11/03/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 6c84bf4ebc73857fa0280ffbcbf46b68c2da630f
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102031717"
 ---
 # <a name="quickstart-create-a-java-function-in-azure-using-visual-studio-code"></a>Schnellstart: Erstellen einer Java-Funktion in Azure mit Visual Studio Code
@@ -17,7 +17,7 @@ ms.locfileid: "102031717"
 
 Verwenden Sie Visual Studio Code zum Erstellen einer Java-Funktion, die auf HTTP-Anforderungen reagiert. Testen Sie den Code lokal, und stellen Sie ihn anschließend in der serverlosen Umgebung von Azure Functions bereit.
 
-Im Rahmen dieser Schnellstartanleitung fallen ggf. geringfügige Kosten im Centbereich in Ihrem <abbr title="Das Profil, mit dem Abrechnungsinformationen zur Azure-Nutzung verwaltet werden.">Azure-Konto</abbr>.
+Im Rahmen dieser Schnellstartanleitung fallen ggf. geringfügige Kosten im Centbereich in Ihrem <abbr title="Das Profil mit Abrechnungsinformationen für die Azure-Nutzung.">Azure-Konto</abbr>.
 
 Sollte Visual Studio Code nicht Ihr bevorzugtes Entwicklungstool sein, stehen ähnliche Tutorials mit [Maven](create-first-function-cli-java.md), [Gradle](./functions-create-first-java-gradle.md) und [IntelliJ IDEA](/azure/developer/java/toolkit-for-intellij/quickstart-functions) für Java-Entwickler zur Verfügung.
 
@@ -74,7 +74,7 @@ Vergewissern Sie sich zunähst, dass Folgendes vorhanden ist:
 <summary><strong>Sie können kein Funktionsprojekt erstellen?</strong></summary>
 
 Dies sind die häufigsten Probleme, die beim Erstellen eines lokalen Functions-Projekts gelöst werden müssen:
-* Die Azure Functions-Erweiterung ist nicht installiert. 
+* Die Azure Functions-Erweiterung ist nicht installiert. 
 </details>
 
 <br/>
@@ -155,7 +155,7 @@ Die erste Bereitstellung Ihres Codes umfasst das Erstellen einer Funktionsressou
 <details>
 <summary><strong>Kann die Funktion nicht veröffentlicht werden?</strong></summary>
 
-In diesem Abschnitt haben Sie die Azure-Ressourcen erstellt und Ihren lokalen Code in der Funktions-App bereitgestellt. Wenn dies nicht erfolgreich war:
+In diesem Abschnitt wurden die Azure-Ressourcen erstellt, und der lokale Code wurde in der Funktions-App bereitgestellt. War dies nicht erfolgreich:
 
 * Überprüfen Sie die Ausgabe auf Fehlerinformationen. Das Glockensymbol in der unteren rechten Ecke ist eine weitere Möglichkeit zum Anzeigen der Ausgabe. 
 * Haben Sie die Veröffentlichung in einer vorhandenen Funktions-App durchgeführt? Diese Aktion überschreibt den Inhalt dieser App in Azure.
@@ -172,7 +172,7 @@ Nach Abschluss des Vorgangs werden in Ihrem Abonnement die folgenden Azure-Resso
 * **Azure Storage-Konto:** Mit einer Storage-Ressource werden Statusinformationen und andere Informationen zu Ihren Projekten verwaltet.
 * **Verbrauchsplan:** Ein Verbrauchsplan definiert den zugrunde liegenden Host für Ihre serverlose Funktions-App.
 * **Funktions-App:** Eine Funktions-App stellt die Umgebung zum Ausführen des Funktionscodes und der Gruppenfunktionen als logische Einheit zur Verfügung.
-* **Application Insights:** Application Insights überwacht die Verwendung Ihrer serverlosen Funktion.
+* **Application Insights:** Application Insights verfolgt die Verwendung Ihrer serverlosen Funktion nach.
 
 </details>
 

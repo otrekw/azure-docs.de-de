@@ -5,13 +5,13 @@ author: lfittl-msft
 ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 10/16/2020
-ms.openlocfilehash: b139e2f14379e0cd52ca72c347d49bcb4512c473
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.date: 03/03/2021
+ms.openlocfilehash: 474545b7c5eca64b558e5fe26e23e6800b0cab96
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92542079"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102037165"
 ---
 # <a name="supported-postgresql-major-versions-in-azure-database-for-postgresql---flexible-server"></a>Unterstützte Haupt- und Nebenversionen von PostgreSQL für Azure Database for PostgreSQL – Flexible Server
 
@@ -22,11 +22,11 @@ Azure Database for PostgreSQL – Flexible Server unterstützt derzeit die folg
 
 ## <a name="postgresql-version-12"></a>PostgreSQL Version 12
 
-Das aktuelle Nebenrelease ist 12.4. Informationen zu Verbesserungen und Fehlerbehebungen in diesem Nebenrelease finden Sie in der [Dokumentation zu PostgreSQL](https://www.postgresql.org/docs/12/static/release-12-4.html).
+Das aktuelle Nebenrelease ist 12.5. Informationen zu Verbesserungen und Fehlerbehebungen in diesem Nebenrelease finden Sie in der [Dokumentation zu PostgreSQL](https://www.postgresql.org/docs/12/static/release-12-4.html).
 
 ## <a name="postgresql-version-11"></a>PostgreSQL Version 11
 
-Das aktuelle Nebenrelease ist 11.9. Informationen zu Verbesserungen und Fehlerbehebungen in diesem Nebenrelease finden Sie in der [Dokumentation zu PostgreSQL](https://www.postgresql.org/docs/11/static/release-11-9.html).
+Das aktuelle Nebenrelease ist 11.10. Informationen zu Verbesserungen und Fehlerbehebungen in diesem Nebenrelease finden Sie in der [Dokumentation zu PostgreSQL](https://www.postgresql.org/docs/11/static/release-11-9.html).
 
 ## <a name="postgresql-version-10-and-older"></a>PostgreSQL Version 10 und früher
 

@@ -5,10 +5,10 @@ ms.date: 02/05/2021
 ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.openlocfilehash: a74cea9b142785c093b8ed235fc40049746f11a0
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99592550"
 ---
 # <a name="quickstart-create-a-management-group-with-net-core"></a>Schnellstart: Erstellen einer Verwaltungsgruppe mit .NET Core
@@ -138,4 +138,4 @@ In dieser Schnellstartanleitung haben Sie eine Verwaltungsgruppe zum Organisiere
 Weitere Informationen zu Verwaltungsgruppen und zur Verwaltung Ihrer Ressourcenhierarchie finden Sie im folgenden Artikel:
 
 > [!div class="nextstepaction"]
-> Verwalten von Ressourcen mit Verwaltungsgruppen
+> [Verwalten von Ressourcen mit Verwaltungsgruppen](./manage.md)

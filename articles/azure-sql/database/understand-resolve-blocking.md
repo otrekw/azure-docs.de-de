@@ -13,13 +13,13 @@ ms.topic: conceptual
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: ''
-ms.date: 2/24/2021
-ms.openlocfilehash: b829d7045ac520cfe908c3c8809ae17702d6175d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 3/02/2021
+ms.openlocfilehash: 3d64336184450514d52095097343a4588213f111
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101691432"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102034896"
 ---
 # <a name="understand-and-resolve-azure-sql-database-blocking-problems"></a>Verstehen und Beheben von Problemen durch Blockierungen in Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -208,7 +208,7 @@ AND object_name(p.object_id) = '<table_name>';
 
 ## <a name="gather-information-from-extended-events"></a>Sammeln von Informationen aus erweiterten Ereignissen
 
-Zusätzlich zu den oben genannten Informationen muss häufig eine Ablaufverfolgung der Aktivitäten auf dem Server erfasst werden, um ein Blockierproblem in Azure SQL-Datenbank gründlich untersuchen zu können. Ein Beispiel: Wenn eine Sitzung innerhalb einer Transaktion mehrere Anweisungen ausführt, wird nur die letzte übermittelte Anweisung dargestellt. Möglicherweise ist aber eine der vorherigen Anweisungen der Grund dafür, dass immer noch Sperren bestehen. Mit einer Ablaufverfolgung können Sie alle durch eine Sitzung ausgeführten Befehle innerhalb der aktuellen Transaktion anzeigen.
+Zusätzlich zu den vorherigen Informationen muss häufig eine Ablaufverfolgung der Aktivitäten auf dem Server erfasst werden, um ein Blockierproblem in Azure SQL-Datenbank gründlich untersuchen zu können. Ein Beispiel: Wenn eine Sitzung innerhalb einer Transaktion mehrere Anweisungen ausführt, wird nur die letzte übermittelte Anweisung dargestellt. Möglicherweise ist aber eine der vorherigen Anweisungen der Grund dafür, dass immer noch Sperren bestehen. Mit einer Ablaufverfolgung können Sie alle durch eine Sitzung ausgeführten Befehle innerhalb der aktuellen Transaktion anzeigen.
 
 Es gibt zwei Möglichkeiten, Ablaufverfolgungen in SQL Server zu erfassen: erweiterte Ereignisse (Extended Events, XEvents) und Profiler-Ablaufverfolgungen. [SQL Server Profiler](/sql/tools/sql-server-profiler/sql-server-profiler) ist allerdings eine veraltete Ablaufverfolgungstechnologie, die für Azure SQL-Datenbank nicht unterstützt wird. [Erweiterte Ereignisse](/sql/relational-databases/extended-events/extended-events) sind die neuere Ablaufverfolgungstechnologie, die mehr Flexibilität bietet und weniger Beeinträchtigungen für das beobachtete System verursacht. Die Schnittstelle ist in SQL Server Management Studio (SSMS) integriert. 
 
@@ -238,7 +238,7 @@ Lesen Sie das Dokument, in dem die Verwendung des [Assistenten für neue Sitzung
 
 ## <a name="identify-and-resolve-common-blocking-scenarios"></a>Identifizieren und Beheben von häufigen Blockierungsszenarien
 
-Anhand der oben genannten Informationen können Sie die Ursache der meisten Blockierprobleme ermitteln. Im Rest dieses Artikels wird erläutert, wie Sie diese Informationen zum Identifizieren und Beheben einiger häufiger Blockierungsszenarien verwenden. Hierbei wird vorausgesetzt, dass Sie die Informationen zu den blockierenden SPIDs mithilfe der oben erwähnten Skripts und die Anwendungsaktivitäten mithilfe einer XEvents-Sitzung erfasst haben.
+Anhand der vorherigen Informationen können Sie die Ursache der meisten Blockierprobleme ermitteln. Im Rest dieses Artikels wird erläutert, wie Sie diese Informationen zum Identifizieren und Beheben einiger häufiger Blockierungsszenarien verwenden. Hierbei wird vorausgesetzt, dass Sie die Informationen zu den blockierenden SPIDs mithilfe der oben erwähnten Skripts und die Anwendungsaktivitäten mithilfe einer XEvents-Sitzung erfasst haben.
 
 ## <a name="analyze-blocking-data"></a>Analysieren von Daten zur Blockierung 
 
@@ -334,7 +334,7 @@ Die Spalten `wait_type`, `open_transaction_count` und `status` beziehen sich auf
 | 5 | NULL | \>0 | rollback | Ja. | In der Sitzung von „Erweiterte Ereignisse“ wird für diese SPID möglicherweise ein Signal „Achtung“ angezeigt, das angibt, dass ein Timeout- oder Abbruchereignis für die Abfrage aufgetreten ist oder einfach eine Rollbackanweisung ausgegeben wurde. |  
 | 6 | NULL | \>0 | sleeping | Irgendwann. Wenn Windows NT festlegt, dass die Sitzung nicht mehr aktiv ist, wird die Verbindung mit Azure SQL-Datenbank getrennt. | Der `last_request_start_time`-Wert in „sys.dm_exec_sessions“ liegt viel früher als der aktuelle Zeitpunkt. |
 
-Die folgenden Szenarien bauen auf diese Szenarien auf. 
+## <a name="detailed-blocking-scenarios"></a>Ausführliche Blockierungsszenarien
 
 1.  Blockierung wird durch normal ausgeführte Abfrage mit langer Ausführungszeit verursacht
 
@@ -366,7 +366,7 @@ Die folgenden Szenarien bauen auf diese Szenarien auf.
 
     Die Ausgabe der zweiten Abfrage weist darauf hin, dass die Schachtelungsebene der Transaktion „1“ lautet. Alle in der Transaktion erhaltenen Sperren werden aufrechterhalten, bis ein Rollback oder Commit der Transaktion ausgeführt wurde. Wenn Anwendungen Transaktionen explizit öffnen und committen, könnte ein Kommunikations- oder sonstiger Fehler dazu führen, dass die Sitzung und die zugehörige Transaktion in einem offenen Zustand verbleiben. 
 
-    Verwenden Sie das obige, auf „sys.dm_tran_active_transactions“ basierende Skript, um Transaktionen zu identifizieren, für die aktuell kein Commit ausgeführt wurde.
+    Verwenden Sie das auf sys.dm_tran_active_transactions basierende Skript weiter oben in diesem Artikel, um Transaktionen in der Instanz zu identifizieren, für die derzeit noch kein Commit ausgeführt wurde.
 
     **Lösungen**:
 
@@ -377,6 +377,7 @@ Die folgenden Szenarien bauen auf diese Szenarien auf.
             *    Führen Sie im Fehlerhandler der Clientanwendung nach jedem Fehler `IF @@TRANCOUNT > 0 ROLLBACK TRAN` aus, auch wenn die Clientanwendung nicht anzeigt, dass eine Transaktion offen ist. Eine Überprüfung auf offene Transaktionen ist erforderlich, weil eine während der Batchausführung gespeicherte Prozedur eine Transaktion gestartet haben könnte, ohne dass die Clientanwendung darüber informiert ist. Bestimmte Bedingungen – beispielsweise das Abbrechen einer Abfrage – verhindern die weitere Ausführung der Prozedur nach der aktuellen Anweisung. Daher wird dieser Rollbackcode in solchen Fällen auch dann nicht ausgeführt, wenn die Prozedur über eine Logik zum Überprüfen von `IF @@ERROR <> 0` und Abbrechen der Transaktion verfügt.  
             *    Wenn eine Anwendung, die eine Verbindung öffnet und eine kleine Anzahl von Abfragen ausführt, bevor die Verbindung wieder für den Pool freigegeben wird (dies kann z. B. bei webbasierten Anwendungen der Fall sein), Verbindungspooling verwendet, kann eine vorübergehende Deaktivierung des Poolings das Problem mindern, bis die Clientanwendung so geändert wurde, dass die Fehler ordnungsgemäß behandelt werden. Bei deaktiviertem Verbindungspooling sorgt die Freigabe der Verbindung für eine physische Trennung der Verbindung zur Azure SQL-Datenbank, und der Server führt einen Rollback aller offenen Transaktionen aus.  
             *    Verwenden Sie `SET XACT_ABORT ON` für die Verbindung oder in gespeicherten Prozeduren, die Transaktionen starten und nach einem Fehler nicht bereinigen. Im Fall eines Laufzeitfehlers bricht diese Einstellung alle offenen Transaktionen ab und gibt die Steuerung an den Client zurück. Weitere Informationen finden Sie unter [SET XACT_ABORT (Transact-SQL)](/sql/t-sql/statements/set-xact-abort-transact-sql).
+
     > [!NOTE]
     > Die Verbindung wird erst zurückgesetzt, wenn sie vom Verbindungspool wiederverwendet wird. Daher ist es möglich, dass ein Benutzer eine Transaktion öffnet und dann die Verbindung im Verbindungspool freigibt, die Verbindung aber einige Sekunden lang nicht wiederverwendet wird. In diesem Zeitraum bleibt die Transaktion offen. Falls die Verbindung nicht wiederverwendet wird, wird die Transaktion abgebrochen, wenn für die Verbindung ein Timeout auftritt und sie und aus dem Verbindungspool entfernt wird. Daher sollte die Clientanwendung optimalerweise Transaktionen im Fehlerhandler abbrechen oder `SET XACT_ABORT ON` verwenden, um diese potenzielle Verzögerung zu vermeiden.
 
@@ -385,14 +386,14 @@ Die folgenden Szenarien bauen auf diese Szenarien auf.
 
 1.  Blockierung durch eine SPID, deren zugehörige Clientanwendung nicht alle Ergebniszeilen vollständig abgerufen hat
 
-    Nach dem Senden einer Abfrage an den Server müssen alle Anwendungen sofort alle Ergebniszeilen vollständig abrufen. Wenn eine Anwendung nicht alle Ergebniszeilen abruft, können Sperren auf den Tabellen verbleiben, die andere Benutzer blockieren. Sollten Sie eine Anwendung nutzen, die SQL-Anweisungen transparent an den Server übermittelt, muss die Anwendung sämtliche Ergebniszeilen abrufen. Andernfalls (oder wenn die Anwendung nicht dafür konfiguriert werden kann) lässt sich das Blockierproblem möglicherweise nicht lösen. Um dieses Problem zu vermeiden, können Sie entsprechende Anwendungen auf eine Berichtsdatenbank oder eine Datenbank zur Entscheidungsfindung beschränken.
+    Nach dem Senden einer Abfrage an den Server müssen alle Anwendungen sofort alle Ergebniszeilen vollständig abrufen. Wenn eine Anwendung nicht alle Ergebniszeilen abruft, können Sperren auf den Tabellen verbleiben, die andere Benutzer blockieren. Sollten Sie eine Anwendung nutzen, die SQL-Anweisungen transparent an den Server übermittelt, muss die Anwendung sämtliche Ergebniszeilen abrufen. Andernfalls (oder wenn die Anwendung nicht dafür konfiguriert werden kann) lässt sich das Blockierproblem möglicherweise nicht lösen. Um dieses Problem zu vermeiden, können Sie entsprechende Anwendungen auf eine Berichtsdatenbank oder eine Datenbank zur Entscheidungsfindung, getrennt von der Haupt-OLTP-Datenbank, beschränken.
     
     > [!NOTE]
     > Weitere Informationen zu Anwendungen, die eine Verbindung mit Azure SQL-Datenbank herstellen, finden Sie unter [Wiederholungslogik für vorübergehende Fehler](./troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors). 
     
     **Lösung:** Die Anwendung muss so umgeschrieben werden, dass sie alle Zeilen des Ergebnisses vollständig abruft. Dies schließt das [Verwenden von OFFSET und FETCH in der ORDER BY-Klausel](/sql/t-sql/queries/select-order-by-clause-transact-sql#using-offset-and-fetch-to-limit-the-rows-returned) einer Abfrage nicht aus, um ein serverseitiges Paging auszuführen.
 
-1.  Blockierung aufgrund einer SPID im Rollbackzustand
+1.  Blockierung aufgrund einer Sitzung im Rollbackzustand
 
     Für eine Datenänderungsabfrage, die per KILL beendet oder außerhalb einer benutzerdefinierten Transaktion abgebrochen wird, wird ein Rollback ausgeführt. Dies kann auch als Nebeneffekt auftreten, wenn eine Clientnetzwerksitzung getrennt oder eine Anforderung als Deadlockopfer ausgewählt wird. Dieser Fehler lässt sich häufig in der Ausgabe von „sys.dm_exec_requests“ identifizieren: Hier ist der ROLLBACK-**Befehl** zu finden, und die **percent_complete-Spalte** kann den Fortschritt anzeigen. 
 

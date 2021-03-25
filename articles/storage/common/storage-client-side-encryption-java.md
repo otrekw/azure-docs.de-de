@@ -6,17 +6,17 @@ author: tamram
 ms.service: storage
 ms.devlang: java
 ms.topic: article
-ms.date: 05/11/2017
+ms.date: 02/18/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-java
-ms.openlocfilehash: fafce52f9d760fac0d5c3f0ea1be2480547c5d4d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 78baaa3f794bed870b40fb3975f6b80ff37e90f0
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91817517"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102043727"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-with-java-for-microsoft-azure-storage"></a>Clientseitige Verschlüsselung und Azure Key Vault für Microsoft Azure Storage
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
@@ -48,7 +48,7 @@ Die Entschlüsselung über das Umschlagverfahren funktioniert wie folgt:
 Die Speicherclientbibliothek verwendet [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) , um Benutzerdaten zu verschlüsseln. Insbesondere wird der [CBC-Modus (Blockchiffreverkettung, Cipher Block Chaining)](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher-block_chaining_.28CBC.29) mit AES verwendet. Da jeder Dienst eine andere Funktionsweise aufweist, werden die Dienste hier erörtert.
 
 ### <a name="blobs"></a>BLOBs
-Die Clientbibliothek unterstützt momentan nur die Verschlüsselung vollständiger Blobs. Insbesondere wird die Verschlüsselung unterstützt, wenn Benutzer die **upload*** -Methoden oder die **openOutputStream**-Methode verwenden. Es werden sowohl vollständige Downloads als auch Downloads von Bereichen unterstützt.  
+Die Clientbibliothek unterstützt momentan nur die Verschlüsselung vollständiger Blobs. Insbesondere wird die Verschlüsselung unterstützt, wenn Benutzer die **upload**-Methoden oder die *openOutputStream*-Methode verwenden. Es werden sowohl vollständige Downloads als auch Downloads von Bereichen unterstützt.  
 
 Bei der Verschlüsselung generiert die Clientbibliothek einen zufälligen Initialisierungsvektor (IV) mit einer Größe von 16 Byte zusammen mit einem zufälligen Inhaltsverschlüsselungsschlüssel (CEK) mit einer Größe von 32 Byte. Mithilfe dieser Informationen wird die Umschlagverschlüsselung der Blobdaten ausgeführt. Der umschlossene CEK und einige zusätzliche Verschlüsselungsmetadaten werden dann als Blobmetadaten zusammen mit dem verschlüsselten Blob für den Dienst gespeichert.
 
@@ -154,6 +154,12 @@ Verwenden Sie beispielsweise **CloudBlobClient.getDefaultRequestOptions().setReq
 ### <a name="blob-service-encryption"></a>Blob-Diensterschlüsselung
 Erstellen Sie ein **BlobEncryptionPolicy**-Objekt, und legen Sie es in den Anforderungsoptionen fest (über die API oder auf Clientebene mit **DefaultRequestOptions**). Alles Weitere wird intern von der Clientbibliothek behandelt.
 
+# <a name="java-v12"></a>[Java v12](#tab/java)
+
+Wir arbeiten derzeit daran, Codeausschnitte für Version 12.x der Azure Storage-Clientbibliotheken zu erstellen. Weitere Informationen finden Sie unter [Ankündigung der Azure Storage v12-Clientbibliotheken](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="java-v8"></a>[Java v8](#tab/java8)
+
 ```java
 // Create the IKey used for encryption.
 RsaKey key = new RsaKey("private:key1" /* key identifier */);
@@ -172,9 +178,16 @@ blob.upload(stream, size, null, options, null);
 ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 blob.download(outputStream, null, options, null);
 ```
+---
 
 ### <a name="queue-service-encryption"></a>Warteschlangendienst-Verschlüsselung
 Erstellen Sie ein **QueueEncryptionPolicy**-Objekt, und legen Sie es in den Anforderungsoptionen fest (über die API oder auf Clientebene mit **DefaultRequestOptions**). Alles Weitere wird intern von der Clientbibliothek behandelt.
+
+# <a name="java-v12"></a>[Java v12](#tab/java)
+
+Wir arbeiten derzeit daran, Codeausschnitte für Version 12.x der Azure Storage-Clientbibliotheken zu erstellen. Weitere Informationen finden Sie unter [Ankündigung der Azure Storage v12-Clientbibliotheken](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="java-v8"></a>[Java v8](#tab/java8)
 
 ```java
 // Create the IKey used for encryption.
@@ -192,11 +205,18 @@ queue.addMessage(message, 0, 0, options, null);
 // Retrieve message
 CloudQueueMessage retrMessage = queue.retrieveMessage(30, options, null);
 ```
+---
 
 ### <a name="table-service-encryption"></a>Tabellendienstverschlüsselung
 Zusätzlich zum Erstellen einer Verschlüsselungsrichtlinie und zum Festlegen der Richtlinie für die Anforderungsoptionen müssen Sie entweder einen **EncryptionResolver** in **TableRequestOptions** angeben oder das [Encrypt]-Attribut für den Getter und Setter der Entität festlegen.
 
 ### <a name="using-the-resolver"></a>Verwenden des Resolvers
+
+# <a name="java-v12"></a>[Java v12](#tab/java)
+
+Wir arbeiten derzeit daran, Codeausschnitte für Version 12.x der Azure Storage-Clientbibliotheken zu erstellen. Weitere Informationen finden Sie unter [Ankündigung der Azure Storage v12-Clientbibliotheken](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="java-v8"></a>[Java v8](#tab/java8)
 
 ```java
 // Create the IKey used for encryption.
@@ -228,9 +248,16 @@ retrieveOptions.setEncryptionPolicy(policy);
 TableOperation operation = TableOperation.retrieve(ent.PartitionKey, ent.RowKey, DynamicTableEntity.class);
 TableResult result = currentTable.execute(operation, retrieveOptions, null);
 ```
+---
 
 ### <a name="using-attributes"></a>Verwenden von Attributen
-Wenn die Entität "TableEntity" implementiert, können der Getter und Setter der Eigenschaften, wie bereits erwähnt, mit dem [Encrypt]-Attribut ergänzt werden, statt den **EncryptionResolver**anzugeben.
+Wenn die Entität "TableEntity" implementiert, können der Getter und Setter der Eigenschaften, wie bereits erwähnt, mit dem [Encrypt]-Attribut ergänzt werden, statt den **EncryptionResolver** anzugeben.
+
+# <a name="java-v12"></a>[Java v12](#tab/java)
+
+Wir arbeiten derzeit daran, Codeausschnitte für Version 12.x der Azure Storage-Clientbibliotheken zu erstellen. Weitere Informationen finden Sie unter [Ankündigung der Azure Storage v12-Clientbibliotheken](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="java-v8"></a>[Java v8](#tab/java8)
 
 ```java
 private string encryptedProperty1;
@@ -245,6 +272,7 @@ public void setEncryptedProperty1(final String encryptedProperty1) {
     this.encryptedProperty1 = encryptedProperty1;
 }
 ```
+---
 
 ## <a name="encryption-and-performance"></a>Verschlüsselung und Leistung
 

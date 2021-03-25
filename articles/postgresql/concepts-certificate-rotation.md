@@ -7,21 +7,21 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/02/2020
 ms.openlocfilehash: 6dc687879eb646b4abd081b40bce292d20ff3186
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102123988"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-postgresql-single-server"></a>Grundlegendes zu den Änderungen im Zusammenhang mit der Stammzertifizierungsstelle für Azure Database for PostgreSQL-Einzelserver
 
-Die Änderung des Stammzertifikats am **15. Februar 2021 (15.02.2021)** wurde für Azure Database for PostgreSQL Single Server im Rahmen der standardmäßigen Wartung und bewährten Sicherheitsmethoden erfolgreich abgeschlossen. In diesem Artikel erhalten Sie ausführlichere Informationen zu den Änderungen, den betroffenen Ressourcen sowie den Schritten, die erforderlich sind, um sicherzustellen, dass die Konnektivität zwischen Ihrer Anwendung und dem Datenbankserver bestehen bleibt.
+Die Änderung des Stammzertifikats am **15. Februar 2021 (15.02.2021)** wurde für Azure Database for PostgreSQL Single Server im Rahmen der standardmäßigen Wartung und bewährten Sicherheitsmethoden erfolgreich abgeschlossen. In diesem Artikel erhalten Sie ausführlichere Informationen zu den Änderungen, den betroffenen Ressourcen sowie den Schritten, die erforderlich sind, um sicherzustellen, dass die Konnektivität Ihrer Anwendung mit dem Datenbankserver bestehen bleibt.
 
 ## <a name="why-root-certificate-update-is-required"></a>Warum muss das Stammzertifikat aktualisiert werden?
 
 Azure Database for PostgreSQL-Kunden können nur [dieses vordefinierte Zertifikat](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) verwenden, um eine Verbindung mit ihrem PostgreSQL-Server herzustellen. Im [ZA-/Browserforum](https://cabforum.org/) wurden jedoch kürzlich Berichte veröffentlicht, in denen mehrere von Zertifizierungsstellenanbietern ausgestellte Zertifikate aufgeführt sind, die nicht konform sind.
 
-Gemäß den Konformitätsanforderungen der Branche haben Zertifizierungsstellenanbieter damit begonnen, Zertifizierungsstellenzertifikate für nicht konforme Zertifizierungsstellen zu sperren. Daher müssen Server Zertifikate verwenden, die von konformen Zertifizierungsstellen ausgestellt und durch Zertifizierungsstellenzertifikate von diesen konformen Zertifizierungsstellen signiert wurden. Da von Azure Database for MySQL eines dieser nicht konformen Zertifikate verwendet wurde, musste das Zertifikat zur konformen Version rotiert werden, um die potenzielle Bedrohung für Ihre MySQL-Server zu minimieren.
+Gemäß den Konformitätsanforderungen der Branche haben Zertifizierungsstellenanbieter damit begonnen, Zertifizierungsstellenzertifikate für nicht konforme Zertifizierungsstellen zu sperren. Daher müssen Server Zertifikate verwenden, die von konformen Zertifizierungsstellen ausgestellt und durch Zertifizierungsstellenzertifikate von diesen konformen Zertifizierungsstellen signiert wurden. Da Azure Database for MySQL eines dieser nicht konformen Zertifikate verwendete, musste das Zertifikat zur konformen Version rotiert werden, um die potenzielle Bedrohung für Ihre MySQL-Server zu minimieren.
 
 Der Rollout des neuen Zertifikats hat am 15. Februar 2021 (15.02.2021) begonnen, und es ist ab diesem Datum gültig. 
 
@@ -75,7 +75,7 @@ Es ist keine Änderung auf Clientseite erforderlich. Wenn Sie die frühere Empfe
 > [!NOTE]
 > Löschen oder ändern Sie das **Baltimore-Zertifikat** erst, nachdem die Zertifikatänderung vorgenommen wurde. Sobald die Änderung abgeschlossen ist, senden wir Ihnen eine Mitteilung,und danach können Sie das Baltimore-Zertifikat auf sichere Weise löschen. 
 
-## <a name="why-was-baltimorecybertrustroot-certificate-not-replaced-to-digicertglobalrootg2-during-this-change-on-february-15-2021"></a>Warum wurde das BaltimoreCyberTrustRoot-Zertifikat während dieser Änderung am 15. Februar 2021 nicht durch DigiCertGlobalRootG2 ersetzt?
+## <a name="why-was-baltimorecybertrustroot-certificate-not-replaced-to-digicertglobalrootg2-during-this-change-on-february-15-2021"></a>Warum wurde das BaltimoreCyberTrustRoo-Zertifikat während dieser Änderung am 15. Februar 2021 nicht durch DigiCertGlobalRootG2 ersetzt?
 
 Wir haben die Bereitschaft der Kunden für diese Änderung bewertet und erkannt, dass viele Kunden noch zusätzliche Vorlaufzeit zur Abwicklung dieser Änderung benötigen. Um den Kunden eine längere Vorlaufzeit zur Vorbereitung zu bieten, haben wir uns entschieden, die Zertifikatänderung in DigiCertGlobalRootG2 um mindestens ein Jahr zu verschieben, um Kunden und Endbenutzern genügend Vorlaufzeit zu geben. 
 
@@ -83,7 +83,7 @@ Unsere Empfehlungen für Benutzer lauten: Führen Sie die oben genannten Schritt
 
 ## <a name="what-if-we-removed-the-baltimorecybertrustroot-certificate"></a>Was geschieht, wenn das BaltimoreCyberTrustRoot-Zertifikat entfernt wurde?
 
-Beim Herstellen einer Verbindung mit dem Azure Database for PostgreSQL-Server treten Konnektivitätsfehler auf. Sie müssen SSL erneut mit [BaltimoreCyberTrustRoot](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem)-Zertifikat konfigurieren, um Konnektivität zu gewährleisten.
+Beim Herstellen einer Verbindung mit dem Azure Database for PostgreSQL-Server treten Konnektivitätsfehler auf. Sie müssen eine erneute Konfiguration von SSL mit dem [BaltimoreCyberTrustRoot](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem)-Zertifikat durchführen, um Konnektivität zu gewährleisten.
 
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
@@ -120,12 +120,12 @@ Bei einem Connector, der die selbstgehostete Integration Runtime verwendet, für
 Nein. Da die Änderung hier nur auf der Clientseite erfolgt, um eine Verbindung mit dem Datenbankserver herzustellen, ist für diese Änderung keine Wartungsdowntime beim Datenbankserver erforderlich.
 
 ### <a name="8-if-i-create-a-new-server-after-february-15-2021-02152021-will-i-be-impacted"></a>8. Bin ich betroffen, wenn ich nach dem 15. Februar 2021 (15.02.2021) einen neuen Server erstelle?
-Bei Servern, die nach dem 15. Februar 2021 (15.02.2021) erstellt werden, verwenden Sie weiterhin [BaltimoreCyberTrustRoot](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) für Ihre Anwendungen, um eine SSL-Verbindung herzustellen.
+Bei Servern, die nach dem 15. Februar 2021 (15.02.2021) erstellt werden, verwenden Sie weiterhin [BaltimoreCyberTrustRoot](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) für Ihre Anwendungen, um eine Verbindung mithilfe von SSL herzustellen.
 
 ### <a name="9-how-often-does-microsoft-update-their-certificates-or-what-is-the-expiry-policy"></a>9. Wie oft aktualisiert Microsoft seine Zertifikate, bzw. welche Ablaufrichtlinie gilt?
 Diese von Azure Database for PostgreSQL verwendeten Zertifikate werden von vertrauenswürdigen Zertifizierungsstellen (ZS) bereitgestellt. Die Unterstützung dieser Zertifikate ist also an die Unterstützung dieser Zertifikate durch die ZS gebunden. Das [BaltimoreCyberTrustRoot](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem)-Zertifikat läuft im Jahr 2025 ab, sodass Microsoft vor dem Ablauf eine Zertifikatänderung durchführen muss. Sollten in diesen vordefinierten Zertifikaten unvorhergesehene Fehler auftreten, muss Microsoft die Zertifikatrotation frühestens wie die Änderung am 15. Februar 2021 durchführen, um zu gewährleisten, dass der Dienst jederzeit sicher und konform ist.
 
-### <a name="10-if-i-am-using-read-replicas-do-i-need-to-perform-this-update-only-on-the-primary-server-or-the-read-replicas"></a>10. Muss ich bei Verwendung von Lesereplikaten dieses Update nur auf dem primären Server oder für die gelesenen Replikate ausführen?
+### <a name="10-if-i-am-using-read-replicas-do-i-need-to-perform-this-update-only-on-the-primary-server-or-the-read-replicas"></a>Muss ich bei Verwendung von Lesereplikaten dieses Update nur auf dem primären Server oder für die gelesenen Replikate ausführen?
 Da dieses Update eine clientseitige Änderung ist, müssen Sie die Änderungen auch für diese Clients anwenden, wenn der Client Daten vom Replikatserver gelesen hat. 
 
 ### <a name="11-do-we-have-server-side-query-to-verify-if-ssl-is-being-used"></a>11. Gibt es eine serverseitige Abfrage, um zu überprüfen, ob SSL verwendet wird?

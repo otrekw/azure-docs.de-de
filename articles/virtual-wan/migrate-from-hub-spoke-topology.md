@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: cherylmc
 ms.openlocfilehash: e602905b461e370189cefed706ddc3a47e0199fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91839638"
 ---
 # <a name="migrate-to-azure-virtual-wan"></a>Migrieren zu Azure Virtual WAN
@@ -33,7 +33,7 @@ Contoso ist eine globale Finanzorganisation mit Niederlassungen in Europa und As
 
 Die folgende Abbildung zeigt eine allgemeine Übersicht über das vorhandene globale Netzwerk, einschließlich der Anbindung an mehrere Azure-Regionen.
 
-:::image type="content" source="./media/migrate-from-hub-spoke-topology/contoso-pre-migration.png" alt-text="Hub-and-Spoke":::
+:::image type="content" source="./media/migrate-from-hub-spoke-topology/contoso-pre-migration.png" alt-text="Vorhandene Netzwerktopologie von Contoso":::
 **Abbildung: Vorhandene Netzwerktopologie von Contoso**
 
 Aus der vorhandenen Netzwerktopologie lassen sich folgende Punkte ableiten:
@@ -61,7 +61,7 @@ Das Netzwerkteam wurde mit der Bereitstellung eines globalen Netzwerkmodells bea
 
 Die folgende Abbildung zeigt eine allgemeine Übersicht über die aktualisierte Zieltopologie, in der die im vorherigen Abschnitt beschriebenen Anforderungen mit Azure Virtual WAN erfüllt wurden.
 
-:::image type="content" source="./media/migrate-from-hub-spoke-topology/vwan-architecture.png" alt-text="Hub-and-Spoke":::
+:::image type="content" source="./media/migrate-from-hub-spoke-topology/vwan-architecture.png" alt-text="Virtuelle WAN-Architektur von Contoso":::
 **Abbildung: Azure Virtual WAN-Architektur**
 
 Zusammenfassung:
@@ -82,7 +82,7 @@ In diesem Abschnitt werden die verschiedenen Schritte für die Migration zu Azur
 
 Die folgende Abbildung zeigt die Topologie einer einzelnen Region für Contoso vor dem Rollout von Azure Virtual WAN:
 
-:::image type="content" source="./media/migrate-from-hub-spoke-topology/figure1.png" alt-text="Hub-and-Spoke":::
+:::image type="content" source="./media/migrate-from-hub-spoke-topology/figure1.png" alt-text="Topologie einer einzelnen Region":::
 **Abbildung 1: Hub-and-Spoke manuell – Einzelregion**
 
 In Anlehnung an den Hub-and-Spoke-Ansatz umfasst das kundenseitig verwaltete virtuelle Hubnetzwerk verschiedene Funktionsblöcke:
@@ -103,14 +103,14 @@ Stellen Sie in jeder Region ein Virtual WAN-Hub bereit. Richten Sie den Virtual 
 > Azure Virtual WAN muss für einige in diesem Artikel gezeigten Datenverkehrspfade die Standard-SKU verwenden.
 >
 
-:::image type="content" source="./media/migrate-from-hub-spoke-topology/figure2.png" alt-text="Hub-and-Spoke":::
+:::image type="content" source="./media/migrate-from-hub-spoke-topology/figure2.png" alt-text="Bereitstellen von Virtual WAN-Hubs":::
 **Abbildung 2: Migration von Hub-and-Spoke unter Kundenverwaltung zu Virtual WAN**
 
 ### <a name="step-3-connect-remote-sites-expressroute-and-vpn-to-virtual-wan"></a>Schritt 3: Verbinden von Remotestandorten (ExpressRoute und VPN) mit Virtual WAN
 
 Verbinden Sie den Virtual WAN-Hub mit den vorhandenen ExpressRoute-Leitungen, und richten Sie über das Internet Site-to-Site-VPN-Verbindungen mit beliebigen Remotezweigstellen ein.
 
-:::image type="content" source="./media/migrate-from-hub-spoke-topology/figure3.png" alt-text="Hub-and-Spoke":::
+:::image type="content" source="./media/migrate-from-hub-spoke-topology/figure3.png" alt-text="Verbinden von Remotestandorten mit Virtual WAN":::
 **Abbildung 3: Migration von Hub-and-Spoke unter Kundenverwaltung zu Virtual WAN**
 
 An diesem Punkt empfangen lokale Netzwerkgeräte Routen, die dem IP-Adressraum entsprechen, der dem von Virtual WAN verwalteten Hub-VNet zugewiesen wurde. Per VPN-verbundene Remotezweigstellen sehen in dieser Phase zwei Pfade zu beliebigen vorhandenen Anwendungen in den virtuellen Spoke-Netzwerken. Diese Geräte müssen so konfiguriert werden, dass sie auch weiterhin den Tunnel zum kundenseitig verwalteten Hub nutzen können, um während der Übergangsphase ein symmetrisches Routing zu gewährleisten.
@@ -119,14 +119,14 @@ An diesem Punkt empfangen lokale Netzwerkgeräte Routen, die dem IP-Adressraum e
 
 Bevor Sie den verwalteten Virtual WAN-Hub für Produktionskonnektivität nutzen, sollten Sie ein virtuelles Spoke-Netzwerk und eine Virtual WAN-VNet-Verbindung einrichten. Stellen Sie sicher, dass die Verbindungen mit dieser Testumgebung über ExpressRoute und Site-to-Site-VPN funktionieren, bevor Sie mit den nächsten Schritten fortfahren.
 
-:::image type="content" source="./media/migrate-from-hub-spoke-topology/figure4.png" alt-text="Hub-and-Spoke":::
+:::image type="content" source="./media/migrate-from-hub-spoke-topology/figure4.png" alt-text="Testen der Hybridkonnektivität über Virtual WAN":::
 **Abbildung 4: Migration von Hub-and-Spoke unter Kundenverwaltung zu Virtual WAN**
 
 Zu diesem Zeitpunkt ist es wichtig zu erkennen, dass sowohl das ursprüngliche, kundenseitig verwaltete virtuelle Hubnetzwerk als auch der neue Virtual WAN-Hub mit derselben ExpressRoute-Verbindung verbunden sind. Dadurch entsteht ein Datenverkehrspfad, der verwendet werden kann, um Spokes in beiden Umgebungen für die Kommunikation zu aktivieren. Beispielsweise durchläuft der Datenverkehr von einem mit dem kundenseitig verwalteten virtuellen Hubnetzwerk verbundenen Spoke die MSEE-Geräte, die für die ExpressRoute-Verbindung verwendet werden. So werden alle über eine VNET-Verbindung mit dem neuen Virtual WAN-Hub verbundenen Spokes erreicht. Dies ermöglicht eine gestaffelte Migration von Spokes in Schritt 5.
 
 ### <a name="step-5-transition-connectivity-to-virtual-wan-hub"></a>Schritt 5: Umstellen der Konnektivität auf Virtual WAN-Hub
 
-:::image type="content" source="./media/migrate-from-hub-spoke-topology/figure5.png" alt-text="Hub-and-Spoke":::
+:::image type="content" source="./media/migrate-from-hub-spoke-topology/figure5.png" alt-text="Umstellen der Konnektivität auf Virtual WAN-Hub":::
 **Abbildung 5: Migration von Hub-and-Spoke unter Kundenverwaltung zu Virtual WAN**
 
 **a**: Löschen Sie die vorhandenen Peeringverbindungen zwischen den virtuellen Spoke-Netzwerken und dem alten kundenseitig verwalteten Hub. Der Zugriff auf Anwendungen in virtuellen Spoke-Netzwerken ist erst nach Abschluss der Schritte a bis c wieder möglich.
@@ -143,7 +143,7 @@ Zu diesem Zeitpunkt ist es wichtig zu erkennen, dass sowohl das ursprüngliche, 
 
 Wir haben nun unser Azure-Netzwerk überarbeitet, um den Virtual WAN-Hub zum zentralen Punkt in unserer neuen Topologie zu machen.
 
-:::image type="content" source="./media/migrate-from-hub-spoke-topology/figure6.png" alt-text="Hub-and-Spoke":::
+:::image type="content" source="./media/migrate-from-hub-spoke-topology/figure6.png" alt-text="Alter Hub wird zum Spoke für gemeinsame Dienste":::
 **Abbildung 6: Migration von Hub-and-Spoke unter Kundenverwaltung zu Virtual WAN**
 
 Da der Virtual WAN-Hub eine verwaltete Entität ist und die Bereitstellung benutzerdefinierter Ressourcen wie z.B. VMs nicht zulässig ist, ist der Block für gemeinsame Dienste jetzt ein virtuelles Spoke-Netzwerk. Dieses Netzwerk hostet Funktionen wie den eingehenden Internetdatenverkehr über Azure Application Gateway oder eine virtuelle Netzwerkappliance. Der Datenverkehr zwischen der Umgebung für gemeinsame Dienste und virtuellen Back-End-Computern durchläuft nun den von Virtual WAN verwalteten Hub.
@@ -152,7 +152,7 @@ Da der Virtual WAN-Hub eine verwaltete Entität ist und die Bereitstellung benut
 
 In diesem Punkt hat Contoso die Migration von Geschäftsanwendungen in die Microsoft Cloud weitgehend abgeschlossen, wobei nur noch wenige Legacyanwendungen auf dem lokalen DC verbleiben.
 
-:::image type="content" source="./media/migrate-from-hub-spoke-topology/figure7.png" alt-text="Hub-and-Spoke":::
+:::image type="content" source="./media/migrate-from-hub-spoke-topology/figure7.png" alt-text="Optimieren der lokalen Konnektivität zur vollständigen Nutzung von Virtual WAN":::
 **Abbildung 7: Migration von Hub-and-Spoke unter Kundenverwaltung zu Virtual WAN**
 
 Um die vollständige Funktionalität von Azure Virtual WAN nutzen zu können, entscheidet sich Contoso dafür, die zuvor verwendeten lokalen VPN-Verbindungen außer Betrieb zu nehmen. Alle Zweigstellen, die weiterhin auf Hauptstandort- oder DC-Netzwerke zugreifen, können das globale Microsoft-Netzwerk mithilfe des integrierten Transitroutings von Azure Virtual WAN durchqueren.
@@ -163,7 +163,7 @@ Um die vollständige Funktionalität von Azure Virtual WAN nutzen zu können, en
 
 ## <a name="end-state-architecture-and-traffic-paths"></a>Endzustand von Architektur und Datenverkehrspfaden
 
-:::image type="content" source="./media/migrate-from-hub-spoke-topology/figure8.png" alt-text="Hub-and-Spoke":::
+:::image type="content" source="./media/migrate-from-hub-spoke-topology/figure8.png" alt-text="Endzustand von Architektur und Datenverkehrspfaden":::
 **Abbildung: Virtual WAN mit zwei Regionen**
 
 Dieser Abschnitt gibt anhand einiger Beispiele für Datenverkehrsflüsse einen Überblick darüber, wie diese Topologie den ursprünglichen Anforderungen entspricht.
@@ -178,7 +178,7 @@ Der Datenverkehr wird wie folgt weitergeleitet:
 
 * Der Virtual WAN-Hub in Asien leitet Datenverkehr lokal an das verbundene VNET weiter.
 
-:::image type="content" source="./media/migrate-from-hub-spoke-topology/flow1.png" alt-text="Hub-and-Spoke":::
+:::image type="content" source="./media/migrate-from-hub-spoke-topology/flow1.png" alt-text="Datenfluss 1":::
 
 ### <a name="path-2"></a>Pfad 2
 
@@ -190,7 +190,7 @@ Der Datenverkehr wird wie folgt weitergeleitet:
 
 * Die globale Hub-zu-Hub-Konnektivität von Virtual WAN ermöglicht den Transit des Datenverkehrs an ein in der Remoteregion verbundenes VNET.
 
-:::image type="content" source="./media/migrate-from-hub-spoke-topology/flow2.png" alt-text="Hub-and-Spoke":::
+:::image type="content" source="./media/migrate-from-hub-spoke-topology/flow2.png" alt-text="Datenfluss 2":::
 
 ### <a name="path-3"></a>Pfad 3
 
@@ -204,7 +204,7 @@ Der Datenverkehr wird wie folgt weitergeleitet:
 
 * Die globale Hub-zu-Hub-Konnektivität von Virtual WAN ermöglicht den Transit des Datenverkehrs.
 
-:::image type="content" source="./media/migrate-from-hub-spoke-topology/flow3.png" alt-text="Hub-and-Spoke":::
+:::image type="content" source="./media/migrate-from-hub-spoke-topology/flow3.png" alt-text="Datenfluss 3":::
 
 ### <a name="path-4"></a>Pfad 4
 
@@ -214,7 +214,7 @@ Der Datenverkehr wird wie folgt weitergeleitet:
 
 * Die globale Hub-to-Hub-Konnektivität von Virtual WAN ermöglicht einen nativen Transit für alle verbundenen Azure-VNETs, ohne dass eine weitere Benutzerkonfiguration erforderlich ist.
 
-:::image type="content" source="./media/migrate-from-hub-spoke-topology/flow4.png" alt-text="Hub-and-Spoke":::
+:::image type="content" source="./media/migrate-from-hub-spoke-topology/flow4.png" alt-text="Datenfluss 4":::
 
 ### <a name="path-5"></a>Pfad 5
 
@@ -226,13 +226,13 @@ Der Datenverkehr wird wie folgt weitergeleitet:
 
 * Der Virtual WAN-Hub in der Region „Europa, Westen“ leitet Datenverkehr lokal an das verbundene VNET weiter.
 
-:::image type="content" source="./media/migrate-from-hub-spoke-topology/flow5.png" alt-text="Hub-and-Spoke":::
+:::image type="content" source="./media/migrate-from-hub-spoke-topology/flow5.png" alt-text="Datenfluss 5":::
 
 ## <a name="security-and-policy-control-via-azure-firewall"></a>Sicherheits- und Richtliniensteuerung über Azure Firewall
 
 Contoso hat nun die Konnektivität zwischen allen Zweigstellen und VNets gemäß den zuvor in diesem Artikel beschriebenen Anforderungen sichergestellt. Um die geltenden Anforderungen in Bezug auf Sicherheitssteuerung und Netzwerkisolierung zu erfüllen, muss das Unternehmen den Datenverkehr weiterhin über das Hubnetzwerk trennen und protokollieren. Bisher wurde diese Funktion von einer virtuellen Netzwerkappliance übernommen. Contoso möchte zudem die vorhandenen Proxydienste außer Betrieb nehmen und native Azure-Dienste für die Filterung des ausgehenden Internetdatenverkehrs nutzen.
 
-:::image type="content" source="./media/migrate-from-hub-spoke-topology/security-policy.png" alt-text="Hub-and-Spoke":::
+:::image type="content" source="./media/migrate-from-hub-spoke-topology/security-policy.png" alt-text="Sicherheits- und Richtliniensteuerung über Azure Firewall":::
 **Abbildung: Azure Firewall in Virtual WAN (geschützter virtueller Hub)**
 
 Die folgenden allgemeinen Schritte sind für die Einführung von Azure Firewall in den Virtual WAN-Hubs erforderlich, um einen einheitlichen Ausgangspunkt für die Richtliniensteuerung zu ermöglichen. Weitere Informationen zu diesem Vorgang und zu geschützten virtuellen Hubs finden Sie unter [Dokumentation für Azure Firewall Manager](../firewall-manager/index.yml).
@@ -256,7 +256,7 @@ Der Datenverkehr wird wie folgt weitergeleitet:
 
 * Azure Firewall kann eine Richtlinie auf diese Datenflüsse anwenden.
 
-:::image type="content" source="./media/migrate-from-hub-spoke-topology/flow6.png" alt-text="Hub-and-Spoke":::
+:::image type="content" source="./media/migrate-from-hub-spoke-topology/flow6.png" alt-text="Datenfluss 6":::
 
 ### <a name="path-7"></a>Pfad 7
 
@@ -268,7 +268,7 @@ Der Datenverkehr wird wie folgt weitergeleitet:
 
 * Dieser Datenverkehr kann lokal mithilfe von Azure Firewall-FQDN-Regeln gefiltert oder zur Überprüfung an einen Sicherheitsdienst eines Drittanbieters gesendet werden.
 
-:::image type="content" source="./media/migrate-from-hub-spoke-topology/flow7.png" alt-text="Hub-and-Spoke":::
+:::image type="content" source="./media/migrate-from-hub-spoke-topology/flow7.png" alt-text="Datenfluss 7":::
 
 ### <a name="path-8"></a>Pfad 8
 
@@ -280,7 +280,7 @@ Der Datenverkehr wird wie folgt weitergeleitet:
 
 * Dieser Datenverkehr kann lokal mithilfe von Azure Firewall-FQDN-Regeln gefiltert oder zur Überprüfung an einen Sicherheitsdienst eines Drittanbieters gesendet werden.
 
-:::image type="content" source="./media/migrate-from-hub-spoke-topology/flow8.png" alt-text="Hub-and-Spoke":::
+:::image type="content" source="./media/migrate-from-hub-spoke-topology/flow8.png" alt-text="Datenfluss 8":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

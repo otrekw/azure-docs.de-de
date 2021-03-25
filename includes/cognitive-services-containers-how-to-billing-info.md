@@ -1,15 +1,15 @@
 ---
-author: IEvangelist
-ms.author: dapine
-ms.date: 02/19/2020
+author: aahill
+ms.author: aahi
+ms.date: 03/02/2021
 ms.service: cognitive-services
 ms.topic: include
-ms.openlocfilehash: 2ac93f5aba722eea78267a512999a5581a887b99
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d61813e723992f4381c5ea82121da8bbb70016dc
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95996423"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102032930"
 ---
 Abfragen des Containers werden gemäß des Tarifs der Azure-Ressource in Rechnung gestellt, die für `ApiKey` verwendet wird.
 
@@ -17,7 +17,7 @@ Für die Ausführung von Azure Cognitive Services-Containern besteht keine Lizen
 
 ### <a name="connect-to-azure"></a>Herstellen einer Verbindung mit Azure
 
-Der Container benötigt die Abrechnungsargumentwerte, um ausgeführt werden zu können. Diese Werte ermöglichen es dem Container, eine Verbindung mit dem Abrechnungsendpunkt herzustellen. Der Container meldet die Nutzung etwa alle 10 bis 15 Minuten. Wenn der Container nicht innerhalb des zulässigen Zeitfensters eine Verbindung mit Azure herstellt, wird der Container weiterhin ausgeführt, verarbeitet aber keine Anfragen, bis der Abrechnungsendpunkt wiederhergestellt wurde. Es erfolgen 10 Verbindungsversuche im gleichen Zeitintervall von 10 bis 15 Minuten. Wenn die Verbindung mit dem Abrechnungsendpunkt nicht innerhalb der 10 Versuche hergestellt werden kann, wird die Bereitstellung von Anforderungen durch den Container beendet.
+Der Container benötigt die Abrechnungsargumentwerte, um ausgeführt werden zu können. Diese Werte ermöglichen es dem Container, eine Verbindung mit dem Abrechnungsendpunkt herzustellen. Der Container meldet die Nutzung etwa alle 10 bis 15 Minuten. Wenn der Container nicht innerhalb des zulässigen Zeitfensters eine Verbindung mit Azure herstellt, wird der Container weiterhin ausgeführt, verarbeitet aber keine Anfragen, bis der Abrechnungsendpunkt wiederhergestellt wurde. Es erfolgen 10 Verbindungsversuche im gleichen Zeitintervall von 10 bis 15 Minuten. Wenn die Verbindung mit dem Abrechnungsendpunkt nicht innerhalb der 10 Versuche hergestellt werden kann, wird die Bereitstellung von Anforderungen durch den Container beendet. Ein Beispiel für die Informationen, die für die Abrechnung an Microsoft gesendet werden, finden Sie in den [Häufig gestellten Fragen zu Cognitive Services-Containern](../articles/cognitive-services/containers/container-faq.yml#how-does-billing-work).
 
 ### <a name="billing-arguments"></a>Abrechnungsargumente
 

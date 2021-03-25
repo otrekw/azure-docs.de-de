@@ -5,16 +5,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: de5fa6c881f808bcd580f6fae3329d579573d876
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 660c80a471739f7dc0163e915f45e3a067e1e4b2
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98931536"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871961"
 ---
 # <a name="troubleshoot-a-slow-or-failing-job-on-a-hdinsight-cluster"></a>Problembehandlung bei einem langsamen oder fehlerhaften Auftrag auf einem HDInsight-Cluster
 
-Wenn eine Anwendung, die Daten auf einem HDInsight-Cluster verarbeitet, entweder langsam ist oder ein Fehlercode angezeigt wird, haben Sie mehrere Möglichkeiten, die Problembehandlung durchzuführen. Falls die Ausführung Ihrer Aufträge länger als erwartet dauert oder es generell zu langsamen Reaktionszeiten kommt, liegen unter Umständen im Bereich vor Ihrem Cluster Fehler vor, z.B. für die Dienste, unter denen der Cluster ausgeführt wird. Die häufigste Ursache dieser Verlangsamungen ist aber eine unzureichende Skalierung. Wählen Sie beim Erstellen eines neuen HDInsight-Clusters die geeigneten [VM-Größen](hdinsight-component-versioning.md#default-node-configuration-and-virtual-machine-sizes-for-clusters) aus.
+Wenn eine Anwendung, die Daten auf einem HDInsight-Cluster verarbeitet, entweder langsam ist oder ein Fehlercode angezeigt wird, haben Sie mehrere Möglichkeiten, die Problembehandlung durchzuführen. Falls die Ausführung Ihrer Aufträge länger als erwartet dauert oder es generell zu langsamen Reaktionszeiten kommt, liegen unter Umständen im Bereich vor Ihrem Cluster Fehler vor, z.B. für die Dienste, unter denen der Cluster ausgeführt wird. Die häufigste Ursache dieser Verlangsamungen ist aber eine unzureichende Skalierung. Wählen Sie beim Erstellen eines neuen HDInsight-Clusters die geeigneten [VM-Größen](hdinsight-supported-node-configuration.md) aus.
 
 Sammeln Sie zum Diagnostizieren eines langsamen oder fehlerhaften Clusters Informationen zu allen Aspekten der Umgebung, z.B. zugeordnete Azure-Dienste, Clusterkonfiguration und Auftragsausführung. Ein hilfreicher Diagnosevorgang ist der Versuch, den Fehlerzustand in einem anderen Cluster zu reproduzieren.
 
@@ -34,7 +34,7 @@ HDInsight umfasst viele Tools, die Sie zum Identifizieren und Behandeln von Prob
 
 Beantworten Sie die folgenden Fragen zur Identifizierung des Problems:
 
-* Was wurde erwartet? Was ist stattdessen passiert?
+* Was wurde erwartet? Wie hat er sich stattdessen verhalten?
 * Wie lange hat die Durchführung des Prozesses gedauert? Wie lange hätte die Ausführung dauern sollen?
 * Wurden meine Tasks in diesem Cluster schon immer langsam durchgeführt? Ist die Ausführung in einem anderen Cluster schneller?
 * Wann ist dieses Problem zum ersten Mal aufgetreten? Wie häufig ist es seitdem aufgetreten?
@@ -51,7 +51,7 @@ Wichtige Clusterinformationen sind:
 
 Im Azure-Portal können diese Informationen bereitgestellt werden:
 
-![Informationen zu HDInsight im Azure-Portal](./media/hdinsight-troubleshoot-failed-cluster/hdi-azure-portal-info.png)
+:::image type="content" source="./media/hdinsight-troubleshoot-failed-cluster/hdi-azure-portal-info.png" alt-text="Informationen zu HDInsight im Azure-Portal":::
 
 Sie können auch die [Azure CLI](/cli/azure/) verwenden:
 
@@ -77,7 +77,7 @@ Jeder HDInsight-Cluster basiert auf verschiedenen Azure-Diensten und auf Open-So
 
 Apache Ambari ermöglicht die Verwaltung und Überwachung eines HDInsight-Clusters mit einer Webbenutzeroberfläche und einer REST-API. Ambari ist in Linux-basierten HDInsight-Clustern enthalten. Wählen Sie im Azure-Portal auf der Seite „HDInsight“ den Bereich **Cluster-Dashboard**.  Wählen Sie den Bereich **HDInsight-Cluster-Dashboard**, um die Ambari-Benutzeroberfläche zu öffnen, und geben Sie die Anmeldeinformationen für die Anmeldung am Cluster ein.  
 
-![Apache Ambari-Dashboard – Übersicht](./media/hdinsight-troubleshoot-failed-cluster/apache-ambari-overview.png)
+:::image type="content" source="./media/hdinsight-troubleshoot-failed-cluster/apache-ambari-overview.png" alt-text="Apache Ambari-Dashboard – Übersicht":::
 
 Wählen Sie zum Öffnen einer Liste mit den Dienstansichten auf der Azure-Portalseite die Option **Ambari Views**.  Der Inhalt dieser Liste richtet sich danach, welche Bibliotheken installiert sind. Beispielsweise werden ggf. YARN Queue Manager, Hive View und Tez View angezeigt.  Wählen Sie einen Dienstlink aus, um die Konfigurations- und Dienstinformationen anzuzeigen.
 
@@ -124,7 +124,7 @@ curl -u admin:{HTTP PASSWD} https://{CLUSTERNAME}.azurehdinsight.net/templeton/v
 
 In Ambari wird eine Warnung angezeigt, und es werden die Hosts angegeben, auf denen der WebHCat-Dienst ausgefallen ist. Sie können versuchen, den WebHCat-Dienst wieder verfügbar zu machen, indem Sie den Dienst auf seinem Host neu starten.
 
-![Apache Ambari – Neustarten des WebHCat-Servers](./media/hdinsight-troubleshoot-failed-cluster/restart-webhcat-server.png)
+:::image type="content" source="./media/hdinsight-troubleshoot-failed-cluster/restart-webhcat-server.png" alt-text="Apache Ambari – Neustarten des WebHCat-Servers":::
 
 Wenn ein WebHCat-Server immer noch nicht verfügbar ist, sollten Sie das Vorgangsprotokoll auf Fehlermeldungen prüfen. Ausführlichere Informationen erhalten Sie, indem Sie die Dateien `stderr` und `stdout` überprüfen, auf die auf den Knoten verwiesen wird.
 
@@ -173,7 +173,7 @@ Auf YARN-Ebene gibt es zwei Arten von Timeouts:
 
     In der folgenden Abbildung ist für die joblauncher-Warteschlange eine Überauslastung von 714,4% dargestellt. Dies ist akzeptabel, solange die Standardwarteschlange noch über freie Kapazität verfügt, die ausgeliehen werden kann. Wenn der Cluster aber vollständig ausgelastet ist und der YARN-Arbeitsspeicher eine Kapazitätsauslastung von 100% aufweist, müssen neue Aufträge warten. Dies führt letztendlich zu Timeouts.
 
-    ![Warteschlangenansicht für das HDInsight-Auftragsstartprogramm](./media/hdinsight-troubleshoot-failed-cluster/hdi-job-launcher-queue.png)
+    :::image type="content" source="./media/hdinsight-troubleshoot-failed-cluster/hdi-job-launcher-queue.png" alt-text="Warteschlangenansicht für das HDInsight-Auftragsstartprogramm":::
 
     Es gibt zwei Möglichkeiten, dieses Problem zu beheben: Reduzieren Sie entweder die Geschwindigkeit der neuen Aufträge, oder erhöhen Sie die Verbrauchsgeschwindigkeit alter Aufträge, indem Sie den Cluster zentral hochskalieren.
 
@@ -205,7 +205,7 @@ Gehen Sie wie folgt vor, um diese Probleme zu diagnostizieren:
 
 Die Seite **Stack and Versions** (Stapel und Versionen) der Ambari-Benutzeroberfläche enthält Informationen zur Konfiguration und zum Dienstversionsverlauf von Clusterdiensten.  Fehlerhafte Hadoop-Dienstbibliotheksversionen können eine Ursache für einen Clusterfehler sein.  Wählen Sie in der Ambari-Benutzeroberfläche das Menü **Admin** und dann die Option **Stack and Versions** (Stapel und Versionen).  Wählen Sie auf der Seite die Registerkarte **Versions** (Versionen), um Informationen zur Dienstversion anzuzeigen:
 
-![Apache Ambari-Stapel und -Versionen](./media/hdinsight-troubleshoot-failed-cluster/ambari-stack-versions.png)
+:::image type="content" source="./media/hdinsight-troubleshoot-failed-cluster/ambari-stack-versions.png" alt-text="Apache Ambari-Stapel und -Versionen":::
 
 ## <a name="step-5-examine-the-log-files"></a>Schritt 5: Untersuchen der Protokolldateien
 
@@ -229,7 +229,7 @@ Die HDInsight Ambari-Benutzeroberfläche enthält mehrere Abschnitte mit **Quick
 
 Beispiel für Hadoop Distributed File System-Protokolle:
 
-![Ambari-Quicklinks zu Protokolldateien](./media/hdinsight-troubleshoot-failed-cluster/apache-ambari-quick-links.png)
+:::image type="content" source="./media/hdinsight-troubleshoot-failed-cluster/apache-ambari-quick-links.png" alt-text="Ambari-Quicklinks zu Protokolldateien":::
 
 ### <a name="view-hadoop-generated-log-files"></a>Anzeigen der von Hadoop-generierten Protokolldateien
 
