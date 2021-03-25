@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: d8119c56c26ed32db136064d93775d21a71f238f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92778655"
 ---
 # <a name="analyze-edge-node-performance-in-microsoft-azure-cdn"></a>Analysieren der Leistung von Edgeknoten in Microsoft Azure CDN
@@ -55,7 +55,7 @@ Dieses Dashboard besteht aus folgenden Elementen:
     ![Schaltfläche „Verwalten“ auf dem CDN-Profilblatt](./media/cdn-edge-performance/cdn-manage-btn.png)
    
     Das CDN-Verwaltungsportal wird geöffnet.
-2. Zeigen Sie auf die Registerkarte **Analysen** und anschließend auf das Flyout **Edge Perfomance Analytics** .  Klicken Sie auf **Dashboard** .
+2. Zeigen Sie auf die Registerkarte **Analysen** und anschließend auf das Flyout **Edge Perfomance Analytics**.  Klicken Sie auf **Dashboard**.
    
     Das Edge Performance Analytics-Dashboard wird angezeigt.
 
@@ -81,7 +81,7 @@ Zweck dieser Metriken ist es festzustellen, ob die Cache-Effizienz verbessert we
 
 * Geringere Auslastung auf dem Ursprungsserver, die zu Folgendem führen kann:
   * Bessere Leistung des Webservers
-  * Senkung der Betriebskosten
+  * Senkung der Betriebskosten.
 * Schnellere Datenübermittlung, da mehr Anforderungen direkt vom CDN erfüllt werden.
 
 | Feld | BESCHREIBUNG |
@@ -117,7 +117,7 @@ Diese Metriken dient zum Nachverfolgen der CDN-Gesamtleistung für den Datenverk
 | Feld | BESCHREIBUNG |
 | --- | --- |
 | Transfer Rate |Gibt die durchschnittliche Rate an, mit der Inhalte aus dem CDN an den Anfordernden übertragen wurden. |
-| Duration |Gibt die durchschnittliche Zeit in Millisekunden an, die das Übermitteln eines Assets an einen Anfordernden (z. B. Webbrowser) gedauert hat. |
+| Dauer (Duration) |Gibt die durchschnittliche Zeit in Millisekunden an, die das Übermitteln eines Assets an einen Anfordernden (z. B. Webbrowser) gedauert hat. |
 | Compressed Request Rate |Gibt den Prozentsatz der Treffer an, die vom CDN (von Edgeservern) an den Anfordernden (z. B. Webbrowser) in einem komprimierten Format übermittelt wurde. |
 | 4xx Error Rate |Gibt den Prozentsatz der Treffer an, die einen Statuscode vom Typ „4xx“ generiert haben. |
 | 5xx Error Rate |Gibt den Prozentsatz der Treffer an, die einen Statuscode vom Typ „5xx“ generiert haben. |
@@ -143,7 +143,7 @@ Jeder Bericht in diesem Modul enthält ein Diagramm und Statistiken zu Bandbreit
     ![Schaltfläche „Verwalten“ auf dem CDN-Profilblatt](./media/cdn-edge-performance/cdn-manage-btn.png)
    
     Das CDN-Verwaltungsportal wird geöffnet.
-2. Zeigen Sie auf die Registerkarte **Analysen** und anschließend auf das Flyout **Edge Perfomance Analytics** .  Klicken Sie auf **Großes HTTP-Objekt** .
+2. Zeigen Sie auf die Registerkarte **Analysen** und anschließend auf das Flyout **Edge Perfomance Analytics**.  Klicken Sie auf **Großes HTTP-Objekt**.
    
     Der Bildschirm mit Edge Performance Analytics-Berichten wird angezeigt.
 
@@ -163,7 +163,7 @@ Jeder Bericht in diesem Modul enthält ein Diagramm und Statistiken zu Bandbreit
 | CONFIG_NOCACHE Details |Enthält ein Diagramm der 10 am häufigsten verwendeten URLs für Assets, die aufgrund der CDN-Konfiguration des Kunden nicht im Cache zwischengespeichert wurden. Diese Arten von Assets werden direkt vom Ursprungsserver bereitgestellt. Direkt unter diesem Diagramm werden Statistiken zu den 100 am häufigsten verwendeten URLs für diese Arten von Assets angezeigt. |
 | UNCACHEABLE Details |Enthält ein Diagramm der 10 am häufigsten verwendeten URLs für Assets, die aufgrund von Daten im Anforderungsheader nicht im Cache zwischengespeichert werden konnten. Direkt unter diesem Diagramm werden Statistiken zu den 100 am häufigsten verwendeten URLs für diese Arten von Assets angezeigt. |
 | TCP_HIT Details |Enthält ein Diagramm der 10 am häufigsten verwendeten URLs für Assets, die direkt aus dem Cache bereitgestellt werden. Direkt unter diesem Diagramm werden Statistiken zu den 100 am häufigsten verwendeten URLs für diese Arten von Assets angezeigt. |
-| TCP_MISS Details |Enthält ein Diagramm der 10 am häufigsten verwendeten URLs für Assets mit dem Cachestatus TCP_MISS. Direkt unter diesem Diagramm werden Statistiken zu den 100 am häufigsten verwendeten URLs für diese Arten von Assets angezeigt. |
+| TCP_MISS Details |Enthält ein Diagramm der 10 am häufigsten verwendeten URLs für Assets mit dem Cachestatus TCP_MISS.  Direkt unter diesem Diagramm werden Statistiken zu den 100 am häufigsten verwendeten URLs für diese Arten von Assets angezeigt. |
 | TCP_EXPIRED_HIT Details |Enthält ein Diagramm der 10 am häufigsten verwendeten URLs für veraltete Assets, die direkt vom POP bereitgestellt wurden. Direkt unter diesem Diagramm werden Statistiken zu den 100 am häufigsten verwendeten URLs für diese Arten von Assets angezeigt. |
 | TCP_EXPIRED_MISS Details |Enthält ein Diagramm der 10 am häufigsten verwendeten URLs für veraltete Assets, für die eine neue Version vom Ursprungsserver abgerufen werden musste. Direkt unter diesem Diagramm werden Statistiken zu den 100 am häufigsten verwendeten URLs für diese Arten von Assets angezeigt. |
 | TCP_CLIENT_REFRESH_MISS Details |Enthält ein Balkendiagramm der 10 am häufigsten verwendeten URLs für Assets, die aufgrund einer Anforderung vom Typ „no-cache“ des Clients von einem Ursprungsserver abgerufen wurden. Direkt unter diesem Diagramm werden Statistiken zu den 100 am häufigsten verwendeten URLs für diese Arten von Anforderungen angezeigt. |
@@ -183,7 +183,7 @@ Jeder Bericht in diesem Modul enthält ein Diagramm und Statistiken zu Bandbreit
 | 502 Errors |Enthält ein Balkendiagramm der 10 häufigsten Anforderungen, die zum Antwortcode „502 Ungültiges Gateway“ geführt haben. Der Antwortcode „502 Ungültiges Gateway“ tritt auf, wenn zwischen einem Server und HTTP-Proxy ein Protokollfehler auftritt. Bei unserem CDN tritt der Antwortcode „502 Ungültiges Gateway“ üblicherweise dann auf, wenn ein Kundenursprungsserver eine ungültige Antwort an einen Edgeserver zurückgibt. Eine Antwort ist ungültig, wenn sie nicht analysiert werden kann oder unvollständig ist. |
 | 5xx Errors |Enthält ein Balkendiagramm der 10 häufigsten Anforderungen, die zu einem Antwortcode im 500-er Bereich geführt haben.  Von diesem Bericht ausgeschlossen sind die Antwortcodes „502 Ungültiges Gateway“ und „504 Gatewaytimeout“. |
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="see-also"></a>Siehe auch
 * [Übersicht über das Azure CDN](cdn-overview.md)
 * [Echtzeitstatistiken in Microsoft Azure CDN](cdn-real-time-stats.md)
 * [Überschreiben des HTTP-Standardverhaltens mithilfe der Regel-Engine](./cdn-verizon-premium-rules-engine.md)

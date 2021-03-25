@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 02/08/2021
 ms.openlocfilehash: 24de9e4eabfbc03e942868cce7560b5df093e1ad
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100365122"
 ---
 # <a name="quickstart-create-an-open-source-redis-cache"></a>Schnellstart: Erstellen einer Redis Cache-Open-Source-Instanz
@@ -20,7 +20,7 @@ Azure Cache for Redis ermöglicht die Verwendung einer vollständig verwalteten 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Sie benötigen ein Azure-Abonnement, bevor Sie beginnen können. Falls Sie noch nicht über ein Abonnement verfügen, sollten Sie zunächst ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/).
+Sie benötigen ein Azure-Abonnement. Falls Sie noch nicht über ein Abonnement verfügen, sollten Sie zunächst ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/).
 
 ## <a name="create-a-cache"></a>Erstellen eines Caches
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]

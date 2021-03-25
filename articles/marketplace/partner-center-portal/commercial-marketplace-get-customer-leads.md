@@ -8,10 +8,10 @@ author: trkeya
 ms.author: trkeya
 ms.date: 10/01/2020
 ms.openlocfilehash: 1d5f2248d94796d5e3ee76301642a95abddebfe4
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94489334"
 ---
 # <a name="customer-leads-from-your-commercial-marketplace-offer"></a>Kundenleads aus Ihrem Angebot im kommerziellen Marketplace
@@ -36,7 +36,7 @@ Stellen, an denen Leads generiert werden:
 
     ![Schaltfläche „Erstellen“ für Windows Server](./media/commercial-marketplace-get-customer-leads/windows-server-create.png)
 
-- Ein Kunde klickt auf **Testlaufwerk** oder **Kostenlose Testversion** , um Ihr Angebot auszuprobieren. (Kostenlose) Testversionen sind der optimale Weg, um Ihre Produkte umgehend und ohne Zugangsbeschränkungen für potenzielle Kunden zugänglich zu machen.
+- Ein Kunde klickt auf **Testlaufwerk** oder **Kostenlose Testversion**, um Ihr Angebot auszuprobieren. (Kostenlose) Testversionen sind der optimale Weg, um Ihre Produkte umgehend und ohne Zugangsbeschränkungen für potenzielle Kunden zugänglich zu machen.
 
     ![Schaltfläche „Testlaufwerk“ für Dynamics 365](./media/commercial-marketplace-get-customer-leads/dynamics-365-test-drive.png)
 
@@ -50,9 +50,9 @@ Stellen, an denen Leads generiert werden:
 
 Für jeden Lead, den Sie während des Kundengewinnungsprozesses empfangen, gibt es Daten in bestimmten Feldern. Das erste Feld, auf das Sie achten sollten, ist das Feld `LeadSource` in folgendem Format: **Quelle-Aktion** | **Angebot**.
 
-**Quellen** : Der Wert für dieses Feld wird basierend auf dem Marketplace gefüllt, über den der Lead generiert wurde. Mögliche Werte sind `"AzureMarketplace"`, `"AzurePortal"` und `"AppSource (SPZA)"`.
+**Quellen**: Der Wert für dieses Feld wird basierend auf dem Marketplace gefüllt, über den der Lead generiert wurde. Mögliche Werte sind `"AzureMarketplace"`, `"AzurePortal"` und `"AppSource (SPZA)"`.
 
-**Aktionen** : Der Wert in diesem Feld spiegelt die Aktion wider, die der Kunden in dem Marketplace ausgeführt hat, über den der Lead generiert wurde.
+**Aktionen**: Der Wert in diesem Feld spiegelt die Aktion wider, die der Kunden in dem Marketplace ausgeführt hat, über den der Lead generiert wurde.
 
 Mögliche Werte:
 
@@ -62,7 +62,7 @@ Mögliche Werte:
 - **"Create":** Diese Aktion findet nur im Azure-Portal statt, wenn ein Kunde über sein Konto Ihr Angebot erwirbt.
 - **"StartTestDrive":** Diese Aktion gilt nur für die Option **Testlaufwerke** und wird generiert, wenn ein Kunde seine Testversion startet.
 
-**Angebote** : Sie können mehrere Angebote im kommerziellen Marketplace veröffentlichen. Der Wert für dieses Feld wird basierend auf dem Angebot ausgefüllt, über das der Lead generiert wurde. Die Herausgeber-ID und die Angebots-ID werden in dieses Feld eingefügt. Dabei handelt es sich jeweils um die Werte, die Sie angegeben haben, als Sie das Angebot im Marketplace veröffentlicht haben.
+**Angebote**: Sie können mehrere Angebote im kommerziellen Marketplace veröffentlichen. Der Wert für dieses Feld wird basierend auf dem Angebot ausgefüllt, über das der Lead generiert wurde. Die Herausgeber-ID und die Angebots-ID werden in dieses Feld eingefügt. Dabei handelt es sich jeweils um die Werte, die Sie angegeben haben, als Sie das Angebot im Marketplace veröffentlicht haben.
 
 Die folgenden Beispiele zeigen Werte im erwarteten Format `publisherid.offerid`: 
 

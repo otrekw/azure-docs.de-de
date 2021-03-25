@@ -14,10 +14,10 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.openlocfilehash: 4c71ddbf1d2b435697b2707acf0b1262f2c5dc31
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94517188"
 ---
 # <a name="deploy-secure-applications-on-azure"></a>Bereitstellen von sicheren Anwendungen in Azure
@@ -42,7 +42,7 @@ Webanwendungen sind zunehmend Ziele böswilliger Angriffe, die allgemein bekannt
 
 Die [Azure Application Gateway-WAF](../../web-application-firewall/ag/ag-overview.md) bietet zentralisierten Schutz Ihrer Webanwendungen vor gängigen Exploits und Sicherheitsrisiken. Der WAF basiert auf Regeln aus den [OWASP-Kernregelsätzen](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) (3.0 oder 2.2.9).
 
-### <a name="create-an-incident-response-plan"></a>Erstellen eines Plans für Reaktion auf Vorfälle
+### <a name="create-an-incident-response-plan"></a>Erstellen eines Plans zur Reaktion auf Incidents
 
 Das Vorbereiten eines Plans für Reaktion auf Vorfälle ist entscheidend, damit Sie in der Lage sind, neue Bedrohungen zu bewältigen, die im Laufe der Zeit auftreten können. Zum Vorbereiten eines solchen Plans gehören das Bestimmen geeigneter Sicherheitsnotfallkontakte und das Erstellen von Sicherheitswartungsplänen für Code, der von anderen Gruppen in der Organisation übernommen wurde, und für lizenzierten Code von Drittanbietern.
 

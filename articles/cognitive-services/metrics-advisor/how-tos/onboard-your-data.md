@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: mbullwin
 ms.openlocfilehash: fe3b87c733f54d8bd52c4d973977e3c8cbfefe19
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92043200"
 ---
 # <a name="how-to-onboard-your-metric-data-to-metrics-advisor"></a>Gewusst wie: Durchführen des Metrics Advisor-Onboardings für Ihre Metrikdaten
@@ -45,14 +45,14 @@ Wir empfehlen Ihnen zwei Ansätze, um das Laden von partiellen Daten zu vermeide
 
 ## <a name="add-a-data-feed-using-the-web-based-workspace"></a>Hinzufügen eines Datenfeeds mit dem webbasierten Arbeitsbereich
 
-Klicken Sie auf **Erste Schritte** , nachdem Sie sich an Ihrem Metrics Advisor-Portal angemeldet und Ihren Arbeitsbereich ausgewählt haben. Klicken Sie anschließend auf der Hauptseite des Arbeitsbereichs im linken Menü auf **Add data feed** (Datenfeed hinzufügen).
+Klicken Sie auf **Erste Schritte**, nachdem Sie sich an Ihrem Metrics Advisor-Portal angemeldet und Ihren Arbeitsbereich ausgewählt haben. Klicken Sie anschließend auf der Hauptseite des Arbeitsbereichs im linken Menü auf **Add data feed** (Datenfeed hinzufügen).
 
 ### <a name="add-connection-settings"></a>Hinzufügen von Verbindungseinstellungen
 
 Als Nächstes geben Sie die Parameter für die Verbindungsherstellung mit Ihrer Zeitreihen-Datenquelle ein. 
-* **Quelltyp** : Der Typ der Datenquelle, auf der Ihre Zeitreihendaten gespeichert werden.
-* **Granularität** : Das Intervall zwischen aufeinanderfolgenden Datenpunkten in Ihren Zeitreihendaten. Derzeit wird von Metrics Advisor Folgendes unterstützt: „Jährlich“, „Monatlich“, „Wöchentlich“, „Täglich“, „Stündlich“ und „Benutzerdefiniert“. Das kürzeste Intervall, das von der Anpassungsoption unterstützt wird, beträgt 60 Sekunden.
-  * **Sekunden** : Gibt die Anzahl von Sekunden an, wenn *granularityName* auf *Customize* (Anpassen) festgelegt ist.
+* **Quelltyp**: Der Typ der Datenquelle, auf der Ihre Zeitreihendaten gespeichert werden.
+* **Granularität**: Das Intervall zwischen aufeinanderfolgenden Datenpunkten in Ihren Zeitreihendaten. Derzeit wird von Metrics Advisor Folgendes unterstützt: „Jährlich“, „Monatlich“, „Wöchentlich“, „Täglich“, „Stündlich“ und „Benutzerdefiniert“. Das kürzeste Intervall, das von der Anpassungsoption unterstützt wird, beträgt 60 Sekunden.
+  * **Sekunden**: Gibt die Anzahl von Sekunden an, wenn *granularityName* auf *Customize* (Anpassen) festgelegt ist.
 * **Ingest data since (UTC)** (Daten erfassen seit (UTC)): Die Baselinestartzeit für die Datenerfassung. *startOffsetInSeconds* wird häufig zum Hinzufügen eines Versatzwerts verwendet, um die Datenkonsistenz zu fördern.
 
 Als Nächstes müssen Sie die Verbindungsinformationen für die Datenquelle und die benutzerdefinierten Abfragen angeben, mit denen die Daten in das erforderliche Schema konvertiert werden. Ausführliche Informationen zu den anderen Feldern und zum Verbinden unterschiedlicher Arten von Datenquellen finden Sie unter [Hinzufügen von Datenfeeds aus verschiedenen Datenquellen](../data-feeds-from-different-sources.md).
@@ -72,7 +72,7 @@ Wählen Sie die entsprechenden Felder aus, nachdem das Datenschema geladen wurde
 
 Wenn der Zeitstempel eines Datenpunkts weggelassen wurde, wird von Metrics Advisor stattdessen der Zeitstempel verwendet, zu dem der Datenpunkt erfasst wurde. Sie können für jeden Datenfeed maximal eine Spalte als Zeitstempel angeben. Gehen Sie wie folgt vor, falls Sie eine Meldung erhalten, dass eine Spalte nicht als Zeitstempel angegeben werden kann: Überprüfen Sie Ihre Abfrage bzw. Datenquelle und das Vorhandensein mehrerer Zeitstempel im Abfrageergebnis (nicht nur in den Vorschaudaten). Beim Durchführen der Datenerfassung kann von Metrics Advisor für die jeweilige Quelle nur jeweils ein Teil (z. B. ein Tag oder eine Stunde, je nach Granularität) der Zeitreihendaten genutzt werden.
 
-|Auswahl  |Beschreibung  |Hinweise  |
+|Auswahl  |BESCHREIBUNG  |Hinweise  |
 |---------|---------|---------|
 | **Anzeigename** | Name, der in Ihrem Arbeitsbereich anstelle des ursprünglichen Spaltennamens angezeigt werden soll. | |
 |**Timestamp**     | Der Zeitstempel eines Datenpunkts. Wenn kein Wert angegeben ist, wird von Metrics Advisor stattdessen der Zeitstempel der Datenpunkterfassung verwendet. Sie können für jeden Datenfeed maximal eine Spalte als Zeitstempel angeben.        | Dies ist optional. Es sollte maximal eine Spalte angegeben werden. Falls ein Fehler der Art **Spalte kann nicht als Zeitstempel angegeben werden** angezeigt wird, sollten Sie Ihre Abfrage oder Datenquelle auf doppelte Zeitstempel überprüfen.      |
@@ -177,18 +177,18 @@ Es gibt mehrere erweiterte Einstellungen, um die Erfassung von Daten auf angepas
 
 ## <a name="specify-a-name-for-the-data-feed-and-check-the-ingestion-progress"></a>Angeben eines Namens für den Datenfeed und Überprüfen des Erfassungsstatus
  
-Geben Sie einen benutzerdefinierten Namen für den Datenfeed an, der in Ihrem Arbeitsbereich angezeigt werden soll. Klicken Sie anschließend auf **Absenden** . Auf der Seite mit den Datenfeeddetails können Sie die Statusanzeige für die Erfassung verwenden, um die Statusinformationen anzuzeigen.
+Geben Sie einen benutzerdefinierten Namen für den Datenfeed an, der in Ihrem Arbeitsbereich angezeigt werden soll. Klicken Sie anschließend auf **Absenden**. Auf der Seite mit den Datenfeeddetails können Sie die Statusanzeige für die Erfassung verwenden, um die Statusinformationen anzuzeigen.
 
 :::image type="content" source="../media/datafeeds/ingestion-progress.png" alt-text="Statusanzeige für die Erfassung" lightbox="../media/datafeeds/ingestion-progress.png":::
 
 
 Überprüfen Sie die Erfassungsfehlerdetails wie folgt: 
 
-1. Klicken Sie auf **Details anzeigen** .
-2. Klicken Sie auf **Status** , und wählen Sie anschließend **Fehlgeschlagen** oder **Fehler** aus.
+1. Klicken Sie auf **Details anzeigen**.
+2. Klicken Sie auf **Status**, und wählen Sie anschließend **Fehlgeschlagen** oder **Fehler** aus.
 3. Zeigen Sie auf eine fehlgeschlagene Erfassung, und sehen Sie sich die angezeigte Meldung mit den Details an.
 
-:::image type="content" source="../media/datafeeds/check-failed-ingestion.png" alt-text="Statusanzeige für die Erfassung":::
+:::image type="content" source="../media/datafeeds/check-failed-ingestion.png" alt-text="Überprüfen der fehlgeschlagenen Erfassung":::
 
 Mit dem Status *Fehlgeschlagen* wird angegeben, dass der Erfassungsvorgang für diese Datenquelle zu einem späteren Zeitpunkt wiederholt wird.
 Beim Status *Fehler* wird von Metrics Advisor für die Datenquelle kein weiterer Versuch durchgeführt. Um die Daten erneut zu laden, müssen Sie manuell einen Abgleich bzw. den erneuten Ladevorgang auslösen.

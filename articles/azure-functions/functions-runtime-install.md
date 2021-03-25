@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: anwestg
 ms.openlocfilehash: 73b9533fa00c783e1cfb85270198f5c00c66afd5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86540382"
 ---
 # <a name="install-the-azure-functions-runtime-preview-2"></a>Installieren der Vorschauversion 2 der Azure Functions-Laufzeit
@@ -53,7 +53,7 @@ Das Installationsprogramm für die Vorschauversion von Azure Functions Runtime f
     ![Installationsprogramm für die Vorschauversion der Azure Functions-Laufzeit – Rollenauswahl][3]
 
     > [!NOTE]
-    > Sie können die **Functions-Workerrolle** auf vielen anderen Computern installieren. Befolgen Sie dazu diese Anweisungen, und wählen Sie nur **Functions-Workerrolle**  im Installationsprogramm aus.
+    > Sie können die **Functions-Workerrolle** auf vielen anderen Computern installieren. Befolgen Sie dazu diese Anweisungen, und wählen Sie nur **Functions-Workerrolle** im Installationsprogramm aus.
 
 1. Klicken Sie auf **Weiter**, damit der **Setup-Assistent für Azure Functions Runtime** mit der Installation auf dem Computer beginnt.
 1. Nach Abschluss startet der Setup-Assistent das Konfigurationstool für die **Azure Functions-Laufzeit**.
@@ -113,7 +113,7 @@ So erstellen Sie Ihre erste Funktion in der Vorschauversion der Azure Functions-
 
     ![Portalabonnementplan und -name für die Vorschauversion der Azure Functions-Laufzeit][16]
 
-1. Ihre Funktions-Apps werden im linken Bereich des Portals aufgelistet.  Um eine neue Funktions-App zu erstellen, wählen Sie die Überschrift **Funktions-Apps** aus und klicken Sie auf die Option **+** .
+1. Ihre Funktions-Apps werden im linken Bereich des Portals aufgelistet.  Um eine neue Funktions-App zu erstellen, wählen Sie die Überschrift **Funktions-Apps** aus und klicken Sie auf die Option **+**.
 
 1. Geben Sie einen Namen für Ihre Funktions-App ein und wählen Sie das richtige Abonnement aus. Wählen Sie dann die Version der Azure Functions-Laufzeit aus, für die Sie programmieren möchten, und klicken Sie auf **Erstellen**.
 

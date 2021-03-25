@@ -1,41 +1,62 @@
 ---
-title: C#-Entwicklerreferenz zu Azure Functions
-description: Erfahren Sie, wie Azure Functions mithilfe von C# entwickelt wird.
+title: Entwickeln von C#-Klassenbibliotheksfunktionen mithilfe von Azure Functions
+description: Hier erfahren Sie, wie Sie C# zum Entwickeln und Veröffentlichen von Code als Klassenbibliotheken verwenden, der prozessintern mit der Azure Functions-Runtime ausgeführt wird.
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 07/24/2020
-ms.openlocfilehash: 335cc3017e7b016666324306181c90a0e405a956
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: c7d14599ec1ebbcb94e0c0f3985a3b857f9353dc
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98806322"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102563879"
 ---
-# <a name="azure-functions-c-developer-reference"></a>C#-Entwicklerreferenz zu Azure Functions
+# <a name="develop-c-class-library-functions-using-azure-functions"></a>Entwickeln von C#-Klassenbibliotheksfunktionen mithilfe von Azure Functions
 
 <!-- When updating this article, make corresponding changes to any duplicate content in functions-reference-csharp.md -->
 
 Dieser Artikel ist eine Einführung in die Entwicklung von Azure Functions durch Verwenden von C# in .NET-Klassenbibliotheken.
 
+>[!IMPORTANT]
+>Dieser Artikel unterstützt Funktionen der .NET-Klassenbibliothek, die prozessintern mit der Runtime ausgeführt werden. Functions unterstützt auch .NET 5.x, indem die C#-Funktionen prozessextern ausgeführt und von der Runtime isoliert werden. Weitere Informationen finden Sie unter [.NET-isolierte Prozessfunktionen](dotnet-isolated-process-guide.md).
+
 Für C#-Entwickler sind möglicherweise auch folgende Artikel interessant:
 
 | Erste Schritte | Konzepte| Geführte Tutorials/Beispiele |
-| -- | -- | -- | 
+|--| -- |--| 
 | <ul><li>[Verwenden von Visual Studio](functions-create-your-first-function-visual-studio.md)</li><li>[Verwendung von Visual Studio Code](create-first-function-vs-code-csharp.md)</li><li>[Verwenden von Befehlszeilentools](create-first-function-cli-csharp.md)</li></ul> | <ul><li>[Hostingoptionen](functions-scale.md)</li><li>[Überlegungen&nbsp;zur Leistung](functions-best-practices.md)</li><li>[Visual Studio-Entwicklung](functions-develop-vs.md)</li><li>[Dependency Injection](functions-dotnet-dependency-injection.md)</li></ul> | <ul><li>[Erstellen serverloser Anwendungen](/learn/paths/create-serverless-applications/)</li><li>[Beispiele für C#](/samples/browse/?products=azure-functions&languages=csharp)</li></ul> |
 
 Azure Functions unterstützt die Programmiersprachen C# und C#-Skript. Wenn Sie nach Anleitungen zum [Verwenden von C# im Azure-Portal](functions-create-function-app-portal.md) suchen, lesen Sie [C#-Skriptentwicklerreferenz (C#-Skript, CSX) zu Azure Functions](functions-reference-csharp.md).
 
 ## <a name="supported-versions"></a>Unterstützte Versionen
 
-Versionen der Functions-Laufzeit funktionieren mit bestimmten Versionen von .NET. Die folgende Tabelle zeigt die höchste Ebene von .NET Core und .NET Framework und .NET Core, die mit einer bestimmten Version von Functions in Ihrem Projekt verwendet werden kann. 
+Versionen der Functions-Laufzeit funktionieren mit bestimmten Versionen von .NET. Weitere Informationen zu den Functions-Versionen finden Sie unter [Übersicht über die Runtimeversionen von Azure Functions](functions-versions.md).
+
+In der folgenden Tabelle sind die höchsten .NET Core- bzw. .NET Framework-Versionen aufgeführt, die mit einer bestimmten Version von Functions verwendet werden können. 
 
 | Version der Functions-Laufzeit | Maximale .NET-Version |
 | ---- | ---- |
-| Functions 3.x | .NET Core 3.1 |
-| Functions 2.x | .NET Core 2.2 |
+| Functions 3.x | .NET Core 3.1<br/>.NET 5.0<sup>1</sup> |
+| Functions 2.x | .NET Core 2.2<sup>2</sup> |
 | Functions 1.x | .NET Framework 4.7 |
 
-Weitere Informationen finden Sie unter [Versionen der Azure Functions-Laufzeit: Übersicht](functions-versions.md).
+<sup>1</sup> Muss [prozessextern](dotnet-isolated-process-guide.md) ausgeführt werden  
+<sup>2</sup> Weitere Informationen finden Sie unter [Überlegungen zu Functions-Versionen 2.x](#functions-v2x-considerations).   
+
+Aktuelle Informationen zu Azure Functions-Releases (einschließlich Informationen zur Entfernung bestimmter älterer Nebenversionen) finden Sie unter [Azure App Service-Ankündigungen](https://github.com/Azure/app-service-announcements/issues).
+
+### <a name="functions-v2x-considerations"></a>Überlegungen zu Functions-Versionen 2.x
+
+Funktions-Apps für die neueste 2.x-Version (`~2`) werden automatisch upgegradet, damit sie auf .NET Core 3.1 ausgeführt werden können. Aufgrund von Breaking Changes zwischen den .NET Core-Versionen können nicht alle Apps, die für .NET Core 2.2 entwickelt und kompiliert wurden, sicher auf .NET Core 3.1 upgegradet werden. Sie können dieses Upgrade deaktivieren, indem Sie Ihre Funktions-App an `~2.0` anheften. Functions erkennt auch inkompatible APIs und kann Ihre App an `~2.0` anheften, um eine fehlerhafte Ausführung unter .NET Core 3.1 zu verhindern. 
+
+>[!NOTE]
+>Wenn Ihre Funktions-App an `~2.0` angeheftet ist und Sie dieses Versionsziel in `~2` ändern, wird Ihre Funktions-App möglicherweise unterbrochen. Wenn Sie mithilfe von ARM-Vorlagen bereitstellen, überprüfen Sie die Version in Ihren Vorlagen. Wenn dies der Fall ist, ändern Sie die Zielversion zurück in `~2.0`, und beheben Sie Kompatibilitätsprobleme. 
+
+Funktions-Apps für `~2.0` funktionieren weiterhin unter .NET Core 2.2. Für diese Version von .NET Core werden keine Sicherheitsupdates und keine sonstigen Wartungsupdates mehr durchgeführt. Weitere Informationen finden Sie [auf dieser Ankündigungsseite](https://github.com/Azure/app-service-announcements/issues/266). 
+
+Sie sollten daran arbeiten, dass Ihre Funktionen so bald wie möglich mit .NET Core 3.1 kompatibel sind. Nachdem Sie diese Probleme behoben haben, ändern Sie Ihre Version wieder in `~2`, oder führen Sie ein Upgrade auf `~3` durch. Weitere Informationen zu Zielversionen der Functions-Runtime finden Sie unter [Einstellen von Runtimeversionen von Azure Functions als Ziel](set-runtime-version.md).
+
+Wenn Sie die Funktion unter Linux in einem Premium- oder Dedicated-Plan (App Service) ausführen, können Sie Ihre Version anheften, indem Sie stattdessen ein bestimmtes Image als Ziel festlegen. Legen Sie hierzu die Sitekonfigurationseinstellung `linuxFxVersion` auf `DOCKER|mcr.microsoft.com/azure-functions/dotnet:2.0.14786-appservice` fest. Weitere Informationen zum Festlegen von `linuxFxVersion` finden Sie unter [Manuelle Versionsupdates unter Linux](set-runtime-version.md#manual-version-updates-on-linux).
 
 ## <a name="functions-class-library-project"></a>Funktionsklassenbibliotheks-Projekt
 
@@ -85,7 +106,7 @@ Das Trigger-Attribut gibt den Triggertyp an und bindet die Eingabedaten an einen
 
 ## <a name="method-signature-parameters"></a>Methodensignaturparameter
 
-Die Methodensignatur kann andere Parameter als den mit dem Triggerattribut verwendeten Parameter enthalten. Hier sind einige weitere Parameter, die Sie verwenden können:
+Die Methodensignatur kann andere Parameter als den mit dem Triggerattribut verwendeten Parameter enthalten. Hier sind einige weitere Parameter aufgeführt, die Sie verwenden können:
 
 * [Eingabe- und Ausgabebindungen](functions-triggers-bindings.md), die als solche gekennzeichnet werden, indem Sie sie mit Attributen versehen.  
 * Ein `ILogger`- oder `TraceWriter`-Parameter ([nur Version 1.x](functions-versions.md#creating-1x-apps)) für die [Protokollierung](#logging).
@@ -94,9 +115,11 @@ Die Methodensignatur kann andere Parameter als den mit dem Triggerattribut verwe
 
 Die Reihenfolge der Parameter in der Funktionssignatur spielt keine Rolle. Beispielsweise können Sie Triggerparameter für Bindungen voran- oder nachstellen und den Parameter „logger“ vor oder nach Trigger- oder Bindungsparametern anordnen.
 
-### <a name="output-binding-example"></a>Beispiel für eine Ausgabebindung
+### <a name="output-bindings"></a>Ausgabebindungen
 
-Im folgenden Beispiel wird das vorhergehende geändert, indem eine Ausgabewarteschlangenbindung hinzugefügt wird. Die Funktion schreibt die Warteschlangennachricht, die die Funktion auslöst, in eine neue Warteschlangennachricht in einer anderen Warteschlange.
+Eine Funktion kann über keine oder eine Ausgabebindung verfügen. Dies wird mithilfe von Ausgabeparametern definiert. 
+
+Im folgenden Beispiel wird das vorhergehende Beispiel geändert, indem eine Ausgabe-Warteschlangenbindung mit dem Namen `myQueueItemCopy` hinzugefügt wird. Die Funktion schreibt den Inhalt der Meldung, die die Funktion auslöst, in eine neue Warteschlangenmeldung in einer anderen Warteschlange.
 
 ```csharp
 public static class SimpleExampleWithOutput
@@ -112,6 +135,8 @@ public static class SimpleExampleWithOutput
     }
 }
 ```
+
+Werte, die Ausgabebindungen zugewiesen sind, werden geschrieben, wenn die Funktion vorhanden ist. Sie können in einer Funktion mehr als eine Ausgabebindung verwenden, indem Sie einfach mehreren Ausgabeparametern Werte zuweisen. 
 
 In den Artikeln zu den Bindungsverweisen (z. B. [Speicherwarteschlangen](functions-bindings-storage-queue.md)) wird erläutert, welche Parametertypen Sie mit Trigger-, Eingabe- oder Ausgabebindungsattributen verwenden können.
 
@@ -138,7 +163,7 @@ public static class BindingExpressionsExample
 
 Im Buildprozess wird eine *function.json*-Datei in einem Funktionsordner im Ordner für Builds erstellt. Wie bereits erwähnt ist diese Datei nicht für die direkte Bearbeitung vorgesehen. Sie können weder die Bindungskonfiguration ändern noch die Funktion deaktivieren, indem Sie diese Datei bearbeiten. 
 
-Der Zweck dieser Datei besteht darin, Informationen für den Skalierungscontroller bereitzustellen, die dieser für [Skalierungsentscheidungen hinsichtlich des Verbrauchsplans](event-driven-scaling.md) verwenden kann. Aus diesem Grund hat die Datei nur Triggerinformationen und keine Eingabe- oder Ausgabebindungen.
+Der Zweck dieser Datei besteht darin, Informationen für den Skalierungscontroller bereitzustellen, die dieser für [Skalierungsentscheidungen hinsichtlich des Verbrauchsplans](event-driven-scaling.md) verwenden kann. Aus diesem Grund weist die Datei nur Triggerinformationen und keine Eingabe-/Ausgabebindungen auf.
 
 Die generierte *function.json*-Datei enthält eine `configurationSource`-Eigenschaft, die der Runtime mitteilt, dass sie statt der *function.json*-Konfiguration die .NET Attribute für Bindungen verwenden soll. Hier sehen Sie ein Beispiel:
 
@@ -163,9 +188,9 @@ Die generierte *function.json*-Datei enthält eine `configurationSource`-Eigensc
 
 Die Erstellung der *function.json*-Datei wird mit dem NuGet-Paket [Microsoft\.NET\.Sdk\.Functions](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions) ausgeführt. 
 
-Dasselbe Paket wird für die Versionen 1.x und 2.x der Functions-Runtime verwendet. Ein 1.x-Projekt unterscheidet sich durch das Zielframework von einem 2.x-Projekt. Hier sind die relevanten Teile von *CSPROJ*-Dateien, welche verschiedene Zielframeworks und dasselbe `Sdk`-Paket zeigen:
+Dasselbe Paket wird für die Versionen 1.x und 2.x der Functions-Runtime verwendet. Ein 1.x-Projekt unterscheidet sich durch das Zielframework von einem 2.x-Projekt. Hier sind die relevanten Teile von *CSPROJ*-Dateien aufgeführt, die verschiedene Zielframeworks mit demselben `Sdk`-Paket zeigen:
 
-# <a name="v2x"></a>[v2.x+](#tab/v2)
+# <a name="v2x"></a>[Ab v2.x](#tab/v2)
 
 ```xml
 <PropertyGroup>
@@ -361,7 +386,7 @@ Hier ist eine JSON-Beispieldarstellung von `customDimensions`-Daten angegeben:
 }
 ```
 
-## <a name="log-custom-telemetry-in-c-functions"></a>Protokollieren von benutzerdefinierter Telemetrie in C#-Funktionen
+### <a name="log-custom-telemetry"></a><a name="log-custom-telemetry-in-c-functions"></a>Protokollieren benutzerdefinierter Telemetriedaten
 
 Es gibt eine Functions-spezifische Version des Application Insights SDK, mit der Sie benutzerdefinierte Telemetriedaten von ihren Funktionen an Application Insights senden können: [Microsoft.Azure.WebJobs.Logging.ApplicationInsights](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Logging.ApplicationInsights). Verwenden Sie den folgenden Befehl in der Eingabeaufforderung, um das folgende Paket zu installieren:
 
@@ -616,7 +641,7 @@ public static class IBinderExample
 
 [BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Blobs/BlobAttribute.cs) definiert die Eingabe- oder Ausgabebindung für den [Speicherblob](functions-bindings-storage-blob.md), und [TextWriter](/dotnet/api/system.io.textwriter) ist ein unterstützter Ausgabenbindungstyp.
 
-### <a name="multiple-attribute-example"></a>Beispiel mit mehreren Attributen
+### <a name="multiple-attributes-example"></a>Beispiel für mehrere Attribute
 
 Im vorherigen Beispiel wird die App-Einstellung für die Verbindungszeichenfolge (`AzureWebJobsStorage`) des Hauptspeicherkontos der Funktions-App abgerufen. Sie können eine benutzerdefinierte App-Einstellung angeben, die für das Storage-Konto verwendet werden soll, indem Sie [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) hinzufügen und das Attributarray an `BindAsync<T>()` übergeben. Verwenden Sie einen `Binder`-Parameter, nicht `IBinder`.  Beispiel:
 

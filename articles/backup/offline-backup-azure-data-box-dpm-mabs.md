@@ -4,10 +4,10 @@ description: Sie können Azure Data Box verwenden, um anfängliche Sicherungsdat
 ms.topic: conceptual
 ms.date: 08/12/2020
 ms.openlocfilehash: 1cfd9131099ad6a8ccd3d43e93f3d97641514f03
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96752548"
 ---
 # <a name="offline-seeding-using-azure-data-box-for-dpm-and-mabs-preview"></a>Offlineseeding mit Azure Data Box für DPM und MABS (Vorschau)
@@ -30,8 +30,8 @@ Mit einer Offlinesicherung mit Azure Data Box entstehen Ihnen zwei entscheidende
 
 Die folgenden Plattformen werden unterstützt:
 
-- Windows Server 2019 64-Bit (Standard, Rechenzentrum, Essentials)
-- Windows Server 2016 64-Bit (Standard, Rechenzentrum, Essentials)
+- Windows Server 2019 64 Bit (Standard, Datacenter, Essentials)
+- Windows Server 2016 64 Bit (Standard, Datacenter, Essentials)
 
 ## <a name="backup-data-size-and-supported-data-box-skus"></a>Größe von Sicherungsdaten und unterstützte Data Box-SKUs
 
@@ -39,10 +39,10 @@ Die folgenden Data Box SKUs werden unterstützt:
 
 | Größe der Sicherungsdaten (nach MARS-Komprimierung)\* pro Server | Unterstützte Azure Data Box-SKU |
 | --- | --- |
-| \<= 7,2 TB | [Azure Data Box Disk](../databox/data-box-disk-overview.md) |
-| > 7,2 TB und <= 80 TB\*\* | [Azure Data Box (100 TB)](../databox/data-box-overview.md) |
+| \<= 7,2 TB | [Azure Data Box Disk](../databox/data-box-disk-overview.md) |
+| > 7,2 TB und <= 80 TB\*\* | [Azure Data Box (100 TB)](../databox/data-box-overview.md) |
 
-\*Typische Komprimierungsraten variieren zwischen 10 und 20 Prozent <br>
+\* Die typischen Komprimierungsraten variieren zwischen 10 und 20 %. <br>
 \*\*Wenden Sie sich an [SystemCenterFeedback@microsoft.com](mailto:SystemCenterFeedback@microsoft.com), wenn Sie vermuten, dass Sie über mehr als 80 TB an Erstsicherungsdaten für eine einzelne Datenquelle verfügen.
 
 > [!IMPORTANT]
@@ -112,19 +112,19 @@ Geben Sie als alternative Quelle Folgendes an: *WIM:D:\Sources\Install.wim:4*
 
 1. Führen Sie auf dem DPM/MABS-Server die Schritte zum [Erstellen einer neuen Schutzgruppe](/system-center/dpm/create-dpm-protection-groups) aus. Wenn Sie der vorhandenen Schutzgruppe einen Onlineschutz hinzufügen, klicken Sie mit der rechten Maustaste auf die vorhandene Schutzgruppe, wählen Sie **Onlineschutz hinzufügen aus**, und beginnen Sie mit **Schritt 8**.
 2. Geben Sie auf der Seite **Gruppenmitglieder auswählen** die Computer und Quellen an, die Sie sichern möchten.
-3. Wählen Sie auf der Seite **Datenschutzmethode auswählen** aus, wie Sie die kurz- und langfristige Sicherung handhaben möchten. Stellen Sie sicher, dass Sie **Onlineschutz** auswählen.
+3. Geben Sie auf der Seite **Datenschutzmethode auswählen** an, wie Sie die kurz- und langfristige Sicherung handhaben möchten. Wählen Sie **Ich möchte Onlineschutz** aus.
 
    ![Erstellen einer neuen Schutzgruppe](./media/offline-backup-azure-data-box-dpm-mabs/create-new-protection-group.png)
 
-4. Wählen Sie auf der Seite **Kurzfristige Ziele auswählen** aus, wie die Sicherung in kurzfristigem Speicher auf Datenträger erfolgen soll.
-5. Überprüfen Sie auf der Seite **Datenträgerzuordnungen überprüfen** den Speicherplatz im Speicherpool, der der Schutzgruppe zugeordnet ist.
+4. Geben Sie auf der Seite **Kurzfristige Ziele auswählen** an, wie die Sicherung auf dem Datenträger im kurzfristigen Speicher erfolgen soll.
+5. Überprüfen Sie auf der Seite **Datenträgerzuordnung überprüfen** den für die Schutzgruppe zugeordneten Speicherplatz des Speicherpools.
 6. Wählen Sie auf der Seite **Replikaterstellungsmethode auswählen** die Option **Automatisch über das Netzwerk** aus.
 7. Wählen Sie auf dem Bildschirm **Konsistenzprüfungsoptionen auswählen** aus, wie Konsistenzprüfungen automatisiert werden sollen.
 8. Wählen Sie auf der Seite **Onlineschutzdaten angeben** das Mitglied aus, für das Sie den Onlineschutz aktivieren möchten.
 
     ![Onlineschutzdaten angeben](./media/offline-backup-azure-data-box-dpm-mabs/specify-online-protection-data.png)
 
-9. Geben Sie auf der Seite **Onlinesicherungszeitplan angeben** an, wie oft inkrementelle Sicherungen in Azure erfolgen sollen.
+9. Geben Sie auf der Seite **Online-Sicherungszeitplan angeben** an, wie häufig inkrementelle Sicherungen in Azure erfolgen sollen.
 10. Geben Sie auf der Seite **Onlineaufbewahrungsrichtlinie angeben** an, wie die Wiederherstellungspunkte aus den täglichen, wöchentlichen, monatlichen und jährlichen Sicherungen in Azure aufbewahrt werden.
 11. Wählen Sie auf dem Bildschirm **Onlinereplikation auswählen** des Assistenten die Option **Mit Datenträgern von Microsoft übertragen** und dann **Weiter** aus.
 
@@ -143,10 +143,10 @@ Geben Sie als alternative Quelle Folgendes an: *WIM:D:\Sources\Install.wim:4*
      > Die erste Anmeldung dauert länger als üblich. Das Azure PowerShell-Modul wird im Hintergrund installiert, und außerdem wird die Azure AD Anwendung registriert.
      >
      >  - Die folgenden PowerShell-Module werden installiert:<br>
-          – AzureRM.Profile     *5.8.3*<br>
-          – AzureRM.Resources   *6.7.3*<br>
-          – AzureRM.Storage     *5.2.0*<br>
-          – Azure.Storage       *4.6.1*<br>
+          - AzureRM.Profile     *5.8.3*<br>
+          - AzureRM.Resources   *6.7.3*<br>
+          - AzureRM.Storage     *5.2.0*<br>
+          - Azure.Storage       *4.6.1*<br>
      >  - Die Azure AD-Anwendung wird als *AzureOfflineBackup_\<object GUID of the user>* registriert.
 
 13. Wählen Sie den Data Box-Auftrag aus, für den Sie Ihren Data Box-Datenträger entpackt, verbunden und entsperrt haben. Wählen Sie **Weiter** aus.
@@ -169,7 +169,7 @@ Geben Sie als alternative Quelle Folgendes an: *WIM:D:\Sources\Install.wim:4*
 
     ![Erkennen der Data Box](./media/offline-backup-azure-data-box-dpm-mabs/detect-databox.png)
 
-    Im folgenden Bildschirm wird bestätigt, dass die Schutzgruppe erfolgreich gespeichert wurde.
+    Der folgende Bildschirm bestätigt, dass die Schutzgruppe erfolgreich erstellt wurde.
 
     ![Erstellte Schutzgruppe](./media/offline-backup-azure-data-box-dpm-mabs/protection-group-created.png)
 
@@ -191,9 +191,9 @@ Geben Sie als alternative Quelle Folgendes an: *WIM:D:\Sources\Install.wim:4*
 
 ## <a name="post-backup-steps"></a>Schritte nach der Sicherung
 
-Führen Sie die folgenden Schritte aus, nachdem die Datensicherung auf der Azure Data Box Disk erfolgreich war.
+Führen Sie die folgenden Schritte aus, nachdem die Datensicherung für den Azure Data Box-Datenträger erfolgreich war.
 
-- Führen Sie die Schritte in [diesem Artikel](../databox/data-box-disk-deploy-picked-up.md) zum Zurücksenden der Azure Data Box Disk aus. Führen Sie [diese Schritte](../databox/data-box-deploy-picked-up.md) zum Zurücksenden der Azure Data Box an Azure aus, wenn Sie ein Azure Data Box-Gerät mit 100 TB verwendet haben.
+- Führen Sie die Schritte in [diesem Artikel](../databox/data-box-disk-deploy-picked-up.md) aus, um den Azure Data Box-Datenträger an Azure zu senden. Wenn Sie ein Azure Data Box-100-TB-Gerät verwendet haben, führen Sie [diese Schritte](../databox/data-box-deploy-picked-up.md) aus, um die Azure Data Box an Azure zu senden.
 - [Überprüfen Sie den Datenupload aus Azure Data Box Disk](../databox/data-box-disk-deploy-upload-verify.md) im Azure-Portal. Sobald der Azure Data Box-Auftrag *Abgeschlossen* ist, verschiebt der DPM/MABS-Server die Daten zum Zeitpunkt der nächsten geplanten Sicherung automatisch aus dem Speicherkonto in den Recovery Services-Tresor. Der Sicherungsauftrag wird dann mit *Auftrag abgeschlossen* markiert, sobald erfolgreich ein Wiederherstellungspunkt erstellt wurde.
 
   > [!NOTE]
@@ -213,7 +213,7 @@ Beim Konfigurieren der Offlinesicherung können Sie aufgrund eines unbekannten C
 
 ### <a name="verify-if-the-issue-is-caused-by-this-specific-root-cause"></a>Überprüfen, ob das Problem durch diese spezifische Grundursache verursacht wird
 
-Führen Sie einen der folgenden Schritte aus, um zu überprüfen, ob der Fehler auf obiges [Problem](#issue) zurückzuführen ist:
+Führen Sie einen der folgenden Schritte aus, um sicherzustellen, dass der Fehler auf das oben beschriebene [Problem](#issue) zurückzuführen ist:
 
 #### <a name="step-1"></a>Schritt 1
 
@@ -223,7 +223,7 @@ Führen Sie einen der folgenden Schritte aus, um zu überprüfen, ob der Fehler 
 
 #### <a name="step-2"></a>Schritt 2
 
-1. Öffnen Sie den **Temp**-Ordner im Installationspfad. Der Standardpfad zum Temp-Ordner ist *C:\Programme\Microsoft Azure Recovery Services Agent\Temp*. Suchen Sie nach der *CBUICurr*-Datei, und öffnen Sie sie.
+1. Öffnen Sie im Installationspfad den Ordner **Temp** (der Standardpfad des Ordners „Temp“ ist *C:\Program Files\Microsoft Azure Recovery Services Agent\Temp*). Suchen Sie nach der Datei *CBUICurr*, und öffnen Sie die Datei.
 2. Scrollen Sie in der Datei *CBUICurr* zur letzten Zeile, und überprüfen Sie, ob der Fehler auf „Anmeldeinformationen für Azure AD-Anwendung können nicht im Kundenkonto erstellt werden. Ausnahme: Aktualisieren auf vorhandene Anmeldeinformationen mit KeyId \<some guid> ist nicht zulässig“ zurückzuführen ist.
 
 ### <a name="workaround"></a>Problemumgehung
@@ -244,12 +244,12 @@ Führen Sie auf dem DPM/MABS-Server, den Sie für die Offlinesicherung konfiguri
 
 1. Öffnen Sie die Registerkarte **Computerzertifikatanwendung verwalten**  > **Persönlich**, und suchen Sie nach dem Zertifikat mit dem Namen `CB_AzureADCertforOfflineSeeding_<ResourceId>`.
 2. Wählen Sie das Zertifikat oben aus, klicken Sie mit der rechten Maustaste auf **Alle Aufgaben**, und führen Sie einen **Export** ohne privaten Schlüssel im CER-Format aus.
-3. Navigieren Sie zur in **Schritt 2** genannten Anwendung, die mit Azure Backup offline gesichert werden soll. Laden Sie über **Einstellungen** > **Schlüssel** > **Öffentlichen Schlüssel hochladen** das im obigen Schritt exportierte Zertifikat hoch.
+3. Navigieren Sie zur in **Schritt 2** genannten Anwendung, die mit Azure Backup offline gesichert werden soll. Laden Sie unter **Einstellungen** > **Schlüssel** > **Öffentlichen Schlüssel hochladen** das im obigen Schritt exportierte Zertifikat hoch.
 
    ![Hochladen der öffentlichen Schlüssel](./media/offline-backup-azure-data-box-dpm-mabs/upload-public-keys.png)
 
 4. Öffnen Sie durch Eingabe von **regedit** im Fenster **Ausführen** die Registrierung auf dem Server.
-5. Wechseln Sie zur Registrierung *Computer\HKEY\_LOCAL\_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider*. Klicken Sie mit der rechten Maustaste auf **CloudBackupProvider**, und fügen Sie einen neuen Zeichenfolgenwert mit dem Namen `AzureADAppCertThumbprint_<Azure User Id>` hinzu.
+5. Wechseln Sie zur Registrierung *Computer\HKEY\_LOCAL\_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider*. Klicken Sie mit der rechten Maustaste auf **CloudBackupProvider**, und fügen Sie einen neuen Zeichenfolgenwert namens `AzureADAppCertThumbprint_<Azure User Id>` hinzu.
 
     >[!NOTE]
     > Führen Sie einen der folgenden Aktionen aus, um die Azure-Benutzer-ID zu ermitteln:
@@ -264,4 +264,4 @@ Führen Sie auf dem DPM/MABS-Server, den Sie für die Offlinesicherung konfiguri
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Offlineseeding mit eigenem Datenträger (unter Verwendung des Azure Import/Export-Diensts)](backup-azure-backup-server-import-export.md)
+- [Offlineseeding mit eigenem Datenträger (unter Verwendung des Azure Import/Export-Diensts)](backup-azure-backup-server-import-export.md)

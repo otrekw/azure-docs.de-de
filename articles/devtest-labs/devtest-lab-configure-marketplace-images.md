@@ -4,10 +4,10 @@ description: Konfigurieren Sie, welche Azure Marketplace-Images beim Erstellen e
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: a5158ed33bf253db1dbe0eb3232bc43d27ce15e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86512434"
 ---
 # <a name="configure-azure-marketplace-image-settings-in-azure-devtest-labs"></a>Konfigurieren von Azure Marketplace-Image-Einstellungen in Azure DevTest Labs
@@ -21,7 +21,7 @@ Führen Sie diese Schritte aus, um anzugeben, welche Azure Marketplace-Images be
 3. Wählen Sie in der Liste mit den Labs Ihr Lab aus. 
 4. Wählen Sie auf der Startseite des Labs die Option **Konfiguration und Richtlinien** aus.
 5. Wählen Sie auf der Seite **Konfiguration und Richtlinien** des Labs unter **Basen virtueller Computer** die Option **Marketplace-Images** aus.
-6. Geben Sie an, ob alle qualifizierten Azure Marketplace-Images für die Verwendung als Basis einer neuen VM verfügbar sein sollen. Bei Auswahl von **Ja**sind alle Azure Marketplace-Images im Lab zulässig, die alle folgenden Kriterien erfüllen:
+6. Geben Sie an, ob alle qualifizierten Azure Marketplace-Images für die Verwendung als Basis einer neuen VM verfügbar sein sollen. Bei Auswahl von **Ja** sind alle Azure Marketplace-Images im Lab zulässig, die alle folgenden Kriterien erfüllen:
    
    * Das Image erstellt einen einzelnen virtuellen Computer, **und**
    * Das Image verwendet den Azure-Resource-Manager zur Bereitstellung von VMs, **und**

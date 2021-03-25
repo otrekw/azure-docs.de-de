@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: jingwang
 ms.openlocfilehash: 642f12386a7695e026eb0c30016acf6f53fc9e95
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100381119"
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>Kopieren von Daten aus DB2 mithilfe von Azure Data Factory
@@ -70,7 +70,7 @@ Folgende Eigenschaften werden für den mit DB2 verknüpften Dienst unterstützt:
 
 Typische Eigenschaften in der Verbindungszeichenfolge:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | server |Name des DB2-Servers. Sie können die Portnummer hinter dem Servernamen und einem Semikolon angeben, z.B.: `server:port`.<br>Vom DB2-Connector werden das DDM-/DRDA-Protokoll und standardmäßig der Port 50000 verwendet, sofern nichts anderes angegeben ist. Der Port, der von Ihrer speziellen DB2-Datenbank verwendet wird, kann sich je nach Version und Ihren Einstellungen unterscheiden. Für DB2 LUW wird beispielsweise der Standardport 50000 verwendet, für AS400 ist der Standardport dagegen 446 oder 448, wenn TLS aktiviert ist. Informationen zur typischen Portkonfiguration finden Sie in den folgenden DB2-Dokumenten: [DB2 z/OS](https://www.ibm.com/support/knowledgecenter/SSEPGG_11.5.0/com.ibm.db2.luw.qb.dbconn.doc/doc/t0008229.html), [DB2 iSeries](https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_74/ddp/rbal1ports.htm) und [DB2 LUW](https://www.ibm.com/support/knowledgecenter/en/SSEKCU_1.1.3.0/com.ibm.psc.doc/install/psc_t_install_typical_db2_port.html). |Ja |
 | database |Name der DB2-Datenbank. |Ja |

@@ -9,10 +9,10 @@ ms.custom: subject-armqs
 ms.author: danlep
 ms.date: 10/06/2020
 ms.openlocfilehash: 97b556e0329644b973def8333ddb5e70e370b0bc
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91827012"
 ---
 # <a name="quickstart-create-a-geo-replicated-container-registry-by-using-an-arm-template"></a>Schnellstart: Erstellen einer georeplizierten Containerregistrierung mithilfe einer ARM-Vorlage
@@ -65,7 +65,7 @@ Weitere Beispiele für Azure Container Registry-Vorlagen finden Sie im [Schnells
 
 1. Nach der erfolgreichen Erstellung der Registrierung erhalten Sie eine Benachrichtigung:
 
-     :::image type="content" source="media/container-registry-get-started-geo-replication-template/deployment-notification.png" alt-text="Vorlageneigenschaften":::
+     :::image type="content" source="media/container-registry-get-started-geo-replication-template/deployment-notification.png" alt-text="Benachrichtigung im Portal":::
 
  Zum Bereitstellen der Vorlage wird das Azure-Portal verwendet. Neben dem Azure-Portal können Sie Azure PowerShell, die Azure-Befehlszeilenschnittstelle (Azure CLI) und die REST-API verwenden. Informationen zu anderen Bereitstellungsmethoden finden Sie unter [Bereitstellen von Vorlagen](../azure-resource-manager/templates/deploy-cli.md).
 
@@ -77,17 +77,17 @@ Verwenden Sie das Azure-Portal oder ein Tool wie die Azure CLI, um die Eigenscha
 
 1. Notieren Sie sich auf der Seite **Übersicht** den **Anmeldeserver** der Registrierung. Verwenden Sie diesen URI, wenn Sie Docker verwenden, um Images zu markieren und in Ihre Registrierung zu pushen. Informationen finden Sie unter [Pushen Ihres ersten Images mit der Docker CLI](container-registry-get-started-docker-cli.md).
 
-    :::image type="content" source="media/container-registry-get-started-geo-replication-template/registry-overview.png" alt-text="Vorlageneigenschaften":::
+    :::image type="content" source="media/container-registry-get-started-geo-replication-template/registry-overview.png" alt-text="Registrierungsübersicht":::
 
 1. Bestätigen Sie auf der Seite **Replikationen** die Standorte des Stammreplikats und des über die Vorlage hinzugefügten Replikats. Fügen Sie bei Bedarf weitere Replikate auf dieser Seite hinzu.
 
-    :::image type="content" source="media/container-registry-get-started-geo-replication-template/registry-replications.png" alt-text="Vorlageneigenschaften":::
+    :::image type="content" source="media/container-registry-get-started-geo-replication-template/registry-replications.png" alt-text="Registrierungsreplikationen":::
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 Sie können die Ressourcengruppe, die Registrierung und das Registrierungsreplikat löschen, wenn Sie sie nicht mehr benötigen. Wechseln Sie hierzu zum Azure-Portal, wählen Sie die Ressourcengruppe aus, die die Registrierung enthält, und wählen Sie anschließend **Ressourcengruppe löschen** aus.
 
-:::image type="content" source="media/container-registry-get-started-geo-replication-template/delete-resource-group.png" alt-text="Vorlageneigenschaften":::
+:::image type="content" source="media/container-registry-get-started-geo-replication-template/delete-resource-group.png" alt-text="Ressourcengruppe löschen":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

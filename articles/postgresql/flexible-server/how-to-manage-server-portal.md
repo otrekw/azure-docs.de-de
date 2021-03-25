@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.custom: mvc
 ms.openlocfilehash: 1ac418d855696138341115412dc7e2601d4cf3a1
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91961407"
 ---
 # <a name="manage-an-azure-database-for-postgresql---flexible-server-using-the-azure-portal"></a>Verwalten von Azure Database for PostgreSQL – Flexible Server mithilfe des Azure-Portals
@@ -52,7 +52,7 @@ Sie können das Kennwort für die Administratorrolle über das Azure-Portal änd
 2. Geben Sie ein neues Kennwort ein, und bestätigen Sie es. Im Textfeld werden Sie nach den Anforderungen an die Kennwortkomplexität gefragt.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/howto-manage-server-portal/reset-password.png" alt-text="Skalieren des Speichers, Flexible Server":::
+> :::image type="content" source="./media/howto-manage-server-portal/reset-password.png" alt-text="Zurücksetzen Ihres Kennworts für Flexible Server":::
 
 3. Wählen Sie **Speichern** aus, um das neue Kennwort zu speichern.
 
@@ -63,7 +63,7 @@ Sie können Ihren Server löschen, wenn Sie ihn nicht mehr benötigen.
 1. Wählen Sie Ihren Server im Azure-Portal aus. Wählen Sie im Fenster **Übersicht** die Option **Löschen** aus.
 2. Geben Sie den Namen des Servers in das Eingabefeld ein, um zu bestätigen, dass Sie den Server löschen möchten.
 
-   :::image type="content" source="./media/howto-manage-server-portal/delete-server.png" alt-text="Skalieren des Speichers, Flexible Server":::
+   :::image type="content" source="./media/howto-manage-server-portal/delete-server.png" alt-text="Löschen des flexiblen Servers":::
 
    > [!IMPORTANT]
    > Das Löschen eines Servers kann nicht mehr rückgängig gemacht werden.

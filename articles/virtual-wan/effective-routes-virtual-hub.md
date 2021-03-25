@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.openlocfilehash: ad487aa7492abcf02988c78ccfa2ba7cd4798249
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90983656"
 ---
 # <a name="view-virtual-hub-effective-routes"></a>Anzeigen effektiver Routen eines virtuellen Hubs
@@ -20,7 +20,7 @@ Sie können alle Routen Ihres Virtual WAN-Hubs im Azure-Portal anzeigen. In dies
 
 ## <a name="select-connections-or-route-tables"></a><a name="routing"></a>Auswählen von Verbindungen oder Routingtabellen
 
-1. Navigieren Sie zu Ihrem virtuellen Hub, und wählen Sie **Routing**aus. Wählen Sie auf der Seite „Routing“ die Option **Effektive Routen** aus.
+1. Navigieren Sie zu Ihrem virtuellen Hub, und wählen Sie **Routing** aus. Wählen Sie auf der Seite „Routing“ die Option **Effektive Routen** aus.
 1. In der Dropdownliste können Sie **Routingtabelle** auswählen. Wenn die Option für Routingtabellen nicht angezeigt wird, ist in diesem virtuellen Hub keine benutzerdefinierte oder Standardroutingtabelle eingerichtet.
 
 ## <a name="view-output"></a><a name="output"></a>Anzeigen der Ausgabe

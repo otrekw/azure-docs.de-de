@@ -1,19 +1,14 @@
 ---
 title: Grundlegendes zur Cisco ISE pxGrid-Integration
-titleSuffix: Azure Defender for IoT
 description: Die Überbrückung der Funktionen von Defender für IoT mit Cisco ISE pxGrid ermöglicht Sicherheitsteams bisher unerreichte Einblicke in die Geräte im Ökosystem des Unternehmens.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 12/28/2020
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: 3f1fb099aa18ebec5a7e2063740556cf806302e7
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 00151f2e407c65d024f3bd59bdaa85a08ae677f4
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98556813"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104784083"
 ---
 # <a name="about-the-cisco-ise-pxgrid-integration"></a>Grundlegendes zur Cisco ISE pxGrid-Integration
 
@@ -224,4 +219,4 @@ Die Protokolle finden Sie an den folgenden Orten:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informieren Sie sich über das[Weiterleiten von Warnungsinformationen](how-to-forward-alert-information-to-partners.md).
+Erfahren Sie, wie Sie [Warnungsinformationen weiterleiten](how-to-forward-alert-information-to-partners.md).

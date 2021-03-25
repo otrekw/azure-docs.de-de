@@ -8,10 +8,10 @@ ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
 ms.openlocfilehash: 5261075a82eaefd91cbedd2dd2fe08cb1e0a20b4
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100381833"
 ---
 # <a name="configure-and-manage-continuous-backup-and-point-in-time-restore-preview---using-azure-powershell"></a>Konfigurieren und Verwalten von fortlaufender Sicherung und Zeitpunktwiederherstellung (Vorschau) – Verwendung von Azure PowerShell
@@ -22,7 +22,7 @@ ms.locfileid: "100381833"
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
 > Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Mithilfe des Azure Cosmos DB-Features „Zeitpunktwiederherstellung“ (Vorschau) können Sie nach einer versehentlichen Änderung in einem Container ein gelöschtes Konto, eine Datenbank oder einen Container wiederherstellen oder aber eine Wiederherstellung in einer beliebigen Region (in der es Sicherungen gab) durchführen. Der fortlaufende Sicherungsmodus ermöglicht Ihnen die Wiederherstellung auf jeden beliebigen Zeitpunkt innerhalb der letzten 30 Tage.
+Mithilfe des Azure Cosmos DB-Features der Zeitpunktwiederherstellung (Vorschau) können Sie nach einer versehentlichen Änderung in einem Container ein gelöschtes Konto, eine Datenbank oder einen Container wiederherstellen oder aber eine Wiederherstellung in einer beliebigen Region (in der es Sicherungen gab) durchführen. Der fortlaufende Sicherungsmodus ermöglicht Ihnen die Wiederherstellung auf jeden beliebigen Zeitpunkt innerhalb der letzten 30 Tage.
 
 In diesem Artikel wird beschrieben, wie Sie ein Konto mit fortlaufenden Sicherungs- und Wiederherstellungsdaten mithilfe von Azure PowerShell bereitstellen können.
 
@@ -194,7 +194,7 @@ Get-AzCosmosdbSqlRestorableContainer `
 
 **Suchen von Datenbanken oder Containern, die zu jedem beliebigen Zeitstempel wiederhergestellt werden können**
 
-Verwenden Sie den folgenden Befehl zum Abrufen der Liste von Datenbanken oder Containern, die zu jedem beliebigen Zeitstempel wiederhergestellt werden können. Dieser Befehl funktioniert nur bei aktiven Konten.
+Verwenden Sie den folgenden Befehl, um die Liste der Datenbanken oder Container abzurufen, die mit einem bestimmten Zeitstempel wiederhergestellt werden können. Dieser Befehl funktioniert nur bei aktiven Konten.
 
 ```azurepowershell
 
@@ -230,7 +230,7 @@ Get-AzCosmosdbMongoDBRestorableCollection `
   -LocationName "West US"
 ```
 
-**Auflisten aller Ressourcen eines MongoDB-Datenbankkontos, die zu einem bestimmten Zeitstempel und in einer bestimmten Region wiederhergestellt werden können**
+**Auflisten aller Ressourcen eines MongoDB-Datenbankkontos, die an einem bestimmten Zeitstempel und in einer bestimmten Region wiederhergestellt werden können**
 
 ```azurepowershell
 

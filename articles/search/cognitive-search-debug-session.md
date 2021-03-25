@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.openlocfilehash: f666cc2f9d11b1e05d11ba266897e6fca3cd287e
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92057619"
 ---
 # <a name="debug-sessions-in-azure-cognitive-search"></a>Debugsitzungen in Azure Cognitive Search
@@ -51,7 +51,7 @@ In der Ansicht **Skill Graph** (Skilldiagramm) wird eine hierarchische visuelle 
 
 Durch Klicken auf einen Skill im Diagramm werden die damit verbundenen Skills hervorgehoben sowie die Knoten, die die Eingaben für diesen Skill erstellen, und die, die seine Ausgaben akzeptieren. Für alle Skillknoten werden jeweils dessen Typ, Fehler oder Warnungen und die Anzahl der Ausführungen angezeigt. In der Ansicht **Skill Graph** (Skilldiagramm) wählen Sie aus, welchen Skill Sie debuggen oder verbessern möchten. Wenn Sie einen Skill auswählen, werden die zugehörigen Details im Skilldetailbereich rechts neben dem Diagramm angezeigt.
 
-> :::image type="content" source="media/cognitive-search-debug/skills-graph.png" alt-text="Erstellen einer Debugsitzung":::
+> :::image type="content" source="media/cognitive-search-debug/skills-graph.png" alt-text="Skill Graph (Skilldiagramm)":::
 
 ## <a name="skill-details"></a>Skilldetails
 
@@ -73,7 +73,7 @@ Wenn Sie einen benutzerdefinierten Skill erstellen oder einen bei einem benutzer
 
 Im Bereich **Enriched Data Structure** (Angereicherte Datenstruktur) werden Anreicherungen über das Skillset für das Dokument angezeigt, und der Kontext für jede Anreicherung und den zugrunde liegenden Skill wird dort detailliert beschrieben. Mit **Expression evaluator** (Ausdrucksauswertung) kann auch der Inhalt für die einzelnen Anreicherungen angezeigt werden.
 
-> :::image type="content" source="media/cognitive-search-debug/enriched-data-structure-display.png" alt-text="Erstellen einer Debugsitzung":::
+> :::image type="content" source="media/cognitive-search-debug/enriched-data-structure-display.png" alt-text="Angereicherte Datenstruktur":::
 
 ## <a name="expression-evaluator"></a>Expression evaluator (Ausdrucksauswertung)
 

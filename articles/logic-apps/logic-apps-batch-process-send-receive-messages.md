@@ -9,10 +9,10 @@ ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: article
 ms.date: 07/31/2020
 ms.openlocfilehash: 0985afe3ddfd0d9de3c36ad6b030b6f259708c88
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87458256"
 ---
 # <a name="send-receive-and-batch-process-messages-in-azure-logic-apps"></a>Versand, Empfang und Batchverarbeitung von Nachrichten in Azure Logic Apps
@@ -138,7 +138,7 @@ Erstellen Sie nun eine oder mehrere Logik-Apps für den Batchversand, die Nachri
 
 1. Fügen Sie eine neue Aktion zum Senden von Nachrichten an einen Batch hinzu.
 
-   1. Wählen Sie unter dem **Wiederholung**strigger die Option **Neuer Schritt** aus.
+   1. Wählen Sie unter dem **Wiederholung** strigger die Option **Neuer Schritt** aus.
 
    1. Geben Sie `batch` als Filter in das Suchfeld ein, und wählen Sie die folgende Aktion aus: **Logik-App-Workflow mit Batchtrigger auswählen**
 

@@ -4,10 +4,10 @@ description: Informationen zum Anzeigen und Filtern von Azure Advisor-Empfehlung
 ms.topic: article
 ms.date: 04/03/2019
 ms.openlocfilehash: 43bdaba7d774bba8857a6eb3ef296d7ab8e1c264
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90986868"
 ---
 # <a name="view-azure-advisor-recommendations-that-matter-to-you"></a>Anzeigen relevanter Azure Advisor-Empfehlungen
@@ -47,7 +47,7 @@ Azure Advisor ermöglicht Ihnen, Empfehlungen für eine einzelne Ressource abzul
 1. Wählen Sie in der Liste „Empfehlungen“ eine Empfehlung aus.
 1. Wählen Sie für eine Empfehlung entweder „Zurückstellen“ oder „Schließen“ aus, um sie zurückzustellen oder abzulehnen.
 
-     :::image type="content" source="./media/view-recommendations/postpone-dismiss.png" alt-text="Screenshot: Azure Advisor zeigt Filteroptionen an.":::
+     :::image type="content" source="./media/view-recommendations/postpone-dismiss.png" alt-text="Screenshot: Fenster „Verwaltete Datenträger verwenden“ mit den für eine einzelne Empfehlung hervorgehoben Aktionen „Verschieben“ und „Schließen“.":::
 
 ### <a name="postpone-or-dismiss-a-multiple-recommendations-in-the-azure-portal"></a>Zurückstellen oder Ablehnen mehrerer Empfehlungen im Azure-Portal
 
@@ -57,7 +57,7 @@ Azure Advisor ermöglicht Ihnen, Empfehlungen für eine einzelne Ressource abzul
 1. Aktivieren Sie das Kontrollkästchen links neben der Zeile für alle Ressourcen, für die Sie die Empfehlung zurückstellen oder ablehnen möchten.
 1. Klicken Sie links oben in der Tabelle auf **Verschieben** oder **Schließen**.
 
-     :::image type="content" source="./media/view-recommendations/postpone-dismiss-multiple.png" alt-text="Screenshot: Azure Advisor zeigt Filteroptionen an.":::
+     :::image type="content" source="./media/view-recommendations/postpone-dismiss-multiple.png" alt-text="Screenshot: Fenster „Verwaltete Datenträger verwenden“ mit der ausgewählten Spalte und den oben links in der Tabelle hervorgehobenen Aktionen „Verschieben“ und „Schließen“.":::
 
 > [!NOTE]
 > Sie benötigen die Berechtigung „Mitwirkender“ oder „Besitzer“, um eine Empfehlung abzulehnen oder zurückzustellen. Erfahren Sie mehr zu Berechtigungen in Azure Advisor.
@@ -73,7 +73,7 @@ Sie können eine Empfehlung reaktivieren, die zurückgestellt oder abgelehnt wur
 
 1. Ändern Sie den Filter im Bereich „Übersicht“ in **Verschoben**. Advisor zeigt zurückgestellte oder abgelehnte Empfehlungen.
 
-    :::image type="content" source="./media/view-recommendations/activate-postponed.png" alt-text="Screenshot: Azure Advisor zeigt Filteroptionen an.":::
+    :::image type="content" source="./media/view-recommendations/activate-postponed.png" alt-text="Screenshot: Azure Advisor-Fenster mit dem ausgewählten Dropdownmenü „Verschoben“.":::
 
 1. Wählen Sie eine Kategorie aus, um **zurückgestellte** und **abgelehnte** Empfehlungen einzublenden.
 
@@ -81,7 +81,7 @@ Sie können eine Empfehlung reaktivieren, die zurückgestellt oder abgelehnt wur
 
 1. Klicken Sie am Ende der Zeile auf **Aktivieren**. Nach dem Klicken ist die Empfehlung für diese Ressource aktiv und wird daher aus dieser Tabelle entfernt. Die Empfehlung wird nun auf der Registerkarte **Aktiv** angezeigt.
  
-     :::image type="content" source="./media/view-recommendations/activate-postponed-2.png" alt-text="Screenshot: Azure Advisor zeigt Filteroptionen an.":::
+     :::image type="content" source="./media/view-recommendations/activate-postponed-2.png" alt-text="Screenshot: Fenster „Vorläufiges Löschen aktivieren“, das die Registerkarte „Verschoben und verworfen“ zeigt, wobei die Aktion „Aktivieren“ hervorgehoben ist.":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

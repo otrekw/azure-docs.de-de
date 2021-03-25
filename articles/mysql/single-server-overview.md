@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.topic: overview
 ms.date: 8/20/2020
 ms.openlocfilehash: b0f8c5806ba22708db6dc537d391c1f1b1a183ec
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92543813"
 ---
 # <a name="azure-database-for-mysql-single-server"></a>Azure Database for MySQL Single Server
@@ -79,9 +79,9 @@ Der Single Server-Dienst verfügt über integrierte Features zur Leistungsüberw
 
 Der Dienst führt die MySQL Community-Version aus. Dies ermöglicht vollständige Anwendungskompatibilität und erfordert minimale Refactoringkosten für die Migration vorhandener Anwendungen, die in der MySQL-Engine entwickelt wurden, zum Single Server-Dienst. Die Migration zum Single Server-Dienst kann mithilfe einer der folgenden Optionen durchgeführt werden:
 
-- **Sichern und Wiederherstellen** : Für Offlinemigrationen, bei denen sich Benutzer einige Ausfallzeiten leisten können, kann das Sichern und Wiederherstellen mit Communitytools wie mysqldump/mydumper die schnellste Option für die Migration sein. Ausführliche Informationen finden Sie unter [Migrieren der MySQL-Datenbank auf Azure-Datenbank für MySQL durch Sicherungen und Wiederherstellungen](concepts-migrate-dump-restore.md). 
-- **Azure Database Migration Service** : Für eine nahtlose und einfachere Migration zum Single Server-Dienst mit minimalen Ausfallzeiten können Sie [Azure Database Migration Service](../dms/tutorial-mysql-azure-mysql-online.md) verwenden. 
-- **Datenreplikation** : Bei Migrationen mit minimaler Ausfallzeit kann die Datenreplikation, die von der auf einer binären Protokolldatei basierenden Replikation abhängt, ebenfalls genutzt werden. Die Datenreplikation wird von Branchenexperten für minimale Ausfallzeiten bei Migrationen bevorzugt, da sie mehr Kontrolle über die Migration ermöglicht. Weitere Informationen finden Sie im Artikel zur [Datenreplikation](concepts-data-in-replication.md).
+- **Sichern und Wiederherstellen**: Für Offlinemigrationen, bei denen sich Benutzer einige Ausfallzeiten leisten können, kann das Sichern und Wiederherstellen mit Communitytools wie mysqldump/mydumper die schnellste Option für die Migration sein. Ausführliche Informationen finden Sie unter [Migrieren der MySQL-Datenbank auf Azure-Datenbank für MySQL durch Sicherungen und Wiederherstellungen](concepts-migrate-dump-restore.md). 
+- **Azure Database Migration Service**: Für eine nahtlose und einfachere Migration zum Single Server-Dienst mit minimalen Ausfallzeiten können Sie [Azure Database Migration Service](../dms/tutorial-mysql-azure-mysql-online.md) verwenden. 
+- **Datenreplikation**: Bei Migrationen mit minimaler Ausfallzeit kann die Datenreplikation, die von der auf einer binären Protokolldatei basierenden Replikation abhängt, ebenfalls genutzt werden. Die Datenreplikation wird von Branchenexperten für minimale Ausfallzeiten bei Migrationen bevorzugt, da sie mehr Kontrolle über die Migration ermöglicht. Weitere Informationen finden Sie im Artikel zur [Datenreplikation](concepts-data-in-replication.md).
 
 ## <a name="contacts"></a>Kontakte
 Sollten Sie Fragen oder Vorschläge im Zusammenhang mit der Verwendung von Azure Database for MySQL haben, senden Sie eine E-Mail an das zuständige Team ([@Ask Azure DB for MySQL](mailto:AskAzureDBforMySQL@service.microsoft.com)). Bei dieser E-Mail-Adresse handelt es sich nicht um einen Alias für den technischen Support.

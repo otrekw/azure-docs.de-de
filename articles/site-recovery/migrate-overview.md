@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: raynew
 ms.openlocfilehash: 358efaa1493aa08fb76c9bb83e0e4289950e0969
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87844319"
 ---
 # <a name="migrating-to-azure"></a>Migrieren zu Azure
@@ -29,7 +29,7 @@ Die Verwendung von Azure Migrate für die Migration bietet verschiedene Vorteile
 - Die Verwendung von Azure Migrate bietet Interoperabilität und ermöglicht eine zukünftige Erweiterbarkeit mit Azure Migrate-Tools, anderen Azure-Diensten und Tools von Drittanbietern.
 - Das Servermigrationstool von Azure Migrate ist speziell für die Servermigration zu Azure konzipiert. Es ist für die Migration optimiert. Sie müssen sich nicht mit Konzepten und Szenarien vertraut machen, die in keiner direkten Relation zur Migration stehen. 
 - Ab dem Startzeitpunkt der Replikation für eine VM fallen 180 Tage lang keine Gebühren für die Nutzung des Tools an. So haben Sie genügend Zeit, um die Migration abzuschließen. Sie zahlen lediglich für die bei der Replikation verwendeten Speicher- und Netzwerkressourcen sowie für Computeressourcen, die bei Testmigrationen genutzt werden.
-- Azure Migrate unterstützt alle Migrationsszenarien, die von Site Recovery unterstützt werden. Darüber hinaus bietet Azure Migrate für VMware-VMs eine Migrationsoption ohne Agent.
+- Azure Migrate unterstützt alle Migrationsszenarios, die von Site Recovery unterstützt werden. Darüber hinaus bietet Azure Migrate für VMware-VMs eine Migrationsoption ohne Agent.
 - Neue Migrationsfeatures werden nur für das Azure Migrate-Tool für die Servermigration priorisiert. Diese Features sind für Site Recovery nicht vorgesehen.
 
 ## <a name="when-to-use-site-recovery"></a>Wann sollte Site Recovery verwendet werden?
