@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 02/17/2020
-ms.openlocfilehash: d577e96c3ae95103a412b96eba3e1293142f1acd
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 74db121c33864ee72ad984b49c8fa43afa0f598c
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98932775"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104870516"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>Analysieren von Protokollen für Apache Kafka in HDInsight
 
@@ -34,7 +34,7 @@ Apache Kafka-Protokolle im Cluster befinden sich unter `/var/log/kafka`. Kafka-P
 
 Die Schritte zum Aktivieren von Azure Monitor-Protokollen für HDInsight sind für alle HDInsight-Cluster identisch. Verwenden Sie die folgenden Links, um zu verstehen, wie die erforderlichen Dienste erstellt und konfiguriert werden:
 
-1. Erstellen Sie einen Log Analytics-Arbeitsbereich. Weitere Informationen finden Sie im Dokument [Protokolle in Azure Monitor](../../azure-monitor/platform/data-platform-logs.md).
+1. Erstellen Sie einen Log Analytics-Arbeitsbereich. Weitere Informationen finden Sie im Dokument [Protokolle in Azure Monitor](../../azure-monitor/logs/data-platform-logs.md).
 
 2. Erstellen Sie ein Kafka-Cluster im HDInsight-Cluster. Weitere Informationen finden Sie unter [Einstieg in Apache Kafka in HDInsight](apache-kafka-get-started.md).
 
@@ -65,7 +65,7 @@ Die Schritte zum Aktivieren von Azure Monitor-Protokollen für HDInsight sind f�
     | summarize AggregatedValue = avg(CounterValue) by Computer, bin(TimeGenerated, 1h)
     ```
 
-* Eingehende Nachrichten pro Sekunde: (Ersetzen Sie `your_kafka_cluster_name` durch den Namen Ihres Clusters.)
+* Eingehende Nachrichten pro Sekunde: (Ersetzen Sie `your_kafka_cluster_name` durch den Namen des Clusters.)
 
     ```kusto
     metrics_kafka_CL 
@@ -81,7 +81,7 @@ Die Schritte zum Aktivieren von Azure Monitor-Protokollen für HDInsight sind f�
     | summarize AggregatedValue = avg(kafka_BrokerTopicMetrics_BytesInPerSec_Count_value_d) by bin(TimeGenerated, 1h)
     ```
 
-* Ausgehende Bytes pro Sekunde: (Ersetzen Sie `your_kafka_cluster_name` durch den Namen Ihres Clusters.)
+* Ausgehende Bytes pro Sekunde: (Ersetzen Sie `your_kafka_cluster_name` durch den Namen des Clusters.)
 
     ```kusto
     metrics_kafka_CL 
@@ -97,7 +97,7 @@ Die Schritte zum Aktivieren von Azure Monitor-Protokollen für HDInsight sind f�
     | log\_kafkacontroller\_CL | controller.log des Kafka-Brokers |
     | metrics\_kafka\_CL | Kafka-JMX-Metriken |
 
-    ![Apache Kafka-Protokollanalyse – CPU-Auslastung](./media/apache-kafka-log-analytics-operations-management/apache-kafka-cpu-usage.png)
+    :::image type="content" source="./media/apache-kafka-log-analytics-operations-management/apache-kafka-cpu-usage.png" alt-text="Apache Kafka-Protokollanalyse – CPU-Auslastung" border="true":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

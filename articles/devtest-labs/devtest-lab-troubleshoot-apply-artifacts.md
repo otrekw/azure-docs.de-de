@@ -4,10 +4,10 @@ description: Erfahren Sie, wie Sie Probleme beheben, die beim Anwenden von Artef
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: a89b675a1b3bf134b98e09c7278f0eccb594c325
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85483192"
 ---
 # <a name="troubleshoot-issues-when-applying-artifacts-in-an-azure-devtest-labs-virtual-machine"></a>Beheben von Problemen, die beim Anwenden von Artefakten auf einem virtuellen Azure DevTest Labs-Computer auftreten
@@ -128,4 +128,4 @@ Es gibt weitere weniger häufige mögliche Fehlerquellen. Stellen Sie sicher, da
 - **Abgelaufenes persönliches Zugriffstoken für das private Repository**. Wenn dieses abgelaufen ist, wird das Artefakt nicht aufgelistet, und alle Skripts, die auf Artefakte aus einem Repository mit einem abgelaufenen privaten Zugriffstoken verweisen, schlagen entsprechend fehl.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Wenn keiner dieser Fehler aufgetreten ist und Sie weiterhin keine Artefakte anwenden können, können Sie einen Azure-Supportincident einreichen. Rufen Sie die [Azure-Support-Website](https://azure.microsoft.com/support/options/) auf, und wählen Sie **Support erhalten**aus.
+Wenn keiner dieser Fehler aufgetreten ist und Sie weiterhin keine Artefakte anwenden können, können Sie einen Azure-Supportincident einreichen. Rufen Sie die [Azure-Support-Website](https://azure.microsoft.com/support/options/) auf, und wählen Sie **Support erhalten** aus.

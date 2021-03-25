@@ -3,16 +3,17 @@ title: Automatisches Erweiterungsupgrade für VMs und Skalierungsgruppen in Azur
 description: Erfahren Sie, wie Sie das automatische Erweiterungsupgrade für Ihre virtuellen Computer und VM-Skalierungsgruppen in Azure aktivieren.
 author: mayanknayar
 ms.service: virtual-machines
+ms.subservice: automatic-extension-upgrade
 ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 02/12/2020
 ms.author: manayar
-ms.openlocfilehash: acc014785105d14c3109cfa420f0e9402ca3f534
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: fa4fa1c43ab9d31b879bdec8e724e896bd16e14c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100416640"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102123898"
 ---
 # <a name="preview-automatic-extension-upgrade-for-vms-and-scale-sets-in-azure"></a>Vorschau: Automatisches Erweiterungsupgrade für VMs und Skalierungsgruppen in Azure
 
@@ -21,7 +22,7 @@ Das automatische Erweiterungsupgrade ist als Vorschau für Azure-VMs und Azure V
  Das automatische Erweiterungsupgrade verfügt über die folgenden Features:
 - Wird für Azure-VMs und Azure-Virtual Machine Scale Sets unterstützt. Service Fabric Virtual Machine Scale Sets werden derzeit nicht unterstützt.
 - Upgrades werden in einem verfügbarkeitsbasierten Bereitstellungsmodell angewendet (siehe unten).
-- Wenn sie auf Virtual Machine Scale Sets angewendet werden, werden nicht mehr als 20 % der virtuellen Computer der Virtual Machine Scale Sets in einem einzelnen Batch aktualisiert (vorbehaltlich eines Minimums von einem virtuellen Computer pro Batch).
+- Für eine VM-Skalierungsgruppe werden maximal 20 Prozent der virtuellen Computer in Skalierungsgruppen in einem einzelnen Batch aktualisiert. Die minimale Batchgröße ist ein virtueller Computer.
 - Unterstützt alle VM-Größen und sowohl Windows- als auch Linux-Erweiterungen.
 - Sie können automatische Upgrades jederzeit kündigen.
 - Das automatische Erweiterungsupgrade kann für Virtual Machine Scale Sets beliebiger Größe aktiviert werden.
@@ -36,24 +37,9 @@ Das automatische Erweiterungsupgrade ist als Vorschau für Azure-VMs und Azure V
 
 
 ## <a name="how-does-automatic-extension-upgrade-work"></a>Wie funktioniert das automatische Erweiterungsupgrade?
-Der Erweiterungsupgradeprozess ersetzt die vorhandene Erweiterungsversion auf einer VM durch die neue, vom Erweiterungsherausgeber veröffentlichte Erweiterungsversion. Die Integrität der VM wird überwacht, nachdem die neue Erweiterung installiert wurde. Wenn sich die VM innerhalb von 5 Minuten nach dem Upgrade nicht in einem fehlerfreien Zustand befindet, wird für die neue Erweiterungsversion ein Rollback auf die vorherige Version ausgeführt.
+Der Erweiterungsupgradeprozess ersetzt die vorhandene Erweiterungsversion auf einer VM bei Veröffentlichung durch den Erweiterungsherausgeber durch eine neue Version derselben Erweiterung. Die Integrität der VM wird überwacht, nachdem die neue Erweiterung installiert wurde. Wenn sich die VM innerhalb von 5 Minuten nach dem Upgrade nicht in einem fehlerfreien Zustand befindet, wird für die Erweiterungsversion ein Rollback auf die vorherige Version ausgeführt.
 
 Ein fehlerhaftes Erweiterungsupdate wird automatisch wiederholt. Ein Wiederholungsversuch wird regelmäßig nach einigen Tagen ohne Benutzereingriff automatisch durchgeführt.
-
-
-## <a name="upgrade-process-for-virtual-machine-scale-sets"></a>Upgradeprozess für Virtual Machine Scale Sets
-1. Bevor mit dem Upgradeprozess begonnen wird, stellt der Orchestrator sicher, dass nicht mehr als 20 % der VMs in der gesamten Skalierungsgruppe (aus beliebigem Grund) fehlerhaft sind.
-
-2. Der Upgradeorchestrator identifiziert den Batch zu aktualisierender VM-Instanzen, wobei ein Batch maximal 20 % der gesamten VM-Anzahl aufweist, abhängig von einer minimalen Batchgröße eines virtuellen Computers.
-
-3. Für Skalierungsgruppen mit konfigurierten Anwendungsintegritätstests oder einer Anwendungsintegritätserweiterung wartet das Upgrade bis zu 5 Minuten (oder den konfigurierten Wert des Integritätstests) darauf, dass die VM fehlerfrei wird, bevor mit der Aktualisierung des nächsten Batches fortgefahren wird. Wenn die Integrität einer VM nach einem Upgrade nicht wiederhergestellt wird, wird die vorherige Erweiterungsversion für die VM standardmäßig erneut installiert.
-
-4. Der Upgradeorchestrator verfolgt auch den Prozentsatz der VMs nach, die nach einem Upgrade fehlerhaft werden. Das Upgrade wird beendet, wenn mehr als 20% der aktualisierten Instanzen während des Upgradeprozesses fehlerhaft werden.
-
-Das oben beschriebene Verfahren wird fortgesetzt, bis alle Instanzen in der Skalierungsgruppe aktualisiert sind.
-
-Der Upgradeorchestrator für die Skalierungsgruppe überprüft die allgemeine Skalierungsgruppenintegrität, bevor die einzelnen Batches aktualisiert werden. Beim Aktualisieren eines Batches finden eventuell andere gleichzeitige geplante oder nicht geplante Wartungsaktivitäten statt, die die Integrität Ihrer Skalierungsgruppen-VMs beeinträchtigen könnten. Wenn in solchen Fällen mehr als 20 % der Instanzen der Skalierungsgruppe fehlerhaft werden, endet das Upgrade der Skalierungsgruppe am Ende des aktuellen Batches.
-
 
 ### <a name="availability-first-updates"></a>Verfügbarkeitsupdates
 Das Verfügbarkeitsmodell für plattformorchestrierte Updates stellt sicher, dass die Verfügbarkeitskonfigurationen in Azure über mehrere Verfügbarkeitsstufen hinweg berücksichtigt werden.
@@ -62,9 +48,9 @@ Für eine Gruppe von virtuellen Computern, die ein Update durchlaufen, orchestri
 
 **Über Regionen hinweg:**
 - Ein Update wird in Phasen global in Azure ausgeführt, um Azure-weite Bereitstellungsausfälle zu vermeiden.
-- Eine Phase kann sich über eine oder mehrere Regionen erstrecken, und ein Update geht nur dann in die nächsten Phasen über, wenn die in Betracht kommenden VMs in einer Phase erfolgreich aktualisiert wurden.
+- Eine „Phase“ kann sich über eine oder mehrere Regionen erstrecken, und ein Update ist nur dann Phasen übergreifend, wenn die in Betracht kommenden VMs in der vorherigen Phase erfolgreich aktualisiert wurden.
 - Georegionspaare werden nicht gleichzeitig aktualisiert und können sich nicht in der gleichen Regionsphase befinden.
-- Der Erfolg eines Updates wird durch die Nachverfolgung der Integrität nach dem Update einer VM gemessen. Die VM-Integrität wird durch Integritätsindikatoren der Plattform für die VM nachverfolgt. Im Fall von Virtual Machine Scale Sets wird die Integrität der VM durch Anwendungsintegritätstests oder die Anwendungsintegritätserweiterung nachverfolgt, wenn diese auf die Skalierungsgruppe angewendet werden.
+- Der Erfolg eines Updates wird durch die Nachverfolgung der Integrität nach dem Update einer VM gemessen. Die VM-Integrität wird durch Integritätsindikatoren der Plattform für die VM nachverfolgt. Für Virtual Machine Scale Sets wird die Integrität der VM durch Anwendungsintegritätstests oder die Anwendungsintegritätserweiterung nachverfolgt, wenn diese auf die Skalierungsgruppe angewendet werden.
 
 **Innerhalb einer Region:**
 - VMs in verschiedenen Verfügbarkeitszonen werden nicht gleichzeitig aktualisiert.
@@ -75,6 +61,18 @@ Für eine Gruppe von virtuellen Computern, die ein Update durchlaufen, orchestri
 - VMs in einer gemeinsamen Verfügbarkeitsgruppe werden innerhalb der Grenzen der Updatedomäne aktualisiert, und VMs in mehreren Updatedomänen werden nicht gleichzeitig aktualisiert.  
 - VMs in einer gemeinsamen VM-Skalierungsgruppe werden in Batches gruppiert und innerhalb der Grenzen von Upgradedomänen aktualisiert.
 
+### <a name="upgrade-process-for-virtual-machine-scale-sets"></a>Upgradeprozess für Virtual Machine Scale Sets
+1. Bevor mit dem Upgradeprozess begonnen wird, stellt der Orchestrator sicher, dass nicht mehr als 20 % der VMs in der gesamten Skalierungsgruppe (aus beliebigem Grund) fehlerhaft sind.
+
+2. Der Upgradeorchestrator identifiziert den Batch der VM-Instanzen, die aktualisiert werden sollen. Ein Upgradebatch kann maximal 20 % der VM-Gesamtzahl umfassen, eine minimale Batchgröße von einer VM vorausgesetzt.
+
+3. Für Skalierungsgruppen mit konfigurierten Anwendungsintegritätstests oder einer Anwendungsintegritätserweiterung wartet das Upgrade bis zu 5 Minuten (oder den konfigurierten Wert des Integritätstests) darauf, dass die VM fehlerfrei wird, bevor der nächste Batch aktualisiert wird. Wenn die Integrität einer VM nach einem Upgrade nicht wiederhergestellt wird, wird die vorherige Erweiterungsversion standardmäßig erneut auf der VM installiert.
+
+4. Der Upgradeorchestrator verfolgt auch den Prozentsatz der VMs nach, die nach einem Upgrade fehlerhaft werden. Das Upgrade wird beendet, wenn mehr als 20% der aktualisierten Instanzen während des Upgradeprozesses fehlerhaft werden.
+
+Das oben beschriebene Verfahren wird fortgesetzt, bis alle Instanzen in der Skalierungsgruppe aktualisiert sind.
+
+Der Upgradeorchestrator für die Skalierungsgruppe überprüft die allgemeine Skalierungsgruppenintegrität, bevor die einzelnen Batches aktualisiert werden. Beim Aktualisieren eines Batches finden eventuell andere gleichzeitige geplante oder nicht geplante Wartungsaktivitäten statt, die die Integrität Ihrer Skalierungsgruppen-VMs beeinträchtigen könnten. Wenn in solchen Fällen mehr als 20 % der Instanzen der Skalierungsgruppe fehlerhaft werden, endet das Upgrade der Skalierungsgruppe am Ende des aktuellen Batches.
 
 ## <a name="supported-extensions"></a>Unterstützte Erweiterungen
 Die Vorschau der automatischen Erweiterungsupgrades unterstützt die folgenden Erweiterungen (weitere werden regelmäßig hinzugefügt):
@@ -258,13 +256,13 @@ az vmss extension set \
 
 ## <a name="extension-upgrades-with-multiple-extensions"></a>Erweiterungsupgrades mit mehreren Erweiterungen
 
-Eine VM oder eine VM-Skalierungsgruppe kann über mehrere Erweiterungen mit aktiviertem automatischem Erweiterungsupgrade verfügen, zusätzlich zu anderen Erweiterungen ohne automatische Erweiterungsupgrades.  
+Für eine VM oder ein Virtual Machine Scale Set können mehrere Erweiterungen mit automatischem Erweiterungsupgrade aktiviert sein. Dieselbe VM oder Skalierungsgruppe kann auch über andere Erweiterungen verfügen, ohne dass das automatische Erweiterungsupgrade aktiviert ist.  
 
-Wenn für einen virtuellen Computer mehrere Erweiterungsupgrades verfügbar sind, können die Upgrades in einem Batch zusammengefasst werden. Allerdings wird jedes Erweiterungsupgrade einzeln auf einen virtuellen Computer angewendet. Ein Fehler bei einer Erweiterung hat keine Auswirkung auf die anderen Erweiterungen, die möglicherweise aktualisiert werden. Wenn z. B. zwei Erweiterungen für ein Upgrade geplant sind und das erste Erweiterungsupgrade fehlschlägt, wird die zweite Erweiterung trotzdem aktualisiert.
+Wenn für einen virtuellen Computer mehrere Erweiterungsupgrades verfügbar sind, werden die Upgrades möglicherweise in einem Batch zusammengefasst, aber jedes Erweiterungsupgrade wird einzeln auf einem virtuellen Computer angewendet. Ein Fehler bei einer Erweiterung hat keine Auswirkung auf die anderen Erweiterungen, die möglicherweise aktualisiert werden. Wenn z. B. zwei Erweiterungen für ein Upgrade geplant sind und das erste Erweiterungsupgrade fehlschlägt, wird die zweite Erweiterung trotzdem aktualisiert.
 
-Automatische Erweiterungsupgrades können auch angewendet werden, wenn für eine VM oder eine VM-Skalierungsgruppe mehrere Erweiterungen mit [Erweiterungssequenzierung](../virtual-machine-scale-sets/virtual-machine-scale-sets-extension-sequencing.md) konfiguriert sind. Erweiterungssequenzierung gilt für die erstmalige Bereitstellung der VM, und alle nachfolgenden Erweiterungsupgrades für eine Erweiterung werden unabhängig voneinander angewendet.
+Automatische Erweiterungsupgrades können auch angewendet werden, wenn für eine VM oder eine VM-Skalierungsgruppe mehrere Erweiterungen mit [Erweiterungssequenzierung](../virtual-machine-scale-sets/virtual-machine-scale-sets-extension-sequencing.md) konfiguriert sind. Erweiterungssequenzierung gilt für die erstmalige Bereitstellung der VM, und alle zukünftigen Erweiterungsupgrades für eine Erweiterung werden unabhängig voneinander angewendet.
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 > [!div class="nextstepaction"]
-> [Weitere Informationen zur Anwendungsintegritätserweiterung](./windows/automatic-vm-guest-patching.md)
+> [Weitere Informationen zur Anwendungsintegritätserweiterung](../virtual-machine-scale-sets/virtual-machine-scale-sets-health-extension.md)

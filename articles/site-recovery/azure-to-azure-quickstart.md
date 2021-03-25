@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 03/27/2020
 ms.custom: mvc
 ms.openlocfilehash: 8681ccaac30402927005e5e8802d7da2bddc2c5c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86135710"
 ---
 # <a name="quickstart-set-up-disaster-recovery-to-a-secondary-azure-region-for-an-azure-vm"></a>Schnellstart: Einrichten der Notfallwiederherstellung in einer sekundären Azure-Region für einen virtuellen Azure-Computer
@@ -48,7 +48,7 @@ Nach Abschluss des Replikationsauftrags können Sie den Replikationsstatus über
 1. Wählen Sie unter **Vorgänge** die Option **Notfallwiederherstellung** aus.
 1. Wählen Sie unter **Übersicht** die Option **Zusammenfassung** aus, um die Replikationsdetails anzuzeigen. Ausführlichere Informationen finden Sie unter **Integrität und Status**, **Failoverbereitschaft** und **Infrastrukturansicht**.
 
-   :::image type="content" source="media/azure-to-azure-quickstart/replication-status.png" alt-text="Aktivieren der Replikation":::
+   :::image type="content" source="media/azure-to-azure-quickstart/replication-status.png" alt-text="Replikationsstatus":::
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
@@ -65,7 +65,7 @@ Führen Sie zum Deaktivieren der Replikation die folgenden Schritte aus:
 1. Wählen Sie unter **Übersicht** die Option **Replikation deaktivieren** aus.
 1. Navigieren Sie für die VM zu **Einstellungen** > **Erweiterungen**, um die Site Recovery-Erweiterung zu deinstallieren.
 
-   :::image type="content" source="media/azure-to-azure-quickstart/disable2-replication.png" alt-text="Aktivieren der Replikation":::
+   :::image type="content" source="media/azure-to-azure-quickstart/disable2-replication.png" alt-text="Deaktivieren der Replikation":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

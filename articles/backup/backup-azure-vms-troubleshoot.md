@@ -5,10 +5,10 @@ ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
 ms.openlocfilehash: 2cda13ea089ac08dff7c1ba5ca93ba56ab3c23cf
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97831549"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Problembehandlung bei Sicherungsfehlern auf virtuellen Azure-Computern
@@ -134,8 +134,8 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotWithoutThre
 
 Schritt 3: Falls das Problem mit den Schritten 1 und 2 nicht behoben werden konnte, kann der Grund für den Fehler sein, dass für die VSS Writer-Instanzen aufgrund einer IOPS-Begrenzung ein Timeout auftritt.<br>
 
-Navigieren Sie zur Überprüfung zu ***System- und Ereignisanzeige-Anwendungsprotokolle** _, und suchen Sie nach der folgenden Fehlermeldung:<br>
-_Für den Schattenkopieanbieter ist ein Timeout aufgetreten, während für das Volume für den Schattenkopiervorgang die Schreibvorgänge angehalten wurden. Ursache hierfür könnte eine hohe Aktivität auf dem Volume aufgrund einer Anwendung oder eines Systemdienstes sein. Wiederholen Sie den Vorgang später, wenn der Aktivitätsgrad auf dem Volume nicht mehr so hoch ist.*<br>
+Navigieren Sie zur Überprüfung zu ***System and Event Viewer Application logs*** (System- und Ereignisanzeige-Anwendungsprotokolle), und suchen Sie nach der folgenden Fehlermeldung:<br>
+*The shadow copy provider timed out while holding writes to the volume being shadow copied. This is probably due to excessive activity on the volume by an application or a system service. Try again later when activity on the volume is reduced.* (Für den Schattenkopieanbieter ist ein Timeout aufgetreten, während für das Volume für den Schattenkopiervorgang die Schreibvorgänge angehalten wurden. Der Grund ist wahrscheinlich ein übermäßig hoher Aktivitätsgrad auf dem Volume, der von einer Anwendung oder einem Systemdienst verursacht wird. Wiederholen Sie den Vorgang später, wenn der Aktivitätsgrad auf dem Volume nicht mehr so hoch ist.)<br>
 
 Lösung:
 

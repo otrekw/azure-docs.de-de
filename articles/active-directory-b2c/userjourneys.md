@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/14/2020
+ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ce41edd2c0048a20368dd02c2dd6101248e26c14
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 05307fe2ad9e0a59fa11c30f2dc7154ba5076603
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400012"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102174664"
 ---
 # <a name="userjourneys"></a>UserJourneys
 
@@ -80,7 +80,7 @@ Das folgende Beispiel zeigt ein User Journey-Element mit technischen Profilen f�
 
 Eine User Journey wird als Orchestrierungssequenz dargestellt, die für eine erfolgreiche Transaktion durchlaufen werden muss. Wenn ein Schritt fehlschlägt, schlägt die Transaktion fehl. Diese Orchestrierungsschritte verweisen sowohl auf die Bausteine als auch auf die Anspruchsanbieter, die in der Richtliniendatei zugelassen werden. Jeder Orchestrierungsschritt, der für das Anzeigen oder Rendern einer Benutzeroberfläche verantwortlich ist, verfügt auch über einen Verweis auf den Bezeichner für die entsprechende Inhaltsdefinition.
 
-Orchestrierungsschritte können anhand von Voraussetzungen, die im OrchestrationSteps-Element definiert werden, bedingungsabhängig ausgeführt werden. Beispielsweise können Sie konfigurieren, dass ein Orchestrierungsschritt nur ausgeführt wird, wenn bestimmte Ansprüche vorhanden sind oder aber ein Anspruch dem angegebenen Wert entspricht oder nicht.
+Orchestrierungsschritte können anhand von Voraussetzungen, die im OrchestrationSteps-Element definiert werden, bedingungsabhängig ausgeführt werden. Beispielsweise können Sie konfigurieren, dass ein Orchestrierungsschritt nur ausgeführt wird, wenn ein bestimmter Anspruch vorhanden ist oder ein Anspruch dem angegebenen Wert entspricht (oder nicht).
 
 Ein **OrchestrationSteps**-Element wird als Teil der Richtlinie hinzugefügt, um die geordnete Liste der Orchestrierungsschritte festzulegen. Dieses Element ist erforderlich.
 
@@ -119,18 +119,23 @@ Das **Preconditions**-Element enthält das folgende Element:
 
 #### <a name="precondition"></a>Precondition
 
+Orchestrierungsschritte können anhand von Voraussetzungen, die im Orchestrierungsschritt definiert werden, bedingungsabhängig ausgeführt werden. Es gibt zwei Arten von Vorbedingungen:
+ 
+- **Claims exist** (Ansprüche sind vorhanden): Gibt an, dass die Aktionen ausgeführt werden sollen, wenn der aktuelle Anspruchsbehälter des Benutzers die angegebenen Ansprüche enthält.
+- **Claim equals** (Anspruch entspricht): Gibt an, dass die Aktionen ausgeführt werden sollen, wenn der angegebene Anspruch vorhanden ist und dessen Wert dem angegebenen Wert entspricht. Bei der Überprüfung wird ein Ordinalvergleich unter Beachtung der Groß-/Kleinschreibung durchgeführt. Verwenden Sie bei der Überprüfung eines booleschen Anspruchstyps `True` oder `False`.
+
 Das **Precondition**-Element enthält die folgenden Attribute:
 
-| attribute | Erforderlich | Beschreibung |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | `Type` | Ja | Der Typ der Überprüfung oder Abfrage, die für diese Voraussetzung ausgeführt werden soll. Dieser Wert kann **ClaimsExist** sein, wodurch festgelegt wird, dass die Aktionen durchgeführt werden sollen, wenn die angegebenen Ansprüche in den aktuellen Ansprüchen des Benutzers vorhanden sind. Alternativ kann der Wert **ClaimEquals** sein, wodurch festgelegt wird, dass die Aktionen durchgeführt werden sollen, wenn der angegebene Anspruch vorhanden ist und sein Wert dem angegebenen Wert gleicht. |
-| `ExecuteActionsIf` | Ja | Verwenden Sie einen booleschen Test (TRUE oder FALSE), um zu entscheiden, ob die Aktionen in der Voraussetzung ausgeführt werden sollen. |
+| `ExecuteActionsIf` | Ja | Verwenden Sie einen Test vom Typ `true` oder `false`, um zu entscheiden, ob die Aktionen in der Vorbedingung ausgeführt werden sollen. |
 
 Das **Precondition**-Element enthält die folgenden Elemente:
 
 | Element | Vorkommen | BESCHREIBUNG |
 | ------- | ----------- | ----------- |
-| Wert | 1:n | Ein ClaimTypeReferenceId-Wert, der abgefragt werden soll. Ein anderes Wertelement enthält den Wert, der überprüft werden soll.</li></ul>|
+| Wert | 1:2 | Der Bezeichner eines Anspruchstyps. Der Anspruch ist bereits im Abschnitt für das Anspruchsschema in der Richtliniendatei oder der übergeordneten Richtliniendatei definiert. Bei Verwendung einer Vorbedingung vom Typ `ClaimEquals` enthält ein zweites Element vom Typ `Value` den zu überprüfenden Wert. |
 | Aktion | 1:1 | Die Aktion, die ausgeführt werden soll, wenn die Überprüfung der Voraussetzungen innerhalb eines Orchestrierungsschritts TRUE ergibt. Wenn der Wert von `Action` auf `SkipThisOrchestrationStep` festgelegt ist, wird das zugeordnete `OrchestrationStep`-Element nicht ausgeführt. |
 
 #### <a name="preconditions-examples"></a>Beispiele für Voraussetzungen
@@ -189,9 +194,12 @@ Mit einem Preconditions-Element können mehrere Voraussetzungen überprüft werd
 </OrchestrationStep>
 ```
 
-## <a name="claimsproviderselection"></a>ClaimsProviderSelection
+## <a name="claims-provider-selection"></a>Anspruchsanbieterauswahl
 
-Ein Orchestrierungsschritt vom Typ `ClaimsProviderSelection` oder `CombinedSignInAndSignUp` kann eine Liste von Anspruchsanbietern enthalten, mit denen ein Benutzer sich anmelden kann. Die Reihenfolge der Elemente in `ClaimsProviderSelections`-Elementen gibt die Reihenfolge vor, in der die Identitätsanbieter dem Benutzer gezeigt werden.
+Mit der Identitätsanbieterauswahl können Benutzer eine Aktion aus einer Liste von Optionen auswählen. Die Identitätsanbieterauswahl besteht aus einem Paar von Orchestrierungsschritten: 
+
+1. **Schaltflächen:** Sie beginnt mit dem Typ `ClaimsProviderSelection` oder mit dem Typ `CombinedSignInAndSignUp`, der eine Liste von Optionen enthält, aus denen der Benutzer wählen kann. Die Reihenfolge der Optionen innerhalb des Elements `ClaimsProviderSelections` steuert die Reihenfolge der Schaltflächen, die dem Benutzer angezeigt werden.
+2. **Aktionen:** Danach folgt der Typ `ClaimsExchange`. „ClaimsExchange“ enthält eine Liste von Aktionen. Die Aktion ist ein Verweis auf ein technisches Profil wie [OAuth2](oauth2-technical-profile.md), [OpenID Connect](openid-connect-technical-profile.md), [Anspruchstransformation](claims-transformation-technical-profile.md) oder [Selbstbestätigt](self-asserted-technical-profile.md). Wenn ein Benutzer auf eine der Schaltflächen klickt, wird die entsprechende Aktion ausgeführt.
 
 Das **ClaimsProviderSelections**-Element enthält das folgende Element:
 
@@ -212,7 +220,7 @@ Das **ClaimsProviderSelection**-Element enthält die folgenden Attribute:
 | TargetClaimsExchangeId | Nein  | Der Bezeichner des Anspruchsaustauschs, der im nächsten Orchestrierungsschritt der Auswahl des Anspruchsanbieters ausgeführt wird. Dieses oder das ValidationClaimsExchangeId-Attribut muss angegeben werden, aber nicht beide. |
 | ValidationClaimsExchangeId | Nein | Der Bezeichner des Anspruchsaustauschs, der im aktuellen Orchestrierungsschritt zur Validierung der Auswahl des Anspruchsanbieters ausgeführt wird. Dieses oder das TargetClaimsExchangeId-Attribut muss angegeben werden, aber nicht beide. |
 
-### <a name="claimsproviderselection-example"></a>Beispiel für das ClaimsProviderSelection-Element
+### <a name="claims-provider-selection-example"></a>Beispiel für die Anspruchsanbieterauswahl
 
 Im folgenden Orchestrierungsschritt kann der Benutzer auswählen, ob er sich über Facebook, LinkedIn, Twitter, Google oder ein lokales Konto anmelden möchte. Wenn der Benutzer einen der Social Media-Identitätsanbieter auswählt, wird der zweite Orchestrierungsschritt mit dem ausgewählten Anspruchsaustausch ausgeführt, der im `TargetClaimsExchangeId`-Attribut angegeben wurde. Der zweite Orchestrierungsschritt leitet den Benutzer an den Social Media-Identitätsanbieter weiter, um den Anmeldevorgang abzuschließen. Wenn der Benutzer sich dazu entscheidet, sich mit einem lokalen Konto anzumelden, bleibt Azure AD B2C beim gleichen Orchestrierungsschritt (die gleiche Registrierungs- oder Anmeldeseite) und überspringt den zweiten Orchestrierungsschritt.
 
@@ -242,7 +250,7 @@ Im folgenden Orchestrierungsschritt kann der Benutzer auswählen, ob er sich üb
   <ClaimsExchanges>
     <ClaimsExchange Id="FacebookExchange" TechnicalProfileReferenceId="Facebook-OAUTH" />
     <ClaimsExchange Id="SignUpWithLogonEmailExchange" TechnicalProfileReferenceId="LocalAccountSignUpWithLogonEmail" />
-  <ClaimsExchange Id="GoogleExchange" TechnicalProfileReferenceId="Google-OAUTH" />
+    <ClaimsExchange Id="GoogleExchange" TechnicalProfileReferenceId="Google-OAUTH" />
     <ClaimsExchange Id="LinkedInExchange" TechnicalProfileReferenceId="LinkedIn-OAUTH" />
     <ClaimsExchange Id="TwitterExchange" TechnicalProfileReferenceId="Twitter-OAUTH1" />
   </ClaimsExchanges>

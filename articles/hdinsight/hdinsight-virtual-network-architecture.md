@@ -4,12 +4,12 @@ description: Lernen Sie die Ressourcen kennen, die beim Erstellen eines HDInsigh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/14/2020
-ms.openlocfilehash: d5b8bdf5577642290cee7250e0f21f8a69dfd248
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 43640a9de91b6b44a236090ff029a49313ee0247
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98931157"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871672"
 ---
 # <a name="azure-hdinsight-virtual-network-architecture"></a>Virtuelle Netzwerkarchitektur mit Azure HDInsight
 
@@ -43,7 +43,7 @@ Wenn Sie nur den Hostnamen benötigen, verwenden Sie nur den ersten Teil des FQD
 
 Das folgende Diagramm zeigt die Platzierung von HDInsight-Knoten und Netzwerkressourcen in Azure.
 
-![Diagramm der HDInsight-Entitäten, erstellt in einem benutzerdefinierten virtuellen Azure-Netzwerk](./media/hdinsight-virtual-network-architecture/hdinsight-vnet-diagram.png)
+:::image type="content" source="./media/hdinsight-virtual-network-architecture/hdinsight-vnet-diagram.png" alt-text="Diagramm der HDInsight-Entitäten, erstellt in einem benutzerdefinierten virtuellen Azure-Netzwerk" border="false":::
 
 Die Standardressourcen in einem virtuellen Azure-Netzwerk umfassen die in der vorherigen Tabelle genannten Clusterknotentypen. Außerdem Netzwerkgeräte, die die Kommunikation zwischen dem virtuellen Netzwerk und externen Netzwerken unterstützen.
 
@@ -51,18 +51,18 @@ Die folgende Tabelle enthält die neun Clusterknoten, die erstellt werden, wenn 
 
 | Ressourcentyp | Vorhandene Anzahl | Details |
 | --- | --- | --- |
-|Hauptknoten | 2 |    |
-|ZooKeeper-Knoten | 3 | |
-|Workerknoten | 2 | Diese Anzahl kann sich je nach Clusterkonfiguration und Skalierung ändern. Für Apache Kafka sind mindestens drei Workerknoten erforderlich.  |
-|Gatewayknoten | 2 | Gatewayknoten sind virtuelle Azure-Computer, die zwar in Azure erstellt, in Ihrem Abonnement jedoch nicht angezeigt werden. Wenden Sie sich an den Support, wenn Sie diese Knoten neu starten müssen. |
+|Hauptknoten | two |    |
+|ZooKeeper-Knoten | three | |
+|Workerknoten | two | Diese Anzahl kann sich je nach Clusterkonfiguration und Skalierung ändern. Für Apache Kafka sind mindestens drei Workerknoten erforderlich.  |
+|Gatewayknoten | two | Gatewayknoten sind virtuelle Azure-Computer, die zwar in Azure erstellt, in Ihrem Abonnement jedoch nicht angezeigt werden. Wenden Sie sich an den Support, wenn Sie diese Knoten neu starten müssen. |
 
 Die folgenden Netzwerkressourcen werden innerhalb des virtuellen Netzwerks, das mit HDInsight verwendet wird, automatisch erstellt:
 
 | Netzwerkressource | Vorhandene Anzahl | Details |
 | --- | --- | --- |
-|Load Balancer | 3 | |
-|Netzwerkschnittstellen | 9 | Dieser Wert basiert auf einem normalen Cluster, in dem jeder Knoten eine eigene Netzwerkschnittstelle hat. Die neun Schnittstellen sind für die in der vorherigen Tabelle beschriebenen Knoten bestimmt: zwei Hauptknoten, drei Zookeeper-Knoten, zwei Workerknoten und zwei Gatewayknoten. |
-|Öffentliche IP-Adressen | 2 |    |
+|Load Balancer | three | |
+|Netzwerkschnittstellen | neun | Dieser Wert basiert auf einem normalen Cluster, in dem jeder Knoten eine eigene Netzwerkschnittstelle hat. Die neun Schnittstellen sind für die in der vorherigen Tabelle beschriebenen Knoten bestimmt: zwei Hauptknoten, drei Zookeeper-Knoten, zwei Workerknoten und zwei Gatewayknoten. |
+|Öffentliche IP-Adressen | two |    |
 
 ## <a name="endpoints-for-connecting-to-hdinsight"></a>Endpunkte zum Herstellen einer Verbindung mit HDInsight
 

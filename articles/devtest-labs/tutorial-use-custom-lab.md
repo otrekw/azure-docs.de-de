@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 06/26/2020
 ms.author: spelluru
 ms.openlocfilehash: b4477e0b98ef534b8170ee297edf88ac6fa62dd7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85476443"
 ---
 # <a name="tutorial-access-a-lab-in-azure-devtest-labs"></a>Tutorial: Zugreifen auf ein Lab in Azure DevTest Labs
@@ -21,7 +21,7 @@ In diesem Tutorial führen Sie die folgenden Aktionen aus:
 > * Herstellen der Verbindung zur VM
 > * Aufheben des Anspruchs auf den virtuellen Computer
 
-Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/), bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="access-the-lab"></a>Zugreifen auf das Lab
 
@@ -34,7 +34,7 @@ Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](h
 
 ## <a name="claim-a-vm"></a>Beanspruchen eines virtuellen Computers
 
-1. Klicken Sie in der Liste **Abrufbare virtuelle Computer** auf die Schaltfläche mit den drei Auslassungspunkten ( **...** ), und wählen Sie **Computer beanspruchen** aus.
+1. Klicken Sie in der Liste **Abrufbare virtuelle Computer** auf die Schaltfläche mit den drei Auslassungspunkten (**...**), und wählen Sie **Computer beanspruchen** aus.
 
     ![Beanspruchen eines virtuellen Computers](./media/tutorial-use-custom-lab/claim-virtual-machine.png)
 1. Vergewissern Sie sich, dass der virtuelle Computer in der Liste **Meine virtuellen Computer** angezeigt wird.
@@ -51,7 +51,7 @@ Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](h
     Für die VM muss SSH- bzw. RDP-Zugriff aktiviert sein, um eine Verbindung mit einer Linux-VM herzustellen. Schritte zum Herstellen einer Verbindung mit einer Linux-VM per RDP finden Sie unter [Installieren und Konfigurieren von Remotedesktop zum Herstellen einer Verbindung mit einem virtuellen Linux-Computer in Azure](../virtual-machines/linux/use-remote-desktop.md). 
 
     > [!NOTE]
-    > Es gibt andere Möglichkeiten, zur Seite „Virtueller Computer“ für Ihren virtuellen Computer zu gelangen. Hier einige Beispiele: 
+    > Es gibt andere Möglichkeiten, zur Seite „Virtueller Computer“ für Ihren virtuellen Computer zu gelangen. Hier sind einige davon: 
     > 
     > 1. Suchen Sie nach allen VMs in Ihrem Abonnement. Wählen Sie Ihre VM in der Liste der virtuellen Computer aus, um zur Seite **Virtueller Computer** zu gelangen.
     > 2. Navigieren Sie zur Seite **Ressourcengruppe** für die Ressourcengruppe. Wählen Sie dann Ihre VM aus der Liste der Ressourcen in der Ressourcengruppe aus, um zur Seite **Virtueller Computer** zu gelangen. 

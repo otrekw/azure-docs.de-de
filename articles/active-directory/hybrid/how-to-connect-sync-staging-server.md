@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 48584fa4042cf53fa1084e519dca0e64f530ca59
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90090124"
 ---
 # <a name="azure-ad-connect-staging-server-and-disaster-recovery"></a>Azure AD Connect: Stagingserver und Notfallwiederherstellung
@@ -33,7 +33,7 @@ Der Stagingmodus kann für verschiedene Szenarien genutzt werden, darunter:
 * Testen und Bereitstellen neuer Konfigurationsänderungen.
 * Einführen eines neuen Servers und Außerbetriebnahme des alten Servers.
 
-Bei der Installation können Sie auswählen, dass der Server in den **Stagingmodus**versetzt werden soll. Dadurch wird der Server für Import und Synchronisierung aktiviert, es werden jedoch keine Exportvorgänge ausgeführt. Ein Server im Stagingmodus führt keine Kennwortsynchronisierung und kein Kennwortrückschreiben durch – selbst dann nicht, wenn Sie diese Features bei der Installation ausgewählt haben. Wenn Sie den Stagingmodus deaktivieren, beginnt der Server mit dem Exportieren und aktiviert die Kennwortsynchronisierung und das Kennwortrückschreiben.
+Bei der Installation können Sie auswählen, dass der Server in den **Stagingmodus** versetzt werden soll. Dadurch wird der Server für Import und Synchronisierung aktiviert, es werden jedoch keine Exportvorgänge ausgeführt. Ein Server im Stagingmodus führt keine Kennwortsynchronisierung und kein Kennwortrückschreiben durch – selbst dann nicht, wenn Sie diese Features bei der Installation ausgewählt haben. Wenn Sie den Stagingmodus deaktivieren, beginnt der Server mit dem Exportieren und aktiviert die Kennwortsynchronisierung und das Kennwortrückschreiben.
 
 > [!NOTE]
 > Angenommen Sie, Sie haben eine Azure AD Connect-Instanz, für die Kennworthashsynchronisierung aktiviert ist. Wenn Sie den Stagingmodus aktivieren, beendet der Server das Synchronisieren von Kennwortänderungen aus lokalem AD. Wenn Sie den Stagingmodus deaktivieren, setzt der Server das Synchronisieren von Kennwortänderungen an der Stelle fort, an der das Synchronisieren zuletzt beendet wurde. War der Stagingsmodus längere Zeit für den Server aktiviert, kann es etwas länger dauern, bis der Server alle Kennwortänderungen synchronisiert hat, die es in diesem Zeitraum gegeben hat.
@@ -58,7 +58,7 @@ Führen Sie zum Anwenden dieser Methode die folgenden Schritte aus:
 #### <a name="prepare"></a>Vorbereiten
 1. Installieren Sie Azure AD Connect, wählen Sie **Stagingmodus** aus, und deaktivieren Sie auf der letzten Seite des Installations-Assistenten die Option **Synchronisierung starten**. In diesem Modus kann das Synchronisierungsmodul manuell ausgeführt werden.
    ![Screenshot der Seite „Bereit für die Konfiguration“ im Azure AD Connect-Dialogfeld](./media/how-to-connect-sync-staging-server/readytoconfigure.png)
-2. Melden Sie sich ab und wieder an, und wählen Sie im Startmenü die Option **Synchronisierungsdienst**aus.
+2. Melden Sie sich ab und wieder an, und wählen Sie im Startmenü die Option **Synchronisierungsdienst** aus.
 
 #### <a name="configuration"></a>Konfiguration
 Wenn Sie benutzerdefinierte Änderungen an den primären Server vorgenommen haben und die Konfiguration mit dem Stagingserver vergleichen möchten, verwenden Sie [Azure AD Connect configuration documenter (Azure AD Connect-Konfigurationsdokumentierer)](https://github.com/Microsoft/AADConnectConfigDocumenter).
@@ -113,7 +113,7 @@ Eine sinnvolle Strategie besteht darin, eine ggf. erforderliche Neuerstellung de
 Das Synchronisierungsmodul speichert keine Statusinformationen zu den Objekten, deshalb kann die Datenbank mithilfe der Daten in Active Directory und Azure AD neu erstellt werden. Das Attribut **sourceAnchor** wird verwendet, um die lokalen Objekte und die Cloudobjekte miteinander zu verknüpfen. Wenn Sie den Server mit vorhandenen lokalen Objekten und Cloudobjekten neu erstellen, werden diese Objekte bei der Neuinstallation vom Synchronisierungsmodul erneut abgeglichen. Dokumentieren und speichern Sie die am Server vorgenommenen Änderungen, beispielsweise die Filter- und Synchronisierungsregeln. Diese benutzerdefinierten Konfigurationen müssen erneut angewendet werden, bevor Sie die Synchronisierung starten.
 
 ### <a name="have-a-spare-standby-server---staging-mode"></a>Stellen Sie einen Reservestandbyserver bereit (Stagingmodus)
-Wenn Sie über eine komplexere Umgebung verfügen, wird empfohlen, mindestens einen Standbyserver einzurichten. Bei der Installation können Sie festlegen, dass der Server in den **Stagingmodus**versetzt werden soll.
+Wenn Sie über eine komplexere Umgebung verfügen, wird empfohlen, mindestens einen Standbyserver einzurichten. Bei der Installation können Sie festlegen, dass der Server in den **Stagingmodus** versetzt werden soll.
 
 Weitere Informationen finden Sie unter [Stagingmodus](#staging-mode).
 
@@ -151,9 +151,9 @@ write-host "Importing XML" -ForegroundColor Yellow
 $resolvedXMLtoimport=Resolve-Path -Path ([Environment]::ExpandEnvironmentVariables($xmltoimport))
 
 #use an XmlReader to deal with even large files
-$result=$reader = [System.Xml.XmlReader]::Create($resolvedXMLtoimport) 
+$result=$reader = [System.Xml.XmlReader]::Create($resolvedXMLtoimport) 
 $result=$reader.ReadToDescendant('cs-object')
-do 
+do 
 {
     #create the object placeholder
     #adding them up here means we can enforce consistency

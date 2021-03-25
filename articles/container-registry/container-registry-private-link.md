@@ -4,10 +4,10 @@ description: Richten Sie einen privaten Endpunkt in einer Containerregistrierung
 ms.topic: article
 ms.date: 10/01/2020
 ms.openlocfilehash: 3193c65a2021d29f03bd9ae6cbc00fd6c349d9bf
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93342299"
 ---
 # <a name="connect-privately-to-an-azure-container-registry-using-azure-private-link"></a>Herstellen einer privaten Verbindung mit einer Azure-Containerregistrierung über Azure Private Link
@@ -15,7 +15,7 @@ ms.locfileid: "93342299"
 
 Beschränken Sie den Zugriff auf eine Registrierung, indem Sie den Registrierungsendpunkten private IP-Adressen eines virtuellen Netzwerks zuweisen und [Azure Private Link](../private-link/private-link-overview.md) verwenden. Der Netzwerkdatenverkehr zwischen den Clients im virtuellen Netzwerk und den privaten Endpunkten der Registrierung wird über das virtuelle Netzwerk und einen privaten Link im Microsoft-Backbonenetzwerk geleitet, und somit nicht im öffentlichen Internet verfügbar gemacht. Private Link ermöglicht auch den Zugriff auf die private Registrierung aus einem lokalen System über privates Peering mit [Azure ExpressRoute](../expressroute/expressroute-introduction.MD) oder ein [VPN-Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md).
 
-Sie können für den privaten Endpunkt der Registrierung [DNS-Einstellungen konfigurieren](../private-link/private-endpoint-overview.md#dns-configuration), sodass die Einstellungen zur zugeordneten privaten IP-Adresse der Registrierung aufgelöst werden. Dank DNS-Konfiguration können Clients und Dienste im Netzwerk weiterhin unter dem vollqualifizierten Domänennamen der Registrierung (beispielsweise *myregistry.azurecr.io* ) auf die Registrierung zugreifen. 
+Sie können für den privaten Endpunkt der Registrierung [DNS-Einstellungen konfigurieren](../private-link/private-endpoint-overview.md#dns-configuration), sodass die Einstellungen zur zugeordneten privaten IP-Adresse der Registrierung aufgelöst werden. Dank DNS-Konfiguration können Clients und Dienste im Netzwerk weiterhin unter dem vollqualifizierten Domänennamen der Registrierung (beispielsweise *myregistry.azurecr.io*) auf die Registrierung zugreifen. 
 
 Diese Funktion ist auf der Dienstebene **Premium** der Containerregistrierung verfügbar. Zurzeit können maximal 10 private Endpunkte für eine Registrierung eingerichtet werden. Weitere Informationen zu den Tarifen des Registrierungsdiensts und zu den Einschränkungen finden Sie unter [Azure Container Registry-Tarife](container-registry-skus.md).
 
@@ -216,8 +216,8 @@ Richten Sie eine private Verbindung ein, wenn Sie eine Registrierung erstellen, 
     | Name | Geben Sie einen eindeutigen Namen ein. |
     | Unterressource |Wählen Sie **Registrierung** aus.|
     | **Netzwerk** | |
-    | Virtuelles Netzwerk| Wählen Sie das virtuelle Netzwerk aus, in dem Ihr virtueller Computer bereitgestellt wird (beispielsweise *myDockerVMVNET* ). |
-    | Subnet | Wählen Sie ein Subnetz (beispielsweise *myDockerVMSubnet* ) aus, in dem Ihr virtueller Computer bereitgestellt wird. |
+    | Virtuelles Netzwerk| Wählen Sie das virtuelle Netzwerk aus, in dem Ihr virtueller Computer bereitgestellt wird (beispielsweise *myDockerVMVNET*). |
+    | Subnet | Wählen Sie ein Subnetz (beispielsweise *myDockerVMSubnet*) aus, in dem Ihr virtueller Computer bereitgestellt wird. |
     |**Private DNS-Integration**||
     |Integration in eine private DNS-Zone |Wählen Sie **Ja** aus. |
     |Private DNS-Zone |Wählen Sie *(Neu) privatelink.azurecr.io* aus. |
@@ -259,8 +259,8 @@ Richten Sie eine private Verbindung ein, wenn Sie eine Registrierung erstellen, 
     | Einstellung | Wert |
     | ------- | ----- |
     |**Netzwerk**| |
-    | Virtuelles Netzwerk| Wählen Sie das virtuelle Netzwerk aus, in dem Ihr virtueller Computer bereitgestellt wird (beispielsweise *myDockerVMVNET* ). |
-    | Subnet | Wählen Sie ein Subnetz (beispielsweise *myDockerVMSubnet* ) aus, in dem Ihr virtueller Computer bereitgestellt wird. |
+    | Virtuelles Netzwerk| Wählen Sie das virtuelle Netzwerk aus, in dem Ihr virtueller Computer bereitgestellt wird (beispielsweise *myDockerVMVNET*). |
+    | Subnet | Wählen Sie ein Subnetz (beispielsweise *myDockerVMSubnet*) aus, in dem Ihr virtueller Computer bereitgestellt wird. |
     |**Private DNS-Integration**||
     |Integration in eine private DNS-Zone |Wählen Sie **Ja** aus. |
     |Private DNS-Zone |Wählen Sie *(Neu) privatelink.azurecr.io* aus. |
@@ -402,7 +402,7 @@ Wenn Sie alle Azure-Ressourcen in der gleichen Ressourcengruppe erstellt haben u
 az group delete --name $RESOURCE_GROUP
 ```
 
-Wenn Sie Ihre Ressourcen über das Portal bereinigen möchten, navigieren Sie zu Ihrer Ressourcengruppe. Klicken Sie nach dem Laden der Ressourcengruppe auf **Ressourcengruppe löschen** , um die Ressourcengruppe und die dort gespeicherten Ressourcen zu entfernen.
+Wenn Sie Ihre Ressourcen über das Portal bereinigen möchten, navigieren Sie zu Ihrer Ressourcengruppe. Klicken Sie nach dem Laden der Ressourcengruppe auf **Ressourcengruppe löschen**, um die Ressourcengruppe und die dort gespeicherten Ressourcen zu entfernen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

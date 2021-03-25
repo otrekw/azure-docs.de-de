@@ -8,10 +8,10 @@ ms.date: 06/30/2020
 ms.service: azure-education
 ms.subservice: education-hub
 ms.openlocfilehash: 0b797e2416b4d8849da19e4e75127f86a6f17322
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87101056"
 ---
 # <a name="quickstart-set-up-a-course-and-create-a-classroom"></a>Schnellstart: Einrichten eines Kurses und Erstellen eines Classrooms
@@ -45,17 +45,17 @@ Führen Sie die folgenden Schritte aus, um einen Kurs und einen Classroom mit ei
 
 1. Wählen Sie in der oberen linken Ecke der Tabelle das Symbol **+ Hinzufügen** aus, um den Erstellungsworkflow zu starten.
 
-    :::image type="content" source="media/set-up-course-classroom/courses-add.png" alt-text="Seite „Azure Education Hub-Kurse“" border="false":::
+    :::image type="content" source="media/set-up-course-classroom/courses-add.png" alt-text="Hinzufügen eines Kurses zu Azure Education Hub" border="false":::
 
 1. Sie können einen Kursplan auf zwei Arten erstellen: durch Hochladen eines Kursplans oder durch Verwenden eines Einladungscodes.
     - **Kursplan**: Wenn Sie bereits über die Namen und Anmeldungen aller Kursteilnehmer verfügen, können Sie eine Kursplandatei mit Daten auffüllen und hochladen. Zum Herunterladen einer Beispieldatei für die CSV-Datei, die zum Hochladen des Kursplans erforderlich ist, wählen Sie in der oberen rechten Ecke den Link **Beispieldatei herunterladen** aus.
     - **Einladungscode**: Wenn Sie sich für die Verwendung eines Einladungscodes entscheiden, legen Sie fest, wie viele Codes eingelöst werden können und wann diese ablaufen. Sie senden Ihren Kursteilnehmern den folgenden Link, um den Code einlösen zu können: https://aka.ms/joinedu.
 
-      :::image type="content" source="media/set-up-course-classroom/enter-invitation-code.png" alt-text="Seite „Azure Education Hub-Kurse“" border="false":::
+      :::image type="content" source="media/set-up-course-classroom/enter-invitation-code.png" alt-text="Eingeben Ihres Einladungscodes in Azure Education Hub" border="false":::
 
 1. Wählen Sie in der unteren rechten Ecke **Classroom erstellen** aus. Dies kann einige Minuten dauern.
 
-   :::image type="content" source="media/set-up-course-classroom/create-classroom.png" alt-text="Seite „Azure Education Hub-Kurse“" border="false":::
+   :::image type="content" source="media/set-up-course-classroom/create-classroom.png" alt-text="Erstellen eines Classrooms in Azure Education Hub" border="false":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

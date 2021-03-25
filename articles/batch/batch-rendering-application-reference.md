@@ -6,10 +6,10 @@ ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: how-to
 ms.openlocfilehash: ace3fe7aee6b9ffc7226448b455bcfea1f931458
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85964871"
 ---
 # <a name="rendering-applications"></a>Renderinganwendungen
@@ -31,7 +31,7 @@ Zusätzlich zu den in 3ds Max integrierten Renderern sind die folgenden Renderer
 
 Rufen Sie die Anwendung `3dsmaxcmdio.exe` auf, um für einen Poolknoten das Rendering per Befehlszeile durchzuführen.  Diese Anwendung befindet sich unter dem Pfad, wenn die Aufgabe ausgeführt wird. Die Anwendung `3dsmaxcmdio.exe` verfügt über die gleichen verfügbaren Parameter wie die Anwendung `3dsmaxcmd.exe`. Dies ist in der [3ds Max-Hilfe](https://help.autodesk.com/view/3DSMAX/2018/ENU/) dokumentiert (Abschnitt „Rendering“ | „Command-Line Rendering“).
 
-Beispiel:
+Zum Beispiel:
 
 ```
 3dsmaxcmdio.exe -v:5 -rfw:0 -start:{0} -end:{0} -bitmapPath:"%AZ_BATCH_JOB_PREP_WORKING_DIR%\sceneassets\images" -outputName:dragon.jpg -w:1280 -h:720 "%AZ_BATCH_JOB_PREP_WORKING_DIR%\scenes\dragon.max"

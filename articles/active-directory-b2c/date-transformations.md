@@ -11,10 +11,10 @@ ms.date: 02/16/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: eaf58b964517162ee7f7eb925e1e64830eedc087
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85202550"
 ---
 # <a name="date-claims-transformations"></a>Transformationen von Datumsansprüchen
@@ -110,9 +110,9 @@ Das folgende Beispiel veranschaulicht die Konvertierung des Anspruchs `dateOfBir
 ### <a name="example"></a>Beispiel
 
 - Eingabeansprüche:
-    - **inputClaim:** 2020-15-03
+    - **inputClaim**: 2020-15-03
 - Ausgabeansprüche:
-    - **outputClaim:** 2020-15-03T00:00:00.0000000Z
+    - **outputClaim**: 2020-15-03T00:00:00.0000000Z
 
 ## <a name="convertdatetimetodateclaim"></a>ConvertDateTimeToDateClaim
 
@@ -139,9 +139,9 @@ Das folgende Beispiel veranschaulicht die Konvertierung des Anspruchs `systemDat
 ### <a name="example"></a>Beispiel
 
 - Eingabeansprüche:
-  - **inputClaim:** 2020-15-03T11:34:22.0000000Z
+  - **inputClaim**: 2020-15-03T11:34:22.0000000Z
 - Ausgabeansprüche:
-  - **outputClaim:** 2020-15-03
+  - **outputClaim**: 2020-15-03
 
 ## <a name="getcurrentdatetime"></a>GetCurrentDateTime
 
@@ -202,6 +202,6 @@ Um die Anspruchstransformation auszuführen, müssen Sie zuerst den aktuellen Da
     - **secondDateTime**: 2020-04-01T00:00:00.100000Z
 - Eingabeparameter:
     - **operator:** später als
-    - **timeSpanInSeconds**: 7776000 (90 Tage)
+    - **timeSpanInSeconds**: 7776000 (90 days)
 - Ausgabeansprüche:
     - **result**: true

@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.openlocfilehash: 842563319e09a001fd6e85403d8aee6fb14690ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90884419"
 ---
 # <a name="table-colocation-in-azure-database-for-postgresql--hyperscale-citus"></a>Tabellenzusammenstellung in Azure Database for PostgreSQL – Hyperscale (Citus)
@@ -96,7 +96,7 @@ Anschließend müssen die Ergebnisse aus den beiden Schritten von der Anwendung 
 
 Beim Ausführen der Abfragen müssen die Daten in den über die Knoten verteilten Shards einbezogen werden.
 
-:::image type="content" source="media/concepts-hyperscale-colocation/colocation-inefficient-queries.png" alt-text="Shards":::
+:::image type="content" source="media/concepts-hyperscale-colocation/colocation-inefficient-queries.png" alt-text="Ineffiziente Abfragen":::
 
 In diesem Fall führt die Verteilung der Daten zu erheblichen Nachteilen:
 
@@ -134,7 +134,7 @@ GROUP BY page_id;
 
 Aufgrund des Filters und der Verknüpfung durch „tenant_id“ weiß Hyperscale (Citus), dass die gesamte Abfrage mithilfe der Gruppe zusammengestellter Shards beantwortet werden kann, welche die Daten für diesen speziellen Mandanten enthalten. Ein einzelner PostgreSQL-Knoten kann die Abfrage in einem Schritt beantworten.
 
-:::image type="content" source="media/concepts-hyperscale-colocation/colocation-better-query.png" alt-text="Shards":::
+:::image type="content" source="media/concepts-hyperscale-colocation/colocation-better-query.png" alt-text="Bessere Abfrage":::
 
 In einigen Fällen müssen Abfragen und Tabellenschemas geändert werden, um die Mandanten-ID in eindeutige Einschränkungen und Verknüpfungsbedingungen einzubeziehen. Diese Änderung ist in der Regel unkompliziert.
 

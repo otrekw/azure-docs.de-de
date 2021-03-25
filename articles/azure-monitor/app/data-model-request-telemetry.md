@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.reviewer: sergkanz
 ms.openlocfilehash: 7a352f4ce3528d395599a91b53031c74b0873152
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87320560"
 ---
 # <a name="request-telemetry-application-insights-data-model"></a>Anforderungstelemetrie: Application Insights-Datenmodell
@@ -25,7 +25,7 @@ Mit dem Application Insights-Web-SDK wird der Anforderungsname im Hinblick auf d
 
 Maximale Länge: 1.024 Zeichen
 
-## <a name="id"></a>id
+## <a name="id"></a>ID
 
 Bezeichner einer Anforderungsaufrufinstanz. Wird für die Korrelation zwischen dem Anforderungselement und anderen Telemetrieelementen verwendet. Die ID muss global eindeutig sein. Weitere Informationen hierzu finden Sie auf der Seite [Korrelation](./correlation.md).
 
@@ -43,7 +43,7 @@ Die Quelle der Anforderung. Beispiele sind der Instrumentierungsschlüssel des A
 
 Maximale Länge: 1.024 Zeichen
 
-## <a name="duration"></a>Duration
+## <a name="duration"></a>Dauer (Duration)
 
 Dauer der Anforderung im Format `DD.HH:MM:SS.MMMMMM`. Muss positiv sein und unter `1000` Tagen liegen. Dieses Feld ist erforderlich, da die Anforderungstelemetrie den Vorgang mit dem Beginn und dem Ende darstellt.
 
@@ -53,9 +53,9 @@ Das Ergebnis einer Anforderungsausführung. HTTP-Statuscode für HTTP-Anforderun
 
 Maximale Länge: 1.024 Zeichen
 
-## <a name="success"></a>Erfolg
+## <a name="success"></a>Vorgang erfolgreich
 
-Angabe eines erfolgreichen oder fehlgeschlagenen Aufrufs. Dies ist ein Pflichtfeld. Wenn der Wert nicht explizit auf `false` festgelegt ist, gilt eine Anforderung als erfolgreich. Legen Sie diesen Wert auf `false` fest, wenn der Vorgang durch eine Ausnahme unterbrochen oder ein Fehlerergebniscode zurückgegeben wurde.
+Angabe eines erfolgreichen oder fehlgeschlagenen Aufrufs. Dieses Feld ist erforderlich. Wenn der Wert nicht explizit auf `false` festgelegt ist, gilt eine Anforderung als erfolgreich. Legen Sie diesen Wert auf `false` fest, wenn der Vorgang durch eine Ausnahme unterbrochen oder ein Fehlerergebniscode zurückgegeben wurde.
 
 Für Webanwendungen definiert Application Insights eine Anforderung als erfolgreich, wenn der Antwortcode kleiner als `400` oder gleich `401` ist. In manchen Fällen entspricht diese Standardzuordnung jedoch nicht der Semantik der Anwendung. Der Antwortcode `404` kann „keine Datensätze“ angeben, was Teil eines normalen Datenflusses sein kann. Er kann auch einen fehlerhaften Link angeben. Für die fehlerhaften Links können Sie sogar eine erweiterte Logik implementieren. Durch Analysieren des URL-Verweisers können Sie fehlerhafte Links nur als Fehler markieren, wenn diese sich auf derselben Website befinden. Oder Sie können sie als Fehler markieren, wenn der Zugriff darauf über die mobile Anwendung des Unternehmens erfolgt. Auf ähnliche Weise geben `301` und `302` einen Fehler an, wenn der Zugriff über einen Client erfolgt, auf dem die Umleitung nicht unterstützt wird.
 

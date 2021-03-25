@@ -4,10 +4,10 @@ description: In diesem Artikel wird beschrieben, wie Sie mit einer Initiativende
 ms.date: 08/17/2020
 ms.topic: conceptual
 ms.openlocfilehash: 15b03b5a40cba1290859b02883df70e3df54c5cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89645533"
 ---
 # <a name="regulatory-compliance-in-azure-policy"></a>Einhaltung gesetzlicher Bestimmungen in Azure Policy
@@ -40,11 +40,11 @@ Wenn Sie auf eine **Steuerung** klicken, wird eine Seite mit Details zur jeweili
 > [!NOTE]
 > Der Auswertungstyp **Von Microsoft verwaltet** stellt einen [statischen](./definition-structure.md#type) `type` von Richtliniendefinitionen dar.
 
-:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-policies.png" alt-text="Screenshot: Übersicht über die Einhaltung gesetzlicher Bestimmungen für die integrierte NIST SP 800-53 R4-Definition mit konformen und nicht konformen Steuerungen":::
+:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-policies.png" alt-text="Screenshot: Details zur Einhaltung gesetzlicher Bestimmungen für die Steuerung vom Typ „Schutz von Grenzen“ der integrierten NIST SP 800-53 R4-Definition":::
 
 Wenn Sie von dieser **Steuerungsseite** zur Registerkarte **Ressourcenkonformität** wechseln, werden alle Ressourcen angezeigt, die in den Richtliniendefinitionen dieser **Steuerung** enthalten sind. Sie können nach Name oder ID, Konformitätszustand, Ressourcentyp sowie Speicherort filtern.
 
-:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-resources.png" alt-text="Screenshot: Übersicht über die Einhaltung gesetzlicher Bestimmungen für die integrierte NIST SP 800-53 R4-Definition mit konformen und nicht konformen Steuerungen":::
+:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-resources.png" alt-text="Screenshot: Details zur Ressourcenkonformität für die Steuerung vom Typ „Schutz von Grenzen“ der integrierten NIST SP 800-53 R4-Definition":::
 
 ## <a name="regulatory-compliance-in-sdk"></a>Einhaltung gesetzlicher Bestimmungen im SDK
 

@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
 ms.openlocfilehash: c3c8495b7355ee5d9ee8c28b4e0097a0080964d4
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102046636"
 ---
 # <a name="enable-vm-insights-for-a-hybrid-virtual-machine"></a>Aktivieren von VM Insights für eine Hybrid-VM
@@ -176,7 +176,7 @@ Wenn Ihr Server auf der Karte angezeigt wird, aber keine Prozess- oder Verbindun
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem die Überwachung für Ihre virtuellen Computer aktiviert wurde, stehen diese Informationen für die Analyse mit VM Insights zur Verfügung.
+Nachdem die Überwachung für Ihre virtuellen Computer aktiviert wurde, stehen diese Informationen nun für die Analyse mit VM Insights zur Verfügung.
 
 - Informationen zu ermittelten Anwendungsabhängigkeiten finden Sie unter [Anzeigen der Zuordnung in VM Insights](vminsights-maps.md).
 

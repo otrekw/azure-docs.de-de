@@ -10,10 +10,10 @@ ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 02/29/2020
 ms.openlocfilehash: 0e9ca2c7b5d15fcc6be451bbe215c8b85d5309eb
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92368263"
 ---
 # <a name="migrate-azure-scheduler-jobs-to-azure-logic-apps"></a>Migrieren von Azure Scheduler-Aufträgen zu Azure Logic Apps
@@ -67,7 +67,7 @@ Sie können mehrere einmalige Aufträge ausführen, indem Sie eine einzelne Logi
 
    1. Wählen Sie im Anforderungstrigger **Beispielnutzlast zum Generieren eines Schemas verwenden** aus.
 
-   1. Geben Sie unter **Geben oder fügen Sie eine JSON-Beispielnutzlast ein** Ihre Beispielnutzlast ein, und klicken Sie auf **Fertig** . Beispiel:
+   1. Geben Sie unter **Geben oder fügen Sie eine JSON-Beispielnutzlast ein** Ihre Beispielnutzlast ein, und klicken Sie auf **Fertig**. Beispiel:
 
       ![Beispielnutzlast](./media/migrate-from-scheduler-to-logic-apps/sample-payload.png)
 
@@ -116,7 +116,7 @@ Mit der Postman-App können Sie beispielsweise eine POST-Anforderung mit ähnlic
 
 | Anforderungsmethode | URL | Body | Header |
 |----------------|-----|------|---------|
-| **POST** | <*endpoint-URL*> | **raw** <p>**JSON(application/json)** <p>Geben Sie in das Feld **raw** die Nutzlast ein, die in der Anforderung gesendet werden soll. <p>**Hinweis** : Diese Einstellung konfiguriert automatisch die **Header** -Werte. | **Key** : Content-Type <br>**Wert** : „application/json“ |
+| **POST** | <*endpoint-URL*> | **raw** <p>**JSON(application/json)** <p>Geben Sie in das Feld **raw** die Nutzlast ein, die in der Anforderung gesendet werden soll. <p>**Hinweis**: Diese Einstellung konfiguriert automatisch die **Header**-Werte. | **Key**: Content-Type <br>**Wert**: „application/json“ |
 |||||
 
 ![Senden einer Anforderung zum manuellen Auslösen Ihrer Logik-App](./media/migrate-from-scheduler-to-logic-apps/postman-send-post-request.png)
@@ -169,7 +169,7 @@ Im Folgenden werden weitere Möglichkeiten zum Anpassen Ihrer Aufträge vorgeste
 
 Um die Art und Weise zu steuern, mit der eine Aktion bei einem vorübergehenden Fehler in Ihrer Logik-App erneut ausgeführt wird, können Sie die [Wiederholungsrichtlinie](../logic-apps/logic-apps-exception-handling.md#retry-policies) in den Einstellungen für jede Aktion festlegen. Beispiel:
 
-1. Öffnen Sie das Menü der Aktion mithilfe der Auslassungspunkte ( **...** ), und klicken Sie auf **Einstellungen** .
+1. Öffnen Sie das Menü der Aktion mithilfe der Auslassungspunkte ( **...** ), und klicken Sie auf **Einstellungen**.
 
    ![Öffnen der Aktionseinstellungen](./media/migrate-from-scheduler-to-logic-apps/action-settings.png)
 
@@ -181,7 +181,7 @@ Um die Art und Weise zu steuern, mit der eine Aktion bei einem vorübergehenden 
 
 Wenn bei der Ausführung der Standardaktion ein Fehler in Azure Scheduler auftritt, können Sie eine alterative Aktion ausführen, die die Fehlerbedingung behandelt. In Azure Logic Apps können Sie diese Aufgabe ebenfalls ausführen.
 
-1. Bewegen Sie im Logik-App-Designer oberhalb der Aktion, die verarbeitet werden soll, den Zeiger über den Pfeil zwischen den Schritten, und klicken Sie auf **Parallelen Branch hinzufügen** .
+1. Bewegen Sie im Logik-App-Designer oberhalb der Aktion, die verarbeitet werden soll, den Zeiger über den Pfeil zwischen den Schritten, und klicken Sie auf **Parallelen Branch hinzufügen**.
 
    ![Hinzufügen einer parallelen Verzweigung](./media/migrate-from-scheduler-to-logic-apps/add-parallel-branch.png)
 
@@ -189,15 +189,15 @@ Wenn bei der Ausführung der Standardaktion ein Fehler in Azure Scheduler auftri
 
    ![Hinzufügen von Parallelaktionen](./media/migrate-from-scheduler-to-logic-apps/add-parallel-action.png)
 
-1. Öffnen Sie das Menü der alternativen Aktion mithilfe der Auslassungspunkte ( **...** ), und klicken Sie auf **Ausführung konfigurieren nach** .
+1. Öffnen Sie das Menü der alternativen Aktion mithilfe der Auslassungspunkte ( **...** ), und klicken Sie auf **Ausführung konfigurieren nach**.
 
    ![Ausführung konfigurieren nach](./media/migrate-from-scheduler-to-logic-apps/configure-run-after.png)
 
-1. Deaktivieren Sie das Kontrollkästchen der Eigenschaft **ist erfolgreich** . Wählen Sie die folgenden Eigenschaften aus: **ist fehlerhaft** , **wird übersprungen** und **Timeout aufgetreten** .
+1. Deaktivieren Sie das Kontrollkästchen der Eigenschaft **ist erfolgreich**. Wählen Sie die folgenden Eigenschaften aus: **ist fehlerhaft**, **wird übersprungen** und **Timeout aufgetreten**.
 
    ![Einrichten von runAfter-Eigenschaften](./media/migrate-from-scheduler-to-logic-apps/select-run-after-properties.png)
 
-1. Klicken Sie auf **Fertig** , wenn Sie fertig sind.
+1. Klicken Sie auf **Fertig**, wenn Sie fertig sind.
 
 Weitere Informationen zur Behandlung von Ausnahmen finden Sie unter [Abfangen und Behandeln von Fehlern mit der runAfter-Eigenschaft](../logic-apps/logic-apps-exception-handling.md#control-run-after-behavior).
 
@@ -232,10 +232,10 @@ Wenn Ihr Azure-Abonnement mit einem kostenpflichtigen Supportplan ausgestattet i
    |---------|-------|
    | **Problemtyp** | **Technisch** |
    | **Abonnement** | <*Ihr Azure-Abonnement*> |
-   | **Service** | Klicken Sie unter **Überwachung & Verwaltung** auf **Scheduler** . Wenn Sie **Scheduler** nicht finden können, wählen Sie zunächst **Alle Dienste** aus. |
+   | **Service** | Klicken Sie unter **Überwachung & Verwaltung** auf **Scheduler**. Wenn Sie **Scheduler** nicht finden können, wählen Sie zunächst **Alle Dienste** aus. |
    ||| 
 
-1. Wählen Sie die gewünschte Supportoption aus. Wenn Sie über einen kostenpflichtigen Supportplan verfügen, klicken Sie auf **Weiter** .
+1. Wählen Sie die gewünschte Supportoption aus. Wenn Sie über einen kostenpflichtigen Supportplan verfügen, klicken Sie auf **Weiter**.
 
 **Community**
 
