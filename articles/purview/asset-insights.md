@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/20/2020
-ms.openlocfilehash: ac93d835b8dbdd5a12d031825dcb879160df5e95
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: b9a207ffa14a18a5f4421fd21cebed28290b5ea6
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575345"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102183079"
 ---
 # <a name="asset-insights-on-your-data-in-azure-purview"></a>Ressourcenerkenntnisse über Ihre Daten in Azure Purview
 
@@ -40,7 +40,7 @@ Weitere Informationen finden Sie unter [Verwalten von Datenquellen in Azure Purv
 Sie können in Azure Purview Quelltypen registrieren und überprüfen. Nachdem die Überprüfung durchgeführt wurde, können Sie die Ressourcenverteilung in Ressourcenerkenntnisse anzeigen, um den Status der Datenumgebung nach Klassifizierung und Ressourcensätzen anzuzeigen. Außerdem werden Sie darüber informiert, ob eine Änderung der Datengröße vorliegt.
 
 > [!NOTE]
-> Nachdem Sie Ihre Quelltypen überprüft haben, lassen Sie „Ressourcenerkenntnisse“ bis zu einer Stunde Zeit, um die neuen Ressourcen zu berücksichtigen.
+> Lassen Sie Ressourcenerkenntnissen nach der Überprüfung Ihrer Quelltypen drei bis acht Stunden Zeit, um die neuen Ressourcen zu berücksichtigen. Die Verzögerung kann auf hohes Datenverkehrsaufkommen in der Bereitstellungsregion oder auf die Größe Ihrer Workload zurückzuführen sein. Weitere Informationen erhalten Sie vom Außendienst-Supportteam.
 
 1. Navigieren Sie im Azure-Portal zu Ihrer Azure Purview-Ressource.
 
@@ -48,7 +48,7 @@ Sie können in Azure Purview Quelltypen registrieren und überprüfen. Nachdem d
 
    :::image type="content" source="./media/asset-insights/portal-access.png" alt-text="Starten von Purview im Azure-Portal":::
 
-1. Wählen Sie auf der **Startseite** von Purview die Kachel **Erkenntnisse anzeigen** aus, um auf Ihren Bereich **Erkenntnisse** :::image type="icon" source="media/asset-insights/ico-insights.png" border="false"::: zuzugreifen.
+1. Wählen Sie auf der **Startseite** von Purview die Kachel **Erkenntnisse anzeigen** aus, um auf Ihren Bereich **Erkenntnisse** (:::image type="icon" source="media/asset-insights/ico-insights.png" border="false":::) zuzugreifen.
 
    :::image type="content" source="./media/asset-insights/view-insights.png" alt-text="Anzeigen Ihrer Erkenntnisse im Azure-Portal":::
 
@@ -94,7 +94,7 @@ Die nächsten Diagramme in „Ressourcenerkenntnisse“ zeigen eine Verteilung d
 
 1. Wählen Sie den Pfad aus, um die Liste der Ressourcen anzuzeigen.
 
-Das zweite Diagramm in dateibasierten Quelltypen ist **_Dateien, die nicht mit einem Ressourcensatz verknüpft sind_**. Wenn Sie davon ausgehen, dass für alle Dateien ein Rollup in einem Ressourcensatz ausgeführt werden sollte, können Sie anhand dieses Diagramms nachvollziehen, für welche Ressourcen kein Rollup ausgeführt wurde. Fehlende Ressourcen können ein Hinweis auf ein falsches Dateimuster im Ordner sein. Führen Sie die gleichen Schritte wie in anderen Diagrammen aus, um weitere Details zu den Dateien anzuzeigen.
+Das zweite Diagramm in dateibasierten Quelltypen ist ***Dateien, die nicht mit einem Ressourcensatz verknüpft sind***. Wenn Sie davon ausgehen, dass für alle Dateien ein Rollup in einem Ressourcensatz ausgeführt werden sollte, können Sie anhand dieses Diagramms nachvollziehen, für welche Ressourcen kein Rollup ausgeführt wurde. Fehlende Ressourcen können ein Hinweis auf ein falsches Dateimuster im Ordner sein. Führen Sie die gleichen Schritte wie in anderen Diagrammen aus, um weitere Details zu den Dateien anzuzeigen.
 
    :::image type="content" source="./media/asset-insights/file-based-assets.png" alt-text="Dateibasierte Ressourcen anzeigen":::  
 

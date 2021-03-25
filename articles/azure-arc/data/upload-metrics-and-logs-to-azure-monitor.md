@@ -10,12 +10,12 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 zone_pivot_groups: client-operating-system-macos-and-linux-windows-powershell
-ms.openlocfilehash: 66b10efb6ca93bc6b4dd67d700daaf1f9049de68
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: a522a650413be056ff64d26e90b6c15cf88d9a7d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183429"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "101643489"
 ---
 # <a name="upload-usage-data-metrics-and-logs-to-azure-monitor"></a>Hochladen von Nutzungsdaten, Metriken und Protokollen in Azure Monitor
 
@@ -29,7 +29,7 @@ Sie können in regelmäßigen Abständen Nutzungsinformationen zu Abrechnungszwe
 Bevor Sie Nutzungsdaten, Metriken oder Protokolle hochladen können, müssen Sie folgende Schritte ausführen:
 
 * Installieren von Tools 
-* [Registrieren des Ressourcenanbieters `Microsoft.AzureData`](#register-the-resource-provider) 
+* [Registrieren des Ressourcenanbieters `Microsoft.AzureArcData`](#register-the-resource-provider) 
 * [Erstellen des Dienstprinzipals](#create-service-principal)
 
 ## <a name="install-tools"></a>Installieren von Tools
@@ -42,18 +42,18 @@ Informationen finden Sie unter [Installieren von Clienttools zum Bereitstellen u
 
 ## <a name="register-the-resource-provider"></a>Registrieren des Ressourcenanbieters
 
-Vor dem Hochladen von Metriken oder Benutzerdaten in Azure müssen Sie sicherstellen, dass der Ressourcenanbieter `Microsoft.AzureData` für Ihr Azure-Abonnement registriert wurde.
+Vor dem Hochladen von Metriken oder Benutzerdaten in Azure müssen Sie sicherstellen, dass der Ressourcenanbieter `Microsoft.AzureArcData` für Ihr Azure-Abonnement registriert wurde.
 
 Führen Sie den folgenden Befehl aus, um den Ressourcenanbieter zu überprüfen:
 
 ```azurecli
-az provider show -n Microsoft.AzureData -o table
+az provider show -n Microsoft.AzureArcData -o table
 ```
 
 Falls der Ressourcenanbieter nicht bereits für Ihr Abonnement registriert ist, können Sie ihn registrieren. Führen Sie den folgenden Befehl aus, um ihn zu registrieren:  Die Ausführung dieses Befehls dauert unter Umständen ein bis zwei Minuten.
 
 ```azurecli
-az provider register -n Microsoft.AzureData --wait
+az provider register -n Microsoft.AzureArcData --wait
 ```
 
 ## <a name="create-service-principal"></a>Erstellen eines Dienstprinzipals
@@ -65,11 +65,11 @@ Führen Sie die folgenden Befehle aus, um den Dienstprinzipal für den Metrikupl
 > [!NOTE]
 > Zum Erstellen eines Dienstprinzipals sind [bestimmte Berechtigungen in Azure](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app) erforderlich.
 
-Aktualisieren Sie zum Erstellen eines Dienstprinzipals das folgende Beispiel. Ersetzen Sie `<ServicePrincipalName>` durch den Namen des Dienstprinzipals, und führen Sie den folgenden Befehl aus:
+Aktualisieren Sie zum Erstellen eines Dienstprinzipals das folgende Beispiel. Ersetzen Sie `<ServicePrincipalName>`, `SubscriptionId` und `resourcegroup` durch Ihre eigenen Werte, und führen Sie folgenden Befehl aus:
 
 ```azurecli
-az ad sp create-for-rbac --name <ServicePrincipalName>
-``` 
+az ad sp create-for-rbac --name <ServicePrincipalName> --role Contributor --scopes /subscriptions/{SubscriptionId}/resourceGroups/{resourcegroup}
+```
 
 Wenn Sie den Dienstprinzipal zuvor erstellt haben und nur die aktuellen Anmeldeinformationen abrufen müssen, führen Sie den folgenden Befehl aus, um die Anmeldeinformationen zurückzusetzen:
 
@@ -79,8 +79,8 @@ az ad sp credential reset --name <ServicePrincipalName>
 
 Führen Sie zum Erstellen eines Dienstprinzipals mit dem Namen `azure-arc-metrics` beispielsweise den folgenden Befehl aus:
 
-```
-az ad sp create-for-rbac --name azure-arc-metrics
+```azurecli
+az ad sp create-for-rbac --name azure-arc-metrics --role Contributor --scopes /subscriptions/a345c178a-845a-6a5g-56a9-ff1b456123z2/resourceGroups/myresourcegroup
 ```
 
 Beispielausgabe:
@@ -137,16 +137,15 @@ Führen Sie den folgenden Befehl aus, um dem Dienstprinzipal die Rolle `Monitori
 > Bei der Ausführung in einer Windows-Umgebung müssen Sie für Rollennamen doppelte Anführungszeichen verwenden.
 
 ```azurecli
-az role assignment create --assignee <appId> --role "Monitoring Metrics Publisher" --scope subscriptions/<Subscription ID>
-az role assignment create --assignee <appId> --role "Contributor" --scope subscriptions/<Subscription ID>
+az role assignment create --assignee <appId> --role "Monitoring Metrics Publisher" --scope subscriptions/{SubscriptionID}/resourceGroups/{resourcegroup}
+
 ```
 ::: zone-end
 
 ::: zone pivot="client-operating-system-macos-and-linux"
 
 ```azurecli
-az role assignment create --assignee <appId> --role 'Monitoring Metrics Publisher' --scope subscriptions/<Subscription ID>
-az role assignment create --assignee <appId> --role 'Contributor' --scope subscriptions/<Subscription ID>
+az role assignment create --assignee <appId> --role 'Monitoring Metrics Publisher' --scope subscriptions/{SubscriptionID}/resourceGroups/{resourcegroup}
 ```
 
 ::: zone-end
@@ -154,8 +153,7 @@ az role assignment create --assignee <appId> --role 'Contributor' --scope subscr
 ::: zone pivot="client-operating-system-powershell"
 
 ```powershell
-az role assignment create --assignee <appId> --role 'Monitoring Metrics Publisher' --scope subscriptions/<Subscription ID>
-az role assignment create --assignee <appId> --role 'Contributor' --scope subscriptions/<Subscription ID>
+az role assignment create --assignee <appId> --role 'Monitoring Metrics Publisher' --scope subscriptions/{SubscriptionID}/resourceGroups/{resourcegroup}
 ```
 
 ::: zone-end
@@ -193,7 +191,7 @@ Erstellungs-, Lese-, Aktualisierungs- und Löschvorgänge – sogenannte CRUD-Vo
 
 Während der Vorschauphase erfolgt dieser Vorgang in der Nacht. Allgemein wird empfohlen, die Nutzungsdaten nur einmal täglich hochzuladen. Wenn Nutzungsinformationen innerhalb desselben 24-Stunden-Zeitraums mehrmals exportiert und hochgeladen werden, wird nur der Ressourcenbestand im Azure-Portal aktualisiert, jedoch nicht der Ressourcenverbrauch.
 
-Beim Hochladen von Metriken können in Azure Monitor nur die Daten der letzten 30 Minuten hochgeladen werden ([weitere Informationen](../../azure-monitor/platform/metrics-store-custom-rest-api.md#troubleshooting)). Beim Hochladen von Metriken wird empfohlen, die Metriken unmittelbar nach dem Erstellen der Exportdatei hochzuladen, damit Sie das gesamte Dataset im Azure-Portal anzeigen können. Beispiel: Sie haben die Metriken um 14:00 Uhr exportiert und den Befehl für den Upload um 14:50 Uhr ausgeführt. Da in Azure Monitor nur die Daten der letzten 30 Minuten akzeptiert werden, werden im Portal möglicherweise keine Daten angezeigt. 
+Beim Hochladen von Metriken können in Azure Monitor nur die Daten der letzten 30 Minuten hochgeladen werden ([weitere Informationen](../../azure-monitor/essentials/metrics-store-custom-rest-api.md#troubleshooting)). Beim Hochladen von Metriken wird empfohlen, die Metriken unmittelbar nach dem Erstellen der Exportdatei hochzuladen, damit Sie das gesamte Dataset im Azure-Portal anzeigen können. Beispiel: Sie haben die Metriken um 14:00 Uhr exportiert und den Befehl für den Upload um 14:50 Uhr ausgeführt. Da in Azure Monitor nur die Daten der letzten 30 Minuten akzeptiert werden, werden im Portal möglicherweise keine Daten angezeigt. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

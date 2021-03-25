@@ -10,15 +10,15 @@ ms.service: batch
 ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
-ms.date: 01/13/2021
+ms.date: 02/16/2021
 ms.author: jenhayes
 ms.custom: include file
-ms.openlocfilehash: c625253585cc99c035852b8b9042f939284bad19
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: baf146bdd89d45c5d7e1ed359822a35d383b7b6c
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101750371"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103561912"
 ---
 ### <a name="general-requirements"></a>Allgemeine Anforderungen
 
@@ -42,10 +42,10 @@ Darüber hinaus gelten ggf. noch weitere VNET-Anforderungen. Diese hängen jedoc
 
 **Berechtigungen:** Überprüfen Sie, ob Ihre Sicherheitsrichtlinien oder -sperren für das Abonnement oder die Ressourcengruppe Ihres VNETs die VNET-Verwaltungsberechtigungen eines Benutzers einschränken.
 
-**Zusätzliche Netzwerkressourcen:** Batch ordnet in der Ressourcengruppe, die das VNET enthält, automatisch zusätzliche Netzwerkressourcen zu.
+**Zusätzliche Netzwerkressourcen:** Batch erstellt in der Ressourcengruppe, die das VNet enthält, automatisch zusätzliche Netzwerkressourcen.
 
 > [!IMPORTANT]
-> Dabei ordnet Batch pro 100 dedizierten Knoten oder Knoten mit niedriger Priorität jeweils eine Netzwerksicherheitsgruppe (NSG), eine öffentliche IP-Adresse und einen Lastenausgleich zu. Diese Ressourcen werden durch die [Ressourcenkontingente](../articles/azure-resource-manager/management/azure-subscription-service-limits.md) des Abonnements beschränkt. Bei umfangreichen Pools muss ggf. eine Kontingenterhöhung für eine oder mehrere der Ressourcen angefordert werden.
+> Dabei erstellt Batch pro 100 dedizierten Knoten oder Knoten mit niedriger Priorität jeweils eine Netzwerksicherheitsgruppe (NSG), eine öffentliche IP-Adresse und einen Lastenausgleich. Diese Ressourcen werden durch die [Ressourcenkontingente](../articles/azure-resource-manager/management/azure-subscription-service-limits.md) des Abonnements beschränkt. Bei umfangreichen Pools muss ggf. eine Kontingenterhöhung für eine oder mehrere der Ressourcen angefordert werden.
 
 #### <a name="network-security-groups-batch-default"></a>Netzwerksicherheitsgruppen: Batch-Standard
 

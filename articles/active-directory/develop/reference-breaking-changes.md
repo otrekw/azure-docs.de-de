@@ -8,22 +8,22 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: reference
-ms.date: 5/4/2020
+ms.date: 2/22/2021
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 94c34e6f7cb24ff749e5de95f1c28a496700af80
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: c5e7f556f37a1d6d53e0a938490f1099a7be776a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348720"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "101647420"
 ---
 # <a name="whats-new-for-authentication"></a>Neuerungen bei der Authentifizierung
 
 > Erhalten Sie Benachrichtigungen über Aktualisierungen dieser Seite, indem Sie die URL in Ihren RSS-Feedreader einfügen:<br/>`https://docs.microsoft.com/api/search/rss?search=%22whats%20new%20for%20authentication%22&locale=en-us`
 
-Für das Authentifizierungssystem werden fortlaufend Änderungen vorgenommen und Features hinzugefügt, um die Sicherheit und Einhaltung von Standards zu verbessern. Damit Sie auf dem neuesten Stand der aktuellen Entwicklungen bleiben, bietet dieser Artikel Informationen zu Folgendem:
+Für das Authentifizierungssystem werden fortlaufend Änderungen vorgenommen und Features hinzugefügt, um die Sicherheit und Einhaltung von Standards zu verbessern. Dieser Artikel bietet Informationen zu den folgenden Punkten, damit Sie auf dem neuesten Stand der aktuellen Entwicklungen bleiben:
 
 - Neueste Features
 - Bekannte Probleme
@@ -35,7 +35,28 @@ Für das Authentifizierungssystem werden fortlaufend Änderungen vorgenommen und
 
 ## <a name="upcoming-changes"></a>Bevorstehende Änderungen
 
-Zurzeit sind keine geplant.  Nachfolgend finden Sie weitere Informationen zu den Änderungen, die in der Produktionsumgebung bestehen oder eingeführt werden.
+### <a name="conditional-access-will-only-trigger-for-explicitly-requested-scopes"></a>Bedingter Zugriff wird nur für explizit angeforderte Bereiche ausgelöst.
+
+**Gültig ab**: März 2021
+
+**Betroffene Endpunkte**: v2.0
+
+**Betroffenes Protokoll**: Alle Flows, in denen [dynamische Einwilligung](v2-permissions-and-consent.md#requesting-individual-user-consent) verwendet wird
+
+Anwendungen, in denen derzeit dynamische Einwilligung verwendet wird, werden alle Berechtigungen erteilt, für die sie die Einwilligung erhalten haben, auch wenn sie im Parameter `scope` nicht namentlich angefordert wurden.  Dies kann z. B. dazu führen, dass eine App nur `user.read` anfordert, aber mit der Einwilligung für `files.read` gezwungen wird, den bedingten Zugriff zu übergeben, der der Berechtigung `files.read` zugewiesen ist. 
+
+In Azure AD wurde jetzt die Bereitstellung nicht angeforderter Bereiche für Anwendungen geändert, um die Anzahl unnötiger Eingabeaufforderungen für bedingten Zugriff zu verringern. Diese Änderung bewirkt, dass nur explizit angeforderte Bereiche den bedingten Zugriff auslösen. Dies kann dazu führen, dass Apps, die das bisherige Verhalten von Azure AD erfordern (d. h. Bereitstellen aller Berechtigungen, auch wenn sie nicht angefordert wurden), nicht mehr ausgeführt werden, weil Berechtigungen für die von ihnen angeforderten Token fehlen.
+
+Apps erhalten jetzt Zugriffstoken mit einer Kombination von Berechtigungen: angeforderte Berechtigungen sowie Berechtigungen, für die sie über eine Einwilligung verfügen, die jedoch keine Eingabeaufforderung für bedingten Zugriff erfordern.  Die Bereiche des Zugriffstokens werden im Parameter `scope` der Tokenantwort angegeben. 
+
+**Beispiele**
+
+Eine App verfügt über die Einwilligung für `user.read` , `files.readwrite` und `tasks.read`. Richtlinien für bedingten Zugriff werden nur auf `files.readwrite` und nicht auf die anderen beiden Berechtigungen angewendet. Wenn eine App eine Tokenanforderung für `scope=user.read` ausführt und der derzeit angemeldete Benutzer keine Richtlinien für bedingten Zugriff übergeben hat, gilt das resultierende Token für die Berechtigungen `user.read` und `tasks.read`. `tasks.read` ist enthalten, da die App über die Einwilligung für diese Berechtigung verfügt und für sie keine Richtlinie für bedingten Zugriff erzwungen werden muss. 
+
+Wenn die App dann `scope=files.readwrite` anfordert, wird der bedingte Zugriff ausgelöst, den der Mandant erfordert. Dies erzwingt, dass in der App eine interaktive Authentifizierungsanforderung angezeigt wird, mit der die Richtlinie für bedingten Zugriff erfüllt werden kann.  Das zurückgegebene Token enthält alle drei Bereiche. 
+
+Wenn die App dann eine letzte Anforderung für einen der drei Bereiche (z. B. `scope=tasks.read`) ausführt, ist für Azure AD erkennbar, dass der Benutzer bereits die für `files.readwrite` erforderlichen Richtlinien für bedingten Zugriff erfüllt hat, und es wird erneut ein Token ausgestellt, das alle drei Bereiche enthält. 
+
 
 ## <a name="may-2020"></a>Mai 2020
 

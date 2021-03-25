@@ -5,12 +5,12 @@ description: Hier finden Sie häufig gestellte Fragen zum Ausführen von Windows
 services: container-service
 ms.topic: article
 ms.date: 10/12/2020
-ms.openlocfilehash: b20ebe82556bb4db6844511ec0953f4d4e75f383
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: cc5a5ec2bbfb64a1e787277bf67579bad0543cd6
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100574732"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101739575"
 ---
 # <a name="frequently-asked-questions-for-windows-server-node-pools-in-aks"></a>Häufig gestellte Fragen zu Windows Server-Knotenpools in AKS
 
@@ -54,6 +54,8 @@ Sie können entweder den [Knotenpool][nodepool-upgrade] oder das [Knotenimage][u
 
 AKS-Cluster mit Windows-Knotenpools müssen das (erweiterte) Azure CNI-Netzwerkmodell verwenden. Kubenet Basic-Netzwerke werden nicht unterstützt. Weitere Informationen zu den Unterschieden der Netzwerkmodelle finden Sie unter [Netzwerkkonzepte für Anwendungen in AKS][azure-network-models]. Das Azure CNI-Netzwerkmodell erfordert zusätzliche Planung und Überlegungen für die Verwaltung von IP-Adressen. Weitere Informationen zum Planen und Implementieren von Azure CNI finden Sie unter [Konfigurieren von Azure CNI-Netzwerken in AKS][configure-azure-cni].
 
+Auf Windows-Knoten in AKS-Clustern ist zudem standardmäßig [Direct Server Return (DSR)][dsr] aktiviert, wenn Calico aktiviert ist.
+
 ## <a name="is-preserving-the-client-source-ip-supported"></a>Wird das Beibehalten der Client-Quell-IP unterstützt?
 
 Derzeit wird [die Beibehaltung der Client-Quell-IP][client-source-ip] bei Windows-Knoten nicht unterstützt.
@@ -91,7 +93,7 @@ Der Name darf maximal sechs (6) Zeichen umfassen. Dies ist eine aktuelle AKS-Bes
 
 ## <a name="are-all-features-supported-with-windows-nodes"></a>Werden alle Features für Windows-Knoten unterstützt?
 
-Netzwerkrichtlinien und kubenet werden für Windows-Knoten derzeit nicht unterstützt.
+Kubenet wird derzeit nicht für Windows-Knoten unterstützt.
 
 ## <a name="can-i-run-ingress-controllers-on-windows-nodes"></a>Kann ich Eingangscontroller auf Windows-Knoten ausführen?
 
@@ -197,3 +199,4 @@ Erstellen Sie zum Einstieg in Windows Server-Container in AKS [einen Knotenpool,
 [managed-identity]: use-managed-identity.md
 [hybrid-vms]: ../virtual-machines/windows/hybrid-use-benefit-licensing.md
 [resource-groups]: faq.md#why-are-two-resource-groups-created-with-aks
+[dsr]: ../load-balancer/load-balancer-multivip-overview.md#rule-type-2-backend-port-reuse-by-using-floating-ip

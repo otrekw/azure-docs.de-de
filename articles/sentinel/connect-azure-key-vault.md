@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 03/07/2021
 ms.author: yelevin
 ms.openlocfilehash: 00e634ec62d1fda4b1f2763a8c69b8e950d54beb
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102505187"
 ---
 # <a name="connect-azure-key-vault-diagnostics-logs"></a>Verbinden von Azure Key Vault-Diagnoseprotokollen
@@ -47,7 +47,7 @@ Dieser Connector verwendet Azure Policy, um eine einzelne Konfiguration zum Azur
 
     1. Klicken Sie auf der Registerkarte **Grundlagen** unter **Bereich** auf die Schaltfläche mit den drei Punkten, um Ihr Abonnement (und optional eine Ressourcengruppe) auszuwählen. Sie können auch eine Beschreibung hinzufügen.
 
-    1. Wählen Sie auf der Registerkarte **Parameter** Ihren Azure Sentinel-Arbeitsbereich in der Dropdownliste **Log Analytics-Arbeitsbereich** aus. Die übrigen Dropdownfelder stellen die verfügbaren Diagnoseprotokolltypen dar. Behalten Sie für alle Protokolltypen, die erfasst werden sollen, die Einstellung auf „True“ bei.
+    1. Wählen Sie auf der Registerkarte **Parameter** Ihren Azure Sentinel-Arbeitsbereich in der Dropdownliste **Log Analytics-Arbeitsbereich** aus. Die übrigen Dropdownfelder stellen die verfügbaren Diagnoseprotokolltypen dar. Behalten Sie für alle Protokolltypen, die erfasst werden sollen, die Markierung „True“ bei.
 
     1. Aktivieren Sie zum Anwenden der Richtlinie auf Ihre vorhandenen Ressourcen auf der Registerkarte **Korrektur** das Kontrollkästchen **Korrekturtask erstellen**.
 

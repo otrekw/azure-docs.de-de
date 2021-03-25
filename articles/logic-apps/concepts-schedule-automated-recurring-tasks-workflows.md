@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
-ms.date: 01/07/2021
-ms.openlocfilehash: fd0a779ec5ac5537dd3e3ed6a82cf818b42cff15
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.date: 02/16/2021
+ms.openlocfilehash: e9fbafa9f3c33d10496e84f61e1f2b97f6328d3b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98018791"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581812"
 ---
 # <a name="schedule-and-run-recurring-automated-tasks-processes-and-workflows-with-azure-logic-apps"></a>Planen und Ausführen von wiederkehrenden automatisierten Aufgaben, Prozessen und Workflows mit Azure Logic Apps
 
@@ -90,8 +90,8 @@ Die folgenden Muster veranschaulichen, wie Sie die Wiederholung mit dem Startdat
 | Startzeit | Wiederholung ohne Zeitplan | Wiederholung mit Zeitplan (nur Serientrigger) |
 |------------|-----------------------------|----------------------------------------------------|
 | {keine} | Die erste Workload wird sofort ausgeführt. <p>Zukünftige Workloads werden basierend auf der letzten Ausführungszeit ausgeführt. | Die erste Workload wird sofort ausgeführt. <p>Zukünftige Workloads werden basierend auf dem angegebenen Zeitplan ausgeführt. |
-| Startuhrzeit liegt in der Vergangenheit | Trigger **Serie**: Die Ausführungszeiten werden basierend auf der angegebenen Startuhrzeit berechnet, und vergangene Ausführungszeiten werden verworfen. Die nächste Workload wird zum nächsten zukünftigen Ausführungszeitpunkt ausgeführt. <p>Zukünftige Workloads werden basierend auf Berechnungen der letzten Ausführungszeit ausgeführt. <p><p>Trigger **Gleitendes Fenster**: Die Ausführungszeiten werden basierend auf der angegebenen Startuhrzeit berechnet, und vergangene Ausführungszeiten werden berücksichtigt. <p>Zukünftige Workloads werden basierend auf Berechnungen ab der angegebenen Startzeit ausgeführt. <p><p>Eine ausführlichere Erläuterung finden Sie im Beispiel im Anschluss an diese Tabelle. | Die erste Workload wird *frühestens* zur Startuhrzeit basierend auf dem Zeitplan ausgeführt, der anhand der Startuhrzeit berechnet wurde. <p>Zukünftige Workloads werden basierend auf dem angegebenen Zeitplan ausgeführt. <p>**Hinweis:** Wenn Sie eine Wiederholung mit einem Zeitplan angeben, aber keine Stunden oder Minuten für den Zeitplan, berechnet die Logik-App zukünftige Ausführungszeiten anhand der Stunden bzw. Minuten der ersten Ausführungszeit. |
-| Startuhrzeit ist jetzt oder liegt in der Zukunft | Die erste Workload wird zur angegebenen Startuhrzeit ausgeführt. <p>Zukünftige Workloads werden basierend auf Berechnungen der letzten Ausführungszeit ausgeführt. | Die erste Workload wird *frühestens* zur Startuhrzeit basierend auf dem Zeitplan ausgeführt, der anhand der Startuhrzeit berechnet wurde. <p>Zukünftige Workloads werden basierend auf dem angegebenen Zeitplan ausgeführt. <p>**Hinweis:** Wenn Sie eine Wiederholung mit einem Zeitplan angeben, aber keine Stunden oder Minuten für den Zeitplan, berechnet die Logik-App zukünftige Ausführungszeiten anhand der Stunden bzw. Minuten der ersten Ausführungszeit. |
+| Startuhrzeit liegt in der Vergangenheit | Trigger **Serie**: Die Ausführungszeiten werden basierend auf der angegebenen Startuhrzeit berechnet, und vergangene Ausführungszeiten werden verworfen. <p><p>Die nächste Workload wird zum nächsten zukünftigen Ausführungszeitpunkt ausgeführt. <p><p>Zukünftige Workloads werden basierend auf der letzten Ausführungszeit ausgeführt. <p><p>Trigger **Gleitendes Fenster**: Die Ausführungszeiten werden basierend auf der angegebenen Startuhrzeit berechnet, und vergangene Ausführungszeiten werden berücksichtigt. <p><p>Zukünftige Workloads werden basierend auf der angegebenen Startzeit ausgeführt. <p><p>Eine ausführlichere Erläuterung finden Sie im Beispiel im Anschluss an diese Tabelle. | Die erste Workload wird *frühestens* zur Startuhrzeit basierend auf dem Zeitplan ausgeführt, der anhand der Startuhrzeit berechnet wurde. <p><p>Zukünftige Workloads werden basierend auf dem angegebenen Zeitplan ausgeführt. <p><p>**Hinweis:** Wenn Sie eine Wiederholung mit einem Zeitplan angeben, aber keine Stunden oder Minuten für den Zeitplan, berechnet die Logik-App zukünftige Ausführungszeiten anhand der Stunden bzw. Minuten der ersten Ausführungszeit. |
+| Startuhrzeit ist jetzt oder liegt in der Zukunft | Die erste Workload wird zur angegebenen Startuhrzeit ausgeführt. <p><p>Trigger **Wiederholung**: Zukünftige Workloads werden basierend auf der letzten Ausführungszeit ausgeführt. <p><p>Trigger **Gleitendes Fenster**: Zukünftige Workloads werden basierend auf der angegebenen Startzeit ausgeführt. | Die erste Workload wird *frühestens* zur Startuhrzeit basierend auf dem Zeitplan ausgeführt, der anhand der Startuhrzeit berechnet wurde. <p><p>Zukünftige Workloads werden basierend auf dem angegebenen Zeitplan ausgeführt. <p>**Hinweis:** Wenn Sie eine Wiederholung mit einem Zeitplan angeben, aber keine Stunden oder Minuten für den Zeitplan, berechnet die Logik-App zukünftige Ausführungszeiten anhand der Stunden bzw. Minuten der ersten Ausführungszeit. |
 ||||
 
 *Beispiel für eine Startuhrzeit in der Vergangenheit mit Wiederholung, aber ohne Zeitplan*

@@ -3,15 +3,16 @@ title: Erstellen von Hostpools für Windows Virtual Desktop-Umgebungen – Azur
 description: Behandeln von Problemen mit Mandanten und Hostpools während der Einrichtung einer Windows Virtual Desktop-Umgebung
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 09/14/2020
+ms.custom: references_regions
+ms.date: 02/17/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0a5439a9d1fd43154379c1dc1a95a6e98b6e877b
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: c31a32b32a685087c53198ec52af1188d0071cab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539629"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "100652444"
 ---
 # <a name="host-pool-creation"></a>Hostpoolerstellung
 
@@ -49,9 +50,21 @@ Wenn bei Ihrem Vorgang die Kontingentgrenze überschritten wird, können Sie ein
 
 ### <a name="error-cant-see-user-assignments-in-app-groups"></a>Error: Can't see user assignments in app groups. (Benutzerzuweisungen in App-Gruppen nicht sichtbar.)
 
-Ursache: Dieser Fehler tritt meist auf, nachdem Sie das Abonnement von einem Azure Active Directory-Mandanten zu einem anderen verschoben haben. Wenn Ihre alten Zuweisungen weiterhin an den alten Azure AD-Mandanten gebunden sind, kann das Azure-Portal diese nicht nachverfolgen.
+**Ursache**: Dieser Fehler tritt meist auf, nachdem Sie das Abonnement von einem Azure Active Directory-Mandanten zu einem anderen verschoben haben. Wenn Ihre alten Zuweisungen weiterhin an den alten Azure AD-Mandanten gebunden sind, kann das Azure-Portal diese nicht nachverfolgen.
 
-Behebung: Sie müssen die Benutzer den App-Gruppen neu zuweisen.
+**Behebung**: Sie müssen die Benutzer den App-Gruppen neu zuweisen.
+
+### <a name="i-only-see-us-when-setting-the-location-for-my-service-objects"></a>Beim Festlegen des Speicherorts für meine Dienstobjekte wird nur USA angezeigt
+
+**Ursache**: Azure unterstützt die Region derzeit nicht für den Windows Virtual Desktop-Dienst. Weitere Informationen zu den unterstützten Regionen finden Sie unter [Datenspeicherorte](data-locations.md). Wenn Windows Virtual Desktop den Speicherort unterstützt, dieser aber trotzdem nicht angezeigt wird, wenn Sie versuchen, einen Speicherort auszuwählen, bedeutet dies, dass Ihr Ressourcenanbieter noch nicht aktualisiert wurde.
+
+**Behebung**: Um die aktuelle Liste der Regionen abzurufen, registrieren Sie den Ressourcenanbieter erneut:
+
+1. Navigieren Sie zu **Abonnements**, und wählen Sie das betreffende Abonnement aus.
+2. Wählen Sie **Ressourcenanbieter** aus.
+3. Suchen Sie nach **Microsoft.DesktopVirtualization**, und wählen Sie dann im Aktionsmenü die Option **Erneut registrieren** aus.
+
+Wenn Sie den Ressourcenanbieter erneut registrieren, erhalten Sie keine Rückmeldung über die Benutzeroberfläche, und es wird kein Aktualisierungsstatus angezeigt. Der Vorgang zur erneuten Registrierung hat auch keine Auswirkungen auf Ihre vorhandenen Umgebungen.
 
 ## <a name="azure-resource-manager-template-errors"></a>Fehler mit der Azure Resource Manager-Vorlage
 

@@ -10,14 +10,14 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 02/15/2021
 ms.author: jeedes
-ms.openlocfilehash: 38673df29dd50e77acc4b4d106d69a82cad9c040
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 3c1b4b3d57bdce4a66adb35717f46d8989ee2453
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100104347"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "101648814"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>Gewusst wie: Konfigurieren von im SAML-Token ausgestellten Rollenansprüchen für Unternehmensanwendungen
 
@@ -27,6 +27,9 @@ Mit Azure Active Directory (Azure AD) können Sie den Anspruchstyp für den Roll
 
 - Ein Azure AD-Abonnement mit eingerichtetem Verzeichnis.
 - Ein Abonnement, für das einmaliges Anmelden (Single Sign-On, SSO) aktiviert ist. Sie müssen SSO mit Ihrer Anwendung konfigurieren.
+
+> [!NOTE]
+> In diesem Artikel wird erläutert, wie Sie mithilfe von APIs in Azure AD Anwendungsrollen für den Dienstprinzipal erstellen, aktualisieren und löschen. Wenn Sie die neue Benutzeroberfläche für App-Rollen verwenden möchten, finden Sie [hier](./howto-add-app-roles-in-azure-ad-apps.md) weitere Informationen.
 
 ## <a name="when-to-use-this-feature"></a>Verwendung dieses Features
 

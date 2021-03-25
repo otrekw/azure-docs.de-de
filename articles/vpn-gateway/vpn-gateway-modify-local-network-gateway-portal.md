@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: cherylmc
 ms.openlocfilehash: 4ff4f1238764d7bdab6e74d29254a6388ea76d78
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92143104"
 ---
 # <a name="modify-local-network-gateway-settings-using-the-azure-portal"></a>Ändern der Einstellungen des lokalen Netzwerkgateways mithilfe des Azure-Portals
@@ -32,7 +32,7 @@ Der folgende Screenshot zeigt die Seite **Konfiguration** einer lokalen Netzwerk
 
 Dies ist die Konfigurationsseite mit einem FQDN-Endpunkt:
 
-:::image type="content" source="./media/vpn-gateway-modify-local-network-gateway-portal/name.png" alt-text="Einstellungen für IP-Adressen":::
+:::image type="content" source="./media/vpn-gateway-modify-local-network-gateway-portal/name.png" alt-text="FQDN-Einstellungen":::
 
 ## <a name="to-modify-the-gateway-ip-address-or-fqdn"></a><a name="ip"></a>So ändern Sie die Gateway-IP-Adresse oder den FQDN
 
@@ -44,13 +44,13 @@ Wenn für das VPN-Gerät, mit dem Sie eine Verbindung herstellen möchten, die �
 
 1. Wählen Sie für die Ressource für das Gateway des lokalen Netzwerks im Abschnitt **Einstellungen** die Option **Konfiguration** aus.
 2. Ändern Sie im Feld **IP-Adresse** die IP-Adresse.
-3. Klicken Sie auf **Speichern** , um die Einstellungen zu speichern.
+3. Klicken Sie auf **Speichern**, um die Einstellungen zu speichern.
 
 Wenn für das VPN-Gerät, mit dem Sie eine Verbindung herstellen möchten, der FQDN (Fully Qualified Domain Name, vollqualifizierter Domänenname) geändert wurde, ändern Sie das Gateway des lokalen Netzwerks mithilfe der folgenden Schritte:
 
 1. Wählen Sie für die Ressource für das Gateway des lokalen Netzwerks im Abschnitt **Einstellungen** die Option **Konfiguration** aus.
 2. Ändern Sie im Feld **FQDN** den Domänennamen.
-3. Klicken Sie auf **Speichern** , um die Einstellungen zu speichern.
+3. Klicken Sie auf **Speichern**, um die Einstellungen zu speichern.
 
 ## <a name="to-modify-ip-address-prefixes"></a><a name="ipaddprefix"></a>So ändern Sie IP-Adresspräfixe
 
@@ -64,7 +64,7 @@ So entfernen Sie Adresspräfixe:
 
 1. Wählen Sie für die Ressource für das Gateway des lokalen Netzwerks im Abschnitt **Einstellungen** die Option **Konfiguration** aus.
 2. Wählen Sie in der Zeile mit dem Präfix, das Sie entfernen möchten, die Auslassungspunkte ( **...** ) aus.
-3. Wählen Sie **Entfernen** .
+3. Wählen Sie **Entfernen**.
 4. Klicken Sie auf **Save** (Speichern), um Ihre Einstellungen zu speichern.
 
 ## <a name="to-modify-bgp-settings"></a><a name="bgp"></a>So ändern Sie BGP-Einstellungen
@@ -79,7 +79,7 @@ So können Sie BGP-Einstellungen hinzufügen oder aktualisieren
 So entfernen Sie BGP-Einstellungen
 
 1. Wählen Sie für die Ressource für das Gateway des lokalen Netzwerks im Abschnitt **Einstellungen** die Option **Konfiguration** aus.
-2. Deaktivieren Sie **BGP-Einstellungen konfigurieren** , um die vorhandene ASN oder IP-Adresse des BGP-Peers zu entfernen.
+2. Deaktivieren Sie **BGP-Einstellungen konfigurieren**, um die vorhandene ASN oder IP-Adresse des BGP-Peers zu entfernen.
 3. Klicken Sie auf **Save** (Speichern), um Ihre Einstellungen zu speichern.
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -5,25 +5,36 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/14/2021
+ms.date: 03/04/2021
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 8333745b802f41b5a1b3dc07663870299800e3f6
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.custom: contperf-fy21q3
+ms.openlocfilehash: 8ef18ea663f3a77589d61ed89c50df38f5cf0d0e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98705979"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102176146"
 ---
 # <a name="view-the-status-of-azure-importexport-jobs"></a>Anzeigen des Status von Azure Import/Export-Aufträgen
 
 Dieser Artikel enthält Informationen zum Anzeigen des Laufwerks-und Auftragsstatus für Azure Import/Export-Aufträge. Mit dem Azure Import/Export-Dienst werden große Datenmengen sicher in Azure-Blobs und Azure Files übertragen. Der Dienst wird auch verwendet, um Daten aus dem Azure-Blobspeicher zu exportieren.  
 
 ## <a name="view-job-and-drive-status"></a>Anzeigen von Auftrags- und Laufwerksstatus
-Sie können den Status Ihrer Import- und Exportaufträge im Azure-Portal nachverfolgen, indem Sie die Registerkarte **Import/Export** auswählen. Eine Liste Ihrer Aufträge wird auf der Seite angezeigt.
+Sie können den Status Ihrer Import- und Exportaufträge im Azure-Portal auf der Registerkarte **Import/Export** nachverfolgen.
+1. Melden Sie sich bei https://portal.azure.com/ an.
+2. Suchen Sie nach **Aufträge importieren/exportieren**.
 
-![Anzeigen des Auftragsstatus](./media/storage-import-export-service/jobstate.png)
+    ![Suchen nach „Aufträge importieren/exportieren“](./media/storage-import-export-view-drive-status/open-import-export-tab.png)
 
+ 3. Eine Liste Ihrer Import-/Exportaufträge wird auf der Seite angezeigt.
+
+    ![Anzeigen des Auftragsstatus](./media/storage-import-export-view-drive-status/job-state.png)
+
+4. Klicken Sie auf einen Auftrag, um die Auftragsdetails anzuzeigen.
+
+   ![Anzeigen von Auftragsstatusdetails](./media/storage-import-export-view-drive-status/job-detail.png)
+  
 ## <a name="view-job-status"></a>Anzeigen des Auftragsstatus
 
 Je nachdem, an welchem Punkt des Prozesses sich Ihre Festplatte befindet, wird einer der folgenden Auftragsstatus angezeigt.
@@ -56,13 +67,13 @@ Die folgende Tabelle beschreibt die einzelnen Status, die jedes Laufwerk in eine
 
 Dieser Screenshot des Azure-Portals zeigt den Laufwerkstatus in einem Beispielauftrag:
 
-![Anzeigen des Laufwerkstatus](./media/storage-import-export-service/drivestate.png)
+![Anzeigen des Laufwerkstatus](./media/storage-import-export-view-drive-status/drive-state.png)
 
 Die folgende Tabelle beschreibt die Laufwerkfehlerstatus und die Aktionen, die für jeden Status durchgeführt werden.
 
 | Laufwerkstatus | Ereignis | Lösung / Nächster Schritt |
 |:--- |:--- |:--- |
-| NeverReceived | Ein Laufwerk mit der Kennzeichnung **NeverReceived** (da es im Rahmen des Versands des Auftrags nicht eingegangen ist) geht in einer anderen Sendung ein. | Das Betriebsteam verschiebt das Laufwerk nach **Empfangen**. |
+| Nie empfangen | Ein Laufwerk mit der Kennzeichnung **NeverReceived** (da es im Rahmen des Versands des Auftrags nicht eingegangen ist) geht in einer anderen Sendung ein. | Das Betriebsteam verschiebt das Laufwerk nach **Empfangen**. |
 | – | Ein Laufwerk, das nicht Teil eines Auftrags ist, trifft als Teil eines anderen Auftrags im Rechenzentrum ein. | Das Laufwerk wird als zusätzliches Laufwerk gekennzeichnet. Es wird an Sie zurückgesendet, nachdem der Auftrag, der dem ursprünglichen Paket zugeordnet ist, abgeschlossen wurde. |
 
 ## <a name="time-to-process-job"></a>Verarbeitungsdauer des Auftrags

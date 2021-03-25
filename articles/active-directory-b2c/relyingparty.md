@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 488065b0a1865484e96ea574b3031f2bf61869dd
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: bcdc8c448a348bf067995bf92615ceab1ac19fb4
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102120588"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198437"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -109,7 +109,7 @@ Das folgende Beispiel zeigt eine vertrauende Seite mit [UserInfo-Endpunkt](useri
 
 ## <a name="defaultuserjourney"></a>DefaultUserJourney
 
-Das `DefaultUserJourney`-Element gibt einen Verweis auf den Bezeichner der User Journey an, die in der Regel in der Basis- oder Erweiterungsrichtlinie definiert wird. In den folgenden Beispielen wird die im **RelyingParty**-Element angegebene User Journey für die Registrierung oder Anmeldung dargestellt:
+Durch das Element `DefaultUserJourney` wird ein Verweis auf den Bezeichner der User Journey angegeben, die in der Basis- oder Erweiterungsrichtlinie definiert ist. In den folgenden Beispielen wird die im **RelyingParty**-Element angegebene User Journey für die Registrierung oder Anmeldung dargestellt:
 
 *B2C_1A_signup_signin*-Richtlinie:
 
@@ -219,6 +219,21 @@ Das **Protocol**-Element enthält die folgenden Attribute:
 | --------- | -------- | ----------- |
 | Name | Ja | Der Name eines gültigen Protokolls, das von Azure AD B2C unterstützt und als Teil des technischen Profils verwendet wird. Mögliche Werte: `OpenIdConnect` oder `SAML2`. Der Wert `OpenIdConnect` stellt den Protokollstandard „OpenID Connect 1.0“ gemäß der Vorgaben der OpenID Foundation dar. Der Wert `SAML2` stellt den Protokollstandard „SAML 2.0“ gemäß der Vorgaben von OASIS dar. |
 
+### <a name="metadata"></a>Metadaten
+
+Wenn `SAML` das Protokoll ist, enthält ein Metadatenelement die folgenden Elemente: Weitere Informationen finden Sie in den [Optionen zum Registrieren einer SAML-Anwendung in Azure AD B2C](saml-service-provider-options.md).
+
+| attribute | Erforderlich | Beschreibung |
+| --------- | -------- | ----------- |
+| IdpInitiatedProfileEnabled | Nein | Gibt an, ob der IdP-initiierte Fluss unterstützt wird. Mögliche Werte: `true` und `false` (Standardwert). | 
+| XmlSignatureAlgorithm | Nein | Die Methode, die Azure AD B2C zur Signierung der SAML-Antwort verwendet. Mögliche Werte: `Sha256`, `Sha384`, `Sha512` oder `Sha1`. Vergewissern Sie sich, dass Sie den Signaturalgorithmus auf beiden Seiten mit demselben Wert konfigurieren. Verwenden Sie nur den Algorithmus, den Ihr Zertifikat unterstützt. Informationen zum Konfigurieren der SAML-Assertion finden Sie unter [Metadaten für das technische Profil des SAML-Ausstellers](saml-issuer-technical-profile.md#metadata). |
+| DataEncryptionMethod | Nein | Gibt die Methode an, die von Azure AD B2C zum Verschlüsseln der Daten mit dem AES-Algorithmus (Advanced Encryption Standard) verwendet wird. Die Metadaten bestimmen den Wert des `<EncryptedData>`-Elements in der SAML-Antwort. Mögliche Werte: `Aes256` (Standard), `Aes192`, `Sha512` oder ` Aes128`. |
+| KeyEncryptionMethod| Nein | Gibt die Methode an, die von Azure AD B2C zum Verschlüsseln der Kopie des Schlüssels verwendet wird, der zum Verschlüsseln der Daten verwendet wurde. Die Metadaten bestimmen den Wert des `<EncryptedKey>`-Elements in der SAML-Antwort. Mögliche Werte: ` Rsa15` (Standardwert) – RSA PKCS-Algorithmus (Public Key Cryptography Standard), Version 1.5, ` RsaOaep` – RSA OAEP-Verschlüsselungsalgorithmus (Optimal Asymmetric Encryption Padding). |
+| UseDetachedKeys | Nein |  Mögliche Werte sind `true` oder `false` (Standardwert). Wenn der Wert auf `true` festgelegt wird, wird das Format der verschlüsselten Assertionen von Azure AD B2C geändert. Durch die Verwendung von getrennten Schlüsseln wird die verschlüsselte Assertion als untergeordnetes Element der EncrytedAssertion und nicht den EncryptedData hinzugefügt. |
+| WantsSignedResponses| Nein | Gibt an, ob Azure AD B2C den Abschnitt `Response` der SAML-Antwort signiert. Mögliche Werte: `true` (Standard) oder `false`.  |
+| RemoveMillisecondsFromDateTime| Nein | Gibt an, ob die Millisekunden aus DateTime-Werten in der SAML-Antwort entfernt werden sollen (dazu gehören „IssueInstant“, „NotBefore“, „NotOnOrAfter“ und „AuthnInstant“). Mögliche Werte: `false` (Standard) oder `true`.  |
+
+
 ### <a name="outputclaims"></a>OutputClaims
 
 Das **OutputClaims**-Element enthält das folgende Element:
@@ -238,8 +253,9 @@ Das **OutputClaim**-Element enthält die folgenden Attribute:
 ### <a name="subjectnaminginfo"></a>SubjectNamingInfo
 
 Mit dem **SubjectNameingInfo**-Element steuern Sie den Wert des Tokenantragstellers:
+
 - **JWT-Token:** Der `sub`-Anspruch. Dies ist ein Prinzipal, für den das Token Informationen zusichert, z.B. der Benutzer einer Anwendung. Dieser Wert ist unveränderlich und kann nicht erneut zugewiesen oder wiederverwendet werden. Er kann für die Durchführung von sicheren Autorisierungsüberprüfungen verwendet werden, z.B. wenn das Token verwendet wird, um auf eine Ressource zuzugreifen. Der Anspruch „Antragsteller“ wird standardmäßig mit der Objekt-ID des Benutzers im Verzeichnis aufgefüllt. Weitere Informationen finden Sie unter [Token, Sitzung und einmaliges Anmelden – Konfiguration](session-behavior.md).
-- **SAML-Token:** Das `<Subject><NameID>`-Element, das das Subject-Element identifiziert. Das NameID-Format kann geändert werden.
+- **SAML-Token:** Das Element `<Subject><NameID>`, das das Antragstellerelement identifiziert. Das NameID-Format kann geändert werden.
 
 Das **SubjectNamingInfo**-Element enthält das folgende Attribut:
 

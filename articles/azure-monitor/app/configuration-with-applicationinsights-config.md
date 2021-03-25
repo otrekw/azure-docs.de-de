@@ -5,17 +5,17 @@ ms.topic: conceptual
 ms.date: 05/22/2019
 ms.custom: devx-track-csharp
 ms.reviewer: olegan
-ms.openlocfilehash: b15e39b55dfe49a3fb3c1e0e38798570efdf46bd
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: c6d51210867e83c6acc74ca890ab65b195dc64fc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100592755"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102176670"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>Konfigurieren des Application Insights-SDK mit "ApplicationInsights.config" oder XML
 Das Application Insights .NET-SDK umfasst eine Reihe von NuGet-Paketen. Das [Kernpaket](https://www.nuget.org/packages/Microsoft.ApplicationInsights) stellt die API für das Senden von Telemetriedaten an Application Insights bereit. [Zusätzliche Pakete](https://www.nuget.org/packages?q=Microsoft.ApplicationInsights) bieten *Telemetriemodule* und *-initialisierer* für die automatische Nachverfolgung von Telemetriedaten von Ihrer Anwendung und deren Kontext. Durch Anpassen der Konfigurationsdatei können Sie Telemetriemodule und -initialisierer aktivieren oder deaktivieren sowie Parameter für einige von ihnen festlegen.
 
-Die Konfigurationsdatei heißt `ApplicationInsights.config` oder `ApplicationInsights.xml`, je nach dem Typ der Anwendung. Sie wird dem Projekt bei der [Installation der meisten SDK-Versionen][start] automatisch hinzugefügt. Standardmäßig wird die Datei „ApplicationInsights.config“ im Stammordner des Projekts erstellt, wenn Sie die automatisierte Funktion aus den Visual Studio-Vorlagenprojekten verwenden, die **Hinzufügen > Application Insights-Telemetrie** unterstützen. Beim Kompilieren wird sie dann in den Ordner „bin“ kopiert. Sie wird über den [Statusmonitor für einen IIS-Server][redfield] auch einer Web-App hinzugefügt. Die Konfigurationsdatei wird ignoriert, wenn die [Erweiterung für Azure-Websites](azure-web-apps.md) oder die [Erweiterung für Azure-VMs und VM-Skalierungsgruppen](azure-vm-vmss-apps.md) verwendet wird.
+Die Konfigurationsdatei heißt `ApplicationInsights.config` oder `ApplicationInsights.xml`, je nach dem Typ der Anwendung. Sie wird dem Projekt bei der [Installation der meisten SDK-Versionen][start] automatisch hinzugefügt. Standardmäßig wird die Datei „ApplicationInsights.config“ im Stammordner des Projekts erstellt, wenn Sie die automatisierte Funktion aus den Visual Studio-Vorlagenprojekten verwenden, die **Hinzufügen > Application Insights-Telemetrie** unterstützen. Beim Kompilieren wird sie dann in den Ordner „bin“ kopiert. Sie wird über den [Statusmonitor für einen IIS-Server][redfield] auch einer Web-App hinzugefügt. Die Konfigurationsdatei wird ignoriert, wenn die [Erweiterung für Azure-Websites](azure-web-apps.md) oder die [Erweiterung für Azure-VMs und VM-Skalierungsgruppen](azure-vm-vmss-apps.md) verwendet wird.
 
 Es gibt keine gleichwertige Datei zum Steuern des [SDK in einer Webseite][client].
 

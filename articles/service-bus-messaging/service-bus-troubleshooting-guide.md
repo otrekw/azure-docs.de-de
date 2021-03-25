@@ -2,13 +2,13 @@
 title: Leitfaden zur Problembehandlung für Azure Service Bus | Microsoft-Dokumentation
 description: Lernen Sie Tipps zur Problembehandlung und Empfehlungen für einige Probleme kennen, die bei der Verwendung von Azure Service Bus auftreten können.
 ms.topic: article
-ms.date: 09/16/2020
-ms.openlocfilehash: c5813f901f31f96633e11c2ed8162338bdd9bbf7
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.date: 03/03/2021
+ms.openlocfilehash: 7de39e5a3a7b6cbb8e5fa504f073023853e18366
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881213"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102179696"
 ---
 # <a name="troubleshooting-guide-for-azure-service-bus"></a>Leitfaden zur Problembehandlung für Azure Service Bus
 In diesem Artikel finden Sie Tipps zur Problembehandlung und Empfehlungen für einige Probleme, die bei der Verwendung von Azure Service Bus auftreten können. 
@@ -52,6 +52,8 @@ Die folgenden Schritte unterstützen Sie bei der Problembehandlung von Konnektiv
     ```
     Sie können äquivalente Befehle verwenden, wenn Sie andere Tools wie `tnc`, `ping` usw. nutzen. 
 - Rufen Sie eine Netzwerkablaufverfolgung ab, wenn die vorherigen Schritte nicht hilfreich sind, und analysieren Sie diese mit Tools wie [Wireshark](https://www.wireshark.org/). Wenden Sie sich bei Bedarf an den [Microsoft-Support](https://support.microsoft.com/). 
+- Informationen zum Ermitteln der IP-Adressen, die der Positivliste für Ihre Verbindungen hinzugefügt werden müssen, finden Sie unter [Welche IP-Adressen muss ich in die Zulassungsliste aufnehmen?](service-bus-faq.md#what-ip-addresses-do-i-need-to-add-to-allow-list). 
+
 
 ## <a name="issues-that-may-occur-with-service-upgradesrestarts"></a>Mögliche Probleme im Zusammenhang mit Dienstupgrades/-neustarts
 

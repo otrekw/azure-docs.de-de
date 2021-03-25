@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/06/2020
 ms.author: steveesp
-ms.openlocfilehash: 27cc55978582468c759603571bd8b0e69f29db5d
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: abcd2f6e23ea0c7c26b2ee26b2f6ca4ad502b769
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99226572"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102177180"
 ---
 # <a name="bandwidththroughput-testing-ntttcp"></a>Testen der Bandbreite / des Durchsatzes (NTTTCP)
 
@@ -93,15 +93,19 @@ Verwenden Sie nttcp-for-linux. Diese Option ist bei <https://github.com/Microsof
 
 Führen Sie diese Befehle zum Vorbereiten von ntttcp-for-linux auf den Linux-VMs (jeweils SENDER und EMPFÄNGER) auf Ihren virtuellen Computern aus:
 
-CentOS – Git installieren:
+CentOS: Installieren von gcc und git:
 ``` bash
   yum install gcc -y  
   yum install git -y
 ```
-Ubuntu – Git installieren:
+Ubuntu: Installieren von build-essential und git:
 ``` bash
  apt-get -y install build-essential  
  apt-get -y install git
+```
+SUSE: Installieren von git-core, gcc und make:
+``` bash
+  zypper in -y git-core gcc make
 ```
 Auf beiden erstellen und installieren:
 ``` bash

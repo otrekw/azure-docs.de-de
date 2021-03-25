@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d67460c654c854c5a855560dde1d67732fa818c7
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98681954"
 ---
 # <a name="import-and-export-azure-ad-connect-configuration-settings"></a>Importieren und Exportieren von Azure AD Connect-Konfigurationseinstellungen 
@@ -77,10 +77,10 @@ Gehen Sie wie folgt vor, um die Einstellungen zu migrieren:
 
    ![Screenshot: Azure AD Connect-Verzeichnisse](media/how-to-connect-import-export-config/migrate1.png)
 
-1. Führen Sie das Skript wie nachfolgend dargestellt aus, und speichern Sie das gesamte Serverkonfigurationsverzeichnis. Kopieren Sie dieses Verzeichnis auf den neuen Stagingserver. Sie müssen den gesamten Ordner **Exported-ServerConfiguration-** _ auf den neuen Server kopieren.
+1. Führen Sie das Skript wie nachfolgend dargestellt aus, und speichern Sie das gesamte Serverkonfigurationsverzeichnis. Kopieren Sie dieses Verzeichnis auf den neuen Stagingserver. Sie müssen den gesamten Ordner **Exported-ServerConfiguration-** * auf den neuen Server kopieren.
 
-   ![Screenshot eines Skripts in Windows PowerShell.](media/how-to-connect-import-export-config/migrate2.png)
-   ![Screenshot des Vorgangs zum Kopieren des Ordners „Exported-ServerConfiguration“_.](media/how-to-connect-import-export-config/migrate3.png)
+   ![Screenshot eines Skripts in Windows PowerShell](media/how-to-connect-import-export-config/migrate2.png)
+   ![Screenshot des Vorgangs zum Kopieren des Ordners „Exported-ServerConfiguration-*“](media/how-to-connect-import-export-config/migrate3.png)
 
 1. Starten Sie **Azure AD Connect**, indem Sie auf dem Desktop auf das entsprechende Symbol doppelklicken. Akzeptieren Sie die Microsoft-Software-Lizenzbedingungen, und wählen Sie dann auf der nächsten Seite die Option **Anpassen** aus.
 1. Aktivieren Sie das Kontrollkästchen **Synchronisierungseinstellungen importieren**. Wählen Sie **Durchsuchen** aus, um nach dem kopierten Ordner „Exported-ServerConfiguration-*“ zu suchen. Wählen Sie die Datei „MigratedPolicy.json“ aus, um die migrierten Einstellungen zu importieren.

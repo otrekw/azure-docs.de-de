@@ -6,13 +6,13 @@ author: dcstwh
 ms.author: weetok
 ms.reviewer: maghan
 ms.topic: conceptual
-ms.date: 12/17/2020
-ms.openlocfilehash: c0d3ba8d9bea9fade58ed4a65c6d3ae43ef6acb3
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 02/18/2021
+ms.openlocfilehash: 2fd8911ca11ee6dfcf795347e1fe7f2c36a2b636
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100383601"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716522"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Continuous Integration und Continuous Delivery in Azure Data Factory
 
@@ -199,7 +199,7 @@ Das Data Factory-Team hat am Ende dieses Artikels ein [Beispielskript für vor u
 
 ## <a name="use-custom-parameters-with-the-resource-manager-template"></a>Verwenden benutzerdefinierter Parameter mit der Resource Manager-Vorlage
 
-Wenn Ihre Entwicklungsfactory ein zugeordnetes Git-Repository hat, können Sie die standardmäßigen Parameter der Resource Manager-Vorlage überschreiben, die durch deren Veröffentlichung oder Export generiert wurden. Die Überschreibung der standardmäßigen Parametrisierungsvorlage kann beispielsweise in folgenden Szenarien erforderlich sein:
+Wenn Ihre Entwicklungsfactory ein zugeordnetes Git-Repository hat, können Sie die standardmäßigen Parameter der Resource Manager-Vorlage überschreiben, die durch deren Veröffentlichung oder Export generiert wurden. Die Überschreibung der Standardparameterkonfiguration von Resource Manager kann beispielsweise in folgenden Szenarien erforderlich sein:
 
 * Sie verwenden automatisierte CI/CD und möchten einige Eigenschaften während der Resource Manager-Bereitstellung ändern, die Eigenschaften sind standardmäßig aber nicht parametrisiert.
 * Die Resource Manager-Standardvorlage ist aufgrund der Größe Ihrer Factory ungültig, da sie mehr als die maximal zulässige Parameteranzahl (256) enthält.
@@ -210,11 +210,14 @@ Wenn Ihre Entwicklungsfactory ein zugeordnetes Git-Repository hat, können Sie d
     * Gestalten Sie die Logik im Datenfluss zur Reduzierung von Parametern um. Wenn z. B. alle Pipelineparameter denselben Wert aufweisen, können Sie stattdessen globale Parameter verwenden.
     * Teilen Sie eine Data Factory in mehrere Datenflüsse auf.
 
-Wenn Sie die standardmäßige Parametrisierungsvorlage überschreiben möchten, navigieren Sie zum Verwaltungshub, und wählen Sie **Parametrisierungsvorlage** im Abschnitt für die Quellcodeverwaltung aus. Wählen Sie **Vorlage bearbeiten** aus, um den Code-Editor für die Parametrisierungsvorlage zu öffnen. 
+Um die Standardparameterkonfiguration von Resource Manager zu überschreiben, wechseln Sie zum Hub **Verwalten**, und wählen Sie im Abschnitt „Quellcodeverwaltung“ **ARM-Vorlage** aus. Klicken Sie im Abschnitt **ARM-Parameterkonfiguration** in „Parameterkonfiguration bearbeiten“ auf das Symbol **Bearbeiten**, um den Code-Editor für die Resource Manager-Parameterkonfiguration zu öffnen.
 
 ![Verwalten von benutzerdefinierten Parametern](media/author-management-hub/management-hub-custom-parameters.png)
 
-Beim Erstellen einer benutzerdefinierten Parametrisierungsvorlage wird im Stammordner Ihres Git-Branches eine Datei mit dem Namen **arm-template-parameters-definition.json** erstellt. Sie müssen exakt diesen Dateinamen verwenden.
+> [!NOTE]
+> Die **ARM-Parameterkonfiguration** ist nur im Git-Modus aktiviert. Im Livemodus und Data Factory-Modus ist sie derzeit deaktiviert.
+
+Beim Erstellen einer benutzerdefinierten Resource Manager-Parameterkonfiguration wird im Stammordner Ihres Git-Branches eine Datei mit dem Namen **arm-template-parameters-definition.json** erstellt. Sie müssen exakt diesen Dateinamen verwenden.
 
 ![Benutzerdefinierte Parameterdatei](media/continuous-integration-deployment/custom-parameters.png)
 
@@ -223,7 +226,7 @@ Beim Veröffentlichen aus dem Kollaborationsbranch liest Data Factory diese Date
 Beim Exportieren einer Resource Manager-Vorlage liest Data Factory diese Datei aus dem Branch, an dem Sie gerade arbeiten, und nicht aus dem Kollaborationsbranch. Sie können die Datei in einem privaten Branch erstellen oder bearbeiten und Ihre Änderungen testen, indem Sie auf der Benutzeroberfläche die Option **Export ARM Template** (ARM-Vorlage exportieren) auswählen. Anschließend können Sie die Datei mit dem Kollaborationsbranch zusammenführen.
 
 > [!NOTE]
-> Durch eine benutzerdefinierte Parametrisierungsvorlage wird das ARM-Vorlagenparameterlimit von 256 nicht geändert. Sie können in ihr die parametrisierten Eigenschaften auswählen und ihre Anzahl verringern.
+> Durch eine benutzerdefinierte Resource Manager-Parameterkonfiguration wird das ARM-Vorlagenparameterlimit von 256 nicht geändert. Sie können in ihr die parametrisierten Eigenschaften auswählen und ihre Anzahl verringern.
 
 ### <a name="custom-parameter-syntax"></a>Benutzerdefinierte Parametersyntax
 
@@ -244,7 +247,7 @@ Nachstehend finden Sie einige Richtlinien, die beim Erstellen der benutzerdefini
  
 ### <a name="sample-parameterization-template"></a>Exemplarische Parametrisierungsvorlage
 
-Hier ist ein Beispiel dafür angegeben, wie eine Parametrisierungsvorlage aussehen kann:
+Im folgenden Beispiel wird gezeigt, wie eine Resource Manager-Parameterkonfiguration aussehen kann:
 
 ```json
 {

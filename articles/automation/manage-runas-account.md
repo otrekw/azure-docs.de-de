@@ -5,12 +5,12 @@ services: automation
 ms.subservice: ''
 ms.date: 01/19/2021
 ms.topic: conceptual
-ms.openlocfilehash: f9e99318c526bb935d0e035fdbf59874249390da
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: f170fc948f136f4f46634e7ae2645ed2eb357afa
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99050938"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "101096464"
 ---
 # <a name="manage-an-azure-automation-run-as-account"></a>Verwalten eines ausführenden Azure Automation-Kontos
 
@@ -64,10 +64,10 @@ Ehe Sie die Berechtigungen für das ausführende Konto erteilen, müssen Sie sic
 
 Detaillierte Schritte zum Hinzufügen von Rollenzuweisungen finden Sie in den folgenden Artikeln entsprechend der von Ihnen gewünschten Methode.
 
-* [Hinzufügen der Azure-Rollenzuweisung im Azure-Portal](../role-based-access-control/role-assignments-portal.md)
-* [Hinzufügen der Azure-Rollenzuweisung mit Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)
-* [Hinzufügen der Azure-Rollenzuweisung mit der Azure CLI](../role-based-access-control/role-assignments-cli.md)
-* [Hinzufügen der Azure-Rollenzuweisung mit der REST-API](..//role-based-access-control/role-assignments-rest.md)
+* [Zuweisen von Azure-Rollen über das Azure-Portal](../role-based-access-control/role-assignments-portal.md)
+* [Zuweisen von Azure-Rollen mithilfe von Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)
+* [Zuweisen von Azure-Rollen mithilfe der Azure CLI](../role-based-access-control/role-assignments-cli.md)
+* [Zuweisen von Azure-Rollen mithilfe der REST-API](..//role-based-access-control/role-assignments-rest.md)
 
 Nachdem Sie der Rolle das ausführende Konto zugewiesen haben, geben Sie in Ihrem Runbook `Set-AzContext -SubscriptionId "xxxx-xxxx-xxxx-xxxx"` an, um den für das Abonnement zu verwendenden Kontext festzulegen. Weitere Informationen finden Sie unter [Set-AzContext](/powershell/module/az.accounts/set-azcontext).
 

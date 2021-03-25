@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 1/29/2021
 ms.author: nichola
 ms.custom: aaddev
-ms.openlocfilehash: e7193ee5d076538689078ce634b8170926df20b6
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: f63d7aed75b14f5f008a639d667d8806b233b9fa
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101653251"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102174597"
 ---
 # <a name="support-passwordless-authentication-with-fido2-keys-in-apps-you-develop"></a>Unterstützen der kennwortlosen Authentifizierung mit FIDO2-Schlüsseln in von Ihnen entwickelten Apps
 
@@ -52,7 +52,7 @@ Die empfohlenen Optionen zum Implementieren der Authentifizierung lauten (in der
 
 ### <a name="mobile"></a>Mobile
 
-Ab Februar 2020 wird FIDO2 derzeit nicht für native iOS- oder Android-Apps unterstützt, befindet sich aber in der Entwicklung.
+Seit Februar 2021 wird FIDO2 derzeit nicht für native iOS- oder Android-Apps unterstützt, befindet sich aber in der Entwicklung.
 
 Zur Vorbereitung von Anwendungen auf die Verfügbarkeit und als allgemeine bewährte Methode sollten iOS- und Android-Anwendungen MSAL mit der Standardkonfiguration der Verwendung des Systemwebbrowsers verwenden.
 

@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/01/2021
 ms.custom: references_regions
-ms.openlocfilehash: bbd3e5774c6effa45888f6e59874d29f3b55b45f
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 60371888dbc4f0cbc33f1ad1b2a685dbb071c01a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100545580"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101670711"
 ---
 # <a name="scale-for-performance-on-azure-cognitive-search"></a>Skalieren zur Verbesserung der Leistung in Azure Cognitive Search
 
@@ -91,7 +91,7 @@ Bei Replikaten handelt es sich, wie bereits gesagt, um Kopien Ihrer Daten. Wenn 
 
 ### <a name="availability-zones"></a>Verfügbarkeitszonen
 
-[Verfügbarkeitszonen](https://docs.microsoft.com/azure/availability-zones/az-overview) dienen dazu, die Rechenzentren einer Region in verschiedene physische Standortgruppen zu unterteilen, um Hochverfügbarkeit innerhalb der Region zu gewährleisten. Bei Cognitive Search sind einzelne Replikate die Einheiten für die Zonenzuweisung. Der Suchdienst wird innerhalb einer Region ausgeführt, die Replikate werden in verschiedenen Zonen ausgeführt.
+[Verfügbarkeitszonen](../availability-zones/az-overview.md) dienen dazu, die Rechenzentren einer Region in verschiedene physische Standortgruppen zu unterteilen, um Hochverfügbarkeit innerhalb der Region zu gewährleisten. Bei Cognitive Search sind einzelne Replikate die Einheiten für die Zonenzuweisung. Der Suchdienst wird innerhalb einer Region ausgeführt, die Replikate werden in verschiedenen Zonen ausgeführt.
 
 Sie können Verfügbarkeitszonen mit Azure Cognitive Search nutzen, indem Sie Ihrem Suchdienst zwei oder mehr Replikate hinzufügen. Jedes Replikat wird in einer anderen Verfügbarkeitszone innerhalb der Region platziert. Wenn Sie mehr Replikate als Verfügbarkeitszonen haben, werden die Replikate so gleichmäßig wie möglich auf die Verfügbarkeitszonen verteilt.
 
@@ -100,6 +100,7 @@ Azure Cognitive Search unterstützt derzeit Verfügbarkeitszonen für Suchdienst
 + Australien, Osten (Datum der Erstellung: ab dem 30. Januar 2021)
 + Kanada, Mitte (Datum der Erstellung: ab dem 30. Januar 2021)
 + USA, Mitte (Datum der Erstellung: ab dem 4. Dezember 2020)
++ USA, Osten (Datum der Erstellung: ab dem 27. Januar 2021)
 + USA, Osten 2 (Datum der Erstellung: ab dem 30. Januar 2021)
 + Frankreich, Mitte (Datum der Erstellung: ab dem 23. Oktober 2020)
 + Japan, Osten (Datum der Erstellung: ab dem 30. Januar 2021)

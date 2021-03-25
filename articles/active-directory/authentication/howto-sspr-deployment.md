@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 94187f2f94581b4ff48ddb0cd014dc26268fcf15
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 55fc4c0b5f3e2bbf57c972ad4a7fd2c9bdd3810e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102500511"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579194"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>Planen der Bereitstellung einer Self-Service-Kennwortzurücksetzung (SSPR) von Azure Active Directory
 
@@ -322,7 +322,7 @@ Mithilfe von vordefinierten Berichten im Azure-Portal können Sie die SSPR-Leist
 
 ### <a name="authentication-methods--usage-and-insights"></a>Authentifizierungsmethoden: Nutzung und Erkenntnisse
 
-Mithilfe der Funktion [Nutzung und Erkenntnisse](./howto-authentication-methods-usage-insights.md) können Sie besser verstehen, wie Authentifizierungsmethoden für Funktionen wie Azure AD MFA und SSPR in Ihrem Unternehmen funktionieren. Dank dieser Berichtsfunktion kann Ihr Unternehmen erkennen, welche Methoden registriert werden und wie sie verwendet werden.
+Mithilfe der Funktion [Nutzung und Erkenntnisse](./howto-authentication-methods-activity.md) können Sie besser verstehen, wie Authentifizierungsmethoden für Funktionen wie Azure AD MFA und SSPR in Ihrem Unternehmen funktionieren. Dank dieser Berichtsfunktion kann Ihr Unternehmen erkennen, welche Methoden registriert werden und wie sie verwendet werden.
 
 ### <a name="troubleshoot"></a>Problembehandlung
 

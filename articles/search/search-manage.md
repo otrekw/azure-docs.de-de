@@ -9,18 +9,19 @@ tags: azure-portal
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/24/2020
-ms.openlocfilehash: 84ddc4b427f6dc168c044f34b41e81e3b0ff19e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 814a5afbde548891a30d941365cdd71d227b4767
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88935040"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101674410"
 ---
 # <a name="service-administration-for-azure-cognitive-search-in-the-azure-portal"></a>Dienstverwaltung für Azure Cognitive Search im Azure-Portal
 
 > [!div class="op_single_selector"]
 >
 > * [PowerShell](search-manage-powershell.md)
+> * [Azure-Befehlszeilenschnittstelle](search-manage-azure-cli.md)
 > * [REST-API](/rest/api/searchmanagement/)
 > * [.NET SDK](/dotnet/api/microsoft.azure.management.search)
 > * [Portal](search-manage.md)
@@ -139,7 +140,7 @@ Für die zukünftige Planung können Sie den Speicherverbrauch prüfen (siehe [A
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Automatisieren mit [PowerShell](search-manage-powershell.md)
+* Automatisieren mit [PowerShell](search-manage-powershell.md) oder der [Azure CLI](search-manage-azure-cli.md)
 
 * Informieren über Techniken zur [Leistung und Optimierung](search-performance-optimization.md)
 

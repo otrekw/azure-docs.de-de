@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 11/09/2020
+ms.date: 03/02/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 226601eadf922a9d834ab84520fd1edf964348fa
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 2b6855d72b644a3fe1fa46c883eb7414383a1a57
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762925"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031700"
 ---
 # <a name="configure-object-replication-for-block-blobs"></a>Konfigurieren der Objektreplikation für Blockblobs
 
@@ -238,10 +238,10 @@ Beachten Sie, dass Ihnen die Azure Resource Manager-Rolle **Mitwirkender** zugew
 
 In der folgenden Tabelle sind die Werte zusammengefasst, die in den einzelnen Szenarien in der JSON-Datei für die Richtlinien-ID und die Regel-IDs verwendet werden sollen.
 
-| Wenn Sie die JSON-Datei für dieses Konto erstellen: | Legen Sie die Richtlinien-ID und die Regel-IDs auf diesen Wert fest: |
-|-|-|
-| Zielkonto | Zeichenfolgenwert *default*. Azure Storage erstellt die Richtlinien-ID und die Regel-IDs für Sie. |
-| Quellkonto | Die Werte für Richtlinien-ID und Regel-IDs, die zurückgegeben werden, wenn Sie die für das Zielkonto definierte Richtlinie als JSON-Datei herunterladen. |
+| Wenn Sie die JSON-Datei für dieses Konto erstellen: | Legen Sie die Richtlinien-ID auf diesen Wert fest | Legen Sie die Regel-IDs auf diesen Wert fest |
+|-|-|-|
+| Zielkonto | Zeichenfolgenwert *default*. Azure Storage erstellt den Richtlinien-ID-Wert für Sie. | Eine leere Zeichenfolge. Azure Storage erstellt die Regel-ID-Werte für Sie. |
+| Quellkonto | Der Wert der Richtlinien-ID, der zurückgegeben wird, wenn Sie die für das Zielkonto definierte Richtlinie als JSON-Datei herunterladen. | Die Werte der Regel-IDs, die zurückgegeben werden, wenn Sie die für das Zielkonto definierte Richtlinie als JSON-Datei herunterladen. |
 
 Im folgenden Beispiel wird eine Replikationsrichtlinie für das Zielkonto mit einer einzigen Regel definiert, die eine Übereinstimmung mit dem Präfix *b* sucht und die Mindesterstellungszeit für Blobs festlegt, die repliziert werden sollen. Denken Sie daran, die Werte in eckigen Klammern durch Ihre eigenen Werte zu ersetzen:
 
@@ -253,7 +253,7 @@ Im folgenden Beispiel wird eine Replikationsrichtlinie für das Zielkonto mit ei
     "destinationAccount": "<dest-account>",
     "rules": [
       {
-        "ruleId": "default",
+        "ruleId": "",
         "sourceContainer": "<source-container>",
         "destinationContainer": "<destination-container>",
         "filters": {
@@ -272,7 +272,7 @@ Im folgenden Beispiel wird eine Replikationsrichtlinie für das Zielkonto mit ei
 
 Führen Sie die folgenden Schritte aus, um die Objektreplikation für das Zielkonto mit einer JSON-Datei im Azure-Portal zu konfigurieren:
 
-1. Erstellen Sie eine lokale JSON-Datei, die die Replikationsrichtlinie für das Zielkonto definiert. Legen Sie das Feld **policyId** auf **default** fest, damit Azure Storage die Richtlinien-ID definiert.
+1. Erstellen Sie eine lokale JSON-Datei, die die Replikationsrichtlinie für das Zielkonto definiert. Legen Sie das Feld **policyId** auf *default* fest, damit Azure Storage die Richtlinien-ID definiert.
 
     Eine einfache Möglichkeit, eine JSON-Datei zu erstellen, die eine Replikationsrichtlinie definiert, besteht darin, zuerst im Azure-Portal eine Testreplikationsrichtlinie zwischen zwei Speicherkonten zu erstellen. Anschließend können Sie die Replikationsregeln herunterladen und die JSON-Datei nach Bedarf ändern.
 

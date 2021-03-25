@@ -1,5 +1,5 @@
 ---
-title: Behandeln von Zuordnungsfehlern von Cloud Services (klassisch) | Microsoft-Dokumentation
+title: Behandeln von Zuordnungsfehlern von Clouddiensten (klassisch) | Microsoft-Dokumentation
 description: Behandeln eines Zuordnungsfehlers bei der Bereitstellung von Azure Cloud Services. Erfahren Sie, wie die Zuordnung funktioniert und warum bei der Zuordnung ein Fehler auftreten kann.
 ms.topic: article
 ms.service: cloud-services
@@ -8,40 +8,59 @@ ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 0c172add9aa49b2ca64d2fb2281d326256e3aec7
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 95fe4a8e1f6c6ee5f519311f8e756be89a09acf8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98741586"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101738309"
 ---
 # <a name="troubleshooting-allocation-failure-when-you-deploy-cloud-services-classic-in-azure"></a>Behandeln von Zuordnungsfehlern bei der Bereitstellung von Cloud Services (klassisch) in Azure
 
 > [!IMPORTANT]
 > [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) ist ein neues auf Azure Resource Manager basierendes Bereitstellungsmodell für Azure Cloud Services. Im Zuge dieser Änderung wurden Azure Cloud Services-Instanzen, die unter dem Azure Service Manager-basierten Bereitstellungsmodell ausgeführt werden, in „Cloud Services (klassisch)“ umbenannt. Für alle neuen Bereitstellungen wird [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) verwendet.
 
+
 ## <a name="summary"></a>Zusammenfassung
+
 Wenn Sie Instanzen für einen Clouddienst bereitstellen oder neue Instanzen von Web- oder Workerrollen hinzufügen, weist Microsoft Azure Compute-Ressourcen zu. Unter Umständen erhalten Sie beim Ausführen dieser Schritte auch dann gelegentlich Fehler, bevor Sie die Grenzwerte des Azure-Abonnements erreichen. In diesem Artikel werden die Ursachen einiger häufig auftretender Zuordnungsfehler erläutert und mögliche Abhilfemaßnahmen vorgeschlagen. Diese Informationen können auch hilfreich sein, wenn Sie die Bereitstellung Ihrer Dienste planen.
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
 ### <a name="background--how-allocation-works"></a>Hintergrund – Funktionsweise der Zuordnung
+
 Für die Server in Azure-Rechenzentren wird eine Partitionierung in Cluster vorgenommen. Es wird eine neue Zuordnungsanforderung für einen Clouddienst in mehreren Clustern versucht. Wenn die erste Instanz in einem Clouddienst bereitgestellt wird (entweder in Staging oder Produktion), wird der Clouddienst fest mit einem Cluster verknüpft. Alle weiteren Bereitstellungen für den Clouddienst werden im selben Cluster ausgeführt. In diesem Artikel wird dies als „verknüpft mit einem Cluster“ bezeichnet. In Diagramm 1 unten ist eine normale Zuordnung dargestellt, für die versucht wird, sie für mehrere Cluster durchzuführen. In Diagramm 2 ist eine Zuordnung zu sehen, die mit Cluster 2 verknüpft ist, da dies der Ort ist, an dem der vorhandene Clouddienst „CS_1“ gehostet wird.
 
 ![Zuordnungsdiagramm](./media/cloud-services-allocation-failure/Allocation1.png)
 
 ### <a name="why-allocation-failure-happens"></a>Gründe für Zuordnungsfehler
+
 Wenn eine Zuordnungsanforderung mit einem Cluster verknüpft ist, ist die Wahrscheinlichkeit höher, dass keine freien Ressourcen gefunden werden, da der verfügbare Ressourcenpool auf einen Cluster beschränkt ist. Falls Ihre Zuordnungsanforderung mit einem Cluster verknüpft ist, der von Ihnen angeforderte Ressourcentyp für diesen Cluster aber nicht unterstützt wird, schlägt die Anforderung auch dann fehl, wenn der Cluster über eine freie Ressource verfügt. In Diagramm 3 unten ist der Fall dargestellt, in dem eine verknüpfte Zuordnung fehlschlägt, da der einzige Kandidatencluster keine freien Ressourcen aufweist. In Diagramm 4 ist der Fall dargestellt, in dem eine verknüpfte Zuordnung fehlschlägt, weil der einzige Kandidatencluster die angeforderte Größe des virtuellen Computers nicht unterstützt, obwohl der Cluster über freie Ressourcen verfügt.
 
 ![Verknüpfte Zuordnung, Fehler](./media/cloud-services-allocation-failure/Allocation2.png)
 
 ## <a name="troubleshooting-allocation-failure-for-cloud-services"></a>Behandeln von Zuweisungsfehlern für Clouddienste
+
 ### <a name="error-message"></a>Fehlermeldung
-Möglicherweise erhalten Sie die folgende Fehlermeldung:
+
+Navigieren Sie im Azure-Portal zu Ihrem Clouddienst, und wählen Sie in der Randleiste *Vorgangsprotokolle (klassisch)* aus, um die Protokolle anzuzeigen.
+
+Im Folgenden sind Lösungen für weitere Ausnahmen aufgeführt:
+
+|Ausnahmetyp  |Fehlermeldung  |Lösung  |
+|---------|---------|---------|
+|FabricInternalServerError     |Fehler beim Vorgang. Fehlercode „InternalError“ und errorMessage „Interner Serverfehler. Versuchen Sie die Anfrage noch einmal.“|[Problembehandlung bei FabricInternalServerError](cloud-services-troubleshoot-fabric-internal-server-error.md)|
+|ServiceAllocationFailure     |Fehler beim Vorgang. Fehlercode „InternalError“ und errorMessage „Interner Serverfehler. Versuchen Sie die Anfrage noch einmal.“|[Problembehandlung bei ServiceAllocationFailure](cloud-services-troubleshoot-fabric-internal-server-error.md)|
+|LocationNotFoundForRoleSize     |Fehler beim Vorgang „`{Operation ID}`“: „Der angeforderte VM-Tarif ist in „`{Region ID}`“ für dieses Abonnement zurzeit nicht verfügbar. Verwenden Sie einen anderen Tarif, oder führen Sie die Bereitstellung an einem anderen Standort durch.“|[Problembehandlung bei LocationNotFoundForRoleSize](cloud-services-troubleshoot-location-not-found-for-role-size.md)|
+|ConstrainedAllocationFailed     |Fehler bei Azure-Vorgang '`{Operation ID}`‘ mit dem Code Compute.ConstrainedAllocationFailed. Details: Fehler bei der Zuordnung. Einschränkungen in der Anforderung konnten nicht erfüllt werden. Die angeforderte neue Dienstbereitstellung ist an eine Affinitätsgruppe gebunden oder auf ein virtuelles Netzwerk ausgerichtet, oder unter diesem gehosteten Dienst befindet sich eine vorhandene Bereitstellung. Alle diese Bedingungen beschränken die neue Bereitstellung auf bestimmte Azure-Ressourcen. Wiederholen Sie den Vorgang später. Reduzieren Sie die VM-Größe oder die Anzahl der Rolleninstanzen. Sie können, wenn möglich, auch die zuvor erwähnten Einschränkungen entfernen oder den virtuellen Computer in einer anderen Region bereitstellen.|[Problembehandlung bei ConstrainedAllocationFailed](cloud-services-troubleshoot-constrained-allocation-failed.md)|
+|OverconstrainedAllocationRequest     |Die für diese Bereitstellung erforderliche VM-Größe (oder Kombination aus VM-Größen) kann aufgrund von Einschränkungen bei der Bereitstellungsanforderung nicht bereitgestellt werden. Lockern Sie nach Möglichkeit Einschränkungen wie z. B. die Bindungen des virtuellen Netzwerks, versuchen Sie es mit einer Bereitstellung in einem gehosteten Dienst, der keine weitere Bereitstellung enthält, in einer anderen Affinitätsgruppe oder ohne Affinitätsgruppe, oder führen Sie die Bereitstellung in einer anderen Region durch.|[Problembehandlung bei OverconstrainedAllocationRequest](cloud-services-troubleshoot-overconstrained-allocation-request.md)|
+
+Beispiel für Fehlermeldung:
 
 > „Fehler bei Azure-Vorgang '{Vorgangs-ID}“ mit dem Code Compute.ConstrainedAllocationFailed. Details: Fehler bei der Zuordnung. Einschränkungen in der Anforderung konnten nicht erfüllt werden. Die angeforderte neue Dienstbereitstellung ist an eine Affinitätsgruppe gebunden oder auf ein virtuelles Netzwerk ausgerichtet, oder unter diesem gehosteten Dienst befindet sich eine vorhandene Bereitstellung. Alle diese Bedingungen beschränken die neue Bereitstellung auf bestimmte Azure-Ressourcen. Wiederholen Sie den Vorgang später. Reduzieren Sie die VM-Größe oder die Anzahl der Rolleninstanzen. Sie können, wenn möglich, auch die zuvor erwähnten Einschränkungen entfernen oder den virtuellen Computer in einer anderen Region bereitstellen.“
 
 ### <a name="common-issues"></a>Häufige Probleme
+
 Dies sind häufig vorkommende Zuordnungsszenarios, die bewirken, dass eine Zuordnungsanforderung mit einem einzelnen Cluster „verknüpft“ wird.
 
 * Bereitstellung in Stagingslots: Besitzt ein Clouddienst eine Bereitstellung in einem der Slots, wird der gesamte Clouddienst mit einem bestimmten Cluster verknüpft.  Wenn also bereits eine Bereitstellung im Produktionsslot vorhanden ist, kann eine neue Stagingbereitstellung nur demselben Cluster wie der Produktionsslot zugeordnet werden. Wenn der Cluster seine Kapazität nahezu erreicht hat, schlägt die Anforderung möglicherweise fehl.
@@ -50,6 +69,7 @@ Dies sind häufig vorkommende Zuordnungsszenarios, die bewirken, dass eine Zuord
 * Affinitätsgruppenbasiertes VNET: Ältere virtuelle Netzwerke waren mit Affinitätsgruppen anstelle von Regionen verknüpft, und Clouddienste in diesen virtuellen Netzwerken wurden mit dem Cluster der Affinitätsgruppe verknüpft. Bereitstellungen für diesen Typ von virtuellen Netzwerken werden im verknüpften Cluster versucht. Wenn der Cluster seine Kapazität nahezu erreicht hat, schlägt die Anforderung möglicherweise fehl.
 
 ## <a name="solutions"></a>Lösungen
+
 1. Erneute Bereitstellung in einem neuen Clouddienst: Diese Lösung ist wahrscheinlich am erfolgreichsten, da hierbei die Plattform aus allen Clustern in dieser Region auswählen kann.
 
    * Bereitstellen der Workload in einem neuen Clouddienst  
@@ -61,11 +81,12 @@ Dies sind häufig vorkommende Zuordnungsszenarios, die bewirken, dass eine Zuord
    * Erstellen Sie dann eine neue Bereitstellung im vorhandenen Clouddienst. Damit wird eine erneute Zuweisung auf allen Clustern in der Region versucht. Stellen Sie sicher, dass der Clouddienst mit keiner Affinitätsgruppe verknüpft ist.
 3. Reservierte IP: Bei dieser Lösung behalten Sie Ihre IP-Adresse bei, sie führt aber zu Ausfallzeiten der Anwendung.  
 
-   * Erstellen Sie eine reservierte IP-Adressen für die vorhandene Bereitstellung mithilfe von PowerShell:
+   * Erstellen Sie mithilfe von PowerShell eine reservierte IP-Adresse für die vorhandene Bereitstellung:
 
-     ```
+     ```azurepowershell
      New-AzureReservedIP -ReservedIPName {new reserved IP name} -Location {location} -ServiceName {existing service name}
      ```
+
    * Befolgen Sie Lösung 2 oben, und geben Sie die neue reservierte IP-Adresse in der CSCFG des Diensts an.
 4. Entfernen der Affinitätsgruppe für neue Bereitstellungen: Affinitätsgruppen werden nicht mehr empfohlen. Führen Sie die Schritte für Lösung 1 oben aus, um einen neuen Clouddienst bereitzustellen. Stellen Sie sicher, dass der Clouddienst zu keiner Affinitätsgruppe gehört.
 5. Konvertieren in ein regionales virtuelles Netzwerk: Weitere Informationen finden Sie unter [Migrieren von Affinitätsgruppen zu einem regionalen virtuellen Netzwerk (VNet)](/previous-versions/azure/virtual-network/virtual-networks-migrate-to-regional-vnet).

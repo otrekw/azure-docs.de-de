@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: mingshen
 author: mingshen-ms
 ms.date: 06/10/2020
-ms.openlocfilehash: 909b818c60932f5b1d6071ea1ccf0ee4c76173b4
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: ac3e07c67ca82c2960de1c4341a714b33751bfc1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92280530"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "101092398"
 ---
 # <a name="anomaly-detection-service-for-metered-billing"></a>Anomalieerkennungsdienst für getaktete Abrechnung
 
@@ -50,32 +50,37 @@ Das Modell beruht auf der Generierung retrospektiver Konfidenzintervalle. Die Ze
 
 ## <a name="anomaly-detection-notification"></a>Benachrichtigung bei einer Anomalieerkennung
 
-Wir versenden Benachrichtigungen bei Erkennung von Anomalien wöchentlich per E-Mail. Diese E-Mail enthält alle in dieser Woche festgestellten Anomalien für alle Verbrauchseinheiten und Kunden. Diese E-Mail wird an die Kontakte in den Abteilungen **Entwicklung** und **Support** gesendet, die Sie bei der Erstellung des Angebots angegeben haben.
+Sie können in Partner Center Anomalien auswerten, verwalten und bestätigen. Weitere Informationen hierzu finden Sie unter [Verwalten von Anomalien bei der getakteten Abrechnung in Partner Center](../anomaly-detection.md).
 
-Es wird von Ihnen erwartet, dass Sie untersuchen, ob festgestellte Anomalien echte Probleme darstellen, und sich in diesem Fall an Microsoft wenden, um die falschen Nutzungsdaten zu melden (siehe den Abschnitt „Support“ weiter unten).
+Um zu verhindern, dass Ihren Kunden bei der getakteten Abrechnung zu hohe Beträge in Rechnung gestellt werden, sollten Sie überprüfen, ob es sich bei den erkannten Anomalien um echte Probleme handelt. Wenn dies der Fall ist, können Sie die falsch gemeldete Nutzung in Partner Center bestätigen.
 
-Wenn Sie bestätigen, dass es sich bei den festgestellten Anomalien um normale Nutzung handelt, müssen Sie nichts weiter unternehmen. Wenn eine Anomalie jedoch ein potenziell hohes finanzielles Risiko darstellt, können wir Sie kontaktieren, um uns die Nutzung bestätigen zu lassen.  
+Es wird empfohlen, zu überprüfen, ob es sich bei erkannten Anomalien um normale Nutzung handelt. Hierdurch können wir für Sie zuverlässigere Anomaliedaten bereitstellen. Wenn eine Anomalie ein potenziell hohes finanzielles Risiko darstellt, können wir Sie kontaktieren, um uns die Nutzung bestätigen zu lassen.
 
 ## <a name="when-and-how-to-get-support"></a>Wann und wie erhalte ich Support?
 
-Falls Sie falsche Nutzungsdaten an Microsoft gesendet haben und dies dazu führt, dass dem Kunden zu wenig berechnet wurde bzw. wird, wird dem Kunden die zu wenig gemeldete Nutzung nicht durch Microsoft nachberechnet, und Sie werden nicht für diese Nutzung bezahlt. Der durch die fehlerhafte Meldung entstandene Umsatzverlust muss von Ihnen getragen werden.
+Falls Sie falsche Nutzungsdaten für die getaktete Abrechnung an Microsoft gesendet haben und dies dazu führt, dass dem Kunden zu wenig berechnet wurde bzw. wird, wird dem Kunden die zu wenig gemeldete Nutzung nicht durch uns nachberechnet, und Sie werden nicht für diese Nutzung bezahlt. Der durch die fehlerhafte Meldung entstandene Umsatzverlust muss von Ihnen getragen werden.
 
-In einem der folgenden Fälle können Sie per Supportticket eine Rückerstattung oder eine Abrechnungsanpassung für Ihre Kunden anfordern:
+Wenn einer der folgenden Fälle zutrifft, können Sie den Nutzungsbetrag in Partner Center anpassen. Dies führt zu einer Erstattung oder Abrechnungskorrektur für Ihre Kunden:
 
-- Sie haben festgestellt, dass es sich bei einer der von uns gefundenen Anomalien um ein echtes Problem handelt und dass die falsch gemeldete Nutzung dazu führen würde, dass dem Kunden **zu viel** berechnet wird.
-- Sie stellen fest, dass Sie falsche Nutzungsangaben an uns übermittelt haben, die dazu führen würden, dass dem Kunden **zu viel** berechnet wird.
-- Sie möchten eine Rückerstattung der Gebühr für die Nutzung nach getakteter Abrechnung Ihres Kunden anfordern.
+- Sie haben festgestellt, dass es sich bei einer der von uns gefundenen Anomalien um ein echtes Problem handelt und dass die falsch gemeldete Nutzung dazu führen würde, dass dem Kunden zu viel berechnet wird.
+- Sie stellen fest, dass Sie falsche Nutzungsangaben an uns übermittelt haben, die dazu führen würden, dass dem Kunden zu viel berechnet wird.
 
-So senden Sie ein Ticket
+So übermitteln Sie ein Supportticket bezüglich Anomalien bei der getakteten Abrechnung:
 
-1. Wechseln Sie zur Seite „Support“. Geben Sie in das Feld **Beschreiben Sie Ihr Problem** „falsche Nutzungsdaten“ ein.
-2. Wählen Sie in den Supportthemen in der Dropdownliste der Suchergebnisse eine der folgenden Optionen aus:
-    - **Commercial Marketplace** > **Getaktete Abrechnung** > **Falsche Nutzung für Azure-Anwendungsangebot gesendet** oder
-    - **Commercial Marketplace** > **Getaktete Abrechnung** > **Falsche Nutzung für SaaS-Angebot gesendet**
-3. Wählen Sie unter **Nächster Schritt** die Schaltfläche **Lösungen anzeigen** aus, um sich bei Partner Center anzumelden und ein Supportticket zu übermitteln.
+1. Melden Sie sich mit Ihrem Geschäftskonto bei [Partner Center](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) an.
+1. Wählen Sie im Menü oben rechts auf der Seite das Symbol **Support** aus. Der Bereich **Hilfe und Support** wird rechts auf der Seite angezeigt.
+1. Wenn Sie Hilfe zum kommerziellen Marketplace benötigen, wählen Sie **Kommerzieller Marketplace** aus.
+   ![Veranschaulicht den Supportbereich](../media/support/commercial-marketplace-support-pane.png)
+1. Geben Sie im Feld **Problemzusammenfassung** den Text **kommerzieller Marketplace > getaktete Abrechnung** ein.
+1. Wählen Sie im Feld **Problemtyp** eine der folgenden Optionen aus:
+    - **Commercial Marketplace > Getaktete Abrechnung > Falsche Nutzung für Azure-Anwendungsangebot gesendet**
+    - **Commercial Marketplace > Getaktete Abrechnung > Falsche Nutzung für SaaS-Angebot gesendet**
+1. Wählen Sie unter **Nächster Schritt** die Option **Lösungen überprüfen** aus.
+1. Überprüfen Sie die empfohlenen Dokumente, sofern vorhanden, oder wählen Sie **Problemdetails angeben** aus, um ein Supportticket zu senden.
 
 Weitere Supportoptionen für Herausgeber finden Sie unter [Support für das Programm „Kommerzieller Marketplace“ im Partner Center](../support.md).
 
-## <a name="next-step"></a>Nächster Schritt
+## <a name="next-steps"></a>Nächste Schritte
 
 - Erfahren Sie mehr zur [Messdienst-API in Marketplace](marketplace-metering-service-apis.md).
+- [Verwalten von Anomalien bei der getakteten Abrechnung in Partner Center](../anomaly-detection.md)

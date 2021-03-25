@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb,
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 84e0801daa5bf83889be87987d440e377287b5ea
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92366189"
 ---
 # <a name="conditional-access-block-access"></a>Bedingter Zugriff: Zugriff blockieren
@@ -31,30 +31,30 @@ Derartige Richtlinien können unbeabsichtigte Nebeneffekte haben. Ordnungsgemä�
 
 Richtlinien für bedingten Zugriff sind leistungsstarke Tools, daher wird empfohlen, die folgenden Konten von Ihrer Richtlinie auszuschließen:
 
-* **Notfallzugriffs** - oder **Break-Glass** -Konten, um eine mandantenweite Kontosperrung zu vermeiden. In dem unwahrscheinlichen Fall, dass alle Administratoren aus dem Mandanten ausgeschlossen sind, können Sie sich mit Ihrem Administratorkonto für den Notfallzugriff beim Mandanten anmelden und Maßnahmen ergreifen, um den Zugriff wiederherzustellen.
+* **Notfallzugriffs**- oder **Break-Glass**-Konten, um eine mandantenweite Kontosperrung zu vermeiden. In dem unwahrscheinlichen Fall, dass alle Administratoren aus dem Mandanten ausgeschlossen sind, können Sie sich mit Ihrem Administratorkonto für den Notfallzugriff beim Mandanten anmelden und Maßnahmen ergreifen, um den Zugriff wiederherzustellen.
    * Weitere Informationen finden Sie im Artikel [Verwalten von Konten für den Notfallzugriff in Azure AD](../roles/security-emergency-access.md).
-* **Dienstkonten** und **Dienstprinzipale** , z. B. das Konto für die Azure AD Connect-Synchronisierung. Dienstkonten sind nicht interaktive Konten, die an keinen bestimmten Benutzer gebunden sind. Sie werden normalerweise von Back-End-Diensten verwendet, die den programmgesteuerten Zugriff auf Anwendungen ermöglichen, können aber auch zu Verwaltungszwecken für die Anmeldung bei Systemen verwendet werden. Derartige Dienstkonten sollten ausgeschlossen werden, weil die MFA nicht programmgesteuert abgeschlossen werden kann. Aufrufe von Dienstprinzipalen werden durch den bedingten Zugriff nicht blockiert.
+* **Dienstkonten** und **Dienstprinzipale**, z. B. das Konto für die Azure AD Connect-Synchronisierung. Dienstkonten sind nicht interaktive Konten, die an keinen bestimmten Benutzer gebunden sind. Sie werden normalerweise von Back-End-Diensten verwendet, die den programmgesteuerten Zugriff auf Anwendungen ermöglichen, können aber auch zu Verwaltungszwecken für die Anmeldung bei Systemen verwendet werden. Derartige Dienstkonten sollten ausgeschlossen werden, weil die MFA nicht programmgesteuert abgeschlossen werden kann. Aufrufe von Dienstprinzipalen werden durch den bedingten Zugriff nicht blockiert.
    * Wenn Ihre Organisation diese Konten in Skripts oder Code verwendet, sollten Sie in Betracht ziehen, diese durch [verwaltete Identitäten](../managed-identities-azure-resources/overview.md) zu ersetzen. Als vorübergehende Problemumgehung können Sie diese spezifischen Konten aus der Basisrichtlinie ausschließen.
 
 ## <a name="create-a-conditional-access-policy"></a>Erstellen der Richtlinie für bedingten Zugriff
 
-Mit den folgenden Schritte können Sie Richtlinien für den bedingten Zugriff erstellen, um den Zugriff auf alle Apps (mit Ausnahme von [Office 365](concept-conditional-access-cloud-apps.md#office-365)) zu blockieren, wenn sich Benutzer nicht in einem vertrauenswürdigen Netzwerk befinden. Für diese Richtlinien wird zu Beginn der Modus [Nur Bericht](howto-conditional-access-insights-reporting.md) festgelegt, damit Administratoren die Auswirkungen auf vorhandene Benutzer ermitteln können. Wenn die Administratoren sicher sind, dass die Richtlinien erwartungsgemäß funktionieren, können sie die Richtlinien **aktivieren** .
+Mit den folgenden Schritte können Sie Richtlinien für den bedingten Zugriff erstellen, um den Zugriff auf alle Apps (mit Ausnahme von [Office 365](concept-conditional-access-cloud-apps.md#office-365)) zu blockieren, wenn sich Benutzer nicht in einem vertrauenswürdigen Netzwerk befinden. Für diese Richtlinien wird zu Beginn der Modus [Nur Bericht](howto-conditional-access-insights-reporting.md) festgelegt, damit Administratoren die Auswirkungen auf vorhandene Benutzer ermitteln können. Wenn die Administratoren sicher sind, dass die Richtlinien erwartungsgemäß funktionieren, können sie die Richtlinien **aktivieren**.
 
 Die erste Richtlinie blockiert den Zugriff auf alle Apps mit Ausnahme von Microsoft 365-Anwendungen, wenn sie sich nicht an einem vertrauenswürdigen Standort befinden.
 
 1. Melden Sie sich beim **Azure-Portal** als globaler Administrator, Sicherheitsadministrator oder Administrator für bedingten Zugriff an.
-1. Navigieren Sie zu **Azure Active Directory** > **Sicherheit** > **Bedingter Zugriff** .
-1. Wählen Sie **Neue Richtlinie** .
+1. Navigieren Sie zu **Azure Active Directory** > **Sicherheit** > **Bedingter Zugriff**.
+1. Wählen Sie **Neue Richtlinie**.
 1. Benennen Sie Ihre Richtlinie. Es wird empfohlen, dass Unternehmen einen aussagekräftigen Standard für die Namen ihrer Richtlinien erstellen.
-1. Klicken Sie unter **Zuweisungen** auf **Benutzer und Gruppen** .
+1. Klicken Sie unter **Zuweisungen** auf **Benutzer und Gruppen**.
    1. Wählen Sie unter **Einschließen** die Option **Alle Benutzer** aus.
    1. Wählen Sie unter **Ausschließen** die Option **Benutzer und Gruppen** und dann die Konten für den Notfallzugriff Ihres Unternehmens aus. 
    1. Wählen Sie **Fertig** aus.
 1. Wählen Sie unter **Cloud-Apps oder -Aktionen** die folgenden Optionen aus:
    1. Wählen Sie unter **Einschließen** die Option **Alle Cloud-Apps** aus.
    1. Wählen Sie unter **Ausschließen** die Option **Office 365** aus, wählen Sie **Auswählen** aus, und wählen Sie dann **Fertig** aus.
-1. Unter **Bedingungen** :
-   1. Unter **Bedingungen** > **Standort** .
+1. Unter **Bedingungen**:
+   1. Unter **Bedingungen** > **Standort**.
       1. Legen Sie **Konfigurieren** auf **Ja** fest.
       1. Wählen Sie unter **Einschließen** die Option **Alle Standorte** aus.
       1. Wählen Sie unter **Ausschließen** die Option **Alle vertrauenswürdigen Standorte** aus.
@@ -66,9 +66,9 @@ Die erste Richtlinie blockiert den Zugriff auf alle Apps mit Ausnahme von Micros
 
 Nachfolgend wird eine zweite Richtlinie erstellt, die für Benutzer von Microsoft 365 die mehrstufige Authentifizierung (MFA) oder ein kompatibles Gerät voraussetzt.
 
-1. Wählen Sie **Neue Richtlinie** .
+1. Wählen Sie **Neue Richtlinie**.
 1. Benennen Sie Ihre Richtlinie. Es wird empfohlen, dass Unternehmen einen aussagekräftigen Standard für die Namen ihrer Richtlinien erstellen.
-1. Klicken Sie unter **Zuweisungen** auf **Benutzer und Gruppen** .
+1. Klicken Sie unter **Zuweisungen** auf **Benutzer und Gruppen**.
    1. Wählen Sie unter **Einschließen** die Option **Alle Benutzer** aus.
    1. Wählen Sie unter **Ausschließen** die Option **Benutzer und Gruppen** und dann die Konten für den Notfallzugriff Ihres Unternehmens aus. 
    1. Wählen Sie **Fertig** aus.
@@ -76,7 +76,7 @@ Nachfolgend wird eine zweite Richtlinie erstellt, die für Benutzer von Microsof
 1. Wählen Sie unter **Zugriffssteuerung** > **Erteilen** die Option **Zugriff gewähren** aus.
    1. Wählen Sie **Mehrstufige Authentifizierung erforderlich** und **Markieren des Geräts als kompatibel erforderlich** und dann **Auswählen** aus.
    1. Stellen Sie sicher, dass **Alle ausgewählten Steuerungen anfordern** ausgewählt ist.
-   1. Wählen Sie **Auswählen** .
+   1. Wählen Sie **Auswählen**.
 1. Bestätigen Sie die Einstellungen, und legen Sie **Richtlinie aktivieren** auf **Nur Bericht** fest.
 1. Wählen Sie **Erstellen** aus, um die Richtlinie zu erstellen und zu aktivieren.
 

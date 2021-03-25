@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 6c5922137b5d3ee14461adb88fba2e8b2cf41e16
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 842107245fe26155d53866bf95e11b08d7593ad1
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102558966"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104582152"
 ---
 # <a name="troubleshooting-vm-provisioning-with-cloud-init"></a>Problembehandlung bei VM-Bereitstellung mit cloud-init
 
@@ -56,11 +56,11 @@ Kann die VM nicht bereitgestellt werden, zeigt Azure für 20 Minuten den Status 
 
 Während die VM ausgeführt wird, benötigen Sie die Protokolle der VM, um erkennen zu können, warum die Bereitstellung fehlgeschlagen ist.  Damit Sie erkennen können, warum die VM-Bereitstellung fehlgeschlagen ist, dürfen Sie die VM nicht anhalten. Lassen Sie die VM weiter ausführen. Sie müssen die fehlerhafte VM im Status „wird ausgeführt“ belassen, um Protokolle zu erfassen. Verwenden Sie eine der folgenden Methoden, um die Protokolle zu erfassen:
 
-- [Serielle Konsole](../troubleshooting/serial-console-grub-single-user-mode.md)
+- [Serielle Konsole](/troubleshoot/azure/virtual-machines/serial-console-grub-single-user-mode)
 
 - [Aktivieren Sie die Startdiagnose](/previous-versions/azure/virtual-machines/linux/tutorial-monitor#enable-boot-diagnostics), bevor Sie die VM erstellen, und [zeigen Sie die Startdiagnose an](/previous-versions/azure/virtual-machines/linux/tutorial-monitor#view-boot-diagnostics), während die VM gestartet wird.
 
-- [Führen Sie AZ VM Repair aus](../troubleshooting/repair-linux-vm-using-azure-virtual-machine-repair-commands.md), um den Betriebssystemdatenträger anzufügen und einzubinden, wonach Sie diese Protokolle erfassen können:
+- [Führen Sie AZ VM Repair aus](/troubleshoot/azure/virtual-machines/repair-linux-vm-using-azure-virtual-machine-repair-commands), um den Betriebssystemdatenträger anzufügen und einzubinden, wonach Sie diese Protokolle erfassen können:
 ```bash
 /var/log/cloud-init*
 /var/log/waagent*
@@ -108,7 +108,7 @@ Nachdem Sie einen Fehler oder eine Warnung gefunden haben, lesen Sie das cloud-i
 2019-10-10 04:51:24,010 - util.py[DEBUG]: Running command ['mount', '-o', 'ro,sync', '-t', 'auto', u'/dev/sr0', '/run/cloud-init/tmp/tmpXXXXX'] with allowed return codes [0] (shell=False, capture=True)
 ```
 
-Wenn Sie Zugriff auf die [serielle Konsole](../troubleshooting/serial-console-grub-single-user-mode.md) haben, können Sie versuchen, den Befehl erneut auszuführen, den cloud-init ausführen wollte.
+Wenn Sie Zugriff auf die [serielle Konsole](/troubleshoot/azure/virtual-machines/serial-console-grub-single-user-mode) haben, können Sie versuchen, den Befehl erneut auszuführen, den cloud-init ausführen wollte.
 
 Die Protokollierung für `/var/log/cloud-init.log` kann in „/etc/cloud/cloud.cfg.d/05_logging.cfg“ neu konfiguriert werden. Weitere Informationen zur cloud-init-Protokollierung finden Sie in der [cloud-init-Dokumentation](https://cloudinit.readthedocs.io/en/latest/topics/logging.html). 
 

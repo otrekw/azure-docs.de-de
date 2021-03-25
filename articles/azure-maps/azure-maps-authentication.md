@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: d47e98273e696a4b6e827d8ebbc71a297f2861cb
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 9c973859c8b7a3d04693946f50377837c3538b85
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905314"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "101094097"
 ---
 # <a name="authentication-with-azure-maps"></a>Authentifizierung mit Azure Maps
 
@@ -84,7 +84,7 @@ Azure Maps unterstützt den Zugriff auf alle Prinzipaltypen für die [rollenbasi
 
 In den nächsten Abschnitten werden die Konzepte und Komponenten der Azure Maps-Integration mit Azure RBAC diskutiert. Im Rahmen des Prozesses zum Einrichten Ihres Azure Maps Kontos wird ein Azure AD-Verzeichnis dem Azure-Abonnement zugeordnet, in dem sich das Azure Maps-Konto befindet. 
 
-Wenn Sie Azure RBAC konfigurieren, wählen Sie einen Sicherheitsprinzipal aus und wenden ihn auf eine Rollenzuweisung an. Informationen zum Hinzufügen von Rollenzuweisungen im Azure-Portal finden Sie unter [Hinzufügen oder Entfernen von Rollenzuweisungen](../role-based-access-control/role-assignments-portal.md).
+Wenn Sie Azure RBAC konfigurieren, wählen Sie einen Sicherheitsprinzipal aus und wenden ihn auf eine Rollenzuweisung an. Informationen zum Hinzufügen von Rollenzuweisungen im Azure-Portal finden Sie unter [Zuweisen von Azure-Rollen](../role-based-access-control/role-assignments-portal.md).
 
 ### <a name="picking-a-role-definition"></a>Auswählen einer Rollendefinition
 

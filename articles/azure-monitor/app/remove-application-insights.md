@@ -3,12 +3,12 @@ title: Entfernen von Application Insights in Visual Studio – Azure Monitor
 description: Hier erfahren Sie, wie Sie das Application Insights SDK für ASP.NET und ASP.NET Core in Visual Studio entfernen.
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 5bfa6ee21cc1a55f653c0e79807a14ac34082e73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1d70413fa6a47e2d41693db6eb705f31b2a2b1b2
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90981467"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101704309"
 ---
 # <a name="how-to-remove-application-insights-in-visual-studio"></a>Entfernen von Application Insights in Visual Studio
 
@@ -27,7 +27,7 @@ Zum Entfernen von Application Insights müssen Sie die NuGet-Pakete und -Verweis
     > [!NOTE]
     > Wenn die Überwachungssammlung aktiviert ist, müssen Sie zuerst „Microsoft.ApplicationInsights.TraceListener“ deinstallieren. Geben Sie `Uninstall-package Microsoft.ApplicationInsights.TraceListener` ein, und führen Sie dann den folgenden Schritt aus, um „Microsoft.ApplicationInsights.Web“ zu entfernen.
 
-1. Geben Sie den folgenden Befehl ein:  `Uninstall-Package Microsoft.ApplicationInsights.Web -RemoveDependencies`
+1. Geben Sie den folgenden Befehl ein: `Uninstall-Package Microsoft.ApplicationInsights.Web -RemoveDependencies`
 
     Nachdem Sie den Befehl eingegeben haben, werden das Application Insights-Paket und alle zugehörigen Abhängigkeiten aus dem Projekt deinstalliert.
     
@@ -39,17 +39,17 @@ Zum Entfernen von Application Insights müssen Sie die NuGet-Pakete und -Verweis
 
     ![In der oberen Menüleiste auf „Extras“ > „NuGet-Paket-Manager“ > „Paket-Manager-Konsole“ klicken](./media/remove-application-insights/package-manager.png)
 
-1. Geben Sie den folgenden Befehl ein:  ` Uninstall-Package Microsoft.ApplicationInsights.AspNetCore -RemoveDependencies`
+1. Geben Sie den folgenden Befehl ein: ` Uninstall-Package Microsoft.ApplicationInsights.AspNetCore -RemoveDependencies`
 
     Nachdem Sie den Befehl eingegeben haben, werden das Application Insights-Paket und alle zugehörigen Abhängigkeiten aus dem Projekt deinstalliert.
 
 ---
 
-## <a name="uninstall-using-the-visual-studio-nugetui"></a>Deinstallieren mithilfe der NuGet-Benutzeroberfläche von Visual Studio
+## <a name="uninstall-using-the-visual-studio-nuget-ui"></a>Deinstallieren mithilfe der NuGet-Benutzeroberfläche von Visual Studio
 
 # <a name="net"></a>[.NET](#tab/net)
 
-1. Klicken Sie im  *Projektmappen-Explorer* auf der rechten Seite mit der rechten Maustaste auf  **Projektmappe** , und wählen Sie  **NuGet-Pakete für Projektmappe verwalten** aus.
+1. Klicken Sie auf der rechten Seite im *Projektmappen-Explorer* mit der rechten Maustaste auf **Projektmappe**, und wählen Sie **NuGet-Pakete für Projektmappe verwalten** aus.
 
     Daraufhin wird ein Bildschirm angezeigt, auf dem Sie alle NuGet-Pakete bearbeiten können, die Teil des Projekts sind.
     
@@ -57,26 +57,26 @@ Zum Entfernen von Application Insights müssen Sie die NuGet-Pakete und -Verweis
 
     > [!NOTE]
     > Wenn die Überwachungssammlung aktiviert ist, müssen Sie zuerst „Microsoft.ApplicationInsights.TraceListener“ deinstallieren, ohne die ausgewählten Abhängigkeiten zu entfernen. Dann führen Sie die folgenden Schritte aus, um „Microsoft.ApplicationInsights.Web“ mit Entfernung der ausgewählten Abhängigkeiten zu deinstallieren.
-    
-1. Klicken Sie auf das Paket „Microsoft.ApplicationInsights.Web“. Aktivieren Sie auf der rechten Seite das Kontrollkästchen neben  *Projekt* , um alle Projekte auszuwählen.
-    
-1. Um beim Deinstallieren alle Abhängigkeiten zu entfernen, wählen Sie die Dropdownschaltfläche  **Optionen**  unterhalb des Abschnitts aus, in dem Sie das Projekt ausgewählt haben.
 
-    Aktivieren Sie unter  *Deinstallationsoptionen* das Kontrollkästchen neben  *Abhängigkeiten entfernen*.
+1. Klicken Sie auf das Paket **Microsoft.ApplicationInsights.Web**. Aktivieren Sie auf der rechten Seite das Kontrollkästchen neben **Projekt**, um alle Projekte auszuwählen.
+
+1. Um beim Deinstallieren alle Abhängigkeiten zu entfernen, wählen Sie die Dropdownschaltfläche **Optionen** unterhalb des Abschnitts aus, in dem Sie das Projekt ausgewählt haben.
+
+    Aktivieren Sie unter *Deinstallationsoptionen* das Kontrollkästchen neben *Abhängigkeiten entfernen*.
 
 1. Wählen Sie **Deinstallieren** aus.
     
     ![Screenshot des Fensters „Microsoft.ApplicationInsights.Web“ mit aktivierten Optionen „Abhängigkeiten entfernen“ und „Deinstallieren“](./media/remove-application-insights/uninstall-framework.png)
 
-    Es wird ein Dialogfeld angezeigt, in dem alle Abhängigkeiten aufgelistet sind, die aus der Anwendung entfernt werden. Wählen Sie zum Deinstallieren  **OK**  aus.
+    Es wird ein Dialogfeld angezeigt, in dem alle Abhängigkeiten aufgelistet sind, die aus der Anwendung entfernt werden. Wählen Sie zum Deinstallieren **OK** aus.
     
     ![Screenshot eines Dialogfelds mit zu entfernenden Abhängigkeiten](./media/remove-application-insights/preview-uninstall-framework.png)
     
-1.  Nachdem alles deinstalliert wurde, werden im  *Projektmappen-Explorer* möglicherweise weiterhin „ApplicationInsights.config“ und „AiHandleErrorAttribute.cs“ angezeigt. Sie können die beiden Dateien manuell löschen.
+1.  Nachdem alles deinstalliert wurde, werden im *Projektmappen-Explorer* möglicherweise weiterhin „ApplicationInsights.config“ und „AiHandleErrorAttribute.cs“ angezeigt.  Sie können die beiden Dateien manuell löschen.
 
 # <a name="net-core"></a>[.NET Core](#tab/netcore)
 
-1. Klicken Sie im  *Projektmappen-Explorer* auf der rechten Seite mit der rechten Maustaste auf  **Projektmappe** , und wählen Sie  **NuGet-Pakete für Projektmappe verwalten** aus.
+1. Klicken Sie auf der rechten Seite im *Projektmappen-Explorer* mit der rechten Maustaste auf **Projektmappe**, und wählen Sie **NuGet-Pakete für Projektmappe verwalten** aus.
 
     Daraufhin wird ein Bildschirm angezeigt, auf dem Sie alle NuGet-Pakete bearbeiten können, die Teil des Projekts sind.
 

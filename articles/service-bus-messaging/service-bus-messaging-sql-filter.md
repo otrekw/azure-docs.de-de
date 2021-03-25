@@ -3,12 +3,12 @@ title: SQL-Filtersyntax für Azure Service Bus-Abonnementregeln | Microsoft-Doku
 description: Dieser Artikel enthält Details zur SQL-Filtersyntax. SQL-Filter unterstützen eine Teilmenge des SQL-92-Standards.
 ms.topic: article
 ms.date: 11/24/2020
-ms.openlocfilehash: 810d17d458de79c851b6f1ada4556a231bfd20eb
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 022f6cb1d698a10dc216db8d41c172691f7535ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98742980"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "100652940"
 ---
 # <a name="subscription-rule-sql-filter-syntax"></a>SQL-Filtersyntax für Abonnementregeln
 
@@ -52,7 +52,7 @@ Service Bus Premium unterstützt auch die [JMS-SQL-Nachrichtenselektorsyntax](ht
   
 -   `<scope>` ist eine optionale Zeichenfolge, die den Bereich von `<property_name>` angibt. Gültige Werte sind `sys` und `user`. Der Wert `sys` gibt den Systembereich an, in dem `<property_name>` ein öffentlicher Eigenschafgenname der [BrokeredMessage-Klasse](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) ist. `user` gibt den Benutzerbereich an, in dem `<property_name>` ein Schlüssel des Wörterbuchs der [BrokeredMessage-Klasse](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) ist. Der `user`-Bereich ist der Standardbereich, wenn `<scope>` nicht angegeben wird.  
   
-## <a name="remarks"></a>Bemerkungen
+## <a name="remarks"></a>Hinweise
 
 Der Versuch, auf eine nicht existierende Systemeigenschaft zuzugreifen, löst einen Fehler aus, während der Versuch, auf eine nicht existierende Benutzereigenschaft zuzugreifen, keinen Fehler auslöst. Stattdessen wird eine nicht vorhandene Benutzereigenschaft intern als unbekannter Wert ausgewertet. Ein unbekannter Wert wird während der Operatorauswertung speziell behandelt.  
   
@@ -105,7 +105,7 @@ Ein `<regular_identifier>` kann kein reserviertes Schlüsselwort sein.
       <expression>  
 ```  
   
-### <a name="remarks"></a>Bemerkungen
+### <a name="remarks"></a>Hinweise
   
 `<pattern>` muss ein Ausdruck sein, der als Zeichenfolge ausgewertet wird. Es wird als ein Muster für den LIKE-Operator verwendet.      Es kann die folgenden Platzhalterzeichen enthalten:  
   
@@ -120,7 +120,7 @@ Ein `<regular_identifier>` kann kein reserviertes Schlüsselwort sein.
       <expression>  
 ```  
   
-### <a name="remarks"></a>Bemerkungen  
+### <a name="remarks"></a>Hinweise  
 
 `<escape_char>` muss ein Ausdruck sein, der als Zeichenfolge der Länge 1 ausgewertet wird. Es wird als Escapezeichen für den LIKE-Operator verwendet.  
   
@@ -169,7 +169,7 @@ Ein `<regular_identifier>` kann kein reserviertes Schlüsselwort sein.
       TRUE | FALSE  
 ```  
   
-### <a name="remarks"></a>Bemerkungen  
+### <a name="remarks"></a>Hinweise  
 
 Boolesche Konstanten werden durch die Schlüsselwörter **TRUE** oder **FALSE** dargestellt. Die Werte werden als `System.Boolean` gespeichert.  
   
@@ -179,7 +179,7 @@ Boolesche Konstanten werden durch die Schlüsselwörter **TRUE** oder **FALSE** 
 <string_constant>  
 ```  
   
-### <a name="remarks"></a>Bemerkungen  
+### <a name="remarks"></a>Hinweise  
 
 Zeichenfolgenkonstanten werden in einfache Anführungszeichen eingeschlossen und enthalten beliebige, gültige Unicodezeichen. Ein einfaches Anführungszeichen, das in eine Zeichenfolgenkonstante eingebettet ist, wird als zwei einfache Anführungszeichen dargestellt.  
   
@@ -191,7 +191,7 @@ Zeichenfolgenkonstanten werden in einfache Anführungszeichen eingeschlossen und
       property(name) | p(name)  
 ```  
   
-### <a name="remarks"></a>Bemerkungen
+### <a name="remarks"></a>Hinweise
   
 Die `newid()`-Funktion gibt ein `System.Guid` zurück, das von der `System.Guid.NewGuid()`-Methode generiert wird.  
   
@@ -269,8 +269,8 @@ Beachten Sie die folgende [SqlFilter](/dotnet/api/microsoft.servicebus.messaging
   
 -   Arithmetische Operatoren wie `+`, `-`, `*`, `/` und `%` folgen der gleichen Semantik wie der C#-Operator, der Datentypaktionen und implizite Konvertierungen einbindet.
 
-
-[!INCLUDE [service-bus-filter-examples](../../includes/service-bus-filter-examples.md)]
+## <a name="examples"></a>Beispiele
+Beispiele finden Sie unter [Festlegen von Abonnementfiltern (Azure Service Bus)](service-bus-filter-examples.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

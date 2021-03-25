@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: deced953089fcbb2640cbf3e402db24cb511e769
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: c6f4e4851d406b14ed38665274401b96446ac6a0
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935885"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579075"
 ---
 # <a name="what-is-conditional-access-report-only-mode"></a>Was ist der reine Berichtsmodus des bedingten Zugriffs?
 
@@ -28,6 +28,8 @@ Der reine Berichtsmodus ist ein neuer Status von Richtlinien für bedingten Zugr
 - Bei der Anmeldung werden Richtlinien im reinen Berichtsmodus ausgewertet, aber nicht erzwungen.
 - Die Ergebnisse werden auf den Registerkarten **Bedingter Zugriff** und **Nur melden** der Anmeldeprotokolldetails protokolliert.
 - Kunden mit einem Azure Monitor-Abonnement können die Auswirkungen ihrer Richtlinien für bedingten Zugriff mithilfe der Arbeitsmappe für Erkenntnisse zum bedingten Zugriff überwachen.
+
+> [!VIDEO https://www.youtube.com/embed/NZbPYfhb5Kc]
 
 > [!WARNING]
 > Richtlinien im reinen Berichtsmodus, die konforme Geräte erfordern, können Benutzer von Mac-, iOS- und Android-Geräten auffordern, bei der Richtlinienauswertung ein Gerätezertifikat auszuwählen, auch wenn die Gerätekonformität nicht erzwungen wird. Diese Aufforderungen können wiederholt werden, bis das Gerät konform ist. Um zu verhindern, dass Endbenutzer bei der Anmeldung Eingabeaufforderungen erhalten, schließen Sie die Geräteplattformen Mac, iOS und Android aus Richtlinien im reinen Berichtsmodus aus, die Gerätekonformitätsprüfungen durchführen. Beachten Sie, dass der reine Berichtsmodus für Richtlinien für bedingten Zugriff mit dem Bereich „Benutzeraktionen“ nicht anwendbar ist.

@@ -2,7 +2,7 @@
 title: Erstellen einer Zugriffsüberprüfung von Gruppen und Anwendungen – Azure AD
 description: Erfahren Sie, wie Sie eine Gruppenmitglieder oder den Anwendungszugriff betreffende Zugriffsüberprüfung in Azure Active Directory-Zugriffsüberprüfungen erstellen.
 services: active-directory
-author: barclayn
+author: ajburnle
 manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 12/07/2020
-ms.author: barclayn
+ms.date: 3/3/2021
+ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b12eb95a7840bdbb902701fc644eee30ffe9900f
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 7143c3f9786d41c32ae954ab219197a9cfaa1050
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96778536"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102176874"
 ---
 # <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>Erstellen einer Zugriffsüberprüfung für Gruppen und Anwendungen in Azure AD-Zugriffsüberprüfungen
 
@@ -80,7 +80,7 @@ Weitere Informationen finden Sie unter [Lizenzanforderungen](access-reviews-over
     - **Gruppenbesitzer** (nur verfügbar, wenn eine Überprüfung für ein Team oder eine Gruppe durchgeführt wird)
     - **Ausgewählte Benutzer oder Gruppen**
     - **Users review own access** (Benutzer überprüfen eigenen Zugriff)
-    - **(Vorschau:) Managers of users** (Benutzermanager)
+    - **Vorgesetzte von Benutzern**
     Wenn Sie **Managers of users** (Benutzermanager) oder **Gruppenbesitzer** auswählen, haben Sie auch die Möglichkeit, einen Fallbackprüfer anzugeben. Fallbackprüfer werden aufgefordert, eine Überprüfung durchzuführen, wenn für den Benutzer kein Manager im Verzeichnis angegeben ist oder die Gruppe keinen Besitzer hat.
 
     ![Neue Zugriffsüberprüfung](./media/create-access-review/new-access-review.png)

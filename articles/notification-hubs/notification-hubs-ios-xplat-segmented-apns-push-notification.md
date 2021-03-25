@@ -14,12 +14,12 @@ ms.date: 11/07/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 11/07/2019
-ms.openlocfilehash: 585bdfdd7033f75e5beeba7246c8fbdd03a5e6e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2cb979491e247a4d44b9ae9ae27c433fb3f436d1
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86530031"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "100579228"
 ---
 # <a name="tutorial-send-push-notifications-to-specific-ios-devices-using-azure-notification-hubs"></a>Tutorial: Senden von Pushbenachrichtigungen an bestimmte iOS-Geräte mit Azure Notification Hubs
 
@@ -41,7 +41,7 @@ In diesem Tutorial führen Sie die folgenden Schritte aus:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Dieses Thema baut auf der App auf, die Sie im folgenden Tutorial erstellt haben: [Tutorial: Senden von Pushbenachrichtigungen an iOS-Apps mit Azure Notification Hubs][get-started]. Bevor Sie dieses Tutorial beginnen, müssen Sie das folgende Tutorial abgeschlossen haben: [Tutorial: Senden von Pushbenachrichtigungen an iOS-Apps mit Azure Notification Hubs][get-started].
+Dieses Thema basiert auf der App, die Sie unter [Tutorial: Senden von Pushbenachrichtigungen an iOS-Apps mit Azure Notification Hubs][get-started] erstellt haben. Bevor Sie dieses Tutorial starten, müssen Sie bereits [Tutorial: Senden von Pushbenachrichtigungen an iOS-Apps mit Azure Notification Hubs][get-started] abgeschlossen haben.
 
 ## <a name="add-category-selection-to-the-app"></a>Hinzufügen der Kategorieauswahl zur App
 
@@ -125,8 +125,6 @@ Zunächst werden Sie Benutzeroberflächenelemente zum vorhandenen Storyboard hin
 
     - (void)subscribeWithCategories:(NSSet *)categories completion:(void (^)(NSError *))completion
     {
-        //[hub registerNativeWithDeviceToken:self.deviceToken tags:categories completion: completion];
-
         NSString* templateBodyAPNS = @"{\"aps\":{\"alert\":\"$(messageParam)\"}}";
 
         [hub registerTemplateWithDeviceToken:self.deviceToken name:@"simpleAPNSTemplate" 
@@ -245,13 +243,13 @@ Die App kann jetzt verschiedene Kategorien im lokalen Speicher des Geräts speic
 
 ## <a name="optional-send-tagged-notifications"></a>(Optional) Senden von Benachrichtigungen mit Tags
 
-Wenn Sie keinen Zugriff auf Visual Studio haben, können Sie den nächsten Abschnitt überspringen und Benachrichtigungen direkt über die App senden. Sie können auch die richtige Vorlagenbenachrichtigung aus dem [Azure portal] mithilfe der Registerkarte „Debuggen“ für den Notification Hub senden.
+Wenn Sie keinen Zugriff auf Visual Studio haben, können Sie den nächsten Abschnitt überspringen und Benachrichtigungen direkt über die App senden. Sie können auch die richtige Vorlagenbenachrichtigung aus dem [Azure-Portal] mithilfe der Registerkarte „Debuggen“ für den Notification Hub senden.
 
 [!INCLUDE [notification-hubs-send-categories-template](../../includes/notification-hubs-send-categories-template.md)]
 
 ## <a name="optional-send-notifications-from-the-device"></a>(Optional) Senden von Benachrichtigungen vom Gerät
 
-Normalerweise würden die Benachrichtigungen von einem Back-End-Dienst gesendet werden, aber Sie können Benachrichtigungen zu aktuellen Nachrichten direkt über die App senden. Aktualisieren Sie zu diesem Zweck die `SendNotificationRESTAPI`-Methode, die Sie im Tutorial [Erste Schritte mit Notification Hubs][get-started] definiert haben.
+Normalerweise würden die Benachrichtigungen von einem Back-End-Dienst gesendet werden, aber Sie können Benachrichtigungen zu aktuellen Nachrichten direkt über die App senden. Dazu wird die `SendNotificationRESTAPI`-Methode aktualisiert, die im Tutorial [Erste Schritte mit Notification Hubs][get-started] definiert wurde.
 
 1. Aktualisieren Sie in `ViewController.m` die `SendNotificationRESTAPI`-Methode wie folgt, sodass ein Parameter für das Kategorietag akzeptiert und die richtige [Vorlagenbenachrichtigung](notification-hubs-templates-cross-platform-push-messages.md) gesendet wird.
 
@@ -341,7 +339,7 @@ Normalerweise würden die Benachrichtigungen von einem Back-End-Dienst gesendet 
 
     ![Beispielbenachrichtigung unter iOS][1]
 
-    Wenn Sie **Subscribe**auswählen, konvertiert die App die ausgewählten Kategorien in Tags und fordert eine neue Geräteregistrierung für die ausgewählten Tags vom Notification Hub an.
+    Wenn Sie **Subscribe** auswählen, konvertiert die App die ausgewählten Kategorien in Tags und fordert eine neue Geräteregistrierung für die ausgewählten Tags vom Notification Hub an.
 
 2. Geben Sie eine Nachricht ein, die als aktuelle Nachricht gesendet werden soll, und klicken Sie dann auf die Schaltfläche **Benachrichtigung senden** . Führen Sie alternativ die .NET-Konsolen-App aus, um Benachrichtigungen zu generieren.
 

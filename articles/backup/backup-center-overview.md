@@ -4,10 +4,10 @@ description: Dieser Artikel enthält eine Übersicht über Backup Center für Az
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.openlocfilehash: b42bb2719d03108212f62428dc97ed814899c63c
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102506049"
 ---
 # <a name="overview-of-backup-center"></a>Übersicht über Backup Center

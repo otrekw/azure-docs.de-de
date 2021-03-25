@@ -2,18 +2,19 @@
 title: Sichern und Wiederherstellen einer Oracle Database 19c-Datenbank auf einer Azure Linux-VM mithilfe von Azure Backup
 description: Erfahren Sie, wie Sie eine Oracle Database 19c-Datenbank mit dem Dienst Azure Backup sichern und wiederherstellen.
 author: cro27
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines
+ms.subservice: oracle
+ms.collection: linux
 ms.topic: article
 ms.date: 01/28/2021
 ms.author: cholse
 ms.reviewer: dbakevlar
-ms.openlocfilehash: ac045694e8975509635e03221a8cb9cc84446b55
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 90f86a198ad36c2961f77336092d863953ee45ba
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99806408"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101673894"
 ---
 # <a name="back-up-and-recover-an-oracle-database-19c-database-on-an-azure-linux-vm-using-azure-backup"></a>Sichern und Wiederherstellen einer Oracle Database 19c-Datenbank auf einer Azure Linux-VM mithilfe von Azure Backup
 
@@ -199,13 +200,13 @@ Dieser Schritt setzt voraus, dass Sie über eine Oracle-Instanz (*test*) verfüg
      RMAN> backup as compressed backupset database plus archivelog;
      ```
 
-## <a name="using-azure-backup"></a>Verwenden von Azure Backup
+## <a name="using-azure-backup-preview"></a>Verwenden von Azure Backup (Vorschau)
 
 Der Azure Backup-Dienst bietet einfache, sichere und kostengünstige Lösungen, um Ihre Daten zu sichern und aus der Microsoft Azure-Cloud wiederherzustellen. Azure Backup bietet unabhängige und isolierte Sicherungen zum Schutz vor dem versehentlichen Löschen von Originaldaten. Sicherungen werden in einem Recovery Services-Tresor mit integrierter Verwaltung von Wiederherstellungspunkten gespeichert. Konfiguration und Skalierung sind unkompliziert. Sicherungen werden außerdem optimiert und können bei Bedarf problemlos wiederhergestellt werden.
 
-Der Dienst Azure Backup bietet ein [Framework](../../../backup/backup-azure-linux-app-consistent.md) zum Erreichen von Anwendungskonsistenz bei Sicherungen von Windows- und Linux-VMs für verschiedene Anwendungen wie Oracle, MySQL, Mongo DB, SAP HANA und PostGreSQL. Dies umfasst das Aufrufen eines Pre-Skripts (zum Stilllegen der Anwendungen), ehe eine Momentaufnahme der Datenträger erstellt wird, und eines Post-Skripts (zum Reaktivieren der Anwendungen) nach Erstellen der Momentaufnahme, um die Anwendungen wieder in den normalen Modus zu versetzen. Obwohl Beispiele für Pre- und Post-Skripts auf GitHub bereitgestellt sind, liegt das Erstellen und Pflegen dieser Skripts in Ihrer Verantwortung. 
+Der Dienst Azure Backup bietet ein [Framework](../../../backup/backup-azure-linux-app-consistent.md) zum Erreichen von Anwendungskonsistenz bei Sicherungen von Windows- und Linux-VMs für verschiedene Anwendungen wie Oracle, MySQL, Mongo DB und PostGreSQL. Dies umfasst das Aufrufen eines Pre-Skripts (zum Stilllegen der Anwendungen), ehe eine Momentaufnahme der Datenträger erstellt wird, und eines Post-Skripts (zum Reaktivieren der Anwendungen) nach Erstellen der Momentaufnahme, um die Anwendungen wieder in den normalen Modus zu versetzen. Obwohl Beispiele für Pre- und Post-Skripts auf GitHub bereitgestellt sind, liegt das Erstellen und Pflegen dieser Skripts in Ihrer Verantwortung.
 
-Mittlerweile bietet Azure Backup ein erweitertes Framework für Pre- und Post-Skripts, über das der Dienst Azure Backup gepackte Pre- und Post-Skripts für ausgewählte Anwendungen bereitstellt. Benutzer von Azure Backup müssen lediglich die Anwendung angeben, woraufhin bei der Azure-VM-Sicherung automatisch die entsprechenden Pre- und Post-Skripts aufgerufen werden. Für die Pflege der gepackten Pre- und Post-Skripts ist das Azure Backup-Team zuständig, sodass Benutzer sicher sein können, dass diese Skripts unterstützt werden und gültig sind. Derzeit sind die vom verbesserten Framework unterstützten Anwendungen *Oracle* und *MySQL*.
+Mittlerweile umfasst Azure Backup ein erweitertes Framework für Pre- und Post-Skripts (**derzeit in der Vorschauphase**), über das gepackte Pre- und Post-Skripts für ausgewählte Anwendungen bereitgestellt werden. Benutzer von Azure Backup müssen lediglich die Anwendung angeben, woraufhin bei der Azure-VM-Sicherung automatisch die entsprechenden Pre- und Post-Skripts aufgerufen werden. Für die Pflege der gepackten Pre- und Post-Skripts ist das Azure Backup-Team zuständig, sodass Benutzer sicher sein können, dass diese Skripts unterstützt werden und gültig sind. Derzeit sind die vom verbesserten Framework unterstützten Anwendungen *Oracle* und *MySQL*.
 
 In diesem Abschnitt erstellen Sie mit dem erweiterten Framework von Azure Backup anwendungskonsistente Momentaufnahmen Ihrer laufenden VM und der Oracle-Datenbank. Die Datenbank wird in den Sicherungsmodus versetzt, sodass eine transaktionskonsistente Onlinesicherung erfolgen kann, während Azure Backup eine Momentaufnahme der VM-Datenträger erstellt. Bei der Momentaufnahme handelt es sich um eine vollständige Kopie des Speichers und nicht um eine inkrementelle Momentaufnahme oder eine des Typs „Kopie bei Schreibvorgang“, sodass sie ein effektives Medium zur Wiederherstellung Ihrer Datenbank ist. Der Vorteil anwendungskonsistenter Momentaufnahmen von Azure Backup ist, dass sie unabhängig von der Größe Ihrer Datenbank äußerst schnell erstellt werden können. Eine Momentaufnahme kann für Wiederherstellungsvorgänge verwendet werden, sobald sie erstellt wurde. Sie müssen nicht warten, bis sie in den Recovery Services-Tresor übertragen wurde.
 
@@ -314,7 +315,7 @@ Führen Sie die folgenden Schritte aus, um die Datenbank mit Azure Backup zu sic
    sudo su -
    ```
 
-2. Erstellen Sie das Arbeitsverzeichnis für die anwendungskonsistente Sicherung:
+2. Suchen Sie nach dem Ordner „etc/Azure“. Wenn er nicht vorhanden ist, erstellen Sie das Arbeitsverzeichnis für die anwendungskonsistente Sicherung:
 
    ```bash
    if [ ! -d "/etc/azure" ]; then
@@ -322,7 +323,7 @@ Führen Sie die folgenden Schritte aus, um die Datenbank mit Azure Backup zu sic
    fi
    ```
 
-3. Erstellen Sie im Verzeichnis */etc/azure* eine Datei namens *workload.conf* mit folgendem Inhalt, der mit `[workload]` beginnen muss. Der folgende Befehl dient zum Erstellen der Datei und zum Auffüllen des Inhalts:
+3. Suchen Sie im Ordner nach „workload.conf“. Wenn er nicht vorhanden ist, erstellen Sie im Verzeichnis */etc/azure* eine Datei mit dem Namen *workload.conf* und mit dem folgenden Inhalt, der mit `[workload]` beginnen muss. Wenn die Datei bereits vorhanden ist, bearbeiten Sie einfach die Felder, sodass sie mit dem folgenden Inhalt übereinstimmen. Andernfalls wird mit dem folgenden Befehl die Datei erstellt und der Inhalt aufgefüllt:
 
    ```bash
    echo "[workload]
@@ -330,14 +331,6 @@ Führen Sie die folgenden Schritte aus, um die Datenbank mit Azure Backup zu sic
    command_path = /u01/app/oracle/product/19.0.0/dbhome_1/bin/
    timeout = 90
    linux_user = azbackup" > /etc/azure/workload.conf
-   ```
-
-4. Laden Sie die Skripts „preOracleMaster.sql“ und „postOracleMaster.sql“ aus dem [GitHub-Repository](https://github.com/Azure/azure-linux-extensions/tree/master/VMBackup/main/workloadPatch/DefaultScripts) herunter, und kopieren Sie sie in das Verzeichnis */etc/azure*.
-
-5. Ändern der Dateiberechtigungen
-
-```bash
-   chmod 744 workload.conf preOracleMaster.sql postOracleMaster.sql 
    ```
 
 ### <a name="trigger-an-application-consistent-backup-of-the-vm"></a>Auslösen einer anwendungskonsistenten Sicherung der VM
@@ -970,4 +963,4 @@ az group delete --name rg-oracle
 
 [Tutorial: Erstellen von hoch verfügbaren virtuellen Computern](../../linux/create-cli-complete.md)
 
-[Erkunden der Azure CLI-Beispiele für die Bereitstellung virtueller Computer](../../linux/cli-samples.md)
+[Erkunden der Azure CLI-Beispiele für die Bereitstellung virtueller Computer](https://github.com/Azure-Samples/azure-cli-samples/tree/master/virtual-machine)

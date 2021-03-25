@@ -5,12 +5,12 @@ author: chrpap
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: chrpap
-ms.openlocfilehash: b8db69792b31fd82646757423e669e39e8539d06
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: caba864e77822ccab649f694df7e63e0ee5d6e51
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91630701"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101732563"
 ---
 # <a name="networking"></a>Netzwerk
 
@@ -39,7 +39,7 @@ Maximieren Sie die Leistung Ihres virtuellen Computers durch beschleunigten Netz
 ```
 Der Service Fabric Cluster kann unter [Linux mit beschleunigtem Netzwerkbetrieb](../virtual-network/create-vm-accelerated-networking-cli.md) und unter [Windows mit beschleunigtem Netzwerkbetrieb](../virtual-network/create-vm-accelerated-networking-powershell.md) bereitgestellt werden.
 
-Der beschleunigte Netzwerkbetrieb wird für SKUs der Azure Virtual Machine-Serie unterstützt: D/DSv2, D/DSv3, E/ESv3, F/FS, FSv2 und Ms/Mms. Der beschleunigte Netzwerkbetrieb wurde am 23.01.2019 erfolgreich mit der SKU Standard_DS8_v3 für einen Service Fabric Windows-Cluster und am 29.01.2019 mit Standard_DS12_v2 für einen Service Fabric Linux-Cluster getestet.
+Der beschleunigte Netzwerkbetrieb wird für SKUs der Azure Virtual Machine-Serie unterstützt: D/DSv2, D/DSv3, E/ESv3, F/FS, FSv2 und Ms/Mms. Der beschleunigte Netzwerkbetrieb wurde am 23.01.2019 erfolgreich mit der SKU Standard_DS8_v3 für einen Service Fabric Windows-Cluster und am 29.01.2019 mit Standard_DS12_v2 für einen Service Fabric Linux-Cluster getestet. Beachten Sie, dass der beschleunigte Netzwerkbetrieb mindestens 4 vCPUs erfordert. 
 
 Um beschleunigten Netzwerkbetrieb für einen vorhandenen Service Fabric-Cluster zu aktivieren, müssen Sie zunächst [einen Service Fabric-Cluster erweitern, indem Sie eine VM-Skalierungsgruppe](./virtual-machine-scale-set-scale-node-type-scale-out.md) hinzufügen, um Folgendes auszuführen:
 1. Bereitstellen eines NodeType mit aktiviertem beschleunigten Netzwerkbetrieb

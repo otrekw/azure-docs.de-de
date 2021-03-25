@@ -4,21 +4,21 @@ description: In diesem Artikel wird beschrieben, wie Sie Karten in Azure FarmBea
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: v-umha
-ms.openlocfilehash: 92228c691c323bc0b9621dfc7413d86c5c2669e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: v-ummehabiba
+ms.openlocfilehash: d0176fd337abd37f97a6dbe5cf7c68ccf94114d0
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84709061"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102173863"
 ---
 # <a name="generate-maps"></a>Generieren von Karten
 
 Mit Azure FarmBeats können Sie die folgenden Karten erstellen, indem Sie Satellitenbilder und Sensordateneingaben verwenden. Karten dienen Ihnen als Hilfe bei der Anzeige der geografischen Lage Ihres landwirtschaftlichen Betriebs und ermöglichen die Ermittlung geeigneter Orte für Ihre Geräte.
 
-  - **Karte zur Sensorplatzierung:** Bietet Empfehlungen dazu, wie viele Sensoren verwendet und wo diese in einem Betrieb platziert werden sollten.
-  - **Karte zu Satellitenindizes:** Enthält den Vegetations- und den Wasserindex für einen landwirtschaftlichen Betrieb.
-  - **Wärmebild zur Bodenfeuchtigkeit:** Zeigt die Verteilung der Bodenfeuchtigkeit, indem Satelliten- und Sensordaten zusammengeführt werden.
+  - **Karte zur Sensorplatzierung:** Enthält Empfehlungen dazu, wie viele Sensoren verwendet und wo diese auf der Fläche eines landwirtschaftlichen Betriebs platziert werden sollten.
+  - **Karte zu Satellitenindizes:** Zeigt den Vegetations- und Wasserindex für einen landwirtschaftlichen Betrieb.
+  - **Karte zur Bodenfeuchtigkeit:** Zeigt die Verteilung der Bodenfeuchtigkeit an, indem Satelliten- und Sensordaten zusammengefügt werden.
 
 ## <a name="sensor-placement-map"></a>Karte zur Sensorplatzierung
 
@@ -26,7 +26,7 @@ Die Karte zur Sensorplatzierung von FarmBeats dient Ihnen als Hilfe beim Platzie
 
 Die Ableitung dieser Karte entsteht durch Segmentieren des an unterschiedlichen Tagen des Jahres aufgenommenen Blätterdachs. Zu diesem Blätterdach zählen auch freie Bodenflächen und Gebäude. Sie können Sensoren entfernen, die an einem bestimmten Ort nicht benötigt werden. Diese Übersicht dient als Leitfaden, und Sie können die Position und die Zahlen anhand Ihrer individuellen Kenntnisse geringfügig ändern. Das Hinzufügen von Sensoren führt nicht zu einer Verschlechterung der Wärmebildergebnisse der Bodenfeuchtigkeit, aber es besteht bei einem Verringern der Anzahl von Sensoren die Möglichkeit, dass die Wärmebildgenauigkeit verschlechtert wird.
 
-## <a name="before-you-begin"></a>Voraussetzungen
+## <a name="before-you-begin"></a>Vorbereitung
 
 Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt sind, bevor Sie versuchen, eine Karte zur Sensorplatzierung zu generieren:
 
@@ -51,7 +51,7 @@ In diesem Abschnitt werden die Verfahren zum Erstellen von Karten zur Sensorplat
 > [!NOTE]
 > Sie können Karten zur Sensorplatzierung über die Seite **Maps** (Karten) oder auf der Seite **Farm Details** (Details zum landwirtschaftlichen Betrieb) im Dropdownmenü **Generate Precision Maps** (Präzisionskarten generieren) initiieren.
 
-Führen Sie folgende Schritte durch:
+Führen Sie die folgenden Schritte aus.
 
 1. Greifen Sie auf der Startseite im linken Navigationsmenü auf **Karten** zu.
 2. Wählen Sie **Create Maps** (Karten erstellen) und im Dropdownmenü dann die Option **Sensor Placement** (Sensorplatzierung) aus.
@@ -75,7 +75,7 @@ Führen Sie folgende Schritte durch:
 
 ### <a name="view-and-download-a-sensor-placement-map"></a>Anzeigen und Herunterladen einer Karte zur Sensorplatzierung
 
-Führen Sie folgende Schritte durch:
+Führen Sie die folgenden Schritte aus.
 
 1. Greifen Sie auf der Startseite im linken Navigationsmenü auf **Karten** zu.
 
@@ -110,7 +110,7 @@ Mit FarmBeats können Sie für landwirtschaftliche Betriebe Karten der Typen NDV
 
 ## <a name="create-a-satellite-indices-map"></a>Erstellen einer Karte vom Typ „Satellitenindizes“
 
-Führen Sie folgende Schritte durch:
+Führen Sie die folgenden Schritte aus.
 
 1. Greifen Sie auf der Startseite im linken Navigationsmenü auf **Karten** zu.
 2. Wählen Sie die Option **Create Maps** (Karten erstellen) und dann im Dropdownmenü **Satellite Indices** (Satellitenindizes) aus.
@@ -136,7 +136,7 @@ Führen Sie folgende Schritte durch:
 
 ### <a name="view-and-download-a-map"></a>Anzeigen und Herunterladen einer Karte
 
-Führen Sie folgende Schritte durch:
+Führen Sie die folgenden Schritte aus.
 
 1. Greifen Sie auf der Startseite im linken Navigationsmenü auf **Karten** zu.
 
@@ -161,9 +161,9 @@ Führen Sie folgende Schritte durch:
 
 ## <a name="soil-moisture-heatmap"></a>Wärmebild zur Bodenfeuchtigkeit
 
-Die Bodenfeuchtigkeit ist das Wasser, das sich in den Zwischenräumen zwischen den Partikeln des Erdreichs befindet. Mit dem Wärmebild zur Bodenfeuchtigkeit können Sie sich für Ihren landwirtschaftlichen Betrieb eine Übersicht über die Bodenfeuchtigkeitsdaten verschaffen – in jeder Tiefe und in hoher Auflösung. Zum Generieren eines präzisen und verwertbaren Wärmebilds zur Bodenfeuchtigkeit ist eine einheitliche Bereitstellung von Sensoren erforderlich. Alle Sensoren müssen vom selben Anbieter stammen. Geräte unterschiedlicher Anbieter weisen Unterschiede bei der Messung der Bodenfeuchtigkeit und der Kalibrierung auf. Das Wärmebild wird für eine bestimmte Tiefe generiert, indem die in dieser Tiefe angeordneten Sensoren verwendet werden.
+Die Bodenfeuchtigkeit ist das Wasser, das sich in den Zwischenräumen zwischen den Partikeln des Erdreichs befindet.Mit dem Wärmebild zur Bodenfeuchtigkeit können Sie sich für Ihren landwirtschaftlichen Betrieb eine Übersicht über die Bodenfeuchtigkeitsdaten verschaffen – in jeder Tiefe und in hoher Auflösung. Zum Generieren eines präzisen und verwertbaren Wärmebilds zur Bodenfeuchtigkeit ist eine einheitliche Bereitstellung von Sensoren erforderlich. Alle Sensoren müssen vom selben Anbieter stammen. Geräte unterschiedlicher Anbieter weisen Unterschiede bei der Messung der Bodenfeuchtigkeit und der Kalibrierung auf. Das Wärmebild wird für eine bestimmte Tiefe generiert, indem die in dieser Tiefe angeordneten Sensoren verwendet werden.
 
-### <a name="before-you-begin"></a>Voraussetzungen
+### <a name="before-you-begin"></a>Vorbereitung
 
 Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt sind, bevor Sie versuchen, ein Wärmebild zur Bodenfeuchtigkeit zu generieren:
 
@@ -175,7 +175,7 @@ Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt sind, bevor Sie 
 
 ## <a name="create-a-soil-moisture-heatmap"></a>Erstellen eines Wärmebilds zur Bodenfeuchtigkeit
 
-Führen Sie folgende Schritte durch:
+Führen Sie die folgenden Schritte aus.
 
 1. Wechseln Sie auf der Startseite im linken Navigationsmenü zu **Maps** (Karten) zu, um die Seite **Maps** anzuzeigen.
 2. Wählen Sie die Option **Create Maps** (Karten erstellen) und im Dropdownmenü dann **Soil Moisture** (Bodenfeuchtigkeit) aus.
@@ -203,7 +203,7 @@ Navigieren Sie zur Ermittlung des Sensormaßes zu **Sensors** (Sensoren), und w�
 
 ### <a name="view-and-download-a-map"></a>Anzeigen und Herunterladen einer Karte
 
-Führen Sie folgende Schritte durch:
+Führen Sie die folgenden Schritte aus.
 
 1. Greifen Sie auf der Startseite im linken Navigationsmenü auf **Karten** zu.
 

@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/02/2020
+ms.date: 02/22/2021
 ms.author: mnayak
-ms.openlocfilehash: 2c6295db96f951abd1fd069535b98639e723d93a
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: f445eab65e8d2448e57bad19c52a4b72732016bb
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98217565"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101672919"
 ---
 # <a name="configure-routing-preference-for-a-public-ip-address-using-the-azure-portal"></a>Konfigurieren der Routingpräferenz für eine öffentliche IP-Adresse mithilfe des Azure-Portals
 
@@ -32,20 +32,26 @@ In diesem Artikel erfahren Sie, wie Sie die [Routingpräferenz](./routing-prefer
 
 Die Routingpräferenz für die öffentliche IP-Adresse ist für alle Azure-Dienste standardmäßig auf das globale Netzwerk von Microsoft festgelegt und kann jedem Azure-Dienst zugeordnet werden.
 
-> [!IMPORTANT]
-> „Routingpräferenz“ ist zurzeit als öffentliche Vorschauversion verfügbar.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 Wenn Sie kein Azure-Abonnement besitzen, können Sie jetzt ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen.
 
 ## <a name="create-a-public-ip-address-with-a-routing-preference"></a>Erstellen einer öffentlichen IP-Adresse mit einer Routingpräferenz
-1. Melden Sie sich beim [Azure-Portal](https://preview.portal.azure.com/) an.
-2. Wählen Sie **Ressource erstellen**. 
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
+2. Wählen Sie **Ressource erstellen**.
 3. Geben Sie in das Suchfeld *Öffentliche IP-Adresse* ein.
 3. Wählen Sie in den Suchergebnissen **Öffentliche IP-Adresse** aus. Wählen Sie anschließend auf der Seite **Öffentliche IP-Adressen** die Option **Erstellen** aus.
-3. Wählen Sie **Internet** aus den Optionen für **Routingpräferenz** aus.
+1. Wählen Sie unter „SKU“ die Option **Standard** aus.
+1. Wählen Sie unter **Routingpräferenz** die Option **Internet** aus.
 
-      ![Erstellen einer öffentlichen IP-Adresse](./media/routing-preference-portal/pip-new.png)
+      ![Erstellen einer öffentlichen IP-Adresse](./media/routing-preference-portal/public-ip-new.png)
+1. Geben Sie im Abschnitt **IPv4-IP-Adresskonfiguration** diese Informationen ein, oder wählen Sie sie aus:
+
+    | Einstellung | Wert |
+    | ------- | ----- |
+    | Subscription | Wählen Sie Ihr Abonnement aus.|
+    | Resource group | Wählen Sie **Neu erstellen** aus, geben Sie *RoutingPreferenceResourceGroup* ein, und wählen Sie dann **OK** aus. |
+    | Standort | Wählen Sie **USA, Osten** aus.|
+    | Verfügbarkeitszone | Behalten Sie den Standardwert **Zonenredundant** bei. |
+1. Wählen Sie **Erstellen** aus.
 
     > [!NOTE]
     > Öffentliche IP-Adressen werden mit einer IPv4- oder IPv6-Adresse erstellt. Die Routingpräferenz unterstützt derzeit jedoch nur IPv4.

@@ -2,18 +2,18 @@
 title: Architekturen für die Bereitstellung von Oracle-Apps auf virtuellen Azure-Computern | Microsoft-Dokumentation
 description: Anwendungsarchitekturen zum Bereitstellen von Oracle-Apps, z. B. E-Business Suite, JD Edwards EnterpriseOne und PeopleSoft, auf virtuellen Microsoft Azure-Computern mit Datenbanken in Azure oder in der Oracle Cloud Infrastructure (OCI).
 author: dbakevlar
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines
+ms.subservice: oracle
+ms.collection: linux
 ms.topic: article
 ms.date: 07/18/2019
 ms.author: kegorman
-ms.reviewer: cynthn
-ms.openlocfilehash: aa481090e3483e58f6a88304e3e9d8c1a16df3c7
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 862bb886c7ec5dfd40c7acdbae2f70f6698a711b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965917"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101669938"
 ---
 # <a name="architectures-to-deploy-oracle-applications-on-azure"></a>Architekturen für die Bereitstellung von Oracle-Anwendungen in Azure
 
@@ -45,7 +45,7 @@ Bei Oracle E-Business Suite (EBS) handelt es sich um eine Suite mit Anwendungen,
 
 ![E-Business Suite: Cloudübergreifende Architektur](media/oracle-oci-applications/ebs-arch-cross-cloud.png)
 
-*Abbildung 1: E-Business Suite: Cloudübergreifende Architektur* 
+*Abbildung 1: E-Business Suite – cloudübergreifende Architektur* 
 
 In dieser Architektur ist das virtuelle Netzwerk in Azure über die cloudübergreifende Verbindung mit einem virtuellen Cloudnetzwerk in der OCI verbunden. Die Anwendungsebene wird in Azure eingerichtet, und die Datenbank in der OCI. Wir empfehlen Ihnen, jede Komponente in einem eigenen Subnetz mit Netzwerksicherheitsgruppen bereitzustellen, damit es möglich ist, Datenverkehr nur aus bestimmten Subnetzen über bestimmte Ports zuzulassen.
 
@@ -53,7 +53,7 @@ Die Architektur kann auch so angepasst werden, dass die gesamte Bereitstellung i
 
 ![E-Business Suite: Reine Azure-Architektur](media/oracle-oci-applications/ebs-arch-azure.png)
 
-*Abbildung 2: E-Business Suite: Reine Azure-Architektur*
+*Abbildung 2: E-Business Suite – reine Azure-Architektur*
 
 Die folgenden Abschnitte enthalten allgemeine Beschreibungen der verschiedenen Komponenten.
 
@@ -94,7 +94,7 @@ Wie auch bei der E-Business Suite, können Sie eine optionale Bastionschicht fü
 
 ![JD Edwards EnterpriseOne: Cloudübergreifende Architektur](media/oracle-oci-applications/jdedwards-arch-cross-cloud.png)
 
-*Abbildung 3: JD Edwards EnterpriseOne: Cloudübergreifende Architektur*
+*Abbildung 3: JD Edwards EnterpriseOne – cloudübergreifende Architektur*
 
 In dieser Architektur ist das virtuelle Netzwerk in Azure über die cloudübergreifende Verbindung mit dem virtuellen Cloudnetzwerk in der OCI verbunden. Die Anwendungsebene wird in Azure eingerichtet, und die Datenbank in der OCI. Wir empfehlen Ihnen, jede Komponente in einem eigenen Subnetz mit Netzwerksicherheitsgruppen bereitzustellen, damit es möglich ist, Datenverkehr nur aus bestimmten Subnetzen über bestimmte Ports zuzulassen.
 
@@ -102,7 +102,7 @@ Die Architektur kann auch so angepasst werden, dass die gesamte Bereitstellung i
 
 ![JD Edwards EnterpriseOne: Reine Azure-Architektur](media/oracle-oci-applications/jdedwards-arch-azure.png)
 
-*Abbildung 4: JD Edwards EnterpriseOne: Reine Azure-Architektur*
+*Abbildung 4: JD Edwards EnterpriseOne – reine Azure-Architektur*
 
 Die folgenden Abschnitte enthalten allgemeine Beschreibungen der verschiedenen Komponenten.
 
@@ -118,17 +118,17 @@ Die Komponenten dieser Schicht lauten wie folgt:
  - **Bereitstellungsserver**: Dieser Server ist hauptsächlich für die Installation von JD Edwards EnterpriseOne erforderlich. Während des Installationsprozesses fungiert dieser Server als zentrales Repository für die erforderlichen Dateien und Installationspakete. Die Software wird von diesem Server aus auf andere Server und Clients verteilt bzw. darauf bereitgestellt.
  - **Entwicklungsclient**: Dieser Server enthält Komponenten, die in einem Webbrowser und in nativen Anwendungen ausgeführt werden.
 
-### <a name="presentation-tier"></a>Darstellungsschicht
+### <a name="presentation-tier"></a>Präsentationsschicht
 
 Diese Schicht enthält verschiedene Komponenten, z. B. Application Interface Services (AIS), Application Development Framework (ADF) und Java Application Servers (JAS). Die Server dieser Schicht kommunizieren mit den Servern der mittleren Ebene. Ihnen ist ein Lastenausgleichsmodul vorgeschaltet, mit dem Datenverkehr basierend auf der Portnummer und der URL, über den bzw. die der Datenverkehr empfangen wird, an den erforderlichen Server geleitet wird. Wir empfehlen Ihnen, mehrere Instanzen jedes Servertyps bereitzustellen, um Hochverfügbarkeit zu erzielen.
 
 Hier sind die Komponenten dieser Schicht aufgeführt:
     
-- **Application Interface Services (AIS)** : Der AIS-Server stellt die Kommunikationsschnittstelle zwischen mobilen JD Edwards EnterpriseOne-Unternehmensanwendungen und JD Edwards EnterpriseOne bereit.
-- **Java Application Server (JAS)** : Mit JAS werden Anforderungen vom Lastenausgleichsmodul empfangen und an die mittlere Ebene übergeben, um komplizierte Aufgaben durchzuführen. Mit JAS kann einfache Geschäftslogik ausgeführt werden.
-- **BI Publisher Server (BIP)** : Mit diesem Server werden Berichte basierend auf den Daten bereitgestellt, die von der JD Edwards EnterpriseOne-Anwendung erfasst werden. Sie können anhand von unterschiedlichen Vorlagen festlegen und steuern, wie die Daten im Bericht dargestellt werden.
-- **Business Services Server (BSS)** : BSS ermöglicht den Informationsaustausch und die Interoperabilität mit anderen Oracle-Anwendungen.
-- **Real-Time Events Server (RTE)** : Mit RTE Server können Sie Benachrichtigungen für externe Systeme zu Transaktionen einrichten, die im JDE EnterpriseOne-System durchgeführt werden. Es wird ein Abonnentenmodell verwendet, und Drittanbietersysteme können Ereignisse abonnieren. Stellen Sie sicher, dass sich die Server in einem Cluster befinden, um für Anforderungen an beide RTE Server-Einheiten einen Lastenausgleich durchzuführen.
+- **Application Interface Services (AIS)**: Der AIS-Server stellt die Kommunikationsschnittstelle zwischen mobilen JD Edwards EnterpriseOne-Unternehmensanwendungen und JD Edwards EnterpriseOne bereit.
+- **Java Application Server (JAS)**: Mit JAS werden Anforderungen vom Lastenausgleichsmodul empfangen und an die mittlere Ebene übergeben, um komplizierte Aufgaben durchzuführen. Mit JAS kann einfache Geschäftslogik ausgeführt werden.
+- **BI Publisher Server (BIP)**: Mit diesem Server werden Berichte basierend auf den Daten bereitgestellt, die von der JD Edwards EnterpriseOne-Anwendung erfasst werden. Sie können anhand von unterschiedlichen Vorlagen festlegen und steuern, wie die Daten im Bericht dargestellt werden.
+- **Business Services Server (BSS)**: BSS ermöglicht den Informationsaustausch und die Interoperabilität mit anderen Oracle-Anwendungen.
+- **Real-Time Events Server (RTE)**: Mit RTE Server können Sie Benachrichtigungen für externe Systeme zu Transaktionen einrichten, die im JDE EnterpriseOne-System durchgeführt werden. Es wird ein Abonnentenmodell verwendet, und Drittanbietersysteme können Ereignisse abonnieren. Stellen Sie sicher, dass sich die Server in einem Cluster befinden, um für Anforderungen an beide RTE Server-Einheiten einen Lastenausgleich durchzuführen.
 - **Application Development Framework (ADF) Server**: ADF Server wird zum Ausführen von JD Edwards EnterpriseOne-Anwendungen verwendet, die mit Oracle ADF entwickelt wurden. Die Bereitstellung erfolgt auf einem Oracle WebLogic-Server mit ADF-Runtime.
 
 ### <a name="middle-tier"></a>Mittlere Ebene
@@ -156,7 +156,7 @@ Im Folgenden ist eine kanonische Architektur für die Bereitstellung der PeopleS
 
 ![PeopleSoft: Cloudübergreifende Architektur](media/oracle-oci-applications/peoplesoft-arch-cross-cloud.png)
 
-*Abbildung 5: PeopleSoft: Cloudübergreifende Architektur*
+*Abbildung 5: PeopleSoft – cloudübergreifende Architektur*
 
 In dieser Beispielarchitektur ist das virtuelle Netzwerk in Azure über die cloudübergreifende Verbindung mit dem virtuellen Cloudnetzwerk in der OCI verbunden. Die Anwendungsebene wird in Azure eingerichtet, und die Datenbank in der OCI. Wir empfehlen Ihnen, jede Komponente in einem eigenen Subnetz mit Netzwerksicherheitsgruppen bereitzustellen, damit es möglich ist, Datenverkehr nur aus bestimmten Subnetzen über bestimmte Ports zuzulassen.
 
@@ -164,7 +164,7 @@ Die Architektur kann auch so angepasst werden, dass die gesamte Bereitstellung i
 
 ![PeopleSoft: Reine Azure-Architektur](media/oracle-oci-applications/peoplesoft-arch-azure.png)
 
-*Abbildung 6: PeopleSoft: Reine Azure-Architektur*
+*Abbildung 6: PeopleSoft – reine Azure-Architektur*
 
 Die folgenden Abschnitte enthalten allgemeine Beschreibungen der verschiedenen Komponenten.
 

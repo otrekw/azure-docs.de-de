@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: srrengar
-ms.openlocfilehash: fe31c6fdca3651bfe56e798b30d50c9f047c680b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6a98a833baefa9b1c2d1ebd9ff8147206c2106bf
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86258639"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "100570205"
 ---
 # <a name="service-fabric-linux-cluster-events-in-syslog"></a>Service Fabric-Linux-Clusterereignisse in Syslog
 
@@ -87,7 +87,7 @@ Die folgenden Änderungen sind zu beachten:
 ```
 
 ## <a name="azure-monitor-logs-integration"></a>Integration von Azure Monitor-Protokollen
-Sie können diese Syslog-Ereignisse in einem Überwachungstool wie Azure Monitor-Protokolle lesen. Sie können einen Log Analytics-Arbeitsbereich erstellen, indem Sie Azure Marketplace mit den folgenden [instructions].(../azure-monitor/learn/quick-create-workspace.md) verwenden. Außerdem müssen Sie Ihrem Cluster den Log Analytics-Agent hinzufügen, um diese Daten zu erfassen und an den Arbeitsbereich zu senden. Dies ist der gleiche Agent, der verwendet wird, um Leistungsindikatoren zu erfassen. 
+Sie können diese Syslog-Ereignisse in einem Überwachungstool wie Azure Monitor-Protokolle lesen. Sie können einen Log Analytics-Arbeitsbereich erstellen, indem Sie Azure Marketplace mit den folgenden [instructions].(../azure-monitor/logs/quick-create-workspace.md) verwenden. Außerdem müssen Sie Ihrem Cluster den Log Analytics-Agent hinzufügen, um diese Daten zu erfassen und an den Arbeitsbereich zu senden. Dies ist der gleiche Agent, der verwendet wird, um Leistungsindikatoren zu erfassen. 
 
 1. Navigieren Sie zum Blatt `Advanced Settings`.
 
@@ -113,6 +113,6 @@ Das Beispiel oben ist ein NodeDown-Ereignis. Die vollständige Liste der Ereigni
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Stellen Sie den Log Analytics-Agent auf Ihren Knoten bereit](service-fabric-diagnostics-oms-agent.md), um Leistungsindikatoren zu erfassen und Docker-Statistiken und -Protokolle für Ihre Container zu sammeln.
-* Machen Sie sich mit den Funktionen zur [Protokollsuche und -abfrage](../azure-monitor/log-query/log-query-overview.md) in Azure Monitor-Protokolle vertraut.
-* [Erstellen benutzerdefinierter Ansichten in Azure Monitor-Protokollen mithilfe des Ansicht-Designers](../azure-monitor/platform/view-designer.md)
-* Referenz zur Vorgehensweise bei der [Integration von Azure Monitor-Protokollen in Syslog](../azure-monitor/platform/data-sources-syslog.md).
+* Machen Sie sich mit den Funktionen zur [Protokollsuche und -abfrage](../azure-monitor/logs/log-query-overview.md) in Azure Monitor-Protokolle vertraut.
+* [Erstellen benutzerdefinierter Ansichten in Azure Monitor-Protokollen mithilfe des Ansicht-Designers](../azure-monitor/visualize/view-designer.md)
+* Referenz zur Vorgehensweise bei der [Integration von Azure Monitor-Protokollen in Syslog](../azure-monitor/agents/data-sources-syslog.md).
