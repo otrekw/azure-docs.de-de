@@ -6,10 +6,10 @@ ms.author: lazinnat
 author: lazinnat
 ms.date: 07/11/2019
 ms.openlocfilehash: 2bc0017d71e159ac490041494bcf37db035ef421
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75649506"
 ---
 # <a name="reference-deployment-template-artifact"></a>Referenz: Bereitstellungsvorlagenartefakt
@@ -191,4 +191,4 @@ Der folgende JSON-Code zeigt ein Beispiel für eine Datei vom Typ *mainTemplate.
 
 - [Tutorial: Erstellen einer verwalteten Anwendung mit benutzerdefinierten Aktionen und Ressourcen](tutorial-create-managed-app-with-custom-provider.md)
 - [Referenz: Artefakt für Benutzeroberflächenelemente](reference-createuidefinition-artifact.md)
-- [Referenz: Ansichtsdefinitionsartefakt](reference-view-definition-artifact.md)
+- [Referenz: Anzeigen des Definitionsartefakts](reference-view-definition-artifact.md)

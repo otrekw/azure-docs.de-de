@@ -10,10 +10,10 @@ ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18, devx-track-python
 ms.openlocfilehash: 36dfbf0fda060a8f273fee64098d6234b575088c
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97831838"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Häufig gestellte Fragen zu Open-Source-Technologien für Web-Apps in Azure | Microsoft-Dokumentation
@@ -183,7 +183,7 @@ Wenn Sie vor Kurzem zu Azure migriert sind, leitet WordPress Sie zur alten Domä
 
 WordPress Buddy+ ist eine Erweiterung für Azure-Websites, mit deren Hilfe Sie die Umleitungs-URL direkt in der Datenbank aktualisieren können. Weitere Informationen zur Verwendung von WordPress Buddy+ finden Sie unter [WordPress tools and MySQL migration with WordPress Buddy+](https://www.electrongeek.com/blog/2016/12/21/wordpress-buddy-site-extension-for-app-service-on-windows) (WordPress-Tools und MySQL-Migration mit WordPress Buddy+).
 
-Wenn Sie die Umleitungs-URL lieber manuell mithilfe von SQL-Abfragen oder PHPMyAdmin aktualisieren, gehen Sie wie unter [WordPress: Redirecting to wrong URL](/archive/blogs/azureossds/wordpress-redirecting-to-wrong-url) (WordPress: Umleitung zur falschen URL) beschrieben vor.
+Wenn Sie die Umleitungs-URL lieber manuell mithilfe von SQL-Abfragen oder PHPMyAdmin aktualisieren, siehe [WordPress: Redirecting to wrong URL](/archive/blogs/azureossds/wordpress-redirecting-to-wrong-url) (WordPress: Umleitung zur falschen URL).
 
 ## <a name="how-do-i-change-my-wordpress-sign-in-password"></a>Wie ändere ich mein WordPress-Anmeldungskennwort?
 

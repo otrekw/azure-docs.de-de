@@ -9,10 +9,10 @@ ms.date: 11/26/2019
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: a09dbd7d778a4f7ea2a9aac9ca07b9e6d06bc1ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84463602"
 ---
 # <a name="set-and-manage-immutability-policies-for-blob-storage"></a>Festlegen und Verwalten von Unveränderlichkeitsrichtlinien für Blobspeicher
@@ -41,7 +41,7 @@ In diesem Artikel wird das Festlegen und Verwalten von Unveränderlichkeitsricht
 
     Der ursprüngliche Zustand der Richtlinie lautet „Entsperrt“, damit Sie das Feature testen und Änderungen an der Richtlinie vornehmen können, bevor Sie das Sperren durchführen. Das Sperren der Richtlinie ist entscheidend für die Einhaltung von Vorschriften wie SEC 17a-4.
 
-5. Sperren Sie die Richtlinie. Wenn Sie mit der rechten Maustaste auf die Auslassungspunkte ( **...** ) klicken, wird das folgende Menü mit zusätzlichen Aktionen angezeigt:
+5. Sperren Sie die Richtlinie. Wenn Sie mit der rechten Maustaste auf die Auslassungspunkte (**...**) klicken, wird das folgende Menü mit zusätzlichen Aktionen angezeigt:
 
     ![„Richtlinie sperren“ im Menü](media/storage-blob-immutability-policies-manage/portal-image-4-lock-policy.png)
 

@@ -1,18 +1,18 @@
 ---
 title: Azure Policy-Kontrollen zur Einhaltung gesetzlicher Bestimmungen für Azure-Netzwerkdienste
 description: Hier werden Azure Policy-Kontrollen zur Einhaltung gesetzlicher Bestimmungen aufgeführt, die für Azure-Netzwerkdienste verfügbar sind. Diese integrierten Richtliniendefinitionen bieten allgemeine Ansätze für die Verwaltung der Compliance Ihrer Azure-Ressourcen.
-ms.date: 03/10/2021
+ms.date: 03/17/2021
 ms.topic: sample
 author: KumudD
 ms.author: kumud
 ms.service: virtual-network
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: c6fa0aea17fe29aac182ef38ca866ec36c9190b9
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: a45d1118ae7c872713f93054ad17857911c8bf3e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102635687"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104604473"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-networking-services"></a>Azure Policy-Kontrollen zur Einhaltung gesetzlicher Bestimmungen für Azure-Netzwerkdienste
 

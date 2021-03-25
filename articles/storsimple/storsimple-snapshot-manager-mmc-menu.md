@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 01064c3668b673baea7aedd9a65c92b03c48dc10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90056002"
 ---
 # <a name="use-the-mmc-menu-actions-in-storsimple-snapshot-manager"></a>Verwenden der MMC-Menüaktionen im StorSimple Snapshot Manager
@@ -40,7 +40,7 @@ Sie können mit der Option **Ansicht** die Anzeige im Bereich **Ergebnisse** und
 #### <a name="to-change-the-results-pane-view"></a>So ändern Sie die Ansicht im Ergebnisbereich
 1. Klicken Sie auf das Desktopsymbol, um den StorSimple Snapshot Manager zu starten.
 2. Klicken Sie im Fensterbereich **Bereich** mit der rechten Maustaste auf einen beliebigen Knoten, oder erweitern Sie diesen, und klicken Sie mit der rechten Maustaste auf ein Element im Bereich **Ergebnisse**, und klicken Sie dann auf die Option **Ansicht**. 
-3. Um im Bereich **Ergebnisse** Spalten hinzuzufügen oder zu entfernen, klicken Sie auf **Spalten hinzufügen/entfernen**. Das Dialogfeld **Spalten hinzufügen/entfernen** wird angezeigt.
+3. Um im Bereich **Ergebnisse** Spalten hinzuzufügen oder zu entfernen, klicken Sie auf **Spalten hinzufügen/entfernen**. Es wird das Dialogfeld **Spalten hinzufügen/entfernen** angezeigt.
    
     ![Hinzufügen oder Entfernen von Spalten aus dem Ergebnisbereich](./media/storsimple-snapshot-manager-mmc-menu/HCS_SSM_Add_remove_columns.png) 
 4. Füllen Sie das Formular wie folgt aus:
@@ -49,17 +49,17 @@ Sie können mit der Option **Ansicht** die Anzeige im Bereich **Ergebnisse** und
    * Klicken Sie auf Elemente in der Liste **Angezeigte Spalten**, und klicken Sie auf **Entfernen**, um sie aus der Liste zu entfernen. 
    * Wählen Sie ein Element aus der Liste **Angezeigte Spalten** aus, und klicken Sie auf **Nach oben** oder **Nach unten**, um das Element in der Liste nach oben bzw. unten zu verschieben. 
    * Klicken Sie auf **Standardeinstellungen wiederherstellen**, um die Standardkonfiguration des Bereichs **Ergebnisse** wiederherzustellen. 
-5. Wenn Sie mit der Auswahl fertig sind, klicken Sie auf **OK**. 
+5. Klicken Sie auf **OK**, nachdem Sie die gewünschten Einstellungen vorgenommen haben. 
 
 #### <a name="to-change-the-console-window-view"></a>So ändern Sie die Ansicht des Konsolenfensters
 1. Klicken Sie auf das Desktopsymbol, um den StorSimple Snapshot Manager zu starten.
 2. Klicken Sie im Fensterbereich **Bereich** mit der rechten Maustaste auf einen beliebigen Knoten, klicken Sie auf **Ansicht** und dann auf **Anpassen**. Das Dialogfeld **Anpassen** wird angezeigt.
    
     ![Anpassen des Konsolenfensters](./media/storsimple-snapshot-manager-mmc-menu/HCS_SSM_Customize.png) 
-3. Aktivieren oder deaktivieren Sie die Kontrollkästchen, um die jeweiligen Elemente im Konsolenfenster ein- oder auszublenden. Wenn Sie mit der Auswahl fertig sind, klicken Sie auf **OK**.
+3. Aktivieren oder deaktivieren Sie die Kontrollkästchen, um die jeweiligen Elemente im Konsolenfenster ein- oder auszublenden. Klicken Sie auf **OK**, nachdem Sie die gewünschten Einstellungen vorgenommen haben.
 
 ## <a name="new-window-from-here"></a>Neues Fenster hier öffnen
-Mit der Option **New Window from Here** können Sie ein neues Fenster öffnen.
+Sie können die Option **Neues Fenster ab hier** zum Öffnen eines neuen Konsolenfensters verwenden.
 
 #### <a name="to-open-a-new-console-window"></a>So öffnen Sie ein neues Konsolenfenster
 1. Klicken Sie auf das Desktopsymbol, um den StorSimple Snapshot Manager zu starten.
@@ -77,16 +77,16 @@ Mit der Aktion **Aktualisieren** können Sie das Konsolenfenster aktualisieren.
 2. Klicken Sie im Fensterbereich **Bereich** mit der rechten Maustaste auf einen beliebigen Knoten, oder erweitern Sie diesen, klicken Sie mit der rechten Maustaste auf ein Element im Bereich **Ergebnisse**, und klicken Sie dann auf **Aktualisieren**. 
 
 ## <a name="export-list"></a>Liste exportieren
-Mit der Aktion **Liste exportieren** können Sie eine Liste in einer Datei mit kommagetrennten Werten (CSV) speichern. Beispielsweise können Sie die Liste der Sicherungsrichtlinien oder den Sicherungskatalog exportieren. Sie können die CSV-Datei dann zur Analyse in eine Tabellenkalkulationsanwendung importieren.
+Sie können die Aktion **Liste exportieren** verwenden, um eine Liste in einer CSV-Datei (durch Trennzeichen getrennten Datei) zu speichern. Beispielsweise können Sie die Liste der Sicherungsrichtlinien oder den Sicherungskatalog exportieren. Sie können die CSV-Datei dann zur Analyse in eine Tabellenkalkulationsanwendung importieren.
 
 #### <a name="to-save-a-list-in-a-comma-separated-value-csv-file"></a>So speichern Sie eine Liste in einer Datei mit kommagetrennten Werten (CSV)
 1. Klicken Sie auf das Desktopsymbol, um den StorSimple Snapshot Manager zu starten. 
 2. Klicken Sie im Fensterbereich **Bereich** mit der rechten Maustaste auf einen beliebigen Knoten, oder erweitern Sie diesen, klicken Sie mit der rechten Maustaste auf ein Element im Bereich **Ergebnisse**, und klicken Sie dann auf **Liste exportieren**. 
 3. Das Dialogfeld **Liste exportieren** wird angezeigt. Füllen Sie das Formular wie folgt aus: 
    
-   1. Geben Sie im Feld **Dateiname** einen Namen für die CSV-Datei ein, oder klicken Sie auf den Pfeil, um einen Namen aus der Dropdownliste auszuwählen.
+   1. Geben Sie im Feld **Dateiname** einen Namen für die CSV-Datei ein, oder klicken Sie auf den Pfeil, um Ihre Auswahl aus der Dropdownliste zu treffen.
    2. Klicken Sie im Feld **Dateityp** auf den Pfeil, und wählen Sie einen Dateityp aus der Dropdownliste aus.
-   3. Um nur ausgewählte Elemente zu speichern, markieren Sie die Zeilen, und klicken Sie dann auf das Kontrollkästchen **Nur markierte Zeilen speichern** . Um alle exportierten Listen zu speichern, deaktivieren Sie das Kontrollkästchen **Nur markierte Zeilen speichern** .
+   3. Um nur markierte Elemente zu speichern, markieren Sie die Zeilen und klicken dann auf das Kontrollkästchen **Nur markierte Zeilen speichern**. Um alle exportierten Listen zu speichern, deaktivieren Sie das Kontrollkästchen **Nur markierte Zeilen speichern** .
    4. Klicken Sie auf **Speichern**.
       
       ![Exportieren von Listen als CSV-Datei](./media/storsimple-snapshot-manager-mmc-menu/HCS_SSM_Export_List.png) 

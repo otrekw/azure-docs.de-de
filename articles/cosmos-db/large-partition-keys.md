@@ -9,10 +9,10 @@ ms.date: 09/28/2019
 ms.author: mjbrown
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 4ad26d63ca06f5a46a4a1f77d329d04896e96c52
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93339293"
 ---
 # <a name="create-containers-with-large-partition-key"></a>Erstellen von Containern mit großen Partitionsschlüsseln
@@ -24,7 +24,7 @@ Große Partitionsschlüssel werden durch eine Funktionalität einer verbesserten
 
 ## <a name="create-a-large-partition-key-azure-portal"></a>Erstellen eines großen Partitionsschlüssels (Azure-Portal)
 
-Aktivieren Sie beim Erstellen eines neuen Containers über das Azure-Portal die Option **Mein Partitionsschlüssel ist größer als 100 Byte** , um einen großen Partitionsschlüssel zu erstellen. Deaktivieren Sie das Kontrollkästchen, wenn Sie keine großen Partitionsschlüssel benötigen oder wenn Sie Anwendungen verwenden, die mit SDK-Versionen vor 1.18 ausgeführt werden.
+Aktivieren Sie beim Erstellen eines neuen Containers über das Azure-Portal die Option **Mein Partitionsschlüssel ist größer als 100 Byte**, um einen großen Partitionsschlüssel zu erstellen. Deaktivieren Sie das Kontrollkästchen, wenn Sie keine großen Partitionsschlüssel benötigen oder wenn Sie Anwendungen verwenden, die mit SDK-Versionen vor 1.18 ausgeführt werden.
 
 :::image type="content" source="./media/large-partition-keys/large-partition-key-with-portal.png" alt-text="Erstellen von großen Partitionsschlüsseln über das Azure-Portal":::
 

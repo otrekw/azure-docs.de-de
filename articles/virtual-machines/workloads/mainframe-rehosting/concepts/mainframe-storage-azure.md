@@ -5,13 +5,14 @@ author: njray
 ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
-ms.service: storage
-ms.openlocfilehash: 8f57210ff6b65ee3a893fb344a48629466e90004
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.service: virtual-machines
+ms.subservice: mainframe-rehosting
+ms.openlocfilehash: 27f625e7fced5ff710a6fa0e8b2045a8c5434258
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095354"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104954359"
 ---
 # <a name="move-mainframe-storage-to-azure"></a>Verschieben von Mainframespeicher zu Azure
 
@@ -96,7 +97,7 @@ SSDs bietet auf Azure die höchste Speicherleistung. Die folgenden Optionen sind
 
 | type         | Size           | IOPS                  |
 |--------------|----------------|-----------------------|
-| SSD Ultra    | 4 GB bis 64 TB  | 1\.200 bis 160.000 IOPS |
+| SSD Ultra    | 4 GB bis 64 TB  | 1.200 bis 160.000 IOPS |
 | SSD Premium  | 32 GB bis 32 TB | 12 bis 15.000 IOPS     |
 | SSD Standard | 32 GB bis 32 TB | 12 bis 2.000 IOPS      |
 
@@ -106,7 +107,7 @@ Blob-Speicher bietet das größte Speichervolumen auf Azure. Neben der Speicherg
 
 - [Mainframemigration](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview)
 - [Mainframerehosting auf virtuellen Azure-Computern](../overview.md)
-- [Move mainframe compute to Azure (Migrieren von Mainframecomputeressourcen zu Azure)](mainframe-compute-Azure.md)
+- [Verschieben von Mainframe-Computing zu Azure](mainframe-compute-Azure.md)
 - [Deciding when to use Azure Blobs, Azure Files, or Azure Disks (Kriterien für den Einsatz von Azure-Blobs, Azure-Dateifreigaben und verwalteten Azure-Datenträgern)](../../../../storage/common/storage-introduction.md)
 - [Verwaltete SSD Standard-Datenträger für Azure-VM-Workloads](../../../disks-types.md#standard-ssd)
 

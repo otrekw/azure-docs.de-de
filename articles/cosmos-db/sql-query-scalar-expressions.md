@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: mjbrown
 ms.openlocfilehash: 34df2d2f4a2209cca93c3f7ac12dcd203bf4a089
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93339630"
 ---
 # <a name="scalar-expressions-in-azure-cosmos-db-sql-queries"></a>Skalare Ausdrücke in SQL-Abfragen in Azure Cosmos DB
@@ -52,12 +52,12 @@ Die [SELECT-Klausel](sql-query-select.md) unterstützt skalare Ausdrücke. Ein s
   
 - `<constant>`  
   
-   Stellt einen konstanten Wert dar. Details hierzu finden Sie im Abschnitt [Konstanten](sql-query-constants.md).  
+   Stellt einen konstanten Wert dar. Weitere Informationen finden Sie im Abschnitt [Konstanten](sql-query-constants.md).  
   
 - `input_alias`  
   
    Stellt einen Wert dar, der von dem `input_alias` definiert wird, der in der `FROM` Klausel eingeführt wird.  
-  Dieser Wert ist garantiert nicht **undefiniert** – **undefinierte** Werte in der Eingabe werden übersprungen.  
+  Dieser Wert ist garantiert nicht **undefiniert** –**undefinierte** Werte in der Eingabe werden übersprungen.  
   
 - `<scalar_expression>.property_name`  
   
@@ -69,11 +69,11 @@ Die [SELECT-Klausel](sql-query-select.md) unterstützt skalare Ausdrücke. Ein s
   
 - `unary_operator <scalar_expression>`  
   
-   Stellt einen Operator dar, der auf einen einzelnen Wert angewendet wird. Details hierzu finden Sie im Abschnitt [Operatoren](sql-query-operators.md).  
+   Stellt einen Operator dar, der auf einen einzelnen Wert angewendet wird. Details finden Sie im Abschnitt [Operatoren](sql-query-operators.md).  
   
 - `<scalar_expression> binary_operator <scalar_expression>`  
   
-   Stellt einen Operator dar, der auf zwei Werte angewendet wird. Details hierzu finden Sie im Abschnitt [Operatoren](sql-query-operators.md).  
+   Stellt einen Operator dar, der auf zwei Werte angewendet wird. Details finden Sie im Abschnitt [Operatoren](sql-query-operators.md).  
   
 - `<scalar_function_expression>`  
   

@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 07/25/2020
 ms.openlocfilehash: b56b65261950e9cf534a3755d214229ef7d5bb1e
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93395205"
 ---
 # <a name="connect-and-query-azure-sql-edge"></a>Herstellen einer Verbindung mit und Abfragen von Azure SQL Edge
@@ -36,8 +36,8 @@ Sie können eine Verbindung mit einer Azure SQL Edge-Instanz von einem dieser g�
 
 Um von einem Netzwerkcomputer aus eine Verbindung mit einer Azure SQL Edge-Datenbank-Engine herzustellen, benötigen Sie Folgendes:
 
-- **IP-Adresse oder Netzwerkname des Hostcomputers** : Dies ist der Hostcomputer, auf dem der Azure SQL Edge-Container ausgeführt wird.
-- **Hostportzuordnung für den Azure SQL Edge-Container** : Dies ist die Zuordnung des Docker-Containerports zu einem Port auf dem Host. Innerhalb des Containers wird Azure SQL Edge immer Port 1433 zugeordnet. Sie können dies auf Wunsch ändern. Um die Portnummer zu ändern, aktualisieren Sie die **Optionen für Containererstellung** für das Azure SQL Edge-Modul in Azure IoT Edge. Im folgenden Beispiel wird Port 1433 des Containers dem Port 1600 des Hosts zugeordnet.
+- **IP-Adresse oder Netzwerkname des Hostcomputers**: Dies ist der Hostcomputer, auf dem der Azure SQL Edge-Container ausgeführt wird.
+- **Hostportzuordnung für den Azure SQL Edge-Container**: Dies ist die Zuordnung des Docker-Containerports zu einem Port auf dem Host. Innerhalb des Containers wird Azure SQL Edge immer Port 1433 zugeordnet. Sie können dies auf Wunsch ändern. Um die Portnummer zu ändern, aktualisieren Sie die **Optionen für Containererstellung** für das Azure SQL Edge-Modul in Azure IoT Edge. Im folgenden Beispiel wird Port 1433 des Containers dem Port 1600 des Hosts zugeordnet.
 
     ```JSON
     {
@@ -51,7 +51,7 @@ Um von einem Netzwerkcomputer aus eine Verbindung mit einer Azure SQL Edge-Daten
     }
     ```
 
-- **Systemadministratorkennwort für die Azure SQL Edge-Instanz** : Dieser Wert wurde während der Bereitstellung von Azure SQL Edge für die `SA_PASSWORD`-Umgebungsvariable angegeben.
+- **Systemadministratorkennwort für die Azure SQL Edge-Instanz**: Dieser Wert wurde während der Bereitstellung von Azure SQL Edge für die `SA_PASSWORD`-Umgebungsvariable angegeben.
 
 ## <a name="connect-to-the-database-engine-from-within-the-container"></a>Herstellen einer Verbindung mit der Datenbank-Engine aus dem Container
 
@@ -94,7 +94,7 @@ conn = pyodbc.connect(db_connection_string, autocommit=True)
 
 ## <a name="connect-to-azure-sql-edge-from-another-network-machine"></a>Herstellen einer Verbindung mit Azure SQL Edge von einem anderen Netzwerkcomputer
 
-Möglicherweise möchten Sie von einem anderen Computer im Netzwerk aus eine Verbindung mit der Azure SQL Edge-Instanz herstellen. Verwenden Sie hierzu die IP-Adresse des Docker-Hosts und den Hostport, dem der Azure SQL Edge-Container zugeordnet ist. Wenn die IP-Adresse des Docker-Hosts beispielsweise *xxx.xxx.xxx.xxx* lautet und der Azure SQL Edge-Container Hostport  *1600* zugeordnet ist, wäre die Serveradresse für die Azure SQL Edge-Instanz *xxx.xxx.xxx.xxx,1600*. Das aktualisierte Python-Skript lautet:
+Möglicherweise möchten Sie von einem anderen Computer im Netzwerk aus eine Verbindung mit der Azure SQL Edge-Instanz herstellen. Verwenden Sie hierzu die IP-Adresse des Docker-Hosts und den Hostport, dem der Azure SQL Edge-Container zugeordnet ist. Wenn die IP-Adresse des Docker-Hosts beispielsweise *xxx.xxx.xxx.xxx* lautet und der Azure SQL Edge-Container Hostport *1600* zugeordnet ist, wäre die Serveradresse für die Azure SQL Edge-Instanz *xxx.xxx.xxx.xxx,1600*. Das aktualisierte Python-Skript lautet:
 
 ```python
 

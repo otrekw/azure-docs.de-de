@@ -1,18 +1,14 @@
 ---
 title: Verwalten von Warnungsereignissen
 description: Hier erfahren Sie, wie Sie Warnungsereignisse verwalten können, die im Netzwerk erkannt werden.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 12/07/2020
-ms.service: azure
 ms.topic: how-to
-ms.openlocfilehash: 866ff4cad74b7092dda11a20f8f7bcadf91233ae
-ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
+ms.openlocfilehash: 2995ff0d2246929efb534bc21d888bad3a2cf24a
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100526900"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104781788"
 ---
 # <a name="manage-alert-events"></a>Verwalten von Warnungsereignissen
 

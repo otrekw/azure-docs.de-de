@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/25/2021
+ms.date: 03/04/2021
 ms.author: memildin
-ms.openlocfilehash: a2c29049decc056f0d3c8083d21574456610c124
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 6bec9f0a1c22691d818566cec3f59c1ec0f3d3bb
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99555138"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051615"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>Wichtige bevorstehende Änderungen an Azure Security Center
 
@@ -31,13 +31,47 @@ Die neuesten Versionshinweise finden Sie unter [Neuerungen in Azure Security Cen
 
 ## <a name="planned-changes"></a>Geplante Änderungen
 
+- [Die Empfehlungen von AWS werden zur allgemeinen Verfügbarkeit (GA) veröffentlicht.](#recommendations-from-aws-will-be-released-for-general-availability-ga)
+- [Von zwei Legacy-Empfehlungen werden keine Daten mehr direkt in das Azure-Aktivitätsprotokoll geschrieben](#two-legacy-recommendations-will-no-longer-write-data-directly-to-azure-activity-log)
 - [Zwei Empfehlungen der Sicherheitskontrolle „Systemupdates anwenden“ als veraltet eingestuft](#two-recommendations-from-apply-system-updates-security-control-being-deprecated)
 - [Verbesserungen für die Empfehlung zur SQL-Datenklassifizierung](#enhancements-to-sql-data-classification-recommendation)
 - [Ausmusterung von elf Azure Defender-Warnungen](#deprecation-of-11-azure-defender-alerts)
 
+
+### <a name="recommendations-from-aws-will-be-released-for-general-availability-ga"></a>Empfehlungen von AWS werden zur allgemeinen Verfügbarkeit (GA) veröffentlicht.
+
+**Geschätztes Datum der Änderung:** April 2021
+
+Azure Security Center schützt Workloads in Azure, Amazon Web Services (AWS) und Google Cloud Platform (GCP).
+
+Die Empfehlungen von AWS Security Hub waren seit der Einführung der Cloud Connectors als Vorschauversion verfügbar. Empfehlungen, die als **Vorschau** gekennzeichnet sind, sind nicht in den Berechnungen Ihrer Sicherheitsbewertung enthalten, sollten aber nach Möglichkeit immer noch wieder bearbeitet werden, damit Sie nach Abschluss des Vorschauzeitraums zu ihrer Bewertung beitragen.
+
+Mit dieser Änderung werden zwei von AWS-Empfehlungenspakete in die allgemeine Verfügbarkeit verschoben:
+
+- [PCI-DSS Steuerelemente des Sicherheitshubs](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-pci-controls.html)
+- [AWS Foundations Benchmark-Steuerelemente des Sicherheitshubs](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-cis-controls.html)
+
+Wenn diese in allgemeiner Verfügbarkeit sind und die Bewertungen Ihrer AWS-Ressourcen ausgeführt werden, wirken sich die Ergebnisse auf die kombinierte Sicherheitsbewertung all Ihrer Multi- und Hybrid-Cloud-Ressourcen aus. 
+
+
+
+### <a name="two-legacy-recommendations-will-no-longer-write-data-directly-to-azure-activity-log"></a>Von zwei Legacy-Empfehlungen werden keine Daten mehr in das Azure-Aktivitätsprotokoll geschrieben. 
+
+**Geschätztes Datum für die Änderung:** März 2021
+
+Von Security Center werden die Daten für nahezu alle Sicherheitsempfehlungen an Azure Advisor übergeben und anschließend von Azure Advisor in das [Azure-Aktivitätsprotokoll](../azure-monitor/essentials/activity-log.md) geschrieben.
+
+Bei zwei Empfehlungen werden die Daten gleichzeitig direkt in das Azure-Aktivitätsprotokoll geschrieben. Diese Änderung sorgt dafür, dass Daten für diese Legacy-Sicherheitsempfehlungen von Security Center nicht mehr direkt in das Aktivitätsprotokoll geschrieben werden. Stattdessen werden die Daten genau wie bei allen anderen Empfehlungen in Azure Advisor exportiert. 
+
+Die beiden Legacy-Empfehlungen sind:
+-  Integritätsprobleme in Endpoint Protection sollten auf Ihren Computern behoben werden.
+- Sicherheitsrisiken in der Sicherheitskonfiguration für Ihre Computer sollten beseitigt werden.
+
+Wenn Sie auf Informationen für diese beiden Empfehlungen in der Kategorie „Empfehlung vom Typ TaskDiscovery“ des Aktivitätsprotokolls zugegriffen haben, ist dies nicht länger möglich.
+
 ### <a name="two-recommendations-from-apply-system-updates-security-control-being-deprecated"></a>Zwei Empfehlungen der Sicherheitskontrolle „Systemupdates anwenden“ als veraltet eingestuft 
 
-**Geschätztes Datum für die Änderung:** Februar 2021
+**Geschätztes Datum für die Änderung:** März 2021
 
 Für die beiden folgenden Empfehlungen ist geplant, sie im Februar 2021 als veraltet einzustufen:
 

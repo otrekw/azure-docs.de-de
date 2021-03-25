@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.openlocfilehash: e69bcb3d9e4dca4c45bf9a6fe8ed4d54e7f4a8cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90931197"
 ---
 # <a name="point-in-time-restore-of-a-flexible-server"></a>Zeitpunktwiederherstellung einer Flexible Server-Instanz
@@ -30,7 +30,7 @@ Zum Durcharbeiten dieses Leitfadens benötigen Sie Folgendes:
 
 Führen Sie die folgenden Schritte aus, um Ihre Flexible Server-Instanz mit der frühesten vorhandenen Sicherung wiederherzustellen.
 
-1.  Wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihre Flexible Server-Instanz aus, von der aus Sie die Sicherung wiederherstellen möchten.
+1.  Wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihre Flexible Server-Instanz aus, von der aus Sie die Sicherung wiederherstellen möchten.
 
 2.  Klicken Sie im linken Bereich auf **Übersicht** und dann auf **Wiederherstellen**.
    
@@ -40,7 +40,7 @@ Führen Sie die folgenden Schritte aus, um Ihre Flexible Server-Instanz mit der 
 
 4.  Wählen Sie **Frühester Wiederherstellungspunkt** aus, und geben Sie einen neuen Servernamen im Feld **Auf neuem Server wiederherstellen** ein. Der früheste Zeitstempel, den Sie wiederherstellen können, wird angezeigt. 
    
-   :::image type="content" source="./media/how-to-restore-server-portal/restore-earliest.png" alt-text="Wiederherstellung – Übersicht":::
+   :::image type="content" source="./media/how-to-restore-server-portal/restore-earliest.png" alt-text="Frühester Wiederherstellungszeitpunkt":::
 
 5.  Klicken Sie auf **OK**.
 
@@ -50,7 +50,7 @@ Führen Sie die folgenden Schritte aus, um Ihre Flexible Server-Instanz mit der 
 
 Führen Sie die folgenden Schritte aus, um Ihre Flexible Server-Instanz mit der frühesten vorhandenen Sicherung wiederherzustellen.
 
-1.  Wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihre Flexible Server-Instanz aus, von der aus Sie die Sicherung wiederherstellen möchten.
+1.  Wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihre Flexible Server-Instanz aus, von der aus Sie die Sicherung wiederherstellen möchten.
 
 2.  Klicken Sie auf der Seite „Übersicht“ auf **Wiederherstellen**.
  :::image type="content" source="./media/how-to-restore-server-portal/restore-overview.png" alt-text="Wiederherstellung – Übersicht":::
@@ -61,7 +61,7 @@ Führen Sie die folgenden Schritte aus, um Ihre Flexible Server-Instanz mit der 
 
 5.  Wählen Sie das Datum und die Uhrzeit aus, und geben Sie einen neuen Servernamen im Feld **Auf neuem Server wiederherstellen** ein. 
    
-:::image type="content" source="./media/how-to-restore-server-portal/restore-custom.png" alt-text="Wiederherstellung – Übersicht":::
+:::image type="content" source="./media/how-to-restore-server-portal/restore-custom.png" alt-text="Benutzerdefinierter Wiederherstellungszeitpunkt":::
  
 6.  Klicken Sie auf **OK**.
 
@@ -70,5 +70,5 @@ Führen Sie die folgenden Schritte aus, um Ihre Flexible Server-Instanz mit der 
 ## <a name="next-steps"></a>Nächste Schritte
 
 -   Weitere Informationen zur [Geschäftskontinuität](./concepts-business-continuity.md)
--   Weitere Informationen zur  [zonenredundanten Hochverfügbarkeit](./concepts-high-availability.md)
+-   Weitere Informationen zur [zonenredundanten Hochverfügbarkeit](./concepts-high-availability.md)
 -   Weitere Informationen zu [Sicherung und Wiederherstellung](./concepts-backup-restore.md)

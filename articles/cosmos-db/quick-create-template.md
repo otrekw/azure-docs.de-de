@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.date: 06/01/2020
 ms.custom: subject-armqs
 ms.openlocfilehash: b97702bb84eb38d185fe97ffcc596e374f28fbe2
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93339664"
 ---
 # <a name="quickstart-create-an-azure-cosmos-db-and-a-container-by-using-an-arm-template"></a>Schnellstart: Erstellen einer Azure Cosmos DB-Datenbank und eines -Containers mithilfe einer ARM-Vorlage
@@ -63,20 +63,20 @@ Weitere Azure Cosmos DB-Vorlagenbeispiele finden Sie im [Schnellstart-Vorlagen
 
     Sofern nicht anders angegeben, verwenden Sie die Standardwerte, um die Azure Cosmos-Ressourcen zu erstellen.
 
-    * **Abonnement** : Wählen Sie ein Azure-Abonnement aus.
-    * **Ressourcengruppe** : Wählen Sie die Option **Neu erstellen** aus, geben Sie einen eindeutigen Namen für die Ressourcengruppe ein, und klicken Sie dann auf **OK**.
-    * **Standort** : Wählen Sie einen Standort aus.  Beispiel: **USA, Mitte**.
-    * **Kontoname** : Geben Sie einen Namen für das Azure Cosmos-Konto ein. Der Wert muss global eindeutig sein.
-    * **Standort** : Geben Sie den Standort ein, an dem Sie Ihr Azure Cosmos-Konto erstellen möchten. Das Azure Cosmos-Konto kann sich am gleichen Standort befinden wie die Ressourcengruppe.
-    * **Primäre Region** : Die primäre Replikatregion für das Azure Cosmos-Konto.
-    * **Sekundäre Region** : Die sekundäre Replikatregion für das Azure Cosmos-Konto.
-    * **Standardkonsistenzebene** : Die Standardkonsistenzebene des Azure Cosmos-Kontos.
-    * **Präfix für max. Veraltung** : Maximal veraltete Anforderungen. Für BoundedStaleness erforderlich.
-    * **Max. Intervall in Sekunden** : Maximale Verzögerungszeit. Für BoundedStaleness erforderlich.
-    * **Datenbankname** : Der Name der Azure Cosmos-Datenbank.
-    * **Containername** : Der Name des Azure Cosmos-Containers.
-    * **Durchsatz** :  Der Durchsatz für den Container (Mindestwert: 400 RU/s).
-    * **Ich stimme den oben genannten Geschäftsbedingungen zu** : Aktivieren Sie dieses Kontrollkästchen.
+    * **Abonnement**: Wählen Sie ein Azure-Abonnement aus.
+    * **Ressourcengruppe**: Wählen Sie die Option **Neu erstellen** aus, geben Sie einen eindeutigen Namen für die Ressourcengruppe ein, und klicken Sie dann auf **OK**.
+    * **Standort**: Wählen Sie einen Standort aus.  Beispiel: **USA, Mitte**.
+    * **Kontoname**: Geben Sie einen Namen für das Azure Cosmos-Konto ein. Der Wert muss global eindeutig sein.
+    * **Standort**: Geben Sie den Standort ein, an dem Sie Ihr Azure Cosmos-Konto erstellen möchten. Das Azure Cosmos-Konto kann sich am gleichen Standort befinden wie die Ressourcengruppe.
+    * **Primäre Region**: Die primäre Replikatregion für das Azure Cosmos-Konto.
+    * **Sekundäre Region**: Die sekundäre Replikatregion für das Azure Cosmos-Konto.
+    * **Standardkonsistenzebene**: Die Standardkonsistenzebene des Azure Cosmos-Kontos.
+    * **Präfix für max. Veraltung**: Maximal veraltete Anforderungen. Für BoundedStaleness erforderlich.
+    * **Max. Intervall in Sekunden**: Maximale Verzögerungszeit. Für BoundedStaleness erforderlich.
+    * **Datenbankname**: Der Name der Azure Cosmos-Datenbank.
+    * **Containername**: Der Name des Azure Cosmos-Containers.
+    * **Durchsatz**:  Der Durchsatz für den Container (Mindestwert: 400 RU/s).
+    * **Ich stimme den oben genannten Geschäftsbedingungen zu**: Aktivieren Sie dieses Kontrollkästchen.
 
 3. Wählen Sie die Option **Kaufen**. Nach erfolgreicher Bereitstellung des Azure Cosmos-Kontos erhalten Sie eine Benachrichtigung:
 

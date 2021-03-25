@@ -4,10 +4,10 @@ description: Erfahren Sie, wie Sie die Platform-as-a-Service-Dienste (PaaS) in A
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: eec37527386098174906dc2737d7b763241da3f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85478738"
 ---
 # <a name="use-platform-as-a-service-paas-services-in-azure-devtest-labs"></a>Verwenden von Platform-as-a-Service-Diensten (PaaS) in Azure DevTest Labs
@@ -34,10 +34,10 @@ In großen Organisationen bieten Entwicklungsteams in der Regel Umgebungen wie a
 Der Labbesitzer kann Labumgebungen anpassen, um die Rolle des Benutzers innerhalb der Ressourcengruppe vom **Leser** zum **Mitwirkenden** zu ändern. Diese Funktion befindet sich auf der Seite **Labeinstellungen** unter **Konfiguration und Richtlinien** des Labs. Diese Rollenänderung ermöglicht dem Benutzer, Ressourcen dieser Umgebung hinzuzufügen oder daraus zu entfernen. Wenn Sie den Zugriff weiter einschränken möchten, verwenden Sie Azure-Richtlinien. Diese Funktionalität ermöglicht Ihnen, die Ressourcen oder die Konfiguration ohne Zugriff auf Abonnementebene anzupassen.
 
 #### <a name="custom-tokens"></a>Benutzerdefinierte Token
-Es gibt einige benutzerdefinierte Labinformationen, die außerhalb der Ressourcengruppe liegen und sich auf Umgebungen beziehen, auf die die Vorlage zugreifen kann. Hier einige Beispiele: 
+Es gibt einige benutzerdefinierte Labinformationen, die außerhalb der Ressourcengruppe liegen und sich auf Umgebungen beziehen, auf die die Vorlage zugreifen kann. Hier sind einige davon: 
 
 - Labnetzwerkidentifizierung
-- Location
+- Standort
 - Speicherkonto, unter dem die Resource Manager-Vorlagendateien gespeichert werden. 
  
 #### <a name="lab-virtual-network"></a>Virtuelles Labnetzwerk

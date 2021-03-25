@@ -78,7 +78,7 @@ Die Anleitungen enthalten Codebeispiele, um die Ausführung einer Aufgabe zu ver
 * [Erstellen eines Azure Media Services-Kontos](./create-account-howto.md)
 * [Zugriff auf Azure Media Services-API mit Azure CLI](./access-api-howto.md)
 * [Codieren mit HTTPS als Auftragseingabe: .NET](job-input-from-http-how-to.md)  
-* [Überwachen von Ereignissen: Portal](monitor-events-portal-how-to.md)
+* [Überwachen von Ereignissen: Portal](monitoring/monitor-events-portal-how-to.md)
 * [Dynamische Verschlüsselung mit Multi-DRM: .NET](protect-with-drm.md) 
 * [Codieren mit einer benutzerdefinierten Transformation: CLI](custom-preset-cli-howto.md)
 

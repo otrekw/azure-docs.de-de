@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 12/02/2019
 ms.author: chrande
 ms.openlocfilehash: d99e2e2ffd63b050e7373c98084fed3fb14727bf
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93357044"
 ---
 # <a name="graph-data-modeling-for-azure-cosmos-db-gremlin-api"></a>Modellieren von Graphdaten für die Gremlin-API von Azure Cosmos DB
@@ -36,7 +36,7 @@ Eine Graphdatenbanklösung kann optimal angewendet werden, wenn die Entitäten u
 * Zwischen Entitäten gibt es **m:n-Beziehungen**.
 * Es gibt **Schreib- und Leseanforderungen (sowohl für Entitäten als auch für Beziehungen)** . 
 
-Sind die obigen Kriterien erfüllt, hat ein Ansatz mit einer Graphdatenbank voraussichtlich Vorteile für die **Abfragekomplexität** , die **Skalierbarkeit des Datenmodells** und die **Abfrageleistung**.
+Sind die obigen Kriterien erfüllt, hat ein Ansatz mit einer Graphdatenbank voraussichtlich Vorteile für die **Abfragekomplexität**, die **Skalierbarkeit des Datenmodells** und die **Abfrageleistung**.
 
 Im nächsten Schritt muss bestimmt werden, ob der Graph für Analysen oder für Transaktionen verwendet wird. Wenn der Graph für Workloads mit hohen Rechen- und Datenverarbeitungsanforderungen vorgesehen ist, sollten Sie sich mit dem [Cosmos DB Spark-Connector](./spark-connector.md) sowie mit der Verwendung der [GraphX-Bibliothek](https://spark.apache.org/graphx/) vertraut machen. 
 

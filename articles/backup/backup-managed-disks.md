@@ -4,10 +4,10 @@ description: Erfahren Sie, wie Sie Azure Managed Disks über das Azure-Portal si
 ms.topic: conceptual
 ms.date: 01/07/2021
 ms.openlocfilehash: ca86550c4dec4b51c60d9ecdef124e38783a3764
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98738151"
 ---
 # <a name="back-up-azure-managed-disks-in-preview"></a>Sichern von Azure Managed Disks (Vorschau)
@@ -115,7 +115,7 @@ Die folgenden Voraussetzungen müssen erfüllt sein, um das Sichern von verwalte
 
    - Sie können diese Ressourcengruppe zum Speichern von Momentaufnahmen auf mehreren Datenträgern verwenden, die gesichert werden (oder deren Sicherung geplant ist).  
 
-   - Sie können keine inkrementelle Momentaufnahme für einen bestimmten Datenträger außerhalb des Abonnements dieses Datenträgers erstellen. Wählen Sie deshalb eine Ressourcengruppe im selben Abonnement wie der zu sichernde Datenträger aus. Weitere Informationen finden Sie unter [Inkrementelle Momentaufnahmen](../virtual-machines/disks-incremental-snapshots.md#restrictions) für verwaltete Datenträger.
+   - Sie können keine inkrementelle Momentaufnahme für einen bestimmten Datenträger außerhalb des Abonnements dieses Datenträgers erstellen. Wählen Sie daher eine Ressourcengruppe im selben Abonnement wie der zu sichernde Datenträger aus. Weitere Informationen finden Sie unter [Inkrementelle Momentaufnahmen](../virtual-machines/disks-incremental-snapshots.md#restrictions) für verwaltete Datenträger.
 
    Gehen Sie wie folgt vor, um eine Rolle zuzuweisen:
 

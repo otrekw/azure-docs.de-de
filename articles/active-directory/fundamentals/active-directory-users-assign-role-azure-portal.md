@@ -14,10 +14,10 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fe0c7eec5c023fcba3152ad6329d318210a0c2ab
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92370932"
 ---
 # <a name="assign-administrator-and-non-administrator-roles-to-users-with-azure-active-directory"></a>Zuweisen von Administrator- und anderen Rollen zu Benutzern mithilfe von Azure Active Directory
@@ -39,13 +39,13 @@ Eine gängige Methode zum Zuweisen von Azure AD-Rollen zu einem Benutzer ist di
 
 1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com/), und melden Sie sich mit dem Konto eines globalen Administrators für das Verzeichnis an.
 
-2. Suchen Sie nach **Azure Active Directory** , und wählen Sie diese Option aus.
+2. Suchen Sie nach **Azure Active Directory**, und wählen Sie diese Option aus.
 
       ![Suche im Azure-Portal nach Azure Active Directory](media/active-directory-users-assign-role-azure-portal/search-azure-active-directory.png)
 
 3. Wählen Sie **Benutzer** aus.
 
-4. Suchen Sie nach dem Benutzer, der die Rollenzuweisung erhält, und wählen Sie ihn aus. Beispielsweise _Alain Charon_ .
+4. Suchen Sie nach dem Benutzer, der die Rollenzuweisung erhält, und wählen Sie ihn aus. Beispielsweise _Alain Charon_.
 
       ![Seite „Alle Benutzer“ – Benutzer auswählen](media/active-directory-users-assign-role-azure-portal/directory-role-select-user.png)
 
@@ -53,7 +53,7 @@ Eine gängige Methode zum Zuweisen von Azure AD-Rollen zu einem Benutzer ist di
 
     Die Seite **Alain Charon – Administratorrollen** wird angezeigt.
 
-6. Wählen Sie **Zuweisung hinzufügen** und die Rolle aus, die Alain Charon zugewiesen werden soll (z. B. _Anwendungsadministrator_ ), und wählen Sie dann **Auswählen** aus.
+6. Wählen Sie **Zuweisung hinzufügen** und die Rolle aus, die Alain Charon zugewiesen werden soll (z. B. _Anwendungsadministrator_), und wählen Sie dann **Auswählen** aus.
 
     ![Seite „Zugewiesene Rollen“ mit der ausgewählten Rolle](media/active-directory-users-assign-role-azure-portal/directory-role-select-role.png)
 
@@ -65,7 +65,7 @@ Wenn Sie die Rollenzuweisung für einen Benutzer entfernen müssen, können Sie 
 
 ### <a name="to-remove-a-role-assignment-from-a-user"></a>So entfernen Sie eine Rollenzuweisung für einen Benutzer
 
-1. Wählen Sie **Azure Active Directory** und **Benutzer** , und suchen Sie dann nach dem Benutzer, für den die Rollenzuweisung entfernt werden soll, und wählen Sie ihn aus. Beispielsweise _Alain Charon_ .
+1. Wählen Sie **Azure Active Directory** und **Benutzer**, und suchen Sie dann nach dem Benutzer, für den die Rollenzuweisung entfernt werden soll, und wählen Sie ihn aus. Beispielsweise _Alain Charon_.
 
 2. Wählen Sie **Zugewiesene Rollen** aus, wählen Sie **Anwendungsadministrator** aus, und wählen Sie dann **Zuweisung entfernen** aus.
 

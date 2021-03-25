@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/05/2016
 ms.author: alkohli
 ms.openlocfilehash: 16d782c6a25d8d2d8e1323b7cb683f41d8c99649
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90054975"
 ---
 # <a name="use-storsimple-snapshot-manager-to-administer-your-storsimple-solution"></a>Verwenden von StorSimple Snapshot Manager zum Verwalten der StorSimple-Lösung
@@ -48,13 +48,13 @@ Sie können StorSimple Snapshot Manager zum Überwachen und Verwalten bevorstehe
 
 | WENN SIE DIES TUN MÖCHTEN... | VERWENDEN SIE DIESES TUTORIAL... |
 |:--- |:--- |
-| Erfahren Sie mehr über StorSimple Snapshot Manager |[Was ist StorSimple Snapshot Manager?](storsimple-what-is-snapshot-manager.md) |
+| Erfahren Sie mehr über StorSimple Snapshot Manager |[Was ist der StorSimple Snapshot Manager?](storsimple-what-is-snapshot-manager.md) |
 | Installieren des StorSimple Snapshot Managers<br>Erneutes Installieren des StorSimple Snapshot Managers<br>Entfernen des StorSimple Snapshot Managers |[Bereitstellung von StorSimple Snapshot Manager](storsimple-snapshot-manager-deployment.md) |
 | Verwenden von StorSimple Snapshot Manager-Menüs und -Funktionen:<ul><li>Menüleiste</li><li>Symbolleiste</li><li>Bereichsfenster</li><li>Ergebnisbereich</li><li>Bereich "Aktionen"</li><li>Tastaturnavigation und Tastenkombinationen</li></ul> |[Benutzeroberfläche des StorSimple Snapshot Managers](storsimple-use-snapshot-manager.md) |
 | Verwenden Sie die allgemeinen MMC-Funktionen im StorSimple Snapshot Manager:<ul><li>Sicht</li><li>Neues Fenster hier öffnen</li><li>Aktualisieren</li><li>Liste exportieren</li><li>Hilfe</li></ul> |[Verwenden der MMC-Menüaktionen in StorSimple Snapshot Manager](storsimple-snapshot-manager-mmc-menu.md) |
-| Hinzufügen oder Ersetzen eines Geräts<br>Verbinden eines Geräts<br>Überprüfen importierter Volumegruppen<br>Aktualisieren verbundener Geräte<br>Authentifizieren eines Geräts<br>Anzeigen von Gerätedetails<br>Löschen einer Gerätekonfiguration<br>Ändern eines Gerätekennworts<br>Ersetzen eines ausgefallenen Geräts<br> |[Verwenden von StorSimple Snapshot Manager zum Verbinden und Verwalten von StorSimple-Geräten](storsimple-snapshot-manager-manage-devices.md) |
+| Hinzufügen oder Ersetzen eines Geräts<br>Verbinden eines Geräts<br>Überprüfen importierter Volumegruppen<br>Aktualisieren verbundener Geräte<br>Authentifizieren eines Geräts<br>Anzeigen von Gerätedetails<br>Löschen einer Gerätekonfiguration<br>Ändern eines Gerätekennworts<br>Ersetzen eines ausgefallenen Geräts<br> |[Verwenden des StorSimple Snapshot Managers zum Verbinden und Verwalten von StorSimple-Geräten](storsimple-snapshot-manager-manage-devices.md) |
 | Bereitstellen von Volumes<br>Anzeigen von Informationen zu Volumes<br>Löschen von Volumes<br>Erneutes Einlesen von Volumes<br>Konfigurieren und Sichern eines Basisvolumes<br>Konfigurieren und Sichern eines dynamischen gespiegelten Volumes |[Verwenden des StorSimple Snapshot Managers zum Anzeigen und Verwalten von Volumes](storsimple-snapshot-manager-manage-volumes.md) |
-| Anzeigen von Volumegruppen<br>Erstellen einer Volumegruppe<br>Sichern einer Volumegruppe<br>Bearbeiten einer Volumegruppe<br>Löschen einer Volumegruppe |[Verwenden des StorSimple Snapshot Managers zum Erstellen und Verwalten von Volumegruppen](storsimple-snapshot-manager-manage-volume-groups.md) |
+| Anzeigen von Volumegruppen<br>Erstellen einer Volumegruppe<br>Sichern einer Volumegruppe<br>Bearbeiten einer Volumegruppe<br>Löschen einer Volumegruppe |[Verwenden des StorSimple Snapshot Manager zum Erstellen und Verwalten von Volumegruppen](storsimple-snapshot-manager-manage-volume-groups.md) |
 | Erstellen einer Sicherungsrichtlinie <br>Bearbeiten einer Sicherungsrichtlinie<br>Löschen einer Sicherungsrichtlinie |[Verwenden des StorSimple Snapshot Managers zum Erstellen und Verwalten von Sicherungsrichtlinien](storsimple-snapshot-manager-manage-backup-policies.md) |
 | Anzeigen und Verwalten der geplanten Sicherungsaufträge<br>Anzeigen und Verwalten kürzlich ausgeführter Sicherungsaufträge<br>Anzeigen und Verwalten von derzeit ausgeführten Sicherungsaufträgen |[Verwenden von StorSimple Snapshot Manager zum Anzeigen und Verwalten von Sicherungsaufträgen](storsimple-snapshot-manager-manage-backup-jobs.md) |
 | Wiederherstellen eines Volumes<br>Klonen eines Volumes oder einer Volumegruppe<br>Löschen einer Sicherung<br>Wiederherstellen einer Datei<br>Wiederherstellen der Storsimple Snapshot Manager-Datenbank |[Verwenden Sie StorSimple Snapshot Manager zum Verwalten des Sicherungskatalogs](storsimple-snapshot-manager-manage-backup-catalog.md) |

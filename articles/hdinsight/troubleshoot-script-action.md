@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: 7158e9f82ee01b320d448baeab51fcfd122be00d
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 73b958964db2d0b308dd6dfc34024d61ce5ad8af
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944684"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871434"
 ---
 # <a name="troubleshoot-script-actions-in-azure-hdinsight"></a>Behandeln von Problemen mit Skriptaktionen in Azure HDInsight
 
@@ -26,11 +26,11 @@ In diesem Artikel werden Schritte zur Problembehandlung und mögliche Lösungen 
 
 1. Wählen Sie in der Leiste oben auf der Seite die Option **ops** aus. Daraufhin wird eine Liste mit aktuellen und vorherigen Vorgängen angezeigt, die über Ambari für den Cluster ausgeführt wurden.
 
-    ![Ambari-Webbenutzeroberfläche mit ausgewählter Option "ops"](./media/troubleshoot-script-action/hdi-apache-ambari-nav.png)
+    :::image type="content" source="./media/troubleshoot-script-action/hdi-apache-ambari-nav.png" alt-text="Ambari-Webbenutzeroberfläche mit ausgewählter Option &quot;ops&quot;" border="true":::
 
 1. Suchen Sie nach den Einträgen, die **run\_customscriptaction** in der Spalte **Vorgänge** enthalten. Diese Einträge werden erstellt, wenn die Skriptaktionen ausgeführt werden.
 
-    ![Apache Ambari – Vorgänge für Skriptaktion](./media/troubleshoot-script-action/ambari-script-action.png)
+    :::image type="content" source="./media/troubleshoot-script-action/ambari-script-action.png" alt-text="Apache Ambari – Vorgänge für Skriptaktion" border="true":::
 
     Wählen Sie den Eintrag **run\customscriptaction** aus, und navigieren Sie durch die Links, um die Ausgabe für **STDOUT** und **STDERR** anzuzeigen. Diese Ausgabe wird beim Ausführen des Skripts generiert und kann hilfreiche Informationen enthalten.
 
@@ -40,7 +40,7 @@ Für den Fall, dass die Clustererstellung aufgrund eines Fehlers in einem Skript
 
 * Die Speicherprotokolle stehen unter `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\CLUSTER_NAME\DATE` zur Verfügung.
 
-    ![Skriptaktionsprotokolle](./media/troubleshoot-script-action/script-action-logs-in-storage.png)
+    :::image type="content" source="./media/troubleshoot-script-action/script-action-logs-in-storage.png" alt-text="Skriptaktionsprotokolle" border="true":::
 
     In diesem Verzeichnis sind die Protokolle separat nach **Hauptknoten**, **Workerknoten** und **ZooKeeper-Knoten** strukturiert. Hierzu folgende Beispiele:
 

@@ -12,10 +12,10 @@ manager: celestedg
 ms.workload: identity
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 983a803245467145a0b1161a4495e8045759e7ab
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92442064"
 ---
 # <a name="billing-model-for-azure-ad-external-identities"></a>Abrechnungsmodell für externe Identitäten in Azure AD

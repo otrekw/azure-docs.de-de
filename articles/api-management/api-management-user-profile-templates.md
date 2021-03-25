@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 1aef238ec0b947dda1417b567b343ae9d92754d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86249511"
 ---
 # <a name="user-profile-templates-in-azure-api-management"></a>Benutzerprofilvorlagen in Azure API Management
@@ -107,15 +107,15 @@ Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des En
   
 |Eigenschaft|type|BESCHREIBUNG|  
 |--------------|----------|-----------------|  
-|`firstName`|string|Vorname des aktuellen Benutzers.|  
-|`lastName`|string|Nachname des aktuellen Benutzers.|  
-|`companyName`|string|Der Unternehmensname des aktuellen Benutzers.|  
-|`addresserEmail`|string|E-Mail-Adresse des aktuellen Benutzers.|  
-|`developersUsageStatisticsLink`|string|Relative URL zur Anzeige von Analysen für den aktuellen Benutzer.|  
+|`firstName`|Zeichenfolge|Vorname des aktuellen Benutzers.|  
+|`lastName`|Zeichenfolge|Nachname des aktuellen Benutzers.|  
+|`companyName`|Zeichenfolge|Der Unternehmensname des aktuellen Benutzers.|  
+|`addresserEmail`|Zeichenfolge|E-Mail-Adresse des aktuellen Benutzers.|  
+|`developersUsageStatisticsLink`|Zeichenfolge|Relative URL zur Anzeige von Analysen für den aktuellen Benutzer.|  
 |`subscriptions`|Sammlung von [Subscription](api-management-template-data-model-reference.md#Subscription)-Entitäten.|Die Abonnements für den aktuellen Benutzer.|  
 |`applications`|Sammlung von [Anwendungsentitäten](api-management-template-data-model-reference.md#Application).|Die Anwendungen des aktuellen Benutzers.|  
-|`changePasswordUrl`|string|Die relative URL zum Ändern des Kennworts des aktuellen Benutzers.|  
-|`changeNameOrEmailUrl`|string|Die relative URL zum Ändern des Namens und der E-Mail-Adresse des aktuellen Benutzers.|  
+|`changePasswordUrl`|Zeichenfolge|Die relative URL zum Ändern des Kennworts des aktuellen Benutzers.|  
+|`changeNameOrEmailUrl`|Zeichenfolge|Die relative URL zum Ändern des Namens und der E-Mail-Adresse des aktuellen Benutzers.|  
 |`canChangePassword`|boolean|Gibt an, ob der aktuelle Benutzer sein Kennwort ändern kann.|  
 |`isSystemUser`|boolean|Gibt an, ob der aktuelle Benutzer ein Mitglied einer der integrierten [Gruppen](api-management-key-concepts.md#groups) ist.|  
   
@@ -287,7 +287,7 @@ Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des En
                 <a href="#" class="btn-link" id="regenerateSecondary_{{subscription.id}}" data-bind="click: regenerateKey, text: regenerateKeyLabel">{% localized "SubscriptionListStrings|WebDevelopersRegenerateLink" %}</a>  
               </div>  
             </div>  
-            <div class="clearfix"> </div>  
+            <div class="clearfix"> </div>  
           </div>  
           <!-- /ko -->  
           {% endif %}  
@@ -328,15 +328,15 @@ Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des En
   
 |Eigenschaft|type|BESCHREIBUNG|  
 |--------------|----------|-----------------|  
-|`firstName`|string|Vorname des aktuellen Benutzers.|  
-|`lastName`|string|Nachname des aktuellen Benutzers.|  
-|`companyName`|string|Der Unternehmensname des aktuellen Benutzers.|  
-|`addresserEmail`|string|E-Mail-Adresse des aktuellen Benutzers.|  
-|`developersUsageStatisticsLink`|string|Relative URL zur Anzeige von Analysen für den aktuellen Benutzer.|  
+|`firstName`|Zeichenfolge|Vorname des aktuellen Benutzers.|  
+|`lastName`|Zeichenfolge|Nachname des aktuellen Benutzers.|  
+|`companyName`|Zeichenfolge|Der Unternehmensname des aktuellen Benutzers.|  
+|`addresserEmail`|Zeichenfolge|E-Mail-Adresse des aktuellen Benutzers.|  
+|`developersUsageStatisticsLink`|Zeichenfolge|Relative URL zur Anzeige von Analysen für den aktuellen Benutzer.|  
 |`subscriptions`|Sammlung von [Subscription](api-management-template-data-model-reference.md#Subscription)-Entitäten.|Die Abonnements für den aktuellen Benutzer.|  
 |`applications`|Sammlung von [Anwendungsentitäten](api-management-template-data-model-reference.md#Application).|Die Anwendungen des aktuellen Benutzers.|  
-|`changePasswordUrl`|string|Die relative URL zum Ändern des Kennworts des aktuellen Benutzers.|  
-|`changeNameOrEmailUrl`|string|Die relative URL zum Ändern des Namens und der E-Mail-Adresse des aktuellen Benutzers.|  
+|`changePasswordUrl`|Zeichenfolge|Die relative URL zum Ändern des Kennworts des aktuellen Benutzers.|  
+|`changeNameOrEmailUrl`|Zeichenfolge|Die relative URL zum Ändern des Namens und der E-Mail-Adresse des aktuellen Benutzers.|  
 |`canChangePassword`|boolean|Gibt an, ob der aktuelle Benutzer sein Kennwort ändern kann.|  
 |`isSystemUser`|boolean|Gibt an, ob der aktuelle Benutzer ein Mitglied einer der integrierten [Gruppen](api-management-key-concepts.md#groups) ist.|  
   
@@ -491,15 +491,15 @@ Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des En
   
 |Eigenschaft|type|BESCHREIBUNG|  
 |--------------|----------|-----------------|  
-|`firstName`|string|Vorname des aktuellen Benutzers.|  
-|`lastName`|string|Nachname des aktuellen Benutzers.|  
-|`companyName`|string|Der Unternehmensname des aktuellen Benutzers.|  
-|`addresserEmail`|string|E-Mail-Adresse des aktuellen Benutzers.|  
-|`developersUsageStatisticsLink`|string|Relative URL zur Anzeige von Analysen für den aktuellen Benutzer.|  
+|`firstName`|Zeichenfolge|Vorname des aktuellen Benutzers.|  
+|`lastName`|Zeichenfolge|Nachname des aktuellen Benutzers.|  
+|`companyName`|Zeichenfolge|Der Unternehmensname des aktuellen Benutzers.|  
+|`addresserEmail`|Zeichenfolge|E-Mail-Adresse des aktuellen Benutzers.|  
+|`developersUsageStatisticsLink`|Zeichenfolge|Relative URL zur Anzeige von Analysen für den aktuellen Benutzer.|  
 |`subscriptions`|Sammlung von [Subscription](api-management-template-data-model-reference.md#Subscription)-Entitäten.|Die Abonnements für den aktuellen Benutzer.|  
 |`applications`|Sammlung von [Anwendungsentitäten](api-management-template-data-model-reference.md#Application).|Die Anwendungen des aktuellen Benutzers.|  
-|`changePasswordUrl`|string|Die relative URL zum Ändern des Kennworts des aktuellen Benutzers.|  
-|`changeNameOrEmailUrl`|string|Die relative URL zum Ändern des Namens und der E-Mail-Adresse des aktuellen Benutzers.|  
+|`changePasswordUrl`|Zeichenfolge|Die relative URL zum Ändern des Kennworts des aktuellen Benutzers.|  
+|`changeNameOrEmailUrl`|Zeichenfolge|Die relative URL zum Ändern des Namens und der E-Mail-Adresse des aktuellen Benutzers.|  
 |`canChangePassword`|boolean|Gibt an, ob der aktuelle Benutzer sein Kennwort ändern kann.|  
 |`isSystemUser`|boolean|Gibt an, ob der aktuelle Benutzer ein Mitglied einer der integrierten [Gruppen](api-management-key-concepts.md#groups) ist.|  
   

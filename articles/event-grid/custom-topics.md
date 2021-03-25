@@ -4,10 +4,10 @@ description: Enthält eine Beschreibung der benutzerdefinierten Themen in Azure 
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 8f48824989c8ec51b766385188ad99e9e59cf621
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86113784"
 ---
 # <a name="custom-topics-in-azure-event-grid"></a>Benutzerdefinierte Themen in Azure Event Grid

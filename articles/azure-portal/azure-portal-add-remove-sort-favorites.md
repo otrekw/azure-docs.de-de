@@ -2,18 +2,18 @@
 title: Hinzufügen, Entfernen und Anordnen von Favoriten im Azure-Portal
 description: Erfahren Sie etwas über das Hinzufügen oder Entfernen von Elementen in der Favoritenliste sowie das Anordnen der Reihenfolge von Elementen.
 keywords: Favoriten, Portal
-ms.date: 12/20/2019
+ms.date: 03/16/2021
 ms.topic: how-to
-ms.openlocfilehash: 01ed34c2e72890c6aeeef9371312825273722ac6
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: dc1e9436c5adb84fbe4b736b2c2217b6e5da2c97
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745790"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104774472"
 ---
 # <a name="add-remove-and-rearrange-favorites"></a>Hinzufügen, Entfernen und Neuanordnen von Favoriten
 
-Sie können Elemente in der Liste Ihrer **Favoriten** hinzufügen oder entfernen, so dass Sie schnell zu den Diensten navigieren können, die Sie am häufigsten verwenden. Wir haben der Liste der **Favoriten** bereits einige häufiger verwendete Dienste hinzugefügt, wahrscheinlich möchten Sie sie jedoch anpassen. Nur Sie allein können die an der Liste der **Favoriten** vorgenommenen Änderungen sehen.
+Sie können Elemente in der Liste Ihrer **Favoriten** hinzufügen oder entfernen, sodass Sie schnell zu den Diensten navigieren können, die Sie am häufigsten verwenden. Wir haben der Liste der **Favoriten** bereits einige häufiger verwendete Dienste hinzugefügt, wahrscheinlich möchten Sie sie jedoch anpassen. Nur Sie allein können die an der Liste der **Favoriten** vorgenommenen Änderungen sehen.
 
 ## <a name="add-a-favorite"></a>Hinzufügen von Favoriten
 

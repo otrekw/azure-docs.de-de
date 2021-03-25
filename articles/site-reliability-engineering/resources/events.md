@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 09/14/2020
 ms.author: dnb
 ms.openlocfilehash: c36b517943ac6d18b0658ea5cb97c47503de26b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90090294"
 ---
 # <a name="participate-in-the-global-site-reliability-engineering-community"></a>Teilnehmen an der globalen Community für Websitezuverlässigkeits-Engineering (Site Reliability Engineering)
 
-So wichtig es ist, sich über SRE zu informieren, umso wichtiger ist es oft, mit Gleichgesinnten darüber zu sprechen. Die Auseinandersetzung mit Ihren Herausforderungen, Erfolgen und Misserfolgen rund um SRE kann entscheidend sein, um ein differenziertes Verständnis des Themas zu erlangen.
+Es ist wichtig, dass Sie sich anhand von Lesematerial ausführlich über SRE informieren. Häufig ist es jedoch noch wichtiger, sich mit Kollegen darüber auszutauschen. Das Diskutieren über Herausforderungen, Erfolge und Fehler rund um SRE kann eine entscheidende Rolle beim Erlangen eines umfassenden Verständnisses des Themas spielen.
 
-Es gibt eine Reihe von Treffen und Konferenzen mit SRE-Inhalten. Am relevantesten sind vielleicht die von USENIX veranstalteten, global verteilten [SREcon-Konferenzen](https://www.usenix.org/conferences).
+Es gibt eine Reihe von Meetups und Konferenzen, die SRE zum Inhalt haben. Am relevantesten sind vielleicht die von USENIX veranstalteten, global verteilten [SREcon-Konferenzen](https://www.usenix.org/conferences).
 
 Immer mehr SRE-Inhalte finden ihren Weg zu Konferenzen wie [LISA](https://www.usenix.org/conferences/byname/5), [All Day DevOps](https://www.alldaydevops.com), [DevOps Enterprise Summit](https://events.itrevolution.com) und lokalen DevOps-Konferenzen wie den [DevOps Days](https://www.devopsdays.org). Suchen Sie diesen Inhalt und andere an diesem Thema interessierte Personen, wo immer Sie ihn und sie finden können.

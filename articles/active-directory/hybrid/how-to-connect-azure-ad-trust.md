@@ -19,10 +19,10 @@ author: billmath
 ms.custom: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 13d56ec321cd257412c2b0abbe0be655c6cb4dbf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85360094"
 ---
 # <a name="manage-ad-fs-trust-with-azure-ad-using-azure-ad-connect"></a>Verwalten der AD FS-Vertrauensstellung mit Azure AD und Azure AD Connect
@@ -77,7 +77,7 @@ Bei allen Vorgängen, bei denen eine Einstellung geändert wird, erstellt Azure 
 
 Azure AD Connect stellt sicher, dass die Azure AD-Vertrauensstellung immer mit der richtigen Gruppe von empfohlenen Anspruchsregeln konfiguriert ist. Microsoft empfiehlt, Azure AD Connect zum Verwalten der Azure AD-Vertrauensstellung zu verwenden. Dieser Abschnitt enthält die Ausstellungstransformationsregeln und deren Beschreibung.
 
-| Regelname | BESCHREIBUNG |
+| Regelname | Beschreibung |
 | --- | --- |
 | UPN ausstellen | Diese Regel fragt den Wert für „userprincipalname“ über das Attribut ab, das in den Synchronisierungseinstellungen für „userprincipalname“ konfiguriert ist.|
 | „objectguid“ und „msdsconsistencyguid“ für benutzerdefinierten ImmutableId-Anspruch abfragen | Diese Regel fügt in die Pipeline einen temporären Wert für den objectguid- und den msdsconsistencyguid-Wert hinzu, falls vorhanden. |

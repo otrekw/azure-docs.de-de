@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7d6689b4b67b8462e983ae9b111e0fbc60c422b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89657114"
 ---
 # <a name="next-steps-and-how-to-manage-azure-ad-connect"></a>Nächste Schritte und Verwalten von Azure AD Connect
@@ -35,9 +35,9 @@ Nachdem Ihre Benutzer in der Cloud synchronisiert wurden, müssen Sie ihnen eine
 ### <a name="to-assign-an-azure-ad-premium-or-enterprise-mobility-suite-license"></a>So weisen Sie eine Azure AD Premium- oder Enterprise Mobility Suite-Lizenz zu
 
 1. Melden Sie sich beim Azure-Portal als Administrator an.
-2. Wählen Sie im linken Bereich **Active Directory**aus.
+2. Wählen Sie im linken Bereich **Active Directory** aus.
 3. Doppelklicken Sie auf der Seite **Active Directory** auf das Verzeichnis mit den Benutzern, die Sie einrichten möchten.
-4. Wählen Sie oben auf der Seite des Verzeichnisses die Option **Lizenzen**aus.
+4. Wählen Sie oben auf der Seite des Verzeichnisses die Option **Lizenzen** aus.
 5. Wählen Sie auf der Seite **Lizenzen** die Option **Active Directory Premium** oder **Enterprise Mobility Suite** aus, und klicken Sie dann auf **Zuweisen**.
 6. Wählen Sie im Dialogfeld die Benutzer aus, denen Sie Lizenzen zuweisen möchten, und klicken Sie dann auf das Häkchen, um die Änderungen zu speichern.
 
@@ -46,7 +46,7 @@ Prüfen Sie im Azure-Portal den Status einer Synchronisierung.
 
 ### <a name="to-verify-the-scheduled-synchronization-task"></a>So überprüfen Sie die geplante Synchronisierungsaufgabe
 1. Melden Sie sich beim Azure-Portal als Administrator an.
-2. Wählen Sie im linken Bereich **Active Directory**aus.
+2. Wählen Sie im linken Bereich **Active Directory** aus.
 3. Wählen Sie im linken Bereich **Azure AD Connect** aus.
 4. Achten Sie am oberen Rand der Seite auf die letzte Synchronisierung.
 

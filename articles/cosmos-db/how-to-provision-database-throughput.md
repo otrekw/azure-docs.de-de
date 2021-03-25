@@ -9,10 +9,10 @@ ms.date: 10/15/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli, devx-track-csharp
 ms.openlocfilehash: 4ecbee2260da735cd6ba74d3b9ffb55b4a652e9e
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93341993"
 ---
 # <a name="provision-standard-manual-throughput-on-a-database-in-azure-cosmos-db---sql-api"></a>Bereitstellen von Standarddurchsatz (manuell) für eine Datenbank in Azure Cosmos DB: SQL-API
@@ -28,7 +28,7 @@ Wenn Sie eine andere API verwenden, finden Sie weitere Informationen zum Bereits
 
 1. [Erstellen Sie ein neues Azure Cosmos-Konto](create-sql-api-dotnet.md#create-account), oder wählen Sie ein bereits vorhandenes Azure Cosmos-Konto aus.
 
-1. Öffnen Sie den Bereich **Daten-Explorer** , und wählen Sie **Neue Datenbank** aus. Geben Sie die folgenden Details an:
+1. Öffnen Sie den Bereich **Daten-Explorer**, und wählen Sie **Neue Datenbank** aus. Geben Sie die folgenden Details an:
 
    * Geben Sie eine Datenbank-ID ein.
    * Wählen Sie die Option **Provision database throughput** (Datenbankdurchsatz bereitstellen) aus.

@@ -10,10 +10,10 @@ ms.date: 11/14/2019
 ms.author: absha
 ms.custom: mvc
 ms.openlocfilehash: 6e2d1828acefacb03cc2f42193b8cd8897578b6f
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93397500"
 ---
 # <a name="configure-end-to-end-tls-by-using-application-gateway-with-the-portal"></a>Konfigurieren von End-to-End-TLS mit Application Gateway im Azure-Portal
@@ -45,7 +45,7 @@ Weitere Informationen finden Sie unter [Aktivieren der TLS-Terminierung beim Ers
 
 1. Wählen Sie **Alle Ressourcen** und dann **myAppGateway** aus.
 
-2. Wählen Sie im linken Menü **HTTP-Einstellungen** aus. Azure erstellt automatisch eine HTTP-Standardeinstellung ( **appGatewayBackendHttpSettings** ), wenn Sie das Anwendungsgateway erstellen. 
+2. Wählen Sie im linken Menü **HTTP-Einstellungen** aus. Azure erstellt automatisch eine HTTP-Standardeinstellung (**appGatewayBackendHttpSettings**), wenn Sie das Anwendungsgateway erstellen. 
 
 3. Wählen Sie **appGatewayBackendHttpSettings** aus.
 
@@ -59,7 +59,7 @@ Weitere Informationen finden Sie unter [Aktivieren der TLS-Terminierung beim Ers
 
    Für Anwendungsgateways vom Typ Standard und WAF (v1) sollten Sie den öffentlichen Schlüssel des Back-End-Serverzertifikats im CER-Format hochladen.
 
-   ![Hinzufügen des Zertifikats](./media/end-to-end-ssl-portal/addcert.png)
+   ![Zertifikat hinzufügen](./media/end-to-end-ssl-portal/addcert.png)
 
    Für Anwendungsgateways vom Typ Standard_v2 und WAF_v2 sollten Sie das Stammzertifikat des Back-End-Serverzertifikats im CER-Format hochladen. Wenn das Back-End-Zertifikat von einer bekannten Zertifizierungsstelle ausgestellt wird, können Sie das Kontrollkästchen **Bekanntes Zertifizierungsstellenzertifikat verwenden** aktivieren und müssen dann kein Zertifikat hochladen.
 
@@ -113,7 +113,7 @@ Wenn Sie sich für die zweite Option entscheiden, wenden Sie die Schritte im fol
 
    Für Anwendungsgateways vom Typ Standard und WAF (v1) sollten Sie den öffentlichen Schlüssel des Back-End-Serverzertifikats im CER-Format hochladen.
 
-   ![Hinzufügen des Zertifikats](./media/end-to-end-ssl-portal/addcert.png)
+   ![Zertifikat hinzufügen](./media/end-to-end-ssl-portal/addcert.png)
 
    Für Anwendungsgateways vom Typ Standard_v2 und WAF_v2 sollten Sie das Stammzertifikat des Back-End-Serverzertifikats im CER-Format hochladen. Wenn das Back-End-Zertifikat von einer bekannten Zertifizierungsstelle ausgestellt wird, können Sie das Kontrollkästchen **Bekanntes Zertifizierungsstellenzertifikat verwenden** aktivieren und müssen dann kein Zertifikat hochladen.
 

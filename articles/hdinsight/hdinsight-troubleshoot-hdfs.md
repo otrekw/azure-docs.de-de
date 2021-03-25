@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 04/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: 0be7805493e5acc41254c57ca912b5a2ecf02dae
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: c725e7b4e7af33181cb616d2bce2ae19521a5e7d
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98931454"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871876"
 ---
 # <a name="troubleshoot-apache-hadoop-hdfs-by-using-azure-hdinsight"></a>Problembehandlung für Apache Hadoop HDFS mit Azure HDInsight
 
@@ -22,7 +22,7 @@ Lernen Sie die wichtigsten Probleme und ihre Lösungen bei der Arbeit mit HDFS (
 
 Greifen Sie von der Befehlszeile und aus dem Anwendungscode auf das lokale HDFS zu, und nicht mithilfe des Azure Blob Storage oder des Azure Data Lake Storage aus dem HDInsight-Cluster.
 
-### <a name="resolution-steps"></a>Lösungsschritte
+### <a name="resolution-steps"></a>Schritte zur Behebung
 
 1. Verwenden Sie an der Eingabeaufforderung `hdfs dfs -D "fs.default.name=hdfs://mycluster/" ...` buchstäblich wie im folgenden Befehl:
 
@@ -101,7 +101,7 @@ Caused by: com.microsoft.azure.storage.StorageException: The request body is too
 
 Für HBase in HDInsight-Cluster wird beim Schreiben in den Azure-Speicher standardmäßig eine Blockgröße von 256 KB verwendet. Dies funktioniert bei HBase-APIs oder REST-APIs, bei der Verwendung der Befehlszeilenprogramme `hadoop` oder `hdfs dfs` tritt jedoch ein Fehler auf.
 
-### <a name="resolution"></a>Lösung
+### <a name="resolution"></a>Auflösung
 
 Verwenden Sie `fs.azure.write.request.size`, um eine größere Blockgröße anzugeben. Sie können diese Änderung auf Nutzungsbasis mithilfe des `-D`-Parameters erreichen. Im folgenden Beispielbefehl wird dieser Parameter mit dem Befehl `hadoop` verwendet:
 
@@ -116,7 +116,7 @@ Sie können auch den Wert von `fs.azure.write.request.size` mithilfe von Apache 
 3. Geben Sie in das Feld **Filter** den Text `fs.azure.write.request.size` ein.
 4. Ändern Sie den Wert von 262144 (256 KB) in den neuen Wert. Beispiel: 4194304 (4 MB).
 
-    ![Abbildung der Änderung des Werts über die Ambari-Webbenutzeroberfläche](./media/hdinsight-troubleshoot-hdfs/hbase-change-block-write-size.png)
+    :::image type="content" source="./media/hdinsight-troubleshoot-hdfs/hbase-change-block-write-size.png" alt-text="Abbildung der Änderung des Werts über die Ambari-Webbenutzeroberfläche" border="false":::
 
 Weitere Informationen zur Verwendung von Ambari finden Sie unter [Verwalten von HDInsight-Clustern mithilfe der Apache Ambari-Webbenutzeroberfläche](hdinsight-hadoop-manage-ambari.md).
 

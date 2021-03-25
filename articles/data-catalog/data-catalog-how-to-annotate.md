@@ -6,14 +6,16 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: 61a91ca8a51886c28beee77853d1ae67911e00e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89fa1b542c54fc962f8c12a2142884c677afb259
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87081235"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104674647"
 ---
 # <a name="how-to-annotate-data-sources-in-azure-data-catalog"></a>Kommentieren von Datenquellen in Azure Data Catalog
+
+[!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
 
 ## <a name="introduction"></a>Einführung
 
@@ -34,7 +36,7 @@ Da jede dieser Perspektiven wertvoll ist, verwendet Data Catalog einen Crowdsour
 ## <a name="different-types-of-annotations"></a>Anmerkungstypen
 Data Catalog unterstützt folgende Anmerkungstypen:
 
-| Anmerkung | Notizen |
+| Anmerkung | Hinweise |
 | --- | --- |
 | Anzeigename |Anzeigenamen können auf der Datenressourcenebene angegeben werden, um das Verständnis der Datenressource zu erleichtern. Anzeigenamen sind besonders hilfreich, wenn der zugrunde liegende Objektname unverständlich, abgekürzt oder für Benutzer nicht aussagekräftig ist. |
 | BESCHREIBUNG |Beschreibungen können auf der Datenressourcen- und Attribut-/Spaltenebene angegeben werden. Beschreibungen sind kurze Textanmerkungen ohne vorgegebene Form, die beschreiben, was der Benutzer über die Datenressource weiß oder wie er sie verwendet. |

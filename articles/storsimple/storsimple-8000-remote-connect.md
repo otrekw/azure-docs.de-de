@@ -8,10 +8,10 @@ ms.date: 01/02/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 1da688dfb00b26ca6b561d5aa0fb548c221381c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85514576"
 ---
 # <a name="connect-remotely-to-your-storsimple-8000-series-device"></a>Herstellen einer Remoteverbindung mit Geräten der StorSimple 8000-Serie
@@ -67,7 +67,7 @@ Führen Sie die folgenden Schritte auf der seriellen Gerätekonsole aus, um die 
 #### <a name="to-enable-remote-management-through-the-device-serial-console"></a>So aktivieren Sie die Remoteverwaltung über die serielle Gerätekonsole
 1. Wählen Sie im Menü der seriellen Konsole Option 1 aus. Weitere Informationen über die Verwendung der seriellen Konsole auf dem Gerät finden Sie unter [Herstellen einer Verbindung mit Windows PowerShell für StorSimple über die serielle Gerätekonsole](storsimple-8000-windows-powershell-administration.md#connect-to-windows-powershell-for-storsimple-via-the-device-serial-console).
 2. Geben Sie an der Eingabeaufforderung Folgendes ein: `Enable-HcsRemoteManagement –AllowHttp`
-3. Sie werden über die Sicherheitsrisiken bei der Verwendung von HTTP für die Verbindung mit dem Gerät informiert. Wenn Sie dazu aufgefordert werden, geben Sie **Y**zur Bestätigung ein.
+3. Sie werden über die Sicherheitsrisiken bei der Verwendung von HTTP für die Verbindung mit dem Gerät informiert. Geben Sie zum Bestätigen **J** ein, wenn Sie dazu aufgefordert werden.
 4. Stellen Sie sicher, dass HTTP aktiviert ist, indem Sie Folgendes eingeben: `Get-HcsSystem`
 5. Überprüfen Sie, ob im Feld **RemoteManagementMode** der Wert **HttpsAndHttpEnabled** angezeigt wird. Die folgende Abbildung zeigt diese Einstellungen in PuTTY.
    
@@ -132,7 +132,7 @@ Führen Sie die folgenden Schritte im Azure-Portal aus, um die Remoteverwaltung 
 
 1. Wechseln Sie zu Ihrem StorSimple-Geräte-Manager-Dienst. Wählen Sie **Geräte** aus, und klicken Sie dann auf das Gerät, das Sie für die Remoteverwaltung konfigurieren möchten. Wechseln Sie zu **Geräteeinstellungen > Sicherheit**.
 2. Klicken Sie auf dem Blatt **Sicherheitseinstellungen** auf **Remoteverwaltung**.
-3. Legen Sie **Remoteverwaltung aktivieren** auf **Ja** fest.
+3. Legen Sie für **Remoteverwaltung aktivieren** die Option **Ja** fest.
 4. Sie können jetzt eine Verbindung über HTTPS herstellen. (Die Standardeinstellung ist eine HTTPS-Verbindung.) Stellen Sie sicher, dass "HTTPS" ausgewählt ist.
 5. Klicken Sie auf „...“ und dann auf **Remoteverwaltungszertifikat herunterladen**. Geben Sie einen Speicherort an, um diese Datei zu speichern. Sie müssen dieses Zertifikat auf dem Client oder dem Hostcomputer installieren, den Sie für die Verbindung mit dem Gerät verwenden werden.
 6. Klicken Sie auf **Speichern**. Wenn Sie zur Bestätigung aufgefordert werden, klicken Sie auf **Ja**.
@@ -143,7 +143,7 @@ Führen Sie die folgenden Schritte auf der seriellen Gerätekonsole aus, um die 
 
 #### <a name="to-enable-remote-management-through-the-device-serial-console"></a>So aktivieren Sie die Remoteverwaltung über die serielle Gerätekonsole
 1. Wählen Sie im Menü der seriellen Konsole Option 1 aus. Weitere Informationen über die Verwendung der seriellen Konsole auf dem Gerät finden Sie unter [Herstellen einer Verbindung mit Windows PowerShell für StorSimple über die serielle Gerätekonsole](storsimple-8000-windows-powershell-administration.md#connect-to-windows-powershell-for-storsimple-via-the-device-serial-console).
-2. Geben Sie an der Eingabeaufforderung Folgendes ein:
+2. Geben Sie an der Eingabeaufforderung Folgendes ein: 
    
      `Enable-HcsRemoteManagement`
    
@@ -182,7 +182,7 @@ Um den Hostcomputer für eine Remoteverbindung vorzubereiten, die eine HTTPS-Sit
 Diese anschließende Schritte werden im Folgenden beschrieben.
 
 #### <a name="to-import-the-certificate-on-the-remote-host"></a>So importieren Sie das Zertifikat auf den Remotehost
-1. Klicken Sie mit der rechten Maustaste auf die CER-Datei, und wählen Sie **Zertifikat installieren**aus. Damit starten Sie den Zertifikatimport-Assistenten.
+1. Klicken Sie mit der rechten Maustaste auf die CER-Datei, und wählen Sie **Zertifikat installieren** aus. Damit starten Sie den Zertifikatimport-Assistenten.
    
     ![Zertifikatimport-Assistent 1](./media/storsimple-remote-connect/HCS_CertificateImportWizard1.png)
 2. Wählen Sie für **Speicherort** die Option **Lokaler Computer** aus, und klicken Sie dann auf **Weiter**.
@@ -195,7 +195,7 @@ Diese anschließende Schritte werden im Folgenden beschrieben.
 
 #### <a name="to-add-device-serial-numbers-to-the-remote-host"></a>So fügen Sie dem Remotehost die Seriennummern des Geräts hinzu
 1. Starten Sie Editor als Administrator, und öffnen Sie die Datei "hosts" unter "\Windows\System32\Drivers\etc".
-2. Fügen Sie Ihrer hosts-Datei die folgenden drei Einträge hinzu: **DATA 0 IP-Adresse**, **feste IP-Adresse für Controller 0** und **feste IP-Adresse für Controller 1**.
+2. Fügen Sie der Datei "hosts" die folgenden drei Einträge hinzu: **DATA 0 IP-Adresse**, **Controller 0 feste IP-Adresse** und **Controller 1 feste IP-Adresse**.
 3. Geben Sie die Seriennummer des Geräts ein, die Sie zuvor gespeichert haben. Ordnen Sie sie der IP-Adresse zu, wie in der folgenden Abbildung dargestellt. Fügen Sie für Controller 0 und Controller 1 **Controller0** und **Controller1** am Ende der Seriennummer an (CN-Name).
    
     ![CN-Namen der Datei "hosts" hinzufügen](./media/storsimple-remote-connect/HCS_AddingCNNameToHostsFile.png)

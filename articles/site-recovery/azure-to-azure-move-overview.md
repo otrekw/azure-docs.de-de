@@ -8,10 +8,10 @@ ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
 ms.openlocfilehash: 61d596c4b3a65c54e1a70682adad5b7328c384f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90007365"
 ---
 # <a name="moving-azure-vms-to-another-azure-region"></a>Verschieben von Azure-VMs in eine andere Azure-Region
@@ -29,7 +29,7 @@ Sie können virtuelle Computer aus folgenden Gründen verschieben:
 ## <a name="move-vms-with-resource-mover"></a>Verschieben virtueller Computer mit Resource Mover
 
 Mit [Azure Resource Mover](../resource-mover/tutorial-move-region-virtual-machines.md) können Sie nun virtuelle Computer in eine andere Region verschieben. Resource Mover befindet sich derzeit in der öffentlichen Vorschau und bietet folgende Features:
-- Ein einzelner Hub für das regionsübergreifende Verschieben von Ressourcen
+- Eine einzelne Anlaufstelle für das regionsübergreifende Verschieben von Ressourcen.
 - Kürzere Verschiebungszeit und verringerte Komplexität Alle erforderlichen Komponenten an einem einzelnen Ort
 - Ein einfaches und konsistentes Verfahren zum Verschieben verschiedener Arten von Azure-Ressourcen
 - Eine einfache Möglichkeit zum Erkennen von Abhängigkeiten zwischen den zu verschiebenden Ressourcen. Dies hilft Ihnen, zusammenhängende Ressourcen gemeinsam zu verschieben, damit nach der Verschiebung in der Zielregion alles wie erwartet funktioniert.

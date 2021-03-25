@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie eine Azure Batch-.NET-Anwendung mithilfe der 
 ms.topic: how-to
 ms.custom: devx-track-csharp
 ms.date: 04/05/2018
-ms.openlocfilehash: d06e2b61725f05d025acd8a2995ea041f138ae4f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9decb99c3de798df43dedc2441208066d18e3a13
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88933561"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104605782"
 ---
 # <a name="monitor-and-debug-an-azure-batch-net-application-with-application-insights"></a>Überwachen und Debuggen einer Azure Batch-.NET-Anwendung mit Application Insights
 
@@ -28,11 +28,11 @@ Für diesen Artikel ist auf [GitHub](https://github.com/Azure/azure-batch-sample
 
 * [Ein Batch-Konto und ein verknüpftes Speicherkonto](batch-account-create-portal.md)
 
-* [Eine Application Insights-Ressource](../azure-monitor/app/create-new-resource.md )
+* [Application Insights-Ressource](../azure-monitor/app/create-new-resource.md )
   
    * Verwenden Sie das Azure-Portal, um eine Application Insights-*Ressource* zu erstellen. Wählen Sie den **Anwendungstyp** *Allgemein* aus.
 
-   * Kopieren Sie den [Instrumentierungsschlüssel](../azure-monitor/app/create-new-resource.md #copy-the-instrumentation-key) aus dem Portal. Sie benötigen ihn an späterer Stelle dieses Artikels.
+   * Kopieren Sie den [Instrumentierungsschlüssel](../azure-monitor/app/create-new-resource.md#copy-the-instrumentation-key) aus dem Portal. Sie benötigen ihn an späterer Stelle dieses Artikels.
   
   > [!NOTE]
   > Möglicherweise werden Ihnen Gebühren für die in Application Insights gespeicherten Daten [in Rechnung gestellt](https://azure.microsoft.com/pricing/details/application-insights/). Dies gilt auch für die in diesem Artikel beschriebenen Diagnose- und Überwachungsdaten.
@@ -274,7 +274,7 @@ Der folgende Screenshot zeigt, wie eine einzelne Ablaufverfolgung für eine Aufg
 
 Der folgende Screenshot zeigt, wie Application Insights von Ihrer Anwendung ausgelöste Ausnahmen protokolliert. In diesem Fall können Sie innerhalb von Sekunden, nachdem die Anwendung die Ausnahme ausgelöst hat, Details zu einer bestimmten Ausnahme anzeigen und das Problem diagnostizieren.
 
-![Nicht behandelte Ausnahmen](./media/monitor-application-insights/exception.png)
+![Ausnahmefehler](./media/monitor-application-insights/exception.png)
 
 ### <a name="measure-blob-download-time"></a>Messen der Downloadzeit von Blobs
 

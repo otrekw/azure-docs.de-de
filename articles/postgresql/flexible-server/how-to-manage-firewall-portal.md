@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.openlocfilehash: 8c107b88f964d8e657d6833fc3a2e8425d9053ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90930301"
 ---
 # <a name="create-and-manage-firewall-rules-for-azure-database-for-postgresql---flexible-server-using-the-azure-portal"></a>Erstellen und Verwalten von Firewallregeln für Azure Database for PostgreSQL: Flexible Server im Azure-Portal
@@ -23,7 +23,7 @@ Azure Database for PostgreSQL: Flexible Server unterstützt zwei Arten von sich 
 * Öffentlicher Zugriff (zugelassene IP-Adressen)
 * Privater Zugriff (VNET-Integration)
 
-In diesem Artikel konzentrieren wir uns auf die Erstellung eines PostgreSQL-Servers mit **Öffentlicher Zugriff (zulässige IP-Adressen)** unter Verwendung des Azure-Portals und bieten eine Übersicht über die Verwaltung von Firewallregeln nach der Erstellung einer Flexible Server-Instanz. Mit *Öffentlicher Zugriff (zulässige IP-Adressen)* werden die Verbindungen ausschließlich auf zulässige IP-Adressen beschränkt. Die Client-IP-Adressen müssen in Firewallregeln zugelassen werden. Weitere Informationen finden Sie unter [Öffentlicher Zugriff (zugelassene IP-Adressen)](./concepts-networking.md#public-access-allowed-ip-addresses). Die Firewallregeln können zum Zeitpunkt der Servererstellung definiert werden (empfohlen), können aber auch später hinzugefügt werden. In diesem Artikel erhalten Sie eine Übersicht über das Erstellen und Verwalten von Firewallregeln mithilfe von „Öffentlicher Zugriff (zulässige IP-Adressen)“.
+In diesem Artikel konzentrieren wir uns auf die Erstellung eines PostgreSQL-Servers mit **Öffentlicher Zugriff (zulässige IP-Adressen)** unter Verwendung des Azure-Portals und bieten eine Übersicht über die Verwaltung von Firewallregeln nach der Erstellung einer Flexible Server-Instanz. Mit *Öffentlicher Zugriff (zulässige IP-Adressen)* werden die Verbindungen ausschließlich auf zulässige IP-Adressen beschränkt. Die Client-IP-Adressen müssen in Firewallregeln zugelassen werden. Weitere Informationen finden Sie unter [Öffentlicher Zugriff (zugelassene IP-Adressen)](./concepts-networking.md#public-access-allowed-ip-addresses). Die Firewallregeln können zum Zeitpunkt der Servererstellung definiert werden (empfohlen), jedoch können sie auch später hinzugefügt werden. In diesem Artikel erhalten Sie eine Übersicht über das Erstellen und Verwalten von Firewallregeln mithilfe von „Öffentlicher Zugriff (zulässige IP-Adressen)“.
 
 ## <a name="create-a-firewall-rule-when-creating-a-server"></a>Erstellen einer Firewallregel beim Erstellen eines Servers
 
@@ -32,7 +32,7 @@ In diesem Artikel konzentrieren wir uns auf die Erstellung eines PostgreSQL-Serv
 3. Wählen Sie **Flexible Server** als Bereitstellungsoption aus.
 4. Füllen Sie das **Basisformular** aus.
 5. Wechseln Sie zur Registerkarte **Netzwerk**, um zu konfigurieren, wie Sie die Verbindung mit dem Server hergestellt werden soll.
-6. Wählen Sie unter **Verbindungsmethode** die Option *Öffentlicher Zugriff (zulässige IP-Adressen)* aus. Um die **Firewallregeln** zu erstellen, geben Sie den Namen der Firewallregel und eine einzelne IP-Adresse oder einen Adressbereich an. Wenn Sie die Regel auf eine einzelne IP-Adresse beschränken möchten, geben Sie dieselbe Adresse in das Feld für IP-Startadresse und IP-Endadresse ein. Mit dem Öffnen der Firewall wird es Administratoren, Benutzern und Anwendungen ermöglicht, auf dem PostgreSQL-Server auf alle Datenbanken zuzugreifen, für die sie über gültige Anmeldeinformationen verfügen.
+6. Wählen Sie unter **Verbindungsmethode** die Option *Öffentlicher Zugriff (zulässige IP-Adressen)* aus. Um die **Firewallregeln** zu erstellen, geben Sie den Namen der Firewallregel und eine einzelne IP-Adresse oder einen Adressbereich an. Wenn Sie die Regel auf eine einzelne IP-Adresse beschränken möchten, geben Sie dieselbe Adresse in das Feld für die Start-IP-Adresse und die End-IP-Adresse ein. Mit dem Öffnen der Firewall wird es Administratoren, Benutzern und Anwendungen ermöglicht, auf dem PostgreSQL-Server auf alle Datenbanken zuzugreifen, für die sie über gültige Anmeldeinformationen verfügen.
    > [!Note]
    > Azure Database for PostgreSQL: Flexible Server erstellt eine Firewall auf Serverebene. Sie verhindert, dass externe Anwendungen und Tools eine Verbindung mit dem Server oder Datenbanken auf dem Server herstellen – es sei denn, Sie erstellen eine Regel, um die Firewall für bestimmte IP-Adressen zu öffnen.
 7. Wählen Sie **Überprüfen + erstellen** aus, um Ihre Flexible Server-Konfiguration zu überprüfen.
@@ -55,7 +55,7 @@ In diesem Artikel konzentrieren wir uns auf die Erstellung eines PostgreSQL-Serv
 
    <!--![Bing search for What is my IP](./media/howto-manage-firewall-portal/3-what-is-my-ip.png)-->
 
-5. Fügen Sie weitere Adressräume hinzu. In den Firewallregeln für Azure Database for PostgreSQL: Flexible Server können Sie eine einzelne IP-Adresse oder einen Adressbereich angeben. Wenn Sie die Regel auf eine einzelne IP-Adresse beschränken möchten, geben Sie dieselbe Adresse in das Feld für IP-Startadresse und IP-Endadresse ein. Mit dem Öffnen der Firewall wird es Administratoren, Benutzern und Anwendungen ermöglicht, auf dem PostgreSQL-Server auf alle Datenbanken zuzugreifen, für die sie über gültige Anmeldeinformationen verfügen.
+5. Fügen Sie weitere Adressräume hinzu. In den Firewallregeln für Azure Database for PostgreSQL: Flexible Server können Sie eine einzelne IP-Adresse oder einen Adressbereich angeben. Wenn Sie die Regel auf eine einzelne IP-Adresse beschränken möchten, geben Sie dieselbe Adresse in das Feld für die Start-IP-Adresse und die End-IP-Adresse ein. Mit dem Öffnen der Firewall wird es Administratoren, Benutzern und Anwendungen ermöglicht, auf dem PostgreSQL-Server auf alle Datenbanken zuzugreifen, für die sie über gültige Anmeldeinformationen verfügen.
 
    <!--![Azure portal - firewall rules](./media/howto-manage-firewall-portal/4-specify-addresses.png)-->
 

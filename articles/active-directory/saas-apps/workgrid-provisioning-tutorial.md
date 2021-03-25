@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/17/2019
 ms.author: Zhchia
 ms.openlocfilehash: ec39e4796d2a06ad88a8e88ea99b953064eb6d21
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96348329"
 ---
 # <a name="tutorial-configure-workgrid--for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Workgrid für die automatische Benutzerbereitstellung
@@ -136,7 +136,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitst
 
 12. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Gruppenattribute, die von Azure AD mit Workgrid synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in Workgrid für Updatevorgänge verwendet werden. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-    ![Screenshot des Abschnitts „Attributzuordnungen“ mit drei Zuordnungen.](media/Workgrid-provisioning-tutorial/groupattribute.png)
+    ![Screenshot: Attributzuordnungen mit drei Zuordnungen](media/Workgrid-provisioning-tutorial/groupattribute.png)
 
 13. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 

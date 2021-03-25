@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: harshacs
 ms.openlocfilehash: 367aba09f84da1e227c08721077aa1b2132a62bf
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92367972"
 ---
 # <a name="network-security-groups-with-azure-site-recovery"></a>Netzwerksicherheitsgruppen mit Azure Site Recovery
@@ -27,7 +27,7 @@ In diesem Artikel wird beschrieben, wie Sie Netzwerksicherheitsgruppen mit Azure
 Jedem einzelnen Subnetz kann null (0) oder eine NSG zugeordnet werden. Jeder einzelnen Netzwerkschnittstelle kann auch null (0) oder eine NSG zugeordnet werden. Daher sind effektiv zwei Datenverkehrseinschränkungen für eine VM möglich, indem zunächst eine NSG einem Subnetz und dann eine andere NSG der Netzwerkschnittstelle der VM zugeordnet wird. Die Anwendung der NSG-Regeln hängt in diesem Fall von der Richtung des Datenverkehrs und der Priorität der angewendeten Sicherheitsregeln ab.
 
 Betrachten Sie ein einfaches Beispiel mit nur einer VM:
--    Die VM befindet sich innerhalb von **Contoso Subnet** .
+-    Die VM befindet sich innerhalb von **Contoso Subnet**.
 -    **Contoso Subnet** ist **Subnet NSG** zugeordnet.
 -    Der VM-Netzwerkschnittstelle ist außerdem die **VM-NSG** zugeordnet.
 
@@ -65,7 +65,7 @@ Site Recovery erstellt bzw. repliziert keine NSGs als Teil des Failovervorgangs.
 
 Berücksichtigen Sie das weiter oben beschriebene [Beispielszenario](concepts-network-security-group-with-site-recovery.md#using-network-security-groups):
 -    Site Recovery kann Replikate von **Contoso VNet** und **Contoso Subnet** in der Azure-Zielregion erstellen, wenn die Replikation für den virtuellen Computer aktiviert ist.
--    Sie können die gewünschten Replikate von **Subnet NSG** und **VM NSG** (z.B. mit dem Namen **Zielsubnetz-NSG** bzw. **Ziel-VM-NSG** ) in der Azure-Zielregion erstellen, wobei zusätzliche in der Zielregion erforderliche Regeln zugelassen sind.
+-    Sie können die gewünschten Replikate von **Subnet NSG** und **VM NSG** (z.B. mit dem Namen **Zielsubnetz-NSG** bzw. **Ziel-VM-NSG**) in der Azure-Zielregion erstellen, wobei zusätzliche in der Zielregion erforderliche Regeln zugelassen sind.
 -    **Zielsubnetz-NSG** kann dann sofort dem Zielregionssubnetz zugeordnet werden, da sowohl NSG als auch Subnetz bereits verfügbar ist.
 -    **Ziel-VM-NSG** kann während des Failovers mit Wiederherstellungsplänen virtuellen Computern zugeordnet werden.
 

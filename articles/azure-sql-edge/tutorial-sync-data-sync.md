@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
 ms.openlocfilehash: 5659ce5fa6f99463f58a33662563d768248fd8cb
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93394899"
 ---
 # <a name="tutorial-sync-data-from-sql-edge-to-azure-sql-database-by-using-sql-data-sync"></a>Tutorial: Synchronisieren von Daten zwischen SQL Edge und Azure SQL-Datenbank mithilfe der SQL-Datensynchronisierung
@@ -41,7 +41,7 @@ Für dieses Tutorial wird ein Windows-Computer benötigt, der mit dem [Data Sync
 Das Einrichten der Synchronisierung zwischen einer Datenbank in Azure SQL-Datenbank und einer SQL Edge-Instanz mithilfe der SQL-Datensynchronisierung umfasst drei Hauptschritte:  
 
 
-1. Verwenden Sie das Azure-Portal, um eine Synchronisierungsgruppe zu erstellen. Weitere Informationen finden Sie unter [Erstellen einer Synchronisierungsgruppe](../azure-sql/database/sql-data-sync-sql-server-configure.md#create-sync-group). Sie können eine einzelne *Hub* -Datenbank verwenden, um mehrere Synchronisierungsgruppen zum Synchronisieren von Daten aus verschiedenen SQL Edge-Instanzen mit einer oder mehreren Datenbanken in Azure SQL-Datenbank zu erstellen. 
+1. Verwenden Sie das Azure-Portal, um eine Synchronisierungsgruppe zu erstellen. Weitere Informationen finden Sie unter [Erstellen einer Synchronisierungsgruppe](../azure-sql/database/sql-data-sync-sql-server-configure.md#create-sync-group). Sie können eine einzelne *Hub*-Datenbank verwenden, um mehrere Synchronisierungsgruppen zum Synchronisieren von Daten aus verschiedenen SQL Edge-Instanzen mit einer oder mehreren Datenbanken in Azure SQL-Datenbank zu erstellen. 
 
 2. Fügen Sie der Synchronisierungsgruppe Synchronisierungsmitglieder hinzu. Weitere Informationen finden Sie unter [Hinzufügen von Synchronisierungsmitgliedern](../azure-sql/database/sql-data-sync-sql-server-configure.md#add-sync-members).
 

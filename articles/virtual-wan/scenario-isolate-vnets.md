@@ -10,10 +10,10 @@ ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
 ms.openlocfilehash: e5e2ce17be6d8a1fa82d8a92b9b788f0bd2a37b8
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92424746"
 ---
 # <a name="scenario-isolating-vnets"></a>Szenario: Isolieren von virtuellen Netzwerken (VNETs)
@@ -51,10 +51,10 @@ Weitere Informationen zum Routing für virtuelle Hubs finden Sie unter [Informat
 Führen Sie zur Konfiguration dieses Szenarios die folgenden Schritte aus:
 
 1. Erstellen Sie eine benutzerdefinierte Routingtabelle in jedem Hub. Im Beispiel ist **RT_VNet** die Routingtabelle. Informationen, wie eine Routingtabelle erstellt wird, finden Sie unter [Konfigurieren des Routings für virtuelle Hubs](how-to-virtual-hub-routing.md). Weitere Informationen über Routingtabellen finden Sie unter [Informationen zum Routing virtueller Hubs](about-virtual-hub-routing.md).
-2. Wenn Sie die **RT_VNet** -Routingtabelle erstellen, konfigurieren Sie die folgenden Einstellungen:
+2. Wenn Sie die **RT_VNet**-Routingtabelle erstellen, konfigurieren Sie die folgenden Einstellungen:
 
    * **Zuordnung:** Wählen Sie die VNETs aus, die Sie isolieren möchten.
-   * **Weitergabe** : Wählen Sie die Option für Zweige aus, was impliziert, dass Zweigverbindungen (VPN/ER/P2S-Verbindungen) Routen an diese Routingtabelle weitergeben.
+   * **Weitergabe**: Wählen Sie die Option für Zweige aus, was impliziert, dass Zweigverbindungen (VPN/ER/P2S-Verbindungen) Routen an diese Routingtabelle weitergeben.
 
 :::image type="content" source="./media/routing-scenarios/isolated/isolated-vnets.png" alt-text="Isolierte VNETs":::
 

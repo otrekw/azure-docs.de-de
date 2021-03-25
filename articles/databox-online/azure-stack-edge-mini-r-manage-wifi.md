@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 10/28/2020
 ms.author: alkohli
 ms.openlocfilehash: f00be43d023d912d4b0b6e825dfe9d3e0ca2d250
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96465744"
 ---
 # <a name="use-the-local-web-ui-to-manage-wireless-connectivity-on-your-azure-stack-edge-mini-r"></a>Verwenden der lokalen Webbenutzeroberfläche, um die drahtlose Konnektivität für Azure Stack Edge Mini R zu verwalten
@@ -36,43 +36,43 @@ Führen Sie die folgenden Schritte auf der lokalen Benutzeroberfläche Ihres Ger
     
     Auf Ihrem physischen Gerät stehen fünf Netzwerkschnittstellen zur Verfügung. PORT 1 und PORT 2 sind 1-Gbit/s-Netzwerkschnittstellen. PORT 3 und PORT 4 sind 10-Gbit/s-Netzwerkschnittstellen. Der fünfte Port ist der WLAN-Port. 
 
-    [![Seite mit den Netzwerkeinstellungen auf der lokalen Webbenutzeroberfläche (1)](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/configure-wifi-1.png)](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/configure-wifi-1.png#lightbox)  
+    [![Seite „Netzwerkeinstellungen“ der lokalen Webbenutzeroberfläche 1](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/configure-wifi-1.png)](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/configure-wifi-1.png#lightbox)  
     
     Wählen Sie den WLAN-Port aus, und konfigurieren Sie die Porteinstellungen. 
     
     > [!IMPORTANT]
     > Es wird dringend empfohlen, eine statische IP-Adresse für den WLAN-Port zu konfigurieren.  
 
-    ![Seite mit den Netzwerkeinstellungen auf der lokalen Webbenutzeroberfläche (2)](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/configure-wifi-2.png)
+    ![Seite „Netzwerkeinstellungen“ der lokalen Webbenutzeroberfläche 2](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/configure-wifi-2.png)
 
     Nachdem Sie die Einstellungen für den WLAN-Port angewendet haben, wird die Seite **Netzwerk** aktualisiert.
 
-    ![Seite mit den Netzwerkeinstellungen auf der lokalen Webbenutzeroberfläche (3)](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/configure-wifi-4.png)
+    ![Seite „Netzwerkeinstellungen“ der lokalen Webbenutzeroberfläche 3](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/configure-wifi-4.png)
 
    
 2. Wählen Sie **WLAN-Profil hinzufügen** aus, und laden Sie Ihr WLAN-Profil hoch. 
 
-    ![Seite mit den Netzwerkeinstellungen für den WLAN-Port auf der lokalen Webbenutzeroberfläche (1)](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/add-wifi-profile-1.png)
+    ![Seite mit den Netzwerkeinstellungen für den WLAN-Port auf der lokalen Webbenutzeroberfläche 1](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/add-wifi-profile-1.png)
     
-    Ein Drahtlosnetzwerk-Profil enthält die SSID (Netzwerkname), den Kennwortschlüssel und Sicherheitsinformationen für die Verbindungsherstellung mit einem Drahtlosnetzwerk. Das WLAN-Profil für Ihre Umgebung erhalten Sie von Ihrem Netzwerkadministrator.
+    Ein Funknetzwerkprofil enthält die SSID (Netzwerkname), den Kennwortschlüssel sowie Sicherheitsinformationen für die Verbindungsherstellung mit einem Funknetzwerk. Das WLAN-Profil für Ihre Umgebung erhalten Sie von Ihrem Netzwerkadministrator.
 
-    ![Seite mit den Netzwerkeinstellungen für den WLAN-Port auf der lokalen Webbenutzeroberfläche (2)](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/add-wifi-profile-2.png)
+    ![Seite mit den Netzwerkeinstellungen für den WLAN-Port auf der lokalen Webbenutzeroberfläche 2](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/add-wifi-profile-2.png)
 
     Nach dem Hinzufügen des Profils wird die Liste mit den WLAN-Profilen aktualisiert, und das neue Profil wird angezeigt. Der **Verbindungsstatus** des Profils sollte **Getrennt** lauten. 
 
-    ![Seite mit den Netzwerkeinstellungen für den WLAN-Port auf der lokalen Webbenutzeroberfläche (3)](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/add-wifi-profile-3.png)
+    ![Seite mit den Netzwerkeinstellungen für den WLAN-Port auf der lokalen Webbenutzeroberfläche 3](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/add-wifi-profile-3.png)
     
-3. Nachdem das Drahtlosnetzwerk-Profil erfolgreich geladen wurde, können Sie eine Verbindung mit diesem Profil herstellen. Wählen Sie **Verbindung mit WLAN-Profil herstellen** aus. 
+3. Nachdem das Funknetzwerkprofil erfolgreich geladen wurde, können Sie eine Verbindung mit diesem Profil herstellen. Wählen Sie **Connect to Wi-Fi profile** (Verbindung mit WLAN-Profil herstellen) aus. 
 
-    ![Seite mit den Netzwerkeinstellungen für den WLAN-Port auf der lokalen Webbenutzeroberfläche (4)](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/add-wifi-profile-4.png)
+    ![Seite mit den Netzwerkeinstellungen für den WLAN-Port auf der lokalen Webbenutzeroberfläche 4](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/add-wifi-profile-4.png)
 
 4. Wählen Sie das im vorherigen Schritt hinzugefügte WLAN-Profil und anschließend **Anwenden** aus. 
 
-    ![Seite mit den Netzwerkeinstellungen für den WLAN-Port auf der lokalen Webbenutzeroberfläche (5)](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/add-wifi-profile-5.png)
+    ![Seite mit den Netzwerkeinstellungen für den WLAN-Port auf der lokalen Webbenutzeroberfläche 5](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/add-wifi-profile-5.png)
 
-    Der **Verbindungsstatus** sollte in **Verbunden** geändert werden. Die Signalstärke wird aktualisiert, um die Qualität des Signals anzugeben. 
+    Der **Verbindungsstatus** sollte in **Verbunden** aktualisiert werden. Die Signalstärke wird aktualisiert, um die Qualität des Signals anzugeben. 
 
-    ![Seite mit den Netzwerkeinstellungen für den WLAN-Port auf der lokalen Webbenutzeroberfläche (6)](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/add-wifi-profile-6.png)
+    ![Seite mit den Netzwerkeinstellungen für den WLAN-Port auf der lokalen Webbenutzeroberfläche 6](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/add-wifi-profile-6.png)
 
     > [!NOTE]
     > Für die Übertragung großer Datenmengen empfiehlt es sich, anstelle des Drahtlosnetzwerks eine Kabelverbindung zu verwenden. 

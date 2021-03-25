@@ -10,10 +10,10 @@ ms.date: 08/29/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
 ms.openlocfilehash: f069f711ccf5672041ea6f3b15a52fa2b3ba2022
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90900030"
 ---
 # <a name="tutorial-connect-to-azure-stack-edge-pro-with-gpu"></a>Tutorial: Herstellen einer Verbindung mit Azure Stack Edge Pro mit GPU
@@ -39,7 +39,7 @@ In diesem Tutorial lernen Sie Folgendes kennen:
 
 ## <a name="connect-to-the-local-web-ui-setup"></a>Herstellen einer Verbindung mit der lokalen Webbenutzeroberfläche
 
-1. Konfigurieren Sie den Ethernet-Adapter auf Ihrem Computer, um das Azure Stack Edge Pro-Gerät mit der statischen IP-Adresse 192.168.100.5 und dem Subnetz 255.255.255.0 zu verbinden.
+1. Konfigurieren Sie den Ethernet-Adapter auf Ihrem Computer, um das Azure Stack Edge Pro-Gerät mit der statischen IP-Adresse 192.168.100.5 und dem Subnetz 255.255.255.0 zu verbinden.
 
 2. Verbinden Sie den Computer mit PORT 1 auf Ihrem Gerät. Wenn Sie den Computer direkt (ohne Switch) mit dem Gerät verbinden, verwenden Sie ein Kreuzkabel oder einen USB-Ethernet-Adapter. Verwenden Sie die folgende Abbildung, um PORT 1 auf Ihrem Gerät zu identifizieren.
 
@@ -60,7 +60,7 @@ In diesem Tutorial lernen Sie Folgendes kennen:
 
 5. Melden Sie sich bei der Webbenutzeroberfläche des Geräts an. Das Standardkennwort lautet *Password1*. 
    
-    ![Anmeldeseite für das Azure Stack Edge Pro-Gerät](./media/azure-stack-edge-deploy-connect-setup-activate/image3.png)
+    ![Anmeldeseite für Azure Stack Edge Pro-Gerät](./media/azure-stack-edge-deploy-connect-setup-activate/image3.png)
 
 6. Ändern Sie das Geräteadministratorkennwort in der Eingabeaufforderung.  
     Das neue Kennwort muss zwischen acht und 16 Zeichen lang sein. Es muss drei der folgenden Zeichen enthalten: Großbuchstaben, Kleinbuchstaben, Ziffern und Sonderzeichen.
