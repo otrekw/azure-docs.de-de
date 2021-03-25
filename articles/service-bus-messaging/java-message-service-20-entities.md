@@ -1,16 +1,16 @@
 ---
-title: 'Azure Service Bus Messaging: Java-Messagingdienstentitäten (Vorschau)'
+title: 'Azure Service Bus Messaging: Java-Messagingdienstentitäten'
 description: Dieser Artikel bietet eine Übersicht über Azure Service Bus-Messagingentitäten, auf die über die Java-Messagingdienst-API zugegriffen werden kann.
 ms.topic: article
 ms.date: 07/20/2020
-ms.openlocfilehash: 1a7fe3d6355146ccf0fce50266a6f3b8da5231b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee4e0124dced16b86d5292c647e129aa87645f22
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87801307"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "100652580"
 ---
-# <a name="java-message-service-jms-20-entities-preview"></a>Java Message Service 2.0-Entitäten (JMS) (Vorschau)
+# <a name="java-message-service-jms-20-entities"></a>Java Message Service 2.0-Entitäten (JMS)
 
 Clientanwendungen, die eine Verbindung mit Azure Service Bus Premium herstellen und die [JMS-Bibliothek von Azure Service Bus](https://search.maven.org/artifact/com.microsoft.azure/azure-servicebus-jms) verwenden, können die unten aufgeführten Entitäten nutzen.
 
@@ -36,7 +36,7 @@ Topic createTopic(String topicName)
 
 ## <a name="temporary-queues"></a>Temporäre Warteschlangen
 
-Wenn eine Clientanwendung eine temporäre Entität erfordert, die für die Lebensdauer der Anwendung vorhanden ist, kann sie temporäre Warteschlangen verwenden. Diese werden mit dem Muster [Anforderung/Antwort](https://www.enterpriseintegrationpatterns.com/patterns/messaging/RequestReply.html) genutzt.
+Wenn eine Clientanwendung eine temporäre Entität erfordert, die für die Lebensdauer der Anwendung vorhanden ist, kann sie temporäre Warteschlangen verwenden. Diese Entitäten werden mit dem Muster [Anforderung/Antwort](https://www.enterpriseintegrationpatterns.com/patterns/messaging/RequestReply.html) verwendet.
 
 Verwenden Sie die folgenden Methoden in der `JMSContext`-Klasse, um eine temporäre Warteschlange zu erstellen:
 
@@ -56,19 +56,19 @@ TemporaryTopic createTemporaryTopic()
 
 ## <a name="java-message-service-jms-subscriptions"></a>Java Message Service-Abonnements (JMS)
 
-Auch wenn diese semantisch [Abonnements](service-bus-queues-topics-subscriptions.md#topics-and-subscriptions) ähnlich sind (sie also für ein Thema vorhanden sind und Veröffentlichungs-/ Abonniersemantik ermöglichen), führt die Java Message Service-Spezifikation die Konzepte der Attribute **Shared** (freigegeben), **Unshared** (nicht freigegeben), **Durable** (dauerhaft) und **Non-durable** (nicht dauerhaft) für das jeweilige Abonnement ein.
+Auch wenn diese semantisch [Abonnements](service-bus-queues-topics-subscriptions.md#topics-and-subscriptions) ähnlich sind (sie also für ein Thema vorhanden sind und Veröffentlichungs-/ Abonniersemantik ermöglichen), führt die Java Message Service-Spezifikation die Konzepte der Attribute **Shared** (freigegeben), **Unshared** (nicht freigegeben), **Durable (dauerhaft) und **Non-durable** (nicht dauerhaft) für das jeweilige Abonnement ein.
 
 > [!NOTE]
-> Die unten genannten Abonnements sind im Premium-Tarif von Azure Service Bus als Vorschau für Clientanwendungen verfügbar, die über die [JMS-Bibliothekvon Azure Service Bus](https://search.maven.org/artifact/com.microsoft.azure/azure-servicebus-jms) eine Verbindung mit Azure Service Bus herstellen.
+> Die unten genannten Abonnements sind im Premium-Tarif von Azure Service Bus für Clientanwendungen verfügbar, die über die [JMS-Bibliothek von Azure Service Bus](https://search.maven.org/artifact/com.microsoft.azure/azure-servicebus-jms) eine Verbindung mit Azure Service Bus herstellen.
 >
-> Für die öffentliche Vorschau können diese Abonnements nicht mithilfe des Azure-Portals erstellt werden.
+> Nur dauerhafte Abonnements können mit dem Azure-Portal erstellt werden.
 >
 
 ### <a name="shared-durable-subscriptions"></a>Freigegebene dauerhafte Abonnements
 
 Ein freigegebenes dauerhaftes Abonnement wird verwendet, wenn alle zu einem Thema veröffentlichten Nachrichten von einer Anwendung empfangen und verarbeitet werden sollen, und zwar unabhängig davon, ob die Anwendung das Abonnement jederzeit aktiv nutzt.
 
-Da es sich um ein freigegebenes Abonnement handelt, kann jede Anwendung, die für den Empfang von Service Bus authentifiziert ist, von diesem Abonnement Nachrichten empfangen.
+Jede Anwendung, die für den Empfang von Service Bus authentifiziert ist, kann von freigegebenen dauerhaften Abonnement Nachrichten empfangen.
 
 Verwenden Sie zum Erstellen eines freigegebenen dauerhaften Abonnements die folgenden Methoden für die `JMSContext`-Klasse:
 
@@ -86,7 +86,7 @@ void unsubscribe(String name)
 
 ### <a name="unshared-durable-subscriptions"></a>Nicht freigegebene dauerhafte Abonnements
 
-Genau wie freigegebenes dauerhaftes Abonnement wird ein nicht freigegebenes dauerhaftes Abonnement verwendet, wenn alle zu einem Thema veröffentlichten Nachrichten von einer Anwendung empfangen und verarbeitet werden sollen, und zwar unabhängig davon, ob die Anwendung das Abonnement jederzeit aktiv nutzt.
+Wie ein freigegebenes dauerhaftes Abonnement wird ein nicht freigegebenes dauerhaftes Abonnement verwendet, wenn alle zu einem Thema veröffentlichten Nachrichten von einer Anwendung empfangen und verarbeitet werden sollen, und zwar unabhängig davon, ob die Anwendung das Abonnement aktiv nutzt.
 
 Da es sich hierbei jedoch um ein nicht freigegebenes Abonnement handelt, kann nur die Anwendung, die das Abonnement erstellt hat, daraus Nachrichten empfangen.
 
@@ -152,12 +152,55 @@ Ebenso wie **Filter und Aktionen** für reguläre Service Bus-Abonnements vorhan
 
 Nachrichtenselektoren können für jedes der JMS-Abonnements eingerichtet werden und sind als Filterbedingung für die Nachrichtenheadereigenschaften vorhanden. Es werden nur Nachrichten zugestellt, deren Headereigenschaften mit dem Nachrichtenselektorausdruck übereinstimmen. Ein Wert von NULL oder eine leere Zeichenfolge gibt an, dass kein Nachrichtenselektor für das JMS-Abonnement bzw. den -Consumer vorhanden ist.
 
+## <a name="additional-concepts-for-java-message-service-jms-20-subscriptions"></a>Weitere Konzepte für JMS 2.0-Abonnements (Java Message Service)
+
+### <a name="client-scoping"></a>Clientbereich
+
+Gemäß der Spezifikation in der JMS 2.0-API (Java Message Service) kann der *Bereich von Abonnements auf bestimmte Clientanwendungen festgelegt* werden, die durch die entsprechende `clientId` angegeben werden.
+
+Nachdem der Bereich für das Abonnement festgelegt wurde, ist der **Zugriff nur möglich** für Clientanwendungen mit derselben Client-ID. 
+
+Alle Versuche, auf ein Abonnement, dessen Bereich auf eine bestimmte Client-ID (z. B. clientId1) festgelegt wurde, aus einer Anwendung mit einer anderen Client-ID (z. B. clientId2) heraus zuzugreifen, führen zur Erstellung eines weiteren Abonnements, dessen Bereich auf die andere Client-ID (clientId2) festgelegt ist.
+
+> [!NOTE]
+> Die Client-ID kann NULL oder leer sein, sie muss jedoch mit der in der JMS-Clientanwendung festgelegten Client-ID identisch sein. Aus Sicht des Azure Service Bus haben eine Client-ID mit dem Wert NULL und eine leere Client-ID dasselbe Verhalten.
+>
+> Wenn die Client-ID leer oder auf NULL festgelegt ist, ist der Zugriff nur für Clientanwendungen möglich, deren Client-ID ebenfalls leer oder auf NULL festgelegt ist.
+>
+
+### <a name="shareability"></a>Freigabe
+
+Bei **freigegebenen** Abonnements können mehrere Clients/Consumer (d. h. JMSConsumer-Objekte) Nachrichten von diesen empfangen.
+
+>[!NOTE]
+> Auf freigegebene Abonnements, deren Bereich auf eine bestimmte Client-ID festgelegt ist, kann trotzdem von mehreren Clients/Consumern (d. h. JMSConsumer-Objekten) zugegriffen werden, alle Clientanwendungen müssen jedoch dieselbe Client-ID aufweisen.
+>
+ 
+
+Bei **nicht freigegebenen** Abonnements kann nur ein Client/Consumer (d. h. ein JMSConsumer-Objekt) Nachrichten von diesen empfangen. Wenn ein `JMSConsumer` für ein nicht freigegebenes Abonnement erstellt wird, obwohl bereits ein aktiver `JMSConsumer` auf Nachrichten von diesem Abonnement lauscht, wird eine `JMSException` ausgelöst.
+
+
+### <a name="durability"></a>Beständigkeit
+
+**Dauerhafte** Abonnements werden beibehalten und sammeln weiterhin Nachrichten aus dem Thema, unabhängig davon, ob eine Anwendung (`JMSConsumer`) Nachrichten daraus verarbeitet.
+
+**Nicht dauerhafte** Abonnements werden nicht beibehalten und sammeln Nachrichten aus dem Thema, sofern eine Anwendung (`JMSConsumer`) Nachrichten daraus verarbeitet. 
+
+## <a name="representation-of-client-scoped-subscriptions"></a>Darstellung von clientbezogenen Abonnements
+
+Da es möglich sein muss, dass die clientbezogenen (JMS-)Abonnements zusammen mit vorhandenen [Abonnements](service-bus-queues-topics-subscriptions.md#topics-and-subscriptions) verwendet werden, folgt die Darstellung der clientbezogenen (JMS-)Abonnements dem folgenden Format.
+
+   * **\<SUBSCRIPTION-NAME\>** $ **\<CLIENT-ID\>** $**D** (bei dauerhaften Abonnements)
+   * **\<SUBSCRIPTION-NAME\>** $ **\<CLIENT-ID\>** $**ND** (bei nicht dauerhaften Abonnements)
+
+Dabei ist **$** das Trennzeichen.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen und Beispiele für die Verwendung von Service Bus-Messaging finden Sie in den folgenden erweiterten Themen:
 
 * [Übersicht über Service Bus-Messaging](service-bus-messaging-overview.md)
-* [Verwenden der Java Message Service 2.0-API mit Azure Service Bus Premium (Vorschau)](how-to-use-java-message-service-20.md)
+* [Verwenden der Java Message Service 2.0-API mit Azure Service Bus Premium](how-to-use-java-message-service-20.md)
 
 
 

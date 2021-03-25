@@ -6,12 +6,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/25/2021
 ms.author: jingwang
-ms.openlocfilehash: 91cb10d601f0a44cf9895fffe558c03fdbe06eef
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: bd8fc3383d6d9a0afb7733cb94643623e6879d23
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101710225"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102178540"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Aktivität „Metadaten abrufen“ in Azure Data Factory
 
@@ -83,8 +83,14 @@ Sie können die folgenden Metadatentypen in der Feldliste der Aktivität „Meta
 | columnCount | Anzahl der Spalten in der Datei oder relationalen Tabelle. |
 | exists| Gibt an, ob eine Datei, ein Ordner oder eine Tabelle vorhanden ist. Wenn `exists` in der Feldliste der Aktivität „Metadaten abrufen“ angegeben ist, führt die Aktivität selbst dann nicht zu einem Fehler, wenn die Datei, der Ordner oder die Tabelle nicht vorhanden ist. Stattdessen wird `exists: false` in der Ausgabe zurückgegeben. |
 
->[!TIP]
->Wenn Sie überprüfen möchten, ob eine Datei, ein Ordner oder eine Tabelle vorhanden ist, geben Sie `exists` in der Feldliste der Aktivität „Metadaten abrufen“ an. Anschließend können Sie das Ergebnis (`exists: true/false`) in der Ausgabe der Aktivität überprüfen. Falls `exists` nicht in der Feldliste angegeben ist, schlägt die Aktivität „Metadaten abrufen“ fehl, wenn das Objekt nicht gefunden wird.
+> [!TIP]
+> Wenn Sie überprüfen möchten, ob eine Datei, ein Ordner oder eine Tabelle vorhanden ist, geben Sie `exists` in der Feldliste der Aktivität „Metadaten abrufen“ an. Anschließend können Sie das Ergebnis (`exists: true/false`) in der Ausgabe der Aktivität überprüfen. Falls `exists` nicht in der Feldliste angegeben ist, schlägt die Aktivität „Metadaten abrufen“ fehl, wenn das Objekt nicht gefunden wird.
+
+> [!NOTE]
+> Wenn Sie Metadaten aus Dateispeichern abrufen und `modifiedDatetimeStart` oder `modifiedDatetimeEnd` konfigurieren, enthält `childItems` in der Ausgabe nur Dateien im angegebenen Pfad, deren letzte Änderung im angegebenen Zeitraum liegt. Elemente in Unterordnern werden nicht eingeschlossen.
+
+> [!NOTE]
+> Damit die Feldliste **Struktur** die tatsächliche Datenstruktur für Datasets im Textformat mit Trennzeichen und im Excel-Format bereitstellt, müssen Sie die Eigenschaft `First Row as Header` aktivieren, die nur für diese Datenquellen unterstützt wird.
 
 ## <a name="syntax"></a>Syntax
 
@@ -160,7 +166,7 @@ Die Aktivität „Metadaten abrufen“ kann zurzeit die folgenden Arten von Meta
 Eigenschaft | BESCHREIBUNG | Erforderlich
 -------- | ----------- | --------
 fieldList | Die erforderlichen Arten von Metadateninformationen. Ausführliche Informationen zu unterstützten Metadaten finden Sie im Abschnitt [Metadatenoptionen](#metadata-options) dieses Artikels. | Ja 
-dataset | Das Referenzdataset, dessen Metadaten von der Aktivität „Metadaten abrufen“ abgerufen werden sollen. Weitere Informationen zu unterstützten Connectors finden Sie im Abschnitt [Funktionen](#capabilities). Ausführliche Informationen zur Syntax von Datasets finden Sie in den jeweiligen Connectorthemen. | Ja
+dataset | Das Referenzdataset, dessen Metadaten von der Aktivität „Metadaten abrufen“ abgerufen werden sollen. Weitere Informationen zu unterstützten Connectors finden Sie im Abschnitt [Funktionen](#supported-capabilities). Ausführliche Informationen zur Syntax von Datasets finden Sie in den jeweiligen Connectorthemen. | Ja
 formatSettings | Wird bei Verwendung eines formatierten Datasets angewendet. | Nein
 storeSettings | Wird bei Verwendung eines formatierten Datasets angewendet. | Nein
 

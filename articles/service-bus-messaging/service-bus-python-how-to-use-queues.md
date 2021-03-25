@@ -9,10 +9,10 @@ ms.date: 11/18/2020
 ms.author: spelluru
 ms.custom: seo-python-october2019, devx-track-python
 ms.openlocfilehash: 0553062032a58ec9eb9cf3c474ee7c8f19fc544d
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98631554"
 ---
 # <a name="send-messages-to-and-receive-messages-from-azure-service-bus-queues-python"></a>Senden und Empfangen von Nachrichten für Azure Service Bus-Warteschlangen (Python)
@@ -52,7 +52,7 @@ In diesem Artikel erfahren Sie, wie Sie mithilfe von Python Nachrichten an Azure
     ```
 
     Der Absender ist ein Objekt, das als Client für die von Ihnen erstellte Warteschlange fungiert. Es wird später erstellt und als Argument an diese Funktion gesendet. 
-4. Fügen Sie eine Methode zum Senden einer Liste mit Nachrichten hinzu:
+4. Fügen Sie eine Methode zum Senden einer Liste mit Nachrichten hinzu.
 
     ```python
     def send_a_list_of_messages(sender):
@@ -192,7 +192,7 @@ Received: Message inside a ServiceBusMessageBatch
 Received: Message inside a ServiceBusMessageBatch
 ```
 
-Navigieren Sie im Azure-Portal zu Ihrem Service Bus-Namespace. Vergewissern Sie sich auf der Seite **Übersicht**, dass die Anzahl für die **eingehenden** und **ausgehenden** Nachrichten „16“ beträgt. Falls diese Zahlen nicht angezeigt werden, warten Sie einige Minuten, und aktualisieren Sie dann die Seite. 
+Navigieren Sie im Azure-Portal zu Ihrem Service Bus-Namespace. Vergewissern Sie sich auf der Seite **Übersicht**, dass die Anzahl für die **eingehenden** und **ausgehenden** Nachrichten „16“ beträgt. Falls diese Zahlen nicht angezeigt werden, sollten Sie die Seite nach einigen Minuten aktualisieren. 
 
 :::image type="content" source="./media/service-bus-python-how-to-use-queues/overview-incoming-outgoing-messages.png" alt-text="Anzahl ein- und ausgehender Nachrichten":::
 

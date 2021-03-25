@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 7/16/2020
 ms.author: surmb
 ms.openlocfilehash: ec58c6f97efdbcb91071bcea98bbbc614833246d
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92215772"
 ---
 # <a name="rewrite-url-with-azure-application-gateway---azure-portal-preview"></a>Erneutes Generieren einer URL mit Azure Application Gateway: Azure-Portal (Vorschau)
@@ -53,19 +53,19 @@ Wenn die Anforderungs-URL */article* enthält, werden im folgenden Beispiel die 
     
     c. Wählen Sie **Weiter** aus.
     
-    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-2.png" alt-text="Hinzufügen eines Satzes zum erneuten Generieren":::
+    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-2.png" alt-text="Einer Regel zuordnen":::
 
 5. Erstellen einer Regel zum erneuten Generieren:
 
     a. Wählen Sie **Neuschreibungsregel hinzufügen** aus.
     
-    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-3.png" alt-text="Hinzufügen eines Satzes zum erneuten Generieren":::
+    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-3.png" alt-text="Screenshot, in dem „Neuschreibungsregel hinzufügen“ hervorgehoben ist":::
     
     b. Geben Sie einen Namen für die Regel zum erneuten Generieren in das Feld **Umschreibungsregelname** ein. Geben Sie eine Zahl in das Feld **Regelsequenz** ein.
 
 6. In diesem Beispiel generieren wir den URL-Pfad und die URL-Abfragezeichenfolge nur dann neu, wenn der Pfad */article* enthält. Fügen Sie zu diesem Zweck eine Bedingung hinzu, um auszuwerten, ob der URL-Pfad */article* enthält.
 
-    a. Wählen Sie auf **Bedingung hinzufügen** und dann das Feld aus, das die **If** -Anweisungen enthält, um es zu erweitern.
+    a. Wählen Sie auf **Bedingung hinzufügen** und dann das Feld aus, das die **If**-Anweisungen enthält, um es zu erweitern.
     
     b. Da in diesem Beispiel das Muster */article* im URL-Pfad überprüft werden soll, wählen Sie in der Liste **Typ der zu überprüfenden Variablen** die Option **Servervariable** aus.
     
@@ -79,9 +79,9 @@ Wenn die Anforderungs-URL */article* enthält, werden im folgenden Beispiel die 
     
       () wird verwendet, um die substring-Funktion für die spätere Verwendung bei der Erstellung des Ausdrucks zum erneuten Generieren des URL-Pfads zu erfassen. Weitere Informationen finden Sie [hier](rewrite-http-headers-url.md#capturing).
 
-    g. Klicken Sie auf **OK** .
+    g. Klicken Sie auf **OK**.
 
-    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-4.png" alt-text="Hinzufügen eines Satzes zum erneuten Generieren":::
+    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-4.png" alt-text="Condition":::
 
  
 
@@ -93,28 +93,28 @@ Wenn die Anforderungs-URL */article* enthält, werden im folgenden Beispiel die 
 
    c. Wählen Sie unter **Komponenten** sowohl den **URL-Pfad als auch die URL-Abfragezeichenfolge** aus.
 
-   d. Geben Sie als **URL-Pfadwert** den neuen Wert des Pfads ein. In diesem Beispiel verwenden wir **/article.aspx** . 
+   d. Geben Sie als **URL-Pfadwert** den neuen Wert des Pfads ein. In diesem Beispiel verwenden wir **/article.aspx**. 
 
    e. Geben Sie als **URL-Abfragezeichenfolgenwert** den neuen Wert der URL-Abfragezeichenfolge ein. In diesem Beispiel verwenden wir **id={var_uri_path_1}&title={var_uri_path_2}** .
     
     `{var_uri_path_1}` und `{var_uri_path_1}` werden zum Abrufen der substring-Funktionen verwendet, die während der Auswertung der Bedingung in diesem Ausdruck aufgezeichnet wurden: `.*article/(.*)/(.*)`.
     
-   f. Klicken Sie auf **OK** .
+   f. Klicken Sie auf **OK**.
 
-    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-5.png" alt-text="Hinzufügen eines Satzes zum erneuten Generieren":::
+    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-5.png" alt-text="Aktion":::
 
-8. Klicken Sie auf **Erstellen** , um den Satz zum erneuten Generieren zu erstellen.
+8. Klicken Sie auf **Erstellen**, um den Satz zum erneuten Generieren zu erstellen.
 
 9. Sicherstellen, dass der neue Satz zum erneuten Generieren in der Liste der Sätze zum erneuten Generieren angezeigt wird
 
-    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-6.png" alt-text="Hinzufügen eines Satzes zum erneuten Generieren":::
+    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-6.png" alt-text="Hinzufügen einer Regel zum erneuten Generieren":::
 
 ## <a name="verify-url-rewrite-through-access-logs"></a>Überprüfen der erneuten URL-Generierung durch Zugriffsprotokolle
 
 Beachten Sie die unten aufgeführten Felder in Zugriffsprotokollen, um zu überprüfen, ob die erneuten URL-Generierung gemäß ihrer Erwartung erfolgt ist.
 
-* **originalRequestUriWithArgs** : Dieses Feld enthält die ursprüngliche Anforderungs-URL.
-* **requestUri** : Dieses Feld enthält die URL nach dem Vorgang zur erneuten Generierung in Application Gateway.
+* **originalRequestUriWithArgs**: Dieses Feld enthält die ursprüngliche Anforderungs-URL.
+* **requestUri**: Dieses Feld enthält die URL nach dem Vorgang zur erneuten Generierung in Application Gateway.
 
 Weitere Informationen zu allen Feldern in den Zugriffsprotokollen finden Sie [hier](application-gateway-diagnostics.md#for-application-gateway-and-waf-v2-sku).
 

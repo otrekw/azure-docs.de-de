@@ -12,12 +12,12 @@ ms.date: 02/01/2021
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: b948de6ad9e07a650df98ef38104c02462ab532d
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: b82d3963ed12e0d5dc6acd75555a3a7e8f20eeb0
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99428030"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175344"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Fehlercodes für die Azure AD-Authentifizierung und -Autorisierung
 
@@ -95,7 +95,7 @@ Wenn Sie beispielsweise den Fehlercode „AADSTS50058“ erhalten haben, suchen 
 | AADSTS50000 | TokenIssuanceError: Es besteht ein Problem mit dem Anmeldedienst. [Öffnen Sie ein Supportticket](../fundamentals/active-directory-troubleshooting-support-howto.md), um dieses Problem zu beheben. |
 | AADSTS50001 | InvalidResource: Die Ressource ist deaktiviert oder nicht vorhanden. Überprüfen Sie den Code Ihrer App, um sicherzustellen, dass Sie die genaue Ressourcen-URL für die Ressource angegeben haben, auf die Sie zugreifen möchten.  |
 | AADSTS50002 | NotAllowedTenant: Fehler bei der Anmeldung aufgrund von eingeschränktem Proxyzugriff auf dem Mandanten. Falls es sich um Ihre eigene Mandantenrichtlinie handelt, können Sie die Einschränkungseinstellungen des Mandanten ändern, um dieses Problem zu beheben. |
-| AADSTS500021 | Der Zugriff auf den Mandanten „{tenant}“ wurde verweigert. AADSTS500021 gibt an, dass das Mandanteneinschränkungsfeature konfiguriert ist und der Benutzer versucht, auf einen Mandanten zuzugreifen, der nicht in der im Header `Restrict-Access-To-Tenant` angegebenen Liste zulässiger Mandanten enthalten ist. Weitere Informationen finden Sie unter [Verwalten des Zugriffs auf SaaS-Cloudanwendungen mithilfe von Mandanteneinschränkungen](/azure/active-directory/manage-apps/tenant-restrictions).|
+| AADSTS500021 | Der Zugriff auf den Mandanten „{tenant}“ wurde verweigert. AADSTS500021 gibt an, dass das Mandanteneinschränkungsfeature konfiguriert ist und der Benutzer versucht, auf einen Mandanten zuzugreifen, der nicht in der im Header `Restrict-Access-To-Tenant` angegebenen Liste zulässiger Mandanten enthalten ist. Weitere Informationen finden Sie unter [Verwalten des Zugriffs auf SaaS-Cloudanwendungen mithilfe von Mandanteneinschränkungen](../manage-apps/tenant-restrictions.md).|
 | AADSTS50003 | MissingSigningKey: Fehler bei der Anmeldung aufgrund eines fehlenden Signaturschlüssels oder Zertifikats. Der Grund hierfür kann sein, dass in der App kein Signaturschlüssel konfiguriert wurde. Sehen Sie sich die unter [../manage-apps/application-sign-in-problem-federated-sso-gallery.md#certificate-or-key-not-configured](../manage-apps/application-sign-in-problem-federated-sso-gallery.md#certificate-or-key-not-configured) erläuterten Lösungen an. Falls weiterhin Probleme auftreten, können Sie sich an den Besitzer oder Administrator der App wenden. |
 | AADSTS50005 | DevicePolicyError: Der Benutzer hat versucht, sich über eine Plattform an einem Gerät anzumelden, die aufgrund einer Richtlinie für bedingten Zugriff zurzeit nicht unterstützt wird. |
 | AADSTS50006 | InvalidSignature: Fehler bei der Signaturüberprüfung aufgrund einer ungültigen Signatur. |
@@ -168,6 +168,7 @@ Wenn Sie beispielsweise den Fehlercode „AADSTS50058“ erhalten haben, suchen 
 | AADSTS50168 | ChromeBrowserSsoInterruptRequired: Der Client ist in der Lage, über die Windows 10-Kontenerweiterung ein SSO-Token abzurufen, aber das Token wurde in der Anforderung nicht gefunden, oder das angegebene Token ist abgelaufen. |
 | AADSTS50169 | InvalidRequestBadRealm: Der Bereich ist kein konfigurierter Bereich des aktuellen Dienstnamespace. |
 | AADSTS50170 | MissingExternalClaimsProviderMapping: Die externe Steuerelementzuordnung fehlt. |
+| AADSTS50173 | FreshTokenNeeded: Die angegebene Zugriffsgewährung ist abgelaufen, da sie widerrufen wurde, und es ist ein aktuelles Authentifizierungstoken erforderlich. Ein Administrator oder Benutzer hat die Token für diesen Benutzer widerrufen. Dadurch sind nachfolgende Tokenaktualisierungen nicht erfolgreich, und es ist eine erneute Authentifizierung erforderlich. Bitten Sie den Benutzer, sich erneut anzumelden. |
 | AADSTS50177 | ExternalChallengeNotSupportedForPassthroughUsers: Die externe Überprüfung wird für Passthrough-Benutzer nicht unterstützt. |
 | AADSTS50178 | SessionControlNotSupportedForPassthroughUsers: Sitzungssteuerung wird für Passthrough-Benutzer nicht unterstützt. |
 | AADSTS50180 | WindowsIntegratedAuthMissing: Integrierte Windows-Authentifizierung ist erforderlich. Aktivieren Sie den Mandanten für das nahtlose einmalige Anmelden. |
@@ -186,6 +187,7 @@ Wenn Sie beispielsweise den Fehlercode „AADSTS50058“ erhalten haben, suchen 
 | AADSTS53002 | ApplicationUsedIsNotAnApprovedApp: Die verwendete App ist keine genehmigte App für bedingten Zugriff. Der Benutzer muss eine der Apps aus der Liste mit den genehmigten Apps nutzen, um Zugriff zu erhalten. |
 | AADSTS53003 | BlockedByConditionalAccess: Zugriff wurde von Richtlinien für bedingten Zugriff blockiert. Die Zugriffsrichtlinie erlaubt nicht die Ausstellung von Token. |
 | AADSTS53004 | ProofUpBlockedDueToRisk: Der Benutzer muss den Registrierungsprozess für die mehrstufige Authentifizierung durchführen, bevor er auf diesen Inhalt zugreifen kann. Benutzer sollten sich für die mehrstufige Authentifizierung registrieren. |
+| AADSTS53011 | Der Benutzer wurde aufgrund eines Risikos für den Basismandanten blockiert. |
 | AADSTS54000 | MinorUserBlockedLegalAgeGroupRule |
 | AADSTS65001 | DelegationDoesNotExist: Der Benutzer oder Administrator hat der Verwendung der Anwendung mit ID X nicht zugestimmt. Senden Sie eine interaktive Autorisierungsanforderung für diesen Benutzer und diese Ressource. |
 | AADSTS65004 | UserDeclinedConsent: Der Benutzer hat seine Zustimmung für den Zugriff auf die App abgelehnt. Bitten Sie den Benutzer, die Anmeldung zu wiederholen und die Zustimmung für die App zu erteilen.|

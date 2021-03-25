@@ -10,10 +10,10 @@ ms.date: 02/02/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: debce0a1b4c09bb89cdceb1cd29e59e1976c939a
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99539150"
 ---
 # <a name="blob-snapshots"></a>Blobmomentaufnahmen
@@ -133,14 +133,14 @@ Das folgende Diagramm zeigt die Abrechnung von Objekten, wenn ein Blob mit Momen
 
 :::image type="content" source="media/snapshots-overview/snapshot-billing-tiers.png" alt-text="Diagramm: Abrechnung von Objekten, wenn für ein Blob mit Momentaufnahmen explizit eine Ebene festgelegt wird":::
 
-Das explizite Festlegen der Ebene für ein Blob, eine Version oder eine Momentaufnahme kann nicht rückgängig gemacht werden. Wenn Sie ein Blob auf eine neue Ebene und dann wieder auf die ursprüngliche Ebene verschieben, wird Ihnen der gesamte Inhalt des Objekts in Rechnung gestellt, auch wenn Blöcke von anderen Objekten auf der ursprünglichen Ebene gemeinsam genutzt werden.
+Das explizite Festlegen der Ebene für ein Blob, eine Version oder eine Momentaufnahme kann nicht rückgängig gemacht werden. Wenn Sie ein Blob auf eine neue Dienstebene verschieben und dann wieder auf die ursprüngliche Dienstebene zurück verschieben, wird Ihnen der gesamte Inhalt des Objekts in Rechnung gestellt, auch wenn es Blöcke mit anderen Objekten auf der ursprünglichen Dienstebene gemeinsam nutzt.
 
-Zu den Vorgängen, mit denen die Ebene eines Blobs, einer Version oder einer Momentaufnahme explizit festgelegt wird, zählen folgende:
+Vorgänge, mit denen die Dienstebene eines Blobs, einer Version oder einer Momentaufnahme explizit festgelegt wird:
 
 - [Set Blob Tier](/rest/api/storageservices/set-blob-tier)
-- [Put Blob](/rest/api/storageservices/put-blob) mit Angabe der Ebene
-- [Put Block List](/rest/api/storageservices/put-block-list) mit Angabe der Ebene
-- [Copy Blob](/rest/api/storageservices/copy-blob) mit Angabe der Ebene
+- [Put Blob](/rest/api/storageservices/put-blob) mit der angegebenen Dienstebene
+- [Put Block List](/rest/api/storageservices/put-block-list) mit der angegebenen Dienstebene
+- [Copy Blob](/rest/api/storageservices/copy-blob) mit der angegebenen Dienstebene
 
 #### <a name="deleting-a-blob-when-soft-delete-is-enabled"></a>Löschen eines Blobs mit aktiviertem vorläufigem Löschen
 
@@ -148,10 +148,10 @@ Wenn das vorläufige Löschen für Blobs aktiviert ist und Sie ein Basisblob lö
 
 In der folgenden Tabelle wird das Abrechnungsverhalten für ein vorläufig gelöschtes Blob für die beiden Fällen mit aktivierter und deaktivierter Versionsverwaltung beschrieben. Bei aktivierter Versionsverwaltung wird beim vorläufigen Löschen eines Blobs eine neue Version erstellt. Bei deaktivierter Versionsverwaltung wird durch das vorläufige Löschen eines Blobs eine Momentaufnahme mit vorläufigem Löschen erstellt.
 
-| Überschreibung eines Basisblobs mit explizit festgelegter Ebene | Abrechnung |
+| Wenn Sie ein Basisblob überschreiben, dessen Dienstebene explizit festgelegt wurde: | Wird Folgendes in Rechnung gestellt: |
 |-|-|
-| Szenario: Vorläufiges Löschen und Versionsverwaltung sind für das Blob aktiviert. | Alle vorhandenen Versionen mit ihrem vollständigen Inhalt – unabhängig von der Ebene |
-| Szenario: Vorläufiges Löschen für das Blob ist aktiviert, die Versionsverwaltung jedoch nicht. | Alle vorhandenen Momentaufnahmen mit vorläufigem Löschen mit ihrem vollständigen Inhalt – unabhängig von der Ebene |
+| Vorläufiges Löschen und Versionsverwaltung wurden für das Blob aktiviert. | Alle vorhandenen Versionen mit ihrem vollständigen Inhalt – unabhängig von der Dienstebene |
+| Vorläufiges Löschen für das Blob wurde aktiviert, aber die Versionsverwaltung wurde deaktiviert. | Alle vorhandenen Momentaufnahmen mit vorläufigem Löschen mit ihrem vollständigen Inhalt – unabhängig von der Ebene |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -10,14 +10,14 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 02/01/2021
+ms.date: 02/16/2021
 ms.author: juliako
-ms.openlocfilehash: a6b1fc5adba166aa15a786d3440be1eca7f0a260
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 618617d3602e45ebb15314c7cc5f6898a73bb71f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100560516"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102203724"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer: Versionshinweise
 
@@ -29,6 +29,39 @@ Damit Sie bezüglich der aktuellen Entwicklungen auf dem neuesten Stand bleiben,
 * Bekannte Probleme
 * Behebung von Programmfehlern
 * Veraltete Funktionen
+
+## <a name="march-2021"></a>März 2021
+
+Die Audioanalyse ist jetzt in einem zusätzlichen neuen Paket mit Audiofeatures zu einem anderen Preis verfügbar. Die neue Analysevoreinstellung **Grundlegende Audiofunktionen** bietet eine kostengünstige Option zum reinen Extrahieren von Transkriptionen für gesprochenen Text sowie zum Übersetzen und Formatieren von Beschriftungstext und Untertiteln. Durch die Voreinstellung **Grundlegende Audiofunktionen** werden auf Ihrer Rechnung zwei separate Verbrauchseinheiten generiert. Diese umfassen eine Zeile für die Transkription und eine separate Zeile für die Formatierung von Beschriftungstext und Untertiteln. Weitere Preisinformationen finden Sie auf der Seite mit [Media Services-Preisen](https://azure.microsoft.com/pricing/details/media-services/).
+
+Das neu hinzugefügte Paket ist verfügbar, wenn Sie beim Indizieren oder Neuindizieren Ihrer Datei die Voreinstellung **Erweiterte Option** -> **Grundlegende Audiofunktionen** (im Dropdownfeld **Video- und Audioindizierung**) auswählen.
+
+## <a name="february-2021"></a>Februar 2021
+
+### <a name="multiple-account-owners"></a>Mehrere Kontobesitzer 
+
+Video Indexer wurde die Rolle „Kontobesitzer“ hinzugefügt. Sie können Benutzer hinzufügen, ändern und entfernen sowie deren Rolle ändern. Ausführliche Informationen zum Teilen eines Kontos finden Sie unter [Schnellstart: Einladen von Benutzern zu Video Indexer](invite-users.md).
+
+### <a name="audio-event-detection-public-preview"></a>Audioereigniserkennung (Public Preview)
+
+> [!NOTE]
+> Dieses Feature steht nur in Testkonten zur Verfügung. 
+
+Von Video Indexer werden nun die folgenden Audioeffekte in Inhaltsabschnitten ohne Sprache erkannt: Schüsse, Glasbruch, Alarme, Sirenen, Explosionen, Hundegebell, Schreie, Gelächter, Reaktionen einer Menschenmenge (Begeisterung, Applaudieren und Buhrufe) sowie Stille. 
+
+Das neu hinzugefügte Feature für Audioeffekte ist verfügbar, wenn Sie Ihre Datei mit der Voreinstellung **Erweiterte Option** -> **Erweiterte Audiodaten** (unter „Video- und Audioindizierung“) indizieren. Die Standardindizierung umfasst nur **Stille** und **Reaktionen einer Menschenmenge**. 
+
+Der Ereignistyp **Applaus** aus dem vorherigen Modell für Audioeffekte wird nun im Rahmen des Ereignistyps **Reaktionen einer Menschenmenge** extrahiert.
+
+Wenn Sie sich auf der [Video Indexer-Website](https://www.videoindexer.ai/) **Erkenntnisse** Ihres Videos anzeigen möchten, werden die Audioeffekte auf der Seite angezeigt.
+
+:::image type="content" source="./media/release-notes/audio-detection.png" alt-text="Audioereigniserkennung":::
+
+### <a name="named-entities-enhancement"></a>Erweiterung benannter Entitäten  
+
+Die extrahierte Personen- und Ortsliste wurde allgemein erweitert und aktualisiert. 
+
+Außerdem enthält das Modell jetzt Personen und Orte im Kontext, die nicht berühmt sind (beispielsweise „Sam“ oder „Zuhause“ im Video). 
 
 ## <a name="january-2021"></a>Januar 2021
 

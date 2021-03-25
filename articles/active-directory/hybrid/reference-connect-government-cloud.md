@@ -11,11 +11,11 @@ ms.date: 04/14/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e163ea34948906060996ee952f45ec0cdb467557
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: bbb4298d0d9a9d7589c4a2055b4d55a0b852f951
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97504354"
 ---
 # <a name="hybrid-identity-considerations-for-the-azure-government-cloud"></a>Überlegungen zur Hybrididentität für die Azure Government-Cloud
@@ -24,9 +24,6 @@ In diesem Artikel werden Überlegungen zum Integrieren einer Hybridumgebung in d
 
 > [!NOTE]
 > Um eine lokale Microsoft Active Directory-Umgebung (lokal oder in einer IaaS in derselben Cloudinstanz gehostet) mit der Azure Government-Cloud zu integrieren, müssen Sie ein Upgrade auf das neueste Release von [Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) durchführen.
-
-> [!NOTE]
-> Dieser Artikel enthält Verweise auf den Begriff *Whitelist*, den Microsoft nicht länger verwendet. Sobald der Begriff aus der Software entfernt wurde, wird er auch aus diesem Artikel entfernt.
 
 Eine vollständige Liste der Endpunkte des US-Verteidigungsministeriums finden Sie in der [Dokumentation](/office365/enterprise/office-365-u-s-government-dod-endpoints).
 

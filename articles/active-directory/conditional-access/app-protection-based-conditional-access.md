@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: spunukol, rosssmi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 720cd46ac37a82f56aa37c0041ca8d92db177071
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99575770"
 ---
 # <a name="how-to-require-app-protection-policy-and-an-approved-client-app-for-cloud-app-access-with-conditional-access"></a>Gewusst wie: Erzwingen einer App-Schutzrichtlinie und einer genehmigten Client-App für den Zugriff auf Cloud-Apps mithilfe des bedingten Zugriffs
@@ -89,7 +89,7 @@ Die Schritte zum Erstellen von App-Schutzrichtlinien für Android und iOS finden
 
 ## <a name="scenario-2-browser-apps-require-approved-apps-with-app-protection-policies"></a>Szenario 2: Browser-Apps erfordern genehmigte Apps mit App-Schutzrichtlinien.
 
-In diesem Szenario hat Contoso entschieden, dass der gesamte mobile Webbrowserzugriff auf Microsoft 365-Ressourcen genehmigte Client-Apps wie Edge für iOS und Android erfordert, die durch eine App-Schutzrichtlinie geschützt sind. Alle Benutzer melden sich bereits mit Azure AD-Anmeldeinformationen an. Außerdem wurden ihnen Lizenzen zugewiesen, die Azure AD Premium P1 oder P2 und Microsoft Intune umfassen.
+In diesem Szenario hat Contoso entschieden, dass der gesamte mobile Webbrowserzugriff auf Microsoft 365-Ressourcen genehmigte Client-Apps wie Microsoft Edge für iOS und Android erfordert, die durch eine App-Schutzrichtlinie geschützt sind. Alle Benutzer melden sich bereits mit Azure AD-Anmeldeinformationen an. Außerdem wurden ihnen Lizenzen zugewiesen, die Azure AD Premium P1 oder P2 und Microsoft Intune umfassen.
 
 Organisationen müssen die folgenden Schritte ausführen, um die Verwendung einer genehmigten Client-App auf mobilen Geräten zu erzwingen.
 

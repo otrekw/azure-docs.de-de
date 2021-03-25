@@ -5,23 +5,21 @@ services: notification-hubs
 documentationcenter: .net
 author: sethmanheim
 manager: femila
-editor: jwargo
-ms.assetid: a41897bb-5b4b-48b2-bfd5-2e3c65edc37e
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 01/04/2019
+ms.date: 02/16/2021
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: e3c64155053517205ab006673bb8f400325ad3c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee42512a468f4ff86ad7ba273d3971fd124779e2
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86219962"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "100635641"
 ---
 # <a name="notification-hubs-templates"></a>Notification Hubs-Vorlagen
 
@@ -58,9 +56,9 @@ Sie können ähnliche Nutzlasten für MPNS (Windows Phone)- und FCM (Android)-Pl
 
 Durch diese Anforderung ist das App-Back-End gezwungen, für jede Plattform unterschiedliche Nutzlasten zu erzeugen, und ist dadurch effektiv für einen Teil der Darstellungsschicht der App verantwortlich. Die Lokalisierung und grafischen Layouts (insbesondere für Windows Store-Apps, die Benachrichtigungen für verschiedene Kacheltypen umfassen) sind dabei nicht unproblematisch.
 
-Das Notification Hubs-Vorlagenfeature ermöglicht einer Client-App das Erstellen spezieller Registrierungen – so genannter Vorlagenregistrierungen – die neben den Tags eine Vorlage enthalten. Mit dem Notification Hubs-Vorlagenfeature kann eine Client-App Geräten Vorlagen zuordnen, und zwar unabhängig davon ob Sie mit Installationen (bevorzugt) oder Registrierungen arbeiten. Aus den zuvor aufgeführten Nutzlastbeispielen ergibt sich, dass der eigentliche Benachrichtigungstext (Hello!) die einzige plattformunabhängige Information ist. Eine Vorlage umfasst eine Reihe von Anweisungen für den Notification Hub, die angeben, wie eine plattformunabhängige Nachricht für die Registrierung der spezifischen Client-App formatiert werden soll. Im vorherigen Beispiel umfasst die plattformunabhängige Nachricht nur eine Eigenschaft: `message = Hello!`.
+Das Notification Hubs-Vorlagenfeature ermöglicht einer Client-App das Erstellen spezieller Registrierungen – so genannter Vorlagenregistrierungen – die neben den Tags eine Vorlage enthalten. Mit dem Notification Hubs-Vorlagenfeature kann eine Client-App Geräten Vorlagen zuordnen, und zwar unabhängig davon, ob Sie mit Installationen (bevorzugt) oder Registrierungen arbeiten. Aus den zuvor aufgeführten Nutzlastbeispielen ergibt sich, dass der eigentliche Benachrichtigungstext (**Hello!** ) die einzige plattformunabhängige Information ist. Eine Vorlage umfasst eine Reihe von Anweisungen für den Notification Hub, die angeben, wie eine plattformunabhängige Nachricht für die Registrierung der spezifischen Client-App formatiert werden soll. Im vorherigen Beispiel umfasst die plattformunabhängige Nachricht nur eine Eigenschaft: `message = Hello!`.
 
-Das Verfahren wird in der folgenden Abbildung veranschaulicht.
+Die folgende Abbildung veranschaulicht den Prozess:
 
 ![Diagramm, das den Prozess für die plattformübergreifende Verwendung von Vorlagen veranschaulicht](./media/notification-hubs-templates/notification-hubs-hello.png)
 
@@ -82,11 +80,11 @@ Die entsprechende Vorlage für die Windows Store-Client-App entspricht:
 </toast>
 ```
 
-Beachten Sie, dass die tatsächliche Nachricht durch den Ausdruck $(message) ersetzt wird. Dieser Ausdruck weist den Notification Hub an, bei jedem Senden einer Nachricht an diese bestimmte Registrierung eine der Vorlage entsprechende Nachricht zu erstellen, und fügt den allgemeinen Wert ein.
+Beachten Sie, dass die tatsächliche Nachricht durch den Ausdruck `$(message)` ersetzt wird. Dieser Ausdruck weist den Notification Hub an, bei jedem Senden einer Nachricht an diese bestimmte Registrierung eine der Vorlage entsprechende Nachricht zu erstellen, und fügt den allgemeinen Wert ein.
 
-Bei Verwendung des Installationsmodells arbeiten, enthält der "templates"-Schlüssel der Installation ein JSON-Objekt mit mehreren Vorlagen. Bei Verwendung des Registrierungsmodells kann die Clientanwendung mehrere Registrierungen erstellen, um mehrere Vorlagen zu verwenden, also beispielsweise eine Vorlage für Benachrichtigungen und eine für Kachelaktualisierungen. Clientanwendungen können auch systemeigene Registrierungen (Registrierungen ohne Vorlage) und Vorlagenregistrierungen kombinieren.
+Wenn Sie mit dem Installationsmodell arbeiten, enthält der „templates“-Schlüssel der Installation ein JSON-Objekt mit mehreren Vorlagen. Bei Verwendung des Registrierungsmodells kann die Clientanwendung mehrere Registrierungen erstellen, um mehrere Vorlagen zu verwenden, also beispielsweise eine Vorlage für Benachrichtigungen und eine für Kachelaktualisierungen. Clientanwendungen können auch systemeigene Registrierungen (Registrierungen ohne Vorlage) und Vorlagenregistrierungen kombinieren.
 
-Der Notification Hub sendet eine Benachrichtigung für jede Vorlage, ohne zu berücksichtigen, ob sie zur selben Client-App gehören. Dieses Verhalten kann verwendet werden, um plattformunabhängige Benachrichtigungen in weitere Benachrichtigungen zu übersetzen. Beispielsweise kann dieselbe plattformunabhängige Nachricht an den Notification Hub nahtlos in eine Popupbenachrichtigung und eine Kachelaktualisierung übersetzt werden, ohne dass das Back-End daran beteiligt ist. Einige Plattformen (beispielsweise iOS) reduzieren ggf. mehrere Benachrichtigungen an dasselbe Gerät, wenn diese innerhalb eines kurzen Zeitraums gesendet werden.
+Der Notification Hub sendet eine Benachrichtigung für jede Vorlage, ohne zu berücksichtigen, ob sie zu derselben Client-App gehört. Dieses Verhalten kann verwendet werden, um plattformunabhängige Benachrichtigungen in weitere Benachrichtigungen zu übersetzen. Beispielsweise kann dieselbe plattformunabhängige Nachricht an den Notification Hub nahtlos in eine Popupbenachrichtigung und eine Kachelaktualisierung übersetzt werden, ohne dass das Back-End daran beteiligt ist. Einige Plattformen (beispielsweise iOS) reduzieren ggf. mehrere Benachrichtigungen an dasselbe Gerät, wenn diese innerhalb eines kurzen Zeitraums gesendet werden.
 
 ## <a name="using-templates-for-personalization"></a>Verwenden von Vorlagen zur Personalisierung
 
@@ -108,18 +106,12 @@ Die Vorlage für die eintägige Vorhersage mit Temperaturangaben in Celsius sieh
 
 Die an den Notification Hub gesendete Nachricht enthält die folgenden Eigenschaften:
 
-```html
-<table border="1">
+| day1_image | day2_image | day3_image | day4_image | day5_image |
+|------------|------------|------------|------------|------------|
+| day1_tempC | day2_tempC | day3_tempC | day4_tempC | day5_tempC |
+| day1_tempF | day2_tempF | day3_tempF | day4_tempF | day5_tempF |
 
-<tr><td>day1_image</td><td>day2_image</td><td>day3_image</td><td>day4_image</td><td>day5_image</td></tr>
-
-<tr><td>day1_tempC</td><td>day2_tempC</td><td>day3_tempC</td><td>day4_tempC</td><td>day5_tempC</td></tr>
-
-<tr><td>day1_tempF</td><td>day2_tempF</td><td>day3_tempF</td><td>day4_tempF</td><td>day5_tempF</td></tr>
-</table><br/>
-```
-
-Durch die Verwendung dieses Musters sendet das Back-End nur eine einzelne Nachricht und muss keine bestimmten Personalisierungsoptionen für die App-Benutzer speichern. Dieses Szenario wird in der folgenden Abbildung veranschaulicht.
+Durch die Verwendung dieses Musters sendet das Back-End nur eine einzelne Nachricht und muss keine bestimmten Personalisierungsoptionen für die App-Benutzer speichern. Die folgende Abbildung veranschaulicht dieses Szenario:
 
 ![Diagramm, das zeigt, wie das Back-End nur eine einzelne Nachricht an jede Plattform sendet](./media/notification-hubs-templates/notification-hubs-registration-specific.png)
 
@@ -136,10 +128,10 @@ In der folgenden Tabelle wird die in Vorlagen zulässige Sprache gezeigt:
 | Ausdruck       | BESCHREIBUNG |
 | ---------------- | --- |
 | $(prop)          | Verweist auf eine Ereigniseigenschaft mit dem angegebenen Namen. Bei Eigenschaftennamen wird nicht zwischen Groß- und Kleinschreibung unterschieden. Dieser Ausdruck wird in den Textwert der Eigenschaft oder in eine leere Zeichenfolge aufgelöst, wenn die Eigenschaft nicht vorhanden ist. |
-| $(prop, n)       | Wie oben, allerdings wird der Text bei n Zeichen explizit abgeschnitten. Bei $(title, 20) wird der Inhalt der title-Eigenschaft beispielsweise nach 20 Zeichen abgeschnitten. |
-| .(prop, n)       | Wie oben, allerdings werden dem Text beim Abschneiden drei Punkte als Suffix hinzugefügt. Die Gesamtgröße der abgeschnittenen Zeichenfolge und des Suffixes überschreitet n Zeichen nicht. Bei .(title, 20) mit der Eingabeeigenschaft "This is the title line" erhalten Sie **This is the title...** |
+|$(prop, n)       | Wie oben, allerdings wird der Text bei n Zeichen explizit abgeschnitten. Bei $(title, 20) wird der Inhalt der title-Eigenschaft beispielsweise nach 20 Zeichen abgeschnitten. |
+| .(prop, n)      | Wie oben, allerdings werden dem Text beim Abschneiden drei Punkte als Suffix hinzugefügt. Die Gesamtgröße der abgeschnittenen Zeichenfolge und des Suffixes überschreitet nicht n Zeichen. Bei (title, 20) mit der Eingabeeigenschaft „This is the title line“ erhalten Sie **This is the title...** . |
 | %(prop)          | Ähnlich wie $(name) mit der Ausnahme, dass die Ausgabe URI-codiert ist. |
-| #(prop)          | Wird in JSON-Vorlagen (z.B. für iOS- und Android-Vorlagen) verwendet.<br><br>Diese Funktion verhält sich genauso wie die oben beschriebene Funktion $(prop), außer bei Verwendung in JSON-Vorlagen (z.B. Apple-Vorlagen). Wenn in diesem Fall die Funktion nicht von „{','}“ umschlossen ist (z.B. 'myJsonProperty' : '#(name)') und zu einer Zahl im JavaScript-Format ausgewertet wird (z.B. regexp: (0&#124;(&#91;1-9&#93;&#91;0-9&#93;*))(\.&#91;0-9&#93;+)?((e&#124;E)(+&#124;-)?&#91;0-9&#93;+)?), ist der JSON-Ausgabecode eine Zahl.<br><br>Beispiel: 'badge : '#(name)' wird zu 'badge' : 40 (nicht '40'). |
+| #(prop)          | Wird in JSON-Vorlagen (z.B. für iOS- und Android-Vorlagen) verwendet.<br><br>Diese Funktion verhält sich genauso wie die oben beschriebene Funktion $(prop), außer bei Verwendung in JSON-Vorlagen (z. B. Apple-Vorlagen). Wenn in diesem Fall die Funktion nicht von „{','}“ umschlossen ist (z. B. 'myJsonProperty' : '#(name)'), und zu einer Zahl im JavaScript-Format ausgewertet wird (z. B. regexp: (0&#124;(&#91;1-9&#93;&#91;0-9&#93;*))(\.&#91;0-9&#93;+)?((e&#124;E)(+&#124;-)?&#91;0-9&#93;+)?), ist die JSON-Ausgabe eine Zahl.<br><br>Beispiel: 'badge : '#(name)' wird zu 'badge' : 40 (nicht '40'). |
 | 'text' oder "text" | Ein Literal. Literale enthalten beliebigen Text, der in einfache oder doppelte Anführungszeichen eingeschlossen ist. |
 | expr1 + expr2    | Der Verkettungsoperator, der zwei Ausdrücke zu einer Zeichenfolge verbindet. |
 

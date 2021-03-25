@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8c63ada9621fc1485742a7683fd6742f0e896854
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: ce18e71ced320c408933caeb39b469d5885bd6ba
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954428"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "101095936"
 ---
 # <a name="use-the-content-aware-encoding-preset-to-find-the-optimal-bitrate-value-for-a-given-resolution"></a>Ermitteln des optimalen Bitratenwerts für eine bestimmte Auflösung unter Verwendung der Voreinstellung für die inhaltsbezogene Codierung
 
@@ -29,7 +29,7 @@ Berücksichtigen Sie stets den Inhalt, den Sie verarbeiten, und passen Sie die C
 
 Die Voreinstellung [Adaptives Streaming](autogen-bitrate-ladder.md) von Microsoft löst das Problem der Variabilität bei der Qualität und Auflösung von Quellvideos zum Teil. Unsere Kunden verfügen über unterschiedlichste Inhalte – manche in 1080p, andere in 720p und einige wenige in SD und niedrigeren Auflösungen. Darüber hinaus handelt es sich nicht bei allen Quellinhalten um hochwertige Mezzanine von Film- oder Fernsehstudios. Die Adaptive Streaming-Voreinstellung löst diese Probleme, indem sichergestellt wird, dass die Bitratenleiter nicht die Auflösung oder die durchschnittliche Bitrate der Eingangs-Mezzanine überschreitet. Diese Voreinstellung untersucht jedoch nur die Quelleigenschaften „Auflösung“ und „Bitrate“.
 
-## <a name="the-content-aware-encoding"></a>Die inhaltsbezogene Codierung 
+## <a name="the-content-aware-encoding"></a>Die inhaltsbezogene Codierung
 
 Die Voreinstellung für die inhaltsbezogene Codierung erweitert den Adaptive Bitrate Streaming-Mechanismus. Hierzu wird benutzerdefinierte Logik integriert, die es dem Encoder ermöglicht, den optimalen Bitratenwert für eine bestimmte Auflösung ohne aufwendige Berechnungsanalyse zu ermitteln. Diese Voreinstellung generiert eine Reihe von MP4-Dateien mit GOP-Ausrichtung. Der Dienst führt eine einfache Erstanalyse für den Eingabeinhalt aus und ermittelt anhand der Ergebnisse die optimale Anzahl von Ebenen, die geeignete Bitrate und die Auflösungseinstellungen für die Bereitstellung durch adaptives Streaming. Diese Voreinstellung eignet sich insbesondere für Videos mit geringer bis mittlerer Komplexität, bei denen die Ausgabedateien zwar eine niedrigere Bitrate als die Adaptive Streaming-Voreinstellung, aber immer noch eine gute Qualität haben. Die Ausgabe enthält MP4-Dateien mit AVI (Audio Video Interleaved).
 

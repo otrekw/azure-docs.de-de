@@ -3,19 +3,20 @@ title: Aufgaben nach der Bereitstellung von OpenShift Container Platform 3.11 in
 description: Zusätzliche Aufgaben nach der Bereitstellung eines OpenShift Container Platform 3.11-Clusters.
 author: haroldwongms
 manager: mdotson
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines
+ms.subservice: openshift
+ms.collection: linux
 ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
 ms.custom: devx-track-ansible, devx-track-azurecli
-ms.openlocfilehash: dd967ad08b628f9073edfe548033f7e97845d047
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c3f9aaa15a697202aa76c563ed62bf37443d69ec
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96016062"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "101669380"
 ---
 # <a name="post-deployment-tasks"></a>Aufgaben nach der Bereitstellung
 
@@ -34,11 +35,11 @@ Um Azure Active Directory für die Authentifizierung zu verwenden, müssen Sie z
 
 Für diese Schritte wird die Azure-Befehlszeilenschnittstelle verwendet, um die App-Registrierung zu erstellen, und die grafische Benutzeroberfläche (das Portal), um die Berechtigungen festzulegen. Für die Erstellung der App-Registrierung werden die folgenden fünf Angaben benötigt:
 
-- Anzeigename: Der Name der App-Registrierung (z.B. OCPAzureAD)
-- Startseite: OpenShift-Konsolen-URL (z. B. `https://masterdns343khhde.westus.cloudapp.azure.com/console`)
-- Bezeichner-URI: OpenShift-Konsolen-URL (z. B. `https://masterdns343khhde.westus.cloudapp.azure.com/console`)
-- Antwort-URL: Öffentliche Master-URL und Name der App-Registrierung (z. B. `https://masterdns343khhde.westus.cloudapp.azure.com/oauth2callback/OCPAzureAD`)
-- Password (Kennwort): Sicheres Kennwort (verwenden Sie ein sicheres Kennwort)
+- Anzeigename: Der Name der App-Registrierung (z. B. OCPAzureAD)
+- Startseite: OpenShift-Konsolen-URL (z. B. `https://masterdns343khhde.westus.cloudapp.azure.com/console`)
+- Bezeichner-URI: OpenShift-Konsolen-URL (z. B. `https://masterdns343khhde.westus.cloudapp.azure.com/console`)
+- Antwort-URL: Öffentliche Master-URL und Name der App-Registrierung (z. B. `https://masterdns343khhde.westus.cloudapp.azure.com/oauth2callback/OCPAzureAD`)
+- Kennwort: Ein sicheres Kennwort
 
 Im folgenden Beispiel wird eine App-Registrierung mit den obigen Informationen erstellt:
 
@@ -78,11 +79,11 @@ Führen Sie im Azure-Portal die folgenden Schritte aus:
 
    ![App-Registrierung](media/openshift-post-deployment/app-registration.png)
 
-6. Klicken Sie auf „Schritt 1: API auswählen“ und dann auf **Windows Azure Active Directory (Microsoft.Azure.ActiveDirectory)** . Klicken Sie im unteren Bereich auf **Auswählen**.
+6. Klicken Sie auf „Schritt 1: API auswählen“ und dann auf **Windows Azure Active Directory (Microsoft.Azure.ActiveDirectory)**. Klicken Sie im unteren Bereich auf **Auswählen**.
 
    ![App-Registrierung: API auswählen](media/openshift-post-deployment/app-registration-select-api.png)
 
-7. Wählen Sie in „Schritt 2: Berechtigungen auswählen“ unter **Delegierte Berechtigungen** die Berechtigung **Anmelden und Benutzerprofil lesen** aus, und klicken Sie anschließend auf **Auswählen**.
+7. Wählen Sie in „Schritt 2 Berechtigungen auswählen“ unter **Delegierte Berechtigungen** die Berechtigung **Anmelden und Benutzerprofil lesen** aus, und klicken Sie anschließend auf **Auswählen**.
 
    ![App-Registrierung: Zugriff](media/openshift-post-deployment/app-registration-access.png)
 
@@ -160,7 +161,7 @@ Zum Hinzufügen des Log Analytics-Agents zu OpenShift stehen drei Möglichkeiten
 - Aktivieren der Azure Monitor-VM-Erweiterung auf jedem OpenShift-Knoten
 - Installieren des Log Analytics-Agents als OpenShift-Daemongruppe
 
-Ausführlichere Informationen finden Sie in den vollständigen [Anweisungen](../../azure-monitor/insights/containers.md#configure-a-log-analytics-agent-for-red-hat-openshift).
+Ausführlichere Informationen finden Sie in den vollständigen [Anweisungen](../../azure-monitor/containers/containers.md#configure-a-log-analytics-agent-for-red-hat-openshift).
 
 ## <a name="configure-metrics-and-logging"></a>Konfigurieren von Metriken und Protokollierung
 

@@ -6,14 +6,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 06/15/2020
+ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: 2b5dc30de19704b5e8950515cfa6224b4bbdbaf0
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 722a508679c74f9d62df07575ffa1006528f4398
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341345"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "100652105"
 ---
 # <a name="manage-security-incidents-in-azure-security-center"></a>Verwalten von Sicherheitsvorfällen in Azure Security Center
 
@@ -29,11 +29,19 @@ In Security Center ist ein Sicherheitsvorfall eine Aggregation aller Warnungen f
 
 ## <a name="managing-security-incidents"></a>Verwalten von Sicherheitsvorfällen
 
-1. Wählen Sie auf der Security Center-Übersichtsseite die Kachel **Sicherheitswarnungen** aus. Der Vorfall und die Warnungen werden aufgeführt. Beachten Sie, dass Sicherheitsvorfälle ein anderes Symbol als Sicherheitswarnungen aufweisen.
+1. Verwenden Sie auf der Seite „Warnungen“ von Security Center die Schaltfläche **Filter hinzufügen**, um nach dem Warnungsnamen **Sicherheitsincident in mehreren Ressourcen erkannt** zu filtern. 
 
-    ![Sicherheitsvorfälle anzeigen](./media/security-center-managing-and-responding-alerts/security-center-manage-alerts.png)
+    :::image type="content" source="media/security-center-incident/locating-incidents.png" alt-text="Suchen der Incidents auf der Seite „Warnungen“ in Azure Security Center":::
 
-1. Um Details anzuzeigen, wählen Sie einen Vorfall aus. Weitere Details finden Sie auf der Seite **Sicherheitsvorfall**. 
+    In der gefilterten Liste werden nur Incidents angezeigt. Beachten Sie, dass Sicherheitsvorfälle ein anderes Symbol als Sicherheitswarnungen aufweisen.
+
+    :::image type="content" source="media/security-center-incident/incidents-list.png" alt-text="Liste der Incidents auf der Seite „Warnungen“ in Azure Security Center":::
+
+1. Um die Details eines Incident anzuzeigen, wählen Sie einen Incident aus der Liste aus. Ein Seitenbereich mit weiteren Details des Incident wird angezeigt.
+
+    :::image type="content" source="media/security-center-incident/incident-quick-peek.png" alt-text="Seitenbereich, in dem Details des Incident angezeigt werden":::
+
+1. Wenn Sie weitere Details anzeigen möchten, wählen Sie **Alle Informationen anzeigen** aus.
 
     [![Reagieren auf Sicherheitsvorfälle in Azure Security Center](media/security-center-incident/incident-details.png)](media/security-center-incident/incident-details.png#lightbox)
 

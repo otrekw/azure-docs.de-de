@@ -12,10 +12,10 @@ ms.custom: mvc
 ms.topic: reference
 ms.date: 03/03/2020
 ms.openlocfilehash: 258874ffdbc471305b76f7d52406d2f45e708829
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99575736"
 ---
 # <a name="services-and-tools-available-for-data-migration-scenarios"></a>Dienste und Tools für Datenmigrationsszenarien
@@ -29,7 +29,7 @@ In den folgenden Tabellen sind jeweils die Dienste und Tools aufgeführt, die Si
 
 ## <a name="business-justification-phase"></a>Phase: Geschäftliche Begründung
 
-| `Source` | Ziel | Entdecken/<br/>Inventory | Ziel und SKU<br/>Empfehlung | TCO/ROI und<br/>Geschäftsszenario |
+| `Source` | Ziel | Entdecken/<br/>Inventarisierung | Ziel und SKU<br/>Empfehlung | TCO/ROI und<br/>Geschäftsszenario |
 | --- | --- | --- | --- | --- |
 | SQL Server | Azure SQL-Datenbank | [MAP-Toolkit](/previous-versions//bb977556(v=technet.10))<br/>[Azure Migrate](https://azure.microsoft.com/services/azure-migrate/)<br/>[Cloudamize*](https://www.cloudamize.com/) | [DMA](/sql/dma/dma-overview?view=sql-server-2017)<br/>[Cloud Atlas*](https://www.unifycloud.com/cloud-migration-tool/)<br/>[Cloudamize*](https://www.cloudamize.com/) | [Gesamtkostenrechner](https://azure.microsoft.com/pricing/tco/calculator/) |
  SQL Server | Azure SQL-Datenbank MI | [MAP-Toolkit](/previous-versions//bb977556(v=technet.10))<br/>[Azure Migrate](https://azure.microsoft.com/services/azure-migrate/)<br/>[Cloudamize*](https://www.cloudamize.com/) | [DMA](/sql/dma/dma-overview?view=sql-server-2017)<br/>[Cloud Atlas*](https://www.unifycloud.com/cloud-migration-tool/)<br/>[Cloudamize*](https://www.cloudamize.com/) | [Gesamtkostenrechner](https://azure.microsoft.com/pricing/tco/calculator/) |
@@ -79,7 +79,7 @@ In den folgenden Tabellen sind jeweils die Dienste und Tools aufgeführt, die Si
 
 ## <a name="migration-phase"></a>Phase: Migration
 
-| `Source` | Ziel | Schema | Data<br/>(Offline) | Data<br/>(Online) |
+| `Source` | Ziel | Schema | Daten<br/>(Offline) | Daten<br/>(Online) |
 | --- | --- | --- | --- | --- |
 | SQL Server | Azure SQL-Datenbank | [DMA](/sql/dma/dma-overview?view=sql-server-2017)<br/>[Cloudamize*](https://www.cloudamize.com/) | [DMS](https://azure.microsoft.com/services/database-migration/)<br/>[Cloudamize*](https://www.cloudamize.com/) | [DMS](https://azure.microsoft.com/services/database-migration/)<br/>[Cloudamize*](https://www.cloudamize.com/)<br/>[Attunity*](https://www.attunity.com/products/replicate/)<br/>[Striim*](https://www.striim.com/partners/striim-for-microsoft-azure/) |
 | SQL Server | Azure SQL-Datenbank MI | [DMS](https://azure.microsoft.com/services/database-migration/)<br/>[Cloudamize*](https://www.cloudamize.com/) | [DMS](https://azure.microsoft.com/services/database-migration/)<br/>[Cloudamize*](https://www.cloudamize.com/) | [DMS](https://azure.microsoft.com/services/database-migration/)<br/>[Cloudamize*](https://www.cloudamize.com/)<br/>[Attunity*](https://www.attunity.com/products/replicate/)<br/>[Striim*](https://www.striim.com/partners/striim-for-microsoft-azure/) |

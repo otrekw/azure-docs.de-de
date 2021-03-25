@@ -16,12 +16,12 @@ ms.date: 12/23/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8e6c13600cb5940351d31b54af403584cc68a5f
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 204d83b96e3cbe26759d678126d8826d0b2e492e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100515647"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "100577850"
 ---
 # <a name="delegation-and-roles-in-azure-ad-entitlement-management"></a>Delegierung und Rollen in der Azure AD-Berechtigungsverwaltung
 
@@ -39,7 +39,7 @@ Um zu verstehen, wie Sie die Zugriffskontrolle in der Berechtigungsverwaltung de
 
 Als IT-Administratorin hat Hana Kontakte in jeder Abteilung (Mamta in der Marketingabteilung, Mark in der Finanzabteilung und Joe in der Rechtsabteilung), die für die Ressourcen und unternehmenskritischen Inhalte der jeweiligen Abteilung verantwortlich sind.
 
-Mit der Berechtigungsverwaltung können Sie die Zugriffskontrolle an diese Nicht-Administratoren delegieren, weil es sich dabei um die Personen handelt, die wissen, welche Benutzer wie lange und auf welche Ressourcen Zugriff benötigen. Dadurch wird sichergestellt, dass die richtigen Personen den Zugriff für die jeweiligen Abteilungen verwalten.
+Mit der Berechtigungsverwaltung können Sie die Zugriffskontrolle an diese Nicht-Administratoren delegieren, weil es sich dabei um die Personen handelt, die wissen, welche Benutzer wie lange und auf welche Ressourcen Zugriff benötigen. Durch die Delegierung an Nicht-Administratoren wird sichergestellt, dass die richtigen Personen den Zugriff für die jeweiligen Abteilungen verwalten.
 
 Nachfolgend wird eine Möglichkeit aufgezeigt, wie Hana die Zugriffskontrolle an die Marketing-, Finanz- und Rechtsabteilung delegieren könnte.
 
@@ -47,15 +47,13 @@ Nachfolgend wird eine Möglichkeit aufgezeigt, wie Hana die Zugriffskontrolle an
 
 1. Hana fügt diese Gruppe der Rolle „Katalogersteller“ hinzu.
 
-    Mamta, Mark und Joe können jetzt Kataloge für ihre Abteilungen erstellen, Ressourcen hinzufügen, die ihre Abteilungen benötigen, und weitere Delegierungen innerhalb des Katalogs durchführen.
-
-    Beachten Sie, dass Mamta, Mark und Joe die Kataloge der jeweils anderen nicht anzeigen können.
+    Mamta, Mark und Joe können jetzt Kataloge für ihre Abteilungen erstellen, Ressourcen hinzufügen, die ihre Abteilungen benötigen, und weitere Delegierungen innerhalb des Katalogs durchführen. Sie können nur die jeweils eigenen Kataloge anzeigen.
 
 1. Mamta erstellt einen Katalog **Marketing**, bei dem es sich um einen Container von Ressourcen handelt.
 
 1. Mamta fügt diesem Katalog die Ressourcen hinzu, die ihre Marketingabteilung besitzt.
 
-1. Mamta kann weitere Mitarbeiter ihrer Abteilung als Katalogbesitzer für diesen Katalog hinzufügen. Dadurch können die Aufgaben der Katalogverwaltung gemeinsam wahrgenommen werden.
+1. Mamta kann weitere Personen aus Ihrer Abteilung als Katalogbesitzer für diesen Katalog hinzufügen, um die Katalogverwaltungsaufgaben zu teilen.
 
 1. Mamta kann die Erstellung und Verwaltung von Zugriffspaketen im Katalog „Marketing“ an Projektmanager in der Marketingabteilung weiter delegieren. Hierzu weist sie den entsprechenden Personen die Rolle „Zugriffspaket-Manager“ zu. Ein Zugriffspaket-Manager kann Zugriffspakete erstellen und verwalten. 
 
@@ -78,12 +76,12 @@ Die Berechtigungsverwaltung hat die folgenden Rollen, die für die Berechtigungs
 
 | Berechtigungsverwaltungsrolle | BESCHREIBUNG |
 | --- | --- |
-| Katalogersteller | Erstellen und Verwalten von Katalogen. In der Regel ein IT-Administrator, der kein globaler Administrator ist, oder ein Ressourcenbesitzer für eine Sammlung von Ressourcen. Die Person, die einen Katalog erstellt, ist automatisch der erste Besitzer des Katalogs und kann zusätzliche Katalogbesitzer hinzufügen. Ein Katalogersteller kann keine Kataloge verwalten, die ihm nicht gehören, und einem Katalog keine Ressourcen hinzufügen, die er nicht besitzt. Wenn der Katalogersteller einen anderen Katalog verwalten oder Ressourcen hinzufügen muss, die er nicht besitzt, kann er sich als Mitbesitzer des betreffenden Katalogs oder der betreffenden Ressource festlegen lassen. |
-| Katalogbesitzer | Bearbeiten und Verwalten von vorhandenen Katalogen. In der Regel ein IT-Administrator oder Ressourcenbesitzer bzw. ein Benutzer, den der Katalogbesitzer bestimmt hat. |
+| Katalogersteller | Erstellen und Verwalten von Katalogen. In der Regel ein IT-Administrator, der kein globaler Administrator ist, oder ein Ressourcenbesitzer für eine Sammlung von Ressourcen. Die Person, die einen Katalog erstellt, ist automatisch der erste Besitzer des Katalogs und kann weitere Katalogbesitzer hinzufügen. Ein Katalogersteller kann keine Kataloge verwalten, die ihm nicht gehören, und einem Katalog keine Ressourcen hinzufügen, die er nicht besitzt. Wenn der Katalogersteller einen anderen Katalog verwalten oder Ressourcen hinzufügen muss, die er nicht besitzt, kann er sich als Mitbesitzer des betreffenden Katalogs oder der betreffenden Ressource festlegen lassen. |
+| Katalogbesitzer | Bearbeiten und Verwalten von vorhandenen Katalogen. In der Regel ein IT-Administrator oder Ressourcenbesitzer bzw. ein Benutzer, den der Katalogbesitzer ausgewählt hat. |
 | Zugriffspaketmanager | Bearbeiten und Verwalten aller in einem Katalog vorhandenen Zugriffspakete. |
 | Zugriffspaketzuweisungsmanager | Bearbeiten und Verwalten aller vorhandenen Zugriffspaketzuweisungen. |
 
-Darüber hinaus haben auch eine designierte genehmigende Person und ein Antragsteller eines Zugriffspakets Rechte, obwohl es sich nicht um Rollen handelt.
+Außerdem verfügen die gewählte genehmigende Person und ein Anforderer eines Zugriffspakets über Rechte, obwohl es sich bei ihnen nicht um Rollen handelt.
 
 | Right | BESCHREIBUNG |
 | --- | --- |
@@ -118,7 +116,7 @@ In der folgenden Tabelle sind die Aufgaben aufgeführt, die von den Berechtigung
 
 ## <a name="required-roles-to-add-resources-to-a-catalog"></a>Erforderliche Rollen, um einem Katalog Ressourcen hinzuzufügen
 
-Ein globaler Administrator kann jede Gruppe (in der Cloud erstellte Sicherheitsgruppen oder in der Cloud erstellte Microsoft 365-Gruppen), Anwendung oder SharePoint Online-Website zu einem Katalog hinzufügen oder daraus entfernen. Ein Benutzeradministrator kann eine beliebige Gruppe oder Anwendung in einem Katalog hinzufügen oder entfernen (ausgenommen hiervon sind Gruppen, die so konfiguriert sind, dass sie einer Verzeichnisrolle zugewiesen werden können). Beachten Sie, dass ein Benutzeradministrator Zugriffspakete in einem Katalog mit Gruppen verwalten kann, die so konfiguriert sind, dass sie einer Verzeichnisrolle zugewiesen werden können.
+Ein globaler Administrator kann jede Gruppe (in der Cloud erstellte Sicherheitsgruppen oder in der Cloud erstellte Microsoft 365-Gruppen), Anwendung oder SharePoint Online-Website zu einem Katalog hinzufügen oder daraus entfernen. Ein Benutzeradministrator kann eine beliebige Gruppe oder Anwendung in einem Katalog hinzufügen oder entfernen (ausgenommen hiervon sind Gruppen, die so konfiguriert sind, dass sie einer Verzeichnisrolle zugewiesen werden können). Beachten Sie, dass ein Benutzeradministrator Zugriffspakete in einem Katalog mit Gruppen verwalten kann, die so konfiguriert sind, dass sie einer Verzeichnisrolle zugewiesen werden können.  Weitere Informationen zu Gruppen, denen Rollen zugewiesen werden können, finden Sie unter [Erstellen einer Gruppe in Azure Active Directory für das Zuweisen von Rollen](../roles/groups-create-eligible.md).
 
 Damit ein Benutzer, der kein globaler Administrator oder Benutzeradministrator ist, Gruppen, Anwendungen oder SharePoint-Online-Websites einem Katalog hinzufügen kann, muss dieser Benutzer über die erforderliche Azure AD-Verzeichnisrolle *und* die Berechtigungsverwaltungsrolle für Katalogbesitzer verfügen. Die folgende Tabelle enthält die Rollenkombinationen, die erforderlich sind, um einem Katalog Ressourcen hinzuzufügen. Um Ressourcen aus einem Katalog zu entfernen, müssen Sie über die gleichen Rollen verfügen.
 

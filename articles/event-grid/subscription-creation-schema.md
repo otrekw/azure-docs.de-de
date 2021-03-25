@@ -3,12 +3,12 @@ title: Azure Event Grid-Abonnementschema
 description: In diesem Artikel werden die Eigenschaften für das Abonnieren eines Ereignisses mit Azure Event Grid beschrieben. Event Grid-Abonnementschema
 ms.topic: reference
 ms.date: 07/07/2020
-ms.openlocfilehash: 21016627e545cc4935b4ac213df675e894c12d95
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f6e33171cbba65cfeaca49ab6a8954be8bb89acb
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86119071"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199950"
 ---
 # <a name="event-grid-subscription-schema"></a>Event Grid-Abonnementschema
 
@@ -25,10 +25,10 @@ PUT /subscriptions/{subscription-id}/resourceGroups/examplegroup/providers/Micro
 ``` 
 
 Der Name des Ereignisabonnements muss 3 bis 64 Zeichen umfassen und darf nur die Zeichen a–Z, A–Z, 0–9 und „-“ enthalten. Der Artikel beschreibt die Eigenschaften und das Schema für den Hauptteil der Anforderung.
- 
+ 
 ## <a name="event-subscription-properties"></a>Eigenschaften für Ereignisabonnements
 
-| Eigenschaft | type | BESCHREIBUNG |
+| Eigenschaft | type | Beschreibung |
 | -------- | ---- | ----------- |
 | destination | Objekt (object) | Das Objekt, das den Endpunkt definiert. |
 | filter | Objekt (object) | Ein optionales Feld zum Filtern der Ereignistypen. |
@@ -37,17 +37,18 @@ Der Name des Ereignisabonnements muss 3 bis 64 Zeichen umfassen und darf nur die
 
 | Eigenschaft | type | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| endpointType | string | Die Art des Endpunkts für das Abonnement (Webhook/HTTP, Event Hub oder Warteschlange). | 
-| endpointUrl | string | Die Ziel-URL für Ereignisse in diesem Ereignisabonnement. | 
+| endpointType | Zeichenfolge | Die Art des Endpunkts für das Abonnement (Webhook/HTTP, Event Hub oder Warteschlange). | 
+| endpointUrl | Zeichenfolge | Die Ziel-URL für Ereignisse in diesem Ereignisabonnement. | 
 
 ### <a name="filter-object"></a>filter-Objekt
 
 | Eigenschaft | type | BESCHREIBUNG |
 | -------- | ---- | ----------- |
 | includedEventTypes | array | Übereinstimmung, wenn der Ereignistyp in der Ereignisnachricht eine exakte Übereinstimmung für einen der Ereignistypnamen ist. Fehler, wenn der Ereignisname nicht den registrierten Ereignistypnamen für die Ereignisquelle entspricht. Der Standardwert entspricht allen Ereignistypen. |
-| subjectBeginsWith | string | Ein Präfixabgleichfilter für das Betrefffeld in der Ereignisnachricht. Der Standardwert oder eine leere Zeichenfolge entspricht allen Optionen. | 
-| subjectEndsWith | string | Ein Suffixabgleichfilter für das Betrefffeld in der Ereignisnachricht. Der Standardwert oder eine leere Zeichenfolge entspricht allen Optionen. |
-| isSubjectCaseSensitive | string | Steuert, ob beim Abgleich von Filtern die Groß-/Kleinschreibung beachtet wird. |
+| subjectBeginsWith | Zeichenfolge | Ein Präfixabgleichfilter für das Betrefffeld in der Ereignisnachricht. Der Standardwert oder eine leere Zeichenfolge entspricht allen Optionen. | 
+| subjectEndsWith | Zeichenfolge | Ein Suffixabgleichfilter für das Betrefffeld in der Ereignisnachricht. Der Standardwert oder eine leere Zeichenfolge entspricht allen Optionen. |
+| isSubjectCaseSensitive | Zeichenfolge | Steuert, ob beim Abgleich von Filtern die Groß-/Kleinschreibung beachtet wird. |
+| enableAdvancedFilteringOnArrays | boolean | Ermöglicht die Verwendung von Arrays für Schlüssel in der erweiterten Filterung. Weitere Informationen finden Sie unter [Erweiterte Filterung](event-filtering.md#advanced-filtering). |
 
 
 ## <a name="example-subscription-schema"></a>Beispiel für das Abonnementschema

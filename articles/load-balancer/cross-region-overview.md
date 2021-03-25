@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: allensu
 ms.custom: references_regions
-ms.openlocfilehash: 89bf920a5a5dd833425f1b41bd206beaae9d30fd
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: b0e51d11797bc5767f19b25a92a2d29a66ea1bb2
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946265"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176721"
 ---
 # <a name="cross-region-load-balancer-preview"></a>Regionsübergreifender Lastenausgleich (Vorschau)
 
@@ -35,7 +35,7 @@ Azure Load Balancer Standard unterstützt regionsübergreifenden Lastenausgleich
 * [Aufbauen auf vorhandener Lastenausgleichslösung](#build-cross-region-solution-on-existing-azure-load-balancer) ohne Lernkurve
 
 > [!IMPORTANT]
-> Der regionsübergreifende Lastenausgleich befindet sich derzeit in der Vorschauphase und kann im Portal bereitgestellt werden. Melden Sie sich bei **https://preview.portal.azure.com** an, um das Feature anzuzeigen und bereitzustellen. </br> </br>
+> Die regionsübergreifende Lastenausgleichslösung befindet sich derzeit in der Vorschauphase.
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Der regionsübergreifende Lastenausgleich bietet die gleichen Vorteile wie Hochleistung und niedrige Latenz wie der regionale Standardlastenausgleich. 
@@ -79,7 +79,7 @@ Weitere Informationen finden Sie unter [Konfigurieren des Verteilungsmodus für 
 
 ### <a name="ability-to-scale-updown-behind-a-single-endpoint"></a>Möglichkeit, hinter einem einzelnen Endpunkt zentral hoch- oder herunterzuskalieren
 
-Wenn Sie den globalen Endpunkt eines regionsübergreifenden Lastenausgleichs für Kunden verfügbar machen, können Sie regionale Bereitstellungen hinter dem globalen Endpunkt ohne Kundenbeeinträchtigung hinzufügen oder entfernen. 
+Wenn Sie den globalen Endpunkt eines regionsübergreifenden Lastenausgleichs für Kunden verfügbar machen, können Sie regionale Bereitstellungen hinter dem globalen Endpunkt ohne Unterbrechung hinzufügen oder entfernen. 
 
 <!---To learn about how to add or remove a regional deployment from the backend, read more [here](TODO: Insert CLI doc here).--->
 
@@ -137,13 +137,13 @@ Der regionsübergreifende Lastenausgleich leitet den Datenverkehr an den entspre
 
 * Regionsübergreifende Front-End-IP-Konfigurationen sind nur öffentlich. Ein internes Front-End wird derzeit nicht unterstützt.
 
-* Ein privater oder interner Lastenausgleich kann nicht dem Back-End-Pool des regionsübergreifenden Lastenausgleich hinzugefügt werden. 
+* Ein privater oder interner Lastenausgleich kann nicht dem Back-End-Pool des regionsübergreifenden Lastenausgleichs hinzugefügt werden. 
 
 * Regionsübergreifende IPv6-Front-End-IP-Konfigurationen werden nicht unterstützt. 
 
 * Zurzeit kann kein Integritätstest konfiguriert werden. Bei einem standardmäßigen Integritätstest werden alle 20 Sekunden automatisch Verfügbarkeitsinformationen zum regionalen Lastenausgleich abgerufen. 
 
-* Azure Kubernetes Service (AKS) kann derzeit nicht in regionsübergreifende Load Balancer integriert werden. Beim Einrichten eines regionsübergreifenden Load Balancers vor einem öffentlichen Load Balancer, der mit AKS bereitgestellt wurde, ist der Verlust der Verbindung zu erwarten.
+* Die Integration in Azure Kubernetes Service (AKS) ist zurzeit nicht verfügbar. Die Verbindung geht verloren, wenn ein regionsübergreifender Lastenausgleich mit Load Balancer Standard mit dem im Back-End bereitgestellten AKS-Cluster bereitgestellt wird.
 
 ## <a name="pricing-and-sla"></a>Preise und SLA
 Regionsübergreifender Lastenausgleich, verwendet die [SLA](https://azure.microsoft.com/support/legal/sla/load-balancer/v1_0/ ) des Standardlastenausgleichs.

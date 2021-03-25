@@ -6,10 +6,10 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 12/06/2019
 ms.openlocfilehash: cfcb3a5a601afadb9f3fcd71c24e18a9d7f27b9e
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98946404"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Einrichten der Apache HBase-Clusterreplikation in virtuellen Azure-Netzwerken
@@ -63,9 +63,9 @@ Im Folgenden werden einige der hartcodierten Werte in der Vorlage aufgeführt:
 
 **VNet 1**
 
-| Eigenschaft | value |
+| Eigenschaft | Wert |
 |----------|-------|
-| Location | USA (Westen) |
+| Standort | USA (Westen) |
 | VNet-Name | &lt;ClusterNamePrevix>-vnet1 |
 | Adressraumpräfix | 10.1.0.0/16 |
 | Subnetzname | Subnetz 1 |
@@ -80,9 +80,9 @@ Im Folgenden werden einige der hartcodierten Werte in der Vorlage aufgeführt:
 
 **VNet 2**
 
-| Eigenschaft | value |
+| Eigenschaft | Wert |
 |----------|-------|
-| Location | East US |
+| Standort | East US |
 | VNet-Name | &lt;ClusterNamePrevix>-vnet2 |
 | Adressraumpräfix | 10.2.0.0/16 |
 | Subnetzname | Subnetz 1 |
@@ -323,7 +323,7 @@ Optionale Argumente:
 |-m, --machine | Gibt den Hauptknoten an, auf dem die Skriptaktion ausgeführt werden soll. Der Wert muss basierend auf dem aktiven Hauptknoten ausgewählt werden. Verwenden Sie diese Option, wenn Sie das $0-Skript als Skriptaktion im HDInsight-Portal oder in Azure PowerShell ausführen.|
 |-cp, -copydata | Aktiviert die Migration vorhandener Daten in den Tabellen, in denen die Replikation aktiviert ist. |
 |-rpm, -replicate-phoenix-meta | Aktiviert die Replikation in Phoenix-Systemtabellen. <br><br>*Verwenden Sie diese Option mit Vorsicht.* Es wird empfohlen, die Phoenix-Tabellen in Replikatclustern neu zu erstellen, bevor Sie dieses Skript verwenden. |
-|-h, --help | Zeigt Informationen zur Nutzung an. |
+|-h, --help | Zeigt Nutzungsinformationen an. |
 
 Der Abschnitt `print_usage()` des [Skripts](https://github.com/Azure/hbase-utils/blob/master/replication/hdi_enable_replication.sh) bietet eine detaillierte Erläuterung der Parameter.
 
@@ -395,7 +395,7 @@ Der Abschnitt `print_usage()` des [Skripts](https://raw.githubusercontent.com/Az
 
   `--src-cluster=<source hbase cluster name> --dst-cluster=<destination hbase cluster name> --src-ambari-user=<source cluster Ambari user name> --src-ambari-password=<source cluster Ambari password>`
 
-- **Deaktivieren der Replikation in angegebenen Tabellen („table1“, „table2“ und „table3“)** :
+- **Deaktivieren der Replikation in angegebenen Tabellen („table1“, „table2“ und „table3“)**:
 
   `-m hn1 -s <source hbase cluster name> -sp <source cluster Ambari password> -t "table1;table2;table3"`
 

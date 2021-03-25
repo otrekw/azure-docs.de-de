@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: tisande
-ms.openlocfilehash: 4711401172c4a2b224c231db4a773e0c4219d3a7
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 1f3c4ef56feb77e9b01375b8b5dbdb567f5bfadb
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101659833"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102179968"
 ---
 # <a name="keywords-in-azure-cosmos-db"></a>Schlüsselwörter in Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -135,7 +135,7 @@ FROM c
 WHERE c.description LIKE "%fruit%"
 ```
 
-Wenn Sie ein `%`-Zeichen nur am Anfang des Musters verwendet haben, werden nur Elemente mit einer Beschreibung zurückgegeben, die mit `fruit` beginnt:
+Wenn Sie das Zeichen `%` nur am Ende des Musters verwendet haben, werden nur Elemente mit einer Beschreibung zurückgegeben, die mit `fruit` beginnt:
 
 ```sql
 SELECT *

@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 11/01/2019
 tags: connectors
-ms.openlocfilehash: af98811e158b9613e41389e08e19cb36797aa272
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 810aaae9634a7de8d07b6d49edd0c6c2eda96754
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790592"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101730880"
 ---
 # <a name="call-rest-endpoints-by-using-azure-logic-apps"></a>Aufrufen von REST-Endpunkten mit Azure Logic Apps
 
@@ -46,7 +46,7 @@ Dieser integrierte Trigger sendet eine HTTP-Anfrage an eine URL für eine Swagge
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Öffnen Sie Ihre leere Logik-App im Logik-App-Designer.
 
-1. Geben Sie im Suchfeld des Designers „swagger“ als Filter ein. Wählen Sie in der Liste **Trigger** den **HTTP + Swagger** -Trigger aus.
+1. Geben Sie im Suchfeld des Designers „swagger“ als Filter ein. Wählen Sie in der Liste **Trigger** den **HTTP + Swagger**-Trigger aus.
 
    ![Auswählen des „HTTP + Swagger“-Triggers](./media/connectors-native-http-swagger/select-http-swagger-trigger.png)
 
@@ -56,7 +56,7 @@ Dieser integrierte Trigger sendet eine HTTP-Anfrage an eine URL für eine Swagge
 
    `https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/export?DocumentFormat=Swagger&ApiName=Face%20API%20-%20V1.0`
 
-   ![Screenshot: Logik-App-Designer mit dem Trigger „HTTP + Swagger“ und der auf einen URL-Wert festgelegten Eigenschaft „Swagger-Endpunkt-URL“](./media/connectors-native-http-swagger/http-swagger-trigger-parameters.png)
+   ![Screenshot: Logik-App-Designer mit dem Trigger „HTTP + Swagger“ und der auf einen URL-Wert festgelegten Eigenschaft „Swagger-Endpunkt-URL“.](./media/connectors-native-http-swagger/http-swagger-trigger-parameters.png)
 
 1. Wenn der Designer die von der Swagger-Datei beschriebenen Vorgänge anzeigt, wählen Sie den Vorgang aus, den Sie verwenden möchten.
 
@@ -68,7 +68,7 @@ Dieser integrierte Trigger sendet eine HTTP-Anfrage an eine URL für eine Swagge
 
    ![Screenshot: Logik-App-Designer mit dem Trigger „HTTP + Swagger“ und dem Vorgang „ Gesicht – Erkennen“](./media/connectors-native-http-swagger/http-swagger-trigger-operation-details.png)
 
-1. Öffnen Sie zum Hinzufügen weiterer verfügbarer Parameter die Liste **Neuen Parameter hinzufügen** , und wählen Sie die gewünschten Parameter aus.
+1. Öffnen Sie zum Hinzufügen weiterer verfügbarer Parameter die Liste **Neuen Parameter hinzufügen**, und wählen Sie die gewünschten Parameter aus.
 
    Weitere Informationen zu verfügbaren Authentifizierungstypen für HTTP und Swagger finden Sie unter [Hinzufügen von Authentifizierung zu ausgehenden Aufrufen](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
 
@@ -86,7 +86,7 @@ Diese integrierte Aktion sendet eine HTTP-Anfrage an eine URL für die Swagger-D
 
    Wenn Sie zwischen Schritten eine Aktion einfügen möchten, bewegen Sie den Mauszeiger über den Pfeil zwischen den Schritten. Wählen Sie das angezeigte Pluszeichen ( **+** ) aus, und wählen Sie dann **Aktion hinzufügen** aus.
 
-1. Geben Sie im Suchfeld des Designers „swagger“ als Filter ein. Wählen Sie in der Liste **Aktionen** die **HTTP + Swagger** -Aktion aus.
+1. Geben Sie im Suchfeld des Designers „swagger“ als Filter ein. Wählen Sie in der Liste **Aktionen** die **HTTP + Swagger**-Aktion aus.
 
     ![Aktion „HTTP + Swagger“ auswählen](./media/connectors-native-http-swagger/select-http-swagger-action.png)
 
@@ -108,7 +108,7 @@ Diese integrierte Aktion sendet eine HTTP-Anfrage an eine URL für die Swagger-D
 
    ![Vorgangsdetails](./media/connectors-native-http-swagger/http-swagger-action-operation-details.png)
 
-1. Öffnen Sie zum Hinzufügen weiterer verfügbarer Parameter die Liste **Neuen Parameter hinzufügen** , und wählen Sie die gewünschten Parameter aus.
+1. Öffnen Sie zum Hinzufügen weiterer verfügbarer Parameter die Liste **Neuen Parameter hinzufügen**, und wählen Sie die gewünschten Parameter aus.
 
    Weitere Informationen zu verfügbaren Authentifizierungstypen für HTTP und Swagger finden Sie unter [Hinzufügen von Authentifizierung zu ausgehenden Aufrufen](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
 
@@ -154,7 +154,7 @@ Hier finden Sie weitere Informationen zu den Ausgaben eines „HTTP + Swagger“
 | status code | INT | Der Statuscode aus der Anforderung |
 |||
 
-| Statuscode | Beschreibung |
+| Statuscode | BESCHREIBUNG |
 |-------------|-------------|
 | 200 | OK |
 | 202 | Zulässig |

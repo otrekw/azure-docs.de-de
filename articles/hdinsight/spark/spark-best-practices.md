@@ -5,10 +5,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.openlocfilehash: f81435abbedec25cb8abe0b958065a493c15ce4c
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98938814"
 ---
 # <a name="apache-spark-guidelines"></a>Apache Spark-Richtlinien
@@ -53,7 +53,7 @@ Dieser Artikel enthält verschiedene Richtlinien für die Verwendung von Apache 
 | Apache Hive in HDInsight | [Integrieren von Apache Spark und Apache Hive per Hive Warehouse Connector](../interactive-query/apache-hive-warehouse-connector.md) |
 | Apache HBase in HDInsight | [Verwenden von Apache Spark zum Lesen und Schreiben von Apache HBase-Daten](../hdinsight-using-spark-query-hbase.md) |
 | Apache Kafka in HDInsight | [Tutorial: Verwenden von strukturiertem Apache Spark-Streaming mit Apache Kafka in HDInsight](../hdinsight-apache-kafka-spark-structured-streaming.md) |
-| Azure Cosmos DB | [Azure Synapse Link für Azure Cosmos DB](../../cosmos-db/synapse-link.md) |
+| Azure Cosmos DB | [Azure Synapse Link für Azure Cosmos DB](../../cosmos-db/synapse-link.md) |
 
 ## <a name="what-are-my-storage-options"></a>Welche Speicheroptionen stehen mir zur Verfügung?
 

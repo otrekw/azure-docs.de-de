@@ -3,15 +3,15 @@ title: Erstellen von Automatisierungsaufgaben zum Verwalten und Überwachen von 
 description: Einrichten automatisierter Aufgaben, mit denen Sie Azure-Ressourcen verwalten und Kosten überwachen können, indem Sie Workflows erstellen, die auf Azure Logic Apps ausgeführt werden.
 services: logic-apps
 ms.suite: integration
-ms.reviewer: deli, jonfan, logicappspm
+ms.reviewer: logicappspm
 ms.topic: conceptual
-ms.date: 09/23/2020
-ms.openlocfilehash: 2b3b40b5958df52dabf92155a1de809578f1d374
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.date: 02/19/2021
+ms.openlocfilehash: 8180fe8554e5fff83e4caef8c245839518649ca1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92201119"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101719048"
 ---
 # <a name="manage-azure-resources-and-monitor-costs-by-creating-automation-tasks-preview"></a>Verwalten von Azure-Ressourcen und Überwachen von Kosten durch Erstellen von Automatisierungsaufgaben (Vorschau)
 
@@ -71,13 +71,15 @@ Im Vergleich dazu ist Azure Automation ein cloudbasierter Automatisierungs- und 
 
    ![Screenshot, der den Bereich „Aufgaben“ des Speicherkontos zeigt, in dessen Symbolleiste „Hinzufügen“ ausgewählt ist.](./media/create-automation-tasks-azure-resources/add-automation-task.png)
 
-1. Wählen Sie im Bereich **Aufgabe hinzufügen** unter **Vorlage auswählen** die Vorlage für die Aufgabe aus, die Sie erstellen möchten, und wählen Sie **Weiter: Authentifizierung**.
+1. Wählen Sie im Bereich **Aufgabe hinzufügen** unter **Vorlage auswählen** die Vorlage für die Aufgabe aus, die Sie erstellen möchten. Wenn die nächste Seite nicht angezeigt wird, wählen Sie **Weiter: Authentifizierung** aus.
 
    Dieses Beispiel wird fortgesetzt, indem Sie die Aufgabenvorlage **Monatliche Kosten für Ressource senden** auswählen.
 
    ![Screenshot, der die ausgewählten Optionen „Monatliche Kosten für Ressource senden“ und „Weiter: Authentifizierung“ zeigt.](./media/create-automation-tasks-azure-resources/select-task-template.png)
 
-1. Wählen Sie unter **Authentifizierung** im Abschnitt **Verbindungen** für jede Verbindung **Erstellen** aus, damit Sie Anmeldeinformationen für die Authentifizierung für die jeweilige Verbindung angeben können. Die Verbindungstypen in den einzelnen Aufgaben variieren je nach Aufgabe.
+1. Wählen Sie unter **Authentifizierung** im Abschnitt **Verbindungen** für jede Verbindung **Erstellen** aus, die in der Aufgabe angezeigt wird, damit Sie Anmeldeinformationen für die Authentifizierung für die jeweilige Verbindung angeben können. Die Verbindungstypen in den einzelnen Aufgaben variieren je nach Aufgabe.
+
+   Dieses Beispiel zeigt nur eine der Verbindungen, die diese Aufgabe benötigt.
 
    ![Screenshot, der die ausgewählte Option „Erstellen“ für die Azure Resource Manager-Verbindung zeigt.](./media/create-automation-tasks-azure-resources/create-authenticate-connections.png)
 
@@ -89,7 +91,7 @@ Im Vergleich dazu ist Azure Automation ein cloudbasierter Automatisierungs- und 
 
    ![Screenshot, der eine erfolgreich hergestellte Verbindung zeigt.](./media/create-automation-tasks-azure-resources/create-connection-success.png)
 
-1. Nachdem Sie alle erforderlichen Verbindungen authentifiziert haben, wählen Sie **Weiter: Konfiguration** aus.
+1. Nachdem Sie alle Verbindungen authentifiziert haben, wählen Sie **Weiter: Konfiguration** aus, wenn die nächste Seite nicht angezeigt wird.
 
 1. Geben Sie unter **Konfiguration** einen Namen für die Aufgabe und alle anderen für die Aufgabe erforderlichen Informationen an. Wählen Sie **Erstellen**, wenn Sie fertig sind.
 
@@ -148,7 +150,7 @@ Um den Ausführungsverlauf einer Aufgabe zusammen mit deren Statuswerten, Eingab
 
    Der Bereich **Logik-App-Ausführung** wird geöffnet und zeigt den zugrunde liegenden Workflow an, der ausgeführt wurde.
 
-   * Ein Workflow beginnt immer mit einem [*Trigger*](../connectors/apis-list.md#triggers-actions). Für diese Aufgabe beginnt der Workflow mit dem [**Wiederholungs**trigger](../connectors/connectors-native-recurrence.md).
+   * Ein Workflow beginnt immer mit einem [*Trigger*](../connectors/apis-list.md#triggers-actions). Für diese Aufgabe beginnt der Workflow mit dem [**Wiederholungs** trigger](../connectors/connectors-native-recurrence.md).
 
    * Jeder Schritt zeigt seinen Status und die Ausführungsdauer an. Die Ausführung von Schritten mit einer Ausführungsdauer von 0 Sekunden war kürzer als 1 Sekunde.
 
@@ -265,7 +267,7 @@ Wenn Sie den zugrunde liegenden Workflow für eine Automatisierungsaufgabe ände
 
 ## <a name="provide-feedback"></a>Senden von Feedback
 
-Wir freuen uns darauf, von Ihnen zu hören. Um Fehler zu melden, Feedback zu geben oder Fragen zu dieser Vorschaufunktion zu stellen, [wenden Sie sich an das Azure Logic Apps-Team](mailto:logicapps@microsoft.com).
+Wir freuen uns darauf, von Ihnen zu hören. Um Fehler zu melden, Feedback zu geben oder Fragen zu dieser Vorschaufunktion zu stellen, [wenden Sie sich an das Azure Logic Apps-Team](mailto:logicappspm@microsoft.com).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

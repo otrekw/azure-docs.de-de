@@ -1,14 +1,14 @@
 ---
 title: Bereitstellen des Blaupausenbeispiels „Azure Security Benchmark Foundation“
 description: Bereitstellungsschritte für das Blaupausenbeispiel „Azure Security Benchmark Foundation“, einschließlich Details zum Blaupausenartefaktparameter
-ms.date: 02/12/2020
+ms.date: 03/12/2021
 ms.topic: sample
-ms.openlocfilehash: 84c157d696dc8ababe1f252136672ea600e604af
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: af41dd50c976ac6c0570b8a089211fa310ef4ef1
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100633953"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103232612"
 ---
 # <a name="deploy-the-azure-security-benchmark-foundation-blueprint-sample"></a>Bereitstellen des Blaupausenbeispiels „Azure Security Benchmark Foundation“
 
@@ -92,6 +92,9 @@ Nachdem die Kopie des Blaupausenbeispiels erfolgreich **veröffentlicht** wurde,
      - **Network Watcher-Name**: Name der Network Watcher-Ressource
      - **Network Watcher-Ressourcengruppenname**: Name der Network Watcher-Ressourcengruppe
      - **Aktivieren von DDoS Protection**: Geben Sie „true“ oder „false“ ein, um anzugeben, ob DDoS Protection im virtuellen Netzwerk aktiviert ist.
+     
+    > [!NOTE] 
+    > Wenn Network Watcher bereits aktiviert ist, wird empfohlen, die vorhandene Network Watcher-Ressourcengruppe zu verwenden. Außerdem müssen Sie den Speicherort für die vorhandene Network Watcher-Ressourcengruppe für den Artefaktparameter **Network Watcher-Speicherort für Ressourcengruppen** angeben.
 
    - Artefaktparameter
 
@@ -132,8 +135,14 @@ Die folgende Tabelle enthält eine Aufstellung der Blaupausenparameter:
 |Azure Virtual Network-Spoke-Vorlage|Resource Manager-Vorlage|Subnetzadressnamen (optional)|Array von Subnetznamen, die im virtuellen Spoke-Netzwerk bereitgestellt werden sollen. Beispiel: subnet1, subnet2|
 |Azure Virtual Network-Spoke-Vorlage|Resource Manager-Vorlage|Subnetzadresspräfixe (optional)|Array von IP-Adresspräfixen für optionale Subnetze für das virtuelle Spoke-Netzwerk; Beispiel: 10.0.7.0/24, 10.0.8.0/24|
 |Azure Virtual Network-Spoke-Vorlage|Resource Manager-Vorlage|Bereitstellen von Spoke|Geben Sie „true“ oder „false“ ein, um anzugeben, ob durch die Zuweisung die Spoke-Komponenten der Architektur bereitgestellt werden.|
-|Azure Network Watcher-Vorlage|Resource Manager-Vorlage|Network Watcher-Standort|Ist Network Watcher bereits aktiviert, **muss** dieser Parameterwert mit dem Standort der vorhandenen Network Watcher-Ressourcengruppe identisch sein.|
-|Azure Network Watcher-Vorlage|Resource Manager-Vorlage|Network Watcher-Ressourcengruppenstandort|Ist Network Watcher bereits aktiviert, **muss** dieser Parameterwert mit dem Namen der vorhandenen Network Watcher-Ressourcengruppe identisch sein.|
+|Azure Network Watcher-Vorlage|Resource Manager-Vorlage|Network Watcher-Standort|Speicherort der Network Watcher-Ressource|
+|Azure Network Watcher-Vorlage|Resource Manager-Vorlage|Network Watcher-Ressourcengruppenstandort|Ist Network Watcher bereits aktiviert, **muss** dieser Parameterwert mit dem Standort der vorhandenen Network Watcher-Ressourcengruppe identisch sein.|
+
+## <a name="troubleshooting"></a>Problembehandlung
+
+Wenn der Fehler `The resource group 'NetworkWatcherRG' failed to deploy due to the
+following error: Invalid resource group location '{location}'. The Resource group already exists in
+location '{location}'.` auftritt, prüfen Sie, ob der Blaupausenparameter **Network Watcher-Ressourcengruppenname** den bestehenden Network Watcher-Ressourcengruppennamen angibt und der Blaupausenparameter **Network Watcher-Ressourcengruppenspeicherort** auf den bestehenden Network Watcher-Ressourcengruppenspeicherort verweist.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

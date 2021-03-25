@@ -8,10 +8,10 @@ author: navits09
 ms.author: navits
 ms.date: 12/02/2020
 ms.openlocfilehash: bcb7f2d008c54981223b4839f9a750e6ee9ac5cc
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97355143"
 ---
 # <a name="create-a-dynamics-365-for-operations-offer"></a>Erstellen eines Angebots für Dynamics 365 for Operations
@@ -67,7 +67,7 @@ Wählen Sie für **Wie sollen potenzielle Kunden mit diesem Angebot interagieren
 
 ### <a name="test-drive"></a>Testversion
 
-Eine Testversion ist eine hervorragende Möglichkeit, Ihr Angebot potenziellen Kunden zu präsentieren, indem Sie ihnen die Möglichkeit geben, das Produkt vor dem Kauf zu testen. Dies führt zu einer höheren Konversionsrate und zur Generierung von aussichtsreichen Leads. Um mehr zu erfahren, lesen Sie zunächst [Was ist die Testversion?](../what-is-test-drive.md).
+Eine Testversion ist eine hervorragende Möglichkeit, Ihr Angebot potenziellen Kunden zu präsentieren, indem Sie ihnen die Möglichkeit geben, das Produkt vor dem Kauf zu testen. Dies führt zu einer höheren Konversionsrate und zur Generierung von aussichtsreichen Leads. Um mehr zu erfahren, lesen Sie zunächst [Was ist die Testversion?](../what-is-test-drive.md)
 
 Aktivieren Sie das Kontrollkästchen **Testversion aktivieren**, um eine Testversion für einen festen Zeitraum zu aktivieren. Deaktivieren Sie dieses Kontrollkästchen, um die Testversion aus Ihrem Angebot zu entfernen.
 
@@ -189,7 +189,7 @@ Fügen Sie Screenshots hinzu, die zeigen, wie Ihr Angebot funktioniert. Mindeste
 
 #### <a name="videos"></a>Videos
 
-Optional können Sie bis zu vier Videos hinzufügen, die Ihr Angebot veranschaulichen. Videos müssen auf einer externen Website gehostet werden. Geben Sie für jedes Video den Namen, die Adresse und ein Miniaturbild (1.280 × 720 Pixel) ein.
+Optional können Sie bis zu vier Videos hinzufügen, die Ihr Angebot veranschaulichen. Videos müssen auf einer externen Website gehostet werden. Geben Sie für jedes Video den Namen, die Adresse und ein Miniaturbild (1280 × 720 Pixel) ein.
 
 Weitere Ressourcen für Marketplace-Listen finden Sie unter [Bewährte Methoden für Angebotslistung](../gtm-offer-listing-best-practices.md).
 

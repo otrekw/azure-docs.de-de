@@ -1,18 +1,16 @@
 ---
 title: Apache Oozie-Workflows und Enterprise-Sicherheit – Azure HDInsight
 description: Schützen Sie Apache Oozie-Workflows mit dem Azure HDInsight-Enterprise-Sicherheitspaket. Erfahren Sie, wie Sie einen Oozie-Workflow definieren und einen Oozie-Auftrag übermitteln können.
-author: omidm1
-ms.author: omidm
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive,seodec18,seoapr2020
+ms.custom: seoapr2020
 ms.date: 05/14/2020
-ms.openlocfilehash: 559779e3979ab2ada2191f55cfc06ceb2470bd7d
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: dc20a258028bb76351ae70362234e7c4c8c741a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98933475"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101699401"
 ---
 # <a name="run-apache-oozie-in-azure-hdinsight-clusters-with-enterprise-security-package"></a>Ausführen von Apache Oozie in Azure HDInsight-Clustern mit Enterprise-Sicherheitspaket
 

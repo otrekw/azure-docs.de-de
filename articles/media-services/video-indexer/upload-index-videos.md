@@ -8,15 +8,15 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 11/12/2020
+ms.date: 03/04/2021
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a0b7330485d3152a588d43added7d9feaa5c2a14
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 3a3c2812a4ecfa1a80539804122042bc2dc2f3a2
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "95994490"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102199185"
 ---
 # <a name="upload-and-index-your-videos"></a>Hochladen und Indizieren Ihrer Videos  
 
@@ -83,18 +83,22 @@ Dieser Parameter ermöglicht Ihnen das Angeben einer ID, die dem Video zugeordne
 
 #### <a name="indexingpreset"></a>indexingPreset
 
-Verwenden Sie diesen Parameter, wenn unformatierte oder externe Aufzeichnungen Hintergrundgeräusche enthalten. Dieser Parameter wird verwendet, um den Indizierungsprozess zu konfigurieren. Sie können die folgenden Werte angeben:
+Verwenden Sie diesen Parameter, um das KI-Paket zu definieren, das Sie auf Ihre Audio- oder Videodatei anwenden möchten. Dieser Parameter wird verwendet, um den Indizierungsprozess zu konfigurieren. Sie können die folgenden Werte angeben:
 
 - `AudioOnly`: Indizieren und Extrahieren von Erkenntnissen ausschließlich für Audiodaten (Videodaten werden ignoriert)
 - `VideoOnly`: Indizieren und Extrahieren von Erkenntnissen ausschließlich für Videodaten (Audiodaten werden ignoriert)
 - `Default`: Indizieren und Extrahieren von Erkenntnissen für Audio- und Videodaten
 - `DefaultWithNoiseReduction`: Indizieren und Extrahieren von Erkenntnissen aus Audio- und Videodaten mit Anwendung von Algorithmen für die Rauschunterdrückung auf den Audiodatenstrom
 
+    Der Wert `DefaultWithNoiseReduction` ist nun der Standardvoreinstellung (veraltet) zugeordnet.
+- `BasicAudio`: Indizieren und Extrahieren von Erkenntnissen ausschließlich für Audiodaten (Videodaten werden ignoriert) und nur unter Verwendung grundlegender Audiofunktionen (Transkription, Übersetzung, Formatieren von Beschriftungstext und Untertiteln).
+ - `AdvancedAudio`: Indizieren und Extrahieren von Erkenntnissen ausschließlich für Audiodaten (Videodaten werden ignoriert) unter Verwendung erweiterter Audiofunktionen (Audioereigniserkennung) zusätzlich zur standardmäßigen Audioanalyse
+
 > [!NOTE]
 > Video Indexer deckt bis zu zwei Audiospuren ab. Wenn sich in der Datei mehr Audiospuren befinden, werden sie als eine Spur behandelt.<br/>
 Wenn Sie die Spuren separat indizieren möchten, müssen Sie die relevante Audiodatei extrahieren und als `AudioOnly` indizieren.
 
-Der Preis richtet sich nach der gewählten Indizierungsoption.  
+Der Preis richtet sich nach der gewählten Indizierungsoption. Weitere Informationen finden Sie unter [Media Services – Preise](https://azure.microsoft.com/pricing/details/media-services/).
 
 #### <a name="priority"></a>priority
 

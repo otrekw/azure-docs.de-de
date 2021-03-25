@@ -9,10 +9,10 @@ ms.date: 04/20/2020
 ms.author: mjbrown
 ms.reviewer: sngun
 ms.openlocfilehash: ba55d88de3a5a4087db30613b22a7d2441de9be1
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93334377"
 ---
 # <a name="conflict-types-and-resolution-policies-when-using-multiple-write-regions"></a>Konflikttypen und Konfliktauflösungsrichtlinien bei Verwendung mehrerer Schreibregionen
@@ -22,11 +22,11 @@ Konflikte und Konfliktauflösungsrichtlinien sind anwendbar, wenn Ihr Azure Cosm
 
 In Azure Cosmos-Konten, die mit mehreren Schreibregionen konfiguriert sind, können Updatekonflikte auftreten, wenn Schreiber gleichzeitig dasselbe Element in mehreren Regionen aktualisieren. Es können drei Typen von Updatekonflikten auftreten:
 
-* **Konflikte beim Einfügen** : Diese Konflikte treten ggf. auf, wenn eine Anwendung gleichzeitig zwei oder mehr Elemente mit demselben eindeutigen Index in zwei oder mehr Regionen einfügt. Beispielsweise kann dieser Konflikt mit einer ID-Eigenschaft auftreten.
+* **Konflikte beim Einfügen**: Diese Konflikte treten ggf. auf, wenn eine Anwendung gleichzeitig zwei oder mehr Elemente mit demselben eindeutigen Index in zwei oder mehr Regionen einfügt. Beispielsweise kann dieser Konflikt mit einer ID-Eigenschaft auftreten.
 
-* **Konflikte beim Ersetzen** : Diese Konflikte treten ggf. auf, wenn eine Anwendung dasselbe Element in zwei oder mehr Regionen gleichzeitig aktualisiert.
+* **Konflikte beim Ersetzen**: Diese Konflikte treten ggf. auf, wenn eine Anwendung dasselbe Element in zwei oder mehr Regionen gleichzeitig aktualisiert.
 
-* **Konflikte beim Löschen** : Diese Konflikte treten ggf. auf, wenn eine Anwendung ein Element in einer Region löscht und es gleichzeitig in einer anderen Region aktualisiert.
+* **Konflikte beim Löschen**: Diese Konflikte treten ggf. auf, wenn eine Anwendung ein Element in einer Region löscht und es gleichzeitig in einer anderen Region aktualisiert.
 
 ## <a name="conflict-resolution-policies"></a>Konfliktlösungsrichtlinien
 
@@ -41,7 +41,7 @@ Azure Cosmos DB bietet einen flexiblen, richtlinienbasierten Mechanismus zum Auf
 
   Weitere Informationen finden Sie unter [Anwendungsbeispiele für LWW-Konfliktauflösungsrichtlinien](how-to-manage-conflicts.md).
 
-* **Benutzerdefiniert** : Diese Auflösungsrichtlinie ist für eine anwendungsdefinierte Semantik zum Beilegen von Konflikten konzipiert. Beim Festlegen dieser Richtlinie für Ihren Azure Cosmos-Container müssen Sie auch eine *gespeicherte Mergeprozedur* registrieren. Diese Prozedur wird automatisch aufgerufen, wenn Konflikte bei einer Datenbanktransaktion auf dem Server erkannt werden. Das System garantiert genau eine Ausführung der Mergeprozedur im Rahmen des Commitprotokolls.  
+* **Benutzerdefiniert**: Diese Auflösungsrichtlinie ist für eine anwendungsdefinierte Semantik zum Beilegen von Konflikten konzipiert. Beim Festlegen dieser Richtlinie für Ihren Azure Cosmos-Container müssen Sie auch eine *gespeicherte Mergeprozedur* registrieren. Diese Prozedur wird automatisch aufgerufen, wenn Konflikte bei einer Datenbanktransaktion auf dem Server erkannt werden. Das System garantiert genau eine Ausführung der Mergeprozedur im Rahmen des Commitprotokolls.  
 
   Wenn Sie Ihren Container mit der Option für die benutzerdefinierte Auflösung konfigurieren und keine Mergeprozedur im Container registrieren oder die Mergeprozedur zur Laufzeit eine Ausnahme auslöst, werden die Konflikte in den *Konfliktfeed* geschrieben. Ihre Anwendung muss die Konflikte im Konfliktfeed dann manuell auflösen. Weitere Informationen finden Sie unter [Anwendungsbeispiele für benutzerdefinierte Auflösungsrichtlinien und den Konfliktfeed](how-to-manage-conflicts.md).
 

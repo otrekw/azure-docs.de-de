@@ -3,18 +3,19 @@ title: OpenShift in Azure – Übersicht
 description: Eine Übersicht zu OpenShift in Azure.
 author: haroldwongms
 manager: mdotson
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines
+ms.subservice: openshift
+ms.collection: linux
 ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 05/7/2019
 ms.author: haroldw
-ms.openlocfilehash: 989c67d0d1b1cd8257da089ec9c31f247228018e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aba01fc2317372438bc0d93a6618d518ab03ed0d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87367944"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101672315"
 ---
 # <a name="openshift-in-azure"></a>OpenShift in Azure
 
@@ -26,7 +27,7 @@ OpenShift enthält Kubernetes für die Containerorchestrierung und -verwaltung. 
 - Einfache Bereitstellung und Skalierung
 - Langfristige Lebenszykluswartung für Teams und Anwendungen
 
-Von OpenShift sind mehrere Versionen verfügbar.  Von diesen Versionen können derzeit nur zwei von Kunden in Azure bereitgestellt werden: OpenShift Container Platform und OKD (früher OpenShift Origin).
+Von OpenShift sind mehrere Versionen verfügbar.  Von diesen Versionen können zurzeit nur zwei von Kunden in Azure bereitgestellt werden: OpenShift Container Platform und OKD (vormals OpenShift Origin).
 
 ## <a name="azure-red-hat-openshift"></a>Azure Red Hat OpenShift
 

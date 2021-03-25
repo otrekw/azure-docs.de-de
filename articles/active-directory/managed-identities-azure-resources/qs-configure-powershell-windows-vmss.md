@@ -16,10 +16,10 @@ ms.date: 12/15/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bd7ec1f6cdfc8ecfe32de04f5d06b42f9492b88c
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97590901"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-virtual-machine-scale-sets-using-powershell"></a>Konfigurieren von verwalteten Identitäten für Azure-Ressourcen in einer VM-Skalierungsgruppe mit PowerShell
@@ -51,7 +51,7 @@ In diesem Artikel erfahren Sie, wie Sie mit PowerShell die folgenden Vorgänge f
     - [Operator für verwaltete Identität](../../role-based-access-control/built-in-roles.md#managed-identity-operator), um eine vom Benutzer zugewiesene verwaltete Identität einer VM-Skalierungsgruppe zuzuweisen bzw. daraus zu entfernen
 
 - Zum Ausführen der Beispielskripts haben Sie zwei Möglichkeiten:
-    - Verwenden Sie den Dienst [Azure Cloud Shell](../../cloud-shell/overview.md), den Sie mithilfe der Schaltfläche **Ausprobieren** in der oberen rechten Ecke der Codeblöcke öffnen können.
+    - Verwenden Sie die [Azure Cloud Shell](../../cloud-shell/overview.md), die Sie mithilfe der Schaltfläche **Testen** in der oberen rechten Ecke der Codeblöcke öffnen können.
     - Führen Sie Skripts lokal aus, indem Sie die neueste Version von [Azure PowerShell](/powershell/azure/install-az-ps) installieren, und melden Sie sich dann mit dem Befehl `Connect-AzAccount` bei Azure an. 
 
 ## <a name="system-assigned-managed-identity"></a>Systemseitig zugewiesene verwaltete Identität

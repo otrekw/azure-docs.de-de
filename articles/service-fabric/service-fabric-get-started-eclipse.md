@@ -7,10 +7,10 @@ ms.date: 04/06/2018
 ms.author: rapatchi
 ms.custom: devx-track-java
 ms.openlocfilehash: b85206f9b1e92607bba7b6f141b700922c129b65
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97656919"
 ---
 # <a name="service-fabric-plug-in-for-eclipse-java-application-development"></a>Service Fabric-Plug-In für die Entwicklung von Eclipse-Java-Anwendungen
@@ -102,7 +102,7 @@ Nachdem Sie Ihre Service Fabric-Anwendung erstellt haben, gehen Sie folgenderma�
 
 3.  Klicken Sie im Kontextmenü auf **Anwendung bereitstellen**.
 4.  Sie können den Fortschritt des Bereitstellungsvorgangs im Konsolenfenster verfolgen.
-5.  Öffnen Sie Service Fabric Explorer in Ihrem lokalen Cluster in einem Browserfenster (`http://localhost:19080/Explorer`), um zu überprüfen, ob Ihre Anwendung ausgeführt wird. Erweitern Sie den Knoten **Anwendungen**, und stellen Sie sicher, dass die Anwendung ausgeführt wird. 
+5.  Um sicherzustellen, dass Ihre Anwendung ausgeführt wird, öffnen Sie den Service Fabric Explorer in Ihrem lokalen Cluster in einem Browserfenster `http://localhost:19080/Explorer`. Erweitern Sie den Knoten **Anwendungen**, und stellen Sie sicher, dass die Anwendung ausgeführt wird. 
 
 Wie Sie Ihre Anwendung in Eclipse mit dem lokalen Cluster debuggen, lernen Sie unter [Debuggen eines Java-Diensts in Eclipse](./service-fabric-debugging-your-application-java.md).
 

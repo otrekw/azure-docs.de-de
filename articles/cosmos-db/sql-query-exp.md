@@ -9,10 +9,10 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: adf80d36edbe8f9a5535e8fa04501918a62ea7ca
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93335620"
 ---
 # <a name="exp-azure-cosmos-db"></a>EXP (Azure Cosmos DB)
@@ -37,7 +37,7 @@ EXP (<numeric_expr>)
   
 ## <a name="remarks"></a>Bemerkungen
   
-  Die Konstante **e** (2.718281…) ist die Basis von natürlichen Logarithmen.  
+  Die Konstante **e** (2,718281...) ist die Basis des natürlichen Logarithmus.  
   
   Der Exponent einer Zahl ist die Konstante **e** potenziert mit der Zahl. Beispiel: EXP(1,0) = e^1,0 = 2,71828182845905 und EXP(10) = e^10 = 22026,4657948067.  
   

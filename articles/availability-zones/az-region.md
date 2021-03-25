@@ -8,12 +8,12 @@ ms.date: 01/26/2021
 ms.author: prsandhu
 ms.reviewer: cynthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: 16bb173bdbe390da46f2dc105baa9bc73d25a3dc
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: fee000009be90a083406725fe7f1e8c4382af3e9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100557019"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101701449"
 ---
 # <a name="azure-services-that-support-availability-zones"></a>Azure-Dienste mit Unterstützung für Verfügbarkeitszonen
 
@@ -106,6 +106,8 @@ Um eine umfassende Geschäftskontinuität in Azure zu erreichen, erstellen Sie d
 |     Virtual Machines: Dv3-Serie                              | :large_blue_diamond:  |
 |     Virtual Machines: ESv3-Serie                             | :large_blue_diamond:  |
 |     Virtual Machines: Ev3-Serie                              | :large_blue_diamond:  |
+|     Virtual Machines: F-Serie                                | :large_blue_diamond:  |
+|     Virtual Machines: FS-Serie                               | :large_blue_diamond:  |
 |     Virtual Network                                           | :large_blue_diamond:  |
 |     VPN Gateway                                                 | :large_blue_diamond:  |
 
@@ -129,11 +131,18 @@ Um eine umfassende Geschäftskontinuität in Azure zu erreichen, erstellen Sie d
 | Azure Private Link                              |      :large_blue_diamond:  |
 | Azure Red Hat OpenShift                         |      :large_blue_diamond:  |
 | Azure Site Recovery                             |      :large_blue_diamond:  |
+| Azure SQL: VM                      |      :large_blue_diamond:  |
+| Azure Search                                    |      :large_blue_diamond:  |
+| Azure Web Application Firewall                  |      :large_blue_diamond:  |
+| Cognitive Services: Textanalyse              |      :large_blue_diamond:  |
 | Container Registry                              |      :large_blue_diamond:  |
 | Event Grid                                      |      :large_blue_diamond:  |
 | Network Watcher                                 |      :large_blue_diamond:  |
+| Network Watcher: Traffic Analytics              |      :large_blue_diamond:  |
 | Power BI Embedded                               |      :large_blue_diamond:  |
 | Blob Storage Premium                            |      :large_blue_diamond:  |
+| Storage: Azure Files Premium                    |      :large_blue_diamond:  |
+| Virtual Machines: Azure Dedicated Host          |      :large_blue_diamond:  |
 | VMs: Ddsv4-Serie                  |      :large_blue_diamond:  |
 | VMs: Ddv4-Serie                   |      :large_blue_diamond:  |
 | VMs: Dsv4-Serie                   |      :large_blue_diamond:  |
@@ -145,6 +154,9 @@ Um eine umfassende Geschäftskontinuität in Azure zu erreichen, erstellen Sie d
 | VMs: Fsv2-Serie                   |      :large_blue_diamond:  |
 | VMs: M-Serie                      |      :large_blue_diamond:  |
 | Virtual WAN                                     |      :large_blue_diamond:  |
+| Virtual WAN: ExpressRoute                       |      :large_blue_diamond:  |
+| Virtual WAN: Point-to-Site-VPN-Gateway          |      :large_blue_diamond:  |
+| Virtual WAN: Site-to-Site-VPN-Gateway           |      :large_blue_diamond:  |
 
 
 **Nicht regional**
@@ -153,21 +165,30 @@ Um eine umfassende Geschäftskontinuität in Azure zu erreichen, erstellen Sie d
 |-----------------------------------------------|:-------------------:|
 |     Azure DNS                                 |     :globe_with_meridians:             |
 |     Azure Active Directory                  |     :globe_with_meridians:             |
+|     Azure Advanced Threat Protection          |     :globe_with_meridians:             |
 |     Azure Advisor                             |     :globe_with_meridians:             |
+|     Azure Blueprint                          |     :globe_with_meridians:             |
 |     Azure Bot Services                        |     :globe_with_meridians:             |
 |     Azure Defender für IoT                  |     :globe_with_meridians:             |
+|     Azure Front Door                           |     :globe_with_meridians:             |
 |     Azure Information Protection            |     :globe_with_meridians:             |
 |     Azure Lighthouse                        |     :globe_with_meridians:             |
 |     Azure Managed Applications              |     :globe_with_meridians:             |
 |     Azure Maps                                |     :globe_with_meridians:             |
 |     Azure Policy                              |     :globe_with_meridians:             |
 |     Azure Resource Graph                    |     :globe_with_meridians:             |
+|     Azure Sentinel                            |     :globe_with_meridians:             |
 |     Azure Stack                               |     :globe_with_meridians:             |
 |     Azure Stack Edge                        |     :globe_with_meridians:             |
 |     Cloud Shell                               |     :globe_with_meridians:             |
+|     Content Delivery Network                  |     :globe_with_meridians:             |
+|     Cost Management                           |     :globe_with_meridians:             |
 |     Kunden-Lockbox für Microsoft Azure    |     :globe_with_meridians:             |
+|     Intune                                    |     :globe_with_meridians:             |
 |     Microsoft Azure Peering Service         |     :globe_with_meridians:             |
 |     Microsoft Azure-Portal                  |     :globe_with_meridians:             |
+|     Microsoft Cloud App Security              |     :globe_with_meridians:             |
+|     Microsoft Graph                           |     :globe_with_meridians:             |
 |     Security Center                         |     :globe_with_meridians:             |
 |     Traffic Manager                         |     :globe_with_meridians:             |
 

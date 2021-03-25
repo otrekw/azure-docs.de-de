@@ -1,5 +1,5 @@
 ---
-title: Nachverfolgen des Benutzerverhaltens mit Application Insights
+title: Nachverfolgen des Benutzerverhaltens mithilfe von Application Insights
 titleSuffix: Azure AD B2C
 description: Erfahren Sie, wie Sie Ereignisprotokolle in Application Insights von Azure AD B2C-User Journeys aus aktivieren.
 services: active-directory-b2c
@@ -12,14 +12,14 @@ ms.date: 01/29/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: ce80e3376482ef44b466757cf7e345c4bcf186ad
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 92da0b12a3119b048866eef5b18f658916595294
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99218552"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "101645924"
 ---
-# <a name="track-user-behavior-in-azure-active-directory-b2c-using-application-insights"></a>Nachverfolgen des Benutzerverhaltens in Azure Active Directory B2C mithilfe von Application Insights
+# <a name="track-user-behavior-in-azure-ad-b2c-by-using-application-insights"></a>Verfolgen des Benutzerverhaltens in Azure AD B2C mithilfe von Application Insights
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
@@ -31,23 +31,23 @@ ms.locfileid: "99218552"
 
 ::: zone pivot="b2c-custom-policy"
 
-Azure Active Directory B2C (Azure AD B2C) unterstützt das direkte Senden von Ereignisdaten an [Application Insights](../azure-monitor/app/app-insights-overview.md) unter Verwendung des für Azure AD B2C bereitgestellten Instrumentierungsschlüssels. Mit einem technischen Application Insights-Profil können Sie ausführliche und angepasste Ereignisprotokolle für Ihre User Journeys erhalten. Diese ermöglichen Folgendes:
+In Azure Active Directory B2C (Azure AD B2C) können Sie Ereignisdaten direkt an [Application Insights](../azure-monitor/app/app-insights-overview.md) senden, indem Sie den für Azure AD B2C bereitgestellten Instrumentierungsschlüssel verwenden. Mit einem technischen Application Insights-Profil können Sie ausführliche und angepasste Ereignisprotokolle für Ihre User Journeys erhalten. Diese ermöglichen Folgendes:
 
-* Gewinnen von Einblicken in Benutzerverhalten.
-* Beheben von Problemen mit eigenen Richtlinien in der Entwicklung oder in der Produktion.
-* Messen der Leistung.
-* Erstellen von Benachrichtigungen von Application Insights.
+- Gewinnen von Einblicken in Benutzerverhalten.
+- Beheben von Problemen mit eigenen Richtlinien in der Entwicklung oder in der Produktion.
+- Messen der Leistung.
+- Erstellen von Benachrichtigungen von Application Insights.
 
 ## <a name="overview"></a>Übersicht
 
-Wenn Sie benutzerdefinierte Ereignisprotokolle aktivieren möchten, fügen Sie ein technisches Application Insights-Profil hinzu. Im technischen Profil definieren Sie den Application Insights-Instrumentierungsschlüssel, den Ereignisnamen und die Ansprüche, die aufgezeichnet werden sollen. Um ein Ereignis zu senden, wird das technische Profil dann als Orchestrierungsschritt in einer [User Journey](userjourneys.md) hinzugefügt.
+Wenn Sie benutzerdefinierte Ereignisprotokolle aktivieren möchten, fügen Sie ein technisches Application Insights-Profil hinzu. Im technischen Profil definieren Sie den Application Insights-Instrumentierungsschlüssel, den Ereignisnamen und die Ansprüche, die aufgezeichnet werden sollen. Um ein Ereignis zu senden, fügen Sie das technische Profil als Orchestrierungsschritt in einer [User Journey](userjourneys.md) hinzu.
 
 Wenn Sie Application Insights verwenden, beachten Sie Folgendes:
 
 - Es tritt eine kurze Verzögerung auf (in der Regel weniger als fünf Minuten), bevor neue Protokolle in Application Insights verfügbar sind.
-- Azure AD B2C ermöglicht Ihnen, die aufzuzeichnenden Ansprüche auszuwählen. Beziehen Sie keine Ansprüche mit personenbezogenen Daten ein.
-- Zum Aufzeichnen einer Benutzersitzung können die Ereignisse mithilfe einer Korrelations-ID vereinheitlicht werden. 
-- Rufen Sie das technische Application Insights-Profil direkt von einer [User Journey](userjourneys.md) oder [Sub Journey](subjourneys.md) aus auf. Verwenden Sie das technische Application Insights-Profil nicht als [technisches Validierungsprofil](validation-technical-profile.md).
+- Sie können in Azure AD B2C auswählen, welche Ansprüche aufgezeichnet werden sollen. Beziehen Sie keine Ansprüche mit personenbezogenen Daten ein.
+- Zum Aufzeichnen einer Benutzersitzung können Sie Ereignisse mithilfe einer Korrelations-ID vereinheitlichen.
+- Rufen Sie das technische Application Insights-Profil direkt von einer [User Journey](userjourneys.md) oder [Sub Journey](subjourneys.md) aus auf. Verwenden Sie technische Application Insights-Profile nicht als [technisches Validierungsprofil](validation-technical-profile.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -58,74 +58,74 @@ Wenn Sie Application Insights verwenden, beachten Sie Folgendes:
 Wenn Sie Application Insights mit Azure AD B2C verwenden, müssen Sie lediglich eine Ressource erstellen und den Instrumentierungsschlüssel abrufen. Informationen finden Sie unter [Erstellen einer Application Insights-Ressource](../azure-monitor/app/create-new-resource.md).
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-2. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihr Azure-Abonnement enthält, indem Sie im oberen Menü den Filter **Verzeichnis und Abonnement** auswählen und dann das Verzeichnis auswählen, das Ihr Abonnement enthält. Bei diesem Mandanten handelt es sich nicht um Ihren Azure AD B2C-Mandanten.
-3. Wählen Sie links oben im Azure-Portal **Ressource erstellen** aus, und suchen Sie dann nach **Application Insights**, und wählen Sie dann diese Option aus.
-4. Klicken Sie auf **Erstellen**.
-5. Geben Sie einen **Namen** für die Ressource ein.
-6. Wählen Sie als **Anwendungstyp** die Option **ASP.NET-Webanwendung** aus.
-7. Wählen Sie als **Ressourcengruppe** eine vorhandene Gruppe aus, oder geben Sie den Namen für eine neue Gruppe ein.
-8. Klicken Sie auf **Erstellen**.
-4. Nachdem Sie die Application Insights-Ressource erstellt haben, öffnen Sie sie, erweitern Sie **Zusammenfassung**, und kopieren Sie den Instrumentierungsschlüssel.
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das über Ihr Azure-Abonnement verfügt. Wählen Sie im Hauptmenü den Filter **Verzeichnis + Abonnement** aus, und wählen Sie das Verzeichnis aus, das Ihr Azure-Abonnement enthält. Bei diesem Mandanten handelt es sich nicht um Ihren Azure AD B2C-Mandanten.
+1. Wählen Sie links oben im Azure-Portal **Ressource erstellen** aus, suchen Sie **Application Insights**, und wählen Sie dann diese Option aus.
+1. Wählen Sie **Erstellen** aus.
+1. Geben Sie unter **Name** einen Namen für die Ressourcengruppe ein.
+1. Wählen Sie als **Anwendungstyp** die Option **ASP.NET-Webanwendung** aus.
+1. Wählen Sie als **Ressourcengruppe** eine vorhandene Gruppe aus, oder geben Sie den Namen für eine neue Gruppe ein.
+1. Wählen Sie **Erstellen** aus.
+1. Öffnen Sie die neue Application Insights-Ressource, erweitern Sie **Zusammenfassung**, und kopieren Sie den Instrumentierungsschlüssel.
 
-![Application Insights – Übersicht und Instrumentierungsschlüssel](./media/analytics-with-application-insights/app-insights.png)
+![Screenshot des Instrumentierungsschlüssels auf der Registerkarte „Übersicht“ von Application Insights](./media/analytics-with-application-insights/app-insights.png)
 
 ## <a name="define-claims"></a>Definieren von Ansprüchen
 
-Ein Anspruch stellt eine temporäre Speicherung von Daten während der Ausführung einer Azure AD B2C-Richtlinie bereit. Im [Anspruchsschema](claimsschema.md) deklarieren Sie Ihre Ansprüche.
+Ein Anspruch bietet eine temporäre Speicherung von Daten während der Ausführung einer Azure AD B2C-Richtlinie. Ansprüche werden im [Element „ClaimsSchema“](claimsschema.md) deklariert.
 
-1. Öffnen Sie die Erweiterungsdatei Ihrer Richtlinie. Beispiel: <em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em>.
-1. Suchen Sie nach dem Element [BuildingBlocks](buildingblocks.md). Wenn das Element nicht vorhanden ist, fügen Sie es hinzu.
-1. Suchen Sie nach dem Element [ClaimsSchema](claimsschema.md). Wenn das Element nicht vorhanden ist, fügen Sie es hinzu.
-1. Fügen Sie dem Element **ClaimsSchema** die folgenden Ansprüche hinzu. 
+1. Öffnen Sie die Erweiterungsdatei Ihrer Richtlinie. Der Dateiname lautet ähnlich wie `SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`** .
+1. Suchen Sie nach dem Element [BuildingBlocks](buildingblocks.md). Wenn das Element nicht angezeigt wird, fügen Sie es hinzu.
+1. Suchen Sie nach dem Element **ClaimsSchema**. Wenn das Element nicht angezeigt wird, fügen Sie es hinzu.
+1. Fügen Sie dem Element **ClaimsSchema** die folgenden Ansprüche hinzu:
 
-```xml
-<ClaimType Id="EventType">
-  <DisplayName>Event type</DisplayName>
-  <DataType>string</DataType>
-</ClaimType>
-<ClaimType Id="EventTimestamp">
-  <DisplayName>Event timestamp</DisplayName>
-  <DataType>string</DataType>
-</ClaimType>
-<ClaimType Id="PolicyId">
-  <DisplayName>Policy Id</DisplayName>
-  <DataType>string</DataType>
-</ClaimType>
-<ClaimType Id="Culture">
-  <DisplayName>Culture ID</DisplayName>
-  <DataType>string</DataType>
-</ClaimType>
-<ClaimType Id="CorrelationId">
-  <DisplayName>Correlation Id</DisplayName>
-  <DataType>string</DataType>
-</ClaimType>
-<ClaimType Id="federatedUser">
-  <DisplayName>Federated user</DisplayName>
-  <DataType>boolean</DataType>
-</ClaimType>
-<ClaimType Id="parsedDomain">
-  <DisplayName>Domain name</DisplayName>
-  <DataType>string</DataType>
-  <UserHelpText>The domain portion of the email address.</UserHelpText>
-</ClaimType>
-<ClaimType Id="userInLocalDirectory">
-  <DisplayName>userInLocalDirectory</DisplayName>
-  <DataType>boolean</DataType>
-</ClaimType>
-```
+   ```xml
+   <ClaimType Id="EventType">
+     <DisplayName>Event type</DisplayName>
+     <DataType>string</DataType>
+   </ClaimType>
+   <ClaimType Id="EventTimestamp">
+     <DisplayName>Event timestamp</DisplayName>
+     <DataType>string</DataType>
+   </ClaimType>
+   <ClaimType Id="PolicyId">
+     <DisplayName>Policy Id</DisplayName>
+     <DataType>string</DataType>
+   </ClaimType>
+   <ClaimType Id="Culture">
+     <DisplayName>Culture ID</DisplayName>
+     <DataType>string</DataType>
+   </ClaimType>
+   <ClaimType Id="CorrelationId">
+     <DisplayName>Correlation Id</DisplayName>
+     <DataType>string</DataType>
+   </ClaimType>
+   <ClaimType Id="federatedUser">
+     <DisplayName>Federated user</DisplayName>
+     <DataType>boolean</DataType>
+   </ClaimType>
+   <ClaimType Id="parsedDomain">
+     <DisplayName>Domain name</DisplayName>
+     <DataType>string</DataType>
+     <UserHelpText>The domain portion of the email address.</UserHelpText>
+   </ClaimType>
+   <ClaimType Id="userInLocalDirectory">
+     <DisplayName>userInLocalDirectory</DisplayName>
+     <DataType>boolean</DataType>
+   </ClaimType>
+   ```
 
 ## <a name="add-new-technical-profiles"></a>Hinzufügen neuer technischer Profile
 
-Technische Profile können in der benutzerdefinierten Richtlinie als Funktionen angesehen werden. In dieser Tabelle werden die technischen Profile definiert, die zum Öffnen einer Sitzung und Senden von Ereignissen verwendet werden. Die Lösung verwendet den Ansatz der [Einbindung des technischen Profils](technicalprofiles.md#include-technical-profile). Dabei enthält ein technisches Profil ein anderes technisches Profil, um Einstellungen zu ändern oder neue Funktionalität hinzuzufügen.
+Technische Profile können in der benutzerdefinierten Richtlinie als Funktionen angesehen werden. Bei diesen Funktionen erfolgt die [Einbindung eines technischen Profils](technicalprofiles.md#include-technical-profile). Das bedeutet, dass ein technisches Profil ein weiteres technisches Profile enthält, wobei Einstellungen geändert werden oder neue Funktionalität hinzugefügt wird. In der folgenden Tabelle werden die technischen Profile definiert, die zum Öffnen einer Sitzung und Senden von Ereignissen verwendet werden.
 
 | Technisches Profil | Aufgabe |
 | ----------------- | -----|
-| AppInsights-Common | Dies ist ein allgemeines technisches Profil mit dem allgemeinen Konfigurationssatz. Application Insights-Instrumentierungsschlüssel, Sammlung der aufzuzeichnenden Ansprüche und Entwicklermodus sind darin enthalten. Die folgenden technischen Profile enthalten das allgemeine technische Profil und fügen weitere Ansprüche wie den Ereignisnamen hinzu. |
-| AppInsights-SignInRequest | Zeichnet ein `SignInRequest`-Ereignis mit einem Satz von Ansprüchen auf, wenn eine Anmeldeanforderung empfangen wird. |
-| AppInsights-UserSignUp | Zeichnet ein `UserSignUp`-Ereignis auf, wenn der Benutzer die Registrierungsoption in einer Registrierungs- oder Anmeldungsjourney auslöst. |
-| AppInsights-SignInComplete | Zeichnet ein `SignInComplete`-Ereignis für den erfolgreichen Abschluss einer Authentifizierung auf, wenn ein Token an die Anwendung der vertrauenden Seite gesendet wurde. |
+| AppInsights-Common | Dies ist ein allgemeines technisches Profil mit typischer Konfiguration. Es enthält den Application Insights-Instrumentierungsschlüssel, eine Sammlung der aufzuzeichnenden Ansprüche und den Entwicklermodus. Die anderen technischen Profile enthalten das allgemeine technische Profil und fügen weitere Ansprüche hinzu, z. B. den Ereignisnamen. |
+| AppInsights-SignInRequest | Zeichnet ein **SignInRequest**-Ereignis mit einem Satz von Ansprüchen auf, wenn eine Anmeldeanforderung empfangen wurde. |
+| AppInsights-UserSignUp | Zeichnet ein **UserSignUp**-Ereignis auf, wenn der Benutzer die Registrierungsoption in einer Registrierungs- oder Anmeldungsjourney auslöst. |
+| AppInsights-SignInComplete | Zeichnet ein **SignInComplete**-Ereignis bei erfolgreicher Authentifizierung auf, wenn ein Token an die Anwendung der vertrauenden Seite gesendet wurde. |
 
-Fügen Sie die Profile zur Datei *TrustFrameworkExtensions.xml* aus dem Starter Pack hinzu. Fügen Sie diese Elemente dem Element **ClaimsProviders** hinzu:
+Öffnen Sie die Datei *TrustFrameworkExtensions.xml* aus dem Starter Pack. Fügen Sie dem Element **ClaimsProvider** die technischen Profile hinzu:
 
 ```xml
 <ClaimsProvider>
@@ -135,13 +135,13 @@ Fügen Sie die Profile zur Datei *TrustFrameworkExtensions.xml* aus dem Starter 
       <DisplayName>Application Insights</DisplayName>
       <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.Insights.AzureApplicationInsightsProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
       <Metadata>
-        <!-- The ApplicationInsights instrumentation key which will be used for logging the events -->
+        <!-- The ApplicationInsights instrumentation key, which you use for logging the events -->
         <Item Key="InstrumentationKey">xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</Item>
         <Item Key="DeveloperMode">false</Item>
         <Item Key="DisableTelemetry ">false</Item>
       </Metadata>
       <InputClaims>
-        <!-- Properties of an event are added through the syntax {property:NAME}, where NAME is property being added to the event. DefaultValue can be either a static value or a value that's resolved by one of the supported DefaultClaimResolvers. -->
+        <!-- Properties of an event are added through the syntax {property:NAME}, where NAME is the property being added to the event. DefaultValue can be either a static value or a value that's resolved by one of the supported DefaultClaimResolvers. -->
         <InputClaim ClaimTypeReferenceId="EventTimestamp" PartnerClaimType="{property:EventTimestamp}" DefaultValue="{Context:DateTimeInUtc}" />
         <InputClaim ClaimTypeReferenceId="tenantId" PartnerClaimType="{property:TenantId}" DefaultValue="{Policy:TrustFrameworkTenantId}" />
         <InputClaim ClaimTypeReferenceId="PolicyId" PartnerClaimType="{property:Policy}" DefaultValue="{Policy:PolicyId}" />
@@ -183,75 +183,76 @@ Fügen Sie die Profile zur Datei *TrustFrameworkExtensions.xml* aus dem Starter 
 
 ## <a name="add-the-technical-profiles-as-orchestration-steps"></a>Hinzufügen der technischen Profil als Orchestrierungsschritte
 
-Rufen Sie `AppInsights-SignInRequest` als Orchestrierungsschritt 2 auf, um nachzuverfolgen, ob eine Anmeldungs-/Registrierungsanforderung empfangen wurde:
-
-```xml
-<!-- Track that we have received a sign in request -->
-<OrchestrationStep Order="2" Type="ClaimsExchange">
-  <ClaimsExchanges>
-    <ClaimsExchange Id="TrackSignInRequest" TechnicalProfileReferenceId="AppInsights-SignInRequest" />
-  </ClaimsExchanges>
-</OrchestrationStep>
-```
-
-Fügen Sie direkt *vor* dem Orchestrierungsschritt `SendClaims` einen neuen Schritt ein, der `AppInsights-UserSignup` aufruft. Es wird ausgelöst, wenn der Benutzer die Registrierungsschaltfläche in einer Registrierungs-/Anmeldungsjourney auswählt.
-
-```xml
-<!-- Handles the user clicking the sign up link in the local account sign in page -->
-<OrchestrationStep Order="8" Type="ClaimsExchange">
-  <Preconditions>
-    <Precondition Type="ClaimsExist" ExecuteActionsIf="false">
-      <Value>newUser</Value>
-      <Action>SkipThisOrchestrationStep</Action>
-    </Precondition>
-    <Precondition Type="ClaimEquals" ExecuteActionsIf="true">
-      <Value>newUser</Value>
-      <Value>false</Value>
-      <Action>SkipThisOrchestrationStep</Action>
-    </Precondition>
-  </Preconditions>
-  <ClaimsExchanges>
-    <ClaimsExchange Id="TrackUserSignUp" TechnicalProfileReferenceId="AppInsights-UserSignup" />
-  </ClaimsExchanges>
-</OrchestrationStep>
-```
-
-Rufen Sie direkt nach dem Orchestrierungsschritt `SendClaims` den Befehl `AppInsights-SignInComplete` auf. Dieser Schritt zeigt eine erfolgreich abgeschlossene Journey an.
-
-```xml
-<!-- Track that we have successfully sent a token -->
-<OrchestrationStep Order="10" Type="ClaimsExchange">
-  <ClaimsExchanges>
-    <ClaimsExchange Id="TrackSignInComplete" TechnicalProfileReferenceId="AppInsights-SignInComplete" />
-  </ClaimsExchanges>
-</OrchestrationStep>
-```
+Fügen Sie neue Orchestrierungsschritte hinzu, die auf die technischen Profile verweisen.
 
 > [!IMPORTANT]
 > Nummerieren Sie nach dem Hinzufügen der neuen Orchestrierungsschritte die Schritte nacheinander von 1 bis N neu, ohne einen Integer zu überspringen.
 
+1. Rufen Sie `AppInsights-SignInRequest` als zweiten Orchestrierungsschritt auf. In diesem Schritt wird nachverfolgt, dass eine Registrierungs- oder Anmeldeanforderung empfangen wurde.
+
+   ```xml
+   <!-- Track that we have received a sign in request -->
+   <OrchestrationStep Order="2" Type="ClaimsExchange">
+     <ClaimsExchanges>
+       <ClaimsExchange Id="TrackSignInRequest" TechnicalProfileReferenceId="AppInsights-SignInRequest" />
+     </ClaimsExchanges>
+   </OrchestrationStep>
+   ```
+
+1. Fügen Sie vor dem Orchestrierungsschritt `SendClaims` einen neuen Schritt hinzu, der `AppInsights-UserSignup` aufruft. Der Schritt wird ausgelöst, wenn der Benutzer die Registrierungsschaltfläche in einer Registrierungs- oder Anmeldungsjourney auswählt.
+
+   ```xml
+   <!-- Handles the user selecting the sign-up link in the local account sign-in page -->
+   <OrchestrationStep Order="8" Type="ClaimsExchange">
+     <Preconditions>
+       <Precondition Type="ClaimsExist" ExecuteActionsIf="false">
+         <Value>newUser</Value>
+         <Action>SkipThisOrchestrationStep</Action>
+       </Precondition>
+       <Precondition Type="ClaimEquals" ExecuteActionsIf="true">
+         <Value>newUser</Value>
+         <Value>false</Value>
+         <Action>SkipThisOrchestrationStep</Action>
+       </Precondition>
+     </Preconditions>
+     <ClaimsExchanges>
+       <ClaimsExchange Id="TrackUserSignUp" TechnicalProfileReferenceId="AppInsights-UserSignup" />
+     </ClaimsExchanges>
+   </OrchestrationStep>
+   ```
+
+1. Rufen Sie nach dem Orchestrierungsschritt `SendClaims` den Schritt `AppInsights-SignInComplete` auf. Dieser Schritt zeigt eine erfolgreich abgeschlossene Journey an.
+
+   ```xml
+   <!-- Track that we have successfully sent a token -->
+   <OrchestrationStep Order="10" Type="ClaimsExchange">
+     <ClaimsExchanges>
+       <ClaimsExchange Id="TrackSignInComplete" TechnicalProfileReferenceId="AppInsights-SignInComplete" />
+     </ClaimsExchanges>
+   </OrchestrationStep>
+   ```
 
 ## <a name="upload-your-file-run-the-policy-and-view-events"></a>Hochladen Ihrer Datei, Ausführen der Richtlinie und Anzeigen von Ereignissen
 
-Speichern Sie die Datei *TrustFrameworkExtensions.xml*, und laden Sie sie hoch. Rufen Sie dann die Richtlinie für die vertrauende Seite Ihrer Anwendung ab, oder verwenden Sie **Jetzt ausführen** im Azure-Portal. Warten Sie etwa eine Minute, bis Ihre Ereignisse in Application Insights verfügbar sind.
+Speichern Sie die Datei *TrustFrameworkExtensions.xml*, und laden Sie sie hoch. Rufen Sie dann die Richtlinie für die vertrauende Seite Ihrer Anwendung ab, oder verwenden Sie **Jetzt ausführen** im Azure-Portal. Warten Sie, bis die Ereignisse in Application Insights verfügbar sind.
 
 1. Öffnen Sie die **Application Insights**-Ressource in Ihrem Azure Active Directory-Mandanten.
-2. Wählen Sie **Verwendung** und dann **Ereignisse** aus.
-3. Legen Sie **Während** auf **letzte Stunde** und **Für** auf **3 Minuten** fest.  Sie müssen möglicherweise **Aktualisieren** auswählen, um Ihre Ergebnisse anzuzeigen.
+1. Wählen Sie **Verwendung** und dann **Ereignisse** aus.
+1. Legen Sie **Während** auf **letzte Stunde** und **Für** auf **3 Minuten** fest. Möglicherweise müssen Sie das Fenster aktualisieren, damit die Ergebnisse angezeigt werden.
 
-![Application Insights-Nutzungsereignisbasis](./media/analytics-with-application-insights/app-ins-graphic.png)
+![Screenshot der Ereignisstatistiken in Application Insights](./media/analytics-with-application-insights/app-ins-graphic.png)
 
 ## <a name="collect-more-data"></a>Erfassen weiterer Daten
 
-Um Ihre geschäftlichen Anforderungen zu erfüllen, können Sie weitere Ansprüche aufzeichnen. Um einen Anspruch hinzuzufügen, müssen Sie zuerst [einen Anspruch definieren](#define-claims) und dann der Eingabeansprüchesammlung hinzufügen. Ansprüche, die Sie dem technischen *AppInsights-Common*-Profil hinzufügen, werden in allen Ereignissen angezeigt. Ansprüche, die Sie einem bestimmten technischen Profil hinzufügen, werden nur in diesem Ereignis angezeigt. Das Eingabeanspruchselement enthält die folgenden Attribute:
+Um Ihre geschäftlichen Anforderungen zu erfüllen, können Sie weitere Ansprüche aufzeichnen. Um einen Anspruch hinzuzufügen, müssen Sie zuerst [einen Anspruch definieren](#define-claims) und dann der Eingabeansprüchesammlung hinzufügen. Ansprüche, die Sie dem technischen **AppInsights-Common**-Profil hinzufügen, werden in allen Ereignissen angezeigt. Ansprüche, die Sie einem bestimmten technischen Profil hinzufügen, werden nur in diesem Ereignis angezeigt. Das Eingabeanspruchselement enthält die folgenden Attribute:
 
-- **ClaimTypeReferenceId** ist der Verweis auf einen Anspruchstyp. 
-- **PartnerClaimType** ist der Name der Eigenschaft, die in Azure Insights angezeigt wird. Verwenden Sie die Syntax von `{property:NAME}`, wobei `NAME` die Eigenschaft ist, die dem Ereignis hinzugefügt wird.
-- **DefaultValue** ist ein vordefinierter Wert, der aufgezeichnet werden soll, z. B. ein Ereignisname. Ein Anspruch, der in der User Journey verwendet wird, z. B. der Identitätsanbietername. Wenn kein Anspruch aufgeführt wird, wird der Standardwert verwendet. Beispielsweise wird der Anspruch `identityProvider` durch die technischen Profile des Verbunds festgelegt, z. B. Facebook. Wenn kein Anspruch aufgeführt wird, bedeutet dies, dass sich der Benutzer mit einem lokalen Konto anmeldet. Folglich ist dieser Wert standardmäßig auf *Lokal* festgelegt. Sie können auch einen [Anspruchskonfliktlöser](claim-resolver-overview.md) mit einem Kontextwert aufzeichnen, z. B. der Anwendungs-ID oder Benutzer-IP-Adresse.
+- **ClaimTypeReferenceId** ist der Verweis auf einen Anspruchstyp.
+- **PartnerClaimType** ist der Name der Eigenschaft, die in Azure Insights angezeigt wird. Verwenden Sie die Syntax `{property:NAME}`, wobei `NAME` eine Eigenschaft ist, die dem Ereignis hinzugefügt wird.
+- **DefaultValue** ist ein vordefinierter Wert, der aufgezeichnet werden soll, z. B. ein Ereignisname. Wenn ein in der User Journey verwendeter Anspruch nicht aufgeführt wird, wird der Standardwert verwendet. Beispielsweise wird der Anspruch `identityProvider` durch die technischen Profile des Verbunds festgelegt, z. B. Facebook. Wenn der Anspruch nicht aufgeführt wird, bedeutet dies, dass sich der Benutzer mit einem lokalen Konto angemeldet hat. Folglich ist dieser Wert standardmäßig auf **Lokal** festgelegt. Sie können auch einen [Anspruchskonfliktlöser](claim-resolver-overview.md) mit einem Kontextwert aufzeichnen, z. B. mit der Anwendungs-ID oder Benutzer-IP-Adresse.
 
-### <a name="manipulating-claims"></a>Bearbeiten von Ansprüchen
+### <a name="manipulate-claims"></a>Ändern von Ansprüchen
 
-Sie können mit [Eingabeanspruchstransformationen](custom-policy-trust-frameworks.md#manipulating-your-claims) die Eingabeansprüche ändern oder neue generieren, bevor Sie sie an Application Insights senden. Im folgenden Beispiel enthält das technische Profil die Eingabeanspruchstransformation *CheckIsAdmin*. 
+Sie können mit [Eingabeanspruchstransformationen](custom-policy-trust-frameworks.md#manipulating-your-claims) die Eingabeansprüche ändern oder neue generieren, bevor Sie sie an Application Insights senden. Im folgenden Beispiel enthält das technische Profil die Eingabeanspruchstransformation `CheckIsAdmin`.
 
 ```xml
 <TechnicalProfile Id="AppInsights-SignInComplete">
@@ -268,7 +269,7 @@ Sie können mit [Eingabeanspruchstransformationen](custom-policy-trust-framework
 
 ### <a name="add-events"></a>Ereignisse hinzufügen
 
-Um ein Ereignis hinzuzufügen, erstellen Sie ein neues technisches Profil, das das technische *AppInsights-Common*-Profil enthält. Fügen Sie das technische Profil dann als Orchestrierungsschritt der [User Journey](custom-policy-trust-frameworks.md#orchestration-steps) hinzu. Verwenden Sie [Preconditions](userjourneys.md#preconditions), um das Ereignis bei Bedarf auszulösen. Lassen Sie das Ereignis beispielsweise nur melden, wenn Benutzer die MFA durchlaufen.
+Um ein Ereignis hinzuzufügen, erstellen Sie ein neues technisches Profil, das das technische `AppInsights-Common`-Profil enthält. Fügen Sie dann der [User Journey](custom-policy-trust-frameworks.md#orchestration-steps) das technische Profil als Orchestrierungsschritt hinzu. Verwenden Sie das Element [Precondition](userjourneys.md#preconditions), um das Ereignis zu initiieren, wenn Sie bereit sind. Lassen Sie das Ereignis beispielsweise nur melden, wenn Benutzer die mehrstufige Authentifizierung durchlaufen.
 
 ```xml
 <TechnicalProfile Id="AppInsights-MFA-Completed">
@@ -279,7 +280,8 @@ Um ein Ereignis hinzuzufügen, erstellen Sie ein neues technisches Profil, das d
 </TechnicalProfile>
 ```
 
-Da Sie nun über ein technisches Profil verfügen, fügen Sie das Ereignis der User Journey hinzu. Nummerieren Sie die Schritte dann nacheinander von 1 bis N neu, ohne eine Ganzzahl zu überspringen.
+>[!Important]
+>Wenn Sie der User Journey ein Ereignis hinzufügen, müssen Sie die fortlaufende Nummerierung der Orchestrierungsschritte ändern.
 
 ```xml
 <OrchestrationStep Order="8" Type="ClaimsExchange">
@@ -298,7 +300,7 @@ Da Sie nun über ein technisches Profil verfügen, fügen Sie das Ereignis der U
 
 Wenn Sie Application Insights zum Definieren von Ereignissen verwenden, können Sie angeben, ob der Entwicklermodus aktiviert ist. Der Entwicklermodus steuert die Pufferung von Ereignissen. In einer Entwicklungsumgebung mit minimalem Ereignisaufkommen führt die Aktivierung des Entwicklermodus dazu, dass Ereignisse sofort an Application Insights gesendet werden. Standardwert: `false`. Aktivieren Sie den Entwicklermodus nicht in Produktionsumgebungen.
 
-Um den Entwicklermodus zu aktivieren, ändern Sie im technischen *AppInsights-Common*-Profil die `DeveloperMode`-Metadaten in `true`: 
+Um den Entwicklermodus zu aktivieren, ändern Sie im technischen `AppInsights-Common`-Profil die `DeveloperMode`-Metadaten in `true`:
 
 ```xml
 <TechnicalProfile Id="AppInsights-Common">
@@ -311,7 +313,7 @@ Um den Entwicklermodus zu aktivieren, ändern Sie im technischen *AppInsights-Co
 
 ## <a name="disable-telemetry"></a>Telemetrie deaktivieren
 
-Um die Application Insights-Protokolle zu deaktivieren, ändern Sie im technischen *AppInsights-Common*-Profil die `DisableTelemetry`-Metadaten in `true`: 
+Um die Application Insights-Protokolle zu deaktivieren, ändern Sie im technischen `AppInsights-Common`-Profil die `DisableTelemetry`-Metadaten in `true`:
 
 ```xml
 <TechnicalProfile Id="AppInsights-Common">
@@ -324,6 +326,6 @@ Um die Application Insights-Protokolle zu deaktivieren, ändern Sie im technisch
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie, wie Sie [benutzerdefinierte KPI-Dashboards mithilfe von Azure Application Insights](../azure-monitor/learn/tutorial-app-dashboards.md) erstellen. 
+Erfahren Sie, wie Sie [benutzerdefinierte KPI-Dashboards mithilfe von Azure Application Insights](../azure-monitor/app/tutorial-app-dashboards.md) erstellen.
 
 ::: zone-end

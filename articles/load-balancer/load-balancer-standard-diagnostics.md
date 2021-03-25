@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/25/2021
 ms.author: allensu
-ms.openlocfilehash: fbde2b95b7aca205f164dc45c1f0170cc4da74fb
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 29584a9453fa052745f417cba0bbe940766c30e9
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100581890"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101699078"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>Load Balancer Standard-Diagnose mit Metriken, Warnungen und Ressourcenintegrität
 
@@ -72,18 +72,7 @@ So zeigen Sie die Metriken für Ihre Standard Load Balancer-Ressourcen an
 
 ### <a name="retrieve-multi-dimensional-metrics-programmatically-via-apis"></a>Programmgesteuertes Abrufen von mehrdimensionalen Metriken über APIs
 
-Eine API-Anleitung zum Abrufen von Definitionen und Werten für multidimensionale Metriken finden Sie unter [Exemplarische Vorgehensweise für die Azure Monitor-REST-API](../azure-monitor/essentials/rest-api-walkthrough.md#retrieve-metric-definitions-multi-dimensional-api). Diese Metriken können in ein Speicherkonto geschrieben werden, indem Sie eine [Diagnoseeinstellung](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings) für die Kategorie „Alle Metriken“ hinzufügen. 
-
-### <a name="configure-alerts-for-multi-dimensional-metrics"></a>Konfigurieren von Warnungen für mehrdimensionale Metriken ###
-
-Azure Load Balancer Standard unterstützt leicht konfigurierbare Warnungen für mehrdimensionale Metriken. Konfigurieren Sie benutzerdefinierte Schwellenwerte für bestimmte Metriken, um Warnungen mit unterschiedlichen Schweregraden auszulösen und so eine berührungslose Ressourcenüberwachung zu ermöglichen.
-
-So konfigurieren Sie Warnungen:
-1. Wechseln Sie zum Unterblatt „Warnung“ für den Lastenausgleich.
-1. Erstellen einer neuen Warnungsregel
-    1.  Konfigurieren der Warnungsbedingung
-    1.  (Optional) Hinzufügen einer Aktionsgruppe für automatisierte Reparatur
-    1.  Zuweisen von Schweregrad, Name und Beschreibung der Warnung, die eine intuitive Reaktion ermöglichen
+Eine API-Anleitung zum Abrufen von Definitionen und Werten für multidimensionale Metriken finden Sie unter [Exemplarische Vorgehensweise für die Azure Monitor-REST-API](../azure-monitor/essentials/rest-api-walkthrough.md#retrieve-metric-definitions-multi-dimensional-api). Diese Metriken können in ein Speicherkonto geschrieben werden, indem Sie eine [Diagnoseeinstellung](../azure-monitor/essentials/diagnostic-settings.md) für die Kategorie „Alle Metriken“ hinzufügen. 
 
 ### <a name="common-diagnostic-scenarios-and-recommended-views"></a><a name = "DiagnosticScenarios"></a>Allgemeine Diagnoseszenarien und empfohlene Ansichten
 
@@ -228,6 +217,32 @@ Im Diagramm werden die folgenden Informationen angezeigt:
 Anhand des Diagramms kann der Kunde eigenständig eine Fehlerbehebung für die Bereitstellung vornehmen, ohne zu erraten oder beim Support zu erfragen, ob andere Probleme auftreten. Der Dienst war nicht verfügbar, weil Integritätstests wegen einer Fehlkonfiguration oder einer fehlerhaften Anwendung fehlgeschlagen sind.
 </details>
 
+## <a name="configure-alerts-for-multi-dimensional-metrics"></a>Konfigurieren von Warnungen für mehrdimensionale Metriken ###
+
+Azure Load Balancer Standard unterstützt leicht konfigurierbare Warnungen für mehrdimensionale Metriken. Konfigurieren Sie benutzerdefinierte Schwellenwerte für bestimmte Metriken, um Warnungen mit unterschiedlichen Schweregraden auszulösen und so eine berührungslose Ressourcenüberwachung zu ermöglichen.
+
+So konfigurieren Sie Warnungen:
+1. Wechseln Sie zum Unterblatt „Warnung“ für den Lastenausgleich.
+1. Erstellen einer neuen Warnungsregel
+    1.  Konfigurieren der Warnungsbedingung
+    1.  (Optional) Hinzufügen einer Aktionsgruppe für automatisierte Reparatur
+    1.  Zuweisen von Schweregrad, Name und Beschreibung der Warnung, die eine intuitive Reaktion ermöglichen
+
+### <a name="inbound-availability-alerting"></a>Verfügbarkeitswarnungen für eingehenden Datenverkehr
+Sie können mit den Metriken „Datenpfadverfügbarkeit“ und „Integritätsteststatus“ zwei verschiedene Warnungen zur Verfügbarkeit für eingehenden Datenverkehr erstellen. Kunden haben möglicherweise unterschiedliche Szenarien, die jeweils eine bestimmte Warnungslogik erfordern, die unten aufgeführten Beispiele sind jedoch für die meisten Konfigurationen hilfreich.
+
+Mit der Metrik „Datenpfadverfügbarkeit“ können Sie Warnungen auslösen, wenn eine bestimmte Lastenausgleichsregel nicht mehr angewendet werden kann. Sie können zum Konfigurieren dieser Warnung eine Warnungsbedingung für „Datenpfadverfügbarkeit“ festlegen und für „Front-End-Port“ und „Front-End-IP-Adresse“ eine Unterteilung nach allen aktuellen Werten und allen zukünftigen Werten vornehmen. Durch das Festlegen der Warnungslogik auf einen Wert kleiner oder gleich 0 wird diese Warnung ausgelöst, wenn eine Lastenausgleichsregel nicht mehr reagiert. Legen Sie die Aggregationsgranularität und die Häufigkeit der Auswertung gemäß der von Ihnen gewünschten Auswertung fest. 
+
+Mit „Integritätsteststatus“ kann eine Warnung ausgelöst werden, wenn eine bestimmte Back-End-Instanz für einen beträchtlichen Zeitraum nicht auf den Integritätstest reagiert. Legen Sie für die Warnungsbedingung die Verwendung der Metrik „Integritätsteststatus“ fest, und nehmen Sie eine Unterteilung nach „Back-End-IP-Adresse“ und „Back-End-Port“ vor. Dadurch wird sichergestellt, dass für die Fähigkeit jeder einzelnen Back-End-Instanz zum Bereitstellen von Datenverkehr an einem bestimmten Port gesonderte Warnungen ausgegeben werden können. Verwenden Sie den Aggregationstyp **Average**, und legen Sie den Schwellenwert entsprechend der Häufigkeit der Tests der Back-End-Instanz und Ihrer Kriterien für den Integritätsschwellenwert fest. 
+
+Sie können auch Warnungen auf Ebene des Back-End-Pools bereitstellen, indem Sie nicht nach Dimensionen aufteilen und den Aggregationstyp **Average** verwenden. So können Sie Warnungsregeln einrichten, die z. B. eine Warnung auslösen, wenn 50 % der Mitglieder des Back-End-Pools fehlerhaft sind.
+
+### <a name="outbound-availability-alerting"></a>Verfügbarkeitswarnungen für ausgehenden Datenverkehr
+Sie können mit den Metriken „Anzahl von SNAT-Verbindungen“ und „Verwendete SNAT-Ports“ zwei verschiedene Warnungen zur Verfügbarkeit für ausgehenden Datenverkehr erstellen.
+
+Um Fehler bei ausgehenden Verbindungen zu erkennen, konfigurieren Sie eine Warnung, indem Sie „Anzahl von SNAT-Verbindungen“ verwenden und nach „Verbindungsstatus = Fehler“ filtern. Verwenden Sie den Aggregationstyp **Total**. Sie können dann auch eine Unterteilung nach Back-End-IP-Adresse sowie nach allen aktuellen und zukünftigen Werten vornehmen, um für jede Back-End-Instanz mit fehlgeschlagenen Verbindungen gesonderte Warnungen bereitzustellen. Legen Sie einen höheren Schwellenwert als 0 fest, wenn Sie Fehler bei ausgehenden Verbindungen erwarten.
+
+Mit „Verwendete SNAT-Ports“ können Sie Warnungen bei einem höheren Risiko von SNAT-Auslastung und Fehlern bei ausgehenden Verbindungen bereitstellen. Stellen Sie bei Verwendung dieser Warnung sicher, dass Sie eine Unterteilung nach „Back-End-IP-Adresse“ und „Protokoll“ vornehmen, und verwenden Sie den Aggregationstyp **Average**. Legen Sie einen Schwellenwert fest, der größer als der Prozentsatz der Anzahl der pro Instanz zugeordneten Ports ist, die Sie als unsicher erachten. Beispielsweise können Sie eine Warnung mit niedrigem Schweregrad konfigurieren, wenn eine Back-End-Instanz 75 % der zugeordneten Ports verwendet, und eine Warnung mit hohem Schweregrad, wenn sie 90 % oder 100 % der zugeordneten Ports verwendet.  
 ## <a name="resource-health-status"></a><a name = "ResourceHealth"></a>Ressourcenintegritätsstatus
 
 Der Integritätsstatus für die Standard Load Balancer-Ressourcen wird über die vorhandene **Ressourcenintegrität** unter **Monitor > Service Health** verfügbar gemacht. Er wird alle **zwei Minuten** ausgewertet. Dazu wird die Datenpfadverfügbarkeit gemessen, die bestimmt, ob Ihre Front-End-Lastenausgleichs-Endpunkte verfügbar sind.
@@ -235,8 +250,8 @@ Der Integritätsstatus für die Standard Load Balancer-Ressourcen wird über die
 | Ressourcenintegritätsstatus | BESCHREIBUNG |
 | --- | --- |
 | Verfügbar | Ihre Load Balancer Standard-Ressource ist fehlerfrei und verfügbar. |
-| Heruntergestuft | Für die Load Balancer Standard-Instanz liegen plattform- oder benutzerseitig initiierte Ereignisse vor, die sich auf die Leistung auswirken. Die Metrik für die Datenpfadverfügbarkeit hat mindestens zwei Minuten lang weniger als 90 %, aber mehr als 25 %Integrität gemeldet. Es treten mittlere bis schwerwiegende Leistungsbeeinträchtigungen auf. [Lesen Sie den Leitfaden zur Behandlung von Problemen mit RHC](https://docs.microsoft.com/azure/load-balancer/troubleshoot-rhc), um zu ermitteln, ob benutzerseitig initiierte Ereignisse vorliegen, die sich auf die Verfügbarkeit auswirken.
-| Nicht verfügbar | Ihre Load Balancer Standard-Ressource ist nicht fehlerfrei. Die Metrik für die Datenpfadverfügbarkeit hat mindestens zwei Minuten lang weniger als 25 % Integrität gemeldet. Leistung und Verfügbarkeit für eingehende Verbindungen sind erheblich beeinträchtigt. Möglicherweise liegen Benutzer- oder Plattformereignisse vor, die eine Nichtverfügbarkeit verursachen. [Lesen Sie den Leitfaden zur Behandlung von Problemen mit RHC](https://docs.microsoft.com/azure/load-balancer/troubleshoot-rhc), um zu ermitteln, ob benutzerseitig initiierte Ereignisse vorliegen, die sich auf die Verfügbarkeit auswirken. |
+| Heruntergestuft | Für die Load Balancer Standard-Instanz liegen plattform- oder benutzerseitig initiierte Ereignisse vor, die sich auf die Leistung auswirken. Die Metrik für die Datenpfadverfügbarkeit hat mindestens zwei Minuten lang weniger als 90 %, aber mehr als 25 %Integrität gemeldet. Es treten mittlere bis schwerwiegende Leistungsbeeinträchtigungen auf. [Lesen Sie den Leitfaden zur Behandlung von Problemen mit RHC](./troubleshoot-rhc.md), um zu ermitteln, ob benutzerseitig initiierte Ereignisse vorliegen, die sich auf die Verfügbarkeit auswirken.
+| Nicht verfügbar | Ihre Load Balancer Standard-Ressource ist nicht fehlerfrei. Die Metrik für die Datenpfadverfügbarkeit hat mindestens zwei Minuten lang weniger als 25 % Integrität gemeldet. Leistung und Verfügbarkeit für eingehende Verbindungen sind erheblich beeinträchtigt. Möglicherweise liegen Benutzer- oder Plattformereignisse vor, die eine Nichtverfügbarkeit verursachen. [Lesen Sie den Leitfaden zur Behandlung von Problemen mit RHC](./troubleshoot-rhc.md), um zu ermitteln, ob benutzerseitig initiierte Ereignisse vorliegen, die sich auf die Verfügbarkeit auswirken. |
 | Unbekannt | Der Ressourcenintegritätsstatus Ihrer Load Balancer Standard-Ressource wurde noch nicht aktualisiert oder hat in den letzten 10 Minuten keine Informationen zur Datenpfadverfügbarkeit empfangen. Dieser Zustand sollte vorübergehend sein. Der korrekte Status wird angegeben, sobald Daten empfangen werden. |
 
 So zeigen Sie die Integrität Ihrer öffentlichen Standard Load Balancer-Ressourcen an
@@ -263,7 +278,7 @@ Eine generische Beschreibung des Ressourcenintegritätsstatus finden Sie in der 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über die Verwendung von [Erkenntnissen](https://docs.microsoft.com/azure/load-balancer/load-balancer-insights), um diese Metriken für Ihren Load Balancer vorkonfiguriert anzuzeigen.
+- Erfahren Sie mehr über die Verwendung von [Erkenntnissen](./load-balancer-insights.md), um diese Metriken für Ihren Load Balancer vorkonfiguriert anzuzeigen.
 - Weitere Informationen finden Sie unter [Load Balancer Standard](./load-balancer-overview.md).
 - Weitere Informationen zu Ihren [ausgehenden Verbindungen für Load Balancer](./load-balancer-outbound-connections.md)
 - Weitere Informationen finden Sie unter [Azure Monitor](../azure-monitor/overview.md).

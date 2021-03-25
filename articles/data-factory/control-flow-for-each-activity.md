@@ -3,16 +3,16 @@ title: ForEach-Aktivität in Azure Data Factory
 description: Mit der ForEach-Aktivität wird eine wiederholte Ablaufsteuerung in Ihrer Pipeline definiert. Sie wird verwendet, um eine Sammlung zu durchlaufen und die angegebenen Aktivitäten auszuführen.
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/23/2019
-ms.openlocfilehash: c59108752677fc33e28578c3c679be24108806d5
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: a0c3a3cbaa71d627f54550cf92c067afbb1eb3f0
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100385607"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104786208"
 ---
 # <a name="foreach-activity-in-azure-data-factory"></a>ForEach-Aktivität in Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -483,6 +483,7 @@ Hier finden Sie einige Einschränkungen der ForEach-Aktivität sowie empfohlene 
 |---|---|
 | Eine ForEach-Schleife kann nicht in einer anderen ForEach-Schleife (oder in einer Until-Schleife) geschachtelt werden. | Entwerfen Sie eine Pipeline mit zwei Ebenen, bei der die äußere Pipeline mit der äußeren ForEach-Schleife eine innere Pipeline mit der geschachtelten Schleife durchläuft. |
 | Bei der ForEach-Aktivität gilt eine `batchCount`-Obergrenze von 50 für die parallele Verarbeitung sowie eine Obergrenze von 100.000 Elementen. | Entwerfen Sie eine Pipeline mit zwei Ebenen, bei der die äußere Pipeline mit der ForEach-Aktivität eine innere Pipeline durchläuft. |
+| „SetVariable“ kann nicht innerhalb einer parallel ausgeführten ForEach-Aktivität verwendet werden, da die Variablen nicht für eine ForEach-Aktivität oder für eine andere Aktivität spezifisch, sondern für die gesamte Pipeline global sind. | Verwenden Sie ggf. ein sequenzielles ForEach-Element, oder verwenden Sie „Pipeline ausführen“ innerhalb von „ForEach“ (mit Behandlung der Variable/des Parameters in einer untergeordneten Pipeline).|
 | | |
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/27/2018
-ms.openlocfilehash: c90642e58c026c78ce854e7fe74dd36963d48b67
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 7d597c4dbb81562050e9523c61d47d0020fc9059
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944009"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869466"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>Operationalisieren eines ML Services-Clusters in Azure HDInsight
 
@@ -20,7 +20,7 @@ Nachdem Sie mit dem ML Services-Cluster Ihre Datenmodellierung in HDInsight vorg
 
 * Ein ML Services-Cluster in HDInsight. Siehe [Erstellen von Apache Hadoop-Clustern im Azure-Portal](../hdinsight-hadoop-create-linux-clusters-portal.md), und wählen Sie **ML Services** für **Clustertyp** aus.
 
-* Ein SSH-Client (Secure Shell): Ein SSH-Client wird verwendet, um Remoteverbindungen mit dem HDInsight-Cluster herzustellen und Befehle direkt im Cluster auszuführen. Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* Ein Secure Shell-Client (SSH): Ein SSH-Client wird verwendet, um Remoteverbindungen mit dem HDInsight-Cluster herzustellen und Befehle direkt im Cluster auszuführen. Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="operationalize-ml-services-cluster-with-one-box-configuration"></a>Operationalisieren des ML Services-Clusters mit der Konfiguration mit einem einzelnen Computer
 
@@ -53,37 +53,37 @@ Nachdem Sie mit dem ML Services-Cluster Ihre Datenmodellierung in HDInsight vorg
 
 1. Die Optionen werden zur Auswahl angezeigt. Wählen Sie die erste Option wie im folgenden Screenshot gezeigt aus, um **ML Server für die Operationalisierung zu konfigurieren**.
 
-    ![R Server-Verwaltungshilfsprogramm – Auswählen](./media/r-server-operationalize/admin-util-one-box-1.png)
+    :::image type="content" source="./media/r-server-operationalize/admin-util-one-box-1.png" alt-text="R Server-Verwaltungshilfsprogramm – Auswählen" border="true":::
 
 1. Sie können jetzt eine Option für die Operationalisierung von ML Server auswählen. Wählen Sie die erste der angebotenen Optionen durch Eingabe von **A** aus.
 
-    ![R Server-Verwaltungshilfsprogramm – Operationalisieren](./media/r-server-operationalize/admin-util-one-box-2.png)
+    :::image type="content" source="./media/r-server-operationalize/admin-util-one-box-2.png" alt-text="R Server-Verwaltungshilfsprogramm – Operationalisieren" border="true":::
 
 1. Geben Sie bei Aufforderung das Kennwort für einen lokalen Administratorbenutzer ein bzw. erneut ein.
 
 1. Daraufhin sollte ausgegeben werden, dass der Vorgang erfolgreich war. Sie werden außerdem aufgefordert, eine andere Option aus dem Menü auszuwählen. Wählen Sie „E“ aus, um zum Hauptmenü zurückzukehren.
 
-    ![R Server-Verwaltungshilfsprogramm – erfolgreich abgeschlossen](./media/r-server-operationalize/admin-util-one-box-3.png)
+    :::image type="content" source="./media/r-server-operationalize/admin-util-one-box-3.png" alt-text="R Server-Verwaltungshilfsprogramm – erfolgreich abgeschlossen" border="true":::
 
 1. Optional können Sie die Diagnoseprüfungen ausführen, indem Sie wie folgt einen Diagnosetest ausführen:
 
     a. Wählen Sie im Hauptmenü **6** aus, um Diagnosetests auszuführen.
 
-    ![R Server-Verwaltungshilfsprogramm – Diagnose](./media/r-server-operationalize/hdinsight-diagnostic1.png)
+    :::image type="content" source="./media/r-server-operationalize/hdinsight-diagnostic1.png" alt-text="R Server-Verwaltungshilfsprogramm – Diagnose" border="true":::
 
     b. Wählen Sie im Diagnosetestmenü **A** aus. Wenn Sie aufgefordert werden, geben Sie das Kennwort ein, das Sie für den lokalen Administratorbenutzer bereitgestellt haben.
 
-    ![R Server-Verwaltungshilfsprogramm – Test](./media/r-server-operationalize/hdinsight-diagnostic2.png)
+    :::image type="content" source="./media/r-server-operationalize/hdinsight-diagnostic2.png" alt-text="R Server-Verwaltungshilfsprogramm – Test" border="true":::
 
     c. Überprüfen Sie, ob ausgegeben wird, dass die Gesamtintegrität einwandfrei ist.
 
-    ![R Server-Verwaltungshilfsprogramm – Test bestanden](./media/r-server-operationalize/hdinsight-diagnostic3.png)
+    :::image type="content" source="./media/r-server-operationalize/hdinsight-diagnostic3.png" alt-text="R Server-Verwaltungshilfsprogramm – Test bestanden" border="true":::
 
     d. Geben Sie von den angebotenen Menüoptionen **E** ein, um zum Hauptmenü zurückzukehren, und geben Sie dann **8** ein, um das Verwaltungshilfsprogramm zu beenden.
 
 ### <a name="long-delays-when-consuming-web-service-on-apache-spark"></a>Lange Verzögerungen bei der Nutzung des Webdiensts in Apache Spark
 
-Wenn bei der Nutzung eines Webdiensts, der mit mrsdeploy-Funktionen in einem Apache Spark-Computekontext erstellt wurde, lange Verzögerungen auftreten, müssen Sie unter Umständen einige fehlende Ordner hinzufügen. Wenn die Spark-Anwendung von einem Webdienst mit mrsdeploy-Funktionen aufgerufen wird, gehört sie zu einem Benutzer namens *rserve2*. So können Sie dieses Problem umgehen:
+Wenn bei der Nutzung eines Webdiensts, der mit mrsdeploy-Funktionen in einem Apache Spark-Computekontext erstellt wurde, lange Verzögerungen auftreten, müssen Sie unter Umständen einige fehlende Ordner hinzufügen. Wenn die Spark-Anwendung von einem Webdienst mit mrsdeploy-Funktionen aufgerufen wird, gehört sie zu einem Benutzer namens *rserve2*. So umgehen Sie dieses Problem:
 
 ```r
 # Create these required folders for user 'rserve2' in local and hdfs:
@@ -144,7 +144,7 @@ Um die Serverknoten zu skalieren, nehmen Sie die Workerknoten zuerst außer Betr
 
 ### <a name="step-1-decommission-the-worker-nodes"></a>Schritt 1: Außerbetriebsetzen der Workerknoten
 
-Der ML Services-Cluster wird nicht über [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) verwaltet. Wenn die Workerknoten nicht außer Betrieb gesetzt werden, funktioniert der YARN-Ressourcen-Manager nicht wie erwartet, da er die vom Server belegten Ressourcen nicht ermitteln kann. Um diese Situation zu vermeiden, empfehlen wir die Außerbetriebnahme der Workerknoten, bevor Sie die Serverknoten aufskalieren.
+Der ML Services-Cluster wird nicht über [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) verwaltet. Wenn die Workerknoten nicht außer Betrieb gesetzt werden, funktioniert der YARN-Ressourcen-Manager nicht wie erwartet, da er die vom Server belegten Ressourcen nicht ermitteln kann. Um diese Situation zu vermeiden, empfehlen wir die Außerbetriebnahme der Workerknoten, bevor Sie die Serverknoten horizontal hochskalieren.
 
 Führen Sie folgende Schritte zur Außerbetriebnahme der Workerknoten aus:
 
@@ -154,7 +154,7 @@ Führen Sie folgende Schritte zur Außerbetriebnahme der Workerknoten aus:
 
 1. Klicken Sie auf **Aktionen** > **Ausgewählte Hosts** > **Hosts** > **Wartungsmodus EINSCHALTEN**. In der folgenden Abbildung haben wir z.B. „wn3“ und „wn4“ für die Außerbetriebnahme ausgewählt.  
 
-   ![Apache Ambari – Aktivieren des Wartungsmodus](./media/r-server-operationalize/get-started-operationalization.png)  
+   :::image type="content" source="./media/r-server-operationalize/get-started-operationalization.png" alt-text="Apache Ambari – Aktivieren des Wartungsmodus" border="true":::  
 
 * Wählen Sie **Aktionen** > **Ausgewählte Hosts** > **DataNodes** aus, und klicken Sie auf **Außer Betrieb setzen**.
 * Wählen Sie **Aktionen** > **Ausgewählte Hosts** > **NodeManagers** aus, und klicken Sie auf **Außer Betrieb setzen**.
@@ -164,7 +164,7 @@ Führen Sie folgende Schritte zur Außerbetriebnahme der Workerknoten aus:
 * Heben Sie die Auswahl der Workerknoten auf, und wählen Sie die Hauptknoten aus.
 * Wählen Sie **Aktionen** > **Ausgewählte Hosts** > **Hosts** > **Alle Komponenten beenden** aus.
 
-### <a name="step-2-configure-compute-nodes-on-each-decommissioned-worker-nodes"></a>Schritt 2: Konfigurieren von Computeknoten auf allen außer Betrieb gesetzten Workerknoten
+### <a name="step-2-configure-compute-nodes-on-each-decommissioned-worker-nodes"></a>Schritt 2: Konfigurieren von Serverknoten auf allen außer Betrieb gesetzten Workerknoten
 
 1. Stellen Sie per SSH eine Verbindung mit jedem außer Betrieb gesetzten Workerknoten her.
 
@@ -180,7 +180,7 @@ Führen Sie folgende Schritte zur Außerbetriebnahme der Workerknoten aus:
 
 1. Beenden Sie das Verwaltungshilfsprogramm.
 
-### <a name="step-3-add-compute-nodes-details-on-web-node"></a>Schritt 3: Hinzufügen von Details zu Computeknoten auf Webknoten
+### <a name="step-3-add-compute-nodes-details-on-web-node"></a>Schritt 3: Hinzufügen von Details zu Serverknoten auf Webknoten
 
 Nachdem alle außer Betrieb gesetzten Workerknoten für die Ausführung als Serverknoten konfiguriert sind, kehren Sie zum Edgeknoten zurück und fügen die IP-Adressen der außer Betrieb gesetzten Workerknoten der Konfiguration des Webknotens von ML Server hinzu:
 

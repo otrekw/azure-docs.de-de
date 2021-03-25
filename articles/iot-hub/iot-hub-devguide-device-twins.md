@@ -11,12 +11,12 @@ ms.date: 09/29/2020
 ms.custom:
 - mqtt
 - 'Role: Cloud Development'
-ms.openlocfilehash: b83faecb16ac09a47a0ade25474f7a5b3ecd4296
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: fff4b9157c30203f47c65a74b211e3dbf6426d92
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400927"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "101093033"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>Verstehen und Verwenden von Gerätezwillingen in IoT Hub
 
@@ -42,6 +42,8 @@ Verwenden Sie Gerätezwillinge für Folgendes:
 Weitere Informationen zur Verwendung von gemeldeten Eigenschaften, D2C-Nachrichten und Dateiuploads finden Sie bei Bedarf im [Leitfaden zur D2C-Kommunikation](iot-hub-devguide-d2c-guidance.md).
 
 Weitere Informationen zu gewünschten Eigenschaften, direkten Methoden und C2D-Nachrichten finden Sie im [Leitfaden zur C2D-Kommunikation](iot-hub-devguide-c2d-guidance.md).
+
+Informationen über das Verhältnis von Gerätezwillingen zu dem Gerätemodell, das von einem Azure IoT Plug & Play-Gerät verwendet wird, finden Sie unter [Grundlegendes zu digitalen IoT Plug & Play-Zwillingen](../iot-pnp/concepts-digital-twin.md).
 
 ## <a name="device-twins"></a>Gerätezwillinge
 
