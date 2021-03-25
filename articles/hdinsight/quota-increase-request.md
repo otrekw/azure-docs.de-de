@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 05/07/2020
-ms.openlocfilehash: a539acc423feeab500830fb33262d1b824101072
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: b62e41f280d02664b3df631c3413960f1265356f
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98935828"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863172"
 ---
 # <a name="requesting-quota-increases-for-azure-hdinsight"></a>Anfordern einer Erhöhung von Kontingenten für Azure HDInsight
 
@@ -34,7 +34,7 @@ Gehen Sie wie folgt vor, um eine Kontingenterhöhung anzufordern:
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 1. Wählen Sie unten links auf der Seite **Hilfe und Support** aus.
 
-    ![Schaltfläche „Hilfe und Support“](./media/quota-increase-request/help-support-button.png)
+    :::image type="content" source="./media/quota-increase-request/help-support-button.png" alt-text="Schaltfläche „Hilfe und Support“" border="true":::
 
 1. Wählen Sie **Neue Supportanfrage** aus.
 1. Wählen Sie auf der Seite **Neue Supportanfrage** unter der Registerkarte **Grundlagen** die folgenden Optionen aus:
@@ -43,20 +43,20 @@ Gehen Sie wie folgt vor, um eine Kontingenterhöhung anzufordern:
    - **Abonnement**: Das zu ändernde Abonnement.
    - **Kontingenttyp**: **HDInsight**
 
-     ![Erstellen einer Supportanfrage zur Erhöhung des HDInsight-Kernkontingents](./media/quota-increase-request/hdinsight-quota-support-request.png)
+     :::image type="content" source="./media/quota-increase-request/hdinsight-quota-support-request.png" alt-text="Erstellen einer Supportanfrage zur Erhöhung des HDInsight-Kernkontingents" border="true":::
 
 1. Klicken Sie auf **Weiter: Lösungen >>** .
 1. Geben Sie auf der Seite **Details** eine Beschreibung des Problems ein, wählen Sie den Schweregrad des Problems, Ihre bevorzugte Kontaktmethode und weitere Pflichtfelder aus. Verwenden Sie die unten aufgeführte Vorlage, um sicherzustellen, dass Sie die erforderlichen Informationen bereitstellen. Anforderungen zur Kontingenterhöhung werden durch das Azure-Kapazitätsteam und nicht durch das HDInsight-Produktteam ausgewertet. Je vollständiger Ihre Angaben sind, desto wahrscheinlicher ist es, dass Ihre Anforderung genehmigt wird.
 
-    ```
-    I would like to request [SPECIFY DESIRED AMOUNT] on [DESIRED SKU] for [SUBSCRIPTION ID].
-    
-    My current quota on this subscription is [CURRENT QUOTA AMOUNT].
-    
-    I would like to use the extra cores for [DETAIL REASON].
-    ```
+   ```text
+   I would like to request [SPECIFY DESIRED AMOUNT] on [DESIRED SKU] for [SUBSCRIPTION ID].
+   
+   My current quota on this subscription is [CURRENT QUOTA AMOUNT].
+   
+   I would like to use the extra cores for [DETAIL REASON].
+   ```
 
-    ![Problemdetails](./media/quota-increase-request/problem-details.png)
+   :::image type="content" source="./media/quota-increase-request/problem-details.png" alt-text="Problemdetails" border="true":::
 
 1. Klicken Sie auf **Weiter: Bewerten + erstellen >>** .
 1. Wählen Sie auf der Registerkarte **Überprüfen + erstellen** die Option **Erstellen** aus.

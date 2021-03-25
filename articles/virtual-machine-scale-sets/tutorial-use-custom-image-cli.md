@@ -10,10 +10,10 @@ ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
 ms.reviewer: akjosh
 ms.openlocfilehash: b12715e299f523d7ace56a72b0098b5d7ffac0ab
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98683054"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-the-azure-cli"></a>Tutorial: Erstellen und Verwenden eines benutzerdefinierten Images für VM-Skalierungsgruppen mit der Azure CLI
@@ -90,7 +90,7 @@ Imagedefinitionen erstellen eine logische Gruppierung von Images. Sie werden ver
 
 Namen für Imagedefinition können aus Groß- und Kleinbuchstaben, Zahlen, Punkten und (Binde)Strichen bestehen. 
 
-Stellen Sie sicher, dass die Imagedefinition den richtigen Typ aufweist. Wenn Sie die VM generalisiert haben (über Sysprep für Windows oder „waagent -deprovision“ für Linux) sollten Sie unter Verwendung von `--os-state generalized` eine generalisierte Imagedefinition erstellen. Wenn Sie die VM verwenden möchten, ohne vorhandene Benutzerkonten zu entfernen, erstellen Sie mithilfe von `--os-state specialized` eine spezialisierte Imagedefinition.
+Stellen Sie sicher, dass die Imagedefinition den richtigen Typ aufweist. Wenn Sie die VM generalisiert haben (über Sysprep für Windows oder waagent -deprovision für Linux) sollten Sie unter Verwendung von `--os-state generalized` eine generalisierte Imagedefinition erstellen. Wenn Sie die VM verwenden möchten, ohne vorhandene Benutzerkonten zu entfernen, erstellen Sie mithilfe von `--os-state specialized` eine spezialisierte Imagedefinition.
 
 Weitere Informationen zu den Werten, die Sie für eine Imagedefinition angeben können, finden Sie unter [Imagedefinitionen](../virtual-machines/shared-image-galleries.md#image-definitions).
 

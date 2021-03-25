@@ -3,19 +3,20 @@ title: Erstellen von Zeitplantriggern in Azure Data Factory
 description: Erfahren Sie, wie in Azure Data Factory ein Trigger erstellt wird, der eine Pipeline gemäß einem Zeitplan ausführt.
 author: chez-charlie
 ms.author: chez
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/30/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 3673dd9eba717d2bdb569b4248936bbb59a8eae7
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 4bf5e9e1e890b2f91377075c4c8b7c8ff6c50fa0
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100387579"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104779850"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>Erstellen eines Triggers zum Ausführen einer Pipeline gemäß einem Zeitplan
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Dieser Artikel enthält Informationen zum Zeitplantrigger und den Schritten zum Erstellen, Starten und Überwachen eines Zeitplantriggers. Informationen zu anderen Triggertypen finden Sie unter [Pipelineausführung und -trigger](concepts-pipeline-execution-triggers.md).
@@ -25,6 +26,7 @@ Geben Sie bei der Erstellung eines Zeitplantriggers einen Zeitplan (Startdatum, 
 In den folgenden Abschnitten werden die Schritte zum Erstellen eines Zeitplantriggers durch unterschiedliche Methoden erläutert. 
 
 ## <a name="data-factory-ui"></a>Data Factory-Benutzeroberfläche
+
 Sie können einen **Zeitplantrigger** erstellen, um eine regelmäßige Ausführung der Pipeline (stündlich, täglich usw.) festzulegen. 
 
 > [!NOTE]
@@ -89,7 +91,7 @@ In diesem Abschnitt erfahren Sie, wie Sie mit Azure PowerShell einen Zeitplantri
     > [!IMPORTANT]
     > Legen Sie vor dem Speichern der JSON-Datei den Wert des **startTime**-Elements auf die aktuelle UTC-Zeit fest. Legen Sie den Wert des **endTime**-Elements auf eine Stunde nach der aktuellen UTC-Zeit fest.
 
-    ```json   
+    ```json
     {
         "properties": {
             "name": "MyTrigger",
@@ -167,9 +169,8 @@ In diesem Abschnitt erfahren Sie, wie Sie mit Azure PowerShell einen Zeitplantri
 
     Informationen zum Überwachen von Trigger- bzw. Pipelineausführungen im Azure-Portal finden Sie unter [Überwachen der Pipeline](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline).
 
-
-
 ## <a name="net-sdk"></a>.NET SDK
+
 In diesem Abschnitt erfahren Sie, wie Sie mit dem .NET SDK einen Trigger erstellen, starten und überwachen. Damit dieses Beispiel funktioniert, lesen Sie zuerst [Schnellstart: Erstellen einer Data Factory mit dem .NET SDK](quickstart-create-data-factory-dot-net.md). Fügen Sie anschließend den folgenden Code zur „main“-Methode hinzu, der einen Zeitplantrigger erstellt und startet, der alle 15 Minuten ausgeführt wird. Der Trigger ist einer Pipeline namens **Adfv2QuickStartPipeline** zugeordnet, die Sie als Teil des Schnellstarts erstellen.
 
 Um einen Zeitplantrigger zu erstellen und zu starten, der alle 15 Minuten ausgeführt wird, fügen Sie den folgenden Code zur main-Methode hinzu:
@@ -258,8 +259,8 @@ Fügen Sie zum Überwachen einer Triggerausführung im Beispiel den folgenden Co
 
 Informationen zum Überwachen von Trigger- bzw. Pipelineausführungen im Azure-Portal finden Sie unter [Überwachen der Pipeline](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline).
 
-
 ## <a name="python-sdk"></a>Python SDK
+
 In diesem Abschnitt erfahren Sie, wie Sie mit dem Python-SDK einen Trigger erstellen, starten und überwachen. Damit dieses Beispiel funktioniert, lesen Sie zuerst [Schnellstart: Erstellen einer Data Factory mit dem Python SDK](quickstart-create-data-factory-python.md). Fügen Sie dann im Python-Skript den folgenden Codeblock nach dem Codeblock „monitor the pipeline run“ hinzu. Dieser Code erzeugt einen Zeitplantrigger, der alle 15 Minuten zwischen den angegebenen Start- und Endzeiten ausgeführt wird. Ändern Sie die Variable **start_time** in die aktuelle UTC-Zeit und die Variable **end_time** in eine Stunde nach der aktuellen UTC-Zeit.
 
 ```python
@@ -280,9 +281,11 @@ In diesem Abschnitt erfahren Sie, wie Sie mit dem Python-SDK einen Trigger erste
 Informationen zum Überwachen von Trigger- bzw. Pipelineausführungen im Azure-Portal finden Sie unter [Überwachen der Pipeline](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline).
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager-Vorlage
+
 Sie können mit einer Azure Resource Manager-Vorlage einen Trigger erstellen. Detaillierte Anweisungen finden Sie unter [Tutorial: Erstellen einer Azure Data Factory mit einer Azure Resource Manager-Vorlage](quickstart-create-data-factory-resource-manager-template.md).  
 
 ## <a name="pass-the-trigger-start-time-to-a-pipeline"></a>Übergeben der Startzeit des Triggers an eine Pipeline
+
 In Version 1 unterstützt Azure Data Factory das Lesen oder Schreiben von partitionierten Daten mithilfe dieser Systemvariablen: **SliceStart**, **SliceEnd**, **WindowStart** und **WindowEnd**. In der aktuellen Version von Azure Data Factory können Sie dieses Verhalten anhand eines Pipelineparameters erreichen. Die Startzeit und die geplante Zeit für den Trigger werden als Wert für den Pipelineparameter festgelegt. Im folgenden Beispiel wird die geplante Zeit für den Trigger als Wert an den Pipelineparameter **scheduledRunTime** übergeben:
 
 ```json
@@ -292,6 +295,7 @@ In Version 1 unterstützt Azure Data Factory das Lesen oder Schreiben von partit
 ```
 
 ## <a name="json-schema"></a>JSON-Schema
+
 Die folgende JSON-Definition zeigt, wie Sie einen Zeitplantrigger mit Planung und Wiederholung erstellen können:
 
 ```json
@@ -343,6 +347,7 @@ Die folgende JSON-Definition zeigt, wie Sie einen Zeitplantrigger mit Planung un
 
 
 ### <a name="schema-overview"></a>Schemaübersicht
+
 Die folgende Tabelle enthält eine allgemeine Übersicht über die wichtigsten Schemaelemente im Zusammenhang mit der Wiederholung und Zeitplanung eines Triggers:
 
 | JSON-Eigenschaft | BESCHREIBUNG |
@@ -405,6 +410,7 @@ Die erste Ausführungszeit ist auch dieselbe, wenn der **startTime**-Wert `2017-
 Wenn die Stunden oder Minuten im Zeitplan für einen Trigger nicht festgelegt sind, werden die Stunden oder Minuten der ersten Ausführung als Standardwerte verwendet.
 
 ### <a name="schedule-property"></a>schedule-Eigenschaft
+
 Mithilfe eines Zeitplans lässt sich einerseits die Anzahl der Triggerausführungen begrenzen. Beispiel: Wenn für einen Trigger mit einer monatlichen Häufigkeit nur die Ausführung am 31. Tag geplant ist, wird der Trigger nur in Monaten mit 31 Tagen ausgeführt.
 
 Ein Zeitplan kann dagegen auch zum Erweitern der Anzahl von Triggerausführungen verwendet werden. Beispiel: Ein Trigger mit einem monatlichen Intervall, dessen Ausführung für die Monatstage 1 und 2 geplant ist, wird an den 1. und 2. Tagen des Monats anstatt einmal im Monat ausgeführt.
@@ -412,7 +418,6 @@ Ein Zeitplan kann dagegen auch zum Erweitern der Anzahl von Triggerausführungen
 Bei Angabe mehrerer **schedule**-Elemente werden diese in absteigender Reihenfolge der Zeitplaneinstellungen ausgewertet. Die Auswertung beginnt mit der Wochennummer und wird mit dem Monatstag, dem Wochentag, der Stunde und schließlich der Minute fortgesetzt.
 
 Die folgende Tabelle enthält eine ausführliche Beschreibung der **schedule**-Elemente:
-
 
 | JSON-Element | BESCHREIBUNG | Gültige Werte |
 |:--- |:--- |:--- |
@@ -422,8 +427,8 @@ Die folgende Tabelle enthält eine ausführliche Beschreibung der **schedule**-E
 | **monthlyOccurrences** | Tage des Monats, an denen der Trigger ausgeführt wird. Der Wert kann nur bei monatlicher Häufigkeit angegeben werden. | <ul><li>Array aus **monthlyOccurrence**-Objekten: `{ "day": day,  "occurrence": occurrence }`.</li><li>Das **day**-Attribut ist der Tag der Woche, an dem der Trigger ausgeführt wird. Beispiel: Eine **monthlyOccurrences**-Eigenschaft mit dem **day**-Wert `{Sunday}` bedeutet jeden Sonntag des Monats. Das **day**-Attribut ist erforderlich.</li><li>Das **occurrence**-Attribut ist das Vorkommen des angegebenen **day**-Attributs innerhalb des Monats. Beispiel: Eine **monthlyOccurrences**-Eigenschaft mit dem **day**- und **occurrence**-Wert `{Sunday, -1}` bedeutet den letzten Sonntag des Monats. Das **occurrence**-Attribut ist optional.</li></ul> |
 | **monthDays** | Tag des Monats, an dem der Trigger ausgeführt wird. Der Wert kann nur bei monatlicher Häufigkeit angegeben werden. | <ul><li>Beliebiger Wert, für den Folgendes gilt: <= -1 und >= -31</li><li>Beliebiger Wert, für den Folgendes gilt: >= 1 und <= 31</li><li>Array von Werten</li></ul> |
 
-
 ## <a name="examples-of-trigger-recurrence-schedules"></a>Beispiele für Wiederholungszeitpläne von Triggern
+
 Dieser Abschnitt enthält verschiedene Beispiele für Wiederholungszeitpläne, bei denen jeweils das **schedule**-Objekt und die dazugehörigen Elemente im Mittelpunkt stehen.
 
 In den Beispielen wird angenommen, dass der **interval**-Wert „1“ festgelegt ist, und der **frequency**-Wert gemäß der Zeitplandefinition richtig ist. Beispielsweise können nicht gleichzeitig der **frequency**-Wert „day“ und die Änderung „monthDays“ im **schedule**-Objekt angegeben werden. Solche Einschränkungen werden in der Tabelle im vorhergehenden Abschnitt erwähnt.
@@ -457,6 +462,7 @@ In den Beispielen wird angenommen, dass der **interval**-Wert „1“ festgelegt
 | `{"minutes":[0,15,30,45], "monthlyOccurrences":[{"day":"friday", "occurrence":-1}]}` | Ausführung im 15-Minuten-Takt am letzten Freitag des Monats. |
 | `{"minutes":[15,45], "hours":[5,17], "monthlyOccurrences":[{"day":"wednesday", "occurrence":3}]}` | Ausführung um 05:15, 05:45, 17:15 und 17:45 Uhr am dritten Mittwoch jedes Monats. |
 
-
 ## <a name="next-steps"></a>Nächste Schritte
-Detaillierte Informationen zu Triggern finden Sie unter [Pipelineausführung und -trigger](concepts-pipeline-execution-triggers.md#trigger-execution).
+
+- Detaillierte Informationen zu Triggern finden Sie unter [Pipelineausführung und -trigger](concepts-pipeline-execution-triggers.md#trigger-execution).
+- Informationen zum Verweisen auf Triggermetadaten in der Pipeline finden Sie unter [Verweisen auf Triggermetadaten in Pipelineausführungen](how-to-use-trigger-parameterization.md).

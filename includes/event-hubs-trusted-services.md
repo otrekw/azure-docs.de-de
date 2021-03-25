@@ -5,15 +5,15 @@ services: event-hubs
 author: spelluru
 ms.service: event-hubs
 ms.topic: include
-ms.date: 01/05/2021
+ms.date: 03/08/2021
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 743d7d46474b4ba55df50398f29cbdb964b5ff08
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 0e487b3ab3663c765c052f2064201865508ef57f
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97978785"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102511129"
 ---
 ## <a name="trusted-microsoft-services"></a>Vertrauenswürdige Microsoft-Dienste
 Wenn Sie die Einstellung **Vertrauenswürdigen Microsoft-Diensten die Umgehung dieser Firewall erlauben** aktivieren, wird den folgenden Diensten Zugriff auf Ihre Event Hubs-Ressourcen gewährt.
@@ -24,3 +24,4 @@ Wenn Sie die Einstellung **Vertrauenswürdigen Microsoft-Diensten die Umgehung d
 | Azure Monitor (Diagnoseeinstellungen) | Ermöglicht Azure Monitor das Senden von Diagnoseinformationen an Event Hubs in Ihrem Event Hubs-Namespace. Azure Monitor kann Daten aus dem Event Hub lesen und in den Event Hub schreiben. |
 | Azure Stream Analytics | Ermöglicht einem Azure Stream Analytics-Auftrag das Lesen von Daten von Event Hubs für [Eingaben](../articles/stream-analytics/stream-analytics-add-inputs.md) bzw. das Schreiben von Daten in Event Hubs für [Ausgaben](../articles/stream-analytics/event-hubs-output.md) in Ihrem Event Hubs-Namespace. <p>**Wichtig**: Der Stream Analytics-Auftrag sollte so konfiguriert werden, dass er eine **verwaltete Identität** für den Zugriff auf den Event Hub verwendet. Weitere Informationen finden Sie unter [Verwenden von verwalteten Identitäten zum Zugriff auf Event Hubs aus einem Azure Stream Analytics-Auftrag (Vorschau)](../articles/stream-analytics/event-hubs-managed-identity.md). </p>|
 | Azure IoT Hub | Ermöglicht Azure IoT Hub das Senden von Nachrichten an Event Hubs in Ihrem Event Hubs-Namespace. Sie müssen außerdem die folgenden Schritte ausführen: <ul><li>Aktivieren der systemseitig zugewiesenen Identität für Ihren IoT-Hub</li><li>Fügen Sie die Identität der Rolle „Azure Event Hubs-Datensender“ im Event Hubs-Namespace hinzu.</li><li>Konfigurieren Sie dann die IoT Hub-Instanz, die einen Event Hub als benutzerdefinierten Endpunkt nur Nutzung der identitätsbasierten Authentifizierung verwendet.</li></ul>
+| Azure API Management | <p>Mit dem API Management-Dienst können Sie Ereignisse an einen Event Hub im Event Hubs-Namespace senden.</p> <ul><li>Sie können benutzerdefinierte Workflows auslösen, indem Sie Ereignisse an Ihren Event Hub senden, wenn eine API mithilfe der [send-request-Richtlinie](../articles/api-management/api-management-sample-send-request.md) aufgerufen wird.</li><li>Sie können auch einen Event Hub auch als Back-End in einer API behandeln. Eine Beispielrichtlinie finden Sie unter [Authentifizieren mithilfe einer verwalteten Identität für den Zugriff auf einen Event Hub](https://github.com/Azure/api-management-policy-snippets/blob/master/examples/Authenticate%20using%20Managed%20Identity%20to%20access%20Event%20Hub.xml). Sie müssen außerdem die folgenden Schritte ausführen:<ol><li>Aktivieren einer vom System zugewiesenen Identität für die API Management-Instanz. Anleitungen dazu finden Sie unter [Verwenden von verwalteten Identitäten in Azure API Management](../articles/api-management/api-management-howto-use-managed-service-identity.md).</li><li>Hinzufügen der Identität zur Rolle **Azure Event Hubs-Datensender** im Event Hubs-Namespace.</li></ol></li></ul> | 

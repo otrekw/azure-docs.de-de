@@ -3,15 +3,15 @@ title: Verschieben von Azure-Regionen – Azure-Portal – Azure Database for Ma
 description: Verschieben Sie einen Azure Database for MariaDB-Server mithilfe eines Lesereplikats und des Azure-Portals aus einer Azure-Region in eine andere.
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 06/29/2020
-ms.openlocfilehash: adb82b3ff371bdcdecbd964fef3c1d0c971df71a
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: f4ce34bc1a1af7b2c0ee57a3297415bd9d033517
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98664935"
 ---
 # <a name="move-an-azure-database-for-mariadb-server-to-another-region-by-using-the-azure-portal"></a>Verschieben eines Azure Database for MariaDB-Servers mithilfe des Azure-Portals in eine andere Region

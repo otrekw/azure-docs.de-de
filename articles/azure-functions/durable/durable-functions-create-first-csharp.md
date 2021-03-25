@@ -7,10 +7,10 @@ ms.date: 03/18/2020
 ms.author: azfuncdf
 zone_pivot_groups: code-editors-set-one
 ms.openlocfilehash: d5b6ecc12cee983cee0772da8b6f8f26a3b5a8ae
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96008181"
 ---
 # <a name="create-your-first-durable-function-in-c"></a>Erstellen Ihrer ersten dauerhaften Funktion in C\#
@@ -53,7 +53,7 @@ In diesem Abschnitt wird mithilfe von Visual Studio Code ein lokales Azure Func
 
 1. Geben Sie gemäß der Eingabeaufforderungen die folgenden Informationen ein:
 
-    | Aufforderung | Wert | Beschreibung |
+    | Prompt | Wert | BESCHREIBUNG |
     | ------ | ----- | ----------- |
     | Auswählen einer Sprache für Ihr Funktions-App-Projekt | C# | Erstellen Sie ein lokales C#-Functions-Projekt. |
     | „Select a version“ (Wählen Sie eine Version aus.) | Azure Functions v3 | Diese Option wird nur angezeigt, wenn die Core Tools noch nicht installiert sind. In diesem Fall werden die Core Tools beim erstmaligen Ausführen der App installiert. |
@@ -70,7 +70,7 @@ In den folgenden Schritten wird eine Vorlage zum Erstellen des dauerhaften Funkt
 
 1. Geben Sie gemäß der Eingabeaufforderungen die folgenden Informationen ein:
 
-    | Aufforderung | Wert | Beschreibung |
+    | Prompt | Wert | Beschreibung |
     | ------ | ----- | ----------- |
     | „Select a template for your function“ (Wählen Sie eine Vorlage für Ihre Funktion aus.) | DurableFunctionsOrchestration | Erstellen Sie eine Orchestrierung für Durable Functions. |
     | Angeben eines Funktionsnamens | HelloOrchestration | Der Name der Klasse, in der Funktionen erstellt werden. |
@@ -78,7 +78,7 @@ In den folgenden Schritten wird eine Vorlage zum Erstellen des dauerhaften Funkt
 
 1. Wenn Sie von VS Code zum Auswählen eines Speicherkontos aufgefordert werden, wählen Sie **Speicherkonto auswählen** aus. Geben Sie bei den Eingabeaufforderungen die folgenden Informationen an, um ein neues Speicherkonto in Azure zu erstellen:
 
-    | Aufforderung | Wert | Beschreibung |
+    | Prompt | Wert | BESCHREIBUNG |
     | ------ | ----- | ----------- |
     | Auswählen des Abonnements | *Name Ihres Abonnements* | Auswählen des Azure-Abonnements |
     | Auswählen eines Speicherkontos | Erstellen eines neuen Speicherkontos |  |
@@ -193,7 +193,7 @@ Mit der Azure Functions-Vorlage wird ein Projekt erstellt, das in einer Funktion
 
     ![Dialogfeld „Neue Azure Functions-Anwendung erstellen“ in Visual Studio](./media/durable-functions-create-first-csharp/functions-vs-new-function.png)
 
-    | Einstellung      | Vorgeschlagener Wert  | Beschreibung                      |
+    | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG                      |
     | ------------ |  ------- |----------------------------------------- |
     | **Version** | Azure Functions 3.0 <br />(.NET Core) | Erstellt ein Funktionsprojekt mit der Version 3.0 der Runtime von Azure Functions, die .NET Core 3.1 unterstützt. Weitere Informationen finden Sie unter [Einstellen von Runtimeversionen von Azure Functions als Ziel](../functions-versions.md).   |
     | **Vorlage** | Leer | Erstellt eine leere Funktions-App. |

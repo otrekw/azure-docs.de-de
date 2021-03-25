@@ -1,6 +1,6 @@
 ---
 title: Herstellen einer Verbindung mit sqlcmd
-description: Verwenden Sie das Befehlszeilenprogramm sqlcmd, um eine Verbindung mit einem Synapse-SQL-Pool herzustellen und diesen abzufragen.
+description: Verwenden Sie das Befehlszeilenprogramm sqlcmd, um in Azure Synapse Analytics eine Verbindung mit einem dedizierten SQL-Pool herzustellen und Abfragen durchzuführen.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,14 +11,14 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 3d1d8d3ce3afece5a979aadc27cd82dc7ddaf0d5
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: f8b4d54585bc70c3ee5f24846e216f75e985cf84
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98676226"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101675735"
 ---
-# <a name="connect-to-sql-pool-in-azure-synapse-analytics-with-sqlcmd"></a>Herstellen einer Verbindung mit einem SQL-Pool in Azure Synapse Analytics mithilfe von sqlcmd
+# <a name="connect-to-a-dedicated-sql-pool-in-azure-synapse-analytics-with-sqlcmd"></a>Herstellen einer Verbindung mit einem dedizierten SQL-Pool in Azure Synapse Analytics mit sqlcmd
 
 > [!div class="op_single_selector"]
 >
@@ -28,15 +28,15 @@ ms.locfileid: "98676226"
 > * [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md)
 > * [SSMS](sql-data-warehouse-query-ssms.md)
 
-Verwenden Sie das Befehlszeilenprogramm sqlcmd, um eine Verbindung mit einem SQL-Pool herzustellen und diesen abzufragen.  
+Verwenden Sie das Befehlszeilenprogramm [sqlcmd][sqlcmd], um eine Verbindung mit einem dedizierten SQL-Pool herzustellen und Abfragen durchzuführen.  
 
 ## <a name="1-connect"></a>1. Verbinden
 
-Öffnen Sie zur Verwendung von sqlcmd die Eingabeaufforderung, und geben Sie **sqlcmd** gefolgt von der Verbindungszeichenfolge für Ihren SQL-Pool ein. Die Verbindungszeichenfolge muss die folgenden Parameter enthalten:
+Öffnen Sie zur Verwendung von [sqlcmd][sqlcmd] die Eingabeaufforderung, und geben Sie **sqlcmd** gefolgt von der Verbindungszeichenfolge für Ihren dedizierten SQL-Pool ein. Die Verbindungszeichenfolge muss die folgenden Parameter enthalten:
 
 * **Server (-S):** Server in Form von `<`Servername`>`.database.windows.net
-* **Datenbank (-d):** Name des SQL-Pools
-* **Bezeichner in Anführungszeichen aktivieren (-I):** Bezeichner in Anführungszeichen müssen aktiviert sein, um eine Verbindung mit einer SQL-Pool-Instanz herzustellen.
+* **Datenbank (-d):** Name des dedizierten SQL-Pools.
+* **Bezeichner in Anführungszeichen aktivieren (-I):** Bezeichner in Anführungszeichen müssen aktiviert sein, um eine Verbindung mit einer dedizierten SQL-Pool-Instanz herzustellen.
 
 Zur Verwendung der SQL Server-Authentifizierung müssen Sie die Parameter für Benutzername und Kennwort hinzufügen:
 

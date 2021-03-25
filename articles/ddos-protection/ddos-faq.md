@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 10/28/2020
 ms.author: yitoh
 ms.openlocfilehash: 89685d1b8c3a57fa142bbbfd1114f9aa0ff0c400
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98611116"
 ---
 # <a name="azure-ddos-protection-standard-frequent-asked-questions"></a>Azure DDoS Protection Standard: häufig gestellte Fragen
@@ -29,7 +29,7 @@ Distributed Denial-of-Service oder DDoS ist eine Art von Angriff, bei dem ein An
 Azure DDoS Protection Standard, kombiniert mit bewährten Methoden des Anwendungsentwurfs, bietet erweiterte Features zur DDoS-Risikominderung, um vor DDoS-Angriffen zu schützen. Er wird automatisch optimiert, um Ihre spezifischen Azure-Ressourcen in einem virtuellen Netzwerk zu schützen. Der Schutz kann einfach in jedem neuen oder vorhandenen virtuellen Netzwerk aktiviert werden und erfordert keine Änderung von Anwendung oder Ressource. Er hat mehrere Vorteile gegenüber dem Basisdienst, z.B. Protokollierung, Warnungen und Telemetrie. Weitere Informationen finden Sie unter [Übersicht über Azure DDoS Protection Standard](ddos-protection-overview.md). 
 
 ## <a name="how-does-pricing-work"></a>Wie ist das Preismodell aufgebaut?
-Für DDoS-Schutzpläne gilt eine feste monatliche Gebühr von 2.944 USD, die bis zu 100 öffentliche IP-Adressen abdeckt. Der Schutz zusätzlicher Ressourcen kostet pro Ressource 30 USD pro Monat zusätzlich. 
+Für DDoS-Schutzpläne gilt eine feste monatliche Gebühr von 2.944 USD, die bis zu 100 öffentliche IP-Adressen abdeckt. Der Schutz weiterer Ressourcen kostet pro Ressource zusätzlich 30 USD pro Monat. 
 
 Innerhalb eines Mandanten kann ein einzelner DDoS-Schutzplan für mehrere Abonnements verwendet werden, sodass nicht mehrere DDoS-Schutzpläne erstellt werden müssen.
 

@@ -1,35 +1,36 @@
 ---
 title: 'Beispiele für Telemetrieprozessoren: Azure Monitor Application Insights für Java'
-description: Beispiele für Telemetrieprozessoren in Azure Monitor Application Insights für Java
+description: Erkunden Sie Beispiele für Telemetrieprozessoren in Azure Monitor Application Insights für Java.
 ms.topic: conceptual
 ms.date: 12/29/2020
 author: kryalama
 ms.custom: devx-track-java
 ms.author: kryalama
-ms.openlocfilehash: 9b29c9611359c97c4097ad0b90ee2673bb28f37c
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 0978bd669855d264ed6dfa5eeddc45ad499aa2a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98696311"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101734586"
 ---
-# <a name="telemetry-processors-examples---azure-monitor-application-insights-for-java"></a>Beispiele für Telemetrieprozessoren: Azure Monitor Application Insights für Java
+# <a name="telemetry-processor-examples---azure-monitor-application-insights-for-java"></a>Beispiele für Telemetrieprozessoren: Azure Monitor Application Insights für Java
 
-## <a name="includeexclude-samples"></a>Einschließen/Ausschließen von Stichproben
+Dieser Artikel stellt Beispiele für Telemetrieprozessoren in Application Insights für Java bereit. Hier finden Sie Beispiele für Einschluss- und Ausschlusskonfigurationen. Sie finden auch Beispiele für attribute-Prozessoren und span-Prozessoren.
+## <a name="include-and-exclude-samples"></a>Beispiele für Ein- und Ausschlüsse
 
-### <a name="1-include-spans"></a>1. Einschließen von Spans
+In diesem Abschnitt erfahren Sie, wie Sie span-Elemente einschließen und ausschließen. Sie erfahren auch, wie Sie mehrere span-Elemente ausschließen und eine selektive Verarbeitung anwenden.
+### <a name="include-spans"></a>Einschließen von span-Elementen
 
-Das folgende Beispiel zeigt, wie Sie Spans für diesen Attributprozessor einschließen. Alle anderen Spans, die nicht den Eigenschaften entsprechen, werden von diesem Prozessor nicht verarbeitet.
+Dieser Abschnitt zeigt, wie Sie span-Elemente für einen attribute-Prozessor einschließen. span-Elemente, die nicht mit den Eigenschaften übereinstimmen. werden vom Prozessor nicht verarbeitet.
 
-Die folgenden Bedingungen müssen für eine Übereinstimmung erfüllt sein:
-* Der Span-Name muss „spanA“ oder „spanB“ lauten. 
+Um eine Übereinstimmung zu erzielen, muss der Name des span-Elements `spanA` oder `spanB` entsprechen. 
 
-Die folgenden Spans stimmen mit den include-Eigenschaften überein, und die Prozessoraktionen werden angewandt:
+Die folgenden span-Elemente stimmen mit den include-Eigenschaften überein, und die Prozessoraktionen werden angewendet:
 * Span1 Name: 'spanA' Attributes: {env: dev, test_request: 123, credit_card: 1234}
 * Span2 Name: 'spanB' Attributes: {env: dev, test_request: false}
 * Span3 Name: 'spanA' Attributes: {env: 1, test_request: dev, credit_card: 1234}
 
-Der folgende Span stimmt nicht mit den include-Eigenschaften überein, und die Prozessoraktionen werden nicht angewandt:
+Dieses span-Element stimmt nicht mit den include-Eigenschaften überein, und die Prozessoraktionen werden nicht angewendet:
 * Span4 Name: 'spanC' Attributes: {env: dev, test_request: false}
 
 ```json
@@ -58,19 +59,18 @@ Der folgende Span stimmt nicht mit den include-Eigenschaften überein, und die P
 }
 ```
 
-### <a name="2-exclude-spans"></a>2. Ausschließen von Spans
+### <a name="exclude-spans"></a>Ausschließen von span-Elementen
 
-Das folgende Beispiel zeigt, wie Sie Spans für diesen Attributprozessor ausschließen. Alle Spans, die den Eigenschaften entsprechen, werden von diesem Prozessor nicht verarbeitet.
+Dieser Abschnitt veranschaulicht, wie Sie span-Elemente für einen attribute-Prozessor ausschließen. span-Elemente, die mit den Eigenschaften übereinstimmen. werden vom Prozessor nicht verarbeitet.
 
-Die folgenden Bedingungen müssen für eine Übereinstimmung erfüllt sein:
-* Der Span-Name muss „spanA“ oder „spanB“ lauten. 
+Um eine Übereinstimmung zu erzielen, muss der Name des span-Elements `spanA` oder `spanB` entsprechen.
 
-Die folgenden Spans stimmen mit den exclude-Eigenschaften überein, und die Prozessoraktionen werden nicht angewandt:
+Die folgenden span-Elemente stimmen mit den exclude-Eigenschaften überein, und die Prozessoraktionen werden nicht angewendet:
 * Span1 Name: 'spanA' Attributes: {env: dev, test_request: 123, credit_card: 1234}
 * Span2 Name: 'spanB' Attributes: {env: dev, test_request: false}
 * Span3 Name: 'spanA' Attributes: {env: 1, test_request: dev, credit_card: 1234}
 
-Der folgende Span stimmt nicht mit den exclude-Eigenschaften überein, und die Prozessoraktionen werden angewandt:
+Dieses span-Element stimmt nicht mit den exclude-Eigenschaften überein, und die Prozessoraktionen werden angewendet:
 * Span4 Name: 'spanC' Attributes: {env: dev, test_request: false}
 
 ```json
@@ -99,19 +99,19 @@ Der folgende Span stimmt nicht mit den exclude-Eigenschaften überein, und die P
 }
 ```
 
-### <a name="3-excludemulti-spans"></a>3. ExcludeMulti-Spans
+### <a name="exclude-spans-by-using-multiple-criteria"></a>Ausschließen von span-Elementen anhand mehrerer Kriterien
 
-Das folgende Beispiel zeigt, wie Sie Spans für diesen Attributprozessor ausschließen. Alle Spans, die den Eigenschaften entsprechen, werden von diesem Prozessor nicht verarbeitet.
+Dieser Abschnitt veranschaulicht, wie Sie span-Elemente für einen attribute-Prozessor ausschließen. span-Elemente, die mit den Eigenschaften übereinstimmen. werden vom Prozessor nicht verarbeitet.
 
-Die folgenden Bedingungen müssen für eine Übereinstimmung erfüllt sein:
-* Für eine Übereinstimmung mit ein Attribut („env“, „dev“) im Span vorhanden sein.
-* Solange ein Attribut mit dem Schlüssel „test_request“ im Span vorhanden ist, besteht eine Übereinstimmung.
+Um eine Übereinstimmung zu erzielen, müssen die folgenden Bedingungen erfüllt sein:
+* Im span-Element muss ein Attribut vorhanden sein (z. B. `env` oder `dev`).
+* Das span-Element muss über ein Attribut mit dem Schlüssel `test_request` verfügen.
 
-Die folgenden Spans stimmen mit den exclude-Eigenschaften überein, und die Prozessoraktionen werden nicht angewandt:
+Die folgenden span-Elemente stimmen mit den exclude-Eigenschaften überein, und die Prozessoraktionen werden nicht angewendet:
 * Span1 Name: 'spanB' Attributes: {env: dev, test_request: 123, credit_card: 1234}
 * Span2 Name: 'spanA' Attributes: {env: dev, test_request: false}
 
-Der folgende Span stimmt nicht mit den exclude-Eigenschaften überein, und die Prozessoraktionen werden angewandt:
+Das folgende span-Element stimmt nicht mit den exclude-Eigenschaften überein, und die Prozessoraktionen werden angewendet:
 * Span3 Name: 'spanB' Attributes: {env: 1, test_request: dev, credit_card: 1234}
 * Span4 Name: 'spanC' Attributes: {env: dev, dev_request: false}
 
@@ -151,16 +151,16 @@ Der folgende Span stimmt nicht mit den exclude-Eigenschaften überein, und die P
 }
 ```
 
-### <a name="4-selective-processing"></a>4. Selektive Verarbeitung
+### <a name="selective-processing"></a>Selektive Verarbeitung
 
-Das folgende Beispiel zeigt, wie Sie den Satz von Span-Eigenschaften festlegen, um anzugeben, auf welche Spans dieser Prozessor angewendet werden soll. Mit `include` werden Eigenschaften eingeschlossen, und `exclude` filtert Eigenschaften heraus, die nicht verarbeitet werden sollen.
+Dieser Abschnitt zeigt, wie Sie die Gruppe von span-Eigenschaften angeben, die festlegen, auf welche span-Elemente dieser Prozessor angewendet werden soll. Die include-Eigenschaften geben an, welche span-Elemente verarbeitet werden sollen. Die exclude-Eigenschaften filtern span-Elemente heraus, die nicht verarbeitet werden sollen.
 
-Mit der obigen Konfiguration stimmen die folgenden Spans mit den Eigenschaften überein und Prozessoraktionen werden angewandt:
+In der folgenden Konfiguration stimmen diese span-Elemente mit den Eigenschaften überein, und die Prozessoraktionen werden angewendet:
 
 * Span1 Name: 'spanB' Attributes: {env: production, test_request: 123, credit_card: 1234, redact_trace: "false"}
 * Span2 Name: 'spanA' Attributes: {env: staging, test_request: false, redact_trace: true}
 
-Die folgenden Spans stimmen nicht mit den Include-Eigenschaften und Prozessoraktionen überein:
+Diese span-Elemente stimmen nicht mit den include-Eigenschaften überein, und die Prozessoraktionen werden nicht angewendet:
 * Span3 Name: 'spanB' Attributes: {env: production, test_request: true, credit_card: 1234, redact_trace: false}
 * Span4 Name: 'spanC' Attributes: {env: dev, test_request: false}
 
@@ -202,11 +202,11 @@ Die folgenden Spans stimmen nicht mit den Include-Eigenschaften und Prozessorakt
   }
 }
 ```
-## <a name="attribute-processor-samples"></a>Beispiele für Attributprozessoren
+## <a name="attribute-processor-samples"></a>Beispiele für attribute-Prozessoren
 
 ### <a name="insert"></a>Einfügen
 
-Mit dem folgenden Code wird Spans, in denen der Schlüssel „attribute1“ nicht vorhanden ist, ein neues Attribut {"attribute1": "attributeValue1"} hinzugefügt.
+Das folgende Beispiel fügt das neue Attribut `{"attribute1": "attributeValue1"}` in span-Elemente ein, in denen der Schlüssel `attribute1` nicht vorhanden ist.
 
 ```json
 {
@@ -230,7 +230,7 @@ Mit dem folgenden Code wird Spans, in denen der Schlüssel „attribute1“ nich
 
 ### <a name="insert-from-another-key"></a>Einfügen von einem anderen Schlüssel
 
-Im Folgenden wird der Wert des Attributs „anotherkey“ verwendet, um in Spans, in denen der Schlüssel „newKey“ nicht vorhanden ist, ein neues Attribut {"newKey": "Wert aus Attribut 'anotherkey'“} einzufügen. Wenn das Attribut „anotherkey“ nicht vorhanden ist, wird in den Spans kein neues Attribut eingefügt.
+Das folgende Beispiel verwendet den Wert aus dem Attribut `anotherkey`, um das neue Attribut `{"newKey": "<value from attribute anotherkey>"}` in span-Elemente einzufügen, in denen der Schlüssel `newKey` nicht vorhanden ist. Wenn das Attribut `anotherkey` nicht vorhanden ist, wird kein neues Attribut in die span-Elemente eingefügt.
 
 ```json
 {
@@ -254,7 +254,7 @@ Im Folgenden wird der Wert des Attributs „anotherkey“ verwendet, um in Spans
 
 ### <a name="update"></a>Aktualisieren
 
-Im Folgenden wird das-Attribut in {"db.secret": "redacted"} geändert und das Attribut „boo“ mithilfe des Werts aus dem Attribut „foo“ aktualisiert. Spans ohne das Attribut „boo“ werden nicht geändert.
+Das folgende Beispiel aktualisiert das Attribut zu `{"db.secret": "redacted"}`. Das Attribut `boo` wird unter Verwendung des Werts aus dem Attribut `foo` aktualisiert. span-Elemente, die das Attribut `boo` nicht enthalten, werden nicht geändert.
 
 ```json
 {
@@ -283,7 +283,7 @@ Im Folgenden wird das-Attribut in {"db.secret": "redacted"} geändert und das At
 
 ### <a name="delete"></a>Löschen
 
-Das folgende Beispiel veranschaulicht das Löschen eines Attributs mit dem Schlüssel „credit_card“.
+Das folgende Beispiel zeigt, wie ein Attribut mit dem Schlüssel `credit_card` gelöscht wird.
 
 ```json
 {
@@ -306,7 +306,7 @@ Das folgende Beispiel veranschaulicht das Löschen eines Attributs mit dem Schl�
 
 ### <a name="hash"></a>Hash
 
-Im folgenden Beispiel wird das Erstellen eines Hash aus vorhandenen Attributwerten veranschaulicht.
+Das folgende Beispiel zeigt, wie vorhandene Attributwerte mit einem Hash versehen werden.
 
 ```json
 {
@@ -329,13 +329,13 @@ Im folgenden Beispiel wird das Erstellen eines Hash aus vorhandenen Attributwert
 
 ### <a name="extract"></a>Extract
 
-Im folgenden Beispiel wird gezeigt, wie Sie mit regulären Ausdrücken neue Attribute auf der Grundlage des Werts eines anderen Attributs erstellen.
-Wenn z. B. „http.url“ = „http://example.com/path?queryParam1=value1,queryParam2=value2“, werden die folgenden Attribute eingefügt:
-* httpProtocol: http
-* httpDomain: example.com
-* httpPath: Pfad
-* httpQueryParams: queryParam1=value1,queryParam2=value2
-* Der Wert von „http.url“ ändert sich NICHT.
+Das folgende Beispiel zeigt, wie ein regulärer Ausdruck (RegEx) verwendet wird, um neue Attribute basierend auf dem Wert eines anderen Attributs erstellen.
+Für `http.url = http://example.com/path?queryParam1=value1,queryParam2=value2` werden beispielsweise die folgenden Attribute eingefügt:
+* httpProtocol: `http`
+* httpDomain: `example.com`
+* httpPath: `path`
+* httpQueryParams: `queryParam1=value1,queryParam2=value2`
+* http.url: *keine* Änderung
 
 ```json
 {
@@ -357,8 +357,8 @@ Wenn z. B. „http.url“ = „http://example.com/path?queryParam1=value1,query
 }
 ```
 
-Im folgenden Beispiel wird veranschaulicht, wie Spans verarbeitet werden, deren Span-Name RegExp-Mustern entspricht.
-Dieser Prozessor entfernt das Attribut „token“ und verschleiert das Attribut „password“ in Spans, deren Span-Name mit „auth.\*“ übereinstimmt und nicht mit „login.\*“.
+Das folgende Beispiel zeigt, wie span-Elemente verarbeitet werden, deren span-Name mit Mustern regulärer Ausdrücke übereinstimmt.
+Dieser Prozessor entfernt das Attribut `token`. Er verschleiert das Attribut `password` in span-Elementen, deren span-Name mit `auth.*` übereinstimmt und mit `login.*` nicht übereinstimmt.
 
 ```json
 {
@@ -397,11 +397,11 @@ Dieser Prozessor entfernt das Attribut „token“ und verschleiert das Attribut
 ```
 
 
-## <a name="span-processor-samples"></a>Beispiele für Span-Prozessoren
+## <a name="span-processor-samples"></a>Beispiele für span-Prozessoren
 
 ### <a name="name-a-span"></a>Name einer Span
 
-Das folgende Beispiel zeigt, dass die Werte der Attribute „db.svc“, „operation“ und „id“ den neuen Namen der Span bilden, in dieser Reihenfolge, getrennt durch den Wert „::“.
+Das folgende Beispiel gibt die Werte der Attribute `db.svc`, `operation` und `id` an. Es formt einen neuen Namen für das span-Element, indem diese Elemente in der angegebenen Reihenfolge und durch den Wert `::` getrennt verwendet werden.
 ```json
 {
   "connectionString": "InstrumentationKey=00000000-0000-0000-0000-000000000000",
@@ -423,9 +423,9 @@ Das folgende Beispiel zeigt, dass die Werte der Attribute „db.svc“, „opera
 }
 ```
 
-### <a name="extract-attributes-from-span-name"></a>Extrahieren von Attributen aus dem Span-Namen
+### <a name="extract-attributes-from-a-span-name"></a>Extrahieren von Attributen aus dem Namen eines span-Elements
 
-Nehmen wir an, der Eingabe-Span-Name sei „/api/v1/document/12345678/update“. Durch das Anwenden der folgenden Ergebnisse im Ausgabe-Span-Namen „/api/v1/document/{documentId}/update“ wird der Span ein neues Attribut „documentId“=„12345678“ hinzugefügt.
+Angenommen, der Eingabename des span-Elements lautet `/api/v1/document/12345678/update`. Das folgende Beispiel führt zum Ausgabenamen `/api/v1/document/{documentId}/update` des span-Elements. Dem span-Element wird das neue Attribut `documentId=12345678` hinzugefügt.
 ```json
 {
   "connectionString": "InstrumentationKey=00000000-0000-0000-0000-000000000000",
@@ -446,11 +446,11 @@ Nehmen wir an, der Eingabe-Span-Name sei „/api/v1/document/12345678/update“.
 }
 ```
 
-### <a name="extract-attributes-from-span-name-with-include-and-exclude"></a>Extrahieren von Attributen aus dem Span-Namen mit include und exclude
+### <a name="extract-attributes-from-a-span-name-by-using-include-and-exclude"></a>Extrahieren von Attributen aus dem Namen eines span-Elements mithilfe von „include“ und „exclude“
 
-Im Folgenden wird das Umbenennen des Span-Namens in „{operation_website}“ und Hinzufügen des Attributs „{Key: operation_website, Value: oldSpanName}", wenn die Span die folgenden Eigenschaften aufweist, veranschaulicht:
-- Der Span-Name enthält „/“ an beliebiger Stelle in der Zeichenfolge.
-- Der Span-Name ist nicht „donot/change“.
+Das folgende Beispiel zeigt, wie der Name eines span-Elements zu `{operation_website}` geändert wird. Ein Attribut mit dem Schlüssel `operation_website` und dem Attribut `{oldSpanName}` wird hinzugefügt, wenn das span-Element die folgenden Eigenschaften aufweist:
+- Der Name des span-Elements enthält an einer beliebigen Stelle in der Zeichenfolge das Zeichen `/`.
+- Der Name des span-Elements lautet nicht `donot/change`.
 ```json
 {
   "connectionString": "InstrumentationKey=00000000-0000-0000-0000-000000000000",

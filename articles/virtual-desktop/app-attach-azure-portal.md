@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 02/11/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 19ce054ce29b744f900676ecf4e55af3487d9891
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: c775d81b88c891d6d8ea0a4597b4fa4fee29c86a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100373469"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101737544"
 ---
 # <a name="set-up-msix-app-attach-with-the-azure-portal"></a>Einrichten des MSIX-Features zum Anfügen von Apps mit dem Azure-Portal
 
@@ -36,6 +36,7 @@ Folgendes benötigen Sie, um das MSIX-Feature zum Anfügen von Apps zu konfiguri
 - Eine MSIX-gepackte Anwendung, die in ein MSIX-Image erweitert wurde, das in eine Dateifreigabe hochgeladen wird.
 - Eine Dateifreigabe in der Windows Virtual Desktop-Bereitstellung, in der das MSIX-Paket gespeichert wird.
 - Die Dateifreigabe, in die Sie das MSIX-Image hochgeladen haben, muss auch für alle virtuellen Computer (VMs) im Hostpool zugänglich sein. Benutzer benötigen Leseberechtigungen, um auf das Image zugreifen zu können.
+- Wenn das Zertifikat nicht öffentlich vertrauenswürdig ist, befolgen Sie die Anweisungen unter [Installieren von Zertifikaten](app-attach.md#install-certificates).
 
 ## <a name="turn-off-automatic-updates-for-msix-app-attach-applications"></a>Deaktivieren von automatischen Updates für Anwendungen mit dem MSIX-Feature zum Anfügen von Apps
 

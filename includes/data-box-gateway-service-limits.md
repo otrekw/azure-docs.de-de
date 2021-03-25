@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/15/2020
 ms.author: alkohli
 ms.openlocfilehash: 968d8ad6e76956a12e1f8ddcf091eb905686d245
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98900934"
 ---
 - Das Speicherkonto sollte sich physisch in der Nähe der Region befinden, in der das Gerät bereitgestellt wird (diese kann sich von der Region unterscheiden, in der der Dienst bereitgestellt wird).

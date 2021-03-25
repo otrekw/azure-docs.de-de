@@ -5,15 +5,15 @@ author: memildin
 manager: rkarlin
 services: security-center
 ms.author: memildin
-ms.date: 09/10/2020
+ms.date: 02/17/2021
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: 12cc2de6cd1a8e9ddf40b358c94b720b8b2cf594
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 646495597565bbb033ac3adaa15f3754f33e8fd6
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98920442"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "100634163"
 ---
 # <a name="suppress-alerts-from-azure-defender"></a>Unterdrücken von Warnungen von Azure Defender
 
@@ -60,9 +60,7 @@ So erstellen Sie eine Regel direkt im Azure-Portal
 
 1. Auf der Security Center-Seite für Sicherheitswarnungen:
 
-    - Suchen Sie die spezifische Warnung, die nicht mehr angezeigt werden soll, und wählen Sie im Menü mit den Auslassungspunkten (...) für die Warnung die Option **Create suppression rule** (Unterdrückungsregel erstellen) aus:
-
-        [![Option **Create suppression rule**](media/alerts-suppression-rules/auto-dismiss-future-option.png)](media/alerts-suppression-rules/auto-dismiss-future-option.png#lightbox) (Unterdrückungsregel erstellen)
+    - Wählen Sie die Warnung aus, die nicht mehr angezeigt werden soll, und wählen Sie im Detailbereich **Aktion ausführen** aus.
 
     - Oder wählen Sie oben auf der Seite den Link **Unterdrückungsregeln** und dann auf der Seite der Unterdrückungsregeln die Option **Neue Unterdrückungsregel erstellen** aus:
 
@@ -85,7 +83,7 @@ So erstellen Sie eine Regel direkt im Azure-Portal
 1. Speichern Sie die Regel. 
 
 
-## <a name="edit-a-suppression-rules"></a>Bearbeiten einer Unterdrückungsregel
+## <a name="edit-a-suppression-rule"></a>Bearbeiten einer Unterdrückungsregel
 
 Die erstellten Regeln können Sie auf der Seite der Unterdrückungsregeln bearbeiten.
 
@@ -106,20 +104,6 @@ Wenn Sie eine oder mehrere der erstellten Regeln löschen möchten, verwenden Si
 1. Um eine einzelne Regel zu löschen, öffnen Sie das Menü mit den Auslassungspunkten (...) für die Regel, und wählen Sie **Löschen** aus.
 1. Wenn Sie mehrere Regeln löschen möchten, aktivieren Sie die Kontrollkästchen für die zu löschenden Regeln, und wählen Sie **Löschen** aus.
     ![Löschen einer oder mehrerer Unterdrückungsregeln](media/alerts-suppression-rules/delete-multiple-alerts.png)
-
-## <a name="view-suppressed-alerts"></a>Anzeigen unterdrückter Warnungen
-
-Warnungen, die den aktivierten Unterdrückungsregeln entsprechen, werden zwar weiterhin generiert, ihr Status wird jedoch auf **Abgelehnt** festgelegt. Der Status wird im Azure-Portal oder an dem Ort angezeigt, über den Sie auf die Security Center-Sicherheitswarnungen zugreifen. 
-
-> [!TIP]
-> [Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/) erstellt keine Vorfälle für unterdrückte Warnungen. Bei anderen SIEMs können Sie unterdrückte Warnungen durch Verwendung des Status der Warnungen („Abgelehnt“) filtern.
-
-Verwenden Sie den Filter in Security Center, um die Warnungen anzuzeigen, die durch die Regeln verworfen wurden.
-
-* Öffnen Sie auf der Security Center-Seite für Sicherheitswarnungen die Filteroptionen, und wählen Sie **Abgelehnt** aus.  
-
-   [![Anzeigen verworfener Warnungen](media/alerts-suppression-rules/view-dismissed-alerts.png)](media/alerts-suppression-rules/view-dismissed-alerts.png#lightbox)
-
 
 ## <a name="create-and-manage-suppression-rules-with-the-api"></a>Erstellen und Verwalten von Unterdrückungsregeln über die API
 

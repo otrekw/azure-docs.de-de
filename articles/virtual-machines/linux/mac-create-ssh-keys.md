@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: 163d200573dc93f7c9e1d5e404febd4f939a6164
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: c77375782ba23114be1953d9f8ad7de31ab06f1f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102565256"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104582186"
 ---
 # <a name="quick-steps-create-and-use-an-ssh-public-private-key-pair-for-linux-vms-in-azure"></a>Kurzanleitung: Erstellen und Verwenden eines SSH-Schlüsselpaars (öffentlich und privat) für virtuelle Linux-Computer in Azure
 
@@ -97,4 +97,4 @@ Wenn der virtuelle Computer die JIT-Zugriffsrichtlinie (Just-In-Time) verwendet,
 
 * Weitere Informationen zur Arbeit mit SSH-Schlüsselpaaren finden Sie unter [Ausführliche Schritte zum Erstellen und Verwalten von SSH-Schlüsselpaaren](create-ssh-keys-detailed.md).
 
-* Wenn beim Herstellen von SSH-Verbindungen mit einer Azure-VM Probleme auftreten, finden Sie weitere Informationen unter [Behandeln von Problemen mit SSH-Verbindungen mit einem virtuellen Azure Linux-Computer](../troubleshooting/troubleshoot-ssh-connection.md).
+* Wenn beim Herstellen von SSH-Verbindungen mit einer Azure-VM Probleme auftreten, finden Sie weitere Informationen unter [Behandeln von Problemen mit SSH-Verbindungen mit einem virtuellen Azure Linux-Computer](/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection).

@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee6ac21d67f32fbc61db19b348fc29cdf3ee9fd7
-ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+ms.openlocfilehash: 7f540ab40a14af09aa8667860286021f572eb6f1
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/13/2021
-ms.locfileid: "103418180"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104587898"
 ---
 # <a name="governing-azure-ad-service-accounts"></a>Steuern von Azure AD-Dienstkonten
 
@@ -53,7 +53,7 @@ Für Dienstkontoberechtigungen empfiehlt sich Folgendes:
 
 * Weisen Sie Dienstkonten keine integrierten Rollen zu. Verwenden Sie stattdessen das [OAuth2-Berechtigungszuweisungsmodell für Microsoft Graph](/graph/api/resources/oauth2permissiongrant).
 
-* Wenn dem Dienstprinzipal eine privilegierte Rolle zugewiesen werden muss, empfiehlt es sich gegebenenfalls, eine zeitgebundene [benutzerdefinierte Rolle](https://docs.microsoft.com/azure/active-directory/roles/custom-create) mit spezifischen erforderlichen Berechtigungen zuzuweisen.
+* Wenn dem Dienstprinzipal eine privilegierte Rolle zugewiesen werden muss, empfiehlt es sich gegebenenfalls, eine zeitgebundene [benutzerdefinierte Rolle](../roles/custom-create.md) mit spezifischen erforderlichen Berechtigungen zuzuweisen.
 
 * Schließen Sie Dienstkonten nicht in Gruppen mit erhöhten Berechtigungen ein. 
 
@@ -63,10 +63,10 @@ Für Dienstkontoberechtigungen empfiehlt sich Folgendes:
    Oder verwenden Sie Folgendes:  
 ‎   `Get-AzureADServicePrincipal | % { Get-AzureADServiceAppRoleAssignment -ObjectId $_ }`
 
-* [Verwenden Sie OAuth 2.0-Bereiche](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent), um die Funktionen einzuschränken, auf die ein Dienstkonto für eine Ressource zugreifen kann.
+* [Verwenden Sie OAuth 2.0-Bereiche](../develop/v2-permissions-and-consent.md), um die Funktionen einzuschränken, auf die ein Dienstkonto für eine Ressource zugreifen kann.
 * Dienstprinzipale und verwaltete Identitäten können OAuth 2.0-Bereiche entweder in einem delegierten Kontext, der die Identität eines angemeldeten Benutzers annimmt, oder als Dienstkonto im Anwendungskontext verwenden. Im Anwendungskontext wird kein Benutzer angemeldet.
 
-* Überprüfen Sie die Bereiche, die von Dienstkonten für Ressourcen angefordert werden, um sicherzustellen, dass sie angemessen sind. Wenn von einem Konto also beispielsweise „Files.ReadWrite.All“ angefordert wird, überprüfen Sie, ob nicht vielleicht „File.Read.All“ ausreicht. Weitere Informationen zu Berechtigungen finden Sie in der [Microsoft Graph-Berechtigungsreferenz](https://docs.microsoft.com/graph/permissions-reference).
+* Überprüfen Sie die Bereiche, die von Dienstkonten für Ressourcen angefordert werden, um sicherzustellen, dass sie angemessen sind. Wenn von einem Konto also beispielsweise „Files.ReadWrite.All“ angefordert wird, überprüfen Sie, ob nicht vielleicht „File.Read.All“ ausreicht. Weitere Informationen zu Berechtigungen finden Sie in der [Microsoft Graph-Berechtigungsreferenz](/graph/permissions-reference).
 
 * Vergewissern Sie sich, dass Sie dem Entwickler der Anwendung oder API mit der Zugriffsanforderung für Ihre Ressourcen vertrauen.
 
@@ -78,9 +78,9 @@ Für Dienstkontoberechtigungen empfiehlt sich Folgendes:
 
 Nachdem Sie sich ein genaues Bild vom Zweck, vom Bereich und von den erforderlichen Berechtigungen gemacht haben, können Sie Ihr Dienstkonto erstellen. 
 
-[Verwenden verwalteter Identitäten für App Service und Azure Functions](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet)
+[Verwenden verwalteter Identitäten für App Service und Azure Functions](../../app-service/overview-managed-identity.md?tabs=dotnet)
 
-[Gewusst wie: Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)
+[Gewusst wie: Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal](../develop/howto-create-service-principal-portal.md)
 
 Verwenden Sie nach Möglichkeit eine verwaltete Identität. Falls Sie keine verwaltete Identität verwenden können, verwenden Sie einen Dienstprinzipal. Falls Sie auch keinen Dienstprinzipal verwenden können, verwenden Sie ein Azure AD-Benutzerkonto.
 
@@ -100,7 +100,7 @@ Planung und Erstellung wurden in diesem Artikel bereits behandelt. Darüber hina
 
 * Verwenden der Azure AD-Anmeldeprotokolle im Azure AD-Portal
 
-* Exportieren der Azure AD-Anmeldeprotokolle zu [Azure Storage](https://docs.microsoft.com/azure/storage/), [Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/) oder [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/logs/data-platform-logs)
+* Exportieren der Azure AD-Anmeldeprotokolle zu [Azure Storage](../../storage/index.yml), [Azure Event Hubs](../../event-hubs/index.yml) oder [Azure Monitor](../../azure-monitor/logs/data-platform-logs.md)
 
 
 ![Screenshot: Bildschirm für Dienstprinzipalanmeldungen](./media/securing-service-accounts/service-accounts-govern-azure-1.png)
@@ -172,7 +172,7 @@ Richten Sie einen Überprüfungsprozess ein, um eine regelmäßige Überprüfung
 
 **Die Prozesse für die Aufhebung der Bereitstellung sollten die folgenden Aufgaben umfassen:**
 
-1. [Überwachen Sie die Anmeldungen](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins#sign-ins-report) und den Ressourcenzugriff durch das Dienstkonto, nachdem die Bereitstellung der zugeordneten Anwendung oder des zugeordneten Skripts aufgehoben wurde.
+1. [Überwachen Sie die Anmeldungen](../reports-monitoring/concept-sign-ins.md#sign-ins-report) und den Ressourcenzugriff durch das Dienstkonto, nachdem die Bereitstellung der zugeordneten Anwendung oder des zugeordneten Skripts aufgehoben wurde.
 
    * Ist das Konto weiterhin aktiv, ermitteln Sie, wie es verwendet wird, bevor Sie weitere Schritte ausführen.
  
@@ -196,4 +196,3 @@ Weitere Informationen zum Schutz von Azure-Dienstkonten finden Sie hier:
 
  
 
- 

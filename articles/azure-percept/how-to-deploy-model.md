@@ -1,5 +1,5 @@
 ---
-title: Bereitstellen eines Vision-KI-Modells für Azure Percept DK
+title: Bereitstellen eines Vision-KI-Modells für Azure Percept DK
 description: Hier erfahren Sie, wie Sie ein Vision-KI-Modell in Azure Percept DK über Azure Percept Studio bereitstellen.
 author: elqu20
 ms.author: v-elqu
@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 02/12/2021
 ms.custom: template-how-to
 ms.openlocfilehash: 01bd3709050d8a2b57c1bf51920308188546fb31
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102035482"
 ---
 # <a name="deploy-a-vision-ai-model-to-your-azure-percept-dk"></a>Bereitstellen eines Vision-KI-Modells für Azure Percept DK
@@ -20,7 +20,7 @@ Befolgen Sie diese Anleitung, um ein Vision-KI-Modell für Azure Percept DK übe
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Azure Percept DK (DevKit)
+- Azure Percept DK (DevKit)
 - [Azure-Abonnement](https://azure.microsoft.com/free/)
 - [Azure Percept DK-Setup:](./quickstart-percept-dk-set-up.md) Sie haben Ihr DevKit mit einem WLAN verbunden, eine IoT Hub-Instanz erstellt und das DevKit mit der IoT Hub-Instanz verbunden.
 

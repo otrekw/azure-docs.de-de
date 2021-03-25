@@ -7,12 +7,12 @@ ms.reviewer: susabat
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 12/03/2020
-ms.openlocfilehash: 5c33ef9559d9ce67eea62ee7f78425d18010c1cb
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: d96c467807af868c07be12f52d913f881b82f732
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101727956"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175871"
 ---
 # <a name="troubleshoot-ci-cd-azure-devops-and-github-issues-in-adf"></a>Beheben von CI/CD-, Azure DevOps- und GitHub-Problemen in ADF 
 
@@ -190,7 +190,7 @@ Sie haben OAuth für ADF nicht konfiguriert. Ihre URL ist falsch konfiguriert.
 
 ##### <a name="resolution"></a>Lösung
 
-Sie gewähren zuerst den OAuth-Zugriff auf ADF. Anschließend müssen Sie durch Angabe der richtigen URL eine Verbindung mit Git Enterprise herstellen. Die Konfiguration muss auf die Kundenorganisation(en) festgelegt werden, weil der ADF-Dienst zuerst https://hostname/api/v3/search/repositories?q=user%3<customer credential> ausprobiert und dann fehlschlägt. Anschließend probiert er https://hostname/api/v3/orgs/<vaorg>/<repo> aus, und das gelingt. 
+Sie gewähren zuerst den OAuth-Zugriff auf ADF. Anschließend müssen Sie durch Angabe der richtigen URL eine Verbindung mit Git Enterprise herstellen. Die Konfiguration muss auf die Kundenorganisation(en) festgelegt werden. Beispielsweise probiert der ADF-Dienst zuerst *https://hostname/api/v3/search/repositories?q=user%3<customer credential>....* aus und schlägt dann fehl. Anschließend probiert er *https://hostname/api/v3/orgs/<org>/<repo>...* aus und ist dabei erfolgreich. 
  
 ### <a name="recover-from-a-deleted-data-factory"></a>Wiederstellen aus einer gelöschten Data Factory
 
@@ -203,7 +203,8 @@ Die Data Factory kann nur dann wiederhergestellt werden, wenn der Kunde die Quel
 
 Wenn es keine Quellcodeverwaltung gibt, kann eine gelöschte Data Factory aus dem Back-End nicht wiederhergestellt werden. Der Grund: Sobald der Dienst den Löschbefehl empfangen hat, wird die Instanz gelöscht, und es wurde keine Sicherung gespeichert.
 
-#### <a name="resoloution"></a>Lösung
+#### <a name="resolution"></a>Lösung
+
 Führen Sie die folgenden Schritte aus, um die gelöschte Data Factory mit der Quellcodeverwaltung wiederherzustellen:
 
  * Erstellen Sie eine neue Azure Data Factory-Instanz.

@@ -6,16 +6,16 @@ ms.author: harelbr
 ms.topic: conceptual
 ms.date: 02/14/2021
 ms.openlocfilehash: 7ab719560320882a3a6569bff5df7d2e2cf0b747
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102037556"
 ---
 # <a name="call-a-webhook-with-a-classic-metric-alert-in-azure-monitor"></a>Aufrufen eines Webhooks mit einer klassischen Metrikwarnung in Azure Monitor
 
 > [!WARNING]
-> In diesem Artikel erfahren Sie, wie Sie ältere klassische Metrikwarnungen verwenden. Azure Monitor unterstützt nun [neuere Metrikwarnungen, die nahezu in Echtzeit stattfinden, und eine neue Oberfläche für Warnungen](./alerts-overview.md). Klassische Warnungen werden für Benutzer der öffentlichen Cloud [eingestellt](./monitoring-classic-retirement.md), sind jedoch bis zum **31. Mai 2021** weiterhin beschränkt im Einsatz. Klassische Warnungen für die Azure Government-Cloud und Azure China 21Vianet werden am **29. Februar 2024** eingestellt.
+> In diesem Artikel erfahren Sie, wie Sie ältere klassische Metrikwarnungen verwenden. Azure Monitor unterstützt nun [neuere Metrikwarnungen, die nahezu in Echtzeit stattfinden, und eine neue Oberfläche für Warnungen](./alerts-overview.md). Klassische Warnungen werden für Benutzer der öffentlichen Cloud [eingestellt](./monitoring-classic-retirement.md), sind jedoch bis zum **31. Mai 2021** weiterhin beschränkt im Einsatz. Klassische Warnungen für die Azure Government-Cloud und Azure China 21Vianet werden am **29. Februar 2024** eingestellt.
 >
 
 Mithilfe von Webhooks können Benutzer eine Azure-Warnbenachrichtigung zur Nachbearbeitung oder Ausführung benutzerdefinierter Aktionen an andere Systeme weiterleiten. Sie können einen Webhook für eine Warnung verwenden, um sie an Dienste weiterzuleiten, die SMS-Nachrichten versenden, um Fehler zu protokollieren, um ein Team per Chat-/Messagingdienst zu benachrichtigen oder um verschiedene andere Aktionen auszuführen. 

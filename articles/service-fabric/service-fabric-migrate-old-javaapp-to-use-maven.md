@@ -7,10 +7,10 @@ ms.date: 08/23/2017
 ms.custom: devx-track-java
 ms.author: rapatchi
 ms.openlocfilehash: 3efa51f5632dd5cdc274ea39df5178aa0351a01f
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97652295"
 ---
 # <a name="update-your-previous-java-service-fabric-application-to-fetch-java-libraries-from-maven"></a>Aktualisieren Ihrer älteren Java Service Fabric-Anwendung für den Abruf von Java-Bibliotheken aus Maven
@@ -84,7 +84,7 @@ Unterstützung von zustandslosen Service Fabric-Diensten für Ihre Anwendung:
   }
   ```
 
-### <a name="others"></a>Andere
+### <a name="others"></a>Sonstige
 
 #### <a name="transport"></a>Transport
 
@@ -165,7 +165,7 @@ task copyDeps <<{
 }
 ```
 
-Die **aktualisierte** Datei ``build.gradle`` für den Abruf der Abhängigkeiten aus Maven sieht wie folgt aus:
+Die **aktualisierte Datei** ``build.gradle`` für den Abruf der Abhängigkeiten aus Maven sieht wie folgt aus:
 
 ```gradle
 repositories {
@@ -244,7 +244,7 @@ dependencies {
 .
 ```
 
-Die **aktualisierte** Datei ``build.gradle`` für den Abruf der Abhängigkeiten aus Maven sieht wie folgt aus:
+Die **aktualisierte Datei** ``build.gradle`` für den Abruf der Abhängigkeiten aus Maven sieht wie folgt aus:
 
 ```gradle
 repositories {
@@ -319,7 +319,7 @@ task copyDeps<< {
 }
 ```
 
-Die **aktualisierte** Datei ``build.gradle`` für den Abruf der Abhängigkeiten aus Maven sieht wie folgt aus:
+Die **aktualisierte Datei** ``build.gradle`` für den Abruf der Abhängigkeiten aus Maven sieht wie folgt aus:
 
 ```gradle
 repositories {
@@ -422,7 +422,7 @@ task copyDeps<< {
 }
 ```
 
-Die **aktualisierte** Datei ``build.gradle`` für den Abruf der Abhängigkeiten aus Maven sieht wie folgt aus:
+Die **aktualisierte Datei** ``build.gradle`` für den Abruf der Abhängigkeiten aus Maven sieht wie folgt aus:
 
 ```gradle
 repositories {

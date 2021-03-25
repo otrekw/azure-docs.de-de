@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/13/2020
 ms.author: yelevin
 ms.openlocfilehash: a0056391dddec25511deb7033d37f59db3d835c8
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98567825"
 ---
 # <a name="connect-your-thycotic-secret-server-to-azure-sentinel"></a>Verbinden Ihres Thycotic Secret Server mit Azure Sentinel
@@ -49,7 +49,7 @@ Um die Protokolle Ihres Thycotic Secret Server in Azure Sentinel zu erfassen, ko
 
 1. Befolgen Sie die Anleitungen auf der Registerkarte **Anweisungen** unter **Konfiguration**:
 
-    1. Klicken Sie unter **1. Linux-Syslog-Agent-Konfiguration**: Führen Sie diesen Schritt aus, wenn Sie noch keinen Protokollweiterleitungsserver ausführen, oder wenn Sie einen anderen benötigen. Detaillierte Anleitungen und Erläuterungen finden Sie unter [SCHRITT 1: Bereitstellen des Protokollweiterleitungsservers](connect-cef-agent.md) in der Azure Sentinel-Dokumentation.
+    1. Unter **1. Konfiguration des Linux-Syslog-Agents**: Führen Sie diesen Schritt aus, wenn Sie noch keinen Protokollweiterleitungsserver ausführen oder einen anderen benötigen. Detaillierte Anleitungen und Erläuterungen finden Sie unter [SCHRITT 1: Bereitstellen des Protokollweiterleitungsservers](connect-cef-agent.md) in der Azure Sentinel-Dokumentation.
 
     1. Wählen Sie unter **2. Weiterleiten von CEF-Protokollen (Common Event Format) an den Syslog-Agent**: Befolgen Sie die Anweisungen von Thycotic zum [Konfigurieren des Secret Server](https://thy.center/ss/link/syslog). Diese Konfiguration sollte die folgenden Elemente enthalten:
         - Protokollziel: Hostname und/oder IP-Adresse Ihres Protokollweiterleitungsservers.

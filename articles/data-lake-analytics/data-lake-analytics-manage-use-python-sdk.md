@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 06/08/2018
 ms.custom: devx-track-python
 ms.openlocfilehash: fda09047d138e404eeca87ed3eba9bb72ff62d56
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92220226"
 ---
 # <a name="manage-azure-data-lake-analytics-using-python"></a>Verwalten von Azure Data Lake Analytics mithilfe von Python
@@ -22,7 +22,7 @@ In diesem Artikel wird beschrieben, wie Sie Azure Data Lake Analytics-Konten, -D
 
 * Verwenden Sie eine 64-Bit-Version von Python.
 * Sie können die Python-Standarddistribution unter **[Python.org downloads](https://www.python.org/downloads/)** verwenden. 
-* Viele Entwickler bevorzugen die Verwendung der **[Python-Distribution Anaconda](https://www.anaconda.com/download/)** .  
+* Viele Entwickler bevorzugen die Verwendung der **[Python-Distribution Anaconda](https://www.anaconda.com/download/)**.  
 * Für diesen Artikel wurde die Python-Version 3.6 der Python-Standarddistribution verwendet.
 
 ## <a name="install-azure-python-sdk"></a>Installieren des Azure Python SDK
@@ -94,7 +94,7 @@ import time
 
 Führen Sie dieses Skript aus, um zu überprüfen, ob die Module importiert werden können.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Authentifizierung
 
 ### <a name="interactive-user-authentication-with-a-pop-up"></a>Interaktive Benutzerauthentifizierung mit einem Popup
 

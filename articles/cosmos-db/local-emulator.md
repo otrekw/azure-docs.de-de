@@ -8,10 +8,10 @@ ms.author: mjbrown
 ms.date: 09/22/2020
 ms.custom: devx-track-csharp, contperf-fy21q1
 ms.openlocfilehash: 89e82e210dbf7c404ebd5978d87bf391d8565ee2
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97033968"
 ---
 # <a name="install-and-use-the-azure-cosmos-db-emulator-for-local-development-and-testing"></a>Installieren und Verwenden des Azure Cosmos DB-Emulators für lokale Entwicklung und Tests
@@ -470,5 +470,5 @@ Führen Sie die folgenden Schritte aus, um den Emulator zu deinstallieren:
 In diesem Artikel haben Sie erfahren, wie Sie den lokalen Emulator für die kostenlose lokale Entwicklung verwenden. Sie können jetzt mit dem nächsten Artikel fortfahren:
 
 * [Exportieren der Azure Cosmos DB-Emulatorzertifikate für die Verwendung mit Java-, Python- und Node.js-Apps](local-emulator-export-ssl-certificates.md)
-* [Verwenden von Befehlszeilenparametern und PowerShell-Befehlen zum Steuern des Emulators](emulator-command-line-parameters.md)
+* [Befehlszeilen- und PowerShell-Referenz für den Azure Cosmos DB-Emulator](emulator-command-line-parameters.md)
 * [Debuggen von Problemen mit dem Emulator](troubleshoot-local-emulator.md)

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
-ms.openlocfilehash: 3af48c93633709c9b5814caa99c222e24e402a4a
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: cb5230ae42703d19726fb8ea0d6c88aa70e589a8
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945225"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864141"
 ---
 # <a name="apache-phoenix-in-azure-hdinsight"></a>Apache Phoenix in Azure HDInsight
 
@@ -36,7 +36,7 @@ CREATE INDEX ix_purchasetype on SALTEDWEBLOGS (purchasetype, transactiondate) IN
 
 Dieser Ansatz kann zu einer erheblichen Leistungssteigerung bei der Ausführung von Abfragen mit nur einem Index führen. Dieser sekundäre Index ist vom Typ **Index mit vollständiger Abdeckung** und enthält alle Spalten, die Teil der Abfrage sind. Aus diesem Grund ist die Tabellensuche nicht erforderlich, und der Index deckt die gesamte Abfrage ab.
 
-### <a name="views"></a>Sichten
+### <a name="views"></a>Ansichten
 
 Phoenix-Ansichten sind eine Möglichkeit zur Überwindung einer HBase-Einschränkung, bei der sich die Leistung zunehmend verschlechtert, wenn Sie mehr als ca. 100 physische Tabellen erstellen. Bei Phoenix-Ansichten können mehrere *virtuelle Tabellen* eine zugrunde liegende physische HBase-Tabelle gemeinsam nutzen.
 
@@ -125,11 +125,11 @@ Ein HDInsight HBase-Cluster enthält die [Ambari-Benutzeroberfläche](hdinsight-
 
 2. Wählen Sie im Menü auf der linken Seite in der Liste mit den Diensten den Eintrag **HBase** und dann die Registerkarte **Configs** (Konfigurationen).
 
-    ![Apache Ambari – HBase-Konfigurationen](./media/hdinsight-phoenix-in-hdinsight/ambari-hbase-config1.png)
+    :::image type="content" source="./media/hdinsight-phoenix-in-hdinsight/ambari-hbase-config1.png" alt-text="Apache Ambari – HBase-Konfigurationen":::
 
 3. Suchen Sie nach dem Abschnitt für die Konfiguration von **Phoenix SQL**, um Phoenix zu aktivieren bzw. zu deaktivieren und das Abfragetimeout festzulegen.
 
-    ![Ambari-Konfigurationsabschnitt „Phoenix SQL“](./media/hdinsight-phoenix-in-hdinsight/apache-ambari-phoenix.png)
+    :::image type="content" source="./media/hdinsight-phoenix-in-hdinsight/apache-ambari-phoenix.png" alt-text="Ambari-Konfigurationsabschnitt „Phoenix SQL“":::
 
 ## <a name="see-also"></a>Weitere Informationen
 

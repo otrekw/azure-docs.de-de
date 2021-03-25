@@ -4,10 +4,10 @@ description: Übersicht über OpenAPI-Unterstützung in Azure Functions
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.openlocfilehash: 499d4f685e3802fcc37c8a3050ae367207f192d2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96000203"
 ---
 # <a name="openapi-20-metadata-support-in-azure-functions-preview"></a>OpenAPI 2.0-Metadatenunterstützung in Azure Functions (Vorschauversion)
@@ -51,7 +51,7 @@ In der folgenden Tabelle sind die Azure-Portaleinstellungen und die entsprechend
 |[Host](https://swagger.io/specification/#fixed-fields-15)|**Funktionen-App-Einstellungen** > **App Service-Einstellungen** > **Übersicht** > **URL**|*Nicht vorhanden*
 |[Paths](https://swagger.io/specification/#paths-object-29)|**Integrieren** > **Ausgewählte HTTP-Methoden**|Bindungen: Route
 |[Path Item](https://swagger.io/specification/#path-item-object-32)|**Integrieren** > **Routenvorlage**|Bindungen: Methoden
-|[Sicherheit](https://swagger.io/specification/#security-scheme-object-112)|**Schlüssel**|*Nicht vorhanden*|
+|[Security](https://swagger.io/specification/#security-scheme-object-112)|**Schlüssel**|*Nicht vorhanden*|
 |operationID*|**„Route“ und „Zulässige Verben“**|„Route“ und „Allowed Verbs“|
 
 \*Die Vorgangs-ID ist nur für das Integrieren in PowerApps und Flow erforderlich.

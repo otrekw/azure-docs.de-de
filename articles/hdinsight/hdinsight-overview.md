@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: contperf-fy21q1
 ms.date: 08/21/2020
-ms.openlocfilehash: d1c32bf749850ac40e23c1a9cb9c5cd7755d45c6
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: cbaa84c73a5e332dca60286bc35200761e546dd3
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98939438"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864226"
 ---
 # <a name="what-is-azure-hdinsight"></a>Worum handelt es sich bei Azure HDInsight?
 
@@ -52,25 +52,25 @@ Extrahieren, Transformieren und Laden (ETL) ist ein Prozess, bei dem nicht struk
 
 Mit HDInsight können Sie interaktive Abfragen für Petabytes von strukturierten oder unstrukturierten Daten in einem beliebigen Format durchführen. Darüber hinaus können Sie Modelle für die Verknüpfung mit BI-Tools erstellen.
 
-![HDInsight-Architektur: Data Warehousing](./hadoop/media/apache-hadoop-introduction/hdinsight-architecture-data-warehouse.png "HDInsight: Data Warehousing-Architektur")
+:::image type="content" source="./hadoop/media/apache-hadoop-introduction/hdinsight-architecture-data-warehouse.png" alt-text="HDInsight-Architektur: Data Warehousing":::
 
 ### <a name="internet-of-things-iot"></a>Internet der Dinge (IoT, Internet of Things)
 
 Mit HDInsight können Sie Streamingdaten verarbeiten, die in Echtzeit von verschiedenen Arten von Geräten empfangen werden. Weitere Informationen finden Sie in [diesem Azure-Blog, in dem die öffentliche Vorschauversion von Apache Kafka unter HDInsight mit Azure Managed Disks angekündigt wird](https://azure.microsoft.com/blog/announcing-public-preview-of-apache-kafka-on-hdinsight-with-azure-managed-disks/).
 
-![HDInsight-Architektur: Internet der Dinge (IoT)](./hadoop/media/apache-hadoop-introduction/hdinsight-architecture-iot.png "HDInsight: IoT-Architektur")
+:::image type="content" source="./hadoop/media/apache-hadoop-introduction/hdinsight-architecture-iot.png" alt-text="HDInsight-Architektur: Internet der Dinge (IoT)":::
 
 ### <a name="data-science"></a>Data Science
 
 Mit HDInsight können Sie Anwendungen erstellen, die wichtige Erkenntnisse aus Daten extrahieren. Zusätzlich können Sie mithilfe von Azure Machine Learning zukünftige Trends für Ihr Unternehmen prognostizieren. Weitere Informationen finden Sie in [diesem Kundenbericht](https://customers.microsoft.com/story/pros).
 
-![HDInsight-Architektur: Data Science](./hadoop/media/apache-hadoop-introduction/hdinsight-architecture-data-science.png "HDInsight: Data Science-Architektur")
+:::image type="content" source="./hadoop/media/apache-hadoop-introduction/hdinsight-architecture-data-science.png" alt-text="HDInsight-Architektur: Data Science":::
 
 ### <a name="hybrid"></a>Hybrid
 
 Mit HDInsight können Sie Ihre vorhandene lokale Big Data-Infrastruktur auf Azure ausdehnen und von den erweiterten Analysefunktionen der Cloud profitieren.
 
-![HDInsight-Architektur: Hybrid](./hadoop/media/apache-hadoop-introduction/hdinsight-architecture-hybrid.png "HDInsight: Hybridarchitektur")
+:::image type="content" source="./hadoop/media/apache-hadoop-introduction/hdinsight-architecture-hybrid.png" alt-text="HDInsight-Architektur: Hybrid":::
 
 ## <a name="cluster-types-in-hdinsight"></a>Clustertypen in HDInsight
 

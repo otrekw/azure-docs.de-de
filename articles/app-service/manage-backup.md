@@ -5,12 +5,12 @@ ms.assetid: 6223b6bd-84ec-48df-943f-461d84605694
 ms.topic: article
 ms.date: 10/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 933ac96d0cf98e0068575e5a70b0f42a157eb611
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 7c00205e2931400caa64f35db962d94a732f2524
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91827464"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101714492"
 ---
 # <a name="back-up-your-app-in-azure"></a>Sichern einer App in Azure
 Das Feature zum Sichern und Wiederherstellen in [Azure App Service](overview.md) ermöglicht Ihnen, App-Sicherungen einfach manuell oder nach einem Zeitplan zu erstellen. Sie können die Sicherungen so konfigurieren, dass Sie für einen bis zu unbestimmten Zeitraum aufbewahrt werden. Sie können die App mit einer Momentaufnahme eines früheren Zustands wiederherstellen, indem Sie die vorhandene App überschreiben oder als andere App wiederherstellen.
@@ -44,10 +44,10 @@ Die folgenden Datenbanklösungen werden von der Sicherungsfunktion unterstützt:
 * Die Funktion zum Sichern und Wiederherstellen erfordert einen App Service-Plan im Tarif **Standard**, **Premium** oder **Isoliert**. Weitere Informationen zum Skalieren des App Service-Plans zur Verwendung eines höheren Tarifs finden Sie unter [Hochskalieren einer App in Azure](manage-scale-up.md). Im Tarif **Premium** und **Isoliert** ist eine größere Anzahl täglicher Sicherungen zulässig als im Tarif **Standard**.
 * Sie benötigen ein Azure-Speicherkonto und einen Container im selben Abonnement wie die App, die Sie sichern möchten. Weitere Informationen zu Azure-Speicherkonten finden Sie unter [Azure Storage-Konto – Übersicht](../storage/common/storage-account-overview.md).
 * Sicherungen können bis zu 10GB an App- und Datenbankinhalten umfassen. Wenn die Sicherungsgröße diesen Grenzwert überschreitet, erhalten Sie eine Fehlermeldung.
-* Sicherungen von Azure Database for MySQL mit aktiviertem TLS werden nicht unterstützt. Wenn eine Sicherung konfiguriert ist,werden fehlerhafte Sicherungen angezeigt.
-* Sicherungen von Azure Database for PostgreSQL mit aktiviertem TLS werden nicht unterstützt. Wenn eine Sicherung konfiguriert ist,werden fehlerhafte Sicherungen angezeigt.
+* Sicherungen von Azure Database for MySQL mit aktiviertem TLS werden nicht unterstützt. Wenn eine Sicherung konfiguriert ist, treten Sicherungsfehler auf.
+* Sicherungen von Azure Database for PostgreSQL mit aktiviertem TLS werden nicht unterstützt. Wenn eine Sicherung konfiguriert ist, treten Sicherungsfehler auf.
 * In-App-MySQL-Datenbanken werden automatisch ohne Konfiguration gesichert. Wenn Sie manuell Einstellungen für In-App-MySQL-Datenbanken festlegen (beispielsweise durch Hinzufügen von Verbindungszeichenfolgen), funktionieren die Sicherungen unter Umständen nicht ordnungsgemäß.
-* Die Verwendung eines Speicherkontos mit aktivierter Firewall als Ziel für Ihre Sicherungen wird nicht unterstützt. Wenn eine Sicherung konfiguriert ist,werden fehlerhafte Sicherungen angezeigt.
+* Die Verwendung eines Speicherkontos mit aktivierter Firewall als Ziel für Ihre Sicherungen wird nicht unterstützt. Wenn eine Sicherung konfiguriert ist, treten Sicherungsfehler auf.
 
 
 <a name="manualbackup"></a>
@@ -70,18 +70,18 @@ Die folgenden Datenbanklösungen werden von der Sicherungsfunktion unterstützt:
 
 3. Klicken Sie auf der Seite **Sicherungskonfiguration** auf **Speicher: nicht konfiguriert**, um ein Speicherkonto zu konfigurieren.
 
-    :::image type="content" source="./media/manage-backup/configure-storage.png" alt-text="Screenshot: Banner mit einer Meldung zum Aktualisieren des App Service-Plans für den Zugriff auf das Feature „Backup and Restore“ (Sichern und Wiederherstellen)":::
+    :::image type="content" source="./media/manage-backup/configure-storage.png" alt-text="Screenshot: Abschnitt „Sicherungsspeicher“ mit ausgewählter Einstellung „Der Speicher ist nicht konfiguriert“":::
 
 4. Wählen Sie das Sicherungsziel durch Auswahl eines **Speicherkontos** und **Containers** aus. Das Speicherkonto muss zum selben Abonnement wie die App gehören, die Sie sichern möchten. Bei Bedarf können Sie auf den entsprechenden Seiten ein neues Speicherkonto oder einen neuen Container erstellen. Wenn Sie fertig sind, klicken Sie auf **Auswählen**.
 
 5. Auf der noch geöffneten Seite **Sicherungskonfiguration** können Sie die Einstellungen für **Datenbank sichern** konfigurieren. Wählen Sie dann die Datenbanken aus, die in die Sicherungen einbezogen werden sollen (SQL-Datenbank oder MySQL), und klicken Sie auf **OK**.
 
-    :::image type="content" source="./media/manage-backup/configure-database.png" alt-text="Screenshot: Banner mit einer Meldung zum Aktualisieren des App Service-Plans für den Zugriff auf das Feature „Backup and Restore“ (Sichern und Wiederherstellen)":::
+    :::image type="content" source="./media/manage-backup/configure-database.png" alt-text="Screenshot: Abschnitt „Datenbank sichern“ mit der Auswahlmöglichkeit „In Sicherung einbeziehen“":::
 
     > [!NOTE]
     > Damit eine Datenbank in dieser Liste angezeigt wird, muss die zugehörige Verbindungszeichenfolge auf der Seite **Anwendungseinstellungen** für Ihre App im Abschnitt **Verbindungszeichenfolgen** angegeben sein. 
     >
-    > In-App-MySQL-Datenbanken werden automatisch ohne Konfiguration gesichert. Wenn Sie manuell Einstellungen für In-App-MySQL-Datenbanken festlegen (beispielsweise durch Hinzufügen von Verbindungszeichenfolgen), funktionieren die Sicherungen unter Umständen nicht ordnungsgemäß.
+    > In-App-MySQL-Datenbanken werden automatisch ohne Konfiguration gesichert. Wenn Sie Einstellungen für In-App-MySQL-Datenbanken manuell festlegen (beispielsweise durch Hinzufügen von Verbindungszeichenfolgen), funktionieren die Sicherungen unter Umständen nicht ordnungsgemäß.
     > 
     > 
 

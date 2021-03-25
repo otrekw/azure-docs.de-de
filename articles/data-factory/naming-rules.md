@@ -3,16 +3,16 @@ title: Regeln für die Benennung von Azure Data Factory-Entitäten
 description: Beschreibt die Benennungsregeln für Data Factory-Entitäten.
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: f0d14760ce3e6403c9b6fe8cc7a2100aeb3f39a6
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: a1a0622c0736bad5f6c205fab01f4405577ed67a
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100372908"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104783352"
 ---
 # <a name="azure-data-factory---naming-rules"></a>Azure Data Factory – Benennungsregeln
 
@@ -27,6 +27,8 @@ Die folgende Tabelle enthält Benennungsregeln für Data Factory-Artefakte.
 | Integration Runtime |Eindeutig innerhalb einer Data Factory. Bei Namen wird die Groß-/Kleinschreibung nicht berücksichtigt. |<ul><li>Der Name der Integration Runtime darf nur Buchstaben, Zahlen und den Bindestrich (-) enthalten.</li><li>Das erste und das letzte Zeichen müssen Buchstaben oder Zahlen sein. Jedem Bindestrich (-) muss unmittelbar ein Buchstabe oder eine Ziffer vorangestellt werden und er muss von diesen gefolgt sein.</li><li>Aufeinanderfolgende Bindestriche sind im Namen der Integration Runtime nicht zulässig. </li></ul> |
 | Datenflusstransformationen | Eindeutig innerhalb eines Datenflusses. Bei Namen wird die Groß-/Kleinschreibung nicht berücksichtigt. | <ul><li>Namen von Datenflusstransformationen dürfen nur Buchstaben und Ziffern enthalten.</li><li>Das erste Zeichen muss ein Buchstabe sein. </li></ul> |
 | Ressourcengruppe |Für Microsoft Azure eindeutig. Bei Namen wird die Groß-/Kleinschreibung nicht berücksichtigt. | Weitere Informationen finden Sie unter [Benennungsregeln und -einschränkungen](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#resource-naming). |
+| Pipelineparameter und -variable  |Eindeutig innerhalb der Pipeline. Bei Namen wird die Groß-/Kleinschreibung nicht berücksichtigt. | <ul><li>Die Überprüfung von Parametername und Variablenname ist aus Gründen der Abwärtskompatibilität auf die Eindeutigkeit beschränkt.</li><li>Wenn Sie Parameter oder Variablen verwenden, um auf Entitätsnamen zu verweisen (z. B. verknüpfter Dienst), gelten die Regeln für die Entitätsbenennung.</li><li>Bei der Benennung Ihrer Pipelineparameter und -variablen sollten Sie die Benennungsregeln für die Datenflusstransformation befolgen.</li></ul> |
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Erfahren Sie, wie Sie Data Factorys erstellen, indem Sie die detaillierten Anweisungen im Artikel [Schnellstart: Erstellen einer Data Factory](quickstart-create-data-factory-powershell.md) befolgen. 

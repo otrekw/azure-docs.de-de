@@ -10,10 +10,10 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 04/02/2019
 ms.openlocfilehash: 867ae2cc7567077786bb0840cd11c47b786be423
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95018751"
 ---
 # <a name="api-v1-to-v2-migration-guide-for-luis-apps"></a>Anleitung zur Migration von API-Version 1 zu API-Version 2 für LUIS-Apps
@@ -26,7 +26,7 @@ LUIS stellt neue [Regionen](./luis-reference-regions.md) für die LUIS-APIs bere
 Die Route der Erstellungs-API wurde von der Route **prog** zur Route **api** geändert.
 
 
-| version | Route |
+| version | route |
 |--|--|
 |1|/luis/v1.0/**prog**/apps|
 |2|/luis/**api**/v2.0/apps|
@@ -105,7 +105,7 @@ Erfolgsantwort v2-Endpunkt:
 ## <a name="key-management-no-longer-in-api"></a>Schlüsselverwaltung nicht mehr in der API
 Die Abonnementendpunkt-Schlüssel-APIs sind veraltet und geben den Fehler „410 GONE“ zurück.
 
-| version | Route |
+| version | route |
 |--|--|
 |1|/luis/v1.0/prog/subscriptions|
 |1|/luis/v1.0/prog/subscriptions/{Abonnementschlüssel}|
@@ -115,7 +115,7 @@ Azure-[Endpunktschlüssel](luis-how-to-azure-subscription.md) werden im Azure-Po
 ## <a name="new-versioning-route"></a>Neue Versionsverwaltungsroute
 Die v2-Modell ist nun in einer [Version](luis-how-to-manage-versions.md) enthalten. Ein Versionsname umfasst 10 Zeichen in der Route. Die Standardversion ist 0.1.
 
-| version | Route |
+| version | route |
 |--|--|
 |1|/luis/v1.0/**prog**/apps/{App-ID}/entities|
 |2|/luis/**api**/v2.0/apps/{App-ID}/**versions**/{Versions-ID}/entities|
@@ -134,7 +134,7 @@ Mehrere APIs, die LUIS Metadaten zurückgeben, weisen neue Namen auf.
 ## <a name="sample-renamed-to-suggest"></a>„Beispiel“ in „Vorschlag“ umbenannt
 LUIS schlägt Äußerungen von vorhandenen [Endpunktäußerungen](luis-how-to-review-endpoint-utterances.md) vor, die das Modell verbessern können. In der vorherigen Version wurde dies als **Beispiel** bezeichnet. In der neuen Version wurde diese Bezeichnung von „Beispiel“ in **Vorschlag** geändert. Auf der LUIS-Website wird dies **[Review endpoint utterances](luis-how-to-review-endpoint-utterances.md)** (Endpunktäußerungen überprüfen) genannt.
 
-| version | Route |
+| version | route |
 |--|--|
 |1|/luis/v1.0/**prog**/apps/{App-ID}/entities/{Entitäts-ID}/**sample**|
 |1|/luis/v1.0/**prog**/apps/{App-ID}/intents/{Absichts-ID}/**sample**|

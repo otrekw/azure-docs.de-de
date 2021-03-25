@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: evansma
 ms.service: resource-move
 ms.topic: conceptual
-ms.date: 02/04/2021
+ms.date: 02/21/2021
 ms.author: raynew
-ms.openlocfilehash: a75cd3c5dbf205f49aa606bfe96623a61bce39db
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: e900250aea84b4a9c9112fa54632a2be8b9cb49c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100007055"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102564270"
 ---
 # <a name="common-questions"></a>Häufig gestellte Fragen
 
@@ -24,6 +24,15 @@ In diesem Artikel werden häufig gestellte Fragen zu [Azure Resource Mover](over
 ### <a name="can-i-move-resources-across-any-regions"></a>Kann ich Ressourcen in beliebige Regionen verschieben?
 
 Derzeit können Sie Ressourcen aus beliebigen öffentlichen Quellregionen in beliebige öffentliche Zielregionen verschieben, abhängig von den [Ressourcentypen, die in dieser Region verfügbar sind](https://azure.microsoft.com/global-infrastructure/services/). Das Verschieben von Ressourcen in Azure Government-Regionen wird derzeit nicht unterstützt.
+
+### <a name="what-regions-are-currently-supported"></a>Welche Regionen werden derzeit unterstützt?
+
+Azure Resource Mover ist derzeit wie folgt verfügbar:
+
+**Unterstützung** | **Details**
+--- | ---
+Unterstützung für das Verschieben | Azure-Ressourcen, die für das Verschieben mit Resource Mover unterstützt werden, können aus jeder öffentlichen Region in eine andere öffentliche Region verschoben werden.
+Metadatenunterstützung |  Zu den unterstützten Regionen für das Speichern von Metadaten zu zu verschiebenden Computern zählen „USA, Osten2“, „Europa, Norden“, „Asien, Südosten“, „Japan, Osten“, „Vereinigtes Königreich, Süden“ und „Australien, Osten“ als Metadatenregionen. <br/><br/> Das Verschieben von Ressourcen innerhalb der Region „Azure China“ wird auch mit der Metadatenregion „China, Norden2“ unterstützt.
 
 ### <a name="what-resources-can-i-move-across-regions-using-resource-mover"></a>Welche Ressourcen kann ich mithilfe von Resource Mover regionsübergreifend verschieben?
 
@@ -44,15 +53,14 @@ Sie können Datenträger nicht als Ressourcen auswählen und in andere Regionen 
 
 ### <a name="what-does-it-mean-to-move-a-resource-group"></a>Was bedeutet das Verschieben einer Ressourcengruppe?
 
-Wenn Sie eine Ressource zum Verschieben auswählen, wird die zugehörige Ressourcengruppe automatisch dem Verschiebevorgang hinzugefügt. Dies ist erforderlich, da die Zielressource am Ziel in einer identischen Ressourcengruppe platziert werden muss. Sie können eine vorhandene Ressourcengruppe anpassen und bereitstellen, nachdem sie dem Verschiebevorgang hinzugefügt wurde. Beachten Sie, dass das Verschieben einer Ressourcengruppe **nicht** bedeutet, dass alle Ressourcen in der Quellressourcengruppe verschoben werden.
+Wenn Sie eine Ressource zum Verschieben auswählen, wird die zugehörige Ressourcengruppe dem Verschiebevorgang automatisch hinzugefügt. Dadurch kann die Zielressource in eine Ressourcengruppe eingefügt werden. Sie können eine vorhandene Ressourcengruppe anpassen und bereitstellen, nachdem sie dem Verschiebevorgang hinzugefügt wurde. Das Verschieben einer Ressourcengruppe bedeutet nicht, dass alle Ressourcen in der Quellressourcengruppe verschoben werden.
 
 ### <a name="can-i-move-resources-across-subscriptions-when-i-move-them-across-regions"></a>Kann ich Ressourcen abonnementübergreifend verschieben, wenn ich sie regionsübergreifend verschiebe?
 
 Sie können das Abonnement nach dem Verschieben von Ressourcen in die Zielregion ändern. [Erfahren Sie mehr](../azure-resource-manager/management/move-resource-group-and-subscription.md) über das Verschieben von Ressourcen in ein anderes Abonnement. 
 
-### <a name="does-azure-resource-move-service-store-customer-data"></a>Speichert der Azure Resource Mover-Dienst Kundendaten? 
-Nein. Der Resource Mover-Dienst speichert keine Kundendaten, sondern nur Metadateninformationen für die Nachverfolgung und den Fortschritt der vom Kunden für das Verschieben ausgewählten Ressourcen.
-
+### <a name="does-azure-resource-mover-store-customer-data"></a>Speichert Azure Resource Mover Kundendaten? 
+Nein. Der Resource Mover-Dienst speichert keine Kundendaten, sondern nur Metadateninformationen für die Nachverfolgung und den Fortschritt der zu verschiebenden Ressourcen.
 
 ### <a name="where-is-the-metadata-for-moving-across-regions-stored"></a>Wo werden die Metadaten für regionsübergreifendes Verschieben gespeichert?
 
@@ -85,13 +93,15 @@ Wenn Sie über das Portal Ressourcen auf dem Resource Mover-Hub hinzufügen, wer
 > [!IMPORTANT]
 > Es wird dringend empfohlen, Identitätsrollenzuweisungen nicht zu ändern oder zu entfernen. 
 
-### <a name="what-should-i-do-if-i-dont-have-permissions-to-assign-role-identity"></a>Wie sollte ich vorgehen, wenn ich keine Berechtigungen zum Zuweisen von Rollenidentitäten habe?
+### <a name="what-if-i-dont-have-permissions-to-assign-role-identity"></a>Warum habe ich keine Berechtigungen zum Zuweisen von Rollenidentitäten?
+
+Es gibt mehrere Gründe, warum Sie möglicherweise nicht über die erforderlichen Berechtigungen verfügen.
 
 **Mögliche Ursache** | **Empfehlung**
 --- | ---
 Sie sind kein *Mitwirkender* und *Benutzerzugriffsadministrator* (oder *Besitzer*), wenn Sie eine Ressource zum ersten Mal hinzufügen. | Verwenden Sie ein Konto mit den Berechtigungen *Mitwirkenden* und *Benutzerzugriffsadministrator* (oder *Besitzer*) für das Abonnement.
 Die verwaltete Identität von Resource Mover verfügt nicht über die erforderliche Rolle. | Fügen Sie die Rollen „Mitwirkender“ und „Benutzerzugriffsadministrator“ hinzu.
-Die verwaltete Identität von Resource Mover wurde auf *Keine* zurückgesetzt. | Aktivieren Sie eine vom System zugewiesene Identität unter „Verschiebungssammlung > **Identität**“ erneut. Alternativ können Sie die Ressource unter **Ressourcen hinzufügen** erneut hinzufügen. Das Ergebnis ist identisch.  
+Die verwaltete Identität von Resource Mover wurde auf *Keine* zurückgesetzt. | Aktivieren Sie eine vom System zugewiesene Identität unter „Einstellungen der Verschiebungssammlung > **Identität**“ erneut. Alternativ können Sie die Ressource unter **Ressourcen hinzufügen** erneut hinzufügen. Das Ergebnis ist identisch.  
 Das Abonnement wurde in einen anderen Mandanten verschoben. | Deaktivieren und aktivieren Sie Verschiebungssammlung.
 
 ### <a name="how-can-i-do-multiple-moves-together"></a>Wie kann ich mehrere Verschiebungen gleichzeitig ausführen?
@@ -100,7 +110,7 @@ Das Abonnement wurde in einen anderen Mandanten verschoben. | Deaktivieren und a
 
 ### <a name="what-happens-when-i-remove-a-resource-from-a-list-of-move-resources"></a>Was geschieht, wenn ich eine Ressource aus einer Liste von Ressourcen für das Verschieben entferne?
 
-Sie können Ressourcen entfernen, die Sie der Liste für das Verschieben hinzugefügt haben. Das Verhalten beim Entfernen einer Ressource aus der Liste hängt vom Ressourcenstatus ab. [Weitere Informationen](remove-move-resources.md#vm-resource-state-after-removing)
+Sie können Ressourcen entfernen, die Sie der Liste für das Verschieben hinzugefügt haben. Das jeweilige Entfernungsverhalten hängt vom Ressourcenstatus ab. [Weitere Informationen](remove-move-resources.md#vm-resource-state-after-removing)
 
 
 

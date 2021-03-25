@@ -8,10 +8,10 @@ ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-csharp
 ms.openlocfilehash: afc0a5bf9b83363d1f4baab955b55148fe3a8498
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95818480"
 ---
 # <a name="tutorial-respond-to-azure-service-bus-events-received-via-azure-event-grid-by-using-azure-functions"></a>Tutorial: Reagieren auf über Azure Event Grid empfangene Azure Service Bus-Ereignisse mit Azure Functions
@@ -120,11 +120,11 @@ Die Nachrichten, die Sie zuvor an das Service Bus-Thema gesendet haben, werden a
 ## <a name="troubleshoot"></a>Problembehandlung
 Führen Sie die folgenden Schritte aus, falls keine Funktionsaufrufe angezeigt werden, nachdem Sie etwas abgewartet und eine Aktualisierung durchgeführt haben: 
 
-1. Vergewissern Sie sich, dass die Nachrichten das Service Bus-Thema erreicht haben. Weitere Informationen finden Sie auf der Seite **Service Bus-Thema** unter dem Zähler **Eingehende Nachrichten**. In diesem Fall habe ich die Anwendung **MessageSender** zwei Mal ausgeführt, sodass zehn Nachrichten angezeigt werden (fünf Nachrichten pro Ausführung).
+1. Vergewissern Sie sich, dass die Nachrichten das Service Bus-Thema erreicht haben. Weitere Informationen finden Sie auf der Seite **Service Bus-Thema** unter dem Zähler **Eingehende Nachrichten**. In diesem Fall habe ich die Anwendung **MessageSender** zweimal ausgeführt, sodass zehn Nachrichten angezeigt werden (fünf Nachrichten pro Ausführung).
 
     :::image type="content" source="./media/service-bus-to-event-grid-integration-example/topic-incoming-messages.png" alt-text="Seite „Service Bus-Thema“: Eingehende Nachrichten":::    
 1. Vergewissern Sie sich, dass für das Service Bus-Abonnement **keine aktiven Nachrichten** vorhanden sind. 
-    Falls auf dieser Seite keine Ereignisse angezeigt werden, sollten Sie sich vergewissern, dass auf der Seite **Service Bus-Abonnement** kein Wert für **Anzahl aktiver Nachrichten** angezeigt wird. Wenn die Anzahl für diesen Zähler größer als Null ist, werden die Nachrichten des Abonnements aus irgendeinem Grund nicht an die Handlerfunktion (Handler für Ereignisabonnement) weitergeleitet. Vergewissern Sie sich, dass Sie das Ereignisabonnement richtig eingerichtet haben. 
+    Falls auf dieser Seite keine Ereignisse angezeigt werden, sollten Sie sich vergewissern, dass auf der Seite **Service Bus-Abonnement** kein Wert für **Anzahl aktiver Nachrichten** angezeigt wird. Wenn die Anzahl für diesen Zähler größer als 0 ist, werden die Nachrichten des Abonnements aus irgendeinem Grund nicht an die Handlerfunktion (Handler für Ereignisabonnement) weitergeleitet. Vergewissern Sie sich, dass Sie das Ereignisabonnement richtig eingerichtet haben. 
 
     :::image type="content" source="./media/service-bus-to-event-grid-integration-example/subscription-active-message-count.png" alt-text="Anzahl aktiver Nachrichten für Service Bus-Abonnement":::    
 1. Darüber hinaus werden **übermittelte Ereignisse** auf der Seite **Ereignisse** des Service Bus-Namespace angezeigt. 

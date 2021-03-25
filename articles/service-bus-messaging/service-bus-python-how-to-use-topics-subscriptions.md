@@ -9,10 +9,10 @@ ms.date: 11/18/2020
 ms.author: spelluru
 ms.custom: devx-track-python
 ms.openlocfilehash: 4eba3ea055e78888d482927fa6eed5c7d41fa0ba
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98630046"
 ---
 # <a name="send-messages-to-an-azure-service-bus-topic-and-receive-messages-from-subscriptions-to-the-topic-python"></a>Senden von Nachrichten an ein Azure Service Bus-Thema und Empfangen von Nachrichten von Abonnements für das Thema (Python)
@@ -213,7 +213,7 @@ Wenn Sie den Code für den Empfang auskommentieren, wird „16“ als Anzahl akt
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen finden Sie in der folgenden Dokumentation bzw. unter den folgenden Beispielen: 
 
-- [Azure Service Bus-Clientbibliothek für Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/servicebus/azure-servicebus)
+- [Azure Service Bus-Clientbibliothek für Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/servicebus/azure-servicebus)
 - [Beispiele:](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/servicebus/azure-servicebus/samples) 
     - Der Ordner **sync_samples** enthält Beispiele zur synchronen Interaktion mit Service Bus. In dieser Schnellstartanleitung haben Sie diese Methode verwendet. 
     - Der Ordner **async_samples** enthält Beispiele zur asynchronen Interaktion mit Service Bus. 

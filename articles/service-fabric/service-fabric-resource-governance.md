@@ -3,12 +3,12 @@ title: Ressourcenkontrolle für Container und Dienste
 description: Azure Service Fabric ermöglicht Ihnen, Ressourcenanforderungen und -grenzwerte für Dienste festzulegen, die als Prozesse oder Container ausgeführt werden.
 ms.topic: conceptual
 ms.date: 8/9/2017
-ms.openlocfilehash: 889fce77c1a3a743e9805ec482a9c87b9bf8da65
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: d760766870c8c2be0a2d2384f6d012b75bc92fbd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92172864"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101735657"
 ---
 # <a name="resource-governance"></a>Ressourcengovernance
 
@@ -249,7 +249,7 @@ Während die Anwendung der Ressourcenkontrolle auf Ihre Service Fabric-Dienste s
 * Knoten, die in einem fehlerhaften Zustand enden
 * Nicht reagierende APIs für die Service Fabric-Clusterverwaltung
 
-Zur Vermeidung dieser Situationen können Sie mit Service Fabric die  *Ressourceneinschränkungen für alle Service Fabric-Benutzerdienste erzwingen, die auf dem Knoten ausgeführt werden* (sowohl verwaltet als auch nicht verwaltet), um sicherzustellen, dass die Benutzerdienste niemals mehr als die angegebene Menge an Ressourcen verwenden. Dies wird erreicht, indem der Wert für die Konfiguration „EnforceUserServiceMetricCapacities“ im Abschnitt „PlacementAndLoadBalancing“ des „ClusterManifest“ auf „true“ festgelegt wird. Diese Einstellung ist standardmäßig deaktiviert.
+Zur Vermeidung dieser Situationen können Sie mit Service Fabric die *Ressourceneinschränkungen für alle Service Fabric-Benutzerdienste erzwingen, die auf dem Knoten ausgeführt werden* (sowohl verwaltet als auch nicht verwaltet), um sicherzustellen, dass die Benutzerdienste niemals mehr als die angegebene Menge an Ressourcen verwenden. Dies wird erreicht, indem der Wert für die Konfiguration „EnforceUserServiceMetricCapacities“ im Abschnitt „PlacementAndLoadBalancing“ des „ClusterManifest“ auf „true“ festgelegt wird. Diese Einstellung ist standardmäßig deaktiviert.
 
 ```xml
 <SectionName="PlacementAndLoadBalancing">
@@ -260,7 +260,7 @@ Zur Vermeidung dieser Situationen können Sie mit Service Fabric die  *Ressourc
 Weitere Hinweise:
 
 * Die Erzwingung von Ressourceneinschränkungen gilt nur für die Ressourcenmetriken `servicefabric:/_CpuCores` und `servicefabric:/_MemoryInMB`.
-* Die Erzwingung der Ressourceneinschränkung funktioniert nur, wenn Knotenkapazitäten für die Ressourcenmetriken für Service Fabric verfügbar sind, entweder über einen automatischen Erkennungsmechanismus oder über Benutzer, die die Knotenkapazitäten manuell angeben (wie im Abschnitt [Clustereinrichtung zum Aktivieren der Ressourcenkontrolle](service-fabric-resource-governance.md#cluster-setup-for-enabling-resource-governance) erläutert).  Wenn Knotenkapazitäten nicht konfiguriert sind, kann die Erzwingungsfunktion für Ressourceneinschränkungen nicht verwendet werden, da Service Fabric nicht weiß, wie viele Ressourcen für Benutzerdienste reserviert werden müssen.  Service Fabric gibt eine Integritätswarnung aus, wenn „EnforceUserServiceMetricCapacities“ den Wert „true“ aufweist, aber die Knotenkapazitäten nicht konfiguriert sind.
+* Die Erzwingung der Ressourceneinschränkung funktioniert nur, wenn Knotenkapazitäten für die Ressourcenmetriken für Service Fabric verfügbar sind, entweder über einen automatischen Erkennungsmechanismus oder über Benutzer, die die Knotenkapazitäten manuell angeben (wie im Abschnitt [Clustereinrichtung zum Aktivieren der Ressourcenkontrolle](service-fabric-resource-governance.md#cluster-setup-for-enabling-resource-governance) erläutert). Wenn Knotenkapazitäten nicht konfiguriert sind, kann die Erzwingungsfunktion für Ressourceneinschränkungen nicht verwendet werden, da Service Fabric nicht weiß, wie viele Ressourcen für Benutzerdienste reserviert werden müssen. Service Fabric gibt eine Integritätswarnung aus, wenn „EnforceUserServiceMetricCapacities“ den Wert „true“ aufweist, aber die Knotenkapazitäten nicht konfiguriert sind.
 
 ## <a name="other-resources-for-containers"></a>Weitere Ressourcen für Container
 

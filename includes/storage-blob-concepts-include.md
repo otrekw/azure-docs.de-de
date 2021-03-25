@@ -9,10 +9,10 @@ ms.date: 01/19/2021
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: 0914cf9515930e23e4134181ffe8332e36eacffe
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98612904"
 ---
 Azure Blob Storage ist die Objektspeicherlösung von Microsoft für die Cloud. Blobspeicher ist für die Speicherung großer Mengen unstrukturierter Daten optimiert. Unstrukturierte Daten sind Daten, die keinem bestimmten Datenmodell und keiner bestimmten Definition entsprechen (also beispielsweise Text- oder Binärdaten).
@@ -44,7 +44,7 @@ Blobspeicher unterstützt Azure Data Lake Storage Gen2, die cloudbasierte Big Da
 
 * Kostengünstiger, mehrstufiger Speicher
 * Hochverfügbarkeit
-* Hohe Konsistenz
+* Starke Konsistenz
 * Funktionen für die Notfallwiederherstellung
 
 Weitere Informationen zu Data Lake Storage Gen2 finden Sie in der [Einführung in Azure Data Lake Storage Gen2](../articles/storage/blobs/data-lake-storage-introduction.md).

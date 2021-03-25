@@ -9,12 +9,12 @@ ms.date: 11/17/2020
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 2b0eaef7940b84dbd1e1325b5ae3bfb7b65dcef6
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 61a658cc9654a93b4c92fda6cc1f38cd2e77dafa
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 03/05/2021
-ms.locfileid: "102200562"
+ms.locfileid: "102216087"
 ---
 # <a name="programmatically-create-azure-subscriptions-for-a-microsoft-customer-agreement-with-the-latest-apis"></a>Programmgesteuertes Erstellen von Azure-Abonnements für eine Microsoft-Kundenvereinbarung mit den neuesten APIs
 
@@ -70,17 +70,54 @@ In der API-Antwort sind die Abrechnungskonten aufgeführt, auf die Sie Zugriff h
 
 Verwenden Sie die `displayName`-Eigenschaft, um das Abrechnungskonto zu identifizieren, für das Sie Abonnements erstellen möchten. Vergewissern Sie sich, dass als „agreementType“ des Kontos die Option *MicrosoftCustomerAgreement* festgelegt ist. Kopieren Sie den Namen (`name`) des Kontos.  Wenn Sie beispielsweise ein Abonnement für das Abrechnungskonto `Contoso` erstellen möchten, kopieren Sie `5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx`. Halten Sie den Wert für den nächsten Schritt bereit.
 
-<!--
-### [PowerShell](#tab/azure-powershell-getBillingAccounts)
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell-getBillingAccounts)
 
-we're still working on enabling PowerShell SDK for billing APIs. Check back soon.
--->
+```azurepowershell-interactive
+PS C:\WINDOWS\system32> Get-AzBillingAccount
+```
+Sie erhalten eine Liste aller Abrechnungskonten, auf die Sie Zugriff haben. 
 
-<!--
-### [Azure CLI](#tab/azure-cli-getBillingAccounts)
+```json
+Name          : 5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx
+DisplayName   : Contoso
+AccountStatus : Active
+AccountType   : Enterprise
+AgreementType : MicrosoftCustomerAgreement
+HasReadAccess : True
+```
+Verwenden Sie die `displayName`-Eigenschaft, um das Abrechnungskonto zu identifizieren, für das Sie Abonnements erstellen möchten. Vergewissern Sie sich, dass als „agreementType“ des Kontos die Option *MicrosoftCustomerAgreement* festgelegt ist. Kopieren Sie den Namen (`name`) des Kontos.  Wenn Sie beispielsweise ein Abonnement für das Abrechnungskonto `Contoso` erstellen möchten, kopieren Sie `5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx`. Halten Sie den Wert für den nächsten Schritt bereit.
 
-we're still working on enabling CLI SDK for billing APIs. Check back soon.
--->
+
+### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli-getBillingAccounts)
+```azurecli
+> az billing account list
+```
+Sie erhalten eine Liste aller Abrechnungskonten, auf die Sie Zugriff haben. 
+
+```json
+[
+  {
+    "accountStatus": "Active",
+    "accountType": "Enterprise",
+    "agreementType": "MicrosoftCustomerAgreement",
+    "billingProfiles": {
+      "hasMoreResults": false,
+      "value": null
+    },
+    "departments": null,
+    "displayName": "Contoso",
+    "enrollmentAccounts": null,
+    "enrollmentDetails": null,
+    "hasReadAccess": true,
+    "id": "/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx",
+    "name": "5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx",
+    "soldTo": null,
+    "type": "Microsoft.Billing/billingAccounts"
+  }
+]
+```
+
+Verwenden Sie die `displayName`-Eigenschaft, um das Abrechnungskonto zu identifizieren, für das Sie Abonnements erstellen möchten. Vergewissern Sie sich, dass als „agreementType“ des Kontos die Option *MicrosoftCustomerAgreement* festgelegt ist. Kopieren Sie den Namen (`name`) des Kontos.  Wenn Sie beispielsweise ein Abonnement für das Abrechnungskonto `Contoso` erstellen möchten, kopieren Sie `5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx`. Halten Sie den Wert für den nächsten Schritt bereit.
 
 ---
 
@@ -88,7 +125,7 @@ we're still working on enabling CLI SDK for billing APIs. Check back soon.
 
 Die Gebühren für Ihr Abonnement werden in einem Abschnitt der Rechnung eines Abrechnungsprofils angezeigt. Verwenden Sie die folgende API, um die Liste mit den Abrechnungsprofilen und Rechnungsabschnitten abzurufen, für die Sie über die Berechtigung zum Erstellen von Azure-Abonnements verfügen.
 
-Zuerst erhalten Sie die Liste der Abrechnungsprofile unter dem Abrechnungskonto, auf das Sie Zugriff haben.
+Zuerst wird die Liste der Abrechnungsprofile unter dem Abrechnungskonto abgerufen, auf das Sie Zugriff haben (verwenden Sie den `name`, den Sie im vorherigen Schritt erhalten haben).
 
 ### <a name="rest"></a>[REST](#tab/rest-getBillingProfiles)
 ```json
@@ -171,17 +208,119 @@ GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts/5e9
 
 Verwenden Sie die `id`-Eigenschaft, um den Rechnungsabschnitt zu identifizieren, für den Sie Abonnements erstellen möchten. Kopieren Sie die gesamte Zeichenfolge. Beispiel: `/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx`. 
 
-<!--
-### [PowerShell](#tab/azure-powershell-getBillingProfiles)
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell-getBillingProfiles)
 
-we're still working on enabling PowerShell SDK for billing APIs. Check back soon.
--->
+```powershell-interactive
+PS C:\WINDOWS\system32> Get-AzBillingProfile -BillingAccountName 5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx
+```
 
-<!--
-### [Azure CLI](#tab/azure-cli-getBillingProfiles)
+Sie erhalten als Teil der Antwort die Liste der Abrechnungsprofile unter diesem Konto.
 
-we're still working on enabling CLI SDK for billing APIs. Check back soon.
--->
+```json
+Name              : AW4F-xxxx-xxx-xxx
+DisplayName       : Contoso Billing Profile
+Currency          : USD
+InvoiceDay        : 5
+InvoiceEmailOptIn : True
+SpendingLimit     : Off
+Status            : Active
+EnabledAzurePlans : {0002, 0001}
+HasReadAccess     : True
+BillTo            :
+CompanyName       : Contoso
+AddressLine1      : One Microsoft Way
+AddressLine2      : 
+City              : Redmond
+Region            : WA
+Country           : US
+PostalCode        : 98052
+```
+
+Notieren Sie sich den `name` des Abrechnungsprofils aus der obigen Antwort. In den nächsten Schritten wird der Rechnungsabschnitt abgerufen, auf den Sie unterhalb dieses Abrechnungsprofils zugreifen können. Sie benötigen den `name` des Abrechnungskontos und des Abrechnungsprofils.
+
+```powershell-interactive
+PS C:\WINDOWS\system32> Get-AzInvoiceSection -BillingAccountName 5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx -BillingProfileName AW4F-xxxx-xxx-xxx
+```
+
+Der Rechnungsabschnitt wird zurückgegeben.
+
+```json
+Name        : SH3V-xxxx-xxx-xxx
+DisplayName : Development
+```
+
+Der obige `name` ist der Name des Rechnungsabschnitts, unter dem Sie ein Abonnement erstellen müssen. Erstellen Sie den Abrechnungsbereich mit dem Format „/providers/Microsoft.Billing/billingAccounts/<BillingAccountName>/billingProfiles/<BillingProfileName>/invoiceSections/<InvoiceSectionName>“. In diesem Beispiel entspricht dies `"/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx"`.
+
+### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli-getBillingProfiles)
+
+```azurecli-interactive
+> az billing profile list --account-name "5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx" --expand "InvoiceSections"
+```
+Diese API gibt die Liste der Abrechnungsprofile und Rechnungsabschnitte unter dem angegebenen Abrechnungskonto zurück.
+
+```json
+[
+  {
+    "billTo": {
+      "addressLine1": "One Microsoft Way",
+      "addressLine2": "",
+      "addressLine3": null,
+      "city": "Redmond",
+      "companyName": "Contoso",
+      "country": "US",
+      "district": null,
+      "email": null,
+      "firstName": null,
+      "lastName": null,
+      "phoneNumber": null,
+      "postalCode": "98052",
+      "region": "WA"
+    },
+    "billingRelationshipType": "Direct",
+    "currency": "USD",
+    "displayName": "Contoso Billing Profile",
+    "enabledAzurePlans": [
+      {
+        "skuDescription": "Microsoft Azure Plan for DevTest",
+        "skuId": "0002"
+      },
+      {
+        "skuDescription": "Microsoft Azure Plan",
+        "skuId": "0001"
+      }
+    ],
+    "hasReadAccess": true,
+    "id": "/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx",
+    "indirectRelationshipInfo": null,
+    "invoiceDay": 5,
+    "invoiceEmailOptIn": true,
+    "invoiceSections": {
+      "hasMoreResults": false,
+      "value": [
+        {
+          "displayName": "Field_Led_Test_Ace",
+          "id": "/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx",
+          "labels": null,
+          "name": "SH3V-xxxx-xxx-xxx",
+          "state": "Active",
+          "systemId": "SH3V-xxxx-xxx-xxx",
+          "targetCloud": null,
+          "type": "Microsoft.Billing/billingAccounts/billingProfiles/invoiceSections"
+        }
+      ]
+    },
+    "name": "AW4F-xxxx-xxx-xxx",
+    "poNumber": null,
+    "spendingLimit": "Off",
+    "status": "Warned",
+    "statusReasonCode": "PastDue",
+    "systemId": "AW4F-xxxx-xxx-xxx",
+    "targetClouds": [],
+    "type": "Microsoft.Billing/billingAccounts/billingProfiles"
+  }
+]
+```
+Verwenden Sie die id-Eigenschaft unter dem Rechnungsabschnittsobjekt, um den Rechnungsabschnitt zu identifizieren, für den Sie Abonnements erstellen möchten. Kopieren Sie die gesamte Zeichenfolge. Beispiel: /providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx.
 
 ---
 

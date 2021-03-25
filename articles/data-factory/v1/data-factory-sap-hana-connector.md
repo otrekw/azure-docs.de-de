@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 robots: noindex
 ms.openlocfilehash: 9c192a5f84f36fbdea0dd1d280928aa40186d4ee
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100386984"
 ---
 # <a name="move-data-from-sap-hana-using-azure-data-factory"></a>Verschieben von Daten aus SAP HANA mithilfe von Azure Data Factory
@@ -30,7 +30,7 @@ Sie können Daten aus einem lokalen SAP HANA-Datenspeicher in beliebige unterst�
 Dieser Connector unterstützt jede Version der SAP HANA-Datenbank. Er unterstützt das Kopieren von Daten aus HANA-Informationsmodellen (z. B. Analyse- und Berechnungssichten) und aus Zeile/Spalte-Tabellen mit SQL-Abfragen.
 
 Um Konnektivität zur SAP HANA-Instanz zu aktivieren, installieren Sie die folgenden Komponenten:
-- **Datenverwaltungsgateway:** Der Data Factory-Dienst unterstützt das Herstellen einer Verbindung mit lokalen Datenspeichern (einschließlich SAP HANA) über eine Komponente, die als Datenverwaltungsgateway bezeichnet wird. Wenn Sie mehr zum Datenverwaltungsgateway erfahren möchten und eine schrittweise Anleitung zum Einrichten des Gateways wünschen, lesen Sie den Artikel [Verschieben von Daten zwischen lokalen Quellen und der Cloud mit dem Datenverwaltungsgateway](data-factory-move-data-between-onprem-and-cloud.md). Das Gateway ist selbst dann erforderlich, wenn SAP HANA auf einem virtuellen Azure IaaS-Computer gehostet wird. Das Gateway kann auf dem gleichen virtuellen Computer wie der Datenspeicher oder auf einem anderen virtuellen Computer installiert werden, solange das Gateway eine Verbindung mit der Datenbank herstellen kann.
+- **Datenverwaltungsgateway**: Der Data Factory-Dienst unterstützt das Herstellen einer Verbindung mit lokalen Datenspeichern (einschließlich SAP HANA) über eine Komponente, die als Datenverwaltungsgateway bezeichnet wird. Wenn Sie mehr zum Datenverwaltungsgateway erfahren möchten und eine schrittweise Anleitung zum Einrichten des Gateways wünschen, lesen Sie den Artikel [Verschieben von Daten zwischen lokalen Quellen und der Cloud mit dem Datenverwaltungsgateway](data-factory-move-data-between-onprem-and-cloud.md). Das Gateway ist selbst dann erforderlich, wenn SAP HANA auf einem virtuellen Azure IaaS-Computer gehostet wird. Das Gateway kann auf dem gleichen virtuellen Computer wie der Datenspeicher oder auf einem anderen virtuellen Computer installiert werden, solange das Gateway eine Verbindung mit der Datenbank herstellen kann.
 - **SAP HANA-ODBC-Treiber** auf dem Gatewaycomputer. Sie können den SAP HANA-ODBC-Treiber aus dem [SAP Software Download Center](https://support.sap.com/swdc) herunterladen. Suche Sie mit dem Schlüsselwort **SAP HANA CLIENT for Windows**. 
 
 ## <a name="getting-started"></a>Erste Schritte
@@ -45,7 +45,7 @@ Unabhängig davon, ob Sie Tools oder APIs verwenden, führen Sie die folgenden S
 2. Erstellen von **Datasets** zur Darstellung von Eingabe- und Ausgabedaten für den Kopiervorgang. 
 3. Erstellen einer **Pipeline** mit einer Kopieraktivität, die ein Dataset als Eingabe und ein Dataset als Ausgabe akzeptiert. 
 
-Wenn Sie den Assistenten verwenden, werden automatisch JSON-Definitionen für diese Data Factory-Entitäten (verknüpfte Diensten, Datasets und die Pipeline) erstellt. Bei Verwendung von Tools und APIs (mit Ausnahme der .NET-API) definieren Sie diese Data Factory-Entitäten im JSON-Format.  Ein Beispiel mit JSON-Definitionen für Data Factory-Entitäten, die zum Kopieren von Daten aus einer lokalen SAP HANA-Instanz verwendet werden, finden Sie im Abschnitt [JSON-Beispiel: Kopieren von Daten aus SAP HANA in ein Azure-Blob](#json-example-copy-data-from-sap-hana-to-azure-blob) in diesem Artikel. 
+Wenn Sie den Assistenten verwenden, werden automatisch JSON-Definitionen für diese Data Factory-Entitäten (verknüpfte Diensten, Datasets und die Pipeline) erstellt. Bei Verwendung von Tools und APIs (mit Ausnahme der .NET-API) definieren Sie diese Data Factory-Entitäten im JSON-Format.  Ein Beispiel mit JSON-Definitionen für Data Factory-Entitäten, die zum Kopieren von Daten aus einer lokalen SAP HANA-Instanz verwendet werden, finden Sie in diesem Artikel im Abschnitt [JSON-Beispiel: Kopieren von Daten aus SAP HANA in ein Azure-Blob](#json-example-copy-data-from-sap-hana-to-azure-blob). 
 
 Die folgenden Abschnitte enthalten Details zu JSON-Eigenschaften, die zum Definieren von Data Factory-Entitäten speziell für SAP HANA-Datenspeicher verwendet werden:
 
@@ -158,7 +158,7 @@ Die Eigenschaften „frequency“ und „interval“ definieren den Zeitplan. In
 ```
 
 ### <a name="azure-blob-output-dataset"></a>Azure-Blob-Ausgabedataset
-Dieses Dataset definiert das Azure-Blob-Ausgabedatase. Die „type“-Eigenschaft wird auf „AzureBlob“ festgelegt. Im Abschnitt „typeProperties“ ist angegeben, wo die Daten, die aus der SAP HANA-Instanz kopiert werden, gespeichert werden. Die Daten werden stündlich in ein neues Blob geschrieben (frequency: hour, interval: 1). Der Ordnerpfad des Blobs wird basierend auf der Startzeit des Slices, der verarbeitet wird, dynamisch ausgewertet. Im Ordnerpfad werden Jahr, Monat, Tag und die Stundenteile der Startzeit verwendet.
+Dieses Dataset definiert das Azure-Blob-Ausgabedatase. Die „type“-Eigenschaft wird auf „AzureBlob“ festgelegt. Im Abschnitt „typeProperties“ ist angegeben, wo die Daten, die aus der SAP HANA-Instanz kopiert werden, gespeichert werden. Die Daten werden stündlich in ein neues Blob geschrieben (frequency: Hour, interval: 1). Der Ordnerpfad des Blobs wird basierend auf der Startzeit des Slices, der verarbeitet wird, dynamisch ausgewertet. Im Ordnerpfad werden Jahr, Monat, Tag und die Stundenteile der Startzeit verwendet.
 
 ```json
 {

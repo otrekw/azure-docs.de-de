@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: bf0570cd62a2c329407cfb6dd087020f53cdc991
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94954068"
 ---
 # <a name="use-the-storsimple-diagnostics-tool-to-troubleshoot-8000-series-device-issues"></a>Verwenden des StorSimple-Diagnosetools für die Behandlung von Problemen mit Geräten der 8000-Serie
@@ -416,9 +416,9 @@ In der Tabelle unten wird beschrieben, wie die verschiedenen Windows PowerShell-
 
 | PowerShell-Parameter    | BESCHREIBUNG  |
 |-------------------------|------------------|
-| Instance ID             | Jedem Controller ist ein eindeutiger Bezeichner oder eine GUID zugeordnet.|
+| Instanzen-ID             | Jedem Controller ist ein eindeutiger Bezeichner oder eine GUID zugeordnet.|
 | Name                    | Dies ist der Anzeigename des Geräts gemäß Konfiguration über das Azure-Portal während der Gerätebereitstellung. Der Standardanzeigename ist die Seriennummer des Geräts. |
-| Modell                   | Das Modell Ihres Geräts der StorSimple 8000-Serie. Die Modellnummer kann 8100 oder 8600 lauten.|
+| Modellieren                   | Das Modell Ihres Geräts der StorSimple 8000-Serie. Die Modellnummer kann 8100 oder 8600 lauten.|
 | SerialNumber            | Die Seriennummer des Geräts wird im Werk zugewiesen und ist 15 Zeichen lang. 8600-SHX0991003G44HT bedeutet beispielsweise Folgendes:<br> 8600 – Gerätemodell<br>SHX – Fertigungsstandort<br> 0991003 – Bestimmtes Produkt <br> G44HT– Die letzten 5 Stellen werden inkrementiert, um eindeutige Seriennummern zu erstellen. Unter Umständen ist dies keine sequenzielle Reihe.|
 | TimeZone                | Die Zeitzone des Geräts gemäß Konfiguration im Azure-Portal während der Gerätebereitstellung.|
 | CurrentController       | Der Controller, mit dem Sie über die Windows PowerShell-Schnittstelle Ihres StorSimple-Geräts verbunden sind.|
