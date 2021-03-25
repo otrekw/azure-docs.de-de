@@ -10,10 +10,10 @@ ms.date: 05/28/2020
 ms.author: sngun
 ms.custom: devx-track-js
 ms.openlocfilehash: a9f5a307bfefedf74f884e39b482bd90454fc5c8
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93096868"
 ---
 # <a name="quickstart-build-a-table-api-app-with-nodejs-and-azure-cosmos-db"></a>Schnellstart: Erstellen einer Tabellen-API-App mit Node.js und Azure Cosmos DB
@@ -144,7 +144,7 @@ Wechseln Sie nun zurück zum Azure-Portal, um die Informationen der Verbindungsz
 
 2. Kopieren Sie den Wert für „PRIMÄRE VERBINDUNGSZEICHENFOLGE“ mithilfe der Kopierschaltfläche auf der rechten Seite.
 
-3. Öffnen Sie die Datei *app.config* , und fügen Sie den Wert in „connectionString“ in Zeile 3 ein. 
+3. Öffnen Sie die Datei *app.config*, und fügen Sie den Wert in „connectionString“ in Zeile 3 ein. 
 
     > [!IMPORTANT]
     > Wenn Ihr Endpunkt „documents.azure.com“ verwendet, bedeutet dies, dass Sie über ein Vorschaukonto verfügen und ein [neues Tabellen-API-Konto](#create-a-database-account) erstellen müssen, um mit dem allgemein verfügbaren Tabellen-API-SDK zu arbeiten.

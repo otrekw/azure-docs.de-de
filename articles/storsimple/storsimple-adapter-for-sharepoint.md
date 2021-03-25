@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/06/2017
 ms.author: alkohli
 ms.openlocfilehash: 639efab3a9eaef400b3fbe3d0b134d02f458b865
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94966291"
 ---
 # <a name="install-and-configure-the-storsimple-adapter-for-sharepoint"></a>Installieren und Konfigurieren des StorSimple-Adapters für SharePoint
@@ -59,7 +59,7 @@ Bevor Sie die Verwendung von RBS in Ihrer SharePoint-Lösung erwägen, sollten S
 
 * Stellen Sie sicher, dass die Gesamtgröße des Inhalts (die Größe einer Inhaltsdatenbank zzgl. der Größe aller zugeordneten externen BLOBs) nicht die RBS-Größenbeschränkung überschreitet, die von SharePoint unterstützt wird. Dieser Grenzwert beträgt 200 GB. 
   
-    **So messen Sie die Größe der Inhaltsdatenbank und BLOBs**
+    **So messen Sie die Größe der Inhaltsdatenbank und von BLOBs**
   
   1. Führen Sie die Abfrage im Zentraladministration-WFE aus. Starten Sie die SharePoint-Verwaltungsshell, und geben Sie dann den folgenden Windows PowerShell-Befehl ein, um die Größe der Inhaltsdatenbanken abzurufen:
      
@@ -221,9 +221,9 @@ Vor dem Deinstallieren der Software „StorSimple-Adapter für SharePoint“ mü
 
 #### <a name="to-move-the-blobs-back-to-the-content-databases"></a>So verschieben Sie die BLOBs zurück in die Inhaltsdatenbanken
 1. Laden Sie alle externalisierten Objekte herunter.
-2. Öffnen Sie die SharePoint-Seite **Zentraladministration**, und navigieren Sie zu **Systemeinstellungen**.
+2. Öffnen Sie die Seite **SharePoint-Zentraladministration**, und navigieren Sie zu **Systemeinstellungen**.
 3. Klicken Sie unter **Azure StorSimple** auf **StorSimple-Adapter konfigurieren**.
-4. Klicken Sie auf der Seite **StorSimple-Adapter konfigurieren** jeweils unterhalb der Inhaltsdatenbanken, die aus dem externen Blobspeicher entfernt werden sollen, auf die Schaltfläche **Deaktivieren**. 
+4. Klicken Sie auf der Seite **StorSimple-Adapter konfigurieren** unter jeder der Inhaltsdatenbanken, die Sie aus dem externen BLOB-Speicher entfernen möchten, auf die Schaltfläche **Deaktivieren**. 
 5. Löschen Sie die Objekte aus SharePoint, und laden Sie sie dann wieder hoch.
 
 Alternativ dazu können Sie das Microsoft PowerShell-Cmdlet `RBS Migrate()` aus SharePoint verwenden. Weitere Informationen finden Sie unter [Migrieren von Inhalten in den und aus dem Remote-BLOB-Speicher (Remote BLOB Storage, RBS) (SharePoint Foundation 2010)](/previous-versions/office/sharepoint-foundation-2010/ff628255(v=office.14)).
@@ -241,17 +241,17 @@ Nachdem Sie die BLOBs zurück in die SQL Server-Inhaltsdatenbanken verschoben ha
 3. Klicken Sie auf **Weiter**. Die folgende Seite wird angezeigt.
    
     ![Seite „Entfernen“ im Setup-Assistenten](./media/storsimple-adapter-for-sharepoint/sasp3.png)
-4. Klicken Sie auf **Entfernen** , um den Entfernungsvorgang auszuwählen. Die folgende Seite wird angezeigt.
+4. Klicken Sie auf **Entfernen**, um den Entfernungsvorgang auszuwählen. Die folgende Seite wird angezeigt.
    
     ![Seite „Bestätigung“ im Setup-Assistenten](./media/storsimple-adapter-for-sharepoint/sasp4.png)
-5. Klicken Sie auf **Entfernen** , um den Entfernungsvorgang zu bestätigen. Die folgende Statusseite wird angezeigt.
+5. Klicken Sie auf **Entfernen**, um das Entfernen zu bestätigen. Die folgende Statusseite wird angezeigt.
    
     ![Statusseite im Setup-Assistenten](./media/storsimple-adapter-for-sharepoint/sasp5.png)
-6. Wenn die Installation abgeschlossen ist, wird die Seite „Fertig stellen“ angezeigt. Klicken Sie auf **Fertig stellen** , um den Setup-Assistenten zu schließen.
+6. Wenn die Installation abgeschlossen ist, wird die Seite „Fertig stellen“ angezeigt. Klicken Sie auf **Fertig stellen**, um den Setup-Assistenten zu schließen.
 
 #### <a name="to-use-the-control-panel-to-uninstall-the-adapter"></a>So verwenden Sie die Systemsteuerung zum Deinstallieren des Adapters
-1. Öffnen Sie die Systemsteuerung, und klicken Sie auf **Programme und Funktionen**.
-2. Wählen Sie **StorSimple-Adapter für SharePoint**, und klicken Sie dann auf **Deinstallieren**.
+1. Öffnen Sie die Systemsteuerung, und klicken Sie dann auf **Programme und Funktionen**.
+2. Wählen Sie **StorSimple-Adapter für SharePoint** aus, und klicken Sie dann auf **Deinstallieren**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Weitere Informationen zu StorSimple](storsimple-overview.md).

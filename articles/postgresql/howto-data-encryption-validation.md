@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 04/28/2020
 ms.openlocfilehash: 7ec27cc4f28151214ca97ffb5113607d6b60ee36
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93240578"
 ---
 # <a name="validating-data-encryption-for-azure-database-for-postgresql"></a>Überprüfen der Datenverschlüsselung für Azure Database for PostgreSQL
@@ -27,7 +27,7 @@ Dieser Artikel unterstützt Sie bei der Überprüfung, ob die Datenverschlüssel
     * Wählen Sie den für Serververschlüsselung verwendeten Schlüssel aus.
     * Legen Sie den Status des Schlüssels **Aktiviert** auf **Nein** fest.
   
-       Nach einiger Zeit ( **ungefähr 15 Minuten** ) sollte der **Status** des Azure Database for PostgreSQL-Servers **Zugriff nicht möglich** lauten. Bei allen E/A-Vorgängen, die auf dem Server ausgeführt werden, tritt ein Fehler auf, der bestätigt, dass der Server tatsächlich mit dem Kundenschlüssel verschlüsselt wurde und der Schlüssel aktuell ungültig ist.
+       Nach einiger Zeit (**ungefähr 15 Minuten**) sollte der **Status** des Azure Database for PostgreSQL-Servers **Zugriff nicht möglich** lauten. Bei allen E/A-Vorgängen, die auf dem Server ausgeführt werden, tritt ein Fehler auf, der bestätigt, dass der Server tatsächlich mit dem Kundenschlüssel verschlüsselt und der Schlüssel aktuell ungültig ist.
     
         Um den Server erneut **Verfügbar** zu machen, können Sie den Schlüssel erneut überprüfen. 
     
@@ -35,7 +35,7 @@ Dieser Artikel unterstützt Sie bei der Überprüfung, ob die Datenverschlüssel
     * Wählen Sie auf dem Server **Datenverschlüsselung** die Option **Schlüssel erneut überprüfen** aus.
     * Wenn die erneute Überprüfung des Schlüssels erfolgreich war, ändert sich der **Status** des Servers in **Verfügbar**.
 
-2. Wenn Sie im Azure-Portal sicherstellen können, dass der Verschlüsselungsschlüssel festgelegt wurde, werden die Daten mit dem im Portal verwendeten Kundenschlüssel verschlüsselt.
+2. Wenn Sie im Azure-Portal sicherstellen können, dass der Verschlüsselungsschlüssel festgelegt wurde, werden die Daten mit dem Kundenschlüssel verschlüsselt, der im Azure-Portal verwendet wird.
 
   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/byok-validate.png" alt-text="Zugriffsrichtlinienübersicht":::
 

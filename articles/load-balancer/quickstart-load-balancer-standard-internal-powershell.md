@@ -17,10 +17,10 @@ ms.date: 08/27/2020
 ms.author: allensu
 ms:custom: seodec18
 ms.openlocfilehash: 5844b321fd3050bab9288657189ddcd87bba14db
-ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98562334"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-azure-powershell"></a>Schnellstart: Erstellen eines internen Lastenausgleichs für den Lastenausgleich virtueller Computer mithilfe von Azure PowerShell

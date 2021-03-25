@@ -16,10 +16,10 @@ ms.topic: how-to
 ms.date: 02/15/2018
 ms.author: allensu
 ms.openlocfilehash: d8eb450d2010bf2a525a26f1c5ff48f59732ce43
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93240969"
 ---
 # <a name="manage-expiration-of-web-content-in-azure-cdn"></a>Verwalten des Ablaufs von Webinhalten in Azure CDN
@@ -88,12 +88,12 @@ Die bevorzugte Methode zum Einrichten des `Cache-Control`-Headers für einen Web
 Bei statischen Inhalten wie Bildern und Stylesheets können Sie die Aktualisierungshäufigkeit durch Ändern der Konfigurationsdateien **ApplicationHost.config** oder **Web.config** für Ihre Webanwendung steuern. Um den `Cache-Control`-Header für Ihren Inhalt festzulegen, verwenden Sie das `<system.webServer>/<staticContent>/<clientCache>`-Element in einer der beiden Dateien.
 
 ### <a name="using-applicationhostconfig-files"></a>Verwenden der „ApplicationHost.config“-Datei
-Die Datei **ApplicationHost.config** ist die Stammdatei des Konfigurationssystems für die Internetinformationsdienste. Die Konfigurationseinstellungen in einer **ApplicationHost.config** -Datei wirken sich auf alle Anwendungen in der Website aus, werden aber durch die Einstellungen aller für eine Webanwendung vorhandenen **Web.config** -Dateien außer Kraft gesetzt.
+Die Datei **ApplicationHost.config** ist die Stammdatei des Konfigurationssystems für die Internetinformationsdienste. Die Konfigurationseinstellungen in einer **ApplicationHost.config**-Datei wirken sich auf alle Anwendungen in der Website aus, werden aber durch die Einstellungen aller für eine Webanwendung vorhandenen **Web.config**-Dateien außer Kraft gesetzt.
 
 ### <a name="using-webconfig-files"></a>Verwenden von Web.config-Dateien
-Mit einer **Web.config** -Datei können Sie das Verhalten Ihrer gesamten Webanwendung oder eines bestimmten Verzeichnisses in Ihrer Webanwendung anpassen. In der Regel befindet sich im Stammordner Ihrer Webanwendung mindestens eine **Web.config** -Datei. Für jede **Web.config** -Datei in einem bestimmten Ordner gilt: Die Konfigurationseinstellungen wirken sich auf alle Inhalte dieses Ordners sowie aller Unterordner aus, solange diese nicht auf Unterordnerebene von einer anderen **Web.config** -Datei außer Kraft gesetzt werden. 
+Mit einer **Web.config**-Datei können Sie das Verhalten Ihrer gesamten Webanwendung oder eines bestimmten Verzeichnisses in Ihrer Webanwendung anpassen. In der Regel befindet sich im Stammordner Ihrer Webanwendung mindestens eine **Web.config**-Datei. Für jede **Web.config**-Datei in einem bestimmten Ordner gilt: Die Konfigurationseinstellungen wirken sich auf alle Inhalte dieses Ordners sowie aller Unterordner aus, solange diese nicht auf Unterordnerebene von einer anderen **Web.config**-Datei außer Kraft gesetzt werden. 
 
-Sie können z.B. ein `<clientCache>`-Element in einer **Web.config** -Datei im Stammordner Ihrer Webanwendung festlegen, um alle statischen Inhalte Ihrer Webanwendung drei Tage lang zwischenzuspeichern. Sie können auch eine **Web.config** -Datei in einem Unterordner mit variableren Inhalten hinzufügen (z.B. `\frequent`) und das `<clientCache>`-Element dieser Datei so festlegen, dass der Inhalt des Unterordners sechs Stunden lang zwischengespeichert wird. Dies führt zu folgendem Ergebnis: Der Inhalt der gesamten Website wird drei Tage lang zwischengespeichert, mit Ausnahme aller Inhalte im Verzeichnis `\frequent`, die nur sechs Stunden lang zwischengespeichert werden.  
+Sie können z.B. ein `<clientCache>`-Element in einer **Web.config**-Datei im Stammordner Ihrer Webanwendung festlegen, um alle statischen Inhalte Ihrer Webanwendung drei Tage lang zwischenzuspeichern. Sie können auch eine **Web.config**-Datei in einem Unterordner mit variableren Inhalten hinzufügen (z.B. `\frequent`) und das `<clientCache>`-Element dieser Datei so festlegen, dass der Inhalt des Unterordners sechs Stunden lang zwischengespeichert wird. Dies führt zu folgendem Ergebnis: Der Inhalt der gesamten Website wird drei Tage lang zwischengespeichert, mit Ausnahme aller Inhalte im Verzeichnis `\frequent`, die nur sechs Stunden lang zwischengespeichert werden.  
 
 Das folgende Beispiel einer XML-Konfigurationsdatei veranschaulicht, wie Sie das `<clientCache>`-Element festlegen, um ein maximales Alter von drei Tagen anzugeben:  
 
@@ -107,10 +107,10 @@ Das folgende Beispiel einer XML-Konfigurationsdatei veranschaulicht, wie Sie das
 </configuration>
 ```
 
-Um das **cacheControlMaxAge** -Attribut zu verwenden, müssen Sie den Wert für das **cacheControlMode** -Attribut auf `UseMaxAge` festlegen. Diese Einstellung führt dazu, dass der HTTP-Header und die HTTP-Anweisung `Cache-Control: max-age=<nnn>` zur Antwort hinzugefügt werden. Das Format des timespan-Werts für das **cacheControlMaxAge** -Attribut ist `<days>.<hours>:<min>:<sec>`. Der Wert wird in Sekunden konvertiert und als Wert der `Cache-Control` `max-age`-Anweisung verwendet. Weitere Informationen zum `<clientCache>`-Element finden Sie unter [Clientcache\<clientCache>](https://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache).  
+Um das **cacheControlMaxAge**-Attribut zu verwenden, müssen Sie den Wert für das **cacheControlMode**-Attribut auf `UseMaxAge` festlegen. Diese Einstellung führt dazu, dass der HTTP-Header und die HTTP-Anweisung `Cache-Control: max-age=<nnn>` zur Antwort hinzugefügt werden. Das Format des timespan-Werts für das **cacheControlMaxAge**-Attribut ist `<days>.<hours>:<min>:<sec>`. Der Wert wird in Sekunden konvertiert und als Wert der `Cache-Control` `max-age`-Anweisung verwendet. Weitere Informationen zum `<clientCache>`-Element finden Sie unter [Clientcache\<clientCache>](https://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache).  
 
 ## <a name="setting-cache-control-headers-programmatically"></a>Programmgesteuertes Festlegen von Cache-Control-Headern
-Bei ASP.NET-Anwendungen steuern Sie das Verhalten von CDN beim Zwischenspeichern mithilfe der **HttpResponse.Cache** -Eigenschaft der .NET-API programmgesteuert. Informationen zur **HttpResponse.Cache** -Eigenschaft finden Sie unter [HttpResponse.Cache-Eigenschaft](/dotnet/api/system.web.httpresponse.cache#System_Web_HttpResponse_Cache) und [HttpCachePolicy-Klasse](/dotnet/api/system.web.httpcachepolicy).  
+Bei ASP.NET-Anwendungen steuern Sie das Verhalten von CDN beim Zwischenspeichern mithilfe der **HttpResponse.Cache**-Eigenschaft der .NET-API programmgesteuert. Informationen zur **HttpResponse.Cache**-Eigenschaft finden Sie unter [HttpResponse.Cache-Eigenschaft](/dotnet/api/system.web.httpresponse.cache#System_Web_HttpResponse_Cache) und [HttpCachePolicy-Klasse](/dotnet/api/system.web.httpcachepolicy).  
 
 Führen Sie diese Schritte aus, um Anwendungsinhalt in ASP.NET programmgesteuert zwischenzuspeichern:
    1. Stellen Sie sicher, dass der Inhalt als für die Zwischenspeicherung geeignet gekennzeichnet ist, indem Sie `HttpCacheability` auf `Public` festlegen. 
@@ -129,10 +129,10 @@ Response.Cache.SetLastModified(DateTime.Now);
 ```
 
 ## <a name="testing-the-cache-control-header"></a>Testen des Cache-Control-Headers
-Sie können die Einstellungen für die Gültigkeitsdauer Ihres Webinhalts ganz einfach überprüfen. Testen Sie mithilfe der [Entwicklertools](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/) Ihres Browsers, ob Ihr Webinhalt den `Cache-Control`-Antwortheader enthält. Sie können auch ein Tool wie **wget** , [Postman](https://www.getpostman.com/) oder [Fiddler](https://www.telerik.com/fiddler) verwenden, um die Antwortheader zu untersuchen.
+Sie können die Einstellungen für die Gültigkeitsdauer Ihres Webinhalts ganz einfach überprüfen. Testen Sie mithilfe der [Entwicklertools](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/) Ihres Browsers, ob Ihr Webinhalt den `Cache-Control`-Antwortheader enthält. Sie können auch ein Tool wie **wget**, [Postman](https://www.getpostman.com/) oder [Fiddler](https://www.telerik.com/fiddler) verwenden, um die Antwortheader zu untersuchen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Lesen Sie ausführliche Informationen zum **clientCache** -Element.](https://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache)
-* [Lesen Sie die Dokumentation für die **HttpResponse.Cache** -Eigenschaft.](/dotnet/api/system.web.httpresponse.cache#System_Web_HttpResponse_Cache) 
+* [Lesen Sie ausführliche Informationen zum **clientCache**-Element.](https://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache)
+* [Lesen Sie die Dokumentation für die **HttpResponse.Cache**-Eigenschaft.](/dotnet/api/system.web.httpresponse.cache#System_Web_HttpResponse_Cache) 
 * [Lesen Sie die Dokumentation für die **HttpCachePolicy-Klasse**](/dotnet/api/system.web.httpcachepolicy).  
 * [Informationen zu Cachekonzepten](cdn-how-caching-works.md)

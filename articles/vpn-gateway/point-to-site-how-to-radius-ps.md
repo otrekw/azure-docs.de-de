@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/18/2020
 ms.author: cherylmc
 ms.openlocfilehash: 9d962d3a4757b4c7b2d217f91aaf73d6ad4164d3
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94964846"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-radius-authentication-powershell"></a>Konfigurieren einer Point-to-Site-Verbindung mit einem VNET unter Verwendung der RADIUS-Authentifizierung: PowerShell
@@ -80,7 +80,7 @@ Sie können die Beispielwerte zum Erstellen einer Testumgebung oder zum besseren
 * **Subnetzname: GatewaySubnet**<br>Der Subnetzname *GatewaySubnet* ist erforderlich, damit das VPN-Gateway funktioniert.
   * **Adressbereich des Gatewaysubnetzes: 192.168.200.0/24** 
 * **VPN-Clientadresspool: 172.16.201.0/24**<br>VPN-Clients, die sich über diese Punkt-zu-Standort-Verbindung mit dem VNet verbinden, erhalten eine IP-Adresse aus dem VPN-Clientadresspool.
-* **Abonnement:** Falls Sie über mehrere Abonnements verfügen, sollten Sie sich vergewissern, dass Sie das richtige Abonnement verwenden.
+* **Abonnement:** Falls Sie über mehrere Abonnements verfügen, vergewissern Sie sich, dass Sie das richtige Abonnement verwenden.
 * **Ressourcengruppe: TestRG**
 * **Standort: USA, Osten**
 * **DNS-Server:** IP-Adresse des DNS-Servers, der für die Namensauflösung des VNET verwendet werden soll. (Optional)

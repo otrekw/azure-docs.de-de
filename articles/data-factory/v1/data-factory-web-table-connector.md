@@ -8,10 +8,10 @@ ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 7663848bd06244de7efb169a576e11a5c78204c1
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100392900"
 ---
 # <a name="move-data-from-a-web-table-source-using-azure-data-factory"></a>Verschieben von Daten aus einer Webtabelle mithilfe von Azure Data Factory
@@ -58,7 +58,7 @@ Unabhängig davon, ob Sie Tools oder APIs verwenden, führen Sie die folgenden S
 2. Erstellen von **Datasets** zur Darstellung von Eingabe- und Ausgabedaten für den Kopiervorgang. 
 3. Erstellen einer **Pipeline** mit einer Kopieraktivität, die ein Dataset als Eingabe und ein Dataset als Ausgabe akzeptiert. 
 
-Wenn Sie den Assistenten verwenden, werden automatisch JSON-Definitionen für diese Data Factory-Entitäten (verknüpfte Diensten, Datasets und die Pipeline) erstellt. Bei Verwendung von Tools und APIs (mit Ausnahme der .NET-API) definieren Sie diese Data Factory-Entitäten im JSON-Format.  Ein Beispiel mit JSON-Definitionen für Data Factory-Entitäten, die zum Kopieren von Daten aus einer Webtabelle verwendet werden, finden Sie im Abschnitt [JSON-Beispiel: Kopieren von Daten aus einer Webtabelle in ein Azure-Blob](#json-example-copy-data-from-web-table-to-azure-blob) in diesem Artikel. 
+Wenn Sie den Assistenten verwenden, werden automatisch JSON-Definitionen für diese Data Factory-Entitäten (verknüpfte Diensten, Datasets und die Pipeline) erstellt. Bei Verwendung von Tools und APIs (mit Ausnahme der .NET-API) definieren Sie diese Data Factory-Entitäten im JSON-Format.  Ein Beispiel mit JSON-Definitionen für Data Factory-Entitäten, die zum Kopieren von Daten aus einer Webtabelle verwendet werden, finden Sie in diesem Artikel im Abschnitt [JSON-Beispiel: Kopieren von Daten aus einer Webtabelle in ein Azure-Blob](#json-example-copy-data-from-web-table-to-azure-blob). 
 
 Die folgenden Abschnitte enthalten Details zu JSON-Eigenschaften, die zum Definieren von Data Factory-Entitäten speziell für eine Webtabelle verwendet werden:
 

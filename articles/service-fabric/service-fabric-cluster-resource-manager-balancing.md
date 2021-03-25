@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 192aca589c3b1e660667dbe8377afe7802b56f17
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93146193"
 ---
 # <a name="balancing-your-service-fabric-cluster"></a>Lastenausgleich für Service Fabric-Cluster
@@ -79,7 +79,7 @@ Wenn beispielsweise Knoten ausfallen, kann dies nacheinander für gesamte Fehler
 Der Clusterressourcen-Manager benötigt außerdem einige zusätzliche Informationen, um zu ermitteln, ob der Cluster unausgeglichen ist. Hierfür gibt es zwei weitere Konfigurationseinstellungen: *Ausgleichsschwellenwerte* (BalancingThresholds) und *Aktivitätsschwellenwerte* (ActivityThresholds).
 
 ## <a name="balancing-thresholds"></a>Ausgleichsschwellenwerte
-Ein Ausgleichsschwellenwert ist das Hauptsteuerinstrument für das Auslösen eines erneuten Ausgleichs. Der Ausgleichsschwellenwert für eine Metrik ist ein _Verhältnis_. Wenn die Last für eine Metrik auf dem am stärksten ausgelasteten Knoten dividiert durch die Last auf dem am wenigsten ausgelasteten Knoten den *Ausgleichsschwellenwert* dieser Metrik überschreitet, ist der Cluster unausgeglichen. Bei der nächsten Ausführung des Clusterressourcen-Managers wird deshalb ein Ausgleich ausgelöst. Der *MinLoadBalancingInterval* -Timer bestimmt, wie oft der Clusterressourcen-Manager prüfen soll, ob ein erneuter Ausgleich erforderlich ist. Die Überprüfung bedeutet nicht, dass etwas passiert. 
+Ein Ausgleichsschwellenwert ist das Hauptsteuerinstrument für das Auslösen eines erneuten Ausgleichs. Der Ausgleichsschwellenwert für eine Metrik ist ein _Verhältnis_. Wenn die Last für eine Metrik auf dem am stärksten ausgelasteten Knoten dividiert durch die Last auf dem am wenigsten ausgelasteten Knoten den *Ausgleichsschwellenwert* dieser Metrik überschreitet, ist der Cluster unausgeglichen. Bei der nächsten Ausführung des Clusterressourcen-Managers wird deshalb ein Ausgleich ausgelöst. Der *MinLoadBalancingInterval*-Timer bestimmt, wie oft der Clusterressourcen-Manager prüfen soll, ob ein erneuter Ausgleich erforderlich ist. Die Überprüfung bedeutet nicht, dass etwas passiert. 
 
 Ausgleichsschwellenwerte werden als Teil der Clusterdefinition metrikbezogen definiert. Weitere Informationen zu Metriken finden Sie in [diesem Artikel](service-fabric-cluster-resource-manager-metrics.md).
 

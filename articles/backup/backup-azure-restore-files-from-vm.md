@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie Dateien und Ordner aus eine
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.custom: references_regions
-ms.openlocfilehash: 9bd66c1e3c89c8974adc3970f8595e5100878088
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: c5a027773a55347b71c1e6a66d24d7fdb99220d0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567138"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725508"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Wiederherstellen von Dateien aus einer Sicherung von virtuellen Azure-Computern
 
@@ -77,6 +77,11 @@ Die heruntergeladene ausführbare Datei kann nicht auf einem virtuellen Computer
 
 Wenn der gesicherte Computer über eine große Anzahl von Datenträgern (>16) oder große Datenträger (jeweils >4 TB) verfügt, wird das Ausführen des Skripts auf dem gleichen Computer für die Wiederherstellung nicht empfohlen, da dies erhebliche Auswirkungen auf den virtuellen Computer hat. Stattdessen wird empfohlen, einen separaten virtuellen Computer nur für die Dateiwiederherstellung (Azure VM D2v3-VMs) zu verwenden und ihn dann herunterzufahren, wenn er nicht erforderlich ist. 
 
+Informieren Sie sich über die Anforderungen zum Wiederherstellen von Dateien von gesicherten VMs mit großem Datenträger:<br>
+[Windows-Betriebssystem](#for-backed-up-vms-with-large-disks-windows)<br>
+[Linux-Betriebssystem](#for-backed-up-vms-with-large-disks-linux)
+
+
 ## <a name="step-3-os-requirements-to-successfully-run-the-script"></a>Schritt 3: Betriebssystemanforderungen für die erfolgreiche Durchführung des Skripts
 
 Die VM, auf der Sie das heruntergeladene Skript ausführen möchten, muss die folgenden Anforderungen erfüllen.
@@ -88,7 +93,7 @@ Die folgende Tabelle zeigt die Kompatibilität zwischen Server- und Clientbetrie
 |Serverbetriebssystem | Kompatibles Clientbetriebssystem  |
 | --------------- | ---- |
 | Windows Server 2019    | Windows 10 |
-| Windows Server 2016    | Windows 10 |
+| Windows Server 2016    | Windows 10 |
 | Windows Server 2012 R2 | Windows 8.1 |
 | Windows Server 2012    | Windows 8  |
 | Windows Server 2008 R2 | Windows 7   |

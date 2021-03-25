@@ -16,10 +16,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e015f7937db6788aa4473a8a04434121299901e9
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96861781"
 ---
 # <a name="azure-ad-connect-sync-understanding-users-groups-and-contacts"></a>Azure AD Connect-Synchronisierung: Grundlegendes zu Benutzern, Gruppen und Kontakten
@@ -56,7 +56,7 @@ Wichtige Punkte, die beim Synchronisieren von Gruppen in Active Directory mit Az
       * Eine Active Directory-Gruppe, deren proxyAddress-Attribut die Werte *{"X500:/0=contoso.com/ou=users/cn=testgroup","smtp:johndoe\@contoso.com"}* aufweist, ist in Azure AD ebenfalls E-Mail-aktiviert.
 
 ## <a name="contacts"></a>Kontakte
-Nach einer Unternehmensfusion oder -übernahme kommt es häufig vor, dass Kontakte einen Benutzer in einer anderen Gesamtstruktur darstellen und eine GALSynch-Lösung zwei oder mehr Exchange-Gesamtstrukturen verbindet. Das Kontaktobjekt wird immer mithilfe des Attributs "mail" vom Connectorbereich mit dem Metaverse verknüpft. Wenn bereits ein Kontakt- oder Benutzerobjekt mit derselben E-Mail-Adresse vorhanden ist, werden die Objekte miteinander verknüpft. Dies wird in der Regel **In from AD – Contact Join** konfiguriert. Es gibt auch eine Regel namens **In from AD – Contact Common** mit einem Attributfluss zum Metaverseattribut **sourceObjectType** mit der Konstante **Contact**. Diese Regel hat eine sehr niedrige Rangfolge. Wenn daher ein Benutzerobjekt mit demselben Metaverseobjekt verknüpft ist, trägt die Regel **In from AD – User Common** den Wert „User“ zu diesem Attribut bei. Bei dieser Regel weist dieses Attribut den Wert "Contact" auf, wenn kein Benutzer verknüpft wurde, und den Wert "User", wenn mindestens ein Benutzer gefunden wurde.
+Nach einer Unternehmensfusion oder -übernahme kommt es häufig vor, dass Kontakte einen Benutzer in einer anderen Gesamtstruktur darstellen und eine GALSynch-Lösung zwei oder mehr Exchange-Gesamtstrukturen verbindet. Das Kontaktobjekt wird immer mithilfe des Attributs "mail" vom Connectorbereich mit dem Metaverse verknüpft. Wenn bereits ein Kontakt- oder Benutzerobjekt mit derselben E-Mail-Adresse vorhanden ist, werden die Objekte miteinander verknüpft. Dies wird in der Regel **In from AD – Contact Join** konfiguriert. Es steht auch die Regel **In from AD – Contact Common** mit einem Attributfluss zum Metaverse-Attribut **sourceObjectType** mit der Konstante **Contact** zur Verfügung. Diese Regel hat eine sehr geringe Rangfolge. Wenn ein Benutzerobjekt mit demselben Metaverse-Objekt verknüpft ist, trägt die Regel **In from AD – User Common** den Wert "User" demnach zu diesem Attribut bei. Bei dieser Regel weist dieses Attribut den Wert "Contact" auf, wenn kein Benutzer verknüpft wurde, und den Wert "User", wenn mindestens ein Benutzer gefunden wurde.
 
 Für die Bereitstellung eines Objekts für Azure AD erstellt die ausgehende Regel **Out to AAD – Contact Join** ein Kontaktobjekt, wenn das Metaverseattribut **sourceObjectType** auf **Contact** festgelegt ist. Wenn dieses Attribut auf **User** festgelegt ist, erstellt die Regel **Out to AAD – User Join** stattdessen ein Benutzerobjekt.
 Es ist möglich, dass ein Objekt von "Contact" zu "User" aufsteigt, wenn weitere Active Directory-Quellen importiert und synchronisiert werden.
@@ -71,7 +71,7 @@ Deaktivierte Konten werden auch mit Azure AD synchronisiert. Deaktivierte Konte
 Folgende Annahme gilt: Wenn ein deaktiviertes Benutzerkonto gefunden wird, wird später kein anderes aktives Konto gefunden, und das Objekt wird Azure AD mit den gefundenen Werten für "userPrincipalName" und "sourceAnchor" bereitgestellt. Sollte ein anderes aktives Konto eine Verknüpfung mit demselben Metaverseobjekt herstellen, werden "userPrincipalName" und "sourceAnchor" dieses Kontos verwendet.
 
 ## <a name="changing-sourceanchor"></a>Ändern von "sourceAnchor"
-Nachdem ein Objekt nach Azure AD exportiert wurde, kann der Wert für "sourceAnchor" nicht mehr geändert werden. Wenn das Objekt exportiert wurde, wird das Metaverseattribut **cloudSourceAnchor** mit dem **sourceAnchor**-Wert festgelegt, der von Azure AD akzeptiert wird. Wenn **sourceAnchor** geändert wird und nicht mit **cloudSourceAnchor** übereinstimmt, löst die Regel **Out to AAD – User Join** den Fehler aus, dass das sourceAnchor-Attribut geändert wurde: **sourceAnchor attribute has changed**. In diesem Fall müssen Konfiguration oder Daten korrigiert werden, sodass derselbe sourceAnchor-Wert wieder im Metaverse vorhanden ist, bevor das Objekt erneut synchronisiert werden kann.
+Nachdem ein Objekt nach Azure AD exportiert wurde, kann der Wert für "sourceAnchor" nicht mehr geändert werden. Wenn das Objekt exportiert wurde, wird das Metaverseattribut **cloudSourceAnchor** mit dem **sourceAnchor**-Wert festgelegt, der von Azure AD akzeptiert wird. Wenn **sourceAnchor** geändert wird und nicht mit **cloudSourceAnchor** übereinstimmt, löst die Regel **Out to AAD – User Join** einen Fehler aus, dass sich das "sourceAnchor"-Attribut geändert hat. In diesem Fall müssen Konfiguration oder Daten korrigiert werden, sodass derselbe sourceAnchor-Wert wieder im Metaverse vorhanden ist, bevor das Objekt erneut synchronisiert werden kann.
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 * [Azure AD Connect-Synchronisierung: Anpassen von Synchronisierungsoptionen](how-to-connect-sync-whatis.md)

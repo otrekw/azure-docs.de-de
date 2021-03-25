@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 06/30/2020
 ms.openlocfilehash: 3f9c22a690859b459b6bb748c3b1001c4aa7660d
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93241751"
 ---
 # <a name="infrastructure-double-encryption-for-azure-database-for-mysql"></a>Doppelte Infrastrukturverschlüsselung für Azure Database for MySQL
@@ -31,7 +31,7 @@ Führen Sie die folgenden Schritte aus, um im Azure-Portal einen Azure Database 
 
    :::image type="content" source="./media/quickstart-create-mysql-server-database-using-azure-portal/2_navigate-to-mysql.png" alt-text="Option „Azure Database for MySQL“":::
 
-3. Geben Sie die grundlegenden Informationen des Servers an. Wählen Sie **Zusätzliche Einstellungen** aus, und aktivieren Sie das Kontrollkästchen **Doppelte Infrastrukturverschlüsselung** , um den Parameter festzulegen.
+3. Geben Sie die grundlegenden Informationen des Servers an. Wählen Sie **Zusätzliche Einstellungen** aus, und aktivieren Sie das Kontrollkästchen **Doppelte Infrastrukturverschlüsselung**, um den Parameter festzulegen.
 
     :::image type="content" source="./media/howto-double-encryption/infrastructure-encryption-selected.png" alt-text="Optionen für Azure Database for MySQL":::
 
@@ -52,7 +52,7 @@ Bei diesem Beispiel wird eine Ressourcengruppe mit dem Namen `myresourcegroup` a
 ```azurecli-interactive
 az group create --name myresourcegroup --location westus
 ```
-Im folgenden Beispiel wird in der Region „USA, Westen“ die MySQL 5.7-Serverinstanz `mydemoserver` in der Ressourcengruppe `myresourcegroup` mit dem Serveradministrator-Anmeldenamen `myadmin` erstellt. Dies ist ein **Gen 4** -Server vom Typ **Universell** mit **2 virtuellen Kernen**. Dadurch wird auch für den erstellten Server die doppelte Infrastrukturverschlüsselung aktiviert. Ersetzen Sie das `<server_admin_password>` durch einen eigenen Wert.
+Im folgenden Beispiel wird in der Region „USA, Westen“ die MySQL 5.7-Serverinstanz `mydemoserver` in der Ressourcengruppe `myresourcegroup` mit dem Serveradministrator-Anmeldenamen `myadmin` erstellt. Dies ist ein **Gen 4**-Server vom Typ **Universell** mit **2 virtuellen Kernen**. Dadurch wird auch für den erstellten Server die doppelte Infrastrukturverschlüsselung aktiviert. Ersetzen Sie das `<server_admin_password>` durch einen eigenen Wert.
 
 ```azurecli-interactive
 az mysql server create --resource-group myresourcegroup --name mydemoserver  --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen5_2 --version 5.7 --infrastructure-encryption <Enabled/Disabled>

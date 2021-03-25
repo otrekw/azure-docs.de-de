@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 04/22/2020
 ms.author: apimpm
 ms.openlocfilehash: 0dd460bce01b86c72d0b8fd70351fdcc85c69bd4
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93146959"
 ---
 # <a name="import-a-logic-app-as-an-api"></a>Importieren einer Logik-App als API
@@ -45,10 +45,10 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
     ![Logik-App](./media/import-logic-app-as-api/logic-app-api.png)
 
-3. Klicken Sie auf **Durchsuchen** , um die Liste der Logik-Apps mit HTTP-Trigger in Ihrem Abonnement anzuzeigen. (Beachten Sie, dass Logik-Apps ohne HTTP-Trigger nicht in der Liste aufgeführt sind.)
+3. Klicken Sie auf **Durchsuchen**, um die Liste der Logik-Apps mit HTTP-Trigger in Ihrem Abonnement anzuzeigen. (Beachten Sie, dass Logik-Apps ohne HTTP-Trigger nicht in der Liste aufgeführt sind.)
 4. Wählen Sie die App aus. API Management sucht den Swagger, der der ausgewählten App zugeordnet ist, ruft ihn ab und importiert ihn.
 5. Fügen Sie ein API-URL-Suffix hinzu. Das Suffix ist ein Name, der diese spezifische API in dieser API Management-Instanz identifiziert. Es muss in dieser API Management-Instanz eindeutig sein.
-6. Veröffentlichen Sie die API, indem Sie sie einem Produkt zuordnen. In diesem Fall wird das Produkt „ _Unlimited_ “ verwendet. Wenn Sie möchten, dass die API veröffentlicht wird und dann Entwicklern zur Verfügung steht, fügen Sie sie einem Produkt hinzu. Sie können dies während der Erstellung der API vornehmen oder später festlegen.
+6. Veröffentlichen Sie die API, indem Sie sie einem Produkt zuordnen. In diesem Fall wird das Produkt „_Unlimited_“ verwendet. Wenn Sie möchten, dass die API veröffentlicht wird und dann Entwicklern zur Verfügung steht, fügen Sie sie einem Produkt hinzu. Sie können dies während der Erstellung der API vornehmen oder später festlegen.
 
     Bei Produkten handelt es sich um API-Zuordnungen. Sie können eine Reihe von APIs einfügen und sie Entwicklern über das Entwicklerportal zur Verfügung stellen. Entwickler müssen ein Produkt zunächst abonnieren, um Zugriff auf die API zu erhalten. Wenn sie ein Produkt abonnieren, erhalten sie einen Abonnementschlüssel, der für jede API in diesem Produkt gilt. Wenn Sie die API Management-Instanz erstellt haben, sind Sie bereits Administrator und haben dadurch standardmäßig alle Produkte abonniert.
 

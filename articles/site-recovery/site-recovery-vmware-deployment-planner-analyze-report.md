@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/4/2019
 ms.author: ramamill
 ms.openlocfilehash: 7e2db720bb37a25b8511bd1c42c0c18e139aa216
-ms.sourcegitcommit: 7a7b6c7ac0aa9dac678c3dfd4b5bcbc45dc030ca
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93186602"
 ---
 # <a name="analyze-the-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>Analysieren des Bereitstellungsplaner-Berichts für die VMware-Notfallwiederherstellung in Azure
@@ -113,7 +113,7 @@ Anhand dieser Analyse können Sie entscheiden, ob die Anzahl von RPO-Verletzunge
 ![Was-wäre-wenn-Analyse im Deployment Planner](media/site-recovery-vmware-deployment-planner-analyze-report/what-if-analysis-v2a.png)
 
 ### <a name="recommended-vm-batch-size-for-initial-replication"></a>Empfohlene VM-Batchgröße für die erste Replikation
-In diesem Abschnitt wird die Anzahl von VMs empfohlen, die parallel geschützt werden können, um die erste Replikation innerhalb von 72 Stunden mit der vorgeschlagenen Bandbreite durchzuführen und den gewünschten RPO-Wert in 100% der Fälle zu erreichen. Dieser Wert ist konfigurierbar. Verwenden Sie den Parameter *GoalToCompleteIR* , um ihn bei der Berichterstellung zu ändern.
+In diesem Abschnitt wird die Anzahl von VMs empfohlen, die parallel geschützt werden können, um die erste Replikation innerhalb von 72 Stunden mit der vorgeschlagenen Bandbreite durchzuführen und den gewünschten RPO-Wert in 100% der Fälle zu erreichen. Dieser Wert ist konfigurierbar. Verwenden Sie den Parameter *GoalToCompleteIR*, um ihn bei der Berichterstellung zu ändern.
 
 Der hier angegebene Graph zeigt einen Bereich mit Bandbreitenwerten und einer berechneten VM-Batchgrößenanzahl, um die erste Replikation innerhalb von 72 Stunden durchzuführen – basierend auf der ermittelten durchschnittlichen VM-Größe über alle kompatiblen VMs hinweg.
 
@@ -206,11 +206,11 @@ Falls ein Datenträger aufgrund seiner Workloadmerkmale beispielsweise in die Ka
 
 **Memory (MB)** (Arbeitsspeicher (MB)): Der Arbeitsspeicher (RAM) auf der VM.
 
-**NICs** : Die Anzahl von NICs auf der VM.
+**NICs**: Die Anzahl von NICs auf der VM.
 
 **Boot Type** (Starttyp): Dies ist der Starttyp der VM. Er kann entweder „BIOS“ oder „EFI“ lauten.  Derzeit unterstützt Azure Site Recovery Windows Server-EFI-VMs (Windows Server 2012, 2012 R2 und 2016), sofern die Anzahl von Partitionen auf dem Startdatenträger geringer als 4 ist und die Größe des Startsektors 512 Byte beträgt. Zum Schützen von EFI-VMs muss für den Azure Site Recovery Mobility Service die Version 9.13 oder höher verwendet werden. Für EFI-VMs wird nur das Failover unterstützt. Das Failback wird nicht unterstützt.  
 
-**OS Type** : Dies ist der Betriebssystemtyp der VM. Hier kann Windows, Linux oder ein anderer Typ angegeben werden. Dies richtet sich nach der ausgewählten Vorlage für VMware vSphere während der Erstellung der VM.  
+**OS Type**: Dies ist der Betriebssystemtyp der VM. Hier kann Windows, Linux oder ein anderer Typ angegeben werden. Dies richtet sich nach der ausgewählten Vorlage für VMware vSphere während der Erstellung der VM.  
 
 ## <a name="incompatible-vms"></a>Inkompatible VMs
 
@@ -251,7 +251,7 @@ Falls ein Datenträger aufgrund seiner Workloadmerkmale beispielsweise in die Ka
 
 **Memory (MB)** (Arbeitsspeicher (MB)): Die Größe des Arbeitsspeichers (RAM) auf der VM.
 
-**NICs** : Die Anzahl von NICs auf der VM.
+**NICs**: Die Anzahl von NICs auf der VM.
 
 **Boot Type** (Starttyp): Dies ist der Starttyp der VM. Er kann entweder „BIOS“ oder „EFI“ lauten.  Derzeit unterstützt Azure Site Recovery Windows Server-EFI-VMs (Windows Server 2012, 2012 R2 und 2016), sofern die Anzahl von Partitionen auf dem Startdatenträger geringer als 4 ist und die Größe des Startsektors 512 Byte beträgt. Zum Schützen von EFI-VMs muss für den Azure Site Recovery Mobility Service die Version 9.13 oder höher verwendet werden. Für EFI-VMs wird nur das Failover unterstützt. Das Failback wird nicht unterstützt.
 

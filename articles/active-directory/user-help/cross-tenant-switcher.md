@@ -13,10 +13,10 @@ ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.openlocfilehash: 1af7f2918af7071320244dd35882a8de9717654f
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92913244"
 ---
 # <a name="switching-organizations-in-a-portal"></a>Wechseln von Organisationen in einem Portal
@@ -30,7 +30,7 @@ Die Option für den Organisationswechsel ist in den folgenden Portalen verfügba
 - [**Mein Zugriff**](https://myaccess.microsoft.com)
 - [**Meine Mitarbeiter**](https://mystaff.microsoft.com)
 
-Das Wechseln von Organisationen ist nicht für **Meine Anmeldungen** , **Sicherheitsinformationen** und **Eigene Gruppen** verfügbar.
+Das Wechseln von Organisationen ist nicht für **Meine Anmeldungen**, **Sicherheitsinformationen** und **Eigene Gruppen** verfügbar.
 
 ## <a name="switch-organizations"></a>Wechseln von Organisationen
 

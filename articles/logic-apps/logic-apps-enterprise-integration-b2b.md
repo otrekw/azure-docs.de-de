@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 10/02/2020
 ms.openlocfilehash: e16cc8934407a5c54c84fd045c99e28116e656c9
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93310495"
 ---
 # <a name="receive-and-confirm--b2b-as2-messages-by-using-azure-logic-apps-and-enterprise-integration-pack"></a>Empfangen und Bestätigen von B2B-AS2-Nachrichten mit Azure Logic Apps und Enterprise Integration Pack
@@ -73,7 +73,7 @@ Fügen Sie nun die B2B-Aktionen hinzu, die Sie verwenden möchten. In diesem Bei
 
 1. Geben Sie für die Eigenschaft **Zu decodierende Nachricht** die Eingabe ein, die von der AS2-Aktion decodiert werden soll. Dies ist der `body`-Inhalt, der vom HTTP-Anforderungstrigger empfangen wird. Sie haben mehrere Möglichkeiten, diesen Inhalt als Eingabe anzugeben, nämlich entweder aus der Liste mit dem dynamischen Inhalt oder als Ausdruck:
 
-   * Klicken Sie in das Feld **Zu decodierende Nachricht** , um in der Liste mit den verfügbaren Triggerausgaben eine Auswahl zu treffen. Wählen Sie in der Liste mit dem dynamischen Inhalt unter **Beim Empfang einer HTTP-Anforderung** den Eigenschaftswert **Text** (Body) aus. Beispiel:
+   * Klicken Sie in das Feld **Zu decodierende Nachricht**, um in der Liste mit den verfügbaren Triggerausgaben eine Auswahl zu treffen. Wählen Sie in der Liste mit dem dynamischen Inhalt unter **Beim Empfang einer HTTP-Anforderung** den Eigenschaftswert **Text** (Body) aus. Beispiel:
 
      ![Auswählen des Werts „Body“ für Trigger](./media/logic-apps-enterprise-integration-b2b/select-body-content-from-trigger.png)
 
@@ -85,7 +85,7 @@ Fügen Sie nun die B2B-Aktionen hinzu, die Sie verwenden möchten. In diesem Bei
 
      `@triggerBody()`
 
-     Der Ausdruck wird in das **Body** -Token aufgelöst.
+     Der Ausdruck wird in das **Body**-Token aufgelöst.
 
      ![Aufgelöste Textausgabe des Triggers](./media/logic-apps-enterprise-integration-b2b/resolved-trigger-outputs-body-expression.png)
 

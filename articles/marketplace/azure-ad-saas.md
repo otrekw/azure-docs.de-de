@@ -9,10 +9,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/04/2020
 ms.openlocfilehash: 674f267d3d99dd22c1ae06b6d32587761d5983ce
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93124916"
 ---
 # <a name="azure-ad-and-transactable-saas-offers-in-the-commercial-marketplace"></a>Azure AD und transaktionsfähige SaaS-Angebote im kommerziellen Marketplace
@@ -25,9 +25,9 @@ Die Anleitungen in diesem Artikel sollen Sie bei der Zertifizierung Ihres SaaS-A
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Wenn Sie Ihr [SaaS-Angebot](./create-new-saas-offer.md) im Partner Center erstellen, wählen Sie aus einer Reihe spezifischer Auflistungsoptionen aus, die in der Angebotsliste angezeigt werden. Ihre Auswahl bestimmt, wie die Transaktion Ihres Angebots im kommerziellen Marketplace abläuft. Über Microsoft verkaufte Angebote werden als transaktionsfähige Angebote bezeichnet. Kunden werden alle transaktionsfähigen Angebote in Ihrem Namen von uns in Rechnung gestellt. Wenn Sie Ihr Angebot über Microsoft vertreiben und Transaktionen in Ihrem Namen von uns hosten lassen möchten (Option **Ja** ), dann haben Sie sich dafür entschieden, ein transaktionsfähiges Angebot zu erstellen. In diesem Fall ist dieser Artikel genau richtig für Sie, und Sie sollten ihn vollständig lesen.
+Wenn Sie Ihr [SaaS-Angebot](./create-new-saas-offer.md) im Partner Center erstellen, wählen Sie aus einer Reihe spezifischer Auflistungsoptionen aus, die in der Angebotsliste angezeigt werden. Ihre Auswahl bestimmt, wie die Transaktion Ihres Angebots im kommerziellen Marketplace abläuft. Über Microsoft verkaufte Angebote werden als transaktionsfähige Angebote bezeichnet. Kunden werden alle transaktionsfähigen Angebote in Ihrem Namen von uns in Rechnung gestellt. Wenn Sie Ihr Angebot über Microsoft vertreiben und Transaktionen in Ihrem Namen von uns hosten lassen möchten (Option **Ja**), dann haben Sie sich dafür entschieden, ein transaktionsfähiges Angebot zu erstellen. In diesem Fall ist dieser Artikel genau richtig für Sie, und Sie sollten ihn vollständig lesen.
 
-Wenn Sie Ihr Angebot nur im kommerziellen Marketplace auflisten und Transaktionen unabhängig verarbeiten möchten (die Option **Nein** ), können Sie potenziellen Kunden drei Möglichkeiten bieten, auf Ihr Angebot zuzugreifen: „Jetzt abrufen (kostenlos)“, „Kostenlose Testversion“ und „Kontakt mit mir aufnehmen“. Bei Auswahl von **Jetzt abrufen (kostenlos)** oder **Kostenlose Testversion** ist dieser Artikel nicht für Sie geeignet. Informieren Sie sich stattdessen unter [Erstellen der Landing Page für Ihr kostenloses SaaS-Angebot oder Ihr SaaS-Testangebot im kommerziellen Marketplace](./azure-ad-free-or-trial-landing-page.md). Bei Auswahl von **Kontakt mit mir aufnehmen** ist der Herausgeber nicht direkt verantwortlich. Fahren Sie mit der Erstellung Ihres Angebots im Partner Center fort.
+Wenn Sie Ihr Angebot nur im kommerziellen Marketplace auflisten und Transaktionen unabhängig verarbeiten möchten (die Option **Nein**), können Sie potenziellen Kunden drei Möglichkeiten bieten, auf Ihr Angebot zuzugreifen: „Jetzt abrufen (kostenlos)“, „Kostenlose Testversion“ und „Kontakt mit mir aufnehmen“. Bei Auswahl von **Jetzt abrufen (kostenlos)** oder **Kostenlose Testversion** ist dieser Artikel nicht für Sie geeignet. Informieren Sie sich stattdessen unter [Erstellen der Landing Page für Ihr kostenloses SaaS-Angebot oder Ihr SaaS-Testangebot im kommerziellen Marketplace](./azure-ad-free-or-trial-landing-page.md). Bei Auswahl von **Kontakt mit mir aufnehmen** ist der Herausgeber nicht direkt verantwortlich. Fahren Sie mit der Erstellung Ihres Angebots im Partner Center fort.
 
 ## <a name="how-azure-ad-works-with-the-commercial-marketplace-for-saas-offers"></a>So unterstützt Azure AD SaaS-Angebote im kommerziellen Marketplace
 
@@ -35,7 +35,7 @@ Azure AD bietet eine nahtlose Erfahrung beim Kauf, der Ausführung und Verwaltu
 
 In Abbildung 1 ist dargestellt, wie die Auswahl Ihres Angebots durch einen Käufer eine Reihe von Workflows für die Einkaufs-, Abonnement- und Benutzerverwaltung auslöst. Innerhalb dieser Abfolge sind Sie als Herausgeber für bestimmte Anforderungen verantwortlich, wobei Microsoft an wichtigen Punkten Unterstützung leistet.
 
-**_Abbildung 1: Verwenden von Azure AD für SaaS-Angebote im kommerziellen Marketplace_*
+***Abbildung 1: Verwenden von Azure AD für SaaS-Angebote im kommerziellen Marketplace***
 
 :::image type="content" source="./media/azure-ad-saas/azure-ad-saas-flow.png" alt-text="Veranschaulicht die Schritte für die Einkaufs-, Abonnement- und (optionale) Benutzerverwaltung.":::
 
@@ -52,7 +52,7 @@ Diese Tabelle enthält Details zu den Schritten für die Einkaufsverwaltung.
 | Schritt | Aktion des Herausgebers | Für Herausgeber empfohlen oder erforderlich |
 | ------------ | ------------- | ------------- |
 | 1. Der Käufer meldet sich mit seiner Azure-ID-Identität beim kommerziellen Marketplace an und wählt ein SaaS-Angebot aus. | Es ist keine Aktion seitens des Herausgebers erforderlich. | Nicht verfügbar |
-| 2. Nach dem Kauf wählt der Käufer die Option *Konto konfigurieren* * im Azure Marketplace oder **Jetzt konfigurieren** in AppSource aus. So wird er zur Landing Page des Herausgebers dieses Angebots weitergeleitet. Der Käufer muss in der Lage sein, sich per einmaligem Anmelden in Azure AD bei der SaaS-Anwendung des Herausgebers anzumelden. Außerdem muss er nur eine minimale Zustimmung geben, ohne dass eine Genehmigung des Azure AD-Administrators erforderlich ist. | Gestalten Sie die [Landing Page](azure-ad-transactable-saas-landing-page.md) für das Angebot so, dass Benutzer mit ihrer Azure-AD- oder MSA-Identität (Microsoft-Konto) empfangen werden und dass zusätzliche Voraussetzungen oder Konfigurationen, die erforderlich sein können, erfüllt werden. | Erforderlich |
+| 2. Nach dem Kauf wählt der Käufer die Option **Konto konfigurieren** im Azure Marketplace oder **Jetzt konfigurieren** in AppSource aus. So wird er zur Landing Page des Herausgebers dieses Angebots weitergeleitet. Der Käufer muss in der Lage sein, sich per einmaligem Anmelden in Azure AD bei der SaaS-Anwendung des Herausgebers anzumelden. Außerdem muss er nur eine minimale Zustimmung geben, ohne dass eine Genehmigung des Azure AD-Administrators erforderlich ist. | Gestalten Sie die [Landing Page](azure-ad-transactable-saas-landing-page.md) für das Angebot so, dass Benutzer mit ihrer Azure-AD- oder MSA-Identität (Microsoft-Konto) empfangen werden und dass zusätzliche Voraussetzungen oder Konfigurationen, die erforderlich sein können, erfüllt werden. | Erforderlich |
 | 3. Der Herausgeber fordert Details zum Kauf von der SaaS-Fulfillment-API an. | Rufen Sie mit einem [Zugriffstoken](./partner-center-portal/pc-saas-registration.md), das unter Verwendung der Anwendungs-ID der Landing Page generiert wurde, den [Endpunkt für die Auflösung](./partner-center-portal/pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription) auf, um Einzelheiten zum Kauf abzurufen. | Erforderlich |
 | 4. Der Herausgeber erfasst über Azure AD und die Microsoft Graph-API Details zum Unternehmen und zum Benutzer, die für die Bereitstellung des Käufers in der SaaS-Anwendung des Herausgebers erforderlich sind.  | Gliedern Sie das Azure AD-Benutzertoken auf, um den Namen und die E-Mail-Adresse zu ermitteln, oder rufen Sie die [Microsoft Graph-API](/graph/use-the-api) auf, um unter Verwendung delegierter Berechtigungen [Informationen zum angemeldeten Benutzer](/graph/api/user-get) abzurufen. | Erforderlich |
 ||||

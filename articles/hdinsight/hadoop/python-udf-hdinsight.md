@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.date: 11/15/2019
 ms.custom: H1Hack27Feb2017,hdinsightactive, devx-track-python
 ms.openlocfilehash: 593b809813f949cd1d0bcc17e1d1b7255ea19130
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98944282"
 ---
 # <a name="use-python-user-defined-functions-udf-with-apache-hive-and-apache-pig-in-hdinsight"></a>Verwenden benutzerdefinierter Python-Funktionen mit Apache Hive und Apache Pig in HDInsight
@@ -28,7 +28,7 @@ HDInsight enthält außerdem Jython, eine in Java geschriebene Python-Implementi
 * **SSH-Client**. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit HDInsight (Hadoop) per SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 * Das [URI-Schema](../hdinsight-hadoop-linux-information.md#URI-and-scheme) für Ihren primären Clusterspeicher. Dies ist `wasb://` für Azure Storage, `abfs://` für Azure Data Lake Storage Gen2 oder adl:// für Azure Data Lake Storage Gen1. Wenn die sichere Übertragung für Azure Storage aktiviert ist, lautet der URI wasbs://.  Siehe auch [Vorschreiben einer sicheren Übertragung in Azure Storage](../../storage/common/storage-require-secure-transfer.md).
 * **Mögliche Änderungen an der Speicherkonfiguration**.  Wenn Sie ein Speicherkonto vom Typ `BlobStorage` verwenden, helfen Ihnen die Informationen unter [Speicherkonfiguration](#storage-configuration) weiter.
-* Optional.  Wenn Sie PowerShell verwenden möchten, müssen Sie das [Az-Modul](/powershell/azure/new-azureps-module-az) installieren.
+* Dies ist optional.  Wenn Sie PowerShell verwenden möchten, müssen Sie das [Az-Modul](/powershell/azure/new-azureps-module-az) installieren.
 
 > [!NOTE]  
 > Das in diesem Artikel verwendete Speicherkonto war vom Typ „Azure Storage mit aktivierter [sicherer Übertragung](../../storage/common/storage-require-secure-transfer.md)“, und deshalb wird im gesamten Artikel `wasbs` verwendet.

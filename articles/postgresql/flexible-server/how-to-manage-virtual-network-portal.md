@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 46d8fe6427b2a3e7811719792ac4bf67ddbcc3c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 746f15d2d712f4b571d3f27e3535c69f5f4f9732
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90931731"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101732767"
 ---
 # <a name="create-and-manage-virtual-networks-for-azure-database-for-postgresql---flexible-server-using-the-azure-portal"></a>Erstellen und Verwalten von virtuellen Netzwerken für Azure Database for PostgreSQL Flexible Server über das Azure-Portal
 
@@ -23,7 +23,7 @@ Azure Database for PostgreSQL – Flexible Server unterstützt zwei Arten von s
 * Öffentlicher Zugriff (zugelassene IP-Adressen)
 * Privater Zugriff (VNET-Integration)
 
-In diesem Artikel wird die Erstellung von PostgreSQL-Servern mit der Option **Privater Zugriff (VNET-Integration)** über das Azure-Portal behandelt. Mit „Privater Zugriff (VNET-Integration)“ können Sie Ihre Flexible Server-Instanz in Ihrer eigenen [Azure Virtual Network](../../virtual-network/virtual-networks-overview.md)-Instanz bereitstellen. Azure Virtual Network-Instanzen ermöglichen eine private und sichere Netzwerkkommunikation. Bei privatem Zugriff sind die Verbindungen mit dem PostgreSQL-Server auf Ihr virtuelles Netzwerk beschränkt. Weitere Informationen hierzu finden Sie unter [Privater Zugriff (VNET-Integration)](./concepts-networking.md#private-access-vnet-integration).
+In diesem Artikel wird die Erstellung von PostgreSQL-Servern mit der Option **Privater Zugriff (VNET-Integration)** über das Azure-Portal behandelt. Mit der Option „Privater Zugriff (VNET-Integration)“ können Sie Ihren flexiblen Server in Ihrer eigenen [Azure Virtual Network](../../virtual-network/virtual-networks-overview.md)-Instanz bereitstellen. Virtuelle Azure-Netzwerke ermöglichen eine private und sichere Netzwerkkommunikation. Bei privatem Zugriff sind die Verbindungen mit dem PostgreSQL-Server auf Ihr virtuelles Netzwerk beschränkt. Weitere Informationen hierzu finden Sie unter [Privater Zugriff (VNET-Integration)](./concepts-networking.md#private-access-vnet-integration).
 
 Sie können Ihren flexiblen Server bei der Servererstellung in einem virtuellen Netzwerk und Subnetz bereitstellen. Nachdem der flexible Server bereitgestellt wurde, können Sie ihn nicht in ein anderes virtuelles Netzwerk oder Subnetz verschieben oder auf *Öffentlicher Zugriff (zugelassene IP-Adressen)* umstellen.
 
@@ -34,6 +34,13 @@ Sie benötigen Folgendes, um eine Flexible Server-Instanz in einem virtuellen Ne
     > Das virtuelle Netzwerk und das Subnetz sollten sich in derselben Region und demselben Abonnement befinden wie Ihre Flexible Server-Instanz.
 
 -  [Delegierung eines Subnetzes](../../virtual-network/manage-subnet-delegation.md#delegate-a-subnet-to-an-azure-service) an **Microsoft.DBforPostgreSQL/flexibleServers**. Diese Delegierung bedeutet, dass dieses Subnetz nur von Azure Database for PostgreSQL Flexible Server-Instanzen genutzt werden kann. Im delegierten Subnetz können sich keine anderen Azure-Ressourcentypen befinden.
+-  Fügen Sie dem Dienstendpunkt für das Subnetz, das an flexible Server delegiert ist, `Microsoft.Storage` hinzu. Dazu führen Sie die folgenden Schritte aus:
+     1. Wechseln Sie zur Seite Ihres virtuellen Netzwerks.
+     2. Wählen Sie das VNET aus, in dem Sie Ihren flexiblen Server bereitstellen möchten.
+     3. Wählen Sie das Subnetz aus, das für den flexiblen Server delegiert wird.
+     4. Wählen Sie auf dem Pulloutbildschirm unter **Dienstendpunkt** in der Dropdownliste `Microsoft.storage` aus.
+     5. Speichern Sie die Änderungen.
+
 
 ## <a name="create-azure-database-for-postgresql---flexible-server-in-an-already-existing-virtual-network"></a>Erstellen von Azure Database for PostgreSQL Flexible Server-Instanzen in einem bereits vorhandenen virtuellen Netzwerk
 

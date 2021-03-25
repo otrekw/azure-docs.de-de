@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 0cdad245981ad02d3cdaefba447d131c775e242f
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93145768"
 ---
 # <a name="customize-the-style-of-the-developer-portal-pages"></a>Anpassen des Stils der Seiten im Entwicklerportal
@@ -29,7 +29,7 @@ Es gibt drei sehr häufig verwendete Möglichkeiten, das Entwicklerportal in Azu
 * Aktualisieren der Stile, die für Seitenelemente im gesamten Entwicklerportal verwendet werden (in diesem Leitfaden beschrieben)
 * [Ändern der Vorlagen, die für vom Portal generierte Seiten verwendet werden](api-management-developer-portal-templates.md) (z.B. API-Dokumente, Produkte, Benutzerauthentifizierung)
 
-In diesem Artikel erfahren Sie, wie Sie den Stil der Elemente auf den Seiten des Legacy- **Entwicklerportals** anpassen und Ihre Änderungen anzeigen.
+In diesem Artikel erfahren Sie, wie Sie den Stil der Elemente auf den Seiten des Legacy-**Entwicklerportals** anpassen und Ihre Änderungen anzeigen.
 
 ![Screenshot, der zeigt, wo Sie Ihre Einstellungen im Legacy-Entwicklerportal ändern.](./media/modify-developer-portal-style/developer_portal.png)
 
@@ -40,7 +40,7 @@ In diesem Artikel erfahren Sie, wie Sie den Stil der Elemente auf den Seiten des
 ## <a name="prerequisites"></a>Voraussetzungen
 
 + Machen Sie sich mit der [Azure API Management-Terminologie](api-management-terminology.md) vertraut.
-+ Absolvieren Sie den folgenden Schnellstart: [Erstellen einer Azure API Management-Instanz](get-started-create-service-instance.md).
++ Bearbeiten Sie den folgenden Schnellstart: [Erstellen einer neuen Azure API Management-Dienstinstanz](get-started-create-service-instance.md)
 + Schließen Sie darüber hinaus das folgende Tutorial ab: [Importieren und Veröffentlichen Ihrer ersten API](import-and-publish.md).
 
 ## <a name="customize-the-developer-portal"></a>Anpassen des Entwicklerportals
@@ -50,7 +50,7 @@ In diesem Artikel erfahren Sie, wie Sie den Stil der Elemente auf den Seiten des
 3. Oben links auf dem Bildschirm wird ein aus zwei Pinseln bestehendes Symbol angezeigt. Zeigen Sie auf dieses Symbol, um das Menü für die Portalanpassung zu öffnen.
 
     ![Screenshot, der das Symbol mit zwei Pinseln hervorhebt.](./media/modify-developer-portal-style/modify-developer-portal-style01.png)
-4. Klicken Sie im Menü auf **Stile** , um den Bereich für die Anpassung des Stils zu öffnen.
+4. Klicken Sie im Menü auf **Stile**, um den Bereich für die Anpassung des Stils zu öffnen.
 
     Alle Elemente, die über **Stile** angepasst werden können, werden auf der Seite angezeigt.
 5. Geben Sie im Feld **Change variable values to customize developer portal appearance:** (Variablenwerte ändern, um die Darstellung des Entwicklerportals anzupassen) die Variable „headings-color“ ein.
@@ -68,7 +68,7 @@ In diesem Artikel erfahren Sie, wie Sie den Stil der Elemente auf den Seiten des
     > Für alle Änderungen ist eine Echtzeitvorschau verfügbar. Oben im Anpassungsbereich wird eine Statusanzeige angezeigt. Nach einigen Sekunden wird die Farbe des Überschriftentexts in die neu ausgewählte Farbe geändert.
 
 8. Klicken Sie unten links im Menü des Anpassungsbereich auf **Veröffentlichen**.
-9. Klicken Sie auf **Anpassungen veröffentlichen** , um die Änderungen öffentlich verfügbar zu machen.
+9. Klicken Sie auf **Anpassungen veröffentlichen**, um die Änderungen öffentlich verfügbar zu machen.
 
 ## <a name="view-your-change"></a>Anzeigen der Änderungen
 

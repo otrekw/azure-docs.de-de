@@ -7,10 +7,10 @@ author: kanshiG
 ms.author: govindk
 ms.date: 04/09/2020
 ms.openlocfilehash: d6f0f30d7437b6f8ecc1d915eb3d3195f2504fec
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93098245"
 ---
 # <a name="how-to-monitor-throughput-or-request-unit-usage-of-an-operation-in-azure-cosmos-db"></a>Überwachen der Nutzung des Durchsatzes oder der Anforderungseinheiten für einen Vorgang in Azure Cosmos DB
@@ -51,7 +51,7 @@ Falls Sie merken, dass für bestimmte Abfragen mehr Anforderungseinheiten verbra
 
 ## <a name="filters-for-request-unit-usage"></a>Filter für die Nutzung von Anforderungseinheiten
 
-Sie können Metriken und die Diagrammanzeige auch nach bestimmten Werten für **CollectionName** , **DatabaseName** , **OperationType** , **Region** , **Status** und **StatusCode** filtern. Mit den Optionen **Filter hinzufügen** und **Teilung anwenden** können Sie die Nutzung von Anforderungseinheiten filtern und die Metriken gruppieren.
+Sie können Metriken und die Diagrammanzeige auch nach bestimmten Werten für **CollectionName**, **DatabaseName**, **OperationType**, **Region**, **Status** und **StatusCode** filtern. Mit den Optionen **Filter hinzufügen** und **Teilung anwenden** können Sie die Nutzung von Anforderungseinheiten filtern und die Metriken gruppieren.
 
 Wählen Sie zum Abrufen der Nutzung von Anforderungseinheiten für die einzelnen Vorgänge („total(sum)“ oder „average“) die Option **Teilung anwenden** und dann **Vorgangsart** und den Filterwert aus. Dies ist in der folgenden Abbildung dargestellt:
 

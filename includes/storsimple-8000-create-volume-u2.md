@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 02/09/2021
 ms.author: alkohli
 ms.openlocfilehash: 400c5f0b2281679c3ec913e94643ffec6082d9e6
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100552586"
 ---
 #### <a name="to-create-a-volume"></a>So erstellen Sie ein Volume
@@ -43,7 +43,7 @@ ms.locfileid: "100552586"
       1. Wählen Sie auf dem Blatt **Verbundene Hosts** einen vorhandenen SCR aus, oder erstellen Sie mit den folgenden Schritten einen neuen ACR:
 
          1. Geben Sie einen **Namen** für den ACR ein.
-         2. Geben Sie unter **iSCSI-Initiatorname** den qualifizierten iSCSI-Namen (IQN) des Windows-Hosts an. Wenn Sie den IQN nicht kennen, fahren Sie mit [Abrufen des IQNs eines Windows Server-Hosts](#get-the-iqn-of-a-windows-server-host)fort.
+         2. Geben Sie unter **iSCSI-Initiatorname** den qualifizierten iSCSI-Namen (IQN) Ihres Windows-Hosts an. Wenn Sie den IQN nicht kennen, fahren Sie mit [Abrufen des IQNs eines Windows Server-Hosts](#get-the-iqn-of-a-windows-server-host)fort.
 
       1. Klicken Sie auf **Erstellen**. Ein Volume wird mit den angegebenen Einstellungen erstellt.
 

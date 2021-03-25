@@ -6,17 +6,17 @@ ms.author: abnarain
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019, devx-track-azurepowershell
-ms.date: 01/22/2018
-ms.openlocfilehash: fc709147c61152bc85db96a059501a12c40a9332
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 02/18/2021
+ms.openlocfilehash: 33c3138013c43062465cce16189e6c19d22ae4d5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100391217"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101724930"
 ---
 # <a name="tutorial-copy-data-from-a-sql-server-database-to-azure-blob-storage"></a>Tutorial: Kopieren von Daten aus einer SQL Server-Datenbank in Azure Blob Storage
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 In diesem Tutorial verwenden Sie Azure PowerShell zum Erstellen einer Data Factory-Pipeline, mit der Daten aus einer SQL Server-Datenbank in Azure Blob Storage kopiert werden. Sie erstellen und verwenden eine selbstgehostete Integration Runtime, die Daten zwischen lokalen Speichern und Clouddatenspeichern verschiebt.
 
@@ -41,7 +41,7 @@ Wenn Sie nicht bereits ein Azure-Abonnement besitzen, können Sie ein [kostenlos
 ### <a name="azure-roles"></a>Azure-Rollen
 Damit Sie Data Factory-Instanzen erstellen können, muss dem Benutzerkonto, mit dem Sie sich bei Azure anmelden, die Rolle *Mitwirkender* oder *Besitzer* zugewiesen sein, oder es muss ein *Administrator* des Azure-Abonnements sein.
 
-Wählen Sie im Azure-Portal in der oberen rechten Ecke Ihren Benutzernamen und dann **Berechtigungen**, um Ihre Berechtigungen im Abonnement anzuzeigen. Wenn Sie Zugriff auf mehrere Abonnements besitzen, wählen Sie das entsprechende Abonnement aus. Beispielanleitungen zum Hinzufügen eines Benutzers zu einer Rolle finden Sie im Artikel [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen über das Azure-Portal](../role-based-access-control/role-assignments-portal.md).
+Wählen Sie im Azure-Portal in der oberen rechten Ecke Ihren Benutzernamen und dann **Berechtigungen**, um Ihre Berechtigungen im Abonnement anzuzeigen. Wenn Sie Zugriff auf mehrere Abonnements besitzen, wählen Sie das entsprechende Abonnement aus. Beispielanleitungen zum Hinzufügen eines Benutzers zu einer Rolle finden Sie im Artikel [Hinzufügen von Azure-Rollenzuweisungen über das Azure-Portal](../role-based-access-control/role-assignments-portal.md).
 
 ### <a name="sql-server-2014-2016-and-2017"></a>SQL Server 2014, 2016 und 2017
 In diesem Tutorial verwenden Sie eine SQL Server-Datenbank als *Quelldatenspeicher*. Die Pipeline in der in diesem Tutorial erstellten Data Factory kopiert Daten aus dieser SQL Server-Datenbank (Quelle) in Azure Blob Storage (Senke). Anschließend erstellen Sie eine Tabelle mit dem Namen **emp** in Ihrer SQL Server-Datenbank und fügen einige Einträge in die Tabelle ein.

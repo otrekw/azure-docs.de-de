@@ -7,17 +7,17 @@ ms.reviewer: camerost, logicappspm
 ms.topic: conceptual
 ms.date: 10/27/2020
 ms.openlocfilehash: f5b04c563dc81497f591788dc4890d379c0f898f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93102690"
 ---
 # <a name="handle-stored-procedure-timeouts-in-the-sql-connector-for-azure-logic-apps"></a>Behandeln von Timeouts bei gespeicherten Prozeduren im SQL-Connector für Azure Logic Apps
 
 Wenn Ihre Logik-App mit derart großen Resultsets arbeitet, dass der [SQL-Connector](../connectors/connectors-create-api-sqlazure.md) nicht alle Ergebnisse gleichzeitig zurückgibt, oder wenn Sie mehr Kontrolle über die Größe und Struktur Ihrer Resultsets wünschen, können Sie eine [gespeicherte Prozedur](/sql/relational-databases/stored-procedures/stored-procedures-database-engine) erstellen, die die Ergebnisse nach Ihren Wünschen organisiert. Der SQL-Connector bietet viele Back-End-Funktionen, auf die Sie über [Azure Logic Apps](../logic-apps/logic-apps-overview.md) zugreifen können, sodass Sie Geschäftsaufgaben, die mit SQL-Datenbanktabellen arbeiten, einfacher automatisieren können.
 
-Beispiel: Beim Abrufen oder Einfügen mehrerer Zeilen kann Ihre Logik-App diese Zeilen mithilfe einer [**Until** -Schleife](../logic-apps/logic-apps-control-flow-loops.md#until-loop) innerhalb dieser [Grenzwerte](../logic-apps/logic-apps-limits-and-config.md) durchlaufen. Wenn Ihre Logik-App jedoch mit Tausenden oder Millionen von Zeilen arbeiten muss, sollten Sie die Kosten aufgrund von Aufrufen der Datenbank minimieren. Weitere Informationen finden Sie unter [Verarbeiten von Massendaten mit dem SQL-Connector](../connectors/connectors-create-api-sqlazure.md#handle-bulk-data).
+Beispiel: Beim Abrufen oder Einfügen mehrerer Zeilen kann Ihre Logik-App diese Zeilen mithilfe einer [**Until**-Schleife](../logic-apps/logic-apps-control-flow-loops.md#until-loop) innerhalb dieser [Grenzwerte](../logic-apps/logic-apps-limits-and-config.md) durchlaufen. Wenn Ihre Logik-App jedoch mit Tausenden oder Millionen von Zeilen arbeiten muss, sollten Sie die Kosten aufgrund von Aufrufen der Datenbank minimieren. Weitere Informationen finden Sie unter [Verarbeiten von Massendaten mit dem SQL-Connector](../connectors/connectors-create-api-sqlazure.md#handle-bulk-data).
 
 <a name="timeout-limit"></a>
 
@@ -154,7 +154,7 @@ Es folgen die Schritte, die Sie hinzufügen müssen:
 
 ### <a name="start-the-job-and-pass-the-parameters"></a>Starten des Auftrags und Übergeben der Parameter
 
-Um den Auftrag zu starten, verwenden Sie eine native Passthrough-Abfrage mit der Aktion [**SQL-Abfrage ausführen**](/connectors/sql/#execute-a-sql-query-(v2)), und übertragen Sie die Parameter des Auftrags sofort in die Zustandstabelle. Um Eingaben für das Attribut `jobid` in der Zieltabelle bereitzustellen, fügt Logic Apps eine **For Each** -Schleife hinzu, die die Tabellenausgabe der vorhergehenden Aktion durchläuft. Führen Sie für jede Auftragsausführungs-ID die Aktion **Zeile einfügen** aus, die die dynamische Datenausgabe`ResultSets JobExecutionId` verwendet, um die Parameter für den Auftrag hinzuzufügen, mit denen er entpackt und an die gespeicherte Prozedur übergeben werden soll.
+Um den Auftrag zu starten, verwenden Sie eine native Passthrough-Abfrage mit der Aktion [**SQL-Abfrage ausführen**](/connectors/sql/#execute-a-sql-query-(v2)), und übertragen Sie die Parameter des Auftrags sofort in die Zustandstabelle. Um Eingaben für das Attribut `jobid` in der Zieltabelle bereitzustellen, fügt Logic Apps eine **For Each**-Schleife hinzu, die die Tabellenausgabe der vorhergehenden Aktion durchläuft. Führen Sie für jede Auftragsausführungs-ID die Aktion **Zeile einfügen** aus, die die dynamische Datenausgabe`ResultSets JobExecutionId` verwendet, um die Parameter für den Auftrag hinzuzufügen, mit denen er entpackt und an die gespeicherte Prozedur übergeben werden soll.
 
 ![Screenshot mit Aktionen, die zum Starten des Auftrags und Übergeben von Parametern an die gespeicherte Prozedur zu verwenden sind.](media/handle-long-running-stored-procedures-sql-connector/start-job-actions.png)
 

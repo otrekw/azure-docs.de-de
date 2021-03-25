@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
 ms.openlocfilehash: 1e913e3a5356ad7f49d8b3066f5bd3da7eddd2c2
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93308778"
 ---
 # <a name="publisher-verification"></a>Herausgeberüberprüfung
@@ -33,11 +33,11 @@ Diese Funktion ist hauptsächlich für Entwickler vorgesehen, die mehrinstanzenf
 
 ## <a name="benefits"></a>Vorteile
 Die Herausgeberüberprüfung bietet die folgenden Vorteile:
-- **Erhöhte Transparenz und Risikominderung für Kunden** : Diese Funktion unterstützt Kunden dabei, zu verstehen, welche Apps in ihren Organisationen von Entwicklern veröffentlicht werden, denen sie vertrauen. 
+- **Erhöhte Transparenz und Risikominderung für Kunden**: Diese Funktion unterstützt Kunden dabei, zu verstehen, welche Apps in ihren Organisationen von Entwicklern veröffentlicht werden, denen sie vertrauen. 
 
-- **Verbessertes Branding** : In der Azure AD- [Zustimmungsaufforderung](application-consent-experience.md), auf der Seite „Unternehmens-Apps“ und auf weiteren von Endbenutzern und Administratoren verwendeten Benutzeroberflächen wird ein Überprüfungsbadge angezeigt. 
+- **Verbessertes Branding**: In der Azure AD-[Zustimmungsaufforderung](application-consent-experience.md), auf der Seite „Unternehmens-Apps“ und auf weiteren von Endbenutzern und Administratoren verwendeten Benutzeroberflächen wird ein Überprüfungsbadge angezeigt. 
 
-- **Reibungslosere Einführung in Unternehmen** : Administratoren können [Benutzerzustimmungsrichtlinien](../manage-apps/configure-user-consent.md) konfigurieren, wobei der Status der Herausgeberüberprüfung eines der wichtigsten Richtlinienkriterien darstellt.
+- **Reibungslosere Einführung in Unternehmen**: Administratoren können [Benutzerzustimmungsrichtlinien](../manage-apps/configure-user-consent.md) konfigurieren, wobei der Status der Herausgeberüberprüfung eines der wichtigsten Richtlinienkriterien darstellt.
 
 > [!NOTE]
 > Ab November 2020 können Endbenutzer den meisten neu registrierten mehrinstanzenfähigen Apps ohne verifizierten Herausgeber keine Benutzerzustimmung mehr erteilen. Dies gilt für Apps, die nach dem 8. November 2020 registriert werden. Verwenden Sie OAuth 2.0, um Berechtigungen anzufordern, die über das grundlegende Benutzerprofil mit Anmelden und Lesen hinausgehen, und fordern Sie in anderen Mandanten als dem, für den die App registriert ist, die Zustimmung von den Benutzern an. Auf dem Zustimmungsbildschirm wird eine Warnung angezeigt, welche die Benutzer informiert, dass diese Apps riskant sind und von nicht verifizierten Herausgebern stammen.    

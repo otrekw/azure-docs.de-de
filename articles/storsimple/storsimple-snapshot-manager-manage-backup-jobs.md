@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 3c26a84e32a17cba83b5ca895f146e561072fa62
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95998191"
 ---
 # <a name="use-storsimple-snapshot-manager-to-view-and-manage-backup-jobs"></a>Verwenden von StorSimple Snapshot Manager zum Anzeigen und Verwalten von Sicherungsaufträgen
@@ -35,30 +35,30 @@ Verwenden Sie das folgende Verfahren, um geplante Sicherungsaufträge anzuzeigen
 1. Klicken Sie auf das Desktopsymbol, um den StorSimple Snapshot Manager zu starten. 
 2. Erweitern Sie im Fenster **Bereich** den Knoten **Aufträge**, und klicken Sie auf **Geplant**. Die folgenden Informationen werden im **Ergebnisbereich** angezeigt:
    
-   * **Name** – der Name der geplanten Momentaufnahme
-   * **Nächste Ausführung** – das Datum und die Uhrzeit der nächsten geplanten Momentaufnahme
-   * **Letzte Ausführung** – das Datum und die Uhrzeit der letzten geplanten Momentaufnahme
+   * **Name**: Der Name der geplanten Momentaufnahme.
+   * **Nächste Ausführung**: Datum und Uhrzeit der nächsten geplanten Momentaufnahme.
+   * **Letzte Ausführung**: Datum und Uhrzeit der zuletzt geplanten Momentaufnahme.
      
      > [!NOTE]
-     > Bei einmaligen Momentaufnahmen sind die Informationen **Nächste Ausführung** und **Letzte Ausführung** identisch.
+     > Bei einmaligen Momentaufnahmen sind die Angaben unter **Nächste Ausführung** und **Letzte Ausführung** identisch.
      
      ![Geplante Sicherungsaufträge](./media/storsimple-snapshot-manager-manage-backup-jobs/HCS_SSM_Jobs_scheduled.png) 
 3. Um zusätzliche Aktionen für einen bestimmten Auftrag durchzuführen, klicken Sie mit der rechten Maustaste auf den Namen des Auftrags im Bereich **Ergebnisse** , und wählen Sie aus den Menüoptionen.
 
-## <a name="view-recent-jobs"></a>Anzeigen kürzlich ausgeführter Aufträge
+## <a name="view-recent-jobs"></a>Anzeigen der zuletzt verwendeten Aufträge
 Verwenden Sie das folgende Verfahren zum Anzeigen von Sicherungs- und Wiederherstellungsaufträgen, die in den letzten 24 Stunden abgeschlossen wurden.
 
 #### <a name="to-view-recent-jobs"></a>So zeigen Sie kürzlich ausgeführte Aufträge an:
 1. Klicken Sie auf das Desktopsymbol, um den StorSimple Snapshot Manager zu starten.
-2. Erweitern Sie im Fenster **Bereich** den Knoten **Aufträge**, und klicken Sie auf **Letzte 24 Stunden**. Der Bereich **Ergebnisse** zeigt Sicherungsaufträge für die letzten 24 Stunden an (bis maximal 64 Aufträge). Die folgenden Informationen erscheinen im Bereich **Ergebnisse**, abhängig von den unter **Ansicht** angegebenen Optionen:
+2. Erweitern Sie im Fenster **Bereich** den Knoten **Aufträge**, und klicken Sie auf **Letzte 24 Stunden**. Das Ergebnisfenster zeigt Sicherungsaufgaben für die letzten 24 Stunden (bis maximal 64 Aufträge) an. Im Ergebnisbereich werden, abhängig von den unter **Ansicht** angegebenen Optionen, die folgenden Informationen angezeigt:
    
-   * **Name** – der Name der geplanten Momentaufnahme.
-   * **Gestartet** – das Datum und die Startzeit der Momentaufnahme.
-   * **Beendet**: das Datum und die Uhrzeit, zu der die Momentaufnahme abgeschlossen oder beendet wurde.
-   * **Verstrichen**: die Zeitspanne zwischen den Zeiten **Gestartet** und **Beendet**.
-   * **Status**: der Status des zuletzt abgeschlossenen Auftrags. **Erfolgreich**: Gibt an, dass die Sicherung erfolgreich erstellt wurde. **Fehler**: Gibt an, dass der Auftrag nicht erfolgreich ausgeführt wurde.
-   * **Informationen**: die Ursache für den Fehler.
-   * **Verarbeitete Bytes (MB)** : die Menge der Daten aus der Volumegruppe, die (in MB) verarbeitet wurde. 
+   * **Name**: Der Name der geplanten Momentaufnahme.
+   * **Gestartet**: Startdatum und -zeit der Momentaufnahme.
+   * **Beendet**: Datum und Uhrzeit, zu dem bzw. der die Momentaufnahme fertig gestellt oder beendet wurde.
+   * **Verstrichen**: Die verstrichene Zeitspanne zischen den Zeiten unter **Gestartet** und **Beendet**.
+   * **Status**: Der Status des zuletzt abgeschlossenen Auftrags. **Erfolg** gibt an, dass die Sicherung erfolgreich erstellt wurde. **Fehler** gibt an, dass der Auftrag nicht erfolgreich ausgeführt wurde.
+   * **Informationen**: Die Ursache für den Fehler.
+   * **Verarbeitete Bytes (MB)**: Die Datenmenge der Volumegruppe, die bereits verarbeitet wurde (in MB). 
      
      ![Aufträge, die in den letzten 24 Stunden ausgeführt wurden](./media/storsimple-snapshot-manager-manage-backup-jobs/HCS_SSM_Jobs_Last_24_hours.png) 
 3. Um zusätzliche Aktionen für einen bestimmten Auftrag durchzuführen, klicken Sie mit der rechten Maustaste auf den Namen des Auftrags im Bereich **Ergebnisse** , und wählen Sie aus den Menüoptionen.
@@ -72,11 +72,11 @@ Verwenden Sie das folgende Verfahren zum Anzeigen von Aufträgen, die derzeit au
 1. Klicken Sie auf das Desktopsymbol, um den StorSimple Snapshot Manager zu starten.
 2. Erweitern Sie im Fenster **Bereich** den Knoten **Aufträge**, und klicken Sie auf **Wird ausgeführt**. Abhängig von den unter **Ansicht** angegebenen Optionen werden im Bereich **Ergebnisse** die folgenden Informationen angezeigt:
    
-   * **Name** – der Name der geplanten Momentaufnahme.
-   * **Gestartet** – das Datum und die Startzeit der Momentaufnahme.
-   * **Prüfpunkt** – die aktuelle Sicherungsaktion.
-   * **Status** – der Prozentsatz der Fertigstellung.
-   * **Verstrichene** – die Zeitspanne, die seit dem Start der Sicherung vergangen ist. 
+   * **Name**: Der Name der geplanten Momentaufnahme.
+   * **Gestartet**: Startdatum und -zeit der Momentaufnahme.
+   * **Prüfpunkt** – Die aktuelle Aktion der Sicherung.
+   * **Status** – Der Vollendungsgrad in Prozent.
+   * **Verstrichen**: Die seit dem Sicherungsstart verstrichene Zeit. 
    * **Durchschnittlicher Durchsatz (MB)** – Verhältnis der gesamten verarbeiteten Datenbytes zur gesamten Verarbeitungszeit (in MB).
    * **Verarbeitete Bytes (MB)** – gesamte verarbeitete Datenbytes (in MB).
    * **Geschriebene Bytes (MB)** – gesamte geschriebene Datenbytes (in MB). Dieser Wert umfasst die Daten sowie die Metadaten und ist daher normalerweise größer als der Wert von „Verarbeitete Bytes (MB)“.

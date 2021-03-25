@@ -6,10 +6,10 @@ services: container-service
 ms.topic: article
 ms.date: 08/17/2020
 ms.openlocfilehash: 9b51ee2767a9595f5732f558cfa25f5064944e49
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93131189"
 ---
 # <a name="create-an-ingress-controller-in-azure-kubernetes-service-aks"></a>Erstellen eines Eingangscontrollers in Azure Kubernetes Service (AKS)
@@ -72,9 +72,9 @@ Es wurden noch keine Eingangsregeln erstellt, sodass die Standard-404-Seite des 
 
 ## <a name="run-demo-applications"></a>Ausführen von Demoanwendungen
 
-Um den Eingangscontroller in Aktion zu sehen, führen Sie zwei Demoanwendungen im AKS-Cluster aus. In diesem Beispiel verwenden Sie `kubectl apply`, um mehrere Instanzen einer einfachen *Hallo Welt* -Anwendung auszuführen.
+Um den Eingangscontroller in Aktion zu sehen, führen Sie zwei Demoanwendungen im AKS-Cluster aus. In diesem Beispiel verwenden Sie `kubectl apply`, um mehrere Instanzen einer einfachen *Hallo Welt*-Anwendung auszuführen.
 
-Erstellen Sie die Datei *aks-helloworld-one.yaml* , und kopieren Sie den folgenden YAML-Beispielcode hinein:
+Erstellen Sie die Datei *aks-helloworld-one.yaml*, und kopieren Sie den folgenden YAML-Beispielcode hinein:
 
 ```yml
 apiVersion: apps/v1
@@ -112,7 +112,7 @@ spec:
     app: aks-helloworld-one
 ```
 
-Erstellen Sie die Datei *aks-helloworld-two.yaml* , und kopieren Sie den folgenden YAML-Beispielcode hinein:
+Erstellen Sie die Datei *aks-helloworld-two.yaml*, und kopieren Sie den folgenden YAML-Beispielcode hinein:
 
 ```yml
 apiVersion: apps/v1
@@ -163,7 +163,7 @@ Beide Anwendungen werden jetzt in Ihrem Kubernetes-Cluster ausgeführt. Zum Weit
 
 Im folgenden Beispiel wird der Datenverkehr an *EXTERNAL_IP* an den Dienst mit dem Namen `aks-helloworld-one` weitergeleitet. Datenverkehr an *EXTERNAL_IP/hello-world-two* wird an den Dienst `aks-helloworld-two` weitergeleitet. Datenverkehr an *EXTERNAL_IP/static* wird für statische Ressourcen an den Dienst mit dem Namen `aks-helloworld-one` weitergeleitet.
 
-Erstellen Sie eine Datei mit dem Namen *hello-world-ingress.yaml* , und fügen Sie den folgenden YAML-Beispielcode ein.
+Erstellen Sie eine Datei mit dem Namen *hello-world-ingress.yaml*, und fügen Sie den folgenden YAML-Beispielcode ein.
 
 ```yaml
 apiVersion: networking.k8s.io/v1beta1
@@ -245,7 +245,7 @@ kubectl delete namespace ingress-basic
 
 ### <a name="delete-resources-individually"></a>Löschen einzelner Ressourcen
 
-Mehr Kontrolle bietet eine andere Vorgehensweise, bei der Sie einzelne Ressourcen löschen. Listen Sie mit dem Befehl `helm list` die Helm-Releases auf. Suchen Sie nach Diagrammen mit den Namen *nginx-ingress* und *aks-helloworld* , wie in der folgenden Beispielausgabe gezeigt:
+Mehr Kontrolle bietet eine andere Vorgehensweise, bei der Sie einzelne Ressourcen löschen. Listen Sie mit dem Befehl `helm list` die Helm-Releases auf. Suchen Sie nach Diagrammen mit den Namen *nginx-ingress* und *aks-helloworld*, wie in der folgenden Beispielausgabe gezeigt:
 
 ```
 $ helm list --namespace ingress-basic

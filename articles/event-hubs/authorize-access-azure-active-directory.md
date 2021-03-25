@@ -4,10 +4,10 @@ description: Dieser Artikel bietet Informationen zum Autorisieren des Zugriffs a
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: d794b03fdbb5429983788c74cbb05a7c13bf2d76
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92910796"
 ---
 # <a name="authorize-access-to-event-hubs-resources-using-azure-active-directory"></a>Autorisieren des Zugriffs auf Event Hubs-Ressourcen mit Azure Active Directory
@@ -46,11 +46,11 @@ Bevor Sie einem Sicherheitsprinzipal eine Azure-Rolle zuweisen, legen Sie den Zu
 
 In der folgenden Liste werden die Ebenen beschrieben, auf denen Sie den Zugriff auf Event Hubs-Ressourcen einschränken können, beginnend mit dem kleinstmöglichen Bereich:
 
-- **Consumergruppe** : Bei diesem Umfang gilt die Rollenzuweisung nur für diese Entität. Derzeit unterstützt das Azure-Portal keine Zuweisung einer Azure-Rolle zu einem Sicherheitsprinzipal auf dieser Ebene. 
-- **Event Hub** : Die Rollenzuweisung gilt für die Event Hub-Entität und die darunter vorhandene Consumergruppe.
-- **Namespace** : Die Rollenzuweisung umfasst die gesamte Topologie von Event Hubs unter dem Namespace sowie die ihm zugeordnete Consumergruppe.
-- **Ressourcengruppe** : Die Rollenzuweisung gilt für alle Event Hubs-Ressourcen unter der Ressourcengruppe.
-- **Abonnement** : Die Rollenzuweisung gilt für alle Event Hubs-Ressourcen in allen Ressourcengruppen im Abonnement.
+- **Consumergruppe**: Bei diesem Umfang gilt die Rollenzuweisung nur für diese Entität. Derzeit unterstützt das Azure-Portal keine Zuweisung einer Azure-Rolle zu einem Sicherheitsprinzipal auf dieser Ebene. 
+- **Event Hub**: Die Rollenzuweisung gilt für die Event Hub-Entität und die darunter vorhandene Consumergruppe.
+- **Namespace**: Die Rollenzuweisung umfasst die gesamte Topologie von Event Hubs unter dem Namespace sowie die ihm zugeordnete Consumergruppe.
+- **Ressourcengruppe**: Die Rollenzuweisung gilt für alle Event Hubs-Ressourcen unter der Ressourcengruppe.
+- **Abonnement**: Die Rollenzuweisung gilt für alle Event Hubs-Ressourcen in allen Ressourcengruppen im Abonnement.
 
 > [!NOTE]
 > - Denken Sie daran, dass die Weitergabe von Azure-Rollenzuweisungen bis zu fünf Minuten dauern kann. 
@@ -64,10 +64,10 @@ Weitere Informationen dazu, wie integrierte Rollen definiert sind, finden Sie un
 ## <a name="samples"></a>Beispiele
 - [Microsoft.Azure.EventHubs-Beispiele](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac). 
     
-    In diesen Beispielen wird die alte **Microsoft.Azure.EventHubs** -Bibliothek verwendet, aber Sie können sie problemlos so aktualisieren, dass die neueste **Azure.Messaging.EventHubs** -Bibliothek verwendet wird. Informationen dazu, wie Sie das Beispiel nicht mit der alten, sondern mit der neuen Bibliothek verwenden, finden Sie in der [Anleitung für die Migration von Microsoft.Azure.EventHubs zu Azure.Messaging.EventHubs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md).
+    In diesen Beispielen wird die alte **Microsoft.Azure.EventHubs**-Bibliothek verwendet, aber Sie können sie problemlos so aktualisieren, dass die neueste **Azure.Messaging.EventHubs**-Bibliothek verwendet wird. Informationen dazu, wie Sie das Beispiel nicht mit der alten, sondern mit der neuen Bibliothek verwenden, finden Sie in der [Anleitung für die Migration von Microsoft.Azure.EventHubs zu Azure.Messaging.EventHubs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md).
 - [Azure.Messaging.EventHubs-Beispiele](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp)
 
-    Dieses Beispiel wurde so aktualisiert, dass die aktuelle **Azure.Messaging.EventHubs** -Bibliothek verwendet wird.
+    Dieses Beispiel wurde so aktualisiert, dass die aktuelle **Azure.Messaging.EventHubs**-Bibliothek verwendet wird.
 - [Event Hubs für Kafka – OAuth-Beispiele](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth) 
 
 

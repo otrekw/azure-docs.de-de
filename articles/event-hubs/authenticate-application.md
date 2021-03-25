@@ -4,10 +4,10 @@ description: Dieser Artikel enthält Informationen zur Authentifizierung einer A
 ms.topic: conceptual
 ms.date: 10/21/2020
 ms.openlocfilehash: 25ec5f11ca7b5e801e18155f1a3da6474c8e66e2
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92913312"
 ---
 # <a name="authenticate-an-application-with-azure-active-directory-to-access-event-hubs-resources"></a>Authentifizieren einer Anwendung mit Azure Active Directory, um auf Azure Event Hubs-Ressourcen zuzugreifen
@@ -81,10 +81,10 @@ Nach dem Registrieren der Anwendung weisen Sie den Dienstprinzipal der Anwendung
 1. Führen Sie auf der Seite **Rollenzuweisung hinzufügen** die folgenden Schritte aus:
     1. Wählen Sie die **Event Hubs-Rolle** aus, die Sie zuweisen möchten. 
     1. Suchen Sie nach dem **Sicherheitsprinzipal** (Benutzer, Gruppe, Dienstprinzipal), dem Sie die Rolle zuweisen möchten. Wählen Sie die **registrierte Anwendung** aus der Liste aus. 
-    1. Klicken Sie auf **Speichern** , um die Rollenzuweisung zu speichern. 
+    1. Klicken Sie auf **Speichern**, um die Rollenzuweisung zu speichern. 
 
         ![Zuweisen einer Rolle zu einem Benutzer](./media/authenticate-application/assign-role-to-user.png)
-    4. Wechseln Sie zur Registerkarte **Rollenzuweisungen** , und überprüfen Sie die Rollenzuweisung. Die folgende Abbildung zeigt beispielsweise, dass sich **mywebapp** in der Rolle **Azure Event Hubs-Datensender** befindet. 
+    4. Wechseln Sie zur Registerkarte **Rollenzuweisungen**, und überprüfen Sie die Rollenzuweisung. Die folgende Abbildung zeigt beispielsweise, dass sich **mywebapp** in der Rolle **Azure Event Hubs-Datensender** befindet. 
         
         ![Benutzer in der Liste](./media/authenticate-application/user-in-list.png)
 
@@ -99,10 +99,10 @@ Eine Liste der Szenarien, für die das Abrufen von Token unterstützt wird, find
 ## <a name="samples"></a>Beispiele
 - [Microsoft.Azure.EventHubs-Beispiele](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac). 
     
-    In diesen Beispielen wird die alte **Microsoft.Azure.EventHubs** -Bibliothek verwendet, aber Sie können sie problemlos so aktualisieren, dass die neueste **Azure.Messaging.EventHubs** -Bibliothek verwendet wird. Informationen dazu, wie Sie das Beispiel nicht mit der alten, sondern mit der neuen Bibliothek verwenden, finden Sie in der [Anleitung für die Migration von Microsoft.Azure.EventHubs zu Azure.Messaging.EventHubs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md).
+    In diesen Beispielen wird die alte **Microsoft.Azure.EventHubs**-Bibliothek verwendet, aber Sie können sie problemlos so aktualisieren, dass die neueste **Azure.Messaging.EventHubs**-Bibliothek verwendet wird. Informationen dazu, wie Sie das Beispiel nicht mit der alten, sondern mit der neuen Bibliothek verwenden, finden Sie in der [Anleitung für die Migration von Microsoft.Azure.EventHubs zu Azure.Messaging.EventHubs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md).
 - [Azure.Messaging.EventHubs-Beispiele](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp)
 
-    Dieses Beispiel wurde so aktualisiert, dass die aktuelle **Azure.Messaging.EventHubs** -Bibliothek verwendet wird.
+    Dieses Beispiel wurde so aktualisiert, dass die aktuelle **Azure.Messaging.EventHubs**-Bibliothek verwendet wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Weitere Informationen zur Azure RBAC finden Sie im Artikel [Was ist die rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)?](../role-based-access-control/overview.md).

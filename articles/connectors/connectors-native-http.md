@@ -3,16 +3,16 @@ title: Aufrufen von Dienstendpunkten per HTTP oder HTTPS
 description: Senden von ausgehenden HTTP- oder HTTPS-Anforderungen an Dienstendpunkte aus Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-ms.reviewer: jonfan, logicappspm
+ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
-ms.date: 09/14/2020
+ms.date: 02/18/2021
 tags: connectors
-ms.openlocfilehash: f2835bda8ac7242b7a3ea4ea63401f26b9c8e426
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: dab5b755347e46d8d509e8014bba8f496ca9c900
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99062994"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101719439"
 ---
 # <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>Aufrufen von Dienstendpunkten per HTTP oder HTTPS aus Azure Logic Apps
 
@@ -249,8 +249,8 @@ Wenn ein HTTP-Trigger oder eine HTTP-Aktion diese Header enthält, entfernt Logi
 
 * `Accept-*`-Header, außer für `Accept-version`
 * `Allow`
-* `Content-*`-Header mit Ausnahme von `Content-Disposition`, `Content-Encoding` und `Content-Type`, wenn Sie POST- und PUT-Vorgänge verwenden, aber nicht für GET-Vorgänge
-* `Cookie`
+* `Content-*`-Header außer für `Content-Disposition`, `Content-Encoding` und `Content-Type`, die berücksichtigt werden, wenn Sie die POST- und PUT-Vorgänge verwenden. Logic Apps löscht diese Header jedoch, wenn Sie den GET-Vorgang verwenden.
+* `Cookie`-Header, aber Logic Apps berücksichtigt jeden Wert den Sie mithilfe der **Cookie**-Eigenschaft angeben.
 * `Expires`
 * `Host`
 * `Last-Modified`

@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 10/07/2020
 ms.openlocfilehash: 1690b8d143b86e5caa691f5f8f479f715f57f0c8
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99054652"
 ---
 # <a name="tutorial-create-automated-approval-based-workflows-by-using-azure-logic-apps"></a>Tutorial: Erstellen automatisierter genehmigungsbasierter Workflows mithilfe von Azure Logic Apps
@@ -44,7 +44,7 @@ Am Ende entspricht Ihre Logik-App grob dem folgenden Workflow:
 
 * Ein E-Mail-Konto bei Office 365 Outlook oder Outlook.com, das Genehmigungsworkflows unterstützt. Dieses Tutorial verwendet Office 365 Outlook. Bei Verwendung eines anderen E-Mail-Kontos bleiben die allgemeinen Schritte zwar gleich, die Benutzeroberfläche sieht aber unter Umständen etwas anders aus.
 
-* Falls Ihre Logik-App über eine Firewall kommunizieren muss, mit der der Datenverkehr auf bestimmte IP-Adressen beschränkt wird, muss Folgendes sichergestellt sein: In der Firewall muss der Zugriff für IP-Adressen, die vom Logic Apps-Dienst oder der Runtime in der Azure-Region Ihrer Logik-App genutzt werden, in [eingehender](logic-apps-limits-and-config.md#inbound) *und* [ausgehender](logic-apps-limits-and-config.md#outbound) Richtung zugelassen sein. Falls für Ihre Logik-App auch [verwaltete Connectors](../connectors/apis-list.md#managed-api-connectors) (Office 365 Outlook-Connector oder SQL-Connector) oder [benutzerdefinierte Connectors](/connectors/custom-connectors/) verwendet werden, muss in der Firewall in der Azure-Region Ihrer Logik-App zusätzlich der Zugriff für *alle* [ausgehenden IP-Adressen der verwalteten Connectors](logic-apps-limits-and-config.md#outbound) zulässig sein.
+* Falls Ihre Logik-App über eine Firewall kommunizieren muss, mit der der Datenverkehr auf bestimmte IP-Adressen beschränkt wird, muss Folgendes sichergestellt sein: In der Firewall muss der Zugriff für IP-Adressen, die vom Logic Apps-Dienst oder der Runtime in der Azure-Region Ihrer Logik-App genutzt werden, in [eingehender](logic-apps-limits-and-config.md#inbound) *und* [ausgehender](logic-apps-limits-and-config.md#outbound) Richtung zugelassen sein. Wenn Ihre Logik-App außerdem [verwaltete Connectors](../connectors/apis-list.md#managed-api-connectors) (etwa den Office 365 Outlook-Connector oder den SQL-Connector) oder [benutzerdefinierte Connectors](/connectors/custom-connectors/) verwendet, muss die Firewall außerdem den Zugriff für *alle* [ausgehenden IP-Adressen der verwalteten Connectors](logic-apps-limits-and-config.md#outbound) in der Azure-Region Ihrer Logik-App zulassen.
 
 ## <a name="create-your-logic-app"></a>Erstellen Ihrer Logik-App
 

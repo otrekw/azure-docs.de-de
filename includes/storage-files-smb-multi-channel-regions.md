@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/12/2021
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 057fc654597360a4666342f7de10bf908224f1de
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 276cc6ad12fe51947ae1db0ece6cbacec4b6771f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100521349"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732535"
 ---
 SMB Multichannel für Azure-Dateifreigaben ist derzeit nur in den folgenden Regionen verfügbar:
 
@@ -31,4 +31,4 @@ SMB Multichannel für Azure-Dateifreigaben ist derzeit nur in den folgenden Reg
 | Schweiz | Schweiz, Norden |
 | Vereinigte Arabische Emirate | Vereinigte Arabische Emirate, Norden |
 | Vereinigtes Königreich | Vereinigtes Königreich, Süden; Vereinigtes Königreich, Westen |
-| USA | „USA, Mitte“, „USA, Osten“, „USA, Norden-Mitte“, „USA, Süden-Mitte“, „USA, Westen-Mitte“ |
+| USA | „USA, Mitte“, „USA, Osten“, „USA, Norden-Mitte“, „USA, Süden-Mitte“, „USA, Westen-Mitte“, „USA, Westen 2“ |

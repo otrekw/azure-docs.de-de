@@ -4,10 +4,10 @@ description: Hier erfahren Sie, wie Sie alle Labs in einem Labkonto anzeigen und
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: cc097e97430462e36a33b982a7394a20c308eab5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95993617"
 ---
 # <a name="manage-labs-in-a-lab-account"></a>Verwalten von Labs in einem Labkonto
@@ -37,4 +37,4 @@ Befolgen Sie die Anleitung im vorherigen Abschnitt, um im Labkonto eine Liste mi
     ![Bestätigen des Löschvorgangs](./media/how-to-manage-lab-accounts/confirm-lab-delete.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen finden Sie in anderen Artikeln im Abschnitt **Schrittanleitungen** -> **Erstellen und Konfigurieren von Labkonten (Labkontobesitzer)** des Inhaltsverzeichnisses. 
+Weitere Informationen finden Sie in anderen Artikeln im **Schrittanleitungen** -> **Erstellen und Konfigurieren von Labkonten (Labkontobesitzer)** -Abschnitt des Inhaltsverzeichnisses. 

@@ -8,10 +8,10 @@ ms.date: 02/19/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
 ms.openlocfilehash: 4b95c25400317b2baac694f4ba2b1b1dc1eae098
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102435153"
 ---
 # <a name="azure-service-bus-trigger-for-azure-functions"></a>Azure Service Bus-Trigger für Azure Functions
@@ -396,7 +396,7 @@ Die `maxAutoRenewDuration` kann in der Datei *host.json* konfiguriert werden, di
 
 Der Service Bus-Trigger stellt mehrere [Metadateneigenschaften](./functions-bindings-expressions-patterns.md#trigger-metadata) bereit. Diese Eigenschaften können als Teil der Bindungsausdrücke in anderen Bindungen oder als Parameter im Code verwendet werden. Diese Eigenschaften sind Member der [Message](/dotnet/api/microsoft.azure.servicebus.message)-Klasse.
 
-|Eigenschaft|Typ|BESCHREIBUNG|
+|Eigenschaft|type|BESCHREIBUNG|
 |--------|----|-----------|
 |`ContentType`|`string`|Ein Inhaltstypbezeichner, der vom Sender und Empfänger für anwendungsspezifische Logik verwendet wird.|
 |`CorrelationId`|`string`|Die Korrelations-ID.|

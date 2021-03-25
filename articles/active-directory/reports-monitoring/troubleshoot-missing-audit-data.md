@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2f48c26a65314e2f23513fba155f07db3805a516
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93123063"
 ---
 # <a name="troubleshoot-missing-data-in-the-azure-active-directory-activity-logs"></a>Problembehandlung: Fehlende Daten in Azure Active Directory-Aktivitätsprotokollen 
@@ -74,7 +74,7 @@ Warten Sie 15 Minuten bis zwei Stunden, und überprüfen Sie dann, ob die Aktion
 
 Ich kann nur die Anmelde- und Überwachungsdaten der letzten 30 Tage aus dem Azure-Portal anzeigen. Warum? 
 
- ![Screenshot: Menu „Datum“](./media/troubleshoot-missing-audit-data/03.png)
+ ![Screenshot des Menüs „Datum“](./media/troubleshoot-missing-audit-data/03.png)
 
 ### <a name="cause"></a>Ursache
 
