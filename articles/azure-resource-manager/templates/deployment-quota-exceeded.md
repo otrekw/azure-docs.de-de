@@ -4,10 +4,10 @@ description: Beschreibt die Behebung des Fehlers, dass im Verlauf der Ressourcen
 ms.topic: troubleshooting
 ms.date: 08/07/2020
 ms.openlocfilehash: 8996d7817eea2f8daf44fbc9b4416c884b05940f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87987051"
 ---
 # <a name="resolve-error-when-deployment-count-exceeds-800"></a>Beheben des Fehlers, dass die Anzahl der Bereitstellungen 800 überschreitet

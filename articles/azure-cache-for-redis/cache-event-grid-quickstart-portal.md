@@ -7,10 +7,10 @@ ms.service: cache
 author: curib
 ms.author: cauribeg
 ms.openlocfilehash: 5bdd6b0e6f97f7e5a738ab17d68282cf402004b0
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99056483"
 ---
 # <a name="quickstart-route-azure-cache-for-redis-events-to-web-endpoint-with-the-azure-portal"></a>Schnellstart: Weiterleiten von Azure Cache for Redis-Ereignissen an einen Webendpunkt mit dem Azure-Portal
@@ -42,7 +42,7 @@ Vor dem Abonnieren der Ereignisse für die Cache-Instanz erstellen wir zunächst
     4. Aktivieren Sie das Kontrollkästchen **Ich stimme den oben genannten Geschäftsbedingungen zu**. 
     5. Wählen Sie die Option **Kaufen**. 
     
-    | Einstellung      | Vorgeschlagener Wert  | Beschreibung |
+    | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG |
     | ------------ |  ------- | -------------------------------------------------- |
     | **Abonnement** | Öffnen Sie die Dropdownliste, und wählen Sie Ihr Abonnement aus. | Das Abonnement, unter dem diese Web-App erstellt werden soll. | 
     | **Ressourcengruppe** | Öffnen Sie die Dropdownliste, und wählen Sie eine Ressourcengruppe aus, oder wählen Sie **Neu erstellen** aus, und geben Sie einen Namen für eine neue Ressourcengruppe ein. | Wenn Sie alle Ihre App-Ressourcen in einer Ressourcengruppe zusammenfassen, können Sie sie einfacher gemeinsam verwalten oder löschen. | 
@@ -75,7 +75,7 @@ In diesem Schritt abonnieren Sie ein Thema, um Event Grid mitzuteilen, welche Er
 
 4. Geben Sie auf der Seite **Ereignisabonnement erstellen** Folgendes ein: 
 
-    | Einstellung      | Vorgeschlagener Wert  | Beschreibung |
+    | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG |
     | ------------ |  ------- | -------------------------------------------------- |
     | **Name** | Geben Sie einen Namen für das Ereignisabonnement an. | Der Wert muss eine Länge von 3 bis 64 Zeichen haben. Er darf nur Buchstaben, Zahlen und Bindestriche enthalten. | 
     | **Ereignistypen** | Wählen Sie in der Dropdownliste aus, welche Ereignistypen per Pushvorgang auf Ihr Ziel übertragen werden sollen. Für diese Schnellstartanleitung skalieren wir unsere Cache-Instanz. | „Patchen“, „Skalierung“, „Import“ und „Export“ sind die verfügbaren Optionen. | 

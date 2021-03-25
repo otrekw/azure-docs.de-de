@@ -12,10 +12,10 @@ ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 5b33f10a0cb969d5fc0118eee0be371929f918a9
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98117638"
 ---
 # <a name="data-warehouse-units-dwus-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Data Warehouse-Einheiten (DWUs) für den dedizierten SQL-Pool (früher SQL DW) in Azure Synapse Analytics
@@ -107,7 +107,7 @@ Integrierte Azure-Rollen wie „Mitwirkender von SQL DB“ und „SQL Server-Mit
 So zeigen Sie die aktuellen DWU-Einstellungen an:
 
 1. Öffnen Sie den Objekt-Explorer von SQL Server in Visual Studio.
-2. Stellen Sie eine Verbindung mit der Masterdatenbank her, die dem logischen SQL-Server zugeordnet ist.
+2. Stellen Sie eine Verbindung mit der Masterdatenbank mit dem logischen SQL-Server her.
 3. Treffen Sie eine Auswahl aus der dynamischen Verwaltungssicht „sys.database_service_objectives“. Beispiel:
 
 ```sql
@@ -149,7 +149,7 @@ Mit T-SQL können Sie die aktuellen DWU-Einstellungen anzeigen, die Einstellunge
 
 So ändern Sie die DWUs
 
-1. Stellen Sie eine Verbindung mit der Masterdatenbank her, die Ihrem Server zugeordnet ist.
+1. Stellen Sie eine Verbindung mit der Masterdatenbank mit Ihrem Server her.
 2. Verwenden Sie die T-SQL-Anweisung [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true). Im folgenden Beispiel wird das Servicelevelziel für die Datenbank „MySQLDW“ auf „DW1000c“ gesetzt.
 
 ```Sql
@@ -185,7 +185,7 @@ Der Zustand der Datenbank für horizontale Hochskalierungsvorgänge kann nicht m
 
 So überprüfen Sie den Zustand von DWU-Änderungen:
 
-1. Stellen Sie eine Verbindung mit der Masterdatenbank her, die Ihrem Server zugeordnet ist.
+1. Stellen Sie eine Verbindung mit der Masterdatenbank mit Ihrem Server her.
 2. Übermitteln Sie die folgende Abfrage, um den Datenbankzustand zu überprüfen.
 
 ```sql

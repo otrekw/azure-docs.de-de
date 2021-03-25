@@ -7,40 +7,20 @@
       href: overview.md
     - name: Neues
       href: whats-new.md
-- name: Erste Schritte mit der Formularerkennung
-  expanded: true
+- name: Schnellstarts
   items:
-    - name: Verwenden der Clientbibliothek oder REST-API
+    - name: Erste Schritte mit der Clientbibliothek oder REST-API
       href: quickstarts/client-library.md
-    - name: Verwenden des Samplebezeichnungstools
+    - name: Verwenden des Beispieltools für Beschriftungen
       href: quickstarts/label-tool.md
-- name: Tutorials
+- name: Proben
   items:
-    - name: Verwenden der Formularerkennung mit Cognitive Search
-      href: ../../search/cognitive-search-custom-skill-form.md
-    - name: Verwenden der Formularerkennung mit AI Builder
-      href: tutorial-ai-builder.md
-    - name: Verwenden der Formularerkennung mit Azure Functions
-      href: tutorial-azure-function.md
-    - name: Extrahieren von Formulardaten im Massenvorgang
-      href: tutorial-bulk-processing.md
-- name: Konzepte
-  items:
-    - name: Layout-API
-      expanded: true
-      items:
-        - name: Extrahieren von Formulardaten
-          href: concept-layout.md
-    - name: Benutzerdefinierte Modelle
-      href: concept-custom.md
-    - name: Receipts
-      href: concept-receipts.md
-    - name: Visitenkarten
-      href: concept-business-cards.md
-    - name: Invoices
-      href: concept-invoices.md
-    - name: Ausweise
-      href: concept-identification-cards.md
+    - name: 'C#/.NET: SDK mit Formularerkennungs-Clientbibliothek'
+      href: /samples/azure/azure-sdk-for-net/azure-form-recognizer-client-sdk-samples
+    - name: 'Java: SDK mit Formularerkennungs-Clientbibliothek'
+      href: /samples/azure/azure-sdk-for-java/formrecognizer-java-samples
+    - name: 'Python: SDK mit Formularerkennungs-Clientbibliothek'
+      href: /samples/azure/azure-sdk-for-python/formrecognizer-samples
 - name: Anleitungen
   items:
     - name: Erstellen eines Trainingsdatasets
@@ -64,6 +44,33 @@
           href: ../containers/index.yml
     - name: Sichern und Wiederherstellen von Modellen
       href: disaster-recovery.md
+- name: Konzepte
+  items:
+    - name: Layout-API
+      expanded: true
+      items:
+        - name: Extrahieren von Formulardaten
+          href: concept-layout.md
+    - name: Benutzerdefinierte Modelle
+      href: concept-custom.md
+    - name: Receipts
+      href: concept-receipts.md
+    - name: Visitenkarten
+      href: concept-business-cards.md
+    - name: Invoices
+      href: concept-invoices.md
+    - name: Ausweise
+      href: concept-identification-cards.md
+- name: Tutorials
+  items:
+    - name: Extrahieren von Formulardaten im Massenvorgang
+      href: tutorial-bulk-processing.md
+    - name: Verwenden der Formularerkennung mit Cognitive Search
+      href: ../../search/cognitive-search-custom-skill-form.md
+    - name: Verwenden der Formularerkennung mit AI Builder
+      href: tutorial-ai-builder.md
+    - name: Verwenden der Formularerkennung mit Azure Functions
+      href: tutorial-azure-function.md
 - name: Verweis
   items:
     - name: Formularerkennungs-API Version 2.1 (preview.3)
@@ -92,7 +99,7 @@
       href: 'https://go.microsoft.com/fwlink/?linkid=2087185'
     - name: Sprachunterstützung
       href: language-support.md
-    - name: Compliance
+    - name: Kompatibilität
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Verschlüsselung
       href: encrypt-data-at-rest.md

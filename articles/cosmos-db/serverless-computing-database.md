@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: sngun
 ms.openlocfilehash: 73a34cc27eaba33d04f4d31585c7f494f58e7274
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93334071"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>Serverloses Datenbankcomputing mit Azure Cosmos DB und Azure Functions
@@ -124,7 +124,7 @@ Azure Functions bietet die Möglichkeit, skalierbare Arbeitseinheiten bzw. präz
 
 Azure Cosmos DB empfiehlt sich als folgenden Gründen als Datenbank für Ihre Architektur für serverloses Computing:
 
-* **Sofortiger Zugriff auf alle Ihre Daten** : Sie verfügen über präzisen Zugriff auf jeden gespeicherten Wert, da Azure Cosmos DB sämtliche Daten standardmäßig [automatisch indiziert](index-policy.md) und die Indizes sofort verfügbar macht. Das heißt, dass Sie laufend in der Lage sind, Ihre Datenbank abzufragen, zu aktualisieren und der Datenbank neue Elemente hinzuzufügen, und der sofortige Zugriff über Azure Functions ist möglich.
+* **Sofortiger Zugriff auf alle Ihre Daten**: Sie verfügen über präzisen Zugriff auf jeden gespeicherten Wert, da Azure Cosmos DB sämtliche Daten standardmäßig [automatisch indiziert](index-policy.md) und die Indizes sofort verfügbar macht. Das heißt, dass Sie laufend in der Lage sind, Ihre Datenbank abzufragen, zu aktualisieren und der Datenbank neue Elemente hinzuzufügen, und der sofortige Zugriff über Azure Functions ist möglich.
 
 * **Ohne Schema**. Azure Cosmos DB verfügt über kein Schema, daher kann jede Datenausgabe von einer Azure-Funktion verarbeitet werden. Durch diesen Ansatz der „uneingeschränkten Verarbeitung“ kann eine Vielzahl von Funktionen erstellt werden, die Daten in Azure Cosmos DB ausgeben.
 

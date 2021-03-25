@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
 ms.openlocfilehash: 71ce0d87faa33bd7d533242edfcf3b131c8f7e47
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98943956"
 ---
 # <a name="compute-context-options-for-ml-services-on-hdinsight"></a>Computekontextoptionen für ML Services in HDInsight
@@ -39,8 +39,8 @@ In der folgenden Tabelle werden die verschiedenen Optionen für den Computekonte
 | ---------------- | ------------------------------- | ---------------------------------------- |
 | Lokal sequenziell | rxSetComputeContext('local')    | Parallele Ausführung auf den Kernen des Edgeknotenservers außer für rxExec-Aufrufe, die seriell ausgeführt werden |
 | Lokal parallel   | rxSetComputeContext('localpar') | Parallele Ausführung auf den Kernen des Edgeknotenservers |
-| Spark            | RxSpark()                       | Parallelisierte verteilte Ausführung mit Spark über die Knoten des HDI-Clusters hinweg |
-| Map Reduce       | RxHadoopMR()                    | Parallelisierte verteilte Ausführung mit Map Reduce über die Knoten des HDI-Clusters hinweg |
+| Spark            | RxSpark()                       | Parallelisierte verteilte Ausführung mit Spark über die Knoten des HDI-Clusters hinweg  |
+| Map Reduce       | RxHadoopMR()                    | Parallelisierte verteilte Ausführung mit Map Reduce über die Knoten des HDI-Clusters hinweg  |
 
 ## <a name="guidelines-for-deciding-on-a-compute-context"></a>Entscheidungsrichtlinien für die Wahl eines Computekontexts
 

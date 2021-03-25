@@ -4,10 +4,10 @@ description: In diesem Artikel finden Sie Antworten auf häufig gestellte Fragen
 ms.topic: conceptual
 ms.date: 11/7/2019
 ms.openlocfilehash: bf662600bafcd18b00c8f8d3b673fc3f9c110aca
-ms.sourcegitcommit: 1d366d72357db47feaea20c54004dc4467391364
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95400206"
 ---
 # <a name="frequently-asked-questions--back-up-sap-hana-databases-on-azure-vms"></a>Häufig gestellte Fragen: Sichern von SAP HANA-Datenbanken auf virtuellen Azure-Computern
@@ -129,7 +129,7 @@ Lesen Sie den SAP HANA-Hinweis [1642148](https://launchpad.support.sap.com/#/not
 
 Ja. Sie können Streamingsicherungen, die auf einer auf SLES laufenden HANA-Datenbank ausgelöst wurden, verwenden, um sie auf einem RHEL HANA-System wiederherzustellen (und umgekehrt). Das heißt, dass die betriebssystemübergreifende Wiederherstellung mithilfe von Streamingsicherungen möglich ist. Sie müssen aber sicherstellen, dass sowohl das HANA-System, auf dem Sie die Wiederherstellung durchführen möchten, als auch das HANA-System, das für die Wiederherstellung verwendet wird, gemäß SAP für die Wiederherstellung kompatibel sind. Lesen Sie SAP HANA-Hinweis [1642148](https://launchpad.support.sap.com/#/notes/1642148), um zu erfahren, welche Wiederherstellungstypen kompatibel sind.
 
-## <a name="policy"></a>Policy
+## <a name="policy"></a>Richtlinie
 
 ### <a name="different-options-available-during-creation-of-a-new-policy-for-sap-hana-backup"></a>Verschiedene verfügbare Optionen bei der Erstellung einer neuen Richtlinie für SAP HANA-Sicherungen
 

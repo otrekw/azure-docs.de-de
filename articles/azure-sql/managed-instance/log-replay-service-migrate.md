@@ -1,70 +1,76 @@
 ---
 title: Migrieren von Datenbanken zu SQL Managed Instance mithilfe des Protokollwiedergabediensts
-description: Informationen zum Migrieren von Datenbanken aus SQL Server zu SQL Managed Instance mithilfe des Protokollwiedergabediensts
+description: Es wird beschrieben, wie Sie Datenbanken aus SQL Server zu SQL Managed Instance migrieren, indem Sie den Protokollwiedergabedienst verwenden.
 services: sql-database
 ms.service: sql-managed-instance
 ms.custom: seo-lt-2019, sqldbrb=1
-ms.devlang: ''
 ms.topic: how-to
 author: danimir
+ms.author: danil
 ms.reviewer: sstein
 ms.date: 03/01/2021
-ms.openlocfilehash: bc0dc72c7547c8f74aec53b7153fc5384c6b634b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0bc00aea67fa2f71599ee62e657e1ca1b0627681
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101690786"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102199848"
 ---
-# <a name="migrate-databases-from-sql-server-to-sql-managed-instance-using-log-replay-service-preview"></a>Informationen zum Migrieren von Datenbanken aus SQL Server zu SQL Managed Instance mithilfe des Protokollwiedergabediensts (Vorschau)
+# <a name="migrate-databases-from-sql-server-to-sql-managed-instance-by-using-log-replay-service-preview"></a>Migrieren von Datenbanken aus SQL Server zu SQL Managed Instance mit dem Protokollwiedergabedienst (Vorschau)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-In diesem Artikel wird erläutert, wie Sie die Datenbankmigration von SQL Server 2008-2019 zu SQL Managed Instance mithilfe des Protokollwiedergabediensts (Log Replay Service, LRS) konfigurieren, der sich derzeit in der öffentlichen Vorschau befindet. Dabei handelt es sich um einen für Managed Instance aktivierten Clouddienst, der auf der SQL Server-Protokollversandtechnologie basiert. LRS sollte verwendet werden, wenn komplexe benutzerdefinierte Migrationens- und Hybridarchitekturen vorhanden sind, wenn eine höhere Kontrolle erforderlich ist, wenn die Toleranz für Ausfallzeiten gering ist oder Azure Data Migration Service (DMS) nicht verwendet werden kann.
+In diesem Artikel wird beschrieben, wie Sie die Datenbankmigration von SQL Server 2008 bis 2019 zu Azure SQL Managed Instance konfigurieren, indem Sie den Protokollwiedergabedienst (Log Replay Service, LRS) verwenden, der sich derzeit in der öffentlichen Vorschauphase befindet. Hierbei handelt es sich um einen Clouddienst, der für SQL Managed Instance aktiviert ist und auf der SQL Server-Technologie für den Protokollversand basiert. 
 
-Sowohl DMS als auch LRS verwenden dieselbe zugrunde liegende Migrationstechnologie und dieselben APIs. Mit der Veröffentlichung von LRS vereinfachen wir komplexe benutzerdefinierte Migrationen und Hybridarchitekturen zwischen lokalen SQL Server-Instanzen und SQL Managed Instance.
+Für [Azure Database Migration Service](/azure/dms/tutorial-sql-server-to-managed-instance) und den Protokollwiedergabedienst werden die gleiche zugrunde liegende Migrationstechnologie und die gleichen APIs verwendet. Mit der Veröffentlichung des Protokollwiedergabediensts verbessern wir die Voraussetzungen für komplexe benutzerdefinierte Migrationen und die Hybridarchitektur zwischen lokalen SQL Server-Instanzen und SQL Managed Instance.
 
 ## <a name="when-to-use-log-replay-service"></a>Wann sollte der Protokollwiedergabedienst verwendet werden?
 
-In Fällen, in denen [Azure DMS](/azure/dms/tutorial-sql-server-to-managed-instance.md) nicht für die Migration verwendet werden kann, kann der LRS-Clouddienst direkt mit PowerShell, CLI-Cmdlets oder APIs zum manuellen Erstellen und Orchestrieren von Datenbankmigrationen zu SQL Managed Instance verwendet werden. 
+Wenn bei Ihnen die Verwendung von Azure Database Migration Service für die Migration nicht möglich ist, können Sie den Protokollwiedergabedienst direkt mit PowerShell, Azure CLI-Cmdlets oder APIs nutzen, um Datenbankmigrationen zu SQL Managed Instance manuell zu erstellen und zu orchestrieren. 
 
-In einigen der folgenden Fälle sollten Sie den LRS-Clouddienst verwenden:
-- Das Datenbankmigrationsprojekt erfordert mehr Kontrolle.
-- Die Toleranz für Ausfallzeiten bei der Migrationsübernahme ist gering.
-- Die ausführbare DMS-Datei kann nicht in Ihrer Umgebung installiert werden.
-- Die ausführbare DMS-Datei hat keinen Dateizugriff auf Datenbanksicherungen.
-- Es ist kein Zugriff auf das Hostbetriebssystem möglich, oder es sind keine Administratorrechte vorhanden.
-- Netzwerkports für Verbindungen von Ihrer Umgebung zu Azure können nicht geöffnet werden.
-- Sicherungen werden mithilfe der TO URL-Option direkt in Azure Blob Storage gespeichert.
-- Es müssen differenzielle Sicherungen verwendet werden.
+Die Verwendung des Protokollwiedergabediensts kann in den folgenden Fällen hilfreich sein:
+- Sie benötigen eine bessere Kontrolle über Ihr Datenbankmigrationsprojekt.
+- Es besteht nur eine geringe Toleranz in Bezug auf Ausfallzeiten bei der Migrationsübernahme.
+- Die ausführbare Datei von Database Migration Service kann in Ihrer Umgebung nicht installiert werden.
+- Für die ausführbare Datei von Database Migration Service besteht kein Zugriff auf Datenbanksicherungen.
+- Es besteht kein Zugriff auf das Hostbetriebssystem, oder es sind keine Administratorrechte vorhanden.
+- Sie können in Ihrer Umgebung keine Netzwerkports für Azure öffnen.
+- Sicherungen werden über die Option `TO URL` direkt in Azure Blob Storage gespeichert.
+- Sie müssen differenzielle Sicherungen verwenden.
 
 > [!NOTE]
-> Als automatisierte Methode zum Migrieren von Datenbanken von SQL Server zu SQL Managed Instance wird die Verwendung von Azure DMS empfohlen. Dieser Dienst verwendet im Back-End denselben LRS-Clouddienst mit Protokollversand im NORECOVERY-Modus. Sie sollten die manuelle Verwendung von LRS zum Orchestrieren von Migrationen in Fällen in Erwägung ziehen, in denen Azure-DMS Ihre Szenarios nicht vollständig unterstützt.
+> Wir empfehlen Ihnen, die Migration von Datenbanken von SQL Server zu SQL Managed Instance mit dem Database Migration Service zu automatisieren. Hierbei wird auf dem Back-End der gleiche Clouddienst für den Protokollwiedergabedienst mit Protokollversand im Modus `NORECOVERY` genutzt. Erwägen Sie die manuelle Verwendung des Protokollwiedergabediensts zum Orchestrieren von Migrationen, falls Ihre Szenarien von Database Migration Service nicht vollständig unterstützt werden.
 
-## <a name="how-does-it-work"></a>Funktionsweise
+## <a name="how-it-works"></a>Funktionsweise
 
-Zum Erstellen einer benutzerdefinierten Lösung zum Migrieren von Datenbanken zur Cloud mithilfe von LRS sind einige Orchestrierungsschritte erforderlich, die im Diagramm gezeigt und in der folgenden Tabelle skizziert werden.
+Zum Erstellen einer benutzerdefinierten Lösung zum Migrieren von Datenbanken zur Cloud mit dem Protokollwiedergabedienst sind einige Orchestrierungsschritte erforderlich. Dies ist weiter unten in diesem Abschnitt im Diagramm und der zugehörigen Tabelle dargestellt.
 
-Die Migration umfasst vollständige Datenbanksicherungen in SQL Server, wobei CHECKSUM aktiviert ist, und das Kopieren von Sicherungsdateien in Azure Blob Storage. LRS wird zum Wiederherstellen von Sicherungsdateien aus Azure Blob Storage in SQL Managed Instance verwendet. Azure Blob Storage wird als zwischengeschalteter Speicher zwischen SQL Server und SQL Managed Instance verwendet.
+Die Migration umfasst vollständige Datenbanksicherungen in SQL Server mit Aktivierung von `CHECKSUM` und das Kopieren von Sicherungsdateien in Azure Blob Storage. Der Protokollwiedergabedienst wird zum Wiederherstellen von Sicherungsdateien aus Blob Storage in SQL Managed Instance verwendet. Blob Storage dient als zwischengeschalteter Speicher zwischen SQL Server und SQL Managed Instance.
 
-LRS überwacht Azure Blob Storage auf neue differenzielle oder Protokollsicherungen, die nach der Wiederherstellung der vollständigen Sicherung hinzugefügt wurden, und stellt automatisch neu hinzugefügte Dateien wieder her. Der Fortschritt der Sicherungsdateien, die in SQL Managed Instance wiederhergestellt werden, kann mithilfe des Diensts überwacht werden, und der Prozess kann bei Bedarf auch abgebrochen werden.
+Der Protokollwiedergabedienst überwacht Blob Storage auf neue differenzielle oder Protokollsicherungen, die nach der Wiederherstellung der vollständigen Sicherung hinzugefügt werden. Diese neuen Dateien werden vom Protokollwiedergabedienst dann automatisch wiederhergestellt. Sie können den Dienst zum Überwachen des Status von Sicherungsdateien nutzen, die unter SQL Managed Instance wiederhergestellt werden, und den Prozess bei Bedarf anhalten.
 
-LRS erfordert keine bestimmte Benennungskonvention für Sicherungsdateien, da alle in Azure Blob Storage platzierten Dateien überprüft werden und die Sicherungskette nur aus dem Lesen der Dateiheader erstellt wird. Datenbanken befinden sich während des Migrationsvorgangs im Zustand „Wiederherstellung“, da sie im [NORECOVERY](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql#comparison-of-recovery-and-norecovery)-Modus wiederhergestellt werden und nicht zum Lesen oder Schreiben verwendet werden können, bis der Migrationsvorgang vollständig abgeschlossen ist. 
+Für den Protokollwiedergabedienst ist für Sicherungsdateien keine bestimmte Namenskonvention erforderlich. Vom Dienst werden alle Dateien überprüft, die in Blob Storage gespeichert werden, und die Sicherungskette wird erstellt, indem nur die Dateiheader gelesen werden. Datenbanken weisen während des Migrationsprozesses den Status „Wird wiederhergestellt“ auf. Die Datenbanken werden im Modus [NORECOVERY](/sql/t-sql/statements/restore-statements-transact-sql#comparison-of-recovery-and-norecovery) wiederhergestellt. Sie können daher erst wieder zum Lesen oder Schreiben verwendet werden, nachdem der Migrationsprozess abgeschlossen ist. 
 
-Beim Migrieren mehrerer Datenbanken müssen Sicherungen für jede Datenbank in Azure Blob Storage in einem separaten Ordner abgelegt werden. LRS muss für jede Datenbank separat gestartet werden, und es müssen verschiedene Pfade für separate Azure Blob Storage-Ordner angegeben werden. 
+Beachten Sie Folgendes, wenn Sie mehrere Datenbanken migrieren:
+ 
+- Legen Sie die Sicherungen für die einzelnen Datenbanken in Blob Storage in einem separaten Ordner ab.
+- Starten Sie den Protokollwiedergabedienst für jede Datenbank separat.
+- Geben Sie verschiedene Pfade zu separaten Blob Storage-Ordnern an. 
 
-LRS kann im AutoVervollständigen- oder kontinuierlichen Modus gestartet werden. Beim Starten im AutoVervollständigen-Modus wird die Migration automatisch abgeschlossen, wenn die zuletzt angegebene Sicherungsdatei wiederhergestellt wurde. Wenn der Dienst im kontinuierlichen Modus gestartet wird, werden alle neu hinzugefügten Sicherungsdateien fortlaufend wiederhergestellt, und die Migration wird nur bei manueller Übernahme abgeschlossen. Es wird empfohlen, die manuelle Übernahme erst auszuführen, nachdem die endgültige Log Tail-Sicherung erstellt und in SQL Managed Instance als wiederhergestellt angezeigt wurde. Mit dem abschließenden Übernahmeschritt wird die Datenbank online geschaltet und ist für die Lese- und Schreibverwendung in SQL Managed Instance verfügbar.
+Sie können den Protokollwiedergabedienst entweder im Modus *AutoVervollständigen* oder *Kontinuierlich* starten. Beim Starten im Modus „AutoVervollständigen“ wird der Migrationsprozess automatisch beendet, nachdem die letzte angegebene Sicherungsdatei wiederhergestellt wurde. Wenn der Protokollwiedergabedienst im Modus „Kontinuierlich“ gestartet wird, werden alle neu hinzugefügten Sicherungsdateien fortlaufend wiederhergestellt, und die Migration wird nur bei einer manuellen Übernahme beendet. 
 
-Nachdem LRS beendet wurde, entweder automatisch bei AutoVervollständigen oder manuell bei der Übernahme, kann der Wiederherstellungsvorgang für eine Datenbank, die in SQL Managed Instance online geschaltet wurde, nicht fortgesetzt werden. Wenn Sie zusätzliche Sicherungsdateien wiederherstellen möchten, nachdem die Migration durch AutoVervollständigen oder manuell bei der Übernahme abgeschlossen wurde, muss die Datenbank gelöscht werden, und die gesamte Sicherungskette muss von Grund auf neu erstellt werden, indem der LRS neu gestartet wird.
+Wir empfehlen Ihnen, die Übernahme manuell durchzuführen, nachdem die letzte Log Tail-Sicherung erstellt wurde und dafür in SQL Managed Instance die Wiederherstellung angezeigt wird. Mit dem abschließenden Übernahmeschritt wird die Datenbank online geschaltet und ist für die Lese- und Schreibverwendung in SQL Managed Instance verfügbar.
 
-![Erklärung der LRS-Orchestrierungsschritte für SQL Managed Instance](./media/log-replay-service-migrate/log-replay-service-conceptual.png)
+Nachdem der Protokollwiedergabedienst beendet wurde – entweder automatisch bei AutoVervollständigen oder manuell bei der Übernahme –, können Sie den Wiederherstellungsvorgang für eine Datenbank, die in SQL Managed Instance in den Onlinezustand versetzt wurde, nicht fortsetzen. Sie müssen die Datenbank löschen, um weitere Sicherungsdateien wiederherstellen zu können, nachdem die Migration per AutoVervollständigen oder Übernahme beendet wurde. Darüber hinaus müssen Sie die gesamte Sicherungskette wiederherstellen, indem Sie den Protokollwiedergabedienst neu starten.
+
+:::image type="content" source="./media/log-replay-service-migrate/log-replay-service-conceptual.png" alt-text="Diagramm: Orchestrierungsschritte des Protokollwiedergabediensts für SQL Managed Instance" border="false":::
     
 | Vorgang | Details |
 | :----------------------------- | :------------------------- |
-| **1. Kopieren von Datenbanksicherungen aus SQL Server in Azure Blob Storage**. | – Kopieren Sie vollständige, differenzielle und Protokollsicherungen aus SQL Server mithilfe von [Azcopy](/azure/storage/common/storage-use-azcopy-v10) oder [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/) in den Azure Blob Storage-Container. <br />– Verwenden Sie beliebige Dateinamen, da LRS keine bestimmte Dateibenennungskonvention erfordert.<br />– Bei der Migration mehrerer Datenbanken ist für jede Datenbank ein separater Ordner erforderlich. |
-| **2. Starten des LRS-Diensts in der Cloud**. | – Der Dienst kann mit einer Auswahl von Cmdlets gestartet werden: <br /> PowerShell [start-azsqlinstancedatabaselogreplay](/powershell/module/az.sql/start-azsqlinstancedatabaselogreplay) <br /> CLI [az_sql_midb_log_replay_start](/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_start)-Cmdlets. <br /> – Starten Sie LRS separat für jede andere Datenbank, die auf einen anderen Sicherungsordner in Azure Blob Storage verweist. <br />– Sobald der Dienst gestartet wurde, werden vom Azure Blob Storage-Container Sicherungen erstellt und deren Wiederherstellung in SQL Managed Instance gestartet.<br /> – Für den Fall, dass LRS im kontinuierlichen Modus gestartet wurde, achtet der Dienst nach dem Wiederherstellen aller zuerst hochgeladenen Sicherungen auf neue Dateien, die in den Ordner hochgeladen werden, und wendet fortlaufend auf Basis der LSN-Kette Protokolle an, bis der Dienst beendet wird. |
-| **2.1. Überwachen des Fortschritt des Vorgangs**. | – Der Fortschritt des Wiederherstellungsvorgangs kann mit einer Auswahl von Cmdlets überwacht werden: <br /> PowerShell [get-azsqlinstancedatabaselogreplay](/powershell/module/az.sql/get-azsqlinstancedatabaselogreplay) <br /> CLI-[az_sql_midb_log_replay_start](/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_show)-Cmdlets. |
-| **2.2. Stoppen\Abbrechen des Vorgangs, falls erforderlich**. | – Für den Fall, dass der Migrationsprozess abgebrochen werden muss, kann der Vorgang mit einer Auswahl von Cmdlets gestoppt werden: <br /> PowerShell [stop-azsqlinstancedatabaselogreplay]/powershell/module/az.sql/stop-azsqlinstancedatabaselogreplay) <br /> CLI-[az_sql_midb_log_replay_stop](/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_stop)-Cmdlets. <br /><br />– Dies führt dazu, dass die Datenbank, die in SQL Managed Instance wiederhergestellt wird, gelöscht wird. <br />– Nach dem Stoppen kann LRS nicht mehr für eine Datenbank fortgesetzt werden. Der Migrationsprozess muss von Grund auf neu gestartet werden. |
-| **3. Übernahme der Cloud bei Bereitschaft**. | – Stoppen Sie die Anwendung und die Workload. Nehmen Sie die letzte Log Tail-Sicherung und das Hochladen in Azure Blob Storage vor.<br /> – Schließen Sie die Übernahme ab, indem Sie den Abschluss des LRS-Vorgangs mit einer Auswahl von Cmdlets initiieren: <br />PowerShell [complete-azsqlinstancedatabaselogreplay](/powershell/module/az.sql/complete-azsqlinstancedatabaselogreplay) <br /> CLI-[az_sql_midb_log_replay_complete](/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_complete)-Cmdlets. <br /><br />– Dies bewirkt, dass der LRS-Dienst gestoppt und die Datenbank für Lese- und Schreibvorgänge in SQL Managed Instance online geschaltet wird.<br /> – Setzen Sie die Anwendungs-Verbindungszeichenfolge von SQL Server auf SQL Managed Instance zurück. |
+| **1. Kopieren von Datenbanksicherungen aus SQL Server in Blob Storage** | Kopieren Sie vollständige, differenzielle und Protokollsicherungen aus SQL Server per [AzCopy](/azure/storage/common/storage-use-azcopy-v10) oder [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/) in den Blob Storage-Container. <br /><br />Hierbei können Sie beliebige Dateinamen verwenden. Für den Protokollwiedergabedienst muss keine bestimmte Namenskonvention für Dateien befolgt werden.<br /><br />Bei der Migration mehrerer Datenbanken benötigen Sie für jede Datenbank einen separaten Ordner. |
+| **2. Starten des Protokollwiedergabediensts in der Cloud** | Sie können den Dienst mit den folgenden Cmdlets neu starten: PowerShell ([start-azsqlinstancedatabaselogreplay](/powershell/module/az.sql/start-azsqlinstancedatabaselogreplay)) oder Azure CLI ([az_sql_midb_log_replay_start](/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_start)). <br /><br /> Starten Sie den Protokollwiedergabedienst separat für jede Datenbank, die auf einen Sicherungsordner in Blob Storage verweist. <br /><br /> Nachdem der Dienst gestartet wurde, wird mit dem Wiederherstellen der Sicherungen aus dem Blob Storage-Container in SQL Managed Instance begonnen.<br /><br /> Wenn Sie den Protokollwiedergabedienst im Modus „Kontinuierlich“ gestartet haben, achtet der Dienst nach der Wiederherstellung aller anfänglich hochgeladenen Sicherungen auf neue Dateien, die in den Ordner hochgeladen werden. Vom Dienst werden basierend auf der Kette mit den Protokollfolgenummern fortlaufend Protokolle angewendet, bis der Dienst beendet wird. |
+| **2.1. Überwachen des Vorgangsstatus** | Sie können den Status des Wiederherstellungsvorgangs mit den folgenden Cmdlets überwachen: PowerShell ([get-azsqlinstancedatabaselogreplay](/powershell/module/az.sql/get-azsqlinstancedatabaselogreplay)) oder Azure CLI ([az_sql_midb_log_replay_show](/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_show)). |
+| **2.2. Beenden des Vorgangs bei Bedarf** | Falls Sie den Migrationsprozess beenden müssen, können Sie die folgenden Cmdlets verwenden: PowerShell ([stop-azsqlinstancedatabaselogreplay](/powershell/module/az.sql/stop-azsqlinstancedatabaselogreplay)) oder Azure CLI ([az_sql_midb_log_replay_stop](/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_stop)). <br /><br /> Wenn Sie den Vorgang beenden, wird die Datenbank gelöscht, die Sie in SQL Managed Instance wiederherstellen. Nachdem Sie einen Vorgang beendet haben, können Sie den Protokollwiedergabedienst für eine Datenbank nicht fortsetzen. Sie müssen den Migrationsprozess ganz neu starten. |
+| **3. Durchführen der Übernahme in die Cloud (bei entsprechender Bereitschaft)** | Beenden Sie die Anwendung und die Workload. Erstellen Sie die letzte Log Tail-Sicherung, und laden Sie sie in Azure Blob Storage hoch.<br /><br /> Beenden Sie die Übernahme, indem Sie für den Protokollwiedergabedienst den Vorgang `complete` mit einem der folgenden Cmdlets initiieren: PowerShell ([complete-azsqlinstancedatabaselogreplay](/powershell/module/az.sql/complete-azsqlinstancedatabaselogreplay)) oder Azure CLI [az_sql_midb_log_replay_complete](/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_complete). Mit diesem Vorgang wird der Protokollwiedergabedienst beendet. Dies bewirkt, dass die Datenbank in den Onlinezustand versetzt wird und in SQL Managed Instance für Lese- und Schreibvorgänge genutzt werden kann.<br /><br /> Legen Sie für die Verbindungszeichenfolge der Anwendung fest, dass sie nicht mehr auf SQL Server, sondern auf SQL Managed Instance verweist. |
 
 ## <a name="requirements-for-getting-started"></a>Anforderungen für den Einstieg
 
@@ -72,51 +78,50 @@ Nachdem LRS beendet wurde, entweder automatisch bei AutoVervollständigen oder m
 - SQL Server 2008-2019
 - Vollständige Sicherung von Datenbanken (eine oder mehrere Dateien)
 - Differenzielle Sicherung (eine oder mehrere Dateien)
-- Protokollsicherung (keine Aufteilung für Transaktionsprotokolldatei)
-- **CHECKSUM muss für Sicherungen aktiviert werden** (obligatorisch).
+- Protokollsicherung (keine Aufteilung für eine Transaktionsprotokolldatei)
+- `CHECKSUM` für Sicherungen aktiviert (obligatorisch)
 
 ### <a name="azure-side"></a>Azure-seitig
-- PowerShell Az.SQL-Modulversion 2.16.0 oder höher ([installieren](https://www.powershellgallery.com/packages/Az.Sql/) oder Azure [Cloud Shell](/azure/cloud-shell/) verwenden)
-- CLI-Version 2.19.0 oder höher ([Installation](/cli/azure/install-azure-cli))
+- PowerShell Az.SQL-Modul, Version 2.16.0 oder höher ([Installation](https://www.powershellgallery.com/packages/Az.Sql/) oder Zugriff per [Azure Cloud Shell](/azure/cloud-shell/))
+- Azure CLI, Version 2.19.0 oder höher ([Installation](/cli/azure/install-azure-cli))
 - Azure Blob Storage-Container bereitgestellt
-- SAS-Sicherheitstoken mit Berechtigungen nur zum **Lesen** und **Auflisten**, die für den Blob Storage-Container generiert werden
+- SAS-Sicherheitstoken (Shared Access Signature) mit generierten Berechtigungen „Lesen“ und „Auflisten“ für den Blob Storage-Container
 
-### <a name="migrating-multiple-databases"></a>Migrieren mehrerer Datenbanken
-- Sicherungsdateien für verschiedene Datenbanken müssen in Azure Blob Storage in separaten Ordnern abgelegt werden.
-- LRS muss separat für jede Datenbank gestartet werden, die auf einen entsprechenden Ordner in Azure Blob Storage verweist.
-- LRS kann bis zu 100 gleichzeitige Wiederherstellungsprozesse pro einzelner SQL Managed Instance-Instanz unterstützen.
+### <a name="migration-of-multiple-databases"></a>Migration mehrerer Datenbanken
+Sie müssen Sicherungsdateien für unterschiedliche Datenbanken in Blob Storage in separaten Ordnern anordnen.
 
-### <a name="azure-rbac-permissions-required"></a>Erforderliche Azure RBAC-Berechtigungen
-Die Ausführung von LRS über die bereitgestellten Clients erfordert eine der folgenden Azure-Rollen:
-- Rolle „Besitzer des Abonnements“ oder
-- Rolle [Mitwirkender](../../role-based-access-control/built-in-roles.md#sql-managed-instance-contributor) von Managed Instance oder
-- Benutzerdefinierte Rolle mit der folgenden Berechtigung:
-  - `Microsoft.Sql/managedInstances/databases/*`
+Starten Sie den Protokollwiedergabedienst für jede Datenbank separat, indem Sie in Blob Storage auf einen geeigneten Ordner verweisen. Für den Protokollwiedergabedienst können bis zu 100 gleichzeitige Wiederherstellungsprozesse pro verwalteter Instanz unterstützt werden.
+
+### <a name="azure-rbac-permissions"></a>Azure RBAC-Berechtigungen
+Für die Ausführung des Protokollwiedergabediensts über die bereitgestellten Clients wird eine der folgenden Azure-Rollen benötigt:
+- Rolle „Besitzer des Abonnements“
+- Rolle [„Mitwirkender für verwaltete SQL-Instanzen“](../../role-based-access-control/built-in-roles.md#sql-managed-instance-contributor)
+- Benutzerdefinierte Rolle mit der folgenden Berechtigung: `Microsoft.Sql/managedInstances/databases/*`
 
 ## <a name="best-practices"></a>Bewährte Methoden
 
-Die folgenden bewährten Methoden werden dringend empfohlen:
-- Führen Sie den [Datenmigrations-Assistenten](/sql/dma/dma-overview) aus, um zu überprüfen, ob Ihre Datenbanken zur Migration zu SQL Managed Instance bereit sind. 
-- Teilen Sie vollständige und differenzielle Sicherungen in mehrere Dateien auf, anstatt sie in einer einzelnen Datei zu belassen.
+Wir empfehlen die folgenden bewährten Methoden:
+- Führen Sie den [Datenmigrations-Assistenten](/sql/dma/dma-overview) aus, um zu überprüfen, ob Ihre Datenbanken für die Migration zu SQL Managed Instance bereit sind. 
+- Teilen Sie vollständige und differenzielle Sicherungen in mehrere Dateien auf, anstatt nur eine Datei zu verwenden.
 - Aktivieren Sie die Sicherungskomprimierung.
-- Verwenden Sie Cloud Shell, um Skripts auszuführen, da es immer auf die neuesten veröffentlichten Cmdlets aktualisiert wird.
-- Planen Sie den Abschluss der Migration innerhalb von 47 Stunden ab dem Start des LRS-Diensts. Dies ist eine Toleranzperiode, die nach dem Start von LRS vom System verwaltete Softwarepatches verhindert.
+- Verwenden Sie Cloud Shell für die Ausführung von Skripts, da hierfür immer eine Aktualisierung auf die neuesten veröffentlichten Cmdlets durchgeführt wird.
+- Planen Sie, dass die Migration innerhalb von 47 Stunden nach dem Starten des Protokollwiedergabediensts abgeschlossen sein soll. Dies ist eine Toleranzperiode, mit der verhindert werden soll, dass systemseitig verwaltete Softwarepatches installiert werden.
 
 > [!IMPORTANT]
-> - Die Datenbank, die mithilfe von LRS wiederhergestellt wird, kann erst verwendet werden, wenn der Migrationsprozess abgeschlossen wurde.
-> - Der schreibgeschützte Zugriff auf Datenbanken während der Migration wird von LRS nicht unterstützt.
-> - Nachdem die Migration abgeschlossen wurde, wird der Migrationsvorgang abgeschlossen, da LRS die Wiederaufnahme nicht unterstützt.
+> - Sie können die Datenbank, die mit dem Protokollwiedergabedienst wiederhergestellt wird, erst verwenden, nachdem der Migrationsprozess abgeschlossen ist. 
+> - Für den Protokollwiedergabedienst wird der schreibgeschützte Zugriff auf Datenbanken während der Migration nicht unterstützt.
+> - Nach Abschluss der Migration wird der Migrationsprozess beendet, da das Fortsetzen des Wiederherstellungsprozesses vom Protokollwiedergabedienst nicht unterstützt wird.
 
 ## <a name="steps-to-execute"></a>Auszuführende Schritte
 
-### <a name="make-backups-on-the-sql-server"></a>Erstellen von Sicherungen in SQL Server
+### <a name="make-backups-of-sql-server"></a>Erstellen von SQL Server-Sicherungen
 
-Sicherungen in SQL Server können mit einer der folgenden beiden Optionen erstellt werden:
+Sie können eine der folgenden Optionen verwenden, um Sicherungen von SQL Server zu erstellen:
 
-- Sichern Sie die Daten auf dem lokalen Datenträger, und laden Sie die Dateien dann für den Fall, dass Ihre Umgebung die direkte Sicherung in Azure Blob Storage einschränkt, in Azure Blob Storage hoch.
-- Sichern Sie die Daten mit der Option „TO URL“ in T-SQL direkt in Azure Blob Storage, falls Ihre Umgebung und Ihre Sicherheitsverfahren dies ermöglichen. 
+- Erstellen Sie eine Sicherung im lokalen Datenträgerspeicher, und laden Sie die Dateien dann in Azure Blob Storage hoch, falls in Ihrer Umgebung direkte Sicherungen in Blob Storage nicht zulässig sind.
+- Sie können direkte Sicherungen in Blob Storage mit der Option `TO URL` in T-SQL erstellen, falls dies für Ihre Umgebung und Ihre Sicherheitsverfahren zulässig ist. 
 
-Legen Sie Datenbanken fest, die Sie zum vollständigen Wiederherstellungsmodus migrieren möchten, um Protokollsicherungen zuzulassen.
+Legen Sie für Datenbanken, die Sie migrieren möchten, den Modus für die vollständige Wiederherstellung fest, um Protokollsicherungen zuzulassen.
 
 ```SQL
 -- To permit log backups, before the full database backup, modify the database to use the full recovery
@@ -126,114 +131,120 @@ SET RECOVERY FULL
 GO
 ```
 
-Um die vollständige, differenzielle und Protokollsicherung Ihrer Datenbank im lokalen Speicher manuell zu erstellen, verwenden Sie die folgenden T-SQL-Beispielskripts. Stellen Sie sicher, dass die Option CHECKSUM aktiviert ist, da dies für LRS obligatorisch ist.
+Verwenden Sie die folgenden T-SQL-Beispielskripts, um im lokalen Speicher manuell vollständige, differenzielle und Protokollsicherungen Ihrer Datenbank zu erstellen. Achten Sie darauf, dass die Option `CHECKSUM` aktiviert ist, da sie für den Protokollwiedergabedienst obligatorisch ist.
 
 ```SQL
--- Example on how to make full database backup to the local disk
+-- Example of how to make a full database backup to the local disk
 BACKUP DATABASE [SampleDB]
 TO DISK='C:\BACKUP\SampleDB_full.bak'
 WITH INIT, COMPRESSION, CHECKSUM
 GO
 
--- Example on how to make differential database backup to the locak disk
+-- Example of how to make a differential database backup to the local disk
 BACKUP DATABASE [SampleDB]
 TO DISK='C:\BACKUP\SampleDB_diff.bak'
 WITH DIFFERENTIAL, COMPRESSION, CHECKSUM
 GO
 
--- Example on how to make the transactional log backup to the local disk
+-- Example of how to make a transactional log backup to the local disk
 BACKUP LOG [SampleDB]
 TO DISK='C:\BACKUP\SampleDB_log.trn'
 WITH COMPRESSION, CHECKSUM
 GO
 ```
 
-### <a name="create-azure-blob-storage"></a>Erstellen einer Azure Blob Storage-Instanz
+### <a name="create-a-storage-account"></a>Speicherkonto erstellen
 
 Azure Blob Storage wird als zwischengeschalteter Speicher für Sicherungsdateien zwischen SQL Server und SQL Managed Instance verwendet. Führen Sie die folgenden Schritte aus, um ein neues Speicherkonto und einen Blobcontainer im Speicherkonto zu erstellen:
 
-1. [Erstellen eines Speicherkontos](../../storage/common/storage-account-create.md?tabs=azure-portal)
+1. [Informationen zu Azure-Speicherkonten](../../storage/common/storage-account-create.md?tabs=azure-portal)
 2. [Erstellen eines Blobcontainers](../../storage/blobs/storage-quickstart-blobs-portal.md) im Speicherkonto
 
-### <a name="copy-backups-from-sql-server-to-azure-blob-storage"></a>Kopieren von Sicherungen aus SQL Server in Azure Blob Storage
+### <a name="copy-backups-from-sql-server-to-blob-storage"></a>Kopieren von Sicherungen aus SQL Server nach Azure Blob Storage
 
-Einige der folgenden Ansätze können verwendet werden, um Sicherungen in den Blobspeicher hochzuladen, wenn Datenbanken mithilfe von LRS zu Managed Instance migriert werden:
-- Verwenden von [Azcopy](/azure/storage/common/storage-use-azcopy-v10) oder des [Azure Storage-Explorers](https://azure.microsoft.com/features/storage-explorer), um Sicherungen in einen Blobcontainer hochzuladen.
-- Verwenden des Storage-Explorers im Azure-Portal.
+Beim Migrieren von Datenbanken zu einer verwalteten Instanz mit dem Protokollwiedergabedienst können Sie die folgenden Ansätze nutzen, um Sicherungen in Blob Storage hochzuladen:
+- Verwenden der nativen SQL Server-Funktion für die [Sicherung über URLs](/sql/relational-databases/backup-restore/sql-server-backup-to-url)
+- Verwenden von [AzCopy](/azure/storage/common/storage-use-azcopy-v10) oder des [Azure Storage-Explorers](https://azure.microsoft.com/en-us/features/storage-explorer), um Sicherungen in einen Blobcontainer hochzuladen
+- Verwenden des Storage-Explorers im Azure-Portal
 
-### <a name="make-backups-from-sql-server-directly-to-azure-blob-storage"></a>Erstellen von Sicherungen aus SQL Server direkt in Azure Blob Storage.
+### <a name="make-backups-from-sql-server-directly-to-blob-storage"></a>Erstellen von Sicherungen aus SQL Server direkt in Blob Storage
+Wenn Ihre Unternehmens- und Netzwerkrichtlinien dies zulassen, ist eine andere Möglichkeit die direkte Erstellung von Sicherungen aus SQL Server in Blob Storage, indem Sie die native SQL Server-Option für die [Sicherung über URLs](/sql/relational-databases/backup-restore/sql-server-backup-to-url) verwenden. Wenn Sie diese Option nutzen können, ist es nicht erforderlich, dass Sie Sicherungen im lokalen Speicher erstellen und in Blob Storage hochladen.
 
-Für den Fall, dass Ihre Unternehmens- und Netzwerkrichtlinie dies zulässt, können Sie Sicherungen aus SQL Server alternativ direkt in Azure Blob Storage erstellen, indem Sie die native Option [BACKUP TO URL](/sql/relational-databases/backup-restore/sql-server-backup-to-url) von SQL Server verwenden. Wenn Sie diese Option nutzen können, ist das Erstellen von Sicherungen im lokalen Speicher und deren Hochladen in Azure Blob Storage nicht erforderlich.
+Bei diesem Vorgang müssen Sie zunächst ein SAS-Authentifizierungstoken für Blob Storage generieren und es dann in SQL Server importieren. Der zweite Schritt ist das Erstellen von Sicherungen mit der Option `TO URL` in T-SQL. Stellen Sie sicher, dass alle Sicherungen mit aktivierter CHECKSUM-Option durchgeführt werden.
 
-Im ersten Schritt muss für diesen Vorgang ein SAS-Authentifizierungstoken für Azure Blob Storage generiert werden, und das Token muss in SQL Server importiert werden. Der zweite Schritt ist das Erstellen von Sicherungen mit der Option „TO URL“ in T-SQL. Stellen Sie sicher, dass alle Sicherungen mit aktivierter CHEKSUM-Option durchgeführt werden.
-
-Beispielcode zum Erstellen von Sicherungen in Azure Blob Storage finden Sie unten. Dieses Beispiel enthält keine Anweisungen zum Importieren des SAS-Tokens. Ausführliche Anweisungen, z. B. zum Generieren und Importieren des SAS-Tokens in SQL Server, finden Sie im folgenden Tutorial: [Verwenden des Microsoft Azure BLOB-Speicherdiensts mit SQL Server 2016](/sql/relational-databases/tutorial-use-azure-blob-storage-service-with-sql-server-2016#1---create-stored-access-policy-and-shared-access-storage). 
+Mit dem unten angegebenen Beispielcode werden Sicherungen in Blob Storage erstellt. Dieses Beispiel enthält keine Anweisungen zum Importieren des SAS-Tokens. Eine ausführliche Anleitung, z. B. zum Generieren und Importieren des SAS-Tokens in SQL Server, finden Sie im Tutorial zum [Verwenden des Microsoft Azure BLOB-Speicherdiensts mit SQL Server 2016](/sql/relational-databases/tutorial-use-azure-blob-storage-service-with-sql-server-2016#1---create-stored-access-policy-and-shared-access-storage). 
 
 ```SQL
--- Example on how to make full database backup to URL
+-- Example of how to make a full database backup to a URL
 BACKUP DATABASE [SampleDB]
 TO URL = 'https://<mystorageaccountname>.blob.core.windows.net/<mycontainername>/SampleDB_full.bak'
 WITH INIT, COMPRESSION, CHECKSUM
 GO
-
--- Example on how to make differential database backup to URL
+-- Example of how to make a differential database backup to a URL
 BACKUP DATABASE [SampleDB]
 TO URL = 'https://<mystorageaccountname>.blob.core.windows.net/<mycontainername>/SampleDB_diff.bak'  
 WITH DIFFERENTIAL, COMPRESSION, CHECKSUM
 GO
 
--- Example on how to make the transactional log backup to URL
+-- Example of how to make a transactional log backup to a URL
 BACKUP LOG [SampleDB]
 TO URL = 'https://<mystorageaccountname>.blob.core.windows.net/<mycontainername>/SampleDB_log.trn'  
 WITH COMPRESSION, CHECKSUM
 ```
 
-### <a name="generate-azure-blob-storage-sas-authentication-for-lrs"></a>Generieren der Azure Blob Storage-SAS-Authentifizierung für LRS
+### <a name="generate-a-blob-storage-sas-authentication-token-for-lrs"></a>Generieren eines SAS-Authentifizierungstokens für den Protokollwiedergabedienst zum Zugreifen auf Blob Storage
 
-Azure Blob Storage wird als zwischengeschalteter Speicher für Sicherungsdateien zwischen SQL Server und SQL Managed Instance verwendet. Für die Verwendung durch den LRS-Dienst muss ein SAS-Authentifizierungstoken mit Berechtigungen nur zum Auflisten und Lesen generiert werden. Dadurch kann der LRS-Dienst auf Azure Blob Storage zugreifen und die Sicherungsdateien verwenden, um sie in SQL Managed Instance wiederherzustellen. Führen Sie diese Schritte aus, um die SAS-Authentifizierung für LRS zu generieren:
+Azure Blob Storage wird als zwischengeschalteter Speicher für Sicherungsdateien zwischen SQL Server und SQL Managed Instance verwendet. Sie müssen für den Protokollwiedergabedienst ein SAS-Authentifizierungstoken nur mit den Berechtigungen „Auflisten“ und „Lesen“ erstellen. Mit dem Token kann der Protokollwiedergabedienst auf Blob Storage zugreifen und die Sicherungsdateien verwenden, um diese unter SQL Managed Instance wiederherzustellen. 
 
-1. Zugreifen auf den Storage-Explorer über das Azure-Portal
-2. Erweitern Sie Blobcontainer.
-3. Klicken Sie mit der rechten Maustaste auf den Blobcontainer, und wählen Sie „Shared Access Signature abrufen“ aus. ![ LRS: SAS-Authentifizierungstoken generieren](./media/log-replay-service-migrate/lrs-sas-token-01.png)
-4. Wählen Sie den Ablaufzeitraum für das Token aus. Stellen Sie sicher, dass das Token für die Dauer der Migration gültig ist.
-5. Wählen Sie die Zeitzone für das Token aus – UTC oder Ortszeit.
-    - Die Zeitzone des Tokens stimmt möglicherweise nicht mit der Ihrer SQL Managed Instance-Instanz überein. Stellen Sie sicher, dass das SAS-Token unter Berücksichtigung der Zeitzonen über die entsprechende Gültigkeit verfügt. Legen Sie die Zeitzone nach Möglichkeit auf einen früheren und späteren Zeitpunkt des geplanten Migrationsfensters fest.
-6. Wählen Sie nur die Berechtigungen zum Lesen und Auflisten aus.
-    - Es dürfen keine weiteren Berechtigungen ausgewählt werden, andernfalls kann LRS nicht gestartet werden. Diese Sicherheitsanforderung ist entwurfsbedingt.
-7. Klicken Sie auf die Schaltfläche „Erstellen“. ![LRS: Generieren des SAS-Authentifizierungstokens](./media/log-replay-service-migrate/lrs-sas-token-02.png)
+Führen Sie die folgenden Schritte aus, um das Token zu generieren:
 
-Die SAS-Authentifizierung wird mit der Gültigkeit generiert, die Sie zuvor angegeben haben. Sie benötigen die URI-Version des generierten Tokens, wie im folgenden Screenshot gezeigt.
+1. Öffnen Sie im Azure-Portal den Storage-Explorer.
+2. Erweitern Sie die Option **Blobcontainer**.
+3. Klicken Sie mit der rechten Maustaste auf den Blobcontainer, und wählen Sie die Option **Shared Access Signature abrufen** aus.
 
-![Beispiel für einen generierten SAS-Authentifizierungs-URI für LRS](./media/log-replay-service-migrate/lrs-generated-uri-token.png)
+   :::image type="content" source="./media/log-replay-service-migrate/lrs-sas-token-01.png" alt-text="Screenshot: Auswahl zum Generieren eines SAS-Authentifizierungstokens":::
 
-### <a name="copy-parameters-from-sas-token-generated"></a>Kopieren von Parametern aus dem generierten SAS-Token
+4. Wählen Sie den Zeitrahmen für den Tokenablauf aus. Stellen Sie sicher, dass das Token für die Dauer Ihres Migrationsprozesses gültig ist.
+5. Wählen Sie die Zeitzone für das Token aus: UTC oder Ortszeit.
+    
+   > [!IMPORTANT]
+   > Die Zeitzone des Tokens stimmt unter Umständen nicht mit Ihrer verwalteten Instanz überein. Stellen Sie sicher, dass das SAS-Token unter Berücksichtigung der Zeitzonen über die entsprechende Gültigkeit verfügt. Legen Sie die Zeitzone nach Möglichkeit auf einen früheren und späteren Zeitpunkt des geplanten Migrationsfensters fest.
+6. Wählen Sie nur die Berechtigungen **Lesen** und **Auflisten** aus.
 
-Um das SAS-Token ordnungsgemäß zum Starten von LRS verwenden zu können, müssen wir seine Struktur verstehen. Der URI des generierten SAS-Tokens besteht aus zwei Teilen:
-- StorageContainerUri und 
-- StorageContainerSasToken, getrennt durch ein Fragezeichen (?), wie in der folgenden Abbildung dargestellt.
+   > [!IMPORTANT]
+   > Wählen Sie keine anderen Berechtigungen aus. Wenn Sie dies nicht beachten, wird der Protokollwiedergabedienst nicht gestartet. Diese Sicherheitsanforderung ist entwurfsbedingt.
+7. Klicken Sie auf **Erstellen**.
 
-    ![Beispiel für einen generierten SAS-Authentifizierungs-URI für LRS](./media/log-replay-service-migrate/lrs-token-structure.png)
+   :::image type="content" source="./media/log-replay-service-migrate/lrs-sas-token-02.png" alt-text="Screenshot: Auswahl von Gültigkeitsdauer, Zeitzone und Berechtigungen für das SAS-Token und Schaltfläche „Erstellen“":::
 
-- Der erste Teil, der mit „https://“ beginnt und bis zum Fragezeichen (?) reicht, wird für den StorageContainerURI-Parameter verwendet, der als Eingabe an LRS übergeben wird. Dieser liefert LRS-Informationen zu dem Ordner, in dem Datenbanksicherungs-Dateien gespeichert werden.
-- Der zweite, nach dem Fragezeichen (?) beginnende Teil, im Beispiel „sp=“ bis zum Ende der Zeichenfolge, ist der StorageContainerSasToken-Parameter. Dieser ist das eigentliche signierte Authentifizierungstoken, das für die angegebene Zeitspanne gültig ist. Dieser Teil muss nicht unbedingt mit „sp=“ beginnen, wie hier gezeigt, und die Groß-/Kleinschreibung ist möglicherweise anders.
+Die SAS-Authentifizierung wird mit der von Ihnen angegebenen Gültigkeitsdauer generiert. Sie benötigen die URI-Version des Tokens (wie im folgenden Screenshot dargestellt).
+
+:::image type="content" source="./media/log-replay-service-migrate/lrs-generated-uri-token.png" alt-text="Screenshot: Beispiel für die URI-Version eines SAS-Tokens":::
+
+### <a name="copy-parameters-from-the-sas-token"></a>Kopieren von Parametern aus dem SAS-Token
+
+Bevor Sie das SAS-Token zum Starten des Protokollwiedergabediensts verwenden, müssen Sie dessen Struktur verstehen. Der URI des generierten SAS-Tokens besteht aus zwei Teilen, die durch ein Fragezeichen (`?`) getrennt sind. Dies ist in diesem Beispiel dargestellt:
+
+:::image type="content" source="./media/log-replay-service-migrate/lrs-token-structure.png" alt-text="Beispiel: URI für ein generiertes SAS-Token für Protokollwiedergabedienst" border="false":::
+
+Der erste Teil, der mit `https://` beginnt und bis zum Fragezeichen (`?`) reicht, wird für den Parameter `StorageContainerURI` verwendet, der als Eingabe an den Protokollwiedergabedienst übergeben wird. Er liefert LRS-Informationen zu dem Ordner, in dem die Datenbanksicherungsdateien gespeichert werden.
+
+Der zweite Teil, der nach dem Fragezeichen (`?`) beginnt und bis zum Ende der Zeichenfolge reicht, ist der Parameter `StorageContainerSasToken`. Dies ist das eigentliche signierte Authentifizierungstoken, das für den angegebenen Zeitraum gültig ist. Dieser Teil muss nicht unbedingt wie im Beispiel mit `sp=` beginnen. Bei Ihnen wird unter Umständen eine andere Zeichenfolge verwendet.
 
 Kopieren Sie die Parameter wie folgt:
 
-1. Kopieren Sie den ersten Teil des Tokens beginnend mit „https://“ bis zum Fragezeichen (?), und verwenden Sie ihn als StorageContainerUri-Parameter in PowerShell oder in der CLI, um LRS zu starten, wie im folgenden Screenshot gezeigt.
+1. Kopieren Sie den ersten Teil des Tokens von `https://` bis zum Fragezeichen (`?`). Verwenden Sie diese Zeichenfolge als Parameter `StorageContainerUri` in PowerShell oder der Azure CLI, um den Protokollwiedergabedienst zu starten.
 
-    ![LRS: Kopieren des StorageContainerUri-Parameters](./media/log-replay-service-migrate/lrs-token-uri-copy-part-01.png)
+   :::image type="content" source="./media/log-replay-service-migrate/lrs-token-uri-copy-part-01.png" alt-text="Screenshot: Kopieren des ersten Teils des Tokens":::
 
-2. Kopieren Sie den zweiten Teil des Tokens ab dem Fragezeichen (?) bis zum Ende der Zeichenfolge, und verwenden Sie ihn als StorageContainerSasToken-Parameter in PowerShell oder in der CLI, um LRS zu starten, wie im folgenden Screenshot gezeigt.
+2. Kopieren Sie den zweiten Teil des Tokens ab dem Fragezeichen (`?`) bis zum Ende der Zeichenfolge. Verwenden Sie diese Zeichenfolge als Parameter `StorageContainerSasToken` in PowerShell oder der Azure CLI, um den Protokollwiedergabedienst zu starten.
 
-    ![LRS: Kopieren des StorageContainerSasToken-Parameters](./media/log-replay-service-migrate/lrs-token-uri-copy-part-02.png)
+   :::image type="content" source="./media/log-replay-service-migrate/lrs-token-uri-copy-part-02.png" alt-text="Screenshot: Kopieren des zweiten Teils des Tokens":::
+   
+> [!NOTE]
+> Lassen Sie das Fragezeichen beim Kopieren der beiden Teile des Tokens jeweils weg.
 
-> [!IMPORTANT]
-> - Nur die Berechtigungen zum Lesen und Auflisten sind für das SAS-Token für Azure Blob Storage zulässig. Wenn eine andere Berechtigung für das SAS-Authentifizierungstoken erteilt wird, tritt beim Starten des LRS-Diensts ein Fehler auf. Diese Sicherheitsanforderungen sind entwurfsbedingt.
-> - Das Token muss über die entsprechende Gültigkeitsdauer verfügen. Stellen Sie sicher, dass die Zeitzonen zwischen dem Token und Managed Instance berücksichtigt werden.
-> - Achten Sie darauf, den StorageContainerUri-Parameter für PowerShell oder die CLI aus dem URI des generierten Tokens zu kopieren, beginnend mit „https://“ bis zum Fragezeichen (?). Schließen Sie das Fragezeichen nicht ein.
-> Achten Sie darauf, den Parameter StorageContainerSasToken für PowerShell oder die CLI aus dem URI des generierten Tokens zu kopieren, ab dem Fragezeichen (?) bis zum Ende der Zeichenfolge. Schließen Sie das Fragezeichen nicht ein.
-
-### <a name="log-in-to-azure-and-select-subscription"></a>Anmelden bei Azure und Auswählen des Abonnements
+### <a name="log-in-to-azure-and-select-a-subscription"></a>Anmelden bei Azure und Auswählen eines Abonnements
 
 Verwenden Sie das folgende PowerShell-Cmdlet, um sich bei Azure anzumelden:
 
@@ -241,7 +252,7 @@ Verwenden Sie das folgende PowerShell-Cmdlet, um sich bei Azure anzumelden:
 Login-AzAccount
 ```
 
-Wählen Sie mit dem folgenden PowerShell-Cmdlet das entsprechende Abonnement aus, in dem sich Ihre SQL Managed Instance-Instanz befindet:
+Wählen Sie mit dem folgenden PowerShell-Cmdlet das entsprechende Abonnement aus, in dem sich Ihre verwaltete Instanz befindet:
 
 ```powershell
 Select-AzSubscription -SubscriptionId <subscription ID>
@@ -249,13 +260,17 @@ Select-AzSubscription -SubscriptionId <subscription ID>
 
 ## <a name="start-the-migration"></a>Starten der Migration
 
-Die Migration wird durch Aufrufen des LRS-Diensts gestartet. Der Dienst kann im AutoVervollständigen- oder kontinuierlichen Modus gestartet werden. Beim Starten im AutoVervollständigen-Modus wird die Migration automatisch abgeschlossen, wenn die zuletzt angegebene Sicherungsdatei wiederhergestellt wurde. Diese Option erfordert, dass mit dem Startbefehl der Dateiname der letzten Sicherungsdatei angegeben wird. Wenn LRS im kontinuierlichen Modus gestartet wird, werden alle neu hinzugefügten Sicherungsdateien fortlaufend wiederhergestellt, und die Migration wird nur bei manueller Übernahme abgeschlossen. 
+Sie starten die Migration, indem Sie den Protokollwiedergabedienst starten. Hierbei können Sie den Dienst entweder im Modus „AutoVervollständigen“ oder „Kontinuierlich“ starten. 
+
+Bei Verwendung des Modus „AutoVervollständigen“ wird der Migrationsprozess automatisch beendet, nachdem die letzte angegebene Sicherungsdatei wiederhergestellt wurde. Diese Option erfordert, dass mit dem Startbefehl der Dateiname der letzten Sicherungsdatei angegeben wird. 
+
+Bei Verwendung des Modus „Kontinuierlich“ werden vom Dienst fortlaufend alle neuen Sicherungsdateien wiederhergestellt, die hinzugefügt werden. Die Migration wird nur bei der manuellen Übernahme beendet. 
 
 ### <a name="start-lrs-in-autocomplete-mode"></a>Starten von LRS im AutoVervollständigen-Modus
 
-Verwenden Sie den folgenden PowerShell-Befehl oder CLI-Befehle, um den LRS-Dienst im AutoVervollständigen-Modus zu starten. Geben Sie den Namen der letzten Sicherungsdatei mit dem Parameter -LastBackupName an. Nach dem Wiederherstellen der letzten angegebenen Sicherungsdatei initiiert der Dienst automatisch eine Übernahme.
+Verwenden Sie den folgenden PowerShell- oder Azure CLI-Befehl, um den Protokollwiedergabedienst im Modus „AutoVervollständigen“ zu starten. Geben Sie den Namen der letzten Sicherungsdatei an, indem Sie den Parameter `-LastBackupName` verwenden. Nach dem Wiederherstellen der letzten angegebenen Sicherungsdatei initiiert der Dienst automatisch eine Übernahme.
 
-Starten von LRS im AutoVervollständigen-Modus – PowerShell-Beispiel:
+Hier ist ein Beispiel für das Starten des Protokollwiedergabediensts im Modus „AutoVervollständigen“ mit PowerShell angegeben:
 
 ```PowerShell
 Start-AzSqlInstanceDatabaseLogReplay -ResourceGroupName "ResourceGroup01" `
@@ -268,7 +283,7 @@ Start-AzSqlInstanceDatabaseLogReplay -ResourceGroupName "ResourceGroup01" `
     -LastBackupName "last_backup.bak"
 ```
 
-Starten von LRS im AutoVervollständigen-Modus – CLI-Beispiel:
+Hier ist ein Beispiel für das Starten des Protokollwiedergabediensts im Modus „AutoVervollständigen“ mit der Azure CLI angegeben:
 
 ```CLI
 az sql midb log-replay start -g mygroup --mi myinstance -n mymanageddb -a --last-bn "backup.bak"
@@ -278,7 +293,7 @@ az sql midb log-replay start -g mygroup --mi myinstance -n mymanageddb -a --last
 
 ### <a name="start-lrs-in-continuous-mode"></a>Starten von LRS im kontinuierlichen Modus
 
-Starten von LRS im kontinuierlichen Modus – PowerShell-Beispiel:
+Hier ist ein Beispiel für das Starten des Protokollwiedergabediensts im Modus „Kontinuierlich“ mit PowerShell angegeben:
 
 ```PowerShell
 Start-AzSqlInstanceDatabaseLogReplay -ResourceGroupName "ResourceGroup01" `
@@ -288,7 +303,7 @@ Start-AzSqlInstanceDatabaseLogReplay -ResourceGroupName "ResourceGroup01" `
     -StorageContainerSasToken "sv=2019-02-02&ss=b&srt=sco&sp=rl&se=2023-12-02T00:09:14Z&st=2019-11-25T16:09:14Z&spr=https&sig=92kAe4QYmXaht%2Fgjocqwerqwer41s%3D"
 ```
 
-Starten von LRS im kontinuierlichen Modus – CLI-Beispiel:
+Hier ist ein Beispiel für das Starten des Protokollwiedergabediensts im Modus „Kontinuierlich“ mit der Azure CLI angegeben:
 
 ```CLI
 az sql midb log-replay start -g mygroup --mi myinstance -n mymanageddb
@@ -296,9 +311,9 @@ az sql midb log-replay start -g mygroup --mi myinstance -n mymanageddb
     --storage-sas "sv=2019-02-02&ss=b&srt=sco&sp=rl&se=2023-12-02T00:09:14Z&st=2019-11-25T16:09:14Z&spr=https&sig=92kAe4QYmXaht%2Fgjocqwerqwer41s%3D"
 ```
 
-### <a name="scripting-lrs-start-in-continuous-mode"></a>Skripterstellung für den LRS-Start im kontinuierlichen Modus
+PowerShell- und CLI-Clients zum Starten von LRS im kontinuierlichen Modus sind synchron. Dies bedeutet, dass Clients warten, bis die API-Antwort einen Erfolg oder Fehler beim Starten des Auftrags gemeldet hat. 
 
-PowerShell- und CLI-Clients zum Starten von LRS im kontinuierlichen Modus sind synchron. Dies bedeutet, dass Clients warten, bis die API-Antwort einen Erfolg oder Fehler beim Starten des Auftrags gemeldet hat. Während dieses Wartens wird die Steuerung nicht an die Eingabeaufforderung zurückgegeben. Für den Fall, dass Sie ein Skript für die Migration erstellen und den LRS-Startbefehl benötigen, um die Steuerung sofort wieder zurückzugeben, um mit dem Rest des Skripts fortzufahren, können Sie PowerShell als Hintergrundauftrag mit dem Schalter -AsJob ausführen. Beispiel:
+Während dieser Wartezeit wird die Kontrolle vom Befehl nicht zurück an die Eingabeaufforderung gegeben. Wenn Sie ein Skript für die Migration erstellen und es erforderlich ist, dass die Kontrolle vom Startbefehl des Protokollwiedergabediensts sofort wieder zurückgegeben wird, damit der Skriptablauf fortgesetzt werden kann, können Sie PowerShell mit dem Schalter `-AsJob` als Hintergrundauftrag ausführen. Beispiel:
 
 ```PowerShell
 $lrsjob = Start-AzSqlInstanceDatabaseLogReplay <required parameters> -AsJob
@@ -306,18 +321,18 @@ $lrsjob = Start-AzSqlInstanceDatabaseLogReplay <required parameters> -AsJob
 
 Wenn Sie einen Hintergrundauftrag starten, wird selbst dann sofort ein Auftragsobjekt zurückgegeben, wenn der Abschluss des Auftrags längere Zeit in Anspruch nimmt. Sie können ohne Unterbrechung in der Sitzung weiterarbeiten, während der Auftrag abgeschlossen wird. Ausführliche Informationen zum Ausführen von PowerShell als Hintergrundauftrag finden Sie in der PowerShell-Dokumentation zu [Start-Job](/powershell/module/microsoft.powershell.core/start-job#description).
 
-Wenn Sie einen CLI-Befehl unter Linux als Hintergrundprozess starten, verwenden Sie das kaufmännische „und“-Zeichen (&) am Ende des LRS-Startbefehls.
+Wenn Sie einen Azure CLI-Befehl unter Linux als Hintergrundprozess starten, verwenden Sie auf ähnliche Weise das kaufmännische Und-Zeichen (`&`) am Ende des Startbefehls für den Protokollwiedergabedienst:
 
 ```CLI
 az sql midb log-replay start <required parameters> &
 ```
 
 > [!IMPORTANT]
-> Nachdem LRS gestartet wurde, werden alle vom System verwalteten Softwarepatches während der nächsten 47 Stunden angehalten. Nach Ablauf dieses Zeitfensters stoppt das nächste automatisierte Softwarepatch automatisch den laufenden LRS. In diesem Fall kann die Migration nicht fortgesetzt werden und muss neu gestartet werden. 
+> Nachdem Sie den Protokollwiedergabedienst gestartet haben, werden alle systemseitig verwalteten Softwarepatches für einen Zeitraum von 47 Stunden ausgesetzt. Nach Ablauf dieses Zeitraums wird der Protokollwiedergabedienst mit dem nächsten automatisierten Softwarepatch automatisch beendet. In diesem Fall können Sie die Migration nicht fortsetzen und müssen den Vorgang ganz neu starten. 
 
 ## <a name="monitor-the-migration-progress"></a>Überwachen des Migrationsfortschritts
 
-Verwenden Sie den folgenden PowerShell-Befehl, um den Migrationsvorgang zu überwachen:
+Verwenden Sie den folgenden Befehl, um den Fortschritt der Migration mit PowerShell zu überwachen:
 
 ```PowerShell
 Get-AzSqlInstanceDatabaseLogReplay -ResourceGroupName "ResourceGroup01" `
@@ -325,7 +340,7 @@ Get-AzSqlInstanceDatabaseLogReplay -ResourceGroupName "ResourceGroup01" `
     -Name "ManagedDatabaseName"
 ```
 
-Verwenden Sie den folgenden CLI-Befehl, um den Migrationsvorgang zu überwachen:
+Verwenden Sie den folgenden Befehl, um den Fortschritt der Migration mit der Azure CLI zu überwachen:
 
 ```CLI
 az sql midb log-replay show -g mygroup --mi myinstance -n mymanageddb
@@ -333,9 +348,9 @@ az sql midb log-replay show -g mygroup --mi myinstance -n mymanageddb
 
 ## <a name="stop-the-migration"></a>Stoppen der Migration
 
-Wenn Sie die Migration stoppen müssen, verwenden Sie die folgenden Cmdlets. Durch das Stoppen der Migration wird die wiederherzustellende Daten in SQL Managed Instance gelöscht, sodass die Migration nicht fortgesetzt werden kann.
+Verwenden Sie die folgenden Cmdlets, falls Sie die Migration beenden müssen. Durch das Beenden der Migration wird die wiederherzustellende Datenbank unter SQL Managed Instance gelöscht, sodass die Migration später nicht mehr fortgesetzt werden kann.
 
-Um den Migrationsprozess zu stoppen\abzubrechen, verwenden Sie den folgenden PowerShell-Befehl:
+Verwenden Sie den folgenden Befehl, um den Migrationsprozess mit PowerShell zu beenden:
 
 ```PowerShell
 Stop-AzSqlInstanceDatabaseLogReplay -ResourceGroupName "ResourceGroup01" `
@@ -343,7 +358,7 @@ Stop-AzSqlInstanceDatabaseLogReplay -ResourceGroupName "ResourceGroup01" `
     -Name "ManagedDatabaseName"
 ```
 
-Um den Migrationsprozess zu stoppen\abzubrechen, verwenden Sie den folgenden CLI-Befehl:
+Verwenden Sie den folgenden Befehl, um den Migrationsprozess mit der Azure CLI zu beenden:
 
 ```CLI
 az sql midb log-replay stop -g mygroup --mi myinstance -n mymanageddb
@@ -351,9 +366,9 @@ az sql midb log-replay stop -g mygroup --mi myinstance -n mymanageddb
 
 ## <a name="complete-the-migration-continuous-mode"></a>Abschließen der Migration (kontinuierlicher Modus)
 
-Für den Fall, dass LRS im kontinuierlichen Modus gestartet wird, wird die Migration durch Initiieren der Übernahme abgeschlossen, sobald Sie sichergestellt haben, dass alle Sicherungen wiederhergestellt wurden. Nach dem Abschluss der Übernahme wird die Datenbank migriert und ist für den Lese- und Schreibzugriff bereit.
+Gehen Sie wie folgt vor, falls Sie den Protokollwiedergabedienst im Modus „Kontinuierlich“ gestartet haben: Vergewissern Sie sich zunächst, dass alle Sicherungen wiederhergestellt wurden, und initiieren Sie anschließend die Übernahme, um die Migration abzuschließen. Nach der Übernahme wird die Datenbank migriert und ist für den Lese- und Schreibzugriff bereit.
 
-Verwenden Sie den folgenden PowerShell-Befehl, um den Migrationsprozess im kontinuierlichen LRS-Modus abzuschließen:
+Verwenden Sie den folgenden Befehl, um den Migrationsprozess im Modus „Kontinuierlich“ des Protokollwiedergabediensts mit PowerShell abzuschließen:
 
 ```PowerShell
 Complete-AzSqlInstanceDatabaseLogReplay -ResourceGroupName "ResourceGroup01" `
@@ -362,7 +377,7 @@ Complete-AzSqlInstanceDatabaseLogReplay -ResourceGroupName "ResourceGroup01" `
 -LastBackupName "last_backup.bak"
 ```
 
-Verwenden Sie den folgenden CLI-Befehl, um den Migrationsprozess im kontinuierlichen LRS-Modus abzuschließen:
+Verwenden Sie den folgenden Befehl, um den Migrationsprozess im Modus „Kontinuierlich“ des Protokollwiedergabediensts mit der Azure CLI abzuschließen:
 
 ```CLI
 az sql midb log-replay complete -g mygroup --mi myinstance -n mymanageddb --last-backup-name "backup.bak"
@@ -370,27 +385,28 @@ az sql midb log-replay complete -g mygroup --mi myinstance -n mymanageddb --last
 
 ## <a name="functional-limitations"></a>Funktionale Beschränkungen
 
-Funktionale Einschränkungen des Protokollwiedergabediensts (LRS):
-- Die wiederhergestellte Datenbank kann während des Migrationsvorgangs nicht für den schreibgeschützten Zugriff verwendet werden.
-- Vom System verwaltete Softwarepatches werden ab dem LRS-Start 47 Stunden blockiert. Nach Ablauf dieses Zeitfensters stoppt das nächste Softwareupdate LRS. In diesem Fall muss LRS von Grund auf neu gestartet werden.
-- Für LRS müssen Datenbanken auf dem SQL Server mit aktivierter CHECKSUM-Option gesichert werden.
-- Das SAS-Token für die Verwendung durch LRS muss für den gesamten Azure Blob Storage-Container generiert werden und darf nur über Berechtigungen zum Lesen und Auflisten verfügen.
-- Sicherungsdateien für verschiedene Datenbanken müssen in Azure Blob Storage in separaten Ordnern abgelegt werden.
-- LRS muss separat für jede Datenbank gestartet werden, die auf separate Ordner mit Sicherungsdateien in Azure Blob Storage verweist.
-- LRS kann bis zu 100 gleichzeitige Wiederherstellungsprozesse pro einzelner SQL Managed Instance-Instanz unterstützen.
+Für den Protokollwiedergabedienst gelten die folgenden funktionalen Beschränkungen:
+- Die Datenbank, die Sie wiederherstellen, kann während des Migrationsprozesses nicht für den schreibgeschützten Zugriff verwendet werden.
+- Nachdem Sie den Protokollwiedergabedienst gestartet haben, werden systemseitig verwaltete Softwarepatches für einen Zeitraum von 47 Stunden blockiert. Nach Ablauf dieses Zeitfensters wird der Protokollwiedergabedienst mit dem nächsten Softwareupdate beendet. Anschließend müssen Sie den Protokollwiedergabedienst ganz neu starten.
+- Für den Protokollwiedergabedienst müssen Datenbanken unter SQL Server mit aktivierter Option `CHECKSUM` gesichert werden.
+- Das SAS-Token, das vom Protokollwiedergabedienst verwendet wird, muss für den gesamten Azure Blob Storage-Container generiert werden und darf nur über die Berechtigungen „Lesen“ und „Auflisten“ verfügen.
+- Sicherungsdateien für verschiedene Datenbanken müssen in Blob Storage in separaten Ordnern abgelegt werden.
+- Der Protokollwiedergabedienst muss separat für jede Datenbank gestartet werden, die auf separate Ordner mit Sicherungsdateien in Blob Storage verweist.
+- Für den Protokollwiedergabedienst können bis zu 100 gleichzeitige Wiederherstellungsprozesse pro verwalteter Instanz unterstützt werden.
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
-Nachdem Sie den LRS gestartet haben, verwenden Sie die Überwachungscmdlets (get-azsqlinstancedatabaselogreplay oder az_sql_midb_log_replay_show), um den Status des Vorgangs anzuzeigen. Wenn LRS nach einiger Zeit nicht startet und eine Fehlermeldung ausgegeben wird, überprüfen Sie, ob eines der häufigsten Probleme aufgetreten ist:
-- Gibt es bereits eine Datenbank mit demselben Namen in SQL Managed Instance, die Sie von SQL Server migrieren möchten? Lösen Sie diesen Konflikt auf, indem Sie eine der Datenbanken umbenennen.
-- Wurde die Datenbanksicherung in SQL Server mit der Option **CHECKSUM** vorgenommen?
-- Gelten die Berechtigungen **Lesen** und **Auflisten** für das SAS-Token nur für den LRS-Dienst?
-- Wurde das SAS-Token für LRS beginnend nach dem Fragezeichen „?“ mit Inhalten kopiert, die ähnlich wie „sv=2020-02-10...“ beginnen? 
-- Stimmt die **Gültigkeitsdauer** des SAS-Tokens mit dem Zeitfenster für Starten und Abschließen der Migration überein? Möglicherweise fehlt die Übereinstimmung aufgrund unterschiedlicher **Zeitzonen** für SQL Managed Instance. Versuchen Sie, das SAS-Token erneut zu generieren, indem Sie das Gültigkeitsdauer-Zeitfenster des Tokens vor und nach dem aktuellen Datum erweitern.
-- Sind Datenbankname, Ressourcengruppenname und Name der Managed Instance-Instanz richtig geschrieben?
-- Wenn LRS im AutoVervollständigen-Modus gestartet wurde, wurde ein gültiger Dateiname für die letzte Sicherungsdatei angegeben?
+Verwenden Sie nach dem Starten des Protokollwiedergabediensts das Cmdlet für die Überwachung (`get-azsqlinstancedatabaselogreplay` oder `az_sql_midb_log_replay_show`), um den Status des Vorgangs anzuzeigen. Falls der Protokollwiedergabedienst nicht gestartet werden kann und ein Fehler angezeigt wird, sollten Sie eine Überprüfung auf die häufigsten Fehler durchführen:
+
+- Verfügt eine vorhandene Datenbank in SQL Managed Instance über den gleichen Namen wie die Datenbank, die aus SQL Server migriert werden soll? Lösen Sie diesen Konflikt auf, indem Sie eine der Datenbanken umbenennen.
+- Wurde für die Erstellung der Datenbanksicherung unter SQL Server die Option `CHECKSUM` verwendet?
+- Verfügt das SAS-Token ausschließlich über die Berechtigungen „Lesen“ und „Auflisten“ für den Protokollwiedergabedienst?
+- Haben Sie als SAS-Token für den Protokollwiedergabedienst die Zeichenfolge nach dem Fragezeichen (`?`) kopiert, die mit `sv=2020-02-10...` beginnt? 
+- Stimmt die Gültigkeitsdauer des SAS-Tokens mit dem Zeitfenster für Starten und Abschließen der Migration überein? Aufgrund der unterschiedlichen Zeitzonen, die für SQL Managed Instance und das SAS-Token verwendet werden, kann es ggf. zu Konflikten kommen. Versuchen Sie, das SAS-Token erneut zu generieren und das Gültigkeitsdauer-Zeitfenster des Tokens vor und nach dem aktuellen Datum zu vergrößern.
+- Sind der Datenbankname, der Ressourcengruppenname und der Name der verwalteten Instanz richtig geschrieben?
+- Wenn Sie den Protokollwiedergabedienst im Modus „AutoVervollständigen“ gestartet haben: Wurde für die letzte Sicherungsdatei ein gültiger Dateiname angegeben?
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Erfahren Sie mehr über das [Migrieren von SQL Server zu SQL Managed Instance](../migration-guides/managed-instance/sql-server-to-managed-instance-guide.md).
-- Erfahren Sie mehr über [Unterschiede zwischen SQL Server und Azure SQL Managed Instance](transact-sql-tsql-differences-sql-server.md).
+- Informieren Sie sich über die [Unterschiede zwischen SQL Server und SQL Managed Instance](transact-sql-tsql-differences-sql-server.md).
 - Erfahren Sie mehr über [Bewährte Methoden für Kostenermittlung und Größenanpassung von zu Azure migrierten Workloads](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs).

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 4860918fc4f995ad267fc35b142d3fcb460ce177
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89002826"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-11"></a>Upgrade auf Version 1.1 des Azure Search .NET SDK
@@ -198,7 +198,7 @@ sp.ScoringParameters =
 ```
 
 ### <a name="model-class-changes"></a>Änderungen an Modellklassen
-Aufgrund der Signaturänderungen, die unter [Änderungen an der Vorgangsmethode](#OperationMethodChanges) beschrieben werden, wurden viele Klassen im `Microsoft.Azure.Search.Models`-Namespace umbenannt oder entfernt. Beispiel:
+Aufgrund der Signaturänderungen, die unter [Änderungen an der Vorgangsmethode](#OperationMethodChanges) beschrieben werden, wurden viele Klassen im `Microsoft.Azure.Search.Models`-Namespace umbenannt oder entfernt. Beispiele:
 
 * `IndexDefinitionResponse` wurde durch `AzureOperationResponse<Index>` ersetzt.
 * `DocumentSearchResponse` wurde in `DocumentSearchResult` umbenannt.
@@ -393,7 +393,7 @@ und `IntValue` auf 0 setzen, wird dieser Wert jetzt bei der Übertragung richtig
 
 Bei diesem Ansatz gibt es ein potenzielles Problem, das Sie beachten sollten: Wenn Sie einen Modelltyp mit einer Eigenschaft verwenden, die keine NULL-Werte zulässt, müssen Sie **garantieren** , dass keine Dokumente im Index für das entsprechende Feld einen NULL-Wert enthalten. Weder das SDK noch die Azure Search-REST-API hilft Ihnen, dies durchzusetzen.
 
-Dieser Aspekt ist nicht nur hypothetischer Art: Stellen Sie sich ein Szenario vor, bei dem Sie ein neues Feld einem vorhandenen Index vom Typ `Edm.Int32` hinzufügen. Nach dem Aktualisieren der Indexdefinition besitzen alle Dokumente einen NULL-Wert für das neue Feld (da in Azure Search alle Typen NULL-Werte zulassen). Wenn Sie für dieses Feld anschließend eine Modellklasse mit einer `int`-Eigenschaft verwenden, die keine NULL-Werte zulässt, erhalten Sie beim Abrufen von Dokumenten folgendes `JsonSerializationException`-Element:
+Dies ist nicht nur von hypothetischer Bedeutung: Stellen Sie sich ein Szenario vor, bei dem Sie ein neues Feld einem vorhandenen Index vom Typ `Edm.Int32` hinzufügen. Nach dem Aktualisieren der Indexdefinition besitzen alle Dokumente einen NULL-Wert für das neue Feld (da in Azure Search alle Typen NULL-Werte zulassen). Wenn Sie für dieses Feld anschließend eine Modellklasse mit einer `int`-Eigenschaft verwenden, die keine NULL-Werte zulässt, erhalten Sie beim Abrufen von Dokumenten folgendes `JsonSerializationException`-Element:
 
 ```output
 Error converting value {null} to type 'System.Int32'. Path 'IntValue'.

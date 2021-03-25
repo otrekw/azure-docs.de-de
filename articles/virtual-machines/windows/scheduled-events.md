@@ -12,10 +12,10 @@ ms.author: ericrad
 ms.reviwer: mimckitt
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 3a388ade2b44260bfa21e22866d85a46e482bc97
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102499950"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Instance Metadata Service: Scheduled Events für Windows-VMs
@@ -140,7 +140,7 @@ Sofern geplante Ereignisse vorliegen, enthält die Antwort ein Array mit Ereigni
 | Ressourcen| Liste der Ressourcen, auf die sich dieses Ereignis auswirkt. Die Liste enthält garantiert Computer aus maximal einer [Updatedomäne](../availability.md), muss jedoch nicht alle Computer in dieser Domäne enthalten. <br><br> Beispiel: <br><ul><li> [„FrontEnd_IN_0“, „BackEnd_IN_0“] |
 | EventStatus | Status dieses Ereignisses <br><br> Werte: <ul><li>`Scheduled`: Dieses Ereignis erfolgt nach dem in der `NotBefore`-Eigenschaft angegebenen Zeitpunkt.<li>`Started`: Dieses Ereignis wurde gestartet.</ul> `Completed` oder ein ähnlicher Status wird nie angegeben. Das Ergebnis wird nicht länger zurückgegeben, wenn es abgeschlossen wurde.
 | NotBefore| Zeitpunkt, nach dem dieses Ereignis gestartet werden kann. <br><br> Beispiel: <br><ul><li> Mo., 19. September 2016 18:29:47 GMT  |
-| Beschreibung | Beschreibung dieses Ereignisses. <br><br> Beispiel: <br><ul><li> Der Hostserver befindet sich im Wartungsmodus. |
+| BESCHREIBUNG | Beschreibung dieses Ereignisses. <br><br> Beispiel: <br><ul><li> Der Hostserver befindet sich im Wartungsmodus. |
 | EventSource | Initiator des Ereignisses. <br><br> Beispiel: <br><ul><li> `Platform`: Dieses Ereignis wird durch die Plattform initiiert. <li>`User`: Dieses Ereignis wurde durch den Benutzer initiiert. |
 
 ### <a name="event-scheduling"></a>Ereignisplanung

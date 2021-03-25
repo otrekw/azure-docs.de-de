@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 06/19/2020
 ms.author: mjbrown
 ms.openlocfilehash: 55d58a6c4724bd01325db029ed75d77ccc96d0f8
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93333578"
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-with-a-web-app-from-github-using-an-azure-resource-manager-template"></a>Bereitstellen von Azure Cosmos DB und Azure App Service mit einer Web-App von GitHub mithilfe einer Azure Resource Manager-Vorlage
@@ -54,7 +54,7 @@ Wählen Sie im Azure-Portal das Abonnement für die Bereitstellung aus, und wäh
 * **Datenbankname** – der Name der Azure Cosmos-Datenbank
 * **Containername** – der Name des Azure Cosmos-Containers
 
-Wenn Sie alle Werte eingegeben haben, klicken Sie auf **Erstellen** , um mit der Bereitstellung zu beginnen. Dieser Schritt sollte zwischen 5 und 10 Minuten dauern.
+Wenn Sie alle Werte eingegeben haben, klicken Sie auf **Erstellen**, um mit der Bereitstellung zu beginnen. Dieser Schritt sollte zwischen 5 und 10 Minuten dauern.
 
 > [!TIP]
 > Die Vorlage überprüft nicht, ob die in der Vorlage eingegebenen Namen des Azure App Service und des Azure Cosmos-Kontos gültig und verfügbar sind. Sie sollten unbedingt die Verfügbarkeit der gewünschten Namen überprüfen, bevor Sie die Bereitstellung ausführen.
@@ -88,7 +88,7 @@ Navigieren Sie als Nächstes zum Bereitstellungscenter für App Service. Hier we
 
 ### <a name="run-the-web-application"></a>Ausführen der Webanwendung
 
-Klicken Sie oben im Bereitstellungscenter auf **Durchsuchen** , um die Webanwendung zu öffnen. Die Webanwendung wird auf dem Startbildschirm geöffnet. Klicken Sie auf **Neu erstellen** , geben Sie Daten in die Felder ein, und klicken Sie auf „Speichern“. Auf dem resultierenden Bildschirm werden die in Cosmos DB gespeicherten Daten angezeigt.
+Klicken Sie oben im Bereitstellungscenter auf **Durchsuchen**, um die Webanwendung zu öffnen. Die Webanwendung wird auf dem Startbildschirm geöffnet. Klicken Sie auf **Neu erstellen**, geben Sie Daten in die Felder ein, und klicken Sie auf „Speichern“. Auf dem resultierenden Bildschirm werden die in Cosmos DB gespeicherten Daten angezeigt.
 
 :::image type="content" source="./media/create-website/app-home-screen.png" alt-text="Startbildschirm":::
 

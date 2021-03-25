@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
 ms.openlocfilehash: 5f7afe044ab4f782f2028598c2c56e75edf95860
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92317376"
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Gängige Szenarien, Beispiele, Tutorials und exemplarische Vorgehensweisen für Azure Logic Apps
@@ -29,7 +29,7 @@ Jede Logik-App beginnt mit nur einem [*Trigger*](../logic-apps/logic-apps-overvi
 
 In diesen Beispielen werden häufig verwendete Trigger beschrieben:
 
-* *Abfrage*trigger:
+* *Abfrage* trigger:
 
   * Der [Trigger **Wiederholung**](../connectors/connectors-native-recurrence.md) ermöglicht Ihnen das Festlegen von Startdatum und -uhrzeit sowie der Wiederholung zum Auslösen Ihrer Logik-App. Beispielsweise können Sie die Wochentage und Tageszeiten auswählen, um Ihre Logik-App auszulösen. Weitere Informationen finden Sie in den folgenden Themen:<p>
 
@@ -48,9 +48,9 @@ In diesen Beispielen werden häufig verwendete Trigger beschrieben:
 
   * Der [**HTTP**-Trigger](../connectors/connectors-native-http.md) kann einen Dienstendpunkt über HTTP oder HTTPS aufrufen. Weitere Informationen finden Sie unter [Aufrufen, Auslösen oder Schachteln von Workflows mit HTTP-Endpunkten ](../logic-apps/logic-apps-http-endpoint.md).
 
-* *Push*trigger:
+* *Push* trigger:
 
-  * Der [**Anforderungs**trigger](../connectors/connectors-native-reqres.md) kann eingehende HTTPS-Anforderungen empfangen.
+  * Der [**Anforderungs** trigger](../connectors/connectors-native-reqres.md) kann eingehende HTTPS-Anforderungen empfangen.
 
   * Der Trigger [**HTTP-Webhook**](../connectors/connectors-native-webhook.md) abonniert einen Dienstendpunkt durch Registrieren einer *Rückruf-URL* beim jeweiligen Dienst. Auf diese Weise kann der Dienst den Trigger einfach benachrichtigen, wenn das angegebene Ereignis eintritt, sodass der Trigger den Dienst nicht mehr abfragen muss.
 

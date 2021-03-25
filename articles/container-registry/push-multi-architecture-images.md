@@ -4,12 +4,12 @@ description: Verwenden Sie Ihre Azure Container Registry-Instanz zum Erstellen, 
 ms.topic: article
 ms.date: 02/07/2021
 ms.custom: ''
-ms.openlocfilehash: f8467cd3108ae4faea9ecb4c9d9ae339f476c311
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: 520518a275e0a9d191ae770e560a0e6e8278eae2
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100012280"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802453"
 ---
 # <a name="multi-architecture-images-in-your-azure-container-registry"></a>Images für mehrere Architekturen in einer Azure Container Registry-Instanz
 
@@ -165,7 +165,7 @@ steps:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Verwenden Sie [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines.md) zum Erstellen von Containerimages für verschiedene Architekturen.
+* Verwenden Sie [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines) zum Erstellen von Containerimages für verschiedene Architekturen.
 * Erfahren Sie mehr über das Entwickeln von Images für mehrere Plattformen mithilfe des experimentellen Docker-Plug-Ins [buildx](https://docs.docker.com/buildx/working-with-buildx/).
 
 <!-- LINKS - external -->

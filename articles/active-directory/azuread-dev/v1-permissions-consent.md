@@ -15,10 +15,10 @@ ms.reviewer: jesakowi
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 2b85115d905cb6a7eb7c6aed64a4834425d2f1d7
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92366393"
 ---
 # <a name="permissions-and-consent-in-the-azure-active-directory-v10-endpoint"></a>Berechtigungen und Zustimmung im Azure Active Directory-v1.0-Endpunkt
@@ -27,7 +27,7 @@ ms.locfileid: "92366393"
 
 In Azure Active Directory (Azure AD) werden Berechtigungen sowohl für OAuth- als auch für OIDC-Datenflüsse (OpenID Connect) viel eingesetzt. Wenn Ihre App ein Zugriffstoken von Azure AD empfängt, sind darin Ansprüche enthalten. Mit diesen Ansprüchen werden die Berechtigungen beschrieben, über die Ihre App in Bezug auf eine bestimmte Ressource verfügt.
 
-*Berechtigungen* , die auch als *Bereiche* bezeichnet werden, vereinfachen die Autorisierung für die Ressource. Die Ressource muss lediglich prüfen, ob das Token die richtige Berechtigung für die API enthält, die von der App jeweils aufgerufen wird.
+*Berechtigungen*, die auch als *Bereiche* bezeichnet werden, vereinfachen die Autorisierung für die Ressource. Die Ressource muss lediglich prüfen, ob das Token die richtige Berechtigung für die API enthält, die von der App jeweils aufgerufen wird.
 
 ## <a name="types-of-permissions"></a>Arten von Berechtigungen
 

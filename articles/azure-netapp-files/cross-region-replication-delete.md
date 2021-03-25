@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 11/18/2020
 ms.author: b-juche
 ms.openlocfilehash: 5ce7a591acd8203775808457219b0ec392cd696e
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95249891"
 ---
 # <a name="delete-volume-replications-or-volumes"></a>Löschen von Volumereplikationen oder Volumes
@@ -34,10 +34,10 @@ Sie können die Replikationsverbindung zwischen den Quell- und Zielvolumes beend
     1. Wählen Sie das Volume *Ziel* aus. Klicken Sie unter „Speicherdienst“ auf **Replikation**.  
 
     2.  Überprüfen Sie die folgenden Felder, bevor Sie fortfahren:  
-        * Stellen Sie sicher, dass bei „Spiegelungsstatus“ ***Gespiegelt** _ angezeigt wird.   
-            Fahren Sie mit der Unterbrechung des Replikationspeerings nicht fort, wenn bei „Spiegelungsstatus“ _Nicht initialisiert* angezeigt wird.
-        * Stellen Sie sicher, dass bei „Beziehungsstatus“ ***Im Leerlauf** _ angezeigt wird.   
-            Fahren Sie mit der Unterbrechung des Replikationspeerings nicht fort, wenn bei „Beziehungsstatus“ _Übertragung wird ausgeführt* angezeigt wird.   
+        * Stellen Sie sicher, dass bei „Spiegelungsstatus“ ***Gespiegelt*** angezeigt wird.   
+            Fahren Sie mit der Unterbrechung des Replikationspeerings nicht fort, wenn bei „Spiegelungsstatus“ *Nicht initialisiert* angezeigt wird.
+        * Stellen Sie sicher, dass bei „Beziehungsstatus“ ***Im Leerlauf*** angezeigt wird.   
+            Fahren Sie mit der Unterbrechung des Replikationspeerings nicht fort, wenn bei „Beziehungsstatus“ *Übertragung wird ausgeführt* angezeigt wird.   
 
         Weitere Informationen finden Sie unter [Anzeigen des Integritätsstatus der Replikationsbeziehung](cross-region-replication-display-health-status.md). 
 

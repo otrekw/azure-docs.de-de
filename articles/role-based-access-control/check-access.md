@@ -11,10 +11,10 @@ ms.date: 12/09/2020
 ms.author: rolyon
 ms.custom: contperf-fy21q2
 ms.openlocfilehash: 5e4f3314ba580dddbd995855bc0f0512b7597107
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98115729"
 ---
 # <a name="quickstart-check-access-for-a-user-to-azure-resources"></a>Schnellstart: Überprüfen des Zugriffs auf Azure-Ressourcen für einen Benutzer
@@ -57,7 +57,7 @@ Führen Sie die folgenden Schritte aus, um den Zugriff für einen einzelnen Benu
 
 1. Klicken Sie auf den Sicherheitsprinzipal, um den Bereich **Zuweisungen** zu öffnen.
 
-    Hier können Sie den in diesem Bereich zugewiesenen und geerbten Zugriff für den ausgewählten Sicherheitsprinzipal anzeigen. Zuweisungen in untergeordneten Bereichen werden nicht aufgeführt. Folgende Zuweisungen werden angezeigt:
+    Hier können Sie den in diesem Bereich zugewiesenen und geerbten Zugriff für den ausgewählten Sicherheitsprinzipal sehen. Zuweisungen in untergeordneten Bereichen sind nicht aufgeführt. Folgende Zuweisungen werden angezeigt:
 
     - Mit Azure RBAC hinzugefügte Rollenzuweisungen.
     - Mithilfe von Azure Blueprints oder verwalteten Azure-Apps hinzugefügte Zuweisungen werden abgelehnt.

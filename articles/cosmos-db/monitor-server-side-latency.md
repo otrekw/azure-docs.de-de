@@ -7,10 +7,10 @@ author: kanshiG
 ms.author: govindk
 ms.date: 04/07/2020
 ms.openlocfilehash: ec6a9db63504958640137fcd0fcfc904eb01afa5
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93074728"
 ---
 # <a name="how-to-monitor-the-server-side-latency-for-operations-in-an-azure-cosmos-db-container-or-account"></a>Überwachen der serverseitigen Latenz bei Vorgängen in einem Azure Cosmos DB-Container oder -Konto
@@ -44,7 +44,7 @@ Sie können im Diagnoseprotokoll nachschlagen, um die Größe der zurückgegeben
 
 ## <a name="filters-for-server-side-latency"></a>Filter für serverseitige Latenz
 
-Sie können Metriken und die angezeigten Diagramme auch nach bestimmten Werten für **CollectionName** , **ConnectionMode** , **DatabaseName** , **OperationType** , **Region** und **PublicAPIType** filtern. 
+Sie können Metriken und die angezeigten Diagramme auch nach bestimmten Werten für **CollectionName**, **ConnectionMode**, **DatabaseName**, **OperationType**, **Region** und **PublicAPIType** filtern. 
 
 Wählen Sie zum Filtern der Metriken **Filter hinzufügen** und dann die erforderliche Eigenschaft aus, z. B. **PublicAPIType**. Wählen Sie anschließend den Wert **sql** aus. Fügen Sie einen weiteren Filter für **OperationType** hinzu. Im Diagramm wird dann die serverseitige Latenz bei verschiedenen Vorgänge während des ausgewählten Zeitraums angezeigt. Die über eine gespeicherte Prozedur ausgeführten Vorgänge werden nicht protokolliert und sind daher nicht unter der Metrik „OperationType“ verfügbar.
 

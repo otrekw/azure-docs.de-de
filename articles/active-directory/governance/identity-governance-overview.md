@@ -17,10 +17,10 @@ ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e02df83d4b7874a1d158aae45f1619eb543e0aec
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92362449"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Was ist Azure AD Identity Governance?
@@ -90,7 +90,7 @@ Zusätzlich zu den obigen Features werden die folgenden weiteren Azure AD-Featur
 
 ## <a name="getting-started"></a>Erste Schritte
 
-Öffnen Sie im Azure-Portal die Registerkarte „Erste Schritte“ von **Identity Governance** , um mit der Verwendung der Berechtigungsverwaltung, von Zugriffsüberprüfungen, Privileged Identity Management und Nutzungsbedingungen zu beginnen.
+Öffnen Sie im Azure-Portal die Registerkarte „Erste Schritte“ von **Identity Governance**, um mit der Verwendung der Berechtigungsverwaltung, von Zugriffsüberprüfungen, Privileged Identity Management und Nutzungsbedingungen zu beginnen.
 
 ![Identity Governance, Registerkarte „Erste Schritte“](./media/identity-governance-overview/getting-started.png)
 

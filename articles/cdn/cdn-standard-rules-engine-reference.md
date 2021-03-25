@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/04/2020
 ms.author: allensu
 ms.openlocfilehash: 1a0f4456f38939632026645500dd48acbf7dbc88
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93242207"
 ---
 # <a name="standard-rules-engine-reference-for-azure-cdn"></a>Referenz zur Standardregel-Engine für Azure CDN
@@ -56,7 +56,7 @@ Wie Sonderzeichen in einer Regel behandelt werden, hängt davon ab, wie verschie
 
 ### <a name="literal-values"></a>Literalwerte
 
-Text, der als Literalwert interpretiert wird, behandelt alle Sonderzeichen ( *mit Ausnahme des Zeichens „%“* ) als Teil des Werts, für den eine Übereinstimmung in der Regel gesucht wird. Eine literale Übereinstimmungsbedingung, die auf `'*'` festgelegt ist, wird nur erfüllt, wenn der exakte Wert `'*'` ermittelt wird.
+Text, der als Literalwert interpretiert wird, behandelt alle Sonderzeichen (*mit Ausnahme des Zeichens „%“* ) als Teil des Werts, für den eine Übereinstimmung in der Regel gesucht wird. Eine literale Übereinstimmungsbedingung, die auf `'*'` festgelegt ist, wird nur erfüllt, wenn der exakte Wert `'*'` ermittelt wird.
 
 Ein Prozentzeichen wird zum Angeben der URL-Codierung verwendet (z. B. `%20`).
 

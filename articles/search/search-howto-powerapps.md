@@ -10,10 +10,10 @@ ms.devlang: rest-api
 ms.topic: tutorial
 ms.date: 11/17/2020
 ms.openlocfilehash: e8c16f02cf6b77fa54d2a19abac48e9914aa99bd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96008564"
 ---
 # <a name="tutorial-query-a-cognitive-search-index-from-power-apps"></a>Tutorial: Abfragen eines Cognitive Search-Index über Power Apps

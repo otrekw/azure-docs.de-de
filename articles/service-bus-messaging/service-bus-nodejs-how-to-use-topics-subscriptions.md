@@ -8,10 +8,10 @@ ms.date: 11/09/2020
 ms.author: spelluru
 ms.custom: devx-track-js
 ms.openlocfilehash: a1afe4207ce3833f3bcb55bc7bc2e8e27f393f63
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/13/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98179995"
 ---
 # <a name="quickstart-service-bus-topics-and-subscriptions-with-nodejs-and-the-preview-azureservice-bus-package"></a>Schnellstart: Service Bus-Themen und -Abonnements mit Node.js und dem Paket „azure/service-bus“ (Vorschauversion)
@@ -206,6 +206,6 @@ Wenn Sie auf dieser Seite ein Abonnement auswählen, gelangen Sie zur Seite **Se
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen finden Sie in der folgenden Dokumentation bzw. unter den folgenden Beispielen: 
 
-- [Azure Service Bus-Clientbibliothek für Python](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/servicebus/service-bus/README.md)
+- [Azure Service Bus-Clientbibliothek für Python](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/servicebus/service-bus/README.md)
 - [Beispiele:](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/servicebus/service-bus/samples) Der Ordner **javascript** enthält JavaScript-Beispiele, und im Ordner **typescript** finden Sie TypeScript-Beispiele. 
 - [azure-servicebus: Referenzdokumentation](/javascript/api/overview/azure/service-bus)

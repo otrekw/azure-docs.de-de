@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/05/2021
 ms.author: cshoe
 ms.openlocfilehash: 57c83a94925e94088085efacf1192416f63e6383
-ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103232034"
 ---
 # <a name="github-actions-workflows-for-azure-static-web-apps-preview"></a>GitHub Actions-Workflows für Azure Static Web Apps (Vorschau)
@@ -136,7 +136,7 @@ with:
     ###### End of Repository/Build Configurations ######
 ```
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |---|---|---|
 | `app_location` | Speicherort Ihres Anwendungscodes.<br><br>Geben Sie beispielsweise `/` ein, wenn sich Ihr Quellcode für die Anwendung im Stammverzeichnis des Repositorys befindet, oder `/app`, wenn Ihr Anwendungscode in einem Verzeichnis mit dem Namen `app` enthalten ist. | Ja |
 | `api_location` | Speicherort Ihres Azure Functions-Codes.<br><br>Geben Sie beispielsweise `/api` ein, wenn sich Ihr App-Code in einem Ordner mit dem Namen `api` befindet. Wenn im Ordner keine Azure Functions-App erkannt wird, tritt für den Buildvorgang kein Fehler auf. Im Workflow wird angenommen, dass Sie keine API benötigen. | Nein |
@@ -150,7 +150,7 @@ Sie können präzise steuern, welche Befehle während einer Bereitstellung ausge
 
 Für die Bereitstellung wird vor einem benutzerdefinierten Befehl immer `npm install` aufgerufen.
 
-| Befehl            | BESCHREIBUNG |
+| Get-Help            | BESCHREIBUNG |
 |---------------------|-------------|
 | `app_build_command` | Definiert einen benutzerdefinierten Befehl, der während der Bereitstellung der Anwendung für statischen Inhalt ausgeführt werden soll.<br><br>Wenn Sie beispielsweise einen Produktionsbuild für eine Angular-Anwendung konfigurieren möchten, erstellen Sie ein npm-Skript mit dem Namen `build-prod`, um `ng build --prod` auszuführen, und geben Sie `npm run build-prod` als benutzerdefinierten Befehl ein. Wenn Sie das Feld leer lassen, versucht der Workflow, den Befehl `npm run build` oder `npm run build:azure` auszuführen.  |
 | `api_build_command` | Definiert einen benutzerdefinierten Befehl, der während der Bereitstellung der Azure Functions-API-Anwendung ausgeführt werden soll. |

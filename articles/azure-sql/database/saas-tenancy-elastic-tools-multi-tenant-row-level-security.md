@@ -12,23 +12,23 @@ ms.author: vanto
 ms.reviewer: sstein
 ms.date: 12/18/2018
 ms.openlocfilehash: 6d753a90f2a4cb19c9f3933d007fb3d378af6d81
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92793210"
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>Mehrinstanzenfähige Anwendungen mit elastischen Datenbanktools und zeilenbasierter Sicherheit
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-[Tools für elastische Datenbanken](elastic-scale-get-started.md) und die [zeilenbasierte Sicherheit (RLS)][rls] ermöglichen die Skalierung der Datenschicht einer mehrinstanzenfähigen Anwendung mit Azure SQL-Datenbank. Durch die Kombination dieser Technologien können Sie eine Anwendung erstellen, die über eine hochgradig skalierbare Datenschicht verfügt. Die Datenschicht unterstützt mehrinstanzenfähige Shards und verwendet **ADO.NET SqlClient** oder **Entity Framework** . Weitere Informationen finden Sie unter [Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen und Azure SQL-Datenbank](./saas-tenancy-app-design-patterns.md).
+[Tools für elastische Datenbanken](elastic-scale-get-started.md) und die [zeilenbasierte Sicherheit (RLS)][rls] ermöglichen die Skalierung der Datenschicht einer mehrinstanzenfähigen Anwendung mit Azure SQL-Datenbank. Durch die Kombination dieser Technologien können Sie eine Anwendung erstellen, die über eine hochgradig skalierbare Datenschicht verfügt. Die Datenschicht unterstützt mehrinstanzenfähige Shards und verwendet **ADO.NET SqlClient** oder **Entity Framework**. Weitere Informationen finden Sie unter [Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen und Azure SQL-Datenbank](./saas-tenancy-app-design-patterns.md).
 
 - **Elastische Datenbanktools** ermöglichen Entwicklern eine Aufskalierung der Datenschicht über Sharding-Standardmethoden, indem .NET-Bibliotheken und Azure-Dienstvorlagen verwendet werden. Die Verwaltung von Shards mit der [Clientbibliothek für elastische Datenbanken][s-d-elastic-database-client-library] hilft bei der Automatisierung und Optimierung zahlreicher infrastruktureller Aufgaben, die i. d. R. Sharding zugeordnet werden.
 - Mithilfe der **Sicherheit auf Zeilenebene** können Entwickler Daten für mehrere Mandanten in derselben Datenbank sicher speichern. Sicherheitsrichtlinien für die Sicherheit auf Zeilenebene filtern Zeilen heraus, die nicht dem Mandanten gehören, der eine Abfrage ausführt. Die Zentralisierung der Filterlogik in der Datenbank vereinfacht die Wartung und reduziert das Risiko eines Sicherheitsfehlers. Die Alternative, sich auf den gesamten Clientcode zu verlassen, um Sicherheit zu erzwingen, ist riskant.
 
 Durch die gemeinsame Nutzung dieser Features kann eine Anwendung Daten für mehrere Mandanten in derselben Sharddatenbank speichern. Es ist kostengünstiger pro Mandant, wenn sich die Mandanten eine Datenbank teilen. Die gleiche Anwendung kann aber auch seinen Premium-Mandanten die Möglichkeit bieten, für ihren eigenen, dedizierten Shard für einen einzelnen Mandanten zu bezahlen. Ein Vorteil der Einzelmandantenisolierung ist, dass die Leistungsgarantien strenger sind. In einer Datenbank mit nur einem Mandanten gibt es keinen anderen Mandanten, der um Ressourcen wetteifert.
 
-Das Ziel ist die Verwendung der APIs der elastischen Datenbank-Clientbibliothek zum [datenabhängigen Routen](elastic-scale-data-dependent-routing.md), um jeden bestimmten Mandanten automatisch mit der richtigen Sharddatenbank zu verbinden. Nur ein Shard enthält einen bestimmten TenantId-Wert für den bestimmten Mandanten. Die „TenantId“ ist der *Shardingschlüssel* . Nachdem die Verbindung hergestellt wurde, sorgt eine Sicherheitsrichtlinie für die Sicherheit auf Zeilenebene innerhalb der Datenbank dafür, dass der jeweilige Mandant nur auf die Datenzeilen zugreifen kann, die seine „TenantId“ enthalten.
+Das Ziel ist die Verwendung der APIs der elastischen Datenbank-Clientbibliothek zum [datenabhängigen Routen](elastic-scale-data-dependent-routing.md), um jeden bestimmten Mandanten automatisch mit der richtigen Sharddatenbank zu verbinden. Nur ein Shard enthält einen bestimmten TenantId-Wert für den bestimmten Mandanten. Die „TenantId“ ist der *Shardingschlüssel*. Nachdem die Verbindung hergestellt wurde, sorgt eine Sicherheitsrichtlinie für die Sicherheit auf Zeilenebene innerhalb der Datenbank dafür, dass der jeweilige Mandant nur auf die Datenzeilen zugreifen kann, die seine „TenantId“ enthalten.
 
 > [!NOTE]
 > Der Mandantenbezeichner kann aus mehreren Spalten bestehen. Der Einfachheit halber nehmen wir informell eine einspaltige „TenantId“ an.
@@ -54,8 +54,8 @@ Erstellen Sie die Anwendung, und führen Sie sie aus. Durch diese Ausführung we
 
 Beachten Sie, dass diese gesamten Tests ein Problem aufzeigen, da RLS noch nicht in den Shard-Datenbanken aktiviert wurde: Mandanten können Blogs anzeigen, die Ihnen nicht gehören, und die Anwendung, wird nicht daran gehindert, einen Blog für den falschen Mandanten einzufügen. Im restlichen Artikel wird beschrieben, wie Sie diese Probleme beheben, indem Sie die Mandantenisolierung mit RLS erzwingen. Dafür sind zwei Schritte nötig:
 
-1. **Anwendungsschicht** : Ändern Sie den Anwendungscode so, dass die aktuelle Mandanten-ID im SESSION\_CONTEXT immer nach dem Öffnen einer Verbindung festgelegt wird. Das Beispielprojekt legt die „TenantId“ bereits auf diese Weise fest.
-2. **Datenschicht** : Erstellen Sie auf der Grundlage der in SESSION\_CONTEXT gespeicherten Mandanten-ID in jeder Sharddatenbank eine RLS-Sicherheitsrichtlinie zum Filtern von Zeilen. Erstellen Sie für jede Sharddatenbank eine Richtlinie. Andernfalls werden die Zeilen in Shards mit mehreren Mandanten nicht gefiltert.
+1. **Anwendungsschicht**: Ändern Sie den Anwendungscode so, dass die aktuelle Mandanten-ID im SESSION\_CONTEXT immer nach dem Öffnen einer Verbindung festgelegt wird. Das Beispielprojekt legt die „TenantId“ bereits auf diese Weise fest.
+2. **Datenschicht**: Erstellen Sie auf der Grundlage der in SESSION\_CONTEXT gespeicherten Mandanten-ID in jeder Sharddatenbank eine RLS-Sicherheitsrichtlinie zum Filtern von Zeilen. Erstellen Sie für jede Sharddatenbank eine Richtlinie. Andernfalls werden die Zeilen in Shards mit mehreren Mandanten nicht gefiltert.
 
 ## <a name="1-application-tier-set-tenantid-in-the-session_context"></a>1. Anwendungsschicht: Festlegen von TenantId in SESSION\_CONTEXT
 
@@ -341,8 +341,8 @@ GO
 
 ### <a name="maintenance"></a>Wartung
 
-- **Hinzufügen neuer Shards** : Führen Sie das T-SQL-Skript zum Aktivieren von RLS auf allen neuen Shards aus. Andernfalls werden Abfragen für diese Shards nicht gefiltert.
-- **Hinzufügen neuer Tabellen** : Fügen Sie den Sicherheitsrichtlinien aller Shards ein FILTER- und BLOCK-Prädikat hinzu, wenn eine neue Tabelle erstellt wird. Andernfalls werden Abfragen für die neue Tabelle nicht gefiltert. Dies kann mithilfe eines DDL-Triggers automatisiert werden, wie im Blogbeitrag [Apply Row-Level Security automatically to newly created tables](https://techcommunity.microsoft.com/t5/SQL-Server/Apply-Row-Level-Security-automatically-to-newly-created-tables/ba-p/384393) (Automatisches Anwenden der Sicherheit auf Zeilenebene auf neu erstellte Tabellen) beschrieben.
+- **Hinzufügen neuer Shards**: Führen Sie das T-SQL-Skript zum Aktivieren von RLS auf allen neuen Shards aus. Andernfalls werden Abfragen für diese Shards nicht gefiltert.
+- **Hinzufügen neuer Tabellen**: Fügen Sie den Sicherheitsrichtlinien aller Shards ein FILTER- und BLOCK-Prädikat hinzu, wenn eine neue Tabelle erstellt wird. Andernfalls werden Abfragen für die neue Tabelle nicht gefiltert. Dies kann mithilfe eines DDL-Triggers automatisiert werden, wie im Blogbeitrag [Apply Row-Level Security automatically to newly created tables](https://techcommunity.microsoft.com/t5/SQL-Server/Apply-Row-Level-Security-automatically-to-newly-created-tables/ba-p/384393) (Automatisches Anwenden der Sicherheit auf Zeilenebene auf neu erstellte Tabellen) beschrieben.
 
 ## <a name="summary"></a>Zusammenfassung
 

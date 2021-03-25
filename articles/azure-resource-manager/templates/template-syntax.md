@@ -2,13 +2,13 @@
 title: Vorlagenstruktur und -syntax
 description: Beschreibt die Struktur und die Eigenschaften der Azure Resource Manager-Vorlagen (ARM-Vorlagen) mithilfe deklarativer JSON-Syntax.
 ms.topic: conceptual
-ms.date: 12/17/2020
-ms.openlocfilehash: 31576c72fb845677f132fd9cd6ee776db922d436
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/03/2021
+ms.openlocfilehash: da64eb8abeaf45f58933dfbddaf954cad8e66f4a
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101722703"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102120415"
 ---
 # <a name="understand-the-structure-and-syntax-of-arm-templates"></a>Verstehen der Struktur und Syntax von ARM-Vorlagen
 
@@ -46,62 +46,6 @@ In der einfachsten Struktur weist eine Vorlage die folgenden Elemente auf:
 
 Jedes Element weist Eigenschaften auf, die Sie festlegen können. In diesem Artikel werden die Abschnitte der Vorlage ausführlicher beschrieben.
 
-## <a name="data-types"></a>Datentypen
-
-In einer ARM-Vorlage können Sie die folgenden Datentypen verwenden:
-
-* Zeichenfolge
-* securestring
-* INT
-* bool
-* object
-* secureObject
-* array
-
-Die folgende Vorlage zeigt das Format für die Datentypen. Jeder Typ verfügt über einen Standardwert im richtigen Format.
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "stringParameter": {
-      "type": "string",
-      "defaultValue": "option 1"
-    },
-    "intParameter": {
-      "type": "int",
-      "defaultValue": 1
-    },
-    "boolParameter": {
-      "type": "bool",
-      "defaultValue": true
-    },
-    "objectParameter": {
-      "type": "object",
-      "defaultValue": {
-        "one": "a",
-        "two": "b"
-      }
-    },
-    "arrayParameter": {
-      "type": "array",
-      "defaultValue": [ 1, 2, 3 ]
-    }
-  },
-  "resources": [],
-  "outputs": {}
-}
-```
-
-Die sichere Zeichenfolge verwendet das gleiche Format wie die Zeichenfolge, und das sichere Objekt verwendet das gleiche Format wie das Objekt. Wenn Sie einen Parameter auf eine sichere Zeichenfolge oder ein sicheres Objekt festlegen, wird der Wert des-Parameters weder im Bereitstellungsverlauf gespeichert noch protokolliert. Wenn Sie diesen sicheren Wert jedoch auf eine Eigenschaft festlegen, die keinen sicheren Wert erwartet, wird der Wert nicht geschützt. Wenn Sie z. B. eine sichere Zeichenfolge auf ein Tag festlegen, wird dieser Wert als reiner Text gespeichert. Verwenden Sie sichere Zeichenfolgen für Kennwörter und Geheimnisse.
-
-Für Integer, die als Inlineparameter übergeben werden, ist der Wertebereich möglicherweise durch das SDK oder Befehlszeilentool, das Sie zur Bereitstellung verwenden, eingeschränkt. Wenn Sie beispielsweise PowerShell zum Bereitstellen einer Vorlage verwenden, können Integertypen im Bereich von -2147483648 bis 2147483647 liegen. Um diese Einschränkung zu vermeiden, geben Sie große Werte in einer [Parameterdatei](parameter-files.md) an. Ressourcentypen wenden ihre eigenen Grenzwerte für Integereigenschaften an.
-
-Schließen Sie Boolesche und Integerwerte in Ihrer Vorlage nicht in Anführungszeichen ein. Beginnen und beenden Sie Zeichenfolgenwerte mit doppelten Anführungszeichen (`"string value"`).
-
-Objekte beginnen mit einer linken geschweiften Klammer (`{`) und enden mit einer rechten geschweiften Klammer (`}`). Arrays beginnen mit einer linken eckigen Klammer (`[`) und enden mit einer rechten eckigen Klammer (`]`).
-
 ## <a name="parameters"></a>Parameter
 
 Im Abschnitt `parameters` der Vorlage geben Sie an, welche Werte Sie beim Bereitstellen der Ressourcen eingeben können. Die Anzahl der Parameter in einer Vorlage ist auf 256 beschränkt. Sie können die Anzahl der Parameter verringern, indem Sie Objekte verwenden, die mehrere Eigenschaften enthalten.
@@ -128,7 +72,7 @@ Folgende Eigenschaften sind für einen Parameter verfügbar:
 | Elementname | Erforderlich | BESCHREIBUNG |
 |:--- |:--- |:--- |
 | parameter-name |Ja |Der Name des Parameters. Es muss sich um einen gültigen JavaScript-Bezeichner handeln. |
-| type |Ja |Der Typ des Parameterwerts. Die zulässigen Typen und Werte sind **string**, **securestring**, **int**, **bool**, **object**, **secureObject** und **array**. Siehe [Datentypen](#data-types). |
+| type |Ja |Der Typ des Parameterwerts. Die zulässigen Typen und Werte sind **string**, **securestring**, **int**, **bool**, **object**, **secureObject** und **array**. Weitere Informationen finden Sie unter [Datentypen in ARM-Vorlagen](data-types.md). |
 | defaultValue |Nein |Der Standardwert für den Parameter, wenn kein Wert für den Parameter angegeben wird. |
 | allowedValues |Nein |Ein Array der zulässigen Werte für den Parameter, um sicherzustellen, dass der richtige Wert angegeben wird. |
 | minValue |Nein |Der Mindestwert für Parameter vom Typ "int", einschließlich des angegebenen Werts. |
@@ -141,7 +85,7 @@ Beispiele für die Verwendung von Parametern finden Sie unter [Parameter in ARM-
 
 ## <a name="variables"></a>Variables
 
-Im Abschnitt `variables` erstellen Sie Werte, die in der gesamten Vorlage verwendet werden können. Sie müssen nicht unbedingt Variablen definieren, aber häufig bewirken sie eine Vereinfachung Ihrer Vorlage, indem komplexe Ausdrücke reduziert werden. Das Format der einzelnen Variablen entspricht einem der [Datentypen](#data-types).
+Im Abschnitt `variables` erstellen Sie Werte, die in der gesamten Vorlage verwendet werden können. Sie müssen nicht unbedingt Variablen definieren, aber häufig bewirken sie eine Vereinfachung Ihrer Vorlage, indem komplexe Ausdrücke reduziert werden. Das Format der einzelnen Variablen entspricht einem der [Datentypen](data-types.md).
 
 Im folgenden Beispiel werden die verfügbaren Optionen zum Definieren einer Variable angezeigt:
 

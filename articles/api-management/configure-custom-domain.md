@@ -13,15 +13,15 @@ ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
 ms.openlocfilehash: a7032c64efa486c65830e013373239647a368540
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92311136"
 ---
 # <a name="configure-a-custom-domain-name-for-your-azure-api-management-instance"></a>Konfigurieren eines benutzerdefinierten Domänennamens für Ihre Azure API Management-Instanz
 
-Wenn Sie eine Azure API Management-Dienstinstanz erstellen, weist Azure dieser einer Unterdomäne von `azure-api.net` zu (z. B. `apim-service-name.azure-api.net`). Sie können Ihre API Management-Endpunkte aber unter Ihrem eigenen benutzerdefinierten Domänennamen verfügbar machen (z. B. **contoso.com** ). In diesem Tutorial erfahren Sie, wie Sie Endpunkten, die durch eine API Management-Instanz verfügbar gemacht werden, einen vorhandenen benutzerdefinierten DNS-Namen zuordnen.
+Wenn Sie eine Azure API Management-Dienstinstanz erstellen, weist Azure dieser einer Unterdomäne von `azure-api.net` zu (z. B. `apim-service-name.azure-api.net`). Sie können Ihre API Management-Endpunkte aber unter Ihrem eigenen benutzerdefinierten Domänennamen verfügbar machen (z. B. **contoso.com**). In diesem Tutorial erfahren Sie, wie Sie Endpunkten, die durch eine API Management-Instanz verfügbar gemacht werden, einen vorhandenen benutzerdefinierten DNS-Namen zuordnen.
 
 > [!IMPORTANT]
 > API Management akzeptiert nur Anforderungen mit [Hostheader](https://tools.ietf.org/html/rfc2616#section-14.23)-Werten, die mit dem Standarddomänennamen oder einem der konfigurierten benutzerdefinierten Domänennamen übereinstimmen.
@@ -45,7 +45,7 @@ Zum Ausführen der in diesem Artikel beschriebenen Schritte benötigen Sie Folge
 ## <a name="use-the-azure-portal-to-set-a-custom-domain-name"></a>Festlegen eines benutzerdefinierten Domänennamens über das Azure-Portal
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) zu Ihrer API Management-Instanz.
-1. Klicken Sie auf **Benutzerdefinierte Domänen** .
+1. Klicken Sie auf **Benutzerdefinierte Domänen**.
 
     Es stehen mehrere Endpunkte zur Verfügung, denen Sie einen benutzerdefinierten Domänennamen zuweisen können. Derzeit sind folgende Endpunkte verfügbar:
 
@@ -59,10 +59,10 @@ Zum Ausführen der in diesem Artikel beschriebenen Schritte benötigen Sie Folge
     > Nur der **Gatewayendpunkt** kann im Tarif „Consumption“ konfiguriert werden.
     > Sie können alle oder nur bestimmte Endpunkte aktualisieren. Kunden aktualisieren üblicherweise **Gateway** (URL zum Aufrufen der über API Management verfügbar gemachten API) und **Portal** (URL des Entwicklerportals).
     > Die Endpunkte **Verwaltung** und **SCM** werden nur intern von Besitzern der API Management-Instanz verwendet, weshalb ihnen seltener ein benutzerdefinierter Domänenname zugewiesen wird.
-    > Der **Premium** -Tarif unterstützt mehrere Hostnamen für den **Gateway** endpunkt.
+    > Der **Premium**-Tarif unterstützt mehrere Hostnamen für den **Gateway** endpunkt.
 
 1. Wählen Sie den Endpunkt aus, den Sie aktualisieren möchten.
-1. Klicken Sie im Fenster auf der rechten Seite auf **Benutzerdefiniert** .
+1. Klicken Sie im Fenster auf der rechten Seite auf **Benutzerdefiniert**.
 
     - Geben Sie unter **Benutzerdefinierter Domänenname** den gewünschten Namen an. Beispiel: `api.contoso.com`.
     - Wählen Sie unter **Zertifikat** ein Zertifikat aus „Key Vault“ aus. Wenn das Zertifikat mit einem Kennwort geschützt ist, können Sie auch eine gültige PFX-Datei hochladen und deren **Kennwort** angeben.

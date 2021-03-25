@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 11/02/2020
 ms.topic: how-to
 ms.openlocfilehash: 45424408c790e4921be48464818c55fe74313fd3
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93328657"
 ---
 # <a name="change-the-port-on-which-the-server-group-is-listening"></a>Ändern des Ports, an dem die Servergruppe lauscht 
@@ -23,7 +23,7 @@ Das Ändern des Ports ist ein Standardbearbeitungsvorgang der Servergruppe. Füh
  azdata arc postgres server edit -n <server group name> --port <desired port number>
 ```
 
-Nehmen wir beispielsweise an, dass der Name Ihrer Servergruppe _postgres01_ lautet, und dass Sie an Port  _866_ lauschen möchten. Sie würden den folgenden Befehl ausführen:
+Nehmen wir beispielsweise an, dass der Name Ihrer Servergruppe _postgres01_ lautet, und dass Sie an Port _866_ lauschen möchten. Sie würden den folgenden Befehl ausführen:
 ```console
  azdata arc postgres server edit -n postgres01 --port 866
 ```

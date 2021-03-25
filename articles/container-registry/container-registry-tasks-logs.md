@@ -4,10 +4,10 @@ description: Es wird beschrieben, wie Sie von ACR Tasks generierte Ausführungsp
 ms.topic: article
 ms.date: 03/09/2020
 ms.openlocfilehash: b2a10d4a3a2746acf38445673af994c6317c77de
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93027175"
 ---
 # <a name="view-and-manage-task-run-logs"></a>Anzeigen und Verwalten von Ausführungsprotokollen für Aufgaben
@@ -83,7 +83,7 @@ az acr task logs --registry mycontainerregistry1220 \
 
 Sie können Ausführungsprotokolle für Aufgaben auf einem lokalen Dateisystem speichern oder eine andere Archivierungslösung verwenden, z. B. Azure Storage.
 
-Erstellen Sie beispielsweise das lokale Verzeichnis *tasklogs* , und leiten Sie die Ausgabe von [az acr task logs](/cli/azure/acr/task#az-acr-task-logs) in eine lokale Datei um:
+Erstellen Sie beispielsweise das lokale Verzeichnis *tasklogs*, und leiten Sie die Ausgabe von [az acr task logs](/cli/azure/acr/task#az-acr-task-logs) in eine lokale Datei um:
 
 ```azurecli
 mkdir ~/tasklogs

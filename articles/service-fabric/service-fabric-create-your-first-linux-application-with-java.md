@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 06/18/2018
 ms.custom: devx-track-java
 ms.openlocfilehash: 7d87b72437f86d7dc1ca4e3cf9f3d67609691c70
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97655950"
 ---
 # <a name="create-your-first-java-service-fabric-reliable-actors-application-on-linux"></a>Erstellen Ihrer ersten Service Fabric Reliable Actors-Java-Anwendung unter Linux
@@ -205,7 +205,7 @@ Bei der Bereitstellung der erstellten Anwendung wird genau wie bei anderen Servi
 
 Parameter für diesen Befehl finden Sie in den erstellten Manifesten im Anwendungspaket.
 
-Öffnen Sie nach der Bereitstellung der Anwendung einen Browser, und navigieren Sie zu [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) unter `http://localhost:19080/Explorer`.
+Öffnen Sie nach der Bereitstellung der Anwendung einen Browser, und navigieren Sie unter `http://localhost:19080/Explorer` zu [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md).
 Erweitern Sie dann den Knoten **Anwendungen**. Hier finden Sie nun einen Eintrag für Ihren Anwendungstyp und einen weiteren für die erste Instanz dieses Typs.
 
 > [!IMPORTANT]
@@ -293,7 +293,7 @@ Unterstützung von Service Fabric Reliable Services für Ihre Anwendung:
   }
   ```
 
-### <a name="others"></a>Andere
+### <a name="others"></a>Sonstige
 #### <a name="transport"></a>Transport
 
 Transportschichtunterstützung für die Service Fabric-Java-Anwendung: Diese Abhängigkeit muss Reliable Actors- oder Reliable Services-Anwendungen nur dann explizit hinzugefügt werden, wenn Sie in der Transportschicht programmieren.

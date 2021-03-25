@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 07/12/2019
-ms.openlocfilehash: 5abbb26e7582d8ddabb73f3a178cf6d87e24db21
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 5422fe324ca1f3ef5bb2d14fb04664c8fb03fe3c
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98942541"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866232"
 ---
 # <a name="failure-spark-job-debugging-with-azure-toolkit-for-intellij-preview"></a>Debuggen von fehlgeschlagenen Spark-Aufträgen mit dem Azure-Toolkit für IntelliJ (Vorschau)
 
@@ -40,13 +40,13 @@ Erstellen Sie ein Spark 2.3.2-Projekt, um das Debuggen fortzusetzen. Verwenden S
 
    b. Wählen Sie im Hauptfenster **Spark-Projekt mit Beispielen zum Debuggen von Fehleraufgaben (Vorschau) (Scala)** aus.
 
-     ![Intellij – Erstellen eines Debugprojekts](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-projectfor-failure-debug.png)
+     :::image type="content" source="./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-projectfor-failure-debug.png" alt-text="Intellij – Erstellen eines Debugprojekts" border="true":::
 
    c. Wählen Sie **Weiter** aus.
 
 2. Führen Sie im Fenster **New Project** (Neues Projekt) die folgenden Schritte aus:
 
-   ![Intellij – Neues Projekt – Spark-Version auswählen](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-project.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-project.png" alt-text="Intellij – Neues Projekt – Spark-Version auswählen" border="true":::
 
    a. Geben Sie einen Projektnamen und -speicherort an.
 
@@ -64,25 +64,25 @@ Erstellen Sie eine Spark-Scala/Java-Anwendung, und führen Sie dann die Anwendun
 
 1. Klicken Sie auf **Konfiguration hinzufügen**, um das Fenster **Run/Debug Configurations** (Konfigurationen ausführen/debuggen) zu öffnen.
 
-   ![HDI Intellij – Konfiguration hinzufügen](./media/apache-spark-intellij-tool-failure-debug/hdinsight-add-new-configuration.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-failure-debug/hdinsight-add-new-configuration.png" alt-text="HDI Intellij – Konfiguration hinzufügen" border="true":::
 
 2. Klicken Sie im Dialogfeld **Run/Debug Configurations** (Konfigurationen ausführen/debuggen) auf das Plussymbol ( **+** ). Wählen Sie dann die Option **Apache Spark auf HDInsight** aus.
 
-   ![Intellij – Neue Konfiguration hinzufügen](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-configuraion-01.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-configuraion-01.png" alt-text="Intellij – Neue Konfiguration hinzufügen" border="true":::
 
 3. Wechseln Sie zur Registerkarte **Remotely Run in Cluster** (Im Cluster remote ausführen). Geben Sie Informationen für **Name**, **Spark cluster** und **Main class name** (Name der main-Klasse) ein. Unseren Tools unterstützen das Debuggen mit **Executors**. Der Standardwert von **numExectors** ist 5. Es empfiehlt sich, hierfür keinen höheren Wert als 3 festzulegen. Wenn Sie die Laufzeit verkürzen möchten, können Sie **spark.yarn.maxAppAttempts** zu **Job Configurations** (Auftragskonfigurationen) hinzufügen und den Wert auf 1 festlegen. Klicken Sie auf **OK**, um die Konfiguration zu speichern.
 
-   ![Intellij – Neue Konfigurationen debuggen/ausführen](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-configuraion-002.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-configuraion-002.png" alt-text="Intellij – Neue Konfigurationen debuggen/ausführen" border="true":::
 
 4. Die Konfiguration wird jetzt unter dem von Ihnen angegebenen Namen gespeichert. Um die Konfigurationsdetails anzuzeigen, wählen Sie den Konfigurationsnamen aus. Um Änderungen vorzunehmen, wählen Sie **Edit Configurations** (Konfigurationen bearbeiten) aus.
 
 5. Nachdem Sie die Konfigurationseinstellungen abgeschlossen haben, können Sie das Projekt für den Remotecluster ausführen.
 
-   ![Intellij – Spark-Auftrag remotedebuggen – Schaltfläche „Remote ausführen“](./media/apache-spark-intellij-tool-failure-debug/hdinsight-local-run-configuration.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-failure-debug/hdinsight-local-run-configuration.png" alt-text="Intellij – Spark-Auftrag remotedebuggen – Schaltfläche „Remote ausführen“" border="true":::
 
 6. Sie können die Anwendungs-ID im Ausgabefenster überprüfen.
 
-   ![Intellij – Spark-Auftrag remotedebuggen – Ergebnis von „Remote ausführen“](./media/apache-spark-intellij-tool-failure-debug/hdinsight-remotely-run-result.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-failure-debug/hdinsight-remotely-run-result.png" alt-text="Intellij – Spark-Auftrag remotedebuggen – Ergebnis von „Remote ausführen“" border="true":::
 
 ## <a name="download-failed-job-profile"></a>Herunterladen des Profils des fehlgeschlagenen Auftrags
 
@@ -90,9 +90,9 @@ Wenn die Auftragsübermittlung fehlschlägt, können Sie das Profil des fehlgesc
 
 1. Öffnen Sie den **Microsoft Azure Storage-Explorer**, suchen Sie das HDInsight-Konto des Clusters für den fehlerhaften Auftrag, und laden Sie die Ressourcen des fehlerhaften Auftrags vom Speicherort **\hdp\spark2-events\\.spark-failures\\\<application ID>** in einen lokalen Ordner herunter. Im Fenster **Aktivitäten** wird der Fortschritt des Downloads angezeigt.
 
-   ![Azure Storage-Explorer – Download fehlerhaft](./media/apache-spark-intellij-tool-failure-debug/hdinsight-find-spark-file-001.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-failure-debug/hdinsight-find-spark-file-001.png" alt-text="Azure Storage-Explorer – Download fehlerhaft" border="true":::
 
-   ![Azure Storage-Explorer – Download erfolgreich](./media/apache-spark-intellij-tool-failure-debug/spark-on-cosmos-doenload-file-2.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-failure-debug/spark-on-cosmos-doenload-file-2.png" alt-text="Azure Storage-Explorer – Download erfolgreich" border="true":::
 
 ## <a name="configure-local-debugging-environment-and-debug-on-failure"></a>Konfigurieren der lokalen Debugumgebung und Debuggen eines Fehlers
 
@@ -100,13 +100,13 @@ Wenn die Auftragsübermittlung fehlschlägt, können Sie das Profil des fehlgesc
 
 1. Erstellen Sie in IntelliJ IDEA unter **Spark Failure Debug** (Debuggen von Spark-Fehlern) eine Konfigurationsdatei, und wählen Sie für das Feld **Spark Job Failure Context location** (Speicherort des Fehlerkontexts für den Spark-Auftrag) die FTD-Datei für die zuvor heruntergeladenen Ressourcen des fehlgeschlagenen Auftrags aus.
 
-   ![Erstellen Fehler Konfiguration](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-failure-configuration-01.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-failure-configuration-01.png" alt-text="Erstellen Fehler Konfiguration" border="true":::
 
 1. Klicken Sie auf der Symbolleiste auf die Schaltfläche für lokales Ausführen, und der Fehler wird im Ausführungsfenster angezeigt.
 
-   ![run-failure-configuration1](./media/apache-spark-intellij-tool-failure-debug/local-run-failure-configuraion-01.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-failure-debug/local-run-failure-configuraion-01.png" alt-text="run-failure-configuration1" border="true":::
 
-   ![run-failure-configuration2](./media/apache-spark-intellij-tool-failure-debug/local-run-failure-configuration.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-failure-debug/local-run-failure-configuration.png" alt-text="run-failure-configuration2" border="true":::
 
 1. Legen Sie den im Protokoll angegebenen Haltepunkt fest, und klicken Sie dann auf die Schaltfläche für das lokale Debuggen, um das lokale Debuggen wie in normalen Scala-/Java-Projekten in IntelliJ auszuführen.
 

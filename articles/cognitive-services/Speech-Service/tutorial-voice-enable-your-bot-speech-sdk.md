@@ -12,10 +12,10 @@ ms.date: 02/25/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
 ms.openlocfilehash: d91bfee228b946ff564f6d080976f9ce5c12caa4
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102426262"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>Tutorial: Sprachaktivierung für Ihren Bot mithilfe des Speech SDK
@@ -107,7 +107,7 @@ Gehen Sie wie folgt vor, um eine Speech-Ressource zu erstellen:
 
 Überprüfen Sie hier, ob die Ressourcengruppe (**SpeechEchoBotTutorial-ResourceGroup**) eine Speech-Ressource enthält:
 
-| Name | Typ  | Standort |
+| Name | type  | Standort |
 |------|-------|----------|
 | SpeechEchoBotTutorial-Speech | Cognitive Services | USA (Westen) |
 
@@ -128,7 +128,7 @@ Im nächsten Schritt wird ein App Service-Plan erstellt. Mit einem App Service-P
 
 Überprüfen Sie hier, ob die Ressourcengruppe (**SpeechEchoBotTutorial-ResourceGroup**) zwei Ressourcen enthält:
 
-| Name | Typ  | Standort |
+| Name | type  | Standort |
 |------|-------|----------|
 | SpeechEchoBotTutorial-AppServicePlan | App Service-Plan | USA (Westen) |
 | SpeechEchoBotTutorial-Speech | Cognitive Services | USA (Westen) |
@@ -213,7 +213,7 @@ Im nächsten Schritt wird der Echobot in Azure bereitgestellt. Es gibt mehrere M
 1. Im geöffneten Standardbrowser sollte die folgende Seite angezeigt werden: „Your bot is ready!“ (Ihr Bot wurde erstellt.).
 1. Überprüfen Sie an dieser Stelle Ihre Ressourcengruppe **SpeechEchoBotTutorial-ResourceGroup** im Azure-Portal, und bestätigen Sie diese drei Ressourcen:
 
-| Name | Typ  | Standort |
+| Name | type  | Standort |
 |------|-------|----------|
 | EchoBot20190805125647 | App Service | USA (Westen) |
 | SpeechEchoBotTutorial-AppServicePlan | App Service-Plan | USA (Westen) |
@@ -250,7 +250,7 @@ Nach dem Erstellen einer Azure App Service-Instanz zum Hosten Ihres Bots wird im
 
 Überprüfen Sie hier die Ressourcengruppe **SpeechEchoBotTutorial-ResourceGroup** im Azure-Portal. Es sollte jetzt mindestens vier Ressourcen anzeigen:
 
-| Name | Typ  | Standort |
+| Name | type  | Standort |
 |------|-------|----------|
 | EchoBot20190805125647 | App Service | USA (Westen) |
 | SpeechEchoBotTutorial-AppServicePlan | App Service-Plan | USA (Westen) |

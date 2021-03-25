@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/13/2019
-ms.openlocfilehash: ad8239b3403d37a9e4c79de481fb9cb26306e243
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: e79c2f361108f1daa3c4a125491d1b399e050648
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946331"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863699"
 ---
 # <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-storage-gen1"></a>Verwenden des HDInsight Spark-Clusters zum Analysieren von Daten in Data Lake Storage Gen1
 
@@ -70,7 +70,7 @@ Wenn Sie einen HDInsight-Cluster mit Data Lake Storage als zusätzlichen Speiche
 
 3. Erstellen Sie ein neues Notebook. Klicken Sie auf **Neu** und dann auf **PySpark**.
 
-    ![Erstellen eines neuen Jupyter Notebooks](./media/apache-spark-use-with-data-lake-store/hdinsight-create-jupyter-notebook.png "Erstellen eines neuen Jupyter Notebooks")
+    :::image type="content" source="./media/apache-spark-use-with-data-lake-store/hdinsight-create-jupyter-notebook.png " alt-text="Erstellen eines neuen Jupyter Notebooks" border="true":::
 
 4. Da Sie ein Notebook mit dem PySpark-Kernel erstellt haben, müssen Sie keine Kontexte explizit erstellen. Die Spark- und Hive-Kontexte werden automatisch für Sie erstellt, wenn Sie die erste Codezelle ausführen. Sie können zunächst die Typen importieren, die für dieses Szenario erforderlich sind. Fügen Sie dazu den folgenden Codeausschnitt in eine Zelle ein, und drücken Sie **UMSCHALT+EINGABE**.
 
@@ -80,7 +80,7 @@ Wenn Sie einen HDInsight-Cluster mit Data Lake Storage als zusätzlichen Speiche
 
     Bei jedem Ausführen eines Auftrags in Jupyter wird in der Titelleiste Ihres Webbrowserfensters neben dem Notebooktitel der Status **(Beschäftigt)** angezeigt. Außerdem sehen Sie in der rechten oberen Ecke einen ausgefüllten Kreis neben dem Text **PySpark** . Wenn der Auftrag abgeschlossen ist, wird ein Kreis ohne Füllung angezeigt.
 
-     ![Status eines Jupyter Notebook-Auftrags](./media/apache-spark-use-with-data-lake-store/hdinsight-jupyter-job-status.png "Status eines Jupyter Notebook-Auftrags")
+     :::image type="content" source="./media/apache-spark-use-with-data-lake-store/hdinsight-jupyter-job-status.png " alt-text="Status eines Jupyter Notebook-Auftrags" border="true":::
 
 5. Verwenden Sie die Datei **HVAC.csv**, die Sie in das Data Lake Storage Gen1-Konto kopiert haben, um Beispieldaten in eine temporäre Tabelle zu laden. Sie können mithilfe des folgenden URL-Musters auf die Daten im Data Lake Storage-Konto zugreifen.
 
@@ -129,11 +129,11 @@ Wenn Sie einen HDInsight-Cluster mit Data Lake Storage als zusätzlichen Speiche
     ```
 7. Nachdem der Auftrag erfolgreich abgeschlossen wurde, wird die folgende tabellarische Ausgabe standardmäßig angezeigt.
 
-      ![Tabellenausgabe des Abfrageergebnisses](./media/apache-spark-use-with-data-lake-store/jupyter-tabular-output.png "Tabellenausgabe des Abfrageergebnisses")
+      :::image type="content" source="./media/apache-spark-use-with-data-lake-store/jupyter-tabular-output.png " alt-text="Tabellenausgabe des Abfrageergebnisses" border="true":::
 
      Sie können die Ergebnisse auch in anderen Visualisierungen anzeigen. Beispielsweise würde ein Bereichsdiagramm für dieselbe Ausgabe wie folgt aussehen.
 
-     ![Bereichsdiagramm des Abfrageergebnisses](./media/apache-spark-use-with-data-lake-store/jupyter-area-output1.png "Bereichsdiagramm des Abfrageergebnisses")
+     :::image type="content" source="./media/apache-spark-use-with-data-lake-store/jupyter-area-output1.png " alt-text="Bereichsdiagramm des Abfrageergebnisses" border="true":::
 
 8. Nach Ausführen der Anwendung empfiehlt es sich, das Notebook herunterzufahren, um die Ressourcen freizugeben. Klicken Sie hierzu im Menü **Datei** des Notebooks auf die Option zum **Schließen und Anhalten**. Dadurch wird das Notebook heruntergefahren und geschlossen.
 

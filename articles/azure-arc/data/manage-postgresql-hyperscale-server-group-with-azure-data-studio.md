@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 7dcc0f916a15598060e034dcf62536ee13e2672e
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92320232"
 ---
 # <a name="use-azure-data-studio-to-manage-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Verwalten einer Azure Arc-fähigen PostgreSQL Hyperscale-Servergruppe mithilfe von Azure Data Studio
@@ -34,7 +34,7 @@ Dieser Artikel beschreibt, wie Sie:
 
 ## <a name="connect-to-the-azure-arc-data-controller"></a>Herstellen einer Verbindung mit dem Azure Arc-Datencontroller
 
-Erweitern Sie in Azure Data Studio den Knoten **Azure Arc-Controller** , und klicken Sie dann auf die Schaltfläche **Controller verbinden** :
+Erweitern Sie in Azure Data Studio den Knoten **Azure Arc-Controller**, und klicken Sie dann auf die Schaltfläche **Controller verbinden**:
 
 Geben Sie die Verbindungsinformationen Ihres Azure-Datencontrollers ein:
 
@@ -68,10 +68,10 @@ Die Ansicht umfasst mehrere Dashboards, die auf der linken Seite des Bereichs au
 
 ## <a name="work-with-your-data-and-schema"></a>Arbeiten mit Daten und Schemas
 
-Erweitern Sie auf der linken Seite des Azure Data Studio Fensters den Knoten **Server** :
+Erweitern Sie auf der linken Seite des Azure Data Studio Fensters den Knoten **Server**:
 
 Wählen Sie [Verbindung hinzufügen] aus, und geben Sie die Verbindungsdetails für Ihre PostgreSQL-Instanz ein:
-- **Verbindungstyp** : PostgreSQL
+- **Verbindungstyp**: PostgreSQL
 - **Servername:** Geben Sie den Namen der PostgreSQL-Instanz ein. Beispiel: postgres01
 - **Authentifizierungstyp:** Kennwort
 - **Benutzername:** Hier können Sie den Standardnamen des PostgreSQL-Administratorbenutzers eingeben. Für dieses Feld wird zwischen Groß- und Kleinschreibung unterschieden.

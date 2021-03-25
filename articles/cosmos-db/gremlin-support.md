@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 11/11/2020
 ms.author: sngun
 ms.openlocfilehash: 036338e90a3e7b466924d419400c0dcc692dec5f
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97630750"
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support-and-compatibility-with-tinkerpop-features"></a>Unterstützung und Kompatibilität von Gremlin-Diagrammen in Azure Cosmos DB mit TinkerPop-Features
@@ -169,31 +169,31 @@ Die von Azure Cosmos DB bereitgestellte, für Schreibvorgänge optimierte Engine
 
 ## <a name="behavior-differences"></a>Unterschiede im Verhalten
 
-* Die Azure Cosmos DB Graph-Engine führt einen Durchlauf mit ***breitenorientiertem Lastenausgleich** _ aus, während TinkerPop Gremlin einen Ansatz vom Typ „Tiefenorientierter Lastenausgleich“ verfolgt. Dieses Verhalten erzielt eine bessere Leistung in einem horizontal skalierbaren System wie Cosmos DB.
+* Die Azure Cosmos DB Graph-Engine führt einen Durchlauf mit ***breitem*** Ansatz aus, während TinkerPop Gremlin einen „tiefen“ Ansatz verfolgt. Dieses Verhalten erzielt eine bessere Leistung in einem horizontal skalierbaren System wie Cosmos DB.
 
 ## <a name="unsupported-features"></a>Nicht unterstützte Funktionen
 
-_ * **[Gremlin Bytecode](https://tinkerpop.apache.org/docs/current/tutorials/gremlin-language-variants/)** _ ist eine von der Programmiersprache unabhängige Spezifikation für Diagrammdurchläufe. Cosmos DB Graph unterstützt dies noch nicht. Verwenden Sie `GremlinClient.SubmitAsync()`, und übergeben Sie den Durchlauf als eine Textzeichenfolge.
+* ***[Gremlin Bytecode](https://tinkerpop.apache.org/docs/current/tutorials/gremlin-language-variants/)*** ist eine von der Programmiersprache unabhängige Spezifikation für Diagrammdurchläufe. Cosmos DB Graph unterstützt dies noch nicht. Verwenden Sie `GremlinClient.SubmitAsync()`, und übergeben Sie den Durchlauf als eine Textzeichenfolge.
 
-_ * **`property(set, 'xyz', 1)`** _: Das Festlegen der Kardinalität wird noch nicht unterstützt. Verwenden Sie stattdessen `property(list, 'xyz', 1)`. Weitere Informationen finden Sie unter [Vertex-Eigenschaften mit TinkerPop](http://tinkerpop.apache.org/docs/current/reference/#vertex-properties).
+* ***`property(set, 'xyz', 1)`***: Das Festlegen der Kardinalität wird noch nicht unterstützt. Verwenden Sie stattdessen `property(list, 'xyz', 1)`. Weitere Informationen finden Sie unter [Vertex-Eigenschaften mit TinkerPop](http://tinkerpop.apache.org/docs/current/reference/#vertex-properties).
 
-_ Der ***Schritt `match()`** _ ist derzeit nicht verfügbar. Dieser Schritt bietet deklarative Abfragefunktionen.
+* Der ***Schritt `match()`*** ist derzeit nicht verfügbar. Dieser Schritt bietet deklarative Abfragefunktionen.
 
-_ ***Objekte als Eigenschaften** _ werden für Vertices und Edges nicht unterstützt. Eigenschaften können nur primitive Typen oder Arrays sein.
+* ***Objekte als Eigenschaften*** werden für Vertices und Edges nicht unterstützt. Eigenschaften können nur primitive Typen oder Arrays sein.
 
-_ ***Sortieren nach Arrayeigenschaften** _ (`order().by(<array property>)`) wird nicht unterstützt. Die Sortierung wird nur von primitiven Typen unterstützt.
+* ***Sortieren nach Arrayeigenschaften*** `order().by(<array property>)` wird nicht unterstützt. Die Sortierung wird nur von primitiven Typen unterstützt.
 
-_ ***Nicht primitive JSON-Typen** _ werden nicht unterstützt. Verwenden Sie die Typen `string`, `number` oder `true`/`false`. `null`-Werte werden nicht unterstützt. 
+* ***Nicht primitive JSON-Typen*** werden nicht unterstützt. Verwenden Sie die Typen `string`, `number` oder `true`/`false`. `null`-Werte werden nicht unterstützt. 
 
-_ Das ***GraphSONv3** _-Serialisierungsmodul wird derzeit nicht unterstützt. Verwenden Sie das `GraphSONv2`-Serialisierungsmodul sowie Reader- und Writerklassen in der Verbindungskonfiguration. Das Format der von der Azure Cosmos DB Gremlin-API zurückgegebenen Ergebnisse ist nicht identisch mit dem GraphSON-Format. 
+* Das ***GraphSONv3***-Serialisierungsmodul wird derzeit noch nicht unterstützt. Verwenden Sie das `GraphSONv2`-Serialisierungsmodul sowie Reader- und Writerklassen in der Verbindungskonfiguration. Das Format der von der Azure Cosmos DB Gremlin-API zurückgegebenen Ergebnisse ist nicht identisch mit dem GraphSON-Format. 
 
-_ **Lambdaausdrücke und -funktionen** werden derzeit nicht unterstützt. Dies umfasst die Funktionen `.map{<expression>}`, `.by{<expression>}` und `.filter{<expression>}`. Weitere Informationen und wie Sie sie mithilfe der Gremlin-Schritte neu schreiben können, finden Sie unter [A Note on Lambdas](http://tinkerpop.apache.org/docs/current/reference/#a-note-on-lambdas) (Hinweis zu Lambdas).
+* **Lambdaausdrücke und -funktionen** werden derzeit nicht unterstützt. Dies umfasst die Funktionen `.map{<expression>}`, `.by{<expression>}` und `.filter{<expression>}`. Weitere Informationen und wie Sie sie mithilfe der Gremlin-Schritte neu schreiben können, finden Sie unter [A Note on Lambdas](http://tinkerpop.apache.org/docs/current/reference/#a-note-on-lambdas) (Hinweis zu Lambdas).
 
-* ***Transaktionen** _ werden aufgrund der verteilten Natur des Systems nicht unterstützt.  Konfigurieren Sie ein geeignetes Konsistenzmodell für das Gremlin-Konto, um „Ihre eigenen Schreibvorgänge zu lesen“, und verwenden Sie optimistische Nebenläufigkeit, um Schreibvorgänge aufzulösen, zu einen Konflikt verursachen.
+* ***Transaktionen*** werden aufgrund der verteilten Natur des Systems nicht unterstützt.  Konfigurieren Sie ein geeignetes Konsistenzmodell für das Gremlin-Konto, um „Ihre eigenen Schreibvorgänge zu lesen“, und verwenden Sie optimistische Nebenläufigkeit, um Schreibvorgänge aufzulösen, zu einen Konflikt verursachen.
 
 ## <a name="known-limitations"></a>Bekannte Einschränkungen
 
-_ **Indexverwendung für Gremlin-Abfragen mit Schritten vom Typ `.V()` während des Durchlaufs:** Aktuell wird nur beim ersten `.V()`-Aufruf eines Durchlaufs der Index genutzt, um alle angefügten Filter oder Prädikate aufzulösen. Bei späteren Aufrufen wird der Index nicht herangezogen, wodurch sich die Wartezeit und die Kosten der Abfrage erhöhen können.
+* **Indexverwendung für Gremlin-Abfragen mit Schritten vom Typ `.V()` während des Durchlaufs:** Aktuell wird nur beim ersten `.V()`-Aufruf eines Durchlaufs der Index genutzt, um alle angefügten Filter oder Prädikate aufzulösen. Bei späteren Aufrufen wird der Index nicht herangezogen, wodurch sich die Wartezeit und die Kosten der Abfrage erhöhen können.
     
 Bei Verwendung der Standardindizierung werden von einer typischen Gremlin-Leseabfrage, die mit dem Schritt `.V()` beginnt, Parameter wie `.has()` oder `.where()` in den angefügten Filterschritten verwendet, um die Kosten und die Leistung der Abfrage zu optimieren. Beispiel:
 
