@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/10/2021
 ms.author: yelevin
 ms.openlocfilehash: cb91d269f6b166510db54637d17d776e71137408
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102456160"
 ---
 # <a name="map-data-fields-to-entities-in-azure-sentinel"></a>Zuordnen von Datenfeldern zu Entitäten in Azure Sentinel 
@@ -75,5 +75,5 @@ Das unten beschriebene Verfahren ist Teil des Assistenten zum Erstellen von Anal
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Dokument wurde beschrieben, wie Sie Datenfelder Entitäten in Azure Sentinel-Analyseregeln zuordnen. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
-- Vollständige Übersicht über [Analyseregeln mit geplanter Abfrage](tutorial-detect-threats-custom.md)
-- Erfahren Sie mehr über [Entitäten in Azure Sentinel](entities-in-azure-sentinel.md).
+- Unter [Tutorial: Erstellen benutzerdefinierter Analyseregeln zum Erkennen von Bedrohungen](tutorial-detect-threats-custom.md) können Sie sich ein Gesamtbild machen.
+- Weitere Informationen zu [Entitäten in Azure Sentinel](entities-in-azure-sentinel.md)

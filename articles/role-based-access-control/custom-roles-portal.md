@@ -11,10 +11,10 @@ ms.workload: identity
 ms.date: 12/11/2020
 ms.author: rolyon
 ms.openlocfilehash: ecda0edcd34999e8cbb6c7ab9039953d17c119e5
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97369225"
 ---
 # <a name="create-or-update-azure-custom-roles-using-the-azure-portal"></a>Erstellen oder Aktualisieren von benutzerdefinierten Azure-Rollen über das Azure-Portal
@@ -29,7 +29,7 @@ Zum Erstellen von benutzerdefinierten Rollen benötigen Sie Folgendes:
 
 ## <a name="step-1-determine-the-permissions-you-need"></a>Schritt 1: Bestimmen der Berechtigungen, die Sie benötigen
 
-Azure verfügt über Tausende von Berechtigungen, die Sie potenziell zu Ihrer benutzerdefinierten Rolle hinzufügen können. Nachfolgend sind einige Methoden aufgeführt, mit denen Sie die Berechtigungen ermitteln können, die Sie Ihrer benutzerdefinierten Rolle hinzufügen sollten:
+Azure verfügt über Tausende von Berechtigungen, die Sie potenziell zu Ihrer benutzerdefinierten Rolle hinzufügen können. Nachfolgend werden einige Methoden aufgeführt, mit denen Sie die Berechtigungen ermitteln können, die Sie Ihrer benutzerdefinierten Rolle hinzufügen sollten:
 
 - Sehen Sie sich die vorhandenen [integrierten Rollen](built-in-roles.md) an.
 - Listen Sie die Azure-Dienste auf, auf die Sie Zugriff gewähren möchten.

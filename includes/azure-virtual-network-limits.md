@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: 59329fccda77f16e4a595e9b1789ef684c5cbf95
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 44245bc3cd9fd1afcfe9a74d60e2f51135a247ee
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98256317"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101734043"
 ---
 ### <a name="networking-limits---azure-resource-manager"></a><a name="azure-resource-manager-virtual-networking-limits"></a>Netzwerkgrenzwerte – Azure Resource Manager
 Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den **Azure Resource Manager** pro Region pro Abonnement verwaltet werden. Erfahren Sie, wie Sie [die aktuelle Ressourcennutzung anhand der Grenzwerte Ihres Abonnements anzeigen](../articles/networking/check-usage-against-limits.md).
@@ -69,7 +69,7 @@ Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den Azure
 | Resource                                | Begrenzung         |
 |-----------------------------------------|-------------------------------|
 | Load Balancer                          | 1\.000                         |
-| Regeln pro Ressource                      | 1\.500                         |
+| Regeln (Load Balancer und eingehende NAT) pro Ressource                      | 1\.500                         |
 | Regeln pro NIC (für alle IPs einer NIC) | 300                           |
 | Front-End-IP-Konfigurationen              | 600                           |
 | Größe des Back-End-Pools                       | 1\.000 IP-Konfigurationen, einzelnes virtuelles Netzwerk |
@@ -78,7 +78,7 @@ Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den Azure
 | Ausgangsregeln pro Lastenausgleichsmodul        | 600                           |
 | Lastenausgleichsmodule pro virtuellem Computer                   | 2 (1x öffentlich, 1x intern)   |
 
-<sup>1</sup>Der Grenzwert liegt bei bis zu 150 Ressourcen in beliebiger Kombination aus eigenständigen VM-Ressourcen, Verfügbarkeitsgruppenressourcen und Platzierungsgruppen für Skalierungsgruppen.
+<sup>1</sup> Der Grenzwert liegt bei bis zu 150 Ressourcen in beliebiger Kombination aus eigenständigen VM-Ressourcen, Verfügbarkeitsgruppenressourcen und VM-Platzierungsgruppen für Skalierungsgruppen.
 
 **Load Balancer Basic**
 
@@ -87,10 +87,12 @@ Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den Azure
 | Load Balancer                          | 1\.000                        |
 | Regeln pro Ressource                      | 250                          |
 | Regeln pro NIC (für alle IPs einer NIC) | 300                          |
-| Front-End-IP-Konfigurationen              | 200                          |
+| Front-End-IP-Konfigurationen <sup>2<sup>  | 200                          |
 | Größe des Back-End-Pools                       | 300 IP-Konfigurationen, einzelne Verfügbarkeitsgruppe |
 | Verfügbarkeitsgruppen pro Lastenausgleichsmodul     | 1                            |
 | Lastenausgleichsmodule pro virtuellem Computer                   | 2 (1x öffentlich, 1x intern)  |
+
+<sup>2</sup> Das Limit für eine einzelne diskrete Ressource in einem Back-End-Pool (eigenständige VM, Verfügbarkeitsgruppe oder VM-Platzierungsgruppen für Skalierungsgruppen) liegt bei bis zu 250 Front-End-IP-Konfigurationen für einen einzelnen öffentlichen Basic Load Balancer und internen Basic Load Balancer.
 
 <a name="virtual-networking-limits-classic"></a>Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über das **klassische** Bereitstellungsmodell verwaltet werden (pro Abonnement). Erfahren Sie, wie Sie [die aktuelle Ressourcennutzung anhand der Grenzwerte Ihres Abonnements anzeigen](../articles/networking/check-usage-against-limits.md).
 

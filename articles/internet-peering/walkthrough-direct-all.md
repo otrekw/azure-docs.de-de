@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 12/15/2020
 ms.author: prmitiki
 ms.openlocfilehash: 6a1fa7f582511a2089bab2694f9f5ec47634ff54
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97592380"
 ---
 # <a name="direct-peering-walkthrough"></a>Exemplarische Vorgehensweise für direktes Peering
@@ -33,7 +33,7 @@ Die folgenden Schritte müssen ausgeführt werden, um ein Direct Peering bereitz
     1. (optional) einen Verbindungstest mit 169.254.0.0/16 ausführen
     1. die BGP-Sitzung konfigurieren und uns dann benachrichtigen.
 1. Microsoft stellt eine BGP-Sitzung mit DENY ALL-Richtlinie und End-to-End-Validierung bereit.
-1. Bei Erfolg erhalten Sie eine Benachrichtigung, dass das Peering nun den Verbindungsstatus „Active“ (Aktiv) hat.
+1. Bei Erfolg erhalten Sie eine Benachrichtigung, dass der Verbindungsstatus des Peerings aktiv ist.
 1. Daraufhin wird Datenverkehr über das neue Peering zugelassen.
 
 Beachten Sie, dass der Verbindungsstatus nicht mit dem Standardstatus von [BGP](https://en.wikipedia.org/wiki/Border_Gateway_Protocol)-Sitzungen verwechselt werden darf.
@@ -41,7 +41,7 @@ Beachten Sie, dass der Verbindungsstatus nicht mit dem Standardstatus von [BGP](
 ## <a name="convert-a-legacy-direct-peering-to-azure-resource"></a>Konvertieren einer älteren Instanz für direktes Peering in eine Azure-Ressource
 Die folgenden Schritte müssen ausgeführt werden, um ein Legacy-Direct Peering in eine Azure-Ressource zu konvertieren:
 1. Befolgen Sie die Anweisungen in [Konvertieren einer älteren Instanz für Direct Peering in eine Azure-Ressource](howto-legacy-direct-powershell.md)
-1. Microsoft überprüft die übermittelte Konvertierungsanforderung und setzt sich bei Bedarf mit Ihnen in Verbindung.
+1. Nachdem Sie die Konvertierungsanforderung eingereicht haben, überprüft Microsoft die Anforderung und kontaktiert Sie bei Bedarf.
 1. Nach der Genehmigung wird Ihr Direct Peering mit dem Verbindungsstatus aktiv angezeigt.
 
 ## <a name="deprovision-direct-peering"></a>Aufheben der Bereitstellung von Direct Peering

@@ -13,10 +13,10 @@ ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 04d5a989fcaf3cef3eea3b782842fb3255d4b317
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98661101"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Zugriff auf Active Directory B2C-Überwachungsprotokolle
@@ -39,7 +39,7 @@ Die **B2C**-Kategorie in Überwachungsprotokollen umfasst die folgenden Aktivit�
 |Application | Erstellungs-, Lese-, Aktualisierungs- und Löschvorgänge (Create, Read, Update, Delete, CRUD) für B2C-Anwendungen. |
 |Key |CRUD-Vorgänge für in einem B2C-Schlüsselcontainer gespeicherte Schlüssel. |
 |Resource |CRUD-Vorgänge für B2C-Ressourcen. Beispielsweise Richtlinien und Identitätsanbieter.
-|Authentication |Überprüfung von Benutzeranmeldeinformationen und Tokenausstellung.|
+|Authentifizierung |Überprüfung von Benutzeranmeldeinformationen und Tokenausstellung.|
 
 Informationen zu den CRUD-Aktivitäten des Benutzerobjekts finden Sie in der Kategorie **Hauptverzeichnis**.
 
@@ -57,9 +57,9 @@ Das Panel „Aktivitätsbereich“ enthält die folgenden wichtigen Informatione
 | Initiiert von (Akteur) | ObjectID | Die **Objekt-ID** der B2C-Anwendung, bei der sich der Benutzer anmeldet. Dieser Bezeichner ist im Azure-Portal nicht sichtbar, kann aber über die Microsoft Graph-API aufgerufen werden. |
 | Initiiert von (Akteur) | Spn | Die **Anwendungs-ID** der B2C-Anwendung, bei der sich der Benutzer anmeldet. |
 | Ziel(e) | ObjectID | Die **Objekt-ID** des Benutzers, der sich anmeldet. |
-| Weitere Details | TenantId | Die **Mandanten-ID** des Azure AD B2C-Mandanten. |
-| Weitere Details | `PolicyId` | Die **Richtlinien-ID** für den Benutzerfluss (Richtlinie), der zur Anmeldung des Benutzers verwendet wird. |
-| Weitere Details | ApplicationId | Die **Anwendungs-ID** der B2C-Anwendung, bei der sich der Benutzer anmeldet. |
+| Zusätzliche Details | TenantId | Die **Mandanten-ID** des Azure AD B2C-Mandanten. |
+| Zusätzliche Details | PolicyId | Die **Richtlinien-ID** für den Benutzerfluss (Richtlinie), der zur Anmeldung des Benutzers verwendet wird. |
+| Zusätzliche Details | ApplicationId | Die **Anwendungs-ID** der B2C-Anwendung, bei der sich der Benutzer anmeldet. |
 
 ## <a name="view-audit-logs-in-the-azure-portal"></a>Anzeigen von Überwachungsprotokollen im Azure-Portal
 
@@ -94,7 +94,7 @@ Um den skript- oder anwendungsbasierten Zugriff auf die Azure AD-Berichterstell
 
 Führen Sie die Schritte des folgenden Artikels aus, um eine Anwendung mit den erforderlichen Berechtigungen zu registrieren:
 
-[Verwalten von Azure AD B2C mit Microsoft Graph](microsoft-graph-get-started.md)
+[Verwalten von Azure AD B2C mit Microsoft Graph](microsoft-graph-get-started.md)
 
 Sehen Sie sich anschließend den Abschnitt „PowerShell-Skript“ weiter unten in diesem Artikel an. Dort wird anhand eines Beispiels gezeigt, wie Aktivitätsereignisse mit einem Skript abgerufen werden können.
 

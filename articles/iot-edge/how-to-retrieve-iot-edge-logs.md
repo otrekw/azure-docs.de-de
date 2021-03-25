@@ -10,14 +10,16 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: 69f7ec5114ad650f33eae740a54a3821b76ef2ac
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.openlocfilehash: c06120d1a2e8aa6aa0c006c6f40fed6fab44c5b7
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99475538"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103200691"
 ---
 # <a name="retrieve-logs-from-iot-edge-deployments"></a>Abrufen von Protokollen aus IoT Edge-Bereitstellungen
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Rufen Sie Protokolle aus Ihren IoT Edge-Bereitstellungen ab, ohne dass Sie physischen oder SSH-Zugriff auf das Gerät benötigen, indem Sie die direkten Methoden verwenden, die im IoT Edge-Agent-Modul enthalten sind. Direkte Methoden werden auf dem Gerät implementiert und können dann über die Cloud aufgerufen werden. Der IoT Edge-Agent umfasst direkte Methoden, mit denen Sie Ihre IoT Edge-Geräte remote überwachen und verwalten können. Die in diesem Artikel erläuterten direkten Methoden sind mit der Version 1.0.10 allgemein verfügbar.
 
@@ -33,7 +35,18 @@ Es ist zwar nicht erforderlich, für die bestmögliche Kompatibilität mit diese
 <{Log Level}> {Timestamp} {Message Text}
 ```
 
-`{Log Level}` sollte dem [Syslog-Schweregradformat](https://wikipedia.org/wiki/Syslog#Severity_level) entsprechen und `{Timestamp}` muss als `yyyy-MM-dd hh:mm:ss.fff zzz` formatiert werden.
+`{Timestamp}` muss als `yyyy-MM-dd hh:mm:ss.fff zzz` formatiert werden, und `{Log Level}` sollte der nachfolgenden Tabelle entsprechen, die die Schweregrade von dem [Schweregradcode im Syslog-Standard](https://wikipedia.org/wiki/Syslog#Severity_level) ableitet.
+
+| Wert | Severity |
+|-|-|
+| 0 | Notfall |
+| 1 | Warnung |
+| 2 | Kritisch |
+| 3 | Fehler |
+| 4 | Warnung |
+| 5 | Hinweis |
+| 6 | Informational |
+| 7 | Debuggen |
 
 Die [Protokollierungsklasse in IoT Edge](https://github.com/Azure/iotedge/blob/master/edge-util/src/Microsoft.Azure.Devices.Edge.Util/Logger.cs) fungiert als kanonische Implementierung.
 
@@ -63,7 +76,7 @@ Diese Methode akzeptiert eine JSON-Nutzlast mit dem folgenden Schema:
     }
 ```
 
-| Name | type | BESCHREIBUNG |
+| Name | type | Beschreibung |
 |-|-|-|
 | schemaVersion | Zeichenfolge | Legen Sie den Wert `1.0` |
 | items | JSON-Array | Ein Array mit den Tupeln `id` und `filter` |
@@ -289,7 +302,7 @@ Diese Methode akzeptiert eine JSON-Nutzlast mit dem folgenden Schema:
     }
 ```
 
-| Name | type | BESCHREIBUNG |
+| Name | type | Beschreibung |
 |-|-|-|
 | schemaVersion | Zeichenfolge | Legen Sie den Wert `1.0` |
 | sasURL | Zeichenfolge (URI) | [Shared Access Signature-URL mit Schreibzugriff auf den Azure Blob Storage-Container](/archive/blogs/jpsanders/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer) |
