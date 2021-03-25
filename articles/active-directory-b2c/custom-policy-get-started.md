@@ -12,12 +12,12 @@ ms.date: 02/28/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9612a26d7ac2e7a059655636fc1a2a7a43e3b8d7
-ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
+ms.openlocfilehash: 2d6c76a15ee62c26e0d0261c6b0d2d1e27443a40
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100526237"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102518041"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Erste Schritte für benutzerdefinierte Richtlinien in Azure Active Directory B2C
 
@@ -30,6 +30,10 @@ ms.locfileid: "100526237"
 - Wenn Sie noch nicht über einen Azure AD B2C-Mandanten verfügen, [erstellen Sie einen](tutorial-create-tenant.md), der mit Ihrem Azure-Abonnement verknüpft ist.
 - [Registrieren Sie Ihre Anwendung](tutorial-register-applications.md) in dem Mandanten, den Sie erstellt haben, damit er mit Azure AD B2C kommunizieren kann.
 - Führen Sie die Schritte unter [Einrichten der Registrierung und Anmeldung mit einem Facebook-Konto mithilfe von Azure Active Directory B2C](identity-provider-facebook.md) aus, um eine Facebook-Anwendung zu konfigurieren. Wenngleich für die Verwendung von benutzerdefinierten Richtlinien keine Facebook-Anwendung erforderlich ist, wird in dieser exemplarischen Vorgehensweise eine solche Anwendung verwendet, um die Aktivierung des Soziale Medien-Logins in einer benutzerdefinierten Richtlinie zu veranschaulichen.
+
+> [!TIP]
+> In diesem Artikel wird erläutert, wie Sie Ihren Mandanten manuell einrichten. Sie können den gesamten Prozess in diesem Artikel automatisieren. Durch die Automatisierung wird das [SocialAndLocalAccountsWithMFA-Starter Pack](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack) von Azure AD B2C bereitgestellt, das Journeys zum Registrieren und Anmelden, zur Kennwortzurücksetzung und zur Profilbearbeitung beinhaltet. Befolgen Sie die Anweisungen in der [IEF-Setup-App](https://aka.ms/iefsetup), um die nachfolgende exemplarische Vorgehensweise zu automatisieren.
+
 
 ## <a name="add-signing-and-encryption-keys"></a>Hinzufügen von Signatur- und Verschlüsselungsschlüsseln
 

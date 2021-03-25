@@ -6,10 +6,10 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 06/05/2018
 ms.openlocfilehash: 19d947b8b595107c76c1201d05e4d5ade3d7a092
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92220056"
 ---
 # <a name="get-started-with-the-cognitive-capabilities-of-u-sql"></a>Erste Schritte mit den kognitiven Funktionen von U-SQL
@@ -28,6 +28,6 @@ Die folgenden Beispiele für die Verwendung kognitiver Funktionen stehen zur Ver
 Führen Sie zunächst die Schritte des folgenden Artikels aus, um kognitive Erweiterungen in U-SQL zu registrieren: [Registering Cognitive Extensions in U-SQL](/u-sql/objects-and-extensions/cognitive-capabilities-in#registeringExtensions) (Registrieren kognitiver Erweiterungen in U-SQL).
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Beispiele für U-SQL/Kognitive Beispiele](https://github.com/Azure-Samples?utf8=✓&q=usql%20cognitive)
+* [U-SQL/Kognitive Beispiele](https://github.com/Azure-Samples?utf8=✓&q=usql%20cognitive)
 * [Entwickeln von U-SQL-Skripts mit Data Lake-Tools für Visual Studio](data-lake-analytics-data-lake-tools-get-started.md)
 * [Verwenden von U-SQL-Funktionen für Azure Data Lake Analytics-Aufträge](./data-lake-analytics-u-sql-get-started.md)

@@ -11,10 +11,10 @@ ms.reviewer: ''
 ms.date: 01/25/2019
 ms.custom: seoapril2019, sqldbrb=1
 ms.openlocfilehash: 8a13c641d50a68d9661b4aa6caf8effb82d53dd7
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92793227"
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>Mandantenmuster für mehrinstanzenfähige SaaS-Datenbanken
@@ -62,7 +62,7 @@ Das Mandantenmodell wirkt sich in der Regel nicht auf die Funktionsweise einer A
 
 - **Anpassbarkeit:** &nbsp; Einfache Durchführung von speziell für Mandanten oder Mandantenklassen geltenden Schemaanpassungen
 
-Die Informationen zu Mandanten beziehen sich hauptsächlich auf die *Datenschicht* .  Im Folgenden sollten wir jedoch einen kurzen Blick auf die *Anwendungsschicht* werfen.  Die Anwendungsschicht ist als monolithische Einheit zu betrachten.  Wenn Sie die Anwendung in viele kleine Komponenten unterteilen, kann dies die Wahl Ihres Mandantenmodells ändern.  Einige Komponenten können je nach Mandant sowie verwendeter Speichertechnologie oder Plattform unterschiedlich behandelt werden.
+Die Informationen zu Mandanten beziehen sich hauptsächlich auf die *Datenschicht*.  Im Folgenden sollten wir jedoch einen kurzen Blick auf die *Anwendungsschicht* werfen.  Die Anwendungsschicht ist als monolithische Einheit zu betrachten.  Wenn Sie die Anwendung in viele kleine Komponenten unterteilen, kann dies die Wahl Ihres Mandantenmodells ändern.  Einige Komponenten können je nach Mandant sowie verwendeter Speichertechnologie oder Plattform unterschiedlich behandelt werden.
 
 ## <a name="c-standalone-single-tenant-app-with-single-tenant-database"></a>C. Eigenständige Einzelinstanz-App mit einer Einzelinstanzdatenbank
 
@@ -82,7 +82,7 @@ Der Hersteller kann auf alle Datenbanken in sämtlichen eigenständigen App-Inst
 
 ## <a name="d-multi-tenant-app-with-database-per-tenant"></a>D: Mehrinstanzenfähige App mit einer Datenbank pro Mandant
 
-Beim nächsten Muster kommt eine mehrinstanzenfähige Anwendung mit vielen Einzelinstanzdatenbanken zum Einsatz.  Für jeden neuen Mandanten wird eine neue Datenbank bereitgestellt.  Die Logikschicht wird vertikal *zentral hochskaliert* , indem weitere Ressourcen pro Knoten hinzugefügt werden.  Alternativ wird die App durch Hinzufügen weiterer Knoten *horizontal erweitert* .  Die Skalierung basiert auf der Workload und hängt von der Anzahl oder dem Umfang der einzelnen Datenbanken ab.
+Beim nächsten Muster kommt eine mehrinstanzenfähige Anwendung mit vielen Einzelinstanzdatenbanken zum Einsatz.  Für jeden neuen Mandanten wird eine neue Datenbank bereitgestellt.  Die Logikschicht wird vertikal *zentral hochskaliert*, indem weitere Ressourcen pro Knoten hinzugefügt werden.  Alternativ wird die App durch Hinzufügen weiterer Knoten *horizontal erweitert*.  Die Skalierung basiert auf der Workload und hängt von der Anzahl oder dem Umfang der einzelnen Datenbanken ab.
 
 ![Entwurf einer mehrinstanzenfähigen App mit einer Datenbank pro Mandant][image-mt-app-db-per-tenant-132d]
 

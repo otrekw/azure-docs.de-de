@@ -9,10 +9,10 @@ ms.author: jingwang
 ms.custom: devx-track-csharp
 robots: noindex
 ms.openlocfilehash: 8bdfceff562ae2501a9d95774f7134669e929b7e
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100379402"
 ---
 # <a name="copy-data-to-and-from-data-lake-storage-gen1-by-using-data-factory"></a>Kopieren von Daten nach bzw. aus Data Lake Storage Gen1 mit Data Factory
@@ -186,7 +186,7 @@ Nähere Informationen zu den im Code verwendeten Data Factory-Klassen finden Sie
 
 ## <a name="troubleshooting-tips"></a>Tipps zur Problembehandlung
 
-**Symptom:** Beim Kopieren von Daten **nach** Azure Data Lake Storage tritt folgender Fehler bei der Kopieraktivität auf:
+**Symptom:** Beim Kopieren von Daten **nach** Azure Data Lake Store tritt folgender Fehler bei der Kopieraktivität auf:
 
   ```
   Failed to detect the region for Azure Data Lake account {your account name}. Please make sure that the Resource Group name: {resource group name} and subscription ID: {subscription ID} of this Azure Data Lake Store resource are correct.
@@ -235,7 +235,7 @@ Der Abschnitt **typeProperties** für ein Dataset des Typs **AzureDataLakeStore*
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | **folderPath** |Der Pfad zum Container und Ordner in Data Lake Store. |Ja |
-| **fileName** |Der Name der Datei in Azure Data Lake Store. Die **fileName**-Eigenschaft ist optional, und die Groß-/Kleinschreibung wird berücksichtigt. <br/><br/>Wenn Sie für **fileName** einen Wert angeben, funktioniert die Aktivität (einschließlich Kopieren) für die jeweilige Datei.<br/><br/>Wenn **fileName** nicht angegeben ist, werden beim Kopieren alle Dateien unter **folderPath** für das Eingabedataset einbezogen.<br/><br/>Wenn **fileName** nicht für ein Ausgabedataset und **preserveHierarchy** nicht in der Aktivitätssenke angegeben ist, hat der Name der generierten Datei das folgende Format: `Data._Guid_.txt`. Beispiel: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt. |Nein |
+| **fileName** |Der Name der Datei in Azure Data Lake Store. Die **fileName**-Eigenschaft ist optional, und die Groß-/Kleinschreibung wird berücksichtigt. <br/><br/>Wenn Sie für **fileName** einen Wert angeben, funktioniert die Aktivität (einschließlich Kopieren) für die jeweilige Datei.<br/><br/>Wenn **fileName** nicht angegeben ist, werden beim Kopieren alle Dateien unter **folderPath** für das Eingabedataset einbezogen.<br/><br/>Wenn **fileName** nicht für ein Ausgabedataset und **preserveHierarchy** nicht in der Aktivitätssenke angegeben ist, hat der Name der generierten Datei das folgende Format: `Data._Guid_.txt`. Beispiel: „Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt“. |Nein |
 | **partitionedBy** |Die **partitionedBy**-Eigenschaft ist optional. Sie können sie verwenden, um einen dynamischen Pfad und Dateinamen für Zeitreihendaten anzugeben. Beispiel: **folderPath** kann für jedes stündliche Datenaufkommen parametrisiert werden. Weitere Informationen und Beispiele finden Sie unter „partitionedBy-Eigenschaft“. |Nein |
 | **format** | Die folgenden Formattypen werden unterstützt: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat** und **ParquetFormat**. Sie müssen die **type**-Eigenschaft unter **format** auf einen dieser Werte festlegen. Weitere Informationen finden Sie in den Abschnitten [Textformat](data-factory-supported-file-and-compression-formats.md#text-format), [JSON-Format](data-factory-supported-file-and-compression-formats.md#json-format), [Avro-Format](data-factory-supported-file-and-compression-formats.md#avro-format), [ORC-Format](data-factory-supported-file-and-compression-formats.md#orc-format) und [Parquet-Format](data-factory-supported-file-and-compression-formats.md#parquet-format) des Artikels [Von Azure Data Factory unterstützte Datei- und Komprimierungsformate](data-factory-supported-file-and-compression-formats.md). <br><br> Wenn Sie Dateien unverändert zwischen dateibasierten Speichern kopieren möchten (binäre Kopie), können Sie den `format`-Abschnitt bei den Definitionen von Eingabe- und Ausgabedatasets überspringen. |Nein |
 | **compression** | Geben Sie den Typ und den Grad der Komprimierung für die Daten an. Unterstützte Typen sind **GZip**, **Deflate**, **BZIP2** und **ZipDeflate**. Unterstützte Grade sind **Optimal** und **Schnellste**. Weitere Informationen finden Sie unter [Von Azure Data Factory unterstützte Datei- und Komprimierungsformate](data-factory-supported-file-and-compression-formats.md#compression-support). |Nein |
@@ -284,7 +284,7 @@ Die Eigenschaften im Abschnitt **typeProperties** einer Aktivität können je na
 
 | Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich |
 | --- | --- | --- | --- |
-| **copyBehavior** |Gibt das Kopierverhalten an. |<b>PreserveHierarchy:</b> Behält die Dateihierarchie im Zielordner bei. Der relative Pfad der Quelldatei zum Quellordner entspricht dem relativen Pfad der Zieldatei zum Zielordner.<br/><br/><b>FlattenHierarchy:</b> Alle Dateien aus dem Quellordner werden auf der ersten Ebene des Zielordners erstellt. Die Namen der Zieldateien werden automatisch generiert.<br/><br/><b>MergeFiles:</b> Alle Dateien aus dem Quellordner werden in einer Datei zusammengeführt. Wenn der Datei- oder Blobname angegeben wurde, entspricht der Name der Zusammenführungsdatei dem angegebenen Namen. Andernfalls wird der Dateiname automatisch generiert. |Nein |
+| **copyBehavior** |Gibt das Kopierverhalten an. |<b>PreserveHierarchy</b>: Behält die Dateihierarchie im Zielordner bei. Der relative Pfad der Quelldatei zum Quellordner entspricht dem relativen Pfad der Zieldatei zum Zielordner.<br/><br/><b>FlattenHierarchy</b>: Alle Dateien aus dem Quellordner werden auf der ersten Ebene des Zielordners erstellt. Die Namen der Zieldateien werden automatisch generiert.<br/><br/><b>MergeFiles</b>: Führt alle Dateien aus dem Quellordner in einer Datei zusammen. Wenn der Datei- oder Blobname angegeben wurde, entspricht der Name der Zusammenführungsdatei dem angegebenen Namen. Andernfalls wird der Dateiname automatisch generiert. |Nein |
 
 ### <a name="recursive-and-copybehavior-examples"></a>Beispiele für "recursive" und "copyBehavior"
 Dieser Abschnitt beschreibt das resultierende Verhalten des Kopiervorgangs für verschiedene Kombinationen von rekursiven und CopyBehavior-Werten.
@@ -304,7 +304,7 @@ Ausführliche Informationen finden Sie im Artikel [Datei- und Komprimierungsform
 ## <a name="json-examples-for-copying-data-to-and-from-data-lake-store"></a>JSON-Beispiele zum Kopieren von Daten in bzw. aus Data Lake Store
 Die folgenden Beispiele enthalten JSON-Beispieldefinitionen. Sie können diese Beispieldefinitionen zum Erstellen einer Pipeline mithilfe von [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) oder [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) verwenden. Die Beispiele verdeutlichen, wie Sie Daten in und aus Data Lake Store und Azure Blob Storage kopieren. Allerdings können Daten _direkt_ aus einer der Quellen in eine der unterstützten Senken kopiert werden. Weitere Informationen finden Sie im Abschnitt „Unterstützte Datenspeicher und Formate“ des Artikels [Verschieben von Daten mit der Kopieraktivität](data-factory-data-movement-activities.md).
 
-### <a name="example-copy-data-from-azure-blob-storage-to-azure-data-lake-store"></a>Beispiel: Kopieren von Daten aus Azure Blob Storage nach Azure Data Lake Storage
+### <a name="example-copy-data-from-azure-blob-storage-to-azure-data-lake-store"></a>Beispiel: Kopieren von Daten aus Azure Blob Storage nach Azure Data Lake Store
 Mit dem Beispielcode in diesem Abschnitt wird Folgendes veranschaulicht:
 
 * Einen verknüpften Dienst des Typs [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)
@@ -488,7 +488,7 @@ Im folgenden Beispiel enthält die Pipeline eine Kopieraktivität, die für die 
 }
 ```
 
-### <a name="example-copy-data-from-azure-data-lake-store-to-an-azure-blob"></a>Beispiel: Kopieren von Daten aus Azure Data Lake Storage in ein Azure-Blob
+### <a name="example-copy-data-from-azure-data-lake-store-to-an-azure-blob"></a>Beispiel: Kopieren von Daten aus Azure Data Lake Store in ein Azure-Blob
 Mit dem Beispielcode in diesem Abschnitt wird Folgendes veranschaulicht:
 
 * Einen verknüpften Dienst des Typs [AzureDataLakeStore](#linked-service-properties)

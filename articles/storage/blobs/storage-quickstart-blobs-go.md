@@ -8,10 +8,10 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.openlocfilehash: bf0e868e9ee746da1dfe1b03403d21f7edb3bd5e
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95544648"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-go"></a>Schnellstart: Hochladen, Herunterladen und Auflisten von Blobs mit Go
@@ -149,9 +149,9 @@ Blobspeicher unterstützt Block-, Anfüge- und Seitenblobs. Blockblobs werden am
 
 Zum Hochladen einer Datei in ein Blob öffnen Sie die Datei mit **os.Open**. Anschließend können Sie die Datei mithilfe einer der folgenden REST-APIs an den angegebenen Pfad hochladen: Upload (PutBlob), StageBlock/CommitBlockList (PutBlock/PutBlockList). 
 
-Als Alternative bietet das SDK [High-Level-APIs](https://github.com/Azure/azure-storage-blob-go/blob/master/azblob/highlevel.go), die auf den Low-Level-REST-APIs aufbauen. So verwendet beispielsweise die Funktion **_UploadFileToBlockBlob_* _ Vorgänge vom Typ „StageBlock“ (PutBlock), um eine Datei parallel in Blöcken hochzuladen und so den Durchsatz zu optimieren. Ist die Datei kleiner als 256 MB, wird stattdessen „Upload“ (PutBlob) verwendet, um die Übertragung mit einer einzelnen Transaktion durchzuführen.
+Als Alternative bietet das SDK [High-Level-APIs](https://github.com/Azure/azure-storage-blob-go/blob/master/azblob/highlevel.go), die auf den Low-Level-REST-APIs aufbauen. So verwendet beispielsweise die Funktion ***UploadFileToBlockBlob*** Vorgänge vom Typ „StageBlock“ (PutBlock), um eine Datei parallel in Blöcken hochzuladen und so den Durchsatz zu optimieren. Ist die Datei kleiner als 256 MB, wird stattdessen „Upload“ (PutBlob) verwendet, um die Übertragung mit einer einzelnen Transaktion durchzuführen.
 
-Im folgenden Beispiel wird die Datei in einen Container mit dem Namen „_*quickstartblobs-[zufällige Zeichenfolge]“ hochgeladen.
+Im folgenden Beispiel wird die Datei in einen Container mit dem Namen **quickstartblobs-[zufällige Zeichenfolge]** hochgeladen.
 
 ```go
 // Create a file to test the upload and download.

@@ -4,10 +4,10 @@ description: In diesem Artikel wird gezeigt, wie ein Lab-Besitzer benutzerseitig
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: b4bf2900acebaeecd5cbc4cb65635aee6de87dda
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88717630"
 ---
 # <a name="enable-user-assigned-managed-identities-on-lab-virtual-machines-in-azure-devtest-labs"></a>Aktivieren von benutzerseitig zugewiesenen verwalteten Identitäten auf virtuellen Lab-Computern in Azure DevTest Labs
@@ -31,7 +31,7 @@ Um eine benutzerseitig zugewiesene verwaltete Identität für Lab-VMs hinzuzufü
 
     > [!div class="mx-imgBorder"]
     > ![Schaltfläche „Identität hinzufügen“](./media/enable-managed-identities-lab-vms/add-identity-button.png)
-1. Wählen Sie eine vorhandene **benutzerseitig verwaltete Identität** aus der Dropdownliste aus, und wählen Sie **OK**aus. 
+1. Wählen Sie eine vorhandene **benutzerseitig verwaltete Identität** aus der Dropdownliste aus, und wählen Sie **OK** aus. 
 
     > [!div class="mx-imgBorder"]
     > ![Identität hinzufügen](./media/enable-managed-identities-lab-vms/add-identity.png)
@@ -40,7 +40,7 @@ Um eine benutzerseitig zugewiesene verwaltete Identität für Lab-VMs hinzuzufü
 
 1.  Notieren Sie sich nach dem Erstellen einer Identität die Ressourcen-ID der Identität. Sie sollte in etwa wie das folgende Beispiel aussehen: 
 
-    [https://login.microsoftonline.com/consumers/](`/subscriptions/0000000000-0000-0000-0000-00000000000000/resourceGroups/<RESOURCE GROUP NAME> /providers/Microsoft.ManagedIdentity/userAssignedIdentities/<NAME of USER IDENTITY>`).
+    `/subscriptions/0000000000-0000-0000-0000-00000000000000/resourceGroups/<RESOURCE GROUP NAME> /providers/Microsoft.ManagedIdentity/userAssignedIdentities/<NAME of USER IDENTITY>`.
 2. Führen Sie eine PUT HTTPS-Methode aus, um dem Lab eine neue **ServiceRunner**-Ressource hinzuzufügen, wie im folgenden Beispiel gezeigt. 
 
     Die Service Runner-Ressource ist eine Proxyressource zum Verwalten und Steuern verwalteter Identitäten in DevTest Labs. Der Name des Service Runners kann ein beliebiger gültiger Name sein, aber es wird empfohlen, dass Sie den Namen der verwalteten Identitätsressource verwenden.

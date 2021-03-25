@@ -8,10 +8,10 @@ ms.date: 02/20/2020
 ms.topic: article
 ms.service: azure-app-configuration
 ms.openlocfilehash: 12a62bbd06cf9adf3b5978bb061e1d014599b44c
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99550741"
 ---
 # <a name="reacting-to-azure-app-configuration-events"></a>Reagieren auf Azure App Configuration-Ereignisse
@@ -44,7 +44,7 @@ Azure App Configuration-Ereignisse enthalten alle Informationen, die Sie zur R
 > |eventTime|string|Datum und Uhrzeit der Ereignisgenerierung im ISO 8601-Format.|
 > |eventType|string|„Microsoft.AppConfiguration.KeyValueModified“ oder „Microsoft.AppConfiguration.KeyValueDeleted“.|
 > |Id|string|Ein eindeutiger Bezeichner für dieses Ereignis.|
-> |dataVersion|string|Die Schemaversion des Datenobjekts.|
+> |dataVersion|Zeichenfolge|Die Schemaversion des Datenobjekts.|
 > |metadataVersion|string|Die Schemaversion der Eigenschaften oberster Ebene.|
 > |data|Objekt (object)|Eine Sammlung Azure App Configuration-spezifischer Ereignisdaten.|
 > |data.key|string|Der Schlüssel des Schlüssel-Wert-Paars, das geändert oder gelöscht wurde.|

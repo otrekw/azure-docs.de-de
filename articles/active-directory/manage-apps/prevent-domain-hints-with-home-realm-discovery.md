@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 02/12/2021
 ms.author: hirsin
-ms.openlocfilehash: 67cb1003e139a085d45d01617cd44647bad420f5
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 53dfdfaf37695059d6d52428c2ba109970d9f7f7
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101692895"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104589377"
 ---
 # <a name="disable-auto-acceleration-to-a-federated-idp-during-user-sign-in-with-home-realm-discovery-policy"></a>Deaktivieren der automatischen Anmeldebeschleunigung an einen Verbundidentitätsanbieter während der Benutzeranmeldung per Richtlinie zur Startbereichsermittlung (Home Realm Discovery, HRD)
 
-Mit der [Richtlinie zur Startbereichsermittlung (Home Realm Discovery, HRD)](https://docs.microsoft.com/graph/api/resources/homeRealmDiscoveryPolicy) können Administratoren auf verschiedene Weise steuern, wie und wo sich Benutzer authentifizieren müssen. Der Abschnitt `domainHintPolicy` der HRD-Richtlinie wird verwendet, um Verbundbenutzer zu in der Cloud verwalteten Anmeldeinformationen, z. B. [FIDO](../authentication/howto-authentication-passwordless-security-key.md), zu migrieren. Hierfür wird sichergestellt, dass sie immer auf die Azure AD-Anmeldeseite geleitet werden und nicht aufgrund von Domänenhinweisen die automatische Anmeldebeschleunigung an einen Verbundidentitätsanbieter erfolgt.
+Mit der [Richtlinie zur Startbereichsermittlung (Home Realm Discovery, HRD)](/graph/api/resources/homeRealmDiscoveryPolicy) können Administratoren auf verschiedene Weise steuern, wie und wo sich Benutzer authentifizieren müssen. Der Abschnitt `domainHintPolicy` der HRD-Richtlinie wird verwendet, um Verbundbenutzer zu in der Cloud verwalteten Anmeldeinformationen, z. B. [FIDO](../authentication/howto-authentication-passwordless-security-key.md), zu migrieren. Hierfür wird sichergestellt, dass sie immer auf die Azure AD-Anmeldeseite geleitet werden und nicht aufgrund von Domänenhinweisen die automatische Anmeldebeschleunigung an einen Verbundidentitätsanbieter erfolgt.
 
 Diese Richtlinie wird in Situationen benötigt, in denen von Anwendungen, die von einem Administrator nicht gesteuert oder aktualisiert werden können, während der Anmeldung Domänenhinweise hinzugefügt werden.  Von `outlook.com/contoso.com` wird der Benutzer beispielsweise an eine Anmeldeseite mit angefügtem Parameter `&domain_hint=contoso.com` geleitet, um für den Benutzer die direkte automatische Anmeldebeschleunigung an den Verbundidentitätsanbieter für die Domäne `contoso.com` durchzuführen. Benutzer mit verwalteten Anmeldeinformationen, die an einen Verbundidentitätsanbieter geleitet werden, können sich nicht mit ihren verwalteten Anmeldeinformationen anmelden. Dies führt zu einer Verringerung der Sicherheit und zu Frustration bei den Benutzern, weil die Anmeldeumgebung nicht einheitlich ist. Administratoren, die verwaltete Anmeldeinformationen einführen, [sollten auch diese Richtlinie einrichten](#suggested-use-within-a-tenant). Hierdurch wird sichergestellt, dass Benutzer immer ihre verwalteten Anmeldeinformationen nutzen können.
 
@@ -101,7 +101,7 @@ Nach Abschluss von Schritt 4 können sich alle Benutzer, die nicht in `guestHan
 
 ## <a name="configuring-policy-through-graph-explorer"></a>Konfigurieren der Richtlinie per Graph-Tester
 
-Legen Sie die [HRD-Richtlinie](https://docs.microsoft.com/graph/api/resources/homeRealmDiscoveryPolicy) wie gewohnt per Microsoft Graph fest.  
+Legen Sie die [HRD-Richtlinie](/graph/api/resources/homeRealmDiscoveryPolicy) wie gewohnt per Microsoft Graph fest.  
 
 1. Gewähren Sie in [Graph-Tester](https://developer.microsoft.com/graph/graph-explorer) die Berechtigung „Policy.ReadWrite.ApplicationConfiguration“.  
 1. Verwenden Sie die URL `https://graph.microsoft.com/v1.0/policies/homeRealmDiscoveryPolicies`.

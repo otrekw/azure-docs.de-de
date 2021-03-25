@@ -3,14 +3,14 @@ title: Private Link – Azure-Portal – Azure Database for MariaDB
 description: Erfahren Sie, wie Sie Private Link für Azure Database for MariaDB über das Azure-Portal konfigurieren.
 author: mksuni
 ms.author: sumuth
-ms.service: jroth
+ms.service: mariadb
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: 127a1c83525c4a9c457f551c05045a63a3c4347a
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 79b3c3f8eca2fa4442a7845ca4aa3921d0302453
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98659623"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-using-portal"></a>Erstellen und Verwalten von Private Link für Azure Database for MariaDB über das Portal
@@ -20,7 +20,7 @@ Ein privater Endpunkt ist der grundlegende Baustein für Private Link in Azure. 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 > [!NOTE]
-> Das Feature „Private Link“ ist nur für Azure Database for MariaDB-Server in den Tarifen „Universell“ und „Arbeitsspeicheroptimiert“ verfügbar. Stellen Sie sicher, dass für den Datenbankserver einer dieser Tarife festgelegt wird.
+> Das Feature „Private Link“ ist nur für Azure Database for MariaDB-Server in den Tarifen „Universell“ und „Arbeitsspeicheroptimiert“ verfügbar. Stellen Sie sicher, dass für den Datenbankserver einer dieser Tarife festgelegt ist.
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
@@ -225,7 +225,7 @@ Stellen Sie nach der Erstellung von **myVm** über das Internet eine Verbindung 
 3. Testen Sie die Verbindung über den privaten Link für den MariaDB-Server mit einem beliebigen verfügbaren Client. Im folgenden Beispiel wird für diesen Vorgang [MySQL Workbench](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html) verwendet.
 
 
-4. Geben Sie in **Neue Verbindung** die folgenden Informationen ein, oder wählen Sie sie aus:
+4. Geben Sie in **Neue Verbindung** diese Informationen ein, oder wählen Sie sie aus:
 
     | Einstellung | Wert |
     | ------- | ----- |
@@ -240,7 +240,7 @@ Stellen Sie nach der Erstellung von **myVm** über das Internet eine Verbindung 
 
 6. (Optional) Durchsuchen von Datenbanken im linken Menü und Erstellen von Informationen in der MariaDB-Datenbank oder Abfragen von Informationen darin
 
-7. Schließen Sie die Remotedesktopverbindung mit „myVm“.
+7. Schließen Sie die Remotedesktopverbindung mit myVm.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 Wenn Sie Ihre Arbeit mit dem privaten Endpunkt, dem MariaDB-Server und dem virtuellen Computer abgeschlossen haben, löschen Sie die Ressourcengruppe und alle darin enthaltenen Ressourcen:

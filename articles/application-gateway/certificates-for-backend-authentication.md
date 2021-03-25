@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 06/17/2020
 ms.author: absha
 ms.openlocfilehash: 874e554063f64ddefce99a223678d64b2e0774c3
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93397721"
 ---
 # <a name="create-certificates-to-allow-the-backend-with-azure-application-gateway"></a>Erstellen von Zertifikaten zum Zulassen des Back-Ends für Azure Application Gateway
@@ -35,7 +35,7 @@ Sie benötigen ein Authentifizierungszertifikat, um Back-End-Instanzen in der v1
 
 Exportieren Sie die CER-Datei mit dem öffentlichen Schlüssel aus Ihrem TLS-/SSL-Zertifikat (nicht den privaten Schlüssel). Führen Sie die folgenden Schritte durch, um die CER-Datei mit dem Base64-kodierten X.509-Zertifikat für Ihr Zertifikat zu exportieren:
 
-1. Öffnen Sie **Benutzerzertifikate verwalten** , um eine CER-Datei für das Zertifikat zu erhalten. Suchen Sie das Zertifikat (in der Regel befindet es sich unter „Certificates > Aktueller Benutzer\Personal\Certificates“), und klicken Sie mit der rechten Maustaste darauf. Klicken Sie auf **Alle Aufgaben** und anschließend auf **Exportieren**. Dadurch wird der **Zertifikatexport-Assistent** geöffnet. Wenn Sie das Zertifikat unter „Aktueller Benutzer\Eigene Zertifikate\Zertifikate“ nicht finden, haben Sie unter Umständen versehentlich „Zertifikate – Lokaler Benutzer“ anstelle von „Zertifikate – Aktueller Benutzer“ geöffnet. Wenn Sie den Zertifikat-Manager im Bereich für den aktuellen Benutzer mithilfe von PowerShell öffnen möchten, geben Sie *certmgr* ins Konsolenfenster ein.
+1. Öffnen Sie **Benutzerzertifikate verwalten**, um eine CER-Datei für das Zertifikat zu erhalten. Suchen Sie das Zertifikat (in der Regel befindet es sich unter „Certificates > Aktueller Benutzer\Personal\Certificates“), und klicken Sie mit der rechten Maustaste darauf. Klicken Sie auf **Alle Aufgaben** und anschließend auf **Exportieren**. Dadurch wird der **Zertifikatexport-Assistent** geöffnet. Wenn Sie das Zertifikat unter „Aktueller Benutzer\Eigene Zertifikate\Zertifikate“ nicht finden, haben Sie unter Umständen versehentlich „Zertifikate – Lokaler Benutzer“ anstelle von „Zertifikate – Aktueller Benutzer“ geöffnet. Wenn Sie den Zertifikat-Manager im Bereich für den aktuellen Benutzer mithilfe von PowerShell öffnen möchten, geben Sie *certmgr* ins Konsolenfenster ein.
 
    ![Screenshot des Zertifikat-Managers, in dem „Zertifikate“ und in einem Kontextmenü „Alle Aufgaben“ und „Exportieren“ ausgewählt sind](./media/certificates-for-backend-authentication/export.png)
 
@@ -97,7 +97,7 @@ Führen Sie die folgenden Schritte durch, um die CER-Datei für Ihr Zertifikat z
 
    ![Zertifikatinformationen](./media/certificates-for-backend-authentication/rootcertdetails.png)
 
-5. Wechseln Sie zur Ansicht **Details** , und klicken Sie auf **In Datei kopieren**.
+5. Wechseln Sie zur Ansicht **Details**, und klicken Sie auf **In Datei kopieren**.
 
    ![Stammzertifikat kopieren](./media/certificates-for-backend-authentication/rootcertcopytofile.png)
 

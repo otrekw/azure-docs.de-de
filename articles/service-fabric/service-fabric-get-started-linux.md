@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 10/16/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: 14b8a278605a908b4182c724831b2e42de54a753
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93086889"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Vorbereiten Ihrer Entwicklungsumgebung unter Linux
@@ -50,7 +50,7 @@ Um das SDK und das dazugehörige Runtimepaket über das Befehlszeilenprogramm �
 
 ## <a name="script-installation"></a>Skriptinstallation
 
-Ein Skript soll Ihnen als Hilfe beim Installieren der Service Fabric-Runtime und des allgemeinen Service Fabric SDK zusammen mit der [**sfctl** -CLI](service-fabric-cli.md) dienen. Für die Ausführung des Skripts wird vorausgesetzt, dass Sie den Lizenzen für die gesamte zu installierende Software zustimmen. Alternativ dazu können Sie die Schritte zur [manuellen Installation](#manual-installation) im nächsten Abschnitt ausführen. Dort sind zugehörige Lizenzen sowie die installierten Komponenten dargestellt.
+Ein Skript soll Ihnen als Hilfe beim Installieren der Service Fabric-Runtime und des allgemeinen Service Fabric SDK zusammen mit der [**sfctl**-CLI](service-fabric-cli.md) dienen. Für die Ausführung des Skripts wird vorausgesetzt, dass Sie den Lizenzen für die gesamte zu installierende Software zustimmen. Alternativ dazu können Sie die Schritte zur [manuellen Installation](#manual-installation) im nächsten Abschnitt ausführen. Dort sind zugehörige Lizenzen sowie die installierten Komponenten dargestellt.
 
 Nach der erfolgreichen Ausführung des Skripts können Sie direkt zu [Einrichten eines lokalen Clusters](#set-up-a-local-cluster) springen.
 
@@ -312,7 +312,7 @@ Das Eclipse-Plug-In für Service Fabric können Sie über die Eclipse-IDE für J
 
 6. Führen Sie die Installationsschritte aus. Akzeptieren Sie anschließend den Endbenutzer-Lizenzvertrag.
 
-Falls Sie das Service Fabric-Plug-In für Eclipse bereits installiert haben, vergewissern Sie sich, dass Sie über die aktuelle Version verfügen. Die Version können Sie unter **Hilfe** > **Über Eclipse** > **Installationsdetails** überprüfen. Suchen Sie in der Liste der installierten Plug-Ins nach „Service Fabric“. Klicken Sie auf **Aktualisieren** , falls eine neuere Version verfügbar ist.
+Falls Sie das Service Fabric-Plug-In für Eclipse bereits installiert haben, vergewissern Sie sich, dass Sie über die aktuelle Version verfügen. Die Version können Sie unter **Hilfe** > **Über Eclipse** > **Installationsdetails** überprüfen. Suchen Sie in der Liste der installierten Plug-Ins nach „Service Fabric“. Klicken Sie auf **Aktualisieren**, falls eine neuere Version verfügbar ist.
 
 Weitere Informationen finden Sie unter [Service Fabric-Plug-In für die Entwicklung von Eclipse-Java-Anwendungen](service-fabric-get-started-eclipse.md).
 

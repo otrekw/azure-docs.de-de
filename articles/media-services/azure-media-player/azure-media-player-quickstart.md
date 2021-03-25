@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: quickstart
 ms.date: 04/20/2020
-ms.openlocfilehash: 1634731381be6ebbb8750746f88b8ff9e761025d
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 0d0fa88fdf182ae2214da40ee3fe8b20ced025e4
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879189"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104956059"
 ---
 # <a name="azure-media-player-quickstart"></a>Schnellstart für Azure Media Player
 Die Einrichtung von Azure Media Player ist einfach. Es dauert nur wenige Minuten, bis die einfache Wiedergabe von Medieninhalten über Ihr Azure Media Services-Konto möglich ist. In diesem Abschnitt werden die grundlegenden Schritte beschrieben, ohne zu sehr ins Detail zu gehen. Die nachfolgenden Abschnitte enthalten dann genauere Informationen zur Einrichtung und Konfiguration von Azure Media Player.  Fügen Sie dem `<head>`-Element Ihres Dokuments einfach Folgendes hinzu:
@@ -39,7 +39,7 @@ Verwenden Sie als Nächstes einfach das `<video>`-Element wie gewohnt, aber mit 
 
 Wenn Sie nicht die automatische Einrichtung verwenden möchten, können Sie das Attribut `data-setup` weglassen und manuell ein Videoelement initialisieren.
 
-```html
+```javascript
     var myPlayer = amp('vid1', { /* Options */
             "nativeControlsForTouch": false,
             autoplay: false,
@@ -52,7 +52,7 @@ Wenn Sie nicht die automatische Einrichtung verwenden möchten, können Sie das 
                // add an event listener
               this.addEventListener('ended', function() {
                 console.log('Finished!');
-            }
+            });
           }
     );
     myPlayer.src([{

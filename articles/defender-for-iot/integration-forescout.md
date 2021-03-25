@@ -1,25 +1,20 @@
 ---
 title: Informationen zur Forescout-Integration
-titleSuffix: Azure Defender for IoT
 description: Die Azure Defender für IoT-Integration mit der Forescout-Plattform bietet eine neue Ebene zentralisierter Sichtbarkeit, Überwachung und Kontrolle für IoT- und OT-Szenarien.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 1/17/2021
 ms.topic: article
-ms.service: azure
-ms.openlocfilehash: faa53c770d0d6caac471e770c80b4dfd5c5ff603
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 07e5187970d193502b95b49c5517a8e3824767be
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98556797"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104784066"
 ---
 # <a name="about-the-forescout-integration"></a>Informationen zur Forescout-Integration
 
 Azure Defender für IoT bietet eine ICS- und IoT-Cybersicherheitsplattform, die von Blue Team-Experten mit umfangreichen Kenntnissen der Verteidigung kritischer nationaler Infrastrukturen erstellt wurde. Defender für IoT ist die einzige Plattform mit patentierter ICS-fähiger Bedrohungsanalyse und Machine Learning. Defender für IoT bietet Folgendes:
 
-- Unmittelbare Einblicke in ICS in der Gerätelandschaft und eine umfangreiche Palette von Details zu Attributen.
+- Unmittelbare Erkenntnisse zu ICS in der Gerätelandschaft und eine umfangreiche Palette von Details zu Attributen.
 - ICS-fähige Deep Embedded-Kenntnisse zu OT-Protokollen, Geräten, Anwendungen und deren Verhalten.
 - Unmittelbare Einblicke in Sicherheitsrisiken und bekannte und Zero-Day-Bedrohungen.
 - Automatisierte ICS-Bedrohungsmodellierungstechnologie, mit der die wahrscheinlichsten Pfade von gezielten ICS-Angriffen über proprietäre Analysen vorhergesagt werden können.
@@ -183,4 +178,4 @@ So greifen Sie auf Defender für IoT-Eigenschaften zu:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum [Weiterleiten von Warnungsinformationen](how-to-forward-alert-information-to-partners.md).
+Erfahren Sie, wie Sie [Warnungsinformationen weiterleiten](how-to-forward-alert-information-to-partners.md).

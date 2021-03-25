@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 08/02/2017
 ms.author: alkohli
 ms.openlocfilehash: ed6f9d58c5c54c88acf8e3a0e7fda7d2d65b8637
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85514320"
 ---
 # <a name="install-update-4-on-your-storsimple-device"></a>Installieren von Update 4 auf Ihrem StorSimple-Gerät
@@ -74,7 +74,7 @@ Das Hotfixverfahren umfasst die folgenden drei Schritte:
 
 Sie müssen die folgenden Hotfixes in der vorgeschriebenen Reihenfolge und in die vorgeschlagenen Ordner herunterladen und installieren:
 
-| Order | KB | BESCHREIBUNG | Updatetyp | Installationszeit |Installationsordner|
+| Auftrag | KB | Beschreibung | Updatetyp | Installationszeit |Installationsordner|
 | --- | --- | --- | --- | --- | --- |
 | 1. |KB4011839 |Softwareupdate |Regulär <br></br>Unterbrechungsfrei |ca. 25 Min. |FirstOrderUpdate|
 | 2A. |KB4011841 <br> KB4011842 |Updates von LSI-Treiber und -Firmware <br> Update der USM-Firmware (Version 3.38) |Regulär <br></br>Unterbrechungsfrei |ca. 3 Stunden <br> (enthält 2A. + 2B. + 2C.)|SecondOrderUpdate|
@@ -83,7 +83,7 @@ Sie müssen die folgenden Hotfixes in der vorgeschriebenen Reihenfolge und in di
 
 Sie müssen zusätzlich zu den in den vorhergehenden Tabellen enthaltenen Updates ggf. auch Updates der Firmware von Datenträgern installieren. Sie können überprüfen, ob Sie Updates für die Datenträgerfirmware benötigen, indem Sie das Cmdlet `Get-HcsFirmwareVersion` ausführen. Wenn Sie die Firmwareversionen `XMGJ`, `XGEG`, `KZ50`, `F6C2`, `VR08`, `N002`, `0106` ausführen, müssen Sie diese Updates nicht installieren.
 
-| Order | KB | BESCHREIBUNG | Updatetyp | Installationszeit | Installationsordner|
+| Auftrag | KB | Beschreibung | Updatetyp | Installationszeit | Installationsordner|
 | --- | --- | --- | --- | --- | --- |
 | 3. |KB3121899 |Datenträgerfirmware |Wartung <br></br>Mit Unterbrechung |~ 30 Min. | ThirdOrderUpdate |
 

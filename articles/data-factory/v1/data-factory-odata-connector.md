@@ -8,10 +8,10 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: fae78459a752d78fe47f189bca67667e917ba561
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100380065"
 ---
 # <a name="move-data-from-an-odata-source-using-azure-data-factory"></a>Verschieben von Daten aus einer OData-Quelle mithilfe von Azure Data Factory
@@ -48,7 +48,7 @@ Unabhängig davon, ob Sie Tools oder APIs verwenden, führen Sie die folgenden S
 2. Erstellen von **Datasets** zur Darstellung von Eingabe- und Ausgabedaten für den Kopiervorgang.
 3. Erstellen einer **Pipeline** mit einer Kopieraktivität, die ein Dataset als Eingabe und ein Dataset als Ausgabe akzeptiert.
 
-Wenn Sie den Assistenten verwenden, werden automatisch JSON-Definitionen für diese Data Factory-Entitäten (verknüpfte Diensten, Datasets und die Pipeline) erstellt. Bei Verwendung von Tools und APIs (mit Ausnahme der .NET-API) definieren Sie diese Data Factory-Entitäten im JSON-Format.  Ein Beispiel mit JSON-Definitionen für Data Factory-Entitäten, die zum Kopieren von Daten aus einer OData-Quelle verwendet werden, finden Sie im Abschnitt [JSON-Beispiel: Kopieren von Daten aus einer OData-Quelle in ein Azure-Blob](#json-example-copy-data-from-odata-source-to-azure-blob) in diesem Artikel.
+Wenn Sie den Assistenten verwenden, werden automatisch JSON-Definitionen für diese Data Factory-Entitäten (verknüpfte Diensten, Datasets und die Pipeline) erstellt. Bei Verwendung von Tools und APIs (mit Ausnahme der .NET-API) definieren Sie diese Data Factory-Entitäten im JSON-Format.  Ein Beispiel mit JSON-Definitionen für Data Factory-Entitäten, die zum Kopieren von Daten aus einer OData-Quelle verwendet werden, finden Sie in diesem Artikel im Abschnitt [JSON-Beispiel: Kopieren von Daten von einer OData-Quelle in ein Azure-Blob](#json-example-copy-data-from-odata-source-to-azure-blob).
 
 Die folgenden Abschnitte enthalten Details zu JSON-Eigenschaften, die zum Definieren von Data Factory-Entitäten speziell für OData-Quellen verwendet werden:
 
@@ -57,7 +57,7 @@ Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den 
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
-| type |Die type-Eigenschaft muss auf Folgendes festgelegt werden: **OData** |Ja |
+| Typ |Die type-Eigenschaft muss auf **OData** |Ja |
 | url |Die URL des OData-Diensts. |Ja |
 | authenticationType |Typ der Authentifizierung für die Verbindung mit der OData-Quelle. <br/><br/> Mögliche Werte für den cloudbasierten OData-Dienst sind „Anonymous“, „Basic“ und „OAuth“ (beachten Sie, dass Azure Data Factory derzeit nur Azure Active Directory-basiertes OAuth unterstützt). <br/><br/> Mögliche Werte für lokales OData sind „Anonymous“, „Basic“ und „Windows“. |Ja |
 | username |Geben Sie den Benutzernamen an, wenn Sie die Standardauthentifizierung (Basic) verwenden. |Ja (nur bei Verwendung der Standardauthentifizierung) |
@@ -195,7 +195,7 @@ Dieses Beispiel zeigt JSON-Beispieldefinitionen, die Sie zum Erstellen einer Pip
 
 Das Beispiel kopiert stündlich Daten durch Abfragen einer OData-Quelle in ein Azure-Blob. Die bei diesen Beispielen verwendeten JSON-Eigenschaften werden in den Abschnitten beschrieben, die auf die Beispiele folgen.
 
-**Mit OData verknüpfter Dienst:** In diesem Beispiel wird die anonyme Authentifizierung verwendet. Informationen zu den verwendbaren Authentifizierungstypen finden Sie im Abschnitt [Mit OData verknüpfter Dienst](#linked-service-properties).
+**Mit OData verknüpfter Dienst:** Bei diesem Beispiel wird die anonyme Authentifizierung verwendet. Informationen zu den verwendbaren Authentifizierungstypen finden Sie im Abschnitt [Mit OData verknüpfter Dienst](#linked-service-properties).
 
 ```json
 {
@@ -368,7 +368,7 @@ Die Pipeline enthält eine Kopieraktivität, die für die Verwendung der Ein- un
 }
 ```
 
-Die Angabe von **query** in der Pipelinedefinition ist optional. Die **URL**, die der Data Factory-Dienst zum Abrufen von Daten nutzt, hat das folgende Format: Im verknüpften Dienst angegebene URL (erforderlich) + Im Dataset angegebener Pfad (optional) + Abfrage in der Pipeline (optional).
+Die Angabe von **query** in der Pipelinedefinition ist optional. Die **URL** , die der Data Factory-Dienst zum Abrufen der Daten verwendet, ergibt sich aus: URL, die im verknüpften Dienst (erforderlich) angegeben wurde + im Dataset (optional) angegebener Pfad + Abfrage in der Pipeline (optional).
 
 ### <a name="type-mapping-for-odata"></a>Typzuordnung für OData
 Wie im Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) beschrieben, führt die Kopieraktivität mithilfe der folgenden beiden Schritte automatische Typkonvertierungen von Quelltypen in Senkentypen durch:

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/06/2020
 ms.author: glenga
 ms.openlocfilehash: bff2f05a95faf9c475189cb5a8003cb7fd9f69be
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101701393"
 ---
 1. Drücken Sie in Visual Studio die Taste <kbd>F5</kbd>, um Ihre Funktion auszuführen. Sie müssen unter Umständen eine Firewallausnahme aktivieren, damit die Tools HTTP-Anforderungen verarbeiten können. Autorisierungsebenen werden niemals erzwungen, wenn Sie eine Funktion lokal ausführen.

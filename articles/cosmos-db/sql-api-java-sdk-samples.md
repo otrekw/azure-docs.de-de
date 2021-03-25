@@ -9,10 +9,10 @@ ms.date: 09/23/2020
 ms.custom: devx-track-java
 ms.author: anfeldma
 ms.openlocfilehash: 0b0bdd204b2aa322adeb7373911b90e742c71999
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98018988"
 ---
 # <a name="azure-cosmos-db-sql-api-java-sdk-v4-examples"></a>Azure Cosmos DB SQL-API: Java SDK v4-Beispiele
@@ -21,7 +21,7 @@ ms.locfileid: "98018988"
 > [!div class="op_single_selector"]
 > * [.NET V2 SDK-Beispiele](sql-api-dotnet-samples.md)
 > * [.NET V3 SDK-Beispiele](sql-api-dotnet-v3sdk-samples.md)
-> * [Java v4 SDK-Beispiele](sql-api-java-sdk-samples.md)
+> * [Java V4 SDK-Beispiele](sql-api-java-sdk-samples.md)
 > * [Spring Data V3 SDK-Beispiele](sql-api-spring-data-sdk-samples.md)
 > * [Node.js-Beispiele](sql-api-nodejs-samples.md)
 > * [Python-Beispiele](sql-api-python-samples.md)

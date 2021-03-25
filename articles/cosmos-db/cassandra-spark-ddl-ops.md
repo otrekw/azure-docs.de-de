@@ -9,10 +9,10 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 10/07/2020
 ms.openlocfilehash: 73d31fff362807937cbd87b8e1313cf601909802
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93092176"
 ---
 # <a name="ddl-operations-in-azure-cosmos-db-cassandra-api-from-spark"></a>DDL-Vorgänge in der Azure Cosmos DB-Cassandra-API von Spark
@@ -141,7 +141,7 @@ DESCRIBE tables;
 Fahren Sie nach dem Erstellen von Keyspace und Tabelle mit den folgenden Artikeln für CRUD-Vorgänge und Ähnliches fort:
  
 * [Erstellungs-/Einfügevorgänge](cassandra-spark-create-ops.md)  
-* [Lesevorgänge](cassandra-spark-read-ops.md)  
+* [Dient zum Lesen von Vorgängen.](cassandra-spark-read-ops.md)  
 * [Upsertvorgänge](cassandra-spark-upsert-ops.md)  
 * [Löschvorgänge](cassandra-spark-delete-ops.md)  
 * [Aggregationsvorgänge](cassandra-spark-aggregation-ops.md)  

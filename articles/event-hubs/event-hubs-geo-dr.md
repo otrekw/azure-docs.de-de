@@ -3,12 +3,12 @@ title: 'Georedundante Notfallwiederherstellung: Azure Event Hubs | Microsoft-Dok
 description: Verwenden von geografischen Regionen für Failover und Notfallwiederherstellung in Azure Event Hubs
 ms.topic: article
 ms.date: 02/10/2021
-ms.openlocfilehash: 2fd13ac98e80aa67a2a3150e8406a0b0b1b08d13
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: f3b74b89f47582fbb3f1640f315f413ab86b26b5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100390673"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104602637"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs: Georedundante Notfallwiederherstellung 
 
@@ -44,11 +44,7 @@ In diesem Artikel werden die folgenden Begriffe verwendet:
 -  *Alias*: Der Name für die Konfiguration einer von Ihnen eingerichteten Notfallwiederherstellung. Der Alias stellt einen einzelnen, stabilen, vollqualifizierten Domänennamen (Fully Qualified Domain Name, FQDN) als Verbindungszeichenfolge bereit. Anwendungen verwenden diese Alias-Verbindungszeichenfolge, um eine Verbindung mit einem Namespace herzustellen. 
 
 -  *Primärer/sekundärer Namespace*: Die Namespaces, die dem Alias entsprechen. Der primäre Namespace ist aktiv und empfängt Nachrichten. (Dies kann ein bereits vorhandener oder ein neuer Namespace sein.) Der sekundäre Namespace ist passiv und empfängt keine Nachrichten. Die Metadaten zwischen beiden Namespaces werden synchronisiert, sodass beide nahtlos und ohne Änderung des Anwendungscodes oder der Verbindungszeichenfolge Nachrichten entgegennehmen können. Um sicherzustellen, dass nur der aktive Namespace Nachrichten empfängt, müssen Sie den Alias verwenden.
-
-    > [!IMPORTANT]
-    > Für die georedundante Notfallwiederherstellung müssen das Abonnement und die Ressourcengruppe für den primären und sekundären Namespace identisch sein. 
 -  *Metadaten*: Entitäten (etwa Event Hubs und Consumergruppen) sowie deren Eigenschaften des Diensts, die dem Namespace zugeordnet sind. Nur Entitäten und ihre Einstellungen werden automatisch repliziert. Nachrichten und Ereignisse werden nicht repliziert. 
-
 -  *Failover*: Der Vorgang zum Aktivieren des sekundären Namespace.
 
 ## <a name="supported-namespace-pairs"></a>Unterstützte Namespacepaare
@@ -75,13 +71,13 @@ Im folgenden Abschnitt finden Sie eine Übersicht über den Failoverprozess und 
 Zuerst erstellen bzw. verwenden Sie einen vorhandenen primären Namespace und einen neuen sekundären Namespace und koppeln diese anschließend. Über diese Kopplung erhalten Sie einen Alias, mit dem Sie eine Verbindung herstellen können. Da Sie einen Alias verwenden, müssen Sie keine Verbindungszeichenfolgen ändern. Nur neue Namespaces können der Failoverkopplung hinzugefügt werden. 
 
 1. Erstellen Sie den primären Namespace.
-1. Erstellen Sie den sekundären Namespace in dem Abonnement und der Ressourcengruppe, zu denen der primäre Namespace gehört, jedoch in einer anderen Region. Dieser Schritt ist optional. Sie können den sekundären Namespace während der Erstellung der Kopplung im nächsten Schritt erstellen. 
+1. Erstellen Sie den sekundären Namespace in einer anderen Region. Dieser Schritt ist optional. Sie können den sekundären Namespace während der Erstellung der Kopplung im nächsten Schritt erstellen. 
 1. Navigieren Sie im Azure-Portal zu Ihrem primären Namespace.
 1. Wählen Sie im linken Menü **Georedundante Wiederherstellung** und auf der Symbolleiste **Kopplung initiieren** aus. 
 
     :::image type="content" source="./media/event-hubs-geo-dr/primary-namspace-initiate-pairing-button.png" alt-text="Initiieren der Kopplung vom primären Namespace":::    
 1. Führen Sie auf der Seite **Kopplung initiieren** die folgenden Schritte aus:
-    1. Wählen Sie einen vorhandenen sekundären Namespace aus, oder erstellen Sie einen in dem Abonnement und der Ressourcengruppe, zu denen der primäre Namespace gehört. In diesem Beispiel wurde ein vorhandener Namespace ausgewählt.  
+    1. Wählen Sie einen vorhandenen sekundären Namespace aus, oder erstellen Sie einen in einer anderen Region. In diesem Beispiel wurde ein vorhandener Namespace ausgewählt.  
     1. Geben Sie als **Alias** einen Alias für die georedundanten Kopplung ein. 
     1. Wählen Sie anschließend **Erstellen**. 
 
@@ -208,7 +204,7 @@ Weitere Informationen zu Event Hubs erhalten Sie unter den folgenden Links:
     - [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
     - [Java](event-hubs-java-get-started-send.md)
     - [Python](event-hubs-python-get-started-send.md)
-    - [JavaScript](event-hubs-java-get-started-send.md)
+    - [JavaScript](event-hubs-node-get-started-send.md)
 * [Event Hubs – häufig gestellte Fragen](event-hubs-faq.md)
 * [Beispielanwendungen mit Event Hubs](https://github.com/Azure/azure-event-hubs/tree/master/samples)
 

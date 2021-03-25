@@ -4,10 +4,10 @@ description: Beschreibt, wie Manifeste zum Definieren von Service Fabric-Anwendu
 ms.topic: conceptual
 ms.date: 8/12/2019
 ms.openlocfilehash: fcf4c7611f0a6f52c28b234717b9244ac58ad2d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86248219"
 ---
 # <a name="service-fabric-application-and-service-manifests"></a>Service Fabric-Anwendungs- und -Dienstmanifeste
@@ -85,7 +85,7 @@ Weitere Informationen zum Konfigurieren von SetupEntryPoint finden Sie unter [Ko
 </Settings>
 ```
 
-Ein Service Fabric-Dienst**endpunkt** ist ein Beispiel für eine Service Fabric-Ressource. Eine Service Fabric-Ressource kann deklariert/geändert werden, ohne dass der kompilierte Code geändert wird. Der Zugriff auf die im Dienstmanifest angegebenen Service Fabric-Ressourcen kann über das **SecurityGroup**-Element im Anwendungsmanifest gesteuert werden. Wenn eine Endpunktressource im Dienstmanifest definiert wird, weist Service Fabric Ports aus dem Bereich der reservierten Anwendungsports zu, sofern nicht explizit ein Port angegeben wird. Erfahren Sie mehr über das [Angeben oder Überschreiben von Endpunktressourcen](service-fabric-service-manifest-resources.md).
+Ein Service Fabric-Dienst **endpunkt** ist ein Beispiel für eine Service Fabric-Ressource. Eine Service Fabric-Ressource kann deklariert/geändert werden, ohne dass der kompilierte Code geändert wird. Der Zugriff auf die im Dienstmanifest angegebenen Service Fabric-Ressourcen kann über das **SecurityGroup**-Element im Anwendungsmanifest gesteuert werden. Wenn eine Endpunktressource im Dienstmanifest definiert wird, weist Service Fabric Ports aus dem Bereich der reservierten Anwendungsports zu, sofern nicht explizit ein Port angegeben wird. Erfahren Sie mehr über das [Angeben oder Überschreiben von Endpunktressourcen](service-fabric-service-manifest-resources.md).
 
  
 > [!WARNING]

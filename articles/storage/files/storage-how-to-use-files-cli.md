@@ -8,12 +8,12 @@ ms.date: 10/26/2018
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: dd07c09c4ed5be311bf5a485b9bff938c976a2f5
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 5611088b76d8acf785fc0951100dcd4a2f439250
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94659232"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104593168"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-using-azure-cli"></a>Schnellstart: Erstellen und Verwalten von Azure-Dateifreigaben mit der Azure CLI
 In dieser Anleitung werden die Grundlagen der Verwendung von [Azure-Dateifreigaben](storage-files-introduction.md) mit der Azure CLI Schritt für Schritt beschrieben. Azure-Dateifreigaben sind genau wie andere Dateifreigaben, werden jedoch in der Cloud gespeichert und von der Azure-Plattform unterstützt. Azure-Dateifreigaben unterstützen das SMB-Protokoll (Server Message Block) nach Industriestandard sowie das NFS-Protokoll (Network File System, Vorschau) und ermöglichen es, Dateien für mehrere Computer, Anwendungen und Instanzen freizugeben. 
@@ -83,7 +83,6 @@ az storage share create \
     --account-key $storageAccountKey \
     --name $shareName \
     --quota 1024 \
-    --enabled-protocols SMB \
     --output none
 ```
 
@@ -175,7 +174,6 @@ az storage share create \
     --account-key $storageAccountKey \
     --name $otherShareName \
     --quota 1024 \
-    --enabled-protocols SMB \
     --output none
 
 az storage directory create \

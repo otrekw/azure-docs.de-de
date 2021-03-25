@@ -1,18 +1,14 @@
 ---
 title: Verwalten von Sensoren über die lokale Verwaltungskonsole
 description: Erfahren Sie, wie Sie Sensoren über die Verwaltungskonsole verwalten können. Dazu gehören das Aktualisieren von Sensorversionen, Übertragen von Systemeinstellungen per Push an Sensoren sowie das Aktivieren und Deaktivieren von Engines für Sensoren.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 12/07/2020
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: 10051bfdf7a93a8d6c83d649a7b0ad008b5e2caf
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 4706fbcf58b8e5f5eed6532f9a08f65c7716e07e
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100523956"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104781924"
 ---
 # <a name="manage-sensors-from-the-management-console"></a>Verwalten von Sensoren über die Verwaltungskonsole
 
@@ -315,6 +311,6 @@ Zum Einrichten eines SMB-Servers für das Speichern einer Sensorsicherung auf ei
 
 9. Legen Sie `Backup.shared_location` auf `<backup_folder_name_on_cyberx_server>` fest.
 
-## <a name="next-steps"></a>Nächste Schritte
+## <a name="see-also"></a>Weitere Informationen
 
 [Verwalten einzelner Sensoren](how-to-manage-individual-sensors.md)
