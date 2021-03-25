@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 23e2eafae185551c79d651ec6dcf39ad11eb8534
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96742118"
 ---
 # <a name="integrate-radius-authentication-with-azure-multi-factor-authentication-server"></a>Integration der RADIUS-Authentifizierung mit dem Azure Multi-Factor Authentication-Server
@@ -23,7 +23,7 @@ ms.locfileid: "96742118"
 RADIUS ist ein Standardprotokoll, um Authentifizierungsanforderungen zu akzeptieren und diese Anforderungen zu verarbeiten. Der Azure Multi-Factor Authentication-Server kann als RADIUS-Server fungieren. Fügen Sie ihn zwischen Ihrem RADIUS-Client (VPN-Appliance) und Ihrem Authentifizierungsziel ein, um die zweistufige Überprüfung hinzuzufügen. Mögliche Authentifizierungsziele sind Active Directory, ein LDAP-Verzeichnis oder ein anderer RADIUS-Server. Damit Azure Multi-Factor Authentication (MFA) funktioniert, müssen Sie den Azure MFA-Server so konfigurieren, dass er sowohl mit den Clientservern als auch mit dem Authentifizierungsziel kommunizieren kann. Der Azure MFA-Server akzeptiert Anforderungen von einem RADIUS-Client, überprüft die Anmeldeinformationen für das Authentifizierungsziel, fügt Azure Multi-Factor Authentication hinzu, und sendet eine Antwort zurück an den RADIUS-Client. Die Authentifizierungsanforderung ist nur erfolgreich, wenn die primäre Authentifizierung und die mehrstufige Authentifizierung per Azure Multi-Factor Authentication erfolgreich verlaufen sind.
 
 > [!IMPORTANT]
-> Seit dem 1. Juli 2019 bietet Microsoft für neue Bereitstellungen keine MFA-Server mehr an. Neue Kunden, die für die Anmeldung der Benutzer mehrstufige Authentifizierung (MFA) anfordern möchten, sollten cloudbasierte Multi-Factor Authentication von Azure AD verwenden.
+> Seit dem 1. Juli 2019 bietet Microsoft für neue Bereitstellungen keine MFA-Server mehr an. Neue Kunden, die bei Benutzeranmeldeereignissen eine mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) verlangen möchten, sollten cloudbasierte Azure AD Multi-Factor Authentication verwenden.
 >
 > Informationen zu den ersten Schritten mit der cloudbasierten MFA finden Sie im [Tutorial: Schützen von Benutzeranmeldeereignissen mit Azure AD Multi-Factor Authentication](tutorial-enable-azure-mfa.md).
 >

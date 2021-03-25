@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 03/13/2020
-ms.openlocfilehash: bdab80725f66814b9bf6bfa9429e3eff96fbc908
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 72a468057cef5c8616cb3f88063204509aaf7fe0
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102505102"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863325"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-arm-template"></a>Schnellstart: Erstellen eines Apache Kafka-Clusters in Azure HDInsight mithilfe einer ARM-Vorlage
 
@@ -22,7 +22,7 @@ Auf die Kafka-API kann nur von Ressourcen im gleichen virtuellen Netzwerk zugegr
 
 Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen**. Die Vorlage wird im Azure-Portal geöffnet.
 
-[![In Azure bereitstellen](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-kafka%2Fazuredeploy.json)
+[:::image type="icon" source="../../media/template-deployments/deploy-to-azure.svg" alt-text="Bereitstellen in Azure" border="false":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-kafka%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -43,11 +43,11 @@ Zwei Azure-Ressourcen sind in der Vorlage definiert:
 
 1. Wählen Sie unten die Schaltfläche **In Azure bereitstellen** aus, um sich bei Azure anzumelden und die ARM-Vorlage zu öffnen.
 
-   [![In Azure bereitstellen](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-kafka%2Fazuredeploy.json)
+   [:::image type="content" source="../../media/template-deployments/deploy-to-azure.svg" alt-text="Bereitstellen in Azure" border="false":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-kafka%2Fazuredeploy.json)
 
 1. Geben Sie folgende Werte ein bzw. wählen diese aus:
 
-    |Eigenschaft |Beschreibung |
+    |Eigenschaft |BESCHREIBUNG |
     |---|---|
     |Subscription|Wählen Sie in der Dropdownliste das Azure-Abonnement aus, das für den Cluster verwendet wird.|
     |Resource group|Wählen Sie in der Dropdownliste Ihre vorhandene Ressourcengruppe oder die Option **Neu erstellen** aus.|
@@ -58,7 +58,7 @@ Zwei Azure-Ressourcen sind in der Vorlage definiert:
     |SSH-Benutzername|Geben Sie den Benutzernamen an, der Standardwert ist **sshuser**.|
     |SSH-Kennwort|Geben Sie das Kennwort an.|
 
-    ![Screenshot der Vorlageneigenschaften](./media/apache-kafka-quickstart-resource-manager-template/resource-manager-template-kafka.png)
+    :::image type="content" source="./media/apache-kafka-quickstart-resource-manager-template/resource-manager-template-kafka.png" alt-text="Screenshot der Vorlageneigenschaften" border="false":::
 
 1. Sehen Sie sich die **GESCHÄFTSBEDINGUNGEN** an. Wählen Sie anschließend **Ich stimme den oben genannten Geschäftsbedingungen zu** und dann **Kaufen** aus. Sie erhalten eine Benachrichtigung, dass die Bereitstellung derzeit durchgeführt wird. Das Erstellen eines Clusters dauert ca. 20 Minuten.
 
@@ -221,7 +221,7 @@ Nachdem Sie den Schnellstart abgeschlossen haben, können Sie den Cluster lösch
 
 Navigieren Sie im Azure-Portal zu Ihrem Cluster, und wählen Sie **Löschen** aus.
 
-![Resource Manager-Vorlage: HBase](./media/apache-kafka-quickstart-resource-manager-template/azure-portal-delete-kafka.png)
+:::image type="content" source="./media/apache-kafka-quickstart-resource-manager-template/azure-portal-delete-kafka.png" alt-text="Resource Manager-Vorlage: HBase" border="false":::
 
 Sie können auch den Namen der Ressourcengruppe auswählen, um die Seite für die Ressourcengruppe zu öffnen, und dann **Ressourcengruppe löschen** auswählen. Indem Sie die Ressourcengruppe löschen, löschen Sie sowohl den HDInsight-Cluster als auch das Standardspeicherkonto.
 

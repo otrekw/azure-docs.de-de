@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 09/18/2019
 ms.author: allensu
 ms.openlocfilehash: 68a2cb6926cb41956711a9e3c15d21c250d27f0b
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94698487"
 ---
 # <a name="move-azure-internal-load-balancer-to-another-region-using-the-azure-portal"></a>Verschieben eines internen Azure Load Balancers mithilfe des Azure-Portals in eine andere Region

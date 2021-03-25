@@ -4,10 +4,10 @@ description: In diesem Artikel wird gezeigt, wie Sie die Notfallwiederherstellun
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.openlocfilehash: 688d91bc181e1479f5090a10af4b3b262d7ddb7f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92779610"
 ---
 # <a name="complete-disaster-recovery-of-virtual-machines-using-azure-vmware-solution"></a>Ausführen der Notfallwiederherstellung virtueller Computer mithilfe von Azure VMware Solution
@@ -72,7 +72,7 @@ In diesem Leitfaden werden die folgenden Replikationsszenarios behandelt:
 
 1. Wählen Sie eine oder mehrere VMs aus der Liste aus, und konfigurieren Sie die gewünschten Replikationsoptionen.
 
-   Standardmäßig erben die VMs die in den Standardreplikationsoptionen konfigurierte Richtlinie für globale Einstellungen. Konfigurieren Sie für jede Netzwerkschnittstelle auf dem ausgewählten virtuellen Computer die **Remote-Netzwerkportgruppe** , und wählen Sie **Finish** (Fertig stellen) aus, um den Schutz Prozess zu starten.
+   Standardmäßig erben die VMs die in den Standardreplikationsoptionen konfigurierte Richtlinie für globale Einstellungen. Konfigurieren Sie für jede Netzwerkschnittstelle auf dem ausgewählten virtuellen Computer die **Remote-Netzwerkportgruppe**, und wählen Sie **Finish** (Fertig stellen) aus, um den Schutz Prozess zu starten.
 
    :::image type="content" source="./media/disaster-recovery-virtual-machines/network-interface-options.png" alt-text="Netzwerkschnittstellenoptionen" border="true" lightbox="./media/disaster-recovery-virtual-machines/network-interface-options.png":::
 

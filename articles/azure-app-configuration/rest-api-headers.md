@@ -7,10 +7,10 @@ ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
 ms.openlocfilehash: 80b20b0b55219766872166685c0b1257f3c39c55
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96932573"
 ---
 # <a name="headers"></a>Header
@@ -21,7 +21,7 @@ Dieser Artikel enthält Links zu Referenzseiten für Header, die mit der Azure A
 
 In der folgenden Tabelle werden Anforderungsheader beschrieben, die in Azure App Configuration häufig verwendet werden.
 
-| Header | Beschreibung | Beispiel |
+| Header | BESCHREIBUNG | Beispiel |
 |--|--|--|
 | **Autorisierung** | Wird zum [Authentifizieren](./rest-api-authentication-index.md) einer Anforderung an den Dienst verwendet. Siehe [Abschnitt 14.8](https://tools.ietf.org/html/rfc2616#section-14.8). | `Authorization: HMAC-SHA256 Credential=<Credential>&SignedHeaders=Host;x-ms-date;x-ms-content-sha256&Signature=<Signature>` |
 | **Annehmen** | Informiert den Server darüber, welchen Medientyp der Client in einer HTTP-Antwort akzeptiert. Siehe [Abschnitt 14.1](https://tools.ietf.org/html/rfc2616#section-14.1). | `Accept: application/vnd.microsoft.appconfig.kv+json;` |
@@ -41,7 +41,7 @@ In der folgenden Tabelle werden Anforderungsheader beschrieben, die in Azure App
 
 Der Server kann die folgenden HTTP-Header in seinen Antworten einschließen.
 
-| Header | Beschreibung | Beispiel |
+| Header | BESCHREIBUNG | Beispiel |
 |--|--|--|
 | **Content-Type** | Enthält den Medientyp des Inhalts im HTTP-Antworttext. Siehe [Abschnitt 14.17](https://tools.ietf.org/html/rfc2616#section-14.17). | `Content-Type: application/vnd.microsoft.appconfig.kv+json; charset=utf-8;` |
 | **ETag** | Ein nicht transparentes Token, das den Zustand einer bestimmten Ressource darstellt. Kann in bedingten Vorgängen verwendet werden. Siehe [Abschnitt 14.19](https://tools.ietf.org/html/rfc2616#section-14.19). | `ETag: "4f6dd610dd5e4deebc7fbaef685fb903"` |

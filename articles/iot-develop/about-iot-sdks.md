@@ -7,10 +7,10 @@ ms.service: iot-develop
 ms.topic: overview
 ms.date: 02/11/2021
 ms.openlocfilehash: c9624e9a23d005185429c82199324ac570cbd63e
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102607729"
 ---
 # <a name="overview-of-azure-iot-device-sdks"></a>Übersicht über Azure IoT-Geräte-SDKs
@@ -125,7 +125,7 @@ Azure IoT bietet auch Dienst-SDKs für die Erstellung lösungsseitiger Anwendun
 
 Mit den IoT Hub-Dienst-SDKs können Sie Anwendungen erstellen, die problemlos mit Ihrer IoT Hub-Instanz interagieren können, um Geräte und die Sicherheit zu verwalten. Diese SDKs können unter anderem zum Senden von Cloud-zu-Gerät-Nachrichten, zum Aufrufen direkter Methoden auf Ihren Geräten sowie zum Aktualisieren von Geräteeigenschaften verwendet werden.
 
-[**Azure IoT Hub**](https://azure.microsoft.com/services/iot-hub/) | [**Schnellstart: Steuern eines mit einer IoT Hub-Instanz verbundenen Geräts (Python)** ](../iot-hub/quickstart-control-device-python.md)
+[**Azure IoT Hub**](https://azure.microsoft.com/services/iot-hub/) | [**Schnellstart: Steuern eines mit einer IoT Hub-Instanz verbundenen Geräts (Python)**](../iot-hub/quickstart-control-device-python.md)
 
 **IoT Hub Service SDK für C#:** [GitHub-Repository](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/service) | [Paket](https://www.nuget.org/packages/Microsoft.Azure.Devices/) | [Beispiele](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/service/samples) | [Referenzdokumentation](/dotnet/api/microsoft.azure.devices)
 
@@ -153,7 +153,7 @@ Azure Digital Twins ist ein PaaS-Angebot (Platform-as-a-Service), mit dem Sie ba
 
 IoT Hub Device Provisioning Service (DPS) ist ein Hilfsdienst für IoT Hub und ermöglicht eine unbeaufsichtigte Just-In-Time-Bereitstellung im richtigen IoT-Hub ganz ohne Benutzereingriff. DPS ermöglicht die skalierbare und sichere Bereitstellung von Millionen von Geräten. Mithilfe der DPS-SDKs können Sie Anwendungen erstellen, die Ihre Geräte durch die Erstellung von Registrierungsgruppen und die Ausführung von Massenvorgängen auf sichere Weise verwalten können.
 
-[**Dokumentation zu Azure IoT Hub Device Provisioning Service (DPS)**](../iot-dps/index.yml) | [**Schnellstart: Registrieren von X.509-Geräten für den Device Provisioning-Dienst per C#** ](../iot-dps/quick-enroll-device-x509-csharp.md)
+[**Dokumentation zu Azure IoT Hub Device Provisioning Service (DPS)**](../iot-dps/index.yml) | [**Schnellstart: Registrieren von X.509-Geräten für den Device Provisioning-Dienst per C#**](../iot-dps/quick-enroll-device-x509-csharp.md)
 
 **Device Provisioning Service SDK für C#:** [GitHub-Repository](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/provisioning/service) | [Paket](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/) | [Beispiele](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/provisioning/service/samples) | [Referenzdokumentation](/dotnet/api/microsoft.azure.devices.provisioning.service)
 

@@ -4,10 +4,10 @@ description: Dieser Artikel enthält eine Anleitung zum Entwickeln und Bereitste
 ms.topic: how-to
 ms.date: 12/02/2020
 ms.openlocfilehash: 6184a369e73c26d3a8a716f9daf1c0420a5239fe
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98881651"
 ---
 # <a name="how-to-guide--develop-and-deploy-a-grpc-inference-server"></a>Schrittanleitung: Entwickeln und Bereitstellen eines gRPC-Rückschlussservers

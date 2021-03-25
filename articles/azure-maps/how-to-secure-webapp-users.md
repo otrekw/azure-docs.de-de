@@ -11,10 +11,10 @@ services: azure-maps
 manager: timlt
 ms.custom: devx-track-js
 ms.openlocfilehash: ebdc4b219e0840c18e6bef8ebfe9b8eefa8faf3b
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92895580"
 ---
 # <a name="secure-a-web-application-with-user-sign-in"></a>Schützen einer Webanwendung mit Benutzeranmeldung
@@ -36,12 +36,12 @@ Sie müssen die Webanwendung in Azure AD erstellen, damit Benutzer sich anmelde
 
 3. Sobald die Registrierung der Anwendung abgeschlossen ist, bestätigen Sie, dass Benutzer sich bei der Anwendung anmelden können. Wenn die Anmeldung funktioniert, kann der Anwendung ein delegierter Zugriff auf die REST-APIs von Azure Maps gewährt werden.
     
-4.  Navigieren Sie zu der Anwendung, um Azure Maps die delegierten API-Berechtigungen zuzuweisen. Wählen Sie dann **API-Berechtigungen** > **Berechtigung hinzufügen** aus. Suchen Sie unter **Von meiner Organisation verwendete APIs** die Option **Azure Maps** , und wählen Sie sie aus.
+4.  Navigieren Sie zu der Anwendung, um Azure Maps die delegierten API-Berechtigungen zuzuweisen. Wählen Sie dann **API-Berechtigungen** > **Berechtigung hinzufügen** aus. Suchen Sie unter **Von meiner Organisation verwendete APIs** die Option **Azure Maps**, und wählen Sie sie aus.
 
     > [!div class="mx-imgBorder"]
     > ![Hinzufügen von App-API-Berechtigungen](./media/how-to-manage-authentication/app-permissions.png)
 
-5. Aktivieren Sie das Kontrollkästchen neben **Auf Azure Maps zugreifen** , und wählen Sie dann **Berechtigungen hinzufügen** aus.
+5. Aktivieren Sie das Kontrollkästchen neben **Auf Azure Maps zugreifen**, und wählen Sie dann **Berechtigungen hinzufügen** aus.
 
     > [!div class="mx-imgBorder"]
     > ![Auswählen von App-API-Berechtigungen](./media/how-to-manage-authentication/select-app-permissions.png)

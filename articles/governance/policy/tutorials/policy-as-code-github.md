@@ -4,10 +4,10 @@ description: In diesem Tutorial implementieren Sie einen Azure Policy-as-Code-Wo
 ms.date: 10/20/2020
 ms.topic: tutorial
 ms.openlocfilehash: 76a46adc3fc8efab4f7a2d6e656e83c2537dd037
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92325873"
 ---
 # <a name="tutorial-implement-azure-policy-as-code-with-github"></a>Tutorial: Implementieren von Azure Policy-as-Code mit GitHub
@@ -34,16 +34,16 @@ Führen Sie die folgenden Schritte aus, um eine Richtliniendefinition aus dem Az
 
 1. Wählen Sie links auf der Seite „Azure Policy“ die Option **Definitionen** aus.
 
-1. Verwenden Sie die Schaltfläche **Definitionen exportieren** , oder wählen Sie die Auslassungspunkte in der Zeile einer Richtliniendefinition und dann **Definition exportieren** aus.
+1. Verwenden Sie die Schaltfläche **Definitionen exportieren**, oder wählen Sie die Auslassungspunkte in der Zeile einer Richtliniendefinition und dann **Definition exportieren** aus.
 
 1. Wählen Sie die Schaltfläche **Mit GitHub anmelden** aus. Wenn Sie sich noch nicht bei GitHub authentifiziert haben, um Azure Policy zum Exportieren der Ressource zu autorisieren, überprüfen Sie in dem neuen Fenster, das geöffnet wird, welchen Zugriff [GitHub Actions](https://github.com/features/actions) benötigt, und wählen Sie **Authorize AzureGitHubActions** (AzureGitHubActions autorisieren), um mit dem Exportvorgang fortzufahren. Sobald der Vorgang abgeschlossen ist, wird das neue Fenster automatisch geschlossen.
 
 1. Legen Sie auf der Registerkarte **Grundlagen** die folgenden Optionen fest, und wählen Sie dann die Registerkarte **Richtlinien** oder die Schaltfläche **Weiter: Richtlinien** unten auf der Seite aus.
 
-   - **Repositoryfilter** : Legen Sie hierfür _Meine Repositorys_ fest, sodass nur die Repositorys in Ihrem Besitz angezeigt werden, oder _Alle Repositorys_ , um alle anzuzeigen, denen Sie den Zugriff auf GitHub Actions gewährt haben.
-   - **Repository** : Legen Sie hierfür das Repository fest, in das Sie die Azure Policy-Ressourcen exportieren möchten.
-   - **Branch** : Legen Sie den Branch im Repository fest. Die Verwendung eines anderen Branches als des standardmäßigen ist eine gute Möglichkeit, Ihre Updates zu validieren, bevor Sie sie in den Quellcode einbringen.
-   - **Verzeichnis:** Der _Ordner auf Stammebene_ , in den die Azure Policy-Ressourcen exportiert werden sollen. Die Unterordner in diesem Verzeichnis werden auf Basis der exportierten Ressourcen erstellt.
+   - **Repositoryfilter**: Legen Sie hierfür _Meine Repositorys_ fest, sodass nur die Repositorys in Ihrem Besitz angezeigt werden, oder _Alle Repositorys_, um alle anzuzeigen, denen Sie den Zugriff auf GitHub Actions gewährt haben.
+   - **Repository**: Legen Sie hierfür das Repository fest, in das Sie die Azure Policy-Ressourcen exportieren möchten.
+   - **Branch**: Legen Sie den Branch im Repository fest. Die Verwendung eines anderen Branches als des standardmäßigen ist eine gute Möglichkeit, Ihre Updates zu validieren, bevor Sie sie in den Quellcode einbringen.
+   - **Verzeichnis:** Der _Ordner auf Stammebene_, in den die Azure Policy-Ressourcen exportiert werden sollen. Die Unterordner in diesem Verzeichnis werden auf Basis der exportierten Ressourcen erstellt.
 
 1. Legen Sie auf der Registerkarte **Richtlinien** den Suchbereich fest, indem Sie die Auslassungspunkte und dann eine Kombination von Verwaltungsgruppen, Abonnements oder Ressourcengruppen auswählen.
    
@@ -56,7 +56,7 @@ Führen Sie die folgenden Schritte aus, um eine Richtliniendefinition aus dem Az
 
 1. Überprüfen Sie auf der Registerkarte **Überprüfen + exportieren** die Übereinstimmung im Detail, und verwenden Sie dann die Schaltfläche **Exportieren** unten auf der Seite.
 
-1. Überprüfen Sie das GitHub-Repository, den Branch und den _Ordner auf Stammebene_ , um zu sehen, dass die ausgewählten Ressourcen nun in die Quellcodeverwaltung exportiert werden.
+1. Überprüfen Sie das GitHub-Repository, den Branch und den _Ordner auf Stammebene_, um zu sehen, dass die ausgewählten Ressourcen nun in die Quellcodeverwaltung exportiert werden.
 
 Die Azure Policy-Ressourcen werden in die folgende Struktur innerhalb des ausgewählten GitHub-Repositorys und des _Ordners auf Stammebene_ exportiert:
 
@@ -79,7 +79,7 @@ Die Azure Policy-Ressourcen werden in die folgende Struktur innerhalb des ausgew
 
 1. Diese Workflowdatei verwendet die [Azure Policy verwalten](https://github.com/marketplace/actions/manage-azure-policy)-Aktion, um Änderungen, die an den exportierten Richtlinienobjekten im GitHub-Repository vorgenommen wurden, an Azure Policy zurückzuleiten. Standardmäßig berücksichtigt und synchronisiert die Aktion nur die Dateien, die sich von den in Azure vorhandenen Dateien unterscheiden. Sie können auch den Parameter `assignments` in der Aktion verwenden, um nur Änderungen zu synchronisieren, die an bestimmten Zuweisungsdateien vorgenommen wurden. Dieser Parameter kann verwendet werden, um Richtlinienzuweisungen nur für eine bestimmte Umgebung anzuwenden. Weitere Informationen finden Sie in der [Repository-Infodatei zu „Azure Policy verwalten“](https://github.com/Azure/manage-azure-policy).
 
-1. Standardmäßig muss der Workflow manuell ausgelöst werden. Verwenden Sie hierzu die **Aktionen** in GitHub, wählen Sie den Workflow `manage-azure-policy-<randomLetters>` aus, wählen Sie **Workflow ausführen** aus und dann noch mal **Workflow ausführen** .
+1. Standardmäßig muss der Workflow manuell ausgelöst werden. Verwenden Sie hierzu die **Aktionen** in GitHub, wählen Sie den Workflow `manage-azure-policy-<randomLetters>` aus, wählen Sie **Workflow ausführen** aus und dann noch mal **Workflow ausführen**.
 
    :::image type="content" source="../media/policy-as-code-github/manually-trigger-workflow.png" alt-text="Screenshot der Registerkarte „Aktion“ sowie der Schaltflächen „Workflow“ und „Workflow ausführen“ in der GitHub-Webschnittstelle.":::
 
@@ -88,11 +88,11 @@ Die Azure Policy-Ressourcen werden in die folgende Struktur innerhalb des ausgew
 
 1. Der Workflow synchronisiert die an Richtlinienobjekten vorgenommenen Änderungen mit Azure und gibt den Status in die Protokolle aus.
 
-   :::image type="content" source="../media/policy-as-code-github/workflow-logging.png" alt-text="Screenshot der Registerkarte „Aktion“ sowie der Schaltflächen „Workflow“ und „Workflow ausführen“ in der GitHub-Webschnittstelle.":::
+   :::image type="content" source="../media/policy-as-code-github/workflow-logging.png" alt-text="Screenshot des Workflows in Aktion sowie protokollierte Details in den Protokollen.":::
 
 1. Der Workflow fügt außerdem Details zu `properties.metadata` von Azure Policy-Objekten hinzu, die Sie nachverfolgen können.
 
-   :::image type="content" source="../media/policy-as-code-github/updated-definition-metadata.png" alt-text="Screenshot der Registerkarte „Aktion“ sowie der Schaltflächen „Workflow“ und „Workflow ausführen“ in der GitHub-Webschnittstelle.":::
+   :::image type="content" source="../media/policy-as-code-github/updated-definition-metadata.png" alt-text="Screenshot der Azure Policy-Definition im Azure-Portal, aktualisiert mit für die GitHub-Aktion spezifischen Metadaten.":::
 
 ### <a name="trigger-compliance-scans-using-github-action"></a>Auslösen einer Complianceüberprüfung mithilfe einer GitHub-Aktion
 

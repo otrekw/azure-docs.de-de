@@ -3,16 +3,16 @@ title: Ausdrücke und Funktionen in Azure Data Factory
 description: Dieser Artikel enthält Informationen zu Ausdrücken und Funktionen, die Sie bei der Erstellung von Data Factory-Entitäten verwenden können.
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/25/2019
-ms.openlocfilehash: 997700b27f52af174dab914097ceeef8d20ff148
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: e89cb847bcd5d0137354c07fe97148bcbeca2714
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100385624"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104786293"
 ---
 # <a name="expressions-and-functions-in-azure-data-factory"></a>Ausdrücke und Funktionen in Azure Data Factory | Microsoft-Dokumentation
 
@@ -43,7 +43,7 @@ Ausdrücke können an beliebiger Stelle in einem JSON-Zeichenfolgenwert verwende
 |----------------|------------|  
 |"parameters"|Die Zeichenfolge „parameters“ wird zurückgegeben.|  
 |"parameters[1]"|Die Zeichenfolge „parameters[1]“ wird zurückgegeben.|  
-|„\@\@“|Eine Zeichenfolge, die „\@“ enthält, wird zurückgegeben (ein Zeichen).|  
+|"\@\@"|Eine Zeichenfolge, die „\@“ enthält, wird zurückgegeben (ein Zeichen).|  
 |" \@"|Eine Zeichenfolge, die „\@“ enthält, wird zurückgegeben (zwei Zeichen).|  
   
  Mit der *Zeichenfolgeninterpolation* können Ausdrücke auch innerhalb von Zeichenfolgen verwendet werden. Dabei werden die Ausdrücke in `@{ ... }` eingeschlossen. Beispiel: `"name" : "First Name: @{pipeline().parameters.firstName} Last Name: @{pipeline().parameters.lastName}"`  
@@ -59,13 +59,33 @@ Ausdrücke können an beliebiger Stelle in einem JSON-Zeichenfolgenwert verwende
 |"Answer is: @{pipeline().parameters.myNumber}"| Gibt die Zeichenfolge `Answer is: 42` zurück.|  
 |"\@concat('Answer is: ', string(pipeline().parameters.myNumber))"| Gibt die Zeichenfolge `Answer is: 42` zurück.|  
 |"Answer is: \@\@{pipeline().parameters.myNumber}"| Gibt die Zeichenfolge `Answer is: @{pipeline().parameters.myNumber}` zurück.|  
-  
+
 ## <a name="examples"></a>Beispiele
 
 ### <a name="complex-expression-example"></a>Beispiel für komplexen Ausdruck
 Das folgende Beispiel zeigt einen komplexen Ausdruck, der auf ein tiefes Unterfeld der Aktivitätsausgabe verweist. Wenn Sie auf einen Pipelineparameter verweisen möchten, der als ein Unterfeld ausgewertet wird, verwenden Sie die Syntax „[]“ statt des Punktoperators „(.)“ (wie bei „subfield1“ und „subfield2“).
 
-@activity('*activityName*').output.*subfield1*.*subfield2*[pipeline().parameters.*subfield3*].*subfield4*
+`@activity('*activityName*').output.*subfield1*.*subfield2*[pipeline().parameters.*subfield3*].*subfield4*`
+
+### <a name="dynamic-content-editor"></a>Editor für dynamische Inhalte
+
+Der Editor für dynamische Inhalte versieht automatisch Zeichen in ihrem Inhalt mit Escapezeichen, wenn die Bearbeitung abgeschlossen ist. Der folgende Inhalt im Inhalts-Editor ist z. B. eine Zeichenfolgeninterpolation mit zwei Ausdrucksfunktionen. 
+
+```json
+{ 
+  "type": "@{if(equals(1, 2), 'Blob', 'Table' )}",
+  "name": "@{toUpper('myData')}"
+}
+```
+
+Der Editor für dynamische Inhalte konvertiert oben Inhalt in einen Ausdruck `"{ \n  \"type\": \"@{if(equals(1, 2), 'Blob', 'Table' )}\",\n  \"name\": \"@{toUpper('myData')}\"\n}"`. Das Ergebnis dieses Ausdrucks ist eine Zeichenfolge im JSON-Format, die unten gezeigt wird.
+
+```json
+{
+  "type": "Table",
+  "name": "MYDATA"
+}
+```
 
 ### <a name="a-dataset-with-a-parameter"></a>Ein Dataset mit einem Parameter
 Im folgenden Beispiel nutzt „BlobDataset“ einen Parameter namens **path**. Der Wert wird unter Verwendung des folgenden Ausdrucks zum Festlegen eines Werts für die Eigenschaft **folderPath** verwendet: `dataset().path`. 

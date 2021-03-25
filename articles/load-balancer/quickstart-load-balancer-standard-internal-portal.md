@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 07/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: f70116847a8743cf8b3cb56ff35f9d913f13f359
-ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
+ms.openlocfilehash: de179ab2fe1c02b3912262ee57fbb41a23d56164
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98562351"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715441"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Schnellstart: Erstellen eines internen Lastenausgleichs für virtuelle Computer über das Azure-Portal
 
@@ -68,7 +68,7 @@ In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk und ein Subnetz.
     | Ressourcengruppe   | Wählen Sie **CreateIntLBQS-rg** aus. |
     | **Instanzendetails** |                                                                 |
     | Name             | Geben Sie **myVNet** ein.                                    |
-    | Region           | Wählen Sie **Europa, Westen** aus. |
+    | Region           | Wählen Sie **(Europa) Europa, Westen** aus. |
 
 3. Wählen Sie die Registerkarte **IP-Adressen** oder die Schaltfläche **Weiter: IP-Adressen** am unteren Seitenrand aus.
 
@@ -106,16 +106,17 @@ In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk und ein Subnetz.
 
 ## <a name="create-load-balancer"></a>Erstellen eines Load Balancers
 
-1. Wählens Sie links oben auf dem Bildschirm die Optionen **Ressource erstellen** > **Netzwerk** > **Lastenausgleich** aus.
-
-2. Geben Sie auf der Seite **Lastenausgleich erstellen** auf der Registerkarte **Grundlagen** die folgenden Informationen ein, bzw. wählen Sie sie aus: 
+1. Wählen Sie **Ressource erstellen**. 
+2. Geben Sie im Suchfeld **Load Balancer** ein. Wählen Sie in den Suchergebnissen **Load Balancer** aus.
+3. Wählen Sie auf der Seite **Load Balancer** die Option **Erstellen** aus.
+4. Geben Sie auf der Seite **Lastenausgleich erstellen** die folgenden Informationen ein, bzw. wählen Sie sie aus: 
 
     | Einstellung                 | Wert                                              |
     | ---                     | ---                                                |
     | Subscription               | Wählen Sie Ihr Abonnement aus.    |    
     | Resource group         | Wählen Sie die im vorherigen Schritt erstellte Netzwerksicherheitsgruppe **CreateIntLBQS-rg** aus.|
     | Name                   | Geben Sie **myLoadBalancer** ein.                                   |
-    | Region         | Wählen Sie **Europa, Westen** aus.                                        |
+    | Region         | Wählen Sie **(Europa) Europa, Westen** aus.                                        |
     | type          | Wählen Sie **Intern** aus.                                        |
     | SKU           | Wählen Sie **Standard** aus. |
     | Virtuelles Netzwerk | Wählen Sie das im vorherigen Schritt erstellte virtuelle Netzwerk **myVNet** aus. |
@@ -228,7 +229,7 @@ Diese virtuellen Computer werden dem Back-End-Pool des zuvor erstellten Lastenau
     | Ressourcengruppe | Wählen Sie **CreateIntLBQS-rg** aus. |
     | **Instanzendetails** |  |
     | Name des virtuellen Computers | Geben Sie **myVM1** ein. |
-    | Region | Wählen Sie **Europa, Westen** aus. |
+    | Region | Wählen Sie **(Europa) Europa, Westen** aus. |
     | Verfügbarkeitsoptionen | Wählen Sie **Verfügbarkeitszonen** aus. |
     | Verfügbarkeitszone | Wählen Sie **1** aus. |
     | Image | Wählen Sie **Windows Server 2019 Datacenter** aus. |
@@ -303,7 +304,7 @@ In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk und ein Subnetz.
     | Ressourcengruppe   | Wählen Sie **CreateIntLBQS-rg** aus. |
     | **Instanzendetails** |                                                                 |
     | Name             | Geben Sie **myVNet** ein.                                    |
-    | Region           | Wählen Sie **Europa, Westen** aus. |
+    | Region           | Wählen Sie **(Europa) Europa, Westen** aus. |
 
 3. Wählen Sie die Registerkarte **IP-Adressen** oder die Schaltfläche **Weiter: IP-Adressen** am unteren Seitenrand aus.
 
@@ -350,7 +351,7 @@ In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk und ein Subnetz.
     | Subscription               | Wählen Sie Ihr Abonnement aus.    |    
     | Resource group         | Wählen Sie die im vorherigen Schritt erstellte Netzwerksicherheitsgruppe **CreateIntLBQS-rg** aus.|
     | Name                   | Geben Sie **myLoadBalancer** ein.                                   |
-    | Region         | Wählen Sie **Europa, Westen** aus.                                        |
+    | Region         | Wählen Sie **(Europa) Europa, Westen** aus.                                        |
     | type          | Wählen Sie **Intern** aus.                                        |
     | SKU           | Wählen Sie **Basic** aus. |
     | Virtuelles Netzwerk | Wählen Sie das im vorherigen Schritt erstellte virtuelle Netzwerk **myVNet** aus. |

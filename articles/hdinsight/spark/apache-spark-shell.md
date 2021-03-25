@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 02/10/2020
 ms.openlocfilehash: 324852a967b5de015a9b1e9b465d4b4703e573cb
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98929680"
 ---
 # <a name="run-apache-spark-from-the-spark-shell"></a>Ausführen von Apache Spark aus der Spark-Shell
@@ -104,7 +104,7 @@ Um auf die SparkSession-Instanz zuzugreifen, geben Sie `spark` ein. Um auf die S
 
 Der Spark-Shell-Befehl (`spark-shell` oder `pyspark`) unterstützt viele Befehlszeilenparameter. Um eine vollständige Liste der Parameter anzuzeigen, starten Sie die Spark-Shell mit dem Schalter `--help`. Einige dieser Parameter gelten möglicherweise nur für `spark-submit`, den die Spark-Shell umschließt.
 
-| Schalter | description | Beispiel |
+| switch | description | Beispiel |
 | --- | --- | --- |
 | --master MASTER-URL | Gibt die Master-URL an. In HDInsight ist dieser Wert immer `yarn`. | `--master yarn`|
 | --jars JAR-LISTE | Durch Trennzeichen getrennte Liste der lokalen JAR-Dateien zum Einschließen der Treiber- und Executorklassenpfade. In HDInsight besteht diese Liste aus Pfaden zum Standarddateisystem in Azure Storage oder Data Lake Storage. | `--jars /path/to/examples.jar` |

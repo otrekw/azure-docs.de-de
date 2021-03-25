@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philMea
 ms.openlocfilehash: 2a37e716b7804b11ab396909f746af84294bb4e3
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98895270"
 ---
 # <a name="drawing-package-requirements"></a>Anforderungen für Zeichnungspakete
@@ -198,7 +198,7 @@ In den nächsten Abschnitten werden die Anforderungen für die einzelnen Objekte
 
 ### `directoryInfo`
 
-| Eigenschaft  | type | Erforderlich | Beschreibung |
+| Eigenschaft  | type | Erforderlich | BESCHREIBUNG |
 |-----------|------|----------|-------------|
 | `name`      | Zeichenfolge | true   |  Name des Gebäudes. |
 | `streetAddress`|    Zeichenfolge |    false    | Adresse des Gebäudes. |
@@ -219,7 +219,7 @@ In den nächsten Abschnitten werden die Anforderungen für die einzelnen Objekte
 
 Das Objekt `buildingLevels` enthält ein JSON-Array mit Gebäudeebenen.
 
-| Eigenschaft  | type | Erforderlich | Beschreibung |
+| Eigenschaft  | type | Erforderlich | BESCHREIBUNG |
 |-----------|------|----------|-------------|
 |`levelName`    |Zeichenfolge    |true |    Beschreibender Ebenenname. Beispiel: 1. Stock, Eingangsbereich, blaue Parkebene oder Keller.|
 |`ordinal` | integer |    true | Bestimmt die vertikale Reihenfolge der Ebenen. Jede Einrichtung muss über eine Ebene mit der Ordnungszahl 0 verfügen. |
@@ -251,7 +251,7 @@ Das Objekt `buildingLevels` enthält ein JSON-Array mit Gebäudeebenen.
 
 Das Objekt `unitProperties` enthält ein JSON-Array mit Einheiteneigenschaften.
 
-| Eigenschaft  | type | Erforderlich | Beschreibung |
+| Eigenschaft  | type | Erforderlich | BESCHREIBUNG |
 |-----------|------|----------|-------------|
 |`unitName`    |Zeichenfolge    |true    |Name der Einheit, die diesem Datensatz vom Typ `unitProperty` zugeordnet werden soll. Dieser Datensatz ist nur gültig, wenn die Schichten vom Typ `unitLabel` eine Bezeichnung vom Typ `unitName` enthalten. |
 |`categoryName`|    Zeichenfolge|    false    |Kategoriename. Eine vollständige Kategorienliste finden Sie [hier](https://aka.ms/pa-indoor-spacecategories). |
@@ -271,7 +271,7 @@ Das Objekt `unitProperties` enthält ein JSON-Array mit Einheiteneigenschaften.
 
 Das Objekt `zoneProperties` enthält ein JSON-Array mit Zoneneigenschaften.
 
-| Eigenschaft  | type | Erforderlich | Beschreibung |
+| Eigenschaft  | type | Erforderlich | BESCHREIBUNG |
 |-----------|------|----------|-------------|
 |zoneName        |Zeichenfolge    |true    |Name der Zone, der dem Datensatz `zoneProperty` zugeordnet werden soll. Dieser Datensatz ist nur gültig, wenn die Schicht `zoneLabel` der Zone eine Bezeichnung vom Typ `zoneName` enthält.  |
 |categoryName|    Zeichenfolge|    false    |Kategoriename. Eine vollständige Kategorienliste finden Sie [hier](https://aka.ms/pa-indoor-spacecategories). |

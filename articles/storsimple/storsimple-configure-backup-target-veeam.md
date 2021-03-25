@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/06/2016
 ms.author: matd
 ms.openlocfilehash: bf28265de2b297dade545695c9369b8074eeb72c
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94962551"
 ---
 # <a name="storsimple-as-a-backup-target-with-veeam"></a>StorSimple als Sicherungsziel mit Veeam
@@ -512,7 +512,7 @@ Ein Notfall kann durch eine Vielzahl von Faktoren verursacht werden. In der folg
 Folgende Dokumente haben als Referenz für diesen Artikel gedient:
 
 - [StorSimple multipath I/O setup](./storsimple-8000-configure-mpio-windows-server.md) (StorSimple: Einrichten von Multipfad-E/A)
-- [Storage scenarios: Thin provisioning](/windows-hardware/drivers/storage/thin-provisioning) (Speicherszenarien: schlanke Speicherzuweisung)
+- [Speicherszenarien: Schlanke Speicherzuweisung](/windows-hardware/drivers/storage/thin-provisioning)
 - [Using GPT drives](/previous-versions/windows/hardware/design/dn653580(v=vs.85)#EHD) (Verwenden von GPT-Laufwerken)
 - [Einrichten von Schattenkopien für freigegebene Ordner](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc771893(v=ws.11))
 

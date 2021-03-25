@@ -14,10 +14,10 @@ ms.topic: reference
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: 0acb882410d103cf6f6c34bbecf2006094437b04
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102634684"
 ---
 # <a name="input-metadata"></a>Eingabemetadaten
@@ -53,7 +53,7 @@ Enthält eine Sammlung der AssetFile-Elemente für den Codierungsauftrag.
 | --- | --- |
 | **Name**<br />Erforderlich |Name der Objektdatei <br /><br />Beispiel: `"Name": "Ignite-short.mp4"` |
 | **URI**<br />Erforderlich |Die URL, unter der sich das Eingabeobjekt befindet. Um das Eingabeobjekt zu bestimmen, zu dem das Ausgabeobjekt gehört, verwenden Sie das Feld `Uri` anstelle der ID.|
-| **Größe**<br />Erforderlich |Größe der Objektdatei in Byte  <br /><br />Beispiel: `"Size": 75739259`|
+| **Größe**<br />Erforderlich |Größe der Assetdatei in Byte  <br /><br />Beispiel: `"Size": 75739259`|
 | **Duration**<br />Erforderlich |Dauer der Inhaltswiedergabe. <br /><br />Beispiel: `"Duration": "PT1M10.304S"`. |
 | **NumberOfStreams**<br />Erforderlich |Anzahl von Datenströmen in der Assetdatei  <br /><br />Beispiel: `"NumberOfStreams": 2`|
 | **FormatNames**<br />Erforderlich |Formatierung von Namen  <br /><br />Beispiel: `"FormatNames": "mov,mp4,m4a,3gp,3g2,mj2"`|

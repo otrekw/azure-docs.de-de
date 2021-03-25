@@ -11,10 +11,10 @@ author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a5f9b96fe9ee0781803bbbd86316e8783b60a6f1
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96861322"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-ios"></a>Zertifikatbasierte Authentifizierung mit Azure Active Directory unter iOS
@@ -44,7 +44,7 @@ In diesem Artikel werden die Anforderungen und die unterstützten Szenarien für
 | Word/Excel/PowerPoint |![Häkchen, das die Unterstützung für diese Anwendung angibt][1] |
 | Yammer |![Häkchen, das die Unterstützung für diese Anwendung angibt][1] |
 
-## <a name="requirements"></a>Requirements (Anforderungen)
+## <a name="requirements"></a>Anforderungen
 
 Beachten Sie bei der Verwendung der zertifikatbasierten Authentifizierung in iOS die folgenden Voraussetzungen und Überlegungen:
 

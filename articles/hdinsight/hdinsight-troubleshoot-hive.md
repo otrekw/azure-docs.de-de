@@ -6,10 +6,10 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.openlocfilehash: a76974b8daddf225b0d9b8b581475d657322847e
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98931452"
 ---
 # <a name="troubleshoot-apache-hive-by-using-azure-hdinsight"></a>Behandeln von Problemen mit Apache Hive unter Verwendung von Azure HDInsight
@@ -18,7 +18,7 @@ Hier werden die Antworten auf die wichtigsten Fragen bei der Arbeit mit Apache H
 
 ## <a name="how-do-i-export-a-hive-metastore-and-import-it-on-another-cluster"></a>Wie exportiere ich einen Hive-Metastore und importiere ihn in einen anderen Cluster?
 
-### <a name="resolution-steps"></a>Lösungsschritte
+### <a name="resolution-steps"></a>Schritte zur Behebung
 
 1. Stellen Sie mit einem Secure Shell-Client (SSH) eine Verbindung mit dem HDInsight-Cluster her. Weitere Informationen finden Sie unter [Zusätzliche Lektüre](#additional-reading-end).
 
@@ -44,7 +44,7 @@ Für den Code in den Schritten zur Behebung wird davon ausgegangen, dass die Dat
 
 ## <a name="how-do-i-locate-hive-logs-on-a-cluster"></a>Wie finde ich Hive-Protokolle in einem Cluster?
 
-### <a name="resolution-steps"></a>Lösungsschritte
+### <a name="resolution-steps"></a>Schritte zur Behebung
 
 1. Stellen Sie mithilfe von SSH eine Verbindung mit dem HDInsight-Cluster her. Weitere Informationen finden Sie unter **Zusätzliche Lektüre**.
 
@@ -72,7 +72,7 @@ Für den Code in den Schritten zur Behebung wird davon ausgegangen, dass die Dat
 
 ## <a name="how-do-i-launch-the-hive-shell-with-specific-configurations-on-a-cluster"></a>Wie starte ich die Hive-Shell mit bestimmten Konfigurationen in einem Cluster?
 
-### <a name="resolution-steps"></a>Lösungsschritte
+### <a name="resolution-steps"></a>Schritte zur Behebung
 
 1. Geben Sie beim Starten der Hive-Shell ein Schlüssel-Wert-Paar für die Konfiguration an. Weitere Informationen finden Sie unter [Zusätzliche Lektüre](#additional-reading-end).
 
@@ -98,7 +98,7 @@ Für den Code in den Schritten zur Behebung wird davon ausgegangen, dass die Dat
 
 ## <a name="how-do-i-analyze-apache-tez-dag-data-on-a-cluster-critical-path"></a><a name="how-do-i-analyze-tez-dag-data-on-a-cluster-critical-path"></a>Wie analysiere ich Apache Tez DAG-Daten (Directed Acyclic Graph, gerichteter azyklischer Graph) in einem clusterkritischen Pfad?
 
-### <a name="resolution-steps"></a>Lösungsschritte
+### <a name="resolution-steps"></a>Schritte zur Behebung
 
 1. Stellen Sie zum Analysieren eines Apache Tez DAG (Directed Acyclic Graph, gerichteter azyklischer Graph) in einem clusterkritischen Pfad mithilfe von SSH eine Verbindung mit dem HDInsight-Cluster her. Weitere Informationen finden Sie unter [Zusätzliche Lektüre](#additional-reading-end).
 
@@ -135,7 +135,7 @@ Für den Code in den Schritten zur Behebung wird davon ausgegangen, dass die Dat
 
 ## <a name="how-do-i-download-tez-dag-data-from-a-cluster"></a>Wie lade ich Tez DAG-Daten (Directed Acyclic Graph, gerichteter azyklischer Graph) aus einem Cluster herunter?
 
-#### <a name="resolution-steps"></a>Lösungsschritte
+#### <a name="resolution-steps"></a>Schritte zur Behebung
 
 Es gibt zwei Möglichkeiten zum Erfassen der Tez DAG-Daten:
 

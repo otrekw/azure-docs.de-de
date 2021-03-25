@@ -12,10 +12,10 @@ ms.date: 07/22/2020
 ms.author: gasinh
 ms.subservice: B2C
 ms.openlocfilehash: 2058e5362a65b6cd5f3e5b7cb9c20ce32d020d30
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96928697"
 ---
 # <a name="tutorial-for-configuring-experian-with-azure-active-directory-b2c"></a>Tutorial zum Konfigurieren von Experian mit Azure Active Directory B2C
@@ -65,7 +65,7 @@ Im folgenden Architekturdiagramm ist die Implementierung dargestellt.
 | 3. | Die API der mittleren Schicht sammelt die Benutzerattribute und wandelt sie in ein Format um, das von der Experian-API verarbeitet werden kann. Anschließend werden die Daten an Experian gesendet.
 | 4. | Experian verarbeitet die Informationen, um die Benutzeridentifizierung anhand der Risikoanalyse zu überprüfen. Anschließend gibt Experian das Ergebnis an die API der mittleren Schicht zurück.
 | 5. | Die API der mittleren Schicht verarbeitet die Informationen und sendet relevante Informationen im richtigen JSON-Format zurück an Azure AD B2C.
-| 6. | Azure AD B2C empfängt die Informationen von der API der mittleren Ebene. Bei einer Fehlerantwort wird dem Benutzer eine Fehlermeldung angezeigt. Bei einer Erfolgsantwort wird der Benutzer authentifiziert und in das Verzeichnis geschrieben.
+| 6. | Azure AD B2C empfängt die Informationen von der API der mittleren Ebene. Wenn eine Antwort mit einem Fehler empfangen wird, wird für den Benutzer eine Fehlermeldung angezeigt. Bei einer Erfolgsantwort wird der Benutzer authentifiziert und in das Verzeichnis geschrieben.
 
 ## <a name="onboard-with-experian"></a>Integrieren mit Experian
 
@@ -143,15 +143,15 @@ In diesem [Dokument](./custom-policy-get-started.md?tabs=applications#custom-pol
 
 ## <a name="test-the-user-flow"></a>Testen des Benutzerflows
 
-1. Öffnen Sie den Azure AD B2C-Mandanten, und wählen Sie unter „Richtlinien“ die Option **Benutzerflows** aus.
+1. Öffnen Sie den Azure AD B2C-Mandanten, und wählen Sie unter „Richtlinien“ die Option **Benutzerflows** aus.
 
 2. Wählen Sie den zuvor erstellten **Benutzerflow** aus.
 
 3. Wählen Sie **Benutzerflow ausführen** und dann die Einstellungen aus:
 
-   a. **Anwendung**: Wählen Sie die registrierte App aus (z. B. JWT)
+   a. **Anwendung:** Wählen Sie die registrierte App aus (Beispiel: JWT).
 
-   b. **Antwort-URL:** Wählen Sie die **Umleitungs-URL** aus
+   b. **Antwort-URL:** Wählen Sie die **Umleitungs-URL** aus.
 
    c. Wählen Sie **Benutzerflow ausführen** aus.
 

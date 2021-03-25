@@ -4,10 +4,10 @@ description: Erfahren Sie, wie Sie Anwendungen und Daten auf Poolknoten kopieren
 ms.topic: how-to
 ms.date: 02/18/2021
 ms.openlocfilehash: 0109171fd78dc11058daa30bf4604bebc1eeb857
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101703646"
 ---
 # <a name="copy-applications-and-data-to-pool-nodes"></a>Kopieren von Anwendungen und Daten auf Poolknoten

@@ -3,16 +3,16 @@ title: Aufrufen eines MapReduce-Programms über Azure Data Factory
 description: Erfahren Sie, wie Sie Daten verarbeiten, indem Sie MapReduce-Programme mithilfe einer Azure Data Factory auf einen Azure HDInsight-Cluster anwenden.
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: f5ad917609d6f9ea401abc898f80631474a44475
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: f1f54e972d59d3de3b0f93b3150ee1150eb6f612
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100371072"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104786395"
 ---
 # <a name="invoke-mapreduce-programs-from-data-factory"></a>Aufrufen von MapReduce-Programmen über Data Factory
 > [!div class="op_single_selector" title1="Transformationsaktivitäten"]
@@ -45,10 +45,10 @@ Weitere Informationen zum Ausführen von Pig-/Hive-Skripts auf einem Windows-/Li
 Gehen Sie für die JSON-Definition der HDInsight-Aktivität so vor: 
 
 1. Legen Sie den **Typ** der **Aktivität** auf **HDInsight** fest.
-2. Geben Sie für die Eigenschaft **className** den Namen der Klasse an.
-3. Geben Sie den Pfad zur JAR-Datei an, einschließlich des Dateinamens für die Eigenschaft **jarFilePath** .
-4. Geben Sie den verknüpften Dienst an, der auf die Azure Blob Storage-Instanz verweist, die die JAR-Datei für die **jarLinkedService**-Eigenschaft enthält.   
-5. Geben Sie im Abschnitt **arguments** Argumente für das MapReduce-Programm an. Zur Laufzeit werden ein paar zusätzliche Argumente aus dem MapReduce-Framework angezeigt (z.B.: mapreduce.job.tags). Um Ihre Argumente mit den MapReduce-Argumenten zu unterscheiden, sollten Sie erwägen, sowohl Option als auch Wert als Argumente zu verwenden, wie im folgenden Beispiel gezeigt („-s“, „--input“, „--output“ usw. sind Optionen, denen ihre Werte unmittelbar folgen).
+2. Geben Sie den Namen der Klasse für die Eigenschaft **className** an.
+3. Geben Sie den Pfad zur JAR-Datei an, einschließlich des Dateinamens für die Eigenschaft **JarFilePath**.
+4. Geben Sie den verknüpften Dienst an, der auf den Azure-BLOB-Speicher verweist, der die JAR-Datei für die Eigenschaft **JarLinkedService** enthält.   
+5. Geben Sie alle gewünschten Argumente für das MapReduce-Programm im Abschnitt **Argumente** an. Zur Laufzeit werden ein paar zusätzliche Argumente aus dem MapReduce-Framework angezeigt (z.B.: mapreduce.job.tags). Um Ihre Argumente mit den MapReduce-Argumenten zu unterscheiden, sollten Sie erwägen, sowohl Option als auch Wert als Argumente zu verwenden, wie im folgenden Beispiel gezeigt („-s“, „--input“, „--output“ usw. sind Optionen, denen ihre Werte unmittelbar folgen).
 
     ```JSON   
     {
@@ -178,7 +178,7 @@ Die Pipeline in diesem Beispiel besitzt nur eine einzelne Aktivität vom Typ „
 
 | Eigenschaft | Notizen |
 |:--- |:--- |
-| type |Der Typ muss auf **HDInsightMapReduce** festgelegt werden. |
+| Typ |Der Typ muss auf **HDInsightMapReduce** festgelegt werden. |
 | className |Der Name der Klasse lautet **wordcount** |
 | jarFilePath |Der Pfad zu der JAR-Datei mit der angegebenen Klasse. Denken Sie beim Kopieren und Einfügen des folgenden Codes daran, den Namen des Clusters zu ändern. |
 | jarLinkedService |Der mit Azure Storage verknüpfte Dienst mit der JAR-Datei. Dieser verknüpfte Dienst verweist auf den Speicher, der dem HDInsight-Cluster zugeordnet ist. |

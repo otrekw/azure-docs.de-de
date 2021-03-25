@@ -13,10 +13,10 @@ ms.author: sasapopo
 ms.reviewer: sstein, bonova
 ms.date: 10/08/2020
 ms.openlocfilehash: f9d5528746a85668677ab122d98e954bd39cd163
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92790728"
 ---
 # <a name="use-server-trust-groups-to-set-up-and-manage-trust-between-sql-managed-instances"></a>Sie verwenden Serververtrauensgruppen, um die Vertrauensstellung zwischen Instanzen von SQL Managed Instance einzurichten und zu verwalten.
@@ -42,13 +42,13 @@ Im folgenden Abschnitt wird das Einrichten einer Serververtrauensgruppe beschrie
 
 4. Wählen Sie auf der Konfigurationsseite der Serververtrauensgruppe das Symbol **Neue Gruppe** aus.
 
-   :::image type="content" source="./media/server-trust-group-overview/server-trust-group-create-new-group.png" alt-text="Serververtrauensgruppen":::
+   :::image type="content" source="./media/server-trust-group-overview/server-trust-group-create-new-group.png" alt-text="Neue Gruppe":::
 
-5. Legen Sie auf dem Blatt zum Erstellen der **SQL-Vertrauensgruppe** den **Gruppennamen** fest. Er muss in allen Regionen mit Gruppenmitgliedern eindeutig sein. Der **Vertrauensbereich** legt den Typ des instanzübergreifenden Szenarios fest, das mit der Serververtrauensgruppe ermöglicht wird. In der Vorschauphase ist der einzig verfügbare Vertrauensbereich **Verteilte Transaktionen** . Er ist daher bereits ausgewählt und kann nicht geändert werden. Alle **Gruppenmitglieder** müssen demselben **Abonnement** angehören, sie können sich jedoch in verschiedenen Ressourcengruppen befinden. Wählen Sie die **Ressourcengruppe** und den bzw. die **SQL-Server/-Instanz** aus. Damit legen Sie die Instanz von Azure SQL Managed Instance fest, die Mitglied der Gruppe werden soll.
+5. Legen Sie auf dem Blatt zum Erstellen der **SQL-Vertrauensgruppe** den **Gruppennamen** fest. Er muss in allen Regionen mit Gruppenmitgliedern eindeutig sein. Der **Vertrauensbereich** legt den Typ des instanzübergreifenden Szenarios fest, das mit der Serververtrauensgruppe ermöglicht wird. In der Vorschauphase ist der einzig verfügbare Vertrauensbereich **Verteilte Transaktionen**. Er ist daher bereits ausgewählt und kann nicht geändert werden. Alle **Gruppenmitglieder** müssen demselben **Abonnement** angehören, sie können sich jedoch in verschiedenen Ressourcengruppen befinden. Wählen Sie die **Ressourcengruppe** und den bzw. die **SQL-Server/-Instanz** aus. Damit legen Sie die Instanz von Azure SQL Managed Instance fest, die Mitglied der Gruppe werden soll.
 
-   :::image type="content" source="./media/server-trust-group-overview/server-trust-group-create-blade.png" alt-text="Serververtrauensgruppen":::
+   :::image type="content" source="./media/server-trust-group-overview/server-trust-group-create-blade.png" alt-text="Blatt zum Erstellen einer Serververtrauensgruppe":::
 
-6. Nachdem alle erforderlichen Felder ausgefüllt wurden, klicken Sie auf **Speichern** .
+6. Nachdem alle erforderlichen Felder ausgefüllt wurden, klicken Sie auf **Speichern**.
 
 ## <a name="server-trust-group-maintenance-and-deletion"></a>Verwalten und Löschen von Serververtrauensgruppen
 
@@ -59,11 +59,11 @@ Im folgenden Abschnitt wird das Löschen einer Serververtrauensgruppe beschriebe
 2. Navigieren Sie zu einer verwalteten Instanz, die der Vertrauensgruppe angehört.
 3. Wählen Sie in den Einstellungen für die **Sicherheit** die Registerkarte **SQL-Vertrauensgruppen** aus.
 4. Wählen Sie die Vertrauensgruppe aus, die Sie löschen möchten.
-   :::image type="content" source="./media/server-trust-group-overview/server-trust-group-manage-select.png" alt-text="Serververtrauensgruppen":::
-5. Klicken Sie auf **Gruppe löschen** .
-   :::image type="content" source="./media/server-trust-group-overview/server-trust-group-manage-delete.png" alt-text="Serververtrauensgruppen":::
-6. Geben Sie den Namen der Serververtrauensgruppe ein, um den Löschvorgang zu bestätigen, und klicken Sie dann auf **Löschen** .
-   :::image type="content" source="./media/server-trust-group-overview/server-trust-group-manage-delete-confirm.png" alt-text="Serververtrauensgruppen":::
+   :::image type="content" source="./media/server-trust-group-overview/server-trust-group-manage-select.png" alt-text="Auswählen der Serververtrauensgruppe":::
+5. Klicken Sie auf **Gruppe löschen**.
+   :::image type="content" source="./media/server-trust-group-overview/server-trust-group-manage-delete.png" alt-text="Löschen der Serververtrauensgruppe":::
+6. Geben Sie den Namen der Serververtrauensgruppe ein, um den Löschvorgang zu bestätigen, und klicken Sie dann auf **Löschen**.
+   :::image type="content" source="./media/server-trust-group-overview/server-trust-group-manage-delete-confirm.png" alt-text="Bestätigen des Löschens der Serververtrauensgruppe":::
 
 > [!NOTE]
 > Durch das Löschen der Serververtrauensgruppe wird die Vertrauensstellung zwischen den beiden verwalteten Instanzen möglicherweise nicht sofort aufgehoben. Sie können das Aufheben von Vertrauensstellungen erzwingen, indem Sie ein [Failover](/powershell/module/az.sql/Invoke-AzSqlInstanceFailover) der verwalteten Instanzen auslösen. Aktuelle Informationen hierzu finden Sie unter [Bekannte Probleme](../database/doc-changes-updates-release-notes.md?tabs=managed-instance#known-issues).

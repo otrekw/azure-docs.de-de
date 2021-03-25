@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 06/18/2017
 ms.custom: devx-track-csharp
 ms.openlocfilehash: a9ece3fe54ca8596f610439f8a0dd228ae1ef907
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92220906"
 ---
 # <a name="manage-azure-data-lake-analytics-a-net-app"></a>Verwalten von Azure Data Lake Analytics mithilfe einer .NET-App
@@ -54,7 +54,7 @@ string rg == "<value>"; // Resource  group name
 string clientid = "1950a258-227b-4e31-a9cf-717495945fc2"; // Sample client ID (this will work, but you should pick your own)
 ```
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Authentifizierung
 
 Sie haben mehrere Optionen für das Anmelden bei Azure Data Lake Analytics. Der folgende Codeausschnitt ist ein Beispiel für die interaktive Benutzerauthentifizierung mit einem Popupelement.
 

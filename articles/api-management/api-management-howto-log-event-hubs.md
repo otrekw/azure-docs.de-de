@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/29/2018
 ms.author: apimpm
 ms.openlocfilehash: 5066169951409fa86aa75a64e8fc6d4189947f27
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92072406"
 ---
 # <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>Protokollieren von Ereignissen in Azure Event Hubs mit Azure API Management
@@ -75,7 +75,7 @@ Klicken Sie auf **Speichern** , um die aktualisierte Richtlinienkonfiguration zu
 Sie können eine Vorschau des Protokolls in Event Hubs anzeigen, indem Sie [Azure Stream Analytics-Abfragen](../event-hubs/process-data-azure-stream-analytics.md) verwenden. 
 
 1. Navigieren Sie im Azure-Portal zu dem Event Hub, an den die Protokollierung Ereignisse sendet. 
-2. Wählen Sie unter **Features**die Registerkarte **Daten verarbeiten** aus.
+2. Wählen Sie unter **Features** die Registerkarte **Daten verarbeiten** aus.
 3. Wählen Sie auf der Karte **Echtzeiterkenntnisse von Ereignissen aktivieren** die Option **Erkunden** aus.
 4. Sie sollten in der Lage sein, die Vorschau des Protokolls auf der Registerkarte **Eingabevorschau** anzuzeigen. Wenn die angezeigten Daten nicht aktuell sind, wählen Sie **Aktualisieren** aus, um die neuesten Ereignisse anzuzeigen.
 

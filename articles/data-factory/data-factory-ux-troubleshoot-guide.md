@@ -8,10 +8,10 @@ ms.date: 09/03/2020
 ms.author: ceespino
 ms.reviewer: daperlov
 ms.openlocfilehash: b423b008453ca5f1b76e5c277f5a434dbf14cdb1
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100382836"
 ---
 # <a name="troubleshoot-azure-data-factory-ux-issues"></a>Problembehandlung bei der Azure Data Factory-Benutzeroberfläche
@@ -55,7 +55,7 @@ Wenn Sie nicht alle Cookies zulassen möchten, können Sie sie optional nur für
 1. Navigieren Sie in Ihrem Browser zu **edge://settings/content/cookies**.
 1. Stellen Sie sicher, dass **Allow sites to save and read cookie data** (Für Websites das Speichern und Lesen von Cookiedaten zulassen) aktiviert und die Option **Cookies von Drittanbietern blockieren** deaktiviert ist. 
 
-    ![Alle Cookies in Edge zulassen](media/data-factory-ux-troubleshoot-guide/edge-allow-all-cookies.png)
+    ![Alle Cookies in Microsoft Edge zulassen](media/data-factory-ux-troubleshoot-guide/edge-allow-all-cookies.png)
 1. Aktualisieren Sie die ADF-Benutzeroberfläche, und versuchen Sie es erneut.
 
 #### <a name="only-allow-adf-ux-to-use-cookies"></a>Die Verwendung von Cookies nur für die ADF-Benutzeroberfläche zulassen
@@ -65,7 +65,7 @@ Wenn Sie nicht alle Cookies zulassen möchten, können Sie sie optional nur für
 1. Navigieren Sie zu **edge://settings/content/cookies**.
 1. Wählen Sie im Abschnitt **Zulassen** die Option **Hinzufügen** aus, und fügen Sie die Website **adf.azure.com** hinzu. 
 
-    ![Hinzufügen der ADF-Benutzeroberfläche zu zugelassenen Websites in Edge](media/data-factory-ux-troubleshoot-guide/edge-allow-adf-cookies.png)
+    ![Hinzufügen der ADF-Benutzeroberfläche zu zugelassenen Websites in Microsoft Edge](media/data-factory-ux-troubleshoot-guide/edge-allow-adf-cookies.png)
 1. Aktualisieren Sie die ADF-Benutzeroberfläche, und versuchen Sie es erneut.
 
 ## <a name="connection-failed-on-adf-ux"></a>Fehler bei der Verbindung mit der ADF-Benutzeroberfläche

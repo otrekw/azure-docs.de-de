@@ -7,17 +7,17 @@ ms.custom: devx-track-csharp
 ms.date: 12/12/2017
 ms.author: cshoe
 ms.openlocfilehash: 48614640660da6d85face5ea416d267fa9f59515
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92164838"
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>C#-Skriptentwicklerreferenz (C#-Skript, CSX) zu Azure Functions
 
 <!-- When updating this article, make corresponding changes to any duplicate content in functions-dotnet-class-library.md -->
 
-Dieser Artikel ist eine Einführung in die Entwicklung von Azure Functions mithilfe von C#-Skript ( *CSX* ).
+Dieser Artikel ist eine Einführung in die Entwicklung von Azure Functions mithilfe von C#-Skript (*CSX*).
 
 Azure Functions unterstützt die Programmiersprachen C# und C#-Skript. Wenn Sie Anleitungen zum [Verwenden von C# in einem Visual Studio-Klassenbibliotheksprojekt](functions-develop-vs.md) suchen, sollten Sie zur [C#-Entwicklerreferenz](functions-dotnet-class-library.md) wechseln.
 
@@ -27,9 +27,9 @@ In diesem Artikel wird davon ausgegangen, dass Sie das [Azure Functions: Entwick
 
 Die C#-Skriptoberfläche für Azure Functions basiert auf dem [Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki/Introduction). Daten fließen über Methodenargumente in Ihre C#-Funktion ein. Argumentnamen werden in einer `function.json`-Datei angegeben, und es gibt vordefinierte Namen für den Zugriff auf Elemente wie die Funktionsprotokollierung und Abbruchtoken.
 
-Dank des *CSX* -Formats müssen Sie weniger Textbausteine schreiben und können sich ganz auf das Schreiben einer C#-Funktion konzentrieren. Anstatt sämtliche Informationen in einem Namespace und einer Klasse zu umschließen, definieren Sie einfach eine `Run`-Methode. Schließen Sie wie gewohnt alle Assemblyverweise und Namespaces am Anfang der Datei ein.
+Dank des *CSX*-Formats müssen Sie weniger Textbausteine schreiben und können sich ganz auf das Schreiben einer C#-Funktion konzentrieren. Anstatt sämtliche Informationen in einem Namespace und einer Klasse zu umschließen, definieren Sie einfach eine `Run`-Methode. Schließen Sie wie gewohnt alle Assemblyverweise und Namespaces am Anfang der Datei ein.
 
-Die *CSX* -Dateien einer Funktions-App werden kompiliert, wenn eine Instanz initialisiert wird. Dieser Kompilierungsschritt bedeutet, dass bestimmte Dinge, etwa ein Kaltstart, für C#-Skriptfunktionen im Vergleich zu C#-Klassenbibliotheken länger dauern. Dieser Kompilierungsschritt ist auch der Grund, warum C#-Skriptfunktionen im Azure-Portal bearbeitet werden können, während dies für C#-Klassenbibliotheken nicht möglich ist.
+Die *CSX*-Dateien einer Funktions-App werden kompiliert, wenn eine Instanz initialisiert wird. Dieser Kompilierungsschritt bedeutet, dass bestimmte Dinge, etwa ein Kaltstart, für C#-Skriptfunktionen im Vergleich zu C#-Klassenbibliotheken länger dauern. Dieser Kompilierungsschritt ist auch der Grund, warum C#-Skriptfunktionen im Azure-Portal bearbeitet werden können, während dies für C#-Klassenbibliotheken nicht möglich ist.
 
 ## <a name="folder-structure"></a>Ordnerstruktur
 
@@ -56,7 +56,7 @@ Die in [Version 2.x](functions-versions.md) oder höher der Functions-Runtime er
 
 ## <a name="binding-to-arguments"></a>Binden an Argumente
 
-Eingabe- oder Ausgabedaten werden über die `name`-Eigenschaft in der *function.json* -Konfigurationsdatei an dienen C#-Skriptfunktionsparameter gebunden. Im folgenden Beispiel werden eine *function.json* -Datei und eine *run.csx* -Datei für eine über die Warteschlange ausgelöste Funktion veranschaulicht. Der Parameter, der die Daten aus der Warteschlangennachricht empfängt, hat den Namen `myQueueItem`, weil dies der Wert der `name`-Eigenschaft ist.
+Eingabe- oder Ausgabedaten werden über die `name`-Eigenschaft in der *function.json*-Konfigurationsdatei an dienen C#-Skriptfunktionsparameter gebunden. Im folgenden Beispiel werden eine *function.json*-Datei und eine *run.csx*-Datei für eine über die Warteschlange ausgelöste Funktion veranschaulicht. Der Parameter, der die Daten aus der Warteschlangennachricht empfängt, hat den Namen `myQueueItem`, weil dies der Wert der `name`-Eigenschaft ist.
 
 ```json
 {
@@ -98,7 +98,7 @@ Jede Bindung hat ihre eigenen unterstützten Typen. Beispielsweise kann ein Blob
 
 Wenn Sie eine benutzerdefinierte POCO-Klasse (Plain Old CLR Object) verwenden müssen, können Sie die Klassendefinition in dieselbe Datei einfügen oder in eine separate Datei setzen.
 
-Im folgenden Beispiel wird ein *run.csx* -Beispiel veranschaulicht, das eine POCO-Klassendefinition enthält.
+Im folgenden Beispiel wird ein *run.csx*-Beispiel veranschaulicht, das eine POCO-Klassendefinition enthält.
 
 ```csharp
 public static void Run(string myBlob, out MyClass myQueueItem)
@@ -117,9 +117,9 @@ Bei einer POCO-Klasse müssen für jede Eigenschaft ein Getter und ein Setter de
 
 ## <a name="reusing-csx-code"></a>Wiederverwenden von CSX-Code
 
-Sie können in der Datei *run.csx* Klassen und Methoden verwenden, die in anderen *CSX* -Dateien definiert sind. Verwenden Sie zu diesem Zweck `#load`-Anweisungen in der Datei *run.csx* . Im folgenden Beispiel wird die Protokollierungsroutine `MyLogger` in *myLogger.csx* freigegeben und mit der `#load`-Anweisung in *run.csx* geladen:
+Sie können in der Datei *run.csx* Klassen und Methoden verwenden, die in anderen *CSX* -Dateien definiert sind. Verwenden Sie zu diesem Zweck `#load`-Anweisungen in der Datei *run.csx*. Im folgenden Beispiel wird die Protokollierungsroutine `MyLogger` in *myLogger.csx* freigegeben und mit der `#load`-Anweisung in *run.csx* geladen:
 
-Beispiel für *run.csx* :
+Beispiel für *run.csx*:
 
 ```csharp
 #load "mylogger.csx"
@@ -133,7 +133,7 @@ public static void Run(TimerInfo myTimer, ILogger log)
 }
 ```
 
-Beispiel für *mylogger.csx* :
+Beispiel für *mylogger.csx*:
 
 ```csharp
 public static void MyLogger(ILogger log, string logtext)
@@ -142,7 +142,7 @@ public static void MyLogger(ILogger log, string logtext)
 }
 ```
 
-Die Verwendung einer freigegebenen *CSX* -Datei ist ein häufiges Verfahren, wenn die Daten, die über ein POCO-Objekt zwischen Funktionen übertragen werden, stark typisiert werden sollen. Im folgenden vereinfachten Beispiel verwenden ein HTTP-Trigger und ein Warteschlangentrigger gemeinsam das POCO-Objekt `Order`, um die Bestelldaten stark zu typisieren:
+Die Verwendung einer freigegebenen *CSX*-Datei ist ein häufiges Verfahren, wenn die Daten, die über ein POCO-Objekt zwischen Funktionen übertragen werden, stark typisiert werden sollen. Im folgenden vereinfachten Beispiel verwenden ein HTTP-Trigger und ein Warteschlangentrigger gemeinsam das POCO-Objekt `Order`, um die Bestelldaten stark zu typisieren:
 
 Beispiel: *run.csx* für HTTP-Trigger:
 
@@ -187,7 +187,7 @@ public static void Run(Order myQueueItem, out Order outputQueueItem, ILogger log
 }
 ```
 
-Beispiel: *order.csx* :
+Beispiel: *order.csx*:
 
 ```cs
 public class Order
@@ -213,9 +213,9 @@ Mit der `#load` -Direktive können Sie einen relativen Pfad verwenden:
 
 * `#load "mylogger.csx"` : Lädt eine Datei, die sich im Funktionsordner befindet.
 * `#load "loadedfiles\mylogger.csx"` : Lädt eine Datei, die sich in einem Ordner im Funktionsordner befindet.
-* `#load "..\shared\mylogger.csx"` : Lädt eine Datei, die sich in einem Ordner auf der gleichen Ebene befindet wie der Funktionsordner (also direkt unter *wwwroot* ).
+* `#load "..\shared\mylogger.csx"` : Lädt eine Datei, die sich in einem Ordner auf der gleichen Ebene befindet wie der Funktionsordner (also direkt unter *wwwroot*).
 
-Die `#load`-Direktive kann nur mit *CSX* -Dateien verwendet werden, nicht mit *CS* -Dateien.
+Die `#load`-Direktive kann nur mit *CSX*-Dateien verwendet werden, nicht mit *CS*-Dateien.
 
 ## <a name="binding-to-method-return-value"></a>Binden an den Rückgabewert einer Methode
 
@@ -381,7 +381,7 @@ Informationen zum Hochladen von Dateien in Ihren Funktionenordner finden Sie im 
 Das Verzeichnis, das die Skriptdatei für die Funktion enthält, wird automatisch im Hinblick auf Änderungen an Assemblys überwacht. Um Änderungen an Assemblys in anderen Verzeichnissen zu überwachen, fügen Sie sie der Liste `watchDirectories` in der Datei [host.json](functions-host-json.md) hinzu.
 
 ## <a name="using-nuget-packages"></a>Verwenden von NuGet-Paketen
-Um NuGet-Pakete in einer 2.x C#-Funktion oder höher zu verwenden, laden Sie die Datei *function.proj* in den Ordner der Funktion im Dateisystem der Funktions-App hoch. Hier sehen Sie ein Beispiel für die Datei *function.proj* , die einen Verweis auf *Microsoft.ProjectOxford.Face* (Version *1.1.0* ) hinzufügt:
+Um NuGet-Pakete in einer 2.x C#-Funktion oder höher zu verwenden, laden Sie die Datei *function.proj* in den Ordner der Funktion im Dateisystem der Funktions-App hoch. Hier sehen Sie ein Beispiel für die Datei *function.proj*, die einen Verweis auf *Microsoft.ProjectOxford.Face* (Version *1.1.0*) hinzufügt:
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
@@ -398,9 +398,9 @@ Um NuGet-Pakete in einer 2.x C#-Funktion oder höher zu verwenden, laden Sie die
 Um einen benutzerdefinierten NuGet-Feed zu verwenden, geben Sie den Feed in der Datei *NuGet.config* im Stammverzeichnis der Funktionen-App an. Weitere Informationen finden Sie unter [Konfigurieren des NuGet-Verhaltens](/nuget/consume-packages/configuring-nuget-behavior).
 
 > [!NOTE]
-> In 1.x C#-Funktionen wird auf NuGet-Pakete mit einer *project.json* -Datei anstelle einer *function.proj* -Datei verwiesen.
+> In 1.x C#-Funktionen wird auf NuGet-Pakete mit einer *project.json*-Datei anstelle einer *function.proj*-Datei verwiesen.
 
-Verwenden Sie für 1.x-Funktionen stattdessen eine *project.json* -Datei. Hier folgt eine *project.json* -Beispieldatei:
+Verwenden Sie für 1.x-Funktionen stattdessen eine *project.json*-Datei. Hier folgt eine *project.json*-Beispieldatei:
 
 ```json
 {
@@ -455,7 +455,7 @@ public static string GetEnvironmentVariable(string name)
 
 ## <a name="binding-at-runtime"></a>Binden zur Laufzeit
 
-In C# und anderen .NET-Sprachen können Sie ein [imperatives](https://en.wikipedia.org/wiki/Imperative_programming) Bindungsmuster verwenden, im Gegensatz zu den [*deklarativen*](https://en.wikipedia.org/wiki/Declarative_programming) Bindungen in *function.json* . Imperative Bindung eignet sich, wenn Bindungsparameter zur Laufzeit statt zur Entwurfszeit berechnet werden müssen. Mit diesem Muster ist die Bindung an unterstützte Eingabe- und Ausgabebindungen direkt im Funktionscode möglich.
+In C# und anderen .NET-Sprachen können Sie ein [imperatives](https://en.wikipedia.org/wiki/Imperative_programming) Bindungsmuster verwenden, im Gegensatz zu den [*deklarativen*](https://en.wikipedia.org/wiki/Declarative_programming) Bindungen in *function.json*. Imperative Bindung eignet sich, wenn Bindungsparameter zur Laufzeit statt zur Entwurfszeit berechnet werden müssen. Mit diesem Muster ist die Bindung an unterstützte Eingabe- und Ausgabebindungen direkt im Funktionscode möglich.
 
 Definieren Sie eine imperative Bindung wie folgt:
 

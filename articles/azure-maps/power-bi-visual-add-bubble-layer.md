@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: ff0d2c8e90995222af79d5be63ca3e9da24b3c45
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92896224"
 ---
 # <a name="add-a-bubble-layer"></a>Hinzufügen einer Blasenebene
@@ -37,9 +37,9 @@ Zu Beginn ist die Füllfarbe bei allen Blasen gleich. Wenn ein Feld an den Bucke
 | Blur (Weichzeichner)                  | Hiermit wird der Grad des auf die Kontur angewendeten Weichzeichners eingestellt. Bei einem Wert von 1 werden die Blasen so stark weichgezeichnet, dass nur der Mittelpunkt nicht transparent ist. Bei einem Wert von 0 wird kein Weichzeichnereffekt angewendet. |
 | Pitch alignment (Ausrichtung bei Neigung)       | Diese Einstellung gibt an, wie die Blasen aussehen, wenn die Karte geneigt wird. <br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;• Viewport: Die Blasen werden auf der Karte relativ zum Viewport als auf dem Rand stehend angezeigt. (Standard)<br/>&nbsp;&nbsp;&nbsp;&nbsp;• Karte: Die Blasen werden flach auf der Oberfläche der Karte gerendert. |
 | Zoom scale (Zoomskalierung)            | Hiermit wird festgelegt, wie stark sich die Größe der Blasen relativ zum Zoomfaktor ändern soll. Eine Zoomskalierung von 1 bedeutet keine Skalierung. Bei hohen Werten werden die Blasen beim Verkleinern der Karte kleiner und beim Vergrößern größer. Dies trägt dazu bei, die Übersichtlichkeit der Karte beim Verkleinern zu verbessern, stellt aber auch sicher, dass Punkte beim Vergrößern mehr herausstechen. Bei einem Wert von 1 wird keine Skalierung angewendet. |
-| Min zoom (Minimalzoom)              | Minimaler Zoomfaktor, bei dem Kacheln verfügbar sind |
-| Max zoom (Maximalzoom)              | Maximaler Zoomfaktor, bei dem Kacheln verfügbar sind |
-| Layer position (Ebenenposition)        | Gibt die relative Position der Ebene in Bezug auf andere Kartenebenen an |
+| Min zoom (Minimalzoom)              | Mindestzoomfaktor, bei dem Kacheln verfügbar sind. |
+| Maximaler Zoom              | Maximaler Zoomfaktor, bei dem Kacheln verfügbar sind. |
+| Ebenenposition        | Gibt die relative Position der Ebene in Bezug auf andere Kartenebenen an |
 
 ## <a name="bubble-size-scaling"></a>Skalieren der Blasengröße
 
@@ -85,7 +85,7 @@ Fügen Sie der Karte mehr Kontext hinzu:
 > [Hinzufügen einer Kachelebene](power-bi-visual-add-tile-layer.md)
 
 > [!div class="nextstepaction"]
-> [Anzeigen von Echtzeitverkehrsinfos](power-bi-visual-show-real-time-traffic.md)
+> [Anzeigen von Verkehrsinfo in Echtzeit](power-bi-visual-show-real-time-traffic.md)
 
 Passen Sie das Visual an:
 

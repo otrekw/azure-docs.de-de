@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-azurecli, contperf-fy21q2
 ms.date: 03/09/2021
-ms.openlocfilehash: 00ed8c26bbafeb94b1481e6157a242dad7ed84c6
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 0b0fc1062f9e57ab716aa0fa88f90924f0485b08
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102610262"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864872"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>Anpassen von Azure HDInsight-Clustern mithilfe von Skriptaktionen
 
@@ -24,21 +24,21 @@ Eine Skriptaktion ist ein Bash-Skript, das auf den Knoten in einem HDInsight-Clu
 
 - Sie müssen als URI gespeichert werden, der für den HDInsight-Cluster zugänglich ist. Dies sind zwei mögliche Speicherorte:
 
-    - Für reguläre (nicht-ESP-) Cluster:
-      - Data Lake Storage Gen1/Gen2: Der Dienstprinzipal, der von HDInsight zum Zugreifen auf Data Lake Storage genutzt wird, muss über Lesezugriff auf das Skript verfügen. Für in Data Lake Storage Gen1 gespeicherte Skripts wird das folgende URI-Format verwendet: `adl://DATALAKESTOREACCOUNTNAME.azuredatalakestore.net/path_to_file`. 
-      - Ein Blob in einem Azure Storage-Konto, das entweder das primäre oder ein zusätzliches Speicherkonto für den HDInsight-Cluster darstellt. HDInsight wird während der Clustererstellung Zugriff auf beide Typen von Speicherkonten gewährt.
+  - Für reguläre (nicht-ESP-) Cluster:
+    - Data Lake Storage Gen1/Gen2: Der Dienstprinzipal, der von HDInsight zum Zugreifen auf Data Lake Storage genutzt wird, muss über Lesezugriff auf das Skript verfügen. Für in Data Lake Storage Gen1 gespeicherte Skripts wird das folgende URI-Format verwendet: `adl://DATALAKESTOREACCOUNTNAME.azuredatalakestore.net/path_to_file`.
+    - Ein Blob in einem Azure Storage-Konto, das entweder das primäre oder ein zusätzliches Speicherkonto für den HDInsight-Cluster darstellt. HDInsight wird während der Clustererstellung Zugriff auf beide Typen von Speicherkonten gewährt.
 
-        > [!IMPORTANT]  
-        > Rotieren Sie den Speicherschlüssel für dieses Azure Storage-Konto nicht, da dies dazu führt, dass nachfolgende Skriptaktionen mit darin gespeicherten Skripts fehlschlagen.
+    > [!IMPORTANT]  
+    > Rotieren Sie den Speicherschlüssel für dieses Azure Storage-Konto nicht, da dies dazu führt, dass nachfolgende Skriptaktionen mit darin gespeicherten Skripts fehlschlagen.
 
-      - Ein öffentlicher Dateifreigabedienst, auf den über `http://`-Pfade zugegriffen werden kann. Beispiele sind Azure Blob, GitHub und OneDrive. Beispiel-URIs finden Sie unter [Beispielskripts für Skriptaktionen](#example-script-action-scripts).
-    - Für Cluster mit ESP werden die `wasb://`-, `wasbs://`- und `http[s]://`-URIs unterstützt.
+    - Ein öffentlicher Dateifreigabedienst, auf den über `http://`-Pfade zugegriffen werden kann. Beispiele sind Azure Blob, GitHub und OneDrive. Beispiel-URIs finden Sie unter [Beispielskripts für Skriptaktionen](#example-script-action-scripts).
+  - Für Cluster mit ESP werden die `wasb://`-, `wasbs://`- und `http[s]://`-URIs unterstützt.
 
 - Die Ausführung kann auf bestimmte Knotentypen beschränkt werden. Beispiele wären etwa Hauptknoten und Workerknoten.
 - Sie können permanent oder *ad-hoc* sein.
 
-    - Permanente Skriptaktionen müssen einen eindeutigen Namen haben. Permanente Skripts werden verwendet, um mithilfe von Skalierungsvorgängen neue Workerknoten anzupassen, die dem Cluster hinzugefügt wurden. Bei Skalierungsvorgängen kann ein permanentes Skript auch Änderungen auf einen anderen Knotentyp anwenden. Ein Beispiel wäre etwa ein Hauptknoten.
-    - *Ad-hoc*-Skripts werden nicht beibehalten. Skriptaktionen, die während der Clustererstellung verwendet werden, werden automatisch zu permanenten Skripts. Sie werden nicht auf Workerknoten angewendet, die dem Cluster hinzugefügt werden, nachdem das Skript ausgeführt wurde. Sie können ein *Ad-hoc*-Skript aber nachträglich in ein permanentes Skript oder ein permanentes Skript in ein *Ad-hoc*-Skript umwandeln. Skripts, deren Ausführung nicht erfolgreich ist, werden nicht zu permanenten Skripts. Dies gilt auch, wenn Sie speziell angeben, dass dies der Fall sein soll.
+  - Permanente Skriptaktionen müssen einen eindeutigen Namen haben. Permanente Skripts werden verwendet, um mithilfe von Skalierungsvorgängen neue Workerknoten anzupassen, die dem Cluster hinzugefügt wurden. Bei Skalierungsvorgängen kann ein permanentes Skript auch Änderungen auf einen anderen Knotentyp anwenden. Ein Beispiel wäre etwa ein Hauptknoten.
+  - *Ad-hoc*-Skripts werden nicht beibehalten. Skriptaktionen, die während der Clustererstellung verwendet werden, werden automatisch zu permanenten Skripts. Sie werden nicht auf Workerknoten angewendet, die dem Cluster hinzugefügt werden, nachdem das Skript ausgeführt wurde. Sie können ein *Ad-hoc*-Skript aber nachträglich in ein permanentes Skript oder ein permanentes Skript in ein *Ad-hoc*-Skript umwandeln. Skripts, deren Ausführung nicht erfolgreich ist, werden nicht zu permanenten Skripts. Dies gilt auch, wenn Sie speziell angeben, dass dies der Fall sein soll.
 
 - Sie können Parameter akzeptieren, die von den Skripts während der Ausführung verwendet werden.
 - Sie werden mit Stammebenenberechtigungen auf den Clusterknoten ausgeführt.
@@ -83,7 +83,8 @@ Während der Clustererstellung verwendete Skriptaktionen unterscheiden sich geri
 
 Das folgende Diagramm veranschaulicht, wann Skriptaktionen während des Erstellungsvorgangs ausgeführt werden:
 
-![HDInsight-Clusteranpassung und Phasen während der Clustererstellung][img-hdi-cluster-states]
+
+:::image type="content" source="./media/hdinsight-hadoop-customize-cluster-linux/cluster-provisioning-states.png" alt-text="Phasen während der Clustererstellung" border="false":::
 
 Das Skript wird ausgeführt, während HDInsight konfiguriert wird. Das Skript wird parallel auf allen angegebenen Knoten im Cluster ausgeführt. Die Ausführung erfolgt dabei mit Stammberechtigungen für die Knoten.
 
@@ -139,29 +140,29 @@ In diesem Abschnitt werden die verschiedenen Verwendungsmöglichkeiten von Skrip
 
 1. Beginnen Sie mit dem Erstellen eines Clusters wie unter [Erstellen von Linux-basierten Clustern in HDInsight mit dem Azure-Portal](hdinsight-hadoop-create-linux-clusters-portal.md) beschrieben. Wählen Sie in der Registerkarte **Konfiguration + Preise****+ Skriptaktion hinzufügen** aus.
 
-    ![Azure-Portal – Aktion „Clusterskript“](./media/hdinsight-hadoop-customize-cluster-linux/azure-portal-cluster-configuration-scriptaction.png)
+   :::image type="content" source="./media/hdinsight-hadoop-customize-cluster-linux/azure-portal-cluster-configuration-scriptaction.png" alt-text="Azure-Portal – Aktion „Clusterskript“":::
 
 1. Wählen Sie über den Eintrag __Skript auswählen__ ein vorgefertigtes Skript aus. Wählen Sie __Benutzerdefiniert__ aus, wenn Sie ein Skript verwenden möchten. Geben Sie dann __Name__ und __Bash-Skript-URI__ für Ihr Skript an.
 
-    ![Hinzufügen eines Skripts im Formular „Skript auswählen“](./media/hdinsight-hadoop-customize-cluster-linux/hdinsight-select-script.png)
+   :::image type="content" source="./media/hdinsight-hadoop-customize-cluster-linux/hdinsight-select-script.png" alt-text="Hinzufügen eines Skripts im Formular „Skript auswählen“":::
 
-    Die folgende Tabelle beschreibt die Elemente des Formulars:
+   Die folgende Tabelle beschreibt die Elemente des Formulars:
 
-    | Eigenschaft | Wert |
-    | --- | --- |
-    | Auswählen eines Skripts | Wählen Sie __Benutzerdefiniert__ aus, wenn Sie ein eigenes Skript verwenden möchten. Wählen Sie andernfalls eines der bereitgestellten Skripts aus. |
-    | Name |Geben Sie einen Namen für die Skriptaktion an. |
-    | Bash-Skript-URI |Geben Sie den URI des Skripts an. |
-    | Haupt-/Workerknoten/Zookeeper |Geben Sie die Knoten an, auf denen das Skript ausgeführt wird: **Hauptknoten**, **Worker** oder **ZooKeeper**. |
-    | Parameter |Geben Sie die Parameter an, sofern dies für das Skript erforderlich ist. |
+   | Eigenschaft | Wert |
+   | --- | --- |
+   | Auswählen eines Skripts | Wählen Sie __Benutzerdefiniert__ aus, wenn Sie ein eigenes Skript verwenden möchten. Wählen Sie andernfalls eines der bereitgestellten Skripts aus. |
+   | Name |Geben Sie einen Namen für die Skriptaktion an. |
+   | Bash-Skript-URI |Geben Sie den URI des Skripts an. |
+   | Haupt-/Workerknoten/Zookeeper |Geben Sie die Knoten an, auf denen das Skript ausgeführt wird: **Hauptknoten**, **Worker** oder **ZooKeeper**. |
+   | Parameter |Geben Sie die Parameter an, sofern dies für das Skript erforderlich ist. |
 
-    Verwenden Sie den Eintrag __Speichern Sie diese Skriptaktion__, um sicherzustellen, dass das Skript bei Skalierungsvorgängen angewendet wird.
+   Verwenden Sie den Eintrag __Speichern Sie diese Skriptaktion__, um sicherzustellen, dass das Skript bei Skalierungsvorgängen angewendet wird.
 
 1. Wählen Sie __Erstellen__ aus, um das Skript zu speichern. Anschließend können Sie __+ Neue übermitteln__ verwenden, um ein weiteres Skript hinzufügen.
 
-    ![HDInsight – Mehrere Skriptaktionen](./media/hdinsight-hadoop-customize-cluster-linux/multiple-scripts-actions.png)
+   :::image type="content" source="./media/hdinsight-hadoop-customize-cluster-linux/multiple-scripts-actions.png" alt-text="HDInsight – Mehrere Skriptaktionen":::
 
-    Kehren Sie zur Registerkarte **Konfiguration + Preise** zurück, wenn Sie alle gewünschten Skripts hinzugefügt haben.
+   Kehren Sie zur Registerkarte **Konfiguration + Preise** zurück, wenn Sie alle gewünschten Skripts hinzugefügt haben.
 
 1. Führen Sie die verbleibenden Schritte der Clustererstellung wie gewohnt durch.
 
@@ -212,23 +213,23 @@ In diesem Abschnitt erfahren Sie, wie Sie Skriptaktionen auf einen ausgeführten
 
 1. Wählen Sie oben auf der Seite **Script actions** (Skriptaktionen) die Option **+ Submit new** (+ Neue übermitteln) aus.
 
-    ![Hinzufügen eines Skripts zu einem ausgeführten Cluster](./media/hdinsight-hadoop-customize-cluster-linux/add-script-running-cluster.png)
+   :::image type="content" source="./media/hdinsight-hadoop-customize-cluster-linux/add-script-running-cluster.png" alt-text="Hinzufügen eines Skripts zu einem ausgeführten Cluster":::
 
 1. Wählen Sie über den Eintrag __Skript auswählen__ ein vorgefertigtes Skript aus. Wählen Sie __Benutzerdefiniert__ aus, wenn Sie ein Skript verwenden möchten. Geben Sie dann __Name__ und __Bash-Skript-URI__ für Ihr Skript an.
 
-    ![Hinzufügen eines Skripts im Formular „Skript auswählen“](./media/hdinsight-hadoop-customize-cluster-linux/hdinsight-select-script.png)
+   :::image type="content" source="./media/hdinsight-hadoop-customize-cluster-linux/hdinsight-select-script.png" alt-text="Hinzufügen eines Skripts im Formular „Skript auswählen“":::
 
-    Die folgende Tabelle beschreibt die Elemente des Formulars:
+   Die folgende Tabelle beschreibt die Elemente des Formulars:
 
-    | Eigenschaft | Wert |
-    | --- | --- |
-    | Auswählen eines Skripts | Wählen Sie __Benutzerdefiniert__ aus, wenn Sie ein eigenes Skript verwenden möchten. Wählen Sie andernfalls ein bereitgestelltes Skript aus. |
-    | Name |Geben Sie einen Namen für die Skriptaktion an. |
-    | Bash-Skript-URI |Geben Sie den URI des Skripts an. |
-    | Haupt-/Worker-/Zookeeper-Knoten |Geben Sie die Knoten an, auf denen das Skript ausgeführt wird: **Hauptknoten**, **Worker** oder **ZooKeeper**. |
-    | Parameter |Geben Sie die Parameter an, sofern dies für das Skript erforderlich ist. |
+   | Eigenschaft | Wert |
+   | --- | --- |
+   | Auswählen eines Skripts | Wählen Sie __Benutzerdefiniert__ aus, wenn Sie ein eigenes Skript verwenden möchten. Wählen Sie andernfalls ein bereitgestelltes Skript aus. |
+   | Name |Geben Sie einen Namen für die Skriptaktion an. |
+   | Bash-Skript-URI |Geben Sie den URI des Skripts an. |
+   | Haupt-/Worker-/Zookeeper-Knoten |Geben Sie die Knoten an, auf denen das Skript ausgeführt wird: **Hauptknoten**, **Worker** oder **ZooKeeper**. |
+   | Parameter |Geben Sie die Parameter an, sofern dies für das Skript erforderlich ist. |
 
-    Verwenden Sie den Eintrag __Speichern Sie diese Skriptaktion__, um sicherzustellen, dass das Skript bei Skalierungsvorgängen angewendet wird.
+   Verwenden Sie den Eintrag __Speichern Sie diese Skriptaktion__, um sicherzustellen, dass das Skript bei Skalierungsvorgängen angewendet wird.
 
 1. Wählen Sie abschließend die Schaltfläche **Erstellen** aus, um das Skript auf den Cluster anzuwenden.
 
@@ -255,19 +256,19 @@ Installieren und konfigurieren Sie zunächst die Azure-Befehlszeilenschnittstell
 
 1. Authentifizieren Sie sich bei Ihrem Azure-Abonnement:
 
-    ```azurecli
-    az login
-    ```
+   ```azurecli
+   az login
+   ```
 
 1. Wenden Sie eine Skriptaktion auf einen ausgeführten Cluster an:
 
-    ```azurecli
-    az hdinsight script-action execute --cluster-name CLUSTERNAME --name SCRIPTNAME --resource-group RESOURCEGROUP --roles ROLES
-    ```
+   ```azurecli
+   az hdinsight script-action execute --cluster-name CLUSTERNAME --name SCRIPTNAME --resource-group RESOURCEGROUP --roles ROLES
+   ```
 
-    Gültige Rollen sind `headnode`, `workernode`, `zookeepernode`, `edgenode`. Wenn das Skript auf mehrere Knotentypen angewendet werden soll, trennen Sie die Rollen durch ein Leerzeichen. Beispiel: `--roles headnode workernode`.
+   Gültige Rollen sind `headnode`, `workernode`, `zookeepernode`, `edgenode`. Wenn das Skript auf mehrere Knotentypen angewendet werden soll, trennen Sie die Rollen durch ein Leerzeichen. Beispiel: `--roles headnode workernode`.
 
-    Fügen Sie `--persist-on-success` hinzu, um das Skript dauerhaft zu speichern. Sie können das Skript auch zu einem späteren Zeitpunkt mithilfe von `az hdinsight script-action promote` dauerhaft speichern.
+   Fügen Sie `--persist-on-success` hinzu, um das Skript dauerhaft zu speichern. Sie können das Skript auch zu einem späteren Zeitpunkt mithilfe von `az hdinsight script-action promote` dauerhaft speichern.
 
 ### <a name="apply-a-script-action-to-a-running-cluster-by-using-rest-api"></a>Anwenden einer Skriptaktion auf einen ausgeführten Cluster mithilfe einer REST-API
 
@@ -287,15 +288,15 @@ Ein Beispiel für die Anwendung von Skripts auf einen Cluster mithilfe des .NET 
 
 1. Im Abschnitt mit den Skriptaktionen wird ein Verlauf der Skripts für diesen Cluster angezeigt. Zu diesen Informationen gehört auch eine Liste der gespeicherten Skripts. Der folgende Screenshot zeigt, dass das Solr-Skript für diesen Cluster ausgeführt wurde. Auf dem Screenshot sind keine permanenten Skripts zu sehen.
 
-    ![Skriptaktionen des Portals – Übermittlungsverlauf](./media/hdinsight-hadoop-customize-cluster-linux/script-action-history.png)
+   :::image type="content" source="./media/hdinsight-hadoop-customize-cluster-linux/script-action-history.png" alt-text="Skriptaktionen des Portals – Übermittlungsverlauf":::
 
 1. Wählen Sie ein Skript aus dem Verlauf aus, um den Abschnitt **Eigenschaften** für dieses Skript anzuzeigen. Oben im Fenster können Sie das Skript erneut ausführen oder höherstufen.
 
-    ![Skriptaktionen – Eigenschaften höherstufen](./media/hdinsight-hadoop-customize-cluster-linux/promote-script-actions.png)
+   :::image type="content" source="./media/hdinsight-hadoop-customize-cluster-linux/promote-script-actions.png" alt-text="Skriptaktionen – Eigenschaften höherstufen":::
 
 1. Sie können im Abschnitt mit den Skriptaktionen auch die Auslassungspunkte ( **...** ) rechts neben den Einträgen auswählen, um Aktionen auszuführen.
 
-    ![Permanente Skriptaktionen – Löschen](./media/hdinsight-hadoop-customize-cluster-linux/hdi-delete-promoted-sa.png)
+   :::image type="content" source="./media/hdinsight-hadoop-customize-cluster-linux/hdi-delete-promoted-sa.png" alt-text="Permanente Skriptaktionen – Löschen":::
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -333,5 +334,3 @@ Ein Beispiel für die Verwendung des .NET SDK zum Abrufen des Skriptverlaufs aus
 * [Entwickeln von Skriptaktionsskripts für HDInsight](hdinsight-hadoop-script-actions-linux.md)
 * [Hinzufügen von zusätzlichem Speicher zu einem HDInsight-Cluster](hdinsight-hadoop-add-storage.md)
 * [Problembehandlung für Skriptaktionen](troubleshoot-script-action.md)
-
-[img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster-linux/cluster-provisioning-states.png "Phasen während der Clustererstellung"

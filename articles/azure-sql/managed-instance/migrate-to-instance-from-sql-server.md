@@ -12,10 +12,10 @@ ms.author: bonova
 ms.reviewer: ''
 ms.date: 07/11/2019
 ms.openlocfilehash: 49d37a5537ada260eae453bbb5f81716d42657a5
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102565819"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-managed-instance"></a>Migration einer SQL Server-Instanz zu Azure SQL Managed Instance
@@ -69,7 +69,7 @@ SQL Server bietet In-Memory-OLTP-Funktionen, mit denen speicheroptimierte Tabel
 
 Wenn Sie speicheroptimierte Tabellen oder speicheroptimierte Tabellentypen in Ihrer lokalen SQL Server-Instanz verwenden und eine Migration zu Azure SQL Managed Instance durchführen möchten, sollten Sie eine der folgenden Aktionen ausführen:
 
-- Wählen Sie die Dienstebene „Unternehmenskritisch“ für Ihre verwaltete Azure SQL-Zielinstanz, die In-Memory-OLTP unterstützt. ODER:
+- Wählen Sie die Dienstebene „Unternehmenskritisch“ für Ihre Azure SQL Managed Instance-Zielinstanz, die In-Memory-OLTP unterstützt. ODER:
 - Wenn Sie zur Dienstebene „Universell“ für Azure SQL Managed Instance migrieren möchten, entfernen Sie die speicheroptimierten Tabellen, speicheroptimierten Tabellentypen und die nativ kompilierten SQL-Module, die mit speicheroptimierten Objekten interagieren, bevor Sie Ihre Datenbank(en) migrieren. Die folgende T-SQL-Abfrage kann verwendet werden, um alle Objekte zu identifizieren, die vor der Migration zur Dienstebene „Universell“ entfernt werden müssen:
 
 ```tsql

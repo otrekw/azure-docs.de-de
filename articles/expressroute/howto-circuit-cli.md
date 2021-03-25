@@ -9,10 +9,10 @@ ms.date: 10/05/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: a1d50c3f8f94fbfd7dbcb9b25e051b7f2951c518
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91969074"
 ---
 # <a name="quickstart-create-and-modify-an-expressroute-circuit-using-azure-cli"></a>Schnellstart: Erstellen und Ändern einer ExpressRoute-Leitung mithilfe der Azure CLI
@@ -276,7 +276,7 @@ Sie können bestimmte Eigenschaften einer ExpressRoute-Verbindung ändern, ohne 
 * Sie können ein ExpressRoute Premium-Add-On für Ihre ExpressRoute-Verbindung aktivieren oder deaktivieren. Die Änderung der SKU von *Standard/Premium* in *Local* wird nicht unterstützt.
 * Sie können die Bandbreite der ExpressRoute-Leitung erhöhen, sofern Kapazität am Port vorhanden ist. Ein Downgrade der Bandbreite einer Leitung wird allerdings nicht unterstützt.
 * Sie können den Abrechnungstarif von „Volumentarif“ in „Unbegrenzte Daten“ ändern. Eine Änderung des Abrechnungstarifs von „Datenflatrate“ in „Volumentarif“ wird jedoch nicht unterstützt.
-* Sie können die Option *Klassische Vorgänge zulassen*aktivieren und deaktivieren.
+* Sie können die Option *Klassische Vorgänge zulassen* aktivieren und deaktivieren.
 
 Weitere Informationen zu Grenzwerten und Beschränkungen finden Sie unter [ExpressRoute – FAQs](expressroute-faqs.md).
 

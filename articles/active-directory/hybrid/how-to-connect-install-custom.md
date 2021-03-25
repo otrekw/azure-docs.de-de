@@ -15,10 +15,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3afeadff71bd373354b891bd6690d94d28fc0805
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92096350"
 ---
 # <a name="custom-installation-of-azure-active-directory-connect"></a>Benutzerdefinierte Installation von Azure Active Directory Connect
@@ -112,7 +112,7 @@ Nachdem Sie den Namen der Gesamtstruktur eingegeben und **Verzeichnis hinzufüge
 
 Überprüfen Sie jede Domäne, die als **Nicht hinzugefügt** oder **Nicht überprüft** gekennzeichnet ist. Stellen Sie sicher, dass die verwendeten Domänen in Azure AD überprüft wurden. Nachdem Sie Ihre Domänen überprüft haben, wählen Sie das kreisförmige Aktualisierungssymbol aus. Weitere Informationen finden Sie unter [Hinzufügen und Überprüfen der Domäne](../fundamentals/add-custom-domain.md).
 
-Benutzer verwenden das *userPrincipalName* -Attribut, wenn sie sich bei Azure AD und Microsoft 365 anmelden. Die Domänen, die auch als UPN-Suffix bezeichnet werden, sollten durch Azure AD überprüft werden, bevor Benutzer synchronisiert werden. Microsoft empfiehlt, das Standardattribut userPrincipalName beizubehalten. 
+Benutzer verwenden das *userPrincipalName*-Attribut, wenn sie sich bei Azure AD und Microsoft 365 anmelden. Die Domänen, die auch als UPN-Suffix bezeichnet werden, sollten durch Azure AD überprüft werden, bevor Benutzer synchronisiert werden. Microsoft empfiehlt, das Standardattribut userPrincipalName beizubehalten. 
 
 Wenn das userPrincipalName-Attribut nicht routingfähig ist und nicht überprüft werden kann, können Sie ein anderes Attribut auswählen. Sie können beispielsweise „email“ als Attribut auswählen, das die Anmelde-ID enthält. Wenn Sie ein anderes Attribut als userPrincipalName verwenden, wird dieses als *alternative ID* bezeichnet. 
 
@@ -160,7 +160,7 @@ Mit dem Feature *Abgleich über Gesamtstrukturen* können Sie definieren, wie Be
 | Bestimmtes Attribut auswählen |Mit dieser Option können Sie Ihr eigenes Attribut auswählen. Bei Auswahl dieser Option werden Benutzerobjekte, deren (ausgewähltes) Attribut nicht aufgefüllt ist, nicht mit Azure AD synchronisiert. **Einschränkung:** Nur Attribute, die bereits im Metaverse enthalten sind, sind für diese Option verfügbar. |
 
 #### <a name="select-how-users-should-be-identified-by-using-a-source-anchor"></a>Auswählen, wie Benutzer unter Verwendung eines Quellankers identifiziert werden sollen
-Das *sourceAnchor* -Attribut ist während der Lebensdauer eines Benutzerobjekts unveränderlich. Das Attribut ist der Primärschlüssel, der den lokalen Benutzer mit dem Benutzer in Azure AD verknüpft.
+Das *sourceAnchor*-Attribut ist während der Lebensdauer eines Benutzerobjekts unveränderlich. Das Attribut ist der Primärschlüssel, der den lokalen Benutzer mit dem Benutzer in Azure AD verknüpft.
 
 | Einstellung | BESCHREIBUNG |
 | --- | --- |
@@ -260,12 +260,12 @@ Auf einem Computer mit Gruppenrichtlinien-Verwaltungstools:
 
 1.  Öffnen Sie die Gruppenrichtlinien-Verwaltungstools.
 2.  Bearbeiten Sie die Gruppenrichtlinie, die auf alle Benutzer angewendet wird. Beispiel: Standardrichtlinie der Domäne.
-3.  Wechseln Sie zu **Benutzerkonfiguration** > **Administrative Vorlagen** > **Windows-Komponenten** > **Internet Explorer** > **Internetsystemsteuerung** > **Seite „Sicherheit“** . Wählen Sie dann **Liste der Site zu Zonenzuweisungen** .
+3.  Wechseln Sie zu **Benutzerkonfiguration** > **Administrative Vorlagen** > **Windows-Komponenten** > **Internet Explorer** > **Internetsystemsteuerung** > **Seite „Sicherheit“** . Wählen Sie dann **Liste der Site zu Zonenzuweisungen**.
 4.  Aktivieren Sie die Richtlinie. Geben Sie dann im Dialogfeld den Wertnamen `https://autologon.microsoftazuread-sso.com` und den Wert `1` ein. Das Setup sollte nun wie in der folgenden Abbildung aussehen.
   
     ![Screenshot mit Intranetzonen.](./media/how-to-connect-install-custom/sitezone.png)
 
-6.  Wählen Sie zweimal **OK** .
+6.  Wählen Sie zweimal **OK**.
 
 ## <a name="configuring-federation-with-ad-fs"></a>Konfigurieren des Verbunds mit AD FS
 Sie können AD FS mit wenigen Klicks mit Azure AD Connect konfigurieren. Bevor Sie beginnen, benötigen Sie:
@@ -323,8 +323,8 @@ Sie werden zur Eingabe von Anmeldeinformationen aufgefordert, damit der Webanwen
 ### <a name="specify-the-service-account-for-the-ad-fs-service"></a>Angeben eines Dienstkontos für den AD FS-Dienst
 Der AD FS-Dienst erfordert ein Domänendienstkonto zur Authentifizierung von Benutzern und zur Suche nach Benutzerinformationen in Active Directory. Zwei Dienstkontotypen werden unterstützt:
 
-* **Gruppenverwaltetes Dienstkonto** : Dieser Kontotyp wurde von Windows Server 2012 in AD DS eingeführt. Dieser Kontotyp bietet Dienste wie AD FS. Dabei handelt es sich um ein einzelnes Konto, bei dem Sie das Kennwort nicht regelmäßig aktualisieren müssen. Verwenden Sie diese Option, wenn Sie in der Domäne, der die AD FS-Server angehören, bereits über Windows Server 2012-Domänencontroller verfügen.
-* **Domänenbenutzerkonto** : Für diesen Kontotyp müssen Sie ein Kennwort angeben und dieses regelmäßig aktualisieren, wenn es abläuft. Verwenden Sie diese Option nur, wenn Sie in der Domäne, der die AD FS-Server angehören, über keine Windows Server 2012-Domänencontroller verfügen.
+* **Gruppenverwaltetes Dienstkonto**: Dieser Kontotyp wurde von Windows Server 2012 in AD DS eingeführt. Dieser Kontotyp bietet Dienste wie AD FS. Dabei handelt es sich um ein einzelnes Konto, bei dem Sie das Kennwort nicht regelmäßig aktualisieren müssen. Verwenden Sie diese Option, wenn Sie in der Domäne, der die AD FS-Server angehören, bereits über Windows Server 2012-Domänencontroller verfügen.
+* **Domänenbenutzerkonto**: Für diesen Kontotyp müssen Sie ein Kennwort angeben und dieses regelmäßig aktualisieren, wenn es abläuft. Verwenden Sie diese Option nur, wenn Sie in der Domäne, der die AD FS-Server angehören, über keine Windows Server 2012-Domänencontroller verfügen.
 
 Wenn Sie **Gruppenverwaltetes Dienstkonto erstellen** ausgewählt haben und dieses Feature in Active Directory noch nie verwendet wurde, geben Sie Ihre Anmeldeinformationen für den Unternehmensadministrator ein. Diese werden zum Initiieren des Schlüsselspeichers und zum Aktivieren des Features in Active Directory verwendet.
 
@@ -334,7 +334,7 @@ Wenn Sie **Gruppenverwaltetes Dienstkonto erstellen** ausgewählt haben und dies
 ![Screenshot mit der Seite „AD FS-Dienstkonto“.](./media/how-to-connect-install-custom/adfs5.png)
 
 ### <a name="select-the-azure-ad-domain-that-you-want-to-federate"></a>Auswählen der Azure AD-Domäne für den Verbund
-Verwenden Sie die Seite **Azure AD-Domäne** , um die Verbundbeziehung zwischen AD FS und Azure AD einzurichten. Hier konfigurieren Sie AD FS für die Bereitstellung von Sicherheitstoken für Azure AD. Außerdem konfigurieren Sie Azure AD so, dass Token von dieser AD FS-Instanz als vertrauenswürdig behandelt werden. 
+Verwenden Sie die Seite **Azure AD-Domäne**, um die Verbundbeziehung zwischen AD FS und Azure AD einzurichten. Hier konfigurieren Sie AD FS für die Bereitstellung von Sicherheitstoken für Azure AD. Außerdem konfigurieren Sie Azure AD so, dass Token von dieser AD FS-Instanz als vertrauenswürdig behandelt werden. 
 
 Auf dieser Seite kann bei der Erstinstallation nur eine einzelne Domäne konfiguriert werden. Weitere Domänen können Sie später durch erneutes Ausführen von Azure AD Connect konfigurieren.
 
@@ -423,7 +423,7 @@ Wenn Sie die Schaltfläche **Überprüfen** auswählen, werden die DNS-Einstellu
 
 Um die End-to-End-Authentifizierung zu überprüfen, führen Sie manuell einen oder mehrere der folgenden Tests durch:
 
-* Sobald die Synchronisierung abgeschlossen ist, verwenden Sie in Azure AD Connect die zusätzliche Aufgabe **Verbundanmeldung überprüfen** , um die Authentifizierung für ein lokales Benutzerkonto Ihrer Wahl zu überprüfen.
+* Sobald die Synchronisierung abgeschlossen ist, verwenden Sie in Azure AD Connect die zusätzliche Aufgabe **Verbundanmeldung überprüfen**, um die Authentifizierung für ein lokales Benutzerkonto Ihrer Wahl zu überprüfen.
 * Vergewissern Sie sich auf einem in die Domäne eingebundenen Computer im Intranet, dass Sie sich über einen Browser anmelden können. Stellen Sie eine Verbindung mit https://myapps.microsoft.comher. Verwenden Sie dann das angemeldete Konto, um die Anmeldung zu überprüfen. Das integrierte Azure AD DS-Administratorkonto wird nicht synchronisiert und kann nicht für die Überprüfung verwendet werden.
 * Vergewissern Sie sich, dass Sie sich auf einem Gerät im Extranet anmelden können. Stellen Sie auf einem privaten Computer oder auf einem mobilen Gerät eine Verbindung mit https://myapps.microsoft.com her. Geben Sie dann Ihre Anmeldeinformationen an.
 * Überprüfen Sie die Anmeldung per Rich Client. Stellen Sie eine Verbindung mit https://testconnectivity.microsoft.comher. Wählen Sie dann **Office 365** > **Office 365-Test für einmaliges Anmelden** aus.
@@ -447,7 +447,7 @@ So beheben Sie dieses Problem:
 
 3. Löschen Sie die Datenbank:
     1. Stellen Sie über **Microsoft SQL Server Management Studio** eine Verbindung mit der SQL-Instanz her. 
-    1. Suchen Sie die **ADSync** -Datenbank, und klicken Sie mit der rechten Maustaste darauf.
+    1. Suchen Sie die **ADSync**-Datenbank, und klicken Sie mit der rechten Maustaste darauf.
     1. Wählen Sie im Kontextmenü **Löschen** aus.
     1. Wählen Sie **OK** aus, um die Datenbank zu löschen.
 

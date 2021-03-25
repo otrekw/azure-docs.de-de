@@ -16,10 +16,10 @@ ms.date: 11/03/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 3a5ba4b27ae19999237edb75c50db36ef57a10f1
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94956686"
 ---
 # <a name="update-12-release-notes-for-your-storsimple-8000-series-device"></a>Versionshinweise zu Update 1.2 für Geräte der StorSimple 8000-Serie
@@ -67,10 +67,10 @@ Die folgende Tabelle enthält eine Zusammenfassung der Probleme, die in den Upda
 | Nein. | Funktion | Problem | Im Update behoben | Gilt für das physische Gerät | Gilt für das virtuelle Gerät |
 | --- | --- | --- | --- | --- | --- |
 | 1 |Windows PowerShell für StorSimple |Beim Remotezugriff eines Benutzers auf das StorSimple-Gerät mit Windows PowerShell für StorSimple und anschließendem Starten des Setup-Assistenten kam es zu einem Absturz, wenn die IP-Adresse von Data 0 eingegeben wurde. Dieses Problem wurde in Update 1 behoben. |Update 1 |Ja |Ja |
-| 2 |Zurücksetzen auf Werkseinstellungen |Unter bestimmten Umständen kann sich das StorSimple-Gerät beim Zurücksetzen auf die Werkseinstellungen aufhängen und zeigt dann die folgende Nachricht an: **Zurücksetzung auf Werkseinstellungen wird ausgeführt (Phase 8)** . Dies kann vorkommen, wenn Sie STRG+C drücken, während das Cmdlet ausgeführt wird. Dieses Problem wurde jetzt behoben. |Update 1 |Ja |Nein |
-| 3 |Zurücksetzen auf Werkseinstellungen |Nach der fehlgeschlagenen Zurücksetzung einer Dual-Controller-Factory auf die Werkseinstellungen konnte die Geräteregistrierung fortgesetzt werden. Dies führte zu einer nicht unterstützten Systemkonfiguration. In Update 1 wird eine Fehlermeldung angezeigt, und auf einem Gerät, das eine fehlgeschlagene Factory-Zurücksetzung aufweist, wird die Registrierung blockiert. |Update 1 |Ja |Nein |
-| 4 |Zurücksetzen auf Werkseinstellungen |In einigen Fällen wurden falsch positive Warnungen aufgrund fehlender Übereinstimmung ausgelöst. Falsche Warnungen aufgrund fehlender Übereinstimmung werden auf Geräten mit Update 1 nicht mehr generiert. |Update 1 |Ja |Nein |
-| 5 |Zurücksetzen auf Werkseinstellungen |Wenn die Zurücksetzung auf Werkseinstellungen vor der vollständigen Ausführung unterbrochen wurde, wechselte das Gerät in den Wiederherstellungsmodus und der Zugriff auf Windows PowerShell für StorSimple war nicht mehr möglich. Dieses Problem wurde jetzt behoben. |Update 1 |Ja |Nein |
+| 2 |Wiederherstellung der Herstellerstandards |Unter bestimmten Umständen kann sich das StorSimple-Gerät beim Zurücksetzen auf die Werkseinstellungen aufhängen und zeigt dann die folgende Nachricht an: **Zurücksetzung auf Werkseinstellungen wird ausgeführt (Phase 8)**. Dies kann vorkommen, wenn Sie STRG+C drücken, während das Cmdlet ausgeführt wird. Dieses Problem wurde jetzt behoben. |Update 1 |Ja |Nein |
+| 3 |Wiederherstellung der Herstellerstandards |Nach der fehlgeschlagenen Zurücksetzung einer Dual-Controller-Factory auf die Werkseinstellungen konnte die Geräteregistrierung fortgesetzt werden. Dies führte zu einer nicht unterstützten Systemkonfiguration. In Update 1 wird eine Fehlermeldung angezeigt, und auf einem Gerät, das eine fehlgeschlagene Factory-Zurücksetzung aufweist, wird die Registrierung blockiert. |Update 1 |Ja |Nein |
+| 4 |Wiederherstellung der Herstellerstandards |In einigen Fällen wurden falsch positive Warnungen aufgrund fehlender Übereinstimmung ausgelöst. Falsche Warnungen aufgrund fehlender Übereinstimmung werden auf Geräten mit Update 1 nicht mehr generiert. |Update 1 |Ja |Nein |
+| 5 |Wiederherstellung der Herstellerstandards |Wenn die Zurücksetzung auf Werkseinstellungen vor der vollständigen Ausführung unterbrochen wurde, wechselte das Gerät in den Wiederherstellungsmodus und der Zugriff auf Windows PowerShell für StorSimple war nicht mehr möglich. Dieses Problem wurde jetzt behoben. |Update 1 |Ja |Nein |
 | 6 |Notfallwiederherstellung |Ein Fehler der Notfallwiederherstellung wurde behoben, der ein Fehlschlagen der Notfallwiederherstellung beim Wiederherstellen von Sicherungen auf dem Zielgerät verursacht hat. |Update 1 |Ja |Ja |
 | 7 |Überwachungs-LEDs |In einigen Fällen zeigten Überwachungs-LEDs auf der Geräterückseite nicht den korrekten Status an. Die blaue LED wurde ausgeschaltet. DATA 0- und DATA 1-LEDs blinkten, selbst wenn diese Schnittstellen nicht konfiguriert waren. Das Problem wurde behoben, und die Überwachungs-LEDs zeigen jetzt den korrekten Status an. |Update 1 |Ja |Nein |
 | 8 |Überwachungs-LEDs |In bestimmten Fällen wurde das blaue Licht am aktiven Controller nach dem Anwenden von Update 1 ausgeschaltet, wodurch die Identifizierung des aktiven Controllers erschwert wurde. Dieses Problem wurde in dieser Patchversion behoben. |Update 1.2 |Ja |Nein |

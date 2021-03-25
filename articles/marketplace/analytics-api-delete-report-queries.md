@@ -8,10 +8,10 @@ author: sayantanroy83
 ms.author: sroy
 ms.date: 3/08/2021
 ms.openlocfilehash: 4fc3479f1e35970a97684396a7a2e0c0c2582128
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102583657"
 ---
 # <a name="delete-report-queries-api"></a>API zum Löschen von Berichtsabfragen
@@ -41,7 +41,7 @@ Mit dieser API werden benutzerdefinierte Abfragen gelöscht.
 
 Keine
 
-**Anforderungsnutzlast**
+**Anforderungsnutzdaten**
 
 Keine
 

@@ -9,10 +9,10 @@ ms.custom: subject-armqs
 ms.author: mbaldwin
 ms.date: 10/16/2020
 ms.openlocfilehash: 8c56a37ebcc799b0170785666212eb4e3b00a5f0
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92144983"
 ---
 # <a name="quickstart-create-an-azure-attestation-provider-with-an-arm-template"></a>Schnellstart: Erstellen eines Azure Attestation-Anbieters mit einer ARM-Vorlage
@@ -21,7 +21,7 @@ ms.locfileid: "92144983"
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen** . Die Vorlage wird im Azure-Portal geöffnet.
+Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen**. Die Vorlage wird im Azure-Portal geöffnet.
 
 [![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-attestation-provider-create%2Fazuredeploy.json)
 
@@ -49,11 +49,11 @@ In der Vorlage sind die folgenden Azure-Ressourcen definiert:
 
     Verwenden Sie den Standardwert, um den Nachweisanbieter zu erstellen, sofern kein anderer Wert angegeben ist.
 
-    - **Name des Nachweisanbieters** : Wählen Sie einen Namen für den Azure Attestation-Anbieter aus.
-    - **Standort** : Wählen Sie einen Standort aus. Beispiel: **USA, Mitte** .
-    - **Tags** : Wählen Sie einen Standort aus. Beispiel: **USA, Mitte** .
+    - **Name des Nachweisanbieters**: Wählen Sie einen Namen für den Azure Attestation-Anbieter aus.
+    - **Standort**: Wählen Sie einen Standort aus. Beispiel: **USA, Mitte**.
+    - **Tags**: Wählen Sie einen Standort aus. Beispiel: **USA, Mitte**.
 
-1. Wählen Sie die Option **Kaufen** . Nach erfolgreicher Bereitstellung der Nachweisressource erhalten Sie eine Benachrichtigung.
+1. Wählen Sie die Option **Kaufen**. Nach erfolgreicher Bereitstellung der Nachweisressource erhalten Sie eine Benachrichtigung.
 
 Zum Bereitstellen der Vorlage wird das Azure-Portal verwendet. Neben dem Azure-Portal können Sie auch Azure PowerShell, die Azure-Befehlszeilenschnittstelle (Azure CLI) und die REST-API verwenden. Informationen zu anderen Bereitstellungsmethoden finden Sie unter [Bereitstellen von Vorlagen](../azure-resource-manager/templates/deploy-powershell.md).
 

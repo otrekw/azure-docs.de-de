@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/26/2019
-ms.openlocfilehash: 7980003dd63e5e51d87f85542029a1f25e7223df
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: feada70c7a461bb4a9cd621c76b5606a7f0e19d5
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98932875"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865280"
 ---
 # <a name="use-apache-kafka-on-hdinsight-with-azure-iot-hub"></a>Verwendung von Apache Kafka in HDInsight mit Azure IoT Hub
 
@@ -22,7 +22,7 @@ Für den Abruf von Daten aus IoT Hub verwenden Sie einen __Quellconnector__. Fü
 
 In der folgenden Abbildung wird der Datenfluss zwischen Azure IoT Hub und Kafka in HDInsight unter Verwendung des Connectors gezeigt.
 
-![Abbildung zum Datenfluss zwischen IoT Hub und Kafka über den Connector](./media/apache-kafka-connector-iot-hub/iot-hub-kafka-connector-hdinsight.png)
+:::image type="content" source="./media/apache-kafka-connector-iot-hub/iot-hub-kafka-connector-hdinsight.png" alt-text="Abbildung zum Datenfluss zwischen IoT Hub und Kafka über den Connector" border="false":::
 
 Weitere Informationen zur Connect-API finden Sie unter [https://kafka.apache.org/documentation/#connect](https://kafka.apache.org/documentation/#connect).
 
@@ -82,7 +82,7 @@ Führen Sie über Ihre SSH-Verbindung mit dem Edgeknoten die folgenden Schritte 
     export password='PASSWORD'
     ```
 
-1. Installieren Sie das Hilfsprogramm [jq](https://stedolan.github.io/jq/). Durch jq können die von Ambari-Abfragen zurückgegebenen JSON-Dokumente einfacher verarbeitet werden. Geben Sie den folgenden Befehl ein:
+1. Installieren Sie das Hilfsprogramm [jq](https://stedolan.github.io/jq/). Durch jq können die von Ambari-Abfragen zurückgegebenen JSON-Dokumente einfacher verarbeitet werden. Geben Sie folgenden Befehl ein:
 
     ```bash
     sudo apt -y install jq

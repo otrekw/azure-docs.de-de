@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/12/2020
 ms.author: labattul
-ms.openlocfilehash: ba7c2a37d58f20ac4ff1f49a46a406d1b1f70106
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 3b4d66525ec52ef2382dfbe97bc09278e35b31fb
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97704417"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102124668"
 ---
 # <a name="set-up-dpdk-in-a-linux-virtual-machine"></a>Einrichten des DPDK auf einem virtuellen Linux-Computer
 
@@ -58,7 +58,7 @@ Alle Azure-Regionen unterstützen DPDK.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Auf der Linux-VM muss der beschleunigte Netzwerkbetrieb aktiviert sein. Die VM sollte mindestens zwei Netzwerkschnittstellen haben, davon eine für die Verwaltung. Weitere Informationen finden Sie unter [Erstellen eines virtuellen Linux-Computers mit beschleunigtem Netzwerkbetrieb](create-vm-accelerated-networking-cli.md).
+Auf der Linux-VM muss der beschleunigte Netzwerkbetrieb aktiviert sein. Die VM sollte mindestens zwei Netzwerkschnittstellen haben, davon eine für die Verwaltung. Die Aktivierung des beschleunigten Netzwerks auf der Verwaltungsschnittstelle wird nicht empfohlen. Weitere Informationen finden Sie unter [Erstellen eines virtuellen Linux-Computers mit beschleunigtem Netzwerkbetrieb](create-vm-accelerated-networking-cli.md).
 
 ## <a name="install-dpdk-dependencies"></a>Installieren von DPDK-Abhängigkeiten
 
