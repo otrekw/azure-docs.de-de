@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: digital-twins
 services: digital-twins
 ms.openlocfilehash: 9942056e59a46c61b4e9da32aab191d4b72db968
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92461758"
 ---
 # <a name="azure-digital-twins-customer-data-request-features"></a>Features für Kundendatenanforderungen in Azure Digital Twins
@@ -31,7 +31,7 @@ Zum Anzeigen, Exportieren und Löschen personenbezogener Daten, auf die möglich
 
 Als *personenbezogene Daten* werden in Azure Digital Twins Daten betrachtet, die mit den zugehörigen Administratoren und Benutzern verknüpft sind. 
 
-Von Azure Digital Twins wird die [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)- *Objekt-ID* von Benutzern mit Zugriff auf die Umgebung gespeichert. Im Azure-Portal werden von Azure Digital Twins zwar Benutzer-E-Mail-Adressen angezeigt, diese E-Mail-Adressen werden jedoch nicht in Azure Digital Twins gespeichert. Sie werden dynamisch in Azure Active Directory unter Verwendung der Azure Active Directory-Objekt-ID nachgeschlagen.
+Von Azure Digital Twins wird die [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)-*Objekt-ID* von Benutzern mit Zugriff auf die Umgebung gespeichert. Im Azure-Portal werden von Azure Digital Twins zwar Benutzer-E-Mail-Adressen angezeigt, diese E-Mail-Adressen werden jedoch nicht in Azure Digital Twins gespeichert. Sie werden dynamisch in Azure Active Directory unter Verwendung der Azure Active Directory-Objekt-ID nachgeschlagen.
 
 ## <a name="deleting-customer-data"></a>Löschen von Kundendaten
 

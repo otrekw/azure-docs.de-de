@@ -4,10 +4,10 @@ description: In diesem Artikel erfahren Sie, wie Sie Microsoft Azure Backup Serv
 ms.topic: conceptual
 ms.date: 06/08/2018
 ms.openlocfilehash: 80de7913b010fca69c3703e423109f2ede653590
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91332813"
 ---
 # <a name="back-up-sql-server-on-azure-stack"></a>Sichern von SQL Server auf Azure Stack
@@ -157,13 +157,13 @@ Anhand der zuvor beschriebenen Schritte wurde eine Sicherungsrichtlinie eingeric
 
 Die folgenden Schritte sind erforderlich, um eine geschützte Entität (SQL Server-Datenbank) aus Azure wiederherzustellen.
 
-1. Öffnen Sie die Azure Backup Server-Verwaltungskonsole. Navigieren Sie zum Arbeitsbereich **Wiederherstellung**, in dem die geschützten Server angezeigt werden. Suchen Sie nach der erforderlichen Datenbank (in diesem Fall "ReportServer$MSDPM2012"). Wählen Sie eine Zeit für **Wiederherstellung von** aus, die als ein **Online**punkt angegeben ist.
+1. Öffnen Sie die Azure Backup Server-Verwaltungskonsole. Navigieren Sie zum Arbeitsbereich **Wiederherstellung**, in dem die geschützten Server angezeigt werden. Suchen Sie nach der erforderlichen Datenbank (in diesem Fall "ReportServer$MSDPM2012"). Wählen Sie eine Zeit für **Wiederherstellung von** aus, die als ein **Online** punkt angegeben ist.
 
     ![Auswählen eines Wiederherstellungspunkts](./media/backup-azure-backup-sql/sqlbackup-restorepoint.png)
 2. Klicken Sie mit der rechten Maustaste auf den Datenbanknamen, und wählen Sie **Wiederherstellen** aus.
 
     ![Wiederherstellen aus Azure](./media/backup-azure-backup-sql/sqlbackup-recover.png)
-3. MABS zeigt die Details zum Wiederherstellungspunkt an. Wählen Sie **Weiter** aus. Um die Datenbank zu überschreiben, wählen Sie den Wiederherstellungstyp **In ursprünglicher Instanz von SQL Server wiederherstellen**aus. Wählen Sie **Weiter** aus.
+3. MABS zeigt die Details zum Wiederherstellungspunkt an. Wählen Sie **Weiter** aus. Um die Datenbank zu überschreiben, wählen Sie den Wiederherstellungstyp **In ursprünglicher Instanz von SQL Server wiederherstellen** aus. Wählen Sie **Weiter** aus.
 
     ![Wiederherstellung am ursprünglichen Speicherort](./media/backup-azure-backup-sql/sqlbackup-recoveroriginal.png)
 

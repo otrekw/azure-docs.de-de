@@ -4,10 +4,10 @@ description: Erfahren Sie mehr zu den Unterschieden zwischen benutzerdefinierten
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: df7a8e6209f8033eb5a29c65079e9c2f4cbbe544
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87287528"
 ---
 # <a name="comparing-custom-images-and-formulas-in-devtest-labs"></a>Vergleich zwischen benutzerdefinierten Images und Formeln in DevTest Labs
@@ -44,4 +44,4 @@ Formeln stellen eine dynamische Möglichkeit bereit, um virtuelle Computer mithi
 * [Custom images or formulas? (Benutzerdefinierte Images oder Formeln?)](./devtest-lab-faq.md#blog-post)
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [Häufig gestellte Fragen zu DevTest Labs](devtest-lab-faq.md)
+- [DevTest Labs – Häufig gestellte Fragen](devtest-lab-faq.md)

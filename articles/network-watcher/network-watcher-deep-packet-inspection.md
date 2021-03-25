@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: damendo
 ms.openlocfilehash: 3bd85d6faf05fcf659e9335ee9de3d64198dfa08
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98011168"
 ---
 # <a name="packet-inspection-with-azure-network-watcher"></a>Paketuntersuchung mit Azure Network Watcher
@@ -63,7 +63,7 @@ Da wir nach allen [SYN]- und [SYN, ACK]-Paketen filtern möchten, vergewissern w
 
 ![Abbildung 7][7]
 
-### <a name="step-4"></a>Schritt 4
+### <a name="step-4"></a>Schritt 4
 
 Nachdem Sie das Fenster gefiltert haben und nur Pakete mit festgelegtem [SYN]-Bit angezeigt werden, können Sie Konversationen, die für Sie interessant sind, einfach auswählen, um den RTT-Anfangswert anzuzeigen. Ein einfacher Weg zum Anzeigen des RTT-Werts in WireShark ist das Klicken auf die Dropdownliste für die „SEQ/ACK“-Analyse. Der RTT-Wert wird angezeigt. In diesem Fall beträgt der RTT-Wert 0,0022114 Sekunden bzw. 2,211 ms.
 

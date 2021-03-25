@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: image-builder
 ms.custom: references_regions
 ms.reviewer: cynthn
-ms.openlocfilehash: 0e72c35af1f1990527b0154d2ba47a45d3f8b8c9
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 20bb6925f859d497046eb42bbafb5264826b77b7
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102425622"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104604065"
 ---
 # <a name="preview-azure-image-builder-overview"></a>Vorschau: Übersicht über Azure Image Builder
 
@@ -70,7 +70,7 @@ Azure VM Image Builder ist ein vollständig verwalteter Azure-Dienst, der über 
 
 Vorlagenkonfigurationen können mithilfe von PowerShell, der Azure-Befehlszeilenschnittstelle, ARM-Vorlagen und der DevOps-Aufgabe von Azure VM Image Builder übergeben werden. Wenn Sie sie an den Dienst senden, wird eine Imagevorlagenressource erstellt. Wenn die Imagevorlagenressource erstellt wird, wird eine Stagingressourcengruppe im Format IT_\<DestinationResourceGroup> _\<TemplateName>_ \(GUID) in Ihrem Abonnement erstellt und angezeigt. Die Stagingressourcengruppe enthält Dateien und Skripts, auf die in der Datei-, Shell- und PowerShell-Anpassung in der ScriptURI-Eigenschaft verwiesen wird.
 
-Zum Ausführen des Builds rufen Sie `Run` in der Imagevorlagenressource auf. Im Dienst werden dann weitere Ressourcen für den Build bereitgestellt, z. B. eine VM, ein Netzwerk, ein Datenträger oder ein Netzwerkadapter. Wenn Sie ein Image ohne Verwendung eines vorhandenen VNet erstellen, werden in Image Builder auch eine öffentliche IP-Adresse und eine Netzwerksicherheitsgruppe bereitgestellt. Die Verbindung mit der Build-VM wird über SSH oder WinRM hergestellt. Wenn Sie ein vorhandenes VNet verwenden, erfolgt die Bereitstellung im Dienst über Azure Private Link, ohne dass eine öffentliche IP-Adresse erforderlich ist. Weitere Informationen zu Image Builder-Netzwerken finden Sie [hier](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-networking).
+Zum Ausführen des Builds rufen Sie `Run` in der Imagevorlagenressource auf. Im Dienst werden dann weitere Ressourcen für den Build bereitgestellt, z. B. eine VM, ein Netzwerk, ein Datenträger oder ein Netzwerkadapter. Wenn Sie ein Image ohne Verwendung eines vorhandenen VNet erstellen, werden in Image Builder auch eine öffentliche IP-Adresse und eine Netzwerksicherheitsgruppe bereitgestellt. Die Verbindung mit der Build-VM wird über SSH oder WinRM hergestellt. Wenn Sie ein vorhandenes VNet verwenden, erfolgt die Bereitstellung im Dienst über Azure Private Link, ohne dass eine öffentliche IP-Adresse erforderlich ist. Weitere Informationen zu Image Builder-Netzwerken finden Sie [hier](./linux/image-builder-networking.md).
 
 Nach Fertigstellung des Builds werden alle Ressourcen gelöscht, mit Ausnahme der Stagingressourcengruppe und des Speicherkontos. Diese können Sie durch Löschen der Imagevorlagenressource entfernen oder beibehalten, um den Build erneut auszuführen.
 
@@ -84,7 +84,7 @@ Wenn Sie sich für die (AIB) registrieren, wird dem AIB-Dienst die Berechtigung 
 
 Damit Azure VM Image Builder Images an die verwalteten Images oder an eine Shared Image Gallery verteilen kann, müssen Sie eine benutzerseitig zugewiesene Azure-Identität erstellen, die über Berechtigungen zum Lesen und Schreiben von Images verfügt. Wenn Sie auf Azure Storage zugreifen, sind dafür Berechtigungen zum Lesen privater und öffentlicher Container erforderlich.
 
-Die Berechtigungen werden ausführlicher für [PowerShell](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-permissions-powershell) und die [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-permissions-cli) erläutert.
+Die Berechtigungen werden ausführlicher für [PowerShell](./linux/image-builder-permissions-powershell.md) und die [Azure-Befehlszeilenschnittstelle](./linux/image-builder-permissions-cli.md) erläutert.
 
 ## <a name="costs"></a>Kosten
 Bei der Erstellung, dem Aufbau und der Speicherung von Images mit Azure Image Builder fallen einige Computing-, Netzwerk- und Speicherkosten an. Diese Kosten sind mit Kosten beim manuellen Erstellen von benutzerdefinierten Images vergleichbar. Für die Ressourcen werden Ihre üblichen Azure-Preisen abgerechnet. 
@@ -101,4 +101,3 @@ Image Builder unterstützt derzeit nativ nur die Erstellung von Images der Hyper
 ## <a name="next-steps"></a>Nächste Schritte 
  
 Um den Azure Image Builder auszuprobieren, lesen Sie die Artikel zum Erstellen von [Linux](./linux/image-builder.md)- oder [Windows](./windows/image-builder.md)-Images.
-

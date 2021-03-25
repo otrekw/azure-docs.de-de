@@ -4,10 +4,10 @@ description: Erfahren Sie, wie Sie den Systemstatus von Windows Server-Computern
 ms.topic: conceptual
 ms.date: 05/23/2018
 ms.openlocfilehash: 1b3573d757d2f7b1ffec9ae718aa791488960f3b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91332887"
 ---
 # <a name="back-up-windows-system-state-to-azure"></a>Sichern des Windows-Systemstatus in Azure
@@ -138,7 +138,7 @@ Für die erste Sicherung verwenden Sie den Microsoft Azure Recovery Services-Age
 
 ### <a name="to-schedule-the-backup-job"></a>So planen Sie den Sicherungsauftrag
 
-1. Öffnen Sie den Microsoft Azure Recovery Services-Agent. Den Agent finden Sie, indem Sie auf Ihrem Computer nach **Microsoft Azure Backup**suchen.
+1. Öffnen Sie den Microsoft Azure Recovery Services-Agent. Den Agent finden Sie, indem Sie auf Ihrem Computer nach **Microsoft Azure Backup** suchen.
 
     ![Starten des Azure Recovery Services-Agents](./media/backup-try-azure-backup-in-10-mins/snap-in-search.png)
 

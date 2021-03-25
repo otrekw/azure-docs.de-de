@@ -14,10 +14,10 @@ ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
 ms.openlocfilehash: 6d9f5538d377be1414089e591559344bde4f381a
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98795644"
 ---
 # <a name="security-tokens"></a>Sicherheitstoken
@@ -86,7 +86,7 @@ F체r Token, die im impliziten Modus ausgestellt werden, gilt eine L채ngenbeschr�
 
 ## <a name="next-steps"></a>N채chste Schritte
 
-Weitere Informationen zur Authentifizierung und Autorisierung in Microsoft Identity Platform finden Sie in den folgenden Artikeln:
+Weitere Informationen zur Authentifizierung und Autorisierung in der Microsoft Identity Platform finden Sie in den folgenden Artikeln:
 
 * Informationen zu den grundlegenden Konzepten f체r die Authentifizierung und Autorisierung finden Sie unter [Authentifizierung im Vergleich zu Autorisierung](authentication-vs-authorization.md).
 * Informationen zum Registrieren Ihrer Anwendung f체r die Integration finden Sie unter [Anwendungsmodell](application-model.md).

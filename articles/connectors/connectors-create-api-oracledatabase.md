@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 05/20/2020
 tags: connectors
 ms.openlocfilehash: 91873a2d6a498712773bfe721653e64c3364666f
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92674820"
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>Erste Schritte mit dem Oracle-Datenbankconnector
@@ -52,7 +52,7 @@ In diesem Artikel erfahren Sie, wie Sie den Oracle-Datenbankconnector in einer L
 ## <a name="add-the-connector"></a>Hinzufügen des Connectors
 
 > [!IMPORTANT]
-> Dieser Connector verfügt über keine Trigger. Es weist lediglich Aktionen auf. Fügen Sie daher bei der Erstellung Ihrer Logik-App einen anderen Trigger hinzu, um Ihre Logik-App zu starten, z.B. **Zeitplan - Wiederholung** oder **Anforderung/Antwort - Antwort** . 
+> Dieser Connector verfügt über keine Trigger. Es weist lediglich Aktionen auf. Fügen Sie daher bei der Erstellung Ihrer Logik-App einen anderen Trigger hinzu, um Ihre Logik-App zu starten, z.B. **Zeitplan - Wiederholung** oder **Anforderung/Antwort - Antwort**. 
 
 1. Erstellen Sie im [Azure-Portal](https://portal.azure.com) eine leere Logik-App.
 
@@ -62,14 +62,14 @@ In diesem Artikel erfahren Sie, wie Sie den Oracle-Datenbankconnector in einer L
 
 3. Wählen Sie **Speichern** aus. Beim Speichern wird automatisch eine Anforderungs-URL generiert. 
 
-4. Wählen Sie **Neuer Schritt** aus und anschließend **Aktion hinzufügen** . Geben Sie `oracle` ein, um die verfügbaren Aktionen anzuzeigen: 
+4. Wählen Sie **Neuer Schritt** aus und anschließend **Aktion hinzufügen**. Geben Sie `oracle` ein, um die verfügbaren Aktionen anzuzeigen: 
 
     ![Ein Suchfeld, das den Begriff „oracle“ enthält. Die Suche ergibt einen Treffer mit der Bezeichnung „Oracle Database“. Es ist eine Registerkartenseite mit einer Registerkarte „TRIGGER (0)“ und einer weiteren Registerkarte „AKTIONEN (6)“dargestellt. Es sind sechs Aktionen aufgeführt. Die erste dieser Aktionen lautet „Zeile abrufen Vorschau“.](./media/connectors-create-api-oracledatabase/oracledb-actions.png)
 
     > [!TIP]
     > Dies ist auch die schnellste Methode, um die Trigger und Aktionen anzuzeigen, die für Connectors verfügbar sind. Geben Sie einen Teil des Connectornamens ein, z.B. `oracle`. Der Designer führt alle Trigger und Aktionen auf. 
 
-5. Wählen Sie eine der Aktionen aus, z.B. **Oracle-Datenbank - Zeile abrufen** . Wählen Sie **Verbinden über lokales Datengateway** . Geben Sie den Oracle-Servernamen, die Authentifizierungsmethode, den Benutzernamen und das Kennwort ein, und wählen Sie das Gateway aus:
+5. Wählen Sie eine der Aktionen aus, z.B. **Oracle-Datenbank - Zeile abrufen**. Wählen Sie **Verbinden über lokales Datengateway**. Geben Sie den Oracle-Servernamen, die Authentifizierungsmethode, den Benutzernamen und das Kennwort ein, und wählen Sie das Gateway aus:
 
     ![Das Dialogfeld hat den Titel „Oracle Database – Zeile abrufen“. Darin ist ein aktiviertes Kontrollkästchen mit der Bezeichnung „Verbindung über lokales Datengateway herstellen“ enthalten. Darunter sind fünf Textfelder vorhanden.](./media/connectors-create-api-oracledatabase/create-oracle-connection.png)
 
@@ -102,7 +102,7 @@ In diesem Artikel erfahren Sie, wie Sie den Oracle-Datenbankconnector in einer L
 
 **Ursache:** Das lokale Datengateway kann keine Verbindung zur Cloud herstellen. 
 
-**Lösung** : Stellen Sie sicher, dass Ihr Gateway auf dem lokalen Computer ausgeführt wird, auf dem dieser installiert ist, und dass eine Internetverbindung hergestellt werden kann.    Es wird empfohlen, das Gateway nicht auf einem Computer zu installieren, der möglicherweise ausgeschaltet wird oder in den Standbymodus wechselt.  Sie können auch den lokalen Datengatewaydienst (PBIEgwService) neu starten.
+**Lösung**: Stellen Sie sicher, dass Ihr Gateway auf dem lokalen Computer ausgeführt wird, auf dem dieser installiert ist, und dass eine Internetverbindung hergestellt werden kann.    Es wird empfohlen, das Gateway nicht auf einem Computer zu installieren, der möglicherweise ausgeschaltet wird oder in den Standbymodus wechselt.  Sie können auch den lokalen Datengatewaydienst (PBIEgwService) neu starten.
 
 #### <a name="error-the-provider-being-used-is-deprecated-systemdataoracleclient-requires-oracle-client-software-version-817-or-greater-see-httpsgomicrosoftcomfwlinkplinkid272376-to-install-the-official-provider"></a>**Fehler:** Der verwendete Anbieter ist veraltet: System.Data.OracleClient erfordert Version 8.1.7 oder höher der Oracle-Clientsoftware. Informationen zum Installieren des offiziellen Anbieters finden Sie unter [https://go.microsoft.com/fwlink/p/?LinkID=272376](/power-bi/connect-data/desktop-connect-oracle-database).
 

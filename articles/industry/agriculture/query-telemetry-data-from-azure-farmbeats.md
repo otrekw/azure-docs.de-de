@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 03/11/2020
 ms.author: sunasing
 ms.openlocfilehash: b9067e2f78c8098d4a21263ac89caf03da631274
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92677478"
 ---
 # <a name="query-ingested-telemetry-data"></a>Abfragen erfasster Telemetriedaten
@@ -24,7 +24,7 @@ Für diesen Artikel muss FarmBeats installiert sein, und Sie müssen bereits Sen
 
 Informationen zum Erfassen von Sensortelemetriedaten finden Sie unter [Erfassen historischer Telemetriedaten](ingest-historical-telemetry-data-in-azure-farmbeats.md).
 
-Bevor Sie fortfahren, müssen Sie auch sicherstellen, dass Sie mit den FarmBeats-REST-APIs vertraut sind, da Sie die erfasste Telemetrie mithilfe der APIs abfragen werden. Weitere Informationen zu den FarmBeats-APIs finden Sie unter [FarmBeats-REST-APIs](rest-api-in-azure-farmbeats.md). **Stellen Sie sicher, dass Sie API-Anforderungen an Ihren FarmBeats-Datenhubendpunkt stellen können** .
+Bevor Sie fortfahren, müssen Sie auch sicherstellen, dass Sie mit den FarmBeats-REST-APIs vertraut sind, da Sie die erfasste Telemetrie mithilfe der APIs abfragen werden. Weitere Informationen zu den FarmBeats-APIs finden Sie unter [FarmBeats-REST-APIs](rest-api-in-azure-farmbeats.md). **Stellen Sie sicher, dass Sie API-Anforderungen an Ihren FarmBeats-Datenhubendpunkt stellen können**.
 
 ## <a name="query-ingested-sensor-telemetry-data"></a>Abfragen erfasster Sensortelemetriedaten
 
@@ -115,8 +115,8 @@ Telemetriedaten werden in einem Event Hub empfangen und dann verarbeitet und an 
 
 Führen Sie die Schritte aus, um Daten in TSI visuell darzustellen:
 
-1. Wechseln Sie zu **Azure Portal** > **FarmBeats-DataHub-Ressourcengruppe** . Wählen Sie die **Time Series Insights** -Umgebung (tsi-xxxx) und dann **Datenzugriffsrichtlinien** aus. Fügen Sie einen Benutzer mit den Zugriffberechtigungen „Leser“ oder „Mitwirkender“ hinzu.
-2. Wechseln Sie zur Seite **Übersicht** der **Time Series Insights** -Umgebung (tsi-xxxx), und wählen Sie die **Time Series Insights-Explorer-URL** aus. Sie können die erfassten Telemetriedaten nun visualisieren.
+1. Wechseln Sie zu **Azure Portal** > **FarmBeats-DataHub-Ressourcengruppe**. Wählen Sie die **Time Series Insights**-Umgebung (tsi-xxxx) und dann **Datenzugriffsrichtlinien** aus. Fügen Sie einen Benutzer mit den Zugriffberechtigungen „Leser“ oder „Mitwirkender“ hinzu.
+2. Wechseln Sie zur Seite **Übersicht** der **Time Series Insights**-Umgebung (tsi-xxxx), und wählen Sie die **Time Series Insights-Explorer-URL** aus. Sie können die erfassten Telemetriedaten nun visualisieren.
 
 Neben dem Speichern, Abfragen und Visualisieren von Telemetriedaten ermöglicht TSI auch die Integration in ein Power BI-Dashboard. Weitere Informationen finden Sie [hier]( https://docs.microsoft.com/azure/time-series-insights/how-to-connect-power-bi).
 

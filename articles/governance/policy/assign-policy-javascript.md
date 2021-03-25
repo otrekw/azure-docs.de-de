@@ -5,10 +5,10 @@ ms.date: 09/24/2020
 ms.topic: quickstart
 ms.custom: devx-track-js
 ms.openlocfilehash: 7548053e4bd5be214bf7de3eef3dc4c6c95442d4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91348175"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-javascript"></a>Schnellstart: Erstellen einer Richtlinienzuweisung zum Identifizieren nicht konformer Ressourcen mithilfe von JavaScript

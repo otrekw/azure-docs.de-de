@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 10/11/2017
 ms.author: alkohli
 ms.openlocfilehash: 49c38e23ddbbfe983ff82ad25363c744292d4d69
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92518975"
 ---
 # <a name="azure-role-based-access-control-for-storsimple"></a>Rollenbasierte Zugriffssteuerung in Azure für StorSimple
@@ -42,7 +42,7 @@ Um die verschiedenen Rollen, die für Benutzer von StorSimple-Geräten verfügba
 
 ## <a name="create-a-custom-role-for-storsimple-infrastructure-administrator"></a>Erstellen einer benutzerdefinierten Rolle für StorSimple-Infrastrukturadministratoren
 
-Im folgenden Beispiel beginnen wir mit der integrierten Rolle **Reader** , mit der Benutzer alle Ressourcenbereiche anzeigen, aber diese weder bearbeiten noch neue erstellen dürfen. Wir erweitern diese Rolle, um eine neue benutzerdefinierte Rolle für StorSimple-Infrastrukturadministratoren zu erstellen. Diese Rolle wird Benutzern zugewiesen, die die Infrastruktur für die StorSimple-Geräte verwalten.
+Im folgenden Beispiel beginnen wir mit der integrierten Rolle **Reader**, mit der Benutzer alle Ressourcenbereiche anzeigen, aber diese weder bearbeiten noch neue erstellen dürfen. Wir erweitern diese Rolle, um eine neue benutzerdefinierte Rolle für StorSimple-Infrastrukturadministratoren zu erstellen. Diese Rolle wird Benutzern zugewiesen, die die Infrastruktur für die StorSimple-Geräte verwalten.
 
 1. Führen Sie Windows PowerShell als Administrator aus.
 
@@ -58,7 +58,7 @@ Im folgenden Beispiel beginnen wir mit der integrierten Rolle **Reader** , mit d
     Get-AzRoleDefinition -Name "Reader" | ConvertTo-Json | Out-File C:\ssrbaccustom.json
     ```
 
-4. Öffnen Sie die JSON-Datei in Visual Studio. Wie Sie sehen, besteht eine typische Azure-Rolle aus drei Hauptabschnitten: **Actions** , **NotActions** und **AssignableScopes**.
+4. Öffnen Sie die JSON-Datei in Visual Studio. Wie Sie sehen, besteht eine typische Azure-Rolle aus drei Hauptabschnitten: **Actions**, **NotActions** und **AssignableScopes**.
 
     Im Abschnitt **Actions** sind alle zulässigen Vorgänge für diese Rolle aufgelistet. Jede Aktion wird von einem Ressourcenanbieter zugewiesen. Verwenden Sie für einen StorSimple-Infrastrukturadministrator den Ressourcenanbieter `Microsoft.StorSimple`.
 

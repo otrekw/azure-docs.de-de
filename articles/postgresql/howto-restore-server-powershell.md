@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 63fffb5998b0b6a245db3f1c8fcf16f2d576936e
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92489760"
 ---
 # <a name="how-to-back-up-and-restore-an-azure-database-for-postgresql-server-using-powershell"></a>Sichern und Wiederherstellen eines Azure Database for PostgreSQL-Servers mithilfe von PowerShell
@@ -73,13 +73,13 @@ Get-AzPostgreSqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
   Restore-AzPostgreSqlServer -Name mydemoserver-restored -ResourceGroupName myresourcegroup -RestorePointInTime $restorePointInTime -UsePointInTimeRestore
 ```
 
-Die **PointInTimeRestore** -Parameter des `Restore-AzPostgreSqlServer`-Cmdlet müssen die folgenden Parameter umfassen:
+Die **PointInTimeRestore**-Parameter des `Restore-AzPostgreSqlServer`-Cmdlet müssen die folgenden Parameter umfassen:
 
 | Einstellung | Vorgeschlagener Wert | BESCHREIBUNG  |
 | --- | --- | --- |
 | ResourceGroupName |  myresourcegroup |  Die Ressourcengruppe, in der sich der Quellserver befindet.  |
 | Name | mydemoserver-restored | Der Name des neuen Servers, der durch den Befehl „restore“ erstellt wird. |
-| RestorePointInTime | 2020-03-13T13:59:00Z | Wählen Sie einen Zeitpunkt für die Wiederherstellung aus. Datum und Zeit müssen innerhalb des Aufbewahrungszeitraums für Sicherungen des Quellservers liegen. Verwenden Sie das Datums- und Zeitformat nach ISO 8601. Beispielsweise können Sie Ihre eigene lokale Zeitzone wie **2020-03-13T05:59:00-08:00** verwenden. Sie können auch das Format „UTC-Zulu“ verwenden, z. B. **2018-03-13T13:59:00Z** . |
+| RestorePointInTime | 2020-03-13T13:59:00Z | Wählen Sie einen Zeitpunkt für die Wiederherstellung aus. Datum und Zeit müssen innerhalb des Aufbewahrungszeitraums für Sicherungen des Quellservers liegen. Verwenden Sie das Datums- und Zeitformat nach ISO 8601. Beispielsweise können Sie Ihre eigene lokale Zeitzone wie **2020-03-13T05:59:00-08:00** verwenden. Sie können auch das Format „UTC-Zulu“ verwenden, z. B. **2018-03-13T13:59:00Z**. |
 | UsePointInTimeRestore | `<SwitchParameter>` | Verwenden Sie den Point-in-Time-Modus für die Wiederherstellung. |
 
 Wenn Sie den Zustand eines Servers zu einem früheren Zeitpunkt wiederherstellen, wird ein neuer Server erstellt. Der ursprüngliche Server und seine Datenbanken zum angegebenen Zeitpunkt werden auf den neuen Server kopiert.
@@ -94,7 +94,7 @@ Der neue Server, der während einer Wiederherstellung erstellt wird, weist nicht
 
 Wenn Sie Ihren Server für georedundante Sicherungen konfiguriert haben, kann aus der Sicherung dieses vorhandenen Servers ein neuer Server erstellt werden. Dieser neue Server kann in allen Regionen erstellt werden, in denen Azure Database for PostgreSQL verfügbar ist.
 
-Wenn Sie einen Server mithilfe einer georedundanten Sicherung erstellen möchten, verwenden Sie den `Restore-AzPostgreSqlServer`-Befehl mit dem Parameter **UseGeoRestore** .
+Wenn Sie einen Server mithilfe einer georedundanten Sicherung erstellen möchten, verwenden Sie den `Restore-AzPostgreSqlServer`-Befehl mit dem Parameter **UseGeoRestore**.
 
 > [!NOTE]
 > Für einen neu erstellten Server kann möglicherweise nicht sofort eine Geowiederherstellung durchgeführt werden. Es kann einige Stunden dauern, bis die erforderlichen Metadaten aufgefüllt wurden.
@@ -115,7 +115,7 @@ Get-AzPostgreSqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
   Restore-AzPostgreSqlServer -Name mydemoserver-georestored -ResourceGroupName newresourcegroup -Location eastus -Sku GP_Gen5_8 -UseGeoRestore
 ```
 
-Die **GeoRestore** -Parameter des `Restore-AzPostgreSqlServer`-Cmdlet müssen die folgenden Parameter umfassen:
+Die **GeoRestore**-Parameter des `Restore-AzPostgreSqlServer`-Cmdlet müssen die folgenden Parameter umfassen:
 
 | Einstellung | Vorgeschlagener Wert | BESCHREIBUNG  |
 | --- | --- | --- |

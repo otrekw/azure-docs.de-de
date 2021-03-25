@@ -4,10 +4,10 @@ description: Dieser Artikel enthält Informationen zur Authentifizierung einer A
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: c4e19c0ab26d491ba0b95159e274383431aefaee
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92518227"
 ---
 # <a name="authenticate-and-authorize-an-application-with-azure-active-directory-to-access-azure-service-bus-entities"></a>Authentifizieren und Autorisieren einer Anwendung mit Azure Active Directory für den Zugriff auf Azure Service Bus-Entitäten
@@ -21,7 +21,7 @@ Wenn ein Sicherheitsprinzipal (ein Benutzer, eine Gruppe oder eine Anwendung) ve
 
 Für den Authentifizierungsschritt ist es erforderlich, dass eine Anwendungsanforderung zur Laufzeit ein OAuth 2.0-Zugriffstoken enthält. Wenn eine Anwendung in einer Azure-Entität, z.B. einem virtuellen Azure-Computer, einer VM-Skalierungsgruppe oder einer Azure Functions-App, ausgeführt wird, kann der Zugriff auf die Ressourcen über eine verwaltete Identität erfolgen. Informationen zum Authentifizieren von Anforderungen, die von einer verwalteten Identität an den Service Bus-Dienst übermittelt werden, finden Sie unter [Authentifizieren des Zugriffs auf Azure Service Bus-Ressourcen mit Azure Active Directory und verwalteten Identitäten für Azure Ressourcen](service-bus-managed-service-identity.md). 
 
-Der Autorisierungsschritt erfordert, dass dem Sicherheitsprinzipal mindestens eine Azure-Rolle zugewiesen wird. Azure Service Bus stellt Azure-Rollen bereit, die Berechtigungssätze für Service Bus-Ressourcen enthalten. Die möglichen Berechtigungen eines Sicherheitsprinzipals sind durch die Rollen vorgegeben, die dem Prinzipal zugewiesen sind. Weitere Informationen zur Zuweisung von Azure-Rollen zu Azure Service Bus finden Sie unter [Integrierte Azure-Rollen für Azure Service Bus](#azure-built-in-roles-for-azure-service-bus). 
+Der Autorisierungsschritt erfordert, dass dem Sicherheitsprinzipal mindestens eine Azure-Rolle zugewiesen wird. Azure Service Bus stellt Azure-Rollen bereit, die Berechtigungssätze für Service Bus-Ressourcen enthalten. Die möglichen Berechtigungen eines Sicherheitsprinzipals sind durch die Rollen vorgegeben, die dem Prinzipal zugewiesen sind. Weitere Informationen zur Zuweisung von Azure-Rollen zu Azure Service Bus finden Sie unter [Integrierte Azure-Rollen für Azure Service Bus](#azure-built-in-roles-for-azure-service-bus). 
 
 Native Anwendungen und Webanwendungen, die Anforderungen an Service Bus senden, können die Autorisierung ebenfalls mit Azure AD durchführen. In diesem Artikel erfahren Sie, wie Sie ein Zugriffstoken anfordern und dieses zum Autorisieren von Anforderungen für Service Bus-Ressourcen verwenden. 
 
@@ -43,10 +43,10 @@ Bevor Sie einem Sicherheitsprinzipal eine Azure-Rolle zuweisen, legen Sie den Zu
 
 In der folgenden Liste werden die Ebenen beschrieben, auf denen Sie den Zugriff auf Service Bus-Ressourcen einschränken können, beginnend mit dem kleinstmöglichen Bereich:
 
-- **Warteschlange** , **Thema** oder **Abonnement** : Die Rollenzuweisung gilt für die jeweilige Service Bus-Entität. Derzeit wird das Zuweisen von Benutzern/Gruppen/verwalteten Identitäten zu Service Bus-Azure-Rollen auf Abonnementebene vom Azure-Portal nicht unterstützt. 
+- **Warteschlange**, **Thema** oder **Abonnement**: Die Rollenzuweisung gilt für die jeweilige Service Bus-Entität. Derzeit wird das Zuweisen von Benutzern/Gruppen/verwalteten Identitäten zu Service Bus-Azure-Rollen auf Abonnementebene vom Azure-Portal nicht unterstützt. 
 - **Service Bus-Namespace:** Die Rollenzuweisung umfasst die gesamte Topologie von Service Bus unter dem Namespace und für die zugeordnete Consumergruppe.
-- **Ressourcengruppe** : Die Rollenzuweisung gilt für alle Service Bus-Ressourcen unter der Ressourcengruppe.
-- **Abonnement** : Die Rollenzuweisung gilt für alle Service Bus-Ressourcen in allen Ressourcengruppen im Abonnement.
+- **Ressourcengruppe**: Die Rollenzuweisung gilt für alle Service Bus-Ressourcen unter der Ressourcengruppe.
+- **Abonnement**: Die Rollenzuweisung gilt für alle Service Bus-Ressourcen in allen Ressourcengruppen im Abonnement.
 
 > [!NOTE]
 > Denken Sie daran, dass die Weitergabe von Azure-Rollenzuweisungen bis zu fünf Minuten dauern kann. 
@@ -71,7 +71,7 @@ Nachdem Sie den gewünschten Bereich für eine Rollenzuweisung festgelegt haben,
 1. Führen Sie auf der Seite **Rollenzuweisung hinzufügen** die folgenden Schritte aus:
     1. Wählen Sie die **Service Bus-Rolle** aus, die Sie zuweisen möchten. 
     1. Suchen Sie nach dem **Sicherheitsprinzipal** (Benutzer, Gruppe, Dienstprinzipal), dem Sie die Rolle zuweisen möchten.
-    1. Klicken Sie auf **Speichern** , um die Rollenzuweisung zu speichern. 
+    1. Klicken Sie auf **Speichern**, um die Rollenzuweisung zu speichern. 
 
         ![Zuweisen einer Rolle zu einem Benutzer](./media/authenticate-application/assign-role-to-user.png)
     4. Die Identität, der Sie die Rolle zugewiesen haben, wird unter dieser Rolle angezeigt. Die folgende Abbildung zeigt, dass sich „Azure-users“ in der Azure Service Bus-Rolle „Datenbesitzer“ befindet. 
@@ -133,7 +133,7 @@ Eine Liste der Szenarien, für die das Abrufen von Token unterstützt wird, find
 ## <a name="sample-on-github"></a>Beispiel auf GitHub
 Auf GitHub ist das folgende Beispiele verfügbar: [Rollenbasierte Zugriffssteuerung von Azure für Service Bus](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/RoleBasedAccessControl) 
 
-Verwenden Sie die Option für die **Anmeldung mit dem geheimen Clientschlüssel** , nicht die Option für die **interaktive Benutzeranmeldung**. Wenn Sie die Option für den geheimen Clientschlüssel verwenden, wird kein Popupfenster angezeigt. Die Anwendung nutzt die Mandanten-ID und die App-ID für die Authentifizierung. 
+Verwenden Sie die Option für die **Anmeldung mit dem geheimen Clientschlüssel**, nicht die Option für die **interaktive Benutzeranmeldung**. Wenn Sie die Option für den geheimen Clientschlüssel verwenden, wird kein Popupfenster angezeigt. Die Anwendung nutzt die Mandanten-ID und die App-ID für die Authentifizierung. 
 
 ### <a name="run-the-sample"></a>Ausführen des Beispiels
 

@@ -4,10 +4,10 @@ description: Erfahren Sie, wie Sie Ihren in Azure ausgeführten Funktionscode vo
 ms.date: 4/13/2020
 ms.topic: conceptual
 ms.openlocfilehash: 351bdca7ff94b6c058b5ab62fd9c16d707e7dc78
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100368488"
 ---
 # <a name="securing-azure-functions"></a>Absichern von Azure Functions
@@ -62,7 +62,7 @@ In der folgenden Tabelle wird der Zweck der verschiedenen Arten von Zugriffsschl
 |-----------------------------------------------|--------------------------|--------------------|
 | Funktion ausführen                            | Spezifische Funktion        | Funktion           |
 | Funktion ausführen                            | Beliebige Funktion             | Funktion oder Host   |
-| Administratorendpunkt aufrufen                        | Funktionen-App             | Host (nur Master) |
+| Administratorendpunkt aufrufen                        | Funktions-App             | Host (nur Master) |
 | Durable Task-Erweiterungs-APIs aufrufen              | Funktions-App<sup>1</sup> | System<sup>2</sup> |
 | Erweiterungsspezifischen Webhook (intern) aufrufen | Funktions-App<sup>1</sup> | System<sup>2</sup> |
 

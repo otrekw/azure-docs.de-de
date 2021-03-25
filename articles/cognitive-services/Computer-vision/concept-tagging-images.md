@@ -12,10 +12,10 @@ ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: a75e55cd51890173b6733ab5f8c0f1bcbfeef0f5
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96532974"
 ---
 # <a name="applying-content-tags-to-images"></a>Anwenden von Inhaltstags auf Bilder
@@ -28,7 +28,7 @@ Nachdem Sie ein Bild hochgeladen oder eine Bild-URL angegeben haben, geben die A
 
 Die folgende JSON-Antwort veranschaulicht, was vom maschinellen Sehen beim Taggen von visuellen Merkmalen zurückgegeben wird, die im Beispielbild erkannt wurden.
 
-![Ein blaues Haus mit Vorgarten](./Images/house_yard.png)erforderlich.
+![Ein blaues Haus mit Vorgarten](./Images/house_yard.png).
 
 ```json
 {

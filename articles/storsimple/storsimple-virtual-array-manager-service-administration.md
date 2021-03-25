@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/1/2016
+ms.date: 03/17/2021
 ms.author: alkohli
-ms.openlocfilehash: 2395e3c6f2026bc1024de38122bc20959fdcf9b7
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: cb5b6b1a2d890fe49d78da17d549c5676557b971
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967090"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104654243"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-virtual-array"></a>Verwalten des StorSimple Virtual Array mithilfe des StorSimple Geräte-Manager-Diensts
 ![Setup-Prozessablauf](./media/storsimple-virtual-array-manager-service-administration/manage4.png)
@@ -35,14 +35,12 @@ In diesem Artikel lernen Sie Folgendes:
 
 > [!NOTE]
 > Die Verwaltungsoptionen, die für das Gerät der StorSimple 8000er Serie verfügbar sind, finden Sie unter [Verwalten Ihres StorSimple-Geräts mithilfe des StorSimple Manager-Diensts](./storsimple-8000-manager-service-administration.md).
-> 
-> 
 
 ## <a name="connect-to-the-storsimple-device-manager-service"></a>Herstellen einer Verbindung mit dem StorSimple-Geräte-Manager-Dienst
 Der StorSimple-Geräte-Manager-Dienst wird in Microsoft Azure ausgeführt. Er stellt Verbindungen mit mehreren StorSimple Virtual Arrays her. Diese Geräte werden über ein zentrales browserbasiertes Microsoft Azure-Portal verwaltet. Gehen Sie wie folgt vor, um eine Verbindung mit dem StorSimple-Geräte-Manager-Dienst herzustellen:
 
 #### <a name="to-connect-to-the-service"></a>So stellen Sie eine Verbindung mit dem Dienst her
-1. Wechseln Sie zu [https://ms.portal.azure.com](https://ms.portal.azure.com).
+1. Wechseln Sie zu [https://portal.azure.com](https://portal.azure.com).
 2. Melden Sie sich mit den Anmeldeinformationen Ihres Microsoft-Kontos beim Microsoft Azure-Portal (rechts oben) an.
 3. Navigieren Sie zu „Durchsuchen“ > „Filter“ unter „StorSimple-Geräte-Manager“, um alle Geräte-Manager in einem bestimmten Abonnement anzuzeigen.
 
@@ -50,6 +48,8 @@ Der StorSimple-Geräte-Manager-Dienst wird in Microsoft Azure ausgeführt. Er st
 Die folgende Tabelle enthält eine Zusammenfassung aller allgemeinen Verwaltungsaufgaben und komplexen Workflows, die in der Benutzeroberfläche des Übersichtsblatts für den StorSimple-Geräte-Manager-Dienst ausgeführt werden können. Diese Aufgaben sind nach den Blättern organisiert, auf denen sie jeweils initiiert werden.
 
 Klicken Sie auf die Verfahren in der Tabelle, um weitere Informationen zu den einzelnen Workflows zu erhalten.
+
+[!INCLUDE [StorSimple software warning](../../includes/storsimple-update-software-warning.md)]
 
 #### <a name="storsimple-device-manager-workflows"></a>StorSimple-Geräte-Manager-Workflows
 | Gewünschte Aktion | Verfahren |

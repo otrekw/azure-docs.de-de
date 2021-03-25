@@ -9,10 +9,10 @@ ms.custom: subject-armqs
 ms.author: duau
 ms.date: 09/01/2020
 ms.openlocfilehash: ec569781a6318062810358c2c5e17ba71efc4f71
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92676002"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-using-an-arm-template"></a>Schnellstart: Erstellen eines Traffic Manager-Profils mithilfe einer ARM-Vorlage
@@ -97,7 +97,7 @@ Azure PowerShell wird verwendet, um die Vorlage bereitzustellen. Neben Azure Pow
 
     Abhängig davon, welche Region näher zu Ihnen liegt, sollte für „NameHost“ entweder `www.microsoft.com` oder `docs.microsoft.com` zurückgegeben werden.
 
-1. Um zu überprüfen, ob die Auflösung in den anderen Endpunkt möglich ist, deaktivieren Sie den Endpunkt für das im letzten Schritt abgerufene Ziel. Ersetzen Sie **{endpointName}** entweder durch **endpoint1** oder durch **endpoint2** , um das Ziel für `www.microsoft.com` oder `docs.microsoft.com` zu deaktivieren.
+1. Um zu überprüfen, ob die Auflösung in den anderen Endpunkt möglich ist, deaktivieren Sie den Endpunkt für das im letzten Schritt abgerufene Ziel. Ersetzen Sie **{endpointName}** entweder durch **endpoint1** oder durch **endpoint2**, um das Ziel für `www.microsoft.com` oder `docs.microsoft.com` zu deaktivieren.
 
     ```azurepowershell-interactive
     Disable-AzTrafficManagerEndpoint -Name {endpointName} -Type ExternalEndpoints -ProfileName ExternalEndpointExample -ResourceGroupName $resourceGroupName -Force

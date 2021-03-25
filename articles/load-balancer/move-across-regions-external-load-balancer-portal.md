@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 09/17/2019
 ms.author: allensu
 ms.openlocfilehash: f83ff3d1d03354daef3466c1f48eaa505e378634
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94693748"
 ---
 # <a name="move-an-external-load-balancer-to-another-region-by-using-the-azure-portal"></a>Verschieben eines externen Lastenausgleichs in eine andere Region über das Azure-Portal
@@ -181,7 +181,7 @@ Die folgenden Schritte zeigen, wie Sie den externen Lastenausgleich für die Ver
 6.  Wenn Sie den Wert der in den vorherigen Schritten verschobenen öffentlichen IP-Adresse des Ziels bearbeiten möchten, müssen Sie die Ressourcen-ID abrufen und dann in die Datei „parameters.json“ einfügen. So rufen Sie die ID ab
 
     1. Melden Sie sich auf einer anderen Browserregisterkarte oder in einem anderen Browserfenster beim [Azure-Portal](https://portal.azure.com) an, und wählen Sie **Ressourcengruppen** aus.
-    2. Suchen Sie die Zielressourcengruppe, die die in den vorherigen Schritten verschobene öffentliche IP-Adresse enthält. Wählen Sie dies aus.
+    2. Suchen Sie die Zielressourcengruppe, die die in den vorherigen Schritten verschobene öffentliche IP-Adresse enthält. Wählen Sie es aus.
     3. Wählen Sie **Einstellungen** > **Eigenschaften** aus.
     4. Markieren Sie auf dem Blatt auf der rechten Seite die **Ressourcen-ID**, und kopieren Sie sie in die Zwischenablage. Alternativ können Sie rechts neben dem Pfad der **Ressourcen-ID** die Schaltfläche **In Zwischenablage kopieren** auswählen.
     5. Fügen Sie die Ressourcen-ID in die Eigenschaft **value** im Editor **Parameter bearbeiten** ein, der im anderen Browserfenster oder auf der anderen Browserregisterkarte geöffnet ist:
@@ -333,7 +333,7 @@ Die folgenden Schritte zeigen, wie Sie den externen Lastenausgleich für die Ver
                     }
                 ]
         ```
-        Um das Hinzufügen oder Entfernen einer NAT-Regel für eingehenden Datenverkehr abzuschließen, muss die Regel als Eigenschaft des Typs **type** am Ende der Datei „template.json“ vorhanden sein oder daraus entfernt werden:
+        Um das Hinzufügen oder Entfernen einer NAT-Regel für eingehenden Datenverkehr abzuschließen, muss die Regel als Eigenschaft des Typs **type** am Ende der Datei template.json vorhanden sein oder aus ihr entfernt werden:
 
         ```json
         {

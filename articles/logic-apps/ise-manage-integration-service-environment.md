@@ -7,10 +7,10 @@ ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 10/25/2020
 ms.openlocfilehash: 4df9543e5e747de640562b7e5be224e257e0cfd1
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92676101"
 ---
 # <a name="manage-your-integration-service-environment-ise-in-azure-logic-apps"></a>Verwalten Ihrer Integrationsdienstumgebung (Integration Service Environment, ISE) in Azure Logic Apps
@@ -142,7 +142,7 @@ Die Premium-ISE-Basiseinheit hat eine feste Kapazität. Falls Sie mehr Durchsatz
 
    ![Auswählen des gewünschten Skalierungstyps](./media/ise-manage-integration-service-environment/select-manual-scale-out-units.png)
 
-1. Klicken Sie auf **Speichern** , wenn Sie fertig sind.
+1. Klicken Sie auf **Speichern**, wenn Sie fertig sind.
 
 <a name="custom-autoscale"></a>
 
@@ -164,8 +164,8 @@ Die Premium-ISE-Basiseinheit hat eine feste Kapazität. Falls Sie mehr Durchsatz
 
      1. Geben Sie als **Instanzgrenzwerte** folgende Werte an:
 
-        * **Minimum** : Die Mindestanzahl der zu verwendenden Verarbeitungseinheiten.
-        * **Maximum** : Die Höchstanzahl der zu verwendenden Verarbeitungseinheiten.
+        * **Minimum**: Die Mindestanzahl der zu verwendenden Verarbeitungseinheiten.
+        * **Maximum**: Die Höchstanzahl der zu verwendenden Verarbeitungseinheiten.
         * **Standard:** Falls Probleme beim Lesen der Ressourcenmetriken auftreten, und die aktuelle Kapazität unterhalb der Standardkapazität liegt, wird von der automatischen Skalierung das horizontale Hochskalieren auf den Standardwert von Verarbeitungseinheiten durchgeführt. Wenn die aktuelle Kapazität jedoch die Standardkapazität überschreitet, wird die automatische Abskalierung nicht aktiviert.
 
 1. Um eine weitere Bedingung hinzuzufügen, wählen Sie **Skalierungsbedingung hinzufügen** aus.

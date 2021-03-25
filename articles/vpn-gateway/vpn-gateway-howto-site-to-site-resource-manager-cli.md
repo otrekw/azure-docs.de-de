@@ -8,19 +8,19 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/23/2020
 ms.author: cherylmc
-ms.openlocfilehash: 3a29c4522812b728f553bf52543ac3307f0ffbda
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 2c59c67eb7b5ae5b26ac5517afba433fe8c028fa
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94739936"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104611745"
 ---
 # <a name="create-a-virtual-network-with-a-site-to-site-vpn-connection-using-cli"></a>Erstellen eines virtuellen Netzwerks mit einer Site-to-Site-VPN-Verbindung per CLI
 
 In diesem Artikel wird beschrieben, wie Sie die Azure-CLI zum Erstellen einer Site-to-Site-VPN Gateway-Verbindung aus Ihrem lokalen Netzwerk mit dem VNet verwenden. Die Schritte in diesem Artikel gelten für das Resource Manager-Bereitstellungsmodell. Sie können diese Konfiguration auch mit einem anderen Bereitstellungstool oder -modell erstellen. Wählen Sie hierzu in der folgenden Liste eine andere Option:<br>
 
 > [!div class="op_single_selector"]
-> * [Azure portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+> * [Azure portal](./tutorial-site-to-site-portal.md)
 > * [PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
 > * [BEFEHLSZEILENSCHNITTSTELLE (CLI)](vpn-gateway-howto-site-to-site-resource-manager-cli.md)
 > * [Azure-Portal (klassisch)](vpn-gateway-howto-site-to-site-classic-portal.md)

@@ -3,18 +3,21 @@ title: Szenarien für die Verwendung eines virtuellen Netzwerks
 description: Szenarien, Ressourcen und Einschränkungen für die Bereitstellung von Containergruppen in einem virtuellen Azure-Netzwerk.
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: 65d7fa46ebbb9b072b50731bff68b9b88809075d
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 20c2b4fe2f19402d6647f398a9696b7e16550d8e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98033828"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104606887"
 ---
 # <a name="virtual-network-scenarios-and-resources"></a>Szenarien und Ressourcen für virtuelle Azure-Netzwerke
 
 Das virtuelle Azure-Netzwerk ([Azure Virtual Network](../virtual-network/virtual-networks-overview.md)) stellt ein sicheres, privates Netzwerk für Ihre Azure- und lokalen Ressourcen bereit. Durch die Bereitstellung von Containergruppen in einem virtuellen Azure-Netzwerk können Ihre Container sicher mit anderen Ressourcen im virtuellen Netzwerk kommunizieren. 
 
 Dieser Artikel bietet Hintergrundinformationen zu Szenarien, Einschränkungen und Ressourcen für virtuelle Netzwerke. Beispiele für die Bereitstellung mithilfe von Azure CLI finden Sie unter [Bereitstellen von Containerinstanzen in einem virtuellen Azure-Netzwerk](container-instances-vnet.md).
+
+> [!IMPORTANT]
+> Die Bereitstellung von Containergruppen in einem virtuellen Netzwerk ist in den meisten Regionen, in denen Azure Container Instances verfügbar ist, für Linux-Container allgemein verfügbar. Details hierzu finden Sie unter [Verfügbarkeit von Regionen und Ressourcen](container-instances-region-availability.md). 
 
 ## <a name="scenarios"></a>Szenarien
 
@@ -45,12 +48,6 @@ Containergruppen, die in einem virtuellen Azure-Netzwerk bereitgestellt werden, 
 * Wenn Sie eine Verbindung zwischen Ihrer Containergruppe und einem Azure Storage-Konto herstellen, müssen Sie dieser Ressource einen [Dienstendpunkt](../virtual-network/virtual-network-service-endpoints-overview.md) hinzufügen.
 
 [!INCLUDE [container-instances-restart-ip](../../includes/container-instances-restart-ip.md)]
-
-## <a name="where-to-deploy"></a>Bereitstellungsort
-
-Die folgenden Regionen und maximalen Ressourcen sind für die Bereitstellung einer Containergruppe in einem virtuellen Azure-Netzwerk verfügbar.
-
-[!INCLUDE [container-instances-vnet-limits](../../includes/container-instances-vnet-limits.md)]
 
 ## <a name="required-network-resources"></a>Erforderliche Netzwerkressourcen
 

@@ -8,10 +8,10 @@ ms.subservice: education-hub
 ms.topic: overview
 ms.date: 06/30/2020
 ms.openlocfilehash: cb283380487310165c646c8615d10a545d1a923b
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92675692"
 ---
 # <a name="frequently-asked-questions-about-the-education-hub"></a>Häufig gestellte Fragen zu Education Hub
@@ -149,7 +149,7 @@ Azure-Kursguthaben decken nur die Nutzung ab dem Zeitpunkt ab, zu dem Sie das Az
 
 ### <a name="how-do-i-know-if-my-subscription-is-on-the-azure-course-credit-offer"></a>Woran erkenne ich, ob das Azure-Kursguthabenangebot für mein Abonnement gilt?
 
-Wenn Sie ein bestimmtes Abonnement auf dem Blatt „Abonnements“ im Azure-Portal anzeigen, erkennen Sie **Angebotsname** als eine der Eigenschaften. Der Angebotsname lautet **Azure Sponsorship** , wenn er mit Ihrem Kursguthaben verbunden ist. Wenn **Azure Sponsorship** nicht angezeigt wird, wenden Sie sich an den Support, um das Abonnement umzuwandeln.
+Wenn Sie ein bestimmtes Abonnement auf dem Blatt „Abonnements“ im Azure-Portal anzeigen, erkennen Sie **Angebotsname** als eine der Eigenschaften. Der Angebotsname lautet **Azure Sponsorship**, wenn er mit Ihrem Kursguthaben verbunden ist. Wenn **Azure Sponsorship** nicht angezeigt wird, wenden Sie sich an den Support, um das Abonnement umzuwandeln.
 
 ## <a name="azure-dev-tools-for-teaching"></a>Azure Dev Tools für den Unterricht
 
@@ -253,7 +253,7 @@ Wenn Sie sich noch immer nicht anmelden können, wenden Sie sich an Ihren Abonne
 ### <a name="how-do-i-find-my-subscriber-id"></a>Wie finde ich meine Abonnenten-ID?
 
 - **Wenn Sie sich zum ersten Mal im Programm** registrieren: Ihre Abonnenten-ID wird in der Begrüßungs-E-Mail des Abonnements angezeigt, die Sie erhalten.
-- **Wenn Sie Ihr Abonnement erneuert haben** : Ihre Abonnenten-ID befindet sich in der Erneuerungs-E-Mail, die der Abonnementadministrator erhalten hat.
+- **Wenn Sie Ihr Abonnement erneuert haben**: Ihre Abonnenten-ID befindet sich in der Erneuerungs-E-Mail, die der Abonnementadministrator erhalten hat.
 
 Ihre Abonnenten-ID finden Sie auch im Visual Studio Subscription-Portal. Nachdem Sie sich angemeldet haben, suchen Sie unter **Mein Abonnement** auf der Seite **Mein Konto** nach ihr.
 

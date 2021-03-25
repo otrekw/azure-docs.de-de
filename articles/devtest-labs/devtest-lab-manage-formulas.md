@@ -4,10 +4,10 @@ description: Dieser Artikel veranschaulicht, wie Sie eine Formel anhand einer Ba
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: f012a8c59a8e938334c3e1abc4c7b3ccd0e48d3e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91308893"
 ---
 # <a name="manage-azure-devtest-labs-formulas"></a>Verwalten von Azure DevTest Labs-Formeln
@@ -114,7 +114,7 @@ Um eine Formel zu löschen, gehen Sie folgendermaßen vor:
 5. Wählen Sie auf der Seite **Labformeln** die Auslassungspunkte rechts neben der zu löschenden Formel aus.
    
     ![Screenshot, der die Seite „Lab-Formeln“ mit hervorgehobenen Auslassungspunkten für die Formeloptionen zeigt.](./media/devtest-lab-manage-formulas/lab-formulas-blade.png)
-6. Wählen Sie im Kontextmenü der Formel die Option **Löschen**aus.
+6. Wählen Sie im Kontextmenü der Formel die Option **Löschen** aus.
    
     ![Kontextmenü „Formel“](./media/devtest-lab-manage-formulas/formula-delete-context-menu.png)
 7. Wählen Sie im Bestätigungsdialogfeld **Ja** .

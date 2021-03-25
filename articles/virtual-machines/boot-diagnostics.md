@@ -7,12 +7,12 @@ author: mimckitt
 ms.author: mimckitt
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: dc9f7dfdf33411f11d51734b48105be200874d02
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 030f19d61e19349de7e2d3416a3aee1385fd03c8
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98738117"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104607521"
 ---
 # <a name="azure-boot-diagnostics"></a>Azure-Startdiagnose
 
@@ -106,9 +106,9 @@ Ab API-Version 2020-06-01 wird die verwaltete Startdiagnose unterstützt. Weite
 - Bei der verwalteten Startdiagnose werden keine VMs unterstützt, die nicht verwaltete Betriebssystemdatenträger verwenden.
 - Die Startdiagnose unterstützt keine Storage Premium-Konten. Wenn ein solches Konto für die Startdiagnose verwendet wird, erhalten Benutzer beim Starten der VM einen `StorageAccountTypeNotSupported`-Fehler. 
 - Verwaltete Speicherkonten werden ab Resource Manager-API-Version 2020-06-01 unterstützt.
-- Die serielle Azure-Konsole ist zurzeit nicht mit einem verwalteten Speicherkonto für die Startdiagnose kompatibel. Weitere Informationen zur [seriellen Azure-Konsole](./troubleshooting/serial-console-overview.md).
+- Die serielle Azure-Konsole ist zurzeit nicht mit einem verwalteten Speicherkonto für die Startdiagnose kompatibel. Weitere Informationen zur [seriellen Azure-Konsole](/troubleshoot/azure/virtual-machines/serial-console-overview).
 - Das Portal unterstützt nur die Verwendung der Startdiagnose mit einem verwalteten Speicherkonto für Einzelinstanz-VMs.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie mehr über die [serielle Azure-Konsole](./troubleshooting/serial-console-overview.md) und die Verwendung der Startdiagnose zur [Behandlung von Problemen mit virtuellen Computern in Azure](./troubleshooting/boot-diagnostics.md).
+Erfahren Sie mehr über die [serielle Azure-Konsole](/troubleshoot/azure/virtual-machines/serial-console-overview) und die Verwendung der Startdiagnose zur [Behandlung von Problemen mit virtuellen Computern in Azure](/troubleshoot/azure/virtual-machines/boot-diagnostics).

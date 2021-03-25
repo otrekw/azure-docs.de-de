@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: damendo
-ms.openlocfilehash: a5db1ac9c70429d4b6a0b690de1b29c3656b3cc8
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 3b8b53446799eec3473d63c89672393a35f9787a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98016710"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104670954"
 ---
 # <a name="diagnose-on-premises-connectivity-via-vpn-gateways"></a>Diagnostizieren der lokalen Konnektivität über VPN-Gateways
 
@@ -34,17 +34,17 @@ Durch das Azure Network Watcher-Feature zur Problembehandlung können Sie Proble
 Sie möchten eine Site-to-Site-Verbindung zwischen Azure und dem lokalen Netzwerk konfigurieren und dazu FortiGate als lokales VPN-Gateway verwenden. Für dieses Szenario benötigen Sie folgendes Setup:
 
 1. Virtual Network-Gateway: VPN Gateway in Azure
-1. Gateway des lokalen Netzwerks: die Darstellung des [lokalen VPN-Gateways (FortiGate)](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#LocalNetworkGateway) in der Azure-Cloud
-1. Site-to-Site-Verbindung (routenbasiert): [Verbindung zwischen VPN Gateway und dem lokalen Router](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#CreateConnection)
+1. Gateway des lokalen Netzwerks: die Darstellung des [lokalen VPN-Gateways (FortiGate)](../vpn-gateway/tutorial-site-to-site-portal.md#LocalNetworkGateway) in der Azure-Cloud
+1. Site-to-Site-Verbindung (routenbasiert): [Verbindung zwischen VPN Gateway und dem lokalen Router](../vpn-gateway/tutorial-site-to-site-portal.md#CreateConnection)
 1. [Konfigurieren von FortiGate](https://github.com/Azure/Azure-vpn-config-samples/blob/master/Fortinet/Current/Site-to-Site_VPN_using_FortiGate.md)
 
-Eine Schritt-für-Schritt-Anleitung zum Konfigurieren einer Standort-zu-Standort-Konfiguration finden Sie unter [Erstellen eines VNET mit einer Standort-zu-Standort-Verbindung über das Azure-Portal](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md).
+Eine Schritt-für-Schritt-Anleitung zum Konfigurieren einer Standort-zu-Standort-Konfiguration finden Sie unter [Erstellen eines VNET mit einer Standort-zu-Standort-Verbindung über das Azure-Portal](../vpn-gateway/tutorial-site-to-site-portal.md).
 
 Ein wichtiger Konfigurationsschritt ist die Konfiguration der IPsec-Kommunikationsparameter. Eine fehlerhafte Konfiguration führt zum Verlust der Verbindung zwischen dem lokalen Netzwerk und Azure. Derzeit sind Azure VPN Gateway-Instanzen für die Unterstützung der folgenden IPsec-Parameter für Phase 1 konfiguriert. Wie Sie in der Tabelle unten sehen können, unterstützt Azure VPN Gateway die Verschlüsselungsalgorithmen AES256, AES128 und 3DES.
 
 ### <a name="ike-phase-1-setup"></a>IKE Phase 1-Einrichtung
 
-| **Eigenschaft** | **PolicyBased** | **Routenbasiertes und Standard- oder Hochleistungs-VPN-Gateway** |
+| **Eigenschaft** | **PolicyBased** | **RouteBased und Standard- oder Hochleistungs-VPN-Gateway** |
 | --- | --- | --- |
 | IKE-Version |IKEv1 |IKEv2 |
 | Diffie-Hellman-Gruppe |Gruppe 2 (1024 Bit) |Gruppe 2 (1024 Bit) |
@@ -106,7 +106,7 @@ Das Azure Network Watcher-Feature zur Problembehandlung ermöglicht es Ihnen, Pr
 | ConnectionIsMarkedDisconnected | Die Verbindung ist als „getrennt“ gekennzeichnet. |Nein|
 | ConnectionNotConfiguredOnGateway | Für den zugrunde liegenden Dienst wurde die Verbindung nicht konfiguriert. | Ja |
 | ConnectionMarkedStandby | Der zugrunde liegende Dienst ist als im Ruhezustand gekennzeichnet.| Ja|
-| Authentication | Der vorinstallierte Schlüssel stimmt nicht überein. | Ja|
+| Authentifizierung | Der vorinstallierte Schlüssel stimmt nicht überein. | Ja|
 | PeerReachability | Das Peergateway ist nicht erreichbar. | Ja|
 | IkePolicyMismatch | Das Peergateway verfügt über IKE-Richtlinien, die von Azure nicht unterstützt werden. | Ja|
 | WfpParse Error | Beim Analysieren des WFP-Protokolls ist ein Fehler aufgetreten. |Ja|

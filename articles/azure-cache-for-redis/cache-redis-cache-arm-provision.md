@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: subject-armqs
 ms.date: 08/18/2020
 ms.openlocfilehash: 8bd9a45ec7c43d9338dec184afd784d2b163c410
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92735981"
 ---
 # <a name="quickstart-create-an-azure-cache-for-redis-using-an-arm-template"></a>Schnellstart: Erstellen einer Azure Cache for Redis-Ressource mithilfe einer ARM-Vorlage
@@ -26,8 +26,8 @@ Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von A
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* **Azure-Abonnement** : Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
-* **Ein Speicherkonto** : Informationen zur Erstellung eines Speicherkontos finden Sie unter [Erstellen eines Azure Storage-Kontos](../storage/common/storage-account-create.md?tabs=azure-portal). Das Speicherkonto wird für Diagnosedaten verwendet.
+* **Azure-Abonnement**: Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+* **Ein Speicherkonto**: Informationen zur Erstellung eines Speicherkontos finden Sie unter [Erstellen eines Azure Storage-Kontos](../storage/common/storage-account-create.md?tabs=azure-portal). Das Speicherkonto wird für Diagnosedaten verwendet.
 
 ## <a name="review-the-template"></a>Überprüfen der Vorlage
 
@@ -55,11 +55,11 @@ Die neuesten Vorlagen finden Sie in [Azure-Schnellstartvorlagen](https://azure.m
     [![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-redis-cache%2Fazuredeploy.json)
 1. Wählen Sie die folgenden Werte aus, bzw. geben Sie sie ein:
 
-    * **Abonnement** : Wählen Sie ein Azure-Abonnement zum Erstellen der Datenfreigabe und anderer Ressourcen aus.
-    * **Ressourcengruppe** : Klicken Sie auf **Neu erstellen** , um eine neue Ressourcengruppe zu erstellen, oder wählen Sie eine vorhandene Ressourcengruppe aus.
-    * **Standort** : Wählen Sie einen Standort für die Ressourcengruppe aus. Das Speicherkonto und der Redis Cache müssen sich in der gleichen Region befinden. Standardmäßig verwendet der Redis Cache denselben Speicherort wie die Ressourcengruppe. Geben Sie daher denselben Speicherort wie für das Speicherkonto an.
-    * **Name des Redis Cache** : Geben Sie einen Namen für den Redis Cache ein.
-    * **Vorhandenes Diagnosespeicherkonto** : Geben Sie die Ressourcen-ID eines Speicherkontos ein. Die Syntax lautet `/subscriptions/&lt;SUBSCRIPTION ID>/resourceGroups/&lt;RESOURCE GROUP NAME>/providers/Microsoft.Storage/storageAccounts/&lt;STORAGE ACCOUNT NAME>`.
+    * **Abonnement**: Wählen Sie ein Azure-Abonnement zum Erstellen der Datenfreigabe und anderer Ressourcen aus.
+    * **Ressourcengruppe**: Klicken Sie auf **Neu erstellen**, um eine neue Ressourcengruppe zu erstellen, oder wählen Sie eine vorhandene Ressourcengruppe aus.
+    * **Standort**: Wählen Sie einen Standort für die Ressourcengruppe aus. Das Speicherkonto und der Redis Cache müssen sich in der gleichen Region befinden. Standardmäßig verwendet der Redis Cache denselben Speicherort wie die Ressourcengruppe. Geben Sie daher denselben Speicherort wie für das Speicherkonto an.
+    * **Name des Redis Cache**: Geben Sie einen Namen für den Redis Cache ein.
+    * **Vorhandenes Diagnosespeicherkonto**: Geben Sie die Ressourcen-ID eines Speicherkontos ein. Die Syntax lautet `/subscriptions/&lt;SUBSCRIPTION ID>/resourceGroups/&lt;RESOURCE GROUP NAME>/providers/Microsoft.Storage/storageAccounts/&lt;STORAGE ACCOUNT NAME>`.
 
     Übernehmen Sie für den Rest der Einstellungen die Standardwerte.
 1. Wählen Sie **Ich stimme den oben genannten Geschäftsbedingungen zu** und anschließend **Kaufen** aus.

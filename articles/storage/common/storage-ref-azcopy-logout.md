@@ -9,17 +9,17 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: 987f5de78edc4c0fe2814259a1461e58018ec270
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98879019"
 ---
 # <a name="azcopy-logout"></a>azcopy logout
 
 Meldet den Benutzer ab und beendet den Zugriff auf Azure Storage-Ressourcen.
 
-## <a name="synopsis"></a>Zusammenfassung
+## <a name="synopsis"></a>Übersicht
 
 Mit diesem Befehl werden alle zwischengespeicherten Anmeldeinformationen für den aktuellen Benutzer entfernt.
 

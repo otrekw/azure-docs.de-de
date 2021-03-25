@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/12/2017
+ms.date: 03/17/2021
 ms.author: alkohli
-ms.openlocfilehash: 69a36f38cc76693f596b45d4df6e232bc01584d5
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 0e25d41fbf6a9683f178cbfd1b07fde1b6796509
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967974"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104656820"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-device"></a>Verwalten Ihres StorSimple-Geräts mithilfe des StorSimple-Geräte-Manager-Diensts
 
@@ -48,6 +48,8 @@ Die folgende Tabelle zeigt eine Zusammenfassung der allgemeinen Verwaltungsaufga
 
 Klicken Sie auf die Verfahren in der Tabelle, um weitere Informationen zu den einzelnen Workflows zu erhalten.
 
+[!INCLUDE [StorSimple software warning](../../includes/storsimple-update-software-warning.md)]
+
 #### <a name="storsimple-device-manager-workflows"></a>StorSimple-Geräte-Manager-Workflows
 
 | Gewünschte Aktion | Verfahren |
@@ -58,12 +60,12 @@ Klicken Sie auf die Verfahren in der Tabelle, um weitere Informationen zu den ei
 | Deaktivieren eines Geräts</br>Löschen eines Mediums |[Deaktivieren oder Löschen eines Geräts](storsimple-8000-deactivate-and-delete-device.md) |
 | Über Notfallwiederherstellung und Gerätefailover informieren</br>Durchführen eines Failovers auf ein physisches Gerät</br>Durchführen eines Failovers auf ein virtuelles Gerät</br>Business Continuity Disaster Recovery (BCDR) |[Ausführen eines Failovers und einer Notfallwiederherstellung für das StorSimple-Gerät](storsimple-8000-device-failover-disaster-recovery.md) |
 | Liste mit Sicherungen für ein Volume anzeigen</br>Wählen Sie einen Sicherungssatz aus</br>Löschen eines Sicherungssatzes |[Verwalten von Sicherungen](storsimple-8000-manage-backup-catalog.md) |
-| Volume klonen |[Klonen eines Volumes](storsimple-8000-clone-volume-u2.md) |
-| Sicherungssatz wiederherstellen |[Wiederherstellen eines Sicherungssatzes](storsimple-8000-restore-from-backup-set-u2.md) |
+| Volume klonen |[Volume klonen](storsimple-8000-clone-volume-u2.md) |
+| Sicherungssatz wiederherstellen |[Sicherungssatz wiederherstellen](storsimple-8000-restore-from-backup-set-u2.md) |
 | Informationen zu Speicherkonten</br>Hinzufügen von Speicherkonten</br>Bearbeiten eines Speicherkontos</br>Löschen von Speicherkonten</br>Schlüsselrotation für Speicherkonten |[Verwalten von Speicherkonten](storsimple-8000-manage-storage-accounts.md) |
 | Über Bandbreitenvorlagen informieren</br>Hinzufügen einer Bandbreitenvorlage</br>Bearbeiten einer Bandbreitenvorlage</br>Löschen einer Bandbreitenvorlage</br>Verwenden einer Standardbandbreitenvorlage</br>Erstellen einer Bandbreitenvorlage für einen gesamten Tag, die zu einem bestimmten Zeitpunkt startet |[Verwalten von Bandbreitenvorlagen](storsimple-8000-manage-bandwidth-templates.md) |
 | Informationen zu Access Control-Datensätzen</br>Erstellen eines Zugriffssteuerungsdatensatzes</br>Bearbeiten von Zugriffssteuerungsdatensätzen</br>Löschen von Access Control-Datensätzen |[Verwalten von Zugriffssteuerungsdatensätzen](storsimple-8000-manage-acrs.md) |
-| Anzeigen von Auftragsdetails</br>Abbrechen eines Auftrags |[Verwalten von Aufträgen](storsimple-8000-manage-jobs-u2.md) |
+| Anzeigen von Auftragsdetails</br>Abbrechen eines Auftrags |[Aufträge verwalten](storsimple-8000-manage-jobs-u2.md) |
 | Warnungsbenachrichtigungen empfangen</br>Warnungen verwalten</br>Überprüfen von Warnungen |[Anzeigen und Verwalten von StorSimple-Warnungen](storsimple-8000-manage-alerts.md) |
 | Überwachungsdiagramme erstellen |[Überwachen von StorSimple-Geräten](./storsimple-8000-monitor-device.md) |
 | Hinzufügen eines Volumecontainers</br>Ändern eines Volumecontainers</br>Löschen eines Volumecontainers |[Verwalten von Volumecontainern](storsimple-8000-manage-volume-containers.md) |
@@ -78,7 +80,7 @@ Klicken Sie auf die Verfahren in der Tabelle, um weitere Informationen zu den ei
 | Gerätecontroller beenden</br>Gerätecontroller neu starten</br>Gerätecontroller herunterfahren</br>Gerät auf die Werkseinstellungen zurücksetzen</br>(nur bei lokalen Geräten) |[Verwalten des StorSimple-Gerätecontrollers](storsimple-8000-manage-device-controller.md) |
 | Über StorSimple-Hardwarekomponenten informieren</br>Hardwarestatus überwachen</br>(nur bei lokalen Geräten) |[Überwachen der Hardwarekomponenten](storsimple-8000-monitor-hardware-status.md) |
 | Unterstützungspaket erstellen |[Erstellen und Verwalten eines Unterstützungspakets](storsimple-8000-contact-microsoft-support.md#start-a-support-session-in-windows-powershell-for-storsimple) |
-| Softwareupdates installieren |[Aktualisieren Ihres Geräts](storsimple-update-device.md) |
+| Softwareupdates installieren |[Aktualisieren des Geräts](storsimple-update-device.md) |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
