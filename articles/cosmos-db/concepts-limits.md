@@ -5,13 +5,13 @@ author: abhijitpai
 ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 01/19/2021
-ms.openlocfilehash: 007bf845bab6f493fae91debefde27a4929d9f95
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.date: 03/22/2021
+ms.openlocfilehash: f33490e273104105502ecc8f4f255c354a2d2f3b
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611031"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104800022"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Kontingente im Azure Cosmos DB-Dienst
 
@@ -137,7 +137,7 @@ Abhängig von der API, die Sie verwenden, kann ein Azure Cosmos-Container entwed
 | --- | --- |
 | Maximale Länge von Datenbank- oder Containername | 255 |
 | Maximale Anzahl gespeicherter Prozeduren pro Container | 100 <sup>*</sup>|
-| Maximale Anzahl UDFs pro Container | 25 <sup>*</sup>|
+| Maximale Anzahl UDFs pro Container | 50 <sup>*</sup>|
 | Maximale Anzahl von Pfaden in Indizierungsrichtlinie| 100 <sup>*</sup>|
 | Maximale Anzahl von eindeutigen Schlüsseln pro Container|10 <sup>*</sup>|
 | Maximale Anzahl von Pfaden pro UNIQUE KEY-Einschränkung|16 <sup>*</sup>|

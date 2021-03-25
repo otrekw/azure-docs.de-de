@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: jingwang
 ms.openlocfilehash: 0aee6030e5608b5413864d6a32dc8442dd346f42
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100392781"
 ---
 # <a name="schema-and-data-type-mapping-in-copy-activity"></a>Schema- und Datentypzuordnung in Kopieraktivität
@@ -305,7 +305,7 @@ Die folgenden Datentypkonvertierungen werden unter den Zwischendatentypen von Qu
 
 Die folgenden Eigenschaften werden in der Kopieraktivität für die Datentypkonvertierung unterstützt (im Abschnitt `translator` für die programmatische Erstellung):
 
-| Eigenschaft                         | Beschreibung                                                  | Erforderlich |
+| Eigenschaft                         | BESCHREIBUNG                                                  | Erforderlich |
 | -------------------------------- | ------------------------------------------------------------ | -------- |
 | typeConversion                   | Aktiviert den neuen Workflow für die Datentypkonvertierung. <br>Der Standardwert lautet aufgrund der Abwärtskompatibilität FALSE.<br><br>Bei neuen Kopieraktivitäten, die seit Ende Juni 2020 über die Data Factory-Benutzeroberfläche für die Erstellung erstellt wurden, ist diese Datentypkonvertierung für eine optimale Nutzung standardmäßig aktiviert. Zudem werden in der Kopieraktivität auf der Registerkarte „Zuordnung“ die folgenden Datentypkonvertierungseinstellungen für entsprechende Szenarios angezeigt. <br>Wenn Sie Pipelines programmgesteuert erstellen möchten, müssen Sie die Eigenschaft `typeConversion` explizit auf TRUE festlegen, um sie zu aktivieren.<br>Bei vorhandenen Kopieraktivitäten, die vor der Einführung dieser Funktion erstellt wurden, werden in der Data Factory-Benutzeroberfläche für die Erstellung aus Gründen der Abwärtskompatibilität keine Datentypkonvertierungsoptionen angezeigt. | Nein       |
 | typeConversionSettings           | Eine Gruppe von Datentypkonvertierungseinstellungen. Wird angewendet, wenn `typeConversion` auf `true` festgelegt ist. Die folgenden Eigenschaften befinden sich in dieser Gruppe. | Nein       |
@@ -450,7 +450,7 @@ Wenn Sie zum Angeben der Spaltenzuordnung die Syntax `"columnMappings": "UserId:
 
 Sie können die Kopieraktivität > `translator` -> `schemaMapping` angeben, um hierarchisch und tabellarisch strukturierte Daten zuzuordnen, z. B. Kopieren aus MongoDB/REST in eine Textdatei oder aus Oracle in die Azure Cosmos DB-API für MongoDB. Folgende Eigenschaften werden im Abschnitt `translator` der Kopieraktivität unterstützt:
 
-| Eigenschaft            | Beschreibung                                                  | Erforderlich |
+| Eigenschaft            | BESCHREIBUNG                                                  | Erforderlich |
 | :------------------ | :----------------------------------------------------------- | :------- |
 | type                | Die type-Eigenschaft der Kopieraktivität „translator“ muss auf Folgendes festgelegt werden: **TabularTranslator** | Ja      |
 | schemaMapping       | Eine Sammlung von Schlüssel-Wert-Paaren, die die Zuordnungsbeziehung **von der Quelle zur Senke** darstellt.<br/>- **Schlüssel:** stellt die Quelle dar. Für eine **tabellarische Quelle** legen Sie den Spaltennamen wie in der Datasetstruktur definiert fest. Für eine **hierarchische Quelle** legen Sie den Ausdruck des JSON-Pfads für jedes zu extrahierende und zuzuordnende Feld fest.<br>- **Wert:** stellt die Senke dar. Für eine **tabellarische Senke** legen Sie den Spaltennamen wie in der Datasetstruktur definiert fest. Für eine **hierarchische Senke** legen Sie den Ausdruck des JSON-Pfads für jedes zu extrahierende und zuzuordnende Feld fest. <br>Bei hierarchischen Daten beginnt der JSON-Pfad für Felder unter der Stammobjekt mit dem Stamm „$“. Für Felder innerhalb des von der `collectionReference`-Eigenschaften ausgewählten Arrays beginnt der JSON-Pfad mit dem Array-Element. | Ja      |

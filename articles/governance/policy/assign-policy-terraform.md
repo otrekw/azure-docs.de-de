@@ -4,10 +4,10 @@ description: In dieser Schnellstartanleitung erstellen Sie mit Terraform und HCL
 ms.date: 10/27/2020
 ms.topic: quickstart
 ms.openlocfilehash: dc4dae2dc6e43e7532117bf64af3ce97ddc7c496
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93104908"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-terraform"></a>Schnellstart: Erstellen einer Richtlinienzuweisung zum Identifizieren nicht konformer Ressourcen mithilfe von Terraform
@@ -115,7 +115,7 @@ Die Richtlinienzuweisung wird mit der Meldung „Apply complete! Resources: 1 ad
 
 ## <a name="identify-non-compliant-resources"></a>Identifizieren nicht konformer Ressourcen
 
-Wenn Sie die nicht konformen Ressourcen unter dieser neuen Zuweisung anzeigen möchten, verwenden Sie die von `terraform apply` zurückgegebene Zuweisungs-ID ( _assignment\_id_ ). Führen Sie damit den folgenden Befehl aus, um die Ressourcen-IDs der nicht konformen Ressourcen abzurufen, die in einer JSON-Datei ausgegeben werden:
+Wenn Sie die nicht konformen Ressourcen unter dieser neuen Zuweisung anzeigen möchten, verwenden Sie die von `terraform apply` zurückgegebene Zuweisungs-ID (_assignment\_id_). Führen Sie damit den folgenden Befehl aus, um die Ressourcen-IDs der nicht konformen Ressourcen abzurufen, die in einer JSON-Datei ausgegeben werden:
 
 ```console
 armclient post "/subscriptions/<subscriptionID>/resourceGroups/<rgName>/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2019-10-01&$filter=IsCompliant eq false and PolicyAssignmentId eq '<policyAssignmentID>'&$apply=groupby((ResourceId))" > <json file to direct the output with the resource IDs into>

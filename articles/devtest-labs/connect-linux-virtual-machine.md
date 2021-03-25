@@ -4,10 +4,10 @@ description: Es wird beschrieben, wie Sie in einem Lab (Azure DevTest Labs) eine
 ms.topic: how-to
 ms.date: 07/17/2020
 ms.openlocfilehash: 52fe245f85034a4c6300615ad8fb6040c1168298
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86528124"
 ---
 # <a name="connect-to-a-linux-vm-in-your-lab-azure-devtest-labs"></a>Herstellen einer Verbindung mit einer Linux-VM im Lab (Azure DevTest Labs)
@@ -20,13 +20,13 @@ In diesem Artikel wird beschrieben, wie Sie in Ihrem Lab eine Verbindung mit ein
     :::image type="content" source="./media/connect-linux-virtual-machine/search-select.png" alt-text="Suchen nach und Auswählen von DevTest Labs":::    
 1. Wählen Sie in der Liste mit den Labs Ihr **Lab** aus.
 
-    :::image type="content" source="./media/connect-linux-virtual-machine/select-lab.png" alt-text="Suchen nach und Auswählen von DevTest Labs":::            
+    :::image type="content" source="./media/connect-linux-virtual-machine/select-lab.png" alt-text="Auswählen Ihres Labs":::            
 1. Wählen Sie auf der Startseite für Ihr Lab in der Liste **Meine virtuellen Computer** Ihre Linux-VM aus. 
 
-    :::image type="content" source="./media/connect-linux-virtual-machine/select-linux-vm.png" alt-text="Suchen nach und Auswählen von DevTest Labs":::        
+    :::image type="content" source="./media/connect-linux-virtual-machine/select-linux-vm.png" alt-text="Auswählen Ihrer Linux-VM":::        
 5. Auf der Seite **Übersicht** wird der vollqualifizierte Domänenname (FQDN) bzw. die IP-Adresse der VM angezeigt. Darüber hinaus wird der Port wie in der folgenden Abbildung angezeigt.
 
-    :::image type="content" source="./media/connect-linux-virtual-machine/vm-overview.png" alt-text="Suchen nach und Auswählen von DevTest Labs":::    
+    :::image type="content" source="./media/connect-linux-virtual-machine/vm-overview.png" alt-text="Vollqualifizierter Domänenname für die VM":::    
 
     Beachten Sie, dass die Schaltfläche **Verbinden** abgeblendet ist, obwohl die VM gestartet wurde. Dies ist beabsichtigt.
 6.  Verwenden Sie SSH, um eine Verbindung mit Ihrer Linux-VM herzustellen. Im folgenden Beispiel wird mit dem Benutzernamen `vmuser` und über den Port `51637` eine Verbindung mit der VM mit dem FQDN `mydtl07172452621450000.eastus.cloudapp.azure.com` hergestellt. Geben Sie das Kennwort für den Benutzer ein, um eine Verbindung mit der VM herzustellen. 

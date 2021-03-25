@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 7b5017cdeade14e53778b58154456412507c5ce8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "77024873"
 ---
 # <a name="what-is-azure-vmware-solution-by-cloudsimple"></a>Was ist Azure VMware Solution by CloudSimple?
@@ -47,7 +47,7 @@ ms.locfileid: "77024873"
     * Prozesse
 * **Keine erneuten Schulungen**: VMware-Plattformkompatibilität ermöglicht es Ihnen, vorhandene Qualifikationen und Kenntnisse zu nutzen.
 * **Agile Infrastruktur**: Sie müssen nicht mehr Ihre gesamten Kapazitätsanforderungen prognostizieren, um trotzdem bei verschwendeter Kapazität oder bei Infrastrukturengpässen zu landen. CloudSimple wird als Clouddienst bereitgestellt, und Sie können jederzeit Kapazität hinzufügen oder verringern.
-* **Sicherheit**. Der Zugriff auf die CloudSimple-Umgebung über Azure bietet integrierten DDoS-Schutz und integrierte Sicherheitsüberwachung.
+* **Sicherheit:** Der Zugriff auf die CloudSimple-Umgebung über Azure bietet integrierten DDoS-Schutz und integrierte Sicherheitsüberwachung.
 * **Geringere Kosten**: Die CloudSimple-Plattform ist auf technisch höchstem Niveau und bietet ein hohes Maß an Automatisierung, Betriebseffizienz und Größenvorteilen (Skaleneffekte). Darüber hinaus veröffentlicht CloudSimple Lösungsarchitekturen, in denen das Vorhandensein von VMware in einer öffentlichen Cloud genutzt wird, um die Kosten zu senken. Beispiele sind Azure AD, Sicherung in Azure-Speicher, Anwendungsgateway, Lastenausgleich und weitere.
 * **Eine neue hybride Plattform**: Der Dienst ermöglicht Hochgeschwindigkeitszugriff mit geringer Wartezeit auf den Rest von Azure. Darüber hinaus ermöglicht CloudSimple eine einheitliche Verwaltung von virtuellen VMware-Computern und allen weiteren Azure-Komponenten über dieselbe Benutzeroberfläche und API. Ihre Entwicklungsteams können sowohl öffentliche als auch private Plattformen in einer integrierten und konsistenten Weise nutzen.
 * **Überwachung, Problembehandlung und Support der Infrastruktur**: CloudSimple betreibt Ihre zugrunde liegende Infrastruktur als Dienst. Fehlerhafte Hardware wird automatisch ersetzt. Sie können sich auf die Nutzung konzentrieren, während CloudSimple sicherstellt, dass die Umgebung reibungslos ausgeführt wird.

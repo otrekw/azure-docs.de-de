@@ -1,19 +1,14 @@
 ---
 title: Informationen zur Splunk-Integration
-titleSuffix: Azure Defender for IoT
 description: 'Um eine fehlende Sichtbarkeit in Bezug auf die Sicherheit und Resilienz von OT-Netzwerken zu beheben, wurde für Defender für IoT die Defender für IoT-, IIoT- und ICS-Bedrohungsüberwachungsanwendung für Splunk entwickelt: eine native Integration von Defender für IoT und Splunk, die einen einheitlichen Ansatz für IT- und OT-Sicherheit ermöglicht.'
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 1/4/2021
 ms.topic: article
-ms.service: azure
-ms.openlocfilehash: 91d877d644b4b5ca7231f5f81f9163a0fd3cbe25
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 28bdc6deaac09d795c45460bb211126a105b80c8
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98556787"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104785919"
 ---
 # <a name="defender-for-iot-and-ics-threat-monitoring-application-for-splunk"></a>Defender für IoT und ICS-Bedrohungsüberwachungsanwendung für Splunk
 
@@ -152,13 +147,13 @@ So erstellen Sie eine Weiterleitungsregel
 
     :::image type="content" source="media/integration-splunk/forwarding-rule.png" alt-text="Erstellen der Parameter für die Weiterleitungsregel":::
 
-    | Parameter | Beschreibung |
+    | Parameter | BESCHREIBUNG |
     |--|--|
     | **Name** | Der Name der Weiterleitungsregel |
     | **Schweregrad** | Der Mindestschweregrad für die Weiterleitung von Vorfällen. Wenn z. B. „Gering“ ausgewählt ist, werden Warnungen mit einem geringen Schweregrad und alle Warnungen mit höheren Schweregraden weitergeleitet. |
     | **Protokolle** | Standardmäßig sind alle Protokolle ausgewählt. Wenn Sie ein bestimmtes Protokoll angeben möchten, wählen Sie **Spezifisch** und dann das Protokoll aus, für das die Regel angewandt wird. |
     | **Engines** | Standardmäßig werden alle Sicherheits-Engines verwendet. Wenn Sie eine bestimmte Sicherheits-Engine auswählen möchten, für die die Regel angewandt wird, wählen Sie **Spezifisch** und dann die Engine aus. |
-    | **Systembenachrichtigungen** | Weiterleiten des Online- oder Offlinestatus des Sensors. Diese Option ist nur verfügbar, wenn Sie bei Central Manager angemeldet sind. |                                            |
+    | **Systembenachrichtigungen** | Weiterleiten des Online- oder Offlinestatus des Sensors. Diese Option ist nur verfügbar, wenn Sie bei Central Manager angemeldet sind. |
 
 1. Wenn Sie in Defender für IoT festlegen möchten, dass Ressourceninformationen an Splunk gesendet werden, wählen Sie **Aktion** und dann **Send to Splunk Server** (An Splunk Server senden) aus.
 
@@ -177,4 +172,4 @@ So erstellen Sie eine Weiterleitungsregel
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum [Weiterleiten von Warnungsinformationen](how-to-forward-alert-information-to-partners.md).
+Erfahren Sie, wie Sie [Warnungsinformationen weiterleiten](how-to-forward-alert-information-to-partners.md).

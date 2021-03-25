@@ -8,10 +8,10 @@ ms.custom:
 - devx-track-azurecli
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 32d91f01fcebec3e1ae0d19b1bff29a71f41c0d1
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102050425"
 ---
 # <a name="quickstart-create-a-java-function-in-azure-from-the-command-line"></a>Schnellstart: Erstellen einer Java-Funktion über die Befehlszeile in Azure
@@ -26,7 +26,7 @@ ms.locfileid: "102050425"
 
 Verwenden Sie Befehlszeilentools zum Erstellen einer Java-Funktion, die auf HTTP-Anforderungen reagiert. Testen Sie den Code lokal, und stellen Sie ihn anschließend in der serverlosen Umgebung von Azure Functions bereit.
 
-Im Rahmen dieser Schnellstartanleitung fallen ggf. geringfügige Kosten im Centbereich in Ihrem <abbr title="Das Profil, mit dem Abrechnungsinformationen zur Azure-Nutzung verwaltet werden.">Azure-Konto</abbr>an.
+Im Rahmen dieser Schnellstartanleitung fallen ggf. geringfügige Kosten im Centbereich in Ihrem <abbr title="Das Profil mit Abrechnungsinformationen für die Azure-Nutzung.">Azure-Konto</abbr>.
 
 Sollte Maven nicht Ihr bevorzugtes Entwicklungstool sein, stehen ähnliche Tutorials mit [Gradle](./functions-create-first-java-gradle.md), [IntelliJ IDEA](/azure/developer/java/toolkit-for-intellij/quickstart-functions) und [Visual Studio Code](create-first-function-vs-code-java.md) für Java-Entwickler zur Verfügung.
 
@@ -46,7 +46,7 @@ Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
 
 ### <a name="prerequisite-check"></a>Prüfen der Voraussetzungen
 
-+ Führen Sie in einem Terminal- oder Befehlsfenster `func --version` aus, um sich zu vergewissern, dass von <abbr title="Der Satz von Befehlszeilentools für die Arbeit mit Azure Functions auf dem lokalen Computer.">Azure Functions Core Tools</abbr> Version 3.x installiert ist.
++ Führen Sie in einem Terminal- oder Befehlsfenster `func --version` aus, um sich zu vergewissern, dass von <abbr title="Die Befehlszeilentools für die Arbeit mit Azure Functions auf dem lokalen Computer.">Azure Functions Core Tools</abbr> die Version 3.x installiert ist.
 
 + Führen Sie `az --version` aus, um zu überprüfen, ob die Version 2.4 oder höher der Azure CLI verwendet wird.
 
@@ -57,7 +57,7 @@ Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
 
 ## <a name="2-create-a-local-function-project"></a>2. Erstellen eines lokalen Funktionsprojekts
 
-In Azure Functions handelt es sich bei einem Funktionsprojekt um einen Container für eine oder mehrere einzelne Funktionen, die jeweils auf einen bestimmten <abbr title="Der Typ des Ereignisses, das den Funktionscode aufruft, etwa eine HTTP-Anforderung, eine Warteschlangennachricht oder eine bestimmte Uhrzeit.">Trigger (trigger)</abbr>reagieren. Für alle Funktionen eines Projekts werden die gleichen lokalen Konfigurationen und Hostkonfigurationen gemeinsam genutzt. In diesem Abschnitt erstellen Sie ein Funktionsprojekt, das nur eine Funktion enthält.
+In Azure Functions handelt es sich bei einem Funktionsprojekt um einen Container für eine oder mehrere einzelne Funktionen, die jeweils auf einen bestimmten <abbr title="Der Typ des Ereignisses, das den Funktionscode aufruft, etwa eine HTTP-Anforderung, eine Warteschlangennachricht oder eine bestimmte Uhrzeit.">Trigger</abbr>. Für alle Funktionen eines Projekts werden die gleichen lokalen Konfigurationen und Hostkonfigurationen gemeinsam genutzt. In diesem Abschnitt erstellen Sie ein Funktionsprojekt, das nur eine Funktion enthält.
 
 1. Führen Sie in einem leeren Ordner den folgenden Befehl aus, um das Functions-Projekt über einen [Maven-Archetyp](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html) zu generieren. 
 
@@ -132,7 +132,7 @@ Durch den Archetyp wird auch ein Komponententest für Ihre Funktion generiert. W
 <details>
 <summary><strong>Code für pom.xml</strong></summary>
 
-Einstellungen für die Azure-Ressourcen, die zum Hosten Ihrer App erstellt werden, werden in der generierten Datei *pom.xml* im Konfigurationselement (**configuration**) des Plug-Ins mit der Gruppen-ID (**groupId**) `com.microsoft.azure` definiert. So wird beispielsweise durch das folgende Konfigurationselement eine Maven-basierte Bereitstellung angewiesen, eine Funktions-App in der Ressourcengruppe `java-functions-group` in der Region `westus` <abbr title="Ein geografischer Verweis auf ein bestimmtes Azure-Rechenzentrum, in dem Ressourcen zugeordnet werden.">region</abbr>zu erstellen. Die Funktions-App selbst wird unter Windows mit Hosting im Tarif `java-functions-app-service-plan` ausgeführt. Bei dem Tarif handelt es sich standardmäßig um einen serverlosen Verbrauchstarif.
+Einstellungen für die Azure-Ressourcen, die zum Hosten Ihrer App erstellt werden, werden in der generierten Datei *pom.xml* im Konfigurationselement (**configuration**) des Plug-Ins mit der Gruppen-ID (**groupId**) `com.microsoft.azure` definiert. So wird beispielsweise durch das folgende Konfigurationselement eine Maven-basierte Bereitstellung angewiesen, eine Funktions-App in der Ressourcengruppe `java-functions-group` in der Region `westus` <abbr title="Ein geografischer Verweis auf ein bestimmtes Azure-Rechenzentrum, in dem Ressourcen zugeordnet werden.">region</abbr>. Die Funktions-App selbst wird unter Windows mit Hosting im Tarif `java-functions-app-service-plan` ausgeführt. Bei dem Tarif handelt es sich standardmäßig um einen serverlosen Verbrauchstarif.
 
 :::code language="java" source="~/azure-functions-samples-java/pom.xml" range="62-107":::
 
@@ -230,7 +230,7 @@ Wenn Sie eine Funktions-App für Linux anstatt für Windows erstellen möchten, 
 
 ## <a name="5-invoke-the-function-on-azure"></a>5. Aufrufen der Funktion in Azure
 
-Da für Ihre Funktion ein HTTP-Trigger verwendet wird, **führen Sie den Aufruf durch, indem Sie im Browser eine HTTP-Anforderung an die entsprechende URL senden** oder ein Tool wie <abbr title="Ein Befehlszeilentool zum Erstellen von HTTP-Anforderungen an eine URL. Siehe https://curl.se/">curl</abbr>verwenden.
+Da für Ihre Funktion ein HTTP-Trigger verwendet wird, **führen Sie den Aufruf durch, indem Sie im Browser eine HTTP-Anforderung an die entsprechende URL senden** oder ein Tool wie <abbr title="Ein Befehlszeilentool zum Erstellen von HTTP-Anforderungen an eine URL. Siehe https://curl.se/">cURL</abbr>.
 
 # <a name="browser"></a>[Browser](#tab/browser)
 

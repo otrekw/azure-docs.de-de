@@ -4,10 +4,10 @@ description: Mit der REST-API für Log Analytics-Warnungen können Sie Warnungen
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: 33f5ce86a21a9aad110db162849ff3e3c7bbb2b4
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102037488"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>Erstellen und Verwalten von Warnungsregeln in Log Analytics mithilfe der REST-API 

@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: d0e79e42c7c004638336ada23de663bbe74b7e48
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92532644"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---flexible-server"></a>Sicherung und Wiederherstellung in Azure Database for PostgreSQL – Flexible Server
@@ -71,9 +71,9 @@ Die Point-in-Time-Wiederherstellung ist für viele Szenarien hilfreich. Beispiel
 
 Sie können zwischen einem frühesten und einem benutzerdefinierten Wiederherstellungspunkt wählen.
 
--   **Frühester Wiederherstellungspunkt** : Je nach Aufbewahrungszeitraum ist dies der früheste Zeitpunkt, den Sie wiederherstellen können. Der älteste Sicherungszeitpunkt wird automatisch ausgewählt und im Portal angezeigt. Dies ist nützlich, wenn Sie ab diesem Zeitpunkt Untersuchungen oder Tests durchführen möchten.
+-   **Frühester Wiederherstellungspunkt**: Je nach Aufbewahrungszeitraum ist dies der früheste Zeitpunkt, den Sie wiederherstellen können. Der älteste Sicherungszeitpunkt wird automatisch ausgewählt und im Portal angezeigt. Dies ist nützlich, wenn Sie ab diesem Zeitpunkt Untersuchungen oder Tests durchführen möchten.
 
--   **Benutzerdefinierter Wiederherstellungspunkt** : Mithilfe dieser Option können Sie einen beliebigen Zeitpunkt innerhalb des für diese Flexible Server-Instanz definierten Aufbewahrungszeitraums wählen. Standardmäßig wird der späteste Zeitpunkt in UTC automatisch ausgewählt, was nützlich ist, wenn Sie zu Testzwecken die letzte Transaktion wiederherstellen möchten, für die ein Commit durchgeführt wurde. Sie können optional auch andere Tage und Uhrzeiten wählen. 
+-   **Benutzerdefinierter Wiederherstellungspunkt**: Mithilfe dieser Option können Sie einen beliebigen Zeitpunkt innerhalb des für diese Flexible Server-Instanz definierten Aufbewahrungszeitraums wählen. Standardmäßig wird der späteste Zeitpunkt in UTC automatisch ausgewählt, was nützlich ist, wenn Sie zu Testzwecken die letzte Transaktion wiederherstellen möchten, für die ein Commit durchgeführt wurde. Sie können optional auch andere Tage und Uhrzeiten wählen. 
 
 Die geschätzte Wiederherstellungsdauer hängt von verschiedenen Faktoren ab, z. B. Datenbankgröße, Umfang der zu verarbeitenden Transaktionsprotokolle, Netzwerkbandbreite und der Gesamtanzahl der Datenbanken, die gleichzeitig in derselben Region wiederhergestellt werden müssen. Die gesamte Wiederherstellungsdauer beträgt normalerweise mehrere Minuten bis zu mehrere Stunden.
 

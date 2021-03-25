@@ -12,10 +12,10 @@ ms.author: sachinp
 ms.reviewer: sstein
 ms.date: 07/28/2020
 ms.openlocfilehash: d87c5d162b96209c0ce3d3276dc518f42373590f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92780811"
 ---
 # <a name="resources-limits-for-elastic-pools-using-the-dtu-purchasing-model"></a>Grenzwerte für Ressourcen für Pools für elastische Datenbanken, die das DTU-Kaufmodell verwenden
@@ -51,7 +51,7 @@ Bei derselben Anzahl von DTUs überschreiten die für einen Pool für elastische
 |:---|---:|---:|---:| ---: | ---: | ---: | ---: | ---: |
 | Inbegriffener Speicher pro Pool (GB) | 5 | 10 | 20 | 29 | 39 | 78 | 117 | 156 |
 | Max. Speicherkapazität pro Pool (GB) | 5 | 10 | 20 | 29 | 39 | 78 | 117 | 156 |
-| Max. In-Memory-OLTP-Speicher pro Pool (GB) | – | – | – | – | N/V | N/V | N/V | – |
+| Max. In-Memory-OLTP-Speicher pro Pool (GB) | – | – | – | – | – | – | – | – |
 | Max. Anzahl Datenbanken pro Pool <sup>1</sup> | 100 | 200 | 500 | 500 | 500 | 500 | 500 | 500 |
 | Max. gleichzeitige Worker (Anforderungen) pro Pool <sup>2</sup> | 100 | 200 | 400 | 600 | 800 | 1600 | 2400 | 3200 |
 | Max. gleichzeitige Sitzungen pro Pool <sup>2</sup> | 30.000 | 30.000 | 30.000 | 30.000 |30.000 | 30.000 | 30.000 | 30.000 |
@@ -70,7 +70,7 @@ Bei derselben Anzahl von DTUs überschreiten die für einen Pool für elastische
 |:---|---:|---:|---:| ---: | ---: | ---: |
 | Inbegriffener Speicher pro Pool (GB) <sup>1</sup> | 50 | 100 | 200 | 300 | 400 | 800 |
 | Max. Speicherkapazität pro Pool (GB) | 500 | 750 | 1024 | 1280 | 1536 | 2048 |
-| Max. In-Memory-OLTP-Speicher pro Pool (GB) | – | – | N/V | N/V | N/V | – |
+| Max. In-Memory-OLTP-Speicher pro Pool (GB) | – | – | – | – | – | – |
 | Max. Anzahl Datenbanken pro Pool <sup>2</sup> | 100 | 200 | 500 | 500 | 500 | 500 |
 | Max. gleichzeitige Worker (Anforderungen) pro Pool <sup>3</sup> | 100 | 200 | 400 | 600 | 800 | 1600 |
 | Max. gleichzeitige Sitzungen pro Pool <sup>3</sup> | 30.000 | 30.000 | 30.000 | 30.000 | 30.000 | 30.000 |
@@ -90,10 +90,10 @@ Bei derselben Anzahl von DTUs überschreiten die für einen Pool für elastische
 | eDTUs pro Pool | **1200** | **1600** | **2000** | **2500** | **3000** |
 |:---|---:|---:|---:| ---: | ---: |
 | Inbegriffener Speicher pro Pool (GB) <sup>1</sup> | 1200 | 1600 | 2000 | 2500 | 3000 |
-| Max. Speicherkapazität pro Pool (GB) | 2560 | 3072 | 3\.584 | 4096 | 4096 |
-| Max. In-Memory-OLTP-Speicher pro Pool (GB) | – | N/V | N/V | N/V | – |
+| Max. Speicherkapazität pro Pool (GB) | 2560 | 3072 | 3.584 | 4096 | 4096 |
+| Max. In-Memory-OLTP-Speicher pro Pool (GB) | – | – | – | – | – |
 | Max. Anzahl Datenbanken pro Pool <sup>2</sup> | 500 | 500 | 500 | 500 | 500 |
-| Max. gleichzeitige Worker (Anforderungen) pro Pool <sup>3</sup> | 2400 | 3200 | 4000 | 5\.000 | 6000 |
+| Max. gleichzeitige Worker (Anforderungen) pro Pool <sup>3</sup> | 2400 | 3200 | 4000 | 5.000 | 6000 |
 | Max. gleichzeitige Sitzungen pro Pool <sup>3</sup> | 30.000 | 30.000 | 30.000 | 30.000 | 30.000 |
 | Min. DTU-Anzahl pro Datenbankauswahl | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000, 2500 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000, 2500, 3000 |
 | Max. DTU-Anzahl pro Datenbankauswahl | 10, 20, 50, 100, 200, 300, 400, 800, 1200 | 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600 | 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000 | 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000, 2500 | 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000, 2500, 3000 |

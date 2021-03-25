@@ -4,10 +4,10 @@ description: Verwenden Sie Azure Resource Graph, um einige einfache Abfragen aus
 ms.date: 02/04/2021
 ms.topic: sample
 ms.openlocfilehash: f3ff78f52f84ad4fac74fa6e7b04de3e645a2fff
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99557971"
 ---
 # <a name="starter-resource-graph-query-samples"></a>Beispiele für den Einstieg in Resource Graph-Abfragen
