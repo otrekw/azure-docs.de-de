@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
 ms.openlocfilehash: ea674981036b4be292329a4b30b43180ed26d642
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92092782"
 ---
 # <a name="how-to-create-and-use-groups-to-manage-developer-accounts-in-azure-api-management"></a>Erstellen und Verwenden von Gruppen für Entwicklerkonten in Azure API Management
@@ -26,8 +26,8 @@ In API Management werden Gruppen verwendet, um die Sichtbarkeit von Produkten f�
 
 API Management umfasst folgende unveränderliche Systemgruppen:
 
-* **Administratoren** - Administratoren von Azure-Abonnements sind Mitglieder dieser Gruppe. Administratoren verwalten API Management-Dienstinstanzen und erstellen die APIs, Operationen und Produkte, die von den Entwicklern verwendet werden.
-* **Entwickler** - Authentifizierte Entwickler-Portalbenutzer fallen in diese Gruppe. Entwickler sind die Kunden, die Anwendungen unter Verwendung Ihrer APIs erstellen. Entwickler erhalten Zugriff zum Entwicklerportal und erstellen Anwendungen, die die Operationen einer API aufrufen.
+* **Administratoren** – Azure-Abonnementadministratoren sind Mitglieder dieser Gruppe. Administratoren verwalten API Management-Dienstinstanzen und erstellen die APIs, Operationen und Produkte, die von den Entwicklern verwendet werden.
+* **Entwickler** – Zu dieser Gruppe gehören authentifizierte Benutzer des Entwicklerportals. Entwickler sind die Kunden, die Anwendungen unter Verwendung Ihrer APIs erstellen. Entwickler erhalten Zugriff zum Entwicklerportal und erstellen Anwendungen, die die Operationen einer API aufrufen.
 * **Gäste** – Nicht authentifizierte Benutzer wie z. B. potenzielle Kunden, die das Entwicklerportal einer API Management-Instanz besuchen, fallen in diese Gruppe. Sie können diesen Benutzern schreibgeschützten Zugriff gewähren, z.B. um die APIs anzuzeigen, jedoch nicht aufrufen zu können.
 
 Zusätzlich zu diesen Systemgruppen können Administratoren benutzerdefinierte Gruppen erstellen oder [externe Gruppen in zugeordneten Azure Active Directory-Mandanten verwenden][leverage external groups in associated Azure Active Directory tenants]. Benutzerdefinierte und externe Gruppen können gemeinsam mit Systemgruppen verwendet werden, um API-Produkte für Entwickler sichtbar zu machen und ihnen den Zugriff auf die API-Produkte zu ermöglichen. Beispielsweise können Sie eine benutzerdefinierte Gruppe für Entwickler eines spezifischen Partnerunternehmens erstellen und diesen Entwicklern Zugriff auf die APIs über ein Produkt erteilen, das nur die relevanten APIs enthält. Ein Benutzer kann Mitglied von mehr als einer Gruppe sein.
@@ -48,30 +48,30 @@ Absolvieren Sie die Aufgaben im folgenden Artikel: [Erstellen einer Azure API Ma
 
 In diesem Abschnitt wird gezeigt, wie Sie Ihrem API Management-Konto eine neue Gruppe hinzufügen.
 
-1. Wählen Sie auf der linken Seite des Bildschirms die Registerkarte **Gruppen** .
-2. Klicken Sie auf **+Hinzufügen** .
+1. Wählen Sie auf der linken Seite des Bildschirms die Registerkarte **Gruppen**.
+2. Klicken Sie auf **+Hinzufügen**.
 3. Geben Sie einen eindeutigen Namen und eine optionale Beschreibung für die Gruppe ein.
-4. Klicken Sie auf **Erstellen** .
+4. Klicken Sie auf **Erstellen**.
 
     ![Hinzufügen einer neuen Gruppe](./media/api-management-howto-create-groups/groups001.png)
 
-Nachdem die Gruppe erstellt wurde, wird sie der Liste **Gruppen** hinzugefügt. <br/>Klicken Sie auf den Namen der Gruppe und auf **Einstellungen** , um den **Namen** oder die **Beschreibung** zu bearbeiten.<br/>Zum Löschen der Gruppe klicken Sie auf den Namen der Gruppe, und drücken Sie **Löschen** .
+Nachdem die Gruppe erstellt wurde, wird sie der Liste **Gruppen** hinzugefügt. <br/>Klicken Sie auf den Namen der Gruppe und auf **Einstellungen**, um den **Namen** oder die **Beschreibung** zu bearbeiten.<br/>Zum Löschen der Gruppe klicken Sie auf den Namen der Gruppe, und drücken Sie **Löschen**.
 
 Nachdem Sie die Gruppe erstellt haben, können Sie sie zu Produkten und Entwicklern zuordnen.
 
 ## <a name="associate-a-group-with-a-product"></a><a name="associate-group-product"> </a>Zuordnen einer Gruppe zu einem Produkt
 
-1. Wählen Sie auf der linken Seite die Registerkarte **Produkte** .
+1. Wählen Sie auf der linken Seite die Registerkarte **Produkte**.
 2. Klicken Sie auf den Namen des gewünschten Produkts.
-3. Drücken Sie **Zugriffssteuerung** .
-4. Klicken Sie auf **+ Gruppe hinzufügen** .
+3. Drücken Sie **Zugriffssteuerung**.
+4. Klicken Sie auf **+ Gruppe hinzufügen**.
 
     ![Screenshot, auf dem die Schaltfläche „Gruppe hinzufügen“ hervorgehoben ist.](./media/api-management-howto-create-groups/groups002.png)
 5. Wählen Sie die Gruppe aus, die Sie hinzufügen möchten.
 
     ![Screenshot mit der ausgewählten Gruppe und der hervorgehobenen Schaltfläche „Auswählen“.](./media/api-management-howto-create-groups/groups003.png)
 
-    Um eine Gruppe aus dem Produkt zu entfernen, klicken Sie auf **Löschen** .
+    Um eine Gruppe aus dem Produkt zu entfernen, klicken Sie auf **Löschen**.
 
     ![Löschen einer Gruppe](./media/api-management-howto-create-groups/groups004.png)
 
@@ -84,14 +84,14 @@ Sobald ein Produkt zu einer Gruppe zugeordnet ist, können Entwickler in dieser 
 
 In diesem Abschnitt wird gezeigt, wie Gruppen Elemente zugeordnet werden.
 
-1. Wählen Sie auf der linken Seite des Bildschirms die Registerkarte **Gruppen** .
+1. Wählen Sie auf der linken Seite des Bildschirms die Registerkarte **Gruppen**.
 2. Wählen Sie **Mitglieder** aus.
 
     ![Hinzufügen eines Mitglieds](./media/api-management-howto-create-groups/groups005.png)
-3. Drücken Sie **+ Hinzufügen** , und wählen Sie ein Element aus.
+3. Drücken Sie **+ Hinzufügen**, und wählen Sie ein Element aus.
 
     ![Screenshot, auf dem die Schaltfläche „Hinzufügen“, der ausgewählte Benutzer und die Schaltfläche „Auswählen“ hervorgehoben sind.](./media/api-management-howto-create-groups/groups006.png)
-4. Drücken Sie **Auswählen** .
+4. Drücken Sie **Auswählen**.
 
 Sobald Sie die Zuordnung zwischen Entwickler und Gruppe erstellt haben, können Sie diese auf der Registerkarte **Benutzer** anzeigen.
 

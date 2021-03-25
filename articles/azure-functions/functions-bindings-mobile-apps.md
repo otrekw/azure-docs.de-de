@@ -7,10 +7,10 @@ ms.custom: devx-track-csharp
 ms.date: 11/21/2017
 ms.author: cshoe
 ms.openlocfilehash: 5ea58cc3d9f3615a74249b36f3f9ffb79caddda1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88212248"
 ---
 # <a name="mobile-apps-bindings-for-azure-functions"></a>Mobile Apps-Bindungen für Azure Functions 
@@ -158,7 +158,7 @@ In JavaScript-Funktionen wird der Datensatz an das `context.bindings.<name>`-Obj
 
 In C#- und F#-Funktionen werden alle Änderungen am Eingabedatensatz (Eingabeparameter) automatisch wieder an die Tabelle zurückgesendet, wenn die Funktion erfolgreich beendet wird. Sie können einen Datensatz nicht in JavaScript-Funktionen ändern.
 
-## <a name="output"></a>Output
+## <a name="output"></a>Ausgabe
 
 Schreiben Sie unter Verwendung der Mobile Apps-Ausgabebindung einen neuen Datensatz in eine Mobile Apps-Tabelle.  
 

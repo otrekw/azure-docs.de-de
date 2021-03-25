@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
 ms.openlocfilehash: f8e787b8a94987e7d68e12a0e4e69f4c63e21e19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87320577"
 ---
 # <a name="metric-telemetry-application-insights-data-model"></a>Metriktelemetrie: Application Insights-Datenmodell
@@ -37,7 +37,7 @@ Metrik, die System- und Prozessleistungsindikatoren darstellt:
 
 Name der Metrik, der im Application Insights-Portal und auf der Benutzeroberfläche angezeigt werden soll. 
 
-## <a name="value"></a>value
+## <a name="value"></a>Wert
 
 Einzelner Wert für Messung. Summe der einzelnen Messungen für die Aggregation.
 
@@ -49,7 +49,7 @@ Metrische Gewichtung der aggregierten Metrik. Darf nicht für eine Messung festg
 
 Mindestwert der aggregierten Metrik. Darf nicht für eine Messung festgelegt werden.
 
-## <a name="max"></a>Max
+## <a name="max"></a>Max.
 
 Höchstwert der aggregierten Metrik. Darf nicht für eine Messung festgelegt werden.
 

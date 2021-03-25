@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
 ms.openlocfilehash: 5a646ffe1d306d7ea13da002715d5bd9b907107b
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92793465"
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>Verschieben von Daten zwischen horizontal hochskalierten Clouddatenbanken
@@ -49,7 +49,7 @@ Das Split-Merge-Tool wird als Azure-Webdienst ausgeführt. Ein Administrator ode
 
 - **Teilen, um zu wachsen**
 
-  Wenn die Gesamtkapazität erhöht werden soll, um explosionsartiges Wachstum in den Griff zu bekommen, schaffen Sie zusätzliche Kapazität durch Partitionieren der Daten und deren Verteilung über eine zunehmend größere Anzahl von Datenbanken, bis die Kapazitätsanforderungen erfüllt sind. Dies ist ein hervorragendes Beispiel für das **Split** -Feature.
+  Wenn die Gesamtkapazität erhöht werden soll, um explosionsartiges Wachstum in den Griff zu bekommen, schaffen Sie zusätzliche Kapazität durch Partitionieren der Daten und deren Verteilung über eine zunehmend größere Anzahl von Datenbanken, bis die Kapazitätsanforderungen erfüllt sind. Dies ist ein hervorragendes Beispiel für das **Split**-Feature.
 
 - **Zusammenführen zum Verkleinern**
 

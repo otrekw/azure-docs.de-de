@@ -10,10 +10,10 @@ ms.date: 10/07/2020
 ms.author: maraheja
 ms.reviewer: jrasnick
 ms.openlocfilehash: ee9d137973bfa4eeb28bc6526437e76e781f3199
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92172274"
 ---
 # <a name="connect-to-azure-data-explorer-using-apache-spark-for-azure-synapse-analytics"></a>Verbinden mit Azure Data Explorer mithilfe von Apache Spark für Azure Synapse Analytics
@@ -41,7 +41,7 @@ Führen Sie im Datenobjekt-Explorer die folgenden Schritte aus, um eine direkte 
 1. Wählen Sie neben **Daten** das Symbol **+** aus.
 1. Wählen Sie **Verbinden** aus, um eine Verbindung mit externen Daten herzustellen.
 1. Select **Azure Data Explorer (Kusto)** aus.
-1. Wählen Sie **Weiter** .
+1. Wählen Sie **Weiter**.
 1. Verwenden Sie einen aussagekräftigen Anzeigenamen für den verknüpften Dienst. Der Name wird im Datenobjekt-Explorer angezeigt und von Azure Synapse-Laufzeiten verwendet, um eine Verbindung mit der Datenbank herzustellen.
 1. Wählen Sie den Azure Data Explorer-Cluster aus Ihrem Abonnement aus, oder geben Sie den URI ein.
 1. Geben Sie die **Dienstprinzipal-ID** und den **Dienstprinzipalschlüssel** ein. Stellen Sie sicher, dass dieser Dienstprinzipal über Anzeigezugriff auf die Datenbank für Lesevorgänge und über Erfassungszugriff für die Erfassung von Daten verfügt.

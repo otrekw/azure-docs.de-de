@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: genemi
 ms.date: 01/25/2019
 ms.openlocfilehash: 07334d62cee94be8b5b8dd6188c1d6354c4d584b
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92792598"
 ---
 # <a name="how-to-use-batching-to-improve-azure-sql-database-and-azure-sql-managed-instance-application-performance"></a>Gewusst wie: Verbessern der Leistung von Azure SQL-Datenbank- und Azure SQL Managed Instance-Anwendungen mithilfe der Batchverarbeitung
@@ -42,7 +42,7 @@ Im ersten Teil dieses Artikels werden verschiedene Batchverarbeitungstechniken f
 ### <a name="note-about-timing-results-in-this-article"></a>Hinweis zu den Zeitangaben in den Ergebnissen dieses Artikels
 
 > [!NOTE]
-> Die Ergebnisse sind keine Benchmarks, sondern veranschaulichen die **relative Leistung** . Die Zeitangaben basieren auf einem Durchschnittswert von mindestens zehn Testläufen. Bei den Vorgängen handelt es sich um Einfügungen in eine leere Tabelle. Die Testergebnisse wurden vor V12 ermittelt und entsprechen nicht unbedingt dem Durchsatz, der mit einer V12-Datenbank und den neuen [DTU-Dienstebenen](database/service-tiers-dtu.md) oder [Dienstebenen virtueller Kerne](database/service-tiers-vcore.md) erreicht wird. Der relative Nutzen der Batchverarbeitungstechnik dürfte jedoch ähnlich ausfallen.
+> Die Ergebnisse sind keine Benchmarks, sondern veranschaulichen die **relative Leistung**. Die Zeitangaben basieren auf einem Durchschnittswert von mindestens zehn Testläufen. Bei den Vorgängen handelt es sich um Einfügungen in eine leere Tabelle. Die Testergebnisse wurden vor V12 ermittelt und entsprechen nicht unbedingt dem Durchsatz, der mit einer V12-Datenbank und den neuen [DTU-Dienstebenen](database/service-tiers-dtu.md) oder [Dienstebenen virtueller Kerne](database/service-tiers-vcore.md) erreicht wird. Der relative Nutzen der Batchverarbeitungstechnik dürfte jedoch ähnlich ausfallen.
 
 ### <a name="transactions"></a>Transaktionen
 
@@ -128,7 +128,7 @@ Weitere Informationen zu Transaktionen in ADO.NET finden Sie unter [Lokale Trans
 
 ### <a name="table-valued-parameters"></a>Tabellenwertparameter
 
-Tabellenwertparameter unterstützen benutzerdefinierte Tabellentypen als Parameter in Transact-SQL-Anweisungen, gespeicherten Prozeduren und Funktionen. Mithilfe dieser clientseitigen Batchverarbeitungstechnik können Sie innerhalb des Tabellenwertparameters mehrere Datenzeilen senden. Zur Verwendung von Tabellenwertparametern müssen Sie zunächst einen Tabellentyp definieren. Die folgende Transact-SQL-Anweisung erstellt einen Tabellentyp namens **MyTableType** :
+Tabellenwertparameter unterstützen benutzerdefinierte Tabellentypen als Parameter in Transact-SQL-Anweisungen, gespeicherten Prozeduren und Funktionen. Mithilfe dieser clientseitigen Batchverarbeitungstechnik können Sie innerhalb des Tabellenwertparameters mehrere Datenzeilen senden. Zur Verwendung von Tabellenwertparametern müssen Sie zunächst einen Tabellentyp definieren. Die folgende Transact-SQL-Anweisung erstellt einen Tabellentyp namens **MyTableType**:
 
 ```sql
     CREATE TYPE MyTableType AS TABLE
@@ -212,7 +212,7 @@ Weitere Informationen zu Tabellenwertparametern finden Sie unter [Tabellenwertpa
 
 ### <a name="sql-bulk-copy"></a>SQL-Massenkopieren
 
-SQL-Massenkopieren ist eine weitere Möglichkeit, um große Datenmengen in eine Zieldatenbank einzufügen. .NET-Anwendungen können für Masseneinfügevorgänge die Klasse **SqlBulkCopy** verwenden. **SqlBulkCopy** funktioniert ähnlich wie das Befehlszeilentool **Bcp.exe** oder die Transact-SQL-Anweisung **BULK INSERT** . Im folgenden Codebeispiel ist das Massenkopieren der Zeilen aus der Quelltabelle **DataTable** in die Zieltabelle „MyTable“ dargestellt.
+SQL-Massenkopieren ist eine weitere Möglichkeit, um große Datenmengen in eine Zieldatenbank einzufügen. .NET-Anwendungen können für Masseneinfügevorgänge die Klasse **SqlBulkCopy** verwenden. **SqlBulkCopy** funktioniert ähnlich wie das Befehlszeilentool **Bcp.exe** oder die Transact-SQL-Anweisung **BULK INSERT**. Im folgenden Codebeispiel ist das Massenkopieren der Zeilen aus der Quelltabelle **DataTable** in die Zieltabelle „MyTable“ dargestellt.
 
 ```csharp
 using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))

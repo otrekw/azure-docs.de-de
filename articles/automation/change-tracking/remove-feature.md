@@ -6,10 +6,10 @@ ms.subservice: change-inventory-management
 ms.date: 10/14/2020
 ms.topic: conceptual
 ms.openlocfilehash: 2e3e5abdfbb2bf2e9d7a12a677422adc67336775
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92209241"
 ---
 # <a name="remove-change-tracking-and-inventory-from-automation-account"></a>Entfernen von „Änderungsnachverfolgung und Bestand“ aus dem Automation-Konto
@@ -26,15 +26,15 @@ Bevor Sie „Änderungsnachverfolgung und Bestand“ entfernen, müssen Sie zun�
 
 ## <a name="remove-changetracking-solution"></a>Entfernen der ChangeTracking-Lösung
 
-Damit Sie die Verknüpfung des Automation-Kontos mit dem Arbeitsbereich aufheben können, müssen Sie die folgenden Schritte ausführen, um „Änderungsnachverfolgung und Bestand“ vollständig zu entfernen. Sie entfernen die **ChangeTracking** -Lösung aus dem Arbeitsbereich.
+Damit Sie die Verknüpfung des Automation-Kontos mit dem Arbeitsbereich aufheben können, müssen Sie die folgenden Schritte ausführen, um „Änderungsnachverfolgung und Bestand“ vollständig zu entfernen. Sie entfernen die **ChangeTracking**-Lösung aus dem Arbeitsbereich.
 
-1. Wählen Sie im Azure-Portal **Alle Dienste** aus. Geben Sie in der Liste mit den Ressourcen **Log Analytics** ein. Sobald Sie mit der Eingabe beginnen, werden Vorschläge in der Liste auf Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Log Analytics** .
+1. Wählen Sie im Azure-Portal **Alle Dienste** aus. Geben Sie in der Liste mit den Ressourcen **Log Analytics** ein. Sobald Sie mit der Eingabe beginnen, werden Vorschläge in der Liste auf Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Log Analytics**.
 
 2. Wählen Sie in der Liste mit den Log Analytics-Arbeitsbereichen den Arbeitsbereich aus, den Sie beim Aktivieren von „Änderungsnachverfolgung und Bestand“ ausgewählt haben.
 
 3. Wählen Sie links die Option **Lösungen** aus.  
 
-4. Wählen Sie in der Liste mit den Lösungen den Eintrag **ChangeTracking(Name des Arbeitsbereichs)** aus. Wählen Sie auf der Seite **Übersicht** für die Lösung die Option **Löschen** aus. Wenn Sie aufgefordert werden, die Auswahl zu bestätigen, klicken Sie auf **Ja** .
+4. Wählen Sie in der Liste mit den Lösungen den Eintrag **ChangeTracking(Name des Arbeitsbereichs)** aus. Wählen Sie auf der Seite **Übersicht** für die Lösung die Option **Löschen** aus. Wenn Sie aufgefordert werden, die Auswahl zu bestätigen, klicken Sie auf **Ja**.
 
 ## <a name="unlink-workspace-from-automation-account"></a>Aufheben der Verknüpfung eines Arbeitsbereichs über ein Automation-Konto
 
@@ -54,7 +54,7 @@ Alternativ können Sie die Verknüpfung Ihres Log Analytics-Arbeitsbereichs mit
 
 2. Wählen Sie im Arbeitsbereich unter **Verwandte Ressourcen** die Option **Automation-Konto** aus.
 
-3. Klicken Sie auf der Seite „Automation-Konto“ auf **Verknüpfung zu diesem Konto aufheben** .
+3. Klicken Sie auf der Seite „Automation-Konto“ auf **Verknüpfung zu diesem Konto aufheben**.
 
 Während versucht wird, die Verknüpfung mit dem Automation-Konto aufzuheben, können Sie den Status im Menü unter **Benachrichtigungen** nachverfolgen.
 

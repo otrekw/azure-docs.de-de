@@ -3,16 +3,16 @@ title: Überwachen von Data Factorys mit Azure Monitor
 description: Erfahren Sie, wie Sie Azure Data Factory-Pipelines mit Azure Monitor überwachen können, indem Sie Diagnoseprotokolle mit Informationen aus Data Factory aktivieren.
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: 09456c06f2a171ec32c1b885dc2b4e475fea5371
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 04aba71e49fedc8a4ca22aed576aaa978f733336
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102550296"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104783641"
 ---
 # <a name="monitor-and-alert-data-factory-by-using-azure-monitor"></a>Durchführen der Überwachung und Verwenden von Warnungen für Data Factory mit Azure Monitor
 
@@ -265,7 +265,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 }
 ```
 
-| Eigenschaft | Typ | BESCHREIBUNG |
+| Eigenschaft | type | BESCHREIBUNG |
 | --- | --- | --- |
 | **storageAccountId** |String | Die Ressourcen-ID des Speicherkontos, an das Diagnoseprotokolle gesendet werden sollen. |
 | **serviceBusRuleId** |String | Die Service Bus-Regel-ID des Service Bus-Namespace, in dem Event Hubs für das Streaming von Diagnoseprotokollen erstellt werden sollen. Die Regel-ID weist das Format `{service bus resource ID}/authorizationrules/{key name}` auf.|
@@ -438,7 +438,7 @@ Weitere Informationen finden Sie unter [Diagnoseeinstellungen](/rest/api/monitor
 }
 ```
 
-| Eigenschaft | Typ | Beschreibung | Beispiel |
+| Eigenschaft | type | BESCHREIBUNG | Beispiel |
 | --- | --- | --- | --- |
 | **Level** |String | Die Ebene der Diagnoseprotokolle. Legen Sie für Aktivitätsausführungsprotokolle den Eigenschaftswert auf „4“ fest. | `4` |
 | **correlationId** |String | Die eindeutige ID für die Nachverfolgung einer bestimmten Anforderung. | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
@@ -484,7 +484,7 @@ Weitere Informationen finden Sie unter [Diagnoseeinstellungen](/rest/api/monitor
 }
 ```
 
-| Eigenschaft | Typ | Beschreibung | Beispiel |
+| Eigenschaft | type | BESCHREIBUNG | Beispiel |
 | --- | --- | --- | --- |
 | **Level** |String | Die Ebene der Diagnoseprotokolle. Legen Sie für Aktivitätsausführungsprotokolle den Eigenschaftswert auf „4“ fest. | `4` |
 | **correlationId** |String | Die eindeutige ID für die Nachverfolgung einer bestimmten Anforderung. | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
@@ -527,7 +527,7 @@ Weitere Informationen finden Sie unter [Diagnoseeinstellungen](/rest/api/monitor
 }
 ```
 
-| Eigenschaft | Typ | Beschreibung | Beispiel |
+| Eigenschaft | type | BESCHREIBUNG | Beispiel |
 | --- | --- | --- | --- |
 | **Level** |String | Die Ebene der Diagnoseprotokolle. Legen Sie für Aktivitätsausführungsprotokolle den Eigenschaftswert auf „4“ fest. | `4` |
 | **correlationId** |String | Die eindeutige ID für die Nachverfolgung einer bestimmten Anforderung. | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
@@ -564,7 +564,7 @@ Nachstehend finden Sie die Protokollattribute der Start-/Beendigungs-/Wartungsvo
 }
 ```
 
-| Eigenschaft                   | Typ   | Beschreibung                                                   | Beispiel                        |
+| Eigenschaft                   | type   | BESCHREIBUNG                                                   | Beispiel                        |
 | -------------------------- | ------ | ------------------------------------------------------------- | ------------------------------ |
 | **time**                   | String | Ereigniszeitpunkt im UTC-Format: `YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
 | **operationName**          | String | Name Ihres SSIS IR-Vorgangs                            | `Start/Stop/Maintenance` |
@@ -604,7 +604,7 @@ Nachstehend finden Sie die Protokollattribute von Bedingungen der Ereignismeldun
 }
 ```
 
-| Eigenschaft                   | Typ   | Beschreibung                                                          | Beispiel                        |
+| Eigenschaft                   | type   | BESCHREIBUNG                                                          | Beispiel                        |
 | -------------------------- | ------ | -------------------------------------------------------------------- | ------------------------------ |
 | **time**                   | String | Ereigniszeitpunkt im UTC-Format: `YYYY-MM-DDTHH:MM:SS.00000Z`        | `2017-06-28T21:00:27.3534352Z` |
 | **operationName**          | String | Ist auf `YourSSISIRName-SSISPackageEventMessageContext` festgelegt.       | `mysqlmissisir-SSISPackageEventMessageContext` |
@@ -654,7 +654,7 @@ Nachstehend finden Sie die Protokollattribute von Ereignismeldungen, die von SSI
 }
 ```
 
-| Eigenschaft                   | Typ   | Beschreibung                                                        | Beispiel                        |
+| Eigenschaft                   | type   | BESCHREIBUNG                                                        | Beispiel                        |
 | -------------------------- | ------ | ------------------------------------------------------------------ | ------------------------------ |
 | **time**                   | String | Ereigniszeitpunkt im UTC-Format: `YYYY-MM-DDTHH:MM:SS.00000Z`      | `2017-06-28T21:00:27.3534352Z` |
 | **operationName**          | String | Ist auf `YourSSISIRName-SSISPackageEventMessages` festgelegt.           | `mysqlmissisir-SSISPackageEventMessages` |
@@ -703,7 +703,7 @@ Nachstehend finden Sie die Protokollattribute der Statistiken von ausführbaren 
 }
 ```
 
-| Eigenschaft                   | Typ   | Beschreibung                                                      | Beispiel                        |
+| Eigenschaft                   | type   | BESCHREIBUNG                                                      | Beispiel                        |
 | -------------------------- | ------ | ---------------------------------------------------------------- | ------------------------------ |
 | **time**                   | String | Ereigniszeitpunkt im UTC-Format: `YYYY-MM-DDTHH:MM:SS.00000Z`    | `2017-06-28T21:00:27.3534352Z` |
 | **operationName**          | String | Ist auf `YourSSISIRName-SSISPackageExecutableStatistics` festgelegt.  | `mysqlmissisir-SSISPackageExecutableStatistics` |
@@ -748,7 +748,7 @@ Nachstehend finden Sie die Protokollattribute von Runtimestatistiken für Datenf
 }
 ```
 
-| Eigenschaft                   | Typ   | Beschreibung                                                         | Beispiel                        |
+| Eigenschaft                   | type   | BESCHREIBUNG                                                         | Beispiel                        |
 | -------------------------- | ------ | ------------------------------------------------------------------- | ------------------------------ |
 | **time**                   | String | Ereigniszeitpunkt im UTC-Format: `YYYY-MM-DDTHH:MM:SS.00000Z`       | `2017-06-28T21:00:27.3534352Z` |
 | **operationName**          | String | Ist auf `YourSSISIRName-SSISPackageExecutionComponentPhases` festgelegt. | `mysqlmissisir-SSISPackageExecutionComponentPhases` |
@@ -796,7 +796,7 @@ Nachstehend finden Sie die Protokollattribute von Datenverschiebungen durch die 
 }
 ```
 
-| Eigenschaft                     | Typ   | Beschreibung                                                        | Beispiel                        |
+| Eigenschaft                     | type   | BESCHREIBUNG                                                        | Beispiel                        |
 | ---------------------------- | ------ | ------------------------------------------------------------------ | ------------------------------ |
 | **time**                     | String | Ereigniszeitpunkt im UTC-Format: `YYYY-MM-DDTHH:MM:SS.00000Z`      | `2017-06-28T21:00:27.3534352Z` |
 | **operationName**            | String | Ist auf `YourSSISIRName-SSISPackageExecutionDataStatistics` festgelegt. | `mysqlmissisir-SSISPackageExecutionDataStatistics` |

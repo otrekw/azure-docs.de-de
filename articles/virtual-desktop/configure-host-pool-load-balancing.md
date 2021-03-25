@@ -7,10 +7,10 @@ ms.date: 10/12/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 2c57ac10fbd318dd4bbb2dc86457e186dd824834
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91951654"
 ---
 # <a name="configure-the-windows-virtual-desktop-load-balancing-method"></a>Konfigurieren der Lastenausgleichsmethode für Windows Virtual Desktop
@@ -82,7 +82,7 @@ Sie können Lastenausgleich auch mit dem Azure-Portal konfigurieren.
 So konfigurieren Sie Lastenausgleich:
 
 1. Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
-2. Suchen Sie nach **Windows Virtual Desktop** , und wählen Sie diese Option unter „Dienste“ aus.
+2. Suchen Sie nach **Windows Virtual Desktop**, und wählen Sie diese Option unter „Dienste“ aus.
 3. Wählen Sie auf der Seite „Windows Virtual Desktop“ die Option **Hostpools** aus.
 4. Wählen Sie den Namen des Hostpools aus, den Sie bearbeiten möchten.
 5. Wählen Sie **Eigenschaften** aus.

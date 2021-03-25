@@ -6,73 +6,65 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/10/2021
+ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 3e0ad6aeb6110d04d9c2a8ff5b3e30726d9de03f
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 705bd926c2ac6f414464254969b5c511c88891f0
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103490601"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104656106"
 ---
-# <a name="chat-client-library-overview"></a>Übersicht über die Clientbibliothek für Chats
+# <a name="chat-client-library-overview"></a>Übersicht über die Clientbibliothek für Chats  
 
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
-
+[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]    
 
 Die Clientbibliotheken für Chats von Azure Communication Services können verwendet werden, um Ihren Anwendungen umfassende Echtzeitchatfunktionen hinzuzufügen.
+    
+## <a name="chat-client-library-capabilities"></a>Funktionen der Clientbibliothek für Chats 
 
-## <a name="chat-client-library-capabilities"></a>Funktionen der Clientbibliothek für Chats
+Die folgende Liste enthält die Features, die aktuell in den Clientbibliotheken für Chats von Communication Services verfügbar sind:  
 
-Die folgende Liste enthält die Features, die aktuell in den Clientbibliotheken für Chats von Communication Services verfügbar sind:
+| Featuregruppe | Funktion | JavaScript  | Java | .NET | Python | iOS | Android |
+|-----------------|-------------------|---|-----|----|-----|----|----|
+| Grundlegende Funktionen | Erstellen eines Chatthreads zwischen zwei oder mehr Benutzern (bis zu 250 Benutzer)                                                       | ✔️   | ✔️  | ✔️    | ✔️   |  ✔️    | ✔️   |    
+|                   | Aktualisieren des Themas eines Chatthreads                                                                              | ✔️   | ✔️ | ✔️    | ✔️   |  ✔️    | ✔️   |   
+|                   | Hinzufügen oder Entfernen von Teilnehmern zu bzw. aus einem Chatthread                                                                           | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |  
+|                   | Auswählen, ob der Chatnachrichtenverlauf mit dem hinzugefügten Teilnehmer geteilt werden soll                                   | ✔️   | ✔️   | ✔️    | ✔️  |  ✔️    | ✔️   | 
+|                   | Abrufen einer Liste der Teilnehmer eines Chatthreads                                                                          | ✔️   | ✔️  | ✔️ | ✔️ |  ✔️    | ✔️   | 
+|                   | Löschen eines Chatthreads                                                                                              | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |    
+|                   | Abrufen der Liste der Chatthreads, denen der Benutzer angehört (bei Kommunikationsbenutzern)                                           | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |   
+|                   | Abrufen von Informationen für einen bestimmten Chatthread                                                                              | ✔️   | ✔️  | ✔️ | ✔️ |  ✔️    | ✔️   |   
+|                   | Senden und Empfangen von Nachrichten in einem Chatthread                                                                            | ✔️   | ✔️   | ✔️    | ✔️  |  ✔️    | ✔️   |   
+|                   | Bearbeiten des Inhalts einer gesendeten Nachricht                                                                                | ✔️   | ✔️  | ✔️ | ✔️ |  ✔️    | ✔️   |   
+|                   | Löschen einer Nachricht                                                                                                       | ✔️   | ✔️  | ✔️ | ✔️ |  ✔️    | ✔️   |   
+|                   | Lesebestätigungen für Nachrichten, die von anderen Teilnehmern in einem Chat gelesen wurden <br/> *Bei Chatthreads mit mehr als 20 Teilnehmern nicht verfügbar*    | ✔️   | ✔️  | ✔️    | ✔️   |  ✔️    | ✔️   |   
+|                   | Erhalten einer Benachrichtigung, wenn Teilnehmer aktiv eine Nachricht in einem Chatthread eingeben <br/> *Bei Chatthreads mit mehr als 20 Mitgliedern nicht verfügbar*      | ✔️   | ✔️   | ✔️    | ✔️    |  ✔️    | ✔️   | 
+|                   | Abrufen aller Nachrichten in einem Chatthread <br/>                                                                         | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |  
+|                   | Senden von Unicode-Emojis im Nachrichteninhalt                                                                            | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |    
+|Echtzeitsignalisierung (durch proprietäres Signalisierungspaket**)|  Abonnieren von Echtzeitaktualisierungen für eingehende Nachrichten und andere Vorgänge in Ihrer Chat-App. Eine Liste der unterstützten Aktualisierungen für die Echtzeitsignalisierung finden Sie unter [Chatkonzepte](concepts.md#real-time-signaling).                                     | ✔️   | ❌    | ❌  | ❌  | ❌  | ❌  |    
+| Event Grid-Unterstützung             | Nutzen der Integration in Azure Event Grid und Konfigurieren des Kommunikationsdiensts zum Ausführen von Geschäftslogik basierend auf Chataktivitäten oder zum Einbinden eines benutzerdefinierten Pushbenachrichtigungsdiensts   | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |  
+| Überwachung        | Verwenden der im Azure-Portal ausgegebenen API-Anforderungsmetriken, um Dashboards zu erstellen, die Integrität Ihrer Chat-App zu überwachen und Warnungen zum Erkennen von Anomalien festzulegen      | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |    
+|                   | Konfigurieren der Communication Services-Ressource zum Empfangen von Chatbetriebsprotokollen zu Überwachungs- und Diagnosezwecken          | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |  
 
-| Featuregruppe | Funktion                                                                                                          | JS  | Java | .NET | Python |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------- | --- | ----- | ---- | -----  |
-| Grundlegende Funktionen | Erstellen eines Chatthreads zwischen zwei oder mehr Benutzern (bis zu 250 Benutzer)                                                       | ✔️   | ✔️  | ✔️    | ✔️   |
-|                   | Aktualisieren des Themas eines Chatthreads                                                                              | ✔️   | ✔️ | ✔️    | ✔️   |
-|                   | Hinzufügen von Mitgliedern zu einem Chatthread oder Entfernen von Mitgliedern aus einem Chatthread                                                                           | ✔️   | ✔️  | ✔️    | ✔️  |
-|                   | Auswählen, ob der Chatnachrichtenverlauf mit neu hinzugefügten Mitgliedern geteilt werden soll (*alle/keine/bis zu einer bestimmten Zeit*) | ✔️   | ✔️   | ✔️    | ✔️  |
-|                   | Abrufen einer Liste mit allen Chatthreadmitgliedern                                                                          | ✔️   | ✔️  | ✔️ | ✔️ |
-|                   | Löschen eines Chatthreads                                                                                              | ✔️   | ✔️  | ✔️    | ✔️  |
-|                   | Abrufen einer Liste mit den Chatthreadmitgliedschaften eines Benutzers                                                                  | ✔️   | ✔️  | ✔️    | ✔️  |
-|                   | Abrufen von Informationen für einen bestimmten Chatthread                                                                              | ✔️   | ✔️  | ✔️ | ✔️ |
-|                   | Senden und Empfangen von Nachrichten in einem Chatthread                                                                            | ✔️   | ✔️   | ✔️    | ✔️  |
-|                   | Bearbeiten des Inhalts einer bereits gesendeten Nachricht                                                                   | ✔️   | ✔️  | ✔️ | ✔️ |
-|                   | Löschen einer Nachricht                                                                                                       | ✔️   | ✔️  | ✔️ | ✔️ |
-|                   | Markieren einer Nachricht mit normaler oder hoher Priorität beim Senden                                               | ✔️   | ✔️  | ✔️    | ✔️   |
-|                   | Senden und Empfangen von Lesebestätigungen für Nachrichten, die von Mitgliedern gelesen wurden <br/> *Bei Chatthreads mit mehr als 20 Mitgliedern nicht verfügbar*    | ✔️   | ✔️  | ✔️    | ✔️   |
-|                   | Senden und Empfangen von Eingabebenachrichtigungen, wenn ein Mitglied aktiv eine Nachricht in einem Chatthread eingibt <br/> *Bei Chatthreads mit mehr als 20 Mitgliedern nicht verfügbar*      | ✔️   | ✔️   | ✔️    | ✔️    |
-|                   | Abrufen aller Nachrichten in einem Chatthread <br/> *Unicode-Emojis werden unterstützt.*                                                  | ✔️   | ✔️  | ✔️    | ✔️  |
-|                   | Senden von Emojis im Nachrichteninhalt                                                                              | ✔️   | ✔️  | ✔️    | ✔️  |
-|Echtzeitsignalisierung (durch proprietäres Signalisierungspaket**)| Erhalten einer Benachrichtigung, wenn ein Benutzer in einem Chatthread, dem er angehört, eine neue Nachricht erhält                                     | ✔️   | ❌    | ❌  | ❌  |
-|                    | Erhalten einer Benachrichtigung, wenn in einem Chatthread, dem der Benutzer angehört, eine Nachricht durch einen anderen Benutzer bearbeitet wurde                | ✔️   | ❌    | ❌    | ❌  |
-|                    | Erhalten einer Benachrichtigung, wenn in einem Chatthread, dem der Benutzer angehört, eine Nachricht durch einen anderen Benutzer gelöscht wurde                | ✔️   | ❌    | ❌    | ❌  |
-|                    | Erhalten einer Benachrichtigung, wenn ein anderes Chatthreadmitglied etwas eingibt                                                             | ✔️   | ❌    | ❌    | ❌  |
-|                    | Erhalten einer Benachrichtigung, wenn ein anderes Mitglied eine Nachricht im Chatthread gelesen hat (Lesebestätigung)                               | ✔️   | ❌    | ❌    | ❌  |
-| Ereignisse             | Verwenden von Event Grid, um Benutzeraktivitäten in Chatthreads zu abonnieren und benutzerdefinierte Benachrichtigungsdienste oder Geschäftslogik zu integrieren     | ✔️   | ✔️  | ✔️    | ✔️  |
-| Überwachung        | Überwachen der Nutzung (gesendete Nachrichten)                                                                               | ✔️   | ✔️  | ✔️    | ✔️  |
-|                    | Überwachen der Qualität und des Status von API-Anforderungen Ihrer App sowie Konfigurieren von Warnungen über das Portal                                                          | ✔️   | ✔️  | ✔️    | ✔️  |
-|Zusätzliche Features | Verwenden von [Cognitive Services-APIs](../../../cognitive-services/index.yml) zusammen mit der Clientbibliothek für Chats, um die Verwendung intelligenter Features zu ermöglichen: *Sprachübersetzung und Standpunktanalyse der eingehenden Nachricht auf einem Client, Spracherkennung zur Erstellung einer Nachricht, während der Teilnehmer spricht, usw.*                                                                                         | ✔️   | ✔️  | ✔️    | ✔️  |
 
-**Das proprietäre Signalisierungspaket wird mithilfe von Websockets implementiert. Es wird ein Fallback auf ein langes Abrufintervall durchgeführt, falls Websockets nicht unterstützt werden.
+**Das proprietäre Signalisierungspaket wird mithilfe von Websockets implementiert. Es wird ein Fallback auf ein langes Abrufintervall durchgeführt, falls Websockets nicht unterstützt werden.  
 
-## <a name="javascript-chat-client-library-support-by-os-and-browser"></a>JavaScript-Chatclientbibliothek: Unterstützung nach Betriebssystemen und Browsern
+## <a name="javascript-chat-client-library-support-by-os-and-browser"></a>JavaScript-Chatclientbibliothek: Unterstützung nach Betriebssystemen und Browsern 
 
 Die folgende Tabelle enthält die unterstützten Browser und Versionen, die derzeit verfügbar sind:
-
+    
 |                                  | Windows          | macOS          | Ubuntu | Linux  | Android | iOS    | iPad-Betriebssystem|
-| -------------------------------- | ---------------- | -------------- | ------- | ------ | ------ | ------ | -------|
-| **Chatclientbibliothek** | Firefox *, Chrome*, Edge (neu) | Firefox *, Chrome*, Safari* | Chrome*  | Chrome* | Chrome* | Safari* | Safari* |
+|--------------------------------|----------------|--------------|-------|------|------|------|-------|
+| **Chatclientbibliothek** | Firefox *, Chrome*, Microsoft Edge (neu) | Firefox *, Chrome*, Safari* | Chrome*  | Chrome* | Chrome* | Safari* | Safari* |
 
+\* Hinweis: Neben den beiden vorherigen Releases wird auch die neueste Version unterstützt.<br/>   
 
-\* Hinweis: Neben den beiden vorherigen Releases wird auch die neueste Version unterstützt.<br/>
+## <a name="next-steps"></a>Nächste Schritte   
 
-## <a name="next-steps"></a>Nächste Schritte
+> [!div class="nextstepaction"] 
+> [Erste Schritte mit dem Chat](../../quickstarts/chat/get-started.md)    
 
-> [!div class="nextstepaction"]
-> [Erste Schritte mit dem Chat](../../quickstarts/chat/get-started.md)
-
-Die folgenden Dokumente könnten Sie auch interessieren:
-
+Die folgenden Dokumente könnten Sie auch interessieren:  
 - Machen Sie sich mit [Chatkonzepten](../chat/concepts.md) vertraut.

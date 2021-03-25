@@ -13,10 +13,10 @@ ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 10/12/2020
 ms.openlocfilehash: 8fbbd7a2aabc9de417f1eefd2513edba3119bfc0
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92791391"
 ---
 # <a name="transparent-data-encryption-for-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>TDE (Transparent Data Encryption) für SQL-Datenbank, SQL Managed Instance und Azure Synapse Analytics
@@ -32,7 +32,7 @@ Bei Azure SQL-Datenbank und Azure Synapse ist der TDE-Schutz auf der [Servereben
 > Alle neu erstellten Datenbanken in SQL-Datenbank werden standardmäßig mithilfe einer dienstseitig verwalteten transparenten Datenverschlüsselung verschlüsselt. Vorhandene SQL-Datenbanken, die vor Mai 2017 erstellt wurden, und SQL-Datenbanken, die durch Wiederherstellung, Georeplikation und Datenbankkopie erstellt wurden, sind standardmäßig nicht verschlüsselt. Vorhandene SQL Managed Instance-Datenbanken, die vor Februar 2019 erstellt wurden, sind standardmäßig nicht verschlüsselt. Azure SQL Managed Instance-Datenbanken, die durch Wiederherstellen erstellt wurden, erben den Verschlüsselungsstatus von der Quelle.
 
 > [!NOTE]
-> TDE kann nicht zum Verschlüsseln von Systemdatenbanken wie die **Masterdatenbank** in Azure SQL-Datenbank und Azure SQL Managed Instance verwendet werden. Die **master** -Datenbank enthält Objekte, die zum Ausführen der TDE-Vorgänge für die Benutzerdatenbanken erforderlich sind. Es wird empfohlen, keine vertraulichen Daten in den Systemdatenbanken zu speichern. Die [Infrastrukturverschlüsselung](transparent-data-encryption-byok-overview.md#doubleencryption), die Systemdatenbanken verschlüsselt (einschließlich der Masterdatenbank), wird jetzt eingeführt. 
+> TDE kann nicht zum Verschlüsseln von Systemdatenbanken wie die **Masterdatenbank** in Azure SQL-Datenbank und Azure SQL Managed Instance verwendet werden. Die **master**-Datenbank enthält Objekte, die zum Ausführen der TDE-Vorgänge für die Benutzerdatenbanken erforderlich sind. Es wird empfohlen, keine vertraulichen Daten in den Systemdatenbanken zu speichern. Die [Infrastrukturverschlüsselung](transparent-data-encryption-byok-overview.md#doubleencryption), die Systemdatenbanken verschlüsselt (einschließlich der Masterdatenbank), wird jetzt eingeführt. 
 
 ## <a name="service-managed-transparent-data-encryption"></a>Von einem Dienst verwaltete transparente Datenverschlüsselung
 

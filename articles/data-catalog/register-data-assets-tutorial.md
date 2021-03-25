@@ -6,14 +6,16 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: tutorial
 ms.date: 08/01/2019
-ms.openlocfilehash: 66bacdf27b2ef9cf624b645cb6e4c123d9c3fa2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: de85cad8232d76706358c36806ce19a7c1df893f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88135877"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104675004"
 ---
 # <a name="tutorial-register-data-assets-in-azure-data-catalog"></a>Tutorial: Registrieren von Datenressourcen in Azure Data Catalog
+
+[!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
 
 In diesem Tutorial verwenden Sie das Registrierungstool zum Registrieren von Datenassets aus dem Datenbankbeispiel im Katalog. Bei der Registrierung werden wichtige strukturelle Metadaten (z.B. Namen, Typen und Speicherorte) aus der Datenquelle und des darin enthaltenen Assets extrahiert und in den Katalog kopiert. Die Datenquellen und ihre Daten bleiben an ihrem Ort, aber die Metadaten werden vom Katalog verwendet, um sie leichter ermittelbar und verständlich zu machen.
 
@@ -155,7 +157,7 @@ Die eigenschaftsbasierte Suche ermöglicht Ihnen das Ermitteln von Datenassets, 
 
    ![Azure Data Catalog – Suche speichern](media/register-data-assets-tutorial/data-catalog-save-search.png)
 
-2. Vergewissern Sie sich, dass die gespeicherte Suche unter **Gespeicherte Suchvorgänge**angezeigt wird.
+2. Vergewissern Sie sich, dass die gespeicherte Suche unter **Gespeicherte Suchvorgänge** angezeigt wird.
 
 3. Wählen Sie eine der Aktionen aus, die Sie für den gespeicherten Suchvorgang ausführen können (**Umbenennen**, **Löschen**, **Als Standard speichern**).
 

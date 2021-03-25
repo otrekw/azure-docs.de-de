@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb, martinco
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 12f722977329bd5d79d4d0e410a29c730faf00c5
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92145098"
 ---
 # <a name="troubleshooting-sign-in-problems-with-conditional-access"></a>Beheben von Anmeldeproblemen bei bedingtem Zugriff
@@ -33,7 +33,7 @@ Organisationen sollten die folgenden Konfigurationen vermeiden:
 - **Zugriff blockieren:** Diese Konfiguration blockiert Ihre gesamte Organisation.
 - **Markieren des Geräts als kompatibel erforderlich:** Für Benutzer, die ihre Geräte noch nicht registriert haben, blockiert diese Richtlinie den gesamten Zugriff, einschließlich des Zugriffs auf das Intune-Portal. Wenn Sie ein Administrator ohne registriertes Gerät sind, verhindert diese Richtlinie auch, dass Sie in das Azure-Portal zurückkehren und die Richtlinie ändern können.
 - **Require Hybrid Azure AD domain joined device** (In Azure AD Hybrid-Domäne eingebundenes Gerät erforderlich): Diese Richtlinie blockiert potenziell den Zugriff für alle Benutzer in Ihrer Organisation, wenn sie nicht über in Azure AD Hybrid eingebundene Geräte verfügen.
-- **App-Schutzrichtlinie erforderlich** : Diese Richtlinie zum Blockieren des Zugriffs kann potenziell auch den Zugriff für alle Benutzer in Ihrer Organisation blockieren, wenn Sie nicht über eine Intune-Richtlinie verfügen. Wenn Sie als Administrator nicht über eine Clientanwendung mit einer Intune-App-Schutzrichtlinie verfügen, verhindert diese Richtlinie, dass Sie wieder in Portale wie Intune und Azure gelangen.
+- **App-Schutzrichtlinie erforderlich**: Diese Richtlinie zum Blockieren des Zugriffs kann potenziell auch den Zugriff für alle Benutzer in Ihrer Organisation blockieren, wenn Sie nicht über eine Intune-Richtlinie verfügen. Wenn Sie als Administrator nicht über eine Clientanwendung mit einer Intune-App-Schutzrichtlinie verfügen, verhindert diese Richtlinie, dass Sie wieder in Portale wie Intune und Azure gelangen.
 
 **Für alle Benutzer, alle Cloud-Apps, alle Geräteplattformen:**
 
@@ -71,7 +71,7 @@ Gehen Sie wie folgt vor, um herauszufinden, welche Richtlinie(n) für den beding
 1. Wenn Sie das Anmeldeereignis, das dem Anmeldefehler des Benutzers entspricht, gefunden haben, wählen Sie die Registerkarte **Bedingter Zugriff** aus. Auf der Registerkarte „Bedingter Zugriff“ wird die spezielle Richtlinie (ggf. auch mehrere Richtlinien) angezeigt, die zur Unterbrechung der Anmeldung geführt hat.
    1. Die Informationen auf der Registerkarte **Problembehandlung und Support** geben möglicherweise eindeutig Auskunft darüber, warum bei der Anmeldung ein Fehler aufgetreten ist (z. B. ein Gerät, das die Konformitätsanforderungen nicht erfüllt).
    1. Zur weiteren Untersuchung führen Sie einen Drilldown in die Konfiguration der Richtlinien durch, indem Sie auf den **Richtliniennamen** klicken. Durch Klicken auf den **Richtliniennamen** wird für die ausgewählte Richtlinie die Benutzeroberfläche für die Richtlinienkonfiguration angezeigt. Hier können Sie die Richtlinie überprüfen und bearbeiten.
-   1. Der **Clientbenutzer** und die **Gerätedetails** , die für die Bewertung der Richtlinie für bedingten Zugriff verwendet wurden, sind auch auf den Registerkarten **Grundlegende Infos** , **Standort** , **Geräteinformationen** , **Authentifizierungsdetails** und **Weitere Details** des Anmeldeereignisses verfügbar.
+   1. Der **Clientbenutzer** und die **Gerätedetails**, die für die Bewertung der Richtlinie für bedingten Zugriff verwendet wurden, sind auch auf den Registerkarten **Grundlegende Infos**, **Standort**, **Geräteinformationen**, **Authentifizierungsdetails** und **Weitere Details** des Anmeldeereignisses verfügbar.
 
 ### <a name="policy-details"></a>Richtliniendetails
 

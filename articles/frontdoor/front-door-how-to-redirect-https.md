@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: duau
 ms.openlocfilehash: 19908b3cba63bc76a205097ef8d16e612d58503b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91626641"
 ---
 # <a name="create-a-front-door-with-http-to-https-redirection-using-the-azure-portal"></a>Erstellen einer Front Door-Ressource mit Umleitung von HTTP zu HTTPS über das Azure-Portal
@@ -35,21 +35,21 @@ Sie können das Azure-Portal verwenden, um eine Instanz von [Front Door](quickst
 
 1. Die Konfiguration für Front Door erfolgt in drei Schritten: Hinzufügen eines Front-End-Standardhosts, Hinzufügen von Back-Ends in einem Back-End-Pool und anschließendes Erstellen von Routingregeln, um das Routingverhalten für den Front-End-Host zuzuordnen. Wählen Sie auf den _Front-End-Hosts_ das Symbol **+** aus, um einen Front-End-Host zu erstellen.
 
-    :::image type="content" source="./media/front-door-url-redirect/front-door-designer.png" alt-text="Konfigurieren der Grundlagen für eine neue Front Door-Ressource":::
+    :::image type="content" source="./media/front-door-url-redirect/front-door-designer.png" alt-text="Front Door-Konfigurations-Designer":::
 
 1. Geben Sie einen global eindeutigen Namen für Ihren Front-End-Standardhost für Front Door an. Wählen Sie **Hinzufügen** aus, um mit dem nächsten Schritt fortzufahren.
 
-    :::image type="content" source="./media/front-door-url-redirect/front-door-create-frontend-host.png" alt-text="Konfigurieren der Grundlagen für eine neue Front Door-Ressource":::
+    :::image type="content" source="./media/front-door-url-redirect/front-door-create-frontend-host.png" alt-text="Hinzufügen eines Front-End-Hosts":::
 
 ### <a name="create-backend-pool"></a>Erstellen eines Back-End-Pools
 
 1. Wählen Sie das Symbol **+** für die _Back-End-Pools_ aus, um einen Back-End-Pool zu erstellen. Geben Sie einen Namen für den Back-End-Pool an, und wählen Sie dann **Back-End hinzufügen** aus.
 
-    :::image type="content" source="./media/front-door-url-redirect/front-door-designer-backend-pool.png" alt-text="Konfigurieren der Grundlagen für eine neue Front Door-Ressource":::
+    :::image type="content" source="./media/front-door-url-redirect/front-door-designer-backend-pool.png" alt-text="Back-End-Pool des Front Door-Konfigurations-Designers":::
 
 1. Wählen Sie den Back-End-Hosttyp als _App Service_ aus. Wählen Sie das Abonnement aus, in dem Ihre Web-App gehostet wird, und wählen Sie dann die entsprechende Web-App aus der Dropdownliste für **Name des Back-End-Hosts** aus.
 
-    :::image type="content" source="./media/front-door-url-redirect/front-door-create-backend-pool.png" alt-text="Konfigurieren der Grundlagen für eine neue Front Door-Ressource":::
+    :::image type="content" source="./media/front-door-url-redirect/front-door-create-backend-pool.png" alt-text="Hinzufügen eines Back-Ends in einem Back-End-Pool":::
 
 1. Wählen Sie **Hinzufügen** aus, um das Back-End zu speichern, und wählen Sie dann nochmals **Hinzufügen** aus, um die Konfiguration des Back-End-Pools zu speichern. 
 
@@ -57,11 +57,11 @@ Sie können das Azure-Portal verwenden, um eine Instanz von [Front Door](quickst
 
 1. Wählen Sie das Symbol **+** für die *Routingregeln* aus, um eine Route zu erstellen. Geben Sie einen Namen für die Route an (z.B. „HttpToHttpsRedirect“), und legen Sie dann das Feld *Akzeptiertes Protokoll* auf **Nur HTTP** fest. Stellen Sie sicher, dass das entsprechende *Front-End bzw. die richtigen Domänen* ausgewählt ist/sind.  
 
-    :::image type="content" source="./media/front-door-url-redirect/front-door-designer-routing-rule.png" alt-text="Konfigurieren der Grundlagen für eine neue Front Door-Ressource":::
+    :::image type="content" source="./media/front-door-url-redirect/front-door-designer-routing-rule.png" alt-text="Routingregel des Front Door-Konfigurations-Designers":::
 
 1. Legen Sie im Abschnitt *Routendetails* den *Routentyp* auf **Umleiten** fest. Stellen Sie sicher, dass der *Umleitungstyp* auf **Found (302)** und das *Umleitungsprotokoll* auf **Nur HTTPS** festgelegt ist. 
 
-    :::image type="content" source="./media/front-door-url-redirect/front-door-redirect-config-example.png" alt-text="Konfigurieren der Grundlagen für eine neue Front Door-Ressource":::
+    :::image type="content" source="./media/front-door-url-redirect/front-door-redirect-config-example.png" alt-text="Hinzufügen einer Umleitungsroute von HTTP zu HTTPS":::
 
 1. Wählen Sie **Hinzufügen** aus, um die Routingregel für die Umleitung von HTTP zu HTTPS zu speichern.
 
@@ -71,7 +71,7 @@ Sie können das Azure-Portal verwenden, um eine Instanz von [Front Door](quickst
 
 1. Legen Sie im Abschnitt „Routendetails“ den *Routentyp* auf **Umleiten** fest. Stellen Sie sicher, dass der richtige Back-End-Pool ausgewählt wird und das *Weiterleitungsprotokoll* auf **Nur HTTPS** festgelegt ist. 
 
-    :::image type="content" source="./media/front-door-url-redirect/front-door-forward-route-example.png" alt-text="Konfigurieren der Grundlagen für eine neue Front Door-Ressource" border="false":::
+    :::image type="content" source="./media/front-door-url-redirect/front-door-forward-route-example.png" alt-text="Hinzufügen einer Weiterleitungsroute für HTTPS-Datenverkehr" border="false":::
 
 1. Wählen Sie **Hinzufügen** aus, um die Routingregel für die Anforderungsweiterleitung zu speichern.
 

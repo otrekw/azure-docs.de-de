@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.custom: devx-track-python
 ms.openlocfilehash: 40e20ad4bab0275b44cd868521c7dc70dec52567
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88936128"
 ---
 # <a name="example-create-a-custom-skill-using-python"></a>Beispiel: Erstellen einer benutzerdefinierten Qualifikation mit Python
@@ -38,7 +38,7 @@ Die benutzerdefinierte Qualifikation ist vom Design her einfach (sie verknüpft 
 
 In diesem Beispiel wird eine Azure Function verwendet, um das Konzept des Hostings einer Web-API zu demonstrieren, aber es sind auch andere Ansätze möglich. Solange Sie die [Schnittstellenanforderungen für einen kognitiven Skill](cognitive-search-custom-skill-interface.md) erfüllen, ist der gewählte Ansatz unerheblich. Mit Azure Functions ist das Erstellen eines benutzerdefinierten Skills jedoch einfacher.
 
-### <a name="create-a-function-app"></a>Erstellen einer Funktionen-App
+### <a name="create-a-function-app"></a>Erstellen einer Funktions-App
 
 Mit der Azure Functions-Projektvorlage in Visual Studio Code wird ein Projekt erstellt, das in einer Funktions-App in Azure veröffentlicht werden kann. Sie können mit einer Funktionen-App Funktionen zu logischen Einheiten gruppieren, um die Verwaltung, Bereitstellung und Freigabe von Ressourcen zu ermöglichen.
 
@@ -182,7 +182,7 @@ Sobald Sie das Debuggen gestartet haben, wird Ihre Funktion lokal ausgeführt. S
 
 Wenn Sie mit dem Funktionsverhalten zufrieden sind, können Sie sie veröffentlichen.
 
-1. Drücken Sie in Visual Studio Code die F1-Taste, um die Befehlspalette zu öffnen. Suchen Sie in der Befehlspalette nach **In Funktions-App bereitstellen...** , und führen Sie den Befehl aus. 
+1. Drücken Sie in Visual Studio Code die F1-Taste, um die Befehlspalette zu öffnen. Suchen Sie in der Befehlspalette nach **In Funktions-App bereitstellen...**, und führen Sie den Befehl aus. 
 
 1. Wählen Sie das Azure-Abonnement aus, in dem Sie Ihre Anwendung bereitstellen möchten.
 

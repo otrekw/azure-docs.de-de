@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 10/08/2020
 ms.custom: H1Hack27Feb2017, devx-track-csharp
 ms.openlocfilehash: 8bc9f03f05d52df6e400be5c57033ab2a38fa8eb
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92102964"
 ---
 # <a name="run-tasks-concurrently-to-maximize-usage-of-batch-compute-nodes"></a>Gleichzeitige Ausführung von Tasks zur optimalen Nutzung von Batch-Computeknoten
@@ -19,8 +19,8 @@ In einigen Fällen ist es zwar am besten, wenn alle Ressourcen eines Knotens ded
 
 - **Minimieren Sie den Datenübertragungsaufwand** für Aufgaben, bei denen Daten gemeinsam genutzt werden können. Sie können die Gebühren für die Datenübertragung deutlich reduzieren, indem Sie freigegebene Daten auf eine kleinere Zahl von Knoten kopieren und anschließend Aufgaben parallel auf jedem Knoten ausführen. Dies trifft besonders dann zu, wenn die zu jedem Knoten zu kopierenden Daten zwischen verschiedenen geografischen Regionen übertragen werden müssen.
 - **Maximieren Sie die Speicherauslastung** für Aufgaben, die zwar viel Speicherplatz beanspruchen, aber nur für kurze Zeiträume und zu unterschiedlichen Zeiten während der Ausführung. Sie können weniger, aber dafür größere Computeknoten mit mehr Arbeitsspeicher einsetzen, um solche Spitzen effizient zu bewältigen. Auf diesen Knoten werden dann mehrere Aufgaben parallel ausgeführt, doch jede Aufgabe kann den reichlich vorhandenen Arbeitsspeicher zu verschiedenen Zeiten nutzen.
-- **Verringern Sie die Beschränkungen der Knotenanzahl** , wenn die Kommunikation zwischen Knoten in einem Pool erforderlich ist. Derzeit sind Pools, die für die Kommunikation zwischen Knoten konfiguriert sind, auf 50 Computeknoten beschränkt. Wenn jeder Knoten in einem Pool Aufgaben parallel ausführen kann, kann also eine größere Anzahl von Aufgaben gleichzeitig ausgeführt werden.
-- **Replizieren Sie einen lokalen Computecluster** , z. B. beim ersten Auslagern einer Compute-Umgebung in Azure. Wenn Ihre aktuelle lokale Lösung mehrere Aufgaben pro Computeknoten ausführt, können Sie die maximale Anzahl von Knotenaufgaben erhöhen, um diese Konfiguration besser widerzuspiegeln.
+- **Verringern Sie die Beschränkungen der Knotenanzahl**, wenn die Kommunikation zwischen Knoten in einem Pool erforderlich ist. Derzeit sind Pools, die für die Kommunikation zwischen Knoten konfiguriert sind, auf 50 Computeknoten beschränkt. Wenn jeder Knoten in einem Pool Aufgaben parallel ausführen kann, kann also eine größere Anzahl von Aufgaben gleichzeitig ausgeführt werden.
+- **Replizieren Sie einen lokalen Computecluster**, z. B. beim ersten Auslagern einer Compute-Umgebung in Azure. Wenn Ihre aktuelle lokale Lösung mehrere Aufgaben pro Computeknoten ausführt, können Sie die maximale Anzahl von Knotenaufgaben erhöhen, um diese Konfiguration besser widerzuspiegeln.
 
 ## <a name="example-scenario"></a>Beispielszenario
 

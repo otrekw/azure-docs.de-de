@@ -10,10 +10,10 @@ ms.date: 02/26/2020
 ms.reviewer: jushiman
 ms.custom: avverma, devx-track-azurecli
 ms.openlocfilehash: c4d6de1b3406e6d82bdac5ff9b5c72a2286da988
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92747757"
 ---
 # <a name="terminate-notification-for-azure-virtual-machine-scale-set-instances"></a>Beendigungsbenachrichtigung für Instanzen von Azure-VM-Skalierungsgruppen
@@ -28,10 +28,10 @@ Es gibt mehrere Möglichkeiten, Beendigungsbenachrichtigungen für Skalierungsgr
 
 Die folgenden Schritte ermöglichen eine Beendigungsbenachrichtigung, wenn eine neue Skalierungsgruppe erstellt wird. 
 
-1. Navigieren Sie zu **VM-Skalierungsgruppen** .
+1. Navigieren Sie zu **VM-Skalierungsgruppen**.
 1. Wählen Sie **+ Hinzufügen** aus, um eine neue Skalierungsgruppe zu erstellen.
-1. Navigieren Sie zur Registerkarte **Verwaltung** . 
-1. Suchen Sie den Abschnitt **Instanzbeendigung** .
+1. Navigieren Sie zur Registerkarte **Verwaltung**. 
+1. Suchen Sie den Abschnitt **Instanzbeendigung**.
 1. Wählen Sie für **Instanzbeendigungsbenachrichtigung** die Option **Ein** aus.
 1. Legen Sie für **Beendigungsverzögerung (Minuten)** das gewünschte Standardtimeout fest.
 1. Wenn Sie die Erstellung der neuen Skalierungsgruppe abgeschlossen haben, wählen Sie die Schaltfläche **Überprüfen und erstellen** aus. 
@@ -63,7 +63,7 @@ PUT on `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/provi
 
 ```
 
-Durch den vorangehenden Block wird eine Timeoutverzögerung von 5 Minuten (wie durch *PT5M* angegeben) für jeden beliebigen Beendigungsvorgang festgelegt, der für Instanzen in der Skalierungsgruppe ausgeführt wird. Das Feld *notBeforeTimeout* kann einen beliebigen Wert zwischen 5 und 15 Minuten im ISO 8601-Format enthalten. Sie können das Standardtimeout für den Beendigungsvorgang ändern, indem Sie die *notBeforeTimeout* -Eigenschaft unter *terminateNotificationProfile* wie oben beschrieben ändern.
+Durch den vorangehenden Block wird eine Timeoutverzögerung von 5 Minuten (wie durch *PT5M* angegeben) für jeden beliebigen Beendigungsvorgang festgelegt, der für Instanzen in der Skalierungsgruppe ausgeführt wird. Das Feld *notBeforeTimeout* kann einen beliebigen Wert zwischen 5 und 15 Minuten im ISO 8601-Format enthalten. Sie können das Standardtimeout für den Beendigungsvorgang ändern, indem Sie die *notBeforeTimeout*-Eigenschaft unter *terminateNotificationProfile* wie oben beschrieben ändern.
 
 Nachdem Sie *scheduledEventsProfile* für das Skalierungsgruppenmodell aktiviert und *notBeforeTimeout* festgelegt haben, aktualisieren Sie die einzelnen Instanzen entsprechend dem [neuesten Modell](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model), um die Änderungen widerzuspiegeln.
 
@@ -137,7 +137,7 @@ Scheduled Events wird für die Skalierungsgruppe deaktiviert, wenn von den Skali
 Für VNET-fähige VMs ist der Metadata Service über eine statische, nicht routingfähige IP-Adresse (169.254.169.254) erreichbar.
 
 Der vollständige Endpunkt für die neueste Version von Scheduled Events ist wie folgt:
-> 'http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01 '
+> 'http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01'
 
 ### <a name="query-response"></a>Abfrageantwort
 Eine Antwort enthält ein Array geplanter Ereignisse. Ein leeres Array bedeutet, dass derzeit keine Ereignisse geplant sind.
@@ -182,19 +182,19 @@ Weitere Informationen finden Sie in den Beispielskripts für das Abfragen und Re
 
 ## <a name="tips-and-best-practices"></a>Tipps und Best Practices
 -   Beendigungsbenachrichtigungen nur für Löschvorgänge – Durch alle Löschvorgänge (manuelles Löschen oder durch Autoskalierung initiiertes, horizontales Herunterskalieren) werden Terminate-Ereignisse generiert, sofern *scheduledEventsProfile* für die Skalierungsgruppe aktiviert wurde. Durch andere Vorgänge wie Neustart, Reimaging, erneute Bereitstellung und Beenden/Zuordnung aufheben werden keine Terminate-Ereignisse generiert. Für VMs mit niedriger Priorität können keine Beendigungsbenachrichtigungen aktiviert werden.
--   Keine verbindliche Wartezeit für Timeouts – Sie können den Beendigungsvorgang jederzeit starten, nachdem das Ereignis empfangen wurde und bevor die *NotBefore* -Zeit des Ereignisses abläuft.
+-   Keine verbindliche Wartezeit für Timeouts – Sie können den Beendigungsvorgang jederzeit starten, nachdem das Ereignis empfangen wurde und bevor die *NotBefore*-Zeit des Ereignisses abläuft.
 -   Verbindliche Löschung bei Timeout: Es gibt keine Möglichkeit zur Erhöhung des Timeoutwerts, nachdem ein Ereignis generiert wurde. Nach Ablauf des Timeouts wird das ausstehende Terminate-Ereignis verarbeitet, und die VM wird gelöscht.
--   Änderbarer Timeoutwert – Sie können den Timeoutwert jederzeit ändern, bevor eine Instanz gelöscht wird, indem Sie die *notBeforeTimeout* -Eigenschaft des Skalierungsgruppenmodells ändern und die VM-Instanzen entsprechend dem neuesten Modell aktualisieren.
+-   Änderbarer Timeoutwert – Sie können den Timeoutwert jederzeit ändern, bevor eine Instanz gelöscht wird, indem Sie die *notBeforeTimeout*-Eigenschaft des Skalierungsgruppenmodells ändern und die VM-Instanzen entsprechend dem neuesten Modell aktualisieren.
 -   Alle ausstehenden Löschvorgänge genehmigen – Wenn es einen ausstehenden, nicht genehmigten Löschvorgang auf VM_1 gibt und ein weiteres Terminate-Ereignis auf VM_2 genehmigt wurde, wird VM_2 erst gelöscht, nachdem das Beendigungsereignis für VM_1 genehmigt wurde bzw. das Timeout abgelaufen ist. Sobald Sie das Beendigungsereignis für VM_1 genehmigen, werden sowohl VM_1 als auch VM_2 gelöscht.
--   Alle gleichzeitigen Löschvorgänge genehmigen (Ergänzung des vorangehenden Beispiels) – Wenn VM_1 und VM_2 dieselbe *NotBefore* -Zeit aufweisen, müssen beide Beendigungsereignisse genehmigt werden, da VMs ansonsten erst wieder gelöscht werden können, wenn das Timeout abgelaufen ist.
+-   Alle gleichzeitigen Löschvorgänge genehmigen (Ergänzung des vorangehenden Beispiels) – Wenn VM_1 und VM_2 dieselbe *NotBefore*-Zeit aufweisen, müssen beide Beendigungsereignisse genehmigt werden, da VMs ansonsten erst wieder gelöscht werden können, wenn das Timeout abgelaufen ist.
 
 ## <a name="troubleshoot"></a>Problembehandlung
 ### <a name="failure-to-enable-scheduledeventsprofile"></a>Fehler beim Aktivieren von scheduledEventsProfile
 Wenn Sie einen BadRequest-Fehler mit der Fehlermeldung „Member 'scheduledEventsProfile' für Objekt vom Typ 'VirtualMachineProfile' nicht gefunden“ erhalten, überprüfen Sie die für Skalierungsgruppenvorgänge verwendete API-Version. Die Compute-API-Version **2019-03-01** oder höher ist erforderlich. 
 
 ### <a name="failure-to-get-terminate-events"></a>Fehler beim Abrufen von Terminate-Ereignissen
-Wenn Sie keine **Terminate** -Ereignisse über Scheduled Events erhalten, dann überprüfen Sie die API-Version, die zum Abrufen der Ereignisse verwendet wird. Für Terminate-Ereignisse wird die Metadata Service-API-Version **2019-01-01** benötigt.
->'http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01 '
+Wenn Sie keine **Terminate**-Ereignisse über Scheduled Events erhalten, dann überprüfen Sie die API-Version, die zum Abrufen der Ereignisse verwendet wird. Für Terminate-Ereignisse wird die Metadata Service-API-Version **2019-01-01** benötigt.
+>'http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01'
 
 ### <a name="getting-terminate-event-with-incorrect-notbefore-time"></a>Abrufen von Terminate-Ereignissen mit falscher NotBefore-Zeit  
 Nachdem Sie *scheduledEventsProfile* für das Skalierungsgruppenmodell aktiviert und *notBeforeTimeout* festgelegt haben, aktualisieren Sie die einzelnen Instanzen entsprechend dem [neuesten Modell](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model), um die Änderungen widerzuspiegeln.

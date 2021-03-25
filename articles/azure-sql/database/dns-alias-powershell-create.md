@@ -13,10 +13,10 @@ ms.author: rohitna
 ms.reviewer: genemi, amagarwa, maboja, jrasnick, vanto
 ms.date: 05/14/2019
 ms.openlocfilehash: 02cfd839ed1b75fd85553f2e5a5150cadc29ff8e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92790456"
 ---
 # <a name="powershell-for-dns-alias-to-azure-sql-database"></a>PowerShell für den DNS-Alias für Azure SQL-Datenbank
@@ -59,7 +59,7 @@ Die folgenden Cmdlets werden verwendet:
 
 Informationen zum Installieren oder Upgraden finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/install-az-ps).
 
-Verwenden Sie `Get-Module -ListAvailable Az` in der Datei *powershell\_ise.exe* , um die entsprechende Version zu ermitteln.
+Verwenden Sie `Get-Module -ListAvailable Az` in der Datei *powershell\_ise.exe*, um die entsprechende Version zu ermitteln.
 
 ```powershell
 $subscriptionName = '<subscriptionName>';

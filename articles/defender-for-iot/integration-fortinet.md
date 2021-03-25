@@ -1,19 +1,14 @@
 ---
 title: Informationen zur Fortinet-Integration
-titleSuffix: Azure Defender for IoT
 description: Zwischen Defender für IoT und Fortinet wurde eine Technologiepartnerschaft geschlossen, um Angriffe in IoT- und ICS-Netzwerken zu erkennen und zu verhindern.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 1/17/2021
 ms.topic: article
-ms.service: azure
-ms.openlocfilehash: 313db90d4c9be30ef588b00caf1d6e4ce32b113b
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: e2119a9e01a4e58cd9d2ca1b9b3384ec9629784c
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98556783"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104784015"
 ---
 # <a name="defender-for-iot-and-fortinet-iiot-and-ics-threat-detection--prevention"></a>Defender für IoT und Fortinet: IIoT- und ICS-Bedrohungserkennung und -schutz
 
@@ -113,7 +108,7 @@ So erstellen Sie eine Weiterleitungsregel
 
     :::image type="content" source="media/integration-fortinet/new-rule.png" alt-text="Fenster zum Erstellen einer neuen Weiterleitungsregel":::
 
-    | Parameter | Beschreibung |
+    | Parameter | BESCHREIBUNG |
     |--|--|
     | **Name** | Der Name der Weiterleitungsregel |
     | **Schweregrad** | Der Mindestschweregrad für die Weiterleitung von Vorfällen. Wenn z. B. **Gering** ausgewählt ist, werden Warnungen mit einem geringen Schweregrad und alle Warnungen mit höheren Schweregraden weitergeleitet. |
@@ -200,7 +195,7 @@ So legen Sie eine FortiGate-Firewallregel fest, die diese schädliche Quelle blo
 
     :::image type="content" source="media/integration-fortinet/new-rule.png" alt-text="Screenshot des Fensters „Create Forwarding Rule“ (Weiterleitungsregel erstellen)":::
 
-    | Parameter | Beschreibung |
+    | Parameter | BESCHREIBUNG |
     | --------- | ----------- |
     | **Name** | Der Name der Weiterleitungsregel |
     | **Schweregrad** | Der Mindestschweregrad für die Weiterleitung von Vorfällen. Wenn z. B. **Gering** ausgewählt ist, werden Warnungen mit einem geringen Schweregrad und alle Warnungen mit höheren Schweregraden weitergeleitet. |
@@ -244,4 +239,4 @@ So legen Sie eine FortiGate-Firewallregel fest, die diese schädliche Quelle blo
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum [Weiterleiten von Warnungsinformationen](how-to-forward-alert-information-to-partners.md).
+Erfahren Sie, wie Sie [Warnungsinformationen weiterleiten](how-to-forward-alert-information-to-partners.md).

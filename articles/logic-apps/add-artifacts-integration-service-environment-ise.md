@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
 ms.openlocfilehash: 147247c663311cfb3e05a986c6fb2bffbb41158b
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92675199"
 ---
 # <a name="add-resources-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>Hinzufügen von Ressourcen zu Ihrer Integrationsdienstumgebung (Integration Service Environment, ISE) in Azure Logic Apps
@@ -47,10 +47,10 @@ Führen Sie die folgenden Schritte aus, um Logik-Apps zu erstellen, die in Ihrer
    | **Name** | Ja | Der Name der zu erstellenden Logik-App. |
    | **Abonnement** | Ja | Der Name des zu verwendenden Azure-Abonnements |
    | **Ressourcengruppe** | Ja | Der Name der (neuen oder vorhandenen) zu verwendenden Ressourcengruppe in Azure. |
-   | **Location** | Ja | Wählen Sie unter **Integrationsdienstumgebungen** die zu verwendende ISE aus, sofern diese nicht bereits ausgewählt ist. <p><p> **Wichtig** : Um Ihre Logik-Apps mit einem Integrationskonto zu verwenden, müssen beide dieselbe ISE verwenden. |
+   | **Location** | Ja | Wählen Sie unter **Integrationsdienstumgebungen** die zu verwendende ISE aus, sofern diese nicht bereits ausgewählt ist. <p><p> **Wichtig**: Um Ihre Logik-Apps mit einem Integrationskonto zu verwenden, müssen beide dieselbe ISE verwenden. |
    ||||
 
-1. Wählen Sie **Erstellen** , wenn Sie fertig sind.
+1. Wählen Sie **Erstellen**, wenn Sie fertig sind.
 
 1. Fahren Sie wie gewohnt mit der [Erstellung Ihrer Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md) fort.
 
@@ -80,10 +80,10 @@ Führen Sie die folgenden Schritte aus, um ein Integrationskonto zu erstellen, d
    | **Abonnement** | Ja | Der Name des zu verwendenden Azure-Abonnements. |
    | **Ressourcengruppe** | Ja | Der Name der (neuen oder vorhandenen) zu verwendenden Ressourcengruppe in Azure. |
    | **Preisstufe** | Ja | Der für das Integrationskonto zu verwendende Tarif. |
-   | **Location** | Ja | Wählen Sie unter **Integrationsdienstumgebungen** dieselbe ISE aus, die Ihre Logik-Apps verwenden, sofern diese nicht bereits ausgewählt ist. <p><p> **Wichtig** : Um Ihr Integrationskonto mit Logik-Apps zu verwenden, müssen beide dieselbe ISE verwenden. |
+   | **Location** | Ja | Wählen Sie unter **Integrationsdienstumgebungen** dieselbe ISE aus, die Ihre Logik-Apps verwenden, sofern diese nicht bereits ausgewählt ist. <p><p> **Wichtig**: Um Ihr Integrationskonto mit Logik-Apps zu verwenden, müssen beide dieselbe ISE verwenden. |
    ||||
 
-1. Wählen Sie **Erstellen** , wenn Sie fertig sind.
+1. Wählen Sie **Erstellen**, wenn Sie fertig sind.
 
 1. [Verknüpfen Sie Ihre Logik-App wie gewohnt mit Ihrem Integrationskonto.](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account)
 

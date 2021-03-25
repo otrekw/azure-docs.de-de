@@ -12,10 +12,10 @@ ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 02/13/2019
 ms.openlocfilehash: 71c73fec4f559b34b097556243617636acd77480
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92673261"
 ---
 # <a name="tutorial-configure-active-geo-replication-and-failover-in-the-azure-portal-azure-sql-database"></a>Tutorial: Konfigurieren der aktiven Georeplikation und des Failovers im Azure-Portal (Azure SQL-Datenbank)
@@ -56,7 +56,7 @@ Nachdem die sekundäre Datenbank erstellt und das Seeding ausgeführt wurde, beg
 3. Wählen Sie den Server und den Tarif für die sekundäre Datenbank aus bzw. konfigurieren Sie Server und Tarif.
 
     ![Dialogfeld „Sekundäre Datenbank erstellen“](./media/active-geo-replication-configure-portal/create-secondary.png)
-4. Optional können Sie einem Pool für elastische Datenbanken eine sekundäre Datenbank hinzufügen. Um die sekundäre Datenbank in einem Pool zu erstellen, klicken Sie auf **Pool für elastische Datenbanken** , und wählen Sie einen Pool auf dem Zielserver aus. Ein Pool muss bereits auf dem Zielserver vorhanden sein. Dieser Workflow erstellt keinen Pool.
+4. Optional können Sie einem Pool für elastische Datenbanken eine sekundäre Datenbank hinzufügen. Um die sekundäre Datenbank in einem Pool zu erstellen, klicken Sie auf **Pool für elastische Datenbanken**, und wählen Sie einen Pool auf dem Zielserver aus. Ein Pool muss bereits auf dem Zielserver vorhanden sein. Dieser Workflow erstellt keinen Pool.
 5. Klicken Sie auf **Erstellen** , um die sekundäre Datenbank hinzuzufügen.
 6. Die sekundäre Datenbank wird erstellt, und der Seedingprozess beginnt.
 
@@ -71,7 +71,7 @@ Für die sekundäre Datenbank kann ein Wechsel durchgeführt werden, bei dem sie
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zur primären Datenbank in der Georeplikationspartnerschaft.
 2. Wählen Sie auf dem Blatt „SQL-Datenbank“ **Alle Einstellungen** > **Georeplikation** aus.
-3. Wählen Sie in der Liste **SEKUNDÄRE DATENBANKEN** die Datenbank aus, die zur neuen primären Datenbank werden soll. Klicken Sie anschließend auf **Erzwungenes Failover** .
+3. Wählen Sie in der Liste **SEKUNDÄRE DATENBANKEN** die Datenbank aus, die zur neuen primären Datenbank werden soll. Klicken Sie anschließend auf **Erzwungenes Failover**.
 
     ![failover](./media/active-geo-replication-configure-portal/secondaries.png)
 4. Klicken Sie auf **Ja** , um das Failover zu beginnen.
@@ -90,10 +90,10 @@ Dieser Vorgang beendet die Replikation zur sekundären Datenbank dauerhaft und �
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zur primären Datenbank in der Georeplikationspartnerschaft.
 2. Wählen Sie auf der Seite „SQL-Datenbank“ die Option **Georeplikation** aus.
 3. Wählen Sie in der Liste **SEKUNDÄRE DATENBANKEN** die Datenbank aus, die Sie aus der Georeplikationspartnerschaft entfernen möchten.
-4. Klicken Sie auf **Replikation beenden** .
+4. Klicken Sie auf **Replikation beenden**.
 
     ![Sekundäre Datenbank entfernen](./media/active-geo-replication-configure-portal/remove-secondary.png)
-5. Ein Bestätigungsfenster wird geöffnet. Klicken Sie zum Entfernen der Datenbank aus der Georeplikationspartnerschaft auf **Ja** . (Setzen Sie sie auf eine Datenbank mit Lese-/ Schreibzugriff fest, die kein Teil der Replikation ist.)
+5. Ein Bestätigungsfenster wird geöffnet. Klicken Sie zum Entfernen der Datenbank aus der Georeplikationspartnerschaft auf **Ja**. (Setzen Sie sie auf eine Datenbank mit Lese-/ Schreibzugriff fest, die kein Teil der Replikation ist.)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

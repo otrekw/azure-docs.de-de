@@ -9,10 +9,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 10/27/2020
 ms.openlocfilehash: e9a0b2fe883fa46010fda74c58908128d05919e6
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92754222"
 ---
 # <a name="how-to-create-a-consulting-service-offer-in-the-commercial-marketplace"></a>Erstellen eines Angebots für einen Beratungsdienst im kommerziellen Marketplace
@@ -57,7 +57,7 @@ So konfigurieren Sie die Leadverwaltung in Partner Center:
     * [Konfigurieren Ihres Angebots zum Senden von Leads zu Marketo](./partner-center-portal/commercial-marketplace-lead-management-instructions-marketo.md#configure-your-offer-to-send-leads-to-marketo)
     * [Konfigurieren Ihres Angebots zum Senden von Leads zu Salesforce](./partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce.md#configure-your-offer-to-send-leads-to-salesforce)
 
-5.  Klicken Sie auf den Link **Überprüfen** , um die angegebene Konfiguration zu überprüfen.
+5.  Klicken Sie auf den Link **Überprüfen**, um die angegebene Konfiguration zu überprüfen.
 6.  Wenn Sie die Verbindungsdetails konfiguriert haben, klicken Sie auf **Verbinden**.
 7.  Wähen Sie **Entwurf speichern** aus.
 

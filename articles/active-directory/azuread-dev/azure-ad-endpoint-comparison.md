@@ -14,10 +14,10 @@ ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, n
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 8f6170de65ae5e1ca8ecb5f7cc8a78f4f194ac41
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92055289"
 ---
 # <a name="why-update-to-microsoft-identity-platform-v20"></a>Gründe für eine Aktualisierung auf die Microsoft Identity Platform (v2.0)
@@ -168,4 +168,4 @@ Wenn Sie die Active Directory-Authentifizierungsbibliothek (ADAL) in Windows-Anw
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Lesen Sie die [Dokumentation zu Microsoft Identity Platform](../develop/index.yml), um mehr zu erfahren.
+Erfahren Sie mehr in der [Dokumentation zur Microsoft Identity Platform](../develop/index.yml).

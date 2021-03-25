@@ -10,10 +10,10 @@ ms.date: 08/07/2019
 ms.author: menchi
 ms.custom: amqp, devx-track-csharp
 ms.openlocfilehash: daba400b9daadf464c4c125ad266745237e71367
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92142503"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-net"></a>Erste Schritte mit der Modulidentität und dem Modulzwilling von IoT Hub (.NET)
@@ -173,7 +173,7 @@ Sie können die Apps nun ausführen.
 
 1. Wählen Sie **Mehrere Startprojekte**, dann **Starten** als Aktion für die App und dann **OK** aus, um die Änderungen zu akzeptieren.
 
-1. Drücken Sie**F5**, um die Apps zu starten.
+1. Drücken Sie **F5**, um die Apps zu starten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

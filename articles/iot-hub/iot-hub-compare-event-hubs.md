@@ -14,10 +14,10 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: System Architecture'
 ms.openlocfilehash: 56bb179c50862f09f1b789c359db97976017bbb5
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92142761"
 ---
 # <a name="connecting-iot-devices-to-azure-iot-hub-and-event-hubs"></a>Verbinden von IoT-Geräten mit Azure: IoT Hub und Event Hubs
@@ -26,7 +26,7 @@ Azure bietet Dienste, die speziell für verschiedene Arten von Konnektivität un
 
 Azure IoT Hub ist das Cloudgateway, das IoT-Geräte verbindet, um Daten zu sammeln und so geschäftliche Erkenntnisse und Automatisierung zu fördern. Darüber hinaus bietet IoT Hub Funktionen, die die Beziehung zwischen Ihren Geräten und Ihren Back-End-Systemen optimieren. Bidirektionale Kommunikationsfunktionen bedeuten: Während Sie Daten von Geräten empfangen, können Sie auch Befehle und Richtlinien an Geräte zurücksenden. Verwenden Sie z. B. Cloud-zu-Gerät-Messaging, um Eigenschaften zu aktualisieren oder Aktionen zur Geräteverwaltung aufzurufen. Die Cloud-zu-Gerät-Kommunikation ermöglicht es Ihnen auch, Cloud Intelligence mit Azure IoT Edge an Ihre Edge-Geräte zu senden. Die besondere von IoT Hub bereitgestellte Identität auf Geräteebene hilft Ihnen, Ihre IoT-Lösung besser vor möglichen Angriffen zu schützen. 
 
-[Azure Event Hubs](../event-hubs/event-hubs-about.md) ist der Big Data-Streamingdienst von Azure. Die Lösung ist auf Szenarien für das Streaming von Daten mit hohem Durchsatz ausgelegt, bei denen Kunden täglich Milliarden von Anforderungen senden können. Event Hubs nutzt ein partitioniertes Consumermodell zur Aufskalierung Ihres Streams und ist in die Big Data- und Analysedienste von Azure integriert, darunter Databricks, Stream Analytics, ADLS und HDInsight. Mit Funktionen wie Event Hubs Capture und „Automatische Vergrößerung“ unterstützt dieser Dienst Ihre Big Data-Apps und -Lösungen. Zusätzlich wird Event Hubs von IoT Hub für seinen Telemetrie-Datenflusspfad genutzt, sodass auch Ihre IoT-Lösung von der enormen Leistungsfähigkeit von Event Hubs profitiert.
+[Azure Event Hubs](../event-hubs/event-hubs-about.md) ist der Big Data-Streamingdienst von Azure. Die Lösung ist auf Szenarien für das Streaming von Daten mit hohem Durchsatz ausgelegt, bei denen Kunden täglich Milliarden von Anforderungen senden können. Event Hubs nutzt ein partitioniertes Consumermodell zur horizontalen Skalierung Ihres Streams und ist in die Big Data- und Analysedienste von Azure integriert, darunter Databricks, Stream Analytics, ADLS und HDInsight. Mit Funktionen wie Event Hubs Capture und „Automatische Vergrößerung“ unterstützt dieser Dienst Ihre Big Data-Apps und -Lösungen. Zusätzlich wird Event Hubs von IoT Hub für seinen Telemetrie-Datenflusspfad genutzt, sodass auch Ihre IoT-Lösung von der enormen Leistungsfähigkeit von Event Hubs profitiert.
 
 Zusammenfassend lässt sich sagen, dass beide Lösungen für die Datenerfassung in großem Maßstab ausgelegt sind. Nur IoT Hub bietet die umfangreichen IoT-spezifischen Funktionen, die für Sie entwickelt wurden, um den betriebswirtschaftlichen Nutzen der Verbindung Ihrer IoT-Geräte mit der Azure-Cloud zu maximieren.  Wenn Sie gerade erst am Anfang Ihrer IoT-Projekte stehen, können Sie mit IoT Hub zur Unterstützung Ihrer Datenerfassungsszenarien beginnen, um sicherzustellen, dass Sie sofortigen Zugriff auf die vollständigen IoT-Funktionen haben, sobald Ihre geschäftlichen und technischen Anforderungen dies erfordern.
 
@@ -39,11 +39,11 @@ Die folgende Tabelle enthält Details zum Vergleich der beiden Tarife von IoT Hu
 | Protokolle: MQTT, MQTT über webSockets | ![Prüfen][checkmark] | ![Prüfen][checkmark] |  |
 | Gerätebasierte Identität | ![Prüfen][checkmark] | ![Prüfen][checkmark] |  |
 | Dateiupload von Geräten | ![Prüfen][checkmark] | ![Prüfen][checkmark] |  |
-| Device Provisioning-Dienst | ![Prüfen][checkmark] | ![Prüfen][checkmark] |  |
-| Senden von Nachrichten aus der Cloud an Geräte | ![Prüfen][checkmark] |  |  |
-| Gerätezwillinge und Geräteverwaltung | ![Prüfen][checkmark] |  |  |
-| Gerätestreams (Vorschau) | ![Prüfen][checkmark] |  |  |
-| IoT Edge | ![Prüfen][checkmark] |  |  |
+| Device Provisioning Service | ![Prüfen][checkmark] | ![Prüfen][checkmark] |  |
+| Senden von Nachrichten aus der Cloud an Geräte | ![Azure Functions][checkmark] |  |  |
+| Gerätezwillinge und Geräteverwaltung | ![Azure Functions][checkmark] |  |  |
+| Gerätestreams (Vorschau) | ![Azure Functions][checkmark] |  |  |
+| IoT Edge | ![Azure Functions][checkmark] |  |  |
 
 Auch wenn die D2C-Clouddatenerfassung der einzige Anwendungsfall ist, sollten Sie unbedingt IoT Hub verwenden, da IoT Hub einen Dienst bietet, der für die Verbindung von IoT-Geräten ausgelegt ist. 
 

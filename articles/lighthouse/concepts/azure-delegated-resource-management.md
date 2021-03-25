@@ -4,10 +4,10 @@ description: Die delegierte Azure-Ressourcenverwaltung ist ein wichtiger Bestand
 ms.date: 10/19/2020
 ms.topic: conceptual
 ms.openlocfilehash: d484e61fc4ab3714eb362b26d64d449890065888
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92203856"
 ---
 # <a name="azure-delegated-resource-management"></a>Delegierte Azure-Ressourcenverwaltung
@@ -31,7 +31,7 @@ Sie können [den neuen Angebotstyp für verwaltete Dienste im Azure Marketplace 
 
 Generell funktioniert die delegierte Azure-Ressourcenverwaltung wie folgt:
 
-1. Zuerst ermitteln Sie den Zugriff (Rollen), den Ihre Gruppen, Dienstprinzipale oder Benutzer benötigen, um die Azure-Ressourcen des Kunden zu verwalten. Die Zugriffsdefinition enthält die ID des verwaltenden Mandanten zusammen mit **principalid** -Identitäten aus Ihrem Mandanten, die [integrierten **roleDefinition** -Werten](../../role-based-access-control/built-in-roles.md) zugeordnet sind (Mitwirkender, Mitwirkender für virtuelle Computer, Leser usw.).
+1. Zuerst ermitteln Sie den Zugriff (Rollen), den Ihre Gruppen, Dienstprinzipale oder Benutzer benötigen, um die Azure-Ressourcen des Kunden zu verwalten. Die Zugriffsdefinition enthält die ID des verwaltenden Mandanten zusammen mit **principalid**-Identitäten aus Ihrem Mandanten, die [integrierten **roleDefinition**-Werten](../../role-based-access-control/built-in-roles.md) zugeordnet sind (Mitwirkender, Mitwirkender für virtuelle Computer, Leser usw.).
 2. Sie geben diesen Zugriff an und führen das Onboarding des Kunden in Azure Lighthouse auf eine von zwei Arten durch:
    - [Veröffentlichen eines Angebots für verwaltete Dienste im Azure Marketplace](../how-to/publish-managed-services-offers.md) (privat oder öffentlich), das der Kunde annimmt
    - [Bereitstellen einer Azure Resource Manager Vorlage im Mandanten des Kunden](../how-to/onboard-customer.md) für ein oder mehrere bestimmte Abonnements oder Ressourcengruppen
@@ -43,7 +43,7 @@ Generell funktioniert die delegierte Azure-Ressourcenverwaltung wie folgt:
 
 ## <a name="support-for-azure-delegated-resource-management"></a>Unterstützung für delegierte Azure-Ressourcenverwaltung
 
-Wenn Sie Hilfe im Zusammenhang mit der delegierten Azure-Ressourcenverwaltung benötigen, können Sie eine Supportanfrage im Azure-Portal öffnen. Wählen Sie als **Problemtyp** **Technisch** aus. Wählen Sie ein Abonnement aus und dann **Lighthouse** (unter **Überwachung und Verwaltung** ).
+Wenn Sie Hilfe im Zusammenhang mit der delegierten Azure-Ressourcenverwaltung benötigen, können Sie eine Supportanfrage im Azure-Portal öffnen. Wählen Sie als **Problemtyp** **Technisch** aus. Wählen Sie ein Abonnement aus und dann **Lighthouse** (unter **Überwachung und Verwaltung**).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

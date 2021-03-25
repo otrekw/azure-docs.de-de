@@ -6,10 +6,10 @@ ms.custom: devx-track-csharp
 ms.date: 11/26/2019
 ms.reviewer: sergkanz
 ms.openlocfilehash: 42a5318325f9961483465357403089755feb130d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88933306"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Nachverfolgen von benutzerdefinierten Vorgängen mit dem Application Insights .NET SDK
@@ -426,7 +426,7 @@ public async Task RunMyTaskAsync()
 
 Beim Löschvorgang wird der Vorgang beendet, sodass Sie hierfür stattdessen auch `StopOperation` aufrufen können.
 
-*Warnung*: In einigen Fällen kann durch eine unbehandelte Ausnahme [verhindert ](/dotnet/csharp/language-reference/keywords/try-finally) werden, dass `finally` aufgerufen wird, und die Vorgänge werden dann ggf. nicht nachverfolgt.
+*Warnung*: In einigen Fällen kann durch eine unbehandelte Ausnahme [verhindert](/dotnet/csharp/language-reference/keywords/try-finally) werden, dass `finally` aufgerufen wird, und die Vorgänge werden dann ggf. nicht nachverfolgt.
 
 ### <a name="parallel-operations-processing-and-tracking"></a>Verarbeitung und Nachverfolgung von parallelen Vorgängen
 

@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/03/2019
 ms.openlocfilehash: 91bcd998849c619a328a198c97bb8c977b9d8232
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92792224"
 ---
 # <a name="using-the-recoverymanager-class-to-fix-shard-map-problems"></a>Verwenden der RecoveryManager-Klasse zur Behebung von Problemen mit der Shard-Zuordnung
@@ -37,7 +37,7 @@ In einer Umgebung mit Sharddatenbanken gibt es einen Mandanten pro Datenbank und
 
 Die GSM und die LSM können aus den folgenden Gründen nicht mehr synchron sein:
 
-1. Ein Shard, dessen Bereich anscheinend nicht länger genutzt wird, wurde gelöscht, oder ein Shard wurde umbenannt. Das Löschen eines Shards führt zu einer **verwaisten Shardzuordnung** . Eine umbenannte Datenbank kann auf ähnliche Weise zu einer verwaisten Shardzuordnung führen. Abhängig davon, was geändert werden soll, muss der Shard möglicherweise entfernt oder der Shardspeicherort aktualisiert werden. Informationen zum Wiederherstellen einer gelöschten Datenbank finden Sie unter [Wiederherstellen einer gelöschten Datenbank](recovery-using-backups.md).
+1. Ein Shard, dessen Bereich anscheinend nicht länger genutzt wird, wurde gelöscht, oder ein Shard wurde umbenannt. Das Löschen eines Shards führt zu einer **verwaisten Shardzuordnung**. Eine umbenannte Datenbank kann auf ähnliche Weise zu einer verwaisten Shardzuordnung führen. Abhängig davon, was geändert werden soll, muss der Shard möglicherweise entfernt oder der Shardspeicherort aktualisiert werden. Informationen zum Wiederherstellen einer gelöschten Datenbank finden Sie unter [Wiederherstellen einer gelöschten Datenbank](recovery-using-backups.md).
 2. Ein Geofailoverereignis tritt ein. Um fortzufahren, müssen der Servername und der Datenbankname des Shardzuordnungs-Managers in der Anwendung und anschließend noch die Shardzuordnungsdetails für sämtliche Shards in einer Shardzuordnung aktualisiert werden. Bei einem Geofailover sollte eine solche Wiederherstellungslogik innerhalb des Failoverworkflows automatisiert werden. Die Automatisierung von Wiederherstellungsaktionen gewährleistet eine reibungslose Verwaltbarkeit für geofähige Datenbanken und vermeidet manuelle, von Personen durchzuführende Aktionen. Weitere Informationen zu Optionen zum Wiederherstellen einer Datenbank bei einem Rechenzentrumsausfall finden Sie unter [Geschäftskontinuität](business-continuity-high-availability-disaster-recover-hadr-overview.md) und [Notfallwiederherstellung](disaster-recovery-guidance.md).
 3. Entweder ein Shard oder die ShardMapManager-Datenbank wird auf einen früheren Zeitpunkt wiederhergestellt. Weitere Informationen zur Zeitpunktwiederherstellung mithilfe von Sicherungen finden Sie unter [Wiederherstellen einer Azure SQL-Datenbank mit automatisierten Datenbanksicherungen](recovery-using-backups.md).
 

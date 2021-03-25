@@ -10,10 +10,10 @@ ms.date: 08/06/2019
 ms.author: alkohli
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 96a6692524eca3a2845d648ab3df2932d00ce823
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91951144"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-with-azure-stack-edge-pro"></a>Entwickeln eines C#-IoT Edge-Moduls zum Verschieben von Dateien mit Azure Stack Edge Pro
@@ -69,9 +69,9 @@ Eine Azure Container Registry-Instanz ist eine private Docker-Registrierung in A
 3. Stellen Sie Folgendes bereit:
 
    1. Einen eindeutigen **Registrierungsnamen** in Azure, der 5 bis 50 alphanumerische Zeichen umfasst.
-   2. Wählen Sie ein **Abonnement**aus.
+   2. Wählen Sie ein **Abonnement** aus.
    3. Wählen Sie eine vorhandene **Ressourcengruppe** aus, oder erstellen Sie eine neue Ressourcengruppe.
-   4. Wählen Sie einen **Speicherort**aus. Es wird empfohlen, den gleichen Speicherort zu verwenden, der der Azure Stack Edge-Ressource zugeordnet ist.
+   4. Wählen Sie einen **Speicherort** aus. Es wird empfohlen, den gleichen Speicherort zu verwenden, der der Azure Stack Edge-Ressource zugeordnet ist.
    5. Legen Sie **Administratorbenutzer** auf **Aktivieren** fest.
    6. Legen Sie die SKU auf **Basic** fest.
 

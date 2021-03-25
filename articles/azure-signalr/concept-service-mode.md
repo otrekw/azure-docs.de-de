@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: kenchen
 ms.openlocfilehash: 60f1ab0440120cb9a96e6c05a4fc1987ead29188
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92143251"
 ---
 # <a name="service-mode-in-azure-signalr-service"></a>Dienstmodi in Azure SignalR Service
@@ -21,7 +21,7 @@ Der Dienstmodus ist ein wichtiges Konzept in Azure SignalR Service. Wenn Sie ein
 
 Sie können ihn auch später im Menü „Einstellungen“ ändern:
 
-:::image type="content" source="media/concept-service-mode/update.png" alt-text="Auswählen des Dienstmodus bei der Erstellung":::
+:::image type="content" source="media/concept-service-mode/update.png" alt-text="Ändern des Dienstmodus":::
 
 Azure SignalR Service unterstützt derzeit drei Dienstmodi: **Standard**, **serverlos** und **klassisch**. Die SignalR-Ressource verhält sich in den verschiedenen Modi unterschiedlich. In diesem Artikel erfahren Sie, welche Unterschiede dies sind und wie Sie den richtigen Dienstmodus für Ihr Szenario auswählen.
 
@@ -29,7 +29,7 @@ Azure SignalR Service unterstützt derzeit drei Dienstmodi: **Standard**, **serv
 
 Der Standardmodus ist die Standardeinstellung für den Dienstmodus, wenn Sie eine neue SignalR-Ressource erstellen. In diesem Modus funktioniert Ihre Anwendung als typische SignalR-Anwendung mit ASP.NET Core (oder ASP.NET) mit einem Webserver, der einen Hub hostet (im Folgenden als „Hubserver“ bezeichnet). Die Clients können im Duplexmodus in Echtzeit mit dem Hubserver kommunizieren. Der einzige Unterschied besteht darin, dass Client und Server nicht direkt miteinander verbunden werden, sondern sowohl Client als auch Server eine Verbindung mit SignalR Service herstellen und den Dienst als Proxy verwenden. Im folgenden Diagramm wird die typische Anwendungsstruktur im Standardmodus veranschaulicht:
 
-:::image type="content" source="media/concept-service-mode/default.png" alt-text="Auswählen des Dienstmodus bei der Erstellung":::
+:::image type="content" source="media/concept-service-mode/default.png" alt-text="Anwendungsstruktur im Standardmodus":::
 
 Wenn Sie über eine SignalR-Anwendung verfügen und diese mit SignalR Service integrieren möchten, sollte der Standardmodus daher in den meisten Fällen die richtige Wahl sein.
 
@@ -59,7 +59,7 @@ Weitere Informationen zum Konfigurieren von Upstreamübertragungen finden Sie in
 
 Im folgenden Diagramm wird die Funktionsweise des serverlosen Modus veranschaulicht:
 
-:::image type="content" source="media/concept-service-mode/serverless.png" alt-text="Auswählen des Dienstmodus bei der Erstellung":::
+:::image type="content" source="media/concept-service-mode/serverless.png" alt-text="Anwendungsstruktur im serverlosen Modus":::
 
 > [!NOTE]
 > Beachten Sie, dass Sie im Standardmodus auch REST-APIs, das Verwaltungs-SDK und Funktionsbindungen verwenden können, um Nachrichten direkt an den Client zu senden, wenn Sie den Hubserver nicht verwenden möchten. Im Standardmodus werden Clientverbindungen jedoch weiterhin von den Hubservern verarbeitet, und der Upstream funktioniert in diesem Modus nicht.

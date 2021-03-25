@@ -14,10 +14,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
 ms.openlocfilehash: f823b6d04a217328fe2e825e64906460cd9cbae9
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92672492"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-and-query"></a>Schnellstart: Verbinden und Abfragen mit Visual Studio Code 
@@ -76,9 +76,9 @@ Ermitteln Sie die Verbindungsinformationen, die Sie zum Herstellen einer Verbind
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
-2. Navigieren Sie zur Seite **SQL-Datenbanken** oder **Verwaltete SQL-Instanzen** .
+2. Navigieren Sie zur Seite **SQL-Datenbanken** oder **Verwaltete SQL-Instanzen**.
 
-3. Auf der Seite **Übersicht** finden Sie den vollqualifizierten Servernamen für SQL-Datenbank neben **Servername** oder den vollqualifizierten Servernamen für SQL Managed Instance neben **Host** . Um den Namen des Servers oder Hosts zu kopieren, zeigen Sie darauf, und wählen Sie das Symbol **Kopieren** aus.
+3. Auf der Seite **Übersicht** finden Sie den vollqualifizierten Servernamen für SQL-Datenbank neben **Servername** oder den vollqualifizierten Servernamen für SQL Managed Instance neben **Host**. Um den Namen des Servers oder Hosts zu kopieren, zeigen Sie darauf, und wählen Sie das Symbol **Kopieren** aus.
 
 ## <a name="set-language-mode-to-sql"></a>Festlegen des Sprachmodus auf SQL
 
@@ -86,7 +86,7 @@ Legen Sie den Sprachmodus in Visual Studio Code auf **SQL** fest, um die Verwend
 
 1. Öffnen Sie ein neues Visual Studio Code-Fenster.
 
-2. Drücken Sie **STRG**+**N** . Eine neue Nur-Text-Datei wird geöffnet.
+2. Drücken Sie **STRG**+**N**. Eine neue Nur-Text-Datei wird geöffnet.
 
 3. Wählen Sie in der unteren rechten Ecke der Statusleiste **Nur Text** aus.
 
@@ -99,17 +99,17 @@ Verwenden Sie Visual Studio Code, um eine Verbindung mit dem Server herzustellen
 > [!IMPORTANT]
 > Stellen Sie vor dem Fortfahren sicher, dass Sie über alle Informationen zu Server und Anmeldung verfügen. Wenn Sie mit dem Eingeben der Informationen für das Verbindungsprofil begonnen haben und zu Visual Studio Code wechseln, müssen Sie mit dem Erstellen des Profils neu beginnen.
 
-1. Drücken Sie in Visual Studio Code die Tastenkombination **STRG+UMSCHALT+P** (oder **F1** ), um die Befehlspalette zu öffnen.
+1. Drücken Sie in Visual Studio Code die Tastenkombination **STRG+UMSCHALT+P** (oder **F1**), um die Befehlspalette zu öffnen.
 
-2. Wählen Sie **MS SQL:Connect** aus, und drücken Sie die **EINGABETASTE** .
+2. Wählen Sie **MS SQL:Connect** aus, und drücken Sie die **EINGABETASTE**.
 
 3. Wählen Sie **Verbindungsprofil erstellen** aus.
 
-4. Befolgen Sie die Eingabeaufforderungen, um die Verbindungseigenschaften für das neue Verbindungsprofil anzugeben. Drücken Sie nach dem Angeben der einzelnen Werte die **EINGABETASTE** , um fortzufahren.
+4. Befolgen Sie die Eingabeaufforderungen, um die Verbindungseigenschaften für das neue Verbindungsprofil anzugeben. Drücken Sie nach dem Angeben der einzelnen Werte die **EINGABETASTE**, um fortzufahren.
 
    | Eigenschaft       | Vorgeschlagener Wert | BESCHREIBUNG |
    | ------------ | ------------------ | ------------------------------------------------- |
-   | **Servername** | Der vollqualifizierte Servername | Der Name sollte etwa wie folgt lauten: **mynewserver20170313.database.windows.net** . |
+   | **Servername** | Der vollqualifizierte Servername | Der Name sollte etwa wie folgt lauten: **mynewserver20170313.database.windows.net**. |
    | **Datenbankname** | mySampleDatabase | Die Datenbank für die Verbindung. |
    | **Authentifizierung** | SQL-Anmeldung| In diesem Tutorial wird die SQL-Authentifizierung verwendet. |
    | **Benutzername** | Benutzername | Der Benutzername des Serveradministratorkontos, das zum Erstellen des Servers verwendet wird. |
@@ -132,7 +132,7 @@ Führen Sie die folgende [SELECT](/sql/t-sql/queries/select-transact-sql)-Transa
    ON pc.productcategoryid = p.productcategoryid;
    ```
 
-2. Drücken Sie **STRG**+**UMSCHALT**+**E** , um die Abfrage auszuführen und Ergebnisse aus den Tabellen `Product` und `ProductCategory` anzuzeigen.
+2. Drücken Sie **STRG**+**UMSCHALT**+**E**, um die Abfrage auszuführen und Ergebnisse aus den Tabellen `Product` und `ProductCategory` anzuzeigen.
 
     ![Abfrage zum Abrufen von Daten aus 2 Tabellen](./media/connect-query-vscode/query.png)
 
@@ -176,7 +176,7 @@ Führen Sie die folgende [UPDATE](/sql/t-sql/queries/update-transact-sql)-Transa
    WHERE Name = 'myNewProduct';
    ```
 
-2. Drücken Sie **STRG**+**UMSCHALT**+**E** , um die angegebene Zeile in der Tabelle `Product` zu aktualisieren.
+2. Drücken Sie **STRG**+**UMSCHALT**+**E**, um die angegebene Zeile in der Tabelle `Product` zu aktualisieren.
 
 ## <a name="delete-data"></a>Löschen von Daten
 
@@ -189,7 +189,7 @@ Führen Sie die folgende [DELETE](/sql/t-sql/statements/delete-transact-sql)-Tra
    WHERE Name = 'myNewProduct';
    ```
 
-2. Drücken Sie **STRG**+**UMSCHALT**+**E** , um die angegebene Zeile in der Tabelle `Product` zu löschen.
+2. Drücken Sie **STRG**+**UMSCHALT**+**E**, um die angegebene Zeile in der Tabelle `Product` zu löschen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

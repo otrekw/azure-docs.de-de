@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/24/2020
 ms.author: damaerte
 ms.openlocfilehash: f1846c126e81ca5851cfbb1d782e5315ae10a82a
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92152262"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>Beibehalten von Dateien in Azure Cloud Shell
@@ -47,7 +47,7 @@ Die Dateifreigabe enthält auch ein 5-GB-Image, das für Sie erstellt wird und m
 
 Sie können vorhandene Ressourcen zuordnen, indem Sie die erweiterte Option verwenden. Wenn Sie eine Cloud Shell-Region auswählen, müssen Sie ein unterstützendes Speicherkonto in derselben Region auswählen. Wenn die zugewiesene Region beispielsweise „USA, Westen“ lautet, müssen Sie eine Dateifreigabe zuordnen, die sich ebenfalls in „USA, Westen“ befindet.
 
-Wählen Sie bei der Anzeige mit der Aufforderung zum Einrichten des Speichers die Option **Erweiterte Einstellungen anzeigen** , um weitere Optionen anzuzeigen. Die ausgefüllten Speicheroptionen werden nach Konten mit lokal redundantem Speicher (LRS), georedundantem Speicher (GRS) und zonenredundantem Speicher (ZRS) gefiltert. 
+Wählen Sie bei der Anzeige mit der Aufforderung zum Einrichten des Speichers die Option **Erweiterte Einstellungen anzeigen**, um weitere Optionen anzuzeigen. Die ausgefüllten Speicheroptionen werden nach Konten mit lokal redundantem Speicher (LRS), georedundantem Speicher (GRS) und zonenredundantem Speicher (ZRS) gefiltert. 
 
 > [!NOTE]
 > Für zusätzliche Resilienz wird die Verwendung von GRS- oder ZRS-Speicherkonten für Ihre unterstützende Dateifreigabe empfohlen. Die Art der Redundanz hängt von Ihren Zielen und Preisvorstellungen ab. [Erhalten Sie weitere Informationen zu Replikationsoptionen für Azure Storage-Konten](../storage/common/storage-redundancy.md).

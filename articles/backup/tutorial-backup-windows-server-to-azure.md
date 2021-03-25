@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 08/22/2018
 ms.custom: mvc
 ms.openlocfilehash: d2990b5950cf8812367c3a59c6cace39e4085e2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88261904"
 ---
 # <a name="back-up-windows-server-to-azure"></a>Sichern von Windows Server in Azure
@@ -96,7 +96,7 @@ Der Microsoft Azure Recovery Services-Agents (MARS) erstellt eine Zuordnung zwis
 
 Verwenden Sie den Microsoft Azure Recovery Services-Agent, um die Zeitpunkte für Sicherungen in Azure für Windows Server zu planen. Führen Sie die folgenden Schritte auf dem Server, auf dem Sie den Agent heruntergeladen haben, aus.
 
-1. Öffnen Sie den Microsoft Azure Recovery Services-Agent. Den Agent finden Sie, indem Sie auf Ihrem Computer nach **Microsoft Azure Backup**suchen.
+1. Öffnen Sie den Microsoft Azure Recovery Services-Agent. Den Agent finden Sie, indem Sie auf Ihrem Computer nach **Microsoft Azure Backup** suchen.
 
 2. Wählen Sie in der Konsole des Recovery Services-Agents im Bereich **Aktionen** die Option **Sicherung planen** aus.
 

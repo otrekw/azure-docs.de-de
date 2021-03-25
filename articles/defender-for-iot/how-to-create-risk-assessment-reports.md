@@ -1,18 +1,14 @@
 ---
 title: Erstellen von Risikobewertungsberichten
 description: Gewinnen Sie Erkenntnisse zu Netzwerkrisiken, die von einzelnen Sensoren erkannt wurden, oder eine aggregierte Ansicht der von allen Sensoren erkannten Risiken.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 12/17/2020
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: d13520a6b2f5e473942d7d0221a4e6f0708b6411
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 853157ef1b97fefdd15785b2a71c7ccc5d06a9a9
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100522256"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104784253"
 ---
 # <a name="risk-assessment-reporting"></a>Berichterstellung zur Risikobewertung
 
@@ -103,7 +99,7 @@ So importieren Sie ein Firmenlogo:
 
 :::image type="content" source="media/how-to-generate-reports/import-logo-screenshot.png" alt-text="Importieren Sie Ihr Logo über die Ansicht „Risikobewertung“.":::
 
-## <a name="next-steps"></a>Nächste Schritte
+## <a name="see-also"></a>Weitere Informationen
 
 [Berichte zu Angriffsvektoren](how-to-create-attack-vector-reports.md)
 

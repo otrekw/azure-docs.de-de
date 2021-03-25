@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 04184a658ae1efd03afd3e920818eb5317bc7553
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88008592"
 ---
 # <a name="tutorial-create-a-host-pool-in-windows-virtual-desktop-classic"></a>Tutorial: Erstellen eines Hostpools in Windows Virtual Desktop (klassisch)
@@ -60,7 +60,7 @@ Befolgen Sie anschließend die Anweisungen im nächsten Abschnitt, um die Inform
 
 Gehen Sie auf der Registerkarte **Grundlagen** wie folgt vor:
 
-1. Wählen Sie ein **Abonnement**aus.
+1. Wählen Sie ein **Abonnement** aus.
 1. Wählen Sie unter **Ressourcengruppe** die Option **Neu erstellen** aus, und geben Sie einen Namen für die neue Ressourcengruppe an.
 1. Wählen Sie eine **Region** aus.
 1. Geben Sie für den Hostpool einen Namen ein, der innerhalb des Windows Virtual Desktop-Mandanten eindeutig ist.

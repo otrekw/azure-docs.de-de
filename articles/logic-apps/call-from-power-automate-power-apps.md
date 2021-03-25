@@ -7,10 +7,10 @@ ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.openlocfilehash: b402dab4c6e94a7634e11f0330b5379315e43abf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91762414"
 ---
 # <a name="call-logic-apps-from-power-automate-and-power-apps"></a>Aufrufen von Logik-Apps über Power Automate und Power Apps
@@ -52,7 +52,7 @@ Bevor Sie Ihre Logik-App über Power Automate oder Power Apps aufrufen können, 
 
 1. Geben Sie im Bereich **Exportieren** für **Name** einen Namen für den benutzerdefinierten Connector zu ihrer Logik-App ein. Wählen Sie in der Liste **Umgebung** die Power Automate- oder Power Apps-Umgebung aus, von der aus Sie Ihre Logik-App aufrufen möchten. Wenn Sie fertig sind, wählen Sie **OK**.
 
-    :::image type="content" source="./media/call-logic-apps-from-power-automate-power-apps/export-logic-app2.png" alt-text="Screenshot der Seite der Logik-App im Azure-Portal, auf der das Menü mit ausgewählter Schaltfläche „Exportieren“ angezeigt wird.":::
+    :::image type="content" source="./media/call-logic-apps-from-power-automate-power-apps/export-logic-app2.png" alt-text="Screenshot des Bereichs „Exportieren“ für die Logik-App mit den erforderlichen Feldern für den Namen des benutzerdefinierten Connectors und die Umgebung.":::
 
 1. Um sich zu vergewissern, dass Ihre Logik-App erfolgreich exportiert wurde, überprüfen Sie den Benachrichtigungsbereich.
 
@@ -80,7 +80,7 @@ So stellen Sie eine Verbindung mit der Logik-App her, die Sie mit Ihrem Power Au
 
 1. Geben Sie unter **Aktion auswählen** im Suchfeld den Namen Ihres Logik-App-Connectors ein. Wenn Sie optional nur die benutzerdefinierten Connectors in Ihrer Umgebung anzeigen möchten, filtern Sie die Ergebnisse, indem Sie die Registerkarte **Benutzerdefiniert** auswählen.
 
-    :::image type="content" source="./media/call-logic-apps-from-power-automate-power-apps/power-automate-custom-connector-action.png" alt-text="Screenshot der Seite der Logik-App im Azure-Portal, auf der das Menü mit ausgewählter Schaltfläche „Exportieren“ angezeigt wird.":::
+    :::image type="content" source="./media/call-logic-apps-from-power-automate-power-apps/power-automate-custom-connector-action.png" alt-text="Screenshot des Flow-Editors von Power Automate, der das Hinzufügen eines neuen Schritts für den benutzerdefinierten Connector und die verfügbaren Aktionen anzeigt.":::
 
 1. Wählen Sie die Aktion aus, die Sie mit Ihrem Logik-App-Connector ausführen möchten. 
 
@@ -102,7 +102,7 @@ So stellen Sie eine Verbindung mit der Logik-App her, die Sie mit Ihrem Power Au
 
 1. Suchen Sie in der Liste Ihren benutzerdefinierten Connector, und wählen Sie die Schaltfläche mit den Auslassungspunkten ( **...** ) &gt; **Löschen** aus.
 
-    :::image type="content" source="./media/call-logic-apps-from-power-automate-power-apps/delete-custom-connector.png" alt-text="Screenshot der Seite der Logik-App im Azure-Portal, auf der das Menü mit ausgewählter Schaltfläche „Exportieren“ angezeigt wird.":::
+    :::image type="content" source="./media/call-logic-apps-from-power-automate-power-apps/delete-custom-connector.png" alt-text="Screenshot der Power Automate-Seite „Benutzerdefinierte Connectors“ mit den Verwaltungsschaltflächen des benutzerdefinierten Connectors der Logik-App.":::
 
 1. Um das Löschen zu bestätigen, wählen Sie **OK** aus.
 
@@ -122,7 +122,7 @@ So stellen Sie eine Verbindung mit der Logik-App her, die Sie mit Ihrem Power Ap
 
 1. Geben Sie unter **Aktion auswählen** im neuen Schritt den Namen Ihres Logik-App-Connectors in das Suchfeld ein. Filtern Sie die Ergebnisse optional nach der Registerkarte **Benutzerdefiniert**, um nur benutzerdefinierte Connectors in Ihrer Umgebung anzuzeigen.
 
-    :::image type="content" source="./media/call-logic-apps-from-power-automate-power-apps/power-apps-custom-connector-action.png" alt-text="Screenshot der Seite der Logik-App im Azure-Portal, auf der das Menü mit ausgewählter Schaltfläche „Exportieren“ angezeigt wird.":::
+    :::image type="content" source="./media/call-logic-apps-from-power-automate-power-apps/power-apps-custom-connector-action.png" alt-text="Screenshot des Flow-Editors von Power Apps, der das Hinzufügen eines neuen Schritts für den benutzerdefinierten Connector und die verfügbaren Aktionen anzeigt.":::
 
 1. Wählen Sie die Aktion aus, die Sie mit dem Connector ausführen möchten. 
 
@@ -144,7 +144,7 @@ So stellen Sie eine Verbindung mit der Logik-App her, die Sie mit Ihrem Power Ap
 
 1. Suchen Sie in der Liste Ihren benutzerdefinierten Connector, und wählen Sie die Schaltfläche mit den Auslassungspunkten ( **...** ) &gt; **Löschen** aus.
 
-    :::image type="content" source="./media/call-logic-apps-from-power-automate-power-apps/delete-custom-connector.png" alt-text="Screenshot der Seite der Logik-App im Azure-Portal, auf der das Menü mit ausgewählter Schaltfläche „Exportieren“ angezeigt wird.":::
+    :::image type="content" source="./media/call-logic-apps-from-power-automate-power-apps/delete-custom-connector.png" alt-text="Screenshot der Power Apps-Seite „Benutzerdefinierte Connectors“ mit den Verwaltungsschaltflächen des benutzerdefinierten Connectors der Logik-App.":::
 
 1. Um das Löschen zu bestätigen, wählen Sie **OK** aus.
 

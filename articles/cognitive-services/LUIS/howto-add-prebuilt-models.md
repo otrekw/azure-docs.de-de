@@ -9,10 +9,10 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/17/2020
 ms.openlocfilehash: 2080139732d71aa5df9a9d4ad13fcc4545128dff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91541916"
 ---
 # <a name="add-prebuilt-models-for-common-usage-scenarios"></a>Hinzufügen vordefinierter Modelle für gängige Verwendungsszenarien
@@ -57,7 +57,7 @@ LUIS umfasst einen Satz von vordefinierten Modellen zum schnellen Hinzufügen vo
     > [!div class="mx-imgBorder"]
     > ![Dialogfeld „Vordefinierte Entität hinzufügen“](./media/luis-prebuilt-domains/add-prebuilt-entity.png)
 
-1. Wählen Sie **Fertig**aus. Nachdem die Entität hinzugefügt wurde, müssen Sie die App nicht trainieren.
+1. Wählen Sie **Fertig** aus. Nachdem die Entität hinzugefügt wurde, müssen Sie die App nicht trainieren.
 
 ## <a name="add-a-prebuilt-domain-entity"></a>Hinzufügen einer vordefinierten Domänenentität
 1. Melden Sie sich beim [LUIS-Portal](https://www.luis.ai) an, und wählen Sie Ihr **Abonnement** und Ihre **Erstellungsressource** aus, um die Apps anzuzeigen, die dieser Erstellungsressource zugewiesen sind.
@@ -68,7 +68,7 @@ LUIS umfasst einen Satz von vordefinierten Modellen zum schnellen Hinzufügen vo
 
 1. Wählen Sie im Dialogfeld **Vorgefertigte Domänenmodelle hinzufügen** die vordefinierte Domänenentität aus.
 
-1. Wählen Sie **Fertig**aus. Nachdem die Entität hinzugefügt wurde, müssen Sie die App nicht trainieren.
+1. Wählen Sie **Fertig** aus. Nachdem die Entität hinzugefügt wurde, müssen Sie die App nicht trainieren.
 
 ## <a name="publish-to-view-prebuilt-model-from-prediction-endpoint"></a>Veröffentlichen Sie sie, um ein vordefiniertes Modell vom Vorhersageendpunkt anzuzeigen
 

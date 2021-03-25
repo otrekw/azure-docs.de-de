@@ -7,10 +7,10 @@ ms.date: 07/16/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 420c507361e3e2437366e6ccf2d46a8b78684e59
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88008356"
 ---
 # <a name="connect-with-the-windows-desktop-classic-client"></a>Herstellen einer Verbindung mit dem Windows-Desktopclient (klassisch)
@@ -36,7 +36,7 @@ Mit dem Windows Desktop-Client können Sie auf Geräten mit Windows 7, Windows 1
 Wählen Sie den Client aus, der Ihrer Windows-Version entspricht:
 
 - [Windows (64-Bit)](https://go.microsoft.com/fwlink/?linkid=2068602)
-- [Windows (32-Bit)](https://go.microsoft.com/fwlink/?linkid=2098960)
+- [Windows 32-Bit](https://go.microsoft.com/fwlink/?linkid=2098960)
 - [Windows ARM64](https://go.microsoft.com/fwlink/?linkid=2098961)
 
 Sie können den Client für den aktuellen Benutzer installieren. Dafür sind keine Administratorrechte erforderlich. Der Administrator kann den Client aber auch so installieren und konfigurieren, dass alle Benutzer auf dem Gerät darauf zugreifen können.
@@ -45,10 +45,10 @@ Nach der Installation kann der Client über das Startmenü gestartet werden, ind
 
 ## <a name="subscribe-to-a-workspace"></a>Abonnieren eines Arbeitsbereichs
 
-Es gibt zwei Möglichkeiten, einen Arbeitsbereich zu abonnieren. Der Client kann versuchen, die Ressourcen zu ermitteln, die Ihnen über Ihr Geschäfts-, Schul- oder Unikonto zur Verfügung stehen. Alternativ können Sie die URL, unter der sich die Ressourcen befinden, direkt angeben, falls der Client diese nicht finden kann. Sobald Sie einen Arbeitsbereich abonniert haben, können Sie auf eine der folgenden Arten Ressourcen starten:
+Es gibt zwei Möglichkeiten zum Abonnieren eines Arbeitsbereichs. Der Client kann versuchen, die Ressourcen, die dir über dein Geschäfts- oder Schul-/Unikonto zur Verfügung stehen, zu ermitteln, oder du kannst die URL, unter der deine Ressourcen zu finden sind, direkt angeben, falls der Client sie nicht finden kann. Sobald du einen Arbeitsbereich abonniert hast, kannst du Ressourcen mit einer der folgenden Methoden starten:
 
-- Navigieren Sie zum Connection Center, und doppelklicken Sie auf eine Ressource, um diese zu starten.
-- Alternativ können Sie zum Startmenü navigieren und nach einem Ordner mit dem Namen des Arbeitsbereichs suchen oder den Ressourcennamen in die Suchleiste eingeben.
+- Wechsle zum Connection Center, und doppelklicke auf eine Ressource, um sie zu starten.
+- Alternativ kannst du zum Startmenü navigieren und nach einem Ordner mit dem Namen des Arbeitsbereichs suchen oder den Namen der Ressource in die Suchleiste eingeben.
 
 ### <a name="subscribe-with-a-user-account"></a>Abonnieren mit einem Benutzerkonto
 
@@ -60,7 +60,7 @@ Es gibt zwei Möglichkeiten, einen Arbeitsbereich zu abonnieren. Der Client kann
 
 1. Klicken Sie auf der Hauptseite des Clients auf **Subscribe with URL** (Mit URL abonnieren).
 2. Geben Sie die Arbeitsbereichs-URL oder Ihre E-Mail-Adresse ein:
-   - Wenn Sie die **Arbeitsbereichs-URL** verwenden, verwenden Sie die URL, die Ihr Administrator Ihnen mitgeteilt hat. Wenn Sie über Windows Virtual Desktop auf Ressourcen zugreifen, können Sie eine der folgenden URLs verwenden:
+   - Verwende im Fall einer **Arbeitsbereichs-URL** diejenige, die du vom Administrator erhalten hast. Wenn du auf Ressourcen von Windows Virtual Desktop zugreifst, kannst du eine der folgenden URLs verwenden:
      - Windows Virtual Desktop (klassisch): `https://rdweb.wvd.microsoft.com/api/feeddiscovery/webfeeddiscovery.aspx`
      - Windows Virtual Desktop: `https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery`
    - Wenn Sie stattdessen das Feld **E-Mail** verwenden, geben Sie Ihre E-Mail-Adresse ein. Dies weist den Client an, nach einer URL zu suchen, die Ihrer E-Mail-Adresse zugeordnet ist, wenn Ihr Administrator [E-Mail-Ermittlung](/windows-server/remote/remote-desktop-services/rds-email-discovery) eingerichtet hat.

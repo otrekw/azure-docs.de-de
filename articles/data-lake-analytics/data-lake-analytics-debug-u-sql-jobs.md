@@ -6,10 +6,10 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 11/30/2017
 ms.openlocfilehash: db1d57e3904087bc5cb3711b23cfe6bcf18c3455
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92218016"
 ---
 # <a name="debug-user-defined-c-code-for-failed-u-sql-jobs"></a>Debuggen von benutzerdefiniertem C#-Code für fehlerhafte U-SQL-Aufträge
@@ -60,7 +60,7 @@ Es gibt zwei Fälle, in denen der C#-Quellcode erfasst wird:
 
 Wenn der Quellcode in die Lösung importiert wird, können Sie die Visual Studio-Debugtools (Überwachung, Variablen usw.) nutzen, um die Problembehandlung durchzuführen:
 
-1. Drücken Sie **F5**, um das Debuggen zu starten. Der Code wird ausgeführt, bis er durch eine Ausnahme beendet wird.
+1. Drücken Sie die Taste **F5** , um mit dem Debuggen zu beginnen. Der Code wird ausgeführt, bis er durch eine Ausnahme beendet wird.
 
 2. Öffnen Sie die Quellcodedatei, und legen Sie Breakpoints fest. Drücken Sie anschließend **F5**, um den Code schrittweise zu debuggen.
 

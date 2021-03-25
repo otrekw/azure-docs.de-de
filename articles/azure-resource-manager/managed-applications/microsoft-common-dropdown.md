@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: tomfitz
 ms.openlocfilehash: b9b27a432776635290c7e8e796e84d8c1e0e8675
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92168340"
 ---
 # <a name="microsoftcommondropdown-ui-element"></a>Benutzeroberflächenelement „Microsoft.Common.DropDown“
@@ -26,19 +26,19 @@ Wenn nur ein einzelnes Element für die Auswahl zulässig ist, sieht das Steuere
 
 Wenn Beschreibungen enthalten sind, wird das Steuerelement wie folgt angezeigt:
 
-:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-2.png" alt-text="Microsoft.Common.DropDown mit Einfachauswahl":::
+:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-2.png" alt-text="Microsoft.Common.DropDown mit Einfachauswahl mit Beschreibungen":::
 
-Wenn Mehrfachauswahl aktiviert ist, fügt das Steuerelement eine **Alles auswählen** -Option sowie Kontrollkästchen für die Auswahl mehrerer Elemente hinzu:
+Wenn Mehrfachauswahl aktiviert ist, fügt das Steuerelement eine **Alles auswählen**-Option sowie Kontrollkästchen für die Auswahl mehrerer Elemente hinzu:
 
-:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-3.png" alt-text="Microsoft.Common.DropDown mit Einfachauswahl":::
+:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-3.png" alt-text="Microsoft.Common.DropDown mit Mehrfachauswahl":::
 
 Beschreibungen können bei aktivierter Mehrfachauswahl eingeschlossen werden.
 
-:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-4.png" alt-text="Microsoft.Common.DropDown mit Einfachauswahl":::
+:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-4.png" alt-text="Screenshot, der zeigt, wie Beschreibungen bei aktivierter Mehrfachauswahl eingeschlossen werden können":::
 
 Wenn Filtern aktiviert ist, enthält das Steuerelement ein Textfeld zum Hinzufügen des Filterwerts.
 
-:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-5.png" alt-text="Microsoft.Common.DropDown mit Einfachauswahl":::
+:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-5.png" alt-text="Microsoft.Common.DropDown mit Mehrfachauswahl mit Beschreibungen":::
 
 ## <a name="schema"></a>Schema
 
@@ -87,7 +87,7 @@ Wenn Filtern aktiviert ist, enthält das Steuerelement ein Textfeld zum Hinzufü
 - Standardmäßig ist `selectAll` `true`, wenn Mehrfachauswahl aktiviert ist.
 - Die `filter`-Eigenschaft ermöglicht Benutzer, innerhalb einer langen Liste von Optionen zu suchen.
 - Die Bezeichnung für `constraints.allowedValues` ist der Anzeigetext für ein Element, und sein Wert ist der Ausgabewert des Elements bei der Auswahl.
-- Falls angegeben, muss der Standardwert einer in `constraints.allowedValues` vorhandenen Bezeichnung entsprechen. Ohne Angabe wird das erste Element in `constraints.allowedValues` ausgewählt. Der Standardwert lautet **null** .
+- Falls angegeben, muss der Standardwert einer in `constraints.allowedValues` vorhandenen Bezeichnung entsprechen. Ohne Angabe wird das erste Element in `constraints.allowedValues` ausgewählt. Der Standardwert lautet **null**.
 - `constraints.allowedValues` muss mindestens ein Element aufweisen.
 - Fügen Sie zum Emulieren eines nicht benötigten Werts `constraints.allowedValues` ein Element mit einer Bezeichnung und dem Wert `""` (leere Zeichenfolge) hinzu.
 - Die `defaultDescription`-Eigenschaft wird für Elemente verwendet, die keine Beschreibung besitzen.

@@ -15,10 +15,10 @@ ms.date: 11/04/2019
 ms.author: apimpm
 ms.custom: devx-track-python
 ms.openlocfilehash: b63f38609b4b61130e515dd118e8ced9f201defd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87851713"
 ---
 # <a name="api-templates-in-azure-api-management"></a>API-Vorlagen in Azure API Management
@@ -34,7 +34,7 @@ Mit den Vorlagen in diesem Abschnitt können Sie den Inhalt der API-Seiten im En
     -   [C#](#CSharp)  
     -   [Java](#Stub)  
     -   [JavaScript](#JavaScript)  
-    -   [Objective C](#ObjectiveC)  
+    -   [Objective-C](#ObjectiveC)  
     -   [PHP](#PHP)  
     -   [Python](#Python)  
     -   [Ruby](#Ruby)  
@@ -347,12 +347,12 @@ Mit den Vorlagen in diesem Abschnitt können Sie den Inhalt der API-Seiten im En
   
 |Eigenschaft|type|BESCHREIBUNG|  
 |--------------|----------|-----------------|  
-|`apiId`|string|Die ID der aktuellen API.|  
-|`apiName`|string|Der Name der API.|  
-|`apiDescription`|string|Eine Beschreibung der API.|  
+|`apiId`|Zeichenfolge|Die ID der aktuellen API.|  
+|`apiName`|Zeichenfolge|Der Name der API.|  
+|`apiDescription`|Zeichenfolge|Eine Beschreibung der API.|  
 |`api`|Entität [API summary](api-management-template-data-model-reference.md#APISummary).|Die aktuelle API.|  
 |`operation`|[Vorgang](api-management-template-data-model-reference.md#Operation)|Der aktuell angezeigte Vorgang.|  
-|`sampleUrl`|string|Die URL für den aktuellen Vorgang.|  
+|`sampleUrl`|Zeichenfolge|Die URL für den aktuellen Vorgang.|  
 |`operationMenu`|[Vorgangsmenü](api-management-template-data-model-reference.md#Menu)|Ein Menü mit Vorgängen für diese API.|  
 |`consoleUrl`|URI|Der URI für die Schaltfläche **Ausprobieren**.|  
 |`samples`|Sammlung von [Code sample](api-management-template-data-model-reference.md#Sample)-Entitäten.|Die Codebeispiele für den aktuellen Vorgang.|  
@@ -657,7 +657,7 @@ Mit den Vorlagen in diesem Abschnitt können Sie den Inhalt der API-Seiten im En
   
 -   [JavaScript](#JavaScript)  
   
--   [Objective C](#ObjectiveC)  
+-   [Objective-C](#ObjectiveC)  
   
 -   [PHP](#PHP)  
   
