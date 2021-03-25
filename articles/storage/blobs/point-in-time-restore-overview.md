@@ -6,22 +6,22 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/01/2021
+ms.date: 03/03/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1df2f12d6947734314609dc50787a59a2fa88731
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 4e6dac1ab7350caeb29e23b21eace433568b38ea
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99980512"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031632"
 ---
 # <a name="point-in-time-restore-for-block-blobs"></a>Point-in-Time-Wiederherstellung für Blockblobs
 
 Point-in-Time-Wiederherstellung bietet Schutz vor versehentlichem Löschen oder Beschädigungen, da Sie Blockblobdaten in einem früheren Zustand wiederherstellen können. Point-in-Time-Wiederherstellung ist in Szenarien nützlich, in denen ein Benutzer oder eine Anwendung versehentlich Daten löscht oder wenn ein Anwendungsfehler Daten beschädigt. Point-in-Time-Wiederherstellung ermöglicht auch Testszenarien, bei denen ein Dataset in einen bekannten Zustand zurückgesetzt werden muss, bevor weitere Tests ausgeführt werden.
 
-Point-in-Time-Wiederherstellung wird nur für Speicherkonten vom Typ „Universell V2“ unterstützt. Nur Daten der heißen und kalten Zugriffsebene können mit Point-in-Time-Wiederherstellung wiederhergestellt werden.
+Point-in-Time-Wiederherstellung wird nur für Speicherkonten vom Typ „Universell V2“ in der Leistungsstufe „Standard“ unterstützt. Nur Daten der heißen und kalten Zugriffsebene können mit Point-in-Time-Wiederherstellung wiederhergestellt werden.
 
 Informationen zum Aktivieren der Point-in-Time-Wiederherstellung für ein Speicherkonto finden Sie unter [Aktivieren einer Point-in-Time-Wiederherstellung für Blockblobdaten](point-in-time-restore-manage.md).
 

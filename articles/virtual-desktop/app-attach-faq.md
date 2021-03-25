@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 78c21e9515965f1c15315967f6a19a0df2838dc2
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 395c274630131c2ae5f451443913e1e69c7c422a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97591194"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101738700"
 ---
 # <a name="msix-app-attach-faq"></a>Häufig gestellte Fragen zum MSIX-Feature zum Anfügen von Apps
 
@@ -61,7 +61,7 @@ Alle virtuellen Computer (VMs) in einem Hostpool, der das MSIX-Feature zum Anfü
 
 ## <a name="can-i-use-msix-app-attach-for-http-or-https"></a>Kann ich das MSIX-Feature zum Anfügen von Apps für HTTP oder HTTPS verwenden?
 
-Alle VMs, die Teil eines Hostpools sind, der das MSIX-Feature zum Anfügen von Apps verwendet, müssen über Leseberechtigungen für die Dateifreigabe verfügen, in der MSIX-Images gespeichert sind. Wenn Azure Files verwendet wird, müssen sowohl RBAC- als auch NTFS-Berechtigungen erteilt werden.
+Die Verwendung des MSIX-Features zum Anfügen von Apps über HTTP oder HTTPS wird derzeit nicht unterstützt.
 
 ## <a name="can-i-restage-the-same-msix-application"></a>Kann ich dieselbe MSIX-Anwendung erneut bereitstellen?
 
@@ -69,7 +69,7 @@ Ja. Sie können bereits bereitgestellte Anwendungen erneut bereitstellen. Dies s
 
 ## <a name="does-msix-app-attach-support-self-signed-certificates"></a>Unterstützt das MSIX-Feature zum Anfügen von Apps selbstsignierte Zertifikate?
 
-Die Verwendung des MSIX-Features zum Anfügen von Apps über HTTP oder HTTPS wird derzeit nicht unterstützt.
+Ja. Sie müssen das selbst signierte Zertifikat auf allen Sitzungshost-VMs installieren, auf denen das MSIX-Feature zum Anfügen von Apps verwendet wird, um die selbst signierte Anwendung zu hosten.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

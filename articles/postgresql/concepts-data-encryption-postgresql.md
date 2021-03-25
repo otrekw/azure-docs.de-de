@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: d9624fd899649f4e54c5bd509ed5961b862632dd
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 66faa2b3e6d24c264e2fe26ab42eeaffd48384f6
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100581572"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101732835"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>Datenverschlüsselung auf Azure Database for PostgreSQL-Einzelservern mit einem kundenseitig verwalteten Schlüssel
 
@@ -60,7 +60,7 @@ Wenn der Server für die Verwendung des in Key Vault gespeicherten vom Kunden ve
 Nachfolgend werden die Anforderungen für die Konfiguration von Key Vault aufgeführt:
 
 * Key Vault und der Azure Database for PostgreSQL-Einzelserver müssen demselben Azure Active Directory-Mandanten (Azure AD) angehören. Mandantenübergreifende Interaktionen zwischen Key Vault und dem Server werden nicht unterstützt. Wenn Sie die Key Vault-Ressourcen später verschieben möchten, müssen Sie die Datenverschlüsselung neu konfigurieren.
-* In Key Vault muss für „Aufbewahrungsdauer für gelöschte Tresore in Tagen“ 90 Tage festgelegt werden. Wenn der vorhandene Schlüsseltresor mit einer niedrigeren Anzahl konfiguriert wurde, müssen Sie einen neuen Schlüsseltresor erstellen, da der Wert nach der Erstellung nicht mehr geändert werden kann.
+* Für den Schlüsseltresor muss „Aufbewahrungsdauer für gelöschte Tresore in Tagen“ auf 90 Tage festgelegt werden. Wenn der vorhandene Schlüsseltresor mit einer niedrigeren Anzahl konfiguriert wurde, müssen Sie einen neuen Schlüsseltresor erstellen, da der Wert nach der Erstellung nicht mehr geändert werden kann.
 * Aktivieren Sie das Feature zum vorläufigen Löschen in Key Vault, um bei einer versehentlichen Löschung des Schlüssels (oder Schlüsseltresors) Datenverluste zu vermeiden. Vorläufig gelöschte Ressourcen werden 90 Tage lang aufbewahrt, sofern sie der Benutzer nicht in der Zwischenzeit wiederherstellt oder bereinigt. Den Aktionen zum Wiederherstellen und endgültigen Löschen sind über Key Vault-Zugriffsrichtlinien eigene Berechtigungen zugewiesen. Die Funktion für vorläufiges Löschen ist standardmäßig deaktiviert. Sie können sie jedoch über PowerShell oder die Azure CLI aktivieren (beachten Sie, dass Sie sie nicht über das Azure-Portal aktivieren können). 
 * Löschschutz aktivieren (obligatorischen Aufbewahrungszeitraum für gelöschte Tresore und Tresorobjekte erzwingen)
 * Gewähren Sie dem Azure Database for PostgreSQL-Einzelserver mit den Berechtigungen „get“, „wrapKey“, „unwrapKey“ unter Verwendung der eindeutigen verwalteten Identität Zugriff auf den Schlüsseltresor. Im Azure-Portal wird die eindeutige Identität „Service“ automatisch erstellt, wenn die Datenverschlüsselung auf dem PostgreSQL-Einzelserver aktiviert wird. Ausführliche, schrittweise Anleitungen für die Verwendung des Azure-Portals finden Sie unter [Datenverschlüsselung für Azure Database for PostgreSQL-Einzelserver mithilfe des Azure-Portals](howto-data-encryption-portal.md).

@@ -1,34 +1,34 @@
 ---
-title: Anzeigen von Livedaten (Vorschau) mit Container Insights | Microsoft-Dokumentation
+title: Anzeigen von Livedaten mit Container Insights | Microsoft-Dokumentation
 description: In diesem Artikel wird die Echtzeitansicht von Kubernetes-Protokollen, -Ereignissen und -Podmetriken in Container Insights ohne Verwendung von kubectl beschrieben.
 ms.topic: conceptual
-ms.date: 12/17/2020
+ms.date: 03/04/2021
 ms.custom: references_regions
-ms.openlocfilehash: 7e644680916097bc453c30be63a7db324df5f8f6
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 5277f5051e291e9058255d8920ac0be950389704
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101711228"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102203197"
 ---
 # <a name="how-to-view-kubernetes-logs-events-and-pod-metrics-in-real-time"></a>Anzeigen von Kubernetes-Protokollen, -Ereignissen und -Podmetriken in Echtzeit
 
-Container Insights enthält ein Feature für Livedaten (Vorschau), bei dem es sich um ein erweitertes Diagnosefeature handelt, das Ihnen direkten Zugriff auf Ihre Azure Kubernetes Service-Containerprotokolle (stdout/stderror), -Ereignisse und -Podmetriken ermöglicht. Sie bietet direkten Zugriff auf `kubectl logs -c`, `kubectl get`-Ereignisse und `kubectl top pods`. In einem Konsolenbereich werden die von der Container-Engine generierten Protokolle, Ereignisse und Metriken angezeigt, die weitere Unterstützung bei der Behandlung von Problemen in Echtzeit bieten.
+Container Insights enthält ein Feature für Livedaten, bei dem es sich um ein erweitertes Diagnosefeature handelt, das Ihnen Direktzugriff auf Ihre Azure Kubernetes Service-Containerprotokolle (stdout/stderror), -Ereignisse und -Podmetriken ermöglicht. Sie bietet direkten Zugriff auf `kubectl logs -c`, `kubectl get`-Ereignisse und `kubectl top pods`. In einem Konsolenbereich werden die von der Container-Engine generierten Protokolle, Ereignisse und Metriken angezeigt, die weitere Unterstützung bei der Behandlung von Problemen in Echtzeit bieten.
 
 Dieser Artikel bietet eine ausführliche Übersicht und hilft Ihnen, die Verwendung dieser Funktion zu verstehen.
 
-Hilfe bei der Einrichtung oder Problembehandlung der Funktion für Livedaten (Vorschau) finden Sie in unserem [Einrichtungsleitfaden](container-insights-livedata-setup.md). Informationen zum Direktzugriff auf die Kubernetes-API über diese Funktion sowie weitere Informationen zum Authentifizierungsmodell finden Sie [hier](https://kubernetes.io/docs/concepts/overview/kubernetes-api/).
+Hilfe bei der Einrichtung oder Problembehandlung der Funktion für Livedaten finden Sie in unserem [Einrichtungsleitfaden](container-insights-livedata-setup.md). Informationen zum Direktzugriff auf die Kubernetes-API über diese Funktion sowie weitere Informationen zum Authentifizierungsmodell finden Sie [hier](https://kubernetes.io/docs/concepts/overview/kubernetes-api/).
 
-## <a name="view-deployment-live-logs-preview"></a>Anzeigen von Liveprotokollen zur Bereitstellung (Vorschau)
-Mithilfe des folgenden Verfahrens können Sie die Liveprotokolle für Bereitstellungen anzeigen, die Teil von AKS-Clustern sind, die nicht von Container Insights überwacht werden. Wenn für Ihren Cluster Container Insights verwendet wird, können Sie mit der unten aufgeführten Vorgehensweise Livedaten zu Knoten, Controllern, Containern und Bereitstellungen anzeigen.
+## <a name="view-aks-resource-live-logs"></a>Anzeigen von Liveprotokollen zu AKS-Ressourcen
+Verwenden Sie das folgende Verfahren, um die Liveprotokolle für Pods, Bereitstellungen und Replikatgruppen mit oder ohne Container Insights über die AKS-Ressourcenansicht anzuzeigen.
 
 1. Navigieren Sie im Azure-Portal zur Ressourcengruppe des AKS-Clusters, und wählen Sie die AKS-Ressource aus.
 
 2. Wählen Sie im Abschnitt **Kubernetes-Ressourcen** das Menüelement **Workloads** aus.
 
-3. Wählen Sie auf der Registerkarte **Bereitstellungen** eine Bereitstellung aus.
+3. Wählen Sie auf der entsprechenden Registerkarte einen Pod, eine Bereitstellung oder eine Replikatgruppe aus.
 
-4. Wählen Sie im Menü der Bereitstellung **Liveprotokolle (Vorschau)** aus.
+4. Wählen Sie im Ressourcenmenü **Liveprotokolle** aus.
 
 5. Wählen Sie einen Pod aus, um die Sammlung der Livedaten zu starten.
 
@@ -44,12 +44,12 @@ Sie können Echtzeitprotokolldaten anzeigen, da diese von der Container-Engine a
 
 3. Wählen Sie entweder die Register **Knoten**, **Controller** oder **Container** aus.
 
-4. Wählen Sie ein Objekt aus dem Leistungsraster aus, und wählen Sie dann im Eigenschaftenbereich auf der rechten Seite die Option **Livedaten anzeigen (Vorschau)** aus. Wenn der AKS-Cluster mit einmaligem Anmelden über Azure AD konfiguriert ist, werden Sie bei der ersten Verwendung während dieser Browsersitzung zur Authentifizierung aufgefordert. Wählen Sie Ihr Konto aus und führen Sie die Authentifizierung mit Azure durch.
+4. Wählen Sie ein Objekt aus dem Leistungsraster aus, und wählen Sie dann im Eigenschaftenbereich auf der rechten Seite die Option **Livedaten anzeigen** aus. Wenn der AKS-Cluster mit einmaligem Anmelden über Azure AD konfiguriert ist, werden Sie bei der ersten Verwendung während dieser Browsersitzung zur Authentifizierung aufgefordert. Wählen Sie Ihr Konto aus und führen Sie die Authentifizierung mit Azure durch.
 
     >[!NOTE]
     >Wenn Sie die Daten aus Ihrem Log Analytics-Arbeitsbereich anzeigen, indem Sie im Eigenschaftenbereich die Option **In Analytics anzeigen** auswählen, können in den Ergebnissen der Protokollsuche **Knoten**, **Daemon-Sätze**, **Replikatsätze**, **Aufträge**, **Cron-Aufträge**, **Pods** und **Container** angezeigt werden, die möglicherweise nicht mehr vorhanden sind. Der Versuch, Protokolle für einen Container zu durchsuchen, der in `kubectl` nicht verfügbar ist, schlägt hier ebenfalls fehl. Weitere Informationen zum Anzeigen von Verlaufsprotokollen, Ereignissen und Metriken finden Sie unter der Funktion [In Analytics anzeigen](container-insights-log-search.md#search-logs-to-analyze-data).
 
-Nach erfolgreicher Authentifizierung wird der Konsolenbereich für Livedaten (Vorschau) unterhalb des Rasters mit Leistungsdaten angezeigt. Hier können Sie Protokolldaten in einem kontinuierlichen Stream sehen. Wenn in der Abrufstatusanzeige ein grünes Häkchen angezeigt wird, das sich ganz rechts im Bereich befindet, bedeutet das, dass Daten abgerufen werden können und in die Konsole gestreamt werden.
+Nach erfolgreicher Authentifizierung wird der Konsolenbereich für Livedaten unterhalb des Rasters mit Leistungsdaten angezeigt. Hier können Sie Protokolldaten in einem kontinuierlichen Stream sehen. Wenn in der Abrufstatusanzeige ein grünes Häkchen angezeigt wird, das sich ganz rechts im Bereich befindet, bedeutet das, dass Daten abgerufen werden können und in die Konsole gestreamt werden.
 
 ![Option zum Anzeigen von Daten im Eigenschaftenbereich für Knoten](./media/container-insights-livedata-overview/node-properties-pane.png)
 
@@ -57,20 +57,20 @@ Der Titel des Bereichs zeigt den Namen des Pods an, mit dem der Container gruppi
 
 ## <a name="view-events"></a>Anzeigen von Ereignissen
 
-Sie können Echtzeitereignisdaten anzeigen, da sie von der Container-Engine bei Auswahl eines Containers, Pods, Knotens, Replikatsatzes, Daemon-Satzes, Auftrags, Cron-Auftrags oder einer Bereitstellung aus den Ansichten **Knoten**, **Controller**, **Container** und **Bereitstellungen (Vorschau)** generiert werden. Führen Sie zum Anzeigen von Ereignissen die folgenden Schritte aus.
+Sie können Echtzeitereignisdaten anzeigen, wenn sie von der Container-Engine bei Auswahl eines Containers, Pods, Knotens, ReplicaSets, DaemonSets, Auftrags, Cron-Auftrags oder einer Bereitstellung aus den Ansichten **Knoten**, **Controller**, **Container** und **Bereitstellungen** generiert werden. Führen Sie zum Anzeigen von Ereignissen die folgenden Schritte aus.
 
 1. Navigieren Sie im Azure-Portal zur Ressourcengruppe des AKS-Clusters, und wählen Sie die AKS-Ressource aus.
 
 2. Wählen Sie im Dashboard des AKS-Clusters links unter **Überwachung** die Option **Erkenntnisse** aus.
 
-3. Wählen Sie entweder die Registerkarte **Knoten**, **Controller**, **Container** oder **Bereitstellungen (Vorschau)** aus.
+3. Wählen Sie entweder die Registerkarte **Knoten**, **Controller**, **Container** oder **Bereitstellungen** aus.
 
-4. Wählen Sie ein Objekt aus dem Leistungsraster aus, und wählen Sie dann im Eigenschaftenbereich auf der rechten Seite die Option **Livedaten anzeigen (Vorschau)** aus. Wenn der AKS-Cluster mit einmaligem Anmelden über Azure AD konfiguriert ist, werden Sie bei der ersten Verwendung während dieser Browsersitzung zur Authentifizierung aufgefordert. Wählen Sie Ihr Konto aus und führen Sie die Authentifizierung mit Azure durch.
+4. Wählen Sie ein Objekt aus dem Leistungsraster aus, und wählen Sie dann im Eigenschaftenbereich auf der rechten Seite die Option **Livedaten anzeigen** aus. Wenn der AKS-Cluster mit einmaligem Anmelden über Azure AD konfiguriert ist, werden Sie bei der ersten Verwendung während dieser Browsersitzung zur Authentifizierung aufgefordert. Wählen Sie Ihr Konto aus und führen Sie die Authentifizierung mit Azure durch.
 
     >[!NOTE]
     >Wenn Sie die Daten aus Ihrem Log Analytics-Arbeitsbereich anzeigen, indem Sie im Eigenschaftenbereich die Option **In Analytics anzeigen** auswählen, können in den Ergebnissen der Protokollsuche **Knoten**, **Daemon-Sätze**, **Replikatsätze**, **Aufträge**, **Cron-Aufträge**, **Pods** und **Container** angezeigt werden, die möglicherweise nicht mehr vorhanden sind. Der Versuch, Protokolle für einen Container zu durchsuchen, der in `kubectl` nicht verfügbar ist, schlägt hier ebenfalls fehl. Weitere Informationen zum Anzeigen von Verlaufsprotokollen, Ereignissen und Metriken finden Sie unter der Funktion [In Analytics anzeigen](container-insights-log-search.md#search-logs-to-analyze-data).
 
-Nach erfolgreicher Authentifizierung wird der Konsolenbereich für Livedaten (Vorschau) unterhalb des Rasters mit Leistungsdaten angezeigt. Wenn in der Abrufstatusanzeige ein grünes Häkchen angezeigt wird, das sich ganz rechts im Bereich befindet, bedeutet das, dass Daten abgerufen werden können und in die Konsole gestreamt werden.
+Nach erfolgreicher Authentifizierung wird der Konsolenbereich für Livedaten unterhalb des Rasters mit Leistungsdaten angezeigt. Wenn in der Abrufstatusanzeige ein grünes Häkchen angezeigt wird, das sich ganz rechts im Bereich befindet, bedeutet das, dass Daten abgerufen werden können und in die Konsole gestreamt werden.
 
 Wenn das ausgewählte Objekt ein Container ist, wählen Sie die Option **Ereignisse** im Bereich aus. Wenn Sie einen Knoten, Pod oder Controller ausgewählt haben, ist das Anzeigen von Ereignissen automatisch ausgewählt.
 
@@ -92,12 +92,12 @@ Sie können Echtzeitmetrikdaten anzeigen, da diese von der Container-Engine bei 
 
 3. Wählen Sie entweder die Register **Knoten** oder **Controller** aus.
 
-4. Wählen Sie ein **Pod**-Objekt aus dem Leistungsraster aus, und wählen Sie dann im Eigenschaftenbereich auf der rechten Seite die Option **Livedaten anzeigen (Vorschau)** aus. Wenn der AKS-Cluster mit einmaligem Anmelden über Azure AD konfiguriert ist, werden Sie bei der ersten Verwendung während dieser Browsersitzung zur Authentifizierung aufgefordert. Wählen Sie Ihr Konto aus und führen Sie die Authentifizierung mit Azure durch.
+4. Wählen Sie ein **Pod**-Objekt aus dem Leistungsraster aus, und wählen Sie dann im Eigenschaftenbereich auf der rechten Seite die Option **Livedaten anzeigen** aus. Wenn der AKS-Cluster mit einmaligem Anmelden über Azure AD konfiguriert ist, werden Sie bei der ersten Verwendung während dieser Browsersitzung zur Authentifizierung aufgefordert. Wählen Sie Ihr Konto aus und führen Sie die Authentifizierung mit Azure durch.
 
     >[!NOTE]
     >Wenn Sie die Daten aus Ihrem Log Analytics-Arbeitsbereich anzeigen, indem Sie im Eigenschaftenbereich die Option **In Analytics anzeigen** auswählen, können in den Ergebnissen der Protokollsuche **Knoten**, **Daemon-Sätze**, **Replikatsätze**, **Aufträge**, **Cron-Aufträge**, **Pods** und **Container** angezeigt werden, die möglicherweise nicht mehr vorhanden sind. Der Versuch, Protokolle für einen Container zu durchsuchen, der in `kubectl` nicht verfügbar ist, schlägt hier ebenfalls fehl. Weitere Informationen zum Anzeigen von Verlaufsprotokollen, Ereignissen und Metriken finden Sie unter der Funktion [In Analytics anzeigen](container-insights-log-search.md#search-logs-to-analyze-data).
 
-Nach erfolgreicher Authentifizierung wird der Konsolenbereich für Livedaten (Vorschau) unterhalb des Rasters mit Leistungsdaten angezeigt. Metrikdaten werden abgerufen und zur Darstellung in den beiden Diagrammen an Ihre Konsole gestreamt. Der Titel des Bereichs zeigt den Namen des Pods an, mit dem der Container gruppiert ist.
+Nach erfolgreicher Authentifizierung wird der Konsolenbereich für Livedaten unterhalb des Rasters mit Leistungsdaten angezeigt. Metrikdaten werden abgerufen und zur Darstellung in den beiden Diagrammen an Ihre Konsole gestreamt. Der Titel des Bereichs zeigt den Namen des Pods an, mit dem der Container gruppiert ist.
 
 ![Beispiel für das Anzeigen von Podmetriken](./media/container-insights-livedata-overview/pod-properties-live-metrics.png)
 
@@ -105,7 +105,7 @@ Nach erfolgreicher Authentifizierung wird der Konsolenbereich für Livedaten (Vo
 In den folgenden Abschnitten werden Funktionen beschrieben, die Sie in den verschiedenen Livedatenansichten verwenden können.
 
 ### <a name="search"></a>Suchen,
-Die Funktion für Livedaten (Vorschau) bietet Suchfunktionalität. Im Feld **Suchen** können Sie Ergebnisse filtern, indem Sie ein Schlüsselwort oder einen Begriff eingeben, und alle übereinstimmenden Ergebnisse werden zur schnellen Überprüfung hervorgehoben. Beim Anzeigen von Ereignissen können Sie außerdem mit dem **Filter** rechts neben der Suchleiste die Ergebnisse einschränken. Je nachdem, welche Ressource Sie ausgewählt haben, stehen im Filterfeld Pods, Namespaces oder Cluster zur Auswahl.
+Die Funktion für Livedaten bietet Suchfunktionalität. Im Feld **Suchen** können Sie Ergebnisse filtern, indem Sie ein Schlüsselwort oder einen Begriff eingeben, und alle übereinstimmenden Ergebnisse werden zur schnellen Überprüfung hervorgehoben. Beim Anzeigen von Ereignissen können Sie außerdem mit dem **Filter** rechts neben der Suchleiste die Ergebnisse einschränken. Je nachdem, welche Ressource Sie ausgewählt haben, stehen im Filterfeld Pods, Namespaces oder Cluster zur Auswahl.
 
 ![Filterbeispiel für den Livedaten-Konsolenbereich](./media/container-insights-livedata-overview/livedata-pane-filter-example.png)
 
@@ -125,7 +125,7 @@ Mithilfe der Option **Scrollen** können Sie den automatischen Bildlauf unterbre
 >Es wird empfohlen, den automatischen Bildlauf bei der Problembehandlung nur für kurze Zeit anzuhalten. Diese Anforderungen können sich auf die Verfügbarkeit und Drosselung der Kubernetes-API in Ihrem Cluster auswirken.
 
 >[!IMPORTANT]
->Während der Ausführung dieser Funktion werden keine Daten dauerhaft gespeichert. Alle während der Sitzung erfassten Informationen werden gelöscht, wenn Sie den Browser schließen oder verlassen. Daten stehen nur innerhalb des Fünf-Minuten-Zeitfensters der Metrikfunktion zur Visualisierung bereit. Alle Metriken, die älter als fünf Minuten sind, werden ebenfalls gelöscht. Die Funktion für Livedaten (Vorschau) puffert Abfragen innerhalb angemessener Grenzwerte für die Arbeitsspeichernutzung.
+>Während der Ausführung dieser Funktion werden keine Daten dauerhaft gespeichert. Alle während der Sitzung erfassten Informationen werden gelöscht, wenn Sie den Browser schließen oder verlassen. Daten stehen nur innerhalb des Fünf-Minuten-Zeitfensters der Metrikfunktion zur Visualisierung bereit. Alle Metriken, die älter als fünf Minuten sind, werden ebenfalls gelöscht. Die Funktion für Livedaten puffert Abfragen innerhalb angemessener Grenzwerte für die Arbeitsspeichernutzung.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

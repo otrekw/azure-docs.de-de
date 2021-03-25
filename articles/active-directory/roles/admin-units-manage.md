@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 537847d84b417814bddb16cf5b961bdb221af488
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 44faaa6f05a325c2c64040938a1c9d0eb3e864e7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98740447"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574157"
 ---
 # <a name="manage-administrative-units-in-azure-active-directory"></a>Verwalten von Verwaltungseinheiten in Azure Active Directory
 
@@ -38,7 +38,7 @@ Um eine präzisere administrative Steuerung in Azure Active Directory (Azure AD
     ![Screenshot: Link „Grant admin consent for Graph explorer“ (Administratoreinwilligung für Graph-Tester erteilen)](./media/admin-units-manage/select-graph-explorer.png)
 
 
-1. Verwenden Sie die Vorschauversion von Azure AD PowerShell.
+1. Verwenden Sie [Azure AD PowerShell](https://www.powershellgallery.com/packages/AzureAD/).
 
 ## <a name="add-an-administrative-unit"></a>Hinzufügen einer Verwaltungseinheit
 
@@ -58,7 +58,7 @@ Sie können eine Verwaltungseinheit entweder über das Azure-Portal oder mithilf
 
 ### <a name="use-powershell"></a>Verwenden von PowerShell
 
-Installieren Sie Azure AD PowerShell (Vorschau), bevor Sie versuchen, die folgenden Befehle auszuführen:
+Installieren Sie [Azure AD PowerShell](https://www.powershellgallery.com/packages/AzureAD/), bevor Sie versuchen, die folgenden Befehle auszuführen:
 
 ```powershell
 Connect-AzureAD

@@ -2,14 +2,14 @@
 title: Übersicht über die Transaktionsverarbeitung in Azure Service Bus
 description: In diesem Artikel erhalten Sie eine Übersicht über die Transaktionsverarbeitung und die Funktion „Senden über“ in Azure Service Bus.
 ms.topic: article
-ms.date: 10/28/2020
+ms.date: 03/03/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9a95a200b57d348109884a319b5433f0ffd5dde1
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: e2848f41d5557584b0f1a197b548a00a4aef1564
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684790"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102183742"
 ---
 # <a name="overview-of-service-bus-transaction-processing"></a>Übersicht über die Service Bus-Transaktionsverarbeitung
 
@@ -42,6 +42,8 @@ Die Disposition der Nachricht (vollständig, verworfen, unzustellbar, zurückges
 Service Bus unterstützt *Übertragungen*, um transaktionsbasierte Übergaben von Daten aus einer Warteschlange oder einem Thema an einen Prozessor und von dort an eine andere Warteschlange oder ein anderes Thema zu ermöglichen. Bei einem Übertragungsvorgang sendet ein Sender eine Nachricht zuerst an eine *Übertragungswarteschlange oder ein Übertragungsthema*. Die Übertragungswarteschlange bzw. das Übertragungsthema verschiebt die Nachricht sofort an die gewünschte Zielwarteschlange bzw. das gewünschte Zielthema und verwendet dazu dieselbe stabile Übertragungsimplementierung, auf der auch die automatische Weiterleitung basiert. Die Nachricht wird an das Protokoll der Übertragungswarteschlange oder des Themas niemals in einer Weise committet, dass sie für die Consumer der Übertragungswarteschlangebzw. des Themas sichtbar wird.
 
 Wenn die Übertragungswarteschlange oder das Übertragungsthema selbst die Quelle der eingehenden Nachrichten des Absenders ist, offenbart sich die Leistungsfähigkeit dieser Transaktionsfunktion. Anders gesagt: Service Bus kann die Nachricht über die Übertragungswarteschlange bzw. das Übertragungsthema an die Zielwarteschlange bzw. das Zielthema übermitteln. Gleichzeitig führt Service Bus einen vollständigen (oder einen zurückgestellten oder unzustellbaren) Vorgang für die Eingabenachricht aus. All dies erfolgt in einem einzigen atomaren Vorgang. 
+
+Wenn Sie Nachrichten von einem Themenabonnement empfangen und an eine Warteschlange oder ein Thema in der gleichen Transaktion senden müssen, muss es sich bei der Übertragungsentität um ein Thema handeln. In diesem Szenario starten Sie den Transaktionsbereich für das Thema, empfangen Nachrichten vom Abonnement im Transaktionsbereich und senden sie über das Übertragungsthema an ein Warteschlangen- oder Themenziel. 
 
 ### <a name="see-it-in-code"></a>Codebeispiel
 

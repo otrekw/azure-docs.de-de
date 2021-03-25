@@ -2,16 +2,20 @@
 title: Fortlaufender Export von Telemetriedaten aus Application Insights | Microsoft Docs
 description: Exportieren Sie Diagnose- und Nutzungsdaten in Microsoft Azure-Speicher, die Sie anschließendes daraus herunterladen.
 ms.topic: conceptual
-ms.date: 05/26/2020
-ms.openlocfilehash: 23405faeb7d2151ce0f6492c0d522e0a7f9b84a8
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.date: 02/19/2021
+ms.custom: references_regions
+ms.openlocfilehash: e7831123834df9186310453106c50261373160ec
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100584236"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101737034"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Exportieren von Telemetriedaten aus Application Insights
 Möchten Sie Ihre Telemetriedaten länger aufbewahren als von der standardmäßigen Beibehaltungsdauer vorgesehen? Oder möchten Sie sie in einer speziellen Art und Weise verarbeiten? Der fortlaufende Export eignet sich hierfür ideal. Die Ereignisse, die Sie im Application Insights-Portal sehen, können im JSON-Format in Microsoft Azure-Speicher exportiert werden. Sie können Ihre Daten anschließend herunterladen und den Code schreiben, den Sie zu ihrer Verarbeitung benötigen.  
+
+> [!IMPORTANT]
+> Der fortlaufende Export ist veraltet. [Migrieren Sie zu einer arbeitsbereichsbasierten Application Insights-Ressource](convert-classic-resource.md), um [Diagnoseeinstellungen](#diagnostic-settings-based-export) zum Exportieren von Telemetriedaten zu verwenden.
 
 > [!NOTE]
 > Der fortlaufende Export wird nur für klassische Application Insights Ressourcen unterstützt. [Für arbeitsbereichsbasierte Application Insights-Ressourcen](./create-workspace-resource.md) müssen [Diagnoseeinstellungen](./create-workspace-resource.md#export-telemetry) verwendet werden.
@@ -27,6 +31,44 @@ Bevor Sie den fortlaufenden Export einrichten, sollten Sie folgende Alternativen
 * Sie können auch auf das Setup für den [fortlaufenden Export über PowerShell](/powershell/module/az.applicationinsights/new-azapplicationinsightscontinuousexport) zugreifen.
 
 Nachdem Ihre Daten vom Fortlaufende Export in den Speicher kopiert wurden (wo sie beliebig lange bleiben können), sind sie für die übliche [Aufbewahrungsdauer](./data-retention-privacy.md)auch noch in Application Insights verfügbar.
+
+## <a name="supported-regions"></a>Unterstützte Regionen
+
+Der fortlaufende Export wird in den folgenden Regionen unterstützt:
+
+* Asien, Südosten
+* Kanada, Mitte
+* Indien, Mitte
+* Nordeuropa
+* UK, Süden
+* Australien (Osten)
+* Japan, Osten
+* Korea, Mitte
+* Frankreich, Mitte
+* Asien, Osten
+* USA (Westen)
+* USA (Mitte)
+* USA (Ost) 2
+* USA Süd Mitte
+* USA, Westen 2
+* Südafrika, Norden
+* USA Nord Mitte
+* Brasilien, Süden
+* Schweiz, Norden
+* Australien, Südosten
+* UK, Westen
+* Deutschland, Westen-Mitte
+* Schweiz, Westen
+* Australien, Mitte 2
+* VAE, Mitte
+* Brasilien, Südosten
+* Australien, Mitte
+* Vereinigte Arabische Emirate, Norden
+* Norwegen, Osten
+* Japan, Westen
+
+> [!NOTE]
+> Anwendungen, die bereits in **Europa, Westen** und **USA, Osten** konfiguriert sind, werden unterstützt, das Onboarding neuer Anwendungen in diesen Regionen jedoch nicht.
 
 ## <a name="continuous-export-advanced-storage-configuration"></a>Fortlaufender Export – erweiterte Speicherkonfiguration
 

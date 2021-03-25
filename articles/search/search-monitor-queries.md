@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/18/2020
-ms.openlocfilehash: a5589a46a63437fb395db280222f8a9e84775df3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 169a90c12b30e0d083ce5c53ab7c6dd2495c4c23
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88935074"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "100592393"
 ---
 # <a name="monitor-query-requests-in-azure-cognitive-search"></a>Überwachen von Abfrageanforderungen in Azure Cognitive Search
 
@@ -44,7 +44,7 @@ Es ist üblich, dass Abfragen in Millisekunden ausgeführt werden, sodass nur Ab
 | Minimum | Die niedrigste Anzahl von Suchabfragen pro Sekunde, die während einer Minute erfasst wurden.  |
 | SUM | Die Summe aller Abfragen, die innerhalb der Minute ausgeführt wurden.  |
 
-Innerhalb einer Minute kann beispielsweise folgendes Muster vorliegen: Für eine Sekunde tritt eine sehr hohe Auslastung auf (dies ist der Höchstwert für „SearchQueriesPerSecond“), gefolgt von 58 Sekunden mit mittlerer Auslastung sowie einer Sekunde mit nur einer Abfrage, was der Mindestwert ist.
+Innerhalb einer Minute kann beispielsweise folgendes Muster vorliegen: Für eine Sekunde tritt eine sehr hohe Last auf (dies ist der Höchstwert für „SearchQueriesPerSecond“), gefolgt von 58 Sekunden mit mittlerer Last sowie einer Sekunde mit nur einer Abfrage, was der Mindestwert ist.
 
 Ein weiteres Beispiel: Wenn ein Knoten 100 Metriken ausgibt, bei denen der Wert jeder Metrik 40 beträgt, weist „Count“ den Wert „100“, „Sum“ den Wert „4000“, „Average“ den Wert „40“ und „Max“ den Wert „40“ auf.
 
@@ -62,7 +62,7 @@ Die dienstweite Abfrageleistung wird als Suchlatenz (wie lange eine Abfrage daue
 | Minimum | Die Abfrage mit der kürzesten Ausführungszeit in der Stichprobe.  | 
 | Gesamt | Gesamtausführungszeit aller Abfragen in der Stichprobe, die innerhalb des Intervalls (eine Minute) ausgeführt werden.  |
 
-Sehen Sie sich das folgende Beispiel für **Suchlatenzmetriken** an: 86 Abfragen mit einer durchschnittlichen Dauer von 23,26 Millisekunden wurden erfasst. Ein Minimalwert von 0 gibt an, dass einige Abfragen gelöscht wurden. Die längste Abfrage hat 1000 Millisekunden gedauert. Die Gesamtausführungszeit betrug 2 Sekunden.
+Betrachten Sie das folgende Beispiel für die Metrik **Suchlatenz**: Bei einer Stichprobe von 86 Abfragen betrug die durchschnittliche Dauer 23,26 Millisekunden. Ein Minimalwert von 0 gibt an, dass einige Abfragen gelöscht wurden. Die längste Abfrage hat 1000 Millisekunden gedauert. Die Gesamtausführungszeit betrug 2 Sekunden.
 
 ![Latenzaggregationen](./media/search-monitor-usage/metrics-latency.png "Latenzaggregationen")
 
@@ -100,7 +100,7 @@ Im folgenden Screenshot gibt die erste Zahl die Anzahl (bzw. die Anzahl der an d
 
 Um einen schnellen Überblick über die aktuellen Zahlen zu erhalten, werden auf der Registerkarte **Überwachung** auf der Seite „Übersicht“ des Diensts drei Metriken (**Suchlatenz**, **Suchabfragen pro Sekunde (pro Sucheinheit)** , **Gedrosselte Suchabfragen in Prozent**) in bestimmten Intervallen angezeigt, gemessen in Stunden, Tagen und Wochen, mit der Option, den Aggregationstyp zu ändern.
 
-Zur tiefer gehenden Untersuchung öffnen Sie den Metrik-Explorer aus dem Menü **Überwachung**, um Daten überlagern, vergrößern und visualisieren und so Trends oder Anomalien untersuchen zu können. Weitere Informationen zum Metrik-Explorer erhalten Sie in diesem [Tutorial zum Erstellen eines Metrikdiagramms](../azure-monitor/learn/tutorial-metrics-explorer.md).
+Zur tiefer gehenden Untersuchung öffnen Sie den Metrik-Explorer aus dem Menü **Überwachung**, um Daten überlagern, vergrößern und visualisieren und so Trends oder Anomalien untersuchen zu können. Weitere Informationen zum Metrik-Explorer erhalten Sie in diesem [Tutorial zum Erstellen eines Metrikdiagramms](../azure-monitor/essentials/tutorial-metrics-explorer.md).
 
 1. Wählen Sie im Abschnitt „Überwachung“ die Option **Metriken** aus, um den Metrik-Explorer mit dem auf Ihren Suchdienst festgelegt Bereich zu öffnen.
 
@@ -181,7 +181,7 @@ Wenn die Grenzen einer bestimmten Replikat-Partition-Konfiguration überschritte
 
    ![Warnungsdetails](./media/search-monitor-usage/alert-details.png "Warnungsdetails")
 
-Wenn Sie eine E-Mail-Benachrichtigung angegeben haben, erhalten Sie eine E-Mail von „Microsoft Azure“ mit der Betreffzeile „Azure: Aktivierter Schweregrad: 3 `<your rule name>`„.
+Wenn Sie eine E-Mail-Benachrichtigung angegeben haben, erhalten Sie eine E-Mail von „Microsoft Azure“ mit der Betreffzeile „Azure: Aktivierter Schweregrad: 3 `<your rule name>`.
 
 <!-- ## Report query data
 

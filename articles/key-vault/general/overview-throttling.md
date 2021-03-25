@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 5b60f290f6d3ca184e25edd2984ad5b2d1ff2bdf
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 7bdc3ac517df6b73fba7231cfe0fdc9855803782
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289669"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102175752"
 ---
 # <a name="azure-key-vault-throttling-guidance"></a>Anleitung zur Drosselung von Azure Key Vault
 
@@ -24,7 +24,7 @@ Die Grenzwerte für die Drosselung sind je nach Szenario unterschiedlich. So ist
 
 ## <a name="how-does-key-vault-handle-its-limits"></a>Wie geht Key Vault mit den Grenzen um?
 
-In Key Vault wird mithilfe von Diensteinschränkungen der Missbrauch von Ressourcen verhindert und die Qualität des Diensts für alle Clients von Key Vault sichergestellt. Wenn der Schwellenwert für einen Dienst überschritten wird, begrenzt Key Vault weitere Anforderungen von diesem Client für eine bestimmte Zeitdauer und gibt den HTTP-Statuscode 429 (Zu viele Anforderungen) zurück. Die Anforderung wird nicht ausgeführt. Anforderungen mit Fehlern, für die der Fehler 429 zurückgegeben wird, werden für den von Key Vault überwachten Drosselungsgrenzwert mitgezählt. 
+In Key Vault wird mithilfe von Diensteinschränkungen der Missbrauch von Ressourcen verhindert und die Qualität des Diensts für alle Clients von Key Vault sichergestellt. Wenn der Schwellenwert für einen Dienst überschritten wird, begrenzt Key Vault weitere Anforderungen von diesem Client für eine bestimmte Zeitdauer und gibt den HTTP-Statuscode 429 (Zu viele Anforderungen) zurück. Die Anforderung wird nicht ausgeführt. Anforderungen mit Fehlern, für die der Fehler 429 zurückgegeben wird, werden für den von Key Vault überwachten Drosselungsgrenzwert nicht mitgezählt. 
 
 Key Vault wurde ursprünglich zum Speichern und Abrufen von Geheimnissen zum Zeitpunkt der Bereitstellung konzipiert.  Heute wird Key Vault aber auch zur Laufzeit zum Speichern und Abrufen von Geheimnissen verwendet. Außerdem soll Key Vault in Apps und Diensten häufig wie eine Datenbank verwendet werden.  Die aktuellen Grenzwerte unterstützen keine hohen Durchsatzraten.
 

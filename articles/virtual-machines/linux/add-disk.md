@@ -8,12 +8,12 @@ ms.collection: linux
 ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: cynthn
-ms.openlocfilehash: a4e0cee7a46e3f61f95e87f7cba1fb3595ace3c5
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: adf6198cf12011c77fcf3f93d4b595ea433ddefd
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102556807"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104580384"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>Hinzufügen eines Datenträgers zu einem virtuellen Linux-Computer
 
@@ -148,7 +148,7 @@ In diesem Beispiel wird der Nano-Editor verwendet. Daher verwenden Sie nach dem 
 >
 > Die *nofail*-Option stellt sicher, dass der virtuelle Computer gestartet wird, selbst wenn das Dateisystem beschädigt oder der Datenträger zur Startzeit nicht vorhanden ist. Ohne diese Option können Verhalten auftreten, die unter [Cannot SSH to Linux VM due to FSTAB errors](/archive/blogs/linuxonazure/cannot-ssh-to-linux-vm-after-adding-data-disk-to-etcfstab-and-rebooting) (Aufgrund von FSTAB-Fehler keine SSH-Verbindung mit Linux-VM möglich) beschrieben sind.
 >
-> Die serielle Konsole für Azure-VMs kann für den Konsolenzugriff auf Ihren virtuellen Computer verwendet werden, wenn die Änderung von „fstab“ zu einem Systemstartfehler geführt hat. Weitere Informationen finden Sie in der Dokumentation [Serielle Konsole für virtuelle Computer für Linux](../troubleshooting/serial-console-linux.md).
+> Die serielle Konsole für Azure-VMs kann für den Konsolenzugriff auf Ihren virtuellen Computer verwendet werden, wenn die Änderung von „fstab“ zu einem Systemstartfehler geführt hat. Weitere Informationen finden Sie in der Dokumentation [Serielle Konsole für virtuelle Computer für Linux](/troubleshoot/azure/virtual-machines/serial-console-linux).
 
 ### <a name="trimunmap-support-for-linux-in-azure"></a>TRIM/UNMAP-Unterstützung für Linux in Azure
 Einige Linux-Kernels unterstützen TRIM/UNMAP-Vorgänge, um ungenutzte Blöcke auf dem Datenträger zu verwerfen. Dies ist in erster Linie für Standardspeicher nützlich, um Azure darüber zu informieren, dass gelöschte Seiten nicht mehr gültig sind und verworfen werden können. Dies kann auch Kosten sparen, wenn Sie große Dateien erstellen und sie dann löschen.

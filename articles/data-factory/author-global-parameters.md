@@ -5,13 +5,13 @@ ms.service: data-factory
 ms.topic: conceptual
 author: dcstwh
 ms.author: weetok
-ms.date: 08/31/2020
-ms.openlocfilehash: fb9439bc37fcecf1cb5299a09916ebe21c5bc1cb
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 03/04/2021
+ms.openlocfilehash: 06d04eb8679b4484f330b69a8cffb263d353bdcd
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100393818"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197876"
 ---
 # <a name="global-parameters-in-azure-data-factory"></a>Globale Parameter in Azure Data Factory
 
@@ -21,7 +21,7 @@ Globale Parameter sind Konstanten in einer Data Factory, die von einer Pipeline 
 
 ## <a name="creating-global-parameters"></a>Erstellen globaler Parameter
 
-Navigieren Sie zum Erstellen eines globalen Parameters im Abschnitt *Verwalten* zur Registerkarte *Globale Parameter*. Wählen Sie **Neu** aus, um den Seitennavigationsbereich für die Erstellung zu öffnen.
+Navigieren Sie zum Erstellen eines globalen Parameters im Abschnitt **Verwalten** zur Registerkarte *Globale Parameter*. Wählen Sie **Neu** aus, um den Seitennavigationsbereich für die Erstellung zu öffnen.
 
 ![Der Screenshot, auf dem die Schaltfläche „Neu“ hervorgehoben ist, die Sie zum Erstellen globaler Parameter auswählen.](media/author-global-parameters/create-global-parameter-1.png)
 
@@ -46,7 +46,10 @@ Es gibt zwei Möglichkeiten, globale Parameter in Ihre Continuous Integration- u
 * Einschließen globaler Parameter in die ARM-Vorlage
 * Bereitstellen globaler Parameter über ein PowerShell-Skript
 
-Für die meisten Anwendungsfälle empfiehlt es sich, globale Parameter in die ARM-Vorlage einzuschließen. Dies ist nativ in die in der [Dokumentation zu CI/CD](continuous-integration-deployment.md) beschriebenen Lösung integriert. Globale Parameter werden standardmäßig als ARM-Vorlagenparameter hinzugefügt, da sie häufig zwischen Umgebungen geändert werden. Sie können das Einschließen globaler Parameter in die ARM-Vorlage über den Verwaltungshub aktivieren.
+Für die meisten Anwendungsfälle empfiehlt es sich, globale Parameter in die ARM-Vorlage einzuschließen. Dies ist nativ in die in der [Dokumentation zu CI/CD](continuous-integration-deployment.md) beschriebenen Lösung integriert. Globale Parameter werden standardmäßig als ARM-Vorlagenparameter hinzugefügt, da sie häufig zwischen Umgebungen geändert werden. Sie können das Einschließen globaler Parameter in die ARM-Vorlage über den Hub **Verwalten** aktivieren.
+
+> [!NOTE]
+> Die Konfiguration **In ARM-Vorlage einschließen** ist nur im Git-Modus verfügbar. Im Livemodus und Data Factory-Modus ist sie derzeit deaktiviert.
 
 ![Einschließen in eine ARM-Vorlage](media/author-global-parameters/include-arm-template.png)
 

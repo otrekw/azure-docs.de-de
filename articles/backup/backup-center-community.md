@@ -4,10 +4,10 @@ description: Verwenden von Backup Center zum Zugreifen auf Beispielvorlagen, Skr
 ms.topic: conceptual
 ms.date: 02/18/2021
 ms.openlocfilehash: b5173f916341497620d521af1bc7e973e0b6e507
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102506264"
 ---
 # <a name="access-community-resources-using-backup-center"></a>Zugreifen auf Community-Ressourcen über Backup Center

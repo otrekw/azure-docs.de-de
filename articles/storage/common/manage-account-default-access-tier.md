@@ -8,16 +8,16 @@ ms.service: storage
 ms.subservice: common
 ms.topic: how-to
 ms.reviewer: klaasl
-ms.openlocfilehash: 10d4e99d7bbebb6bc7d7def308e233507ed99ce9
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: 637f748882b3ac84127c8b71761a06629e1e0957
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98166448"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "100653831"
 ---
 # <a name="manage-the-default-access-tier-of-an-azure-storage-account"></a>Verwalten der Standardzugriffsebene für ein Azure Storage-Konto
 
-Bei jedem Azure Storage-Konto gibt es eine Standardzugriffsebene („Heiß“, „Kalt“ oder „Archiv“). Sie weisen die Zugriffsebene beim Erstellen eines Speicherkontos zu. Die Standardzugriffsebene ist „Heiß“.
+Bei jedem Azure Storage-Konto gibt es eine Standardzugriffsebene („Heiß“ oder „Kalt“). Sie weisen die Zugriffsebene beim Erstellen eines Speicherkontos zu. Die Standardzugriffsebene ist „Heiß“.
 
 Sie können die Standardkontoebene ändern, indem Sie für das Speicherkonto das Attribut **Zugriffsebene** festlegen. Die Änderung der Zugriffsebene gilt für alle im Konto gespeicherten Objekte, für die keine explizite Ebene festgelegt wurde. Wenn Sie die Kontoebene von „Heiß“ in „Kalt“ ändern, fallen Gebühren für Schreibvorgänge (pro 10.000) nur für alle Blobs ohne festgelegte Ebene in GPv2-Konten an. Bei der Umstellung von „Kalt“ auf „Heiß“ fallen Gebühren für Lesevorgänge (pro 10.000) und den Datenabruf (pro GB) für alle Blobs in Blob Speicher- und GPv2-Konten an.
 

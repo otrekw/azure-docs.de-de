@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2017
 ms.author: rohink
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 469fdbced4601c6ffb4b6aa35e8f943bcb5dde1b
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 5d902e0172a048527ce8f2fa9e22c5fc9bf22e0b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965781"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102203622"
 ---
 # <a name="how-to-manage-dns-zones-in-azure-dns-using-the-azure-cli"></a>Verwalten von DNS-Zonen in Azure DNS mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -37,7 +37,7 @@ Dieses Handbuch befasst sich insbesondere mit öffentlichen DNS-Zonen. Informati
 
 ## <a name="set-up-azure-cli-for-azure-dns"></a>Einrichten der Azure-CLI für Azure DNS
 
-### <a name="before-you-begin"></a>Voraussetzungen
+### <a name="before-you-begin"></a>Vorbereitung
 
 Vergewissern Sie sich vor Beginn der Konfiguration, dass Sie über Folgendes verfügen:
 
@@ -47,7 +47,7 @@ Vergewissern Sie sich vor Beginn der Konfiguration, dass Sie über Folgendes ver
 
 ### <a name="sign-in-to-your-azure-account"></a>Anmelden bei Ihrem Azure-Konto
 
-Öffnen Sie ein Konsolenfenster, und authentifizieren Sie sich mit Ihren Anmeldeinformationen. Weitere Informationen finden Sie unter [Log in to Azure from the Azure CLI](/cli/azure/authenticate-azure-cli?view=azure-cli-latest) (Anmelden bei Azure über die Azure-CLI).
+Öffnen Sie ein Konsolenfenster, und authentifizieren Sie sich mit Ihren Anmeldeinformationen. Weitere Informationen finden Sie unter [Log in to Azure from the Azure CLI](/cli/azure/authenticate-azure-cli) (Anmelden bei Azure über die Azure-CLI).
 
 ```
 az login
@@ -85,7 +85,7 @@ az group create --name myresourcegroup --location "West US"
 
 ## <a name="getting-help"></a>Hilfe
 
-Alle Azure CLI-Befehle im Zusammenhang mit Azure DNS beginnen mit `az network dns`. Für jeden Befehl ist eine Hilfe verfügbar, die mit der Option `--help` (Kurzform: `-h`) angezeigt werden kann.  Beispiel:
+Alle Azure CLI-Befehle im Zusammenhang mit Azure DNS beginnen mit `az network dns`. Für jeden Befehl ist eine Hilfe verfügbar, die mit der Option `--help` (Kurzform: `-h`) angezeigt werden kann.  Zum Beispiel:
 
 ```azurecli
 az network dns --help

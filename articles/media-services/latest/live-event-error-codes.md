@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: error-reference
 ms.date: 02/12/2020
 ms.author: inhenkel
-ms.openlocfilehash: b3be465c488bdd3c5dbd62f757733939d1bee393
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 5463f1d8376cbe1a6e81d17c1f95a84e67f3b418
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100393512"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104581081"
 ---
 # <a name="media-services-live-event-error-codes"></a>Azure Media Services-Fehlercodes für Liveereignisse
 
@@ -28,7 +28,7 @@ In den folgenden Tabellen sind die [Liveereignis](live-events-outputs-concept.md
 
 ## <a name="liveeventconnectionrejected"></a>LiveEventConnectionRejected
 
-Wenn Sie die [Event Grid](../../event-grid/index.yml)-Ereignisse für ein Liveereignis abonnieren, wird möglicherweise einer der folgenden Fehler aus dem [LiveEventConnectionRejected](media-services-event-schemas.md\#liveeventconnectionrejected)-Ereignis ausgegeben.
+Wenn Sie die [Event Grid](../../event-grid/index.yml)-Ereignisse für ein Liveereignis abonnieren, wird möglicherweise einer der folgenden Fehler aus dem [LiveEventConnectionRejected](monitoring/media-services-event-schemas.md\#liveeventconnectionrejected)-Ereignis ausgegeben.
 > [!div class="mx-tdCol2BreakAll"]
 >| Fehler | Information |
 >|--|--|
@@ -68,7 +68,7 @@ Wenn Sie die [Event Grid](../../event-grid/index.yml)-Ereignisse für ein Liveer
 
 ## <a name="liveeventencoderdisconnected"></a>LiveEventEncoderDisconnected
 
-Möglicherweise wird einer der folgenden Fehler aus dem [LiveEventEncoderDisconnected](media-services-event-schemas.md\#liveeventencoderdisconnected)-Ereignis ausgegeben.
+Möglicherweise wird einer der folgenden Fehler aus dem [LiveEventEncoderDisconnected](monitoring/media-services-event-schemas.md\#liveeventencoderdisconnected)-Ereignis ausgegeben.
 
 > [!div class="mx-tdCol2BreakAll"]
 >| Fehler | Information |

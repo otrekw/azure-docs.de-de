@@ -12,12 +12,12 @@ ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: 8a4a4153261b93b3b17641e8561962c274570bd0
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 6adc3a8af90f6f05f640de97b8fa74c8d40e0329
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100104211"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102175544"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Gewusst wie: Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal
 
@@ -45,7 +45,7 @@ Sie müssen über ausreichende Berechtigungen verfügen, um eine Anwendung bei I
 1. Wählen Sie im linken Bereich **Benutzereinstellungen** aus.
 1. Überprüfen Sie die Einstellung **App-Registrierungen**. Dieser Wert kann nur von einem Administrator festgelegt werden. Die Einstellung **Ja** bedeutet, dass jeder Benutzer im Azure AD-Mandanten eine App registrieren kann.
 
-Wenn die App-Registrierungseinstellung auf **Nein** festgelegt ist, können nur Benutzer mit Administratorrolle diese Arten von Anwendungen registrieren. Informationen zu verfügbaren Administratorrollen und den spezifischen Berechtigungen in Azure AD für die einzelnen Rollen finden Sie unter [verfügbare Rollen](../roles/permissions-reference.md#available-roles) und [Rollenberechtigungen](../roles/permissions-reference.md#role-permissions). Wenn Ihrem Konto die Rolle „Benutzer“ zugewiesen wurde, die App-Registrierungseinstellung jedoch auf Administratorbenutzer begrenzt ist, bitten Sie Ihren Administrator, entweder Ihnen eine Administratorrolle zuzuweisen, die alle Aspekte von App-Registrierungen erstellen und verwalten kann, oder Benutzern das Registrieren von Apps zu ermöglichen.
+Wenn die App-Registrierungseinstellung auf **Nein** festgelegt ist, können nur Benutzer mit Administratorrolle diese Arten von Anwendungen registrieren. Informationen zu verfügbaren Administratorrollen sowie zu den spezifischen Berechtigungen in Azure AD für die einzelnen Rollen finden Sie unter [Integrierte Rollen in Azure AD](../roles/permissions-reference.md#all-roles). Wenn Ihrem Konto die Rolle „Benutzer“ zugewiesen wurde, die App-Registrierungseinstellung jedoch auf Administratorbenutzer begrenzt ist, bitten Sie Ihren Administrator, entweder Ihnen eine Administratorrolle zuzuweisen, die alle Aspekte von App-Registrierungen erstellen und verwalten kann, oder Benutzern das Registrieren von Apps zu ermöglichen.
 
 ### <a name="check-azure-subscription-permissions"></a>Überprüfen der Berechtigungen des Azure-Abonnements
 
@@ -84,6 +84,9 @@ Wir beginnen gleich mit der Erstellung der Identität. Falls ein Problem auftrit
    ![Einen Namen für Ihre Anwendung eingeben](./media/howto-create-service-principal-portal/create-app.png)
 
 Sie haben Ihre Azure AD-Anwendung und den Dienstprinzipal erstellt.
+
+> [!NOTE]
+> Sie können mehrere Anwendungen mit dem gleichen Namen in Azure AD registrieren, die Anwendungen müssen jedoch über unterschiedliche Anwendungs-IDs (Client-IDs) verfügen.
 
 ## <a name="assign-a-role-to-the-application"></a>Zuweisen einer Rolle zur Anwendung
 

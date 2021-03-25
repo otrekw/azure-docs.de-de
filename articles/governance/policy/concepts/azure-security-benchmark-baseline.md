@@ -1,20 +1,20 @@
 ---
-title: Azure Policy-Sicherheitsbaseline für den Vergleichstest für die Azure-Sicherheit
+title: Azure-Sicherheitsbaseline für Azure Policy
 description: Die Azure Policy-Sicherheitsbaseline enthält Schrittanleitungen und Ressourcen für die Implementierung der Sicherheitsempfehlungen, die im Vergleichstest für die Azure-Sicherheit angegeben sind.
 author: msmbaldwin
 ms.service: azure-policy
 ms.topic: conceptual
-ms.date: 07/02/2020
+ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: fadbed5607c7ebdd61a42ae054f431840c529d69
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9916ad6d3b6cb1a63d34004915666226b7836490
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573068"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101740347"
 ---
-# <a name="azure-policy-security-baseline-for-azure-security-benchmark"></a>Azure Policy-Sicherheitsbaseline für den Vergleichstest für die Azure-Sicherheit
+# <a name="azure-security-baseline-for-azure-policy"></a>Azure-Sicherheitsbaseline für Azure Policy
 
 Diese Sicherheitsbaseline wendet Empfehlungen des [Vergleichstests für die Azure-Sicherheit](../../../security/benchmarks/overview.md) auf Azure Policy an. Der Azure-Sicherheitsvergleichstest enthält Empfehlungen zum Schutz Ihrer Cloudlösungen in Azure. Der Inhalt wird nach den vom Vergleichstest für die Azure-Sicherheit definierten und den entsprechenden für Azure Policy geltenden Empfehlungen nach **Compliancebereichen** und **Sicherheitskontrollen** gruppiert. Nicht auf Azure Policy anwendbare **Steuerungen** wurden ausgeschlossen. Zum Anzeigen der vollständigen Zuordnung von Azure Policy zum Vergleichstest für die Azure-Sicherheit sehen Sie sich die [vollständige Zuordnungsdatei der Azure Policy-Sicherheitsbaseline](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines) an.
 
@@ -22,117 +22,111 @@ Eine Zuordnung der Steuerungen im Vergleichstest für die Azure-Sicherheit zu de
 
 In Azure Policy wird der Begriff _Ownership_ anstelle von _Zuständigkeit_ verwendet. Ausführliche Informationen zu _Ownership_ finden Sie unter [Azure Policy-Richtliniendefinitionen](./definition-structure.md#type) und [Gemeinsame Verantwortung in der Cloud](../../../security/fundamentals/shared-responsibility.md).
 
-
 ## <a name="logging-and-monitoring"></a>Protokollierung und Überwachung
 
-*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Protokollierung und Überwachung](../../../security/benchmarks/security-control-logging-monitoring.md).*
+*Weitere Informationen finden Sie unter [Azure-Sicherheitsvergleichstest: Protokollierung und Überwachung](../../../security/benchmarks/security-control-logging-monitoring.md).*
 
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3: Aktivieren der Überwachungsprotokollierung für Azure-Ressourcen
 
 **Leitfaden**: Azure Policy verwendet automatisch aktivierte Aktivitätsprotokolle, um Elemente wie Ereignisquelle, Datum, Benutzer, Zeitstempel, Quelladressen, Zieladressen und andere nützliche Elemente einzuschließen.
 
-* [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../../../azure-monitor/essentials/diagnostic-settings.md)
+- [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](/azure/azure-monitor/platform/diagnostic-settings)
 
-* [Grundlegendes zur Protokollierung und zu verschiedenen Protokolltypen in Azure](../../../azure-monitor/essentials/platform-logs-overview.md)
-
-
-**Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
+- [Grundlegendes zur Protokollierung und zu verschiedenen Protokolltypen in Azure](/azure/azure-monitor/platform/platform-logs-overview)
 
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ## <a name="identity-and-access-control"></a>Identität und Zugriffssteuerung
 
-*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Identität und Zugriffssteuerung](../../../security/benchmarks/security-control-identity-access-control.md).*
+*Weitere Informationen finden Sie unter [Azure-Sicherheitsvergleichstest: Identität und Zugriffssteuerung](../../../security/benchmarks/security-control-identity-access-control.md).*
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3.3: Verwenden dedizierter Administratorkonten
 
-**Leitfaden**: Erstellen Sie Standardbetriebsvorgänge für die Verwendung dedizierter Administratorkonten. Verwenden Sie die Identitäts- und Zugriffsverwaltung in Azure Security Center, um die Anzahl der Administratorkonten zu überwachen. 
-
-Sie können auch eine Lösung für Just-in-Time-/Just-Enough-Zugriff aktivieren, indem Sie privilegierte Rollen von [Azure AD Privileged Identity Management](../../../active-directory/privileged-identity-management/pim-configure.md) oder [Azure Resource Manager](../../../azure-resource-manager/management/overview.md) verwenden.
-
-
-**Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
+**Leitfaden**: Erstellen Sie Standardbetriebsvorgänge für die Verwendung dedizierter Administratorkonten. Verwenden Sie die Identitäts- und Zugriffsverwaltung in Azure Security Center, um die Anzahl der Administratorkonten zu überwachen. Sie können auch eine Lösung für Just-in-Time-/Just-Enough-Zugriff aktivieren, indem Sie privilegierte Rollen von [Azure Active Directory Privileged Identity Management](../../../active-directory/privileged-identity-management/pim-configure.md) oder [Azure Resource Manager](../../../azure-resource-manager/management/overview.md) verwenden.
 
 **Verantwortlichkeit**: Kunde
 
-### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6: Verwenden dedizierter Computer (Arbeitsstationen mit privilegiertem Zugriff) für alle administrativen Aufgaben
+**Azure Security Center-Überwachung**: Der [Azure-Sicherheitsvergleichstest](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md) ist die Standardrichtlinieninitiative für Security Center und die Grundlage für die [Empfehlungen von Security Center](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md). Die Azure Policy-Definitionen für diese Kontrolle werden automatisch durch Security Center aktiviert. Warnungen für diese Kontrolle erfordern möglicherweise einen [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md)-Plan für die entsprechenden Dienste.
 
-**Leitfaden**: Verwenden Sie Arbeitsstationen mit privilegiertem Zugriff (Privileged Access Workstations, PAWs) mit MFA, die für die Anmeldung bei und die Konfiguration von Azure-Ressourcen konfiguriert sind.
+**Integrierte Azure Policy-Definitionen – Microsoft.GuestConfiguration**:
 
-* [Informationen zu Arbeitsstationen mit privilegiertem Zugriff](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
+[!INCLUDE [Resource Policy for Microsoft.GuestConfiguration 3.3](../../../../includes/policy/standards/asb/rp-controls/microsoft.guestconfiguration-3-3.md)]
 
-* [Aktivieren von MFA in Azure](../../../active-directory/authentication/howto-mfa-getstarted.md)
+### <a name="36-use-secure-azure-managed-workstations-for-administrative-tasks"></a>3.6: Verwenden von sicheren, von Azure verwalteten Arbeitsstationen für Verwaltungsaufgaben
 
+**Leitfaden**: Verwenden Sie Privileged Access Workstations (PAWs) mit mehrstufiger Authentifizierung, die für die Anmeldung bei Azure-Ressourcen und deren Konfiguration konfiguriert sind.
 
-**Azure Security Center-Überwachung**: Nicht verfügbar
+- [Informationen zu Arbeitsstationen mit privilegiertem Zugriff](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
+
+- [Planen einer Bereitstellung von Azure AD Multi-Factor Authentication](../../../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Verantwortlichkeit**: Kunde
 
-## <a name="data-protection"></a>Schutz von Daten
+**Azure Security Center-Überwachung:** Keine
 
-*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Datenschutz](../../../security/benchmarks/security-control-data-protection.md).*
+## <a name="data-protection"></a>Datenschutz
 
-### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6: Verwenden von Azure RBAC zum Steuern des Zugriffs auf Ressourcen
+*Weitere Informationen finden Sie unter [Azure-Sicherheitsvergleichstest: Schutz von Daten](../../../security/benchmarks/security-control-data-protection.md).*
+
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6: Verwenden von Azure RBAC zum Steuern des Zugriffs auf Ressourcen 
 
 **Leitfaden**: Steuern Sie den Zugriff auf Azure Policy mithilfe der rollenbasierten Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC).
 
-* [Azure RBAC-Berechtigungen in Azure Policy](../overview.md#azure-rbac-permissions-in-azure-policy)
+- [Azure RBAC-Berechtigungen in Azure Policy](https://docs.microsoft.com/azure/governance/policy/overview#azure-rbac-permissions-in-azure-policy)
 
-* [Konfigurieren von Azure RBAC](../../../role-based-access-control/role-assignments-portal.md)
-
-
-**Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
+- [Konfigurieren von Azure RBAC](../../../role-based-access-control/role-assignments-portal.md)
 
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9: Protokollieren und Warnen bei Änderungen an wichtigen Azure-Ressourcen
 
 **Leitfaden**: Verwenden Sie Azure Monitor mit Aktivitätsprotokollen, um Warnungen zu erstellen, die ausgegeben werden, wenn Änderungen in Azure Policy vorgenommen werden.
 
-* [Erstellen von Warnungen für Azure-Aktivitätsprotokollereignisse](../../../azure-monitor/alerts/alerts-activity-log.md)
-
-
-**Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
+- [Erstellen von Warnungen für Azure-Aktivitätsprotokollereignisse](/azure/azure-monitor/platform/alerts-activity-log)
 
 **Verantwortlichkeit**: Kunde
 
+**Azure Security Center-Überwachung:** Keine
+
 ## <a name="inventory-and-asset-management"></a>Bestands- und Ressourcenverwaltung
 
-*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Bestands- und Ressourcenverwaltung](../../../security/benchmarks/security-control-inventory-asset-management.md).*
+*Weitere Informationen finden Sie unter [Azure-Sicherheitsvergleichstest: Bestands- und Ressourcenverwaltung](../../../security/benchmarks/security-control-inventory-asset-management.md).*
 
 ### <a name="62-maintain-asset-metadata"></a>6.2: Verwalten von Ressourcenmetadaten
 
 **Leitfaden**: Wenden Sie Tags auf Ihre Azure-Ressourcen an, die Metadaten erzeugen, um sie logisch in einer Taxonomie zu organisieren. Verwenden Sie den Azure Policy-Effekt _Modify_, um die Einhaltung und konsistente Governance von Tags zu melden und zu erzwingen.
 
-* [Tutorial: Erstellen und Verwalten von Richtlinien](../tutorials/create-and-manage.md)
+- [Tutorial: Erstellen und Verwalten von Richtlinien](../tutorials/create-and-manage.md)
 
-* [Tutorial: Verwalten der Tag-Governance](../tutorials/govern-tags.md)
-
-
-**Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
+- [Tutorial: Verwalten der Tag-Governance](../tutorials/govern-tags.md)
 
 **Verantwortlichkeit**: Kunde
 
-### <a name="64-define-and-maintain-an-inventory-of-approved-azure-resources"></a>6.4: Definieren und Verwalten eines Bestands an genehmigten Azure-Ressourcen
+**Azure Security Center-Überwachung:** Keine
+
+### <a name="64-define-and-maintain-inventory-of-approved-azure-resources"></a>6.4: Definieren und Verwalten des Bestands an genehmigten Azure-Ressourcen
 
 **Leitfaden**: Erstellen Sie eine Liste genehmigter Richtliniendefinitionen und Richtlinienzuweisungen gemäß Ihren organisatorischen Anforderungen.
 
-**Azure Security Center-Überwachung**: Nicht verfügbar
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5: Überwachung auf nicht genehmigte Azure-Ressourcen
 
 **Leitfaden**: Verwenden Sie Azure Policy, um Einschränkungen für den Typ der Ressourcen festzulegen, die in Ihren Abonnements erstellt werden können.
 
-* [Konfigurieren und Verwalten von Azure Policy](../tutorials/create-and-manage.md)
-
-
-**Azure Security Center-Überwachung**: Nicht verfügbar
+- [Konfigurieren und Verwalten von Azure Policy](../tutorials/create-and-manage.md)
 
 **Verantwortlichkeit**: Kunde
 
+**Azure Security Center-Überwachung:** Keine
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Lesen Sie den [Vergleichstest für die Azure-Sicherheit](../../../security/benchmarks/overview.md).
-- Erfahren Sie mehr über [Azure-Sicherheitsbaselines](../../../security/benchmarks/security-baselines-overview.md).
+- Sehen Sie sich die [Übersicht über Version 2 des Azure-Sicherheitsvergleichstests](/azure/security/benchmarks/overview) an.
+- Erfahren Sie mehr über [Azure-Sicherheitsbaselines](/azure/security/benchmarks/security-baselines-overview).

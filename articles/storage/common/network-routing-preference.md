@@ -1,26 +1,26 @@
 ---
-title: Konfigurieren der Netzwerkroutingpräferenz (Vorschau)
+title: Netzwerkroutingpräferenz
 titleSuffix: Azure Storage
-description: Konfigurieren Sie die Netzwerkroutingpräferenz (Vorschau) für Ihr Azure-Speicherkonto, um festzulegen, wie Netzwerkdatenverkehr von Clients über das Internet zu Ihrem Konto geleitet wird.
+description: Über die Netzwerkroutingpräferenz können Sie angeben, wie Netzwerkdatenverkehr von Clients über das Internet zu Ihrem Konto geleitet wird.
 services: storage
 author: santoshc
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/12/2020
+ms.date: 02/11/2021
 ms.author: santoshc
-ms.reviewer: tamram
+ms.reviewer: normesta
 ms.subservice: common
 ms.custom: references_regions
-ms.openlocfilehash: 601c8dfb4b4e2f16da5c560f67e2d251a5d3072a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 6b6c90259c552895360281b393e15773c6e101e3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100362742"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726936"
 ---
-# <a name="configure-network-routing-preference-for-azure-storage-preview"></a>Konfigurieren der Netzwerkroutingpräferenz für Azure Storage (Vorschau)
+# <a name="network-routing-preference-for-azure-storage"></a>Netzwerkroutingpräferenz für Azure Storage
 
-Sie können die [Netzwerkroutingpräferenz](../../virtual-network/routing-preference-overview.md) (Vorschau) für Ihr Azure-Speicherkonto konfigurieren, um festzulegen, wie Netzwerkdatenverkehr von Clients über das Internet zu Ihrem Konto geleitet wird. Standardmäßig wird der Datenverkehr aus dem Internet über das [globale Microsoft-Netzwerk](../../networking/microsoft-global-network.md) an den öffentlichen Endpunkt Ihres Speicherkontos geleitet. Azure Storage bietet zusätzliche Optionen für die Konfiguration, wie der Datenverkehr zu Ihrem Speicherkonto geleitet wird.
+Sie können die [Netzwerkroutingpräferenz](../../virtual-network/routing-preference-overview.md) für Ihr Azure-Speicherkonto konfigurieren, um festzulegen, wie Netzwerkdatenverkehr von Clients über das Internet zu Ihrem Konto geleitet wird. Standardmäßig wird der Datenverkehr aus dem Internet über das [globale Microsoft-Netzwerk](../../networking/microsoft-global-network.md) an den öffentlichen Endpunkt Ihres Speicherkontos geleitet. Azure Storage bietet zusätzliche Optionen für die Konfiguration, wie der Datenverkehr zu Ihrem Speicherkonto geleitet wird.
 
 Das Konfigurieren von Routingpräferenzen bietet Ihnen die Flexibilität, Ihren Datenverkehr entweder für eine erstklassige Netzwerkleistung oder hinsichtlich der Kosten zu optimieren. Wenn Sie eine Routingpräferenz konfigurieren, geben Sie an, wie der Datenverkehr für Ihr Speicherkonto standardmäßig zum öffentlichen Endpunkt geleitet wird. Sie können auch routenspezifische Endpunkte für Ihr Speicherkonto veröffentlichen.
 
@@ -37,9 +37,11 @@ Das folgende Diagramm zeigt, wie der Datenverkehr zwischen dem Client und dem Sp
 
 ![Übersicht über die Routingoptionen für Azure Storage](media/network-routing-preference/routing-options-diagram.png)
 
-Weitere Informationen zu den Routingpräferenzen in Azure finden Sie unter [Was ist Routingpräferenz (Vorschau)?](../../virtual-network/routing-preference-overview.md).
+Weitere Informationen zu den Routingpräferenzen in Azure finden Sie unter [Was ist Routingpräferenz?](../../virtual-network/routing-preference-overview.md).
 
 ## <a name="routing-configuration"></a>Routingkonfiguration
+
+Eine Schritt-für-Schritt-Anleitung, die das Konfigurieren der Routingpräferenz und routenspezifischer Endpunkte veranschaulicht, finden Sie unter [Konfigurieren der Netzwerkroutingpräferenz für Azure Storage](configure-network-routing-preference.md).
 
 Sie können zwischen dem globalen Microsoft-Netzwerk und dem Internetrouting als standardmäßige Routingpräferenz für den öffentlichen Endpunkt Ihres Speicherkontos wählen. Die standardmäßige Routingpräferenz gilt für den gesamten Datenverkehr von Clients außerhalb von Azure und betrifft die Endpunkte für Azure Data Lake Storage Gen2, Blobspeicher, Azure Files und statische Websites. Das Konfigurieren von Routingpräferenzen wird für Azure-Warteschlangen oder Azure-Tabellen nicht unterstützt.
 
@@ -65,7 +67,7 @@ Wenn Sie über ein RA-GRS-Speicherkonto (georedundanter Speicher mit Lesezugriff
 
 Die Verbindungszeichenfolgen für die veröffentlichten routenspezifischen Endpunkte können über das [Azure-Portal](https://portal.azure.com) kopiert werden. Diese Verbindungszeichenfolgen können für die Autorisierung mit gemeinsam verwendetem Schlüssel mit allen vorhandenen Azure Storage SDKs und APIs verwendet werden.
 
-## <a name="about-the-preview"></a>Informationen zur Vorschau
+## <a name="regional-availability"></a>Regionale Verfügbarkeit
 
 Routingpräferenz für Azure Storage ist in den folgenden Regionen verfügbar:
 
@@ -100,16 +102,17 @@ Routingpräferenz für Azure Storage ist in den folgenden Regionen verfügbar:
 - Australien (Osten) 
 - Australien, Südosten 
 
-Die folgenden bekannten Probleme betreffen die Routingpräferenzvorschau für Azure Storage:
+Die folgenden bekannten Probleme betreffen die Routingpräferenz für Azure Storage:
 
 - Zugriffsanforderungen für den routenspezifischen Endpunkt für das globale Microsoft-Netzwerk weisen den HTTP-Fehler 404 oder einen ähnlichen Fehler auf. Das Routing über das globale Microsoft-Netzwerk funktioniert wie erwartet, wenn es als standardmäßige Routingpräferenz für den öffentlichen Endpunkt festgelegt ist.
 
 ## <a name="pricing-and-billing"></a>Preise und Abrechnung
 
-Einzelheiten zu Preisen und zur Abrechnung finden Sie im Abschnitt **Preise** in [Was ist Routingpräferenz (Vorschau)?](../../virtual-network/routing-preference-overview.md#pricing).
+Einzelheiten zu Preisen und zur Abrechnung finden Sie im Abschnitt **Preise** in [Was ist Routingpräferenz?](../../virtual-network/routing-preference-overview.md#pricing).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Was ist Routingpräferenz (Vorschau)?](../../virtual-network/routing-preference-overview.md)
+- [Was ist Routingpräferenz?](../../virtual-network/routing-preference-overview.md)
+- [Konfigurieren der Netzwerkroutingpräferenz](configure-network-routing-preference.md)
 - [Konfigurieren von Azure Storage-Firewalls und virtuellen Netzwerken](storage-network-security.md)
 - [Sicherheitsempfehlungen für Blob Storage](../blobs/security-recommendations.md)

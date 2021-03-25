@@ -2,21 +2,21 @@
 title: Verwaltbarkeit und Überwachung – Abfrageaktivität, Ressourcennutzung
 description: Hier erfahren Sie, welche Funktionen zum Verwalten und Überwachen von Azure Synapse Analytics zur Verfügung stehen. Verwenden Sie das Azure-Portal und dynamische Verwaltungssichten (DMVs), um Informationen zu Abfrageaktivität und Ressourcennutzung für Ihre Data Warehouse-Instanz zu erhalten.
 services: synapse-analytics
-author: kevinvngo
+author: gaursa
 manager: craigg-msft
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 04/09/2020
-ms.author: kevin
+ms.author: gaursa
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 96a076ef144af1d32e9ef3ec2903557b8edff006
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e7f093860e9962db055a7551f5cdb608ecad9b29
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100586703"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104585671"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>Überwachen der Ressourcennutzung und Abfrageaktivität in Azure Synapse Analytics
 

@@ -1,14 +1,14 @@
 ---
 title: Veröffentlichen eines Angebots für verwaltete Dienste im Azure Marketplace
 description: Erfahren Sie, wie Sie ein Angebot für verwaltete Dienste veröffentlichen, das das Onboarding von Kunden in Azure Lighthouse durchführt.
-ms.date: 02/16/2021
+ms.date: 02/17/2021
 ms.topic: how-to
-ms.openlocfilehash: 3af460f17533d70b24f76ab40460a5fa920cdece
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: b906ba9961ae4f77ca16890fd0a9036123343111
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100555792"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092144"
 ---
 # <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>Veröffentlichen eines Angebots für verwaltete Dienste im Azure Marketplace
 
@@ -33,6 +33,9 @@ Die folgende Tabelle kann bei der Ermittlung helfen, ob das Onboarding der Kunde
 |Erfordert Kundenakzeptanz im Azure-Portal     |Ja     |Nein   |
 |Kann die Automatisierung nutzen, um das Onboarding für mehrere Abonnements, Ressourcengruppen oder Kunden durchzuführen |Nein     |Ja    |
 |Sofortiger Zugriff auf neue integrierte Rollen und Azure Lighthouse-Features     |Nicht immer (im Allgemeinen nach einiger Verzögerung verfügbar)         |Ja         |
+
+> [!NOTE]
+> Verwaltete Dienste sind in der Azure Government-Cloud und anderen nationalen Clouds möglicherweise nicht verfügbar.
 
 ## <a name="create-your-offer"></a>Erstellen Ihres Angebots
 

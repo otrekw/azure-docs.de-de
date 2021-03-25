@@ -6,13 +6,14 @@ ms.author: danis
 ms.date: 01/27/2021
 ms.topic: article
 ms.service: virtual-machines
-ms.subservice: imaging
-ms.openlocfilehash: 56f1e78e0f2bbba15b50664b88bd8808731e6836
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.subservice: image-builder
+ms.collection: linux
+ms.openlocfilehash: d02a5c6bc194009d459647721dab16be0dcade84
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807613"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101670471"
 ---
 # <a name="azure-image-builder-service-devops-task"></a>DevOps-Task des Azure Image Builder-Diensts
 
@@ -21,7 +22,7 @@ In diesem Artikel erfahren Sie, wie Sie mit einem Azure DevOps-Task zum Einfüge
 ## <a name="devops-task-versions"></a>DevOps-Taskversionen
 In Azure VM Image Builder (AIB) gibt es zwei DevOps-Tasks:
 
-* Mithilfe des [„stabilen“ AIB-Tasks](https://marketplace.visualstudio.com/items?itemName=AzureImageBuilder.devOps-task-for-azure-image-builder) lassen sich die neuesten Updates und Features aufspielen. Kunden erhalten die Möglichkeit, diese zu testen, bevor sie etwa eine Woche später als „stabiler“ Task eingestuft werden. 
+* [„Stabiler“ AIB-Task](https://marketplace.visualstudio.com/items?itemName=AzureImageBuilder.devOps-task-for-azure-image-builder). Dies ist der neueste stabile Build, der getestet wurde, und bei Telemetriedaten treten keine Probleme auf. 
 
 
 * Mithilfe des [„instabilen“ AIB-Tasks](https://marketplace.visualstudio.com/items?itemName=AzureImageBuilder.devOps-task-for-azure-image-builder-canary) lassen sich die neuesten Updates und Features aufspielen. Kunden erhalten die Möglichkeit, diese zu testen, bevor sie als „stabiler“ Task eingestuft werden. Wenn es keine gemeldeten Probleme gibt und die Telemetrie keine Probleme aufweist, wird der Taskcode etwa eine Woche später als „stabil“ eingestuft. 

@@ -6,12 +6,12 @@ ms.author: alkemper
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: f144c1f09f87e0b915daf86ba0391c2934e60095
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: c028dcf6649da9abd196997d077b58386a5e6dd9
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96932675"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101092786"
 ---
 # <a name="azure-active-directory-authorization---rest-api-reference"></a>Azure Active Directory-Autorisierung – REST-API-Referenz
 
@@ -43,4 +43,4 @@ HTTP/1.1 403 Forbidden
 
 ## <a name="managing-role-assignments"></a>Verwalten von Rollenzuweisungen
 
-Sie können Rollenzuweisungen mithilfe von [RBAC-Prozeduren](../role-based-access-control/overview.md) verwalten, die in allen Azure-Diensten als Standard gelten. Sie können hierfür die Azure-Befehlszeilenschnittstelle, PowerShell und das Azure-Portal verwenden. Weitere Informationen finden Sie unter [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen über das Azure-Portal](../role-based-access-control/role-assignments-portal.md).
+Sie können Rollenzuweisungen mithilfe von [Azure RBAC-Prozeduren](../role-based-access-control/overview.md) verwalten, die in allen Azure-Diensten als Standard gelten. Sie können hierfür die Azure-Befehlszeilenschnittstelle, PowerShell und das Azure-Portal verwenden. Weitere Informationen finden Sie unter [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen über das Azure-Portal](../role-based-access-control/role-assignments-portal.md).

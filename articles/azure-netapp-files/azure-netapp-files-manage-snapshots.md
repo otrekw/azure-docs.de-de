@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 02/10/2021
+ms.date: 02/20/2021
 ms.author: b-juche
-ms.openlocfilehash: 4d992bcc202dc8bdacdda6426371df1adb1ec3e6
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: a18c53d972fbb38dc0b0e557d14b2fbffbff15fa
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100379113"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102174358"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Verwalten von Momentaufnahmen mithilfe von Azure NetApp Files
 
@@ -68,7 +68,7 @@ Die Funktion **Momentaufnahmenrichtlinie** steht derzeit als Vorschau zur Verfü
     ```azurepowershell-interactive
     Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSnapshotPolicy
     ```
-Sie können auch die [Azure CLI-Befehle](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) `az feature register` und `az feature show` verwenden, um das Feature zu registrieren und den Registrierungsstatus anzuzeigen. 
+Sie können auch die [Azure CLI-Befehle](/cli/azure/feature) `az feature register` und `az feature show` verwenden, um das Feature zu registrieren und den Registrierungsstatus anzuzeigen. 
 
 ### <a name="create-a-snapshot-policy"></a>Erstellen einer Momentaufnahmenrichtlinie 
 
@@ -257,6 +257,9 @@ Die Option „Volume wiederherstellen“ finden Sie im Menü „Momentaufnahmen�
 ## <a name="delete-snapshots"></a>Löschen von Momentaufnahmen  
 
 Sie können Momentaufnahmen löschen, die Sie nicht mehr beibehalten müssen. 
+
+> [!IMPORTANT]
+> Das Löschen von Momentaufnahmen kann nicht rückgängig gemacht werden. Eine gelöschte Momentaufnahme kann nicht wiederhergestellt werden. 
 
 1. Rufen Sie das Menü **Momentaufnahmen** eines Volumes auf. Klicken Sie mit der rechten Maustaste auf die zu löschende Momentaufnahme. Klicken Sie auf **Löschen**.
 

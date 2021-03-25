@@ -2,15 +2,15 @@
 title: Häufig gestellte Fragen zu Resource Manager-Vorlagen
 description: Häufig gestellte Fragen (FAQ) zu Azure Resource Manager-Vorlagen (ARM-Vorlagen).
 ms.topic: conceptual
-ms.date: 09/17/2020
+ms.date: 03/03/2021
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 757dfa119649e21c6e1787671afa61ee18184300
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 24baa0dc7444f632040ddaf9fcc2266f9e4ccae5
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97561901"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036139"
 ---
 # <a name="frequently-asked-questions-about-arm-templates"></a>Häufig gestellte Fragen zu Resource Manager-Vorlagen
 
@@ -88,7 +88,7 @@ In diesem Artikel finden Sie Antworten auf häufig gestellte Fragen zu Azure Res
 
 * **Ich habe gehört, dass Sie an einer neuen Vorlagensprache arbeiten. Wo finde ich weitere Informationen?**
 
-  Informationen zum Anzeigen einer Vorschau der neuen Sprache finden Sie im [Repository zu Project Bicep](https://github.com/Azure/bicep). Wenn Sie in Bezug auf die neue Vorlagensprache auf dem Laufenden bleiben möchten, [melden Sie sich für Benachrichtigungen an](https://aka.ms/armLangUpdates).
+  Weitere Informationen zur neuen Sprache finden Sie unter [Was ist Bicep (Vorschau)?](bicep-overview.md).
 
 * **Soll das Erstellen von Vorlagen in YAML unterstützt werden?**
 
@@ -100,7 +100,7 @@ In diesem Artikel finden Sie Antworten auf häufig gestellte Fragen zu Azure Res
 
 * **Werden Sie ein Tool anbieten, um JSON-Vorlagen in die neue Vorlagensprache zu konvertieren?**
 
-  Ja.
+  Ja. Siehe [Dekompilieren von JSON in Bicep](compare-template-syntax.md#decompile-json-to-bicep).
 
 ## <a name="template-specs"></a>Vorlagenspezifikationen
 

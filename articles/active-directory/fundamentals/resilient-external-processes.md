@@ -14,10 +14,10 @@ ms.date: 11/30/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 58ef522f5b048db0ef120625d9e894c8e14c070e
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98724406"
 ---
 # <a name="resilient-interfaces-with-external-processes"></a>Robuste Schnittstellen mit externen Prozessen
@@ -72,5 +72,5 @@ Wenn Sie die RESTful-APIs bereitstellen und das technische RESTful-Profil konfig
   - [Resiliente Endbenutzerumgebung](resilient-end-user-experience.md)
   - [Resilienz durch bewährte Entwicklermethoden](resilience-b2c-developer-best-practices.md)
   - [Resilienz durch Überwachung und Analyse](resilience-with-monitoring-alerting.md)
-- [Erzielen von Resilienz in der Authentifizierungsinfrastruktur](resilience-in-infrastructure.md)
-- [Mehr Resilienz bei Authentifizierung und Autorisierung in Ihren Anwendungen](resilience-app-development-overview.md)
+- [Schaffen von Resilienz für die Authentifizierungsinfrastruktur](resilience-in-infrastructure.md)
+- [Steigern der Resilienz für Authentifizierung und Autorisierung in Ihren Anwendungen](resilience-app-development-overview.md)

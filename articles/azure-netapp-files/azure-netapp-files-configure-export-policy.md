@@ -8,12 +8,12 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: how-to
 ms.date: 07/27/2020
-ms.openlocfilehash: 77630ddcd61d17f3b47e6cb5d43396c1a6f0e904
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: d3f268a4ce2660350055367770e987a06828e2d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94517868"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101740118"
 ---
 # <a name="configure-export-policy-for-an-nfs-volume"></a>Konfigurieren der Exportrichtlinie für ein NFS-Volume
 
@@ -40,7 +40,7 @@ Sie können bis zu fünf Exportrichtlinienregeln erstellen.
       * Lesen/Schreiben
       * Nur Leseberechtigung
 
-    * **Nur Leseberechtigung** und **Lesen/Schreiben**: Wenn Sie die Kerberos-Verschlüsselung mit NFSv4.1 verwenden, befolgen Sie die Anweisungen unter [Konfigurieren der NFSv4.1-Kerberos-Verschlüsselung](configure-kerberos-encryption.md).  Informationen zu den Leistungsauswirkungen von Kerberos finden Sie unter [Leistungsauswirkungen von Kerberos auf NFSv4.1](configure-kerberos-encryption.md#kerberos_performance). 
+    * **Nur Leseberechtigung** und **Lesen/Schreiben**: Wenn Sie die Kerberos-Verschlüsselung mit NFSv4.1 verwenden, befolgen Sie die Anweisungen unter [Konfigurieren der NFSv4.1-Kerberos-Verschlüsselung](configure-kerberos-encryption.md).  Informationen zu den Leistungsauswirkungen von Kerberos finden Sie unter [Leistungsauswirkungen von Kerberos auf NFSv4.1-Volumes](performance-impact-kerberos.md). 
 
       ![Kerberos-Sicherheitsoptionen](../media/azure-netapp-files/kerberos-security-options.png) 
 

@@ -11,10 +11,10 @@ ms.workload: identity
 ms.date: 01/19/2021
 ms.author: chmutali
 ms.openlocfilehash: a39f7701d0244eff7f914908a6708dfc14873b35
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98954854"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-azure-ad-user-provisioning"></a>Tutorial: Konfigurieren der Benutzerbereitstellung von SAP SuccessFactors zu Azure AD
@@ -107,7 +107,7 @@ Wenden Sie sich an das Administratorteam von SuccessFactors oder Ihren Implement
     > [!div class="mx-imgBorder"]
     > ![Lese-/Schreibberechtigungen](./media/sap-successfactors-inbound-provisioning/odata-read-write-perm.png)
 
-1. Navigieren Sie im gleichen Feld für die Berechtigungen zu **Benutzerberechtigungen > Mitarbeiterdaten**, und überprüfen Sie die Attribute, die das Dienstkonto aus dem SuccessFactors-Mandanten lesen kann. Wenn Sie beispielsweise das Attribut *Username* aus SuccessFactors abrufen möchten, vergewissern Sie sich, dass für dieses Attribut die Anzeigeberechtigung erteilt wurde. Überprüfen Sie analog dazu jedes Attribut auf die Anzeigeberechtigung. 
+1. Navigieren Sie in demselben Feld für die Berechtigungen zu **Benutzerberechtigungen > Mitarbeiterdaten**, und überprüfen Sie die Attribute, die das Dienstkonto aus dem SuccessFactors-Mandanten lesen kann. Wenn Sie beispielsweise das Attribut *Username* aus SuccessFactors abrufen möchten, sollten Sie sich vergewissern, dass für dieses Attribut die Anzeigeberechtigung erteilt wurde. Überprüfen Sie analog dazu jedes Attribut auf die Anzeigeberechtigung. 
 
     > [!div class="mx-imgBorder"]
     > ![Berechtigungen für Mitarbeiterdaten](./media/sap-successfactors-inbound-provisioning/review-employee-data-permissions.png)

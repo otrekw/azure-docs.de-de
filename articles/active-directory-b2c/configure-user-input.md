@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/10/2020
+ms.date: 03/10/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: eb7cba1de280793a1ca98687c71355c1ea702d4c
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 4e709719d56aacacf61e247a5dbe215f766a891a
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97585223"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102607950"
 ---
 #  <a name="add-user-attributes-and-customize-user-input-in-azure-active-directory-b2c"></a>Hinzufügen von Benutzerattributen und Anpassen der Benutzereingabe in Azure Active Directory B2C
 
@@ -156,16 +156,22 @@ Ein Anspruch stellt eine temporäre Speicherung von Daten während der Ausführu
 1. Fügen Sie dem Element **ClaimsSchema-** Element den Anspruch „Ort“ hinzu.  
 
 ```xml
-<ClaimType Id="city">
-  <DisplayName>City where you work</DisplayName>
-  <DataType>string</DataType>
-  <UserInputType>DropdownSingleSelect</UserInputType>
-  <Restriction>
-    <Enumeration Text="Bellevue" Value="bellevue" SelectByDefault="false" />
-    <Enumeration Text="Redmond" Value="redmond" SelectByDefault="false" />
-    <Enumeration Text="Kirkland" Value="kirkland" SelectByDefault="false" />
-  </Restriction>
-</ClaimType>
+<!-- 
+<BuildingBlocks>
+  <ClaimsSchema> -->
+    <ClaimType Id="city">
+      <DisplayName>City where you work</DisplayName>
+      <DataType>string</DataType>
+      <UserInputType>DropdownSingleSelect</UserInputType>
+      <Restriction>
+        <Enumeration Text="Bellevue" Value="bellevue" SelectByDefault="false" />
+        <Enumeration Text="Redmond" Value="redmond" SelectByDefault="false" />
+        <Enumeration Text="Kirkland" Value="kirkland" SelectByDefault="false" />
+      </Restriction>
+    </ClaimType>
+  <!-- 
+  </ClaimsSchema>
+</BuildingBlocks>-->
 ```
 
 ## <a name="add-a-claim-to-the-user-interface"></a>Hinzufügen eines Anspruchs zur Benutzeroberfläche
@@ -198,7 +204,7 @@ Um den Anspruch „Ort“ bei der Registrierung zu sammeln, muss er dem technisc
 </ClaimsProvider>
 ```
 
-Zum Sammeln des Anspruchs „Ort“ nach der erstmaligen Anmeldung mit einem Verbundkonto muss er dem technischen Profil `SelfAsserted-Social` als Ausgabeanspruch hinzugefügt werden. Damit Benutzer von lokalen und Verbundkonten Ihre Profildaten später bearbeiten können, fügen Sie den Ausgabeanspruch dem technischen Profil `SelfAsserted-ProfileUpdate` hinzu. Überschreiben Sie diese technischen Profile in der Erweiterungsdatei. Geben Sie die gesamte Liste von Ausgabeansprüchen an, um die Reihenfolge zu steuern, in der die Ansprüche auf dem Bildschirm angezeigt werden. Suchen Sie nach dem Element **ClaimsProviders**. Fügen Sie ein neues Element „ClaimsProvider“ wie folgt hinzu:
+Zum Sammeln des Anspruchs „Ort“ nach der erstmaligen Anmeldung mit einem Verbundkonto muss er dem technischen Profil `SelfAsserted-Social` als Ausgabeanspruch hinzugefügt werden. Damit Benutzer von lokalen Konten und Verbundkonten ihre Profildaten später bearbeiten können, fügen Sie den Eingabe- und Ausgabeanspruch dem technischen Profil `SelfAsserted-ProfileUpdate` hinzu. Überschreiben Sie diese technischen Profile in der Erweiterungsdatei. Geben Sie die gesamte Liste von Ausgabeansprüchen an, um die Reihenfolge zu steuern, in der die Ansprüche auf dem Bildschirm angezeigt werden. Suchen Sie nach dem Element **ClaimsProviders**. Fügen Sie ein neues Element „ClaimsProvider“ wie folgt hinzu:
 
 ```xml
 <ClaimsProvider>
@@ -206,6 +212,9 @@ Zum Sammeln des Anspruchs „Ort“ nach der erstmaligen Anmeldung mit einem Ver
   <TechnicalProfiles>
     <!--Federated account first-time sign-in page-->
     <TechnicalProfile Id="SelfAsserted-Social">
+      <InputClaims>
+        <InputClaim ClaimTypeReferenceId="city" />
+      </InputClaims>
       <OutputClaims>
         <OutputClaim ClaimTypeReferenceId="displayName"/>
         <OutputClaim ClaimTypeReferenceId="givenName"/>
@@ -215,6 +224,9 @@ Zum Sammeln des Anspruchs „Ort“ nach der erstmaligen Anmeldung mit einem Ver
     </TechnicalProfile>
     <!--Edit profile page-->
     <TechnicalProfile Id="SelfAsserted-ProfileUpdate">
+      <InputClaims>
+        <InputClaim ClaimTypeReferenceId="city" />
+      </InputClaims>
       <OutputClaims>
         <OutputClaim ClaimTypeReferenceId="displayName"/>
         <OutputClaim ClaimTypeReferenceId="givenName" />
@@ -255,14 +267,20 @@ Verwenden Sie `PersistedClaims`, um Daten in das Benutzerprofil zu schreiben und
         <PersistedClaim ClaimTypeReferenceId="city"/>
       </PersistedClaims>
     </TechnicalProfile>
-    <!-- Read data after user authenticates with a local account. -->
+    <!-- Read data after user resets the password. -->
     <TechnicalProfile Id="AAD-UserReadUsingEmailAddress">
       <OutputClaims>  
         <OutputClaim ClaimTypeReferenceId="city" />
       </OutputClaims>
     </TechnicalProfile>
-    <!-- Read data after user authenticates with a federated account. -->
+    <!-- Read data after user authenticates with a local account. -->
     <TechnicalProfile Id="AAD-UserReadUsingObjectId">
+      <OutputClaims>  
+        <OutputClaim ClaimTypeReferenceId="city" />
+      </OutputClaims>
+    </TechnicalProfile>
+    <!-- Read data after user authenticates with a federated account. -->
+    <TechnicalProfile Id="AAD-UserReadUsingAlternativeSecurityId">
       <OutputClaims>  
         <OutputClaim ClaimTypeReferenceId="city" />
       </OutputClaims>

@@ -1,20 +1,24 @@
 ---
 title: Unterstützte Regionen für einen verknüpften Log Analytics-Arbeitsbereich
 description: In diesem Artikel werden die unterstützten Regionszuordnungen zwischen einem Automation-Konto und einem Log Analytics-Arbeitsbereich im Zusammenhang mit bestimmten Features von Azure Automation beschrieben.
-ms.date: 01/21/2021
+ms.date: 02/17/2021
 services: automation
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: 3b744127b51b0e0db63c158feaf463af4cd0bdcf
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 0599dcb57b46d1e48b4035acac8b64edbbe06912
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98704320"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101720170"
 ---
 # <a name="supported-regions-for-linked-log-analytics-workspace"></a>Unterstützte Regionen für einen verknüpften Log Analytics-Arbeitsbereich
 
 In Azure Automation können Sie die Features „Updateverwaltung“, „Änderungsnachverfolgung und Bestand“ und „VMs außerhalb der Geschäftszeiten starten/beenden“ für Ihre Server und virtuellen Computer aktivieren. Diese Features hängen von einem Log Analytics-Arbeitsbereich ab und erfordern daher die Verknüpfung des Arbeitsbereichs mit einem Automation-Konto. Allerdings wird nur die Verknüpfung bestimmter Regionen unterstützt. Im Allgemeinen ist die Zuordnung *nicht* anwendbar, wenn Sie planen, ein Automation-Konto mit einem Arbeitsbereich zu verknüpfen, in dem diese Features nicht aktiviert sind.
+
+Die hier behandelten Zuordnungen gelten nur für das Verknüpfen des Log Analytics-Arbeitsbereichs mit einem Automation-Konto. Sie gelten nicht für virtuelle Computer (Virtual Machines, VMs), die mit dem Arbeitsbereich verbunden sind, der mit dem Automation-Konto verknüpft ist. Diese virtuellen Computer sind nicht auf die von einem bestimmten Log Analytics-Arbeitsbereich unterstützten Regionen beschränkt. Sie können sich in einer beliebigen Region befinden. Beachten Sie, dass es Folgen für die Einhaltung gesetzlicher Anforderungen auf staatlicher, lokaler und Landesebene oder der Complianceanforderungen Ihres Unternehmens haben kann, wenn sich VMs in einer anderen Region befinden. Bei Verwendung von VMs in einer anderen Region können außerdem Gebühren für die Datenbandbreite anfallen.
+
+Bevor Sie VMs mit einem Arbeitsbereich in einer anderen Region verbinden, sollten Sie die Anforderungen und potenziellen Kosten überprüfen, um die Auswirkungen auf die Einhaltung gesetzlicher Anforderungen und die Kosten zu ermitteln und anzuerkennen.
 
 Dieser Artikel enthält die unterstützten Zuordnungen, um diese Features in Ihrem Automation-Konto erfolgreich zu aktivieren und mithilfe dieser Features zu verwenden.
 

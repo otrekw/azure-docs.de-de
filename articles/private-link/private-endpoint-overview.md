@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
 ms.openlocfilehash: 79d21549e7234e4ee342776466f8d3d8ced5f08c
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102508808"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Was ist privater Endpunkt in Azure?
@@ -22,7 +22,7 @@ Ein privater Endpunkt in Azure ist eine Netzwerkschnittstelle, die Sie privat un
  Für einen privaten Endpunkt werden die folgenden Eigenschaften angegeben: 
 
 
-|Eigenschaft  |Beschreibung |
+|Eigenschaft  |BESCHREIBUNG |
 |---------|---------|
 |Name    |    Ein eindeutiger Name innerhalb der Ressourcengruppe.      |
 |Subnet    |  Das Subnetz, dem private IP-Adressen aus einem virtuellen Netzwerk bereitgestellt und zugeordnet werden. Anforderungen an das Subnetz finden Sie im Abschnitt „Einschränkungen“ in diesem Artikel.         |

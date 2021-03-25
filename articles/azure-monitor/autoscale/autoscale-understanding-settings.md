@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 12/18/2017
 ms.subservice: autoscale
 ms.openlocfilehash: a914f6d71c013acea8dfde0f6578985bc009bb26
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100601723"
 ---
 # <a name="understand-autoscale-settings"></a>Grundlegendes zu Einstellungen für die automatische Skalierung
@@ -92,11 +92,11 @@ Zur Veranschaulichung des Schemas der Einstellung für die automatische Skalieru
 | Einstellung | location | Der Speicherort der Einstellung für die automatische Skalierung. Dieser Speicherort kann sich vom Speicherort der zu skalierenden Ressource unterscheiden. |
 | properties | targetResourceUri | Die Ressourcen-ID der zu skalierenden Ressource. Sie können pro Ressource nur eine Einstellung für die automatische Skalierung verwenden. |
 | properties | profiles | Eine Einstellung für die automatische Skalierung besteht aus einem oder mehreren Profilen. Bei jeder Ausführung des Moduls für die automatische Skalierung wird ein Profil ausgeführt. |
-| Profil | name | Der Name des Profils. Sie können einen beliebigen Namen wählen, der Ihnen die Identifizierung des Profils erleichtert. |
-| Profil | Capacity.maximum | Die maximal zulässige Kapazität. Hiermit wird sichergestellt, dass bei der automatischen Skalierung während der Ausführung dieses Profils für Ihre Ressourcen keine Skalierung über diesen Wert hinaus durchgeführt wird. |
-| Profil | Capacity.minimum | Die zulässige Mindestkapazität. Hiermit wird sichergestellt, dass bei der automatischen Skalierung während der Ausführung dieses Profils für Ihre Ressourcen keine Skalierung durchgeführt wird, die zu einer niedrigeren Kapazität führt. |
-| Profil | Capacity.default | Falls ein Problem beim Lesen der Ressourcenmetriken vorliegt (hier die CPU von „vmss1“) und die aktuelle Kapazität unterhalb der Standardkapazität liegt, wird von der automatischen Skalierung das horizontale Hochskalieren auf den Standardwert durchgeführt. Dadurch wird die Verfügbarkeit der Ressource sichergestellt. Wenn die aktuelle Kapazität bereits über der Standardkapazität liegt, wird die automatische Skalierung nicht horizontal herunterskaliert. |
-| Profil | rules | Die automatische Skalierung skaliert automatisch zwischen der maximalen und minimalen Kapazität, indem die Regeln im Profil verwendet werden. Sie können in einem Profil mehrere Regeln nutzen. Normalerweise gibt es zwei Regeln: eine zum Ermitteln des Zeitpunkts für das horizontale Hochskalieren und die andere zum Ermitteln des Zeitpunkts für das horizontale Herunterskalieren. |
+| profile | name | Der Name des Profils. Sie können einen beliebigen Namen wählen, der Ihnen die Identifizierung des Profils erleichtert. |
+| profile | Capacity.maximum | Die maximal zulässige Kapazität. Hiermit wird sichergestellt, dass bei der automatischen Skalierung während der Ausführung dieses Profils für Ihre Ressourcen keine Skalierung über diesen Wert hinaus durchgeführt wird. |
+| profile | Capacity.minimum | Die zulässige Mindestkapazität. Hiermit wird sichergestellt, dass bei der automatischen Skalierung während der Ausführung dieses Profils für Ihre Ressourcen keine Skalierung durchgeführt wird, die zu einer niedrigeren Kapazität führt. |
+| profile | Capacity.default | Falls ein Problem beim Lesen der Ressourcenmetriken vorliegt (hier die CPU von „vmss1“) und die aktuelle Kapazität unterhalb der Standardkapazität liegt, wird von der automatischen Skalierung das horizontale Hochskalieren auf den Standardwert durchgeführt. Dadurch wird die Verfügbarkeit der Ressource sichergestellt. Wenn die aktuelle Kapazität bereits über der Standardkapazität liegt, wird die automatische Skalierung nicht horizontal herunterskaliert. |
+| profile | rules | Die automatische Skalierung skaliert automatisch zwischen der maximalen und minimalen Kapazität, indem die Regeln im Profil verwendet werden. Sie können in einem Profil mehrere Regeln nutzen. Normalerweise gibt es zwei Regeln: eine zum Ermitteln des Zeitpunkts für das horizontale Hochskalieren und die andere zum Ermitteln des Zeitpunkts für das horizontale Herunterskalieren. |
 | rule | metricTrigger | Definiert die Metrikbedingung der Regel. |
 | metricTrigger | metricName | Der Name der Metrik. |
 | metricTrigger |  metricResourceUri | Die Ressourcen-ID der Ressource, von der die Metrik ausgegeben wird. Meistens ist dies auch die zu skalierende Ressource. In einigen Fällen kann es sich auch um eine andere Ressource handeln. Sie können beispielsweise eine VM-Skalierungsgruppe basierend auf der Anzahl von Nachrichten in einer Speicherwarteschlange skalieren. |

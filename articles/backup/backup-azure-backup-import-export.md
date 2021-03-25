@@ -5,10 +5,10 @@ ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 05/17/2018
 ms.openlocfilehash: 3ea470c2e732b7e0ef46e9e5fa78c744aa30c955
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98704362"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Workflow zur Offlinesicherung in Azure Backup
@@ -148,7 +148,7 @@ Das Hilfsprogramm *AzureOfflineBackupDiskPrep* bereitet die SATA-Laufwerke vor, 
 
     ![Azure-Abonnementanmeldung](./media/backup-azure-backup-import-export/signindiskprep.png) <br/>
 
-    Das Tool beginnt dann, den Datenträger vorzubereiten und die Sicherungsdaten zu kopieren. Falls auf dem bereitgestellten Datenträger nicht genügend Speicherplatz für die Sicherungsdaten verfügbar ist, müssen Sie nach einer entsprechenden Aufforderung durch das Tool ggf. weitere Datenträger anfügen. <br/>
+    Das Tool beginnt dann, den Datenträger vorzubereiten und die Sicherungsdaten zu kopieren. Falls auf dem bereitgestellten Datenträger nicht genügend Speicherplatz für die Sicherungsdaten verfügbar ist, müssen Sie ggf. weitere Datenträger anfügen, wenn Sie vom Tool dazu aufgefordert werden. <br/>
 
     Nach erfolgreicher Ausführung des Tools gibt die Befehlszeile drei Informationen zurück:
 

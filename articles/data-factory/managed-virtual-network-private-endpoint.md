@@ -9,12 +9,12 @@ ms.custom:
 - seo-lt-2019
 - references_regions
 ms.date: 07/15/2020
-ms.openlocfilehash: d950b05dd34788c2c5ef0b34b8ec8ac0b20ad4b6
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: b6000d8ff3eb35d678a94adc021efcadf8a77f81
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100379572"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101699629"
 ---
 # <a name="azure-data-factory-managed-virtual-network-preview"></a>Verwaltetes virtuelles Netzwerk in Azure Data Factory (Vorschauversion)
 
@@ -113,6 +113,8 @@ Die nachstehenden Datenquellen werden für eine Verbindung über einen privaten 
 ### <a name="linked-service-creation-of-azure-key-vault"></a>Erstellung eines verknüpften Diensts von Azure Key Vault 
 - Wenn Sie einen verknüpften Dienst für Azure Key Vault erstellen, gibt es keinen Verweis auf Azure Integration Runtime. Daher können Sie während der Erstellung eines verknüpften Diensts von Azure Key Vault keinen privaten Endpunkt erstellen. Wenn Sie jedoch einen verknüpften Dienst für Datenspeicher erstellen, der auf den verknüpften Dienst von Azure Key Vault verweist, und dieser verknüpfte Dienst auf Azure Integration Runtime mit aktiviertem verwalteten virtuellen Netzwerk verweist, können Sie während der Erstellung einen privaten Endpunkt für den verknüpften Dienst von Azure Key Vault erstellen. 
 - Bei dem Vorgang **Verbindung testen** für den verknüpften Dienst von Azure Key Vault wird nur das URL-Format überprüft. Es werden dabei jedoch keine Netzwerkvorgänge ausgeführt.
+- Die Spalte **Privater Endpunkt wird verwendet** ist immer leer, selbst wenn Sie einen privaten Endpunkt für Azure Key Vault erstellen.
+![Privater Endpunkt für Azure Key Vault](./media/managed-vnet/akv-pe.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

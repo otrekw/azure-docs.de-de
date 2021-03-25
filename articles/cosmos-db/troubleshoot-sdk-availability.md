@@ -3,17 +3,17 @@ title: Diagnostizieren und Beheben von Problemen bei der Verfügbarkeit von Azur
 description: Informationen über das Verfügbarkeitsverhalten von Azure Cosmos DB-SDKs in Umgebungen mit mehreren Regionen
 author: ealsur
 ms.service: cosmos-db
-ms.date: 02/16/2021
+ms.date: 02/18/2021
 ms.author: maquaran
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 34c6e7ad8473f02f2772c84ea63aee2a41b97306
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 0720eb01920e39a9bee27e4d00d97acba55b0ad5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100559685"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "101661425"
 ---
 # <a name="diagnose-and-troubleshoot-the-availability-of-azure-cosmos-sdks-in-multiregional-environments"></a>Diagnostizieren und Beheben von Problemen bei der Verfügbarkeit von Azure Cosmos DB-SDKs in Umgebungen mit mehreren Regionen
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -44,6 +44,16 @@ Wenn Sie **keine bevorzugte Region festlegen**, wird der SDK-Client standardmä�
 
 > [!NOTE]
 > „Primäre Region“ bezeichnet die erste Region in der [Regionenliste für Azure Cosmos-Konten](distribute-data-globally.md).
+> Wenn die als regionale Einstellung angegebenen Werte nicht mit den vorhandenen Azure-Regionen identisch sind, werden sie ignoriert. Wenn sie mit einer vorhandenen Region übereinstimmen, das Konto jedoch nicht in ihr repliziert wird, stellt der Client eine Verbindung mit der nächsten übereinstimmenden bevorzugten Region oder mit der primären Region her.
+
+> [!WARNING]
+> Die in diesem Dokument beschriebene Failover- und Verfügbarkeitslogik kann in der Clientkonfiguration deaktiviert werden. Dies ist nur empfehlenswert, wenn die Benutzeranwendung Verfügbarkeitsfehler selbst behandelt. Dies lässt sich wie folgt erreichen:
+>
+> * Festlegen der [ConnectionPolicy.EnableEndpointRediscovery](/dotnet/api/microsoft.azure.documents.client.connectionpolicy.enableendpointdiscovery)-Eigenschaft im .NET V2 SDK auf „false“.
+> * Festlegen der [CosmosClientOptions.LimitToEndpoint](/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.limittoendpoint)-Eigenschaft im .NET V3 SDK auf „true“.
+> * Festlegen der [CosmosClientBuilder.endpointDiscoveryEnabled](/java/api/com.azure.cosmos.cosmosclientbuilder.endpointdiscoveryenabled)-Methode im Java V4 SDK auf „false“.
+> * Festlegen des [CosmosClient.enable_endpoint_discovery](/python/api/azure-cosmos/azure.cosmos.cosmos_client.cosmosclient)-Parameters im Python SDK auf „false“.
+> * Festlegen des [CosmosClientOptions.ConnectionPolicy.enableEndpointDiscovery](/javascript/api/@azure/cosmos/connectionpolicy#enableEndpointDiscovery)-Parameters im JavaScript SDK auf „false“.
 
 Unter normalen Umständen stellt der SDK-Client eine Verbindung mit der bevorzugten Region (sofern eine diese festgelegt ist) oder der primären Region (wenn keine bevorzugte Region festgelegt ist) her, und die Vorgänge werden außer in den folgenden Szenarien auf diese Region beschränkt.
 
@@ -59,7 +69,7 @@ Detaillierte und umfassende Informationen zu SLA-Garantien während dieser Ereig
 
 ## <a name="removing-a-region-from-the-account"></a><a id="remove-region"></a>Entfernen einer Region aus dem Konto
 
-Wenn Sie eine Region aus einem Azure Cosmos DB-Konto entfernen, erkennt jeder SDK-Client, der das Konto aktiv verwendet, das Entfernen der Region über einen Back-End-Antwortcode. Der Client markiert dann den regionalen Endpunkt als nicht verfügbar. Der Client versucht, den aktuellen Vorgang zu wiederholen, und alle zukünftigen Vorgänge werden stets nach der Reihenfolge der Bevorzugung an die nächste Region weitergeleitet.
+Wenn Sie eine Region aus einem Azure Cosmos DB-Konto entfernen, erkennt jeder SDK-Client, der das Konto aktiv verwendet, das Entfernen der Region über einen Back-End-Antwortcode. Der Client markiert dann den regionalen Endpunkt als nicht verfügbar. Der Client versucht, den aktuellen Vorgang zu wiederholen, und alle zukünftigen Vorgänge werden stets nach der Reihenfolge der Bevorzugung an die nächste Region weitergeleitet. Wenn die Einstellungsliste nur einen Eintrag enthielt (oder leer war), für das Konto jedoch andere Regionen verfügbar sind, werden die Vorgänge an die nächste Region in der Liste der Konten weitergeleitet.
 
 ## <a name="adding-a-region-to-an-account"></a>Hinzufügen einer Region zu einem Konto
 

@@ -13,10 +13,10 @@ ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18, devx-track-csharp
 ms.openlocfilehash: 19febc833f087afdfecde3274a1044598d082521
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98955308"
 ---
 # <a name="filtering-ordering-and-paging-of-media-services-entities"></a>Filtern, Sortieren und Paginieren von Media Services-Entitäten
@@ -173,7 +173,7 @@ Die folgende Tabelle zeigt, wie Sie die Filter- und Sortieroptionen auf verschie
 ||properties.created      | `gt`, `ge`, `lt`, `le`| `asc` und `desc`|
 ||properties.lastModified | `gt`, `ge`, `lt`, `le` | `asc` und `desc`| 
 |[Streaminglocators](/rest/api/media/streaminglocators)|name|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` und `desc`|
-||properties.created    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` und `desc`|
+||properties.created    |`eq`, `ne`, `ge`, `le`,  `gt`, `lt`|`asc` und `desc`|
 ||properties.endTime    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` und `desc`|
 |[Streamingrichtlinien](/rest/api/media/streamingpolicies)|name|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` und `desc`|
 ||properties.created    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` und `desc`|

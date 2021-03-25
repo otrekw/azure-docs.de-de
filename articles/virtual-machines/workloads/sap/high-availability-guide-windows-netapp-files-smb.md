@@ -13,14 +13,14 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/12/2020
+ms.date: 02/18/2021
 ms.author: radeltch
-ms.openlocfilehash: e8d58a74f9ce8489465934398014dd4af3309a9e
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: a4c4631a0a1263e5a5398c44a8570f92571102e8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101669830"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102045835"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-windows-with-azure-netapp-filessmb-for-sap-applications"></a>Hochverfügbarkeit von SAP NetWeaver auf virtuellen Azure-Computern unter Windows mit Azure NetApp Files (SMB) für SAP-Anwendungen
 
@@ -82,6 +82,9 @@ Lesen Sie zuerst die folgenden SAP-Hinweise und -Dokumente:
 * [Installieren einer (A)SCS-Instanz auf einem Failovercluster](https://www.sap.com/documents/2017/07/f453332f-c97c-0010-82c7-eda71af511fa.html)
 * [Erstellen eines SMB-Volumes für Azure NetApp Files](../../../azure-netapp-files/create-active-directory-connections.md#requirements-for-active-directory-connections)
 * [NetApp-SAP-Anwendungen in Microsoft Azure mithilfe von Azure NetApp Files][anf-sap-applications-azure]
+
+> [!IMPORTANT]
+> Vorsicht: Beachten Sie, dass bei der Installation eines SAP-Systems mit SWPM auf einer SMB-Freigabe, das auf einem SMB-Volume für [Azure NetApp Files][anf-azure-doc] gehostet wird, möglicherweise ein Installationsfehler aufgrund unzureichender Berechtigungen (Warnung zu nicht definierter Berechtigung) auftritt. Um den Fehler zu vermeiden, benötigt der Benutzer, unter dessen Kontext SWPM ausgeführt wird, bei der Installation des SAP-Systems Domänenadministratorrechte.  
 
 ## <a name="overview"></a>Übersicht
 

@@ -3,14 +3,15 @@ title: 'Apache Hadoop-Komponenten und -Versionen: Azure HDInsight 3.6'
 description: Lernen Sie die Apache Hadoop-Komponenten und -Versionen in Azure HDInsight 3.6 kennen.
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: deshriva
+author: deshriva
+ms.author: deshriva
 ms.date: 02/08/2021
-ms.openlocfilehash: ee4ae5e0b92fb0627143f2d2f998747f7e956b6d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0180f94109d01443390da363d9e09c5ad0b26d18
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101743314"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103496115"
 ---
 # <a name="hdinsight-36-component-versions"></a>HDInsight 3.6-Komponentenversionen
 
