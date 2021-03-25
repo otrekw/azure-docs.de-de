@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 376cece922ca424ec78011224852b1fa5499da16
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88934836"
 ---
 # <a name="odata-geo-spatial-functions-in-azure-cognitive-search---geodistance-and-geointersects"></a>OData-Geofunktionen in Azure Cognitive Search – `geo.distance` und `geo.intersects`
@@ -101,7 +101,7 @@ Wie alle anderen Nicht-Sammlungsfelder in Azure Cognitive Search können Felder 
 
 ## <a name="examples"></a>Beispiele
 
-### <a name="filter-examples"></a>Beispiele für Filter
+### <a name="filter-examples"></a>Filterbeispiele
 
 Suche nach allen Hotels in einem Umkreis von 10 Kilometern von einem angegebenen Referenzpunkt (wobei „location“ ein Feld vom Typ `Edm.GeographyPoint` ist):
 

@@ -4,10 +4,10 @@ description: Erfahren Sie, wie Sie mit der Azure VMware Solution-Konsole NSX-T-N
 ms.topic: how-to
 ms.date: 02/16/2021
 ms.openlocfilehash: 0478582a9bc4fb77a1784c27ec4f5c302d6b89fc
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101716920"
 ---
 # <a name="configure-nsx-network-components-in-azure-vmware-solution"></a>Konfigurieren von NSX-Netzwerkkomponenten in Azure VMware Solution

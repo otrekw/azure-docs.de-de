@@ -9,10 +9,10 @@ ms.date: 10/10/2016
 ms.author: duau
 ms.custom: seodec18
 ms.openlocfilehash: 09fee610ccc15874481ecfd4693e4b89379caa7a
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92330035"
 ---
 # <a name="expressroute-for-cloud-solution-providers-csp"></a>ExpressRoute für Cloudlösungsanbieter (Cloud Solution Providers, CSPs)
@@ -31,7 +31,7 @@ Microsoft Azure stellt eine immer größere Anzahl von Diensten bereit, die Sie 
 Microsoft stellt CSPs APIs zur Verfügung, die sich programmgesteuert in Ihre eigenen Dienstverwaltungssysteme integrieren lassen und so die Verwaltung der Azure-Kundenabonnements ermöglichen. Die unterstützten Verwaltungsfunktionen finden Sie [hier](/previous-versions/windows/mt844538(v=win.10)).
 
 ## <a name="microsoft-azure-resource-management"></a>Verwaltung von Microsoft Azure-Ressourcen
-Die Verwaltung des Abonnements wird durch den Vertrag geregelt, den Sie mit Ihrem Kunden geschlossen haben. Der Cloud-Lösungsanbieter kann die Erstellung und Verwaltung von Ressourcen direkt verwalten, oder der Kunde kann die Kontrolle über das Microsoft Azure-Abonnement erhalten und die Azure-Ressourcen nach Bedarf erstellen. Wenn der Kunde die Erstellung von Ressourcen unter seinem Microsoft Azure-Abonnement selbst verwaltet, verwendet er eines von zwei Modellen: „ *Durchleitungsmodell* “ oder „ *Direktverbindungsmodell* “. Diese Modelle werden im Anschluss ausführlich beschrieben.  
+Die Verwaltung des Abonnements wird durch den Vertrag geregelt, den Sie mit Ihrem Kunden geschlossen haben. Der Cloud-Lösungsanbieter kann die Erstellung und Verwaltung von Ressourcen direkt verwalten, oder der Kunde kann die Kontrolle über das Microsoft Azure-Abonnement erhalten und die Azure-Ressourcen nach Bedarf erstellen. Wenn der Kunde die Erstellung von Ressourcen unter seinem Microsoft Azure-Abonnement selbst verwaltet, verwendet er eines von zwei Modellen: „*Durchleitungsmodell*“ oder „*Direktverbindungsmodell*“. Diese Modelle werden im Anschluss ausführlich beschrieben.  
 
 ### <a name="connect-through-model"></a>Durchleitungsmodell
 ![Abbildung des Durchleitungsmodells](./media/expressroute-for-cloud-solution-providers/connect-through.png)  
@@ -120,7 +120,7 @@ Je nach verwendetem Modell (Direktverbindung oder Durchleitung) definiert Ihr Ku
 1. **Kundenisolation** : Die Azure-Plattform sorgt für Kundenisolation, indem Kunden-ID und Informationen zum virtuellen Netzwerk in einer sicheren Datenbank gespeichert und zur Kapselung des jeweiligen Datenverkehrs eines Kunden in einem GRE-Tunnel verwendet werden.
 2. **Netzwerksicherheitsgruppen-Regeln** dienen zum Definieren des zulässigen ein- und ausgehenden Datenverkehrs für die Subnetze innerhalb virtueller Azure-Netzwerke. Standardmäßig enthält die NSG Blockierungsregeln, die Datenverkehr zwischen dem Internet und dem VNET blockieren, und Zulassungsregeln für Datenverkehr innerhalb eines VNETs. Weitere Informationen zu Netzwerksicherheitsgruppen finden Sie [hier](https://azure.microsoft.com/blog/network-security-groups/).
 3. **Tunnelerzwingung** : Dient dazu, für das Internet bestimmten Datenverkehr aus Azure über die ExpressRoute-Verbindung an das lokale Datencenter umzuleiten. Weitere Informationen zur Tunnelerzwingung finden Sie [hier](expressroute-routing.md#advertising-default-routes).  
-4. **Verschlüsselung** : ExpressRoute-Verbindungen werden zwar nur für einen bestimmten Kunden verwendet, aber es besteht die Möglichkeit, dass die Sicherheitsmaßnahmen des Netzwerkanbieters überwunden werden, sodass ein Eindringling Zugang zum Paketdatenverkehr erhält. Als Gegenmaßnahme kann ein Kunde oder CSP den über die Verbindung abgewickelten Datenverkehr durch Definieren von IPSec-Tunnelmodusrichtlinien für den gesamten Datenverkehr zwischen den lokalen Ressourcen und Azure verschlüsseln. Weitere Informationen finden Sie weiter oben in Abbildung 5 (ExpressRoute-Sicherheit; optionaler IPSec-Tunnelmodus für Kunde 1). Alternativ kann an jedem Endpunkt der ExpressRoute-Verbindung ein Firewallgerät verwendet werden. Hierzu müssen zur Verschlüsselung des Datenverkehrs über die ExpressRoute-Verbindung an beiden Enden zusätzliche Firewall-VMs/-Appliances von Drittanbietern installiert werden.
+4. **Verschlüsselung**: ExpressRoute-Verbindungen werden zwar nur für einen bestimmten Kunden verwendet, aber es besteht die Möglichkeit, dass die Sicherheitsmaßnahmen des Netzwerkanbieters überwunden werden, sodass ein Eindringling Zugang zum Paketdatenverkehr erhält. Als Gegenmaßnahme kann ein Kunde oder CSP den über die Verbindung abgewickelten Datenverkehr durch Definieren von IPSec-Tunnelmodusrichtlinien für den gesamten Datenverkehr zwischen den lokalen Ressourcen und Azure verschlüsseln. Weitere Informationen finden Sie weiter oben in Abbildung 5 (ExpressRoute-Sicherheit; optionaler IPSec-Tunnelmodus für Kunde 1). Alternativ kann an jedem Endpunkt der ExpressRoute-Verbindung ein Firewallgerät verwendet werden. Hierzu müssen zur Verschlüsselung des Datenverkehrs über die ExpressRoute-Verbindung an beiden Enden zusätzliche Firewall-VMs/-Appliances von Drittanbietern installiert werden.
 
 ![alt text](./media/expressroute-for-cloud-solution-providers/expressroute-security.png)  
 

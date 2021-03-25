@@ -8,10 +8,10 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: f3686a22291e8595deabe3e207ce66744c3cdd82
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100376903"
 ---
 # <a name="copy-or-move-data-easily-with-azure-data-factory-copy-wizard"></a>Einfaches Kopieren oder Verschieben von Daten mit dem Kopier-Assistenten von Azure Data Factory
@@ -33,7 +33,7 @@ Mit diesem Assistenten können Sie problemlos Daten in wenigen Minuten aus einer
 > 
 > 
 
-Der Assistent ist von Beginn an für Big Data ausgelegt. Mit dem Assistenten zum Kopieren von Daten ist es einfach und effizient, Data Factory-Pipelines zu erstellen, die Hunderte von Ordnern, Dateien oder Tabellen verschieben können. Der Assistent unterstützt die folgenden drei Funktionen: Automatische Datenvorschau, Schemaerfassung und -zuordnung und Datenfilterung. 
+Der Assistent ist von Beginn an für Big Data ausgelegt. Mit dem Assistenten zum Kopieren von Daten ist es einfach und effizient, Data Factory-Pipelines zu erstellen, die Hunderte von Ordnern, Dateien oder Tabellen verschieben können. Der Assistent unterstützt diese drei Funktionen: automatische Datenvorschau, Schema-Erfassung und Filtern von Daten. 
 
 ## <a name="automatic-data-preview"></a>Automatische Datenvorschau
 Sie können mit dem Kopier-Assistenten Teile der Daten aus der jeweiligen Datenquelle überprüfen, um festzustellen, ob es sich tatsächlich um die Daten handelt, die Sie kopieren möchten. Darüber hinaus analysiert der Kopier-Assistent, wenn die Datenquelle eine Textdatei ist, diese Datei, und erfasst Trennzeichen für Zeilen und Spalten sowie Schemata automatisch. 
@@ -71,7 +71,7 @@ Klicken Sie auf die Schaltfläche **Durchsuchen** für **Datei oder Ordner**, na
 
 ![Verwenden von Systemvariablen](./media/data-factory-copy-wizard/blob-standard-variables-in-folder-path.png)   
 
-Sie können auch eine **benutzerdefinierte** Variable und beliebige [unterstützte Formatzeichenfolgen](/dotnet/standard/base-types/custom-date-and-time-format-strings)verwenden (siehe Screenshot unten). Um einen Ordner mit dieser Struktur auszuwählen, verwenden Sie zunächst die Schaltfläche **Durchsuchen** . Ersetzen Sie dann einen Wert mit **{custom}** , und betätigen Sie die TAB-Taste, um das Textfeld anzuzeigen, in dem Sie die Formatzeichenfolge eingeben können.     
+Sie können auch eine **benutzerdefinierte** Variable und beliebige [unterstützte Formatzeichenfolgen](/dotnet/standard/base-types/custom-date-and-time-format-strings)verwenden (siehe Screenshot unten). Um einen Ordner mit dieser Struktur auszuwählen, verwenden Sie zunächst die Schaltfläche **Durchsuchen** . Ersetzen Sie dann einen Wert mit **{custom}**, und betätigen Sie die TAB-Taste, um das Textfeld anzuzeigen, in dem Sie die Formatzeichenfolge eingeben können.     
 
 ![Verwenden von benutzerdefinierten Variablen](./media/data-factory-copy-wizard/blob-custom-variables-in-folder-path.png)
 

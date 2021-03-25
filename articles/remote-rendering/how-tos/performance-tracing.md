@@ -6,10 +6,10 @@ ms.author: flborn
 ms.date: 12/11/2019
 ms.topic: conceptual
 ms.openlocfilehash: 1d4ce68bdda5fbc3dfdb7396141289a58dab5bd1
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92204094"
 ---
 # <a name="create-client-side-performance-traces"></a>Erstellen clientseitiger Leistungsüberwachungen
@@ -35,13 +35,13 @@ Wenn Sie sich über Leistungsablaufverfolgungen informieren möchten, sind einig
 * `WPR`
 * `WPA`
 
-**ETW** steht für Ereignisablaufverfolgung für Windows-Ereignisse ([**E**vent **T**racing for **W**indows](/windows/win32/etw/about-event-tracing)). Dies ist einfach der allgemeine Name für die in Windows integrierte effiziente Ablaufverfolgungsfunktion auf Kernelebene. Sie wird als *Ereignis*ablaufverfolgung bezeichnet, da Anwendungen, die ETW unterstützen, Ereignisse zur Protokollierung von Aktionen ausgeben, anhand derer Sie Leistungsprobleme nachverfolgen können. Standardmäßig gibt das Betriebssystem bereits Ereignisse für Datenträgerzugriffe, Programmumschaltung und Ähnliches aus. Anwendungen wie ARR geben zusätzlich benutzerdefinierte Ereignisse aus, z. B. zu gelöschten Frames, Netzwerkverzögerungen usw.
+**ETW** steht für Ereignisablaufverfolgung für Windows-Ereignisse ([**E** vent **T** racing for **W** indows](/windows/win32/etw/about-event-tracing)). Dies ist einfach der allgemeine Name für die in Windows integrierte effiziente Ablaufverfolgungsfunktion auf Kernelebene. Sie wird als *Ereignis* ablaufverfolgung bezeichnet, da Anwendungen, die ETW unterstützen, Ereignisse zur Protokollierung von Aktionen ausgeben, anhand derer Sie Leistungsprobleme nachverfolgen können. Standardmäßig gibt das Betriebssystem bereits Ereignisse für Datenträgerzugriffe, Programmumschaltung und Ähnliches aus. Anwendungen wie ARR geben zusätzlich benutzerdefinierte Ereignisse aus, z. B. zu gelöschten Frames, Netzwerkverzögerungen usw.
 
-**ETL** steht für Ereignisablaufverfolgung (**E**vent **T**race **L**ogging). Das bedeutet einfach, dass eine Ablaufverfolgung erfasst (protokolliert) wurde, und ETW wird daher in der Regel als Dateierweiterung für Dateien verwendet wird, in denen die Ablaufverfolgungsdaten gespeichert werden. Wenn Sie also eine Ablaufverfolgung durchführen, verfügen Sie in der Regel über eine Datei \*.etl.
+**ETL** steht für Ereignisablaufverfolgung (**E** vent **T** race **L** ogging). Das bedeutet einfach, dass eine Ablaufverfolgung erfasst (protokolliert) wurde, und ETW wird daher in der Regel als Dateierweiterung für Dateien verwendet wird, in denen die Ablaufverfolgungsdaten gespeichert werden. Wenn Sie also eine Ablaufverfolgung durchführen, verfügen Sie in der Regel über eine Datei \*.etl.
 
-**WPR** steht für Windows-Leistungsaufzeichnung ([**W**indows **P**erformance **R**ecorder](/windows-hardware/test/wpt/windows-performance-recorder)); dies ist der Name einer Anwendung, welche die Aufzeichnung von Ereignisablaufverfolgungen startet und beendet. WPR akzeptiert eine Profildatei (\*.wprp), in der konfiguriert ist, welche konkreten Ereignisse zu protokollieren sind. Eine solche `wprp`-Datei wird mit dem ARR SDK bereitgestellt. Beim Ausführen von Ablaufverfolgungen auf einem Desktop-PC können Sie WPR direkt starten. Beim Ausführen einer Ablaufverfolgung auf HoloLens nutzen Sie stattdessen normalerweise die Weboberfläche.
+**WPR** steht für Windows-Leistungsaufzeichnung ([**W** indows **P** erformance **R** ecorder](/windows-hardware/test/wpt/windows-performance-recorder)); dies ist der Name einer Anwendung, welche die Aufzeichnung von Ereignisablaufverfolgungen startet und beendet. WPR akzeptiert eine Profildatei (\*.wprp), in der konfiguriert ist, welche konkreten Ereignisse zu protokollieren sind. Eine solche `wprp`-Datei wird mit dem ARR SDK bereitgestellt. Beim Ausführen von Ablaufverfolgungen auf einem Desktop-PC können Sie WPR direkt starten. Beim Ausführen einer Ablaufverfolgung auf HoloLens nutzen Sie stattdessen normalerweise die Weboberfläche.
 
-**WPA** steht für Windows-Leistungsanalyse ([**W**indows **P**erformance **A**nalyzer](/windows-hardware/test/wpt/windows-performance-analyzer)); dies ist der Name der GUI-Anwendung, mit der Sie Dateien vom Typ \*.etl öffnen und die Daten durchsuchen, um Leistungsprobleme zu ermitteln. Mit WPA können Sie die Daten nach verschiedenen Kriterien sortieren, die Daten auf verschiedene Weise anzeigen lassen, Details genauer untersuchen und Informationen korrelieren.
+**WPA** steht für Windows-Leistungsanalyse ([**W** indows **P** erformance **A** nalyzer](/windows-hardware/test/wpt/windows-performance-analyzer)); dies ist der Name der GUI-Anwendung, mit der Sie Dateien vom Typ \*.etl öffnen und die Daten durchsuchen, um Leistungsprobleme zu ermitteln. Mit WPA können Sie die Daten nach verschiedenen Kriterien sortieren, die Daten auf verschiedene Weise anzeigen lassen, Details genauer untersuchen und Informationen korrelieren.
 
 ETL-Ablaufverfolgungen können zwar auf jedem Windows-Gerät (lokaler PC, HoloLens, Cloudserver usw.) erstellt werden, sie werden jedoch in der Regel auf einem Datenträger gespeichert und mit WPA auf einem Desktop-PC analysiert. ETL-Dateien können zur weiteren Untersuchung an andere Entwickler gesendet werden. Beachten Sie jedoch, dass in ETL-Ablaufverfolgungen auch vertrauliche Informationen erfasst werden können, z. B. Dateipfade und IP-Adressen. Sie haben zwei Möglichkeiten, ETW zu verwenden: zum Aufzeichnen von Ablaufverfolgungen oder zum Analysieren von Ablaufverfolgungen. Das Aufzeichnen von Ablaufverfolgungen ist ein direkter Vorgang, und es ist nur ein minimales Setup erforderlich. Für das Analysieren von Ablaufverfolgungen ist hingegen ein grundlegendes Verständnis sowohl hinsichtlich des WPA-Tools als auch in Bezug auf das untersuchte Problem erforderlich. Im Folgenden finden Sie allgemeine Informationen zum Kennenlernen von WPA sowie Richtlinien für die Interpretation von ARR-spezifischen Ablaufverfolgungen.
 

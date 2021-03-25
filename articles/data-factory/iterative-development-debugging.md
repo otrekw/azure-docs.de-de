@@ -1,17 +1,20 @@
 ---
 title: Iteratives Entwickeln und Debuggen in Azure Data Factory
 description: Erfahren Sie, wie Sie Data Factory-Pipelines auf der Benutzeroberfläche von Azure Data Factory iterativ entwickeln und debuggen.
-ms.date: 10/29/2020
+ms.date: 02/23/2021
 ms.topic: conceptual
 ms.service: data-factory
-author: dcstwh
-ms.author: weetok
-ms.openlocfilehash: 90f3f57fa527c8aaeb32a7dcf41f461ff5f0bf77
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+services: data-factory
+documentationcenter: ''
+ms.workload: data-services
+author: kromerm
+ms.author: makromer
+ms.openlocfilehash: ef47d311f5f096db962ea27792e7871dbf0ef81a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100392526"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101712962"
 ---
 # <a name="iterative-development-and-debugging-with-azure-data-factory"></a>Iteratives Entwickeln und Debuggen mit Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -73,6 +76,8 @@ Zuordnungsdatenflüsse ermöglichen Ihnen, codefreie Datentransformationslogik z
 Auf der Oberfläche **Überwachung** können Sie aktive Debugsitzungen für den Datenfluss in einer Factory überwachen.
 
 ![Anzeigen von Debugsitzungen für einen Datenfluss](media/iterative-development-debugging/view-dataflow-debug-sessions.png)
+
+Die Datenvorschau im Datenflussdesigner und das Pipelinedebuggen von Datenflüssen sollten am besten mit kleinen Datenstichproben funktionieren. Wenn Sie jedoch Ihre Logik in einer Pipeline oder einem Datenfluss anhand großer Datenmengen testen müssen, setzen Sie die Größe der Azure Integration Runtime herauf, die in der Debugsitzung verwendet wird, d. h. erhöhen Sie die Zahl der Kerne und erweitern Sie das minimale Compute für allgemeine Zwecke.
  
 ### <a name="debugging-a-pipeline-with-a-data-flow-activity"></a>Debuggen einer Pipeline mit einer Datenflussaktivität
 
@@ -83,7 +88,7 @@ Bei Verwendung einer vorhandenen Debugsitzung wird die Uptime des Datenflusses e
 Bei Verwenden der Aktivitätslaufzeit wird ein neuer Cluster mit den Einstellungen erstellt, die in der Integration Runtime jeder Datenflussaktivität angegeben sind. Dies ermöglicht die Isolierung jedes einzelnen Auftrags und sollte für komplexe Workloads oder Leistungstests verwendet werden. Außerdem können Sie die Gültigkeitsdauer (TTL) in der Azure IR steuern, damit die für das Debuggen verwendeten Clusterressourcen während dieses Zeitraums weiterhin für zusätzliche Auftragsanforderungen verfügbar sind.
 
 > [!NOTE]
-> Wenn Sie über eine Pipeline mit Datenflüssen verfügen, die parallel ausgeführt werden, wählen Sie „Use Activity Runtime“ (Aktivitätsruntime verwenden) aus, damit Data Factory die in der Datenflussaktivität ausgewählte Integration Runtime verwenden kann. Dies ermöglicht das Ausführen der Datenflüsse in mehreren Clustern und die Verarbeitung der parallelen Datenflussausführungen.
+> Wenn Sie über eine Pipeline mit Datenflüssen verfügen, die parallel ausgeführt werden, oder Datenflüsse, die mit großen Datasets getestet werden müssen, wählen Sie „Use Activity Runtime“ (Aktivitätsruntime verwenden) aus, damit Data Factory die in der Datenflussaktivität ausgewählte Integration Runtime verwenden kann. Dies ermöglicht das Ausführen der Datenflüsse in mehreren Clustern und die Verarbeitung der parallelen Datenflussausführungen.
 
 ![Ausführen einer Pipeline mit einem Datenfluss](media/iterative-development-debugging/iterative-development-dataflow.png)
 

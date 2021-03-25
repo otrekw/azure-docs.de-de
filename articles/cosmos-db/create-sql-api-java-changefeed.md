@@ -10,10 +10,10 @@ ms.date: 06/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
 ms.openlocfilehash: 765fd3afc7fe688d3e6b0e3394e7dc8c39af69b3
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93096851"
 ---
 # <a name="how-to-create-a-java-application-that-uses-azure-cosmos-db-sql-api-and-change-feed-processor"></a>Erstellen einer Java-Anwendung, die die Azure Cosmos DB SQL-API und den Änderungsfeedprozessor verwendet
@@ -57,7 +57,7 @@ mvn clean package
 
 ## <a name="walkthrough"></a>Exemplarische Vorgehensweise
 
-1. Prüfen Sie als Erstes, ob Sie über ein Azure Cosmos DB-Konto verfügen. Öffnen Sie in Ihrem Browser das **Azure-Portal** , und navigieren Sie zu Ihrem Azure Cosmos DB-Konto und dann im linken Bereich zu **Daten-Explorer**.
+1. Prüfen Sie als Erstes, ob Sie über ein Azure Cosmos DB-Konto verfügen. Öffnen Sie in Ihrem Browser das **Azure-Portal**, und navigieren Sie zu Ihrem Azure Cosmos DB-Konto und dann im linken Bereich zu **Daten-Explorer**.
 
    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_account_empty.JPG" alt-text="Azure Cosmos DB-Konto":::
 
@@ -75,9 +75,9 @@ mvn clean package
 
     Wechseln Sie anschließend in Ihrem Browser zurück zum Daten-Explorer im Azure-Portal. Sie sehen, dass die Datenbank **GroceryStoreDatabase** mit drei leeren Containern hinzugefügt wurde: 
 
-    * **InventoryContainer** : Der Bestandsdatensatz für unser Lebensmittelgeschäft-Beispiel partitioniert nach ```id``` (eine UUID).
-    * **InventoryContainer-pktype** : Eine materialisierte Sicht des Bestandsdatensatzes, die für Abfragen nach ```type``` optimiert ist.
-    * **InventoryContainer-leases** : Ein Leasecontainer wird für Änderungsfeeds immer benötigt. Mit Leases wird der Status der App beim Lesen des Änderungsfeeds nachverfolgt.
+    * **InventoryContainer**: Der Bestandsdatensatz für unser Lebensmittelgeschäft-Beispiel partitioniert nach ```id``` (eine UUID).
+    * **InventoryContainer-pktype**: Eine materialisierte Sicht des Bestandsdatensatzes, die für Abfragen nach ```type``` optimiert ist.
+    * **InventoryContainer-leases**: Ein Leasecontainer wird für Änderungsfeeds immer benötigt. Mit Leases wird der Status der App beim Lesen des Änderungsfeeds nachverfolgt.
 
     :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_account_resources_lease_empty.JPG" alt-text="Leere Container":::
 
@@ -95,7 +95,7 @@ mvn clean package
 
     ```"SampleHost_1"``` ist der Name des Workers für den Änderungsfeedprozessor. Mit ```changeFeedProcessorInstance.start()``` wird der Änderungsfeedprozessor gestartet.
 
-    Wechseln Sie in Ihrem Browser zurück zum Daten-Explorer im Azure-Portal. Klicken Sie unter dem Container **InventoryContainer-leases** auf **items** , um den Inhalt anzuzeigen. Sie sehen, dass über den Änderungsfeedprozessor Daten in den Leasecontainer eingefügt wurden. Der Prozessor hat dem Worker ```SampleHost_1``` eine Lease für einige Partitionen von **InventoryContainer** zugewiesen.
+    Wechseln Sie in Ihrem Browser zurück zum Daten-Explorer im Azure-Portal. Klicken Sie unter dem Container **InventoryContainer-leases** auf **items**, um den Inhalt anzuzeigen. Sie sehen, dass über den Änderungsfeedprozessor Daten in den Leasecontainer eingefügt wurden. Der Prozessor hat dem Worker ```SampleHost_1``` eine Lease für einige Partitionen von **InventoryContainer** zugewiesen.
 
     :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_leases.JPG" alt-text="Leases":::
 
@@ -113,7 +113,7 @@ mvn clean package
 
     :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_materializedview2.JPG" alt-text="Screenshot: Seite „Daten-Explorer“ für ein Azure Cosmos DB-Konto, auf der „Elemente“ ausgewählt ist":::
 
-1. Wir löschen ein Dokument gleichzeitig aus **InventoryContainer** und aus **InventoryContainer-pktype** , indem wir nur einmal den Aufruf ```upsertItem()``` verwenden. Sehen Sie sich zunächst den Daten-Explorer im Azure-Portal an. Wir löschen das Dokument, für das ```/type == "plums"``` gilt. Es ist unten rot markiert.
+1. Wir löschen ein Dokument gleichzeitig aus **InventoryContainer** und aus **InventoryContainer-pktype**, indem wir nur einmal den Aufruf ```upsertItem()``` verwenden. Sehen Sie sich zunächst den Daten-Explorer im Azure-Portal an. Wir löschen das Dokument, für das ```/type == "plums"``` gilt. Es ist unten rot markiert.
 
     :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_materializedview-emph-todelete.JPG" alt-text="Screenshot: Seite „Daten-Explorer“ für ein Azure Cosmos DB-Konto, auf der eine bestimmte Element-ID ausgewählt ist":::
 

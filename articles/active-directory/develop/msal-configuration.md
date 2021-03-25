@@ -14,10 +14,10 @@ ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
 ms.openlocfilehash: aa0ce6a5f909e67f0551c8667bb7e5c5e6d7eb04
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92275612"
 ---
 # <a name="android-microsoft-authentication-library-configuration-file"></a>Android-Konfigurationsdatei für die Microsoft-Authentifizierungsbibliothek

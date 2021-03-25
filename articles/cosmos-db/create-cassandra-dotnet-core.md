@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.date: 10/01/2020
 ms.custom: devx-track-dotnet
 ms.openlocfilehash: f228386d8cf0e708080b7f6c5f6cef7258b2eafb
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93099979"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-net-core-and-azure-cosmos-db"></a>Schnellstart: Erstellen einer Cassandra-App mit .NET Core und Azure Cosmos DB
@@ -180,7 +180,7 @@ Wechseln Sie nun zurück zum Azure-Portal, um die Informationen der Verbindungsz
 
     Drücken Sie STRG+C, um die Programmausführung zu beenden und das Konsolenfenster zu schließen. 
     
-4. Öffnen Sie im Azure-Portal den **Daten-Explorer** , um diese neuen Daten abzufragen, zu ändern und zu verwenden.
+4. Öffnen Sie im Azure-Portal den **Daten-Explorer**, um diese neuen Daten abzufragen, zu ändern und zu verwenden.
 
     :::image type="content" source="./media/create-cassandra-dotnet/data-explorer.png" alt-text="Anzeigen der Daten im Daten-Explorer":::
 

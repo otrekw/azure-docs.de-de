@@ -10,10 +10,10 @@ author: sivethe
 ms.author: sivethe
 ms.custom: devx-track-js
 ms.openlocfilehash: c2117c535cca679d3a7a3b75491bf60ab9567ceb
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93098211"
 ---
 # <a name="build-an-app-using-nodejs-and-azure-cosmos-dbs-api-for-mongodb"></a>Erstellen einer App mit Node.js und der API für MongoDB von Azure Cosmos DB 
@@ -36,7 +36,7 @@ Um dieses Beispiel zu verwenden, müssen Sie Folgendes tun:
 
 ## <a name="create-the-app"></a>Erstellen der App
 
-1. Erstellen Sie eine *app.js* -Datei, kopieren Sie den unten stehenden Code, und fügen Sie ihn in die Datei ein.
+1. Erstellen Sie eine *app.js*-Datei, kopieren Sie den unten stehenden Code, und fügen Sie ihn in die Datei ein.
 
     ```javascript
     var MongoClient = require('mongodb').MongoClient;
@@ -155,7 +155,7 @@ Um dieses Beispiel zu verwenden, müssen Sie Folgendes tun:
     });
     ```
     
-2. Ändern Sie die folgenden Variablen in der *app.js* -Datei gemäß Ihren Kontoeinstellungen (informieren Sie sich darüber, wie Sie Ihre [Verbindungszeichenfolge](connect-mongodb-account.md) finden):
+2. Ändern Sie die folgenden Variablen in der *app.js*-Datei gemäß Ihren Kontoeinstellungen (informieren Sie sich darüber, wie Sie Ihre [Verbindungszeichenfolge](connect-mongodb-account.md) finden):
 
     > [!IMPORTANT]
     > Bei Verwendung des **MongoDB-Node.js 3.0-Treibers** müssen Sonderzeichen im Cosmos DB-Kennwort codiert werden. Das Gleichheitszeichen (=) muss als „%3D“ codiert werden.

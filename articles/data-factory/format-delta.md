@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/07/2020
 ms.author: daperlov
 ms.openlocfilehash: bb5360a678751b37cf36677fca611b39746621f4
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100386491"
 ---
 # <a name="delta-format-in-azure-data-factory"></a>Deltaformat in Azure Data Factory
@@ -39,7 +39,7 @@ Die folgende Tabelle enthält die von einer Deltaquelle unterstützten Eigenscha
 | Zeitreise | Wählen Sie aus, ob eine ältere Momentaufnahme einer Deltatabelle abgefragt werden soll. | nein | Abfragen nach Zeitstempel: Timestamp <br> Abfragen nach Version: Integer | timestampAsOf <br> versionAsOf |
 | Finden keiner Dateien zulässig | „true“ gibt an, dass kein Fehler ausgelöst wird, wenn keine Dateien gefunden werden. | nein | `true` oder `false` | ignoreNoFilesFound |
 
-#### <a name="import-schema"></a>Importieren des Schemas
+#### <a name="import-schema"></a>Schema importieren
 
 Delta ist nur als Inlinedataset verfügbar und verfügt standardmäßig über kein zugeordnetes Schema. Zum Abrufen von Spaltenmetadaten klicken Sie auf der Registerkarte **Projektion** auf die Schaltfläche **Schema importieren**. Auf diese Weise können Sie auf die Spaltennamen und Datentypen verweisen, die durch den Korpus angegeben sind. Zum Importieren des Schemas muss eine [Datenfluss-Debugsitzung](concepts-data-flow-debug-mode.md) aktiv sein, und es muss eine CDM-Entitätsdefinitionsdatei vorhanden sein, auf die verwiesen werden kann.
  

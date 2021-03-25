@@ -6,10 +6,10 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 07/22/2019
 ms.openlocfilehash: e9897c7ba14e6190698cf10792a94acc759699d4
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98940175"
 ---
 # <a name="create-an-apache-spark-machine-learning-pipeline"></a>Erstellen einer Apache Spark-Machine Learning-Pipeline
@@ -28,7 +28,7 @@ Jeder zustandslosen Instanz eines Transformators oder Estimators ist ein eigener
 
 Zur Veranschaulichung der praktischen Verwendung einer ML-Pipeline verwendet dieses Beispiel die Datendatei `HVAC.csv`, die bereits in den Standardspeicher (Azure Storage oder Data Lake Storage) für Ihren HDInsight-Cluster geladen wurde. Zum Anzeigen des Inhalts der Datei navigieren Sie zum Verzeichnis `/HdiSamples/HdiSamples/SensorSampleData/hvac`. `HVAC.csv` enthält einen Satz von Zeiten mit den Zieltemperaturen und den tatsächlichen Temperaturen für HVAC-Systeme (*Heating, Ventilation, Air Conditioning*) in verschiedenen Gebäuden. Ziel ist das Trainieren des Modells für die Daten und das Generieren einer Temperaturprognose für ein bestimmtes Gebäude.
 
-Der folgende Code:
+Der folgende Code
 
 1. Definiert ein `LabeledDocument`, in dem die `BuildingID`, die `SystemInfo` (Bezeichner eines Systems und Alter) und ein `label` (1.0, wenn das Gebäude überhitzt ist, andernfalls 0.0) gespeichert sind.
 2. Erstellt die benutzerdefinierte Parserfunktion `parseDocument`, die eine Datenzeile abruft und ermittelt, ob das Gebäude warm („hot“) ist, indem die Zieltemperatur mit der tatsächlichen Temperatur verglichen wird.

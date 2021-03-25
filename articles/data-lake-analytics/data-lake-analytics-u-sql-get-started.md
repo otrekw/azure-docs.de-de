@@ -6,17 +6,17 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 06/23/2017
 ms.openlocfilehash: 5920f2b5823e568d56d13107200eb0025a654db0
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92219920"
 ---
 # <a name="get-started-with-u-sql-in-azure-data-lake-analytics"></a>Erste Schritte mit U-SQL in Azure Data Lake Analytics
 
 U-SQL ist eine Sprache, bei der deklarative SQL mit imperativen C#-Elementen kombiniert wird, damit Sie Daten jedweden Umfangs verarbeiten können. Mit der skalierbaren Funktion für verteilte Abfragen von U-SQL können Sie Daten über relationale Speicher, z.B. Azure SQL-Datenbank, hinweg effizient analysieren. Mit U-SQL können Sie unstrukturierte Daten verarbeiten, indem Sie ein Schema zum Lesen anwenden und benutzerdefinierte Logik und UDFs einfügen. Darüber hinaus bietet U-SQL eine Erweiterbarkeit, die Ihnen eine präzisere Steuerung der Ausführung in großem Umfang ermöglicht.
 
-## <a name="learning-resources"></a>Schulungsressourcen
+## <a name="learning-resources"></a>Lernressourcen
 
 * Im [U-SQL-Tutorial](https://aka.ms/usqltutorial) wird U-SQL ausführlich vorgestellt. Dieses Dokument wird für alle Entwickler empfohlen, die sich mit U-SQL vertraut machen möchten.
 * Ausführliche Informationen zur **Syntax der U-SQL-Sprache** finden Sie unter [U-SQL Language Reference](/u-sql/) (Referenz zur U-SQL-Sprache).

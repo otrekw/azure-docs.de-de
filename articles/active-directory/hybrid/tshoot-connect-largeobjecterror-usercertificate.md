@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d33b419e0f24201d661ad0f5f1373022ea6e9e9f
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96861747"
 ---
 # <a name="azure-ad-connect-sync-handling-largeobject-errors-caused-by-usercertificate-attribute"></a>Azure AD Connect-Synchronisierung: Beheben von LargeObject-Fehlern, die auf das userCertificate-Attribut zurückzuführen sind
@@ -83,7 +83,7 @@ Stellen Sie sicher, dass keine Synchronisierung ausgeführt wird, während Sie e
 
 1. Wechseln Sie zur Registerkarte **Vorgänge**, und vergewissern Sie sich, dass kein Vorgang mit dem Status *In Arbeit* angezeigt wird.
 
-### <a name="step-2-find-the-existing-outbound-sync-rule-for-usercertificate-attribute"></a>Schritt 2: Suchen der vorhandenen ausgehenden Synchronisierungsregel für das userCertificate-Attribut
+### <a name="step-2-find-the-existing-outbound-sync-rule-for-usercertificate-attribute"></a>Schritt 2: Suchen der vorhandenen ausgehenden Synchronisierungsregel für das userCertificate-Attribut
 Eine Synchronisierungsregel sollte vorhanden sein, die aktiviert und so konfiguriert ist, dass sie das userCertificate-Attribut für User-Objekte in Azure AD exportiert. Suchen Sie diese Synchronisierungsregel, um ihre Konfiguration für **Rangfolge** und **Bereichsfilter** zu ermitteln:
 
 1. Starten Sie den **Synchronisierungsregel-Editor**, indem Sie zu „START“ > „Synchronisierungsregel-Editor“ navigieren.
@@ -110,7 +110,7 @@ Eine Synchronisierungsregel sollte vorhanden sein, die aktiviert und so konfigur
     | sourceObjectType | EQUAL | Benutzer |
     | cloudMastered | NOTEQUAL | True |
 
-### <a name="step-3-create-the-outbound-sync-rule-required"></a>Schritt 3: Erstellen der erforderlichen ausgehenden Synchronisierungsregel
+### <a name="step-3-create-the-outbound-sync-rule-required"></a>Schritt 3: Erstellen der erforderlichen ausgehenden Synchronisierungsregel
 Die neue Synchronisierungsregel muss über denselben **Bereichsfilter** und eine **höhere Rangfolge** als die vorhandene Synchronisierungsregel verfügen. Dadurch wird sichergestellt, dass die neue Synchronisierungsregel für den gleichen Satz von Objekten gilt wie die vorhandene Synchronisierungsregel und die vorhandene Synchronisierungsregel für das UserCertificate-Attribut überschreibt. So löschen Sie die Synchronisierungsregel:
 1. Klicken Sie im Synchronisierungsregel-Editor auf die Schaltfläche **Neue Regel hinzufügen**.
 2. Geben Sie auf der Registerkarte **Beschreibung** die folgende Konfiguration an:
@@ -161,7 +161,7 @@ Nachdem die Synchronisierungsregel hinzugefügt wurde, müssen Sie eine vollstä
 1. Wechseln Sie in Synchronization Service Manager zur Registerkarte **Connectors**.
 2. Klicken Sie mit der rechten Maustaste auf den **Azure AD**-Connector, und wählen Sie **Search Connector Space** (Connectorbereich durchsuchen).
 3. Gehen Sie im Popupfenster „Search Connector Space“ (Connectorbereich durchsuchen) wie folgt vor:
-    1. Legen Sie für den Bereich **Export steht aus** fest.
+    1. Legen Sie den Bereich auf **Ausstehender Export** fest.
     2. Aktivieren Sie alle drei Kontrollkästchen: **Hinzufügen**, **Ändern** und **Löschen**.
     3. Klicken Sie auf die Schaltfläche **Suchen**, um alle Objekte mit Änderungen zurückzugeben, die auf den Export in Azure AD warten.
     4. Stellen Sie sicher, dass keine unerwarteten Änderungen vorhanden sind. Um die Änderungen für ein bestimmtes Objekt zu untersuchen, doppelklicken Sie auf das Objekt.

@@ -8,10 +8,10 @@ ms.date: 10/28/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 91ffcac98b2b919a8fc131d235e699aad4fa215d
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93078899"
 ---
 # <a name="manage-analysis-services"></a>Verwalten von Analysis Services
@@ -47,11 +47,11 @@ Verwenden Sie die neueste Version von SSMS, um alle aktuellen Features zu erhalt
     > [!NOTE]
     > Wenn Sie sich mit einem Microsoft-Konto, Live ID, Yahoo, Gmail usw. anmelden, lassen Sie das Kennwortfeld leer. Nachdem Sie auf „Verbinden“ geklickt haben, werden Sie zur Eingabe des Kennworts aufgefordert.
 
-    **Windows-Authentifizierung** , um Ihre Windows-Domäne\Ihren Benutzernamen und Ihr Kennwort als Anmeldeinformationen zu verwenden.
+    **Windows-Authentifizierung**, um Ihre Windows-Domäne\Ihren Benutzernamen und Ihr Kennwort als Anmeldeinformationen zu verwenden.
 
-    **Active Directory-Kennwortauthentifizierung** , um ein Organisationskonto zu verwenden. Dies ist beispielsweise beim Herstellen einer Verbindung von einem nicht mit der Domäne verbundenen Computer sinnvoll.
+    **Active Directory-Kennwortauthentifizierung**, um ein Organisationskonto zu verwenden. Dies ist beispielsweise beim Herstellen einer Verbindung von einem nicht mit der Domäne verbundenen Computer sinnvoll.
 
-    **Active Directory: universell mit MFA-Unterstützung** , wenn [nicht interaktive oder mehrstufige Authentifizierung](../azure-sql/database/authentication-mfa-ssms-overview.md) verwendet werden soll. 
+    **Active Directory: universell mit MFA-Unterstützung**, wenn [nicht interaktive oder mehrstufige Authentifizierung](../azure-sql/database/authentication-mfa-ssms-overview.md) verwendet werden soll. 
    
     ![Herstellen der Verbindung in SSMS](./media/analysis-services-manage/aas-manage-connect-ssms.png)
 

@@ -12,10 +12,10 @@ ms.topic: how-to
 ms.date: 07/13/2020
 ms.author: justinha
 ms.openlocfilehash: 1e98f32bd6fe7d5373d5ab6621ffdce5e79abc08
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96619588"
 ---
 # <a name="join-a-coreos-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>Einbinden eines virtuellen CoreOS-Computers in eine verwaltete Azure Active Directory Domain Services-Domäne
@@ -128,15 +128,15 @@ Nachdem Sie die SSSD-Konfigurationsdatei aktualisiert haben, binden Sie nun den 
     sudo adcli info AADDSCONTOSO.COM
     ```
 
-   Wenn mit dem Befehl `adcli info` Ihre verwaltete Domäne nicht gefunden werden kann, führen Sie die folgenden Schritte zur Problembehandlung aus:
+   Wenn Ihre verwaltete Domäne nicht mit dem Befehl `adcli info` gefunden werden kann, führen Sie die folgenden Schritte zur Problembehandlung aus:
 
     * Vergewissern Sie sich, dass die VM die Domäne erreichen kann. Versuchen Sie `ping aaddscontoso.com`, um zu überprüfen, ob eine positive Antwort zurückgegeben wird.
-    * Überprüfen Sie, ob die VM in demselben oder einem mittels Peering verbundenen virtuellen Netzwerk bereitgestellt wurde, in dem die verwaltete Domäne verfügbar ist.
+    * Vergewissern Sie sich, dass die VM im selben oder einem mittels Peering verbundenen virtuellen Netzwerk bereitgestellt wurde, in dem die verwaltete Domäne verfügbar ist.
     * Vergewissern Sie sich, dass die DNS-Servereinstellungen für das virtuelle Netzwerk so aktualisiert wurden, dass auf die Domänencontroller der verwalteten Domäne verwiesen wird.
 
 1. Binden Sie jetzt die VM mit dem Befehl `adcli join` in die verwaltete Domäne ein. Geben Sie einen Benutzer an, der Mitglied der verwalteten Domäne ist. Bei Bedarf [fügen Sie ein Benutzerkonto zu einer Gruppe in Azure AD hinzu](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md).
 
-    Auch hier muss der Name der verwalteten Domäne in GROßBUCHSTABEN eingegeben werden. Im folgenden Beispiel wird das Konto mit dem Namen `contosoadmin@aaddscontoso.com` zum Initialisieren von Kerberos verwendet. Geben Sie Ihr eigenes Benutzerkonto ein, das Teil der verwalteten Domäne ist.
+    Auch hier muss der Name der verwalteten Domäne in GROSSBUCHSTABEN eingegeben werden. Im folgenden Beispiel wird das Konto mit dem Namen `contosoadmin@aaddscontoso.com` zum Initialisieren von Kerberos verwendet. Geben Sie Ihr eigenes Benutzerkonto ein, das Teil der verwalteten Domäne ist.
 
     ```console
     sudo adcli join -D AADDSCONTOSO.COM -U contosoadmin@AADDSCONTOSO.COM -K /etc/krb5.keytab -H coreos.aaddscontoso.com -N coreos

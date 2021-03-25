@@ -9,10 +9,10 @@ ms.date: 12/07/2017
 ms.author: sngun
 ms.custom: seodec18
 ms.openlocfilehash: e876ca028532bb3721146e90a91d68c4c12bf79f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93096076"
 ---
 # <a name="migrate-your-data-to-azure-cosmos-db-table-api-account"></a>Migrieren Ihrer Daten zum Azure Cosmos DB-Konto für die Tabellen-API
@@ -67,11 +67,11 @@ Verwenden Sie die folgenden Quelloptionen, wenn Sie Azure Table Storage oder die
 * **/s.Filter:** Optional. Anzuwendende Filterzeichenfolge.
 * **/s.Projection:** Optional. Liste mit auswählbaren Spalten.
 
-Um die Verbindungszeichenfolge für die Quelle beim Importieren aus Azure Table Storage abzurufen, öffnen Sie das Azure-Portal, klicken Sie auf **Speicherkonten** > **Konto** > **Zugriffsschlüssel** , und verwenden Sie dann die Schaltfläche „Kopieren“, um die **Verbindungszeichenfolge** zu kopieren.
+Um die Verbindungszeichenfolge für die Quelle beim Importieren aus Azure Table Storage abzurufen, öffnen Sie das Azure-Portal, klicken Sie auf **Speicherkonten** > **Konto** > **Zugriffsschlüssel**, und verwenden Sie dann die Schaltfläche „Kopieren“, um die **Verbindungszeichenfolge** zu kopieren.
 
 :::image type="content" source="./media/table-import/storage-table-access-key.png" alt-text="Screenshot der Optionen „Speicherkonten“ > „Konto“ > „Zugriffsschlüssel“ mit hervorgehobener Schaltfläche „Kopieren“":::
 
-Um die Verbindungszeichenfolge für die Quelle beim Importieren aus der Tabellen-API von Azure Cosmos DB abzurufen, öffnen Sie das Azure-Portal, klicken Sie auf **Azure Cosmos DB** > **Konto** > **Verbindungszeichenfolge** , und kopieren Sie dann die **Verbindungszeichenfolge** über die Schaltfläche „Kopieren“.
+Um die Verbindungszeichenfolge für die Quelle beim Importieren aus der Tabellen-API von Azure Cosmos DB abzurufen, öffnen Sie das Azure-Portal, klicken Sie auf **Azure Cosmos DB** > **Konto** > **Verbindungszeichenfolge**, und kopieren Sie dann die **Verbindungszeichenfolge** über die Schaltfläche „Kopieren“.
 
 :::image type="content" source="./media/table-import/cosmos-connection-string.png" alt-text="Screenshot der Optionen für HBase-Quellen":::
 

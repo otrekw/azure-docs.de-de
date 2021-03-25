@@ -7,10 +7,10 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/01/2020
 ms.openlocfilehash: 8721c0eb728f568521e86baecb658dc9c869a7f6
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93097582"
 ---
 # <a name="options-to-migrate-your-on-premises-or-cloud-data-to-azure-cosmos-db"></a>Optionen zum Migrieren von lokalen oder Clouddaten zu Azure Cosmos DB
@@ -31,7 +31,7 @@ Die folgenden Faktoren haben Einfluss auf die Auswahl des Migrationstools:
 
 * **Online- oder Offlinemigration:** Viele Migrationstools bieten nur einen Pfad für eine einmalige Migration. Dies bedeutet, dass bei Anwendungen, die auf die Datenbank zugreifen, möglicherweise eine gewisse Ausfallzeit auftritt. Einige Migrationslösungen bieten eine Möglichkeit, eine Livemigration durchzuführen, bei der eine Replikationspipeline zwischen der Quelle und dem Ziel eingerichtet ist.
 
-* **Datenquelle** : Die vorhandenen Daten können sich in verschiedenen Datenquellen wie Oracle DB2, DataStax Cassanda, Azure SQL-Datenbank, PostgreSQL usw. befinden. Außerdem können sich die Daten auch in einem vorhandenen Azure Cosmos DB-Konto befinden und das Ziel der Migration besteht darin, das Datenmodell zu ändern oder die Daten in einem Container mit einem anderen Partitionsschlüssel neu zu partitionieren.
+* **Datenquelle**: Die vorhandenen Daten können sich in verschiedenen Datenquellen wie Oracle DB2, DataStax Cassanda, Azure SQL-Datenbank, PostgreSQL usw. befinden. Außerdem können sich die Daten auch in einem vorhandenen Azure Cosmos DB-Konto befinden und das Ziel der Migration besteht darin, das Datenmodell zu ändern oder die Daten in einem Container mit einem anderen Partitionsschlüssel neu zu partitionieren.
 
 * **Azure Cosmos DB-API:** Für die SQL-API in Azure Cosmos DB gibt es eine Reihe von Tools, die vom Azure Cosmos DB-Team für die unterschiedlichen Migrationsszenarien entwickelt wurden. Alle anderen APIs enthalten einen eigenen spezialisierten Satz von Tools, der von der Community entwickelt und verwaltet wird. Da Azure Cosmos DB diese APIs auf einer festen Protokollebene unterstützt, sollten diese Tools während der Migration von Daten zu Azure Cosmos DB ebenfalls unverändert funktionieren. Sie erfordern jedoch möglicherweise eine benutzerdefinierte Behandlung der Drosselung, da dieses Konzept für Azure Cosmos DB spezifisch ist.
 

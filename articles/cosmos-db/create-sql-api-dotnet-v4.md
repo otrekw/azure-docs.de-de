@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.date: 09/22/2020
 ms.custom: devx-track-dotnet
 ms.openlocfilehash: 224a1b67ff0282c216763229593fcfed81d7567b
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93090102"
 ---
 # <a name="quickstart-build-a-console-app-using-the-net-v4-sdk-to-manage-azure-cosmos-db-sql-api-account-resources"></a>Schnellstart: Erstellen einer Konsolen-App zum Verwalten von Azure Cosmos DB-SQL-API-Kontoressourcen mithilfe von Version 4 des .NET SDK
@@ -54,9 +54,9 @@ Wenn Sie die Option [Azure Cosmos DB kostenlos testen](https://azure.microsoft.c
 
 Wenn Sie über ein eigenes Azure-Abonnement verfügen oder ein kostenloses Abonnement erstellt haben, müssen Sie ein Azure Cosmos-Konto explizit erstellen. Mit dem folgenden Code wird ein Azure Cosmos-Konto mit Sitzungskonsistenz erstellt. Das Konto wird in `South Central US` und `North Central US` repliziert.  
 
-Sie können das Azure Cosmos-Konto mithilfe von Azure Cloud Shell erstellen. Azure Cloud Shell ist eine interaktive, authentifizierte, über den Browser zugängliche Shell für die Verwaltung von Azure-Ressourcen. Sie bietet Ihnen die Flexibilität, die Shell-Umgebung auszuwählen, die sich am besten für Ihre Arbeitsweise eignet: Bash oder PowerShell. Wählen Sie für diesen Schnellstart den **Bash** -Modus. Azure Cloud Shell erfordert auch ein Speicherkonto. Sie können eines erstellen, wenn Sie dazu aufgefordert werden.
+Sie können das Azure Cosmos-Konto mithilfe von Azure Cloud Shell erstellen. Azure Cloud Shell ist eine interaktive, authentifizierte, über den Browser zugängliche Shell für die Verwaltung von Azure-Ressourcen. Sie bietet Ihnen die Flexibilität, die Shell-Umgebung auszuwählen, die sich am besten für Ihre Arbeitsweise eignet: Bash oder PowerShell. Wählen Sie für diesen Schnellstart den **Bash**-Modus. Azure Cloud Shell erfordert auch ein Speicherkonto. Sie können eines erstellen, wenn Sie dazu aufgefordert werden.
 
-Wählen Sie die Schaltfläche **Ausprobieren** neben dem folgenden Code aus, wählen Sie den **Bash** -Modus, wählen Sie **Speicherkonto erstellen** aus, und melden Sie sich bei Cloud Shell an. Kopieren Sie als Nächstes den folgenden Code, fügen Sie ihn in Azure Cloud Shell ein, und führen Sie ihn aus. Der Name des Azure Cosmos-Kontos muss global eindeutig sein. Achten Sie darauf, den `mysqlapicosmosdb`-Wert zu aktualisieren, bevor Sie den Befehl ausführen.
+Wählen Sie die Schaltfläche **Ausprobieren** neben dem folgenden Code aus, wählen Sie den **Bash**-Modus, wählen Sie **Speicherkonto erstellen** aus, und melden Sie sich bei Cloud Shell an. Kopieren Sie als Nächstes den folgenden Code, fügen Sie ihn in Azure Cloud Shell ein, und führen Sie ihn aus. Der Name des Azure Cosmos-Kontos muss global eindeutig sein. Achten Sie darauf, den `mysqlapicosmosdb`-Wert zu aktualisieren, bevor Sie den Befehl ausführen.
 
 ```azurecli-interactive
 
@@ -129,7 +129,7 @@ Die Beispielanwendung muss sich bei Ihrem Azure Cosmos-Konto authentifizieren. F
 
 1. Navigieren Sie zu Ihrem Azure Cosmos-Konto.
 
-1. Öffnen Sie den Bereich **Schlüssel** , und kopieren Sie den **URI** und den **PRIMÄRSCHLÜSSEL** Ihres Kontos. Den URI- und den Schlüsselwert fügen Sie im nächsten Schritt zu einer Umgebungsvariablen hinzu.
+1. Öffnen Sie den Bereich **Schlüssel**, und kopieren Sie den **URI** und den **PRIMÄRSCHLÜSSEL** Ihres Kontos. Den URI- und den Schlüsselwert fügen Sie im nächsten Schritt zu einer Umgebungsvariablen hinzu.
 
 ## <a name="object-model"></a><a id="object-model"></a>Objektmodell
 

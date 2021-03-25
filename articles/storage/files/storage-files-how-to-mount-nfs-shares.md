@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
 ms.openlocfilehash: 8a993d9c1de35132198de5e3becc4f16d6a2a437
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96621296"
 ---
 # <a name="how-to-mount-an-nfs-file-share"></a>Einbinden einer NFS-Dateifreigabe
@@ -36,8 +36,8 @@ ms.locfileid: "96621296"
 
 - Verwenden Sie eine der folgenden Netzwerklösungen:
     - Entweder [Erstellen eines privaten Endpunkts](storage-files-networking-endpoints.md#create-a-private-endpoint) (empfohlen) oder [Einschränken des Zugriffs auf den öffentlichen Endpunkt](storage-files-networking-endpoints.md#restrict-public-endpoint-access)
-    - [Konfigurieren eines P2S-VPNs (Point-to-Site) unter Linux zur Verwendung mit Azure Files](storage-files-configure-p2s-vpn-linux.md)
-    - [Konfigurieren eines Site-to-Site-VPNs zur Verwendung mit Azure Files](storage-files-configure-s2s-vpn.md)
+    - [Konfigurieren eines P2S-VPN (Point-to-Site) unter Linux zur Verwendung mit Azure Files](storage-files-configure-p2s-vpn-linux.md)
+    - [Konfigurieren eines Site-to-Site-VPN zur Verwendung mit Azure Files](storage-files-configure-s2s-vpn.md)
     - Konfigurieren von [ExpressRoute](../../expressroute/expressroute-introduction.md)
 
 ## <a name="disable-secure-transfer"></a>Deaktivieren der sicheren Übertragung

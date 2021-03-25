@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 10/16/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: d08046c8f29901dd9650a1edc886efa2ff226e00
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93086776"
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>Einrichten Ihrer Entwicklungsumgebung unter Mac OS X
@@ -49,7 +49,7 @@ Führen Sie die folgenden Schritte aus, um einen lokalen Docker-Container einzur
     >
 
     >[!TIP]
-    >Es empfiehlt sich, Docker beim Testen großer Anwendungen mehr Ressourcen zuzuordnen. Klicken Sie hierzu auf das **Docker-Symbol** und anschließend auf **Erweitert** , um die Anzahl von Kernen und die Speichermenge anzupassen.
+    >Es empfiehlt sich, Docker beim Testen großer Anwendungen mehr Ressourcen zuzuordnen. Klicken Sie hierzu auf das **Docker-Symbol** und anschließend auf **Erweitert**, um die Anzahl von Kernen und die Speichermenge anzupassen.
 
 2. Starten Sie den Cluster.<br/>
     <b>Ubuntu 18.04 LTS:</b>

@@ -3,18 +3,63 @@ title: 'Problembehandlung in Azure Automation: Probleme mit Änderungsnachverfol
 description: In diesem Artikel erfahren Sie, wie Sie Probleme mit dem Azure Automation-Feature für Änderungsnachverfolgung und Bestand beheben.
 services: automation
 ms.subservice: change-inventory-management
-ms.date: 01/31/2019
+ms.date: 02/15/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 516f1a4e5e7c677b17a2941ee3c300db44d49a3b
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: dd027f94edad580836f0afb8c7293c81ca77605a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896544"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101723825"
 ---
 # <a name="troubleshoot-change-tracking-and-inventory-issues"></a>Behandeln von Problemen mit Änderungsnachverfolgung und Bestand
 
 In diesem Artikel wird beschrieben, wie Sie Probleme mit der Änderungsnachverfolgung und dem Bestand in Azure Automation beheben und lösen. Allgemeine Informationen zu Änderungsnachverfolgung und Bestand finden Sie unter [Übersicht über Änderungsnachverfolgung und Bestand](../change-tracking/overview.md).
+
+## <a name="general-errors"></a>Allgemeine Fehler
+
+### <a name="scenario-machine-is-already-registered-to-a-different-account"></a><a name="machine-already-registered"></a>Szenario: Computer ist bereits bei einem anderen Konto registriert.
+
+### <a name="issue"></a>Problem
+
+Sie erhalten die folgende Fehlermeldung:
+
+```error
+Unable to Register Machine for Change Tracking, Registration Failed with Exception System.InvalidOperationException: {"Message":"Machine is already registered to a different account."}
+```
+
+### <a name="cause"></a>Ursache
+
+Der Computer wurde bereits in einem anderen Arbeitsbereich für die Änderungsnachverfolgung bereitgestellt.
+
+### <a name="resolution"></a>Auflösung
+
+1. Vergewissern Sie sich, dass Ihr Computer Meldungen an den richtigen Arbeitsbereich zurückgibt. Anweisungen zum Überprüfen dieses Punkts finden Sie unter [Überprüfen der Agent-Konnektivität mit Azure Monitor](../../azure-monitor/agents/agent-windows.md#verify-agent-connectivity-to-azure-monitor). Stellen Sie außerdem sicher, dass dieser Arbeitsbereich mit Ihrem Azure Automation-Konto verknüpft ist. Rufen Sie dafür Ihr Automation-Konto auf, und wählen Sie unter **Zugehörige Ressourcen** die Option **Verknüpfter Arbeitsbereich** aus.
+
+1. Stellen Sie sicher, dass die Computer im Log Analytics-Arbeitsbereich aufgeführt werden, der mit Ihrem Automation-Konto verknüpft ist. Führen Sie im Log Analytics-Arbeitsbereich die folgende Abfrage aus.
+
+   ```kusto
+   Heartbeat
+   | summarize by Computer, Solutions
+   ```
+
+   Wenn Ihr Computer nicht in den Abfrageergebnissen aufgeführt ist, wurde er in letzter Zeit nicht eingecheckt. Es liegt wahrscheinlich ein lokales Konfigurationsproblem vor. Sie sollten den Log Analytics-Agent neu installieren.
+
+   Wenn Ihr Computer in den Abfrageergebnissen aufgeführt ist, überprüfen Sie, ob unter der Lösungen-Eigenschaft **Änderungsnachverfolgung** aufgeführt ist. Damit wird überprüft, ob er bei Änderungsnachverfolgung und Bestand registriert ist. Wenn dies nicht zutrifft, suchen Sie nach Bereichskonfigurationsproblemen. Die Bereichskonfiguration bestimmt, welche Computer für Änderungsnachverfolgung und Bestand konfiguriert werden. Informationen zum Konfigurieren der Bereichskonfiguration für den Zielcomputer finden Sie unter [Aktivieren von „Änderungsnachverfolgung und Bestand“ über ein Automation-Konto](../change-tracking/enable-from-automation-account.md).
+
+   Führen Sie in Ihrem Arbeitsbereich diese Abfrage aus.
+
+   ```kusto
+   Operation
+   | where OperationCategory == 'Data Collection Status'
+   | sort by TimeGenerated desc
+   ```
+
+1. Wenn das Ergebnis ```Data collection stopped due to daily limit of free data reached. Ingestion status = OverQuota``` angezeigt wird, wurde ein für Ihren Arbeitsbereich definiertes Kontingent erreicht, wodurch das Speichern von Daten verhindert wird. Wechseln Sie in Ihrem Arbeitsbereich zu **Verstehen von Nutzung und geschätzten Kosten**. Wählen Sie entweder einen neuen **Tarif** aus, der Ihnen ermöglicht, mehr Daten zu verwenden, oder klicken Sie auf **Tageslimit**, und entfernen Sie das Limit.
+
+:::image type="content" source="./media/change-tracking/change-tracking-usage.png" alt-text="Nutzung und geschätzte Kosten" lightbox="./media/change-tracking/change-tracking-usage.png":::
+
+Wird das Problem dadurch immer noch nicht behoben, führen Sie die Schritte unter [Bereitstellen eines Windows Hybrid Runbook Workers](../automation-windows-hrw-install.md) aus, um den Hybrid Worker für Windows neu zu installieren. Informationen zu Linux finden Sie unter [Bereitstellen eines Linux Hybrid Runbook Workers](../automation-linux-hrw-install.md).
 
 ## <a name="windows"></a>Windows
 
@@ -96,11 +141,11 @@ Heartbeat
 | summarize by Computer, Solutions
 ```
 
-Wenn Ihr Computer nicht in den Abfrageergebnissen aufgeführt ist, wurde er in letzter Zeit nicht eingecheckt. Es liegt wahrscheinlich ein Problem mit der lokalen Konfiguration vor, und Sie sollten den Agent neu installieren. Weitere Informationen zur Installation und Konfiguration finden Sie unter [Sammeln von Protokolldaten mit dem Log Analytics-Agent](../../azure-monitor/platform/log-analytics-agent.md).
+Wenn Ihr Computer nicht in den Abfrageergebnissen aufgeführt ist, wurde er in letzter Zeit nicht eingecheckt. Es liegt wahrscheinlich ein Problem mit der lokalen Konfiguration vor, und Sie sollten den Agent neu installieren. Weitere Informationen zur Installation und Konfiguration finden Sie unter [Sammeln von Protokolldaten mit dem Log Analytics-Agent](../../azure-monitor/agents/log-analytics-agent.md).
 
 Wenn Ihr Computer in den Abfrageergebnissen angezeigt wird, überprüfen Sie die Bereichskonfiguration. Weitere Informationen finden Sie unter [Zielgruppenadressierung für Überwachungslösungen in Azure Monitor](../../azure-monitor/insights/solution-targeting.md).
 
-Weitere Informationen zum Troubleshooting für dieses Problem finden Sie unter [Problem: Es werden keine Linux-Daten angezeigt](../../azure-monitor/platform/agent-linux-troubleshoot.md#issue-you-are-not-seeing-any-linux-data).
+Weitere Informationen zum Troubleshooting für dieses Problem finden Sie unter [Problem: Es werden keine Linux-Daten angezeigt](../../azure-monitor/agents/agent-linux-troubleshoot.md#issue-you-are-not-seeing-any-linux-data).
 
 ##### <a name="log-analytics-agent-for-linux-not-configured-correctly"></a>Log Analytics-Agent für Linux nicht ordnungsgemäß konfiguriert
 

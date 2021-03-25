@@ -14,10 +14,10 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.openlocfilehash: 8c757f3e067aeac5d8145ca47b2eac145daba574
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88272449"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-device-authorization-grant-flow"></a>Microsoft Identity Platform und der OAuth 2.0-Flow für die Geräteautorisierungsgenehmigung
@@ -28,7 +28,7 @@ In diesem Artikel wird beschrieben, wie Sie direkt mit dem Protokoll in Ihrer An
 
 ## <a name="protocol-diagram"></a>Protokolldiagramm
 
-Der gesamte Gerätecodeflow ähnelt dem nächsten Diagramm. Wir beschreiben die einzelnen Schritte weiter unten in diesem Artikel.
+Der gesamte Gerätecodeflow sieht ähnlich wie im nächsten Diagramm aus. Wir beschreiben die einzelnen Schritte weiter unten in diesem Artikel.
 
 ![Gerätecodefluss](./media/v2-oauth2-device-code/v2-oauth-device-flow.svg)
 
@@ -59,7 +59,7 @@ scope=user.read%20openid%20profile
 
 ### <a name="device-authorization-response"></a>Geräteautorisierungsantwort
 
-Eine erfolgreicher Antwort besteht aus einem JSON-Objekt, das die erforderlichen Informationen enthält, mit denen sich der Benutzer anmelden kann.
+Eine erfolgreiche Antwort wird ein JSON-Objekt sein, das die erforderlichen Informationen enthält, um dem Benutzer die Anmeldung zu ermöglichen.
 
 | Parameter | Format | BESCHREIBUNG |
 | ---              | --- | --- |

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: b2164f8927e5c3224f8b07c30d057f48fb7bbc32
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87495969"
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>Einrichten der Notfallwiederherstellung für Hyper-V-VMs an einem sekundären lokalen Standort
@@ -95,14 +95,14 @@ Installieren Sie den Azure Site Recovery-Anbieter auf den VMM-Servern, und ermit
 5. Klicken Sie nach Abschluss der Installation auf **Registrieren**, um den Server im Tresor zu registrieren.
 
     ![Screenshot des Installationsbildschirms für den Anbieter einschließlich des Installationsspeicherorts](./media/hyper-v-vmm-disaster-recovery/provider-register.png)
-6. Prüfen Sie unter **Tresorname**den Namen des Tresors, in dem der Server registriert wird. Klicken Sie auf **Weiter**.
+6. Prüfen Sie unter **Tresorname** den Namen des Tresors, in dem der Server registriert wird. Klicken Sie auf **Weiter**.
 7. Geben Sie unter **Proxyverbindung** an, wie der auf dem VMM-Server ausgeführte Anbieter eine Verbindung mit Azure herstellen soll.
    - Der Anbieter kann entweder eine direkte oder eine proxybasierte Internetverbindung herstellen. Geben Sie ggf. Proxyeinstellungen an.
    - Bei Verwendung eines Proxys wird automatisch ein ausführendes VMM-Konto (DRAProxyAccount) mit den angegebenen Proxyanmeldeinformationen erstellt. Konfigurieren Sie den Proxyserver so, dass dieses Konto erfolgreich authentifiziert werden kann. Die Einstellungen für ausführende Konten können über die VMM-Konsole unter **Einstellungen** > **Sicherheit** > **Ausführende Konten** geändert werden.
    - Starten Sie den VMM-Dienst neu, um die Änderungen zu übernehmen.
 8. Wählen Sie unter **Registrierungsschlüssel** den Schlüssel aus, den Sie heruntergeladen und auf den VMM-Server kopiert haben.
 9. Die Verschlüsselungseinstellung ist für dieses Szenario nicht relevant. 
-10. Geben Sie unter **Servername**einen Anzeigenamen ein, um den VMM-Server im Tresor zu identifizieren. Geben Sie in einem Cluster den Rollennamen des VMM-Clusters an.
+10. Geben Sie unter **Servername** einen Anzeigenamen ein, um den VMM-Server im Tresor zu identifizieren. Geben Sie in einem Cluster den Rollennamen des VMM-Clusters an.
 11. Wählen Sie unter **Cloudmetadaten synchronisieren** aus, ob Sie Metadaten für alle Clouds auf dem VMM-Server synchronisieren möchten. Diese Aktion muss für jeden VMM-Server nur einmal ausgeführt werden. Wenn Sie nicht alle Clouds synchronisieren möchten, lassen Sie diese Einstellung deaktiviert. Sie können jede Cloud einzeln in der VMM-Konsole in den Cloudeigenschaften synchronisieren.
 12. Klicken Sie auf **Weiter** , um den Prozess abzuschließen. Nach der Registrierung werden die Metadaten von Azure Site Recovery vom VMM-Server abgerufen. Der Server wird im Tresor unter **Server** > **VMM-Server** angezeigt.
 13. Sobald der Server im Tresor angezeigt wird, wählen Sie unter **Quelle** > **Quelle vorbereiten** den VMM-Server sowie die Cloud aus, in der sich der Hyper-V-Host befindet. Klicken Sie dann auf **OK**.
@@ -123,13 +123,13 @@ Wählen Sie VMM-Zielserver und Cloud aus:
 Bevor Sie beginnen, stellen Sie sicher, dass alle Hosts, die die Richtlinie verwenden, über dasselbe Betriebssystem verfügen. Wenn auf Hosts unterschiedliche Versionen von Windows Server ausgeführt werden, benötigen Sie mehrere Replikationsrichtlinien.
 
 1. Klicken Sie zum Erstellen einer neuen Replikationsrichtlinie auf **Infrastruktur vorbereiten** > **Replikationseinstellungen** >  **+Erstellen und zuordnen**.
-2. Geben Sie unter **Richtlinie erstellen und zuordnen**einen Richtliniennamen an. Quell- und Zieltyp müssen jeweils **Hyper-V**lauten.
+2. Geben Sie unter **Richtlinie erstellen und zuordnen** einen Richtliniennamen an. Quell- und Zieltyp müssen jeweils **Hyper-V** lauten.
 3. Wählen Sie unter **Hyper-V-Hostversion** aus, welches Betriebssystem auf dem Host ausgeführt wird.
 4. Geben Sie unter **Authentifizierungstyp** und **Authentifizierungsport** an, wie der Datenverkehr zwischen dem primären und dem Hyper-V-Wiederherstellungs-Hostserver authentifiziert wird.
     - Wählen Sie **Zertifikat** aus, sofern Sie nicht über eine funktionsfähige Kerberos-Umgebung verfügen. Azure Site Recovery konfiguriert automatisch Zertifikate für die HTTPS-Authentifizierung. Sie müssen gar nichts manuell durchführen.
     - Standardmäßig werden die Ports 8083 und 8084 (für Zertifikate) in der Windows-Firewall auf den Hyper-V-Hostservern geöffnet.
-    - Wenn Sie **Kerberos**auswählen, wird ein Kerberos-Ticket für die gegenseitige Authentifizierung der Hostserver verwendet. Kerberos ist nur für Hyper-V-Hostserver relevant, die unter Windows Server 2012 R2 oder höher laufen.
-1. Geben Sie unter **Kopierhäufigkeit**an, wie oft Sie Deltadaten nach der ersten Replikation replizieren möchten (alle 30 Sekunden, nach 5 Minuten oder nach 15 Minuten).
+    - Wenn Sie **Kerberos** auswählen, wird ein Kerberos-Ticket für die gegenseitige Authentifizierung der Hostserver verwendet. Kerberos ist nur für Hyper-V-Hostserver relevant, die unter Windows Server 2012 R2 oder höher laufen.
+1. Geben Sie unter **Kopierhäufigkeit** an, wie oft Sie Deltadaten nach der ersten Replikation replizieren möchten (alle 30 Sekunden, nach 5 Minuten oder nach 15 Minuten).
 2. Geben Sie unter **Aufbewahrungszeitraum des Wiederherstellungspunkts** die Größe des Aufbewahrungszeitfensters für die einzelnen Wiederherstellungspunkte in Stunden an. Replizierte Computer können innerhalb eines Zeitfensters an einem beliebigen Punkt wiederhergestellt werden.
 3. Geben Sie unter **App-konsistente Momentaufnahmehäufigkeit** an, wie häufig (1 bis 12 Stunden) Wiederherstellungspunkte erstellt werden sollen, die anwendungskonsistente Momentaufnahmen enthalten. Hyper-V verwendet zwei Arten von Momentaufnahmen:
     - **Standardmomentaufnahme**: Bietet eine inkrementelle Momentaufnahme des gesamten virtuellen Computers.

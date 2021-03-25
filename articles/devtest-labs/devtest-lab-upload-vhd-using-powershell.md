@@ -4,10 +4,10 @@ description: Dieser Artikel enthält eine exemplarische Vorgehensweise, in der g
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 2b393b886a50f60a918690ee2a5583f9623dbe39
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88650756"
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-powershell"></a>Hochladen von VHD-Dateien in das Speicherkonto des Labs mithilfe von PowerShell
@@ -26,7 +26,7 @@ Die folgenden Schritte führen Sie durch das Hochladen einer VHD-Datei in Azure 
 
 1. Wählen Sie in der Liste der Labs das gewünschte Lab aus.  
 
-1. Wählen Sie auf dem Blatt des Labs **Konfiguration**aus. 
+1. Wählen Sie auf dem Blatt des Labs **Konfiguration** aus. 
 
 1. Wählen Sie auf dem Blatt **Konfiguration** für das Lab die Option **Benutzerdefinierte Images (VHDs)** aus.
 

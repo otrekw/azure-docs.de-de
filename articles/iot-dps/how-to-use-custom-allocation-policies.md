@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 ms.custom: devx-track-csharp, devx-track-azurecli
 ms.openlocfilehash: 14a405dbab0460f841a5e9104dbfeff101568f44
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98919202"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>Verwenden benutzerdefinierter Zuweisungsrichtlinien
@@ -148,7 +148,7 @@ In diesem Abschnitt erstellen Sie eine Azure-Funktion, die Ihre benutzerdefinier
 
     ![Erstellen einer Azure-Funktions-App zum Hosten der benutzerdefinierten Zuordnungsfunktion](./media/how-to-use-custom-allocation-policies/create-function-app.png)
 
-4. Wählen Sie auf der Seite **Zusammenfassung** die Option **Erstellen** aus, um die Funktions-App zu erstellen. Die Bereitstellung kann mehrere Minuten dauern. Wenn der Vorgang abgeschlossen ist, wählen Sie **Zu Ressource wechseln** aus.
+4. Wählen Sie auf der Seite **Zusammenfassung** die Option **Erstellen** aus, um die Funktions-App zu erstellen. Die Bereitstellung kann einige Minuten dauern. Wenn der Vorgang abgeschlossen ist, wählen Sie **Zu Ressource wechseln** aus.
 
 5. Klicken Sie im linken Bereich der Funktions-App auf der Seite **Übersicht** auf **Funktionen** und dann auf **+ Hinzufügen**, um die neue Funktion hinzuzufügen.
 
@@ -430,7 +430,7 @@ In diesem Abschnitt wird eine Windows-Arbeitsstation vorausgesetzt. Ein Beispiel
 
     Sie sollten damit rechnen, dass die Ausführung dieses Vorgangs mehrere Minuten in Anspruch nimmt.
 
-4. Erstellen Sie ein `cmake`-Unterverzeichnis im Stammverzeichnis des Git-Repositorys, und navigieren Sie zu diesem Ordner. Führen Sie die folgenden Befehle aus dem Verzeichnis `azure-iot-sdk-c` aus:
+4. Erstellen Sie ein `cmake`-Unterverzeichnis im Stammverzeichnis des Git-Repositorys, und navigieren Sie zu diesem Ordner. Führen Sie die folgenden Befehle im `azure-iot-sdk-c`-Verzeichnis aus:
 
     ```cmd/sh
     mkdir cmake
@@ -467,7 +467,7 @@ In diesem Abschnitt aktualisieren Sie ein Bereitstellungsbeispiel mit dem Namen 
 
 Dieser Beispielcode simuliert eine Gerätestartsequenz, von der die Bereitstellungsanforderung an die Instanz des Device Provisioning Service gesendet wird. Die Startsequenz bewirkt, dass der Toaster erkannt und mithilfe der benutzerdefinierten Zuweisungsrichtlinie dem IoT-Hub zugewiesen wird.
 
-1. Navigieren Sie im Azure-Portal zur Registerkarte **Übersicht** für Ihren Device Provisioning Service, und notieren Sie sich den Wert unter **_ID-Bereich_** .
+1. Navigieren Sie im Azure-Portal zur Registerkarte **Übersicht** für Ihren Device Provisioning Service, und notieren Sie sich den Wert unter **_ID-Bereich_**.
 
     ![Extrahieren von Informationen zum Device Provisioning Service-Endpunkt aus dem Portalblatt](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
 

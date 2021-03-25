@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.subservice: machine-learning
 ms.date: 09/13/2020
 ms.openlocfilehash: 56b9a98eb72b375aacfeb7cb147997028d3d9ba7
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98116805"
 ---
 # <a name="train-machine-learning-models"></a>Trainieren von Machine Learning-Modellen
@@ -30,11 +30,11 @@ Es gibt zwei skalierbare Bibliotheken für maschinelles Lernen, die algorithmisc
 
 ## <a name="popular-libraries"></a>Beliebte Bibliotheken
 Jeder Apache Spark-Pool in Azure Synapse Analytics wird mit einer Reihe beliebter, vorab geladener Machine Learning-Bibliotheken bereitgestellt. Diese Bibliotheken enthalten wiederverwendbaren Code, den Sie in Ihren Programmen oder Projekten nutzen können. Zu den relevanten Machine Learning-Bibliotheken, die standardmäßig enthalten sind, gehören die folgenden:
-- [Scikit-learn](https://scikit-learn.org/stable/index.html) ist eine der beliebtesten Machine Learning-Bibliotheken für einen einzelnen Knoten für klassische ML-Algorithmen. Scikit-learn unterstützt die meisten beaufsichtigten und unbeaufsichtigten Lernalgorithmen und kann auch für Data Mining und Datenanalyse verwendet werden.
+- [Scikit-learn](https://scikit-learn.org/stable/index.html) ist eine der beliebtesten Machine Learning-Bibliotheken für einen Knoten für klassische ML-Algorithmen. Scikit-learn unterstützt die meisten beaufsichtigten und unbeaufsichtigten Lernalgorithmen und kann ebenfalls für Data Mining und Datenanalyse verwendet werden.
   
-- [XGBoost](https://xgboost.readthedocs.io/en/latest/) ist eine beliebte Machine Learning-Bibliothek, die optimierte Algorithmen zum Trainieren von Entscheidungsstrukturen und zufallsbasierten Gesamtstrukturen enthält. 
+- [XGBoost](https://xgboost.readthedocs.io/en/latest/) ist eine beliebte Machine Learning-Bibliothek, die optimierte Algorithmen zum Trainieren von Entscheidungsstrukturen und zufälligen Gesamtstrukturen enthält. 
   
-- [PyTorch](https://pytorch.org/) und [Tensorflow](https://www.tensorflow.org/) sind leistungsstarke Deep Learning-Bibliotheken von Python. Innerhalb eines Apache Spark-Pools in Azure Synapse Analytics können Sie mithilfe dieser Bibliotheken Modelle mit einzelnen Computern erstellen, indem Sie die Anzahl von Executors in Ihrem Pool auf Null festlegen. Auch wenn Apache Spark in dieser Konfiguration nicht funktionsfähig ist, stellt es eine einfache und kostengünstige Möglichkeit dar, Modelle mit einzelnen Computern zu erstellen.
+- [PyTorch](https://pytorch.org/) & [Tensorflow](https://www.tensorflow.org/) sind leistungsfähige Deep Learning-Bibliotheken von Python. Innerhalb eines Apache Spark-Pools in Azure Synapse Analytics können Sie diese Bibliotheken verwenden, um Modelle mit einzelnen Computern zu erstellen, indem Sie die Anzahl von Executors in Ihrem Pool auf Null festlegen. Auch wenn Apache Spark in dieser Konfiguration nicht funktionsfähig ist, stellt es eine einfache und kostengünstige Möglichkeit dar, Modelle mit einzelnen Computern zu erstellen.
 
 Weitere Informationen zu den verfügbaren Bibliotheken und zugehörigen Versionen finden Sie in der veröffentlichten [Azure Synapse Analytics-Runtime](../spark/apache-spark-version-support.md).
 
