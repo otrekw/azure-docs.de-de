@@ -3,21 +3,25 @@ title: Konfigurieren von Berechtigungen für den Azure VM Image Builder-Dienst m
 description: Konfigurieren von Anforderungen für den Azure VM Image Builder-Dienst einschließlich Berechtigungen und Rechten mithilfe der Azure CLI
 author: cynthn
 ms.author: danis
-ms.date: 03/02/2021
+ms.date: 04/02/2021
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: image-builder
 ms.collection: linux
-ms.openlocfilehash: f9b60af2c9fe16f834ce3098266c03afe2b99667
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: eb4fe102407bf519c9253ac7da39178ad8cacb0c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101695429"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104607533"
 ---
 # <a name="configure-azure-image-builder-service-permissions-using-azure-cli"></a>Konfigurieren von Berechtigungen für den Azure VM Image Builder-Dienst mithilfe der Azure CLI
 
-Für den Azure VM Image Builder-Dienst müssen Berechtigungen und Rechte konfiguriert werden, bevor ein Image erstellt wird. In den folgenden Abschnitten erfahren Sie, wie mögliche Szenarios mithilfe der Azure CLI konfiguriert werden.
+Wenn Sie sich für die (AIB) registrieren, wird dem AIB-Dienst die Berechtigung zum Erstellen, Verwalten und Löschen einer Stagingressourcengruppe (IT_ *) und zum Hinzufügen von Ressourcen erteilt, die für die Imageerstellung erforderlich sind. Dies erfolgt dadurch, dass im Rahmen einer erfolgreichen Registrierung ein AIB-Dienstprinzipalname (Service Principal Name, SPN) in Ihrem Abonnement verfügbar gemacht wird.
+
+Damit Azure VM Image Builder Images an die verwalteten Images oder an eine Shared Image Gallery verteilen kann, müssen Sie eine benutzerseitig zugewiesene Azure-Identität erstellen, die über Berechtigungen zum Lesen und Schreiben von Images verfügt. Wenn Sie auf Azure Storage zugreifen, sind dafür Berechtigungen zum Lesen privater oder öffentlicher Container erforderlich.
+
+Vor dem Erstellen eines Images müssen Berechtigungen und Rechte eingerichtet werden. In den folgenden Abschnitten erfahren Sie, wie mögliche Szenarios mithilfe der Azure CLI konfiguriert werden.
 
 > [!IMPORTANT]
 > Azure Image Builder ist derzeit als öffentliche Vorschauversion verfügbar.
@@ -235,7 +239,7 @@ Ersetzen Sie die folgenden Platzhaltereinstellungen:
 | \<Storage account container\> | Name des Containers mit dem Speicherkonto |
 | \<Subscription ID\> | Azure-Abonnement |
 
-Weitere Informationen zur Verwendung einer benutzerseitig zugewiesenen verwalteten Identität finden Sie unter [Erstellen eines benutzerdefinierten Images mit einer benutzerseitig zugewiesenen verwaltete Identität in Azure für den nahtlosen Zugriff auf Azure Storage-Dateien](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-user-assigned-identity). In diesem Schnellstart durchlaufen Sie das Erstellen und Konfigurieren der benutzerseitig zugewiesenen verwalteten Identität für den Zugriff auf ein Speicherkonto.
+Weitere Informationen zur Verwendung einer benutzerseitig zugewiesenen verwalteten Identität finden Sie unter [Erstellen eines benutzerdefinierten Images mit einer benutzerseitig zugewiesenen verwaltete Identität in Azure für den nahtlosen Zugriff auf Azure Storage-Dateien](./image-builder-user-assigned-identity.md). In diesem Schnellstart durchlaufen Sie das Erstellen und Konfigurieren der benutzerseitig zugewiesenen verwalteten Identität für den Zugriff auf ein Speicherkonto.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

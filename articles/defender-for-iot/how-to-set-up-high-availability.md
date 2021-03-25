@@ -1,18 +1,14 @@
 ---
 title: Einrichten der Hochverfügbarkeit
 description: Erhöhen Sie die Resilienz ihrer Defender für IoT-Bereitstellung, indem Sie die lokale Verwaltungskonsole als Hochverfügbarkeits-Appliance installieren. Mit einer Hochverfügbarkeitsbereitstellung wird sichergestellt, dass Ihre verwalteten Sensoren laufend an eine aktive lokale Verwaltungskonsole berichten können.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 12/07/2020
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: 8b647d5e97439db4805a7346a02db3f845dc9e37
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: d0e09cd37fbae91d1903ca8f175c0592b567da6e
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100523888"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104781652"
 ---
 # <a name="about-high-availability"></a>Informationen zur Hochverfügbarkeit
 
@@ -149,6 +145,6 @@ So führen Sie das Hochverfügbarkeits-Update aus
 
 3. Aktualisieren Sie die Sensoren.
 
-## <a name="next-steps"></a>Nächste Schritte
+## <a name="see-also"></a>Weitere Informationen
 
 [Aktivieren und Einrichten der lokalen Verwaltungskonsole](how-to-activate-and-set-up-your-on-premises-management-console.md)

@@ -1,70 +1,62 @@
 ---
 title: 'Telemetrieprozessoren (Vorschau): Azure Monitor Application Insights für Java'
-description: Konfigurieren von Telemetrieprozessoren in Azure Monitor Application Insights für Java
+description: Hier erfahren Sie, wie Sie Telemetrieprozessoren in Azure Monitor Application Insights für Java konfigurieren.
 ms.topic: conceptual
 ms.date: 10/29/2020
 author: kryalama
 ms.custom: devx-track-java
 ms.author: kryalama
-ms.openlocfilehash: c0745dd4069c64292fbcaef666d843ae2d25f7b3
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 35e53454e5b2c6265082bbedb4a8b60e82df7191
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632579"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101734569"
 ---
 # <a name="telemetry-processors-preview---azure-monitor-application-insights-for-java"></a>Telemetrieprozessoren (Vorschau): Azure Monitor Application Insights für Java
 
 > [!NOTE]
-> Dieses Feature befindet sich noch in der Vorschauphase.
+> Das Feature „Telemetrieprozessoren“ befindet sich in der Vorschau.
 
-Der Java 3.0-Agent für Application Insights verfügt jetzt über Funktionen, um Telemetriedaten zu verarbeiten, bevor die Daten exportiert werden.
+Der Java 3.0-Agent für Application Insights kann Telemetriedaten verarbeiten, bevor die Daten exportiert werden.
 
-Hier einige Anwendungsfälle für Telemetrieprozessoren:
- * Maskieren vertraulicher Daten
+Hier sehen Sie einige Anwendungsfälle für Telemetrieprozessoren:
+ * Erstellen vertraulicher Daten
  * Bedingtes Hinzufügen benutzerdefinierter Dimensionen
- * Aktualisieren des Namens, der für die Aggregation und Anzeige im Azure-Portal genutzt wird
+ * Aktualisieren des Namens des span-Elements, das zum Aggregieren ähnlicher Telemetriedaten im Azure-Portal verwendet wird
  * Verwerfen von span-Attributen zur Senkung von Erfassungskosten
 
-## <a name="terminology"></a>Begriff
+## <a name="terminology"></a>Terminologie
 
-Bevor wir uns mit Telemetrieprozessoren beschäftigen, müssen Sie verstehen, was „span“ bedeutet.
-
-„span“ (Deutsch: Spanne bzw. Zeitspanne) ist eine allgemeine Bezeichnung für die folgenden drei Punkte:
+Bevor Sie mehr über Telemetrieprozessoren erfahren, müssen Sie wissen, was genau der Begriff *span* bedeutet. Ein span ist eine allgemeine Bezeichnung für Folgendes:
 
 * Eine eingehende Anforderung
 * Eine ausgehende Abhängigkeit (z. B. ein Remoteaufruf eines anderen Diensts)
 * Eine In-Process-Abhängigkeit (z. B. Vorgänge, die von Unterkomponenten des Diensts durchgeführt werden)
 
-Bei Telemetrieprozessoren sollten die folgenden wichtigen Komponenten berücksichtigt werden:
+Bei Telemetrieprozessoren sind die folgenden span-Komponenten wichtig:
 
 * Name
 * Attribute
 
-Der span-Name ist das primäre Anzeigeelement, das im Azure-Portal für Anforderungen und Abhängigkeiten genutzt wird.
-
-Die span-Attribute stehen sowohl für die standardmäßigen als auch die benutzerdefinierten Eigenschaften einer bestimmten Anforderung oder Abhängigkeit.
+Der span-Name ist das primäre Anzeigeelement für Anforderungen und Abhängigkeiten im Azure-Portal. Die span-Attribute repräsentieren sowohl standardmäßige als auch benutzerdefinierte Eigenschaften einer bestimmten Anforderung oder Abhängigkeit.
 
 ## <a name="telemetry-processor-types"></a>Arten von Telemetrieprozessoren
 
-Derzeit gibt es zwei Arten von Telemetrieprozessoren.
-
-#### <a name="attribute-processor"></a>attribute-Prozessor
+Derzeit gibt es zwei Arten von Telemetrieprozessoren: attribute-Prozessoren und span-Prozessoren.
 
 Mit einem attribute-Prozessor können Attribute eingefügt, aktualisiert, gelöscht oder mit einem Hash versehen werden.
-Darüber hinaus können auch ein oder mehrere Attribute (per regulärem Ausdruck) aus einem vorhandenen Attribut extrahiert werden.
+Darüber hinaus können mithilfe eines regulären Ausdrucks ein oder mehrere Attribute aus einem vorhandenen Attribut extrahiert werden.
 
-#### <a name="span-processor"></a>span-Prozessor
-
-Mit einem span-Prozessor kann der Telemetriename aktualisiert werden.
-Außerdem können ein oder mehrere Attribute (per regulärem Ausdruck) aus dem span-Namen extrahiert werden.
+Mit einem span-Prozessor kann der Name einer Telemetrie aktualisiert werden.
+Außerdem können mithilfe eines regulären Ausdrucks ein oder mehrere Attribute aus dem span-Namen extrahiert werden.
 
 > [!NOTE]
-> Beachten Sie Folgendes: Derzeit werden von Telemetrieprozessoren nur Prozessattribute vom Typ „Zeichenfolge“ verarbeitet (nicht vom Typ „Boolesch“ oder „Zahl“).
+> Derzeit verarbeiten Telemetrieprozessoren nur Attribute des Typs „string“. Boolesche oder Zahlenattribute werden nicht verarbeitet.
 
 ## <a name="getting-started"></a>Erste Schritte
 
-Erstellen Sie eine Konfigurationsdatei mit dem Namen `applicationinsights.json`, und legen Sie sie im gleichen Verzeichnis wie `applicationinsights-agent-*.jar` mit folgender Vorlage ab.
+Zunächst erstellen Sie eine Konfigurationsdatei namens *applicationinsights.json*. Speichern Sie diese im gleichen Verzeichnis, in dem sich auch *applicationinsights-agent-\*.jar* befindet. Verwenden Sie hierfür die folgende Vorlage.
 
 ```json
 {
@@ -88,29 +80,27 @@ Erstellen Sie eine Konfigurationsdatei mit dem Namen `applicationinsights.json`,
 }
 ```
 
-## <a name="includeexclude-criteria"></a>Include/Exclude-Kriterien
+## <a name="include-criteria-and-exclude-criteria"></a>Einschluss- und Ausschlusskriterien (include und exclude)
 
 Für attribute-Prozessoren und span-Prozessoren werden jeweils optionale Kriterien für das Ein- und Ausschließen (`include` und `exclude`) unterstützt.
-Ein Prozessor wird nur auf die span-Elemente angewendet, für die sich eine Übereinstimmung mit den `include`-Kriterien (falls angegeben) _und_ keine Übereinstimmung mit den `exclude`-Kriterien (falls angegeben) ergibt.
+Ein Prozessor wird nur auf span-Elemente angewendet, die mit den `include`-Kriterien übereinstimmen (sofern angegeben) _und_ nicht mit den `exclude`-Kriterien übereinstimmen (sofern angegeben).
 
-Um diese Option zu konfigurieren, ist unter `include` und/oder `exclude` mindestens ein `matchType` und ein Exemplar von `spanNames` oder `attributes` erforderlich.
-Die Konfiguration für das Ein- bzw. Ausschließen wird unterstützt, damit mehr als eine angegebene Bedingung vorhanden ist.
-Alle angegebenen Bedingungen müssen als „true“ ausgewertet werden, damit eine Entsprechung auftritt. 
+Zum Konfigurieren dieser Option geben Sie unter `include` oder `exclude` (oder beidem) mindestens einen `matchType` sowie entweder `spanNames` oder `attributes` an.
+Die include-/exclude-Konfiguration ermöglicht mehr als eine angegebene Bedingung.
+Alle angegebenen Bedingungen müssen als TRUE ausgewertet werden, damit eine Übereinstimmung erzielt wird. 
 
-**Pflichtfeld**: 
-* `matchType` steuert, wie Elemente in den `spanNames`- und `attributes`-Arrays interpretiert werden. Mögliche Werte sind `regexp` oder `strict`. 
+* **Erforderliches Feld**: `matchType` steuert, wie Elemente in `spanNames`-Arrays und `attributes`-Arrays interpretiert werden. Mögliche Werte sind `regexp` und `strict`. 
 
-**Optionale Felder**: 
-* `spanNames` muss mindestens einem der Elemente entsprechen. 
-* `attributes` gibt die Liste der Attribute für den Vergleich an. Voraussetzung einer Übereinstimmung ist, dass alle diese Attribute genau zutreffen.
-
+* **Optionale Felder**: 
+    * `spanNames` muss mindestens einem der Elemente entsprechen. 
+    * `attributes` gibt die Liste der Attribute an, für die eine Übereinstimmung erzielt werden muss. All diese Attribute müssen exakt übereinstimmen.
+    
 > [!NOTE]
-> Wenn sowohl `include` als auch `exclude` angegeben wird, werden die `include`-Eigenschaften vor den `exclude`-Eigenschaften geprüft.
+> Wenn sowohl `include` als auch `exclude` angegeben ist, werden die `include`-Eigenschaften vor den `exclude`-Eigenschaften geprüft.
 
-#### <a name="sample-usage"></a>Beispielverwendung
+### <a name="sample-usage"></a>Beispielverwendung
 
 ```json
-
 "processors": [
   {
     "type": "attribute",
@@ -143,15 +133,20 @@ Alle angegebenen Bedingungen müssen als „true“ ausgewertet werden, damit ei
   }
 ]
 ```
-Weitere Informationen finden Sie in der Dokumentation mit [Beispielen für Telemetrieprozessoren](./java-standalone-telemetry-processors-examples.md).
+Weitere Informationen finden Sie unter [Beispiele für Telemetrieprozessoren](./java-standalone-telemetry-processors-examples.md).
 
 ## <a name="attribute-processor"></a>Attributprozessor
 
-Der Attributprozessor ändert Attribute einer Span. Er unterstützt optional die Möglichkeit zum Einschließen/Ausschließen von Spans. Eine Liste von Aktionen ist erforderlich, deren Ausführungsreihenfolge in der Konfigurationsdatei angegeben wird. Die unterstützten Aktionen sind:
+Der Attributprozessor ändert Attribute eines span-Elements. Er kann die Fähigkeit unterstützen, span-Elemente ein- oder auszuschließen. Er akzeptiert eine Liste von Aktionen, die in der Reihenfolge ausgeführt werden, die in der Konfigurationsdatei angegeben ist. Der Prozessor unterstützt die folgenden Aktionen:
 
+- `insert`
+- `update`
+- `delete`
+- `hash`
+- `extract`
 ### `insert`
 
-Fügt ein neues Attribut in span-Elemente ein, wenn der Schlüssel noch nicht vorhanden ist.   
+Die `insert`-Aktion fügt ein neues Attribut in span-Elemente ein, in denen der Schlüssel noch nicht vorhanden ist.   
 
 ```json
 "processors": [
@@ -167,14 +162,14 @@ Fügt ein neues Attribut in span-Elemente ein, wenn der Schlüssel noch nicht vo
   }
 ]
 ```
-Für die `insert`-Aktion wird Folgendes benötigt:
-  * `key`
-  * Entweder `value` oder `fromAttribute`
-  * `action`:`insert`
+Die `insert`-Aktion erfordert die folgenden Einstellungen:
+* `key`
+* Entweder `value` oder `fromAttribute`
+* `action`: `insert`
 
 ### `update`
 
-Aktualisiert ein Attribut in Spans, wo der Schlüssel vorhanden ist.
+Die `update`-Aktion aktualisiert ein Attribut in span-Elementen, in denen der Schlüssel bereits vorhanden ist.
 
 ```json
 "processors": [
@@ -190,15 +185,15 @@ Aktualisiert ein Attribut in Spans, wo der Schlüssel vorhanden ist.
   }
 ]
 ```
-Für die `update`-Aktion wird Folgendes benötigt:
-  * `key`
-  * Entweder `value` oder `fromAttribute`
-  * `action`:`update`
+Die `update`-Aktion erfordert die folgenden Einstellungen:
+* `key`
+* Entweder `value` oder `fromAttribute`
+* `action`: `update`
 
 
 ### `delete` 
 
-Löscht ein Attribut aus einer Span.
+Die `delete`-Aktion löscht ein Attribut aus einem span-Element.
 
 ```json
 "processors": [
@@ -213,13 +208,13 @@ Löscht ein Attribut aus einer Span.
   }
 ]
 ```
-Für die `delete`-Aktion wird Folgendes benötigt:
-  * `key`
-  * `action`: `delete`
+Die `delete`-Aktion erfordert die folgenden Einstellungen:
+* `key`
+* `action`: `delete`
 
 ### `hash`
 
-Versieht einen vorhandenen Attributwert mit einem Hash (SHA1).
+Die `hash`-Aktion versieht einen vorhandenen Attributwert mit einem Hash (SHA1).
 
 ```json
 "processors": [
@@ -234,16 +229,16 @@ Versieht einen vorhandenen Attributwert mit einem Hash (SHA1).
   }
 ]
 ```
-Für die `hash`-Aktion wird Folgendes benötigt:
+Die `hash`-Aktion erfordert die folgenden Einstellungen:
 * `key`
-* `action` : `hash`
+* `action`: `hash`
 
 ### `extract`
 
 > [!NOTE]
-> Dieses Feature ist erst ab Version 3.0.2 verfügbar.
+> Das `extract`-Feature ist erst ab Version 3.0.2 verfügbar.
 
-Hiermit werden Werte mithilfe einer regEx-Regel aus dem Eingabeschlüssel in den in der Regel angegebenen Zielschlüssel extrahiert. Wenn ein Zielschlüssel bereits vorhanden ist, wird er überschrieben. Dieses Attribut verhält sich ähnlich wie die `toAttributes`-Einstellung des [span-Prozessors](#extract-attributes-from-span-name), wobei das vorhandene Attribut als Quelle dient.
+Die `extract`-Aktion extrahiert Werte mithilfe einer RegEx-Regel aus dem Eingabeschlüssel in die in der Regel angegebenen Zielschlüssel. Wenn ein Zielschlüssel bereits vorhanden ist, wird er überschrieben. Diese Aktion verhält sich wie die `toAttributes`-Einstellung [span-Prozessor](#extract-attributes-from-the-span-name), wobei das vorhandene Attribut die Quelle ist.
 
 ```json
 "processors": [
@@ -259,28 +254,24 @@ Hiermit werden Werte mithilfe einer regEx-Regel aus dem Eingabeschlüssel in den
   }
 ]
 ```
-Für die `extract`-Aktion wird Folgendes benötigt:
+Die `extract`-Aktion erfordert die folgenden Einstellungen:
 * `key`
 * `pattern`
-* `action` : `extract`
+* `action`: `extract`
 
-Weitere Informationen finden Sie in der Dokumentation mit [Beispielen für Telemetrieprozessoren](./java-standalone-telemetry-processors-examples.md).
+Weitere Informationen finden Sie unter [Beispiele für Telemetrieprozessoren](./java-standalone-telemetry-processors-examples.md).
 
 ## <a name="span-processor"></a>span-Prozessor
 
-Der Span-Prozessor ändert entweder den Span-Namen oder die Attribute einer Span basierend auf dem Span-Namen. Er unterstützt optional die Möglichkeit zum Einschließen/Ausschließen von Spans.
+Der Span-Prozessor ändert entweder den Span-Namen oder die Attribute einer Span basierend auf dem Span-Namen. Er kann die Fähigkeit unterstützen, span-Elemente ein- oder auszuschließen.
 
 ### <a name="name-a-span"></a>Name einer Span
 
-Die folgende Einstellung ist als Teil des Namensabschnitts erforderlich:
+Der `name`-Abschnitt erfordert die Einstellung `fromAttributes`. Die Werte dieser Attribute werden verwendet, um einen neuen Namen zu erstellen, verkettet in der Reihenfolge, die in der Konfiguration angegeben ist. Der Prozessor ändert den Namen des span-Elements nur, wenn all diese Attribute im span-Element vorhanden sind.
 
-* `fromAttributes`: Der Attributwert für die Schlüssel wird verwendet, um einen neuen Namen in der in der Konfiguration angegebenen Reihenfolge zu erstellen. Alle Attributschlüssel müssen in der Span angegeben werden, damit der Prozessor sie umbenennen kann.
-
-Die folgende Einstellung kann optional konfiguriert werden:
-
-* `separator`: Eine angegebene Zeichenfolge, die verwendet wird, um Werte aufzuteilen.
+Die Einstellung `separator` ist optional. Diese Einstellung ist eine Zeichenfolge. Sie wird zum Aufteilen von Werten angegeben.
 > [!NOTE]
-> Wenn das Umbenennen von Attributen abhängig ist, die durch den Attributprozessor geändert werden, stellen Sie sicher, dass der Span-Prozessor in der Pipelinespezifikation nach dem Attributprozessor angegeben wird.
+> Wenn es zum Umbenennen von Attributen erforderlich ist, dass die Attribute durch den Attributprozessor geändert werden, stellen Sie sicher, dass der span-Prozessor in der Pipelinespezifikation nach dem Attributprozessor angegeben wird.
 
 ```json
 "processors": [
@@ -297,16 +288,26 @@ Die folgende Einstellung kann optional konfiguriert werden:
 ] 
 ```
 
-### <a name="extract-attributes-from-span-name"></a>Extrahieren von Attributen aus dem Span-Namen
+### <a name="extract-attributes-from-the-span-name"></a>Extrahieren von Attributen aus dem Namen des span-Elements
 
-Eine Liste von regulären Ausdrücken ist erforderlich, um Span-Namen abzugleichen und Attribute auf der Grundlage von Teilausdrücken daraus zu extrahieren. Sie muss im Abschnitt `toAttributes` angegeben werden.
+Im Abschnitt `toAttributes` sind die regulären Ausdrücke aufgeführt, mit denen der Name des span-Elements abgeglichen werden soll. Attribute werden basierend auf Teilausdrücken extrahiert.
 
-Die folgenden Einstellungen sind erforderlich:
+Die Einstellung `rules` ist erforderlich. Diese Einstellung führt die Regeln auf, die zum Extrahieren von Attributwerten aus dem Namen des span-Elements verwendet werden. 
 
-`rules` : Eine Liste von Regeln zum Extrahieren von Attributwerten aus dem Span-Namen. Die Werte im Span-Namen werden durch extrahierte Attributnamen ersetzt. Jede Regel in der Liste ist eine RegEx-Musterzeichenfolge. Der Span-Name wird anhand der RegEx-Musterzeichenfolge überprüft. Wenn die RegEx-Musterzeichenfolge übereinstimmt, werden alle benannten Teilausdrücke der RegEx-Musterzeichenfolge als Attribute extrahiert und der Span hinzugefügt. Jeder Teilausdruckname wird zu einem Attributnamen, und der übereinstimmende Anteil des Teilausdrucks wird zum Attributwert. Der übereinstimmende Anteil im Span-Namen wird durch den extrahierten Attributnamen ersetzt. Wenn die Attribute bereits in der Span vorhanden sind, werden sie überschrieben. Der Prozess wird für alle Regeln in der Reihenfolge wiederholt, in der sie angegeben sind. Jede nachfolgende Regel funktioniert bei dem Span-Namen, der nach der Verarbeitung der vorherigen Regel ausgegeben wird.
+Die Werte im Span-Namen werden durch extrahierte Attributnamen ersetzt. Jede Regel in der Liste ist eine Musterzeichenfolge eines regulären Ausdrucks (RegEx). 
+
+Die Werte werden wie folgt durch extrahierte Attributnamen ersetzt:
+
+1. Der Name des span-Elements wird anhand des regulären Ausdrucks überprüft. 
+1. Wenn der reguläre Ausdruck übereinstimmt, werden alle benannten Teilausdrücke des Ausdrucks als Attribute extrahiert. 
+1. Die extrahierten Attribute werden dem span-Element hinzugefügt. 
+1. Jeder Teilausdruckname wird zu einem Attributnamen. 
+1. Der übereinstimmende Teil des Teilausdrucks wird zum Attributwert. 
+1. Der übereinstimmende Teil im Namen des span-Elements wird durch den extrahierten Attributnamen ersetzt. Wenn die Attribute im span-Element bereits vorhanden sind, werden sie überschrieben. 
+ 
+Der Prozess wird für alle Regeln in der Reihenfolge wiederholt, in der sie angegeben sind. Jede nachfolgende Regel wird auf den Namen des span-Elements angewendet, der die Ausgabe der vorherigen Regelverarbeitung ist.
 
 ```json
-
 "processors": [
   {
     "type": "span",
@@ -324,26 +325,26 @@ Die folgenden Einstellungen sind erforderlich:
 
 ```
 
-## <a name="list-of-attributes"></a>Attributliste
+## <a name="common-span-attributes"></a>Gängige span-Attribute
 
-Im Folgenden finden Sie eine Liste mit einigen gängigen span-Attributen, die in Telemetrieprozessoren verwendet werden können.
+In diesem Abschnitt werden einige gängige span-Attribute aufgelistet, die von Telemetrieprozessoren verwendet werden können.
 
 ### <a name="http-spans"></a>HTTP-span-Elemente
 
-| attribute  | Typ | Beschreibung | 
+| attribute  | type | BESCHREIBUNG | 
 |---|---|---|
 | `http.method` | Zeichenfolge | HTTP-Anforderungsmethode.|
-| `http.url` | Zeichenfolge | Vollständige Anforderungs-URL in HTTP in Form von `scheme://host[:port]/path?query[#fragment]`. Üblicherweise wird das Fragment nicht über HTTP übertragen. Wenn es jedoch bekannt ist, sollte es dennoch eingeschlossen werden.|
+| `http.url` | Zeichenfolge | Vollständige Anforderungs-URL in HTTP in Form von `scheme://host[:port]/path?query[#fragment]`. Das Fragment wird üblicherweise nicht über HTTP übertragen. Wenn das Fragment jedoch bekannt ist, sollte es eingeschlossen werden.|
 | `http.status_code` | number | [HTTP-Antwortstatuscode](https://tools.ietf.org/html/rfc7231#section-6).|
-| `http.flavor` | Zeichenfolge | Der verwendete HTTP-Typ. |
+| `http.flavor` | Zeichenfolge | Der Typ des HTTP-Protokolls. |
 | `http.user_agent` | Zeichenfolge | Der Wert des vom Client gesendeten [HTTP User-Agent](https://tools.ietf.org/html/rfc7231#section-5.5.3)-Headers. |
 
 ### <a name="jdbc-spans"></a>JDBC-span-Elemente
 
-| attribute  | Typ | Beschreibung  |
+| attribute  | type | BESCHREIBUNG  |
 |---|---|---|
-| `db.system` | Zeichenfolge | Ein Bezeichner für das verwendete DBMS-Produkt (Datenbank-Managementsystem). |
-| `db.connection_string` | Zeichenfolge | Die Verbindungszeichenfolge, mit der die Verbindung mit der Datenbank hergestellt wird. Es wird empfohlen, eingebettete Anmeldeinformationen zu entfernen.|
+| `db.system` | Zeichenfolge | Der Bezeichner für das verwendete DBMS-Produkt (Datenbank-Managementsystem). |
+| `db.connection_string` | Zeichenfolge | Verbindungszeichenfolge, mit der die Verbindung zur Datenbank hergestellt wird. Es empfiehlt sich, eingebettete Anmeldeinformationen zu entfernen.|
 | `db.user` | Zeichenfolge | Der Benutzername für den Zugriff auf die Datenbank. |
-| `db.name` | Zeichenfolge | Mit diesem Attribut wird der Name der Datenbank gemeldet, auf die zugegriffen wird. Bei Befehlen für einen Datenbankwechsel sollte dieses Attribut auf die Zieldatenbank festgelegt werden (auch wenn der Befehl nicht erfolgreich ausgeführt wird).|
+| `db.name` | Zeichenfolge | Die Zeichenfolge, die den Namen der Datenbank angibt, auf die zugegriffen wird. Bei Befehlen für einen Datenbankwechsel sollte dieses Attribut auf die Zieldatenbank festgelegt werden, auch wenn der Befehl nicht erfolgreich ausgeführt wird.|
 | `db.statement` | Zeichenfolge | Die Datenbankanweisung, die ausgeführt wird.|

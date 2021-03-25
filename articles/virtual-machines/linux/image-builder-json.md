@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: image-builder
 ms.collection: linux
 ms.reviewer: cynthn
-ms.openlocfilehash: a3138da0ecbcabaeb7ef910975afc3b7005e5b50
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: aaaabe758b036335062907c8e5549ae876c63997
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102519706"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594732"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Vorschau: Erstellen einer Azure Image Builder-Vorlage 
 
@@ -249,7 +249,7 @@ Folgendes ist bei Verwendung von `customize` zu beachten:
 - Wenn eine Anpassung fehlschlägt, schlägt die gesamte Anpassungskomponente fehl, und ein Fehler wird zurückgegeben.
 - Es wird dringend empfohlen, dass Sie das Skript gründlich testen, bevor Sie es in einer Vorlage verwenden. Das Debuggen des Skripts ist in Ihrer eigenen VM einfacher.
 - Fügen Sie keine sensiblen Daten in die Skripts ein. 
-- Die Speicherorte für die Skripts müssen öffentlich zugänglich sein, es sei denn, Sie verwenden die [verwaltete Dienstidentität](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-user-assigned-identity).
+- Die Speicherorte für die Skripts müssen öffentlich zugänglich sein, es sei denn, Sie verwenden die [verwaltete Dienstidentität](./image-builder-user-assigned-identity.md).
 
 ```json
         "customize": [
@@ -417,7 +417,7 @@ Dateianpassungseigenschaften:
 - **sourceUri:** ein Speicherendpunkt, auf den zugegriffen werden kann; hier kann GitHub oder Azure Storage verwendet werden. Sie können nur eine Datei herunterladen, kein ganzes Verzeichnis. Wenn Sie ein Verzeichnis herunterladen müssen, verwenden Sie eine komprimierte Datei, und dekomprimieren Sie diese dann mithilfe der Shell- oder PowerShell-Anpassungen. 
 
 > [!NOTE]
-> Wenn „sourceUri“ ein Azure Storage-Konto ist, müssen Sie unabhängig davon, ob das Blob als öffentlich markiert ist, der verwalteten Benutzeridentität Berechtigungen für den Schreibzugriff auf das Blob erteilen. Informationen zum Festlegen der Speicherberechtigungen finden Sie in [diesem Beispiel](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-user-assigned-identity#create-a-resource-group).
+> Wenn „sourceUri“ ein Azure Storage-Konto ist, müssen Sie unabhängig davon, ob das Blob als öffentlich markiert ist, der verwalteten Benutzeridentität Berechtigungen für den Schreibzugriff auf das Blob erteilen. Informationen zum Festlegen der Speicherberechtigungen finden Sie in [diesem Beispiel](./image-builder-user-assigned-identity.md#create-a-resource-group).
 
 - **destination:** dies ist der vollständige Zielpfad mit dem Dateinamen. Alle referenzierten Pfade und Unterverzeichnisse müssen vorhanden sein. Verwenden Sie die Shell- oder PowerShell-Anpassungen, um diese im Voraus einzurichten. Sie können die Skriptanpassungen zum Erstellen des Pfads verwenden. 
 
@@ -456,7 +456,7 @@ Anpassungseigenschaften:
 - **updateLimit**: Optional, definiert, wie viele Updates installiert werden können. Der Standardwert ist „1000“.
  
 > [!NOTE]
-> Die Windows Update-Anpassung kann einen Fehler verursachen, wenn Windows-Neustarts ausstehen oder Anwendungsinstallationen noch ausgeführt werden. in der Regel wird dieser Fehler in der Datei „customization.log“ angezeigt: `System.Runtime.InteropServices.COMException (0x80240016): Exception from HRESULT: 0x80240016`. Es wird dringend empfohlen, einen Windows-Neustart hinzuzufügen und/oder in Anwendungen mithilfe von [sleep](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/start-sleep)- oder wait-Befehlen in den Inlinebefehlen oder Skripts genug Zeit zum Abschluss der Installation festzulegen, bevor Sie Windows Update ausführen.
+> Die Windows Update-Anpassung kann einen Fehler verursachen, wenn Windows-Neustarts ausstehen oder Anwendungsinstallationen noch ausgeführt werden. in der Regel wird dieser Fehler in der Datei „customization.log“ angezeigt: `System.Runtime.InteropServices.COMException (0x80240016): Exception from HRESULT: 0x80240016`. Es wird dringend empfohlen, einen Windows-Neustart hinzuzufügen und/oder in Anwendungen mithilfe von [sleep](/powershell/module/microsoft.powershell.utility/start-sleep)- oder wait-Befehlen in den Inlinebefehlen oder Skripts genug Zeit zum Abschluss der Installation festzulegen, bevor Sie Windows Update ausführen.
 
 ### <a name="generalize"></a>Generalize 
 Azure Image Builder führt außerdem standardmäßig Code zum „Aufheben der Bereitstellung“ nach jeder Imageanpassungsphase aus, um das Image zu „generalisieren“. Das Generalisieren ist ein Prozess, bei dem das Image so eingerichtet wird, dass es für die Erstellung mehrerer VMs wiederverwendet werden kann. Azure Image Builder verwendet Sysprep für Windows-VMs. Für Linux führt Azure Image Builder „waagent -deprovision“ aus. 

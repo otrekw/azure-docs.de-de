@@ -4,18 +4,22 @@ ms.service: databox
 ms.topic: include
 ms.date: 08/04/2020
 ms.author: alkohli
-ms.openlocfilehash: e781e3c29a6a22648c6d0596f9fe0a3e425427d7
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.openlocfilehash: 6e42fef2aa4415373ed0bac39284f36ba330a4d9
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99500163"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101730646"
 ---
 Stellen Sie über das Remotedesktopprotokoll (RDP) mithilfe der IP-Adresse, die Sie bei der Erstellung der VM übergeben haben, eine Verbindung mit Ihrer Windows-VM her.
 
-1. Starten Sie RDP auf Ihrem Client. Navigieren Sie zu **Start**, und geben Sie **mstsc** ein.
-1. Geben Sie die IP-Adresse des virtuellen Computers und die verwendeten Anmeldeinformationen in die Vorlagenparameterdatei des virtuellen Computers ein.
+1. Öffnen Sie RDP auf dem Client. 
+1. Navigieren Sie zu **Start**, und geben Sie dann **mstsc** ein.
+1. Geben Sie im Bereich **Remotedesktopverbindung** die IP-Adresse der VM und die Zugriffsanmeldeinformationen ein, die Sie in der VM-Vorlagenparameterdatei verwendet haben, und klicken Sie dann auf **Verbinden**.
 
-    ![Screenshot des Herstellens einer RDP-Verbindung mit einer Windows-VM](media/azure-stack-edge-gateway-connect-vm-windows/connect-vm-rdp-1.png)
-1. Möglicherweise müssen Sie die Verbindung mit einem nicht vertrauenswürdigen Computer genehmigen. 
-1. Sie sind jetzt bei Ihrer VM angemeldet, die auf der Appliance ausgeführt wird. 
+   ![Screenshot des Bereichs „Remotedesktopverbindung“ zum Herstellen einer Verbindung über RDP mit Ihrer Windows-VM.](media/azure-stack-edge-gateway-connect-vm-windows/connect-vm-rdp-1.png)
+
+   > [!NOTE]
+   > Möglicherweise müssen Sie die Verbindung mit einem nicht vertrauenswürdigen Computer genehmigen. 
+
+Sie sind jetzt bei Ihrer VM angemeldet, die auf der Appliance ausgeführt wird. 

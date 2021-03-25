@@ -9,17 +9,17 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 03/02/2021
 ms.topic: how-to
-ms.openlocfilehash: 16546432c8c0a23d5c9dc471fe8c62ced5eca993
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 7ef1cd43d2efbc5ab92cc2b4cba4d237805d8921
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101687531"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102202653"
 ---
 # <a name="upload-billing-data-to-azure-and-view-it-in-the-azure-portal"></a>Hochladen von Abrechnungsdaten in Azure und Anzeigen im Azure-Portal
 
 > [!IMPORTANT] 
->  Während des Vorschauzeitraums fallen keine Kosten für die Nutzung von Azure Arc-fähigen Datendiensten an. Obwohl das Abrechnungssystem end-to-end funktioniert, ist die Verbrauchseinheit für die Abrechnung auf 0 USD festgelegt.  Wenn Sie diesem Szenario folgen, sehen Sie in Ihrer Abrechnung Einträge für einen Dienst mit dem Namen **hybrid data services** und für Ressourcen eines Typs mit dem Namen **microsoft.AzureData/`<resource type>`** . Es wird ein Datensatz für jeden Datendienst in Azure Arc angezeigt, den Sie erstellen. Jeder Datensatz wird jedoch mit 0 USD berechnet.
+>  Während des Vorschauzeitraums fallen keine Kosten für die Nutzung von Azure Arc-fähigen Datendiensten an. Obwohl das Abrechnungssystem end-to-end funktioniert, ist die Verbrauchseinheit für die Abrechnung auf 0 USD festgelegt.  Wenn Sie diesem Szenario folgen, sehen Sie in Ihrer Abrechnung Einträge für einen Dienst mit dem Namen **hybrid data services** und für Ressourcen eines Typs mit dem Namen **Microsoft.AzureArcData/`<resource type>`** . Es wird ein Datensatz für jeden Datendienst in Azure Arc angezeigt, den Sie erstellen. Jeder Datensatz wird jedoch mit 0 USD berechnet.
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
@@ -119,7 +119,7 @@ Gehen Sie wie folgt vor, um Abrechnungsdaten im Azure-Portal anzuzeigen:
 1. Stellen Sie sicher, dass Ihr Bereich auf das Abonnement festgelegt ist, in dem Ihre Datendienstressourcen erstellt wurden.
 1. Wählen Sie **Kosten nach Ressource** in der Dropdownliste „Anzeigen“ neben der Auswahl „Bereich“ oben in der Ansicht aus.
 1. Stellen Sie sicher, dass der Datumsfilter auf **Dieser Monat** oder einen anderen Zeitbereich festgelegt ist, der hinsichtlich des Erstellungszeitpunkts der Datendienstressourcen sinnvoll ist.
-1. Klicken Sie auf **Filter hinzufügen**, um einen Filter nach **Ressourcentyp** = `microsoft.azuredata/<data service type>` hinzuzufügen, wenn Sie nur auf einen Typ von Azure Arc-fähigem Datendienst filtern möchten.
+1. Klicken Sie auf **Filter hinzufügen**, um einen Filter nach **Ressourcentyp** = `Microsoft.AzureArcData/<data service type>` hinzuzufügen, wenn Sie nur auf einen Typ von Azure Arc-fähigem Datendienst filtern möchten.
 1. Nun wird eine Liste aller Ressourcen angezeigt, die erstellt und in Azure hochgeladen wurden. Da die Verbrauchseinheit 0 USD ausweist, stellen Sie fest, dass die Kosten immer 0 USD betragen.
 
 ## <a name="download-billing-data"></a>Herunterladen von Abrechnungsdaten
@@ -159,5 +159,5 @@ Sie können die Abrechnungsdatendateien im Azure-Portal überprüfen.
 7. Führen Sie einen Drilldown in die generierten Ordner und Dateien aus, und klicken Sie auf eine der generierten CSV-Dateien.
 8. Klicken Sie auf die Schaltfläche **Herunterladen**, um die Datei in Ihrem lokalen Ordner „Downloads“ zu speichern.
 9. Öffnen Sie die Datei mit einem CSV-Dateiviewer, z. B. in Excel.
-10. Filtern Sie die Ergebnisse, um nur die Zeilen mit dem **Ressourcentyp** = `Microsoft.AzureData/<data service resource type` anzuzeigen.
+10. Filtern Sie die Ergebnisse, um nur die Zeilen mit dem **Ressourcentyp** = `Microsoft.AzureArcData/<data service resource type` anzuzeigen.
 11. In der Spalte UsageQuantity sehen Sie die Anzahl der Stunden, die die Instanz im aktuellen 24-Stunden-Zeitraum verwendet wurde.

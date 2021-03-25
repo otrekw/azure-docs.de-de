@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: f171ab9619f2bcb8ecf15c4bfb3b17146ab5a0ff
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 419b4939c19ee03651a406db44244897e17087f2
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98938949"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865467"
 ---
 # <a name="azure-storage-overview-in-hdinsight"></a>Übersicht über Azure Storage in HDInsight
 
@@ -24,7 +24,7 @@ Wenn Sie Ihr Speicherkonto mit den Einschränkungen **Firewalls und virtuelle Ne
 
 Das folgende Diagramm bietet eine verallgemeinerte Übersicht über die HDInsight-Architektur von Azure Storage:
 
-![HDInsight-Speicherarchitektur](./media/overview-azure-storage/storage-architecture.png "HDInsight Storage-Architektur")
+:::image type="content" source="./media/overview-azure-storage/storage-architecture.png" alt-text="HDInsight-Speicherarchitektur" border="false":::
 
 HDInsight bietet Zugang zum verteilten Dateisystem, das lokal an die Rechenknoten angefügt ist. Auf dieses Dateisystem kann über den vollständig qualifizierten URI zugegriffen werden. Zum Beispiel:
 
@@ -40,7 +40,7 @@ Berücksichtigen Sie die folgenden Prinzipien, wenn Sie ein Azure Storage-Konto 
 
 * **Öffentliche Container oder öffentliche Blobs in Speicherkonten, die nicht mit einem Cluster verbunden sind:** Sie verfügen über Leserechte für die Blobs in den Containern.
   
-  > [!NOTE]  
+  > [!NOTE]
   > Öffentliche Container erlauben das Abrufen einer Liste aller im Container verfügbaren Blobs und der Container-Metadaten. Auf öffentliche Blobs haben Sie nur Zugriff, wenn Sie die exakte URL kennen. Weitere Informationen finden Sie unter [Verwalten des anonymen Lesezugriffs auf Container und Blobs](../storage/blobs/anonymous-read-access-configure.md).
 
 * **Private Container in Speicherkonten, die nicht mit einem Cluster verbunden sind:** Sie können nicht auf die Blobs in den Containern zugreifen, es sei denn, Sie definieren beim Senden der WebHCat-Aufträge das Speicherkonto.

@@ -5,15 +5,15 @@ services: logic-apps
 ms.suite: integration
 author: dereklee
 ms.author: deli
-ms.reviewer: klam, estfan, logicappspm
-ms.date: 01/11/2020
+ms.reviewer: estfan, logicappspm, azla
+ms.date: 02/18/2021
 ms.topic: article
-ms.openlocfilehash: a0c8286b2fb36642723ae28b8bc88e9e49f8a8fb
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: fbe797937021763bb97ca09e1da792d9a7010f9a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100577953"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702503"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Behandeln von Fehlern und Ausnahmen in Azure Logic Apps
 
@@ -263,13 +263,14 @@ Grenzwerte für Bereiche finden Sie unter [Grenzwerte und Konfiguration](../logi
 
 ### <a name="get-context-and-results-for-failures"></a>Abrufen von Kontext und Ergebnissen auf Fehler
 
-Das Abfangen der Fehler eines Bereichs ist nützlich. Aber häufig ist auch der Kontext hilfreich, um genau zu verstehen, für welche Aktionen Fehler aufgetreten sind und welche Fehler oder Statuscodes zurückgegeben wurden.
+Das Abfangen der Fehler eines Bereichs ist nützlich. Aber häufig ist auch der Kontext hilfreich, um genau zu verstehen, für welche Aktionen Fehler aufgetreten sind und welche Fehler oder Statuscodes zurückgegeben wurden. Die [`result()`-Funktion](../logic-apps/workflow-definition-language-functions-reference.md#result) gibt die Ergebnisse aus den Aktionen der obersten Ebene in einer bereichsbezogenen Aktion zurück, indem sie einen einzelnen Parameter annimmt, bei dem es sich um den Namen des Bereichs handelt, und ein Array zurückgibt, das die Ergebnisse dieser Aktionen der obersten Ebene enthält. In diesen Aktionsobjekten sind die gleichen Attribute enthalten, die von der `actions()`-Funktion zurückgegeben werden, z. B. Start- und Endzeit der Aktion, Status, Eingaben, Korrelations-IDs und Ausgaben. 
 
-Die [`result()`](../logic-apps/workflow-definition-language-functions-reference.md#result)-Funktion stellt Kontext zu den Ergebnissen aller Aktionen in einem Bereich zur Verfügung. Die `result()`-Funktion erwartet als einzigen Parameter den Namen des Bereichs und gibt ein Array zurück, das alle Aktionsergebnisse aus diesem Bereich enthält. Diese Aktionsobjekte enthalten dieselben Attribute wie das `actions()`-Objekt, z.B. Start- und Endzeit der Aktion, Status, Eingaben, Korrelations-IDs und Ausgaben. Sie können einen `@result()`-Ausdruck einfach mit der `runAfter`-Eigenschaft koppeln, um Kontext zu allen Aktionen zu senden, für die in einem Bereich ein Fehler aufgetreten ist.
+> [!NOTE]
+> Die `result()`-Funktion gibt *nur* die Ergebnisse der Aktionen der obersten Ebene zurück, nicht die aus tiefer geschachtelten Aktionen wie Schalter- oder Bedingungsaktionen.
 
-Wenn Sie eine Aktion für jede in einem Bereich befindliche Aktion ausführen, die das Ergebnis `Failed` hat, und wenn Sie das Array der Ergebnisse bis hinab zu den fehlgeschlagenen Aktionen filtern möchten, können Sie einen `@result()`-Ausdruck mit einer [**Array filtern**](logic-apps-perform-data-operations.md#filter-array-action)-Aktion und einer [**For each**](../logic-apps/logic-apps-control-flow-loops.md)-Schleife koppeln. Sie können für das Array mit den gefilterten Ergebnissen eine Aktion für jeden Fehler durchführen, indem Sie die `For_each`-Schleife verwenden.
+Um Kontextinformationen zu den Aktionen zu erhalten, bei denen in einem Bereich ein Fehler aufgetreten ist, können Sie den `@result()`-Ausdruck mit dem Namen des Bereichs und der `runAfter`-Eigenschaft verwenden. Um das zurückgegebene Array nach Aktionen zu filtern, die den `Failed`-Status aufweisen, können Sie die Aktion [**Filter Array**](logic-apps-perform-data-operations.md#filter-array-action) hinzufügen. Zum Ausführen einer Aktion für eine zurückgegebene Aktion, bei der ein Fehler aufgetreten ist, wenden Sie eine [**For each**-Schleife](../logic-apps/logic-apps-control-flow-loops.md) auf das zurückgegebene gefilterte Array an.
 
-Hier ist ein Beispiel gefolgt von einer ausführlichen Erklärung angegeben, bei dem eine HTTP POST-Anforderung mit dem Antworttext für alle fehlerhaften Aktionen im Bereich „My_Scope“ gesendet wird:
+Hier ist ein Beispiel gefolgt von einer ausführlichen Erklärung angegeben, bei dem eine HTTP POST-Anforderung mit dem Antworttext für alle fehlerhaften Aktionen in der Bereichsaktion „My_Scope“ gesendet wird:
 
 ```json
 "Filter_array": {

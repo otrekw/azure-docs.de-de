@@ -8,10 +8,10 @@ ms.custom:
 - devx-track-azurecli
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: a78abea5bcc5925cb2e137d918c7217ae92b118e
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102044322"
 ---
 # <a name="quickstart-create-a-c-function-in-azure-from-the-command-line"></a>Schnellstart: Erstellen einer C#-Funktion über die Befehlszeile in Azure
@@ -24,7 +24,7 @@ ms.locfileid: "102044322"
 > - [Python](create-first-function-cli-python.md)
 > - [TypeScript](create-first-function-cli-typescript.md)
 
-In diesem Artikel wird mithilfe von Befehlszeilentools eine auf der C#-Klassenbibliothek basierende Funktion erstellt, die auf HTTP-Anforderungen reagiert. Stellen Sie den Code nach lokalen Tests in folgender Umgebung bereit: <abbr title="Hierbei handelt es sich um eine Runtimecomputingumgebung, in der alle Serverdetails für Anwendungsentwickler transparent sind. Dies vereinfacht den Prozess der Bereitstellung sowie die Codeverwaltung.">Serverlos</abbr> Umgebung in <abbr title="Hierbei handelt es sich um den Dienst von Azure, der eine kostengünstige Umgebung für serverloses Computing für Anwendungen bietet.">Azure-Funktionen</abbr>.
+In diesem Artikel wird mithilfe von Befehlszeilentools eine auf der C#-Klassenbibliothek basierende Funktion erstellt, die auf HTTP-Anforderungen reagiert. Stellen Sie den Code nach lokalen Tests in folgender Umgebung bereit: <abbr title="Eine Runtimecomputingumgebung, in der alle Serverdetails für Anwendungsentwickler transparent sind. Dies vereinfacht den Prozess der Bereitstellung sowie die Codeverwaltung.">Serverlos</abbr> Umgebung in <abbr title="Hierbei handelt es sich um den Dienst von Azure, der eine kostengünstige Umgebung für serverloses Computing für Anwendungen bietet.">Azure-Funktionen</abbr>.
 
 Im Rahmen dieser Schnellstartanleitung fallen in Ihrem Azure-Konto ggf. geringfügige Kosten im Centbereich an.
 
@@ -32,13 +32,13 @@ Es gibt auch eine [Visual Studio Code-basierte Version](create-first-function-
 
 ## <a name="1-prepare-your-environment"></a>1. Vorbereiten der Umgebung
 
-+ Beziehen Sie ein Azure- <abbr title="Das Profil, mit dem Abrechnungsinformationen zur Azure-Nutzung verwaltet werden.">account</abbr> mit einem aktiven <abbr title="Die grundlegende Organisationsstruktur, in der Sie Ressourcen in Azure verwalten. Diese wird in der Regel einer Einzelperson oder Abteilung innerhalb einer Organisation zugeordnet.">Abonnement</abbr>. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
++ Beziehen Sie ein Azure- <abbr title="Das Profil, mit dem Abrechnungsinformationen zur Azure-Nutzung verwaltet werden.">Azure-Konto</abbr> mit einem aktiven <abbr title="Die grundlegende Organisationsstruktur, in der Sie Ressourcen in Azure verwalten. Diese wird in der Regel einer Einzelperson oder Abteilung innerhalb einer Organisation zugeordnet.">Abonnement</abbr>. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
 + Installation des [.NET Core SDK 3.1](https://www.microsoft.com/net/download)
 
 + Installation von Version 3.x der [Azure Functions Core Tools](functions-run-local.md#v2).
 
-+ Entweder die <abbr title="Eine Reihe von plattformübergreifenden Befehlszeilentools für die Verwendung mit Azure-Ressourcen von Ihrem lokalen Entwicklungscomputer als Alternative zur Verwendung des Azure-Portals.">Azure CLI</abbr> oder <abbr title="Ein PowerShell-Modul, das Befehle für die Verwendung mit Azure-Ressourcen von Ihrem lokalen Entwicklungscomputer als Alternative zur Verwendung des Azure-Portals bereitstellt.">Azure PowerShell</abbr> zum Erstellen von Azure-Ressourcen:
++ Entweder die <abbr title="Eine Reihe plattformübergreifender Befehlszeilentools für die Verwendung von Azure-Ressourcen auf Ihrem lokalen Entwicklungscomputer (als Alternative zur Verwendung des Azure-Portals).">Azure CLI</abbr> oder <abbr title="Ein PowerShell-Modul, das Befehle für die Verwendung von Azure-Ressourcen auf Ihrem lokalen Entwicklungscomputer bereitstellt (als Alternative zur Verwendung des Azure-Portals).">Azure PowerShell</abbr> zum Erstellen von Azure-Ressourcen:
 
     + [Azure CLI, Version  2.4 oder höher](/cli/azure/install-azure-cli).
 
@@ -52,7 +52,7 @@ Es gibt auch eine [Visual Studio Code-basierte Version](create-first-function-
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-+ Führen Sie in einem Terminal- oder Befehlsfenster `func --version` aus, um sich zu vergewissern, dass von <abbr title="Der Satz von Befehlszeilentools für die Arbeit mit Azure Functions auf dem lokalen Computer.">Azure Functions Core Tools</abbr> Version 3.x installiert ist.
++ Führen Sie in einem Terminal- oder Befehlsfenster `func --version` aus, um sich zu vergewissern, dass von <abbr title="Die Befehlszeilentools für die Arbeit mit Azure Functions auf dem lokalen Computer.">Azure Functions Core Tools</abbr> Version 3.x installiert ist.
 
 + **Führen Sie `az --version` aus**, um zu überprüfen, ob die Version 2.4 oder höher der Azure CLI verwendet wird.
 
@@ -74,7 +74,7 @@ Es gibt auch eine [Visual Studio Code-basierte Version](create-first-function-
 
 ## <a name="3-create-a-local-function-project"></a>3. Erstellen eines lokalen Funktionsprojekts
 
-In diesem Abschnitt erstellen Sie ein lokales <abbr title="Ein logischer Container für eine oder mehrere einzelne Funktionen, die zusammen bereitgestellt und verwaltet werden können">Azure Functions-Projekt</abbr> in C#. Jede Funktion im Projekt reagiert auf einen bestimmten <abbr title="Ein Ereignis, das den Funktionscode aufruft, etwa eine HTTP-Anforderung, eine Warteschlangennachricht oder eine bestimmte Uhrzeit">Trigger (trigger)</abbr>.
+In diesem Abschnitt erstellen Sie ein lokales <abbr title="Ein logischer Container für eine oder mehrere einzelne Funktionen, die zusammen bereitgestellt und verwaltet werden können.">Azure Functions-Projekt</abbr> in C#. Jede Funktion im Projekt reagiert auf einen bestimmten <abbr title="Ein Ereignis, das den Funktionscode aufruft, etwa eine HTTP-Anforderung, eine Warteschlangennachricht oder eine bestimmte Uhrzeit">Trigger (trigger)</abbr>.
 
 1. Führen Sie den Befehl `func init` aus, um in einem Ordner mit dem Namen *LocalFunctionProj* ein Funktionsprojekt mit der angegebenen Runtime zu erstellen:  
 
@@ -82,7 +82,7 @@ In diesem Abschnitt erstellen Sie ein lokales <abbr title="Ein logischer Contain
     func init LocalFunctionProj --dotnet
     ```
 
-1. **Führen Sie „cd LocalFunctionProj“ aus**, um zum <abbr title="Dieser Ordner enthält verschiedene Dateien für das Projekt, z. B. die Konfigurationsdateien local.settings.json und host.json. Da local.settings.json aus Azure heruntergeladene Geheimnisse enthalten kann, wird die Datei in der GITIGNORE-Datei standardmäßig aus der Quellcodeverwaltung ausgeschlossen.">Projektordner</abbr> zu navigieren.
+1. **Führen Sie „cd LocalFunctionProj“ aus**, um zum <abbr title="Dieser Ordner enthält verschiedene Dateien für das Projekt, z. B. die Konfigurationsdateien local.settings.json und host.json. Da local.settings.json aus Azure heruntergeladene Geheimnisse enthalten kann, wird die Datei in der GITIGNORE-Datei standardmäßig aus der Quellcodeverwaltung ausgeschlossen.">Projektordner</abbr>.
 
     ```console
     cd LocalFunctionProj
@@ -144,7 +144,7 @@ In diesem Abschnitt erstellen Sie ein lokales <abbr title="Ein logischer Contain
     Sollte „HttpExample“ nicht angezeigt werden, haben Sie den Host wahrscheinlich außerhalb des Stammordners des Projekts gestartet. Drücken Sie in diesem Fall <kbd>STRG+C</kbd>, um den Host zu beenden. Navigieren Sie anschließend zum Stammordner des Projekts, und führen Sie den vorherigen Befehl erneut aus.
     </details>
 
-1. Kopieren Sie die URL Ihrer **HttpExample**-Funktion aus dieser Ausgabe in einen Browser, und fügen Sie die Abfragezeichenfolge **?name=<YOUR_NAME>** an. Die vollständige URL lautet dann wie folgt: **http://localhost:7071/api/HttpExample?name=Functions** . Im Browser sollte eine Meldung wie **Hello Functions** angezeigt werden:
+1. Kopieren Sie die URL Ihrer **HttpExample**-Funktion aus dieser Ausgabe in einen Browser, und fügen Sie die Abfragezeichenfolge **?name=<IHR_NAME>** an. Die vollständige URL lautet dann wie folgt: **http://localhost:7071/api/HttpExample?name=Functions** . Im Browser sollte eine Meldung wie **Hello Functions** angezeigt werden:
 
     ![Ergebnis der lokal im Browser ausgeführten Funktion](../../includes/media/functions-run-function-test-local-cli/function-test-local-browser.png)
 
@@ -157,7 +157,7 @@ In diesem Abschnitt erstellen Sie ein lokales <abbr title="Ein logischer Contain
     
 ## <a name="5-create-supporting-azure-resources-for-your-function"></a>5. Erstellen von unterstützenden Azure-Ressourcen für Ihre Funktion
 
-Zum Bereitstellen Ihres Funktionscodes in Azure müssen Sie drei Ressourcen erstellen: <abbr title="Ein logischer Container für verwandte Azure-Ressourcen, die Sie als Einheit verwalten können.">Ressourcengruppe</abbr>, ein <abbr title="Ein Konto, das alle Azure-Speicherdatenobjekte enthält. Das Speicherkonto bietet einen eindeutigen Namespace für Ihre Speicherdaten.">Speicherkonto</abbr>und eine <abbr title="Die Cloudressource, die serverlose Funktionen in Azure hostet und die zugrunde liegende Compute-Umgebung für die Ausführung von Funktionen bereitstellt.">Funktions-App.</abbr> Verwenden Sie dazu die folgenden Befehle:
+Zum Bereitstellen Ihres Funktionscodes in Azure müssen Sie drei Ressourcen erstellen: eine <abbr title="Ein logischer Container für verwandte Azure-Ressourcen, die Sie als Einheit verwalten können.">Ressourcengruppe</abbr>, ein <abbr title="Ein Konto, das alle Azure-Speicherdatenobjekte enthält. Das Speicherkonto bietet einen eindeutigen Namespace für Ihre Speicherdaten.">Speicherkonto</abbr>und eine <abbr title="Die Cloudressource, die serverlose Funktionen in Azure hostet und die zugrunde liegende Compute-Umgebung für die Ausführung von Funktionen bereitstellt.">Funktions-App.</abbr> Verwenden Sie dazu die folgenden Befehle:
 
 1. Melden Sie sich bei Azure an, falls dies noch nicht geschehen ist:
 
@@ -239,7 +239,7 @@ Zum Bereitstellen Ihres Funktionscodes in Azure müssen Sie drei Ressourcen erst
     
     Ersetzen Sie `<STORAGE_NAME>` durch den Namen des Kontos, das Sie im vorherigen Schritt verwendet haben.
 
-    Ersetzen Sie `<APP_NAME>` durch einen <abbr title="Ein Name, der für alle Azure-Kunden global eindeutig sein muss. Sie können beispielsweise eine Kombination aus Ihrem persönlichen Namen oder Organisationsnamen, dem Anwendungsnamen und einem numerischen Bezeichner verwenden, etwa „contoso-bizapp-func-20“.">eindeutigen Namen</abbr>. `<APP_NAME>` ist gleichzeitig die DNS-Standarddomäne für die Funktions-App. 
+    Ersetzen Sie `<APP_NAME>` durch einen <abbr title="Ein Name, der für alle Azure-Kunden auf der ganzen Welt eindeutig sein muss. Sie können beispielsweise eine Kombination aus Ihrem persönlichen Namen oder Organisationsnamen, dem Anwendungsnamen und einem numerischen Bezeichner verwenden, etwa „contoso-bizapp-func-20“.">eindeutigen Namen</abbr>. `<APP_NAME>` ist gleichzeitig die DNS-Standarddomäne für die Funktions-App. 
 
     <br/>
     <details>

@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 06/26/2020
 ms.openlocfilehash: 2b825b4d4485f401199556b6faaef0017f583cc1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91461188"
 ---
 # <a name="quickstart-set-up-a-lab-by-using-azure-devtest-labs-arm-template"></a>Schnellstart: Einrichten eines Labs mithilfe von Azure DevTest Labs und einer ARM-Vorlage
@@ -65,16 +65,16 @@ Klicken Sie auf die folgende Schaltfläche, um die Bereitstellung automatisch au
 ## <a name="validate-the-deployment"></a>Überprüfen der Bereitstellung
 1. Wählen Sie oben die Option **Benachrichtigungen** aus, um den Status der Bereitstellung anzuzeigen, und klicken Sie auf den Link **Bereitstellung wird ausgeführt**.
 
-    :::image type="content" source="./media/create-lab-windows-vm-template/deployment-notification.png" alt-text="Seite „Vorlage bereitstellen“":::
+    :::image type="content" source="./media/create-lab-windows-vm-template/deployment-notification.png" alt-text="Bereitstellungsbenachrichtigung":::
 2. Warten Sie auf der Seite **Bereitstellung: Übersicht**, bis die Bereitstellung abgeschlossen ist. Dieser Vorgang (vor allem das Erstellen eines virtuellen Computers) nimmt einige Zeit in Anspruch. Wählen Sie anschließend die Option **Zu Ressourcengruppe wechseln** oder den **Namen der Ressourcengruppe** aus. Dies ist in der folgenden Abbildung dargestellt: 
 
-    :::image type="content" source="./media/create-lab-windows-vm-template/navigate-resource-group.png" alt-text="Seite „Vorlage bereitstellen“":::
+    :::image type="content" source="./media/create-lab-windows-vm-template/navigate-resource-group.png" alt-text="Navigieren zur Ressourcengruppe":::
 3. Auf der Seite **Ressourcengruppe** wird die Liste mit den Ressourcen der Ressourcengruppe angezeigt. Vergewissern Sie sich, dass Ihr Lab vom Typ `DevTest Lab` in den Ressourcen angezeigt wird. Außerdem werden die abhängigen Ressourcen angezeigt, z. B. das virtuelle Netzwerk und der virtuelle Computer in der Ressourcengruppe. 
 
-    :::image type="content" source="./media/create-lab-windows-vm-template/resource-group-home-page.png" alt-text="Seite „Vorlage bereitstellen“":::
+    :::image type="content" source="./media/create-lab-windows-vm-template/resource-group-home-page.png" alt-text="Startseite der Ressourcengruppe":::
 4. Wählen Sie Ihr Lab in der Liste mit den Ressourcen aus, um die zugehörige Startseite anzuzeigen. Vergewissern Sie sich, dass die Windows Server 2019 Datacenter-VM in der Liste **Meine virtuellen Computer** angezeigt wird. In der folgenden Abbildung ist der Abschnitt **Grundlagen** minimiert. 
 
-    :::image type="content" source="./media/create-lab-windows-vm-template/lab-home-page.png" alt-text="Seite „Vorlage bereitstellen“":::
+    :::image type="content" source="./media/create-lab-windows-vm-template/lab-home-page.png" alt-text="Startseite für das Lab":::
 
     > [!IMPORTANT] 
     > Lassen Sie diese Seite geöffnet, und befolgen Sie die Anleitung zum Bereinigen von Ressourcen im nächsten Abschnitt, um Kosten für die Ausführung des Labs und der VM in Azure zu vermeiden. Falls Sie das nächste Tutorial zum Testen des Zugriffs auf die VM im Lab durcharbeiten möchten, sollten Sie die Ressourcen anschließend bereinigen. 
@@ -83,14 +83,14 @@ Klicken Sie auf die folgende Schaltfläche, um die Bereitstellung automatisch au
 
 1. Löschen Sie zuerst das Lab, damit Sie die Ressourcengruppe löschen können. Das Löschen der Ressourcengruppe ist nicht möglich, wenn sie ein Lab enthält. Wählen Sie zum Löschen des Labs in der Symbolleiste die Option **Löschen** aus. 
 
-    :::image type="content" source="./media/create-lab-windows-vm-template/delete-lab-button.png" alt-text="Seite „Vorlage bereitstellen“":::
+    :::image type="content" source="./media/create-lab-windows-vm-template/delete-lab-button.png" alt-text="Schaltfläche zum Löschen des Labs":::
  2. Geben Sie auf der Bestätigungsseite den **Lab-Namen** ein, und wählen Sie **Löschen** aus. 
  3. Warten Sie, bis das Lab gelöscht wurde. Wählen Sie das **Glockensymbol** aus, um die Benachrichtigung für den Löschvorgang anzuzeigen. Dieser Prozess nimmt einige Zeit in Anspruch. Vergewissern Sie sich, dass das Lab gelöscht wurde, und wählen Sie anschließend im Breadcrumb-Menü die **Ressourcengruppe** aus. 
  
-    :::image type="content" source="./media/create-lab-windows-vm-template/confirm-lab-deletion.png" alt-text="Seite „Vorlage bereitstellen“":::
+    :::image type="content" source="./media/create-lab-windows-vm-template/confirm-lab-deletion.png" alt-text="Bestätigung des Löschvorgangs der VM in den Benachrichtigungen":::
  1. Wählen Sie auf der Seite **Ressourcengruppe** in der Symbolleiste die Option **Ressourcengruppe löschen** aus. Geben Sie auf der Bestätigungsseite den **Ressourcengruppennamen** ein, und wählen Sie **Löschen** aus. Überprüfen Sie die Benachrichtigungen, um zu bestätigen, dass die Ressourcengruppe gelöscht wurde.
  
-    :::image type="content" source="./media/create-lab-windows-vm-template/delete-resource-group-button.png" alt-text="Seite „Vorlage bereitstellen“":::
+    :::image type="content" source="./media/create-lab-windows-vm-template/delete-resource-group-button.png" alt-text="Schaltfläche „Ressourcengruppe löschen“":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 In dieser Schnellstartanleitung haben Sie ein Lab mit einer VM erstellt. Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie auf das Lab zugreifen:

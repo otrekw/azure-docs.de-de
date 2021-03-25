@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: yolasors
-ms.openlocfilehash: f8f2e352ae458e3e2825c9701437ea652ba07375
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 1cb5f2f9ac941001efb18301f4a54bd0092920ba
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91825653"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102172739"
 ---
 # <a name="review-pull-requests-in-pre-production-environments-in-azure-static-web-apps-preview"></a>Überprüfen von Pull Requests in Präproduktionsumgebungen in Azure Static Web Apps (Vorschau)
 
@@ -33,7 +33,7 @@ Die Verwendung von Präproduktionsumgebungen hat viele Vorteile. Beispielsweise 
 - Durchführen von Integritätsprüfungen vor der Bereitstellung in der Produktion
 
 > [!NOTE]
-> Während der Vorschauphase ist [nur maximal eine Stagingumgebung](quotas.md) zulässig.
+> Während der Vorschauphase sind [maximal drei Stagingumgebungen](quotas.md) zulässig.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -51,11 +51,11 @@ Nehmen Sie zunächst eine Änderung in Ihrem Repository vor. Sie können dies di
 
 1. Wechseln Sie zum Ordner _app_, und ändern Sie den Textinhalt. Sie können beispielsweise einen Titel oder Absatz ändern. Nachdem Sie die Datei gefunden haben, die Sie bearbeiten möchten, klicken Sie auf **Bearbeiten**, um die Änderung vorzunehmen.
 
-    :::image type="content" source="./media/review-publish-pull-requests/edit-file.png" alt-text="Erstellen eines neuen Branchs über die GitHub-Benutzeroberfläche":::
+    :::image type="content" source="./media/review-publish-pull-requests/edit-file.png" alt-text="Schaltfläche „Datei bearbeiten“ auf der GitHub-Benutzeroberfläche":::
 
 1. Klicken Sie nach dem Vornehmen der Änderungen auf **Commit für Änderungen ausführen**, um Ihre Änderungen für den Branch zu committen.
 
-    :::image type="content" source="./media/review-publish-pull-requests/commit-changes.png" alt-text="Erstellen eines neuen Branchs über die GitHub-Benutzeroberfläche":::
+    :::image type="content" source="./media/review-publish-pull-requests/commit-changes.png" alt-text="Schaltfläche „Commit für Änderungen ausführen“ auf der GitHub-Benutzeroberfläche":::
 
 ## <a name="create-a-pull-request"></a>Erstellen eines Pull Requests
 
@@ -63,13 +63,13 @@ Erstellen Sie als Nächstes einen Pull Request für diese Änderung.
 
 1. Öffnen Sie die Registerkarte **Pull Request** Ihres Projekts auf GitHub:
 
-    :::image type="content" source="./media/review-publish-pull-requests/tab.png" alt-text="Erstellen eines neuen Branchs über die GitHub-Benutzeroberfläche":::
+    :::image type="content" source="./media/review-publish-pull-requests/tab.png" alt-text="Registerkarte „Pull Request“ in einem GitHub-Repository":::
 
 1. Klicken Sie auf die Schaltfläche **Compare & Pull Request** (Vergleich und Pull Request) Ihres Branchs.
 
 1. Sie können optional einige Details zu Ihren Änderungen einfügen und dann auf **Pull Request erstellen** klicken.
 
-    :::image type="content" source="./media/review-publish-pull-requests/open.png" alt-text="Erstellen eines neuen Branchs über die GitHub-Benutzeroberfläche":::
+    :::image type="content" source="./media/review-publish-pull-requests/open.png" alt-text="Pull Request-Erstellung auf GitHub":::
 
 Sie können Prüfer zuweisen und Ihre Änderungen bei Bedarf mit Kommentaren versehen.
 
@@ -82,7 +82,7 @@ Nach der Erstellung des Pull Requests wird der Workflow für die [GitHub Actions
 
 Nachdem der Workflow das Erstellen und Bereitstellen Ihrer App abgeschlossen hat, wird Ihrem Pull Request vom GitHub-Bot ein Kommentar hinzugefügt, der die URL der Präproduktionsumgebung enthält. Sie können auf diesen Link klicken, um Ihre bereitgestellten Änderungen anzuzeigen.
 
-:::image type="content" source="./media/review-publish-pull-requests/bot-comment.png" alt-text="Erstellen eines neuen Branchs über die GitHub-Benutzeroberfläche":::
+:::image type="content" source="./media/review-publish-pull-requests/bot-comment.png" alt-text="Pull Request-Kommentar mit der Präproduktions-URL":::
 
 Klicken Sie auf die generierte URL, um die Änderungen anzuzeigen.
 
@@ -96,7 +96,7 @@ Nach der Genehmigung der Änderungen können Sie diese in der Produktion veröff
 
 Klicken Sie auf **Merge pull request** (Pull Request zusammenführen):
 
-:::image type="content" source="./media/review-publish-pull-requests/merge.png" alt-text="Erstellen eines neuen Branchs über die GitHub-Benutzeroberfläche":::
+:::image type="content" source="./media/review-publish-pull-requests/merge.png" alt-text="Schaltfläche „Merge pull request“ (Pull Request zusammenführen) auf der GitHub-Benutzeroberfläche":::
 
 Beim Zusammenführen werden Ihre Änderungen in den nachverfolgten Branch („Produktionsbranch“) kopiert. Anschließend beginnt der Bereitstellungsworkflow auf dem nachverfolgten Branch, und die Änderungen befinden sich nach dem erneuten Buildvorgang für die Anwendung im Livezustand.
 
@@ -109,7 +109,7 @@ Auf bereitgestellte Versionen Ihrer Anwendung besteht derzeit auch dann öffentl
 > [!WARNING]
 > Gehen Sie beim Veröffentlichen von vertraulichen Inhalten auf bereitgestellten Versionen mit Bedacht vor, da der Zugriff auf Präproduktionsumgebungen nicht eingeschränkt ist.
 
-Die Anzahl von Präproduktionsumgebungen, die für jede mit Static Web Apps bereitgestellte App verfügbar ist, richtet sich nach dem von Ihnen gewählten SKU-Tarif. Beim Free-Tarif können Sie zusätzlich zur Produktionsumgebung beispielsweise eine Präproduktionsumgebung nutzen.
+Die Anzahl von Präproduktionsumgebungen, die für jede mit Static Web Apps bereitgestellte App verfügbar ist, richtet sich nach dem von Ihnen gewählten SKU-Tarif. Beim Free-Tarif können Sie beispielsweise zusätzlich zur Produktionsumgebung drei Präproduktionsumgebungen nutzen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

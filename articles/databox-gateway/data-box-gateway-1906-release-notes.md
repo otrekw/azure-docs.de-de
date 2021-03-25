@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/11/2020
 ms.author: alkohli
 ms.openlocfilehash: 51f4995ffd6a86022d95df15ae0eb7694d878c60
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96581061"
 ---
 # <a name="azure-data-box-edge-and-azure-data-box-gateway-1906-release-notes"></a>Versionshinweise zu Azure Data Box Edge und Azure Data Box Gateway 1906
@@ -29,7 +29,7 @@ Dieses Release entspricht den folgenden Softwareversionen:
 > [!NOTE]
 > Update 1906 kann nur auf Data Box Edge-Geräte angewandt werden, auf denen die allgemein verfügbare Version oder Version 1905 der Software ausgeführt wird.
 
-## <a name="whats-new"></a>Neues
+## <a name="whats-new"></a>Neuigkeiten
 
 - **Fehlerbehebung im Workflow zur Verwaltung des Wiederherstellungsschlüssels**: In der früheren Version gab es einen Fehler, durch den der Wiederherstellungsschlüssel nicht angewendet wurde. Dieser Fehler wurde in dieser Version behoben. Es wird dringend empfohlen, dieses Update anzuwenden, da mit dem Wiederherstellungsschlüssel die Daten auf dem Gerät wiederhergestellt werden können, falls das Gerät nicht gestartet wird. Weitere Informationen finden Sie unter der Vorgehensweise zum [Speichern des Wiederherstellungsschlüssels beim Bereitstellen von Data Box Edge oder Data Box Gateway](../databox-online/azure-stack-edge-deploy-connect-setup-activate.md#set-up-and-activate-the-physical-device).
 - **Verbesserungen bei der FPGA-Protokollierung (Field Programmable Gate Array):** Ab Version 1905 wurden Verbesserungen bei der Protokollierung und den Warnungen im Zusammenhang mit FPGA vorgenommen. Dies ist weiterhin ein erforderliches Update für Data Box Edge, wenn Sie die Edgecomputingfunktion mit dem FPGA verwenden. Weitere Informationen finden Sie unter [Transformieren von Daten mit Edgecomputing unter Data Box Edge](../databox-online/azure-stack-edge-deploy-configure-compute-advanced.md).

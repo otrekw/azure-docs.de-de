@@ -1,18 +1,14 @@
 ---
 title: Einrichten der SNMP-MIB-Überwachung
 description: Sie können die Überwachung der Sensorintegrität mithilfe von SNMP durchführen. Der Sensor antwortet auf SNMP-Abfragen, die von einem autorisierten Überwachungsserver gesendet wurden.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 12/14/2020
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: 051ce1be66f91d60f719ca3695f15e6c8001b20f
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 1ba52236f65c6c5daba68c67677cdc6adfb699b4
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100523820"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104781669"
 ---
 # <a name="set-up-snmp-mib-monitoring"></a>Einrichten der SNMP-MIB-Überwachung
 
@@ -84,6 +80,6 @@ So definieren Sie die SNMP v3-Integritätsüberwachung
 
 5. Wählen Sie **Speichern** aus.
 
-## <a name="next-steps"></a>Nächste Schritte
+## <a name="see-also"></a>Weitere Informationen
 
 [Exportieren von Problembehandlungsprotokollen](how-to-troubleshoot-the-sensor-and-on-premises-management-console.md)

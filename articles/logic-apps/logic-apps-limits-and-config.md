@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 02/05/2021
-ms.openlocfilehash: 19c7d37d62ec54e57127f5993e8bae4d4e9a2908
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 03/03/2021
+ms.openlocfilehash: 39d7516b9cec1a3b9aa4484c2ff93564bd5772da
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388531"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034284"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Grenzwert- und Konfigurationsinformationen für Azure Logic Apps
 
@@ -139,7 +139,7 @@ Dies sind die Grenzwerte für eine einzelne Logik-App-Definition:
 
 | Name | Begrenzung | Notizen |
 | ---- | ----- | ----- |
-| Aktion: Ausführungen pro 5 Minuten | 100.000 ist der Standardgrenzwert, aber 300.000 ist der maximale Grenzwert. | Weitere Informationen zum Erhöhen des Grenzwerts auf den Höchstwert für Ihre Logik-App finden Sie unter [Ausführen im Modus mit hohem Durchsatz](#run-high-throughput-mode) (Vorschauversion). Sie können bei Bedarf auch die [Workload auf mehrere Logik-Apps verteilen](../logic-apps/handle-throttling-problems-429-errors.md#logic-app-throttling). |
+| Aktion: Ausführung alle 5 Minuten | – 100.000 Ausführungen (Standard) <p><p>– 300.000 Ausführungen (Höchstwert im Modus mit hohem Durchsatz)  | Weitere Informationen zum Erhöhen des Standardlimits auf das maximale Limit für Ihre Logik-App finden Sie unter [Ausführen im Modus mit hohem Durchsatz](#run-high-throughput-mode) (dieser Modus ist als Vorschauversion verfügbar). Sie können bei Bedarf auch die [Workload auf mehrere Logik-Apps verteilen](../logic-apps/handle-throttling-problems-429-errors.md#logic-app-throttling). |
 | Aktion: Gleichzeitig ausgehende Aufrufe | ca. 2.500 | Sie können die Anzahl gleichzeitiger Anforderungen oder die Dauer nach Bedarf verringern. |
 | Endpunkt zur Laufzeit: Gleichzeitig eingehende Aufrufe | ca. 1.000 | Sie können die Anzahl gleichzeitiger Anforderungen oder die Dauer nach Bedarf verringern. |
 | Endpunkt zur Laufzeit: Read-Aufrufe pro 5 Minuten  | 60.000 | Dieser Grenzwert gilt für Aufrufe, die die unformatierten Eingaben und Ausgaben aus dem Ausführungsverlauf einer Logik-App erhalten. Bei Bedarf können Sie die Workload auf mehrere Apps verteilen. |
@@ -151,7 +151,7 @@ Dies sind die Grenzwerte für eine einzelne Logik-App-Definition:
 
 #### <a name="run-in-high-throughput-mode"></a>Ausführen im Modus mit hohem Durchsatz
 
-Für eine einzelne Logik-App-Definition gilt für die Anzahl von Aktionen, die alle fünf Minuten ausgeführt werden, ein [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#throughput-limits). Zum Erhöhen des Grenzwerts auf den Höchstwert für Ihre Logik-App können Sie den Modus „Hoher Durchsatz“ aktivieren, der sich noch in der Vorschau befindet. Sie können bei Bedarf auch die [Workload auf mehrere Logik-Apps verteilen](../logic-apps/handle-throttling-problems-429-errors.md#logic-app-throttling).
+Für eine einzelne Logik-App-Definition gilt für die Anzahl von Aktionen, die alle fünf Minuten ausgeführt werden, ein [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#throughput-limits). Um das Standardlimit auf das [maximale Limit](../logic-apps/logic-apps-limits-and-config.md#throughput-limits) (das Dreifache des Standardlimits) für Ihre Logik-App zu erhöhen, können Sie den Modus mit hohem Durchsatz (Vorschauversion) aktivieren. Sie können bei Bedarf auch die [Workload auf mehrere Logik-Apps verteilen](../logic-apps/handle-throttling-problems-429-errors.md#logic-app-throttling).
 
 1. Wählen Sie im Azure-Portal im Menü Ihrer Logik-App unter **Einstellungen** die Option **Workfloweinstellungen** aus.
 
@@ -444,6 +444,7 @@ In diesem Abschnitt sind nur die IP-Adressen des Azure Logic Apps-Diensts für d
 | Australien (Osten) | 13.75.153.66, 104.210.89.222, 104.210.89.244, 52.187.231.161 |
 | Australien, Südosten | 13.73.115.153, 40.115.78.70, 40.115.78.237, 52.189.216.28 |
 | Brasilien Süd | 191.235.86.199, 191.235.95.229, 191.235.94.220, 191.234.166.198 |
+| Brasilien, Südosten | 20.40.32.59, 20.40.32.162, 20.40.32.80, 20.40.32.49 |
 | Kanada, Mitte | 13.88.249.209, 52.233.30.218, 52.233.29.79, 40.85.241.105 |
 | Kanada, Osten | 52.232.129.143, 52.229.125.57, 52.232.133.109, 40.86.202.42 |
 | Indien, Mitte | 52.172.157.194, 52.172.184.192, 52.172.191.194, 104.211.73.195 |
@@ -510,6 +511,7 @@ In diesem Abschnitt sind die IP-Adressen für die ausgehende Richtung aufgeführ
 | Australien (Osten) | 13.75.149.4, 104.210.91.55, 104.210.90.241, 52.187.227.245, 52.187.226.96, 52.187.231.184, 52.187.229.130, 52.187.226.139 | 52.237.214.72, 13.72.243.10, 13.70.72.192–13.70.72.207, 13.70.78.224–13.70.78.255 |
 | Australien, Südosten | 13.73.114.207, 13.77.3.139, 13.70.159.205, 52.189.222.77, 13.77.56.167, 13.77.58.136, 52.189.214.42, 52.189.220.75 | 52.255.48.202, 13.70.136.174, 13.77.50.240–13.77.50.255, 13.77.55.160–13.77.55.191 |
 | Brasilien Süd | 191.235.82.221, 191.235.91.7, 191.234.182.26, 191.237.255.116, 191.234.161.168, 191.234.162.178, 191.234.161.28, 191.234.162.131 | 191.232.191.157, 104.41.59.51, 191.233.203.192–191.233.203.207, 191.233.207.160–191.233.207.191 |
+| Brasilien, Südosten | 20.40.32.81, 20.40.32.19, 20.40.32.85, 20.40.32.60, 20.40.32.116, 20.40.32.87, 20.40.32.61, 20.40.32.113 | 23.97.120.109, 23.97.121.26 |
 | Kanada, Mitte | 52.233.29.92, 52.228.39.244, 40.85.250.135, 40.85.250.212, 13.71.186.1, 40.85.252.47, 13.71.184.150 | 52.237.32.212, 52.237.24.126, 13.71.170.208–13.71.170.223, 13.71.175.160–13.71.175.191 |
 | Kanada, Osten | 52.232.128.155, 52.229.120.45, 52.229.126.25, 40.86.203.228, 40.86.228.93, 40.86.216.241, 40.86.226.149, 40.86.217.241 | 52.242.30.112, 52.242.35.152, 40.69.106.240–40.69.106.255, 40.69.111.0–40.69.111.31 |
 | Indien, Mitte | 52.172.154.168, 52.172.186.159, 52.172.185.79, 104.211.101.108, 104.211.102.62, 104.211.90.169, 104.211.90.162, 104.211.74.145 | 52.172.212.129, 52.172.211.12, 20.43.123.0–20.43.123.31, 104.211.81.192–104.211.81.207 |

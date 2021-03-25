@@ -5,10 +5,10 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 02/18/2020
 ms.openlocfilehash: f0f06c81906116dc278377cf9fd8871e8899a1d1
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98938739"
 ---
 # <a name="debug-wasb-file-operations-in-azure-hdinsight"></a>Debuggen von WASB-Dateivorgängen in Azure HDInsight
@@ -27,7 +27,7 @@ Ein generiertes Protokoll sieht in etwa wie folgt aus:
 
 1. Navigieren Sie zu **advanced spark2-log4j-properties**.
 
-    1. Ändern Sie `log4j.appender.console.Threshold=INFO` zu `log4j.appender.console.Threshold=DEBUG`.
+    1. Ändern Sie `log4j.appender.console.Threshold=INFO` in `log4j.appender.console.Threshold=DEBUG`.
 
     1. Fügen Sie `log4j.logger.org.apache.hadoop.fs.azure.NativeAzureFileSystem=DEBUG`hinzu.
 

@@ -10,15 +10,15 @@ ms.subservice: develop
 ms.custom: aaddev , devx-track-azurepowershell
 ms.topic: how-to
 ms.tgt_pltfrm: multiple
-ms.date: 06/26/2020
+ms.date: 02/22/2021
 ms.author: ryanwi
 ms.reviewer: tomfitz
-ms.openlocfilehash: b07679c6dd5e03131fde1439213783893971a088
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: b27af53d615fa9c0c46699a52a004098dc46b7b2
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99581821"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101688534"
 ---
 # <a name="how-to-use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>Gewusst wie: Verwenden von Azure PowerShell zum Erstellen eines Dienstprinzipals mit einem Zertifikat
 
@@ -72,7 +72,7 @@ Das Beispiel befindet sich 20 Sekunden lang im Ruhezustand und schafft damit Zei
 
 Sie können den Geltungsbereich für diese Rollenzuweisung mit dem Parameter **ResourceGroupName** auf eine bestimmte Ressourcengruppe festlegen. Sie können den Geltungsbereich durch die Verwendung der Parameter **ResourceType** und **ResourceName** auch auf eine bestimmte Ressource festlegen. 
 
-Wenn Sie **nicht mit Windows 10 oder Windows Server 2016 arbeiten**, laden Sie den [Generator für selbstsignierte Zertifikate](https://gallery.technet.microsoft.com/scriptcenter/Self-signed-certificate-5920a7c6/) aus dem Skriptcenter von Microsoft herunter. Extrahieren Sie den Inhalt, und importieren Sie das benötigte Cmdlet.
+Wenn Sie **nicht über Windows 10 oder Windows Server 2016 verfügen**, laden Sie das [Cmdlet „New-SelfSignedCertificateEx“](https://www.pkisolutions.com/tools/pspki/New-SelfSignedCertificateEx/) von PKI Solutions herunter. Extrahieren Sie den Inhalt, und importieren Sie das benötigte Cmdlet.
 
 ```powershell
 # Only run if you could not use New-SelfSignedCertificate

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.openlocfilehash: cae74a5f4859d208765c9a7e5cde05ff3c0c3096
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91313687"
 ---
 # <a name="how-to-configure-virtual-hub-routing"></a>Konfigurieren des Routings für virtuelle Hubs
@@ -30,7 +30,7 @@ Weitere Informationen finden Sie unter [Informationen zum Routing virtueller Hub
 3. Wählen Sie **+ Routingtabelle erstellen** aus, um die Seite **Routingtabelle erstellen** zu öffnen.
 4. Füllen Sie auf der Seite „Routingtabelle erstellen“ auf der Registerkarte **Grundlagen** die unten angegebenen Felder aus.
 
-   :::image type="content" source="./media/how-to-virtual-hub-routing/basics.png" alt-text="Seite „Routing“":::
+   :::image type="content" source="./media/how-to-virtual-hub-routing/basics.png" alt-text="Registerkarte „Grundlagen“":::
 
    * **Name**
    * **Routen**
@@ -41,20 +41,20 @@ Weitere Informationen finden Sie unter [Informationen zum Routing virtueller Hub
 
      Wenn Sie eine VNET-Verbindung auswählen, wird **Configure static routes** (Statische Routen konfigurieren) angezeigt. Dies ist eine optionale Konfigurationseinstellung. Weitere Informationen finden Sie unter [Konfigurieren statischer Routen](about-virtual-hub-routing.md#static).
 
-      :::image type="content" source="./media/how-to-virtual-hub-routing/next-hop.png" alt-text="Seite „Routing“":::
+      :::image type="content" source="./media/how-to-virtual-hub-routing/next-hop.png" alt-text="Nächster Hop":::
 
 5. Wählen Sie die Registerkarte **Bezeichnungen** aus, um Bezeichnungsnamen zu konfigurieren. Bezeichnungen sind ein Verfahren zum logischen Gruppieren von Routingtabellen.
 
-    :::image type="content" source="./media/how-to-virtual-hub-routing/labels.png" alt-text="Seite „Routing“":::
+    :::image type="content" source="./media/how-to-virtual-hub-routing/labels.png" alt-text="Konfigurieren von Bezeichnungsnamen":::
 
 6. Wählen Sie die Registerkarte **Zuordnungen** aus, um der Routingtabelle Verbindungen zuzuordnen.
 Die **Branches**, **Virtuellen Netzwerke** und **Aktuellen Einstellungen** der Verbindungen werden angezeigt.
 
-    :::image type="content" source="./media/how-to-virtual-hub-routing/associations.png" alt-text="Seite „Routing“":::
+    :::image type="content" source="./media/how-to-virtual-hub-routing/associations.png" alt-text="Zuordnen von Verbindungen zur Routingtabelle":::
 
 7. Wählen Sie die Registerkarte **Weitergaben** aus, um Routen von Verbindungen an die Routingtabelle weiterzugeben.
 
-    :::image type="content" source="./media/how-to-virtual-hub-routing/propagations.png" alt-text="Seite „Routing“":::
+    :::image type="content" source="./media/how-to-virtual-hub-routing/propagations.png" alt-text="Weitergeben von Routen":::
 
 8. Wählen Sie **Erstellen** aus, um die Routingtabelle zu erstellen.
 
@@ -70,7 +70,7 @@ Suchen Sie im Azure-Portal nach der Routingtabelle Ihres virtuellen Hubs. Eine R
 
 Suchen Sie im Azure-Portal nach der Routingtabelle Ihres virtuellen Hubs. Klicken Sie auf **„…“** , und wählen Sie **Effektive Routen** aus, um die Routen anzuzeigen, die von der ausgewählten Routingtabelle erlernt wurden. Weitergegebene Routen von der Verbindung zur Routingtabelle werden darin automatisch unter **Effektive Routen** eingefügt. Weitere Informationen finden Sie unter [Anzeigen der effektiven Routen für einen virtuellen Hub](effective-routes-virtual-hub.md).
 
-:::image type="content" source="./media/how-to-virtual-hub-routing/effective.png" alt-text="Seite „Routing“" lightbox="./media/how-to-virtual-hub-routing/effective-expand.png":::
+:::image type="content" source="./media/how-to-virtual-hub-routing/effective.png" alt-text="Anzeigen effektiver Routen" lightbox="./media/how-to-virtual-hub-routing/effective-expand.png":::
 
 ## <a name="to-set-up-routing-configuration-for-a-virtual-network-connection"></a><a name="routing-configuration"></a>Informationen zum Einrichten der Routingkonfiguration für eine virtuelle Netzwerkverbindung
 
@@ -82,7 +82,7 @@ Suchen Sie im Azure-Portal nach der Routingtabelle Ihres virtuellen Hubs. Klicke
 1. Konfigurieren Sie unter **Static routes** (Statische Routen) die statischen Routen für das virtuelle Netzwerkgerät (falls zutreffend). Virtual WAN unterstützt eine einzelne IP-Adresse des nächsten Hops für eine statische Route einer VNET-Verbindung. Wenn Sie beispielsweise jeweils über ein separates virtuelles Gerät für ein- und ausgehende Datenverkehrsflüsse verfügen, ist es am besten, die virtuellen Geräte in separaten VNETs anzuordnen und die VNETs dem virtuellen Hub zuzuordnen.
 
 
-:::image type="content" source="./media/how-to-virtual-hub-routing/routing-configuration.png" alt-text="Seite „Routing“" lightbox="./media/how-to-virtual-hub-routing/routing-configuration-expand.png":::
+:::image type="content" source="./media/how-to-virtual-hub-routing/routing-configuration.png" alt-text="Einrichten der Routingkonfiguration" lightbox="./media/how-to-virtual-hub-routing/routing-configuration-expand.png":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

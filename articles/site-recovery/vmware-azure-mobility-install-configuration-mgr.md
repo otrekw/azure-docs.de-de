@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.date: 2/5/2020
 ms.author: ramamill
 ms.openlocfilehash: 2159ab8c2639f0f87fd53e8559dad518a3daa663
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92544816"
 ---
 # <a name="automate-mobility-service-installation"></a>Automatisieren der Mobility Service-Installation
@@ -18,9 +18,9 @@ In diesem Artikel wird beschrieben, wie Sie Installation und Updates für den Mo
 
 Wenn Sie Site Recovery für die Notfallwiederherstellung von lokalen VMware-VMs und physischen Servern in Azure bereitstellen, wird der Mobility Service-Agent auf jedem Computer installiert, den Sie replizieren möchten. Der Mobility Service erfasst Datenschreibvorgänge auf dem Computer und leitet sie zur Replikation an den Site Recovery-Prozessserver weiter. Es gibt mehrere Möglichkeiten, den Mobility Service bereitzustellen:
 
-- **Pushinstallation** : Der Mobility Service-Agent wird von Site Recovery installiert, wenn Sie die Replikation für einen Computer im Azure-Portal aktivieren.
-- **Manuelle Installation** : Der Mobility Service wird manuell auf den einzelnen Computern installiert. Weitere Informationen zur Pushinstallation und manuellen Installation finden Sie [hier](vmware-physical-mobility-service-overview.md).
-- **Automatisierte Bereitstellung** : Automatisieren Sie die Installation mithilfe von Softwarebereitstellungstools wie Microsoft Endpoint Configuration Manager oder Tools von Drittanbietern wie JetPatch.
+- **Pushinstallation**: Der Mobility Service-Agent wird von Site Recovery installiert, wenn Sie die Replikation für einen Computer im Azure-Portal aktivieren.
+- **Manuelle Installation**: Der Mobility Service wird manuell auf den einzelnen Computern installiert. Weitere Informationen zur Pushinstallation und manuellen Installation finden Sie [hier](vmware-physical-mobility-service-overview.md).
+- **Automatisierte Bereitstellung**: Automatisieren Sie die Installation mithilfe von Softwarebereitstellungstools wie Microsoft Endpoint Configuration Manager oder Tools von Drittanbietern wie JetPatch.
 
 Die automatisierte Installation und Aktualisierung kommen in folgenden Fällen als Lösung infrage:
 
@@ -78,7 +78,7 @@ Die folgende Tabelle enthält eine Übersicht über die Tools und Prozesse zum A
 1. Kopieren Sie die folgenden Installationsdateien in die Netzwerkfreigabe:
 
    - Für Windows: Kopieren Sie _Microsoft-ASR_UA_version_Windows_GA_date_Release.exe_ in _MobSvcWindows_.
-   - Für Linux: Kopieren Sie die folgenden Dateien in _MobSvcLinux_ :
+   - Für Linux: Kopieren Sie die folgenden Dateien in _MobSvcLinux_:
      - _Microsoft-ASR_UARHEL6-64release.tar.gz_
      - _Microsoft-ASR_UARHEL7-64release.tar.gz_
      - _Microsoft-ASR_UASLES11-SP3-64release.tar.gz_
@@ -342,7 +342,7 @@ cd /tmp
 1. Klicken Sie mit der rechten Maustaste auf **Pakete** > **Paket erstellen**.
 1. Geben Sie Paketdetails wie Name, Beschreibung, Hersteller, Sprache und Version an.
 1. Wählen Sie **Dieses Paket enthält Quelldateien** aus.
-1. Klicken Sie auf **Durchsuchen** , und wählen Sie die Netzwerkfreigabe aus, die das entsprechende Installationsprogramm enthält ( _MobSvcWindows_ oder _MobSvcLinux_ ). Klicken Sie anschließend auf **Weiter**.
+1. Klicken Sie auf **Durchsuchen**, und wählen Sie die Netzwerkfreigabe aus, die das entsprechende Installationsprogramm enthält (_MobSvcWindows_ oder _MobSvcLinux_). Klicken Sie anschließend auf **Weiter**.
 
    ![Screenshot des Assistenten zum Erstellen von Paketen und Programmen](./media/vmware-azure-mobility-install-configuration-mgr/create_sccm_package.png)
 

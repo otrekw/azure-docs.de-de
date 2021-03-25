@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 3a2854f4124a570de4fb467eb6a5d49a3214742e
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 1a52b2fec6155959a570f2438a59c14d9f79f368
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341820"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101701959"
 ---
 # <a name="faq-for-customers-already-using-azure-monitor-logs"></a>Häufig gestellte Fragen von Kunden, die bereits Azure Monitor-Protokolle verwenden<a name="existingloganalyticscust"></a>
 
@@ -34,7 +34,7 @@ Eine Security Center-Lösung wird in dem Arbeitsbereich installiert, der im Date
 ## <a name="does-security-center-install-solutions-on-my-existing-log-analytics-workspaces-what-are-the-billing-implications"></a>Installiert das Security Center Lösungen in meinen vorhandenen Log Analytics-Arbeitsbereichen? Was bedeutet das für die Abrechnung?
 Wenn Security Center erkennt, dass ein virtueller Computer bereits mit einem Arbeitsbereich verbunden ist, den Sie erstellt haben, aktiviert Security Center Lösungen in diesem Arbeitsbereich gemäß Ihrer Preiskonfiguration. Da die Lösungen mittels [Zielgruppenadressierung für Lösungen](../azure-monitor/insights/solution-targeting.md) nur auf die relevanten virtuellen Azure-Computer angewendet werden, bleibt die Abrechnung unverändert.
 
-- **Azure Defender aus:** Security Center installiert die Lösung SecurityCenterFree im Arbeitsbereich. Ihnen wird nichts in Rechnung gestellt.
+- **Azure Defender aus**: Security Center installiert die Lösung SecurityCenterFree im Arbeitsbereich. Ihnen wird nichts in Rechnung gestellt.
 - **Azure Defender ein:** Security Center installiert die Lösung Security im Arbeitsbereich.
 
    ![Lösungen im Standardarbeitsbereich](./media/security-center-platform-migration-faq/solutions.png)

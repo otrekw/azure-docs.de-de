@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 05/01/2017
 ms.openlocfilehash: ce77f5074d707da5cfb251a103653b96e4644b5f
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92544527"
 ---
 # <a name="aspnet-session-state-provider-for-azure-cache-for-redis"></a>ASP.NET-Sitzungszustandsanbieter für Azure Cache for Redis
@@ -22,7 +22,7 @@ Im praktischen Einsatz von Cloud-Apps lässt sich das Speichern von Zustandsinfo
 
 ## <a name="store-aspnet-session-state-in-the-cache"></a>Speichern des ASP.NET-Sitzungsstatus im Cache
 
-Klicken Sie zum Konfigurieren einer Clientanwendung in Visual Studio mit dem Azure Cache for Redis-Sitzungszustands-NuGet-Paket im Menü **Extras** auf **NuGet-Paket-Manager** > **Paket-Manager-Konsole** .
+Klicken Sie zum Konfigurieren einer Clientanwendung in Visual Studio mit dem Azure Cache for Redis-Sitzungszustands-NuGet-Paket im Menü **Extras** auf **NuGet-Paket-Manager** > **Paket-Manager-Konsole**.
 
 Führen Sie im Fenster `Package Manager Console` den folgenden Befehl aus.
     
@@ -83,14 +83,14 @@ Im kommentierten Bereich finden Sie Beispiele der Attribute sowie Beispieleinste
 Konfigurieren Sie die Attribute mit den Werten vom Blatt „Cache“ im Microsoft Azure-Portal, und konfigurieren Sie die restlichen Werte wie gewünscht. Anweisungen zum Zugreifen auf die Cacheeigenschaften finden Sie unter [Konfigurieren von Azure Cache for Redis-Einstellungen](cache-configure.md#configure-azure-cache-for-redis-settings).
 
 * **host** : Geben Sie den Cacheendpunkt an.
-* **port** : Verwenden Sie abhängig von Ihren TLS-Einstellungen entweder den Nicht-TLS/SSL-Port oder den TLS/SSL-Port.
+* **port**: Verwenden Sie abhängig von Ihren TLS-Einstellungen entweder den Nicht-TLS/SSL-Port oder den TLS/SSL-Port.
 * **accessKey** : Verwenden Sie den primären oder sekundären Schlüssel für Ihren Cache.
-* **ssl** : Diese Einstellung ist „true“, wenn Sie die Kommunikation zwischen Cache und Client mit TSL absichern möchten, andernfalls lautet der Wert „false“. Achten Sie darauf, dass Sie den richtigen Port angeben.
+* **ssl**: Diese Einstellung ist „true“, wenn Sie die Kommunikation zwischen Cache und Client mit TSL absichern möchten, andernfalls lautet der Wert „false“. Achten Sie darauf, dass Sie den richtigen Port angeben.
   * Der Nicht-TLS-Port ist für neue Caches standardmäßig deaktiviert. Geben Sie für diese Einstellung „true“ an, wenn Sie den TLS-Port verwenden möchten. Weitere Informationen zum Aktivieren des Nicht-TLS-Ports finden Sie im Abschnitt [Zugriffsports](cache-configure.md#access-ports) des Themas [Konfigurieren eines Caches](cache-configure.md).
 * **throwOnError:** Geben Sie TRUE an, wenn bei einem Fehler eine Ausnahme ausgelöst werden soll, oder FALSE, wenn bei einem nicht ausgeführten Vorgang keine Meldung erfolgen soll. Sie können das Vorliegen von Fehlern feststellen, indem Sie die statische Eigenschaft „Microsoft.Web.Redis.RedisSessionStateProvider.LastException“ überprüfen. Der Standardwert ist „true“.
-* **retryTimeoutInMilliseconds** : Bei Fehlern werden Vorgänge für diese Zeitspanne wiederholt (angegeben in Millisekunden). Die erste Wiederholung erfolgt nach 20 Millisekunden. Danach wird die Wiederholung jede Sekunde durchgeführt, bis die in „retryTimeoutInMilliseconds“ angegebene Zeitspanne abgelaufen ist. Unmittelbar nach dieser Zeitspanne wird der Vorgang ein letztes Mal wiederholt. Wenn dann immer noch ein Fehler bei dem Vorgang auftritt, wird der aufrufenden Funktion eine Ausnahme zurückgegeben, abhängig von der Einstellung für „throwOnError“. Der Standardwert lautet 0, d.h. keine Wiederholungen.
+* **retryTimeoutInMilliseconds**: Bei Fehlern werden Vorgänge für diese Zeitspanne wiederholt (angegeben in Millisekunden). Die erste Wiederholung erfolgt nach 20 Millisekunden. Danach wird die Wiederholung jede Sekunde durchgeführt, bis die in „retryTimeoutInMilliseconds“ angegebene Zeitspanne abgelaufen ist. Unmittelbar nach dieser Zeitspanne wird der Vorgang ein letztes Mal wiederholt. Wenn dann immer noch ein Fehler bei dem Vorgang auftritt, wird der aufrufenden Funktion eine Ausnahme zurückgegeben, abhängig von der Einstellung für „throwOnError“. Der Standardwert lautet 0, d.h. keine Wiederholungen.
 * **databaseId** : Gibt an, welche Datenbank für die Cacheausgabedaten verwendet werden soll. Wenn Sie hier nichts angeben, wird der Standardwert 0 verwendet.
-* **applicationName** : Schlüssel werden in Redis als `{<Application Name>_<Session ID>}_Data` gespeichert. Durch dieses Benennungsschema wird ermöglicht, dass mehrere Anwendungen dieselbe Redis-Instanz gemeinsam nutzen. Dieser Parameter ist optional, und wenn Sie ihn nicht angeben, wird der Standardwert verwendet.
+* **applicationName**: Schlüssel werden in Redis als `{<Application Name>_<Session ID>}_Data` gespeichert. Durch dieses Benennungsschema wird ermöglicht, dass mehrere Anwendungen dieselbe Redis-Instanz gemeinsam nutzen. Dieser Parameter ist optional, und wenn Sie ihn nicht angeben, wird der Standardwert verwendet.
 * **connectionTimeoutInMilliseconds** : Diese Einstellung ermöglicht Ihnen, die connectTimeout-Einstellung im StackExchange.Redis-Client zu überschreiben. Wenn Sie sie nicht angegeben, wird die connectTimeout-Standardeinstellung „5000“ verwendet. Weitere Informationen finden Sie unter [StackExchange.Redis-Konfigurationsmodell](https://go.microsoft.com/fwlink/?LinkId=398705).
 * **operationTimeoutInMilliseconds** : Diese Einstellung ermöglicht Ihnen, die syncTimeout-Einstellung im StackExchange.Redis-Client zu überschreiben. Wenn Sie sie nicht angegeben, wird die syncTimeout-Standardeinstellung „1000“ verwendet. Weitere Informationen finden Sie unter [StackExchange.Redis-Konfigurationsmodell](https://go.microsoft.com/fwlink/?LinkId=398705).
 * **redisSerializerType:** Mit dieser Einstellung können Sie eine benutzerdefinierte Serialisierung des Sitzungsinhalts, der an Redis gesendet wird, angeben. Der angegebene Typ muss `Microsoft.Web.Redis.ISerializer` implementieren und einen öffentlichen parameterlosen Konstruktor deklarieren. Standardmäßig wird `System.Runtime.Serialization.Formatters.Binary.BinaryFormatter` verwendet.

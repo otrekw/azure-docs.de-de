@@ -8,12 +8,12 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/01/2021
-ms.openlocfilehash: 558df115043d76acf865f19611e8c4cd322e00a7
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 5a44c40838b7f7fa9ca499ade49317ff9ce828fe
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101678683"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102498896"
 ---
 # <a name="how-to-configure-sharepoint-online-indexing-in-cognitive-search-preview"></a>Konfigurieren der SharePoint Online-Indizierung in Cognitive Search (Vorschau)
 
@@ -23,6 +23,9 @@ ms.locfileid: "101678683"
 > Die Vorschaufunktion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 > 
 > Dieses Feature wird durch die [REST-API-Version 2020-06-30-Preview](search-api-preview.md) bereitgestellt. Derzeit werden weder das Portal noch das SDK unterstützt.
+
+> [!NOTE]
+> SharePoint Online unterstützt ein detailliertes Autorisierungsmodell, das den benutzerspezifischen Zugriff auf Dokumentebene bestimmt. Der SharePoint Online-Indexer übernimmt diese Berechtigungen nicht in den Suchindex, und Cognitive Search unterstützt keine Autorisierung auf Dokumentebene. Wenn ein Dokument von SharePoint Online in einen Suchdienst indiziert wird, steht der Inhalt allen Benutzern zur Verfügung, die über Lesezugriff auf den Index verfügen. Wenn Sie Berechtigungen auf Dokumentebene benötigen, sollten Sie Sicherheitsfilter zum Einschränken von Ergebnissen nicht autorisierter Inhalte prüfen. Weitere Informationen finden Sie unter [Sicherheitsfilter zum Einschränken von Ergebnissen mit Active Directory-Identitäten](search-security-trimming-for-azure-search-with-aad.md).
 
 In diesem Artikel wird beschrieben, wie Sie mithilfe von Azure Cognitive Search in SharePoint Online-Dokumentbibliotheken gespeicherte Dokumente (z. B. PDF- oder Microsoft Office-Dokumente und verschiedene andere gängige Formate) in einem Azure Cognitive Search-Index indizieren. Zunächst werden die Grundlagen der Einrichtung und Konfiguration des Indexers erläutert. Anschließend folgt eine ausführlichere Betrachtung der Verhaltensweisen und Szenarien, die Ihnen voraussichtlich begegnen.
 
@@ -163,7 +166,16 @@ Zum Erstellen des Indexers führen Sie die folgenden Schritte aus:
         {
           "name" : "sharepoint-indexer",
           "dataSourceName" : "sharepoint-datasource",
-          "targetIndexName" : "sharepoint-index"
+          "targetIndexName" : "sharepoint-index",
+          "fieldMappings" : [
+            { 
+              "sourceFieldName" : "metadata_spo_site_library_item_id", 
+              "targetFieldName" : "id", 
+              "mappingFunction" : { 
+                "name" : "base64Encode" 
+              } 
+            }
+          ]
         }
     
     ```

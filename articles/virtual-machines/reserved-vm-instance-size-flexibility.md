@@ -6,14 +6,14 @@ ms.service: virtual-machines
 ms.subservice: reserved-instances
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 02/02/2021
+ms.date: 03/01/2021
 ms.author: yashar
-ms.openlocfilehash: 6b04caec380a481569de4a33ea0159fd641c000f
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 9270b7fb135eddd78a7aeb30cf88af4d704e176e
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101673963"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102030703"
 ---
 # <a name="virtual-machine-size-flexibility-with-reserved-vm-instances"></a>Flexibilität bei der VM-Größe mit reservierten VM-Instanzen
 
@@ -48,7 +48,13 @@ Das CSV unten enthält die Gruppen der Instanzgrößenflexibilität, den ArmSkuN
 
 [Verhältnisse der Instanzgrößenflexibilität](https://isfratio.blob.core.windows.net/isfratio/ISFRatio.csv)
 
-Datei-URL und Schema bleiben fest, damit Sie diese Datei programmgesteuert verwenden können. Die Daten werden in Kürze auch über API verfügbar sein.
+Azure behält Link und Schema bei, sodass Sie die Datei programmgesteuert verwenden können.
+
+## <a name="view-vm-size-recommendations"></a>Anzeigen von Empfehlungen für die VM-Größe
+
+Azure zeigt die Empfehlungen für die VM-Größe im Kaufvorgang an. Um die kleinsten Größenempfehlungen anzuzeigen, wählen Sie die Option **Gruppieren nach kleinster Größe** aus.
+
+:::image type="content" source="./media/reserved-vm-instance-size-flexibility/select-product-recommended-quantity.png" alt-text="Screenshot, der empfohlene Mengen anzeigt." lightbox="./media/reserved-vm-instance-size-flexibility/select-product-recommended-quantity.png" :::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

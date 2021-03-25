@@ -4,12 +4,12 @@ description: Erhalten einer regelmäßigen Zusammenfassung für Ihre aktiven Emp
 ms.topic: article
 ms.date: 03/16/2020
 ms.author: sagupt
-ms.openlocfilehash: e446fca11e029e28e44ada884efd071f3142514c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1c82abf3c8bea07941f860b94fcfe92954fb7641
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86518078"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "100579811"
 ---
 # <a name="configure-periodic-summary-for-recommendations"></a>Konfigurieren einer regelmäßigen Zusammenfassung für Empfehlungen
 
@@ -21,7 +21,7 @@ Advisor-**Empfehlungsdigests** bieten eine einfache und proaktive Möglichkeit, 
 Die Unterstützung bei der Erstellung von **Empfehlungsdigests** hilft Ihnen beim Konfigurieren der Zusammenfassung. Sie können die folgenden Parameter für Konfigurationen auswählen:
 1. Kategorie: Wir verwenden Empfehlungskategorien wie Kosten, Hochverfügbarkeit, Leistung und optimaler Betrieb. Die Funktion ist noch nicht für Sicherheitsempfehlungen verfügbar.
 2. Häufigkeit des Digests: Die Häufigkeit für die Zusammenfassungsbenachrichtigungen kann wöchentlich, zweiwöchentlich und monatlich sein.
-3. Aktionsgruppe: Sie können eine vorhandene Aktionsgruppe aus, wählen oder eine neue Gruppe erstellen. Weitere Informationen zu Aktionsgruppen finden Sie unter [Erstellen und Verwalten von Aktionsgruppen im Azure-Portal](../azure-monitor/platform/action-groups.md).
+3. Aktionsgruppe: Sie können eine vorhandene Aktionsgruppe auswählen oder eine neue Aktionsgruppe erstellen. Weitere Informationen zu Aktionsgruppen finden Sie unter [Erstellen und Verwalten von Aktionsgruppen im Azure-Portal](../azure-monitor/alerts/action-groups.md).
 4. Sprache für den Digest
 5. Name des Empfehlungsdigests: Sie können eine benutzerfreundliche Zeichenfolge verwenden, um die Digests besser nachverfolgen und überwachen zu können.
 
@@ -44,11 +44,11 @@ Mit den folgenden Schritten erstellen Sie einen **Empfehlungsdigest**:
 
    ![Bereitstellen von Eingabebedingungen für den Empfehlungsdigest](./media/digest-2.png)
 
-* **Schritt 5:** Wählen Sie im Abschnitt **Aktionsgruppe** die **Aktionsgruppe** für den Digest aus. Weitere Informationen finden Sie unter [Erstellen und Verwalten von Aktionsgruppen](../azure-monitor/platform/action-groups.md).
+* **Schritt 5:** Wählen Sie im Abschnitt **Aktionsgruppe** die **Aktionsgruppe** für den Digest aus. Weitere Informationen finden Sie unter [Erstellen und Verwalten von Aktionsgruppen](../azure-monitor/alerts/action-groups.md).
 
    ![Bereitstellen einer Aktionsgruppe für Eingaben für den Empfehlungsdigest](./media/digest-3.png)
 
-* **Schritt 6:** In diesem abschließenden Abschnitt für **Digestdetails** können Sie Ihrem Empfehlungsdigest einen Namen und Status zuweisen. Klicken Sie auf **Empfehlungsdigest erstellen**, um die Einrichtung abzuschließen.
+* **Schritt 6:** In diesem abschließenden Abschnitt für **Digestdetails** können Sie dem Empfehlungsdigest einen Namen und Status zuweisen. Klicken Sie auf **Empfehlungsdigest erstellen**, um die Einrichtung abzuschließen.
    ![Abschließen der Erstellung des Empfehlungsdigests](./media/digest-4.png)
 
 ## <a name="next-steps"></a>Nächste Schritte

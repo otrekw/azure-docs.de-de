@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.date: 08/06/2020
-ms.openlocfilehash: a04d976ed3d9be253425b4c8a5a5c0effb6f80b8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 04da79509ac40ba870014995d8318a49c98e1ce5
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101741836"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863410"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>Einrichten von Clustern in HDInsight mit Apache Hadoop, Apache Spark, Apache Kafka usw.
 
@@ -42,7 +42,7 @@ Dieser Artikel enthält die Schritte im [Azure-Portal](https://portal.azure.com)
 
 ## <a name="basics"></a>Grundlagen
 
-![HDInsight-Erstellungsoptionen benutzerdefiniert schnell](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-basics-blank-fs.png)
+:::image type="content" source="./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-basics-blank-fs.png" alt-text="HDInsight-Erstellungsoptionen benutzerdefiniert schnell":::
 
 ### <a name="project-details"></a>Projektdetails
 
@@ -107,7 +107,7 @@ Für den SSH-Benutzernamen gelten folgende Einschränkungen:
 
 ## <a name="storage"></a>Storage
 
-![Clusterspeichereinstellungen: HDFS-kompatible Endpunkte](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-storage.png)
+:::image type="content" source="./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-storage.png" alt-text="Clusterspeichereinstellungen: HDFS-kompatible Endpunkte":::
 
 Obwohl eine lokale Installation von Hadoop das Hadoop Distributed File System (HDFS) für die Speicherung im Cluster verwendet, nutzen Sie in der Cloud Speicherendpunkte, die mit dem Cluster verbunden sind. Durch Verwendung von Cloudspeicher können Sie die für Berechnungen verwendeten HDInsight-Cluster sicher löschen und gleichzeitig Ihre Daten beibehalten.
 
@@ -165,7 +165,7 @@ Ambari wird zum Überwachen von HDinsight-Clustern, Vornehmen von Konfigurations
 
 ## <a name="security--networking"></a>Sicherheit + Netzwerkbetrieb
 
-![HDInsight-Erstellungsoptionen – Sicherheitspaket für Unternehmen auswählen](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-security-networking.png)
+:::image type="content" source="./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-security-networking.png" alt-text="HDInsight-Erstellungsoptionen – Sicherheitspaket für Unternehmen auswählen":::
 
 ### <a name="enterprise-security-package"></a>Sicherheitspaket für Unternehmen
 
@@ -201,7 +201,7 @@ Weitere Informationen finden Sie unter [Verwaltete Identitäten in Azure HDInsig
 
 ## <a name="configuration--pricing"></a>Konfiguration + Preise
 
-![HDInsight – Knotengröße auswählen](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-configuration.png)
+:::image type="content" source="./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-configuration.png" alt-text="HDInsight – Knotengröße auswählen":::
 
 Die Verwendung der Knoten wird so lange abgerechnet, wie der Cluster vorhanden ist. Die Abrechnung beginnt, sobald ein Cluster erstellt wurde, und sie endet, wenn der Cluster gelöscht wird. Bei Clustern ist kein Aufheben der Zuweisung oder ein Anhalten möglich.
 
@@ -211,10 +211,10 @@ Jeder Clustertyp verfügt über eine eigene Anzahl von Knoten, Terminologie für
 
 | type | Nodes | Diagramm |
 | --- | --- | --- |
-| Hadoop |Hauptknoten (2), Workerknoten (1+) |![HDInsight-Hadoop-Clusterknoten](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hadoop-cluster-type-nodes.png) |
-| hbase |Hauptserver (2), Regionsserver (1+), Master-/Zookeeper-Knoten (3) |![HDInsight-HBase-Clustertypeinrichtung](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hbase-cluster-type-setup.png) |
-| Storm |Nimbus-Knoten (2), Supervisor-Server (1+), Zookeeper-Knoten (3) |![HDInsight-Storm-Clustertypeinrichtung](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-storm-cluster-type-setup.png) |
-| Spark |Hauptknoten (2), Workerknoten (1+), ZooKeeper-Knoten (3) (kostenlos für ZooKeeper-VMs der Größe A1) |![HDInsight-Spark-Clustertypeinrichtung](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-spark-cluster-type-setup.png) |
+| Hadoop |Hauptknoten (2), Workerknoten (1+) |:::image type="content" source="./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hadoop-cluster-type-nodes.png" alt-text="HDInsight-Hadoop-Clusterknoten" border="false"::: |
+| hbase |Hauptserver (2), Regionsserver (1+), Master-/Zookeeper-Knoten (3) |:::image type="content" source="./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hbase-cluster-type-setup.png" alt-text="HDInsight-HBase-Clustertypeinrichtung" border="false"::: |
+| Storm |Nimbus-Knoten (2), Supervisor-Server (1+), Zookeeper-Knoten (3) |:::image type="content" source="./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-storm-cluster-type-setup.png" alt-text="HDInsight-Storm-Clustertypeinrichtung" border="false"::: |
+| Spark |Hauptknoten (2), Workerknoten (1+), ZooKeeper-Knoten (3) (kostenlos für ZooKeeper-VMs der Größe A1) |:::image type="content" source="./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-spark-cluster-type-setup.png" alt-text="HDInsight-Spark-Clustertypeinrichtung" border="false"::: |
 
 Weitere Informationen finden Sie unter [Standardknotenkonfiguration und VM-Größen für Cluster](hdinsight-supported-node-configuration.md) in „Welche Hadoop-Komponenten und -Versionen gibt es in HDInsight?“.
 
@@ -222,7 +222,7 @@ Die Kosten von HDInsight-Clustern ergeben sich aus der Anzahl der Knoten und aus
 
 Unterschiedliche Clustertypen weisen verschiedene Knotentypen, eine unterschiedliche Anzahl von Knoten sowie verschiedene Knotengrößen auf:
 * Hadoop-Standardclustertyp:
-    * Zwei *Hauptknoten*  
+    * Zwei *Hauptknoten*
     * Vier *Workerknoten*
 * Storm-Standardclustertyp:
     * Zwei *Nimbusknoten*

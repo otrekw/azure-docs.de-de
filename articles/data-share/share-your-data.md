@@ -7,10 +7,10 @@ ms.service: data-share
 ms.topic: tutorial
 ms.date: 11/12/2020
 ms.openlocfilehash: 89c2a725b853b5a2a7578dccc1fd503917e12962
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94659623"
 ---
 # <a name="tutorial-share-data-using-azure-data-share"></a>Tutorial: Freigeben von Daten mithilfe von Azure Data Share  
@@ -44,7 +44,7 @@ Im Folgenden finden Sie eine Liste der Voraussetzungen für die Freigabe von Dat
 #### <a name="prerequisites-for-sharing-from-azure-sql-database-or-azure-synapse-analytics-formerly-azure-sql-dw"></a>Voraussetzungen für die Freigabe von Daten aus Azure SQL-Datenbank oder Azure Synapse Analytics (ehemals Azure SQL DW)
 Beim Konfigurieren der Voraussetzungen können Sie sich an der [Schritt-für-Schritt-Demo](https://youtu.be/hIE-TjJD8Dc) orientieren.
 
-* Eine Instanz von Azure SQL-Datenbank oder Azure Synapse Analytics (ehemals Azure SQL DW) mit Tabellen und Ansichten, die Sie freigeben möchten.
+* Eine Instanz von Azure SQL-Datenbank oder Azure Synapse Analytics (ehemals Azure SQL DW) mit Tabellen und Sichten, die Sie freigeben möchten.
 * Berechtigung zum Schreiben in die Datenbanken in SQL Server (unter *Microsoft.Sql/servers/databases/write*). Diese Berechtigung ist in der Rolle **Mitwirkender** vorhanden.
 * Berechtigung zum Zugreifen auf die Datenbank für die verwaltete Identität der Data Share-Ressource. Die Berechtigung kann mit folgenden Schritten gewährt werden: 
     1. Navigieren Sie im Azure-Portal zur SQL Server-Instanz, und legen Sie sich selbst als **Azure Active Directory-Administrator** fest.
@@ -57,7 +57,7 @@ Beim Konfigurieren der Voraussetzungen können Sie sich an der [Schritt-für-Sch
         ```                   
        Beachten Sie, dass *<share_acc_name>* der Name Ihrer Data Share-Ressource ist. Falls Sie noch keine Data Share-Ressource erstellt haben, können Sie später zu dieser Voraussetzung zurückkehren.  
 
-* Ein Azure SQL-Datenbank-Benutzer mit Zugriff vom Typ **db_datareader** zum Navigieren durch Tabellen und/oder Ansichten sowie zum Auswählen der Tabellen und/oder Ansichten, die Sie freigeben möchten. 
+* Ein Azure SQL-Datenbank-Benutzer mit Zugriff vom Typ **db_datareader** zum Navigieren durch Tabellen und/oder Sichten sowie zum Auswählen der Tabellen und/oder Sichten, die Sie freigeben möchten. 
 
 * SQL Server-Firewallzugriff. Die Berechtigung kann mit folgenden Schritten gewährt werden: 
     1. Navigieren Sie im Azure-Portal zu „SQL Server“. Wählen Sie im linken Navigationsbereich die Option *Firewalls und virtuelle Netzwerke* aus.
@@ -67,7 +67,7 @@ Beim Konfigurieren der Voraussetzungen können Sie sich an der [Schritt-für-Sch
 
 #### <a name="prerequisites-for-sharing-from-azure-synapse-analytics-workspace-sql-pool"></a>Voraussetzungen für die Freigabe von Daten aus einem SQL-Pool von Azure Synapse Analytics (Arbeitsbereich)
 
-* * Ein dedizierter SQL-Pool von Azure Synapse Analytics (Arbeitsbereich) mit Tabellen, die Sie freigeben möchten. Das Freigeben der Ansicht wird derzeit nicht unterstützt. Das Freigeben von Daten aus einem serverlosen SQL-Pool wird derzeit nicht unterstützt.
+* * Ein dedizierter SQL-Pool von Azure Synapse Analytics (Arbeitsbereich) mit Tabellen, die Sie freigeben möchten. Das Freigeben der Sicht wird derzeit nicht unterstützt. Das Freigeben von Daten aus einem serverlosen SQL-Pool wird derzeit nicht unterstützt.
 * Berechtigung zum Schreiben in den SQL-Pool im Synapse-Arbeitsbereich (unter *Microsoft.Synapse/workspaces/sqlPools/write*). Diese Berechtigung ist in der Rolle **Mitwirkender** vorhanden.
 * Berechtigung zum Zugreifen auf den SQL-Pool des Synapse-Arbeitsbereichs für die verwaltete Identität der Data Share-Ressource. Die Berechtigung kann mit folgenden Schritten gewährt werden: 
     1. Navigieren Sie im Azure-Portal zum Synapse-Arbeitsbereich. Wählen Sie im linken Navigationsbereich die Option „Administrator für Active Directory in SQL“ aus, und legen Sie sich selbst als **Azure Active Directory-Administrator** fest.
