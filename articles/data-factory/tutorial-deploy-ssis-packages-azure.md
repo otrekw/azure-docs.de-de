@@ -4,15 +4,15 @@ description: Hier erfahren Sie, wie Sie zur Bereitstellung und Ausführung von S
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 10/13/2020
+ms.date: 02/22/2021
 author: swinarko
 ms.author: sawinark
-ms.openlocfilehash: e0b84bb65e71b023121a5deae8295ddaf8879311
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 7c439d71806d2deba508ce35131f21ebfbd7a3ec
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100391353"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101740408"
 ---
 # <a name="provision-the-azure-ssis-integration-runtime-in-azure-data-factory"></a>Bereitstellen der Azure-SSIS Integration Runtime in Azure Data Factory
 
@@ -149,6 +149,12 @@ Wenn Sie das Kontrollkästchen aktivieren, führen Sie die folgenden Schritte au
    1. Geben Sie unter **Administratorbenutzername** den Benutzernamen für die SQL-Authentifizierung für den Datenbankserver zum Hosten der SSISDB an. 
 
    1. Geben Sie unter **Administratorbenutzerkennwort** das Kennwort für die SQL-Authentifizierung für den Datenbankserver zum Hosten der SSISDB an. 
+
+   1. Aktivieren Sie das Kontrollkästchen **Azure-SSIS Integration Runtime-Paar (Dual Standby) mit SSISDB-Failover verwenden**, um ein Dual Standby-Azure SSIS IR-Paar zu konfigurieren, das synchron mit der Failovergruppe für verwaltete Azure SQL-Datenbank-Instanzen für Geschäftskontinuität und Notfallwiederherstellung (BCDR, Business Continuity and Disaster Recovery) funktioniert.
+   
+      Wenn Sie das Kontrollkästchen aktivieren, geben Sie einen Namen ein, um Ihr Paar der primären und sekundären Azure-SSIS-IRs im Textfeld **Dual Standby-Paarname** zu identifizieren. Beim Erstellen Ihrer primären und sekundären Azure-SSIS-IRs müssen Sie denselben Paarnamen eingeben.
+
+      Weitere Informationen finden Sie unter [Konfigurieren von Azure-SSIS Integration Runtime für Business Continuity & Disaster Recovery (BCDR)](./configure-bcdr-azure-ssis-integration-runtime.md).
 
    1. Wählen Sie unter **Katalogdatenbank-Dienstebene** die Dienstebene für Ihren Datenbankserver zum Hosten der SSISDB aus. Wählen Sie den Tarif „Basic“, „Standard“ oder „Premium“ oder den Namen eines Pools für elastische Datenbanken aus.
 

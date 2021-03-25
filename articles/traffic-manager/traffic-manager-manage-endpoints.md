@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 05/08/2017
 ms.author: duau
 ms.openlocfilehash: 3d5a888bf132725ff64c2a128b77f0257f435585
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98184253"
 ---
 # <a name="add-disable-enable-or-delete-endpoints"></a>Hinzufügen, Deaktivieren, Aktivieren oder Löschen von Endpunkten
@@ -37,7 +37,7 @@ Sie können auch einzelne Endpunkte deaktivieren, die Teil eines Traffic Manager
     1. Klicken Sie als **Typ** auf **Azure-Endpunkt**.
     2. Geben Sie einen **Namen** an, den Sie zur Bezeichnung des Endpunkts verwenden möchten.
     3. Wählen Sie als **Zielressourcentyp** in der Dropdownliste den entsprechenden Ressourcentyp aus.
-    4. Klicken Sie für **Zielressource** auf den Selektor **Auswählen...** , um Ressourcen unter dem gleichen Abonnement auf dem Blatt **Ressourcen** aufzulisten. Wählen Sie auf dem angezeigten Blatt **Ressource** den Dienst aus, den Sie als ersten Endpunkt hinzufügen möchten.
+    4. Klicken Sie für **Zielressource** auf den Selektor **Auswählen...**, um Ressourcen unter dem gleichen Abonnement auf dem Blatt **Ressourcen** aufzulisten. Wählen Sie auf dem angezeigten Blatt **Ressource** den Dienst aus, den Sie als ersten Endpunkt hinzufügen möchten.
     5. Legen Sie als **Priorität** den Wert **1** fest. Dies bewirkt, dass der gesamte Datenverkehr an diesen Endpunkt geleitet wird, sofern sein Status intakt ist.
     6. Lassen Sie **Als deaktiviert hinzufügen** deaktiviert.
     7. Klicken Sie auf **OK**

@@ -8,10 +8,10 @@ ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: b0ffe022f6c61cf7d06c510c4f8fa5c764d72b42
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88067187"
 ---
 # <a name="create-a-service-bus-authorization-rule-for-namespace-and-queue-using-an-azure-resource-manager-template"></a>Erstellen einer Service Bus-Autorisierungsregel für Namespaces und Warteschlangen mithilfe einer Azure Resource Manager-Vorlage
@@ -95,7 +95,7 @@ Die Service Bus-API-Version der Vorlage.
 
 ## <a name="resources-to-deploy"></a>Bereitzustellende Ressourcen
 
-Erstellt einen standardmäßigen Service Bus-Namespace des Typs **Messaging**und eine Service Bus-Autorisierungsregel für Namespace und Entität.
+Erstellt einen standardmäßigen Service Bus-Namespace des Typs **Messaging** und eine Service Bus-Autorisierungsregel für Namespace und Entität.
 
 ```json
 "resources": [
@@ -159,7 +159,7 @@ JSON-Syntax und Eigenschaften finden Sie unter [namespaces](/azure/templates/mic
 New-AzResourceGroupDeployment -ResourceGroupName \<resource-group-name\> -TemplateFile <https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/301-servicebus-create-authrule-namespace-and-queue/azuredeploy.json>
 ```
 
-## <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+## <a name="azure-cli"></a>Azure CLI
 
 ```azurecli-interactive
 azure config mode arm

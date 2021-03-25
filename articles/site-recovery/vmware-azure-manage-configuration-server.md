@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: ramamill
 ms.openlocfilehash: 2f1edc14efdeaf70bf4c2acc0e31e1517753ed3e
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92546346"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vmphysical-server-disaster-recovery"></a>Verwalten des Konfigurationsservers für die Notfallwiederherstellung von virtuellen VMware-Computern/physischen Servern
@@ -29,11 +29,11 @@ Bei der mit der OVF-Vorlage bereitgestellten Lizenz handelt es sich um eine Eval
 Sie können wie folgt auf den Konfigurationsserver zugreifen:
 
 * Melden Sie sich bei dem virtuellen Computer an, auf dem er bereitgestellt wird, und starten Sie den **Azure Site Recovery Configuration Manager** über die Desktopverknüpfung.
-* Alternativ können Sie remote über „https:// *Konfigurationsservername* /:44315/“ auf den Konfigurationsserver zugreifen. Melden Sie sich mit Administratoranmeldeinformationen an.
+* Alternativ können Sie remote über „https://*Konfigurationsservername*/:44315/“ auf den Konfigurationsserver zugreifen. Melden Sie sich mit Administratoranmeldeinformationen an.
 
 ## <a name="modify-vmware-server-settings"></a>Ändern von VMware-Servereinstellungen
 
-1. Klicken Sie nach dem [Anmelden](#access-configuration-server) auf **vCenter-Server/vSphere ESXi-Server hinzufügen** , um dem Konfigurationsserver einen anderen VMware-Server zuzuordnen.
+1. Klicken Sie nach dem [Anmelden](#access-configuration-server) auf **vCenter-Server/vSphere ESXi-Server hinzufügen**, um dem Konfigurationsserver einen anderen VMware-Server zuzuordnen.
 2. Geben Sie die Eigenschaften ein, und wählen Sie dann **OK** aus.
 
 ## <a name="modify-credentials-for-automatic-discovery"></a>Ändern der Anmeldeinformationen für die automatische Ermittlung
@@ -77,14 +77,14 @@ Gehen Sie wie folgt vor, falls Sie im Rahmen der OVF-Bereitstellung des Konfigur
 Anmeldeinformationen können auch über „CSPSConfigtool.exe“ hinzugefügt werden.
 
 1. Melden Sie sich beim Konfigurationsserver an, und starten Sie „CSPSConfigtool.exe“.
-2. Klicken Sie auf **Hinzufügen** , geben Sie die neuen Anmeldeinformationen ein, und klicken Sie anschließend auf **OK**.
+2. Klicken Sie auf **Hinzufügen**, geben Sie die neuen Anmeldeinformationen ein, und klicken Sie anschließend auf **OK**.
 
 ## <a name="modify-proxy-settings"></a>Ändern von Proxyeinstellungen
 
 Ändern Sie die Proxyeinstellungen, die vom Konfigurationsservercomputer für den Internetzugriff in Azure verwendet werden. Ändern Sie die Einstellungen auf beiden Computern, wenn Sie zusätzlich zum Standardprozessserver, der auf dem Konfigurationsservercomputer ausgeführt wird, über einen weiteren Prozessservercomputer verfügen.
 
 1. Klicken Sie nach der [Anmeldung](#access-configuration-server) beim Konfigurationsserver auf **Konnektivität verwalten**.
-2. Aktualisieren Sie die Proxywerte. Klicken Sie auf **Speichern** , um die Einstellungen zu aktualisieren.
+2. Aktualisieren Sie die Proxywerte. Klicken Sie auf **Speichern**, um die Einstellungen zu aktualisieren.
 
 ## <a name="add-a-network-adapter"></a>Hinzufügen eines Netzwerkadapters
 
@@ -126,10 +126,10 @@ Sie können den Konfigurationsserver bei Bedarf im selben Tresor erneut registri
 
 
 1. Öffnen Sie im Tresor **Verwalten** > **Site Recovery-Infrastruktur** > **Konfigurationsserver**.
-2. Klicken Sie unter **Server** auf **Registrierungsschlüssel herunterladen** , um die Datei mit den Tresoranmeldeinformationen herunterzuladen.
+2. Klicken Sie unter **Server** auf **Registrierungsschlüssel herunterladen**, um die Datei mit den Tresoranmeldeinformationen herunterzuladen.
 3. Melden Sie sich auf dem Konfigurationsservercomputer an.
 4. Öffnen Sie in **%ProgramData%\ASR\home\svsystems\bin** die Datei **cspsconfigtool.exe**.
-5. Klicken Sie auf der Registerkarte **Tresorregistrierung** auf **Durchsuchen** , und suchen Sie die Datei mit den Anmeldeinformationen für den Tresor, die Sie heruntergeladen haben.
+5. Klicken Sie auf der Registerkarte **Tresorregistrierung** auf **Durchsuchen**, und suchen Sie die Datei mit den Anmeldeinformationen für den Tresor, die Sie heruntergeladen haben.
 6. Geben Sie bei Bedarf die Proxyserverdetails an. Klicken Sie anschließend auf **Registrieren**.
 7. Öffnen Sie als Administrator ein PowerShell-Eingabefenster, und führen Sie den folgenden Befehl aus:
    ```
@@ -186,12 +186,12 @@ Aktualisieren Sie den Server wie folgt:
     ![Screenshot: Herunterladen der Updateinstallerdatei](./media/vmware-azure-manage-configuration-server/update1.png)
 
 4. Doppelklicken Sie auf die Datei, um das Installationsprogramm auszuführen.
-5. Das Installationsprogramm erkennt die aktuelle Version, die auf dem Computer ausgeführt wird. Klicken Sie auf **Ja** , um das Upgrade zu starten.
+5. Das Installationsprogramm erkennt die aktuelle Version, die auf dem Computer ausgeführt wird. Klicken Sie auf **Ja**, um das Upgrade zu starten.
 6. Nach Abschluss des Upgrades wird die Serverkonfiguration überprüft.
 
     ![Screenshot: Abgeschlossene Serverüberprüfungskonfiguration](./media/vmware-azure-manage-configuration-server/update3.png)
 
-7. Klicken Sie auf **Fertig stellen** , um das Installationsprogramm zu schließen.
+7. Klicken Sie auf **Fertig stellen**, um das Installationsprogramm zu schließen.
 8. Informationen zum Durchführen des Upgrades für die restlichen Site Recovery-Komponenten finden Sie in der [Upgradeanleitung](./service-updates-how-to.md#vmware-vmphysical-server-disaster-recovery-to-azure).
 
 ## <a name="upgrade-configuration-serverprocess-server-from-the-command-line"></a>Aktualisieren des Konfigurationsservers/Prozessservers über die Befehlszeile

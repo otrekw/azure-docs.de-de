@@ -2,18 +2,18 @@
 title: include file
 description: include file
 services: multiple
-author: sharad4u
+author: duongau
 ms.service: multiple
 ms.topic: include
 ms.date: 10/30/2020
-ms.author: sharadag
+ms.author: duau
 ms.custom: include file
-ms.openlocfilehash: eb3cc6a37e9116b2a28b72fc7a3779aafb2a1e21
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1196ec0c3e92df6c359461ea7d1d53c8aea0bd88
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96027636"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101749928"
 ---
 Beim Erstellen Ihres eigenen Zertifikats sind die folgenden Zertifizierungsstellen zulässig:
 
@@ -54,6 +54,7 @@ Beim Erstellen Ihres eigenen Zertifikats sind die folgenden Zertifizierungsstell
 - GlobalSign Root CA
 - Go Daddy Root Certificate Authority – G2
 - Go Daddy Secure Certificate Authority - G2
+- Hongkong Post Root CA 1
 - Let's Encrypt Authority X3
 - Microsec e-Szigno Root CA 2009
 - QuoVadis Root CA2 G3
@@ -61,6 +62,7 @@ Beim Erstellen Ihres eigenen Zertifikats sind die folgenden Zertifizierungsstell
 - Security Communication RootCA1
 - Security Communication RootCA2
 - Security Communication RootCA3
+- Staat der Nederlanden EV Root CA
 - Symantec Class 3 EV SSL CA - G3
 - Symantec Class 3 Secure Server CA - G4
 - Symantec Enterprise Mobile Root for Microsoft

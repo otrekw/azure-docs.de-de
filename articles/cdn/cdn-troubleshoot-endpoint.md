@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: d6ad0b8b37bd4f04c22ed52d4ac6717202f22889
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88192496"
 ---
 # <a name="troubleshooting-azure-cdn-endpoints-that-return-a-404-status-code"></a>Problembehandlung bei Azure CDN-Endpunkten mit Statuscode 404
@@ -98,7 +98,7 @@ Kehren wir nun zu unserem Beispiel mit „http:\//www.contoso.com:8080/file.txt�
 Der **Header des Ursprungshosts** ist der Hostheaderwert, der bei jeder Anforderung an den Ursprung übermittelt wird.  In den meisten Fällen entspricht dieser Wert dem **Hostname des Ursprungs**, den wir zuvor bereits geprüft haben.  Wenn in diesem Feld ein falscher Wert eingegeben ist, wird in der Regel kein 404-Status ausgegeben. Je nachdem, was der Ursprung erwartet, werden wahrscheinlich jedoch andere 4xx-Statuscodes zurückgegeben werden.
 
 #### <a name="origin-path"></a>Ursprungspfad
-Als Letztes sollte noch der **Ursprungspfad**geprüft werden.  Standardmäßig ist dieses Feld leer.  Verwenden Sie dieses Feld nur, wenn Sie den Umfang der Ressourcen vom Ursprungshost, die auf dem CDN verfügbar sein sollen, einschränken möchten.  
+Als Letztes sollte noch der **Ursprungspfad** geprüft werden.  Standardmäßig ist dieses Feld leer.  Verwenden Sie dieses Feld nur, wenn Sie den Umfang der Ressourcen vom Ursprungshost, die auf dem CDN verfügbar sein sollen, einschränken möchten.  
 
 Im Beispielendpunkt sollen alle Ressourcen im Speicherkonto verfügbar sein, weshalb das Feld **Ursprungspfad** leer gelassen wurde.  Das bedeutet, dass eine Anforderung an „https:\//cdndocdemo.azureedge.net/publicblob/lorem.txt“ dazu führt, dass eine Verbindung zwischen dem Endpunkt, der */publicblob/lorem.txt* anfordert, und „cdndocdemo.core.windows.net“ hergestellt wird.  Analog dazu führt eine Anforderung für „https:\//cdndocdemo.azureedge.net/donotcache/status.png“ dazu, dass der Endpunkt */donotcache/status.png* vom Ursprung anfordert.
 

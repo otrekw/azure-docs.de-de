@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 10/15/2020
 ms.author: duau
 ms.openlocfilehash: 45489d3500a4a744f2aeb34dc21122d180797133
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92101313"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-using-the-azure-portal"></a>Schnellstart: Erstellen eines Traffic Manager-Profils im Azure-Portal
@@ -29,11 +29,11 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie jetzt ein [kostenloses Kont
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für diese Schnellstartanleitung benötigen Sie zwei Instanzen einer Webanwendung, die in zwei unterschiedlichen Azure-Regionen bereitgestellt werden ( *USA, Osten* und *Europa, Westen* ). Jede dient jeweils als primärer bzw. Failoverendpunkt für Traffic Manager.
+Für diese Schnellstartanleitung benötigen Sie zwei Instanzen einer Webanwendung, die in zwei unterschiedlichen Azure-Regionen bereitgestellt werden (*USA, Osten* und *Europa, Westen*). Jede dient jeweils als primärer bzw. Failoverendpunkt für Traffic Manager.
 
 1. Melden Sie sich am [Azure-Portal](https://portal.azure.com) an.
 
-1. Wählen Sie oben links auf dem Bildschirm die Option **Ressource erstellen** aus. Suchen Sie nach **Web-App** , und wählen Sie **Erstellen** aus.
+1. Wählen Sie oben links auf dem Bildschirm die Option **Ressource erstellen** aus. Suchen Sie nach **Web-App**, und wählen Sie **Erstellen** aus.
 
 1. Geben Sie unter **Web-App erstellen** auf der Registerkarte **Grundlagen** die folgenden Werte ein (bzw. wählen Sie sie aus):
 
@@ -51,23 +51,23 @@ Für diese Schnellstartanleitung benötigen Sie zwei Instanzen einer Webanwendun
    
 1. Wählen Sie die Registerkarte **Überwachung** aus, oder wählen Sie **Weiter: Überwachung** aus.  Legen Sie unter **Überwachung****Application Insights** > **Application Insights aktivieren** auf **Nein** fest.
 
-1. Klicken Sie auf **Überprüfen und erstellen** .
+1. Klicken Sie auf **Überprüfen und erstellen**.
 
-1. Überprüfen Sie die Einstellungen, und wählen Sie dann die Option **Erstellen** .  Wenn die Bereitstellung der Web-App erfolgreich war, wird eine Standardwebsite erstellt.
+1. Überprüfen Sie die Einstellungen, und wählen Sie dann die Option **Erstellen**.  Wenn die Bereitstellung der Web-App erfolgreich war, wird eine Standardwebsite erstellt.
 
-1. Führen Sie die Schritte 1 bis 6 aus, um eine zweite Web-App namens *myWebAppWestEurope* zu erstellen. Der Name der **Ressourcengruppe** lautet *myResourceGroupTM2* , die **Region** ist *Europa, Westen* und der **App Service-Plan** hat den Namen **myAppServicePlanWestEurope** . Alle anderen Einstellungen sind identisch mit denen für *myWebAppEastUS* .
+1. Führen Sie die Schritte 1 bis 6 aus, um eine zweite Web-App namens *myWebAppWestEurope* zu erstellen. Der Name der **Ressourcengruppe** lautet *myResourceGroupTM2*, die **Region** ist *Europa, Westen* und der **App Service-Plan** hat den Namen **myAppServicePlanWestEurope**. Alle anderen Einstellungen sind identisch mit denen für *myWebAppEastUS*.
 
 ## <a name="create-a-traffic-manager-profile"></a>Erstellen eines Traffic Manager-Profils
 
 Erstellen Sie ein Traffic Manager-Profil, das Benutzerdatenverkehr basierend auf der Endpunktpriorität weiterleitet.
 
-1. Wählen Sie oben links auf dem Bildschirm die Option **Ressource erstellen** aus. Suchen Sie dann nach **Traffic Manager-Profil** , und wählen Sie **Erstellen** aus.
+1. Wählen Sie oben links auf dem Bildschirm die Option **Ressource erstellen** aus. Suchen Sie dann nach **Traffic Manager-Profil**, und wählen Sie **Erstellen** aus.
 1. Geben Sie unter **Traffic Manager-Profil erstellen** die folgenden Einstellungen ein (bzw. wählen Sie sie aus):
 
     | Einstellung | Wert |
     | --------| ----- |
     | Name | Geben Sie einen eindeutigen Namen für Ihr Traffic Manager-Profil ein.|
-    | Routingmethode | Wählen Sie **Priorität** .|
+    | Routingmethode | Wählen Sie **Priorität**.|
     | Abonnement | Wählen Sie das Abonnement aus, auf das das Traffic Manager-Profil angewendet werden soll. |
     | Ressourcengruppe | Wählen Sie *myResourceGroupTM1* aus.|
     | Standort |Diese Einstellung bezieht sich auf den Standort der Ressourcengruppe. Sie wirkt sich nicht auf das Traffic Manager-Profil aus, das global bereitgestellt wird.|
@@ -80,7 +80,7 @@ Fügen Sie die Website in der Region *USA, Osten* als primären Endpunkt für da
 
 1. Geben Sie in der Suchleiste des Portals den Namen des Traffic Manager-Profils ein, das Sie im vorherigen Abschnitt erstellt haben.
 1. Wählen Sie das Profil in den Suchergebnissen aus.
-1. Wählen Sie im **Traffic Manager-Profil** im Abschnitt **Einstellungen** die Option **Endpunkte** und dann **Hinzufügen** .
+1. Wählen Sie im **Traffic Manager-Profil** im Abschnitt **Einstellungen** die Option **Endpunkte** und dann **Hinzufügen**.
 
     :::image type="content" source="./media/quickstart-create-traffic-manager-profile/traffic-manager-endpoint-menu.png" alt-text="Endpunkteinstellungen im Traffic Manager-Profil":::
 
@@ -88,26 +88,26 @@ Fügen Sie die Website in der Region *USA, Osten* als primären Endpunkt für da
 
     | Einstellung | Wert |
     | ------- | ------|
-    | type | Wählen Sie **Azure-Endpunkt** . |
+    | type | Wählen Sie **Azure-Endpunkt**. |
     | Name | Geben Sie *myPrimaryEndpoint* ein. |
-    | Zielressourcentyp | Wählen Sie **App Service** . |
-    | Zielressource | Wählen Sie **App Service auswählen** > **USA, Osten** . |
-    | Priorität | Wählen Sie **1** . Der gesamte Datenverkehr wird an diesen Endpunkt gesendet, wenn er fehlerfrei ist. |
+    | Zielressourcentyp | Wählen Sie **App Service**. |
+    | Zielressource | Wählen Sie **App Service auswählen** > **USA, Osten**. |
+    | Priorität | Wählen Sie **1**. Der gesamte Datenverkehr wird an diesen Endpunkt gesendet, wenn er fehlerfrei ist. |
 
-    :::image type="content" source="./media/quickstart-create-traffic-manager-profile/add-traffic-manager-endpoint.png" alt-text="Endpunkteinstellungen im Traffic Manager-Profil":::
+    :::image type="content" source="./media/quickstart-create-traffic-manager-profile/add-traffic-manager-endpoint.png" alt-text="Screenshot: Ort zum Hinzufügen eines Endpunkts zu Ihrem Traffic Manager-Profil":::
     
-1. Klicken Sie auf **OK** .
+1. Klicken Sie auf **OK**.
 1. Wiederholen Sie die Schritte 3 und 4 mit den folgenden Einstellungen, um einen Failoverendpunkt für Ihre zweite Azure-Region zu erstellen:
 
     | Einstellung | Wert |
     | ------- | ------|
-    | type | Wählen Sie **Azure-Endpunkt** . |
+    | type | Wählen Sie **Azure-Endpunkt**. |
     | Name | Geben Sie *myFailoverEndpoint* ein. |
-    | Zielressourcentyp | Wählen Sie **App Service** . |
-    | Zielressource | Wählen Sie **App Service auswählen** > **Europa, Westen** . |
-    | Priorität | Wählen Sie **2** . Der gesamte Datenverkehr wird an diesen Failoverendpunkt geleitet, wenn der primäre Endpunkt fehlerhaft ist. |
+    | Zielressourcentyp | Wählen Sie **App Service**. |
+    | Zielressource | Wählen Sie **App Service auswählen** > **Europa, Westen**. |
+    | Priorität | Wählen Sie **2**. Der gesamte Datenverkehr wird an diesen Failoverendpunkt geleitet, wenn der primäre Endpunkt fehlerhaft ist. |
 
-1. Klicken Sie auf **OK** .
+1. Klicken Sie auf **OK**.
 
 Wenn Sie das Hinzufügen der beiden Endpunkte abgeschlossen haben, werden sie im **Traffic Manager-Profil** angezeigt. Beachten Sie, dass der Überwachungsstatus jetzt **Online** lautet.
 
@@ -117,11 +117,11 @@ In diesem Abschnitt überprüfen Sie den Domänennamen Ihres Traffic Manager-Pro
 
 ### <a name="check-the-dns-name"></a>Überprüfen des DNS-Namens
 
-1. Suchen Sie in der Suchleiste des Portals nach dem Namen des **Traffic Manager-Profils** , das Sie im vorhergehenden Abschnitt erstellt haben.
+1. Suchen Sie in der Suchleiste des Portals nach dem Namen des **Traffic Manager-Profils**, das Sie im vorhergehenden Abschnitt erstellt haben.
 1. Wählen Sie das Traffic Manager-Profil aus. Die **Übersicht** wird angezeigt.
 1. Unter **Traffic Manager-Profil** wird der DNS-Name Ihres neu erstellten Traffic Manager-Profils angezeigt.
   
-    :::image type="content" source="./media/quickstart-create-traffic-manager-profile/traffic-manager-dns-name.png" alt-text="Endpunkteinstellungen im Traffic Manager-Profil":::
+    :::image type="content" source="./media/quickstart-create-traffic-manager-profile/traffic-manager-dns-name.png" alt-text="Screenshot: Standort Ihres Traffic Manager-DNS-Namens":::
 
 ### <a name="view-traffic-manager-in-action"></a>Anzeigen von Traffic Manager in Aktion
 
@@ -130,12 +130,12 @@ In diesem Abschnitt überprüfen Sie den Domänennamen Ihres Traffic Manager-Pro
     > [!NOTE]
     > In diesem Schnellstartszenario werden alle Anforderungen an den primären Endpunkt weitergeleitet. Es ist **Priorität 1** festgelegt.
 
-    :::image type="content" source="./media/quickstart-create-traffic-manager-profile/traffic-manager-test.png" alt-text="Endpunkteinstellungen im Traffic Manager-Profil":::
+    :::image type="content" source="./media/quickstart-create-traffic-manager-profile/traffic-manager-test.png" alt-text="Screenshot: Webseite zum Bestätigen der Verfügbarkeit des Traffic Manager-Profils":::
 
 1. Deaktivieren Sie Ihren primären Standort, wenn Sie das Traffic Manager-Failover in Aktion sehen möchten:
-    1. Wählen Sie auf der Seite mit dem Traffic Manager-Profil im Abschnitt **Übersicht** die Option **myPrimaryEndpoint** .
-    1. Wählen Sie unter *myPrimaryEndpoint* die Option **Deaktiviert** > **Speichern** .
-    1. Schließen Sie **myPrimaryEndpoint** . Sie sehen, dass der Status jetzt **Deaktiviert** lautet.
+    1. Wählen Sie auf der Seite mit dem Traffic Manager-Profil im Abschnitt **Übersicht** die Option **myPrimaryEndpoint**.
+    1. Wählen Sie unter *myPrimaryEndpoint* die Option **Deaktiviert** > **Speichern**.
+    1. Schließen Sie **myPrimaryEndpoint**. Sie sehen, dass der Status jetzt **Deaktiviert** lautet.
 1. Kopieren Sie den DNS-Namen des Traffic Manager-Profils aus dem vorherigen Schritt, um die Website in einer neuen Browsersitzung anzuzeigen.
 1. Vergewissern Sie sich, dass die Web-App weiterhin verfügbar ist.
 
@@ -143,7 +143,7 @@ Da der primäre Endpunkt nicht verfügbar ist, wurden Sie an den Failoverendpunk
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Löschen Sie die Ressourcengruppen, Webanwendungen und alle dazugehörigen Ressourcen, wenn Sie fertig sind. Wählen Sie hierzu jedes einzelne Element in Ihrem Dashboard aus, und klicken Sie dann oben auf der Seite auf die Option **Löschen** .
+Löschen Sie die Ressourcengruppen, Webanwendungen und alle dazugehörigen Ressourcen, wenn Sie fertig sind. Wählen Sie hierzu jedes einzelne Element in Ihrem Dashboard aus, und klicken Sie dann oben auf der Seite auf die Option **Löschen**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

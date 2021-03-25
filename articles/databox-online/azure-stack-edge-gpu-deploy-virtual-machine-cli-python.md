@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 03/04/2021
 ms.author: alkohli
 ms.openlocfilehash: 43853f2eba05794540a72fe64e748fcafd9073d2
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102637061"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-using-azure-cli-and-python"></a>Bereitstellen von VMs auf Ihrem Azure Stack Edge Pro-GPU-Gerät mit der Azure CLI und Python
@@ -278,7 +278,7 @@ Bevor Sie mit dem Erstellen und Verwalten eines virtuellen Computers auf Ihrem A
 
 3. Registrieren Sie Ihre Umgebung. Verwenden Sie beim Ausführen von „az cloud register“ die folgenden Parameter:
 
-    | Wert | Beschreibung | Beispiel |
+    | Wert | BESCHREIBUNG | Beispiel |
     | --- | --- | --- |
     | Umgebungsname | Der Name der Umgebung, mit der Sie eine Verbindung herstellen möchten | Geben Sie einen Namen an, wie z. B. `aze-environ`. |
     | Resource Manager-Endpunkt | Die URL lautet `https://Management.<appliancename><dnsdomain>`. <br> Damit Sie diese URL abrufen können, navigieren Sie zur Seite **Geräte** in der lokalen Webbenutzeroberfläche Ihres Geräts. |Beispiel: `https://management.team3device.teatraining1.com`.  |

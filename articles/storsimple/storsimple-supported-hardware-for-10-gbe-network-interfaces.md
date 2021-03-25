@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 09/21/2016
 ms.author: alkohli
 ms.openlocfilehash: fd30c7ec15eadd3d7945349a8aae4ac824bfdc7f
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94954085"
 ---
 # <a name="supported-hardware-for-the-10-gbe-network-interfaces-on-your-storsimple-device"></a>Unterstützte Hardware für 10-GbE-Netzwerkschnittstellen auf Ihrem StorSimple-Gerät
@@ -54,14 +54,14 @@ Microsoft hat die folgenden SFP (Small Form-factor Pluggable)-Transceiver, Kabel
 ## <a name="list-of-devices-tested-in-the-field"></a>Liste der Geräte, die in der Praxis getestet wurden
 Dieser Abschnitt enthält eine Liste der Geräte, die von StorSimple-Kunden erfolgreich in der Praxis eingesetzt wurden. Diese wurden nicht von Microsoft getestet, funktionieren aber wahrscheinlich mit dem StorSimple-Gerät.
 
-| Parameter | value |
+| Parameter | Wert |
 | --- | --- |
 | Switch-Fabrikat |Juniper |
 | Switch-Modell |ex4550-32F |
 | Switch-Betriebssystemversion |JunOS 12.3R9.4 |
 | Blade-Modell |Integrierte Ports (PIC 0) |
 | Transceiver-Fabrikat |Juniper |
-| Transceiver-Modell |Teilenummer 740-021308 <br></br> Teilenummer 740-030658 |
+| Transceiver-Modell |Teilenummer 740-021308  <br></br>  Teilenummer 740-030658 |
 | Transceiver-Firmwareversion |Rev 01 Version 0.0 (gemeldet) |
 | Kabelmodell |Duplex Jumper LC/LC 50/125µ,   OM3, LSZH |
 | StorSimple-Modell |8600 |

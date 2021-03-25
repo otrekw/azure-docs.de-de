@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: mathoma
 ms.date: 04/28/2020
 ms.openlocfilehash: 6ff1d485ab4c0662ae8a9d754ce67b1446b76fcc
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92780953"
 ---
 # <a name="replication-to-azure-sql-database"></a>Replikation zu Azure SQL-Datenbank
@@ -127,7 +127,7 @@ Die folgenden Optionen werden für Azure SQL-Datenbank-Abonnements nicht unterst
 Erstellen Sie eine Veröffentlichung und ein Pushabonnement. Weitere Informationen finden Sie unter
   
 - [Erstellen einer Veröffentlichung](/sql/relational-databases/replication/publish/create-a-publication)
-- [Erstellen eines Pushabonnements](/sql/relational-databases/replication/create-a-push-subscription/) mit dem Namen des Servers als Abonnent (z. B. **N'azuresqldbdns.database.windows.net'** ) und dem Namen von Azure SQL-Datenbank als Zieldatenbank (z. B. **AdventureWorks** ).  
+- [Erstellen eines Pushabonnements](/sql/relational-databases/replication/create-a-push-subscription/) mit dem Namen des Servers als Abonnent (z. B. **N'azuresqldbdns.database.windows.net'** ) und dem Namen von Azure SQL-Datenbank als Zieldatenbank (z. B. **AdventureWorks**).  
 
 ## <a name="see-also"></a>Weitere Informationen  
 

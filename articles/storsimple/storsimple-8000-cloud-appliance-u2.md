@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 11/08/2017
 ms.author: alkohli
 ms.openlocfilehash: d78051c1a5af82a986152c8244d25b68dd65d552
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94968841"
 ---
 # <a name="deploy-and-manage-a-storsimple-cloud-appliance-in-azure-update-3-and-later"></a>Bereitstellen und Verwalten einer StorSimple Cloud Appliance in Azure (ab Update 3)
@@ -50,7 +50,7 @@ Die StorSimple Cloud Appliance steht in zwei Modellen zur Verfügung, dem Standa
 | **Speichertyp** |Verwendet Azure Storage Standard für lokale Datenträger<br></br> Erfahren Sie, wie Sie ein [Storage Standard-Konto erstellen](../storage/common/storage-account-create.md) |Verwendet Azure Storage Premium für lokale Datenträger<sup>2</sup> <br></br> |
 | **Informationen zu Workloads** |Abrufen von Dateien aus Sicherungskopien auf Elementebene |Entwicklungs- und Testszenarien für die Cloud <br></br>Workloads mit geringer Wartezeit und höherer Leistung<br></br>Sekundäres Gerät für die Notfallwiederherstellung |
 
-<sup>1</sup> *Ehemals 1100*
+<sup>1</sup> *Ehemals 1100*.
 
 <sup>2</sup> *Die Serien 8010 und 8020 verwenden Azure Storage Standard für die Cloud-Ebene. Einen Unterschied gibt es nur in der lokalen Ebene innerhalb des Geräts*.
 
@@ -65,7 +65,7 @@ In der folgenden Tabelle sind einige wichtige Unterschiede zwischen der StorSimp
 |  | Physisches Gerät | Cloudgerät |
 | --- | --- | --- |
 | **Location** |Befindet sich im Datencenter. |Wird in Azure ausgeführt. |
-| **Netzwerkschnittstellen** |Besitzt sechs Netzwerkschnittstellen: DATA 0 bis DATA 5. |Besitzt nur eine Netzwerkschnittstelle: DATA 0. |
+| **Netzwerkschnittstellen** |Verfügt über sechs Netzwerkschnittstellen: DATA 0 bis DATA 5. |Besitzt nur eine Netzwerkschnittstelle: DATA 0. |
 | **Registrierung** |Wird während des ersten Konfigurationsschritts registriert. |Die Registrierung ist eine separate Aufgabe. |
 | **Verschlüsselungsschlüssel für Dienstdaten** |Generieren Sie den Schlüssel auf dem physischen Gerät erneut, und aktualisieren Sie dann das Cloudgerät mit dem neuen Schlüssel. |Die erneute Generierung über das Cloudgerät ist nicht möglich. |
 | **Unterstützte Volumetypen** |Unterstützt sowohl lokale als auch mehrstufige Volumes. |Unterstützt nur mehrstufige Volumes. |
@@ -110,7 +110,7 @@ Stellen Sie vor der Durchführung dieser Schritte sicher, dass die [Voraussetzun
 
 Führen Sie die folgenden Schritte aus, um eine StorSimple Cloud Appliance zu erstellen.
 
-### <a name="step-1-create-a-cloud-appliance"></a>Schritt 1: Erstellen einer Cloudappliance
+### <a name="step-1-create-a-cloud-appliance"></a>Schritt 1: Erstellen eines Cloudgeräts
 
 Führen Sie die folgenden Schritte aus, um die StorSimple Cloud Appliance zu erstellen.
 
@@ -118,7 +118,7 @@ Führen Sie die folgenden Schritte aus, um die StorSimple Cloud Appliance zu ers
 
 Falls das Cloudgerät in diesem Schritt nicht erfolgreich erstellt werden kann, besteht unter Umständen keine Internetverbindung. Weitere Informationen zum Behandeln von Internetverbindungsfehlern bei der Erstellung eines Cloudgeräts finden Sie [hier](#troubleshoot-internet-connectivity-errors).
 
-### <a name="step-2-configure-and-register-the-cloud-appliance"></a>Schritt 2: Konfigurieren und Registrieren der Cloudappliance
+### <a name="step-2-configure-and-register-the-cloud-appliance"></a>Schritt 2: Konfigurieren und Registrieren des Cloudgeräts
 
 Stellen Sie vorab sicher, dass Sie über eine Kopie des Dienstdatenverschlüsselungs-Schlüssels verfügen. Der Dienstdatenverschlüsselungs-Schlüssel wird erstellt, wenn Sie Ihr erstes physisches StorSimple-Gerät beim StorSimple-Geräte-Manager-Dienst registriert haben. Sie wurden aufgefordert, ihn an einem sicheren Ort zu speichern. Wenn Sie über keine Kopie des Schlüssels für die Dienstdatenverschlüsselung verfügen, wenden Sie sich an den Microsoft-Support.
 
@@ -162,13 +162,13 @@ Der Remotezugriff auf Ihr Cloudgerät über die Windows PowerShell-Benutzeroberf
 
 Im folgenden Verfahren mit zwei Schritten wird beschrieben, wie Sie eine Remoteverbindung mit Ihrem Cloudgerät herstellen.
 
-### <a name="step-1-configure-remote-management"></a>Schritt 1: Remoteverwaltung konfigurieren
+### <a name="step-1-configure-remote-management"></a>Schritt 1: Konfigurieren der Remoteverwaltung
 
 Führen Sie die folgenden Schritte aus, um die Remoteverwaltung für Ihre StorSimple Cloud Appliance zu konfigurieren.
 
 [!INCLUDE [Configure remote management via HTTP for cloud appliance](../../includes/storsimple-8000-configure-remote-management-http-device.md)]
 
-### <a name="step-2-remotely-access-the-cloud-appliance"></a>Schritt 2: Zugreifen per Remoteverbindung auf die Cloudappliance
+### <a name="step-2-remotely-access-the-cloud-appliance"></a>Schritt 2: Zugreifen per Remoteverbindung auf das Cloudgerät
 
 Nachdem Sie die Remoteverwaltung auf dem Cloudgerät aktiviert haben, können Sie Windows PowerShell-Remoting verwenden, um für das Gerät eine Verbindung von einem anderen virtuellen Computer in demselben virtuellen Netzwerk herzustellen. Beispielsweise können Sie eine Verbindung vom virtuellen Hostcomputer herstellen, die Sie konfiguriert und zum Herstellen der iSCSI-Verbindung verwendet haben. Bei den meisten Bereitstellungen öffnen Sie einen öffentlichen Endpunkt für den Zugriff auf den virtuellen Hostcomputer, der für den Zugriff auf das Cloudgerät verwendet werden kann.
 
@@ -195,7 +195,7 @@ Damit das Cloudgerät eine Verbindung mit dem Hostserver in demselben virtuellen
 
      ![Auswählen des virtuellen Computers für Ihr Cloudgerät](./media/storsimple-8000-cloud-appliance-u2/sca-vm.png)
 
-2. Navigieren Sie zu **Einstellungen > Netzwerk**. Im rechten Bereich wird die private IP-Adresse des Cloudgeräts angezeigt. Notieren Sie sich die IP-Adresse.
+2. Navigieren Sie zu **Einstellungen > Netzwerk**. Im rechten Bereich wird die private IP-Adresse des Cloudgeräts angezeigt. Notieren Sie sich den Namen.
 
     ![Abrufen der privaten IP-Adresse für Ihr Cloudgerät](./media/storsimple-8000-cloud-appliance-u2/sca-private-ip-vm-networking.png)
 

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 03/09/2020
-ms.openlocfilehash: f910054c803093eb62db494a596219c50791d136
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 5e6bec71c44d7fbcf2841e087af9887d99c94e6f
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945334"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867575"
 ---
 # <a name="monitor-cluster-performance-in-azure-hdinsight"></a>Überwachen der Clusterleistung in Azure HDInsight
 
@@ -33,11 +33,11 @@ Melden Sie sich bei der [Ambari-Webbenutzeroberfläche](hdinsight-hadoop-manage-
 
 Außerdem werden Spalten angezeigt, in denen die Anzahl von Kernen und die RAM-Menge für jeden Host sowie die Datenträgerauslastung und die durchschnittliche Auslastung angezeigt werden.
 
-![Apache Ambari: Übersicht über die Hostregisterkarte](./media/hdinsight-key-scenarios-to-monitor/apache-ambari-hosts-tab.png)
+:::image type="content" source="./media/hdinsight-key-scenarios-to-monitor/apache-ambari-hosts-tab.png" alt-text="Apache Ambari: Übersicht über die Hostregisterkarte":::
 
 Wählen Sie einen beliebigen Hostnamen aus, um eine ausführliche Übersicht über die Komponenten, die auf diesem Host ausgeführt werden, und die dazugehörigen Metriken zu erhalten. Die Metriken werden als auswählbare Zeitachse für CPU-Auslastung, Ladezustand, Datenträgerauslastung, Speicherauslastung, Netzwerkauslastung und Anzahl von Prozessen angezeigt.
 
-![Apache Ambari: Übersicht über die Hostdetails](./media/hdinsight-key-scenarios-to-monitor/apache-ambari-host-details.png)
+:::image type="content" source="./media/hdinsight-key-scenarios-to-monitor/apache-ambari-host-details.png" alt-text="Apache Ambari: Übersicht über die Hostdetails":::
 
 Unter [Verwalten von HDInsight-Clustern mithilfe der Apache Ambari-Webbenutzeroberfläche](hdinsight-hadoop-manage-ambari.md) finden Sie Details zum Festlegen von Warnungen und Anzeigen von Metriken.
 
@@ -53,19 +53,19 @@ Wenn mehrere Mandanten einen großen Cluster gemeinsam nutzen, wird auch ein Kon
 
 Mithilfe von YARN können diesen Warteschlangen Ressourcen zugeordnet werden, und es wird angezeigt, ob Ihre gesamten verfügbaren Ressourcen zugewiesen wurden. Melden Sie sich zum Anzeigen von Informationen zu Ihren Warteschlangen bei der Ambari-Webbenutzeroberfläche an, und wählen Sie im oberen Menü die Option **YARN Queue Manager** aus.
 
-![Apache Ambari: YARN Queue Manager](./media/hdinsight-key-scenarios-to-monitor/apache-yarn-queue-manager.png)
+:::image type="content" source="./media/hdinsight-key-scenarios-to-monitor/apache-yarn-queue-manager.png" alt-text="Apache Ambari: YARN Queue Manager":::
 
 Auf der Seite „YARN Queue Manager“ wird links eine Liste mit Ihren Warteschlangen und der jeweils zugewiesene Kapazitätsprozentsatz angezeigt.
 
-![Seite mit Details zum YARN Queue Manager](./media/hdinsight-key-scenarios-to-monitor/yarn-queue-manager-details.png)
+:::image type="content" source="./media/hdinsight-key-scenarios-to-monitor/yarn-queue-manager-details.png" alt-text="Seite mit Details zum YARN Queue Manager":::
 
 Einen ausführlicheren Überblick über Ihre Warteschlangen erhalten Sie, indem Sie im Ambari-Dashboard in der Liste auf der linken Seite den Dienst **YARN** auswählen. Wählen Sie anschließend im Dropdownmenü **Quick Links** (Quicklinks) unter Ihrem aktiven Knoten die Option **Resource Manager UI** (Benutzeroberfläche des Ressourcen-Managers) aus.
 
-![Menülinks der Benutzeroberfläche des Ressourcen-Managers](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui-menu-link.png)
+:::image type="content" source="./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui-menu-link.png" alt-text="Menülinks der Benutzeroberfläche des Ressourcen-Managers":::
 
 Wählen Sie auf der Benutzeroberfläche des Ressourcen-Managers im Menü auf der linken Seite die Option **Scheduler** aus. Unter *Application Queues* (Anwendungswarteschlangen) wird eine Liste mit Ihren Warteschlangen angezeigt. Hier sind die verwendete Kapazität für die einzelnen Warteschlangen, der Grad der Verteilung auf die Warteschlangen und etwaige Ressourceneinschränkungen für Aufträge angegeben.
 
-![Apache Hadoop: Menü der Benutzeroberfläche des Ressourcen-Managers](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui-menu.png)
+:::image type="content" source="./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui-menu.png" alt-text="Apache Hadoop: Menü der Benutzeroberfläche des Ressourcen-Managers":::
 
 ## <a name="storage-throttling"></a>Speicherdrosselung
 
@@ -94,7 +94,7 @@ Trägheit kann unter anderem auf wenig Speicherplatz im Cluster zurückzuführen
 
 1. Überprüfen Sie anhand der Ausgabe, ob im Ordner `mnt` oder in anderen Ordnern große Dateien vorhanden sind. Die Ordner `usercache` und `appcache` („mnt/resource/hadoop/yarn/local/usercache/hive/appcache/“) enthalten in der Regel große Dateien.
 
-1. Sollten große Dateien vorhanden sein, wurde die Dateivergrößerung entweder durch einen aktuellen Auftrag verursacht, oder ein fehlerhafter vorheriger Auftrag hat zu diesem Problem beigetragen. Überprüfen Sie mithilfe des folgenden Befehls, ob dieses Verhalten durch einen aktuellen Auftrag verursacht wird:
+1. Sollten große Dateien vorhanden sein, wurde die Dateivergrößerung entweder durch einen aktuellen Auftrag verursacht, oder ein fehlerhafter vorheriger Auftrag hat zu diesem Problem beigetragen. Überprüfen Sie mithilfe des folgenden Befehls, ob dieses Verhalten durch einen aktuellen Auftrag verursacht wird: 
 
     ```bash
     sudo du -h --max-depth=1 /mnt/resource/hadoop/yarn/local/usercache/hive/appcache/

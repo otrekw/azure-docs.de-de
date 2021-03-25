@@ -11,12 +11,12 @@ ms.custom:
 - mvc
 - device-developer
 - iot-edge
-ms.openlocfilehash: 9b4bb462c94ab5a59dbd9d8fdd4cf619e311df56
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 373d144b4df818a075f0088e9cbf31cb5027e747
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90987009"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101724879"
 ---
 # <a name="tutorial-add-an-azure-iot-edge-device-to-your-azure-iot-central-application"></a>Tutorial: Hinzufügen eines Azure IoT Edge-Geräts zu Ihrer Azure IoT Central-Anwendung
 
@@ -61,6 +61,9 @@ So erstellen Sie eine Gerätevorlage auf der Grundlage eines IoT Edge-Manifests
 
 :::image type="content" source="media/tutorial-add-edge-as-leaf-device/imported-manifest.png" alt-text="Auf Grundlage eines IoT Edge-Manifests erstellte Gerätevorlage":::
 
+> [!TIP]
+> Das Bereitstellungsmanifest pullt Modul-Images aus einem Azure Container Registry-Repository, bei dem zum Herstellen einer Verbindung keine Anmeldeinformationen erforderlich sind. Wenn Sie Modul-Images aus einem privaten Repository verwenden möchten, legen Sie die Anmeldeinformationen für die Containerregistrierung im Manifest fest.
+
 ### <a name="add-telemetry-to-manifest"></a>Hinzufügen von Telemetriedaten zu Ihrem Manifest
 
 Die von einem Modul gesendeten Telemetriedaten werden nicht in einem IoT Edge-Manifest definiert. Sie fügen die Telemetriedefinitionen der Gerätevorlage in IoT Central hinzu. Das Modul **SimulatedTemperatureSensor** sendet Telemetrienachrichten, die wie der folgende JSON-Code aussehen:
@@ -99,7 +102,7 @@ So fügen Sie die Telemetriedefinitionen der Gerätevorlage hinzu:
 
 Auf der Oberfläche **Verwalten** befinden sich nun die Telemetrietypen **machine**, **ambient** und **timeCreated**:
 
-:::image type="content" source="media/tutorial-add-edge-as-leaf-device/manage-interface.png" alt-text="Auf Grundlage eines IoT Edge-Manifests erstellte Gerätevorlage":::
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/manage-interface.png" alt-text="Oberfläche mit den Telemetrietypen „machine“ und „ambient“":::
 
 ### <a name="add-views-to-template"></a>Hinzufügen von Ansichten zur Vorlage
 
@@ -115,7 +118,7 @@ Die Gerätevorlage verfügt noch über keine Ansicht, die einem Bediener das Anz
 
 1. Wählen Sie **Speichern** aus, um die Ansicht **View IoT Edge device telemetry** zu speichern.
 
-:::image type="content" source="media/tutorial-add-edge-as-leaf-device/template-telemetry-view.png" alt-text="Auf Grundlage eines IoT Edge-Manifests erstellte Gerätevorlage":::
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/template-telemetry-view.png" alt-text="Gerätevorlage mit Telemetrieansicht":::
 
 ### <a name="publish-the-template"></a>Veröffentlichen der Vorlage
 
@@ -123,7 +126,7 @@ Bevor Sie ein Gerät hinzufügen können, das die Vorlage **Environmental Sensor
 
 Navigieren Sie zur Vorlage **Environmental Sensor Edge Device**, und wählen Sie **Veröffentlichen** aus. Wählen Sie im Bereich **Diese Gerätevorlage für die Anwendung veröffentlichen** die Option **Veröffentlichen** aus, um die Vorlage zu veröffentlichen:
 
-:::image type="content" source="media/tutorial-add-edge-as-leaf-device/publish-template.png" alt-text="Auf Grundlage eines IoT Edge-Manifests erstellte Gerätevorlage":::
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/publish-template.png" alt-text="Veröffentlichen der Gerätevorlage":::
 
 ## <a name="add-iot-edge-device"></a>Hinzufügen eines IoT Edge-Geräts
 
@@ -135,7 +138,7 @@ Nachdem Sie die Vorlage **Environmental Sensor Edge Device** veröffentlicht hab
 
 Sie verfügen nun über ein neues Gerät mit dem Status **Registriert**:
 
-:::image type="content" source="media/tutorial-add-edge-as-leaf-device/new-device.png" alt-text="Auf Grundlage eines IoT Edge-Manifests erstellte Gerätevorlage":::
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/new-device.png" alt-text="Neues registriertes Gerät":::
 
 ### <a name="get-the-device-credentials"></a>Abrufen der Geräteanmeldeinformationen
 
@@ -181,7 +184,7 @@ Gehen Sie auf der Seite **Benutzerdefinierte Bereitstellung** wie folgt vor:
 
 1. Überprüfen Sie Ihre Auswahl, und wählen Sie anschließend **Erstellen** aus:
 
-    :::image type="content" source="media/tutorial-add-edge-as-leaf-device/vm-deployment.png" alt-text="Auf Grundlage eines IoT Edge-Manifests erstellte Gerätevorlage":::
+    :::image type="content" source="media/tutorial-add-edge-as-leaf-device/vm-deployment.png" alt-text="IoT Edge-VM erstellen":::
 
 Die Bereitstellung nimmt einige Minuten in Anspruch. Navigieren Sie im Azure-Portal zur Ressourcengruppe **central-edge-rg**, nachdem die Bereitstellung abgeschlossen ist.
 
@@ -269,15 +272,15 @@ Gehen Sie wie folgt vor, um IoT Edge auf der VM für die Verwendung des DPM zum 
 
 Das simulierte IoT Edge-Gerät wird nun auf dem virtuellen Computer ausgeführt. In Ihrer IoT Central-Anwendung lautet der Gerätestatus auf der Seite **Geräte** nun **Bereitgestellt**:
 
-:::image type="content" source="media/tutorial-add-edge-as-leaf-device/provisioned-device.png" alt-text="Auf Grundlage eines IoT Edge-Manifests erstellte Gerätevorlage":::
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/provisioned-device.png" alt-text="Bereitgestelltes IoT Edge-Gerät":::
 
 Die Telemetriedaten des Geräts werden auf der Seite **View IoT Edge device telemetry** (Telemetriedaten des IoT Edge-Geräts anzeigen) angezeigt:
 
-:::image type="content" source="media/tutorial-add-edge-as-leaf-device/device-telemetry-view.png" alt-text="Auf Grundlage eines IoT Edge-Manifests erstellte Gerätevorlage":::
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/device-telemetry-view.png" alt-text="Gerätetelemetrie":::
 
 Auf der Seite **Module** wird der Status der IoT Edge-Module des Geräts angezeigt:
 
-:::image type="content" source="media/tutorial-add-edge-as-leaf-device/edge-module-status.png" alt-text="Auf Grundlage eines IoT Edge-Manifests erstellte Gerätevorlage":::
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/edge-module-status.png" alt-text="Status der Gerätemodule":::
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

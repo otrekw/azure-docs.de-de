@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/27/2018
 ms.author: glenga
 ms.openlocfilehash: 2808e26f92899bbaced65571ebc484e6f6295a76
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98027643"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -25,7 +25,7 @@ ms.locfileid: "98027643"
 
 # <a name="python"></a>[Python](#tab/python)
 
-* [Schließen Sie den Schnellstart ab:](../articles/azure-functions/durable/quickstart-python-vscode.md)
-* Klonen Sie das [](https://github.com/Azure/azure-functions-durable-python/tree/master/samples/) von GitHub, oder laden Sie es herunter.
+* [Schließen Sie den Schnellstartartikel ab.](../articles/azure-functions/durable/quickstart-python-vscode.md)
+* [Klonen Sie das Beispielprojekt auf GitHub, oder laden Sie es herunter.](https://github.com/Azure/azure-functions-durable-python/tree/master/samples/)
 
 ---

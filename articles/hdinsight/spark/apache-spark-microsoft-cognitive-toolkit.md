@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/14/2020
-ms.openlocfilehash: cddbc4b6a5c7a2c787c8305fdf703e34543746f8
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 6be70f448cec7cf6db2b8152565ad8102d3a3294
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98929972"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868748"
 ---
 # <a name="use-microsoft-cognitive-toolkit-deep-learning-model-with-azure-hdinsight-spark-cluster"></a>Verwenden des Microsoft Cognitive Toolkit-Modells für intensives Lernen mit einem Azure HDInsight Spark-Cluster
 
@@ -55,7 +55,7 @@ In diesem Artikel verwenden wir das Portal, um das Toolkit installieren, nachdem
 
 Eine Anleitung zur Verwendung des Azure-Portals zum Ausführen der Skriptaktion finden Sie unter [Anpassen von HDInsight-Clustern mithilfe von Skriptaktion](../hdinsight-hadoop-customize-cluster-linux.md#script-action-during-cluster-creation). Stellen Sie sicher, dass Sie die folgenden Eingaben zum Installieren von Microsoft Cognitive Toolkit bereitstellen. Verwenden Sie die folgenden Werte für die Skriptaktion:
 
-|Eigenschaft |value |
+|Eigenschaft |Wert |
 |---|---|
 |Skripttyp|--Benutzerdefiniert|
 |Name| Installieren von MCT|
@@ -73,7 +73,7 @@ Um das Microsoft Cognitive Toolkit mit dem Azure HDInsight Spark-Cluster zu verw
 
 1. Wählen Sie oben rechts im Jupyter Notebook die Option **Upload** (Hochladen) aus, navigieren Sie dann zum Download, und wählen Sie die Datei `CNTK_model_scoring_on_Spark_walkthrough.ipynb` aus.
 
-    ![Hochladen von Jupyter Notebook in den Azure HDInsight Spark-Cluster](./media/apache-spark-microsoft-cognitive-toolkit/hdinsight-microsoft-cognitive-toolkit-load-jupyter-notebook.png "Hochladen von Jupyter Notebook in den Azure HDInsight Spark-Cluster")
+    :::image type="content" source="./media/apache-spark-microsoft-cognitive-toolkit/hdinsight-microsoft-cognitive-toolkit-load-jupyter-notebook.png " alt-text="Hochladen von Jupyter Notebook in den Azure HDInsight Spark-Cluster" border="true":::
 
 1. Wählen Sie erneut **Upload** (Hochladen) aus.
 
@@ -81,7 +81,7 @@ Um das Microsoft Cognitive Toolkit mit dem Azure HDInsight Spark-Cluster zu verw
 
 ## <a name="see-also"></a>Weitere Informationen
 
-* [Übersicht: Apache Spark für Azure HDInsight](apache-spark-overview.md)
+* [Übersicht: Apache Spark in Azure HDInsight](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Szenarien
 

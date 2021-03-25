@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: H1Hack27Feb2017,hdinsightactive
 ms.date: 02/14/2020
 ms.openlocfilehash: b6695e5e985a30d6f912095225c4899e1c910e34
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98945957"
 ---
 # <a name="add-custom-apache-hive-libraries-when-creating-your-hdinsight-cluster"></a>Hinzufügen benutzerdefinierter Apache Hive-Bibliotheken beim Erstellen des HDInsight-Clusters
@@ -26,11 +26,11 @@ Mithilfe der Skriptaktion in diesem Artikel werden die Bibliotheken zur Verfügu
 
 ## <a name="the-script"></a>Das Skript
 
-**Skriptspeicherort**
+**Speicherort des Skripts**
 
 [https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1](https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1)
 
-### <a name="requirements"></a>Requirements (Anforderungen)
+### <a name="requirements"></a>Anforderungen
 
 * Die Skripts müssen sowohl auf die **Hauptknoten** als auch die **Workerknoten** angewendet werden.
 
@@ -53,7 +53,7 @@ Mithilfe der Skriptaktion in diesem Artikel werden die Bibliotheken zur Verfügu
 
 1. Geben Sie für **Skriptaktionen** die folgenden Informationen an:
 
-    |Eigenschaft |value |
+    |Eigenschaft |Wert |
     |---|---|
     |Skripttyp|--Benutzerdefiniert|
     |Name|Bibliotheken |

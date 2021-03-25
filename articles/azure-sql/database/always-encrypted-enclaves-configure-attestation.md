@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviwer: vanto
 ms.date: 01/15/2021
-ms.openlocfilehash: 664733f3d4c4e4bf17440db0323580c5d2c8c2ce
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: fb42a0428f0439053375027481d38977b068e356
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100555659"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102122577"
 ---
 # <a name="configure-azure-attestation-for-your-azure-sql-logical-server"></a>Konfigurieren von Azure Attestation für Ihren logischen Azure SQL-Server
 
@@ -66,10 +66,14 @@ authorizationrules
 
 Mit der oben genannten Richtlinie wird Folgendes überprüft:
 
-- Die Enclave in Azure SQL-Datenbank unterstützt kein Debuggen (wodurch der von der Enclave gebotene Schutz verringert würde).
-- Die Produkt-ID der Bibliothek innerhalb der Enclave entspricht der Produkt-ID, die Always Encrypted mit Secure Enclaves (4639) zugewiesen ist.
-- Die Versions-ID (svn) der Bibliothek ist größer als 0 (null).
+- Die Enclave in Azure SQL-Datenbank unterstützt das Debuggen nicht. 
+  > Enclaves können mit deaktiviertem oder aktiviertem Debuggen geladen werden. Die Debugunterstützung ermöglicht Entwicklern, Probleme mit dem Code zu beheben, der in einer Enclave ausgeführt wird. In einem Produktionssystem könnte das Debuggen einem Administrator ermöglichen, den Inhalt der Enclave zu untersuchen, was die von der Enclave gebotene Schutzebene verringern würde. Die empfohlene Richtlinie deaktiviert das Debuggen, um sicherzustellen, dass der Nachweis nicht erfolgreich ist, wenn ein böswilliger Administrator versucht, die Debugunterstützung durch Übernahme des Enclave-Computers zu aktivieren. 
+- Die Produkt-ID der Enclave entspricht der Produkt-ID, die Always Encrypted mit Secure Enclaves zugewiesen ist.
+  > Jede Enclave verfügt über eine eindeutige Produkt-ID, die die Enclave von anderen Enclaves unterscheidet. Der Always Encrypted-Enclave ist die Produkt-ID 4639 zugewiesen. 
+- Die Sicherheitsversionsnummer (SVN) der Bibliothek ist größer als 0 (null).
+  > Die SVN ermöglicht Microsoft, auf potenzielle Sicherheitsfehler zu reagieren, die im Enclave-Code identifiziert werden. Falls ein Sicherheitsproblem entdeckt und behoben wird, stellt Microsoft eine neue Version der Enclave mit einer neuen (inkrementierten) SVN bereit. Die oben genannte empfohlene Richtlinie wird mit der neuen SVN aktualisiert. Mit der Aktualisierung auf die empfohlene Richtlinie können Sie sicherstellen, dass der Nachweis nicht erfolgreich ist, wenn ein böswilliger Administrator versucht, eine ältere und unsichere Enclave zu laden.
 - Die Bibliothek in der Enclave wurde mit dem Microsoft-Signaturschlüssel signiert (der Wert des x-ms-sgx-mrsigner-Anspruchs entspricht dem Hash des Signaturschlüssels).
+  > Eines der Hauptziele des Nachweises ist, Clients zu überzeugen, dass die in der Enclave ausgeführte Binärdatei die Binärdatei ist, die ausgeführt werden soll. Nachweisrichtlinien stellen zwei Mechanismen für diesen Zweck bereit. Einer ist der **mrenclave**-Anspruch, bei dem es sich um den Hash der Binärdatei handelt, die in einer Enclave ausgeführt werden soll. Bei **mrenclave** besteht das Problem, dass sich der binäre Hash selbst bei geringfügigen Änderungen des Codes ändert, wodurch es schwierig wird, den Code, der in der Enclave ausgeführt wird, zu überarbeiten. Daher sollte **mrsigner** verwendet werden, der Hash eines Schlüssels, der zum Signieren der Enclave-Binärdatei verwendet wird. Wenn Microsoft die Enclave überarbeitet, bleibt **mrsigner** unverändert, solange der Signaturschlüssel nicht geändert wird. Auf diese Weise ist es möglich, aktualisierte Binärdateien bereitzustellen, ohne Kundenanwendungen zu unterbrechen. 
 
 > [!IMPORTANT]
 > Ein Nachweisanbieter wird mit der Standardrichtlinie für Intel SGX-Enclaves erstellt, wodurch der innerhalb der Enclave ausgeführte Code nicht überprüft wird. Microsoft empfiehlt dringend, für Always Encrypted mit Secure Enclaves die oben empfohlene Richtlinie festzulegen und nicht die Standardrichtlinie zu verwenden.

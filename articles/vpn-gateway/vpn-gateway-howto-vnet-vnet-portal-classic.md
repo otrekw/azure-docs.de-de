@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: cherylmc
 ms.openlocfilehash: 0d81e0474d898ffee7f128c0bcea61f077c3d758
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92103219"
 ---
 # <a name="configure-a-vnet-to-vnet-connection-classic"></a>Konfigurieren einer VNet-zu-VNet-Verbindung (klassisch)
@@ -38,7 +38,7 @@ Beim klassischen Bereitstellungsmodell ähnelt die Verbindung eines virtuellen N
 
 Die VNets, die Sie verbinden, können sich in verschiedenen Abonnements und Regionen befinden. Sie können die VNet-zu-VNet-Kommunikation mit Konfigurationen für mehrere Standorte kombinieren. Auf diese Weise können Sie Netzwerktopologien einrichten, die standortübergreifende Konnektivität mit Konnektivität zwischen virtuellen Netzwerken kombinieren.
 
-:::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-portal-classic/aboutconnections.png" alt-text="Abbildung der klassischen VNET-zu-VNET-Architektur":::
+:::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-portal-classic/aboutconnections.png" alt-text="Abbildung von Verbindungen":::
 
 ### <a name="why-connect-virtual-networks"></a><a name="why"></a>Gründe für Verbindungen zwischen virtuellen Netzwerken
 
@@ -151,7 +151,7 @@ Mit dem lokalen Standort ist in der Regel Ihr lokaler Standort gemeint. Er enth�
 
    * **IP-Adresse des VPN-Gateways:** Dies ist die öffentliche IP-Adresse des VPN-Geräts für Ihr lokales Netzwerk. Für diese Übung können Sie eine Dummyadresse einfügen, da Sie noch nicht über die IP-Adresse für das VPN-Gateway für den anderen Standort verfügen (z. B. 5.4.3.2). Nachdem Sie das Gateway für das andere VNET konfiguriert haben, können Sie diesen Wert später anpassen.
 
-   * **Clientadressraum** : Listen Sie die IP-Adressbereiche auf, die über dieses Gateway an das andere VNET weitergeleitet werden sollen. Sie können mehrere Adressraumbereiche hinzufügen. Stellen Sie sicher, dass sich die hier angegebenen Bereiche nicht mit den Bereichen anderer Netzwerke, mit denen für Ihr virtuelles Netzwerk Verbindungen hergestellt werden, oder mit den Adressbereichen des virtuellen Netzwerks selbst überlappen.
+   * **Clientadressraum**: Listen Sie die IP-Adressbereiche auf, die über dieses Gateway an das andere VNET weitergeleitet werden sollen. Sie können mehrere Adressraumbereiche hinzufügen. Stellen Sie sicher, dass sich die hier angegebenen Bereiche nicht mit den Bereichen anderer Netzwerke, mit denen für Ihr virtuelles Netzwerk Verbindungen hergestellt werden, oder mit den Adressbereichen des virtuellen Netzwerks selbst überlappen.
 1. Wählen Sie unten auf der Seite NICHT die Option „Überprüfen + erstellen“ aus. Wählen Sie stattdessen **Weiter: Gateway >** aus.
 
 ### <a name="to-configure-a-virtual-network-gateway"></a><a name="sku"></a>Konfigurieren eines Gateways für virtuelle Netzwerke
@@ -160,11 +160,11 @@ Mit dem lokalen Standort ist in der Regel Ihr lokaler Standort gemeint. Er enth�
 
    * **Size:** Hierbei handelt es sich um die Gateway-SKU, die Sie bei der Erstellung Ihres Gateways für virtuelle Netzwerke verwenden. Klassische VPN-Gateways verwenden die alten Gateway-SKUs. Weitere Informationen zu den alten Gateway-SKUs finden Sie unter [Arbeiten mit SKUs für virtuelle Netzwerkgateways (alte SKUs)](vpn-gateway-about-skus-legacy.md). Für diese Übung können Sie **Standard** auswählen.
 
-   * **Routingtyp** : Wählen Sie den Routingtyp für Ihr Gateway aus. Dies wird auch als VPN-Typ bezeichnet. Es ist wichtig, den richtigen Typ auszuwählen, weil es nicht möglich ist, das Gateway in einen anderen Typ zu konvertieren. Ihr VPN-Gerät muss mit dem Routingtyp kompatibel sein, den Sie auswählen. Weitere Informationen zum Routingtyp finden Sie unter [Informationen zu VPN Gateway-Einstellungen](vpn-gateway-about-vpn-gateway-settings.md#vpntype). Es kann sein, dass in Artikeln die VPN-Typen „RouteBased“ und „PolicyBased“ vorkommen. „Dynamisch“ entspricht „RouteBased“, und „Statisch“ entspricht „PolicyBased“. Wählen Sie für diese Konfiguration **Dynamisch** aus.
+   * **Routingtyp**: Wählen Sie den Routingtyp für Ihr Gateway aus. Dies wird auch als VPN-Typ bezeichnet. Es ist wichtig, den richtigen Typ auszuwählen, weil es nicht möglich ist, das Gateway in einen anderen Typ zu konvertieren. Ihr VPN-Gerät muss mit dem Routingtyp kompatibel sein, den Sie auswählen. Weitere Informationen zum Routingtyp finden Sie unter [Informationen zu VPN Gateway-Einstellungen](vpn-gateway-about-vpn-gateway-settings.md#vpntype). Es kann sein, dass in Artikeln die VPN-Typen „RouteBased“ und „PolicyBased“ vorkommen. „Dynamisch“ entspricht „RouteBased“, und „Statisch“ entspricht „PolicyBased“. Wählen Sie für diese Konfiguration **Dynamisch** aus.
 
    * **Gatewaysubnetz:** Die Größe des von Ihnen angegebenen Gatewaysubnetzes richtet sich nach der VPN-Gatewaykonfiguration, die Sie erstellen möchten. Obwohl es möglich ist, ein Gatewaysubnetz mit einer Größe von nur /29 zu erstellen, wird /27 oder /28 empfohlen. Dadurch wird ein größeres Subnetz erstellt, das mehr Adressen enthält. Die Verwendung eines größeren Gatewaysubnetzes ermöglicht die Vergabe einer ausreichenden Zahl von IP-Adressen für potenzielle zukünftige Konfigurationen.
 
-1. Wählen Sie unten auf der Seite die Option **Überprüfen + erstellen** aus, um die Einstellungen zu überprüfen. Klicken Sie auf **Erstellen** , um die Bereitstellung durchzuführen. Abhängig von der ausgewählten SKU kann die Erstellung eines Gateways für virtuelle Netzwerke bis zu 45 Minuten dauern.
+1. Wählen Sie unten auf der Seite die Option **Überprüfen + erstellen** aus, um die Einstellungen zu überprüfen. Klicken Sie auf **Erstellen**, um die Bereitstellung durchzuführen. Abhängig von der ausgewählten SKU kann die Erstellung eines Gateways für virtuelle Netzwerke bis zu 45 Minuten dauern.
 1. Sie können mit dem nächsten Schritt fortfahren, während dieses Gateway erstellt wird.
 
 ### <a name="configure-testvnet4-settings"></a>Konfigurieren von TestVNet4-Einstellungen
@@ -183,14 +183,14 @@ Nachdem die Gateways für Ihre virtuellen Netzwerke für beide VNETs erstellt wu
 ### <a name="part-1---get-the-virtual-network-gateway-public-ip-address"></a>Teil 1 – Abrufen der öffentlichen IP-Adresse des Gateways für virtuelle Netzwerke
 
 1. Navigieren Sie zu Ihrem VNET, indem Sie zur **Ressourcengruppe** wechseln und das virtuelle Netzwerk auswählen.
-1. Suchen Sie auf der Seite für Ihr virtuelles Netzwerk im Bereich **Zusammenfassung** auf der rechten Seite nach **Gateway-IP-Adresse** , und kopieren Sie diese in die Zwischenablage.
+1. Suchen Sie auf der Seite für Ihr virtuelles Netzwerk im Bereich **Zusammenfassung** auf der rechten Seite nach **Gateway-IP-Adresse**, und kopieren Sie diese in die Zwischenablage.
 
 ### <a name="part-2---modify-the-local-site-properties"></a>Teil 2 – Ändern der Eigenschaften lokaler Standorte
 
 1. Wählen Sie unter „Site-to-Site-Verbindungen“ die Verbindung aus. Beispiel: SiteVNet4.
-1. Klicken Sie auf der Seite **Eigenschaften** für die Site-to-Site-Verbindung auf **Lokalen Standort bearbeiten** .
+1. Klicken Sie auf der Seite **Eigenschaften** für die Site-to-Site-Verbindung auf **Lokalen Standort bearbeiten**.
 1. Fügen Sie im Feld **IP-Adresse des VPN-Gateways** die IP-Adresse des VPN-Gateways ein, die Sie im vorherigen Abschnitt kopiert haben.
-1. Klicken Sie auf **OK** .
+1. Klicken Sie auf **OK**.
 1. Das Feld wird im System aktualisiert. Sie können diese Methode auch verwenden, um zusätzliche IP-Adressen hinzuzufügen, die Sie an diesen Standort weiterleiten möchten.
 
 ### <a name="part-3---repeat-steps-for-the-other-vnet"></a>Teil 3: Wiederholen der Schritte für das andere VNET

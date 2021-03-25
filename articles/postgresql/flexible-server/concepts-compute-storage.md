@@ -5,13 +5,13 @@ author: lfittl-msft
 ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/22/2020
-ms.openlocfilehash: a3c8c8b2316a206ba837c0b32fd699dc0ed1eeea
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.date: 02/19/2021
+ms.openlocfilehash: b76b6ff788d3d7f44db33af96944d528282f0ac7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100519387"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101712214"
 ---
 # <a name="compute-and-storage-options-in-azure-database-for-postgresql---flexible-server"></a>Compute- und Speicheroptionen in Azure Database for PostgreSQL: Flexible Server
 
@@ -119,6 +119,9 @@ Sie können Ihren E/A-Verbrauch im Azure-Portal oder mit Azure CLI-Befehlen übe
 |E64s_v3             |18.000 IOPS                               |120|240|500 |1100|2300 |5.000 |7.500 |7.500 |16000 |18000 |
 
 Wenn sie mit einem \* markiert sind, werden IOPS durch den von Ihnen gewählten VM-Typ begrenzt. Andernfalls werden IOPS durch die ausgewählte Speichergröße beschränkt.
+
+>[!NOTE]
+> In den Metriken werden aufgrund des Datenträger-Burstings möglicherweise höhere IOPS-Werte angezeigt. Weitere Informationen finden Sie in der [Dokumentation](https://docs.microsoft.com/azure/virtual-machines/disk-bursting#disk-level-bursting). 
 
 ### <a name="maximum-io-bandwidth-mibsec-for-your-configuration"></a>Maximale E/A-Bandbreite (MiB/s) für Ihre Konfiguration
 

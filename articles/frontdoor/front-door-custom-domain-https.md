@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/21/2020
 ms.author: duau
-ms.openlocfilehash: 6c6d33a36c4a0b71932e8c19c8f6dd105c33817c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 17677ea89b04659de66b9bda35975b96ff33473a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/03/2021
 ms.locfileid: "101740782"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>Tutorial: Konfigurieren von HTTPS in einer benutzerdefinierten Front Door-Domäne
@@ -133,12 +133,7 @@ Gewähren Sie Azure Front Door Berechtigungen für den Zugriff auf die Zertifika
     Azure Front Door führt die folgenden Informationen auf: 
     - Die Schlüsseltresorkonten für Ihre Abonnement-ID 
     - Die Zertifikate (Geheimnisse) unter dem ausgewählten Schlüsseltresor 
-    - Die verfügbaren Zertifikatversionen 
-
-> [!NOTE]
-> Wenn Sie die Zertifikatversion leer lassen, würde dies zu Folgendem führen:
-> - Die neueste Version des Zertifikats wird ausgewählt.
-> - Automatische Rotation der Zertifikate zur neuesten Version, wenn eine neuere Version des Zertifikats in Ihrem Key Vault verfügbar ist.
+    - Die verfügbaren Zertifikatversionen
  
 5. Wenn Sie Ihr eigenes Zertifikat verwenden, ist keine Domänenüberprüfung erforderlich. Fahren Sie mit [Warten auf die Weitergabe](#wait-for-propagation) fort.
 
@@ -278,9 +273,9 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 
 * Hochladen eines Zertifikats in Key Vault
 * Überprüfen einer Domäne
-* Aktivieren von HTTPS für eine benutzerdefinierte Domäne
+* Aktivieren von HTTPS für Ihre benutzerdefinierte Domäne.
 
-Informationen zum Einrichten einer Geofilterungsrichtlinie für Front Door finden Sie im nächsten Tutorial:
+Informationen zum Einrichten einer Geofilterungsrichtlinie für Ihre Front Door finden Sie im nächsten Tutorial.
 
 > [!div class="nextstepaction"]
 > [Geofilterung in einer Domäne für Azure Front Door](front-door-geo-filtering.md)

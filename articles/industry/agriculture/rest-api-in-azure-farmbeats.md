@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: sunasing
 ms.openlocfilehash: 292374bcce90da042dc6bd672feaad3750759aa9
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92674508"
 ---
 # <a name="azure-farmbeats-apis"></a>Azure FarmBeats-APIs
@@ -149,18 +149,18 @@ Auf Azure FarmBeats-APIs kann von einem Benutzer oder einer App-Registrierung in
     - Geben Sie einen Namen ein.
     - Wählen Sie **Nur Konten in diesem Organisationsverzeichnis (einzelner Mandant)** aus.
     - Übernehmen Sie in den restlichen Feldern die Standardwerte.
-    - Wählen Sie **Registrieren** .
+    - Wählen Sie **Registrieren**.
 
 3. Gehen Sie im Bereich **Übersicht** für neue und vorhandene App-Registrierungen wie folgt vor:
 
-    - Erfassen Sie die **Client-ID** und die **Mandanten-ID** .
-    - Wechseln Sie zu **Zertifikate und Geheimnisse** , um einen neuen geheimen Clientschlüssel zu generieren, und erfassen Sie den **geheimen Clientschlüssel** .
-    - Wechseln Sie zurück zur **Übersicht** , und wählen Sie den Link neben **Anwendung im lokalen Verzeichnis verwalten** aus.
-    - Wechseln Sie zu **Eigenschaften** , um die **Objekt-ID** zu erfassen.
+    - Erfassen Sie die **Client-ID** und die **Mandanten-ID**.
+    - Wechseln Sie zu **Zertifikate und Geheimnisse**, um einen neuen geheimen Clientschlüssel zu generieren, und erfassen Sie den **geheimen Clientschlüssel**.
+    - Wechseln Sie zurück zur **Übersicht**, und wählen Sie den Link neben **Anwendung im lokalen Verzeichnis verwalten** aus.
+    - Wechseln Sie zu **Eigenschaften**, um die **Objekt-ID** zu erfassen.
 
 4. Wechseln Sie zum Datahub Swagger (https://<yourdatahub>.azurewebsites.net/swagger/index.html), und gehen Sie wie folgt vor:
-    - Navigieren Sie zur **RoleAssignment-API** .
-    - Führen Sie einen POST-Vorgang durch, um ein **RoleAssignment** -Objekt für die soeben erstellte **Objekt-ID** zu erstellen.
+    - Navigieren Sie zur **RoleAssignment-API**.
+    - Führen Sie einen POST-Vorgang durch, um ein **RoleAssignment**-Objekt für die soeben erstellte **Objekt-ID** zu erstellen.
  
 ```json
 {

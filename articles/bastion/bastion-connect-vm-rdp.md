@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 10/21/2020
 ms.author: cherylmc
 ms.openlocfilehash: 708bd1f61da2f3973333f8e68cabdceee0717bee
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92521532"
 ---
 # <a name="connect-to-a-windows-virtual-machine-using-azure-bastion"></a>Herstellen einer Verbindung mit einem virtuellen Windows-Computer mit Azure Bastion
@@ -30,7 +30,7 @@ Vergewissern Sie sich zunächst, dass die folgenden Kriterien erfüllt sind:
 * Ein virtueller Windows-Computer im virtuellen Netzwerk
 * Folgende erforderliche Rollen:
   * Rolle „Leser“ für den virtuellen Computer
-  * Rolle „Leser“ auf der Netzwerkschnittstellenkarte mit privater IP-Adresse des virtuellen Computers
+  * Rolle „Leser“ für den Netzwerkadapter mit privater IP-Adresse des virtuellen Computers
   * Rolle „Leser“ für die Azure Bastion-Ressource
 * Ports: Zum Herstellen einer Verbindung mit dem virtuellen Windows-Computer müssen die folgenden Ports auf Ihrer Windows-VM geöffnet sein:
   * Eingehende Ports: RDP (3389)

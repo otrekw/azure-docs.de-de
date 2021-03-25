@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: alkohli
 ms.openlocfilehash: 11ea9c759bdb4bb2b837028407ce6e83f6e25a8c
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92784047"
 ---
 # <a name="choose-an-azure-solution-for-data-transfer"></a>Auswählen einer Azure-Lösung für die Datenübertragung
@@ -23,20 +23,20 @@ Dieser Artikel gibt einen Überblick über einige der gängigen Azure-Datenüber
 
 Die Datenübertragung kann offline oder über die Netzwerkverbindung erfolgen. Wählen Sie Ihre Lösung abhängig von den folgenden Faktoren aus:
 
-- **Datengröße** : Größe der Daten, die übertragen werden sollen,
-- **Übertragungshäufigkeit** : Einmalige oder regelmäßige Datenerfassung und
-- **Netzwerk** : Für die Datenübertragung in Ihrer Umgebung verfügbare Bandbreite.
+- **Datengröße**: Größe der Daten, die übertragen werden sollen,
+- **Übertragungshäufigkeit**: Einmalige oder regelmäßige Datenerfassung und
+- **Netzwerk**: Für die Datenübertragung in Ihrer Umgebung verfügbare Bandbreite.
 
 Das Verschieben der Daten kann auf die folgende Weise erfolgen:
 
-- **Offlineübertragung mit versandfähigen Geräten** : Verwenden Sie physische versandfähige Geräte, wenn Sie eine einmalige Offline-Datenmassenübertragung durchführen möchten. Microsoft übersendet Ihnen einen Datenträger oder ein sicheres spezielles Gerät. Alternativ können Sie Ihre eigenen Datenträger erwerben und einsenden. Sie kopieren Daten auf das Gerät und senden es dann an Azure. Dort werden die Daten hochgeladen.  Die verfügbaren Optionen für diesen Fall sind Data Box Disk, Data Box, Data Box Heavy und Import/Export (unter Verwendung eigener Datenträger).
+- **Offlineübertragung mit versandfähigen Geräten**: Verwenden Sie physische versandfähige Geräte, wenn Sie eine einmalige Offline-Datenmassenübertragung durchführen möchten. Microsoft übersendet Ihnen einen Datenträger oder ein sicheres spezielles Gerät. Alternativ können Sie Ihre eigenen Datenträger erwerben und einsenden. Sie kopieren Daten auf das Gerät und senden es dann an Azure. Dort werden die Daten hochgeladen.  Die verfügbaren Optionen für diesen Fall sind Data Box Disk, Data Box, Data Box Heavy und Import/Export (unter Verwendung eigener Datenträger).
 
-- **Netzwerkübertragung** : Sie übertragen Ihre Daten über Ihre Netzwerkverbindung in Azure. Dies kann auf verschiedene Weise erfolgen.
+- **Netzwerkübertragung**: Sie übertragen Ihre Daten über Ihre Netzwerkverbindung in Azure. Dies kann auf verschiedene Weise erfolgen.
 
-    - **Grafische Benutzeroberfläche** : Wenn Sie gelegentlich nur wenige Dateien übertragen und die Datenübertragung nicht automatisieren müssen, können Sie ein grafisches Benutzeroberflächentool wie Azure Storage Explorer oder ein webbasiertes Durchsuchungstool im Azure-Portal auswählen.
-    - **Übertragung mit Skripts oder programmgesteuerte Übertragung** : Sie können optimierte Softwaretools verwenden, die von uns bereitgestellt werden, oder unsere REST-APIs/SDKs direkt aufrufen. Die verfügbaren skriptfähigen Tools sind AzCopy, Azure PowerShell und die Azure CLI. Verwenden Sie für eine programmgesteuerte Schnittstelle eines der SDKs für .NET, Java, Python, Node/JS, C++, Go, PHP oder Ruby.
-    - **Lokale Geräte** : Wir stellen ein physisches oder virtuelles Gerät bereit, das sich in Ihrem Datencenter befindet und die Datenübertragung über das Netzwerk optimiert. Diese Geräte bieten auch einen lokalen Cache für häufig verwendete Dateien. Das physische Gerät ist Azure Stack Edge, das virtuelle Gerät ist das Data Box Gateway. Beide werden in Ihrer lokalen Umgebung dauerhaft ausgeführt und sind über das Netzwerk mit Azure verbunden.
-    - **Verwaltete Datenpipeline** : Sie können eine Cloudpipeline einrichten, um regelmäßig Dateien zwischen mehreren Azure-Diensten, lokal oder in einer Kombination aus beidem zu übertragen. Verwenden Sie Azure Data Factory, um Datenpipelines einzurichten und zu verwalten sowie Daten zur Analyse zu verschieben und zu transformieren.
+    - **Grafische Benutzeroberfläche**: Wenn Sie gelegentlich nur wenige Dateien übertragen und die Datenübertragung nicht automatisieren müssen, können Sie ein grafisches Benutzeroberflächentool wie Azure Storage Explorer oder ein webbasiertes Durchsuchungstool im Azure-Portal auswählen.
+    - **Übertragung mit Skripts oder programmgesteuerte Übertragung**: Sie können optimierte Softwaretools verwenden, die von uns bereitgestellt werden, oder unsere REST-APIs/SDKs direkt aufrufen. Die verfügbaren skriptfähigen Tools sind AzCopy, Azure PowerShell und die Azure CLI. Verwenden Sie für eine programmgesteuerte Schnittstelle eines der SDKs für .NET, Java, Python, Node/JS, C++, Go, PHP oder Ruby.
+    - **Lokale Geräte**: Wir stellen ein physisches oder virtuelles Gerät bereit, das sich in Ihrem Datencenter befindet und die Datenübertragung über das Netzwerk optimiert. Diese Geräte bieten auch einen lokalen Cache für häufig verwendete Dateien. Das physische Gerät ist Azure Stack Edge, das virtuelle Gerät ist das Data Box Gateway. Beide werden in Ihrer lokalen Umgebung dauerhaft ausgeführt und sind über das Netzwerk mit Azure verbunden.
+    - **Verwaltete Datenpipeline**: Sie können eine Cloudpipeline einrichten, um regelmäßig Dateien zwischen mehreren Azure-Diensten, lokal oder in einer Kombination aus beidem zu übertragen. Verwenden Sie Azure Data Factory, um Datenpipelines einzurichten und zu verwalten sowie Daten zur Analyse zu verschieben und zu transformieren.
 
 Die folgende Abbildung veranschaulicht die Richtlinien für die Auswahl der verschiedenen Azure-Datenübertragungstools in Abhängigkeit von der für die Übertragung verfügbaren Netzwerkbandbreite, der für die Übertragung vorgesehenen Datengröße und der Häufigkeit der Übertragung.
 

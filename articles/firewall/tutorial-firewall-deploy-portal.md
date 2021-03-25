@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 07/15/2020
+ms.date: 02/19/2021
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 40e4a3d3a819280255ee931e5e12206f99ef28fe
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 54900b7b9089d4a4c6cbc742ecf09aa19ff2a550
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98051512"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101741955"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Tutorial: Bereitstellen und Konfigurieren von Azure Firewall über das Azure-Portal
 
@@ -62,30 +62,32 @@ Die Ressourcengruppe enthält alle Ressourcen für das Tutorial.
 
 1. Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
 2. Wählen Sie im Menü des Azure-Portals die Option **Ressourcengruppen** aus, oder suchen Sie auf einer beliebigen Seite nach *Ressourcengruppen*, und wählen Sie diese Option anschließend aus. Wählen Sie anschließend **Hinzufügen**.
-3. Geben Sie unter **Ressourcengruppenname** die Zeichenfolge *Test-FW-RG* ein.
 4. Wählen Sie unter **Abonnement** Ihr Abonnement aus.
-5. Wählen Sie unter **Ressourcengruppenstandort** einen Standort aus. Alle anderen Ressourcen, die Sie erstellen, müssen sich an demselben Standort befinden.
-6. Klicken Sie auf **Erstellen**.
+1. Geben Sie unter **Ressourcengruppenname** die Zeichenfolge *Test-FW-RG* ein.
+1. Wählen Sie unter **Ressourcengruppenstandort** einen Standort aus. Alle anderen Ressourcen, die Sie erstellen, müssen sich an demselben Standort befinden.
+1. Klicken Sie auf **Überprüfen + erstellen**.
+1. Klicken Sie auf **Erstellen**.
 
 ### <a name="create-a-vnet"></a>Erstellen eines VNET
 
-Dieses VNET soll drei Subnetze enthalten.
+Dieses VNET soll drei Subnetze beinhalten.
 
 > [!NOTE]
 > Die Größe des Subnetzes „AzureFirewallSubnet“ beträgt /26. Weitere Informationen zur Subnetzgröße finden Sie unter [Azure Firewall – Häufig gestellte Fragen](firewall-faq.yml#why-does-azure-firewall-need-a--26-subnet-size).
 
 1. Wählen Sie im Menü des Azure-Portals oder auf der **Startseite** die Option **Ressource erstellen** aus.
 1. Wählen Sie **Netzwerk** > **Virtuelles Netzwerk** aus.
-2. Wählen Sie unter **Abonnement** Ihr Abonnement aus.
-3. Wählen Sie für **Ressourcengruppe** die Gruppe **Test-FW-RG** aus.
-4. Geben Sie unter **Name** die Zeichenfolge **Test-FW-VN** ein.
-5. Wählen Sie unter **Region** denselben Standort aus wie zuvor.
-6. Klicken Sie auf **Weiter: IP-Adressen**.
-7. Geben Sie unter **IPv4-Adressraum** den Adressraum **10.0.0.0/16** ein.
-8. Wählen Sie unter **Subnetz** die Einstellung **Standard** aus.
-9. Geben Sie unter **Subnetz** die Zeichenfolge **AzureFirewallSubnet** ein. Die Firewall befindet sich diesem Subnetz, und der Subnetzname **muss** „AzureFirewallSubnet“ lauten.
-10. Geben Sie unter **Adressbereich** die Zeichenfolge **10.0.1.0/26** ein.
-11. Wählen Sie **Speichern** aus.
+1. Klicken Sie auf **Erstellen**.
+1. Wählen Sie unter **Abonnement** Ihr Abonnement aus.
+1. Wählen Sie für **Ressourcengruppe** die Gruppe **Test-FW-RG** aus.
+1. Geben Sie unter **Name** die Zeichenfolge **Test-FW-VN** ein.
+1. Wählen Sie unter **Region** denselben Standort aus wie zuvor.
+1. Klicken Sie auf **Weiter: IP-Adressen**.
+1. Geben Sie unter **IPv4-Adressraum** den Adressraum **10.0.0.0/16** ein.
+1. Wählen Sie unter **Subnetz** die Einstellung **Standard** aus.
+1. Geben Sie unter **Subnetz** die Zeichenfolge **AzureFirewallSubnet** ein. Die Firewall befindet sich diesem Subnetz, und der Subnetzname **muss** „AzureFirewallSubnet“ lauten.
+1. Geben Sie unter **Adressbereich** die Zeichenfolge **10.0.1.0/26** ein.
+1. Wählen Sie **Speichern** aus.
 
    Erstellen Sie als Nächstes ein Subnetz für den Workloadserver.
 
@@ -101,8 +103,7 @@ Dieses VNET soll drei Subnetze enthalten.
 Erstellen Sie nun den virtuellen Workloadcomputer, und ordnen Sie ihn im Subnetz **Workload-SN** an.
 
 1. Wählen Sie im Menü des Azure-Portals oder auf der **Startseite** die Option **Ressource erstellen** aus.
-2. Wählen Sie **Compute** und dann **Virtueller Computer** aus.
-3. **Windows Server 2016 Datacenter** in der Liste „Beliebt“
+2. Wählen Sie **Windows Server 2016 Datacenter** aus.
 4. Geben Sie die folgenden Werte für den virtuellen Computer ein:
 
    |Einstellung  |Wert  |
@@ -120,7 +121,7 @@ Erstellen Sie nun den virtuellen Workloadcomputer, und ordnen Sie ihn im Subnetz
 8. Stellen Sie sicher, dass als virtuelles Netzwerk **Test-FW-VN** und als Subnetz **Workload-SN** ausgewählt ist.
 9. Wählen Sie unter **Öffentliche IP** die Option **Keine** aus.
 11. Übernehmen Sie für die anderen Einstellungen die Standardwerte, und wählen Sie **Weiter: Verwaltung** aus.
-12. Wählen Sie **Aus** aus, um die Startdiagnose zu deaktivieren. Übernehmen Sie für die anderen Einstellungen die Standardwerte, und klicken Sie dann auf **Bewerten + erstellen**.
+12. Wählen Sie **Deaktivieren** aus, um die Startdiagnose zu deaktivieren. Übernehmen Sie für die anderen Einstellungen die Standardwerte, und klicken Sie dann auf **Bewerten + erstellen**.
 13. Überprüfen Sie die Einstellungen auf der Seite „Zusammenfassung“, und wählen Sie dann **Erstellen** aus.
 
 ## <a name="deploy-the-firewall"></a>Bereitstellen der Firewall
@@ -137,11 +138,12 @@ Stellen Sie die Firewall im VNET bereit.
    |Subscription     |\<your subscription\>|
    |Resource group     |**Test-FW-RG** |
    |Name     |**Test-FW01**|
-   |Standort     |Wählen Sie den gleichen Standort aus wie zuvor.|
+   |Region     |Wählen Sie den gleichen Standort aus wie zuvor.|
+   |Firewallverwaltung|**Use Firewall rules (classic) to manage this firewall** (Firewallregeln (klassisch) zum Verwalten dieser Firewall verwenden)|
    |Virtuelles Netzwerk auswählen     |**Vorhandene verwenden**: **Test-FW-VN**|
    |Öffentliche IP-Adresse     |**Neu hinzufügen**<br>**Name**: **fw-pip**|
 
-5. Klicken Sie auf **Überprüfen + erstellen**.
+5. Übernehmen Sie für die anderen Standardwerte und klicken Sie auf **Überprüfen und erstellen**.
 6. Überprüfen Sie die Zusammenfassung, und wählen Sie dann **Erstellen** aus, um die Firewall zu erstellen.
 
    Die Bereitstellung dauert einige Minuten.
@@ -155,15 +157,18 @@ Konfigurieren Sie die ausgehende Standardroute für das Subnetz **Workload-SN** 
 1. Wählen Sie im Menü des Azure-Portals die Option **Alle Dienste** aus, oder suchen Sie auf einer beliebigen Seite nach *Alle Dienste*, und wählen Sie diese Option anschließend aus.
 2. Wählen Sie unter **Netzwerk** die Option **Routingtabellen** aus.
 3. Wählen Sie **Hinzufügen**.
-4. Geben Sie unter **Name** die Zeichenfolge **Firewall-route** ein.
 5. Wählen Sie unter **Abonnement** Ihr Abonnement aus.
 6. Wählen Sie für **Ressourcengruppe** die Gruppe **Test-FW-RG** aus.
-7. Wählen Sie unter **Standort** den gleichen Standort aus wie zuvor.
-8. Klicken Sie auf **Erstellen**.
-9. Klicken Sie auf **Aktualisieren**, und wählen Sie anschließend die Routingtabelle **Firewall-route** aus.
-10. Wählen Sie **Subnetze** und dann **Zuordnen** aus.
-11. Wählen Sie **Virtuelles Netzwerk** > **Test-FW-VN** aus.
-12. Wählen Sie unter **Subnetz** die Option **Workload-SN** aus. Stellen Sie sicher, dass Sie nur das Subnetz **Workload-SN** für diese Route auswählen. Andernfalls funktioniert die Firewall nicht korrekt.
+7. Wählen Sie unter **Region** denselben Standort aus wie zuvor.
+4. Geben Sie unter **Name** die Zeichenfolge **Firewall-route** ein.
+1. Klicken Sie auf **Überprüfen + erstellen**.
+1. Klicken Sie auf **Erstellen**.
+
+Klicken Sie nach Abschluss der Bereitstellung auf **Zu Ressource wechseln**.
+
+1. Wählen Sie auf der Seite Firewall-Route die Option **Subnetze** aus und klicken Sie dann auf **Zuordnen**.
+1. Wählen Sie **Virtuelles Netzwerk** > **Test-FW-VN** aus.
+1. Wählen Sie unter **Subnetz** die Option **Workload-SN** aus. Stellen Sie sicher, dass Sie nur das Subnetz **Workload-SN** für diese Route auswählen. Andernfalls funktioniert die Firewall nicht korrekt.
 
 13. Klicken Sie auf **OK**.
 14. Wählen Sie **Routen** und dann **Hinzufügen** aus.
@@ -180,7 +185,7 @@ Konfigurieren Sie die ausgehende Standardroute für das Subnetz **Workload-SN** 
 Hierbei handelt es sich um die Anwendungsregel, die ausgehenden Zugriff auf `www.google.com` ermöglicht.
 
 1. Öffnen Sie **Test-FW-RG**, und wählen Sie die Firewall **Test-FW01** aus.
-2. Wählen Sie auf der Seite **Test-FW01** unter **Einstellungen** die Option **Regeln** aus.
+2. Wählen Sie auf der Seite **Test-FW01** unter **Einstellungen** die Option **Regeln (klassisch)** aus.
 3. Klicken Sie auf die Registerkarte **Anwendungsregelsammlung**.
 4. Wählen Sie **Anwendungsregelsammlung hinzufügen** aus.
 5. Geben Sie unter **Name** die Zeichenfolge **App-Coll01** ein.
@@ -226,8 +231,8 @@ Mit dieser Regel können Sie eine Remotedesktopverbindung mit dem virtuellen Com
 5. Geben Sie unter **Regeln** für **Name** die Zeichenfolge **rdp-nat** ein.
 6. Wählen Sie für **Protokoll** die Option **TCP** aus.
 7. Wählen Sie unter **Quelltyp** die Option **IP-Adresse** aus.
-8. Geben Sie unter **Quelle** die Zeichenfolge * *\** _ ein.
-9. Geben Sie unter _*Zieladresse** die öffentliche IP-Adresse der Firewall ein.
+8. Geben Sie unter **Quelle** die Zeichenfolge **\*** ein.
+9. Geben Sie unter **Zieladresse** die öffentliche IP-Adresse der Firewall ein.
 10. Geben Sie unter **Zielports** den Wert **3389** ein.
 11. Geben Sie für **Übersetzte Adresse** die private IP-Adresse für **Srv-work** ein.
 12. Geben Sie für **Übersetzter Port** den Wert **3389** ein.
