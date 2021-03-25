@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 1/21/2021
 ms.author: baanders
-ms.openlocfilehash: 59506b1d1d3fbbc5a532c597d46dc92ee3c2e98e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9f8ca9ab6dc184abb8d9dcd25ebe87cbd7761722
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101750830"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102630286"
 ---
 Klicken Sie im *Projektmappen-Explorer* mit der rechten Maustaste auf das Projekt, und wählen Sie **Veröffentlichen** aus, um das Projekt in einer Funktions-App in Azure zu veröffentlichen.
 
@@ -57,6 +57,4 @@ Vergewissern Sie sich im Bereich *Veröffentlichen*, der im Visual Studio-Fenste
 >
 > Befolgen Sie die Anweisungen zum Durchführen des Upgrades auf die neueste Version der Azure Functions-Runtime. Dieses Problem kann bei Verwendung einer älterer Visual Studio-Version auftreten.
 
-Ihre Functions-App ist jetzt in Azure veröffentlicht. 
-
-Damit Ihre Functions-App auf Azure Digital Twins zugreifen kann, muss sie über eine systemseitig verwaltete Identität mit Zugriffsberechtigungen für Ihre Azure Digital Twins-Instanz verfügen. Dies wird im nächsten Schritt eingerichtet.
+Ihre Functions-App ist jetzt in Azure veröffentlicht.

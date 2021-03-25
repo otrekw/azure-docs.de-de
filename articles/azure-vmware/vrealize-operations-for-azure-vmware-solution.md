@@ -3,12 +3,12 @@ title: Einrichten von vRealize Operations für Azure VMware Solution
 description: Hier erfahren Sie, wie Sie vRealize Operations für Ihre private Azure VMware Solution-Cloud einrichten.
 ms.topic: how-to
 ms.date: 01/26/2021
-ms.openlocfilehash: 3d2617f893c34fde6a154f9f93b5bda520c5a91a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 8015bb61a7401b4c97807e0256e06d4967c39026
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101738428"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802487"
 ---
 # <a name="set-up-vrealize-operations-for-azure-vmware-solution"></a>Einrichten von vRealize Operations für Azure VMware Solution
 
@@ -61,7 +61,7 @@ Nach Bereitstellung der Instanz können Sie vRealize Operations so konfigurieren
 
 ## <a name="known-limitations"></a>Bekannte Einschränkungen
 
-- Der Benutzer **cloudadmin\@vsphere.local** in Azure VMware Solution hat [eingeschränkte Berechtigungen](concepts-role-based-access-control.md).  Die gastinterne Speichererfassung mithilfe von VMware-Tools wird für virtuelle Computern (VMs) in Azure VMware Solution nicht unterstützt.  Die Nutzung des aktiven und verbrauchten Speichers funktioniert in diesem Fall weiterhin.
+- Der Benutzer **cloudadmin\@vsphere.local** in Azure VMware Solution hat [eingeschränkte Berechtigungen](concepts-identity.md).  Die gastinterne Speichererfassung mithilfe von VMware-Tools wird für virtuelle Computern (VMs) in Azure VMware Solution nicht unterstützt.  Die Nutzung des aktiven und verbrauchten Speichers funktioniert in diesem Fall weiterhin.
 - Die Workloadoptimierung für die hostbasierte Geschäftsabsicht funktioniert nicht, da Azure VMware-Lösungen Clusterkonfigurationen verwalten, einschließlich DRS-Einstellungen.
 - Die Workloadoptimierung für die clusterübergreifende Platzierung im SDDC unter Verwendung der clusterbasierten Geschäftsabsicht wird ab vRealize Operations Manager 8.0 vollständig unterstützt. Die Workloadoptimierung hat jedoch keine Kenntnis über Ressourcenpools und platziert die VMs auf Clusterebene. Ein Benutzer kann dies manuell auf der vCenter Server-Benutzeroberfläche für Azure VMware Solution korrigieren.
 - Eine Anmeldung bei vRealize Operations Manager mit Ihren Azure VMware Solution vCenter Server-Anmeldeinformationen ist nicht möglich. 

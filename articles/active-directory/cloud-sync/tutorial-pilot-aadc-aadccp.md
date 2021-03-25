@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/19/2020
+ms.date: 03/22/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3395afbe95b2a7f35893a0ce7f60c3871597acd0
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 50eac71203a94ffb5c7dddc8995b56980c3f8815
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98612165"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104798713"
 ---
 # <a name="pilot-cloud-sync-for-an-existing-synced-ad-forest"></a>Pilotcloudsynchronisierung für eine vorhandene synchronisierte AD-Gesamtstruktur 
 
@@ -208,20 +208,7 @@ Falls die Pilotbereitstellung nicht wie erwartet funktioniert, können Sie wie f
 1.  Deaktivieren Sie die Bereitstellungskonfiguration im Azure-Portal. 
 2.  Deaktivieren Sie alle benutzerdefinierten Synchronisierungsregeln, die Sie mit dem Synchronisierungsregel-Editor für die Cloudbereitstellung erstellt haben. Durch das Deaktivieren sollten alle Connectors vollständig synchronisiert werden.
 
-## <a name="configure-azure-ad-connect-sync-to-exclude-the-pilot-ou"></a>Konfigurieren der Azure AD Connect-Synchronisierung zum Ausschließen der Pilotorganisationseinheit
-Wenn Sie sich vergewissert haben, dass Benutzer aus der Pilotorganisationseinheit in der Cloudsynchronisierung erfolgreich verwaltet werden, können Sie Azure AD Connect neu konfigurieren, um die oben erstellte Pilotorganisationsheit auszuschließen.  Der Agent für die Cloudbereitstellung führt ab sofort die Synchronisierung dieser Benutzer aus.  Gehen Sie wie folgt vor, um den Bereich für Azure AD Connect festzulegen.
 
- 1. Doppelklicken Sie auf dem Server, auf dem Azure AD Connect ausgeführt wird, auf das Symbol für Azure AD Connect.
- 2. Klicken Sie auf **Konfigurieren**.
- 3. Wählen Sie **Synchronisierungsoptionen anpassen** aus, und klicken Sie auf „Weiter“.
- 4. Melden Sie sich bei Azure AD an, und klicken Sie auf **Weiter**.
- 5. Klicken Sie auf dem Bildschirm **Verzeichnisse verbinden** auf **Weiter**.
- 6. Wählen Sie auf dem Bildschirm **Filtern von Domänen und Organisationseinheiten** die Option **Ausgewählte Domänen und Organisationseinheiten synchronisieren** aus.
- 7. Erweitern Sie Ihre Domäne, und **deaktivieren** Sie das Kontrollkästchen für die Organisationseinheit **CPUsers**.  Klicken Sie auf **Weiter**.
-![scope](media/tutorial-existing-forest/scope-1.png)</br>
- 9. Klicken Sie auf dem Bildschirm **Optionale Features** auf **Weiter**.
- 10. Klicken Sie auf dem Bildschirm **Bereit zur Konfiguration** auf **Konfigurieren**.
- 11. Klicken Sie nach Abschluss des Vorgangs auf **Beenden**. 
 
 ## <a name="next-steps"></a>Nächste Schritte 
 

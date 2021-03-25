@@ -4,10 +4,10 @@ description: Erfahren Sie, wie Sie ein Classroom-Lab erstellen, alle Labs anzeig
 ms.topic: how-to
 ms.date: 06/26/2020
 ms.openlocfilehash: db7a2f58f99252a7e5076dd86c37b65bbe8ea37a
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96434208"
 ---
 # <a name="manage-labs-in-azure-lab-services"></a>Verwalten von Labs in Azure Lab Services 

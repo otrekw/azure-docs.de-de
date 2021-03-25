@@ -2,15 +2,15 @@
 title: 'Tutorial: Verwenden der Parameterdatei zum Bereitstellen einer Azure Resource Manager-Bicep-Datei'
 description: Verwenden Sie Parameterdateien, die die Werte enthalten, die Sie für die Bereitstellung Ihrer Azure Resource Manager-Bicep-Datei verwenden möchten.
 author: mumian
-ms.date: 03/01/2021
+ms.date: 03/10/2021
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 233bab26d659fef2da9a9f5a7080d4b3ecbce7d4
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ca3a73cde9549bfcdfd47bc4f1955904fac69d1c
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101742952"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102632355"
 ---
 # <a name="tutorial-use-parameter-files-to-deploy-azure-resource-manager-bicep-file"></a>Tutorial: Verwenden von Parameterdateien zum Bereitstellen einer Azure Resource Manager-Bicep-Datei
 

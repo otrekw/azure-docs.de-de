@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: 558f49c09203192ff4cbb1af392eaeef8d705c94
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91263486"
 ---
 # <a name="relay-hybrid-connections-node-api-overview"></a>Node-API für Relay Hybrid Connections – Übersicht
@@ -121,7 +121,7 @@ Konstruktorargumente:
 - `server` (erforderlich) – der vollqualifizierte URI für einen Hybrid Connection-Name, auf den gelauscht werden soll, in der Regel mit der Hilfsmethode WebSocket.createRelayListenUri() erstellt
 - `token` (erforderlich) – dieses Argument enthält eine zuvor ausgegebene Token-Zeichenfolge oder eine Rückruffunktion, die zum Abrufen einer solchen Token-Zeichenfolge aufgerufen werden kann Die Rückrufoption wird empfohlen, da sie die Token-Verlängerung ermöglicht.
 
-#### <a name="events"></a>Events
+#### <a name="events"></a>Ereignisse
 
 Instanzen vom Typ `RelayedServer` geben drei Ereignisse aus, mit denen Sie eingehende Anforderungen behandeln, Verbindungen herstellen und Fehlerzustände aufzeigen können. Sie müssen das Ereignis `connect` abonnieren, um Meldungen zu verarbeiten. 
 
@@ -142,7 +142,7 @@ function(socket)
 Wird ausgegeben, wenn eine neue WebSocket-Verbindung akzeptiert wird. Das Objekt entspricht dem Typ `ws.WebSocket` (identisch zum Basispaket).
 
 
-##### <a name="error"></a>error
+##### <a name="error"></a>Fehler
 
 ```JavaScript
 function(error)

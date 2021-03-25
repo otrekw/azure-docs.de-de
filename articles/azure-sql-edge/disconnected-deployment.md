@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
 ms.openlocfilehash: fce098767fffd36376399bbd9396699e3d9fbfd3
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93392077"
 ---
 # <a name="deploy-azure-sql-edge-with-docker"></a>Bereitstellen von Azure SQL Edge mit Docker
@@ -144,7 +144,7 @@ Die folgenden Abschnitte führen Sie durch die Verwendung von **sqlcmd** und Tra
 
 Mit den folgenden Schritten wird eine neue Datenbank mit dem Namen `TestDB` erstellt.
 
-1. Fügen Sie aus der **sqlcmd** -Eingabeaufforderung den folgenden Transact-SQL-Befehl zur Erstellung einer Testdatenbank ein:
+1. Fügen Sie aus der **sqlcmd**-Eingabeaufforderung den folgenden Transact-SQL-Befehl zur Erstellung einer Testdatenbank ein:
 
    ```sql
    CREATE DATABASE TestDB
@@ -162,7 +162,7 @@ Mit den folgenden Schritten wird eine neue Datenbank mit dem Namen `TestDB` erst
 
 Erstellen Sie als Nächstes eine neue Tabelle, `Inventory`, und fügen Sie zwei neue Zeilen ein.
 
-1. Wechseln Sie den Kontext aus der **sqlcmd** -Eingabeaufforderung zur neuen `TestDB`-Datenbank:
+1. Wechseln Sie den Kontext aus der **sqlcmd**-Eingabeaufforderung zur neuen `TestDB`-Datenbank:
 
    ```sql
    USE TestDB
@@ -190,7 +190,7 @@ Erstellen Sie als Nächstes eine neue Tabelle, `Inventory`, und fügen Sie zwei 
 
 Führen Sie nun eine Abfrage zum Zurückgeben von Daten aus der `Inventory`-Tabelle aus.
 
-1. Geben Sie aus der **sqlcmd** -Eingabeaufforderung eine Abfrage ein, die Reihen aus der `Inventory`-Tabelle zurückgibt, bei denen die Menge größer als 152 ist:
+1. Geben Sie aus der **sqlcmd**-Eingabeaufforderung eine Abfrage ein, die Reihen aus der `Inventory`-Tabelle zurückgibt, bei denen die Menge größer als 152 ist:
 
    ```sql
    SELECT * FROM Inventory WHERE quantity > 152;
@@ -204,7 +204,7 @@ Führen Sie nun eine Abfrage zum Zurückgeben von Daten aus der `Inventory`-Tabe
 
 ### <a name="exit-the-sqlcmd-command-prompt"></a>Beenden der sqlcmd-Eingabeaufforderung
 
-1. Zum Beenden der **sqlcmd** -Sitzung, geben Sie `QUIT` ein:
+1. Zum Beenden der **sqlcmd**-Sitzung, geben Sie `QUIT` ein:
 
    ```sql
    QUIT

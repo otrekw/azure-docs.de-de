@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 5/03/2019
 ms.author: terrylan
 ms.openlocfilehash: f4a3b2afd8b1a5ffdbb1fe0db1c3e345a9c99154
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94412611"
 ---
 # <a name="azure-security-best-practices-and-patterns"></a>Sicherheit in Azure – bewährte Methoden und Muster
@@ -28,16 +28,16 @@ Die nachstehenden Artikel enthalten bewährte Methoden für die Sicherheit, die 
 
 Die bewährten Methoden sind als Ressource für IT-Experten ausgelegt. Dazu gehören beispielsweise Designer, Architekten, Entwickler und Tester, die sichere Azure-Lösungen erstellen und bereitstellen.
 
-* [Microsoft-Clouddienste und Netzwerksicherheit](./network-best-practices.md#adopt-a-zero-trust-approach)
+* [Bewährte Methoden für die Sicherheit von Azure-Grenzen](./network-best-practices.md#adopt-a-zero-trust-approach)
 * [Bewährte Methoden für die Azure-Datenbanksicherheit](../../azure-sql/database/security-best-practice.md)
-* [Empfohlene Vorgehensweisen für Datensicherheit und Verschlüsselung in Azure](data-encryption-best-practices.md)
-* [Azure-Identitätsverwaltung und Sicherheit der Zugriffssteuerung – Bewährte Methoden](identity-management-best-practices.md)
+* [Bewährte Methoden für Datensicherheit und Verschlüsselung in Azure](data-encryption-best-practices.md)
+* [Bewährte Methoden für die Sicherheit der Azure-Identitätsverwaltung und der Zugriffssteuerung](identity-management-best-practices.md)
 * [Bewährte Methoden für die Azure-Netzwerksicherheit](network-best-practices.md)
-* [Bewährte Methoden für Azure Operational Security](operational-best-practices.md)
+* [Bewährte Methoden für die Azure-Betriebssicherheit](operational-best-practices.md)
 * [Bewährte Methoden für Azure PaaS](paas-deployments.md)
 * [Bewährte Methoden für die Azure Service Fabric-Sicherheit](service-fabric-best-practices.md)
 * [Bewährte Methoden für die Sicherheit virtueller Azure-Computer](iaas.md)
-* [Implementieren einer sicheren Hybrid-Netzwerkarchitektur in Azure](/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid)
+* [Implementieren einer sicheren hybriden Netzwerkarchitektur in Azure](/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid)
 * [Internet der Dinge – bewährte Methoden für die Sicherheit](../../iot-fundamentals/iot-security-best-practices.md)
 * [Schützen von PaaS-Datenbanken in Azure](paas-applications-using-sql.md)
 * [Schützen webbasierter und mobiler PaaS-Anwendungen mit Azure App Service](paas-applications-using-app-services.md)

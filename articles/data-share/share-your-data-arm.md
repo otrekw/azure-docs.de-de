@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 08/19/2020
 ms.openlocfilehash: 5abe92120c8b822ac86ced90658869a0858d4ff4
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92487686"
 ---
 # <a name="quickstart-share-data-using-azure-data-share-and-arm-template"></a>Schnellstart: Freigeben von Daten mithilfe von Azure Data Share und einer ARM-Vorlage
@@ -69,12 +69,12 @@ Der Grund hierfür ist, dass die Bereitstellung versucht, das Dataset zu erstell
     [![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-data-share-share-storage-account%2Fazuredeploy.json)
 1. Wählen Sie die folgenden Werte aus, bzw. geben Sie sie ein:
 
-    * **Abonnement** : Wählen Sie ein Azure-Abonnement zum Erstellen der Datenfreigabe und anderer Ressourcen aus.
-    * **Ressourcengruppe** : Klicken Sie auf **Neu erstellen** , um eine neue Ressourcengruppe zu erstellen, oder wählen Sie eine vorhandene Ressourcengruppe aus.
-    * **Standort** : Wählen Sie einen Standort für die Ressourcengruppe aus.
-    * **Projektname** : Geben Sie einen Projektnamen ein.  Der Projektname wird verwendet, um Ressourcennamen zu generieren.  Weitere Informationen finden Sie in den Variablendefinitionen in der vorherigen Vorlage.
-    * **Standort** : Wählen Sie einen Standort für die Ressourcen aus.  Sie können den gleichen Standort verwenden wie für die Ressourcengruppe.
-    * **Einladungs-E-Mail** : Geben Sie die E-Mail-Adresse für die Anmeldung bei Azure des Empfängers der Datenfreigabe ein.  Ein E-Mail-Alias funktioniert nicht.
+    * **Abonnement**: Wählen Sie ein Azure-Abonnement zum Erstellen der Datenfreigabe und anderer Ressourcen aus.
+    * **Ressourcengruppe**: Klicken Sie auf **Neu erstellen**, um eine neue Ressourcengruppe zu erstellen, oder wählen Sie eine vorhandene Ressourcengruppe aus.
+    * **Standort**: Wählen Sie einen Standort für die Ressourcengruppe aus.
+    * **Projektname**: Geben Sie einen Projektnamen ein.  Der Projektname wird verwendet, um Ressourcennamen zu generieren.  Weitere Informationen finden Sie in den Variablendefinitionen in der vorherigen Vorlage.
+    * **Standort**: Wählen Sie einen Standort für die Ressourcen aus.  Sie können den gleichen Standort verwenden wie für die Ressourcengruppe.
+    * **Einladungs-E-Mail**: Geben Sie die E-Mail-Adresse für die Anmeldung bei Azure des Empfängers der Datenfreigabe ein.  Ein E-Mail-Alias funktioniert nicht.
 
     Übernehmen Sie für den Rest der Einstellungen die Standardwerte.
 1. Wählen Sie **Ich stimme den oben genannten Geschäftsbedingungen zu** und anschließend **Kaufen** aus.

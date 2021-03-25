@@ -4,10 +4,10 @@ description: Erfahren Sie, wie Sie Azure Backup für Data Protection Manager (DP
 ms.topic: conceptual
 ms.date: 01/23/2017
 ms.openlocfilehash: 176cbffe5152462055c4ffdb2367cf9c0ab97c1f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90968295"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-dpm-servers-using-powershell"></a>Bereitstellen und Verwalten der Sicherung in Azure für Data Protection Manager (DPM)-Server mit PowerShell
@@ -105,7 +105,7 @@ Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 
 Bevor Sie den Azure Backup-Agent installieren, müssen Sie das Installationsprogramm herunterladen, damit es auf dem Windows-Server verfügbar ist. Die neueste Version des Installationsprogramms erhalten Sie im [Microsoft Download Center](https://aka.ms/azurebackup_agent) oder im Dashboard des Recovery Services-Tresors. Speichern Sie das Installationsprogramm an einem einfach zugänglichen Speicherort wie `C:\Downloads\*`.
 
-Um den Agent zu installieren, führen Sie den folgenden Befehl **auf dem DPM-Server**in einer PowerShell-Konsole mit erhöhten Rechten aus:
+Um den Agent zu installieren, führen Sie den folgenden Befehl **auf dem DPM-Server** in einer PowerShell-Konsole mit erhöhten Rechten aus:
 
 ```powershell
 MARSAgentInstaller.exe /q

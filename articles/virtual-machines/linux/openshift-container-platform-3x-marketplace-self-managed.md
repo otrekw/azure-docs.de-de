@@ -3,19 +3,20 @@ title: Bereitstellen eines selbstverwalteten OpenShift Container Platform 3.11-M
 description: Bereitstellen eines selbstverwalteten OpenShift Container Platform 3.11-Marketplace-Angebots in Azure.
 author: haroldwongms
 manager: mdotson
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines
+ms.subservice: openshift
+ms.collection: linux
 ms.topic: how-to
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: 36adf35c5fbfc3e88b7d9af425ebabc852707e69
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f257ed1097f49074d70f45f59e9040265f6cedef
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87374098"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101670449"
 ---
 # <a name="configure-prerequisites"></a>Konfigurieren der Voraussetzungen
 
@@ -29,13 +30,13 @@ Die einfachste Möglichkeit, einen selbstverwalteten OpenShift Container Platfor
 Dies ist zwar die einfachste Option, sie bietet jedoch begrenzte Anpassungsmöglichkeiten. Das Marketplace-Angebot stellt OpenShift Container Platform 3.11.82 bereit und umfasst die folgenden Konfigurationsoptionen:
 
 - **Masterknoten**: Drei Masterknoten mit konfigurierbarem Instanztyp.
-- **Infrastrukturknoten:** Drei Infrastrukturknoten mit konfigurierbarem Instanztyp.
-- **Knoten**: Knotenanzahl (zwischen eins und neun) und Instanztyp sind konfigurierbar.
+- **Infrastrukturknoten**: Drei Infrastrukturknoten mit konfigurierbarem Instanztyp.
+- **Knoten**: Knotenanzahl (zwischen 1 und 9) und Instanztyp sind konfigurierbar.
 - **Datenträgertyp**: Managed Disks wird verwendet.
 - **Netzwerk**: Unterstützung eines neuen oder bereits vorhandenen Netzwerks sowie eines benutzerdefinierten CIDR-Bereichs.
-- **CNS:** CNS kann aktiviert werden.
+- **CNS**: CNS kann aktiviert werden.
 - **Metriken**: Hawkular Metrics kann aktiviert werden.
-- **Protokollierung:** EFK-Protokollierung kann aktiviert werden.
+- **Protokollierung**: EFK-Protokollierung kann aktiviert werden.
 - **Azure-Cloudanbieter**: Standardmäßig aktiviert, kann deaktiviert werden.
 
 Klickern Sie oben links im Azure-Portal auf **Ressource erstellen**, geben Sie im Suchfeld „openshift container platform“ ein, und drücken Sie die EINGABETASTE.
@@ -65,7 +66,7 @@ Geben Sie Werte für die Eingabeparameter ein, und klicken Sie auf **OK**.
 | SSH Public Key for Admin User (Öffentlicher SSH-Schlüssel für Administratorbenutzer) | Öffentlicher SSH-Schlüssel zum Anmelden bei der VM – darf keine Passphrase aufweisen |
 | Subscription | Azure-Abonnement, in dem der Cluster bereitgestellt werden soll |
 | Ressourcengruppe | Erstellen Sie eine neue Ressourcengruppe, oder wählen Sie eine vorhandene leere Ressourcengruppe für Clusterressourcen aus. |
-| Position | Azure-Region, in der der Cluster bereitgestellt werden soll |
+| Standort | Azure-Region, in der der Cluster bereitgestellt werden soll |
 
    ![Blatt „Grundlagen“ für Angebot](media/openshift-marketplace-self-managed/ocp-basics.png)  
 <br>
@@ -93,7 +94,7 @@ Geben Sie Werte für die Eingabeparameter ein, und klicken Sie auf **OK**.
 
 **Größe ändern**
 
-Klicken Sie auf ***Größe ändern***, um eine andere VM-Größe auszuwählen.  Das VM-Auswahlfenster wird geöffnet.  Wählen Sie die gewünschte VM-Größe aus, und klicken Sie auf **Auswählen**.
+Klicken Sie auf **Größe ändern**, um eine andere VM-Größe auszuwählen.  Das VM-Auswahlfenster wird geöffnet.  Wählen Sie die gewünschte VM-Größe aus, und klicken Sie auf „Auswählen“.
 
    ![VM-Größe auswählen](media/openshift-marketplace-self-managed/ocp-selectvmsize.png)  
 <br>
