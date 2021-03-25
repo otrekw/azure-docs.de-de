@@ -4,10 +4,10 @@ description: Verwenden Sie Azure Backup Server (MABS), um VMware-VMs wiederherzu
 ms.topic: conceptual
 ms.date: 08/18/2019
 ms.openlocfilehash: b3f61aa828db39aeb11b1ce46a850d9a5b868653
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88263519"
 ---
 # <a name="restore-vmware-virtual-machines"></a>Wiederherstellen von virtuellen VMware-Computern
@@ -16,7 +16,7 @@ In diesem Artikel wird beschrieben, wie Sie Microsoft Azure Backup Server (MABS)
 
 * **Wiederherstellung am ursprünglichen Speicherort**: Verwenden Sie diese Wiederherstellungsoption, um eine geschützte VM an ihrem ursprünglichen Speicherort wiederherzustellen. Sie können einen virtuellen Computer nur dann am ursprünglichen Speicherort wiederherstellen, wenn seit der Durchführung des Sicherungsvorgangs keine Datenträger hinzugefügt oder gelöscht wurden. Wenn Datenträger hinzugefügt oder gelöscht wurden, müssen Sie einen anderen Ort für die Wiederherstellung verwenden.
 
-* **Wiederherstellung an einem alternativen Speicherort**: Stellen Sie die VM an einem anderen Ort wieder her, falls die ursprüngliche VM fehlt oder Sie die ursprüngliche VM nicht beeinträchtigen möchten. Zum Wiederherstellen einer VM an einem anderen Speicherort müssen Sie den Speicherort eines ESXi-Hosts, Ressourcenpools, Ordners und des Speicherdatenspeichers und -pfads angeben. Zur Unterscheidung der wiederhergestellten VM von der ursprünglichen VM fügt MABS den Zusatz „-Recovered“ an den Namen der VM an.
+* **Wiederherstellung an einem alternativen Speicherort (ALR)** : Wenn die ursprüngliche VM nicht vorhanden ist oder Sie die ursprüngliche VM nicht behindern möchten, stellen Sie die VM an einem alternativen Speicherort wieder her. Zum Wiederherstellen einer VM an einem anderen Speicherort müssen Sie den Speicherort eines ESXi-Hosts, Ressourcenpools, Ordners und des Speicherdatenspeichers und -pfads angeben. Zur Unterscheidung der wiederhergestellten VM von der ursprünglichen VM fügt MABS den Zusatz „-Recovered“ an den Namen der VM an.
 
 * **Wiederherstellung einzelner Dateien an einem Speicherort**: Wenn es sich bei der geschützten VM um eine Windows Server-VM handelt, können einzelne Dateien/Ordner der VM mit dieser Option von MABS wiederhergestellt werden. Informationen zur Wiederherstellung einzelner Dateien finden Sie in den Schritten weiter unten in diesem Artikel.
 
@@ -36,9 +36,9 @@ In diesem Artikel wird beschrieben, wie Sie Microsoft Azure Backup Server (MABS)
 
 5. Wählen Sie **Weiter** aus, um zum Bildschirm **Wiederherstellungsoptionen angeben**  zu wechseln.
 
-6. Wählen Sie auf dem Bildschirm **Wiederherstellungsoptionen angeben** die Option **Ändern** aus, wenn Sie die Drosselung der Netzwerkbandbreite aktivieren möchten. Wenn die Netzwerk-Bandbreiteneinschränkung deaktiviert bleiben soll, wählen Sie **Weiter** aus. Für VMware-VMs sind auf diesem Bildschirm des Assistenten keine weiteren Optionen verfügbar. Wenn Sie sich für die Änderung einer Drosselung der Netzwerkbandbreite entscheiden, müssen Sie dies aktivieren, indem Sie im Dialogfeld „Drosselung“ die Option **Netzwerk-Bandbreiteneinschränkung aktivieren** auswählen. Konfigurieren Sie nach der Aktivierung die Optionen **Einstellungen** und **Arbeitszeitplan**.
+6. Wählen Sie auf dem Bildschirm **Wiederherstellungsoptionen angeben** die Option **Ändern** aus, wenn Sie die Drosselung der Netzwerkbandbreite aktivieren möchten. Wenn die Netzwerk-Bandbreiteneinschränkung deaktiviert bleiben soll, wählen Sie **Weiter** aus. Keine anderen Optionen auf dieser Seite des Assistenten sind für VMware-VMs verfügbar. Wenn Sie die Netzwerk-Bandbreiteneinschränkung ändern möchten, klicken Sie im Dialogfeld „Drosselung“ auf **Netzwerk-Bandbreiteneinschränkung aktivieren**, um die Option zu aktivieren. Konfigurieren Sie nach der Aktivierung die Optionen **Einstellungen** und **Arbeitszeitplan**.
 
-7. Wählen Sie auf dem Bildschirm **Wiederherstellungstyp auswählen** aus, ob die Wiederherstellung auf der ursprünglichen Instanz oder an einem anderen Speicherort durchgeführt werden soll. Wählen Sie **Weiter**aus.
+7. Wählen Sie auf dem Bildschirm **Wiederherstellungstyp auswählen** aus, ob die Wiederherstellung auf der ursprünglichen Instanz oder an einem anderen Speicherort durchgeführt werden soll. Wählen Sie **Weiter** aus.
 
      * Bei Auswahl von **In ursprünglicher Instanz wiederherstellen**  müssen Sie im Assistenten keine weiteren Angaben machen. Es werden die Daten für die ursprüngliche Instanz verwendet.
 

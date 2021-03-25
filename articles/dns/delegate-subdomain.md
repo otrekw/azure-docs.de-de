@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 2/7/2019
 ms.author: rohink
 ms.openlocfilehash: add7674771fd19f6029a94c46624006f0cf30f1a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96011539"
 ---
 # <a name="delegate-an-azure-dns-subdomain"></a>Delegieren einer Azure DNS-Unterdomäne
@@ -33,7 +33,7 @@ Erstellen Sie zuerst die Zone für die Unterdomäne **engineering**.
 
 1. Wählen Sie im Azure-Portal die Option **Ressource erstellen**.
 2. Geben Sie **DNS** in das Suchfeld ein, und wählen Sie **DNS-Zone** aus.
-3. Klicken Sie auf **Erstellen**.
+3. Wählen Sie **Erstellen** aus.
 4. Geben Sie im Bereich **DNS-Zone erstellen** die Domäne **engineering.contoso.com** in das Textfeld **Name** ein.
 5. Wählen Sie die Ressourcengruppe für Ihre Zone aus. Es wird empfohlen, dieselbe Ressourcengruppe wie die übergeordnete Zone zu verwenden, um ähnliche Ressourcen zusammenzuhalten.
 6. Klicken Sie auf **Erstellen**.
@@ -54,7 +54,7 @@ Erstellen Sie einen **A**-Eintrag zum Testen. Erstellen Sie beispielsweise den A
 Als Nächstes erstellen Sie einen Eintrag für den Namenserver (NS) für die Zone **engineering**.
 
 1. Navigieren Sie zu der Zone für die übergeordnete Domäne.
-2. Wählen Sie **+ Ressourceneintragssatz**.
+2. Klicken Sie auf **+ Datensatzgruppe**.
 3. Geben Sie im Bereich **Ressourceneintragssatz hinzufügen** den Namen **engineering** in das Textfeld **Name** ein.
 4. Wählen Sie unter **Typ** die Option **NS** aus.
 5. Geben Sie unter **Namenserver** die vier Namenserver ein, die Sie zuvor in der Zone **engineering** notiert haben.

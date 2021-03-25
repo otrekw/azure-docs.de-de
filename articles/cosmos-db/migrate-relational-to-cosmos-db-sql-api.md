@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 12/12/2019
 ms.author: thvankra
 ms.openlocfilehash: 53a3317f38cc22ffa3745f5f0e58cc01a54b825c
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93096749"
 ---
 # <a name="migrate-one-to-few-relational-data-into-azure-cosmos-db-sql-api-account"></a>Migrieren von relationalen Daten mit 1:n-Beziehungen in ein Azure Cosmos DB-SQL-API-Konto
@@ -55,7 +55,7 @@ Im Idealfall würden Sie in Azure Data Factory (ADF) eine einzige Kopieraktivit�
 
 Wir können diese aktuelle Einschränkung auf folgende Weise umgehen:
 
-* **Verwenden von Azure Data Factory mit zwei Kopieraktivitäten** : 
+* **Verwenden von Azure Data Factory mit zwei Kopieraktivitäten**: 
   1. Speichern Sie JSON-formatierte Daten aus SQL in einer Textdatei an einem zwischengeschalteten Blobspeicherort, und 
   2. Laden Sie die Daten aus der JSON-Textdatei in einen Container in Azure Cosmos DB.
 

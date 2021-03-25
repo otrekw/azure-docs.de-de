@@ -10,10 +10,10 @@ ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
 ms.openlocfilehash: d083607782f96744ecbd7d23976f77ee53fec49d
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94515568"
 ---
 # <a name="scenario-azure-firewall---custom"></a>Szenario: Azure Firewall: Benutzerdefiniert
@@ -26,7 +26,7 @@ Sie können eine Verbindungsmatrix erstellen, in der jede Zelle angibt, ob eine 
 
 **Konnektivitätsmatrix**
 
-| Von           | Nach:      | *VNETs*      | *Branches*    | *Internet*   |
+| From           | Nach:      | *VNETs*      | *Branches*    | *Internet*   |
 |---             |---       |---           |---            |---           |
 | **VNETs**      |   &#8594;|    Direkt    |     AzFW      |     AzFW     |
 | **Branches**   |   &#8594;|    AzFW      |    Direkt     |    Direkt    |

@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 1/5/2021
 ms.author: v-jawe
 ms.openlocfilehash: 2c771509de5ac246bac0d8e006a5d0b884a410b0
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101706808"
 ---
 # <a name="how-to-mitigate-latency-when-using-the-face-service"></a>Vorgehensweise: Verringern der Wartezeit bei Verwendung des Diensts „Gesichtserkennung“
@@ -42,7 +42,7 @@ var faces = await client.Face.DetectWithUrlAsync("https://www.biography.com/.ima
 
 Der Dienst „Gesichtserkennung“ muss das Bild dann vom Remoteserver herunterladen. Wenn die Verbindung zwischen dem Dienst „Gesichtserkennung“ und dem Remoteserver langsam ist, wirkt sich dies auf die Antwortzeit der Erkennungsmethode aus.
 
-[Das Bild sollte ggf. in Azure Blob Storage Premium gespeichert werden](../../../storage/blobs/storage-upload-process-images.md?tabs=dotnet), um diese Zeit zu verkürzen. Beispiel:
+[Das Bild sollte ggf. in Azure Blob Storage Premium gespeichert werden](../../../storage/blobs/storage-upload-process-images.md?tabs=dotnet), um diese Zeit zu verkürzen. Beispiele:
 
 ``` csharp
 var faces = await client.Face.DetectWithUrlAsync("https://csdx.blob.core.windows.net/resources/Face/Images/Family1-Daughter1.jpg");
@@ -62,7 +62,7 @@ Wenn die hochzuladende Datei groß ist, wirkt sich dies aus den folgenden Gründ
 - Der Dienst benötigt proportional zur Dateigröße mehr Zeit für die Verarbeitung der Datei.
 
 Gegenmaßnahmen:
-- [Das Bild sollte ggf. in Azure Blob Storage Premium gespeichert werden.](../../../storage/blobs/storage-upload-process-images.md?tabs=dotnet) Beispiel:
+- [Das Bild sollte ggf. in Azure Blob Storage Premium gespeichert werden.](../../../storage/blobs/storage-upload-process-images.md?tabs=dotnet) Beispiele:
 ``` csharp
 var faces = await client.Face.DetectWithUrlAsync("https://csdx.blob.core.windows.net/resources/Face/Images/Family1-Daughter1.jpg");
 ```

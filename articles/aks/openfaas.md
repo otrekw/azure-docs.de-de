@@ -7,10 +7,10 @@ ms.date: 03/05/2018
 ms.author: juda
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: 319107127b79383fc3b49f0eeb856a0e6c5b09f8
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92747767"
 ---
 # <a name="using-openfaas-on-aks"></a>Verwenden von OpenFaaS mit AKS
@@ -132,7 +132,7 @@ echo -n $PASSWORD | ./faas-cli login -g $OPENFAAS_URL -u admin --password-stdin
 
 Nachdem OpenFaaS einsatzbereit ist, erstellen Sie eine Funktion über das OpenFaaS-Portal.
 
-Klicken Sie auf **Neue Funktion bereitstellen** , und suchen Sie nach **Figlet** . Wählen Sie die Figlet-Funktion aus, und klicken Sie auf **Bereitstellen** .
+Klicken Sie auf **Neue Funktion bereitstellen**, und suchen Sie nach **Figlet**. Wählen Sie die Figlet-Funktion aus, und klicken Sie auf **Bereitstellen**.
 
 ![Screenshot, der das Dialogfeld „Neue Funktion bereitstellen“ mit in der Suchzeile eingegebenem Text „figlet“ zeigt.](media/container-service-serverless/figlet.png)
 
@@ -195,7 +195,7 @@ Füllen Sie nun die Cosmos DB-Instanz mit Testdaten auf. Erstellen Sie eine Date
 }
 ```
 
-Verwenden Sie das Tool *mongoimport* , um Daten in die Cosmos DB-Instanz zu laden.
+Verwenden Sie das Tool *mongoimport*, um Daten in die Cosmos DB-Instanz zu laden.
 
 Installieren Sie ggf. die MongoDB-Tools. Im folgenden Beispiel werden diese Tools mit brew installiert. Weitere Optionen finden Sie in der [MongoDB-Dokumentation][install-mongo].
 

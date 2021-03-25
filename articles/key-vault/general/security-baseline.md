@@ -8,10 +8,10 @@ ms.date: 04/10/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: ad47ac7d51de6ab497d7061961c14b5324fab931
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98202452"
 ---
 # <a name="azure-security-baseline-for-key-vault"></a>Azure-Sicherheitsbaseline für Key Vault
@@ -246,7 +246,7 @@ https://docs.microsoft.com/azure/key-vault/key-vault-logging
 Ändern des Datenaufbewahrungszeitraums: https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period
 
 
-**Azure Security Center-Überwachung**: Nicht verfügbar
+**Azure Security Center-Überwachung:** Nicht verfügbar
 
 **Verantwortlichkeit**: Kunde
 
@@ -774,7 +774,7 @@ Schnellstart: Ausführen Ihrer ersten Resource Graph-Abfrage mithilfe des Azure 
 
 
 
-**Azure Security Center-Überwachung**: Nicht verfügbar
+**Azure Security Center-Überwachung:** Nicht verfügbar
 
 **Verantwortlichkeit**: Kunde
 
@@ -1172,7 +1172,7 @@ Wiederherstellen per Key Vault verwalteter Speicherkonten: https://docs.microsof
 Wiederherstellen von Key Vault-Geheimnissen: https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultsecret?view=azurermps-6.13.0
 
 
-**Azure Security Center-Überwachung**: Nicht verfügbar
+**Azure Security Center-Überwachung:** Nicht verfügbar
 
 **Verantwortlichkeit**: Kunde
 

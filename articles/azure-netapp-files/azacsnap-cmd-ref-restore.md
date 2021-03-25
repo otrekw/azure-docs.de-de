@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 12/14/2020
 ms.author: phjensen
-ms.openlocfilehash: 1c6b7ec6c4ef24ec00fbfc55a65a968e00561c2e
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 793b4da8fcf46ba4d5618f8ada86f9c3c8026ffd
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97632136"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865263"
 ---
 # <a name="restore-using-azure-application-consistent-snapshot-tool-preview"></a>Durchführen der Wiederherstellung mit dem Tool für konsistente Momentaufnahmen in Azure-Anwendungen (Vorschau)
 
@@ -41,7 +41,7 @@ Der Befehl `-c restore` verfügt über die folgenden Optionen:
 - `--restore revertvolume`: Setzt das Zielvolume auf Grundlage der letzten Momentaufnahme auf einen früheren Zustand zurück.  Verwenden Sie diesen Befehl beim Ausführen des Failovers für die Notfallwiederherstellung in die gekoppelte Region. Mit diesem Befehl wird die Speicherreplikation vom primären zum sekundären Standort **angehalten**, und die Zielvolumes für die Notfallwiederherstellung werden auf die neuesten verfügbaren Momentaufnahmen auf den Notfallwiederherstellungsvolumes zurückgesetzt. Dies erfolgt zusammen mit den empfohlenen Dateisystem-Bereitstellungspunkten für die zurückgesetzten Notfallwiederherstellungsvolumes. Dieser Befehl sollte auf dem System vom Typ „Azure (große Instanz)“ **in der Region der Notfallwiederherstellung** (also dem Zielsystem des Failovers) ausgeführt werden.
     > [!NOTE]
     > Der Unterbefehl (`--restore revertvolume`) ist nur für Azure (große Instanz) verfügbar, und nicht für Azure NetApp Files.
-- `--hanasid <SAP HANA SID>`: Dies ist die SAP HANA-SID, die aus der Konfigurationsdatei für die Anwendung der Befehle für die Volumewiederherstellung ausgewählt wird.
+- `--dbsid <SAP HANA SID>`: Dies ist die SAP HANA-SID, die aus der Konfigurationsdatei für die Anwendung der Befehle für die Volumewiederherstellung ausgewählt wird.
 
 - `[--configfile <config filename>]`: Dies ist ein optionaler Parameter, der benutzerdefinierte Konfigurationsdateinamen zulässt.
 
@@ -64,7 +64,7 @@ Die Konfigurationsdatei (z. B. `DR.json`) sollte nur die Notfallwiederherstellu
 ### <a name="output-of-the-azacsnap--c-restore---restore-snaptovol-command-for-single-node-scenario"></a>Ausgabe des Befehls `azacsnap -c restore --restore snaptovol` (für das Szenario mit nur einem Knoten)
 
 ```output
-> azacsnap --configfile DR.json -c restore --restore snaptovol --hanasid H80
+> azacsnap --configfile DR.json -c restore --restore snaptovol --dbsid H80
 * This program is designed for those customers who have previously installed the
   Production HANA instance in the Disaster Recovery Location either as a
   stand-alone instance or as part of a multi-purpose environment.

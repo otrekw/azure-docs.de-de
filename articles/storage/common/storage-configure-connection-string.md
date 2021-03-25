@@ -11,10 +11,10 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.openlocfilehash: d7ca1707c89f03683960822591065143d3f8aa4f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92783877"
 ---
 # <a name="configure-azure-storage-connection-strings"></a>Konfigurieren von Azure Storage-Verbindungszeichenfolgen
@@ -57,10 +57,10 @@ Die Verbindungszeichenfolge kann beispielsweise wie folgt aussehen:
 
 `DefaultEndpointsProtocol=https;AccountName=storagesample;AccountKey=<account-key>`
 
-Obwohl Azure Storage sowohl HTTP als auch HTTPS in einer Verbindungszeichenfolge unterstützt, wird die *Verwendung von HTTPS ausdrücklich empfohlen* .
+Obwohl Azure Storage sowohl HTTP als auch HTTPS in einer Verbindungszeichenfolge unterstützt, wird die *Verwendung von HTTPS ausdrücklich empfohlen*.
 
 > [!TIP]
-> Sie finden die Verbindungszeichenfolgen Ihres Speicherkontos im [Azure-Portal](https://portal.azure.com). Navigieren Sie auf dem Menüblatt Ihres Speicherkontos zu **EINSTELLUNGEN** > **Zugriffsschlüssel** , um sowohl für den primären als auch sekundären Zugriffsschlüssel Verbindungszeichenfolgen anzuzeigen.
+> Sie finden die Verbindungszeichenfolgen Ihres Speicherkontos im [Azure-Portal](https://portal.azure.com). Navigieren Sie auf dem Menüblatt Ihres Speicherkontos zu **EINSTELLUNGEN** > **Zugriffsschlüssel**, um sowohl für den primären als auch sekundären Zugriffsschlüssel Verbindungszeichenfolgen anzuzeigen.
 >
 
 ## <a name="create-a-connection-string-using-a-shared-access-signature"></a>Erstellen einer Verbindungszeichenfolge mit einer Shared Access Signature

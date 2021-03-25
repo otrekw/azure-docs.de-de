@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 04/28/2020
 ms.openlocfilehash: 1f47b3d5679b70461eaba64b5815770162cb6fda
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93241071"
 ---
 # <a name="validating-data-encryption-for-azure-database-for-mysql"></a>Überprüfen der Datenverschlüsselung für Azure Database for MySQL
@@ -27,7 +27,7 @@ Dieser Artikel hilft Ihnen, zu überprüfen, ob die Datenverschlüsselung mit ku
     * Wählen Sie den für Serververschlüsselung verwendeten Schlüssel aus.
     * Legen Sie den Status des Schlüssels **Aktiviert** auf **Nein** fest.
   
-       Nach einiger Zeit ( **ungefähr 15 Minuten** ) sollte der **Status** des Azure Database for MySQL-Servers **Zugriff nicht möglich** lauten. Bei allen E/A-Vorgängen, die auf dem Server ausgeführt werden, tritt ein Fehler auf, der bestätigt, dass der Server tatsächlich mit dem Kundenschlüssel verschlüsselt wurde und der Schlüssel aktuell ungültig ist.
+       Nach einiger Zeit (**ungefähr 15 Minuten**) sollte der **Status** des Azure Database for MySQL-Servers **Zugriff nicht möglich** lauten. Bei allen E/A-Vorgängen, die auf dem Server ausgeführt werden, tritt ein Fehler auf, der bestätigt, dass der Server tatsächlich mit dem Kundenschlüssel verschlüsselt wurde und der Schlüssel aktuell ungültig ist.
     
        Um den Server erneut **Verfügbar** zu machen, können Sie den Schlüssel erneut überprüfen. 
     

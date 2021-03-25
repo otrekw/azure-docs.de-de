@@ -10,10 +10,10 @@ services: iot-dps
 ms.devlang: java
 ms.custom: mvc, devx-track-java
 ms.openlocfilehash: 8591220eb80d9c60ed7873be546007449ab46f89
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96463032"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-java"></a>Schnellstart: Registrieren von X.509-Geräten für den Device Provisioning-Dienst mit Java
@@ -133,7 +133,7 @@ In den folgenden Schritten wird gezeigt, wie Sie die Bereitstellungsdetails Ihre
 
 In Azure IoT Device Provisioning Service werden zwei Registrierungsarten unterstützt:
 
-- [Registrierungsgruppen:](concepts-service.md#enrollment-group) Werden zum Registrieren mehrerer verwandter Geräte verwendet.
+- [Registrierungsgruppen:](concepts-service.md#enrollment-group) Für die Registrierung mehrerer verbundener Geräte
 - [Individuelle Registrierungen](concepts-service.md#individual-enrollment): Werden zum Registrieren eines einzelnen Geräts verwendet.
 
 Bei diesem Verfahren wird eine Registrierungsgruppe verwendet. Im nächsten Abschnitt wird dann eine individuelle Registrierung genutzt.

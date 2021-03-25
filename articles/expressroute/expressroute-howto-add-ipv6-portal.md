@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 2/9/2021
 ms.author: duau
-ms.openlocfilehash: 67f296c7584fcf25af79f9125137aca07c9906fd
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ef6ea9017a9aaa98e153df0d67f0b54fe5a2b64d
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101744038"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102124158"
 ---
 # <a name="add-ipv6-support-for-private-peering-using-the-azure-portal-preview"></a>Hinzufügen der IPv6-Unterstützung für privates Peering mithilfe des Azure-Portal (Vorschau)
 
@@ -22,7 +22,7 @@ In diesem Artikel wird beschrieben, wie Sie die IPv6-Unterstützung zum Herstell
 > Dieses Feature ist derzeit als Vorschauversion in den [Azure-Regionen mit Verfügbarkeitszonen](https://docs.microsoft.com/azure/availability-zones/az-region#azure-regions-with-availability-zones) verfügbar. Die ExpressRoute-Verbindung kann daher über einen beliebigen Peeringstandort erstellt werden, aber die IPv6-basierten Bereitstellungen, mit denen sie verknüpft ist, müssen sich in einer Region mit Verfügbarkeitszonen befinden.
 
 ## <a name="register-for-public-preview"></a>Registrieren für die Public Preview
-Bevor Sie die IPv6-Unterstützung hinzufügen können, müssen Sie Ihr Abonnement registrieren. Führen Sie über Azure PowerShell folgende Schritte durch, um sich zu registrieren:
+Bevor Sie IPv6-Unterstützung hinzufügen können, müssen Sie Ihr Abonnement registrieren. Führen Sie zu Ihrer Registrierung folgende Schritte über Azure PowerShell aus:
 1.  Melden Sie sich bei Azure an, und wählen Sie das Abonnement aus. Führen Sie diesen Schritt für das Abonnement durch, das Ihre ExpressRoute-Verbindung enthält, und für das Abonnement, das Ihre Azure-Bereitstellungen enthält (falls diese sich unterscheiden).
 
     ```azurepowershell-interactive
@@ -82,22 +82,25 @@ Führen Sie die folgenden Schritte aus, wenn Sie über eine vorhandene Umgebung 
 
 ## <a name="create-a-connection-to-a-new-virtual-network"></a>Herstellen einer Verbindung mit einem neuen virtuellen Netzwerk
 
-Führen Sie die folgenden Schritte aus, wenn Sie beabsichtigen, eine Verbindung mit neuen Azure-Ressourcen in einer Region mit Verfügbarkeitszonen über das private IPv6-Peering herzustellen.
+Führen Sie die folgenden Schritte aus, wenn Sie vorhaben, eine Verbindung zu neuen Azure-Ressourcen in einer Region mit Verfügbarkeitszonen über Ihr privates IPv6-Peering herzustellen.
 
-1. Erstellen Sie ein virtuelles Netzwerk mit dualem Stapel mit dem IPv4- und IPv6-Adressraum. Weitere Informationen finden Sie unter [Erstellen eines virtuellen Netzwerks](https://docs.microsoft.com/azure/virtual-network/quick-create-portal#create-a-virtual-network).
+1. Erstellen Sie ein virtuelles Netzwerk mit dualem Stapel mit dem IPv4- und dem IPv6-Adressraum. Weitere Informationen finden Sie unter [Erstellen eines virtuellen Netzwerks](https://docs.microsoft.com/azure/virtual-network/quick-create-portal#create-a-virtual-network).
 
-2. [Erstellen des Gatewaysubnetzes mit dualem Stapel](https://docs.microsoft.com/azure/expressroute/expressroute-howto-add-gateway-portal-resource-manager#create-the-gateway-subnet)
+2. [Erstellen Sie das Gatewaysubnetz mit dualem Stapel](https://docs.microsoft.com/azure/expressroute/expressroute-howto-add-gateway-portal-resource-manager#create-the-gateway-subnet).
 
-3. [Erstellen Sie das Gateway des virtuellen Netzwerks](https://docs.microsoft.com/azure/expressroute/expressroute-howto-add-gateway-portal-resource-manager#create-the-virtual-network-gateway) mithilfe einer zonenredundanten SKU (ErGw1AZ, ErGw2AZ, ErGw3AZ). Wenn Sie FastPath verwenden möchten, verwenden Sie ErGw3AZ.
+3. [Erstellen Sie das Gateway des virtuellen Netzwerks](https://docs.microsoft.com/azure/expressroute/expressroute-howto-add-gateway-portal-resource-manager#create-the-virtual-network-gateway) mithilfe einer zonenredundanten SKU (ErGw1AZ, ErGw2AZ, ErGw3AZ). Wenn Sie FastPath verwenden möchten, verwenden Sie ErGw3AZ (beachten Sie, dass dies nur für Verbindungen mit ExpressRoute Direct verfügbar ist).
 
-4. [Verknüpfen Sie Ihr virtuelles Netzwerks mit Ihrer ExpressRoute-Verbindung.](https://docs.microsoft.com/azure/expressroute/expressroute-howto-linkvnet-portal-resource-manager)
+4. [Verknüpfen Sie Ihr virtuelles Netzwerks mit Ihrer ExpressRoute-Verbindung](https://docs.microsoft.com/azure/expressroute/expressroute-howto-linkvnet-portal-resource-manager).
 
 ## <a name="limitations"></a>Einschränkungen
-Obwohl die IPv6-Unterstützung für Verbindungen mit Bereitstellungen in Regionen mit Verfügbarkeitszonen verfügbar ist, werden die folgenden Anwendungsfälle nicht unterstützt:
+Obwohl IPv6-Unterstützung für Verbindungen zu Bereitstellungen in Regionen mit Verfügbarkeitszonen zur Verfügung steht, werden die folgenden Anwendungsfälle nicht unterstützt:
 
 * Verbindungen mit Bereitstellungen in Azure über eine ExpressRoute-Gateway-SKU ohne Verfügbarkeitszone
 * Verbindungen mit Bereitstellungen in Regionen ohne Verfügbarkeitszone
 * Global Reach-Verbindungen zwischen ExpressRoute-Verbindungen
+* Verwendung von ExpressRoute mit virtuellem WAN
+* FastPath mit Verbindungen, die nicht ExpressRoute Direct-Verbindungen sind
+* Koexistenz mit VPN Gateway
 
 ## <a name="next-steps"></a>Nächste Schritte
 

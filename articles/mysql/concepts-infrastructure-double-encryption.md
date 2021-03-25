@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/30/2020
 ms.openlocfilehash: e9182a2a0b88f85af5305f5794fec2ffe7935701
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98631732"
 ---
 # <a name="azure-database-for-mysql-infrastructure-double-encryption"></a>Azure Database for MySQL: doppelte Infrastrukturverschlüsselung
@@ -46,7 +46,7 @@ Die Verschlüsselungsfunktionen, die von Azure Database for MySQL geboten werden
 |:------|:------------------:|:--------------------------------:|:--------------------------------------------:|
 | 1     | *Ja*              | *Nein*                             | *Nein*                                         |
 | 2     | *Ja*              | *Ja*                            | *Nein*                                         |
-| 3     | *Ja*              | *No*                             | *Ja*                                        |
+| 3     | *Ja*              | *Nein*                             | *Ja*                                        |
 | 4     | *Ja*              | *Ja*                            | *Ja*                                        |
 |       |                    |                                  |                                              |
 

@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: fd14af6c95654708f339f4a68cd333d0e3162553
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89078179"
 ---
 # <a name="scale-windows-virtual-desktop-classic-session-hosts-using-azure-automation"></a>Skalieren von Windows Virtual Desktop-Sitzungshosts (klassisch) mit Azure Automation
@@ -126,7 +126,7 @@ Zunächst benötigen Sie ein Azure Automation-Konto zum Ausführen des PowerShel
     >[!div class="mx-imgBorder"]
     >![Abbildung der Azure-Übersicht mit dem neu erstellten Azure Automation-Konto und den Runbooks](media/automation-account.png)
 
-    Wählen Sie den Namen Ihres Runbooks aus, um zu überprüfen, ob sich Ihr Webhook dort befindet, wo er sein sollte. Navigieren Sie als nächstes zum Abschnitt „Ressourcen“ des Runbooks, und wählen Sie **Webhooks**aus.
+    Wählen Sie den Namen Ihres Runbooks aus, um zu überprüfen, ob sich Ihr Webhook dort befindet, wo er sein sollte. Navigieren Sie als nächstes zum Abschnitt „Ressourcen“ des Runbooks, und wählen Sie **Webhooks** aus.
 
 ## <a name="create-an-azure-automation-run-as-account"></a>Erstellen eines ausführenden Azure Automation-Kontos
 

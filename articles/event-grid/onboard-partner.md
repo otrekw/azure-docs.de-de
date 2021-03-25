@@ -4,10 +4,10 @@ description: Verwenden Sie das Azure-Portal, um das Onboarding eines Azure Event
 ms.topic: conceptual
 ms.date: 10/29/2020
 ms.openlocfilehash: 44dece4d46a6d702d48fa49983818986fcd59f7b
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98050951"
 ---
 # <a name="onboard-as-an-azure-event-grid-partner-using-the-azure-portal"></a>Onboarding als Azure Event Grid-Partner im Azure-Portal

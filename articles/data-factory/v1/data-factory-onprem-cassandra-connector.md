@@ -8,10 +8,10 @@ ms.date: 06/07/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 005fd85a152ee2765facda0d961bd9119d1598e8
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100387409"
 ---
 # <a name="move-data-from-an-on-premises-cassandra-database-using-azure-data-factory"></a>Verschieben von Daten aus einer lokalen Cassandra-Datenbank mit Azure Data Factory
@@ -331,7 +331,7 @@ Die folgenden Tabellen enthalten die virtuellen Tabellen, in denen die Daten aus
 #### <a name="table-exampletable_vt_stringset"></a>Tabelle „ExampleTable_vt_StringSet“:
 | pk_int | StringSet_value |
 | --- | --- |
-| 1 |Ein |
+| 1 |A |
 | 1 |B |
 | 1 |C |
 | 3 |Ein |

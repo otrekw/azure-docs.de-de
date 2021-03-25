@@ -1,18 +1,14 @@
 ---
 title: Arbeiten mit der Sensorgerätezuordnung
 description: Die Geräteübersicht bietet eine grafische Darstellung erkannter Netzwerkgeräte. Mithilfe der Übersicht können Sie Geräteinformationen und Netzwerksegmente analysieren und verwalten sowie Berichte generieren.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 1/7/2021
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: 5b7059129c45149c64bc7fc145c68d9e09a7c046
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: f7579cbca618baef404236556993c9831dd84bdf
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100523837"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104784593"
 ---
 # <a name="investigate-sensor-detections-in-the-device-map"></a>Untersuchen von Sensorerkennungen in der Geräteübersicht
 
@@ -709,6 +705,6 @@ So erfolgt das Exportieren
 
 1. Wählen Sie eine Exportoption aus.
 
-## <a name="next-steps"></a>Nächste Schritte
+## <a name="see-also"></a>Weitere Informationen
 
 [Untersuchen von Sensorerkennungen in einem Gerätebestand](how-to-investigate-sensor-detections-in-a-device-inventory.md)

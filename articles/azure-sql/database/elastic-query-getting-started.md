@@ -12,10 +12,10 @@ ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 10/10/2019
 ms.openlocfilehash: 586dad7439cc57ed2c863ee5f6692e12f7a78c50
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92781225"
 ---
 # <a name="report-across-scaled-out-cloud-databases-preview"></a>Erstellen von Berichten für horizontal hochskalierte Clouddatenbanken
@@ -34,10 +34,10 @@ Laden Sie das Beispiel [Erste Schritte mit den Tools für die elastische Datenba
 ## <a name="create-a-shard-map-manager-using-the-sample-app"></a>Erstellen eines Shardzuordnungs-Managers mithilfe der Beispiel-App
 Hier erstellen Sie einen Shardzuordnungs-Manager und mehrere Shards und fügen anschließend Daten in die Shards ein. Wenn Sie bereits über Shards verfügen, die Shardingdaten enthalten, können Sie die folgenden Schritte überspringen und zum nächsten Abschnitt wechseln.
 
-1. Erstellen Sie die Beispielanwendung aus **Erste Schritte mit den Tools für die elastische Datenbank** , und führen Sie sie aus. Befolgen Sie dazu die Anweisungen im Artikelabschnitt [Herunterladen und Ausführen der Beispiel-App](elastic-scale-get-started.md#download-and-run-the-sample-app-1). Wenn Sie alle Schritte abgeschlossen haben, wird die folgende Eingabeaufforderung angezeigt:
+1. Erstellen Sie die Beispielanwendung aus **Erste Schritte mit den Tools für die elastische Datenbank**, und führen Sie sie aus. Befolgen Sie dazu die Anweisungen im Artikelabschnitt [Herunterladen und Ausführen der Beispiel-App](elastic-scale-get-started.md#download-and-run-the-sample-app-1). Wenn Sie alle Schritte abgeschlossen haben, wird die folgende Eingabeaufforderung angezeigt:
 
     ![Eingabeaufforderung][1]
-2. Geben Sie im Befehlsfenster „1“ ein, und drücken Sie die **EINGABETASTE** . Dadurch wird der Shardzuordnungs-Manager erstellt, und es werden zwei Shards zum Server hinzugefügt. Geben Sie dann „3“ ein, und drücken Sie die **EINGABETASTE** . Wiederholen Sie den Vorgang viermal. Dadurch werden Beispieldatenzeilen in die Shards eingefügt.
+2. Geben Sie im Befehlsfenster „1“ ein, und drücken Sie die **EINGABETASTE**. Dadurch wird der Shardzuordnungs-Manager erstellt, und es werden zwei Shards zum Server hinzugefügt. Geben Sie dann „3“ ein, und drücken Sie die **EINGABETASTE**. Wiederholen Sie den Vorgang viermal. Dadurch werden Beispieldatenzeilen in die Shards eingefügt.
 3. Im [Azure-Portal](https://portal.azure.com) sollten drei neue Datenbanken auf dem Server angezeigt werden:
 
    ![Visual Studio-Bestätigung][2]
@@ -121,13 +121,13 @@ Sie werden feststellen, dass die Abfrage Ergebnisse aus allen Shards aggregiert 
 
 1. Öffnen Sie Excel 2013.
 2. Navigieren Sie zum Menüband **Daten** .
-3. Klicken Sie auf **Aus anderen Quellen** und dann auf **Von SQL Server** .
+3. Klicken Sie auf **Aus anderen Quellen** und dann auf **Von SQL Server**.
 
    ![Excel-Import aus anderen Quellen][5]
-4. Geben Sie im **Datenverbindungs-Assistenten** den Servernamen und die Anmeldeinformationen ein. Klicken Sie dann auf **Weiter** .
+4. Geben Sie im **Datenverbindungs-Assistenten** den Servernamen und die Anmeldeinformationen ein. Klicken Sie dann auf **Weiter**.
 5. Wählen Sie im Dialogfeld **Wählen Sie die Datenbank, die die benötigten Daten enthält** die Datenbank **ElasticDBQuery** aus.
-6. Wählen Sie in der Listenansicht die Tabelle **Customers** aus, und klicken Sie auf **Weiter** . Klicken Sie auf **Fertig stellen** .
-7. Wählen Sie im Formular **Daten importieren** unter **Wählen Sie das Format aus, in dem Sie diese Daten in der Arbeitsmappe anzeigen möchten** die Option **Tabelle** aus, und klicken Sie auf **OK** .
+6. Wählen Sie in der Listenansicht die Tabelle **Customers** aus, und klicken Sie auf **Weiter**. Klicken Sie auf **Fertig stellen**.
+7. Wählen Sie im Formular **Daten importieren** unter **Wählen Sie das Format aus, in dem Sie diese Daten in der Arbeitsmappe anzeigen möchten** die Option **Tabelle** aus, und klicken Sie auf **OK**.
 
 Die Excel-Tabelle wird mit allen Zeilen aus der Tabelle **Customers** gefüllt, die in verschiedenen Shards gespeichert sind.
 

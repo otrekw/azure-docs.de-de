@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 06/29/2018
 ms.author: pepogors
 ms.openlocfilehash: 5fbd523a38b3c4860316e45b8b7c03a17de19499
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92678340"
 ---
 # <a name="develop-c-service-fabric-applications-with-visual-studio-code"></a>Entwickeln von C# Service Fabric-Anwendungen mit Visual Studio Code
@@ -50,7 +50,7 @@ Die Anwendung wird jetzt in Ihrem VS Code-Arbeitsbereich angezeigt.
 
 ## <a name="build-the-application"></a>Erstellen der Anwendung
 1. Drücken Sie (STRG+UMSCHALT+P), um die **Befehlspalette** in VS Code zu öffnen.
-2. Suchen Sie den Befehl **Service Fabric: Anwendung erstellen** , und wählen Sie ihn aus. Die Buildausgabe wird an das integrierte Terminal gesendet.
+2. Suchen Sie den Befehl **Service Fabric: Anwendung erstellen**, und wählen Sie ihn aus. Die Buildausgabe wird an das integrierte Terminal gesendet.
 
    ![Befehl „Anwendungsbuild“ in VS Code](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-build-application.png)
 
@@ -84,7 +84,7 @@ Zusammen mit der Bereitstellung der Anwendung im lokalen Cluster können Sie die
 Beim Debuggen von Anwendungen in VS Code muss die Anwendung in einem lokalen Cluster ausgeführt werden. Dem Code können Haltepunkte hinzugefügt werden.
 
 Gehen Sie wie folgt vor, um einen Haltepunkt festzulegen und zu debuggen:
-1. Öffnen Sie im Explorer die Datei */src/CounterServiceApplication/CounterService/CounterService.cs* , und legen Sie einen Haltepunkt in Zeile 62 in der Methode `RunAsync` fest.
+1. Öffnen Sie im Explorer die Datei */src/CounterServiceApplication/CounterService/CounterService.cs*, und legen Sie einen Haltepunkt in Zeile 62 in der Methode `RunAsync` fest.
 3. Klicken Sie in der **Aktivitätsleiste** auf das Symbol zum Debuggen, um die Debuggeransicht in VS Code zu öffnen. Klicken Sie auf das Zahnradsymbol am oberen Rand der Debuggeransicht, und wählen Sie im Dropdownmenü der Umgebung **.NET Core** aus. Die Datei „launch.json“ wird geöffnet. Sie können diese Datei schließen. Jetzt werden die Konfigurationsoptionen im Menü „Debugkonfiguration“ neben der Ausführungsschaltfläche (grüner Pfeil) angezeigt.
 
    ![Debugsymbol im VS Code-Arbeitsbereich](./media/service-fabric-develop-csharp-applications-with-vs-code/debug-icon-workspace.png)
@@ -93,7 +93,7 @@ Gehen Sie wie folgt vor, um einen Haltepunkt festzulegen und zu debuggen:
 
    ![Screenshot mit ausgewählter Option „.NET Core anfügen“ im Menü „Debugkonfiguration“](./media/service-fabric-develop-csharp-applications-with-vs-code/debug-start.png)
 
-3. Öffnen Sie Service Fabric Explorer in einem Browser: http:\//localhost:19080/Explorer. Klicken Sie auf **Anwendungen** , und führen Sie einen Drilldown durch, um den primären Knoten zu ermitteln, auf dem der CounterService ausgeführt wird. In der Abbildung unten ist Knoten 0 der primäre Knoten für den CounterService.
+3. Öffnen Sie Service Fabric Explorer in einem Browser: http:\//localhost:19080/Explorer. Klicken Sie auf **Anwendungen**, und führen Sie einen Drilldown durch, um den primären Knoten zu ermitteln, auf dem der CounterService ausgeführt wird. In der Abbildung unten ist Knoten 0 der primäre Knoten für den CounterService.
 
    ![Primärer Knoten für CounterService](./media/service-fabric-develop-csharp-applications-with-vs-code/counter-service-primary-node.png)
 

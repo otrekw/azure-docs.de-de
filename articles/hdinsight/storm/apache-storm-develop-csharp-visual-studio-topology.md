@@ -6,12 +6,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/31/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a81f2b21545a5362168482f3f0a65fbbbf381c10
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 5360057ec2dfbd2b40c6f086f5e910103c544b62
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98929158"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865450"
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>Entwickeln von C#-Topologien für Apache Storm mithilfe von Data Lake-Tools für Visual Studio
 
@@ -128,7 +128,7 @@ So erstellen Sie ein C#-Topologieprojekt in Visual Studio
 
 1. Geben Sie im Fenster **Neues Projekt konfigurieren** als **Projektnamen** die Zeichenfolge *WordCount* ein, navigieren Sie zu einem **Location**-Verzeichnispfad für das neue Projekt, oder erstellen Sie einen, und wählen Sie dann **Erstellen** aus.
 
-    ![Storm-Anwendung, Dialogfeld „Neues Projekt konfigurieren“, Visual Studio](./media/apache-storm-develop-csharp-visual-studio-topology/apache-storm-new-project.png)
+    :::image type="content" source="./media/apache-storm-develop-csharp-visual-studio-topology/apache-storm-new-project.png" alt-text="Storm-Anwendung, Dialogfeld „Neues Projekt konfigurieren“, Visual Studio" border="true":::
 
 Nachdem Sie das Projekt erstellt haben, sollten die folgenden Dateien vorliegen:
 
@@ -333,7 +333,7 @@ Erstellen Sie nun in diesem Beispiel zwei Storm Bolts:
 
 Spouts und Bolts werden in einem Diagramm angeordnet, das definiert, wie die Daten zwischen den Komponenten verlaufen. Bei dieser Topologie sieht das Diagramm folgendermaßen aus:
 
-![Diagramm der Spout- und Bolt-Komponentenanordnung, Storm-Topologie](./media/apache-storm-develop-csharp-visual-studio-topology/word-count-topology1.png)
+:::image type="content" source="./media/apache-storm-develop-csharp-visual-studio-topology/word-count-topology1.png" alt-text="Diagramm der Spout- und Bolt-Komponentenanordnung, Storm-Topologie" border="false":::
 
 Der Spout gibt Sätze aus, die an Instanzen des Splitter-Bolts verteilt werden. Das Splitter-Bolt unterteilt Sätze in Wörter, die an das Counter-Bolt verteilt werden.
 
@@ -413,7 +413,7 @@ Nun können Sie die Topologie an Ihren HDInsight-Cluster übermitteln.
 
     Sobald die Topologie erfolgreich übermittelt wurde, sollte das Fenster **Ansicht der Storm-Topologien** für den Cluster angezeigt werden. Wählen Sie die **WordCount**-Topologie in der Liste aus, um Informationen zur aktiven Topologie anzuzeigen.
 
-    ![Fenster „Storm-Topologien anzeigen“, HDInsight-Cluster, Visual Studio](./media/apache-storm-develop-csharp-visual-studio-topology/storm-topology-view.png)
+    :::image type="content" source="./media/apache-storm-develop-csharp-visual-studio-topology/storm-topology-view.png" alt-text="Fenster „Storm-Topologien anzeigen“, HDInsight-Cluster, Visual Studio" border="true":::
 
     > [!NOTE]  
     > Sie können sich **Storm-Topologien** auch über den **Server-Explorer** anzeigen lassen. Erweitern Sie **Azure** > **HDInsight**, klicken Sie mit der rechten Maustaste auf einen Storm im HDInsight-Cluster, und wählen Sie anschließend **Storm-Topologien anzeigen** aus.
@@ -567,7 +567,7 @@ Obwohl es relativ einfach ist, eine Topologie in einem Cluster bereitzustellen, 
 
 1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt, und wählen Sie **Eigenschaften** aus. In den Projekteigenschaften. Ändern Sie dann den **Ausgabetyp** in **Konsolenanwendung**.
 
-   ![HDInsight Storm-Anwendung, Projekteigenschaften, Ausgabetyp](./media/apache-storm-develop-csharp-visual-studio-topology/hdi-output-type-window.png)
+   :::image type="content" source="./media/apache-storm-develop-csharp-visual-studio-topology/hdi-output-type-window.png" alt-text="HDInsight Storm-Anwendung, Projekteigenschaften, Ausgabetyp" border="true":::
 
    > [!NOTE]
    > Denken Sie daran, für den **Ausgabetyp** später wieder **Klassenbibliothek** festzulegen, bevor die Topologie in einem Cluster bereitgestellt wird.

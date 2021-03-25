@@ -10,10 +10,10 @@ ms.date: 11/01/2018
 ms.author: genli
 ms.custom: seodec18
 ms.openlocfilehash: 163a6940e50d1f8beacc23855fd1e6f9daad0085
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88080472"
 ---
 # <a name="deployment-faqs-for-web-apps-in-azure"></a>Häufig gestellte Fragen zur Bereitstellung von Web-Apps in Azure
@@ -52,7 +52,7 @@ Informationen zur Dateistruktur Ihrer App Service-App finden Sie unter [File Str
 
 ## <a name="how-do-i-resolve-ftp-error-550---there-is-not-enough-space-on-the-disk-when-i-try-to-ftp-my-files"></a>Wie behebe ich den Fehler „FTP-Fehler 550 - Es steht nicht genug Speicherplatz auf dem Datenträger zur Verfügung“, wenn ich FTP für meine Dateien verwenden möchte?
 
-Wenn diese Meldung angezeigt wird, ist es wahrscheinlich, dass Sie auf ein Datenträgerkontingent im Serviceplan Ihrer Web-App gestoßen sind. Möglicherweise müssen Sie je nach Speicherbedarf auf eine höhere Dienstebene hochskalieren. Weitere Informationen zu den Tarifen und Ressourcenlimits finden Sie unter [App Service – Preise](https://azure.microsoft.com/pricing/details/app-service/).
+Wenn diese Meldung angezeigt wird, ist es wahrscheinlich, dass Sie auf ein Datenträgerkontingent im Serviceplan Ihrer Web-App gestoßen sind. Möglicherweise müssen Sie je nach Speicherbedarf auf eine höhere Dienstebene zentral hochskalieren. Weitere Informationen zu den Tarifen und Ressourcenlimits finden Sie unter [App Service – Preise](https://azure.microsoft.com/pricing/details/app-service/).
 
 ## <a name="how-do-i-set-up-continuous-deployment-for-my-app-service-web-app"></a>Wie richte ich für meine App Service-Web-App die kontinuierliche Bereitstellung ein?
 
@@ -68,8 +68,8 @@ So beheben Sie FTP-Probleme:
 
 1. Überprüfen Sie, ob Sie den richtigen Hostnamen und die richtigen Anmeldeinformationen eingegeben haben. Ausführliche Informationen zu den verschiedenen Typen von Anmeldeinformationen und deren Verwendung finden Sie unter [Deployment Credentials](https://github.com/projectkudu/kudu/wiki/Deployment-credentials) (Anmeldeinformationen für die Bereitstellung).
 2. Vergewissern Sie sich, dass die FTP-Ports nicht durch eine Firewall blockiert werden. Die Ports sollten diese Einstellungen haben:
-    * Steuerungsport für FTP-Verbindung: 21
-    * Port für FTP-Datenverbindung: 989, 10001-10300
+    * Port für FTP-Kontrollverbindung: 21
+    * Port für FTP-Datenverbindung: 989, 10001–10300
 
 ## <a name="how-do-i-publish-my-code-to-app-service"></a>Wie veröffentliche ich meinen Code in App Service?
 

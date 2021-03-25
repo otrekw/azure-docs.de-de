@@ -14,10 +14,10 @@ ms.custom:
 - 'Role: IoT Device'
 - devx-track-csharp
 ms.openlocfilehash: a3e328418a0f111cd0b985310ea6dc497999772d
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92909793"
 ---
 # <a name="set-up-x509-security-in-your-azure-iot-hub"></a>Einrichten der X.509-Sicherheit in Ihrem Azure IoT Hub
@@ -98,13 +98,13 @@ Als Nächstes erfahren Sie, wie Sie eine C#-Anwendung zum Simulieren des für Ih
 
 1. Öffnen Sie Visual Studio, wählen Sie **Neues Projekt erstellen** und dann die Projektvorlage **Konsolen-App (.NET Framework)** aus. Wählen Sie **Weiter** aus.
 
-1. Benennen Sie in **Neues Projekt konfigurieren** das Projekt mit *SimulateX509Device* , und wählen Sie **Erstellen** aus.
+1. Benennen Sie in **Neues Projekt konfigurieren** das Projekt mit *SimulateX509Device*, und wählen Sie **Erstellen** aus.
 
    ![Erstellen des X.509-Geräteprojekts in Visual Studio](./media/iot-hub-security-x509-get-started/create-device-project-vs2019.png)
 
-1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt **SimulateX509Device** , und wählen Sie **NuGet-Pakete verwalten** aus.
+1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt **SimulateX509Device**, und wählen Sie **NuGet-Pakete verwalten** aus.
 
-1. Wählen Sie in **NuGet-Paket-Manager** die Option **Durchsuchen** aus. Suchen Sie dann nach dem Paket **Microsoft.Azure.Devices.Client** , und wählen Sie es aus. Wählen Sie **Installieren** aus.
+1. Wählen Sie in **NuGet-Paket-Manager** die Option **Durchsuchen** aus. Suchen Sie dann nach dem Paket **Microsoft.Azure.Devices.Client**, und wählen Sie es aus. Wählen Sie **Installieren** aus.
 
    ![Hinzufügen des Geräte-SDK NuGet-Pakets in Visual Studio](./media/iot-hub-security-x509-get-started/device-sdk-nuget.png)
 
@@ -118,7 +118,7 @@ Als Nächstes erfahren Sie, wie Sie eine C#-Anwendung zum Simulieren des für Ih
         using System.Security.Cryptography.X509Certificates;
     ```
 
-1. Fügen Sie der **Program** -Klasse die folgenden Felder hinzu:
+1. Fügen Sie der **Program**-Klasse die folgenden Felder hinzu:
 
     ```csharp
         private static int MESSAGE_COUNT = 5;
@@ -153,7 +153,7 @@ Als Nächstes erfahren Sie, wie Sie eine C#-Anwendung zum Simulieren des für Ih
     }
     ```
 
-1. Fügen Sie schließlich der **Main** -Funktion die folgenden Codezeilen hinzu, und ersetzen Sie dabei die Platzhalter _device-id_ , _your-iot-hub-name_ und _absolute-path-to-your-device-pfx-file_ wie für das Setup erforderlich.
+1. Fügen Sie schließlich der **Main**-Funktion die folgenden Codezeilen hinzu, und ersetzen Sie dabei die Platzhalter _device-id_, _your-iot-hub-name_ und _absolute-path-to-your-device-pfx-file_ wie für das Setup erforderlich.
 
     ```csharp
     try
@@ -182,7 +182,7 @@ Als Nächstes erfahren Sie, wie Sie eine C#-Anwendung zum Simulieren des für Ih
 
    Dieser Code stellt mittels Erstellen der Verbindungszeichenfolge für das X.509-Gerät die Verbindung mit Ihrem IoT Hub her. Nach erfolgreicher Verbindungsherstellung werden Temperatur- und Luftfeuchtigkeitsereignisse an den Hub gesendet, und die Antwort wird abgewartet.
 
-1. Führen Sie die App aus. Weil diese Anwendung auf eine *PFX* -Datei zugreift, müssen Sie diese App möglicherweise als Administrator ausführen.
+1. Führen Sie die App aus. Weil diese Anwendung auf eine *PFX*-Datei zugreift, müssen Sie diese App möglicherweise als Administrator ausführen.
 
    1. Erstellen Sie die Visual Studio-Projektmappe.
 

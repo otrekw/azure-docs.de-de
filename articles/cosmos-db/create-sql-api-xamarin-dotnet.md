@@ -10,10 +10,10 @@ ms.date: 10/09/2020
 ms.author: anfeldma
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 91e89eaf215468f171974e5f3fd383691fdd6ebe
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93096975"
 ---
 # <a name="quickstart-build-a-todo-app-with-xamarin-using-azure-cosmos-db-sql-api-account"></a>Schnellstart: Erstellen einer To-Do-App mit Xamarin mithilfe eines Azure Cosmos DB-SQL-API-Kontos
@@ -90,20 +90,20 @@ Wir klonen jetzt die Xamarin-SQL-API-App von GitHub, überprüfen den Code, besc
 
 Wechseln Sie zurück zum Azure-Portal, um die Informationen zum API-Schlüssel zu beschaffen und in die App zu kopieren.
 
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) in Ihrem Azure Cosmos DB-SQL-API-Konto im linken Navigationsbereich auf **Schlüssel** , und klicken Sie anschließend auf **Lese-/Schreibschlüssel**. Kopieren Sie im nächsten Schritt mithilfe der Schaltflächen zum Kopieren auf der rechten Seite des Bildschirms den URI und den Primärschlüssel in die Datei „APIKeys.cs“.
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) in Ihrem Azure Cosmos DB-SQL-API-Konto im linken Navigationsbereich auf **Schlüssel**, und klicken Sie anschließend auf **Lese-/Schreibschlüssel**. Kopieren Sie im nächsten Schritt mithilfe der Schaltflächen zum Kopieren auf der rechten Seite des Bildschirms den URI und den Primärschlüssel in die Datei „APIKeys.cs“.
 
     :::image type="content" source="./media/create-sql-api-xamarin-dotnet/keys.png" alt-text="Anzeigen und Kopieren eines Zugriffsschlüssels im Azure-Portal auf dem Blatt „Schlüssel“":::
 
 2. Öffnen Sie in Visual Studio die Datei **ToDoItems.Core/Helpers/APIKeys.cs**.
 
-3. Kopieren Sie im Azure-Portal mit der Schaltfläche zum Kopieren den **URI** -Wert, und legen Sie ihn in „APIKeys.cs“ als Wert für die Variable `CosmosEndpointUrl` fest.
+3. Kopieren Sie im Azure-Portal mit der Schaltfläche zum Kopieren den **URI**-Wert, und legen Sie ihn in „APIKeys.cs“ als Wert für die Variable `CosmosEndpointUrl` fest.
 
     ```csharp
     //#error Enter the URL of your Azure Cosmos DB endpoint here
             public static readonly string CosmosEndpointUrl = "[URI Copied from Azure Portal]";
     ```
 
-4. Kopieren Sie im Azure-Portal mit der Schaltfläche zum Kopieren den Wert des **PRIMÄRSCHLÜSSELS** , und legen Sie ihn in „APIKeys.cs“ als Wert für `Cosmos Auth Key` fest.
+4. Kopieren Sie im Azure-Portal mit der Schaltfläche zum Kopieren den Wert des **PRIMÄRSCHLÜSSELS**, und legen Sie ihn in „APIKeys.cs“ als Wert für `Cosmos Auth Key` fest.
 
     ```csharp
     //#error Enter the read/write authentication key of your Azure Cosmos DB endpoint here

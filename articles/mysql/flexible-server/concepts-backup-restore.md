@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
 ms.openlocfilehash: 2d69427f9f11a47cedeccb4b1da38b770952f029
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93240765"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql-flexible-server-preview"></a>Sicherung und Wiederherstellung in Azure Database for MySQL Flexible Server (Vorschau)
@@ -68,8 +68,8 @@ Die Point-in-Time-Wiederherstellung ist für viele Szenarien hilfreich. Einige d
 
 Sie können über das [Azure-Portal](how-to-restore-server-portal.md) zwischen einem letzten Wiederherstellungspunkt und einem benutzerdefinierten Wiederherstellungspunkt auswählen.
 
--   **Neuester Wiederherstellungspunkt** : Der neueste Wiederherstellungspunkt hilft Ihnen, den Server auf die letzte auf dem Quellserver durchgeführte Sicherung zurückzusetzen. Der Zeitstempel für die Wiederherstellung wird ebenfalls im Portal angezeigt. Diese Option ist hilfreich, um den Server schnell auf den aktuellsten Stand zu bringen.
--   **Benutzerdefinierter Wiederherstellungspunkt** : Dadurch können Sie einen beliebigen Zeitpunkt innerhalb des für diesen flexiblen Server definierten Aufbewahrungszeitraums wählen. Diese Option ist nützlich, um den Server genau zu dem Zeitpunkt wiederherzustellen, zu dem ein Benutzerfehler aufgetreten ist.
+-   **Neuester Wiederherstellungspunkt**: Der neueste Wiederherstellungspunkt hilft Ihnen, den Server auf die letzte auf dem Quellserver durchgeführte Sicherung zurückzusetzen. Der Zeitstempel für die Wiederherstellung wird ebenfalls im Portal angezeigt. Diese Option ist hilfreich, um den Server schnell auf den aktuellsten Stand zu bringen.
+-   **Benutzerdefinierter Wiederherstellungspunkt**: Dadurch können Sie einen beliebigen Zeitpunkt innerhalb des für diesen flexiblen Server definierten Aufbewahrungszeitraums wählen. Diese Option ist nützlich, um den Server genau zu dem Zeitpunkt wiederherzustellen, zu dem ein Benutzerfehler aufgetreten ist.
 
 Die geschätzte Wiederherstellungszeit hängt von mehreren Faktoren ab, einschließlich der Datenbankgrößen, der Größe der Sicherung des Transaktionsprotokolls, der Computegröße der SKU und auch der Zeit der Wiederherstellung. Die Wiederherstellung des Transaktionsprotokolls ist der zeitaufwendigste Teil des Wiederherstellungsprozesses. Wenn die Wiederherstellungszeit näher am Zeitplan der vollständigen oder differenziellen Momentaufnahmensicherung gewählt wird, erfolgen die Wiederherstellungen schneller, da die Anwendung des Transaktionsprotokolls minimal ist. Um die genaue Wiederherstellungszeit für Ihren Server zu schätzen, wird dringend empfohlen, ihn in Ihrer Umgebung zu testen, da er zu viele umgebungsspezifische Variablen aufweist.
 
@@ -81,7 +81,7 @@ Die geschätzte Wiederherstellungszeit hängt von mehreren Faktoren ab, einschli
 
 ## <a name="perform-post-restore-tasks"></a>Durchführen der Aufgaben nach der Wiederherstellung
 
-Nach beiden Wiederherstellungsverfahren ( **neuester Wiederherstellungspunkt** oder **Benutzerdefinierter Wiederherstellungspunkt** ) sollten Sie die folgenden Aufgaben durchführen, um Ihre Benutzer und Anwendungen wieder in den betriebsbereiten Zustand zu versetzen:
+Nach beiden Wiederherstellungsverfahren (**neuester Wiederherstellungspunkt** oder **Benutzerdefinierter Wiederherstellungspunkt**) sollten Sie die folgenden Aufgaben durchführen, um Ihre Benutzer und Anwendungen wieder in den betriebsbereiten Zustand zu versetzen:
 
 -   Umleiten von Clients und Clientanwendungen an den neuen Server, wenn der neue Server den ursprünglichen Server ersetzen soll.
 -   Sicherstellen, dass geeignete Firewallregeln auf Serverebene und Regeln von virtuellen Netzwerken vorhanden sind, damit Benutzer eine Verbindung herstellen können.

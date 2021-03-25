@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 05be5295ae5f8c73c916a21bba7dbc98ab0c5e87
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89002791"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-cognitive-search"></a>Implementieren der Facettennavigation in der kognitiven Azure-Suche
@@ -255,7 +255,7 @@ Wenn Ihre Anwendung kein Suchfeld, sondern ausschließlich eine Facetnavigation 
 
 Denken Sie daran, dass das Schema des Index bestimmt, welche Felder als Facette zur Verfügung stehen. Wenn ein Feld als Facette verwendet werden kann, gibt die Abfrage an, welches Feld als Facettengrundlage fungieren soll. Das Feld, das als Facettengrundlage fungiert, liefert die Werte, die unter der Beschriftung erscheinen. 
 
-Die Werte unter den einzelnen Beschriftungen stammen aus dem Index. Ein Beispiel: Wenn das Feld *Farbe*als Facette fungiert, basieren die für weitere Filtervorgänge verfügbaren Werte auf den Werten für dieses Feld (Rot, Schwarz usw.).
+Die Werte unter den einzelnen Beschriftungen stammen aus dem Index. Ein Beispiel: Wenn das Feld *Farbe* als Facette fungiert, basieren die für weitere Filtervorgänge verfügbaren Werte auf den Werten für dieses Feld (Rot, Schwarz usw.).
 
 Bei numerischen Werten und DateTime-Werten können explizit Werte für das Facettenfeld festgelegt werden (etwa `facet=Rating,values:1|2|3|4|5`). Zur einfacheren Unterteilung von Facettenergebnissen in zusammenhängende Bereiche (entweder auf der Grundlage numerischer Werte oder auf der Grundlage von Zeiträumen) kann für diese Feldtypen eine Werteliste verwendet werden. 
 

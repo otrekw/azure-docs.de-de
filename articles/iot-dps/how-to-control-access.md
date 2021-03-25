@@ -10,10 +10,10 @@ ms.date: 04/09/2019
 ms.author: wesmc
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: 024dbf6518748a4048873de4eb54a53f9d9a6362
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94954323"
 ---
 # <a name="control-access-to-azure-iot-hub-device-provisioning-service"></a>Steuern des Zugriffs auf den Azure IoT Hub Device Provisioning-Dienst
@@ -33,19 +33,19 @@ Sie benötigen entsprechende Berechtigungen für den Zugriff auf Bereitstellungs
 
 Sie können [Berechtigungen](#device-provisioning-service-permissions) auf folgende Weise gewähren:
 
-* **SAS-Autorisierungsrichtlinien:** SAS-Richtlinien können eine beliebige Kombination von [Berechtigungen](#device-provisioning-service-permissions) gewähren. Sie können Richtlinien im [Azure-Portal][lnk-management-portal] oder programmgesteuert mithilfe der [REST-APIs von Device Provisioning Service][lnk-resource-provider-apis] definieren. Ein neu erstellter Bereitstellungsdienst verfügt über folgende Standardrichtlinie:
+* **SAS-Autorisierungsrichtlinien:** SAS-Richtlinien können eine beliebige Kombination von [Berechtigungen](#device-provisioning-service-permissions) gewähren. Sie können Richtlinien im [Azure-Portal][lnk-management-portal] oder programmgesteuert mithilfe der [REST-APIs des Device Provisioning-Diensts][lnk-resource-provider-apis] definieren. Ein neu erstellter Bereitstellungsdienst verfügt über folgende Standardrichtlinie:
 
 * **provisioningserviceowner**: Richtlinie mit sämtlichen Berechtigungen.
 
 > [!NOTE]
 > Weitere Informationen finden Sie unter [Berechtigungen](#device-provisioning-service-permissions).
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Authentifizierung
 
 Der Azure IoT Hub Device Provisioning-Dienst überprüft ein Token anhand der SAS-Richtlinien, um Zugriff auf Endpunkte zu gewähren. Sicherheitsanmeldeinformationen, beispielsweise symmetrische Schlüssel, werden niemals über eine physische Verbindung gesendet.
 
 > [!NOTE]
-> Der Device Provisioning Service-Ressourcenanbieter wird über Ihr Azure-Abonnement geschützt – ebenso wie alle Anbieter in [Azure Resource Manager][lnk-azure-resource-manager].
+> Der Device Provisioning-Dienst wird über Ihr Azure-Abonnement geschützt – ebenso wie alle Anbieter im [Azure Resource Manager][lnk-azure-resource-manager].
 
 Weitere Informationen zum Erstellen und Verwenden von Sicherheitstoken finden Sie im nächsten Abschnitt.
 
@@ -58,11 +58,11 @@ SharedAccessSignature sr =
 ```
 
 > [!NOTE]
-> Die [Azure IoT Device Provisioning Service SDKs][lnk-sdks] generieren automatisch Token, wenn eine Verbindung mit dem Dienst hergestellt wird.
+> Die [SDKs für den Azure IoT Device Provisioning-Dienst][lnk-sdks] generieren automatisch Token, wenn eine Verbindung mit dem Dienst hergestellt wird.
 
 ## <a name="security-tokens"></a>Sicherheitstoken
 
-Der Device Provisioning-Dienst verwendet Sicherheitstoken zum Authentifizieren von Diensten, um das Senden von Schlüsseln über das Netzwerk zu vermeiden. Darüber hinaus sind Sicherheitstoken im Hinblick auf Gültigkeitszeitraum und Bereich beschränkt. [Azure IoT Device Provisioning Service SDKs][lnk-sdks] generieren Token automatisch (also ohne spezielle Konfiguration). In einigen Szenarien müssen Sie Sicherheitstoken allerdings direkt generieren und verwenden. Zu solchen Szenarien zählt auch die direkte Verwendung der HTTP-Oberfläche.
+Der Device Provisioning-Dienst verwendet Sicherheitstoken zum Authentifizieren von Diensten, um das Senden von Schlüsseln über das Netzwerk zu vermeiden. Darüber hinaus sind Sicherheitstoken im Hinblick auf Gültigkeitszeitraum und Bereich beschränkt. [SDKs für den Azure IoT Device Provisioning-Dienst][lnk-sdks] generieren Token automatisch (also ohne spezielle Konfiguration). In einigen Szenarien müssen Sie Sicherheitstoken allerdings direkt generieren und verwenden. Zu solchen Szenarien zählt auch die direkte Verwendung der HTTP-Oberfläche.
 
 ### <a name="security-token-structure"></a>Struktur von Sicherheitstoken
 
@@ -76,9 +76,9 @@ Das Sicherheitstoken weist das folgende Format auf:
 
 Hier sind die erwarteten Werte:
 
-| value | BESCHREIBUNG |
+| Wert | BESCHREIBUNG |
 | --- | --- |
-| {signature} |Eine HMAC-SHA256-Signaturzeichenfolge in folgendem Format: `{URL-encoded-resourceURI} + "\n" + expiry`. **Wichtig:** Der Schlüssel wird aus Base64 decodiert und als Schlüssel für die HMAC-SHA256-Berechnung verwendet.|
+| {signature} |Eine HMAC-SHA256-Signaturzeichenfolge in folgendem Format: `{URL-encoded-resourceURI} + "\n" + expiry`. **Wichtig**: Der Schlüssel wird aus Base64 decodiert und als Schlüssel für die HMAC-SHA256-Berechnung verwendet.|
 | {expiry} |UTF8-Zeichenfolge, dargestellt als die Anzahl von Sekunden seit dem 1. Januar 1970 um 00:00:00 UTC. |
 | {URL-encoded-resourceURI} | URL-Codierung des Ressourcen-URI (beides in Kleinbuchstaben). URI-Präfix (nach Segment) der Endpunkte, auf die mit diesem Token zugegriffen werden kann – beginnend mit dem Hostnamen des IoT Device Provisioning-Diensts (kein Protokoll). Beispiel: `mydps.azure-devices-provisioning.net`. |
 | {policyName} |Der Name der gemeinsam genutzten Zugriffsrichtlinie, auf die dieses Token verweist. |

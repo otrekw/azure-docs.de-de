@@ -8,10 +8,10 @@ ms.date: 06/10/2020
 author: mingshen-ms
 ms.author: mingshen
 ms.openlocfilehash: 39a0830806d2d9c7358d175cae703e9c81c45b02
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93130016"
 ---
 # <a name="register-a-saas-application"></a>Registrieren einer SaaS-Anwendung
@@ -28,13 +28,13 @@ Jede Anwendung muss zunächst in einem Azure AD-Mandanten registriert werden, um
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 2. Wenn Sie unter Ihrem Konto mehrere Zugriffsmöglichkeiten haben, können Sie oben rechts auf Ihr Konto klicken und Ihre Portalsitzung auf den gewünschten Azure AD-Mandanten festlegen.
-3. Klicken Sie im linken Navigationsbereich auf den **Azure Active Directory** -Dienst und dann auf **App-Registrierungen** und **Registrierung einer neuen Anwendung**.
+3. Klicken Sie im linken Navigationsbereich auf den **Azure Active Directory**-Dienst und dann auf **App-Registrierungen** und **Registrierung einer neuen Anwendung**.
 
     ![SaaS: AD-App-Registrierungen](./media/saas-offer-app-registration-v1.png)
 
 4. Geben Sie auf der Seite „Erstellen“ die Registrierungsinformationen\' für Ihre Anwendung ein:
-    -   **Name** : Geben Sie einen aussagekräftigen Anwendungsnamen ein.
-    -   **Anwendungstyp** :  
+    -   **Name**: Geben Sie einen aussagekräftigen Anwendungsnamen ein.
+    -   **Anwendungstyp**:  
         
         Wählen Sie die Option **Web-App/API** für [Clientanwendungen](../../active-directory/develop/developer-glossary.md#client-application) und [Ressourcen-/API-Anwendungen](../../active-directory/develop/developer-glossary.md#resource-server) aus, die auf einem sicheren Server installiert sind. Diese Einstellung wird für vertrauliche OAuth-[Webclients](../../active-directory/develop/developer-glossary.md#web-client) und für öffentliche [Clients auf Basis von Benutzer-Agents](../../active-directory/develop/developer-glossary.md#user-agent-based-client) verwendet.
         Außerdem kann dieselbe Anwendung sowohl einen Client als auch eine Ressource/API verfügbar machen.

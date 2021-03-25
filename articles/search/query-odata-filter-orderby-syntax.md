@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: d04311fce81d147a0830918aee1d4a2a9c0808d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88923397"
 ---
 # <a name="odata-language-overview-for-filter-orderby-and-select-in-azure-cognitive-search"></a>OData-Sprachübersicht für `$filter`, `$orderby` und `$select` in der kognitiven Azure-Suche
@@ -236,7 +236,7 @@ Die Parameter **$orderby** und **$select** sind durch Trennzeichen getrennte Lis
 In den folgenden Artikeln werden die Parameter **$filter**, **$orderby** und **$select** ausführlicher besprochen:
 
 - [OData-Syntax von „$filter“ in der kognitiven Azure-Suche](search-query-odata-filter.md)
-- [OData-Syntax von „$orderby“ in der kognitiven Azure-Suche](search-query-odata-orderby.md)
+- [OData-Syntax von „$orderby“ in Azure Cognitive Search](search-query-odata-orderby.md)
 - [OData-Syntax von „$select“ in der kognitiven Azure-Suche](search-query-odata-select.md)
 
 ## <a name="see-also"></a>Weitere Informationen  
