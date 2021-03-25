@@ -4,16 +4,16 @@ description: Zur Erstellung hoch verfügbarer und robuster Anwendungen in Azure 
 author: prsandhu
 ms.service: azure
 ms.topic: conceptual
-ms.date: 01/26/2021
+ms.date: 03/16/2021
 ms.author: prsandhu
 ms.reviewer: cynthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: fee000009be90a083406725fe7f1e8c4382af3e9
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 5152b0ecf6eebe87031a2165d5d8ba11d99209cf
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101701449"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103601184"
 ---
 # <a name="azure-services-that-support-availability-zones"></a>Azure-Dienste mit Unterstützung für Verfügbarkeitszonen
 
@@ -50,12 +50,13 @@ Um eine umfassende Geschäftskontinuität in Azure zu erreichen, erstellen Sie d
 | Amerika           | Europa               | Afrika              | Asien-Pazifik   |
 |--------------------|----------------------|---------------------|----------------|
 |                    |                      |                     |                |
-| Kanada, Mitte     | Frankreich, Mitte       | Südafrika, Norden* | Japan, Osten     |
-| USA (Mitte)         | Deutschland, Westen-Mitte |                     | Asien, Südosten |
-| East US            | Nordeuropa         |                     | Australien (Osten) |
-| USA (Ost) 2          | UK, Süden             |                     |                |
-| USA, Süden-Mitte | Europa, Westen          |                     |                |
-| US Government, Virginia    |                      |                     |                |
+| Brasilien Süd       | Frankreich, Mitte       | Südafrika, Norden* | Japan, Osten     |
+| Kanada, Mitte     | Deutschland, Westen-Mitte |                     | Asien, Südosten |
+| USA (Mitte)         | Nordeuropa         |                     | Australien (Osten) |
+| East US            | UK, Süden             |                     |                |
+| USA (Ost) 2          | Europa, Westen          |                     |                |
+| USA, Süden-Mitte |                      |                     |                |
+| US Government, Virginia     |                      |                     |                |
 | USA, Westen 2        |                      |                     |                |
 
 
@@ -125,6 +126,7 @@ Um eine umfassende Geschäftskontinuität in Azure zu erreichen, erstellen Sie d
 | Azure Database for MySQL: Flexibler Server      |      :large_blue_diamond:  |
 | Azure Database for PostgreSQL: Flexibler Server |      :large_blue_diamond:  |
 | Azure DDoS Protection                           |      :large_blue_diamond:  |
+| Azure Disk Encryption                           |      :large_blue_diamond:  |
 | Azure Firewall                                  |      :large_blue_diamond:  |
 | Azure Firewall Manager                          |      :large_blue_diamond:  |
 | Azure Kubernetes Service (AKS)                  |      :large_blue_diamond:  |
@@ -134,7 +136,6 @@ Um eine umfassende Geschäftskontinuität in Azure zu erreichen, erstellen Sie d
 | Azure SQL: VM                      |      :large_blue_diamond:  |
 | Azure Search                                    |      :large_blue_diamond:  |
 | Azure Web Application Firewall                  |      :large_blue_diamond:  |
-| Cognitive Services: Textanalyse              |      :large_blue_diamond:  |
 | Container Registry                              |      :large_blue_diamond:  |
 | Event Grid                                      |      :large_blue_diamond:  |
 | Network Watcher                                 |      :large_blue_diamond:  |
@@ -169,6 +170,7 @@ Um eine umfassende Geschäftskontinuität in Azure zu erreichen, erstellen Sie d
 |     Azure Advisor                             |     :globe_with_meridians:             |
 |     Azure Blueprint                          |     :globe_with_meridians:             |
 |     Azure Bot Services                        |     :globe_with_meridians:             |
+|     Azure Front Door                          |     :globe_with_meridians:             |
 |     Azure Defender für IoT                  |     :globe_with_meridians:             |
 |     Azure Front Door                           |     :globe_with_meridians:             |
 |     Azure Information Protection            |     :globe_with_meridians:             |

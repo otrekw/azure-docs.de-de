@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: azure-redhat-openshift
 ms.date: 11/23/2020
-ms.openlocfilehash: b785a6b73f595072f5d723bad8c119ddc4dc0f11
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: 5d69aacb6e3f25e3414aa446c4c5ae7852cabdfc
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100636327"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101720901"
 ---
 # <a name="network-concepts-for-azure-red-hat-openshift-aro"></a>Netzwerkkonzepte für Azure Red Hat OpenShift (ARO)
 
@@ -60,7 +60,7 @@ Die folgende Liste enthält wichtige Netzwerkkomponenten in einem Azure Red Hat 
 
 * **Eingehender Datenverkehr:** Die Netzwerkrichtlinie für eingehenden Datenverkehr wird im Rahmen von [OpenShift SDN](https://docs.openshift.com/container-platform/4.5/networking/openshift_sdn/about-openshift-sdn.html) unterstützt. Diese Netzwerkrichtlinie ist standardmäßig aktiviert, und die Erzwingung wird von Benutzern durchgeführt. Die Netzwerkrichtlinie für eingehenden Datenverkehr ist zwar mit der V1-Netzwerkrichtlinie (V1 NetworkPolicy) kompatibel, die Typen „Egress“ (Ausgehend) und „IPBlock“ (IP-Block) werden jedoch noch nicht unterstützt.
 
-* **Ausgehender Datenverkehr:** Die Netzwerkrichtlinien für ausgehenden Datenverkehr werden mithilfe der [Firewall für ausgehenden Datenverkehr](https://docs.openshift.com/container-platform/4.5/networking/openshift_sdn/configuring-egress-firewall.html) in OpenShift unterstützt. Pro Namespace/Projekt gibt es jeweils nur eine einzelne Richtlinie für ausgehenden Datenverkehr. Richtlinien für ausgehenden Datenverkehr werden im Standardnamespace nicht unterstützt und nacheinander von der ersten bis zur letzten Richtlinie ausgewertet.
+* **Ausgehender Datenverkehr:** Die Netzwerkrichtlinien für ausgehenden Datenverkehr werden mithilfe der [Firewall für ausgehenden Datenverkehr](https://docs.openshift.com/container-platform/4.5/networking/openshift_sdn/configuring-egress-firewall.html) in OpenShift unterstützt. Pro Namespace/Projekt gibt es jeweils nur eine einzelne Richtlinie für ausgehenden Datenverkehr. Richtlinien für ausgehenden Datenverkehr werden im „Standard“-Namespace nicht unterstützt und nacheinander (von der ersten bis zur letzten) ausgewertet.
 
 ## <a name="networking-basics-in-openshift"></a>Netzwerkgrundlagen in OpenShift
 

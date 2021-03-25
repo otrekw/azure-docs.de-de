@@ -12,10 +12,10 @@ ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/18/2018
 ms.openlocfilehash: b5a1035f8a213a6ce02dd3252ff7d3ddea46faf7
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92786580"
 ---
 # <a name="in-memory-sample"></a>In-Memory-Beispiel
@@ -74,7 +74,7 @@ Das Ergebnis **0** bedeutet, dass In-Memory nicht unterstützt wird. **1** bedeu
 
 ### <a name="about-the-created-memory-optimized-items"></a>Informationen zu speicheroptimierten Elementen
 
-**Tabellen** : Das Beispiel enthält die folgenden speicheroptimierten Tabellen:
+**Tabellen**: Das Beispiel enthält die folgenden speicheroptimierten Tabellen:
 
 - SalesLT.Product_inmem
 - SalesLT.SalesOrderHeader_inmem
@@ -82,7 +82,7 @@ Das Ergebnis **0** bedeutet, dass In-Memory nicht unterstützt wird. **1** bedeu
 - Demo.DemoSalesOrderHeaderSeed
 - Demo.DemoSalesOrderDetailSeed
 
-Sie können im **Objekt-Explorer** in SSMS speicheroptimierte Tabellen untersuchen. Klicken Sie mit der rechten Maustaste auf **Tabellen** > **Filter** > **Filtereinstellungen** > **Speicheroptimiert** . Der Wert ist gleich 1.
+Sie können im **Objekt-Explorer** in SSMS speicheroptimierte Tabellen untersuchen. Klicken Sie mit der rechten Maustaste auf **Tabellen** > **Filter** > **Filtereinstellungen** > **Speicheroptimiert**. Der Wert ist gleich 1.
 
 Oder Sie können die Katalogsichten abfragen wie z. B.:
 
@@ -92,7 +92,7 @@ SELECT is_memory_optimized, name, type_desc, durability_desc
     WHERE is_memory_optimized = 1;
 ```
 
-**Nativ kompilierte gespeicherte Prozedur** : Sie können „SalesLT.usp_InsertSalesOrder_inmem“ über eine Katalogsichtabfrage untersuchen:
+**Nativ kompilierte gespeicherte Prozedur**: Sie können „SalesLT.usp_InsertSalesOrder_inmem“ über eine Katalogsichtabfrage untersuchen:
 
 ```sql
 SELECT uses_native_compilation, OBJECT_NAME(object_id), definition
@@ -150,7 +150,7 @@ begin;
 end
 ```
 
-Um die *_ondisk* -Version des vorherigen T-SQL-Skripts für „ostress.exe“ zu erstellen, müssen Sie beide Vorkommen der Teilzeichenfolge *_inmem* durch *_ondisk* ersetzen. Diese Austauschvorgänge wirken sich auf die Namen von Tabellen und gespeicherten Prozeduren aus.
+Um die *_ondisk*-Version des vorherigen T-SQL-Skripts für „ostress.exe“ zu erstellen, müssen Sie beide Vorkommen der Teilzeichenfolge *_inmem* durch *_ondisk* ersetzen. Diese Austauschvorgänge wirken sich auf die Namen von Tabellen und gespeicherten Prozeduren aus.
 
 #### <a name="install-rml-utilities-and-ostress"></a>Installieren von RML-Hilfsprogrammen und `ostress`
 
@@ -246,7 +246,7 @@ Für Echtzeitanalysen einer OLTP-Workload empfiehlt es sich häufig, einen nicht
    - Das Skript erstellt die Dimensionstabelle und zwei Faktentabellen. Beide Faktentabellen werden mit 3,5 Mio. Zeilen aufgefüllt.
    - Die Ausführung des Skripts kann 15 dauern.
 
-3. Fügen Sie das T-SQL-Skript in SSMS ein, und führen Sie es aus. Unerlässlich ist das Schlüsselwort **COLUMNSTORE** in einer **CREATE INDEX** -Anweisung wie in:<br/>`CREATE NONCLUSTERED COLUMNSTORE INDEX ...;`
+3. Fügen Sie das T-SQL-Skript in SSMS ein, und führen Sie es aus. Unerlässlich ist das Schlüsselwort **COLUMNSTORE** in einer **CREATE INDEX**-Anweisung wie in:<br/>`CREATE NONCLUSTERED COLUMNSTORE INDEX ...;`
 
 4. Legen Sie „AdventureWorksLT“ auf den Kompatibilitätsgrad 130 fest:<br/>`ALTER DATABASE AdventureworksLT SET compatibility_level = 130;`
 

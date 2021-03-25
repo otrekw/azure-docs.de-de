@@ -10,12 +10,12 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 08/03/2020
 ms.author: avgupta
-ms.openlocfilehash: ee262c0eb2431085e71d8ee0035bcdab9833d1cf
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 19de46bc87b72ada221c63e36e87d0545304d344
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565771"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102122152"
 ---
 # <a name="leverage-content-type-to-store-json-key-values-in-app-configuration"></a>Verwenden des Inhaltstyps zum Speichern von JSON-Schlüssel-Wert-Paaren in App Configuration
 
@@ -175,12 +175,28 @@ az appconfig kv export -d file --format json --path "~/Export.json" --separator 
 
 ## <a name="consuming-json-key-values-in-applications"></a>Verwenden von JSON-Schlüssel-Wert-Paaren in Anwendungen
 
-Die einfachste Möglichkeit zum Verwenden von JSON-Schlüssel-Wert-Paaren in Ihrer Anwendung ist der Einsatz von App Configuration-Anbieterbibliotheken. Bei Verwendung von Anbieterbibliotheken muss keine spezielle Behandlung von JSON-Schlüssel-Wert-Paaren in Ihrer Anwendung implementiert werden. Es erfolgt immer eine Deserialisierung für Ihre Anwendung (wie bei anderen JSON-Konfigurationsanbieterbibliotheken). 
+Die einfachste Möglichkeit zum Verwenden von JSON-Schlüssel-Wert-Paaren in Ihrer Anwendung ist der Einsatz von App Configuration-Anbieterbibliotheken. Bei Verwendung von Anbieterbibliotheken muss keine spezielle Behandlung von JSON-Schlüssel-Wert-Paaren in Ihrer Anwendung implementiert werden. Sie werden analysiert und konvertiert, damit sie der nativen Konfiguration Ihrer Anwendung entsprechen.
+
+Wenn Sie z. B. den folgenden Schlüsselwert in der App-Konfiguration haben:
+
+| Schlüssel | Wert | Inhaltstyp |
+|---|---|---|
+| Einstellungen | {"FontSize":24,"UseDefaultRouting":false} | Anwendung/json |
+
+Ihre .NET-Anwendungskonfiguration weist die folgenden Schlüsselwerte auf:
+
+| Schlüssel | Wert |
+|---|---|
+| Settings:FontSize | 24 |
+| Settings:UseDefaultRouting | false |
+
+Sie können direkt auf die neuen Schlüssel zugreifen, oder Sie können das [Binden von Konfigurationswerten an Instanzen von .NET-Objekten](/aspnet/core/fundamentals/configuration/#bind-hierarchical-configuration-data-using-the-options-pattern) auswählen.
+
 
 > [!Important]
 > Native Unterstützung für JSON-Schlüssel-Wert-Paare ist in der .NET-Konfigurationsanbieterversion 4.0.0 oder höher verfügbar. Weitere Informationen finden Sie im Abschnitt [*Nächste Schritte*](#next-steps).
 
-Wenn Sie das SDK oder die REST-API zum Lesen von Schlüssel-Wert-Paaren aus App Configuration verwenden, muss Ihre Anwendung (basierend auf dem Inhaltstyp) die Deserialisierung des Werts eines JSON-Schlüssel-Wert-Paars mithilfe eines standardmäßigen JSON-Deserialisierungsprogramms durchführen.
+Wenn Sie das SDK oder die REST-API zum Lesen von Schlüssel-Wert-Paaren aus App Configuration verwenden, muss Ihre Anwendung (basierend auf dem Inhaltstyp) die Analyse des Werts eines JSON-Schlüssel-Wert-Paars durchführen.
 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen

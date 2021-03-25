@@ -2,17 +2,17 @@
 title: 'Konzepte: Updates und Upgrades für private Clouds'
 description: Hier erfahren Sie mehr über die wichtigsten Upgradeprozesse und Features in Azure VMware Solution.
 ms.topic: conceptual
-ms.date: 02/02/2021
-ms.openlocfilehash: 78d4b566aa9156cdddfdcd69b50ebfd1d10aa784
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.date: 03/17/2021
+ms.openlocfilehash: 9810de40944f70a4efb7ec81d17868ffdf256c7d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100006700"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104586147"
 ---
 # <a name="azure-vmware-solution-private-cloud-updates-and-upgrades"></a>Azure VMware Solution: Updates und Upgrades für private Clouds
 
-Einer der Hauptvorteile von privaten Azure VMware Solution-Clouds besteht darin, dass die Plattform für Sie verwaltet wird. Die Plattformwartung umfasst automatische Updates eines von VMware überprüften Softwarepakets, wodurch sichergestellt wird, dass Sie mithilfe der neuesten Version der überprüften Software für private Clouds in Azure VMware Solution arbeiten.
+Einer der Vorteile von privaten Azure VMware Solution-Clouds besteht darin, dass die Plattform für Sie verwaltet wird. Die Verwaltung umfasst automatische Updates eines von VMware überprüften Softwarepakets, wodurch sichergestellt wird, dass Sie die neueste Version der Software für private Clouds in Azure VMware Solution verwenden.
 
 Insbesondere umfasst eine private Cloud in Azure VMware Solution Folgendes:
 
@@ -22,7 +22,7 @@ Insbesondere umfasst eine private Cloud in Azure VMware Solution Folgendes:
 - VMware vSAN-Datenspeicher für virtuelle Computer für vSphere-Workloads  
 - VMware HCX für Workloadmobilität  
 
-Zusätzlich zu diesen Komponenten umfasst eine private Cloud von Azure VMware Solution die in Azure zugrunde liegenden Ressourcen, die für die Konnektivität und den Betrieb der privaten Cloud erforderlich sind. Azure VMware Solution überwacht kontinuierlich sowohl die Integrität der zugrunde liegenden Ressourcen als auch der Integrität der VMware-Komponenten. Wenn Azure VMware Solution einen Fehler erkennt, ergreift es Maßnahmen, um die fehlerhaften Komponenten zu reparieren. 
+Eine private Cloud von Azure VMware Solution umfasst außerdem die in Azure zugrunde liegenden Ressourcen, die für die Konnektivität und den Betrieb der privaten Cloud erforderlich sind. Azure VMware Solution überwacht kontinuierlich sowohl die Integrität der zugrunde liegenden Ressourcen als auch der Integrität der VMware-Komponenten. Wenn Azure VMware Solution einen Fehler erkennt, ergreift es Maßnahmen, um die fehlerhaften Komponenten zu reparieren. 
 
 ## <a name="what-components-get-updated"></a>Welche Komponenten werden aktualisiert?   
 
@@ -46,14 +46,16 @@ Sie werden benachrichtigt, bevor und nachdem Patches auf Ihre privaten Clouds an
 
 ## <a name="vmware-appliance-backup"></a>Sicherung einer VMware-Appliance 
 
-Zusätzlich zur Anwendung von Updates nimmt Azure VMware Solution eine Sicherung der Konfiguration der folgenden VMware-Komponenten vor:
+Azure VMware Solution erstellt außerdem eine Konfigurationssicherung der folgenden VMware-Komponenten:
 
 - vCenter Server 
 - NSX-T Manager 
 
-Wenn Fehler auftreten kann Azure VMware Solution diese aus der Sicherung der Konfiguration wiederherstellen. 
+Wenn Fehler auftreten, kann Azure VMware Solution diese Komponenten aus der Sicherung der Konfiguration wiederherstellen. 
 
-Weitere Informationen zu VMware-Softwareversionen finden Sie im [Konzeptartikel zu privaten Clouds und Clustern](concepts-private-clouds-clusters.md) und in den [häufig gestellten Fragen (FAQ)](faq.yml).
+## <a name="vmware-software-versions"></a>Versionen von VMware-Software
+[!INCLUDE [vmware-software-versions](includes/vmware-software-versions.md)]
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

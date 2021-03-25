@@ -1,15 +1,16 @@
 ---
 title: Bereitstellen eines Hyperledger Fabric-Konsortiums in Azure Kubernetes Service (AKS)
 description: Bereitstellen und Konfigurieren eines Hyperledger Fabric-Konsortiumsnetzwerks auf Azure Kubernetes Service
-ms.date: 01/08/2021
+ms.date: 03/01/2021
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: c0e7f3e7ab83f64cebd990de57d48c97891edb7f
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.custom: contperf-fy21q3
+ms.openlocfilehash: 42d16adbc5e6396c8d5d38176ac7681c712f4555
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897257"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102101102"
 ---
 # <a name="deploy-hyperledger-fabric-consortium-on-azure-kubernetes-service"></a>Bereitstellen eines Hyperledger Fabric-Konsortiums in Azure Kubernetes Service (AKS)
 
@@ -31,34 +32,6 @@ Option | Dienstmodell | Gängiger Anwendungsfall
 Lösungsvorlagen | IaaS | Lösungsvorlagen sind Azure Resource Manager-Vorlagen, die Sie verwenden können, um eine vollständig konfigurierte Blockchainnetzwerktopologie bereitzustellen. Die Vorlagen stellen Microsoft Azure-Dienste für Compute-, Netzwerk- und Speicherfunktionen für einen Blockchainnetzwerktyp bereit und konfigurieren diese. Lösungsvorlagen werden ohne Vereinbarung zum Servicelevel bereitgestellt. Nutzen Sie die [Q&A-Seite von Microsoft (Fragen und Antworten)](/answers/topics/azure-blockchain-workbench.html) zur Unterstützung.
 [Azure Blockchain Service](../service/overview.md) | PaaS | Mit der Vorschauversion von Azure Blockchain Service wird die Einrichtung, Verwaltung und Governance von Konsortiumblockchainnetzwerken vereinfacht. Setzen Sie Azure Blockchain Service für Lösungen ein, bei denen PaaS, Konsortiumverwaltung oder Datenschutz für Vertrags- und Transaktionsaktivitäten erforderlich ist.
 [Azure Blockchain Workbench](../workbench/overview.md) | IaaS und PaaS | Azure Blockchain Workbench (Vorschauversion) ist eine Sammlung mit Azure-Diensten und -Funktionen zum Erstellen und Bereitstellen von Blockchain-Anwendungen, mit denen Geschäftsprozesse und Daten mit anderen Organisationen gemeinsam genutzt werden können. Verwenden Sie Azure Blockchain Workbench, um einen Prototyp für eine Blockchainlösung oder einen Proof of Concept für eine Blockchainanwendung zu erstellen. Azure Blockchain Workbench wird ohne Vereinbarung zum Servicelevel bereitgestellt. Nutzen Sie die [Q&A-Seite von Microsoft (Fragen und Antworten)](/answers/topics/azure-blockchain-workbench.html) zur Unterstützung.
-
-## <a name="hyperledger-fabric-consortium-architecture"></a>Architektur eines Hyperledger Fabric-Konsortiums
-
-Um ein Hyperledger Fabric-Netzwerk in Azure zu erstellen, müssen Sie einen Ordering Service und eine Organisation mit Peerknoten bereitstellen. Mithilfe der Lösungsvorlage „Hyperledger Fabric auf Azure Kubernetes Service“ können Sie Auftrags- oder Peerknoten erstellen. Sie müssen die Vorlage für jeden Knoten bereitstellen, den Sie erstellen möchten.
-
-Die grundlegenden Komponenten werden im Rahmen der Vorlagenbereitstellung erstellt:
-
-- **Auftraggeberknoten**: Ein Knoten, der für die Transaktionsanordnung im Ledger zuständig ist. Zusammen mit anderen Knoten bilden die Anordnerknoten (Orderer-Knoten, Auftraggeberknoten) den Anordnungsdienst des Hyperledger Fabric-Netzwerks.
-
-- **Peerknoten**: Ein Knoten, der hauptsächlich Ledger und Smart Contracts hostet, die die grundlegenden Elemente des Netzwerks darstellen.
-
-- **Fabric CA**: Die Zertifizierungsstelle (Certificate Authority, CA) für Hyperledger Fabric. Mit der Fabric CA können Sie einen Serverprozess, der die Zertifizierungsstelle hostet, initialisieren und starten. Sie ermöglicht Ihnen die Verwaltung von Identitäten und Zertifikaten. Jeder AKS-Cluster, der als Teil der Vorlage bereitgestellt wird, hat standardmäßig einen Fabric CA-Pod.
-
-- **CouchDB oder LevelDB**: World State-Datenbanken für die Peerknoten. LevelDB ist die standardmäßige Zustandsdatenbank, die in den Peerknoten eingebettet ist. Sie speichert Chaincode-Daten als einfache Schlüssel-Wert-Paare und unterstützt nur Schlüssel- und Schlüsselbereichsabfragen sowie Abfragen für zusammengesetzte Schlüssel. CouchDB ist eine optionale alternative Zustandsdatenbank, die umfangreiche Abfragen unterstützt, wenn Chaincode-Datenwerte als JSON modelliert sind.
-
-Die Vorlage startet bei einer Bereitstellung verschiedene Azure-Ressourcen in Ihrem Abonnement. Die bereitgestellten Azure-Ressourcen sind:
-
-- **AKS-Cluster**: Ein Azure Kubernetes Service-Cluster, der gemäß den vom Kunden bereitgestellten Eingabeparametern konfiguriert wird. Der AKS-Cluster hat verschiedene Pods, die für das Ausführen der Hyperledger Fabric-Netzwerkkomponenten konfiguriert sind. Die erstellten Pods sind:
-
-  - **Fabric-Tools**: Tools, die für das Konfigurieren der Hyperledger Fabric-Komponenten zuständig sind.
-  - **Anordner-/Peer-Pods**: Die Knoten des Hyperledger Fabric-Netzwerks.
-  - **Proxy**: Ein NGINX-Proxypod, über den die Clientanwendungen mit dem AKS-Cluster kommunizieren können.
-  - **Fabric CA**: Der Pod, der die Fabric CA ausführt.
-- **PostgreSQL**: Datenbankinstanz, die die Fabric CA-Identitäten beibehält.
-
-- **Schlüsseltresor**: Instanz des Azure Key Vault-Diensts, der zum Speichern der Fabric CA-Anmeldeinformationen und der vom Kunden bereitgestellten Stammzertifikate bereitgestellt wird. Der Tresor wird bei einer Wiederholung der Vorlagenbereitstellung verwendet, um die Mechanismen der Vorlage zu verarbeiten.
-- **Verwalteter Datenträger**: Eine Instanz des Azure Managed Disks-Diensts, der einen permanenten Speicher für den Ledger und die World State-Datenbank des Peerknotens bereitstellt.
-- **Öffentliche IP**: Endpunkt des AKS-Clusters, der zur Kommunikation mit dem Cluster bereitgestellt wird.
 
 ## <a name="deploy-the-orderer-and-peer-organization"></a>Bereitstellen der Auftraggeber-/Peerorganisation
 
@@ -85,10 +58,10 @@ Navigieren Sie zum [Azure-Portal](https://portal.azure.com), um mit der Bereitst
     - **Name der Organisation:** Geben Sie den Namen der Hyperledger Fabric-Organisation ein, die für verschiedene Datenebenenvorgänge erforderlich ist. Der Name der Organisation muss pro Bereitstellung eindeutig sein.
     - **Fabric-Netzwerkkomponente**: Wählen Sie entsprechend der Blockchain-Netzwerkkomponente, die Sie einrichten möchten, entweder **Ordering Service** oder **Peerknoten** aus.
     - **Anzahl von Knoten**: Es gibt die beiden folgenden Knotentypen:
-        - **Ordering Service**: Wählen Sie die Anzahl der Knoten aus, um Fehlertoleranz für das Netzwerk bereitzustellen. Es werden 3, 5 und 7 Auftragsknoten unterstützt.
-        - **Peerknoten**: Sie können je nach Ihren Anforderungen 1 bis 10 Knoten auswählen.
-    - **Weltzustandsdatenbank für Peerknoten**: Wählen Sie zwischen LevelDB und CouchDB. Dieses Feld wird angezeigt, wenn der Benutzer in der Dropdownliste **Fabric-Netzwerkkomponente** die Option **Peerknoten** ausgewählt hat.
-    - **Fabric CA-Benutzername**: Geben Sie den Benutzernamen ein, der für die Fabric CA-Authentifizierung verwendet wird.
+        - **Ordering Service**: Für die Transaktionsbestellung im Ledger verantwortliche Knoten. Wählen Sie die Anzahl der Knoten aus, um Fehlertoleranz für das Netzwerk bereitzustellen. Es werden 3, 5 und 7 Auftragsknoten unterstützt.
+        - **Peerknoten**: Knoten, die Ledger und Smart Contracts hosten. Sie können je nach Ihren Anforderungen 1 bis 10 Knoten auswählen.
+    - **Peerknoten-World State-Datenbank**: World State-Datenbanken für die Peerknoten. LevelDB ist die standardmäßige Zustandsdatenbank, die in den Peerknoten eingebettet ist. Sie speichert Chaincode-Daten als einfache Schlüssel-Wert-Paare und unterstützt nur Schlüssel- und Schlüsselbereichsabfragen sowie Abfragen für zusammengesetzte Schlüssel. CouchDB ist eine optionale alternative Zustandsdatenbank, die umfangreiche Abfragen unterstützt, wenn Chaincode-Datenwerte als JSON modelliert sind. Dieses Feld wird angezeigt, wenn der Benutzer in der Dropdownliste **Fabric-Netzwerkkomponente** die Option **Peerknoten** ausgewählt hat.
+    - **Fabric-ZS-Benutzername**: Mit der Fabric-Zertifizierungsstelle können Sie einen Serverprozess initialisieren und starten, der die Zertifizierungsstelle hostet. Sie ermöglicht Ihnen die Verwaltung von Identitäten und Zertifikaten. Jeder AKS-Cluster, der als Teil der Vorlage bereitgestellt wird, hat standardmäßig einen Fabric CA-Pod. Geben Sie den Benutzernamen ein, der für die Fabric CA-Authentifizierung verwendet wird.
     - **Fabric CA-Kennwort**: Geben Sie das Kennwort für die Fabric CA-Authentifizierung ein.
     - **Kennwort bestätigen**: Bestätigen Sie das Fabric CA-Kennwort.
     - **Zertifikate**: Wenn Sie Ihre eigenen Stammzertifikate verwenden möchten, um die Fabric CA zu initialisieren, wählen Sie die Option zum **Hochladen des Stammzertifikats für Fabric CA** aus. Andernfalls erstellt Fabric CA standardmäßig selbstsignierte Zertifikate.
@@ -96,11 +69,21 @@ Navigieren Sie zum [Azure-Portal](https://portal.azure.com), um mit der Bereitst
     - **Privater Schlüssel des Stammzertifikats**: Laden Sie den privaten Schlüssel des Stammzertifikats hoch. Wenn Sie ein PEM-Zertifikat mit kombiniertem öffentlichem und privatem Schlüssel haben, laden Sie es hier ebenfalls hoch.
 
 
-6. Wählen Sie die Registerkarte **AKS-Clustereinstellungen** aus, um die Azure Kubernetes Service-Clusterkonfiguration zu definieren, die die zugrunde liegende Infrastruktur ist, in der die Hyperledger Fabric-Netzwerkkomponenten eingerichtet werden.
+6. Wählen Sie die Registerkarte **AKS-Clustereinstellungen** aus, um die Azure Kubernetes Service-Clusterkonfiguration zu definieren. Der AKS-Cluster hat verschiedene Pods, die für das Ausführen der Hyperledger Fabric-Netzwerkkomponenten konfiguriert sind. Die bereitgestellten Azure-Ressourcen sind:
+
+    - **Fabric-Tools**: Tools, die für das Konfigurieren der Hyperledger Fabric-Komponenten zuständig sind.
+    - **Anordner-/Peer-Pods**: Die Knoten des Hyperledger Fabric-Netzwerks.
+    - **Proxy**: Ein NGINX-Proxypod, über den die Clientanwendungen mit dem AKS-Cluster kommunizieren können.
+    - **Fabric CA**: Der Pod, der die Fabric CA ausführt.
+    - **PostgreSQL**: Datenbankinstanz, die die Fabric CA-Identitäten beibehält.
+    - **Schlüsseltresor**: Instanz des Azure Key Vault-Diensts, der zum Speichern der Fabric CA-Anmeldeinformationen und der vom Kunden bereitgestellten Stammzertifikate bereitgestellt wird. Der Tresor wird bei einer Wiederholung der Vorlagenbereitstellung verwendet, um die Mechanismen der Vorlage zu verarbeiten.
+    - **Verwalteter Datenträger**: Eine Instanz des Azure Managed Disks-Diensts, der einen permanenten Speicher für den Ledger und die World State-Datenbank des Peerknotens bereitstellt.
+    - **Öffentliche IP**: Endpunkt des AKS-Clusters, der zur Kommunikation mit dem Cluster bereitgestellt wird.
+
+    Geben Sie die folgenden Details ein: 
 
     ![Screenshot der Registerkarte „AKS-Clustereinstellungen“](./media/hyperledger-fabric-consortium-azure-kubernetes-service/create-for-hyperledger-fabric-aks-cluster-settings-1.png)
 
-7. Geben Sie die folgenden Details ein:
     - **Name des Kubernetes-Clusters**: Ändern Sie ggf. den Namen des AKS-Clusters. Dieses Feld ist basierend auf dem angegebenen Ressourcenpräfix bereits ausgefüllt.
     - **Kubernetes-Version**: Wählen Sie die Version der Kubernetes-Plattform, die im Cluster bereitgestellt wird. Entsprechend der Region, die Sie auf der Registerkarte **Grundlagen** ausgewählt haben, können unterschiedliche unterstützte Versionen verfügbar sein.
     - **DNS-Präfix**: Geben Sie ein DNS-Namenspräfix (Domain Name System) für den AKS-Cluster ein. Sie verwenden DNS, um eine Verbindung mit der Kubernetes-API herzustellen, wenn Sie Container nach dem Erstellen des Clusters verwalten.
@@ -372,7 +355,7 @@ Führen Sie vom Client der Peerorganisation aus den folgenden Befehl aus, um die
 ./azhlf chaincode invoke -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL_NAME -f <invokeFunc> -a <invokeFuncArgs>  
 ```
 
-Übergeben Sie den Namen der Aufruffunktion und die Liste der Argumente mit Leerzeichen als Trennzeichen in `<invokeFunction>` bzw. `<invokeFuncArgs>` . Fahren Sie mit dem Chaincodebeispiel „chaincode_example02.go“ fort, und legen Sie `<invokeFunction>` auf `invoke` und `<invokeFuncArgs>` auf `"a" "b" "10"` fest, um einen Aufrufvorgang auszuführen.  
+Übergeben Sie den Namen der Aufruffunktion und die Liste der Argumente mit Leerzeichen als Trennzeichen in `<invokeFunction>` bzw. `<invokeFuncArgs>`  Fahren Sie mit dem Chaincodebeispiel „chaincode_example02.go“ fort, und legen Sie `<invokeFunction>` auf `invoke` und `<invokeFuncArgs>` auf `"a" "b" "10"` fest, um einen Aufrufvorgang auszuführen.  
 
 >[!NOTE]
 > Führen Sie den Befehl jeweils ein Mal aus jeder Peerorganisation im Kanal aus. Sobald die Transaktion erfolgreich an den Auftraggeber übermittelt wurde, verteilt der Auftraggeber diese Transaktion an alle Peerorganisationen im Kanal. Dann wird der World State auf allen Peerknoten aller Peerorganisationen im Kanal aktualisiert.  
@@ -389,7 +372,7 @@ Unterstützende Peers sind Peers, bei denen Chaincode installiert ist und zur Au
 
 Wenn Sie Chaincode mithilfe von *azhlfTool* installieren, übergeben Sie alle Peerknotennamen als Wert an das unterstützende Peerargument. Chaincode wird auf jedem Peerknoten für diese Organisation installiert. 
 
-Übergeben Sie den Namen der Abfragefunktion und die Liste der Argumente mit Leerzeichen als Trennzeichen in `<queryFunction>` bzw. `<queryFuncArgs>` . Wenn nun wieder der Chaincode „chaincode_example02.go“ als Referenz verwendet wird, müssen Sie `<queryFunction>` auf `query` und `<queryArgs>` auf `"a"` festlegen, um den Wert von „a“ im World State abzufragen.  
+Übergeben Sie den Namen der Abfragefunktion und die Liste der Argumente mit Leerzeichen als Trennzeichen in `<queryFunction>` bzw. `<queryFuncArgs>`  Wenn nun wieder der Chaincode „chaincode_example02.go“ als Referenz verwendet wird, müssen Sie `<queryFunction>` auf `query` und `<queryArgs>` auf `"a"` festlegen, um den Wert von „a“ im World State abzufragen.  
 
 ## <a name="troubleshoot"></a>Problembehandlung
 

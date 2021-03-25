@@ -2,6 +2,8 @@
 title: Unter Azure unterstützte Mainframeworkloads | Microsoft-Dokumentation
 description: Verwenden Sie einen Mainframe-Emulator und andere Dienste von Microsoft-Partnern, um Ihre Mainframeworkloads neu zu hosten, z. B. IBM Z-basierte Systeme mit Microsoft Azure.
 services: virtual-machines
+ms.service: virtual-machines
+ms.subservice: mainframe-rehosting
 documentationcenter: ''
 author: njray
 manager: edprice
@@ -9,13 +11,12 @@ editor: edprice
 ms.author: larryme
 ms.date: 05/09/2020
 ms.topic: article
-ms.service: multiple
-ms.openlocfilehash: 679cc68a0f43d6bff74fef85d705544db2f2585b
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 467cae97f9b4efe4782ac802cccd84271d475ea7
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102558252"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104955430"
 ---
 # <a name="mainframe-workloads-supported-on-azure"></a>Unter Azure unterstützte Mainframeworkloads
 

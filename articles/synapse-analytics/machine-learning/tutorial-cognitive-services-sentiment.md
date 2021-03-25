@@ -10,10 +10,10 @@ ms.date: 11/20/2020
 author: nelgson
 ms.author: negust
 ms.openlocfilehash: 08d5e53facce172c2287c2e341895f0ee38571f0
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98943703"
 ---
 # <a name="tutorial-sentiment-analysis-with-cognitive-services-preview"></a>Tutorial: Stimmungsanalyse mit Cognitive Services (Vorschau)
@@ -32,7 +32,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- [Azure Synapse Analytics-Arbeitsbereich](../get-started-create-workspace.md) mit einem als Standardspeicher konfigurierten Azure Data Lake Storage Gen2-Speicherkonto. Für das hier verwendete Data Lake Storage Gen2-Dateisystem müssen Sie über die Rolle *Mitwirkender an Storage-Blobdaten* verfügen.
+- [Azure Synapse Analytics-Arbeitsbereich](../get-started-create-workspace.md) mit einem als Standardspeicher konfigurierten Azure Data Lake Storage Gen2-Speicherkonto. Für das hier verwendete Data Lake Storage Gen2-Dateisystem müssen Sie über die Rolle *Mitwirkender an Storage-Blobdaten* verfügen.
 - Spark-Pool in Ihrem Azure Synapse Analytics-Arbeitsbereich. Ausführliche Informationen finden Sie unter [Erstellen eines Spark-Pools in Azure Synapse](../quickstart-create-sql-pool-studio.md).
 - Vorkonfigurationsschritte im Tutorial [Konfigurieren von Cognitive Services in Azure Synapse](tutorial-configure-cognitive-services-synapse.md)
 
@@ -82,9 +82,9 @@ Für dieses Tutorial wird eine Spark-Tabelle benötigt.
 Für die Authentifizierung bei Cognitive Services müssen Sie auf das Geheimnis für Ihren Schlüsseltresor verweisen. Die folgenden Eingaben sind abhängig von [erforderlichen Schritten](tutorial-configure-cognitive-services-synapse.md), die Sie zu diesem Zeitpunkt bereits abgeschlossen haben sollten.
 
 - **Azure-Abonnement**: Wählen Sie das Abonnement aus, zu dem Ihre Key Vault-Instanz gehört.
-- **Cognitive Services-Konto**: Geben Sie die Textanalyseressource ein, mit der Sie eine Verbindung herstellen möchten.
-- **Verknüpfter Azure Key Vault-Dienst**: Im Rahmen der erforderlichen Schritte haben Sie einen verknüpften Dienst für Ihre Textanalyseressource erstellt. Wählen Sie ihn hier aus.
-- **Geheimnisname**: Geben Sie den Namen des Geheimnisses in Ihrem Schlüsseltresor ein, der den Schlüssel für die Authentifizierung bei Ihrer Cognitive Services-Ressource enthält.
+- **Cognitive Services-Konto:** Geben Sie die Textanalyseressource ein, mit der Sie eine Verbindung herstellen.
+- **Mit Azure Key Vault verknüpfter Dienst:** Im Rahmen der erforderlichen Schritte haben Sie einen verknüpften Dienst für Ihre Textanalyseressource erstellt. Wählen Sie ihn hier aus.
+- **Geheimnisname**: Geben Sie den Namen des Geheimnisses in Ihrem Schlüsseltresor ein, der den Schlüssel zum Authentifizieren bei Ihrer Cognitive Services-Ressource enthält.
 
 ![Screenshot: Authentifizierungsdetails für einen Schlüsseltresor](media/tutorial-cognitive-services/tutorial-cognitive-services-sentiment-00f.png)
 

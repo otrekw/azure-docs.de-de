@@ -7,10 +7,10 @@ ms.custom: devx-track-csharp
 ms.date: 11/29/2017
 ms.author: cshoe
 ms.openlocfilehash: b3d09ec4c4ab578a87f0d983c0f243bee2a84597
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94991229"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>SendGrid-Bindungen in Azure Functions
@@ -359,11 +359,11 @@ Die folgende Tabelle listet die Bindungskonfigurationseigenschaften auf, die in 
 
 | *function.json*-Eigenschaft | Attribute/Annotation-Eigenschaft | BESCHREIBUNG | Optional |
 |--------------------------|-------------------------------|-------------|----------|
-| type |–| Muss auf `sendGrid` festgelegt sein.| Nein |
+| Typ |–| Muss auf `sendGrid` festgelegt sein.| Nein |
 | direction |–| Muss auf `out` festgelegt sein.| Nein |
 | name |–| Der Variablenname, der im Funktionscode für die Anforderung oder den Anforderungstext verwendet wird. Dieser Wert ist `$return`, wenn es nur einen Rückgabewert gibt. | Nein |
 | apiKey | ApiKey | Der Name einer App-Einstellung, die Ihren API-Schlüssel enthält. Wenn sie nicht festgelegt wird, lautet der Standardname der App-Einstellung *AzureWebJobsSendGridApiKey*.| Nein |
-| zu| To | Die E-Mail-Adresse des Empfängers. | Ja |
+| zu| Beschreibung | Die E-Mail-Adresse des Empfängers. | Ja |
 | from| From | Die E-Mail-Adresse des Absenders. |  Ja |
 | subject| Subject | Der Betreff der E-Mail. | Ja |
 | text| Text | Der Inhalt der E-Mail. | Ja |

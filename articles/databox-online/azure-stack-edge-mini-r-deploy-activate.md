@@ -10,10 +10,10 @@ ms.date: 10/22/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to activate Azure Stack Edge Mini R so I can use it to transfer data to Azure.
 ms.openlocfilehash: e5076888e692ad16e89f30d455e7f8c4e22a41b9
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96464305"
 ---
 # <a name="tutorial-activate-azure-stack-edge-mini-r"></a>Tutorial: Aktivieren von Azure Stack Edge Mini R
@@ -50,9 +50,9 @@ Vergewissern Sie sich, dass folgende Voraussetzungen erfüllt sind, bevor Sie ei
     ![Seite „Clouddetails“ auf der lokalen Webbenutzeroberfläche 1](./media/azure-stack-edge-mini-r-deploy-activate/activation-1.png)
     
 3. Im Bereich **Aktivieren**:
-    1. Geben Sie den **Aktivierungsschlüssel** ein, den Sie unter [Abrufen des Aktivierungsschlüssels](azure-stack-edge-pro-r-deploy-prep.md#get-the-activation-key) abgerufen haben.
+    1. Geben Sie den **Aktivierungsschlüssel** ein, den Sie unter [Aktivierungsschlüssel für Azure Stack Edge Pro R abrufen](azure-stack-edge-pro-r-deploy-prep.md#get-the-activation-key) abgerufen haben.
 
-    1. Sie können die proaktive Protokollsammlung aktivieren, damit Microsoft Protokolle basierend auf dem Integritätsstatus des Geräts sammeln kann. Die auf diese Weise gesammelten Protokolle werden in ein Azure Storage-Konto hochgeladen.
+    1. Sie können die proaktive Protokollsammlung aktivieren, damit Microsoft Protokolle basierend auf dem Integritätsstatus des Geräts sammeln kann. Die auf diese Weise gesammelten Protokolle werden in ein Azure Storage-Konto hochgeladen.
     
     1. Wählen Sie **Übernehmen**.
 

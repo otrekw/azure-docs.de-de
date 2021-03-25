@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake
-ms.date: 11/13/2019
-ms.openlocfilehash: 51cf4a4d3aa3cb4654b141a98064460a7152fcec
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.date: 02/16/2021
+ms.openlocfilehash: f7a37e761e37e295bbb92e442b1813ebded2a7cd
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737454"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104955277"
 ---
 # <a name="azure-hybrid-benefit---azure-sql-database--sql-managed-instance"></a>Azure-Hybridvorteil: Azure SQL-Datenbank und verwaltete SQL-Instanzen
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -52,7 +52,6 @@ Festlegen oder Aktualisieren des Lizenztyps mithilfe von PowerShell:
 Festlegen oder Aktualisieren des Lizenztyps mithilfe der Azure-Befehlszeilenschnittstelle:
 
 - [az sql db create](/cli/azure/sql/db#az-sql-db-create)
-- [az sql db update](/cli/azure/sql/db#az-sql-db-update)
 - [az sql mi create](/cli/azure/sql/mi#az-sql-mi-create)
 - [az sql mi update](/cli/azure/sql/mi#az-sql-mi-update)
 
@@ -85,12 +84,12 @@ Der Azure-Hybridvorteil für SQL Server unterscheidet sich in zwei wichtigen Ber
 
 #### <a name="what-are-the-specific-rights-of-the-azure-hybrid-benefit-for-sql-server"></a>Welche spezifischen Rechte gelten für den Azure-Hybridvorteil für SQL Server?
 
-Azure SQL-Datenbank-Kunden bietet Azure-Hybridvorteil für SQL Server die folgenden Rechte:
+Kunden mit Azure SQL-Datenbank und Azure SQL Managed Instance bietet Azure-Hybridvorteil für SQL Server die folgenden Rechte:
 
 |Lizenzspeicherbedarf|Was erhalten Sie beim Azure-Hybridvorteil für SQL Server?|
 |---|---|
 |SQL Server Enterprise Edition – Hauptkunden mit SA|<li>Zahlung des Basistarifs für SKUs „Hyperscale“, „Universell“ oder „Unternehmenskritisch“</li><br><li>1 Kern lokal = 4 Kerne in der SKU „Hyperscale“</li><br><li>1 Kern lokal = 4 Kerne in SKU „Universell“</li><br><li>1 Kern lokal = 1 Kern in SKU „Unternehmenskritisch“</li>|
-|SQL Server Standard Edition – Hauptkunden mit SA|<li>Zahlung des Basistarifs nur für SKUs „Hyperscale“ und „Universell“</li><br><li>1 Kern lokal = 1 Kern in der SKU „Hyperscale“</li><br><li>1 Kern lokal = 1 Kern in SKU „Universell“</li>|
+|SQL Server Standard Edition – Hauptkunden mit SA|<li>Zahlung des Basistarifs für SKUs „Hyperscale“, „Universell“ oder „Unternehmenskritisch“</li><br><li>1 Kern lokal = 1 Kern in der SKU „Hyperscale“</li><br><li>1 Kern lokal = 1 Kern in SKU „Universell“</li><br><li>4 Kerne lokal = 1 Kern in SKU „Unternehmenskritisch“</li>|
 |||
 
 

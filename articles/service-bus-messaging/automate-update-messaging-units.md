@@ -2,13 +2,13 @@
 title: 'Azure Service Bus: Automatisches Aktualisieren von Messagingeinheiten'
 description: In diesem Artikel erfahren Sie, wie Sie Messagingeinheiten eines Service Bus-Namespace automatisch aktualisieren.
 ms.topic: how-to
-ms.date: 09/15/2020
-ms.openlocfilehash: 594f9987bfa5a7a439fb862a0345d0004785b189
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/03/2021
+ms.openlocfilehash: 7fc3aca82b8f01d70dec4fc2dac7842895417ec9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101720595"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102177954"
 ---
 # <a name="automatically-update-messaging-units-of-an-azure-service-bus-namespace"></a>Automatisches Aktualisieren von Messagingeinheiten eines Azure Service Bus-Namespace 
 Bei der automatischen Skalierung können Sie jeweils die richtige Menge an Ressourcen ausführen, um die Lasten für Ihre Anwendung zu bewältigen. Sie können Ressourcen hinzufügen, um auf einen Anstieg der Last zu reagieren, und Kosten sparen, indem Sie ungenutzte Ressourcen entfernen. Weitere Informationen zur Funktion „Autoskalierung“ von Azure Monitor finden Sie unter [Übersicht über die Autoskalierung in Microsoft Azure](../azure-monitor/autoscale/autoscale-overview.md). 
@@ -136,8 +136,14 @@ Im vorherigen Abschnitt haben Sie erfahren, wie Sie eine Standardbedingung für 
     
     :::image type="content" source="./media/automate-update-messaging-units/repeat-specific-days-2.png" alt-text="Auf bestimmte Anzahl von Messagingeinheiten skalieren: an bestimmten Tagen wiederholen":::
 
-> [!IMPORTANT]
-> Weitere Informationen zur Funktionsweise der Einstellungen für die Autoskalierung – insbesondere dazu, wie ein Profil oder eine Bedingung ausgewählt und mehrere Regeln ausgewertet werden – finden Sie unter [Grundlegendes zu Einstellungen für die automatische Skalierung](../azure-monitor/autoscale/autoscale-understanding-settings.md).          
+    
+    Weitere Informationen zur Funktionsweise der Einstellungen für die Autoskalierung – insbesondere dazu, wie ein Profil oder eine Bedingung ausgewählt und mehrere Regeln ausgewertet werden – finden Sie unter [Grundlegendes zu Einstellungen für die automatische Skalierung](../azure-monitor/autoscale/autoscale-understanding-settings.md).          
+
+    > [!NOTE]
+    > - Die Metriken, die Sie überprüfen, um Entscheidungen zur automatischen Skalierung zu treffen, können fünf bis zehn Minuten alt sein. Bei Workloads mit Lastspitzen empfiehlt es sich, für das Hochskalieren einen kürzeren und für das Herunterskalieren einen längeren Zeitraum (mehr als zehn Minuten) zu verwenden, um sicherzustellen, dass für die Verarbeitung von Workloads mit Lastspitzen genügend Messagingeinheiten vorhanden sind. 
+    > 
+    > - Wenn Fehler aufgrund fehlender Kapazität (keine Messagingeinheiten verfügbar) angezeigt werden, erstellen Sie ein Supportticket.  
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu Messagingeinheiten finden Sie unter [Service Bus Premium- und Standard-Preisstufe für Messaging](service-bus-premium-messaging.md).

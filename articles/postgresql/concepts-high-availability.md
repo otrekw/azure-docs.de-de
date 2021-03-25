@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 6/15/2020
 ms.openlocfilehash: aa9f38b2cefa60a0c3341c1317cf45fbcb735301
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92485442"
 ---
 # <a name="high-availability-in-azure-database-for-postgresql--single-server"></a>Hochverfügbarkeit in Azure Database for PostgreSQL (Einzelserver)
@@ -49,7 +49,7 @@ Hier finden Sie einige Szenarien mit geplanter Wartung:
 Ungeplante Downtime kann aufgrund von unvorhergesehenen Fehlern auftreten, darunter Fehler in der zugrunde liegenden Hardware, Netzwerkprobleme und Softwarefehler. Wenn der Datenbankserver unerwartet ausfällt, wird automatisch innerhalb weniger Sekunden ein neuer Datenbankserver bereitgestellt. Der Remotespeicher wird automatisch an den neuen Datenbankserver angefügt. Die PostgreSQL-Engine führt den Wiederherstellungsvorgang mithilfe von WAL-Dateien und Datenbankdateien durch und öffnet den Datenbankserver, sodass Clients eine Verbindung herstellen können. Nicht committete Transaktionen gehen verloren und müssen von der Anwendung erneut ausgeführt werden. Ungeplante Downtime kann zwar nicht vermieden werden, Azure Database for PostgreSQL minimiert diese jedoch durch automatisches Ausführen von Wiederherstellungsvorgängen sowohl auf Ebene der Datenbankserver als auch auf der Speicherebene, ohne dass ein menschliches Eingreifen erforderlich ist. 
 
 
-:::image type="content" source="./media/concepts-high-availability/azure-postgresql-built-in-high-availability.png" alt-text="Übersicht über die elastische Skalierung in Azure PostgreSQL":::
+:::image type="content" source="./media/concepts-high-availability/azure-postgresql-built-in-high-availability.png" alt-text="Übersicht über Hochverfügbarkeit in Azure PostgreSQL":::
 
 1. Azure PostgreSQL-Server mit schnell skalierenden Funktionen
 2. Ein Gateway, das als Proxy fungiert und Clientverbindungen an den richtigen Datenbankserver weiterleitet

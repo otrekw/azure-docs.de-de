@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 01/05/2021
 author: lgayhardt
 ms.author: lagayhar
-ms.openlocfilehash: 6276527230cf889b471887fdb3da70e06a2fc8d6
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: dcfe12b30e336863c8e112d9ad675a2f57fe48f4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100582339"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102179135"
 ---
 # <a name="azure-monitor-for-azure-data-explorer-preview"></a>Azure Monitor für Azure Data Explorer (Vorschau)
 
@@ -103,10 +103,10 @@ Die Registerkarte **Schlüsselmetrik** zeigt eine einheitliche Ansicht einiger M
 
 Auf der Registerkarte **Verbrauch** können Benutzer Details zur Leistung der Befehle und Abfragen des Clusters anzeigen. Auf dieser Seite haben Sie folgende Möglichkeiten:
  
- - Sie können ermitteln, welche Benutzer und Anwendungen die meisten Abfragen senden oder die meisten CPU- und Arbeitsspeicherressourcen verbrauchen. So können Sie herausfinden, welche Benutzer die ressourcenintensivsten Abfragen zur Verarbeitung durch den Cluster senden.
- - Sie können die wichtigsten Benutzer und Anwendungen in Bezug auf fehlerhafte Abfragen identifizieren.
- - Sie können aktuelle Änderungen an der Anzahl von Abfragen im Vergleich zum bisherigen Tagesdurchschnitt (der letzten 16 Tage) identifizieren (nach Benutzer oder Anwendung).
- - Sie können Trends und Spitzenwerte bei der Anzahl von Abfragen sowie beim Arbeitsspeicher- und CPU-Verbrauch nach Benutzer, Anwendung und Befehlstyp identifizieren.
+ - Sie können ermitteln, welche Arbeitsauslastungsgruppen, Benutzer und Anwendungen die meisten Abfragen senden oder die meisten CPU- und Arbeitsspeicherressourcen verbrauchen. So können Sie herausfinden, welche Arbeitsauslastungen die ressourcenintensivsten Abfragen zur Verarbeitung durch den Cluster senden.
+ - Sie können die wichtigsten Arbeitsauslastungsgruppen, Benutzer und Anwendungen in Bezug auf fehlerhafte Abfragen identifizieren.
+ - Sie können aktuelle Änderungen an der Anzahl von Abfragen im Vergleich zum bisherigen Tagesdurchschnitt (der letzten 16 Tage) identifizieren (nach Arbeitsauslastungsgruppe, Benutzer oder Anwendung).
+ - Sie können Trends und Spitzenwerte bei der Anzahl von Abfragen sowie beim Arbeitsspeicher- und CPU-Verbrauch nach Arbeitsauslastungsgruppe, Benutzer, Anwendung und Befehlstyp identifizieren.
 
 [![Screenshot der Vorgangsansicht mit Ringdiagrammen der wichtigsten Anwendungen nach Anzahl von Befehlen und Abfragen, der wichtigsten Prinzipale nach Anzahl von Befehlen und Abfragen und der wichtigsten Befehle nach Befehlstyp](./media/data-explorer/usage.png)](./media/data-explorer/usage.png#lightbox)
 

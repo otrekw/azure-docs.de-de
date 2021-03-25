@@ -5,16 +5,16 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/14/2021
+ms.date: 03/03/2021
 ms.author: alkohli
 ms.subservice: common
-ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: e038cdcb50c7ee15960c904c8e234d6917d02f3b
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.custom: devx-track-azurepowershell, devx-track-azurecli, contperf-fy21q3
+ms.openlocfilehash: b62c3c4be4fdffd9f509b86d248cd028518ae89a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98706018"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102181940"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>Verwenden des Azure Import/Export-Diensts zum Importieren von Daten in Azure Files
 
@@ -40,7 +40,6 @@ Vor dem Erstellen eines Importauftrags zum Übertragen von Daten in Azure Files 
         - [Erstellen eines DHL-Kontos](http://www.dhl-usa.com/en/express/shipping/open_account.html).
 
 
-
 ## <a name="step-1-prepare-the-drives"></a>Schritt 1: Vorbereiten der Laufwerke
 
 Dieser Schritt generiert eine Journaldatei. In der Journaldatei werden grundlegende Informationen wie Laufwerksseriennummer, Verschlüsselungsschlüssel und Speicherkontendetails gespeichert.
@@ -51,7 +50,7 @@ Führen Sie zum Vorbereiten der Laufwerke die folgenden Schritte aus.
 2. Erstellen Sie ein einzelnes NTFS-Volume auf jedem Laufwerk. Weisen Sie dem Volume einen Laufwerkbuchstaben zu. Verwenden Sie keine Bereitstellungspunkte.
 3. Ändern Sie die Datei *dataset.csv* im Stammverzeichnis, in dem sich das Tool befindet. Je nachdem, ob Sie eine Datei, einen Ordner oder beides importieren möchten, fügen Sie der *dataset.csv*-Datei Einträge wie in den folgenden Beispielen hinzu.
 
-   - **So importieren Sie eine Datei**: Im folgenden Beispiel befinden sich die zu kopierenden Daten auf dem Laufwerk „F:“. Die Datei *MyFile1.txt* wird auf das Stammverzeichnis von *MyAzureFileshare1* kopiert. Wenn *MyAzureFileshare1* nicht vorhanden ist, wird es im Azure Storage-Konto erstellt. Die Ordnerstruktur wird beibehalten.
+   - **So importieren Sie eine Datei:** Im folgenden Beispiel befinden sich die zu kopierenden Daten auf dem Laufwerk „F:“. Die Datei *MyFile1.txt* wird auf das Stammverzeichnis von *MyAzureFileshare1* kopiert. Wenn *MyAzureFileshare1* nicht vorhanden ist, wird es im Azure Storage-Konto erstellt. Die Ordnerstruktur wird beibehalten.
 
        ```
            BasePath,DstItemPathOrPrefix,ItemType,Disposition,MetadataFile,PropertiesFile
@@ -119,51 +118,62 @@ Zusätzliche Beispiele finden Sie unter [Beispiele für Journaldateien](#samples
 
 Führen Sie die folgenden Schritte aus, um einen Importauftrag im Azure-Portal zu erstellen.
 1. Melden Sie sich bei https://portal.azure.com/ an.
-2. Wechseln Sie zu **Alle Dienste > Speicher > Import-/Exportaufträge**.
+2. Suchen Sie nach **Aufträge importieren/exportieren**.
 
-    ![Zu „Import/Export“ wechseln](./media/storage-import-export-data-to-blobs/import-to-blob1.png)
+    ![Suchen nach „Aufträge importieren/exportieren“](./media/storage-import-export-data-to-blobs/import-to-blob-1.png)
 
-3. Klicken Sie auf **Import-/Exportauftrag erstellen**.
+3. Wählen Sie **+ Neu** aus.
 
-    ![Klicken auf „Import-/Exportauftrag“](./media/storage-import-export-data-to-blobs/import-to-blob2.png)
+    ![Auswählen von „Neu“, um einen neuen Auftrag zu erstellen ](./media/storage-import-export-data-to-blobs/import-to-blob-2.png)
 
 4. Gehen Sie unter **Grundlegende Einstellungen** wie folgt vor:
 
-    - Wählen Sie **Import in Azure** aus.
-    - Geben Sie einen aussagekräftigen Namen für den Importauftrag ein. Verwenden Sie diesen Namen, um Ihre Aufträge während und nach der Bearbeitung nachzuverfolgen.
-        -  Dieser Name darf nur Kleinbuchstaben, Zahlen, Bindestriche und Unterstriche enthalten.
-        -  Der Name muss mit einem Buchstaben beginnen und darf keine Leerzeichen enthalten.
-    - Wählen Sie ein Abonnement aus.
-    - Wählen Sie eine Ressourcengruppe aus.
+   1. Wählen Sie ein Abonnement aus.
+   1. Wählen Sie eine Ressourcengruppe aus, oder wählen Sie **Neu erstellen** aus, und erstellen Sie eine neue.
+   1. Geben Sie einen aussagekräftigen Namen für den Importauftrag ein. Verwenden Sie den Namen, um den Fortschritt Ihrer Aufträge zu verfolgen.
+       * Der Name darf nur Kleinbuchstaben, Ziffern und Bindestriche enthalten.
+       * Der Name muss mit einem Buchstaben beginnen und darf keine Leerzeichen enthalten.
+   1. Wählen Sie **Import in Azure** aus.
 
-        ![Importauftrag erstellen – Schritt 1](./media/storage-import-export-data-to-blobs/import-to-blob3.png)
+    ![Importauftrag erstellen – Schritt 1](./media/storage-import-export-data-to-blobs/import-to-blob-3.png)
 
-3. Gehen Sie unter **Auftragsdetails** wie folgt vor:
+   Wählen Sie **Weiter: Auftragsdetails >** aus, um fortzufahren.
 
-    - Laden Sie die Journaldateien hoch, die Sie im vorhergehenden [Schritt 1: Vorbereiten der Laufwerke](#step-1-prepare-the-drives) erstellt haben.
-    - Wählen Sie das Speicherkonto aus, in das die Daten importiert werden.
-    - Der Ablageort wird automatisch basierend auf der Region des ausgewählten Speicherkontos mit Daten aufgefüllt.
+5. Gehen Sie unter **Auftragsdetails** wie folgt vor:
 
-       ![Importauftrag erstellen – Schritt 2](./media/storage-import-export-data-to-blobs/import-to-blob4.png)
+   1. Laden Sie die Journaldateien hoch, die Sie im vorhergehenden [Schritt 1: Vorbereiten der Laufwerke](#step-1-prepare-the-drives) erstellt haben.
+   1. Wählen Sie die Azure-Zielregion für die Bestellung aus.
+   1. Wählen Sie das Speicherkonto für den Import aus.
 
-4. Gehen Sie unter **Informationen für Rücksendung** wie folgt vor:
+      Der Ablageort wird automatisch basierend auf der Region des ausgewählten Speicherkontos mit Daten aufgefüllt.
 
-    - Wählen Sie den Spediteur in der Dropdownliste aus. Wenn Sie einen anderen Spediteur als FedEx/DHL beauftragen möchten, wählen Sie eine der Optionen in der Dropdownliste aus. Wenden Sie sich unter `adbops@microsoft.com` an das Azure Data Box Operations-Team, und informieren Sie es über den von Ihnen vorgesehenen Spediteur.
-    - Geben Sie eine gültige Spediteurkontonummer ein, die Sie mit diesem Spediteur erstellt haben. Microsoft verwendet dieses Konto, um die Laufwerke nach Abschluss des Importauftrags an Sie zurückzuschicken.
-    - Geben Sie vollständige und gültige Kontaktdaten an: Name, Telefonnummer, E-Mail-Adresse, Straße, Stadt, PLZ, Bundesstaat/Provinz und Land/Region.
+   1. Wenn Sie kein ausführliches Protokoll speichern möchten, deaktivieren Sie die Option **Ausführliches Protokoll im Blobcontainer „waimportexport“ speichern**.
+
+
+   ![Importauftrag erstellen – Schritt 2](./media/storage-import-export-data-to-blobs/import-to-blob-4.png)
+
+   Wählen Sie **Weiter: Versand >** aus, um fortzufahren.
+
+4. In **Versand**:
+
+    1. Wählen Sie den Spediteur in der Dropdownliste aus. Wenn Sie einen anderen Spediteur als FedEx/DHL beauftragen möchten, wählen Sie eine der Optionen in der Dropdownliste aus. Wenden Sie sich unter `adbops@microsoft.com` an das Azure Data Box Operations-Team, und informieren Sie es über den von Ihnen vorgesehenen Spediteur.
+    1. Geben Sie eine gültige Spediteurkontonummer ein, die Sie mit diesem Spediteur erstellt haben. Microsoft verwendet dieses Konto, um die Laufwerke nach Abschluss des Importauftrags an Sie zurückzuschicken.
+    1. Geben Sie vollständige und gültige Kontaktdaten an: Name, Telefonnummer, E-Mail-Adresse, Straße, Stadt, PLZ, Bundesstaat/Provinz und Land/Region.
 
         > [!TIP]
         > Geben Sie anstelle einer E-Mail-Adresse für einen einzelnen Benutzer, eine Gruppen E-Mail-Adresse ein. Dadurch wird sichergestellt, dass Sie Benachrichtigungen erhalten, selbst wenn ein Administrator geht.
 
-       ![Importauftrag erstellen – Schritt 3](./media/storage-import-export-data-to-blobs/import-to-blob5.png)
+    ![Importauftrag erstellen – Schritt 3](./media/storage-import-export-data-to-blobs/import-to-blob-5.png)
 
+   Wählen Sie **Überprüfen und erstellen** aus, um den Vorgang fortzusetzen.
 
-5. Gehen Sie unter **Zusammenfassung** wie folgt vor:
+5. In der Bestellübersicht:
 
-    - Geben Sie die Lieferadresse des Azure-Rechenzentrums für die Rücksendung der Datenträger an Azure an. Stellen Sie sicher, dass der Auftragsname und die vollständige Adresse auf dem Adressetikett angegeben sind.
-    - Klicken Sie auf **OK**, um das Erstellen des Importauftrags abzuschließen.
+   1. Lesen Sie die **Geschäftsbedingungen**, und wählen sie dann „Ich bestätige die Richtigkeit aller angegebenen Informationen und stimme den oben genannten Bestimmungen zu“ aus. Anschließend wird die Überprüfung ausgeführt.
+   1. Überprüfen Sie die in der Zusammenfassung bereitgestellten Informationen zum Auftrag. Notieren Sie sich den Namen des Auftrags und die Versandadresse des Azure-Rechenzentrums, damit Sie Datenträger an Azure zurücksenden können. Diese Informationen werden später auf dem Adressetikett verwendet.
+   1. Klicken Sie auf **Erstellen**.
 
-        ![Importauftrag erstellen – Schritt 4](./media/storage-import-export-data-to-blobs/import-to-blob6.png)
+        ![Importauftrag erstellen – Schritt 4](./media/storage-import-export-data-to-blobs/import-to-blob-6.png)
 
 ### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
@@ -351,7 +361,7 @@ Install-Module -Name Az.ImportExport
 
 ## <a name="step-5-verify-data-upload-to-azure"></a>Schritt 5: Überprüfen des Datenuploads in Azure
 
-Überwachen Sie den Auftrag bis zu seinem Abschluss. Sobald der Auftrag abgeschlossen ist, überprüfen Sie, ob Ihre Daten in Azure hochgeladen wurden. Löschen Sie die lokalen Daten erst, wenn Sie überprüft haben, dass die Daten erfolgreich hochgeladen wurden.
+Überwachen Sie den Auftrag bis zu seinem Abschluss. Sobald der Auftrag abgeschlossen ist, überprüfen Sie, ob Ihre Daten in Azure hochgeladen wurden. Löschen Sie die lokalen Daten erst, wenn Sie überprüft haben, ob die Daten erfolgreich hochgeladen wurden.
 
 ## <a name="samples-for-journal-files"></a>Beispiele für Journaldateien
 

@@ -5,12 +5,12 @@ ms.assetid: 70fb0e6e-8727-4cca-ba82-98a4d21586ff
 ms.topic: article
 ms.date: 11/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 6f0ff7a54c2ad1fa1af649c8082498b442783c7e
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: cdcf22a42375949cc4d6be0b4f3062cee26219d6
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608076"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101704853"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Kaufen eines benutzerdefinierten Domänennamens für Azure App Service
 
@@ -211,7 +211,7 @@ In Azure werden ablaufende bzw. abgelaufene App Service-Domänen wie folgt verar
 * Bei deaktivierter automatischer Verlängerung: 90 Tage vor Ablauf der Domäne erhalten Sie eine E-Mail mit einer Benachrichtigung über die Verlängerung, und die Schaltfläche **Domäne verlängern** ist im Portal aktiviert.
 * Bei aktivierter automatischer Verlängerung: Am Tag nach dem Ablaufdatum Ihrer Domäne versucht Azure, Ihnen die Verlängerung des Domänennamens in Rechnung zu stellen.
 * Wenn während der automatischen Verlängerung ein Fehler auftritt (z. B. bei Ablauf Ihrer hinterlegten Karte) oder die automatische Verlängerung deaktiviert ist und Sie das Ablaufen der Domäne zulassen, werden Sie von Azure über den Domänenablauf informiert, und Ihr Domänenname wird „geparkt“. Sie können Ihre Domäne [manuell verlängern](#renew-the-domain).
-* Am 4. und 12. Tag nach dem Ablauf erhalten Sie von Azure weitere Benachrichtigungs-E-Mails. Sie können Ihre Domäne [manuell verlängern](#renew-the-domain).
+* Am 4. und 12. Tag nach dem Ablauf erhalten Sie von Azure weitere Benachrichtigungs-E-Mails. Sie können Ihre Domäne [manuell verlängern](#renew-the-domain). Am 5. Tag nach dem Ablauf wird die DNS-Auflösung für die abgelaufene Domäne angehalten.
 * Am 19. Tag nach dem Ablauf bleibt Ihre Domäne weiterhin angehalten, unterliegt dann aber einer Einlösegebühr. Sie können sich telefonisch an den Kundensupport wenden, um Ihren Domänennamen zu verlängern. Hierfür gelten die jeweiligen Gebühren für die Verlängerung und Einlösung.
 * Am 25. Tag nach dem Ablauf wird Ihre Domäne von Azure über einen Branchenauktionsdienst zur Auktion freigegeben. Sie können sich telefonisch an den Kundensupport wenden, um Ihren Domänennamen zu verlängern. Hierfür gelten die jeweiligen Gebühren für die Verlängerung und Einlösung.
 * Ab dem 30. Tag nach dem Ablauf können Sie Ihre Domäne nicht mehr einlösen.

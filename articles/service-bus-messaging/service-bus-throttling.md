@@ -4,10 +4,10 @@ description: 'Übersicht über Service Bus-Drosselung: Tarif „Standard“ und 
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 436f9a40269f7eea4e31b55b9657d38849876eb4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85340957"
 ---
 # <a name="throttling-operations-on-azure-service-bus"></a>Drosselungsvorgänge für Azure Service Bus
@@ -72,13 +72,13 @@ Wie weiter unten in diesem Artikel erwähnt, besteht bei einer Drosselung kein R
 
 Es ist klar, dass einige Anwendungen unter Umständen sensibel auf eine Drosselung reagieren. In diesem Fall empfehlen wir Ihnen, [für Ihren derzeitigen Service Bus-Standardnamespace die Migration zu Premium durchzuführen](service-bus-migrate-standard-premium.md). 
 
-Bei der Migration können Sie Ihrem Service Bus-Namespace dedizierte Ressourcen zuordnen und diese entsprechend hochskalieren, wenn Ihre Arbeitsauslastung eine Spitze aufweist, und die Wahrscheinlichkeit einer Drosselung verringern. Wenn sich Ihre Arbeitsauslastung wieder normalisiert hat, können Sie die Ressourcen, die Ihrem Namespace zugeordnet sind, dann auch wieder zentral herunterskalieren.
+Bei der Migration können Sie Ihrem Service Bus-Namespace dedizierte Ressourcen zuordnen und diese entsprechend zentral hochskalieren, wenn Ihre Arbeitsauslastung eine Spitze aufweist, und die Wahrscheinlichkeit einer Drosselung verringern. Wenn sich Ihre Arbeitsauslastung wieder normalisiert hat, können Sie die Ressourcen, die Ihrem Namespace zugeordnet sind, dann auch wieder zentral herunterskalieren.
 
 ## <a name="throttling-in-azure-service-bus-premium-tier"></a>Drosselung im Tarif „Premium“ von Azure Service Bus
 
 Im [Tarif „Premium“ von Azure Service Bus](service-bus-premium-messaging.md) werden jedem Namespace, der vom Kunden eingerichtet wird, dedizierte Ressourcen in Form von Messagingeinheiten zugeordnet. Für diese dedizierten Ressourcen sind der Durchsatz und die Latenz vorhersagbar, und sie werden für Fälle empfohlen, in denen Produktionssysteme mit hohem Durchsatz oder erhöhter Sensibilität genutzt werden.
 
-Darüber hinaus ermöglicht der Tarif „Premium“ Kunden auch das Hochskalieren ihrer Durchsatzkapazität, falls es zu Spitzen bei der Arbeitsauslastung kommt.
+Darüber hinaus ermöglicht der Tarif „Premium“ Kunden auch das zentrale Hochskalieren ihrer Durchsatzkapazität, falls es zu Spitzen bei der Arbeitsauslastung kommt.
 
 ### <a name="how-does-throttling-work-in-service-bus-premium"></a>Wie funktioniert die Drosselung für den Tarif „Premium“ von Service Bus?
 
@@ -123,5 +123,5 @@ Weitere Informationen und Beispiele für die Verwendung von Service Bus-Messagin
 
 * [Übersicht über Service Bus-Messaging](service-bus-messaging-overview.md)
 * [Schnellstart: Senden und Empfangen von Nachrichten mit dem Azure-Portal und .NET](service-bus-quickstart-portal.md)
-* [Tutorial: Aktualisieren des Bestands mit dem Azure-Portal und mit Themen/Abonnements](service-bus-tutorial-topics-subscriptions-portal.md)
+* [Tutorial: Aktualisieren des Bestands über das Azure-Portal und mithilfe von Themen/Abonnements](service-bus-tutorial-topics-subscriptions-portal.md)
 

@@ -13,10 +13,10 @@ ms.author: sashan
 ms.reviewer: sstein
 ms.date: 07/28/2020
 ms.openlocfilehash: be632ba06edc858e7eadcd6e57a4f7769f69f2cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91321678"
 ---
 # <a name="designing-globally-available-services-using-azure-sql-database"></a>Entwerfen von global verfügbaren Diensten mit Azure SQL-Datenbank
@@ -36,7 +36,7 @@ In diesem Szenario weist die Anwendung die folgenden Merkmale auf:
 * Die Webebene und die Datenebene müssen verbunden werden, um Latenzzeiten und Datenverkehrskosten zu reduzieren.
 * Im Wesentlichen stellen Ausfallzeiten für diese Anwendungen ein höheres Unternehmensrisiko dar als Datenverluste.
 
-In diesem Fall wird die Topologie für die Anwendungsbereitstellung für den Umgang mit regionalen Notfällen optimiert, bei denen das Failover für alle Anwendungskomponenten gleichzeitig ausgeführt werden muss. Diese Topologie ist im folgenden Diagramm dargestellt. Um geografische Redundanz zu erzielen, werden die Ressourcen der Anwendung in Region A und Region B bereitgestellt. Die Ressourcen in Region B werden jedoch erst genutzt, wenn in Region A Fehler auftreten. Zwischen den beiden Regionen wird eine Failovergruppe konfiguriert, um die Datenbankkonnektivität, die Replikation und das Failover zu verwalten. Der Webdienst in beiden Regionen wird so konfiguriert, dass der Zugriff auf die Datenbank über den Lese-/Schreiblistener **&lt;Name der Failovergruppe&gt;.database.windows.net** erfolgt (1). Azure Traffic Manager ist für die Verwendung der [prioritätsbasierten Routingmethode](../../traffic-manager/traffic-manager-configure-priority-routing-method.md) eingerichtet (2).  
+In diesem Fall wird die Topologie für die Anwendungsbereitstellung für den Umgang mit regionalen Notfällen optimiert, bei denen das Failover für alle Anwendungskomponenten gleichzeitig ausgeführt werden muss. Diese Topologie ist im folgenden Diagramm dargestellt. Um geografische Redundanz zu erzielen, werden die Ressourcen der Anwendung in Region A und Region B bereitgestellt. Die Ressourcen in Region B werden jedoch erst genutzt, wenn in Region A Fehler auftreten. Zwischen den beiden Regionen wird eine Failovergruppe konfiguriert, um die Datenbankkonnektivität, die Replikation und das Failover zu verwalten. Der Webdienst in beiden Regionen wird so konfiguriert, dass der Zugriff auf die Datenbank über den Lese-/Schreiblistener **&lt;Name der Failovergruppe&gt;.database.windows.net** erfolgt (1). Azure Traffic Manager ist für die Verwendung der [prioritätsbasierten Routingmethode](../../traffic-manager/traffic-manager-configure-priority-routing-method.md) eingerichtet (2).  
 
 > [!NOTE]
 > [Azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md) wird in diesem Artikel ausschließlich zur Veranschaulichung verwendet. Sie können jede Lastenausgleichslösung einsetzen, die die prioritätsbasierte Routingmethode unterstützt.

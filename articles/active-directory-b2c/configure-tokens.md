@@ -12,12 +12,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: a4299eff296d9795f8d256ff1236a8e8b4ad3e42
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: f22a55a65b7dc4fd4f714d880804e6fd65dbbe46
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97585206"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "101654373"
 ---
 # <a name="configure-tokens-in-azure-active-directory-b2c"></a>Konfigurieren von Token in Azure Active Directory B2C
 
@@ -43,7 +43,8 @@ Das folgende Diagramm zeigt das Verhalten der Lebensdauer für das gleitende Fen
 ![Lebensdauer von Aktualisierungstoken](./media/configure-tokens/refresh-token-lifetime.png)
 
 > [!NOTE]
-> Bei Single-Page-Webanwendungen, die den Autorisierungscodeflow mit PKCE verwenden, hat das Aktualisierungstoken immer eine Lebensdauer von 24 Stunden. [Weitere Informationen zu Sicherheitsaspekten von Aktualisierungstoken im Browser](../active-directory/develop/reference-third-party-cookies-spas.md#security-implications-of-refresh-tokens-in-the-browser)
+> >Bei Single-Page-Webanwendungen, die den Autorisierungscodeflow mit PKCE verwenden, beträgt die Lebensdauer von Aktualisierungstoken immer 24 Stunden. Diese Einschränkung gilt nicht für mobile Apps, Desktop-Apps und Web-Apps. [Weitere Informationen zu Sicherheitsaspekten von Aktualisierungstoken im Browser](../active-directory/develop/reference-third-party-cookies-spas.md#security-implications-of-refresh-tokens-in-the-browser)
+
 
 ## <a name="configure-token-lifetime"></a>Konfigurieren der Tokenlebensdauer
 

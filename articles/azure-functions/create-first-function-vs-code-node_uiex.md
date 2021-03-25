@@ -7,10 +7,10 @@ ms.custom:
 - devx-track-js
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 3cf47d04da51db898e667ef8b31d42d79c9f354e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101747541"
 ---
 # <a name="quickstart-create-a-javascript-function-in-azure-using-visual-studio-code"></a>Schnellstart: Erstellen einer JavaScript-Funktion in Azure mit Visual Studio Code
@@ -47,11 +47,11 @@ Vergewissern Sie sich zunähst, dass Folgendes vorhanden ist:
 
 ## <a name="2-create-your-local-functions-project"></a>2. <a name="create-an-azure-functions-project"></a>Erstellen eines lokalen Azure Functions-Projekts
 
-1. Klicken Sie auf das Azure-Symbol in der <abbr title="">Aktivitätsleiste</abbr>und dann im Bereich **Azure: Functions** auf das Symbol **Neues Projekt erstellen...** .
+1. Klicken Sie auf das Azure-Symbol in der <abbr title="">Aktivitätsleiste</abbr>und dann im Bereich **Azure: Funktionen** das Symbol für **Neues Projekt erstellen...** aus.
 
     ![Auswählen von „Neues Projekt erstellen“](./media/functions-create-first-function-vs-code/create-new-project.png)
 
-1. **Wählen Sie einen Verzeichnisspeicherort** für Ihren Projektarbeitsbereich aus, und klicken Sie dann auf **Auswählen**. 
+1. **Wählen Sie einen Verzeichnisspeicherort** für Ihren Projektarbeitsbereich und dann **Auswählen** aus. 
 
 1. Geben Sie nach entsprechender Aufforderung Folgendes ein:
 
@@ -70,7 +70,7 @@ Vergewissern Sie sich zunähst, dass Folgendes vorhanden ist:
 
 <br/>
 <details>
-<summary><strong>Sie können kein Azure Functions-Projekt erstellen?</strong></summary>
+<summary><strong>Sie können kein Funktionsprojekt erstellen?</strong></summary>
 
 Dies sind die häufigsten Probleme, die beim Erstellen eines lokalen Functions-Projekts gelöst werden müssen:
 * Die Azure Functions-Erweiterung ist nicht installiert. 
@@ -105,10 +105,10 @@ Dies sind die häufigsten Probleme, die beim Erstellen eines lokalen Functions-P
 
 <br/>
 <details>
-<summary><strong>Kann die Funktion nicht lokal ausgeführt werden?</strong></summary>
+<summary><strong>Die Funktion kann nicht lokal ausgeführt werden?</strong></summary>
 
 Dies sind die häufigsten Probleme, die beim Ausführen eines lokalen Functions-Projekts gelöst werden müssen:
-* Azure Functions Core Tools ist nicht installiert. 
+* Azure Functions Core Tools sind nicht installiert. 
 *  Sollten bei der Ausführung unter Windows Probleme auftreten, vergewissern Sie sich, dass die Standardterminalshell für Visual Studio Code nicht auf „WSL Bash“ festgelegt ist. 
 </details>
 
@@ -119,7 +119,7 @@ Dies sind die häufigsten Probleme, die beim Ausführen eines lokalen Functions-
 
 Melden Sie sich zum Veröffentlichen Ihrer App bei Azure an. Sollten Sie bereits angemeldet sein, fahren Sie mit dem nächsten Abschnitt fort.
 
-1. Klicken Sie in der Aktivitätsleiste auf das Azure-Symbol, und klicken Sie dann im Bereich **Azure: Functions** auf **Bei Azure anmelden...** .
+1. Wählen Sie auf der Aktivitätsleiste das Azure-Symbol und anschließend im Bereich **Azure: Funktionen** die Option **Bei Azure anmelden...** aus.
 
     ![Anmelden bei Azure in VS Code](../../includes/media/functions-sign-in-vs-code/functions-sign-into-azure.png)
 
@@ -132,7 +132,7 @@ Melden Sie sich zum Veröffentlichen Ihrer App bei Azure an. Sollten Sie bereits
 
 ## <a name="5-publish-the-project-to-azure"></a>5. Veröffentlichen des Projekts in Azure
 
-Die erste Bereitstellung Ihres Codes umfasst das Erstellen einer Azure Functions-Ressource in Ihrem Azure-Abonnement. 
+Die erste Bereitstellung Ihres Codes umfasst das Erstellen einer Funktionsressource in Ihrem Azure-Abonnement. 
 
 1. Wählen Sie auf der Aktivitätsleiste das Azure-Symbol und anschließend im Bereich **Azure: Funktionen** die Schaltfläche **Deploy to function app...** (In Funktions-App bereitstellen...) aus.
 
@@ -146,13 +146,13 @@ Die erste Bereitstellung Ihres Codes umfasst das Erstellen einer Azure Functions
 
     + **Select Function App in Azure:** (Wählen Sie die Funktions-App in Azure aus:) Wählen Sie die Option `+ Create new Function App`.
 
-    + **Enter a globally unique name for the function app** (Global eindeutigen Namen für die Funktions-App eingeben): Geben Sie einen in Azure eindeutigen Namen in einen URL-Pfad ein. Die globale Eindeutigkeit des eingegebenen Namens wird überprüft.
+    + **Enter a globally unique name for the function app:** (Geben Sie einen global eindeutigen Namen für die Funktions-App ein:) Geben Sie einen Namen ein, der innerhalb von Azure in einem URL-Pfad eindeutig ist. Die globale Eindeutigkeit des eingegebenen Namens wird überprüft.
 
     + **Select a runtime:** (Wählen Sie eine Runtime aus:) Wählen Sie die lokal ausgeführte Node.js-Version aus. Sie können den Befehl `node --version` ausführen, um Ihre Version zu überprüfen.
 
     + **Wählen Sie einen Speicherort für neue Ressourcen aus:**  Wählen Sie eine [Region](https://azure.microsoft.com/regions/) in Ihrer Nähe aus, um eine bessere Leistung zu erzielen. 
 
-1. Nach der Erstellung der Funktions-App wird eine Benachrichtigung angezeigt, und das Bereitstellungspaket wird angewendet. Klicken Sie auf **Ausgabe anzeigen**, um die Ergebnisse der Erstellung und Bereitstellung anzuzeigen. 
+1. Nach der Erstellung der Funktions-App wird eine Benachrichtigung angezeigt, und das Bereitstellungspaket wird angewendet. Wählen Sie **Ausgabe anzeigen** aus, um die Ergebnisse der Erstellung und Bereitstellung anzuzeigen. 
     
     ![Benachrichtigung nach Abschluss der Erstellung](./media/functions-create-first-function-vs-code/function-create-notifications.png)
 
@@ -160,7 +160,7 @@ Die erste Bereitstellung Ihres Codes umfasst das Erstellen einer Azure Functions
 <details>
 <summary><strong>Kann die Funktion nicht veröffentlicht werden?</strong></summary>
 
-In diesem Abschnitt haben Sie die Azure-Ressourcen erstellt und Ihren lokalen Code in der Funktions-App bereitgestellt. Wenn dies nicht erfolgreich war:
+In diesem Abschnitt wurden die Azure-Ressourcen erstellt, und der lokale Code wurde in der Funktions-App bereitgestellt. War dies nicht erfolgreich:
 
 * Überprüfen Sie die Ausgabe auf Fehlerinformationen. Das Glockensymbol in der unteren rechten Ecke ist eine weitere Möglichkeit zum Anzeigen der Ausgabe. 
 * Haben Sie die Veröffentlichung in einer vorhandenen Funktions-App durchgeführt? Diese Aktion überschreibt den Inhalt dieser App in Azure.
@@ -173,10 +173,10 @@ In diesem Abschnitt haben Sie die Azure-Ressourcen erstellt und Ihren lokalen Co
 
 Nach Abschluss des Vorgangs werden in Ihrem Abonnement die folgenden Azure-Ressourcen erstellt, deren Namen auf dem Namen Ihrer Funktions-App basieren: 
 * **Ressourcengruppe:** Eine Ressourcengruppe ist ein logischer Container für verwandte Ressourcen in der gleichen Region.
-* **Azure Storage-Konto:** Mit einer Azure Storage-Ressource werden Statusinformationen und andere Informationen zu Ihren Projekten verwaltet.
+* **Azure Storage-Konto:** Mit einer Storage-Ressource werden Statusinformationen und andere Informationen zu Ihren Projekten verwaltet.
 * **Verbrauchsplan:** Ein Verbrauchsplan definiert den zugrunde liegenden Host für Ihre serverlose Funktions-App.
 * **Funktions-App:** Eine Funktions-App stellt die Umgebung zum Ausführen des Funktionscodes und der Gruppenfunktionen als logische Einheit zur Verfügung.
-* **Application Insights:** Application Insights überwacht die Verwendung Ihrer serverlosen Funktion.
+* **Application Insights:** Application Insights verfolgt die Verwendung Ihrer serverlosen Funktion nach.
 
 </details>
 
@@ -213,7 +213,7 @@ Nach Abschluss des Vorgangs werden in Ihrem Abonnement die folgenden Azure-Resso
 Löschen Sie die Funktions-App und die zugehörigen Ressourcen, um weitere Kosten zu vermeiden.
 
 1. Klicken Sie in Visual Studio Code in der Aktivitätsleiste auf das Azure-Symbol, und klicken Sie dann auf den Azure Functions-Bereich in der Seitenleiste. 
-1. Wählen Sie die Funktions-App aus, klicken Sie mit der rechten Maustaste auf diese, und wählen Sie dann die Option **Delete Function app...** (Funktions-App löschen...) aus.
+1. Wählen Sie die Funktions-App aus, klicken Sie mit der rechten Maustaste darauf, und wählen Sie **Funktions-App löschen...** aus.
 
 <hr/>
 <br/>

@@ -2,17 +2,17 @@
 title: Migrieren von Azure-Datenbankressourcen – Azure Deutschland zu Azure weltweit
 description: Dieser Artikel enthält Informationen zum Migrieren von Azure-Datenbankressourcen von Azure Deutschland zu Azure weltweit.
 ms.topic: article
-ms.date: 10/16/2020
+ms.date: 02/16/2021
 author: gitralf
 ms.author: ralfwi
 ms.service: germany
 ms.custom: bfmigrate
-ms.openlocfilehash: 2692b07deb8e13222214a363f2c99c1b5e9a5aef
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 0e540237a89e9bd4ede4bc565f7f2d95bcd888ad
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96012434"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100635174"
 ---
 # <a name="migrate-database-resources-to-global-azure"></a>Migrieren von Datenbankressourcen zu Azure weltweit
 
@@ -22,7 +22,7 @@ Dieser Artikel enthält Informationen dazu, wie Sie Azure-Datenbankressourcen vo
 
 ## <a name="sql-database"></a>SQL-Datenbank
 
-Um kleinere Azure SQL-Datenbank-Workloads zu migrieren, verwenden Sie die Exportfunktion, um eine BACPAC-Datei zu erstellen. Eine BACPAC-Datei ist eine komprimierte Datei (ZIP-Datei), die Metadaten und die Daten aus der SQL Server-Datenbank enthält. Nachdem Sie die BACPAC-Datei erstellt haben, können Sie die Datei in die Zielumgebung kopieren (z.B. mit AzCopy) und die Importfunktion verwenden, um die Datenbank erneut zu erstellen. Beachten Sie die folgenden Aspekte:
+Erstellen Sie mit der Exportfunktion eine BACPAC-Datei, um kleinere Azure SQL-Datenbank-Workloads zu migrieren, ohne dass die migrierte Datenbank online bleibt. Eine BACPAC-Datei ist eine komprimierte Datei (ZIP-Datei), die Metadaten und die Daten aus der SQL Server-Datenbank enthält. Nachdem Sie die BACPAC-Datei erstellt haben, können Sie die Datei in die Zielumgebung kopieren (z.B. mit AzCopy) und die Importfunktion verwenden, um die Datenbank erneut zu erstellen. Beachten Sie die folgenden Aspekte:
 
 - Damit ein Export im Hinblick auf Transaktionen konsistent ist, müssen Sie sicherstellen, dass eine der folgenden Bedingungen zutrifft:
   - Während des Exports tritt keine Schreibaktivität auf.
@@ -41,9 +41,132 @@ Weitere Informationen finden Sie unter:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
 
-Wenn Sie Azure Synapse Analytics-Ressourcen von Azure Deutschland zu Azure weltweit migrieren möchten, führen Sie die unter „Azure SQL-Datenbank“ beschriebenen Schritte aus.
+## <a name="migrate-sql-database-using-active-geo-replication"></a>Migrieren einer SQL-Datenbank mithilfe der aktiven Georeplikation
+
+Für Datenbanken, die für BACPAC-Dateien zu groß sind oder von einer Cloud zu einer anderen migriert werden sollen und mit minimalen Ausfallzeiten online bleiben, können Sie die aktive Georeplikation von Azure Deutschland zur globalen Azure-Umgebung konfigurieren.
+
+> [!IMPORTANT]
+> Das Konfigurieren der aktiven Georeplikation zum Migrieren von Datenbanken zur globalen Azure-Umgebung wird nur mit Transact-SQL (T-SQL) unterstützt. Außerdem müssen Sie vor der Migration die Aktivierung Ihres Abonnements anfordern, damit die Migration zur globalen Azure-Umgebung unterstützt wird. Zum Übermitteln der Anforderung müssen Sie [diesen Supportanfragelink](#requesting-access) verwenden. 
+
+Ausführliche Informationen zu den Kosten für die aktive Georeplikation finden Sie in [Preise für Azure SQL-Datenbank](https://azure.microsoft.com/pricing/details/sql-database/single/) im Abschnitt **Aktive Georeplikation**.
+
+Zum Migrieren von Datenbanken mit aktiver Georeplikation ist ein logischer Azure SQL-Server in der globalen Azure-Umgebung erforderlich. Sie können den Server im Portal, mit Azure PowerShell, mit der Azure CLI usw. erstellen. Das Konfigurieren der aktiven Georeplikation für die Migration von Azure Deutschland zur globalen Azure-Umgebung wird jedoch nur mithilfe von Transact-SQL (T-SQL) unterstützt.
+
+> [!IMPORTANT]
+> Bei der Migration zwischen Clouds müssen sich das Namenspräfix des primären Servers (Azure Deutschland) und des sekundären Servers (globale Azure-Umgebung) unterscheiden. Wenn die Servernamen identisch sind, wird die Ausführung der ALTER DATABASE-Anweisung erfolgreich ausgeführt, die Migration schlägt jedoch fehl. Wenn das Präfix des Namenspräfix des primären Servers z. B. `myserver` (`myserver.database.cloudapi.de`) lautet, darf das Namenspräfix des sekundären Servers in der globalen Azure-Umgebung nicht ebenfalls `myserver` lauten.
+
+
+Mit der `ALTER DATABASE`-Anweisung können Sie einen Zielserver in der globalen Azure-Umgebung angeben, indem Sie auf der Zielseite den vollqualifizierten DNS-Servernamen verwenden. 
+
+
+```sql
+ALTER DATABASE [sourcedb] add secondary on server [public-server.database.windows.net]
+```
+
+
+- *`sourcedb`* stellt den Datenbanknamen auf einem Azure SQL-Server in Azure Deutschland dar. 
+- *`public-server.database.windows.net`* stellt den Namen des Azure SQL-Servers dar, der in der globalen Azure-Umgebung vorhanden ist, zu der die Datenbank migriert werden soll. Der Namespace „database.windows.net“ ist erforderlich. Ersetzen Sie *public-server* durch den Namen des logischen SQL-Servers in der globalen Azure-Umgebung. Der Server in der globalen Azure-Umgebung muss einen anderen Namen aufweisen als der primäre Server in Azure Deutschland.
+
+
+Der Befehl wird in der Masterdatenbank auf dem Server in Azure Deutschland ausgeführt, der zum Host der zu migrierenden lokalen Datenbank wird. 
+- Die T-SQL-API zum Starten des Kopiervorgangs authentifiziert den angemeldeten Benutzer auf dem Server in der öffentlichen Cloud. Dies erfolgt durch das Suchen nach einem Benutzer, der in der Masterdatenbank des Servers die gleiche SQL-Anmeldung / den gleichen SQL-Benutzernamen aufweist. Dieser Ansatz ist cloudagnostisch. Daher wird zum Starten cloudübergreifender Kopien die T-SQL-API verwendet. Informationen zu Berechtigungen und weitere Informationen zu diesem Thema finden Sie unter [Erstellen und Verwenden der aktiven Georeplikation](../azure-sql/database/active-geo-replication-overview.md) und [ALTER DATABASE (Transact-SQL)](/sql/t-sql/statements/alter-database-transact-sql/).
+- Mit Ausnahme der anfänglichen T-SQL-Befehlserweiterung zum Angeben eines logischen Azure SQL-Servers in der globalen Azure-Umgebung ist der Rest der aktiven Georeplikation mit der bestehenden Ausführung in der lokalen Cloud identisch. Ausführliche Schritte zum Erstellen einer aktiven Georeplikation finden Sie unter [Erstellen und Verwenden der aktiven Georeplikation](../azure-sql/database/active-geo-replication-overview.md). Es besteht jedoch der Unterschied, dass die sekundäre Datenbank auf dem sekundären logischen Server erstellt wird, der in der globalen Azure-Umgebung erstellt wurde. 
+- Sobald die sekundäre Datenbank in der globalen Azure-Umgebung vorhanden ist (als Onlinekopie der Datenbank in Azure Deutschland), kann der Kunde mithilfe des T-SQL-Befehls ALTER DATABASE ein Datenbankfailover von Azure Deutschland zur globalen Azure-Umgebung initiieren (siehe die Tabelle unten).
+- Sobald nach dem Failover aus der sekundären Datenbank eine primäre Datenbank in der globalen Azure-Umgebung geworden ist, können Sie die aktive Georeplikation jederzeit beenden und die sekundäre Datenbank in Azure Deutschland entfernen (siehe die folgende Tabelle und die Schritte im Diagramm). 
+- Nach dem Failover fallen für die sekundäre Datenbank in Azure Deutschland weiterhin Kosten an, bis sie gelöscht wird.
+      
+- Die Verwendung des Befehls `ALTER DATABASE` ist die einzige Möglichkeit, die aktive Georeplikation für die Migration einer Datenbank in Azure Deutschland zur globalen Azure-Umgebung einzurichten. 
+- Die aktive Georeplikation für diese Migration kann nicht mit dem Azure-Portal, mit Azure Resource Manager, PowerShell oder der CLI konfiguriert werden. 
+
+So migrieren Sie eine Datenbank von Azure Deutschland zur globalen Azure-Umgebung:   
+
+1.  Wählen Sie die Benutzerdatenbank in Azure Deutschland aus, z. B. `azuregermanydb`
+2.  Erstellen Sie einen logischen Server in der globalen Azure-Umgebung (in der öffentlichen Cloud), z. B. `globalazureserver`. Sein vollqualifizierter Domänenname (Fully Qualified Domain Name, FQDN) lautet `globalazureserver.database.windows.net`.
+3.  Starten Sie die aktive Georeplikation von Azure Deutschland zur globalen Azure-Umgebung, indem Sie auf dem Server in Azure Deutschland diesen T-SQL-Befehl ausführen. Beachten Sie, dass für den öffentlichen Server der vollqualifizierte DNS-Name `globalazureserver.database.windows.net` verwendet wird. Dadurch wird angegeben, dass sich der Zielserver in der globalen Azure-Umgebung und nicht in Azure Deutschland befindet.
+
+    ```sql
+    ALTER DATABASE [azuregermanydb] ADD SECONDARY ON SERVER [globalazureserver.database.windows.net];
+    ```
+
+4.  Um durch die Replikation die Workloads mit Lese-/Schreibzugriff auf den globalen Azure-Server zu verschieben, initiieren Sie ein geplantes Failover zur globalen Azure-Umgebung, indem Sie auf dem globalen Azure-Server den folgenden T-SQL-Befehl ausführen.
+
+    ```sql
+    ALTER DATABASE [azuregermanydb] FAILOVER;
+    ```
+
+5.  Verwenden Sie den folgenden T-SQL-Befehl, um die aktive Georeplikation zu beenden. Wenn dieser Befehl nach dem geplanten Failover ausgeführt wird, beendet er die Georeplikationsverbindung mit der Datenbank in der globalen Azure-Umgebung, bei der es sich um die Kopie mit Lese-/Schreibzugriff handelt. Dadurch wird der Migrationsprozess abgeschlossen. Wenn der Befehl jedoch vor dem geplanten Failover ausgeführt wird, wird der Migrationsprozess beendet, und die Datenbank in Azure Deutschland bleibt die Kopie mit Lese-/Schreibzugriff. Dieser T-SQL-Befehl sollte vor dem geplanten Failover auf dem logischen Server der aktuellen primären Datenbank der Georeplikation ausgeführt werden, z. B. auf dem Server in Azure Deutschland, und nach dem geplanten Failover auf dem globalen Azure-Server.
+
+
+    `ALTER DATABASE [azuregermanydb] REMOVE SECONDARY ON SERVER [azuregermanyserver];` oder `ALTER DATABASE [azuregermanydb] REMOVE SECONDARY ON SERVER [globalazureserver];`
+
+
+Diese Schritte zum Migrieren von Azure SQL-Datenbanken von Azure Deutschland zu einer globalen Azure-Umgebung können auch mithilfe der aktiven Georeplikation durchgeführt werden.
+
+
+In den folgenden Tabellen sind T-SQL-Befehle zum Verwalten des Failovers aufgeführt. Die folgenden Befehle werden für die cloudübergreifende aktive Georeplikation zwischen Azure Deutschland und der globalen Azure-Umgebung unterstützt: 
+ 
+|Get-Help |BESCHREIBUNG|
+|:--|:--| 
+|[ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current&preserve-view=true) |Verwenden Sie das Argument ADD SECONDARY ON SERVER, um eine sekundäre Datenbank für eine vorhandene Datenbank zu erstellen und die Datenreplikation zu starten.| 
+|[ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current&preserve-view=true) |Verwenden Sie FAILOVER oder FORCE_FAILOVER_ALLOW_DATA_LOSS, um die sekundäre Datenbank zur primären zu erklären und zu ihr zu wechseln – damit starten Sie das Failover.  |
+|[ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current&preserve-view=true) |Verwenden Sie REMOVE SECONDARY ON SERVER, um die Datenreplikation zwischen einer SQL-Datenbank und der angegebenen sekundären Datenbank zu beenden.  |
+ 
+### <a name="active-geo-replication-monitoring-system-views"></a>Ansichten des Überwachungssystems für die aktive Georeplikation 
+ 
+|Get-Help |BESCHREIBUNG|
+|:--|:--| 
+|[sys.geo_replication_links](/sql/relational-databases/system-dynamic-management-views/sys-geo-replication-links-azure-sql-database?view=azuresqldb-current&preserve-view=true)|Gibt Informationen über alle vorhandenen Replikationsverknüpfungen für alle Datenbanken auf dem Azure SQL-Datenbank-Server zurück. |
+|[sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database?view=azuresqldb-current&preserve-view=true) |Ruft den Zeitpunkt der letzten Replikation, die Verzögerung der letzten Replikation und andere Informationen über die Replikationsverknüpfung für eine angegebene SQL-Datenbank ab. |
+|[sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database?view=azuresqldb-current&preserve-view=true) | Zeigt den Status für alle Datenbankvorgänge an, einschließlich des Status der Replikationsverknüpfungen. | 
+|[sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync?view=azuresqldb-current&preserve-view=true) | Bewirkt, dass die Anwendung wartet, bis alle Transaktionen mit erfolgtem Commit repliziert und von der aktiven sekundären Datenbank bestätigt wurden. |
+ 
+
+
+
+### <a name="limitations"></a>Einschränkungen  
+
+- Failovergruppen werden nicht unterstützt. Dies bedeutet, dass Kunden, die Datenbanken aus Azure Deutschland migrieren, während des Failovers die Verbindungszeichenfolgen selbst verwalten müssen.
+- Keine Unterstützung für das Azure-Portal, Azure Resource Manager-APIs, PowerShell oder die CLI. Dies bedeutet, dass bei jeder Migration aus Azure Deutschland das Einrichten der aktiven Georeplikation und das Failover über T-SQL erfolgen müssen.
+- Kunden können in der globalen Azure-Umgebung nicht mehrere georeplizierte sekundäre Datenbanken für Datenbanken in Azure Deutschland erstellen.
+- Die Erstellung einer georeplizierten sekundären Datenbank muss in der Region „Azure Deutschland“ initiiert werden.
+- Kunden können Datenbanken aus Azure Deutschland nur zur globalen Azure-Umgebung migrieren. Zurzeit wird keine andere cloudübergreifende Migration unterstützt. 
+- Azure AD Benutzer in Azure Deutschland-Benutzerdatenbanken werden migriert, sind jedoch im neuen Azure AD-Mandanten, auf dem sich die migrierte Datenbank befindet, nicht verfügbar. Um diese Benutzer zu aktivieren, müssen sie manuell gelöscht und unter Verwendung der aktuellen Azure AD-Benutzer, die in dem neuen Azure AD-Mandanten verfügbar sind, in dem sich die neu migrierte Datenbank befindet, neu erstellt werden.  
+- [PITR-Sicherungen (Point-in-Time Restore)](../azure-sql/database/recovery-using-backups.md#point-in-time-restore) erfolgen nur in der primären Datenbank. Dies ist beabsichtigt. Beim Migrieren von Datenbanken aus Azure Deutschland mithilfe von georedundanter Notfallwiederherstellung werden nach dem Failover die PITR-Sicherungen in der neuen primären Datenbank ausgeführt. Die vorhandenen PITR-Sicherungen (in der vorherigen primären Datenbank in Azure Deutschland) werden jedoch nicht migriert. Wenn Sie zur Unterstützung von Zeitpunktwiederherstellungen PITR-Sicherungen benötigen, müssen Sie die Datenbank aus den PITR-Sicherungen in Azure Deutschland wiederherstellen und dann die wiederhergestellte Datenbank zu einer globalen Azure-Umgebung migrieren. 
+- Richtlinien für die Langzeitaufbewahrung werden nicht mit der Datenbank migriert. Wenn Sie über eine Richtlinie für die [Langzeitaufbewahrung (Long-term retention, LTR)](../azure-sql/database/long-term-retention-overview.md) für Ihre Datenbank in Azure Deutschland verfügen, müssen Sie die LTR-Richtlinie nach der Migration manuell kopieren und in der neuen Datenbank neu erstellen. Die Funktionalität zum Migrieren von LTR-Sicherungen von Azure Deutschland zur globalen Azure-Umgebung ist zurzeit nicht verfügbar.
+
+
+### <a name="requesting-access"></a>Anfordern des Zugriffs
+
+Zum Migrieren einer Datenbank von Azure Deutschland zu einer globalen Azure-Umgebung mithilfe von Georeplikation muss Ihr Abonnement *in Azure Deutschland* aktiviert sein, damit die cloudübergreifenden Migration erfolgreich konfiguriert werden kann.
+
+Zum Aktivieren Ihres Azure Deutschland-Abonnements müssen Sie über den folgenden Link eine Migrationssupportanfrage erstellen:   
+
+1. Navigieren Sie zu der folgenden [Migrationssupportanfrage](https://portal.microsoftazure.de/#create/Microsoft.Support/Parameters/%7B%0D%0A++++%22pesId%22%3A+%22f3dc5421-79ef-1efa-41a5-42bf3cbb52c6%22%2C%0D%0A++++%22supportTopicId%22%3A+%229fc72ed5-805f-3894-eb2b-b1f1f6557d2d%22%2C%0D%0A++++%22contextInfo%22%3A+%22Migration+from+cloud+Germany+to+Azure+global+cloud+%28Azure+SQL+Database%29%22%2C%0D%0A++++%22caller%22%3A+%22NoSupportPlanCloudGermanyMigration%22%2C%0D%0A++++%22severity%22%3A+%223%22%0D%0A%7D).
+
+2. Geben Sie auf der Registerkarte „Grundlagen“ *Migration für georedundante Notfallwiederherstellung* als **Zusammenfassung** ein, und klicken Sie dann auf **Weiter: Lösungen**.
+ 
+   :::image type="content" source="media/germany-migration-databases/support-request-basics.png" alt-text="Neues Supportanfrageformular":::
+
+3. Überprüfen Sie die **Empfohlenen Schritte**, und klicken Sie dann auf **Weiter: Details**. 
+
+   :::image type="content" source="media/germany-migration-databases/support-request-solutions.png" alt-text="Erforderliche Informationen für Supportanfrage":::
+
+4. Geben Sie auf der Seite „Details“ Folgendes an:
+
+   1. Geben Sie im Feld „Beschreibung“ die Abonnement-ID für die globale Azure-Umgebung ein, zu der migriert werden soll. Um Datenbanken zu mehreren Abonnements zu migrieren, fügen Sie eine Liste der IDs der globalen Azure-Umgebungen hinzu, zu denen Sie Datenbanken migrieren möchten.
+   1. Geben Sie Kontaktinformationen an: Name, Firmenname, E-Mail-Adresse oder Telefonnummer.
+   1. Füllen Sie das Formular aus. Wählen Sie dann **Weiter: Überprüfen + erstellen** aus.
+
+   :::image type="content" source="media/germany-migration-databases/support-request-details.png" alt-text="Details der Supportanfrage":::
+
+
+5. Überprüfen Sie die Supportanfrage, und wählen Sie dann **Erstellen** aus. 
+
+
+Sie werden benachrichtigt, sobald die Anfrage verarbeitet wurde.
+
+
 
 ## <a name="azure-cosmos-db"></a>Azure Cosmos DB
 
@@ -122,7 +245,7 @@ So exportieren Sie aus der Quellinstanz und importieren Sie in die Zielinstanz:
 ### <a name="option-4-write-data-to-two-azure-cache-for-redis-instances-read-from-one-instance"></a>Option 4: Schreiben von Daten in zwei Azure Cache for Redis-Instanzen, Lesen aus einer Instanz
 
 Bei diesem Ansatz müssen Sie Ihre Anwendung ändern. Die Anwendung muss Daten in mehrere Cacheinstanzen schreiben, während sie aus einer der Cacheinstanzen liest. Dieser Ansatz ist sinnvoll, wenn die in Azure-Cache für Redis gespeicherten Daten die folgenden Kriterien erfüllen:
-- Die Daten werden in regelmäßigen Abständen aktualisiert. 
+- Die Daten werden regelmäßig aktualisiert. 
 - Alle Daten werden in die Azure Cache for Redis-Zielinstanz geschrieben.
 - Es ist genügend Zeit für die Aktualisierung aller Daten verfügbar.
 

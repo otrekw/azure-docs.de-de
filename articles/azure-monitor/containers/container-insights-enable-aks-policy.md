@@ -4,10 +4,10 @@ description: Erfahren Sie, wie Sie das Überwachungs-Add-On für AKS mithilfe ei
 ms.topic: conceptual
 ms.date: 02/04/2021
 ms.openlocfilehash: 2163527cc83e70913e9a6e11bf2e22f9ed9c6690
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101713897"
 ---
 # <a name="enable-aks-monitoring-addon-using-azure-policy"></a>Aktivieren des Überwachungs-Add-On für AKS mithilfe von Azure Policy

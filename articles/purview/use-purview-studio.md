@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/12/2020
-ms.openlocfilehash: d8e6c4b2addf9745b2ddabe8f6fdad9d82dce59f
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: ca25bbb72ff853f819f3e8ce4e0092ddb762b156
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97503949"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102183810"
 ---
 # <a name="use-purview-studio"></a>Verwenden von Purview Studio
 
@@ -38,7 +38,7 @@ Unten ist die **Startseite** des Azure Purview-Clients dargestellt.
 
 In der folgenden Liste sind die Hauptfunktionen der **Startseite** zusammengefasst. Jede Zahl in der Liste entspricht einer hervorgehobenen Zahl im obigen Screenshot.
 
-1. Anzeigename des Katalogs. Sie können den Katalognamen unter **Verwaltungscenter** > *Kontoinformationen* festlegen.
+1. Anzeigename des Katalogs. Sie können den Katalognamen unter **Verwaltungscenter** > **Kontoinformationen** festlegen.
 
 2. In der Kataloganalyse wird jeweils die Anzahl für die folgenden Elemente angezeigt:
     - Benutzer, Gruppen und Anwendungen

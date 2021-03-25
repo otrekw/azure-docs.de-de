@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: b5f1fc7f877854dd06fbbe09ff82e47208fa12d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f47ca56fa1b40422edeb0d4e11c24be6f60e49e5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "72792046"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "101666364"
 ---
 # <a name="conditional-cognitive-skill"></a>Kognitiver Skill „Bedingt“
 
@@ -96,7 +96,7 @@ Es gibt eine einzelne Ausgabe, die einfach „Ausgabe“ genannt wird. Diese gib
 
 ## <a name="examples"></a>Beispiele
 
-### <a name="sample-skill-definition-1-filter-documents-to-return-only-french-documents"></a>Beispieldefinition 1 einer Qualifikation: Filtern von Dokumenten, um nur französische Dokumente zurückzugeben
+### <a name="sample-skill-definition-1-filter-documents-to-return-only-french-documents"></a>Beispieldefinition einer Qualifikation 1: Filtern von Dokumenten, sodass nur französische Dokumente zurückgegeben werden
 
 Die folgende Ausgabe gibt ein Array von Sätzen („/document/frenchSentences“) zurück, wenn die Sprache des Dokuments Französisch ist. Wenn die Sprache nicht Französisch ist, wird der Wert auf *null* festgelegt.
 
@@ -115,7 +115,7 @@ Die folgende Ausgabe gibt ein Array von Sätzen („/document/frenchSentences“
 Wenn „/document/frenchSentences“ als *Kontext* einer anderen Funktion verwendet wird, wird diese nur ausgeführt, wenn „/document/frenchSentences“ nicht auf *null* festgelegt ist.
 
 
-### <a name="sample-skill-definition-2-set-a-default-value-for-a-value-that-doesnt-exist"></a>Beispieldefinition 2 einer Qualifikation: Festlegen eines Standardwerts für einen nicht vorhandenen Wert
+### <a name="sample-skill-definition-2-set-a-default-value-for-a-value-that-doesnt-exist"></a>Beispieldefinition einer Qualifikation 2: Festlegen eines Standardwerts für einen nicht vorhandenen Wert
 
 Die folgende Ausgabe erstellt eine Anmerkung („/document/languageWithDefault“), die entweder auf die Sprache des Dokuments oder auf „es“ bei nicht festgelegter Sprache festgelegt wird.
 
@@ -132,9 +132,9 @@ Die folgende Ausgabe erstellt eine Anmerkung („/document/languageWithDefault�
 }
 ```
 
-### <a name="sample-skill-definition-3-merge-values-from-two-fields-into-one"></a>Beispieldefinition 3 einer Qualifikation: Zusammenführen von Werten aus zwei Feldern in ein Feld
+### <a name="sample-skill-definition-3-merge-values-from-two-fields-into-one"></a>Beispieldefinition einer Qualifikation 3: Zusammenführen von Werten aus zwei Feldern in ein Feld
 
-In diesem Beispiel haben einige Sätze eine *frenchSentiment*-Eigenschaft. Wenn die *frenchSentiment*-Eigenschaft „null“ ist, soll der Wert *englishSentiment* verwendet werden. Wir weisen die Ausgabe einem Member mit der Bezeichnung *sentiment* zu („/document/sentiment/*/sentiment“).
+In diesem Beispiel haben einige Sätze eine *frenchSentiment*-Eigenschaft. Wenn die *frenchSentiment*-Eigenschaft „null“ ist, soll der Wert *englishSentiment* verwendet werden. Wir weisen die Ausgabe einem Member mit der Bezeichnung *sentiment* zu ("/document/sentences/*/sentiment").
 
 ```json
 {
@@ -150,7 +150,7 @@ In diesem Beispiel haben einige Sätze eine *frenchSentiment*-Eigenschaft. Wenn 
 ```
 
 ## <a name="transformation-example"></a>Beispiel einer Transformation
-### <a name="sample-skill-definition-4-data-transformation-on-a-single-field"></a>Beispieldefinition 4 einer Qualifikation: Datentransformation auf ein einzelnes Feld
+### <a name="sample-skill-definition-4-data-transformation-on-a-single-field"></a>Beispieldefinition einer Qualifikation 4: Datentransformation für ein einzelnes Feld
 
 In diesem Beispiel erhalten wir eine *Stimmung*, die zwischen 0 und 1 liegt. Nach der Transformation soll die Stimmung zwischen –1 und 1 liegen. Die Funktion „Bedingt“ kann für diese geringfügige Transformation verwendet werden.
 

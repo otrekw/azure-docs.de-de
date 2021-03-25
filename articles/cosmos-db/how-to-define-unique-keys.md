@@ -9,10 +9,10 @@ ms.date: 12/02/2019
 ms.author: thweiss
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
 ms.openlocfilehash: 55fc5222c1c245c56ba0a26caa816c5c845147c1
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93336621"
 ---
 # <a name="define-unique-keys-for-an-azure-cosmos-container"></a>Definieren von eindeutigen Schlüsseln für einen Azure Cosmos-Container
@@ -26,11 +26,11 @@ In diesem Artikel sind die verschiedenen Methoden zum Definieren von [eindeutige
 
 1. [Erstellen Sie ein neues Azure Cosmos-Konto](create-sql-api-dotnet.md#create-account), oder wählen Sie ein vorhandenes Konto aus.
 
-1. Öffnen Sie den Bereich **Daten-Explorer** , und wählen Sie den gewünschten Container aus.
+1. Öffnen Sie den Bereich **Daten-Explorer**, und wählen Sie den gewünschten Container aus.
 
 1. Klicken Sie auf **Neuer Container**.
 
-1. Klicken Sie im Dialogfeld **Container hinzufügen** auf **+ Eindeutigen Schlüssel hinzufügen** , um einen eindeutigen Schlüsseleintrag hinzuzufügen.
+1. Klicken Sie im Dialogfeld **Container hinzufügen** auf **+ Eindeutigen Schlüssel hinzufügen**, um einen eindeutigen Schlüsseleintrag hinzuzufügen.
 
 1. Geben Sie die Pfade der Einschränkung für eindeutige Schlüssel ein.
 

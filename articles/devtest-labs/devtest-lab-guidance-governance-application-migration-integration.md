@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: 8d86728eefc46c74b49ac610e2207ce5e7ae6a9d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87289360"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---application-migration-and-integration"></a>Governance der Azure DevTest Labs-Infrastruktur: Migration und Integration von Anwendungen
@@ -54,10 +54,10 @@ Sehen Sie sich dazu [dieses Video zum Image Factory-Muster](./devtest-lab-faq.md
 
 Hier finden Sie weitere Informationen, um mit DevTest Labs eine benutzerdefinierte Imagepipeline in Azure Pipelines zu erstellen:
 
-- [Einführung: Betriebsfertig machen von VMs innerhalb von Minuten durch Einrichten einer Image Factory in Azure DevTest Labs](./devtest-lab-faq.md#blog-post)
+- [Introduction: Get VMs ready in minutes by setting up an image factory in Azure DevTest Labs](./devtest-lab-faq.md#blog-post) (Einführung: Betriebsfertig machen von VMs innerhalb von Minuten durch Einrichten einer Image Factory in Azure DevTest Labs)
 - [Image Factory – Teil 2: Einrichten von Azure Pipelines und Factory Lab zum Erstellen von VMs](./devtest-lab-faq.md#blog-post)
-- [Image Factory – Teil 3: Speichern von benutzerdefinierten Images und Verteilen an mehrere Labs](./devtest-lab-faq.md#blog-post)
-- [Video: Factory für benutzerdefinierte Images mit Azure DevTest Labs](./devtest-lab-faq.md#blog-post)
+- [Image Factory – Teil 3: Save Custom Images and Distribute to Multiple Labs](./devtest-lab-faq.md#blog-post) (Speichern von benutzerdefinierten Images und Verteilen an mehrere Labs)
+- [Video: Custom Image Factory with Azure DevTest Labs](./devtest-lab-faq.md#blog-post) (Factory für benutzerdefinierte Images mit Azure DevTest Labs)
 
 ## <a name="patterns-to-set-up-network-configuration"></a>Muster zum Einrichten der Netzwerkkonfiguration
 

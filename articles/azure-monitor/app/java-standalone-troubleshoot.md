@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie Probleme mit dem Java-Agent für Azure Monito
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 286354ecf508dec7b9ba7633bf3b5c7ddc6bfd91
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 45f45e71546909b71c71c66303c1459edd74548f
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101737056"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199610"
 ---
 # <a name="troubleshooting-guide-azure-monitor-application-insights-for-java"></a>Handbuch zur Problembehandlung: Azure Monitor Application Insights für Java
 
@@ -45,7 +45,7 @@ Eine Protokollierung erfolgt nur, wenn erstens der für das Protokollierungsfram
 
 Wenn Sie wissen möchten, ob eine bestimmte Protokollierungsanweisung den konfigurierten Schwellenwert des Protokollierungsframeworks erreicht, überprüfen Sie am besten, ob er in Ihrem normalen Anwendungsprotokoll (z. B. in einer Datei oder an der Konsole) angezeigt wird.
 
-Beachten Sie ebenso, dass die Protokollmeldung (und die Ausnahme) im Azure-Portal in der `exceptions`-Tabelle und nicht in der `traces`-Tabelle angezeigt wird, wenn eine Ausnahme an die Protokollierung übergeben wird.
+Beachten Sie außerdem, dass die Protokollmeldung (zusammen mit Details zum Ausnahmeobjekt) im Azure-Portal in der Tabelle `exceptions` und nicht in der Tabelle `traces`angezeigt wird, wenn ein Ausnahmeobjekt an die Protokollierung übergeben wird.
 
 Weitere Informationen finden Sie unter [Automatisch gesammelte Protokolle](./java-standalone-config.md#auto-collected-logging).
 

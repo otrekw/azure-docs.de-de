@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 10206aced4f38f4d157f46703aac2d28ec863274
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad4f5dcd137a9be6dfc764385802792026c0297d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87319149"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "101093009"
 ---
 # <a name="cloud-to-device-communications-guidance"></a>Leitfaden zur C2D-Kommunikation
 
@@ -29,6 +29,8 @@ IoT Hub bietet drei Optionen für Geräte-Apps, um Funktionen einer Back-End-App
 * [Gewünschte Eigenschaften von Gerätezwillingen](iot-hub-devguide-device-twins.md) für Befehle mit langer Ausführungszeit, die das Gerät in einen bestimmten gewünschten Zustand versetzen sollen. Legen Sie das Telemetriesendeintervall z.B. auf 30 Minuten fest.
 
 * [Cloud-zu-Gerät-Nachrichten (Cloud-to-Device, C2D)](iot-hub-devguide-messages-c2d.md) zum Senden unidirektionaler Benachrichtigungen an die Geräte-App.
+
+Informationen zur Verwendung dieser Optionen zum Steuern von IoT Plug & Play-Geräten durch [Azure IoT Plug & Play](../iot-pnp/overview-iot-plug-and-play.md) finden Sie im [Leitfaden für IoT Plug & Play-Dienstentwickler](../iot-pnp/concepts-developer-guide-service.md).
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 

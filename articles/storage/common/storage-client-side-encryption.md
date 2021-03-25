@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: eb1891b7201d8e1d3d18b0e01817ee943ae6341f
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 02607c219cf39a20a40854632e961b3ce199d0d3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100548181"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104588255"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-for-microsoft-azure-storage"></a>Clientseitige Verschlüsselung und Azure Key Vault für Microsoft Azure Storage
 
@@ -132,6 +132,8 @@ Es gibt zwei erforderliche Pakete für die Key Vault Integration:
 * Azure.Core enthält die `IKeyEncryptionKey`- und `IKeyEncryptionKeyResolver`-Schnittstellen. Die Speicherclientbibliothek für .NET definiert es bereits als Abhängigkeit.
 * Azure.Security.KeyVault.Keys (v4.x) enthält den Key Vault-REST-Client sowie kryptografische Clients, die mit clientseitiger Verschlüsselung verwendet werden.
 
+Der Schlüsseltresor ist für hochwertige Hauptschlüssel ausgelegt und der Begrenzungsdrosselung über den Schlüsseltresor liegt dieses Konzept zugrunde. Ab Azure.Security.KeyVault.Keys 4.1.0 ist keine `IKeyEncryptionKeyResolver`-Implementierung vorhanden, die das Zwischenspeichern von Schlüsseln unterstützt. Sollte das Zwischenspeichern aufgrund einer Drosselung notwendig sein, kann nach [diesem Beispiel](/samples/azure/azure-sdk-for-net/azure-key-vault-proxy/) eine Zwischenspeicherungsebene in eine `Azure.Security.KeyVault.Keys.Cryptography.KeyResolver`-Instanz eingefügt werden.
+
 # <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 Es gibt drei Schlüsseltresorpakete:
@@ -140,15 +142,15 @@ Es gibt drei Schlüsseltresorpakete:
 * Microsoft.Azure.KeyVault (v3.x) enthält den REST-Client des Schlüsseltresors.
 * Microsoft.Azure.KeyVault.Extensions (v3.x) enthält Erweiterungscode, der Implementierungen von kryptografischen Algorithmen sowie einen RSA-Schlüssel und einen symmetrischen Schlüssel beinhaltet. Dieser hängt von den Namespaces "Core" und "KeyVault" ab und bietet Funktionen zum Definieren eines Aggregatresolvers (wenn die Benutzer mehrere Schlüsselanbieter verwenden möchten) und eines Cacheschlüsselresolvers. Obwohl die Speicherclientbibliothek nicht direkt von diesem Paket abhängig ist, benötigen die Benutzer dieses Paket, wenn sie den Azure-Schlüsseltresor zum Speichern ihrer Schlüssel verwenden möchten oder wenn sie die Schlüsseltresorerweiterungen verwenden möchten, um die lokalen und Cloudkryptografieanbieter zu nutzen.
 
-Weitere Informationen zur Verwendung von Key Vault in v11 finden Sie in den [Beispielen für v11-Verschlüsselungscode](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted/EncryptionSamples).
-
----
-
 Der Schlüsseltresor ist für hochwertige Hauptschlüssel ausgelegt und der Begrenzungsdrosselung über den Schlüsseltresor liegt dieses Konzept zugrunde. Bei der Durchführung von clientseitiger Verschlüsselung mit dem Schlüsseltresor besteht die bevorzugte Methode darin, symmetrische Hauptschlüssel zu verwenden, die als geheime Schlüssel im Schlüsseltresor gespeichert sind und lokal zwischengespeichert werden. Die Benutzer müssen wie folgt vorgehen:
 
 1. Erstellen Sie offline einen geheimen Schlüssel und laden Sie ihn in den Schlüsseltresor hoch.
 2. Verwenden Sie den Basisbezeichner des geheimen Schlüssels als Parameter, um die aktuelle Version des geheimen Schlüssels für die Verschlüsselung aufzulösen und diese Informationen lokal zwischenzuspeichern. Verwenden Sie "CachingKeyResolver" für die Zwischenspeicherung. Es wird nicht erwartet, dass die Benutzer eigene Logik für das Zwischenspeichern implementieren.
 3. Verwenden Sie beim Erstellen der Verschlüsselungsrichtlinie den Zwischenspeicherungsresolver als Eingabe.
+
+Weitere Informationen zur Verwendung von Key Vault in v11 finden Sie in den [Beispielen für v11-Verschlüsselungscode](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted/EncryptionSamples).
+
+---
 
 ## <a name="best-practices"></a>Bewährte Methoden
 

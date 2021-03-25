@@ -4,10 +4,10 @@ description: Referenz zum Batch-Taskfehlerereignis. Dieses Ereignis wird zusätz
 ms.topic: reference
 ms.date: 10/08/2020
 ms.openlocfilehash: e13692b45ff5a049d0b724525ad6565d2b894a3d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91850811"
 ---
 # <a name="task-fail-event"></a>Taskfehlerereignis
@@ -50,7 +50,7 @@ ms.locfileid: "91850811"
 |`id`|String|Die ID des Tasks.|
 |`taskType`|String|Der Typ des Tasks. Entweder „JobManager“, was bedeutet, dass dies ein Auftrags-Manager-Task ist, oder „User“, was bedeutet, dass dies nicht der Fall ist. Dieses Ereignis wird nicht für Auftragsvorbereitungstasks, Auftragsfreigabetasks oder Starttasks ausgegeben.|
 |`systemTaskVersion`|Int32|Dies ist der interne Wiederholungszähler für einen Task. Der Batch-Dienst kann intern einen Task wiederholen, um vorübergehende Probleme zu berücksichtigen. Bei diesen Problemen kann es sich um interne Planungsfehler oder Versuche handeln, Computeknoten mit einem fehlerhaften Status wiederherzustellen.|
-|`requiredSlots`|Int32|Die erforderlichen Slots zum Ausführen des Tasks.|
+|`requiredSlots`|Int32|Die erforderlichen Slots zum Ausführen des Tasks|
 |[`nodeInfo`](#nodeInfo)|Komplexer Typ|Enthält Informationen zu den Computeknoten, auf dem der Task ausgeführt wurde.|
 |[`multiInstanceSettings`](#multiInstanceSettings)|Komplexer Typ|Gibt an, dass der Task ein Task mit mehreren Instanzen ist, für den mehrere Computeknoten erforderlich sind.  Ausführliche Informationen finden Sie unter [`multiInstanceSettings`](/rest/api/batchservice/get-information-about-a-task).|
 |[`constraints`](#constraints)|Komplexer Typ|Die Ausführungseinschränkungen, die für diesen Task gelten.|

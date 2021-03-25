@@ -8,10 +8,10 @@ ms.subservice: data-catalog-gen2
 ms.topic: how-to
 ms.date: 11/30/2020
 ms.openlocfilehash: a831681f892de9f6aae50fa9a2fcf71e883fe6ba
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97693712"
 ---
 # <a name="register-and-scan-azure-data-lake-storage-gen1"></a>Registrieren und Überprüfen von Azure Data Lake Storage Gen1
@@ -31,7 +31,7 @@ Die Datenquelle vom Typ „Azure Data Lake Storage Gen1“ unterstützt die folg
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Erstellen Sie vor dem Registrieren der Datenquellen zunächst ein Azure Purview-Konto. Weitere Informationen zum Erstellen eines Purview-Kontos finden Sie unter [Schnellstart: Erstellen eines Azure Purview-Kontos im Azure-Portal](create-catalog-portal.md).
+- Erstellen Sie vor dem Registrieren der Datenquellen zunächst ein Azure Purview-Konto. Weitere Informationen zum Erstellen eines Purview-Kontos finden Sie unter [Schnellstart: Erstellen eines Azure Purview-Kontos im Azure-Portal](create-catalog-portal.md).
 - Sie müssen ein Azure Purview-Datenquellenadministrator sein.
 
 ## <a name="setting-up-authentication-for-a-scan"></a>Einrichten der Authentifizierung für eine Überprüfung
@@ -87,7 +87,7 @@ Wenn Sie einen Dienstprinzipal verwenden möchten, müssen Sie zunächst anhand 
 
 4. Wählen Sie **+ Registrierung einer neuen Anwendung** aus.
 
-5. Geben Sie einen Namen für die **Anwendung** (Dienstprinzipalname) ein.
+5. Geben Sie einen Namen für die **Anwendung** ein (Dienstprinzipalname).
 
 6. Wählen Sie **Nur Konten in diesem Organisationsverzeichnis** aus.
 
@@ -137,5 +137,5 @@ Führen Sie auf dem Bildschirm „Register sources (Azure Data Lake Storage Gen1
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Browsen im Azure Purview-Datenkatalog](how-to-browse-catalog.md)
-- [Suchen im Azure Purview-Datenkatalog](how-to-search-catalog.md)
+- [Browsen im Azure Purview-Datenkatalog](how-to-browse-catalog.md)
+- [Suchen im Azure Purview-Datenkatalog](how-to-search-catalog.md)

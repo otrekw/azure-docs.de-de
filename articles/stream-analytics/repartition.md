@@ -4,15 +4,15 @@ description: In diesem Artikel wird beschrieben, wie Sie Azure Stream Analytics 
 ms.service: stream-analytics
 author: sidramadoss
 ms.author: sidram
-ms.date: 09/19/2019
+ms.date: 03/04/2021
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 72f81a0eac81acdca71c8ed81695789c417898ca
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 95749f2acea6b605cfdba5a4f3d4f5526e751c5a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98014194"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102182535"
 ---
 # <a name="use-repartitioning-to-optimize-processing-with-azure-stream-analytics"></a>Verwenden der Neupartitionierung zur Optimierung der Verarbeitung mit Azure Stream Analytics
 
@@ -23,25 +23,47 @@ Die Verwendung der [Parallelisierung](stream-analytics-parallelization.md) ist i
 * Sie verfügen nicht über den Partitionsschlüssel für den Eingabestream.
 * Ihre Quelle verteilt die Eingaben auf mehrere Partitionen, die später zusammengeführt werden müssen.
 
-Eine Neupartitionierung oder „Umsortierung“ ist erforderlich, wenn Sie Daten in einem Stream verarbeiten, der nicht nach einem natürlichen Eingabeschema (z. B. nach der **Partitions-ID** für Event Hubs) horizontal partitioniert wird. Nach einer Neupartitionierung kann jeder Shard unabhängig verarbeitet werden, sodass Sie die Streamingpipeline linear aufskalieren können.
+Eine Neupartitionierung oder „Umsortierung“ ist erforderlich, wenn Sie Daten in einem Stream verarbeiten, der nicht nach einem natürlichen Eingabeschema (z. B. nach der **Partitions-ID** für Event Hubs) horizontal partitioniert wird. Nach einer Neupartitionierung kann jeder Shard unabhängig verarbeitet werden, sodass Sie die Streamingpipeline linear skalieren können. 
 
 ## <a name="how-to-repartition"></a>Neupartitionierung
+Sie können Ihre Eingabe auf zwei Arten neu partitionieren:
+1. Verwenden eines separaten Stream Analytics-Auftrags für die Neupartitionierung
+2. Verwenden eines einzelnen Auftrags und Durchführen der Neupartitionierung vor Ihrer benutzerdefinierten Analyselogik
 
-Verwenden Sie für die Neupartitionierung das Schlüsselwort **INTO** nach einer **PARTITION BY**-Anweisung in Ihrer Abfrage. Im folgenden Beispiel werden die Daten von **DeviceID** auf 10 Partitionen aufgeteilt (partitioniert). Durch die Erstellung eines Hashwerts aus der Geräte-ID (**DeviceID**) wird festgelegt, welche Partition welchen Teilstream akzeptieren soll. Die Daten werden für jeden partitionierten Datenstrom unabhängig geleert. Dabei wird davon ausgegangen, dass die Ausgabe partitionierte Schreibvorgänge unterstützt und über 10 Partitionen verfügt.
-
+### <a name="creating-a-separate-stream-analytics-job-to-repartition-input"></a>Erstellen eines separaten Stream Analytics-Auftrags zum Neupartitionieren der Eingabe
+Sie können einen Auftrag erstellen, durch den die Eingabe gelesen und unter Verwendung eines Partitionsschlüssels in eine Event Hub-Ausgabe geschrieben wird. Dieser Event Hub kann dann als Eingabe für einen anderen Stream Analytics-Auftrag verwendet werden, in dem Sie Ihre Analyselogik implementieren. Wenn Sie diese Event Hub-Ausgabe in Ihrem Auftrag konfigurieren, müssen Sie den Partitionsschlüssel angeben, auf dessen Grundlage Ihre Daten von Stream Analytics neu partitioniert werden sollen. 
 ```sql
+-- For compat level 1.2 or higher
 SELECT * 
 INTO output
 FROM input
-PARTITION BY DeviceID 
-INTO 10
+
+--For compat level 1.1 or lower
+SELECT *
+INTO output
+FROM input PARTITION BY PartitionId
+```
+
+### <a name="repartition-input-within-a-single-stream-analytics-job"></a>Neupartitionieren der Eingabe innerhalb eines einzelnen Stream Analytics-Auftrags
+Sie können auch einen Schritt in Ihre Abfrage einfügen, durch den die Eingabe zunächst neu partitioniert wird. Das Ergebnis kann dann von anderen Schritten in der Abfrage verwendet werden. Wenn Sie also beispielsweise die Eingabe auf der Grundlage der Geräte-ID (**DeviceId**) neu partitionieren möchten, lautet Ihre Abfrage wie folgt:
+```sql
+WITH RepartitionedInput AS 
+( 
+SELECT * 
+FROM input PARTITION BY DeviceID
+)
+
+SELECT DeviceID, AVG(Reading) as AvgNormalReading  
+INTO output
+FROM RepartitionedInput  
+GROUP BY DeviceId, TumblingWindow(minute, 1)  
 ```
 
 In der folgenden Beispielabfrage werden zwei Streams mit neu partitionierten Daten verknüpft. Beim Verknüpfen von zwei Streams mit neu partitionierten Daten müssen diese Streams denselben Partitionsschlüssel und dieselbe Anzahl aufweisen. Das Ergebnis ist ein Stream, der über das gleiche Partitionsschema verfügt.
 
 ```sql
-WITH step1 AS (SELECT * FROM input1 PARTITION BY DeviceID INTO 10),
-step2 AS (SELECT * FROM input2 PARTITION BY DeviceID INTO 10)
+WITH step1 AS (SELECT * FROM input1 PARTITION BY DeviceID),
+step2 AS (SELECT * FROM input2 PARTITION BY DeviceID)
 
 SELECT * INTO output FROM step1 PARTITION BY DeviceID UNION step2 PARTITION BY DeviceID
 ```

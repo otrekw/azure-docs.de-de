@@ -5,16 +5,16 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/14/2021
+ms.date: 03/03/2021
 ms.author: alkohli
 ms.subservice: common
-ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 772be332af1476975d91eb270bec24d6d241a616
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.custom: devx-track-azurepowershell, devx-track-azurecli, contperf-fy21q3
+ms.openlocfilehash: e878be5351362923e163c0a6f617b96ab72a36d8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98706013"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102177554"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Verwenden des Azure Import/Export-Diensts zum Exportieren von Daten aus Azure Blob Storage
 
@@ -43,48 +43,66 @@ Die Voraussetzungen lauten wie folgt:
 Führen Sie die folgenden Schritte aus, um im Azure-Portal einen Exportauftrag zu erstellen.
 
 1. Melden Sie sich bei <https://portal.azure.com/> an.
-2. Wechseln Sie zu **Alle Dienste > Speicher > Import-/Exportaufträge**.
+2. Suchen Sie nach **Aufträge importieren/exportieren**.
 
-    ![Wechseln zu „Import/Exportaufträge“](./media/storage-import-export-data-from-blobs/export-from-blob1.png)
+    ![Suchen nach „Aufträge importieren/exportieren“](./media/storage-import-export-data-to-blobs/import-to-blob-1.png)
 
-3. Klicken Sie auf **Import-/Exportauftrag erstellen**.
+3. Wählen Sie **+ Neu** aus.
 
-    ![Klicken auf „Import-/Exportauftrag“](./media/storage-import-export-data-from-blobs/export-from-blob2.png)
+    ![Auswählen von „+ Neu“, um einen neuen Auftrag zu erstellen ](./media/storage-import-export-data-to-blobs/import-to-blob-2.png)
 
 4. Gehen Sie unter **Grundlegende Einstellungen** wie folgt vor:
 
-    - Wählen Sie **Export aus Azure** aus.
-    - Geben Sie einen beschreibenden Namen für den Exportauftrag ein. Verwenden Sie den gewählten Namen, um den Fortschritt Ihrer Aufträge zu verfolgen.
-        - Der Name darf nur Kleinbuchstaben, Zahlen, Bindestriche und Unterstriche enthalten.
-        - Der Name muss mit einem Buchstaben beginnen und darf keine Leerzeichen enthalten.
-    - Wählen Sie ein Abonnement aus.
-    - Wählen Sie eine Ressourcengruppe aus, oder geben Sie eine Gruppe ein.
+   1. Wählen Sie ein Abonnement aus.
+   1. Wählen Sie eine Ressourcengruppe aus, oder wählen Sie **Neu erstellen** aus, und erstellen Sie eine neue.
+   1. Geben Sie einen aussagekräftigen Namen für den Importauftrag ein. Verwenden Sie den Namen, um den Fortschritt Ihrer Aufträge zu verfolgen.
+       * Der Name darf nur Kleinbuchstaben, Ziffern und Bindestriche enthalten.
+       * Der Name muss mit einem Buchstaben beginnen und darf keine Leerzeichen enthalten.
 
-        ![Grundlagen](./media/storage-import-export-data-from-blobs/export-from-blob3.png)
+   1. Wählen Sie **Export aus Azure** aus.
+
+    ![Grundlegende Optionen für einen Exportauftrag](./media/storage-import-export-data-from-blobs/export-from-blob-3.png)
+
+    Wählen Sie **Weiter: Auftragsdetails >** aus, um fortzufahren.
 
 5. Gehen Sie unter **Auftragsdetails** wie folgt vor:
 
-    - Wählen Sie das Speicherkonto aus, das die zu exportierenden Daten enthält. Verwenden Sie ein Speicherkonto in der Nähe Ihres Standorts.
-    - Der Ablageort wird automatisch basierend auf der Region des ausgewählten Speicherkontos mit Daten aufgefüllt.
-    - Geben Sie die Blobdaten an, die Sie von Ihrem Speicherkonto auf Ihr leeres Laufwerk bzw. Ihre leeren Laufwerke exportieren möchten.
-    - Wählen Sie für die Blobdaten im Speicherkonto **Alle exportieren** aus.
+   1. Wählen Sie die Azure-Region aus, in der sich Ihre Daten zurzeit befinden.
+   1. Wählen Sie das Speicherkonto aus, aus dem Sie Daten exportieren möchten. Verwenden Sie ein Speicherkonto in der Nähe Ihres Standorts.
 
-         ![Alle exportieren](./media/storage-import-export-data-from-blobs/export-from-blob4.png)
+      Der Abgabeort wird automatisch basierend auf der Region des ausgewählten Speicherkontos aufgefüllt.
 
-    - Sie können angeben, welche Container und Blobs exportiert werden sollen.
-        - **So geben Sie ein zu exportierendes Blob an**: Verwenden Sie den Selektor **Gleich**. Geben Sie den relativen Pfad zum Blob, beginnend mit dem Containernamen, an. Verwenden Sie *$root* , um den Stammcontainer festzulegen.
-        - **So geben Sie alle Blobs an, die mit einem Präfix beginnen**: Verwenden Sie den Selektor **Beginnt mit**. Geben Sie das Präfix beginnend mit einem Schrägstrich „/“ an. Bei dem Präfix kann es sich um das Präfix des Containernamens, den vollständigen Containernamen oder den vollständigen Containernamen gefolgt vom Präfix des Blob-Namens handeln. Sie müssen die Blobpfade in einem gültigen Format angeben, um Fehler während der Verarbeitung zu vermeiden. Dies ist in diesem Screenshot dargestellt. Weitere Informationen finden Sie unter [Beispiele für gültige Blobpfade](#examples-of-valid-blob-paths).
+   1. Geben Sie die Blobdaten an, die aus Ihrem Speicherkonto auf Ihr leeres Laufwerk bzw. auf Ihre leeren Laufwerke exportieren möchten. Wählen Sie eine der drei folgenden Methoden:
 
-           ![Exportieren ausgewählter Container und Blobs](./media/storage-import-export-data-from-blobs/export-from-blob5.png)
+      - Wählen Sie für die Blobdaten im Speicherkonto **Alle exportieren** aus.
 
-    - Sie können den Export aus der Bloblistendatei ausführen.
+        ![Alle exportieren](./media/storage-import-export-data-from-blobs/export-from-blob-4.png)
 
-        ![Exportieren aus der Bloblistendatei](./media/storage-import-export-data-from-blobs/export-from-blob6.png)
+      - Wählen Sie **Ausgewählte Container und Blobs** aus, und geben Sie zu exportierende Container und Blobs an. Sie können mehrere Auswahlmethoden verwenden. Wenn Sie die Option **Hinzufügen** auswählen, wird auf der rechten Seite ein Bereich geöffnet, in dem Sie Ihre Auswahlzeichenfolgen hinzufügen können.
+
+        |Option|BESCHREIBUNG|
+        |------|-----------|      
+        |**Container hinzufügen**|Bei dieser Option werden alle Blobs in einem Container exportiert.<br>Wählen Sie **Container hinzufügen** aus, und geben Sie die einzelnen Containernamen ein.|
+        |**Blobs hinzufügen**|Bei dieser Option können Sie einzelne zu exportierende Blobs angeben.<br>Wählen Sie **Blobs hinzufügen** aus. Geben Sie anschließend den relativen Pfad des Blobs an (beginnend mit dem Containernamen). Verwenden Sie *$root* , um den Stammcontainer festzulegen.<br>Sie müssen die Blobpfade in einem gültigen Format angeben, um Fehler während der Verarbeitung zu vermeiden. Dies ist in diesem Screenshot dargestellt. Weitere Informationen finden Sie unter [Beispiele für gültige Blobpfade](#examples-of-valid-blob-paths).|
+        |**Präfixe hinzufügen**|Verwenden Sie ein Präfix, um eine Gruppe ähnlich benannter Container oder ähnlich benannter Blobs in einem Container auszuwählen. Bei dem Präfix kann es sich um das Präfix des Containernamens, den vollständigen Containernamen oder einen vollständigen Containernamen gefolgt vom Präfix des Blobnamens handeln. |
+
+        ![Exportieren ausgewählter Container und Blobs](./media/storage-import-export-data-from-blobs/export-from-blob-5.png)
+
+    - Wählen Sie **Aus Bloblistendatei exportieren (XML-Format)** und anschließend eine XML-Datei aus, die eine Liste mit Pfaden und Präfixen für die Blobs enthält, die aus dem Speicherkonto exportiert werden sollen. Die XML-Datei muss erstellt und in einem Container für das Speicherkonto gespeichert werden. Die Datei darf nicht leer sein.
+
+      > [!IMPORTANT]
+      > Wenn Sie eine XML-Datei verwenden, um die zu exportierenden Blobs auszuwählen, achten Sie darauf, dass der XML-Code gültige Pfade und/oder Präfixe enthält. Wenn die Datei ungültig ist oder keine Daten mit den angegebenen Pfaden übereinstimmen, wird der Auftrag mit partiellen Daten oder ohne exportierte Daten beendet.
+
+       Informationen zum Hinzufügen einer XML-Datei zu einem Container finden Sie unter [Exportauftrag mit XML-Datei](../databox/data-box-deploy-export-ordered.md#export-order-using-xml-file).
+
+      ![Exportieren aus der Bloblistendatei](./media/storage-import-export-data-from-blobs/export-from-blob-6.png)
 
    > [!NOTE]
-   > Wenn das zu exportierende Blob während des Kopierens der Daten verwendet wird, erstellt der Azure Import/Export-Dienst eine Momentaufnahme des Blobs und kopiert die Momentaufnahme.
+   > Wenn ein zu exportierendes Blob während des Kopierens der Daten verwendet wird, erstellt der Azure Import/Export-Dienst eine Momentaufnahme des Blobs und kopiert die Momentaufnahme.
 
-6. Gehen Sie unter **Informationen für Rücksendung** wie folgt vor:
+   Wählen Sie **Weiter: Versand >** aus, um fortzufahren.
+
+6. In **Versand**:
 
     - Wählen Sie den Spediteur in der Dropdownliste aus. Wenn Sie einen anderen Spediteur als FedEx/DHL beauftragen möchten, wählen Sie eine der Optionen in der Dropdownliste aus. Wenden Sie sich unter `adbops@microsoft.com` an das Azure Data Box Operations-Team, und informieren Sie es über den von Ihnen vorgesehenen Spediteur.
     - Geben Sie eine gültige Spediteurkontonummer ein, die Sie mit diesem Spediteur erstellt haben. Microsoft verwendet dieses Konto, um die Laufwerke nach Abschluss des Exportauftrags an Sie zurückzuschicken.
@@ -93,15 +111,76 @@ Führen Sie die folgenden Schritte aus, um im Azure-Portal einen Exportauftrag z
         > [!TIP]
         > Geben Sie anstelle einer E-Mail-Adresse für einen einzelnen Benutzer, eine Gruppen E-Mail-Adresse ein. Dadurch wird sichergestellt, dass Sie Benachrichtigungen erhalten, selbst wenn ein Administrator geht.
 
-7. Gehen Sie in **Zusammenfassung** wie folgt vor:
+    Wählen Sie **Überprüfen und erstellen** aus, um den Vorgang fortzusetzen.
 
-    - Überprüfen Sie die Details zum Auftrag.
-    - Notieren Sie den Auftragsnamen und die angegebene Lieferadresse des Azure-Rechenzentrums für das Senden der Datenträger an Azure.
+7. Gehen Sie unter **Überprüfen und erstellen** wie folgt vor:
+
+   1. Überprüfen Sie die Details zum Auftrag.
+   1. Notieren Sie den Auftragsnamen und die angegebene Lieferadresse des Azure-Rechenzentrums für das Senden der Datenträger an Azure.
+
+      > [!NOTE]
+      > Senden Sie die Datenträger immer an das im Azure-Portal angegebene Rechenzentrum. Wenn die Datenträger an das falsche Rechenzentrum versendet werden, wird der Auftrag nicht verarbeitet.
+
+   1. Machen Sie sich mit den **Bedingungen** in puncto Datenschutz und Quelldatenlöschung für Ihren Auftrag vertraut. Wenn Sie mit den Bedingungen einverstanden sind, aktivieren Sie das Kontrollkästchen daneben. Der Auftrag wird überprüft.
+
+   ![Überprüfen und Erstellen des Exportauftrags](./media/storage-import-export-data-from-blobs/export-from-blob-6-a.png)
+
+ 1. Wenn die Überprüfung erfolgreich war, wählen Sie **Erstellen** aus.
+
+<!--Replaced text: Steps 4 - end of "Create an export job." Wizard design changes required both screen and text updates.
+
+4. In **Basics**:
+
+    - Select **Export from Azure**.
+    - Enter a descriptive name for the export job. Use the name you choose to track the progress of your jobs.
+        - The name may contain only lowercase letters, numbers, hyphens, and underscores.
+        - The name must start with a letter, and may not contain spaces.
+    - Select a subscription.
+    - Enter or select a resource group.
+
+        ![Basics](./media/storage-import-export-data-from-blobs/export-from-blob-3.png)
+
+5. In **Job details**:
+
+    - Select the storage account where the data to be exported resides. Use a storage account close to where you are located.
+    - The dropoff location is automatically populated based on the region of the storage account selected.
+    - Specify the blob data you wish to export from your storage account to your blank drive or drives.
+    - Choose to **Export all** blob data in the storage account.
+
+         ![Export all](./media/storage-import-export-data-from-blobs/export-from-blob-4.png)
+
+    - You can specify which containers and blobs to export.
+        - **To specify a blob to export**: Use the **Equal To** selector. Specify the relative path to the blob, beginning with the container name. Use *$root* to specify the root container.
+        - **To specify all blobs starting with a prefix**: Use the **Starts With** selector. Specify the prefix, beginning with a forward slash '/'. The prefix may be the prefix of the container name, the complete container name, or the complete container name followed by the prefix of the blob name. You must provide the blob paths in valid format to avoid errors during processing, as shown in this screenshot. For more information, see [Examples of valid blob paths](#examples-of-valid-blob-paths).
+
+           ![Export selected containers and blobs](./media/storage-import-export-data-from-blobs/export-from-blob-5.png)
+
+    - You can export from  the blob list file.
+
+        ![Export from blob list file](./media/storage-import-export-data-from-blobs/export-from-blob-6.png)
+
+   > [!NOTE]
+   > If the blob to be exported is in use during data copy, Azure Import/Export service takes a snapshot of the blob and copies the snapshot.
+
+6. In **Return shipping info**:
+
+    - Select the carrier from the dropdown list. If you want to use a carrier other than FedEx/DHL, choose an existing option from the dropdown. Contact Azure Data Box Operations team at `adbops@microsoft.com`  with the information regarding the carrier you plan to use.
+    - Enter a valid carrier account number that you have created with that carrier. Microsoft uses this account to ship the drives back to you once your export job is complete.
+    - Provide a complete and valid contact name, phone, email, street address, city, zip, state/province, and country/region.
+
+        > [!TIP]
+        > Instead of specifying an email address for a single user, provide a group email. This ensures that you receive notifications even if an admin leaves.
+
+7. In **Summary**:
+
+    - Review the details of the job.
+    - Make a note of the job name and provided Azure datacenter shipping address for shipping disks to Azure.
 
         > [!NOTE]
-        > Senden Sie die Datenträger immer an das im Azure-Portal angegebene Rechenzentrum. Wenn die Datenträger an das falsche Rechenzentrum versendet werden, wird der Auftrag nicht verarbeitet.
+        > Always send the disks to the datacenter noted in the Azure portal. If the disks are shipped to the wrong datacenter, the job will not be processed.
 
-    - Klicken Sie auf **OK**, um das Erstellen des Exportauftrags abzuschließen.
+    - Click **OK** to complete export job creation.
+-->
 
 ### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
@@ -306,7 +385,7 @@ Zu diesem Zeitpunkt können Sie den Auftrag löschen oder belassen. Aufträge we
 
 ## <a name="check-the-number-of-drives"></a>Überprüfen der Anzahl der Laufwerke
 
-Mit diesem *optionalen* Schritt können Sie die Anzahl der Laufwerke, die für den Exportauftrag erforderlich ist, ermitteln. Führen Sie diesen Schritt auf einem Windows-System aus, auf dem eine [unterstützte Betriebssystemversion](storage-import-export-requirements.md#supported-operating-systems) ausgeführt wird.
+Mit diesem *optionalen* Schritt können Sie die Anzahl von Laufwerken ermitteln, die für den Exportauftrag erforderlich sind. Führen Sie diesen Schritt auf einem Windows-System aus, auf dem eine [unterstützte Betriebssystemversion](storage-import-export-requirements.md#supported-operating-systems) ausgeführt wird.
 
 1. [Laden Sie Version 1 von WAImportExport](https://www.microsoft.com/download/details.aspx?id=42659) auf das Windows-System herunter.
 2. Entzippen Sie die Dateien in den Standardordner `waimportexportv1`. Beispiel: `C:\WaImportExportV1`.
@@ -327,7 +406,7 @@ Mit diesem *optionalen* Schritt können Sie die Anzahl der Laufwerke, die für d
     |**/sk:**|Nur erforderlich, wenn keine Container-SAS angegeben wurde. Der Kontoschlüssel des Speicherkontos für den Exportauftrag.|
     |**/csas:**|Nur erforderlich, wenn kein Speicherkontoschlüssel angegeben wurde. Die Container-SAS zum Auflisten der Blobs, die im Exportauftrag exportiert werden sollen.|
     |**/ExportBlobListFile:**|Erforderlich. Pfad zur XML-Datei mit der Liste der Blobpfade oder Blobpfadpräfixe für die zu exportierenden Blobs. Das Dateiformat entspricht dem Format, das im Element `BlobListBlobPath` im [Put Job](/rest/api/storageimportexport/jobs)-Vorgang der REST-API des Import/Export-Diensts verwendet wird.|
-    |**/DriveSize:**|Erforderlich. Die Größe der Laufwerke, die für einen Exportauftrag verwendet werden sollen, *beispielsweise* 500 GB, 1,5 TB.|
+    |**/DriveSize:**|Erforderlich. Die Größe der Laufwerke, die für einen Exportauftrag verwendet werden sollen, *beispielsweise* 500 GB oder 1,5 TB.|
 
     Weitere Informationen finden Sie unter [Beispiel für den Befehl PreviewExport](#example-of-previewexport-command).
 

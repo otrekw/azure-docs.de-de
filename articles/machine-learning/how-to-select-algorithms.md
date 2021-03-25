@@ -12,10 +12,10 @@ ms.author: lazzeri
 ms.reviewer: cgronlun
 ms.date: 05/07/2020
 ms.openlocfilehash: 27b18fdc2dda40f8361483e6ecce28d0ccbd0310
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93308240"
 ---
 # <a name="how-to-select-algorithms-for-azure-machine-learning"></a>Auswählen von Algorithmen für Azure Machine Learning
@@ -123,7 +123,7 @@ Linear Regressionsalgorithmen gehen davon aus, dass Datentrends einer geraden Li
 
 ![Nicht lineare Klassengrenze](./media/how-to-select-algorithms/nonlinear-class-boundary.png)
 
-**_Nicht lineare Klassengrenze_* _: _Die Verwendung eines linearen Klassifizierungsalgorithmus würde zu einer verringerten Genauigkeit führen.*
+***Nicht lineare Klassengrenze** _: _Die Verwendung eines linearen Klassifizierungsalgorithmus würde zu einer verringerten Genauigkeit führen.*
 
 ![Daten mit einem nicht linearen Trend](./media/how-to-select-algorithms/nonlinear-trend.png)
 

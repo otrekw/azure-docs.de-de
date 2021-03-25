@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/8/2021
 ms.author: mimckitt
 ms.reviewer: cynthn
-ms.openlocfilehash: 0325dcf16c8e637a58365311a4ebd37a442d6b8c
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: c206cba3b23a0bf41ce32481980aa466e869bcde
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102525428"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104596296"
 ---
 # <a name="states-and-billing-of-azure-virtual-machines"></a>Zustandswerte und Abrechnung von Azure-VMs
 
@@ -82,6 +82,6 @@ Die Bereitstellungsstatus des Betriebssystems gelten nur für VMs, die mit einem
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [Dokumentation zu Azure Cost Management and Billing](https://docs.microsoft.com/azure/cost-management-billing/)
+- [Dokumentation zu Azure Cost Management and Billing](../cost-management-billing/index.yml)
 - Planen Ihrer Bereitstellungen mit dem [Azure-Preisrechner](https://azure.microsoft.com/pricing/calculator/)
-- Weitere Informationen zum Überwachen einer VM finden Sie unter[Überwachen von VMs in Azure](../azure-monitor/insights/monitor-vm-azure.md).
+- Weitere Informationen zum Überwachen einer VM finden Sie unter[Überwachen von VMs in Azure](../azure-monitor/vm/monitor-vm-azure.md).

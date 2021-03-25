@@ -9,17 +9,17 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/14/2020
 ms.openlocfilehash: f679d6fbab57bcbcccc09b722f6b2f670df49eb2
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97516585"
 ---
 # <a name="simple-query-syntax-in-azure-cognitive-search"></a>Einfache Abfragesyntax in der kognitiven Azure-Suche
 
 Die kognitive Azure-Suche implementiert zwei Lucene-basierte Abfragesprachen: [Einfacher Abfrageparser](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/simple/SimpleQueryParser.html) und der [Lucene-Abfrageparser](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html). Der einfache Parser ist flexibler und versucht auch dann, eine Anforderung zu interpretieren, wenn sie nicht perfekt zusammengesetzt ist. Aufgrund dieser Flexibilität ist er die Standardeinstellung für Abfragen in Azure Cognitive Search.
 
-Die einfache Syntax wird für Abfrageausdrücke verwendet, die im Parameter **`search`** einer Anforderung zum [Durchsuchen von Dokumenten (REST-API)](/rest/api/searchservice/search-documents) übergeben werden. Sie ist nicht zu verwechseln mit der [OData-Syntax](query-odata-filter-orderby-syntax.md), die für die Ausdrücke [ **`$filter`**](search-filters.md) und [ **`$orderby`** ](search-query-odata-orderby.md) in derselben Anforderung verwendet wird. Für OData-Parameter gelten eine andere Syntax und andere Regeln für das Erstellen von Abfragen, das Auskommentieren von Zeichenfolgen usw.
+Die einfache Syntax wird für Abfrageausdrücke verwendet, die im Parameter **`search`** einer Anforderung zum [Durchsuchen von Dokumenten (REST-API)](/rest/api/searchservice/search-documents) übergeben werden. Sie ist nicht zu verwechseln mit der [OData-Syntax](query-odata-filter-orderby-syntax.md), die für die Ausdrücke [ **`$filter`**](search-filters.md) und [ **`$orderby`**](search-query-odata-orderby.md) in derselben Anforderung verwendet wird. Für OData-Parameter gelten eine andere Syntax und andere Regeln für das Erstellen von Abfragen, das Auskommentieren von Zeichenfolgen usw.
 
 Der einfache Parser basiert zwar auf der [Apache Lucene Simple Query Parser](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/simple/SimpleQueryParser.html)-Klasse, die Implementierung in Cognitive Search schließt jedoch die Fuzzysuche aus. Wenn Sie die [Fuzzysuche](search-query-fuzzy.md) benötigen, sollten Sie stattdessen die alternative [vollständige Lucene-Abfragesyntax](query-lucene-syntax.md) in Betracht ziehen.
 

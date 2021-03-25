@@ -4,10 +4,10 @@ description: Hier wird die Verwendung der Bereichseigenschaft beim Bereitstellen
 ms.topic: conceptual
 ms.date: 01/13/2021
 ms.openlocfilehash: ce08ca951e24c1c0a5450052cf814a68888837c2
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99492160"
 ---
 # <a name="setting-scope-for-extension-resources-in-arm-templates"></a>Festlegen des Bereichs für Erweiterungsressourcen in Resource Manager-Vorlagen

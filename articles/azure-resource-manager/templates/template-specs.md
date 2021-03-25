@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 03/02/2021
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: e4efc63ffa49b1c8ca44fc806e37e4aa91cd76c8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 76573e4415dffb2212dd025ed486d834446d3851
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101700387"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102043897"
 ---
 # <a name="azure-resource-manager-template-specs-preview"></a>Azure Resource Manager-Vorlagenspezifikationen (Vorschau)
 
@@ -183,6 +183,12 @@ az deployment group create \
 ```
 
 ---
+
+Sie können auch eine URL im folgenden Format öffnen, um eine Vorlagenspezifikation bereitzustellen:
+
+```url
+https://portal.azure.com/#create/Microsoft.Template/templateSpecVersionId/%2fsubscriptions%2f{subscription-id}%2fresourceGroups%2f{resource-group-name}%2fproviders%2fMicrosoft.Resources%2ftemplateSpecs%2f{template-spec-name}%2fversions%2f{template-spec-version}
+```
 
 ## <a name="parameters"></a>Parameter
 

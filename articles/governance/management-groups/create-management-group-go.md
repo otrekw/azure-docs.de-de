@@ -5,10 +5,10 @@ ms.date: 09/30/2020
 ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 7b6ca4d10f2a86ecb55fec2afe72b4aabfbb94f9
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/10/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100101672"
 ---
 # <a name="quickstart-create-a-management-group-with-go"></a>Schnellstart: Erstellen einer Verwaltungsgruppe mit Go
@@ -132,4 +132,4 @@ In dieser Schnellstartanleitung haben Sie eine Verwaltungsgruppe zum Organisiere
 Weitere Informationen zu Verwaltungsgruppen und zur Verwaltung Ihrer Ressourcenhierarchie finden Sie im folgenden Artikel:
 
 > [!div class="nextstepaction"]
-> Verwalten von Ressourcen mit Verwaltungsgruppen
+> [Verwalten von Ressourcen mit Verwaltungsgruppen](./manage.md)
