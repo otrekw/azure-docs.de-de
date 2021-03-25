@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 11/03/2020
 ms.topic: conceptual
 ms.openlocfilehash: beed3ec50d0c7990168ee75976c732796cdbe246
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93324424"
 ---
 # <a name="configure-runbook-output-and-message-streams"></a>Konfigurieren der Ausgabe und Meldungsdatenströme von Runbooks
@@ -119,7 +119,7 @@ Bei diesem eher unkomplizierten Runbook muss dennoch ein Konfigurationselement a
 
 Das zweite Runbook in diesem Beispiel namens **Test-ChildOutputType** definiert einfach nur zwei Aktivitäten.<br> ![Beispiel für Runbook vom Typ „untergeordnete Ausgabe“](media/automation-runbook-output-and-messages/runbook-display-authentication-results-example.png)
 
-Die erste Aktivität ruft das **AuthenticateTo-Azure** -Runbook auf. Die zweite Aktivität führt das Cmdlet `Write-Verbose` mit der auf **Aktivitätsausgabe** festgelegten **Datenquelle** aus. Außerdem wird **Feldpfad** auf **Context.Subscription.SubscriptionName** festgelegt, die Kontextausgabe aus dem **AuthenticateTo-Azure** -Runbook.<br> ![Parameter „Datenquelle“ des Write-Verbose-Cmdlets](media/automation-runbook-output-and-messages/runbook-write-verbose-parameters-config.png)
+Die erste Aktivität ruft das **AuthenticateTo-Azure**-Runbook auf. Die zweite Aktivität führt das Cmdlet `Write-Verbose` mit der auf **Aktivitätsausgabe** festgelegten **Datenquelle** aus. Außerdem wird **Feldpfad** auf **Context.Subscription.SubscriptionName** festgelegt, die Kontextausgabe aus dem **AuthenticateTo-Azure**-Runbook.<br> ![Parameter „Datenquelle“ des Write-Verbose-Cmdlets](media/automation-runbook-output-and-messages/runbook-write-verbose-parameters-config.png)
 
 Die entstandene Ausgabe ist der Name des Abonnements.<br> ![Test-ChildOutputType- Runbookergebnisse](media/automation-runbook-output-and-messages/runbook-test-childoutputtype-results.png)
 
@@ -189,7 +189,7 @@ Dies liegt an Folgendem: Die Anweisung `$GLOBAL:DebugPreference="Continue"` info
 
 Der ausführliche Nachrichtendatenstrom unterstützt allgemeine Informationen zu Runbookvorgängen. Da der Debugdatenstrom für ein Runbook nicht verfügbar ist, sollte Ihr Runbook ausführliche Meldungen für Debuginformationen verwenden.
 
-Standardmäßig speichert der Auftragsverlauf aus Leistungsgründen keine ausführlichen Meldungen von veröffentlichten Runbooks. Um ausführliche Meldungen zu speichern, verwenden Sie die Registerkarte **Konfigurieren** im Azure-Portal mit der Einstellung **Ausführliche Datensätze protokollieren** , um Ihre veröffentlichten Runbooks für die Protokollierung von ausführlichen Meldungen zu konfigurieren. Aktivieren Sie diese Option nur zum Beheben oder Debuggen eines Runbooks. In den meisten Fällen sollte die Standardeinstellung, also keine Protokollierung ausführlicher Datensätze, für Runbooks beibehalten werden.
+Standardmäßig speichert der Auftragsverlauf aus Leistungsgründen keine ausführlichen Meldungen von veröffentlichten Runbooks. Um ausführliche Meldungen zu speichern, verwenden Sie die Registerkarte **Konfigurieren** im Azure-Portal mit der Einstellung **Ausführliche Datensätze protokollieren**, um Ihre veröffentlichten Runbooks für die Protokollierung von ausführlichen Meldungen zu konfigurieren. Aktivieren Sie diese Option nur zum Beheben oder Debuggen eines Runbooks. In den meisten Fällen sollte die Standardeinstellung, also keine Protokollierung ausführlicher Datensätze, für Runbooks beibehalten werden.
 
 Beim [Testen eines Runbooks](./manage-runbooks.md)werden auch dann keine ausführlichen Meldungen angezeigt, wenn das Runbook zum Protokollieren ausführlicher Datensätze konfiguriert ist. Um beim [Testen eines Runbooks](./manage-runbooks.md) ausführliche Meldungen anzuzeigen, müssen Sie die Variable `VerbosePreference` auf „Continue“ festlegen. Ist diese Variable festgelegt, werden im Testausgabebereich des Azure-Portals ausführliche Meldungen angezeigt.
 
@@ -278,7 +278,7 @@ Sofern Sie diese Informationen also nicht zur Nachverfolgung des Fortschritts ei
 2. Wählen Sie unter **Prozessautomatisierung** die Option **Runbooks** aus, um die Liste der Runbooks zu öffnen.
 3. Wählen Sie auf der Seite „Runbooks“ ein grafisches Runbook in der Liste der Runbooks aus.
 4. Klicken Sie unter **Einstellungen** auf **Protokollierung und Ablaufverfolgung**.
-5. Klicken Sie auf der Seite „Protokollierung und Ablaufverfolgung“ unter **Ausführliche Datensätze protokollieren** auf **Ein** , um die ausführliche Protokollierung zu aktivieren.
+5. Klicken Sie auf der Seite „Protokollierung und Ablaufverfolgung“ unter **Ausführliche Datensätze protokollieren** auf **Ein**, um die ausführliche Protokollierung zu aktivieren.
 6. Ändern Sie unterhalb von **Ablaufverfolgung auf Aktivitätsebene** die Stufe der Ablaufverfolgung gemäß Ihren Anforderungen in **Standard** oder **Ausführlich**.<br>
 
    ![Seite „Protokollierung und Ablaufverfolgung“ bei der grafischen Inhaltserstellung](media/automation-runbook-output-and-messages/logging-and-tracing-settings-blade.png)

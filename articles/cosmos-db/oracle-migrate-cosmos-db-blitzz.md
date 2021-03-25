@@ -9,10 +9,10 @@ ms.date: 08/21/2019
 ms.author: sngun
 ms.reviewer: sngun
 ms.openlocfilehash: 15bcd0c54fc5f6614f4d1925759704309048acae
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93336439"
 ---
 # <a name="migrate-data-from-oracle-to-azure-cosmos-db-cassandra-api-account-using-blitzz"></a>Migrieren von Daten aus Oracle zum Azure Cosmos DB-Cassandra-API-Konto mithilfe von Blitzz
@@ -121,9 +121,9 @@ In diesem Abschnitt werden die erforderlichen Schritte zum Einrichten von Blitzz
 
 1. Als Nächstes migrieren Sie die Daten mithilfe von Blitzz. Sie können den Blitzz-Replikanten im **vollständigen** oder **Momentaufnahme** modus ausführen:
 
-   * **Vollständiger Modus** : In diesem Modus wird der Replikant nach der Migration weiter ausgeführt und lauscht auf Änderungen am Oracle-Quellsystem. Wenn es Änderungen erkennt, werden Sie in Echtzeit in das Azure Cosmos-Zielkonto repliziert.
+   * **Vollständiger Modus**: In diesem Modus wird der Replikant nach der Migration weiter ausgeführt und lauscht auf Änderungen am Oracle-Quellsystem. Wenn es Änderungen erkennt, werden Sie in Echtzeit in das Azure Cosmos-Zielkonto repliziert.
 
-   * **Momentaufnahmemodus** : In diesem Modus können Sie eine Schemamigration sowie eine einmalige Datenreplikation durchführen. Echtzeitreplikation wird mit dieser Option nicht unterstützt.
+   * **Momentaufnahmemodus**: In diesem Modus können Sie eine Schemamigration sowie eine einmalige Datenreplikation durchführen. Echtzeitreplikation wird mit dieser Option nicht unterstützt.
 
 
    Durch Verwendung der beiden oben genannten Modi kann die Migration ohne jegliche Ausfallzeiten durchgeführt werden.

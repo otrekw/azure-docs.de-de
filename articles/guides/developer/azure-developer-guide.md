@@ -6,12 +6,12 @@ ms.service: azure
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: 1c28ed90c041a65b2ff8dd08a3aac799795171eb
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 12b90bf709cb20bed844940570663a76052a540d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897458"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101738938"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Anleitung mit den ersten Schritten für Azure-Entwickler
 
@@ -63,7 +63,7 @@ Sie können Ihre vorhandenen Anwendungen zu App Service migrieren, indem Sie das
 
 Als Infrastructure-as-a-Service-Anbieter (IaaS) ermöglicht Azure es Ihnen, Ihre Anwendung auf Windows- oder Linux-VMs bereitzustellen oder zu migrieren. Zusammen mit Azure Virtual Network unterstützt Azure Virtual Machines die Bereitstellung von Windows- oder Linux-VMs in Azure. Mit virtuellen Computern verfügen Sie über die vollständige Kontrolle über die Konfiguration des Computers. Wenn Sie VMs verwenden, sind Sie für die gesamte Serversoftwareinstallation, -konfiguration, -wartung und für Patches für das Betriebssystem verantwortlich.
 
-Aufgrund dieses Maß an Kontrolle, über das Sie mit den VMs verfügen, können Sie eine Vielzahl von Serverworkloads auf Azure ausführen, die in kein PaaS-Modell passen. Diese Workloads enthalten Datenbankserver, Windows Server Active Directory und Microsoft SharePoint. Weitere Informationen finden Sie in der Dokumentation für Virtual Machines für [Linux](../../virtual-machines/linux/index.yml) oder [Windows](../../virtual-machines/windows/index.yml).
+Aufgrund dieses Maß an Kontrolle, über das Sie mit den VMs verfügen, können Sie eine Vielzahl von Serverworkloads auf Azure ausführen, die in kein PaaS-Modell passen. Diese Workloads enthalten Datenbankserver, Windows Server Active Directory und Microsoft SharePoint. Weitere Informationen finden Sie in der Dokumentation für Virtual Machines für [Linux](../../virtual-machines/index.yml) oder [Windows](../../virtual-machines/index.yml).
 
 > **Einsatzgebiete**: Verwenden Sie virtuelle Computer, wenn Sie über die volle Kontrolle über Ihre Anwendungsinfrastruktur verfügen möchten oder lokale Anwendungsworkflows zu Azure migrieren möchten, ohne Änderungen vorzunehmen.
 >

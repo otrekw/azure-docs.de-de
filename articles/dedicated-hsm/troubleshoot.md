@@ -14,10 +14,10 @@ ms.custom: mvc, seodec18
 ms.date: 12/07/2018
 ms.author: mbaldwin
 ms.openlocfilehash: 42bfa52721160a469db2aa0507dadfa85ff41389
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97508270"
 ---
 # <a name="troubleshooting-the-azure-dedicated-hsm-service"></a>Behandeln von Problemen mit dem Azure Dedicated HSM-Dienst
@@ -100,7 +100,7 @@ Speichern Sie die Anmeldeinformationen beim Initialisieren des HSM auf sichere W
 
 Die Angabe falscher Anmeldeinformationen für HSMs kann sehr negative Folgen haben. Unten ist das Standardverhalten für HSM-Rollen angegeben.
 
-| Rolle | Schwellenwert (Anzahl von Wiederholungsversuchen) | Ergebnis bei zu vielen fehlerhaften Anmeldeversuchen | Wiederherstellung |
+| Role | Schwellenwert (Anzahl von Wiederholungsversuchen) | Ergebnis bei zu vielen fehlerhaften Anmeldeversuchen | Wiederherstellung |
 |--|--|--|--|
 | HSM-Anmeldung | 3 |  HSM wird auf Null zurückgesetzt (alle HSM-Objektidentitäten und alle Partitionen sind verloren)  |  Das HSM muss neu initialisiert werden. Inhalte können aus Sicherungen wiederhergestellt werden. | 
 | Partitionsanmeldung | 10 |  Die Partition wird auf Null zurückgesetzt. |  Die Partition muss neu initialisiert werden. Inhalte können aus der Sicherung wiederhergestellt werden. |  

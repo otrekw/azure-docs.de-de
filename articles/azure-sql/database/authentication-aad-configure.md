@@ -13,10 +13,10 @@ ms.author: mireks
 ms.reviewer: vanto, sstein
 ms.date: 08/17/2020
 ms.openlocfilehash: f3c34526fd4005dbbb0be7e763721e125ed7828e
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103201214"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>Konfigurieren und Verwalten der Azure Active Directory-Authentifizierung mit Azure SQL
@@ -190,7 +190,7 @@ Um einen Azure AD-Administrator bereitzustellen, führen Sie die folgenden Azure
 
 Zum Bereitstellen und Verwalten des Azure AD-Administrators für Ihre Instanz von SQL Managed Instance stehen folgende Cmdlets zur Verfügung:
 
-| Cmdlet-Name | Beschreibung |
+| Cmdlet-Name | BESCHREIBUNG |
 | --- | --- |
 | [Set-AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlinstanceactivedirectoryadministrator) |Stellt einen Azure AD-Administrator für SQL Managed Instance im aktuellen Abonnement bereit. (Muss aus dem aktuellen Abonnement stammen.)|
 | [Remove-AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlinstanceactivedirectoryadministrator) |Entfernt einen Azure AD-Administrator für SQL Managed Instance aus dem aktuellen Abonnement. |
@@ -218,7 +218,7 @@ Remove-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGro
 
 Sie können einen Azure AD-Administrator für SQL Managed Instance auch mithilfe der folgenden CLI-Befehle bereitstellen:
 
-| Befehl | Beschreibung |
+| Befehl | BESCHREIBUNG |
 | --- | --- |
 |[az sql mi ad-admin create](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-create) | Stellt einen Azure AD-Administrator für SQL Managed Instance bereit (muss aus dem aktuellen Abonnement stammen). |
 |[az sql mi ad-admin delete](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-delete) | Entfernt einen Azure Active Directory-Administrator für SQL Managed Instance. |
@@ -279,7 +279,7 @@ Zum Ausführen von PowerShell-Cmdlets muss Azure PowerShell installiert sein und
 
 Zum Bereitstellen und Verwalten des Azure AD-Administrators für Azure SQL-Datenbank und Azure Synapse stehen folgende Cmdlets zur Verfügung:
 
-| Cmdlet-Name | Beschreibung |
+| Cmdlet-Name | BESCHREIBUNG |
 | --- | --- |
 | [Set-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlserveractivedirectoryadministrator) |Stellt einen Azure Active Directory-Administrator für den Server bereit, der SQL-Datenbank oder Azure Synapse hostet. (Muss aus dem aktuellen Abonnement stammen.) |
 | [Remove-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlserveractivedirectoryadministrator) |Entfernt einen Azure Active Directory-Administrator für den Server, der SQL-Datenbank oder Azure Synapse hostet.|
@@ -324,7 +324,7 @@ Remove-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -Se
 
 Sie können einen Azure AD-Administrator bereitstellen, indem Sie die folgenden CLI-Befehle aufrufen:
 
-| Get-Help | Beschreibung |
+| Get-Help | BESCHREIBUNG |
 | --- | --- |
 |[az sql server ad-admin create](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-create) | Stellt einen Azure Active Directory-Administrator für den Server bereit, der SQL-Datenbank oder Azure Synapse hostet. (Muss aus dem aktuellen Abonnement stammen.) |
 |[az sql server ad-admin delete](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-delete) | Entfernt einen Azure Active Directory-Administrator für den Server, der SQL-Datenbank oder Azure Synapse hostet. |

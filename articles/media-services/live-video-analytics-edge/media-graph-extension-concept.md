@@ -4,10 +4,10 @@ description: Mit Live Video Analytics in IoT Edge können Sie die Mediengraph-V
 ms.topic: overview
 ms.date: 09/14/2020
 ms.openlocfilehash: 66656690e4e53508253091134a67adeb899b3dbf
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102455838"
 ---
 # <a name="media-graph-extension"></a>Mediengrapherweiterung

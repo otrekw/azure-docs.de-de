@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
 ms.openlocfilehash: e50cce74f7291a6673e5d43f3485a1c63c81d827
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93319289"
 ---
 # <a name="create-and-manage-servers-and-single-databases-in-azure-sql-database"></a>Erstellen und Verwalten von Servern und Einzeldatenbanken in Azure SQL-Datenbank
@@ -45,7 +45,7 @@ Um eine einzelne Azure SQL-Datenbank mithilfe des [Azure-Portals](https://portal
 
 Zum Verwalten eines vorhandenen Servers navigieren Sie mithilfe einer Reihe von Methoden zum Server, z. B. über eine bestimmte Datenbankseite, die Seite für die **SQL-Server** oder die Seite **Alle Ressourcen**.
 
-Um eine vorhandene Datenbank zu verwalten, navigieren Sie zu der Seite **SQL-Datenbanken** , und wählen Sie dann die Datenbank aus, die Sie verwalten möchten. Der folgende Screenshot zeigt, wie Sie beginnen, über die Seite **Übersicht** für eine Datenbank eine Firewall auf Serverebene für eine Datenbank festzulegen.
+Um eine vorhandene Datenbank zu verwalten, navigieren Sie zu der Seite **SQL-Datenbanken**, und wählen Sie dann die Datenbank aus, die Sie verwalten möchten. Der folgende Screenshot zeigt, wie Sie beginnen, über die Seite **Übersicht** für eine Datenbank eine Firewall auf Serverebene für eine Datenbank festzulegen.
 
    ![Serverfirewallregel](./media/single-database-manage/server-firewall-rule.png)
 

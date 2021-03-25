@@ -13,18 +13,16 @@ ms.tgt_pltfrm: na
 ms.date: 01/13/2021
 ms.author: jenhayes
 ms.custom: include file
-ms.openlocfilehash: 08e7463f4657b2ae5d6da1017c14226e97af7605
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: c625253585cc99c035852b8b9042f939284bad19
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165738"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750371"
 ---
 ### <a name="general-requirements"></a>Allgemeine Anforderungen
 
 * Das VNET muss sich im gleichen Abonnement und in der gleichen Region befinden wie das für die Poolerstellung verwendete Batch-Konto.
-
-* Der Pool, der das VNET verwendet, kann bis zu 4.096 Knoten umfassen.
 
 * Das für den Pool angegebene Subnetz muss über ausreichend nicht zugewiesene IP-Adressen verfügen, um die Anzahl virtueller Computer aufnehmen zu können, die für den Pool geplant sind, d. h. die Summe der `targetDedicatedNodes`- und `targetLowPriorityNodes`-Eigenschaften des Pools. Wenn das Subnetz nicht über ausreichend nicht zugewiesene IP-Adressen verfügt, belegt der Pool teilweise die Computeknoten und es tritt ein Anpassungsfehler auf.
 
@@ -67,23 +65,29 @@ Sie müssen keine NSGs auf der Subnetzebene virtueller Netzwerke angeben, da Bat
 
 Konfigurieren Sie eingehenden Datenverkehr am Port 3389 (Windows) bzw. am Port 22 (Linux) nur, wenn Sie Remotezugriff auf die Computeknoten von externen Quellen aus zulassen müssen. Möglicherweise müssen Sie Regeln für Port 22 unter Linux aktivieren, wenn Sie Unterstützung für Tasks mit mehreren Instanzen mit bestimmten MPI-Runtimes benötigen. Das Zulassen von Datenverkehr an diesen Ports ist für die Verwendung der Poolcomputeknoten nicht zwingend erforderlich.
 
+> [!WARNING]
+> IP-Adressen des Batch-Diensts können sich im Laufe der Zeit ändern. Daher wird dringend empfohlen, das `BatchNodeManagement`-Diensttag (oder eine regionale Variante) für die NSG-Regeln zu verwenden, die in den folgenden Tabellen aufgeführt sind. Vermeiden Sie das Auffüllen von NSG-Regeln mit bestimmten Batch-Dienst-IP-Adressen.
+
 **Eingangssicherheitsregeln**
 
 | Quell-IP-Adressen | Quelldiensttag | Quellports | Destination | Zielports | Protocol | Aktion |
 | --- | --- | --- | --- | --- | --- | --- |
-| – | `BatchNodeManagement` [Diensttag](../articles/virtual-network/network-security-groups-overview.md#service-tags) (bei Verwendung der regionalen Variante in derselben Region wie Ihr Batch-Konto) | * | Any | 29876–29877 | TCP | Allow |
+| – | `BatchNodeManagement`-[Diensttag](../articles/virtual-network/network-security-groups-overview.md#service-tags) (ist bei Verwendung einer regionalen Variante in der gleichen Region wie Ihr Batch-Konto) | * | Any | 29876–29877 | TCP | Allow |
 | Benutzerquellen-IPs für den Remotezugriff auf Computeknoten und/oder Computeknoten-Subnetz für Multi-Instanz-Aufgaben unter Linux, falls erforderlich. | – | * | Any | 3389 (Windows), 22 (Linux) | TCP | Allow |
-
-> [!WARNING]
-> IP-Adressen des Batch-Diensts können sich im Laufe der Zeit ändern. Daher wird dringend empfohlen, das Diensttag `BatchNodeManagement` (oder die regionale Variante) für NSG-Regeln zu verwenden. Vermeiden Sie das Auffüllen von NSG-Regeln mit bestimmten Batch-Dienst-IP-Adressen.
 
 **Ausgangssicherheitsregeln**
 
 | `Source` | Quellports | Destination | Zieldiensttag | Zielports | Protocol | Aktion |
 | --- | --- | --- | --- | --- | --- | --- |
 | Any | * | [Diensttag](../articles/virtual-network/network-security-groups-overview.md#service-tags) | `Storage` Speicher (bei Verwendung der regionalen Variante in der gleichen Region wie Ihr Batch-Konto) | 443 | TCP | Allow |
+| Any | * | [Diensttag](../articles/virtual-network/network-security-groups-overview.md#service-tags) | `BatchNodeManagement` Speicher (bei Verwendung der regionalen Variante in der gleichen Region wie Ihr Batch-Konto) | 443 | TCP | Allow |
+
+Ausgehend an `BatchNodeManagement` ist erforderlich, um den Batch-Dienst von Serverknoten wie denen für Auftragsverwaltungsaufgaben aus zu kontaktieren.
 
 ### <a name="pools-in-the-cloud-services-configuration"></a>Pools in der Cloud Services-Konfiguration
+
+> [!WARNING]
+> Clouddienst-Konfigurationspools sind veraltet. Verwenden Sie stattdessen Konfigurationspools für Virtual Machines.
 
 **Unterstützte VNETs:** Nur klassische VNETs
 

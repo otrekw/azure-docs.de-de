@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 09/09/2020
 ms.author: sharrai
 ms.openlocfilehash: aeb89a9d18e4550fa1d6162920d60507fd50c208
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92359865"
 ---
 # <a name="monitoring-churn-patterns-on-virtual-machines"></a>Überwachen von Änderungsmustern auf virtuellen Computern
@@ -53,7 +53,7 @@ Der **Systemmonitor** überwacht verschiedene Aktivitäten auf einem Computer, z
 
     ![Systemmonitor – Schritt 1](./media/monitoring-high-churn/perfmon-step1.png)
 
-1. Erweitern Sie auf der rechten Seite den Ordner **Überwachungstools** , und klicken Sie auf „Systemmonitor“. Dadurch wird die folgende Ansicht geöffnet, die Ihnen Echtzeitinformationen zur aktuellen Leistung bietet:
+1. Erweitern Sie auf der rechten Seite den Ordner **Überwachungstools**, und klicken Sie auf „Systemmonitor“. Dadurch wird die folgende Ansicht geöffnet, die Ihnen Echtzeitinformationen zur aktuellen Leistung bietet:
 
     ![Systemmonitor – Schritt 2](./media/monitoring-high-churn/perfmon-step1.png)
 
@@ -70,7 +70,7 @@ Wenn Sie über einen Computer verfügen (lokal oder nicht lokal), auf dem das Li
 
 ### <a name="iotop"></a>Iotop
 
-Eines der am häufigsten verwendeten Tools ist _iotop_ . Es ist ein Hilfsprogramm zum Anzeigen von Datenträgeraktivitäten in Echtzeit. Es kann die Prozesse, die E/A-Vorgänge ausführen, zusammen mit der jeweils verwendeten Datenträgerbandbreite auflisten.
+Eines der am häufigsten verwendeten Tools ist _iotop_. Es ist ein Hilfsprogramm zum Anzeigen von Datenträgeraktivitäten in Echtzeit. Es kann die Prozesse, die E/A-Vorgänge ausführen, zusammen mit der jeweils verwendeten Datenträgerbandbreite auflisten.
 
 Öffnen Sie die Eingabeaufforderung, und führen Sie den Befehl `iotop` aus.
 

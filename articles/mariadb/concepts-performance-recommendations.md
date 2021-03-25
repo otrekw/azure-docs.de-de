@@ -3,14 +3,14 @@ title: Leistungsempfehlungen – Azure Database for MariaDB
 description: In diesem Artikel wird das Feature „Leistungsempfehlung“ in Azure Database for MariaDB beschrieben.
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
 ms.topic: conceptual
 ms.date: 6/3/2020
-ms.openlocfilehash: 5949c6ba1ed176a609d3ceed4150ac06855440e9
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: a20b8a43c8955e1afea7a7157e3e73425fb0d806
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98664315"
 ---
 # <a name="performance-recommendations-in-azure-database-for-mariadb"></a>Leistungsempfehlungen in Azure Database for MariaDB
@@ -29,7 +29,7 @@ Das Feature [Leistungsempfehlungen](concepts-performance-recommendations.md) ana
 
 Öffnen Sie im Abschnitt **Intelligente Leistung** in der Menüleiste der Azure-Portalseite für Ihren MariaDB-Server die Option **Leistungsempfehlungen**.
 
-:::image type="content" source="./media/concepts-performance-recommendations/performance-recommendations-page.png" alt-text="Landing Page für Leistungsempfehlungen":::
+:::image type="content" source="./media/concepts-performance-recommendations/performance-recommendations-page.png" alt-text="Leistungsempfehlungen-Startseite":::
 
 Wählen Sie **Analysieren** aus, und wählen Sie eine Datenbank aus, mit der die Analyse beginnt. Je nach Workload kann die Analyse einige Minuten dauern. Wenn die Analyse abgeschlossen ist, wird im Portal eine Benachrichtigung angezeigt. Die Analyse führt eine umfassende Untersuchung der Datenbank aus. Es wird empfohlen, Analysen während der Nebenzeiten durchzuführen.
 
@@ -47,7 +47,7 @@ Empfehlungen des Typs *Index erstellen* schlagen neue Indizes vor, um die am hä
 
 ### <a name="query-recommendations"></a>Abfrageempfehlungen
 
-In Abfrageempfehlungen werden Optimierungen und Umschreibungen für Abfrage in der Workload vorgeschlagen. Die Leistung zeitaufwendiger Abfragen lässt sich verbessern, indem Antimuster bei MariaDB-Abfragen identifiziert werden und die Abfragesyntax korrigiert wird. Für diese Art von Empfehlung muss der Abfragespeicher aktiviert sein. Der Abfragespeicher erfasst Abfrageinformationen und stellt die detaillierten Statistiken zur Laufzeit und Häufigkeit der Abfrage zur Verfügung, die die Analyse verwendet, um die Empfehlung abzugeben.
+In Abfrageempfehlungen werden Optimierungen und Umschreibungen für Abfragen in der Workload vorgeschlagen. Die Leistung zeitaufwendiger Abfragen lässt sich verbessern, indem Antimuster bei MariaDB-Abfragen identifiziert werden und die Abfragesyntax korrigiert wird. Für diese Art von Empfehlung muss der Abfragespeicher aktiviert sein. Der Abfragespeicher erfasst Abfrageinformationen und stellt die detaillierten Statistiken zur Laufzeit und Häufigkeit der Abfrage zur Verfügung, die die Analyse verwendet, um die Empfehlung abzugeben.
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Weitere Informationen zu [Überwachung und Optimierung](concepts-monitoring.md) in Azure Database for MariaDB.

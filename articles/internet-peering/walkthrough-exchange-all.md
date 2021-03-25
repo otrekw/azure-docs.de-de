@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 12/15/2020
 ms.author: prmitiki
 ms.openlocfilehash: 97430d86cba1107ef67264a181925d2a4d7c12c3
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97586821"
 ---
 # <a name="exchange-peering-walkthrough"></a>Exemplarische Vorgehensweise für Austauschpeering
@@ -31,7 +31,7 @@ Die Bereitstellung eines Austauschpeerings umfasst folgende Schritte:
 1. Nach der Genehmigung lautet der Verbindungsstatus „Approved“ (Genehmigt).
 1. Konfigurieren Sie die BGP-Sitzung, und benachrichtigen Sie Microsoft.
 1. Wir stellen eine BGP-Sitzung mit DENY ALL-Richtlinie und End-to-End-Validierung bereit.
-1. Bei Erfolg erhalten Sie eine Benachrichtigung, dass das Peering nun den Verbindungsstatus „Active“ (Aktiv) hat.
+1. Bei Erfolg erhalten Sie eine Benachrichtigung, dass der Verbindungsstatus des Peerings aktiv ist.
 1. Daraufhin wird Datenverkehr über das neue Peering zugelassen.
 
 Beachten Sie, dass der Verbindungsstatus nicht mit dem Standardstatus von [BGP](https://en.wikipedia.org/wiki/Border_Gateway_Protocol)-Sitzungen verwechselt werden darf.
@@ -39,7 +39,7 @@ Beachten Sie, dass der Verbindungsstatus nicht mit dem Standardstatus von [BGP](
 ## <a name="convert-a-legacy-exchange-peering-to-azure-resource"></a>Konvertieren einer älteren Instanz für Austauschpeering in eine Azure-Ressource
 Führen Sie die folgenden Schritte aus, um ein älteres Austauschpeering in eine Azure-Ressource zu konvertieren:
 1. Gehen Sie wie unter [Konvertieren eines älteren Austauschpeerings in eine Azure-Ressource mithilfe von PowerShell](howto-legacy-exchange-powershell.md) beschrieben vor.
-1. Microsoft überprüft die übermittelte Konvertierungsanforderung und setzt sich bei Bedarf mit Ihnen in Verbindung.
+1. Nachdem Sie die Konvertierungsanforderung eingereicht haben, überprüft Microsoft die Anforderung und kontaktiert Sie bei Bedarf.
 1. Nach der Genehmigung hat Ihr Austauschpeering den Verbindungsstatus „Active“ (Aktiv).
 
 ## <a name="deprovision-exchange-peering"></a>Aufheben der Bereitstellung eines Austauschpeerings

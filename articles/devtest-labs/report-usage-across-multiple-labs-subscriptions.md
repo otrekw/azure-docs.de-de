@@ -4,10 +4,10 @@ description: Es wird beschrieben, wie Sie die Azure DevTest Labs-Nutzung für me
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 1e4d1f0abb5596c7fd9d22740bf052827c2ca666
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102452644"
 ---
 # <a name="report-azure-devtest-labs-usage-across-multiple-labs-and-subscriptions"></a>Melden der Azure DevTest Labs-Nutzung für mehrere Labs und Abonnements

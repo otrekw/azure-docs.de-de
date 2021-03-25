@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 02/13/2020
 ms.openlocfilehash: c315e1df473f3d23bab7e2a78ce166f22272ee70
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93242244"
 ---
 # <a name="troubleshoot-data-encryption-in-azure-database-for-postgresql---single-server"></a>Problembehandlung bei der Datenverschlüsselung in Azure Database for PostgreSQL (Einzelserver)
@@ -19,7 +19,7 @@ Dieser Artikel enthält Informationen zum Ermitteln und Beheben häufiger Proble
 
 ## <a name="introduction"></a>Einführung
 
-Wenn Sie die Datenverschlüsselung so konfigurieren, dass in Azure Key Vault ein kundenseitig verwalteter Schlüssel verwendet wird, benötigt der Server kontinuierlichen Zugriff auf den Schlüssel. Wenn der Server keinen Zugriff mehr auf den kundenseitig verwalteten Schlüssel in Azure Key Vault hat, lehnt er alle Verbindungen ab, gibt die entsprechende Fehlermeldung zurück und ändert seinen Status im Azure-Portal in **Zugriff nicht möglich**.
+Wenn Sie die Datenverschlüsselung so konfigurieren, dass in Azure Key Vault ein kundenseitig verwalteter Schlüssel verwendet wird, benötigt der Server kontinuierlichen Zugriff auf den Schlüssel. Wenn der Server den Zugriff auf den kundenseitig verwalteten Schlüssel in Azure Key Vault verliert, lehnt er alle Verbindungen ab, gibt die entsprechende Fehlermeldung zurück und ändert seinen Status im Azure-Portal in ***Zugriff nicht möglich***.
 
 Wenn Sie einen unzugänglichen Azure Database for PostgreSQL-Server nicht mehr benötigen, können Sie ihn löschen, um Kosten zu vermeiden. Keine anderen Aktionen sind auf dem Server zulässig, bis der Zugriff auf den Schlüsseltresor wiederhergestellt wurde und der Server verfügbar ist. Das Ändern der Datenverschlüsselungsoption aus `Yes` (kundenseitig verwaltet) in `No` (dienstseitig verwaltet) ist auf einem nicht zugänglichen Server ebenfalls nicht möglich, wenn dieser mit einem kundenseitig verwalteten Schlüssel verschlüsselt ist. Sie müssen den Schlüssel manuell erneut validieren, bevor Sie erneut auf den Server zugreifen können. Diese Aktion ist notwendig, um die Daten vor nicht autorisierten Zugriffen zu schützen, wenn die Berechtigungen für den kundenseitig verwalteten Schlüssel widerrufen werden.
 

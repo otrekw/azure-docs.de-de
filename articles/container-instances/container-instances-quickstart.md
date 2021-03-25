@@ -10,10 +10,10 @@ ms.custom:
 - devx-track-js
 - devx-track-azurecli
 ms.openlocfilehash: 1c327fc7fc067948b5022f989e6c86f99573bd1a
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93100183"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-cli"></a>Schnellstart: Bereitstellen einer Containerinstanz in Azure mithilfe der Azure-Befehlszeilenschnittstelle
@@ -34,7 +34,7 @@ In diesem Schnellstart stellen Sie mithilfe der Azure-Befehlszeilenschnittstelle
 
 Azure Container Instances muss wie alle Azure-Ressourcen in einer Ressourcengruppe bereitgestellt werden. Mit Ressourcengruppen können verwandte Azure-Ressourcen organisiert und verwaltet werden.
 
-Erstellen Sie zunächst mit dem folgenden Befehl [az group create][az-group-create] eine Ressourcengruppe namens *myResourceGroup* am Standort *eastus* :
+Erstellen Sie zunächst mit dem folgenden Befehl [az group create][az-group-create] eine Ressourcengruppe namens *myResourceGroup* am Standort *eastus*:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus

@@ -4,10 +4,10 @@ description: Erfahren Sie, wie Sie eine Richtlinie zum automatischen Herunterfah
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: cd7974580ea30c9d0591c88380a4e626711bad1e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93318975"
 ---
 # <a name="configure-autoshutdown-for-lab-and-compute-virtual-machines-in-azure-devtest-labs"></a>Konfigurieren des automatischen Herunterfahrens für Lab- und Compute-VMs in Azure DevTest Labs
@@ -39,7 +39,7 @@ Um die Richtlinien für ein Lab anzuzeigen oder zu ändern, gehen Sie folgenderm
 
 1. Wählen Sie auf der Startseite Ihres Labs **Konfiguration und Richtlinien** aus.
 2. Wählen Sie im linken Menü im Abschnitt **Zeitpläne** die Option **Automatisches Herunterfahren** aus.
-3. Wählen Sie **Ein** , um diese Richtlinie zu aktivieren, und **Aus** , um sie zu deaktivieren.
+3. Wählen Sie **Ein**, um diese Richtlinie zu aktivieren, und **Aus**, um sie zu deaktivieren.
      ![Details zum automatischen Herunterfahren](./media/devtest-lab-set-lab-policy/auto-shutdown.png)
 4. Wenn Sie diese Richtlinie aktivieren, geben Sie die Uhrzeit (und die Zeitzone) an, zu der alle virtuellen Computer im aktuellen Lab heruntergefahren werden sollen.
 5. Geben Sie für die Option, mit der 30 Minuten vor der angegebenen Uhrzeit des automatischen Herunterfahrens eine Benachrichtigung gesendet wird, **Ja** oder **Nein** an. Wenn Sie **Ja** auswählen, geben Sie einen Webhook-URL-Endpunkt oder eine E-Mail-Adresse ein, der bzw. die angibt, wo die Benachrichtigung veröffentlicht bzw. an wen diese gesendet wird. Der Benutzer erhält eine Benachrichtigung und hat die Möglichkeit, das Herunterfahren zu verzögern. Weitere Informationen finden Sie im Abschnitt [Benachrichtigungen](#notifications).
@@ -71,8 +71,8 @@ Wenn Sie für Ihr Lab diese Richtlinie festlegen, können die Lab-Benutzer den L
 ## <a name="configure-autoshutdown-for-compute-vms"></a>Konfigurieren von automatischem Herunterfahren für Compute-VMs
 
 1. Wählen Sie auf der Seite **Virtueller Computer** im linken Menü im Abschnitt **Vorgänge** die Option **Automatisches Herunterfahren** aus.
-2. Wählen Sie auf der Seite **Automatisches Herunterfahren** die Option **Ein** aus, um diese Richtlinie zu aktivieren, und **Aus** , um sie zu deaktivieren.
-3. Wenn Sie diese Richtlinie aktivieren, geben Sie die **Uhrzeit** (und die **Zeitzone** ) an, zu der die VM heruntergefahren werden soll.
+2. Wählen Sie auf der Seite **Automatisches Herunterfahren** die Option **Ein** aus, um diese Richtlinie zu aktivieren, und **Aus**, um sie zu deaktivieren.
+3. Wenn Sie diese Richtlinie aktivieren, geben Sie die **Uhrzeit** (und die **Zeitzone**) an, zu der die VM heruntergefahren werden soll.
 4. Wählen Sie für die Option, mit der 30 Minuten vor der angegebenen Uhrzeit des automatischen Herunterfahrens eine Benachrichtigung gesendet wird, **Ja** oder **Nein** aus. Wenn Sie **Ja** auswählen, geben Sie einen Webhook-URL-Endpunkt oder eine E-Mail-Adresse ein, der bzw. die angibt, wo die Benachrichtigung veröffentlicht bzw. an wen diese gesendet wird. Der Benutzer erhält eine Benachrichtigung und hat die Möglichkeit, das Herunterfahren zu verzögern. Weitere Informationen finden Sie im Abschnitt [Benachrichtigungen](#notifications).
 5. Wählen Sie **Speichern** aus.
 
@@ -95,7 +95,7 @@ Wenn Sie die Einstellung zum automatischen Herunterfahren aktualisieren, wird di
     - Die E-Mail-Adresse des Benutzers, der die Einstellung aktualisiert hat
 
         ![Zusammenfassung zum Aktivitätsprotokolleintrag](./media/devtest-lab-auto-shutdown/activity-log-entry-summary.png)
-6. Wechseln Sie auf der Seite **Zeitpläne hinzufügen oder ändern** zur Registerkarte **Änderungsverlauf** , um den Änderungsverlauf für die Einstellung anzuzeigen. Im folgenden Beispiel wurde die Zeit für das Herunterfahren am 10. April 2020 um 15:18:47 EST von 19 Uhr auf 18 Uhr geändert. Und um 15:25:09 EST wurde die Einstellung deaktiviert.
+6. Wechseln Sie auf der Seite **Zeitpläne hinzufügen oder ändern** zur Registerkarte **Änderungsverlauf**, um den Änderungsverlauf für die Einstellung anzuzeigen. Im folgenden Beispiel wurde die Zeit für das Herunterfahren am 10. April 2020 um 15:18:47 EST von 19 Uhr auf 18 Uhr geändert. Und um 15:25:09 EST wurde die Einstellung deaktiviert.
 
     ![Aktivitätsprotokoll – Änderungsverlauf](./media/devtest-lab-auto-shutdown/activity-log-entry-change-history.png)
 7. Um weitere Details zum Vorgang anzuzeigen, wechseln Sie auf der Seite **Zeitpläne hinzufügen oder ändern** zur Registerkarte **JSON**.
@@ -125,13 +125,13 @@ Wir empfehlen Ihnen die Verwendung von Webhooks, da diese von verschiedenen Apps
 
 Erstellen Sie zunächst mithilfe der folgenden Schritte eine Logik-App in Ihrem Azure-Abonnement:
 
-1. Wählen Sie im Menü links **+ Ressource erstellen** , dann **Integration** und schließlich **Logik-App** aus.
+1. Wählen Sie im Menü links **+ Ressource erstellen**, dann **Integration** und schließlich **Logik-App** aus.
 
     ![Menü „Neue Logik-App“](./media/devtest-lab-auto-shutdown/new-logic-app.png)
 2. Führen Sie auf der Seite **Logik-App erstellen** die folgenden Schritte aus:
     1. Geben Sie einen **Namen** für die Logik-App ein.
     2. Wählen Sie Ihr Azure- **Abonnement** aus.
-    3. Erstellen Sie eine neue **Ressourcengruppe** , oder wählen Sie eine vorhandene Ressourcengruppe aus.
+    3. Erstellen Sie eine neue **Ressourcengruppe**, oder wählen Sie eine vorhandene Ressourcengruppe aus.
     4. Wählen Sie einen **Speicherort** für die Logik-App aus.
 
         ![Neue Logik-App – Einstellungen](./media/devtest-lab-auto-shutdown/new-logic-app-page.png)
@@ -144,7 +144,7 @@ Erstellen Sie zunächst mithilfe der folgenden Schritte eine Logik-App in Ihrem 
 5. Wählen Sie auf der Seite **HTTP-Anforderung/-Antwort** die Option **Diese Vorlage verwenden** aus.
 
     ![Auswählen der Option „Diese Vorlage verwenden“](./media/devtest-lab-auto-shutdown/select-use-this-template.png)
-6. Kopieren Sie den folgenden JSON-Code in den Abschnitt **JSON-Schema für Anforderungstext** :
+6. Kopieren Sie den folgenden JSON-Code in den Abschnitt **JSON-Schema für Anforderungstext**:
 
     ```json
     {

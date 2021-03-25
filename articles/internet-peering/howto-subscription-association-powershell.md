@@ -10,17 +10,17 @@ ms.date: 12/15/2020
 ms.author: prmitiki
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 3b463293899dc2586404d68145943caff3105e89
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97590187"
 ---
 # <a name="associate-peer-asn-to-azure-subscription-using-powershell"></a>Zuordnen der Peer-ASN zum Azure-Abonnement mithilfe von PowerShell
 
 Vor dem Einreichen einer Peeringanforderung sollten Sie zunächst mithilfe der unten dargestellten Schritte Ihre ASN dem Azure-Abonnement zuordnen.
 
-Falls Sie es vorziehen, können Sie diese Anleitung auch mithilfe des [Portals](howto-subscription-association-portal.md) ausführen.
+Falls Sie es vorziehen, können Sie diese Anleitung auch über das [Portal](howto-subscription-association-portal.md) ausführen.
 
 ### <a name="working-with-azure-powershell"></a>Arbeiten mit Azure PowerShell
 [!INCLUDE [CloudShell](./includes/cloudshell-powershell-about.md)]
@@ -65,7 +65,7 @@ Ein Abonnement kann über mehrere ASNs verfügen. Aktualisieren Sie die Peeringi
 
 Von Peers wird erwartet, dass sie über ein umfassendes und aktuelles Profil auf [PeeringDB](https://www.peeringdb.com) verfügen. Wir verwenden diese Informationen während der Registrierung, um die Detailangaben des Peers zu überprüfen, wie etwa die NOC-Informationen, Informationen zum technischen Kontakt, die Anwesenheit in den Peeringeinrichtungen usw.
 
-Beachten Sie, dass anstelle von **{subscriptionId}** in der obigen Ausgabe die tatsächliche Abonnement-ID angezeigt wird.
+Beachten Sie, dass anstelle von **{subscriptionId}** in der Ausgabe oben die tatsächliche Abonnement-ID angezeigt wird.
 
 ## <a name="view-status-of-a-peerasn"></a>Anzeigestatus einer PeerASN
 
@@ -75,7 +75,7 @@ Beachten Sie, dass anstelle von **{subscriptionId}** in der obigen Ausgabe die t
 Get-AzPeerAsn
 ```
 
-Unten finden Sie eine Beispielantwort:
+Hier eine Beispielantwort:
 ```powershell
 PeerContactInfo : Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSContactInfo
 PeerName        : Contoso
@@ -103,11 +103,11 @@ Das Löschen einer PeerASN wird zurzeit nicht unterstützt. Wenn Sie die PeerASN
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Erstellen oder Ändern einer Instanz für Direct Peering](howto-direct-powershell.md)
-* [Konvertieren einer älteren Instanz für Direct Peering in eine Azure-Ressource](howto-legacy-direct-powershell.md)
+* [Erstellen oder Ändern einer Instanz für direktes Peering](howto-direct-powershell.md)
+* [Konvertieren einer älteren Instanz für direktes Peering in eine Azure-Ressource](howto-legacy-direct-powershell.md)
 * [Erstellen oder Ändern von Exchange Peering](howto-exchange-powershell.md)
-* [Konvertieren einer älteren Instanz für Exchange Peering in eine Azure-Ressource](howto-legacy-exchange-powershell.md)
+* [Konvertieren einer älteren Instanz für Austauschpeering in eine Azure-Ressource](howto-legacy-exchange-powershell.md)
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-Weitere Informationen finden Sie unter [Internetpeering: häufig gestellte Fragen](faqs.md).
+Weitere Informationen finden Sie unter [Häufig gestellte Fragen zum Internetpeering](faqs.md).

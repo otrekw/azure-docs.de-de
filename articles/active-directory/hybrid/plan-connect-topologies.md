@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8d3f8e9441064a5d2d1372e3f177534b8dfefb93
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92359831"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Topologien für Azure AD Connect
@@ -130,7 +130,7 @@ Wenn es sich um eine größere Organisation handelt, sollten Sie die Verwendung 
 ## <a name="staging-server"></a>Stagingserver
 ![Stagingserver in einer Topologie](./media/plan-connect-topologies/multiforeststaging.png)
 
-Azure AD Connect unterstützt die Installation eines zweiten Servers im *Stagingmodus* . Ein Server in diesem Modus liest Daten aus allen verbundenen Verzeichnissen, schreibt jedoch nicht in die verbundenen Verzeichnisse. Er verwendet den normalen Synchronisierungszyklus und verfügt daher über eine aktualisierte Kopie der Identitätsdaten.
+Azure AD Connect unterstützt die Installation eines zweiten Servers im *Stagingmodus*. Ein Server in diesem Modus liest Daten aus allen verbundenen Verzeichnissen, schreibt jedoch nicht in die verbundenen Verzeichnisse. Er verwendet den normalen Synchronisierungszyklus und verfügt daher über eine aktualisierte Kopie der Identitätsdaten.
 
 Bei einem notfallbedingten Ausfall des primären Servers kann ein Failover auf den Stagingserver durchgeführt werden. Hierzu wird der Azure AD Connect-Assistent verwendet. Dieser zweite Server kann sich in einem anderen Rechenzentrum befinden, da keine Infrastruktur mit dem primären Server gemeinsam genutzt wird. Jede am primären Server vorgenommene Konfigurationsänderung muss manuell an den zweiten Server kopiert werden.
 

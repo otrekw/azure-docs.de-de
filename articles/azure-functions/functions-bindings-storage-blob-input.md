@@ -7,10 +7,10 @@ ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
 ms.openlocfilehash: cd69e89954fab2256ffc7c23e22d3b8d44ab2a11
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102455872"
 ---
 # <a name="azure-blob-storage-input-binding-for-azure-functions"></a>Azure Blob Storage-Eingabebindung für Azure Functions
@@ -262,7 +262,7 @@ Weitere Informationen zu diesen Eigenschaften finden Sie im Abschnitt [Konfigura
 
 Die `dataType`-Eigenschaft legt fest, welche Bindung verwendet wird. Die folgenden Werte stehen zur Unterstützung unterschiedlicher Bindungsstrategien zur Verfügung:
 
-| Bindungswert | Standard | Beschreibung | Beispiel |
+| Bindungswert | Standard | BESCHREIBUNG | Beispiel |
 | --- | --- | --- | --- |
 | `undefined` | J | Verwendet eine umfangreiche Bindung | `def main(input: func.InputStream)` |
 | `string` | N | Verwendet eine generische Bindung und wandelt den Eingabetyp in `string` um | `def main(input: str)` |

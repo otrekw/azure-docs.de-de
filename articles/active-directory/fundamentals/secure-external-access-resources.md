@@ -14,10 +14,10 @@ ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bc8ec364380fc5cb9f6e33a29cd8dac96ea1fb69
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98219826"
 ---
 # <a name="securing-external-collaboration-in-azure-active-directory-and-microsoft-365"></a>Schützen der externen Zusammenarbeit in Azure Active Directory und Microsoft 365
@@ -40,7 +40,7 @@ Diese Dokumentation unterstützt Sie bei der Migration von einer Ad-hoc-basierte
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In den folgenden Artikeln finden Sie Informationen zum Schützen des externen Zugriffs auf Ressourcen. Wir empfehlen Ihnen, die Aktionen in der angegebenen Reihenfolge durchzuführen:
+In den folgenden Artikeln finden Sie Informationen zum Sichern des externen Zugriffs auf Ressourcen. Es wird empfohlen, die Aktionen in der angegebenen Reihenfolge auszuführen.
 
 
 1. [Ermitteln des Sicherheitsstatus für externen Zugriff](1-secure-access-posture.md)
@@ -51,7 +51,7 @@ In den folgenden Artikeln finden Sie Informationen zum Schützen des externen Zu
 
 4. [Verwenden von Gruppen für die Sicherheit](4-secure-access-groups.md)
 
-5. [Umstellung auf Azure AD B2B](5-secure-access-b2b.md)
+5. [Umstellung auf Azure AD B2B](5-secure-access-b2b.md)
 
 6. [Schützen des Zugriffs mit der Berechtigungsverwaltung](6-secure-access-entitlement-managment.md)
 

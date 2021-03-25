@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
 ms.openlocfilehash: 98896b5b728a729a29f989b3b9a76f29131af8d7
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93305969"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---single-tenant-app"></a>Mandantenübergreifende Analysen mit extrahierten Daten – App mit einem Mandanten
@@ -70,7 +70,7 @@ Anhand der Informationen, wie die einzelnen Mandanten den Dienst verwenden, kön
 Stellen Sie vor dem Durchführen dieses Tutorials sicher, dass die folgenden Voraussetzungen erfüllt sind:
 
 - Die Anwendung Wingtip Tickets SaaS Database Per Tenant wird bereitgestellt. Unter [Bereitstellen und Kennenlernen einer mehrinstanzenfähigen SaaS-Anwendung, die Azure SQL-Datenbank verwendet](./saas-dbpertenant-get-started-deploy.md) finden Sie Informationen dazu, wie Sie die App in weniger als fünf Minuten bereitstellen.
-- [Quellcode](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant/) und Skripts zur Anwendung Wingtip Tickets SaaS Database Per Tenant können von GitHub heruntergeladen werden. Weitere Informationen finden Sie in den Downloadanweisungen. Achten Sie darauf, die *ZIP-Datei zu entsperren* , bevor Sie ihren Inhalt extrahieren. Schritte zum Herunterladen und Entsperren der Wingtip Tickets-SaaS-Skripts finden Sie unter [General guidance for working with Wingtip Tickets sample SaaS apps](saas-tenancy-wingtip-app-guidance-tips.md) (Allgemeine Hinweise zur Verwendung von Wingtip Tickets-Beispiel-SaaS-Apps).
+- [Quellcode](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant/) und Skripts zur Anwendung Wingtip Tickets SaaS Database Per Tenant können von GitHub heruntergeladen werden. Weitere Informationen finden Sie in den Downloadanweisungen. Achten Sie darauf, die *ZIP-Datei zu entsperren*, bevor Sie ihren Inhalt extrahieren. Schritte zum Herunterladen und Entsperren der Wingtip Tickets-SaaS-Skripts finden Sie unter [General guidance for working with Wingtip Tickets sample SaaS apps](saas-tenancy-wingtip-app-guidance-tips.md) (Allgemeine Hinweise zur Verwendung von Wingtip Tickets-Beispiel-SaaS-Apps).
 - Power BI Desktop wird installiert. [Power BI Desktop herunterladen](https://powerbi.microsoft.com/downloads/)
 - Der Batch zusätzlicher Mandanten wurde bereitgestellt. Weitere Informationen finden Sie im [**Tutorial zum Bereitstellen von Mandanten**](./saas-dbpertenant-provision-and-catalog.md).
 - Ein Auftragskonto und die Auftragskontodatenbank wurden erstellt. Weitere Informationen zu den entsprechenden Schritten finden Sie im [**Tutorial zur Schemaverwaltung**](./saas-tenancy-schema-management.md#create-a-job-agent-database-and-new-job-agent).
@@ -79,9 +79,9 @@ Stellen Sie vor dem Durchführen dieses Tutorials sicher, dass die folgenden Vor
 
 In diesem Tutorial werden die Ticketverkaufsdaten analysiert. Im aktuellen Schritt generieren Sie Ticketdaten für alle Mandanten.  Diese Daten werden später für die Analyse extrahiert. *Sie müssen zuvor unbedingt den Batch von Mandanten wie oben beschrieben bereitgestellt haben, damit Sie über eine sinnvolle Datenmenge verfügen*. Eine ausreichend große Datenmenge kann unterschiedliche Ticketkaufmuster verfügbar machen.
 
-1. Öffnen Sie „ *…\Learning Modules\Operational Analytics\Tenant Analytics\Demo-TenantAnalytics.ps1* “ in der PowerShell ISE, und legen Sie den folgenden Wert fest:
+1. Öffnen Sie „ *…\Learning Modules\Operational Analytics\Tenant Analytics\Demo-TenantAnalytics.ps1*“ in der PowerShell ISE, und legen Sie den folgenden Wert fest:
     - **$DemoScenario** = **1** Kaufen von Tickets für Veranstaltungen an allen Veranstaltungsorten
-2. Drücken Sie **F5** , um das Skript auszuführen und einen Ticketkaufverlauf für jede Veranstaltung an sämtlichen Veranstaltungsorten zu erstellen.  Die Skriptausführung dauert mehrere Minuten, da Zehntausende von Tickets generiert werden.
+2. Drücken Sie **F5**, um das Skript auszuführen und einen Ticketkaufverlauf für jede Veranstaltung an sämtlichen Veranstaltungsorten zu erstellen.  Die Skriptausführung dauert mehrere Minuten, da Zehntausende von Tickets generiert werden.
 
 ### <a name="deploy-the-analytics-store"></a>Bereitstellen des Analysespeichers
 Häufig sind die Mandantendaten in sehr vielen Transaktionsdatenbanken enthalten. Sie müssen die Mandantendaten aus den vielen Transaktionsdatenbanken in einem Analysespeicher aggregieren. Die Aggregation erlaubt das effiziente Abfragen der Daten. In diesem Tutorial wird eine Datenbank in Azure SQL-Datenbank verwendet, um die aggregierten Daten zu speichern.
@@ -107,7 +107,7 @@ Führen Sie im Objekt-Explorer die folgenden Schritte aus:
 Zeigen Sie durch Erweitern des Knotens für den Analysespeicher die folgenden Datenbankelemente im Objekt-Explorer von SSMS an:
 
 - Die Tabellen **TicketsRawData** und **EventsRawData** enthalten die extrahierten Rohdaten aus den Mandantendatenbanken.
-- Die Tabellen im Sternschema heißen **fact_Tickets** , **dim_Customers** , **dim_Venues** , **dim_Events** und **dim_Dates**.
+- Die Tabellen im Sternschema heißen **fact_Tickets**, **dim_Customers**, **dim_Venues**, **dim_Events** und **dim_Dates**.
 - Mithilfe der gespeicherten Prozedur werden die Tabellen im Sternschema aus den Tabellen mit den unformatierten Daten aufgefüllt.
 
 ![Screenshot der Datenbankelemente, die im SSMS-Objekt-Explorer angezeigt werden](./media/saas-tenancy-tenant-analytics/tenantAnalytics.png)

@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: 9b8824a0f73f3a79ab70810c529cb0ed9331a797
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102485485"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights für Webseiten
@@ -108,7 +108,7 @@ Jede Konfigurationsoption ist im Codeausschnitt oben in einer eigenen Zeile aufg
 
 Folgende Konfigurationsoptionen stehen zur Verfügung:
 
-| Name | Typ | BESCHREIBUNG
+| Name | type | BESCHREIBUNG
 |------|------|----------------
 | src | Zeichenfolge **[erforderlich]** | Die vollständige URL, von der das SDK geladen werden soll. Dieser Wert wird für das Attribut „src“ eines dynamisch hinzugefügten &lt;script /&gt;-Tags verwendet. Sie können die öffentliche CDN-Adresse oder eine privat gehostete nehmen.
 | name | Zeichenfolge *[optional]* | Der globale Name des initialisierten SDK. Der Standardwert ist `appInsights`. ```window.appInsights``` ist daher ein Verweis auf die initialisierte Instanz. Hinweis: Wenn Sie einen Namenswert angeben oder es scheint, als sei eine frühere Instanz (über den globalen Namen „appInsightsSDK“) zugewiesen, wird dieser Namenswert ebenfalls im globalen Namespace als ```window.appInsightsSDK=<name value>``` definiert. Dies wird durch den Initialisierungscode des SDK erzwungen, um sicherzustellen, dass die richtigen Methoden für das Ausschnittsgerüst und den Proxy initialisiert und aktualisiert werden.

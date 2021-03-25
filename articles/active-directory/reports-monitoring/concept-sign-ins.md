@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d61962667953b20f4b542874e902411bb579b9c3
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93122842"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Berichte zu Anmeldeaktivitäten im Azure Active Directory-Portal
@@ -29,12 +29,12 @@ ms.locfileid: "93122842"
 Die Architektur für die Berichterstellung in Azure Active Directory (Azure AD) umfasst die folgenden Komponenten:
 
 - **Aktivität** 
-    - **Anmeldungen** : Informationen zur Nutzung von verwalteten Anwendungen und Aktivitäten der Benutzeranmeldung.
+    - **Anmeldungen**: Informationen zur Nutzung von verwalteten Anwendungen und Aktivitäten der Benutzeranmeldung.
     - **Überwachungsprotokolle** - [Überwachungsprotokolle](concept-audit-logs.md) stellen Systemaktivitätsinformationen zu Benutzern und zur Gruppenverwaltung, zu verwalteten Anwendungen und zu Verzeichnisaktivitäten bereit.
     - **Bereitstellungsprotokolle** - [Bereitstellungsprotokolle](./concept-provisioning-logs.md) ermöglichen Kunden die Überwachung von Aktivitäten durch den Bereitstellungsdienst, z. B. die Erstellung einer Gruppe in ServiceNow oder eines aus Workday importierten Benutzers. 
 - **Security** 
-    - **Riskante Anmeldungen** : Eine [riskante Anmeldung](../identity-protection/overview-identity-protection.md) ist ein Indikator für einen Anmeldeversuch von einem Benutzer, der nicht der rechtmäßige Besitzer eines Benutzerkontos ist.
-    - **Benutzer mit Risikomarkierung** : Ein [Benutzer mit Risikomarkierung](../identity-protection/overview-identity-protection.md) ist ein Indikator für ein ggf. kompromittiertes Benutzerkonto.
+    - **Riskante Anmeldungen**: Eine [riskante Anmeldung](../identity-protection/overview-identity-protection.md) ist ein Indikator für einen Anmeldeversuch von einem Benutzer, der nicht der rechtmäßige Besitzer eines Benutzerkontos ist.
+    - **Benutzer mit Risikomarkierung**: Ein [Benutzer mit Risikomarkierung](../identity-protection/overview-identity-protection.md) ist ein Indikator für ein ggf. kompromittiertes Benutzerkonto.
 
 In diesem Artikel erhalten Sie einen Überblick über den Bericht zu Anmeldeaktivitäten.
 
@@ -108,11 +108,11 @@ Zuerst schränken Sie die gemeldeten Daten auf einen Umfang ein, der für Sie ge
 
 **Anforderungs-ID-** : ID der Anforderung, die Sie interessiert.
 
-**Benutzer** : Name oder Benutzerprinzipalname des Benutzers, der Sie interessiert.
+**Benutzer**: Name oder Benutzerprinzipalname des Benutzers, der Sie interessiert.
 
-**Anwendung** : Name der Zielanwendung.
+**Anwendung**: Name der Zielanwendung.
  
-**Status** : der Anmeldestatus, der Sie interessiert:
+**Status**: der Anmeldestatus, der Sie interessiert:
 
 - Erfolg
 
@@ -121,9 +121,9 @@ Zuerst schränken Sie die gemeldeten Daten auf einen Umfang ein, der für Sie ge
 - Unterbrochen
 
 
-**IP-Adresse** : IP-Adresse des Geräts, mit dem die Verbindung mit Ihrem Mandanten hergestellt wird.
+**IP-Adresse**: IP-Adresse des Geräts, mit dem die Verbindung mit Ihrem Mandanten hergestellt wird.
 
-**Standort** : Standort, von dem aus die Verbindung eingeleitet wurde:
+**Standort**: Standort, von dem aus die Verbindung eingeleitet wurde:
 
 - City
 
@@ -132,13 +132,13 @@ Zuerst schränken Sie die gemeldeten Daten auf einen Umfang ein, der für Sie ge
 - Land/Region
 
 
-**Ressource** : Name des Diensts, der für die Anmeldung verwendet wird.
+**Ressource**: Name des Diensts, der für die Anmeldung verwendet wird.
 
 
-**Ressourcen-ID** : ID des Diensts, der für die Anmeldung verwendet wird.
+**Ressourcen-ID**: ID des Diensts, der für die Anmeldung verwendet wird.
 
 
-**Client-App** : Typ der Client-App, die zum Herstellen einer Verbindung mit Ihrem Mandanten verwendet wird:
+**Client-App**: Typ der Client-App, die zum Herstellen einer Verbindung mit Ihrem Mandanten verwendet wird:
 
 ![Client-App-Filter](./media/concept-sign-ins/client-app-filter.png)
 
@@ -164,24 +164,24 @@ Zuerst schränken Sie die gemeldeten Daten auf einen Umfang ein, der für Sie ge
 
 
 
-**Betriebssystem** : das Betriebssystem, das auf dem Gerät ausgeführt wird, mit dem die Anmeldung bei Ihrem Mandanten erfolgt. 
+**Betriebssystem**: das Betriebssystem, das auf dem Gerät ausgeführt wird, mit dem die Anmeldung bei Ihrem Mandanten erfolgt. 
 
 
-**Gerätebrowser** : Wenn die Verbindung in einem Browser eingeleitet wurde, können Sie in diesem Feld nach Browsername filtern.
+**Gerätebrowser**: Wenn die Verbindung in einem Browser eingeleitet wurde, können Sie in diesem Feld nach Browsername filtern.
 
 
-**Korrelations-ID** : Korrelations-ID der Aktivität.
+**Korrelations-ID**: Korrelations-ID der Aktivität.
 
 
 
 
-**Bedingter Zugriff** : Status der angewendeten Regeln für bedingten Zugriff
+**Bedingter Zugriff**: Status der angewendeten Regeln für bedingten Zugriff
 
-- **Nicht angewendet** : Keine Richtlinie betraf den Benutzer und die Anwendung bei der Anmeldung.
+- **Nicht angewendet**: Keine Richtlinie betraf den Benutzer und die Anwendung bei der Anmeldung.
 
-- **Erfolg** : Eine oder mehrere Richtlinien für bedingten Zugriff betrafen den Benutzer und die Anwendung (aber nicht notwendigerweise die anderen Bedingungen) bei der Anmeldung. 
+- **Erfolg**: Eine oder mehrere Richtlinien für bedingten Zugriff betrafen den Benutzer und die Anwendung (aber nicht notwendigerweise die anderen Bedingungen) bei der Anmeldung. 
 
-- **Fehler** : Die Anmeldung hat zwar die Benutzer- und Anwendungsbedingung mindestens einer Richtlinie für bedingten Zugriff erfüllt, die Gewährungssteuerelemente wurden jedoch nicht erfüllt oder sind auf Blockieren des Zugriffs eingestellt.
+- **Fehler**: Die Anmeldung hat zwar die Benutzer- und Anwendungsbedingung mindestens einer Richtlinie für bedingten Zugriff erfüllt, die Gewährungssteuerelemente wurden jedoch nicht erfüllt oder sind auf Blockieren des Zugriffs eingestellt.
 
 
 

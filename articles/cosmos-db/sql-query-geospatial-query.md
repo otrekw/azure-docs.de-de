@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: tisande
 ms.openlocfilehash: bb9a0351b6f1de47f3687995c65060a23bdb2874
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93336111"
 ---
 # <a name="querying-geospatial-data-with-azure-cosmos-db"></a>Abfragen räumlicher Daten mit Azure Cosmos DB
@@ -183,5 +183,5 @@ Analog dazu wird mit der folgenden Abfrage nach allen Dokumenten gesucht, deren 
 Nachdem Sie die ersten Schritte mit räumlichen Daten in Azure Cosmos DB erlernt haben, haben Sie folgende Möglichkeiten:
 
 * Weitere Informationen zur [Azure Cosmos DB-Abfrage](sql-query-getting-started.md)
-* Informieren Sie sich ausführlicher über [räumliche Daten und GeoJSON-Standortdaten in Azure Cosmos DB](sql-query-geospatial-intro.md).
+* Weitere Informationen zu [Räumlichen Daten und GeoJSON-Standortdaten in Azure Cosmos DB](sql-query-geospatial-intro.md)
 * Informieren Sie sich ausführlicher über das [Indizieren von räumlichen Daten mit Azure Cosmos DB](sql-query-geospatial-index.md).

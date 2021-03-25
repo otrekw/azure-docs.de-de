@@ -4,10 +4,10 @@ description: Erfahren Sie, wie Sie in Azure DevTest Labs eine Umgebung (z.B. ein
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 980c6317ded70db374c2b948075f060754168b0f
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97511959"
 ---
 # <a name="connect-an-environment-to-your-labs-virtual-network-in-azure-devtest-labs"></a>Herstellen einer Verbindung zwischen einer Umgebung und dem virtuellen Netzwerk Ihres Labs in Azure DevTest Labs
@@ -152,4 +152,4 @@ Hier ist eine einfache Umgebungsvorlage, über die eine Verbindung mit dem Subne
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Im folgenden Artikel erfahren Sie, wie Sie diese Vorgänge über das Azure-Portal ausführen: [Neustarten eines virtuellen Computers](devtest-lab-restart-vm.md)
+Im folgenden Artikel erfahren Sie, wie Sie diese Vorgänge über das Azure-Portal ausführen: [Neustart einer VM](devtest-lab-restart-vm.md).

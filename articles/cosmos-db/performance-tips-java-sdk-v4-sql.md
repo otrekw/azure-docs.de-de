@@ -10,10 +10,10 @@ ms.date: 10/13/2020
 ms.author: anfeldma
 ms.custom: devx-track-java, contperf-fy21q2
 ms.openlocfilehash: 8aad9df4720c833a74659b5cd36b7f5aafdf9b60
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97631838"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-java-sdk-v4"></a>Leistungstipps für das Azure Cosmos DB Java SDK v4
@@ -61,9 +61,9 @@ Die Methode *directMode()* verfügt aus dem folgenden Grund über eine zusätzli
 
 ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a> Java V4 SDK
 
-# <a name="async"></a>[Asynchron](#tab/api-async)
+# <a name="async"></a>[Async](#tab/api-async)
 
-Java SDK V4 (Maven com.azure::azure-cosmos) Asynchrone API
+Java SDK V4 (Maven com.azure::azure-cosmos) Async-API
 
 [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=PerformanceClientDirectOverrideAsync)]
 
@@ -150,15 +150,15 @@ Bei Verwendung des Azure Cosmos DB Java SDK v4 erfolgen Cosmos DB-Anforderungen
 
 Im Azure Cosmos DB Java SDK v4 ist der direkte Modus die beste Wahl, um die Datenbankleistung bei den meisten Workloads zu verbessern. 
 
-* ***Übersicht über den direkten Modus** _
+* ***Übersicht über den direkten Modus***
 
 :::image type="content" source="./media/performance-tips-async-java/rntbdtransportclient.png" alt-text="Darstellung der Architektur im direkten Modus" border="false":::
 
-Die clientseitige Architektur, die im direkten Modus eingesetzt wird, ermöglicht vorhersagbare Netzwerkauslastungen und Multiplexzugriff auf Azure Cosmos DB-Replikate. Das obige Diagramm zeigt, wie Clientanforderungen im direkten Modus an Replikate im Cosmos DB-Back-End weitergeleitet werden. Bei der Architektur für den direkten Modus werden auf Clientseite bis zu 10 *Kanäle* pro DB-Replikat zugeordnet. Ein Kanal ist eine TCP-Verbindung mit einem vorgeschalteten Anforderungspuffer, der 30 Anforderungen aufnehmen kann. Die zu einem Replikat gehörenden Kanäle werden nach Bedarf dynamisch vom **Dienstendpunkt** des Replikats zugeordnet. Wenn der Benutzer eine Anforderung im direkten Modus übermittelt, leitet der **TransportClient** die Anforderung basierend auf dem Partitionsschlüssel an den richtigen Dienstendpunkt weiter. In der **Anforderungswarteschlange** werden die Anforderungen vor dem Dienstendpunkt gepuffert.
+Die clientseitige Architektur, die im direkten Modus eingesetzt wird, ermöglicht vorhersagbare Netzwerkauslastungen und Multiplexzugriff auf Azure Cosmos DB-Replikate. Das obige Diagramm zeigt, wie Clientanforderungen im direkten Modus an Replikate im Cosmos DB-Back-End weitergeleitet werden. Bei der Architektur für den direkten Modus werden auf der Clientseite bis zu 10 **Kanäle** pro DB-Replikat zugeordnet. Ein Kanal ist eine TCP-Verbindung mit einem vorgeschalteten Anforderungspuffer, der 30 Anforderungen aufnehmen kann. Die zu einem Replikat gehörenden Kanäle werden nach Bedarf dynamisch vom **Dienstendpunkt** des Replikats zugeordnet. Wenn der Benutzer eine Anforderung im direkten Modus übermittelt, leitet der **TransportClient** die Anforderung basierend auf dem Partitionsschlüssel an den richtigen Dienstendpunkt weiter. In der **Anforderungswarteschlange** werden die Anforderungen vor dem Dienstendpunkt gepuffert.
 
-* ***Konfigurationsoptionen für den direkten Modus** _
+* ***Konfigurationsoptionen für den direkten Modus***
 
-Wenn ein nicht standardmäßiges Verhalten beim direkten Modus gewünscht ist, erstellen Sie eine DirectConnectionConfig-Instanz. Passen Sie deren Eigenschaften an, und übergeben Sie die angepasste Eigenschafteninstanz dann an die Methode *directMode()* im Azure Cosmos DB-Client-Generator.
+Wenn ein nicht standardmäßiges Verhalten beim direkten Modus gewünscht ist, erstellen Sie eine *DirectConnectionConfig*-Instanz, passen Sie deren Eigenschaften an, und übergeben Sie die angepasste Eigenschafteninstanz dann an die Methode *directMode()* im Azure Cosmos DB-Client-Generator.
 
 Diese Konfigurationseinstellungen steuern das Verhalten der zugrunde liegenden Architektur des weiter oben behandelten direkten Modus.
 
@@ -176,19 +176,19 @@ Verwenden Sie als ersten Schritt die folgenden empfohlenen Konfigurationseinstel
 
 Das Azure Cosmos DB Java SDK v4 unterstützt parallele Abfragen, mit denen Sie eine partitionierte Sammlung parallel abfragen können. Weitere Informationen finden Sie in den [Codebeispielen](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples) für die Arbeit mit dem Azure Cosmos DB Java SDK v4. Parallele Abfragen sind darauf ausgelegt, Latenz und Durchsatz im Vergleich mit seriellen Abfragen zu verbessern.
 
-* ***Optimieren von setMaxDegreeOfParallelism\:** _
+* ***Optimieren von setMaxDegreeOfParallelism\:***
     
 Bei parallelen Abfragen werden mehrere Partitionen parallel abgefragt. Die Daten einer individuell partitionierten Sammlung werden in Bezug auf die Abfrage aber seriell abgerufen. Legen Sie also „setMaxDegreeOfParallelism“ auf die Anzahl von Partitionen fest, bei der die Wahrscheinlichkeit, dass die bestmögliche Leistung für die Abfrage erzielt wird, am höchsten ist (vorausgesetzt, alle anderen Systembedingungen bleiben unverändert). Falls Ihnen die Anzahl von Partitionen nicht bekannt ist, können Sie setMaxDegreeOfParallelism auf einen hohen Wert festlegen. Das System wählt für den maximalen Grad an Parallelität dann den minimalen Wert aus (Anzahl von Partitionen, Benutzereingabe).
 
 Es ist wichtig zu beachten, dass sich für parallele Abfragen die größten Vorteile ergeben, wenn die Daten in Bezug auf die Abfrage gleichmäßig auf alle Partitionen verteilt werden. Wenn die partitionierte Auflistung so partitioniert ist, dass sich alle Daten bzw. die meisten Daten, die von einer Abfrage zurückgegeben werden, auf einigen wenigen Partitionen befinden (schlimmstenfalls nur auf einer Partition), können aufgrund dieser Partitionierung Engpässe bei der Leistung auftreten.
 
-_***Optimieren von setMaxBufferedItemCount\:** _
+* ***Optimieren von setMaxBufferedItemCount\:***
     
 Parallele Abfragen sind so konzipiert, dass Ergebnisse vorab abgerufen werden, während der Client den aktuellen Batch der Ergebnisse verarbeitet. Diese Art des Abrufs führt zu einer Verbesserung der Latenz einer Abfrage. setMaxBufferedItemCount begrenzt die Anzahl von vorab abgerufenen Ergebnissen. Wenn Sie „setMaxBufferedItemCount“ auf die erwartete Anzahl von zurückgegebenen Ergebnissen (oder eine höhere Anzahl) festlegen, ist der Vorteil durch das vorherige Abrufen für die Abfrage am größten.
 
 Das vorherige Abrufen funktioniert unabhängig von MaxDegreeOfParallelism, und es ist nur ein Puffer für die Daten aller Partitionen vorhanden.
 
-**Aufskalieren Ihrer Clientworkload**
+* **Aufskalieren Ihrer Clientworkload**
 
 Wenn Sie auf einem hohen Durchsatzniveau testen, kann sich die Clientanwendung als Engpass erweisen, da der Computer die CPU- oder Netzwerkauslastung deckelt. Wenn dieser Punkt erreicht wird, können Sie das Azure Cosmos DB-Konto weiter auslasten, indem Sie Ihre Clientanwendungen auf mehrere Server horizontal hochskalieren.
 
@@ -233,11 +233,11 @@ Weitere Informationen zum Azure Cosmos DB Java SDK v4 finden Sie im [Azure Cosm
 
 Aus verschiedenen Gründen kann es erforderlich sein, die Protokollierung in einem Thread hinzuzufügen, der einen hohen Anforderungsdurchsatz verursacht. Wenn das Ziel darin besteht, den bereitgestellten Durchsatz eines Containers mit den von diesem Thread generierten Anforderungen vollständig auszuschöpfen, kann die Leistung mithilfe von Protokollierungsoptimierungen erheblich verbessert werden.
 
-* ***Konfigurieren einer Async-Protokollierung** _
+* ***Konfigurieren einer Async-Protokollierung***
 
 Die Wartezeit einer synchronen Protokollierung ist notwendigerweise ein Faktor der Berechnung der Gesamtwartezeit des Threads, der Anforderungen generiert. Eine asynchrone Protokollierung wie [log4j2](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Flogging.apache.org%2Flog4j%2Flog4j-2.3%2Fmanual%2Fasync.html&data=02%7C01%7CCosmosDBPerformanceInternal%40service.microsoft.com%7C36fd15dea8384bfe9b6b08d7c0cf2113%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637189868158267433&sdata=%2B9xfJ%2BWE%2F0CyKRPu9AmXkUrT3d3uNA9GdmwvalV3EOg%3D&reserved=0) wird empfohlen, um den Protokollierungsaufwand von Hochleistungsanwendungsthreads zu entkoppeln.
 
-_ ***Deaktivieren der Netty-Protokollierung** _
+* ***Deaktivieren der Netty-Protokollierung***
 
 Die Netty-Bibliotheksprotokollierung führt zu übermäßiger Kommunikation und muss deaktiviert werden (das Unterdrücken der Anmeldung in der Konfiguration reicht möglicherweise nicht aus), um zusätzliche CPU-Kosten zu vermeiden. Wenn Sie sich nicht im Debuggingmodus befinden, deaktivieren Sie die Protokollierung von Netty vollständig. Wenn Sie also „log4j“ verwenden, um die zusätzlichen CPU-Kosten zu verhindern, die durch ``org.apache.log4j.Category.callAppenders()`` von Netty anfallen, fügen Sie Ihrer Codebasis die folgende Zeile hinzu:
 
@@ -245,7 +245,7 @@ Die Netty-Bibliotheksprotokollierung führt zu übermäßiger Kommunikation und 
 org.apache.log4j.Logger.getLogger("io.netty").setLevel(org.apache.log4j.Level.OFF);
 ```
 
- _ **Ressourcengrenzwert des Betriebssystems für geöffnete Dateien**
+ * **Ressourcengrenzwert des Betriebssystems für geöffnete Dateien**
  
 Einige Linux-Systeme (z. B. Red Hat) haben eine Obergrenze für die Anzahl von offenen Dateien und damit für die Gesamtanzahl von Verbindungen. Führen Sie den folgenden Befehl aus, um die aktuellen Grenzwerte anzuzeigen:
 

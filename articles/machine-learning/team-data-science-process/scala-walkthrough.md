@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 9ae4549fe343422bbf60275a97768ca407f2dc7c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93321370"
 ---
 # <a name="data-science-using-scala-and-spark-on-azure"></a>Data Science unter Verwendung von Scala und Spark in Azure
@@ -52,7 +52,7 @@ Installationsschritte und Code in diesem Artikel sind für Azure HDInsight 3.4 S
 Eine Beschreibung der NYC-Taxidaten und Anweisungen zum Ausführen von Code aus einem Jupyter-Notebook im Spark-Cluster finden Sie in den entsprechenden Abschnitten von [Übersicht zu Data Science unter Verwendung von Spark unter Azure HDInsight](spark-overview.md).  
 
 ## <a name="execute-scala-code-from-a-jupyter-notebook-on-the-spark-cluster"></a>Ausführen von Scala-Code über ein Jupyter-Notebook auf dem Spark-Cluster
-Sie können ein Jupyter-Notebook über das Azure-Portal starten. Suchen Sie den Spark-Cluster auf Ihrem Dashboard, und klicken Sie darauf, um zur Verwaltungsseite für Ihren Cluster zu gelangen. Klicken Sie dann auf **Cluster-Dashboards** und **Jupyter-Notebook** , um das dem Spark-Cluster zugeordnete Notebook zu öffnen.
+Sie können ein Jupyter-Notebook über das Azure-Portal starten. Suchen Sie den Spark-Cluster auf Ihrem Dashboard, und klicken Sie darauf, um zur Verwaltungsseite für Ihren Cluster zu gelangen. Klicken Sie dann auf **Cluster-Dashboards** und **Jupyter-Notebook**, um das dem Spark-Cluster zugeordnete Notebook zu öffnen.
 
 ![Cluster-Dashboard und Jupyter-Notebooks](./media/scala-walkthrough/spark-jupyter-on-portal.png)
 
@@ -88,7 +88,7 @@ Der Spark-Kernel bietet einige so genannte „Magic-Befehle“, die vordefiniert
 
 Weitere Informationen zu den Kernels für Jupyter-Notebooks und den zugehörigen vordefinierten „Magics“, die Sie mit `%%` aufrufen (z.B. `%%local`), finden Sie unter [Verfügbare Kernels für Jupyter-Notebooks mit HDInsight Spark-Linux-Clustern in HDInsight](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md).
 
-### <a name="import-libraries"></a>Importieren von Bibliotheken
+### <a name="import-libraries"></a>Importbibliotheken
 Importieren Sie die Spark-, MLlib- und anderen erforderlichen Bibliotheken mit folgendem Code.
 
 ```scala
@@ -268,7 +268,7 @@ Nachdem Sie die Daten in Spark eingebracht haben, besteht der nächste Schritt i
 Standardmäßig ist die Ausgabe von allen Codeausschnitten, die Sie über ein Jupyter-Notebook ausführen, innerhalb des Kontexts der Sitzung verfügbar, die auf Workerknoten beibehalten wird. Wenn Sie eine Fahrt für jede Berechnung auf den Workerknoten speichern möchten, und wenn alle Daten, die Sie zur Berechnung benötigen, lokal auf dem Jupyter-Serverknoten (dem Hauptknoten) verfügbar sind, können Sie den Codeausschnitt mit dem Magic-Befehl `%%local` auf dem Jupyter-Server ausführen.
 
 * **SQL Magic** (`%%sql`). Der HDInsight Spark-Kernel unterstützt einfache HiveQL-Inlineabfragen für den SQLContext. Mit dem Argument (`-o VARIABLE_NAME`) wird die Ausgabe der SQL-Abfrage als Pandas-Dataframe auf dem Jupyter-Server beibehalten. Mit dieser Einstellung wird die Ausgabe im lokalen Modus verfügbar gemacht.
-* `%%local` **magic** : Der Magic-Befehl `%%local` führt den Code lokal auf dem Jupyter-Server aus – dem Hauptknoten des HDInsight-Clusters. Normalerweise verwenden Sie den Magic-Befehl `%%local` zusammen mit dem Magic-Befehl `%%sql` mit dem Parameter `-o`. Mit dem Parameter `-o` wird die Ausgabe der SQL-Abfrage lokal beibehalten. Anschließend löst der Magic-Befehl `%%local` die nächste Gruppe von Codeausschnitten aus, damit diese lokal für die Ausgabe der lokal gespeicherten SQL-Abfragen ausgeführt werden können.
+* `%%local` **magic**: Der Magic-Befehl `%%local` führt den Code lokal auf dem Jupyter-Server aus – dem Hauptknoten des HDInsight-Clusters. Normalerweise verwenden Sie den Magic-Befehl `%%local` zusammen mit dem Magic-Befehl `%%sql` mit dem Parameter `-o`. Mit dem Parameter `-o` wird die Ausgabe der SQL-Abfrage lokal beibehalten. Anschließend löst der Magic-Befehl `%%local` die nächste Gruppe von Codeausschnitten aus, damit diese lokal für die Ausgabe der lokal gespeicherten SQL-Abfragen ausgeführt werden können.
 
 ### <a name="query-the-data-by-using-sql"></a>Abfragen der Daten mit SQL
 Diese Abfrage ruft die Taxifahrten nach Höhe des Fahrpreises, Anzahl der Fahrgäste und Trinkgeldbetrag ab.
@@ -301,10 +301,10 @@ sqlResults
  Der Spark-Kernel visualisiert automatisch die Ausgabe der SQL-Abfragen (HiveQL), nachdem Sie den Code ausgeführt haben. Sie können zwischen verschiedenen Visualisierungstypen wählen:
 
 * Tabelle
-* Kreisdiagramm
-* Zeile
-* Bereich
-* Balkendiagramm
+* Kreis
+* Linie
+* Fläche
+* Balken
 
 Hier ist der Code zum Zeichnen der Daten:
 
@@ -922,7 +922,7 @@ In diesem Abschnitt verwenden Sie Machine Learning-Hilfsprogramme, die Entwickle
 * Optimieren des Modells mit Kreuzvalidierung und Hyperparameter-Sweeping mithilfe der CrossValidator-Funktion von Spark ML (binäre Klassifizierung)
 * Optimieren des Modells mit benutzerdefinierter Kreuzvalidierung und Parameter-Sweepingcode zur Nutzung beliebiger Machine Learning-Funktionen und Parametersätze (lineare Regression)
 
-**Kreuzvalidierung** ist eine Technik, mit der bewertet wird, wie gut ein Modell, das mit einem bekannten Dataset trainiert wurde, verallgemeinern kann, um die Features von Datasets, mit denen es nicht trainiert wurde, vorherzusagen. Der Grundgedanke hinter dieser Technik ist, dass ein Modell mit bekannten Daten trainiert und die Genauigkeit seiner Vorhersagen dann mit einem unabhängigen Dataset geprüft wird. Eine gängige Implementierung besteht darin, den Dataset *k* -fach aufzuteilen und das Modell daraufhin im Roundrobin-Verfahren mit allen Teilmengen außer einer zu trainieren.
+**Kreuzvalidierung** ist eine Technik, mit der bewertet wird, wie gut ein Modell, das mit einem bekannten Dataset trainiert wurde, verallgemeinern kann, um die Features von Datasets, mit denen es nicht trainiert wurde, vorherzusagen. Der Grundgedanke hinter dieser Technik ist, dass ein Modell mit bekannten Daten trainiert und die Genauigkeit seiner Vorhersagen dann mit einem unabhängigen Dataset geprüft wird. Eine gängige Implementierung besteht darin, den Dataset *k*-fach aufzuteilen und das Modell daraufhin im Roundrobin-Verfahren mit allen Teilmengen außer einer zu trainieren.
 
 Die **Hyperparameteroptimierung** besteht in dem Problem, einen Hyperparametersatz für einen Lernalgorithmus auszuwählen, in der Regel um eine Leistungskennzahl des Algorithmus in Bezug auf einen unabhängigen Dataset zu optimieren. Ein Hyperparameter ist ein Wert, den Sie außerhalb des Modelltrainingsverfahrens angeben müssen. Annahmen über Hyperparameterwerte können sich auf die Flexibilität und Genauigkeit des Modells auswirken. Entscheidungsstrukturen umfassen Hyperparameter, wie z.B. die gewünschte Tiefe und Anzahl der Blätter in der Struktur. Sie müssen Bedingungen für Abzüge bei Fehlklassifikationen für eine Support Vector Machine (SVM) festlegen.
 

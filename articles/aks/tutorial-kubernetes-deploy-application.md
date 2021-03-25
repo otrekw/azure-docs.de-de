@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 01/12/2021
 ms.custom: mvc
 ms.openlocfilehash: a0de097a545a831e39a671fe4cf5eadcd336ce24
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98250178"
 ---
 # <a name="tutorial-run-applications-in-azure-kubernetes-service-aks"></a>Tutorial: Ausführen von Anwendungen in Azure Kubernetes Service (AKS)
@@ -31,7 +31,7 @@ In vorherigen Tutorials wurde eine Anwendung in ein Containerimage gepackt, das 
 
 Für dieses Tutorial benötigen Sie die vorab erstellte Kubernetes-Manifestdatei `azure-vote-all-in-one-redis.yaml`. Diese Datei wurde in einem vorherigen Tutorial mit dem Anwendungsquellcode heruntergeladen. Stellen Sie sicher, dass Sie das Repository geklont und Verzeichnisse im geklonten Repository geändert haben. Wenn Sie diese Schritte nicht ausgeführt haben und dies jetzt nachholen möchten, beginnen Sie mit [Tutorial 1: Erstellen von Containerimages][aks-tutorial-prepare-app].
 
-Für dieses Tutorial müssen Sie mindestens Version 2.0.53 der Azure CLI ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI][azure-cli-install].
+Für dieses Tutorial müssen Sie mindestens Version 2.0.53 der Azure CLI ausführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI][azure-cli-install].
 
 ## <a name="update-the-manifest-file"></a>Aktualisieren der Manifestdatei
 

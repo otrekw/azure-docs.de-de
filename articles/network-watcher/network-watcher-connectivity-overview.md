@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: damendo
 ms.openlocfilehash: 9c855fff9e5791b9c0cf870acfc6de53e7a700b2
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97653995"
 ---
 # <a name="introduction-to-connection-troubleshoot-in-azure-network-watcher"></a>Einführung in die Problembehandlung für Verbindungen in Azure Network Watcher
@@ -44,9 +44,9 @@ Die folgende Tabelle zeigt die Eigenschaften, die nach Ausführung der Problembe
 |Hops[].ResourceId | Ressourcen-ID des Hops, wenn der Hop eine Azure-Ressource ist. Wenn es sich um eine Internetressource handelt, lautet die Ressourcen-ID **Internet**. |
 |Hops[].NextHopIds | Eindeutiger Bezeichner des nächsten Hops.|
 |Hops[].Issues | Auflistung von Problemen, die während der Überprüfung auf diesem Hop aufgetreten sind. Wert ist leer, wenn keine Probleme aufgetreten sind.|
-|Hops[].Issues[].Origin | Auf dem aktuellen Hop, wo das Problem aufgetreten ist. Mögliche Werte:<br/> **Eingehend**: Problem liegt auf der Verbindung vom vorherigen Hop zum aktuellen Hop.<br/>**Ausgehend**: Problem liegt auf der Verbindung vom aktuellen Hop zum nächsten Hop.<br/>**Lokal**: Problem befindet sich auf dem aktuellen Hop.|
+|Hops[].Issues[].Origin | Auf dem aktuellen Hop, wo das Problem aufgetreten ist. Dabei sind folgende Werte möglich:<br/> **Eingehend**: Problem liegt auf der Verbindung vom vorherigen Hop zum aktuellen Hop.<br/>**Ausgehend**: Problem liegt auf der Verbindung vom aktuellen Hop zum nächsten Hop.<br/>**Lokal**: Problem befindet sich auf dem aktuellen Hop.|
 |Hops[].Issues[].Severity | Schweregrad des gefundenen Problems. Mögliche Werte sind **Error** und **Warning**. |
-|Hops[].Issues[].Type |Typ des gefundenen Problems. Mögliche Werte: <br/>**CPU**<br/>**Memory**<br/>**GuestFirewall**<br/>**DnsResolution**<br/>**NetworkSecurityRule**<br/>**UserDefinedRoute** |
+|Hops[].Issues[].Type |Typ des gefundenen Problems. Dabei sind folgende Werte möglich: <br/>**CPU**<br/>**Arbeitsspeicher**<br/>**GuestFirewall**<br/>**DnsResolution**<br/>**NetworkSecurityRule**<br/>**UserDefinedRoute** |
 |Hops[].Issues[].Context |Details zu dem gefundenen Problem.|
 |Hops[].Issues[].Context[].key |Schlüssel des zurückgegebenen Schlüssel-Wert-Paars.|
 |Hops[].Issues[].Context[].value |Wert des zurückgegebenen Schlüssel-Wert-Paars.|
@@ -72,7 +72,7 @@ Im Folgenden finden Sie ein Beispiel für ein Problem, das auf einem Hop gefunde
 
 Die Problembehandlung für Verbindungen gibt Fehlertypen der Verbindung zurück. Die folgende Tabelle listet die aktuellen zurückgegebenen Fehlertypen auf:
 
-|type  |BESCHREIBUNG  |
+|type  |Beschreibung  |
 |---------|---------|
 |CPU     | Hohe CPU-Auslastung.       |
 |Arbeitsspeicher     | Hohe Speicherauslastung.       |
