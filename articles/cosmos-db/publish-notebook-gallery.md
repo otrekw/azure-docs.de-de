@@ -7,17 +7,17 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 03/02/2021
 ms.author: dech
-ms.openlocfilehash: c7c910c7162bde2209b07eb4f1d533328bae08c3
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 58ae61bc9e1736b13bb1802e2f39d5ada045cb6a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101692914"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102039324"
 ---
 # <a name="publish-notebooks-to-the-azure-cosmos-db-notebook-gallery"></a>Veröffentlichen von Notebooks im Katalog für Azure Cosmos DB-Notebooks
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Integrierte Jupyter Notebooks für Azure Cosmos DB sind direkt in Ihre Azure Cosmos DB-Konten im Azure-Portal integriert. Mit diesen Notebooks können Sie Ihre Daten über das Azure-Portal analysieren und visualisieren. Integrierte Notebooks für Azure Cosmos DB sind zurzeit in [29 Regionen](#supported-regions) verfügbar. Um Notebooks zu verwenden, [erstellen Sie ein neues Cosmos-Konto](#create-a-new-cosmos-account), oder [aktivieren Sie Notebooks für ein vorhandenes Konto](#enable-notebooks-in-an-existing-cosmos-account) in einer dieser Regionen.
+Integrierte Jupyter Notebooks für Azure Cosmos DB sind direkt in Ihre Azure Cosmos DB-Konten im Azure-Portal integriert. Mit diesen Notebooks können Sie Ihre Daten über das Azure-Portal analysieren und visualisieren. Integrierte Notebooks für Azure Cosmos DB sind zurzeit in [vielen Regionen](https://azure.microsoft.com/global-infrastructure/services/?products=cosmos-db&regions=all) verfügbar. Um Notebooks zu verwenden, [erstellen Sie ein neues Cosmos-Konto](create-cosmosdb-resources-portal.md), oder [aktivieren Sie Notebooks für ein vorhandenes Konto](enable-notebooks.md) in einer dieser Regionen.
 
 Die Notebookumgebung im Azure-Portal enthält einige Beispiele, die vom Azure Cosmos DB-Team veröffentlicht wurden. Darüber hinaus enthält sie einen öffentlichen Katalog, in dem Sie Ihre eigenen Notebooks veröffentlichen und für die gemeinsame Verwendung freigeben können. Nachdem ein Notebook im Katalog veröffentlicht wurde, kann es von allen Azure Cosmos DB-Benutzern angezeigt und verwendet werden. In diesem Artikel wird beschrieben, wie Sie die im öffentlichen Katalog enthaltenen Notebooks verwenden und Ihr eigenes Notebook im Katalog veröffentlichen.
 
@@ -53,7 +53,7 @@ Führen Sie die folgenden Schritte aus, um ein Notebook zu veröffentlichen:
 
    Sie können auf die Option **Im Katalog veröffentlichen** auch zugreifen, indem Sie die Schaltfläche **…** neben dem Namen des Notebooks auswählen:
 
-   :::image type="content" source="./media/publish-notebook-gallery/choose-notebook-publish.png" alt-text="Auswählen eines Notebooks zum Veröffentlichen im Katalog":::
+   :::image type="content" source="./media/publish-notebook-gallery/choose-notebook-publish.png" alt-text="Ein weiterer Ansatz zum Auswählen eines Notebooks, das im Katalog veröffentlicht werden soll.":::
 
 1. Füllen Sie das Formular **Im Katalog veröffentlichen** mit den folgenden Details aus:
 
@@ -61,11 +61,10 @@ Führen Sie die folgenden Schritte aus, um ein Notebook zu veröffentlichen:
    * **Beschreibung:** Eine kurze Beschreibung des Zwecks Ihres Notebooks.
    * **Tags:** Tags sind optional und werden zum Filtern von Ergebnissen bei einer Schlüsselwortsuche verwendet.
    * **Titelbild:** Ein Bild, das auf der Titelseite verwendet wird, wenn das Notebook veröffentlicht wird. Sie können eine der folgenden Optionen auswählen:
-
-     * **Benutzerdefiniertes Bild:** Sie können ein Bild von Ihrem Computer hochladen. Wählen Sie eine Bilddatei mit einem Seitenverhältnis von 256 x 144 aus.
-     * **URL:** Geben Sie eine öffentlich zugängliche URL an, unter der sich das Bild befindet.
-     * **Screenshot erstellen:** Ein Screenshot Ihres geöffneten Notebooks wird automatisch erstellt und in die Vorschau hochgeladen.
-     * **Use first display output** (Erste Anzeigeausgabe verwenden): Die Ausgabe der ersten Zelle, in der eine Anzeigeausgabe enthalten ist. Zellen, in denen nur Markdowncode oder Text angezeigt wird, zählen nicht als Anzeigeausgabe.
+   * **Benutzerdefiniertes Bild:** Sie können ein Bild von Ihrem Computer hochladen. Wählen Sie eine Bilddatei mit einem Seitenverhältnis von 256 x 144 aus.
+   * **URL:** Geben Sie eine öffentlich zugängliche URL an, unter der sich das Bild befindet.
+   * **Screenshot erstellen:** Ein Screenshot Ihres geöffneten Notebooks wird automatisch erstellt und in die Vorschau hochgeladen.
+   * **Use first display output** (Erste Anzeigeausgabe verwenden): Die Ausgabe der ersten Zelle, in der eine Anzeigeausgabe enthalten ist. Zellen, in denen nur Markdowncode oder Text angezeigt wird, zählen nicht als Anzeigeausgabe.
 
    :::image type="content" source="./media/publish-notebook-gallery/publish-notebook.png" alt-text="Ausfüllen des Formulars „Im Katalog veröffentlichen“":::
 

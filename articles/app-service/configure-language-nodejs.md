@@ -6,12 +6,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 8bdf637ab773e90a5eac42bcaa443cf6741db636
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 6a6f782768db12c2ce75f5cf1e66100222f24446
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94696012"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101095203"
 ---
 # <a name="configure-a-nodejs-app-for-azure-app-service"></a>Konfigurieren einer Node.js-App für Azure App Service
 
@@ -342,6 +342,19 @@ if (req.secure) {
 
 ::: zone-end
 
+
+::: zone pivot="platform-linux"
+
+## <a name="monitor-with-application-insights"></a>Überwachen mit Application Insights
+
+Mit Application Insights können Sie die Leistung, die Ausnahmen und die Verwendung Ihrer Anwendung überwachen, ohne Codeänderungen vorzunehmen. Um den Application Insights-Agent anzufügen, navigieren Sie im Portal zu Ihrer Web-App, wählen Sie unter **Einstellungen** die Option **Application Insights** aus, und wählen Sie dann **Application Insights aktivieren** aus. Wählen Sie dann eine vorhandene Application Insights-Ressource aus, oder erstellen Sie eine neue Ressource. Klicken Sie abschließend unten auf **Anwenden**. Informationen zum Instrumentieren der Web-App mit PowerShell finden Sie in [diesen Anweisungen](../azure-monitor/app/azure-web-apps.md?tabs=netcore#enabling-through-powershell).
+
+Mit diesem Agent wird die serverseitige Node.js-Anwendung überwacht. Um clientseitiges JavaScript zu überwachen, [fügen Sie dem Projekt das JavaScript SDK hinzu](../azure-monitor/app/javascript.md). 
+
+Weitere Informationen finden Sie in den [Versionshinweisen für die Erweiterung für Azure-Web-Apps für Application Insights](../azure-monitor/app/web-app-extension-release-notes.md).
+
+::: zone-end
+
 ## <a name="troubleshooting"></a>Problembehandlung
 
 Wenn sich eine funktionierende Node.js-App in App Service anders verhält oder Fehler aufweist, versuchen Sie Folgendes:
@@ -370,4 +383,3 @@ Wenn sich eine funktionierende Node.js-App in App Service anders verhält oder F
 > [Häufig gestellte Fragen (FAQ) zu Azure App Service unter Linux](faq-app-service-linux.md)
 
 ::: zone-end
-

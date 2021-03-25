@@ -6,19 +6,19 @@ ms.topic: how-to
 ms.date: 01/19/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 33af83934e8ecc5745f2edad3a7832a870406452
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: ca92e6e888ead6bbd79c7a8d524516ee95e8c45d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98602375"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "101092921"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Vorbereiten und Anpassen eines VHD-Masterimages
 
 In diesem Artikel wird beschrieben, wie Sie ein VHD-Masterimage (Virtual Hard Disk) für den Upload in Azure vorbereiten und virtuelle Computer (VMs) erstellen und darauf Software installieren. Diese Anweisungen beziehen sich auf eine spezielle Konfiguration für Windows Virtual Desktop, die mit den in Ihrer Organisation vorhandenen Prozessen verwendet werden kann.
 
 >[!IMPORTANT]
->Es wird empfohlen, ein Image aus dem Azure-Imagekatalog zu verwenden. Wenn Sie jedoch ein benutzerdefiniertes Image verwenden müssen, stellen Sie sicher, dass der Windows Virtual Desktop-Agent nicht bereits auf Ihrem Gerät installiert ist. Die Verwendung eines angepassten Images mit dem Windows Virtual Desktop-Agent kann Probleme mit dem Image verursachen.  
+>Es wird empfohlen, ein Image aus dem Azure-Imagekatalog zu verwenden. Wenn Sie jedoch ein benutzerdefiniertes Image verwenden müssen, stellen Sie sicher, dass der Windows Virtual Desktop-Agent nicht bereits auf Ihrer VM installiert ist. Die Verwendung eines benutzerdefinierten Images mit dem Windows Virtual Desktop-Agent kann Probleme mit dem Image verursachen, z. B. das Blockieren der Registrierung oder das Verhindern von Benutzersitzungsverbindungen.  
 
 ## <a name="create-a-vm"></a>Erstellen einer VM
 
@@ -216,3 +216,5 @@ Nachdem Sie nun über ein Image verfügen, können Sie Hostpools erstellen oder 
 - [Erstellen eines Hostpools mit PowerShell](create-host-pools-powershell.md)
 - [Erstellen eines Profilcontainers für einen Hostpool unter Verwendung einer Dateifreigabe](create-host-pools-user-profile.md)
 - [Konfigurieren der Lastenausgleichsmethode für Windows Virtual Desktop](configure-host-pool-load-balancing.md)
+
+Wenn nach dem Vorbereiten oder Anpassen des VHD-Images ein Konnektivitätsproblem aufgetreten ist, ziehen Sie den [Leitfaden zur Problembehandlung](troubleshoot-agent.md#your-issue-isnt-listed-here-or-wasnt-resolved) zurate.

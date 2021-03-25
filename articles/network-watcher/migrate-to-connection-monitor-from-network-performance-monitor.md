@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: vinigam
-ms.openlocfilehash: e5053284de18740b761df3e5df256cc79d2e8f1c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: e95f6fdff164a6f5f9d4af4f19b1876d1483a70c
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101698687"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102038712"
 ---
 # <a name="migrate-to-connection-monitor-from-network-performance-monitor"></a>Migrieren vom Netzwerkleistungsmonitor zum Verbindungsmonitor
 
@@ -41,7 +41,7 @@ Durch die Migration können die folgenden Ergebnisse erzielt werden:
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Stellen Sie sicher, dass Network Watcher in Ihrem Abonnement und in der Region des Log Analytics-Arbeitsbereichs aktiviert ist. 
-* Falls Sie eine Azure-VM verwenden, die einer anderen Region/einem anderen Abonnement angehört als der Log Analytics Arbeitsbereich, stellen Sie sicher, dass Network Watcher für dieses Abonnement und diese Region aktiviert ist.   
+* Falls Sie eine Azure-VM verwenden, die einer anderen Region/einem anderen Abonnement angehört als die/dem, die/das der Log Analytics-Arbeitsbereich als Endpunkt verwendet, stellen Sie sicher, dass Network Watcher für dieses Abonnement und diese Region aktiviert ist.   
 * Virtuelle Azure-Computer, auf denen Log Analytics-Agents installiert sind, müssen mit der Network Watcher-Erweiterung aktiviert werden.
 
 ## <a name="migrate-the-tests"></a>Migrieren der Tests

@@ -9,10 +9,10 @@ description: Verwenden eines privaten Helm-Repositorys in einem Azure Dev Space.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, Container, Helm
 manager: gwallace
 ms.openlocfilehash: 7c5f28595df2e552fd48033b44e4e1f0ea4ec306
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91960336"
 ---
 # <a name="use-a-private-helm-repository-in-azure-dev-spaces"></a>Verwenden eines privaten Helm-Repositorys in Azure Dev Spaces
@@ -39,7 +39,7 @@ azds prep --enable-ingress
 ```
 
 > [!TIP]
-> Der Befehl `prep` versucht, [ein Dockerfile und Helm-Chart](../how-dev-spaces-works-prep.md#prepare-your-code) für Ihr Projekt zu generieren. Azure Dev Spaces nutzt diese Dateien zum Erstellen und Ausführen Ihres Codes. Sie können sie jedoch ändern, wenn Sie anpassen möchten, wie das Projekt erstellt und ausgeführt wird.
+> Der Befehl `prep` versucht, [ein Dockerfile und Helm-Diagramm](../how-dev-spaces-works-prep.md#prepare-your-code) für Ihr Projekt zu generieren. Azure Dev Spaces nutzt diese Dateien zum Erstellen und Ausführen Ihres Codes. Sie können sie jedoch ändern, wenn Sie anpassen möchten, wie das Projekt erstellt und ausgeführt wird.
 
 Erstellen Sie eine Datei [requirements.yaml][helm-requirements] mit Ihrem Diagramm im Diagrammverzeichnis Ihrer Anwendung. Wenn Ihre Anwendung beispielsweise *app1* heißt, würden Sie *charts/app1/requirements.yaml* erstellen.
 

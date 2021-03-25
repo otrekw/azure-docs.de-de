@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 44e18be9d66131ad5f4a3ebcc039621ec9e9dbe6
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: 03ef2110af2d9e642019c2b07b53fae3e32b1ea6
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102452253"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104950177"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Aktivieren der Diagnoseprotokollierung für Apps in Azure App Service
 ## <a name="overview"></a>Übersicht
@@ -116,7 +116,7 @@ In Ihrem Anwendungscode verwenden Sie die üblichen Protokollierungsfunktionen, 
     System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
     ```
 
-- Standardmäßig verwendet ASP.NET Core den Protokollierungsanbieter [Microsoft.Extensions.Logging.AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices). Weitere Informationen finden Sie unter [Protokollierung in ASP.NET Core](/aspnet/core/fundamentals/logging/). Weitere Informationen zur WebJobs SDK-Protokollierung finden Sie unter [Erste Schritte mit dem Azure WebJobs SDK](/azure/app-service/webjobs-sdk-get-started#enable-console-logging).
+- Standardmäßig verwendet ASP.NET Core den Protokollierungsanbieter [Microsoft.Extensions.Logging.AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices). Weitere Informationen finden Sie unter [Protokollierung in ASP.NET Core](/aspnet/core/fundamentals/logging/). Weitere Informationen zur WebJobs SDK-Protokollierung finden Sie unter [Erste Schritte mit dem Azure WebJobs SDK](./webjobs-sdk-get-started.md#enable-console-logging).
 
 ## <a name="stream-logs"></a>Streaming von Protokollen
 

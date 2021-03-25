@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: a177b22f0f91d82013956bff36eaa57a084c27d1
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 65eb4e8fefb74219c927fe507baceca7c55462be
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576581"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101095718"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Problembehandlung von Apps in Azure App Service mit Visual Studio
 ## <a name="overview"></a>Übersicht
@@ -49,7 +49,7 @@ Visual Studio bietet Zugriff auf einen Teil der App-Verwaltungsfunktionen und -K
    >
    >
 
-    Weitere Informationen für Verbindungen zwischen Visual Studio und Azure-Ressourcen finden Sie unter [Verwalten von Konten, Abonnements und Administratorrollen](../role-based-access-control/role-assignments-portal.md).
+    Weitere Informationen zum Herstellen einer Verbindung mit Azure-Ressourcen über Visual Studio finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](../role-based-access-control/role-assignments-portal.md).
 2. Erweitern Sie im **Server-Explorer** den Knoten **Azure**, und erweitern Sie dann **App Service**.
 3. Erweitern Sie die Ressourcengruppe, die die in [Erstellen einer ASP.NET-App in Azure App Service](quickstart-dotnet-framework.md) erstellte App enthält, klicken Sie mit der rechten Maustaste auf den App-Knoten, und klicken Sie dann auf **Anzeigeeinstellungen**.
 

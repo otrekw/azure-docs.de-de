@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc, devx-track-csharp
 manager: philmea
-ms.openlocfilehash: 824308b66803d2dfa05383ff06ce97c48626619d
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 6146676121bac0089d5f520d60a97d74567a32bc
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100557560"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179339"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid"></a>Erweitern von Azure IoT Central mit benutzerdefinierten Regeln mithilfe von Stream Analytics, Azure Functions und SendGrid
 
@@ -60,7 +60,7 @@ Verwenden Sie das [Azure-Portal zum Erstellen einer Ressourcengruppe](https://po
 
 Verwenden Sie das [Azure-Portal zum Erstellen eines Event Hubs-Namespace](https://portal.azure.com/#create/Microsoft.EventHub) mit den folgenden Einstellungen:
 
-| Einstellung | value |
+| Einstellung | Wert |
 | ------- | ----- |
 | Name    | Namen Ihres Namespace auswählen |
 | Tarif | Basic |
@@ -73,7 +73,7 @@ Verwenden Sie das [Azure-Portal zum Erstellen eines Event Hubs-Namespace](https:
 
 Verwenden Sie das [Azure-Portal zum Erstellen eines Stream Analytics-Namespace](https://portal.azure.com/#create/Microsoft.StreamAnalyticsJob) mit den folgenden Einstellungen:
 
-| Einstellung | value |
+| Einstellung | Wert |
 | ------- | ----- |
 | Name    | Namen Ihres Auftrags auswählen |
 | Subscription | Ihr Abonnement |
@@ -86,7 +86,7 @@ Verwenden Sie das [Azure-Portal zum Erstellen eines Stream Analytics-Namespace](
 
 Verwenden Sie das [Azure-Portal zum Erstellen einer Funktions-App](https://portal.azure.com/#create/Microsoft.FunctionApp) mit den folgenden Einstellungen:
 
-| Einstellung | value |
+| Einstellung | Wert |
 | ------- | ----- |
 | App-Name    | Namen Ihrer Funktions-App auswählen |
 | Subscription | Ihr Abonnement |
@@ -119,26 +119,28 @@ Sie können eine IoT Central-Anwendung konfigurieren, um Telemetriedaten kontinu
 
 Ihr Event Hubs-Namespace sieht wie im folgenden Screenshot aus: 
 
-```:::image type="content" source="media/howto-create-custom-rules/event-hubs-namespace.png" alt-text="Screenshot of Event Hubs namespace." border="false":::
+:::image type="content" source="media/howto-create-custom-rules/event-hubs-namespace.png" alt-text="Screenshot: Event Hubs-Namespace" border="false":::
 
-## Define the function
 
-This solution uses an Azure Functions app to send an email notification when the Stream Analytics job detects a stopped device. To create your function app:
+## <a name="define-the-function"></a>Definieren der Funktion
 
-1. In the Azure portal, navigate to the **App Service** instance in the **DetectStoppedDevices** resource group.
-1. Select **+** to create a new function.
-1. Select **HTTP Trigger**.
-1. Select **Add**.
+Diese Lösung verwendet eine Azure Functions-App, um eine E-Mail-Benachrichtigung zu senden, wenn der Stream Analytics-Auftrag ein angehaltenes Gerät erkennt. So erstellen Sie Ihre Funktions-App:
 
-    :::image type="content" source="media/howto-create-custom-rules/add-function.png" alt-text="Image of the Default HTTP trigger function"::: 
+1. Navigieren Sie im Azure-Portal zur **App Service**-Instanz in der Ressourcengruppe **DetectStoppedDevices**.
+1. Klicken Sie auf das **+** -Zeichen, um eine neue Funktion zu erstellen.
+1. Wählen Sie **HTTP-Trigger** aus.
+1. Wählen Sie **Hinzufügen**.
 
-## Edit code for HTTP Trigger
+    :::image type="content" source="media/howto-create-custom-rules/add-function.png" alt-text="Abbildung: Standardmäßige HTTP-Triggerfunktion"::: 
 
-The portal creates a default function called **HttpTrigger1**:
+## <a name="edit-code-for-http-trigger"></a>Bearbeiten des Codes für den HTTP-Trigger
 
-```:::image type="content" source="media/howto-create-custom-rules/default-function.png" alt-text="Screenshot of Edit HTTP trigger function.":::
+Das Portal erstellt eine Standardfunktion namens **HttpTrigger1**:
 
-1. Replace the C# code with the following code:
+:::image type="content" source="media/howto-create-custom-rules/default-function.png" alt-text="Screenshot: Bearbeiten der HTTP-Triggerfunktion":::
+
+
+1. Ersetzen Sie den C#-Code durch den folgenden Code:
 
     ```csharp
     #r "Newtonsoft.Json"
@@ -177,50 +179,50 @@ The portal creates a default function called **HttpTrigger1**:
     }
     ```
 
-    You may see an error message until you save the new code.
-1. Select **Save** to save the function.
+    Möglicherweise wird eine Fehlermeldung angezeigt, bis Sie den neuen Code speichern.
+1. Klicken Sie auf **Speichern**, um die Funktion zu speichern.
 
-## Add SendGrid Key
+## <a name="add-sendgrid-key"></a>Hinzufügen des SendGrid-Schlüssels
 
-To add your SendGrid API Key, you need to add it to your **Function Keys** as follows:
+Zum Hinzufügen Ihres SendGrid-API-Schlüssels müssen Sie ihn wie folgt Ihren **Funktionsschlüsseln** hinzufügen:
 
-1. Select **Function Keys**.
-1. Choose **+ New Function Key**.
-1. Enter the *Name* and *Value* of the API Key you created before.
-1. Click **OK.**
+1. Wählen Sie **Funktionsschlüssel** aus.
+1. Wählen Sie **+ Neuer Funktionsschlüssel** aus.
+1. Geben Sie den *Namen* und den *Wert* des zuvor erstellten API-Schlüssels ein.
+1. Klicken Sie auf **OK**.
 
-    :::image type="content" source="media/howto-create-custom-rules/add-key.png" alt-text="Screenshot of Add Sangrid Key.":::
+    :::image type="content" source="media/howto-create-custom-rules/add-key.png" alt-text="Screenshot: Hinzufügen des SendGrid-Schlüssels":::
 
 
-## Configure HttpTrigger function to use SendGrid
+## <a name="configure-httptrigger-function-to-use-sendgrid"></a>Konfigurieren der HttpTrigger-Funktion für die Verwendung von SendGrid
 
-To send emails with SendGrid, you need to configure the bindings for your function as follows:
+Um E-Mails mit SendGrid zu senden, müssen Sie die Bindungen für Ihre Funktion wie folgt konfigurieren:
 
-1. Select **Integrate**.
-1. Choose **Add Output** under **HTTP ($return)**.
-1. Select **Delete.**
-1. Choose **+ New Output**.
-1. For Binding Type, then choose **SendGrid**.
-1. For SendGrid API Key Setting Type, click New.
-1. Enter the *Name* and *Value* of your SendGrid API key.
-1. Add the following information:
+1. Wählen Sie **Integrieren** aus.
+1. Wählen Sie unter **HTTP ($return)** die Option **Ausgabe hinzufügen** aus.
+1. Wählen Sie **Löschen** aus.
+1. Wählen Sie **+ Neue Ausgabe** aus.
+1. Wählen Sie als Bindungstyp die Option **SendGrid** aus.
+1. Klicken Sie für den Einstellungstyp des SendGrid-API-Schlüssels auf „Neu“.
+1. Geben Sie den *Namen* und den *Wert* Ihres SendGrid-API-Schlüssels ein.
+1. Fügen Sie die folgenden Informationen hinzu:
 
-| Setting | Value |
+| Einstellung | Wert |
 | ------- | ----- |
-| Message parameter name | Choose your name |
-| To address | Choose the name of your To Address |
-| From address | Choose the name of your From Address |
-| Message subject | Enter your subject header |
-| Message text | Enter the message from your integration |
+| Name des Nachrichtenparameters | Wählen Sie Ihren Namen aus. |
+| Empfänger | Wählen Sie den Namen des Empfängers aus. |
+| Absenderadresse | Wählen Sie den Namen des Absenders aus. |
+| Nachrichtenbetreff | Geben Sie den Betreff ein. |
+| Meldungstext | Geben Sie die Nachricht Ihrer Integration ein. |
 
-1. Select **OK**.
+1. Klicken Sie auf **OK**.
 
-    :::image type="content" source="media/howto-create-custom-rules/add-output.png" alt-text="Screenshot of Add SandGrid Output.":::
+    :::image type="content" source="media/howto-create-custom-rules/add-output.png" alt-text="Screenshot: Hinzufügen der SendGrid-Ausgabe":::
 
 
-### Test the function works
+### <a name="test-the-function-works"></a>Testen der Funktion
 
-To test the function in the portal, first choose **Logs** at the bottom of the code editor. Then choose **Test** to the right of the code editor. Use the following JSON as the **Request body**:
+Um die Funktion im Portal zu testen, wählen Sie zuerst unten im Code-Editor die Option **Protokolle** aus. Klicken Sie dann im Code-Editor auf der rechten Seite auf **Testen**. Verwenden Sie folgenden JSON-Code als **Anforderungstext**:
 
 ```json
 [{"deviceid":"test-device-1","time":"2019-05-02T14:23:39.527Z"},{"deviceid":"test-device-2","time":"2019-05-02T14:23:50.717Z"},{"deviceid":"test-device-3","time":"2019-05-02T14:24:28.919Z"}]
@@ -228,9 +230,9 @@ To test the function in the portal, first choose **Logs** at the bottom of the c
 
 Die Meldungen des Funktionsprotokolls werden im Bereich **Protokolle** angezeigt:
 
-```:::image type="content" source="media/howto-create-custom-rules/function-app-logs.png" alt-text="Function log output":::
+:::image type="content" source="media/howto-create-custom-rules/function-app-logs.png" alt-text="Ausgabe des Funktionsprotokolls":::
 
-After a few minutes, the **To** email address receives an email with the following content:
+Nach einigen Minuten erhält die E-Mail-Adresse des **Empfängers** eine E-Mail mit folgendem Inhalt:
 
 ```txt
 The following device(s) have stopped sending telemetry:

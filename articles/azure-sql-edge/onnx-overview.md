@@ -10,10 +10,10 @@ author: dphansen
 ms.author: davidph
 ms.date: 05/19/2020
 ms.openlocfilehash: 5dc3d44ac4396897fd43831d51ee628bb06048cb
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93392060"
 ---
 # <a name="machine-learning-and-ai-with-onnx-in-sql-edge"></a>Machine Learning und KI mit ONNX in SQL Edge
@@ -28,7 +28,7 @@ Zum Ableiten von Machine Learning-Modellen in Azure SQL Edge benötigen Sie zun
 
 So rufen Sie ein Modell im ONNX-Format ab:
 
-- **Modellerstellungsdienste** : Dienste wie das [automatisierte Machine Learning-Feature in Azure Machine Learning](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb) und der [Custom Vision-Dienst von Azure](../cognitive-services/custom-vision-service/getting-started-build-a-classifier.md) unterstützen den direkten Export des trainierten Modells in das ONNX-Format.
+- **Modellerstellungsdienste**: Dienste wie das [automatisierte Machine Learning-Feature in Azure Machine Learning](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb) und der [Custom Vision-Dienst von Azure](../cognitive-services/custom-vision-service/getting-started-build-a-classifier.md) unterstützen den direkten Export des trainierten Modells in das ONNX-Format.
 
 - [**Konvertieren und/oder Exportieren vorhandener Modelle**](https://github.com/onnx/tutorials#converting-to-onnx-format): Mehrere Trainingsframeworks, z. B. [PyTorch](https://pytorch.org/docs/stable/onnx.html), Chainer und Caffe2, unterstützen native Funktionen für den Export in das ONNX-Format, sodass Sie Ihr trainiertes Modell in einer bestimmten Version des ONNX-Formats speichern können. Für Frameworks, die keinen nativen Export unterstützen, gibt es eigenständige installierbare ONNX-Konverterpakete, mit denen Sie Modelle, die anhand verschiedener Machine Learning-Frameworks trainiert wurden, in das ONNX-Format konvertieren können.
 

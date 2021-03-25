@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/18/2020
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: f40286a39694307ac43ecd60f6861d509f760990
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 9adf525f4edb4104978bae32bbbef15ffb131f68
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340793"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104587252"
 ---
 # <a name="tickstodatetime-azure-cosmos-db"></a>TicksToDateTime (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -36,17 +36,17 @@ Ein numerischer Wert mit Vorzeichen: die aktuelle Anzahl der 100-Nanosekunden-Ta
 
 Gibt einen Zeichenfolgenwert für das UTC-Datum und die UTC-Uhrzeit gemäß ISO 8601 im Format `YYYY-MM-DDThh:mm:ss.fffffffZ` zurück. Hierbei gilt:
   
-  |Format|BESCHREIBUNG|
-  |-|-|
-  |YYYY|vierstellige Jahreszahl|
-  |MM|zweistellige Monatszahl (01 = Januar usw.)|
-  |DD|zweistellige Zahl für den Tag des Monats (01 bis 31)|
-  |T|Trennzeichen, das den Anfang der Uhrzeitelemente markiert|
-  |hh|zweistellige Stundenzahl (00 bis 23)|
-  |MM|zweistellige Minutenzahl (00 bis 59)|
-  |ss|zweistellige Sekundenzahl (00 bis 59)|
-  |.fffffff|siebenstellige Sekundenbruchteile|
-  |Z|UTC-Kennzeichner||
+|Format|BESCHREIBUNG|
+|-|-|
+|YYYY|vierstellige Jahreszahl|
+|MM|zweistellige Monatszahl (01 = Januar usw.)|
+|DD|zweistellige Zahl für den Tag des Monats (01 bis 31)|
+|T|Trennzeichen, das den Anfang der Uhrzeitelemente markiert|
+|hh|zweistellige Stundenzahl (00 bis 23)|
+|MM|zweistellige Minutenzahl (00 bis 59)|
+|ss|zweistellige Sekundenzahl (00 bis 59)|
+|.fffffff|siebenstellige Sekundenbruchteile|
+|Z|UTC-Kennzeichner|
   
   Weitere Informationen zum ISO 8601-Format finden Sie unter [ISO_8601](https://en.wikipedia.org/wiki/ISO_8601).
 

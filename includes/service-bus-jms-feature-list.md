@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 6/9/2020
 ms.author: aschhab
 ms.custom: include file
-ms.openlocfilehash: 9030080d0b8c8e032cb2992a62275efcdb04aabc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 574507fcc6a3c05919c441bd6d0ec9c573d4b6ae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87798136"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "100652603"
 ---
 In der folgenden Tabelle sind die zurzeit von Azure Service Bus unterstützten JMS-Funktionen (Java Message Service) aufgelistet. Außerdem werden Funktionen angezeigt, die nicht unterstützt werden.
 
@@ -34,4 +34,5 @@ In der folgenden Tabelle sind die zurzeit von Azure Service Bus unterstützten J
 | Nachrichtenselektoren | Abhängig vom erstellten Consumer. | **Unterstützt** |
 | Tägliche Zustellung (geplante Nachrichten) | <ul> <li> JMSProducer.setDeliveryDelay( long deliveryDelay) </li> </ul>|**Unterstützt**|
 | Nachricht erstellt |<ul> <li> JMSContext.createMessage() </li> <li> JMSContext.createBytesMessage() </li> <li> JMSContext.createMapMessage() </li> <li> JMSContext.createObjectMessage( Serializable object) </li> <li> JMSContext.createStreamMessage() </li> <li> JMSContext.createTextMessage() </li> <li> JMSContext.createTextMessage( String text) </li> </ul>| **Unterstützt** |
+| Entitätsübergreifende Transaktionen |<ul> <li> Connection.createSession(true, Session.SESSION_TRANSACTED) </li> </ul> | **Unterstützt** |
 | Verteilte Transaktionen || Nicht unterstützt |

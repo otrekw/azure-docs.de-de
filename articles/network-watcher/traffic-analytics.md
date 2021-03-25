@@ -13,12 +13,12 @@ ms.date: 01/04/2021
 ms.author: damendo
 ms.reviewer: vinigam
 ms.custom: references_regions
-ms.openlocfilehash: 6cd1965ab51e7a7bbcc65836383000f0773b9b82
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 87dacd28223fd88866edb90266aa76fd3cdf86cf
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98070935"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101095362"
 ---
 # <a name="traffic-analytics"></a>Traffic Analytics
 
@@ -46,8 +46,8 @@ Virtuelle Azure-Netzwerke bieten NSG-Datenflussprotokolle mit Informationen zum 
 
 - **Netzwerksicherheitsgruppe (NSG)** : Enthält eine Liste mit Sicherheitsregeln, mit denen Netzwerkdatenverkehr für Ressourcen, die mit virtuellen Azure-Netzwerken verbunden sind, zugelassen oder abgelehnt wird. NSGs können Subnetzen, einzelnen VMs (klassisch) oder einzelnen Netzwerkschnittstellen (NICs), die mit VMs (Resource Manager) verbunden sind, zugeordnet werden. Weitere Informationen finden Sie unter [Übersicht über Netzwerksicherheit](../virtual-network/network-security-groups-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 - **NSG-Flussprotokolle (Netzwerksicherheitsgruppe)** : Ermöglichen das Anzeigen von Informationen zu ein- und ausgehendem IP-Datenverkehr über eine Netzwerksicherheitsgruppe. Die NSG-Flussprotokolle sind im JSON-Format geschrieben und zeigen aus- und eingehende Datenflüsse pro Regel, die NIC, auf die sich der Datenfluss bezieht, Fünf-Tupel-Informationen über den Datenfluss (Quell-/Ziel-IP-Adresse, Quell-/Zielport, Protokoll) und Informationen zu zugelassenem oder verweigertem Datenverkehr. Weitere Informationen zu NSG-Flussprotokollen finden Sie unter [Einführung in die Datenflussprotokollierung für Netzwerksicherheitsgruppen](network-watcher-nsg-flow-logging-overview.md).
-- **Log Analytics**: Ein Azure-Dienst, der Überwachungsdaten sammelt und in einem zentralen Repository speichert. Bei diesen Daten kann es sich um Ereignisse, Leistungsdaten oder benutzerdefinierte Daten handeln, die über die Azure-API bereitgestellt wurden. Die gesammelten Daten können für Warnungen und Analysen genutzt und exportiert werden. Überwachungsanwendungen wie z.B. Netzwerkleistungsmonitor und Datenverkehrsanalyse werden auf der Grundlage von Azure Monitor-Protokollen erstellt. Weitere Informationen finden Sie unter [Azure Monitor-Protokolle](../azure-monitor/log-query/log-query-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
-- **Log Analytics-Arbeitsbereich**: Eine Instanz von Azure Monitor-Protokollen, in die der Daten zu einem Azure-Konto gespeichert werden. Weitere Informationen zu Log Analytics-Arbeitsbereichen finden Sie unter [Erstellen eines Log Analytics-Arbeitsbereichs](../azure-monitor/learn/quick-create-workspace.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+- **Log Analytics**: Ein Azure-Dienst, der Überwachungsdaten sammelt und in einem zentralen Repository speichert. Bei diesen Daten kann es sich um Ereignisse, Leistungsdaten oder benutzerdefinierte Daten handeln, die über die Azure-API bereitgestellt wurden. Die gesammelten Daten können für Warnungen und Analysen genutzt und exportiert werden. Überwachungsanwendungen wie z.B. Netzwerkleistungsmonitor und Datenverkehrsanalyse werden auf der Grundlage von Azure Monitor-Protokollen erstellt. Weitere Informationen finden Sie unter [Azure Monitor-Protokolle](../azure-monitor/logs/log-query-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+- **Log Analytics-Arbeitsbereich**: Eine Instanz von Azure Monitor-Protokollen, in die der Daten zu einem Azure-Konto gespeichert werden. Weitere Informationen zu Log Analytics-Arbeitsbereichen finden Sie unter [Erstellen eines Log Analytics-Arbeitsbereichs](../azure-monitor/logs/quick-create-workspace.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 - **Network Watcher:** Ein regionaler Dienst, mit dem Sie Bedingungen auf der Ebene von Netzwerkszenarien in Azure überwachen und diagnostizieren können. Sie können die NSG-Flussprotokolle mit Network Watcher ein- und ausschalten. Weitere Informationen finden Sie unter [Network Watcher](network-watcher-monitoring-overview.md).
 
 ## <a name="how-traffic-analytics-works"></a>Funktionsweise der Datenverkehrsanalyse
@@ -71,33 +71,34 @@ Datenverkehranalysen für Netzwerksicherheitsgruppen werden in den folgenden Reg
       USA (Mitte)  
       China, Osten 2  
       China, Norden 2  
+      Asien, Osten       
    :::column-end:::
    :::column span="":::
-      Asien, Osten  
       East US  
       USA (Ost) 2  
       USA, Osten 2 (EUAP)  
       Frankreich, Mitte  
-      Japan, Osten  
+      Deutschland, Westen-Mitte Japan, Osten  
       Japan, Westen  
       Korea, Mitte  
       Korea, Süden  
       USA Nord Mitte  
+      Nordeuropa    
    :::column-end:::
    :::column span="":::
-      Nordeuropa  
       Südafrika, Norden  
       USA Süd Mitte  
       Indien (Süden)  
       Asien, Südosten  
       Schweiz, Norden  
       Schweiz, Westen  
+      Vereinigte Arabische Emirate, Norden  
       UK, Süden  
-      UK, Westen  
+      UK, Westen   
       US Gov Arizona  
+      USGov Texas
    :::column-end:::
    :::column span="":::
-      USGov Texas  
       US Government, Virginia  
       US Nat East  
       US Nat West  
@@ -143,14 +144,15 @@ Der Log Analytics-Arbeitsbereich muss in den folgenden Regionen vorhanden sein:
       Schweiz, Norden  
       Schweiz, Westen  
       VAE, Mitte  
+      Vereinigte Arabische Emirate, Norden  
       UK, Süden  
-      UK, Westen  
+      UK, Westen   
       US Gov Arizona  
       US Government, Virginia  
-      US Nat East  
-      US Nat West  
+      US Nat East   
    :::column-end:::
    :::column span="":::
+      US Nat West   
       US Sec East  
       US Sec West  
       USA, Westen-Mitte  
@@ -232,7 +234,7 @@ Wählen Sie die folgenden Optionen aus, wie in der Abbildung dargestellt:
 4. Legen Sie **Vermerkdauer** auf die Anzahl der Tage fest, die die Daten gespeichert werden sollen. Wenn Sie die Daten dauerhaft speichern möchten, legen Sie den Wert auf *0* fest. Ihnen werden die Azure Storage-Gebühren für das Speicherkonto berechnet. 
 5. Wählen Sie *Ein* als **Traffic Analytics-Status** aus.
 6. Wählen Sie das Verarbeitungsintervall aus. Basierend auf Ihrer Auswahl werden Datenflussprotokolle aus dem Speicherkonto erfasst und von Traffic Analytics verarbeitet. Sie können das Verarbeitungsintervall auf jede Stunde oder alle 10 Minuten festlegen. 
-7. Wählen Sie einen vorhandenen Log Analytics-Arbeitsbereich (OMS) aus, oder wählen Sie **Neuen Arbeitsbereich erstellen** aus, und erstellen Sie dann einen neuen Arbeitsbereich. Traffic Analytics verwendet einen Log Analytics-Arbeitsbereich, um die aggregierten und indizierten Daten zu speichern, die dann zum Generieren der Analyse verwendet werden. Wenn Sie einen vorhandenen Arbeitsbereich auswählen, muss sich dieser in einer [unterstützten Region](#supported-regions-log-analytics-workspaces) befinden und auf die neue Abfragesprache aktualisiert worden sein. Wenn Sie einen vorhandenen Arbeitsbereich nicht aktualisieren möchten oder über keinen Arbeitsbereich in einer unterstützten Region verfügen, erstellen Sie einen neuen. Weitere Informationen über Abfragesprachen finden Sie unter [Upgrade von Azure Log Analytics auf die neue Protokollsuche](../azure-monitor/log-query/log-query-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+7. Wählen Sie einen vorhandenen Log Analytics-Arbeitsbereich (OMS) aus, oder wählen Sie **Neuen Arbeitsbereich erstellen** aus, und erstellen Sie dann einen neuen Arbeitsbereich. Traffic Analytics verwendet einen Log Analytics-Arbeitsbereich, um die aggregierten und indizierten Daten zu speichern, die dann zum Generieren der Analyse verwendet werden. Wenn Sie einen vorhandenen Arbeitsbereich auswählen, muss sich dieser in einer [unterstützten Region](#supported-regions-log-analytics-workspaces) befinden und auf die neue Abfragesprache aktualisiert worden sein. Wenn Sie einen vorhandenen Arbeitsbereich nicht aktualisieren möchten oder über keinen Arbeitsbereich in einer unterstützten Region verfügen, erstellen Sie einen neuen. Weitere Informationen über Abfragesprachen finden Sie unter [Upgrade von Azure Log Analytics auf die neue Protokollsuche](../azure-monitor/logs/log-query-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 
 > [!NOTE]
 >Der Log Analytics-Arbeitsbereich, der die Lösung für die Datenverkehrsanalyse hostet, und die Netzwerksicherheitsgruppen (NSGs) müssen sich nicht in derselben Region befinden. Sie können die Datenverkehrsanalyse beispielsweise in einem Arbeitsbereich in der Region „Europa, Westen“ mit Netzwerksicherheitsgruppen in den Regionen „USA, Osten“ und „USA, Westen“ verwenden. Es können mehrere NSGs im selben Arbeitsbereich konfiguriert werden.

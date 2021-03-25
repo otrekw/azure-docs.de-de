@@ -10,18 +10,18 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 83c5595dc64b46e1c30f3c36866e0efbbd8d3c7f
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 27cc53c3eef1bb2a9962d2c21ae80db3c8b0383d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101674134"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104585433"
 ---
 # <a name="design-tables-using-synapse-sql-in-azure-synapse-analytics"></a>Entwerfen von Tabellen mithilfe von Synapse SQL in Azure Synapse Analytics
 
 Dieses Dokument enthält wichtige Konzepte für den Entwurf von Tabellen mit einem dedizierten und einem serverlosen SQL-Pool.  
 
-Ein [serverloser SQL-Pool](on-demand-workspace-overview.md) ist ein Abfragedienst für die Daten in Ihrem Data Lake. Es verfügt weder über einen lokalen Speicher noch über die Datenerfassung. Ein [dedizierter SQL-Pool](best-practices-sql-pool.md) ist eine Sammlung von Analyseressourcen, die bei Verwendung von Synapse SQL bereitgestellt werden. Die Größe eines dedizierten SQL-Pools wird von Data Warehouse-Einheiten (Data Warehouse Units, DWUs) bestimmt.
+Ein [serverloser SQL-Pool](on-demand-workspace-overview.md) ist ein Abfragedienst für die Daten in Ihrem Data Lake. Es verfügt weder über einen lokalen Speicher noch über die Datenerfassung. Ein [dedizierter SQL-Pool](best-practices-dedicated-sql-pool.md) ist eine Sammlung von Analyseressourcen, die bei Verwendung von Synapse SQL bereitgestellt werden. Die Größe eines dedizierten SQL-Pools wird von Data Warehouse-Einheiten (Data Warehouse Units, DWUs) bestimmt.
 
 In der folgenden Tabelle sind die für einen Vergleich eines dedizierten SQL-Pools mit einem serverlosen SQL-Pool relevanten Punkte aufgeführt:
 

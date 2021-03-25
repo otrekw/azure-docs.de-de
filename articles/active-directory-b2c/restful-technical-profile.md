@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 891991fa938ad3dcfacae6d02e40efd6d6e9689e
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: eb6d82019cccd1da327461cb0a0635aea4f3647f
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97386849"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174970"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen RESTful-Profils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -221,9 +221,12 @@ Wenn als Typ der Authentifizierung `Bearer` festgelegt ist, enthält das **Crypt
 
 Wenn als Typ der Authentifizierung `ApiKeyHeader` festgelegt ist, enthält das **CryptographicKeys**-Element das folgende Attribut:
 
-| attribute | Erforderlich | Beschreibung |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | Der Name des HTTP-Headers, z. B. `x-functions-key` oder `x-api-key`. | Ja | Der zur Authentifizierung verwendete Schlüssel. |
+
+> [!NOTE]
+> Aktuell wird von Azure AD B2C nur ein einzelner HTTP-Header für die Authentifizierung unterstützt. Sollten für Ihren RESTful-Aufruf mehrere Header erforderlich sein (beispielsweise eine Client-ID und ein geheimer Clientschlüssel), muss für die Anforderung eine Proxylösung verwendet werden.
 
 ```xml
 <TechnicalProfile Id="REST-API-SignUp">
@@ -290,4 +293,3 @@ In den folgenden Artikeln finden Sie Beispiele für die Verwendung eines technis
 - [Exemplarische Vorgehensweise: Integrieren von REST-API-Anspruchsaustauschvorgängen in Ihre Azure AD B2C-User Journey zur Validierung der Benutzereingabe](custom-policy-rest-api-claims-validation.md)
 - [Exemplarische Vorgehensweise: Hinzufügen von REST-API-Anspruchsaustauschvorgängen zu benutzerdefinierten Richtlinien in Azure Active Directory B2C](custom-policy-rest-api-claims-validation.md)
 - [Sichern von REST-API-Diensten](secure-rest-api.md)
-

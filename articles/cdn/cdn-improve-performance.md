@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 02/28/2018
 ms.author: allensu
-ms.openlocfilehash: 7c84d8129e1d0d88601495dec41883077784bb71
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 11a2dbfc9c6da60e4dd96f65d2a20165a3663e8c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101728194"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103601541"
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>Verbessern der Leistung durch Komprimieren von Dateien in Azure CDN
 Die Dateikomprimierung reduziert die Größe einer Datei, bevor sie vom Server gesendet wird, und ist eine einfache und effektive Methode zum Verbessern der Geschwindigkeit von Dateiübertragungen sowie der Seitenladeleistung. Die Dateikomprimierung reduziert die Bandbreitenkosten und steigert die Benutzerfreundlichkeit.
@@ -63,10 +63,6 @@ Die CDN-Tarife „Standard“ und „Premium“ bieten die gleiche Komprimierung
 
    > [!TIP]
    > Obwohl es möglich ist, die Komprimierung für komprimierte Formate zu aktivieren, wird dies nicht empfohlen. Beispiele sind ZIP, MP3, MP4 und JPG.
-   > 
-
-   > [!NOTE]
-   > Das Ändern der Standardliste der MIME-Typen wird zurzeit in Azure CDN Standard von Microsoft nicht unterstützt.
    > 
 
 5. Klicken Sie auf **Speichern**, nachdem Sie die Änderungen vorgenommen haben.

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 02/25/2021
+ms.date: 03/04/2021
 ms.author: justinha
 author: sopand
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbe69967d84777091aec0bbbf1626b98f5018d0e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b0865fb2bda04f5a7e9ba2ef73a717946fa656a5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101692908"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102175310"
 ---
 # <a name="authentication-methods-activity"></a>Aktivität für Authentifizierungsmethoden 
 
@@ -26,10 +26,17 @@ Das neue Aktivitätsdashboard für Authentifizierungsmethoden ermöglicht Admini
 
 ## <a name="permissions-and-licenses"></a>Berechtigungen und Lizenzen
 
-Die folgenden Rollen können auf „Nutzung und Erkenntnisse“ zugreifen:
+Integrierte und benutzerdefinierte Rollen mit den folgenden Berechtigungen können auf das Blatt mit der Aktivität von Authentifizierungsmethoden und auf die APIs zugreifen:
+
+- Microsoft.directory/auditLogs/allProperties/read
+- Microsoft.directory/signInReports/allProperties/read
+
+Die folgenden Rollen verfügen über die erforderlichen Berechtigungen:
 
 - Meldet Reader
 - Sicherheitsleseberechtigter
+- Globaler Leser
+- Sicherheitsoperator
 - Sicherheitsadministrator
 - Globaler Administrator
 
@@ -122,11 +129,12 @@ In den **Registrierungs- und Zurücksetzungsereignissen** werden Registrierungs-
 - Status („Erfolg“, „Fehler“)
 - Fehlerursache (Erläuterung)
 
-  ![Screenshot: Seite „Verwendung“](media/how-to-authentication-methods-usage-insights/registration-and-reset-logs.png)
+  ![Screenshot: Registrierungs- und Zurücksetzungsereignisse](media/how-to-authentication-methods-usage-insights/registration-and-reset-logs.png)
 
 ## <a name="limitations"></a>Einschränkungen
 
-TAP-Registrierungen (Temporary Access Pass, befristeter Zugriffspass) werden auf der Registrierungsregisterkarte des Berichts nicht berücksichtigt, da sie nur für kurze Zeit gültig sind.
+- Die Daten im Bericht werden nicht in Echtzeit aktualisiert und können daher bereits einige Stunden alt sein.
+- TAP-Registrierungen (Temporary Access Pass, befristeter Zugriffspass) werden auf der Registrierungsregisterkarte des Berichts nicht berücksichtigt, da sie nur für kurze Zeit gültig sind.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

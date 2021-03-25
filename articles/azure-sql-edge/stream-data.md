@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
 ms.openlocfilehash: f63ab040e750c0c642c9656a5482529b926e9295
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93392111"
 ---
 # <a name="data-streaming-in-azure-sql-edge"></a>Datenstreaming in Azure SQL Edge
@@ -35,15 +35,15 @@ T-SQL-Streaming funktioniert genauso wie [Azure Stream Analytics](../stream-anal
 
 Ein Stream Analytics-Auftrag besteht aus den folgenden Elementen:
 
-- **Streameingabe** : Definiert die Verbindungen mit einer Datenquelle, aus der der Datenstrom gelesen werden soll. Azure SQL Edge unterstützt zurzeit die folgenden Streameingabetypen:
+- **Streameingabe**: Definiert die Verbindungen mit einer Datenquelle, aus der der Datenstrom gelesen werden soll. Azure SQL Edge unterstützt zurzeit die folgenden Streameingabetypen:
     - Edge Hub
     - Kafka (Unterstützung für Kafka-Eingaben ist zurzeit nur für Intel-/AMD64-Versionen von Azure SQL Edge verfügbar.)
 
-- **Streamausgabe** : Definiert die Verbindungen mit einer Datenquelle, in die der Datenstrom gelesen werden soll. Azure SQL Edge unterstützt zurzeit die folgenden Streamausgabetypen:
+- **Streamausgabe**: Definiert die Verbindungen mit einer Datenquelle, in die der Datenstrom gelesen werden soll. Azure SQL Edge unterstützt zurzeit die folgenden Streamausgabetypen:
     - Edge Hub
     - SQL (Die SQL-Ausgabe kann eine lokale Datenbank in der Azure SQL Edge-Instanz, eine SQL Server-Remoteinstanz oder eine Azure SQL-Datenbank-Instanz sein.) 
 
-- **Streamabfrage** : Definiert die Transformation, Aggregationen, Filter, Sortierung und Joins, die auf den Eingabestream angewendet werden sollen, bevor er in die Streamausgabe geschrieben wird. Die Streamabfrage basiert auf der von Azure Stream Analytics verwendeten Abfragesprache. Weitere Informationen finden Sie unter [Stream Analytics-Abfragesprache](/stream-analytics-query/stream-analytics-query-language-reference).
+- **Streamabfrage**: Definiert die Transformation, Aggregationen, Filter, Sortierung und Joins, die auf den Eingabestream angewendet werden sollen, bevor er in die Streamausgabe geschrieben wird. Die Streamabfrage basiert auf der von Azure Stream Analytics verwendeten Abfragesprache. Weitere Informationen finden Sie unter [Stream Analytics-Abfragesprache](/stream-analytics-query/stream-analytics-query-language-reference).
 
 > [!IMPORTANT]
 > T-SQL-Streaming unterstützt im Gegensatz zu Stream Analytics derzeit keine [Verweisdaten für Suchvorgänge](../stream-analytics/stream-analytics-use-reference-data.md) oder [benutzerdefinierten Funktionen (User Defined Functions, UDFs) und benutzerdefinierten Aggregate (User-Defined Aggregates, UDA) in Streamaufträgen](../stream-analytics/streaming-technologies.md#you-want-to-write-udfs-udas-and-custom-deserializers-in-a-language-other-than-javascript-or-c).

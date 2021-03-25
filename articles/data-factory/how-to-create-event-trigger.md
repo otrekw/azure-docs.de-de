@@ -7,12 +7,12 @@ ms.author: chez
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 10/18/2018
-ms.openlocfilehash: 7dde05e02421ef8d2ea46fd0d50687ede6e5d884
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ff8c549f74b59706de5203f2d2e46867d6cb1d0a
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101727782"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177782"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-a-storage-event"></a>Erstellen eines Triggers zum Ausführen einer Pipeline als Reaktion auf ein Speicherereignis
 
@@ -26,7 +26,6 @@ Das folgende Video enthält eine zehnminütige Einführung und Demonstration die
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Event-based-data-integration-with-Azure-Data-Factory/player]
 
-
 > [!NOTE]
 > Die in diesem Artikel beschriebene Integration basiert auf [Azure Event Grid](https://azure.microsoft.com/services/event-grid/). Stellen Sie sicher, dass Ihr Abonnement für den Event Grid-Ressourcenanbieter registriert ist. Weitere Informationen finden Sie unter [Ressourcenanbieter und -typen](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal). Sie müssen dazu in der Lage sein, die Aktion *Microsoft.EventGrid/eventSubscriptions/* * auszuführen. Diese Aktion ist Teil der integrierten Rolle EventGrid-EventSubscription-Mitwirkender.
 
@@ -34,11 +33,11 @@ Das folgende Video enthält eine zehnminütige Einführung und Demonstration die
 
 In diesem Abschnitt wird gezeigt, wie Sie über die Benutzeroberfläche von Azure Data Factory einen Trigger für Speicherereignisse erstellen können.
 
-1. Navigieren Sie zum **Bereich für die Erstellung**.
+1. Wechseln Sie zur Registerkarte **Bearbeiten**, die mit einem Stiftsymbol angezeigt wird. 
 
-1. Klicken Sie in der linken unteren Ecke auf **Trigger**.
+1. Wählen Sie im Menü **Trigger** und dann **Neu/Bearbeiten** aus. 
 
-1. Klicken Sie auf **+ Neu**. Dann wird die Seitennavigationsleiste für die Triggererstellung geöffnet.
+1. Wählen Sie auf der Seite **Trigger hinzufügen** die Option **Trigger auswählen...** und dann **+Neu** aus. 
 
 1. Wählen Sie den Triggertyp **Storage Event** (Speicherereignis) aus.
 
@@ -107,4 +106,5 @@ Dieser Abschnitt enthält Beispiele für die Einstellungen für Speicherereignis
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Detaillierte Informationen zu Triggern finden Sie unter [Pipelineausführung und -trigger](concepts-pipeline-execution-triggers.md#trigger-execution).
+* Detaillierte Informationen zu Triggern finden Sie unter [Pipelineausführung und -trigger](concepts-pipeline-execution-triggers.md#trigger-execution).
+* Informationen zum Verweisen auf Triggermetadaten in der Pipeline finden Sie unter [Verweisen auf Triggermetadaten in Pipelineausführungen](how-to-use-trigger-parameterization.md).

@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/22/2020
+ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: 89230b6aca9e225c28a1efd0b99476b35f4d8db0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f160948a06d8a3175158e0100345ee2a330048c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91439549"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "100634697"
 ---
 # <a name="compare-baselines-using-file-integrity-monitoring-fim"></a>Vergleichen der Baselines mithilfe der Überwachung der Dateiintegrität (FIM)
 
@@ -62,23 +62,22 @@ FIM-Baselines beginnen damit, die Merkmale eines als funktionierend bekannten Zu
 > [!NOTE]
 > Weitere Informationen zu Registrierungseinstellungen, die von verschiedenen Betriebssystemversionen unterstützt werden, finden Sie in der [Referenztabelle der Gruppenrichtlinieneinstellungen](https://www.microsoft.com/download/confirmation.aspx?id=25250).
 
-*So konfigurieren Sie FIM zum Überwachen von Registrierungsbaselines:*
+So konfigurieren Sie FIM zum Überwachen von Registrierungsbaselines:
 
-1. Geben Sie im Fenster **Windows-Registrierung für Änderungsnachverfolgung hinzufügen** in das Feld **Windows-Registrierungsschlüssel** den Registrierungsschlüssel ein.
+1. Geben Sie im Fenster **Windows-Registrierung für Änderungsnachverfolgung hinzufügen** im Textfeld **Windows-Registrierungsschlüssel** den folgenden Registrierungsschlüssel ein:
 
-    <code>
-
+    ```
     HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Netlogon\Parameters
-    </code>
+    ```
 
-      ![Aktivieren von FIM für eine Registrierung](./media/security-center-file-integrity-monitoring-baselines/baselines-add-registry.png)
+    :::image type="content" source="./media/security-center-file-integrity-monitoring-baselines/baselines-add-registry.png" alt-text="Aktivieren von FIM für eine Registrierung":::
 
 ## <a name="track-changes-to-windows-files"></a>Nachverfolgen von Änderungen an Windows-Dateien
 
 1. Geben Sie im Fenster **Windows-Datei für Änderungsnachverfolgung hinzufügen** in das Feld **Pfad eingeben** den Ordner ein, der die Dateien enthält, die Sie nachverfolgen möchten. Im Beispiel in der folgenden Abbildung befindet sich die **Contoso Web-App** im Laufwerk D:\ innerhalb der Ordnerstruktur **ContosWebApp**.  
 1. Erstellen Sie einen benutzerdefinierten Windows-Dateieintrag, indem Sie einen Namen der Einstellungsklasse angeben, die Rekursion aktivieren und den obersten Ordner mit einem Platzhaltersuffix (*) angeben.
 
-    ![Aktivieren von FIM für eine Datei](./media/security-center-file-integrity-monitoring-baselines/baselines-add-file.png)
+    :::image type="content" source="./media/security-center-file-integrity-monitoring-baselines/baselines-add-file.png" alt-text="Aktivieren von FIM für eine Datei":::
 
 ## <a name="retrieve-change-data"></a>Abrufen von Änderungsdaten
 

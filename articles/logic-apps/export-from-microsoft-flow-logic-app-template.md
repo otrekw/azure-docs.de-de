@@ -5,30 +5,30 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, sneshaf, pinath, logicappspm
 ms.topic: conceptual
-ms.date: 01/20/2021
-ms.openlocfilehash: a90f75db6961ea06b1cf9c2958556c1c2ef24805
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 02/22/2021
+ms.openlocfilehash: f2b4e09ec9b50bb6993c89d90b0f33c0c905cbf0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100380133"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101699095"
 ---
 # <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>Exportieren von Flows aus Power Automate und Bereitstellen in Azure Logic Apps
 
-> Bei Flows, die nach Oktober 2020 erstellt wurden, können Sie nicht mehr aus Power Automate exportieren und in Azure Logic Apps bereitstellen.
-
 Sie können diesen Flow aus [Microsoft Flow](https://flow.microsoft.com) zu [Power Automate](../logic-apps/logic-apps-overview.md) migrieren, um die Funktionen des Flows zu erweitern. Sie können den Flow als Azure Resource Manager-Vorlage für eine Logik-App exportieren, diese Logik-App-Vorlage in einer Azure-Ressourcengruppe bereitstellen und dann die Logik-App im Logik-App-Designer öffnen.
 
-> [!NOTE]
-> Nicht alle Power Automate-Connectors sind in Azure Logic Apps verfügbar. Sie können nur Power Automate-Flows migrieren, die in Azure Logic Apps über äquivalente Connectors verfügen. Beispielsweise sind der Trigger „Schaltfläche“, der Connector „Genehmigung“ und der Connector „Benachrichtigung“ spezifisch für Power Automate. Aktuell werden der Export und die Bereitstellung von auf OpenAPI basierenden Flows in Power Automate als Vorlagen für Logik-Apps nicht unterstützt.
->
-> * Informationen dazu, welche Power Automate-Connectors keine Logic Apps-Entsprechungen besitzen, finden Sie unter [Power Automate-Connectors](/connectors/connector-reference/connector-reference-powerautomate-connectors).
->
-> * Informationen dazu, welche Logic Apps-Connectors keine Power Automate-Entsprechungen besitzen, finden Sie unter [Logic Apps-Connectors](/connectors/connector-reference/connector-reference-logicapps-connectors).
+> [!IMPORTANT]
+> Der Export nach Logic Apps ist für Power Automate-Flows, die nach August 2020 erstellt wurden, nicht verfügbar. Seit Oktober 2020 erfolgt die Erstellung neuer Flows in Power Automate nach dem [OpenAPI 2.0-Protokoll](https://swagger.io/specification/v2/). Neue Flows, die auf diesem Protokoll basieren, sind nicht mit Logic Apps-Workflows kompatibel. Deshalb wurde das Exportieren dieser Flows nach Logic Apps deaktiviert. Stattdessen müssen Sie für diese Flows [Logik-Apps manuell erstellen](quickstart-create-first-logic-app-workflow.md).
+
+Nicht alle Power Automate-Connectors sind in Azure Logic Apps verfügbar. Sie können nur Power Automate-Flows migrieren, die in Azure Logic Apps über äquivalente Connectors verfügen. Beispielsweise sind der Trigger „Schaltfläche“, der Connector „Genehmigung“ und der Connector „Benachrichtigung“ spezifisch für Power Automate. 
+
+* Informationen dazu, welche Power Automate-Connectors keine Logic Apps-Entsprechungen besitzen, finden Sie unter [Power Automate-Connectors](/connectors/connector-reference/connector-reference-powerautomate-connectors).
+
+* Informationen dazu, welche Logic Apps-Connectors keine Power Automate-Entsprechungen besitzen, finden Sie unter [Logic Apps-Connectors](/connectors/connector-reference/connector-reference-logicapps-connectors).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
+* Ein Azure-Konto und ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
 
 * Der Flow, den Sie aus Power Automate exportieren möchten.
 
@@ -68,7 +68,7 @@ Weitere Informationen finden Sie unter [Verwenden von Azure Logic Apps](https://
 
    1. Wählen Sie die Eingabeparameterwerte für Ihre Vorlage aus, oder geben Sie diese an.
 
-      | Eigenschaft | Beschreibung |
+      | Eigenschaft | BESCHREIBUNG |
       |----------|-------------|
       | **Abonnement** | Das für die Abrechnung verwendete Azure-Abonnement |
       | **Ressourcengruppe** | Die Ressourcengruppe für Ihre Logik-App. Sie können eine bestehende Ressourcengruppe verwenden oder eine neue erstellen. |

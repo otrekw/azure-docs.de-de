@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: 3196d377c09ca0cce24093710bc4be13fb21d2e3
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99530949"
 ---
 Vergewissern Sie sich, dass Sie die Schritte zum [Vorbereiten der Überwachung von Ereignissen](../../../detect-motion-emit-events-quickstart.md#prepare-to-monitor-events) ausgeführt haben.

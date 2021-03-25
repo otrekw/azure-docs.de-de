@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 88a7600239d6e960fa2e635c9e7d9049a7c02db3
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 4584b0a605bd63c1f71082014d3c0622ca7d2c37
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102032353"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104587830"
 ---
 # <a name="securing-managed-identities"></a>Sichern von verwalteten Identitäten
 
@@ -50,11 +50,11 @@ Azure verfügt über eine Steuerungsebene und eine Datenebene. Auf der Steuerung
 
 Nachdem das Zielsystem das Token für die Authentifizierung akzeptiert hat, kann es verschiedene Autorisierungsmechanismen für die Steuerungsebene und die Datenebene unterstützen.
 
-Alle Vorgänge der Azure-Steuerungsebene werden vom [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/management/overview) verwaltet und verwenden die [rollenbasierte Zugriffssteuerung in Azure](https://docs.microsoft.com/azure/role-based-access-control/overview). In der Datenebene verfügt jedes Zielsystem über einen eigenen Autorisierungsmechanismus. Azure Storage unterstützt Azure RBAC auf der Datenebene. Beispielsweise können Anwendungen, die Azure App Service verwenden, Daten aus Azure Storage lesen, und Anwendungen, die Azure Kubernetes Service verwenden, können in Azure Key Vault gespeicherte Geheimnisse lesen.
+Alle Vorgänge der Azure-Steuerungsebene werden vom [Azure Resource Manager](../../azure-resource-manager/management/overview.md) verwaltet und verwenden die [rollenbasierte Zugriffssteuerung in Azure](../../role-based-access-control/overview.md). In der Datenebene verfügt jedes Zielsystem über einen eigenen Autorisierungsmechanismus. Azure Storage unterstützt Azure RBAC auf der Datenebene. Beispielsweise können Anwendungen, die Azure App Service verwenden, Daten aus Azure Storage lesen, und Anwendungen, die Azure Kubernetes Service verwenden, können in Azure Key Vault gespeicherte Geheimnisse lesen.
 
-Weitere Informationen zu Steuerungs- und Datenebenen finden Sie unter [Vorgänge auf Steuerungsebene und auf Datenebene – Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/management/control-plane-and-data-plane).
+Weitere Informationen zu Steuerungs- und Datenebenen finden Sie unter [Vorgänge auf Steuerungsebene und auf Datenebene – Azure Resource Manager](../../azure-resource-manager/management/control-plane-and-data-plane.md).
 
-Alle Azure-Dienste unterstützen letztendlich verwaltete Identitäten. Weitere Informationen finden Sie unter [Dienste, die verwaltete Identitäten für Azure-Ressourcen unterstützen](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities).
+Alle Azure-Dienste unterstützen letztendlich verwaltete Identitäten. Weitere Informationen finden Sie unter [Dienste, die verwaltete Identitäten für Azure-Ressourcen unterstützen](../managed-identities-azure-resources/services-support-managed-identities.md).
 
 ##  
 
@@ -116,7 +116,7 @@ Hierzu können Sie die Mitglieder ihrer stark privilegierten Gruppen mit PowerSh
 
    `Get-AzureADGroupMember -ObjectId <String> [-All <Boolean>] [-Top <Int32>] [<CommonParameters>]`
 
-* [Ermitteln Sie, auf welche Ressourcen die verwaltete Identität zugreift](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-list-powershell).
+* [Ermitteln Sie, auf welche Ressourcen die verwaltete Identität zugreift](../../role-based-access-control/role-assignments-list-powershell.md).
 
 ## <a name="move-to-managed-identities"></a>Wechseln zu verwalteten Identitäten
 
@@ -126,11 +126,11 @@ Wenn Sie einen Dienstprinzipal oder ein Azure AD-Benutzerkonto verwenden, sollt
 
 **Informationen zum Erstellen von verwalteten Identitäten finden Sie unter:** 
 
-[Erstellen einer benutzerseitig zugewiesenen verwalteten Identität](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal). 
+[Erstellen einer benutzerseitig zugewiesenen verwalteten Identität](../managed-identities-azure-resources/how-to-manage-ua-identity-portal.md). 
 
-[Aktivieren einer vom System zugewiesenen verwalteten Identität beim Erstellen einer Ressource](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm)
+[Aktivieren einer vom System zugewiesenen verwalteten Identität beim Erstellen einer Ressource](../managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
 
-[Aktivieren einer vom System zugewiesenen verwalteten Identität auf einer vorhandenen Ressource](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm)
+[Aktivieren einer vom System zugewiesenen verwalteten Identität auf einer vorhandenen Ressource](../managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
 
 **Weitere Informationen zu Dienstkonten finden Sie unter:**
 
@@ -146,4 +146,3 @@ Wenn Sie einen Dienstprinzipal oder ein Azure AD-Benutzerkonto verwenden, sollt
 
  
 
- 

@@ -1,37 +1,37 @@
 ---
 title: Arbeiten mit den CLI-Befehlen von Defender für IoT
 description: In diesem Artikel werden die CLI-Befehle von Defender für IoT für Sensoren und lokale Verwaltungskonsolen beschrieben.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 12/12/2020
 ms.topic: article
-ms.service: azure
-ms.openlocfilehash: 2ec682bf76e35b54f58acc1956972c57128edd75
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 9cd3f4325db2bc45ddcd6cc011dd4993e385a43c
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100523140"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104778677"
 ---
 # <a name="work-with-defender-for-iot-cli-commands"></a>Arbeiten mit den CLI-Befehlen von Defender für IoT
 
-In diesem Artikel werden die CLI-Befehle für Sensoren und lokale Verwaltungskonsolen beschrieben. Zugriff auf diese Befehle haben Administratoren, CyberX-Benutzer und Supportbenutzer.
+In diesem Artikel werden die CLI-Befehle für Sensoren und lokale Verwaltungskonsolen beschrieben. Die folgenden Benutzer können auf die Befehle zugreifen:
 
-Definieren Sie Ausschlussregeln, wenn Sie Wartungsaktivitäten oder andere Aktivitäten planen, für die keine Warnung erforderlich ist.
+- Administrator
+- CyberX 
+- Support
+
+Um die CLI zu verwenden, stellen Sie zunächst eine Verbindung mit einem Terminal her. Beispiel: Terminalname `Putty` und Benutzer `Support`. 
 
 ## <a name="create-local-alert-exclusion-rules"></a>Erstellen von lokalen Warnungsausschlussregeln
 
-Sie können eine Ausschlussregel erstellen, indem Sie an der CLI den folgenden Befehl eingeben:
+Sie können eine lokale Warnungsausschlussregel erstellen, indem Sie an der CLI den folgenden Befehl eingeben:
 
 ```azurecli-interactive
 alerts exclusion-rule-create [-h] -n NAME [-ts TIMES] [-dir DIRECTION]  
 [-dev DEVICES] [-a ALERTS]
 ```
 
-Folgende Attribute können Sie mit den Warnungsausschlussregeln definieren:
+Mit Warnungsausschlussregeln können Sie folgende Attribute verwenden:
 
-| Attribut | Beschreibung |
+| attribute | BESCHREIBUNG |
 |--|--|
 | [-h] | Druckt die Hilfeinformationen für den Befehl. |
 | -n NAME | Der Name der Regel, die erstellt wird. |
@@ -42,18 +42,18 @@ Folgende Attribute können Sie mit den Warnungsausschlussregeln definieren:
 
 ## <a name="append-local-alert-exclusion-rules"></a>Anfügen von lokalen Warnungsausschlussregeln
 
-Sie können den aktuellen Warnungsausschlussregeln neue Regeln hinzufügen, indem Sie an der CLI den folgenden Befehl eingeben:
+Sie können lokale Warnungsausschlussregeln anfügen, indem Sie an der CLI den folgenden Befehl eingeben:
 
 ```azurecli-interactive
 alerts exclusion-rule-append [-h] -n NAME [-ts TIMES] [-dir DIRECTION]  
 [-dev DEVICES] [-a ALERTS]
 ```
 
-Die hier verwendeten Attribute ähneln den Attributen, die beim Erstellen lokaler Warnungsausschlussregeln beschrieben wurden. In diesem Zusammenhang werden die Attribute auf vorhandene Regeln angewendet.
+Die hier verwendeten Attribute sind identisch mit den Attributen, die im Abschnitt „Erstellen von lokalen Warnungsausschlussregeln“ erläutert werden. Der Unterschied bei der Verwendung besteht darin, dass die Attribute hier auf die vorhandenen Regeln angewendet werden.
 
 ## <a name="show-local-alert-exclusion-rules"></a>Anzeigen von lokalen Warnungsausschlussregeln
 
-Geben Sie den folgenden Befehl ein, um alle vorhandenen Ausschlussregeln anzuzeigen:
+Geben Sie den folgenden Befehl ein, um die vorhandene Liste der Ausschlussregeln anzuzeigen:
 
 ```azurecli-interactive
 alerts exclusion-rule-list [-h] -n NAME [-ts TIMES] [-dir DIRECTION]  
@@ -69,19 +69,19 @@ alerts exclusion-rule-remove [-h] -n NAME [-ts TIMES] [-dir DIRECTION]
 [-dev DEVICES] [-a ALERTS]
 ```
 
-Mit den Warnungsausschlussregeln können Sie das folgende Attribut verwenden:
+Mit Warnungsausschlussregeln können Sie folgendes Attribut verwenden:
 
-| Attribut | BESCHREIBUNG|
+| attribute | BESCHREIBUNG|
 | --------- | ---------------------------------- |
 | -n NAME | Der Name der zu löschenden Regel. |
 
 ## <a name="sync-time-from-the-ntp-server"></a>Zeitsynchronisierung vom NTP-Server
 
-Sie können eine Zeitsynchronisierung von einem NTP-Server aktivieren und deaktivieren.
+Sie können eine Zeitsynchronisierung von einem angegebenen NTP-Server aktivieren oder deaktivieren.
 
 ### <a name="enable-ntp-sync"></a>Aktivieren der NTP-Synchronisierung
 
-Mit dem folgenden Befehl wird ein periodischer Abruf der aktuellen Zeit von einem angegebenen NTP-Server aktiviert:
+Geben Sie den folgenden Befehl ein, um die Zeit regelmäßig vom angegebenen NTP-Server abzurufen:
 
 ```azurecli-interactive
 ntp enable IP
@@ -99,14 +99,14 @@ ntp disable IP
 
 Das Attribut, das Sie mit dem Befehl definieren können, ist die IP-Adresse des NTP-Servers.
 
-## <a name="configure-the-network"></a>Konfigurieren des Netzwerks
+## <a name="network-configuration"></a>Netzwerkkonfiguration
 
 In der folgenden Tabelle werden die Befehle beschrieben, die zum Konfigurieren der Netzwerkoptionen für Azure Defender für IoT verfügbar sind:
 
 |Name|Befehl|BESCHREIBUNG|
 |-----------|-------|-----------|
-|Ping|`ping IP `| Sendet Pings an Adressen außerhalb der Defender für IoT-Plattform.|
-|Blink|`network blink`|Ermöglicht das Ändern der Parameter der Netzwerkkonfiguration.|
+|Ping|`ping IP`| Sendet einen Ping an eine Adresse außerhalb der Defender für IoT-Plattform.|
+|Blink|`network blink`| Identifizieren Sie eine Verbindung, indem Sie die Schnittstellenlichter blinken lassen. |
 |Neukonfigurieren des Netzwerks |`network edit-settings`| Ermöglicht das Ändern der Parameter der Netzwerkkonfiguration. |
 |Anzeigen der Netzwerkeinstellungen |`network list`|Zeigt die Parameter für den Netzwerkadapter an. |
 |Überprüfen der Netzwerkkonfiguration |`network validate` |Zeigt die Einstellungen des Ausgabenetzwerks an. <br /> <br />Beispiel: <br /> <br />Aktuelle Netzwerkeinstellungen: <br /> interface: eth0 <br /> ip: 10.100.100.1 <br />subnet: 255.255.255.0 <br />default gateway: 10.100.100.254 <br />dns: 10.100.100.254 <br />monitor interfaces: eth1|
@@ -115,7 +115,7 @@ In der folgenden Tabelle werden die Befehle beschrieben, die zum Konfigurieren d
 
 ## <a name="filter-network-configurations"></a>Filtern von Netzwerkkonfigurationen
 
-Mit dem Befehl `network capture-filter` können Administratoren Netzwerkdatenverkehr eliminieren, der nicht analysiert werden muss. Filtern Sie den Datenverkehr mithilfe einer Einschluss- oder Ausschlussliste.
+Mit dem Befehl `network capture-filter` können Administratoren Netzwerkdatenverkehr eliminieren, der nicht analysiert werden muss. Sie können den Datenverkehr mithilfe einer Einschluss- oder Ausschlussliste filtern.
 
 ```azurecli-interactive
 network capture-filter
@@ -125,9 +125,9 @@ Nach Eingabe des Befehls erhalten Sie die folgende Eingabeaufforderung:
 
 >`Would you like to supply devices and subnet masks you wish to include in the capture filter? [Y/N]:`
 
-Wählen Sie `Y` aus, um eine Nano-Datei zu öffnen, in der Sie Geräte, Kanäle, Ports und Teilmengen in der folgenden Syntax hinzufügen können:
+Wählen Sie `Y` aus, um eine Nano-Datei zu öffnen, in der Sie ein Gerät, einen Kanal, einen Port und eine Teilmenge mit der folgenden Syntax hinzufügen können:
 
-| Attribut | Beschreibung |
+| attribute | BESCHREIBUNG |
 |--|--|
 | 1.1.1.1 | Schließt den gesamten Datenverkehr für dieses Gerät ein. |
 | 1.1.1.1,2.2.2.2 | Schließt den gesamten Datenverkehr für diesen Kanal ein. |
@@ -137,13 +137,13 @@ Trennen Sie Argumente durch Entfernen einer Zeile.
 
 Wenn Sie ein Gerät, einen Kanal oder ein Subnetz einschließen, verarbeitet der Sensor den gesamten gültigen Datenverkehr für dieses Argument, einschließlich Ports und Datenverkehr, die normalerweise nicht verarbeitet würden.
 
-Sie erhalten dann folgende Eingabeaufforderung:
+Ihnen wird dann folgende Frage gestellt:
 
 >`Would you like to supply devices and subnet masks you wish to exclude from the capture filter? [Y/N]:`
 
-Wählen Sie `Y` aus, um eine Nano-Datei zu öffnen, in der Sie Geräte, Kanäle, Ports und Teilmengen in der folgenden Syntax hinzufügen können:
+Wählen Sie `Y` aus, um eine Nano-Datei zu öffnen, in der Sie ein Gerät, einen Kanal, einen Port und eine Teilmenge mit der folgenden Syntax hinzufügen können:
 
-| Attribut | BESCHREIBUNG |
+| attribute | BESCHREIBUNG |
 |--|--|
 | 1.1.1.1 | Schließt den gesamten Datenverkehr für dieses Gerät aus. |
 | 1.1.1.1,2.2.2.2 | Schließt den gesamten Datenverkehr für diesen Kanal (d. h. den gesamten Datenverkehr zwischen zwei Geräten) aus. |
@@ -173,7 +173,7 @@ Schließen Sie UDP- und TCP-Ports für den gesamten Datenverkehr ein oder aus.
 
 ### <a name="components"></a>Komponenten
 
-Sie erhalten folgende Eingabeaufforderung:
+Ihnen wird die folgende Frage gestellt:
 
 >`In which component do you wish to apply this capture filter?`
 
@@ -232,7 +232,7 @@ sudo cyberx-xsense-capture-filter -p all -m all-connected
 
 ## <a name="define-client-and-server-hosts"></a>Definieren von Client- und Serverhosts
 
-Wenn Client- und Serverhosts von Defender für IOT nicht automatisch erkannt wurden, geben Sie den folgenden Befehl ein, um die Client- und Serverhosts festzulegen:
+Wenn Client- und Serverhosts von Defender für IoT nicht automatisch erkannt wurden, geben Sie den folgenden Befehl ein, um die Client- und Serverhosts festzulegen:
 
 ```azurecli-interactive
 directions [-h] [--identifier IDENTIFIER] [--port PORT] [--remove] [--add]  
@@ -256,6 +256,7 @@ In der folgenden Tabelle werden die verfügbaren Befehle zum Ausführen verschie
 
 |Name|Code|BESCHREIBUNG|
 |----|----|-----------|
+|Anzeigen des Datums|`date`|Gibt das aktuelle Datum auf dem Host im GMT-Format zurück.|
 |Host neu starten|`system reboot`|Startet das Hostgerät neu.|
 |Host herunterfahren|`system shutdown`|Fährt den Host herunter.|
 |System sichern|`system backup`|Initiiert eine sofortige Sicherung (nicht geplante Sicherung).|
@@ -282,7 +283,7 @@ Der Befehl unterstützt die folgenden Eingabeflags:
 | --key | Die \*.key-Datei. Die Schlüssellänge muss mindestens 2.048 Bits betragen. |
 | --chain | Der Pfad zur Zertifikatskettendatei (optional). |
 | --pass | Die Passphrase, die zum Verschlüsseln des Zertifikats verwendet wird (optional). |
-| --passphrase-set | Die Standardeinstellung lautet **False**, **unused**. <br />Legen Sie die Einstellung auf **True** fest, um die vorherige Passphrase zu verwenden, die mit dem vorherigen Zertifikat bereitgestellt wurde (optional). |  |
+| --passphrase-set | Die Standardeinstellung lautet **False**, **unused**. <br />Legen Sie die Einstellung auf **True** fest, um die vorherige Passphrase zu verwenden, die mit dem vorherigen Zertifikat bereitgestellt wurde (optional). | 
 
 Bei Verwendung des Tools gilt Folgendes:
 
@@ -290,6 +291,6 @@ Bei Verwendung des Tools gilt Folgendes:
 
 - Vergewissern Sie sich bei der IT-Abteilung, dass die Appliance-Domäne (wie im Zertifikat angezeigt) mit Ihrem DNS-Server und der entsprechenden IP-Adresse angezeigt wird. 
     
-## <a name="next-steps"></a>Nächste Schritte
+## <a name="see-also"></a>Weitere Informationen
 
 [API-Sensor und Verwaltungskonsolen-APIs für Defender für IOT](references-work-with-defender-for-iot-apis.md)

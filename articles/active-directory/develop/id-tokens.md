@@ -14,12 +14,12 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: 6a1f4a02ebf42c0f181b595aae0a5fa0bcc9b41d
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 21e0b800e06b7a5ad0351ff53d26a5e2cd2ba71c
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98755909"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175387"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft Identity Platform – ID-Token
 
@@ -55,7 +55,7 @@ Zeigen Sie dieses v2. 0-Beispieltoken in [jwt.ms](https://jwt.ms/#id_token=eyJ0e
 |-----|--------|-------------|
 |`typ` | Zeichenfolge – immer „JWT“ | Gibt an, dass das Token ein JWT-Token ist.|
 |`alg` | String | Gibt den Algorithmus an, mit dem das Token signiert wurde. Beispiel: "RS256" |
-|`kid` | String | Der Fingerabdruck des öffentlichen Schlüssels, der verwendet wird, um dieses Token zu signieren. Wird in v1. 0- und v2. 0-`id_tokens` ausgegeben. |
+|`kid` | String | Der Fingerabdruck des öffentlichen Schlüssels, der zum Überprüfen dieses Tokens verwendet wird. Wird in v1. 0- und v2. 0-`id_tokens` ausgegeben. |
 |`x5t` | String | Identisch (in Verwendung und Wert) mit `kid`. Dies ist jedoch ein Legacyanspruch, der aus Kompatibilitätsgründen nur in v1.0-`id_tokens` ausgegeben wird. |
 
 ### <a name="payload-claims"></a>Nutzlastansprüche
