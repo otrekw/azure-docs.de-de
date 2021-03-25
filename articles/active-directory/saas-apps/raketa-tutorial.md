@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 07/28/2020
 ms.author: jeedes
 ms.openlocfilehash: 649a26e474c7c4d6b4f51a035b3f8f9da35b9dd1
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92511153"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-raketa"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Raketa
@@ -66,7 +66,7 @@ Zum Konfigurieren der Integration von Raketa in Azure AD müssen Sie Raketa aus 
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-raketa"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Raketa
 
-Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Raketa mithilfe eines Testbenutzers mit dem Namen **B. Simon** . Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Raketa eingerichtet werden.
+Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Raketa mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Raketa eingerichtet werden.
 
 Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Raketa die folgenden Bausteine aus:
 
@@ -81,7 +81,7 @@ Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD 
 
 Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Raketa** zum Abschnitt **Verwalten** , und wählen Sie **Einmaliges Anmelden** [9] aus.
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Raketa** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** [9] aus.
 
     ![rkt_4](./media/raketa-tutorial/manage-sso.png)
 
@@ -142,13 +142,13 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
 
 In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Raketa gewähren.
 
-1. Wählen Sie im Azure-Portal **Unternehmensanwendungen**  [2] > **Alle Anwendungen** [3] aus.
+1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** [2] > **Alle Anwendungen** [3] aus.
 
 1. Wählen Sie in der Anwendungsliste **Raketa** [27] aus.  
 
     ![rkt_10](./media/raketa-tutorial/add-raketa.png)
 
-1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten** , und wählen Sie **Benutzer und Gruppen** [28] aus. 
+1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** [28] aus. 
 
     ![rkt_11](./media/raketa-tutorial/users-groups.png)
 
@@ -158,7 +158,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** [31] aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen** [32].
 
-1. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer in der Liste aus, und klicken Sie dann im unteren Bildschirmbereich auf die Schaltfläche **Auswählen** .
+1. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer in der Liste aus, und klicken Sie dann im unteren Bildschirmbereich auf die Schaltfläche **Auswählen**.
 
 1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen** [33]. 
 

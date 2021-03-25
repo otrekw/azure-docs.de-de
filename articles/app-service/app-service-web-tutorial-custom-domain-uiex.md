@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 08/25/2020
 ms.custom: mvc, seodec18
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: ca1308c969227336bfb4970f7c5c77b9f2e0cc22
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 32ad6fa122083b40a948345e360bf5b9b0f09e96
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102216529"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104954852"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Tutorial: Zuordnen eines vorhandenen benutzerdefinierten DNS-Namens zu Azure App Service
 
@@ -121,7 +121,7 @@ Wenn Sie Ihrer App eine benutzerdefinierte Domäne hinzufügen möchten, müssen
 
     <details>
         <summary>Kann ich das DNS meines Domänenanbieters mithilfe von Azure verwalten?</summary>
-        Sie können Azure DNS verwenden, um DNS-Einträge für Ihre Domäne zu verwalten und einen benutzerdefinierten DNS-Namen für Azure App Service zu konfigurieren. Weitere Informationen finden Sie unter <a href="https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns">Tutorial: Hosten Ihrer Domäne in Azure DNS</a>.
+        Sie können Azure DNS verwenden, um DNS-Einträge für Ihre Domäne zu verwalten und einen benutzerdefinierten DNS-Namen für Azure App Service zu konfigurieren. Weitere Informationen finden Sie unter <a href="/azure/dns/dns-delegate-domain-azure-dns">Tutorial: Hosten Ihrer Domäne in Azure DNS</a>.
     </details>
 
 1. Suchen Sie die Seite für die Verwaltung von DNS-Einträgen. 
@@ -146,7 +146,7 @@ Wenn Sie Ihrer App eine benutzerdefinierte Domäne hinzufügen möchten, müssen
             <ul>
             <li>Wenn Sie die Stammdomäne (z. B. <code>contoso.com</code>) zuordnen möchten, verwenden Sie einen A-Eintrag. Verwenden Sie für den Stammeintrag nicht den CNAME-Eintrag. (Weitere Informationen finden Sie in <a href="https://en.wikipedia.org/wiki/CNAME_record">diesem Wikipedia-Eintrag</a>.)</li>
             <li>Wenn Sie eine Unterdomäne (z. B. <code>www.contoso.com</code>) zuordnen möchten, verwenden Sie einen CNAME-Eintrag.</li>
-            <li>Mit einem A-Eintrag können Sie der IP-Adresse der App zwar direkt eine Unterdomäne zuordnen, es ist jedoch möglich, dass sich <a href="https://docs.microsoft.com/azure/app-service/overview-inbound-outbound-ips#when-inbound-ip-changes">die IP-Adresse ändert</a>. Der CNAME-Eintrag wird dagegen dem (weniger änderungsanfälligen) Hostnamen der App zugeordnet.</li>
+            <li>Mit einem A-Eintrag können Sie der IP-Adresse der App zwar direkt eine Unterdomäne zuordnen, es ist jedoch möglich, dass sich <a href="/azure/app-service/overview-inbound-outbound-ips#when-inbound-ip-changes">die IP-Adresse ändert</a>. Der CNAME-Eintrag wird dagegen dem (weniger änderungsanfälligen) Hostnamen der App zugeordnet.</li>
             <li>Wenn Sie eine <a href="https://en.wikipedia.org/wiki/Wildcard_DNS_record">Platzhalterdomäne</a> (z. B. <code>*.contoso.com</code>) zuordnen möchten, verwenden Sie einen CNAME-Eintrag.</li>
             </ul>
         </div>
@@ -247,7 +247,7 @@ Erstellen Sie für eine Platzhalterdomäne wie `*` in `*.contoso.com` zwei Eintr
 
     <details>
         <summary>Was hat es mit der Warnung <strong>Nicht sicher</strong> auf sich?</summary>
-        Eine Warnbezeichnung für Ihre benutzerdefinierte Domäne bedeutet, dass diese noch nicht an ein TLS-/SSL-Zertifikat gebunden ist. Für alle HTTPS-Anforderungen von einem Browser an Ihre benutzerdefinierte Domäne wird abhängig vom Browser ein Fehler oder eine Warnung angezeigt. Weitere Informationen zum Hinzufügen einer TLS-/SSL-Bindung finden Sie unter <a href="https://docs.microsoft.com/azure/app-service/configure-ssl-bindings">Schützen eines benutzerdefinierten DNS-Namens mit einer TLS-/SSL-Bindung in Azure App Service</a>.
+        Eine Warnbezeichnung für Ihre benutzerdefinierte Domäne bedeutet, dass diese noch nicht an ein TLS-/SSL-Zertifikat gebunden ist. Für alle HTTPS-Anforderungen von einem Browser an Ihre benutzerdefinierte Domäne wird abhängig vom Browser ein Fehler oder eine Warnung angezeigt. Weitere Informationen zum Hinzufügen einer TLS-/SSL-Bindung finden Sie unter <a href="/azure/app-service/configure-ssl-bindings">Schützen eines benutzerdefinierten DNS-Namens mit einer TLS-/SSL-Bindung in Azure App Service</a>.
     </details>
 
     Wenn Sie einen Schritt ausgelassen haben oder Ihnen zu einem früheren Zeitpunkt ein Tippfehler unterlaufen ist, wird am unteren Rand der Seite ein Überprüfungsfehler angezeigt.
@@ -274,7 +274,7 @@ Erstellen Sie für eine Platzhalterdomäne wie `*` in `*.contoso.com` zwei Eintr
 
     <details>
         <summary>Was hat es mit der Warnung <strong>Nicht sicher</strong> auf sich?</summary>
-        Eine Warnbezeichnung für Ihre benutzerdefinierte Domäne bedeutet, dass diese noch nicht an ein TLS-/SSL-Zertifikat gebunden ist. Für alle HTTPS-Anforderungen von einem Browser an Ihre benutzerdefinierte Domäne wird abhängig vom Browser ein Fehler oder eine Warnung angezeigt. Weitere Informationen zum Hinzufügen einer TLS-/SSL-Bindung finden Sie unter <a href="https://docs.microsoft.com/azure/app-service/configure-ssl-bindings">Schützen eines benutzerdefinierten DNS-Namens mit einer TLS-/SSL-Bindung in Azure App Service</a>.
+        Eine Warnbezeichnung für Ihre benutzerdefinierte Domäne bedeutet, dass diese noch nicht an ein TLS-/SSL-Zertifikat gebunden ist. Für alle HTTPS-Anforderungen von einem Browser an Ihre benutzerdefinierte Domäne wird abhängig vom Browser ein Fehler oder eine Warnung angezeigt. Weitere Informationen zum Hinzufügen einer TLS-/SSL-Bindung finden Sie unter <a href="/azure/app-service/configure-ssl-bindings">Schützen eines benutzerdefinierten DNS-Namens mit einer TLS-/SSL-Bindung in Azure App Service</a>.
     </details>
     
     Wenn Sie einen Schritt ausgelassen haben oder Ihnen zu einem früheren Zeitpunkt ein Tippfehler unterlaufen ist, wird am unteren Rand der Seite ein Überprüfungsfehler angezeigt.
@@ -297,7 +297,7 @@ Erstellen Sie für eine Platzhalterdomäne wie `*` in `*.contoso.com` zwei Eintr
 
     <details>
         <summary>Was hat es mit der Warnung <strong>Nicht sicher</strong> auf sich?</summary>
-        Eine Warnbezeichnung für Ihre benutzerdefinierte Domäne bedeutet, dass diese noch nicht an ein TLS-/SSL-Zertifikat gebunden ist. Für alle HTTPS-Anforderungen von einem Browser an Ihre benutzerdefinierte Domäne wird abhängig vom Browser ein Fehler oder eine Warnung angezeigt. Weitere Informationen zum Hinzufügen einer TLS-/SSL-Bindung finden Sie unter <a href="https://docs.microsoft.com/azure/app-service/configure-ssl-bindings">Schützen eines benutzerdefinierten DNS-Namens mit einer TLS-/SSL-Bindung in Azure App Service</a>.
+        Eine Warnbezeichnung für Ihre benutzerdefinierte Domäne bedeutet, dass diese noch nicht an ein TLS-/SSL-Zertifikat gebunden ist. Für alle HTTPS-Anforderungen von einem Browser an Ihre benutzerdefinierte Domäne wird abhängig vom Browser ein Fehler oder eine Warnung angezeigt. Weitere Informationen zum Hinzufügen einer TLS-/SSL-Bindung finden Sie unter <a href="/azure/app-service/configure-ssl-bindings">Schützen eines benutzerdefinierten DNS-Namens mit einer TLS-/SSL-Bindung in Azure App Service</a>.
     </details>
 
 -----

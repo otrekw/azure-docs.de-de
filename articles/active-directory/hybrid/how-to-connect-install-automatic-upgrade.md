@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9c8dcc8766b21551f3cd62289805fe735ef0f333
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91317615"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: automatische Upgrade
@@ -43,7 +43,7 @@ Der aktuelle Zustand des automatischen Upgrades kann über das PowerShell-Cmdlet
 | Ausgesetzt |Nur vom System festgelegt. Das System ist **derzeit nicht** zum Erhalten automatischer Upgrades berechtigt. |
 | Disabled |Das automatische Upgrade ist deaktiviert. |
 
-Mit `Set-ADSyncAutoUpgrade` können Sie zwischen **aktiviert** und **deaktiviert** wechseln. Nur das System sollte den Zustand **Ausgesetzt**festlegen.  Vor 1.1.750.0 hat das Cmdlet „Set-ADSyncAutoUpgrade“ das automatische Upgrade blockiert, wenn der auto-upgrade-Status auf „Angehalten“ festgelegt wurde. Diese Funktion wurde geändert, sodass das automatische Upgrade nicht blockiert wird.
+Mit `Set-ADSyncAutoUpgrade` können Sie zwischen **aktiviert** und **deaktiviert** wechseln. Nur das System sollte den Zustand **Ausgesetzt** festlegen.  Vor 1.1.750.0 hat das Cmdlet „Set-ADSyncAutoUpgrade“ das automatische Upgrade blockiert, wenn der auto-upgrade-Status auf „Angehalten“ festgelegt wurde. Diese Funktion wurde geändert, sodass das automatische Upgrade nicht blockiert wird.
 
 Das automatische Upgrade verwendet Azure AD Connect Health als Upgrade-Infrastruktur. Damit das automatische Upgrade funktioniert, müssen die URLs im Proxy für **Azure AD Connect Health** wie unter [URLs und IP-Adressbereiche von Office 365](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)beschrieben geöffnet sein.
 

@@ -9,10 +9,10 @@ ms.subservice: common
 ms.topic: how-to
 ms.custom: devx-track-csharp
 ms.openlocfilehash: b5051a5e29f9e34c43963a9a264ee47e2ad7b04a
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92490780"
 ---
 # <a name="use-the-azurite-emulator-for-local-azure-storage-development"></a>Verwenden des Azurite-Emulators für die lokale Azure Storage-Entwicklung
@@ -30,7 +30,7 @@ Es gibt verschiedene Möglichkeiten, Azurite auf Ihrem lokalen System zu install
 
 ## <a name="install-and-run-the-azurite-visual-studio-code-extension"></a>Installieren und Ausführen der Azurite-Erweiterung für Visual Studio Code
 
-Wählen Sie in Visual Studio Code den Bereich **EXTENSIONS** aus, und suchen Sie dann unter **EXTENSIONS:MARKETPLACE** nach *Azurite* .
+Wählen Sie in Visual Studio Code den Bereich **EXTENSIONS** aus, und suchen Sie dann unter **EXTENSIONS:MARKETPLACE** nach *Azurite*.
 
 ![Visual Studio Code-Marketplace für Erweiterungen](media/storage-use-azurite/azurite-vs-code-extension.png)
 
@@ -57,7 +57,7 @@ Die folgenden Einstellungen werden unterstützt:
    - **Azurite: Blobhost** – der Lauschendpunkt des Blob-Diensts. Die Standardeinstellung ist 127.0.0.1.
    - **Azurite: Blobport** – der Lauschport des Blob-Diensts. Der Standardport ist 10000.
    - **Azurite: Cert** – Pfad zu einem lokal vertrauenswürdigen PEM- oder PFX-Zertifikatdateipfad zum Aktivieren des HTTPS-Modus.
-   - **Azurite: Debuggen** – Ausgabe des Debugprotokolls an den Azurite-Kanal. Der Standardwert ist **false** .
+   - **Azurite: Debuggen** – Ausgabe des Debugprotokolls an den Azurite-Kanal. Der Standardwert ist **false**.
    - **Azurite: Key** – Pfad zu einer lokal vertrauenswürdigen PEM-Schlüsseldatei, die erforderlich ist, wenn **Azurite: Cert** auf eine PEM-Datei verweist.
    - **Azurite: Speicherort** – der Speicherpfad des Arbeitsbereichs. Der Standard ist der Arbeitsordner für Visual Studio Code.
    - **Azurite: Loose** – aktiviert den Loose-Modus, der nicht unterstützte Header und Parameter ignoriert.
@@ -65,8 +65,8 @@ Die folgenden Einstellungen werden unterstützt:
    - **Azurite: Pwd** – Kennwort für die PFX-Datei. Erforderlich, wenn **Azurite: Cert** auf eine PFX-Datei verweist.
    - **Azurite: Warteschlangenhost** – der Lauschendpunkt des Warteschlangendiensts. Die Standardeinstellung ist 127.0.0.1.
    - **Azurite: Warteschlangenport** – der Lauschport des Warteschlangendiensts. Der Standardport ist 10001.
-   - **Azurite: Lautlos** – Zugriffsprotokoll im Lautlosmodus deaktivieren. Der Standardwert ist **false** .
-   - **Azurite: API-Versionsüberprüfung überspringen** – Versionsüberprüfung der angeforderten API überspringen. Der Standardwert ist **false** .
+   - **Azurite: Lautlos** – Zugriffsprotokoll im Lautlosmodus deaktivieren. Der Standardwert ist **false**.
+   - **Azurite: API-Versionsüberprüfung überspringen** – Versionsüberprüfung der angeforderten API überspringen. Der Standardwert ist **false**.
 
 ## <a name="install-and-run-azurite-by-using-npm"></a>Installieren und Ausführen von Azurite mit NPM
 
@@ -136,7 +136,7 @@ Nachdem Sie Azurite installiert und erstellt haben, finden Sie weitere Informati
 > [!NOTE]
 > Azurite kann nicht über die Befehlszeile ausgeführt werden, wenn Sie nur die Visual Studio Code-Erweiterung installiert haben. Verwenden Sie stattdessen die Visual Studio Code-Befehlspalette. Weitere Informationen finden Sie unter [Installieren und Ausführen der Azurite-Erweiterung für Visual Studio Code](#install-and-run-the-azurite-visual-studio-code-extension).
 
-Um sofort mit der Befehlszeile zu beginnen, erstellen Sie das Verzeichnis *C:\azurite* , und starten Sie dann Azurite mit dem folgenden Befehl:
+Um sofort mit der Befehlszeile zu beginnen, erstellen Sie das Verzeichnis *C:\azurite*, und starten Sie dann Azurite mit dem folgenden Befehl:
 
 ```console
 azurite --silent --location c:\azurite --debug c:\azurite\debug.log
@@ -273,7 +273,7 @@ azurite --loose
 ```
 ### <a name="version"></a>Version
 
-**Optional** : Anzeigen der installierten Azurite-Versionsnummer mit der Option `-v` oder `--version`.
+**Optional**: Anzeigen der installierten Azurite-Versionsnummer mit der Option `-v` oder `--version`.
 
 ```console
 azurite -v
@@ -474,18 +474,18 @@ Stellen Sie in Storage-Explorer eine Verbindung mit Azurite her, indem Sie die f
  1. Wählen Sie **Konto hinzufügen** aus.
  1. Wählen Sie **An einen lokalen Emulator anfügen** aus.
  1. Wählen Sie **Weiter** aus.
- 1. Bearbeiten Sie das Feld **Anzeigename** , indem Sie einen Namen Ihrer Wahl eingeben.
+ 1. Bearbeiten Sie das Feld **Anzeigename**, indem Sie einen Namen Ihrer Wahl eingeben.
  1. Wählen Sie **Weiter** erneut aus.
  1. Wählen Sie **Verbinden** aus.
 
 #### <a name="connect-to-azurite-using-https"></a>Herstellen einer Verbindung mit Azurite mithilfe von HTTPS
 
-Standardmäßig öffnet Storage-Explorer keinen HTTPS-Endpunkt, der ein selbstsigniertes Zertifikat verwendet. Wenn Sie Azurite mit HTTPS ausführen, verwenden Sie wahrscheinlich ein selbstsigniertes Zertifikat. Importieren Sie in Storage-Explorer SSL-Zertifikate über das Dialogfeld **Bearbeiten** -> **SSL-Zertifikate** -> **Zertifikate importieren** .
+Standardmäßig öffnet Storage-Explorer keinen HTTPS-Endpunkt, der ein selbstsigniertes Zertifikat verwendet. Wenn Sie Azurite mit HTTPS ausführen, verwenden Sie wahrscheinlich ein selbstsigniertes Zertifikat. Importieren Sie in Storage-Explorer SSL-Zertifikate über das Dialogfeld **Bearbeiten** -> **SSL-Zertifikate** -> **Zertifikate importieren**.
 
 ##### <a name="import-certificate-to-storage-explorer"></a>Importieren des Zertifikats in Storage-Explorer
 
 1. Suchen Sie auf dem lokalen Computer nach dem Zertifikat.
-1. Navigieren Sie in Storage-Explorer zu **Bearbeiten** -> **SSL-Zertifikate** -> **Zertifikate importieren** , und importieren Sie das Zertifikat.
+1. Navigieren Sie in Storage-Explorer zu **Bearbeiten** -> **SSL-Zertifikate** -> **Zertifikate importieren**, und importieren Sie das Zertifikat.
 
 Wenn Sie kein Zertifikat importieren, erhalten Sie eine Fehlermeldung:
 
@@ -497,7 +497,7 @@ Führen Sie die folgenden Schritte aus, um Storage-Explorer Azurite HTTPS hinzuz
 
 1. Wählen Sie **Explorer umschalten** aus.
 1. Wählen Sie **Lokal & angefügt** aus.
-1. Klicken Sie mit der rechten Maustaste auf **Speicherkonten** , und klicken Sie dann auf **Verbindung mit Azure Storage herstellen** .
+1. Klicken Sie mit der rechten Maustaste auf **Speicherkonten**, und klicken Sie dann auf **Verbindung mit Azure Storage herstellen**.
 1. Wählen Sie **Verbindungszeichenfolge verwenden** aus.
 1. Wählen Sie **Weiter** aus.
 1. Geben Sie einen Wert in das Feld **Anzeigename** ein.

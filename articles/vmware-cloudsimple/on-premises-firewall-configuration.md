@@ -10,10 +10,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 6ff057d99e29c7c6fe30e77f38a0bff265dbe7bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86998889"
 ---
 # <a name="accessing-your-cloudsimple-private-cloud-environment-and-applications-from-on-premises"></a>Lokales Zugreifen auf Ihre private CloudSimple-Cloudumgebung und darin enthaltene Anwendungen
@@ -24,7 +24,7 @@ Eine Verbindung von einem lokalen Netzwerk mit CloudSimple kann mithilfe von Azu
 
 Für den Zugriff auf vCenter und NSX-T-Manager in Ihrer privaten Cloud müssen die in der nachstehenden Tabelle definierten Ports in der lokalen Firewall geöffnet sein.  
 
-| Port       | `Source`                           | Destination                      | Zweck                                                                                                                |
+| Port       | Quelle                           | Ziel                      | Zweck                                                                                                                |
 |------------|----------------------------------|----------------------------------|------------------------------------------------------------------------------------------------------------------------|
 | 53 (UDP)   | Lokale DNS-Server          | DNS-Server in der privaten Cloud        | Erforderlich für die Weiterleitung der DNS-Suche von *az.cloudsimple.io* an DNS-Server in der privaten Cloud aus dem lokalen Netzwerk.       |
 | 53 (UDP)   | DNS-Server in der privaten Cloud        | Lokale DNS-Server          | Erforderlich für die Weiterleitung der DNS-Suche von lokalen Domänennamen aus vCenter in der privaten Cloud an lokale DNS-Server. |
@@ -37,7 +37,7 @@ Für den Zugriff auf vCenter und NSX-T-Manager in Ihrer privaten Cloud müssen d
 
 Um das lokale Active Directory als Identitätsquelle für vCenter in der privaten Cloud zu konfigurieren, müssen die in der Tabelle definierten Ports geöffnet sein.  Konfigurationsschritte finden Sie unter [Verwenden von Azure AD als Identitätsanbieter für vCenter in privaten CloudSimple-Clouds](./azure-ad.md).
 
-| Port         | `Source`                           | Destination                                         | Zweck                                                                                                                                          |
+| Port         | Quelle                           | Ziel                                         | Zweck                                                                                                                                          |
 |--------------|----------------------------------|-----------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
 | 53 (UDP)      | DNS-Server in der privaten Cloud        | Lokale DNS-Server                             | Erforderlich für die Weiterleitung der DNS-Suche von lokalen Active Directory-Domänennamen aus vCenter in der privaten Cloud an lokale DNS-Server.          |
 | 389 (TCP/UDP) | Verwaltungsnetzwerk für die private Cloud | Lokale Active Directory-Domänencontroller     | Erforderlich für die LDAP-Kommunikation vom vCenter-Server in der privaten Cloud mit Active Directory-Domänencontrollern für die Benutzerauthentifizierung.                |
@@ -49,7 +49,7 @@ Um das lokale Active Directory als Identitätsquelle für vCenter in der private
 
 Zum Zugreifen auf virtuelle Computer für Workloads, die in der privaten Cloud ausgeführt werden, müssen Ports in der lokalen Firewall geöffnet sein.  In der nachstehenden Tabelle sind einige der erforderlichen allgemeinen Ports mit ihrem Zweck aufgeführt.  Die spezifischen Portanforderungen aller Anwendungen finden Sie in der Anwendungsdokumentation.
 
-| Port         | `Source`                         | Destination                          | Zweck                                                                              |
+| Port         | Quelle                         | Ziel                          | Zweck                                                                              |
 |--------------|--------------------------------|--------------------------------------|--------------------------------------------------------------------------------------|
 | 22 (TCP)      | Lokales Netzwerk            | Netzwerk für die Workload in der privaten Cloud       | Secure Shell-Zugriff auf virtuelle Linux-Computer, die in der privaten Cloud ausgeführt werden.              |
 | 3389 (TCP)    | Lokales Netzwerk            | Netzwerk für die Workload in der privaten Cloud       | Remotedesktopzugriff auf virtuelle Windows-Computer, die in der privaten Cloud ausgeführt werden.                 |

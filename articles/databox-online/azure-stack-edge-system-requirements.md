@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 02/05/2021
 ms.author: alkohli
 ms.openlocfilehash: c87c8cfd40903f6296f0a36f5c83c0b5c5cb7818
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99831575"
 ---
 # <a name="azure-stack-edge-pro-system-requirements"></a>Systemanforderungen für Azure Stack Edge Pro
 
-In diesem Artikel werden die wichtigen Systemanforderungen für Ihre Microsoft Azure Stack Edge Pro-Lösung und die mit Azure Stack Edge Pro verbundenen Clients beschrieben. Es wird empfohlen, dass Sie sich die Informationen sorgfältig ansehen, bevor Sie Ihre Azure Stack Edge Pro-Instanz bereitstellen. Sie können diese Informationen ggf. während der Bereitstellung und des nachfolgenden Betriebs als Referenz nutzen.
+In diesem Artikel werden die wichtigen Systemanforderungen für Ihre Microsoft Azure Stack Edge Pro-Lösung und die mit Azure Stack Edge Pro verbundenen Clients beschrieben. Es wird empfohlen, dass Sie die Informationen sorgfältig lesen, bevor Sie Ihre Azure Stack Edge Pro-Instanz bereitstellen. Sie können diese Informationen ggf. während der Bereitstellung und des nachfolgenden Betriebs als Referenz nutzen.
 
 Die Systemanforderungen für Azure Stack Edge Pro umfassen Folgendes: 
 
@@ -66,9 +66,9 @@ Ausführliche Informationen finden Sie unter [Firewall- und Portkonfigurationsre
 
 ## <a name="url-patterns-for-firewall-rules"></a>URL-Muster für Firewallregeln
 
-Netzwerkadministratoren können häufig erweiterte, auf den URL-Mustern basierende Firewallregeln konfigurieren, die zum Filtern des eingehenden und ausgehenden Verkehrs verwendet werden. Ihr Azure Stack Edge Pro-Gerät und der Dienst sind abhängig von anderen Microsoft-Anwendungen wie Azure Service Bus, Azure Active Directory Access Control, Speicherkonten und Microsoft Update-Servern. Die URL-Muster, die diesen Anwendungen zugeordnet sind, können verwendet werden, um Firewallregeln zu konfigurieren. Es ist wichtig, zu verstehen, dass sich diese den Anwendungen zugeordneten URL-Muster ändern können. Diese Änderungen erfordern, dass der Netzwerkadministrator die Firewallregeln für Ihre Azure Stack Edge Pro-Instanz nach Bedarf überwachen und aktualisieren muss.
+Netzwerkadministratoren können häufig erweiterte, auf den URL-Mustern basierende Firewallregeln konfigurieren, die zum Filtern des eingehenden und ausgehenden Verkehrs verwendet werden. Ihr Azure Stack Edge Pro-Gerät und der Dienst sind abhängig von anderen Microsoft-Anwendungen wie Azure Service Bus, Azure Active Directory Access Control, Speicherkonten und Microsoft Update-Servern. Die URL-Muster, die diesen Anwendungen zugeordnet sind, können verwendet werden, um Firewallregeln zu konfigurieren. Es ist wichtig, zu verstehen, dass sich diese den Anwendungen zugeordneten URL-Muster ändern können. Diese Änderungen erfordern, dass der Netzwerkadministrator die Firewallregeln für Ihre Azure Stack Edge Pro-Instanz nach Bedarf überwacht und aktualisiert.
 
-Es wird empfohlen, dass Sie Ihre Firewallregeln für den ausgehenden Verkehr basierend auf den festen IP-Adressen für Azure Stack Edge Pro in den meisten Fällen recht locker festlegen. Sie können jedoch die folgenden Informationen verwenden, um erweiterte Firewallregeln festzulegen, die erforderlich sind, um sichere Umgebungen zu erstellen.
+Es wird empfohlen, dass Sie Ihre Firewallregeln für den ausgehenden Datenverkehr basierend auf den festen IP-Adressen für Azure Stack Edge Pro in den meisten Fällen recht locker festlegen. Sie können jedoch die folgenden Informationen verwenden, um erweiterte Firewallregeln festzulegen, die erforderlich sind, um sichere Umgebungen zu erstellen.
 
 > [!NOTE]
 > - Die Geräte-IPs (Quell-IPs) sollten immer für alle cloudaktivierten Netzwerkschnittstellen eingerichtet sein.
@@ -104,7 +104,7 @@ Es wird empfohlen, dass Sie Ihre Firewallregeln für den ausgehenden Verkehr bas
 
 ## <a name="compute-sizing-considerations"></a>Berechnen von Überlegungen zur Größenanpassung
 
-Nutzen Sie Ihre Erfahrung bei der Entwicklung und dem Testen Ihrer Lösung, um sicherzustellen, dass auf Ihrem Azure Stack Edge Pro-Gerät ausreichend Kapazität vorhanden ist und Sie die optimale Leistung Ihres Geräts erhalten.
+Nutzen Sie Ihre Erfahrung beim Entwickeln und Testen Ihrer Lösung, um sicherzustellen, dass auf Ihrem Azure Stack Edge Pro-Gerät ausreichend Kapazität vorhanden ist und Sie die optimale Geräteleistung erzielen.
 
 Zu den zu berücksichtigenden Faktoren gehören:
 

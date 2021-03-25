@@ -15,12 +15,12 @@ ms.date: 02/12/2021
 ms.author: kenwith
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a21b6f5e7d2976bda0efd37577b7cca90469aea
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6ed101282a69120162d6e3b526693c0a83df45b6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101686443"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104607108"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>Konfigurieren des Verhaltens der Azure Active Directory-Anmeldung für eine Anwendung mit einer Richtlinie für die Startbereichsermittlung (Home Realm Discovery, HDR)
 
@@ -91,7 +91,7 @@ Einige Anwendungen bieten keine Möglichkeit, die von ihnen ausgegebene Authenti
 
 ### <a name="home-realm-discovery-policy-to-prevent-auto-acceleration"></a>Richtlinie für die Startbereichsermittlung zur Vermeidung der automatischen Beschleunigung
 
-Einige Microsoft- und SaaS-Anwendungen enthalten automatisch Domänenhinweise. (`https://outlook.com/contoso.com` resultiert beispielsweise in einer Anmeldeanforderung, an die `&domain_hint=contoso.com` angefügt ist.) Dies kann das Rollout von verwalteten Anmeldeinformationen wie FIDO behindern.  Mithilfe einer [Richtlinie für die Startbereichsermittlung](https://docs.microsoft.com/graph/api/resources/homeRealmDiscoveryPolicy) können Domänenhinweise von bestimmten Apps oder für bestimmte Domänen beim Rollout verwalteter Anmeldeinformationen ignoriert werden.  
+Einige Microsoft- und SaaS-Anwendungen enthalten automatisch Domänenhinweise. (`https://outlook.com/contoso.com` resultiert beispielsweise in einer Anmeldeanforderung, an die `&domain_hint=contoso.com` angefügt ist.) Dies kann das Rollout von verwalteten Anmeldeinformationen wie FIDO behindern.  Mithilfe einer [Richtlinie für die Startbereichsermittlung](/graph/api/resources/homeRealmDiscoveryPolicy) können Domänenhinweise von bestimmten Apps oder für bestimmte Domänen beim Rollout verwalteter Anmeldeinformationen ignoriert werden.  
 
 ## <a name="enable-direct-ropc-authentication-of-federated-users-for-legacy-applications"></a>Aktivieren der direkten ROPC-Authentifizierung von Verbundbenutzern für Legacyanwendungen
 
@@ -129,7 +129,7 @@ Das folgende Beispiel zeigt eine Definition für eine Richtlinie zur Startbereic
    }
 ```
 
-Der Richtlinientyp lautet [HomeRealmDiscoveryPolicy](https://docs.microsoft.com/graph/api/resources/homeRealmDiscoveryPolicy).
+Der Richtlinientyp lautet [HomeRealmDiscoveryPolicy](/graph/api/resources/homeRealmDiscoveryPolicy).
 
 **AccelerateToFederatedDomain** ist optional. Wenn **AccelerateToFederatedDomain** FALSE ist, besitzt die Richtlinie keine Auswirkungen auf die automatische Beschleunigung. Wenn **AccelerateToFederatedDomain** TRUE ist und der Mandant nur eine verifizierte Verbunddomäne aufweist, werden Benutzer zur Anmeldung direkt zum Verbundidentitätsanbieter weitergeleitet. Wenn die Option TRUE ist und der Mandant mehrere verifizierte Domänen aufweist, muss **PreferredDomain** angegeben werden.
 

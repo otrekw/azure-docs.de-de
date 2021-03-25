@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
 ms.openlocfilehash: cb0f9ef64cb8032c02f2ccd4b42028103b6d3ec6
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93397919"
 ---
 # <a name="configure-tls-policy-versions-and-cipher-suites-on-application-gateway"></a>Konfigurieren von TLS-Richtlinienversionen und Verschlüsselungssammlungen für Application Gateway
@@ -191,7 +191,7 @@ $appgw = New-AzApplicationGateway -Name appgwtest -ResourceGroupName $rg.Resourc
 
 ## <a name="update-an-existing-application-gateway-with-a-pre-defined-tls-policy"></a>Aktualisieren eines vorhandenen Anwendungsgateways mit einer vordefinierten TLS-Richtlinie
 
-Um eine benutzerdefinierte TLS-Richtlinie festzulegen, übergeben Sie folgende Parameter: **PolicyType** , **MinProtocolVersion** , **CipherSuite** und **ApplicationGateway**. Um eine vordefinierte TLS-Richtlinie festzulegen, übergeben Sie folgende Parameter: **PolicyType** , **PolicyName** und **ApplicationGateway**. Wenn Sie versuchen, andere Parameter zu übergeben, tritt beim Erstellen oder Aktualisieren des Anwendungsgateways ein Fehler auf.
+Um eine benutzerdefinierte TLS-Richtlinie festzulegen, übergeben Sie folgende Parameter: **PolicyType**, **MinProtocolVersion**, **CipherSuite** und **ApplicationGateway**. Um eine vordefinierte TLS-Richtlinie festzulegen, übergeben Sie folgende Parameter: **PolicyType**, **PolicyName** und **ApplicationGateway**. Wenn Sie versuchen, andere Parameter zu übergeben, tritt beim Erstellen oder Aktualisieren des Anwendungsgateways ein Fehler auf.
 
 Das folgende Beispiel enthält Codebeispiele für die benutzerdefinierte Richtlinie und für die vordefinierte Richtlinie. Kommentieren Sie die Richtlinie aus, die Sie verwenden möchten.
 

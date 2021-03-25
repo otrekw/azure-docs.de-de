@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 02/11/2020
 ms.topic: how-to
 manager: philmea
-ms.openlocfilehash: 0802169898cad51e9a5d208e546a004f7ea7b3c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2af97206db00d683ab409710bc71a3b5048bf6ae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653331"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104658464"
 ---
 # <a name="manage-iot-central-from-the-azure-portal"></a>Verwalten von IoT Central über das Azure-Portal
 
@@ -22,6 +22,9 @@ ms.locfileid: "91653331"
 Statt IoT Central-Anwendungen auf der Website des [Azure IoT Central-Anwendungs-Managers](https://aka.ms/iotcentral) zu erstellen und zu verwalten, können Sie Ihre Anwendungen auch über das [Azure-Portal](https://portal.azure.com) verwalten.
 
 ## <a name="create-iot-central-applications"></a>Erstellen von IoT Central-Anwendungen
+
+[!INCLUDE [Warning About Access Required](../../../includes/iot-central-warning-contribitorrequireaccess.md)]
+
 
 Zum Erstellen einer Anwendung navigieren Sie zum [Azure-Portal](https://ms.portal.azure.com), und wählen Sie **Ressource erstellen** aus.
 
@@ -50,7 +53,7 @@ Wählen Sie **Erstellen** aus, wenn Sie alle Felder ausgefüllt haben.
 Wenn Sie bereits über eine Azure IoT Central-Anwendung verfügen, können Sie sie löschen oder aber im Azure-Portal in ein anderes Abonnement oder eine andere Ressourcengruppe verschieben.
 
 > [!NOTE]
-> Im kostenlosen Tarif erstellte Anwendungen werden im Azure-Portal nicht angezeigt, da sie nicht mit Ihrem Abonnement verknüpft sind.
+> Da für Anwendungen, die mit dem Tarif *Free* erstellt wurden, keine Azure-Abonnements erforderlich sind, werden sie auch nicht in Ihrem Azure-Abonnement im Azure-Portal aufgeführt. Kostenlose Apps können nur über das IoT Central-Portal angezeigt und verwaltet werden.
 
 Wählen Sie im Portal zunächst **Alle Ressourcen** aus. Wählen Sie **Ausgeblendete Typen anzeigen** aus, und geben Sie in **Nach Name filtern** den Namen Ihrer Anwendung ein, um danach zu suchen. Wählen Sie dann die IoT Central-Anwendung aus, die Sie verwalten möchten.
 

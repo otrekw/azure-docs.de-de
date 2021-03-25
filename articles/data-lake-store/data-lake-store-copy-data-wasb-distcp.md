@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 01/03/2020
 ms.author: twooley
 ms.openlocfilehash: c608f357eb1eff9fd36e583b98d26250a71cb923
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85515670"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen1"></a>Kopieren von Daten zwischen Azure Storage-Blobs und Azure Data Lake Storage Gen1 mit DistCp
@@ -81,7 +81,7 @@ Beispiel:
 
 Hier sind einige hilfreiche Informationen zur Vorgehensweise angegeben.
 
-* **Schritt 1: Bestimmen des YARN-Gesamtarbeitsspeichers:** Zunächst muss der YARN-Arbeitsspeicher bestimmt werden, der für den Cluster zur Verfügung steht, in dem Sie den DistCp-Auftrag ausführen. Diese Information finden Sie im dem Cluster zugeordneten Ambari-Portal. Navigieren Sie zu YARN, und zeigen Sie die Registerkarte **Configs** (Konfigurationen) an, um den YARN-Arbeitsspeicher zu ermitteln. Um den YARN-Gesamtarbeitsspeicher zu erhalten, multiplizieren Sie den YARN-Arbeitsspeicher pro Knoten mit der Anzahl von Knoten in Ihrem Cluster.
+* **Schritt 1: Bestimmen des YARN-Gesamtarbeitsspeichers** – Zunächst muss der YARN-Arbeitsspeicher bestimmt werden, der für den Cluster zur Verfügung steht, in dem Sie den DistCp-Auftrag ausführen. Diese Information finden Sie im dem Cluster zugeordneten Ambari-Portal. Navigieren Sie zu YARN, und zeigen Sie die Registerkarte **Configs** (Konfigurationen) an, um den YARN-Arbeitsspeicher zu ermitteln. Um den YARN-Gesamtarbeitsspeicher zu erhalten, multiplizieren Sie den YARN-Arbeitsspeicher pro Knoten mit der Anzahl von Knoten in Ihrem Cluster.
 
 * **Schritt 2: Berechnen der Anzahl von Zuordnungen**: Der Wert von **m** entspricht dem Quotienten des YARN-Gesamtarbeitsspeichers dividiert durch die YARN-Containergröße. Die YARN-Containergröße finden Sie auch im Ambari-Portal. Navigieren Sie zu YARN, und zeigen Sie die Registerkarte **Configs** an. Die YARN-Containergröße wird in diesem Fenster angezeigt. Die Formel zur Berechnung der Anzahl von Zuordnungen (**m**) sieht wie folgt aus:
 

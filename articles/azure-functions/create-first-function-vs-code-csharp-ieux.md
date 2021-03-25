@@ -6,10 +6,10 @@ ms.date: 11/03/2020
 ms.custom: devx-track-csharp
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 2848ce6214d59ba2732dcfc148ccaf9936497f17
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102121030"
 ---
 # <a name="quickstart-create-a-c-function-in-azure-using-visual-studio-code"></a>Schnellstart: Erstellen einer C#-Funktion in Azure mit Visual Studio Code
@@ -33,7 +33,7 @@ Es gibt auch eine [CLI-basierte Version](create-first-function-cli-csharp.md) di
 
 Vergewissern Sie sich zunähst, dass Folgendes vorhanden ist:
 
-+ Ein Azure- <abbr title="Das Profil, mit dem Abrechnungsinformationen zur Azure-Nutzung verwaltet werden.">account</abbr> mit einem aktiven <abbr title="Die grundlegende Organisationsstruktur, in der Sie Ressourcen in Azure verwalten. Diese wird in der Regel einer Einzelperson oder Abteilung innerhalb einer Organisation zugeordnet.">Abonnement</abbr>. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
++ Ein Azure- <abbr title="Das Profil mit Abrechnungsinformationen für die Azure-Nutzung.">Azure-Konto</abbr> mit einem aktiven <abbr title="Die grundlegende Organisationsstruktur, in der Sie Ressourcen in Azure verwalten. Diese wird in der Regel einer Einzelperson oder Abteilung innerhalb einer Organisation zugeordnet.">Abonnement</abbr>. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
 + [Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools), Version 3.x.
 
@@ -47,7 +47,7 @@ Vergewissern Sie sich zunähst, dass Folgendes vorhanden ist:
 
 In diesem Abschnitt verwenden Sie Visual Studio Code, um ein lokales <abbr title="Ein logischer Container für eine oder mehrere einzelne Funktionen, die zusammen bereitgestellt und verwaltet werden können">Azure Functions-Projekt</abbr> in C# zu erstellen. Weiter unten in diesem Artikel wird der Funktionscode in Azure veröffentlicht.
 
-1. Klicken Sie auf das Azure-Symbol in der <abbr title="Die vertikale Gruppe von Symbolen auf der linken Seite des Visual Studio Code Fensters">Aktivitätsleiste</abbr>Klicken Sie dann im Bereich **Azure: Functions** auf das Symbol für **Neues Projekt erstellen**.
+1. Klicken Sie auf das Azure-Symbol in der <abbr title="Die vertikale Gruppe von Symbolen auf der linken Seite des Visual Studio Code Fensters.">Aktivitätsleiste</abbr>und dann im Bereich **Azure: Funktionen** das Symbol für **Neues Projekt erstellen...** aus.
 
     ![Auswählen von „Neues Projekt erstellen“](./media/functions-create-first-function-vs-code/create-new-project.png)
 
@@ -70,7 +70,7 @@ In diesem Abschnitt verwenden Sie Visual Studio Code, um ein lokales <abbr title
 
     + **Select how you would like to open your project** (Wählen Sie aus, wie Sie Ihr Projekt öffnen möchten.): Wählen Sie die Option `Add to workspace`.
 
-1. Auf der Grundlage dieser Informationen generiert Visual Studio Code ein Azure Functions-Projekt mit einem HTTP- <abbr title="Der Typ des Ereignisses, das den Funktionscode aufruft, etwa eine HTTP-Anforderung, eine Warteschlangennachricht oder eine bestimmte Uhrzeit">Trigger (trigger)</abbr>. Die lokalen Projektdateien können im Explorer angezeigt werden. Weitere Informationen zu den erstellten Dateien finden Sie unter [Generierte Projektdateien](functions-develop-vs-code.md#generated-project-files).
+1. Auf der Grundlage dieser Informationen generiert Visual Studio Code ein Azure Functions-Projekt mit einem HTTP- <abbr title="Der Typ des Ereignisses, das den Funktionscode aufruft, etwa eine HTTP-Anforderung, eine Warteschlangennachricht oder eine bestimmte Uhrzeit">Trigger</abbr>. Die lokalen Projektdateien können im Explorer angezeigt werden. Weitere Informationen zu den erstellten Dateien finden Sie unter [Generierte Projektdateien](functions-develop-vs-code.md#generated-project-files).
 
 [!INCLUDE [functions-run-function-test-local-vs-code](../../includes/functions-run-function-test-local-vs-code.md)]
 
@@ -137,7 +137,7 @@ In diesem Abschnitt erstellen Sie eine Funktions-App sowie zugehörige Ressource
 
 ## <a name="5-clean-up-resources"></a>5. Bereinigen von Ressourcen
 
-Wenn Sie mit dem [nächsten Schritt fortfahren](#next-steps) und eine <abbr title="Eine Möglichkeit, eine Funktion einer Speicherwarteschlange zuzuordnen, damit Nachrichten in der Warteschlange erstellt werden können"> Azure Storage-Warteschlangen-Ausgabebindung</abbr> zu Ihrer Funktion hinzufügen, müssen Sie über alle Ressourcen verfügen, um auf diese Grundlage aufbauen zu können.
+Wenn Sie mit dem [nächsten Schritt fortfahren](#next-steps) und eine <abbr title="Eine Möglichkeit, eine Funktion einer Speicherwarteschlange zuzuordnen, damit Nachrichten in der Warteschlange erstellt werden können."> Azure Storage-Warteschlangen-Ausgabebindung</abbr> zu Ihrer Funktion hinzufügen, müssen alle Ihre Ressourcen erhalten bleiben, um darauf aufbauen zu können.
 
 Andernfalls können Sie die Funktions-App und die zugehörigen Ressourcen wie im Anschluss beschrieben löschen, um weitere Kosten zu vermeiden.
 

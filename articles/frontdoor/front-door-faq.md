@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/20/2020
 ms.author: duau
-ms.openlocfilehash: 6fdcedd19c02251035a838d34ba51e786595134b
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: de6a94b36dab9dd5662062be99f4515d78558b5e
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102212448"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889653"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Häufig gestellte Fragen zu Azure Front Door
 
@@ -102,7 +102,7 @@ Um Ihre Anwendung so zu sperren, dass sie nur Datenverkehr von Ihrer spezifische
 
 - Suchen Sie auf der Front Door-Portalseite im Abschnitt „Übersicht“ nach dem Wert `Front Door ID`. Sie können dann nach dem eingehenden Header **X-Azure-FDID** filtern, der von Front Door mit diesem Wert an Ihr Back-End gesendet wurde, um sicherzustellen, dass nur Ihre eigene Front Door-Instanz zulässig ist (weil die vorherigen IP-Adressbereiche mit den Front Door-Instanzen anderer Kunden geteilt werden).
 
-- Wenden Sie Regelfilterung in Ihrem Back-End-Webserver an, um den Datenverkehr basierend auf dem resultierenden „X-Azure-FDID“-Headerwert einzuschränken. Beachten Sie, dass einige Dienste wie Azure App Service diese [headerbasierte Filterfunktion](../app-service/app-service-ip-restrictions.md#restrict-access-to-a-specific-azure-front-door-instance-preview) bereitstellen, ohne dass Sie Ihre Anwendung oder den Host ändern müssen.
+- Wenden Sie Regelfilterung in Ihrem Back-End-Webserver an, um den Datenverkehr basierend auf dem resultierenden „X-Azure-FDID“-Headerwert einzuschränken. Beachten Sie, dass einige Dienste wie Azure App Service diese [headerbasierte Filterfunktion](../app-service/app-service-ip-restrictions.md#restrict-access-to-a-specific-azure-front-door-instance) bereitstellen, ohne dass Sie Ihre Anwendung oder den Host ändern müssen.
 
   Hier folgt ein Beispiel für [Microsoft-Internetinformationsdienste (IIS)](https://www.iis.net/):
 

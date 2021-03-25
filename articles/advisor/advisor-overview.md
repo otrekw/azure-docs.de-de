@@ -4,10 +4,10 @@ description: Nutzen Sie Azure Advisor, um Ihre Azure-Bereitstellungen zu optimie
 ms.topic: article
 ms.date: 09/27/2020
 ms.openlocfilehash: 12e56bf44a29a32b2149bca14f7c99f319c9c4ea
-ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91405206"
 ---
 # <a name="introduction-to-azure-advisor"></a>Einführung in Azure Advisor
@@ -30,7 +30,7 @@ Auf dem Advisor-Dashboard werden personalisierte Empfehlungen für alle Ihre Abo
 * **Sicherheit**: Der Ratgeber hilft beim Erkennen von Bedrohungen und Sicherheitsrisiken, die zu Sicherheitslücken führen können. Weitere Informationen finden Sie unter [Advisor-Empfehlungen zur Sicherheit](advisor-security-recommendations.md).
 * **Leistung**: Der Ratgeber hilft, die Geschwindigkeit Ihrer Anwendungen zu verbessern. Weitere Informationen finden Sie unter [Advisor-Empfehlungen zur Leistung](advisor-performance-recommendations.md).
 * **Kosten**: Mit dem Ratgeber können Sie Ihre Gesamtausgaben für Azure senken und optimieren. Weitere Informationen finden Sie unter [Advisor-Empfehlungen zu Kosten](advisor-cost-recommendations.md).
-* **Optimaler Betrieb**: Dieser Ratgeber hilft Ihnen bei der Implementierung effizienter Prozesse und Workflows, unterstützt Sie bei der Ressourcenverwaltung und enthält bewährte Methoden für die Bereitstellung. erforderlich. Weitere Informationen finden Sie unter [Advisor-Empfehlungen für einen optimalen Betrieb](advisor-operational-excellence-recommendations.md).
+* **Optimaler Betrieb**: Dieser Ratgeber hilft Ihnen bei der Implementierung effizienter Prozesse und Workflows, unterstützt Sie bei der Ressourcenverwaltung und enthält bewährte Methoden für die Bereitstellung. . Weitere Informationen finden Sie unter [Advisor-Empfehlungen für einen optimalen Betrieb](advisor-operational-excellence-recommendations.md).
 
   ![Typen von Advisor-Empfehlungen](./media/advisor-overview/advisor-dashboard.png)
 

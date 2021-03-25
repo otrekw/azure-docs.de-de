@@ -11,10 +11,10 @@ ms.topic: end-user-help
 ms.date: 08/12/2019
 ms.author: curtand
 ms.openlocfilehash: 10b6b788077eccda522c9e8c6e631939ca1819fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91530339"
 ---
 # <a name="set-up-an-authenticator-app-as-your-two-factor-verification-method"></a>Einrichten einer Authentifikator-App als Methode für die zweistufige Überprüfung
@@ -65,7 +65,7 @@ Sie können eine Authentifikator-App einrichten, um eine Benachrichtigung an Ihr
     >[!Note]
     >Informationen zur Verwendung des App-Kennworts mit älteren Apps finden Sie unter [Verwalten von App-Kennwörtern für die zweistufige Überprüfung](multi-factor-authentication-end-user-app-passwords.md). App-Kennwörter sind nur erforderlich, wenn Sie weiterhin ältere Apps verwenden, die die zweistufige Überprüfung nicht unterstützen.
 
-9. Wählen Sie **Fertig**aus.
+9. Wählen Sie **Fertig** aus.
 
 ## <a name="set-up-the-microsoft-authenticator-app-to-use-verification-codes"></a>Einrichten der Microsoft Authenticator-App zur Verwendung von Prüfcodes
 
@@ -107,7 +107,7 @@ Sie können eine Authentifikator-App einrichten, um eine Benachrichtigung an Ihr
     >[!Note]
     >Informationen zur Verwendung des App-Kennworts mit älteren Apps finden Sie unter [Verwalten von App-Kennwörtern für die zweistufige Überprüfung](multi-factor-authentication-end-user-app-passwords.md). App-Kennwörter sind nur erforderlich, wenn Sie weiterhin ältere Apps verwenden, die die zweistufige Überprüfung nicht unterstützen.
 
-9. Wählen Sie **Fertig**aus.
+9. Wählen Sie **Fertig** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

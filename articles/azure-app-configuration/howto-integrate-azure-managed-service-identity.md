@@ -8,12 +8,12 @@ ms.service: azure-app-configuration
 ms.custom: devx-track-csharp, fasttrack-edit
 ms.topic: conceptual
 ms.date: 2/25/2020
-ms.openlocfilehash: 2f446df95c795eaac378340ed0d5de7b31dfcfee
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 386a0e27c0f73f5bcd42397ed515f7561d5097fd
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102219035"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104955056"
 ---
 # <a name="use-managed-identities-to-access-app-configuration"></a>Verwenden verwalteter Identitäten für den Zugriff auf App Configuration
 
@@ -140,12 +140,12 @@ Um eine verwaltete Entität im Portal einzurichten, erstellen Sie zuerst eine An
     ---
 
     > [!NOTE]
-    > Wenn Sie eine **benutzerseitig zugewiesene verwaltete Identität** verwenden möchten, achten Sie darauf, dass Sie beim Erstellen von [ManagedIdentityCredential](https://docs.microsoft.com/dotnet/api/azure.identity.managedidentitycredential) die clientId angeben.
+    > Wenn Sie eine **benutzerseitig zugewiesene verwaltete Identität** verwenden möchten, achten Sie darauf, dass Sie beim Erstellen von [ManagedIdentityCredential](/dotnet/api/azure.identity.managedidentitycredential) die clientId angeben.
     >```
     >config.AddAzureAppConfiguration(options =>
     >   options.Connect(new Uri(settings["AppConfig:Endpoint"]), new ManagedIdentityCredential(<your_clientId>)));
     >```
-    >Wie in den [Häufig gestellten Fragen zu verwalteten Identitäten für Azure-Ressourcen](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/known-issues#what-identity-will-imds-default-to-if-dont-specify-the-identity-in-the-request) erläutert, gibt es eine Standardmethode, um aufzulösen, welche verwaltete Identität verwendet wird. In diesem Fall erzwingt die Azure-Identitätsbibliothek, dass Sie die gewünschte Identität angeben, um in Zukunft mögliche Laufzeitprobleme zu vermeiden (z. B. wenn eine neue benutzerseitig zugewiesene verwaltete Identität hinzugefügt wird, oder wenn die systemseitig zugewiesene verwaltete Identität aktiviert ist). Daher müssen Sie die clientId auch dann angeben, wenn nur eine benutzerseitig zugewiesene verwaltete Identität definiert ist und keine systemseitig zugewiesene verwaltete Identität vorhanden ist.
+    >Wie in den [Häufig gestellten Fragen zu verwalteten Identitäten für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/known-issues.md#what-identity-will-imds-default-to-if-dont-specify-the-identity-in-the-request) erläutert, gibt es eine Standardmethode, um aufzulösen, welche verwaltete Identität verwendet wird. In diesem Fall erzwingt die Azure-Identitätsbibliothek, dass Sie die gewünschte Identität angeben, um in Zukunft mögliche Laufzeitprobleme zu vermeiden (z. B. wenn eine neue benutzerseitig zugewiesene verwaltete Identität hinzugefügt wird, oder wenn die systemseitig zugewiesene verwaltete Identität aktiviert ist). Daher müssen Sie die clientId auch dann angeben, wenn nur eine benutzerseitig zugewiesene verwaltete Identität definiert ist und keine systemseitig zugewiesene verwaltete Identität vorhanden ist.
 
 
 1. Um sowohl App Configuration-Werte als auch Key Vault-Verweise zu verwenden, aktualisieren Sie *Program.cs*, wie unten gezeigt. Mit diesem Code wird `SetCredential` als Teil von `ConfigureKeyVault` aufgerufen, um dem Konfigurationsanbieter mitzuteilen, welche Anmeldeinformationen für die Authentifizierung bei Key Vault verwendet werden sollen.
@@ -203,7 +203,7 @@ Um eine verwaltete Entität im Portal einzurichten, erstellen Sie zuerst eine An
     > [!NOTE]
     > Die `ManagedIdentityCredential` funktionieren nur in Azure-Umgebungen von Diensten, die die Authentifizierung mit verwalteten Identitäten unterstützen. Sie funktionieren nicht in lokalen Umgebungen. Verwenden Sie [`DefaultAzureCredential`](/dotnet/api/azure.identity.defaultazurecredential), damit der Code sowohl in lokalen als auch in Azure-Umgebungen funktioniert, da sie einen Fallback auf Authentifizierungsoptionen (einschließlich der verwalteten Identität) ermöglichen.
     > 
-    > Falls Sie eine **benutzerseitig zugewiesene verwaltete Identität** mit den bei der Bereitstellung in Azure verwendeten `DefaultAzureCredential` verwenden möchten, [geben Sie die clientId](https://docs.microsoft.com/dotnet/api/overview/azure/identity-readme#specifying-a-user-assigned-managed-identity-with-the-defaultazurecredential) an.
+    > Falls Sie eine **benutzerseitig zugewiesene verwaltete Identität** mit den bei der Bereitstellung in Azure verwendeten `DefaultAzureCredential` verwenden möchten, [geben Sie die clientId](/dotnet/api/overview/azure/identity-readme#specifying-a-user-assigned-managed-identity-with-the-defaultazurecredential) an.
 
 [!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
 

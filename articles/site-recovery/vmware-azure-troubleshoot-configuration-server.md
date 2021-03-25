@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/13/2019
 ms.author: ramamill
 ms.openlocfilehash: b5fd014732fd4cdfaa52f971b5e4d2c74db580d2
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92371952"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>Behandeln von Problemen mit dem Konfigurationsserver
@@ -22,7 +22,7 @@ Dieser Artikel hilft Ihnen bei der Behandlung von Problemen bei der Bereitstellu
 
 Der Quellcomputer registriert sich während der Installation des Mobilitäts-Agents beim Konfigurationsserver. Sie können alle während dieses Setups auftretenden Fehler durch Befolgen der folgenden Anleitungen debuggen:
 
-1. Öffnen Sie die Datei „C:\Programme\ASR\home\svsystems\var\configurator_register_host_static_info.log“. (Der Ordner „ProgramData“ ist normalerweise ein versteckter Ordner. Wenn der Ordner „ProgramData“ im Datei-Explorer nicht angezeigt wird, aktivieren Sie auf der Registerkarte **Ansicht** im Bereich **Ein-/ausblenden** das Kontrollkästchen **Ausgeblendete Elemente** .) Fehler können durch mehrere Probleme verursacht werden.
+1. Öffnen Sie die Datei „C:\Programme\ASR\home\svsystems\var\configurator_register_host_static_info.log“. (Der Ordner „ProgramData“ ist normalerweise ein versteckter Ordner. Wenn der Ordner „ProgramData“ im Datei-Explorer nicht angezeigt wird, aktivieren Sie auf der Registerkarte **Ansicht** im Bereich **Ein-/ausblenden** das Kontrollkästchen **Ausgeblendete Elemente**.) Fehler können durch mehrere Probleme verursacht werden.
 
 2. Suchen Sie nach der Zeichenfolge **No Valid IP Address found** (Keine gültige IP-Adresse gefunden). Wenn die Zeichenfolge gefunden wird:
    1. Überprüfen Sie, ob die angeforderte Host-ID mit der Host-ID des Quellcomputers übereinstimmt.
@@ -31,10 +31,10 @@ Der Quellcomputer registriert sich während der Installation des Mobilitäts-Age
       - Für Windows: `> ipconfig /all`
       - Für Linux: `# ifconfig -a`
 
-3. Wenn die Zeichenfolge **No Valid IP Address found** (Keine gültige IP-Adresse gefunden) nicht gefunden wird, suchen Sie nach der Zeichenfolge **Reason=>NULL** . Dieser Fehler tritt auf, wenn der Quellcomputer einen leeren Host für die Registrierung beim Konfigurationsserver verwendet. Wenn die Zeichenfolge gefunden wird:
+3. Wenn die Zeichenfolge **No Valid IP Address found** (Keine gültige IP-Adresse gefunden) nicht gefunden wird, suchen Sie nach der Zeichenfolge **Reason=>NULL**. Dieser Fehler tritt auf, wenn der Quellcomputer einen leeren Host für die Registrierung beim Konfigurationsserver verwendet. Wenn die Zeichenfolge gefunden wird:
     - Nachdem Sie die Probleme behoben haben, befolgen Sie die Anleitungen unter [Registrieren des Quellcomputers beim Konfigurationsserver](vmware-azure-troubleshoot-configuration-server.md#register-source-machine-with-configuration-server), um die Registrierung manuell zu wiederholen.
 
-4. Wenn die Zeichenfolge **Reason=>NULL** nicht gefunden wird, öffnen Sie auf dem Quellcomputer die Datei „C:\ProgramData\ASRSetupLogs\UploadedLogs\ASRUnifiedAgentInstaller.log“. (Der Ordner „ProgramData“ ist normalerweise ein versteckter Ordner. Wenn der Ordner „ProgramData“ im Datei-Explorer nicht angezeigt wird, aktivieren Sie auf der Registerkarte **Ansicht** im Bereich **Ein-/ausblenden** das Kontrollkästchen **Ausgeblendete Elemente** .) Fehler können durch mehrere Probleme verursacht werden. 
+4. Wenn die Zeichenfolge **Reason=>NULL** nicht gefunden wird, öffnen Sie auf dem Quellcomputer die Datei „C:\ProgramData\ASRSetupLogs\UploadedLogs\ASRUnifiedAgentInstaller.log“. (Der Ordner „ProgramData“ ist normalerweise ein versteckter Ordner. Wenn der Ordner „ProgramData“ im Datei-Explorer nicht angezeigt wird, aktivieren Sie auf der Registerkarte **Ansicht** im Bereich **Ein-/ausblenden** das Kontrollkästchen **Ausgeblendete Elemente**.) Fehler können durch mehrere Probleme verursacht werden. 
 
 5. Suchen Sie nach der Zeichenfolge **post request: (7) – Couldn't connect to server** (Veröffentlichungsanforderung: (7) – Serververbindung konnte nicht hergestellt werden). Wenn die Zeichenfolge gefunden wird:
     1. Beheben Sie die Netzwerkprobleme zwischen dem Quellcomputer und dem Konfigurationsserver. Überprüfen Sie, ob der Konfigurationsserver vom Quellcomputer aus erreichbar ist, mithilfe von Netzwerktools wie Ping, Traceroute oder einem Webbrowser. Stellen Sie sicher, dass der Quellcomputer den Konfigurationsserver über Port 443 erreichen kann.

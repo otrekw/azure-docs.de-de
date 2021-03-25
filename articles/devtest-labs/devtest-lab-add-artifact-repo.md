@@ -4,10 +4,10 @@ description: Erfahren Sie, wie Sie ein GitHub- oder Azure DevOps Services-Git-Re
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 225aae5e0a017b711f29a47829b06f8bb7a6a8ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85483141"
 ---
 # <a name="add-a-git-repository-to-store-custom-artifacts-and-resource-manager-templates"></a>Hinzufügen eines Git-Repositorys zum Speichern von benutzerdefinierten Artefakten und Resource Manager-Vorlagen
@@ -31,7 +31,7 @@ Bevor Sie Ihrem Lab ein Repository hinzufügen können, rufen Sie zunächst wich
 ### <a name="get-the-github-repository-clone-url-and-personal-access-token"></a>Abrufen der Klon-URL und des persönlichen Zugriffstokens für das GitHub-Repository
 
 1. Navigieren Sie zur Startseite des GitHub-Repositorys, das die Artefakt- oder Resource Manager-Vorlagendefinitionen enthält.
-2. Wählen Sie **Clone or download**aus.
+2. Wählen Sie **Clone or download** aus.
 3. Um die URL in die Zwischenablage zu kopieren, klicken Sie auf die Schaltfläche **HTTPS-Klon-URL**. Speichern Sie die URL für die spätere Verwendung.
 4. Wählen Sie das Profilbild in der oberen rechten Ecke von GitHub aus, und wählen Sie **Einstellungen**.
 5. Wählen Sie im Menü **Personal settings** auf der linken Seite auf **Personal access tokens**.

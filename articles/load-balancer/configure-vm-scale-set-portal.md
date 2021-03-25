@@ -7,10 +7,10 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 03/25/2020
 ms.openlocfilehash: cb7bfb9ac4b10b807ac186d087b0037953abd559
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91439521"
 ---
 # <a name="configure-a-virtual-machine-scale-set-with-an-existing-azure-load-balancer-using-the-azure-portal"></a>Konfigurieren einer VM-Skalierungsgruppe mit einer vorhandenen Azure Load Balancer-Instanz mithilfe des Azure-Portals
@@ -79,7 +79,7 @@ In diesem Abschnitt erstellen Sie eine VM-Skalierungsgruppe im Azure-Portal mit 
     | Wählen Sie einen Lastenausgleich aus.            | Wählen Sie **myLoadBalancer** oder Ihren vorhandenen Lastenausgleich aus. |
     | Wählen Sie einen Back-End-Pool aus.             | Wählen Sie **myBackendPool** oder Ihren vorhandenen Back-End-Pool aus.  |
 
-    :::image type="content" source="./media/vm-scale-sets/create-vm-scale-set-02.png" alt-text="Screenshot: Registerkarte „Grundlagen“ zum Erstellen von VM-Skalierungsgruppen." border="true":::
+    :::image type="content" source="./media/vm-scale-sets/create-vm-scale-set-02.png" alt-text="Screenshot: Registerkarte „Netzwerk“ zum Erstellen von VM-Skalierungsgruppen." border="true":::
 
 6. Wählen Sie die Registerkarte **Verwaltung** aus.
 

@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie allgemeine Probleme bei der Verwendung von Az
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: 5a0e907ef27f125a9903b3d9e6079e3c8a288a97
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 1d3dff19bd75bfa4e7564eb4b188ffe68d605025
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101714526"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952030"
 ---
 # <a name="aks-troubleshooting"></a>AKS-Problembehandlung
 
@@ -89,7 +89,7 @@ Eine Aktivierung der rollenbasierten Zugriffssteuerung in Kubernetes (Kubernetes
 
 Stellen Sie sicher, dass die Ports 22, 9000 und 1194 für die Verbindung mit dem API-Server offen sind. Überprüfen Sie mit dem `kubectl get pods --namespace kube-system`-Befehl, ob der `tunnelfront`- oder `aks-link`-Pod im *kube-system*-Namespace ausgeführt wird. Falls nicht, erzwingen Sie das Löschen des Pods. Er wird anschließend neu gestartet.
 
-## <a name="im-getting-tls-client-offered-only-unsupported-versions-from-my-client-when-connecting-to-aks-api-what-should-i-do"></a>Beim Herstellen einer Verbindung mit der AKS-API erhalte ich von meinem Client die Meldung `"tls: client offered only unsupported versions"`. Wie sollte ich vorgehen?
+## <a name="im-getting-tls-client-offered-only-unsupported-versions-from-my-client-when-connecting-to-aks-api-what-should-i-do"></a>Beim Herstellen einer Verbindung mit der AKS-API erhalte ich von meinem Client die Meldung `"tls: client offered only unsupported versions"`.   Wie sollte ich vorgehen?
 
 Die unterstützte TLS-Mindestversion in AKS ist TLS 1.2.
 
@@ -197,7 +197,7 @@ Wenn ein Kubernetes-Cluster in Azure (AKS oder nicht) häufig zentral hoch- oder
 Service returned an error. Status=429 Code=\"OperationNotAllowed\" Message=\"The server rejected the request because too many requests have been received for this subscription.\" Details=[{\"code\":\"TooManyRequests\",\"message\":\"{\\\"operationGroup\\\":\\\"HighCostGetVMScaleSet30Min\\\",\\\"startTime\\\":\\\"2020-09-20T07:13:55.2177346+00:00\\\",\\\"endTime\\\":\\\"2020-09-20T07:28:55.2177346+00:00\\\",\\\"allowedRequestCount\\\":1800,\\\"measuredRequestCount\\\":2208}\",\"target\":\"HighCostGetVMScaleSet30Min\"}] InnerError={\"internalErrorCode\":\"TooManyRequestsReceived\"}"}
 ```
 
-Diese Drosselungsfehler werden ausführlich [hier](../azure-resource-manager/management/request-limits-and-throttling.md) und [hier](../virtual-machines/troubleshooting/troubleshooting-throttling-errors.md) beschrieben.
+Diese Drosselungsfehler werden ausführlich [hier](../azure-resource-manager/management/request-limits-and-throttling.md) und [hier](/troubleshoot/azure/virtual-machines/troubleshooting-throttling-errors) beschrieben.
 
 Die Empfehlung des AKS-Engineering-Teams lautet: Stellen Sie sicher, dass Sie mindestens Version 1.18.x ausführen, die zahlreiche Verbesserungen enthält. Weitere Informationen zu diesen Verbesserungen finden Sie [hier](https://github.com/Azure/AKS/issues/1413) und [hier](https://github.com/kubernetes-sigs/cloud-provider-azure/issues/247).
 
@@ -253,7 +253,7 @@ spec:
 ```yaml
 initContainers:
 - name: volume-mount
-  image: busybox
+  image: mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11
   command: ["sh", "-c", "chown -R 100:100 /data"]
   volumeMounts:
   - name: <your data volume>

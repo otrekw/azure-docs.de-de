@@ -6,14 +6,16 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 63d1213a2dded41df3f462722b354b03fe9f6e33
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ebfaa59f1800da084d611f6e050a59da63a7f195
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "72801877"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104674749"
 ---
 # <a name="approach-and-process-for-adopting-azure-data-catalog"></a>Vorgehensweise und entsprechende Schritte für die Azure Data Catalog-Einführung
+
+[!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
 
 In diesem Artikel erhalten Sie Hilfe bei den ersten Schritten zur Einführung von **Azure Data Catalog** in Ihrem Unternehmen. Konzentrieren Sie sich auf drei wichtige Punkte, um **Azure Data Catalog** erfolgreich einzuführen: Definieren Sie Ihre Vision, ermitteln Sie die zentralen geschäftlichen Anwendungsfälle in Ihrem Unternehmen, und wählen Sie ein Pilotprojekt.
 
@@ -97,7 +99,7 @@ Setzen Sie bei der Auswahl Ihres Pilotprojekts auf ein Team mit den am besten ge
 
 Ihr erstes Pilotprojekt sollte über einige Personen verfügen, die Daten produzieren und nutzen, damit die Ausgewogenheit des Teams sichergestellt ist.
 
-**Datenproduzenten** sind Personen mit Kenntnissen zu Datenquellen. David ist beispielsweise Mitglied eines anderen Teams und hat schon viel mit wichtigen Adventure Works-Datenquellen gearbeitet. Vor der Einführung von **Azure Data Catalog**hat David eine Excel-Arbeitsmappe erstellt, um Informationen zu Adventure Works-Datenquellen festzuhalten.
+**Datenproduzenten** sind Personen mit Kenntnissen zu Datenquellen. David ist beispielsweise Mitglied eines anderen Teams und hat schon viel mit wichtigen Adventure Works-Datenquellen gearbeitet. Vor der Einführung von **Azure Data Catalog** hat David eine Excel-Arbeitsmappe erstellt, um Informationen zu Adventure Works-Datenquellen festzuhalten.
 
 **Datennutzer** sind Personen mit Kenntnissen zur Verwendung von Daten zum Lösen geschäftlicher Probleme. Nancy ist beispielsweise Business Analyst und verwendet SQL Server-Datenquellen von Adventure Works zum Analysieren von Daten.
 
@@ -151,7 +153,7 @@ Halten Sie regelmäßig Teambesprechungen ab, um die Anmerkungen zu überprüfen
 
 Der ultimative Test für das Projekt besteht schließlich darin, ob die Benutzer die benötigten Datenquellen ermitteln und verstehen können. Pilotprojektbenutzer sollten den Katalog regelmäßig testen, um sicherzustellen, dass die für die tägliche Arbeit verwendeten Datenquellen relevant sind. Wenn eine erforderliche Datenquelle fehlt oder nicht richtig mit Anmerkungen versehen ist, sollte dies als Erinnerung angesehen werden, weitere Datenquellen zu registrieren oder zusätzliche Anmerkungen bereitzustellen. Mit diesem Ansatz wird nicht nur der Nutzen des Pilotprojekts erhöht, sondern es werden auch effektive Vorgehensweisen geschaffen, die nach Abschluss des Pilotprojekts genutzt werden können.
 
-### <a name="provide-training"></a>Bereitstellen von Schulungen
+### <a name="provide-training"></a>Anbieten von Schulungen
 
 Der Umfang der Schulungen sollte so hoch sein, dass Benutzer ausreichende Hilfe bei den ersten Schritten erhalten. Sie sollten jeweils an den Zielen und am Kenntnisstand der Mitglieder eines Pilotprojektteams ausgerichtet sein. Als Einführung in Schulungen dienen die Schritte im Artikel [Erste Schritte mit Azure Data Catalog](data-catalog-get-started.md). Außerdem können Sie die [Schulungspräsentation für das Azure Data Catalog-Pilotprojekt](https://github.com/Azure-Samples/data-catalog-dotnet-get-started/blob/master/Azure%20Data%20Catalog%20Training.pptx?raw=true) herunterladen. Diese PowerPoint-Präsentation dient Ihnen als Einstiegshilfe bei der Data Catalog-Einführung für die Mitglieder des Pilotprojektteams.
 
