@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a764538ebc73927b1d274b2538e123ec90ce60e
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 5ad1b8318e261c7dfef7fc125716736087a84bdc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741557"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579177"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Berichterstellungsoptionen für die Kennwortverwaltung von Azure AD
 
@@ -171,7 +171,7 @@ In der folgenden Liste werden die Details dieser Aktivität erläutert:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Nutzungs- und Insights-Berichte für SSPR und MFA](howto-authentication-methods-usage-insights.md)
+* [Nutzungs- und Insights-Berichte für SSPR und MFA](./howto-authentication-methods-activity.md)
 * [Erfolgreiches Rollout der Self-Service-Kennwortzurücksetzung](howto-sspr-deployment.md)
 * [Ich habe mein Azure AD-Kennwort vergessen. Was nun?](../user-help/active-directory-passwords-update-your-own-password.md)
 * [Registrieren für die Self-Service-Kennwortzurücksetzung](../user-help/active-directory-passwords-reset-register.md)

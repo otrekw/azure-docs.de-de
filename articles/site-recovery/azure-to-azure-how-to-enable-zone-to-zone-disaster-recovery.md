@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/28/2020
 ms.author: sideeksh
-ms.openlocfilehash: d207a5629647ef3582f1e0490ef6ccc407f935f7
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: beba8e1d8126818f142e4873d551ed077af869d2
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584837"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102035236"
 ---
 # <a name="enable-azure-vm-disaster-recovery-between-availability-zones"></a>Aktivieren der Notfallwiederherstellung für virtuelle Azure-Computer zwischen Verfügbarkeitszonen
 
@@ -20,7 +20,7 @@ In diesem Artikel wird beschrieben, wie Sie Replikation, Failover und Failback f
 
 >[!NOTE]
 >
->- Unterstützung für Notfallwiederherstellung zwischen Zonen ist derzeit auf neun Regionen beschränkt: „Asien, Südosten“, „Japan, Osten“, „Australien, Osten“, „Vereinigtes Königreich, Süden“, „Europa, Westen“, „Europa, Norden“, „USA, Mitte“, „USA, Osten“ und „USA, Westen 2“.  
+>- Unterstützung für Notfallwiederherstellung zwischen Zonen ist derzeit auf die folgenden Regionen beschränkt: „Asien, Südosten“, „Japan, Osten“, „Australien, Osten“, „Vereinigtes Königreich, Süden“, „Europa, Westen“, „Europa, Norden“, „USA, Mitte“, „USA, Osten“, „USA, Osten 2“ und „USA, Westen 2“.  
 >- Wenn der Kunde die Notfallwiederherstellung zwischen Zonen verwendet, speichert Site Recovery Kundendaten nur in der Region, in sie bereitgestellt wurden, und verschiebt sie nicht aus dieser Region. Kunden können auf Wunsch einen Recovery Services-Tresor aus einer anderen Region auswählen. Der Recovery Services-Tresor enthält Metadaten, aber keine tatsächlichen Kundendaten.
 
 Der Site Recovery-Dienst unterstützt Ihre Strategien für Geschäftskontinuität und Notfallwiederherstellung, indem die Verfügbarkeit Ihrer Geschäftsanwendungen bei geplanten und ungeplanten Ausfällen gewährleistet wird. Es handelt sich dabei um die empfohlene Notfallwiederherstellungsoption, um Ihre Anwendungen bei regionalen Ausfällen aktiv und betriebsbereit zu halten.

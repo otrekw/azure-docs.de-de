@@ -6,14 +6,14 @@ author: enkrumah
 ms.author: ebnkruma
 ms.topic: how-to
 ms.date: 3/10/2020
-ms.openlocfilehash: b468df97f168562f4f5ce9e0e6d6e9a70835648b
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: 7c1ddbbbd8198cf769e89cfa824de370184a992c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102436106"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104589683"
 ---
-# <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-power-bi-preview"></a>Verwenden von verwalteten Identitäten zum Authentifizieren von Azure Stream Analytics-Aufträgen in Power BI (Vorschauversion)
+# <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-power-bi"></a>Verwenden von verwalteten Identitäten zum Authentifizieren von Azure Stream Analytics-Aufträgen in Power BI
 
 Das [Authentifizieren über verwaltete Identitäten](../active-directory/managed-identities-azure-resources/overview.md) für die Ausgabe in Power BI ermöglicht Stream Analytics Aufträgen direkten Zugriff auf einen Arbeitsbereich in Ihrem Power BI-Konto. Mit diesem Feature können Bereitstellungen von Stream Analytics-Aufträgen vollständig automatisiert werden, da es nicht mehr erforderlich ist, dass sich ein Benutzer über das Azure-Portal interaktiv bei Power BI anmeldet. Darüber hinaus werden Aufträge mit langer Ausführungszeit, die in Power BI schreiben, jetzt besser unterstützt, da der Auftrag nicht mehr regelmäßig erneut autorisiert werden muss.
 

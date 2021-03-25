@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/25/2021
 ms.author: jeedes
-ms.openlocfilehash: 616829c3fc666bbc6a4c860d9fb5c4e9fff59d7a
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: b83ec6b63d908483801a28ba89227c8431401424
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102449407"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104589258"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-appdynamics"></a>Lernprogramm: Azure Active Directory-Integration mit AppDynamics
 
@@ -154,8 +154,8 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 * Rufen Sie direkt die AppDynamics-Anmelde-URL auf, und initiieren Sie den Anmeldeflow.
 
-* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie in „Meine Apps“auf die Kachel „AppDynamics“ klicken, werden Sie zur Anmelde-URL für AppDynamics weitergeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie in „Meine Apps“auf die Kachel „AppDynamics“ klicken, werden Sie zur Anmelde-URL für AppDynamics weitergeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nach dem Konfigurieren von AppDynamics können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+Nach dem Konfigurieren von AppDynamics können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.

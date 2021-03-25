@@ -2,21 +2,21 @@
 title: Bewährte Methoden zum Laden von Daten für dedizierte SQL-Pools
 description: Empfehlungen und Leistungsoptimierungen für das Laden von Daten mithilfe von dedizierten SQL-Pools in Azure Synapse Analytics.
 services: synapse-analytics
-author: kevinvngo
+author: gaursa
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 11/20/2020
-ms.author: kevin
+ms.author: gaursa
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 10e43332728ea70d27c08cf4d3dfe116c83b3f1f
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 004084097e2f24a4ceb36f7a016049a574b80b42
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98679803"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594834"
 ---
 # <a name="best-practices-for-loading-data-using-dedicated-sql-pools-in-azure-synapse-analytics"></a>Bewährte Methoden für das Laden von Daten mithilfe von dedizierten SQL-Pools in Azure Synapse Analytics
 

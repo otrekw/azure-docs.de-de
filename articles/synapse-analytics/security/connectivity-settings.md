@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 03/15/2021
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: ce1a4808833cbd897da17f9ad75af346538d23d1
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.openlocfilehash: e0d8a8e3320b49b6fbe3e8ab66c0b4569fac9afd
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103472777"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104587932"
 ---
 # <a name="azure-synapse-analytics-connectivity-settings"></a>Konnektivitätseinstellungen für Azure Synapse Analytics
 
@@ -21,7 +21,7 @@ In diesem Artikel werden die Konnektivitätseinstellungen in Azure Synapse Analy
 
 
 ## <a name="connection-policy"></a>Verbindungsrichtlinie
-Die Verbindungsrichtlinie für Synapse SQL in Azure Synapse Analytics ist auf *Standard* festgelegt. Dies kann in Azure Synapse Analytics nicht geändert werden. Weitere Informationen dazu, wie sich dies auf Verbindungen mit Synapse SQL in Azure Synapse Analytics auswirkt, finden Sie [hier](https://docs.microsoft.com/azure/azure-sql/database/connectivity-architecture#connection-policy). 
+Die Verbindungsrichtlinie für Synapse SQL in Azure Synapse Analytics ist auf *Standard* festgelegt. Dies kann in Azure Synapse Analytics nicht geändert werden. Weitere Informationen dazu, wie sich dies auf Verbindungen mit Synapse SQL in Azure Synapse Analytics auswirkt, finden Sie [hier](../../azure-sql/database/connectivity-architecture.md#connection-policy). 
 
 ## <a name="minimal-tls-version"></a>TLS-Mindestversion
 Synapse SQL in Azure Synapse Analytics ermöglicht Verbindungen unter Verwendung aller TLS-Versionen. Sie können die TLS-Mindestversion für Synapse SQL in Azure Synapse Analytics nicht festlegen.

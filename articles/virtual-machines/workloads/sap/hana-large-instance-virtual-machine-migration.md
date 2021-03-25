@@ -6,20 +6,19 @@ documentationcenter: ''
 author: bentrin
 manager: juergent
 editor: ''
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/11/2020
 ms.author: bentrin
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 25eae9f9ba0e28a5aa069972c8c7d5eb2877545f
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: cd1cfb0cc8e1868e78b4d284d1b1f4e7e85aa318
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967685"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101677045"
 ---
 # <a name="sap-hana-on-azure-large-instance-migration-to-azure-virtual-machines"></a>SAP HANA in Azure (große Instanzen) – Migration zu Azure Virtual Machines
 In diesem Artikel werden mögliche Szenarien für die Bereitstellung von Azure (große Instanzen) beschrieben, und es werden Planungs- und Migrationskonzepte mit minimierten Ausfallzeiten beim Übergang angeboten.
@@ -54,7 +53,7 @@ In der folgenden Tabelle sind allgemeine Bereitstellungsmodelle mit HLI-Kunden z
 | 2 | [Einzelner Knoten mit MCOS](./hana-supported-scenario.md#single-node-mcos) | Ja | - |
 | 3 | [Einzelner Knoten mit DR mithilfe der Speicherreplikation](./hana-supported-scenario.md#single-node-with-dr-using-storage-replication) | Nein | Die Speicherreplikation ist für die virtuelle Azure-Plattform nicht verfügbar. Ändern Sie die aktuelle Notfallwiederherstellungslösung in HSR oder Sicherung/Wiederherstellung. |
 | 4 | [Einzelner Knoten mit DR (Mehrzweck) mithilfe der Speicherreplikation](./hana-supported-scenario.md#single-node-with-dr-multipurpose-using-storage-replication) | Nein | Die Speicherreplikation ist für die virtuelle Azure-Plattform nicht verfügbar. Ändern Sie die aktuelle Notfallwiederherstellungslösung in HSR oder Sicherung/Wiederherstellung. |
-| 5 | [HSR mit STONITH für Hochverfügbarkeit](./hana-supported-scenario.md#hsr-with-stonith-for-high-availability) | Ja | Keine vorkonfigurierte SBD für Ziel-VMs.  Auswählen und Bereitstellen einer STONITH-Lösung.  Mögliche Optionen: Azure Fencing Agent (unterstützt sowohl für [RHEL](./high-availability-guide-rhel-pacemaker.md) als auch für [SLES](./high-availability-guide-suse-pacemaker.md)), SBD |
+| 5 | [HSR mit STONITH für Hochverfügbarkeit](./hana-supported-scenario.md#hsr-with-stonith-for-high-availability) | Ja | Keine vorkonfigurierte SBD für Ziel-VMs.  Auswählen und Bereitstellen einer STONITH-Lösung.  Mögliche Optionen: Azure Fencing-Agent (unterstützt sowohl für [RHEL](./high-availability-guide-rhel-pacemaker.md) als auch für [SLES](./high-availability-guide-suse-pacemaker.md)), SBD |
 | 6 | [Hochverfügbarkeit mit HSR, Notfallwiederherstellung mit Speicherreplikation](./hana-supported-scenario.md#high-availability-with-hsr-and-dr-with-storage-replication) | Nein | Ersetzen der Speicherreplikation für Notfallwiederherstellungsanforderungen durch HSR oder Sicherung/Wiederherstellung |
 | 7 | [Automatisches Hostfailover (1+1)](./hana-supported-scenario.md#host-auto-failover-11) | Ja | Verwenden von ANF für freigegebenen Speicher mit Azure-VMs |
 | 8 | [Horizontales Hochskalieren mit Standby](./hana-supported-scenario.md#scale-out-with-standby) | Ja | BW/4HANA mit VMs der Typen M128s, M416s, M416ms nur mit ANF für Speicherung |
@@ -83,7 +82,7 @@ Das aktuelle Bereitstellungsmodell soll bestimmte Servicelevelziele erfüllen.  
 Höchstwahrscheinlich werden die SAP-Anwendungsserver der Kunden in einer Verfügbarkeitsgruppe platziert.  Wenn der aktuelle Servicelevel der Bereitstellung zufriedenstellend ist, gilt Folgendes: 
 - Wenn die Ziel-VM den logischen HLI-Namen als Hostnamen übernimmt, würde die Aktualisierung der DNS-Adressauflösung (Domain Name Service), die auf die IP der VM verweist, ohne Aktualisierung der SAP-Profile funktionieren.
 - Wenn Sie keine PPG verwenden, platzieren Sie alle Anwendungs- und DB-Server in derselben Zone, um die Netzwerklatenz zu minimieren.
-- Wenn Sie PPG verwenden, finden Sie weitere Informationen in diesem Abschnitt dieses Dokuments: „Zielplanung, Verfügbarkeitsgruppe, Verfügbarkeitszonen und Näherungsplatzierungsgruppe (Proximity Placement Group, PPG)“.
+- Wenn Sie eine PPG verwenden, lesen Sie den Abschnitt „Verfügbarkeitsgruppen, Verfügbarkeitszonen und Näherungsplatzierungsgruppen“ in diesem Dokument.
 
 ### <a name="storage-replication-discontinuance-process-if-used"></a>Verfahren zur Beendigung der Speicherreplikation (sofern verwendet)
 Wenn Speicherreplikation als Verfahren zur Notfallwiederherstellung verwendet wird, sollte sie nach dem Herunterfahren der SAP-Anwendung beendet (ihre Planung aufgehoben) werden.  Darüber hinaus wurden der letzte SAP HANA-Katalog, die Protokolldatei und Datensicherungen auf die DR HLI-Remotespeichervolumes repliziert.  Dies stellt eine Vorsichtsmaßnahme dar, die beim Eintreten eines Notfalls während des Übergangs von physischem Server zur Azure VM zum Tragen kommt.
@@ -131,7 +130,7 @@ Wenn Teile des HANA-Zielsystems in mehreren Azure-Zonen bereitgestellt werden, s
 
 ### <a name="backup-strategy"></a>Sicherungsstrategie
 Viele Kunden verwenden bereits Sicherungslösungen von Drittanbietern für SAP HANA in HLI.  In diesem Fall müssen nur eine zusätzliche geschützte VM und die HANA-Datenbanken konfiguriert werden.  Laufende HLI-Sicherungsaufträge können jetzt aus der Planung entfernt werden, wenn der Computer nach der Migration außer Betrieb gesetzt wird.
-Azure Backup für SAP HANA auf VMs ist jetzt allgemein verfügbar.  Unter den folgenden Links finden Sie ausführliche Informationen: [Sichern](../../../backup/backup-azure-sap-hana-database.md), [Wiederherstellen](../../../backup/sap-hana-db-restore.md), [Verwalten](../../../backup/sap-hana-db-manage.md) von SAP HANA-Sicherungen auf Azure-VMs.
+Azure Backup für SAP HANA auf VMs ist jetzt allgemein verfügbar.  Weitere Informationen finden Sie unter den folgenden Links: [Sicherung](../../../backup/backup-azure-sap-hana-database.md), [Wiederherstellung](../../../backup/sap-hana-db-restore.md) und [Verwaltung](../../../backup/sap-hana-db-manage.md) von SAP HANA-Sicherungen in Azure-VMs.
 
 ### <a name="dr-strategy"></a>Strategie zur Notfallwiederherstellung
 Wenn Ihre Servicelevelziele eine längere Wiederherstellungszeit, eine einfache Sicherung in Blob Storage und eine lokale Wiederherstellung oder Wiederherstellung auf einer neuen VM zulassen, ist dies die einfachste und kostengünstigste Strategie zur Notfallwiederherstellung.  
@@ -185,7 +184,7 @@ Der Migrationsauftrag wird erst ausgeführt, wenn alle HLI-abhängigen Dienste u
 ### <a name="decommissioning-the-hli"></a>Außerbetriebsetzung der HLI-Umgebung
 Achten Sie darauf, dass nach einer erfolgreichen Migration der HANA-Datenbank zu einer Azure-VM keine Produktionsgeschäftstransaktionen in der HLI-DB durchgeführt werden.  Es ist jedoch ein sicheres Verfahren, die HLI-Umgebung für einen Zeitraum gleich dem lokalen Beibehaltungsfenster für Sicherungsdaten weiterhin auszuführen, um bei Bedarf eine schnellere Wiederherstellung sicherzustellen.  Erst dann sollte der HLI-Bladeserver außer Betrieb genommen werden.  Kunden sollten die HLI-Verpflichtungen mit Microsoft in vertraglicher Form festhalten und sich dazu an ihren Microsoft-Vertriebspartner wenden.
 
-### <a name="remove-any-proxy-ex-iptables-bigip-configured-for-hli"></a>Entfernen Sie etwaige Proxys, die für HLI konfiguriert sind (z. B. iptables oder BIG-IP). 
+### <a name="remove-any-proxy-ex-iptables-bigip-configured-for-hli"></a>Entfernen Sie alle für HLI konfigurierten Proxys (z. B. iptables, BIGIP). 
 Wenn ein Proxydienst wie iptables zum Weiterleiten von lokalem Datenverkehr an und von HLI verwendet wird, ist er nach der erfolgreichen Migration zum virtuellen Computer nicht mehr erforderlich.  Dieser Konnektivitätsdienst sollte jedoch so lange beibehalten werden, wie der HLI-Bladeserver noch bereitsteht.  Fahren Sie den Dienst erst herunter, nachdem der HLI-Bladeserver vollständig außer Betrieb genommen wurde.
 
 ### <a name="remove-global-reach-for-hli"></a>Entfernen von Global Reach für HLI 

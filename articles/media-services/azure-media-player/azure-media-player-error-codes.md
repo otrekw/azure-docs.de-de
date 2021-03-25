@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: error-reference
 ms.date: 04/20/2020
-ms.openlocfilehash: 13d804ec39c3d7753d4ee04962a88d4451fb04d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89f063ab50cfd880552e80a77ba798e4d06de5b3
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81725903"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101709579"
 ---
 # <a name="error-codes"></a>Fehlercodes #
 
@@ -31,7 +31,7 @@ Wenn die Wiedergabe nicht gestartet werden kann oder beendet wurde, wird ein Feh
 
 Beschreibung des Bereichs des FehlesD.
 
-- 0: Unbekannt
+- 0 – Unbekannt
 - 1: AMP
 - 2: AzureHtml5JS
 - 3: FlashSS
@@ -83,8 +83,8 @@ Beschreibung der Fehlerdetails, Bits 27–20 enthalten eine allgemeine Beschreib
 | encryptErrLicenseAcquire | 0x0500006 | Fehler beim Abrufen der Schlüssellizenz |
 | **SRC_PLAYER_MISMATCH-Fehlerstartwert (0x0600000 – 0x06FFFFF)** | | |
 | srcPlayerMismatchUnknown | 0x0600000 | Generisch – kein Player mit passender Technologie zum Wiedergeben der Quelle |
-| srcPlayerMismatchFlashNotInstalled | 0x0600001 |Das Flash-Plug-In ist nicht installiert, wird es installiert, kann die Quelle wiedergegeben werden. *ODER* Flash 30 ist installiert und gibt AES-Inhalt wieder.  Wenn dies der Fall ist, versuchen Sie es bitte mit einem anderen Browser. Flash 30 wird seit dem 7. Juni nicht mehr unterstützt. Weitere Details finden Sie unter [bekannte Probleme](azure-media-player-known-issues.md). Hinweis: Bei 0x00600003 sind weder Flash noch Silverlight installiert, sofern in techOrder so angegeben.|
-| srcPlayerMismatchSilverlightNotInstalled | 0x0600002 | Das Silverlight-Plug-In ist nicht installiert, wird es installiert, kann die Quelle wiedergegeben werden. Hinweis: Bei 0x00600003 sind weder Flash noch Silverlight installiert, sofern in techOrder so angegeben. |
+| srcPlayerMismatchFlashNotInstalled | 0x0600001 |Das Flash-Plug-In ist nicht installiert, wird es installiert, kann die Quelle wiedergegeben werden. *ODER* Flash 30 ist installiert und gibt AES-Inhalt wieder.  Wenn dies der Fall ist, versuchen Sie es bitte mit einem anderen Browser. Flash 30 wird seit dem 7. Juni nicht mehr unterstützt. Weitere Details finden Sie unter [bekannte Probleme](azure-media-player-known-issues.md). Hinweis: Bei 0x00600003 sind weder Flash noch Silverlight installiert, sofern in der techOrder so angegeben.|
+| srcPlayerMismatchSilverlightNotInstalled | 0x0600002 | Das Silverlight-Plug-In ist nicht installiert, wird es installiert, kann die Quelle wiedergegeben werden. Hinweis: Bei 0x00600003 sind weder Flash noch Silverlight installiert, sofern in der techOrder so angegeben. |
 | | 0x00600003 | Weder Flash noch Silverlight ist installiert, sofern in techOrder so angegeben. |
 | **Unbekannte Fehler (0x0ff00000)** | | |
 | errUnknown | 0xFF00000 | Unbekannte Fehler |

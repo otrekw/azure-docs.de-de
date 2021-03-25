@@ -12,10 +12,10 @@ ms.date: 02/03/2020
 ms.author: kenwith
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 682549b5b99169060437c8c91d465121002edc6e
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99259603"
 ---
 # <a name="cloud-app-visibility-and-control"></a>Sichtbarkeit und Steuerung von Cloud-Apps
@@ -24,15 +24,15 @@ Zur optimalen Nutzung von Cloud-Apps und Clouddiensten müssen IT-Teams das rich
 
 ## <a name="discover-and-manage-shadow-it-in-your-network"></a>Entdecken und Verwalten von Schatten-IT in Ihrem Netzwerk
 
-IT-Administratoren schätzen die Anzahl von Cloud-Apps, die von den Mitarbeitern in ihrer Organisation genutzt werden, im Schnitt auf 30 oder 40. Tatsächlich werden von den Mitarbeitern in Ihrer Organisation jedoch im Schnitt über 1.000 separate Apps verwendet. Schatten-IT hilft Ihnen bei der Ermittlung und Identifizierung der verwendeten Apps und Ihrer Risikostufe. 80 Prozent der Mitarbeiter verwenden nicht sanktionierte Apps, die von niemandem überprüft wurden und möglicherweise nicht Ihren Sicherheits- und Compliancerichtlinien entsprechen. Und da Ihre Mitarbeiter von außerhalb Ihres Unternehmensnetzwerks auf Ihre Ressourcen und Apps zugreifen können, reichen Firewallregeln und -richtlinien nicht mehr aus.
+Wenn IT-Administratoren gefragt werden, wie viele Cloud-Apps von ihren Mitarbeitern verwendet werden, gehen sie im Durchschnitt von 30 bis 40 aus. Tatsächlich werden allerdings durchschnittlich mehr als 1.000 verschiedene Apps von den Mitarbeitern einer Organisation verwendet. Mithilfe von Shadow IT können Sie ermitteln, welche Apps verwendet werden und welche Risikostufe ihnen zugeordnet ist. 80 Prozent der Mitarbeiter verwenden nicht sanktionierte Apps, die von niemandem überprüft wurden und möglicherweise nicht Ihren Sicherheits- und Compliancerichtlinien entsprechen. Da Ihre Mitarbeiter heutzutage die Möglichkeit haben, von außerhalb Ihres Unternehmensnetzwerks auf Ihre Ressourcen und Apps zuzugreifen, reicht es nicht mehr aus, Richtlinien und Regeln für Ihre Firewalls festzulegen.
 
 Mit Microsoft Cloud App Discovery (einem Azure Active Directory Premium P1-Feature) können Sie die verwendeten Apps ermitteln, die Risiken dieser App untersuchen, Richtlinien zur Identifizierung neuer riskanter Apps konfigurieren und die Sanktionierung dieser Apps aufheben, um sie nativ mithilfe Ihrer Proxy- oder Firewallappliance zu blockieren.
 
-- Erkennen und Identifizieren von Schatten-IT
-- Auswerten und Analysieren
+- Ermitteln und Identifizieren von Schatten-IT
+- Auswertung und Analyse
 - Verwalten Ihrer Apps
-- Erweiterte Berichte für die Schatten-IT-Ermittlung
-- Steuern sanktionierter Apps
+- Erweiterte Berichte zur Schatten-IT-Ermittlung
+- Kontrollieren von sanktionierten Apps
  
 ### <a name="learn-more"></a>Weitere Informationen
 
@@ -43,7 +43,7 @@ Mit Microsoft Cloud App Discovery (einem Azure Active Directory Premium P1-Feat
 
 Heutzutage reicht es häufig nicht aus, wenn Sie erst im Nachhinein von Vorgängen in Ihrer Cloudumgebung erfahren. Sicherheitsverletzungen und Datenlecks sollten nach Möglichkeit verhindert werden, bevor Mitarbeiter absichtlich oder versehentlich Ihre Daten und Ihre Organisation gefährden. Die dazu nötigen Funktionen werden von Microsoft Cloud App Security in Kombination mit Azure Active Directory (Azure AD) in Form einer ganzheitlichen und integrierten Lösung mit App-Steuerung für bedingten Zugriff bereitgestellt. 
 
-Die Sitzungssteuerung verwendet eine Reverseproxyarchitektur und ist auf einzigartige Weise in den bedingten Azure AD-Zugriff integriert. Der bedingte Azure AD-Zugriff ermöglicht das Erzwingen von Zugriffssteuerungen für die Apps Ihrer Organisation auf der Grundlage bestimmter Bedingungen. Die Bedingungen definieren, auf wen (Benutzer oder Benutzergruppe), auf was (welche Cloud-Apps) und wo (welche Orte und Netzwerke) eine Richtlinie für bedingten Zugriff angewendet wird. Nach Bestimmung der Bedingungen können Sie Benutzer an Cloud App Security weiterleiten, wo Ihre Daten in Echtzeit geschützt werden können.  
+Die Sitzungssteuerung verwendet eine Reverseproxyarchitektur und ist auf einzigartige Weise in den bedingten Azure AD-Zugriff integriert. Bedingter Azure AD-Zugriff ermöglicht Ihnen das Erzwingen von Zugriffssteuerungen für die Apps Ihrer Organisation auf der Grundlage bestimmter Bedingungen. Die Bedingungen definieren, auf wen (Benutzer oder Benutzergruppe), auf was (welche Cloud-Apps) und wo (welche Orte und Netzwerke) eine Richtlinie für bedingten Zugriff angewendet wird. Nach Bestimmung der Bedingungen können Sie Benutzer an Cloud App Security weiterleiten, wo Ihre Daten in Echtzeit geschützt werden können.  
 
 Diese Steuerung ermöglicht Folgendes:  
 - Steuern von Dateidownloads

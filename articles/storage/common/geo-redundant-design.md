@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/05/2020
+ms.date: 02/18/2021
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c16f8233a2800025a8c6f601e236b86d2fd044fd
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 1a07acedadfaf3d5158ba8e494d4527301655425
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480682"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035100"
 ---
 # <a name="use-geo-redundancy-to-design-highly-available-applications"></a>Verwenden von Georedundanz zum Entwerfen von hochverfügbaren Anwendungen
 
@@ -100,7 +100,7 @@ Mit der Azure Storage-Clientbibliothek können Sie feststellen, für welche Fehl
 
 ### <a name="read-requests"></a>Leseanforderungen
 
-Leseanforderungen können in den sekundären Speicher umgeleitet werden, wenn ein Problem mit dem primären Speicher vorliegt. Wie oben unter [Verwenden von letztendlich konsistenten Daten](#using-eventually-consistent-data) beschrieben, muss Ihre Anwendung das Lesen möglicherweise veralteter Daten zulassen. Wenn Sie die Speicherclientbibliothek für den Zugriff auf Daten aus der sekundären Region verwenden, können Sie das Wiederholungsverhalten einer Leseanforderung angeben, indem Sie einen der folgenden Werte für die **LocationMode** -Eigenschaft festlegen:
+Leseanforderungen können in den sekundären Speicher umgeleitet werden, wenn ein Problem mit dem primären Speicher vorliegt. Wie oben unter [Verwenden von letztendlich konsistenten Daten](#using-eventually-consistent-data) beschrieben, muss Ihre Anwendung das Lesen möglicherweise veralteter Daten zulassen. Wenn Sie die Speicherclientbibliothek für den Zugriff auf Daten aus der sekundären Region verwenden, können Sie das Wiederholungsverhalten einer Leseanforderung angeben, indem Sie einen der folgenden Werte für die **LocationMode**-Eigenschaft festlegen:
 
 * **PrimaryOnly** (Standard)
 
@@ -122,11 +122,11 @@ Es gibt im Grunde zwei zu berücksichtigende Szenarien bei der Reaktion auf eine
 
     In diesem Szenario treten Leistungseinbußen auf, da alle Leseanforderungen zunächst auf dem primären Endpunkt ausgeführt werden, dann warten, bis das Timeout abläuft, und anschließend zum sekundären Endpunkt wechseln.
 
-Für diese Szenarien sollten Sie feststellen, ob es ein fortlaufendes Problem mit dem primären Endpunkt gibt, und alle Leseanforderungen direkt an den sekundären Endpunkt senden, indem Sie die **LocationMode** -Eigenschaft auf **SecondaryOnly** festlegen. Zu diesem Zeitpunkt sollten Sie die Anwendung auch auf die Ausführung im schreibgeschützten Modus festlegen. Dieser Ansatz wird als [Trennschalter-Muster](/azure/architecture/patterns/circuit-breaker) bezeichnet.
+Für diese Szenarien sollten Sie feststellen, ob es ein fortlaufendes Problem mit dem primären Endpunkt gibt, und alle Leseanforderungen direkt an den sekundären Endpunkt senden, indem Sie die **LocationMode**-Eigenschaft auf **SecondaryOnly** festlegen. Zu diesem Zeitpunkt sollten Sie die Anwendung auch auf die Ausführung im schreibgeschützten Modus festlegen. Dieser Ansatz wird als [Trennschalter-Muster](/azure/architecture/patterns/circuit-breaker) bezeichnet.
 
 ### <a name="update-requests"></a>Aktualisieren von Anforderungen
 
-Das Trennschalter-Muster kann auch auf Aktualisierungsanforderungen angewendet werden. Aktualisierungsanforderungen können jedoch nicht in den sekundären Speicher umgeleitet werden, da dieser schreibgeschützt ist. Sie sollten für diese Anforderungen den **LocationMode** -Eigenschaftensatz auf **PrimaryOnly** (Standard) belassen. Um diese Fehler zu verarbeiten, können Sie eine Metrik auf diese Anforderungen anwenden, z.B. 10 Fehler hintereinander, und wenn der Schwellenwert erreicht wird, überführen Sie die Anwendung in den schreibgeschützten Modus. Sie können die im nächsten Abschnitt über Trennschalter-Muster beschriebenen Methoden auch zum Zurückkehren in den Aktualisierungsmodus verwenden.
+Das Trennschalter-Muster kann auch auf Aktualisierungsanforderungen angewendet werden. Aktualisierungsanforderungen können jedoch nicht in den sekundären Speicher umgeleitet werden, da dieser schreibgeschützt ist. Sie sollten für diese Anforderungen den **LocationMode**-Eigenschaftensatz auf **PrimaryOnly** (Standard) belassen. Um diese Fehler zu verarbeiten, können Sie eine Metrik auf diese Anforderungen anwenden, z.B. 10 Fehler hintereinander, und wenn der Schwellenwert erreicht wird, überführen Sie die Anwendung in den schreibgeschützten Modus. Sie können die im nächsten Abschnitt über Trennschalter-Muster beschriebenen Methoden auch zum Zurückkehren in den Aktualisierungsmodus verwenden.
 
 ## <a name="circuit-breaker-pattern"></a>Trennschalter-Muster
 
@@ -136,7 +136,7 @@ Durch die Verwendung eines Trennschalter-Musters in Ihrer Anwendung können Sie 
 
 Um festzustellen, ob ein fortlaufendes Problem mit einem primären Endpunkt vorliegt, können Sie überwachen, wie häufig der Client Fehlerwiederholungen erkennt. Da jeder Fall unterschiedlich ist, müssen Sie den Schwellenwert für den Wechsel zum sekundären Endpunkt und zum Ausführen der Anwendung im schreibgeschützten Modus festlegen. Beispielsweise können Sie den Wechsel ausführen, wenn 10 Fehler hintereinander aufgetreten sind. Ein weiteres Beispiel ist, zu wechseln, wenn bei 90 % der Anforderungen in einem Zeitraum von 2 Minuten Fehler auftreten.
 
-Für das erste Szenario können Sie einfach die Anzahl der Fehler verwenden. Bei einem Erfolg vor Erreichen des Maximalwerts wird der Zähler auf null zurückgesetzt. Für das zweite Szenario besteht die Möglichkeit zur Implementierung des MemoryCache-Objekts (in .NET). Für jede Anforderung fügen Sie dem Cache ein CacheItem hinzu, bestimmen den Wert für Erfolg (1) oder Fehler (0) und legen die Ablaufzeit auf 2 Minuten ab dem jetzigen Zeitpunkt fest (je nach gewünschter Zeiteinschränkung). Wenn ein Eintrag abläuft, wird der Eintrag automatisch entfernt. Dadurch erhalten Sie ein laufendes 2-Minuten-Fenster. Jedes Mal, wenn Sie eine Anforderung an den Speicherdienst übermitteln, stellen Sie zuerst eine Linq-Abfrage an das MemoryCache-Objekt, um den Erfolg in Prozent zu berechnen, indem die Werte addiert und die Summe durch die Anzahl geteilt wird. Wenn der Erfolg in Prozent unter einen Schwellenwert (z.B. 10 %) fällt, legen Sie die **LocationMode** -Eigenschaft für Leseanforderungen auf **SecondaryOnly** fest und überführen die Anwendung in den schreibgeschützten Modus, bevor Sie fortfahren.
+Für das erste Szenario können Sie einfach die Anzahl der Fehler verwenden. Bei einem Erfolg vor Erreichen des Maximalwerts wird der Zähler auf null zurückgesetzt. Für das zweite Szenario besteht die Möglichkeit zur Implementierung des MemoryCache-Objekts (in .NET). Für jede Anforderung fügen Sie dem Cache ein CacheItem hinzu, bestimmen den Wert für Erfolg (1) oder Fehler (0) und legen die Ablaufzeit auf 2 Minuten ab dem jetzigen Zeitpunkt fest (je nach gewünschter Zeiteinschränkung). Wenn ein Eintrag abläuft, wird der Eintrag automatisch entfernt. Dadurch erhalten Sie ein laufendes 2-Minuten-Fenster. Jedes Mal, wenn Sie eine Anforderung an den Speicherdienst übermitteln, stellen Sie zuerst eine Linq-Abfrage an das MemoryCache-Objekt, um den Erfolg in Prozent zu berechnen, indem die Werte addiert und die Summe durch die Anzahl geteilt wird. Wenn der Erfolg in Prozent unter einen Schwellenwert (z.B. 10 %) fällt, legen Sie die **LocationMode**-Eigenschaft für Leseanforderungen auf **SecondaryOnly** fest und überführen die Anwendung in den schreibgeschützten Modus, bevor Sie fortfahren.
 
 Die Fehlerschwellenwerte, die zum Bestimmen des Wechsels verwendet werden, unterscheiden sich je nach den Diensten Ihrer Anwendung. Daher sollten Sie in Erwägung ziehen, diese zu konfigurierbaren Parametern zu machen. An dieser Stelle entscheiden Sie auch, ob wiederholbare Fehler von jedem Dienst getrennt oder gemeinsam verarbeitet werden, wie zuvor erläutert.
 
@@ -148,6 +148,12 @@ Sie haben drei Hauptoptionen für die Überwachung der Fehlerhäufigkeit in der 
 
 * Fügen Sie dem [**OperationContext**](/java/api/com.microsoft.applicationinsights.extensibility.context.operationcontext)-Objekt, das Sie an die Speicheranforderungen übergeben, einen Handler für das [**Wiederholungsereignis**](/dotnet/api/microsoft.azure.cosmos.table.operationcontext.retrying) hinzu – dies ist die Methode, die in diesem Artikel erläutert und im zugehörigen Beispiel verwendet wird. Diese Ereignisse werden ausgelöst, wenn der Client eine Anforderung wiederholt. Dadurch können Sie verfolgen, wie oft der Client wiederholbare Fehler auf einem primären Endpunkt feststellt.
 
+    # <a name="net-v12"></a>[.NET v12](#tab/current)
+
+    Wir arbeiten derzeit daran, Codeausschnitte für Version 12.x der Azure Storage-Clientbibliotheken zu erstellen. Weitere Informationen finden Sie unter [Ankündigung der Azure Storage v12-Clientbibliotheken](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+    # <a name="net-v11"></a>[.NET v11](#tab/legacy)
+
     ```csharp
     operationContext.Retrying += (sender, arguments) =>
     {
@@ -156,8 +162,15 @@ Sie haben drei Hauptoptionen für die Überwachung der Fehlerhäufigkeit in der 
             ...
     };
     ```
+    ---
 
 * In der Methode [**Evaluieren**](/dotnet/api/microsoft.azure.cosmos.table.iextendedretrypolicy.evaluate) in einer benutzerdefinierten Wiederholungsrichtlinie können Sie benutzerdefinierten Code ausführen, sobald ein erneuter Versuch stattfindet. Zusätzlich zur Erfassung des Zeitpunkts einer Wiederholung erhalten Sie auch die Möglichkeit, das Wiederholungsverhalten zu ändern.
+
+    # <a name="net-v12"></a>[.NET v12](#tab/current)
+
+    Wir arbeiten derzeit daran, Codeausschnitte für Version 12.x der Azure Storage-Clientbibliotheken zu erstellen. Weitere Informationen finden Sie unter [Ankündigung der Azure Storage v12-Clientbibliotheken](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+    # <a name="net-v11"></a>[.NET v11](#tab/legacy)
 
     ```csharp
     public RetryInfo Evaluate(RetryContext retryContext,
@@ -184,6 +197,7 @@ Sie haben drei Hauptoptionen für die Überwachung der Fehlerhäufigkeit in der 
         return info;
     }
     ```
+    ---
 
 * Der dritte Ansatz besteht darin, eine benutzerdefinierte Komponente in der Anwendung zu implementieren, die fortlaufend Ping-Nachrichten mit leeren Leseanforderungen (z.B. das Lesen eines kleinen Blobs) an den primären Speicherendpunkt sendet, um den Systemzustand zu ermitteln. Dies nimmt zwar einige Ressourcen in Anspruch, jedoch in einem unerheblichen Maß. Wenn ein Problem festgestellt wird, durch das der Schwellenwert erreicht wird, führen Sie einen Wechsel in den schreibgeschützten Modus **SecondaryOnly** durch.
 
@@ -209,7 +223,7 @@ Die folgende Tabelle zeigt ein Beispiel dafür, was passieren kann, wenn Sie die
 
 In diesem Beispiel wird davon ausgegangen, dass der Client bei T5 zum Lesen aus der sekundären Region wechselt. Er kann die **Administratorrollenentität** zu diesem Zeitpunkt erfolgreich lesen, die Entität enthält jedoch einen Wert für die Anzahl der Administratoren, die nicht konsistent mit der Anzahl der **Mitarbeiterentitäten** ist, die zu diesem Zeitpunkt in der sekundären Region als Administratoren gekennzeichnet sind. Der Client konnte diesen Wert anzeigen, es besteht jedoch das Risiko, dass es sich um inkonsistente Informationen handelt. Wahlweise kann der Client versuchen, festzustellen, ob die **Administratorrolle** möglicherweise inkonsistent ist, da die Aktualisierungen nicht in der richtigen Reihenfolge vorliegen, und anschließend können die Benutzer über diese Tatsache informiert werden.
 
-Um möglicherweise inkonsistente Daten zu erkennen, kann der Client den Wert des *Zeitpunkts der letzten Synchronisierung* verwenden, den Sie jederzeit durch eine Abfrage eines Speicherdiensts abrufen können. Dadurch können Sie den Zeitpunkt der letzten Datenkonsistenz in der sekundären Region und den Zeitpunkt feststellen, zu dem der Dienst alle Transaktionen vor diesem Zeitpunkt angewendet hat. Im Beispiel oben wird nach dem Einfügen der **Mitarbeiterentität** in der sekundären Region durch den Dienst der Zeitpunkt der letzten Synchronisierung auf *T1* festgelegt. Der Wert bleibt *T1* , bis der Dienst die **Mitarbeiterentität** in der sekundären Region aktualisiert, sobald sie auf *T6* festgelegt wird. Wenn der Client den Zeitpunkt der letzten Synchronisierung beim Lesen der Entität bei *T5* abruft, kann dieser ihn mit dem Zeitstempel der Entität vergleichen. Wenn der Zeitstempel der Entität nach dem Zeitpunkt der letzten Synchronisierung liegt, ist die Entität möglicherweise inkonsistent, und Sie können die entsprechende Aktion für Ihre Anwendung ausführen. Die Verwendung dieses Felds erfordert, dass Sie wissen, wann die letzte Aktualisierung des primären Replikats abgeschlossen wurde.
+Um möglicherweise inkonsistente Daten zu erkennen, kann der Client den Wert des *Zeitpunkts der letzten Synchronisierung* verwenden, den Sie jederzeit durch eine Abfrage eines Speicherdiensts abrufen können. Dadurch können Sie den Zeitpunkt der letzten Datenkonsistenz in der sekundären Region und den Zeitpunkt feststellen, zu dem der Dienst alle Transaktionen vor diesem Zeitpunkt angewendet hat. Im Beispiel oben wird nach dem Einfügen der **Mitarbeiterentität** in der sekundären Region durch den Dienst der Zeitpunkt der letzten Synchronisierung auf *T1* festgelegt. Der Wert bleibt *T1*, bis der Dienst die **Mitarbeiterentität** in der sekundären Region aktualisiert, sobald sie auf *T6* festgelegt wird. Wenn der Client den Zeitpunkt der letzten Synchronisierung beim Lesen der Entität bei *T5* abruft, kann dieser ihn mit dem Zeitstempel der Entität vergleichen. Wenn der Zeitstempel der Entität nach dem Zeitpunkt der letzten Synchronisierung liegt, ist die Entität möglicherweise inkonsistent, und Sie können die entsprechende Aktion für Ihre Anwendung ausführen. Die Verwendung dieses Felds erfordert, dass Sie wissen, wann die letzte Aktualisierung des primären Replikats abgeschlossen wurde.
 
 Informationen, wie Sie die letzte Synchronisierungszeit überprüfen, finden Sie unter [Überprüfen der Eigenschaft „Letzte Synchronisierung“ für ein Speicherkonto](last-sync-time-get.md).
 
@@ -217,7 +231,14 @@ Informationen, wie Sie die letzte Synchronisierungszeit überprüfen, finden Sie
 
 Es ist wichtig, zu testen, ob Ihre Anwendung sich erwartungsgemäß verhält, wenn wiederholbare Fehler auftreten. Beispielsweise müssen Sie testen, ob die Anwendung zur sekundären Region und in den schreibgeschützten Modus wechselt, wenn ein Problem entdeckt wird, und zurückwechselt, wenn die primäre Region wieder verfügbar ist. Zu diesem Zweck benötigen Sie eine Möglichkeit zum Simulieren von wiederholbaren Fehlern und deren Auftrittshäufigkeit.
 
-Sie können [Fiddler](https://www.telerik.com/fiddler) zum Abfangen und Bearbeiten von HTTP-Antworten in einem Skript verwenden. Dieses Skript kann Antworten vom primären Endpunkt identifizieren und den HTTP-Statuscode in einen Statuscode ändern, den die Speicherclientbibliothek als wiederholbaren Fehler erkennt. Dieser Codeausschnitt zeigt ein einfaches Beispiel eines Fiddler-Skripts, das Antworten auf Leseanforderungen an die **employeedata** -Tabelle abfängt, um einen 502-Status zurückzugeben:
+Sie können [Fiddler](https://www.telerik.com/fiddler) zum Abfangen und Bearbeiten von HTTP-Antworten in einem Skript verwenden. Dieses Skript kann Antworten vom primären Endpunkt identifizieren und den HTTP-Statuscode in einen Statuscode ändern, den die Speicherclientbibliothek als wiederholbaren Fehler erkennt. Dieser Codeausschnitt zeigt ein einfaches Beispiel eines Fiddler-Skripts, das Antworten auf Leseanforderungen an die **employeedata**-Tabelle abfängt, um einen 502-Status zurückzugeben:
+
+
+# <a name="java-v12"></a>[Java v12](#tab/current)
+
+Wir arbeiten derzeit daran, Codeausschnitte für Version 12.x der Azure Storage-Clientbibliotheken zu erstellen. Weitere Informationen finden Sie unter [Ankündigung der Azure Storage v12-Clientbibliotheken](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394).
+
+# <a name="java-v11"></a>[Java v11](#tab/legacy)
 
 ```java
 static function OnBeforeResponse(oSession: Session) {

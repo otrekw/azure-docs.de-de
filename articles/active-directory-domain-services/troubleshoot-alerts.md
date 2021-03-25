@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/09/2020
 ms.author: justinha
-ms.openlocfilehash: 80011b2ae2a70ce4c540ac31897cc8be4a6580c3
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 4caf804a274956556d6e9ca396c8f08594b11a87
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96618619"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "101092875"
 ---
 # <a name="known-issues-common-alerts-and-resolutions-in-azure-active-directory-domain-services"></a>Bekannte Probleme: Häufige Warnungen und deren Auflösung in Azure AD Domain Services
 
@@ -162,7 +162,7 @@ Dieser Fehler ist nicht behebbar. Zum Auflösen der Warnung müssen Sie [Ihre vo
 
 Einige automatisch generierte Dienstprinzipale werden zum Verwalten und Erstellen von Ressourcen für eine verwaltete Domäne verwendet. Wenn die Zugriffsberechtigungen für einen dieser Dienstprinzipale geändert werden, können Ressourcen von der Domäne nicht ordnungsgemäß verwaltet werden. In den folgenden Schritten lernen Sie die Zugriffsberechtigungen für Dienstprinzipale kennen und erfahren, wie diese gewährt werden:
 
-1. Lesen Sie hierzu auch [Verwalten des Zugriffs auf Azure-Ressourcen mit RBAC und dem Azure-Portal](../role-based-access-control/role-assignments-portal.md).
+1. Lesen Sie hierzu auch [Zuweisen von Azure-Rollen über das Azure-Portal](../role-based-access-control/role-assignments-portal.md).
 2. Überprüfen Sie den Zugriff des Dienstprinzipals mit der ID *abba844e-bc0e-44b0-947a-dc74e5d09022*, und gewähren Sie den Zugriff, der zu einem früheren Zeitpunkt verweigert wurde.
 
 ## <a name="aadds112-not-enough-ip-address-in-the-managed-domain"></a>AADDS112: Nicht genügend IP-Adressen in der verwalteten Domäne

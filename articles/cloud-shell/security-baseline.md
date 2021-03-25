@@ -4,15 +4,15 @@ description: Die Cloud Shell-Sicherheitsbaseline enthält Anleitungen und Ressou
 author: msmbaldwin
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 10/19/2020
+ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: fde7c7fa619c6d0a36ef0890f31375ac3933e6ee
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: ce8c5107ebb86106537ffce21f852d8b67ecbd78
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807664"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101703472"
 ---
 # <a name="azure-security-baseline-for-cloud-shell"></a>Azure-Sicherheitsbaseline für Cloud Shell
 
@@ -38,9 +38,9 @@ Wenn Sie Azure Cloud Shell in einem kundeneigenen virtuellen Netzwerk bereitstel
 
 - [Bereitstellen und Konfigurieren von Azure Firewall](../firewall/tutorial-firewall-deploy-portal.md)
 
-**Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ## <a name="identity-and-access-control"></a>Identität und Zugriffssteuerung
 
@@ -48,19 +48,19 @@ Wenn Sie Azure Cloud Shell in einem kundeneigenen virtuellen Netzwerk bereitstel
 
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3.4: Verwenden des einmaligen Anmeldens (Single Sign-On, SSO) mit Azure Active Directory
 
-**Leitfaden**: Azure Cloud Shell ist eine browserbasierte Befehlszeilenumgebung, die dieselbe Autorisierung verwendet, die auch für den Zugriff auf das Azure-Portal verwendet wird. In diesem Fall wird Sie das einmalige Anmelden (SSO) beim Azure-Portal auch für Cloud Shell authentifizieren. 
-
-**Azure Security Center-Überwachung**: Nicht verfügbar
+**Leitfaden**: Azure Cloud Shell ist eine browserbasierte Befehlszeilenumgebung, die dieselbe Autorisierung verwendet, die auch für den Zugriff auf das Azure-Portal verwendet wird. In diesem Fall wird Sie das einmalige Anmelden (SSO) beim Azure-Portal auch für Cloud Shell authentifizieren.
 
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5: Verwenden der mehrstufigen Authentifizierung für den gesamten Azure Active Directory-basierten Zugriff
 
-**Leitfaden**: Azure Cloud Shell ist eine browserbasierte Befehlszeilenumgebung, die dieselbe Autorisierung verwendet, die auch für den Zugriff auf das Azure-Portal verwendet wird. In diesem Fall wird jede MFA, die für die Verbindung mit dem Azure-Portal erforderlich ist, auch für Cloud Shell benötigt. 
-
-**Azure Security Center-Überwachung**: Ja
+**Leitfaden**: Azure Cloud Shell ist eine browserbasierte Befehlszeilenumgebung, die dieselbe Autorisierung verwendet, die auch für den Zugriff auf das Azure-Portal verwendet wird. In diesem Fall wird jede mehrstufige Authentifizierung, die für die Verbindung mit dem Azure-Portal erforderlich ist, auch für Cloud Shell benötigt.
 
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ## <a name="vulnerability-management"></a>Verwaltung von Sicherheitsrisiken
 
@@ -72,11 +72,11 @@ Wenn Sie Azure Cloud Shell in einem kundeneigenen virtuellen Netzwerk bereitstel
 
 Azure Cloud Shell ermöglicht es Kunden, ihre eigenen Tools oder Software in ihrem eigenen Image nach ihren organisatorischen Anforderungen zu installieren.
 
-Kunden sind für die Ausführung automatisierter Scantools für Sicherheitsrisiken für Software verantwortlich, die in der Umgebung ausgeführt wird.  
-
-**Azure Security Center-Überwachung**: Nicht verfügbar
+Kunden sind für die Ausführung automatisierter Scantools für Sicherheitsrisiken für Software verantwortlich, die in der Umgebung ausgeführt wird.
 
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="53-deploy-an-automated-patch-management-solution-for-third-party-software-titles"></a>5.3: Bereitstellen einer automatisierten Patchverwaltungslösung für Softwaretitel von Drittanbietern
 
@@ -86,9 +86,9 @@ Azure Cloud Shell ermöglicht es Kunden, ihre eigenen Tools oder Software in ihr
 
 Kunden sind verantwortlich für die Verwaltung von Softwarepatches, die in ihrer Umgebung ausgeführt wird.
 
-**Azure Security Center-Überwachung**: Nicht verfügbar
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="54-compare-back-to-back-vulnerability-scans"></a>5.4 Vergleichen von kaskadierenden Sicherheitsrisikoscans
 
@@ -98,9 +98,9 @@ Azure Cloud Shell ermöglicht es Kunden, ihre eigenen Tools oder Software in ihr
 
 Kunden sind dafür verantwortlich, Sicherheitsrisiken zu beheben, die durch ihre Sicherheitsrisikoscans für Software entdeckt werden. Exportieren Sie die Scanergebnisse in regelmäßigen Abständen und vergleichen Sie die Ergebnisse mit vorherigen Scans, um zu überprüfen, ob die Sicherheitsrisiken behoben wurden. Wenn Sie die von Azure Security Center vorgeschlagenen Empfehlungen zur Verwaltung von Sicherheitsrisiken verwenden, können Sie in das Portal der ausgewählten Lösung wechseln, um die historischen Scandaten anzuzeigen.
 
-**Azure Security Center-Überwachung**: Nicht verfügbar
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5.5: Verwenden eines Risikobewertungsprozesses, um die Behebung von erkannten Sicherheitsrisiken zu priorisieren
 
@@ -112,9 +112,9 @@ Kunden sind dafür verantwortlich, Sicherheitsrisiken zu beheben, die durch ihre
 
 - [NIST-Veröffentlichung: Common Vulnerability Scoring System](https://www.nist.gov/publications/common-vulnerability-scoring-system)
 
-**Azure Security Center-Überwachung**: Nicht verfügbar
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ## <a name="inventory-and-asset-management"></a>Bestands- und Ressourcenverwaltung
 
@@ -126,9 +126,9 @@ Kunden sind dafür verantwortlich, Sicherheitsrisiken zu beheben, die durch ihre
 
 Kunden wird empfohlen, einen Bestand an genehmigter Software zu erstellen, die über Azure Cloud Shell gemäß den Anforderungen Ihres Unternehmens installiert wird.
 
-**Azure Security Center-Überwachung**: Nicht verfügbar
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6.6: Überwachen auf nicht genehmigte Softwareanwendungen innerhalb von Computeressourcen
 
@@ -138,9 +138,9 @@ Azure Cloud Shell ermöglicht es Kunden, ihre eigenen Tools oder Software in ihr
 
 Kunden sind dafür verantwortlich, in der Umgebung ausgeführte Softwareanwendungen zu überwachen, um sicherzustellen, dass sie gemäß den Richtlinien des Unternehmens genehmigt werden.
 
-**Azure Security Center-Überwachung**: Nicht verfügbar
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6.7: Entfernen nicht genehmigter Azure-Ressourcen und Softwareanwendungen
 
@@ -150,9 +150,9 @@ Azure Cloud Shell ermöglicht es Kunden, ihre eigenen Tools oder Software in ihr
 
 Kunden sind dafür verantwortlich, in der Umgebung ausgeführte Softwareanwendungen zu überwachen, um sicherzustellen, dass nicht genehmigte Software gemäß den Richtlinien des Unternehmens verwaltet wird.
 
-**Azure Security Center-Überwachung**: Nicht verfügbar
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="68-use-only-approved-applications"></a>6.8: Ausschließliche Verwendung genehmigter Anwendungen
 
@@ -162,9 +162,9 @@ Azure Cloud Shell ermöglicht es Kunden, ihre eigenen Tools oder Anwendungen in 
 
 Kunden sind dafür verantwortlich, in der Umgebung ausgeführte Anwendungen zu überwachen, um sicherzustellen, dass sie gemäß den Richtlinien des Unternehmens genehmigt werden.
 
-**Azure Security Center-Überwachung**: Nicht verfügbar
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="610-maintain-an-inventory-of-approved-software-titles"></a>6.10: Verwalten eines Bestands an genehmigten Softwaretiteln
 
@@ -174,17 +174,17 @@ Azure Cloud Shell ermöglicht es Kunden, ihre eigenen Tools oder Software in ihr
 
 Kunden sind dafür verantwortlich, einen Bestand an genehmigter Software zu führen, die in der Umgebung ausgeführt wird, um sicherzustellen, dass es sich um genehmigte Software gemäß den Richtlinien des Unternehmens handelt.
 
-**Azure Security Center-Überwachung**: Nicht verfügbar
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="612-limit-users-ability-to-execute-scripts-in-compute-resources"></a>6.12: Einschränken der Skriptausführung durch Benutzer in Computeressourcen
 
 **Leitfaden**: Azure Cloud Shell ist eine browserbasierte Befehlszeilenumgebung, die für die interaktive Verwaltung von Cloudressourcen verwendet wird.  Aktionen, die innerhalb von Cloud Shell ausgeführt werden, funktionieren genauso wie Aktionen, die mit denselben Tools oder Sprachen in einer lokalen Umgebung ausgeführt werden.  Aktionen von einzelnen Tools und Sprachen sollten eingeschränkt werden, Kunden können den Zugriff auf Cloud Shell oder die Optionen nicht einschränken, die einem Benutzer zur Verfügung stehen.
 
-**Azure Security Center-Überwachung**: Nicht verfügbar
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13: Physische oder logische Trennung von Anwendungen mit hohem Risiko
 
@@ -192,9 +192,9 @@ Kunden sind dafür verantwortlich, einen Bestand an genehmigter Software zu füh
 
 - [Bereitstellen von Cloud Shell in einem Azure Virtual Network](private-vnet.md)
 
-**Azure Security Center-Überwachung**: Nicht verfügbar
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ## <a name="secure-configuration"></a>Sichere Konfiguration
 
@@ -204,9 +204,9 @@ Kunden sind dafür verantwortlich, einen Bestand an genehmigter Software zu füh
 
 **Leitfaden**: Cloud Shell gestattet Folgendes in der Cloud Shell-Umgebung: Ausführen, Erstellen und Hochladen von Skripts.  Es wird empfohlen, Anmeldeinformationen nach Azure Key Vault zu verschieben.
 
-**Azure Security Center-Überwachung**: Nicht verfügbar
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ## <a name="malware-defense"></a>Schutz vor Schadsoftware
 
@@ -216,17 +216,17 @@ Kunden sind dafür verantwortlich, einen Bestand an genehmigter Software zu füh
 
 **Leitfaden**: Azure Cloud Shell ist eine browserbasierte Befehlszeilenumgebung, die für die interaktive Verwaltung von Cloudressourcen verwendet wird.  Jeder Kundencontainer ist kurzlebig, für jede Sitzung wird ein neuer Container verwendet.  Die Containerimages und Tools werden vom Cloud Shell-Team überwacht und aktualisiert.  Der Kunde ist in der Lage, seine eigenen Tools in seinem eigenen Image entsprechend seinen organisatorischen Anforderungen zu installieren, und die Tools benötigen während der Installation keine `sudo`-Berechtigungen.
 
-**Azure Security Center-Überwachung**: Nicht verfügbar
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="83-ensure-antimalware-software-and-signatures-are-updated"></a>Schritt 8.3: Sicherstellen der Aktualisierung von Antischadsoftware und Signaturen
 
 **Leitfaden**: Azure Cloud Shell ist eine browserbasierte Befehlszeilenumgebung, die für die interaktive Verwaltung von Cloudressourcen verwendet wird.  Jeder Kundencontainer ist kurzlebig, für jede Sitzung wird ein neuer Container verwendet.  Die Containerimages und Tools werden vom Cloud Shell-Team überwacht und aktualisiert.  Der Kunde ist in der Lage, seine eigenen Tools in seinem eigenen Image entsprechend seinen organisatorischen Anforderungen zu installieren, und die Tools benötigen während der Installation keine `sudo`-Berechtigungen.
 
-**Azure Security Center-Überwachung**: Nicht verfügbar
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ## <a name="incident-response"></a>Reaktion auf Vorfälle
 
@@ -235,78 +235,92 @@ Kunden sind dafür verantwortlich, einen Bestand an genehmigter Software zu füh
 ### <a name="101-create-an-incident-response-guide"></a>10.1: Erstellen eines Leitfadens für die Reaktion auf Vorfälle
 
 **Anleitung:** Erarbeiten Sie einen Leitfaden für die Reaktion auf Vorfälle für Ihre Organisation. Stellen Sie sicher, dass es schriftliche Pläne für die Reaktion auf Vorfälle gibt, in denen alle Rollen der Mitarbeiter sowie die Phasen der Bearbeitung und Verwaltung von Vorfällen von der Ermittlung bis zur abschließenden Überprüfung definiert sind.
-- [Leitfaden zu Planung und Betrieb](../security-center/security-center-planning-and-operations-guide.md) 
-- [Anleitung zum Entwickeln eines Prozesses für die Reaktion auf Sicherheitsvorfälle](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/) 
-- [Struktur eines Vorfalls laut Microsoft Security Response Center](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/) 
-- [Kunden können außerdem den Computer Security Incident Handling Guide des US-amerikanischen National Institute of Standards and Technology (NIST) nutzen, um einen Plan zur Reaktion auf Incidents auszuarbeiten.](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf) 
 
-**Azure Security Center-Überwachung**: Nicht verfügbar
+- [Leitfaden zu Planung und Betrieb](../security-center/security-center-planning-and-operations-guide.md) 
+
+- [Anleitung zum Entwickeln eines Prozesses für die Reaktion auf Sicherheitsvorfälle](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/) 
+
+- [Struktur eines Vorfalls laut Microsoft Security Response Center](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/) 
+
+- [Kunden können außerdem den Computer Security Incident Handling Guide des US-amerikanischen National Institute of Standards and Technology (NIST) nutzen, um einen Plan zur Reaktion auf Incidents auszuarbeiten.](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf)
 
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2: Erstellen eines Verfahrens zur Bewertung und Priorisierung von Vorfällen
 
 **Anleitung:** Security Center weist jeder Warnung einen Schweregrad zu, damit Sie priorisieren können, welche Warnungen zuerst untersucht werden sollen. Der Schweregrad basiert darauf, wie sicher Security Center in Bezug auf den Befund oder die Analyse ist, die zum Auslösen der Warnung verwendet wird, sowie auf dem Zuverlässigkeitsgrad, dass hinter der Aktivität, die zu der Warnung führte, eine böswillige Absicht stand.
-Kennzeichnen Sie außerdem die Abonnements (z. B. Produktion, Nicht-Produktion), und erstellen Sie ein Namenssystem, um Azure-Ressourcen eindeutig zu identifizieren und zu kategorisieren.
-- [Sicherheitswarnungen in Azure Security Center](../security-center/security-center-alerts-overview.md) 
-- [Verwenden von Tags zum Organisieren von Azure-Ressourcen](../azure-resource-manager/management/tag-resources.md) 
 
-**Azure Security Center-Überwachung**: Nicht verfügbar
+Kennzeichnen Sie außerdem die Abonnements (z. B. Produktion, Nicht-Produktion), und erstellen Sie ein Namenssystem, um Azure-Ressourcen eindeutig zu identifizieren und zu kategorisieren.
+
+- [Sicherheitswarnungen in Azure Security Center](../security-center/security-center-alerts-overview.md) 
+
+- [Verwenden von Tags zum Organisieren von Azure-Ressourcen](../azure-resource-manager/management/tag-resources.md)
 
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="103-test-security-response-procedures"></a>10.3: Verfahren zum Testen der Reaktion auf Sicherheitsvorfälle
 
 **Leitfaden**: Führen Sie in regelmäßigen Abständen Tests zur Reaktionsfähigkeit Ihrer Systeme auf Vorfälle durch. Identifizieren Sie Schwachstellen und Lücken, und überarbeiten Sie den Plan bei Bedarf.
-- [„Guide to Test, Training, and Exercise Programs for IT Plans and Capabilities“ des National Institute of Standards and Technology (NIST)](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf) 
 
-**Azure Security Center-Überwachung**: Nicht verfügbar
+- [„Guide to Test, Training, and Exercise Programs for IT Plans and Capabilities“ des National Institute of Standards and Technology (NIST)](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf)
 
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10.4: Angeben von Kontaktdaten für Sicherheitsvorfälle und Konfigurieren von Warnungsbenachrichtigungen für Sicherheitsvorfälle
 
 **Leitfaden**: Microsoft kontaktiert Sie unter den für Sicherheitsvorfälle angegebenen Kontaktdaten, wenn das Microsoft Security Response Center (MSRC) feststellt, dass Personen unrechtmäßig oder unbefugt auf die Kundendaten zugegriffen haben. Überprüfen Sie die Vorfälle anschließend, um sicherzustellen, dass die Probleme behoben wurden.
-- [Festlegen der Kontaktinformationen in Azure Security Center](../security-center/security-center-provide-security-contact-details.md) 
 
-**Azure Security Center-Überwachung**: Nicht verfügbar
+- [Festlegen der Kontaktinformationen in Azure Security Center](../security-center/security-center-provide-security-contact-details.md)
 
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5: Integrieren von Sicherheitswarnungen in das System zur Reaktion auf Vorfälle
 
 **Leitfaden**: Exportieren Sie die Azure Security Center-Warnungen und -Empfehlungen über die Funktion „Fortlaufender Export“. Über „Fortlaufender Export“ können Sie Warnungen und Empfehlungen entweder manuell oder kontinuierlich exportieren. Sie können den Azure Security Center-Datenconnector verwenden, um die Warnungen an Azure Sentinel zu streamen.
-- [Konfigurieren des fortlaufenden Exports](../security-center/continuous-export.md) 
-- [Streamen von Warnungen in Azure Sentinel](../sentinel/connect-azure-security-center.md) 
 
-**Azure Security Center-Überwachung**: Nicht verfügbar
+- [Konfigurieren des fortlaufenden Exports](../security-center/continuous-export.md) 
+
+- [Streamen von Warnungen in Azure Sentinel](../sentinel/connect-azure-security-center.md)
 
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="106-automate-the-response-to-security-alerts"></a>10.6: Automatisieren der Reaktion auf Sicherheitswarnungen
 
 **Leitfaden**: Verwenden Sie die Funktion „Workflowautomatisierung“ in Azure Security Center, um über „Logic Apps“ automatisch Reaktionen auf Sicherheitswarnungen und -empfehlungen auszulösen.
-- [Konfigurieren von Workflowautomatisierung und Logic Apps](../security-center/workflow-automation.md)
 
-**Azure Security Center-Überwachung**: Nicht verfügbar
+- [Konfigurieren von Workflowautomatisierung und Logic Apps](../security-center/workflow-automation.md)
 
 **Verantwortlichkeit**: Kunde
 
-## <a name="penetration-tests-and-red-team-exercises"></a>Penetrationstests und Red Team-Übungen
+**Azure Security Center-Überwachung:** Keine
+
+## <a name="penetration-tests-and-red-team-exercises"></a>Penetrationstests und Red Team-Übungen
 
 *Weitere Informationen finden Sie unter [Azure-Sicherheitsvergleichstest: Penetrationstests und Red Team-Übungen](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md).*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1: Durchführen regelmäßiger Penetrationstests Ihrer Azure-Ressourcen und Sicherstellen der Behebung aller kritischen Sicherheitsergebnissen
 
 **Leitfaden**: Befolgen Sie in dem Fall die Einsatzregeln für Penetrationstests von Microsoft Cloud, um sicherzustellen, dass die Penetrationstests nicht gegen Microsoft-Richtlinien verstoßen. Nutzen Sie die Microsoft-Strategie und Durchführung von Red Team- und Livewebsite-Penetrationstests für von Microsoft verwaltete Cloudinfrastruktur, Dienste und Anwendungen.
-- [Penetrationstests – Rules of Engagement](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1) 
-- [Microsoft Cloud Red Teaming](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e) 
 
-**Azure Security Center-Überwachung**: Nicht verfügbar
+- [Penetrationstests – Rules of Engagement](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1) 
+
+- [Microsoft Cloud Red Teaming](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
 **Verantwortlichkeit**: Kunde
 
+**Azure Security Center-Überwachung:** Keine
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Lesen Sie den [Vergleichstest für die Azure-Sicherheit](../security/benchmarks/overview.md).
-- Erfahren Sie mehr über [Azure-Sicherheitsbaselines](../security/benchmarks/security-baselines-overview.md).
+- Sehen Sie sich die [Übersicht über Version 2 des Azure-Sicherheitsvergleichstests](/azure/security/benchmarks/overview) an.
+- Erfahren Sie mehr über [Azure-Sicherheitsbaselines](/azure/security/benchmarks/security-baselines-overview).

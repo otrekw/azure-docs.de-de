@@ -7,10 +7,10 @@ ms.date: 02/07/2020
 ms.topic: article
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 9c5ad4b21b428f38bbd4d9f7d19fa633c5161b5c
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99594179"
 ---
 # <a name="sky-reflections"></a>Himmelsreflexionen
@@ -26,7 +26,7 @@ In Azure Remote Rendering werden mithilfe von *Physically Based Rendering* (PBR)
 
 Die folgenden Bilder zeigen, was geschieht, wenn verschiedene Oberflächen nur mit einer Himmeltextur beleuchtet werden:
 
-| Rauheit  | 0                                        | 0,25                                          | 0.5                                          | 0,75                                          | 1                                          |
+| Rauheit  | 0                                        | 0,25                                          | 0,5                                          | 0,75                                          | 1                                          |
 |:----------:|:----------------------------------------:|:---------------------------------------------:|:--------------------------------------------:|:---------------------------------------------:|:------------------------------------------:|
 | Nicht metallisch  | ![Dielektrisch, Rauheit=0](media/dielectric-0.png)   | ![Dielektrisch, Rauheit=0,25](media/dielectric-0.25.png)  | ![Dielektrisch, Rauheit=0,5](media/dielectric-0.5.png)  | ![Dielektrisch, Rauheit=0,75](media/dielectric-0.75.png)  | ![Dielektrisch, Rauheit=1](media/dielectric-1.png)  |
 | Metallisch      | ![Metallisch, Rauheit=0](media/metallic-0.png)  | ![Metallisch, Rauheit=0,25](media/metallic-0.25.png)    | ![Metallisch, Rauheit=0,5](media/metallic-0.5.png)    | ![Metallisch, Rauheit=0,75](media/metallic-0.75.png)    | ![Metallisch, Rauheit=1](media/metallic-1.png)    |

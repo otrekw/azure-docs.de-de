@@ -6,10 +6,10 @@ ms.date: 11/04/2020
 ms.custom: devx-track-python
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 42f07b76cefed38aad53caba9ba35c74238540fe
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102031734"
 ---
 # <a name="quickstart-create-a-function-in-azure-with-python-using-visual-studio-code"></a>Schnellstart: Erstellen einer Funktion in Azure mit Python mithilfe von Visual Studio Code
@@ -23,7 +23,7 @@ ms.locfileid: "102031734"
 > - [TypeScript](create-first-function-vs-code-typescript.md)
 > - [Sonstiges (Go/Rust)](create-first-function-vs-code-other.md)
 
-In diesem Artikel wird mithilfe von Visual Studio Code eine Python-Funktion erstellt, die auf HTTP-Anforderungen reagiert. Stellen Sie den Code nach lokalen Tests in folgender Umgebung bereit: <abbr title="Hierbei handelt es sich um eine Runtimecomputingumgebung, in der alle Serverdetails für Anwendungsentwickler transparent sind. Dies vereinfacht den Prozess der Bereitstellung sowie die Codeverwaltung.">Serverlos</abbr> Umgebung in <abbr title="Hierbei handelt es sich um einen Azure-Dienst, der eine kostengünstige Umgebung für serverloses Computing für Anwendungen bietet.">Azure-Funktionen</abbr>.
+In diesem Artikel wird mithilfe von Visual Studio Code eine Python-Funktion erstellt, die auf HTTP-Anforderungen reagiert. Stellen Sie den Code nach lokalen Tests in folgender Umgebung bereit: <abbr title="Eine Runtimecomputingumgebung, in der alle Serverdetails für Anwendungsentwickler transparent sind. Dies vereinfacht den Prozess der Bereitstellung sowie die Codeverwaltung.">Serverlos</abbr> Umgebung von <abbr title="Ein Azure-Dienst, der eine kostengünstige Umgebung für serverloses Computing für Anwendungen bietet.">Azure-Funktionen</abbr>.
 
 Im Rahmen dieser Schnellstartanleitung fallen in Ihrem Azure-Konto ggf. geringfügige Kosten im Centbereich an.
 
@@ -33,7 +33,7 @@ Es gibt auch eine [CLI-basierte Version](create-first-function-cli-python.md) di
 
 Vergewissern Sie sich zunähst, dass Folgendes vorhanden ist:
 
-+ Ein Azure- <abbr title="Das Profil, mit dem Abrechnungsinformationen zur Azure-Nutzung verwaltet werden.">account</abbr> mit einem aktiven <abbr title="Die grundlegende Organisationsstruktur, in der Sie Ressourcen in Azure verwalten. Diese wird in der Regel einer Einzelperson oder Abteilung innerhalb einer Organisation zugeordnet.">Abonnement</abbr>. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
++ Ein Azure- <abbr title="Das Profil mit Abrechnungsinformationen für die Azure-Nutzung.">Azure-Konto</abbr> mit einem aktiven <abbr title="Die grundlegende Organisationsstruktur, in der Sie Ressourcen in Azure verwalten. Diese wird in der Regel einer Einzelperson oder Abteilung innerhalb einer Organisation zugeordnet.">Abonnement</abbr>. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
 + [Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools), Version 3.x.
 

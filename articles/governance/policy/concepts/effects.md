@@ -1,14 +1,14 @@
 ---
 title: Funktionsweise von Auswirkungen
 description: Die Azure Policy-Definitionen haben verschiedene Auswirkungen, mit denen festgelegt wird, wie die Konformität verwaltet und gemeldet wird.
-ms.date: 10/05/2020
+ms.date: 02/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: e72e94766dce2660409e729bc43eb107fb9ab39a
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 67445b3d0d63b3827f82822de00412bdab67c5ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97883077"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101741819"
 ---
 # <a name="understand-azure-policy-effects"></a>Grundlegendes zu Azure Policy-Auswirkungen
 
@@ -266,8 +266,7 @@ Beispiel 2: Verwenden der Auswirkung „deny“ für den Ressourcenanbietermodus
 
 ### <a name="deployifnotexists-evaluation"></a>Auswertung von „DeployIfNotExists“
 
-„DeployIfNotExists“ wird mit einem zeitlichen Abstand von etwa 15 Minuten ausgeführt, nachdem ein Ressourcenanbieter eine Anforderung zum Erstellen oder Aktualisieren einer Ressource verarbeitet hat und ein Erfolgsstatuscode zurückgegeben wurde. Eine Vorlagenbereitstellung findet statt, wenn keine entsprechenden Ressourcen vorhanden sind oder wenn die über **ExistenceCondition** definierten Ressourcen nicht als TRUE ausgewertet werden.
-Die Dauer der Bereitstellung hängt von der Komplexität der in der Vorlage enthaltenen Ressourcen ab.
+„DeployIfNotExists“ wird mit einem zeitlichen Abstand von etwa 15 Minuten ausgeführt, nachdem ein Ressourcenanbieter eine Anforderung zum Erstellen oder Aktualisieren eines Abonnements oder einer Ressource verarbeitet hat und ein Erfolgsstatuscode zurückgegeben wurde. Eine Vorlagenbereitstellung findet statt, wenn keine entsprechenden Ressourcen vorhanden sind oder wenn die über **ExistenceCondition** definierten Ressourcen nicht als TRUE ausgewertet werden. Die Dauer der Bereitstellung hängt von der Komplexität der in der Vorlage enthaltenen Ressourcen ab.
 
 Während eines Auswertungszyklus führen Richtliniendefinitionen mit der Auswirkung „DeployIfNotExists“ dazu, dass übereinstimmende Ressourcen als nicht konform markiert werden. Es wird aber keine Aktion für diese Ressource ausgeführt. Bestehende, nicht konforme Ressourcen können mit einem [Wartungstask](../how-to/remediate-resources.md) bereinigt werden.
 
@@ -482,8 +481,7 @@ Beispiel: Gatekeeper v2-Zugangskontrollregel, um nur die angegebenen Containerim
 
 ## <a name="modify"></a>Ändern
 
-„Modify“ wird verwendet, um Eigenschaften oder Tags während der Erstellung oder Aktualisierung einer Ressource hinzuzufügen, zu aktualisieren oder zu entfernen.
-Ein häufiges Beispiel ist die Aktualisierung von Tags für Ressourcen wie „costCenter“. Bestehende, nicht konforme Ressourcen können mit einem [Wartungstask](../how-to/remediate-resources.md) bereinigt werden. Eine einzelne Modify-Regel kann eine beliebige Anzahl von Vorgängen aufweisen.
+„Modify“ wird verwendet, um Eigenschaften oder Tags während der Erstellung oder Aktualisierung eines Abonnements oder einer Ressource hinzuzufügen, zu aktualisieren oder zu entfernen. Ein häufiges Beispiel ist die Aktualisierung von Tags für Ressourcen wie „costCenter“. Bestehende, nicht konforme Ressourcen können mit einem [Wartungstask](../how-to/remediate-resources.md) bereinigt werden. Eine einzelne Modify-Regel kann eine beliebige Anzahl von Vorgängen aufweisen.
 
 Die folgenden Vorgänge werden von „Modify“ unterstützt:
 

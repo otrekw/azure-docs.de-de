@@ -3,12 +3,12 @@ title: Erstellen und Verwalten virtueller Computer in DevTest Labs mit der Azure
 description: Erfahren Sie, wie Sie mit Azure DevTest Labs virtuelle Computer mit der Azure CLI erstellen und verwalten.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 57510a722ab6a34b9d498e74a140d6f350c8fc02
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 22ee6bf607fe1b66cece0e7ddb25a2da2830258b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85482835"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102201463"
 ---
 # <a name="create-and-manage-virtual-machines-with-devtest-labs-using-the-azure-cli"></a>Erstellen und Verwalten virtueller Computer in DevTest Labs mit der Azure-Befehlszeilenschnittstelle
 Dieser Schnellstart führt Sie durch das Erstellen, Starten, Verbinden, Aktualisieren und Bereinigen von Entwicklungscomputern im Lab. 
@@ -71,7 +71,7 @@ Der folgende Beispielbefehl startet eine VM:
 az lab vm start --lab-name sampleLabName --name sampleVMName --resource-group sampleLabResourceGroup
 ```
 
-Herstellen einer Verbindung mit einer VM: [SSH](../virtual-machines/linux/mac-create-ssh-keys.md) oder [Remotedesktop](../virtual-machines/windows/connect-logon.md).
+Stellen Sie eine Verbindung mit einem virtuellen Computer her: [SSH](../virtual-machines/linux/mac-create-ssh-keys.md) oder [Remotedesktop](../virtual-machines/windows/connect-logon.md).
 ```bash
 ssh userName@ipAddressOrfqdn 
 ```
@@ -153,4 +153,4 @@ az lab vm delete --lab-name sampleLabName --name sampleVMName --resource-group s
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Lesen Sie den folgenden Artikel: [Azure CLI-Dokumentation für Azure DevTest Labs](/cli/azure/lab?view=azure-cli-latest). 
+Weitere Informationen finden Sie in der [Azure CLI-Dokumentation zu Azure DevTest Labs](/cli/azure/lab). 

@@ -14,10 +14,10 @@ ms.date: 11/30/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ff7505e7c47b93f32efd9de60463873026247329
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98724924"
 ---
 # <a name="resilience-through-developer-best-practices"></a>Resilienz durch Best Practices für Entwickler
@@ -138,5 +138,5 @@ Ihr Testplan sollte [umfassende API-Tests](../../active-directory-b2c/best-pract
   - [Resiliente Endbenutzerumgebung](resilient-end-user-experience.md)
   - [Resiliente Schnittstellen mit externen Prozessen](resilient-external-processes.md)
   - [Resilienz durch Überwachung und Analyse](resilience-with-monitoring-alerting.md)
-- [Erzielen von Resilienz in der Authentifizierungsinfrastruktur](resilience-in-infrastructure.md)
-- [Mehr Resilienz bei Authentifizierung und Autorisierung in Ihren Anwendungen](resilience-app-development-overview.md)
+- [Schaffen von Resilienz für die Authentifizierungsinfrastruktur](resilience-in-infrastructure.md)
+- [Steigern der Resilienz für Authentifizierung und Autorisierung in Ihren Anwendungen](resilience-app-development-overview.md)

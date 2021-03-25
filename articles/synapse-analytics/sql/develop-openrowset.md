@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: d45b2ec8814ec2b7f02da99500aa1e72ec525d65
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 987b850d569c238902f57baaed4a2178f51bd79d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101695701"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104589615"
 ---
 # <a name="how-to-use-openrowset-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Verwenden von „OPENROWSET“ mit einem serverlosen SQL-Pool in Azure Synapse Analytics
 
@@ -241,7 +241,7 @@ Gibt die Codierung an: „char“ wird für UTF8 verwendet, „widechar“ für 
 
 CODEPAGE = { 'ACP' | 'OEM' | 'RAW' | 'code_page' }
 
-Gibt die Codepage für die in der Datendatei enthaltenen Daten an. Der Standardwert ist 65001 (UTF-8-Codierung). Weitere Details zu dieser Option finden Sie [hier](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql?view=sql-server-ver15#codepage).
+Gibt die Codepage für die in der Datendatei enthaltenen Daten an. Der Standardwert ist 65001 (UTF-8-Codierung). Weitere Details zu dieser Option finden Sie [hier](/sql/t-sql/functions/openrowset-transact-sql?view=sql-server-ver15#codepage).
 
 ## <a name="fast-delimited-text-parsing"></a>Schnelle Analyse von Text mit Trennzeichen
 

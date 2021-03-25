@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, sstein
 ms.date: 12/9/2020
-ms.openlocfilehash: f50042caf21630c5054ead76825e49b820405c5b
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: c478edf95ae345d64da630400fbf63ac613b73a6
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98732693"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "100653634"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-databases-in-azure-sql-database"></a>Pools für elastische Datenbanken als Hilfe beim Verwalten und Skalieren vieler Datenbanken in Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -90,15 +90,10 @@ Weitere Informationen zu den Dienstebenen und Ressourcengrenzwerten für jedes K
 Die folgenden Schritte können Ihnen dabei helfen, einzuschätzen, ob ein Pool kostengünstiger als einzelne Datenbanken ist:
 
 1. Schätzen Sie die für den Pool benötigten eDTUs oder V-Kerne nach der folgenden Methode:
-
-DTU-basiertes Kaufmodell:
-
-MAX(<*Gesamtanzahl von Datenbanken* x *durchschnittliche DTU-Auslastung pro Datenbank*>, <*Anzahl von parallelen Datenbanken mit Spitzenauslastung* x *DTU-Spitzenauslastung pro Datenbank*>)
-
-vCore-basiertes Kaufmodell:
-
-MAX(<*Gesamtanzahl von Datenbanken* x *durchschnittliche vCore-Auslastung pro Datenbank*>, <*Anzahl von parallelen Datenbanken mit Spitzenauslastung* x *vCore-Spitzenauslastung pro Datenbank*>)
-
+   - Für das DTU-basierte Kaufmodell:
+     - MAX(<*Gesamtanzahl von Datenbanken* &times; *durchschnittliche DTU-Auslastung pro Datenbank*>, *<Anzahl von parallelen Datenbanken mit Spitzenauslastung* &times; *DTU-Spitzenauslastung pro Datenbank*>)
+   - Für das vCore-basierte Kaufmodell:
+     - MAX(<*Gesamtanzahl von Datenbanken* &times; *durchschnittliche vCore-Auslastung pro Datenbank*>, *<Anzahl von parallelen Datenbanken mit Spitzenauslastung* &times; *vCore-Spitzenauslastung pro Datenbank*>)
 2. Schätzen Sie den für den Pool benötigten Gesamtspeicherplatz, indem Sie das erforderliche Datenvolumen für alle Datenbanken im Pool addieren. Ermitteln Sie für das DTU-basierte Kaufmodell dann die eDTU-Poolgröße, die diese Menge an Speicher bietet.
 3. Verwenden Sie für das DTU-basierte Kaufmodell die größere der eDTU-Schätzungen aus Schritt 1 und Schritt 2. Verwenden Sie für das vCore-basierte Kaufmodell die V-Kern-Schätzung aus Schritt 1.
 4. Auf der [SQL-Datenbank Preisseite](https://azure.microsoft.com/pricing/details/sql-database/) finden Sie die kleinste Poolgröße, die größer ist als die Schätzung aus Schritt 3.

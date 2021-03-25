@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: bd777fe42dc8fa3ec4643fa9607f5ca8b7aac795
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: e195c005676df27385e5e00736b04bdb689fafc5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93240323"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101727106"
 ---
 # <a name="deny-public-network-access-in-azure-database-for-postgresql-single-server-using-azure-portal"></a>„Zugriff auf öffentliches Netzwerk verweigern“ in Azure Database for PostgreSQL-Einzelserver im Azure-Portal
 
@@ -21,7 +21,7 @@ In diesem Artikel wird beschrieben, wie Sie eine Azure Database for PostgreSQL-E
 
 Zum Durcharbeiten dieses Leitfadens benötigen Sie Folgendes:
 
-* [Azure Database for PostgreSQL-Einzelserver](quickstart-create-server-database-portal.md)
+* Einen [Azure Database for PostgreSQL-Einzelserver](quickstart-create-server-database-portal.md) mit Tarif „Universell“ oder „Arbeitsspeicheroptimiert“.
 
 ## <a name="set-deny-public-network-access"></a>Festlegen von „Zugriff auf öffentliches Netzwerk verweigern“
 
@@ -29,7 +29,7 @@ Gehen Sie wie folgt vor, um „Zugriff auf öffentliches Netzwerk verweigern“ 
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihre vorhandene Azure Database for PostgreSQL-Einzelserver-Instanz aus.
 
-1. Klicken Sie auf der Seite des PostgreSQL-Einzelservers unter **Einstellungen** auf **Verbindungssicherheit** , um die Seite zur Konfiguration der Verbindungssicherheit zu öffnen.
+1. Klicken Sie auf der Seite des PostgreSQL-Einzelservers unter **Einstellungen** auf **Verbindungssicherheit**, um die Seite zur Konfiguration der Verbindungssicherheit zu öffnen.
 
 1. Wählen Sie in **Zugriff auf öffentliches Netzwerk verweigern** die Option **Ja** aus, um den öffentlichen Zugriff für Ihren PostgreSQL-Einzelserver zu verweigern.
 

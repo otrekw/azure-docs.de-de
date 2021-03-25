@@ -2,13 +2,13 @@
 title: Abfragen von Protokollen aus Container Insights | Microsoft-Dokumentation
 description: Container Insights erfasst Metriken und Protokolldaten. In diesem Artikel werden die Datensätze und einige Beispielabfragen beschrieben.
 ms.topic: conceptual
-ms.date: 06/01/2020
-ms.openlocfilehash: 79efa714548adbde67774cab741bf953a4ff1e83
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/03/2021
+ms.openlocfilehash: c2b7331255e1109f27f89a84d66e25eb07a20569
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101711109"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102201378"
 ---
 # <a name="how-to-query-logs-from-container-insights"></a>Abfragen von Protokollen aus Container Insights
 
@@ -25,10 +25,11 @@ In der folgenden Tabelle finden Sie Informationen zu Datensätzen, die von Conta
 | Containerknotenbestand | Kube-API | `ContainerNodeInventory`| TimeGenerated, Computer, ClassName_s, DockerVersion_s, OperatingSystem_s, Volume_s, Network_s, NodeRole_s, OrchestratorType_s, InstanceID_g, SourceSystem|
 | Bestand der Pods in einem Kubernetes-Cluster | Kube-API | `KubePodInventory` | TimeGenerated, Computer, ClusterId, ContainerCreationTimeStamp, PodUid, PodCreationTimeStamp, ContainerRestartCount, PodRestartCount, PodStartTime, ContainerStartTime, ServiceName, ControllerKind, ControllerName, ContainerStatus,  ContainerStatusReason, ContainerID, ContainerName, Name, PodLabel, Namespace, PodStatus, ClusterName, PodIp, SourceSystem |
 | Bestand der Knoten als Teil eines Kubernetes-Clusters | Kube-API | `KubeNodeInventory` | TimeGenerated, Computer, ClusterName, ClusterId, LastTransitionTimeReady, Labels, Status, KubeletVersion, KubeProxyVersion, CreationTimeStamp, SourceSystem | 
+|Bestand der persistenten Volumes in einem Kubernetes-Cluster |Kube-API |`KubePVInventory` | TimeGenerated, PVName, PVCapacityBytes, PVCName, PVCNamespace, PVStatus, PVAccessModes, PVType, PVTypeInfo, PVStorageClassName, PVCreationTimestamp, ClusterId, ClusterName, _ResourceId, SourceSystem |
 | Kubernetes-Ereignisse | Kube-API | `KubeEvents` | TimeGenerated, Computer, ClusterId_s, FirstSeen_t, LastSeen_t, Count_d, ObjectKind_s, Namespace_s, Name_s, Reason_s, Type_s, TimeGenerated_s, SourceComponent_s, ClusterName_s, Message,  SourceSystem | 
 | Dienste im Kubernetes-Cluster | Kube-API | `KubeServices` | TimeGenerated, ServiceName_s, Namespace_s, SelectorLabels_s, ClusterId_s, ClusterName_s, ClusterIP_s, ServiceType_s, SourceSystem | 
-| Leistungsmetriken für die zum Kubernetes-Cluster zugehörigen Knoten | Nutzungsmetriken werden von cAdvisor und Grenzwerte von der Kube-API abgerufen | Perf &#124; where ObjectName == "K8SNode" | Computer, ObjectName, CounterName &#40;cpuAllocatableNanoCores, memoryAllocatableBytes, cpuCapacityNanoCores, memoryCapacityBytes, memoryRssBytes, cpuUsageNanoCores, memoryWorkingsetBytes, restartTimeEpoch&#41;, CounterValue, TimeGenerated, CounterPath, SourceSystem | 
-| Leistungsmetriken für die zum Kubernetes-Cluster zugehörigen Container | Nutzungsmetriken werden von cAdvisor und Grenzwerte von der Kube-API abgerufen | Perf &#124; where ObjectName == "K8SContainer" | CounterName &#40; cpuRequestNanoCores, memoryRequestBytes, cpuLimitNanoCores, memoryWorkingSetBytes, restartTimeEpoch, cpuUsageNanoCores, memoryRssBytes&#41;, CounterValue, TimeGenerated, CounterPath, SourceSystem | 
+| Leistungsmetriken für die zum Kubernetes-Cluster zugehörigen Knoten | Nutzungsmetriken werden von cAdvisor und Grenzwerte von der Kube-API abgerufen | `Perf \| where ObjectName == "K8SNode"` | Computer, ObjectName, CounterName &#40;cpuAllocatableNanoCores, memoryAllocatableBytes, cpuCapacityNanoCores, memoryCapacityBytes, memoryRssBytes, cpuUsageNanoCores, memoryWorkingsetBytes, restartTimeEpoch&#41;, CounterValue, TimeGenerated, CounterPath, SourceSystem | 
+| Leistungsmetriken für die zum Kubernetes-Cluster zugehörigen Container | Nutzungsmetriken werden von cAdvisor und Grenzwerte von der Kube-API abgerufen | `Perf \| where ObjectName == "K8SContainer"` | CounterName &#40;cpuRequestNanoCores, memoryRequestBytes, cpuLimitNanoCores, memoryWorkingSetBytes, restartTimeEpoch, cpuUsageNanoCores, memoryRssBytes&#41;, CounterValue, TimeGenerated, CounterPath, SourceSystem | 
 | Benutzerdefinierte Metriken ||`InsightsMetrics` | Computer, Name, Namespace, Origin, SourceSystem, Tags<sup>1</sup>, TimeGenerated, Type, Va, _ResourceId | 
 
 <sup>1</sup> Die Eigenschaft *Tags* repräsentiert [mehrere Dimensionen](../essentials/data-platform-metrics.md#multi-dimensional-metrics) für die entsprechende Metrik. Weitere Informationen über die erfassten Metriken, die in der `InsightsMetrics`-Tabelle gespeichert werden, und eine Beschreibung der Datensatzeigenschaften finden Sie in der [Übersicht über InsightsMetrics](https://github.com/microsoft/OMS-docker/blob/vishwa/june19agentrel/docs/InsightsMetrics.md).
@@ -37,7 +38,7 @@ In der folgenden Tabelle finden Sie Informationen zu Datensätzen, die von Conta
 
 Mit Azure Monitor-Protokollen können Sie nach Trends suchen, Engpässe diagnostizieren, Prognosen erstellen oder Daten korrelieren, die Ihnen die Einschätzung ermöglichen, ob die aktuelle Clusterkonfiguration optimal funktioniert. Ihnen werden vordefinierte Protokollsuchen für die sofortige Verwendung bereitgestellt. Alternativ können Sie diese so anpassen, dass die Informationen auf die gewünschte Weise zurückgegeben werden.
 
-Im Arbeitsbereich können Sie interaktive Datenanalysen durchführen, indem Sie im Vorschaubereich in der Dropdownliste **In Analytics anzeigen** die Option **Kubernetes-Ereignisprotokolle anzeigen** oder **Containerprotokolle anzeigen** auswählen. Die Seite **Protokollsuche** wird rechts von der Azure-Portalseite angezeigt, die Sie besucht haben.
+Im Arbeitsbereich können Sie Daten interaktiv analysieren, indem Sie im Vorschaubereich in der Dropdownliste **In Analytics anzeigen** die Option **Kubernetes-Ereignisprotokolle anzeigen** oder **Containerprotokolle anzeigen** auswählen. Die Seite **Protokollsuche** wird rechts von der Azure-Portalseite angezeigt, die Sie besucht haben.
 
 ![Analysieren von Daten in Log Analytics](./media/container-insights-analyze/container-health-log-search-example.png)
 
@@ -47,14 +48,58 @@ Die an Ihren Arbeitsbereich weitergeleiteten Containerprotokollausgaben sind STD
 
 Es ist oft hilfreich, die Abfrageerstellung ausgehend von einem oder zwei Beispielen zu beginnen und diese dann den Anforderungen entsprechend anzupassen. Sie können mit den folgenden Beispielabfragen experimentieren, um komplexere Abfragen zu erstellen:
 
-| Abfrage | BESCHREIBUNG | 
-|-------|-------------|
-| ContainerInventory<br> &#124; project Computer, Name, Image, ImageTag, ContainerState, CreatedTime, StartedTime, FinishedTime<br> &#124; render table | Liste mit Lebenszyklusinformationen aller Container| 
-| KubeEvents_CL<br> &#124; where not(isempty(Namespace_s))<br> &#124; sort by TimeGenerated desc<br> &#124; render table | Kubernetes-Ereignisse|
-| ContainerImageInventory<br> &#124; summarize AggregatedValue = count() by Image, ImageTag, Running | Imagebestand | 
-| **Wählen Sie die Anzeigeoption Liniendiagramm aus**:<br> Perf<br> &#124; where ObjectName == "K8SContainer" and CounterName == "cpuUsageNanoCores" &#124; summarize AvgCPUUsageNanoCores = avg(CounterValue) by bin(TimeGenerated, 30m), InstanceName | Container-CPU | 
-| **Wählen Sie die Anzeigeoption Liniendiagramm aus**:<br> Perf<br> &#124; where ObjectName == "K8SContainer" and CounterName == "memoryRssBytes" &#124; summarize AvgUsedRssMemoryBytes = avg(CounterValue) by bin(TimeGenerated, 30m), InstanceName | Containerspeicher |
-| InsightsMetrics<br> &#124; where Name == "requests_count"<br> &#124; summarize Val=any(Val) by TimeGenerated=bin(TimeGenerated, 1m)<br> &#124; sort by TimeGenerated asc<br> &#124; project RequestsPerMinute = Val - prev(Val), TimeGenerated <br> &#124; render barchart  | Anforderungen pro Minute mit benutzerdefinierten Metriken |
+### <a name="list-all-of-a-containers-lifecycle-information"></a>Liste mit Lebenszyklusinformationen aller Container
+
+```kusto
+ContainerInventory
+| project Computer, Name, Image, ImageTag, ContainerState, CreatedTime, StartedTime, FinishedTime
+| render table
+```
+
+### <a name="kubernetes-events"></a>Kubernetes-Ereignisse
+
+``` kusto
+KubeEvents_CL
+| where not(isempty(Namespace_s))
+| sort by TimeGenerated desc
+| render table
+```
+### <a name="image-inventory"></a>Imagebestand
+
+``` kusto
+ContainerImageInventory
+| summarize AggregatedValue = count() by Image, ImageTag, Running
+```
+
+### <a name="container-cpu"></a>Container-CPU
+
+**Wählen Sie die Anzeigeoption „Liniendiagramm“ aus:**
+
+``` kusto
+Perf
+| where ObjectName == "K8SContainer" and CounterName == "cpuUsageNanoCores" 
+| summarize AvgCPUUsageNanoCores = avg(CounterValue) by bin(TimeGenerated, 30m), InstanceName 
+```
+
+### <a name="container-memory"></a>Containerspeicher
+
+**Wählen Sie die Anzeigeoption „Liniendiagramm“ aus:**
+
+```kusto
+Perf
+| where ObjectName == "K8SContainer" and CounterName == "memoryRssBytes"
+| summarize AvgUsedRssMemoryBytes = avg(CounterValue) by bin(TimeGenerated, 30m), InstanceName
+```
+
+### <a name="requests-per-minute-with-custom-metrics"></a>Anforderungen pro Minute mit benutzerdefinierten Metriken
+
+```kusto
+InsightsMetrics
+| where Name == "requests_count"
+| summarize Val=any(Val) by TimeGenerated=bin(TimeGenerated, 1m)
+| sort by TimeGenerated asc<br> &#124; project RequestsPerMinute = Val - prev(Val), TimeGenerated
+| render barchart 
+```
 
 ## <a name="query-prometheus-metrics-data"></a>Abfragen von Prometheus-Metrikdaten
 
@@ -79,7 +124,7 @@ InsightsMetrics
 
 ```
 
-Zum Anzeigen von Prometheus-Metriken, die von Azure Monitor nach Namespace gefiltert abgerufen wurden, geben Sie „prometheus“ an. Hier sehen Sie eine Beispielabfrage zum Anzeigen von Prometheus-Metriken aus dem `default`-Kubernetes-Namespace.
+Zum Anzeigen von Prometheus-Metriken, die von Azure Monitor nach Namespace gefiltert abgerufen wurden, geben Sie „prometheus“ an. Hier sehen Sie eine Beispielabfrage zum Anzeigen von Prometheus-Metriken aus dem `default`-Kubernetes-Namespace:
 
 ```
 InsightsMetrics 

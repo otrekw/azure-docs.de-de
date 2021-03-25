@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f2b059bb6ae63d7f427ce970b2538da922e2dec
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 46cc8ef1158c02190f905cbe8eb1d12ea7be50a2
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94837262"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "101644934"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>Was ist ein primäres Aktualisierungstoken (Primary Refresh Token, PRT)?
 
@@ -103,7 +103,7 @@ Ein PRT wird geschützt, indem es an das Gerät gebunden wird, an dem sich der B
 * **Während der ersten Anmeldung**: Während der ersten Anmeldung wird ein PRT ausgestellt, indem Anforderungen mit dem Geräteschlüssel signiert werden, der während der Geräteregistrierung kryptografisch generiert wurde. Auf einem Gerät mit einem gültigen und funktionierenden TPM wird der Geräteschlüssel per TPM geschützt, um schädliche Zugriffe zu verhindern. Es wird kein PRT ausgestellt, wenn die entsprechende Geräteschlüsselsignatur nicht überprüft werden kann.
 * **Bei Tokenanforderungen und -verlängerungen**: Wenn ein PRT ausgestellt wird, wird von Azure AD auch ein verschlüsselter Sitzungsschlüssel für das Gerät ausgestellt. Er wird mit dem öffentlichen Transportschlüssel (tkpub) generiert und im Rahmen der Geräteregistrierung an Azure AD gesendet. Dieser Sitzungsschlüssel kann nur mit dem privaten Transportschlüssel (tkpriv) entschlüsselt werden, der per TPM geschützt ist. Der Sitzungsschlüssel ist der Schlüssel für den Eigentumsnachweis (Proof-of-Possession, POP) für alle Anforderungen, die an Azure AD gesendet werden.  Der Sitzungsschlüssel ist außerdem durch das TPM geschützt, und keine anderen Betriebssystemkomponenten können darauf zugreifen. Tokenanforderungen oder Anforderungen zur PRT-Verlängerung werden mit diesem Sitzungsschlüssel über das TPM auf sichere Weise signiert und können daher nicht manipuliert werden. Von Azure AD werden alle Anforderungen von diesem Gerät ungültig gemacht, die nicht mit dem entsprechenden Sitzungsschlüssel signiert sind.
 
-Indem diese Schlüssel mit dem TPM geschützt werden, können böswillige Akteure weder die Schlüssel stehlen, noch das PRT an einem anderen Ort wiedergeben. Auf das TPM kann auch dann nicht zugegriffen werden, wenn sich das Gerät physisch im Besitz eines Angreifers befindet.  Durch die Nutzung eines TPM wird der Schutz von Geräten vom Typ „In Azure AD eingebunden“, „Hybrid in Azure AD eingebunden“ und „Bei Azure AD registriert“ vor einem Diebstahl von Anmeldeinformationen stark verbessert. In Bezug auf Leistung und Zuverlässigkeit ist TPM 2.0 die empfohlene Version für alle Szenarien der Azure AD-Geräteregistrierung unter Windows 10.
+Durch das Sichern dieser Schlüssel mit dem TPM verbessern wir den Schutz des PRT vor böswilligen Akteuren, die versuchen, die Schlüssel zu stehlen oder das PRT wiederzugeben.  Somit wird durch die Nutzung eines TPM der Schutz von Geräten vom Typ „In Azure AD eingebunden“, „Hybrid in Azure AD eingebunden“ und „Bei Azure AD registriert“ vor einem Diebstahl von Anmeldeinformationen stark verbessert. In Bezug auf Leistung und Zuverlässigkeit ist TPM 2.0 die empfohlene Version für alle Szenarien der Azure AD-Geräteregistrierung unter Windows 10. Ab Windows 10, Update 1903, wird in Azure AD aufgrund von Problemen bei der Zuverlässigkeit TPM 1.2 für keinen der oben genannten Schlüssel verwendet. 
 
 ### <a name="how-are-app-tokens-and-browser-cookies-protected"></a>Wie sind App-Token und Browsercookies geschützt?
 
@@ -111,7 +111,7 @@ Indem diese Schlüssel mit dem TPM geschützt werden, können böswillige Akteur
 
 **Browsercookies**: In Windows 10 unterstützt Azure AD SSO für Browser in Internet Explorer und Microsoft Edge auf native Weise, und in Google Chrome über die Kontoerweiterung für Windows 10. Die Sicherheit dient nicht nur zum Schützen der Cookies, sondern auch der Endpunkte, an die die Cookies gesendet werden. Browsercookies werden genauso wie ein PRT geschützt, indem der Sitzungsschlüssel genutzt wird, um die Cookies zu signieren und zu schützen.
 
-Wenn ein Benutzer eine Browserinteraktion initiiert, ruft der Browser (bzw. die Erweiterung) einen nativen COM-Clienthost auf. Der native Clienthost stellt sicher, dass die Seite aus einer der zulässigen Domänen stammt. Der Browser kann auch andere Parameter an den nativen Clienthost senden, z. B. eine Nonce, aber der native Clienthost garantiert die Überprüfung des Hostnamens. Der native Clienthost fordert ein PRT-Cookie vom CloudAP-Plug-In an. Das Plug-In erstellt und signiert es mit dem per TPM geschützten Sitzungsschlüssel. Da das PRT-Cookie mit dem Sitzungsschlüssel signiert ist, kann es nicht manipuliert werden. Dieses PRT-Cookie ist in den Anforderungsheader für Azure AD integriert, um das Ursprungsgerät zu überprüfen. Bei Verwendung des Chrome-Browsers ist der Aufruf nur mit der Erweiterung möglich, die im Manifest des nativen Clienthosts explizit definiert ist, damit keine anderen Erweiterungen diese Anforderungen senden können. Nachdem das PRT-Cookie von Azure AD überprüft wurde, wird ein Sitzungscookie für den Browser ausgestellt. Dieses Sitzungscookie enthält auch den gleichen Sitzungsschlüssel, der mit einem PRT ausgestellt wird. Während der nachfolgenden Anforderungen wird der Sitzungsschlüssel auf effektive Weise überprüft, und das Cookie wird an das Gerät gebunden. So werden Wiedergaben von anderen Orten verhindert.
+Wenn ein Benutzer eine Browserinteraktion initiiert, ruft der Browser (bzw. die Erweiterung) einen nativen COM-Clienthost auf. Der native Clienthost stellt sicher, dass die Seite aus einer der zulässigen Domänen stammt. Der Browser kann auch andere Parameter an den nativen Clienthost senden, z. B. eine Nonce, aber der native Clienthost garantiert die Überprüfung des Hostnamens. Der native Clienthost fordert ein PRT-Cookie vom CloudAP-Plug-In an. Das Plug-In erstellt und signiert es mit dem per TPM geschützten Sitzungsschlüssel. Da das PRT-Cookie durch den Sitzungsschlüssel signiert ist, ist es sehr schwierig, dieses zu manipulieren. Dieses PRT-Cookie ist in den Anforderungsheader für Azure AD integriert, um das Ursprungsgerät zu überprüfen. Bei Verwendung des Chrome-Browsers ist der Aufruf nur mit der Erweiterung möglich, die im Manifest des nativen Clienthosts explizit definiert ist, damit keine anderen Erweiterungen diese Anforderungen senden können. Nachdem das PRT-Cookie von Azure AD überprüft wurde, wird ein Sitzungscookie für den Browser ausgestellt. Dieses Sitzungscookie enthält auch den gleichen Sitzungsschlüssel, der mit einem PRT ausgestellt wird. Während der nachfolgenden Anforderungen wird der Sitzungsschlüssel auf effektive Weise überprüft, und das Cookie wird an das Gerät gebunden. So werden Wiedergaben von anderen Orten verhindert.
 
 ## <a name="when-does-a-prt-get-an-mfa-claim"></a>Wann erhält ein PRT einen MFA-Anspruch?
 
@@ -196,7 +196,7 @@ Im folgenden Diagramm sind die zugrunde liegenden Details für das Ausstellen, V
 | Ein | Der Benutzer meldet sich mit seinen Anmeldeinformationen an Windows an, um ein PRT zu erhalten. Nachdem der Benutzer den Browser geöffnet hat, werden die URLs vom Browser (bzw. der Erweiterung) aus der Registrierung geladen. |
 | B | Wenn ein Benutzer eine Azure AD-Anmelde-URL öffnet, überprüft der Browser bzw. die Erweiterung die URL mit den URLs aus der Registrierung. Wenn sie übereinstimmen, ruft der Browser den nativen Clienthost für den Tokenabruf auf. |
 | C | Der native Clienthost überprüft, ob die URLs zu den Microsoft-Identitätsanbietern gehören (Microsoft-Konto oder Azure AD), extrahiert eine von der URL gesendete Nonce und sendet einen Aufruf zum Beschaffen eines PRT-Cookies an das CloudAP-Plug-In. |
-| D | Das CloudAP-Plug-In erstellt das PRT-Cookie, signiert es mit dem an TPM gebundenen Sitzungsschlüssel und sendet es zurück an den nativen Clienthost. Da das Cookie mit dem Sitzungsschlüssel signiert ist, kann es nicht manipuliert werden. |
+| D | Das CloudAP-Plug-In erstellt das PRT-Cookie, signiert es mit dem an TPM gebundenen Sitzungsschlüssel und sendet es zurück an den nativen Clienthost. |
 | E | Der native Clienthost gibt dieses PRT-Cookie an den Browser zurück, der es in den Anforderungsheader „x-ms-RefreshTokenCredential“ einfügt und Token von Azure AD anfordert. |
 | F | Azure AD überprüft die Sitzungsschlüsselsignatur im PRT-Cookie, überprüft die Nonce, stellt sicher, dass das Gerät im Mandanten gültig ist, und stellt ein ID-Token für die Webseite und ein verschlüsseltes Sitzungscookie für den Browser aus. |
 

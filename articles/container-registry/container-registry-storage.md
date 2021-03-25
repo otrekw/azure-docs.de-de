@@ -1,36 +1,45 @@
 ---
 title: Speichern von Containerimages
-description: Details darüber, wie Ihre Docker-Containerimages in Azure Container Registry gespeichert werden, sowie über Sicherheit, Redundanz und Kapazität.
+description: Hier erhalten Sie ausführliche Informationen dazu, wie Ihre Containerimages und andere Artefakte in Azure Container Registry gespeichert werden, und erfahren u. a. mehr über Sicherheit, Redundanz und Kapazität.
 ms.topic: article
-ms.date: 06/18/2020
-ms.openlocfilehash: d51014e9e0769091aba42682cce3a6a01cfa19de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/03/2021
+ms.custom: references_regions
+ms.openlocfilehash: ec4328b44d5493b8d765fa30c548adc3d747d446
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85214059"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102183266"
 ---
 # <a name="container-image-storage-in-azure-container-registry"></a>Speichern von Containerimages in Azure Container Registry
 
-Jede Azure Container Registry vom Typ [Basic, Standard und Premium](container-registry-skus.md) profitiert von erweiterten Azure-Speicherfunktionen wie Verschlüsselung ruhender Daten für die Imagedatensicherheit und Georedundanz für den Imagedatenschutz. Die folgenden Abschnitte beschreiben sowohl die Funktionen als auch die Imagespeichergrenzen in Azure Container Registry (ACR).
+Jede Azure-Containerregistrierung vom Typ [Basic, Standard und Premium](container-registry-skus.md) profitiert von erweiterten Azure-Speicherfunktionen, einschließlich Verschlüsselung ruhender Daten. Die folgenden Abschnitte beschreiben die Funktionen und die Imagespeichergrenzen in Azure Container Registry (ACR).
 
 ## <a name="encryption-at-rest"></a>Verschlüsselung ruhender Daten
 
-Alle Containerimages in Ihrer Registrierung werden im Ruhezustand verschlüsselt. Azure verschlüsselt ein Image automatisch, bevor es gespeichert wird, und entschlüsselt es dynamisch, sobald Sie oder Ihre Anwendungen und Dienste einen Pull für das Image ausführen. Wenden Sie optional eine zusätzliche Verschlüsselungsebene mit einem [kundenseitig verwalteten Schlüssel](container-registry-customer-managed-keys.md) an.
+Alle Containerimages und anderen Artefakte in Ihrer Registrierung werden im Ruhezustand verschlüsselt. Azure verschlüsselt ein Image automatisch, bevor es gespeichert wird, und entschlüsselt es dynamisch, sobald Sie oder Ihre Anwendungen und Dienste einen Pull für das Image ausführen. Wenden Sie optional eine zusätzliche Verschlüsselungsebene mit einem [kundenseitig verwalteten Schlüssel](container-registry-customer-managed-keys.md) an.
 
-## <a name="geo-redundant-storage"></a>Georedundanter Speicher
+## <a name="regional-storage"></a>Regionaler Speicher
 
-Azure verwendet ein georedundantes Speicherschema, um den Verlust Ihrer Containerimages zu verhindern. Azure Container Registry repliziert die Containerimages automatisch in mehrere geografisch entfernte Rechenzentren und verhindert deren Verlust im Falle eines regionalen Speicherausfalls.
+Azure Container Registry speichert Daten in der Region, in der die Registrierung erstellt wurde, um Kunden bei der Erfüllung der Anforderungen an Datenresidenz und Compliance zu unterstützen.
+
+Zum Schutz vor Rechenzentrumsausfällen bieten einige Regionen [Zonenredundanz](zone-redundancy.md). Dabei werden Daten über mehrere Rechenzentren hinweg in einer bestimmten Region repliziert.
+
+Kunden, die Ihre Daten in mehreren Regionen speichern möchten, um die Leistung für verschiedene geografische Regionen zu verbessern, oder die bei einem regionalen Ausfall Resilienz wünschen, sollten [Georeplikation](container-registry-geo-replication.md) aktivieren.
 
 ## <a name="geo-replication"></a>Georeplikation
 
-Für Szenarien, die eine noch zuverlässigere Hochverfügbarkeit erfordern, sollten Sie das Feature [Georeplikation](container-registry-geo-replication.md) der Premium-Registrierungen nutzen. Die Georeplikation schützt vor dem Verlust des Zugriffs auf Ihre Registrierung im Falle eines *Totalausfalls* der Region, nicht nur eines Speicherausfalls. Zudem bietet die Georeplikation weitere Vorteile, wie z.B. netzwerknahe Imagespeicher für schnellere Push- und Pullvorgänge in verteilten Entwicklungs- oder Bereitstellungsszenarien.
+Für Szenarien, die zuverlässige Hochverfügbarkeit erfordern, sollten Sie das Feature [Georeplikation](container-registry-geo-replication.md) der Premium-Registrierungen nutzen. Die Georeplikation schützt vor dem Verlust des Zugriffs auf Ihre Registrierung im Falle eines regionalen Ausfalls. Zudem bietet die Georeplikation weitere Vorteile, wie z.B. netzwerknahe Imagespeicher für schnellere Push- und Pullvorgänge in verteilten Entwicklungs- oder Bereitstellungsszenarien.
+
+## <a name="zone-redundancy"></a>Zonenredundanz
+
+Zum Erstellen einer resilienten und hochverfügbaren Azure-Containerregistrierung aktivieren Sie optional [Zonenredundanz](zone-redundancy.md) in ausgewählten Azure-Regionen. Zonenredundanz ist eine Funktion der Dienstebene „Premium“ und nutzt Azure-[Verfügbarkeitszonen](../availability-zones/az-overview.md), um Ihre Registrierung in mindestens drei separaten Zonen in jeder aktivierten Region zu replizieren. Kombinieren Sie Georeplikation und Zonenredundanz, um sowohl die Zuverlässigkeit als auch die Leistung einer Registrierung zu verbessern. 
 
 ## <a name="scalable-storage"></a>Skalierbarer Speicher
 
 Mit Azure Container Registry können Sie beliebig viele benötigte Repositorys, Images, Ebenen oder Tags erstellen, bis zum [Registrierungsspeicherlimit](container-registry-skus.md#service-tier-features-and-limits). 
 
-Eine hohe Anzahl von Repositorys und Tags können die Leistung Ihrer Registrierung beeinträchtigen. Löschen Sie regelmäßig unbenutzte Repositorys, Tags und Images als Teil der Wartungsroutine für Ihre Registrierung, und legen Sie optional eine [Aufbewahrungsrichtlinie](container-registry-retention-policy.md) für nicht mit Tags versehene Manifeste fest. Gelöschte Registrierungsressourcen wie Repositorys, Images und Tags können nach dem Löschen *nicht* wiederhergestellt werden. Weitere Informationen zum Löschen von Registrierungsressourcen finden Sie unter [Löschen von Containerimages in Azure Container Registry](container-registry-delete.md).
+Eine hohe Anzahl von Repositorys und Tags kann die Leistung Ihrer Registrierung beeinträchtigen. Löschen Sie regelmäßig unbenutzte Repositorys, Tags und Images als Teil der Wartungsroutine für Ihre Registrierung, und legen Sie optional eine [Aufbewahrungsrichtlinie](container-registry-retention-policy.md) für nicht mit Tags versehene Manifeste fest. Gelöschte Registrierungsressourcen wie Repositorys, Images und Tags können nach dem Löschen *nicht* wiederhergestellt werden. Weitere Informationen zum Löschen von Registrierungsressourcen finden Sie unter [Löschen von Containerimages in Azure Container Registry](container-registry-delete.md).
 
 ## <a name="storage-cost"></a>Speicherkosten
 

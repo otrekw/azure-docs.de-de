@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 4/26/2019
 ms.author: steveesp
 ms.reviewer: kumud, mareat
-ms.openlocfilehash: 280b3cbef8307691b0d50c4a26f6dca18b7fb65b
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: cb128f9269895f04d1e0dad8e0c8d06c481e86c6
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233864"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "100576165"
 ---
 # <a name="virtual-machine-network-bandwidth"></a>Netzwerkdurchsatz virtueller Computer
 
@@ -55,12 +55,12 @@ Datenübertragungen zwischen Endpunkten erfordern die Erstellung von mehreren Fl
 ## <a name="flow-limits-and-active-connections-recommendations"></a>Empfehlungen für Flowgrenzwerte und aktive Verbindungen
 
 Heute unterstützt der Azure-Netzwerkstapel insgesamt 1 Million Flows (500.000 eingehend und 500.000 ausgehend) für einen virtuellen Computer. Die Gesamtzahl der aktiven Verbindungen, die von einem virtuellen Computer in verschiedenen Szenarien verarbeitet werden können, lauten wie folgt.
-- Virtuelle Computer, die zu VNET gehören, können 500.000 **_aktive Verbindungen_* _ für alle VM-Größen mit 500.000 _*_aktiven Flows in jeder Richtung_*_ verarbeiten.  
-- Virtuelle Computer mit virtuellen Netzwerkgeräten (Network Virtual Appliances, NVAs) wie Gateway, Proxy, Firewall können 250.000 _*_aktive Verbindungen_*_ mit 500.000 _ *_aktiven Flows in jeder Richtung_** aufgrund der Weiterleitung und zusätzlichen Erstellung neuer Flows beim Einrichten der neuen Verbindung zum nächsten Hop verarbeiten, wie in der obigen Abbildung dargestellt. 
+- Virtuelle Computer, die zu VNET gehören, können 500.000 ***aktive Verbindungen** _ für alle VM-Größen mit 500.000 _*_aktiven Flows in jeder Richtung_** verarbeiten.  
+- Virtuelle Computer mit virtuellen Netzwerkgeräten (Network Virtual Appliances, NVAs) wie Gateway, Proxy, Firewall können 250.000 ***aktive Verbindungen** _ mit 500.000 _ *_aktiven Flows in jeder Richtung_** aufgrund der Weiterleitung und zusätzlichen Erstellung neuer Flows beim Einrichten der neuen Verbindung mit dem nächsten Hop verarbeiten, wie in der obigen Abbildung dargestellt. 
 
 Nachdem dieser Grenzwert erreicht wurde, werden weitere Verbindungen getrennt. Die Raten für die Verbindungsherstellung und -beendigung können sich ebenfalls auf die Netzwerkleistung auswirken, da für die Verbindungsherstellung und -beendigung CPU-Ressourcen mit der Paketverarbeitung geteilt werden. Es wird empfohlen, Benchmarktests für Ihre Workloads mit den zu erwartenden Datenverkehrsmustern durchzuführen und die Workloads entsprechend den Leistungsanforderungen aufzuskalieren.
 
-In [Azure Monitor](../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines) stehen Metriken zum Nachverfolgen der Anzahl von Netzwerkflows und der Rate der Erstellung von Flows auf Ihren virtuellen Computern oder VMSS-Instanzen zur Verfügung.
+In [Azure Monitor](../azure-monitor/essentials/metrics-supported.md#microsoftcomputevirtualmachines) stehen Metriken zum Nachverfolgen der Anzahl von Netzwerkflows und der Rate der Erstellung von Flows auf Ihren virtuellen Computern oder VMSS-Instanzen zur Verfügung.
 
 ![Screenshot: Seite „Metriken“ von Azure Monitor mit einem Liniendiagramm und Summen für eingehende und ausgehende Flows](media/virtual-machine-network-throughput/azure-monitor-flow-metrics.png)
 

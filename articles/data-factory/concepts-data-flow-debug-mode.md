@@ -6,13 +6,13 @@ author: kromerm
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/04/2020
-ms.openlocfilehash: 5b2197950d5dbb95bd0a90f15506756ee3ed0b2d
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 02/19/2021
+ms.openlocfilehash: 0aa472aca40acbaf3f8c8a09469d08fe6b37187a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100369831"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101699758"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>Mapping Data Flow – Debugmodus
 
@@ -39,9 +39,9 @@ In den meisten Fällen ist es eine gute Vorgehensweise, Ihre Datenflüsse im Deb
 
 ## <a name="cluster-status"></a>Clusterstatus
 
-Die Clusterstatusanzeige im oberen Bereich der Entwurfsoberfläche wird grün, wenn der Cluster zum Debuggen bereit ist. Wenn Ihr Cluster bereits betriebsbereiten ist, wird die Anzeige nahezu sofort grün. Wenn Ihr Cluster noch nicht ausgeführt wird, wenn Sie in den Debugmodus wechseln, müssen Sie 5-7 Minuten warten, bis der Cluster gestartet ist. Der Indikator wechselt solange, bis er bereit ist.
+Die Clusterstatusanzeige im oberen Bereich der Entwurfsoberfläche wird grün, wenn der Cluster zum Debuggen bereit ist. Wenn Ihr Cluster bereits betriebsbereiten ist, wird die Anzeige nahezu sofort grün. Wenn der Cluster nicht bereits im Debugmodus ausgeführt wurde, führt der Spark-Cluster einen Kaltstart aus. Der Indikator dreht sich, bis die Umgebung für das interaktive Debuggen bereit ist.
 
-Wenn Sie mit dem Debuggen fertig sind, deaktivieren Sie den Debugmodus, damit Ihr Azure Databricks-Cluster beendet werden kann. Danach werden Ihnen keine Debugaktivitäten mehr in Rechnung gestellt.
+Wenn Sie mit dem Debuggen fertig sind, deaktivieren Sie den Debugmodus, damit der Spark-Cluster beendet werden kann. Danach werden Ihnen keine Debugaktivitäten mehr in Rechnung gestellt.
 
 ## <a name="debug-settings"></a>Debug-Einstellungen
 
@@ -50,6 +50,8 @@ Wenn Sie den Debugmodus aktivieren, können Sie bearbeiten, wie ein Datenfluss D
 ![Debugeinstellungen](media/data-flow/debug-settings.png "Debug-Einstellungen")
 
 Wenn Sie in Ihrem Datenfluss oder in einem der referenzierten Datasets Parameter verwenden, können Sie angeben, welche Werte beim Debuggen verwendet werden sollen, indem Sie die Registerkarte **Parameter** auswählen.
+
+Verwenden Sie die hier verfügbaren Einstellungen für Stichproben, um auf Beispieldateien oder Beispieltabellen von Daten zu verweisen, sodass Sie die Quelldatasets nicht ändern müssen. Wenn Sie hier eine Beispieldatei oder -tabelle verwenden, können Sie die Logik- und Eigenschafteneinstellungen im Datenfluss beibehalten, wenn Sie eine Teilmenge der Daten testen.
 
 ![Parameter für Debugeinstellungen](media/data-flow/debug-settings2.png "Parameter für Debugeinstellungen")
 

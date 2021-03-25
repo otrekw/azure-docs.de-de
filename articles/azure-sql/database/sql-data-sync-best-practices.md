@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/20/2018
-ms.openlocfilehash: 59e28e4a3d630aac0954802e8777058c00261006
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: ee15bfaa1d69e2e5047e7d24986f8e4e7d5b8b31
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791442"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102180240"
 ---
 # <a name="best-practices-for-azure-sql-data-sync"></a>Bewährte Methoden für die Azure SQL-Datensynchronisierung 
 
@@ -51,6 +51,10 @@ Azure SQL-Datenbank unterstützt nur einen Satz von Anmeldeinformationen. Sie k�
 
 -   Ändern Sie die Anmeldeinformationen für die verschiedenen Phasen. Verwenden Sie also beispielsweise *credentials1* für die Einrichtung und *credentials2* für die laufende Synchronisierung.  
 -   Ändern Sie die Berechtigung der Anmeldeinformationen. (Genauer gesagt: Ändern Sie die Berechtigung nach dem Einrichten der Synchronisierung.)
+
+### <a name="auditing"></a>Überwachung
+
+Es wird empfohlen, die Überwachung auf Datenbankebene in den Synchronisierungsgruppen zu aktivieren. 
 
 ## <a name="setup"></a>Einrichten
 
@@ -172,11 +176,11 @@ Es kann vorkommen, dass eine Synchronisierungsgruppe oder eine Datenbank in eine
 
 #### <a name="avoid-out-of-date-databases"></a>Vermeiden veralteter Datenbanken
 
-Eine Datenbank erhält den Status **Veraltet** , wenn sie mindestens 45 Tage lang offline war. Stellen Sie sicher, dass keine Datenbank 45 Tage oder länger offline ist, um den Datenbankstatus **Veraltet** zu vermeiden.
+Eine Datenbank erhält den Status **Veraltet**, wenn sie mindestens 45 Tage lang offline war. Stellen Sie sicher, dass keine Datenbank 45 Tage oder länger offline ist, um den Datenbankstatus **Veraltet** zu vermeiden.
 
 #### <a name="avoid-out-of-date-sync-groups"></a>Vermeiden veralteter Synchronisierungsgruppen
 
-Eine Synchronisierungsgruppe erhält den Status **Veraltet** , wenn eine Änderung in der Synchronisierungsgruppe nicht innerhalb von 45 Tagen an die restlichen Datenbanken der Gruppe verteilt werden konnte. Prüfen Sie regelmäßig das Verlaufsprotokoll der Synchronisierungsgruppe, um den Status **Veraltet** zu vermeiden. Vergewissern Sie sich, dass alle Konflikte gelöst und Änderungen erfolgreich an die Datenbanken der Synchronisierungsgruppe verteilt wurden.
+Eine Synchronisierungsgruppe erhält den Status **Veraltet**, wenn eine Änderung in der Synchronisierungsgruppe nicht innerhalb von 45 Tagen an die restlichen Datenbanken der Gruppe verteilt werden konnte. Prüfen Sie regelmäßig das Verlaufsprotokoll der Synchronisierungsgruppe, um den Status **Veraltet** zu vermeiden. Vergewissern Sie sich, dass alle Konflikte gelöst und Änderungen erfolgreich an die Datenbanken der Synchronisierungsgruppe verteilt wurden.
 
 Es kann passieren, dass eine Synchronisierungsgruppe eine Änderung aus einem der folgenden Gründe nicht anwenden kann:
 

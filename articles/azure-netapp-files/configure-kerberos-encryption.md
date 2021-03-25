@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 11/09/2020
+ms.date: 02/18/2021
 ms.author: b-juche
-ms.openlocfilehash: b7e40eb936a6151f0f31c34c5a8030153a87f08c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 6ff87d046c60f588e133010895ec3e7ce08cb71f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100571090"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101740561"
 ---
 # <a name="configure-nfsv41-kerberos-encryption-for-azure-netapp-files"></a>Konfigurieren der NFSv4.1-Kerberos-Verschlüsselung für Azure NetApp Files
 
@@ -112,66 +112,11 @@ Befolgen Sie die Anweisungen unter [Konfigurieren eines NFS-Clients für Azure N
 
 ## <a name="performance-impact-of-kerberos-on-nfsv41"></a><a name="kerberos_performance"></a>Leistungsauswirkungen von Kerberos auf NFSv4.1 
 
-In diesem Abschnitt erhalten Sie Informationen zu den Leistungsauswirkungen von Kerberos auf NFSv4.1.
-
-### <a name="available-security-options"></a>Verfügbare Sicherheitsoptionen 
-
-Derzeit sind folgende Sicherheitsoptionen für NFSv4.1-Volumes verfügbar: 
-
-* **sec=sys** verwendet lokale UNIX-UIDs und -GIDs mithilfe von AUTH_SYS zum Authentifizieren von NFS-Vorgängen.
-* **sec=krb5** verwendet Kerberos V5 anstelle von lokalen UNIX-UIDs und -GIDs zum Authentifizieren von Benutzern.
-* **sec=krb5i** verwendet Kerberos V5 für die Benutzerauthentifizierung und führt die Integritätsüberprüfung von NFS-Vorgängen mithilfe von sicheren Prüfsummen durch, um Datenmanipulationen zu verhindern.
-* **sec=krb5p** verwendet Kerberos V5 für die Benutzerauthentifizierung und die Integritätsüberprüfung. Bei dieser Option wird der NFS-Datenverkehr verschlüsselt, um das Ausspähen des Datenverkehrs zu verhindern. Diese Option ist die sicherste Einstellung, sie stellt aber auch die größten Anforderungen an die Leistung.
-
-### <a name="performance-vectors-tested"></a>Getestete Leistungsvektoren
-
-In diesem Abschnitt werden die Leistungsauswirkungen der verschiedenen `sec=*`-Optionen auf einen einzelnen Client beschrieben.
-
-* Die Leistungsauswirkungen wurden auf zwei Ebenen getestet: geringe Parallelität (niedrige Auslastung) und hohe Parallelität (Obergrenze für E/A und Durchsatz).  
-* Drei Typen von Workloads wurden getestet:  
-    * Kleine Vorgänge mit zufälligem Lese-/Schreibzugriff (mit FIO)
-    * Umfangreiche Vorgänge mit sequenziellem Lese-/Schreibzugriff (mit FIO)
-    * Hohe Arbeitsauslastung durch Metadaten, z. B. durch Anwendungen wie Git generiert
-
-### <a name="expected-performance-impact"></a>Erwartete Leistungsauswirkungen 
-
-Es gibt zwei Schwerpunktbereiche: geringe Auslastung und Obergrenze. In den folgenden Listen werden die Leistungsauswirkungen der einzelnen Sicherheitseinstellungen und Szenarien beschrieben. Alle Vergleiche beziehen sich auf den Sicherheitsparameter `sec=sys`. Der Test wurde für ein einzelnes Volume unter Verwendung eines einzelnen Clients durchgeführt. 
-
-Leistungsauswirkungen von krb5:
-
-* Geringe Parallelität (L/S):
-    * Sequenzielle Latenz um 0,3 ms erhöht.
-    * Zufällige E/A-Latenz um 0,2 ms erhöht.
-    * E/A-Latenz bei Metadaten um 0,2 ms erhöht.
-* Hohe Parallelität (L/S): 
-    * Der maximale sequenzielle Durchsatz wurde durch krb5 nicht beeinträchtigt.
-    * Die maximale zufällige E/A verringerte sich bei reinen Leseworkloads um 30 %, wobei die Gesamtauswirkungen bei reinen Leseworkloads bei 0 lagen. 
-    * Die maximale Workload für Metadaten wurde um 30 % verringert.
-
-Leistungsauswirkungen von krb5i: 
-
-* Geringe Parallelität (L/S):
-    * Sequenzielle Latenz um 0,5 ms erhöht.
-    * Zufällige E/A-Latenz um 0,2 ms erhöht.
-    * E/A-Latenz bei Metadaten um 0,2 ms erhöht.
-* Hohe Parallelität (L/S): 
-    * Der maximale sequenzielle Durchsatz wurde unabhängig von der Workloadmischung um insgesamt 70 % verringert.
-    * Die maximale zufällige E/A verringerte sich bei reinen Leseworkloads um 50 %, wobei die Gesamtauswirkungen bei reinen Leseworkloads bei 25 % lagen. 
-    * Die maximale Workload für Metadaten wurde um 30 % verringert.
-
-Leistungsauswirkungen von krb5p:
-
-* Geringe Parallelität (L/S):
-    * Sequenzielle Latenz um 0,8 ms erhöht.
-    * Zufällige E/A-Latenz um 0,2 ms erhöht.
-    * E/A-Latenz bei Metadaten um 0,2 ms erhöht.
-* Hohe Parallelität (L/S): 
-    * Der maximale sequenzielle Durchsatz wurde unabhängig von der Workloadmischung um insgesamt 85 % verringert. 
-    * Die maximale zufällige E/A verringerte sich bei reinen Leseworkloads um 65 %, wobei die Gesamtauswirkungen bei reinen Leseworkloads bei 43 % lagen. 
-    * Die maximale Workload für Metadaten wurde um 30 % verringert.
+Sie sollten sich mit den für NFSv4.1-Volumes verfügbaren Sicherheitsoptionen, den getesteten Leistungsvektoren und den erwarteten Leistungseinbußen von Kerberos vertraut machen. Weitere Informationen finden Sie unter [Auswirkungen von Kerberos auf die Leistung von NFSv4.1-Volumes](performance-impact-kerberos.md).  
 
 ## <a name="next-steps"></a>Nächste Schritte  
 
+* [Auswirkungen von Kerberos auf die Leistung von NFSv4.1-Volumes](performance-impact-kerberos.md)
 * [Problembehandlung für NFSv4.1-Kerberos-Volumes](troubleshoot-nfsv41-kerberos-volumes.md)
 * [Häufig gestellte Fragen zu Azure NetApp Files](azure-netapp-files-faqs.md)
 * [Erstellen eines NFS-Volumes für Azure NetApp Files](azure-netapp-files-create-volumes.md)

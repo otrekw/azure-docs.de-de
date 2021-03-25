@@ -2,13 +2,13 @@
 title: Ereignisfilter für Azure Event Grid
 description: Hier erfahren Sie, wie Sie Ereignisse beim Erstellen eines Azure Event Grid-Abonnements filtern können.
 ms.topic: conceptual
-ms.date: 02/26/2021
-ms.openlocfilehash: 7253c4a38660b0041f27918309efae21675fdc8f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/04/2021
+ms.openlocfilehash: 94445341891149d5d02c7f33caef20bf45123e9b
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101721955"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197774"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Grundlegendes zur Ereignisfilterung für Event Grid-Abonnements
 
@@ -57,14 +57,28 @@ Um nach Werten in den Datenfeldern zu filtern und den Vergleichsoperator anzugeb
 * Schlüssel – Feld in den Ereignisdaten, die Sie für die Filterung verwenden. Dabei kann es sich um eine Zahl, einen booleschen Wert, eine Zeichenfolge oder ein Array handeln.
 * Werte – Werte, die mit dem Schlüssel verglichen werden sollen.
 
-## <a name="key"></a>Key
-Das Feld „key“ in den Ereignisdaten wird für die Filterung verwendet. Dabei kann es sich um eine Zahl, einen booleschen Wert, eine Zeichenfolge oder ein Array handeln. Verwenden Sie für Ereignisse im **Event Grid-Schema** die folgenden Werte für „key“: `ID`, `Topic`, `Subject`, `EventType`, `DataVersion` oder Ereignisdaten wie `data.key1`.
+## <a name="key"></a>Schlüssel
+Das Feld „key“ in den Ereignisdaten wird für die Filterung verwendet. Mögliche Typen:
+
+- Number
+- Boolean
+- String
+- Array. Legen Sie die Eigenschaft `enableAdvancedFilteringOnArrays` auf „true“ fest, wenn Sie dieses Feature verwenden möchten. Die Aktivierung dieses Features wird aktuell vom Azure-Portal nicht unterstützt. 
+
+    ```json
+    "filter":
+    {
+        "subjectBeginsWith": "/blobServices/default/containers/mycontainer/log",
+        "subjectEndsWith": ".jpg",
+        "enableAdvancedFilteringOnArrays": true
+    }
+    ```
+
+Verwenden Sie für Ereignisse im **Event Grid-Schema** die folgenden Werte für „key“: `ID`, `Topic`, `Subject`, `EventType`, `DataVersion` oder Ereignisdaten wie `data.key1`.
 
 Verwenden Sie für Ereignisse im **CloudEvents-Schema** die folgenden Werte für „key“: `eventid`, `source`, `eventtype`, `eventtypeversion` oder Ereignisdaten wie `data.key1`.
 
-Verwenden Sie für ein **benutzerdefiniertes Eingabeschema** die Ereignisdatenfelder wie `data.key1`.
-
-Verwenden Sie den Punktoperator (`.`), um auf Felder im Datenabschnitt zuzugreifen. Verwenden Sie beispielsweise `data.sitename` oder `data.appEventTypeDetail.action`, um auf `sitename` oder `action` im folgenden Beispielereignis zuzugreifen.
+Verwenden Sie für ein **benutzerdefiniertes Eingabeschema** die Ereignisdatenfelder wie `data.key1`. Verwenden Sie den Punktoperator (`.`), um auf Felder im Datenabschnitt zuzugreifen. Verwenden Sie beispielsweise `data.sitename` oder `data.appEventTypeDetail.action`, um auf `sitename` oder `action` im folgenden Beispielereignis zuzugreifen.
 
 ```json
     "data": {
@@ -80,10 +94,8 @@ Verwenden Sie den Punktoperator (`.`), um auf Felder im Datenabschnitt zuzugreif
     },
 ```
 
-
 ## <a name="values"></a>Werte
 Zulässige Werte sind Zahlen, Zeichenfolgen, boolesche Werte oder Arrays.
-
 
 ## <a name="operators"></a>Operatoren
 

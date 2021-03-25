@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/03/2017
 ms.author: alkohli
 ms.openlocfilehash: dffa059b18e159d04b5e3bb8555dabf801ede692
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96017116"
 ---
 # <a name="failover-and-disaster-recovery-for-your-storsimple-8000-series-device"></a>Ausführen eines Failovers und einer Notfallwiederherstellung für Geräte der StorSimple 8000-Serie
@@ -50,8 +50,8 @@ Auf einem Gerät der StorSimple 8000-Serie sind mit Sicherungen Sicherungsrichtl
 
 Angenommen, es gibt zwei Sicherungsrichtlinien, *pefaultPol* und *customPol*:
 
-* *defaultPol*: Ein Volume (*vol1*) wird täglich ab 22:30 Uhr ausgeführt.
-* *customPol*: Vier Volumes (*vol1*, *vol2*, *vol3* und *vol4*) werden täglich ab 22:00 Uhr ausgeführt.
+* *defaultPol*: Ein Volume, *vol1*, wird täglich ab 22:30 Uhr ausgeführt.
+* *customPol*: Vier Volumes – *vol1*, *vol2*, *vol3* und *vol4* – werden täglich ab 22:00 Uhr ausgeführt.
 
 In diesem Fall wird *customPol* von StorSimple verwendet, da die Richtlinie mehr Volumes umfasst und Absturzkonsistenz Priorität hat. Die Daten werden auf der Grundlage der neuesten Sicherung für diese Richtlinie wiederhergestellt. Weitere Informationen zum Erstellen und Verwalten von Sicherungsrichtlinien finden Sie unter [Verwalten von Sicherungsrichtlinien mithilfe des StorSimple-Geräte-Manager-Diensts](storsimple-8000-manage-backup-policies-u2.md).
 

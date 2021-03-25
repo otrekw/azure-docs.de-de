@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/18/2020
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: 11e0150089fd979cbf840d3b117c0d796ecc68f3
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 3b1cbd88b4cd6576b2c31fbeb2f3db86309c5ebf
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93335720"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104597622"
 ---
 # <a name="datetimetotimestamp-azure-cosmos-db"></a>DateTimeToTimestamp (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -31,17 +31,17 @@ DateTimeToTimestamp (<DateTime>)
 *DateTime*  
    UTC-Datum und -Uhrzeit als ISO-8601-Zeichenfolgenwert im Format `YYYY-MM-DDThh:mm:ss.fffffffZ` mit der folgenden Bedeutung:
   
-  |Format|BESCHREIBUNG|
-  |-|-|
-  |YYYY|vierstellige Jahreszahl|
-  |MM|zweistellige Monatszahl (01 = Januar usw.)|
-  |DD|zweistellige Zahl für den Tag des Monats (01 bis 31)|
-  |T|Trennzeichen, das den Anfang der Uhrzeitelemente markiert|
-  |hh|zweistellige Stundenzahl (00 bis 23)|
-  |MM|zweistellige Minutenzahl (00 bis 59)|
-  |ss|zweistellige Sekundenzahl (00 bis 59)|
-  |.fffffff|siebenstellige Sekundenbruchteile|
-  |Z|UTC-Kennzeichner||
+|Format|BESCHREIBUNG|
+|-|-|
+|YYYY|vierstellige Jahreszahl|
+|MM|zweistellige Monatszahl (01 = Januar usw.)|
+|DD|zweistellige Zahl für den Tag des Monats (01 bis 31)|
+|T|Trennzeichen, das den Anfang der Uhrzeitelemente markiert|
+|hh|zweistellige Stundenzahl (00 bis 23)|
+|MM|zweistellige Minutenzahl (00 bis 59)|
+|ss|zweistellige Sekundenzahl (00 bis 59)|
+|.fffffff|siebenstellige Sekundenbruchteile|
+|Z|UTC-Kennzeichner|
   
   Weitere Informationen zum ISO 8601-Format finden Sie unter [ISO_8601](https://en.wikipedia.org/wiki/ISO_8601).
 

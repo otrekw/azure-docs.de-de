@@ -3,12 +3,12 @@ title: Authentifizieren mit einer verwalteten Identität
 description: Ermöglichen Sie Zugriff auf Images in Ihrer privaten Containerregistrierung, indem Sie eine benutzerseitig oder systemseitig zugewiesene verwaltete Azure-Identität verwenden.
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: 68564cc5743b1deb43bf39f897c239dc683c334c
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: e6c0d21f7bdefa94241655225589a52c02110f70
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99987754"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102041466"
 ---
 # <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>Verwenden einer verwalteten Azure-Identität für die Azure Container Registry-Authentifizierung 
 
@@ -107,13 +107,13 @@ Beenden Sie die SSH-Sitzung.
 
 ### <a name="create-an-identity"></a>Erstellen einer Identität
 
-Erstellen Sie mit dem Befehl [az identity create](/cli/azure/identit#az-identity-create) eine Identität in Ihrem Abonnement. Sie können entweder dieselbe Ressourcengruppe verwenden, die Sie zuvor zum Erstellen der Containerregistrierung oder VM verwendet haben, oder Sie verwenden eine andere Ressourcengruppe.
+Erstellen Sie mit dem Befehl [az identity create](/cli/azure/identity#az_identity_create) eine Identität in Ihrem Abonnement. Sie können entweder dieselbe Ressourcengruppe verwenden, die Sie zuvor zum Erstellen der Containerregistrierung oder VM verwendet haben, oder Sie verwenden eine andere Ressourcengruppe.
 
 ```azurecli-interactive
 az identity create --resource-group myResourceGroup --name myACRId
 ```
 
-Um die Identität in den folgenden Schritten zu konfigurieren, verwenden Sie den Befehl [az identity show][az-identity-show], um die Ressourcen-ID und die Dienstprinzipal-ID der Identität in Variablen zu speichern.
+Um die Identität in den folgenden Schritten zu konfigurieren, verwenden Sie den Befehl [az identity show][az_identity_show], um die Ressourcen-ID und die Dienstprinzipal-ID der Identität in Variablen zu speichern.
 
 ```azurecli
 # Get resource ID of the user-assigned identity

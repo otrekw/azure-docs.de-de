@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/04/2021
 ms.author: justinha
-ms.openlocfilehash: 1619622ad9594f252c3d4cf5551704c6a788f9f8
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: fec2695c9e196a652a4166161bf012b22b0d00e6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102564083"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579551"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Tutorial: Konfigurieren von Secure LDAP (LDAPS) für eine verwaltete Azure AD Domain Services-Domäne
 
@@ -152,7 +152,7 @@ Bevor Sie das im vorherigen Schritt erstellte digitale Zertifikat in Ihrer verwa
 
     Wählen Sie auf der Seite **Sicherheit** die Option **Kennwort** aus, um die *PFX*-Zertifikatdatei zu schützen. Als Verschlüsselungsalgorithmus muss *TripleDES-SHA1* verwendet werden. Geben Sie ein Kennwort ein, bestätigen Sie es, und klicken Sie auf **Weiter**. Dieses Kennwort wird im nächsten Abschnitt zum Aktivieren von Secure LDAP für Ihre verwaltete Domäne verwendet.
 
-    Wenn Sie für den Export das [PowerShell-Cmdlet „export-pfxcertificate2“](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate) verwenden, müssen Sie das Flag *-CryptoAlgorithmOption* unter Verwendung von „TripleDES_SHA1“ übergeben.
+    Wenn Sie für den Export das [PowerShell-Cmdlet „export-pfxcertificate2“](/powershell/module/pkiclient/export-pfxcertificate) verwenden, müssen Sie das Flag *-CryptoAlgorithmOption* unter Verwendung von „TripleDES_SHA1“ übergeben.
 
     ![Screenshot: Verschlüsseln des Kennworts](./media/tutorial-configure-ldaps/encrypt.png)
 
@@ -240,7 +240,7 @@ Erstellen Sie jetzt eine Regel, um eingehenden Secure LDAP-Zugriff über TCP-Por
     | `Source`                            | IP-Adressen |
     | IP-Quelladressen/CIDR-Bereiche | Eine gültige IP-Adresse oder ein gültiger IP-Adressbereich für Ihre Umgebung |
     | Source port ranges                | *            |
-    | Destination                       | Any          |
+    | Ziel                       | Any          |
     | Zielportbereiche           | 636          |
     | Protocol                          | TCP          |
     | Aktion                            | Allow        |

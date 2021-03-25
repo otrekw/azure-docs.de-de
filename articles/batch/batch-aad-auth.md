@@ -4,12 +4,12 @@ description: Batch unterstützt Azure AD für die Authentifizierung vom Batch-Di
 ms.topic: how-to
 ms.date: 10/20/2020
 ms.custom: has-adal-ref
-ms.openlocfilehash: 784e92eaa2cd672d511177066befcfd7effc7ca4
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 2ceefa538c44208750da8986fcf3d161f0c0865f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95252639"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102180019"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Authentifizieren von Lösungen des Azure Batch-Diensts mit Active Directory
 
@@ -41,7 +41,7 @@ Verwenden Sie zur Authentifizierung bei Azure AD diesen Endpunkt zusammen mit de
 >
 > Der mandantenspezifische Endpunkt ist optional, wenn Sie mithilfe der integrierten Authentifizierung authentifizieren, wird jedoch empfohlen. Sie können jedoch auch den gemeinsamen Endpunkt für Azure AD verwenden. Der allgemeine Endpunkt bietet eine generische Schnittstelle für die Erfassung von Anmeldeinformationen, wenn kein bestimmter Mandant bereitgestellt wird. Der gemeinsame Endpunkt ist `https://login.microsoftonline.com/common`.
 
-Weitere Informationen zu Azure AD-Endpunkten finden Sie unter [Authentifizierung und Autorisierung]()../active-directory/develop/authentication-vs-authorization.md).
+Weitere Informationen zu Endpunkten in Azure AD finden Sie unter [Authentifizierung im Vergleich zu Autorisierung](../active-directory/develop/authentication-vs-authorization.md).
 
 ### <a name="batch-resource-endpoint"></a>Batch-Ressourcenendpunkt
 

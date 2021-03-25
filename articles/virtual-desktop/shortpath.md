@@ -6,12 +6,12 @@ author: gundarev
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: denisgun
-ms.openlocfilehash: c1cdafe2929502293aada32dbae06e342761862b
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 295a46f6d1074ddf8422233ea3ccfa4d65c28fd8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98876697"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "100571593"
 ---
 # <a name="windows-virtual-desktop-rdp-shortpath-preview"></a>Windows Virtual Desktop – RDP Shortpath (Vorschau)
 
@@ -53,7 +53,7 @@ Das folgende Diagramm bietet eine allgemeine Übersicht über die RDP Shortpath
 
 :::image type="content" source="media/rdp-shortpath-connections.svg" alt-text="Diagramm der RDP Shortpath-Netzwerkverbindungen" lightbox="media/rdp-shortpath-connections.svg":::
 
-## <a name="requirements"></a>Requirements (Anforderungen)
+## <a name="requirements"></a>Anforderungen
 
 Zur Unterstützung von RDP Shortpath muss der virtuelle Windows Virtual Desktop-Client über eine direkte Sichtverbindung zum Sitzungshost verfügen. Eine direkte Sichtverbindung können Sie mit einer der folgenden Technologien herstellen:
 
@@ -151,7 +151,8 @@ Wenn Sie den Zugriff auf den RDP Shortpath-Listener über Netzwerksicherheitsgr
 Beachten Sie die [Dokumentation zu Netzwerksicherheitsgruppen](../virtual-machines/windows/nsg-quickstart-portal.md), um mit den folgenden Parametern eine Sicherheitsregel für den eingehenden Datenverkehr zu erstellen, die den Datenverkehr erlaubt:
 
 * **Quelle** - **Beliebig** oder der IP-Adressbereich, in dem sich die Clients befinden
-* **Quellportbereiche** – * *\** _ _ **Ziel** - **Beliebig**
+* **Quellportbereiche** -  **\***
+* **Ziel**  -  **Beliebig**
 * **Zielportbereiche** - **3390**
 * **Protokoll** - **UDP**
 * **Aktion** - **Zulassen**
@@ -188,7 +189,7 @@ Mögliche Werte sind:
 * **0**: Benutzerverbindung verwendet RDP Shortpath nicht
 * **1**: Benutzerverbindung verwendet RDP Shortpath
   
-Mit der folgenden Abfrageliste können Sie Verbindungsinformationen überprüfen. Sie können diese Abfrage im [Log Analytics-Abfrage-Editor](../azure-monitor/log-query/log-analytics-tutorial.md#write-a-query) ausführen. Ersetzen Sie für jede Abfrage `userupn` durch den UPN des Benutzers, den Sie suchen möchten.
+Mit der folgenden Abfrageliste können Sie Verbindungsinformationen überprüfen. Sie können diese Abfrage im [Log Analytics-Abfrage-Editor](../azure-monitor/logs/log-analytics-tutorial.md#write-a-query) ausführen. Ersetzen Sie für jede Abfrage `userupn` durch den UPN des Benutzers, den Sie suchen möchten.
 
 ```kusto
 let Events = WVDConnections | where UserName == "userupn" ;

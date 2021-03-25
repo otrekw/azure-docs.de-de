@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 02/10/2021
 ms.author: jodowns
 ms.custom: fasttrack-new
-ms.openlocfilehash: 9dc44b4b898603df88d1bdd8c36ddfb6449335ac
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 55951f288314d92cf5057e7d5c1e988f65cb3e14
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100547195"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102040378"
 ---
 # <a name="versions-in-azure-api-management"></a>Versionen in Azure API Management
 
@@ -42,7 +42,7 @@ Wenn das Pfadschema für die Versionsverwaltung verwendet wird, muss der Version
 
 Beispielsweise können `https://apis.contoso.com/products/v1` und `https://apis.contoso.com/products/v2` auf dieselbe `products`-API verweisen, aber jeweils auf die Version `v1` und `v2`.
 
-Das Format einer API-Anforderungs-URL bei Verwendung der headerbasierten Versionsverwaltung ist: `https://{yourDomain}/{apiName}/{versionIdentifier}/{operationId}`.
+Das Format einer API-Anforderungs-URL bei Verwendung der pfadbasierten Versionsverwaltung ist `https://{yourDomain}/{apiName}/{versionIdentifier}/{operationId}`.
 
 ### <a name="header-based-versioning"></a>Headerbasierte Versionsverwaltung
 

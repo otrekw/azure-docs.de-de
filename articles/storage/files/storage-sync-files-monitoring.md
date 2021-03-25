@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: d1e51552acdd869a3f304a6d48e18e9d2aa6c782
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 272a642f70849b85be00d2507109eb97935c0dde
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100576764"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102202500"
 ---
 # <a name="monitor-azure-file-sync"></a>Überwachen der Azure-Dateisynchronisierung
 
@@ -111,7 +111,7 @@ Navigieren Sie zum Anzeigen der Integrität eines **Serverendpunkts** im Portal 
 
 - Die **Serverendpunktintegrität** und **Synchronisierungsaktivität** im Portal basiert auf den Synchronisierungsereignissen, die im Protokoll für Telemetrieereignisse auf dem Server protokolliert werden (ID 9102 und 9302). Wenn eine Synchronisierungssitzung aufgrund eines vorübergehenden Fehlers (z. B. Abbruchfehler) nicht erfolgreich ist, wird der Serverendpunkt im Portal weiterhin als **fehlerfrei** angezeigt, solange ein Fortschritt bei der Synchronisierungssitzung verzeichnet wird (Dateien werden angewendet). Ereignis-ID 9302 ist das Synchronisierungsfortschrittereignis, und die Ereignis-ID 9102 wird protokolliert, sobald eine Synchronisierungssitzung abgeschlossen ist.  Weitere Informationen finden Sie unter [Wie überwache ich die Integrität der Synchronisierung?](./storage-sync-files-troubleshoot.md?tabs=server%252cazure-portal#broken-sync) und [Wie überwache ich den Fortschritt einer aktuellen Synchronisierungssitzung?](./storage-sync-files-troubleshoot.md?tabs=server%252cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session). Wenn für die Integrität der Serverendpunkte ein **Fehler** oder **Keine Aktivität** angezeigt wird, finden Sie in der [Dokumentation zur Problembehandlung](./storage-sync-files-troubleshoot.md?tabs=portal1%252cazure-portal#common-sync-errors) weitere Informationen.
 - Die Anzahl **Dateien ohne Synchronisierung** im Portal basiert auf der Ereignis-ID 9121, die im Telemetrieereignisprotokoll auf dem Server protokolliert wird. Dieses Ereignis wird für jeden Fehler pro Element protokolliert, sobald die Synchronisierungssitzung abgeschlossen ist. Wie Sie Fehler auf Elementebene aufzulösen, erfahren Sie unter [Woran erkenne ich, dass bestimmte Dateien oder Ordner nicht synchronisiert wurden?](./storage-sync-files-troubleshoot.md?tabs=server%252cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing)
-- Um die **Cloudtieringeffizienz** im Portal anzuzeigen, navigieren Sie zu den **Eigenschaften des Serverendpunkts** und dann zum Abschnitt **Cloudtiering**. Die für die Cloudtieringeffizienz bereitgestellten Daten basieren auf der Ereignis-ID 9071, die im Telemetrieereignisprotokoll auf dem Server protokolliert wird. Weitere Informationen finden Sie im Artikel [Übersicht über Cloudtiering](./storage-sync-cloud-tiering.md).
+- Um die **Cloudtieringeffizienz** im Portal anzuzeigen, navigieren Sie zu den **Eigenschaften des Serverendpunkts** und dann zum Abschnitt **Cloudtiering**. Die für die Cloudtieringeffizienz bereitgestellten Daten basieren auf der Ereignis-ID 9071, die im Telemetrieereignisprotokoll auf dem Server protokolliert wird. Weitere Informationen finden Sie unter [Übersicht über Cloudtiering](./storage-sync-monitor-cloud-tiering.md).
 - Um die **Dateien ohne Tiering** und **Rückruffehler** im Portal anzuzeigen, navigieren Sie zu den **Eigenschaften des Serverendpunkts** und dann zum Abschnitt **Cloudtiering**. **Dateien ohne Tiering** basiert auf der Ereignis-ID 9003, die im Telemetrieereignisprotokoll auf dem Server protokolliert ist, und **Rückruffehler** auf der Ereignis-ID 9006. Wie Sie Dateien untersuchen, bei denen kein Tiering möglich ist oder Rückruffehler auftreten, erfahren Sie unter [So beheben Sie Probleme bei Dateien, bei denen kein Tiering möglich ist](./storage-sync-files-troubleshoot.md?tabs=portal1%252cazure-portal#how-to-troubleshoot-files-that-fail-to-tier) und [Beheben von Rückruffehlern bei Dateien](./storage-sync-files-troubleshoot.md?tabs=portal1%252cazure-portal#how-to-troubleshoot-files-that-fail-to-be-recalled).
 
 ### <a name="metric-charts"></a>Metrikdiagramme

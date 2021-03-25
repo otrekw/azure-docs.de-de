@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/03/2021
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: b48237b5a7eb836c495612758eeb9eaa45029b26
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 12ce8beab082674cd7672713325d4b3f4322aeae
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526584"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104587303"
 ---
 # <a name="getcurrentdatetime-azure-cosmos-db"></a>GetCurrentDateTime (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -28,19 +28,19 @@ GetCurrentDateTime ()
 
 ## <a name="return-types"></a>Rückgabetypen
   
-  Gibt den aktuellen UTC-Datums-/Uhrzeitwert als ISO 8601-Zeichenfolgenwert im Format `YYYY-MM-DDThh:mm:ss.fffffffZ` zurück. Die Entsprechungen sind:
+Gibt den aktuellen UTC-Datums-/Uhrzeitwert als ISO 8601-Zeichenfolgenwert im Format `YYYY-MM-DDThh:mm:ss.fffffffZ` zurück. Die Entsprechungen sind:
   
-  |Format|BESCHREIBUNG|
-  |-|-|
-  |YYYY|vierstellige Jahreszahl|
-  |MM|zweistellige Monatszahl (01 = Januar usw.)|
-  |DD|zweistellige Zahl für den Tag des Monats (01 bis 31)|
-  |T|Trennzeichen, das den Anfang der Uhrzeitelemente markiert|
-  |hh|zweistellige Stundenzahl (00 bis 23)|
-  |MM|zweistellige Minutenzahl (00 bis 59)|
-  |ss|zweistellige Sekundenzahl (00 bis 59)|
-  |.fffffff|siebenstellige Sekundenbruchteile|
-  |Z|UTC-Kennzeichner||
+|Format|BESCHREIBUNG|
+|-|-|
+|YYYY|vierstellige Jahreszahl|
+|MM|zweistellige Monatszahl (01 = Januar usw.)|
+|DD|zweistellige Zahl für den Tag des Monats (01 bis 31)|
+|T|Trennzeichen, das den Anfang der Uhrzeitelemente markiert|
+|hh|zweistellige Stundenzahl (00 bis 23)|
+|MM|zweistellige Minutenzahl (00 bis 59)|
+|ss|zweistellige Sekundenzahl (00 bis 59)|
+|.fffffff|siebenstellige Sekundenbruchteile|
+|Z|UTC-Kennzeichner|
   
   Weitere Informationen zum ISO 8601-Format finden Sie unter [ISO_8601](https://en.wikipedia.org/wiki/ISO_8601).
 

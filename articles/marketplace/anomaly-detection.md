@@ -1,34 +1,32 @@
 ---
-title: Anomalieerkennung für getaktete Abrechnungen | Azure Marketplace
+title: Verwalten von Anomalien bei der getakteten Abrechnung in Partner Center | Azure Marketplace
 description: Hier erfahren Sie, wie die automatische Anomalieerkennung für getaktete Abrechnungen dafür sorgt, dass Ihre Kunden für die gemessene Nutzung von Angeboten über Ihren kommerziellen Marketplace eine korrekte Rechnung erhalten.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 1/09/2021
+ms.date: 2/18/2021
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: d4fb88854359dcd6e383b47d2a8ce4e9c91f867a
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 1ff6262a75261c575082f3fc48d588c868ad0b51
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99989221"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "101092528"
 ---
-# <a name="anomaly-detection-for-metered-billing"></a>Anomalieerkennung für getaktete Abrechnung
+# <a name="manage-metered-billing-anomalies-in-partner-center"></a>Verwalten von Anomalien bei der getakteten Abrechnung in Partner Center
 
-In diesem Artikel finden Sie Details zum Messdienst für den Marketplace sowie zu der dazugehörigen Funktion für Anomalieerkennung, die dafür sorgt, dass Kunden für ihre gemessene Nutzung korrekt abgerechnet werden. Die Option für getaktete Abrechnung ist aktuell für [SaaS-Angebote](plan-saas-offer.md) (Software-as-a-Service) und [Azure-Anwendungen](plan-azure-application-offer.md#types-of-plans) mit verwaltetem Anwendungsplan verfügbar. Diese Option ermöglicht es Partnern, Angebote über den kommerziellen Marketplace zu erstellen, die gemäß Einheiten berechnet werden, die nicht dem Standardtarif entsprechen.
+Die Option für die benutzerdefinierte getaktete Abrechnung ist aktuell für [SaaS-Angebote](plan-saas-offer.md) (Software-as-a-Service) und [Azure-Anwendungen](plan-azure-application-offer.md#types-of-plans) mit einem Plan einer verwalteten Anwendung verfügbar.
 
-Partner, die benutzerdefinierte Verbrauchseinheiten für SaaS-Anwendungen und verwaltete Anwendungen bereitstellen, werden in Partner Center über Anomalien in Form von Abweichungen von einem erwarteten Benutzerverhalten zu _Überschreitungsereignissen_ oder bestimmten _benutzerdefinierten Verbrauchseinheiten_ informiert. Partner Center verwendet zur Risikominimierung einen Dienst für die Anomalieerkennung, der Machine-Learning-Algorithmen anwendet, um ein normales Verhalten für die getaktete Abrechnung zu bestimmen, die gemessene Nutzung laut Abrechnung zu analysieren und dabei mögliche Anomalien zu erkennen. Der dafür erforderliche Benutzereingriff ist minimal. Auf Grundlage von _Modellen für die Anomalieerkennung_ für Datasets mit getakteter Nutzungsabrechnung werden Herausgeber in Partner Center informiert, wenn die gemeldete Nutzung die erwartete Nutzung überschreitet.
+Wenn Sie mit der Option für getaktete Abrechnung Angebote im Marketplace-Programm erstellen, mit denen Sie die Nutzung basierend auf nicht standardmäßigen Einheiten berechnen können, müssen Sie wissen, wann der Kunde den Dienst in größerem Umfang als erwartet verwendet hat.
 
-## <a name="usability-experience"></a>Nutzung
+## <a name="use-the-anomaly-detection-feature"></a>Verwenden des Anomalieerkennungsfeatures
 
-Der Partner muss die Überschreitungsnutzung seines Kunden bezüglich seiner SaaS- oder Azure Managed Applications-Angebote an Microsoft melden, bevor Microsoft eine Rechnung für den Kunden erstellen kann. Wenn eine falsche Nutzung gemeldet wird, erhält der Kunde möglicherweise eine falsche Rechnung, was die Glaubwürdigkeit von Microsoft sowie die des Partners schädigen kann.
+Sie als Partner müssen die Überschreitungsnutzung ihrer Kunden bezüglich ihrer SaaS- oder Azure Managed Applications-Angebote an Microsoft melden, bevor Microsoft eine Rechnung für den Kunden erstellen kann. Wenn eine falsche Nutzung gemeldet wird, erhält der Kunde möglicherweise eine falsche Rechnung, was die Glaubwürdigkeit von Microsoft sowie die des Partners schädigen kann.
 
-Damit dieses Risiko umgangen werden kann, wird ein automatisiertes Anomalieerkennungsfeature bereitgestellt, das sowohl für SaaS-Apps als auch für Azure Managed Applications-Pläne angewendet werden kann. Bei diesem Feature handelt es sich um ein Machine Learning-Modell, das proaktiv die Nutzung überwacht und mit der getakteten Abrechnung vergleicht, um so einen zu erwartenden Nutzungswert innerhalb eines erwarteten Bereichs vorherzusagen. Wenn sich die Nutzung außerhalb des erwarteten Bereichs befindet, wird sie als Anomalie behandelt, und für den Partner wird eine Warnmeldung auf der Seite „Übersicht“ im kommerziellen Marketplace in Partner Center angezeigt.
+Um sicherzustellen, dass Ihre Kunden eine korrekte Abrechnung erhalten, verwenden Sie das Feature zur **Anomalieerkennung** für SaaS-Apps und für Pläne verwalteter Azure-Anwendungen. Dieses Feature überwacht die Nutzung und vergleicht sie mit der getakteten Abrechnung, um so einen zu erwartenden Nutzungswert innerhalb eines erwarteten Bereichs vorherzusagen. Wenn sich die Nutzung außerhalb des erwarteten Bereichs befindet, wird sie als unerwartete Nutzung (Anomalie) behandelt, und für Sie erhalten eine Warnmeldung auf der Seite „Übersicht“ im Programm „Kommerzieller Marketplace“ im Partner Center. Sie können die Nutzung Ihrer Kunden täglich für jede von Ihnen festgelegte benutzerdefinierte Verbrauchseinheitsdimension nachverfolgen.
 
-Das Machine Learning-Modell analysiert die Überschreitungsnutzung täglich. Für den Herausgeber werden alle Anomalien im Hinblick auf die Überschreitungsnutzung seiner Kunden für die benutzerdefinierten Verbrauchseinheitsdimensionen aller seiner Angebote gemeldet.
-
-### <a name="view-and-manage-metered-usage-anomalies"></a>Anzeigen und Verwalten von Anomalien bei der gemessenen Nutzung
+## <a name="view-and-manage-metered-usage-anomalies"></a>Anzeigen und Verwalten von Anomalien bei der gemessenen Nutzung
 
 1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/home) an.
 1. Klicken Sie im linken Navigationsmenü auf **Kommerzieller Marketplace** > **Analysieren**.
@@ -82,3 +80,4 @@ Wenn Sie eine Überschreitungsnutzung als Anomalie gekennzeichnet haben oder ein
 ## <a name="see-also"></a>Weitere Informationen
 - [Volumenabrechnung für SaaS mit dem Messungsdienst für den kommerziellen Marketplace](./partner-center-portal/saas-metered-billing.md)
 - [Getaktete Abrechnung für verwaltete Anwendungen](./partner-center-portal/azure-app-metered-billing.md)
+- [Anomalieerkennungsdienst für getaktete Abrechnung](./partner-center-portal/anomaly-detection-service-for-metered-billing.md)

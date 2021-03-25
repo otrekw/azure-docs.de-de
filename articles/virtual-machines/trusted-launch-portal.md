@@ -9,12 +9,12 @@ ms.subservice: trusted-launch
 ms.topic: how-to
 ms.date: 03/03/2021
 ms.custom: template-how-to
-ms.openlocfilehash: f5e361d32cf2ab436f92ce2ca86a054a6dd3337e
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: dec9c7581bbcf55196b04e0a76e9e61f81a27244
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102553747"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104582067"
 ---
 # <a name="deploy-a-vm-with-trusted-launch-enabled-preview"></a>Bereitstellen eines virtuellen Computers mit aktiviertem vertrauenswürdigem Start (Vorschau)
 
@@ -134,13 +134,13 @@ Wählen Sie die Schaltfläche unten aus, um die Richtlinien für Ihr Abonnement 
 
 Die Vorlage muss nur einmal pro Abonnement bereitgestellt werden. Es werden automatisch `GuestAttestation`- und `AzureSecurity`-Erweiterungen auf allen unterstützten VMs installiert. Wenn Sie Fehlermeldungen erhalten, versuchen Sie erneut, die Vorlage bereitzustellen.
 
-Empfehlungen für vTPM und sicheren Start für VMs für vertrauenswürdigen Start finden Sie unter [So fügen Sie eine benutzerdefinierte Initiative zu Ihrem Abonnement hinzu](https://docs.microsoft.com/azure/security-center/custom-security-policies#to-add-a-custom-initiative-to-your-subscription).
+Empfehlungen für vTPM und sicheren Start für VMs für vertrauenswürdigen Start finden Sie unter [So fügen Sie eine benutzerdefinierte Initiative zu Ihrem Abonnement hinzu](../security-center/custom-security-policies.md#to-add-a-custom-initiative-to-your-subscription).
  
 ## <a name="sign-things-for-secure-boot-on-linux"></a>Signierungen für den sicheren Start unter Linux
 
 In einigen Fällen sind möglicherweise Signierungen für den sicheren UEFI-Start erforderlich.  Beispielsweise müssen Sie möglicherweise die Schritte in [How to sign things for Secure Boot](https://ubuntu.com/blog/how-to-sign-things-for-secure-boot) (Signierungen für den sicheren Start) für Ubuntu durchführen. In diesen Fällen müssen Sie die Registrierungsschlüssel des MOK-Hilfsprogramms für Ihre VM eingeben. Hierzu müssen Sie über die serielle Azure-Konsole auf das MOK-Hilfsprogramm zugreifen.
 
-1. Aktivieren Sie die serielle Azure-Konsole für Linux. Weitere Informationen finden Sie unter [Serielle Azure-Konsole für Linux](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/serial-console-linux).
+1. Aktivieren Sie die serielle Azure-Konsole für Linux. Weitere Informationen finden Sie unter [Serielle Azure-Konsole für Linux](/troubleshoot/azure/virtual-machines/serial-console-linux).
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
 1. Suchen Sie die Option **Virtuelle Computer**, und wählen Sie in der Liste Ihren virtuellen Computer (VM) aus.
 1. Wählen Sie im Menü links unter **Support + Problembehandlung** die Option **Serielle Konsole** aus. Rechts wird eine Seite mit der seriellen Konsole geöffnet.

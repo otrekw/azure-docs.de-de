@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/03/2020
 ms.author: tisande
 ms.openlocfilehash: 47eedf1ddbb155180d364c42ec179b3e01279e44
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93336213"
 ---
 # <a name="index-geospatial-data-with-azure-cosmos-db"></a>Indizieren von räumlichen Daten mit Azure Cosmos DB
@@ -107,20 +107,20 @@ Sie können die Indizierungsrichtlinie mit der Azure-Befehlszeilenschnittstelle,
 
 ## <a name="geometry-data-indexing-examples"></a>Beispiele für die Indizierung geometrischer Daten
 
-Beim **geometry** -Datentyp müssen Sie ähnlich wie beim geography-Datentyp relevante Pfade und Typen angeben, die indiziert werden sollen. Darüber hinaus müssen Sie eine `boundingBox` in der Indizierungsrichtlinie angeben, um den gewünschten Bereich anzugeben, der für den betreffenden Pfad indiziert werden soll. Für jeden räumlichen Pfad ist eine eigene `boundingBox` erforderlich.
+Beim **geometry**-Datentyp müssen Sie ähnlich wie beim geography-Datentyp relevante Pfade und Typen angeben, die indiziert werden sollen. Darüber hinaus müssen Sie eine `boundingBox` in der Indizierungsrichtlinie angeben, um den gewünschten Bereich anzugeben, der für den betreffenden Pfad indiziert werden soll. Für jeden räumlichen Pfad ist eine eigene `boundingBox` erforderlich.
 
 Der Begrenzungsrahmen umfasst folgende Eigenschaften:
 
-- **xmin** : die minimale indizierte x-Koordinate
-- **ymin** : die minimale indizierte y-Koordinate
-- **xmax** : die maximale indizierte x-Koordinate
-- **ymax** : die maximale indizierte y-Koordinate
+- **xmin**: die minimale indizierte x-Koordinate
+- **ymin**: die minimale indizierte y-Koordinate
+- **xmax**: die maximale indizierte x-Koordinate
+- **ymax**: die maximale indizierte y-Koordinate
 
-Ein Begrenzungsrahmen ist erforderlich, da geometrische Daten auf einer Ebene liegen, die unendlich sein kann. Für räumliche Indizes ist jedoch ein endlicher Raum erforderlich. Beim **geography** -Datentyp ist die Erde die Begrenzung, sodass Sie keinen Begrenzungsrahmen festlegen müssen.
+Ein Begrenzungsrahmen ist erforderlich, da geometrische Daten auf einer Ebene liegen, die unendlich sein kann. Für räumliche Indizes ist jedoch ein endlicher Raum erforderlich. Beim **geography**-Datentyp ist die Erde die Begrenzung, sodass Sie keinen Begrenzungsrahmen festlegen müssen.
 
 Erstellen Sie einen Begrenzungsrahmen, der alle (oder die meisten) Ihre(r) Daten enthält. Nur Vorgänge, die mit Objekten berechnet werden, die vollständig im Begrenzungsrahmen liegen, nutzen den räumlichen Index. Wenn Sie den Begrenzungsrahmen größer als nötig erstellen, wirkt sich dies negativ auf die Abfrageleistung aus.
 
-Nachstehend finden Sie ein Beispiel für eine Indizierungsrichtlinie, die **geometry** -Daten indiziert, wobei **geospatialConfig** auf `geometry` festgelegt ist:
+Nachstehend finden Sie ein Beispiel für eine Indizierungsrichtlinie, die **geometry**-Daten indiziert, wobei **geospatialConfig** auf `geometry` festgelegt ist:
 
 ```json
 {

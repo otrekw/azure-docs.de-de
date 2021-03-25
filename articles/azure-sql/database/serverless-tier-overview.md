@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein
-ms.date: 12/8/2020
-ms.openlocfilehash: 1b8be7fc6295c6332d26718b5752d2fd8f2a6f73
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 2/22/2021
+ms.openlocfilehash: 4dd7bbe613b30df2611bfe6631950e121235204a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100393240"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "101658587"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL-Datenbank – Serverlos
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -103,11 +103,11 @@ Beachten Sie, dass die aktive Cachenutzung je nach Verwendungsmuster trotz gerin
 
 Der SQL-Cache wächst an, während Daten auf die gleiche Weise und mit der gleichen Geschwindigkeit wie für bereitgestellte Datenbanken vom Datenträger abgerufen werden. Wenn die Datenbank ausgelastet ist, kann die Größe des Caches uneingeschränkt bis zum maximalen Arbeitsspeichergrenzwert zunehmen.
 
-## <a name="auto-pause-and-auto-resume"></a>AutoAnhalten und automatisches Fortsetzen
+## <a name="auto-pausing-and-auto-resuming"></a>Automatisches Anhalten und automatisches Fortsetzen
 
-### <a name="auto-pause"></a>AutoAnhalten
+### <a name="auto-pausing"></a>Automatisches Anhalten
 
-AutoAnhalten wird ausgelöst, wenn die folgenden Bedingungen für die Dauer der Verzögerung für AutoAnhalten erfüllt sind:
+Automatisches Anhalten wird ausgelöst, wenn die folgenden Bedingungen für die Dauer der Verzögerung für automatisches Anhalten erfüllt sind:
 
 - Anzahl der Sitzungen = 0
 - CPU = 0 für Benutzerworkload im Benutzerpool

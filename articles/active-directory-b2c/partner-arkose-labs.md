@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/18/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 46f117b13909c2d9624b88e9f5d9a62c4c646e51
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: c2aceedd57bcc7cd88c4e822c7b696e36b28bd8f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102500291"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579789"
 ---
 # <a name="tutorial-configure-arkose-labs-with-azure-active-directory-b2c"></a>Tutorial: Konfigurieren von Arkose Labs mit Azure Active Directory B2C
 
@@ -46,7 +46,7 @@ Im folgenden Diagramm ist beschrieben, wie Arkose Labs mit Azure AD B2C integrie
 
 ![Abbildung des Arkose Labs-Architekturdiagramms](media/partner-arkose-labs/arkose-labs-architecture-diagram.png)
 
-| Schritt  | Beschreibung |
+| Schritt  | BESCHREIBUNG |
 |---|---|
 |1     | Ein Benutzer registriert sich und erstellt ein Konto. Wenn der Benutzer die Option „Senden“ auswählt, wird eine Arkose Labs-Abfrage angezeigt.         |
 |2     |  Nachdem der Benutzer die Abfrage abgeschlossen hat, sendet Azure AD B2C den Status zwecks Generierung eines Tokens an Arkose Labs. |
@@ -81,13 +81,13 @@ Führen Sie die folgenden Schritte aus, um ein benutzerdefiniertes Attribut zu e
 
 5. Klicken Sie auf **Erstellen**.
 
-Erfahren Sie mehr über [benutzerdefinierte Attribute](https://docs.microsoft.com/azure/active-directory-b2c/user-flow-custom-attributes?pivots=b2c-user-flow).
+Erfahren Sie mehr über [benutzerdefinierte Attribute](./user-flow-custom-attributes.md?pivots=b2c-user-flow).
 
 ### <a name="part-2---create-a-user-flow"></a>Teil 2: Erstellen eines Benutzerflows
 
 Der Benutzerflow kann entweder für die **Registrierung** und **Anmeldung** oder nur für die **Registrierung** erstellt werden. Der Arkose Labs-Benutzerflow wird nur während der Registrierung angezeigt.
 
-1. Folgen Sie den [Anweisungen](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-user-flows) zum Erstellen eines Benutzerflows. Wenn Sie einen vorhandenen Benutzerflow verwenden möchten, muss dieser den Versionstyp **Empfohlen (Vorschauversion der nächsten Generation)** aufweisen.
+1. Folgen Sie den [Anweisungen](./tutorial-create-user-flows.md) zum Erstellen eines Benutzerflows. Wenn Sie einen vorhandenen Benutzerflow verwenden möchten, muss dieser den Versionstyp **Empfohlen (Vorschauversion der nächsten Generation)** aufweisen.
 
 2. Wechseln Sie in den Einstellungen des Benutzerflows zu **Benutzerattribute**, und wählen Sie den Anspruch **ArkoseSessionToken** aus.
 
@@ -109,7 +109,7 @@ Führen Sie die aufgeführten Schritte aus, um den benutzerdefinierten HTML- und
 
 1. Ändern Sie die Datei [selfAsserted.html](https://github.com/Azure-Samples/active-directory-b2c-node-sign-up-user-flow-arkose/blob/main/Assets/selfAsserted.html) so, dass `<ARKOSE_PUBLIC_KEY>` mit dem Wert übereinstimmt, den Sie für die clientseitige Überprüfung generiert und zum Laden des Arkose Labs-Skripts für Ihr Konto verwendet haben.
 
-2. Hosten Sie die HTML-Seite auf einem Webendpunkt, für den die Ressourcenfreigabe zwischen verschiedenen Ursprüngen (Cross-Origin Resource Sharing, CORS) aktiviert ist. [Erstellen Sie ein Azure Blob Storage-Konto](https://docs.microsoft.com/azure/storage/common/storage-account-create?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=azure-portal) und [konfigurieren Sie CORS](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services).
+2. Hosten Sie die HTML-Seite auf einem Webendpunkt, für den die Ressourcenfreigabe zwischen verschiedenen Ursprüngen (Cross-Origin Resource Sharing, CORS) aktiviert ist. [Erstellen Sie ein Azure Blob Storage-Konto](../storage/common/storage-account-create.md?tabs=azure-portal&toc=%2fazure%2fstorage%2fblobs%2ftoc.json) und [konfigurieren Sie CORS](/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services).
 
   >[!NOTE]
   >Wenn Sie Ihren eigenen benutzerdefinierten HTML-Code verwenden, kopieren Sie die `<script>`-Elemente, und fügen Sie diese auf Ihrer HTML-Seite ein.
@@ -132,7 +132,7 @@ Führen Sie die aufgeführten Schritte aus, um den benutzerdefinierten HTML- und
 
    ![Screenshot: Seitenlayouts](media/partner-arkose-labs/page-layouts.png)
 
-4. Wechseln Sie in Ihrem Benutzerflow zu **Eigenschaften**, und wählen Sie **JavaScript zur Erzwingung des Seitenlayouts aktivieren (Vorschau)** aus. Weitere Informationen hierzu finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/active-directory-b2c/javascript-and-page-layout?pivots=b2c-user-flow).
+4. Wechseln Sie in Ihrem Benutzerflow zu **Eigenschaften**, und wählen Sie **JavaScript zur Erzwingung des Seitenlayouts aktivieren (Vorschau)** aus. Weitere Informationen hierzu finden Sie in [diesem Artikel](./javascript-and-page-layout.md?pivots=b2c-user-flow).
 
 ### <a name="part-4---create-and-deploy-your-api"></a>Teil 4: Erstellen und Bereitstellen Ihrer API
 
@@ -157,7 +157,7 @@ Wenn Sie die lokale Instanz während des Testens erneut bereitstellen möchten, 
 
 In diesem Beispiel wird der Web-API-Endpunkt mithilfe der [HTTP-Standardauthentifizierung](https://tools.ietf.org/html/rfc7617) geschützt.
 
-Benutzername und Kennwort werden als Umgebungsvariablen und nicht als Teil des Repositorys gespeichert. Weitere Informationen finden Sie im Abschnitt [Datei für lokale Einstellungen: „local.settings.json“](https://docs.microsoft.com/azure/azure-functions/functions-run-local?tabs=macos%2Ccsharp%2Cbash#local-settings-file).
+Benutzername und Kennwort werden als Umgebungsvariablen und nicht als Teil des Repositorys gespeichert. Weitere Informationen finden Sie im Abschnitt [Datei für lokale Einstellungen: „local.settings.json“](../azure-functions/functions-run-local.md?tabs=macos%2ccsharp%2cbash#local-settings-file).
 
 1. Erstellen Sie die Datei „local.settings.json“ in Ihrem Stammverzeichnis.
 
@@ -186,15 +186,15 @@ Bei den Werten für **BASIC_AUTH_USERNAME** und **BASIC_AUTH_PASSWORD** handelt 
 
 #### <a name="deploy-the-application-to-the-web"></a>Bereitstellen der Anwendung im Web
 
-1. Führen Sie die in [diesem](https://docs.microsoft.com/azure/javascript/tutorial-vscode-serverless-node-04) Leitfaden beschriebenen Schritte aus, um Ihre Azure Functions-App in der Cloud bereitzustellen. Kopieren Sie die Webendpunkt-URL Ihrer Azure Functions-App.
+1. Führen Sie die in [diesem](/azure/javascript/tutorial-vscode-serverless-node-04) Leitfaden beschriebenen Schritte aus, um Ihre Azure Functions-App in der Cloud bereitzustellen. Kopieren Sie die Webendpunkt-URL Ihrer Azure Functions-App.
 
-2. Wählen Sie nach der Bereitstellung die Option **Einstellungen hochladen** aus. Die Umgebungsvariablen werden in die [Anwendungseinstellungen](https://docs.microsoft.com/azure/azure-functions/functions-develop-vs-code?tabs=csharp#application-settings-in-azure) des App-Diensts hochgeladen. Diese Anwendungseinstellungen können auch [im Azure-Portal konfiguriert oder verwaltet werden](https://docs.microsoft.com/azure/azure-functions/functions-how-to-use-azure-function-app-settings).
+2. Wählen Sie nach der Bereitstellung die Option **Einstellungen hochladen** aus. Die Umgebungsvariablen werden in die [Anwendungseinstellungen](../azure-functions/functions-develop-vs-code.md?tabs=csharp#application-settings-in-azure) des App-Diensts hochgeladen. Diese Anwendungseinstellungen können auch [im Azure-Portal konfiguriert oder verwaltet werden](../azure-functions/functions-how-to-use-azure-function-app-settings.md).
 
-Weitere Informationen zur Visual Studio Code-Entwicklung für Azure Functions finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/azure-functions/functions-develop-vs-code?tabs=csharp#republish-project-files).
+Weitere Informationen zur Visual Studio Code-Entwicklung für Azure Functions finden Sie in [diesem Artikel](../azure-functions/functions-develop-vs-code.md?tabs=csharp#republish-project-files).
 
 #### <a name="configure-and-enable-the-api-connector"></a>Konfigurieren und Aktivieren des API-Connectors
 
-[Erstellen Sie einen API-Connector](https://docs.microsoft.com/azure/active-directory-b2c/add-api-connector), und aktivieren Sie ihn für Ihren Benutzerflow. Die Konfiguration des API-Connectors sollte wie folgt aussehen:
+[Erstellen Sie einen API-Connector](./add-api-connector.md), und aktivieren Sie ihn für Ihren Benutzerflow. Die Konfiguration des API-Connectors sollte wie folgt aussehen:
 
 ![Screenshot: Konfigurieren des API-Connectors](media/partner-arkose-labs/configure-api-connector.png)
 
@@ -232,6 +232,6 @@ Um den API-Connector zu aktivieren, wählen Sie in den Einstellungen der **API-C
 
 - [Beispielcodes](https://github.com/Azure-Samples/active-directory-b2c-node-sign-up-user-flow-arkose) für den Benutzerflow für die Azure AD B2C-Registrierung
 
-- [Benutzerdefinierte Richtlinien in Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Benutzerdefinierte Richtlinien in Azure AD B2C](./custom-policy-overview.md)
 
-- [Erste Schritte mit benutzerdefinierten Richtlinien in Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Erste Schritte mit benutzerdefinierten Richtlinien in Azure AD B2C](./custom-policy-get-started.md?tabs=applications)

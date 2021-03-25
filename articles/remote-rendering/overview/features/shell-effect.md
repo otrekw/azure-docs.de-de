@@ -7,10 +7,10 @@ ms.date: 10/23/2020
 ms.topic: article
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 7af95cba807cea340438a7de30f096758d0369ad
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99594162"
 ---
 # <a name="shell-rendering"></a>Shell-Rendering
@@ -30,7 +30,7 @@ Die Klasse `ShellRenderingSettings` enthält die Einstellungen für die globalen
 
 Beispiele für die Wirkung der Parameter bei der Anwendung auf eine gesamte Szene finden Sie auch in der folgenden Tabelle:
 
-|                | 0 | 0,25 | 0.5 | 0,75 | 1,0 | 
+|                | 0 | 0,25 | 0,5 | 0,75 | 1,0 | 
 |----------------|:-:|:----:|:---:|:----:|:---:|
 | **Entsättigung** | ![Desaturation-0.0](./media/shell-desaturation-00.png) | ![Desaturation-0.25](./media/shell-desaturation-025.png) | ![Desaturation-0.5](./media/shell-desaturation-05.png) | ![Desaturation-0.75](./media/shell-desaturation-075.png) | ![Desaturation-1.0](./media/shell-desaturation-10.png) |
 | **Deckkraft**      | ![Opacity-0.0](./media/shell-opacity-00.png) | ![Opacity-0.25](./media/shell-opacity-025.png) | ![Opacity-0.5](./media/shell-opacity-05.png) | ![Opacity-0.75](./media/shell-opacity-075.png) | ![Opacity-1.0](./media/shell-opacity-10.png) |

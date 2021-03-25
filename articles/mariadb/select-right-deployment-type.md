@@ -3,14 +3,14 @@ title: Auswählen des richtigen Bereitstellungstyps – Azure Database for Maria
 description: In diesem Artikel wird beschrieben, welche Faktoren vor der Bereitstellung von Azure Database for MariaDB als IaaS (Infrastructure-as-a-Service) oder PaaS (Platform-as-a-Service) zu berücksichtigen sind.
 author: mksuni
 ms.author: sumuth
-ms.service: jroth
+ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 921ad8d187f6c2478bdf92aab0ee0ec3c9e75bce
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: d8885e374142b3d916803fc472ae18351ca6d470
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98664517"
 ---
 # <a name="choose-the-right-mariadb-server-option-in-azure"></a>Auswählen der richtigen MariaDB Server-Option in Azure
