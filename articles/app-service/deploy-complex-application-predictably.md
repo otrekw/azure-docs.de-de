@@ -5,12 +5,12 @@ ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 01/06/2016
 ms.custom: seodec18
-ms.openlocfilehash: 8742b590af89954cb8480e5282827bcd5228673b
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: aec23c28e075dd38fa65f1315f9abd9e21cdc9cb
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101095834"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104951469"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>Vorhersagbares Bereitstellen von Microservices in Azure
 Dieses Tutorial zeigt, wie eine aus [Microservices](https://en.wikipedia.org/wiki/Microservices) bestehende Anwendung in [Azure App Service](https://azure.microsoft.com/services/app-service/) als eine Einheit und in vorhersagbarer Weise mithilfe von JSON-Ressourcengruppenvorlagen und PowerShell-Skripts bereitgestellt wird. 
@@ -45,7 +45,7 @@ Weitere Informationen finden Sie unter [Verwenden von Windows PowerShell mit dem
 Mit diesem [Vorschautool](https://resources.azure.com) können Sie die JSON-Definitionen aller Ressourcengruppen in Ihrem Abonnement und der einzelnen Ressourcen untersuchen. Im Tool können Sie die JSON-Definitionen einer Ressource bearbeiten, eine vollständige Hierarchie von Ressourcen löschen und neue Ressourcen erstellen.  Die in diesem Tool verfügbaren Informationen sind sehr hilfreich für die Vorlagenerstellung, da sie zeigen, welche Eigenschaften Sie für einen bestimmten Typ von Ressource festlegen müssen, die richtigen Werte vorgeben usw. Sie können sogar die Ressourcengruppe im [Azure-Portal](https://portal.azure.com/) erstellen und dann ihre JSON-Definitionen im Explorer-Tool untersuchen, um aus der Ressourcengruppe eine Vorlage zu machen.
 
 ### <a name="deploy-to-azure-button"></a>Schaltfläche zum Bereitstellen in Azure
-Wenn Sie GitHub für die Quellcodeverwaltung verwenden, können Sie eine [Schaltfläche zum Bereitstellen in Azure (Deploy to Azure)](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-to-azure-button) in README.MD aufnehmen, wodurch eine sofort einsetzbare Bereitstellungsoberfläche in Azure aktiviert wird. Sie können dies für jede einfache App durchführen. Es ist aber auch eine Erweiterung möglich, um die Bereitstellung einer vollständigen Ressourcengruppe zu ermöglichen, indem Sie eine azuredeploy.json-Datei in den Repositorystamm einfügen. Diese JSON-Datei, die die Ressourcengruppenvorlage enthält, wird von der Schaltfläche zum Bereitstellen in Azure für die Erstellung der Ressourcengruppe verwendet. Ein Beispiel ist [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp), das in diesem Tutorial verwendet wird.
+Wenn Sie GitHub für die Quellcodeverwaltung verwenden, können Sie eine [Schaltfläche zum Bereitstellen in Azure (Deploy to Azure)](../azure-resource-manager/templates/deploy-to-azure-button.md) in README.MD aufnehmen, wodurch eine sofort einsetzbare Bereitstellungsoberfläche in Azure aktiviert wird. Sie können dies für jede einfache App durchführen. Es ist aber auch eine Erweiterung möglich, um die Bereitstellung einer vollständigen Ressourcengruppe zu ermöglichen, indem Sie eine azuredeploy.json-Datei in den Repositorystamm einfügen. Diese JSON-Datei, die die Ressourcengruppenvorlage enthält, wird von der Schaltfläche zum Bereitstellen in Azure für die Erstellung der Ressourcengruppe verwendet. Ein Beispiel ist [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp), das in diesem Tutorial verwendet wird.
 
 ## <a name="get-the-sample-resource-group-template"></a>Abrufen des Beispiels einer Ressourcengruppenvorlage
 Lassen Sie uns jetzt beginnen.

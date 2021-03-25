@@ -1,19 +1,14 @@
 ---
 title: Übersicht über den eigenständigen Micro-Agent (Vorschau)
-titleSuffix: Azure Defender for IoT
 description: Mit den Sicherheits-Agents von Azure Defender für IoT können Sie Sicherheit direkt in Ihre neuen IoT-Geräte und Azure IoT-Projekte integrieren.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 1/19/2021
 ms.topic: article
-ms.service: azure
-ms.openlocfilehash: 84afa4205b57481efc3ed9df805cfa7a3657a6c8
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: 5f8621c7d96d802ad2d32a6c71321bcd68854233
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809635"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104779153"
 ---
 # <a name="standalone-micro-agent-overview-preview"></a>Übersicht über den eigenständigen Micro-Agent (Vorschau)
 

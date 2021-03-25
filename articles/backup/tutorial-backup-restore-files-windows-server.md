@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 02/14/2018
 ms.custom: mvc
 ms.openlocfilehash: 746c901747cf1c0b87612a31fbabcb657d5c4a0c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88263111"
 ---
 # <a name="recover-files-from-azure-to-a-windows-server"></a>Wiederherstellen von Dateien aus Azure auf einer Windows Server-Instanz
@@ -27,7 +27,7 @@ In diesem Tutorial wird davon ausgegangen, dass Sie bereits die Schritte zum [Si
 
 Zusammen mit dem Microsoft Azure Recovery Services-Agent (MARS) wird ein hilfreicher Assistent mit Benutzeroberfläche installiert: Microsoft Azure Backup. Der Microsoft Azure Backup-Assistent arbeitet mit dem Microsoft Azure Recovery Services-Agent (MARS) zusammen, um Sicherungsdaten aus Wiederherstellungspunkten, die in Azure gespeichert sind, abzurufen. Verwenden Sie den Microsoft Azure Backup-Assistenten zum Identifizieren der Dateien oder Ordner, die Sie unter Windows Server wiederherstellen möchten.
 
-1. Öffnen Sie das Snap-In **Microsoft Azure Backup**. Den Agent finden Sie, indem Sie auf Ihrem Computer nach **Microsoft Azure Backup**suchen.
+1. Öffnen Sie das Snap-In **Microsoft Azure Backup**. Den Agent finden Sie, indem Sie auf Ihrem Computer nach **Microsoft Azure Backup** suchen.
 
     ![Microsoft Azure Backup-Snap-In](./media/tutorial-backup-restore-files-windows-server/mars.png)
 

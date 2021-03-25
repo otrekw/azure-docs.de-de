@@ -14,10 +14,10 @@ ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 5ff2858dd8b91ba036c517cbff07be96a729ef8c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88116443"
 ---
 # <a name="application-types-in-v10"></a>Anwendungstypen in v1.0
@@ -32,11 +32,11 @@ Das folgende Diagramm veranschaulicht die Szenarien und Anwendungstypen sowie da
 
 Azure AD unterstützt die folgenden fünf Hauptanwendungsszenarien:
 
-- **[Single-Page-Webanwendung (SPA):](single-page-application.md)** Ein Benutzer muss sich bei einer durch Azure AD geschützten Single-Page-Webanwendung anmelden.
-- **[Webbrowser zu Webanwendung:](web-app.md)** Ein Benutzer muss sich bei einer durch Azure AD geschützten Webanwendung anmelden.
-- **[Native Anwendung zu Web-API:](native-app.md)** Eine native Anwendung auf einem Smartphone, Tablet oder PC muss einen Benutzer authentifizieren, um Ressourcen von einer durch Azure AD geschützten Web-API abzurufen.
-- **[Webanwendung zu Web-API:](web-api.md)** Eine Webanwendung muss Ressourcen von einer durch Azure AD geschützten Web-API abrufen.
-- **[Daemon- oder Serveranwendung zu Web-API:](service-to-service.md)** Eine Daemon- oder Serveranwendung ohne Webbenutzeroberfläche muss Ressourcen von einer durch Azure AD geschützten Web-API abrufen.
+- **[Single-Page-Webanwendung (SPA)](single-page-application.md)** : Ein Benutzer muss sich bei einer durch Azure AD geschützten Single-Page-Webanwendung anmelden.
+- **[Webbrowser zu Webanwendung](web-app.md)** : Ein Benutzer muss sich bei einer durch Azure AD geschützten Webanwendung anmelden.
+- **[Native Anwendung zu Web-API](native-app.md)** : Eine native Anwendung auf einem Smartphone, Tablet oder PC muss einen Benutzer authentifizieren, um Ressourcen von einer durch Azure AD geschützten Web-API abzurufen.
+- **[Webanwendung zu Web-API](web-api.md)** : Eine Webanwendung muss Ressourcen von einer durch Azure AD geschützten Web-API abrufen.
+- **[Daemon- oder Serveranwendung zu Web-API](service-to-service.md)** : Eine Daemon- oder Serveranwendung ohne Webbenutzeroberfläche muss Ressourcen von einer durch Azure AD geschützten Web-API abrufen.
 
 Folgen Sie den Links, um mehr über die einzelnen App-Typen und allgemeinen Szenarien zu erfahren, bevor Sie mit dem Code arbeiten. Dort finden Sie auch Information zu den Unterschieden, die Sie beim Schreiben einer bestimmten App, die vom v1.0- oder v2.0-Endpunkt unterstützt wird, beachten müssen.
 

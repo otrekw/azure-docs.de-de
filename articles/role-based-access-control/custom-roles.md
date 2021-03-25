@@ -10,10 +10,10 @@ ms.workload: identity
 ms.date: 12/15/2020
 ms.author: rolyon
 ms.openlocfilehash: 79aaeee942a6d46243ee1c72d5904484b8698ebe
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97617322"
 ---
 # <a name="azure-custom-roles"></a>Benutzerdefinierte Azure-Rollen
@@ -155,7 +155,7 @@ Wenn Sie eine benutzerdefinierte Rolle erstellt haben, wird sie im Azure-Portal 
 
 In der folgenden Tabelle wird erläutert, was die Eigenschaften der benutzerdefinierten Rollen bedeuten.
 
-| Eigenschaft | Erforderlich | type | Beschreibung |
+| Eigenschaft | Erforderlich | type | BESCHREIBUNG |
 | --- | --- | --- | --- |
 | `Name`</br>`roleName` | Ja | String | Der Anzeigename der benutzerdefinierten Rolle. Obwohl es sich bei einer Rollendefinition um eine Ressource auf Verwaltungsgruppen- oder Abonnementebene handelt, kann eine solche Definition in mehreren Abonnements verwendet werden, die dasselbe Azure AD-Verzeichnis gemeinsam nutzen. Der Anzeigename muss im Bereich des Azure AD-Verzeichnisses eindeutig sein. Er kann Buchstaben, Ziffern, Leerzeichen und Sonderzeichen enthalten. Die maximale Anzahl von Zeichen ist 128. |
 | `Id`</br>`name` | Ja | String | Die eindeutige ID der benutzerdefinierten Rolle. Für Azure PowerShell und Azure CLI wird diese ID automatisch generiert, wenn Sie eine neue Rolle erstellen. |

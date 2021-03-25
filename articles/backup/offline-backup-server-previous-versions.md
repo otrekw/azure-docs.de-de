@@ -4,10 +4,10 @@ description: Mit Azure Backup können Sie Daten unter Verwendung des Azure Impor
 ms.topic: conceptual
 ms.date: 06/08/2020
 ms.openlocfilehash: 0405ab66b7714f00349419e94bb064267ca711a6
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98702184"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-previous-versions"></a>Offlinesicherungsworkflow für DPM und Azure Backup Server (vorherige Versionen)
@@ -187,7 +187,7 @@ Das Hilfsprogramm *AzureOfflineBackupDiskPrep* wird zum Vorbereiten der SATA-Lau
 
     `*.\AzureOfflineBackupDiskPrep.exe*   s:<*Staging Location Path*>   [p:<*Path to AzurePublishSettingsFile*>]`
 
-    | Parameter | Beschreibung |
+    | Parameter | BESCHREIBUNG |
     | --- | --- |
     | s:&lt;*Pfad zum Stagingspeicherort*&gt; |Mit dieser obligatorischen Eingabe wird der Pfad zum Stagingspeicherort angegeben, den Sie im Workflow im Abschnitt „Initiieren der Offlinesicherung“ eingegeben haben. |
     | p:&lt;*Pfad zu PublishSettingsFile*&gt; |Mit dieser optionalen Eingabe wird der Pfad zur Datei mit den Azure-Veröffentlichungseinstellungen angegeben, den Sie im Workflow im Abschnitt „Initiieren der Offlinesicherung“ eingegeben haben. |
@@ -228,7 +228,7 @@ Das Hilfsprogramm *AzureOfflineBackupDiskPrep* wird zum Vorbereiten der SATA-Lau
 
    `*.\AzureOfflineBackupDiskPrep.exe*  u:  s:<*Staging Location Path*>   p:<*Path to AzurePublishSettingsFile*>`
 
-    | Parameter | Beschreibung |
+    | Parameter | BESCHREIBUNG |
     | --- | --- |
     | u: | Diese erforderliche Eingabe wird zum Aktualisieren der Versanddetails für einen Azure-Importauftrag verwendet. |
     | s:&lt;*Pfad zum Stagingspeicherort*&gt; | Diese erforderliche Eingabe wird verwendet, wenn der Befehl nicht auf dem Quellcomputer ausgeführt wird. Mit dieser Eingabe wird der Pfad zum Stagingspeicherort angegeben, den Sie im Workflow im Abschnitt „Initiieren der Offlinesicherung“ eingegeben haben. |

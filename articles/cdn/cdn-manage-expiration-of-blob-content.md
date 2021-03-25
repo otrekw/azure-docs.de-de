@@ -16,10 +16,10 @@ ms.topic: how-to
 ms.date: 02/1/2018
 ms.author: mazha
 ms.openlocfilehash: 206ff6f888229356743bebb816cf03e4f7a7504b
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92778706"
 ---
 # <a name="manage-expiration-of-azure-blob-storage-in-azure-cdn"></a>Verwalten des Ablaufs von Azure Blob-Speicher in Azure CDN
@@ -93,7 +93,7 @@ Die bevorzugte Methode zum Einrichten des `Cache-Control`-Headers für einen Blo
 
 [Azure PowerShell](/powershell/azure/) ist eine der schnellsten und leistungsstärksten Möglichkeiten zum Verwalten Ihrer Azure-Dienste. Verwenden Sie das `Get-AzStorageBlob`-Cmdlet zum Abrufen eines Verweises auf das Blob, und legen Sie dann die Eigenschaft `.ICloudBlob.Properties.CacheControl` fest. 
 
-Beispiel:
+Beispiele:
 
 ```powershell
 # Create a storage context
@@ -117,7 +117,7 @@ $blob.ICloudBlob.SetProperties()
 ## <a name="setting-cache-control-headers-by-using-net"></a>Festlegen von Cache-Control-Headern unter Verwendung von .NET
 Um den `Cache-Control`-Header für ein Blob unter Verwendung von .NET-Code anzugeben, verwenden Sie die [Azure Storage-Clientbibliothek für .NET](../storage/blobs/storage-quickstart-blobs-dotnet.md) zum Festlegen der Eigenschaft [CloudBlob.Properties.CacheControl](/dotnet/api/microsoft.azure.storage.blob.blobproperties.cachecontrol).
 
-Beispiel:
+Beispiele:
 
 ```csharp
 class Program
@@ -153,11 +153,11 @@ class Program
 ## <a name="setting-cache-control-headers-by-using-other-methods"></a>Festlegen von Cache-Control-Headern mithilfe anderer Methoden
 
 ### <a name="azure-storage-explorer"></a>Azure Storage-Explorer
-Mit dem [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/) können Sie Ihre Blob Storage-Ressourcen anzeigen und bearbeiten, darunter beispielsweise Eigenschaften wie *CacheControl* . 
+Mit dem [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/) können Sie Ihre Blob Storage-Ressourcen anzeigen und bearbeiten, darunter beispielsweise Eigenschaften wie *CacheControl*. 
 
-So aktualisieren Sie die *CacheControl* -Eigenschaft eines Blobs mit dem Azure Storage-Explorer:
-   1. Wählen Sie ein Blob aus, und klicken Sie dann im Kontextmenü auf **Eigenschaften** . 
-   2. Scrollen Sie nach unten zur *CacheControl* -Eigenschaft.
+So aktualisieren Sie die *CacheControl*-Eigenschaft eines Blobs mit dem Azure Storage-Explorer:
+   1. Wählen Sie ein Blob aus, und klicken Sie dann im Kontextmenü auf **Eigenschaften**. 
+   2. Scrollen Sie nach unten zur *CacheControl*-Eigenschaft.
    3. Geben Sie einen Wert ein, und wählen Sie **Speichern** aus.
 
 

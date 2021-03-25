@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 02/12/2021
 ms.custom: template-how-to
 ms.openlocfilehash: 44bf498af52f4d8a0d880dc1f1d5874d5b444cae
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102035533"
 ---
 # <a name="capture-images-for-a-vision-project-in-azure-percept-studio"></a>Erstellen von Bildern für ein Projekt für maschinelles Sehen in Azure Percept Studio
@@ -20,7 +20,7 @@ In dieser Anleitung erfahren Sie, wie Sie Bilder mit dem Vision-SOM von Azure Pe
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Azure Percept DK (DevKit)
+- Azure Percept DK (DevKit)
 - [Azure-Abonnement](https://azure.microsoft.com/free/)
 - [Azure Percept DK-Setup:](./quickstart-percept-dk-set-up.md) Sie haben Ihr DevKit mit einem WLAN verbunden, eine IoT Hub-Instanz erstellt und das DevKit mit der IoT Hub-Instanz verbunden.
 - [Vision-Projekt ohne Code](./tutorial-nocode-vision.md)

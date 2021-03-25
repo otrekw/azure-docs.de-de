@@ -5,10 +5,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.openlocfilehash: a7baa9340a1f0a99b94bfcbe535c73d0b502e2a0
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98933063"
 ---
 # <a name="interactive-query-cluster-sizing-guide-in-azure-hdinsight"></a>Leitfaden zur Größenanpassung von Interactive Query-Clustern in Azure HDInsight
@@ -30,8 +30,8 @@ Die empfohlenen Konfigurationswerte basieren auf dem Workerknoten vom Typ „D14
 | Schlüssel | Wert | BESCHREIBUNG |
 |---|---|---|
 | yarn.nodemanager.resource.memory-mb | 102.400 (MB) | Gesamter festgelegter Speicher in MB für alle YARN-Container auf einem Knoten |
-| yarn.scheduler.maximum-allocation-mb | 102.400 (MB) | Maximale Zuordnung für jede Containeranforderung in Resource Manager in MB. Speicheranforderungen, die diesen Wert übersteigen, haben keinerlei Auswirkung. |
-| yarn.scheduler.maximum-allocation-vcores | 12 |Maximale Anzahl von CPU-Kernen für jede Containeranforderung in Resource Manager. Anforderungen, die diesen Wert übersteigen, haben keinerlei Auswirkung. |
+| yarn.scheduler.maximum-allocation-mb | 102400 (MB) | Maximale Zuordnung für jede Containeranforderung in Resource Manager in MB. Speicheranforderungen, die diesen Wert übersteigen, haben keinerlei Auswirkung. |
+| yarn.scheduler.maximum-allocation-vcores | 12 |Maximale Anzahl der CPU-Kerne für jede Containeranforderung in Resource Manager. Anforderungen, die diesen Wert übersteigen, haben keinerlei Auswirkung. |
 | yarn.scheduler.capacity.root.llap.capacity | 90% | YARN-Kapazitätszuordnung für LLAP-Warteschlange  |
 | hive.server2.tez.sessions.per.default.queue | number_of_worker_nodes |Anzahl von Sitzungen für jede Warteschlange, die in „hive.server2.tez.default.queues“ benannt wird. Diese Anzahl entspricht der Anzahl von Abfragekoordinatoren (Tez-AMs). |
 | tez.am.resource.memory.mb | 4\.096 (MB) | Der von Tez-AppMaster zu verwendende Speicher in MB |

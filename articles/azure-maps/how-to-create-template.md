@@ -7,10 +7,10 @@ ms.date: 10/20/2020
 ms.topic: how-to
 ms.service: azure-maps
 ms.openlocfilehash: c715c0639e962f76f669515c1d2c826c8cf6cc9e
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92524989"
 ---
 # <a name="create-your-azure-maps-account-using-an-arm-template"></a>Erstellen eines Azure Maps-Kontos über eine ARM-Vorlage
@@ -37,7 +37,7 @@ Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit 
 
 Die Azure Maps-Kontoressource ist in dieser Vorlage definiert:
 
-* [**Microsoft.Maps/accounts:** ](/azure/templates/microsoft.maps/accounts) Erstellen Sie ein Azure Maps Konto.
+* [**Microsoft.Maps/accounts:**](/azure/templates/microsoft.maps/accounts) Erstellen Sie ein Azure Maps Konto.
 
 ## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
@@ -51,9 +51,9 @@ Die Azure Maps-Kontoressource ist in dieser Vorlage definiert:
 
     Verwenden Sie den Standardwert, um das Azure Maps-Konto zu erstellen, sofern kein anderer Wert angegeben ist.
 
-    * **Abonnement** : Wählen Sie ein Azure-Abonnement aus.
-    * **Ressourcengruppe** : Wählen Sie die Option **Neu erstellen** aus, geben Sie einen eindeutigen Namen für die Ressourcengruppe ein, und klicken Sie dann auf **OK**.
-    * **Standort** : Wählen Sie einen Standort aus. Beispiel: **USA, Westen 2**.
+    * **Abonnement**: Wählen Sie ein Azure-Abonnement aus.
+    * **Ressourcengruppe**: Wählen Sie die Option **Neu erstellen** aus, geben Sie einen eindeutigen Namen für die Ressourcengruppe ein, und klicken Sie dann auf **OK**.
+    * **Standort**: Wählen Sie einen Standort aus. Beispiel: **USA, Westen 2**.
     * **Kontoname:** Geben Sie einen Namen für Ihr Azure Maps-Konto ein, der global eindeutig sein muss.
     * **Tarif:** Wählen Sie einen geeigneten Tarif aus, der Standardwert für die Vorlage ist „S0“.
 

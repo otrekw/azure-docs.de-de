@@ -10,10 +10,10 @@ ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
 ms.openlocfilehash: e9a55f72718d6ed5991f3d0f16323409bb0f699f
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101661068"
 ---
 # <a name="reference-ubuntu-linux-data-science-virtual-machine"></a>Referenz: Data Science Virtual Machine für Ubuntu (Linux)

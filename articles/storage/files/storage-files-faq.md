@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 739e1dea23f87403a4aded50d5c9f254a55c64cc
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2d4286cc8bc08eaf7d0b376a8b7789c8c8db183d
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101737612"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202636"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Häufig gestellte Fragen (FAQ) zu Azure Files
 [Azure Files](storage-files-introduction.md) bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das Branchenstandardprotokoll [Server Message Block (SMB)](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) sowie über das [Network File System-Protokoll (NFS)](https://en.wikipedia.org/wiki/Network_File_System) (Vorschau) zugegriffen werden kann. Sie können Azure-Dateifreigaben gleichzeitig unter Cloud- und lokalen Bereitstellungen von Windows, Linux und macOS einbinden. Azure-Dateifreigaben können auch auf Windows Server-Computern zwischengespeichert werden, indem die Azure-Dateisynchronisierung verwendet wird, um den schnellen Zugriff in der Nähe der Datennutzung zu ermöglichen.
@@ -119,26 +119,38 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
 
 * <a id="sizeondisk-versus-size"></a>
   **Warum stimmt die Eigenschaft *Größe auf Datenträger* einer Datei nach der Verwendung der Azure-Dateisynchronisierung nicht mit der Eigenschaft *Größe* überein?**  
-  Siehe [Grundlegendes zum Cloudtiering](storage-sync-cloud-tiering.md#sizeondisk-versus-size).
+  Siehe [Grundlegendes zum Cloudtiering der Azure-Dateisynchronisierung](storage-sync-cloud-tiering-overview.md#tiered-vs-locally-cached-file-behavior)
 
 * <a id="is-my-file-tiered"></a>
   **Woran erkenne ich, ob eine Datei per Tiering ausgelagert wurde?**  
-  Siehe [Grundlegendes zum Cloudtiering](storage-sync-cloud-tiering.md#is-my-file-tiered).
+  Siehe [Verwalten von Dateien, die von der Azure-Dateisynchronisierung ausgelagert werden](storage-sync-how-to-manage-tiered-files.md#how-to-check-if-your-files-are-being-tiered)
 
 * <a id="afs-recall-file"></a>**Eine Datei, die ich verwenden möchte, wurde per Tiering ausgelagert. Wie kann ich die Datei auf den Datenträger zurückrufen, um sie lokal zu verwenden?**  
-  Siehe [Grundlegendes zum Cloudtiering](storage-sync-cloud-tiering.md#afs-recall-file).
+  Siehe [Verwalten von Dateien, die von der Azure-Dateisynchronisierung ausgelagert werden](storage-sync-how-to-manage-tiered-files.md#how-to-recall-a-tiered-file-to-disk)
 
 * <a id="afs-force-tiering"></a>
   **Wie kann ich das Tiering einer Datei oder eines Verzeichnisses erzwingen?**  
-  Siehe [Grundlegendes zum Cloudtiering](storage-sync-cloud-tiering.md#afs-force-tiering).
+  Siehe [Verwalten von Dateien, die von der Azure-Dateisynchronisierung ausgelagert werden](storage-sync-how-to-manage-tiered-files.md#how-to-force-a-file-or-directory-to-be-tiered)
 
 * <a id="afs-effective-vfs"></a>
   **Wie wird *freier Speicherplatz auf Volume* interpretiert, wenn ich über mehrere Serverendpunkte auf einem Volume verfüge?**  
-  Siehe [Grundlegendes zum Cloudtiering](storage-sync-cloud-tiering.md#afs-effective-vfs).
+  Siehe [Auswählen von Cloudtieringrichtlinien der Azure-Dateisynchronisierung](storage-sync-cloud-tiering-policy.md#multiple-server-endpoints-on-a-local-volume)
   
 * <a id="afs-tiered-files-tiering-disabled"></a>
   **Ich habe Cloudtiering deaktiviert. Warum befinden sich mehrstufige Dateien am Speicherort des Serverendpunkts?**  
-  Siehe [Grundlegendes zum Cloudtiering](storage-sync-cloud-tiering.md#afs-tiering-disabled).
+    Es gibt zwei Gründe, warum mehrstufige Dateien am Speicherort des Serverendpunkts vorhanden sein können:
+
+    - Wenn Sie beim Hinzufügen eines neuen Serverendpunkts zu einer vorhandenen Synchronisierungsgruppe entweder die Option „recall namespace first“ (Namespace zuerst abrufen) oder die Option „recall namespace only“ (Nur Namespace abrufen) als anfänglichen Downloadmodus auswählen, werden die Dateien als mehrstufig angezeigt, bis sie lokal heruntergeladen werden. Wählen Sie die Option zur Vermeidung ausgelagerter Dateien als anfänglichen Downloadmodus aus, um dies zu vermeiden. Zum manuellen Abrufen von Dateien verwenden Sie das Cmdlet [Invoke-StorageSyncFileRecall](storage-sync-how-to-manage-tiered-files.md#how-to-recall-a-tiered-file-to-disk).
+
+    - Wenn das Cloudtiering auf dem Serverendpunkt aktiviert und anschließend deaktiviert wurde, bleiben die Dateien so lange mehrstufig, bis auf Sie zugegriffen wird.
+
+* <a id="afs-tiered-files-not-showing-thumbnails"></a>
+  **Warum werden für meine Tieringdateien keine Miniatur- oder Vorschauansichten in Windows-Explorer angezeigt?**  
+    Für Tieringdateien sind Miniatur- und Vorschauansichten auf dem Serverendpunkt nicht sichtbar. Dieses Verhalten ist zu erwarten, da das Feature zur Zwischenspeicherung von Miniaturansichten in Windows absichtlich das Lesen von Dateien mit dem Attribut „Offline“ überspringt. Wenn Cloudtiering aktiviert ist, würde das Lesen der Tieringdateien dazu führen, dass diese heruntergeladen (abgerufen) werden.
+
+    Dieses Verhalten ist nicht spezifisch für die Azure-Dateisynchronisierung. In Windows-Explorer wird für alle Dateien, die das Attribut „Offline“ aufweisen, ein graues „X“ angezeigt. Dieses „X“ wird beim Zugriff auf Dateien über SMB angezeigt. Eine ausführliche Erläuterung des Verhaltens finden Sie unter [https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105](https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105).
+
+    Fragen zum Verwalten von ausgelagerten Dateien finden Sie unter [Verwalten von mehrstufigen Dateien](storage-sync-how-to-manage-tiered-files.md).
 
 * <a id="afs-files-excluded"></a>
   **Welche Dateien oder Ordner werden automatisch von der Azure-Dateisynchronisierung ausgeschlossen?**  
