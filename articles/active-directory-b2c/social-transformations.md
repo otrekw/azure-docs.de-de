@@ -12,10 +12,10 @@ ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: c60cecb9d6bfeeefc0569a1a57185d13f0c6442f
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94953116"
 ---
 # <a name="social-accounts-claims-transformations"></a>Anspruchstransformationen für Social Media-Konten
@@ -43,9 +43,9 @@ Erstellt eine JSON-Darstellung der alternativeSecurityId-Eigenschaft des Benutze
 
 | Element | TransformationClaimType | Datentyp | Notizen |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | Schlüssel | string | Der Anspruchstyp, der die eindeutige Benutzer-ID, die vom Identitätsanbieter eines sozialen Netzwerks verwendet wird, angibt. |
-| InputClaim | identityProvider | string | Der Anspruchstyp, der den Identitätsanbieter eines Social Media-Kontos, z.B. „facebook.com“, angibt. |
-| OutputClaim | alternativeSecurityId | string | Der Anspruchstyp, der erstellt wird, nachdem die Anspruchstransformation aufgerufen wurde. Enthält Informationen zur Identität eines Benutzers mit einem Social Media-Konto. **issuer** ist der Wert des `identityProvider`-Anspruchs. **issuerUserId** ist der Wert des `key`-Anspruchs im Base64-Format. |
+| InputClaim | Schlüssel | Zeichenfolge | Der Anspruchstyp, der die eindeutige Benutzer-ID, die vom Identitätsanbieter eines sozialen Netzwerks verwendet wird, angibt. |
+| InputClaim | identityProvider | Zeichenfolge | Der Anspruchstyp, der den Identitätsanbieter eines Social Media-Kontos, z.B. „facebook.com“, angibt. |
+| OutputClaim | alternativeSecurityId | Zeichenfolge | Der Anspruchstyp, der erstellt wird, nachdem die Anspruchstransformation aufgerufen wurde. Enthält Informationen zur Identität eines Benutzers mit einem Social Media-Konto. **issuer** ist der Wert des `identityProvider`-Anspruchs. **issuerUserId** ist der Wert des `key`-Anspruchs im Base64-Format. |
 
 Verwenden Sie diese Anspruchstransformation zum Generieren des Anspruchstyps `alternativeSecurityId`. Sie wird von allen technischen Profilen für Social Media-Identitätsanbieter wie z.B. `Facebook-OAUTH` verwendet. Die folgende Anspruchstransformation empfängt die ID des Social Media-Kontos des Benutzers und den Namen des Identitätsanbieters. Die Ausgabe dieses technischen Profils ist eine Zeichenfolge im JSON-Format, die in Azure AD-Verzeichnisdiensten verwendet werden kann.
 
@@ -75,7 +75,7 @@ Fügt eine `AlternativeSecurityId` an einen `alternativeSecurityIdCollection`-An
 
 | Element | TransformationClaimType | Datentyp | Notizen |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | item | string | Der Anspruchstyp, der dem Ausgabeanspruch hinzugefügt werden soll. |
+| InputClaim | item | Zeichenfolge | Der Anspruchstyp, der dem Ausgabeanspruch hinzugefügt werden soll. |
 | InputClaim | collection | alternativeSecurityIdCollection | Die Anspruchstypen, die von der Anspruchstransformation verwendet werden, sofern in der Richtlinie vorhanden. Bei einer Angabe fügt die Anspruchstransformation das `item` am Ende der Sammlung hinzu. |
 | OutputClaim | collection | alternativeSecurityIdCollection | Die Anspruchstypen, die erstellt werden, nachdem diese Anspruchstransformation aufgerufen wurde. Die neue Sammlung, die die Elemente aus der Eingabe-`collection` und das `item` enthält. |
 
@@ -139,7 +139,7 @@ Entfernt eine **AlternativeSecurityId** aus einem **alternativeSecurityIdCollect
 
 | Element | TransformationClaimType | Datentyp | Notizen |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | identityProvider | string | Der Anspruchstyp mit dem Namen des Identitätsanbieters, der aus der Sammlung entfernt werden soll. |
+| InputClaim | identityProvider | Zeichenfolge | Der Anspruchstyp mit dem Namen des Identitätsanbieters, der aus der Sammlung entfernt werden soll. |
 | InputClaim | collection | alternativeSecurityIdCollection | Die Anspruchstypen, die von der Anspruchstransformation verwendet werden. Die Anspruchstransformation entfernt den identityProvider aus der Sammlung. |
 | OutputClaim | collection | alternativeSecurityIdCollection | Die Anspruchstypen, die erstellt werden, nachdem diese Anspruchstransformation aufgerufen wurde. Die neue Sammlung, nachdem der identityProvider aus der Sammlung entfernt wurde. |
 

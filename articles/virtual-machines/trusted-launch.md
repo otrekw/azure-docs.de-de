@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/26/2021
 ms.reviewer: cynthn
 ms.custom: template-concept; references_regions
-ms.openlocfilehash: 449eb1d65e0104e6c5c74a78901cf29c5aeb3e57
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 5e500eca601d21f106dbe31236e9b5c2aa76b0d2
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102609089"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104801926"
 ---
 # <a name="trusted-launch-for-azure-virtual-machines-preview"></a>Vertrauenswürdiger Start für Azure-VMs (Vorschau)
 
@@ -55,6 +55,7 @@ Azure bietet den vertrauenswürdigen Start als nahtlose Möglichkeit zur Verbess
 - Windows Server 2016
 - Windows 10 Pro
 - Windows 10 Enterprise
+- Windows 10 Enterprise (mehrere Sitzungen)
 
 **Regionen**: 
 - USA Süd Mitte
@@ -73,7 +74,7 @@ Azure bietet den vertrauenswürdigen Start als nahtlose Möglichkeit zur Verbess
 
 ## <a name="secure-boot"></a>Sicherer Start
 
-Das Fundament des vertrauenswürdigen Starts bildet der VM-Modus „Sicherer Start“. Dieser Modus, der in der Plattformfirmware implementiert ist, schützt vor der Installation schadsoftwarebasierter Rootkits und Bootkits. Der sichere Start bewirkt, dass nur signierte Betriebssysteme und Treiber gestartet werden können. Damit wird ein Vertrauensanker für den Softwarestapel der VM erstellt. Bei aktiviertem sicherem Start müssen alle Betriebssystem-Startkomponenten (Startladeprogramm, Kernel, Kerneltreiber) von vertrauenswürdigen Herausgebern signiert werden. Der sichere Start wird unter Windows sowie ausgewählten Linux-Distributionen unterstützt. Wenn beim sicheren Start nicht authentifiziert werden kann, dass das Image von einem vertrauenswürdigen Herausgeber signiert wurde, kann die VM nicht gestartet werden. Weitere Informationen finden Sie unter [Sicherer Start](https://docs.microsoft.com/windows-hardware/design/device-experiences/oem-secure-boot).
+Das Fundament des vertrauenswürdigen Starts bildet der VM-Modus „Sicherer Start“. Dieser Modus, der in der Plattformfirmware implementiert ist, schützt vor der Installation schadsoftwarebasierter Rootkits und Bootkits. Der sichere Start bewirkt, dass nur signierte Betriebssysteme und Treiber gestartet werden können. Damit wird ein Vertrauensanker für den Softwarestapel der VM erstellt. Bei aktiviertem sicherem Start müssen alle Betriebssystem-Startkomponenten (Startladeprogramm, Kernel, Kerneltreiber) von vertrauenswürdigen Herausgebern signiert werden. Der sichere Start wird unter Windows sowie ausgewählten Linux-Distributionen unterstützt. Wenn beim sicheren Start nicht authentifiziert werden kann, dass das Image von einem vertrauenswürdigen Herausgeber signiert wurde, kann die VM nicht gestartet werden. Weitere Informationen finden Sie unter [Sicherer Start](/windows-hardware/design/device-experiences/oem-secure-boot).
 
 ## <a name="vtpm"></a>vTPM
 
@@ -87,7 +88,7 @@ Für die [virtualisierungsbasierte Sicherheit](/windows-hardware/design/device-e
 
 HVCI bietet eine leistungsstarke Risikominderung für das System und schützt Windows-Kernelmodusprozesse vor der Einschleusung und Ausführung von schädlichem oder nicht überprüftem Code. Kernelmodustreiber und -binärdateien werden vor der Ausführung überprüft, sodass nicht signierte Dateien nicht in den Speicher geladen werden können. Dadurch wird sichergestellt, dass ausführbarer Code nicht mehr geändert werden kann, nachdem er geladen wurde. Weitere Informationen zu VBS und HVCI finden Sie unter [Virtualization Based Security (VBS) and Hypervisor Enforced Code Integrity (HVCI)](https://techcommunity.microsoft.com/t5/windows-insider-program/virtualization-based-security-vbs-and-hypervisor-enforced-code/m-p/240571) (Virtualisierungsbasierte Sicherheit (VBS) und Hypervisor Enforced Code Integrity (HVCI)).
 
-Mit dem vertrauenswürdigen Start und VBS können Sie Windows Defender Credential Guard aktivieren. Mit diesem Feature werden Geheimnisse isoliert und geschützt, sodass der Zugriff darauf nur über privilegierte Systemsoftware erfolgen kann. Dadurch können der nicht autorisierte Zugriff auf Geheimnisse und Angriffe zum Diebstahl von Anmeldeinformationen, z. B. Pass-the-Hash-Angriffe (PtH-Angriffe), verhindert werden. Weitere Informationen finden Sie unter [Credential Guard](https://docs.microsoft.com/windows/security/identity-protection/credential-guard/credential-guard).
+Mit dem vertrauenswürdigen Start und VBS können Sie Windows Defender Credential Guard aktivieren. Mit diesem Feature werden Geheimnisse isoliert und geschützt, sodass der Zugriff darauf nur über privilegierte Systemsoftware erfolgen kann. Dadurch können der nicht autorisierte Zugriff auf Geheimnisse und Angriffe zum Diebstahl von Anmeldeinformationen, z. B. Pass-the-Hash-Angriffe (PtH-Angriffe), verhindert werden. Weitere Informationen finden Sie unter [Credential Guard](/windows/security/identity-protection/credential-guard/credential-guard).
 
 
 ## <a name="security-center-integration"></a>Security Center-Integration
@@ -134,7 +135,7 @@ In der sicheren Startkette wird in jedem Schritt im Startprozess eine kryptograf
 
 ### <a name="what-happens-when-an-integrity-fault-is-detected"></a>Was geschieht, wenn ein Integritätsfehler erkannt wird?
 
-Der vertrauenswürdige Start für Azure-VMs wird für komplexe Bedrohungen überwacht. Wenn solche Bedrohungen erkannt werden, wird eine Warnung ausgelöst. Die Warnungen sind nur im [Standard-Tarif](/azure/security-center/security-center-pricing) von Azure Security Center verfügbar.
+Der vertrauenswürdige Start für Azure-VMs wird für komplexe Bedrohungen überwacht. Wenn solche Bedrohungen erkannt werden, wird eine Warnung ausgelöst. Die Warnungen sind nur im [Standard-Tarif](../security-center/security-center-pricing.md) von Azure Security Center verfügbar.
 In Azure Security Center werden in regelmäßigen Abständen Nachweisvorgänge durchgeführt. Wenn dabei Fehler auftreten, wird eine Warnung mit mittlerem Schweregrad ausgelöst. Bei Nachweisvorgängen beim vertrauenswürdigen Start können aus folgenden Gründen Fehler auftreten: 
 - Die nachgewiesenen Informationen, einschließlich eines Protokolls der vertrauenswürdigen Computingbasis (Trusted Computing Base, TCB), weichen von einer vertrauenswürdigen Baseline ab (z. B. wenn der sichere Start aktiviert ist). Dies kann darauf hinweisen, dass nicht vertrauenswürdige Module geladen wurden und das Betriebssystem möglicherweise kompromittiert ist.
 - Es konnte nicht überprüft werden, ob das Nachweisangebot von der vTPM-Instanz der VM stammt, für die der Nachweis erstellt wurde. Dies kann darauf hinweisen, dass Schadsoftware vorhanden ist und Datenverkehr an die TPM-Instanz abgefangen wird. 

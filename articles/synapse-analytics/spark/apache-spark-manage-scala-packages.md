@@ -5,16 +5,16 @@ services: synapse-analytics
 author: midesa
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.date: 03/01/2020
+ms.date: 02/26/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 8d5c18eaaa4065eac515f38557664ceb44262adf
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: c70ecc4fc5469d728bc12d47024585ccf00ff98e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101695869"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102098705"
 ---
 # <a name="manage-scala-and-java-packages-for-apache-spark-in-azure-synapse-analytics"></a>Verwalten von Scala- und Java-Paketen für Apache Spark in Azure Synapse Analytics
 
@@ -37,13 +37,10 @@ Arbeitsbereichspakete können benutzerdefinierte oder private JAR-Dateien sein. 
 
 So fügen Sie Arbeitsbereichspakete hinzu
 1. Navigieren Sie zu **Verwalten** > Registerkarte **Arbeitsbereichspakete**.
-2. Laden Sie Ihre Wheel-Dateien über die Dateiauswahl hoch.
-3. Nachdem die Dateien in den Azure Synapse-Arbeitsbereich hochgeladen wurden, können Sie diese Wheel-Dateien einem bestimmten Apache Spark-Pool hinzufügen.
+2. Laden Sie Ihre JAR-Dateien über die Dateiauswahl hoch.
+3. Nachdem die Dateien in den Azure Synapse-Arbeitsbereich hochgeladen wurden, können Sie diese JAR-Dateien einem bestimmten Apache Spark-Pool hinzufügen.
 
 ![Screenshot mit Arbeitsbereichspaketen.](./media/apache-spark-azure-portal-add-libraries/studio-add-workspace-package.png "Anzeigen von Arbeitsbereichspaketen")
-
-> [!IMPORTANT]
-> Das Installieren von Arbeitsbereichspaketen wird innerhalb von DEP-Arbeitsbereichen (Data Exfiltration Protection) derzeit noch nicht unterstützt.
 
 ## <a name="pool-libraries"></a>Poolbibliotheken
 Nachdem Sie die Scala- und Java-Pakete identifiziert haben, die Sie für Ihre Spark-Anwendung verwenden möchten, können Sie diese Pakete in einem Spark-Pool installieren. Bibliotheken auf Poolebene sind für alle Notebooks und Aufträge verfügbar, die im Pool ausgeführt werden.

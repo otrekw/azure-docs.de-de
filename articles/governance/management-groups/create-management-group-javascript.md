@@ -5,10 +5,10 @@ ms.date: 02/05/2021
 ms.topic: quickstart
 ms.custom: devx-track-js
 ms.openlocfilehash: 99a2ed406d4837f6fc346e68b3b400003feed38c
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/10/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100099148"
 ---
 # <a name="quickstart-create-a-management-group-with-javascript"></a>Schnellstart: Erstellen einer Verwaltungsgruppe mit JavaScript
@@ -115,4 +115,4 @@ In dieser Schnellstartanleitung haben Sie eine Verwaltungsgruppe zum Organisiere
 Weitere Informationen zu Verwaltungsgruppen und zur Verwaltung Ihrer Ressourcenhierarchie finden Sie im folgenden Artikel:
 
 > [!div class="nextstepaction"]
-> Verwalten von Ressourcen mit Verwaltungsgruppen
+> [Verwalten von Ressourcen mit Verwaltungsgruppen](./manage.md)

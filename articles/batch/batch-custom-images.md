@@ -4,10 +4,10 @@ description: Erstellen Sie einen benutzerdefinierten Batch-Imagepool über ein v
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.openlocfilehash: 0a357a1d8a22341297f3bee73fb0867fb03f374f
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94916575"
 ---
 # <a name="use-a-managed-image-to-create-a-custom-image-pool"></a>Verwenden eines verwalteten Images zum Erstellen eines benutzerdefinierten Imagepools

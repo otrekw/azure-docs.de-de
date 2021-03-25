@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 03/31/2020
-ms.openlocfilehash: 8d4663aac6af4abb8d9855d2f972965e997d9c92
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 97a8dd2476642e693b589b4046f612c5569b9c0b
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945682"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865127"
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>Installieren und Verwenden von Hue in HDInsight Hadoop-Clustern
 
@@ -80,17 +80,17 @@ Auf regulären Clustern können Sie nur ein einziges Benutzerkonto mit Hue haben
    > [!NOTE]  
    > Wenn Sie sich zum ersten Mal anmelden, werden Sie aufgefordert, ein Konto für die Anmeldung beim Hue-Portal zu erstellen. Die hier angegebenen Anmeldeinformationen gelten nur für das Portal und beziehen sich nicht auf die Administrator- oder SSH-Benutzeranmeldeinformationen, die Sie beim Bereitstellen des Clusters angegeben haben.
 
-    ![HDInsight – Hue-Portal – Anmeldefenster](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-login.png "Angeben von Anmeldeinformationen für das Hue-Portal")
+    :::image type="content" source="./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-login.png" alt-text="HDInsight – Hue-Portal – Anmeldefenster":::
 
 ### <a name="run-a-hive-query"></a>Ausführen einer Hive-Abfrage
 
 1. Wählen Sie im Hue-Portal **Query Editors** (Abfrage-Editoren) und dann **Hive** aus, um den Hive-Editor zu öffnen.
 
-    ![HDInsight – Hue-Portal – Hive-Editor verwenden](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-use-hive.png "Verwenden von Hive")
+    :::image type="content" source="./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-use-hive.png" alt-text="HDInsight – Hue-Portal – Hive-Editor verwenden":::
 
 2. Auf der Registerkarte **Assist** (Hilfe) sollte unter **Database** (Datenbank) der Eintrag **hivesampletable** angezeigt werden. Dies ist eine Beispieltabelle, die mit allen Hadoop-Clustern für HDInsight geliefert wird. Geben Sie eine Beispielabfrage im rechten Bereich ein. Die Ausgabe wird auf der Registerkarte **Results** (Ergebnisse) im unteren Bereich angezeigt (siehe Bildschirmaufnahme).
 
-    ![HDInsight – Hue-Portal – Hive-Abfrage](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-hive-query.png "Ausführen einer Hive-Abfrage")
+    :::image type="content" source="./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-hive-query.png" alt-text="HDInsight – Hue-Portal – Hive-Abfrage":::
 
     Zudem können Sie über die Registerkarte **Chart** eine visuelle Darstellung des Ergebnisses anzeigen.
 
@@ -99,7 +99,7 @@ Auf regulären Clustern können Sie nur ein einziges Benutzerkonto mit Hue haben
 1. Wählen Sie im Hue-Portal oben rechts auf der Menüleiste die Option **File Browser** (Dateibrowser) aus.
 2. Standardmäßig wird der Dateibrowser im Verzeichnis **/user/myuser** geöffnet. Wählen Sie in dem Pfad den Schrägstrich direkt vor dem Benutzerverzeichnis aus, um zum Stammverzeichnis des Azure-Speichercontainers zu wechseln, der dem Cluster zugeordnet ist.
 
-    ![HDInsight Portal – Hue-Portal – Dateibrowser](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-file-browser.png "Verwenden des Dateibrowsers")
+    :::image type="content" source="./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-file-browser.png" alt-text="HDInsight Portal – Hue-Portal – Dateibrowser":::
 
 3. Klicken Sie mit der rechten Maustaste auf eine Datei oder einen Ordner, um die verfügbaren Vorgänge anzuzeigen. Verwenden Sie die Schaltfläche **Upload** in der rechten Ecke, um Dateien in das aktuelle Verzeichnis hochzuladen. Über die Schaltfläche **New** können Sie neue Dateien oder Verzeichnisse erstellen.
 
@@ -118,7 +118,7 @@ Auf regulären Clustern können Sie nur ein einziges Benutzerkonto mit Hue haben
 
 1. Bei Linux-Clustern können Sie Ihre Dienste auf dem primären Hauptknoten und Resource Manager auf dem sekundären Knoten ausführen. Dieses Szenario kann zu Fehlern führen (siehe unten), wenn mithilfe von Hue Details zu ausgeführten Aufträgen im Cluster angezeigt werden sollen. Nach Abschluss des Auftrags können Sie die Auftragsdetails jedoch anzeigen.
 
-   ![Hue-Portal – Fehler – Beispielnachricht](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-error.png "Fehler im Hue-Portal")
+   :::image type="content" source="./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-error.png" alt-text="Hue-Portal – Fehler – Beispielnachricht":::
 
    Dies ist auf ein bekanntes Problem zurückzuführen. Zur Umgehung dieses Problems können Sie Ambari so konfigurieren, dass die aktive Resource Manager-Instanz auch auf dem primären Hauptknoten ausgeführt wird.
 

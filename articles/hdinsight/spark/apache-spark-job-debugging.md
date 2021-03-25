@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
-ms.openlocfilehash: f332416a10aa86cb7e0bc7ba560537955d9f2faa
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 0dd250f0a8f67d7e370b8ff453e9cff4d88b7896
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98930584"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866096"
 ---
 # <a name="debug-apache-spark-jobs-running-on-azure-hdinsight"></a>Debuggen von Apache Spark-Aufträgen, die in HDInsight ausgeführt werden
 
@@ -28,20 +28,20 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 1. Starten Sie die YARN-Benutzeroberfläche. Klicken Sie unter **Clusterdashboards** auf **Yarn**.
 
-    ![Azure-Portal – Starten der YARN-Benutzeroberfläche](./media/apache-spark-job-debugging/launch-apache-yarn-ui.png)
+    :::image type="content" source="./media/apache-spark-job-debugging/launch-apache-yarn-ui.png" alt-text="Azure-Portal – Starten der YARN-Benutzeroberfläche" border="true":::
 
    > [!TIP]  
    > Alternativ können Sie die YARN-Benutzeroberfläche auch über die Ambari-Benutzeroberfläche starten. Klicken Sie zum Starten der Ambari-Benutzeroberfläche unter **Clusterdashboards** auf **Ambari home** (Ambari-Homepage). Navigieren Sie von der Ambari-Benutzeroberfläche zu **Yarn** > **Quicklinks**, wählen Sie den aktiven Ressourcen-Manager aus, und klicken Sie auf **Resource Manager UI** (Benutzeroberfläche des Ressourcen-Managers).
 
 2. Da Sie den Spark-Auftrag mit Jupyter Notebook-Instanzen gestartet haben, hat die Anwendung den Namen **remotesparkmagics** (dies ist der Name für alle Anwendungen, die über die Notebook-Instanzen gestartet werden). Klicken Sie auf die Anwendungs-ID für den Anwendungsnamen, um weitere Informationen zum Auftrag abzurufen. Diese Aktion öffnet die Anwendungsansicht.
 
-    ![Spark-Verlaufsserver – Suchen der Spark-Anwendungs-ID](./media/apache-spark-job-debugging/find-application-id1.png)
+    :::image type="content" source="./media/apache-spark-job-debugging/find-application-id1.png" alt-text="Spark-Verlaufsserver – Suchen der Spark-Anwendungs-ID" border="true":::
 
     Für Anwendungen, die über die Jupyter Notebook-Instanzen gestartet werden, ist der Status immer **WIRD AUSGEFÜHRT**, bis Sie die Notebook-Instanz beenden.
 
 3. In der Anwendungsansicht können Sie weitere Details anzeigen, um die der Anwendung zugeordneten Container und die Protokolle (stdout/stderr) zu finden. Sie können die Spark-Benutzeroberfläche auch starten, indem Sie auf die Verknüpfung für die **Nachverfolgungs-URL** klicken, wie unten dargestellt.
 
-    ![Spark-Verlaufsserver – Herunterladen von Containerprotokollen](./media/apache-spark-job-debugging/download-container-logs.png)
+    :::image type="content" source="./media/apache-spark-job-debugging/download-container-logs.png" alt-text="Spark-Verlaufsserver – Herunterladen von Containerprotokollen" border="true":::
 
 ## <a name="track-an-application-in-the-spark-ui"></a>Nachverfolgen einer Anwendung auf der Spark-Benutzeroberfläche
 
@@ -49,29 +49,29 @@ Auf der Spark-Benutzeroberfläche können Sie Details der Spark-Aufträge anzeig
 
 1. Klicken Sie wie auf dem Screenshot oben dargestellt in der Anwendungsansicht auf den Link für die **Nachverfolgungs-URL**, um die Spark-Benutzeroberfläche zu starten Es werden alle Spark-Aufträge angezeigt, die von der Anwendung, die in der Jupyter Notebook-Instanz ausgeführt wird, gestartet werden.
 
-    ![Spark-Verlaufsserver – Registerkarte „Aufträge“](./media/apache-spark-job-debugging/view-apache-spark-jobs.png)
+    :::image type="content" source="./media/apache-spark-job-debugging/view-apache-spark-jobs.png" alt-text="Spark-Verlaufsserver – Registerkarte „Aufträge“" border="true":::
 
 2. Klicken Sie auf die Registerkarte **Executors** (Executor), um Informationen zur Verarbeitung und Speicherung für jeden Executor anzuzeigen. Sie können auch die Aufrufliste abrufen, indem Sie auf den Link **Thread Dump** (Sicherungskopie des Threads) klicken.
 
-    ![Spark-Verlaufsserver – Registerkarte „Executors“](./media/apache-spark-job-debugging/view-spark-executors.png)
+    :::image type="content" source="./media/apache-spark-job-debugging/view-spark-executors.png" alt-text="Spark-Verlaufsserver – Registerkarte „Executors“" border="true":::
 
 3. Klicken Sie auf die Registerkarte **Stages** (Phasen), um die der Anwendung zugeordneten Phasen anzuzeigen.
 
-    ![Registerkarte „Phasen“ des Spark-Verlaufsservers](./media/apache-spark-job-debugging/view-apache-spark-stages.png "Anzeigen von Spark-Phasen")
+    :::image type="content" source="./media/apache-spark-job-debugging/view-apache-spark-stages.png " alt-text="Registerkarte „Phasen“ des Spark-Verlaufsservers" border="true":::
 
     Jede Phase kann mehrere Aufgaben aufweisen, für die Sie Ausführungsstatistiken anzeigen können, wie unten dargestellt.
 
-    ![Informationen zur Registerkarte „Phasen“ des Spark-Verlaufsservers](./media/apache-spark-job-debugging/view-spark-stages-details.png "Anzeigen von Details zu Spark-Phasen")
+    :::image type="content" source="./media/apache-spark-job-debugging/view-spark-stages-details.png " alt-text="Informationen zur Registerkarte „Phasen“ des Spark-Verlaufsservers" border="true":::
 
 4. Auf der Seiten mit Phasendetails können Sie die DAG-Visualisierung starten. Erweitern Sie den Link **DAG Visualization** oben auf der Seite, wie unten dargestellt.
 
-    ![Anzeigen der DAG-Visualisierung von Spark-Phasen](./media/apache-spark-job-debugging/view-spark-stages-dag-visualization.png)
+    :::image type="content" source="./media/apache-spark-job-debugging/view-spark-stages-dag-visualization.png" alt-text="Anzeigen der DAG-Visualisierung von Spark-Phasen" border="true":::
 
     Mit DAG (Direct Aclyic Graph, gerichteter azyklischer Graph) werden die verschiedenen Phasen in der Anwendung dargestellt. Jedes blaue Feld im Diagramm stellt einen Spark-Vorgang dar, der von der Anwendung aufgerufen wurde.
 
 5. Auf der Seite mit den Phasendetails können Sie auch die Zeitachsenansicht für die Anwendung starten. Erweitern Sie den Link **Event Timeline** oben auf der Seite, wie unten dargestellt.
 
-    ![Anzeigen der Ereigniszeitachse von Spark-Phasen](./media/apache-spark-job-debugging/view-spark-stages-event-timeline.png)
+    :::image type="content" source="./media/apache-spark-job-debugging/view-spark-stages-event-timeline.png" alt-text="Anzeigen der Ereigniszeitachse von Spark-Phasen" border="true":::
 
     Diese Abbildung zeigt die Spark-Ereignisse in Form einer Zeitachse an. Die Zeitachsenansicht ist auf drei Ebenen verfügbar: für Aufträge, innerhalb eines Auftrags und innerhalb einer Phase. In der Abbildung oben ist die Zeitachsenansicht für eine bestimmte Phase dargestellt.
 
@@ -92,14 +92,14 @@ Wenn ein Auftrag abgeschlossen ist, werden die Informationen zum Auftrag auf dem
 
 1. Klicken Sie zum Starten des Spark-Verlaufsservers auf der Seite **Übersicht** unter **Clusterdashboard** auf **Spark-Verlaufsserver**.
 
-    ![Azure-Portal: Starten des Spark-Verlaufsservers](./media/apache-spark-job-debugging/launch-spark-history-server.png "Starten des Spark-Verlaufsservers 1")
+    :::image type="content" source="./media/apache-spark-job-debugging/launch-spark-history-server.png " alt-text="Azure-Portal: Starten des Spark-Verlaufsservers" border="true":::
 
    > [!TIP]  
    > Alternativ können Sie die Benutzeroberfläche des Spark-Verlaufsservers auch über die Ambari-Benutzeroberfläche starten. Klicken Sie zum Starten der Ambari-Benutzeroberfläche auf dem Blatt „Übersicht“ unter **Clusterdashboards** auf **Ambari home** (Ambari-Homepage). Navigieren Sie auf der Ambari-Benutzeroberfläche zu **Spark2** > **Quicklinks** > **Spark2 History Server UI** (Benutzeroberfläche des Spark2-Verlaufsservers).
 
 2. Eine Liste der abgeschlossenen Anwendungen wird angezeigt. Klicken Sie auf eine Anwendungs-ID, um weitere Informationen zur Anwendung anzuzeigen.
 
-    ![Spark-Verlaufsserver: abgeschlossene Anwendungen](./media/apache-spark-job-debugging/view-completed-applications.png "Starten des Spark-Verlaufsservers 2")
+    :::image type="content" source="./media/apache-spark-job-debugging/view-completed-applications.png " alt-text="Spark-Verlaufsserver: abgeschlossene Anwendungen" border="true":::
 
 ## <a name="see-also"></a>Weitere Informationen
 

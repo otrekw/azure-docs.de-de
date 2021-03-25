@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 02/1/2021
 ms.author: miwithro
-ms.openlocfilehash: 7f6cf503a459175e3109a515b666bbeaa3a25b4d
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: ca8b9a511de1b71e5d03b8aac7631fc8f524500f
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99549998"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177935"
 ---
 # <a name="aks-managed-azure-active-directory-integration"></a>Von AKS verwaltete Azure Active Directory-Integration
 
@@ -25,6 +25,7 @@ Informieren Sie sich in der [Dokumentation zu den Konzepten der Azure Active Dir
 ## <a name="limitations"></a>Einschränkungen 
 
 * Die von AKS verwaltete Azure AD-Integration kann nicht deaktiviert werden.
+* Das Ändern eines integrierten, von AKS verwalteten Azure AD-Clusters in Legacy-AAD wird nicht unterstützt.
 * Bei nicht für Kubernetes RBAC aktivierten Clustern wird die von AKS verwaltete Azure AD-Integration nicht unterstützt.
 * Die Änderung des mit der von AKS verwalteten Azure AD-Integration verknüpften Azure AD-Mandanten wird nicht unterstützt.
 
@@ -231,6 +232,70 @@ Navigieren Sie im Azure-Portal zu Azure Active Directory, wählen Sie *Unternehm
 
 :::image type="content" source="./media/managed-aad/conditional-access-sign-in-activity.png" alt-text="Anmeldeeintrag „Fehler“ aufgrund der Richtlinie für bedingten Zugriff":::
 
+## <a name="configure-just-in-time-cluster-access-with-azure-ad-and-aks"></a>Konfigurieren von Just-In-Time-Clusterzugriff mit Azure AD und AKS
+
+Eine weitere Option für die Clusterzugriffssteuerung ist die Verwendung von Privileged Identity Management (PIM) für Just-In-Time-Anforderungen.
+
+>[!NOTE]
+> PIM ist eine Azure AD Premium-Funktion und erfordert eine Premium P2-SKU. Weitere Informationen zu Azure AD-SKUs finden Sie im [Preisleitfaden][aad-pricing].
+
+Führen Sie die folgenden Schritte aus, um Just-In-Time-Zugriffsanforderungen mithilfe der von AKS verwalteten Azure AD-Integration in einen AKS-Cluster zu integrieren:
+
+1. Suchen Sie oben im Azure-Portal nach dem Dienst Azure Active Directory, und wählen Sie ihn aus.
+1. Notieren Sie sich die Mandanten-ID, auf die in den restlichen Anweisungen als `<tenant-id>` verwiesen wird. :::image type="content" source="./media/managed-aad/jit-get-tenant-id.png" alt-text="In einem Webbrowser wird der Azure-Portalbildschirm für Azure Active Directory mit hervorgehobener Mandanten-ID angezeigt.":::
+1. Wählen Sie im Menü für Azure Active Directory auf der linken Seite unter *Verwalten* die Option *Gruppen* und anschließend *Neue Gruppe* aus.
+    :::image type="content" source="./media/managed-aad/jit-create-new-group.png" alt-text="Active Directory Gruppenbildschirm im Azure-Portal mit hervorgehobener Option „Neue Gruppe“":::
+1. Wählen Sie den Gruppentyp *Sicherheit* aus, und geben Sie einen Gruppennamen ein (beispielsweise *myJITGroup*). Wählen Sie unter *Azure AD-Rollen können der Gruppe zugewiesen werden (Vorschau)* die Option *Ja* aus. Wählen Sie abschließend *Erstellen*.
+    :::image type="content" source="./media/managed-aad/jit-new-group-created.png" alt-text="Bildschirm zum Erstellen einer neuen Gruppe im Azure-Portal":::
+1. Daraufhin wird wieder die Seite *Gruppen* angezeigt. Wählen Sie Ihre neu erstellte Gruppe aus, und notieren Sie sich die Objekt-ID, auf die in den restlichen Anweisungen als `<object-id>` verwiesen wird.
+    :::image type="content" source="./media/managed-aad/jit-get-object-id.png" alt-text="Azure-Portalbildschirm für die soeben erstellte Gruppe mit hervorgehobener Objekt-ID":::
+1. Stellen Sie einen AKS-Cluster mit der von AKS verwalteten Azure AD-Integration bereit, indem Sie die Werte `<tenant-id>` und `<object-id>` von vorhin verwenden:
+    ```azurecli-interactive
+    az aks create -g myResourceGroup -n myManagedCluster --enable-aad --aad-admin-group-object-ids <object-id> --aad-tenant-id <tenant-id>
+    ```
+1. Wählen Sie im Azure-Portal auf der linken Seite im Menü für *Aktivität* die Option *Privilegierter Zugriff (Vorschau)* und anschließend *Privilegierten Zugriff aktivieren* aus.
+    :::image type="content" source="./media/managed-aad/jit-enabling-priv-access.png" alt-text="Seite „Privilegierter Zugriff (Vorschau)“ im Azure-Portal mit hervorgehobener Option „Privilegierten Zugriff aktivieren“":::
+1. Wählen Sie *Zuweisungen hinzufügen* aus, um mit der Zugriffsgewährung zu beginnen.
+    :::image type="content" source="./media/managed-aad/jit-add-active-assignment.png" alt-text="Bildschirm „Privilegierter Zugriff (Vorschau)“ im Azure-Portal nach der Aktivierung. Die Option „Zuweisungen hinzufügen“ ist hervorgehoben.":::
+1. Wählen Sie die Rolle *Mitglied* und anschließend die Benutzer und Gruppen aus, denen Sie Clusterzugriff gewähren möchten. Diese Zuweisungen können jederzeit durch einen Gruppenadministrator geändert werden. Wenn Sie so weit sind, wählen Sie *Weiter* aus.
+    :::image type="content" source="./media/managed-aad/jit-adding-assignment.png" alt-text="Mitgliedschaftsbildschirm für „Zuweisungen hinzufügen“ im Azure-Portal mit einem ausgewählten Beispielbenutzer, der als Mitglied hinzugefügt werden soll. Die Option „Weiter“ ist hervorgehoben.":::
+1. Wählen Sie den Zuweisungstyp *Aktiv* und die gewünschte Dauer aus, und geben Sie eine Begründung an. Wenn Sie so weit sind, wählen Sie *Zuweisen* aus. Weitere Informationen zu Zuweisungstypen finden Sie unter [Zuweisen eines Besitzers oder Mitglieds einer Gruppe][aad-assignments].
+    :::image type="content" source="./media/managed-aad/jit-set-active-assignment-details.png" alt-text="Einstellungsbildschirm für „Zuweisungen hinzufügen“ im Azure-Portal. Der Zuweisungstyp „Aktiv“ wurde ausgewählt, und eine Begründung wurde angegeben. Die Option „Zuweisen“ ist hervorgehoben.":::
+
+Vergewissern Sie sich nach Einrichtung der Zuweisungen, dass der Just-In-Time-Zugriff funktioniert, indem Sie auf den Cluster zugreifen. Beispiel:
+
+```azurecli-interactive
+ az aks get-credentials --resource-group myResourceGroup --name myManagedCluster
+```
+
+Führen Sie die Anmeldeschritte aus.
+
+Verwenden Sie den Befehl `kubectl get nodes` zum Anzeigen von Knoten im Cluster:
+
+```azurecli-interactive
+kubectl get nodes
+```
+
+Beachten Sie die Authentifizierungsanforderung, und führen Sie die Authentifizierungsschritte aus. War der Vorgang erfolgreich, sollte eine Ausgabe wie die folgende angezeigt werden:
+
+```output
+To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code AAAAAAAAA to authenticate.
+NAME                                STATUS   ROLES   AGE     VERSION
+aks-nodepool1-61156405-vmss000000   Ready    agent   6m36s   v1.18.14
+aks-nodepool1-61156405-vmss000001   Ready    agent   6m42s   v1.18.14
+aks-nodepool1-61156405-vmss000002   Ready    agent   6m33s   v1.18.14
+```
+
+### <a name="troubleshooting"></a>Problembehandlung
+
+Es kann vorkommen, dass von `kubectl get nodes` eine Fehlermeldung wie die folgende zurückgegeben wird:
+
+```output
+Error from server (Forbidden): nodes is forbidden: User "aaaa11111-11aa-aa11-a1a1-111111aaaaa" cannot list resource "nodes" in API group "" at the cluster scope
+```
+
+Vergewissern Sie sich in diesem Fall, dass der Administrator der Sicherheitsgruppe Ihrem Konto eine Zuweisung vom Typ *Aktiv* erteilt hat.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Informieren Sie sich über die [Verwendung der Azure RBAC-Integration für die Kubernetes-Autorisierung][azure-rbac-integration].
@@ -243,14 +308,15 @@ Navigieren Sie im Azure-Portal zu Azure Active Directory, wählen Sie *Unternehm
 [kubernetes-webhook]:https://kubernetes.io/docs/reference/access-authn-authz/authentication/#webhook-token-authentication
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [aks-arm-template]: /azure/templates/microsoft.containerservice/managedclusters
+[aad-pricing]: /azure/pricing/details/active-directory
 
 <!-- LINKS - Internal -->
 [aad-conditional-access]: ../active-directory/conditional-access/overview.md
 [azure-rbac-integration]: manage-azure-rbac.md
 [aks-concepts-identity]: concepts-identity.md
 [azure-ad-rbac]: azure-ad-rbac.md
-[az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
-[az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
+[az-aks-create]: /cli/azure/aks#az-aks-create
+[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
 [az-group-create]: /cli/azure/group#az-group-create
 [open-id-connect]:../active-directory/develop/v2-protocols-oidc.md
 [az-ad-user-show]: /cli/azure/ad/user#az-ad-user-show
@@ -260,3 +326,4 @@ Navigieren Sie im Azure-Portal zu Azure Active Directory, wählen Sie *Unternehm
 [azure-ad-cli]: azure-ad-integration-cli.md
 [access-cluster]: #access-an-azure-ad-enabled-cluster
 [aad-migrate]: #upgrading-to-aks-managed-azure-ad-integration
+[aad-assignments]: ../active-directory/privileged-identity-management/groups-assign-member-owner.md#assign-an-owner-or-member-of-a-group

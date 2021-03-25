@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 11/28/2017
-ms.openlocfilehash: 1daf59c47bf71ad019011036bf42bf6727754345
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: e6ed52f89c38a9c4c5476bd1db0f5a67326954e4
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98940357"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866266"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-debug-apache-spark-applications-remotely-in-hdinsight-through-vpn"></a>Verwenden des Azure-Toolkits für IntelliJ zum Remotedebuggen von Apache Spark-Anwendungen über VPN
 
@@ -50,19 +50,19 @@ Wir empfehlen, auch einen Apache Spark-Cluster in Azure HDInsight zu erstellen, 
 
 1. Rufen Sie die IP-Adresse des Hauptknotens ab. Öffnen Sie die Ambari-Benutzeroberfläche für den Cluster. Klicken Sie auf dem Clusterblatt auf **Dashboard**.
 
-    ![Auswählen von „Dashboard“ in Apache Ambari](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/launch-apache-ambari.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/launch-apache-ambari.png" alt-text="Auswählen von „Dashboard“ in Apache Ambari" border="true":::
 
 1. Wählen Sie in der Ambari-Benutzeroberfläche die Option **Hosts** aus.
 
-    ![Auswählen von „Hosts“ in Apache Ambari](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/apache-ambari-hosts1.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/apache-ambari-hosts1.png" alt-text="Auswählen von „Hosts“ in Apache Ambari" border="true":::
 
-1. Eine Liste mit Hauptknoten, Workerknoten und Zookeeper-Knoten wird angezeigt. Die Hauptknoten haben das Präfix **hn** _. Wählen Sie den ersten Hauptknoten aus.
+1. Eine Liste mit Hauptknoten, Workerknoten und Zookeeper-Knoten wird angezeigt. Die Hauptknoten haben das Präfix **hn**\*. Wählen Sie den ersten Hauptknoten aus.
 
-    ![Suchen nach dem Hauptknoten in Apache Ambari](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/ambari-cluster-headnodes.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/ambari-cluster-headnodes.png" alt-text="Suchen nach dem Hauptknoten in Apache Ambari" border="true":::
 
-1. Kopieren Sie unten auf der angezeigten Seite im Bereich _ *Summary** (Zusammenfassung) die **IP-Adresse** des Hauptknotens und den **Hostnamen**.
+1. Kopieren Sie unten auf der angezeigten Seite im Bereich **Summary** (Zusammenfassung) die **IP-Adresse** des Hauptknotens und den **Hostnamen**.
 
-    ![Suchen nach der IP-Adresse in Apache Ambari](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/headnode-ip-address1.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/headnode-ip-address1.png" alt-text="Suchen nach der IP-Adresse in Apache Ambari" border="true":::
 
 1. Fügen Sie die IP-Adresse und den Hostnamen des Hauptknotens der Datei **hosts** auf dem Computer hinzu, auf dem Sie den Spark-Auftrag ausführen und per Remotezugriff debuggen möchten. Auf diese Weise können Sie sowohl anhand der IP-Adresse als auch des Hostnamens mit dem Hauptknoten kommunizieren.
 
@@ -93,7 +93,7 @@ Wir empfehlen, auch einen Apache Spark-Cluster in Azure HDInsight zu erstellen, 
 
 1. Öffnen Sie IntelliJ IDEA, und erstellen Sie ein neues Projekt. Führen Sie im Dialogfeld **Neues Projekt** folgende Schritte aus:
 
-    ![Auswählen der neuen Projektvorlage in IntelliJ IDEA](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/create-hdi-scala-app.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/create-hdi-scala-app.png" alt-text="Auswählen der neuen Projektvorlage in IntelliJ IDEA" border="true":::
 
     a. Wählen Sie **HDInsight** > **Spark auf HDInsight (Scala)** aus.
 
@@ -106,7 +106,7 @@ Wir empfehlen, auch einen Apache Spark-Cluster in Azure HDInsight zu erstellen, 
 
     - In der Dropdownliste **Spark version** (Spark-Version) fügt der Scala-Projekterstellungs-Assistent die entsprechende Version für das Spark-SDK und das Scala-SDK ein. Wenn Sie eine ältere Spark-Clusterversion als 2.0 verwenden, wählen Sie **Spark 1.x** aus. Wählen Sie andernfalls **Spark 2.x** aus. In diesem Beispiel wird **Spark 2.0.2 (Scala 2.11.8)** verwendet.
   
-   ![Auswählen des Projekt-SDK und der Spark-Version](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/hdi-scala-project-details.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/hdi-scala-project-details.png" alt-text="Auswählen des Projekt-SDK und der Spark-Version" border="true":::
   
 1. Das Spark-Projekt erstellt automatisch ein Artefakt. Um das Artefakt anzuzeigen, gehen Sie folgendermaßen vor:
 
@@ -114,7 +114,7 @@ Wir empfehlen, auch einen Apache Spark-Cluster in Azure HDInsight zu erstellen, 
 
     b. Klicken Sie im Dialogfeld **Project Structure** (Projektstruktur) auf **Artifacts** (Artefakte), um sich das erstellte Standardartefakt anzeigen zu lassen. Sie können auch ein eigenes Artefakt erstellen, indem Sie auf das Pluszeichen ( **+** ) klicken.
 
-   ![IntelliJ IDEA-Artefakte – Erstellen von JAR-Dateien](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/create-default-artifact.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/create-default-artifact.png" alt-text="IntelliJ IDEA-Artefakte – Erstellen von JAR-Dateien" border="true":::
 
 1. Fügen Sie dem Projekt Bibliotheken hinzu. Gehen Sie zum Hinzufügen einer Bibliothek wie folgt vor:
 
@@ -122,7 +122,7 @@ Wir empfehlen, auch einen Apache Spark-Cluster in Azure HDInsight zu erstellen, 
 
     b. Wählen Sie im Dialogfeld **Project Structure** (Projektstruktur) die Option **Libraries** (Bibliotheken) aus, klicken Sie auf das Plussymbol ( **+** ), und wählen Sie dann **From Maven** (Aus Maven) aus.
 
-    ![IntelliJ IDEA-Downloadbibliothek](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-add-library.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-add-library.png" alt-text="IntelliJ IDEA-Downloadbibliothek" border="true":::
 
     c. Suchen Sie im Dialogfeld **Download Library from Maven Repository** (Bibliothek aus Maven-Repository herunterladen) nach den folgenden Bibliotheken, und fügen Sie sie hinzu:
 
@@ -178,11 +178,11 @@ Wir empfehlen, auch einen Apache Spark-Cluster in Azure HDInsight zu erstellen, 
 
 1. Fügen Sie die Hauptklasse für Ihre Anwendung hinzu. Klicken Sie im **Projekt-Explorer** (Projekt-Explorer) mit der rechten Maustaste auf **src**, zeigen Sie auf **New** (Neu), und wählen Sie dann **Scala Class** (Scala-Klasse) aus.
 
-    ![IntelliJ IDEA – Auswählen der Hauptklasse](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/hdi-spark-scala-code.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/hdi-spark-scala-code.png" alt-text="IntelliJ IDEA – Auswählen der Hauptklasse" border="true":::
 
 1. Geben Sie im Dialogfeld **Create New Scala Class** (Neue Scala-Klasse erstellen) einen Namen ein. Wählen Sie unter **Kind** (Art) die Option **Object** aus, und wählen Sie dann **OK** aus.
 
-    ![IntelliJ IDEA – Erstellen einer neuen Scala-Klasse](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/hdi-spark-scala-code-object.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/hdi-spark-scala-code-object.png" alt-text="IntelliJ IDEA – Erstellen einer neuen Scala-Klasse" border="true":::
 
 1. Fügen Sie den folgenden Code in die Datei `MyClusterAppMain.scala` ein. Dieser Code erstellt den Spark-Kontext und öffnet über das `SparkSample`-Objekt eine `executeJob`-Methode.
 
@@ -254,47 +254,47 @@ Wir empfehlen, auch einen Apache Spark-Cluster in Azure HDInsight zu erstellen, 
 
 1. Klicken Sie in der `*RemoteClusterDebugging`-Klasse mit der rechten Maustaste auf das Schlüsselwort `test`, und wählen Sie anschließend **Create RemoteClusterDebugging Configuration** (RemoteClusterDebugging-Konfiguration erstellen) aus.
 
-    ![IntelliJ IDEA – Erstellen einer Remotekonfiguration](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/create-remote-config.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/create-remote-config.png" alt-text="IntelliJ IDEA – Erstellen einer Remotekonfiguration" border="true":::
 
 1. Geben Sie im Dialogfeld **Create RemoteClusterDebugging Configuration** (RemoteClusterDebugging-Konfiguration erstellen) einen Namen für die Konfiguration an, und wählen Sie dann **Test kind** (Testvariante) als **Test name** (Testname) aus. Übernehmen Sie für alle anderen Werte die Standardeinstellungen. Klicken Sie auf **Apply** (Anwenden) und dann auf **OK**.
 
-    ![Erstellen einer RemoteClusterDebugging-Konfiguration](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/provide-config-value.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/provide-config-value.png" alt-text="Erstellen einer RemoteClusterDebugging-Konfiguration" border="true":::
 
 1. In der Menüleiste sollte nun eine Dropdownliste **Remote run** (Remotetestlauf) für die Konfiguration angezeigt werden.
 
-    ![IntelliJ – die Dropdownliste für die Remoteausführung](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-config-remote-run.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-config-remote-run.png" alt-text="IntelliJ – die Dropdownliste für die Remoteausführung" border="true":::
 
 ## <a name="step-5-run-the-application-in-debug-mode"></a>Schritt 5: Ausführen der Anwendung im Debugmodus
 
 1. Öffnen Sie im IntelliJ IDEA-Projekt die Datei `SparkSample.scala`, und erstellen Sie neben `val rdd1` einen Breakpoint. Wählen Sie im Popupmenü **Create Breakpoint for** (Breakpoint erstellen für) die Option **line in function executeJob** (Zeile in executeJob-Funktion) aus.
 
-    ![IntelliJ IDEA – Hinzufügen eines Breakpoints](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-create-breakpoint.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-create-breakpoint.png" alt-text="IntelliJ IDEA – Hinzufügen eines Breakpoints" border="true":::
 
 1. Klicken Sie zum Ausführen der Anwendung neben der Dropdownliste **Remote Run** (Remotetestlauf) für die Konfiguration auf die Schaltfläche **Debug Run** (Debugausführung).
 
-    ![IntelliJ IDEA – Auswählen der Schaltfläche „Debug Run“ (Debugausführung)](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-run-mode-button.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-run-mode-button.png" alt-text="IntelliJ IDEA – Auswählen der Schaltfläche „Debug Run“ (Debugausführung)" border="true":::
 
 1. Wenn die Programmausführung den Breakpoint erreicht, wird im unteren Bereich die Registerkarte **Debugger** angezeigt.
 
-    ![IntelliJ IDEA – Anzeigen der Registerkarte „Debugger“](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-debugger-tab.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-debugger-tab.png" alt-text="IntelliJ IDEA – Anzeigen der Registerkarte „Debugger“" border="true":::
 
 1. Klicken Sie zum Hinzufügen eines Überwachungselements auf das Plussymbol ( **+** ).
 
-    ![IntelliJ Debug-Add-Watch-Variable](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-add-watch-variable.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-add-watch-variable.png" alt-text="IntelliJ Debug-Add-Watch-Variable" border="true":::
 
     In diesem Beispiel wurde die Anwendung unterbrochen, bevor die `rdd1`-Variable erstellt wurde. Mithilfe dieses Überwachungselements können wir die ersten fünf Zeilen in der `rdd`-Variablen anzeigen. Drücken Sie die **EINGABETASTE**.
 
-    ![IntelliJ – Programmausführung im Debugmodus](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-add-watch-variable-value.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-add-watch-variable-value.png" alt-text="IntelliJ – Programmausführung im Debugmodus" border="true":::
 
     Wie Sie in der obigen Abbildung sehen, können Sie zur Laufzeit Terabytes von Daten abfragen und den Ablauf der Anwendung debuggen. In der Ausgabe in der vorherigen Abbildung können Sie beispielsweise sehen, dass die erste Zeile der Ausgabe ein Header ist. Basierend auf dieser Ausgabe können Sie bei Bedarf den Anwendungscode ändern, um die Headerzeile zu überspringen.
 
 1. Nun können Sie auf das Symbol **Resume Program** (Programm fortsetzen) klicken, um die Ausführung der Anwendung fortzusetzen.
 
-    ![IntelliJ IDEA – Auswählen von „Resume Program“ (Programm fortsetzen)](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-continue-remote-run.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-continue-remote-run.png" alt-text="IntelliJ IDEA – Auswählen von „Resume Program“ (Programm fortsetzen)" border="true":::
 
 1. Wenn die Ausführung der Anwendung erfolgreich abgeschlossen wird, sollte eine Ausgabe der folgenden Art angezeigt werden:
 
-    ![IntelliJ IDEA – Ausgabe der Debuggerkonsole](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-complete-window.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-complete-window.png" alt-text="IntelliJ IDEA – Ausgabe der Debuggerkonsole" border="true":::
 
 ## <a name="next-steps"></a><a name="seealso"></a>Nächste Schritte
 

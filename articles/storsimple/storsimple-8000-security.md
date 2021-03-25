@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 05/18/2018
 ms.author: alkohli
 ms.openlocfilehash: 72bf252488878c8b6fabb2ea2d61658a2cd87e14
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94966206"
 ---
 # <a name="storsimple-security-and-data-protection"></a>StorSimple-Sicherheit und -Datenschutz
@@ -57,7 +57,7 @@ Nur autorisierte StorSimple-Geräte dürfen dem StorSimple-Geräte-Manager-Diens
 
 ![Dienstregistrierungsschlüssel](./media/storsimple-security/ServiceRegistrationKey.png)
 
-Informationen zum Abrufen eines Dienstregistrierungsschlüssels erhalten Sie unter [Schritt 2: Abrufen des Dienstregistrierungsschlüssels](storsimple-8000-deployment-walkthrough-u2.md#step-2-get-the-service-registration-key).
+Infomationen zum Abrufen eines Dienstregistrierungsschlüssels erhalten Sie unter [Schritt 2: Abrufen des Dienstregistrierungsschlüssels](storsimple-8000-deployment-walkthrough-u2.md#step-2-get-the-service-registration-key).
 
 Der Dienstregistrierungsschlüssel ist ein langer Schlüssel mit mehr als 100 Zeichen. Sie können den Schlüssel kopieren und ihn an einem sicheren Ort in einer Textdatei speichern, damit Sie bei Bedarf weitere Geräte mit dem Schlüssel autorisieren können. Wenn der Dienstregistrierungsschlüssel nach der Registrierung Ihres ersten Geräts verloren geht, können Sie über den StorSimple-Geräte-Manager-Dienst einen neuen Schlüssel generieren. Dies wirkt sich nicht auf den Betrieb vorhandener Geräte aus.
 
@@ -164,7 +164,7 @@ Führen Sie zum Ändern des Verschlüsselungsschlüssels für die Dienstdaten un
 
 Der Verschlüsselungsschlüssel für Dienstdaten und das Datenverschlüsselungszertifikat haben kein Ablaufdatum. Wir empfehlen jedoch, den Verschlüsselungsschlüssel für Dienstdaten jährlich zu ändern, um eine Gefährdung des Schlüssels zu vermeiden.
 
-## <a name="protect-data-at-rest"></a>Schutz gespeicherter Daten
+## <a name="protect-data-at-rest"></a>Schützen ruhender Daten
 
 Das StorSimple-Gerät verwaltet Daten, indem diese lokal und in der Cloud abhängig von der Häufigkeit ihrer Nutzung auf Ebenen gespeichert werden. Alle Hostcomputer, die mit dem Gerät verbunden sind, senden Daten an das Gerät, das die Daten dann ggf. in die Cloud verschiebt. Die Daten werden vom Gerät über das Internet sicher in die Cloud gesendet. Jedes Gerät verfügt über ein iSCSI-Ziel, das alle freigegebenen Volumes auf diesem Gerät zum Vorschein bringt. Alle Daten werden verschlüsselt, bevor sie zum Cloud-Speicher gesendet werden. 
 
@@ -228,29 +228,29 @@ Die folgenden Fragen und Antworten beziehen sich auf die Sicherheit und Microsof
 **A:** Sie sollten sofort den Verschlüsselungsschlüssel für Dienstdaten und die Speicherkontoschlüssel des Speicherkontos ändern, das für die Datenstaffelung verwendet wird. Anweisungen dazu finden Sie unter:
 
 * [Ändern des Verschlüsselungsschlüssels für Dienstdaten](storsimple-8000-manage-service.md#change-the-service-data-encryption-key)
-* [Schlüsselrotation von Speicherkonten](storsimple-8000-manage-storage-accounts.md#key-rotation-of-storage-accounts)
+* [Schlüsselrotation für Speicherkonten](storsimple-8000-manage-storage-accounts.md#key-rotation-of-storage-accounts)
 
 **F:** Ich habe ein neues StorSimple-Gerät, für das ich den Dienstregistrierungsschlüssel eingeben muss. Wie kann ich diesen abrufen?
 
-**A:** Dieser Schlüssel wurde erstellt, als Sie den StorSimple-Geräte-Manager-Dienst erstmals erstellt haben. Wenn Sie eine Verbindung mit dem Gerät mithilfe des StorSimple-Geräte-Manager-Diensts herstellen, können Sie den Dienstregistrierungsschlüssel auf der Seite „Schnellstart“ des Diensts anzeigen oder erneut generieren. Das Generieren eines neuen Dienstregistrierungsschlüssels wirkt sich nicht auf die vorhandenen registrierten Geräte aus. Anweisungen dazu finden Sie unter:
+**A:** Dieser Schlüssel wurde erstellt, als Sie den StorSimple-Geräte-Manager-Dienst erstmals angelegt haben. Wenn Sie eine Verbindung mit dem Gerät mithilfe des StorSimple-Geräte-Manager-Diensts herstellen, können Sie den Dienstregistrierungsschlüssel auf der Seite „Schnellstart“ des Diensts anzeigen oder erneut generieren. Das Generieren eines neuen Dienstregistrierungsschlüssels wirkt sich nicht auf die vorhandenen registrierten Geräte aus. Anweisungen dazu finden Sie unter:
 
 * [Anzeigen oder Neugenerieren des Dienstregistrierungsschlüssels](storsimple-8000-manage-service.md#regenerate-the-service-registration-key)
 
 **F:** Ich habe meinen Verschlüsselungsschlüssel für Dienstdaten verloren. Wie gehe ich vor?
 
-**A:** Wenden Sie sich an den Microsoft Support. Der Support kann sich in einer Supportsitzung bei Ihrem Gerät anmelden und Ihnen helfen, den Schlüssel abzurufen (vorausgesetzt, dass mindestens ein Gerät online ist). Sie sollten den Verschlüsselungsschlüssel für Dienstdaten sofort nach Erhalt ändern, damit der neue Schlüssel nur Ihnen bekannt ist. Anweisungen dazu finden Sie unter:
+**A:** Wenden Sie sich an den Microsoft-Support. Der Support kann sich in einer Supportsitzung bei Ihrem Gerät anmelden und Ihnen helfen, den Schlüssel abzurufen (vorausgesetzt, dass mindestens ein Gerät online ist). Sie sollten den Verschlüsselungsschlüssel für Dienstdaten sofort nach Erhalt ändern, damit der neue Schlüssel nur Ihnen bekannt ist. Anweisungen dazu finden Sie unter:
 
 * [Ändern des Verschlüsselungsschlüssels für Dienstdaten](storsimple-8000-manage-service.md#change-the-service-data-encryption-key)
 
-**F:**  Ich habe ein Gerät für die Änderung des Verschlüsselungsschlüssels für Dienstdaten autorisiert, aber den Änderungsvorgang nicht gestartet. Wie sollte ich vorgehen?
+**F:** Ich habe ein Gerät für die Änderung des Verschlüsselungsschlüssels für Dienstdaten autorisiert, aber den Änderungsvorgang nicht gestartet.   Wie sollte ich vorgehen?
 
 **A:** Wenn der Timeoutzeitraum abgelaufen ist, müssen Sie das Gerät zur Änderung des Verschlüsselungsschlüssels für Dienstdaten erneut autorisieren und den Vorgang neu starten.
 
-**F:**  Ich habe den Verschlüsselungsschlüssel für Dienstdaten geändert, konnte die anderen Geräte aber nicht innerhalb von 4 Stunden aktualisieren. Muss ich jetzt von vorn beginnen?
+**F:** Ich habe den Verschlüsselungsschlüssel für Dienstdaten geändert, konnte die anderen Geräte aber nicht innerhalb von 4 Stunden aktualisieren. Muss ich jetzt von vorn beginnen?
 
-**A:** Der Zeitraum von 4 Stunden bezieht sich nur auf das Einleiten der Änderung. Nachdem die Änderung auf dem autorisierten StorSimple-Gerät gestartet wurde, ist sie gültig, bis alle Geräte aktualisiert wurden.
+**A:** Der Zeitraum von 4 Stunden bezieht sich nur auf das Einleiten der Änderung. Nachdem die Änderung auf dem autorisierten StorSimple-Gerät gestartet wurde, ist sie gültig, bis alle Geräte aktualisiert wurden.
 
-**F:** Unser StorSimple-Administrator hat das Unternehmen verlassen. Wie sollte ich vorgehen?
+**F:** Unser StorSimple-Administrator hat das Unternehmen verlassen.   Wie sollte ich vorgehen?
 
 **A:** Sie sollten die Kennwörter für den Zugriff auf das StorSimple-Gerät ändern und zurücksetzen und den Verschlüsselungsschlüssel für Dienstdaten ändern, um zu gewährleisten, dass die neuen Informationen unbefugten Dritten nicht bekannt sind. Anweisungen dazu finden Sie unter:
 

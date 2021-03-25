@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 16c0b3e6dc4bd9097312e3a8c43618e66781ef85
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92092884"
 ---
 # <a name="how-to-customize-the-azure-api-management-developer-portal-using-templates"></a>So passen Sie das Azure API Management-Entwicklerportal mithilfe von Vorlagen an
@@ -37,9 +37,9 @@ Vorlagen dienen zum Anpassen des Inhalts von systemgenerierten Entwicklerportals
 
 ## <a name="developer-portal-templates-overview"></a>Übersicht über die Vorlagen im Entwicklerportal
 
-Die Bearbeitung von Vorlagen erfolgt über das **Entwicklerportal** , während Sie als Administrator angemeldet sind. Öffnen Sie hierzu zuerst das Azure-Portal, und klicken Sie in der Dienstsymbolleiste Ihrer API Management-Instanz auf **Entwicklerportal** .
+Die Bearbeitung von Vorlagen erfolgt über das **Entwicklerportal**, während Sie als Administrator angemeldet sind. Öffnen Sie hierzu zuerst das Azure-Portal, und klicken Sie in der Dienstsymbolleiste Ihrer API Management-Instanz auf **Entwicklerportal**.
 
-Um auf die Vorlagen im Entwicklerportal zuzugreifen, klicken Sie auf der linken Seite auf das Anpassungssymbol, um das Anpassungsmenü zu öffnen, und wählen Sie **Vorlagen** .
+Um auf die Vorlagen im Entwicklerportal zuzugreifen, klicken Sie auf der linken Seite auf das Anpassungssymbol, um das Anpassungsmenü zu öffnen, und wählen Sie **Vorlagen**.
 
 ![Screenshot: Hervorgehobenes Anpassungssymbol zum Anzeigen des Anpassungsmenüs][api-management-customize-menu]
 
@@ -51,7 +51,7 @@ Wenn Sie auf eine Vorlage klicken, wird die Seite im Entwicklerportal geöffnet,
 
 ![Vorlage „Produktliste“][api-management-developer-portal-templates-overview]
 
-Mit einigen Vorlagen, z.B. mit den **Benutzerprofil** -Vorlagen, werden unterschiedliche Abschnitte derselben Seite angepasst.
+Mit einigen Vorlagen, z.B. mit den **Benutzerprofil**-Vorlagen, werden unterschiedliche Abschnitte derselben Seite angepasst.
 
 ![Vorlage „Benutzerprofil“][api-management-user-profile-templates]
 
@@ -162,7 +162,7 @@ Zum Wiederherstellen der zuvor veröffentlichten Version einer Vorlage klicken S
 
 ![Screenshot: Hervorgehobenes Symbol zum Wiederherstellen einer Vorlage][api-management-revert-template]
 
-Klicken Sie auf **Ja** , um zu bestätigen.
+Klicken Sie auf **Ja**, um zu bestätigen.
 
 ![Screenshot, der zeigt, wo Sie „Ja“ auswählen, um die Änderungen zu bestätigen][api-management-revert-template-confirm]
 
@@ -175,7 +175,7 @@ Zum Wiederherstellen der Standardversion einer einzelnen Vorlage klicken Sie im 
 
 ![Vorlage wiederherstellen][api-management-reset-template]
 
-Klicken Sie auf **Ja** , um zu bestätigen.
+Klicken Sie auf **Ja**, um zu bestätigen.
 
 ![Confirm][api-management-reset-template-confirm]
 

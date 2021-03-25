@@ -6,14 +6,14 @@ titleSuffix: Azure VPN Gateway
 author: chadmath
 ms.service: vpn-gateway
 ms.topic: troubleshooting
-ms.date: 02/10/2021
+ms.date: 03/22/2021
 ms.author: genli
-ms.openlocfilehash: 582077c46f5fc7176b457cf0d392af48fbe7d40b
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 38846bbe717912092ccfe2b236b717770b79302f
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100369338"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867252"
 ---
 # <a name="troubleshooting-azure-site-to-site-vpn-disconnects-intermittently"></a>Problembehandlung: Unterbrechungen der Verbindung des Azure-Standort-zu-Standort-VPN
 
@@ -56,9 +56,7 @@ Beim richtlinienbasierten virtuellen Netzwerkgateway ist die Sicherheitszuordnun
 
 ### <a name="step-6-check-on-premises-vpn-device-external-interface-address"></a>Schritt 6: Überprüfen der Adresse der externen Schnittstelle des lokalen VPN-Geräts
 
-- Wenn die IP-Adresse des VPN-Geräts mit Internetzugriff in der Definition **Lokales Netzwerkgateway** in Azure enthalten ist, kann es vereinzelt zur Trennung der Verbindung kommen.
-- Die externe Schnittstelle des Geräts muss sich direkt im Internet befinden. Es darf sich keine Netzwerkadressübersetzung (Network Address Translation, NAT) oder Firewall zwischen dem Internet und dem Gerät befinden.
--  Wenn Sie Firewall Clustering konfigurieren, um über eine virtuelle IP-Adresse zu verfügen, müssen Sie den Cluster unterbrechen und das VPN-Gerät direkt an eine öffentliche Schnittstelle anschließen, mit der das Gateway kompatibel ist.
+Wenn die IP-Adresse des VPN-Geräts mit Internetzugriff in der Definition **Lokales Netzwerkgateway** in Azure enthalten ist, kann es vereinzelt zur Trennung der Verbindung kommen.
 
 ### <a name="step-7-check-whether-the-on-premises-vpn-device-has-perfect-forward-secrecy-enabled"></a>Schritt 7: Überprüfen, ob beim lokalen VPN-Gerät Perfect Forward Secrecy aktiviert ist
 

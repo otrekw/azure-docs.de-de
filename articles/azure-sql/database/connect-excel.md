@@ -13,10 +13,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
 ms.openlocfilehash: 304ad51bc40c8165c2dc11bb70287491e3d6dfb9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91444033"
 ---
 # <a name="connect-excel-to-a-database-in-azure-sql-database-or-azure-sql-managed-instance-and-create-a-report"></a>Verbinden von Excel mit einer Datenbank in Azure SQL-Datenbank oder Azure SQL Managed Instance und Erstellen eines Berichts
@@ -57,12 +57,12 @@ Sie benötigen auch eine Kopie von Excel. In diesem Artikel wird [Microsoft Exce
 Nachdem Sie die Verbindung hergestellt haben, stehen mehrere unterschiedliche Optionen zum Laden der Daten zur Verfügung. Mit den folgenden Schritten erstellen Sie beispielsweise ein PivotChart basierend auf den Daten in Ihrer Datenbank in SQL-Datenbank.
 
 1. Führen Sie die Schritte im vorherigen Abschnitt aus, wählen Sie jedoch dieses Mal in der Dropdownliste **Laden** anstelle von **Laden** die Option **Laden in** aus.
-2. Wählen Sie als Nächstes das Format aus, in dem Sie diese Daten in der Arbeitsmappe anzeigen möchten. Wir haben hier **PivotChart**gewählt. Sie können auch ein **Neues Arbeitsblatt** erstellen oder die Option **Dem Datenmodell diese Daten hinzufügen** wählen. Weitere Informationen zu Datenmodellen finden Sie unter [Erstellen eines Datenmodells in Excel](https://support.office.com/article/Create-a-Data-Model-in-Excel-87E7A54C-87DC-488E-9410-5C75DBCB0F7B).
+2. Wählen Sie als Nächstes das Format aus, in dem Sie diese Daten in der Arbeitsmappe anzeigen möchten. Wir haben hier **PivotChart** gewählt. Sie können auch ein **Neues Arbeitsblatt** erstellen oder die Option **Dem Datenmodell diese Daten hinzufügen** wählen. Weitere Informationen zu Datenmodellen finden Sie unter [Erstellen eines Datenmodells in Excel](https://support.office.com/article/Create-a-Data-Model-in-Excel-87E7A54C-87DC-488E-9410-5C75DBCB0F7B).
 
     ![Format für Daten in Excel auswählen](./media/connect-excel/import-data.png)
 
     Das Arbeitsblatt enthält jetzt eine leere PivotTable und ein leeres PivotChart.
-3. Aktivieren Sie unter **PivotTable-Felder**alle Kontrollkästchen für die Felder, die Sie anzeigen möchten.
+3. Aktivieren Sie unter **PivotTable-Felder** alle Kontrollkästchen für die Felder, die Sie anzeigen möchten.
 
     ![Konfigurieren Sie den Datenbankbericht.](./media/connect-excel/power-pivot-results.png)
 

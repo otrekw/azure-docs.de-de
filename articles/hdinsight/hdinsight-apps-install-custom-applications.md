@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
-ms.openlocfilehash: 9591551b7d5657803e770bd71b47acb141b40fb6
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 19dd5bf94b524ff3eb6eb601c77b503a0040bd75
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98942686"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867643"
 ---
 # <a name="install-custom-apache-hadoop-applications-on-azure-hdinsight"></a>Installieren von benutzerdefinierten Apache Hadoop-Anwendungen in Azure HDInsight
 
@@ -80,7 +80,7 @@ Sie können für **Hue** die folgenden Schritte verwenden:
 1. Wählen Sie in der Liste **Hue** aus, um die Eigenschaften anzuzeigen.  
 1. Wählen Sie den Webseitenlink aus, um die Website zu überprüfen.
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
 Ersetzen Sie `CLUSTERNAME` und `RESOURCEGROUP` durch die entsprechenden Werte, und geben Sie dann die folgenden Befehle ein:
 
@@ -106,13 +106,13 @@ Wenn eine Anwendungsinstallation nicht erfolgreich ist, können Sie Fehlermeldun
 
     Öffnen Sie den Cluster im Portal, und wählen Sie unter „Einstellungen“ die Option „Anwendungen“ aus:
 
-    ![HDInsight-Anwendungen: Fehler bei Anwendungsinstallation](./media/hdinsight-apps-install-custom-applications/hdinsight-apps-error.png)
+    :::image type="content" source="./media/hdinsight-apps-install-custom-applications/hdinsight-apps-error.png" alt-text="HDInsight-Anwendungen: Fehler bei Anwendungsinstallation":::
 
 * HDInsight-Skriptaktion: Wenn mit der Fehlermeldung der HDInsight-Anwendung ein Skriptaktionsfehler angegeben wird, werden im Bereich mit den Skriptaktionen Details zum Skriptfehler angezeigt.
 
     Wählen Sie unter „Einstellungen“ die Option „Skriptaktion“ aus. Im Skriptaktionsverlauf werden die Fehlermeldungen angezeigt.
 
-    ![HDInsight-Anwendungen: Fehler bei Skriptaktion](./media/hdinsight-apps-install-custom-applications/hdinsight-apps-script-action-error.png)
+    :::image type="content" source="./media/hdinsight-apps-install-custom-applications/hdinsight-apps-script-action-error.png" alt-text="HDInsight-Anwendungen: Fehler bei Skriptaktion":::
 
 * Apache Ambari-Webbenutzeroberfläche: Wenn das Installationsskript der Grund für den Fehler war, können Sie die Ambari-Webbenutzeroberfläche verwenden, um die vollständigen Protokolle zu den Installationsskripts zu überprüfen.
 
@@ -128,7 +128,7 @@ Wenn eine Anwendungsinstallation nicht erfolgreich ist, können Sie Fehlermeldun
 1. Klicken Sie mit der rechten Maustaste auf die zu entfernende Anwendung, und wählen Sie dann **Löschen** aus.
 1. Klicken Sie auf **Ja**, um zu bestätigen.
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
 Ersetzen Sie `NAME`, `CLUSTERNAME` und `RESOURCEGROUP` durch die entsprechenden Werte, und geben Sie dann den folgenden Befehl ein:
 

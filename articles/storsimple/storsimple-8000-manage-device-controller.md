@@ -15,15 +15,15 @@ ms.workload: na
 ms.date: 06/19/2017
 ms.author: alkohli
 ms.openlocfilehash: 090797549cc61aa27945114e5ef8b666226b66e2
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94956992"
 ---
 # <a name="manage-your-storsimple-device-controllers"></a>Verwalten von StorSimple-Gerätecontrollern
 
-## <a name="overview"></a>Übersicht
+## <a name="overview"></a>Überblick
 
 In diesem Tutorial werden die verschiedenen Vorgänge beschrieben, die auf den Gerätecontrollern von StorSimple durchgeführt werden können. Die Controller in Ihrem StorSimple-Gerät sind redundante Controller (Peer-Controller) in einer Aktiv/Passiv-Konfiguration. Es ist jeweils nur ein Controller aktiv, der alle Datenträger- und Netzwerkvorgänge verarbeitet. Der andere Controller befindet sich im passiven Modus. Wenn der aktive Controller ausfällt, wird automatisch der passive Controller aktiviert.
 
@@ -124,37 +124,37 @@ Führen Sie die folgenden Schritte aus, um das Microsoft Azure StorSimple-Gerät
 ## <a name="questions-and-answers-about-managing-device-controllers"></a>Fragen und Antworten zur Verwaltung von Gerätecontrollern
 In diesem Abschnitt haben wir einige der häufig gestellten Fragen zur Verwaltung von StorSimple-Gerätecontrollern zusammengefasst.
 
-**F.** Was passiert, wenn beide Controller auf meinem Gerät fehlerfrei und eingeschaltet sind und ich den aktiven Controller neu starte oder herunterfahre?
+**F.**  Was passiert, wenn beide Controller auf meinem Gerät fehlerfrei und eingeschaltet sind und ich den aktiven Controller neu starte oder herunterfahre?
 
 **A.** Wenn beide Controller auf Ihrem Gerät fehlerfrei und eingeschaltet sind, werden Sie zur Bestätigung aufgefordert. Sie können wie folgt vorgehen:
 
 * **Aktiven Controller neu starten**: Sie werden benachrichtigt, dass der Neustart eines aktiven Controllers bewirkt, dass das Gerät ein Failover auf den passiven Controller durchführt. Der Controller wird neu gestartet.
 * **Einen aktiven Controller herunterfahren**: Sie werden benachrichtigt, dass das Herunterfahren eines aktiven Controllers zu Ausfallzeiten führt. Außerdem müssen Sie den An-/Aus-Schalter am Gerät betätigen, um den Controller einzuschalten.
 
-**F.** Was passiert, wenn der passive Controller auf meinem Gerät nicht verfügbar oder ausgeschaltet ist und ich den aktiven Controller neu starte oder herunterfahre?
+**F.**  Was passiert, wenn der passive Controller auf meinem Gerät nicht verfügbar oder ausgeschaltet ist und ich den aktiven Controller neu starte oder herunterfahre?
 
-**A.** Wenn der passive Controller auf dem Gerät nicht verfügbar oder ausgeschaltet ist, ist der Ablauf in den unten angegebenen Fällen wie folgt:
+**A.**  Wenn der passive Controller auf dem Gerät nicht verfügbar oder ausgeschaltet ist, ist der Ablauf in den unten angegebenen Fällen wie folgt:
 
 * **Den aktiven Controller neu starten**: Sie werden benachrichtigt, dass das Fortsetzen des Vorgangs zu einer vorübergehenden Störung des Diensts führt, und zur Bestätigung aufgefordert.
 * **Einen aktiven Controller herunterfahren**: Sie werden benachrichtigt, dass das Fortsetzen des Betriebs zu Ausfallzeiten führt. Außerdem müssen Sie den An-/Aus-Schalter an einem oder beiden Controllern betätigen, um das Gerät einzuschalten. Sie werden aufgefordert, diesen Schritt zu bestätigen.
 
-**F.** In welchen Fällen kann das Neustarten oder Herunterfahren des Controllers nicht fortgesetzt werden?
+**F.**  In welchen Fällen kann das Neustarten oder Herunterfahren des Controllers nicht fortgesetzt werden?
 
-**A.** Beim Neustarten oder Herunterfahren eines Controllers kann in den folgenden Fällen ein Fehler auftreten:
+**A.**  Beim Neustarten oder Herunterfahren eines Controllers kann in den folgenden Fällen ein Fehler auftreten:
 
 * Es wird ein Update des Geräts durchgeführt.
 * Es wird bereits ein Neustart des Controllers durchgeführt.
 * Das Herunterfahren des Controllers wird bereits durchgeführt.
 
-**F.** Wie kann ermittelt werden, ob ein Controller neu gestartet oder heruntergefahren wurde?
+**F.**  Wie kann ermittelt werden, ob ein Controller neu gestartet oder heruntergefahren wurde?
 
 **A.** Sie können den Controllerstatus auf dem Blatt „Controller“ überprüfen. Der Status des Controllers gibt an, ob ein Controller gerade neu gestartet oder heruntergefahren wird. Außerdem enthält das Blatt **Warnungen** eine Warnung des Typs „Information“, wenn der Controller neu gestartet oder heruntergefahren wird. Die Vorgänge des Neustartens und Herunterfahrens von Controllern werden zudem in den Aktivitätsprotokollen aufgezeichnet. Weitere Informationen zu Aktivitätsprotokollen finden Sie unter [Anzeigen der Aktivitätsprotokolle](storsimple-8000-service-dashboard.md#view-the-activity-logs).
 
 **F.** Wirkt sich ein Failover des Controllers auf die Ein- und Ausgabe aus?
 
-**A.** Die TCP-Verbindungen zwischen Initiatoren und aktivem Controller werden bei einem Failover des Controllers zurückgesetzt, aber wiederhergestellt, wenn der passive Controller den Betrieb übernimmt. Im Verlauf dieses Vorgangs kann es zu einer vorübergehenden Pause (weniger als 30 Sekunden) bei der E/A-Aktivität zwischen Initiatoren und dem Gerät kommen.
+**A.**  Die TCP-Verbindungen zwischen Initiatoren und aktivem Controller werden bei einem Failover des Controllers zurückgesetzt, aber wiederhergestellt, wenn der passive Controller den Betrieb übernimmt. Im Verlauf dieses Vorgangs kann es zu einer vorübergehenden Pause (weniger als 30 Sekunden) bei der E/A-Aktivität zwischen Initiatoren und dem Gerät kommen.
 
-**F.** Wie kann ich den Controller wieder in Betrieb nehmen, nachdem er heruntergefahren und entfernt wurde?
+**F.**  Wie kann ich den Controller wieder in Betrieb nehmen, nachdem er heruntergefahren und entfernt wurde?
 
 **A.** Wenn Sie einen Controller wieder in Betrieb nehmen möchten, müssen Sie ihn wie unter [Ersetzen des Controllermoduls auf dem StorSimple-Gerät](storsimple-8000-controller-replacement.md).
 

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 2/23/2018
 ms.author: atsenthi
 ms.openlocfilehash: e6174f35bd54b3ca0b2c5240a663369350b30ce8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86241895"
 ---
 # <a name="service-fabric-container-networking-modes"></a>Netzwerkmodi für Service Fabric-Container
@@ -191,14 +191,14 @@ Wenn ein Containerdienst neu gestartet oder im Cluster auf einen anderen Knoten 
  
 3. Richten Sie nur für Windows-Cluster eine Azure-Netzwerksicherheitsgruppen-Regel, mit der Port UDP/53 für das virtuelle Netzwerk geöffnet wird, mit den folgenden Werten ein:
 
-   |Einstellung |value |
+   |Einstellung |Wert |
    | --- | --- |
    |Priority |2000 |
    |Name |Custom_Dns  |
    |`Source` |VirtualNetwork |
-   |Destination | VirtualNetwork |
+   |Ziel | VirtualNetwork |
    |Dienst | DNS (UDP/53) |
-   |Action | Allow  |
+   |Aktion | Allow  |
 
 4. Geben Sie im Anwendungsmanifest für jeden Dienst den Netzwerkmodus an: `<NetworkConfig NetworkType="Open">`. Im Netzwerkmodus **Open** erhält der Dienst eine dedizierte IP-Adresse. Wenn kein Modus angegeben ist, wird für den Dienst standardmäßig der Modus **nat** verwendet. Im folgenden Beispielmanifest können die Dienste `NodeContainerServicePackage1` und `NodeContainerServicePackage2` über denselben Port lauschen. (Beide Dienste lauschen über `Endpoint1`.) Wenn der Netzwerkmodus „Open“ angegeben ist, können keine `PortBinding`-Konfigurationen angegeben werden.
 

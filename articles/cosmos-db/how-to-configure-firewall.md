@@ -4,15 +4,15 @@ description: Hier erfahren Sie, wie IP-Zugriffssteuerungsrichtlinien für die Fi
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 12/15/2020
+ms.date: 03/03/2021
 ms.author: mjbrown
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: b4e01375388f12b828d9adcb1e2ed8851061a0bf
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: a7796b70d4d32e7023fbc88086a737dd76ae7723
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97560728"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102122713"
 ---
 # <a name="configure-ip-firewall-in-azure-cosmos-db"></a>Konfigurieren der IP-Firewall in Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -37,7 +37,7 @@ Sie können die in Ihrem Azure Cosmos DB-Konto gespeicherten Daten mithilfe von 
 
 Um die IP-Zugriffssteuerungsrichtlinie im Azure-Portal festzulegen, wechseln Sie zur Seite für das Azure Cosmos DB-Konto, und wählen Sie im Navigationsmenü **Firewall und virtuelle Netzwerke** aus. Ändern Sie den Wert **Zugriff zulassen über** in **Ausgewählte Netzwerke**, und klicken Sie dann auf **Speichern**.
 
-:::image type="content" source="./media/how-to-configure-firewall/azure-portal-firewall.png" alt-text="Screenshot: Öffnen der Seite „Firewall“ im Azure-Portal":::
+![Screenshot: Öffnen der Seite „Firewall“ im Azure-Portal](./media/how-to-configure-firewall/azure-portal-firewall.png)
 
 Wenn die IP-Zugriffssteuerung aktiviert ist, können Sie im Azure-Portal IP-Adressen, IP-Adressbereiche und Schalter angeben. Schalter ermöglichen den Zugriff auf andere Azure-Dienste und das Azure-Portal. Details zu diesen Schaltern finden Sie in den folgenden Abschnitten.
 
@@ -57,13 +57,13 @@ Wenn Sie eine IP-Zugriffssteuerungsrichtlinie programmgesteuert aktivieren, müs
 
 Sie können Anforderungen für den Zugriff auf das Azure-Portal ermöglichen, indem Sie wie im folgenden Screenshot gezeigt die Option **Zugriff über das Azure-Portal zulassen** auswählen:
 
-:::image type="content" source="./media/how-to-configure-firewall/enable-azure-portal.png" alt-text="Screenshot: Aktivieren des Zugriffs auf das Azure-Portal":::
+![Screenshot: Aktivieren des Zugriffs auf das Azure-Portal](./media/how-to-configure-firewall/enable-azure-portal.png)
 
 ### <a name="allow-requests-from-global-azure-datacenters-or-other-sources-within-azure"></a>Zulassen von Anforderungen von globalen Azure-Rechenzentren oder anderen Quellen in Azure
 
 Wenn Sie in Diensten, die keine statische IP bereitstellen, z.B. Azure Stream Analytics oder Azure Functions, auf das Azure Cosmos DB-Konto zugreifen, können Sie dennoch den Zugriff über die IP-Firewall einschränken. Sie können den Zugriff über andere Quellen innerhalb von Azure ermöglichen, indem Sie wie im folgenden Screenshot gezeigt die Option **Verbindungen aus Azure-Rechenzentren akzeptieren** auswählen:
 
-:::image type="content" source="./media/how-to-configure-firewall/enable-azure-services.png" alt-text="Screenshot: Akzeptieren von Verbindungen aus Azure-Rechenzentren":::
+![Screenshot: Akzeptieren von Verbindungen aus Azure-Rechenzentren](./media/how-to-configure-firewall/enable-azure-services.png)
 
 Wenn Sie diese Option aktivieren, wird die IP-Adresse `0.0.0.0` zur Liste der zulässigen IP-Adressen hinzugefügt. Die IP-Adresse `0.0.0.0` beschränkt Anforderungen für das Azure Cosmos DB-Konto auf den IP-Adressbereich des Azure-Rechenzentrums. Mit dieser Einstellung ist der Zugriff auf das Azure Cosmos DB-Konto über andere IP-Adressbereiche nicht zulässig.
 
@@ -103,6 +103,12 @@ Wenn Sie der Gruppe VM-Instanzen hinzufügen, erhalten diese automatisch Zugriff
 ### <a name="requests-from-the-internet"></a>Anforderungen aus dem Internet
 
 Wenn Sie über einen Computer im Internet auf das Azure Cosmos DB-Konto zugreifen, muss die Client-IP-Adresse oder der Client-IP-Adressbereich des Computers der Liste der zugelassenen IP-Adressen für das Konto hinzugefügt werden.
+
+### <a name="add-outbound-rules-to-the-firewall"></a>Hinzufügen von Ausgangsregeln zur Firewall
+
+Auf der Seite zum [Herunterladen von Azure-IP-Adressbereichen und Diensttags](https://www.microsoft.com/download/details.aspx?id=56519) finden Sie eine aktuelle Liste mit Ausgangs-IP-Adressbereichen, die Sie Ihrer Firewall hinzufügen können.
+
+Informationen zum Automatisieren dieser Liste finden Sie unter [Verwendung der Diensttagermittlungs-API (öffentliche Vorschau)](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#use-the-service-tag-discovery-api-public-preview).
 
 ## <a name="configure-an-ip-firewall-by-using-a-resource-manager-template"></a><a id="configure-ip-firewall-arm"></a>Konfigurieren einer IP-Firewall mithilfe einer Resource Manager-Vorlage
 

@@ -8,10 +8,10 @@ ms.service: azure-education
 ms.subservice: education-hub
 ms.date: 06/30/2020
 ms.openlocfilehash: 276ab2cc1d79235c00ce1bb50ff9b648bb1de6ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87094342"
 ---
 # <a name="troubleshooting-student-login-issues"></a>Behandeln von Problemen bei der Kursteilnehmeranmeldung
@@ -39,16 +39,16 @@ Wenn ein Kursteilnehmer über ein vorhandenes Microsoft-Konto (z. B. Xbox) verf
 
 1. Klicken Sie auf **Anmeldung bei Microsoft verwalten**. Sie werden aufgefordert, Ihre Identität zu bestätigen. Sie erhalten per E-Mail einen Sicherheitscode.
 
-    :::image type="content" source="media/troubleshoot-accounts/manage-sign-in.png" alt-text="Fehlermeldung bei der Anmeldung." border="false":::
+    :::image type="content" source="media/troubleshoot-accounts/manage-sign-in.png" alt-text="Verwalten der Anmeldung." border="false":::
 
 1. Geben Sie den Sicherheitscode ein, den Sie per E-Mail erhalten haben.
 
-    :::image type="content" source="media/troubleshoot-accounts/sign-in-enter-code.png" alt-text="Fehlermeldung bei der Anmeldung." border="false":::
+    :::image type="content" source="media/troubleshoot-accounts/sign-in-enter-code.png" alt-text="Eingeben des Anmeldecodes." border="false":::
 
 1. Klicken Sie auf **E-Mail hinzufügen** für Ihr Konto, und geben Sie die E-Mail-Adresse Ihrer Universität ein.
 Wenn Sie sich das nächste Mal anmelden, können Sie die E-Mail-Adresse Ihrer Universität verwenden, um auf Azure Dev Tools für den Unterricht zuzugreifen.
 
-    :::image type="content" source="media/troubleshoot-accounts/manage-sign-in-add-email.png" alt-text="Fehlermeldung bei der Anmeldung." border="false":::
+    :::image type="content" source="media/troubleshoot-accounts/manage-sign-in-add-email.png" alt-text="Anmeldung bei Microsoft verwalten." border="false":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Häufig gestellte Fragen](program-faq.md)

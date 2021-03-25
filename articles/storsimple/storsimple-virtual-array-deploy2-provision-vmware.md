@@ -9,14 +9,14 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 9810a34021aa039354aad24f84aff373229c0190
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87021476"
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-vmware"></a>Bereitstellen des StorSimple Virtual Array – Bereitstellen in VMware
-![Abbildung der Schritte, die zur Bereitstellung eines virtuellen Arrays erforderlich sind. Der zweite Teil von Schritt 2 hat die Überschrift „Bereitstellen in VMware“ und ist hervorgehoben.](./media/storsimple-virtual-array-deploy2-provision-vmware/vmware4.png)
+![Abbildung der Schritte, die zur Bereitstellung eines virtuellen Arrays erforderlich sind.  Der zweite Teil von Schritt 2 hat die Überschrift „Bereitstellen in VMware“ und ist hervorgehoben.](./media/storsimple-virtual-array-deploy2-provision-vmware/vmware4.png)
 
 ## <a name="overview"></a>Übersicht
 
@@ -86,7 +86,7 @@ Führen Sie die folgenden Schritte aus, um ein virtuelles Gerät in VMware berei
 4. Laden Sie das VMDK auf den ESXi-Server hoch. Gehen Sie im rechten Bereich zur Registerkarte **Konfiguration** . Wählen Sie unter **Hardware** die Option **Speicher**.
 
    ![Screenshot, der die Registerkarte „Konfiguration“ des vSphere-Clients zeigt. Im Abschnitt „Hardware“ ist „Speicher“ hervorgehoben.](./media/storsimple-virtual-array-deploy2-provision-vmware/image3.png)
-5. Wählen Sie im rechten Bereich unter **Datenspeicher**den Datenspeicher aus, in den Sie das VMDK hochladen möchten. Der Datenspeicher muss über genügend freien Speicherplatz für das Betriebssystem und die Datenträger verfügen.
+5. Wählen Sie im rechten Bereich unter **Datenspeicher** den Datenspeicher aus, in den Sie das VMDK hochladen möchten. Der Datenspeicher muss über genügend freien Speicherplatz für das Betriebssystem und die Datenträger verfügen.
 
    ![Screenshot, der die Registerkarte „Speicher“ des vSphere-Clients zeigt. Die Registerkarte „Datenspeicher“ ist geöffnet und enthält eine Liste mit Datenspeichern. Ein Datenspeicher ist ausgewählt.](./media/storsimple-virtual-array-deploy2-provision-vmware/image4.png)
 6. Klicken Sie mit der rechten Maustaste, und wählen Sie **Datenspeicher durchsuchen** aus.
