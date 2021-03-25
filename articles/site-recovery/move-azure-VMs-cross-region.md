@@ -9,10 +9,10 @@ ms.date: 01/28/2019
 ms.author: sideeksh
 ms.custom: MVC
 ms.openlocfilehash: 5ae930240872c00c8dbb45857e4e77d82766eadf
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93398061"
 ---
 # <a name="move-azure-vms-to-another-azure-region"></a>Verschieben von Azure-VMs in eine andere Azure-Region
@@ -88,7 +88,7 @@ In den folgenden Schritten werden Daten mithilfe von Azure Site Recovery in die 
 7. Wählen Sie unter **Quelle** die Option **Azure** aus.
 8. Wählen Sie unter **Quellstandort** die Azure-Quellregion aus, in der Ihre VMs derzeit ausgeführt werden.
 9. Wählen Sie das Azure Resource Manager-Bereitstellungsmodell aus. Wählen Sie dann das **Quellabonnement** und die **Quellressourcengruppe** aus.
-10. Wählen Sie **OK** , um die Einstellungen zu speichern.
+10. Wählen Sie **OK**, um die Einstellungen zu speichern.
 
 ### <a name="enable-replication-for-azure-vms-and-start-copying-the-data"></a>Aktivieren der Replikation für Azure-VMs und Starten des Kopiervorgangs für die Daten
 
@@ -109,9 +109,9 @@ Site Recovery ruft eine Liste der VMs ab, die dem Abonnement und der Ressourcen
 1. Wechseln Sie zum Tresor. Wählen Sie unter **Einstellungen** > **Replizierte Elemente** die VM aus, die Sie in die Zielregion verschieben möchten. Wählen Sie dann **Testfailover** aus.
 2. Wählen Sie unter **Testfailover** einen Wiederherstellungspunkt für das Failover aus:
 
-   - **Letzte Verarbeitung** : Führt ein Failover des virtuellen Computers auf den letzten Wiederherstellungspunkt aus, der vom Site Recovery-Dienst verarbeitet wurde. Der Zeitstempel wird angezeigt. Bei dieser Option wird der RTO-Wert (Recovery Time Objective) niedrig gehalten, da keine Zeit für die Verarbeitung von Daten aufgewendet wird.
-   - **Letzter anwendungskonsistenter Zeitpunkt** : Führt ein Failover aller VMs auf den letzten App-konsistenten Wiederherstellungspunkt aus. Der Zeitstempel wird angezeigt.
-   - **Benutzerdefiniert** : Wählen Sie einen beliebigen Wiederherstellungspunkt aus.
+   - **Letzte Verarbeitung**: Führt ein Failover des virtuellen Computers auf den letzten Wiederherstellungspunkt aus, der vom Site Recovery-Dienst verarbeitet wurde. Der Zeitstempel wird angezeigt. Bei dieser Option wird der RTO-Wert (Recovery Time Objective) niedrig gehalten, da keine Zeit für die Verarbeitung von Daten aufgewendet wird.
+   - **Letzter anwendungskonsistenter Zeitpunkt**: Führt ein Failover aller VMs auf den letzten App-konsistenten Wiederherstellungspunkt aus. Der Zeitstempel wird angezeigt.
+   - **Benutzerdefiniert**: Wählen Sie einen beliebigen Wiederherstellungspunkt aus.
 
 3. Wählen Sie das virtuelle Azure-Zielnetzwerk aus, in das die Azure-VMs zum Testen der Konfiguration verschoben werden sollen.
 

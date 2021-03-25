@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/27/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 11102d95bc2aba65e6bc3cba71805a67f195947b
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92681314"
 ---
 # <a name="how-to-use-microsoftazuresearch-in-a-c-net-application"></a>Verwenden von Microsoft.Azure.Search in einer in C# geschriebenen .NET-Anwendung
@@ -572,7 +572,7 @@ Diese Möglichkeit, eigene Klassen zur Interaktion mit Dokumenten im Index zu ve
 
 **Argumente für die Verwendung von Nullable-Datentypen**
 
-Beim Entwerfen eigener Modellklassen für die Zuordnung zu einem Index der kognitiven Azure-Suche wird empfohlen, Eigenschaften von Werttypen, z. B. `bool` und `int`, als Eigenschaften zu deklarieren, die NULL-Werte zulassen (z. B. `bool?` anstelle von `bool`). Wenn Sie eine Eigenschaft verwenden, die keine NULL-Werte zulässt, müssen Sie **garantieren** , dass keine Dokumente im Index einen NULL-Wert für das entsprechende Feld enthalten. Dies kann weder mit dem SDK noch mit dem Dienst der kognitiven Azure-Suche erzwungen werden.
+Beim Entwerfen eigener Modellklassen für die Zuordnung zu einem Index der kognitiven Azure-Suche wird empfohlen, Eigenschaften von Werttypen, z. B. `bool` und `int`, als Eigenschaften zu deklarieren, die NULL-Werte zulassen (z. B. `bool?` anstelle von `bool`). Wenn Sie eine Eigenschaft verwenden, die keine NULL-Werte zulässt, müssen Sie **garantieren**, dass keine Dokumente im Index einen NULL-Wert für das entsprechende Feld enthalten. Dies kann weder mit dem SDK noch mit dem Dienst der kognitiven Azure-Suche erzwungen werden.
 
 Dies ist nicht nur von hypothetischer Bedeutung: Stellen Sie sich ein Szenario vor, bei dem Sie ein neues Feld einem vorhandenen Index vom Typ `Edm.Int32` hinzufügen. Nach dem Aktualisieren der Indexdefinition enthalten alle Dokumente einen NULL-Wert für das neue Feld (da in der kognitiven Azure-Suche alle Typen NULL-Werte zulassen). Wenn Sie für dieses Feld anschließend eine Modellklasse mit einer `int`-Eigenschaft verwenden, die keine NULL-Werte zulässt, erhalten Sie beim Abrufen von Dokumenten folgendes `JsonSerializationException`-Element:
 

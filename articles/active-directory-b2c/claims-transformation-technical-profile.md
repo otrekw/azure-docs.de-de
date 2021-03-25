@@ -12,10 +12,10 @@ ms.date: 02/13/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 6553b9ec120ca0e1e479b400495b61bc68c88cf3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85201207"
 ---
 # <a name="define-a-claims-transformation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen Profils zur Anspruchstransformation in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
@@ -104,11 +104,11 @@ Sie können mit dem technischen Profil für die Anspruchstransformation eine Ans
 
 | attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
-| IncludeClaimResolvingInClaimsHandling  | Nein | Gibt bei Eingabe- und Ausgabeansprüchen an, ob die [Anspruchsauflösung](claim-resolver-overview.md) im technischen Profil enthalten ist. Mögliche Werte sind `true` oder `false` (Standardwert). Wenn Sie im technischen Profil eine Anspruchsauflösung verwenden möchten, legen Sie für diese Einstellung den Wert `true` fest. |
+| IncludeClaimResolvingInClaimsHandling  | Nein | Gibt bei Eingabe- und Ausgabeansprüchen an, ob die [Anspruchsauflösung](claim-resolver-overview.md) im technischen Profil enthalten ist. Mögliche Werte sind `true` oder `false` (Standardwert). Wenn Sie im technischen Profil eine Anspruchsauflösung verwenden möchten, legen Sie für diese Einstellung den Wert `true` fest. |
 
 ## <a name="use-a-validation-technical-profile"></a>Verwenden eines technischen Validierungsprofils
 
-Ein technisches Profil für die Anspruchstransformation kann zum Überprüfen von Informationen verwendet werden. Im folgenden Beispiel fordert das [technische Profil mit Selbstbestätigung](self-asserted-technical-profile.md) namens **LocalAccountSignUpWithLogonEmail** den Benutzer auf, die E-Mail-Adresse zweimal einzugeben. Anschließend ruft es das [technische Validierungsprofil](validation-technical-profile.md) mit dem Namen **Validate-Email** auf, um die E-Mail-Adressen zu überprüfen. Das technische Profil **Validate-Email** ruft die Anspruchstransformation **AssertEmailAreEqual** auf, um die beiden Ansprüche **email** und **emailRepeat**  zu vergleichen, und löst eine Ausnahme aus, wenn sie nicht gemäß dem angegebenen Vergleich identisch sind.
+Ein technisches Profil für die Anspruchstransformation kann zum Überprüfen von Informationen verwendet werden. Im folgenden Beispiel fordert das [technische Profil mit Selbstbestätigung](self-asserted-technical-profile.md) namens **LocalAccountSignUpWithLogonEmail** den Benutzer auf, die E-Mail-Adresse zweimal einzugeben. Anschließend ruft es das [technische Validierungsprofil](validation-technical-profile.md) mit dem Namen **Validate-Email** auf, um die E-Mail-Adressen zu überprüfen. Das technische Profil **Validate-Email** ruft die Anspruchstransformation **AssertEmailAreEqual** auf, um die beiden Ansprüche **email** und **emailRepeat** zu vergleichen, und löst eine Ausnahme aus, wenn sie nicht gemäß dem angegebenen Vergleich identisch sind.
 
 ```xml
 <ClaimsTransformations>

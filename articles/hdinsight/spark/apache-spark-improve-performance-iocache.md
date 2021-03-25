@@ -4,12 +4,12 @@ description: Enthält Informationen zu Azure HDInsight IO Cache und seiner Verwe
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/23/2019
-ms.openlocfilehash: 32f0756e59f81ad2c5d155581feed8c4fef09808
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 9df585c102e2c7307e949e38b6b69147372c38dd
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98940139"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866300"
 ---
 # <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache"></a>Verbessern der Leistung von Apache Spark-Workloads per Azure HDInsight IO Cache
 
@@ -37,7 +37,7 @@ Azure HDInsight IO Cache ist in der Vorschauversion standardmäßig deaktiviert.
 
 1. Wählen Sie **Aktionen** (**Dienstaktionen** in HDI 3.6) und dann **Aktivieren** aus.
 
-    ![Aktivieren des Diensts IO Cache in Ambari](./media/apache-spark-improve-performance-iocache/ambariui-enable-iocache.png "Aktivieren des Diensts IO Cache in Ambari")
+    :::image type="content" source="./media/apache-spark-improve-performance-iocache/ambariui-enable-iocache.png " alt-text="Aktivieren des Diensts IO Cache in Ambari" border="true":::
 
 1. Vergewissern Sie sich, dass alle betroffenen Dienste im Cluster neu gestartet wurden.
 
@@ -52,7 +52,7 @@ Unter Umständen erhalten Sie Datenträgerspeicher-Fehler, wenn Sie nach dem Akt
 
 1. Wählen Sie die Registerkarten **Configs** und **Advanced**.
 
-    ![Bearbeiten der erweiterten Konfiguration für Hadoop Distributed File System](./media/apache-spark-improve-performance-iocache/ambariui-hdfs-service-configs-advanced.png "Bearbeiten der erweiterten Konfiguration für Hadoop Distributed File System")
+    :::image type="content" source="./media/apache-spark-improve-performance-iocache/ambariui-hdfs-service-configs-advanced.png " alt-text="Bearbeiten der erweiterten Konfiguration für Hadoop Distributed File System" border="true":::
 
 1. Scrollen Sie nach unten, und erweitern Sie den Bereich **Custom core-site**.
 
@@ -60,13 +60,13 @@ Unter Umständen erhalten Sie Datenträgerspeicher-Fehler, wenn Sie nach dem Akt
 
 1. Ändern Sie den Wert im Feld.
 
-    ![Bearbeiten des Prozentsatzes für die Speicherbelegung für IO Cache](./media/apache-spark-improve-performance-iocache/ambariui-cache-data-fullness-percentage-property.png "Bearbeiten des Prozentsatzes für die Speicherbelegung für IO Cache")
+    :::image type="content" source="./media/apache-spark-improve-performance-iocache/ambariui-cache-data-fullness-percentage-property.png " alt-text="Bearbeiten des Prozentsatzes für die Speicherbelegung für IO Cache" border="true":::
 
 1. Wählen Sie oben rechts die Option **Save**.
 
 1. Wählen Sie **Restart** > **Restart All Affected**.
 
-    ![Apache Ambari: Neustarten aller betroffenen Instanzen](./media/apache-spark-improve-performance-iocache/ambariui-restart-all-affected.png "Neustarten aller betroffenen Instanzen")
+    :::image type="content" source="./media/apache-spark-improve-performance-iocache/ambariui-restart-all-affected.png " alt-text="Apache Ambari: Neustarten aller betroffenen Instanzen" border="true":::
 
 1. Wählen Sie **Confirm Restart All**.
 

@@ -10,10 +10,10 @@ services: iot-dps
 manager: eliotgra
 ms.custom: mvc
 ms.openlocfilehash: f97840a05115bf5659a6f7579b72786e890051a2
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92429251"
 ---
 # <a name="quickstart-provision-a-symmetric-key-device-using-c"></a>Schnellstart: Bereitstellen eines Geräts mit symmetrischem Schlüssel mithilfe von C#
@@ -49,13 +49,13 @@ In diesem Artikel wird von der Nutzung einer Windows-Arbeitsstation ausgegangen.
 
 3. Geben Sie im Bereich **Registrierung hinzufügen** die folgenden Informationen ein, und wählen Sie die Schaltfläche **Speichern** aus.
 
-   - **Mechanismus** : Wählen Sie **Symmetrischer Schlüssel** als *Mechanismus* für den Nachweis der Identität aus.
+   - **Mechanismus**: Wählen Sie **Symmetrischer Schlüssel** als *Mechanismus* für den Nachweis der Identität aus.
 
    - **Schlüssel automatisch generieren:** Aktivieren Sie dieses Kontrollkästchen.
 
-   - **Registrierungs-ID** : Geben Sie eine Registrierungs-ID ein, um die Registrierung zu identifizieren. Verwenden Sie nur Kleinbuchstaben und Bindestriche („-“). Beispiel: **symm-key-csharp-device-01**
+   - **Registrierungs-ID**: Geben Sie eine Registrierungs-ID ein, um die Registrierung zu identifizieren. Verwenden Sie nur Kleinbuchstaben und Bindestriche („-“). Beispiel: **symm-key-csharp-device-01**
 
-   - **IoT Hub-Geräte-ID** : Geben Sie einen Gerätebezeichner ein. Beispiel: **csharp-device-01**
+   - **IoT Hub-Geräte-ID**: Geben Sie einen Gerätebezeichner ein. Beispiel: **csharp-device-01**
 
      ![Hinzufügen einer individuellen Registrierung für den Nachweis des symmetrischen Schlüssels im Portal](./media/quick-create-device-symmetric-key-csharp/create-individual-enrollment-csharp.png)
 
@@ -92,7 +92,7 @@ Der Bereitstellungscode kontaktiert die DPS-Instanz basierend auf diesen Variabl
 
     ![Dienstinformationen](./media/quick-create-device-symmetric-key-csharp/extract-dps-endpoints.png)
 
-2. Öffnen Sie eine Eingabeaufforderung, und navigieren Sie im geklonten Beispielrepository zu *SymmetricKeySample* :
+2. Öffnen Sie eine Eingabeaufforderung, und navigieren Sie im geklonten Beispielrepository zu *SymmetricKeySample*:
 
     ```cmd
     cd provisioning\Samples\device\SymmetricKeySample

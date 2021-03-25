@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
 ms.openlocfilehash: d660e62ea293bd3cc377b95612cfaf41a9f1cd6a
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92793363"
 ---
 # <a name="using-the-elastic-database-client-library-with-dapper"></a>Verwenden der Clientbibliothek für elastische Datenbanken mit Dapper
@@ -30,7 +30,7 @@ Die Integration von **Dapper** und **DapperExtensions** in die Clientbibliothek 
 ## <a name="dapper-overview"></a>Übersicht über Dapper
 **Dapper** ist ein objektrelationaler Mapper. Er ordnet .NET-Objekte aus Ihrer Anwendung einer relationalen Datenbank (und umgekehrt) zu. Der erste Teil des Beispielcodes veranschaulicht, wie Sie die Clientbibliothek für elastische Datenbanken in Dapper-basierte Anwendungen integrieren können. Im zweiten Teil des Beispielcodes erfahren Sie dann, wie die Integration verläuft, wenn Sie sowohl Dapper als auch DapperExtensions verwenden.  
 
-Die Mapper-Funktion in Dapper stellt Erweiterungsmethoden für Datenbankverbindungen bereit, die die Übermittlung von T-SQL-Anweisungen zur Ausführung oder Abfrage der Datenbank vereinfacht. Dapper erleichtert z.B. die Zuordnung zwischen .NET-Objekten und den SQL-Anweisungsparametern für **Execute** -Aufrufe. Außerdem können Sie **Query** -Aufrufe aus Dapper verwenden, um die Ergebnisse Ihrer SQL-Abfragen in .NET-Objekte zu übernehmen. 
+Die Mapper-Funktion in Dapper stellt Erweiterungsmethoden für Datenbankverbindungen bereit, die die Übermittlung von T-SQL-Anweisungen zur Ausführung oder Abfrage der Datenbank vereinfacht. Dapper erleichtert z.B. die Zuordnung zwischen .NET-Objekten und den SQL-Anweisungsparametern für **Execute**-Aufrufe. Außerdem können Sie **Query**-Aufrufe aus Dapper verwenden, um die Ergebnisse Ihrer SQL-Abfragen in .NET-Objekte zu übernehmen. 
 
 Bei Verwendung von DapperExtensions müssen keine SQL-Anweisungen mehr angegeben werden. Durch die Übermittlung von Erweiterungsmethoden wie **GetList** oder **Insert** über die Datenbankverbindung werden im Hintergrund die SQL-Anweisungen erstellt.
 
@@ -39,7 +39,7 @@ Ein weiterer Vorteil von Dapper und DapperExtensions besteht darin, dass die Anw
 Wie Sie die Dapper-Assemblys erhalten, erfahren Sie unter [Dapper .NET](https://www.nuget.org/packages/Dapper/). Informationen zu Dapper-Erweiterungen finden Sie unter [DapperExtensions](https://www.nuget.org/packages/DapperExtensions).
 
 ## <a name="a-quick-look-at-the-elastic-database-client-library"></a>Ein kurzer Blick auf die Clientbibliothek für elastische Datenbanken
-Mit der Clientbibliothek für elastische Datenbanken definieren Sie Partitionen Ihrer Anwendungsdaten, sogenannte *Shardlets* , ordnen sie Datenbanken zu und identifizieren sie nach *Shardingschlüsseln* . Sie können über beliebig viele Datenbanken verfügen und die Shardlets auf diese Datenbanken verteilen. Die Zuordnung der Sharding-Schlüsselwerte zu den Datenbanken wird in einer Shard-Zuordnung gespeichert, die durch die Bibliothek-APIs bereitgestellt wird. Diese Funktion wird als **Shard-Zuordnungsverwaltung** bezeichnet. Die Shard-Zuordnung fungiert auch als Broker von Datenbankverbindungen für Anforderungen, die einen Sharding-Schlüssel enthalten. Diese Funktion wird als **datenabhängiges Routing** bezeichnet.
+Mit der Clientbibliothek für elastische Datenbanken definieren Sie Partitionen Ihrer Anwendungsdaten, sogenannte *Shardlets*, ordnen sie Datenbanken zu und identifizieren sie nach *Shardingschlüsseln*. Sie können über beliebig viele Datenbanken verfügen und die Shardlets auf diese Datenbanken verteilen. Die Zuordnung der Sharding-Schlüsselwerte zu den Datenbanken wird in einer Shard-Zuordnung gespeichert, die durch die Bibliothek-APIs bereitgestellt wird. Diese Funktion wird als **Shard-Zuordnungsverwaltung** bezeichnet. Die Shard-Zuordnung fungiert auch als Broker von Datenbankverbindungen für Anforderungen, die einen Sharding-Schlüssel enthalten. Diese Funktion wird als **datenabhängiges Routing** bezeichnet.
 
 ![Shardzuordnungen und datenabhängiges Routing][1]
 

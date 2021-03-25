@@ -4,10 +4,10 @@ description: Erfahren Sie, wie Sie personenbezogene Daten aus dem Azure DevTest 
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 2c44b2f3aa6f2dfad18ed53804842a5dad8bd94a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85483515"
 ---
 # <a name="export-or-delete-personal-data-from-azure-devtest-labs"></a>Exportieren oder Löschen personenbezogener Daten aus Azure DevTest Labs

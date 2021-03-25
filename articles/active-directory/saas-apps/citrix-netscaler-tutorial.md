@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/15/2020
 ms.author: jeedes
 ms.openlocfilehash: 75d46edb332fb28132592e414e78bad64e75fef5
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98736413"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-citrix-adc-kerberos-based-authentication"></a>Tutorial: Integration von Citrix ADC in das einmalige Anmelden von Azure Active Directory (Kerberos-basierte Authentifizierung)
@@ -48,7 +48,7 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 ## <a name="add-citrix-adc-from-the-gallery"></a>Hinzufügen von Citrix ADC aus dem Katalog
 
-Um Citrix ADC in Azure AD integrieren zu können, müssen Sie zunächst Ihrer Liste der verwalteten SaaS-Apps Citrix ADC aus dem Katalog hinzufügen:
+Um Citrix ADC in Azure AD integrieren zu können, müssen Sie zunächst Citrix ADC aus dem Katalog zu Ihrer Liste der verwalteten SaaS-Apps hinzufügen:
 
 1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim Azure-Portal an.
 
@@ -103,7 +103,7 @@ Führen Sie die folgenden Schritte aus, um einmaliges Anmelden von Azure AD üb
     * Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<Your FQDN>/CitrixAuthService/AuthService.asmx`
 
     > [!NOTE]
-    > * Die in diesem Abschnitt angegebenen URLs sind lediglich Beispielwerte. Ersetzen Sie diese Werte durch die tatsächlichen Werte für Bezeichner, Antwort-URL und Anmelde-URL. Wenden Sie sich an das [Kundensupportteam von Citrix ADC](https://www.citrix.com/contact/technical-support.html), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    > * Die in diesem Abschnitt angegebenen URLs sind lediglich Beispielwerte. Ersetzen Sie diese Werte durch die tatsächlichen Werte für Bezeichner, Antwort-URL und Anmelde-URL. Wenden Sie sich an das [Supportteam für den Citrix ADC-Client](https://www.citrix.com/contact/technical-support.html), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
     > * Für die SSO-Einrichtung müssen die URLs über öffentliche Websites zugänglich sein. Sie müssen die Firewall- oder andere Sicherheitseinstellungen aufseiten von Citrix ADC aktivieren, um Azure AD die Veröffentlichung des Tokens unter der konfigurierten URL zu ermöglichen.
 
 1. Kopieren Sie im Bereich **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** die URL unter **App-Verbundmetadaten-URL**, und speichern Sie sie in Editor.
@@ -427,10 +427,10 @@ So binden Sie eine Datenverkehrsrichtlinie unter Verwendung der grafischen Benut
 
 ### <a name="create-a-citrix-adc-test-user"></a>Erstellen eines Citrix ADC-Testbenutzers
 
-In diesem Abschnitt wird in Citrix ADC ein Benutzer mit dem Namen B. Simon erstellt. Citrix ADC unterstützt die Just-in-Time-Benutzerbereitstellung, die standardmäßig aktiviert ist. In diesem Abschnitt ist keine Aktion erforderlich. Wenn in Citrix ADC noch kein Benutzer vorhanden ist, wird nach der Authentifizierung ein neuer Benutzer erstellt.
+In diesem Abschnitt wird in Citrix ADC ein Benutzer mit dem Namen B. Simon erstellt. Citrix ADC unterstützt die Just-in-Time-Benutzerbereitstellung, die standardmäßig aktiviert ist. In diesem Abschnitt ist keine Aktion erforderlich. Wenn ein Benutzer in Citrix ADC noch nicht vorhanden ist, wird nach der Authentifizierung ein neuer Benutzer erstellt.
 
 > [!NOTE]
-> Wenn Sie einen Benutzer manuell erstellen müssen, wenden Sie sich an das [Kundensupportteam von Citrix ADC](https://www.citrix.com/contact/technical-support.html).
+> Wenn Sie einen Benutzer manuell erstellen müssen, wenden Sie sich an das [Supportteam für den Citrix ADC-Client](https://www.citrix.com/contact/technical-support.html).
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 
@@ -438,7 +438,7 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 * Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für Citrix ADC weitergeleitet, wo Sie den Anmeldeflow initiieren können. 
 
-* Navigieren Sie direkt zur Anmelde-URL für Citrix ADC, und initiieren Sie den Anmeldeflow.
+* Navigieren Sie direkt zur Anmelde-URL für Citrix ADC, und initiieren Sie dort den Anmeldeflow.
 
 * Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie in „Meine Apps“auf die Kachel „Citrix ADC“ klicken, werden Sie zur Anmelde-URL für Citrix ADC weitergeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
 

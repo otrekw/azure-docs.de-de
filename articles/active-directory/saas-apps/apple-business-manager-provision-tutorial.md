@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 09/08/2020
 ms.author: Zhchia
 ms.openlocfilehash: b4f24c9beffcd67fb84940c2e159da615496d9aa
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96180369"
 ---
 # <a name="tutorial-configure-apple-business-manager-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Apple Business Manager für die automatische Benutzerbereitstellung
@@ -54,7 +54,7 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 
 1. Melden Sie sich in Apple Business Manager mit einem Konto mit der Rolle „Administrator“ oder „People Manager“ an.
 2. Klicken Sie unten in der Seitenleiste auf „Settings“ (Einstellungen), klicken Sie unter „Organization Settings“ (Organisationseinstellungen) auf „Data Source“ (Datenquelle), und klicken Sie dann auf „Connect to Data Source“ (Verbindung mit Datenquelle herstellen).
-3. Klicken Sie neben „SCIM“ auf „Connect“ (Verbinden), lesen Sie die Warnung sorgfältig durch, klicken Sie auf „Copy“ (Kopieren) und dann auf „Close“ (Schließen).
+3. Klicken Sie neben „SCIM“ auf „Verbinden“, lesen Sie die Warnung sorgfältig durch, klicken Sie auf „Kopieren“ und dann auf „Schließen“.
 [Das Fenster „Connect to SCIM“ (Mit SCIM verbinden) mit einem Token und der Schaltfläche „Kopieren“ darunter] Lassen Sie dieses Fenster geöffnet, um die Mandanten-URL von Apple School Manager in Azure AD zu kopieren. Dies ist „https://federation.apple.com/feeds/business/scim“.
 
     ![Apple Business Manager](media/applebusinessmanager-provisioning-tutorial/scim-token.png)

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 01/12/2021
-ms.openlocfilehash: 087f284bed7ab0c9eb551c1629ab4f9196c80d76
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 1b4570b09994f292de2b175396e4b6d1882658d9
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945703"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866487"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>Verwalten von HDInsight-Clustern mithilfe der Apache Ambari-Webbenutzeroberfläche
 
@@ -44,7 +44,7 @@ Wenn Sie eine Verbindung zur Webbenutzeroberfläche Ambari herstellen, werden Si
 
 Beachten Sie beim Öffnen der Seite die Leiste im oberen Bereich. Diese Leiste enthält die folgenden Informationen und Steuerelemente:
 
-![Apache Ambari-Dashboard – Übersicht](./media/hdinsight-hadoop-manage-ambari/apache-ambari-dashboard.png)
+:::image type="content" source="./media/hdinsight-hadoop-manage-ambari/apache-ambari-dashboard.png" alt-text="Apache Ambari-Dashboard – Übersicht":::
 
 |Element |BESCHREIBUNG |
 |---|---|
@@ -73,15 +73,15 @@ Bei anderen Warnungen als **OK** wird am Seitenanfang unter dem Eintrag **(Anzah
 
 Warnungen sind in mehrere Standardgruppen angeordnet, die über die Seite **Alerts** angezeigt werden können.
 
-![Apache Ambari – Zusammenfassung der Seite „Warnungen“](./media/hdinsight-hadoop-manage-ambari/hdinsight-alerts-page.png)
+:::image type="content" source="./media/hdinsight-hadoop-manage-ambari/hdinsight-alerts-page.png" alt-text="Apache Ambari – Zusammenfassung der Seite „Warnungen“":::
 
 Sie können die Gruppen verwalten, indem Sie das Menü **Aktionen** und dann die Option **Warnungsgruppen verwalten** auswählen.
 
-![Apache Ambari – Warnungsgruppen verwalten](./media/hdinsight-hadoop-manage-ambari/ambari-manage-alerts.png)
+:::image type="content" source="./media/hdinsight-hadoop-manage-ambari/ambari-manage-alerts.png" alt-text="Apache Ambari – Warnungsgruppen verwalten":::
 
 Über den Eintrag __Warnungsbenachrichtigungen verwalten__ im Menü **Aktionen** können Sie zudem Warnungsmethoden verwalten und Warnungsbenachrichtigungen erstellen. Es werden alle aktuellen Benachrichtigungen angezeigt. Erstellen Sie hier Benachrichtigungen. Die Benachrichtigungen können bei bestimmten Kombinationen aus Warnung und Schweregrad über **E-Mail** oder **SNMP** gesendet werden. Sie können z.B. eine E-Mail senden, wenn eine der Benachrichtigungen in der Gruppe **YARN Default** auf **Kritisch** festgelegt ist.
 
-![Apache Ambari – Warnungsbenachrichtigung erstellen](./media/hdinsight-hadoop-manage-ambari/create-alert-notification.png)
+:::image type="content" source="./media/hdinsight-hadoop-manage-ambari/create-alert-notification.png" alt-text="Apache Ambari – Warnungsbenachrichtigung erstellen":::
 
 Über den Eintrag __Warnungseinstellungen verwalten__ im Menü __Aktionen__ können Sie schließlich festlegen, wie oft eine Warnung ausgegeben werden muss, bevor eine Benachrichtigung gesendet wird. Dies Einstellung kann verwendet werden, um Benachrichtigungen für vorübergehende Fehler zu verhindern.
 
@@ -91,29 +91,29 @@ Ein Tutorial für eine Warnmeldung mit einem kostenlosen [SendGrid-Konto](../sen
 
 Die Registerkarte **Metrics** im Dashboard enthält eine Reihe von Widgets, die das Überwachen des Clusterstatus auf einen Blick erleichtern. Verschiedene Widgets wie **CPU Usage** bieten zusätzliche Informationen, wenn Sie darauf klicken.
 
-![Apache Ambari-Dashboard mit Metriken](./media/hdinsight-hadoop-manage-ambari/hdi-metrics-dashboard.png)
+:::image type="content" source="./media/hdinsight-hadoop-manage-ambari/hdi-metrics-dashboard.png" alt-text="Apache Ambari-Dashboard mit Metriken":::
 
 Die Registerkarte **Heatmaps** zeigt Metriken als farbige Wärmebilder an, die von Grün bis Rot reichen.
 
-![Apache Ambari-Dashboard mit Heatmaps](./media/hdinsight-hadoop-manage-ambari/hdi-heatmap-dashboard.png)
+:::image type="content" source="./media/hdinsight-hadoop-manage-ambari/hdi-heatmap-dashboard.png" alt-text="Apache Ambari-Dashboard mit Heatmaps":::
 
 Weitere Informationen zu den Knoten im Cluster finden Sie unter **Hosts**. Wählen Sie anschließend den bestimmten Knoten, für den Sie sich interessieren.
 
-![Apache Ambari – Details der Hostzusammenfassung](./media/hdinsight-hadoop-manage-ambari/ambari-host-details1.png)
+:::image type="content" source="./media/hdinsight-hadoop-manage-ambari/ambari-host-details1.png" alt-text="Apache Ambari – Details der Hostzusammenfassung":::
 
 ### <a name="services"></a>Dienste
 
 Die Seitenleiste **Dienste** des Dashboards bietet einen schnellen Überblick über den Status der Dienste, die im Cluster aktiv sind. Es werden verschiedene Symbole verwendet, um den Status oder Aktionen anzugeben, die vorgenommen werden sollten. Ein gelbes Recycling-Symbol wird z.B. angezeigt, wenn ein Dienst wiederverwendet werden muss.
 
 
-![Apache Ambari – Seitenleiste „Dienste“](./media/hdinsight-hadoop-manage-ambari/apache-ambari-service-bar.png)
+:::image type="content" source="./media/hdinsight-hadoop-manage-ambari/apache-ambari-service-bar.png" alt-text="Apache Ambari – Seitenleiste „Dienste“":::
 
 > [!NOTE]  
 > Je nach Typ und Version des HDInsight-Clusters werden unterschiedliche Dienste angezeigt. Hier werden daher möglicherweise andere Dienste angezeigt als für Ihren Cluster.
 
 Wenn Sie einen Dienst auswählen, werden weitere ausführliche Informationen zum Dienst angezeigt.
 
-![Apache Ambari – Zusammenfassungsinformationen zum Dienst](./media/hdinsight-hadoop-manage-ambari/ambari-service-details.png)
+:::image type="content" source="./media/hdinsight-hadoop-manage-ambari/ambari-service-details.png" alt-text="Apache Ambari – Zusammenfassungsinformationen zum Dienst":::
 
 #### <a name="quick-links"></a>Quicklinks
 
@@ -142,7 +142,7 @@ Das Arbeiten mit Benutzern, Gruppen und Berechtigungen wird unterstützt. Inform
 
 Die Seite **Hosts** listet alle Hosts im Cluster auf. Gehen Sie folgendermaßen vor, um Hosts zu verwalten.
 
-![Apache Ambari – Übersicht über die Seite „Hosts“](./media/hdinsight-hadoop-manage-ambari/hdinsight-hosts-page.png)
+:::image type="content" source="./media/hdinsight-hadoop-manage-ambari/hdinsight-hosts-page.png" alt-text="Apache Ambari – Übersicht über die Seite „Hosts“":::
 
 > [!NOTE]  
 > Für HDInsight-Cluster sollte kein Host hinzugefügt, zurückgesetzt und wiederhergestellt werden.
@@ -179,7 +179,7 @@ Während die Schaltfläche **Actions** alle Dienste neu starten kann, ist es mö
 
 2. Verwenden Sie am oberen Rand der Registerkarte **Zusammenfassung** die Schaltfläche **Dienstaktionen**, und wählen Sie dann die auszuführende Aktion aus. Mit dieser Aktion wird der Dienst auf allen Knoten neu gestartet.
 
-    ![Apache Ambari – Einzelne Dienstaktionen](./media/hdinsight-hadoop-manage-ambari/individual-service-actions.png)
+    :::image type="content" source="./media/hdinsight-hadoop-manage-ambari/individual-service-actions.png" alt-text="Apache Ambari – Einzelne Dienstaktionen":::
 
    > [!NOTE]  
    > Der Neustart einiger Dienste bei aktivem Cluster kann dazu führen, dass Warnungen generiert werden. Um Warnungen zu vermeiden, können Sie die Schaltfläche **Dienstaktionen** verwenden, um den **Wartungsmodus** für den Dienst zu aktivieren, bevor Sie den Neustart durchführen.
@@ -195,7 +195,7 @@ Gehen Sie wie folgt vor, um einen Dienst zu konfigurieren:
 
 2. Wählen Sie die Registerkarte **Configs** aus. Daraufhin wird die aktuelle Konfiguration angezeigt. Zudem wird eine Liste der vorherigen Konfigurationen angezeigt.
 
-    ![Apache Ambari – Dienstkonfiguration](./media/hdinsight-hadoop-manage-ambari/ambari-service-configs.png)
+    :::image type="content" source="./media/hdinsight-hadoop-manage-ambari/ambari-service-configs.png" alt-text="Apache Ambari – Dienstkonfiguration":::
 
 3. Verwenden Sie die angezeigten Felder, um die Konfiguration zu ändern, und klicken Sie dann auf **Save**. Sie können auch eine vorherige Konfiguration und dann **Make current** auswählen, um die vorherigen Einstellungen zu reaktivieren.
 

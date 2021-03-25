@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/17/2019
 ms.openlocfilehash: 6db036752bab7b84b72a37b148eaec7aa5765ef3
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92538594"
 ---
 # <a name="troubleshoot-data-loss-in-azure-cache-for-redis"></a>Problembehandlung bei Datenverlust in Azure Cache for Redis
@@ -27,7 +27,7 @@ Azure Cache for Redis löscht Schlüssel nicht nach dem Zufallsprinzip, nachdem 
 
 Wenn Sie feststellen, dass Schlüssel aus dem Cache verschwunden sind, sollten Sie auf folgende mögliche Ursachen prüfen:
 
-| Ursache | Beschreibung |
+| Ursache | BESCHREIBUNG |
 |---|---|
 | [Ablauf von Schlüsseln](#key-expiration) | Schlüssel werden entfernt, weil für sie Timeouts festgelegt wurden. |
 | [Entfernen von Schlüsseln](#key-eviction) | Schlüssel werden bei hoher Arbeitsspeicherauslastung entfernt. |
@@ -36,7 +36,7 @@ Wenn Sie feststellen, dass Schlüssel aus dem Cache verschwunden sind, sollten S
 
 ### <a name="key-expiration"></a>Ablauf von Schlüsseln
 
-Azure Cache for Redis entfernt einen Schlüssel automatisch, wenn dem Schlüssel ein Timeout zugewiesen und der zugehörige Zeitraum abgelaufen ist. Weitere Informationen zum Ablauf von Redis-Schlüsseln finden Sie in der Dokumentation des Befehls [EXPIRE](https://redis.io/commands/expire). Timeoutwerte können auch über die Befehle [SET](https://redis.io/commands/set), [SETEX](https://redis.io/commands/setex) und [GETSET](https://redis.io/commands/getset) sowie weitere **\*STORE** -Befehle festgelegt werden.
+Azure Cache for Redis entfernt einen Schlüssel automatisch, wenn dem Schlüssel ein Timeout zugewiesen und der zugehörige Zeitraum abgelaufen ist. Weitere Informationen zum Ablauf von Redis-Schlüsseln finden Sie in der Dokumentation des Befehls [EXPIRE](https://redis.io/commands/expire). Timeoutwerte können auch über die Befehle [SET](https://redis.io/commands/set), [SETEX](https://redis.io/commands/setex) und [GETSET](https://redis.io/commands/getset) sowie weitere **\*STORE**-Befehle festgelegt werden.
 
 Wenn Sie Statistiken abrufen möchten, wie viele Schlüssel abgelaufen sind, verwenden Sie den Befehl [INFO](https://redis.io/commands/info). Im Abschnitt `Stats` wird die Gesamtzahl abgelaufener Schlüssel angezeigt. Der Abschnitt `Keyspace` enthält weitere Informationen zur Anzahl der Schlüssel mit Timeouts und zum durchschnittlichen Timeoutwert.
 
@@ -68,7 +68,7 @@ Außerdem können Sie die Diagnosemetriken für Ihren Cache überprüfen, um fes
 
 ### <a name="key-deletion"></a>Löschen von Schlüsseln
 
-Redis-Clients können den Befehl [DEL](https://redis.io/commands/del) oder [HDEL](https://redis.io/commands/hdel) ausgeben, um Schlüssel explizit aus Azure Cache for Redis zu entfernen. Mit dem Befehl [INFO](https://redis.io/commands/info) können Sie die Anzahl der Löschvorgänge verfolgen. Aufrufe von **DEL** - oder **HDEL** -Befehlen werden im Abschnitt `Commandstats` aufgelistet.
+Redis-Clients können den Befehl [DEL](https://redis.io/commands/del) oder [HDEL](https://redis.io/commands/hdel) ausgeben, um Schlüssel explizit aus Azure Cache for Redis zu entfernen. Mit dem Befehl [INFO](https://redis.io/commands/info) können Sie die Anzahl der Löschvorgänge verfolgen. Aufrufe von **DEL**- oder **HDEL**-Befehlen werden im Abschnitt `Commandstats` aufgelistet.
 
 ```
 # Commandstats
@@ -86,7 +86,7 @@ Jede Azure Cache for Redis-Instanz ist sowohl im Tarif „Standard“ als auch i
 
 Sind die meisten oder alle Schlüssel aus dem Cache verschwunden, sollten Sie auf folgende mögliche Ursachen prüfen:
 
-| Ursache | Beschreibung |
+| Ursache | BESCHREIBUNG |
 |---|---|
 | [Leeren von Schlüsseln](#key-flushing) | Schlüssel wurden manuell gelöscht. |
 | [Falsche Datenbankauswahl](#incorrect-database-selection) | Azure Cache for Redis ist so festgelegt, dass eine Nicht-Standarddatenbank verwendet wird. |
@@ -94,7 +94,7 @@ Sind die meisten oder alle Schlüssel aus dem Cache verschwunden, sollten Sie au
 
 ### <a name="key-flushing"></a>Leeren von Schlüsseln
 
-Clients können den Befehl [FLUSHDB](https://redis.io/commands/flushdb) aufrufen, um alle Schlüssel in einer *einzelnen* Datenbank zu entfernen. Mit dem Befehl [FLUSHALL](https://redis.io/commands/flushall) werden alle Schlüssel aus *allen* Datenbanken in einem Redis-Cache entfernt. Wenn Sie feststellen möchten, ob Schlüssel geleert (entfernt) wurden, verwenden Sie den Befehl [INFO](https://redis.io/commands/info). Im `Commandstats`-Abschnitt ist zu sehen, ob **FLUSH** -Befehle aufgerufen wurden:
+Clients können den Befehl [FLUSHDB](https://redis.io/commands/flushdb) aufrufen, um alle Schlüssel in einer *einzelnen* Datenbank zu entfernen. Mit dem Befehl [FLUSHALL](https://redis.io/commands/flushall) werden alle Schlüssel aus *allen* Datenbanken in einem Redis-Cache entfernt. Wenn Sie feststellen möchten, ob Schlüssel geleert (entfernt) wurden, verwenden Sie den Befehl [INFO](https://redis.io/commands/info). Im `Commandstats`-Abschnitt ist zu sehen, ob **FLUSH**-Befehle aufgerufen wurden:
 
 ```
 # Commandstats
@@ -106,7 +106,7 @@ cmdstat_flushdb:calls=1,usec=110,usec_per_call=52.00
 
 ### <a name="incorrect-database-selection"></a>Falsche Datenbankauswahl
 
-Azure Cache for Redis verwendet standardmäßig die Datenbank **db0** . Wenn Sie zu einer anderen Datenbank wechseln (z. B. **db1** ) und versuchen, Schlüssel aus ihr zu lesen, kann Azure Cache for Redis dort keine Schlüssel finden. Jede Datenbank ist eine logisch separate Einheit und enthält ein anderes Dataset. Wählen Sie mit dem Befehl [SELECT](https://redis.io/commands/select) andere verfügbare Datenbanken aus, und suchen Sie dort jeweils nach Schlüsseln.
+Azure Cache for Redis verwendet standardmäßig die Datenbank **db0**. Wenn Sie zu einer anderen Datenbank wechseln (z. B. **db1**) und versuchen, Schlüssel aus ihr zu lesen, kann Azure Cache for Redis dort keine Schlüssel finden. Jede Datenbank ist eine logisch separate Einheit und enthält ein anderes Dataset. Wählen Sie mit dem Befehl [SELECT](https://redis.io/commands/select) andere verfügbare Datenbanken aus, und suchen Sie dort jeweils nach Schlüsseln.
 
 ### <a name="redis-instance-failure"></a>Redis-Instanzausfall
 

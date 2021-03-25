@@ -4,10 +4,10 @@ description: Zustandsbehaftete Service Fabric-Dienste bieten zuverlässige Aufli
 ms.topic: conceptual
 ms.date: 3/10/2020
 ms.openlocfilehash: 7d705f81b4ad31559886e43226febcd4cf1d345d
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98784375"
 ---
 # <a name="introduction-to-reliable-collections-in-azure-service-fabric-stateful-services"></a>Einführung in Reliable Collections in zustandsbehafteten Azure Service Fabric-Diensten

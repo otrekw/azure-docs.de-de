@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/07/2021
 tags: connectors
 ms.openlocfilehash: 75c657236b6e06a7e0f6c717d746bcc8c034d423
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98013446"
 ---
 # <a name="automate-workflows-for-a-sql-database-by-using-azure-logic-apps"></a>Automatisieren von Workflows für eine SQL-Datenbank mithilfe von Azure Logic Apps
@@ -189,7 +189,7 @@ Wenn Sie zum ersten Mal entweder einen [SQL-Trigger](#add-sql-trigger) oder eine
 
 ### <a name="trigger-recurrence-shift-and-drift"></a>Verschiebung und Drift von Triggerwiederholungen
 
-Verbindungsbasierte Trigger, bei denen Sie zuerst eine Verbindung erstellen müssen, wie z. B. der SQL-Trigger, unterscheiden sich von integrierten Triggern, die in Azure Logic Apps nativ ausgeführt werden, wie z. B der [Wiederholungstrigger](../connectors/connectors-native-recurrence.md). Bei wiederkehrenden, verbindungsbasierten Triggern ist der Wiederholungszeitplan nicht der einzige Faktor, der die Ausführung steuert, und die Zeitzone bestimmt nur die anfängliche Startzeit. Nachfolgende Ausführungen richten sich nach dem Wiederholungszeitplan, der letzten Triggerausführung, *und* anderen Faktoren, die zur Drift der Ausführungszeiten oder zu unerwartetem Verhalten führen können, z. B. Nichteinhaltung des angegebenen Zeitplans, wenn die Sommerzeit beginnt und endet. Um sicherzustellen, dass sich die Wiederholungszeit nicht verschiebt, wenn die Sommerzeit wirksam wird, passen Sie die Wiederholung manuell so an, dass Ihre Logik-App weiterhin zum erwarteten Zeitpunkt ausgeführt wird. Andernfalls verschiebt sich die Startzeit um eine Stunde nach vorn, wenn die Sommerzeit beginnt, und eine Stunde rückwärts, wenn die Sommerzeit endet. Weitere Informationen finden Sie unter [Wiederholung für verbindungsbasierte Trigger](../connectors/apis-list.md#recurrence-connection-based).
+Verbindungsbasierte Trigger, bei denen Sie zuerst eine Verbindung erstellen müssen, wie z. B. der SQL-Trigger, unterscheiden sich von integrierten Triggern, die in Azure Logic Apps nativ ausgeführt werden, wie z. B der [Wiederholungstrigger](../connectors/connectors-native-recurrence.md). Bei wiederkehrenden, verbindungsbasierten Triggern ist der Wiederholungszeitplan nicht der einzige Faktor, der die Ausführung steuert, und die Zeitzone bestimmt nur die anfängliche Startzeit. Nachfolgende Ausführungen richten sich nach dem Wiederholungszeitplan, der letzten Triggerausführung, *und* anderen Faktoren, die zur Drift der Ausführungszeiten oder zu unerwartetem Verhalten führen können, z. B. Nichteinhaltung des angegebenen Zeitplans, wenn die Sommerzeit beginnt und endet. Um sicherzustellen, dass sich die Wiederholungszeit nicht verschiebt, wenn die Sommerzeit wirksam wird, passen Sie die Wiederholung manuell so an, dass Ihre Logik-App weiterhin zum erwarteten Zeitpunkt ausgeführt wird. Andernfalls verschiebt sich die Startzeit um eine Stunde nach vorn, wenn die Sommerzeit beginnt, und eine Stunde nach hinten, wenn die Sommerzeit endet. Weitere Informationen finden Sie unter [Wiederholung für verbindungsbasierte Trigger](../connectors/apis-list.md#recurrence-connection-based).
 
 <a name="add-sql-action"></a>
 

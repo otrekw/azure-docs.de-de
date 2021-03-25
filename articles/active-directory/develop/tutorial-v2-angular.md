@@ -13,10 +13,10 @@ ms.date: 03/05/2020
 ms.author: hahamil
 ms.custom: aaddev, identityplatformtop40, devx-track-js
 ms.openlocfilehash: 105353598a2af60c407bacf02b4527b2de84e450
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98756156"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>Tutorial: Anmelden von Benutzern und Aufrufen der Microsoft Graph-API aus einer Angular-SPA (Single-Page-Webanwendung)
@@ -28,7 +28,7 @@ Dieses Tutorial umfasst folgende Punkte:
 > [!div class="checklist"]
 > * Erstellen eines Angular-Projekts mit `npm`
 > * Registrieren der Anwendung im Azure-Portal
-> * Hinzufügen von Code zur Unterstützung der Benutzeranmeldung und -abmeldung
+> * Hinzufügen von Code zum Unterstützen der Benutzeranmeldung und -abmeldung
 > * Hinzufügen von Code zum Aufrufen der Microsoft Graph-API
 > * Testen der App
 

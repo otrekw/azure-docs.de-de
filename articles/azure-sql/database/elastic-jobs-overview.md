@@ -12,10 +12,10 @@ ms.author: srinia
 ms.reviewer: sstein
 ms.date: 12/18/2018
 ms.openlocfilehash: f9a026ed47d662b80ef01e505bfbcf8f32d20b04
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92792173"
 ---
 # <a name="create-configure-and-manage-elastic-jobs-preview"></a>Erstellen, Konfigurieren und Verwalten von Aufträgen für die elastische Datenbank (Vorschau)
@@ -34,7 +34,7 @@ Falls Sie noch keine Aufträge für die elastische Datenbank verwendet haben, fi
 
 ## <a name="create-run-and-manage-jobs"></a>Erstellen, Ausführen und Verwalten von Aufträgen
 
-1. Erstellen Sie mithilfe von [PowerShell](elastic-jobs-powershell-create.md) oder [T-SQL](elastic-jobs-tsql-create-manage.md#create-a-credential-for-job-execution) Anmeldeinformationen für die Auftragsausführung in der *Auftragsdatenbank* .
+1. Erstellen Sie mithilfe von [PowerShell](elastic-jobs-powershell-create.md) oder [T-SQL](elastic-jobs-tsql-create-manage.md#create-a-credential-for-job-execution) Anmeldeinformationen für die Auftragsausführung in der *Auftragsdatenbank*.
 2. Definieren Sie mithilfe von [PowerShell](elastic-jobs-powershell-create.md) oder [T-SQL](elastic-jobs-tsql-create-manage.md#create-a-target-group-servers) die Zielgruppe (also die Datenbanken, für die der Auftrag ausgeführt werden soll).
 3. Erstellen Sie in jeder Datenbank, für die der Auftrag ausgeführt wird, Anmeldeinformationen für den Auftrags-Agent, indem Sie [jeder Datenbank in der Gruppe den Benutzer (oder die Rolle) hinzufügen](logins-create-manage.md). Ein Beispiel finden Sie im [PowerShell-Tutorial](elastic-jobs-powershell-create.md).
 4. Erstellen Sie mithilfe von [PowerShell](elastic-jobs-powershell-create.md) oder [T-SQL](elastic-jobs-tsql-create-manage.md#deploy-new-schema-to-many-databases) einen Auftrag.
@@ -54,7 +54,7 @@ Die Einrichtung geeigneter Anmeldeinformationen für die Auftragsausführung kan
 - **Für eine erfolgreiche Auftragsausführung müssen alle Zieldatenbanken über eine Anmeldung mit [ausreichenden Berechtigungen](/sql/relational-databases/security/permissions-database-engine) verfügen** (`jobuser` im Diagramm weiter unten).
 - Die Anmeldeinformationen können auftragsübergreifend verwendet werden. Die Kennwörter der Anmeldeinformationen sind außerdem verschlüsselt und vor Benutzern geschützt, die nur Lesezugriff auf Auftragsobjekte haben.
 
-Die folgende Abbildung veranschaulicht das Konzept geeigneter Anmeldeinformationen und ist für die Einrichtung hilfreich. **Nicht vergessen: Der Benutzer muss in jeder Datenbank (alle Datenbanken vom Typ *target user db* ) erstellt werden, für die der Auftrag ausgeführt werden soll.**
+Die folgende Abbildung veranschaulicht das Konzept geeigneter Anmeldeinformationen und ist für die Einrichtung hilfreich. **Nicht vergessen: Der Benutzer muss in jeder Datenbank (alle Datenbanken vom Typ *target user db*) erstellt werden, für die der Auftrag ausgeführt werden soll.**
 
 ![Anmeldeinformationen für elastische Aufträge](./media/elastic-jobs-overview/job-credentials.png)
 

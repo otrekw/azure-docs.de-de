@@ -4,10 +4,10 @@ description: In diesem Artikel erfahren Sie, wie Sie in Azure gespeicherte Daten
 ms.topic: conceptual
 ms.date: 09/07/2018
 ms.openlocfilehash: 79a4d32d6dbca5ca5be5d46c6b44a07ef42de061
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91813252"
 ---
 # <a name="restore-files-to-windows-server-using-the-mars-agent"></a>Wiederherstellen von Dateien auf Windows Server mit dem MARS-Agent
@@ -109,7 +109,7 @@ Bei diesen Schritte wird die folgende Terminologie verwendet:
 
     Wenn die Datei mit den Tresoranmeldeinformationen ungültig (oder abgelaufen) ist, [laden Sie eine neue Anmeldeinformationsdatei für den Tresor aus dem Beispieltresor im Azure-Portal herunter](backup-azure-file-folder-backup-faq.md#where-can-i-download-the-vault-credentials-file). Nachdem Sie gültige Tresoranmeldeinformationen angegeben haben, wird der Name des entsprechenden Sicherungstresors angezeigt.
 
-6. Wählen Sie auf der Seite **Sicherungsserver auswählen** in der Liste mit den angezeigten Computern den Quellcomputer aus, und geben Sie die Passphrase an. Wählen Sie **Weiter**aus.
+6. Wählen Sie auf der Seite **Sicherungsserver auswählen** in der Liste mit den angezeigten Computern den Quellcomputer aus, und geben Sie die Passphrase an. Wählen Sie **Weiter** aus.
 
     ![Screenshot der Seite „Sicherungsserver auswählen“ des Assistenten zum Wiederherstellen von Daten (Wiederherstellen auf einem anderen Computer)](./media/backup-azure-restore-windows-server/alternatemachine_selectmachine_instantrestore.png)
 

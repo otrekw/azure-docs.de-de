@@ -6,10 +6,10 @@ ms.topic: conceptual
 description: Hier erfahren Sie, wie Sie mit Visual Studio Code und Azure Dev Spaces Ihre Kubernetes-Anwendungen debuggen und schnell durchlaufen.
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container
 ms.openlocfilehash: edfcb8107280bb86144b798da2d5b1c16371528e
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91960744"
 ---
 # <a name="how-visual-studio-code-works-with-azure-dev-spaces"></a>Funktion von Visual Studio Code mit Azure Dev Spaces

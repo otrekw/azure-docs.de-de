@@ -5,19 +5,21 @@ services: iot-central
 ms.service: iot-central
 author: dominicbetts
 ms.author: dobett
-ms.date: 08/23/2019
+ms.date: 12/11/2020
 ms.topic: how-to
 manager: philmea
-ms.openlocfilehash: 43c201150ab0b2d5d350aa228a4ade5e2faf3461
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: f3293ada549351cc7273847cde48c0531f06f028
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92123112"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104675806"
 ---
 # <a name="create-and-manage-an-azure-iot-central-application-from-the-csp-portal"></a>Erstellen und Verwalten einer Azure IoT Central-Anwendung über das CSP-Portal
 
 Das Microsoft Cloud-Lösungsanbieter-Programm (CSP, Cloud Solution Provider) ist ein Programm für Microsoft-Vertriebspartner. Unseren Channelpartnern steht damit ein einziges Programm zum Verkauf aller kommerziellen Onlinedienste von Microsoft zur Verfügung. Erfahren Sie mehr über das [Cloud-Lösungsanbieter-Programm](https://partner.microsoft.com/cloud-solution-provider).
+
+[!INCLUDE [Warning About Access Required](../../../includes/iot-central-warning-contribitorrequireaccess.md)]
 
 Als CSP können Sie Microsoft Azure IoT Central-Anwendungen im Auftrag Ihrer Kunden über die [Microsoft Partner Center](https://partnercenter.microsoft.com/partner/home) erstellen und verwalten. Wenn Azure IoT Central-Anwendungen im Auftrag von CSP-Kunden erstellt werden, verwalten CSPs die Abrechnung für Kunden wie für andere CSP-verwaltete Azure-Dienste. Eine Gebühr für Azure IoT Central wird in Ihrer Gesamtrechnung im Microsoft Partner Center angezeigt.
 

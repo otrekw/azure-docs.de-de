@@ -13,10 +13,10 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: d2eaf1dce432821dcfc693dc69dcf975a3d8be8d
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92503860"
 ---
 # <a name="tutorial-register-a-single-page-application-spa-in-azure-active-directory-b2c"></a>Tutorial: Registrieren einer Single-Page-Webanwendung (SPA) in Azure Active Directory B2C
@@ -29,7 +29,7 @@ Viele moderne Webanwendungen werden als clientseitige Single-Page-Webanwendungen
 
 Azure AD B2C bietet **zwei** Optionen, um Single-Page-Webanwendungen das Anmelden von Benutzern und Abrufen von Token für den Zugriff auf Back-End-Dienste oder -Web-APIs zu ermöglichen:
 
-### <a name="authorization-code-flow-with-pkce"></a>Autorisierungscodeflow (mit PKCE)
+### <a name="authorization-code-flow-with-pkce"></a>Autorisierungscodefluss (mit PKCE)
 - [OAuth 2.0-Autorisierungscodefluss (mit PKCE)](./authorization-code-flow.md). Der Autorisierungscodefluss ermöglicht es der Anwendung, einen Autorisierungscode für **ID-Token** auszutauschen, um den authentifizierten Benutzer darzustellen, sowie **Zugriffstoken** auszutauschen, die zum Aufrufen geschützter APIs erforderlich sind. Darüber hinaus werden **Aktualisierungstoken** zurückgegeben, die langfristigen Zugriff auf Ressourcen im Auftrag von Benutzern bereitstellen, ohne dass eine Interaktion mit diesen Benutzern erforderlich ist. 
 
 Dies ist die **empfohlene** Vorgehensweise. Aktualisierungstoken mit begrenzter Lebensdauer tragen zur Anpassung Ihrer Anwendung an die [in Bezug auf die Einschränkungen von Cookies geltenden Datenschutzbestimmungen moderner Browser](../active-directory/develop/reference-third-party-cookies-spas.md) (z. B. an Safari ITP) bei.
@@ -39,7 +39,7 @@ Um diesen Flow nutzen zu können, kann Ihre Anwendung eine Authentifizierungsbib
 ![Autorisierungsfluss für Single-Page-Webanwendungen](./media/tutorial-single-page-app/spa-app-auth.svg)
 
 ### <a name="implicit-grant-flow"></a>Impliziter Gewährungsflow
-- [Impliziter OAuth 2.0-Fluss](implicit-flow-single-page-application.md). Einige Frameworks, z. B. [MSAL.js 1.x](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp), unterstützen nur den Flow für die implizite Genehmigung. Der Fluss für die implizite Genehmigung ermöglicht der Anwendung das Abrufen von **ID-** und **Zugriffstoken** . Im Gegensatz zum Autorisierungscodefluss gibt der Fluss für die implizite Genehmigung kein **Aktualisierungstoken** zurück. 
+- [Impliziter OAuth 2.0-Fluss](implicit-flow-single-page-application.md). Einige Frameworks, z. B. [MSAL.js 1.x](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp), unterstützen nur den Fluss für die implizite Genehmigung. Der Fluss für die implizite Genehmigung ermöglicht der Anwendung das Abrufen von **ID-** und **Zugriffstoken**. Im Gegensatz zum Autorisierungscodefluss gibt der Fluss für die implizite Genehmigung kein **Aktualisierungstoken** zurück. 
 
 ![Impliziter Fluss für Single-Page-Webanwendungen](./media/tutorial-single-page-app/spa-app.svg)
 
@@ -55,9 +55,9 @@ Wenn Sie Ihren eigenen [Azure AD B2C-Mandanten](tutorial-create-tenant.md) noch 
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
-1. Suchen Sie im Azure-Portal nach **Azure AD B2C** , und wählen Sie diese Option dann aus.
+1. Suchen Sie im Azure-Portal nach **Azure AD B2C**, und wählen Sie diese Option dann aus.
 1. Wählen Sie **App-Registrierungen** aus, und wählen Sie dann **Registrierung einer neuen Anwendung** aus.
-1. Geben Sie unter **Name** einen Namen für die Anwendung ein. Beispiel: *spaapp1* .
+1. Geben Sie unter **Name** einen Namen für die Anwendung ein. Beispiel: *spaapp1*.
 1. Wählen Sie unter **Unterstützte Kontotypen** die Option **Konten in einem beliebigen Identitätsanbieter oder Organisationsverzeichnis (zum Authentifizieren von Benutzern mit Benutzerflows)** aus.
 1. Wählen Sie unter **Umleitungs-URI** die Option **Single-Page-Anwendung (SPA)** aus, und geben Sie `https://jwt.ms` in das URL-Textfeld ein.
 
@@ -68,15 +68,15 @@ Wenn Sie Ihren eigenen [Azure AD B2C-Mandanten](tutorial-create-tenant.md) noch 
     * Die Antwort-URL muss mit dem Schema `https` beginnen, es sei denn, Sie verwenden `localhost`.
     * Bei der Antwort-URL muss die Groß-/Kleinschreibung beachtet werden. Die Groß-/Kleinschreibung muss der Groß-/Kleinschreibung des URL-Pfads Ihrer ausgeführten Anwendung entsprechen. Wenn Ihre Anwendung z. B. als Teil des Pfads `.../abc/response-oidc` enthält, geben Sie in der Antwort-URL nicht `.../ABC/response-oidc` an. Weil der Webbrowser bei Pfaden die Groß-/Kleinschreibung beachtet, werden Cookies, die `.../abc/response-oidc` zugeordnet sind, möglicherweise ausgeschlossen, wenn eine Umleitung an die anders geschriebene (nicht übereinstimmende) URL `.../ABC/response-oidc` erfolgt.
 
-1. Aktivieren Sie unter **Berechtigungen** das Kontrollkästchen *Administratoreinwilligung für openid- und offline_access-Berechtigungen erteilen* .
-1. Wählen Sie **Registrieren** .
+1. Aktivieren Sie unter **Berechtigungen** das Kontrollkästchen *Administratoreinwilligung für openid- und offline_access-Berechtigungen erteilen*.
+1. Wählen Sie **Registrieren**.
 
 
 ## <a name="enable-the-implicit-flow"></a>Aktivieren des impliziten Flows
 Bei Verwendung des impliziten Flows müssen Sie den Flow für die implizite Genehmigung in der App-Registrierung aktivieren.
 
 1. Wählen Sie im linken Menü unter **Verwalten** die Option **Authentifizierung** aus.
-1. Aktivieren Sie unter **Implizite Genehmigung** die Kontrollkästchen **Zugriffstoken** und **ID-Token** .
+1. Aktivieren Sie unter **Implizite Genehmigung** die Kontrollkästchen **Zugriffstoken** und **ID-Token**.
 1. Wählen Sie **Speichern** aus.
 
 ## <a name="migrate-from-the-implicit-flow"></a>Migrieren vom impliziten Flow
@@ -86,8 +86,8 @@ Wenn Sie über eine vorhandene Anwendung verfügen, die den impliziten Flow verw
 Wenn alle von einer App-Registrierung dargestellten Single-Page-Webanwendungen in Ihrer Produktionsumgebung den Autorisierungscodeflow verwenden, deaktivieren Sie die Einstellungen für den Flow für implizite Genehmigung. 
 
 1. Wählen Sie im linken Menü unter **Verwalten** die Option **Authentifizierung** aus.
-1. Deaktivieren Sie unter **Implizite Genehmigung** die Kontrollkästchen **Zugriffstoken** und **ID-Token** .
-1. Klicken Sie auf **Speichern** .
+1. Deaktivieren Sie unter **Implizite Genehmigung** die Kontrollkästchen **Zugriffstoken** und **ID-Token**.
+1. Klicken Sie auf **Speichern**.
 
 Anwendungen, die den impliziten Flow verwenden, funktionieren weiterhin, wenn der implizite Flow aktiviert bleibt.
 

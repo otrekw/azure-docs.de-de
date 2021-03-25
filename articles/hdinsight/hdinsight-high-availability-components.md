@@ -4,12 +4,12 @@ description: Überblick über die verschiedenen Hochverfügbarkeitskomponenten, 
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: 336fe91174a8fc6d73d6e45c5fd1e2bf244eda52
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 93d2317c85f93ce8a22f2d434fbc081a88265a74
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945312"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863716"
 ---
 # <a name="high-availability-services-supported-by-azure-hdinsight"></a>Von Azure HDInsight unterstützte Hochverfügbarkeitsdienste
 
@@ -34,7 +34,7 @@ Diese Infrastruktur besteht aus einer Reihe von Diensten und Softwarekomponenten
 - Untergeordneter Hochverfügbarkeitsdienst (sekundär)
 - Übergeordneter Hochverfügbarkeitsdienst (Master)
 
-![Hochverfügbarkeitsinfrastruktur](./media/hdinsight-high-availability-components/high-availability-architecture.png)
+:::image type="content" source="./media/hdinsight-high-availability-components/high-availability-architecture.png" alt-text="Hochverfügbarkeitsinfrastruktur" border="false":::
 
 Es gibt noch weitere Hochverfügbarkeitsdienste, die von Zuverlässigkeitskomponenten für Open-Source-Apache unterstützt werden. Diese Komponenten sind auch in HDInsight-Clustern enthalten:
 
@@ -91,7 +91,7 @@ Der master-ha-service wird nur auf dem aktiven Hauptknoten ausgeführt. Die HDIn
 
 ### <a name="the-failover-process"></a>Der Failoverprozess
 
-![Failoverprozess](./media/hdinsight-high-availability-components/failover-steps.png)
+:::image type="content" source="./media/hdinsight-high-availability-components/failover-steps.png" alt-text="Failoverprozess" border="false":::
 
 Auf jedem Hauptknoten wird zusammen mit dem übergeordneten Failovercontroller ein Integritätsmonitor ausgeführt, der Heartbeatbenachrichtigungen an das Zookeeper-Quorum sendet. Der Hauptknoten wird in diesem Szenario als Hochverfügbarkeitsdienst betrachtet. Der Integritätsmonitor überprüft, ob jeder Hochverfügbarkeitsdienst fehlerfrei und bereit ist, an der Auswahl der übergeordneten Instanz teilzunehmen. Wenn ja, wird dieser Hauptknoten bei der Auswahl berücksichtigt. Wenn nicht, wird die Auswahl beendet, bis der Knoten wieder bereit ist.
 

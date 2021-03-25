@@ -8,10 +8,10 @@ author: trkeya
 ms.author: trkeya
 ms.date: 07/06/2020
 ms.openlocfilehash: 3ea6a0035a9f9354be5c14699936c6a07dea1150
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94492088"
 ---
 # <a name="offer-listing-best-practices"></a>Bewährte Methoden für Angebotslistung
@@ -130,8 +130,8 @@ Anhand von Schlüsselwörtern können Kunden Ihr Angebot bei der Suche besser fi
 ## <a name="link-to-your-offer-page-from-your-website"></a>Verknüpfen Ihrer Angebotsseite über Ihre Website
 
 Wenn Sie auf Ihrer Website einen Link vom AppSource- oder Azure Marketplace-Badge mit Ihrer Listung im kommerziellen Marketplace erstellen, müssen Sie am Ende der URL die folgenden Abfrageparameter hinzufügen, um umfassende Analysen und Berichte zu unterstützen:
-* **src** : Geben Sie die Quelle an, von der aus der Datenverkehr an AppSource geleitet wird (z.B. eine Website, LinkedIn oder Facebook).
-* **mktcmpid** : Die ID Ihrer Marketingkampagne, die bis zu 16 Zeichen in einer beliebigen Kombination aus Buchstaben, Zahlen, Unterstrichen und Bindestrichen enthalten darf (z.B. *blogpost_12* ).
+* **src**: Geben Sie die Quelle an, von der aus der Datenverkehr an AppSource geleitet wird (z.B. eine Website, LinkedIn oder Facebook).
+* **mktcmpid**: Die ID Ihrer Marketingkampagne, die bis zu 16 Zeichen in einer beliebigen Kombination aus Buchstaben, Zahlen, Unterstrichen und Bindestrichen enthalten darf (z.B. *blogpost_12*).
 
 Die folgende Beispiel-URL enthält beide oben stehenden Abfrageparameter: `https://appsource.microsoft.com/product/dynamics-365/mscrm.04931187-431c-415d-8777-f7f482ba8095?src=website&mktcmpid=blogpost_12`
 

@@ -17,10 +17,10 @@ ms.author: barclayn
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6eb44c1efd683b6febe9a355ef72c80cc6f2e40d
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97746625"
 ---
 # <a name="view-reports-and-logs-in-azure-ad-entitlement-management"></a>Anzeigen von Berichten und Protokollen in der Azure AD-Berechtigungsverwaltung
@@ -85,7 +85,7 @@ Sie können das Azure AD-Überwachungsprotokoll verwenden, um zusätzliche Detai
 
 1. Ändern Sie im oberen Bereich die **Kategorie** abhängig vom gewünschten Überwachungsdatensatz in `EntitlementManagement` oder `UserManagement`.  
 
-1. Klicken Sie auf **Anwenden**.
+1. Klicken Sie auf **Übernehmen**.
 
 1. Klicken Sie zum Herunterladen der Protokolle auf **Herunterladen**.
 

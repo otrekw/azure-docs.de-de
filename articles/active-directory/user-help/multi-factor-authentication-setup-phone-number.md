@@ -11,10 +11,10 @@ ms.topic: end-user-help
 ms.date: 08/12/2019
 ms.author: curtand
 ms.openlocfilehash: 40af9ac692a226b12f984db447db9635cba655e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91530254"
 ---
 # <a name="set-up-a-mobile-device-as-your-two-factor-verification-method"></a>Einrichten eines mobilen Geräts als Methode für die zweistufige Überprüfung
@@ -43,7 +43,7 @@ Sie können Ihr mobiles Gerät als Methode für die zweistufige Überprüfung ei
     >[!Note]
     >Informationen zur Verwendung des App-Kennworts mit älteren Apps finden Sie unter [Verwalten von App-Kennwörtern für die zweistufige Überprüfung](multi-factor-authentication-end-user-app-passwords.md). App-Kennwörter sind nur erforderlich, wenn Sie weiterhin ältere Apps verwenden, die die zweistufige Überprüfung nicht unterstützen.
 
-5. Wählen Sie **Fertig**aus.
+5. Wählen Sie **Fertig** aus.
 
 ## <a name="set-up-your-mobile-device-to-receive-a-phone-call"></a>Einrichten Ihres mobilen Geräts zum Empfangen eines Telefonanrufs
 
@@ -64,7 +64,7 @@ Sie können Ihr mobiles Gerät als Methode für die zweistufige Überprüfung ei
     >[!Note]
     >Informationen zur Verwendung des App-Kennworts mit älteren Apps finden Sie unter [Verwalten von App-Kennwörtern für die zweistufige Überprüfung](multi-factor-authentication-end-user-app-passwords.md). App-Kennwörter sind nur erforderlich, wenn Sie weiterhin ältere Apps verwenden, die die zweistufige Überprüfung nicht unterstützen.
 
-5. Wählen Sie **Fertig**aus.
+5. Wählen Sie **Fertig** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

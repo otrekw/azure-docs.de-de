@@ -9,10 +9,10 @@ ms.custom: subject-armqs
 ms.author: jrasnick
 ms.date: 08/07/2020
 ms.openlocfilehash: 2b05220081dde4db6f07f21fb9978d9e466235ca
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92740362"
 ---
 # <a name="quickstart-create-an-azure-synapse-workspace-using-an-arm-template"></a>Schnellstart: Erstellen eines Azure Synapse-Arbeitsbereichs mit einer ARM-Vorlage
@@ -48,15 +48,15 @@ Die Vorlage definiert zwei Ressourcen:
 
 1. Geben Sie die folgenden Werte ein, oder aktualisieren Sie sie:
 
-   - **Abonnement** : Wählen Sie ein Azure-Abonnement aus.
-   - **Ressourcengruppe** : Wählen Sie **Neu erstellen** aus, geben Sie einen eindeutigen Namen für die Ressourcengruppe ein, und wählen Sie **OK** aus. Eine neue Ressourcengruppe erleichtert das Bereinigen von Ressourcen.
-   - **Region** : Wählen Sie eine Region aus.  Beispiel: **USA, Mitte**.
-   - **Name** : Geben Sie einen Namen für den Arbeitsbereich ein.
-   - **SQL-Administratoranmeldung** : Geben Sie den Benutzernamen des Administrators für den SQL Server ein.
-   - **SQL-Administratorkennwort** : Geben Sie das Administratorkennwort für den SQL Server ein.
-   - **Tagwerte** : Übernehmen Sie die Standardeinstellung.
-   - **Überprüfen und erstellen** : Aktivieren Sie dieses Kontrollkästchen.
-   - **Erstellen** : Aktivieren Sie dieses Kontrollkästchen.
+   - **Abonnement**: Wählen Sie ein Azure-Abonnement aus.
+   - **Ressourcengruppe**: Wählen Sie **Neu erstellen** aus, geben Sie einen eindeutigen Namen für die Ressourcengruppe ein, und wählen Sie **OK** aus. Eine neue Ressourcengruppe erleichtert das Bereinigen von Ressourcen.
+   - **Region**: Wählen Sie eine Region aus.  Beispiel: **USA, Mitte**.
+   - **Name**: Geben Sie einen Namen für den Arbeitsbereich ein.
+   - **SQL-Administratoranmeldung**: Geben Sie den Benutzernamen des Administrators für den SQL Server ein.
+   - **SQL-Administratorkennwort**: Geben Sie das Administratorkennwort für den SQL Server ein.
+   - **Tagwerte**: Übernehmen Sie die Standardeinstellung.
+   - **Überprüfen und erstellen**: Aktivieren Sie dieses Kontrollkästchen.
+   - **Erstellen**: Aktivieren Sie dieses Kontrollkästchen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

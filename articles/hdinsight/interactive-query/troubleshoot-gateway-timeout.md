@@ -5,10 +5,10 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 12/23/2019
 ms.openlocfilehash: 40ef380cd2bd4743b92daf44a0a5b70ade1cbb35
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98933015"
 ---
 # <a name="exception-when-running-queries-from-apache-ambari-hive-view-in-azure-hdinsight"></a>Ausnahmen für die Ausführung von Apache Hive-Abfragen mithilfe der Ambari-Hive-Ansicht in Azure HDInsight
@@ -45,7 +45,7 @@ Wenn der Client eine Abfrage an den Hive-Server übermittelt, geschieht im Vorde
 * Vorbereiten eines Abfrageplans
 * Ausführen der Autorisierung (Ausführen aller anwendbaren Ranger-Richtlinien in sicheren Clustern)
 
-## <a name="resolution"></a>Lösung
+## <a name="resolution"></a>Auflösung
 
 In folgender Liste finden Sie allgemeine Empfehlungen, um die Situation zu verbessern:
 

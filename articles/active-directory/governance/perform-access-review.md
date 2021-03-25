@@ -16,10 +16,10 @@ ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b5cd7a5737b2d13e63eabbbddd076cfc7aff83ac
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97746795"
 ---
 # <a name="review-access-to-groups-and-applications-in-azure-ad-access-reviews"></a>Überprüfen des Zugriffs auf Gruppen und Anwendungen mit Azure AD-Zugriffsüberprüfungen
@@ -129,9 +129,9 @@ Sie haben verschiedene Möglichkeiten, auf die neue Umgebung mit der aktualisier
 ### <a name="email"></a>Email
 
   >[!IMPORTANT]
-> Beim Empfang von E-Mails kann es Verzögerungen geben, und in einigen Fällen kann es bis zu 24 Stunden dauern. Fügen Sie Ihrer Liste der sicheren Empfänger azure-noreply@microsoft.com hinzu, um sicherzustellen, dass Sie alle E-Mails empfangen.
+> Beim Empfang von E-Mails kann es Verzögerungen geben, und in einigen Fällen kann es bis zu 24 Stunden dauern. Fügen Sie Ihrer Liste der sicheren Empfänger azure-noreply@microsoft.com hinzu, um sicherzustellen, dass Sie alle E-Mails empfangen.
 
-   1. Achten Sie auf eine E-Mail von Microsoft, in der Sie zur Überprüfung des Zugriffs aufgefordert werden. Nachstehend finden Sie ein Beispiel für eine solche E-Mail-Nachricht:
+   1. Achten Sie auf eine E-Mail von Microsoft, in der Sie zur Überprüfung des Zugriffs aufgefordert werden. Nachstehend finden Sie ein Beispiel für eine E-Mail-Nachricht:
 
    ![Beispiel-E-Mail von Microsoft zum Überprüfen des Zugriffs auf eine Gruppe](./media/perform-access-review/access-review-email-preview.png)
 
@@ -144,7 +144,7 @@ Sie haben verschiedene Möglichkeiten, auf die neue Umgebung mit der aktualisier
 
 Sie können Ihre ausstehenden Zugriffsüberprüfungen auch anzeigen, indem Sie „Mein Zugriff“ in Ihrem Browser öffnen.
 
-1. Melden Sie sich auf https://myaccess.microsoft.com/ bei „Mein Zugriff“ an
+1. Anmelden auf https://myaccess.microsoft.com/ bei „Mein Zugriff“
 
 2. Wählen Sie im Menü auf der linken Navigationsleiste **Zugriffsüberprüfungen** aus, um eine Liste der ausstehenden Zugriffsüberprüfungen anzuzeigen, die Ihnen zugewiesen sind.
 

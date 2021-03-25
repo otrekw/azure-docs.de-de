@@ -7,10 +7,10 @@ ms.date: 06/29/2018
 ms.custom: devx-track-java
 ms.author: pepogors
 ms.openlocfilehash: cc65deb924a9f3367c2ea1d7c71544743ccf2697
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87327360"
 ---
 # <a name="develop-java-service-fabric-applications-with-visual-studio-code"></a>Entwickeln von Java Service Fabric-Anwendungen mit Visual Studio Code
@@ -54,7 +54,7 @@ Nachdem Sie die Anwendung erstellt haben, können Sie sie im lokalen Cluster ber
 > [!IMPORTANT]
 > Die Bereitstellung von Java-Anwendungen im lokalen Cluster wird auf Windows-Computern nicht unterstützt.
 
-1. Klicken Sie in der **Befehlspalette** auf den Befehl **Service Fabric: Anwendung bereitstellen (Localhost)** . Die Ausgabe des Installationsvorgangs wird an das integrierte Terminal gesendet.
+1. Wählen Sie in der **Befehlspalette** den Befehl **Service Fabric: Anwendung bereitstellen (Localhost)** aus. Die Ausgabe des Installationsvorgangs wird an das integrierte Terminal gesendet.
 
    ![Befehl „Anwendung bereitstellen“ in VS Code](./media/service-fabric-develop-java-applications-with-vs-code/sf-deploy-application.png)
 
@@ -111,7 +111,7 @@ Gehen Sie wie folgt vor, um einen Haltepunkt festzulegen:
 
    ![Konfiguration „Debug (Attach)“ (Debuggen (anfügen))](./media/service-fabric-develop-java-applications-with-vs-code/debug-attach-java.png)
 
-3. Wechseln Sie in einem Webbrowsers zu `http://localhost:8080`. Geben Sie im Textfeld ein neues Element ein, und klicken Sie auf **+ Hinzufügen**. Ihr Haltepunkt sollte erreicht werden. Mithilfe der Debug-Symbolleiste am oberen Rand von VS Code können Sie die Ausführung fortsetzen, Zeilen überspringen, in Methoden springen oder die aktuelle Methode verlassen. 
+3. Rufen Sie in einem Webbrowser `http://localhost:8080` auf. Geben Sie im Textfeld ein neues Element ein, und klicken Sie auf **+ Hinzufügen**. Ihr Haltepunkt sollte erreicht werden. Mithilfe der Debug-Symbolleiste am oberen Rand von VS Code können Sie die Ausführung fortsetzen, Zeilen überspringen, in Methoden springen oder die aktuelle Methode verlassen. 
    
    ![Erreichen eines Haltepunkts](./media/service-fabric-develop-java-applications-with-vs-code/breakpoint-hit.png)
        

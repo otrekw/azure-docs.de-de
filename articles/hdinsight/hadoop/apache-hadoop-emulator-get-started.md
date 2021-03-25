@@ -6,12 +6,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: how-to
 ms.date: 05/29/2019
-ms.openlocfilehash: eb286adfd7267a78fcf80bcf5ad34f8f1cc9f493
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 60f4e4998e1077ca373f47a0cdf35c9d7a064605
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946611"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866674"
 ---
 # <a name="get-started-with-an-apache-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>Erste Schritte mit einer Apache Hadoop-Sandbox, einem Emulator auf einem virtuellen Computer
 
@@ -27,7 +27,7 @@ Hier erfahren Sie, wie Sie die Apache Hadoop-Sandbox von Hortonworks auf einem v
 
 1. Klicken Sie unter **Choose Installation Type** (Installationsart auswählen) auf **VIRTUALBOX**, um die aktuelle Hortonworks Sandbox auf eine VM herunterzuladen. Melden Sie sich an, oder füllen Sie das Produktinteresse-Formular aus.
 
-1. Klicken Sie auf die Schaltfläche **HDP SANDBOX (LATEST)** , um den Download zu starten.
+1. Klicken Sie auf die Schaltfläche **HDP SANDBOX (LATEST)**, um den Download zu starten.
 
 Eine Anleitung zum Einrichten der Sandbox finden Sie im [Sandbox Deployment and Install Guide](https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/section/1/) (Leitfaden zur Sandbox-Bereitstellung und -Installation).
 
@@ -39,7 +39,7 @@ Informationen zum Herunterladen einer älteren HDP Sandbox-Version erhalten Sie 
 1. Klicken Sie im Menü **File** (Datei) auf **Import Appliance** (Appliance importieren), und geben Sie dann das Bild Hortonworks Sandbox-Image an.
 1. Wählen Sie „Hortonworks Sandbox“, **Start** und anschließend **Normal Start** (Normaler Start) aus. Nach Abschluss des Startvorgangs für den virtuellen Computer werden Anmeldeanweisungen angezeigt.
 
-    ![Normaler Start des VirtualBox-Managers](./media/apache-hadoop-emulator-get-started/virtualbox-normal-start.png)
+    :::image type="content" source="./media/apache-hadoop-emulator-get-started/virtualbox-normal-start.png" alt-text="Normaler Start des VirtualBox-Managers" border="true":::
 
 1. Öffnen Sie einen Webbrowser, und navigieren Sie zur angezeigten URL (in der Regel `http://127.0.0.1:8888`).
 
