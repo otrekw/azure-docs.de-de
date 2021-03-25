@@ -4,10 +4,10 @@ description: In diesem Artikel werden die Kontingente und Einschränkungen von L
 ms.topic: conceptual
 ms.date: 05/22/2020
 ms.openlocfilehash: 68c7b91bb1051348b5a8e52f841d443894f0a632
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97400523"
 ---
 # <a name="quotas-and-limitations"></a>Kontingente und Einschränkungen

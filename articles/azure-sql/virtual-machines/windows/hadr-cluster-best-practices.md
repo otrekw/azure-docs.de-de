@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 5a2540aeb36cfcb2048ec994bbb486badc8a68d1
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 4ab4e40e1dd4bbaf9ae73ab545285f5ae6261e27
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97358808"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102201769"
 ---
 # <a name="cluster-configuration-best-practices-sql-server-on-azure-vms"></a>Bewährte Methoden für die Clusterkonfiguration (SQL Server auf Azure-VMS)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -76,9 +76,7 @@ Informationen zu den ersten Schritten finden Sie unter [Konfigurieren eines Clou
 
 ### <a name="file-share-witness"></a>Dateifreigabenzeuge
 
-Ein Dateifreigabezeuge ist eine SMB-Dateifreigabe, die in der Regel auf einem Dateiserver mit Windows Server konfiguriert ist. Dieser Zeuge verwaltet Clusteringinformationen in einer Datei „witness.log“, speichert aber keine Kopie der Clusterdatenbank. In Azure können Sie eine [Azure-Dateifreigabe](../../../storage/files/storage-how-to-create-file-share.md) zur Verwendung als Dateifreigabezeuge konfigurieren, oder Sie können eine Dateifreigabe auf einem separaten virtuellen Computer verwenden.
-
-Wenn Sie eine Azure-Dateifreigabe verwenden möchten, können Sie diese mit dem gleichen Prozess einbinden wie die [Premium-Dateifreigabe](failover-cluster-instance-premium-file-share-manually-configure.md#mount-premium-file-share). 
+Ein Dateifreigabezeuge ist eine SMB-Dateifreigabe, die in der Regel auf einem Dateiserver mit Windows Server konfiguriert ist. Dieser Zeuge verwaltet Clusteringinformationen in einer Datei „witness.log“, speichert aber keine Kopie der Clusterdatenbank. In Azure können Sie eine Azure-Dateifreigabe auf einem separaten virtuellen Computer konfigurieren.
 
 Informationen zu den ersten Schritten finden Sie unter [Konfigurieren eines Dateifreigabenzeugen](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum).
 

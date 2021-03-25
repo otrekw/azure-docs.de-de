@@ -6,10 +6,10 @@ ms.topic: troubleshooting
 ms.date: 8/24/2018
 ms.author: pkc
 ms.openlocfilehash: 977cd79de629670cef526f072340f8897fa6446e
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92316494"
 ---
 # <a name="azure-service-fabric-support-options"></a>Supportoptionen für Azure Service Fabric
@@ -47,7 +47,7 @@ Wir haben ein GitHub-Repository zum Melden von Service Fabric-Problemen eingeric
 
 ### <a name="github-repo"></a>GitHub-Repository 
 
-Melden Sie Azure Service Fabric-Probleme in [Service Fabric GitHub](https://github.com/microsoft/service-fabric/issues). Dieses Repository dient zur Meldung und Nachverfolgung von Problemen sowie zum Senden kleiner Funktionsanforderungen, die sich auf Azure Service Fabric beziehen. **Verwenden Sie dieses Medium nicht zum Melden von Problemen mit der Livewebsite** .
+Melden Sie Azure Service Fabric-Probleme in [Service Fabric GitHub](https://github.com/microsoft/service-fabric/issues). Dieses Repository dient zur Meldung und Nachverfolgung von Problemen sowie zum Senden kleiner Funktionsanforderungen, die sich auf Azure Service Fabric beziehen. **Verwenden Sie dieses Medium nicht zum Melden von Problemen mit der Livewebsite**.
 
 ### <a name="stackoverflow-and-msdn-forums"></a>StackOverflow und MSDN-Foren
 

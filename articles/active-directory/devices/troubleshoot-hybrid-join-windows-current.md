@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: e235bf90568a1382a5ecee3ff4d2283aaa32f10b
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 1eb4194354a07d5b580f07cfe5962785a4e100bd
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93083215"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104578020"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>Beheben von Problemen mit Geräten mit Hybrid-Azure Active Directory-Einbindung
 
@@ -99,11 +99,11 @@ Dieses Feld gibt an, ob das Gerät in ein lokales Active Directory eingebunden i
 
 #### <a name="workplacejoined--no"></a>WorkplaceJoined: Nein
 
-Dieses Feld gibt an, ob das Gerät bei Azure AD als privates Gerät registriert ist (markiert als *Workplace Join* ). Dieser Wert sollte für in eine Domäne eingebundene Computer mit Hybrideinbindung in Azure AD **NO** lauten. Wenn der Wert **YES** lautet, wurde vor Abschluss der Hybrideinbindung in Azure AD ein Geschäfts-, Schul- oder Unikonto hinzugefügt. In diesem Fall wird das Konto bei Verwendung von Windows 10-Version 1607 oder höher ignoriert.
+Dieses Feld gibt an, ob das Gerät bei Azure AD als privates Gerät registriert ist (markiert als *Workplace Join*). Dieser Wert sollte für in eine Domäne eingebundene Computer mit Hybrideinbindung in Azure AD **NO** lauten. Wenn der Wert **YES** lautet, wurde vor Abschluss der Hybrideinbindung in Azure AD ein Geschäfts-, Schul- oder Unikonto hinzugefügt. In diesem Fall wird das Konto bei Verwendung von Windows 10-Version 1607 oder höher ignoriert.
 
 #### <a name="azureadjoined--yes"></a>AzureAdJoined: YES
 
-Dieses Feld gibt an, ob das Gerät eingebunden ist. Der Wert ist **YES** , wenn das Gerät entweder in Azure AD oder hybrid in Azure AD eingebunden ist.
+Dieses Feld gibt an, ob das Gerät eingebunden ist. Der Wert ist **YES**, wenn das Gerät entweder in Azure AD oder hybrid in Azure AD eingebunden ist.
 Wenn der Wert **NO** lautet, wurde der Azure AD-Beitritt noch nicht abgeschlossen.
 
 Fahren Sie mit den nächsten Schritten zur weiteren Problembehandlung fort.
@@ -387,7 +387,7 @@ Verwenden Sie die Protokolle der Ereignisanzeige, um die Phase und den Fehlercod
 
 ### <a name="step-5-collect-logs-and-contact-microsoft-support"></a>Schritt 5: Sammeln Sie Protokolle, und wenden Sie sich an den Microsoft-Support
 
-Laden Sie die Datei „Auth.zip“ von [https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH](https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH) herunter.
+Laden Sie die Datei „Auth.zip“ von [https://github.com/CSS-Identity/DRS/tree/main/Auth](https://github.com/CSS-Identity/DRS/tree/main/Auth) herunter.
 
 1. Entpacken Sie die Datei, und benennen Sie die enthaltenen Dateien **start-auth.txt** und **stop-auth.txt** in **start-auth.cmd** und **stop-auth.cmd** um.
 1. Führen Sie an einer Eingabeaufforderung mit erhöhten Rechten die Datei **start-auth.cmd** aus.

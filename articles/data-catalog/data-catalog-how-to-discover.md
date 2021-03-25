@@ -6,14 +6,16 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: 4eb689b17df8236a00b5914912d1927804944f25
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 52aaa11278e5bb523594936c75d6810c1638fa7e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96009414"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104674936"
 ---
 # <a name="how-to-discover-data-sources-in-azure-data-catalog"></a>Ermitteln von Datenquellen in Azure Data Catalog
+
+[!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
 
 ## <a name="introduction"></a>Einführung
 
@@ -33,7 +35,7 @@ Durch eine Kombination von Suchen und Filtern können Sie schnell durch die in D
 
 Obwohl die standardmäßige Freitextsuche einfach und intuitiv ist, können Sie auch die Suchsyntax von Data Catalog verwenden, um die Suchergebnisse noch präziser zu steuern. Die Data Catalog-Suche unterstützt die folgenden Techniken:
 
-| Verfahren | Zweck | Beispiel |
+| Verfahren | Verwendung | Beispiel |
 | --- | --- | --- |
 | Standardsuche |Standardsuche mit mindestens einem Suchbegriff. Als Ergebnisse werden alle Datenobjekte zurückgegeben, bei denen eine beliebige Eigenschaft mit den angegebenen Begriffen übereinstimmt. |`sales data` |
 | Eigenschaftsbasierte Suche |Es werden nur Datenquellen zurückgegeben, bei denen der Suchbegriff mit der angegebenen Eigenschaft übereinstimmt. |`name:finance` |

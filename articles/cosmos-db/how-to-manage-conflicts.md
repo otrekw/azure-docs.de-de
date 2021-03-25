@@ -9,10 +9,10 @@ ms.date: 06/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: 8f98c2201159350f5774f4d2b05102384f31f3af
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93339341"
 ---
 # <a name="manage-conflict-resolution-policies-in-azure-cosmos-db"></a>Verwalten von Konfliktauflösungsrichtlinien in Azure Cosmos DB
@@ -136,10 +136,10 @@ Die folgenden Beispiele zeigen, wie Sie einen Container mit einer benutzerdefini
 
 Gespeicherte Prozeduren zur Konfliktlösung müssen mithilfe der folgenden Funktionssignatur implementiert werden. Der Funktionsname muss nicht mit dem Namen übereinstimmen, der bei der Registrierung der gespeicherten Prozedur beim Container verwendet wurde, die Namensgebung wird dadurch jedoch vereinfacht. Hier ist eine Beschreibung der Parameter, die für diese gespeicherte Prozedur implementiert werden müssen.
 
-- **incomingItem** : Das Element in den Commit eingefügte oder im Commit aktualisierte Element, das die Konflikte verursacht. Für Löschvorgänge ist es NULL.
-- **existingItem** : Das Element, für das gerade ein Commit ausgeführt wird. Dieser Wert ist ungleich null bei einem Update und null bei einer Einfügung oder Löschung.
-- **isTombstone** : Boolescher Wert, der angibt, ob das IncomingItem-Element einen Konflikt mit einem zuvor gelöschten Element verursacht. Ist dies der Fall, ist „existingItem“ ebenfalls NULL.
-- **conflictingItems** : Array der comitteten Version aller Elemente im Container, die im Konflikt mit incomingItem für eine ID oder mit anderen eindeutigen Indexeigenschaften stehen.
+- **incomingItem**: Das Element in den Commit eingefügte oder im Commit aktualisierte Element, das die Konflikte verursacht. Für Löschvorgänge ist es NULL.
+- **existingItem**: Das Element, für das gerade ein Commit ausgeführt wird. Dieser Wert ist ungleich null bei einem Update und null bei einer Einfügung oder Löschung.
+- **isTombstone**: Boolescher Wert, der angibt, ob das IncomingItem-Element einen Konflikt mit einem zuvor gelöschten Element verursacht. Ist dies der Fall, ist „existingItem“ ebenfalls NULL.
+- **conflictingItems**: Array der comitteten Version aller Elemente im Container, die im Konflikt mit incomingItem für eine ID oder mit anderen eindeutigen Indexeigenschaften stehen.
 
 > [!IMPORTANT]
 > Wie bei jeder gespeicherten Prozedur kann eine benutzerdefinierte Konfliktlösungsprozedur auf alle Daten mit dem gleichen Partitionsschlüssel zugreifen und beliebige INSERT-, UPDATE- oder DELETE-Vorgänge durchführen, um Konflikte zu lösen.

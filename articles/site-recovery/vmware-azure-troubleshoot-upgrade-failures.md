@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 11/10/2019
 ms.author: raynew
 ms.openlocfilehash: 5a6e4b415a9fe8ea80a84e415879df9d2f359478
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84434374"
 ---
 # <a name="troubleshoot-microsoft-azure-site-recovery-provider-upgrade-failures"></a>Behandlung von Problemen beim Upgrade von Microsoft Azure Site Recovery-Anbietern
@@ -74,7 +74,7 @@ Beim Upgrade des Microsoft Azure Site Recovery-Anbieters (DRA) tritt bei der Ins
 Dies kann auf einen NULL-Wert für einen Parameter im Registrierungsschlüssel zurückzuführen sein. Gehen Sie wie folgt vor, um dieses Problem zu beheben:
 
 1. Starten Sie den Registrierungs-Editor (regedit.exe), und öffnen Sie den Branch HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\InMage Systems\Installed Products\4.
-1. Überprüfen Sie den Schlüsselwert für „InstallDirectory“. Wenn er NULL ist, fügen Sie den aktuellen Wert für das Installationsverzeichnis ein.
+1. Überprüfen Sie den Schlüsselwert für „InstallDirectory“.  Wenn er NULL ist, fügen Sie den aktuellen Wert für das Installationsverzeichnis ein.
 1. Öffnen Sie außerdem den Branch HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\InMage Systems\Installed Products\5 im Registrierungs-Editor.
 1. Überprüfen Sie den Schlüsselwert für „InstallDirectory“, und fügen Sie den aktuellen Wert für das Installationsverzeichnis ein.
 1. Führen Sie das Installationsprogramm für das einheitliche Setup erneut aus.

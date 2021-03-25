@@ -5,10 +5,10 @@ services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.openlocfilehash: 087c1d2efc93b8460a3683a4e66916d73fd4e885
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87015679"
 ---
 # <a name="best-practices-for-basic-scheduler-features-in-azure-kubernetes-service-aks"></a>Best Practices für grundlegende Schedulerfunktionen in Azure Kubernetes Service (AKS)
@@ -91,7 +91,7 @@ spec:
       app: nginx-frontend
 ```
 
-Sie können auch einen Prozentsatz definieren, wie z.B. *60 %* , mit dem Sie automatisch die Erhöhung der Anzahl der Pods durch die Replikatgruppe kompensieren können.
+Sie können auch einen Prozentsatz definieren, wie z.B. *60 %*, mit dem Sie automatisch die Erhöhung der Anzahl der Pods durch die Replikatgruppe kompensieren können.
 
 Sie können eine maximale Anzahl von nicht verfügbaren Instanzen in einer Replikatgruppe definieren. Darüber hinaus kann ein Prozentsatz für die maximale Anzahl der nicht verfügbaren Pods definiert werden. Das folgende YAML-Manifest für das Budget für die Unterbrechung von Pods definiert, dass nicht mehr als zwei Pods in der Replikatgruppe nicht verfügbar sein dürfen:
 

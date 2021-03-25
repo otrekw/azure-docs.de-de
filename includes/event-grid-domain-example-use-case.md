@@ -9,10 +9,10 @@ ms.date: 03/04/2021
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: 2459cf6c5055dcde83dccf37addc160aeeaa64ad
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102198654"
 ---
 Ereignisdomänen lassen sich am einfachsten an einem Beispiel veranschaulichen. Angenommen, Sie betreiben Contoso Construction Machinery, ein Unternehmen, das Traktoren, Bagger und anderes schweres Gerät herstellt. Als Teil des Geschäftsbetriebs übermitteln Sie Echtzeitinformationen zur Ausrüstungswartung, zur Systemintegrität und zu Vertragsaktualisierungen an Kunden. Alle diese Informationen werden an verschiedene Endpunkte weitergeleitet (z.B. an Ihre App, an Kundenendpunkte und andere Infrastrukturen, die Kunden eingerichtet haben).

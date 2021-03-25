@@ -5,16 +5,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 02/27/2018
-ms.openlocfilehash: 1ceb5d323ecfed54b4e01d13d66c640769a224ee
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 9e626d08e7fd315ca70765477c5dae56030521c6
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945589"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866402"
 ---
 # <a name="migrate-net-solutions-for-windows-based-hdinsight-to-linux-based-hdinsight"></a>Migrieren von .NET-Lösungen für Windows-basierte HDInsight-Cluster zu Linux-basierten HDInsight-Clustern
 
-Linux-basierte HDInsight-Cluster nutzen [Mono (https://mono-project.com)](https://mono-project.com)) für die Ausführung von .NET-Anwendungen. Mit Mono können Sie .NET-Komponenten wie MapReduce-Anwendungen mit Linux-basierten HDInsight-Clustern verwenden. In diesem Artikel erfahren Sie, wie Sie für Windows-basierte HDInsight-Cluster erstellte .NET-Lösungen migrieren, um die Verwendung mit Mono auf Linux-basierten HDInsight-Clustern zu ermöglichen.
+Linux-basierte HDInsight-Cluster nutzen [Mono (https://mono-project.com)](https://mono-project.com) für die Ausführung von .NET-Anwendungen. Mit Mono können Sie .NET-Komponenten wie MapReduce-Anwendungen mit Linux-basierten HDInsight-Clustern verwenden. In diesem Artikel erfahren Sie, wie Sie für Windows-basierte HDInsight-Cluster erstellte .NET-Lösungen migrieren, um die Verwendung mit Mono auf Linux-basierten HDInsight-Clustern zu ermöglichen.
 
 ## <a name="mono-compatibility-with-net"></a>Kompatibilität von Mono mit .NET
 
@@ -33,7 +33,7 @@ Mit [.NET Portability Analyzer](https://marketplace.visualstudio.com/items?itemN
 
 2. Wählen Sie in Visual Studio 2015 __Analysieren__ > __Portability Analyzer-Einstellungen__ aus, und stellen Sie sicher, dass __4.5__ im Abschnitt __Mono__ aktiviert ist.
 
-    ![Im Abschnitt „Mono“ für die Analyzer-Einstellungen ist „4.5“ aktiviert](./media/hdinsight-hadoop-migrate-dotnet-to-linux/portability-analyzer-settings.png)
+    :::image type="content" source="./media/hdinsight-hadoop-migrate-dotnet-to-linux/portability-analyzer-settings.png" alt-text="Im Abschnitt „Mono“ für die Analyzer-Einstellungen ist „4.5“ aktiviert":::
 
     Klicken Sie auf __OK__, um die Konfiguration zu speichern.
 
@@ -41,7 +41,7 @@ Mit [.NET Portability Analyzer](https://marketplace.visualstudio.com/items?itemN
 
 4. Nachdem die Analyse abgeschlossen ist, wählen Sie __Analysieren__ > __Analyseberichte anzeigen__ aus. Wählen Sie unter __Ergebnisse der Portabilitätsanalyse__ die Option __Bericht öffnen__ aus, um den Bericht zu öffnen.
 
-    ![Dialogfeld „Ergebnisse der Portabilitätsanalyse“](./media/hdinsight-hadoop-migrate-dotnet-to-linux/portability-analyzer-results.png)
+    :::image type="content" source="./media/hdinsight-hadoop-migrate-dotnet-to-linux/portability-analyzer-results.png" alt-text="Dialogfeld „Ergebnisse der Portabilitätsanalyse“":::
 
 > [!IMPORTANT]  
 > Der Analyzer kann nicht jedes Problem mit Ihrer Lösung abfangen. Der Dateipfad `c:\temp\file.txt` wird beispielsweise als gültig angesehen, wenn Mono unter Windows ausgeführt wird. Der gleiche Pfad ist auf einer Linux-Plattform ungültig.

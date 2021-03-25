@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: alkohli
 ms.openlocfilehash: a15ebd43861e2116ddbb2d9055b289645962e203
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96573917"
 ---
 # <a name="solutions-for-periodic-data-transfer"></a>Lösungen für eine regelmäßige Datenübertragung
@@ -45,7 +45,7 @@ In der folgenden Tabelle werden die Unterschiede der Schlüsselfunktionen zusamm
 | Funktion                  | AzCopy                                 | Table Storage REST-APIs       |
 |-----------------------------|----------------------------------------|-------------------------------|
 | Formfaktor                 | Befehlszeilentool von Microsoft       | Kunden entwickeln für Storage <br> REST-APIs mit Azure-Clientbibliotheken |
-| Anfängliche einmalige Konfiguration     | Wenig                                | Mittel, variabler Entwicklungsaufwand    |
+| Anfängliche einmalige Konfiguration     | Minimal                                | Mittel, variabler Entwicklungsaufwand    |
 | Datenformat                 | Azure-Blobs, Azure Files, Azure Tables | Azure-Blobs, Azure Files, Azure Tables   |
 | Leistung                 | Bereits optimiert                      | Optimierung bei der Entwicklung                  |
 | Preise                     | Kostenlos, Gebühren für Datenerfassung fallen an      | Kostenlos, Gebühren für Datenerfassung fallen an        |

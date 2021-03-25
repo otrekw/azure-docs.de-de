@@ -10,10 +10,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: 2dd04f404330a6c86e2df09da610e16ba9b721f3
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92895646"
 ---
 # <a name="secure-a-daemon-application"></a>Schützen einer Daemon-Anwendung
@@ -85,19 +85,19 @@ Bei der Ausführung in einer nicht von Azure stammenden Umgebung sind verwaltete
     > [!div class="mx-imgBorder"]
     > ![App-Registrierungsdetails](./media/how-to-manage-authentication/app-create.png)
 
-3. Navigieren Sie zu der Anwendung, um Azure Maps die delegierten API-Berechtigungen zuzuweisen. Wählen Sie dann unter **App-Registrierungen** die Optionen **API-Berechtigungen** > **Berechtigung hinzufügen** aus. Suchen Sie unter **Von meiner Organisation verwendete APIs** die Option **Azure Maps** , und wählen Sie sie aus.
+3. Navigieren Sie zu der Anwendung, um Azure Maps die delegierten API-Berechtigungen zuzuweisen. Wählen Sie dann unter **App-Registrierungen** die Optionen **API-Berechtigungen** > **Berechtigung hinzufügen** aus. Suchen Sie unter **Von meiner Organisation verwendete APIs** die Option **Azure Maps**, und wählen Sie sie aus.
 
     > [!div class="mx-imgBorder"]
     > ![Hinzufügen von App-API-Berechtigungen](./media/how-to-manage-authentication/app-permissions.png)
 
-4. Aktivieren Sie das Kontrollkästchen neben **Auf Azure Maps zugreifen** , und wählen Sie dann **Berechtigungen hinzufügen** aus.
+4. Aktivieren Sie das Kontrollkästchen neben **Auf Azure Maps zugreifen**, und wählen Sie dann **Berechtigungen hinzufügen** aus.
 
     > [!div class="mx-imgBorder"]
     > ![Auswählen von App-API-Berechtigungen](./media/how-to-manage-authentication/select-app-permissions.png)
 
 5. Führen Sie die folgenden Schritte aus, um einen geheimen Clientschlüssel zu erstellen oder ein Zertifikat zu konfigurieren.
 
-    * Wenn in der Anwendung die Server- oder Anwendungsauthentifizierung verwendet wird, navigieren Sie auf der Registrierungsseite für die App zu **Zertifikate & Geheimnisse** . Laden Sie dann entweder ein öffentliches Schlüsselzertifikat hoch, oder erstellen Sie ein Kennwort, indem Sie **Neuer geheimer Clientschlüssel** auswählen.
+    * Wenn in der Anwendung die Server- oder Anwendungsauthentifizierung verwendet wird, navigieren Sie auf der Registrierungsseite für die App zu **Zertifikate & Geheimnisse**. Laden Sie dann entweder ein öffentliches Schlüsselzertifikat hoch, oder erstellen Sie ein Kennwort, indem Sie **Neuer geheimer Clientschlüssel** auswählen.
 
         > [!div class="mx-imgBorder"]
         > ![Erstellen eines geheimen Clientschlüssels](./media/how-to-manage-authentication/app-keys.png)
@@ -114,17 +114,17 @@ Sie gewähren die *rollenbasierte Zugriffssteuerung von Azure (Azure RBAC)* , in
 > [!div class="mx-imgBorder"]
 > ![Anzeigen verfügbarer Rollen](./media/how-to-manage-authentication/how-to-view-avail-roles.png)
 
-1. Navigieren Sie zu Ihrem **Azure Maps-Konto** . Wählen Sie **Zugriffssteuerung (IAM)**  > **Rollenzuweisungen** aus.
+1. Navigieren Sie zu Ihrem **Azure Maps-Konto**. Wählen Sie **Zugriffssteuerung (IAM)**  > **Rollenzuweisungen** aus.
 
     > [!div class="mx-imgBorder"]
     > ![Gewähren von Zugriff mithilfe von Azure RBAC](./media/how-to-manage-authentication/how-to-grant-rbac.png)
 
-2. Klicken Sie auf der Registerkarte **Rollenzuweisungen** auf **Hinzufügen** , um eine Rollenzuweisung hinzuzufügen. 
+2. Klicken Sie auf der Registerkarte **Rollenzuweisungen** auf **Hinzufügen**, um eine Rollenzuweisung hinzuzufügen. 
 
     > [!div class="mx-imgBorder"]
     > ![Screenshot: Rollenzuweisungen mit ausgewählter Option „Hinzufügen“](./media/how-to-manage-authentication/add-role-assignment.png)
 
-3. Wählen Sie eine integrierte Azure Maps-Rollendefinition wie **Azure Maps-Datenleser** oder **Azure Maps-Datenmitwirkender** aus. Wählen Sie unter **Zugriff zuweisen zu** die Option **Azure AD-Benutzer, -Gruppe oder -Dienstprinzipal** oder verwaltete Identität mit **benutzerseitig zugewiesene verwaltete Identität** / **systemseitig zugewiesene verwaltete Identität** aus. Wählen Sie den Prinzipal aus. Klicken Sie dann auf **Speichern** .
+3. Wählen Sie eine integrierte Azure Maps-Rollendefinition wie **Azure Maps-Datenleser** oder **Azure Maps-Datenmitwirkender** aus. Wählen Sie unter **Zugriff zuweisen zu** die Option **Azure AD-Benutzer, -Gruppe oder -Dienstprinzipal** oder verwaltete Identität mit **benutzerseitig zugewiesene verwaltete Identität** / **systemseitig zugewiesene verwaltete Identität** aus. Wählen Sie den Prinzipal aus. Klicken Sie dann auf **Speichern**.
 
     > [!div class="mx-imgBorder"]
     > ![Hinzufügen einer Rollenzuweisung](./media/how-to-manage-authentication/how-to-add-role-assignment.png)

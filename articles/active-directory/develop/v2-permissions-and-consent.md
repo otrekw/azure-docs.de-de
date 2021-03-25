@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur, marsma
 ms.custom: aaddev, fasttrack-edit, contperf-fy21q1, identityplatformtop40
 ms.openlocfilehash: 2658c088304eba457b25bb3dc421b356ba70b57f
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/10/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100102477"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform"></a>Berechtigungen und Zustimmung im Microsoft Identity Platform-Endpunkt
@@ -217,7 +217,7 @@ https://graph.microsoft.com/mail.send
 ```
 
 
-| Parameter        | Bedingung        | Beschreibung                                                                                |
+| Parameter        | Bedingung        | BESCHREIBUNG                                                                                |
 |:--------------|:--------------|:-----------------------------------------------------------------------------------------|
 | `tenant` | Erforderlich | Der Verzeichnismandant, von dem Sie die Berechtigung anfordern möchten. Er kann als GUID oder als Anzeigename bereitgestellt werden. Alternativ kann er generisch mit Organisationen referenziert werden, wie im Beispiel zu sehen. Verwenden Sie nicht „Allgemein“, da persönliche Konten die Administratoreinwilligung nur im Kontext eines Mandanten bereitstellen können. Verwenden Sie nach Möglichkeit die Mandanten-ID, um die bestmögliche Kompatibilität mit persönlichen Konten zu gewährleisten, die Mandanten verwalten. |
 | `client_id` | Erforderlich | Die Anwendungs-ID (Client-ID), die Ihrer App [im Azure-Portal unter „App-Registrierungen“](https://go.microsoft.com/fwlink/?linkid=2083908) zugewiesen wurde. |

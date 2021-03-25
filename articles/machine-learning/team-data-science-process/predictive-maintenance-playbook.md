@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: previous-author=fboylu, previous-ms.author=fboylu
 ms.openlocfilehash: 1e939b86eeadfee276378488cfcb40c07f28684d
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98880657"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>Azure KI-Leitfaden für Predictive Maintenance-Lösungen
@@ -233,12 +233,12 @@ Die bisher beschriebenen Schritte zur Datenaufbereitung sollten ergeben, dass di
 
 | Asset-ID | Time | \<Feature Columns> | Bezeichnung |
 | ---- | ---- | --- | --- |
-| A123 |Tag 1 | erforderlich. erforderlich. erforderlich. | erforderlich. |
-| A123 |Tag 2 | erforderlich. erforderlich. erforderlich. | erforderlich. |
-| ...  |...   | erforderlich. erforderlich. erforderlich. | erforderlich. |
-| B234 |Tag 1 | erforderlich. erforderlich. erforderlich. | erforderlich. |
-| B234 |Tag 2 | erforderlich. erforderlich. erforderlich. | erforderlich. |
-| ...  |...   | erforderlich. erforderlich. erforderlich. | erforderlich. |
+| A123 |Tag 1 | . . . | . |
+| A123 |Tag 2 | . . . | . |
+| ...  |...   | . . . | . |
+| B234 |Tag 1 | . . . | . |
+| B234 |Tag 2 | . . . | . |
+| ...  |...   | . . . | . |
 
 Der letzte Schritt der Featureentwicklung ist die **Bezeichnung** der Zielvariablen. Dieser Prozess richtet sich nach dem Modellierungsverfahren. Das Modellierungsverfahren ist wiederum vom Geschäftsproblem und von der Art der verfügbaren Daten abhängig. Der Prozess der Bezeichnung wird im nächsten Abschnitt beschrieben.
 

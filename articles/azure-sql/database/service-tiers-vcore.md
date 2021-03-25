@@ -10,12 +10,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake
 ms.date: 01/15/2021
-ms.openlocfilehash: 35cdfdbdc04d0c88bc49c024ea7465537583e0d7
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 499e0aa1ee451969923dbdf5f84be1c844a9aab4
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735510"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "101659323"
 ---
 # <a name="vcore-model-overview---azure-sql-database-and-azure-sql-managed-instance"></a>Übersicht über das Modell für virtuelle Kerne – Azure SQL-Datenbank und Azure SQL Managed Instance 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -37,7 +37,7 @@ Als Optionen für die Dienstebene stehen im V-Kern-Modell „Universell“, „U
 |Storage|Verwendet Remotespeicher.<br/>**Bereitgestelltes SQL-Datenbank-Computing:**<br/>5 GB – 4 TB<br/>**Serverloses Computing**:<br/>5 GB bis 3 TB<br/>**SQL Managed Instance:** 32 GB – 8 TB |Verwendet lokalen SSD-Speicher.<br/>**Bereitgestelltes SQL-Datenbank-Computing:**<br/>5 GB – 4 TB<br/>**SQL Managed Instance:**<br/>32 GB – 4 TB |Flexible automatische Speichervergrößerung nach Bedarf. Unterstützt bis zu 100 TB Speicher. Verwendet lokalen SSD-Speicher für den lokalen Pufferpoolcache und den lokalen Datenspeicher. Verwendet Azure-Remotespeicher als endgültigen langfristigen Datenspeicher. |
 |IOPS und Durchsatz (ungefähr)|**SQL-Datenbank:** Weitere Informationen finden Sie in den Ressourcenlimits für [Einzeldatenbanken](resource-limits-vcore-single-databases.md) und [Pools für elastische Datenbanken](resource-limits-vcore-elastic-pools.md).<br/>**SQL Managed Instance:** Weitere Informationen finden Sie in der [Übersicht über die Ressourcenlimits von Azure SQL Managed Instance](../managed-instance/resource-limits.md#service-tier-characteristics).|Weitere Informationen finden Sie in den Ressourcenlimits für [Einzeldatenbanken](resource-limits-vcore-single-databases.md) und [Pools für elastische Datenbanken](resource-limits-vcore-elastic-pools.md).|Hyperscale ist eine mehrstufige Architektur mit Caching auf mehreren Ebenen. Die tatsächlichen Werte für IOPS und Durchsatz hängen vom Workload ab.|
 |Verfügbarkeit|Einzelnes Replikat, keine Replikate mit Leseskalierung|3 Replikate, 1 [Replikat, Leseskalierung](read-scale-out.md),<br/>zonenredundante Hochverfügbarkeit (High Availability, HA)|Einzelnes Replikat mit Lese-/Schreibzugriff sowie bis zu vier [Replikate mit Leseskalierung](read-scale-out.md)|
-|Backups|[Georedundanter Speicher mit Lesezugriff (RA-GRS)](../../storage/common/geo-redundant-design.md), sieben bis 35 Tage (standardmäßig sieben Tage)|[RA-GRS](../..//storage/common/geo-redundant-design.md), 7-35 Tage (standardmäßig 7 Tage)|Auf Momentaufnahmen basierende Sicherungen in Azure-Remotespeicher. Bei Wiederherstellungen werden diese Momentaufnahmen zur schnellen Wiederherstellung verwendet. Sicherungen werden sofort ausgeführt und haben keine Auswirkungen auf die E/A-Computeleistung. Wiederherstellungen sind schnell und nicht datenintensiv (dauern also nicht Stunden oder Tage, sondern nur Minuten).|
+|Backups|[Georedundanter Speicher mit Lesezugriff (RA-GRS)](../../storage/common/geo-redundant-design.md), 1–35 Tage (standardmäßig 7 Tage)|[RA-GRS](../..//storage/common/geo-redundant-design.md), 1–35 Tage (standardmäßig 7 Tage)|Auf Momentaufnahmen basierende Sicherungen in Azure-Remotespeicher. Bei Wiederherstellungen werden diese Momentaufnahmen zur schnellen Wiederherstellung verwendet. Sicherungen werden sofort ausgeführt und haben keine Auswirkungen auf die E/A-Computeleistung. Wiederherstellungen sind schnell und nicht datenintensiv (dauern also nicht Stunden oder Tage, sondern nur Minuten).|
 |In-Memory|Nicht unterstützt|Unterstützt|Nicht unterstützt|
 |||
 
@@ -204,7 +204,7 @@ Weitere Informationen finden Sie unter dem Befehl [az sql mi update](/cli/azure/
 
 Die Gen4-Hardware [wird eingestellt](https://azure.microsoft.com/updates/gen-4-hardware-on-azure-sql-database-approaching-end-of-life-in-2020/) und steht für neue Bereitstellungen nicht mehr zur Verfügung. Alle neuen Datenbanken müssen auf Gen5-Hardware bereitgestellt werden.
 
-Gen5 ist in den meisten Regionen weltweit verfügbar.
+Gen5 ist in allen öffentlichen Regionen weltweit verfügbar.
 
 #### <a name="fsv2-series"></a>Fsv2-Serie
 

@@ -4,10 +4,10 @@ description: Eine Liste mit Azure Relay-Ausnahmen und empfohlenen Maßnahmen zu 
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 44eeba6eb7b8cfd4e81a923c2d9a3155f1709f2c
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98625147"
 ---
 # <a name="azure-relay-exceptions"></a>Azure Relay-Ausnahmen
@@ -43,7 +43,7 @@ In der folgenden Tabelle werden die Typen von Messagingausnahmen und ihre Ursach
 | [Nicht autorisierter Zugriff](/dotnet/api/system.unauthorizedaccessexception) |Das [TokenProvider](/dotnet/api/microsoft.servicebus.tokenprovider) -Objekt konnte kein Token abrufen, das Token ist ungültig, oder das Token enthält nicht die Ansprüche, die zum Ausführen des Vorgangs erforderlich sind. |Stellen Sie sicher, dass der Tokenanbieter mit den richtigen Werten erstellt wird. Überprüfen Sie die Konfiguration für den Access Control Service. |In einigen Fällen kann eine Wiederholung helfen. Fügen Sie dem Code eine Wiederholungslogik hinzu. |
 | [Argumentausnahme](/dotnet/api/system.argumentexception),<br /> [Argument NULL](/dotnet/api/system.argumentnullexception),<br />[Argument außerhalb des gültigen Bereichs](/dotnet/api/system.argumentoutofrangeexception) |Mindestens einer der folgenden Fehler ist aufgetreten:<br />Mindestens eines der für die Methode bereitgestellten Argumente ist ungültig.<br /> Der für [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) oder [Create](/dotnet/api/microsoft.servicebus.messaging.messagingfactory.create) bereitgestellte URI enthält mindestens ein Pfadsegment.<br />Das für [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) oder für [Create](/dotnet/api/microsoft.servicebus.messaging.messagingfactory.create) bereitgestellte URI-Schema ist ungültig. <br />Der Eigenschaftswert ist größer als 32 KB. |Überprüfen Sie den aufrufenden Code, und stellen Sie sicher, dass die Argumente richtig sind. |Eine Wiederholung hilft nicht. |
 | [Server ausgelastet](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception) |Der Dienst kann die Anforderung derzeit nicht verarbeiten. |Der Client kann eine gewisse Zeit warten und dann den Vorgang wiederholen. |Der Client kann versuchen, den Vorgang nach einem bestimmten Zeitintervall zu wiederholen. Wenn die Wiederholung zu einer anderen Ausnahme führt, überprüfen Sie das Wiederholungsverhalten dieser Ausnahme. |
-| [Kontingent überschritten](/dotnet/api/microsoft.servicebus.messaging.quotaexceededexception) |Die Messagingentität hat die maximal zulässige Größe erreicht. |Schaffen Sie Platz in der Entität, indem Sie Nachrichten aus der Entität oder ihren Unterwarteschlangen empfangen. Siehe [QuotaExceededException](#quotaexceededexception). |Eine Wiederholung kann helfen, wenn in der Zwischenzeit Nachrichten entfernt wurden. |
+| [Quote überschritten](/dotnet/api/microsoft.servicebus.messaging.quotaexceededexception) |Die Messagingentität hat die maximal zulässige Größe erreicht. |Schaffen Sie Platz in der Entität, indem Sie Nachrichten aus der Entität oder ihren Unterwarteschlangen empfangen. Siehe [QuotaExceededException](#quotaexceededexception). |Eine Wiederholung kann helfen, wenn in der Zwischenzeit Nachrichten entfernt wurden. |
 | [Nachrichtengröße überschritten](/dotnet/api/microsoft.servicebus.messaging.messagesizeexceededexception) |Eine Nachrichtennutzlast überschreitet den Grenzwert von 256 KB. Beachten Sie, dass es sich beim Grenzwert von 256-KB um die Gesamtgröße der Nachricht handelt. Zur Gesamtgröße der Nachricht gehören auch Systemeigenschaften und Microsoft .NET-Mehraufwand. |Reduzieren Sie die Größe der Nachrichtennutzlast, und wiederholen Sie den Vorgang. |Eine Wiederholung hilft nicht. |
 
 ## <a name="quotaexceededexception"></a>QuotaExceededException

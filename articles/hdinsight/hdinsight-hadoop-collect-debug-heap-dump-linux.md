@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
-ms.openlocfilehash: 824ba2c3316ccb34b59a9e435b9a6e582f137090
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: fe5b2a1f083e246ea61854c9cbe03932e6655fdb
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945927"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866589"
 ---
 # <a name="enable-heap-dumps-for-apache-hadoop-services-on-linux-based-hdinsight"></a>Aktivieren von Heapdumps für Apache Hadoop-Dienste in Linux-basiertem HDInsight
 
@@ -82,15 +82,15 @@ Gehen Sie folgendermaßen vor, um die Konfiguration für einen Dienst zu ändern
 
 2. Wählen Sie mithilfe der Liste auf der linken Seite den Dienstbereich aus, den Sie ändern möchten. Beispielsweise **HDFS**. Wählen Sie im mittleren Bereich die Registerkarte **Configs** aus.
 
-    ![Bild der Ambari-Webbenutzeroberfläche mit ausgewählter Registerkarte für HDFS-Konfigurationen](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdi-service-config-tab.png)
+    :::image type="content" source="./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdi-service-config-tab.png" alt-text="Bild der Ambari-Webbenutzeroberfläche mit ausgewählter Registerkarte für HDFS-Konfigurationen":::
 
 3. Geben Sie im Feld **Filter** den Text **opts** ein. Es werden nur Elemente mit diesem Text angezeigt.
 
-    ![Gefilterte Liste der Apache Ambari-Konfigurationen](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdinsight-filter-list.png)
+    :::image type="content" source="./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdinsight-filter-list.png" alt-text="Gefilterte Liste der Apache Ambari-Konfigurationen":::
 
 4. Suchen Sie nach dem Eintrag **\*\_OPTS** für den Dienst, für den Sie Heapdumps aktivieren möchten, und fügen die Optionen hinzu, die Sie aktivieren möchten. In der folgenden Abbildung wurde `-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/` dem Eintrag **HADOOP\_NAMENODE\_OPTS** hinzugefügt:
 
-    ![Apache Ambari: hadoop-namenode-opts](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hadoop-namenode-opts.png)
+    :::image type="content" source="./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hadoop-namenode-opts.png" alt-text="Apache Ambari: hadoop-namenode-opts":::
 
    > [!NOTE]  
    > Beim Aktivieren von Heapdumps für den untergeordneten Mapper- oder Reducer-Prozess suchen Sie nach den Feldern mit der Bezeichnung **mapreduce.admin.map.child.java.opts** und **mapreduce.admin.reduce.child.java.opts**.
@@ -99,15 +99,15 @@ Gehen Sie folgendermaßen vor, um die Konfiguration für einen Dienst zu ändern
 
 5. Nachdem die Änderungen angewendet wurden, wird das Symbol für **Neustart erforderlich** neben einem oder mehreren Diensten angezeigt.
 
-    ![Symbol "Restart required" und Schaltfläche "Restart"](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/restart-required-icon.png)
+    :::image type="content" source="./media/hdinsight-hadoop-collect-debug-heap-dump-linux/restart-required-icon.png" alt-text="Symbol &quot;Restart required&quot; und Schaltfläche &quot;Restart&quot;":::
 
 6. Wählen Sie jeden Dienst aus, für den ein Neustart erforderlich ist, und verwenden Sie die Schaltfläche **Service Actions**, um **Turn On Maintenance Mode** auszuwählen. Der Wartungsmodus verhindert, dass Warnungen von dem Dienst generiert werden, wenn Sie ihn neu starten.
 
-    ![Menü zum Aktivieren des HDI-Wartungsmodus](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdi-maintenance-mode.png)
+    :::image type="content" source="./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdi-maintenance-mode.png" alt-text="Menü zum Aktivieren des HDI-Wartungsmodus":::
 
 7. Nachdem Sie den Wartungsmodus aktiviert haben, verwenden Sie die Schaltfläche **Restart** für den Dienst, um **Restart All Effected** auszuwählen.
 
-    ![Apache Ambari: Eintrag zum Neustarten aller betroffenen Instanzen](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdi-restart-all-button.png)
+    :::image type="content" source="./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdi-restart-all-button.png" alt-text="Apache Ambari: Eintrag zum Neustarten aller betroffenen Instanzen":::
 
    > [!NOTE]  
    > Die Einträge für die Schaltfläche **Restart** (Neu starten) können für andere Dienste anders lauten.

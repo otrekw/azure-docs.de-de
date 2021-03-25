@@ -6,10 +6,10 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 06/30/2017
 ms.openlocfilehash: 02360c68e5e830ceee69075fd5532b126d85bec2
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96512448"
 ---
 # <a name="u-sql-user-defined-objects-overview"></a>U-SQL: Benutzerdefinierte Objekte: Übersicht
@@ -55,5 +55,5 @@ UDOs werden im U-SQL-Skript in der Regel explizit als Teil der folgenden U-SQL-A
 > UDOs können maximal 0,5 GB Arbeitsspeicher beanspruchen.  Diese Beschränkung des Arbeitsspeichers gilt nicht für lokale Ausführungen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Übersicht über das U-SQL-Programmierbarkeitshandbuch](data-lake-analytics-u-sql-programmability-guide.md)
+* [U-SQL-Programmierbarkeitshandbuch](data-lake-analytics-u-sql-programmability-guide.md)
 * [U-SQL-Programmierbarkeitshandbuch: UDTs und UDAGGs](data-lake-analytics-u-sql-programmability-guide-UDT-AGG.md)

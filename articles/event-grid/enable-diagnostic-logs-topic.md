@@ -4,10 +4,10 @@ description: Dieser Artikel enthält schrittweise Anleitungen zum Aktivieren von
 ms.topic: how-to
 ms.date: 12/03/2020
 ms.openlocfilehash: ff00c1438c49cbc9f9e67eba0cf0acef7991a5a4
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96576450"
 ---
 #  <a name="enable-diagnostic-logs-for-azure-event-grid-topics-or-domains"></a>Aktivieren von Diagnoseprotokollen für Azure Event Grid-Themen oder -Domänen

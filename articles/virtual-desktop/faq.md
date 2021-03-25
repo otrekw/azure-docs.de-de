@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 10/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b915445b74e202f010c5505cc240b6f36e9da77c
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 3bdb38b8a9590cf6191c75fdef024543c2b1c190
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108506"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720272"
 ---
 # <a name="windows-virtual-desktop-faq"></a>Häufig gestellte Fragen zu Windows Virtual Desktop
 
@@ -136,3 +136,7 @@ Azure Lighthouse bietet keine vollständige Unterstützung für die Verwaltung v
 Es ist auch nicht möglich, CSP-Sandboxabonnements mit dem Windows Virtual Desktop-Dienst zu verwenden. Weitere Informationen finden Sie unter [Integration Sandbox-Konto](/partner-center/develop/set-up-api-access-in-partner-center#integration-sandbox-account).
 
 Wenn Sie den Ressourcenanbieter mit dem CSP-Besitzerkonto aktiviert haben, kann dieser durch die CSP-Kundenkonten nicht geändert werden.
+
+## <a name="how-often-should-i-turn-my-vms-on-to-prevent-registration-issues"></a>Wie oft sollte ich meine VMs aktivieren, um Registrierungsprobleme zu vermeiden?
+
+Nachdem Sie einen virtuellen Computer in einem Hostpool Windows Virtual Desktop-Diensts registriert haben, aktualisiert der Agent das Token der VM regelmäßig, wenn der virtuelle Computer aktiv ist. Das Zertifikat für das Registrierungstoken ist 90 Tage lang gültig. Aufgrund dieses Limits von 90 Tagen empfiehlt es sich, die VMs alle 90 Tage zu starten. Wenn Sie Ihre VM innerhalb dieses Zeitraums aktivieren, wird verhindert, dass das Registrierungstoken abläuft oder ungültig wird. Wenn Sie Ihre VM nach mehr als 90 Tagen gestartet haben und Registrierungsprobleme auftreten, befolgen Sie die Anweisungen im [Leitfaden zur Problembehandlung für den Windows Virtual Desktop-Agent](troubleshoot-agent.md#your-issue-isnt-listed-here-or-wasnt-resolved), um die VM aus dem Hostpool zu entfernen, den Agent neu zu installieren und ihn erneut beim Pool zu registrieren.

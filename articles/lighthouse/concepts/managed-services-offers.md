@@ -1,14 +1,14 @@
 ---
 title: Angebote für verwaltete Dienste im Azure Marketplace
 description: Angebote für verwaltete Dienste ermöglichen es Ihnen, Ressourcenverwaltungsangebote an Kunden in Azure Marketplace zu verkaufen.
-ms.date: 02/10/2021
+ms.date: 02/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: 7f3a12f34b4cedcb12ad2786fcb687044c30c211
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: e66a87751e0375804031e777a40c5fc1d0e8a7e2
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100375543"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "101093002"
 ---
 # <a name="managed-service-offers-in-azure-marketplace"></a>Angebote für verwaltete Dienste im Azure Marketplace
 
@@ -19,6 +19,9 @@ In diesem Artikel wird der neue Angebotstyp **Verwaltete Dienste** im [Azure Mar
 Angebote für verwaltete Dienste optimieren den Prozess des Onboardings von Kunden für Azure Lighthouse. Wenn ein Kunde ein Angebot im Azure Marketplace kauft, kann er angeben, welche Abonnements und/oder Ressourcengruppen integriert werden sollen.
 
 Danach können Benutzer in Ihrer Organisation entsprechend dem Zugriff, den Sie beim Erstellen des Angebots festgelegt haben, mithilfe der [delegierten Azure-Ressourcenverwaltung](azure-delegated-resource-management.md) mit diesen Ressourcen in Ihrem Verwaltungsmandanten arbeiten. Dazu wird ein Manifest verwendet, das die Azure Active Directory-Benutzer (Azure AD), -Gruppen und -Dienstprinzipale, die Zugriff auf Kundenressourcen erhalten, sowie die [Rollen](tenants-users-roles.md) für die jeweilige Zugriffsebene angibt.
+
+> [!NOTE]
+> Verwaltete Dienste sind in der Azure Government-Cloud und anderen nationalen Clouds möglicherweise nicht verfügbar.
 
 ## <a name="public-and-private-offers"></a>Öffentliche und private Angebote
 
@@ -43,4 +46,4 @@ Informationen zum Veröffentlichen eines Angebots für verwaltete Dienste finden
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Erfahren Sie über [Delegierte Azure-Ressourcenverwaltung](azure-delegated-resource-management.md) und [Mandantenübergreifende Verwaltungserfahrungen](cross-tenant-management-experience.md).
-- [Veröffentlichen von Angeboten für verwaltete Dienste](../how-to/publish-managed-services-offers.md) in Azure Marketplace.
+- [Veröffentlichen von Angeboten für verwaltete Dienste im Azure Marketplace](../how-to/publish-managed-services-offers.md)

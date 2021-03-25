@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8ab484e8caaffaf57f19f1fcd1e65f4b8e723f86
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93077896"
 ---
 # <a name="quickstart-require-terms-of-use-to-be-accepted-before-accessing-cloud-apps"></a>Schnellstart: Fordern der Annahme von Nutzungsbedingungen vor dem Zugreifen auf Cloud-Apps
@@ -35,8 +35,8 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Für die Durchführung des Szenarios im Rahmen dieses Schnellstarts benötigen Sie Folgendes:
 
-- **Zugriff auf eine Azure AD Premium-Edition** : Der bedingte Zugriff von Azure AD ist eine Funktion, die in Azure AD Premium enthalten ist.
-- **Ein Testkonto unter dem Namen Isabella Simonsen** : Wenn Sie nicht wissen, wie Sie ein Testkonto erstellen, lesen Sie [Hinzufügen von cloudbasierten Benutzern](../fundamentals/add-users-azure-active-directory.md#add-a-new-user).
+- **Zugriff auf eine Azure AD Premium-Edition**: Der bedingte Zugriff von Azure AD ist eine Funktion, die in Azure AD Premium enthalten ist.
+- **Ein Testkonto unter dem Namen Isabella Simonsen**: Wenn Sie nicht wissen, wie Sie ein Testkonto erstellen, lesen Sie [Hinzufügen von cloudbasierten Benutzern](../fundamentals/add-users-azure-active-directory.md#add-a-new-user).
 
 ## <a name="test-your-sign-in"></a>Testen Ihrer Anmeldung
 
@@ -115,7 +115,7 @@ Legen Sie in Ihrer Richtlinie Folgendes fest:
 
    :::image type="content" source="./media/require-tou/24.png" alt-text="Screenshot: Registerkarte „Einschließen“ der Seite „Benutzer und Gruppen“. „Benutzer und Gruppen auswählen“ und „Benutzer und Gruppen“ sind ausgewählt. „Auswählen“ ist hervorgehoben." border="false":::
 
-   1. Klicken Sie auf **Benutzer und Gruppen auswählen** , und wählen Sie dann **Benutzer und Gruppen** aus.
+   1. Klicken Sie auf **Benutzer und Gruppen auswählen**, und wählen Sie dann **Benutzer und Gruppen** aus.
    1. Klicken Sie auf **Auswählen**.
    1. Wählen Sie auf der Seite **Auswählen** den Benutzer **Isabella Simonsen** aus, und klicken Sie dann auf **Auswählen**.
    1. Klicken Sie auf der Seite **Benutzer und Gruppen** auf **Fertig**.
@@ -152,7 +152,7 @@ Legen Sie in Ihrer Richtlinie Folgendes fest:
 
 Nachdem Sie nun Ihre Richtlinie für bedingten Zugriff konfiguriert haben, möchten Sie wahrscheinlich wissen, ob sie erwartungsgemäß funktioniert. Verwenden Sie im ersten Schritt das What-If-Richtlinientool des bedingten Zugriffs, um eine Anmeldung für Ihren Testbenutzer zu simulieren. Die Simulation schätzt die Auswirkungen dieser Anmeldungen auf Ihre Richtlinien ab und generiert einen Simulationsbericht.  
 
-Legen Sie zum Initialisieren des **What If** -Richtlinienauswertungstools Folgendes fest:
+Legen Sie zum Initialisieren des **What If**-Richtlinienauswertungstools Folgendes fest:
 
 - Benutzer: **Isabella Simonsen**
 - Cloud-App: **Microsoft Azure Management**
@@ -170,7 +170,7 @@ Durch Klicken auf **What If** wird ein Simulationsbericht mit folgenden Informat
 
    ![What If](./media/require-tou/14.png)
 
-1. Klicken Sie auf **Benutzer** , wählen Sie **Isabella Simonsen** aus, und klicken Sie dann auf **Auswählen**.
+1. Klicken Sie auf **Benutzer**, wählen Sie **Isabella Simonsen** aus, und klicken Sie dann auf **Auswählen**.
 
    ![Benutzer](./media/require-tou/15.png)
 

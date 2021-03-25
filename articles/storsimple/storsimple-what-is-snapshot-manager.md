@@ -16,10 +16,10 @@ ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 2214f085c30419cefb3f6f84139d5592873173f7
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96017983"
 ---
 # <a name="an-introduction-to-storsimple-snapshot-manager"></a>Einführung in StorSimple Snapshot Manager
@@ -56,11 +56,11 @@ StorSimple Snapshot Manager-Sicherungen sind inkrementelle Momentaufnahmen, die 
 ## <a name="support-for-multiple-volume-types"></a>Unterstützung für mehrere Volumetypen
 Sie können den StorSimple Snapshot Manager zum Konfigurieren und Sichern der folgenden Volumetypen verwenden: 
 
-* **Basisvolumes** : Ein Basisvolume ist eine einzelne Partition auf einem Basisdatenträger. 
-* **Einfache Volumes:** Ein einfaches Volume ist ein dynamisches Volume, das den Speicherplatz von einem einzelnen dynamischen Datenträger enthält. Ein einfaches Volume besteht aus einem einzelnen Bereich auf einem Datenträger oder aus mehreren Bereichen auf demselben Datenträger, die miteinander verknüpft sind. (Sie können einfache Volumes nur auf dynamischen Datenträgern erstellen.) Einfache Volumes bieten keine Fehlertoleranz.
-* **Dynamische Volumes** : Ein dynamisches Volume ist ein Volume, das auf einem dynamischen Datenträger erstellt wird. Dynamische Datenträger verwenden eine Datenbank zum Nachverfolgen von Informationen zu den Volumes auf den dynamischen Datenträgern in einem Computer. 
-* **Dynamische Volumes mit Spiegelung** : Dynamische Volumes mit Spiegelung basieren auf der RAID-1-Architektur. Bei RAID 1 werden identische Daten auf zwei oder mehr Datenträger geschrieben, wodurch ein gespiegelter Satz entsteht. Eine Leseanforderung kann dann von einem beliebigen Datenträger behandelt werden, der die angeforderten Daten enthält.
-* **Freigegebene Clustervolumes** : Bei freigegebenen Clustervolumes (CSV) können mehrere Knoten in einem Failovercluster gleichzeitig auf demselben Datenträger lesen oder schreiben. Failover von einem Knoten auf einen anderen Knoten können sehr schnell durchgeführt werden, ohne dass eine Änderung am Besitz für das Laufwerk erforderlich ist oder dass ein Volume bereitgestellt, seine Bereitstellung aufgehoben oder ein Volume entfernt werden muss. 
+* **Basisvolume** – Ein Basisvolume ist eine einzelne Partition auf einem Basisdatenträger. 
+* **Einfache Volumes** – Ein einfaches Volume ist ein dynamisches Volume, das Speicherplatz von einem einzelnen dynamischen Datenträger enthält. Ein einfaches Volume besteht aus einem einzelnen Bereich auf einem Datenträger oder aus mehreren Bereichen auf demselben Datenträger, die miteinander verknüpft sind. (Sie können einfache Volumes nur auf dynamischen Datenträgern erstellen.) Einfache Volumes bieten keine Fehlertoleranz.
+* **Dynamische Volumes** – Ein dynamisches Volume ist ein auf einem dynamischen Datenträger erstelltes Volume. Dynamische Datenträger verwenden eine Datenbank zum Nachverfolgen von Informationen zu den Volumes auf den dynamischen Datenträgern in einem Computer. 
+* **Dynamische Volumes mit Spiegelungen** – Dynamische Volumes mit Spiegelung sind in die RAID 1-Architektur integriert. Bei RAID 1 werden identische Daten auf zwei oder mehr Datenträger geschrieben, wodurch ein gespiegelter Satz entsteht. Eine Leseanforderung kann dann von einem beliebigen Datenträger behandelt werden, der die angeforderten Daten enthält.
+* **Freigegebene Clustervolumes** – Mit freigegebenen Clustervolumes können mehrere Knoten in einem Failovercluster gleichzeitig auf demselben Datenträger lesen und schreiben. Failover von einem Knoten auf einen anderen Knoten können sehr schnell durchgeführt werden, ohne dass eine Änderung am Besitz für das Laufwerk erforderlich ist oder dass ein Volume bereitgestellt, seine Bereitstellung aufgehoben oder ein Volume entfernt werden muss. 
 
 > [!IMPORTANT]
 > Mischen Sie keine freigegebene Clustervolumes mit nicht freigegebenen Clustervolumes in derselben Momentaufnahme. Das Vermischen von freigegebenen Clustervolumes mit nicht freigegebenen Clustervolumes in einer Momentaufnahme wird nicht unterstützt. 
@@ -113,7 +113,7 @@ Mit StorSimple Snapshot Manager können Sie Daten sichern und lokal und in der C
 Sie können mit StorSimple Snapshot Manager die folgenden Typen von Sicherungen erstellen:
 
 * **Lokale Momentaufnahmen:** Lokale Momentaufnahmen sind Zeitpunktkopien der Volumedaten, die auf dem StorSimple-Gerät gespeichert sind. Diese Art der Sicherung kann i. d. R. schnell erstellt und wiederhergestellt werden. Sie können eine lokale Momentaufnahme wie eine lokale Sicherungskopie verwenden.
-* **Cloudmomentaufnahmen:** Cloudmomentaufnahmen sind Zeitpunktkopien der Volumedaten, die in der Cloud gespeichert werden. Eine Cloudmomentaufnahme entspricht einer Momentaufnahme, die auf einem anderen, externen Speichersystem repliziert wird. Cloudmomentaufnahmen sind besonders nützlich für Notfallwiederherstellungszenarios.
+* **Cloudmomentaufnahmen** – Cloudmomentaufnahmen sind Zeitpunktkopien von Volumedaten, die in der Cloud gespeichert werden. Eine Cloudmomentaufnahme entspricht einer Momentaufnahme, die auf einem anderen, externen Speichersystem repliziert wird. Cloudmomentaufnahmen sind besonders nützlich für Notfallwiederherstellungszenarios.
 
 ### <a name="on-demand-and-scheduled-backups"></a>Bedarfsgesteuerte und geplante Sicherungen
 Sie können mit dem StorSimple Snapshot Manager sofort eine einmalige Sicherung initiieren, oder Sie können eine Sicherungsrichtlinie verwenden, um wiederholte Sicherungsvorgänge zu planen.
@@ -124,11 +124,11 @@ Sie können mit dem StorSimple Snapshot Manager bei Bedarf jederzeit Sicherungsr
 
 Sie konfigurieren die folgenden Informationen für jede von Ihnen erstellte Sicherungsrichtlinie:
 
-* **Name** : der eindeutige Name der ausgewählten Sicherungsrichtlinie.
-* **Typ** : der Typ der Sicherungsrichtlinie – lokale Momentaufnahme oder Cloudmomentaufnahme.
-* **Volumegruppe** : die Volumegruppe, der die ausgewählte Sicherungsrichtlinie zugewiesen wird.
-* **Aufbewahrung:** die Anzahl von beizubehaltenden Sicherungskopien. Wenn Sie die Option **Alle** aktivieren, werden alle Sicherungskopien aufbewahrt, bis die maximale Anzahl von Sicherungskopien pro Volume erreicht ist. Zu diesem Zeitpunkt schlägt die Richtlinie fehl und generiert eine Fehlermeldung. Sie können auch eine Anzahl von Sicherungen angeben, die beibehalten werden sollen (zwischen 1 und 64).
-* **Datum** : das Datum, an dem die Sicherungsrichtlinie erstellt wurde.
+* **Name** – Der eindeutige Name der ausgewählten Sicherungsrichtlinie.
+* **Typ** – Der Typ der Sicherungsrichtlinie, der entweder eine lokale Momentaufnahme oder eine Cloudmomentaufnahme ist.
+* **Volumegruppe** – Die Volumegruppe, der die ausgewählte Sicherungsrichtlinie zugewiesen wird.
+* **Aufbewahrung** – Die Anzahl der zu bewahrenden Sicherungskopien. Wenn Sie das Kontrollkästchen **Alle** aktiviert haben, werden alle Sicherungskopien aufbewahrt, bis die maximale Anzahl von Sicherungskopien pro Volume erreicht wird. An diesem Punkt schlägt die Richtlinie dann fehl und generiert eine Fehlermeldung. Sie können auch eine Anzahl von Sicherungen angeben, die beibehalten werden sollen (zwischen 1 und 64).
+* **Datum** – Das Erstellungsdatum der Sicherungsrichtlinie.
 
 Informationen zum Konfigurieren von Sicherungsrichtlinien finden Sie unter [Erstellen und Verwalten von Sicherungsrichtlinien mit dem StorSimple Snapshot Manager](storsimple-snapshot-manager-manage-backup-policies.md).
 

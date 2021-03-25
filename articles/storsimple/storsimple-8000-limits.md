@@ -16,10 +16,10 @@ ms.date: 03/28/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 70f2d9542082ddf7ecf1d1e7361b0ecdb14c5ef8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "68963389"
 ---
 # <a name="what-are-storsimple-8000-series-system-limits"></a>Welche Systemeinschränkungen gelten für die StorSimple 8000-Serie?
@@ -38,8 +38,8 @@ StorSimple bietet skalierbaren und flexiblen Speicher für Ihr Rechenzentrum. Es
 | Maximale Anzahl von lokalen Volumes |32 | |
 | Maximale Anzahl von Zeitplänen pro Bandbreitenvorlage |168 |Einen Zeitplan für jede Stunde, jeden Tag der Woche (24 * 7). |
 | Maximale Größe eines mehrstufigen Volumes auf physischen Geräten |64 TB für 8100 und 8600 |8100 und 8600 sind physische Geräte. |
-| Maximale Größe eines mehrstufigen Volumes auf virtuellen Geräten in Azure |30 TB für 8010 <br></br> 64 TB für 8020 |8010 und 8020 sind virtuelle Geräte in Azure, die Standardspeicher und Storage Premium verwenden. |
-| Maximale Größe eines lokal fixierten Volumes auf physischen Geräten |8,5 TB für 8100 <br></br> 22,5 TB für 8600 |8100 und 8600 sind physische Geräte. |
+| Maximale Größe eines mehrstufigen Volumes auf virtuellen Geräten in Azure |30 TB für 8010  <br></br>  64 TB für 8020 |8010 und 8020 sind virtuelle Geräte in Azure, die Standardspeicher und Storage Premium verwenden. |
+| Maximale Größe eines lokal fixierten Volumes auf physischen Geräten |8,5 TB für 8100 <br></br>  22,5 TB für 8600 |8100 und 8600 sind physische Geräte. |
 | Maximale Anzahl von iSCSI-Verbindungen |512 | |
 | Maximale Anzahl von iSCSI-Verbindungen von Initiatoren |512 | |
 | Maximale Anzahl von Zugriffssteuerungsdatensätzen pro Gerät |64 | |

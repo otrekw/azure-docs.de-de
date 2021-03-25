@@ -11,10 +11,10 @@ ms.date: 08/28/2020
 ms.author: erhopf
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
 ms.openlocfilehash: 66de81387fe27bd2a81ebcfeab7d86aac7031ff1
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102425293"
 ---
 # <a name="azure-cognitive-services-security"></a>Sicherheit von Azure Cognitive Services
@@ -147,7 +147,7 @@ int main()
 
 # <a name="java"></a>[Java](#tab/java)
 
-Weitere Informationen finden Sie unter    .
+Weitere Informationen finden Sie unter <a href="https://docs.oracle.com/javase/7/docs/api/java/lang/System.html#getenv(java.lang.String)" target="_blank">`System.getenv` </a>.
 
 ```java
 import java.lang.*;
@@ -164,7 +164,7 @@ public class Program {
 
 # <a name="nodejs"></a>[Node.js](#tab/node-js)
 
-Weitere Informationen finden Sie unter    .
+Weitere Informationen finden Sie unter <a href="https://nodejs.org/api/process.html#process_process_env" target="_blank">`process.env` </a>.
 
 ```javascript
 // Get the named env var, and assign it to the value variable
@@ -185,7 +185,7 @@ value = os.environ['ENVIRONMENT_VARIABLE_KEY']
 
 # <a name="objective-c"></a>[Objective-C](#tab/objective-c)
 
-Weitere Informationen finden Sie unter    .
+Weitere Informationen finden Sie unter <a href="https://developer.apple.com/documentation/foundation/nsprocessinfo/1417911-environment?language=objc" target="_blank">`environment` </a>.
 
 ```objectivec
 // Get the named env var, and assign it to the value variable

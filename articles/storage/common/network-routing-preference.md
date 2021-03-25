@@ -3,20 +3,20 @@ title: Netzwerkroutingpräferenz
 titleSuffix: Azure Storage
 description: Über die Netzwerkroutingpräferenz können Sie angeben, wie Netzwerkdatenverkehr von Clients über das Internet zu Ihrem Konto geleitet wird.
 services: storage
-author: santoshc
+author: normesta
 ms.service: storage
 ms.topic: conceptual
 ms.date: 02/11/2021
-ms.author: santoshc
-ms.reviewer: normesta
+ms.author: normesta
+ms.reviewer: santoshc
 ms.subservice: common
 ms.custom: references_regions
-ms.openlocfilehash: 6b6c90259c552895360281b393e15773c6e101e3
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: bf2270fe6f71dfe5be31db8e82f6c44696f28074
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101726936"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103601490"
 ---
 # <a name="network-routing-preference-for-azure-storage"></a>Netzwerkroutingpräferenz für Azure Storage
 

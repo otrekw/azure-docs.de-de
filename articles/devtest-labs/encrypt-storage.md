@@ -4,10 +4,10 @@ description: Erfahren Sie, wie Sie die Verschlüsselung eines von einem Lab verw
 ms.topic: how-to
 ms.date: 07/29/2020
 ms.openlocfilehash: dcede89fb23c532742e41121688bcb51a5a73833
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92149303"
 ---
 # <a name="encrypt-azure-storage-used-by-a-lab-in-azure-devtest-labs"></a>Verschlüsseln eines von einem Lab verwendeten Azure-Speichers in Azure DevTest Labs
@@ -28,10 +28,10 @@ Jedes Lab, das in Azure DevTest Labs erstellt wird, wird mit einem zugeordneten 
     :::image type="content" source="./media/encrypt-storage/overview-resource-group-link.png" alt-text="Auswählen der Ressourcengruppe auf der Seite „Übersicht“":::
 1. Wählen Sie das Azure-Speicherkonto des Labs aus. Die Namenskonvention für das Lab-Speicherkonto lautet: `a<labNameWithoutInvalidCharacters><4-digit number>`. Wenn der Name des Labs beispielsweise `contosolab` ist, könnte der Name des Speicherkontos `acontosolab7576` lauten. 
 
-    :::image type="content" source="./media/encrypt-storage/select-storage-account.png" alt-text="Auswählen der Ressourcengruppe auf der Seite „Übersicht“":::
+    :::image type="content" source="./media/encrypt-storage/select-storage-account.png" alt-text="Auswählen des Speicherkontos in der Ressourcengruppe des Labs":::
 3. Wählen Sie auf der Seite **Speicherkonto** die Option **Storage-Explorer (Vorschau)** im linken Menü aus, und wählen Sie dann **BLOBCONTAINER** aus, um relevante lab-bezogene Inhalte zu ermitteln. 
 
-   :::image type="content" source="./media/encrypt-storage/storage-explorer.png" alt-text="Auswählen der Ressourcengruppe auf der Seite „Übersicht“" lightbox="./media/encrypt-storage/storage-explorer.png":::
+   :::image type="content" source="./media/encrypt-storage/storage-explorer.png" alt-text="Storage-Explorer (Vorschau)" lightbox="./media/encrypt-storage/storage-explorer.png":::
 
 ## <a name="encrypt-the-lab-storage-account"></a>Verschlüsseln des Speicherkontos des Labs
 Mit Azure Storage werden Ihre Daten beim persistenten Speichern in der Cloud automatisch verschlüsselt. Durch Azure Storage-Verschlüsselung werden Ihre Daten ausreichend geschützt, um den Sicherheits- und Complianceanforderungen Ihrer Organisation gerecht zu werden. Weitere Informationen finden Sie unter [Azure Storage-Verschlüsselung für ruhende Daten](../storage/common/storage-service-encryption.md).

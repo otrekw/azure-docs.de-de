@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 04/28/2020
 ms.custom: mvc, devx-track-azurepowershell
 ms.openlocfilehash: d12d447acb3b6bf2b6f84e9768e9f063a9a36b03
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94542302"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-server-using-powershell"></a>Schnellstart: Erstellen eines Azure Database for MySQL-Servers mit PowerShell
@@ -23,7 +23,7 @@ In dieser Schnellstartanleitung wird die Verwendung von PowerShell zum Erstellen
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
-Falls Sie PowerShell lokal verwenden möchten, müssen Sie für diesen Artikel das PowerShell-Modul installieren und mit dem Cmdlet [Connect-AzAccount](/powershell/module/az.accounts/Connect-AzAccount) eine Verbindung mit Ihrem Azure-Konto herstellen. Weitere Informationen zum Installieren des Az PowerShell-Moduls finden Sie unter [Installieren von Azure PowerShell](/powershell/azure/install-az-ps).
+Falls Sie PowerShell lokal verwenden möchten, müssen Sie für diesen Artikel das Az PowerShell-Modul installieren und mit dem Cmdlet [Connect-AzAccount](/powershell/module/az.accounts/Connect-AzAccount) eine Verbindung mit Ihrem Azure-Konto herstellen. Weitere Informationen zum Installieren des Az PowerShell-Moduls finden Sie unter [Installieren von Azure PowerShell](/powershell/azure/install-az-ps).
 
 > [!IMPORTANT]
 > Solange nur eine Vorschauversion des PowerShell-Moduls „Az.MySql“ verfügbar ist, müssen Sie es separat über das Az PowerShell-Modul installieren. Verwenden Sie hierfür den folgenden Befehl: `Install-Module -Name Az.MySql -AllowPrerelease`.
@@ -81,7 +81,7 @@ Für den Parameterwert **Sku** wird das Format **Tarif\_Computegeneration\_V-Ker
 
 Informationen zu den gültigen Werten für **Sku** nach Region und für Tarife finden Sie unter [Azure Database for MySQL – Tarife](./concepts-pricing-tiers.md).
 
-Im folgenden Beispiel wird ein MySQL-Server in der Region **USA, Westen** mit dem Namen **mydemoserver** in der Ressourcengruppe **myresourcegroup** erstellt. Der Benutzername für den Serveradministrator lautet **myadmin**. Es handelt sich um einen Gen 5-Server im Tarif „Universell“ mit zwei V-Kernen und Aktivierung von georedundanten Sicherungen. Notieren Sie sich das Kennwort, das in der ersten Zeile des Beispiels verwendet wird, da dies das Kennwort für das Administratorkonto des MySQL-Servers ist.
+Im folgenden Beispiel wird ein MySQL-Server in der Region **USA, Westen** mit dem Namen **mydemoserver** in der Ressourcengruppe **myresourcegroup** erstellt. Der Benutzername für den Serveradministrator lautet **myadmin**. Es handelt sich um einen Gen 5-Server im Tarif „Universell“ mit zwei virtuellen Kernen und Aktivierung von georedundanten Sicherungen. Notieren Sie sich das Kennwort, das in der ersten Zeile des Beispiels verwendet wird, da dies das Kennwort für das Administratorkonto des MySQL-Servers ist.
 
 > [!TIP]
 > Ein Servername wird einem DNS-Namen zugeordnet und muss in Azure global eindeutig sein.

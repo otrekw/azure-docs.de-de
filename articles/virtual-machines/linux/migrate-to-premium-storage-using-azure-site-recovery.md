@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
-ms.openlocfilehash: 8a03637352762646b0f209263769dbdb1ff14b21
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 8688d278c40ba34b7c4344a73cb4717f3fd71368
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102562621"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104600070"
 ---
 # <a name="use-site-recovery-to-migrate-to-premium-storage"></a>Migrieren zu Storage Premium mithilfe von Site Recovery
 
@@ -197,7 +197,7 @@ Site Recovery erstellt eine VM-Instanz, deren Typ einem Storage Premium-fähigen
    * Für eine VM, die mit dem klassischen Bereitstellungsmodell erstellt wurde: Fügen Sie die VM zur Verfügbarkeitsgruppe im Azure-Portal hinzu. Ausführliche Schritte finden Sie unter [Fügen Sie einer Verfügbarkeitsgruppe einen vorhandenen virtuellen Computer hinzu](/previous-versions/azure/virtual-machines/linux/classic/configure-availability-classic).
    * Für eine VM, die mit dem Ressourcen-Manager-Bereitstellungsmodell erstellt wurde: Speichern Sie Ihre Konfiguration der VM. Löschen Sie dann die VMs, und erstellen Sie sie in der Verfügbarkeitsgruppe neu. Verwenden Sie hierfür das Skript unter [Set Azure Resource Manager VM Availability Set](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4) (Festlegen der Azure Resource Manager-VM-Verfügbarkeitsgruppe). Machen Sie sich vor dem Ausführen dieses Skripts mit dessen Einschränkungen vertraut, und planen Sie Ihre Ausfallzeit.
 
-2. **Löschen Sie alte VMs und Datenträger**. Stellen Sie sicher, dass die Premium-Datenträger mit den Quelldatenträgern konsistent sind und die neuen virtuellen Computer die gleiche Funktion erfüllen wie die virtuellen Quellcomputer. Löschen Sie den virtuellen Computer, und löschen Sie die Datenträger aus Ihren Quellspeicherkonten im Azure-Portal. Falls der Datenträger aufgrund eines Problems nicht gelöscht wird, obwohl Sie den virtuellen Computer gelöscht haben, lesen Sie [Problembehandlung bei Speicherressourcen-Löschfehlern](../troubleshooting/storage-resource-deletion-errors.md).
+2. **Löschen Sie alte VMs und Datenträger**. Stellen Sie sicher, dass die Premium-Datenträger mit den Quelldatenträgern konsistent sind und die neuen virtuellen Computer die gleiche Funktion erfüllen wie die virtuellen Quellcomputer. Löschen Sie den virtuellen Computer, und löschen Sie die Datenträger aus Ihren Quellspeicherkonten im Azure-Portal. Falls der Datenträger aufgrund eines Problems nicht gelöscht wird, obwohl Sie den virtuellen Computer gelöscht haben, lesen Sie [Problembehandlung bei Speicherressourcen-Löschfehlern](/troubleshoot/azure/virtual-machines/storage-resource-deletion-errors).
 
 3. **Bereinigen Sie die Azure Site Recovery-Infrastruktur**. Wenn Site Recovery nicht mehr benötigt wird, können Sie die dazugehörige Infrastruktur bereinigen. Löschen Sie replizierte Objekte, den Konfigurationsserver, die Wiederherstellungsrichtlinie und anschließend den Azure Site Recovery-Tresor.
 

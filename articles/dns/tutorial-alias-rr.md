@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 9/25/2018
 ms.author: rohink
 ms.openlocfilehash: 2b122a34cfd382a58f7680743d3a1cb1ae598fd1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "76939245"
 ---
 # <a name="tutorial-create-an-alias-record-to-refer-to-a-zone-resource-record"></a>Tutorial: Erstellen eines Aliaseintrags, um auf einen Zonenressourceneintrag zu verweisen
@@ -42,7 +42,7 @@ Erstellen eines Aliaseintrags, der auf einen Ressourceneintrag in der Zone verwe
 1. Wählen Sie Ihre Azure DNS-Zone aus, um sie zu öffnen.
 2. Wählen Sie **Ressourceneintragssatz**.
 3. Geben Sie im Textfeld **Name** den Namen **Server** ein.
-4. Wählen Sie unter **Typ** die Option**A** aus.
+4. Wählen Sie unter **Typ** die Option **A** aus.
 5. Geben Sie im Textfeld **IP-ADRESSE** die Adresse **10.10.10.10** ein.
 6. Klicken Sie auf **OK**.
 
@@ -50,7 +50,7 @@ Erstellen eines Aliaseintrags, der auf einen Ressourceneintrag in der Zone verwe
 1. Wählen Sie Ihre Azure DNS-Zone aus, um sie zu öffnen.
 2. Wählen Sie **Ressourceneintragssatz**.
 3. Geben Sie im Textfeld **Name** den Namen **Test** ein.
-4. Wählen Sie unter **Typ** die Option**A** aus.
+4. Wählen Sie unter **Typ** die Option **A** aus.
 5. Wählen Sie für das Kontrollkästchen **Alias Record Set** (Aliaseintragssatz) die Option **Ja**. Aktivieren Sie anschließend die Option **Zone record set** (Zoneneintragssatz).
 6. Wählen Sie unter **Zone record set** (Zoneneintragssatz) den Eintrag **Server** aus.
 7. Klicken Sie auf **OK**.

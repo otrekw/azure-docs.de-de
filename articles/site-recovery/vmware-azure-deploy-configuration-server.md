@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 10/15/2019
 ms.author: ramamill
 ms.openlocfilehash: a8ceb3df68ebe42f83c70ed62327bf59c0dfc225
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92359814"
 ---
 # <a name="deploy-a-configuration-server"></a>Bereitstellen eines Konfigurationsservers
@@ -38,24 +38,24 @@ Sie benötigen einen Benutzer mit einem der folgenden Berechtigungssätze in Azu
 
 1. Der Benutzer muss über die Rolle „Anwendungsentwickler“ verfügen, um eine Anwendung erstellen zu können.
     - Zur Überprüfung melden Sie sich beim Azure-Portal an.</br>
-    - Navigieren Sie zu **Azure Active Directory** > **Rollen und Administratoren** .</br>
+    - Navigieren Sie zu **Azure Active Directory** > **Rollen und Administratoren**.</br>
     - Vergewissern Sie sich, dass dem Benutzer die Rolle „Anwendungsentwickler“ zugewiesen ist. Falls nicht, verwenden Sie einen Benutzer mit dieser Berechtigung, oder bitten Sie den [Administrator, die Berechtigung zu aktivieren](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md#assign-roles).
     
 2. Wenn die Rolle „Anwendungsentwickler“ nicht zugewiesen werden kann, stellen Sie sicher, dass das Flag **Benutzer können Anwendungen registrieren** auf **true** festgelegt ist, damit der Benutzer eine Identität erstellen kann. So aktivieren Sie diese Berechtigungen
     - Melden Sie sich beim Azure-Portal an.
-    - Navigieren Sie zu **Azure Active Directory** > **Benutzereinstellungen** .
-    - Wählen Sie unter **App-Registrierungen** , **Benutzer können Anwendungen registrieren** die Option **Ja** aus.
+    - Navigieren Sie zu **Azure Active Directory** > **Benutzereinstellungen**.
+    - Wählen Sie unter **App-Registrierungen**, **Benutzer können Anwendungen registrieren** die Option **Ja** aus.
 
       ![Azure AD_application_permission](media/vmware-azure-deploy-configuration-server/AAD_application_permission.png)
 
 > [!NOTE]
-> Active Directory-Verbunddienste (AD FS) *werden nicht unterstützt* . Verwenden Sie ein Konto, das mit [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) verwaltet wird.
+> Active Directory-Verbunddienste (AD FS) *werden nicht unterstützt*. Verwenden Sie ein Konto, das mit [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) verwaltet wird.
 
 ## <a name="download-the-template"></a>Herunterladen der Vorlage
 
-1. Navigieren Sie im Tresor zu **Infrastruktur vorbereiten** > **Quelle** .
-2. Klicken Sie unter **Quelle vorbereiten** auf **+Konfigurationsserver** .
-3. Überprüfen Sie unter **Server hinzufügen** , ob unter **Servertyp** die Option **Konfigurationsserver für VMware** angezeigt wird.
+1. Navigieren Sie im Tresor zu **Infrastruktur vorbereiten** > **Quelle**.
+2. Klicken Sie unter **Quelle vorbereiten** auf **+Konfigurationsserver**.
+3. Überprüfen Sie unter **Server hinzufügen**, ob unter **Servertyp** die Option **Konfigurationsserver für VMware** angezeigt wird.
 4. Laden Sie die OVA-Vorlage für den Konfigurationsserver herunter.
 
    > [!TIP]
@@ -72,7 +72,7 @@ Sie benötigen einen Benutzer mit einem der folgenden Berechtigungssätze in Azu
      ![Bereitstellen der OVF-Vorlage](./media/vmware-azure-deploy-configuration-server/vcenter-wizard.png)
 
 3. Geben Sie unter **Quelle auswählen** den Speicherort der heruntergeladenen OVF-Vorlage ein.
-4. Klicken Sie unter **Bewertungsdetails** auf **Weiter** .
+4. Klicken Sie unter **Bewertungsdetails** auf **Weiter**.
 5. Übernehmen Sie unter **Name und Ordner auswählen** und **Konfiguration auswählen** die Standardeinstellungen.
 6. Wählen Sie unter **Speicher auswählen** für **Select virtual disk format** (Format für virtuellen Datenträger auswählen) die Option **Thick Provision Eager Zeroed** (Breite Bereitstellung gegen null) aus, um eine optimale Leistung zu erzielen. Die Verwendung der schlanken Speicherzuweisung kann die Leistung des Konfigurationsservers beeinträchtigen.
 7. Übernehmen Sie auf den übrigen Seiten des Assistenten die Standardeinstellungen.
@@ -92,9 +92,9 @@ Sie benötigen einen Benutzer mit einem der folgenden Berechtigungssätze in Azu
 Wenn Sie dem Konfigurationsserver eine zusätzliche NIC hinzufügen möchten, führen Sie diesen Schritt aus, bevor Sie den Server im Tresor registrieren. Das Hinzufügen von zusätzlichen Adaptern nach der Registrierung wird nicht unterstützt.
 
 1. Klicken Sie im vSphere-Client mit der rechten Maustaste auf den virtuellen Computer, und wählen Sie **Einstellungen bearbeiten** aus.
-2. Klicken Sie unter **Hardware** auf **Hinzufügen** > **Ethernet-Adapter** . Wählen Sie **Weiter** aus.
+2. Klicken Sie unter **Hardware** auf **Hinzufügen** > **Ethernet-Adapter**. Wählen Sie **Weiter** aus.
 3. Wählen Sie einen Adaptertyp und ein Netzwerk aus.
-4. Um die virtuelle NIC zu verbinden, wenn die VM Computer eingeschaltet wird, wählen Sie **Connect at power-on** (Beim Einschalten verbinden) aus. Klicken Sie anschließend auf **Weiter** > **Fertig stellen** > **OK** .
+4. Um die virtuelle NIC zu verbinden, wenn die VM Computer eingeschaltet wird, wählen Sie **Connect at power-on** (Beim Einschalten verbinden) aus. Klicken Sie anschließend auf **Weiter** > **Fertig stellen** > **OK**.
 
 ## <a name="register-the-configuration-server-with-azure-site-recovery-services"></a>Registrieren des Konfigurationsservers bei Azure Site Recovery-Diensten
 
@@ -103,7 +103,7 @@ Wenn Sie dem Konfigurationsserver eine zusätzliche NIC hinzufügen möchten, f�
 3. Melden Sie sich nach Abschluss der Installation als Administrator am virtuellen Computer an.
 4. Bei der ersten Anmeldung wird das Azure Site Recovery-Konfigurationstool innerhalb weniger Sekunden gestartet.
 5. Geben Sie einen Namen ein, der für die Registrierung des Konfigurationsservers bei Site Recovery verwendet wird. Wählen Sie **Weiter** aus.
-6. Das Tool überprüft, ob der virtuelle Computer eine Verbindung mit Azure herstellen kann. Klicken Sie nach der Verbindungsherstellung auf **Anmelden** , um sich bei Ihrem Azure-Abonnement anzumelden.</br>
+6. Das Tool überprüft, ob der virtuelle Computer eine Verbindung mit Azure herstellen kann. Klicken Sie nach der Verbindungsherstellung auf **Anmelden**, um sich bei Ihrem Azure-Abonnement anzumelden.</br>
     a. Die Anmeldeinformationen müssen über Zugriff auf den Tresor verfügen, in dem Sie den Konfigurationsserver registrieren möchten.</br>
     b. Stellen Sie sicher, dass das ausgewählte Benutzerkonto über die Berechtigung zum Erstellen einer Anwendung in Azure verfügt. Um die erforderlichen Berechtigungen zu aktivieren, befolgen Sie die Richtlinien im Abschnitt [Anforderungen für Azure Active Directory-Berechtigungen](#azure-active-directory-permission-requirements).
 7. Das Tool führt einige Konfigurationsaufgaben und anschließend einen Neustart durch.
@@ -111,7 +111,7 @@ Wenn Sie dem Konfigurationsserver eine zusätzliche NIC hinzufügen möchten, f�
 
 ### <a name="configure-settings"></a>Konfigurieren von Einstellungen
 
-1. Wählen Sie im Assistent für die Konfigurationsserververwaltung die Option **Konnektivität einrichten** . Wählen Sie in den Dropdownfeldern zunächst den Netzwerkadapter aus, den der integrierte Prozessserver für die Ermittlung und die Pushinstallation des Mobilitätsdiensts auf Quellcomputern verwendet. Wählen Sie anschließend den Netzwerkadapter aus, den der Konfigurationsserver zum Herstellen einer Verbindung mit Azure nutzt. Wählen Sie **Speichern** aus. Diese Einstellung kann nach der Konfiguration nicht mehr geändert werden. Ändern Sie die IP-Adresse eines Konfigurationsservers nicht. Stellen Sie sicher, dass es sich bei der dem Konfigurationsserver zugewiesenen IP um eine statische IP und keine DHCP-IP handelt.
+1. Wählen Sie im Assistent für die Konfigurationsserververwaltung die Option **Konnektivität einrichten**. Wählen Sie in den Dropdownfeldern zunächst den Netzwerkadapter aus, den der integrierte Prozessserver für die Ermittlung und die Pushinstallation des Mobilitätsdiensts auf Quellcomputern verwendet. Wählen Sie anschließend den Netzwerkadapter aus, den der Konfigurationsserver zum Herstellen einer Verbindung mit Azure nutzt. Wählen Sie **Speichern** aus. Diese Einstellung kann nach der Konfiguration nicht mehr geändert werden. Ändern Sie die IP-Adresse eines Konfigurationsservers nicht. Stellen Sie sicher, dass es sich bei der dem Konfigurationsserver zugewiesenen IP um eine statische IP und keine DHCP-IP handelt.
 2. Melden Sie sich unter **Recovery Services-Tresor auswählen** bei Microsoft Azure mit den in Schritt 6 zum [Registrieren des Konfigurationsservers mit Azure Site Recovery Services](#register-the-configuration-server-with-azure-site-recovery-services) verwendeten Anmeldeinformationen an.
 3. Wählen Sie nach der Anmeldung Ihr Azure-Abonnement, die entsprechende Ressourcengruppe und den Tresor aus.
 
@@ -124,14 +124,14 @@ Wenn Sie dem Konfigurationsserver eine zusätzliche NIC hinzufügen möchten, f�
     |Szenario   |Vorgehensweise  |
     |---------|---------|
     |Kann ich MySQL manuell herunterladen und installieren?     |  Ja. Laden Sie die Anwendung MySQL herunter, legen Sie sie im Ordner **C:\Temp\ASRSetup** ab, und installieren Sie sie dann manuell. Nachdem Sie den Bedingungen zugestimmt haben, wählen Sie **Herunterladen und installieren** aus. Im Portal wird die Meldung *Bereits installiert* angezeigt. Sie können mit dem nächsten Schritt fortfahren.       |
-    |Ist es möglich, das Herunterladen von MySQL über das Internet zu umgehen?     |   Ja. Platzieren Sie Ihr MySQL-Installationsprogramm im Ordner **C:\Temp\ASRSetup** . Stimmen Sie den Bedingungen zu, wählen Sie **Herunterladen und installieren** aus, und das Portal verwendet das Installationsprogramm, das Sie zum Installieren der Anwendung hinzugefügt haben. Fahren Sie nach Abschluss der Installation mit dem nächsten Schritt fort.    |
+    |Ist es möglich, das Herunterladen von MySQL über das Internet zu umgehen?     |   Ja. Platzieren Sie Ihr MySQL-Installationsprogramm im Ordner **C:\Temp\ASRSetup**. Stimmen Sie den Bedingungen zu, wählen Sie **Herunterladen und installieren** aus, und das Portal verwendet das Installationsprogramm, das Sie zum Installieren der Anwendung hinzugefügt haben. Fahren Sie nach Abschluss der Installation mit dem nächsten Schritt fort.    |
     |Ich möchte MySQL über Azure Site Recovery herunterladen und installieren.    |  Akzeptieren Sie den Lizenzvertrag, und wählen Sie **Herunterladen und installieren** aus. Fahren Sie nach Abschluss der Installation mit dem nächsten Schritt fort.       |
 
 5. Unter **Anwendungskonfiguration überprüfen** werden die Voraussetzungen überprüft, bevor der Vorgang fortgesetzt wird.
 6. Geben Sie unter **vCenter-Server/vSphere ESXi-Server konfigurieren** den FQDN oder die IP-Adresse des vCenter-Servers oder vSphere-Hosts ein, auf dem sich die virtuellen Computer befinden, die repliziert werden sollen. Geben Sie den Port ein, über den der Server lauscht. Geben Sie einen Anzeigenamen ein, der für den VMware-Server im Tresor verwendet werden soll.
 7. Geben Sie die Anmeldeinformationen ein, die der Konfigurationsserver beim Herstellen der Verbindung mit dem VMware-Server verwenden soll. Site Recovery verwendet diese Anmeldeinformationen für die automatische Erkennung von VMware-VMs, die für die Replikation verfügbar sind. Wählen Sie **Hinzufügen** > **Weiter** aus. Die hier eingegebenen Anmeldeinformationen werden lokal gespeichert.
-8. Geben Sie unter **Anmeldeinformationen für virtuelle Computer konfigurieren** den Benutzernamen und das Kennwort der virtuellen Computer an, um den Mobility Service während der Replikation automatisch installieren zu lassen. Für **Windows** -Computer benötigt das Konto lokale Administratorrechte auf den Computern, die Sie replizieren möchten. Bei **Linux** geben Sie die Anmeldeinformationen für das Stammkonto an.
-9. Klicken Sie auf **Konfiguration abschließen** , um die Registrierung abzuschließen.
+8. Geben Sie unter **Anmeldeinformationen für virtuelle Computer konfigurieren** den Benutzernamen und das Kennwort der virtuellen Computer an, um den Mobility Service während der Replikation automatisch installieren zu lassen. Für **Windows**-Computer benötigt das Konto lokale Administratorrechte auf den Computern, die Sie replizieren möchten. Bei **Linux** geben Sie die Anmeldeinformationen für das Stammkonto an.
+9. Klicken Sie auf **Konfiguration abschließen**, um die Registrierung abzuschließen.
 10. Nachdem die Registrierung abgeschlossen ist, öffnen Sie das Azure-Portal, und stellen Sie sicher, dass der Konfigurationsserver und der VMware-Server unter **Recovery Services-Tresor** > **Verwalten** > **Site Recovery-Infrastruktur** > **Konfigurationsserver** aufgeführt sind.
 
 ## <a name="upgrade-the-configuration-server"></a>Aktualisieren Sie den Konfigurationsserver
@@ -175,7 +175,7 @@ Informationen zum Lösen von Problemen mit Bereitstellung und Konnektivität fin
     Nein. Ändern Sie die Passphrase des Konfigurationsservers nicht. Eine Änderung der Passphrase unterbricht die Replikation geschützter Computer und führt zu einem kritischen Integritätszustand.
 * Wo kann ich die Tresorregistrierungsschlüssel herunterladen?
 
-    Wählen Sie im **Recovery Services-Tresor** die Option **Verwalten** > **Site Recovery-Infrastruktur** > **Konfigurationsserver** aus. Klicken Sie unter **Server** auf **Registrierungsschlüssel herunterladen** , um die Datei mit den Tresoranmeldeinformationen herunterzuladen.
+    Wählen Sie im **Recovery Services-Tresor** die Option **Verwalten** > **Site Recovery-Infrastruktur** > **Konfigurationsserver** aus. Klicken Sie unter **Server** auf **Registrierungsschlüssel herunterladen**, um die Datei mit den Tresoranmeldeinformationen herunterzuladen.
 * Kann ich einen bestehenden Konfigurationsserver klonen und für die Replikationsorchestrierung verwenden?
 
     Nein. Die Verwendung einer geklonten Konfigurationsserverkomponente wird nicht unterstützt. Das Klonen des horizontal skalierten Prozessservers ist ebenfalls ein nicht unterstütztes Szenario. Das Klonen von Site Recovery-Komponenten wirkt sich auf die laufenden Replikationen aus.

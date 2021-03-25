@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: syclebsc
 ms.openlocfilehash: f9b7b92fd21e12f1d86c5d5878e48c6ec6b0e748
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87088018"
 ---
 # <a name="azure-functions-f-developer-reference"></a>F#-Entwicklerreferenz zu Azure Functions
@@ -61,7 +61,7 @@ let Run(blob: string, output: byref<Item>) =
     output <- item
 ```
 
-Für Ihre F#-Azure-Funktion wird mindestens ein Argument verwendet. Wenn wir von Azure Functions-Argumenten sprechen, geht es um Argumente für die *Eingabe* und Argumente für die *Ausgabe*. Bei einem Eingabeargument geht es genau um das, was der Name vermuten lässt: die Eingabe in Ihre F#-Azure-Funktion. Bei einem *Ausgabe*argument geht es um änderbare Daten oder ein `byref<>`-Argument, das als Möglichkeit zum Zurückgeben von Daten *aus* Ihrer Funktion dient.
+Für Ihre F#-Azure-Funktion wird mindestens ein Argument verwendet. Wenn wir von Azure Functions-Argumenten sprechen, geht es um Argumente für die *Eingabe* und Argumente für die *Ausgabe*. Bei einem Eingabeargument geht es genau um das, was der Name vermuten lässt: die Eingabe in Ihre F#-Azure-Funktion. Bei einem *Ausgabe* argument geht es um änderbare Daten oder ein `byref<>`-Argument, das als Möglichkeit zum Zurückgeben von Daten *aus* Ihrer Funktion dient.
 
 Im obigen Beispiel ist `blob` ein Eingabeargument und `output` ein Ausgabeargument. Beachten Sie, dass wir `byref<>` für `output` verwendet haben (das Hinzufügen der Anmerkung `[<Out>]` ist nicht erforderlich). Mit dem Typ `byref<>` kann Ihre Funktion ändern, auf welchen Eintrag oder welches Objekt das Argument verweist.
 

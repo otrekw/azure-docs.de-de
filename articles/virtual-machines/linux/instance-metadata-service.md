@@ -11,11 +11,13 @@ ms.workload: infrastructure-services
 ms.date: 02/21/2021
 ms.author: sukumari
 ms.reviewer: azmetadatadev
-ms.openlocfilehash: e0a43b7798b168dfa810ff8686fa1df96ab672ba
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: a5aada5914f400732529294ede43c811002b7ea4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101674837"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102183504"
 ---
+# <a name="azure-instance-metadata-service-linux"></a>Azure Instance Metadata Service (Linux)
+
 [!INCLUDE [virtual-machines-imds](../../../includes/virtual-machines-imds.md)]

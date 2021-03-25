@@ -1,14 +1,14 @@
 ---
 title: 'Azure Service Bus-Messaging: Warteschlangen, Themen und Abonnements'
 description: Dieser Artikel bietet eine Übersicht über Azure Service Bus-Messagingentitäten (Warteschlangen, Themen und Abonnements).
-ms.topic: article
-ms.date: 11/04/2020
-ms.openlocfilehash: 54b6a1fd2d4e8e5ef5bb6522374646257213e4b4
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.topic: conceptual
+ms.date: 02/16/2021
+ms.openlocfilehash: b8fb68509ad920fc6911290377f49b89ec610b58
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95791606"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "101096323"
 ---
 # <a name="service-bus-queues-topics-and-subscriptions"></a>Service Bus-Warteschlangen, -Themen und -Abonnements
 Azure Service Bus unterstützt einen Satz cloudbasierter, nachrichtenorientierter Middlewaretechnologien, darunter zuverlässiges Message Queuing und dauerhaftes Veröffentlichungs-/Abonnementmessaging. Diese Brokermessagingfunktionen können Sie sich als asynchrone, entkoppelte Messagingfeatures vorstellen, die unter Verwendung der Service Bus-Messagingworkload verschiedene Szenarien wie Veröffentlichung/Abonnement, vorübergehende Entkopplung und Lastenausgleich unterstützen. Die entkoppelte Kommunikation bietet viele Vorteile. Beispielsweise können Clients und Server Verbindungen nach Bedarf herstellen und Vorgänge asynchron ausführen.
@@ -26,19 +26,19 @@ Die Verwendung von Warteschlangen als Zwischenglied zwischen Nachrichtenproducer
 Sie können Warteschlangen über das [Azure-Portal](service-bus-quickstart-portal.md), [PowerShell](service-bus-quickstart-powershell.md), die [Befehlszeilenschnittstelle](service-bus-quickstart-cli.md) oder [Resource Manager-Vorlagen](service-bus-resource-manager-namespace-queue.md) erstellen. Für das Senden und Empfangen von Nachrichten können Sie dann Clients verwenden, die in [C#](service-bus-dotnet-get-started-with-queues.md), [Java](service-bus-java-how-to-use-queues.md), [Python](service-bus-python-how-to-use-queues.md), [JavaScript](service-bus-nodejs-how-to-use-queues.md), [PHP](service-bus-php-how-to-use-queues.md) oder [Ruby](service-bus-ruby-how-to-use-queues.md) geschrieben wurden. 
 
 ### <a name="receive-modes"></a>Empfangsmodi
-Sie können für den Nachrichtenempfang von Service Bus zwischen zwei Modi wählen: **ReceiveAndDelete** und **PeekLock**. Im Modus [ReceiveAndDelete](/dotnet/api/microsoft.azure.servicebus.receivemode) wird eine Nachricht als verarbeitet gekennzeichnet und an die Consumeranwendung zurückgegeben, wenn Service Bus die Anforderung vom Consumer empfängt. Dieser Modus stellt das einfachste Modell dar. Er eignet sich am besten für Szenarien, in denen eine Anwendung es toleriert, wenn eine Nachricht beim Auftreten eines Fehlers nicht verarbeitet wird. Beispiel: Ein Consumer stellt eine Empfangsanforderung aus und stürzt dann ab, bevor diese verarbeitet wird. Da Service Bus die Nachricht als verbraucht markiert, beginnt die Anwendung bei einem Neustart, Nachrichten zu verarbeiten. Sie lässt damit die Meldung aus, die vor dem Absturz verarbeitet wurde.
+Sie können für den Nachrichtenempfang von Service Bus zwischen zwei Modi wählen.
 
-Im [PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemode)-Modus ist der Empfangsvorgang zweistufig. Dadurch können Anwendungen unterstützt werden, die das Fehlen von Nachrichten nicht tolerieren können. Wenn Service Bus die Anforderung empfängt, werden die folgenden Vorgänge ausgeführt:
+- **Receive-and-Delete**. In diesem Modus wird eine Nachricht als verarbeitet gekennzeichnet und an die Consumeranwendung zurückgegeben, wenn Service Bus die Anforderung vom Consumer empfängt. Dieser Modus stellt das einfachste Modell dar. Er eignet sich am besten für Szenarien, in denen eine Anwendung es toleriert, wenn eine Nachricht beim Auftreten eines Fehlers nicht verarbeitet wird. Beispiel: Ein Consumer stellt eine Empfangsanforderung aus und stürzt dann ab, bevor diese verarbeitet wird. Da Service Bus die Nachricht als verbraucht markiert, beginnt die Anwendung bei einem Neustart, Nachrichten zu verarbeiten. Sie lässt damit die Meldung aus, die vor dem Absturz verarbeitet wurde.
+- **Peek-Lock**. In diesem Modus ist der Empfangsvorgang zweistufig. Dadurch können Anwendungen unterstützt werden, die das Fehlen von Nachrichten nicht tolerieren können. 
+    1. Es wird die nächste zu verarbeitende Nachricht gesucht, diese wird **gesperrt**, um zu verhindern, dass andere Consumer sie erhalten, und dann wird sie an die Anwendung zurückgesendet. 
+    1. Nachdem die Anwendung die Verarbeitung der Nachricht abgeschlossen hat, fordert sie den Service Bus-Dienst auf, die zweite Phase des Empfangsvorgangs abzuschließen. Anschließend wird **die Nachricht vom Dienst als verarbeitet markiert**. 
 
-1. Suchen der nächsten zu verarbeitenden Nachricht
-1. Sperren dieser Nachricht, damit diese nicht von anderen Consumern empfangen wird
-1. Anschließendes Zurückgeben der Nachricht an die Anwendung 
+        Wenn die Anwendung die Nachricht aus irgendeinem Grund nicht verarbeiten kann, kann sie den Service Bus-Dienst auffordern, die Nachricht zu **verwerfen**. Service Bus **entsperrt** die Nachricht und macht sie verfügbar, damit sie erneut empfangen werden kann, und zwar entweder von demselben Consumer oder von einem anderen konkurrierenden Consumer. Darüber hinaus ist der Sperre ein **Timeout** zugeordnet. Wenn die Anwendung die Nachricht nicht vor Ablauf des Sperrtimeouts verarbeiten kann, entsperrt Service Bus die Nachricht und macht sie für den erneuten Empfang verfügbar.
 
-Nachdem die Anwendung die Verarbeitung der Nachricht abgeschlossen oder die Nachricht zuverlässig für die zukünftige Verarbeitung gespeichert hat, wird die zweite Stufe des Empfangsvorgangs durch Aufrufen von [`CompleteAsync`](/dotnet/api/microsoft.azure.servicebus.queueclient.completeasync) für die Nachricht abgeschlossen. Wenn Service Bus die **CompleteAsync**-Anforderung empfängt, wird die Nachricht als in der Verarbeitung befindlich markiert.
+        Falls die Anwendung abstürzt, nachdem die Nachricht verarbeitet wurde, aber bevor der Service Bus-Dienst zum Abschließen der Nachricht aufgefordert wurde, stellt Service Bus die Nachricht erneut an die Anwendung zu, wenn diese neu gestartet wird. Dieser Vorgang wird häufig als **At-Least-Once**-Verarbeitung bezeichnet. Dies bedeutet, dass jede Nachricht mindestens einmal verarbeitet wird. In bestimmten Situationen wird dieselbe Nachricht jedoch möglicherweise erneut zugestellt. Wenn eine doppelte Verarbeitung in Ihrem Szenario nicht zulässig ist, fügen Sie der Anwendung zusätzliche Logik zur Erkennung doppelter Nachrichten hinzu. Weitere Informationen finden Sie unter [Duplikaterkennung](duplicate-detection.md). Das ist die **Exactly-Once**-Verarbeitung, bei der eine Nachricht genau einmal verarbeitet wird.
 
-Wenn die Anwendung die Nachricht aus irgendeinem Grund nicht verarbeiten kann, kann sie die [`AbandonAsync`](/dotnet/api/microsoft.azure.servicebus.queueclient.abandonasync)-Methode für die Nachricht aufrufen (anstelle von [`CompleteAsync`](/dotnet/api/microsoft.azure.servicebus.queueclient.completeasync)). So kann Service Bus die Nachricht entsperren und verfügbar machen, damit sie erneut empfangen werden kann – entweder von demselben oder von einem anderen konkurrierenden Consumer. Darüber hinaus ist der Sperre ein Timeout zugeordnet. Wenn die Anwendung die Nachricht nicht vor Ablauf des Sperrtimeouts verarbeiten kann, entsperrt Service Bus die Nachricht und macht sie für den erneuten Empfang verfügbar.
-
-Falls die Anwendung nach der Verarbeitung der Nachricht, aber vor dem Aufruf von [`CompleteAsync`](/dotnet/api/microsoft.azure.servicebus.queueclient.completeasync) abstürzt, stellt Service Bus die Nachricht erneut an die Anwendung zu, wenn diese neu gestartet wird. Dieser Vorgang wird häufig als **At-Least-Once**-Verarbeitung bezeichnet. Dies bedeutet, dass jede Nachricht mindestens einmal verarbeitet wird. In bestimmten Situationen wird dieselbe Nachricht jedoch möglicherweise erneut zugestellt. Wenn eine doppelte Verarbeitung in Ihrem Szenario nicht zulässig ist, fügen Sie der Anwendung zusätzliche Logik zur Erkennung doppelter Nachrichten hinzu. Dies können Sie durch die Verwendung der [MessageId](/dotnet/api/microsoft.azure.servicebus.message.messageid)-Eigenschaft der Nachricht erreichen, die über mehrere Zustellungsversuche hinweg gleich bleibt. Das ist die **Exactly-Once**-Verarbeitung, bei der eine Nachricht genau einmal verarbeitet wird.
+        > [!NOTE]
+        > Weitere Informationen zu diesen beiden Modi finden Sie unter [Abgleichen von Empfangsvorgängen](message-transfers-locks-settlement.md#settling-receive-operations).
 
 ## <a name="topics-and-subscriptions"></a>Themen und Abonnements
 Eine Warteschlange ermöglicht die Verarbeitung einer Nachricht durch einen einzelnen Consumer. Im Gegensatz zu Warteschlangen bieten Themen und Abonnements eine 1:n-Kommunikation in einem Muster vom Typ **Veröffentlichen/Abonnieren**. Dies ist nützlich für die Skalierung auf eine große Anzahl von Empfängern. Jede veröffentlichte Nachricht wird für jedes beim Thema registrierte Abonnement verfügbar gemacht. Der Herausgeber sendet eine Nachricht an ein Thema, und mindestens ein Abonnent – dies ist von den Filterregeln abhängig, die für diese Abonnements festgelegt sind – erhält eine Kopie der Nachricht. In Abonnements können die zu empfangenden Nachrichten mithilfe zusätzlicher Filter eingeschränkt werden. Herausgeber senden Nachrichten auf die gleiche Weise an ein Thema, wie sie Nachrichten an eine Warteschlange senden. Allerdings erhalten Consumer die Nachrichten nicht direkt vom Thema. Stattdessen erhalten Consumer die Nachrichten über Abonnements des Themas. Ein Themenabonnement ist mit einer virtuellen Warteschlange vergleichbar, die Kopien der an das Thema gesendeten Nachrichten empfängt. Consumer empfangen Nachrichten von einem Abonnement auf die gleiche Weise wie von einer Warteschlange.
@@ -55,7 +55,7 @@ Ein Anwendungsbeispiel finden Sie auf GitHub unter [TopicSubscriptionWithRuleOpe
 
 Weitere Informationen über mögliche Filterwerte finden Sie in der Dokumentation zu den Klassen [SqlFilter](/dotnet/api/microsoft.azure.servicebus.sqlfilter) und [SqlRuleAction](/dotnet/api/microsoft.azure.servicebus.sqlruleaction).
 
-## <a name="java-message-service-jms-20-entities-preview"></a>Java Message Service 2.0-Entitäten (JMS) (Vorschau)
+## <a name="java-message-service-jms-20-entities"></a>Java Message Service 2.0-Entitäten (JMS)
 Auf die folgenden Entitäten kann über die JMS 2.0-API (Java Message Service) zugegriffen werden.
 
   * Temporäre Warteschlangen

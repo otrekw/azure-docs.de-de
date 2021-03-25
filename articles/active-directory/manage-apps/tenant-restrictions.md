@@ -12,12 +12,12 @@ ms.date: 2/23/2021
 ms.author: kenwith
 ms.reviewer: hpsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9a884cbe9ad30ce298318d217aa9ed1947c8f21
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: fa025f7e21f76b4dde547ccabf675511e9156359
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102123019"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104589326"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>Verwalten des Zugriffs auf SaaS-Cloudanwendungen mithilfe von Mandanteneinschränkungen
 
@@ -197,13 +197,13 @@ Spezifische Details finden Sie in der Dokumentation Ihres Proxyservers.
 
 ## <a name="blocking-consumer-applications-public-preview"></a>Blockieren von Consumer-Anwendungen (öffentliche Vorschau)
 
-Anwendungen von Microsoft, die sowohl Consumerkonten als auch Organisationskonten unterstützen (z. B. [OneDrive](https://onedrive.live.com/) oder [Microsoft Learn](https://docs.microsoft.com/learn/)), können manchmal auf derselben URL gehostet werden.  Dies bedeutet, dass Benutzer, die für Arbeitszwecke auf diese URL zugreifen müssen, auch für den persönlichen Gebrauch darauf zugreifen können. Dies ist nach Ihren Betriebsrichtlinien möglicherweise nicht zulässig.
+Anwendungen von Microsoft, die sowohl Consumerkonten als auch Organisationskonten unterstützen (z. B. [OneDrive](https://onedrive.live.com/) oder [Microsoft Learn](/learn/)), können manchmal auf derselben URL gehostet werden.  Dies bedeutet, dass Benutzer, die für Arbeitszwecke auf diese URL zugreifen müssen, auch für den persönlichen Gebrauch darauf zugreifen können. Dies ist nach Ihren Betriebsrichtlinien möglicherweise nicht zulässig.
 
 Einige Organisationen versuchen, das Problem zu beheben, indem sie `login.live.com` blockieren, um persönliche Konten für die Authentifizierung zu blockieren.  Dies hat mehrere Nachteile:
 
 1. Durch die Blockierung von `login.live.com` wird die Verwendung persönlicher Konten in B2B-Gastszenarien blockiert, was für Besucher und die Zusammenarbeit nachteilig sein kann.
-1. [Autopilot erfordert die Verwendung von `login.live.com`](https://docs.microsoft.com/mem/autopilot/networking-requirements) zur Bereitstellung. Bei Intune- und Autopilot-Szenarien können Fehler auftreten, wenn `login.live.com` blockiert ist.
-1. Organisationstelemetrie und Windows-Updates, die vom login.live.com-Dienst für Geräte-IDs abhängig sind, [funktionieren nicht mehr](https://docs.microsoft.com/windows/deployment/update/windows-update-troubleshooting#feature-updates-are-not-being-offered-while-other-updates-are).
+1. [Autopilot erfordert die Verwendung von `login.live.com`](/mem/autopilot/networking-requirements) zur Bereitstellung. Bei Intune- und Autopilot-Szenarien können Fehler auftreten, wenn `login.live.com` blockiert ist.
+1. Organisationstelemetrie und Windows-Updates, die vom login.live.com-Dienst für Geräte-IDs abhängig sind, [funktionieren nicht mehr](/windows/deployment/update/windows-update-troubleshooting#feature-updates-are-not-being-offered-while-other-updates-are).
 
 ### <a name="configuration-for-consumer-apps"></a>Konfiguration für Consumer-Apps
 
@@ -216,7 +216,7 @@ Derzeit wird die Authentifizierung bei Consumeranwendungen nicht in den [Adminis
 Die `restrict-msa`-Richtlinie blockiert die Verwendung von Consumeranwendungen, lässt jedoch verschiedene andere Arten von Datenverkehr und Authentifizierung zu:
 
 1. Benutzerloser Datenverkehr für Geräte.  Dies schließt den Datenverkehr für Autopilot, Windows Update und Organisationstelemetrie ein.
-1. B2B-Authentifizierung von Consumerkonten. Benutzer mit Microsoft-Konten, die [zur Zusammenarbeit mit einem Mandanten eingeladen](https://docs.microsoft.com/azure/active-directory/external-identities/redemption-experience#invitation-redemption-flow) werden, authentifizieren sich bei „login.live.com“, um auf einen Ressourcenmandanten zuzugreifen.
+1. B2B-Authentifizierung von Consumerkonten. Benutzer mit Microsoft-Konten, die [zur Zusammenarbeit mit einem Mandanten eingeladen](../external-identities/redemption-experience.md#invitation-redemption-flow) werden, authentifizieren sich bei „login.live.com“, um auf einen Ressourcenmandanten zuzugreifen.
     1. Dieser Zugriff wird mithilfe des `Restrict-Access-To-Tenants`-Headers gesteuert, um den Zugriff auf diesen Ressourcenmandanten zuzulassen oder zu verweigern.
 1. „Pass-Through“-Authentifizierung, die von vielen Azure-Apps und Office.com verwendet wird, wobei Apps Azure AD zum Anmelden von Consumerbenutzern in einem Consumerkontext verwenden.
     1. Dieser Zugriff wird auch mit dem `Restrict-Access-To-Tenants`-Header gesteuert, um den Zugriff auf den speziellen „Pass-through“-Mandanten zuzulassen oder zu verweigern (`f8cdef31-a31e-4b4a-93e4-5f571e91255a`).  Wenn dieser Mandant nicht in der `Restrict-Access-To-Tenants`-Liste der zulässigen Domänen angezeigt wird, wird die Anmeldung von Consumerkonten bei diesen Apps durch Azure AD blockiert.

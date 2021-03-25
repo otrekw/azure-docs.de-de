@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: Zhchia
 ms.openlocfilehash: da6e1a8ba31f8f4991bde4803191598a015a68b3
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94358438"
 ---
 # <a name="tutorial-configure-oracle-fusion-erp-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Oracle Fusion ERP für die automatische Benutzerbereitstellung
@@ -74,11 +74,11 @@ Um Oracle Fusion ERP für die automatische Benutzerbereitstellung mit Azure AD k
 
     ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
 
-2. Navigieren Sie zu **Unternehmensanwendungen** , und wählen Sie die Option **Alle Anwendungen**.
+2. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen**.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-3. Klicken Sie oben im Bereich auf die Schaltfläche **Neue Anwendung** , um eine neue Anwendung hinzuzufügen.
+3. Klicken Sie oben im Bereich auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
     ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
 
@@ -114,7 +114,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Screenshot der Dropdownliste „Bereitstellungsmodus“ mit aufgerufener Option „Automatisch“](common/provisioning-automatic.png)
 
-5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** im Feld **Mandanten-URL** die Zeichenfolge `https://ejlv.fa.em2.oraclecloud.com/hcmRestApi/scim/` ein. Geben Sie den Administratorbenutzernamen und das Kennwort, den/das Sie zuvor abgerufen haben, in die Felder **Administratorbenutzername** und **Administratorkennwort** ein. Klicken Sie auf **Verbindung testen** , um die Verbindung zwischen Azure AD und Oracle Fusion ERP zu testen. 
+5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** im Feld **Mandanten-URL** die Zeichenfolge `https://ejlv.fa.em2.oraclecloud.com/hcmRestApi/scim/` ein. Geben Sie den Administratorbenutzernamen und das Kennwort, den/das Sie zuvor abgerufen haben, in die Felder **Administratorbenutzername** und **Administratorkennwort** ein. Klicken Sie auf **Verbindung testen**, um die Verbindung zwischen Azure AD und Oracle Fusion ERP zu testen. 
 
     :::image type="content" source="media/oracle-fusion-erp-provisioning-tutorial/admin.png" alt-text="Screenshot des Abschnitts „Administratoranmeldeinformationen“. Eine Schaltfläche „Verbindung testen“ und Felder für eine Mandanten-URL, einen Administratorbenutzernamen und ein Administratorkennwort sind sichtbar." border="false":::
 
@@ -128,7 +128,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     :::image type="content" source="media/oracle-fusion-erp-provisioning-tutorial/user-mapping.png" alt-text="Screenshot des Abschnitts „Zuordnungen“. Unter „Name“ ist „Azure Active Directory-Benutzer mit Oracle Fusion ERP synchronisieren“ sichtbar." border="false":::
 
-9. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die von Azure AD mit Oracle Fusion ERP synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in Oracle Fusion ERP für Aktualisierungsvorgänge verwendet. Wählen Sie die Schaltfläche **Speichern** , um alle Änderungen zu übernehmen.
+9. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die von Azure AD mit Oracle Fusion ERP synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in Oracle Fusion ERP für Aktualisierungsvorgänge verwendet. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
     :::image type="content" source="media/oracle-fusion-erp-provisioning-tutorial/user-attribute.png" alt-text="Screenshot der Seite „Attributzuordnungen“. In einer Tabelle werden Attribute für „Azure Active Directory“ und „Oracle Fusion ERP“ sowie die entsprechende Rangfolge aufgelistet." border="false":::
 
@@ -136,7 +136,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Oracle Fusion ERP: Gruppenzuordnungen](media/oracle-fusion-erp-provisioning-tutorial/groupmappings.png)
 
-11. Überprüfen Sie im Abschnitt **Attributzuordnung** die Gruppenattribute, die von Azure AD mit Oracle Fusion ERP synchronisiert werden. Die als **Abgleichseigenschaften** ausgewählten Attribute werden zum Abgleich der Gruppen in Oracle Fusion ERP für Aktualisierungsvorgänge verwendet. Wählen Sie die Schaltfläche **Speichern** , um alle Änderungen zu übernehmen.
+11. Überprüfen Sie im Abschnitt **Attributzuordnung** die Gruppenattribute, die von Azure AD mit Oracle Fusion ERP synchronisiert werden. Die als **Abgleichseigenschaften** ausgewählten Attribute werden zum Abgleich der Gruppen in Oracle Fusion ERP für Aktualisierungsvorgänge verwendet. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
     ![Oracle Fusion ERP: Gruppenattribute](media/oracle-fusion-erp-provisioning-tutorial/groupattributes.png)
 

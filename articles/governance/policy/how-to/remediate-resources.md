@@ -1,18 +1,18 @@
 ---
 title: Korrigieren nicht konformer Ressourcen
 description: Dieser Leitfaden führt Sie schrittweise durch den Korrekturprozess von Ressourcen, die mit Richtlinien in Azure Policy nicht konform sind.
-ms.date: 10/05/2020
+ms.date: 02/17/2021
 ms.topic: how-to
-ms.openlocfilehash: 76d2e57c1b5df965c81c88506ff2c2f70b2cb1f8
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: e567bedf48393a36215c1ac3f3d11f467ae7badd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876327"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101742227"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Korrigieren nicht konformer Ressourcen mit Azure Policy
 
-Ressourcen, die mit der Richtlinie **deployIfNotExists** oder **modify** nicht konform sind, können über die **Wiederherstellung** in einen konformen Zustand versetzt werden. Die Wiederherstellung erfolgt durch die Anweisung an Azure Policy, den Effekt **deployIfNotExists** oder die **Änderungsvorgänge** der zugewiesenen Richtlinie auf Ihre vorhandenen Ressourcen anzuwenden. Dies gilt unabhängig davon, ob die Zuweisung an eine Verwaltungsgruppe, ein Abonnement, eine Ressourcengruppe oder eine einzelne Ressource erfolgt. Dieser Artikel zeigt die Schritte, die erforderlich sind, um die Korrektur mithilfe von Azure Policy zu verstehen und durchzuführen.
+Ressourcen, die mit der Richtlinie **deployIfNotExists** oder **modify** nicht konform sind, können über die **Wiederherstellung** in einen konformen Zustand versetzt werden. Die Wiederherstellung erfolgt durch die Anweisung an Azure Policy, den Effekt **deployIfNotExists** oder die **Änderungsvorgänge** der zugewiesenen Richtlinie auf Ihre vorhandenen Ressourcen und Abonnements anzuwenden. Dies gilt unabhängig davon, ob die Zuweisung an eine Verwaltungsgruppe, ein Abonnement, eine Ressourcengruppe oder eine einzelne Ressource erfolgt. Dieser Artikel zeigt die Schritte, die erforderlich sind, um die Korrektur mithilfe von Azure Policy zu verstehen und durchzuführen.
 
 ## <a name="how-remediation-security-works"></a>Sicherheit durch Wiederherstellung
 
@@ -123,17 +123,18 @@ Führen Sie die folgenden Schritte aus, um eine Rolle zu der verwalteten Identit
 
 ### <a name="create-a-remediation-task-through-portal"></a>Erstellen eines Wartungstasks über das Portal
 
-Während der Auswertung wird durch die Richtlinienzuweisung mit den Effekten **deployIfNotExists** oder **modify** bestimmt, ob nicht konforme Ressourcen vorhanden sind. Falls nicht konforme Ressourcen gefunden werden, finden Sie auf der Seite **Wartung** weitere Einzelheiten. Neben der Liste der Richtlinien mit nicht konformen Ressourcen ist die Option, einen **Wartungstask** auszulösen. Dadurch wird eine Bereitstellung mithilfe der Vorlage **deployIfNotExists** oder den **modify**-Vorgängen erstellt.
+Während der Auswertung wird durch die Richtlinienzuweisung mit den Effekten **deployIfNotExists** oder **modify** bestimmt, ob nicht konforme Ressourcen oder Abonnements vorhanden sind. Falls nicht konforme Ressourcen oder Abonnements gefunden werden, finden Sie auf der Seite **Wartung** weitere Einzelheiten. Neben der Liste der Richtlinien mit nicht konformen Ressourcen und Abonnements befindet sich die Option zum Auslösen eines **Wartungstasks**.
+Dadurch wird eine Bereitstellung mithilfe der Vorlage **deployIfNotExists** oder den **modify**-Vorgängen erstellt.
 
 Führen Sie die folgenden Schritte aus, um einen **Wartungstask** zu erstellen:
 
 1. Starten Sie den Azure Policy-Dienst über das Azure-Portal, indem Sie die Option **Alle Dienste** auswählen und dann nach **Policy** suchen und die entsprechende Option auswählen.
 
-   :::image type="content" source="../media/remediate-resources/search-policy.png" alt-text="Screenshot einer deployIfNotExists-Richtlinie, der eine definierte Berechtigung für die verwaltete Identität fehlt." border="false":::
+   :::image type="content" source="../media/remediate-resources/search-policy.png" alt-text="Screenshot: Suchen nach „Policy“ unter „Alle Dienste“" border="false":::
 
 1. Wählen Sie links auf der Seite „Azure Policy“ die Option **Wartung** aus.
 
-   :::image type="content" source="../media/remediate-resources/select-remediation.png" alt-text="Screenshot einer deployIfNotExists-Richtlinie, der eine definierte Berechtigung für die verwaltete Identität fehlt." border="false":::
+   :::image type="content" source="../media/remediate-resources/select-remediation.png" alt-text="Screenshot: Knoten „Wartung“ auf der Seite „Policy“." border="false":::
 
 1. Auf der Registerkarte **Policies to remediate** (Zu wartende Richtlinien) und in der Datentabelle sind sämtliche **deployIfNotExists**- und **modify**-Richtlinienzuweisungen mit nicht konformen Ressourcen enthalten. Wählen Sie eine Richtlinie mit Ressourcen aus, die nicht konform sind. Die Seite **Neuer Wiederherstellungstask** wird geöffnet.
 
@@ -142,17 +143,17 @@ Führen Sie die folgenden Schritte aus, um einen **Wartungstask** zu erstellen:
 
 1. Filtern Sie auf der Seite **Neuer Wartungstask** die zu korrigierenden Ressourcen, indem Sie die über die Auslassungspunkte bei **Bereich** untergeordnete Ressourcen auswählen, von denen aus die Richtlinie zugewiesen wurde (bis hin zu den einzelnen Ressourcenobjekten). Darüber hinaus können Sie die Ressourcen über das Dropdownfeld **Standorte** weiter filtern. Nur in der Tabelle aufgeführte Ressourcen werden gewartet.
 
-   :::image type="content" source="../media/remediate-resources/select-resources.png" alt-text="Screenshot einer deployIfNotExists-Richtlinie, der eine definierte Berechtigung für die verwaltete Identität fehlt." border="false":::
+   :::image type="content" source="../media/remediate-resources/select-resources.png" alt-text="Screenshot: Knoten „Wartung“ und das Raster mit Ressourcen für die Wartung" border="false":::
 
 1. Sobald die Ressourcen gefiltert wurden, können Sie den Wartungstask auslösen, indem Sie **Korrigieren** auswählen. Auf der Registerkarte **Wartungstasks** wird die Seite zur Richtlinienkonformität geöffnet, auf der der Fortschritt der Tasks angezeigt wird. Durch dem Wartungstask erstellte Bereitstellungen beginnen sofort.
 
-   :::image type="content" source="../media/remediate-resources/task-progress.png" alt-text="Screenshot einer deployIfNotExists-Richtlinie, der eine definierte Berechtigung für die verwaltete Identität fehlt." border="false":::
+   :::image type="content" source="../media/remediate-resources/task-progress.png" alt-text="Screenshot: Registerkarte „Wartungstasks“ und Fortschritt der vorhandenen Wartungstasks" border="false":::
 
 1. Wählen Sie auf der Seite „Richtlinienkonformität“ die Option **Wartungstask** aus, um Einzelheiten zum Fortschritt abzurufen. Die für den Task verwendete Filterung wird zusammen mit einer Liste der Ressourcen angezeigt, die gerade korrigiert werden.
 
 1. Klicken Sie auf der Seite **Wartungstasks** mit der rechten Maustaste auf eine Ressource, um die Bereitstellung des Wartungstasks oder die Ressource anzuzeigen. Wählen Sie am Ende der Zeile **Verknüpfte Ereignisse** aus, um Einzelheiten anzuzeigen, z. B. eine Fehlermeldung.
 
-   :::image type="content" source="../media/remediate-resources/resource-task-context-menu.png" alt-text="Screenshot einer deployIfNotExists-Richtlinie, der eine definierte Berechtigung für die verwaltete Identität fehlt." border="false":::
+   :::image type="content" source="../media/remediate-resources/resource-task-context-menu.png" alt-text="Screenshot: Kontextmenü für eine Ressource auf der Registerkarte „Wartungstask“" border="false":::
 
 Ressourcen, die über einen **Wartungstask** bereitgestellt werden, werden auf der Seite „Richtlinienkonformität“ zur Registerkarte **Bereitgestellte Ressourcen** hinzugefügt.
 

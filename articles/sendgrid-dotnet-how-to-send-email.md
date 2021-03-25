@@ -16,10 +16,10 @@ ms.date: 02/15/2017
 ms.reviewer: dx@sendgrid.com
 ms.custom: devx-track-dotnet
 ms.openlocfilehash: ae816d2be592ab774500d1cfe8f2f6a7b7905b91
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98196553"
 ---
 # <a name="how-to-send-email-using-sendgrid-with-azure"></a>Senden von E-Mails in Azure mit SendGrid
@@ -74,7 +74,7 @@ using SendGrid;
 using SendGrid.Helpers.Mail;
 ```
 
-## <a name="how-to-create-an-email"></a>Gewusst wie: Erstellen einer E-Mail
+## <a name="how-to-create-an-email"></a>Erstellen einer E-Mail
 Mit dem **SendGridMessage** -Objekt können Sie eine E-Mail-Nachricht erstellen. Nachdem das Nachrichtenobjekt erstellt wurde, können Sie Eigenschaften und Methoden festlegen, beispielsweise den E-Mail-Absender, den E-Mail-Empfänger, den Betreff und den Text der E-Mail.
 
 Das folgende Beispiel zeigt, wie ein vollständig ausgefülltes E-Mail-Objekt erstellt wird:
@@ -100,7 +100,7 @@ msg.AddContent(MimeType.Html, "<p>Hello World!</p>");
 
 Weitere Informationen über die vom Typ **SendGrid** unterstützen Eigenschaften und Methoden finden Sie unter [sendgrid-csharp][sendgrid-csharp] auf GitHub.
 
-## <a name="how-to-send-an-email"></a>Gewusst wie: Senden einer E-Mail
+## <a name="how-to-send-an-email"></a>Senden von E-Mails
 Nach der Erstellung einer E-Mail-Nachricht können Sie diese über die SendGrid-API senden. Alternativ können Sie die [integrierte .NET-Bibliothek][NET-library] verwenden.
 
 Beim Senden von E-Mails müssen Sie Ihren SendGrid-API-Schlüssel angeben. Ausführliche Informationen zum Konfigurieren von API-Schlüsseln finden Sie in der [Dokumentation][documentation] zu SendGrid-API-Schlüsseln.
@@ -151,7 +151,7 @@ namespace Example
 }
 ```
 
-## <a name="how-to-send-email-from-asp-net-core-api-using-mailhelper-class"></a>Gewusst wie: Senden einer E-Mail aus einer ASP .NET Core-API mithilfe der MailHelper-Klasse
+## <a name="how-to-send-email-from-asp-net-core-api-using-mailhelper-class"></a>Senden einer E-Mail aus einer ASP .NET Core-API mithilfe der MailHelper-Klasse
 
 Das nachstehende Beispiel kann verwendet werden, um aus der ASP .NET Core-API mithilfe der `MailHelper`-Klasse des `SendGrid.Helpers.Mail`-Namespace eine einzelne E-Mail an mehrere Personen zu senden. Für dieses Beispiel wird ASP .NET Core 1.0 verwendet. 
 
@@ -233,7 +233,7 @@ namespace SendgridMailApp.Controllers
 }
 ```
 
-## <a name="how-to-add-an-attachment"></a>Gewusst wie: Hinzufügen einer Anlage
+## <a name="how-to-add-an-attachment"></a>Hinzufügen eines Anhangs
 Sie können einer Nachricht Anhänge hinzufügen, indem Sie die Methode **AddAttachment** aufrufen und mindestens den Dateinamen und den Base64-codierten Inhalt angeben, den Sie anfügen möchten. Sie können mehrere Anhänge anfügen, indem Sie diese Methode einmal für jede Datei aufrufen, die Sie anhängen möchten, oder indem Sie die Methode **AddAttachments** verwenden. Das folgende Beispiel veranschaulicht, wie ein Anhang in einer Nachricht eingefügt wird:
 
 ```csharp
@@ -248,8 +248,8 @@ var banner2 = new Attachment()
 msg.AddAttachment(banner2);
 ```
 
-## <a name="how-to-use-mail-settings-to-enable-footers-tracking-and-analytics"></a>Gewusst wie: Verwenden von E-Mail-Einstellungen zum Aktivieren von Fußzeilen sowie für Nachverfolgung und Analysen
-SendGrid bietet zusätzliche E-Mail-Funktionen durch Einstellungen für E-Mail und Nachverfolgung. Diese Einstellungen können zu einer E-Mail-Nachricht hinzugefügt werden, um bestimmte Funktionen wie Klickprotokollierung, Google Analytics, Abonnementnachverfolgung usw. zu aktivieren. Eine vollständige Liste der Apps finden Sie unter [Settings (Filters)][settings-documentation] (Einstellungen (Filter)).
+## <a name="how-to-use-mail-settings-to-enable-footers-tracking-and-analytics"></a>Verwenden von E-Mail-Einstellungen zum Aktivieren von Fußzeilen sowie für Nachverfolgung und Analysen
+SendGrid bietet zusätzliche E-Mail-Funktionen durch Einstellungen für E-Mail und Nachverfolgung. Diese Einstellungen können zu einer E-Mail-Nachricht hinzugefügt werden, um bestimmte Funktionen wie Klickprotokollierung, Google Analytics, Abonnementnachverfolgung usw. zu aktivieren. Eine vollständige Liste der Apps finden Sie unter [Settings (Filters)][settings-documentation] (Einstellungen [Filter]).
 
 Apps können mithilfe von Methoden, die als Teil der **SendGridMessage**-Klasse implementiert wurden, auf **SendGrid**-E-Mails angewendet werden. Die folgenden Beispiele veranschaulichen die Filter für die Fußzeile und die Klickprotokollierung:
 
@@ -270,8 +270,8 @@ Die folgenden Beispiele veranschaulichen die Filter für die Fußzeile und die K
 msg.SetClickTracking(true);
 ```
 
-## <a name="how-to-use-additional-sendgrid-services"></a>Gewusst wie: Verwenden zusätzlicher SendGrid-Dienste
-SendGrid bietet verschiedene APIs und Webhooks, die Sie zur Nutzung zusätzlicher Funktionen in Ihrer Azure-Anwendung einsetzen können. Weitere Informationen finden Sie in der [SendGrid-API-Referenz][SendGrid API documentation].
+## <a name="how-to-use-additional-sendgrid-services"></a>Verwenden zusätzlicher SendGrid-Dienste
+SendGrid bietet verschiedene APIs und Webhooks, die Sie zur Nutzung zusätzlicher Funktionen in Ihrer Azure-Anwendung einsetzen können. Weitere Informationen finden Sie in der [SendGrid API Reference][SendGrid API documentation] (SendGrid-API-Referenz).
 
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie nun mit den Grundlagen des E-Mail-Dienstes SendGrid vertraut sind, finden Sie unter diesen Links weitere Informationen.

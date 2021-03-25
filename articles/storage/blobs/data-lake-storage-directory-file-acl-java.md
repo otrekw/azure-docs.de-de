@@ -1,38 +1,40 @@
 ---
-title: Azure Data Lake Storage Gen2 Java SDK für Dateien und Zugriffssteuerungslisten
-description: Verwenden Sie Azure Storage-Bibliotheken für Java, um Verzeichnisse, Dateien und Zugriffssteuerungslisten (ACLs) in Speicherkonten zu verwalten, für die der hierarchische Namespace aktiviert ist.
+title: Verwenden von Java zum Verwalten von Daten in Azure Data Lake Storage Gen2
+description: Verwenden Sie die Azure Storage-Bibliotheken für Java, um Verzeichnisse und Dateien in Speicherkonten zu verwalten, für die der hierarchische Namespace aktiviert ist.
 author: normesta
 ms.service: storage
-ms.date: 01/11/2021
+ms.date: 02/17/2021
 ms.custom: devx-track-java
 ms.author: normesta
 ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: 1cc6954569c509c977634a8e1cdd52c5c55b2100
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 10debe7bb870ddd9f8711e73ccb4b690d7011b62
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98108126"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "100650185"
 ---
-# <a name="use-java-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Verwenden von Java zum Verwalten von Verzeichnissen, Dateien und Zugriffssteuerungslisten in Azure Data Lake Storage Gen2
+# <a name="use-java-to-manage-directories-and-files-in-azure-data-lake-storage-gen2"></a>Verwenden von Java zum Verwalten von Verzeichnissen und Dateien in Azure Data Lake Storage Gen2
 
-In diesem Artikel erfahren Sie, wie Sie Java zum Erstellen und Verwalten von Verzeichnissen, Dateien und Berechtigungen in Speicherkonten verwenden, für die der hierarchische Namespace aktiviert ist. 
+In diesem Artikel erfahren Sie, wie Sie mithilfe von Java Verzeichnisse und Dateien in Speicherkonten erstellen und verwalten, die über einen hierarchischen Namespace verfügen.
+
+Informationen zum Abrufen, Festlegen und Aktualisieren der Zugriffssteuerungslisten (Access Control Lists, ACLs) von Verzeichnissen und Dateien finden Sie unter [Verwenden von Java zum Verwalten von Zugriffssteuerungslisten in Azure Data Lake Storage Gen2](data-lake-storage-acl-java.md).
 
 [Maven-Paket](https://search.maven.org/artifact/com.azure/azure-storage-file-datalake) | [Beispiele](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake) | [API-Referenz](/java/api/overview/azure/storage-file-datalake-readme) | [Zuordnung von Gen1 zu Gen2](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md) | [Feedback geben](https://github.com/Azure/azure-sdk-for-java/issues)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-> [!div class="checklist"]
-> * Ein Azure-Abonnement. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
-> * Ein Speicherkonto, für das der hierarchische Namespace aktiviert ist. Befolgen Sie [diese Anleitung](../common/storage-account-create.md) für die Erstellung.
+- Ein Azure-Abonnement. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
+
+- Ein Speicherkonto, für das der hierarchische Namespace aktiviert ist. Befolgen Sie [diese Anleitung](create-data-lake-storage-account.md) für die Erstellung.
 
 ## <a name="set-up-your-project"></a>Einrichten des Projekts
 
 Öffnen Sie zunächst [diese Seite](https://search.maven.org/artifact/com.azure/azure-storage-file-datalake), und suchen Sie die neueste Version der Java-Bibliothek. Öffnen Sie dann die Datei *pom.xml* in Ihrem Text-Editor. Fügen Sie ein Abhängigkeitselement hinzu, das auf diese Version verweist.
 
-Wenn Sie beabsichtigen, die Clientanwendung mithilfe von Azure Active Directory (AD) zu authentifizieren, fügen Sie der Azure-Geheimnisclientbibliothek eine Abhängigkeit hinzu. Informationen dazu finden Sie unter [Hinzufügen des Pakets für die Geheimnisclientbibliothek zu Ihrem Projekt](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/identity/azure-identity#adding-the-package-to-your-project).
+Wenn Sie beabsichtigen, die Clientanwendung mithilfe von Azure Active Directory (Azure AD) zu authentifizieren, fügen Sie der Azure-Geheimnisclientbibliothek eine Abhängigkeit hinzu. Informationen dazu finden Sie unter [Hinzufügen des Pakets für die Geheimnisclientbibliothek zu Ihrem Projekt](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/identity/azure-identity#adding-the-package-to-your-project).
 
 Fügen Sie als Nächstes Ihrer Codedatei die folgenden Import-Anweisungen hinzu.
 
@@ -56,7 +58,7 @@ import com.azure.storage.file.datalake.models.RolePermissions;
 import com.azure.storage.file.datalake.options.PathSetAccessControlRecursiveOptions;
 ```
 
-## <a name="connect-to-the-account"></a>Herstellen einer Verbindung mit dem Konto 
+## <a name="connect-to-the-account"></a>Herstellen einer Verbindung mit dem Konto
 
 Wenn Sie die Codeausschnitte in diesem Artikel verwenden möchten, müssen Sie eine **DataLakeServiceClient**-Instanz erstellen, die das Speicherkonto darstellt. 
 
@@ -78,7 +80,6 @@ In diesem Beispiel wird eine **DataLakeServiceClient**-Instanz mithilfe einer Cl
 
 > [!NOTE]
 > Weitere Beispiele finden Sie in der Dokumentation zur [Azure-Identitätsclientbibliothek für Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/identity/azure-identity).
-
 
 ## <a name="create-a-container"></a>Erstellen eines Containers
 
@@ -146,37 +147,6 @@ Erstellen Sie zunächst eine **DataLakeFileClient**-Instanz, die die herunterzul
 Im folgenden Beispiel werden die Namen aller Dateien ausgegeben, die sich in einem Verzeichnis namens `my-directory` befinden.
 
 :::code language="java" source="~/azure-storage-snippets/blobs/howto/Java/Java-v12/src/main/java/com/datalake/manage/CRUD_DataLake.java" id="Snippet_ListFilesInDirectory":::
-
-## <a name="manage-access-control-lists-acls"></a>Verwalten von Zugriffssteuerungslisten (Access Control Lists, ACLs)
-
-Sie können Zugriffsberechtigungen für Verzeichnisse und Dateien abrufen, festlegen und aktualisieren.
-
-> [!NOTE]
-> Wenn Sie Azure Active Directory (Azure AD) verwenden, um den Zugriff zu autorisieren, sollten Sie sicherstellen, dass Ihrem Sicherheitsprinzipal die Rolle [Besitzer von Speicherblobdaten](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) zugewiesen wurde. Weitere Informationen dazu, wie ACL-Berechtigungen angewandt werden und wie sich Änderungen daran auswirken, finden Sie unter [Zugriffssteuerung in Azure Data Lake Storage Gen2](./data-lake-storage-access-control.md).
-
-### <a name="manage-a-directory-acl"></a>Verwalten einer Zugriffssteuerungsliste eines Verzeichnisses
-
-Im folgenden Beispiel wird die ACL (Zugriffssteuerungsliste) eines Verzeichnisses namens `my-directory` abgerufen und dann festgelegt. Im folgenden Beispiel werden dem zuständigen Benutzer Lese-, Schreib- und Ausführungsberechtigungen und der zuständigen Gruppe nur Lese- und Ausführungsberechtigungen gewährt, während allen anderen lediglich Lesezugriff gewährt wird.
-
-> [!NOTE]
-> Wenn in Ihrer Anwendung der Zugriff mithilfe von Azure Active Directory (Azure AD) autorisiert wird, müssen Sie sicherstellen, dass dem Sicherheitsprinzipal, der in der Anwendung zum Autorisieren des Zugriffs verwendet wird, die [Rolle „Besitzer von Speicherblobdaten“](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) zugewiesen ist. Weitere Informationen dazu, wie ACL-Berechtigungen angewandt werden und wie sich Änderungen daran auswirken, finden Sie unter [Zugriffssteuerung in Azure Data Lake Storage Gen2](./data-lake-storage-access-control.md).
-
-:::code language="java" source="~/azure-storage-snippets/blobs/howto/Java/Java-v12/src/main/java/com/datalake/manage/ACL_DataLake.java" id="Snippet_ManageDirectoryACLs":::
-
-Sie können auch die ACL des Stammverzeichnisses eines Containers abrufen und festlegen. Übergeben Sie zum Abrufen des Stammverzeichnisses eine leere Zeichenfolge (`""`) an die Methode **DataLakeFileSystemClient.getDirectoryClient**.
-
-### <a name="manage-a-file-acl"></a>Verwalten einer Zugriffssteuerungsliste einer Datei
-
-Im folgenden Beispiel wird die ACL einer Datei namens `upload-file.txt` abgerufen und dann festgelegt. Im folgenden Beispiel werden dem zuständigen Benutzer Lese-, Schreib- und Ausführungsberechtigungen und der zuständigen Gruppe nur Lese- und Ausführungsberechtigungen gewährt, während allen anderen lediglich Lesezugriff gewährt wird.
-
-> [!NOTE]
-> Wenn in Ihrer Anwendung der Zugriff mithilfe von Azure Active Directory (Azure AD) autorisiert wird, müssen Sie sicherstellen, dass dem Sicherheitsprinzipal, der in der Anwendung zum Autorisieren des Zugriffs verwendet wird, die [Rolle „Besitzer von Speicherblobdaten“](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) zugewiesen ist. Weitere Informationen dazu, wie ACL-Berechtigungen angewandt werden und wie sich Änderungen daran auswirken, finden Sie unter [Zugriffssteuerung in Azure Data Lake Storage Gen2](./data-lake-storage-access-control.md).
-
-:::code language="java" source="~/azure-storage-snippets/blobs/howto/Java/Java-v12/src/main/java/com/datalake/manage/ACL_DataLake.java" id="Snippet_ManageFileACLs":::
-
-### <a name="set-an-acl-recursively"></a>Rekursives Festlegen einer Zugriffssteuerungsliste
-
-Sie können Zugriffssteuerungslisten rekursiv für die vorhandenen untergeordneten Elemente eines übergeordneten Verzeichnisses hinzufügen, aktualisieren und entfernen, ohne diese Änderungen für jedes untergeordnete Element einzeln vornehmen zu müssen. Weitere Informationen finden Sie unter [Festlegen von Zugriffssteuerungslisten (ACLs) für Azure Data Lake Storage Gen2](recursive-access-control-lists.md).
 
 ## <a name="see-also"></a>Weitere Informationen
 

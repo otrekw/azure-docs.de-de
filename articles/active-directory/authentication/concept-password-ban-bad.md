@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b019c12103a0324e21ef7c06b0c7a5d7fe14e6ec
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 740201b84323f5a01ab01bb21ec458a19832e499
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743886"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "100652019"
 ---
 # <a name="eliminate-bad-passwords-using-azure-active-directory-password-protection"></a>Ausschließen von ungeeigneten Kennwörtern mit dem Azure Active Directory-Kennwortschutz
 
@@ -174,7 +174,7 @@ Betrachten Sie das folgende Beispiel:
 Der nächste Schritt besteht darin, alle Fälle von verbotenen Kennwörtern in dem normalisierten neuen Kennwort des Benutzers zu identifizieren. Punkte werden anhand der folgenden Kriterien zugewiesen:
 
 1. Für jedes gesperrte Kennwort, das sich im Kennwort eines Benutzers befindet, wird ein Punkt vergeben.
-1. Jedes verbleibende eindeutige Zeichen erhält einen Punkt.
+1. Für jedes verbleibende Zeichen, das nicht zu einem gesperrten Kennwort gehört, wird ein Punkt vergeben.
 1. Ein Kennwort muss mindestens fünf (5) Punkte aufweisen, um akzeptiert zu werden.
 
 In den beiden nächsten Beispielszenarien verwendet Contoso den Azure AD-Kennwortschutz und hat „contoso“ auf die benutzerdefinierte Liste mit den gesperrten Kennwörtern gesetzt. Außerdem ist „blank“ in der globalen Liste enthalten.

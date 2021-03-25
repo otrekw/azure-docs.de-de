@@ -11,10 +11,10 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
 ms.openlocfilehash: 83c290adea02915db1dc52bd359b4d3165611522
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92547706"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>Abfragesyntax für das IoT Hub-Nachrichtenrouting

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 2/5/2021
-ms.openlocfilehash: 3cc29e0bd806ab76c4980128df5a89761e465fe7
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: d1a0873552ac9043d8f584f38ecd41c5e8543489
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99988386"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202756"
 ---
 # <a name="custom-classifications-in-azure-purview"></a>Benutzerdefinierte Klassifizierungen in Azure Purview 
 
@@ -91,24 +91,50 @@ So erstellen Sie eine benutzerdefinierte Klassifizierungsregel:
 
     :::image type="content" source="media/create-a-custom-classification-and-classification-rule/newclassificationrule.png" alt-text="Neue Klassifizierungsregel hinzufügen" border="true":::
 
-5. Das Dialogfeld **Neue Klassifizierungsregel** wird geöffnet. Geben Sie die Konfigurationsinformationen für Ihre neue Regel ein.
+5. Das Dialogfeld **Neue Klassifizierungsregel** wird geöffnet. Füllen Sie die Felder aus, und entscheiden Sie, ob Sie eine Regel vom Typ **Regulärer Ausdruck** oder eine Regel vom Typ **Wörterbuch** erstellen möchten.
 
-    :::image type="content" source="media/create-a-custom-classification-and-classification-rule/createclassificationrule.png" alt-text="Neue Klassifizierungsregel erstellen" border="true":::
+    |Feld     |BESCHREIBUNG  |
+    |---------|---------|
+    |Name   |    Erforderlich. Es sind maximal 100 Zeichen zulässig.    |
+    |BESCHREIBUNG      |Optional. Es sind maximal 256 Zeichen zulässig.    |
+    |Klassifizierungsname    | Erforderlich. Wählen Sie den Namen der Klassifizierung in der Dropdownliste aus, um den Scanner anzuweisen, die Klassifizierung anzuwenden, wenn eine Entsprechung gefunden wurde.        |
+    |State   |  Erforderlich. Es gibt Optionen „Aktiviert“ und „Deaktiviert“. „Aktiviert“ ist die Standardeinstellung.    |
 
-|Feld     |BESCHREIBUNG  |
-|---------|---------|
-|Name   |    Erforderlich. Es sind maximal 100 Zeichen zulässig.    |
-|BESCHREIBUNG      |Optional. Es sind maximal 256 Zeichen zulässig.    |
-|Klassifizierungsname    | Erforderlich. Wählen Sie den Namen der Klassifizierung in der Dropdownliste aus, um den Scanner anzuweisen, die Klassifizierung anzuwenden, wenn eine Entsprechung gefunden wurde.        |
-|State   |  Erforderlich. Es gibt Optionen „Aktiviert“ und „Deaktiviert“. „Aktiviert“ ist die Standardeinstellung.    |
-|Datenmuster    |Optional. Ein regulärer Ausdruck, der den Daten entspricht, die im Datenfeld gespeichert sind. Der Grenzwert ist sehr groß. Im vorherigen Beispiel bewirkt das Datenmuster, dass auf eine Personal-ID geprüft wird, die förmlich dem Wort `Employee{GUID}` entspricht.  |
-|Spaltenmuster    |Optional. Ein regulärer Ausdruck, der den Spaltennamen entspricht, die Sie abgleichen möchten. Der Grenzwert ist sehr groß.          |
+    :::image type="content" source="media/create-a-custom-classification-and-classification-rule/create-new-classification-rule.png" alt-text="Neue Klassifizierungsregel erstellen" border="true":::
 
-Unter **Datenmuster** gibt es zwei Optionen:
+### <a name="creating-a-regular-expression-rule"></a>Erstellen einer Regel vom Typ „Regulärer Ausdruck“
 
-- **Schwellenwert für Datenunterschiede** (Distinct match threshold): Die Gesamtanzahl der unterschiedlichen Datenwerte, die in einer Spalte gefunden werden müssen, bevor der Scanner das Datenmuster für die Spalte ausführt. Der vorgeschlagene Wert ist „8“. Dieser Wert kann im Bereich von 2 bis 32 manuell angepasst werden. Das System benötigt diesen Wert, um sicherzustellen, dass die Spalte genügend Daten enthält, damit der Scanner sie genau klassifizieren kann. Beispielsweise wird eine Spalte, die mehrere Zeilen enthält, die alle den Wert 1 enthalten, nicht klassifiziert. Spalten, in denen eine Zeile einen Wert enthält und die restlichen Zeilen NULL-Werte enthalten, werden ebenfalls nicht klassifiziert. Wenn Sie mehrere Muster angeben, gilt dieser Wert für jedes dieser Muster.
+1. Wenn Sie eine Regel vom Typ „Regulärer Ausdruck“ erstellen, wird der folgende Bildschirm angezeigt. Sie können Sie optional eine Datei zum **Generieren vorgeschlagener RegEx-Muster** für Ihre Regel hochladen.
 
-- **Schwellenwert für Mindestübereinstimmung** (Minimum match threshold): Mit dieser Einstellung können Sie den Mindestprozentsatz für die Datenwertübereinstimmungen in einer Spalte festlegen, die vom Scanner gefunden werden müssen, damit die Klassifizierung angewendet wird. Der vorgeschlagene Wert ist „60 %“. Sie müssen mit dieser Einstellung vorsichtig sein. Wenn Sie die Schwelle unter 60 % verringern, kann es sein, dass Sie falsch positive Klassifizierungen in Ihren Katalog einbringen. Wenn Sie mehrere Datenmuster angeben, ist diese Einstellung deaktiviert, und der Wert ist auf „60 %“ fixiert.
+    :::image type="content" source="media/create-a-custom-classification-and-classification-rule/create-new-regex-rule.png" alt-text="Erstellen einer neuen RegEx-Regel" border="true":::
+
+1. Wenn Sie sich für die Generierung eines empfohlenen RegEx-Musters entscheiden, wählen Sie nach dem Hochladen einer Datei eines der vorgeschlagenen Muster aus, und klicken Sie auf **Add to Patterns** (Zu Mustern hinzufügen), um die vorgeschlagenen Daten- und Spaltenmuster zu verwenden. Sie können die vorgeschlagenen Muster optimieren oder eigene Muster eingeben, ohne eine Datei hochzuladen.
+
+    :::image type="content" source="media/create-a-custom-classification-and-classification-rule/suggested-regex.png" alt-text="Generieren vorgeschlagener regulärer Ausdrücke" border="true":::
+
+    |Feld     |BESCHREIBUNG  |
+    |---------|---------|
+    |Datenmuster    |Optional. Ein regulärer Ausdruck, der den Daten entspricht, die im Datenfeld gespeichert sind. Der Grenzwert ist sehr groß. Im vorherigen Beispiel bewirkt das Datenmuster, dass auf eine Personal-ID geprüft wird, die förmlich dem Wort `Employee{GUID}` entspricht.  |
+    |Spaltenmuster    |Optional. Ein regulärer Ausdruck, der den Spaltennamen entspricht, die Sie abgleichen möchten. Der Grenzwert ist sehr groß.          |
+
+1. Unter **Datenmuster** können zwei Schwellenwerte festgelegt werden:
+
+    - **Schwellenwert für Datenunterschiede** (Distinct match threshold): Die Gesamtanzahl der unterschiedlichen Datenwerte, die in einer Spalte gefunden werden müssen, bevor der Scanner das Datenmuster für die Spalte ausführt. Der vorgeschlagene Wert ist „8“. Dieser Wert kann im Bereich von 2 bis 32 manuell angepasst werden. Das System benötigt diesen Wert, um sicherzustellen, dass die Spalte genügend Daten enthält, damit der Scanner sie genau klassifizieren kann. Beispielsweise wird eine Spalte, die mehrere Zeilen enthält, die alle den Wert 1 enthalten, nicht klassifiziert. Spalten, in denen eine Zeile einen Wert enthält und die restlichen Zeilen NULL-Werte enthalten, werden ebenfalls nicht klassifiziert. Wenn Sie mehrere Muster angeben, gilt dieser Wert für jedes dieser Muster.
+
+    - **Schwellenwert für Mindestübereinstimmung**: Mit dieser Einstellung können Sie den Mindestprozentsatz für die individuellen Datenwertübereinstimmungen in einer Spalte festlegen, die vom Scanner gefunden werden müssen, damit die Klassifizierung angewendet wird. Der vorgeschlagene Wert ist „60 %“. Sie müssen mit dieser Einstellung vorsichtig sein. Wenn Sie die Schwelle unter 60 % verringern, kann es sein, dass Sie falsch positive Klassifizierungen in Ihren Katalog einbringen. Wenn Sie mehrere Datenmuster angeben, ist diese Einstellung deaktiviert, und der Wert ist auf „60 %“ fixiert.
+
+1. Nun können Sie Ihre Regel überprüfen und **erstellen**.
+    :::image type="content" source="media/create-a-custom-classification-and-classification-rule/verify-rule.png" alt-text="Überprüfen der Regel vor der Erstellung" border="true":::
+
+### <a name="creating-a-dictionary-rule"></a>Erstellen einer Wörterbuchregel
+
+1.  Wenn Sie eine Wörterbuchregel erstellen, wird der folgende Bildschirm angezeigt. Laden Sie eine Datei hoch, die alle möglichen Werte für die von Ihnen erstellte Klassifizierung in einer einzelnen Spalte enthält.
+
+    :::image type="content" source="media/create-a-custom-classification-and-classification-rule/dictionary-rule.png" alt-text="Erstellen einer Wörterbuchregel" border="true":::
+
+1.  Nach Generierung des Wörterbuchs können Sie die Schwellenwerte für Datenunterschiede und Mindestübereinstimmung anpassen und die Regel übermitteln.
+
+    :::image type="content" source="media/create-a-custom-classification-and-classification-rule/dictionary-generated.png" alt-text="Erstellen einer Wörterbuchregel" border="true":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 
