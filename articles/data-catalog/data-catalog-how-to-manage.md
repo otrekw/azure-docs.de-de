@@ -6,14 +6,17 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: 9d035417b613c81487c493bde90cdcc461f04412
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0182f744e038bc8080b9fb96bfdb1eeda16b86c0
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96017286"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104674851"
 ---
 # <a name="manage-data-assets-in-azure-data-catalog"></a>Verwalten von Datenobjekten in Azure Data Catalog
+
+[!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
+
 ## <a name="introduction"></a>Einführung
 Zweck von Azure Data Catalog ist die Datenquellenermittlung. Sie können Datenquellen, die sie zum Durchführen von Analysen und Treffen von Entscheidungen benötigen, leicht ermitteln und verstehen. Diese Ermittlungsfunktionen haben den größten Nutzen, wenn Sie und andere Benutzer möglichst viele verfügbare Datenquellen finden und verstehen können. Vor diesem Hintergrund geht es beim Standardverhalten von Data Catalog darum, dass alle registrierten Datenquellen für alle Katalogbenutzer sichtbar und ermittelbar sein sollen.
 
@@ -36,7 +39,7 @@ Wenn ein Datenobjekt in Data Catalog einen Besitzer hat, können nur vom Besitze
 >
 >
 
-### <a name="take-ownership"></a>Übernehmen des Besitzes
+### <a name="take-ownership"></a>Besitz übernehmen
 Benutzer können den Besitz von Datenobjekten übernehmen, indem im Data Catalog-Portal die Option **Besitz übernehmen** gewählt wird. Für das Übernehmen des Besitzes eines Datenobjekts ohne Besitzer sind keine besonderen Berechtigungen erforderlich. Jeder Benutzer kann den Besitz eines Datenobjekts ohne Besitzer übernehmen.
 
 ### <a name="add-owners-and-co-owners"></a>Hinzufügen von Besitzern und Mitbesitzern

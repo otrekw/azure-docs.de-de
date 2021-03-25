@@ -3,16 +3,16 @@ title: Transformieren von Daten mit der Hadoop-Streamingaktivität – Azure
 description: Erfahren Sie, wie Sie die Hadoop-Streamingaktivität in Azure Data Factory verwenden können, um Daten durch die Ausführung von Hadoop-Streamingprogrammen in einem bedarfsgesteuerten oder einem eigenen HDInsight-Cluster zu transformieren.
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 532ece3bcc8c62771511fb2608e824de846b54fe
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 964af993fdcf17bca2caa812bf39ab63e650e807
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100383091"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104782621"
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>Transformieren von Daten mit der Hadoop-Streamingaktivität in Azure Data Factory
 > [!div class="op_single_selector" title1="Transformationsaktivitäten"]
@@ -91,13 +91,13 @@ Beachten Sie folgende Punkte:
 
 1. Legen Sie **linkedServiceName** auf den Namen des verknüpften Diensts fest, der auf Ihren HDInsight-Cluster verweist, auf dem der MapReduce-Streamingauftrag ausgeführt wird.
 2. Legen Sie den Typ der Aktivität auf **HDInsightStreaming** fest.
-3. Geben Sie für die **mapper** -Eigenschaft den Namen der ausführbaren Zuordnungsdatei an. Im Beispiel ist „cat.exe“ die ausführbare Zuordnungsdatei.
+3. Geben Sie für die **mapper**-Eigenschaft den Namen der ausführbaren Mapperdatei an. Im Beispiel ist „cat.exe“ die ausführbare Zuordnungsdatei.
 4. Geben Sie für die **reducer** -Eigenschaft den Namen der ausführbaren Reduzierungsdatei an. Im Beispiel ist „wc.exe“ die ausführbare Reduzierungsdatei.
 5. Geben Sie für die **input** -Eigenschaft die Eingabedatei (einschließlich Speicherort) für die Zuordnung an. Im Beispiel `wasb://adfsample@<account name>.blob.core.windows.net/example/data/gutenberg/davinci.txt` ist „adfsample“ der Blobcontainer, „example/data/Gutenberg“ der Ordner und „davinci.txt“ das Blob.
 6. Geben Sie für die **output** -Eigenschaft die Ausgabedatei (einschließlich Speicherort) für die Reduzierung an. Die Ausgabe des Hadoop-Streamingauftrags wird an dem für diese Eigenschaft angegebenen Speicherort geschrieben.
-7. Geben Sie im Abschnitt **filePaths** die Pfade für die ausführbare Zuordnungs- und Reduzierungsdatei an. Im Beispiel „adfsample/example/apps/wc.exe“ ist „adfsample“ der Blob-Container, „example/apps“ der Ordner und „wc.exe“ die ausführbare Datei.
+7. Geben Sie im Abschnitt **filePaths** die Pfade für die ausführbare Mapper- und Reducerdatei an. Im Beispiel „adfsample/example/apps/wc.exe“ ist „adfsample“ der Blob-Container, „example/apps“ der Ordner und „wc.exe“ die ausführbare Datei.
 8. Geben Sie für die **fileLinkedService** -Eigenschaft den mit Azure Storage verknüpften Dienst an, der den Azure-Speicher mit den im Abschnitt „filePaths“ angegebenen Dateien darstellt.
-9. Geben Sie für die **arguments** -Eigenschaft die Argumente für den Streamingauftrag an.
+9. Geben Sie für die **arguments**-Eigenschaft, die Argumente für den Streamingauftrag an.
 10. Die **getDebugInfo** -Eigenschaft ist ein optionales Element. Wenn die Eigenschaft auf "Failure" festgelegt wird, werden die Protokolle nur bei Fehlern heruntergeladen. Wenn die Eigenschaft auf „Immer“ festgelegt wird, werden Protokolle immer heruntergeladen, unabhängig vom Ausführungsstatus.
 
 > [!NOTE]

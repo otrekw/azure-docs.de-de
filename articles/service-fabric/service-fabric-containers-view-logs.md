@@ -4,10 +4,10 @@ description: In diesem Artikel wird beschrieben, wie Containerprotokolle für ei
 ms.topic: conceptual
 ms.date: 05/15/2018
 ms.openlocfilehash: c47a408b272f95dbfcf3d791c644bfeb52254a72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75458183"
 ---
 # <a name="view-logs-for-a-service-fabric-container-service"></a>Anzeigen von Protokollen für einen Service Fabric-Containerdienst
@@ -18,7 +18,7 @@ Der Zugriff auf Containerprotokolle ist über [Service Fabric Explorer](service-
 
 Die Containerprotokolle befinden sich auf dem Clusterknoten, auf dem die Containerdienstinstanz ausgeführt wird. Rufen Sie beispielsweise die Protokolle für den Front-End-Webcontainer der [Linux-Voting-Beispielanwendung](service-fabric-quickstart-containers-linux.md) ab. Erweitern Sie in der Strukturansicht **Cluster**>**Anwendungen**>**VotingType**>**fabric:/Voting/azurevotefront**.  Erweitern Sie anschließend die Partition (in diesem Beispiel d1aa737e-f22a-e347-be16-eec90be24bc1), und überprüfen Sie, ob der Container auf dem Clusterknoten *_lnxvm_0* ausgeführt wird.
 
-Suchen Sie in der Strukturansicht das Codepaket auf dem Knoten *_lnxvm_0*, indem Sie **Knoten**> **_lnxvm_0**>**fabric:/Voting**>**azurevotfrontPkg**>**Codepakete**>**Code** erweitern.  Wählen Sie dann die Option **Containerprotokolle** aus, um die Containerprotokolle anzuzeigen.
+Suchen Sie in der Strukturansicht das Codepaket auf dem Knoten *_lnxvm_0*, indem Sie **Knoten**>**_lnxvm_0**>**fabric:/Voting**>**azurevotfrontPkg**>**Codepakete**>**Code** erweitern.  Wählen Sie dann die Option **Containerprotokolle** aus, um die Containerprotokolle anzuzeigen.
 
 ![Service Fabric-Plattform][Image1]
 
@@ -33,10 +33,10 @@ Zur Diagnose von Startfehlern unterstützt Service Fabric (ab Version 6.1) die A
 
 Mit der Einstellung **ContainersRetentionCount** wird die Anzahl von Containern angegeben, die bei Fehlern beibehalten werden sollen. Wenn ein negativer Wert angegeben wird, werden alle fehlerhaften Container beibehalten. Wenn das Attribut **ContainersRetentionCount** nicht angegeben wird, werden keine Container beibehalten. Das Attribut **ContainersRetentionCount** unterstützt auch Anwendungsparameter, sodass Benutzer unterschiedliche Werte für Test- und Produktionscluster angeben können. Nutzen Sie bei Verwendung dieses Features Platzierungseinschränkungen, um den Containerdienst einem bestimmten Knoten zuzuordnen und zu verhindern, dass er auf andere Knoten verschoben wird. Alle Container, die mit diesem Feature beibehalten werden, müssen manuell entfernt werden.
 
-Die Einstellung **RunInteractive** entspricht den `--interactive`Flags`tty` [ und ](https://docs.docker.com/engine/reference/commandline/run/#options) von Docker. Wenn diese Einstellung in der Manifestdatei auf TRUE festgelegt wurde, werden diese Flags verwendet, um den Container zu starten.  
+Die Einstellung **RunInteractive** entspricht den `tty` [Flags](https://docs.docker.com/engine/reference/commandline/run/#options)`--interactive` und  von Docker. Wenn diese Einstellung in der Manifestdatei auf TRUE festgelegt wurde, werden diese Flags verwendet, um den Container zu starten.  
 
 ### <a name="rest"></a>REST
-Verwenden Sie den Vorgang [Abrufen von auf Containerknoten bereitgestellten Containerprotokollen](/rest/api/servicefabric/sfclient-api-getcontainerlogsdeployedonnode), um die Protokolle für einen abgestürzten Container abzurufen. Geben Sie den Namen des Knotens, auf dem der Container ausgeführt wurde, den Anwendungsnamen, den Dienstmanifestnamen und den Codepaketnamen an.  Geben Sie `&Previous=true` an. Die Antwort enthält die Containerprotokolle für den inaktiven Container der Codepaketinstanz.
+Verwenden Sie den Vorgang [Abrufen von auf Containerknoten bereitgestellten Containerprotokollen](/rest/api/servicefabric/sfclient-api-getcontainerlogsdeployedonnode), um die Protokolle für einen abgestürzten Container abzurufen. Geben Sie den Namen des Knotens, auf dem der Container ausgeführt wurde, den Anwendungsnamen, den Dienstmanifestnamen und den Codepaketnamen an.  Geben Sie `&Previous=true`an. Die Antwort enthält die Containerprotokolle für den inaktiven Container der Codepaketinstanz.
 
 Der Anforderungs-URI weist folgende Form auf:
 

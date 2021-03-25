@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 10/13/2020
 ms.custom: devx-track-python
 ms.openlocfilehash: e3bbdb8819062d45d071633e0208fb58a003da54
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98786105"
 ---
 # <a name="improve-throughput-performance-of-python-apps-in-azure-functions"></a>Verbessern der Durchsatzleistung von Python-Apps in Azure Functions
@@ -35,7 +35,7 @@ Da Funktionsworkloads in der Praxis üblicherweise eine Mischung aus E/A- und CP
 
 Nachdem Sie das Workloadprofil ihrer Funktions-App nun kennen, können Sie die folgenden Konfigurationen zum Verbessern der Durchsatzleistung ihrer Funktionen einsetzen.
 
-* [Asynchron](#async)
+* [Async](#async)
 * [Mehrere Sprachworker](#use-multiple-language-worker-processes)
 * [Maximale Anzahl von Workern in einem Sprachworkerprozess](#set-up-max-workers-within-a-language-worker-process)
 * [Ereignisschleife](#managing-event-loop)

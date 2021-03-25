@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-python
 ms.date: 03/04/2020
-ms.openlocfilehash: ad802b2bdf08a8e43179beece5f52d869513aff3
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: eb97e209bc7bb9bc1a15ecadc88593e4c0573b5c
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98933035"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104870618"
 ---
 # <a name="connect-to-apache-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Herstellen einer Verbindung mit Apache Kafka in HDInsight über ein virtuelles Azure-Netzwerk
 
@@ -64,7 +64,7 @@ Um ein Kafka-Cluster zu erstellen, das mit Ihrem lokalen Netzwerk kommuniziert, 
 
 Mit diesen Schritten erstellen Sie die folgende Konfiguration:
 
-* Virtuelles Azure-Netzwerk
+* Azure Virtual Network
 * Standort-zu-Standort-VPN-Gateway
 * Azure-Storage-Konto (von HDInsight verwendet)
 * Kafka in HDInsight
@@ -75,7 +75,7 @@ Um sicherzustellen, dass ein Kafka-Client eine Verbindung von einem lokalen Stan
 
 Führen Sie die Schritte in diesem Abschnitt aus, um die folgende Konfiguration zu erstellen:
 
-* Virtuelles Azure-Netzwerk
+* Azure Virtual Network
 * Point-to-Site-VPN-Gateway
 * Azure-Speicherkonto (von HDInsight verwendet)
 * Kafka in HDInsight
@@ -239,21 +239,21 @@ Führen Sie die Schritte in diesem Abschnitt aus, um die folgende Konfiguration 
 
 Standardmäßig gibt Apache ZooKeeper den Domänennamen der Kafka-Broker an Clients zurück. Diese Konfiguration funktioniert für den VPN-Client nicht, da er die Namensauflösung nicht für Entitäten im virtuellen Netzwerk verwenden kann. Verwenden Sie für diese Konfiguration die folgenden Schritte, um Kafka zum Ankündigen von IP-Adressen anstelle von Domänennamen zu konfigurieren:
 
-1. Wechseln Sie in Ihrem Webbrowsers zu `https://CLUSTERNAME.azurehdinsight.net`. Ersetzen Sie `CLUSTERNAME` durch den Namen von Kafka im HDInsight-Cluster.
+1. Rufen Sie in Ihrem Webbrowsers `https://CLUSTERNAME.azurehdinsight.net` auf. Ersetzen Sie `CLUSTERNAME` durch den Namen von Kafka im HDInsight-Cluster.
 
     Geben Sie bei entsprechender Aufforderung den HTTPS-Benutzernamen und das Kennwort für den Cluster ein. Die Ambari-Webbenutzeroberfläche für den Cluster wird angezeigt.
 
 2. Wählen Sie zum Anzeigen von Informationen über Kafka aus der Liste auf der linken Seite __Kafka__ aus.
 
-    ![Dienstliste, in der Kafka hervorgehoben ist](./media/apache-kafka-connect-vpn-gateway/select-kafka-service.png)
+    :::image type="content" source="./media/apache-kafka-connect-vpn-gateway/select-kafka-service.png" alt-text="Dienstliste, in der Kafka hervorgehoben ist" border="true":::
 
 3. Wählen Sie zum Anzeigen der Kafka-Konfiguration oben in der Mitte __Konfigurationen__ aus.
 
-    ![Apache Ambari – Dienstkonfiguration](./media/apache-kafka-connect-vpn-gateway/select-kafka-config1.png)
+    :::image type="content" source="./media/apache-kafka-connect-vpn-gateway/select-kafka-config1.png" alt-text="Apache Ambari – Dienstkonfiguration" border="true":::
 
 4. Geben Sie zum Suchen der Konfiguration __kafka-env__ oben rechts in das Feld __Filter__ die Zeichenfolge `kafka-env` ein.
 
-    ![Kafka-Konfiguration für kafka-env](./media/apache-kafka-connect-vpn-gateway/search-for-kafka-env.png)
+    :::image type="content" source="./media/apache-kafka-connect-vpn-gateway/search-for-kafka-env.png" alt-text="Kafka-Konfiguration für kafka-env" border="true":::
 
 5. Um Kafka zum Ankündigen von IP-Adressen zu konfigurieren, fügen Sie den folgenden Text am Ende des Felds __Vorlage für kafka-env__ hinzu:
 
@@ -271,15 +271,15 @@ Standardmäßig gibt Apache ZooKeeper den Domänennamen der Kafka-Broker an Clie
 
 8. Klicken Sie auf die Schaltfläche __Speichern__, um die Konfigurationsänderungen zu speichern. Geben Sie eine Textnachricht ein, die die Änderungen beschreibt. Wählen Sie __OK__ aus, nachdem die Änderungen gespeichert wurden.
 
-    ![Apache Ambari – Speichern der Konfiguration](./media/apache-kafka-connect-vpn-gateway/save-configuration-button.png)
+    :::image type="content" source="./media/apache-kafka-connect-vpn-gateway/save-configuration-button.png" alt-text="Apache Ambari – Speichern der Konfiguration" border="true":::
 
 9. Um Fehler beim Neustart von Kafka zu vermeiden, verwenden Sie die Schaltfläche __Dienstaktionen__, und wählen Sie __Wartungsmodus aktivieren__ aus. Wählen Sie „OK“ aus, um diesen Vorgang abzuschließen.
 
-    ![Dienstaktionen, „Wartungsmodus aktivieren“ hervorgehoben](./media/apache-kafka-connect-vpn-gateway/turn-on-maintenance-mode.png)
+    :::image type="content" source="./media/apache-kafka-connect-vpn-gateway/turn-on-maintenance-mode.png" alt-text="Dienstaktionen, „Wartungsmodus aktivieren“ hervorgehoben" border="true":::
 
 10. Verwenden Sie zum Neustarten von Kafka die Schaltfläche __Neu starten__, und wählen Sie __Alle betroffenen Instanzen neu starten__ aus. Bestätigen Sie den Neustart, und verwenden Sie dann die Schaltfläche __OK__, wenn der Vorgang abgeschlossen ist.
 
-    ![Schaltfläche „Neu starten“, Funktion zum Neustarten aller betroffenen Instanzen hervorgehoben](./media/apache-kafka-connect-vpn-gateway/restart-required-button.png)
+    :::image type="content" source="./media/apache-kafka-connect-vpn-gateway/restart-required-button.png" alt-text="Schaltfläche „Neu starten“, Funktion zum Neustarten aller betroffenen Instanzen hervorgehoben" border="true":::
 
 11. Um den Wartungsmodus zu deaktivieren, verwenden die Schaltfläche __Dienstaktionen__, und wählen Sie __Wartungsmodus deaktivieren__ aus. Wählen Sie **OK** aus, um diesen Vorgang abzuschließen.
 

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/10/2019
-ms.openlocfilehash: 73598c7f5733dd65222770b80e79e2cf6ec27fbf
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: a3589aff65b24563cf21f175ccfc3a706891d699
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102032006"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104954002"
 ---
 # <a name="azure-monitor-service-limits"></a>Azure Monitor-Diensteinschränkungen
 
@@ -47,5 +47,5 @@ In diesem Artikel werden Einschränkungen in verschiedenen Bereichen von Azure M
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Azure Monitor – Preise](https://azure.microsoft.com/pricing/details/monitor/)
-- [Überwachen der Nutzung und geschätzten Kosten in Azure Monitor](/usage-estimated-costs.md)
+- [Überwachen der Nutzung und geschätzten Kosten in Azure Monitor](/azure/azure-monitor/usage-estimated-costs)
 - [Verwalten der Nutzung und der Kosten für Application Insights](app/pricing.md)

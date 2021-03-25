@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 03/19/2020
 ms.custom: MVC
 ms.openlocfilehash: c806f968bc6530879f64ddbf6fd4c7d45aa7a8d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89442819"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-in-vmm-clouds-to-azure"></a>Einrichten der Notfallwiederherstellung von lokalen Hyper-V-VMs in VMM-Clouds nach Azure
@@ -113,7 +113,7 @@ Site Recovery prüft, ob ein oder mehrere kompatible Azure-Speicherkonten und -N
 ## <a name="set-up-a-replication-policy"></a>Einrichten einer Replikationsrichtlinie
 
 1. Wählen Sie **Infrastruktur vorbereiten** > **Replikationseinstellungen** >  **+Erstellen und zuordnen** aus.
-1. Geben Sie unter **Richtlinie erstellen und zuordnen**einen Richtliniennamen an. Hier wird **ContosoReplicationPolicy** verwendet.
+1. Geben Sie unter **Richtlinie erstellen und zuordnen** einen Richtliniennamen an. Hier wird **ContosoReplicationPolicy** verwendet.
 1. Übernehmen Sie die Standardeinstellungen, und wählen Sie **OK** aus:
    - **Kopierhäufigkeit** gibt an, dass Deltadaten nach der ersten Replikation alle fünf Minuten repliziert werden.
    - **Aufbewahrungszeitraum des Wiederherstellungspunkts** gibt an, dass jeder Wiederherstellungspunkt zwei Stunden lang aufbewahrt wird.

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/29/2019
 ms.author: Zhchia
 ms.openlocfilehash: 13ae960f5d259314f00f8f09b2999a36c0919bc5
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94353712"
 ---
 # <a name="tutorial-configure-harness-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Harness für die automatische Benutzerbereitstellung
@@ -37,7 +37,7 @@ Das diesem Artikel zugrunde liegende Szenario setzt voraus, dass Sie bereits üb
 
 ## <a name="assign-users-to-harness"></a>Zuweisen von Benutzern zu Harness
 
-Azure Active Directory ermittelt anhand von *Zuweisungen* , welche Benutzer Zugriff auf bestimmte Apps erhalten sollen. Im Kontext der automatischen Benutzerbereitstellung werden nur die Benutzer oder Gruppen synchronisiert, die einer Anwendung in Azure AD zugewiesen wurden.
+Azure Active Directory ermittelt anhand von *Zuweisungen*, welche Benutzer Zugriff auf bestimmte Apps erhalten sollen. Im Kontext der automatischen Benutzerbereitstellung werden nur die Benutzer oder Gruppen synchronisiert, die einer Anwendung in Azure AD zugewiesen wurden.
 
 Entscheiden Sie vor dem Konfigurieren und Aktivieren der automatischen Benutzerbereitstellung, welche Benutzer oder Gruppen in Azure AD Zugriff auf Harness benötigen. Sie können diese Benutzer oder Gruppen anschließend Harness zuweisen, indem Sie die Anleitung unter [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App in Azure Active Directory](../manage-apps/assign-user-or-group-access-portal.md) befolgen.
 
@@ -86,7 +86,7 @@ Vor dem Konfigurieren von Harness für die automatische Benutzerbereitstellung m
 
     ![Der Link „Alle Anwendungen“](common/enterprise-applications.png)
 
-1. Klicken Sie oben im Bereich auf die Schaltfläche **Neue Anwendung** , um eine neue Anwendung hinzuzufügen.
+1. Klicken Sie oben im Bereich auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
     ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
 

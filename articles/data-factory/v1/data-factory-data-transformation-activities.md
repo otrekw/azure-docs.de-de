@@ -3,16 +3,16 @@ title: 'Datentransformation: Verarbeiten und Transformieren von Daten '
 description: Erfahren Sie, wie Sie Daten in Azure Data Factory mit Hadoop, Azure Machine Learning Studio (Classic) oder Azure Data Lake Analytics transformieren oder verarbeiten.
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: c9818bfd2a9519cd14d34ecc810179d66aa57e52
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 422acbaab097182b800e3bad35b0121284db9cd8
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100363983"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104782927"
 ---
 # <a name="transform-data-in-azure-data-factory-version-1"></a>Transformieren von Daten in Azure Data Factory Version 1
 > [!div class="op_single_selector"]
@@ -74,8 +74,8 @@ Sie können eine benutzerdefinierte Aktivität erstellen, um R-Skripts in Ihrem 
 ## <a name="compute-environments"></a>Compute-Umgebungen
 Sie erstellen einen verknüpften Dienst für die Computeumgebung und verwenden dann den verknüpften Dienst, wenn Sie eine Transformationsaktivität definieren. Es gibt zwei Typen von Compute-Umgebungen, die von Data Factory unterstützt werden. 
 
-1. **Bei Bedarf:**  In diesem Fall wird die Compute-Umgebung vollständig von Data Factory verwaltet. Der Data Factory-Dienst erstellt diese Umgebung automatisch, bevor ein Auftrag zur Verarbeitung von Daten übermittelt wird. Sobald der Auftrag abgeschlossen wurde, wird die Umgebung entfernt. Sie können differenzierte Einstellungen für die bedarfsgesteuerte Computeumgebung zur Auftragsausführung, Clusterverwaltung sowie für Bootstrappingaktionen konfigurieren und steuern. 
-2. **Bring Your Own:** In diesem Fall können Sie Ihre eigene Compute-Umgebung (z.B. HDInsight-Cluster) als verknüpften Dienst in Data Factory registrieren. Die Compute-Umgebung wird von Ihnen verwaltet und von Data Factory zum Ausführen von Aktivitäten verwendet. 
+1. **Bei Bedarf:** In diesem Fall wird die Compute-Umgebung vollständig von Data Factory verwaltet. Der Data Factory-Dienst erstellt diese Umgebung automatisch, bevor ein Auftrag zur Verarbeitung von Daten übermittelt wird. Sobald der Auftrag abgeschlossen wurde, wird die Umgebung entfernt. Sie können differenzierte Einstellungen für die bedarfsgesteuerte Computeumgebung zur Auftragsausführung, Clusterverwaltung sowie für Bootstrappingaktionen konfigurieren und steuern. 
+2. **Bring Your Own:** In diesem Fall können Sie Ihre eigene Compute-Umgebung (z. B. HDInsight-Cluster) als verknüpften Dienst in Data Factory registrieren. Die Compute-Umgebung wird von Ihnen verwaltet und von Data Factory zum Ausführen von Aktivitäten verwendet. 
 
 Unter dem Artikel [Verknüpfte Computedienste](data-factory-compute-linked-services.md) finden Sie Informationen zu Computediensten, die von Data Factory unterstützt werden. 
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jeedes
 ms.openlocfilehash: 00d4381c7af7fdf82ee1e895072d92d1e641f8c4
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92454693"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-docusign"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit DocuSign
@@ -42,7 +42,7 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 * DocuSign unterstützt **SP-initiiertes** einmaliges Anmelden.
 
-* DocuSign unterstützt die **Just-in-Time** -Benutzerbereitstellung.
+* DocuSign unterstützt die **Just-in-Time**-Benutzerbereitstellung.
 
 * DocuSign unterstützt die [automatische Benutzerbereitstellung](./docusign-provisioning-tutorial.md).
 
@@ -54,7 +54,7 @@ Zum Konfigurieren der Integration von DocuSign in Azure AD müssen Sie DocuSign 
 
 1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim Azure-Portal an.
 1. Wählen Sie im Navigationsbereich auf der linken Seite den Dienst **Azure Active Directory** aus.
-1. Navigieren Sie zu **Unternehmensanwendungen** , und wählen Sie die Option **Alle Anwendungen** aus.
+1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen** aus.
 1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **DocuSign** in das Suchfeld ein.
 1. Wählen Sie im Ergebnisbereich **DocuSign** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
@@ -62,7 +62,7 @@ Zum Konfigurieren der Integration von DocuSign in Azure AD müssen Sie DocuSign 
 
 ## <a name="configure-and-test-azure-ad-sso-for-docusign"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für DocuSign
 
-Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit DocuSign mithilfe eines Testbenutzers mit dem Namen **B. Simon** . Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in DocuSign eingerichtet werden.
+Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit DocuSign mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in DocuSign eingerichtet werden.
 
 Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit DocuSign die folgenden Schritte aus:
 
@@ -77,7 +77,7 @@ Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD 
 
 Führen Sie die folgenden Schritte aus, um einmaliges Anmelden von Azure AD im Azure-Portal zu aktivieren:
 
-1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **DocuSign** zum Abschnitt **Verwalten** , und wählen Sie **Einmaliges Anmelden** aus.
+1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **DocuSign** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
 1. Wählen Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** das Stiftsymbol für **Grundlegende SAML-Konfiguration** aus, um die Einstellungen zu bearbeiten.
 
@@ -120,20 +120,20 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
 1. Führen Sie unter den Eigenschaften für **Benutzer** die folgenden Schritte aus:
    1. Geben Sie **B.Simon** in das Feld **Name** ein.  
    1. Geben Sie im Feld **Benutzername** die Zeichenfolge `<username>@<companydomain>.<extension>` ein. Beispiel: `B.Simon@contoso.com`.
-   1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen** , und notieren Sie den Wert im Feld **Kennwort** .
-   1. Klicken Sie auf **Erstellen** .
+   1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie den Wert im Feld **Kennwort**.
+   1. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
 In diesem Abschnitt gewähren Sie B. Simon Zugriff auf DocuSign, damit sie das einmalige Anmelden von Azure verwenden kann.
 
-1. Wählen Sie im Azure-Portal **Unternehmensanwendungen**  > **Alle Anwendungen** aus.
+1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
 1. Wählen Sie in der Anwendungsliste **DocuSign** aus.
-1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten** , und wählen Sie **Benutzer und Gruppen** aus.
+1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
 1. Wählen Sie **Benutzer hinzufügen** und anschließend im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der **Benutzer** liste die Option **B.Simon** und anschließend am unteren Bildschirmrand die Schaltfläche **Auswählen** aus.
 1. Wenn den Benutzern eine Rolle zugewiesen werden soll, können Sie sie im Dropdownmenü **Rolle auswählen** auswählen. Wurde für diese App keine Rolle eingerichtet, ist die Rolle „Standardzugriff“ ausgewählt.
-1. Wählen Sie im Dialogfeld **Zuweisung hinzufügen** die Schaltfläche **Zuweisen** .
+1. Wählen Sie im Dialogfeld **Zuweisung hinzufügen** die Schaltfläche **Zuweisen**.
 
 ## <a name="configure-docusign-sso"></a>Konfigurieren des einmaligen Anmeldens für DocuSign
 
@@ -218,7 +218,7 @@ In diesem Abschnitt gewähren Sie B. Simon Zugriff auf DocuSign, damit sie das 
        
        1. Kopieren Sie den Wert unter **Service Provider Login URL** (Anmelde-URL des Dienstanbieters), und fügen Sie ihn im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration** in das Feld **Anmelde-URL** ein. Am Ende der **Anmelde-URL des Dienstanbieters** erhalten Sie den IDPID-Wert.
 
-       1. Klicken Sie auf **Schließen** .
+       1. Klicken Sie auf **Schließen**.
 
 ### <a name="create-docusign-test-user"></a>Erstellen eines DocuSign-Testbenutzers
 
@@ -231,7 +231,7 @@ In diesem Abschnitt wird in DocuSign ein Benutzer namens B. Simon erstellt. Doc
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen: 
 
-1. Klicken Sie im Azure-Portal auf **Diese Anwendung testen** . Dadurch werden Sie zur Anmelde-URL für DocuSign weitergeleitet, wo Sie den Anmeldeflow initiieren können. 
+1. Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für DocuSign weitergeleitet, wo Sie den Anmeldeflow initiieren können. 
 
 2. Rufen Sie direkt die DocuSign-Anmelde-URL auf, und initiieren Sie den Anmeldeflow.
 

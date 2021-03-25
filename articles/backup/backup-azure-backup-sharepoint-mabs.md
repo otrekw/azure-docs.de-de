@@ -4,10 +4,10 @@ description: Verwenden Sie Azure Backup Server zum Sichern und Wiederherstellen 
 ms.topic: conceptual
 ms.date: 04/26/2020
 ms.openlocfilehash: 837aabf739431eebaa6406770620329fe6345eb7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89375396"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-mabs"></a>Sichern einer SharePoint-Farm in Azure mit MABS
@@ -82,7 +82,7 @@ Um die SharePoint-Farm zu sichern, konfigurieren Sie den Schutz für SharePoint 
 
     Wenn Sie den SharePoint-Server erweitern, wird VSS von fragt MABS abgefragt, um zu ermitteln, welche Daten MABS schützen kann.  Wenn es sich bei der SharePoint-Datenbank um eine Remotedatenbank handelt, stellt MABS eine Verbindung mit der Datenbank her. Wenn SharePoint-Datenquellen nicht angezeigt werden, vergewissern Sie sich, dass der VSS Writer auf dem SharePoint-Server und allen SQL Server-Remoteinstanzen ausgeführt wird, und stellen Sie sicher, dass der MABS-Agent sowohl auf dem SharePoint-Server als auch auf der SQL Server-Remoteinstanz installiert ist. Stellen Sie außerdem sicher, dass SharePoint-Datenbanken nicht an anderer Stelle als SQL Server-Datenbanken geschützt werden.
 
-1. Geben Sie unter **Datenschutzmethode auswählen** an, wie Sie die kurz- und langfristige Sicherung handhaben möchten. Die kurzfristige Sicherung erfolgt immer zuerst auf Datenträger, mit der Option der Sicherung vom Datenträger in die Azure-Cloud mit Azure Backup (kurz- oder langfristig).
+1. Geben Sie unter **Datenschutzmethode auswählen** an, wie Sie die kurz- und langfristige Sicherung handhaben möchten. Die kurzfristige Sicherung erfolgt immer zuerst auf Datenträger, mit der Option der Sicherung vom Datenträger in die Azure\-Cloud mit Azure Backup \(kurz\- oder langfristig\).
 
 1. Geben Sie unter **Kurzfristige Ziele auswählen** an, wie die Sicherung in kurzfristigem Speicher auf Datenträger erfolgen soll.   Geben Sie unter **Beibehaltungsdauer** an, wie lange die Daten auf dem Datenträger beibehalten werden sollen. Geben Sie unter **Synchronisierungsfrequenz** an, wie oft eine inkrementelle Sicherung auf Datenträger erfolgen soll. Wenn Sie kein Sicherungsintervall festlegen möchten, können Sie „Direkt vor einem Wiederherstellungspunkt“ aktivieren, damit MABS unmittelbar vor jedem geplanten Wiederherstellungspunkt eine schnelle vollständige Sicherung ausführt.
 
@@ -114,7 +114,7 @@ Nach der Erstellung der Schutzgruppe erfolgt die erste Replikation, und MABS beg
 
 ### <a name="set-up-monitoring-notifications"></a>Einrichten der Überwachung von Benachrichtigungen
 
-1. Wählen Sie in der MABS-Verwaltungskonsole **Überwachung** > **Aktion** > **Optionen** aus.
+1. Wählen Sie in der MABS-Administratorkonsole **Überwachung** > **Aktion** > **Optionen** aus.
 
 2. Wählen Sie **SMTP-Server** aus, geben Sie den Servernamen, den Port und die E-Mail-Adresse ein, über die Benachrichtigungen gesendet werden. Die Adresse muss gültig sein.
 
@@ -124,7 +124,7 @@ Nach der Erstellung der Schutzgruppe erfolgt die erste Replikation, und MABS beg
 
 ### <a name="publish-operations-manager-alerts"></a>Veröffentlichen von Operations Manager-Warnungen
 
-1. Wählen Sie in der MABS-Verwaltungskonsole **Überwachung** > **Aktion** > **Optionen** > **Warnungsveröffentlichung** > **Aktive Warnungen veröffentlichen** aus.
+1. Wählen Sie in der MABS-Administratorkonsole **Überwachung** > **Aktion** > **Optionen** > **Warnungsveröffentlichung** > **Aktive Warnungen veröffentlichen** aus.
 
 2. Nach der Aktivierung der **Warnungsveröffentlichung** werden alle vorhandene MABS-Warnungen, die möglicherweise eine Benutzeraktion erfordern, im Ereignisprotokoll **MABS-Warnungen** veröffentlicht. Der Operations Manager-Agent, der auf dem MABS-Server installiert ist, veröffentlicht dann diese Warnungen für Operations Manager und setzt die Aktualisierung der Konsole fort, wenn neue Warnungen generiert werden.
 
@@ -149,7 +149,7 @@ Im folgenden Beispiel wurde *Recovering SharePoint item* versehentlich gelöscht
 6. Klicken Sie mit der rechten Maustaste auf das Element, und wählen Sie **Wiederherstellen**, um den **Wiederherstellungs-Assistenten** zu öffnen. Wählen Sie **Weiter** aus.
 
     ![Wiederherstellungsauswahl prüfen](./media/backup-azure-backup-sharepoint/review-recovery-selection.png)
-7. Wählen Sie den gewünschten Wiederherstellungstyp aus, und wählen Sie anschließend **Weiter** aus.
+7. Wählen Sie den gewünschten Wiederherstellungstyp und anschließend **Weiter** aus.
 
     ![Wiederherstellungstyp](./media/backup-azure-backup-sharepoint/select-recovery-type.png)
 
@@ -159,7 +159,7 @@ Im folgenden Beispiel wurde *Recovering SharePoint item* versehentlich gelöscht
    >
 8. Wählen Sie den gewünschten **Wiederherstellungsprozess** aus.
 
-   * Wählen Sie **Ohne Wiederherstellungsfarm wiederherstellen**, wenn sich die SharePoint-Farm nicht geändert hat und dem Wiederherstellungspunkt entspricht, der wiederhergestellt wird.
+   * Wählen Sie **Ohne Wiederherstellungsfarm wiederherstellen** aus, wenn sich die SharePoint-Farm nicht geändert hat und dem Wiederherstellungspunkt entspricht, der wiederhergestellt wird.
    * Wählen Sie **Mithilfe einer Wiederherstellungsfarm wiederherstellen** , wenn sich die SharePoint-Farm seit der Erstellung des Wiederherstellungspunkts geändert hat.
 
      ![Wiederherstellungsprozess](./media/backup-azure-backup-sharepoint/recovery-process.png)
@@ -167,7 +167,7 @@ Im folgenden Beispiel wurde *Recovering SharePoint item* versehentlich gelöscht
 
     ![Staging Location1](./media/backup-azure-backup-sharepoint/staging-location1.png)
 
-    MABS verknüpft die Inhaltsdatenbank, die als Host für das SharePoint-Element fungiert, mit der temporären SQL Server-Instanz. MABS stellt das Element aus der Inhaltsdatenbank wieder her und platziert es am Stagingdateispeicherort auf MABS. Das am Stagingort wiederhergestellte Element muss nun an den Stagingort in der SharePoint-Farm exportiert werden.
+    MABS verknüpft die Inhaltsdatenbank, die als Host für das SharePoint-Element fungiert, mit der temporären SQL Server-Instanz. MABS stellt das Element aus der Inhaltsdatenbank wieder her und platziert es am Stagingdateispeicherort auf MABS. Das am Stagingort wiederhergestellte Element muss nun an den Stagingort in der SharePoint-Farm exportiert werden.
 
     ![Staging Location2](./media/backup-azure-backup-sharepoint/staging-location2.png)
 10. Wählen Sie **Wiederherstellungsoptionen angeben**, und wenden Sie Sicherheitseinstellungen auf die SharePoint-Farm oder die Sicherheitseinstellungen des Wiederherstellungspunkts an. Wählen Sie **Weiter** aus.

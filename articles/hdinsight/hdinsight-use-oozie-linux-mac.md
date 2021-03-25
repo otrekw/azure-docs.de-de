@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: b72d94c1cba3ea0476c6d44e68583f6668b167e2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 00573f01aab5e9aa86befaebb6b514c76a01b67d
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101702775"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871774"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Verwenden von Apache Oozie mit Apache Hadoop zum Definieren und Ausführen eines Workflows in Linux-basiertem Azure HDInsight
 
@@ -40,7 +40,7 @@ Sie können Oozie auch dazu verwenden, bestimmte Aufträge für ein System zu pl
 
 Der in diesem Dokument verwendeten Workflows weist zwei Aktionen auf. Aktionen sind Definitionen von Aufgaben, z.B. das Ausführen von Hive, Sqoop, MapReduce oder anderen Prozessen:
 
-![HDInsight – Oozie-Workflowdiagramm](./media/hdinsight-use-oozie-linux-mac/oozie-workflow-diagram.png)
+:::image type="content" source="./media/hdinsight-use-oozie-linux-mac/oozie-workflow-diagram.png" alt-text="HDInsight – Oozie-Workflowdiagramm" border="false":::
 
 1. Eine Hive-Aktion führt ein HiveQL-Skript zum Extrahieren von Datensätzen aus der in HDInsight enthaltenen Tabelle `hivesampletable` aus. Jede Datenzeile beschreibt einen Besuch eines bestimmten Mobilgeräts. Das Format des Eintrags sieht ähnlich wie der folgende Text aus:
 
@@ -516,29 +516,29 @@ Um auf die Oozie-Webbenutzeroberfläche zuzugreifen, gehen Sie folgendermaßen v
 
 3. Klicken Sie auf der linken Seite der Seite auf **Oozie** > **QuickLinks** > **Oozie Web UI**.
 
-    ![Apache Ambari – Schritte in der Oozie-Webbenutzeroberfläche](./media/hdinsight-use-oozie-linux-mac/hdi-oozie-web-ui-steps.png)
+    :::image type="content" source="./media/hdinsight-use-oozie-linux-mac/hdi-oozie-web-ui-steps.png" alt-text="Apache Ambari – Schritte in der Oozie-Webbenutzeroberfläche" border="true":::
 
 4. Die Oozie-Webbenutzeroberfläche zeigt standardmäßig aktive Workflowaufträge an. Klicken Sie zum Anzeigen aller Workflowaufträge auf **Alle Aufträge**.
 
-    ![Workflowaufträge in der Oozie-Webkonsole](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-jobs.png)
+    :::image type="content" source="./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-jobs.png" alt-text="Workflowaufträge in der Oozie-Webkonsole" border="true":::
 
 5. Um weitere Informationen über einen Auftrag anzuzeigen, klicken Sie auf den Auftrag.
 
-    ![HDInsight – Apache Oozie-Auftragsinformationen](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-info.png)
+    :::image type="content" source="./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-info.png" alt-text="HDInsight – Apache Oozie-Auftragsinformationen" border="true":::
 
 6. Auf der Registerkarte **Auftragsinformationen** können Sie die grundlegenden Auftragsinformationen und die einzelnen Aktionen innerhalb des Auftrags anzeigen. Auf den Registerkarten am oberen Rand können Sie die **Auftragsdefinition** und **Auftragskonfiguration** anzeigen, auf das **Auftragsprotokoll** zugreifen oder einen gerichteten azyklischen Graph (Directed Acyclic Graph, DAG) unter **DAG des Auftrags** anzeigen.
 
    * **Auftragsprotokoll:** Wählen Sie die Schaltfläche **Get Logs** (Protokolle abrufen) aus, um alle Protokolle für den Auftrag abzurufen, oder filtern Sie die Protokolle mithilfe des Felds **Suchfilter eingeben**.
 
-       ![HDInsight – Apache Oozie-Auftragsprotokoll](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-log.png)
+       :::image type="content" source="./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-log.png" alt-text="HDInsight – Apache Oozie-Auftragsprotokoll" border="true":::
 
    * **Auftrags-DAG:** Der DAG ist eine grafische Übersicht über die Datenpfade, die im Workflow gewählt wurden.
 
-       ![„HDInsight – Apache Oozie-Auftrags-DAG“](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-dag.png)
+       :::image type="content" source="./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-dag.png" alt-text="„HDInsight – Apache Oozie-Auftrags-DAG“" border="true":::
 
 7. Wenn Sie eine der Aktionen auf der Registerkarte **Auftragsinformationen** auswählen, werden Informationen zur Aktion eingeblendet. Wählen Sie z.B. die Aktion **RunSqoopExport** aus.
 
-    ![HDInsight-Oozie-Auftrag – Aktionsinfo](./media/hdinsight-use-oozie-linux-mac/oozie-job-action-info.png)
+    :::image type="content" source="./media/hdinsight-use-oozie-linux-mac/oozie-job-action-info.png" alt-text="HDInsight-Oozie-Auftrag – Aktionsinfo" border="true":::
 
 8. Sie können Details für die Aktion anzeigen, z. B. einen Link zur **Konsolen-URL**. Verwenden Sie diesen Link zum Anzeigen von JobTracker-Informationen für den Auftrag.
 
@@ -638,18 +638,18 @@ Sie können den Koordinator verwenden, um den Start, das Ende und die Häufigkei
 
 7. Wenn Sie zur Oozie-Webbenutzeroberfläche wechseln und die Registerkarte **Koordinatoraufträge** auswählen, werden Informationen ähnlich wie in der folgenden Abbildung angezeigt:
 
-    ![Registerkarte für Koordinatoraufträge in der Oozie-Webkonsole](./media/hdinsight-use-oozie-linux-mac/coordinator-jobs-tab.png)
+    :::image type="content" source="./media/hdinsight-use-oozie-linux-mac/coordinator-jobs-tab.png" alt-text="Registerkarte für Koordinatoraufträge in der Oozie-Webkonsole" border="true":::
 
     Der Eintrag **Next Materialization** (Nächste Materialisierung) enthält die nächste Ausführungszeit des Auftrags.
 
 8. Wie beim vorherigen Workflowauftrag werden beim Auswählen des Auftragseintrags auf der Webbenutzeroberfläche Informationen zum Auftrag angezeigt:
 
-    ![Apache Oozie-Koordinator – Auftragsinformationen](./media/hdinsight-use-oozie-linux-mac/coordinator-job-info.png)
+    :::image type="content" source="./media/hdinsight-use-oozie-linux-mac/coordinator-job-info.png" alt-text="Apache Oozie-Koordinator – Auftragsinformationen" border="true":::
 
     > [!NOTE]  
     > In dieser Abbildung werden nur erfolgreiche Ausführungen des Auftrags und nicht einzelne Aktionen innerhalb des geplanten Workflows angezeigt. Um die einzelnen Aktionen anzuzeigen, wählen Sie eine der **Aktionseinträge** aus.
 
-    ![Oozie-Webkonsole – Registerkarte mit Auftragsinformationen](./media/hdinsight-use-oozie-linux-mac/coordinator-action-job.png)
+    :::image type="content" source="./media/hdinsight-use-oozie-linux-mac/coordinator-action-job.png" alt-text="Oozie-Webkonsole – Registerkarte mit Auftragsinformationen" border="true":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

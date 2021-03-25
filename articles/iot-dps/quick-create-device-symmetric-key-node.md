@@ -10,10 +10,10 @@ services: iot-dps
 manager: eliotgra
 ms.custom: mvc
 ms.openlocfilehash: 78005ba46952bcf05b19c7627feecb1ec30ac651
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92429231"
 ---
 # <a name="quickstart-provision-a-symmetric-key-device-using-nodejs"></a>Schnellstart: Bereitstellen eines Geräts mit symmetrischem Schlüssel mithilfe von Node.js
@@ -49,13 +49,13 @@ In diesem Artikel wird von der Nutzung einer Windows-Arbeitsstation ausgegangen.
 
 3. Geben Sie im Bereich **Registrierung hinzufügen** die folgenden Informationen ein, und wählen Sie die Schaltfläche **Speichern** aus.
 
-   - **Mechanismus** : Wählen Sie **Symmetrischer Schlüssel** als *Mechanismus* für den Nachweis der Identität aus.
+   - **Mechanismus**: Wählen Sie **Symmetrischer Schlüssel** als *Mechanismus* für den Nachweis der Identität aus.
 
    - **Schlüssel automatisch generieren:** Aktivieren Sie dieses Kontrollkästchen.
 
-   - **Registrierungs-ID** : Geben Sie eine Registrierungs-ID ein, um die Registrierung zu identifizieren. Verwenden Sie nur Kleinbuchstaben und Bindestriche („-“). Beispiel: **symm-key-nodejs-device-01**
+   - **Registrierungs-ID**: Geben Sie eine Registrierungs-ID ein, um die Registrierung zu identifizieren. Verwenden Sie nur Kleinbuchstaben und Bindestriche („-“). Beispiel: **symm-key-nodejs-device-01**
 
-   - **IoT Hub-Geräte-ID** : Geben Sie einen Gerätebezeichner ein. Beispiel: **nodejs-device-01**
+   - **IoT Hub-Geräte-ID**: Geben Sie einen Gerätebezeichner ein. Beispiel: **nodejs-device-01**
 
      ![Hinzufügen einer individuellen Registrierung für den Nachweis des symmetrischen Schlüssels im Portal](./media/quick-create-device-symmetric-key-node/create-individual-enrollment-node.png)
 
@@ -97,7 +97,7 @@ Der Bereitstellungscode kontaktiert die DPS-Instanz basierend auf diesen Variabl
     cd azure-iot-sdk-node/provisioning/device/samples
     ```
 
-3. Öffnen Sie im Ordner *provisioning/device/samples* die Datei *register_symkey.js* , und überprüfen Sie den Code. 
+3. Öffnen Sie im Ordner *provisioning/device/samples* die Datei *register_symkey.js*, und überprüfen Sie den Code. 
 
     Beachten Sie, dass der Beispielcode benutzerdefinierte Nutzdaten festlegt:
 

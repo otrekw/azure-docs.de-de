@@ -4,10 +4,10 @@ description: In diesem Artikel erfahren Sie, wie Sie SAP HANA-Datenbanken wieder
 ms.topic: conceptual
 ms.date: 11/7/2019
 ms.openlocfilehash: c502b7741acd343baefe5e2bf8b95cfc02e46688
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96021672"
 ---
 # <a name="restore-sap-hana-databases-on-azure-vms"></a>Wiederherstellen von SAP HANA-Datenbanken auf virtuellen Azure-Computern
@@ -266,7 +266,7 @@ Wenn CRR aktiviert ist, können Sie die Sicherungselemente in der sekundären Re
 1. Wählen Sie **Sekundäre Region** aus, um die Elemente in der sekundären Region anzuzeigen.
 
 >[!NOTE]
->In der Liste werden nur Sicherungsverwaltungstypen angezeigt, die CRR unterstützen. Derzeit ist nur die Unterstützung der Wiederherstellung von Daten aus sekundären Regionen in einer sekundären Region zulässig.
+>In der Liste werden nur Sicherungsverwaltungstypen angezeigt, die das CRR-Feature unterstützen. Derzeit ist nur die Unterstützung der Wiederherstellung von Daten aus sekundären Regionen in einer sekundären Region zulässig.
 
 ![Sicherungselemente in einer sekundären Region](./media/sap-hana-db-restore/backup-items-secondary-region.png)
 

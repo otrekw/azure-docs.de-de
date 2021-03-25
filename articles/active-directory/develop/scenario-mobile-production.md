@@ -13,18 +13,18 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: d1a7407c947c1c5bae1eed00acb0f216722f3d09
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 08243fd06de289941d8e6a9197ccb349614af056
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88121033"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104675956"
 ---
 # <a name="prepare-mobile-apps-for-production"></a>Vorbereiten von mobilen Apps auf die Produktion
 
 In diesem Artikel wird beschrieben, wie Sie die Qualität und Zuverlässigkeit Ihrer mobilen App erhöhen, bevor Sie diese in die Produktion überführen.
 
-## <a name="handle-errors"></a>Fehlerbehandlung
+## <a name="handle-errors"></a>Behandeln von Fehlern
 
 Beim Vorbereiten von mobilen Apps für die Produktion können verschiedene Fehlerbedingungen auftreten. In den Hauptszenarien werden Sie sich mit verborgenen (stillen) Ausfällen und dem Ausweichen auf eine Interaktion befassen. Weitere Fehlerzustände sind Netzwerkstörungen, Dienstausfälle, fehlende Administratoreinwilligungen und weitere Fälle, die auf das jeweilige Szenario bezogen sind.
 
@@ -34,18 +34,9 @@ Für jeden MSAL-Typ (Microsoft Authentication Library, Microsoft Authentifizieru
 - [iOS-Wiki für MSAL](https://github.com/AzureAD/microsoft-authentication-library-for-objc/wiki)
 - [Wiki für MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki)
 
-## <a name="mitigate-and-investigate-issues"></a>Entschärfen und Untersuchen von Problemen
-
-Sammeln Sie Daten, um Probleme in Ihrer App besser zu diagnostizieren. Informationen über die Art von Daten, die Sie sammeln können, finden Sie unter [Protokollierung in MSAL-Anwendungen](./msal-logging.md).
-
-Hier einige Vorschläge für Daten, deren Erfassung sich lohnen kann:
-
-- Benutzer bitten bei Problemen möglicherweise um Unterstützung. Eine bewährte Vorgehensweise besteht darin, Protokolle zu erfassen und temporär zu speichern. Geben Sie einen Speicherort an, an den Benutzer die Protokolle hochladen können. MSAL stellt Protokollierungserweiterungen zur Verfügung, mit denen sich detaillierte Authentifizierungsinformationen erfassen lassen.
-
-- Falls Telemetriedaten verfügbar sind, aktivieren Sie die Sammlung von Telemetriedaten mithilfe der MSAL, um zu ermitteln, wie sich Benutzer bei Ihrer App anmelden.
-
-## <a name="next-steps"></a>Nächste Schritte
 
 [!INCLUDE [Common steps to move to production](../../../includes/active-directory-develop-scenarios-production.md)]
+
+## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Beispiele zum Testen finden Sie unter [Öffentliche Desktop- und mobile Client-Apps](sample-v2-code.md#desktop-and-mobile-public-client-apps).

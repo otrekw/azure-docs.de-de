@@ -3,12 +3,12 @@ title: Bereitstellen einer Vorlagenspezifikation als verknüpfte Vorlage
 description: Erfahren Sie, wie Sie eine vorhandene Vorlagenspezifikation in einer verknüpften Bereitstellung bereitstellen.
 ms.topic: conceptual
 ms.date: 11/17/2020
-ms.openlocfilehash: b30a99a469ec010dcc2e128bbeb446b493631608
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 8d4ccd77c8b37a696fab7494a8d3f8052fc89b35
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96518871"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889262"
 ---
 # <a name="tutorial-deploy-a-template-spec-as-a-linked-template-preview"></a>Tutorial: Bereitstellen einer Vorlagenspezifikation als verknüpfte Vorlage (Vorschau)
 
@@ -91,7 +91,7 @@ Zum Bereitstellen einer Vorlagenspezifikation in einer ARM-Vorlage fügen Sie Ih
     },
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2020-06-01",
+      "apiVersion": "2020-10-01",
       "name": "createStorage",
       "properties": {
         "mode": "Incremental",
