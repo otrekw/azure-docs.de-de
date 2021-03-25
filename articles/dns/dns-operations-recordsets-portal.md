@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 10/6/2018
 ms.author: rohink
 ms.openlocfilehash: 22ceba69ecf865d906021068a39a9d273b842ca2
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94965730"
 ---
 # <a name="manage-dns-records-and-record-sets-by-using-the-azure-portal"></a>Verwalten von DNS-Einträgen und - Ressourceneintragssätzen im Azure-Portal
@@ -50,7 +50,7 @@ Sie können einem Ressourceneintragssatz bis zu 20 Einträge hinzufügen. Ein R
 
 Nachdem der Eintrag gespeichert wurde, spiegeln die Werte auf dem Blatt **DNS-Zone** den neuen Eintrag wider.
 
-## <a name="update-a-record"></a>{1}Update a record{2} (Datensatz aktualisieren)
+## <a name="update-a-record"></a>Update a record (Datensatz aktualisieren)
 
 Wenn Sie einen Eintrag innerhalb eines vorhandenen Ressourceneintragssatzes aktualisieren, hängt vom Eintragstyp ab, welche Felder Sie aktualisieren können.
 
@@ -77,7 +77,7 @@ Sie können Einträge mit dem Azure-Portal aus einem Ressourceneintragssatz entf
 3. Klicken Sie oben auf dem Blatt auf **Speichern** , um Ihre Einstellungen zu speichern.
 4. Nachdem der Eintrag entfernt wurde, zeigen die Werte für den Eintrag auf dem Blatt **DNS-Zone** an, dass der Eintrag entfernt wurde.
 
-## <a name="delete-a-record-set"></a><a name="delete"></a>Löschen eines Ressourceneintragssatzes
+## <a name="delete-a-record-set"></a><a name="delete"></a>Löschen eines Eintragssatzes
 
 1. Klicken Sie auf dem Blatt **Eigenschaften des Ressourceneintragssatzes** Ihres Ressourceneintragssatzes auf **Entfernen**.
 

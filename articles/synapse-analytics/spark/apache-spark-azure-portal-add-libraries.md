@@ -9,12 +9,12 @@ ms.date: 03/01/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: c6d720c3feec29eb32b1cfa9c31ea45839c98ec7
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: e8ad6d072af6979eb8509068c1dcd239e7840950
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102176415"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104598013"
 ---
 # <a name="manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Verwalten von Bibliotheken für Apache Spark in Azure Synapse Analytics
 Bibliotheken stellen wiederverwendbaren Code bereit, den Sie in Ihre Programme oder Projekte einschließen können. 
@@ -60,10 +60,6 @@ Weitere Informationen zu diesen Funktionen finden Sie in der Dokumentation zur [
 Sie werden bei der interaktiven Datenanalyse oder beim maschinellen Lernen häufig feststellen, dass Sie neuere Pakete ausprobieren möchten. Oder Sie benötigen Pakete, die in Ihrem Apache Spark-Pool noch nicht verfügbar sind. Anstatt die Poolkonfiguration zu aktualisieren, können Benutzer jetzt sitzungsbezogene Pakete verwenden, um Sitzungsabhängigkeiten hinzuzufügen, zu verwalten und zu aktualisieren.
 
 Mit sitzungsbezogenen Paketen können Benutzer zu Beginn ihrer Sitzung Paketabhängigkeiten definieren. Wenn Sie ein sitzungsbezogenes Paket installieren, kann nur die aktuelle Sitzung auf die angegebenen Pakete zugreifen. Daher wirken sich diese sitzungsbezogenen Pakete nicht auf andere Sitzungen oder Aufträge aus, die denselben Apache Spark-Pool verwenden. Außerdem werden diese Bibliotheken zusätzlich zu den Paketen der Basisruntime und der Poolebene installiert. 
-
-Diese Pakete werden Ihrer Python-Umgebung automatisch hinzugefügt. Die Pakete dürfen nicht in der Datei *requirements.txt* erwähnt werden.
-
-Beachten Sie, dass diese Methode zurzeit nur Dateien vom Typ `*.whl` unterstützt. Fügen Sie dem Container keine Dateien vom Typ `*.tar.gz` hinzu.
 
 Weitere Informationen zum Verwalten von sitzungsbezogenen Paketen finden Sie in den folgenden Schrittanleitungen:
 

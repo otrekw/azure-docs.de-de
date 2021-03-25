@@ -13,10 +13,10 @@ ms.date: 10/21/2020
 ms.author: ryanwi
 ms.reviewer: zachowd, lenalepa, jesakowi
 ms.openlocfilehash: 74321bc75fa760727e7896f47cdfc5b2929047e5
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92366087"
 ---
 # <a name="azure-active-directory-consent-framework"></a>Azure Active Directory-Zustimmungsframework
@@ -54,7 +54,7 @@ Die folgenden Schritte zeigen, wie das Zustimmungsframework auf der Benutzerober
     **So gewähren Sie delegierte App-Berechtigungen**
 
    1. Rufen Sie für Ihre Anwendung die Seite **API-Berechtigungen** auf.
-   1. Klicken Sie auf die Schaltfläche **Administratoreinwilligung gewähren** .
+   1. Klicken Sie auf die Schaltfläche **Administratoreinwilligung gewähren**.
 
       ![Erteilen von Berechtigungen für explizite Administratorzustimmung](./media/consent-framework/grant-consent.png)
 

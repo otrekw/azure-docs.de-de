@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 10/08/2020
 ms.author: duau
 ms.openlocfilehash: 7cfd378ae621192cd98b482b66c85c3dcd3ca454
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101721938"
 ---
 # <a name="tutorial-create-and-modify-peering-for-an-expressroute-circuit-using-powershell"></a>Tutorial: Erstellen und Ändern des Peerings für eine ExpressRoute-Verbindung mithilfe von PowerShell
@@ -238,10 +238,10 @@ Dieser Abschnitt unterstützt Sie beim Erstellen, Abrufen, Aktualisieren und Lö
    ```
 4. Konfigurieren Sie das private Azure-Peering für die Verbindung. Bevor Sie mit den nächsten Schritten fortfahren, stellen Sie sicher, dass Sie über Folgendes verfügen:
 
-   * Ein Paar von Subnetzen, die nicht zu einem für virtuelle Netzwerke reservierten Adressraum gehören. Ein Subnetz wird für den primären Link verwendet, während das andere Subnetz für den sekundären Link verwendet wird. Über jedes dieser Subnetze weisen Sie die erste verwendbare IP-Adresse für Ihren Router zu, da die zweite verwendbare IP-Adresse von Microsoft für den eigenen Router genutzt wird. Sie verfügen über drei Optionen für dieses Paar von Subnetzen:
-       * IPv4: zwei/30 Subnetze.
-       * IPv6: zwei/126 Subnetze.
-       * Beides: zwei/30 Subnetze und zwei/126 Subnetze.
+   * Sie benötigen zwei Subnetze, die nicht zu einem für virtuelle Netzwerke reservierten Adressraum gehören. Ein Subnetz wird für den primären Link verwendet, während das andere Subnetz für den sekundären Link verwendet wird. Über jedes dieser Subnetze weisen Sie die erste verwendbare IP-Adresse für Ihren Router zu, da die zweite verwendbare IP-Adresse von Microsoft für den eigenen Router genutzt wird. Sie verfügen über drei Optionen für dieses Paar von Subnetzen:
+       * IPv4: zwei /30-Subnetze
+       * IPv6: zwei /126-Subnetze
+       * Beides: zwei /30-Subnetze und zwei /126-Subnetze
    * Eine gültige VLAN-ID zum Einrichten dieses Peerings. Stellen Sie sicher, dass kein anderes Peering der Verbindung die gleiche VLAN-ID verwendet.
    * AS-Nummer für Peering. Sie können sowohl AS-Nummern mit 2 Byte als auch mit 4 Byte verwenden. Sie können eine private AS-Nummer für dieses Peering verwenden. Stellen Sie sicher, dass Sie 65515 verwenden.
    * Optional:

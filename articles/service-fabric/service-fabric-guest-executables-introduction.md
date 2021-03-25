@@ -4,10 +4,10 @@ description: Erfahren Sie, wie Sie ein Paket einer vorhandenen Anwendung als aus
 ms.topic: conceptual
 ms.date: 03/15/2018
 ms.openlocfilehash: 8b808d092001196a4d2150e44d508e031db95554
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96017745"
 ---
 # <a name="deploy-an-existing-executable-to-service-fabric"></a>Bereitstellen einer vorhandenen ausführbaren Datei für Service Fabric
@@ -24,7 +24,7 @@ Das Ausführen einer ausführbaren Gastanwendungsdatei in einem Service Fabric-C
 * Dichte. Sie können mehrere Anwendungen in einem Cluster ausführen, sodass nicht mehr jede Anwendung auf eigener Hardware ausgeführt werden muss.
 * Auffindbarkeit: Mithilfe von REST können Sie den Service Fabric Naming Service aufrufen, um nach anderen Diensten im Cluster zu suchen. 
 
-## <a name="samples"></a>Beispiele
+## <a name="samples"></a>Proben
 * [Beispiel für das Packen und Bereitstellen einer ausführbaren Gastdatei](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [Beispiel für zwei ausführbare Gastdateien (C# und Node.js), die über den Naming Service mithilfe von REST kommunizieren](https://github.com/Azure-Samples/service-fabric-dotnet-containers)
 

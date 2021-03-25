@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 9d8b75c48da2bb13d843258ead378d3e849da951
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85514078"
 ---
 # <a name="replace-a-controller-module-on-your-storsimple-device"></a>Ersetzen des Controllermoduls auf dem StorSimple-Gerät
@@ -120,7 +120,7 @@ Beim Austausch zweier Controller entfernen Sie zuerst beide fehlerhaften Control
    2. Ist er Teil des Clusters?
    3. Wird der Peercontroller ausgeführt, und befindet er sich in einem Cluster?
       
-      Wenn keine dieser Bedingungen erfüllt ist, sucht der Controller nach der letzten täglichen Sicherung (auf Laufwerk S: unter **nonDOMstorage** ). Der Controller kopiert die aktuellste Momentaufnahme der virtuellen Festplatte aus der Sicherung.
+      Wenn keine dieser Bedingungen zutrifft, sucht der Controller nach der aktuellsten täglichen Sicherung (befindet sich in **nonDOMstorage** auf Laufwerk S:). Der Controller kopiert die aktuellste Momentaufnahme der virtuellen Festplatte aus der Sicherung.
 2. Der Controller in Steckplatz 0 verwendet die Momentaufnahme für ein eigenes Image.
 3. In der Zwischenzeit wartet der Controller in Steckplatz 1 darauf, dass Controller 0 die Imageerstellung abschließt und startet.
 4. Nach dem Start von Controller 0 erkennt Controller 1 den von Controller 0 erstellten Cluster, wodurch die Logik zum Austausch eines einzelnen Controllers ausgelöst wird. Weitere Informationen finden Sie unter [Logik beim Austauschen eines einzelnen Controllers](#single-controller-replacement-logic).
@@ -153,7 +153,7 @@ Dieser Workflow ist erforderlich, wenn beide Controller in Ihrem Microsoft Azure
    4. Nachdem der erste Controller neu gestartet wurde und sich in einem ordnungsgemäßen Zustand befindet, wird das System ausgeführt.
       
       > [!NOTE]
-      > Wenn Sie das Gerät über die serielle Konsole überwachen, können mehrere Neustarts durchgeführt werden, während der Controller aus dem Austauschverfahren wiederhergestellt wird. Wenn das Menü der seriellen Konsole angezeigt wird, wissen Sie, dass der Austausch abgeschlossen ist. Wenn das Menü nicht innerhalb von 2,5 Stunden nach Beginn des Controlleraustauschs angezeigt wird, [wenden Sie sich an den Microsoft Support Service](storsimple-8000-contact-microsoft-support.md).
+      > Wenn Sie das Gerät über die serielle Konsole überwachen, können mehrere Neustarts durchgeführt werden, während der Controller aus dem Austauschverfahren wiederhergestellt wird. Wenn das Menü der seriellen Konsole angezeigt wird, wissen Sie, dass der Austausch abgeschlossen ist. Wenn das Menü nicht innerhalb von 2,5 Stunden nach Beginn des Controlleraustauschs angezeigt wird, wenden Sie sich an den [Microsoft-Support](storsimple-8000-contact-microsoft-support.md).
      
 ## <a name="remove-a-controller"></a>Entfernen eines Controllers
 Verwenden Sie das folgende Verfahren, um ein fehlerhaftes Controllermodul aus Ihrem StorSimple-Gerät zu entfernen.
@@ -166,7 +166,7 @@ Verwenden Sie das folgende Verfahren, um ein fehlerhaftes Controllermodul aus Ih
 1. Greifen Sie den Modulriegel mit Daumen und Zeigefinger.
 2. Drücken Sie Daumen und Zeigefinger vorsichtig zusammen, um den Controllerriegel zu lösen.
    
-    ![Lösen des Controllerriegels](./media/storsimple-controller-replacement/IC741047.png)
+    ![ Lösen des Controllerriegels](./media/storsimple-controller-replacement/IC741047.png)
    
     **Abbildung 2:** Lösen des Controllerriegels
 3. Verwenden Sie den Riegel als Griff, um den Controller aus dem Gehäuse zu ziehen.

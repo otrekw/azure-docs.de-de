@@ -7,10 +7,10 @@ ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 8f8086aced26fc46fb1430df074082e8c3365baa
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92746811"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-ad-ds"></a>Erstellen eines Profilcontainers mit Azure Files und AD DS
@@ -58,7 +58,7 @@ Gehen Sie wie folgt vor, um eine Dateifreigabe zu erstellen:
 
 2. Klicken Sie in der Übersicht auf **Dateifreigaben**.
 
-3. Klicken Sie auf **+Dateifreigaben** , erstellen Sie eine neue Dateifreigabe mit dem Namen **Profile** , und geben Sie dann entweder ein geeignetes Kontingent ein, oder lassen Sie das Feld leer, um kein Kontingent anzugeben.
+3. Klicken Sie auf **+Dateifreigaben**, erstellen Sie eine neue Dateifreigabe mit dem Namen **Profile**, und geben Sie dann entweder ein geeignetes Kontingent ein, oder lassen Sie das Feld leer, um kein Kontingent anzugeben.
 
 4. Klicken Sie auf **Erstellen**.
 
@@ -70,7 +70,7 @@ Als Nächstes müssen Sie die Active Directory-Authentifizierung (AD) aktivieren
 
 2. Befolgen Sie die Anweisungen unter [Teil 1: Aktivieren der AD DS-Authentifizierung für Ihre Dateifreigaben in Azure](../storage/files/storage-files-identity-ad-ds-enable.md), um das Modul „AzFilesHybrid“ zu installieren und die Authentifizierung zu aktivieren.
 
-3.  Öffnen Sie im Azure-Portal Ihr Speicherkonto, klicken Sie auf **Konfiguration** , und bestätigen Sie dann, dass die Option **Active Directory (AD)** auf **Aktiviert** festgelegt ist.
+3.  Öffnen Sie im Azure-Portal Ihr Speicherkonto, klicken Sie auf **Konfiguration**, und bestätigen Sie dann, dass die Option **Active Directory (AD)** auf **Aktiviert** festgelegt ist.
 
      > [!div class="mx-imgBorder"]
      > ![Screenshot der Konfigurationsseite mit aktiviertem Azure Active Directory (AD)](media/active-directory-enabled.png)
@@ -202,7 +202,7 @@ So konfigurieren Sie FSLogix auf Ihrer Sitzungshost-VM:
 
     - Navigieren Sie zu **Computer** > **HKEY_LOCAL_MACHINE** > **SOFTWARE** > **FSLogix**.
 
-    - Erstellen Sie einen **Profiles** -Schlüssel.
+    - Erstellen Sie einen **Profiles**-Schlüssel.
 
     - Erstellen Sie **Enabled, DWORD** mit dem Wert 1.
 

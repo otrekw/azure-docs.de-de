@@ -11,10 +11,10 @@ ms.author: sstein
 ms.reviewer: MightyPen
 ms.date: 11/07/2018
 ms.openlocfilehash: e17e98e784b7453c87814c5cce5c03568f66b1cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91619745"
 ---
 # <a name="use-in-memory-oltp-to-improve-your-application-performance-in-azure-sql-database-and-azure-sql-managed-instance"></a>Verwenden von In-Memory-OLTP zur Verbesserung der Anwendungsleistung in Azure SQL-Datenbank und Azure SQL Managed Instance
@@ -43,7 +43,7 @@ SSMS umfasst einen Bericht **Übersicht der Transaktionsleistungsanalyse** , den
 
 So generieren Sie den Bericht in SSMS
 
-* Klicken Sie im **Objekt-Explorer**mit der rechten Maustaste auf den Datenbankknoten.
+* Klicken Sie im **Objekt-Explorer** mit der rechten Maustaste auf den Datenbankknoten.
 * Klicken Sie auf **Berichte** > **Standardberichte** > **Übersicht der Transaktionsleistungsanalyse**.
 
 Weitere Informationen finden Sie unter [Bestimmen, ob eine Tabelle oder eine gespeicherte Prozedur zu In-Memory OLTP portiert werden soll](/sql/relational-databases/in-memory-oltp/determining-if-a-table-or-stored-procedure-should-be-ported-to-in-memory-oltp).

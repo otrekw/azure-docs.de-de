@@ -10,10 +10,10 @@ author: sakash279
 ms.author: akshanka
 ms.custom: devx-track-js
 ms.openlocfilehash: 2d40b70d49b1934c9dd2d911369245b1b2e4f2ff
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93079698"
 ---
 # <a name="how-to-use-azure-table-storage-or-the-azure-cosmos-db-table-api-from-nodejs"></a>Verwenden von Azure Table Storage oder der Azure Cosmos DB-Tabellen-API über Node.js
@@ -135,8 +135,8 @@ var tableSvc = azure.createTableService().withFilter(retryOperations);
 
 Um eine Entität hinzuzufügen, erstellen Sie zunächst ein Objekt, das die Entitätseigenschaften definiert. Alle Entitäten müssen **PartitionKey** und **RowKey** enthalten, die eindeutige Bezeichner für die Entität darstellen.
 
-* **PartitionKey** : bestimmt die Partition, in der die Entität gespeichert ist.
-* **RowKey** : identifiziert die Entität innerhalb der Partition eindeutig.
+* **PartitionKey**: bestimmt die Partition, in der die Entität gespeichert ist.
+* **RowKey**: identifiziert die Entität innerhalb der Partition eindeutig.
 
 **PartitionKey** und **RowKey** müssen Zeichenfolgenwerte sein. Weitere Informationen finden Sie unter [Grundlegendes zum Tabellendienst-Datenmodell](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model).
 
@@ -261,15 +261,15 @@ Bei erfolgreichen Batchvorgängen enthält `result` Informationen für jeden Vor
 
 Vorgänge, die zu einem Batch hinzugefügt wurden, können Sie durch Anzeigen der Eigenschaft `operations` überprüfen. Sie können auch die folgenden Methoden verwenden, um mit Vorgängen zu arbeiten.
 
-* **clear** : löscht alle Vorgänge aus einem Batch.
-* **getOperations** : ruft einen Vorgang aus dem Batch ab.
-* **hasOperations** : gibt „true“ zurück, wenn der Batch Vorgänge enthält.
-* **removeOperations** : entfernt einen Vorgang.
-* **size** : gibt die Anzahl von Vorgängen im Batch zurück.
+* **clear**: löscht alle Vorgänge aus einem Batch.
+* **getOperations**: ruft einen Vorgang aus dem Batch ab.
+* **hasOperations**: gibt „true“ zurück, wenn der Batch Vorgänge enthält.
+* **removeOperations**: entfernt einen Vorgang.
+* **size**: gibt die Anzahl von Vorgängen im Batch zurück.
 
 ## <a name="retrieve-an-entity-by-key"></a>Abrufen einer Entität nach Schlüssel
 
-Wenn Sie eine bestimmte Entität basierend auf **PartitionKey** und **RowKey** zurückgeben möchten, verwenden Sie die **retrieveEntity** -Methode.
+Wenn Sie eine bestimmte Entität basierend auf **PartitionKey** und **RowKey** zurückgeben möchten, verwenden Sie die **retrieveEntity**-Methode.
 
 ```javascript
 tableSvc.retrieveEntity('mytable', 'hometasks', '1', function(error, result, response){
@@ -285,12 +285,12 @@ Nach Abschluss des Vorgangs enthält `result` die Entität.
 
 Um eine Tabelle abzufragen, erstellen Sie mithilfe des **TableQuery-Objekts** einen Abfrageausdruck mit folgenden Klauseln:
 
-* **select** : die von der Abfrage zurückgegebenen Felder.
-* **where** : die where-Klausel.
+* **select**: die von der Abfrage zurückgegebenen Felder.
+* **where**: die where-Klausel.
 
-  * **and** : eine `and` where-Bedingung.
-  * **or** : eine `or` where-Bedingung.
-* **top** : die Anzahl der abzurufenden Elemente.
+  * **and**: eine `and` where-Bedingung.
+  * **or**: eine `or` where-Bedingung.
+* **top**: die Anzahl der abzurufenden Elemente.
 
 Im folgenden Beispiel wird eine Abfrage erstellt, die die ersten fünf Elemente mit dem PartitionKey „hometasks“ zurückgibt.
 
@@ -300,7 +300,7 @@ var query = new azure.TableQuery()
   .where('PartitionKey eq ?', 'hometasks');
 ```
 
-Da **select** nicht verwendet wird, werden alle Felder zurückgegeben. Verwenden Sie **queryEntities** , um die Abfrage für eine Tabelle auszuführen. Im folgenden Beispiel werden mit der Abfrage Entitäten aus 'mytable' zurückgegeben.
+Da **select** nicht verwendet wird, werden alle Felder zurückgegeben. Verwenden Sie **queryEntities**, um die Abfrage für eine Tabelle auszuführen. Im folgenden Beispiel werden mit der Abfrage Entitäten aus 'mytable' zurückgegeben.
 
 ```javascript
 tableSvc.queryEntities('mytable',query, null, function(error, result, response) {
@@ -326,7 +326,7 @@ var query = new azure.TableQuery()
 
 ## <a name="delete-an-entity"></a>Löschen einer Entität
 
-Sie können eine Entität unter Verwendung ihres Partitions- und Zeilenschlüssels löschen. In diesem Beispiel enthält das Objekt **task1** die **RowKey** - und **PartitionKey** -Werte der zu löschenden Entität. Dann wird das Objekt der **deleteEntity** -Methode übergeben.
+Sie können eine Entität unter Verwendung ihres Partitions- und Zeilenschlüssels löschen. In diesem Beispiel enthält das Objekt **task1** die **RowKey**- und **PartitionKey**-Werte der zu löschenden Entität. Dann wird das Objekt der **deleteEntity** -Methode übergeben.
 
 ```javascript
 var task = {
@@ -364,7 +364,7 @@ Wenn Sie nicht wissen, ob die Tabelle vorhanden ist, verwenden Sie **deleteTable
 
 Wenn Sie in Tabellen umfangreiche Ergebnismengen abfragen, sollten Sie nach Fortsetzungstoken suchen. Möglicherweise sind umfangreiche Datenmengen für die Abfrage verfügbar, die Sie nicht erkennen können, wenn ein Fortsetzungstoken vorhanden ist.
 
-Das beim Abfragen von Entitäten zurückgegebene **results** -Objekt legt eine `continuationToken`-Eigenschaft fest, wenn ein derartiges Token vorhanden ist. Diese können Sie dann beim Durchführen einer Abfrage verwenden, um die Partitions- und Tabellenentitäten zu durchlaufen.
+Das beim Abfragen von Entitäten zurückgegebene **results**-Objekt legt eine `continuationToken`-Eigenschaft fest, wenn ein derartiges Token vorhanden ist. Diese können Sie dann beim Durchführen einer Abfrage verwenden, um die Partitions- und Tabellenentitäten zu durchlaufen.
 
 Bei der Abfrage können Sie ein `continuationToken`-Parameter zwischen der query-Objektinstanz und der callback-Funktion bereitstellen:
 
@@ -393,7 +393,7 @@ Sie können auch `top` zusammen mit `continuationToken` verwenden, um die Seiten
 
 Shared Access Signatures (SAS) ermöglichen auf sichere Art und Weise differenzierten Zugriff auf Tabellen, ohne Speicherkontonamen oder -schlüssel anzugeben. SAS werden häufig verwendet, um eingeschränkten Zugriff auf Ihre Daten zu bieten, beispielsweise um einer mobilen App die Abfrage von Datensätzen zu ermöglichen.
 
-Eine vertrauenswürdige Anwendung, z. B. ein cloudbasierter Dienst, generiert mit der **generateSharedAccessSignature** -Methode des **TableService** -Objekts eine SAS und stellt sie für eine nicht vertrauenswürdige oder teilweise vertrauenswürdige Anwendung, z. B. eine mobile App, bereit. Die SAS wird mithilfe einer Richtlinie generiert, die das Anfangs- und das Enddatum der Gültigkeit der SAS sowie die Zugriffsstufe definiert, die dem Inhaber der SAS gewährt wird.
+Eine vertrauenswürdige Anwendung, z. B. ein cloudbasierter Dienst, generiert mit der **generateSharedAccessSignature**-Methode des **TableService**-Objekts eine SAS und stellt sie für eine nicht vertrauenswürdige oder teilweise vertrauenswürdige Anwendung, z. B. eine mobile App, bereit. Die SAS wird mithilfe einer Richtlinie generiert, die das Anfangs- und das Enddatum der Gültigkeit der SAS sowie die Zugriffsstufe definiert, die dem Inhaber der SAS gewährt wird.
 
 Im folgenden Beispiel wird eine neue Richtlinie für den freigegebenen Zugriff generiert, die dem SAS-Inhaber erlaubt, die Tabelle abzufragen ('r'), und 100 Minuten nach ihrer Erstellung abläuft.
 

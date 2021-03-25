@@ -9,10 +9,10 @@ author: timsander1
 ms.author: tisande
 ms.custom: seodec18
 ms.openlocfilehash: a02aaadf8c774557eb182acf041b6f19337a0de8
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93096511"
 ---
 # <a name="connect-to-an-azure-cosmos-account-using-studio-3t"></a>Herstellen einer Verbindung mit einem Azure Cosmos-Konto mithilfe von Studio 3T
@@ -43,26 +43,26 @@ Führen Sie die folgenden Schritte aus, um dem Studio 3T-Verbindungs-Manager Ihr
 5. Aktivieren Sie im Fenster **New Connection** (Neue Verbindung) auf der Registerkarte **SSL** das Kontrollkästchen **Use SSL protocol to connect** (Verbindung über SSL-Protokoll herstellen) und das Optionsfeld **Accept server self-signed SSL certificates** (Selbstsignierte SSL-Serverzertifikate akzeptieren).
 
     :::image type="content" source="./media/mongodb-mongochef/ConnectionManagerSSLTab.png" alt-text="Screenshot der SSL-Registerkarte im Verbindungs-Manager von Studio 3T":::
-6. Klicken Sie auf die Schaltfläche **Test Connection** (Verbindung testen), um die Verbindungsinformationen zu überprüfen. Klicken Sie auf **OK** , um zum Fenster für neue Verbindungen zurückzukehren, und klicken Sie anschließend auf **Save** (Speichern).
+6. Klicken Sie auf die Schaltfläche **Test Connection** (Verbindung testen), um die Verbindungsinformationen zu überprüfen. Klicken Sie auf **OK**, um zum Fenster für neue Verbindungen zurückzukehren, und klicken Sie anschließend auf **Save** (Speichern).
 
     :::image type="content" source="./media/mongodb-mongochef/TestConnectionResults.png" alt-text="Screenshot des Fensters „Test Connection“ (Verbindung testen) von Studio 3T":::
 
 ## <a name="use-studio-3t-to-create-a-database-collection-and-documents"></a>Verwenden von Studio 3T zum Erstellen von Datenbanken, Sammlungen und Dokumenten
 Führen Sie die folgenden Schritte aus, um Datenbanken, Sammlungen und Dokumente mithilfe von Studio 3T zu erstellen:
 
-1. Markieren Sie die Verbindung im **Verbindungs-Manager** , und klicken Sie auf **Connect** (Verbinden).
+1. Markieren Sie die Verbindung im **Verbindungs-Manager**, und klicken Sie auf **Connect** (Verbinden).
 
     :::image type="content" source="./media/mongodb-mongochef/ConnectToAccount.png" alt-text="Screenshot des Verbindungs-Managers von Studio 3T":::
-2. Klicken Sie mit der rechten Maustaste auf den Host, und wählen Sie **Add Database** (Datenbank hinzufügen) aus.  Geben Sie einen Datenbanknamen an, und klicken Sie auf **OK**.
+2. Klicken Sie mit der rechten Maustaste auf den Host, und wählen Sie **Add Database**(Datenbank hinzufügen) aus.  Geben Sie einen Datenbanknamen an, und klicken Sie auf **OK**.
 
     :::image type="content" source="./media/mongodb-mongochef/AddDatabase1.png" alt-text="Screenshot der Studio 3T-Option „Add Database“ (Datenbank hinzufügen)":::
-3. Klicken Sie mit der rechten Maustaste auf die Datenbank, und wählen Sie **Add Collection** (Sammlung hinzufügen) aus.  Geben Sie einen Sammlungsnamen an, und klicken Sie auf **Create** (Erstellen).
+3. Klicken Sie mit der rechten Maustaste auf die Datenbank, und wählen Sie **Add Collection**(Sammlung hinzufügen) aus.  Geben Sie einen Sammlungsnamen an, und klicken Sie auf **Create**(Erstellen).
 
     :::image type="content" source="./media/mongodb-mongochef/AddCollection.png" alt-text="Screenshot der Studio 3T-Option „Add Collection“ (Sammlung hinzufügen)":::
 4. Klicken Sie auf das Menüelement **Collection** (Sammlung) und anschließend auf **Add Document** (Dokument hinzufügen).
 
     :::image type="content" source="./media/mongodb-mongochef/AddDocument1.png" alt-text="Screenshot des Studio 3T-Menüelements „Add Document“ (Dokument hinzufügen)":::
-5. Fügen Sie im Dialogfeld zum Hinzufügen von Dokumenten Folgendes ein, und klicken Sie dann auf **Add Document** (Dokument hinzufügen).
+5. Fügen Sie im Dialogfeld zum Hinzufügen von Dokumenten Folgendes ein, und klicken Sie dann auf **Add Document**(Dokument hinzufügen).
 
     ```json
     {

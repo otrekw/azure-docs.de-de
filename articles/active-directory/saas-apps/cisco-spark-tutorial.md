@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/17/2021
 ms.author: jeedes
-ms.openlocfilehash: 23c2b55fd56677a15f444e1b568517bdf1c32c99
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: ad6d5308638b112afe2b51c4e149f876651e429d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102200800"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104592522"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-webex"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Cisco Webex
 
@@ -38,7 +38,7 @@ Für die ersten Schritte benötigen Sie Folgendes:
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
 * Cisco Webex unterstützt **SP-initiiertes** einmaliges Anmelden.
-* Cisco Webex unterstützt die [**automatisierte Benutzerbereitstellung**](https://docs.microsoft.com/azure/active-directory/saas-apps/cisco-webex-provisioning-tutorial).
+* Cisco Webex unterstützt die [**automatisierte Benutzerbereitstellung**](./cisco-webex-provisioning-tutorial.md).
 
 ## <a name="adding-cisco-webex-from-the-gallery"></a>Hinzufügen von Cisco Webex aus dem Katalog
 
@@ -159,7 +159,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anme
 
 ### <a name="create-cisco-webex-test-user"></a>Erstellen eines Cisco Webex-Testbenutzers
 
-In diesem Abschnitt wird ein Benutzer mit dem Namen B. Simon in Cisco Webex erstellt. Diese Anwendung unterstützt die automatische Benutzerbereitstellung, die die automatische Bereitstellung und Aufhebung der Bereitstellung basierend auf Ihren Geschäftsregeln ermöglicht.  Microsoft empfiehlt, wann immer möglich, die Verwendung der automatischen Bereitstellung. [Hier](https://docs.microsoft.com/azure/active-directory/saas-apps/cisco-webex-provisioning-tutorial) finden Sie Informationen zum Aktivieren der automatischen Bereitstellung.
+In diesem Abschnitt wird ein Benutzer mit dem Namen B. Simon in Cisco Webex erstellt. Diese Anwendung unterstützt die automatische Benutzerbereitstellung, die die automatische Bereitstellung und Aufhebung der Bereitstellung basierend auf Ihren Geschäftsregeln ermöglicht.  Microsoft empfiehlt, wann immer möglich, die Verwendung der automatischen Bereitstellung. [Hier](./cisco-webex-provisioning-tutorial.md) finden Sie Informationen zum Aktivieren der automatischen Bereitstellung.
 
 Wenn Sie manuell einen Benutzer erstellen müssen, führen Sie die folgenden Schritte aus:
 
@@ -195,7 +195,7 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 * Navigieren Sie direkt zur Anmelde-URL für Cisco Webex, und initiieren Sie den Anmeldeflow.
 
-* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie auf die Kachel für Cisco Webex unter „Meine Apps“ klicken, werden Sie zur Anmelde-URL von Cisco Webex umgeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie auf die Kachel für Cisco Webex unter „Meine Apps“ klicken, werden Sie zur Anmelde-URL von Cisco Webex umgeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
 
 
 ## <a name="next-steps"></a>Nächste Schritte

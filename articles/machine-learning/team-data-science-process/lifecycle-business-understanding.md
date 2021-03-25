@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: a7aaed519f8f97a9be77a263568aeed5257c16d6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "76710338"
 ---
 # <a name="the-business-understanding-stage-of-the-team-data-science-process-lifecycle"></a>Die Phase der geschäftlichen Aspekte des Lebenszyklus des Team Data Science-Prozesses.
@@ -60,11 +60,11 @@ In dieser Phase werden zwei Hauptaufgaben durchgeführt:
 
 4. Definieren Sie die Erfolgsmetriken. Sie könnten beispielsweise eine Vorhersage von Kundenabwanderungen durchführen. Sie benötigen eine Genauigkeitsrate von „x“ Prozent am Ende dieses Projekts mit einer Laufzeit von drei Monaten. Mit diesen Daten können Sie Kunden Angebote unterbreiten, um die Abwanderungen zu reduzieren. Die Metriken sollten **SMART** sein: 
 
-   * **S**pecific (Spezifisch) 
-   * **M**easurable (Messbar)
-   * **A**chievable (Realistisch) 
-   * **R**elevant (Relevant) 
-   * **T**ime-bound (Zeitbezogen) 
+   * **S** pecific (Spezifisch) 
+   * **M** easurable (Messbar)
+   * **A** chievable (Realistisch) 
+   * **R** elevant (Relevant) 
+   * **T** ime-bound (Zeitbezogen) 
 
 ### <a name="identify-data-sources"></a>Identifizieren von Datenquellen
 Identifizieren Sie Datenquellen, die bekannte Beispiele für Antworten auf Ihre präzisen Fragen enthalten. Suchen Sie nach den folgenden Daten:
@@ -74,7 +74,7 @@ Identifizieren Sie Datenquellen, die bekannte Beispiele für Antworten auf Ihre 
 
 Sie könnten z.B. feststellen, dass vorhandene Systeme zusätzliche Arten von Daten sammeln und protokollieren müssen, um das Problem anzugehen und die Projektziele zu erreichen. In diesem Fall kann es ratsam sein, nach externen Datenquellen zu suchen oder die Systeme zu aktualisieren, um neue Daten zu erfassen.
 
-## <a name="artifacts"></a>Artefakte
+## <a name="artifacts"></a>Artifacts
 Hier sind die Ergebnisse dieser Phase angegeben:
 
    * [Charta-Dokument:](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Project/Charter.md) In der Strukturdefinition des TDSP-Projekts ist eine Standardvorlage enthalten. Das Charta-Dokument ist ein dynamisches Dokument. Sie passen die Vorlage im Verlauf des Projekts an, wenn Sie neue Erkenntnisse gewinnen oder sich die Geschäftsanforderungen ändern. Der Schlüssel ist, dass dieses Dokument immer wieder durchlaufen wird und während des Ermittlungsprozesses weitere Details hinzugefügt werden. Beziehen Sie den Kunden und andere Projektbeteiligte in das Vornehmen der Änderungen ein, und informieren Sie sie eindeutig über die Gründe für die Änderungen.  

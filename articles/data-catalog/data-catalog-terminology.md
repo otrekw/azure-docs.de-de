@@ -6,14 +6,16 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 6e636a039302d2ea61c7135bff1fceb4763f25df
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 008d0f106b07d61f0989a479457b12398000b5d9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151454"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104674569"
 ---
 # <a name="azure-data-catalog-terminology"></a>Azure Data Catalog-Terminologie
+
+[!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
 
 Dieser Artikel bietet eine Einführung in die Konzepte und Begriffe, die in der Azure Data Catalog-Dokumentation verwendet werden.
 
@@ -69,7 +71,7 @@ In Azure Data Catalog können alle Benutzer beschreibende Metadaten für ein reg
 
 Jede dieser Perspektiven ist sehr wertvoll, und mit Azure Data Catalog kann jeder Benutzer die Informationen angeben, die für ihn aussagekräftig sind. Alle Benutzer können diese Informationen nutzen, um die Daten und ihren Zweck zu verstehen.
 
-## <a name="expert"></a>Experten
+## <a name="expert"></a>Experte
 
 Ein Experte ist ein Benutzer, der in Bezug auf ein Datenasset über eine fundierte "Expertensicht" verfügt. Alle Benutzer können sich selbst oder andere Benutzer als Experten für ein Asset hinzufügen. Die Angabe als Experte ist in Azure Data Catalog nicht mit weiteren Privilegien verbunden. Sie ermöglicht Benutzern beim Prüfen der beschreibenden Metadaten eines Assets das einfache Finden der Angaben, die voraussichtlich am nützlichsten sind.
 

@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d215c2e200308664f24daa28a0054c8f1bcfc09c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91319876"
 ---
 # <a name="using-connectors-with-the-azure-ad-connect-sync-service-manager"></a>Verwenden von Connectors mit dem Azure AD Connect Synchronization Service Manager
@@ -65,7 +65,7 @@ Die Aktion zum Durchsuchen des Connectorbereichs ist nützlich, um nach Objekten
 
 ![Screenshot des Fensters „Connectorbereich suchen“](./media/how-to-connect-sync-service-manager-ui-connectors/cssearch.png)
 
-Wählen Sie zuerst einen **Bereich**aus. Sie können basierend auf Daten (RDN, DN, Anker, Teilstruktur) oder des Zustands des Objekts (alle anderen Optionen) suchen.  
+Wählen Sie zuerst einen **Bereich** aus. Sie können basierend auf Daten (RDN, DN, Anker, Teilstruktur) oder des Zustands des Objekts (alle anderen Optionen) suchen.  
 ![Screenshot mit dem Dropdown Menü „Bereich“](./media/how-to-connect-sync-service-manager-ui-connectors/cssearchscope.png)  
 Wenn Sie beispielsweise eine Unterstruktur durchsuchen, erhalten Sie alle Objekte in einer Organisationseinheit.  
 ![Screenshot mit einem Beispiel für das Durchsuchen einer Unterstruktur](./media/how-to-connect-sync-service-manager-ui-connectors/cssearchsubtree.png)  

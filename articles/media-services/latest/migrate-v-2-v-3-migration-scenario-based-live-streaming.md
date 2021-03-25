@@ -11,12 +11,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: 327673d0765fa807f782494562c995278be4782f
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 6a2c6495ca3685aec1bc132ec7f8a88809ad2d87
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955291"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104598285"
 ---
 # <a name="live-streaming-scenario-based-migration-guidance"></a>Szenariobasierter Migrationsleitfaden für das Livestreaming
 
@@ -42,7 +42,7 @@ Testen Sie die neue Übertragungsmethode von Liveereignissen mit Media Services,
 - Wenn Ihre Liveereignisse schnell starten sollen, machen Sie sich mit den neuen Funktionen für den [Standbymodus](live-events-outputs-concept.md#standby-mode) vertraut.
 - Wenn Sie bereits während Ihres Liveereignisses eine Transkription davon erstellen möchten, sehen Sie sich die neue Funktion der [Livetranskription](live-transcription.md) an.
 - Erstellen Sie 24/7/365-Liveereignisse in V3, wenn Sie eine längere Streamingdauer benötigen.
-- Verwenden Sie [Event Grid](monitor-events-portal-how-to.md), um Ihre Liveereignisse zu überwachen.
+- Verwenden Sie [Event Grid](monitoring/monitor-events-portal-how-to.md), um Ihre Liveereignisse zu überwachen.
 
 Die zugehörigen Schritte finden Sie in den nachstehenden Konzepten, Tutorials und Schrittanleitungen für Liveereignisse.
 

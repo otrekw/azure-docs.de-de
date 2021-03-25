@@ -2,22 +2,22 @@
 title: Architektur eines Azure Arc-fähigen Kubernetes-Agents
 services: azure-arc
 ms.service: azure-arc
-ms.date: 02/15/2021
+ms.date: 03/03/2021
 ms.topic: conceptual
 author: shashankbarsin
 ms.author: shasb
 description: Dieser Artikel enthält eine Übersicht über die Architekturen Azure Arc-fähiger Kubernetes-Agents.
 keywords: Kubernetes, Arc, Azure, Container
-ms.openlocfilehash: e1f51f066598b59501b30704cb1475dd5332160e
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: ec95efdfef871777e7f53617b057529e301739dd
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100561171"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104953067"
 ---
 # <a name="azure-arc-enabled-kubernetes-agent-architecture"></a>Architektur eines Azure Arc-fähigen Kubernetes-Agents
 
-[Kubernetes](https://kubernetes.io/) kann verwendet werden, um containerisierte Workloads in Hybridumgebungen und Umgebungen mit mehreren Clouds auf konsistente Weise bereitzustellen. Azure Arc-fähiges Kubernetes kann als zentralisierte Steuerungsebene verwendet werden, um Richtlinien, Governance und Sicherheit in diesen heterogenen Umgebungen konsistent zu verwalten. Dieser Artikel enthält:
+[Kubernetes](https://kubernetes.io/) kann eigenständig containerisierte Workloads konsistent in Hybridumgebungen und Umgebungen mit mehreren Clouds bereitstellen. Kubernetes mit Azure Arc-Unterstützung arbeitet jedoch als zentralisierte, konsistente Steuerungsebene, die Richtlinien, Governance und Sicherheit in heterogenen Umgebungen verwaltet. Dieser Artikel enthält:
 
 * Eine Übersicht der Architekturen für das Verbinden eines Clusters mit Azure Arc.
 * Das Konnektivitätsmuster, das Agents einhalten.
@@ -25,34 +25,34 @@ ms.locfileid: "100561171"
 
 ## <a name="deploy-agents-to-your-cluster"></a>Bereitstellen von Agents in Ihrem Cluster
 
-Die meisten lokalen Rechenzentren erzwingen strikte Netzwerkregeln, die eingehende Kommunikation an der Firewall verhindern, die an der Netzwerkgrenze verwendet wird. Azure Arc-fähiges Kubernetes arbeitet mit diesen Einschränkungen, indem nur selektive Ausgangsendpunkte für die ausgehende Kommunikation aktiviert werden und keine eingehenden Ports in der Firewall erforderlich sind. Azure Arc-fähige Kubernetes-Agents initiieren die ausgehenden Verbindungen.
+Die meisten lokalen Rechenzentren erzwingen strikte Netzwerkregeln, die eingehende Kommunikation in der Netzwerkgrenzenfirewall verhindern. Kubernetes mit Azure Arc-Unterstützung arbeitet mit diesen Einschränkungen, indem keine eingehenden Ports in der Firewall erforderlich sind und nur selektive Ausgangsendpunkte für die ausgehende Kommunikation aktiviert werden. Kubernetes mit Azure Arc-Unterstützung initiiert diese ausgehende Verbindung. 
 
 ![Übersicht über die Architektur](./media/architectural-overview.png)
 
-Verbinden Sie einen Cluster mit Azure Arc, indem Sie die folgenden Schritte ausführen:
+### <a name="connect-a-cluster-to-azure-arc"></a>Verbinden eines Clusters mit Azure Arc
 
 1. Erstellen Sie einen Kubernetes-Cluster auf der von Ihnen gewünschten Infrastruktur (VMware vSphere, Amazon Web Services, Google Cloud Platform usw.). 
 
     > [!NOTE]
-    > Kunden müssen den Lebenszyklus des Kubernetes-Clusters selbst erstellen und verwalten, da Azure Arc-fähiges Kubernetes derzeit nur das Anfügen vorhandener Kubernetes-Cluster an Azure Arc unterstützt.  
+    > Da Kubernetes mit Azure Arc-Unterstützung derzeit nur das Anfügen vorhandener Kubernetes-Cluster an Azure Arc unterstützt, müssen Kunden den Lebenszyklus des Kubernetes-Clusters selbst erstellen und verwalten.  
 
-1. Initiieren Sie die Azure Arc-Registrierung für Ihren Cluster mithilfe der Azure CLI.
+1. Starten Sie die Azure Arc-Registrierung für Ihren Cluster mithilfe der Azure CLI.
     * Azure CLI verwendet Helm, um das Agent-Helm-Chart im Cluster bereitzustellen.
     * Die Clusterknoten initiieren eine ausgehende Kommunikation mit der [Microsoft Container Registry](https://github.com/microsoft/containerregistry) und rufen die Images ab, die zum Erstellen der folgenden Agents im `azure-arc`-Namespace erforderlich sind:
 
         | Agent | BESCHREIBUNG |
         | ----- | ----------- |
-        | `deployment.apps/clusteridentityoperator` | Azure Arc-fähiges Kubernetes unterstützt derzeit nur [systemseitig zugewiesene Identitäten](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview). „clusteridentityoperator“ führt die erste ausgehende Kommunikation aus, die erforderlich ist, um das Zertifikat der verwalteten Dienstidentität (MSI) abzurufen, das von anderen Agents für die Kommunikation mit Azure verwendet wird. |
-        | `deployment.apps/config-agent` | Überwacht den verbundenen Cluster auf Quellcodeverwaltungsressourcen, die auf den Cluster angewendet werden, und aktualisiert den Compliancezustand. |
-        | `deployment.apps/controller-manager` | Ein Operator von Operatoren, der Interaktionen zwischen Azure Arc-Komponenten orchestriert. |    
-        | `deployment.apps/metrics-agent` | Erfasst Metriken anderer Arc-Agents, um sicherzustellen, dass diese Agents eine optimale Leistung aufweisen. |
-        | `deployment.apps/cluster-metadata-operator` | Erfasst Clustermetadaten: Clusterversion, Knotenanzahl und Version des Azure Arc-Agents. |
+        | `deployment.apps/clusteridentityoperator` | Azure Arc-fähiges Kubernetes unterstützt derzeit nur [systemseitig zugewiesene Identitäten](../../active-directory/managed-identities-azure-resources/overview.md). `clusteridentityoperator` initiiert die erste ausgehende Kommunikation. Diese erste Kommunikation ruft das von anderen Agents für die Kommunikation mit Azure verwendete MSI-Zertifikat (Managed Service Identity, Verwaltete Dienstidentität) ab. |
+        | `deployment.apps/config-agent` | Überwacht den verbundenen Cluster auf Ressourcen zur Konfiguration der Quellcodeverwaltung, die auf den Cluster angewendet werden. Aktualisiert den Compliancezustand. |
+        | `deployment.apps/controller-manager` | Ist ein Operator für Operatoren und koordiniert Interaktionen zwischen Azure Arc-Komponenten. |    
+        | `deployment.apps/metrics-agent` | Sammelt Metriken anderer Arc-Agents, um auf optimale Leistung zu überprüfen. |
+        | `deployment.apps/cluster-metadata-operator` | Sammelt Clustermetadaten, einschließlich Clusterversion, Knotenanzahl und Version des Azure Arc-Agents. |
         | `deployment.apps/resource-sync-agent` | Synchronisiert die oben erwähnten Clustermetadaten mit Azure. |
         | `deployment.apps/flux-logs-agent` | Sammelt Protokolle von den bei der Konfiguration der Quellcodeverwaltung bereitgestellten Flux-Operatoren. |
     
-1. Stellen Sie sicher, dass Ihr Cluster mit Azure Arc verbunden ist, sobald alle Azure Arc-fähigen Kubernetes-Agent-Pods den Zustand `Running` haben. Folgendes sollte angezeigt werden:
-    * Eine Azure Arc-fähige Kubernetes-Ressource in [Azure Resource Manager](../../azure-resource-manager/management/overview.md). Diese Ressource wird in Azure als Projektion des kundenseitig verwalteten Kubernetes-Clusters nachverfolgt, nicht der eigentliche Kubernetes-Cluster selbst.
-    * Clustermetadaten wie Kubernetes-Version, Agent-Version und Anzahl der Knoten werden in der Azure Arc-fähigen Kubernetes-Ressource als Metadaten angezeigt.
+1. Sobald alle Agent-Pods von Kubernetes mit Azure Arc-Unterstützung sich im Zustand `Running` befinden, stellen Sie sicher, dass Ihr Cluster mit Azure Arc verbunden ist. Folgendes sollte angezeigt werden:
+    * Eine Azure Arc-fähige Kubernetes-Ressource in [Azure Resource Manager](../../azure-resource-manager/management/overview.md). Azure verfolgt diese Ressource als Projektion des kundenseitig verwalteten Kubernetes-Clusters nach, nicht den eigentlichen Kubernetes-Cluster selbst.
+    * Clustermetadaten (wie Kubernetes-Version, Agent-Version und Anzahl der Knoten) werden in der Kubernetes-Ressource mit Azure Arc-Unterstützung als Metadaten angezeigt.
 
 ## <a name="data-exchange-between-cluster-environment-and-azure"></a>Datenaustausch zwischen Clusterumgebung und Azure
 
@@ -68,7 +68,7 @@ Verbinden Sie einen Cluster mit Azure Arc, indem Sie die folgenden Schritte ausf
 | Ressourcenverbrauch (Arbeitsspeicher/CPU) nach Agents | Diagnose und Unterstützbarkeit | Agent-Pushvorgänge an Azure |
 | Protokolle aller Agent-Container | Diagnose und Unterstützbarkeit | Agent-Pushvorgänge an Azure |
 | Upgrade-Verfügbarkeit für Agent | Agent-Upgrade | Agent-Pullvorgänge von Azure |
-| Gewünschter Zustand der Konfiguration: Git-Repository-URL, Flux-Operatorparameter, privater Schlüssel, Inhalt bekannter Hosts, HTTPS-Benutzername, Token/Kennwort | Konfiguration | Agent-Pullvorgänge von Azure |
+| Gewünschter Zustand der Konfiguration: Git-Repository-URL, Flux-Operatorparameter, privater Schlüssel, Inhalt bekannter Hosts, HTTPS-Benutzername, Token oder Kennwort | Konfiguration | Agent-Pullvorgänge von Azure |
 | Status der Flux-Operatorinstallation | Konfiguration | Agent-Pushvorgänge an Azure |
 | Azure Policy-Zuweisungen, die Gatekeeper-Erzwingung innerhalb des Clusters benötigen. | Azure Policy | Agent-Pullvorgänge von Azure |
 | Überwachungs- und Compliancestatus von Richtlinienerzwingungen im Cluster | Azure Policy | Agent-Pushvorgänge an Azure |
@@ -78,20 +78,20 @@ Verbinden Sie einen Cluster mit Azure Arc, indem Sie die folgenden Schritte ausf
 
 | Status | BESCHREIBUNG |
 | ------ | ----------- |
-| Verbindung | Azure Arc-fähige Kubernetes-Ressource wurde in Azure Resource Manager erstellt, aber der Dienst hat noch keine Agent-Takt empfangen. |
+| Verbindung | Kubernetes-Ressource mit Azure Arc-Unterstützung wird in Azure Resource Manager erstellt, aber der Dienst hat noch nicht den Agent-Takt empfangen. |
 | Verbunden | Azure Arc-fähiger Kubernetes-Dienst hat irgendwann während der vorangegangenen 15 Minuten einen Agent-Takt empfangen. |
 | Offline | Azure Arc-fähig Kubernetes-Ressource war zuvor verbunden, aber der Dienst hat 15 Minuten lang keinen Agent-Takt mehr empfangen. |
-| Abgelaufen | Das Zertifikat der verwalteten Dienstidentität (MSI) besitzt ein Ablauffenster von 90 Tagen nach seiner Ausgabe. Nach Ablauf dieses Zertifikats wird die Ressource als `Expired` betrachtet, und alle Features wie Konfiguration, Überwachung und Richtlinie stellen in diesem Cluster die Funktion ein. Weitere Informationen zum Behandeln abgelaufener Azure Arc-fähiger Kubernetes-Ressourcen finden Sie [hier](./faq.md#how-to-address-expired-azure-arc-enabled-kubernetes-resources). |
+| Abgelaufen | Das Ablauffenster des MSI-Zertifikats nach seiner Ausgabe beträgt 90 Tage. Nach Ablauf dieses Zertifikats wird die Ressource als `Expired` betrachtet, und alle Features wie Konfiguration, Überwachung und Richtlinie stellen in diesem Cluster die Funktion ein. Weitere Informationen zum Behandeln abgelaufener Kubernetes-Ressourcen mit Azure Arc-Unterstützung finden Sie [im Artikel zu häufig gestellten Fragen](./faq.md#how-to-address-expired-azure-arc-enabled-kubernetes-resources). |
 
 ## <a name="understand-connectivity-modes"></a>Grundlegendes zu Konnektivitätsmodi
 
 | Konnektivitätsmodus | BESCHREIBUNG |
 | ----------------- | ----------- |
-| Vollständig verbunden | Agents können jederzeit Azure erreichen. Die Erfahrung ist in diesem Fall ideal, da es nur zu geringen Verzögerungen bei der Weitergabe von Konfigurationen (für GitOps), der Erzwingung von Richtlinien (in Azure Policy und Gatekeeper) und der Erfassung von Metriken und Protokollen von Workloads (in Azure Monitor) kommt. |
-| Halb verbunden | Das von `clusteridentityoperator` abgerufene MSI-Zertifikat ist maximal für 90 Tage gültig, bevor es abläuft. Sobald das Zertifikat abläuft, stellt die Azure Arc-fähige Kubernetes-Ressource den Betrieb ein. Löschen Sie die Azure Arc-fähige Kubernetes-Ressource und die Agents, und erstellen Sie sie neu, damit alle Arc-Features auf dem Cluster funktionieren. Während der 90 Tage wird Benutzern empfohlen, den Cluster mindestens einmal alle 30 Tage zu verbinden. |
-| Getrennt | Kubernetes-Cluster in nicht verbundenen Umgebungen ohne Zugriff auf Azure werden zurzeit von Azure Arc-fähigem Kubernetes nicht unterstützt. Wenn diese Funktion für Sie von Interesse ist, reichen Sie eine Idee im [UserVoice-Forum von Azure Arc](https://feedback.azure.com/forums/925690-azure-arc) ein, oder stimmen Sie dort für eine Idee ab.
+| Vollständig verbunden | Agents können mit geringer Verzögerung bei der Weitergabe von GitOps-Konfigurationen, beim Erzwingen von Azure Policy- und Gatekeeper-Richtlinien und Sammeln von Workloadmetriken und -protokollen in Azure Monitor konsistent mit Azure kommunizieren. |
+| Halb verbunden | Das von `clusteridentityoperator` abgerufene MSI-Zertifikat ist maximal für 90 Tage gültig, bevor es abläuft. Beim Ablauf stellt die Kubernetes-Ressource mit Azure Arc-Unterstützung den Betrieb ein. Um alle Azure Arc-Features auf dem Cluster zu reaktivieren, löschen Sie die Kubernetes-Ressource mit Azure Arc-Unterstützung und die Agents, und erstellen Sie sie neu. Stellen Sie während der 90 Tage mindestens einmal alle 30 Tage eine Verbindung mit dem Cluster her. |
+| Getrennt | Kubernetes-Cluster in nicht verbundenen Umgebungen ohne Zugriff auf Azure werden zurzeit von Kubernetes mit Azure Arc-Unterstützung nicht unterstützt. Wenn diese Funktion für Sie von Interesse ist, reichen Sie eine Idee im [UserVoice-Forum von Azure Arc](https://feedback.azure.com/forums/925690-azure-arc) ein, oder stimmen Sie dort für eine Idee ab.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Verbinden eines Clusters mit Azure Arc](./connect-cluster.md)
-* [Konzeptionelle Übersicht von Konfigurationen](./conceptual-configurations.md)
+* Führen Sie den Schnellstart zum [Verbinden eines Kubernetes-Clusters mit Azure Arc](./quickstart-connect-cluster.md) durch.
+* Erfahren Sie mehr über das Herstellen von Verbindungen zwischen Ihrem Cluster und einem Git-Repository als [Konfigurationsressource mit Kubernetes mit Azure Arc-Unterstützung](./conceptual-configurations.md).

@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
 ms.openlocfilehash: 49203195bf7746d0bff1b9543d1641f69ab23359
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95542676"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-ruby"></a>Verwenden von Twilio für Telefonie- und SMS-Funktionen in Ruby
@@ -80,7 +80,7 @@ Ruby-Anwendungen, die den Twilio-Dienst verwenden und in Azure ausgeführt werde
 
 [Richten Sie zuerst eine neue Azure-Linux-VM ein][azure_vm_setup], die als Host für Ihre neue Ruby-Webanwendung fungiert. Ignorieren Sie die Schritte zur Erstellung einer Rails-App, und erstellen Sie nur den virtuellen Computer. Erstellen Sie auch unbedingt einen Endpunkt mit dem externen Port 80 und dem internen Port 5000.
 
-In den folgenden Beispielen verwenden wir [Sinatra][sinatra], ein sehr einfaches Webframework für Ruby. Sie können die Twilio-Hilfsbibliothek für Ruby aber auch mit jedem anderen Web-Framework verwenden, z. B. Ruby on Rails.
+In den folgenden Beispielen verwenden wir [Sinatra][sinatra], ein sehr einfaches Web-Framework für Ruby. Sie können die Twilio-Hilfsbibliothek für Ruby aber auch mit jedem anderen Web-Framework verwenden, z. B. Ruby on Rails.
 
 Stellen Sie eine SSH-Verbindung zum neuen virtuellen Computer her, und erstellen Sie ein Verzeichnis für Ihre neue App. Erstellen Sie in diesem Verzeichnis eine Datei namens Gemfile, und kopieren Sie den folgenden Code in diese hinein:
 
@@ -179,7 +179,7 @@ Zusätzlich zu den hier gezeigten Beispielen bietet Twilio webbasierte APIs, mit
 ### <a name="next-steps"></a><a id="NextSteps"></a>Nächste Schritte
 Nachdem Sie nun mit den Grundlagen des Twilio-Dienstes vertraut sind, finden Sie unter diesen Links weitere Informationen:
 
-* [Twilio-Sicherheitsrichtlinien][twilio_security_guidelines]
+* [Twilio Security Guidelines (Twilio-Sicherheitsrichtlinien)][twilio_security_guidelines]
 * [Twilio-Anleitungen und Beispielcode][twilio_howtos]
 * [Twilio-Schnellstart-Tutorials][twilio_quickstarts] 
 * [Twilio auf GitHub][twilio_on_github]

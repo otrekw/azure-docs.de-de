@@ -12,13 +12,13 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 8be878cf40967356d68e9be0765e898c81b5ba0a
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93314627"
 ---
-# <a name="process-data-in-sql-server-virtual-machine-on-azure"></a><a name="heading"></a>Verarbeiten von Daten auf einer SQL Server-VM in Azure
+# <a name="process-data-in-sql-server-virtual-machine-on-azure"></a><a name="heading"></a>Verarbeiten von Daten auf einem virtuellen Computer mit SQL Server in Azure
 In diesem Dokument werden das Durchsuchen von Daten und das Generieren von Funktionen aus Daten auf einer SQL Server-VM in Azure beschrieben. Dieses Ziel kann über eine Datenanalyse mithilfe von SQL oder über die Verwendung einer Programmiersprache wie Python erreicht werden.
 
 > [!NOTE]
@@ -121,7 +121,7 @@ Diese positionsbasierten Funktionen können dann wie oben beschrieben zum Generi
 > 
 
 ### <a name="connecting-to-azure-machine-learning"></a><a name="sql-aml"></a>Herstellen einer Verbindung mit Azure Machine Learning
-Die neu generierte Funktion kann als Spalte einer vorhandenen Tabelle hinzugefügt oder in einer neuen Tabelle gespeichert und für Machine Learning mit der ursprünglichen Tabelle zusammengeführt werden. Sie können, wie unten dargestellt, mit dem [Daten importieren][import-data]-Modul in Azure Machine Learning Funktionen generieren oder darauf zugreifen, sofern sie bereits vorhanden sind:
+Die neu generierte Funktion kann als Spalte einer vorhandenen Tabelle hinzugefügt oder in einer neuen Tabelle gespeichert und für Machine Learning mit der ursprünglichen Tabelle zusammengeführt werden. Sie können wie unten dargestellt mit dem Modul [Daten importieren][import-data] in Azure Machine Learning Funktionen generieren oder darauf zugreifen, sofern sie bereits vorhanden sind:
 
 ![azureml-Reader][1] 
 

@@ -4,10 +4,10 @@ description: Erfahren Sie, wie Sie die Kosten besser abschätzen, die Sie eventu
 ms.date: 9/20/2019
 ms.topic: conceptual
 ms.openlocfilehash: 4967e0ff79a638891da4f784cf2f5f1ca4ddfe51
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100578553"
 ---
 # <a name="estimating-consumption-plan-costs"></a>Abschätzen der Kosten des Verbrauchstarifs
@@ -80,7 +80,7 @@ Verwenden Sie den [Azure Monitor-Metrik-Explorer](../azure-monitor/essentials/me
     ![Auswählen Ihrer Funktions-App](media/functions-consumption-costing/select-a-resource.png)
 
       
-    |Einstellung  |Vorgeschlagener Wert  |BESCHREIBUNG  |
+    |Einstellung  |Vorgeschlagener Wert  |Beschreibung  |
     |---------|---------|---------|
     | Subscription    |  Ihr Abonnement  | Das Abonnement Ihrer Funktions-App.  |
     | Resource group     | Ihre Ressourcengruppe  | Die Ressourcengruppe, die Ihre Funktions-App enthält.   |

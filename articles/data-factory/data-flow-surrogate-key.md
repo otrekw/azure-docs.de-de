@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/30/2020
 ms.openlocfilehash: d1f8993b1adc297b1bfadba114df76a66e59afa2
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93147175"
 ---
 # <a name="surrogate-key-transformation-in-mapping-data-flow"></a>Transformation für Ersatzschlüssel im Zuordnungsdatenfluss 
@@ -25,9 +25,9 @@ Verwenden Sie die Transformation für Ersatzschlüssel, um einen inkrementell ge
 
 ![Transformation für Ersatzschlüssel](media/data-flow/surrogate.png "Transformation für Ersatzschlüssel")
 
-**Schlüsselspalte** : Der Name der Spalte mit dem generierten Ersatzschlüssel.
+**Schlüsselspalte**: Der Name der Spalte mit dem generierten Ersatzschlüssel.
 
-**Startwert** : Die niedrigste Schlüsselwert, der generiert wird.
+**Startwert**: Die niedrigste Schlüsselwert, der generiert wird.
 
 ## <a name="increment-keys-from-existing-sources"></a>Inkrementelle Schlüssel aus vorhandenen Quellen
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 10/16/2020
+ms.date: 03/17/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28d58c476a805b672a6ec8b4d8ec465eba17e559
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 35d2bf33b4a22c14abfb61a87a3697b05188ed31
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96169680"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579092"
 ---
 # <a name="building-a-conditional-access-policy"></a>Erstellen einer Richtlinie für bedingten Zugriff
 
@@ -106,6 +106,8 @@ Das Steuerelement zum Gewähren des Zugriffs kann die Erzwingung von mindestens 
 - Geräte mit Hybrid-Azure AD-Einbindung erforderlich
 - Genehmigte Client-App erforderlich
 - App-Schutzrichtlinie erforderlich
+- Kennwortänderung anfordern
+- Vorschreiben der Verwendung von Nutzungsbedingungen
 
 Administratoren können mithilfe der folgenden Optionen auswählen, ob eins der obigen Steuerelemente oder alle ausgewählten Steuerelemente erforderlich sind. Als Standardwert für mehrere Steuerelemente werden alle als erforderlich ausgewählt.
 

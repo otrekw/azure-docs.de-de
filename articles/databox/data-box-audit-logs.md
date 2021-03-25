@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 07/10/2020
 ms.author: alkohli
 ms.openlocfilehash: 50dbe9ab649a708fb36b1c9e4fe89bccadc7ea90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86209056"
 ---
 # <a name="audit-logs-for-your-azure-data-box-and-azure-data-box-heavy"></a>Überwachungsprotokolle für Azure Data Box und Azure Data Box Heavy
@@ -65,9 +65,9 @@ Die folgenden Sicherheitsprotokollereignis-IDs werden als Sicherheitsüberwachun
 
 Die folgenden Anwendungsprotokollereignis-IDs werden als Teil der Paketüberwachungsprotokolle auf Ihrer Data Box erfasst.     
 
-- **Microsoft-Azure-DataBox-OOBE-Auditing:** Enthält die Ereignisse, die in der lokalen Benutzeroberfläche auftreten 
+- **Microsoft-Azure-DataBox-OOBE-Auditing:** Enthält die Ereignisse, die in der lokalen Benutzeroberfläche auftreten 
 - **Microsoft-Azure-DataBox-Reprovision-Audit:** Enthält Ereignisse im Zusammenhang mit der erneuten Bereitstellung des Data Box-Geräts. Die erneute Bereitstellung der Data Box erfolgt, wenn das Gerät über die lokale Benutzeroberfläche zurückgesetzt wird. Wählen Sie diese Option, wenn Sie die kopierten Daten löschen möchten, indem Sie die vorhandenen Freigaben entfernen und die Freigaben im Rahmen der erneuten Bereitstellung oder Gerätezurücksetzung erneut erstellen.
-- **Microsoft-Azure-DataBox-HcsMgmt-Audit:** Enthält Ereignisse, die sich nur auf den Schritt **Für Versand vorbereiten** vor dem Zurücksenden des Geräts an das Azure-Rechenzentrum beziehen 
+- **Microsoft-Azure-DataBox-HcsMgmt-Audit:** Enthält Ereignisse, die sich nur auf den Schritt **Für Versand vorbereiten** vor dem Zurücksenden des Geräts an das Azure-Rechenzentrum beziehen 
 - **Microsoft-Azure-DataBox-IfxAudit:** Enthält die Nachrichten, die von verschiedenen Entitäten des Produkts über die Aufträge protokolliert wurden, Protokolle mit weiteren Informationen zu dem, was in einigen Flows passiert
 
 In der folgenden Tabelle sind die verschiedenen Ereignisanbieter und die entsprechenden Ereignis-IDs, die jeweils erfasst werden, zusammengefasst.

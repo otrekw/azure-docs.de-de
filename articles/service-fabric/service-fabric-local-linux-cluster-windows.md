@@ -4,10 +4,10 @@ description: In diesem Artikel wird beschrieben, wie Sie Service Fabric-Linux-Cl
 ms.topic: conceptual
 ms.date: 10/16/2020
 ms.openlocfilehash: 7b25a84e76773baea9f17430df1b7ba13aa661aa
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93087076"
 ---
 # <a name="set-up-a-linux-service-fabric-cluster-on-your-windows-developer-machine"></a>Einrichten eines Linux-Service Fabric-Clusters auf Ihrem Windows-Entwicklungscomputer
@@ -125,7 +125,7 @@ Führen Sie die folgenden Schritte aus, um einen lokalen Docker-Container einzur
  Für den lokalen Cluster in einem Container auf einem Mac sind folgende Einschränkungen bekannt: 
  
  * Der DNS-Dienst wird nicht ausgeführt und wird zurzeit im Container nicht unterstützt. [Issue #132](https://github.com/Microsoft/service-fabric/issues/132)
- * Das Ausführen von containerbasierten Apps erfordert die Ausführung von Service Fabric auf einem Linux-Host. Geschachtelte Container-Apps werden derzeit nicht unterstützt.
+ * Das Ausführen von containerbasierten Apps erfordert die Ausführung von SF auf einem Linux-Host. Geschachtelte Container-Apps werden derzeit nicht unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Erstellen und Bereitstellen Ihrer ersten Service Fabric-Java-Anwendung unter Linux mithilfe von Yeoman](service-fabric-create-your-first-linux-application-with-java.md)

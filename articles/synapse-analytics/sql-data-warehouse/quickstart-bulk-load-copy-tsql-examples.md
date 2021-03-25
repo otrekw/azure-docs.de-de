@@ -2,19 +2,19 @@
 title: Authentifizierungsmechanismen bei der COPY-Anweisung
 description: Beschreibt die Authentifizierungsmechanismen für das Massenladen von Daten.
 services: synapse-analytics
-author: kevinvngo
+author: gaursa
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: sql-dw
 ms.date: 07/10/2020
-ms.author: kevin
+ms.author: gaursa
 ms.reviewer: jrasnick
-ms.openlocfilehash: 1551e85bd45d4d64861b43bf53dd0c155520861f
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 70e8f15b2b02008f24c87cfe70372fccbf0506fd
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98673636"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104600121"
 ---
 # <a name="securely-load-data-using-synapse-sql"></a>Sicheres Laden von Daten mithilfe von Synapse SQL
 
@@ -90,7 +90,7 @@ Eine Authentifizierung der verwalteten Identität ist erforderlich, wenn Ihr Spe
 
    Dieser Schritt ist für dedizierte SQL-Pools in einem Synapse-Arbeitsbereich nicht erforderlich.
 
-1. Wenn Sie über einen Synapse-Arbeitsbereich verfügen, registrieren Sie die systemseitig verwaltete Identität Ihres Arbeitsbereichs:
+1. Wenn Sie über einen Synapse-Arbeitsbereich verfügen, registrieren Sie die vom System verwaltete Identität Ihres Arbeitsbereichs:
 
    1. Navigieren Sie im Azure-Portal zu Ihrem Synapse-Arbeitsbereich.
    2. Navigieren Sie zum Blatt „Verwaltete Identitäten“. 
