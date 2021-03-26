@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 12/14/2019
 ms.author: rohogue
 ms.openlocfilehash: 79e7c5db2a2c445ae740a21744a0bdfe0736c01a
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92342432"
 ---
 # <a name="access-the-vfxt-cluster"></a>Zugreifen auf den vFXT-Cluster
@@ -55,7 +55,7 @@ Dieser Schritt verwendet einen Webbrowser, um eine Verbindung mit dem Konfigurat
 
   Sie haben bei der Erstellung des Tunnels eine Verbindung mit der IP-Adresse des Clusters hergestellt, daher müssen Sie nur die localhost-IP-Adresse im Browser verwenden. Wenn Sie einen anderen lokalen Port als 8443 verwendet haben, verwenden Sie stattdessen Ihre Portnummer.
 
-* Wenn Sie ein VPN oder ExpressRoute verwenden, um den Cluster zu erreichen, navigieren Sie in Ihrem Browser zur IP-Adresse der Clusterverwaltung. Beispiel: ``https://203.0.113.51``
+* Wenn Sie ein VPN oder ExpressRoute verwenden, um den Cluster zu erreichen, navigieren Sie in Ihrem Browser zur IP-Adresse der Clusterverwaltung. Ein Beispiel: ``https://203.0.113.51``
 
 Je nach Browser müssen Sie möglicherweise auf **Erweitert** klicken und überprüfen, ob die Weiterleitung zur Seite sicher ist.
 

@@ -4,12 +4,12 @@ description: Informationen zum Beheben gängiger Fehler beim Bereitstellen von R
 tags: top-support-issue
 ms.topic: troubleshooting
 ms.date: 01/20/2021
-ms.openlocfilehash: 61a306cd36c55a005ee9ebd897fcfc9a6c88d7c9
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 6cb2b611e694c6b72e063f3d8ab05b7667a34e29
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98696395"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104888854"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Beheben gängiger Azure-Bereitstellungsfehler mit Azure Resource Manager
 
@@ -203,7 +203,7 @@ Verwenden Sie zum Protokollieren von Debuginformationen zu einer geschachtelten 
 ```json
 {
   "type": "Microsoft.Resources/deployments",
-  "apiVersion": "2016-09-01",
+  "apiVersion": "2020-10-01",
   "name": "nestedTemplate",
   "properties": {
     "mode": "Incremental",

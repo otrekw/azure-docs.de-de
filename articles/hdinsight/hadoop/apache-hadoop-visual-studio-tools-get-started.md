@@ -6,12 +6,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: how-to
 ms.date: 04/14/2020
-ms.openlocfilehash: 8d8e9784ea21bf5f2b6902e3d93c5c09c1ec5670
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: c6969c3108fb1465a705d8e61b3a7bdf2083736a
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944569"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865654"
 ---
 # <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-apache-hive-queries"></a>Herstellen einer Verbindung mit Azure HDInsight und Ausführen von Apache Hive-Abfragen mithilfe von Data Lake Tools für Visual Studio
 
@@ -41,7 +41,7 @@ Befolgen Sie die entsprechenden Anweisungen, um Data Lake Tools für Ihre Versio
 
     Navigieren Sie bei vorhandenen Visual Studio-Installationen zur IDE-Menüleiste, und wählen Sie **Extras** > **Tools und Features abrufen** aus, um Visual Studio-Installer zu öffnen. Wählen Sie auf der Registerkarte **Workloads** mindestens die Workload **Azure-Entwicklung** (unter **Web und Cloud**) aus. Wählen Sie alternativ die Workload **Datenspeicherung und -verarbeitung** (unter **Andere Toolsets**) aus.
 
-  ![Workloadauswahl, Visual Studio-Installer](./media/apache-hadoop-visual-studio-tools-get-started/vs-installation.png)
+  :::image type="content" source="./media/apache-hadoop-visual-studio-tools-get-started/vs-installation.png" alt-text="Workloadauswahl, Visual Studio-Installer" border="true":::
 
 * Visual Studio 2015:
 
@@ -91,7 +91,7 @@ So stellen Sie eine Verbindung mit Ihrem Azure-Abonnement her:
 
 5. Wenn Sie noch keine Cluster festgelegt haben, können Sie sie über das Azure-Portal, Azure PowerShell oder das HDInsight SDK erstellen. Weitere Informationen finden Sie unter [Einrichten von Clustern in HDInsight](../hdinsight-hadoop-provision-linux-clusters.md).
 
-   ![Liste der HDInsight-Cluster, Server-Explorer, Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-server-explorer.png)
+   :::image type="content" source="./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-server-explorer.png" alt-text="Liste der HDInsight-Cluster, Server-Explorer, Visual Studio" border="true":::
 
 6. Erweitern Sie einen HDInsight-Cluster. Der Cluster enthält Knoten für **Hive-Datenbanken**. Außerdem ein Standardspeicherkonto, ggf. weitere verknüpfte Speicherkonten und das **Hadoop-Dienstprotokoll**. Sie können die einzelnen Elemente weiter erweitern.
 
@@ -124,23 +124,23 @@ So verknüpfen Sie einen HDInsight-Cluster
 
 2. Geben Sie im Formular `https://CLUSTERNAME.azurehdinsight.net` eine **Verbindungs-URL** ein. Der **Clustername** wird automatisch mit dem Clusternamenteil der URL gefüllt, wenn Sie zu einem anderen Feld wechseln. Geben Sie dann einen **Benutzernamen** und ein **Kennwort** ein, und wählen Sie **Weiter** aus.
 
-    ![Verknüpfen eines Clusters, HDInsight, Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-link-cluster-dialog.png)
+    :::image type="content" source="./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-link-cluster-dialog.png" alt-text="Verknüpfen eines Clusters, HDInsight, Visual Studio" border="true":::
 
 3. Wählen Sie **Fertig stellen** aus. Wenn der Cluster erfolgreich verknüpft wurde, wird er unter dem Knoten **HDInsight** aufgeführt.
 
 Um einen verknüpften Cluster zu aktualisieren, klicken Sie mit der rechten Maustaste auf den Cluster, und wählen Sie **Bearbeiten** aus. Dann können Sie die Clusterinformationen aktualisieren.
 
-![Bearbeiten eines verknüpften Clusters, HDInsight, Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-link-cluster-update.png)
+:::image type="content" source="./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-link-cluster-update.png" alt-text="Bearbeiten eines verknüpften Clusters, HDInsight, Visual Studio" border="true":::
 
 ## <a name="explore-linked-resources"></a>Erkunden der verknüpften Ressourcen
 
 Im Server-Explorer werden das Standardspeicherkonto und verknüpfte Speicherkonten angezeigt. Wenn Sie das Standardspeicherkonto erweitern, werden die Container im Speicherkonto angezeigt. Das Standardspeicherkonto und der Standardcontainer sind markiert.
 
-![Verknüpfte Ressourcen von Data Lake Tools für Visual Studio in Server-Explorer](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-linked-resources.png)
+:::image type="content" source="./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-linked-resources.png" alt-text="Verknüpfte Ressourcen von Data Lake Tools für Visual Studio in Server-Explorer" border="true":::
 
 Klicken Sie mit der rechten Maustaste auf einen Container, und wählen Sie **Container anzeigen** aus, um den Inhalt des Containers anzuzeigen. Nach dem Öffnen eines Containers können Sie über die verschiedenen Symbolleistenschaltflächen die Inhaltsliste **aktualisieren**, ein **Blob hochladen**, **ausgewählte Blobs löschen**, ein **Blob öffnen** und ausgewählte Blobs herunterladen (**Speichern unter**).
 
-![Containerliste und Vorgänge für Blobs, HDInsight-Cluster, Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-blob-operations.png)
+:::image type="content" source="./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-blob-operations.png" alt-text="Containerliste und Vorgänge für Blobs, HDInsight-Cluster, Visual Studio" border="true":::
 
 ## <a name="run-interactive-apache-hive-queries"></a>Ausführen interaktiver Apache Hive-Abfragen
 
@@ -185,7 +185,7 @@ Zum Erstellen einer Hive-Tabelle können Sie die grafische Benutzeroberfläche o
 
 4. Wählen Sie die Schaltfläche **Tabelle erstellen** aus, um den Auftrag zu übermitteln, mit dem die neue Hive-Tabelle erstellt wird.
 
-    ![Fenster „Tabelle erstellen“, Hive, HDInsight-Cluster, Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-create-hive-table.png)
+    :::image type="content" source="./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-create-hive-table.png" alt-text="Fenster „Tabelle erstellen“, Hive, HDInsight-Cluster, Visual Studio" border="true":::
 
 ### <a name="create-and-run-hive-queries"></a>Erstellen und Ausführen von Hive-Abfragen
 
@@ -204,9 +204,9 @@ So können Sie eine Ad-hoc-Abfrage erstellen und ausführen
 
     Der Hive-Editor unterstützt IntelliSense. Data Lake Tools für Visual Studio unterstützt das Laden von Remotemetadaten, wenn Sie Ihr Hive-Skript bearbeiten. Wenn Sie beispielsweise `SELECT * FROM` eingeben, listet IntelliSense alle vorgeschlagenen Tabellennamen auf. Wird ein Tabellenname angegeben, listet IntelliSense die Spaltennamen auf. Die Tools unterstützen die meisten Hive-DML-Anweisungen, Unterabfragen und integrierte UDFs.
 
-    ![Beispiel 1 für IntelliSense, Hive-Ad-hoc-Abfrage, HDInsight-Cluster, Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-intellisense-table-names.png)
+    :::image type="content" source="./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-intellisense-table-names.png" alt-text="Beispiel 1 für IntelliSense, Hive-Ad-hoc-Abfrage, HDInsight-Cluster, Visual Studio" border="true":::
 
-    ![Beispiel 2 für IntelliSense, Hive-Ad-hoc-Abfrage, HDInsight-Cluster, Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-intellisense-column-names.png)
+    :::image type="content" source="./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-intellisense-column-names.png" alt-text="Beispiel 2 für IntelliSense, Hive-Ad-hoc-Abfrage, HDInsight-Cluster, Visual Studio" border="true":::
 
     > [!NOTE]  
     > IntelliSense schlägt nur die Metadaten des Clusters vor, der auf der HDInsight-Symbolleiste ausgewählt ist.
@@ -226,17 +226,17 @@ So können Sie eine Ad-hoc-Abfrage erstellen und ausführen
 
         Wählen Sie in der ersten Dropdownliste die Option **Interaktiv** und dann **Ausführen** aus.
 
-        ![Interaktiver Modus, Hive-Ad-hoc-Abfrage, HDInsight-Cluster, Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-query-execute.png)  
+        :::image type="content" source="./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-query-execute.png" alt-text="Interaktiver Modus, Hive-Ad-hoc-Abfrage, HDInsight-Cluster, Visual Studio" border="true":::  
 
     * **Batch**  
 
         Wählen Sie in der ersten Dropdownliste die Option **Batch** und dann **Senden** aus. Alternativ können Sie das Dropdownsymbol neben **Senden** und dann **Erweitert** auswählen.
 
-        ![Batchmodus, Hive-Ad-hoc-Abfrage, HDInsight-Cluster, Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-query-batch.png)
+        :::image type="content" source="./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-query-batch.png" alt-text="Batchmodus, Hive-Ad-hoc-Abfrage, HDInsight-Cluster, Visual Studio" border="true":::
 
         Wenn Sie unter „Übermitteln“ die Option „Erweitert“ auswählen, wird das Dialogfeld **Skript übermitteln** angezeigt. Konfigurieren Sie **Auftragsname**, **Argumente**, **Zusätzliche Konfigurationen** und **Statusverzeichnis** für das Skript.
 
-        ![Dialogfeld „Skript übermitteln“, Hive-Ad-hoc-Abfrage, HDInsight-Cluster, Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-submit-jobs-advanced.png)
+        :::image type="content" source="./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-submit-jobs-advanced.png" alt-text="Dialogfeld „Skript übermitteln“, Hive-Ad-hoc-Abfrage, HDInsight-Cluster, Visual Studio" border="true":::
 
       > [!NOTE]  
       > Sie können keine Batches an Interactive Query-Cluster senden.  Dazu müssen Sie den interaktiven Modus verwenden.
@@ -251,7 +251,7 @@ So erstellen Sie eine Hive-Lösung und führen Sie sie aus:
 
 3. Geben Sie im Fenster **Neues Projekt konfigurieren** einen **Projektnamen** ein, wählen Sie den **Speicherort** des Projekts aus, oder erstellen Sie ihn, und wählen Sie dann **Erstellen** aus.
 
-    ![Neue Hive-Anwendung, Fenster „Neues Projekt konfigurieren“, HDInsight, Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-new-hive-project.png)
+    :::image type="content" source="./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-new-hive-project.png" alt-text="Neue Hive-Anwendung, Fenster „Neues Projekt konfigurieren“, HDInsight, Visual Studio" border="true":::
 
 4. Doppelklicken Sie im **Projektmappen-Explorer** auf **Script.hql**, um das Skript zu öffnen.
 
@@ -259,7 +259,7 @@ So erstellen Sie eine Hive-Lösung und führen Sie sie aus:
 
 Die Auftragszusammenfassung unterscheidet sich zwischen den Modi **Batch** und **Interactive** (Interaktiv).
 
-![Fenster mit Hive-Auftragszusammenfassung, interaktiver und Batchmodus, Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-job-summary.png)
+:::image type="content" source="./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-job-summary.png" alt-text="Fenster mit Hive-Auftragszusammenfassung, interaktiver und Batchmodus, Visual Studio" border="true":::
 
 Verwenden Sie das Symbol **Aktualisieren**, um den Status zu aktualisieren, bis sich der Auftragsstatus in **Abgeschlossen** ändert.  
 
@@ -267,7 +267,7 @@ Verwenden Sie das Symbol **Aktualisieren**, um den Status zu aktualisieren, bis 
 
 * Die Auftragsdetails im Modus **Interaktiv** werden in den Bereichen **Ausgabe** und **HiveServer2-Ausgabe** angezeigt.
 
-    ![Interaktive Hive-Auftragsausgabe, HDInsight-Cluster, Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-job-details.png)
+    :::image type="content" source="./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-job-details.png" alt-text="Interaktive Hive-Auftragsausgabe, HDInsight-Cluster, Visual Studio" border="true":::
 
 ### <a name="view-job-graph"></a>Anzeigen von Auftragsdiagrammen
 
@@ -277,13 +277,13 @@ Um alle Operatoren am Scheitelpunkt anzuzeigen, doppelklicken Sie auf die Scheit
 
 Auch wenn Tez als Ausführungs-Engine angegeben ist, wird der Auftragsgraph möglicherweise nicht angezeigt, wenn keine Tez-Anwendung gestartet wird.  Diese Situation könnte auftreten, wenn der Auftrag keine DML-Anweisungen enthält. Ein anderer Grund wäre, dass die DML-Anweisungen eine Rückgabe liefern können, ohne eine Tez-Anwendung zu starten. Durch `SELECT * FROM table1` wird die Tez-Anwendung z. B. nicht gestartet.
 
-![Apache Hive-Auftragsgraph, Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-fast-path-hive-execution.png)
+:::image type="content" source="./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-fast-path-hive-execution.png" alt-text="Apache Hive-Auftragsgraph, Visual Studio" border="true":::
 
 ### <a name="view-task-execution-detail"></a>Anzeigen von Details zur Taskausführung
 
 In der Auftragsdiagramm können Sie **Details zur Taskausführung** auswählen, um strukturierte und visualisierte Informationen zu Hive-Aufträgen anzeigen. Sie können auch weitere Auftragsinformationen abrufen. Im Fall von Leistungsproblemen können Sie in der Ansicht weitere Details zum Problem anzeigen. Beispielsweise können Sie Informationen zur Funktionsweise jeder Aufgabe und ausführliche Informationen zu den einzelnen Aufgaben (Lesen und Schreiben von Daten, Zeitplan, Start- und Endzeit usw.) anzeigen. Mithilfe der visualisierten Informationen können Sie Auftragskonfigurationen oder die Systemarchitektur optimieren.
 
-![Fenster „Taskausführungsansicht“, Data Lake Tools für Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-task-execution-view.png)
+:::image type="content" source="./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-task-execution-view.png" alt-text="Fenster „Taskausführungsansicht“, Data Lake Tools für Visual Studio" border="true":::
 
 ### <a name="view-hive-jobs"></a>Anzeigen von Hive-Aufträgen
 
@@ -295,7 +295,7 @@ So zeigen Sie Hive-Aufträge an:
 
 1. Klicken Sie mit der rechten Maustaste auf einen HDInsight-Cluster, und klicken Sie dann auf **Aufträge anzeigen**.
 
-    ![Anzeigen von Aufträgen, Apache Hive, HDInsight-Cluster, Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-view-hive-jobs.png)
+    :::image type="content" source="./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-view-hive-jobs.png" alt-text="Anzeigen von Aufträgen, Apache Hive, HDInsight-Cluster, Visual Studio" border="true":::
 
     Eine Liste der für den Cluster ausgeführten Hive-Aufträge wird angezeigt.  
 

@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: f7edf790e526329dd285d03a31137a26220e52ee
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96018646"
 ---
 # <a name="using-azure-cdn-with-cors"></a>Verwendung von Azure CDN mit CORS
@@ -30,13 +30,13 @@ Es gibt zwei Arten von CORS-Anforderungen: *einfache Anforderungen* und *komplex
 
 ### <a name="for-simple-requests"></a>Für einfache Anforderungen gilt Folgendes:
 
-1. Der Browser sendet die CORS-Anforderung mit einem zusätzlichen HTTP-Anforderungsheader vom Typ **Ursprung**. Der Wert dieses Headers ist der Ursprung, der die übergeordneten Seite bereitgestellt hat. Dabei handelt es sich um eine Kombination aus *Protokoll*, *Domäne* und *Port*.  Wenn eine Seite aus „https\://www.contoso.com“ versucht, auf die Benutzerdaten im Ursprung „fabrikam.com“ zuzugreifen, wird der folgende Anforderungsheader an „fabrikam.com“ gesendet:
+1. Der Browser sendet die CORS-Anforderung mit einem zusätzlichen HTTP-Anforderungsheader vom Typ **Ursprung**. Der Wert dieses Headers ist der Ursprung, der die übergeordneten Seite bereitgestellt hat. Dabei handelt es sich um eine Kombination aus *Protokoll,* *Domäne* und *Port*.  Wenn eine Seite aus „https\://www.contoso.com“ versucht, auf die Benutzerdaten im Ursprung „fabrikam.com“ zuzugreifen, wird der folgende Anforderungsheader an „fabrikam.com“ gesendet:
 
    `Origin: https://www.contoso.com`
 
 2. Der Server reagiert kann wie folgt reagieren:
 
-   * Mit einem **Access-Control-Allow-Origin**-Header in der Antwort, der die zulässige Ursprungswebsites angibt. Beispiel:
+   * Mit einem **Access-Control-Allow-Origin**-Header in der Antwort, der die zulässige Ursprungswebsites angibt. Beispiele:
 
      `Access-Control-Allow-Origin: https://www.contoso.com`
 

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: d23b376384262c208fed70306e62634592d0b46b
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 6073000f2f14f835e2bfbd91b41619101c36b10f
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946775"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866844"
 ---
 # <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>Abfragen von Apache Hive über den JDBC-Treiber in HDInsight
 
@@ -38,7 +38,7 @@ Ersetzen Sie `CLUSTERNAME` durch den Namen Ihres HDInsight-Clusters.
 
 Sie können die Verbindung auch über **Ambari-Benutzeroberfläche > Hive > Configs (Konfigurationen) > Advanced (Erweitert)** abrufen.
 
-![Abrufen der JDBC-Verbindungszeichenfolge über Ambari](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-get-connection-string-through-ambari.png)
+:::image type="content" source="./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-get-connection-string-through-ambari.png" alt-text="Abrufen der JDBC-Verbindungszeichenfolge über Ambari" border="true":::
 
 ### <a name="host-name-in-connection-string"></a>Hostname in der Verbindungszeichenfolge
 
@@ -74,11 +74,11 @@ SQuirreL SQL ist ein JDBC-Client, der für die Remoteausführung von Hive-Abfrag
 
 3. Starten Sie die SQuirreL SQL-Anwendung. Wählen Sie auf der linken Seite des Fensters **Drivers** aus.
 
-    ![Registerkarte „Drivers“ auf der linken Seite des Fensters](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-squirreldrivers.png)
+    :::image type="content" source="./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-squirreldrivers.png" alt-text="Registerkarte „Drivers“ auf der linken Seite des Fensters" border="true":::
 
 4. Wählen Sie aus den Symbolen oben im Dialogfeld **Drivers** das Symbol **+** aus, um einen Treiber zu erstellen.
 
-    ![SQuirreL SQL-Anwendungstreibersymbol](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-driversicons.png)
+    :::image type="content" source="./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-driversicons.png" alt-text="SQuirreL SQL-Anwendungstreibersymbol" border="true":::
 
 5. Fügen Sie im Dialogfeld „Add Driver“ die folgenden Informationen hinzu:
 
@@ -89,13 +89,13 @@ SQuirreL SQL ist ein JDBC-Client, der für die Remoteausführung von Hive-Abfrag
     |Zusätzlicher Klassenpfad|Fügen Sie mit der Schaltfläche **Add** alle JAR-Dateien hinzu, die Sie zuvor heruntergeladen haben.|
     |Klassenname|org.apache.hive.jdbc.HiveDriver|
 
-   ![Dialogfeld zum Hinzufügen eines Treibers mit Parametern](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-add-driver.png)
+   :::image type="content" source="./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-add-driver.png" alt-text="Dialogfeld zum Hinzufügen eines Treibers mit Parametern" border="true":::
 
    Wählen Sie auf **OK** aus, um die Einstellungen zu speichern.
 
 6. Wählen Sie auf der linken Seite des Fensters „SQuirreL SQL“ die Option **Aliases** aus. Wählen Sie dann das Symbol **+** aus, um einen Verbindungsalias zu erstellen.
 
-    ![„SQuirreL SQL – Dialogfeld zum Hinzufügen eines neuen Alias“](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-new-aliases.png)
+    :::image type="content" source="./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-new-aliases.png" alt-text="„SQuirreL SQL – Dialogfeld zum Hinzufügen eines neuen Alias“" border="true":::
 
 7. Verwenden Sie für das Dialogfeld **Add Alias** die folgenden Werte:
 
@@ -107,7 +107,7 @@ SQuirreL SQL ist ein JDBC-Client, der für die Remoteausführung von Hive-Abfrag
     |Benutzername|Der Name des Clusteranmeldekontos für den HDInsight-Cluster. Der Standardname lautet **admin**.|
     |Kennwort|Das Kennwort für das Clusteranmeldekonto.|
 
-    ![Dialogfeld zum Hinzufügen eines Alias mit Parametern](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-addalias-dialog.png)
+    :::image type="content" source="./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-addalias-dialog.png" alt-text="Dialogfeld zum Hinzufügen eines Alias mit Parametern" border="true":::
 
     > [!IMPORTANT]
     > Überprüfen Sie mithilfe der Schaltfläche **Test**, ob die Verbindung funktioniert. Wenn das Dialogfeld **Connect to: Hive on HDInsight** angezeigt wird, wählen Sie **Connect** aus, um den Test durchzuführen. Wenn der Test erfolgreich ist, wird das Dialogfeld **Connection successful** (Verbindung erfolgreich) angezeigt. Wenn ein Fehler auftritt, finden Sie Informationen unter [Problembehandlung](#troubleshooting).
@@ -116,7 +116,7 @@ SQuirreL SQL ist ein JDBC-Client, der für die Remoteausführung von Hive-Abfrag
 
 8. Wählen Sie oben in SQuirreL SQL in der Dropdownliste **Connect to** die Option **Hive on HDInsight** aus. Wenn Sie dazu aufgefordert werden, wählen Sie **Connect** aus.
 
-    ![Dialogfeld für Verbindungen mit Parametern](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-connect-dialog.png)
+    :::image type="content" source="./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-connect-dialog.png" alt-text="Dialogfeld für Verbindungen mit Parametern" border="true":::
 
 9. Nachdem die Verbindung hergestellt wurde, geben Sie im Dialogfeld für die SQL-Abfrage die folgende Abfrage ein, und wählen Sie das Symbol **Run** (ein laufender Mensch) aus. Die Ergebnisse der Abfrage sollten im Ergebnisbereich angezeigt werden.
 
@@ -124,7 +124,7 @@ SQuirreL SQL ist ein JDBC-Client, der für die Remoteausführung von Hive-Abfrag
     select * from hivesampletable limit 10;
     ```
 
-    ![Dialogfeld für die SQL-Abfrage einschließlich der Ergebnisse](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-sqlquery-dialog.png)
+    :::image type="content" source="./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-sqlquery-dialog.png" alt-text="Dialogfeld für die SQL-Abfrage einschließlich der Ergebnisse" border="true":::
 
 ## <a name="connect-from-an-example-java-application"></a>Herstellen einer Verbindung von einer Beispiel-Java-Anwendung aus
 

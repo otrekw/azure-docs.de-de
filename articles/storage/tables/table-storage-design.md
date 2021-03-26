@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/09/2020
 ms.subservice: tables
 ms.openlocfilehash: 8f3bd2a998066804bfb589e3262ac5e68db601fb
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93306945"
 ---
 # <a name="design-scalable-and-performant-tables"></a>Erstellen skalierbarer und leistungsfähiger Tabellen
@@ -27,7 +27,7 @@ In diesem Abschnitt werden einige der wichtigsten Funktionen des Tabellenspeiche
 Was ist der Tabellenspeicherdienst? Wie aus dem Namen zu ersehen ist, verwendet der Tabellenspeicherdienst ein tabellarisches Format zum Speichern von Daten. In der Standard-Terminologie stellt jede Zeile der Tabelle eine Entität dar und die Spalten speichern die verschiedenen Eigenschaften dieser Entität. Jede Entität besitzt zur eindeutigen Identifizierung ein Schlüsselpaar und eine Zeitstempelspalte, anhand welcher der Tabellenspeicherdienst nachverfolgt, wann die Entität zuletzt aktualisiert wurde. Der Zeitstempel wird automatisch angewendet; Sie können den Zeitstempel nicht manuell mit einem beliebigen Wert überschreiben. Der Tabellenspeicherdienst verwendet diesen Zeitstempel der letzten Änderung (Last-Modified Timestamp, LMT) zum Verwalten der optimistischen Nebenläufigkeit.  
 
 > [!NOTE]
-> Die REST-API-Vorgänge des Tabellenspeicherdiensts geben auch einen **ETag** -Wert zurück, den sie aus dem LMT abgeleitet haben. In diesem Dokument werden die Begriffe ETag und LMT austauschbar verwendet, da sie auf dieselben zugrundeliegenden Daten verweisen.  
+> Die REST-API-Vorgänge des Tabellenspeicherdiensts geben auch einen **ETag**-Wert zurück, den sie aus dem LMT abgeleitet haben. In diesem Dokument werden die Begriffe ETag und LMT austauschbar verwendet, da sie auf dieselben zugrundeliegenden Daten verweisen.  
 > 
 > 
 
@@ -130,7 +130,7 @@ Eine Tabelle besteht aus mindestens einer Partition. Viele der von Ihnen zu tref
 ## <a name="table-partitions"></a>Tabellenpartitionen
 Kontoname, Tabellenname und **PartitionKey** bestimmen zusammen die Partition innerhalb des Tabellenspeicherdiensts, in der der Tabellenspeicherdienst die Entität speichert. Partitionen sind Teil des Adressierungsschemas für Entitäten und legen zusätzlich einen Bereich für Transaktionen fest (siehe [Entitätsgruppentransaktionen](#entity-group-transactions) weiter unten). Außerdem bilden sie die Grundlage für die Skalierung des Tabellenspeicherdiensts. Weitere Informationen zu Partitionen finden Sie unter [Checkliste zu Leistung und Skalierbarkeit für Table Storage](storage-performance-checklist.md).  
 
-Im Tabellenspeicherdienst bedient ein einzelner Knoten eine oder mehrere komplette Partitionen und skaliert durch dynamischen Lastenausgleich Partitionen über Knoten hinweg. Wenn ein Knoten ausgelastet ist, kann der Tabellenspeicherdienst den Partitionsbereich *teilen* , der von diesem Knoten aus andere Knoten bedient. Wenn der Datenverkehr abnimmt, kann der Dienst die Partitionsbereiche von nicht ausgelasteten Knoten wieder auf einem einzelnen Knoten *zusammenführen*.  
+Im Tabellenspeicherdienst bedient ein einzelner Knoten eine oder mehrere komplette Partitionen und skaliert durch dynamischen Lastenausgleich Partitionen über Knoten hinweg. Wenn ein Knoten ausgelastet ist, kann der Tabellenspeicherdienst den Partitionsbereich *teilen*, der von diesem Knoten aus andere Knoten bedient. Wenn der Datenverkehr abnimmt, kann der Dienst die Partitionsbereiche von nicht ausgelasteten Knoten wieder auf einem einzelnen Knoten *zusammenführen*.  
 
 Weitere Informationen über die internen Details des Tabellenspeicherdiensts und insbesondere zur Verwaltung der Partitionen durch den Dienst finden Sie im Dokument [Microsoft Azure Storage: A Highly Available Cloud Storage Service with Strong Consistency](/archive/blogs/windowsazurestorage/sosp-paper-windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency)(in englischer Sprache).  
 

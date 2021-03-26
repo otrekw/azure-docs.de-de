@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.custom: Understand-apache-spark-code-concepts
 ms.date: 10/15/2019
 ms.openlocfilehash: 2abd5882e310b17c633a82009f44624fad156f14
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92221127"
 ---
 # <a name="understand-apache-spark-code-for-u-sql-developers"></a>Grundlegendes zu Apache Spark-Code für U-SQL-Entwickler
@@ -20,7 +20,7 @@ Dieser Abschnitt bietet allgemeine Informationen zum Transformieren von U-SQL-Sk
 - Er beginnt mit einem [Vergleich der Verarbeitungsparadigmen der beiden Sprachen](#understand-the-u-sql-and-spark-language-and-processing-paradigms).
 - Zudem enthält er Tipps zu Folgendem:
    - [Transformieren von Skripts](#transform-u-sql-scripts) einschließlich der [Rowsetausdrücke](#transform-u-sql-rowset-expressions-and-sql-based-scalar-expressions) von U-SQL
-   - [.NET-Code](#transform-net-code)
+   - [.NET code](#transform-net-code)
    - [Datentypen](#transform-typed-values)
    - [Katalogobjekte](#transform-u-sql-catalog-objects)
 
@@ -28,7 +28,7 @@ Dieser Abschnitt bietet allgemeine Informationen zum Transformieren von U-SQL-Sk
 
 Bevor Sie mit dem Migrieren von U-SQL-Skripts für Azure Data Lake Analytics zu Spark beginnen, sollten Sie die allgemeinen Sprach- und Verarbeitungsphilosophien der beiden Systeme kennen.
 
-U-SQL ist eine deklarative Abfragesprache, die SQL ähnelt und auf einem Datenflussparadigma basiert. U-SQL ermöglicht es, Benutzercode, der in .NET (z. B. C#), Python oder R geschrieben wurde, ganz einfach einzubetten und aufzuskalieren. Benutzererweiterungen können einfache Ausdrücke oder benutzerdefinierte Funktionen implementieren, dem Benutzer aber auch die Möglichkeit bieten, so genannte benutzerdefinierte Operatoren zu implementieren, die wiederum angepasste Operatoren implementieren, um Transformationen und Extraktionen auf Rowsetebene auszuführen und Ausgaben zu schreiben.
+U-SQL ist eine deklarative Abfragesprache, die SQL ähnelt und auf einem Datenflussparadigma basiert. U-SQL ermöglicht es, Benutzercode, der in .NET (z. B. C#), Python oder R geschrieben wurde, ganz einfach einzubetten und zu erweitern. Benutzererweiterungen können einfache Ausdrücke oder benutzerdefinierte Funktionen implementieren, dem Benutzer aber auch die Möglichkeit bieten, so genannte benutzerdefinierte Operatoren zu implementieren, die wiederum angepasste Operatoren implementieren, um Transformationen und Extraktionen auf Rowsetebene auszuführen und Ausgaben zu schreiben.
 
 Spark ist ein erweiterbares Framework, das verschiedene Sprachbindungen in Scala, Java, Python, .NET usw. bietet. Damit können Sie Code in einer dieser Sprachen schreiben, als Resilient Distributed Datasets (RDD) bezeichnete Datenabstraktionen sowie Datenrahmen und Datasets erstellen und dann eine LINQ-ähnliche domänenspezifische Sprache (Domain-Specific Language, DSL) verwenden, um diese zu transformieren. Spark bietet zudem SparkSQL als deklarative Untersprache für die Datenrahmen- und Datasetabstraktionen. Die DSL bietet zwei Kategorien von Vorgängen: Transformationen und Aktionen. Durch Anwenden von Transformationen auf die Datenabstraktionen wird die Transformation nicht ausgeführt. Stattdessen wird der Ausführungsplan erstellt, der zur Auswertung mit einer Aktion übermittelt wird (z. B. durch Schreiben des Ergebnisses in eine temporäre Tabelle oder Datei oder durch Ausgeben des Ergebnisses).
 
@@ -50,7 +50,7 @@ Spark-Programme funktionieren ähnlich wie Spark-Connectors, die Sie verwenden, 
 
 ## <a name="transform-net-code"></a>Transformieren von .NET-Code
 
-Die Ausdruckssprache von U-SQL ist C# – diese bietet eine Reihe von Möglichkeiten zum Aufskalieren von benutzerdefiniertem .NET-Code.
+Die Ausdruckssprache von U-SQL ist C# – diese bietet eine Reihe von Möglichkeiten zum Erweitern von benutzerdefiniertem .NET-Code.
 
 Da Spark die Ausführung von .NET-Code derzeit nicht nativ unterstützt, müssen Sie entweder Ihre Ausdrücke als entsprechende Spark-, Scala-, Java- oder Python-Ausdrücke neu schreiben oder eine Möglichkeit finden, Aufrufe in Ihrem .NET-Code auszuführen. Wenn Ihr Skript .NET-Bibliotheken verwendet, stehen Ihnen folgende Optionen zur Verfügung:
 
@@ -126,7 +126,7 @@ Die folgende Tabelle zeigt die äquivalenten Typen in Spark, Scala und PySpark f
 |`SQL.MAP<K,V>`   |`MapType(keyType, valueType, valueContainsNull)` |`scala.collection.Map` | `MapType(keyType, valueType, valueContainsNull=True)`|
 |`SQL.ARRAY<T>`   |`ArrayType(elementType, containsNull)` |`scala.collection.Seq` | `ArrayType(elementType, containsNull=True)`|
 
-Weitere Informationen finden Sie unter
+Weitere Informationen finden Sie unter:
 
 - [org.apache.spark.sql.types](https://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.types.package)
 - [Spark SQL- und DataFrames-Typen](https://spark.apache.org/docs/latest/sql-ref-datatypes.html)

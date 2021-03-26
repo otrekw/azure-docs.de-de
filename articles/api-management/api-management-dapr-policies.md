@@ -3,15 +3,15 @@ title: Azure API Management-Richtlinien für die Dapr-Integration | Microsoft-Do
 description: Erfahren Sie mehr über Azure API Management-Richtlinien für die Interaktion mit Dapr-Microservices-Erweiterungen.
 author: vladvino
 ms.author: vlvinogr
-ms.date: 10/23/2020
+ms.date: 02/18/2021
 ms.topic: article
 ms.service: api-management
-ms.openlocfilehash: b8e253f75f56f961a24a441188b7a8e571622667
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 051bf4398555f318f613c66d58ec65be1d30e215
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99560225"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101646808"
 ---
 # <a name="api-management-dapr-integration-policies"></a>API Management-Richtlinien für die Integration von Dapr
 
@@ -45,21 +45,21 @@ template:
 
 ## <a name="send-request-to-a-service"></a><a name="invoke"></a> Anforderung an einen Dienst senden
 
-Diese Richtlinie legt die Ziel-URL für die aktuelle Anforderung auf `http://localhost:3500/v1.0/invoke/{app-id}/method/{method-name}` fest und ersetzt dabei Vorlagenparameter durch Werte, die in der Richtlinienanweisung angegeben sind.
+Diese Richtlinie legt die Ziel-URL für die aktuelle Anforderung auf `http://localhost:3500/v1.0/invoke/{app-id}[.{ns-name}]/method/{method-name}` fest und ersetzt dabei Vorlagenparameter durch Werte, die in der Richtlinienanweisung angegeben sind.
 
 Die Richtlinie geht davon aus, dass Dapr in einem Sidecar-Container in demselben Pod wie das Gateway ausgeführt wird. Beim Empfangen der Anforderung führt die Dapr-Runtime die Dienstermittlung und den eigentlichen Aufruf aus, einschließlich einer etwaigen Protokollübersetzung zwischen HTTP und gRPC, Wiederholungsversuchen, verteilter Ablaufverfolgung und Fehlerbehandlung.
 
 ### <a name="policy-statement"></a>Richtlinienanweisung
 
 ```xml
-<set-backend-service backend-id="dapr" dapr-app-id="app-id" dapr-method="method-name" />
+<set-backend-service backend-id="dapr" dapr-app-id="app-id" dapr-method="method-name" dapr-namespace="ns-name" />
 ```
 
 ### <a name="examples"></a>Beispiele
 
 #### <a name="example"></a>Beispiel
 
-Im folgenden Beispiel wird das Aufrufen der Methode mit dem Namen „back“ für den Microservice mit dem Namen „echo“ gezeigt. Die Richtlinie `set-backend-service` legt die Ziel-URL fest. Die Richtlinie `forward-request` versendet die Anforderung an die Dapr-Runtime, die sie an den Microservice übermittelt.
+Im folgenden Beispiel wird das Aufrufen der Methode mit dem Namen „back“ für den Microservice mit dem Namen „echo“ gezeigt. Die Richtlinie `set-backend-service` legt die Ziel-URL auf `http://localhost:3500/v1.0/invoke/echo.echo-app/method/back` fest. Die Richtlinie `forward-request` versendet die Anforderung an die Dapr-Runtime, die sie an den Microservice übermittelt.
 
 Die Richtlinie `forward-request` wird hier der besseren Verständlichkeit halber gezeigt. Die Richtlinie wird in der Regel über das Schlüsselwort `base` aus dem globalen Bereich „geerbt“.
 
@@ -67,7 +67,7 @@ Die Richtlinie `forward-request` wird hier der besseren Verständlichkeit halber
 <policies>
     <inbound>
         <base />
-        <set-backend-service backend-id="dapr" dapr-app-id="echo" dapr-method="back" />
+        <set-backend-service backend-id="dapr" dapr-app-id="echo" dapr-method="back" dapr-namespace="echo-app" />
     </inbound>
     <backend>
         <forward-request />
@@ -89,11 +89,12 @@ Die Richtlinie `forward-request` wird hier der besseren Verständlichkeit halber
 
 ### <a name="attributes"></a>Attributes
 
-| Attribut        | BESCHREIBUNG                     | Erforderlich | Standard |
+| attribute        | BESCHREIBUNG                     | Erforderlich | Standard |
 |------------------|---------------------------------|----------|---------|
 | backend-id       | Muss auf „dapr“ festgelegt werden           | Ja      | N/V     |
-| dapr-app-id      | Der Name des Ziel-Microservice. Wird dem Parameter [appId](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/service_invocation_api.md) Parameter in Dapr zugeordnet.| Ja | N/V |
+| dapr-app-id      | Der Name des Ziel-Microservice. Wird zum Erstellen des Parameters [appId](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/service_invocation_api.md) in Dapr verwendet.| Ja | N/V |
 | dapr-method      | Der Name der Methode oder eine URL, die auf dem Ziel-Microservice aufgerufen werden soll. Wird dem Parameter [method-name](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/service_invocation_api.md) in Dapr zugeordnet.| Ja | – |
+| dapr-namespace   | Der Name des Namespace, in dem sich der Ziel-Microservice befindet. Wird zum Erstellen des Parameters [appId](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/service_invocation_api.md) in Dapr verwendet.| Nein | – |
 
 ### <a name="usage"></a>Verwendung
 
@@ -157,7 +158,7 @@ Der Abschnitt „backend“ ist leer, und die Anforderung wird nicht an das Back
 
 ### <a name="attributes"></a>Attributes
 
-| Attribut        | BESCHREIBUNG                     | Erforderlich | Standard |
+| attribute        | BESCHREIBUNG                     | Erforderlich | Standard |
 |------------------|---------------------------------|----------|---------|
 | pubsub-name      | Der Name der PubSub-Zielkomponente. Wird dem Parameter [pubsubname](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/pubsub_api.md) in Dapr zugeordnet. Falls nicht vorhanden, muss der Attributwert __Thema__ die Form `pubsub-name/topic-name` haben.    | Nein       | Keine    |
 | topic            | Der Name des Themas. Wird dem Parameter [topic](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/pubsub_api.md) in Dapr zugeordnet.               | Ja      | –     |
@@ -243,7 +244,7 @@ Der Abschnitt „backend“ ist leer, und die Anforderung wird nicht an das Back
 
 ### <a name="attributes"></a>Attributes
 
-| Attribut        | BESCHREIBUNG                     | Erforderlich | Standard |
+| attribute        | BESCHREIBUNG                     | Erforderlich | Standard |
 |------------------|---------------------------------|----------|---------|
 | name            | Name der Zielbindung. Muss dem Namen der Bindungen entsprechen, die in Dapr [definiert](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/bindings_api.md#bindings-structure) sind.           | Ja      | N/V     |
 | operation       | Name des Zielvorgangs (bindungsspezifisch). Der Eigenschaft [operation](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/bindings_api.md#invoking-output-bindings) in Dapr zugeordnet. | Nein | Keine |

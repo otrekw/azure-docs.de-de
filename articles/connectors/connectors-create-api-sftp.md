@@ -10,10 +10,10 @@ ms.date: 11/01/2019
 tags: connectors
 ROBOTS: NOINDEX
 ms.openlocfilehash: 70fb956af7ff45c7b54f04d7ed441ec39f9d80a5
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92673809"
 ---
 # <a name="monitor-create-and-manage-sftp-files-in-azure-logic-apps"></a>Überwachen, Erstellen und Verwalten von SFTP-Dateien in Azure Logic Apps
@@ -45,10 +45,10 @@ Der SFTP-Connector verarbeitet nur Dateien, die *50 MB oder kleiner* sind und u
   > Der SFTP-Connector unterstützt folgende Formate für private Schlüssel: OpenSSH, ssh.com und PuTTY.
   >
   > Wenn Sie Ihre Logik-App erstellen, müssen Sie nach dem Hinzufügen des SFTP-Triggers oder der gewünschten Aktion Verbindungsinformationen für Ihren SFTP-Server angeben. 
-  > Wenn Sie einen privaten SSH-Schlüssel verwenden, stellen Sie sicher, dass Sie den Schlüssel aus der Datei für Ihren privaten SSH-Schlüssel * **kopieren** _ und diesen Schlüssel in die Verbindungsdetails _*_einfügen_*_. _*_Der Schlüssel darf nicht manuell eingegeben oder bearbeitet werden_*_ , da sonst ein Verbindungsfehler auftreten kann. 
+  > Wenn Sie einen privaten SSH-Schlüssel verwenden, stellen Sie sicher, dass Sie den Schlüssel aus der Datei für Ihren privaten SSH-Schlüssel ***kopieren*** und diesen Schlüssel in die Verbindungsdetails ***einfügen***. ***Der Schlüssel darf nicht manuell eingegeben oder bearbeitet werden***, da sonst ein Verbindungsfehler auftritt. 
   > Weitere Informationen finden Sie weiter unten in diesem Artikel.
 
-_ Grundlegende Kenntnisse zum [Erstellen von Logik-Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Grundlegende Kenntnisse über die [Erstellung von Logik-Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
 * Die Logik-App, in der Sie auf Ihr SFTP-Konto zugreifen möchten. Um mit einem SFTP-Trigger zu beginnen, [erstellen Sie eine leere Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md). Um eine SFTP-Aktion zu verwenden, starten Sie Ihre Logik-App mit einem anderen Trigger, z.B. dem **Wiederholungstrigger**.
 
@@ -93,9 +93,9 @@ Wenn ein Trigger eine neue Datei findet, überprüft er, ob die neue Datei volls
 
    1. Klicken Sie auf **Bearbeiten** > **Kopieren**.
 
-   1. Fügen Sie in den von Ihnen hinzugefügten SFTP-Trigger oder die von Ihnen hinzugefügte Aktion den *gesamten* kopierten Schlüssel in die Eigenschaft **SSH private key** ein, die mehrere Zeilen unterstützt. **_Stellen Sie sicher, dass Sie den Schlüssel einfügen._* _ _*_Sie dürfen den Schlüssel nicht manuell eingeben oder bearbeiten._*_
+   1. Fügen Sie in den von Ihnen hinzugefügten SFTP-Trigger oder die von Ihnen hinzugefügte Aktion den *gesamten* kopierten Schlüssel in die Eigenschaft **SSH private key** ein, die mehrere Zeilen unterstützt. **_Stellen Sie sicher, dass Sie den Schlüssel einfügen_ *_. _* _Der Schlüssel darf nicht manuell eingegeben oder bearbeitet werden_**.
 
-1. Wenn Sie die Verbindungsdetails eingegeben haben, wählen Sie _*Erstellen** aus.
+1. Wenn Sie die Verbindungsdetails eingegeben haben, wählen Sie **Erstellen** aus.
 
 1. Geben Sie die erforderlichen Details für Ihren ausgewählten Trigger oder Ihre ausgewählte Aktion an, und fahren Sie mit dem Erstellen Ihres Logik-App-Workflows fort.
 
@@ -107,7 +107,7 @@ Wenn ein Trigger eine neue Datei findet, überprüft er, ob die neue Datei volls
 
 Dieser Trigger startet einen Logik-App-Workflow, wenn auf einem SFTP-Server eine Datei hinzugefügt oder geändert wird. Sie können beispielsweise eine Bedingung hinzufügen, die den Inhalt der Datei überprüft und den Inhalt basierend darauf abruft, ob er eine bestimmte Bedingung erfüllt. Sie können dann eine Aktion hinzufügen, die den Inhalt der Datei abruft und in einem Ordner auf dem SFTP-Server ablegt.
 
-**Beispiel für Unternehmen** : Sie können mit diesem Trigger beispielsweise einen SFTP-Ordner auf neue Dateien überwachen, die Kundenbestellungen darstellen. Anschließend können Sie eine SFTP-Aktion wie etwa **Dateiinhalt abrufen** verwenden, um den Inhalt einer Bestellung zur weiteren Verarbeitung abzurufen und in einer Bestelldatenbank zu speichern.
+**Beispiel für Unternehmen**: Sie können mit diesem Trigger beispielsweise einen SFTP-Ordner auf neue Dateien überwachen, die Kundenbestellungen darstellen. Anschließend können Sie eine SFTP-Aktion wie etwa **Dateiinhalt abrufen** verwenden, um den Inhalt einer Bestellung zur weiteren Verarbeitung abzurufen und in einer Bestelldatenbank zu speichern.
 
 <a name="get-content"></a>
 

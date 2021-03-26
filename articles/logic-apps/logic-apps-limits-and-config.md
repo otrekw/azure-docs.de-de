@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 03/03/2021
-ms.openlocfilehash: 39d7516b9cec1a3b9aa4484c2ff93564bd5772da
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.date: 03/18/2021
+ms.openlocfilehash: f4336350af92c27760369d668c6babddc4d4ea30
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102034284"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103462915"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Grenzwert- und Konfigurationsinformationen für Azure Logic Apps
 
@@ -50,7 +50,7 @@ Dies sind die Grenzwerte für eine einzelne Ausführung der Logik-App:
 | Name | Grenzwert bei mehreren Mandanten | Grenzwert für Integrationsdienstumgebung | Notizen |
 |------|--------------------|---------------------------------------|-------|
 | Ausführungsdauer | 90 Tage | 366 Tage | Die Ausführungsdauer wird mithilfe der Startzeit einer Ausführung und des durch die Workfloweinstellung [**Aufbewahrung des Ausführungsverlaufs in Tagen**](#change-duration) zum Startzeitpunkt festgelegten Grenzwerts berechnet. <p><p>Informationen zum Ändern des Standardgrenzwerts finden Sie unter [Ändern der Ausführungsdauer und Verlaufsaufbewahrung im Speicher](#change-duration). |
-| Aufbewahrung des Ausführungsverlaufs im Speicher | 90 Tage | 366 Tage | Wenn die Dauer einer Ausführung den aktuellen Aufbewahrungsgrenzwert für Ausführungsverläufe überschreitet, wird die Ausführung aus dem Ausführungsverlauf im Speicher entfernt. Egal, ob die Ausführung abgeschlossen wird oder einen Timeout hat, wird die Aufbewahrung des Ausführungsverlaufs immer mithilfe der Startzeit der Ausführung und des durch die Workfloweinstellung [**Aufbewahrung des Ausführungsverlaufs in Tagen**](#change-retention) festgelegten aktuellen Grenzwerts berechnet. Unabhängig vom vorherigen Grenzwert wird immer der aktuelle Grenzwert zum Berechnen der Aufbewahrung verwendet. <p><p>Informationen zum Ändern des Standardgrenzwerts sowie weitere Informationen finden Sie unter [Ändern der Dauer und Aufbewahrung des Ausführungsverlaufs im Speicher](#change-retention). Zum Erhöhen des maximalen Grenzwerts [wenden Sie sich an das Logic Apps-Team ](mailto://logicappsemail@microsoft.com), um Hilfestellung zu Ihren Anforderungen zu erhalten. |
+| Aufbewahrung des Ausführungsverlaufs im Speicher | 90 Tage | 366 Tage | Wenn die Dauer einer Ausführung den aktuellen Aufbewahrungsgrenzwert für Ausführungsverläufe überschreitet, wird die Ausführung aus dem Ausführungsverlauf im Speicher entfernt. Egal, ob die Ausführung abgeschlossen wird oder einen Timeout hat, wird die Aufbewahrung des Ausführungsverlaufs immer mithilfe der Startzeit der Ausführung und des durch die Workfloweinstellung [**Aufbewahrung des Ausführungsverlaufs in Tagen**](#change-retention) festgelegten aktuellen Grenzwerts berechnet. Unabhängig vom vorherigen Grenzwert wird immer der aktuelle Grenzwert zum Berechnen der Aufbewahrung verwendet. <p><p>Informationen zum Ändern des Standardgrenzwerts sowie weitere Informationen finden Sie unter [Ändern der Dauer und Aufbewahrung des Ausführungsverlaufs im Speicher](#change-retention). Zum Erhöhen des maximalen Grenzwerts [wenden Sie sich an das Logic Apps-Team ](mailto://logicappspm@microsoft.com), um Hilfestellung zu Ihren Anforderungen zu erhalten. |
 | Kürzestes Wiederholungsintervall | 1 Sekunde | 1 Sekunde ||
 | Längstes Wiederholungsintervall | 500 Tage | 500 Tage ||
 |||||
@@ -203,8 +203,8 @@ Weitere Informationen zur Ressourcendefinition Ihrer Logik-App finden Sie unter 
 
   | Name | Begrenzung | Notizen |
   |------|-------|-------|
-  | Ausführungsgrenzwert für eine Basiseinheit | System gedrosselt, wenn die Infrastrukturkapazität 80 % erreicht | Bietet ca. 4.000 Aktionsausführungen pro Minute, was rund 160 Mio. Aktionsausführungen pro Monat entspricht. | |
-  | Ausführungsgrenzwert für eine Skalierungseinheit | System gedrosselt, wenn die Infrastrukturkapazität 80 % erreicht | Jede Skalierungseinheit kann ca. 2.000 zusätzliche Aktionsausführungen pro Minute bereitstellen, was etwa 80 Mio. zusätzlichen Aktionsausführungen pro Monat entspricht. | |
+  | Ausführungsgrenzwert für eine Basiseinheit | System gedrosselt, wenn die Infrastrukturkapazität 80 % erreicht | Bietet ca. 4.000 Aktionsausführungen pro Minute, was rund 160 Mio. Aktionsausführungen pro Monat entspricht. |
+  | Ausführungsgrenzwert für eine Skalierungseinheit | System gedrosselt, wenn die Infrastrukturkapazität 80 % erreicht | Jede Skalierungseinheit kann ca. 2.000 zusätzliche Aktionsausführungen pro Minute bereitstellen, was etwa 80 Mio. zusätzlichen Aktionsausführungen pro Monat entspricht. |
   | Maximale Skalierungseinheiten, die Sie hinzufügen können | 10 | |
   ||||
 
@@ -244,11 +244,11 @@ Einige Connectorvorgänge führen asynchrone Aufrufe aus oder lauschen auf Webho
 
 #### <a name="character-limits"></a>Zeichengrenzwerte
 
-| Name | Notizen |
-|------|-------|
+| Name | Begrenzung | Notizen |
+|------|-------|-------|
 | Grenzwert für die Auswertung von Ausdrücken | 131.072 Zeichen | Keiner der Ausdrücke `@concat()`, `@base64()` und `@string()` darf länger sein, als dieser Grenzwert angibt. |
-| Zeichengrenzwert für Anforderungs-URL | 16.384 Zeichen |
-|||
+| Zeichengrenzwert für Anforderungs-URL | 16.384 Zeichen | |
+||||
 
 <a name="retry-policy-limits"></a>
 

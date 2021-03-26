@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: 1958e818f014b7419a1a33e9453fbad460dfc159
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92330613"
 ---
 # <a name="orchestrate-the-implementation-of-azure-devtest-labs"></a>Orchestrieren der Implementierung von Azure DevTest Labs
@@ -19,14 +19,14 @@ Dieser Artikel stellt einen empfohlenen Ansatz für die schnelle Bereitstellung 
 ## <a name="assumptions"></a>Annahmen
 In diesem Artikel wird davon ausgegangen, dass die folgenden Elemente verfügbar sind, bevor mit einer DevTest Labs-Pilotimplementierung begonnen wird:
 
-- **Azure-Abonnement** : Das Pilotteam hat Zugriff auf die Bereitstellung von Ressourcen in einem Azure-Abonnement. Wenn sich die Workloads nur auf Entwicklung und Test beziehen, empfiehlt sich das Enterprise DevTest-Angebot, da es zusätzliche verfügbare Images und niedrigere Sätze für virtuelle Windows-Computer bietet.
-- **Lokaler Zugriff** : Falls erforderlich, wurde der lokale Zugriff bereits konfiguriert. Der lokale Zugriff kann mithilfe einer Site-to-Site-VPN-Verbindung oder über ExpressRoute realisiert werden. Die Einrichtung von Konnektivität mithilfe von ExpressRoute nimmt normalerweise viele Wochen in Anspruch – die ExpressRoute sollte bereits etabliert sein, bevor mit dem Projekt begonnen wird.
-- **Pilotteams** : Die ersten für die Entwicklung zuständigen Projektteams für DevTest Labs wurden benannt, die entsprechenden Entwicklungs- und Testaktivitäten wurden definiert, und die Anforderungen/Ziele für die Teams wurden festgelegt.
+- **Azure-Abonnement**: Das Pilotteam hat Zugriff auf die Bereitstellung von Ressourcen in einem Azure-Abonnement. Wenn sich die Workloads nur auf Entwicklung und Test beziehen, empfiehlt sich das Enterprise DevTest-Angebot, da es zusätzliche verfügbare Images und niedrigere Sätze für virtuelle Windows-Computer bietet.
+- **Lokaler Zugriff**: Falls erforderlich, wurde der lokale Zugriff bereits konfiguriert. Der lokale Zugriff kann mithilfe einer Site-to-Site-VPN-Verbindung oder über ExpressRoute realisiert werden. Die Einrichtung von Konnektivität mithilfe von ExpressRoute nimmt normalerweise viele Wochen in Anspruch – die ExpressRoute sollte bereits etabliert sein, bevor mit dem Projekt begonnen wird.
+- **Pilotteams**: Die ersten für die Entwicklung zuständigen Projektteams für DevTest Labs wurden benannt, die entsprechenden Entwicklungs- und Testaktivitäten wurden definiert, und die Anforderungen/Ziele für die Teams wurden festgelegt.
 
 ## <a name="milestone-1-establish-initial-network-topology-and-design"></a>Meilenstein 1: Einrichten der anfänglichen Netzwerktopologie und des ersten Netzwerkentwurfs
 Der erste Schwerpunkt bei der Bereitstellung einer Azure DevTest Labs-Lösung liegt in der Herstellung der geplanten Konnektivität für die virtuellen Computer. Die folgenden Schritte beschreiben die erforderlichen Prozeduren:
 
-1. Definieren der **anfänglichen IP-Adressbereiche** , die dem DevTest Labs-Abonnement in Azure zugewiesen werden. Für diesen Schritt muss die erwartete zukünftige Nutzung in Form der Anzahl der VMs eingeschätzt werden, damit ein für zukünftiges Wachstum ausreichend großer Block bereitgestellt werden kann.
+1. Definieren der **anfänglichen IP-Adressbereiche**, die dem DevTest Labs-Abonnement in Azure zugewiesen werden. Für diesen Schritt muss die erwartete zukünftige Nutzung in Form der Anzahl der VMs eingeschätzt werden, damit ein für zukünftiges Wachstum ausreichend großer Block bereitgestellt werden kann.
 2. Identifizieren der **gewünschten Zugriffsmethoden** auf die DevTest Labs (beispielsweise externer/interner Zugriff). Ein wichtiger Punkt bei diesem Schritt besteht in der Festlegung, ob virtuelle Computer über öffentliche IP-Adressen (so dass sie vom Internet aus direkt zugänglich sind) verfügen sollen.
 3. Identifizieren und Einrichten von **Konnektivitätsmethoden** mit der übrigen Azure-Cloudumgebung und lokalen Ressourcen. Wenn erzwungenes Routing mit ExpressRoute aktiviert ist, benötigen die virtuellen Computer für den Durchgang durch die Unternehmensfirewall wahrscheinlich geeignete Proxykonfigurationen.
 4. Wenn VMs **Domäneneinbindung** erhalten sollen, legen Sie fest, ob sie einer cloudbasierten Domäne (beispielsweise AAD Directory Services) oder einer lokalen Domäne beitreten sollen. Legen Sie im Fall der lokalen Domäne fest, zu welcher Organisationseinheit (OU) in Active Directory die virtuellen Computer gehören sollen. Überprüfen Sie ferner, ob Benutzer Zugriff haben (richten Sie ggf. ein Dienstkonto ein, das Computereinträge in der Domäne erstellen kann).
