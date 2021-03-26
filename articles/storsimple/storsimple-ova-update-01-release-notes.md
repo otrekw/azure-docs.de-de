@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/16/2016
 ms.author: alkohli
 ms.openlocfilehash: 67d3fafb9b4b93ae52bdb09d673bf65cad30b816
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94966155"
 ---
 # <a name="storsimple-virtual-array-update-02-and-01-release-notes"></a>Versionsanmerkungen zu Update 0.2 und Update 0.1 für das StorSimple Virtual Array
@@ -44,12 +44,12 @@ Update 0.2 enthält alle Änderungen aus Update 0.1 sowie zusätzlich den in der
 ## <a name="whats-new-in-the-update-01"></a>Neuerungen in Update 0.1
 Update 0.1 enthält folgende Fehlerbehebungen und Verbesserungen: 
 
-* **Verbesserte Resilienz bei Cloudausfällen:** Diese Version enthält mehrere Fehlerbehebungen für Notfallwiederherstellung, Sicherung, Wiederherstellung und Tiering im Fall einer Unterbrechung der Cloudverbindung. 
-* **Verbesserte Wiederherstellungsleistung:** Diese Version enthält Fehlerbehebungen, die die Ausführungsdauer der Wiederherstellungsaufträge erheblich verringern.
-* **Optimierte automatisierte Speicherplatzrückgewinnung:** Wenn Daten auf Volumes mit schlanker Speicherzuweisung gelöscht werden, müssen die nicht verwendeten Speicherblöcke wieder freigegeben werden. In dieser Version wurde der Prozess zur Speicherplatzrückgewinnung in der Cloud verbessert, was dazu führt, dass nicht genutzter Speicherplatz im Vergleich mit den vorherigen Versionen schneller wieder verfügbar ist.
-* **Neue Images für virtuelle Datenträger:** Im klassischen Azure-Portal sind neue VHD-, VHDX- und VMDK-Dateien verfügbar. Diese Images können zur Bereitstellung neuer Update 0.1-Geräte heruntergeladen werden.
-* **Verbesserte Genauigkeit des Auftragsstatus im Portal:** In der früheren Version der Software wurde der Auftragsstatus im Portal nicht genau genug angegeben. Dieses Problem wurde in dieser Version behoben.
-* **Domänenbeitritt:** Fehlerbehebungen im Zusammenhang mit Domänenbeitritt und Umbenennung des Geräts.
+* **Verbesserte Resilienz bei Cloudausfällen**: Diese Version enthält mehrere Fehlerbehebungen für Notfallwiederherstellung, Sicherung, Wiederherstellung und Tiering im Fall einer Unterbrechung der Cloudverbindung. 
+* **Verbesserte Wiederherstellungsleistung**: Diese Version enthält Fehlerbehebungen, die die Ausführungsdauer der Wiederherstellungsaufträge erheblich verringern.
+* **Optimierte automatisierte Speicherplatzrückgewinnung**: Wenn Daten auf Volumes mit schlanker Speicherzuweisung gelöscht werden, müssen die nicht verwendeten Speicherblöcke wieder freigegeben werden. In dieser Version wurde der Prozess zur Speicherplatzrückgewinnung in der Cloud verbessert, was dazu führt, dass nicht genutzter Speicherplatz im Vergleich mit den vorherigen Versionen schneller wieder verfügbar ist.
+* **Neue Images für virtuelle Datenträger**: Im klassischen Azure-Portal sind neue VHD-, VHDX- und VMDK-Dateien verfügbar. Diese Images können zur Bereitstellung neuer Update 0.1-Geräte heruntergeladen werden.
+* **Verbesserte Genauigkeit des Auftragsstatus im Portal**: In der früheren Version der Software wurde der Auftragsstatus im Portal nicht genau genug angegeben. Dieses Problem wurde in dieser Version behoben.
+* **Domänenbeitritt** Fehlerbehebungen im Zusammenhang mit Domänenbeitritt und Umbenennung des Geräts.
 
 ## <a name="issues-fixed-in-the-update-01"></a>In Update 0.1 behobene Probleme
 Die folgende Tabelle enthält eine Zusammenfassung der Probleme, die in dieser Version behoben wurden:
@@ -72,7 +72,7 @@ Die folgende Tabelle enthält eine Zusammenfassung der bekannten Probleme für S
 | **3.** |Gruppenrichtlinie |Wenn ein Gerät Mitglied einer Domäne ist, kann das Anwenden einer Gruppenrichtlinie den Gerätebetrieb beeinträchtigen. |Stellen Sie sicher, dass sich Ihr virtuelles Array in einer eigenen Organisationseinheit (OU) für Active Directory befindet und keine Gruppenrichtlinienobjekte (GPO) darauf angewendet werden. |
 | **4.** |Lokale Web-UI |Wenn in Internet Explorer (IE ESC) erweiterten Sicherheitsfeatures aktiviert sind, funktionieren einige lokale Web-UI-Seiten wie "Problembehandlung" oder "Wartung" möglicherweise nicht ordnungsgemäß. Außerdem funktionieren Schaltflächen auf diesen Seiten möglicherweise nicht. |Deaktivieren Sie erweiterte Sicherheitsfeatures in Internet Explorer. |
 | **5.** |Lokale Web-UI |Auf einer virtuellen Hyper-V-Maschine werden die Netzwerkschnittstellen in der Web-UI als 10-Gbit/s-Schnittstellen angezeigt. |Dieses Verhalten ist eine Spiegelung von Hyper-V. Hyper-V zeigt immer 10 Gbit/s für virtuelle Netzwerkadapter an. |
-| **6.** |Mehrstufige Volumes oder Freigaben |Bytebereichssperren für Anwendungen, die mit den mehrstufigen StorSimple-Volumes arbeiten, werden nicht unterstützt. Wenn Bytebereichsperren aktiviert sind, funktioniert die StorSimple-Staffelung nicht. |Empfohlene Maßnahmen: <br></br>Deaktivieren Sie Bytebereichsperren in der Anwendungslogik.<br></br>Platzieren Sie die Daten für diese Anwendung nicht in mehrstufigen Volumes, sondern in lokalen Volumes.<br></br>*Nachteil*: Wenn lokale Volumes verwendet werden und Bytebereichssperren aktiviert sind, beachten Sie, dass das lokale Volume online sein kann, bevor die Wiederherstellung abgeschlossen ist. Wenn in solchen Fällen eine Wiederherstellung ausgeführt wird, müssen Sie auf den Abschluss des Wiederherstellungsvorgangs warten. |
+| **6.** |Mehrstufige Volumes oder Freigaben |Bytebereichssperren für Anwendungen, die mit den mehrstufigen StorSimple-Volumes arbeiten, werden nicht unterstützt. Wenn Bytebereichsperren aktiviert sind, funktioniert die StorSimple-Staffelung nicht. |Empfohlene Maßnahmen:  <br></br>Deaktivieren Sie Bytebereichsperren in der Anwendungslogik.<br></br>Platzieren Sie die Daten für diese Anwendung nicht in mehrstufigen Volumes, sondern in lokalen Volumes.<br></br>*Nachteil*: Wenn lokale Volumes verwendet werden und Bytebereichssperren aktiviert sind, beachten Sie, dass das lokale Volume online sein kann, bevor die Wiederherstellung abgeschlossen ist. Wenn in solchen Fällen eine Wiederherstellung ausgeführt wird, müssen Sie auf den Abschluss des Wiederherstellungsvorgangs warten. |
 | **7.** |Mehrstufige Freigaben |Das Arbeiten mit großen Dateien kann zu einer langsamen Abstufung führen. |Bei der Arbeit mit großen Dateien sollte die größte Datei nach Möglichkeit kleiner als 3 % der Größe der Dateifreigabe sein. |
 | **8.** |Für Freigaben genutzte Kapazität |Möglicherweise wird eine Nutzung durch die Freigabe angezeigt, auch wenn diese keine Daten enthält. Dies liegt daran, dass die für Freigaben genutzte Kapazität Metadaten umfasst. | |
 | **9.** |Notfallwiederherstellung |Sie können die Notfallwiederherstellung eines Dateiservers nur in der Domäne des Quellgeräts ausführen. Die Notfallwiederherstellung auf einem Zielgerät in einer anderen Domäne wird in dieser Version nicht unterstützt. |Dies wird in einer späteren Version implementiert werden. |

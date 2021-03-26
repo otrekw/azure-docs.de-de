@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1a17f52e519a84c58c9ed5b75259cc0b96d0a175
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88949173"
 ---
 # <a name="azure-active-directory-identity-protection-glossary"></a>Azure Active Directory Identity Protection – Glossar
@@ -95,7 +95,7 @@ Eine Aktion zum Schützen einer Identität oder eines Geräts, die bzw. das zuvo
 ### <a name="resolved-risk-detection"></a>Gelöst (Risikoerkennung)
 Ein Risikoerkennungsstatus, der von einem Identity Protection-Benutzer manuell festgelegt wird. Hiermit wird angegeben, dass der Benutzer außerhalb von Identity Protection eine geeignete Korrekturaktion durchgeführt hat und dass die Risikoerkennung als geschlossen angesehen werden kann.
 
-### <a name="risk-detection-status"></a>Risikoerkennungsstatus
+### <a name="risk-detection-status"></a>Risk detection status (Risikoerkennungsstatus)
 Eine Eigenschaft einer Risikoerkennung, mit der angegeben wird, ob das Ereignis aktiv ist. Wenn es geschlossen wurde, wird der Grund für das Schließen angegeben.
 
 ### <a name="risk-detection-type"></a>Risikoerkennungstyp

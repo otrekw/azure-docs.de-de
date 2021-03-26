@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 10/15/2020
 ms.author: apimpm
 ms.openlocfilehash: f5105c685de4b3ccdffe69eec8ee8eeb32976c1f
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92325923"
 ---
 # <a name="migrate-to-the-new-developer-portal"></a>Migrieren zum neuen Entwicklerportal
@@ -57,7 +57,7 @@ Beachten Sie beim Migrieren aus dem veralteten Portal die folgenden Änderungen:
 - Wenn Sie die E-Mail-Standardbenachrichtigungsvorlagen so geändert haben, dass sie eine explizit definierte, veraltete Portal-URL enthalten, ändern Sie diese so, dass sie entweder den Portal-URL-Parameter verwenden oder auf die neue Portal-URL verweisen. Wenn die Vorlagen stattdessen den integrierten Portal-URL-Parameter verwenden, sind keine Änderungen erforderlich.
 - *Issues* und *Anwendungen* werden im neuen Entwicklerportal nicht unterstützt.
 - Direkte Integration mit Facebook, Microsoft, Twitter und Google als Identitätsanbieter wird im neuen Entwicklerportal nicht unterstützt. Sie können eine Integration mit diesen Anbietern über Azure AD B2C vornehmen.
-- Wenn Sie Delegierung verwenden, ändern Sie die Rückgabe-URL in Ihren Anwendungen, und verwenden Sie den [*Freigegebenes Zugriffstoken abrufen* -API-Endpunkt](/rest/api/apimanagement/2019-12-01/user/getsharedaccesstoken) anstelle des Endpunkts *SSO-URL generieren* .
+- Wenn Sie Delegierung verwenden, ändern Sie die Rückgabe-URL in Ihren Anwendungen, und verwenden Sie den [*Freigegebenes Zugriffstoken abrufen*-API-Endpunkt](/rest/api/apimanagement/2019-12-01/user/getsharedaccesstoken) anstelle des Endpunkts *SSO-URL generieren*.
 - Wenn Sie Azure AD als Identitätsanbieter verwenden:
 
     - Ändern Sie die Rückgabe-URL in Ihrer Anwendung so, dass sie auf die Domäne des neuen Entwicklerportals verweist.
@@ -67,7 +67,7 @@ Beachten Sie beim Migrieren aus dem veralteten Portal die folgenden Änderungen:
 
     - Ändern Sie die Rückgabe-URL in Ihrer Anwendung so, dass sie auf die Domäne des neuen Entwicklerportals verweist.
     - Ändern Sie das Suffix der Rückgabe-URL in Ihrer Anwendung von `/signin-aad` in `/signin`.
-    - Nehmen Sie in die Anwendungsansprüche *Vorname* , *Nachname* und *Objekt-ID des Benutzers* auf.
+    - Nehmen Sie in die Anwendungsansprüche *Vorname*, *Nachname* und *Objekt-ID des Benutzers* auf.
 
 - Wenn Sie OAuth 2.0 in der interaktiven Testkonsole verwenden, ändern Sie die Rückgabe-URL in Ihrer Anwendung so, dass sie auf die Domäne des neuen Entwicklerportals verweist, und ändern Sie das Suffix:
 

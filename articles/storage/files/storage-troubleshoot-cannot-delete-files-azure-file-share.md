@@ -11,10 +11,10 @@ ms.subservice: files
 services: storage
 tags: ''
 ms.openlocfilehash: 3d4f10745d90ccd83e7251af40d3e92a230f2fcd
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94629681"
 ---
 # <a name="azure-file-share--failed-to-delete-files-from-azure-file-share"></a>Azure-Dateifreigabe – Dateien wurden nicht aus Azure-Dateifreigabe gelöscht
@@ -36,11 +36,11 @@ Unzureichendes Kontingent für die Verarbeitung dieses Befehls
 
 Der Fehler 1816 tritt auf, wenn Sie die Obergrenze der parallel offenen Handles erreichen, die für eine Datei auf dem Computer zulässig sind, auf dem die Dateifreigabe bereitgestellt wird. Weitere Informationen finden Sie unter [Checkliste zur Leistung und Skalierbarkeit von Azure Storage](../blobs/storage-performance-checklist.md).
 
-## <a name="resolution"></a>Lösung
+## <a name="resolution"></a>Auflösung
 
 Reduzieren Sie die Anzahl von gleichzeitig geöffneten Handles, indem Sie einige Handles schließen.
 
-## <a name="prerequisite"></a>Voraussetzung
+## <a name="prerequisite"></a>Voraussetzungen
 
 ### <a name="install-the-latest-azure-powershell-module"></a>Installieren des aktuellen Azure PowerShell-Moduls
 

@@ -4,10 +4,10 @@ description: 'Tutorial: Dieser Artikel zeigt, wie Kafka-Ereignisse verarbeitet w
 ms.topic: tutorial
 ms.date: 06/23/2020
 ms.openlocfilehash: 328537eebd05391fc4c8138395a9c10f0a5d072f
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92319390"
 ---
 # <a name="tutorial-process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>Tutorial: Verarbeiten von Apache Kafka für Event Hubs-Ereignisse mithilfe von Stream Analytics 
@@ -90,7 +90,7 @@ Die Abfrage im Stream Analytics-Auftrag durchläuft die Daten, ohne eine Analyse
 2. Wählen Sie **Analytics** im Menü **Azure Marketplace** und dann **Stream Analytics-Auftrag** aus. 
 3. Gehen Sie auf der Seite **Neuer Stream Analytics-Auftrag** wie folgt vor: 
     1. Geben Sie einen **Namen** für den Auftrag ein. 
-    2. Wählen Sie Ihr **Abonnement**aus.
+    2. Wählen Sie Ihr **Abonnement** aus.
     3. Klicken Sie für die **Ressourcengruppe** auf **Neu erstellen**, und geben Sie den Namen ein. Sie können auch eine **vorhandene** Ressourcengruppe verwenden. 
     4. Wählen Sie einen **Speicherort** für den Auftrag aus.
     5. Klicken Sie auf **Erstellen**, um den Auftrag zu erstellen. 
@@ -120,7 +120,7 @@ Die Abfrage im Stream Analytics-Auftrag durchläuft die Daten, ohne eine Analyse
 2. Klicken Sie auf der Symbolleiste auf **+ Hinzufügen**, und wählen Sie **Blob Storage** aus.
 3. Gehen Sie auf der Seite mit den Blob Storage-Ausgabeeinstellungen folgendermaßen vor: 
     1. Geben Sie einen **Alias** für die Ausgabe an. 
-    2. Wählen Sie Ihr Azure- **Abonnement**aus. 
+    2. Wählen Sie Ihr Azure- **Abonnement** aus. 
     3. Wählen Sie Ihr **Azure Storage-Konto** aus. 
     4. Geben Sie einen **Namen für den Container** ein, in dem die Ausgabedaten der Stream Analytics-Abfrage gespeichert werden.
     5. Wählen Sie **Speichern** aus.

@@ -9,10 +9,10 @@ ms.author: terrylan
 manager: rkarlin
 ms.date: 11/10/2020
 ms.openlocfilehash: f4906d4e0590df047bac4ee15cb0e996a59c3d5b
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96498862"
 ---
 # <a name="measured-boot-and-host-attestation"></a>Gemessener Start- und Hostnachweis
@@ -52,7 +52,7 @@ Debugger sind leistungsstarke Tools für Entwickler. Der ungehinderte Zugriff au
 UEFI [Secure Boot](secure-boot.md) gewährleistet, dass während der Startsequenz nur vertrauenswürdige Low-Level-Software ausgeführt werden kann. Dieselben Prüfungen müssen jedoch auch in der Umgebung nach dem Start auf Treiber und andere ausführbare Dateien mit Zugriff im Kernel-Modus angewendet werden. Zu diesem Zweck wird eine Codeintegritätsrichtlinie (CI) verwendet, um durch die Angabe gültiger und ungültiger Signaturen zu definieren, welche Treiber, Binärdateien und anderen ausführbaren Dateien als vertrauenswürdig gelten. Diese Richtlinien werden erzwungen. Verletzungen der Richtlinie generieren Warnungen an das Team zur Reaktion auf Sicherheitsincidents, damit diese untersucht werden können.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen darüber, was wir tun, um die Integrität und Sicherheit von Plattformen voranzutreiben, finden Sie unter:
+Weitere Informationen zu unseren Anstrengungen, die Integrität und Sicherheit von Plattformen zu erhöhen, finden Sie unter:
 
 - [Firmwaresicherheit](firmware.md)
 - [Sicherer Start](secure-boot.md)

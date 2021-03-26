@@ -12,10 +12,10 @@ ms.date: 06/03/2020
 ms.author: curtand
 ms.reviewer: olhaun
 ms.openlocfilehash: e7608196c962a6918a90b91457f856f3e11b04f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91530900"
 ---
 # <a name="back-up-and-recover-account-credentials-using-the-microsoft-authenticator-app"></a>Sichern und Wiederherstellen von Kontoanmeldeinformationen mithilfe der Microsoft Authenticator-App
@@ -87,17 +87,17 @@ Bei persönlichen Microsoft-Konten können Sie Ihre Identität bestätigen, inde
 
 1. Tippen Sie auf die Kachel für das Konto, das Sie wiederherstellen möchten, und tippen Sie dann auf die Anmeldeoption, um sich für die Wiederherstellung anzumelden. Geben Sie Ihr Kennwort ein, und bestätigen Sie in einem zusätzlichen Überprüfungsschritt Ihre E-Mail-Adresse oder Telefonnummer.
 
-    :::image type="content" source="media/user-help-auth-app-backup-recovery/backup-and-recovery-codes.png" alt-text="Screenshot mit der Microsoft Authenticator-App mit verfügbaren Kontokacheln" border="true":::
+    :::image type="content" source="media/user-help-auth-app-backup-recovery/backup-and-recovery-codes.png" alt-text="Screenshot mit dem einmaligen Kennwortcode für Microsoft Authenticator" border="true":::
 
 ### <a name="to-provide-more-verification-for-work-or-school-accounts"></a>So führen Sie einen zusätzlichen Überprüfungsschritt für Geschäfts-, Schul- oder Unikonten aus
 
 1. Tippen Sie in der Microsoft Authenticator-App im Bildschirm **Konten** auf das Konto, das Sie wiederherstellen möchten, um eine Vollbildansicht des Kontos anzuzeigen.
 
-    :::image type="content" source="media/user-help-auth-app-backup-recovery/work-or-school-recovery-arrow.png" alt-text="Screenshot mit der Microsoft Authenticator-App mit verfügbaren Kontokacheln" border="true":::
+    :::image type="content" source="media/user-help-auth-app-backup-recovery/work-or-school-recovery-arrow.png" alt-text="Microsoft Authenticator-App mit den verfügbaren Kontokacheln" border="true":::
 
 1. Tippen Sie für eine vollständige Wiederherstellung in der Vollbildansicht auf die Option zum Scannen eines QR-Codes.
 
-    :::image type="content" source="media/user-help-auth-app-backup-recovery/work-or-school-recovery-qr-code.png" alt-text="Screenshot mit der Microsoft Authenticator-App mit verfügbaren Kontokacheln" border="true":::
+    :::image type="content" source="media/user-help-auth-app-backup-recovery/work-or-school-recovery-qr-code.png" alt-text="Microsoft Authenticator stellt ein Einmalkennwort als Prüfcode bereit" border="true":::
 
 >[!NOTE]
 >Weitere Informationen zu QR-Codes und zum Abrufen eines QR-Codes finden Sie unter [Erste Schritte mit der Microsoft Authenticator-App](./user-help-auth-app-download-install.md) oder [Einrichten der Sicherheitsinformationen zur Verwendung einer Authentifikator-App](./security-info-setup-auth-app.md) – basierend darauf, ob Ihr Administrator die Sicherheitsinformation aktiviert hat.

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/19/2017
 ms.author: alkohli
 ms.openlocfilehash: 48671e7558ea1bd613d33372c96fa3c563407e81
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96017218"
 ---
 # <a name="configure-web-proxy-for-your-storsimple-device"></a>Konfigurieren des Webproxys für Ihr StorSimple-Gerät
@@ -62,13 +62,13 @@ Der Setup-Assistent führt Sie durch die einzelnen Schritte für die Webproxykon
 1. Wählen Sie im Menü der seriellen Konsole die erste Option (**Anmeldung mit Vollzugriff**) aus, und geben Sie das **Geräteadministratorkennwort** ein. Geben Sie den folgenden Befehl ein, um eine Sitzung des Setup-Assistenten zu starten:
    
     `Invoke-HcsSetupWizard`
-2. Bei erstmaliger Verwendung des Setup-Assistenten für die Geräteregistrierung müssen Sie alle erforderlichen Netzwerkeinstellungen konfigurieren, um zur Webproxykonfiguration zu gelangen. Ist Ihr Gerät bereits registriert, übernehmen Sie alle konfigurierten Netzwerkeinstellungen, bis Sie die Webproxykonfiguration erreichen. Geben Sie im Setup-Assistenten **Ja** ein, wenn Sie zum Konfigurieren der Webproxyeinstellungen aufgefordert werden.
+2. Bei erstmaliger Verwendung des Setup-Assistenten für die Geräteregistrierung müssen Sie alle erforderlichen Netzwerkeinstellungen konfigurieren, um zur Webproxykonfiguration zu gelangen. Ist Ihr Gerät bereits registriert, übernehmen Sie alle konfigurierten Netzwerkeinstellungen, bis Sie die Webproxykonfiguration erreichen. Wenn Sie im Setup-Assistenten gefragt werden, ob Sie die Webproxyeinstellungen konfigurieren möchten, geben Sie **Ja** ein.
 3. Geben Sie als **Webproxy-URL** die IP-Adresse oder den vollqualifizierten Domänennamen (Fully Qualified Domain Name, FQDN) des Webproxyservers sowie die TCP-Portnummer ein, die das Gerät bei der Kommunikation mit der Cloud verwenden soll. Verwenden Sie das folgende Format:
    
     `http://<IP address or FQDN of the web proxy server>:<TCP port number>`
    
     Standardmäßig wird die TCP-Portnummer 8080 angegeben.
-4. Legen Sie den Authentifizierungstyp auf **NTLM**, **Standard** oder **Keine** fest. „Standard“ bietet bei der Authentifizierung für die Proxyserverkonfiguration die geringste Sicherheit. „NTLM“ (NT-LAN-Manager) ist ein äußerst sicheres und komplexes Authentifizierungsprotokoll mit einem Drei-Wege-Messaging-System für die Benutzerauthentifizierung (ggf. auch ein Vier-Wege-System, wenn zusätzliche Integrität erforderlich ist). Standardmäßig wird die NTLM-Authentifizierung verwendet. Weitere Informationen finden Sie unter [Standard](https://hc.apache.org/httpclient-3.x/authentication.html) und [NTLM-Authentifizierung](https://hc.apache.org/httpclient-3.x/authentication.html). 
+4. Wählen Sie als Authentifizierungstyp **NTLM**, **Basic** oder **None** aus. „Standard“ bietet bei der Authentifizierung für die Proxyserverkonfiguration die geringste Sicherheit. „NTLM“ (NT-LAN-Manager) ist ein äußerst sicheres und komplexes Authentifizierungsprotokoll mit einem Drei-Wege-Messaging-System für die Benutzerauthentifizierung (ggf. auch ein Vier-Wege-System, wenn zusätzliche Integrität erforderlich ist). Standardmäßig wird die NTLM-Authentifizierung verwendet. Weitere Informationen finden Sie unter [Standard](https://hc.apache.org/httpclient-3.x/authentication.html) und [NTLM-Authentifizierung](https://hc.apache.org/httpclient-3.x/authentication.html). 
    
    > [!IMPORTANT]
    > **Im StorSimple-Geräte-Manager-Dienst funktionieren die Geräteüberwachungsdiagramme nicht, wenn in der Proxyserverkonfiguration für das Gerät die Standard- oder NTLM-Authentifizierung aktiviert ist. Zur Verwendung der Überwachungsdiagramme muss Authentifizierung auf „Keine“ festgelegt sein.**

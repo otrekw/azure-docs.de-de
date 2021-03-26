@@ -4,10 +4,10 @@ description: Verwenden Sie Azure Backup Server, um Ihren Systemstatus zu sichern
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.openlocfilehash: c5096158ca0e76ca03577347d8dd3e1419a33ca0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96021621"
 ---
 # <a name="back-up-system-state-and-restore-to-bare-metal-by-using-azure-backup-server"></a>Sichern des Systemstatus und Durchführen einer Bare-Metal-Wiederherstellung mithilfe von Azure Backup Server
@@ -25,21 +25,21 @@ In der folgenden Tabelle wird zusammengefasst, was Sie sichern und wiederherstel
 
 |Backup|Problem|Wiederherstellung aus Azure Backup Server-Sicherung|Wiederherstellung aus einer Systemstatussicherung|BMR|
 |----------|---------|---------------------------|------------------------------------|-------|
-|**Dateidaten**<br /><br />Reguläre Datensicherung<br /><br />BMR-/Systemstatussicherung|Verlust von Dateidaten|J|N|N|
-|**Dateidaten**<br /><br />Azure Backup Server-Sicherung von Dateidaten<br /><br />BMR-/Systemstatussicherung|Verlust oder Beschädigung des Betriebssystems|N|J|J|
+|**Dateidaten**<br /><br />Normale Datensicherung<br /><br />BMR-/Systemstatussicherung|Verlorene Dateidaten|J|N|N|
+|**Dateidaten**<br /><br />Azure Backup Server-Sicherung von Dateidaten<br /><br />BMR-/Systemstatussicherung|Verlorenes oder beschädigtes Betriebssystem|N|J|J|
 |**Dateidaten**<br /><br />Azure Backup Server-Sicherung von Dateidaten<br /><br />BMR-/Systemstatussicherung|Verlust eines Servers (Datenvolumes intakt)|N|N|J|
-|**Dateidaten**<br /><br />Azure Backup Server-Sicherung von Dateidaten<br /><br />BMR-/Systemstatussicherung|Verlust eines Servers (Verlust von Datenvolumes)|J|N|J<br /><br />BMR, gefolgt von regulärer Wiederherstellung gesicherter Dateidaten|
+|**Dateidaten**<br /><br />Azure Backup Server-Sicherung von Dateidaten<br /><br />BMR-/Systemstatussicherung|Verlust eines Servers (Datenvolumes verloren)|J|N|J<br /><br />BMR, gefolgt von regulärer Wiederherstellung gesicherter Dateidaten|
 |**SharePoint-Daten**<br /><br />Azure Backup Server-Sicherung von Farmdaten<br /><br />BMR-/Systemstatussicherung|Verlust von Website, Listen, Listenelementen, Dokumenten|J|N|N|
-|**SharePoint-Daten**<br /><br />Azure Backup Server-Sicherung von Farmdaten<br /><br />BMR-/Systemstatussicherung|Verlust oder Beschädigung des Betriebssystems|N|J|J|
+|**SharePoint-Daten**<br /><br />Azure Backup Server-Sicherung von Farmdaten<br /><br />BMR-/Systemstatussicherung|Verlorenes oder beschädigtes Betriebssystem|N|J|J|
 |**SharePoint-Daten**<br /><br />Azure Backup Server-Sicherung von Farmdaten<br /><br />BMR-/Systemstatussicherung|Notfallwiederherstellung|N|N|N|
-|Windows Server 2012 R2 Hyper-V<br /><br />Azure Backup Server-Sicherung von Hyper-V-Host oder -Gast<br /><br />BMR-/Systemstatussicherung des Hosts|Verlust der VM|J|N|N|
-|Hyper-V<br /><br />Azure Backup Server-Sicherung von Hyper-V-Host oder -Gast<br /><br />BMR-/Systemstatussicherung des Hosts|Verlust oder Beschädigung des Betriebssystems|N|J|J|
-|Hyper-V<br /><br />Azure Backup Server-Sicherung von Hyper-V-Host oder -Gast<br /><br />BMR-/Systemstatussicherung des Hosts|Verlust des Hyper-V-Hosts (virtuelle Computer intakt)|N|N|J|
-|Hyper-V<br /><br />Azure Backup Server-Sicherung von Hyper-V-Host oder -Gast<br /><br />BMR-/Systemstatussicherung des Hosts|Verlust des Hyper-V-Hosts (Verlust virtueller Computer)|N|N|J<br /><br />BMR gefolgt von regulärer Azure Backup Server-Wiederherstellung|
-|SQL Server/Exchange<br /><br />Azure Backup Server-App-Sicherung<br /><br />BMR-/Systemstatussicherung|Verlust von Anwendungsdaten|J|N|N|
-|SQL Server/Exchange<br /><br />Azure Backup Server-App-Sicherung<br /><br />BMR-/Systemstatussicherung|Verlust oder Beschädigung des Betriebssystems|N|J|J|
-|SQL Server/Exchange<br /><br />Azure Backup Server-App-Sicherung<br /><br />BMR-/Systemstatussicherung|Verlust eines Servers (Datenbank-/Transaktionsprotokolle intakt)|N|N|J|
-|SQL Server/Exchange<br /><br />Azure Backup Server-App-Sicherung<br /><br />BMR-/Systemstatussicherung|Verlust eines Servers (Verlust von Datenbank-/Transaktionsprotokollen)|N|N|J<br /><br />BMR-Wiederherstellung, gefolgt von regulärer Azure Backup Server-Wiederherstellung|
+|Windows Server 2012 R2 Hyper-V<br /><br />Azure Backup Server-Sicherung von Hyper-V-Host oder -Gast<br /><br />BMR-/Systemstatussicherung des Hosts|Verlorener virtueller Computer|J|N|N|
+|Hyper-V<br /><br />Azure Backup Server-Sicherung von Hyper-V-Host oder -Gast<br /><br />BMR-/Systemstatussicherung des Hosts|Verlorenes oder beschädigtes Betriebssystem|N|J|J|
+|Hyper-V<br /><br />Azure Backup Server-Sicherung von Hyper-V-Host oder -Gast<br /><br />BMR-/Systemstatussicherung des Hosts|Verlorener Hyper-V-Host (virtuelle Computer intakt)|N|N|J|
+|Hyper-V<br /><br />Azure Backup Server-Sicherung von Hyper-V-Host oder -Gast<br /><br />BMR-/Systemstatussicherung des Hosts|Verlorener Hyper-V-Host (virtuelle Computer verloren)|N|N|J<br /><br />BMR gefolgt von regulärer Azure Backup Server-Wiederherstellung|
+|SQL Server/Exchange<br /><br />Azure Backup Server-App-Sicherung<br /><br />BMR-/Systemstatussicherung|Verlorene App-Daten|J|N|N|
+|SQL Server/Exchange<br /><br />Azure Backup Server-App-Sicherung<br /><br />BMR-/Systemstatussicherung|Verlorenes oder beschädigtes Betriebssystem|N|J|J|
+|SQL Server/Exchange<br /><br />Azure Backup Server-App-Sicherung<br /><br />BMR-/Systemstatussicherung|Verlorener Server (Datenbank- und Transaktionsprotokolle intakt)|N|N|J|
+|SQL Server/Exchange<br /><br />Azure Backup Server-App-Sicherung<br /><br />BMR-/Systemstatussicherung|Verlorener Server (Datenbank- und Transaktionsprotokolle verloren)|N|N|J<br /><br />BMR-Wiederherstellung, gefolgt von regulärer Azure Backup Server-Wiederherstellung|
 
 ## <a name="how-system-state-backup-works"></a>Funktionsweise der Systemstatussicherung
 

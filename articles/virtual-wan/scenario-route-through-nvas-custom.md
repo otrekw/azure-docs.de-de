@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/25/2021
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 8916fbc7c2a0b9789dcc73697324cee370f1fc1c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6291964aff7c215df7f738ab103947dcb9b1b1d4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101704904"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102036863"
 ---
 # <a name="scenario-route-traffic-through-nvas-by-using-custom-settings"></a>Szenario: Weiterleiten von Datenverkehr über virtuelle Netzwerkgeräte (Network Virtual Appliances, NVAs) mithilfe benutzerdefinierter Einstellungen
 
@@ -176,7 +176,7 @@ Führen Sie zum Einrichten des Routings über ein virtuelles Netzwerkgerät die 
    >
    > * Portalbenutzer müssen für Verbindungen (VPN/ER/P2S/VNet) die Option „An Standardroute weitergeben“ aktivieren, damit die Route „0.0.0.0/0“ wirksam wird.
    > * PS-/CLI-/REST-Benutzer müssen das Flag „enableinternetsecurity“ auf TRUE setzen, damit die Route „0.0.0.0/0“ wirksam wird.
-   >
+   > * Die VNET-Verbindung unterstützt nicht „mehrere/eindeutig“ für die IP-Adresse des nächsten Hops zum „selben“ virtuellen Netzwerkgerät in einem SPOKE-VNET, „wenn“ eine der Routen mit der IP-Adresse des nächsten Hops als öffentliche IP-Adresse oder 0.0.0.0/0 (Internet) angegeben ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/03/2020
 ms.openlocfilehash: 9d81419721e94a2e181f094c0e0e64b1b23544a8
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93073518"
 ---
 # <a name="date_bucket-transact-sql"></a>Date_Bucket (Transact-SQL)
@@ -34,26 +34,26 @@ DATE_BUCKET (datePart, number, date, origin)
 
 *datePart*
 
-Der Teil von *date* , der mit dem Parameter „number“ verwendet wird. Ex. Jahr, Monat, Minute, Sekunde usw.
+Der Teil von *date*, der mit dem Parameter „number“ verwendet wird. Ex. Jahr, Monat, Minute, Sekunde usw.
 
 > [!NOTE]
-> `DATE_BUCKET` akzeptiert keine benutzerdefinierten Variablenentsprechungen für die *datePart* -Argumente.
+> `DATE_BUCKET` akzeptiert keine benutzerdefinierten Variablenentsprechungen für die *datePart*-Argumente.
   
 |*datePart*|Abkürzungen|  
 |---|---|
-|**day**|**dd** , **d**|  
-|**week**|**wk** , **ww**| 
-|**month**|**mm** , **m**|
-|**quarter**|**qq** , **q**|  
-|**year**|**yy** , **yyyy**|  
+|**day**|**dd**, **d**|  
+|**week**|**wk**, **ww**| 
+|**month**|**mm**, **m**|
+|**quarter**|**qq**, **q**|  
+|**year**|**yy**, **yyyy**|  
 |**hour**|**hh**|  
-|**minute**|**mi** , **n**|  
-|**second**|**ss** , **s**|  
+|**minute**|**mi**, **n**|  
+|**second**|**ss**, **s**|  
 |**millisecond**|**ms**|  
 
 *Zahl*
 
-Der Integerwert, der die Breite des Buckets in Kombination mit dem *datePart* -Argument bestimmt. Dies stellt die Breite des datePart-Buckets ab der Ursprungszeit dar. **`This argument cannot be a negative integer value`**. 
+Der Integerwert, der die Breite des Buckets in Kombination mit dem *datePart*-Argument bestimmt. Dies stellt die Breite des datePart-Buckets ab der Ursprungszeit dar. **`This argument cannot be a negative integer value`**. 
 
 *date*
 
@@ -125,11 +125,11 @@ Select DATE_BUCKET(wk, 5, @date, @origin)
 
 ## <a name="datepart-argument"></a>datepart-Argument
 
-**dayofyear** , **day** und **weekday** geben den gleichen Wert zurück. Jedes *datepart* -Argument und die jeweils zugehörigen Abkürzungen geben den gleichen Wert zurück.
+**dayofyear**, **day** und **weekday** geben den gleichen Wert zurück. Jedes *datepart*-Argument und die jeweils zugehörigen Abkürzungen geben den gleichen Wert zurück.
   
 ## <a name="number-argument"></a>number-Argument
 
-Das *number* -Argument kann den Bereich von positiven **int** -Werten nicht überschreiten. In den folgenden Anweisungen überschreitet das Argument für *number* den Bereich von **int** um 1. Die folgende Anweisung gibt folgende Fehlermeldung zurück: „`Msg 8115, Level 16, State 2, Line 2. Arithmetic overflow error converting expression to data type int."`
+Das *number*-Argument kann den Bereich von positiven **int**-Werten nicht überschreiten. In den folgenden Anweisungen überschreitet das Argument für *number* den Bereich von **int** um 1. Die folgende Anweisung gibt folgende Fehlermeldung zurück: „`Msg 8115, Level 16, State 2, Line 2. Arithmetic overflow error converting expression to data type int."`
   
 ```sql
 declare @date datetime2 = '2020-04-30 00:00:00'
@@ -267,7 +267,7 @@ Hier ist das Resultset.
 
 #### <a name="specifying-scalar-subqueries-and-scalar-functions-as-number-and-date"></a>Angeben von skalaren Unterabfragen und skalaren Funktionen als Argumente für number und date
 
-In diesem Beispiel werden skalare Unterabfragen (`MAX(OrderDate)`) als Argumente für *number* und *date* verwendet. `(SELECT top 1 CustomerKey FROM dbo.DimCustomer where GeographyKey > 100)` dient als Beispielargument für den Parameter „number“, das veranschaulicht, wie ein *number* -Argument aus einer Werteliste ausgewählt wird.
+In diesem Beispiel werden skalare Unterabfragen (`MAX(OrderDate)`) als Argumente für *number* und *date* verwendet. `(SELECT top 1 CustomerKey FROM dbo.DimCustomer where GeographyKey > 100)` dient als Beispielargument für den Parameter „number“, das veranschaulicht, wie ein *number*-Argument aus einer Werteliste ausgewählt wird.
   
 ```sql
 SELECT DATE_BUCKET(week,(SELECT top 1 CustomerKey FROM dbo.DimCustomer where GeographyKey > 100),  

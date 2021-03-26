@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 651811384a8e831c41c48ca8c4849e5ee3852054
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93280465"
 ---
 # <a name="create-sql-managed-instance---azure-arc-using-azure-data-studio"></a>Erstellen einer verwalteten SQL-Instanz in Azure Arc mithilfe von Azure Data Studio
@@ -95,7 +95,7 @@ sqlinstance1  1/1         25.51.65.109:1433  Ready
 - Geben Sie das Kennwort für das Konto `sa` ein.
 - Geben Sie optional den genauen Datenbanknamen ein, um eine Verbindung dazu herzustellen.
 - Klicken Sie außerdem optional bei Bedarf auf die Option „Add new server group“ (Neue Servergruppe hinzufügen).
-- Klicken Sie auf **Verbinden** , um eine Verbindung zur verwalteten Azure SQL-Instanz in Azure Arc herzustellen.
+- Klicken Sie auf **Verbinden**, um eine Verbindung zur verwalteten Azure SQL-Instanz in Azure Arc herzustellen.
 
 
 

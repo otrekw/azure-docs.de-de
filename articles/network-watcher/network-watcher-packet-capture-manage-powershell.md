@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: damendo
 ms.openlocfilehash: 8779381425d4180cc7320f251de9c2cfdd1f0510
-ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99223422"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-powershell"></a>Verwalten von Paketerfassungen mit Azure Network Watcher mithilfe von PowerShell
@@ -151,7 +151,7 @@ $filter2 = New-AzPacketCaptureFilterConfig -Protocol UDP
 > [!NOTE]
 > Für eine Paketerfassung können mehrere Filter definiert werden.
 
-### <a name="step-4"></a>Schritt 4
+### <a name="step-4"></a>Schritt 4
 
 Führen Sie das Cmdlet `New-AzNetworkWatcherPacketCapture` zum Starten der Paketerfassung aus, und übergeben Sie dabei die erforderlichen Werte, die Sie in den vorherigen Schritten abgerufen haben.
 ```powershell

@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: a9545c040809331a5556b11f6cc7536931e2d421
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93289576"
 ---
 # <a name="certificate-creation-methods"></a>Methoden für die Zertifikaterstellung
 
  Ein Key Vault (KV)-Zertifikat kann entweder erstellt oder in einen Schlüsseltresor importiert werden. Wenn ein KV-Zertifikat erstellt wird, wird der private Schlüssel innerhalb des Schlüsseltresors erstellt und nie dem Zertifikatsinhaber verfügbar gemacht. Im Folgenden finden Sie Möglichkeiten, ein Zertifikat in Key Vault zu erstellen:  
 
--   **Erstellen eines selbstsignierten Zertifikats** : Dadurch wird ein öffentlich-privates Schlüsselpaar erstellt und mit einem Zertifikat verknüpft. Das Zertifikat wird mit einem eigenen Schlüssel signiert.  
+-   **Erstellen eines selbstsignierten Zertifikats**: Dadurch wird ein öffentlich-privates Schlüsselpaar erstellt und mit einem Zertifikat verknüpft. Das Zertifikat wird mit einem eigenen Schlüssel signiert.  
 
--    **Manuelles Erstellen eines neuen Zertifikats** : Dadurch wird ein öffentlich-privates Schlüsselpaar erstellt und eine X.509-Zertifikatsignatur angefordert. Die Signaturanforderung kann von Ihrer Registrierungs- oder Zertifizierungsstelle signiert werden. Das signierte x509-Zertifikat lässt sich dann mit dem ausstehenden Schlüsselpaar zusammenführen, um das KV-Zertifikat in Key Vault zu vervollständigen. Obwohl diese Methode mehr Schritte erfordert, bietet sie Ihnen mehr Sicherheit, da der private Schlüssel in Key Vault erstellt und darauf beschränkt wird. Dies wird im folgenden Diagramm erläutert.  
+-    **Manuelles Erstellen eines neuen Zertifikats**: Dadurch wird ein öffentlich-privates Schlüsselpaar erstellt und eine X.509-Zertifikatsignatur angefordert. Die Signaturanforderung kann von Ihrer Registrierungs- oder Zertifizierungsstelle signiert werden. Das signierte x509-Zertifikat lässt sich dann mit dem ausstehenden Schlüsselpaar zusammenführen, um das KV-Zertifikat in Key Vault zu vervollständigen. Obwohl diese Methode mehr Schritte erfordert, bietet sie Ihnen mehr Sicherheit, da der private Schlüssel in Key Vault erstellt und darauf beschränkt wird. Dies wird im folgenden Diagramm erläutert.  
 
 ![Erstellen eines Zertifikats mit Ihrer eigenen Zertifizierungsstelle](../media/certificate-authority-1.png)  
 

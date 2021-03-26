@@ -5,15 +5,15 @@ author: craigktreasure
 manager: vriveras
 services: azure-object-anchors
 ms.author: crtreasu
-ms.date: 02/19/2021
+ms.date: 03/02/2021
 ms.topic: conceptual
 ms.service: azure-object-anchors
-ms.openlocfilehash: 020f727674449523a57a608e8930d67e0f239cf6
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 74663f05c5ff995a090c7cd35e4edf46a754da17
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101743520"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102034607"
 ---
 # <a name="runtime-sdk-overview"></a>Übersicht über das Runtime-SDK
 
@@ -25,7 +25,7 @@ Die im Folgenden beschriebenen Typen finden Sie im Namespace **Microsoft.MixedRe
 
 ### <a name="objectmodel"></a>ObjectModel
 
-Eine [ObjectModel](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.objectmodel)-Klasse stellt die Geometrie eines physischen Objekts dar und codiert die erforderlichen Parameter für die Erkennung und die Schätzung der räumlichen Lage. Sie muss mithilfe des [Object Anchors-Diensts](../quickstarts/get-started-model-ingestion.md) erstellt werden. Die generierte Modelldatei kann dann von einer Anwendung mithilfe der Object Anchors-API geladen, und das im Modell eingebettete Gittermodell kann zur Visualisierung abgefragt werden.
+Eine [ObjectModel](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.objectmodel)-Klasse stellt die Geometrie eines physischen Objekts dar und codiert die erforderlichen Parameter für die Erkennung und die Schätzung der räumlichen Lage. Sie muss mithilfe des [Object Anchors-Diensts](../quickstarts/get-started-model-conversion.md) erstellt werden. Die generierte Modelldatei kann dann von einer Anwendung mithilfe der Object Anchors-API geladen, und das im Modell eingebettete Gittermodell kann zur Visualisierung abgefragt werden.
 
 ### <a name="objectsearcharea"></a>ObjectSearchArea
 
@@ -103,7 +103,7 @@ if(status != ObjectObserverStatus.Allowed)
 }
 ```
 
-Als Nächstes erstellt die Anwendung einen Objektobserver und lädt die vom [Object Anchors-Erfassungsdienst](../quickstarts/get-started-model-ingestion.md) generierten erforderlichen Modelle.
+Als Nächstes erstellt die Anwendung einen Objektobserver und lädt die vom [Object Anchors-Modellkonvertierungsdienst](../quickstarts/get-started-model-conversion.md) generierten erforderlichen Modelle.
 
 ```cs
 var observer = new ObjectObserver();

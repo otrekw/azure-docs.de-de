@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: alkohli
 ms.openlocfilehash: 97209dca7d30de037dbd21f5cc145b2941060e70
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96015399"
 ---
 # <a name="use-storsimple-monitoring-indicators-to-manage-your-device"></a>Verwalten von Geräten mithilfe von StorSimple-Überwachungsindikatoren
@@ -200,7 +200,7 @@ Ein StorSimple-Gerät enthält akustische Alarme, die dem primären Gehäuse und
 Die verschiedenen Alarmzustände werden in der folgenden Tabelle beschrieben.  
 
 ### <a name="alarm-states"></a>Alarmzustände
-| Alarmzustand | Action | Aktion mit gedrückter Stummtaste |
+| Alarmzustand | Aktion | Aktion mit gedrückter Stummtaste |
 | --- | --- | --- |
 | S0 |Normaler Modus: lautlos |Zweimaliger Piepton |
 | S1 |Fehlermodus: eine Sekunde ein/eine Sekunde aus |Übergang in S2 oder S3 (siehe Anmerkungen) |
@@ -219,7 +219,7 @@ Der akustische Alarm kann durch Drücken der Stummschalttaste auf dem OPS-Bedien
 Die verschiedenen Alarmbedingungen werden in der folgenden Tabelle beschrieben.
 
 ### <a name="alarm-conditions"></a>Alarmbedingungen
-| Status | severity | Alarm | LED des Bedienfelds |
+| Status | Schweregrad | Alarm | LED des Bedienfelds |
 | --- | --- | --- | --- |
 | PCM-Alarm – Verlust des Gleichstroms von einer PCM |Fehler – kein Verlust der Redundanz |S1 |Modulfehler |
 | PCM-Alarm – Verlust des Gleichstroms von einer PCM |Fehler – Verlust der Redundanz |S1 |Modulfehler |
@@ -239,7 +239,7 @@ Die verschiedenen Alarmbedingungen werden in der folgenden Tabelle beschrieben.
 | Fehler der Energiesteuerung des Laufwerks |Warnung – kein Verlust der Laufwerkenergie |S1 |Modulfehler |
 | Fehler der Energiesteuerung des Laufwerks |Fehler – kritisch – Verlust der Laufwerkenergie |S1 |Modulfehler |
 | Laufwerk entfernt |Warnung |Keine |Modulfehler |
-| Keine ausreichende Energie verfügbar |Warnung |none |Modulfehler |
+| Keine ausreichende Energie verfügbar |Warnung |Keine |Modulfehler |
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu [StorSimple-Hardwarekomponenten und ihrem Status](storsimple-8000-monitor-hardware-status.md).

@@ -5,10 +5,10 @@ ms.date: 03/08/2020
 ms.topic: tutorial
 ms.reviewer: chroyal
 ms.openlocfilehash: 69790787bc888448f2f40178bd12ee7058cc5892
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91283451"
 ---
 # <a name="tutorial-use-blockchain-data-manager-to-send-data-to-azure-cosmos-db"></a>Tutorial: Verwenden von Blockchain Data Manager zum Senden von Daten an Azure Cosmos DB
@@ -144,7 +144,7 @@ Generieren Sie für jedes Blob eine Shared Access Signature.
 
     Geben Sie den Namen der Blockchainanwendung und die Smart Contract ABI- und Bytecode-URLs ein.
 
-    Einstellung | BESCHREIBUNG
+    Einstellung | Beschreibung
     --------|------------
     Name | Geben Sie einen eindeutigen Namen zur Verfolgung der Blockchainanwendung ein.
     Vertrags-ABI | Der URL-Pfad zur Datei mit der Vertrags-ABI. Weitere Informationen finden Sie unter [Erstellen von Vertrags-ABI- und Bytecode-URLs](#create-contract-abi-and-bytecode-url).
@@ -202,7 +202,7 @@ Jede Logik-App muss mit einem Trigger beginnen, der ausgelöst wird, wenn ein be
 
     ![Einstellungen für den Event Grid-Trigger](./media/data-manager-cosmosdb/event-grid-trigger.png)
 
-    | Einstellung | BESCHREIBUNG
+    | Einstellung | Beschreibung
     |---------|-------------|
     | Subscription | Wählen Sie das Abonnement aus, das das Event Grid-Thema enthält. |
     | Ressourcentyp | Wählen Sie **Microsoft.EventGrid.Topics** aus. |

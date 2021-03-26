@@ -7,14 +7,14 @@ manager: femila
 ms.service: media-services
 ms.topic: conceptual
 ms.workload: media
-ms.date: 1/14/2020
+ms.date: 03/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: 671991a936fd0330c31017dd5f64e7b5eca9b3f4
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 915fdcb059d9e7bf9e1853040b90b82a0457652e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102563658"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104598404"
 ---
 # <a name="encoding-scenario-based-migration-guidance"></a>Szenariobasierter Migrationsleitfaden für die Codierung
 
@@ -58,7 +58,7 @@ Klicken Sie auf das Bild unten, um eine größere Version anzuzeigen.
 
 ### <a name="v3-encoding-workflow"></a>V3-Codierungsworkflow
 
-[![Codierungsworkflow für V3](./media/migration-guide/V3-pretty.svg) ](./media/migration-guide/V3-pretty.svg#lightbox)
+[![Codierungsworkflow für V3](./media/migration-guide/V3-pretty.svg)](./media/migration-guide/V3-pretty.svg#lightbox)
 
 1. Einrichten
     1. Erstellen Sie ein Objekt, oder verwenden Sie ein bereits vorhandenes Objekt. Wenn Sie ein neues Medienobjekt verwenden, laden Sie Inhalt in dieses Medienobjekt hoch. Bei einem vorhandenen Medienobjekt sollten Sie Dateien codieren, die bereits im Medienobjekt vorhanden sind. Sie sollten *keine weiteren Inhalte in das Medienobjekt hochladen*.
@@ -76,7 +76,7 @@ Klicken Sie auf das Bild unten, um eine größere Version anzuzeigen.
         - Ausgabemedienobjekte
         - Eine Ressourcengruppe
         - AMS-Kontoname  
-1. Verwenden Sie für das Überwachen Ihres Auftrags [Event Grid](monitor-events-portal-how-to.md).
+1. Verwenden Sie für das Überwachen Ihres Auftrags [Event Grid](monitoring/monitor-events-portal-how-to.md).
 1. Übermitteln des Auftrags.
 
 ## <a name="custom-presets-from-v2-to-v3-encoding"></a>Benutzerdefinierte Voreinstellungen für die Codierung bei V2 und V3

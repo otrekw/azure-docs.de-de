@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: rohink
 ms.openlocfilehash: a8f64ab3141459142def12a1758b0fe0a94ca432
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92282160"
 ---
 # <a name="tutorial-host-your-domain-in-azure-dns"></a>Tutorial: Hosten Ihrer Domäne in Azure DNS
@@ -36,16 +36,16 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Sie müssen über einen Domänennamen zum Testen verfügen, den Sie in Azure DNS hosten können. Sie müssen uneingeschränkte Kontrolle über diese Domäne haben. Das bedeutet, Sie müssen unter anderem die Namenservereinträge für die Domäne festlegen können.
 
-In diesem Beispiel verweisen wir auf die übergeordnete Domäne **contoso.net** .
+In diesem Beispiel verweisen wir auf die übergeordnete Domäne **contoso.net**.
 
 ## <a name="create-a-dns-zone"></a>Erstellen einer DNS-Zone
 
-1. Wechseln Sie zum [Azure-Portal](https://portal.azure.com/), um eine DNS-Zone zu erstellen. Suchen Sie **DNS-Zonen** , und wählen Sie diese aus.
+1. Wechseln Sie zum [Azure-Portal](https://portal.azure.com/), um eine DNS-Zone zu erstellen. Suchen Sie **DNS-Zonen**, und wählen Sie diese aus.
 
    ![DNS-Zone](./media/dns-delegate-domain-azure-dns/openzone650.png)
 
 1. Wählen Sie **DNS-Zone erstellen** aus.
-1. Geben Sie auf der Seite **DNS-Zone erstellen** die folgenden Werte ein, und wählen Sie dann **Erstellen** : z. B. **contoso.net** .
+1. Geben Sie auf der Seite **DNS-Zone erstellen** die folgenden Werte ein, und wählen Sie dann **Erstellen**: z. B. **contoso.net**.
       > [!NOTE] 
       > Wenn die neue Zone, die Sie erstellen, eine untergeordnete Zone ist (z. B. übergeordnete Zone = contoso.net untergeordnete Zone = child.contoso.net), lesen Sie das Tutorial [Erstellen einer neuen untergeordneten DNS-Zone](./tutorial-public-dns-zones-child.md).
 
@@ -63,9 +63,9 @@ In diesem Beispiel verweisen wir auf die übergeordnete Domäne **contoso.net** 
 
 Bevor Sie Ihre DNS-Zone an Azure DNS delegieren können, müssen Sie die Namenserver für Ihre Zone ermitteln. Azure DNS weist bei jeder Zonenerstellung Namenserver aus einem Pool zu.
 
-1. Wählen Sie nach der Erstellung der DNS-Zone im Bereich **Favoriten** des Azure-Portals die Option **Alle Ressourcen** . Wählen Sie auf der Seite **Alle Ressourcen** Ihre DNS-Zone aus. Falls das von Ihnen ausgewählte Abonnement bereits mehrere Ressourcen enthält, können Sie in das Feld **Nach Name filtern** Ihren Domänennamen eingeben, um komfortabel auf das Anwendungsgateway zuzugreifen. 
+1. Wählen Sie nach der Erstellung der DNS-Zone im Bereich **Favoriten** des Azure-Portals die Option **Alle Ressourcen**. Wählen Sie auf der Seite **Alle Ressourcen** Ihre DNS-Zone aus. Falls das von Ihnen ausgewählte Abonnement bereits mehrere Ressourcen enthält, können Sie in das Feld **Nach Name filtern** Ihren Domänennamen eingeben, um komfortabel auf das Anwendungsgateway zuzugreifen. 
 
-1. Rufen Sie die Namenserver über die Seite „DNS-Zone“ ab. In diesem Beispiel wurden der Zone „contoso.net“ die Namenserver *ns1-01.azure-dns.com* , *ns2-01.azure-dns.net* , *ns3-01.azure-dns.org* und *ns4-01.azure-dns.info* zugewiesen:
+1. Rufen Sie die Namenserver über die Seite „DNS-Zone“ ab. In diesem Beispiel wurden der Zone „contoso.net“ die Namenserver *ns1-01.azure-dns.com*, *ns2-01.azure-dns.net*, *ns3-01.azure-dns.org* und *ns4-01.azure-dns.info* zugewiesen:
 
    ![Liste der Namenserver](./media/dns-delegate-domain-azure-dns/viewzonens500.png)
 
@@ -114,9 +114,9 @@ Sie müssen die Azure DNS-Namenserver nicht angeben. Wenn die Delegierung ordnun
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Sie können die Ressourcengruppe **contosoRG** behalten, wenn Sie das nächste Tutorial absolvieren möchten. Löschen Sie andernfalls die Ressourcengruppe **contosoRG** , um die in diesem Tutorial erstellten Ressourcen zu löschen.
+Sie können die Ressourcengruppe **contosoRG** behalten, wenn Sie das nächste Tutorial absolvieren möchten. Löschen Sie andernfalls die Ressourcengruppe **contosoRG**, um die in diesem Tutorial erstellten Ressourcen zu löschen.
 
-- Klicken Sie auf die Ressourcengruppe **contosoRG** , und wählen Sie anschließend **Ressourcengruppe löschen** aus. 
+- Klicken Sie auf die Ressourcengruppe **contosoRG**, und wählen Sie anschließend **Ressourcengruppe löschen** aus. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

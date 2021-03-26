@@ -4,10 +4,10 @@ description: Hier erhalten Sie Informationen zum Verwenden des Azure-Portals zum
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 07efcf93b963009494021b90e6c730c4615301ef
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91297622"
 ---
 # <a name="add-a-vm-to-a-lab-in-azure-devtest-labs"></a>Hinzufügen eines virtuellen Computers zu einem Lab in Azure DevTest Labs
@@ -109,6 +109,6 @@ Nach dem Speichern können Sie die Azure Resource Manager-Vorlage zum [Bereitste
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Nach der Erstellung des virtuellen Computers können Sie im Bereich des virtuellen Computers die Option**Verbinden** wählen, um eine Verbindung mit dem virtuellen Computer herzustellen.
+* Nach der Erstellung des virtuellen Computers können Sie im Bereich des virtuellen Computers die Option **Verbinden** wählen, um eine Verbindung mit dem virtuellen Computer herzustellen.
 * Informieren Sie sich über das [Erstellen von benutzerdefinierten Artefakten für Ihre DevTest Lab-VM](devtest-lab-artifact-author.md).
 * Erkunden Sie den [DevTest Labs-Azure Resource Manager-Katalog mit Schnellstartvorlagen](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates).

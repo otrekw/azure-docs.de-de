@@ -7,12 +7,12 @@ ms.date: 12/15/2020
 ms.topic: troubleshooting
 ms.author: susabat
 ms.reviewer: susabat
-ms.openlocfilehash: 1a5f665627da1b08ec57b04863a58f227c673af4
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 2950c175acfdda33394c93649a3e2c41d1264dd2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944904"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705992"
 ---
 # <a name="troubleshoot-pipeline-orchestration-and-triggers-in-azure-data-factory"></a>Problembehandlung bei der Pipelineorchestrierung und Pipelinetriggern in Azure Data Factory
 
@@ -78,13 +78,32 @@ Azure Data Factory wertet das Ergebnis aller Aktivitäten auf Blattebene aus. Di
 1. Implementieren Sie Überprüfungen auf Aktivitätsebene. Lesen Sie dazu [Informationen zu Pipelinefehlern und zur Fehlerbehandlung](https://techcommunity.microsoft.com/t5/azure-data-factory/understanding-pipeline-failures-and-error-handling/ba-p/1630459).
 1. Verwenden Sie Azure Logic Apps, um Pipelines in regelmäßigen Abständen wie unter [Abfragen nach Factory](/rest/api/datafactory/pipelineruns/querybyfactory) beschrieben zu überwachen.
 
-## <a name="monitor-pipeline-failures-in-regular-intervals"></a>Überwachen von Pipelinefehlern in regelmäßigen Abständen
+### <a name="how-to-monitor-pipeline-failures-in-regular-intervals"></a>Überwachen von Pipelinefehlern in regelmäßigen Abständen
 
 Es ist häufig erforderlich, fehlerhafte Data Factory-Pipelines in Intervallen zu überwachen, z. B. alle 5 Minuten. Sie können die Pipelineausführungen einer Data Factory mithilfe des Endpunkts abfragen und filtern. 
 
-Richten Sie eine Azure-Logik-App ein, um alle fehlerhaften Pipelines alle 5 Minuten abzufragen. Dieser Vorgang wird unter [Abfragen nach Factory](/rest/api/datafactory/pipelineruns/querybyfactory) beschrieben. Anschließend können Sie Incidents in unserem Ticketsystem melden.
+**Lösung** Sie können eine Azure-Logik-App einrichten, um alle fehlerhaften Pipelines alle 5 Minuten abzufragen. Dieser Vorgang wird unter [Abfragen nach Factory](/rest/api/datafactory/pipelineruns/querybyfactory) beschrieben. Anschließend können Sie Incidents in Ihrem Ticketsystem melden.
 
 Weitere Informationen finden Sie unter [Senden von Benachrichtigungen von Data Factory, Teil 2](https://www.mssqltips.com/sqlservertip/5962/send-notifications-from-an-azure-data-factory-pipeline--part-2/).
+
+### <a name="degree-of-parallelism--increase-does-not-result-in-higher-throughput"></a>Ein höherer Grad an Parallelität führt nicht zu einem höheren Durchsatz.
+
+**Ursache** 
+
+Der Grad an Parallelität in *ForEach* ist tatsächlich der maximale Grad an Parallelität. Es kann nicht garantiert werden, dass eine bestimmte Anzahl von Ausführungen gleichzeitig erfolgt, mit diesem Parameter wird jedoch sichergestellt, dass der festgelegte Wert nie überschritten wird. Sie sollten dies als Limit betrachten, das Sie beim Steuern des gleichzeitigen Zugriffs auf Ihre Quellen und Senken nutzen.
+
+Bekannte Fakten zu *ForEach*
+ * ForEach verfügt über eine Eigenschaft mit dem Namen „batch count(n)“ mit dem Standardwert 20 und dem Höchstwert 50.
+ * Die Batchanzahl n wird zum Erstellen von n Warteschlangen verwendet. Weiter unten wird ausführlich erläutert, wie diese Warteschlangen erstellt werden.
+ * Jede Warteschlange wird sequenziell ausgeführt, Sie können jedoch mehrere Warteschlangen parallel ausführen.
+ * Die Warteschlangen werden vorab erstellt. Dies bedeutet, dass die Warteschlangen während der Laufzeit nicht neu verteilt werden.
+ * Zu jedem Zeitpunkt gibt es höchstens ein Element, das pro Warteschlange verarbeitet wird. Dies bedeutet, dass zu einem bestimmten Zeitpunkt höchstens n Elemente verarbeitet werden.
+ * Die Gesamtverarbeitungszeit für ForEach ist gleich der Verarbeitungszeit der längsten Warteschlange. Dies bedeutet, dass die ForEach-Aktivität davon abhängt, wie die Warteschlangen erstellt werden.
+ 
+**Auflösung**
+
+ * Sie sollten keine *SetVariable*-Aktivität in *ForEach* verwenden, die parallel ausgeführt wird.
+ * Wenn Sie die Art und Weise berücksichtigen, in der die Warteschlangen erstellt werden, können Kunden die Leistung von ForEach verbessern, indem sie mehrere *ForEach-Vorgänge* festlegen, wobei jedes ForEach-Element Elemente mit ähnlicher Verarbeitungszeit enthält. Dadurch wird sichergestellt, dass lange Ausführungen parallel und nicht sequenziell verarbeitet werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
