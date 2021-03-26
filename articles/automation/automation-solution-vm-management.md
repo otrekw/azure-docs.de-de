@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: e9a5427f7c3a057f291067ac83d3d9032d7e693d
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: b71e5b1a8ba5f3ee8f883c71a7221e01d4af4fb6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102559357"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104597707"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>VMs außerhalb der Geschäftszeiten starten/beenden – Übersicht
 
@@ -56,7 +56,7 @@ Wenn Sie Mitwirkender im Abonnement und globaler Administrator in Ihrem Azure Ac
 
 Um VMs für die Funktion „VMs außerhalb der Geschäftszeiten starten/beenden“ unter Verwendung eines vorhandenen Automation-Kontos und eines vorhandenen Log Analytics-Arbeitsbereichs zu aktivieren, benötigen Sie die folgenden Berechtigungen für den Gültigkeitsbereich der Ressourcengruppe. Weitere Informationen zu Rollen finden Sie unter [Benutzerdefinierte Azure-Rollen](../role-based-access-control/custom-roles.md).
 
-| Berechtigung | Bereich|
+| Berechtigung | `Scope`|
 | --- | --- |
 | Microsoft.Automation/automationAccounts/read | Ressourcengruppe |
 | Microsoft.Automation/automationAccounts/variables/write | Ressourcengruppe |
@@ -91,7 +91,8 @@ Sie können VMs für die Funktion „VMs außerhalb der Geschäftszeiten starten
 | Microsoft.Authorization/permissions/read |Subscription|
 | Microsoft.Authorization/roleAssignments/read | Subscription |
 | Microsoft.Authorization/roleAssignments/write | Subscription |
-| Microsoft.Authorization/roleAssignments/delete | Subscription || Microsoft.Automation/automationAccounts/connections/read | Ressourcengruppe |
+| Microsoft.Authorization/roleAssignments/delete | Subscription |
+| Microsoft.Automation/automationAccounts/connections/read | Ressourcengruppe |
 | Microsoft.Automation/automationAccounts/certificates/read | Ressourcengruppe |
 | Microsoft.Automation/automationAccounts/write | Ressourcengruppe |
 | Microsoft.OperationalInsights/workspaces/write | Ressourcengruppe |
@@ -167,7 +168,7 @@ Aktivieren Sie nicht alle Zeitpläne, da dies zu sich überlappenden Zeitplanakt
 |Scheduled_StopVM | Benutzerdefiniert, täglich | Führt das Runbook **ScheduledStopStart_Parent** mit dem Parameter `Stop` jeden Tag zum angegebenen Zeitpunkt aus.  Beendet automatisch alle VMs, für die die Regeln der Variablenressourcen erfüllt sind.  Aktivieren Sie den zugehörigen Zeitplan (**Scheduled-StartVM**).|
 |Scheduled_StartVM | Benutzerdefiniert, täglich | Führt das Runbook **ScheduledStopStart_Parent** mit dem Parameterwert `Start` jeden Tag zum angegebenen Zeitpunkt aus. Startet automatisch alle VMs, für die die Regeln der Variablenressourcen erfüllt sind.  Aktivieren Sie den zugehörigen Zeitplan (**Scheduled-StopVM**).|
 |Sequenced-StopVM | 01:00 Uhr (UTC), jeden Freitag | Führt das Runbook **Sequenced_StopStop_Parent** mit dem Parameterwert `Stop` jeden Freitag zum angegebenen Zeitpunkt aus.  Beendet der Reihe nach (in aufsteigender Reihenfolge) alle VMs mit dem in den jeweiligen Variablen definierten Tag **SequenceStop**. Weitere Informationen zu Tagwerten und Objektvariablen finden Sie unter [Runbooks](#runbooks).  Aktivieren Sie den dazugehörigen Zeitplan (**Sequenced-StartVM**).|
-|Sequenced-StartVM | 13:00 Uhr (UTC), jeden Montag | Führt das Runbook **SequencedStopStart_Parent** mit dem Parameterwert `Start` jeden Montag zum angegebenen Zeitpunkt aus. Startet der Reihe nach (in absteigender Reihenfolge) alle VMs mit dem in den jeweiligen Variablen definierten Tag **SequenceStart**. Weitere Informationen zu Tagwerten und Variablenobjekten finden Sie unter [Runbooks](#runbooks). Aktivieren Sie den dazugehörigen Zeitplan (**Sequenced-StopVM**).
+|Sequenced-StartVM | 13:00 Uhr (UTC), jeden Montag | Führt das Runbook **SequencedStopStart_Parent** mit dem Parameterwert `Start` jeden Montag zum angegebenen Zeitpunkt aus. Startet der Reihe nach (in absteigender Reihenfolge) alle VMs mit dem in den jeweiligen Variablen definierten Tag **SequenceStart**. Weitere Informationen zu Tagwerten und Variablenobjekten finden Sie unter [Runbooks](#runbooks). Aktivieren Sie den dazugehörigen Zeitplan (**Sequenced-StopVM**).|
 
 ## <a name="use-the-feature-with-classic-vms"></a>Verwenden der Funktion mit klassischen VMs
 

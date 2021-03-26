@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
 ms.openlocfilehash: 12b8e30b0107b6b008cbd6467ada7c2d44f5e6d6
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98871637"
 ---
 # <a name="discover-assess-and-migrate-google-cloud-platform-gcp-vms-to-azure"></a>Ermitteln, Bewerten und Migrieren von GCP-VMs (Google Cloud Platform) zu Azure
@@ -77,7 +77,7 @@ Vorbereiten von Azure für die Migration mit Azure Migrate: Servermigration“ k
 
 **Aufgabe** | **Details**
 --- | ---
-**Erstellen eines Azure Migrate-Projekts** | Zum [Erstellen eines neuen Projekts](./create-manage-projects.md) benötigt Ihr Azure-Konto Berechtigungen vom Typ „Mitwirkender“ oder „Besitzer“.
+**Erstellen eines Azure Migrate-Projekts** | Ihr Azure-Konto benötigt zum [Erstellen eines neuen Projekts](./create-manage-projects.md) Berechtigungen vom Typ „Mitwirkender“ oder „Besitzer“.
 **Überprüfen der Berechtigungen für Ihr Azure-Konto** | Ihr Azure-Konto benötigt Berechtigungen zum Erstellen eines virtuellen Computers sowie zum Schreiben auf einen verwalteten Azure-Datenträger.
 
 ### <a name="assign-permissions-to-create-project"></a>Zuweisen von Berechtigungen für die Projekterstellung

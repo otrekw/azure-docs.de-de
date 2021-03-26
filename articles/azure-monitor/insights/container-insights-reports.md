@@ -2,19 +2,19 @@
 title: Berichte in Container Insights
 description: Hier werden die Berichte beschrieben, die zum Analysieren der von Container Insights gesammelten Daten bereitstehen.
 ms.topic: conceptual
-ms.date: 12/07/2020
-ms.openlocfilehash: ab704ed184d9d67ddfba5aede385899faf2a56de
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/02/2021
+ms.openlocfilehash: ca74521a08d4edaa498e00e6452d8f69912e4bb9
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101704275"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102032794"
 ---
 # <a name="reports-in-container-insights"></a>Berichte in Container Insights
 Bei Berichten in Container Insights handelt es sich um empfohlene und sofort verwendbare [Azure-Arbeitsmappen](../visualize/workbooks-overview.md). In diesem Artikel werden die verschiedenen verfügbaren Berichte und der Zugriff darauf beschrieben.
 
 ## <a name="viewing-reports"></a>Anzeigen von Berichten
-Wählen Sie im Azure-Portal im **Azure Monitor**-Menü die Option **Container** aus. Wählen Sie im Abschnitt **Überwachung** die Option **Einblicke** aus. Wählen Sie dann einen bestimmten Cluster und anschließend die Seite **Berichte (Vorschau)** aus. 
+Wählen Sie im Azure-Portal im **Azure Monitor**-Menü die Option **Container** aus. Wählen Sie im Abschnitt **Überwachung** die Option **Einblicke** aus. Wählen Sie dann einen bestimmten Cluster und anschließend die Seite **Berichte** aus. 
 
 [![Seite „Berichte“](media/container-insights-reports/reports-page.png)](media/container-insights-reports/reports-page.png#lightbox)
 

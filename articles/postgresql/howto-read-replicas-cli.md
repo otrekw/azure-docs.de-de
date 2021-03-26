@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 12/17/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 7e74a58a14bdcc2a6fe1e9f86305aae415c6abf7
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97674513"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli-rest-api"></a>Erstellen und Verwalten von Lesereplikaten über die Azure CLI und die REST-API
@@ -19,7 +19,7 @@ ms.locfileid: "97674513"
 In diesem Artikel erfahren Sie, wie Sie Lesereplikate in Azure Database for PostgreSQL über die Azure CLI und die REST-API erstellen und verwalten. Weitere Informationen zu Lesereplikaten finden Sie in der [Übersicht](concepts-read-replicas.md).
 
 ## <a name="azure-replication-support"></a>Azure-Replikationsunterstützung
-[Lesereplikate](concepts-read-replicas.md) und [logische Decodierung](concepts-logical.md) sind beide vom Write-Ahead-Protokoll (WAL) von Postgres abhängig. Diese beiden Features erfordern unterschiedliche Postgres-Protokolliergrade. Die logische Decodierung erfordert einen höheren Protokolliergrad als Lesereplikate.
+[Lesereplikate](concepts-read-replicas.md) und [logische Decodierung](concepts-logical.md) sind beide vom Write-Ahead-Protokoll (WAL) von Postgres abhängig. Diese beiden Features erfordern unterschiedliche Ebenen der Protokollierung durch Postgres. Die logische Decodierung erfordert einen höheren Protokolliergrad als Lesereplikate.
 
 Um den richtigen Protokolliergrad zu konfigurieren, verwenden Sie den Parameter für die Unterstützung der Azure-Replikation. Für die Unterstützung der Azure-Replikation gibt es drei Einstellungsoptionen:
 
@@ -31,7 +31,7 @@ Um den richtigen Protokolliergrad zu konfigurieren, verwenden Sie den Parameter 
 > [!NOTE]
 > Beim Bereitstellen von Lesereplikaten für persistente, sehr schreibintensive primäre Workloads kann sich die Replikation immer weiter verzögern, sodass der Stand des primären Servers möglicherweise gar nicht mehr erreicht wird. Damit kann auch die Speicherauslastung auf dem primären Server ansteigen, da die WAL-Dateien erst gelöscht werden, wenn sie im Replikat empfangen wurden.
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 Sie können Lesereplikate mithilfe der Azure CLI erstellen und verwalten.
 
 ### <a name="prerequisites"></a>Voraussetzungen

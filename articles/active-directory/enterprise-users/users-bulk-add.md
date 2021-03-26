@@ -14,10 +14,10 @@ ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c653f3e8583ef3aadff26cb2b7a3266555d313a2
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96547813"
 ---
 # <a name="bulk-create-users-in-azure-active-directory"></a>Massenerstellung von Benutzern in Azure Active Directory
@@ -49,7 +49,7 @@ Die Zeilen der heruntergeladenen CSV-Vorlage lauten wie folgt:
 
 - Die ersten zwei Zeilen der hochzuladenden Vorlage dürfen nicht entfernt oder geändert werden, da der Upload sonst nicht verarbeitet werden kann.
 - Die erforderlichen Spalten werden zuerst aufgelistet.
-- Es wird davon abgeraten, neue Spalten zur Vorlage hinzuzufügen. Jegliche Spalten, die Sie zusätzlich hinzufügen, werden ignoriert und nicht verarbeitet.
+- Es wird davon abgeraten, der Vorlage neue Spalten hinzuzufügen. Jegliche Spalten, die Sie zusätzlich hinzufügen, werden ignoriert und nicht verarbeitet.
 - Es wird empfohlen, möglichst häufig die neueste Version der CSV-Vorlage herunterzuladen.
 - Vergewissern Sie sich unbedingt, dass vor und nach allen Feldern keine unbeabsichtigten Leerräume vorhanden sind. Beim **Benutzerprinzipalnamen** würde ein solcher Leerraum einen Importfehler verursachen.
 

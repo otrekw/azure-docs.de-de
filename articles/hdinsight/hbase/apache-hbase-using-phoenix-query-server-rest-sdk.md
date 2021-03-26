@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 01/01/2020
 ms.openlocfilehash: 5ce459e2820cfd2ea5cacb036f5d6885c9c5afa0
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98933372"
 ---
 # <a name="apache-phoenix-query-server-rest-sdk"></a>Apache Phoenix Query Server REST SDK
@@ -20,7 +20,7 @@ In diesem Artikel wird beschrieben, wie Sie das PQS REST SDK zum Erstellen von T
 
 Weitere Informationen finden Sie unter [Apache Calcite Avatica Protocol Buffers Reference](https://calcite.apache.org/avatica/docs/protobuf_reference.html) (Avatica-Protokollpuffer von Apache Calcite – Referenz).
 
-## <a name="install-the-sdk"></a>Installieren des SDKs
+## <a name="install-the-sdk"></a>Installieren des SDK
 
 Der Microsoft .NET-Treiber für Apache Phoenix Query Server wird als NuGet-Paket bereitgestellt, das mit dem folgenden Befehl über die **NuGet-Paket-Manager-Konsole** in Visual Studio installiert werden kann:
 

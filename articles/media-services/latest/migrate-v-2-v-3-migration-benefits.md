@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: fb3e09cefa7f87fe2eb1e5013854c7965ea9330e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b6d51e05598f60de0e9c8fb85472b7c14bba990e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101698840"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104598387"
 ---
 # <a name="step-1---understand-the-benefits-of-migrating-to-media-services-api-v3"></a>Schritt 1: Informieren Sie sich über die Vorteile der Migration zur Media Services-API V3
 
@@ -58,8 +58,8 @@ Mit V3 wurde Media Services erheblich verbessert.
 |**Inhaltsschutz** ||
 | Der [Inhaltsschutz](content-key-policy-concept.md) unterstützt Features mit mehreren Schlüsseln. | Kunden können jetzt mehrere Verschlüsselungsschlüssel für Inhalte auf ihren Streaminglocators verwenden. |
 | **Überwachung** | |
-| Unterstützung von [Azure EventGrid](reacting-to-media-services-events.md)-Benachrichtigungen | EventGrid-Benachrichtigungen weisen umfangreichere Features auf. Es gibt mehr Arten von Benachrichtigungen, eine umfassendere SDK-Unterstützung für den Empfang der Benachrichtigungen in Ihrer eigenen Anwendung und mehr bestehende Azure-Dienste, die als Ereignishandler fungieren können. |
-| [Azure Monitor-Unterstützung und -Integration im Azure-Portal](monitor-events-portal-how-to.md) | Dies ermöglicht Kunden die Visualisierung der Kontingentnutzung von Media Services, Echtzeitstatistiken von Streamingendpunkten sowie Erfassungs- und Archivstatistiken für Liveereignisse. Kunden sind jetzt in der Lage, Warnungen festzulegen und erforderliche Aktionen auf der Grundlage von Echtzeitmetrikdaten durchzuführen. |
+| Unterstützung von [Azure EventGrid](monitoring/reacting-to-media-services-events.md)-Benachrichtigungen | EventGrid-Benachrichtigungen weisen umfangreichere Features auf. Es gibt mehr Arten von Benachrichtigungen, eine umfassendere SDK-Unterstützung für den Empfang der Benachrichtigungen in Ihrer eigenen Anwendung und mehr bestehende Azure-Dienste, die als Ereignishandler fungieren können. |
+| [Azure Monitor-Unterstützung und -Integration im Azure-Portal](monitoring/monitor-events-portal-how-to.md) | Dies ermöglicht Kunden die Visualisierung der Kontingentnutzung von Media Services, Echtzeitstatistiken von Streamingendpunkten sowie Erfassungs- und Archivstatistiken für Liveereignisse. Kunden sind jetzt in der Lage, Warnungen festzulegen und erforderliche Aktionen auf der Grundlage von Echtzeitmetrikdaten durchzuführen. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

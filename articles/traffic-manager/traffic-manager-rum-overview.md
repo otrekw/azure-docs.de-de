@@ -13,10 +13,10 @@ ms.date: 03/16/2018
 ms.author: duau
 ms.custom: ''
 ms.openlocfilehash: 618f8fff532da0f6ae315ad9e4cda35a289949d1
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98183709"
 ---
 # <a name="traffic-manager-real-user-measurements-overview"></a>Übersicht über Benutzer-Realmessungen in Traffic Manager
@@ -47,7 +47,7 @@ Wenn Sie Benutzer-Realmessungen verwenden, wird Ihnen die Anzahl der Messungen, 
 
 * [Wie deaktiviere ich Benutzer-Realmessungen für mein Abonnement?](./traffic-manager-faqs.md#how-do-i-turn-off-real-user-measurements-for-my-subscription)
 
-* [Kann ich Benutzer-Realmessungen außer mit Webseiten auch mit anderen Clientanwendungen nutzen?](./traffic-manager-faqs.md#can-i-use-real-user-measurements-with-client-applications-other-than-web-pages)
+* [Kann ich Benutzer-Realmessungen mit anderen Anwendungen als Webseiten nutzen?](./traffic-manager-faqs.md#can-i-use-real-user-measurements-with-client-applications-other-than-web-pages)
 
 * [Wie viele Messungen werden jeweils durchgeführt, wenn meine Webseite mit aktivierten Benutzer-Realmessungen gerendert wird?](./traffic-manager-faqs.md#how-many-measurements-are-made-each-time-my-real-user-measurements-enabled-web-page-is-rendered)
 
@@ -59,7 +59,7 @@ Wenn Sie Benutzer-Realmessungen verwenden, wird Ihnen die Anzahl der Messungen, 
 
 * [Kann ich die Messungen, die von meiner Clientanwendung durchgeführt werden, als Teil der Benutzer-Realmessungen anzeigen?](./traffic-manager-faqs.md#can-i-see-the-measurements-taken-by-my-client-application-as-part-of-real-user-measurements)
 
-* [Kann ich das vom Traffic Manager bereitgestellte Skript für die Messungen ändern?](./traffic-manager-faqs.md#can-i-modify-the-measurement-script-provided-by-traffic-manager)
+* [Kann ich das von Traffic Manager bereitgestellte Skript für die Messungen ändern?](./traffic-manager-faqs.md#can-i-modify-the-measurement-script-provided-by-traffic-manager)
 
 * [Können andere Personen den Schlüssel sehen, den ich für Benutzer-Realmessungen verwende?](./traffic-manager-faqs.md#will-it-be-possible-for-others-to-see-the-key-i-use-with-real-user-measurements)
 
@@ -73,7 +73,7 @@ Wenn Sie Benutzer-Realmessungen verwenden, wird Ihnen die Anzahl der Messungen, 
 
 * [Muss ich für die Verwendung mit Benutzer-Realmessungen einen Dienst in den Azure-Regionen hosten?](./traffic-manager-faqs.md#do-i-need-to-host-any-service-on-azure-regions-to-use-with-real-user-measurements)
 
-* [Erhöht sich meine Azure-Bandbreitennutzung, wenn ich Benutzer-Realmessungen verwende?](./traffic-manager-faqs.md#will-my-azure-bandwidth-usage-increase-when-i-use-real-user-measurements)
+* [Erhöht sich meine Azure-Bandbreitenauslastung, wenn ich Benutzer-Realmessungen verwende?](./traffic-manager-faqs.md#will-my-azure-bandwidth-usage-increase-when-i-use-real-user-measurements)
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Erfahren Sie, wie Sie [Benutzer-Realmessungen mit Webseiten](traffic-manager-create-rum-web-pages.md) verwenden

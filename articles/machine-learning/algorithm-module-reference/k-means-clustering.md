@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 08/04/2020
 ms.openlocfilehash: 7e0b61c1ca6ae30044e4c9d4705bdce01eac1942
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93323682"
 ---
 # <a name="module-k-means-clustering"></a>Modul: K-Means Clustering
@@ -99,7 +99,7 @@ Bei der Verarbeitung der Trainingsdaten beginnt der k-Means-Algorithmus mit eine
   
     -   **Overwrite from closest to center** (Vom nächstgelegenen zum Zentrum überschreiben): Die Werte der Bezeichnungsspalte werden durch vorhergesagte Bezeichnungswerte ersetzt, wobei die Bezeichnung des Punkts verwendet wird, der dem aktuellen Schwerpunkt am nächsten liegt.  
 
-8.  Wählen Sie die Option **Features normalisieren** , wenn Sie Features vor dem Training normalisieren möchten.
+8.  Wählen Sie die Option **Features normalisieren**, wenn Sie Features vor dem Training normalisieren möchten.
   
      Wenn Sie die Normalisierung anwenden, werden die Datenpunkte vor dem Training von MinMaxNormalizer zu `[0,1]` normalisiert.
 
@@ -131,7 +131,7 @@ Bei Verwendung des Moduls [Train Clustering Model](train-clustering-model.md):
 
 ### <a name="tips-for-generating-the-best-clustering-model"></a>Tipps zum Generieren des besten Clusteringmodells  
 
-Es ist bekannt, dass der beim Clustering verwendete *Seeding* -Prozess das Modell erheblich beeinflussen kann. Seeding bedeutet die anfängliche Platzierung von Punkten in potenziellen Schwerpunkten.
+Es ist bekannt, dass der beim Clustering verwendete *Seeding*-Prozess das Modell erheblich beeinflussen kann. Seeding bedeutet die anfängliche Platzierung von Punkten in potenziellen Schwerpunkten.
  
 Wenn das Dataset beispielsweise viele Ausreißer enthält und ein Ausreißer für das Seeding der Cluster gewählt wird, passen keine anderen Datenpunkte gut zu diesem Cluster, sodass der Cluster ein Singleton sein könnte. Das bedeutet, dass er ggf. nur einen Punkt aufweist.  
   

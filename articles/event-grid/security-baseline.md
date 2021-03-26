@@ -4,19 +4,23 @@ description: Die Event Grid-Sicherheitsbaseline enthält Schrittanleitungen und 
 author: msmbaldwin
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 08/21/2020
+ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: e085c5c2dbb608692ff7e766744743d3f640387b
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 80b630bb2f06d3eb634b9d9d32649ea8a47c0b0b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98633204"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101739142"
 ---
 # <a name="azure-security-baseline-for-event-grid"></a>Azure-Sicherheitsbaseline für Event Grid
 
-Die Azure-Sicherheitsbaseline für Microsoft Azure Event Grid enthält Empfehlungen, mit deren Hilfe Sie den Sicherheitsstatus Ihrer Bereitstellung verbessern können. Die Baseline für diesen Dienst wird von [Azure Security Benchmark-Version 1.0](../security/benchmarks/overview.md) abgeleitet, die Empfehlungen dazu enthält, wie Sie Ihre Cloudlösungen in Azure mithilfe unserer bewährten Methoden schützen können. Weitere Informationen finden Sie unter [Übersicht über Azure-Sicherheitsbaselines](../security/benchmarks/security-baselines-overview.md).
+Diese Sicherheitsbaseline wendet Empfehlungen aus [Version 1.0 des Azure-Sicherheitsvergleichstests](../security/benchmarks/overview-v1.md) auf Microsoft Azure Event Grid an. Der Azure-Sicherheitsvergleichstest enthält Empfehlungen zum Schutz Ihrer Cloudlösungen in Azure.
+Der Inhalt wird nach den **Sicherheitskontrollen** gruppiert, die durch den Azure-Sicherheitsvergleichstest und die entsprechenden für Azure Event Grid geltenden Empfehlungen definiert sind. Nicht auf Azure Event Grid anwendbare **Kontrollen** wurden ausgeschlossen.
+
+ 
+Die vollständige Zuordnung von Azure Event Grid zum Azure-Sicherheitsvergleichstest finden Sie in der [vollständigen Zuordnungsdatei der Azure Event Grid-Sicherheitsbaseline](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines).
 
 ## <a name="network-security"></a>Netzwerksicherheit
 
@@ -28,41 +32,41 @@ Die Azure-Sicherheitsbaseline für Microsoft Azure Event Grid enthält Empfehlun
 
 Azure Event Grid unterstützt zudem öffentliche IP-basierte Zugriffssteuerungen für die Veröffentlichung in Themen und Domänen. Mit IP-basierter Steuerung können Sie Herausgeber auf ein Thema oder eine Domäne beschränken, sodass Sie nur auf eine Reihe genehmigter Computer und Clouddienste festgelegt sind. Diese Funktion ergänzt die Authentifizierungsmechanismen, die von Event Grid unterstützt werden. 
 
-- [Weitere Informationen zu privaten Event Grid-Endpunkten](network-security.md#private-endpoints)
+- [Weitere Informationen zu privaten Event Grid-Endpunkten](https://docs.microsoft.com/azure/event-grid/network-security#private-endpoints)
 
-- [Weitere Informationen zur IP-Firewall von Event Grid](network-security.md#ip-firewall)
+- [Weitere Informationen zur IP-Firewall von Event Grid](https://docs.microsoft.com/azure/event-grid/network-security#ip-firewall)
 
 - [Azure Event Grid-Netzwerksicherheit](network-security.md) 
 
 - [Übersicht über Azure Private Link](../private-link/private-link-overview.md)
 
-- [Azure-Netzwerksicherheitsgruppe](../virtual-network/network-security-groups-overview.md)
-
-**Azure Security Center-Überwachung**: Ja
+- [Azure-Netzwerksicherheitsgruppe](/azure/virtual-network/security-overview)
 
 **Verantwortlichkeit**: Kunde
 
+**Azure Security Center-Überwachung:** Keine
+
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-nics"></a>1.2: Überwachen und Protokollieren der Konfiguration und des Datenverkehrs von virtuellen Netzwerken, Subnetzen und Netzwerkkarten (NICs)
 
-**Leitfaden**: Verwenden Sie Azure Security Center, und befolgen Sie die Empfehlungen für den Netzwerkschutz, um Ihre Event Grid-Ressourcen in Azure abzusichern. Wenn Sie virtuelle Azure-Computer verwenden, um auf Ihre Event Grid-Ressourcen zuzugreifen, aktivieren Sie die Datenflussprotokolle der Netzwerksicherheitsgruppen (NSGs), und senden Sie Protokolle an ein Speicherkonto für die Überwachung
+**Leitfaden**: Verwenden Sie Azure Security Center, und befolgen Sie die Empfehlungen für den Netzwerkschutz, um Ihre Event Grid-Ressourcen in Azure abzusichern. Wenn
 
-des Datenverkehrs.
+Sie virtuelle Azure-Computer verwenden, um auf Ihre Event Grid-Ressourcen zuzugreifen, aktivieren Sie die Datenflussprotokolle der Netzwerksicherheitsgruppen (NSGs), und senden Sie Protokolle an ein Speicherkonto für die Datenverkehrsüberwachung.
 
 - [Aktivieren der NSG-Flussprotokolle](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
 - [Grundlegendes zur Netzwerksicherheit über das Azure Security Center](../security-center/security-center-network-recommendations.md)
 
-**Azure Security Center-Überwachung**: Ja
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="13-protect-critical-web-applications"></a>1.3: Schützen kritischer Webanwendungen
 
 **Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Webanwendungen gedacht, die in Azure App Service oder auf Computeressourcen ausgeführt werden.
 
-**Azure Security Center-Überwachung**: Nicht zutreffend
-
 **Verantwortlichkeit**: Nicht zutreffend
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4: Ablehnen der Kommunikation mit bekannten bösartigen IP-Adressen
 
@@ -76,11 +80,11 @@ Aktivieren Sie DDoS Protection Standard für diese virtuellen Netzwerke, um sie 
 
 - [Konfigurieren von DDoS-Schutz](../ddos-protection/manage-ddos-protection.md)
 
-- [Weitere Informationen zur integrierten Threat Intelligence in Azure Security Center](../security-center/azure-defender.md)
-
-**Azure Security Center-Überwachung**: Ja
+- [Weitere Informationen zur integrierten Threat Intelligence in Azure Security Center](/azure/security-center/security-center-alerts-service-layer)
 
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="15-record-network-packets"></a>1.5: Aufzeichnen von Netzwerkpaketen
 
@@ -96,9 +100,9 @@ Aktivieren Sie die Network Watcher-Paketerfassung, falls dies für die Untersuch
 
 - [Aktivieren von Network Watcher](../network-watcher/network-watcher-create.md)
 
-**Azure Security Center-Überwachung**: Ja
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6: Bereitstellen von netzwerkbasierten Angriffserkennungs-/Eindringschutzsystemen (Intrusion Detection/Intrusion Prevention Systems, IDS/IPS)
 
@@ -112,64 +116,68 @@ Stellen Sie die Firewalllösung Ihrer Wahl an allen Netzwerkgrenzen Ihrer Organi
 
 - [Konfigurieren von Warnungen mit Azure Firewall](../firewall/threat-intel.md)
 
-**Azure Security Center-Überwachung**: Nicht zutreffend
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="17-manage-traffic-to-web-applications"></a>1.7: Verwalten von Datenverkehr für Webanwendungen
 
 **Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Webanwendungen gedacht, die in Azure App Service oder auf Computeressourcen ausgeführt werden.
 
-**Azure Security Center-Überwachung**: Nicht zutreffend
-
 **Verantwortlichkeit**: Nicht zutreffend
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1.8: Minimieren der Komplexität und des Verwaltungsaufwands von Netzwerksicherheitsregeln
 
 **Leitfaden**: Verwenden Sie für Ressourcen in virtuellen Netzwerken, die Zugriff auf Ihre Azure Event Grid-Ressourcen benötigen, VNET-Diensttags, um Netzwerkzugriffssteuerungen für Netzwerksicherheitsgruppen oder Azure Firewall zu definieren. Sie können Diensttags anstelle von spezifischen IP-Adressen nutzen, wenn Sie Sicherheitsregeln erstellen. Wenn Sie den Diensttagnamen (beispielsweise „AzureEventGrid“) im entsprechenden Quell- oder Zielfeld einer Regel angeben, können Sie den Datenverkehr für den entsprechenden Dienst zulassen oder verweigern. Microsoft verwaltet die Adresspräfixe, für die das Diensttag gilt, und aktualisiert das Diensttag automatisch, wenn sich die Adressen ändern.
 
-- [Verwenden des Diensttags für Azure Event Grid](network-security.md#service-tags)
+- [Verwenden des Diensttags für Azure Event Grid](https://docs.microsoft.com/azure/event-grid/network-security#service-tags)
 
 - [Weitere Informationen zur Verwendung von Diensttags](../virtual-network/service-tags-overview.md)
 
-**Azure Security Center-Überwachung**: Nicht zutreffend
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9: Beibehalten von Standardsicherheitskonfigurationen für Netzwerkgeräte
 
 **Leitfaden**: Definieren und implementieren Sie mit Azure Policy Standardsicherheitskonfigurationen für Netzwerkressourcen, die Ihren Azure Event Grid-Namespaces zugeordnet sind. Verwenden Sie Azure Policy-Aliase in den Namespaces „Microsoft.EventGrid“ und „Microsoft.Network“, um benutzerdefinierte Richtlinien zum Überwachen oder Erzwingen der Netzwerkkonfiguration Ihrer Event Grid-Ressourcen zu erstellen. 
 
-Sie können auch die integrierten Richtliniendefinitionen für Azure Event Grid verwenden. Dazu zählen u. a. die folgenden: „Azure Event Grid-Domänen müssen private Links verwenden“ und „Azure Event Grid-Themen müssen private Links verwenden“
-- [Integrierte Richtlinien für Event Grid-Ressourcen](../governance/policy/samples/built-in-policies.md#event-grid)
+Sie können auch die integrierten Richtliniendefinitionen für Azure Event Grid verwenden, z. B.:
+
+- Azure Event Grid-Domänen müssen private Links verwenden
+
+- Azure Event Grid-Themen müssen Azure Private Link-Instanzen verwenden.
+- [Integrierte Richtlinien für Event Grid-Ressourcen](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#event-grid)
 
 - [Konfigurieren und Verwalten von Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-**Azure Security Center-Überwachung**: Nicht zutreffend
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="110-document-traffic-configuration-rules"></a>1.10: Dokumentieren von Datenverkehrskonfigurationsregeln
 
 **Leitfaden**: Verwenden Sie Tags für Netzwerkressourcen, die Ihren Azure Event Grid-Ressourcen zugeordnet sind, um sie in einer Taxonomie logisch zu organisieren.
 
-- [Erstellen und Verwenden von Tags](../azure-resource-manager/management/tag-resources.md)
-
-**Azure Security Center-Überwachung**: Nicht zutreffend
+- [Erstellen und Verwenden von Tags](/azure/azure-resource-manager/resource-group-using-tags)
 
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11: Verwenden automatisierter Tools zum Überwachen von Netzwerkressourcenkonfigurationen und Erkennen von Änderungen
 
 **Leitfaden**: Verwenden Sie das Azure-Aktivitätsprotokoll zum Überwachen der Konfigurationen von Netzwerkressourcen und zum Erkennen von Änderungen bei Netzwerkressourcen, die sich auf Azure Event Grid beziehen. Erstellen Sie Warnungen in Azure Monitor, die bei Änderungen an wichtigen Netzwerkressourcen ausgelöst werden.
 
-- [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](/azure/azure-monitor/platform/activity-log-view)
 
-- [Erstellen von Warnungen in Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
-
-**Azure Security Center-Überwachung**: Nicht zutreffend
+- [Erstellen von Warnungen in Azure Monitor](/azure/azure-monitor/platform/alerts-activity-log)
 
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ## <a name="logging-and-monitoring"></a>Protokollierung und Überwachung
 
@@ -183,9 +191,9 @@ Sie können auch die integrierten Richtliniendefinitionen für Azure Event Grid 
 
 - [Durchführen des Onboardings für Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-**Azure Security Center-Überwachung**: Ja
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3: Aktivieren der Überwachungsprotokollierung für Azure-Ressourcen
 
@@ -193,27 +201,27 @@ Sie können auch die integrierten Richtliniendefinitionen für Azure Event Grid 
 
 - [Aktivieren von Diagnoseprotokollen für Azure Event Grid-Themen oder -Domänen](enable-diagnostic-logs-topic.md)
 
-**Azure Security Center-Überwachung**: Ja
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="24-collect-security-logs-from-operating-systems"></a>2.4: Erfassen von Sicherheitsprotokollen von Betriebssystemen
 
 **Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
 
-**Azure Security Center-Überwachung**: Nicht zutreffend
-
 **Verantwortlichkeit**: Nicht zutreffend
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="25-configure-security-log-storage-retention"></a>2.5: Konfigurieren der Sicherheitsprotokoll-Aufbewahrungsdauer im Speicher
 
 **Leitfaden**: Legen Sie in Azure Monitor den Aufbewahrungszeitraum für Protokolle für Log Analytics-Arbeitsbereiche, die Ihren Azure Event Grid-Ressourcen zugeordnet sind, gemäß den Compliancevorschriften Ihrer Organisation fest.
 
-- [Ändern des Datenaufbewahrungszeitraums](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
-
-**Azure Security Center-Überwachung**: Nicht zutreffend
+- [Ändern des Datenaufbewahrungszeitraums](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
 
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="26-monitor-and-review-logs"></a>2.6: Überwachen und Überprüfen von Protokollen
 
@@ -227,13 +235,13 @@ Alternativ können Sie auch Daten in Azure Sentinel oder einer SIEM-Drittanbiete
 
 - [Durchführen des Onboardings für Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [Erste Schritte mit Log Analytics-Abfragen](../azure-monitor/log-query/log-analytics-tutorial.md)
+- [Erste Schritte mit Log Analytics-Abfragen](/azure/azure-monitor/log-query/log-analytics-tutorial)
 
-- [Ausführen benutzerdefinierter Abfragen in Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
-
-**Azure Security Center-Überwachung**: Nicht zutreffend
+- [Ausführen benutzerdefinierter Abfragen in Azure Monitor](/azure/azure-monitor/log-query/get-started-queries)
 
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="27-enable-alerts-for-anomalous-activities"></a>2.7: Aktivieren von Warnungen bei anomalen Aktivitäten
 
@@ -249,37 +257,37 @@ Darüber hinaus können Sie Ihren Log Analytics-Arbeitsbereich in Azure Sentinel
 
 - [Details des Event Grid-Diagnoseprotokollschemas](diagnostic-logs.md)
 
-- [Erstellen, Anzeigen und Verwalten von Protokollwarnungen mithilfe von Azure Monitor](../azure-monitor/platform/alerts-log.md)
+- [Erstellen, Anzeigen und Verwalten von Protokollwarnungen mithilfe von Azure Monitor](/azure/azure-monitor/platform/alerts-log)
 
 - [Durchführen des Onboardings für Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-**Azure Security Center-Überwachung**: Ja
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="28-centralize-anti-malware-logging"></a>2.8: Zentralisieren der Antischadsoftwareprotokollierung
 
 **Leitfaden**: Nicht zutreffend; In Azure Event Grid werden keine Protokolle zu Antischadsoftware verarbeitet oder erstellt.
 
-**Azure Security Center-Überwachung**: Nicht zutreffend
-
 **Verantwortlichkeit**: Nicht zutreffend
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="29-enable-dns-query-logging"></a>2.9: Aktivieren der DNS-Abfrageprotokollierung
 
 **Leitfaden**: Nicht zutreffend; In Azure Event Grid werden keine Protokolle zu DNS verarbeitet oder erstellt.
 
-**Azure Security Center-Überwachung**: Nicht zutreffend
-
 **Verantwortlichkeit**: Nicht zutreffend
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="210-enable-command-line-audit-logging"></a>2.10: Aktivieren der Befehlszeilen-Überwachungsprotokollierung
 
 **Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
 
-**Azure Security Center-Überwachung**: Nicht zutreffend
-
 **Verantwortlichkeit**: Nicht zutreffend
+
+**Azure Security Center-Überwachung:** Keine
 
 ## <a name="identity-and-access-control"></a>Identität und Zugriffssteuerung
 
@@ -293,27 +301,27 @@ Mit der rollenbasierten Zugriffssteuerung in Azure (Azure RBAC) kann der Zugriff
 
 - [Autorisieren des Zugriffs auf Event Grid-Ressourcen](security-authorization.md)
 
-- [Abrufen einer Verzeichnisrolle in Azure AD mit PowerShell](/powershell/module/azuread/get-azureaddirectoryrole)
+- [Abrufen einer Verzeichnisrolle in Azure Active Directory (Azure AD) mit PowerShell](/powershell/module/azuread/get-azureaddirectoryrole)
 
 - [Abrufen von Mitgliedern einer Verzeichnisrolle in Azure AD mit PowerShell](/powershell/module/azuread/get-azureaddirectoryrolemember)
 
-**Azure Security Center-Überwachung**: Ja
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3.2: Ändern von Standardkennwörtern bei Bedarf
 
 **Leitfaden**: Die Zugriffsverwaltung für Event Grid-Ressourcen wird über Azure Active Directory (Azure AD) gesteuert. Azure AD verfügt nicht über das Konzept von Standardkennwörtern.
 
-**Azure Security Center-Überwachung**: Nicht zutreffend
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3.3: Verwenden dedizierter Administratorkonten
 
 **Leitfaden**: Erstellen Sie Standardbetriebsvorgänge für die Verwendung dedizierter Administratorkonten.
 
-Sie können auch den Just-In-Time-Zugriff aktivieren, indem Sie Azure AD Privileged Identity Management und Azure Resource Manager verwenden.
+Sie können auch den Just-In-Time-Zugriff aktivieren, indem Sie Azure Active Directory (Azure AD) Privileged Identity Management und Azure Resource Manager verwenden.
 
 Event Grid kann eine verwaltete Dienstidentität für Azure Event Grid-Themen oder -Domänen aktivieren und mit dieser Identität Ereignisse an unterstützte Ziele weiterleiten (z. B. Service Bus-Warteschlangen und -Themen, Event Hubs und Speicherkonten). Für die Veröffentlichung von Ereignissen in Azure Event Grid wird ein SAS-Token (Shared Access Signature) verwendet. Erstellen Sie standardmäßige Verfahren für den Zugriff auf Ereignisse sowie für die Weiterleitung und Veröffentlichung mit diesen Konten.
 
@@ -321,55 +329,55 @@ Event Grid kann eine verwaltete Dienstidentität für Azure Event Grid-Themen od
 
 - [Authentifizieren von Veröffentlichungsclients (Azure Event Grid)](security-authenticate-publishing-clients.md)
 
-- [Weitere Informationen zu Privileged Identity Management](../active-directory/privileged-identity-management/index.yml)
-
-**Azure Security Center-Überwachung**: Ja
+- [Weitere Informationen zu Privileged Identity Management](/azure/active-directory/privileged-identity-management/)
 
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3.4: Verwenden des einmaligen Anmeldens (Single Sign-On, SSO) mit Azure Active Directory
 
 **Leitfaden**: Nicht zutreffend; der Event Grid-Dienst bietet keine Unterstützung für SSO.
 
-**Azure Security Center-Überwachung**: Nicht zutreffend
-
 **Verantwortlichkeit**: Nicht zutreffend
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5: Verwenden der mehrstufigen Authentifizierung für den gesamten Azure Active Directory-basierten Zugriff
 
-**Leitfaden**: Nicht zutreffend; die mehrstufige Authentifizierung wird nicht vom Event Grid-Dienst verwendet
-
-**Azure Security Center-Überwachung**: Nicht zutreffend
+**Leitfaden**: Nicht zutreffend; die mehrstufige Authentifizierung wird vom Event Grid-Dienst nicht verwendet.
 
 **Verantwortlichkeit**: Nicht zutreffend
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6: Verwenden dedizierter Computer (Arbeitsstationen mit privilegiertem Zugriff) für alle administrativen Aufgaben
 
-**Leitfaden**: Nicht zutreffend; für Event Grid-Szenarien sind keine Arbeitsstationen mit privilegiertem Zugriff erforderlich. 
-
-**Azure Security Center-Überwachung**: Nicht zutreffend
+**Leitfaden**: Nicht zutreffend; für Event Grid-Szenarien sind keine Arbeitsstationen mit privilegiertem Zugriff erforderlich.
 
 **Verantwortlichkeit**: Nicht zutreffend
 
+**Azure Security Center-Überwachung:** Keine
+
 ### <a name="37-log-and-alert-on-suspicious-activities-from-administrative-accounts"></a>3.7: Protokollieren von und Warnen bei verdächtigen Aktivitäten in Administratorkonten
 
-**Leitfaden**: Verwenden Sie Azure Active Directory-Sicherheitsberichte und -Überwachungsfunktionen, um verdächtige oder nicht sichere Aktivität in der Umgebung zu ermitteln. Verwenden Sie Azure Security Center zum Überwachen von identitäts- und zugriffsbezogenen Aktivitäten.
+**Leitfaden**: Verwenden Sie Sicherheitsberichte und Überwachungsfunktionen von Azure Active Directory (Azure AD), um verdächtige oder nicht sichere Aktivitäten in der Umgebung zu ermitteln. Verwenden Sie Azure Security Center zum Überwachen von identitäts- und zugriffsbezogenen Aktivitäten.
 
-- [Identifizieren von Azure AD-Benutzern, die aufgrund riskanter Aktivitäten gekennzeichnet wurden](../active-directory/identity-protection/overview-identity-protection.md)
+- [Identifizieren von Azure AD-Benutzern, die aufgrund riskanter Aktivitäten gekennzeichnet wurden](/azure/active-directory/reports-monitoring/concept-user-at-risk)
 
 - [Überwachen der identitäts- und zugriffsbezogenen Aktivitäten von Benutzern in Azure Security Center](../security-center/security-center-identity-access.md)
 
-**Azure Security Center-Überwachung**: Ja
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="38-manage-azure-resources-only-from-approved-locations"></a>3.8: Verwalten von Azure-Ressourcen nur über genehmigte Standorte
 
-**Leitfaden**: Nicht zutreffend Azure AD wird nicht von Event Grid für die Authentifizierung von Clients verwendet, die Ereignisse veröffentlichen. Event Grid unterstützt die Authentifizierung über SAS-Schlüssel.
-
-**Azure Security Center-Überwachung**: Nicht zutreffend
+**Leitfaden**: Nicht zutreffend Azure Active Directory (Azure AD) wird nicht von Event Grid für die Authentifizierung von Clients verwendet, die Ereignisse veröffentlichen. Event Grid unterstützt die Authentifizierung über SAS-Schlüssel.
 
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="39-use-azure-active-directory"></a>3.9: Verwenden von Azure Active Directory
 
@@ -383,65 +391,63 @@ Event Grid kann eine verwaltete Dienstidentität für Azure Event Grid-Themen od
 
 - [Erstellen und Konfigurieren einer Azure AD-Instanz](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
-**Azure Security Center-Überwachung**: Nicht zutreffend
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10: Regelmäßiges Überprüfen und Abstimmen des Benutzerzugriffs
 
-**Leitfaden**: Azure AD enthält Protokolle zum Ermitteln von veralteten Konten. Verwenden Sie zusätzlich Azure AD-Identitäts und -Zugriffsüberprüfungen, um Gruppenmitgliedschaften, den Zugriff auf Unternehmensanwendungen sowie Rollenzuweisungen effizient zu verwalten. Der Benutzerzugriff kann regelmäßig überprüft werden, um sicherzustellen, dass nur die richtigen Benutzer weiterhin über Zugriff verfügen. 
- 
-Verwenden Sie Azure Active Directory Privileged Identity Management (AAD/PIM) für die Generierung von Protokollen und Warnungen bei verdächtigen oder sicherheitsrelevanten Aktivitäten in der Umgebung.
+**Leitfaden**: Azure Active Directory (Azure AD) enthält Protokolle zum Ermitteln von veralteten Konten. Verwenden Sie zusätzlich Azure AD-Identitäts und -Zugriffsüberprüfungen, um Gruppenmitgliedschaften, den Zugriff auf Unternehmensanwendungen sowie Rollenzuweisungen effizient zu verwalten. Der Benutzerzugriff kann regelmäßig überprüft werden, um sicherzustellen, dass nur die richtigen Benutzer weiterhin über Zugriff verfügen.
 
-- [Grundlegendes zur Azure AD-Berichterstellung](../active-directory/reports-monitoring/index.yml)
+Verwenden Sie Azure AD Privileged Identity Management (PIM) für die Generierung von Protokollen und Warnungen bei verdächtigen oder unsicheren Aktivitäten in der Umgebung.
+
+- [Grundlegendes zur Azure AD-Berichterstellung](/azure/active-directory/reports-monitoring)
 
 - [Was sind Azure AD-Zugriffsüberprüfungen?](../active-directory/governance/access-reviews-overview.md)
 
-- [Bereitstellen von Azure AD Privileged Identity Management (PIM)](../active-directory/privileged-identity-management/pim-deployment-plan.md)
-
-**Azure Security Center-Überwachung**: Ja
+- [Bereitstellen von Azure AD Privileged Identity Management (PIM)](/azure/active-directory/privileged-identity-management/pim-deployment-plan)
 
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="311-monitor-attempts-to-access-deactivated-credentials"></a>3.11: Überwachen von Zugriffsversuchen auf deaktivierte Anmeldeinformationen
 
-**Leitfaden**: Sie haben Zugriff auf Azure AD-Anmeldeaktivitäten und Überwachungs- und Risikoereignisse, sodass die Integration in jedes SIEM- und Überwachungstool möglich ist.
+**Leitfaden**: Sie haben Zugriff auf die Protokollquellen von Azure AD-Anmeldeaktivitäten (Azure Active Directory) und von Überwachungs- und Risikoereignissen, sodass die Integration in jedes SIEM- und Überwachungstool möglich ist.
 
 Sie können diesen Prozess optimieren, indem Sie Diagnoseeinstellungen für Azure AD-Benutzerkonten erstellen und die Überwachungs- und Anmeldeprotokolle an einen Log Analytics-Arbeitsbereich senden. Sie können gewünschte Warnungen im Log Analytics-Arbeitsbereich konfigurieren.
 
-- [Integrieren von Azure-Aktivitätsprotokollen in Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
-
-**Azure Security Center-Überwachung**: Nicht zutreffend
+- [Integrieren von Azure-Aktivitätsprotokollen in Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
 
 **Verantwortlichkeit**: Kunde
 
+**Azure Security Center-Überwachung:** Keine
+
 ### <a name="312-alert-on-account-login-behavior-deviation"></a>3.12: Warnung bei abweichendem Verhalten bei der Kontoanmeldung
 
-**Leitfaden**: Mit den Azure AD Identity Protection-Funktionen können Sie automatische Antworten auf erkannte verdächtige Aktionen im Zusammenhang mit Benutzeridentitäten konfigurieren. Außerdem können Sie Daten zur weiteren Untersuchung in Azure Sentinel erfassen.
- 
- 
- 
-- [Anzeigen riskanter Azure AD-Anmeldungen](../active-directory/identity-protection/overview-identity-protection.md)
+**Leitfaden**: Mit Azure AD-Funktionen (Azure Active Directory) zum Identitätsschutz können Sie automatische Reaktionen auf erkannte verdächtige Aktionen im Zusammenhang mit Benutzeridentitäten konfigurieren. Außerdem können Sie Daten zur weiteren Untersuchung in Azure Sentinel erfassen.
+
+- [Anzeigen riskanter Azure AD-Anmeldungen](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
 
 - [Konfigurieren und Aktivieren von Risikorichtlinien für den Identitätsschutz](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
 - [Durchführen des Onboardings für Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-**Azure Security Center-Überwachung**: Nicht zutreffend
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3.13: Ermöglichen des Zugriffs auf relevante Kundendaten für Microsoft in Supportszenarien
 
 **Leitfaden**: Nicht zutreffend; der Event Grid-Dienst unterstützt aktuell keine Kunden-Lockbox.
 
-**Azure Security Center-Überwachung**: Nicht zutreffend
-
 **Verantwortlichkeit**: Nicht zutreffend
 
-## <a name="data-protection"></a>Schutz von Daten
+**Azure Security Center-Überwachung:** Keine
 
-*Weitere Informationen finden Sie unter [Azure-Sicherheitsvergleichstest: Datenschutz](../security/benchmarks/security-control-data-protection.md).*
+## <a name="data-protection"></a>Datenschutz
+
+*Weitere Informationen finden Sie unter [Azure-Sicherheitsvergleichstest: Schutz von Daten](../security/benchmarks/security-control-data-protection.md).*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1: Verwalten eines Bestands an vertraulichen Informationen
 
@@ -449,25 +455,25 @@ Sie können diesen Prozess optimieren, indem Sie Diagnoseeinstellungen für Azur
  
  
  
-- [Erstellen und Verwenden von Tags](../azure-resource-manager/management/tag-resources.md)
-
-**Azure Security Center-Überwachung**: Nicht zutreffend
+- [Erstellen und Verwenden von Tags](/azure/azure-resource-manager/resource-group-using-tags)
 
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2: Isolieren von Systemen, die vertrauliche Informationen speichern oder verarbeiten
 
 **Leitfaden**: Implementieren Sie eine Isolation mit separaten Abonnements und Verwaltungsgruppen für einzelne Sicherheitsdomänen, z. B. Umgebungstyp und Datenvertraulichkeitsstufe. Sie können die Zugriffsebene auf diejenigen Ihrer Azure-Ressourcen beschränken, die von Ihren Anwendungen und Unternehmensumgebungen gefordert werden. Sie können den Zugriff auf Azure-Ressourcen über die rollenbasierte Zugriffssteuerung in Azure steuern.
 
-- [Erstellen zusätzlicher Azure-Abonnements](../cost-management-billing/manage/create-subscription.md)
+- [Erstellen zusätzlicher Azure-Abonnements](/azure/billing/billing-create-subscription)
 
-- [Erstellen von Verwaltungsgruppen](../governance/management-groups/create-management-group-portal.md)
+- [Erstellen von Verwaltungsgruppen](/azure/governance/management-groups/create)
 
-- [Erstellen und Verwenden von Tags](../azure-resource-manager/management/tag-resources.md)
-
-**Azure Security Center-Überwachung**: Nicht zutreffend
+- [Erstellen und Verwenden von Tags](/azure/azure-resource-manager/resource-group-using-tags)
 
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4.3: Überwachen und Blockieren einer nicht autorisierten Übertragung vertraulicher Informationen
 
@@ -475,17 +481,17 @@ Sie können diesen Prozess optimieren, indem Sie Diagnoseeinstellungen für Azur
 
 - [Grundlegendes zum Schutz von Kundendaten in Azure](../security/fundamentals/protection-customer-data.md)
 
-**Azure Security Center-Überwachung**: Nicht zutreffend
-
 **Verantwortlichkeit**: Shared
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4: Verschlüsseln aller vertraulichen Informationen während der Übertragung
 
-**Leitfaden**: Azure Event Grid erfordert HTTPS für die Veröffentlichung und unterstützt HTTPS für die Übermittlung von Ereignissen an einen Webhook-Endpunkt. In Azure Global unterstützt Event Grid sowohl TLS 1.1 als auch TLS 1.2. Es wird jedoch dringend empfohlen, Version 1.2 zu verwenden. In nationalen Clouds wie Azure Government und Azure-Bereitstellungen über 21Vianet in China unterstützt Event Grid lediglich TLS 1.2. 
-
-**Azure Security Center-Überwachung**: Nicht zutreffend
+**Leitfaden**: Azure Event Grid erfordert HTTPS für die Veröffentlichung und unterstützt HTTPS für die Übermittlung von Ereignissen an einen Webhook-Endpunkt. In Azure Global unterstützt Event Grid sowohl TLS 1.1 als auch TLS 1.2. Es wird jedoch dringend empfohlen, Version 1.2 zu verwenden. In nationalen Clouds wie Azure Government und Azure-Bereitstellungen über 21Vianet in China unterstützt Event Grid lediglich TLS 1.2.
 
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4.5: Verwenden eines aktiven Ermittlungstools zur Bestimmung vertraulicher Daten
 
@@ -495,29 +501,29 @@ Für die zugrunde liegende Plattform, die von Microsoft verwaltet wird, behandel
 
 - [Grundlegendes zum Schutz von Kundendaten in Azure](../security/fundamentals/protection-customer-data.md)
 
-**Azure Security Center-Überwachung**: Nicht zutreffend
-
 **Verantwortlichkeit**: Kunde
 
-### <a name="46-use-azure-rbac-to-manage-access-to-resources"></a>4.6: Verwenden von Azure RBAC zum Verwalten des Ressourcenzugriffs
+**Azure Security Center-Überwachung:** Keine
 
-**Leitfaden**: Azure Event Grid unterstützt die Verwendung von Azure Active Directory (AD) zum Autorisieren von Anforderungen an Event Grid-Ressourcen. Mit Azure AD können Sie Azure RBAC (Azure Role-Based Access Control, rollenbasierte Zugriffssteuerung von Azure) zum Gewähren von Berechtigungen für einen Sicherheitsprinzipal verwenden, bei dem es sich um einen Benutzer oder einen Anwendungsdienstprinzipal handeln kann.
+### <a name="46-use-azure-rbac-to-manage-access-to-resources"></a>4.6: Verwenden von Azure RBAC zum Verwalten des Zugriffs auf Ressourcen
+
+**Leitfaden**: Azure Event Grid unterstützt die Verwendung von Azure Active Directory (Azure AD) zum Autorisieren von Anforderungen an Event Grid-Ressourcen. Mit Azure AD können Sie Azure RBAC (Azure Role-Based Access Control, rollenbasierte Zugriffssteuerung von Azure) zum Gewähren von Berechtigungen für einen Sicherheitsprinzipal verwenden, bei dem es sich um einen Benutzer oder einen Anwendungsdienstprinzipal handeln kann.
 
 - [Autorisieren des Zugriffs auf Event Grid-Ressourcen](security-authorization.md)
 
-**Azure Security Center-Überwachung**: Nicht zutreffend
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9: Protokollieren und Warnen bei Änderungen an wichtigen Azure-Ressourcen
 
 **Leitfaden**: Verwenden Sie Azure Monitor mit dem Azure-Aktivitätsprotokoll, um Warnungen für den Fall zu erstellen, dass Änderungen an Produktionsinstanzen von Azure Event Grid und anderen kritischen bzw. verwandten Ressourcen vorgenommen werden.
 
-- [Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls](../azure-monitor/platform/alerts-activity-log.md)
-
-**Azure Security Center-Überwachung**: Nicht zutreffend
+- [Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls](/azure/azure-monitor/platform/alerts-activity-log)
 
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ## <a name="vulnerability-management"></a>Verwaltung von Sicherheitsrisiken
 
@@ -527,25 +533,25 @@ Für die zugrunde liegende Plattform, die von Microsoft verwaltet wird, behandel
 
 **Leitfaden**: Nicht zutreffend. Diese Leitlinie ist für Computeressourcen vorgesehen.
 
-**Azure Security Center-Überwachung**: Nicht zutreffend
-
 **Verantwortlichkeit**: Nicht zutreffend
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="54-compare-back-to-back-vulnerability-scans"></a>5.4 Vergleichen von kaskadierenden Sicherheitsrisikoscans
 
 **Leitfaden**: Nicht zutreffend. Diese Leitlinie ist für Computeressourcen vorgesehen.
 
-**Azure Security Center-Überwachung**: Nicht zutreffend
-
 **Verantwortlichkeit**: Nicht zutreffend
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5.5: Verwenden eines Risikobewertungsprozesses, um die Behebung von erkannten Sicherheitsrisiken zu priorisieren
 
 **Leitfaden**: Nicht zutreffend. Diese Leitlinie ist für Computeressourcen vorgesehen.
 
-**Azure Security Center-Überwachung**: Nicht zutreffend
-
 **Verantwortlichkeit**: Nicht zutreffend
+
+**Azure Security Center-Überwachung:** Keine
 
 ## <a name="inventory-and-asset-management"></a>Bestands- und Ressourcenverwaltung
 
@@ -555,19 +561,19 @@ Für die zugrunde liegende Plattform, die von Microsoft verwaltet wird, behandel
 
 **Leitfaden**: Nicht zutreffend. Diese Leitlinie ist für Computeressourcen vorgesehen.
 
-**Azure Security Center-Überwachung**: Nicht zutreffend
-
 **Verantwortlichkeit**: Nicht zutreffend
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="62-maintain-asset-metadata"></a>6.2: Verwalten von Ressourcenmetadaten
 
 **Leitfaden**: Wenden Sie Tags auf Ihre Azure-Ressourcen an, die Metadaten erzeugen, um sie logisch in einer Taxonomie zu organisieren.
 
-- [Erstellen und Verwenden von Tags](../azure-resource-manager/management/tag-resources.md)
-
-**Azure Security Center-Überwachung**: Nicht zutreffend
+- [Erstellen und Verwenden von Tags](/azure/azure-resource-manager/resource-group-using-tags)
 
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="63-delete-unauthorized-azure-resources"></a>6.3: Löschen nicht autorisierter Azure-Ressourcen
 
@@ -575,23 +581,23 @@ Für die zugrunde liegende Plattform, die von Microsoft verwaltet wird, behandel
  
  
  
-- [Erstellen zusätzlicher Azure-Abonnements](../cost-management-billing/manage/create-subscription.md)
+- [Erstellen zusätzlicher Azure-Abonnements](/azure/billing/billing-create-subscription)
 
-- [Erstellen von Verwaltungsgruppen](../governance/management-groups/create-management-group-portal.md)
+- [Erstellen von Verwaltungsgruppen](/azure/governance/management-groups/create)
 
-- [Erstellen und Verwenden von Tags](../azure-resource-manager/management/tag-resources.md)
-
-**Azure Security Center-Überwachung**: Nicht zutreffend
+- [Erstellen und Verwenden von Tags](/azure/azure-resource-manager/resource-group-using-tags)
 
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="64-define-and-maintain-an-inventory-of-approved-azure-resources"></a>6.4: Definieren und Verwalten eines Bestands an genehmigten Azure-Ressourcen
 
 **Leitfaden**: Erstellen Sie einen Bestand an genehmigten Azure-Ressourcen und genehmigter Software für Computeressourcen gemäß den Anforderungen Ihrer Organisation.
 
-**Azure Security Center-Überwachung**: Nicht zutreffend
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5: Überwachung auf nicht genehmigte Azure-Ressourcen
 
@@ -605,33 +611,33 @@ Verwenden Sie darüber hinaus Azure Resource Graph, um Ressourcen in Ihren Abonn
 - [Konfigurieren und Verwalten von Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 - [Erstellen von Abfragen mit Azure Graph](../governance/resource-graph/first-query-portal.md)
 
-**Azure Security Center-Überwachung**: Nicht zutreffend
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6.6: Überwachen auf nicht genehmigte Softwareanwendungen innerhalb von Computeressourcen
 
 **Leitfaden**: Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
 
-**Azure Security Center-Überwachung**: Nicht zutreffend
-
 **Verantwortlichkeit**: Nicht zutreffend
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6.7: Entfernen nicht genehmigter Azure-Ressourcen und Softwareanwendungen
 
 **Leitfaden**: Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
 
-**Azure Security Center-Überwachung**: Nicht zutreffend
-
 **Verantwortlichkeit**: Nicht zutreffend
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="68-use-only-approved-applications"></a>6.8: Ausschließliche Verwendung genehmigter Anwendungen
 
 **Leitfaden**: Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
 
-**Azure Security Center-Überwachung**: Nicht zutreffend
-
 **Verantwortlichkeit**: Nicht zutreffend
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="69-use-only-approved-azure-services"></a>6.9: Ausschließliche Verwendung genehmigter Azure-Dienste
 
@@ -646,45 +652,43 @@ Verwenden Sie darüber hinaus Azure Resource Graph, um Ressourcen in Ihren Abonn
 
 - [Erstellen von Abfragen mit Azure Graph](../governance/resource-graph/first-query-portal.md)
 
-**Azure Security Center-Überwachung**: Nicht zutreffend
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="610-maintain-an-inventory-of-approved-software-titles"></a>6.10: Verwalten eines Bestands an genehmigten Softwaretiteln
 
 **Leitfaden**: Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
 
-**Azure Security Center-Überwachung**: Nicht zutreffend
-
 **Verantwortlichkeit**: Nicht zutreffend
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="611-limit-users-ability-to-interact-with-azure-resource-manager"></a>6.11: Einschränken der Möglichkeiten von Benutzern zur Interaktion mit Azure Resource Manager
 
-**Leitfaden**: Verwenden Sie bedingten Azure AD-Zugriff, um die Möglichkeiten von Benutzern zur Interaktion mit Azure Resource Manager einzuschränken, indem Sie „Zugriff blockieren“ für die App zur „Verwaltung von Microsoft Azure“ konfigurieren.
- 
- 
- 
+**Leitfaden**: Verwenden Sie bedingten Azure AD-Zugriff (Azure Active Directory), um die Möglichkeiten von Benutzern zur Interaktion mit Azure Resource Manager einzuschränken, indem Sie „Zugriff blockieren“ für die Microsoft Azure Management-App konfigurieren.
+
 - [Konfigurieren des bedingten Zugriffs, um den Zugriff auf Azure Resource Manager zu blockieren](../role-based-access-control/conditional-access-azure-management.md)
 
-**Azure Security Center-Überwachung**: Nicht zutreffend
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="612-limit-users-ability-to-execute-scripts-in-compute-resources"></a>6.12: Einschränken der Skriptausführung durch Benutzer in Computeressourcen
 
 **Leitfaden**: Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
 
-**Azure Security Center-Überwachung**: Nicht zutreffend
-
 **Verantwortlichkeit**: Nicht zutreffend
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13: Physische oder logische Trennung von Anwendungen mit hohem Risiko
 
 **Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Webanwendungen gedacht, die in Azure App Service oder auf Computeressourcen ausgeführt werden.
 
-**Azure Security Center-Überwachung**: Nicht zutreffend
-
 **Verantwortlichkeit**: Nicht zutreffend
+
+**Azure Security Center-Überwachung:** Keine
 
 ## <a name="secure-configuration"></a>Sichere Konfiguration
 
@@ -700,17 +704,17 @@ Mit Azure Resource Manager ist es möglich, die Vorlage in JSON-Code (JavaScript
 
 - [Konfigurieren und Verwalten von Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-**Azure Security Center-Überwachung**: Nicht zutreffend
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="72-establish-secure-operating-system-configurations"></a>7.2: Einrichten sicherer Betriebssystemkonfigurationen
 
 **Leitfaden**: Nicht zutreffend. Diese Leitlinie ist für Computeressourcen vorgesehen.
 
-**Azure Security Center-Überwachung**: Nicht zutreffend
-
 **Verantwortlichkeit**: Nicht zutreffend
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3: Verwalten von sicheren Konfigurationen für Azure-Ressourcen
 
@@ -722,17 +726,17 @@ Mit Azure Resource Manager ist es möglich, die Vorlage in JSON-Code (JavaScript
 
 - [Übersicht über Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/overview.md)
 
-**Azure Security Center-Überwachung**: Nicht zutreffend
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="74-maintain-secure-operating-system-configurations"></a>7.4: Verwalten sicherer Betriebssystemkonfigurationen
 
 **Leitfaden**: Nicht zutreffend. Diese Leitlinie ist für Computeressourcen vorgesehen.
 
-**Azure Security Center-Überwachung**: Nicht zutreffend
-
 **Verantwortlichkeit**: Nicht zutreffend
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5: Sicheres Speichern der Konfiguration von Azure-Ressourcen
 
@@ -740,19 +744,19 @@ Mit Azure Resource Manager ist es möglich, die Vorlage in JSON-Code (JavaScript
 
 - [Speichern von Code in Azure DevOps](/azure/devops/repos/git/gitworkflow)
 
-- [Dokumentation zu Azure Repos](/azure/devops/repos/index)
-
-**Azure Security Center-Überwachung**: Nicht zutreffend
+- [Dokumentation zu Azure Repos](/azure/devops/repos/)
 
 **Verantwortlichkeit**: Kunde
 
+**Azure Security Center-Überwachung:** Keine
+
 ### <a name="76-securely-store-custom-operating-system-images"></a>7.6: Sicheres Speichern von benutzerdefinierten Betriebssystemimages
 
-**Leitfaden**: Nicht zutreffend. Diese Leitlinie ist für Computeressourcen vorgesehen.
-
-**Azure Security Center-Überwachung**: Nicht zutreffend
+**Leitfaden**: Nicht zutreffend; diese Leitlinie ist für Computeressourcen vorgesehen.
 
 **Verantwortlichkeit**: Nicht zutreffend
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="77-deploy-configuration-management-tools-for-azure-resources"></a>7.7: Bereitstellen von Konfigurationsverwaltungstools für Azure-Ressourcen
 
@@ -760,19 +764,19 @@ Mit Azure Resource Manager ist es möglich, die Vorlage in JSON-Code (JavaScript
 
 - [Konfigurieren und Verwalten von Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [Verwenden von Aliasen](../governance/policy/concepts/definition-structure.md#aliases)
-
-**Azure Security Center-Überwachung**: Nicht zutreffend
+- [Verwenden von Aliasen](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#aliases)
 
 **Verantwortlichkeit**: Kunde
 
+**Azure Security Center-Überwachung:** Keine
+
 ### <a name="78-deploy-configuration-management-tools-for-operating-systems"></a>7.8: Bereitstellen von Konfigurationsverwaltungstools für Betriebssysteme
 
-**Leitfaden**: Nicht zutreffend. Diese Leitlinie ist für Computeressourcen vorgesehen.
-
-**Azure Security Center-Überwachung**: Nicht zutreffend
+**Leitfaden**: Nicht zutreffend; diese Leitlinie ist für Computeressourcen vorgesehen.
 
 **Verantwortlichkeit**: Nicht zutreffend
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="79-implement-automated-configuration-monitoring-for-azure-resources"></a>7.9: Implementieren der automatisierten Konfigurationsüberwachung für Azure-Ressourcen
 
@@ -780,17 +784,17 @@ Mit Azure Resource Manager ist es möglich, die Vorlage in JSON-Code (JavaScript
 
 - [Umsetzen von Empfehlungen in Azure Security Center](../security-center/security-center-remediate-recommendations.md)
 
-**Azure Security Center-Überwachung**: Ja
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7.10: Implementieren der automatisierten Konfigurationsüberwachung für Betriebssysteme
 
-**Leitfaden**: Nicht zutreffend. Diese Leitlinie ist für Computeressourcen vorgesehen.
-
-**Azure Security Center-Überwachung**: Nicht zutreffend
+**Leitfaden**: Nicht zutreffend; diese Leitlinie ist für Computeressourcen vorgesehen.
 
 **Verantwortlichkeit**: Nicht zutreffend
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="711-manage-azure-secrets-securely"></a>7.11: Sicheres Verwalten von Azure-Geheimnissen
 
@@ -802,15 +806,15 @@ Verwenden Sie verwaltete Identitäten in Verbindung mit Azure Key Vault, um die 
 
 - [Verwenden von verwalteten Identitäten für Azure-Ressourcen](../azure-app-configuration/howto-integrate-azure-managed-service-identity.md)
 
-- [Erstellen einer Key Vault-Instanz](../key-vault/general/quick-create-portal.md)
+- [Erstellen einer Key Vault-Instanz](../key-vault/secrets/quick-create-portal.md)
 
 - [Authentifizieren bei Key Vault](../key-vault/general/authentication.md)
 
 - [Zuweisen einer Key Vault-Zugriffsrichtlinie](../key-vault/general/assign-access-policy-portal.md)
 
-**Azure Security Center-Überwachung**: Ja
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7.12: Sicheres und automatisches Verwalten von Identitäten
 
@@ -818,9 +822,9 @@ Verwenden Sie verwaltete Identitäten in Verbindung mit Azure Key Vault, um die 
 
 - [Ereignisübermittlung mit einer verwalteten Identität](managed-service-identity.md)
 
-**Azure Security Center-Überwachung**: Nicht zutreffend
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="713-eliminate-unintended-credential-exposure"></a>7.13: Beheben der unbeabsichtigten Offenlegung von Anmeldeinformationen
 
@@ -828,9 +832,9 @@ Verwenden Sie verwaltete Identitäten in Verbindung mit Azure Key Vault, um die 
 
 - [Einrichten von Credential Scanner](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
-**Azure Security Center-Überwachung**: Nicht zutreffend
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ## <a name="malware-defense"></a>Schutz vor Schadsoftware
 
@@ -842,9 +846,9 @@ Verwenden Sie verwaltete Identitäten in Verbindung mit Azure Key Vault, um die 
 
 Es liegt in Ihrer Verantwortung, alle Inhalte vorab zu überprüfen, die auf computefremde Azure-Ressourcen hochgeladen werden. Microsoft kann nicht auf Kundendaten zugreifen und kann daher keine Antischadsoftwarescans von Kundeninhalten in Ihrem Namen durchführen.
 
-**Azure Security Center-Überwachung**: Nicht zutreffend
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ## <a name="data-recovery"></a>Datenwiederherstellung
 
@@ -856,9 +860,9 @@ Es liegt in Ihrer Verantwortung, alle Inhalte vorab zu überprüfen, die auf com
 
 - [Serverseitige georedundante Notfallwiederherstellung in Azure Event Grid](geo-disaster-recovery.md)
 
-**Azure Security Center-Überwachung**: Nicht zutreffend
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2: Durchführen vollständiger Systemsicherungen und Sichern aller kundenseitig verwalteten Schlüssel
 
@@ -868,9 +872,9 @@ Derzeit unterstützt Event Grid keine kundenseitig verwalteten Schlüssel.
 
 - [Serverseitige georedundante Notfallwiederherstellung in Azure Event Grid](geo-disaster-recovery.md)
 
-**Azure Security Center-Überwachung**: Nicht zutreffend
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9.3: Überprüfen aller Sicherungen einschließlich kundenseitig verwalteter Schlüssel
 
@@ -880,9 +884,9 @@ Derzeit unterstützt Event Grid keine kundenseitig verwalteten Schlüssel.
 
 - [Serverseitige georedundante Notfallwiederherstellung in Azure Event Grid](geo-disaster-recovery.md)
 
-**Azure Security Center-Überwachung**: Nicht zutreffend
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4: Sicherstellen des Schutzes von Sicherungen und von kundenseitig verwalteten Schlüsseln
 
@@ -893,9 +897,9 @@ Derzeit unterstützt Event Grid keine kundenseitig verwalteten Schlüssel.
 
 - [Grundlegendes zu Azure RBAC](../role-based-access-control/overview.md)
 
-**Azure Security Center-Überwachung**: Nicht zutreffend
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ## <a name="incident-response"></a>Reaktion auf Vorfälle
 
@@ -911,9 +915,9 @@ Derzeit unterstützt Event Grid keine kundenseitig verwalteten Schlüssel.
 
 - [Nutzen des Computer Security Incident Handling Guide des US-amerikanischen National Institute of Standards and Technology (NIST) als Hilfe bei der Entwicklung eines eigenen Plans zur Reaktion auf Vorfälle](https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final)
 
-**Azure Security Center-Überwachung**: Nicht zutreffend
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2: Erstellen eines Verfahrens zur Bewertung und Priorisierung von Vorfällen
 
@@ -926,11 +930,11 @@ Derzeit unterstützt Event Grid keine kundenseitig verwalteten Schlüssel.
 
 - [Sicherheitswarnungen in Azure Security Center](../security-center/security-center-alerts-overview.md)
 
-- [Verwenden von Tags zum Organisieren von Azure-Ressourcen](../azure-resource-manager/management/tag-resources.md)
-
-**Azure Security Center-Überwachung**: Ja
+- [Verwenden von Tags zum Organisieren von Azure-Ressourcen](/azure/azure-resource-manager/resource-group-using-tags)
 
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="103-test-security-response-procedures"></a>10.3: Verfahren zum Testen der Reaktion auf Sicherheitsvorfälle
 
@@ -940,9 +944,9 @@ Derzeit unterstützt Event Grid keine kundenseitig verwalteten Schlüssel.
  
 - [NIST-Veröffentlichung: Leitfaden zum Testen, Trainieren und Ausführen von Programmen für IT-Pläne und -Funktionen](https://csrc.nist.gov/publications/detail/sp/800-84/final)
 
-**Azure Security Center-Überwachung**: Nicht zutreffend
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10.4: Angeben von Kontaktdaten für Sicherheitsvorfälle und Konfigurieren von Warnungsbenachrichtigungen für Sicherheitsvorfälle
 
@@ -952,9 +956,9 @@ Derzeit unterstützt Event Grid keine kundenseitig verwalteten Schlüssel.
  
 - [Festlegen der Kontaktinformationen in Azure Security Center](../security-center/security-center-provide-security-contact-details.md)
 
-**Azure Security Center-Überwachung**: Nicht zutreffend
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5: Integrieren von Sicherheitswarnungen in das System zur Reaktion auf Vorfälle
 
@@ -964,9 +968,9 @@ Derzeit unterstützt Event Grid keine kundenseitig verwalteten Schlüssel.
 
 - [Streamen von Warnungen in Azure Sentinel](../sentinel/connect-azure-security-center.md)
 
-**Azure Security Center-Überwachung**: Nicht zutreffend
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="106-automate-the-response-to-security-alerts"></a>10.6: Automatisieren der Reaktion auf Sicherheitswarnungen
 
@@ -974,11 +978,11 @@ Derzeit unterstützt Event Grid keine kundenseitig verwalteten Schlüssel.
 
 - [Konfigurieren der Workflowautomatisierung in Security Center](../security-center/workflow-automation.md)
 
-**Azure Security Center-Überwachung**: Nicht zutreffend
-
 **Verantwortlichkeit**: Kunde
 
-## <a name="penetration-tests-and-red-team-exercises"></a>Penetrationstests und Red Team-Übungen
+**Azure Security Center-Überwachung:** Keine
+
+## <a name="penetration-tests-and-red-team-exercises"></a>Penetrationstests und Red Team-Übungen
 
 *Weitere Informationen finden Sie unter [Azure-Sicherheitsvergleichstest: Penetrationstests und Red Team-Übungen](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md).*
 
@@ -990,11 +994,11 @@ Derzeit unterstützt Event Grid keine kundenseitig verwalteten Schlüssel.
 
 - [Microsoft Cloud Red Teaming](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
-**Azure Security Center-Überwachung**: Nicht zutreffend
-
 **Verantwortlichkeit**: Shared
+
+**Azure Security Center-Überwachung:** Keine
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Lesen Sie den [Vergleichstest für die Azure-Sicherheit](../security/benchmarks/overview.md).
-- Erfahren Sie mehr über [Azure-Sicherheitsbaselines](../security/benchmarks/security-baselines-overview.md).
+- Sehen Sie sich die [Übersicht über Version 2 des Azure-Sicherheitsvergleichstests](/azure/security/benchmarks/overview) an.
+- Erfahren Sie mehr über [Azure-Sicherheitsbaselines](/azure/security/benchmarks/security-baselines-overview).

@@ -3,7 +3,7 @@ title: Verwenden von Azure AD Identity Governance, um externe Benutzer zu überp
 description: Verwenden Sie Zugriffsüberprüfungen, um den Zugriff von Mitgliedern von Partnerorganisationen zu ermöglichen oder zu entfernen.
 services: active-directory
 documentationcenter: ''
-author: barclayn
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
 ms.date: 09/06/2020
-ms.author: barclayn
-ms.openlocfilehash: 19f88da6a678221cde66bf61668d16ba9ab998a4
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.author: ajburnle
+ms.openlocfilehash: fe68ec498d17ec20778c8f34fc6ffa1f0964c44e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677319"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102176959"
 ---
 # <a name="use-azure-active-directory-azure-ad-identity-governance-to-review-and-remove-external-users-who-no-longer-have-resource-access"></a>Verwenden von Azure AD (Azure Active Directory) Identity Governance, um externe Benutzer zu überprüfen und zu entfernen, wenn sie keinen Ressourcenzugriff mehr haben
 
@@ -65,14 +65,15 @@ Benutzer, die keinen Zugriff mehr auf Ressourcen in Ihrem Mandanten haben, könn
 
 Wenn die Überprüfung abgeschlossen ist, werden auf der Seite **Ergebnisse** die Antworten der einzelnen externen Identitäten in einer Übersicht aufgeführt. Sie können auswählen, ob die Ergebnisse automatisch angewendet und Benutzer von der Zugriffsüberprüfung deaktiviert und gelöscht werden sollen. Alternativ können Sie die Antworten überprüfen und selbst entscheiden, ob der Zugriff eines Benutzers entfernt werden soll oder ob Sie bei diesen nachfragen, bevor Sie eine Entscheidung treffen. Wenn einige Benutzer weiterhin auf Ressourcen zugreifen können, die Sie noch nicht geprüft haben, können Sie die Überprüfung als Teil ihrer Ermittlungen verwenden und beim nächsten Überprüfungs- und Bestätigungsdurchlauf heranziehen.
 
-## <a name="disable-and-delete-external-identities-with-azure-ad-access-reviews-preview"></a>Deaktivieren und Löschen externer Identitäten mit Azure AD-Zugriffsüberprüfungen (Vorschau)
+## <a name="disable-and-delete-external-identities-with-azure-ad-access-reviews"></a>Deaktivieren und Löschen externer Identitäten mit Azure AD-Zugriffsüberprüfungen
 
 Neben der Option zum Entfernen unerwünschter externer Identitäten aus Ressourcen wie Gruppen oder Anwendungen haben Sie die Möglichkeit, externe Identitäten durch Azure AD-Zugriffsüberprüfungen daran zu hindern, dass sie sich bei Ihrem Mandanten anmelden, und nach 30 Tagen aus Ihrem Mandanten zu löschen. Sobald Sie **Anmeldung des Benutzers für 30 Tage blockieren und den Benutzer anschließend vom Mandanten entfernen** aktiviert haben, gilt der Status „Wird übernommen“ für die Überprüfung 30 Tage lang. Während dieses Zeitraums können Einstellungen, Ergebnisse, Prüfer oder Überwachungsprotokolle, die Teil der aktuellen Prüfung sind, nicht angezeigt oder konfiguriert werden. 
 
 ![Einstellungen nach Abschluss](media/access-reviews-external-users/upon-completion-settings.png)
 
 Beim Erstellen einer neuen Zugriffsüberprüfung können Sie im Abschnitt „Einstellungen nach Abschluss“ für **Auf verweigerte Benutzer anzuwendende Aktion** festlegen, dass die **Benutzeranmeldung 30 Tage lang blockiert und der Benutzer dann aus dem Mandanten entfernt** wird.
-Diese Einstellung, die sich derzeit in der Vorschauphase befindet, ermöglicht Ihnen das Identifizieren, Blockieren und Löschen externer Identitäten aus Ihrem Azure AD-Mandanten. Externe Identitäten, die überprüft wurden und denen der zukünftige Zugriff durch den Prüfer verweigert wurde, werden unabhängig von ihrem Ressourcenzugriff und ihrer Gruppenmitgliedschaft blockiert und gelöscht. Diese Einstellung wird am besten als letzter Schritt verwendet, nachdem Sie sich vergewissert haben, dass die überprüften externen Benutzer keinen Zugriff mehr auf Ressourcen haben und problemlos aus Ihrem Mandanten entfernt werden können, oder wenn Sie sie unabhängig vom aktuellen Zugriff in jedem Fall entfernen möchten. Mit der Funktion „Deaktivieren und löschen“ wird der externe Benutzer zunächst blockiert, sodass er sich nicht mehr bei Ihrem Mandanten anmelden und auf keine Ressourcen mehr zugreifen kann. Der Zugriff auf Ressourcen wird in dieser Phase nicht widerrufen, und wenn Sie die Berechtigungen des externen Benutzers wiederherstellen möchten, kann die Anmeldungsberechtigung neu konfiguriert werden. Wenn Sie keine weitere Aktion durchführt, wird eine blockierte externe Identität nach 30 Tagen aus dem Verzeichnis gelöscht, wobei das Konto und der Zugriff entfernt werden.
+
+Diese Einstellung ermöglicht Ihnen das Identifizieren, Blockieren und Löschen externer Identitäten aus Ihrem Azure AD-Mandanten. Externe Identitäten, die überprüft wurden und denen der zukünftige Zugriff durch den Prüfer verweigert wurde, werden unabhängig von ihrem Ressourcenzugriff und ihrer Gruppenmitgliedschaft blockiert und gelöscht. Diese Einstellung wird am besten als letzter Schritt verwendet, nachdem Sie sich vergewissert haben, dass die überprüften externen Benutzer keinen Zugriff mehr auf Ressourcen haben und problemlos aus Ihrem Mandanten entfernt werden können, oder wenn Sie sie unabhängig vom aktuellen Zugriff in jedem Fall entfernen möchten. Mit der Funktion „Deaktivieren und löschen“ wird der externe Benutzer zunächst blockiert, sodass er sich nicht mehr bei Ihrem Mandanten anmelden und auf keine Ressourcen mehr zugreifen kann. Der Zugriff auf Ressourcen wird in dieser Phase nicht widerrufen, und wenn Sie die Berechtigungen des externen Benutzers wiederherstellen möchten, kann die Anmeldungsberechtigung neu konfiguriert werden. Wenn Sie keine weitere Aktion durchführt, wird eine blockierte externe Identität nach 30 Tagen aus dem Verzeichnis gelöscht, wobei das Konto und der Zugriff entfernt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

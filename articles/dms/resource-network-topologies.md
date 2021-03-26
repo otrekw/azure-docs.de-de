@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: reference
 ms.date: 01/08/2020
-ms.openlocfilehash: ae036b7d893eb268ea55026054bf364dad0b610e
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 0799e8c76bc5d3969943d766aa83de40659a236a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94961548"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101093308"
 ---
 # <a name="network-topologies-for-azure-sql-managed-instance-migrations-using-azure-database-migration-service"></a>Netzwerktopologien für Migrationen von verwalteten Azure SQL-Instanzen mithilfe von Azure Database Migration Service
 
@@ -83,11 +83,12 @@ Verwenden Sie diese Netzwerktopologie, wenn Ihre Umgebung mindestens eines der f
 
 | **NAME**                  | **PORT**                                              | **PROTOKOLL** | **QUELLE** | **ZIEL**           | **AKTION** | **Grund für die Regel**                                                                                                                                                                              |
 |---------------------------|-------------------------------------------------------|--------------|------------|---------------------------|------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| management                | 443, 9354                                              | TCP          | Any        | Any                       | Allow      | Kommunikation auf Verwaltungsebene über Service Bus und Azure Blob Storage. <br/>(Wenn Microsoft-Peering aktiviert ist, benötigen Sie diese Regel möglicherweise nicht.)                                                             |
-| Diagnose               | 12000                                                 | TCP          | Any        | Any                       | Allow      | DMS verwendet diese Regel zum Sammeln von Diagnoseinformationen für die Problembehandlung.                                                                                                                      |
+| ServiceBus                | 443, ServiceTag: ServiceBus                           | TCP          | Any        | Any                       | Allow      | Kommunikation auf Verwaltungsebene über Service Bus <br/>(Wenn Microsoft-Peering aktiviert ist, benötigen Sie diese Regel möglicherweise nicht.)                                                             |
+| Storage                   | 443, ServiceTag: Storage                              | TCP          | Any        | Any                       | Allow      | Verwaltungsebene mit Azure Blob Storage <br/>(Wenn Microsoft-Peering aktiviert ist, benötigen Sie diese Regel möglicherweise nicht.)                                                             |
+| Diagnose               | 443, ServiceTag: AzureMonitor                         | TCP          | Any        | Any                       | Allow      | DMS verwendet diese Regel zum Sammeln von Diagnoseinformationen für die Problembehandlung. <br/>(Wenn Microsoft-Peering aktiviert ist, benötigen Sie diese Regel möglicherweise nicht.)                                                  |
 | SQL-Quellserver         | 1433 (oder TCP-IP-Port, an dem SQL Server lauscht) | TCP          | Any        | Lokaler Adressraum | Allow      | SQL Server-Quellkonnektivität von DMS <br/>(Wenn Sie über Site-to-Site-Konnektivität verfügen, benötigen Sie diese Regel möglicherweise nicht.)                                                                                       |
 | Benannte SQL Server-Instanz | 1434                                                  | UDP          | Any        | Lokaler Adressraum | Allow      | Quellkonnektivität der benannten SQL Server-Instanz von DMS <br/>(Wenn Sie über Site-to-Site-Konnektivität verfügen, benötigen Sie diese Regel möglicherweise nicht.)                                                                        |
-| SMB-Freigabe                 | 445                                                   | TCP          | Any        | Lokaler Adressraum | Allow      | SMB-Netzwerkfreigabe, in der DMS Datenbank-Sicherungsdateien für Migrationen zu verwalteten Azure SQL-Datenbank-Instanzen und SQL Server-Instanzen auf virtuellen Azure-Computern speichert <br/>(Wenn Sie über Site-to-Site-Konnektivität verfügen, benötigen Sie diese Regel möglicherweise nicht.) |
+| SMB-Freigabe                 | 445 (wenn für Szenario erforderlich)                             | TCP          | Any        | Lokaler Adressraum | Allow      | SMB-Netzwerkfreigabe, in der DMS Datenbank-Sicherungsdateien für Migrationen zu verwalteten Azure SQL-Datenbank-Instanzen und SQL Server-Instanzen auf virtuellen Azure-Computern speichert <br/>(Wenn Sie über Site-to-Site-Konnektivität verfügen, benötigen Sie diese Regel möglicherweise nicht.) |
 | DMS_subnet                | Any                                                   | Any          | Any        | DMS_Subnet                | Allow      |                                                                                                                                                                                                  |
 
 ## <a name="see-also"></a>Weitere Informationen

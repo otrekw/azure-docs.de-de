@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
 ms.openlocfilehash: 51baf009543208fbbfe091238d0215a24761641d
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102031955"
 ---
 # <a name="enable-vm-insights-by-using-azure-policy"></a>Aktivieren von VM Insights mithilfe von Azure Policy
@@ -110,5 +110,5 @@ Nach Abschluss der Wartungstasks sollten Ihre VMs konform sein. Die Agents sollt
 
 Nachdem die Überwachung für Ihre virtuellen Computer aktiviert wurde, stehen diese Informationen nun für die Analyse mit VM Insights zur Verfügung. 
 
-- Wenn Sie die ermittelten Anwendungsabhängigkeiten anzeigen möchten, finden Sie weitere Informationen dazu unter [Verwenden des Map-Features von VM Insights für ein besseres Verständnis von Anwendungskomponenten](vminsights-maps.md). 
+- Informationen zu ermittelten Anwendungsabhängigkeiten finden Sie unter [Anzeigen der Zuordnung in VM Insights](vminsights-maps.md). 
 - Informationen zum Erkennen von Engpässen und der Gesamtauslastung im Hinblick auf die Leistung Ihrer VM finden Sie unter [Anzeigen der Leistung von Azure-VMs](vminsights-performance.md).

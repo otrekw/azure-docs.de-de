@@ -6,10 +6,10 @@ ms.date: 05/14/2019
 ms.custom: devx-track-csharp
 ms.reviewer: mbullwin
 ms.openlocfilehash: a22a0d112671019d73eb4c9a3853462e4e9c8c75
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98937350"
 ---
 # <a name="telemetry-channels-in-application-insights"></a>Telemetriekanäle in Application Insights
@@ -154,11 +154,11 @@ Die kurze Antwort ist, dass keiner der integrierten Kanäle als Transaktionstyp 
 Obwohl der Name des Pakets und des Namespace „WindowsServer“ beinhaltet, wird dieser Kanal auf anderen Systemen als Windows mit folgender Ausnahme unterstützt. Auf anderen Systemen als Windows erstellt der Kanal standardmäßig keinen lokalen Speicherordner. Sie müssen einen lokalen Speicherordner erstellen und den Kanal für die Verwendung dieses Ordners konfigurieren. Nachdem die lokale Speicherung konfiguriert wurde, funktioniert der Kanal auf allen Systemen gleich.
 
 > [!NOTE]
-> Ab Version 2.15.0-beta3 wird nun automatisch lokaler Speicher für Linux, Mac und Windows erstellt. Für Nicht-Windows-Systeme erstellt das SDK automatisch einen lokalen Speicherordner auf Grundlage der folgenden Logik:
+> Ab Version 2.15.0-beta3 wird nun automatisch lokaler Speicher für Linux, Mac und Windows erstellt. Für Nicht-Windows-Systeme erstellt das SDK automatisch einen lokalen Speicherordner auf der Grundlage der folgenden Logik:
 > - `${TMPDIR}`: Wenn die Umgebungsvariable `${TMPDIR}` festgelegt ist, wird dieser Speicherort verwendet.
 > - `/var/tmp`: Wenn der vorherige Speicherort nicht vorhanden ist, versuchen wir `/var/tmp`.
 > - `/tmp`: Wenn die beiden vorherigen Speicherorte nicht vorhanden sind, versuchen wir `tmp`. 
-> - Wenn keiner dieser Standorte vorhanden ist, wird kein lokaler Speicher erstellt, wodurch eine manuelle Konfiguration weiterhin erforderlich ist. [Vollständige Details zur Implementierung.](https://github.com/microsoft/ApplicationInsights-dotnet/pull/1860)
+> - Wenn keiner dieser Speicherorte vorhanden ist, wird kein lokaler Speicher erstellt, wodurch eine manuelle Konfiguration weiterhin erforderlich ist. [Vollständige Details zur Implementierung.](https://github.com/microsoft/ApplicationInsights-dotnet/pull/1860)
 
 ### <a name="does-the-sdk-create-temporary-local-storage-is-the-data-encrypted-at-storage"></a>Erstellt das SDK einen temporären lokalen Speicher? Werden die Daten beim Speichern verschlüsselt?
 

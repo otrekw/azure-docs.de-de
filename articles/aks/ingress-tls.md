@@ -5,12 +5,12 @@ description: Erfahren Sie, wie Sie einen NGINX-Eingangscontroller installieren u
 services: container-service
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: 1faabdda869bbaba8027df121d080b0fb421e9f1
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: aa03558196527e320ecba249dd22af19fec7a90c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98728891"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104592335"
 ---
 # <a name="create-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>Erstellen eines HTTPS-Eingangscontrollers in Azure Kubernetes Service (AKS)
 
@@ -128,7 +128,6 @@ helm repo update
 # Install the cert-manager Helm chart
 helm install cert-manager jetstack/cert-manager \
   --namespace ingress-basic \
-  --version v0.16.1 \
   --set installCRDs=true \
   --set nodeSelector."kubernetes\.io/os"=linux \
   --set webhook.nodeSelector."kubernetes\.io/os"=linux \
@@ -144,7 +143,7 @@ Bevor Zertifikate ausgestellt werden können, benötigt cert-manager eine [Ausst
 Erstellen Sie einen Clusteraussteller, wie z.B. `cluster-issuer.yaml`, mithilfe des folgenden Beispielmanifests. Aktualisieren Sie die E-Mail-Adresse mit einer gültigen Adresse aus Ihrer Organisation:
 
 ```yaml
-apiVersion: cert-manager.io/v1alpha2
+apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
   name: letsencrypt
