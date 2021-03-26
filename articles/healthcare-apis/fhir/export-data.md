@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 3/18/2021
 ms.author: cavoeg
-ms.openlocfilehash: aefb2b4a70fae4ad082243529c8eaf877fb35f22
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: a5b3daa499546f3a30b5a4d133d77786a1916b6a
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105045302"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105559195"
 ---
 # <a name="how-to-export-fhir-data"></a>Exportieren von FHIR-Daten
 
@@ -47,8 +47,7 @@ Darüber hinaus wird die Überprüfung des Exportstatus über die URL, die von d
 
 Derzeit wird „$export“ für ADLS Gen2-fähige Speicherkonten unterstützt. Hierbei gilt aber die folgende Einschränkung:
 
-- Der Benutzer kann [hierarchische Namespaces](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace)nicht nutzen, aber es gibt keine Möglichkeit, auf ein bestimmtes Unterverzeichnis im Container zu exportieren. Es kann nur ein bestimmter Container angegeben werden (wobei für jeden Export ein neuer Ordner erstellt wird).
-
+- Der Benutzer kann [hierarchische Namespaces](../../storage/blobs/data-lake-storage-namespace.md)nicht nutzen, aber es gibt keine Möglichkeit, auf ein bestimmtes Unterverzeichnis im Container zu exportieren. Es kann nur ein bestimmter Container angegeben werden (wobei für jeden Export ein neuer Ordner erstellt wird).
 - Nach Abschluss eines Exportvorgangs werden nicht noch einmal Daten in diesen Ordner exportiert, da für die nachfolgenden Exporte in denselben Container dann ein neu erstellter Ordner genutzt wird.
 
 
