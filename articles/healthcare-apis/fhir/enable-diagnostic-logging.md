@@ -9,28 +9,28 @@ ms.reviewer: dseven
 ms.author: cavoeg
 author: zxue
 ms.date: 03/03/2021
-ms.openlocfilehash: d8f7a2b2f31fb192147c1950866cff77064a3671
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: a884dac90273e98868fed6bfe1cbed23b939d286
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103019157"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105557699"
 ---
 # <a name="enable-diagnostic-logging-in-azure-api-for-fhir"></a>Aktivieren der Diagnoseprotokollierung in Azure API for FHIR
 
 In diesem Artikel erfahren Sie, wie Sie die Diagnoseprotokollierung in Azure API for FHIR aktivieren und einige Beispiele von Abfragen dieser Protokolle einsehen können. Der Zugriff auf Diagnoseprotokolle ist für jeden Dienst im Gesundheitswesen unerlässlich, bei dem die Einhaltung gesetzlicher Vorschriften (wie z. B. HIPAA) zwingend erforderlich ist. Eine Option in Azure API for FHIR, die Diagnoseprotokolle aktiviert, ist [**Diagnoseeinstellungen**](../../azure-monitor/essentials/diagnostic-settings.md) im Azure-Portal. 
 
-## <a name="view-and-download-fhir-metrics-data"></a>Anzeigen und Herunterladen von Daten zu den Daten in der Datenbank
+## <a name="view-and-download-fhir-metrics-data"></a>Anzeigen und Herunterladen von FHIR-Metrikdaten
 
-Sie können die zu überwachenden Metriken anzeigen | Metriken aus dem Portal. Die Metriken umfassen die Anzahl von Anforderungen, die durchschnittliche Latenz, die Anzahl von Fehlern, die Datengröße, die verwendete RUS, die Anzahl der Anforderungen, die die Kapazität überschreiten, und die Verfügbarkeit (in%) Der folgende Screenshot zeigt RUS, die für eine Beispiel Umgebung mit sehr wenigen Aktivitäten in den letzten 7 Tagen verwendet wurde. Sie können die Daten im JSON-Format herunterladen.
+Sie können die Metriken unter „Überwachung > Metriken“ vom Portal aus anzeigen. Die Metriken umfassen die Anzahl von Anforderungen, die durchschnittliche Latenz, die Anzahl von Fehlern, die Datengröße, die verwendeten RUs, die Anzahl der Anforderungen, die die Kapazität überschritten haben, und die Verfügbarkeit (in %). Der folgende Screenshot zeigt RUs, die für eine Beispielumgebung mit sehr wenigen Aktivitäten in den letzten 7 Tagen verwendet wurden. Die Daten können Sie im JSON-Format herunterladen.
 
-   :::image type="content" source="media/diagnostic-logging/fhir-metrics-rus-screen.png" alt-text="Metriken der Azure-API für das Azure-Portal" lightbox="media/diagnostic-logging/fhir-metrics-rus-screen.png":::
+   :::image type="content" source="media/diagnostic-logging/fhir-metrics-rus-screen.png" alt-text="Anzeigen der „Azure API for FHIR“-Metriken über das Portal" lightbox="media/diagnostic-logging/fhir-metrics-rus-screen.png":::
 
 ## <a name="enable-audit-logs"></a>Aktivieren von Überwachungsprotokollen
 1. Um die Diagnoseprotokollierung in der Azure API for FHIR zu aktivieren, wählen Sie Ihren Dienst „Azure API for FHIR“ im Azure-Portal aus. 
 2. Navigieren zu den **Diagnoseeinstellungen** 
 
-   :::image type="content" source="media/diagnostic-logging/diagnostic-settings-screen.png" alt-text="Fügen Sie Azure-Einstellungen für die Diagnose Einstellungen hinzu." lightbox="media/diagnostic-logging/diagnostic-settings-screen.png":::
+   :::image type="content" source="media/diagnostic-logging/diagnostic-settings-screen.png" alt-text="Hinzufügen der Azure-FHIR-Diagnoseeinstellungen." lightbox="media/diagnostic-logging/diagnostic-settings-screen.png":::
 
 3. Wählen Sie **+ Diagnoseeinstellung hinzufügen**  aus.
 
@@ -42,7 +42,7 @@ Sie können die zu überwachenden Metriken anzeigen | Metriken aus dem Portal. D
     2. **Streamen Sie die Protokolle zu Event Hub**, damit sie von einem Dienst eines Drittanbieters oder einer benutzerdefinierten Analyselösung erfasst werden können. Sie müssen einen Event Hub-Namespace und eine Event Hub-Richtlinie erstellen, ehe Sie diesen Schritt konfigurieren können.
     3. **Streamen Sie die Protokolle zum Log Analytics-Arbeitsbereich** in Azure Monitor. Sie müssen zuvor Ihren Log Analytics-Arbeitsbereich erstellen, bevor Sie diese Option auswählen können.
 
-6. Wählen Sie **AuditLogs** und/oder **AllMetrics** aus. Die Metriken umfassen Dienstname, Verfügbarkeit, Datengröße, Gesamtwartezeit, Gesamtanzahl der Anforderungen, Gesamtanzahl der Fehler und Zeitstempel. Weitere Informationen zu [unterstützten Metriken](https://docs.microsoft.com/azure/azure-monitor/essentials/metrics-supported#microsofthealthcareapisservices)finden Sie hier. 
+6. Wählen Sie **AuditLogs** und/oder **AllMetrics** aus. Die Metriken umfassen Dienstname, Verfügbarkeit, Datengröße, Gesamtwartezeit, Gesamtanzahl der Anforderungen, Gesamtanzahl der Fehler und Zeitstempel. Weitere Informationen zu [unterstützten Metriken](../../azure-monitor/essentials/metrics-supported.md#microsofthealthcareapisservices) finden Sie hier. 
 
    :::image type="content" source="media/diagnostic-logging/fhir-diagnostic-setting.png" alt-text="Azure FHIR-Diagnoseeinstellungen. Auswählen von „AuditLogs“ und/oder „AllMetrics“" lightbox="media/diagnostic-logging/fhir-diagnostic-setting.png":::
 
@@ -50,7 +50,7 @@ Sie können die zu überwachenden Metriken anzeigen | Metriken aus dem Portal. D
 
 
 > [!Note] 
-> Es kann bis zu 15 Minuten dauern, bis die ersten Protokolle in Log Analytics angezeigt werden. Wenn die Azure-API für fhir aus einer Ressourcengruppe oder einem Abonnement in ein anderes verschoben wird, aktualisieren Sie die Einstellung, sobald die Verschiebung beendet ist. 
+> Es kann bis zu 15 Minuten dauern, bis die ersten Protokolle in Log Analytics angezeigt werden. Wenn Azure API for FHIR aus einer Ressourcengruppe in eine andere oder einem Abonnement in ein anderes verschoben wird, aktualisieren Sie die Einstellung, sobald die Verschiebung beendet ist. 
  
 Weitere Informationen zum Arbeiten mit Diagnoseprotokollen finden Sie in der Dokumentation zu [Azure-Ressourcenprotokollen](../../azure-monitor/essentials/platform-logs-overview.md).
 
