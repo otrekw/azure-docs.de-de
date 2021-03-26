@@ -6,14 +6,14 @@ ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 03/07/2021
+ms.date: 03/21/2021
 ms.custom: references_regions
-ms.openlocfilehash: ddd5c5de85da5ae8cec9d24d33dfd2bf035b5b34
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: f77bd69f8266d9461481cd0a12a7b70107622de5
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102438727"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104773452"
 ---
 # <a name="azure-purview-connector-for-amazon-s3"></a>Azure Purview-Connector für Amazon S3
 
@@ -49,29 +49,30 @@ In der folgenden Tabelle werden die Regionen, in denen Ihre Daten gespeichert si
 | Speicherregion | Überprüfungsregion |
 | ------------------------------- | ------------------------------------- |
 | USA, Osten (Ohio)                  | USA, Osten (Ohio)                        |
-| USA, Osten (Nord Virginia)           | USA, Osten (Ohio)                        |
+| USA, Osten (Nord Virginia)           | USA, Osten (Ohio) oder USA, Osten (N. Virginia)                       |
 | USA, Westen (Nord Kalifornien)         | USA, Osten (Ohio)                        |
 | USA, Westen (Oregon)                | USA, Osten (Ohio)                        |
 | Afrika (Kapstadt)              | Europa (Frankfurt)                    |
-| Asien-Pazifik (Hongkong)        | Europa (Frankfurt)                    |
-| Asien-Pazifik (Mumbai)           | Europa (Frankfurt)                    |
-| Asien-Pazifik (Osaka lokal)      | Europa (Frankfurt)                    |
-| Asien-Pazifik (Seoul)            | Europa (Frankfurt)                    |
-| Asien-Pazifik, (Singapur)        | Europa (Frankfurt)                    |
-| Asien-Pazifik, (Sydney)           | Europa (Frankfurt)                    |
-| Asien-Pazifik, (Tokio)            | Europa (Frankfurt)                    |
+| Asien-Pazifik (Hongkong)        | Europa (Frankfurt) oder Asien-Pazifik (Sydney)                   |
+| Asien-Pazifik (Mumbai)           | Europa (Frankfurt) oder Asien-Pazifik (Sydney)                   |
+| Asien-Pazifik (Osaka lokal)      | Europa (Frankfurt) oder Asien-Pazifik (Sydney)                   |
+| Asien-Pazifik (Seoul)            | Europa (Frankfurt) oder Asien-Pazifik (Sydney)                   |
+| Asien-Pazifik, (Singapur)        | Europa (Frankfurt) oder Asien-Pazifik (Sydney)                   |
+| Asien-Pazifik, (Sydney)           | Europa (Frankfurt) oder Asien-Pazifik (Sydney)                  |
+| Asien-Pazifik, (Tokio)            | Europa (Frankfurt) oder Asien-Pazifik (Sydney)                 |
 | Kanada (Mitte)                | USA, Osten (Ohio)                        |
 | China (Beijing)                 | Nicht unterstützt                    |
 | China (Ningxia)                 | Nicht unterstützt                   |
 | Europa (Frankfurt)              | Europa (Frankfurt)                    |
-| Europa (Irland)                | Europa (Frankfurt)                    |
-| Europa (London)                 | Europa (Frankfurt)                    |
+| Europa (Irland)                | Europa (Frankfurt) oder Europa (Irland)                   |
+| Europa (London)                 | Europa (Frankfurt) oder Europa (Irland)                   |
 | Europa (Mailand)                  | Europa (Frankfurt)                    |
 | Europa (Paris)                  | Europa (Frankfurt)                    |
 | Europa (Stockholm)              | Europa (Frankfurt)                    |
 | Naher Osten (Bahrain)           | Europa (Frankfurt)                    |
 | Südamerika (São Paulo)       | USA, Osten (Ohio)                        |
 | | |
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt sind, bevor Sie Ihre Amazon S3-Buckets als Purview-Datenquellen hinzufügen und Ihre S3-Daten überprüfen.
@@ -98,7 +99,7 @@ In diesem Verfahren wird beschrieben, wie Sie neue Purview-Anmeldeinformationen 
 
 1. Wählen Sie **Neu** aus, und verwenden Sie im rechts angezeigten Bereich **Neue Anmeldeinformationen** die folgenden Felder, um Ihre Purview-Anmeldeinformationen zu erstellen:
 
-    |Feld |Beschreibung  |
+    |Feld |BESCHREIBUNG  |
     |---------|---------|
     |**Name**     |Geben Sie einen aussagekräftigen Namen für diese Anmeldeinformationen ein, oder verwenden Sie den Standardwert.        |
     |**Beschreibung**     |Geben Sie eine optionale Beschreibung für diese Anmeldeinformationen ein, z. B. `Used to scan the tutorial S3 buckets` (Zum Überprüfen der Tutorial-S3-Buckets).         |
@@ -283,7 +284,7 @@ Verwenden Sie dieses Verfahren, wenn Sie nur über einen einzigen S3-Bucket verf
 
 1. Geben Sie im Bereich **Quellen registrieren (Amazon S3)** , der geöffnet wird, die folgenden Details ein:
 
-    |Feld  |Beschreibung  |
+    |Feld  |BESCHREIBUNG  |
     |---------|---------|
     |**Name**     |Geben Sie einen aussagekräftigen Namen ein, oder verwenden Sie den bereitgestellten Standardwert.         |
     |**Bucket-URL**     | Geben Sie Ihre AWS-Bucket-URL mit der folgenden Syntax ein: `s3://<bucketName>`     <br><br>**Hinweis**: Stellen Sie sicher, dass Sie nur die Stammebene Ihres Buckets ohne Unterordner verwenden. Weitere Informationen finden Sie unter [Abrufen Ihres Amazon S3-Bucketnamens](#retrieve-your-amazon-s3-bucket-name). |
@@ -312,7 +313,7 @@ Verwenden Sie dieses Verfahren, wenn Sie über mehrere S3-Buckets in Ihrem Amazo
 
 1. Geben Sie im Bereich **Quellen registrieren (Amazon S3)** , der geöffnet wird, die folgenden Details ein:
 
-    |Feld  |Beschreibung  |
+    |Feld  |BESCHREIBUNG  |
     |---------|---------|
     |**Name**     |Geben Sie einen aussagekräftigen Namen ein, oder verwenden Sie den bereitgestellten Standardwert.         |
     |**AWS-Konto-ID**     | Geben Sie Ihre AWS-Konto-ID ein. Weitere Informationen finden Sie unter [Auffinden Ihrer AWS-Konto-ID](#locate-your-aws-account-id).|
@@ -334,7 +335,7 @@ Nachdem Sie Ihre Buckets als Purview-Datenquellen hinzugefügt haben, können Si
 
 1. Definieren Sie im rechts angezeigten Bereich **Überprüfen** die folgenden Felder, und wählen Sie dann **Weiter** aus:
 
-    |Feld  |Beschreibung  |
+    |Feld  |BESCHREIBUNG  |
     |---------|---------|
     |**Name**     |  Geben Sie einen aussagekräftigen Namen für Ihre Überprüfung ein, oder verwenden Sie den Standardwert.       |
     |**Type** |Wird nur angezeigt, wenn Sie Ihr AWS-Konto hinzugefügt haben, einschließlich aller Buckets. <br><br>Die aktuellen Optionen umfassen nur **Alle** > **Amazon S3**. Bleiben Sie dran, um über weitere auswählbare Optionen auf dem Laufenden zu bleiben, die mit der sich erweiternden Unterstützungsmatrix von Purview entwickelt werden. |
