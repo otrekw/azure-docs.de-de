@@ -32,7 +32,7 @@
       items:
         - name: Container
           items:
-            - name: Containerunterstützung
+            - name: Containerunterstützung in Azure Cognitive Services
               href: cognitive-services-container-support.md
             - name: Containerimagetags und Versionshinweise
               href: ./containers/container-image-tags.md
@@ -98,7 +98,7 @@
       href: cognitive-services-and-machine-learning.md
     - name: Benutzerdefinierte Unterdomänen für Cognitive Services
       href: cognitive-services-custom-subdomains.md
-- name: Referenz
+- name: Verweis
   items:
     - name: REST-API
       href: /rest/api/cognitiveservices/accountmanagement/accounts

@@ -5,12 +5,12 @@ description: Erfahren Sie, wie Sie eine RDP-Verbindung mit Windows Server-Knoten
 services: container-service
 ms.topic: article
 ms.date: 06/04/2019
-ms.openlocfilehash: 4cfac73c66969148927897de7ed6da0c56aa276a
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 4b6ccc05d1cb49a77a2867dfc1c5fe5f45134dd6
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102173816"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104951911"
 ---
 # <a name="connect-with-rdp-to-azure-kubernetes-service-aks-cluster-windows-server-nodes-for-maintenance-or-troubleshooting"></a>Herstellen einer RDP-Verbindung mit Windows Server-Knoten in Azure Kubernetes Service-Clustern (AKS) zur Wartung oder Problembehandlung
 
@@ -20,7 +20,7 @@ In diesem Artikel wird gezeigt, wie Sie eine RDP-Verbindung mit einem AKS-Knoten
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Es wird vorausgesetzt, dass Sie über einen AKS-Cluster mit einem Windows Server-Knoten verfügen. Wenn Sie einen AKS-Cluster benötigen, lesen Sie den Artikel [Erstellen eines Windows Server-Containers in einem AKS-Cluster (Azure Kubernetes Service) mit der Azure-Befehlszeilenschnittstelle][aks-windows-cli]. Sie benötigen Windows-Administratorbenutzernamen und -kennwort für den Windows Server-Knoten, bei dem Sie ein Problem behandeln möchten. Wenn Sie diese nicht kennen, können Sie sie anhand der Anweisungen unter [Zurücksetzen von Remotedesktopdienste oder dem zugehörigen Administratorkennwort auf einer Windows-VM](../virtual-machines/troubleshooting/reset-rdp.md) zurücksetzen. Sie benötigen auch einen RDP-Client wie z. B. [Microsoft Remotedesktop][rdp-mac].
+Es wird vorausgesetzt, dass Sie über einen AKS-Cluster mit einem Windows Server-Knoten verfügen. Wenn Sie einen AKS-Cluster benötigen, lesen Sie den Artikel [Erstellen eines Windows Server-Containers in einem AKS-Cluster (Azure Kubernetes Service) mit der Azure-Befehlszeilenschnittstelle][aks-windows-cli]. Sie benötigen Windows-Administratorbenutzernamen und -kennwort für den Windows Server-Knoten, bei dem Sie ein Problem behandeln möchten. Wenn Sie diese nicht kennen, können Sie sie anhand der Anweisungen unter [Zurücksetzen von Remotedesktopdienste oder dem zugehörigen Administratorkennwort auf einer Windows-VM](/troubleshoot/azure/virtual-machines/reset-rdp) zurücksetzen. Sie benötigen auch einen RDP-Client wie z. B. [Microsoft Remotedesktop][rdp-mac].
 
 Außerdem muss mindestens die Version 2.0.61 der Azure CLI installiert und konfiguriert sein. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI][install-azure-cli].
 

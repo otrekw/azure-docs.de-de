@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/04/2019
 ms.topic: troubleshooting
-ms.openlocfilehash: ff2ef8970afa21c0218da20a5b79ea2fb782dd5c
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: f6d2696a68643f87de0fcaf2e723da9365d9953e
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99053583"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104953849"
 ---
 # <a name="troubleshoot-startstop-vms-during-off-hours-issues"></a>Troubleshooting für „VMs außerhalb der Geschäftszeiten starten/beenden“
 
@@ -149,7 +149,7 @@ Sehen Sie sich die folgende Liste mit möglichen Lösungen an:
   ```
 
 * Um VMs zu starten und zu beenden, muss das ausführende Konto für das Automation-Konto über die entsprechenden Berechtigungen für die VM verfügen. Wie Sie die Berechtigungen auf einer Ressource überprüfen, erfahren Sie unter [Schnellstart: Anzeigen der zugewiesenen Rollen von Benutzern mit dem Azure-Portal](../../role-based-access-control/check-access.md). Sie müssen die Anwendungs-ID für den Dienstprinzipal angeben, der vom ausführenden Konto verwendet wird. Sie können diesen Wert abrufen, indem Sie Ihr Automation-Konto im Azure-Portal aufrufen. Klicken Sie dann unter **Kontoeinstellungen** auf **Ausführende Konten**, und wählen Sie dann das entsprechende ausführende Konto aus.
-* Wenn beim Starten oder Aufheben der Zuordnung der VM Probleme auftreten, kann ein Problem auf der VM selbst vorliegen. Zum Beispiel könnte unter anderem ein Update angewendet werden, wenn die VM versucht, herunterzufahren, oder ein Dienst reagiert nicht mehr. Navigieren Sie zu Ihrer VM-Ressource, und überprüfen Sie die **Aktivitätsprotokolle**, um festzustellen, ob Fehler in den Protokollen vorliegen. Sie können auch versuchen, sich bei der VM anzumelden, um zu überprüfen, ob Fehler in den Ereignisprotokollen vorliegen. Weitere Informationen zur Problembehandlung bei Ihrer VM finden Sie unter [Problembehandlung von virtuellen Azure-Computern](../../virtual-machines/troubleshooting/index.yml).
+* Wenn beim Starten oder Aufheben der Zuordnung der VM Probleme auftreten, kann ein Problem auf der VM selbst vorliegen. Zum Beispiel könnte unter anderem ein Update angewendet werden, wenn die VM versucht, herunterzufahren, oder ein Dienst reagiert nicht mehr. Navigieren Sie zu Ihrer VM-Ressource, und überprüfen Sie die **Aktivitätsprotokolle**, um festzustellen, ob Fehler in den Protokollen vorliegen. Sie können auch versuchen, sich bei der VM anzumelden, um zu überprüfen, ob Fehler in den Ereignisprotokollen vorliegen. Weitere Informationen zur Problembehandlung bei Ihrer VM finden Sie unter [Problembehandlung von virtuellen Azure-Computern](/troubleshoot/azure/virtual-machines/welcome-virtual-machines).
 * Überprüfen Sie die [Auftragsdatenströme](../automation-runbook-execution.md#job-statuses) auf Fehler. Wechseln Sie im Portal zu Ihrem Automation-Konto, und wählen Sie unter **Prozessautomatisierung** die Option **Aufträge** aus.
 
 ## <a name="scenario-my-custom-runbook-fails-to-start-or-stop-my-vms"></a><a name="custom-runbook"></a>Szenario: Mein benutzerdefiniertes Runbook startet oder beendet meine virtuellen Computer nicht

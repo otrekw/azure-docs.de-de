@@ -13,10 +13,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: a2969ce6ceda0d1b71ec991b32f5b10acf9bfa12
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92780375"
 ---
 # <a name="the-wingtip-tickets-saas-application"></a>Die Wingtip Tickets SaaS-Anwendung
@@ -62,7 +62,7 @@ Weitere Informationen finden Sie in den [Tutorials][docs-tutorials-for-wingtip-m
 
 - Eigenständige Anwendung pro Mandant:
     - [Tutorials für eigenständige Anwendung][docs-tutorials-for-wingtip-sa]
-    - [Code für eigenständige Anwendung auf GitHub][github-code-for-wingtip-sa]
+    - [Code für eigenständige Anwendung auf GitHub][github-code-for-wingtip-sa].
 
 - Eine Datenbank pro Mandant:
     - [Tutorials für eine Datenbank pro Mandant][docs-tutorials-for-wingtip-dpt]

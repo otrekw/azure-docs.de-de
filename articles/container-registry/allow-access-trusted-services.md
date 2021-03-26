@@ -3,11 +3,11 @@ title: Zugreifen auf eine Registrierung mit Netzwerkeinschränkungen mit einem v
 description: Aktivieren des sicheren Zugriffs einer vertrauenswürdigen Azure-Dienstinstanz auf eine Containerregistrierung mit Netzwerkeinschränkungen zum Pullen oder Pushen von Images
 ms.topic: article
 ms.date: 01/29/2021
-ms.openlocfilehash: 3cc32630ea689891e7ba75163c33bc499a38becd
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2e6b6ee3736f98f53ebb0aa43d707d42ba4cc058
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101716481"
 ---
 # <a name="allow-trusted-services-to-securely-access-a-network-restricted-container-registry-preview"></a>Zulassen des sicheren Zugriffs vertrauenswürdiger Dienste auf eine Containerregistrierung mit Netzwerkeinschränkungen (Vorschau)
@@ -41,6 +41,7 @@ Instanzen der folgenden Dienste können auf eine Containerregistrierung mit Netz
 |Vertrauenswürdiger Dienst  |Unterstützte Verwendungsszenarien  |
 |---------|---------|
 |ACR-Aufgaben     | [Zugreifen auf eine andere Registrierung aus einem ACR Task](container-registry-tasks-cross-registry-authentication.md)       |
+|Machine Learning | [Bereitstellen](../machine-learning/how-to-deploy-custom-docker-image.md) oder [Trainieren](../machine-learning/how-to-train-with-custom-image.md) eines Modells in einem Machine Learning-Arbeitsbereich mithilfe eines benutzerdefinierten Docker-Containers |
 |Azure Container Registry | [Importieren von Images aus einer anderen Azure Container Registry-Instanz](container-registry-import-images.md#import-from-an-azure-container-registry-in-the-same-ad-tenant) | 
 
 > [!NOTE]

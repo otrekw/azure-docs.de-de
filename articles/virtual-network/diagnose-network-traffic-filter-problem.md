@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 05/29/2018
 ms.author: kumud
 ms.openlocfilehash: 73562d8d32f265fa43ca80d2f8d4f84b1b631ec6
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98223668"
 ---
 # <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>Diagnostizieren von Problemen mit dem Filter für Netzwerkdatenverkehr eines virtuellen Computers
@@ -168,14 +168,14 @@ Die Regel mit dem Namen **defaultSecurityRules/DenyAllInBound** verhindert einge
 
 Unabhängig davon, ob Sie das im [Szenario](#scenario) dieses Artikels dargestellte Problem über das [Azure-Portal](#diagnose-using-azure-portal), über [PowerShell](#diagnose-using-powershell) oder über die [Azure CLI](#diagnose-using-azure-cli) diagnostizieren, die Lösung besteht darin, eine Netzwerksicherheitsregel mit den folgenden Eigenschaften zu erstellen:
 
-| Eigenschaft                | value                                                                              |
+| Eigenschaft                | Wert                                                                              |
 |---------                |---------                                                                           |
 | `Source`                  | Any                                                                                |
 | Source port ranges      | Any                                                                                |
 | Destination             | Die IP-Adresse der VM, ein Bereich von IP-Adressen oder alle Adressen im Subnetz. |
 | Zielportbereiche | 80                                                                                 |
 | Protocol                | TCP                                                                                |
-| Action                  | Allow                                                                              |
+| Aktion                  | Allow                                                                              |
 | Priority                | 100                                                                                |
 | Name                    | Allow-HTTP-All                                                                     |
 

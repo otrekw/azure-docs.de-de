@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie durch die bewährten Methoden zur Ausführung
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: 63484d882d8ccd387257c6f246c2048a09c77bc8
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 549eab1547b75eb9461b23df2c157290943b4ed9
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98933113"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869785"
 ---
 # <a name="gateway-deep-dive-and-best-practices-for-apache-hive-in-azure-hdinsight"></a>Ausführliche Informationen zum Gateway und bewährte Methoden für Apache Hive in Azure HDInsight
 
@@ -21,7 +21,7 @@ Das HDInsight-Gateway ist der einzige Teil eines HDInsight-Clusters, der über d
 
 Das folgende Diagramm veranschaulicht grob, wie das Gateway eine Abstraktion vor all den verschiedenen Hostauflösungsmöglichkeiten innerhalb von HDInsight bietet.
 
-![Diagramm zur Hostauflösung](./media/gateway-best-practices/host-resolution-diagram.png "Diagramm zur Hostauflösung")
+:::image type="content" source="./media/gateway-best-practices/host-resolution-diagram.png " alt-text="Diagramm zur Hostauflösung" border="true":::
 
 ## <a name="motivation"></a>Motivation
 
@@ -39,7 +39,7 @@ Die Leistungseinbußen des Gateways bei großen Abfragen sind darauf zurückzuf�
 
 Das folgende Diagramm veranschaulicht die Schritte, die die SELECT-Abfrage umfasst.
 
-![Ergebnisdiagramm](./media/gateway-best-practices/result-retrieval-diagram.png "Ergebnisdiagramm")
+:::image type="content" source="./media/gateway-best-practices/result-retrieval-diagram.png " alt-text="Ergebnisdiagramm" border="true":::
 
 Apache Hive ist eine relationale Abstraktion auf einem HDFS-kompatiblen Dateisystem. Diese Abstraktion bedeutet, dass **SELECT**-Anweisungen in Hive den **READ**-Vorgängen im Dateisystem entsprechen. Die **READ**-Vorgänge werden in das entsprechende Schema übersetzt, bevor sie dem Benutzer gemeldet werden. Die Wartezeit dieses Prozesses steigt mit dem Umfang der Daten und der Gesamtzahl der Hops, die erforderlich sind, um den Endbenutzer zu erreichen.
 
@@ -53,9 +53,9 @@ Es gibt mehrere Ansätze für das Entschärfen und das Verstehen von Leistungspr
 
 * Verwenden Sie die **LIMIT**-Klausel, wenn Sie große **SELECT**-Abfragen ausführen. Die **LIMIT**-Klausel reduziert die Gesamtzahl der an den Clienthost gemeldeten Zeilen. Die **LIMIT**-Klausel betrifft nur die Ergebnisgenerierung und ändert nicht den Abfrageplan. Um die **LIMIT**-Klausel auf den Abfrageplan anzuwenden, verwenden Sie die Konfiguration `hive.limit.optimize.enable`. **LIMIT** kann mit einem Offset mit der Argumentform **LIMIT x,y** kombiniert werden.
 
-* Benennen Sie die für Sie interessanten Spalten, wenn Sie **SELECT**-Abfragen ausführen, anstatt **SELECT \** _ zu verwenden. Wenn Sie weniger Spalten auswählen, verringert sich die Menge der gelesenen Daten.
+* Benennen Sie die für Sie interessanten Spalten, wenn Sie **SELECT**-Abfragen ausführen, anstatt **SELECT \*** zu verwenden. Wenn Sie weniger Spalten auswählen, verringert sich die Menge der gelesenen Daten.
 
-_ Versuchen Sie, die betreffende Abfrage über Apache Beeline auszuführen. Wenn das Abrufen von Ergebnissen über Apache Beeline längere Zeit in Anspruch nimmt, rechnen Sie mit Verzögerungen beim Abrufen derselben Ergebnisse über externe Tools.
+* Versuchen Sie, die betreffende Abfrage über Apache Beeline auszuführen. Wenn das Abrufen von Ergebnissen über Apache Beeline längere Zeit in Anspruch nimmt, rechnen Sie mit Verzögerungen beim Abrufen derselben Ergebnisse über externe Tools.
 
 * Testen Sie eine einfache Hive-Abfrage, um sicherzustellen, dass eine Verbindung mit dem HDInsight-Gateway hergestellt werden kann. Versuchen Sie, eine einfache Abfrage von zwei oder mehr externen Tools auszuführen, um sicherzustellen, dass kein Einzeltool auf Probleme stößt.
 

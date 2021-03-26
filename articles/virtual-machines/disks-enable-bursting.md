@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: f5865646200a783e7139bb5e22576ea404f58203
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 733d441705c7c77f0667f88151e96f76975ee0b2
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102216648"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104596398"
 ---
 # <a name="enable-on-demand-bursting"></a>Aktivieren des bedarfsgesteuerten Burstings
 
@@ -61,7 +61,7 @@ New-AzDiskUpdateConfig -BurstingEnabled $true | Update-AzDisk -ResourceGroupName
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-Cmdlets für bedarfsgesteuertes Bursting sind in Version 2.19.0 und höher des [Azure CLI-Moduls](https://docs.microsoft.com/cli/azure/install-azure-cli) verfügbar. Alternativ können Sie auch die [Azure Cloud Shell](https://shell.azure.com/) verwenden.
+Cmdlets für bedarfsgesteuertes Bursting sind in Version 2.19.0 und höher des [Azure CLI-Moduls](/cli/azure/install-azure-cli) verfügbar. Alternativ können Sie auch die [Azure Cloud Shell](https://shell.azure.com/) verwenden.
 
 ### <a name="create-and-attach-a-on-demand-bursting-data-disk"></a>Erstellen und Anfügen eines Datenträgers mit bedarfsgesteuertem Bursting
 

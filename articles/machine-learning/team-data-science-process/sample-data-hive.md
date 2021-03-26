@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 6a015da77cb7c0ba54be1dd5e729a9ee8a848c9d
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93321877"
 ---
 # <a name="sample-data-in-azure-hdinsight-hive-tables"></a>Extrahieren von Stichproben aus Daten in Azure HDInsight Hive-Tabellen
@@ -54,7 +54,7 @@ where samplekey<='${hiveconf:sampleRate}'
 Dabei gibt `<sample rate, 0-1>` den Anteil von Datensätzen an, den die Benutzer erfassen möchten.
 
 ## <a name="random-sampling-by-groups"></a><a name="group"></a> Zufällige Stichproben nach Gruppen
-Bei der Entnahme von Stichproben aus kategorischen Daten sollten Sie entweder alle Instanzen eines bestimmten Werts der kategorischen Variable ein- oder ausschließen. Diese Art von Sampling wird als „Stichprobe nach Gruppe“ bezeichnet. Wenn Sie beispielsweise die kategorische Variable „ *State* “ haben, die als Werte „NY“, „MA“, „CA“, „NJ“, „PA“ usw. hat, möchten Sie natürlich, dass Datensätze der einzelnen Bundesstaaten immer zusammenbleiben, ob als Stichprobe oder auch sonst.
+Bei der Entnahme von Stichproben aus kategorischen Daten sollten Sie entweder alle Instanzen eines bestimmten Werts der kategorischen Variable ein- oder ausschließen. Diese Art von Sampling wird als „Stichprobe nach Gruppe“ bezeichnet. Wenn Sie beispielsweise die kategorische Variable „*State*“ haben, die als Werte „NY“, „MA“, „CA“, „NJ“, „PA“ usw. hat, möchten Sie natürlich, dass Datensätze der einzelnen Bundesstaaten immer zusammenbleiben, ob als Stichprobe oder auch sonst.
 
 Dies ist eine Beispielabfrage für das Erstellen einer Stichprobe nach Gruppe:
 

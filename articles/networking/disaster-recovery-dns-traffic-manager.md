@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 06/08/2018
 ms.author: kumud
 ms.openlocfilehash: 8cb1a490ac8edf2630253b45d99c3394bbe721b8
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98234153"
 ---
 # <a name="disaster-recovery-using-azure-dns-and-traffic-manager"></a>Notfallwiederherstellung mit Azure DNS und Traffic Manager
@@ -33,13 +33,13 @@ Die meisten Enterprise-Kunden entscheiden sich für eine Architektur für mehrer
     
     *Abbildung: Notfallwiederherstellungs-Konfiguration Aktiv/Passiv mit Standbymodus „Verzögert betriebsbereit“*
 
-- **Aktiv/Passiv mit Steuerlicht**: Bei dieser Failoverlösung wird die Standbyumgebung mit einer minimalen Konfiguration eingerichtet. Das Setup enthält nur die notwendigen Dienste, um nur einen minimalen und kritischen Satz von Anwendungen zu unterstützen. In seiner systemeigenen Form kann dieses Szenario nur minimale Funktionalitäten ausführen, aber es kann hochskalieren und zusätzliche Dienste erstellen, um einen Großteil der Produktionslast zu übernehmen, wenn ein Failover auftritt.
+- **Aktiv/Passiv mit Steuerlicht**: Bei dieser Failoverlösung wird die Standbyumgebung mit einer minimalen Konfiguration eingerichtet. Das Setup enthält nur die notwendigen Dienste, um nur einen minimalen und kritischen Satz von Anwendungen zu unterstützen. In seiner systemeigenen Form kann dieses Szenario nur minimale Funktionalitäten ausführen, aber es kann zusätzliche Dienste skalieren und erstellen, um einen Großteil der Produktionslast zu übernehmen, wenn ein Failover auftritt.
     
     ![Aktiv/Passiv mit Steuerlicht](./media/disaster-recovery-dns-traffic-manager/active-passive-with-pilot-light.png)
     
     *Abbildung: Notfallwiederherstellungs-Konfiguration Aktiv/Passiv mit Steuerlicht*
 
-- **Aktiv/Passiv mit Standbymodus „Betriebsbereit“** : Bei dieser Failoverlösung wird die Standbyregion vorgewärmt und kann die Grundlast verarbeiten, die automatische Skalierung ist aktiviert und alle Instanzen sind betriebsbereit. Diese Lösung kann nicht für die Verarbeitung der vollen Produktionslast skaliert werden, ist aber funktionsfähig, und alle Dienste sind einsatzbereit. Diese Lösung ist eine erweiterte Version des Ansatzes mit Steuerlicht.
+- **Aktiv/Passiv mit Standbymodus „Betriebsbereit“**: Bei dieser Failoverlösung wird die Standbyregion vorgewärmt und kann die Grundlast verarbeiten, die automatische Skalierung ist aktiviert und alle Instanzen sind betriebsbereit. Diese Lösung kann nicht für die Verarbeitung der vollen Produktionslast skaliert werden, ist aber funktionsfähig, und alle Dienste sind einsatzbereit. Diese Lösung ist eine erweiterte Version des Ansatzes mit Steuerlicht.
     
     ![Aktiv/Passiv mit Standbymodus „Betriebsbereit“](./media/disaster-recovery-dns-traffic-manager/active-passive-with-warm-standby.png)
     

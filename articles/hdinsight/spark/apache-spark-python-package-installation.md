@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-python
 ms.date: 04/29/2020
-ms.openlocfilehash: 8fbbe137ece7aac2dd2196c5ebec435e118297ad
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: c3f912b4f4c2e78c44425f489927cee185b3d312
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98929820"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868714"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>Sicheres Verwalten der Python-Umgebung in Azure HDInsight mithilfe einer Skriptaktion
 
@@ -104,7 +104,7 @@ Der HDInsight-Cluster hängt von der integrierten Python-Umgebung (Python 2.7 od
 
     1. Öffnen Sie die Ambari-Benutzeroberfläche, und wechseln Sie zur Spark2-Seite auf die Registerkarte „Konfigurationen“.
 
-        ![Ändern der Spark- und Livy-Konfiguration über Ambari](./media/apache-spark-python-package-installation/ambari-spark-and-livy-config.png)
+        :::image type="content" source="./media/apache-spark-python-package-installation/ambari-spark-and-livy-config.png" alt-text="Ändern der Spark- und Livy-Konfiguration über Ambari" border="true":::
 
     2. Erweitern Sie „livy2-env“, und fügen Sie die unten aufgeführten Anweisungen unten hinzu. Wenn Sie die virtuelle Umgebung mit einem anderen Präfix installiert haben, ändern Sie den Pfad entsprechend.
 
@@ -113,7 +113,7 @@ Der HDInsight-Cluster hängt von der integrierten Python-Umgebung (Python 2.7 od
         export PYSPARK_DRIVER_PYTHON=/usr/bin/anaconda/envs/py35new/bin/python
         ```
 
-        ![Ändern der Livy-Konfiguration über Ambari](./media/apache-spark-python-package-installation/ambari-livy-config.png)
+        :::image type="content" source="./media/apache-spark-python-package-installation/ambari-livy-config.png" alt-text="Ändern der Livy-Konfiguration über Ambari" border="true":::
 
     3. Erweitern Sie „Advanced spark2-env“, und ersetzen Sie unten die vorhandene PYSPARK_PYTHON-Anweisung für den Export. Wenn Sie die virtuelle Umgebung mit einem anderen Präfix installiert haben, ändern Sie den Pfad entsprechend.
 
@@ -121,11 +121,11 @@ Der HDInsight-Cluster hängt von der integrierten Python-Umgebung (Python 2.7 od
         export PYSPARK_PYTHON=${PYSPARK_PYTHON:-/usr/bin/anaconda/envs/py35new/bin/python}
         ```
 
-        ![Ändern der Spark-Konfiguration über Ambari](./media/apache-spark-python-package-installation/ambari-spark-config.png)
+        :::image type="content" source="./media/apache-spark-python-package-installation/ambari-spark-config.png" alt-text="Ändern der Spark-Konfiguration über Ambari" border="true":::
 
     4. Speichern Sie die Änderungen, und starten Sie die betreffenden Dienste neu. Damit diese Änderungen übernommen werden, müssen Sie den Spark2-Dienst neu starten. Über die Ambari-Benutzeroberfläche werden Sie zu einem Neustart aufgefordert. Klicken Sie daher auf „Neu starten“, um alle betreffenden Dienste neu zu starten.
 
-        ![Neustarten von Diensten](./media/apache-spark-python-package-installation/ambari-restart-services.png)
+        :::image type="content" source="./media/apache-spark-python-package-installation/ambari-restart-services.png" alt-text="Neustarten von Diensten" border="true":::
 
     5. Legen Sie zwei Eigenschaften für Ihre Spark-Sitzung fest, um sicherzustellen, dass der Auftrag auf die aktualisierte Spark-Konfiguration verweist: `spark.yarn.appMasterEnv.PYSPARK_PYTHON` und `spark.yarn.appMasterEnv.PYSPARK_DRIVER_PYTHON`. 
 
@@ -153,7 +153,7 @@ Der HDInsight-Cluster hängt von der integrierten Python-Umgebung (Python 2.7 od
 
     Sie können die Python-Umgebung in Jupyter Notebook doppelt bestätigen, indem Sie den folgenden Code ausführen:
 
-    ![Überprüfen der Python-Version in Jupyter Notebook](./media/apache-spark-python-package-installation/check-python-version-in-jupyter.png)
+    :::image type="content" source="./media/apache-spark-python-package-installation/check-python-version-in-jupyter.png" alt-text="Überprüfen der Python-Version in Jupyter Notebook" border="true":::
 
 ## <a name="known-issue"></a>Bekanntes Problem
 

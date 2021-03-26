@@ -12,10 +12,10 @@ ms.date: 09/16/2020
 ms.author: gasinh
 ms.subservice: B2C
 ms.openlocfilehash: b1889a693c08ce78a8bd06b6fe348c0c67bf3812
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/15/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103465673"
 ---
 # <a name="tutorial-for-configuring-saviynt-with-azure-active-directory-b2c"></a>Tutorial zum Konfigurieren von Saviynt mit Azure Active Directory B2C
@@ -54,7 +54,7 @@ Im folgenden Architekturdiagramm ist die Implementierung dargestellt.
 
 ![Abbildung der Saviynt-Architektur](./media/partner-saviynt/saviynt-architecture-diagram.png)
 
-|Schritt | Beschreibung |
+|Schritt | BESCHREIBUNG |
 |:-----| :-----------|
 | 1. | Ein delegierter Administrator beginnt mit der Verwaltung eines Azure AD B2C-Benutzervorgangs über Saviynt.
 | 2. | Die Saviynt-Autorisierungs-Engine überprüft, ob der delegierte Administrator den spezifischen Vorgang ausführen kann.

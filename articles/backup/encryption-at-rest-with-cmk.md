@@ -3,12 +3,12 @@ title: Verschlüsselung von Sicherungsdaten mit von Kunden verwalteten Schlüsse
 description: Hier erfahren Sie, wie Sie mit Azure Backup Sicherungsdaten mithilfe von kundenseitig verwalteten Schlüsseln (Customer-Managed Keys, CMK) verschlüsseln können.
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 230669e0a3543a0709dda3f7fee35a0cae300d5a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 474f4238276f460abde3d600422e309171875a0c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100369457"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101716736"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Verschlüsselung von Sicherungsdaten mit von Kunden verwalteten Schlüsseln
 
@@ -237,9 +237,9 @@ InfrastructureEncryptionState : Disabled
 >
 > - Der Schlüsseltresor muss sich in derselben Region wie der Recovery Services-Tresor befinden.
 >
-> - Vorläufiges Löschen und Löschschutz sind für den Key Vault aktiviert.
+> - Vorläufiges Löschen und Löschschutz sind für den Schlüsseltresor aktiviert.
 >
-> - Der Recovery Services-Tresor verfügt über die für den Zugriff auf den Key Vault erforderlichen Berechtigungen.
+> - Der Recovery Services-Tresor verfügt über die für den Zugriff auf den Schlüsseltresor erforderlichen Berechtigungen.
 
 ## <a name="backing-up-to-a-vault-encrypted-with-customer-managed-keys"></a>Sichern in einem Tresor, der mit kundenseitig verwalteten Schlüsseln verschlüsselt ist
 

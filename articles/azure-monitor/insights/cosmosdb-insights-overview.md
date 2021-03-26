@@ -5,12 +5,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: fdf482f5afc444aff77c2ab528a4e333a0282c3d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d88bf65f1bd94e29bd9f60f5597d655f0040623b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100582368"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101725761"
 ---
 # <a name="explore-azure-monitor-for-azure-cosmos-db"></a>Informationen zu Azure Monitor für Azure Cosmos DB
 
@@ -87,13 +87,51 @@ Wählen Sie oben auf der Seite **Kapazität** aus, und der Bereich **Kapazität*
 
 Wie bei der Übersichtsarbeitsmappe wird beim Auswählen der Dropdownliste neben einer Azure Cosmos DB-Ressource in der Spalte **Abonnement** eine Aufschlüsselung nach den einzelnen Containern der Datenbank angezeigt.
 
-### <a name="operations"></a>Operationen (Operations) 
+### <a name="operations"></a>Operationen (Operations)
 
-Wählen Sie oben auf der Seite **Vorgänge** aus, und der Bereich **Vorgänge** der Arbeitsmappenvorlage wird geöffnet. Hier können Sie Ihre Anforderungen überprüfen, aufgeschlüsselt nach dem Typ der getätigten Anforderungen. 
+Wählen Sie oben auf der Seite **Vorgänge** aus, und der Bereich **Vorgänge** der Arbeitsmappenvorlage wird geöffnet. Hier können Sie Ihre Anforderungen überprüfen, aufgeschlüsselt nach dem Typ der getätigten Anforderungen.
 
 Im folgenden Beispiel ist ersichtlich, dass `eastus-billingint` hauptsächlich Leseanforderungen empfängt, jedoch auch eine kleine Anzahl von Upsert- und Erstellungsanforderungen vorhanden ist. `westeurope-billingint` hingegen ist in Bezug auf Anforderungen schreibgeschützt, zumindest über die letzten vier Stunden, auf die der Bereich der Arbeitsmappe derzeit über ihren Zeitbereichsparameter beschränkt ist.
 
-![Bereich „Vorgänge“ der Arbeitsmappe](./media/cosmosdb-insights-overview/operation.png) 
+![Bereich „Vorgänge“ der Arbeitsmappe](./media/cosmosdb-insights-overview/operation.png)
+
+## <a name="view-from-an-azure-cosmos-db-resource"></a>Anzeigen von einer Azure Cosmos DB-Ressource aus
+
+1. Suchen Sie nach Ihren vorhandenen Azure Cosmos DB-Konten, oder wählen Sie sie aus.
+
+:::image type="content" source="./media/cosmosdb-insights-overview/cosmosdb-search.png" alt-text="Suche nach Azure Cosmos DB." border="true":::
+
+2. Wählen Sie nach der Navigation zu Ihrem Azure Cosmos DB-Konto im Abschnitt „Überwachung“ die Option **Erkenntnisse (Vorschau)** oder **Arbeitsmappen** aus, um weitere Analysen zu Durchsatz, Anforderungen, Speicherung, Verfügbarkeit, Latenz, System und Kontoverwaltung durchzuführen.
+
+:::image type="content" source="./media/cosmosdb-insights-overview/cosmosdb-overview.png" alt-text="Übersicht über Cosmos DB-Erkenntnisse." border="true":::
+
+### <a name="time-range"></a>Uhrzeitbereich
+
+Standardmäßig werden im Feld **Zeitbereich** Daten der **letzten 24 Stunden** angezeigt. Sie können den Zeitbereich so ändern, dass Daten von den letzten 5 Minuten bis zu den letzten sieben Tagen beliebig angezeigt werden. Die Zeitbereichsauswahl umfasst auch einen **benutzerdefinierten** Modus, in dem Sie die Start-/Enddaten eingeben können, um einen benutzerdefinierten Zeitrahmen auf der Grundlage der verfügbaren Daten für das ausgewählte Konto anzuzeigen.
+
+:::image type="content" source="./media/cosmosdb-insights-overview/cosmosdb-time-range.png" alt-text="Cosmos DB-Zeitbereich." border="true":::
+
+### <a name="insights-overview"></a>Übersicht zu Erkenntnissen
+
+Die Registerkarte **Übersicht** enthält die gängigsten Metriken für das ausgewählte Azure Cosmos DB-Konto, einschließlich:
+
+* Anzahl von Anforderungen
+* Fehlerhafte Anforderungen (429s)
+* Normalisierter RU-Verbrauch (Höchstwert)
+* Daten- & Indexnutzung
+* Cosmos DB-Kontometriken nach Sammlung
+
+**Anforderungen insgesamt:** Dieses Diagramm enthält eine Übersicht über die Gesamtanzahl der Anforderungen für das Konto, die nach Statuscode aufgeschlüsselt sind. Die Einheiten am unteren Rand des Diagramms stellen eine Summe der Gesamtanforderungen für den Zeitraum dar.
+
+:::image type="content" source="./media/cosmosdb-insights-overview/cosmosdb-total-requests.png" alt-text="Cosmos DB-Diagramm für Gesamtanforderungen." border="true":::
+
+**Fehlerhafte Anforderungen (429s)** : Dieses Diagramm enthält eine Übersicht über fehlerhafte Anforderungen mit dem Statuscode 429. Die Einheiten am unteren Rand des Diagramms stellen eine Summe der gesamten fehlerhaften Anforderungen für den Zeitraum dar.
+
+:::image type="content" source="./media/cosmosdb-insights-overview/cosmosdb-429.png" alt-text="Cosmos DB-Diagramm für fehlerhafte Anforderungen." border="true":::
+
+**Normalisierter RU-Verbrauch (Höchstwert)** : Dieses Diagramm gibt den maximalen Prozentsatz zwischen 0-100 % der normalisierten RU-Verbrauchseinheiten für den angegebenen Zeitraum an.
+
+:::image type="content" source="./media/cosmosdb-insights-overview/cosmosdb-normalized-ru.png" alt-text="Normalisierter RU-Verbrauch in Cosmos DB." border="true":::
 
 ## <a name="pin-export-and-expand"></a>Anheften, Exportieren und Erweitern
 
