@@ -3,12 +3,12 @@ title: Konfigurieren von Azure Backup-Berichten
 description: Konfigurieren und Anzeigen von Berichten für Azure Backup mithilfe von Log Analytics und Azure-Arbeitsmappen
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 62bb59a8a77d11e30e54298317a35e1f883a9622
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: e9f3d9dfa33e71d827a338258001f2b52af62b06
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101710616"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102509364"
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurieren von Azure Backup-Berichten
 
@@ -22,8 +22,8 @@ Heute bietet Azure Backup eine Berichterstellungslösung, bei der [Azure Monitor
 
 ## <a name="supported-scenarios"></a>Unterstützte Szenarios
 
-- Sicherungsberichte werden für Azure-VMs, SQL auf Azure-VMs, SAP HANA auf Azure-VMs, Microsoft Azure Recovery Services-Agent (MARS), Microsoft Azure Backup Server (MABS) und System Center Data Protection Manager (DPM) unterstützt. Für Sicherungen von Azure-Dateifreigaben werden Daten für alle Datensätze angezeigt, die am 1. Juni 2020 oder danach erstellt wurden.
-- Bei der Sicherung von Azure-Dateifreigaben werden Daten in geschützten Instanzen derzeit nicht in den Berichten angezeigt (standardmäßig null für alle Sicherungselemente).
+- Sicherungsberichte werden für Azure-VMs, SQL auf Azure-VMs, SAP HANA auf Azure-VMs, Microsoft Azure Recovery Services-Agent (MARS), Microsoft Azure Backup Server (MABS) und System Center Data Protection Manager (DPM) unterstützt. Für Sicherungen von Azure-Dateifreigaben werden Daten für Datensätze angezeigt, die ab dem 1. Juni 2020 erstellt wurden.
+- Bei der Sicherung von Azure-Dateifreigaben werden Daten zu geschützten Instanzen für Datensätze angezeigt, die nach dem 1. Februar 2021 erstellt wurden (Standardwert ist 0 (Null) für ältere Datensätze).
 - Bei DPM-Workloads werden Backup-Berichte für DPM, Version 5.1.363.0 und höher, sowie Agent, Version 2.0.9127.0 und höher, unterstützt.
 - Bei MABS-Workloads werden Backup-Berichte für MABS, Version 13.0.415.0 und höher, sowie Agent, Version 2.0.9170.0 und höher, unterstützt.
 - Backup-Berichte können für alle Sicherungselemente, Tresore, Abonnements und Regionen angezeigt werden, solange deren Daten an einen Log Analytics-Arbeitsbereich gesendet werden, auf den der Benutzer Zugriff hat. Zum Anzeigen von Berichten für eine Gruppe von Tresoren müssen Sie nur über Lesezugriff auf den Log Analytics-Arbeitsbereich verfügen, an den die Tresore ihre Daten senden. Sie benötigen keinen Zugriff auf die einzelnen Tresore.
@@ -142,17 +142,31 @@ Für den Filter **Sicherungsverwaltungstyp** oben auf der Registerkarte sollten 
 
 ###### <a name="policy-adherence"></a>Richtlinieneinhaltung
 
-Mithilfe dieser Registerkarte können Sie feststellen, ob für alle Sicherungsinstanzen täglich mindestens eine erfolgreiche Sicherung durchgeführt wurde. Sie können die Richtlinieneinhaltung nach Zeitraum oder Sicherungsinstanz anzeigen.
+Mithilfe dieser Registerkarte können Sie feststellen, ob für alle Sicherungsinstanzen täglich mindestens eine erfolgreiche Sicherung durchgeführt wurde. Für Elemente mit einer wöchentlichen Sicherungsrichtlinie können Sie mithilfe dieser Registerkarte bestimmen, ob für alle Sicherungsinstanzen mindestens eine erfolgreiche Sicherung pro Woche erfolgt ist.
+
+Es gibt zwei Ansichten zur Einhaltung von Richtlinien:
+
+* **Richtlinieneinhaltung nach Zeitraum:** In dieser Ansicht können Sie feststellen, für wie viele Elemente mindestens eine erfolgreiche Sicherung an einem bestimmten Tag erfolgte und bei wie vielen diese an dem Tag fehlschlug. Durch einen Klick auf eine Zeile können Sie die Details zu allen Sicherungsaufträgen anzeigen, die am ausgewählten Tag ausgelöst wurden. Beachten Sie, dass wenn Sie den Zeitbereich vergrößern (z. B. auf die letzten 60 Tage), das Raster in der Wochenansicht gerendert wird und die Anzahl aller Elemente anzeigt, die an jedem Tag der angegebenen Woche über mindestens eine erfolgreiche Sicherung verfügen. Ebenso gibt es eine Monatsansicht für größere Zeitbereiche.
+
+Im Fall von wöchentlich gesicherten Elementen hilft Ihnen dieses Raster, alle Elemente zu identifizieren, für die in einer angegebenen Woche mindestens eine erfolgreiche Sicherung vorhanden ist. Für einen größeren Zeitbereich (z. B. die letzten 120 Tage) wird das Raster in der Monatsansicht gerendert und zeigt die Anzahl aller Elemente an, die in jeder Woche des angegebenen Monats mindestens eine erfolgreiche Sicherung aufweisen. Weitere Informationen zur Tages-, Wochen- und Monatsansicht finden Sie unter [In Sicherungsberichten verwendete Konventionen](https://docs.microsoft.com/azure/backup/configure-reports#conventions-used-in-backup-reports).
+
+![Richtlinieneinhaltung nach Zeitraum](./media/backup-azure-configure-backup-reports/policy-adherence-by-time-period.png)
+
+* **Richtlinieneinhaltung nach Sicherungsinstanz:** In dieser Ansicht können Sie die Details zur Richtlinieneinhaltung auf Ebene der Sicherungsinstanz anzeigen. Eine grüne Zelle weist darauf hin, dass am angegebenen Tag mindestens eine erfolgreiche Sicherung für die Sicherungsinstanz vorhanden ist. Eine rote Zelle bedeutet, dass am angegebenen Tag keine erfolgreiche Sicherung für die Sicherungsinstanz erfolgte. Tägliche, wöchentliche und monatliche Aggregationen unterliegen dem gleichen Verhalten wie die Ansicht „Richtlinieneinhaltung nach Zeitraum“. Sie können auf eine beliebige Zeile klicken, um alle Sicherungsaufträge für die angegebene Sicherungsinstanz im ausgewählten Zeitraum anzuzeigen.
+
+![Richtlinieneinhaltung nach Sicherungsinstanz](./media/backup-azure-configure-backup-reports/policy-adherence-by-backup-instance.png)
 
 ###### <a name="email-azure-backup-reports"></a>Azure Backup-Berichte per E-Mail
 
 Mit dem in Sicherungsberichten verfügbaren Feature **Bericht per E-Mail senden** können Sie automatisierte Aufgaben zum Empfangen regelmäßiger Berichte per E-Mail erstellen. Dieses Feature stellt eine Logik-App in Ihrer Azure-Umgebung bereit, die Daten aus Ihren ausgewählten Log Analytics-Arbeitsbereichen basierend auf den von Ihnen angegebenen Eingaben abfragt.
 
-Sobald die Logik-App erstellt wurde, müssen Sie die Verbindungen mit Azure Monitor-Protokollen und Office 365 autorisieren. Navigieren Sie hierzu im Azure-Portal zu **Logic Apps**, und suchen Sie nach dem Namen der Aufgabe, die Sie erstellt haben. Wenn Sie auf das Menüelement **API-Verbindungen** klicken, wird die Liste der API-Verbindungen geöffnet, die Sie autorisieren müssen.
+Sobald die Logik-App erstellt wurde, müssen Sie die Verbindungen mit Azure Monitor-Protokollen und Office 365 autorisieren. Navigieren Sie hierzu im Azure-Portal zu **Logic Apps**, und suchen Sie nach dem Namen der Aufgabe, die Sie erstellt haben. Wenn Sie auf das Menüelement **API-Verbindungen** klicken, wird die Liste der API-Verbindungen geöffnet, die Sie autorisieren müssen. [Weitere Informationen über das Konfigurieren von E-Mails und das Beheben von Problemen](backup-reports-email.md)
 
 ###### <a name="customize-azure-backup-reports"></a>Anpassen von Azure Backup-Berichten
 
-Sicherungsberichte verwenden Funktionen für Azure Monitor-Protokolle. Diese Funktionen verarbeiten Daten in den Rohtabellen von Azure Backup in Log Analytics und geben formatierte Daten zurück, mit denen Sie mit einfachen Abfragen problemlos Informationen aus all Ihren auf die Sicherung bezogenen Entitäten abrufen können.
+Sicherungsberichte verwenden [Systemfunktionen für Azure Monitor-Protokolle](backup-reports-system-functions.md). Diese Funktionen verarbeiten Daten in den Rohtabellen von Azure Backup in Log Analytics und geben formatierte Daten zurück, mit denen Sie mit einfachen Abfragen problemlos Informationen aus all Ihren auf die Sicherung bezogenen Entitäten abrufen können. 
+
+Zum Erstellen eigener Berichtsarbeitsmappen auf Grundlage von Sicherungsberichten können Sie zu „Sicherungsberichte“ navigieren, oben im Bericht auf **Bearbeiten** klicken und die in den Berichten verwendeten Abfragen anzeigen/bearbeiten. Weitere Informationen zum Erstellen von benutzerdefinierten Berichten finden Sie in der [Dokumentation zu Azure-Arbeitsmappen](https://docs.microsoft.com/azure/azure-monitor/visualize/workbooks-overview). 
 
 ## <a name="export-to-excel"></a>Exportieren in Excel
 
@@ -175,6 +189,8 @@ Wenn Sie [Azure Lighthouse](../lighthouse/index.yml) mit delegiertem Zugriff auf
 - Der Bericht zeigt Einzelheiten zu Aufträgen (mit Ausnahme von Protokollaufträgen), die im ausgewählten Zeitbereich *ausgelöst* wurden.
 - Die für **Cloudspeicher** und *Geschützte Instanzen* angezeigten Werte stehen am **Ende** des ausgewählten Zeitbereichs.
 - Die in den Berichten angezeigten Sicherungselemente sind die Elemente am *Ende* des ausgewählten Zeitbereichs. Sicherungselemente, die mitten im ausgewählten Zeitbereich gelöscht wurden, werden nicht angezeigt. Dieselbe Konvention gilt auch für Sicherungsrichtlinien.
+- Wenn der ausgewählte Zeitbereich einen Zeitraum von höchstens 30 Tagen umfasst, werden Diagramme in der Tagesansicht gerendert, die pro Tag einen Datenpunkt aufweist. Wenn der Zeitbereich einen Zeitraum von mindestens 30 Tagen und höchstens 90 Tagen umfasst, werden Diagramme in der Wochenansicht gerendert. Für größere Zeitbereiche werden Diagramme in der Monatsansicht gerendert. Die wöchentliche oder monatliche Datenaggregation erhöht die Leistung von Abfragen und die Lesbarkeit von Daten in Diagrammen.
+- Die Raster zur Richtlinieneinhaltung folgen ebenfalls einer ähnlichen Aggregationslogik wie der oben beschriebenen. Es gibt jedoch einige geringfügige Unterschiede. Der erste besteht darin, dass für Elemente mit einer wöchentlichen Sicherungsrichtlinie keine Tagesansicht verfügbar ist (nur die Wochen- und Monatsansicht). Außerdem stellt ein Monat in Rastern für Elemente mit wöchentlicher Sicherungsrichtlinie einen Zeitraum von 4 Wochen (28 Tage) dar, nicht von 30 Tagen. Dies hat den Zweck, dass die angefangenen Wochen ausgeklammert werden.
 
 ## <a name="query-load-times"></a>Querladezeiten
 

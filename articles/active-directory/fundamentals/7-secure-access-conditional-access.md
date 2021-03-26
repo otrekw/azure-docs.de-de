@@ -14,10 +14,10 @@ ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 64209a4d9ca200c69783a4ae317b38beef8ded89
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98222308"
 ---
 # <a name="manage-external-access-with-conditional-access-policies"></a>Verwalten des externen Zugriffs mit Richtlinien für bedingten Zugriff 
@@ -102,7 +102,7 @@ Für viele häufig genutzte Richtlinien für bedingten Zugriff sind Dokumentatio
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In den folgenden Artikeln finden Sie Informationen zum Schützen des externen Zugriffs auf Ressourcen. Wir empfehlen Ihnen, die Aktionen in der angegebenen Reihenfolge durchzuführen.
+In den folgenden Artikeln finden Sie Informationen zum Sichern des externen Zugriffs auf Ressourcen. Wir empfehlen Ihnen, die Aktionen in der angegebenen Reihenfolge durchzuführen.
 
 1. [Ermitteln des gewünschten Sicherheitsstatus für externen Zugriff](1-secure-access-posture.md)
 
@@ -112,7 +112,7 @@ In den folgenden Artikeln finden Sie Informationen zum Schützen des externen Zu
 
 4. [Verwenden von Gruppen für die Sicherheit](4-secure-access-groups.md)
 
-5. [Durchführen der Umstellung auf Azure AD B2B](5-secure-access-b2b.md)
+5. [Umstellung auf Azure AD B2B](5-secure-access-b2b.md)
 
 6. [Schützen des Zugriffs mit der Berechtigungsverwaltung](6-secure-access-entitlement-managment.md)
 

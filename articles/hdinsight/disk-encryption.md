@@ -5,12 +5,12 @@ description: In diesem Artikel werden die beiden Verschlüsselungsebenen beschri
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/10/2020
-ms.openlocfilehash: 58b3d892ea24430a9d951a5a0230282f6c4fd584
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 3d4f9e3be02a64efa058ea1f84a3e261cb6166fc
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99988622"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867116"
 ---
 # <a name="azure-hdinsight-double-encryption-for-data-at-rest"></a>Doppelte Verschlüsselung für ruhende Daten in Azure HDInsight
 
@@ -76,25 +76,25 @@ HDInsight unterstützt nur Azure Key Vault. Falls Sie einen eigenen Schlüsseltr
 
 1. Navigieren Sie in Ihrem neuen Schlüsseltresor zu **Einstellungen** > **Schlüssel** >  **+ Generieren/Importieren**.
 
-    ![Generieren eines neuen Schlüssels in Azure Key Vault](./media/disk-encryption/create-new-key.png "Generieren eines neuen Schlüssels in Azure Key Vault")
+    :::image type="content" source="./media/disk-encryption/create-new-key.png" alt-text="Generieren eines neuen Schlüssels in Azure Key Vault":::
 
 1. Geben Sie einen Namen an, und wählen Sie dann **Erstellen** aus. Behalten Sie den standardmäßigen **Schlüsseltyp** (Option **RSA**) bei.
 
-    ![Generieren des Schlüsselnamens](./media/disk-encryption/create-key.png "Generieren des Schlüsselnamens")
+    :::image type="content" source="./media/disk-encryption/create-key.png" alt-text="Generieren des Schlüsselnamens":::
 
 1. Wenn Sie zur Seite **Schlüssel** zurückkehren, wählen Sie den erstellten Schlüssel aus.
 
-    ![Key Vault-Schlüsselliste](./media/disk-encryption/key-vault-key-list.png)
+    :::image type="content" source="./media/disk-encryption/key-vault-key-list.png" alt-text="Key Vault-Schlüsselliste":::
 
 1. Wählen Sie die Version aus, um die Seite **Schlüsselversion** zu öffnen. Wenn Sie Ihren eigenen Schlüssel für die Verschlüsselung des HDInsight-Clusters verwenden, müssen Sie die Schlüssel-URI angeben. Kopieren Sie den **Schlüsselbezeichner**, und speichern sie ihn, bis Sie zum Erstellen des Clusters bereit sind.
 
-    ![Abrufen des Schlüsselbezeichners](./media/disk-encryption/get-key-identifier.png)
+    :::image type="content" source="./media/disk-encryption/get-key-identifier.png" alt-text="Abrufen des Schlüsselbezeichners":::
 
 ### <a name="create-access-policy"></a>Erstellen einer Zugriffsrichtlinie
 
 1. Navigieren Sie in Ihrem neuen Schlüsseltresor zu **Einstellungen** > **Zugriffsrichtlinien** >  **+ Zugriffsrichtlinie hinzufügen**.
 
-    ![Erstellen einer neuen Azure Key Vault-Zugriffsrichtlinie](./media/disk-encryption/key-vault-access-policy.png)
+    :::image type="content" source="./media/disk-encryption/key-vault-access-policy.png" alt-text="Erstellen einer neuen Azure Key Vault-Zugriffsrichtlinie":::
 
 1. Geben Sie auf der Seite **Zugriffsrichtlinie hinzufügen** die folgenden Informationen an:
 
@@ -104,13 +104,13 @@ HDInsight unterstützt nur Azure Key Vault. Falls Sie einen eigenen Schlüsseltr
     |Berechtigungen für Geheimnis|Wählen Sie **Abrufen**, **Festlegen** und **Löschen** aus.|
     |Prinzipal auswählen|Wählen Sie die benutzerseitig zugewiesene verwaltete Identität aus, die Sie zuvor erstellt haben.|
 
-    ![Festlegen der Option „Prinzipal auswählen“ für die Azure Key Vault-Zugriffsrichtlinie](./media/disk-encryption/azure-portal-add-access-policy.png)
+    :::image type="content" source="./media/disk-encryption/azure-portal-add-access-policy.png" alt-text="Festlegen der Option „Prinzipal auswählen“ für die Azure Key Vault-Zugriffsrichtlinie":::
 
 1. Wählen Sie **Hinzufügen**.
 
 1. Wählen Sie **Speichern** aus.
 
-    ![Speichern einer Azure Key Vault-Zugriffsrichtlinie](./media/disk-encryption/add-key-vault-access-policy-save.png)
+    :::image type="content" source="./media/disk-encryption/add-key-vault-access-policy-save.png" alt-text="Speichern einer Azure Key Vault-Zugriffsrichtlinie":::
 
 ### <a name="create-cluster-with-customer-managed-key-disk-encryption"></a>Erstellen eines Clusters mit Datenträgerverschlüsselung mit kundenseitig verwalteten Schlüsseln
 
@@ -129,7 +129,7 @@ Während der Clustererstellung können Sie entweder einen Schlüssel mit Version
 
 Darüber hinaus müssen Sie die verwaltete Identität dem Cluster zuweisen.
 
-![Neuen Cluster erstellen](./media/disk-encryption/create-cluster-portal.png)
+:::image type="content" source="./media/disk-encryption/create-cluster-portal.png" alt-text="Neuen Cluster erstellen":::
 
 #### <a name="using-azure-cli"></a>Verwenden der Azure-Befehlszeilenschnittstelle
 
@@ -367,7 +367,7 @@ Mit Azure-Portal oder Azure CLI können Sie die Verschlüsselungsschlüssel än
 
 Zum Rotieren des Schlüssels benötigen Sie die Basis-URI des Schlüsseltresors. Wechseln Sie anschließend im Portal zum Abschnitt mit den HDInsight-Clustereigenschaften, und klicken Sie unter **Schlüssel-URL für Datenträgerverschlüsselung** auf **Schlüssel ändern**. Geben Sie die neue Schlüssel-URL ein, und senden Sie sie, um den Schlüssel zu rotieren.
 
-![Rotieren des Schlüssels für die Datenträgerverschlüsselung](./media/disk-encryption/change-key.png)
+:::image type="content" source="./media/disk-encryption/change-key.png" alt-text="Rotieren des Schlüssels für die Datenträgerverschlüsselung":::
 
 #### <a name="using-azure-cli"></a>Verwenden der Azure-Befehlszeilenschnittstelle
 
@@ -400,7 +400,7 @@ Nein. Alle verwalteten Datenträger und Ressourcendatenträger werden mit dem gl
 
 Wenn der Cluster den Zugriff auf den Schlüssel verliert, werden im Apache Ambari-Portal Warnungen angezeigt. In diesem Zustand schlägt der Vorgang **Schlüssel ändern** fehl. Sobald der Schlüsselzugriff wieder hergestellt wurde, verschwinden die Ambari-Warnungen, und Vorgänge wie z. B. die Schlüsselrotation können erfolgreich ausgeführt werden.
 
-![Ambari-Warnung zum Schlüsselzugriff](./media/disk-encryption/ambari-alert.png)
+:::image type="content" source="./media/disk-encryption/ambari-alert.png" alt-text="Ambari-Warnung zum Schlüsselzugriff":::
 
 **Wie kann ich den Cluster wiederherstellen, wenn die Schlüssel gelöscht werden?**
 

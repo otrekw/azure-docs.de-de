@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/22/2019
-ms.openlocfilehash: a3d787059345b5971d99ebd7a1e26a9135b61bed
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 3ddfdfdfe10d5b6ea7c2d5cd99d325564163c0dd
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98930338"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866011"
 ---
 # <a name="use-external-packages-with-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>Verwenden externer Pakete mit Jupyter Notebooks in Apache Spark-Clustern unter HDInsight
 
@@ -34,11 +34,11 @@ In diesem Artikel erfahren Sie, wie Sie das Paket [spark-csv](https://search.mav
 
 1. Erstellen Sie ein neues Notebook. Wählen Sie **Neu** und dann **Spark** aus.
 
-    ![Erstellen eines neuen Spark Jupyter Notebooks](./media/apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-create-notebook.png "Erstellen eines neuen Jupyter Notebooks")
+    :::image type="content" source="./media/apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-create-notebook.png " alt-text="Erstellen eines neuen Spark Jupyter Notebooks" border="true":::
 
 1. Ein neues Notebook mit dem Namen „Untitled.pynb“ wird erstellt und geöffnet. Wählen Sie oben den Namen des Notebooks aus, und geben Sie einen Anzeigenamen ein.
 
-    ![Angeben eines Namens für das Notebook](./media/apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-name-notebook.png "Angeben eines neuen Namens für das Notebook")
+    :::image type="content" source="./media/apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-name-notebook.png " alt-text="Angeben eines Namens für das Notebook" border="true":::
 
 1. Verwenden Sie den Magic-Befehl `%%configure`, um das Notebook so zu konfigurieren, dass es ein externes Paket verwendet. Stellen Sie sicher, dass Notebooks, die externe Pakete verwenden, die `%%configure` -Magic in der ersten Codezelle aufrufen. Dadurch wird sichergestellt, dass der Kernel für die Verwendung des Pakets konfiguriert ist, bevor die Sitzung gestartet wird.
 
@@ -56,7 +56,7 @@ In diesem Artikel erfahren Sie, wie Sie das Paket [spark-csv](https://search.mav
 
     b. Sammeln Sie im Repository die Werte für **GroupId**, **ArtifactId** und **Version**. Vergewissern Sie sich, dass die erfassten Werte Ihrem Cluster entsprechen. In diesem Fall wird ein Scala 2.11- und Spark 1.5.0-Paket verwendet, möglicherweise müssen Sie jedoch für die jeweilige Scala- oder Spark-Version in Ihrem Cluster andere Versionen auswählen. Sie können die Scala-Version im Cluster ermitteln, indem Sie `scala.util.Properties.versionString` im Spark Jupyter-Kernel oder in Spark-Submit ausführen. Sie können die Spark-Version im Cluster ermitteln, indem Sie `sc.version` für Jupyter Notebooks ausführen.
 
-    ![Verwenden von externen Paketen mit Jupyter Notebook](./media/apache-spark-jupyter-notebook-use-external-packages/use-external-packages-with-jupyter.png "Verwenden von externen Paketen mit Jupyter Notebook")
+    :::image type="content" source="./media/apache-spark-jupyter-notebook-use-external-packages/use-external-packages-with-jupyter.png " alt-text="Verwenden von externen Paketen mit Jupyter Notebook" border="true":::
 
     c. Verketten Sie die drei Werte, getrennt durch einen Doppelpunkt ( **:** ).
 

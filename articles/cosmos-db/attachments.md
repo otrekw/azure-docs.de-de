@@ -8,15 +8,15 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 08/07/2020
 ms.reviewer: sngun
-ms.openlocfilehash: b6504c0521328edc356dea1c146fe9aeb6bde55f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a8e968d05a1f844a79d2e42d10c323ed4c392424
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93092737"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102521219"
 ---
 # <a name="azure-cosmos-db-attachments"></a>Azure Cosmos DB-Anlagen
-[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-mongodb-api.md)]
 
 Azure Cosmos DB-Anlagen sind besondere Elemente, die Verweise auf zugeordnete Metadaten mit einem externen Blob oder einer externen Mediendatei enthalten.
 
@@ -40,6 +40,11 @@ Die verwalteten Anlagen von Azure Cosmos DB unterscheiden sich von deren Unterst
 - Anlagen werden nicht in allen Versionen der SDKs von Azure Cosmos DB unterstützt.
 - Verwaltete Anlagen sind auf 2 GB Speicher pro Datenbankkonto begrenzt.
 - Verwaltete Anhänge sind mit der globalen Verteilung von Azure Cosmos DB nicht kompatibel und werden nicht regionsübergreifend repliziert.
+
+> [!NOTE]
+> Die Azure Cosmos DB-API für die MongoDB-Version 3.2 nutzt verwaltete Anlagen für GridFS und unterliegt denselben Einschränkungen.
+>
+> Entwicklern, die die GridFS-Features von MongoDB verwenden, wird empfohlen, ein Upgrade auf die Azure Cosmos DB-API für die MongoDB-Version 3.6 oder höher durchzuführen, da diese von Anlagen entkoppelt und benutzerfreundlicher ist. Alternativ sollten Entwickler, die die GridFS-Features von MongoDB verwenden, die Verwendung von Azure Blob Storage in Betracht ziehen. Dieser Dienst ist speziell für die Speicherung von Blobinhalten konzipiert und bietet im Vergleich zu GridFS erweiterte Funktionen bei geringeren Kosten.
 
 ## <a name="migrating-attachments-to-azure-blob-storage"></a>Migrieren von Anlagen zu Azure Blob Storage
 
@@ -162,6 +167,6 @@ namespace attachments
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Erste Schritte mit [Azure Blob Storage](../storage/blobs/storage-quickstart-blobs-dotnet.md)
-- Abrufen von Verweisen auf die Verwendung von Anlagen über das [.NET SDK von Azure Cosmos DB v2](/dotnet/api/microsoft.azure.documents.attachment?preserve-view=true&view=azure-dotnet)
-- Abrufen von Verweisen auf die Verwendung von Anlagen über das [Java SDK von Azure Cosmos DB v2](/java/api/com.microsoft.azure.documentdb.attachment?preserve-view=true&view=azure-java-stable)
+- Abrufen von Verweisen auf die Verwendung von Anlagen über das [.NET SDK von Azure Cosmos DB v2](/dotnet/api/microsoft.azure.documents.attachment)
+- Abrufen von Verweisen auf die Verwendung von Anlagen über das [Java SDK von Azure Cosmos DB v2](/java/api/com.microsoft.azure.documentdb.attachment)
 - Abrufen von Verweisen auf die Verwendung von Anlagen über die [REST-API von Azure Cosmos DB](/rest/api/cosmos-db/attachments)

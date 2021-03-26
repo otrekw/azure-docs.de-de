@@ -1,19 +1,14 @@
 ---
 title: Horizon SDK
-titleSuffix: Azure Defender for IoT
 description: Mit dem Horizon SDK können Azure Defender für IoT-Entwickler Zergliederungs-Plug-Ins entwerfen, die den Netzwerkdatenverkehr decodieren, damit er von automatisierten Defender für IoT-Netzwerkanalyseprogrammen verarbeitet werden kann.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 1/13/2021
 ms.topic: article
-ms.service: azure
-ms.openlocfilehash: 06663e12bbcaee2243be75d6aa9ea9cf4fd125bf
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 500f1d78a6a2ab91284c993a5c56ef8e679db83f
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100523361"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104782485"
 ---
 # <a name="horizon-proprietary-protocol-dissector"></a>Proprietäre Horizon-Protokollzergliederung
 
@@ -1640,6 +1635,6 @@ Zum Überwachen:
 
 Wählen Sie in der Übersicht die Schaltfläche „Überwachen“ für Ihr Plug-In aus.
 
-## <a name="next-steps"></a>Nächste Schritte
+Nächste Schritte
 
 Einrichten der [Horizon-API](references-horizon-api.md)
