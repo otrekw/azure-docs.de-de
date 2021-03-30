@@ -148,6 +148,22 @@
       items:
         - name: REST-API für Dokumentübersetzung
           href: /rest/api/cognitiveservices/translator/documenttranslation
+        - name: Abrufen von Dokumentformaten
+          href: document-translation/reference/get-document-formats.md
+        - name: Abrufen von Glossarformaten
+          href: document-translation/reference/get-glossary-formats.md
+        - name: Abrufen der Dokumentspeicherquelle
+          href: document-translation/reference/get-document-storage-source.md
+        - name: Übermitteln einer Batchanforderung
+          href: document-translation/reference/submit-batch-request.md
+        - name: Abrufen des Vorgangsdokumentstatus
+          href: document-translation/reference/get-operation-documents-status.md
+        - name: Abrufen des Dokumentstatus
+          href: document-translation/reference/get-document-status.md
+        - name: Abrufen von Vorgängen
+          href: document-translation/reference/get-operations.md
+        - name: Abbrechen eines Vorgangs
+          href: document-translation/reference/cancel-operation.md
 - name: Übersetzungsressourcen
   items:
     - name: Support- und Hilfeoptionen
