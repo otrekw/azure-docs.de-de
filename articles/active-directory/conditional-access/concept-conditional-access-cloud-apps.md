@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b3b4da4e21bca421b76f820c04ba68375be5ca0
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 8ff9fe969c90a2bb4aa9f954b984f511fb490ba3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93307778"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579143"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>Bedingter Zugriff: Cloud-Apps oder -aktionen
 
@@ -125,8 +125,14 @@ Neben den Microsoft-Apps können Administratoren jede für Azure AD registrierte
 
 ## <a name="user-actions"></a>Benutzeraktionen
 
-Benutzeraktionen sind Aufgaben, die von einem Benutzer ausgeführt werden können. Die einzige derzeit unterstützte Aktion ist **Sicherheitsinformationen registrieren**. Dadurch kann eine Richtlinie für bedingten Zugriff erzwungen werden, wenn Benutzer, für die die kombinierte Registrierung aktiviert ist, ihre Sicherheitsinformationen zu registrieren versuchen. Weitere Informationen finden Sie im Artikel [Kombinierte Registrierung von Sicherheitsinformationen](../authentication/concept-registration-mfa-sspr-combined.md).
+Benutzeraktionen sind Aufgaben, die von einem Benutzer ausgeführt werden können. Der bedingte Zugriff unterstützt derzeit zwei Benutzeraktionen: 
 
+- **Sicherheitsinformationen registrieren**: Mit dieser Benutzeraktion kann eine Richtlinie für bedingten Zugriff erzwungen werden, wenn Benutzer, für die die kombinierte Registrierung aktiviert ist, versuchen, ihre Sicherheitsinformationen zu registrieren. Weitere Informationen finden Sie im Artikel [Kombinierte Registrierung von Sicherheitsinformationen](../authentication/concept-registration-mfa-sspr-combined.md).
+
+- **Geräte registrieren oder verknüpfen (Vorschau)** : Mit dieser Benutzeraktion können Administratoren eine Richtlinie für bedingten Zugriff erzwingen, wenn Benutzer Geräte in Azure AD [registrieren](../devices/concept-azure-ad-register.md) oder mit Azure AD [verknüpfen](../devices/concept-azure-ad-join.md). Bei dieser Benutzeraktion müssen zwei wichtige Aspekte berücksichtigt werden: 
+   - `Require multi-factor authentication` ist die einzige Zugriffssteuerung, die bei dieser Benutzeraktion verfügbar ist. Alle anderen Zugriffssteuerungen sind deaktiviert. Durch diese Einschränkung werden Konflikte mit Zugriffssteuerungen verhindert, die entweder von der Azure AD-Geräteregistrierung abhängig sind oder nicht für die Azure AD-Geräteregistrierung gelten. 
+   - Wenn bei dieser Benutzeraktion eine Richtlinie für bedingten Zugriff aktiviert ist, muss **Azure Active Directory** > **Geräte** > **Geräteeinstellungen** - `Devices to be Azure AD joined or Azure AD registered require Multi-Factor Authentication` auf **Nein** festgelegt werden. Anderenfalls wird die Richtlinie für bedingten Zugriff bei dieser Benutzeraktion nicht ordnungsgemäß erzwungen. Weitere Informationen zu dieser Geräteeinstellung finden Sie unter [Konfigurieren von Geräteeinstellungen](../devices/device-management-azure-portal.md#configure-device-settings). Diese Benutzeraktion bietet die Möglichkeit, eine mehrstufige Authentifizierung für die Registrierung oder Verknüpfung von Geräten für bestimmte Benutzer und Gruppen oder Bedingungen festzulegen (anstelle einer mandantenweiten Richtlinie in den Geräteeinstellungen). 
+   
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Bedingter Zugriff: Bedingungen](concept-conditional-access-conditions.md)
