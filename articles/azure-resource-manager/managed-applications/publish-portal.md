@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: tomfitz
 ms.openlocfilehash: 05302d92f2304be35a7b88fac6fabfc17b13c63e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "75649586"
 ---
 # <a name="publish-a-service-catalog-application-through-azure-portal"></a>Veröffentlichen einer Dienstkataloganwendung über das Azure-Portal
@@ -30,7 +30,7 @@ Die ZIP-Datei, die die Definition der verwalteten Anwendung enthält, muss über
 
 1. Suchen Sie nach **Dienstkatalog**.
 
-1. Scrollen Sie in den Ergebnissen zu **Service Catalog Managed Application Definition (Definition für die verwaltete Dienstkataloganwendung)**. Wählen Sie es aus.
+1. Scrollen Sie in den Ergebnissen zu **Service Catalog Managed Application Definition (Definition für die verwaltete Dienstkataloganwendung)**. Wählen Sie ihn aus.
 
    ![Suchen Sie nach Definitionen für die verwaltete Anwendung](./media/publish-portal/select-managed-apps-definition.png)
 

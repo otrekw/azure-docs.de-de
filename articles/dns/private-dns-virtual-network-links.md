@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 9/24/2019
 ms.author: rohink
 ms.openlocfilehash: 5e43ad35cdaad89d5b9f43007bad8782f358c1a6
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94954340"
 ---
 # <a name="what-is-a-virtual-network-link"></a>Was ist eine virtuelle Netzwerkverknüpfung?
@@ -31,11 +31,11 @@ Eine private DNS-Zone kann mehrere virtuelle Registrierungsnetzwerke aufweisen, 
 Wenn Sie eine virtuelle Netzwerkverknüpfung unter einer privaten DNS-Zone erstellen und nicht die automatische Registrierung von DNS-Einträgen aktivieren, wird das virtuelle Netzwerk als reines virtuelles Auflösungsnetzwerk behandelt. DNS-Einträge für virtuelle Computer, die in solchen Netzwerken bereitgestellt werden, werden nicht automatisch in der verknüpften privaten DNS-Zone erstellt. Die in solchen Netzwerken bereitgestellten virtuellen Computer können jedoch die DNS-Einträge erfolgreich aus der privaten DNS-Zone abfragen. Diese Einträge können von Ihnen manuell erstellt oder aus anderen virtuellen Netzwerken aufgefüllt werden, die als Registrierungsnetzwerke mit der privaten DNS-Zone verknüpft wurden.
 Eine private DNS-Zone kann mehrere virtuelle Auflösungsnetzwerke aufweisen, und einem virtuellen Netzwerk können mehrere Auflösungszonen zugeordnet sein.
 
-## <a name="limits"></a>Einschränkungen
+## <a name="limits"></a>Grenzwerte
 
 Um zu verstehen, wie viele Registrierungs- und Auflösungsnetzwerke Sie mit privaten DNS-Zonen verknüpfen können, finden Sie unter [Azure DNS-Limits](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-dns-limits).
 
-## <a name="other-considerations"></a>Weitere Überlegungen
+## <a name="other-considerations"></a>Andere Aspekte
 
 * Virtuelle Netzwerke, die mit dem klassischen Bereitstellungsmodell bereitgestellt werden, werden nicht unterstützt.
 

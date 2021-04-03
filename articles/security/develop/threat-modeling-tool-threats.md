@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
 ms.openlocfilehash: eb006482b851e9094b82ec3d0753b74c05296994
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "68727833"
 ---
 # <a name="microsoft-threat-modeling-tool-threats"></a>Microsoft Threat Modeling Tool-Bedrohungen
@@ -38,7 +38,7 @@ Mit dem Threat Modeling Tool können Sie Fragen wie die folgenden beantworten:
 
 Um Ihnen beim Formulieren dieser Arten von gezielten Fragen besser helfen zu können, verwendet Microsoft das STRIDE-Modell, in dem die verschiedenen Typen von Bedrohungen kategorisiert und Gespräche über die allgemeine Sicherheit vereinfacht werden.
 
-| Category | BESCHREIBUNG |
+| Category | Beschreibung |
 | -------- | ----------- |
 | **Spoofing** | Umfasst unberechtigten Zugriff auf und die anschließende Verwendung der Authentifizierungsinformationen eines anderen Benutzers, z.B. Benutzername und Kennwort. |
 | **Manipulation** | Umfasst die böswillige Änderung von Daten. Beispiele sind nicht autorisierte Änderungen von persistenten Daten, z.B. der Daten in einer Datenbank, und die Änderung von Daten bei der Übertragung zwischen zwei Computern über ein offenes Netzwerk wie das Internet. |
