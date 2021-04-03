@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/06/2019
 ms.author: raynew
 ms.openlocfilehash: af7baf413c9054ef3e5bf527851ac06c113cdce7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86131169"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-hyper-v-vms-to-a-secondary-site"></a>Unterstützungsmatrix für die Notfallwiederherstellung von Hyper-V-VMs in einem sekundären Standort
@@ -51,7 +51,7 @@ Nur Linux-Computer mit dem folgenden Speicher können repliziert werden:
 
 ## <a name="network-configuration---hostguest-vm"></a>Netzwerkkonfiguration – Host/Gast-VM
 
-**Konfiguration** | **Unterstützt**  
+**Configuration** | **Unterstützt**  
 --- | --- 
 Host – NIC-Teamvorgang | Ja 
 Host – VLAN | Ja 
@@ -70,24 +70,24 @@ Gast-VM – Multi-NIC | Ja
 
 **Speicher (Host)** | **Unterstützt**
 --- | --- 
-NFS | –
+NFS | Nicht zutreffend
 SMB 3.0 |  Ja
 SAN (ISCSI) | Ja
 Multipfad (MPIO) | Ja
 
 ### <a name="guest-or-physical-server-storage"></a>Gast- oder physischer Serverspeicher
 
-**Konfiguration** | **Unterstützt**
+**Configuration** | **Unterstützt**
 --- | --- | 
-VMDK |  –
+VMDK |  Nicht zutreffend
 VHD/VHDX | Ja (bis zu 16 Datenträger)
 Gen 2-VM | Ja
 Freigegebener Clusterdatenträger | Nein
 Verschlüsselter Datenträger | Nein
-UEFI| –
+UEFI| Nicht zutreffend
 NFS | Nein
 SMB 3.0 | Nein
-RDM | –
+RDM | Nicht zutreffend
 Datenträger > 1 TB | Ja
 Volume mit Stripesetdatenträgern > 1 TB<br/><br/> LVM | Ja
 Speicherplätze | Ja

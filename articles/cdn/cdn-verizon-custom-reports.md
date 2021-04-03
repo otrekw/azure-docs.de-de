@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 10/11/2017
 ms.author: allensu
 ms.openlocfilehash: cff355aeb74efc9dec2780840ae57fea4c5764cc
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "84888707"
 ---
 # <a name="custom-reports-from-verizon"></a>Benutzerdefinierte Berichte aus Verizon
@@ -81,7 +81,7 @@ Sie können die Daten im Excel-Format exportieren, indem Sie auf das Excel-Symbo
 | Treffer                      | Gibt die Gesamtanzahl der Anforderungen an den Edge CNAME an. |
 | Cachefehler                    | Gibt die Gesamtanzahl der Anforderungen oder übertragenen Daten (MB) für den Edge CNAME an, die zu einem Cachefehler führen (z.B. TCP_CLIENT_REFRESH_MISS, TCP_EXPIRED_MISS oder TCP_MISS). Ein Cachefehler tritt auf, wenn der angeforderte Inhalt nicht auf dem Edgeserver, der die Anforderung berücksichtigt, zwischengespeichert wurde. | 
 | Kein Cache                  | Gibt die Gesamtanzahl der Anforderungen oder übertragenen Daten (MB) für den Edge CNAME an, die den Cachestatuscode „CONFIG_NOCACHE“ ergeben.  |
-| Andere                     | Gibt die Gesamtanzahl der Anforderungen oder übertragenen Daten (MB) für den Edge CNAME an, die einen HTTP-Statuscode ergeben, der außerhalb des Bereichs 2xx–5xx liegt. |
+| Sonstiges                     | Gibt die Gesamtanzahl der Anforderungen oder übertragenen Daten (MB) für den Edge CNAME an, die einen HTTP-Statuscode ergeben, der außerhalb des Bereichs 2xx–5xx liegt. |
 | Plattform                  | Gibt die Plattform an, die den Datenverkehr des Edge CNAME verarbeitet. |
 | Nicht zugewiesen               | Gibt die Gesamtanzahl der Anforderungen oder übertragenen Daten (MB) für den Edge CNAME an, für die keine Informationen zum Cachestatuscode oder HTTP-Statuscode protokolliert wurden.  |
 | Nicht zwischenspeicherbar               | Gibt die Gesamtanzahl der Anforderungen oder übertragenen Daten (MB) für den Edge CNAME an, die den Cachestatuscode „UNCACHEABLE“ ergeben.  |

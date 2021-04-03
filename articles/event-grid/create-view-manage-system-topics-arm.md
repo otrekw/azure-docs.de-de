@@ -4,10 +4,10 @@ description: In diesem Artikel wird beschrieben, wie Sie mit Azure Resource Mana
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 1c8881a2d9dfca43084cc537b106e84b050a18d5
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86115161"
 ---
 # <a name="create-system-topics-in-azure-event-grid-using-resource-manager-templates"></a>Erstellen von Systemthemen in Azure Event Grid mithilfe von Resource Manager-Vorlagen

@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 ms.openlocfilehash: eca49a3fac1ea0398ebe1d05bde20fbca3c81232
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "77594310"
 ---
 # <a name="about-service-meshes"></a>Informationen zu Dienstnetzen
@@ -28,7 +28,7 @@ Hier sind einige Szenarien angegeben, die Sie bei Verwendung eines Dienstnetzes 
 
 - **Einblick**: Verschaffen Sie sich einen Einblick in der Verbindung Ihrer Dienste mit dem Datenverkehr, der zwischen den Diensten ausgetauscht wird. Rufen Sie Metriken, Protokolle und Ablaufverfolgungen für den gesamten Datenverkehr im Cluster und für den Ein- und Ausgang ab. Fügen Sie Ihren Anwendungen Funktionen für die verteilte Ablaufverfolgung hinzu.
 
-## <a name="architecture"></a>Aufbau
+## <a name="architecture"></a>Architektur
 
 Ein Dienstnetz besteht normalerweise aus einer Steuerungsebene und der Datenebene.
 
