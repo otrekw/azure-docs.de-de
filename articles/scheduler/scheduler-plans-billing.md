@@ -9,10 +9,10 @@ ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/18/2016
 ms.openlocfilehash: e821036ff4ddb5a9786bc4f4537bb81539ab2c87
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "78898472"
 ---
 # <a name="plans-and-billing-for-azure-scheduler"></a>Pläne und Abrechnung für Microsoft Azure Scheduler
@@ -26,7 +26,7 @@ ms.locfileid: "78898472"
 
 In Azure Scheduler enthält eine Auftragssammlung eine bestimmte Anzahl von Aufträgen. Die Auftragssammlung ist die fakturierbare Entität und ist in Standard-, P10 Premium- sowie P20 Premium-Plänen verfügbar, die hier beschrieben werden: 
 
-| Auftragssammlungsplan | Max. Aufträge pro Sammlung | Max. Wiederholungen | Max. Auftragssammlungen pro Abonnement | Einschränkungen | 
+| Auftragssammlungsplan | Max. Aufträge pro Sammlung | Max. Wiederholungen | Max. Auftragssammlungen pro Abonnement | Grenzwerte | 
 |:--- |:--- |:--- |:--- |:--- |
 | **Standard** | 50 Aufträge pro Sammlung | Eine pro Minute. Aufträge können nicht häufiger als einmal pro Minute ausgeführt werden. | Jedes Azure-Abonnement kann bis zu 100 Standard-Auftragssammlungen enthalten. | Zugriff auf sämtliche Scheduler-Features | 
 | **P10 Premium** | 50 Aufträge pro Sammlung | Eine pro Minute. Aufträge können nicht häufiger als einmal pro Minute ausgeführt werden. | Jedes Azure-Abonnement kann bis zu 10.000 P10 Premium-Auftragssammlungen enthalten. <a href="mailto:wapteams@microsoft.com">Wenden Sie sich an uns</a>, wenn Sie mehr Sammlungen benötigen. | Zugriff auf sämtliche Scheduler-Features |

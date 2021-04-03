@@ -13,10 +13,10 @@ ms.date: 10/06/2020
 ms.author: nichola
 ms.reviewer: ''
 ms.openlocfilehash: f6ce792b3db0100d7356884bbc6ee2696580df10
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97652057"
 ---
 # <a name="how-to-use-continuous-access-evaluation-enabled-apis-in-your-applications"></a>Verwenden von APIs mit aktivierter fortlaufender Zugriffsevaluierung in Ihren Anwendungen
@@ -35,7 +35,7 @@ Wenn eine Ressourcen-API CAE implementiert und in Ihrer App deklariert wurde, da
 
 Als Erstes müssen Sie Code hinzufügen, um eine Antwort von der Ressourcen-API zu verarbeiten, die den Aufruf aufgrund von CAE ablehnt. Mit CAE geben APIs einen 401-Statuscode sowie einen WWW-Authenticate-Header zurück, wenn das Zugriffstoken widerrufen wurde oder die API eine Änderung in der verwendeten IP-Adresse erkennt. Der WWW-Authenticate-Header enthält eine Anspruchsabfrage, mit der die Anwendung ein neues Zugriffstoken abrufen kann.
 
-Zum Beispiel:
+Beispiel:
 
 ```console
 HTTP 401; Unauthorized

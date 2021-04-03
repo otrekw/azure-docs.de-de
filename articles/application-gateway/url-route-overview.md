@@ -8,10 +8,10 @@ ms.date: 09/10/2019
 ms.author: victorh
 ms.topic: conceptual
 ms.openlocfilehash: a9b2e8148586ec58ea6a7a033099e726920857b6
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "84987937"
 ---
 # <a name="url-path-based-routing-overview"></a>Routing auf URL-Pfadbasis – Übersicht
@@ -76,9 +76,9 @@ Bei den Pfadregeln wird die Groß-/Kleinschreibung nicht beachtet.
 |---------|---------|
 |`/images/*`     |ja|
 |`/images*`     |ja|
-|`/images/*.jpg`     |Nein|
-|`/*.jpg`     |Nein|
-|`/Repos/*/Comments/*`     |Nein|
+|`/images/*.jpg`     |nein|
+|`/*.jpg`     |nein|
+|`/Repos/*/Comments/*`     |nein|
 |`/CurrentUser/Comments/*`     |ja|
 
 #### <a name="v2"></a>V2
@@ -89,9 +89,9 @@ Bei den Pfadregeln wird die Groß-/Kleinschreibung nicht beachtet.
 |---------|---------|
 |`/images/*`     |ja|
 |`/images*`     |ja|
-|`/images/*.jpg`     |Nein|
-|`/*.jpg`     |Nein|
-|`/Repos/*/Comments/*`     |Nein|
+|`/images/*.jpg`     |nein|
+|`/*.jpg`     |nein|
+|`/Repos/*/Comments/*`     |nein|
 |`/CurrentUser/Comments/*`     |ja|
 
 Weitere Informationen erhalten Sie in einer [Resource Manager-Vorlage mit URL-basiertem Routing](https://azure.microsoft.com/documentation/templates/201-application-gateway-url-path-based-routing) .
