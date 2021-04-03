@@ -4,10 +4,10 @@ description: Erfahren Sie, wie Sie die Platform-as-a-Service-Dienste (PaaS) in A
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: eec37527386098174906dc2737d7b763241da3f2
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85478738"
 ---
 # <a name="use-platform-as-a-service-paas-services-in-azure-devtest-labs"></a>Verwenden von Platform-as-a-Service-Diensten (PaaS) in Azure DevTest Labs
@@ -37,7 +37,7 @@ Der Labbesitzer kann Labumgebungen anpassen, um die Rolle des Benutzers innerhal
 Es gibt einige benutzerdefinierte Labinformationen, die außerhalb der Ressourcengruppe liegen und sich auf Umgebungen beziehen, auf die die Vorlage zugreifen kann. Hier sind einige davon: 
 
 - Labnetzwerkidentifizierung
-- Standort
+- Location
 - Speicherkonto, unter dem die Resource Manager-Vorlagendateien gespeichert werden. 
  
 #### <a name="lab-virtual-network"></a>Virtuelles Labnetzwerk
@@ -51,7 +51,7 @@ DevTest Labs unterstützt die Verwendung [geschachtelter Resource Manager-Vorlag
 ## <a name="developer"></a>Entwickler
 Entwickler verwenden den gleichen Workflow für das Erstellen eines virtuellen Computers, um eine bestimmte Umgebung zu erstellen. Sie wählen die Umgebung gemäß dem Computerimage aus und geben die von der Vorlage benötigten Informationen ein. Wenn jeder Entwickler eine Umgebung hat, ist die Bereitstellung von Änderungen und verbessertes Debuggen in der inneren Schleife möglich. Die Umgebung kann zu einem beliebigen Zeitpunkt mit der aktuellen Vorlage erstellt werden.  Dieses Feature ermöglicht, Umgebungen zu zerstören und neu zu erstellen, um die Downtime zu verringern, die anfällt, wenn das System manuell erstellt oder nach Fehlertests wiederhergestellt werden muss.  
 
-### <a name="testing"></a>Testen
+### <a name="testing"></a>Test
 DevTest Labs-Umgebungen ermöglichen unabhängiges asynchrones Testen spezifischer Codes und Konfigurationen. Gängige Praxis ist, die Umgebung mit dem Code aus dem einzelnen Pull Request einzurichten und automatisiertes Testen zu starten. Sobald das automatisierte Testen abgeschlossen ist, kann jegliches manuelles Testen für die spezifische Umgebung ausgeführt werden. Dieser Prozess erfolgt normalerweise als Teil der CI/CD-Pipeline. 
 
 ## <a name="management-experience"></a>Verwaltungserfahrung

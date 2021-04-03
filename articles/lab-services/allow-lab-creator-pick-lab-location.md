@@ -4,10 +4,10 @@ description: In diesem Artikel wird beschrieben, wie ein Labkontoadministrator L
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 3b6c2d83414b1abc763755fbf15402b122c2186b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85444198"
 ---
 # <a name="allow-lab-creator-to-pick-location-for-the-lab-in-azure-lab-services"></a>Zulassen der Auswahl des Standorts für das Lab in Azure Lab Services durch den Ersteller des Labs
@@ -57,7 +57,7 @@ Wenn ein Standort eingeschränkt ist, wird er standardmäßig nicht in der Liste
 
 ![Anzeigen nicht verfügbarer Standorte](./media/allow-lab-creator-pick-lab-location/show-unavailable-locations.png)
 
-## <a name="cost"></a>Kosten
+## <a name="cost"></a>„Cost“ (Kosten)
 Früher basierten die Preise auf der VM-Größe, die Sie für das Lab auswählten. Jetzt basiert der Preis auf der Kombination aus Betriebssystem (BS), Größe und Standort. 
 
 ## <a name="next-steps"></a>Nächste Schritte

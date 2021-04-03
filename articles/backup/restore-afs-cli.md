@@ -4,10 +4,10 @@ description: Hier erfahren Sie, wie Sie gesicherte Azure-Dateifreigaben mithilfe
 ms.topic: conceptual
 ms.date: 01/16/2020
 ms.openlocfilehash: a025de7bfb9db037b2008d69be7782feabb482f3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94562320"
 ---
 # <a name="restore-azure-file-shares-with-the-azure-cli"></a>Wiederherstellen von Azure-Dateifreigaben mit der Azure-Befehlszeilenschnittstelle
