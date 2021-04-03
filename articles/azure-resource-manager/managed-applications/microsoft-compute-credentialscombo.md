@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 09/29/2018
 ms.author: tomfitz
 ms.openlocfilehash: 47c88e08e5d2eac09fbcd5b60a8ccd73b46c9616
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87063773"
 ---
 # <a name="microsoftcomputecredentialscombo-ui-element"></a>Benutzeroberflächenelement „Microsoft.Compute.CredentialsCombo“
@@ -89,7 +89,7 @@ Verwenden Sie unter **Linux** folgendes Schema:
 }
 ```
 
-## <a name="sample-output"></a>Beispielausgabe
+## <a name="sample-output"></a>Beispielausgabe:
 
 Wenn für `osPlatform` das Betriebssystem **Windows** oder für `osPlatform` das Betriebssystem **Linux** angegeben ist und der Benutzer ein Kennwort anstelle eines öffentlichen SSH-Schlüssels eingegeben hat, gibt das Steuerelement folgende Ausgabe zurück:
 
@@ -109,7 +109,7 @@ Wenn für `osPlatform` das Betriebssystem **Linux** angegeben ist und der Benutz
 }
 ```
 
-## <a name="remarks"></a>Hinweise
+## <a name="remarks"></a>Bemerkungen
 
 - `osPlatform` muss angegeben werden. Mögliche Optionen: **Windows** oder **Linux**.
 - Wenn `constraints.required` auf **TRUE** festgelegt ist, muss das Textfeld für das Kennwort oder den öffentlichen SSH-Schlüssel Werte enthalten, damit die Überprüfung erfolgreich ist. Der Standardwert lautet **true**.

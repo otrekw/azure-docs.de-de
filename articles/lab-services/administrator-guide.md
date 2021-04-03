@@ -4,10 +4,10 @@ description: Dieses Handbuch hilft Administratoren, die Lab-Konten mit Azure Lab
 ms.topic: article
 ms.date: 10/20/2020
 ms.openlocfilehash: 3ad3ee38a6c08a6af85822d76012cc6dfc34ff4e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96462471"
 ---
 # <a name="azure-lab-services---administrator-guide"></a>Azure Lab Services – Administratorhandbuch
@@ -129,7 +129,7 @@ Weitere Informationen zur Benennung anderer Azure-Ressourcen finden Sie unter [N
 
 Beim Einrichten Ihrer Azure Lab Services-Ressourcen müssen Sie eine Region oder einen Standort des Rechenzentrums angeben, in dem die Ressourcen gehostet werden sollen. In den nächsten Abschnitten wird beschrieben, wie sich eine Region oder ein Standort auf die einzelnen Ressourcen auswirken kann, die mit dem Einrichten eines Labs verbunden sind.
 
-### <a name="resource-group"></a>Resource group
+### <a name="resource-group"></a>Ressourcengruppe
 
 Die Region gibt das Rechenzentrum an, in dem Informationen über die Ressourcengruppe gespeichert werden. In der Ressourcengruppe enthaltene Azure-Ressourcen können sich in anderen Regionen befinden als ihre übergeordneten Ressourcen.
 

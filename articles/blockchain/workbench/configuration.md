@@ -5,10 +5,10 @@ ms.date: 12/09/2019
 ms.topic: article
 ms.reviewer: brendal
 ms.openlocfilehash: f0ba19bf1d7fdf05014ac199fae9392b5c3249d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87073077"
 ---
 # <a name="azure-blockchain-workbench-configuration-reference"></a>Referenz zur Azure Blockchain Workbench-Konfiguration
@@ -33,7 +33,7 @@ Jeder definierte Workflow legt Folgendes fest:
 
 Eine Blockchainanwendung enthält Konfigurationsmetadaten, Workflows und Benutzerrollen, die innerhalb der Anwendung agieren oder teilnehmen können.
 
-| Feld | Beschreibung | Erforderlich |
+| Feld | BESCHREIBUNG | Erforderlich |
 |-------|-------------|:--------:|
 | ApplicationName | Eindeutiger Anwendungsname. Der entsprechende intelligente Vertrag muss den gleichen **Anwendungsnamen** für die jeweilige Vertragsklasse verwenden.  | Ja |
 | DisplayName | Der Anzeigename der Anwendung | Ja |
@@ -47,7 +47,7 @@ Ein Beispiel finden Sie unter [Beispielkonfigurationsdatei](#configuration-file-
 
 Die Geschäftslogik einer Anwendung kann als Zustandsautomat modelliert werden, bei der eine Aktion bewirkt, dass während des Ablaufs der Geschäftslogik von einem Zustand in einen anderen gewechselt wird. Ein Workflow ist eine Sammlung solcher Zustände und Aktionen. Jeder Workflow besteht aus mindestens einem intelligenten Vertrag, der die Geschäftslogik in Codedateien darstellt. Bei einem ausführbaren Vertrag handelt es sich um eine Instanz eines Workflows.
 
-| Feld | Beschreibung | Erforderlich | Max. Länge |
+| Feld | BESCHREIBUNG | Erforderlich | Max. Länge |
 |-------|-------------|:--------:|-----------:|
 | Name | Eindeutiger Workflowname. Der entsprechende intelligente Vertrag muss den gleichen **Namen** für die jeweilige Vertragsklasse verwenden. | Ja | 50 |
 | DisplayName | Der Anzeigename des Workflows | Ja | 255 |
@@ -168,7 +168,7 @@ function AssetTransfer(string description, uint256 price, PropertyTypeEnum prope
 
 Definiert Eingabeparameter für eine Instanz eines Workflows.
 
-| Feld | Beschreibung | Erforderlich |
+| Feld | BESCHREIBUNG | Erforderlich |
 |-------|-------------|:--------:|
 | Parameter | Sammlung von [Bezeichnern](#identifiers), die zum Initiieren eines intelligenten Vertrags erforderlich sind. | Ja |
 
@@ -201,7 +201,7 @@ Definiert Eingabeparameter für eine Instanz eines Workflows.
 
 Definiert Funktionen, die im Workflow ausgeführt werden können.
 
-| Feld | Beschreibung | Erforderlich | Max. Länge |
+| Feld | BESCHREIBUNG | Erforderlich | Max. Länge |
 |-------|-------------|:--------:|-----------:|
 | Name | Der eindeutige Name der Funktion. Der entsprechende intelligente Vertrag muss den gleichen **Namen** für die jeweilige Funktion verwenden. | Ja | 50 |
 | DisplayName | Der Anzeigename der Funktion | Ja | 255 |
@@ -249,7 +249,7 @@ Definiert Funktionen, die im Workflow ausgeführt werden können.
 
 Eine Sammlung von eindeutigen Zuständen innerhalb eines Workflows. Jeder Zustand erfasst einen Schritt in der Ablaufsteuerung der Geschäftslogik. 
 
-| Feld | Beschreibung | Erforderlich | Max. Länge |
+| Feld | BESCHREIBUNG | Erforderlich | Max. Länge |
 |-------|-------------|:--------:|-----------:|
 | Name | Eindeutiger Name des Zustands. Der entsprechende intelligente Vertrag muss den gleichen **Namen** für den jeweiligen Zustand verwenden. | Ja | 50 |
 | DisplayName | Der Anzeigename des Zustands | Ja | 255 |
@@ -318,7 +318,7 @@ Eine Sammlung von eindeutigen Zuständen innerhalb eines Workflows. Jeder Zustan
 
 Verfügbare Aktionen zum Erreichen des nächsten Zustands. Eine oder mehrere Benutzerrollen können in jedem Zustand eine Aktion ausführen, wobei eine Aktion einen Zustand in einen anderen Zustand im Workflow überführen kann. 
 
-| Feld | Beschreibung | Erforderlich |
+| Feld | BESCHREIBUNG | Erforderlich |
 |-------|-------------|:--------:|
 | AllowedRoles | Liste der Anwendungsrollen, die einen Übergang initiieren dürfen. Alle Benutzer der angegebenen Rolle können die Aktion möglicherweise ausführen. | Nein |
 | AllowedInstanceRoles | Liste der Benutzerrollen, die am intelligenten Vertrag teilnehmen oder darin festgelegt sind, um den Übergang zu initiieren. Instanzrollen werden in den **Eigenschaften** innerhalb von Workflows definiert. AllowedInstanceRoles stellt einen Benutzer dar, der bei einer Instanz eines Smart Contract involviert ist. Über AllowedInstanceRoles können Sie die Durchführung einer Aktion für eine Benutzerrolle in einer Vertragsinstanz beschränken.  Beispielsweise empfiehlt es sich, nur dem Benutzer, der den Vertrag erstellt hat (InstanceOwner), die Kündigung eines Vertrags zu ermöglichen, nicht allen Benutzern mit dem Rollentyp (Owner). Hierfür müssen Sie die Rolle in AllowedRoles angegeben haben. | Nein |
@@ -363,7 +363,7 @@ Verfügbare Aktionen zum Erreichen des nächsten Zustands. Eine oder mehrere Ben
 
 Anwendungsrollen definieren eine Reihe von Rollen, die Benutzern zugewiesen werden können, die innerhalb der Anwendung agieren oder teilnehmen möchten. Anwendungsrollen können verwendet werden, um Aktionen und Teilnahme innerhalb der Blockchainanwendung und entsprechender Workflows einzuschränken. 
 
-| Feld | Beschreibung | Erforderlich | Max. Länge |
+| Feld | BESCHREIBUNG | Erforderlich | Max. Länge |
 |-------|-------------|:--------:|-----------:|
 | Name | Der eindeutige Name der Anwendungsrolle. Der entsprechende intelligente Vertrag muss den gleichen **Namen** für die jeweilige Rolle verwenden. Basistypnamen sind reserviert. Einer Anwendungsrolle kann nicht der Name eines [Typs](#type) gegeben werden.| Ja | 50 |
 | BESCHREIBUNG | Die Beschreibung der Anwendungsrolle | Nein | 255 |
@@ -386,7 +386,7 @@ Anwendungsrollen definieren eine Reihe von Rollen, die Benutzern zugewiesen werd
 
 Bezeichner stellen eine Sammlung von Informationen zur Beschreibung von Workfloweigenschaften, Konstruktor und Funktionsparametern dar. 
 
-| Feld | Beschreibung | Erforderlich | Max. Länge |
+| Feld | BESCHREIBUNG | Erforderlich | Max. Länge |
 |-------|-------------|:--------:|-----------:|
 | Name | Der eindeutige Name der Eigenschaft bzw. des Parameters. Der entsprechende intelligente Vertrag muss den gleichen **Namen** für die jeweilige Eigenschaft bzw. den jeweiligen Parameter verwenden. | Ja | 50 |
 | DisplayName | Der Anzeigename der Eigenschaft bzw. des Parameters | Ja | 255 |
@@ -418,7 +418,7 @@ Bezeichner stellen eine Sammlung von Informationen zur Beschreibung von Workflow
 
 ## <a name="configuration-file-example"></a>Beispielkonfigurationsdatei
 
-Die Güterübertragung ist ein Smart Contract-Szenario für den Kauf und Verkauf wertvoller Güter, die einen Prüfer und einen Gutachter erfordern. Verkäufer können ihre Güter auflisten, indem sie ein Smart Contract für die Güterübertragung instanziieren. Käufer können Angebote unterbreiten, indem sie eine Aktion für den Smart Contract durchführen und andere Parteien Aktionen zur Überprüfung oder Begutachtung der Ressource durchführen. Sobald das Gut als überprüft und begutachtet gekennzeichnet wurde, bestätigen Käufer und Verkäufer erneut den Verkauf, bevor der Vertrag auf abgeschlossen gesetzt wird. Jederzeit während des Prozesses können alle Teilnehmer Einblick in den Status des Vertrags erhalten, während dieser aktualisiert wird. 
+Die Güterübertragung ist ein Smart Contract-Szenario für den Kauf und Verkauf wertvoller Güter, die einen Prüfer und einen Gutachter erfordern. Verkäufer können ihre Güter auflisten, indem sie ein Smart Contract für die Güterübertragung instanziieren. Käufer können Angebote unterbreiten, indem sie eine Aktion für den Smart Contract durchführen und andere Parteien Aktionen zur Überprüfung oder Begutachtung der Ressource durchführen. Sobald das Gut als überprüft und begutachtet gekennzeichnet wurde, bestätigen Käufer und Verkäufer erneut den Verkauf, bevor der Vertrag auf abgeschlossen gesetzt wird. Jederzeit während des Prozesses können alle Teilnehmer Einblick in den Status des Vertrags erhalten, während dieser aktualisiert wird. 
 
 Weitere Informationen, einschließlich der Codedateien, finden Sie unter [Beispiel für die Güterübertragung für Azure Blockchain Workbench](https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/application-and-smart-contract-samples/asset-transfer).
 

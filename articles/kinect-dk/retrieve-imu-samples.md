@@ -8,10 +8,10 @@ ms.prod: kinect-dk
 ms.topic: conceptual
 keywords: Kinect, Azure, konfigurieren, Tiefe, Farbe, RBG, Kamera, Sensor, SDK, IMU, Bewegungssensor, Bewegung, Gyroskop, Gyrometer, Beschleunigungsmesser, BpS
 ms.openlocfilehash: 649dd5b9de62d43d59e74d53adff1ec7de8dfd32
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "85276689"
 ---
 # <a name="retrieve-azure-kinect-imu-samples"></a>Abrufen von IMU-Stichproben für Azure Kinect
