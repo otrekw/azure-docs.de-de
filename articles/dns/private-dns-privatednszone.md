@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 9/24/2019
 ms.author: rohink
 ms.openlocfilehash: 9eaa320e79f1d595303c6d9fe1399df12cb6c52b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94954408"
 ---
 # <a name="what-is-a-private-azure-dns-zone"></a>Was ist eine private Azure DNS-Zone?
@@ -23,7 +23,7 @@ Die in einer privaten DNS-Zone enthaltenen Einträge sind nicht aus dem Internet
 Sie können eine private DNS-Zone mit einem oder mehreren virtuellen Netzwerken verknüpfen, indem Sie [virtuelle Netzwerkverbindungen](./private-dns-virtual-network-links.md) erstellen.
 Sie können auch die [automatische Registrierung](./private-dns-autoregistration.md)sfunktion aktivieren, um den Lebenszyklus der DNS-Einträge für die virtuellen Computer, die in einem virtuellen Netzwerk bereitgestellt sind, automatisch zu verwalten.
 
-## <a name="limits"></a>Einschränkungen
+## <a name="limits"></a>Grenzwerte
 
 Informationen dazu, wie viele private DNS-Zonen Sie in einem Abonnement erstellen können und wie viele Eintragssätze in einer privaten DNS-Zone unterstützt werden, finden Sie unter [Azure DNS-Limits](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-dns-limits).
 
