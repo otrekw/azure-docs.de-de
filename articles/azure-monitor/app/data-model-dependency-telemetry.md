@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 04/17/2017
 ms.reviewer: sergkanz
 ms.openlocfilehash: 0f9fc96479569c3411024068ed614d422035ab17
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87315970"
 ---
 # <a name="dependency-telemetry-application-insights-data-model"></a>Abhängigkeitstelemetrie: Application Insights-Datenmodell
@@ -35,7 +35,7 @@ Name des Abhängigkeitstyps. Niedriger Kardinalitätswert für die logische Grup
 
 Zielstandort eines Aufrufs einer Abhängigkeit. Beispiele sind Servername und Hostadresse. Weitere Informationen hierzu finden Sie auf der Seite [Korrelation](./correlation.md).
 
-## <a name="duration"></a>Dauer (Duration)
+## <a name="duration"></a>Duration
 
 Dauer der Anforderung im Format `DD.HH:MM:SS.MMMMMM`. Muss kleiner als `1000` Tage sein.
 
@@ -43,7 +43,7 @@ Dauer der Anforderung im Format `DD.HH:MM:SS.MMMMMM`. Muss kleiner als `1000` Ta
 
 Ergebniscode eines Aufrufs einer Abhängigkeit. Beispiele sind SQL-Fehlercode und HTTP-Statuscode.
 
-## <a name="success"></a>Vorgang erfolgreich
+## <a name="success"></a>Erfolg
 
 Angabe eines erfolgreichen oder fehlgeschlagenen Aufrufs.
 

@@ -4,10 +4,10 @@ description: In diesem Artikel wird gezeigt, wie ein Lab-Besitzer benutzerseitig
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: b4bf2900acebaeecd5cbc4cb65635aee6de87dda
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88717630"
 ---
 # <a name="enable-user-assigned-managed-identities-on-lab-virtual-machines-in-azure-devtest-labs"></a>Aktivieren von benutzerseitig zugewiesenen verwalteten Identitäten auf virtuellen Lab-Computern in Azure DevTest Labs

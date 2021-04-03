@@ -12,10 +12,10 @@ ms.date: 10/12/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 322e4b78fbfb38f1822fb7a7cdcdbfcc0738b303
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91950396"
 ---
 # <a name="define-a-phone-factor-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen PhoneFactor-Profils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
@@ -57,7 +57,7 @@ Das InputClaimsTransformations-Element kann eine Sammlung von Eingabeanspruchstr
 
 Das InputClaims-Element muss die folgenden Ansprüche enthalten. Sie können auch den Namen Ihres Anspruchs dem im technischen PhoneFactor-Profil definierten Namen zuordnen. 
 
-|  Datentyp| Erforderlich | BESCHREIBUNG |
+|  Datentyp| Erforderlich | Beschreibung |
 | --------- | -------- | ----------- | 
 | Zeichenfolge| Ja | Ein eindeutiger Bezeichner für den Benutzer. Der Anspruchsname oder PartnerClaimType muss auf `UserId` eingestellt sein. Dieser Anspruch sollte keine personenbezogenen Informationen enthalten.|
 | Zeichenfolge| Ja | Liste der Anspruchstypen. Jeder Anspruch enthält eine Telefonnummer. Wenn einer der Eingabeansprüche keine Telefonnummer enthält, wird der Benutzer aufgefordert, eine neue Telefonnummer zu registrieren und zu überprüfen. Die validierte Telefonnummer wird als Ausgabeanspruch zurückgegeben. Wenn einer der Eingabeansprüche eine Telefonnummer enthält, wird der Benutzer aufgefordert, sie zu überprüfen. Wenn mehrere Eingabeansprüche eine Telefonnummer enthalten, wird der Benutzer aufgefordert, eine der Telefonnummern auszuwählen und zu überprüfen. |
