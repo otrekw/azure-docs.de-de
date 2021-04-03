@@ -4,10 +4,10 @@ description: Service Fabric Explorer ist eine Anwendung zum Untersuchen und Verw
 ms.topic: conceptual
 ms.date: 01/24/2019
 ms.openlocfilehash: a45aff305f97610cb2660c2e3f4b4427b905d7d4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96574054"
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>Visualisieren Ihres Clusters mit Service Fabric Explorer
