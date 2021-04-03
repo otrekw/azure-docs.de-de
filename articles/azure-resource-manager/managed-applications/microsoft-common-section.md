@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
 ms.openlocfilehash: 924aff8f2ba3d796b65f52494845f3b10018065c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87063978"
 ---
 # <a name="microsoftcommonsection-ui-element"></a>Benutzerobeflächenelement „Microsoft.Common.Section“
@@ -48,7 +48,7 @@ Ein Steuerelement, das Elemente unter einer Überschrift zusammenfasst.
 - `elements` muss mindestens ein Element und darf alle Elementtypen außer `Microsoft.Common.Section` enthalten.
 - Dieses Element unterstützt die `toolTip`-Eigenschaft nicht.
 
-## <a name="sample-output"></a>Beispielausgabe
+## <a name="sample-output"></a>Beispielausgabe:
 Verwenden Sie zum Zugreifen auf die Ausgabewerte von Elementen in `elements` die Funktion [basics()](create-ui-definition-referencing-functions.md#basics) oder [steps()](create-ui-definition-referencing-functions.md#steps) und die Punktnotation:
 
 ```json

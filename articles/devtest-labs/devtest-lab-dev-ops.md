@@ -4,10 +4,10 @@ description: Erfahren Sie, wie Sie Labs von Azure DevTest Labs in CI/CD-Pipeline
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 8a5d35a541e079b7d39cae2ec43da608274533f5
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85481067"
 ---
 # <a name="integration-of-azure-devtest-labs-and-azure-devops"></a>Integration von Azure DevTest Labs und Azure DevOps
@@ -32,7 +32,7 @@ Ein Lab sollte sich immer nur auf ein Team konzentrieren, das an einem Funktions
 ## <a name="cicd-pipeline"></a>CI/CD-Pipeline 
 Die CI/CD-Pipeline ist eine wichtige Komponente bei DevOps. Sie verschiebt Code aus einem Pull Request des Entwicklers, integriert ihn in den vorhandenen Code und stellt ihn im Produktionsökosystem bereit. Dabei müssen nicht alle Ressourcen in einem Lab enthalten sein. Beispielsweise könnte ein Jenkins-Host außerhalb des Labs als eine persistentere Ressource eingerichtet werden. Im Folgenden finden Sie einige Beispiele für die Integration von Labs in die Pipeline. 
 
-### <a name="build"></a>Build 
+### <a name="build"></a>Entwickeln 
 Schwerpunkt der Buildpipeline ist das Erstellen eines Pakets von Komponenten, die gemeinsam getestet werden sollen, damit sie an die Releasepipeline übergeben werden können. Labs können Teil der Buildpipeline sein, um beispielsweise die Build-Agents und weitere unterstützende Ressourcen bereitzustellen. Durch die Möglichkeit der dynamischen Erstellung der Infrastruktur haben Sie mehr Kontrolle. Über das Einrichten mehrerer Umgebungen in einem Lab kann jeder Build asynchron ausgeführt werden, aber gleichzeitig die Build-ID als Teil der Umgebungsinformationen nutzen, um die Ressourcen für den jeweiligen Build eindeutig identifizieren zu können.   
 
 Für Build-Agents erhöht die Möglichkeit von Labs, den Zugriff einzuschränken, die Sicherheit und reduziert die Wahrscheinlichkeit versehentlicher Beschädigungen.  
