@@ -15,17 +15,17 @@ ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: alkohli
 ms.openlocfilehash: 6cd1d981737db1e7c852931ecc2449e0afc03530
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94956788"
 ---
 # <a name="troubleshoot-an-operational-storsimple-device"></a>Problembehandlung bei einem betriebsbereiten StorSimple-Gerät
 > [!NOTE]
 > Das klassische Portal für StorSimple ist veraltet. Ihre StorSimple-Geräte-Manager werden gemäß dem Zeitplan für die Abschaltung automatisch in das neue Azure-Portal verschoben. Sie erhalten zu dieser Verschiebung eine E-Mail und eine Portalbenachrichtigung. Dieses Dokument wird ebenfalls bald entfernt. Antworten auf Fragen zu dieser Verschiebung finden Sie unter [FAQ: Move to Azure portal (Verschieben in das Azure-Portal: häufig gestellte Fragen (FAQ))](./index.yml).
 
-## <a name="overview"></a>Überblick
+## <a name="overview"></a>Übersicht
 Dieser Artikel enthält Anleitungen zum Beheben von Konfigurationsproblemen, die bei einem bereitgestellten und betriebsbereiten StorSimple-Gerät auftreten können. Es werden allgemeine Probleme, mögliche Ursachen und empfohlene Schritte zum Beheben von Problemen bei der Ausführung von Microsoft Azure StorSimple beschrieben. Diese Informationen gelten sowohl für lokale physische als auch für virtuelle StorSimple-Geräte.
 
 Am Ende dieses Artikels finden Sie eine Liste der Fehlercodes, die bei einem Microsoft Azure StorSimple-Vorgang möglicherweise ausgegeben werden. Zudem enthält der Artikel Informationen zum Beheben dieser Fehler. 
