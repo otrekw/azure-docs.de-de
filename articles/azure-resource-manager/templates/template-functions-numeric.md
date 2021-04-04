@@ -4,10 +4,10 @@ description: Informationen zu den Funktionen, die in einer ARM-Vorlage (Azure Re
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.openlocfilehash: f3687581d94f80cc923614a0655da1813bd5c97b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97359709"
 ---
 # <a name="numeric-functions-for-arm-templates"></a>Numerische Funktionen f체r ARM-Vorlagen
@@ -35,7 +35,7 @@ Gibt die Summe der beiden angegebenen ganzen Zahlen zur체ck. Die `add`-Funktion 
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | Beschreibung |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 |operand1 |Ja |INT |Erste zu addierende Zahl. |
 |operand2 |Ja |INT |Zweite zu addierende Zahl. |
@@ -180,7 +180,7 @@ Gibt die Ganzzahldivision der beiden angegebenen ganzen Zahlen zur체ck. Die `div
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | Beschreibung |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | operand1 |Ja |INT |Die zu teilende Zahl (Dividend). |
 | operand2 |Ja |INT |Die Zahl, durch die geteilt wird (Divisor). Darf nicht null (0) sein. |
@@ -493,7 +493,7 @@ Gibt den Rest der Ganzzahldivision mit den beiden angegebenen ganzen Zahlen zur�
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | Beschreibung |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | operand1 |Ja |INT |Die zu teilende Zahl (Dividend). |
 | operand2 |Ja |INT |Die Zahl, durch die dividiert wird (Divisor), darf nicht null (0) sein. |
@@ -564,7 +564,7 @@ Gibt die Multiplikation der beiden angegebenen ganzen Zahlen zur체ck. Die `mul`-
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | Beschreibung |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | operand1 |Ja |INT |Erste zu multiplizierende Zahl. |
 | operand2 |Ja |INT |Zweite zu multiplizierende Zahl. |
@@ -635,7 +635,7 @@ Gibt die Differenz der beiden angegebenen ganzen Zahlen zur체ck. Die `sub`-Funkt
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | Beschreibung |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | operand1 |Ja |INT |Zahl, von der subtrahiert wird. |
 | operand2 |Ja |INT |Zahl, die subtrahiert wird. |
