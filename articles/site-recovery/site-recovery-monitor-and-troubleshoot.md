@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: raynew
 ms.openlocfilehash: d441284b265ab11dd5ece42ec3737e455d662435
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96023566"
 ---
 # <a name="monitor-site-recovery"></a>Überwachen von Azure Site Recovery
@@ -36,7 +36,7 @@ Machen Sie sich ggf. zunächst mit [allgemeinen Fragen zur Überwachung](monitor
 
 2. Zeigen Sie über das Dashboard Detailinformationen zu verschiedenen Bereichen an. 
 
-    ![Screenshot der Bereiche im Dashboard, in denen Sie einen Drilldown ausführen können](./media/site-recovery-monitor-and-troubleshoot/site-recovery-overview-page.png)erforderlich.
+    ![Screenshot der Bereiche im Dashboard, in denen Sie einen Drilldown ausführen können](./media/site-recovery-monitor-and-troubleshoot/site-recovery-overview-page.png).
 
 3. Klicken Sie unter **Replizierte Elemente** auf **Alle anzeigen**, um alle Server im Tresor anzuzeigen.
 4. Klicken Sie in den einzelnen Abschnitten auf die Statusdetails, um Detailinformationen anzuzeigen.

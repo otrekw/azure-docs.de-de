@@ -4,10 +4,10 @@ description: In diesem Artikel erfahren Sie, wie Sie Azure Files mit dem Azure B
 ms.topic: conceptual
 ms.date: 1/27/2020
 ms.openlocfilehash: 60c9848e12de80bcafe4553a9e8f3e27e8876d41
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96021383"
 ---
 # <a name="restore-azure-files-with-powershell"></a>Wiederherstellen von Azure Files mit PowerShell
