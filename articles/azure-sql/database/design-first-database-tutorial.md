@@ -11,10 +11,10 @@ ms.reviewer: v-masebo
 ms.date: 07/29/2019
 ms.custom: sqldbrb=1
 ms.openlocfilehash: ae7baeac6cee2a692928642e3e38ce0adad17d1c
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92674892"
 ---
 # <a name="tutorial-design-a-relational-database-in-azure-sql-database-using-ssms"></a>Tutorial: Entwerfen einer relationalen Datenbank in Azure SQL-Datenbank unter Verwendung von SSMS
@@ -57,11 +57,11 @@ Eine Datenbank in Azure SQL-Datenbank wird mit einer definierten Gruppe von Comp
 Führen Sie die folgenden Schritte zum Erstellen einer leeren Datenbank aus.
 
 1. Wählen Sie im Menü des Azure-Portals oder auf der **Startseite** die Option **Ressource erstellen** aus.
-2. Wählen Sie auf der Seite **Neu** im Abschnitt „Azure Marketplace“ die Option **Datenbanken** aus, und klicken Sie dann im Abschnitt **Empfohlen** auf **SQL-Datenbank** .
+2. Wählen Sie auf der Seite **Neu** im Abschnitt „Azure Marketplace“ die Option **Datenbanken** aus, und klicken Sie dann im Abschnitt **Empfohlen** auf **SQL-Datenbank**.
 
    ![Leere Datenbank erstellen](./media/design-first-database-tutorial/create-empty-database.png)
 
-3. Geben Sie die folgenden Informationen in das **SQL-Datenbank** -Formular ein, wie in der obigen Abbildung dargestellt:
+3. Geben Sie die folgenden Informationen in das **SQL-Datenbank**-Formular ein, wie in der obigen Abbildung dargestellt:
 
     | Einstellung       | Vorgeschlagener Wert | BESCHREIBUNG |
     | ------------ | ------------------ | ------------------------------------------------- |
@@ -70,7 +70,7 @@ Führen Sie die folgenden Schritte zum Erstellen einer leeren Datenbank aus.
     | **Ressourcengruppe** | *yourResourceGroup* | Gültige Ressourcengruppennamen finden Sie unter [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming) (Benennungsregeln und Einschränkungen). |
     | **Quelle auswählen** | Leere Datenbank | Gibt an, dass eine leere Datenbank erstellt werden soll. |
 
-4. Klicken Sie auf **Server** , um einen vorhandenen Server zu verwenden oder um einen neuen Server zu erstellen und zu konfigurieren. Wählen Sie einen vorhandenen Server aus, oder klicken Sie auf **Neuen Server erstellen** , und geben Sie im Formular **Neuer Server** die folgenden Informationen ein:
+4. Klicken Sie auf **Server**, um einen vorhandenen Server zu verwenden oder um einen neuen Server zu erstellen und zu konfigurieren. Wählen Sie einen vorhandenen Server aus, oder klicken Sie auf **Neuen Server erstellen**, und geben Sie im Formular **Neuer Server** die folgenden Informationen ein:
 
     | Einstellung       | Vorgeschlagener Wert | BESCHREIBUNG |
     | ------------ | ------------------ | ------------------------------------------------- |
@@ -81,16 +81,16 @@ Führen Sie die folgenden Schritte zum Erstellen einer leeren Datenbank aus.
 
     ![Erstellung des Datenbankservers](./media/design-first-database-tutorial/create-database-server.png)
 
-5. Klicken Sie auf **Auswählen** .
-6. Klicken Sie auf **Tarif** , um die Dienstebene, die Anzahl von DTUs oder virtuellen Kernen und die Speichermenge anzugeben. Sie können sich mit den Optionen für die Anzahl von DTUs/virtuellen Kernen sowie mit den Speicheroptionen vertraut machen, die für die einzelnen Dienstebenen verfügbar sind.
+5. Klicken Sie auf **Auswählen**.
+6. Klicken Sie auf **Tarif**, um die Dienstebene, die Anzahl von DTUs oder virtuellen Kernen und die Speichermenge anzugeben. Sie können sich mit den Optionen für die Anzahl von DTUs/virtuellen Kernen sowie mit den Speicheroptionen vertraut machen, die für die einzelnen Dienstebenen verfügbar sind.
 
-    Klicken Sie auf **Übernehmen** , wenn Sie die Dienstebene, die Anzahl von DTUs oder virtuellen Kernen und die Menge an Speicherplatz ausgewählt haben.
+    Klicken Sie auf **Übernehmen**, wenn Sie die Dienstebene, die Anzahl von DTUs oder virtuellen Kernen und die Menge an Speicherplatz ausgewählt haben.
 
 7. Geben Sie eine **Sortierung** für die leere Datenbank ein (verwenden Sie in diesem Tutorial den Standardwert). Weitere Informationen über Sortierungen finden Sie unter [Sortierungen](/sql/t-sql/statements/collations).
 
-8. Nachdem Sie das **SQL-Datenbank** -Formular ausgefüllt haben, können Sie auf **Erstellen** klicken, um die Datenbank bereitzustellen. Dieser Schritt kann einige Minuten dauern.
+8. Nachdem Sie das **SQL-Datenbank**-Formular ausgefüllt haben, können Sie auf **Erstellen** klicken, um die Datenbank bereitzustellen. Dieser Schritt kann einige Minuten dauern.
 
-9. Klicken Sie in der Symbolleiste auf **Benachrichtigungen** , um den Bereitstellungsprozess zu überwachen.
+9. Klicken Sie in der Symbolleiste auf **Benachrichtigungen**, um den Bereitstellungsprozess zu überwachen.
 
    ![Screenshot, in dem das Menü „Benachrichtigungen“ mit „Bereitstellung wird durchgeführt“ gezeigt ist](./media/design-first-database-tutorial/notification.png)
 
@@ -101,7 +101,7 @@ Azure SQL-Datenbank erstellt eine IP-Firewall auf Serverebene. Diese Firewall ve
 > [!IMPORTANT]
 > Azure SQL-Datenbank kommuniziert über Port 1433. Wenn Sie versuchen, mit diesem Dienst eine Verbindung aus einem Unternehmensnetzwerk heraus herzustellen, wird der ausgehende Datenverkehr über Port 1433 von der Firewall Ihres Netzwerks unter Umständen nicht zugelassen. In diesem Fall können Sie nur dann eine Verbindung mit der Datenbank herstellen, wenn Ihr Administrator Port 1433 öffnet.
 
-1. Wählen Sie nach Abschluss der Bereitstellung im Menü des Azure-Portals die Option **SQL-Datenbanken** aus, oder suchen Sie auf einer beliebigen Seite nach *SQL-Datenbanken* , und wählen Sie die entsprechende Option aus.  
+1. Wählen Sie nach Abschluss der Bereitstellung im Menü des Azure-Portals die Option **SQL-Datenbanken** aus, oder suchen Sie auf einer beliebigen Seite nach *SQL-Datenbanken*, und wählen Sie die entsprechende Option aus.  
 
 1. Wählen Sie auf der Seite **SQL-Datenbanken** die Datenbank *yourDatabase* aus. Daraufhin wird die Übersichtsseite für Ihre Datenbank geöffnet. Dort finden Sie unter **Servername** den vollqualifizierten Servernamen (z. B. `contosodatabaseserver01.database.windows.net`) sowie Optionen für die weitere Konfiguration.
 
@@ -109,20 +109,20 @@ Azure SQL-Datenbank erstellt eine IP-Firewall auf Serverebene. Diese Firewall ve
 
 1. Kopieren Sie diesen vollqualifizierten Servernamen, um in SQL Server Management Studio eine Verbindung mit Ihrem Server und den Datenbanken herzustellen.
 
-1. Klicken Sie auf der Symbolleiste auf **Serverfirewall festlegen** . Die Seite **Firewalleinstellungen** für den Server wird geöffnet.
+1. Klicken Sie auf der Symbolleiste auf **Serverfirewall festlegen**. Die Seite **Firewalleinstellungen** für den Server wird geöffnet.
 
    ![IP-Firewallregel auf Serverebene](./media/design-first-database-tutorial/server-firewall-rule.png)
 
-1. Klicken Sie auf der Symbolleiste auf **Client-IP-Adresse hinzufügen** , um Ihre aktuelle IP-Adresse einer neuen IP-Firewallregel hinzuzufügen. Eine IP-Firewallregel kann Port 1433 für eine einzelne IP-Adresse oder einen Bereich von IP-Adressen öffnen.
+1. Klicken Sie auf der Symbolleiste auf **Client-IP-Adresse hinzufügen**, um Ihre aktuelle IP-Adresse einer neuen IP-Firewallregel hinzuzufügen. Eine IP-Firewallregel kann Port 1433 für eine einzelne IP-Adresse oder einen Bereich von IP-Adressen öffnen.
 
-1. Klicken Sie auf **Speichern** . Für Ihre aktuelle IP-Adresse wird eine IP-Firewallregel auf Serverebene erstellt, und auf dem Server wird der Port 1433 geöffnet.
+1. Klicken Sie auf **Speichern**. Für Ihre aktuelle IP-Adresse wird eine IP-Firewallregel auf Serverebene erstellt, und auf dem Server wird der Port 1433 geöffnet.
 
-1. Klicken Sie auf **OK** , und schließen Sie anschließend die Seite **Firewalleinstellungen** .
+1. Klicken Sie auf **OK**, und schließen Sie anschließend die Seite **Firewalleinstellungen**.
 
 Die IP-Adresse kann nun die IP-Firewall passieren. Nun können Sie mit SQL Server Management Studio oder einem anderen Tool Ihrer Wahl die Verbindung mit der Datenbank herstellen. Verwenden Sie das Serveradministratorkonto, das Sie zuvor erstellt haben.
 
 > [!IMPORTANT]
-> Standardmäßig ist der Zugriff über die SQL-Datenbank-IP-Firewall für alle Azure-Dienste aktiviert. Klicken Sie auf dieser Seite auf **AUS** , um dies für alle Azure-Dienste zu deaktivieren.
+> Standardmäßig ist der Zugriff über die SQL-Datenbank-IP-Firewall für alle Azure-Dienste aktiviert. Klicken Sie auf dieser Seite auf **AUS**, um dies für alle Azure-Dienste zu deaktivieren.
 
 ## <a name="connect-to-the-database"></a>Herstellen der Verbindung mit der Datenbank
 
@@ -141,13 +141,13 @@ Verwenden Sie [SQL Server Management Studio](/sql/ssms/sql-server-management-stu
 
    ![Verbindung mit dem Server herstellen](./media/design-first-database-tutorial/connect.png)
 
-3. Klicken Sie im Dialogfeld **Mit Server verbinden** auf **Optionen** . Geben Sie im Abschnitt **Verbindung mit Datenbank herstellen** den Namen *yourDatabase* ein, um eine Verbindung mit dieser Datenbank herzustellen.
+3. Klicken Sie im Dialogfeld **Mit Server verbinden** auf **Optionen**. Geben Sie im Abschnitt **Verbindung mit Datenbank herstellen** den Namen *yourDatabase* ein, um eine Verbindung mit dieser Datenbank herzustellen.
 
     ![Herstellen einer Verbindung mit der Datenbank auf dem Server](./media/design-first-database-tutorial/options-connect-to-db.png)  
 
-4. Klicken Sie auf **Verbinden** . Das **Objekt-Explorer** -Fenster wird in SSMS geöffnet.
+4. Klicken Sie auf **Verbinden**. Das **Objekt-Explorer**-Fenster wird in SSMS geöffnet.
 
-5. Erweitern Sie im **Objekt-Explorer** die Option **Datenbanken** und anschließend die Option *yourDatabase* , um die Objekte in der Beispieldatenbank anzuzeigen.
+5. Erweitern Sie im **Objekt-Explorer** die Option **Datenbanken** und anschließend die Option *yourDatabase*, um die Objekte in der Beispieldatenbank anzuzeigen.
 
    ![Datenbankobjekte](./media/design-first-database-tutorial/connected.png)  
 
@@ -167,7 +167,7 @@ Die folgende Abbildung zeigt, wie diese Tabellen miteinander verknüpft sind. Au
 
 ![Tabellenbeziehungen](./media/design-first-database-tutorial/tutorial-database-tables.png)
 
-1. Klicken Sie mit der rechten Maustaste im **Objekt-Explorer** auf *yourDatabase* , und wählen Sie **Neue Abfrage** aus. Ein leeres Abfragefenster mit einer Verbindung mit Ihrer Datenbank wird geöffnet.
+1. Klicken Sie mit der rechten Maustaste im **Objekt-Explorer** auf *yourDatabase*, und wählen Sie **Neue Abfrage** aus. Ein leeres Abfragefenster mit einer Verbindung mit Ihrer Datenbank wird geöffnet.
 
 2. Führen Sie im Abfragefenster die folgende Abfrage aus, um vier Tabellen in der Datenbank zu erstellen:
 
@@ -214,24 +214,24 @@ Die folgende Abbildung zeigt, wie diese Tabellen miteinander verknüpft sind. Au
 
    ![Erstellen von Tabellen](./media/design-first-database-tutorial/create-tables.png)
 
-3. Erweitern Sie im **Objekt-Explorer** unter *yourDatabase* den Knoten **Tabellen** , um die von Ihnen erstellten Tabellen anzuzeigen.
+3. Erweitern Sie im **Objekt-Explorer** unter *yourDatabase* den Knoten **Tabellen**, um die von Ihnen erstellten Tabellen anzuzeigen.
 
    ![Erstellte Tabellen in SMS](./media/design-first-database-tutorial/ssms-tables-created.png)
 
 ## <a name="load-data-into-the-tables"></a>Laden von Daten in die Tabellen
 
-1. Erstellen Sie in Ihrem Ordner „Downloads“ einen Ordner namens *sampleData* , in dem die Beispieldaten für Ihre Datenbank gespeichert werden.
+1. Erstellen Sie in Ihrem Ordner „Downloads“ einen Ordner namens *sampleData*, in dem die Beispieldaten für Ihre Datenbank gespeichert werden.
 
-2. Klicken Sie mit der rechten Maustaste auf die folgenden Links, und speichern Sie sie im Ordner *sampleData* .
+2. Klicken Sie mit der rechten Maustaste auf die folgenden Links, und speichern Sie sie im Ordner *sampleData*.
 
    - [SampleCourseData](https://sqldbtutorial.blob.core.windows.net/tutorials/SampleCourseData)
    - [SamplePersonData](https://sqldbtutorial.blob.core.windows.net/tutorials/SamplePersonData)
    - [SampleStudentData](https://sqldbtutorial.blob.core.windows.net/tutorials/SampleStudentData)
    - [SampleCreditData](https://sqldbtutorial.blob.core.windows.net/tutorials/SampleCreditData)
 
-3. Öffnen Sie ein Eingabeaufforderungsfenster, und navigieren Sie zum Ordner *sampleData* .
+3. Öffnen Sie ein Eingabeaufforderungsfenster, und navigieren Sie zum Ordner *sampleData*.
 
-4. Führen Sie die folgenden Befehle aus, um Beispieldaten in die Tabellen einzufügen. Ersetzen Sie dabei die Werte für *server* , *database* , *user* und *password* durch die Werte für Ihre Umgebung.
+4. Führen Sie die folgenden Befehle aus, um Beispieldaten in die Tabellen einzufügen. Ersetzen Sie dabei die Werte für *server*, *database*, *user* und *password* durch die Werte für Ihre Umgebung.
 
    ```cmd
    bcp Course in SampleCourseData -S <server>.database.windows.net -d <database> -U <user> -P <password> -q -c -t ","
