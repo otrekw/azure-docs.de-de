@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: 6024aae68183fbe02125ef4207e9fbce8abd6a2b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97679067"
 ---
 # <a name="tutorial-migrate-web-service-from-bing-maps"></a>Tutorial: Migrieren von Webdiensten aus Bing Karten
@@ -281,8 +281,8 @@ In der folgenden Tabelle werden die Parameter der Bing Karten-API den vergleichb
 |----------------------------|---------------------------------------------------------------------|
 | `points`                   | `supportingPoints`: Übergibt diese Punkte an den Text der Post-Anforderung.  |
 | `interpolate`              | –                                                                 |
-| `includeSpeedLimit`        | –                                                                 |
-| `includeTruckSpeedLimit`   | –                                                                 |
+| `includeSpeedLimit`        | Nicht zutreffend                                                                 |
+| `includeTruckSpeedLimit`   | Nicht zutreffend                                                                 |
 | `speedUnit`                | –                                                                 |
 | `travelMode`               | `travelMode`                                                        |
 | `key`                      | `subscription-key`: Weitere Informationen finden Sie auch in der Dokumentation zur [Authentifizierung mit Azure Maps](./azure-maps-authentication.md). |
@@ -343,7 +343,7 @@ In der folgenden Tabelle werden die Parameter der Bing Karten-API den vergleichb
 | `mapLayer` (`ml`)        | –                                            |
 | `mapSize` (`ms`)         | `width` und `height`: Es sind Größen bis 8.192 × 8.192 möglich. |
 | `declutterPins` (`dcl`)  | –                                            |
-| `dpi`                    | –                                            |
+| `dpi`                    | Nicht zutreffend                                            |
 | `drawCurve`              | `path`                                         |
 | `mapMetadata`            | –                                            |
 | `pitch`                  | N/V: Straßenansicht wird nicht unterstützt.                |

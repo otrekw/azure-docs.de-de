@@ -4,10 +4,10 @@ description: Dieser Artikel bietet Antworten auf häufig gestellte Fragen (FAQ) 
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 757af8f30e9a71a3889d9f625c87a002af2e1302
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96437183"
 ---
 # <a name="labs-in-azure-lab-services--frequently-asked-questions-faq"></a>Labs in Azure Lab Services: Häufig gestellte Fragen (FAQ)

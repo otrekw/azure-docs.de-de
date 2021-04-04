@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.openlocfilehash: dbb7e835d110bcb6cb81fd5425a2aafbb578e692
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96022971"
 ---
 # <a name="use-storsimple-snapshot-manager-to-connect-and-manage-storsimple-devices"></a>Verwenden des StorSimple Snapshot Managers zum Verbinden und Verwalten von StorSimple-Geräten
@@ -31,7 +31,7 @@ Mithilfe der Knoten im **Bereichsfenster** des StorSimple Snapshot Managers kön
 
 Abhängig von Ihrer Auswahl unter **Ansicht** zeigt der Bereich **Ergebnisse** die folgenden Informationen zu jedem Gerät an. (Weitere Informationen zum Konfigurieren einer Ansicht finden Sie unter [Menü "Ansicht"](storsimple-use-snapshot-manager.md#view-menu).
 
-| Ergebnisspalte | Beschreibung |
+| Ergebnisspalte | BESCHREIBUNG |
 |:--- |:--- |
 | Name |Der Name des Geräts wie im klassischen Azure-Portal konfiguriert |
 | Modellieren |Die Modellnummer des Geräts |

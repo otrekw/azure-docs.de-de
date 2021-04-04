@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 5dd1f157984cdb300cc3b375d71654e5da54d1ae
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97898129"
 ---
 # <a name="set-up-cloudsimple-private-cloud-as-a-disaster-recovery-site-for-on-premises-vmware-workloads"></a>Einrichten der privaten CloudSimple-Cloud als Notfallwiederherstellungsstandort für lokale VMware-Workloads
@@ -35,7 +35,7 @@ Für die Lösung ist Folgendes erforderlich:
 
 Die folgende Abbildung zeigt die Architektur der Zerto-Lösung.
 
-![Aufbau](media/cloudsimple-zerto-architecture.png)
+![Architektur](media/cloudsimple-zerto-architecture.png)
 
 ## <a name="how-to-deploy-the-solution"></a>Bereitstellen der Lösung
 
@@ -93,6 +93,6 @@ Um Zerto Virtual Replication von Ihrer lokalen Umgebung zu Ihrer privaten Cloud 
 6. Passen Sie bei Bedarf die Netzwerkeinstellungen für einzelne VMs an, und erstellen Sie die VPG.
 7. Testen Sie das Failover, sobald die Replikation abgeschlossen ist.
 
-## <a name="reference"></a>Verweis
+## <a name="reference"></a>Referenz
 
 [Zerto-Dokumentation](https://www.zerto.com/myzerto/technical-documentation/)

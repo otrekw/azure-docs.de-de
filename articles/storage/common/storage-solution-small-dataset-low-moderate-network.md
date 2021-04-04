@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: alkohli
 ms.openlocfilehash: f59d1e297ba4d7607d7abd07a78da4784f55d20f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96023226"
 ---
 # <a name="data-transfer-for-small-datasets-with-low-to-moderate-network-bandwidth"></a>Datenübertragung kleiner Datasets mit geringer bis mittlerer Netzwerkbandbreite
@@ -49,7 +49,7 @@ Die folgenden Optionen werden in diesem Szenario empfohlen:
 
 In der folgenden Tabelle werden die Unterschiede der Schlüsselfunktionen zusammengefasst.
 
-| Funktion | Azure Storage-Explorer | Azure-Portal | AzCopy<br>Azure PowerShell<br>Azure-Befehlszeilenschnittstelle | Azure Storage REST-APIs oder SDKs |
+| Funktion | Azure Storage-Explorer | Azure-Portal | AzCopy<br>Azure PowerShell<br>Azure CLI | Azure Storage REST-APIs oder SDKs |
 |---------|------------------------|--------------|-----------------------------------------|---------------------------------|
 | Verfügbarkeit | Herunterladen und Installieren <br>Eigenständiges Tool | Webbasierte Tools zu Durchsuchen im Azure-Portal | Befehlszeilentool |Programmierbare Schnittstellen in .NET, Java, Python, JavaScript, C++, Go, Ruby und PHP |
 | Grafische Benutzeroberfläche | Ja | Ja | Nein | Nein |
