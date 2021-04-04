@@ -7,10 +7,10 @@ ms.date: 06/29/2018
 ms.custom: devx-track-java
 ms.author: pepogors
 ms.openlocfilehash: cc65deb924a9f3367c2ea1d7c71544743ccf2697
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87327360"
 ---
 # <a name="develop-java-service-fabric-applications-with-visual-studio-code"></a>Entwickeln von Java Service Fabric-Anwendungen mit Visual Studio Code
@@ -93,7 +93,7 @@ Kommentieren Sie den Befehl in Zeile 6 (mit '#') aus, und fügen Sie den folgend
 
    ![Debugsymbol im VS Code-Arbeitsbereich](./media/service-fabric-develop-java-applications-with-vs-code/debug-icon-workspace.png)
 
-3. Legen Sie in der Datei „launch.json“ für den Port in der Konfiguration mit dem Namen **Debug (Attach)** (Debuggen (anfügen)) den Wert **8001** fest. Speichern Sie die Datei .
+3. Legen Sie in der Datei „launch.json“ für den Port in der Konfiguration mit dem Namen **Debug (Attach)** (Debuggen (anfügen)) den Wert **8001** fest. Speichern Sie die Datei.
 
    ![Debugkonfiguration für die Datei „launch.json“](./media/service-fabric-develop-java-applications-with-vs-code/launch-json-java.png)
 

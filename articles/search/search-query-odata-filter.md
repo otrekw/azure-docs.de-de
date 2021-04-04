@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 0f33b5a28d7c83be7e546c3f61bc517047c51312
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88934853"
 ---
 # <a name="odata-filter-syntax-in-azure-cognitive-search"></a>OData-Syntax von „$filter“ in der kognitiven Azure-Suche
@@ -75,7 +75,7 @@ Die Typen von booleschen Ausdrücken umfassen Folgendes:
 
 Wenn Sie einen Filterausdruck schreiben, ohne die zugehörigen Unterausdrücke in Klammern zu setzen, wird der Ausdruck in der kognitiven Azure-Suche anhand einer Reihe von Regeln für die Operatorrangfolge ausgewertet. Diese Regeln basieren auf den zum Kombinieren von Unterausdrücken verwendeten Operatoren. In der folgenden Tabelle sind die Gruppen von Operatoren von der höchsten bis zur niedrigsten Rangfolge aufgelistet:
 
-| Group | Operator(en) |
+| Gruppieren | Operator(en) |
 | --- | --- |
 | Logische Operatoren | `not` |
 | Vergleichsoperatoren | `eq`, `ne`, `gt`, `lt`, `ge`, `le` |
