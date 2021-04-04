@@ -5,10 +5,10 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 07/29/2019
 ms.openlocfilehash: 0b0889ac1e71ce33406e89ead62370a0c0168763
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98929263"
 ---
 # <a name="apache-spark-job-fails-with-invalidclassexception-class-version-mismatch-in-azure-hdinsight"></a>Apache Spark-Auftrag schlägt mit InvalidClassException, Klassenversionskonflikt in Azure HDInsight fehl
@@ -36,7 +36,7 @@ Dieser Fehler kann durch Hinzufügen einer zusätzlichen JAR-Datei zur `spark.ya
 > [!TIP]
 > Eine Bibliothek zu schattieren, bedeutet, den Inhalt der Bibliothek in Ihrer eigenen JAR-Datei zu speichern, wodurch das Paket geändert wird. Dies unterscheidet sich vom Verpacken der Bibliothek, bei dem die Bibliothek ohne erneutes Verpacken Ihrer eigenen JAR-Datei hinzugefügt wird.
 
-## <a name="resolution"></a>Auflösung
+## <a name="resolution"></a>Lösung
 
 Entfernen Sie die JAR-Datei, oder kompilieren Sie die angepasste JAR-Datei (AzureLogAppender) erneut, und verwenden Sie das [maven-shade-Plug-In](https://maven.apache.org/plugins/maven-shade-plugin/examples/class-relocation.html), um Klassen zu verschieben.
 

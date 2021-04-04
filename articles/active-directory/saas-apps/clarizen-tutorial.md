@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Clarizen | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration mit Clarizen | Microsoft Docs'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Clarizen konfigurieren.
 services: active-directory
 author: jeevansd
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 01/21/2019
 ms.author: jeedes
 ms.openlocfilehash: 38b2ff6909dae15ff0f836316d5d12140ecc331a
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97672938"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-clarizen"></a>Tutorial: Azure Active Directory-Integration mit Clarizen
+# <a name="tutorial-azure-active-directory-integration-with-clarizen"></a>Lernprogramm: Azure Active Directory-Integration mit Clarizen
 
 In diesem Tutorial erfahren Sie, wie Sie Clarizen in Azure Active Directory (Azure AD) integrieren.
 Die Integration von Clarizen in Azure AD bietet die folgenden Vorteile:
@@ -73,10 +73,10 @@ Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem A
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Clarizen müssen Sie die folgenden Bausteine ausführen:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-2. **[Konfigurieren des einmaligen Anmeldens für Clarizen](#configure-clarizen-single-sign-on)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
+2. **[Konfigurieren des einmaligen Anmeldens für Clarizen](#configure-clarizen-single-sign-on)**, um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
 3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
 4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Erstellen eines Clarizen-Testbenutzers](#create-clarizen-test-user)** , um eine Entsprechung von Britta Simon in Clarizen zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
+5. **[Erstellen eines Clarizen-Testbenutzers](#create-clarizen-test-user)**, um eine Entsprechung von Britta Simon in Clarizen zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
 6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
@@ -140,13 +140,13 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Clarizen
 
     a. Wählen Sie **Enable Federated Authentication** (Verbundauthentifizierung aktivieren).
 
-    b. Klicken Sie auf **Upload** , um das heruntergeladene Zertifikat hochzuladen.
+    b. Klicken Sie auf **Upload**, um das heruntergeladene Zertifikat hochzuladen.
 
     c. Geben Sie im Feld **Sign-in URL** (Anmelde-URL) den Wert für die **Anmelde-URL** aus dem Konfigurationsfenster der Azure AD-Anwendung ein.
 
     d. Geben Sie im Feld **Sign-out URL** (Abmelde-URL) den Wert für die **Anmelde-URL** aus dem Konfigurationsfenster der Azure AD-Anwendung ein.
 
-    e. Aktivieren Sie **Use POST**.
+    e. Wählen Sie **Use POST**.
 
     f. Klicken Sie auf **Speichern**.
 
@@ -215,7 +215,7 @@ Um für Azure AD-Benutzer das Anmelden bei Clarizen zu aktivieren, müssen Sie B
 
     ![Klicken auf „People“ (Personen)](./media/clarizen-tutorial/create_aaduser_001.png "Personen")
 
-3. Klicken Sie auf **Benutzer einladen**.
+3. Klicken Sie auf **Invite User**.
 
     ![Schaltfläche „Invite User“ (Benutzer einladen)](./media/clarizen-tutorial/create_aaduser_002.png "Invite Users")
 

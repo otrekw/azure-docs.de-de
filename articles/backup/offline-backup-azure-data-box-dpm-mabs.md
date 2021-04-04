@@ -4,10 +4,10 @@ description: Sie können Azure Data Box verwenden, um anfängliche Sicherungsdat
 ms.topic: conceptual
 ms.date: 08/12/2020
 ms.openlocfilehash: 1cfd9131099ad6a8ccd3d43e93f3d97641514f03
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96752548"
 ---
 # <a name="offline-seeding-using-azure-data-box-for-dpm-and-mabs-preview"></a>Offlineseeding mit Azure Data Box für DPM und MABS (Vorschau)
@@ -221,7 +221,7 @@ Führen Sie einen der folgenden Schritte aus, um sicherzustellen, dass der Fehle
 
 ![Azure Recovery Services-Agent](./media/offline-backup-azure-data-box-dpm-mabs/azure-recovery-services-agent.png)
 
-#### <a name="step-2"></a>Schritt 2
+#### <a name="step-2"></a>Schritt 2
 
 1. Öffnen Sie im Installationspfad den Ordner **Temp** (der Standardpfad des Ordners „Temp“ ist *C:\Program Files\Microsoft Azure Recovery Services Agent\Temp*). Suchen Sie nach der Datei *CBUICurr*, und öffnen Sie die Datei.
 2. Scrollen Sie in der Datei *CBUICurr* zur letzten Zeile, und überprüfen Sie, ob der Fehler auf „Anmeldeinformationen für Azure AD-Anwendung können nicht im Kundenkonto erstellt werden. Ausnahme: Aktualisieren auf vorhandene Anmeldeinformationen mit KeyId \<some guid> ist nicht zulässig“ zurückzuführen ist.
