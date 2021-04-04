@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 01065f9ac26599d26d6e2a6979eae1e559a82854
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "97722962"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Authentifizierung und Autorisierung bei Azure Spatial Anchors
@@ -176,7 +176,7 @@ Das Azure AD-Zugriffstoken wird mithilfe von [MSAL](../../active-directory/deve
 1.    Registrieren Ihrer Anwendung bei Azure AD:
         1.    Wählen Sie im Azure-Portal **Azure Active Directory** und anschließend **App-Registrierungen** aus.
         2.    Wählen Sie **Neue Registrierung** aus.
-        3.    Geben Sie den Namen Ihrer Anwendung ein, wählen Sie **Web-App/API** als Anwendungstyp aus, und geben Sie die Authentifizierungs-URL für Ihren Dienst ein. Wählen Sie **Erstellen** aus.
+        3.    Geben Sie den Namen Ihrer Anwendung ein, wählen Sie **Web-App/API** als Anwendungstyp aus, und geben Sie die Authentifizierungs-URL für Ihren Dienst ein. Klicken Sie auf **Erstellen**.
 2.    Wählen Sie in der Anwendung **Einstellungen** und dann die Registerkarte **Zertifikate und Geheimnisse** aus. Erstellen Sie einen neuen geheimen Clientschlüssel, wählen Sie eine Dauer aus, und wählen Sie **Hinzufügen** aus. Stellen Sie sicher, dass Sie den Geheimniswert speichern. Sie müssen diesen in den Code Ihres Webdiensts aufnehmen.
 3.    Gewähren Sie Ihrer Anwendung bzw. den Benutzern Zugriff auf Ihre Ressource:
         1.    Wechseln Sie im Azure-Portal zu Ihrer Spatial Anchors-Ressource.
