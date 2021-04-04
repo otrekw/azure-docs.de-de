@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 09/08/2020
 ms.author: Zhchia
 ms.openlocfilehash: b4f24c9beffcd67fb84940c2e159da615496d9aa
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96180369"
 ---
 # <a name="tutorial-configure-apple-business-manager-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Apple Business Manager für die automatische Benutzerbereitstellung
@@ -109,7 +109,7 @@ Mit dem Azure AD-Bereitstellungsdienst können Sie anhand der Zuweisung zur Anwe
 
 9. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die von Azure AD mit Apple Business Manager synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in Apple Business Manager für Updatevorgänge verwendet. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-   |attribute|type|
+   |Attribut|type|
    |---|---|
    |aktiv|Boolean|
    |userName|String|
