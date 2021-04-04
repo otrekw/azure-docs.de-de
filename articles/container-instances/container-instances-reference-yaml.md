@@ -4,10 +4,10 @@ description: Referenz für die von Azure Container Instances zum Konfigurieren e
 ms.topic: article
 ms.date: 07/06/2020
 ms.openlocfilehash: d0ec8d13eebba1c60f5a52f8c43bdd8b90eeb913
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87084759"
 ---
 # <a name="yaml-reference-azure-container-instances"></a>YAML-Referenz: Azure Container Instances
@@ -210,30 +210,30 @@ In den folgenden Tabellen sind die Werte beschrieben, die Sie im Schema festlege
 
 ### <a name="imageregistrycredential-object"></a>ImageRegistryCredential-Objekt
 
-|  Name | Typ | Erforderlich | Wert |
+|  Name | type | Erforderlich | Wert |
 |  ---- | ---- | ---- | ---- |
 |  server | Zeichenfolge | Ja | Der Docker-Imageregistrierungsserver ohne ein Protokoll wie „HTTP“ oder „HTTPS“. |
 |  username | Zeichenfolge | Ja | Der Benutzername für die private Registrierung. |
-|  password | Zeichenfolge | No | Das Kennwort für die private Registrierung. |
+|  password | Zeichenfolge | Nein | Das Kennwort für die private Registrierung. |
 
 
 
 
 ### <a name="ipaddress-object"></a>IpAddress-Objekt
 
-|  Name | Typ | Erforderlich | Wert |
+|  Name | type | Erforderlich | Wert |
 |  ---- | ---- | ---- | ---- |
 |  ports | array | Ja | Die Liste der in der Containergruppe verfügbar gemachten Ports. - [Port-Objekte](#port-object) |
 |  type | enum | Ja | Gibt an, ob die IP dem öffentlichen Internet oder dem privaten VNET verfügbar gemacht ist. – Public oder Private |
-|  ip | Zeichenfolge | No | Die dem öffentlichen Internet verfügbar gemachte IP-Adresse. |
-|  dnsNameLabel | Zeichenfolge | No | Die DNS-Namensbezeichnung für die IP-Adresse. |
+|  ip | Zeichenfolge | Nein | Die dem öffentlichen Internet verfügbar gemachte IP-Adresse. |
+|  dnsNameLabel | Zeichenfolge | Nein | Die DNS-Namensbezeichnung für die IP-Adresse. |
 
 
 
 
 ### <a name="volume-object"></a>Volume-Objekt
 
-|  Name | Typ | Erforderlich | Wert |
+|  Name | type | Erforderlich | Wert |
 |  ---- | ---- | ---- | ---- |
 |  name | Zeichenfolge | Ja | Der Name des Volumes. |
 |  azureFile | Objekt (object) | Nein | Das Azure File-Volume. - [AzureFileVolume-Objekt](#azurefilevolume-object) |
@@ -246,7 +246,7 @@ In den folgenden Tabellen sind die Werte beschrieben, die Sie im Schema festlege
 
 ### <a name="containergroupdiagnostics-object"></a>ContainerGroupDiagnostics-Objekt
 
-|  Name | Typ | Erforderlich | Wert |
+|  Name | type | Erforderlich | Wert |
 |  ---- | ---- | ---- | ---- |
 |  logAnalytics | Objekt (object) | Nein | Containergruppen-Protokollanalyseinformationen. - [LogAnalytics-Objekt](#loganalytics-object) |
 
@@ -255,7 +255,7 @@ In den folgenden Tabellen sind die Werte beschrieben, die Sie im Schema festlege
 
 ### <a name="containergroupnetworkprofile-object"></a>ContainerGroupNetworkProfile-Objekt
 
-|  Name | Typ | Erforderlich | Wert |
+|  Name | type | Erforderlich | Wert |
 |  ---- | ---- | ---- | ---- |
 |  id | Zeichenfolge | Ja | Der Bezeichner für ein Netzwerkprofil. |
 
@@ -264,16 +264,16 @@ In den folgenden Tabellen sind die Werte beschrieben, die Sie im Schema festlege
 
 ### <a name="dnsconfiguration-object"></a>DnsConfiguration-Objekt
 
-|  Name | Typ | Erforderlich | Wert |
+|  Name | type | Erforderlich | Wert |
 |  ---- | ---- | ---- | ---- |
 |  nameServers | array | Ja | Die DNS-Server für die Containergruppe. – string |
-|  searchDomains | Zeichenfolge | No | Die DNS-Suchdomänen für das Nachschlagen von Hostnamen in der Containergruppe. |
-|  Optionen | Zeichenfolge | No | Die DNS-Optionen für die Containergruppe. |
+|  searchDomains | Zeichenfolge | Nein | Die DNS-Suchdomänen für das Nachschlagen von Hostnamen in der Containergruppe. |
+|  Optionen | Zeichenfolge | Nein | Die DNS-Optionen für die Containergruppe. |
 
 
 ### <a name="encryptionproperties-object"></a>EncryptionProperties-Objekt
 
-| Name  | Typ  | Erforderlich  | Wert |
+| Name  | type  | Erforderlich  | Wert |
 |  ---- | ---- | ---- | ---- |
 | vaultBaseUrl  | Zeichenfolge    | Ja   | Die Basis-URL für den Schlüsseltresor. |
 | keyName   | Zeichenfolge    | Ja   | Der Name des Verschlüsselungsschlüssels |
@@ -281,7 +281,7 @@ In den folgenden Tabellen sind die Werte beschrieben, die Sie im Schema festlege
 
 ### <a name="initcontainerdefinition-object"></a>InitContainerDefinition-Objekt
 
-| Name  | Typ  | Erforderlich  | Wert |
+| Name  | type  | Erforderlich  | Wert |
 |  ---- | ---- | ---- | ---- |
 | name  | Zeichenfolge |  Ja | Der Name für den Init-Container |
 | properties    | Objekt (object)    | Ja   | Die Eigenschaften für den Init-Container. - [InitContainerPropertiesDefinition-Objekt](#initcontainerpropertiesdefinition-object)
@@ -289,7 +289,7 @@ In den folgenden Tabellen sind die Werte beschrieben, die Sie im Schema festlege
 
 ### <a name="containerproperties-object"></a>ContainerProperties-Objekt
 
-|  Name | Typ | Erforderlich | Wert |
+|  Name | type | Erforderlich | Wert |
 |  ---- | ---- | ---- | ---- |
 |  image | Zeichenfolge | Ja | Der Name des zum Erstellen der Containerinstanz verwendeten Images. |
 |  command | array | Nein | Die innerhalb der Containerinstanz auszuführenden Befehle im EXEC-Format. – string |
@@ -305,7 +305,7 @@ In den folgenden Tabellen sind die Werte beschrieben, die Sie im Schema festlege
 
 ### <a name="port-object"></a>Port-Objekt
 
-|  Name | Typ | Erforderlich | Wert |
+|  Name | type | Erforderlich | Wert |
 |  ---- | ---- | ---- | ---- |
 |  Protokoll | enum | Nein | Das dem Port zugeordnete Protokoll. – TCP oder UDP |
 |  port | integer | Ja | Die Portnummer. |
@@ -315,21 +315,21 @@ In den folgenden Tabellen sind die Werte beschrieben, die Sie im Schema festlege
 
 ### <a name="azurefilevolume-object"></a>AzureFileVolume-Objekt
 
-|  Name | Typ | Erforderlich | Wert |
+|  Name | type | Erforderlich | Wert |
 |  ---- | ---- | ---- | ---- |
 |  shareName | Zeichenfolge | Ja | Der Name der als Volume bereitzustellenden Azure File-Freigabe. |
 |  readOnly | boolean | Nein | Das Flag, das anzeigt, ob die als Volume bereitgestellte Azure File-Freigabe schreibgeschützt ist. |
 |  storageAccountName | Zeichenfolge | Ja | Der Name des Speicherkontos, das die Azure File-Freigabe enthält. |
-|  storageAccountKey | Zeichenfolge | No | Der Zugriffsschlüssel des Speicherkontos, der für den Zugriff auf die Azure File-Freigabe verwendet wird. |
+|  storageAccountKey | Zeichenfolge | Nein | Der Zugriffsschlüssel des Speicherkontos, der für den Zugriff auf die Azure File-Freigabe verwendet wird. |
 
 
 
 
 ### <a name="gitrepovolume-object"></a>GitRepoVolume-Objekt
 
-|  Name | Typ | Erforderlich | Wert |
+|  Name | type | Erforderlich | Wert |
 |  ---- | ---- | ---- | ---- |
-|  directory | Zeichenfolge | No | Zielverzeichnisname. Darf „..“ weder enthalten noch damit beginnen.  Wenn „.“ angegeben wird, ist das Volumeverzeichnis das Git-Repository.  Andernfalls, falls angegeben, enthält das Volume das Git-Repository in einem Unterverzeichnis mit dem angegebenen Namen. |
+|  directory | Zeichenfolge | Nein | Zielverzeichnisname. Darf „..“ weder enthalten noch damit beginnen.  Wenn „.“ angegeben wird, ist das Volumeverzeichnis das Git-Repository.  Andernfalls, falls angegeben, enthält das Volume das Git-Repository in einem Unterverzeichnis mit dem angegebenen Namen. |
 |  repository | Zeichenfolge | Ja | Repository-URL |
 |  revision | Zeichenfolge | Nein | Commit-Hash für die angegebene Revision. |
 
@@ -337,7 +337,7 @@ In den folgenden Tabellen sind die Werte beschrieben, die Sie im Schema festlege
 
 ### <a name="loganalytics-object"></a>LogAnalytics-Objekt
 
-|  Name | Typ | Erforderlich | Wert |
+|  Name | type | Erforderlich | Wert |
 |  ---- | ---- | ---- | ---- |
 |  workspaceId | Zeichenfolge | Ja | Die Arbeitsbereichs-ID für Log Analytics. |
 |  workspaceKey | Zeichenfolge | Ja | Der Arbeitsbereichsschlüssel für Log Analytics. |
@@ -347,7 +347,7 @@ In den folgenden Tabellen sind die Werte beschrieben, die Sie im Schema festlege
 
 ### <a name="initcontainerpropertiesdefinition-object"></a>InitContainerPropertiesDefinition-Objekt
 
-| Name  | Typ  | Erforderlich  | Wert |
+| Name  | type  | Erforderlich  | Wert |
 |  ---- | ---- | ---- | ---- |
 | image | Zeichenfolge    | No    | Das Image des Init-Containers. |
 | command   | array | Nein    | Der Befehl, der im Init-Container im Ausführungsformat ausgeführt werden soll. – string |
@@ -356,7 +356,7 @@ In den folgenden Tabellen sind die Werte beschrieben, die Sie im Schema festlege
 
 ### <a name="containerport-object"></a>ContainerPort-Objekt
 
-|  Name | Typ | Erforderlich | Wert |
+|  Name | type | Erforderlich | Wert |
 |  ---- | ---- | ---- | ---- |
 |  Protokoll | enum | Nein | Das dem Port zugeordnete Protokoll. – TCP oder UDP |
 |  port | integer | Ja | Die innerhalb der Containergruppe verfügbar gemachte Portnummer. |
@@ -366,18 +366,18 @@ In den folgenden Tabellen sind die Werte beschrieben, die Sie im Schema festlege
 
 ### <a name="environmentvariable-object"></a>EnvironmentVariable-Objekt
 
-|  Name | Typ | Erforderlich | Wert |
+|  Name | type | Erforderlich | Wert |
 |  ---- | ---- | ---- | ---- |
 |  name | Zeichenfolge | Ja | Der Name der Umgebungsvariablen. |
-|  value | Zeichenfolge | No | Der Wert der Umgebungsvariablen. |
-|  secureValue | Zeichenfolge | No | Der Wert der sicheren Umgebungsvariablen. |
+|  value | Zeichenfolge | Nein | Der Wert der Umgebungsvariablen. |
+|  secureValue | Zeichenfolge | Nein | Der Wert der sicheren Umgebungsvariablen. |
 
 
 
 
 ### <a name="resourcerequirements-object"></a>ResourceRequirements-Objekt
 
-|  Name | Typ | Erforderlich | Wert |
+|  Name | type | Erforderlich | Wert |
 |  ---- | ---- | ---- | ---- |
 |  requests | Objekt (object) | Ja | Die Ressourcenanforderungen dieser Containerinstanz. - [ResourceRequests-Objekt](#resourcerequests-object) |
 |  Grenzwerte | Objekt (object) | Nein | Die Ressourcenlimits dieser Containerinstanz. - [ResourceLimits-Objekt](#resourcelimits-object) |
@@ -413,7 +413,7 @@ In den folgenden Tabellen sind die Werte beschrieben, die Sie im Schema festlege
 
 ### <a name="resourcerequests-object"></a>ResourceRequests-Objekt
 
-|  Name | Typ | Erforderlich | Wert |
+|  Name | type | Erforderlich | Wert |
 |  ---- | ---- | ---- | ---- |
 |  memoryInGB | number | Ja | Die Arbeitsspeicheranforderung dieser Containerinstanz in GB. |
 |  cpu | number | Ja | Die CPU-Anforderungen dieser Containerinstanz. |
@@ -424,7 +424,7 @@ In den folgenden Tabellen sind die Werte beschrieben, die Sie im Schema festlege
 
 ### <a name="resourcelimits-object"></a>ResourceLimits-Objekt
 
-|  Name | Typ | Erforderlich | Wert |
+|  Name | type | Erforderlich | Wert |
 |  ---- | ---- | ---- | ---- |
 |  memoryInGB | number | Nein | Das Arbeitsspeicherlimit dieser Containerinstanz in GB. |
 |  cpu | number | Nein | Das CPU-Limit dieser Containerinstanz. |
@@ -435,7 +435,7 @@ In den folgenden Tabellen sind die Werte beschrieben, die Sie im Schema festlege
 
 ### <a name="containerexec-object"></a>ContainerExec-Objekt
 
-|  Name | Typ | Erforderlich | Wert |
+|  Name | type | Erforderlich | Wert |
 |  ---- | ---- | ---- | ---- |
 |  command | array | Nein | Die innerhalb des Containers auszuführenden Befehle. – string |
 
@@ -444,7 +444,7 @@ In den folgenden Tabellen sind die Werte beschrieben, die Sie im Schema festlege
 
 ### <a name="containerhttpget-object"></a>ContainerHttpGet-Objekt
 
-|  Name | Typ | Erforderlich | Wert |
+|  Name | type | Erforderlich | Wert |
 |  ---- | ---- | ---- | ---- |
 |  path | Zeichenfolge | Nein | Der zu testende Pfad. |
 |  port | integer | Ja | Die zu testende Portnummer. |
@@ -455,7 +455,7 @@ In den folgenden Tabellen sind die Werte beschrieben, die Sie im Schema festlege
 
 ### <a name="gpuresource-object"></a>GpuResource-Objekt
 
-|  Name | Typ | Erforderlich | Wert |
+|  Name | type | Erforderlich | Wert |
 |  ---- | ---- | ---- | ---- |
 |  count | integer | Ja | Die Anzahl der GPU-Ressourcen. |
 |  sku | enum | Ja | Die SKU der GPU-Ressource. – K80, P100, V100 |

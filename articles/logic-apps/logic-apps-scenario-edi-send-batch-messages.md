@@ -8,10 +8,10 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/19/2018
 ms.openlocfilehash: 6fc0833f70e3e9cd98100f193b52e5a1bfa4d651
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96000401"
 ---
 # <a name="exchange-edi-messages-as-batches-or-groups-between-trading-partners-in-azure-logic-apps"></a>Austauschen von EDI-Nachrichten als Batches oder Gruppen zwischen Handelspartnern in Azure Logic Apps
@@ -34,7 +34,7 @@ Stellen Sie sicher, dass sich die Logik-App für den Batchempfang und die Logik-
 
 Für dieses Beispiel benötigen Sie Folgendes:
 
-* ein Azure-Abonnement Falls Sie über kein Abonnement verfügen, können Sie [mit einem kostenlosen Azure-Konto beginnen](https://azure.microsoft.com/free/). Oder [registrieren Sie sich für ein Abonnement mit nutzungsbasierter Bezahlung](https://azure.microsoft.com/pricing/purchase-options/).
+* Ein Azure-Abonnement. Falls Sie über kein Abonnement verfügen, können Sie [mit einem kostenlosen Azure-Konto beginnen](https://azure.microsoft.com/free/). Oder [registrieren Sie sich für ein Abonnement mit nutzungsbasierter Bezahlung](https://azure.microsoft.com/pricing/purchase-options/).
 
 * Grundlegende Kenntnisse über die [Erstellung von Logik-Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
@@ -64,7 +64,7 @@ Für den Batchempfang werden der Batchmodus, der Batchname, die Freigabekriterie
 
 4. Legen Sie die Eigenschaften für den Batchempfang fest: 
 
-   | Eigenschaft | value | Notizen | 
+   | Eigenschaft | Wert | Hinweise | 
    |----------|-------|-------|
    | **Batchmodus** | Inline |  |  
    | **Batchname** | TestBatch | Nur mit dem Batchmodus **Inline** verfügbar | 
@@ -175,7 +175,7 @@ Erstellen Sie nun eine oder mehrere Logik-Apps, die Nachrichten an die Logik-App
 
    | Eigenschaft | BESCHREIBUNG | 
    |----------|-------------| 
-   | **Batchname** | Der in der Logik-App für den Empfang definierte Batchname, in diesem Beispiel „TestBatch“. <p>**Wichtig:** Der Batchname wird zur Laufzeit überprüft und muss mit dem in der Logik-App für den Empfang angegebenen Namen übereinstimmen. Wenn Sie den Batchnamen ändern, funktioniert die Logik-App für den Batchversand nicht. | 
+   | **Batchname** | Der in der Logik-App für den Empfang definierte Batchname, in diesem Beispiel „TestBatch“. <p>**Wichtig**: Der Batchname wird zur Laufzeit überprüft und muss mit dem in der Logik-App für den Empfang angegebenen Namen übereinstimmen. Wenn Sie den Batchnamen ändern, funktioniert die Logik-App für den Batchversand nicht. | 
    | **Nachrichteninhalt** | Der Inhalt der zu sendenden Nachricht, in diesem Beispiel das Token **Text**. | 
    ||| 
    
