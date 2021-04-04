@@ -12,10 +12,10 @@ ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: fb0ad93fb4a1269b4cca02b114c0427f0c44a31b
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96455356"
 ---
 # <a name="memory-and-concurrency-limits-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Speicher- und Parallelitätsgrenzwerte für einen dedizierten SQL-Pool in Azure Synapse Analytics
