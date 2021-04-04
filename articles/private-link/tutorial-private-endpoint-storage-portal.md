@@ -8,10 +8,10 @@ ms.service: private-link
 ms.topic: tutorial
 ms.date: 9/25/2020
 ms.openlocfilehash: eefef0eb61df9aa0597206b537f3d58e8b8b3213
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96484820"
 ---
 # <a name="tutorial-connect-to-a-storage-account-using-an-azure-private-endpoint"></a>Tutorial: Herstellen einer Verbindung mit einem Speicherkonto mithilfe eines privaten Endpunkts in Azure
@@ -162,7 +162,7 @@ In diesem Abschnitt erstellen Sie ein Speicherkonto und konfigurieren den privat
 
     | Einstellung | Wert                                          |
     |-----------------------|----------------------------------|
-    | Subscription | Auswählen des Azure-Abonnements |
+    | Abonnement | Auswählen des Azure-Abonnements |
     | Ressourcengruppe | Wählen Sie **myResourceGroup** aus. |
     | Standort | Wählen Sie **USA, Osten** aus. |
     | Name | Geben Sie **myPrivateEndpoint** ein. |
