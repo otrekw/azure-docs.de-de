@@ -8,10 +8,10 @@ ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: c953c31792b8d01199d409cbd91124138a6ebb15
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92927446"
 ---
 # <a name="create-an-external-app-service-environment"></a>Erstellen einer externen App Service-Umgebung
@@ -33,7 +33,7 @@ In diesem Artikel wird gezeigt, wie Sie eine externe ASE erstellen. Eine Übersi
 Nach dem Erstellen einer ASE können Sie folgende Elemente nicht mehr ändern:
 
 - Position
-- Subscription
+- Abonnement
 - Resource group
 - Verwendetes VNET
 - Verwendetes Subnetz
