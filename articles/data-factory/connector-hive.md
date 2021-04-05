@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: jingwang
 ms.openlocfilehash: 8f6e85d82c01663e404f7046f84706feb209ba5a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100367026"
 ---
 # <a name="copy-and-transform-data-from-hive-using-azure-data-factory"></a>Kopieren und Transformieren von Daten aus Hive mithilfe von Azure Data Factory 
@@ -92,7 +92,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definier
 
 Legen Sie zum Kopieren von Daten aus HTTP die „type“-Eigenschaft des Datasets auf **HiveObject** fest. Folgende Eigenschaften werden unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft des Datasets muss auf folgenden Wert festgelegt werden: **HiveObject** | Ja |
 | schema | Name des Schemas. |Nein (wenn „query“ in der Aktivitätsquelle angegeben ist)  |
@@ -124,7 +124,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren vo
 
 Legen Sie zum Kopieren von Daten aus einem Hive den Quelltyp in der Kopieraktivität auf **HiveSource** fest. Folgende Eigenschaften werden im Abschnitt **source** der Kopieraktivität unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **HiveSource** | Ja |
 | Abfrage | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM MyTable"`. | Nein (wenn „tableName“ im Dataset angegeben ist) |
@@ -169,7 +169,7 @@ Der Hive-Connector wird als Quelle vom Typ [Inlinedataset](data-flow-source.md#i
 
 Die folgende Tabelle enthält die von einer Hive-Quelle unterstützten Eigenschaften. Sie können diese Eigenschaften auf der Registerkarte **Quelloptionen** bearbeiten.
 
-| Name | Beschreibung | Erforderlich | Zulässige Werte | Datenflussskript-Eigenschaft |
+| Name | BESCHREIBUNG | Erforderlich | Zulässige Werte | Datenflussskript-Eigenschaft |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Speicher | Als Speicher muss `hive` verwendet werden. | ja |  `hive` | store | 
 | Format | Gibt an, ob Daten aus einer Tabelle oder per Abfrage gelesen werden. | ja | `table` oder `query` | format |
