@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
 ms.openlocfilehash: 36ba61c86082e191831c2c890de4466181f1a4db
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97674185"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-central-desktop"></a>Tutorial: Azure Active Directory-Integration mit Central Desktop
@@ -73,10 +73,10 @@ Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem A
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Central Desktop müssen Sie die folgenden Bausteine ausführen:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-2. **[Konfigurieren des einmaligen Anmeldens für Central Desktop](#configure-central-desktop-single-sign-on)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
+2. **[Konfigurieren des einmaligen Anmeldens für Central Desktop](#configure-central-desktop-single-sign-on)**, um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
 3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
 4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Erstellen eines Central Desktop-Testbenutzers](#create-central-desktop-test-user)** , um ein Pendant zu Britta Simon in Central Desktop zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist
+5. **[Erstellen eines Central Desktop-Testbenutzers](#create-central-desktop-test-user)**, um ein Pendant zu Britta Simon in Central Desktop zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist
 6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
@@ -141,7 +141,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Central�
 
     ![Single sign-on settings (Einstellungen für einmaliges Anmelden)](./media/central-desktop-tutorial/ic769564.png "Single Sign On Settings")
 
-    a. Aktivieren Sie **Enable SAML v2 Single Sign On**.
+    a. Wählen Sie **Enable SAML v2 Single Sign On** (Einmaliges Anmelden über SAML Version 2 aktivieren) aus.
 
     b. Fügen Sie im Feld **SSO URL** (SSO-URL) den Wert für den **Azure AD-Bezeichner** ein, den Sie aus dem Azure-Portal kopiert haben.
 
@@ -159,7 +159,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Central�
 
     c. Öffnen Sie das heruntergeladene Zertifikat in Editor. Kopieren Sie dann den Inhalt des Zertifikats, und fügen Sie ihn in das Feld **SSO Certificate** ein.
 
-    d. Aktivieren Sie **Display a link to your SAMLv2 login page**.
+    d. Wählen Sie **Display a link to your SAMLv2 login page** (Link zur SAML Version 2-Anmeldeseite anzeigen) aus.
 
     e. Wählen Sie **Update** aus.
 

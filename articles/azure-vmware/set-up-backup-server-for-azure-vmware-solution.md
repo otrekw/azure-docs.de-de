@@ -4,10 +4,10 @@ description: Richten Sie Ihre Azure VMware Solution-Umgebung so ein, dass virtu
 ms.topic: how-to
 ms.date: 02/04/2021
 ms.openlocfilehash: e9204b9f86c7e9ef67d2e3d6b45ccf4248d00b32
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99581481"
 ---
 # <a name="set-up-azure-backup-server-for-azure-vmware-solution"></a>Einrichten von Azure Backup Server für Azure VMware Solution
@@ -74,7 +74,7 @@ Die Tabelle bietet eine Übersicht über die maximale Anzahl geschützter Worklo
 
 | Maximale Anzahl geschützter Workloads | Durchschnittliche Workloadgröße | Durchschnittliche Workloadänderung (täglich) | Mindestanzahl Speicher-IOPS | Empfohlener Datenträger(Typ/Größe)      | Empfohlene VM-Größe |
 |-------------------------|-----------------------|--------------------------------|------------------|-----------------------------------|---------------------|
-| 20                      | 100 GB                | Nettoänderung 5 %                   | 2\.000             | HDD Standard (8 TB oder mehr pro Datenträger)  | A4V2       |
+| 20                      | 100 GB                | Nettoänderung 5 %                   | 2\.000             | HDD Standard (8 TB oder mehr pro Datenträger)  | A4V2       |
 | 40                      | 150 GB                | Nettoänderung 10 %                  | 4\.500             | SSD Premium* (1 TB oder mehr pro Datenträger) | DS3_V2     |
 | 60                      | 200 GB                | Nettoänderung 10 %                  | 10.500            | SSD Premium* (8 TB oder mehr pro Datenträger) | DS3_V2     |
 
