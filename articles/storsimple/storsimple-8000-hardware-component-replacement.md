@@ -16,10 +16,10 @@ ms.date: 06/02/2017
 ms.author: alkohli
 ms.custom: ''
 ms.openlocfilehash: 12ab5a9598cc0222f5a3e64985be2e2ea9e7e2fd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96014855"
 ---
 # <a name="replace-a-hardware-component-on-your-storsimple-8000-series-device"></a>Austauschen von Hardwarekomponenten auf Geräten der StorSimple 8000-Serie
@@ -52,12 +52,12 @@ Machen Sie sich mit den sicherheitsrelevanten Informationen zu Ihrem Gerät und 
 
 Bevor Sie versuchen, eine Komponente auszutauschen, beachten Sie die folgenden Informationen.
 
-![Symbol „Warnung“](./media/storsimple-hardware-component-replacement/Warning.png) ![Symbol „Vorsicht Stromschlag“](./media/storsimple-hardware-component-replacement/Electric.png) **WARNUNG!**
+![Symbol „Warnung“](./media/storsimple-hardware-component-replacement/Warning.png) ![Symbol „Stromschlag“](./media/storsimple-hardware-component-replacement/Electric.png) **WARNUNG!**
 
 * Erden Sie sich ordnungsgemäß mithilfe elektrostatischer Entladung oder einer Antistatikmatte, bevor Sie mit Modulen und Komponenten Ihres StorSimple-Gerät-Geräts hantieren.
 * Berühren Sie keine elektrischen Schaltungen. Verwenden Sie die bereitgestellten Griffe und Führungen, wenn Sie mit Komponenten hantieren, die ggf. elektrische Schaltungen haben.
 
-![Symbol „Warnung“](./media/storsimple-hardware-component-replacement/Warning.png) ![Symbol „Hinweis“](./media/storsimple-hardware-component-replacement/NoticeIcon.png) **HINWEIS:**
+![Warning Icon](./media/storsimple-hardware-component-replacement/Warning.png) ![Notice Icon](./media/storsimple-hardware-component-replacement/NoticeIcon.png) **HINWEIS:**
 
 Wenn Sie ein Modul austauschen, lassen Sie **NIEMALS ein Fach auf der Rückseite des Gehäuses leer**. Besorgen Sie ein Austausch- oder leeres Modul, bevor Sie das fehlerhafte Teil ausbauen.
 
@@ -69,11 +69,11 @@ Die wesentlichen Hardwarekomponenten des Geräts sind in der folgenden Tabelle z
 
 | Komponenten | Vorhandene Anzahl | Steckmodul | Austauschverfahren |
 |:--- |:--- |:--- |:--- |
-| Gehäuse |1 |Nein |[Austauschen des Gehäuses des StorSimple-Geräts](storsimple-8000-chassis-replacement.md) |
-| Primäre Controller |2 |Ja |[Austauschen eines Controllermoduls eines StorSimple-Geräts](storsimple-8000-controller-replacement.md) |
+| Gehäuse |1 |Nein |[Ersetzen des Gehäuses des StorSimple-Geräts](storsimple-8000-chassis-replacement.md) |
+| Primäre Controller |2 |Ja |[Ersetzen des Controllermoduls auf dem StorSimple-Gerät](storsimple-8000-controller-replacement.md) |
 | Module für Stromversorgung und Kühlung (PCMs) mit 764 W |2 |Ja |[Austauschen eines Moduls für Stromversorgung und Kühlung eines StorSimple-Geräts](storsimple-8000-power-cooling-module-replacement.md) |
-| Pufferbatterie |2 |Ja |[Austauschen des Pufferbatteriemoduls eines StorSimple-Geräts](storsimple-8000-battery-replacement.md) |
-| Festplattenlaufwerke |12 |Ja |[Austauschen eines Festplattenlaufwerks im StorSimple-Gerät](storsimple-8000-disk-drive-replacement.md) |
+| Pufferbatterie |2 |Ja |[Ersetzen des Notfallakkus auf dem StorSimple-Gerät](storsimple-8000-battery-replacement.md) |
+| Laufwerke |12 |Ja |[Austauschen eines Festplattenlaufwerks im StorSimple-Gerät](storsimple-8000-disk-drive-replacement.md) |
 
 **Tabelle 1** Hardwarekomponenten im primären Gehäuse
 
@@ -81,10 +81,10 @@ Das primäre Gehäuse und das EBOD-Gehäuse unterscheiden sich bei den E/A-Modul
 
 | Komponenten | Vorhandene Anzahl | Steckmodul | Austauschverfahren |
 |:--- |:--- |:--- |:--- |
-| Gehäuse |1 |Nein |[Austauschen des Gehäuses des StorSimple-Geräts](storsimple-8000-chassis-replacement.md) |
+| Gehäuse |1 |Nein |[Ersetzen des Gehäuses des StorSimple-Geräts](storsimple-8000-chassis-replacement.md) |
 | EBOD-Controller |2 |Ja |[Austauschen des EBOD-Controllers eines StorSimple-Geräts](storsimple-8000-ebod-controller-replacement.md) |
 | Module für Stromversorgung und Kühlung (PCMs) mit 580 W |2 |Ja |[Austauschen eines Moduls für Stromversorgung und Kühlung eines StorSimple-Geräts](storsimple-8000-power-cooling-module-replacement.md) |
-| Festplattenlaufwerke |12 |Ja |[Austauschen eines Festplattenlaufwerks im StorSimple-Gerät](storsimple-8000-disk-drive-replacement.md) |
+| Laufwerke |12 |Ja |[Austauschen eines Festplattenlaufwerks im StorSimple-Gerät](storsimple-8000-disk-drive-replacement.md) |
 
 **Tabelle 2** Hardwarekomponenten im EBOD-Gehäuse
 
@@ -135,7 +135,7 @@ Die folgenden FRUs (Field Replaceable Units) sind für Ihr StorSimple-Gerät ver
 * Pufferbatteriemodul
 * Schienensatz für Gestellmontage
 
-[Wenden Sie sich an den Microsoft-Support](storsimple-8000-contact-microsoft-support.md) , um diese Ersatzteile zu bestellen.
+Wenden Sie sich an den [Microsoft-Support](storsimple-8000-contact-microsoft-support.md), um diese Ersatzeinheiten zu bestellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
