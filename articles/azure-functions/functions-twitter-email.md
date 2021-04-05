@@ -8,10 +8,10 @@ ms.date: 04/27/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, mvc, cc996988-fb4f-47
 ms.openlocfilehash: 5750597d7d4d372be975aa64ce8db11859791da2
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98674317"
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>Erstellen einer Funktion, die in Azure Logic Apps integriert ist
@@ -55,7 +55,7 @@ Die Cognitive Services-APIs sind in Azure als einzelne Ressourcen verfügbar. Ve
 
     ![Seite „Cognitive-Ressource erstellen“](media/functions-twitter-email/01-create-text-analytics.png)
 
-    | Einstellung      |  Vorgeschlagener Wert   | Beschreibung                                        |
+    | Einstellung      |  Vorgeschlagener Wert   | BESCHREIBUNG                                        |
     | --- | --- | --- |
     | **Name** | MyCognitiveServicesAccnt | Wählen Sie einen eindeutigen Kontonamen. |
     | **Location** | USA (Westen) | Verwenden Sie den nächstgelegenen Standort. |
@@ -142,7 +142,7 @@ Sie verfügen nun über eine Funktion zum Kategorisieren von Stimmungswerten. Al
 
     ![Erstellen einer Logik-App im Azure-Portal](./media/functions-twitter-email/08-logic-app-create.png)
 
-    | Einstellung      |  Vorgeschlagener Wert   | Beschreibung                                        |
+    | Einstellung      |  Vorgeschlagener Wert   | BESCHREIBUNG                                        |
     | ----------------- | ------------ | ------------- |
     | **Name** | TweetSentiment | Wählen Sie einen geeigneten Namen für Ihre App. |
     | **Ressourcengruppe** | myResourceGroup | Wählen Sie dieselbe vorhandene Ressourcengruppe wie zuvor. |
