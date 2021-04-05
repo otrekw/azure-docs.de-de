@@ -9,10 +9,10 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: 2567f5bb817a34f6274d5e265a266d67a9c81413
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98743982"
 ---
 # <a name="azure-cloud-services-extended-support-config-role-schema"></a>Azure Cloud Services (erweiterter Support): Konfigurationsrollenschema
@@ -40,7 +40,7 @@ Das folgende Beispiel zeigt das `Role`-Element und seine untergeordneten Element
 
 In der folgenden Tabelle sind die Attribute des `Role`-Elements beschrieben.
 
-| attribute | BESCHREIBUNG |
+| Attribut | BESCHREIBUNG |
 | --------- | ----------- |
 | name   | Erforderlich. Gibt den Namen der Rolle an. Der Name muss mit dem in der Dienstdefinitionsdatei angegebenen Namen für die Rolle übereinstimmen.|
 | vmName | Optional. Gibt den DNS-Namen für einen virtuellen Computer an. Der Name darf höchstens 10 Zeichen enthalten.|
