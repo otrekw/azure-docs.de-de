@@ -4,10 +4,10 @@ description: Beschreibt die Eigenschaften und das Schema, die für Azure Maps-Er
 ms.topic: conceptual
 ms.date: 02/11/2021
 ms.openlocfilehash: 88cf0c8274d685a45862bc7b7884b5e4a686c22d
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100363678"
 ---
 # <a name="azure-maps-as-an-event-grid-source"></a>Azure Maps als Event Grid-Quelle
