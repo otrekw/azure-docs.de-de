@@ -5,10 +5,10 @@ ms.date: 03/02/2021
 ms.service: cognitive-services
 ms.topic: include
 ms.openlocfilehash: d61813e723992f4381c5ea82121da8bbb70016dc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102032930"
 ---
 Abfragen des Containers werden gemäß des Tarifs der Azure-Ressource in Rechnung gestellt, die für `ApiKey` verwendet wird.
