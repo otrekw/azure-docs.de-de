@@ -10,10 +10,10 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: d3d15b7dd5a44245a6a501dc4a4a324e93f3a7a6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98879036"
 ---
 # <a name="azcopy-load"></a>azcopy load
@@ -39,7 +39,7 @@ Laden eines vollständigen Verzeichnisses in einen Container mit einer SAS im CL
 azcopy load clfs "/path/to/dir" "https://[account].blob.core.windows.net/[container]?[SAS]" --state-path="/path/to/state/path"
 ```
 
-## <a name="options"></a>Tastatur
+## <a name="options"></a>Optionen
 
 |Option|BESCHREIBUNG|
 |--|--|
