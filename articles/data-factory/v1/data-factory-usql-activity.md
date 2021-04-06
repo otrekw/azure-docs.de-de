@@ -9,10 +9,10 @@ ms.author: abnarain
 ms.custom: devx-track-csharp
 robots: noindex
 ms.openlocfilehash: 5931cb28721e8658a771ceea1cd94624a0c09f7c
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100392917"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Transformieren von Daten durch Ausführen von U-SQL-Skripts für Azure Data Lake Analytics 
@@ -43,7 +43,7 @@ Die folgende Tabelle enthält Beschreibungen der allgemeinen Eigenschaften, die 
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
-| **type** |Legen Sie die Typeigenschaft auf **AzureDataLakeAnalytics** fest. |Ja |
+| **type** |Legen Sie die type-Eigenschaft auf **AzureDataLakeAnalytics** fest. |Ja |
 | **accountName** |Name des Azure Data Lake Analytics-Kontos. |Ja |
 | **dataLakeAnalyticsUri** |URI des Azure Data Lake Analytics-Kontos. |Nein |
 | **subscriptionId** |Azure-Abonnement-ID |Nein (falls nicht angegeben, wird das Abonnement der Data Factory verwendet). |

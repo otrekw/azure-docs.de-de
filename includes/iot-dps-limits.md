@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
 ms.openlocfilehash: bbe928084a758335e5fa3b0531726c77a6d599b8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85839048"
 ---
 Die folgende Tabelle enthält die Grenzwerte, die für Ressourcen des Azure IoT Hub Device Provisioning-Diensts gelten.
@@ -33,6 +33,6 @@ Der Device Provisioning Service drosselt Anforderungen, wenn die folgenden Konti
 
 | Drosselung | Wert pro Einheit |
 | --- | --- |
-| Operationen (Operations) | 200/Minute/Dienst |
+| Vorgänge | 200/Minute/Dienst |
 | Geräteregistrierungen | 200/Minute/Dienst |
 | Abrufvorgang für Geräte | 5/10 Sekunden/Gerät |
