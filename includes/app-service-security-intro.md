@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 04/15/2020
 ms.author: cephalin
 ms.openlocfilehash: 0fccb1ed092190f88d197c9bf2cd17678a4d1731
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "83649055"
 ---
 Die Plattformkomponenten von App Service werden aktiv geschützt und gehärtet. Zu diesen Komponenten zählen unter anderem virtuelle Azure-Computer, Speicher, Netzwerkverbindungen und Webframeworks sowie Verwaltungs- und Integrationsfeatures. Die Konformität von App Service wird kontinuierlich und streng geprüft, um Folgendes zu gewährleisten:

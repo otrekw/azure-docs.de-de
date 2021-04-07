@@ -1,5 +1,5 @@
 ---
-title: 'Mit PowerShell: Herstellen einer Verbindung mit einem Speicherkonto'
+title: 'PowerShell: Herstellen einer Verbindung mit einem Speicherkonto'
 description: Hier erfahren Sie, wie Sie mit Azure PowerShell die Bereitstellung und Verwaltung von App Service automatisieren. In diesem Beispiel wird gezeigt, wie Sie eine Verbindung zwischen einer App und einem Speicherkonto herstellen.
 tags: azure-service-management
 ms.assetid: e4831bdc-2068-4883-9474-0b34c2e3e255
@@ -7,10 +7,10 @@ ms.topic: sample
 ms.date: 03/20/2017
 ms.custom: mvc, devx-track-azurepowershell
 ms.openlocfilehash: 9c182c797515288038ae6a23d6d939d5ec855011
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89073912"
 ---
 # <a name="connect-an-app-service-app-to-a-storage-account"></a>Verbinden einer App Service-App mit einem Speicherkonto

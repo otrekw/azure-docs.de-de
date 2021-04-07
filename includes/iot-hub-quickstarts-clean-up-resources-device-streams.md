@@ -9,10 +9,10 @@ ms.date: 01/15/2019
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 46ab75f161692dd048c19698af7027d0e0622b37
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "82506420"
 ---
 Falls Sie mit dem nächsten empfohlenen Artikel fortfahren möchten, können Sie die bereits erstellten Ressourcen behalten und wiederverwenden.
@@ -29,7 +29,7 @@ So löschen Sie eine Ressourcengruppe anhand des Namens:
 
 1. Geben Sie im Textfeld **Nach Name filtern** den Namen der Ressourcengruppe ein, die Ihren IoT-Hub enthält.
 
-1. Wählen Sie in der Ergebnisliste rechts neben Ihrer Ressourcengruppe die Auslassungspunkte ( **...** ) und anschließend **Ressourcengruppe löschen** aus.
+1. Wählen Sie in der Ergebnisliste rechts neben Ihrer Ressourcengruppe die Auslassungspunkte (**...**) und anschließend **Ressourcengruppe löschen** aus.
 
     ![Schaltfläche „Ressourcengruppe löschen“](./media/iot-hub-quickstarts-clean-up-resources-device-streams/iot-hub-delete-resource-group.png)
 

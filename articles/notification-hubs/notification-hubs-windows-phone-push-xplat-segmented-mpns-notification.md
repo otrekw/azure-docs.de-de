@@ -18,13 +18,13 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 67700ec643a27f8ae5c581fe9de8e3295a1925e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88998236"
 ---
-# <a name="tutorial-send-push-notifications-to-specific-windows-phones-using-azure-notification-hubs"></a>Tutorial: Senden von Pushbenachrichtigungen an bestimmte Windows-Telefone mit Azure Notification Hubs
+# <a name="tutorial-send-push-notifications-to-specific-windows-phones-using-azure-notification-hubs"></a>Tutorial: Senden von Pushbenachrichtigungen an bestimmte Windows Phone-Geräte mit Azure Notification Hubs
 
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
 
@@ -35,7 +35,7 @@ Sie aktivieren dieses Szenario durch das Einfügen von einem oder mehreren *Tags
 > [!NOTE]
 > Im Windows Phone-SDK von Notification Hubs wird die Verwendung des Windows-Pushbenachrichtigungsdienstes (Windows Push Notification Service, WNS) mit Windows Phone 8.1 Silverlight-Apps nicht unterstützt. Um WNS (anstelle von MPNS) mit Windows Phone 8.1-Silverlight-Apps zu verwenden, führen Sie das Tutorial für [Notification Hubs – Windows Phone Silverlight] aus, in dem REST-APIs verwendet werden.
 
-In diesem Tutorial lernen Sie Folgendes:
+In diesem Tutorial lernen Sie, wie die folgenden Aufgaben ausgeführt werden:
 
 > [!div class="checklist"]
 > * Hinzufügen der Kategorieauswahl zur mobilen App
@@ -45,7 +45,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Absolvieren Sie [Tutorial: Erste Schritte mit Azure Notification Hubs für Windows Phone-Apps](notification-hubs-windows-mobile-push-notifications-mpns.md). In diesem Tutorial aktualisieren Sie die mobile Anwendung, sodass Sie sich für Kategorien aktueller Nachrichten registrieren können, die Sie interessieren, und nur Pushbenachrichtigungen für diese Kategorien empfangen.
+Arbeiten Sie das Tutorial [Erste Schritte mit Azure Notification Hubs für Windows Phone-Apps](notification-hubs-windows-mobile-push-notifications-mpns.md) durch. In diesem Tutorial aktualisieren Sie die mobile Anwendung, sodass Sie sich für Kategorien aktueller Nachrichten registrieren können, die Sie interessieren, und nur Pushbenachrichtigungen für diese Kategorien empfangen.
 
 ## <a name="add-category-selection-to-the-mobile-app"></a>Hinzufügen der Kategorieauswahl zur mobilen App
 
@@ -207,7 +207,7 @@ Der erste Schritt besteht daraus, Benutzeroberflächenelemente zur vorhandenen H
     ```
 
     Diese Klasse verwendet den isolierten Speicher, um Nachrichtenkategorien zu speichern, die das Gerät empfangen soll. Sie enthält außerdem Methoden zum Registrieren dieser Kategorien mithilfe einer [Vorlagenbenachrichtigungsregistrierung](notification-hubs-templates-cross-platform-push-messages.md) .
-4. Fügen Sie der Klasse `App` in der Projektdatei `App.xaml.cs` die folgende Eigenschaft hinzu. Ersetzen Sie die Platzhalter `<connection string with listen access>` und  *durch den Namen Ihres Notification Hubs und die Verbindungszeichenfolge für `<hub name>`DefaultListenSharedAccessSignature*, die Sie zuvor abgerufen haben.
+4. Fügen Sie der Klasse `App` in der Projektdatei `App.xaml.cs` die folgende Eigenschaft hinzu. Ersetzen Sie die Platzhalter `<connection string with listen access>` und *durch den Namen Ihres Notification Hubs und die Verbindungszeichenfolge für `<hub name>`DefaultListenSharedAccessSignature*, die Sie zuvor abgerufen haben.
 
     ```csharp
     public Notifications notifications = new Notifications("<hub name>", "<connection string with listen access>");

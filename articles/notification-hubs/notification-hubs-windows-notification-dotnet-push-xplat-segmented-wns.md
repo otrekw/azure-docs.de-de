@@ -18,10 +18,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/22/2019
 ms.openlocfilehash: 2c77eba69fd914e8ecc7d08a1b16f61ceefe101b
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92320576"
 ---
 # <a name="tutorial-send-notifications-to-specific-devices-running-universal-windows-platform-applications"></a>Tutorial: Senden von Benachrichtigungen an bestimmte Geräte, die Anwendungen der universellen Windows-Plattform ausführen
@@ -49,7 +49,7 @@ In diesem Tutorial führen Sie die folgenden Aufgaben aus:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Absolvieren Sie [Tutorial: Senden von Benachrichtigungen an Apps für die universelle Windows-Plattform mit Azure Notification Hubs][get-started], bevor Sie mit diesem Tutorial beginnen.  
+Arbeiten Sie das [Tutorial: Senden von Benachrichtigungen an universelle Windows-Plattform-Anwendungen mit Azure Notification Hubs][get-started] durch, bevor Sie mit diesem Tutorial beginnen.  
 
 ## <a name="add-category-selection-to-the-app"></a>Hinzufügen der Kategorieauswahl zur App
 
@@ -197,7 +197,7 @@ In diesem Abschnitt führen Sie die Registrierung beim Notification Hub während
 1. Öffnen Sie die Datei *App.xaml.cs*, und aktualisieren Sie die `InitNotificationsAsync`-Methode, sodass zum Abonnieren von Kategorien die Klasse `notifications` verwendet wird.
 
     ```csharp
-    // *** Remove or comment out these lines **_
+    // *** Remove or comment out these lines ***
     //var channel = await PushNotificationChannelManager.CreatePushNotificationChannelForApplicationAsync();
     //var hub = new NotificationHub("your hub name", "your listen connection string");
     //var result = await hub.RegisterNativeAsync(channel.Uri);

@@ -15,10 +15,10 @@ ms.date: 09/26/2019
 ms.author: mametcal
 ms.custom: mvc, devx-track-java
 ms.openlocfilehash: 0dcf85add4e1c9f1d701c4ce4a122c8d6b31382a
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92077829"
 ---
 # <a name="tutorial-use-feature-flags-in-a-spring-boot-app"></a>Tutorial: Verwenden von Featureflags in einer Spring Boot-App

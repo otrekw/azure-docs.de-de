@@ -9,10 +9,10 @@ ms.date: 05/10/2019
 ms.author: anavin
 ms.custom: include file
 ms.openlocfilehash: 93caf39216ef0479ec2799267a9ba8181f37f802
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "84194227"
 ---
 ## <a name="add-ip-addresses-to-a-vm-operating-system"></a><a name="os-config"></a>Hinzufügen von IP-Adressen zu einem VM-Betriebssystem
@@ -23,7 +23,7 @@ Stellen Sie eine Verbindung mit einem virtuellen Computer her, den Sie mit mehre
 <details>
   <summary>Expand</summary>
 
-1. Geben Sie an einer Eingabeaufforderung den Befehl *ipconfig /all*ein.  Sie können nur die *primäre* private Adresse anzeigen (über DHCP).
+1. Geben Sie an einer Eingabeaufforderung den Befehl *ipconfig /all* ein.  Sie können nur die *primäre* private Adresse anzeigen (über DHCP).
 2. Geben Sie an der Eingabeaufforderung *ncpa.cpl* ein, um das Fenster **Netzwerkverbindungen** zu öffnen.
 3. Öffnen Sie die Eigenschaften für den entsprechenden Adapter: **Ethernet**.
 4. Doppelklicken Sie auf „Internetprotokoll, Version 4“ (IPv4).
@@ -40,7 +40,7 @@ Stellen Sie eine Verbindung mit einem virtuellen Computer her, den Sie mit mehre
 
     * Klicken Sie auf **OK**, um die TCP/IP-Einstellungen zu schließen, und dann erneut auf **OK**, um die Adaptereinstellungen zu schließen. Die RDP-Verbindung wird wiederhergestellt.
 
-6. Geben Sie an einer Eingabeaufforderung den Befehl *ipconfig /all*ein. Überprüfen Sie, ob alle hinzugefügten IP-Adressen angezeigt werden und DHCP deaktiviert ist.
+6. Geben Sie an einer Eingabeaufforderung den Befehl *ipconfig /all* ein. Überprüfen Sie, ob alle hinzugefügten IP-Adressen angezeigt werden und DHCP deaktiviert ist.
 7. Konfigurieren Sie Windows so, dass die private IP-Adresse der primären IP-Konfiguration in Azure als die primäre IP-Adresse für Windows verwendet wird. Ausführliche Informationen finden Sie unter [No Internet access from Azure Windows VM that has multiple IP addresses](https://support.microsoft.com/help/4040882/no-internet-access-from-azure-windows-vm-that-has-multiple-ip-addresse) (Kein Internetzugriff über einen virtuellen Azure Windows-Computer mit mehreren IP-Adressen). 
 
 ### <a name="validation-windows-server"></a>Überprüfung (Windows Server)
@@ -298,7 +298,7 @@ ip route add default via 10.0.0.1 dev eth2 table custom
     ifconfig
     ```
 
-    In der zurückgegebenen Liste sollte die hinzugefügte IP-Adresse *eth0:0*angezeigt werden.
+    In der zurückgegebenen Liste sollte die hinzugefügte IP-Adresse *eth0:0* angezeigt werden.
 
 ### <a name="validation-red-hat-centos-and-others"></a>Überprüfung (Red Hat, CentOS usw.)
 

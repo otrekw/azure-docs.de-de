@@ -12,13 +12,13 @@ ms.date: 09/12/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 379ea9a0c2a49e92fa1c4882ea6e783b3b91e32f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88163916"
 ---
-# <a name="quickstart-set-up-sign-in-for-an-aspnet-application-using-azure-active-directory-b2c"></a>Schnellstart: Einrichten der Anmeldung für eine ASP.NET-Anwendung mithilfe von Azure Active Directory B2C
+# <a name="quickstart-set-up-sign-in-for-an-aspnet-application-using-azure-active-directory-b2c"></a>Schnellstart: Einrichten der Anmeldung für eine ASP.NET-Anwendung unter Verwendung von Azure Active Directory B2C
 
 Azure Active Directory B2C (Azure AD B2C) ermöglicht die Cloudidentitätsverwaltung zum Schützen Ihrer Anwendung, Ihres Unternehmens und Ihrer Kunden. Mit Azure AD B2C können sich Ihre Anwendungen über offene Standardprotokolle bei Konten für soziale Netzwerke und bei Unternehmenskonten authentifizieren. In dieser Schnellstartanleitung verwenden Sie eine ASP.NET-Anwendung und ein soziales Netzwerk als Identitätsanbieter, um sich anzumelden und eine durch Azure AD B2C geschützte Web-API aufzurufen.
 
@@ -26,7 +26,7 @@ Azure Active Directory B2C (Azure AD B2C) ermöglicht die Cloudidentitätsverwal
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- [Visual Studio 2019](https://www.visualstudio.com/downloads/) mit der Workload **ASP.NET und Webentwicklung**
+- [Visual Studio 2019](https://www.visualstudio.com/downloads/) mit der Workload **ASP.NET- und Webentwicklung**
 - Ein Social Media-Konto von Facebook, Google oder Microsoft
 - [Laden Sie eine ZIP-Datei herunter](https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi/archive/master.zip), oder klonen Sie die Beispielwebanwendung von GitHub.
 

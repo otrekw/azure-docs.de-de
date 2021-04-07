@@ -9,10 +9,10 @@ ms.date: 10/16/2018
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: bf107da82fb3f772a341e70ce472f08ea674a450
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "75692558"
 ---
 ### <a name="create-a-storage-account-for-event-processor-host"></a>Erstellen eines Speicherkontos für den Ereignisprozessorhost
@@ -22,7 +22,7 @@ Der Ereignisprozessorhost ist ein intelligenter Agent, mit dem das Empfangen von
 
     ![Erstellen eines Ressourcenmenüelements, Microsoft Azure-Portal](./media/event-hubs-create-storage/create-resource.png)
 
-2. Wählen Sie **Storage** > **Speicherkonto** aus.
+2. Klicken Sie auf **Speicher** > **Speicherkonto**.
    
     ![Auswählen eines Speicherkontos, Microsoft Azure-Portal](./media/event-hubs-create-storage/select-storage-account.png)
 
@@ -32,17 +32,17 @@ Der Ereignisprozessorhost ist ein intelligenter Agent, mit dem das Empfangen von
    2. Wählen Sie ein Azure-**Abonnement** aus, das den Event Hub enthält.
    3. Wählen Sie die **Ressourcengruppe** aus, die den Event Hub enthält, oder erstellen Sie sie.
    4. Wählen Sie einen **Speicherort** für die Erstellung der Ressource aus. 
-   5. Klicken Sie auf **Überprüfen + erstellen**.
+   5. Klicken Sie auf **Überprüfen + erstellen**.
    
         ![Überprüfen + erstellen, Erstellen eines Speicherkontos, Microsoft Azure-Portal](./media/event-hubs-create-storage/review-create.png)
 
 4. Überprüfen Sie auf der Seite **Überprüfen + erstellen** die Werte, und wählen Sie **Erstellen** aus. 
 
     ![Speicherkontoeinstellungen überprüfen und erstellen, Microsoft Azure-Portal](./media/event-hubs-create-storage/create-storage-account.png)
-5. Wenn die Meldung **Bereitstellungen erfolgreich**  in Ihren Benachrichtigungen angezeigt wird, wählen Sie **Zu Ressource wechseln** aus, um die Seite „Speicherkonto“ zu öffnen. Alternativ können Sie **Bereitstellungsdetails** erweitern und dann die neue Ressource in der Ressourcenliste auswählen.  
+5. Wenn die Meldung **Bereitstellungen erfolgreich** in Ihren Benachrichtigungen angezeigt wird, wählen Sie **Zu Ressource wechseln** aus, um die Seite „Speicherkonto“ zu öffnen. Alternativ können Sie **Bereitstellungsdetails** erweitern und dann die neue Ressource in der Ressourcenliste auswählen.  
 
     ![Zu Ressource wechseln, Speicherkontobereitstellung, Microsoft Azure-Portal](./media/event-hubs-create-storage/go-to-resource.png) 
-6. Wählen Sie **Container**aus.
+6. Wählen Sie **Container** aus.
 
     ![Auswählen des Blobcontainerdiensts, Speicherkonten, Microsoft Azure-Portal](./media/event-hubs-create-storage/select-blob-container-service.png)
 7. Wählen Sie oben **+ Container** aus, geben Sie einen **Namen** für den Container ein, und wählen Sie **OK** aus. 

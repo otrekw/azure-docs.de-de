@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Erstellen eines Aliaseintrags zur Unterstützung von Apex-Domänennamen: Traffic Manager'
+title: 'Tutorial: Erstellen eines Aliaseintrags zur Unterstützung von Apex-Domänennamen – Traffic Manager'
 titleSuffix: Azure DNS
 description: In diesem Tutorial erfahren Sie, wie Sie einen Azure DNS-Alias-Ressourceneintrag für die Verwendung des Apex-Domänennamens mit Traffic Manager konfigurieren.
 services: dns
@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 9/25/2018
 ms.author: rohink
 ms.openlocfilehash: 4bdfc950cc1277809811dc2c548a57cc2138a8e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "77149948"
 ---
 # <a name="tutorial-configure-an-alias-record-to-support-apex-domain-names-with-traffic-manager"></a>Tutorial: Konfigurieren eines Alias-Ressourceneintrags zur Unterstützung von Apex-Domänennamen mit Traffic Manager 
@@ -20,7 +20,7 @@ ms.locfileid: "77149948"
 Sie können einen Aliaseintrag für den Domänennamen-Apex erstellen, um auf ein Azure Traffic Manager-Profil zu verweisen. Ein Beispiel wäre etwa „contoso.com“. Statt einen Umleitungsdienst zu verwenden, können Sie Azure DNS so konfigurieren, dass direkt von Ihrer Zone aus auf ein Traffic Manager-Profil verwiesen wird. 
 
 
-In diesem Tutorial lernen Sie Folgendes:
+In diesem Tutorial lernen Sie, wie die folgenden Aufgaben ausgeführt werden:
 
 > [!div class="checklist"]
 > * Erstellen eines virtuellen Hostcomputers und einer Netzwerkinfrastruktur
@@ -59,7 +59,7 @@ Wiederholen Sie dieses Verfahren, um einen weiteren virtuellen Computer mit dem 
 ### <a name="add-a-dns-label"></a>Hinzufügen einer DNS-Bezeichnung
 Für die Verwendung der öffentlichen IP-Adressen mit Traffic Manager ist eine DNS-Bezeichnung erforderlich.
 1. Wählen Sie in der Ressourcengruppe **RG-DNS-Alias-TM** die öffentliche IP-Adresse **Web-01-ip** aus.
-2. Wählen Sie unter **Einstellungen** die Option **Konfiguration**.
+2. Klicken Sie unter **Einstellungen** auf **Konfiguration**.
 3. Geben Sie im Textfeld „DNS-Namensbezeichnung“ die Zeichenfolge **web01pip** ein.
 4. Wählen Sie **Speichern** aus.
 

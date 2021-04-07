@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 07/29/2019
 ms.author: jeedes
 ms.openlocfilehash: 7e0b17c30985617791c1ce55a02f6a60253b43db
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92318951"
 ---
 # <a name="tutorial-integrate-airstack-with-azure-active-directory"></a>Tutorial: Integrieren von Airstack in Azure Active Directory
@@ -59,10 +59,10 @@ Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Airstack m
 Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Airstack müssen Sie die folgenden Schritte ausführen:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
-2. **[Konfigurieren des einmaligen Anmeldens für Airstack](#configure-airstack-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
+2. **[Konfigurieren des einmaligen Anmeldens für Airstack](#configure-airstack-sso)**, um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
 3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
 4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
-5. **[Erstellen eines Airstack-Testbenutzers](#create-airstack-test-user)** , um ein Pendant von B. Simon in Airstack zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist
+5. **[Erstellen eines Airstack-Testbenutzers](#create-airstack-test-user)**, um ein Pendant von B. Simon in Airstack zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist
 6. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
 ### <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
@@ -128,7 +128,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 ### <a name="create-airstack-test-user"></a>Erstellen eines Airstack-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in Airstack einen Benutzer namens B. Simon. Wenden Sie sich an das  [Airstack-Supportteam](mailto:jsinger@lenovo.com), um die Benutzer auf der Airstack-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in Airstack einen Benutzer namens B. Simon. Wenden Sie sich an das [Airstack-Supportteam](mailto:jsinger@lenovo.com), um die Benutzer auf der Airstack-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ### <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
