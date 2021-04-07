@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/15/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 5e41dea3b47c608b9e82ac57fa1cfe5247ea6cc2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 8f22379049b74428787b738af832802081be7bf8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102099011"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105022890"
 ---
 # <a name="managing-your-voice-assistant"></a>Verwalten Ihres Sprach-Assistenten
 
@@ -60,7 +60,7 @@ Ein Schlüsselwort ist ein Wort oder ein kurzer Ausdruck, mit dem ein Sprach-Ass
 
 Mit [Speech Studio](https://speech.microsoft.com/)können Sie ein benutzerdefiniertes Schlüsselwort für Ihren Sprach-Assistenten erstellen. Es dauert bis zu 30 Minuten, ein einfaches Modell für benutzerdefinierte Schlüsselwörter zu trainieren.
 
-Anweisungen zum Erstellen eines benutzerdefinierten Schlüsselworts finden Sie in der [Dokumentation zu Speech Studio](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-create-kws). Nach der Konfiguration steht das neue Schlüsselwort im Project Santa Cruz-Portal für die Verwendung mit dem Sprach-Assistenten zur Verfügung.
+Anweisungen zum Erstellen eines benutzerdefinierten Schlüsselworts finden Sie in der [Dokumentation zu Speech Studio](../cognitive-services/speech-service/custom-keyword-basics.md). Nach der Konfiguration steht das neue Schlüsselwort im Project Santa Cruz-Portal für die Verwendung mit dem Sprach-Assistenten zur Verfügung.
 
 ## <a name="commands-configuration"></a>Befehlskonfiguration
 
@@ -88,7 +88,7 @@ Mit benutzerdefinierten Befehlen ist es einfach, funktionsreiche Apps mit Sprach
 
 Mit [Speech Studio](https://speech.microsoft.com/) können Sie benutzerdefinierte Befehle erstellen, die vom Sprach-Assistenten ausgeführt werden sollen.
 
-Anweisungen zum Erstellen von benutzerdefinierten Befehlen finden Sie in der [Dokumentation zu Speech Studio](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-custom-commands-application). Nach der Konfiguration stehen Ihre neuen Befehle in Azure Percept Studio zur Verwendung mit dem Sprach-Assistenten zur Verfügung.
+Anweisungen zum Erstellen von benutzerdefinierten Befehlen finden Sie in der [Dokumentation zu Speech Studio](../cognitive-services/speech-service/quickstart-custom-commands-application.md). Nach der Konfiguration stehen Ihre neuen Befehle in Azure Percept Studio zur Verwendung mit dem Sprach-Assistenten zur Verfügung.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

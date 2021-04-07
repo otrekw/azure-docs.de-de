@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/01/2021
 ms.author: apimpm
 ms.openlocfilehash: 85abf30d792b24b92685e191f5b460a42dc29142
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101688415"
 ---
 # <a name="api-management-cross-domain-policies"></a>API Management cross domain policies (Domänenübergreifende API Management-Richtlinien)
@@ -51,7 +51,7 @@ Verwenden Sie die `cross-domain`-Richtlinie, um die API von browserbasierten Ado
 
 ### <a name="elements"></a>Elemente
 
-|Name|BESCHREIBUNG|Erforderlich|
+|Name|Beschreibung|Erforderlich|
 |----------|-----------------|--------------|
 |cross-domain|Stammelement Untergeordnete Elemente entsprechen der [Adobe-Dateispezifikation für domänenübergreifende Richtlinien](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html).|Ja|
 
@@ -125,7 +125,7 @@ In diesem Beispiel wird die Unterstützung von Preflightanforderungen veranschau
 
 ### <a name="elements"></a>Elemente
 
-|Name|BESCHREIBUNG|Erforderlich|Standard|
+|Name|Beschreibung|Erforderlich|Standard|
 |----------|-----------------|--------------|-------------|
 |cors|Stammelement|Ja|N/V|
 |allowed-origins|Enthält `origin`-Elemente, die die zulässigen Ursprünge für domänenübergreifende Anforderungen beschreiben. `allowed-origins` kann entweder ein einzelnes `origin`-Element enthalten, das `*` angibt, um einen beliebigen Ursprung zuzulassen, oder ein oder mehrere `origin`-Elemente, die einen URI enthalten.|Ja|N/V|
@@ -138,7 +138,7 @@ In diesem Beispiel wird die Unterstützung von Preflightanforderungen veranschau
 
 ### <a name="attributes"></a>Attributes
 
-|Name|BESCHREIBUNG|Erforderlich|Standard|
+|Name|Beschreibung|Erforderlich|Standard|
 |----------|-----------------|--------------|-------------|
 |allow-credentials|Der Header `Access-Control-Allow-Credentials` in der Preflightantwort wird auf den Wert dieses Attributs festgelegt und wirkt sich auf die Fähigkeit des Clients aus, Anmeldeinformationen in domänenübergreifenden Anforderungen zu senden.|Nein|false|
 |terminate-unmatched-request|Dieses Attribut steuert die Verarbeitung ursprungsübergreifender Anforderungen, die nicht den CORS-Richtlinieneinstellungen entsprechen. Wenn eine OPTIONS-Anforderung als Preflightanforderung verarbeitet wird und nicht den CORS-Richtlinieneinstellungen entspricht, gilt Folgendes: Ist das Attribut auf `true` festgelegt, wird die Anforderung sofort mit einer leeren Antwort vom Typ „200 OK“ beendet. Ist das Attribut auf `false` festgelegt, wird das eingehende Element auf andere CORS-Richtlinien im Gültigkeitsbereich überprüft, bei denen es sich um direkte untergeordnete Elemente des eingehenden Elements handelt, und sie werden angewendet.  Werden keine CORS-Richtlinien gefunden, wird die Anforderung mit einer leeren Antwort vom Typ „200 OK“ beendet. Wenn eine GET- oder HEAD-Anforderung den Ursprungsheader enthält (also als ursprungsübergreifende Anforderung verarbeitet wird) und nicht den CORS-Richtlinieneinstellungen entspricht, gilt Folgendes: Ist das Attribut auf `true` festgelegt, wird die Anforderung sofort mit einer leeren Antwort vom Typ „200 OK“ beendet. Ist das Attribut auf `false` festgelegt, wird die Anforderung normal verarbeitet, und der Antwort werden keine CORS-Header hinzugefügt.|Nein|true|
@@ -171,13 +171,13 @@ Mit dem Rückrufparameter `?cb=XXX` wird ein JSONP-Ergebnis zurückgegeben, und 
 
 ### <a name="elements"></a>Elemente
 
-|Name|BESCHREIBUNG|Erforderlich|
+|Name|Beschreibung|Erforderlich|
 |----------|-----------------|--------------|
 |jsonp|Stammelement|Ja|
 
 ### <a name="attributes"></a>Attributes
 
-|Name|BESCHREIBUNG|Erforderlich|Standard|
+|Name|Beschreibung|Erforderlich|Standard|
 |----------|-----------------|--------------|-------------|
 |callback-parameter-name|Der domänenübergreifende JavaScript-Funktionsaufruf mit dem vollqualifizierten Domänennamen, in dem die Funktion liegt, als Präfix.|Ja|–|
 

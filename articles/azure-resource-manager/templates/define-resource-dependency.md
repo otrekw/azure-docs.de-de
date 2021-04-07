@@ -4,10 +4,10 @@ description: Hier erfahren Sie, wie Sie während der Bereitstellung festlegen, d
 ms.topic: conceptual
 ms.date: 12/21/2020
 ms.openlocfilehash: f6b63b066da06a17c3a2e51ab0f3ab9bf521a144
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97934746"
 ---
 # <a name="define-the-order-for-deploying-resources-in-arm-templates"></a>Definieren der Reihenfolge für die Bereitstellung von Ressourcen in ARM-Vorlagen
