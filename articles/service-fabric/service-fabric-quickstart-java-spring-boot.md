@@ -1,14 +1,14 @@
 ---
-title: 'Schnellstart: Erstellen einer Spring Boot-App in Azure Service Fabric'
+title: 'Schnellstart: Erstellen einer Spring Boot-App in Azure Service Fabric'
 description: In diesem Schnellstart stellen Sie eine Spring Boot-Anwendung für Azure Service Fabric bereit, indem Sie eine Spring Boot-Beispielanwendung verwenden.
 ms.topic: quickstart
 ms.date: 01/29/2019
 ms.custom: mvc, devcenter, seo-java-august2019, seo-java-september2019, devx-track-java
 ms.openlocfilehash: 84ce5920af95113801f468e3149421f3b9bd8901
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91529999"
 ---
 # <a name="quickstart-deploy-a-java-spring-boot-app-on-azure-service-fabric"></a>Schnellstart: Bereitstellen einer Java Spring Boot-App in Azure Service Fabric
@@ -21,13 +21,13 @@ In dieser Schnellstartanleitung stellen Sie eine Java Spring Boot-Anwendung in A
 
 - [Java-Umgebung](./service-fabric-get-started-linux.md#set-up-java-development) und [Yeoman](./service-fabric-get-started-linux.md#set-up-yeoman-generators-for-containers-and-guest-executables)
 - [Service Fabric SDK und die Service Fabric-Befehlszeilenschnittstelle (Command Line Interface, CLI)](./service-fabric-get-started-linux.md#installation-methods)
-- [Git-Client](https://git-scm.com/downloads)
+- [Git](https://git-scm.com/downloads)
 
 #### <a name="macos"></a>[MacOS](#tab/macos)
 
 - [Java-Umgebung und Yeoman](./service-fabric-get-started-mac.md#create-your-application-on-your-mac-by-using-yeoman)
 - [Service Fabric SDK und die Service Fabric-Befehlszeilenschnittstelle (Command Line Interface, CLI)](./service-fabric-cli.md#cli-mac)
-- [Git-Client](https://git-scm.com/downloads)
+- [Git](https://git-scm.com/downloads)
 
 --- 
 
@@ -150,7 +150,7 @@ Service Fabric Explorer wird in allen Service Fabric-Clustern ausgeführt und ka
 Gehen Sie zum Skalieren des Web-Front-End-Diensts wie folgt vor:
 
 1. Öffnen Sie Service Fabric Explorer in Ihrem Cluster, z.B. `http://localhost:19080`.
-1. Klicken Sie in der Strukturansicht neben dem Knoten **fabric:/SpringServiceFabric/SpringGettingStarted** auf das Auslassungszeichen ( **...** ), und wählen Sie **Dienst skalieren** aus.
+1. Klicken Sie in der Strukturansicht neben dem Knoten **fabric:/SpringServiceFabric/SpringGettingStarted** auf das Auslassungszeichen (**...**), und wählen Sie **Dienst skalieren** aus.
 
     ![Service Fabric Explorer: Beispiel zur Dienstskalierung](./media/service-fabric-quickstart-java-spring-boot/service-fabric-explorer-scale-sample.png)
 
@@ -181,7 +181,7 @@ Mit dieser einfachen Verwaltungsaufgabe haben Sie die Ressourcen verdoppelt, die
 Zur Veranschaulichung eines Dienstfailovers wird unter Verwendung von Service Fabric Explorer ein Neustart des Knotens simuliert. Vergewissern Sie sich, dass nur eine einzelne Instanz des Diensts ausgeführt wird.
 
 1. Öffnen Sie Service Fabric Explorer in Ihrem Cluster, z.B. `http://localhost:19080`.
-1. Klicken Sie neben dem Knoten, auf dem die Instanz des Diensts ausgeführt wird, auf das Auslassungszeichen ( **...** ), und starten Sie den Knoten neu.
+1. Klicken Sie neben dem Knoten, auf dem die Instanz des Diensts ausgeführt wird, auf das Auslassungszeichen (**...**), und starten Sie den Knoten neu.
 
     ![Service Fabric Explorer: Neustarten des Knotens](./media/service-fabric-quickstart-java-spring-boot/service=fabric-explorer-restart=node.png)
 1. Die Instanz des Diensts wird auf einen anderen Knoten verschoben, und die Anwendung kann ohne Ausfallzeit weiter verwendet werden.

@@ -4,10 +4,10 @@ description: 'Schnellstart: Dieser Artikel enthält eine exemplarische Vorgehens
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.openlocfilehash: 59cd0d757108e7579ce389d216b0ee4d569e12fd
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87002453"
 ---
 # <a name="quickstart-send-events-to-or-receive-events-from-event-hubs-using-go"></a>Schnellstart: Senden von Ereignissen an oder Empfangen von Ereignissen aus Event Hubs mithilfe von Go
@@ -26,7 +26,7 @@ Zum Durchführen dieses Tutorials benötigen Sie Folgendes:
 - Ein aktives Azure-Konto. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto][] erstellen, bevor Sie beginnen.
 - **Erstellen Sie einen Event Hubs-Namespace und einen Event Hub**. Verwenden Sie das [Azure-Portal](https://portal.azure.com), um einen Namespace des Typs „Event Hubs“ zu erstellen, und rufen Sie die Verwaltungsanmeldeinformationen ab, die Ihre Anwendung für die Kommunikation mit dem Event Hub benötigt. Erstellen Sie anhand der Anleitung in [diesem Artikel](event-hubs-create.md) einen Namespace und einen Event Hub.
 
-## <a name="send-events"></a>Senden von Ereignisse
+## <a name="send-events"></a>Senden von Ereignissen
 In diesem Abschnitt erfahren Sie, wie Sie eine Go-Anwendung zum Senden von Ereignissen an einen Event Hub erstellen. 
 
 ### <a name="install-go-package"></a>Installieren des Go-Pakets
@@ -162,7 +162,7 @@ import (
 
 ### <a name="create-service-principal"></a>Erstellen eines Dienstprinzipals
 
-Erstellen Sie anhand der Anweisungen unter [Erstellen eines Azure-Dienstprinzipals mit Azure CLI 2.0](/cli/azure/create-an-azure-service-principal-azure-cli) einen neuen Dienstprinzipal. Speichern Sie die bereitgestellten Anmeldeinformationen in Ihrer Umgebung unter folgenden Namen: Sowohl das Azure SDK für Go als auch das Event Hubs-Paket sind vorkonfiguriert, um nach diesen Variablennamen zu suchen.
+Erstellen Sie anhand der Anweisungen unter [Erstellen eines Azure-Dienstprinzipals mit Azure CLI 2.0](/cli/azure/create-an-azure-service-principal-azure-cli) einen neuen Dienstprinzipal. Speichern Sie die bereitgestellten Anmeldeinformationen mit den folgenden Namen in Ihrer Umgebung. Sowohl das Azure SDK für Go als auch das Event Hubs-Paket sind so konfiguriert, dass nach diesen Variablennamen gesucht wird:
 
 ```bash
 export AZURE_CLIENT_ID=

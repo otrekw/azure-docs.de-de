@@ -7,10 +7,10 @@ ms.date: 02/28/2020
 ms.author: gopalv
 ms.custom: devx-track-python, devx-track-azurepowershell
 ms.openlocfilehash: 8891c29e5d8d06df6292d06ec06e5e57fb9880e7
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93422840"
 ---
 # <a name="tutorial-deploy-a-pre-trained-image-classification-model-to-azure-functions-with-pytorch"></a>Tutorial: Bereitstellen eines vortrainierten Bildklassifizierungsmodells für Azure Functions mit PyTorch
@@ -49,14 +49,14 @@ In diesem Artikel erfahren Sie, wie Sie Python, PyTorch und Azure Functions verw
     cd functions-python-pytorch-tutorial
     ```
 
-    - *start* : Dies ist der Arbeitsordner für das Tutorial.
-    - *end* : Dies ist das Endergebnis und die vollständige Implementierung zu Referenzzwecken.
-    - *resources* : Enthält das Machine Learning-Modell und Hilfsbibliotheken.
-    - *frontend* : Eine Website, über die die Funktions-App aufgerufen wird.
+    - *start*: Dies ist der Arbeitsordner für das Tutorial.
+    - *end*: Dies ist das Endergebnis und die vollständige Implementierung zu Referenzzwecken.
+    - *resources*: Enthält das Machine Learning-Modell und Hilfsbibliotheken.
+    - *frontend*: Eine Website, über die die Funktions-App aufgerufen wird.
 
 ## <a name="create-and-activate-a-python-virtual-environment"></a>Erstellen und Aktivieren einer virtuellen Python-Umgebung
 
-Navigieren Sie zum Ordner *start* , und führen Sie die folgenden Befehle aus, um eine virtuelle Umgebung mit dem Namen `.venv` zu erstellen und zu aktivieren.
+Navigieren Sie zum Ordner *start*, und führen Sie die folgenden Befehle aus, um eine virtuelle Umgebung mit dem Namen `.venv` zu erstellen und zu aktivieren.
 
 
 # <a name="bash"></a>[Bash](#tab/bash)
@@ -104,7 +104,7 @@ In Azure Functions handelt es sich bei einem Funktionsprojekt um einen Container
     func init --worker-runtime python
     ```
 
-    Nach der Initialisierung enthält der Ordner *start* verschiedene Dateien für das Projekt, z. B. die Konfigurationsdateien [local.settings.json](functions-run-local.md#local-settings-file) und [host.json](functions-host-json.md). Da *local.settings.json* aus Azure heruntergeladene Geheimnisse enthalten kann, wird die Datei in der *GITIGNORE* -Datei standardmäßig aus der Quellcodeverwaltung ausgeschlossen.
+    Nach der Initialisierung enthält der Ordner *start* verschiedene Dateien für das Projekt, z. B. die Konfigurationsdateien [local.settings.json](functions-run-local.md#local-settings-file) und [host.json](functions-host-json.md). Da *local.settings.json* aus Azure heruntergeladene Geheimnisse enthalten kann, wird die Datei in der *GITIGNORE*-Datei standardmäßig aus der Quellcodeverwaltung ausgeschlossen.
 
     > [!TIP]
     > Da ein Funktionsprojekt an eine bestimmte Runtime gebunden ist, müssen alle Funktionen des Projekts in derselben Sprache geschrieben werden.
@@ -128,7 +128,7 @@ In Azure Functions handelt es sich bei einem Funktionsprojekt um einen Container
 
 1. Navigieren Sie zur URL ```http://localhost:7071/api/classify?name=Azure```, nachdem in der Ausgabe der `classify`-Endpunkt angezeigt wird. Die Meldung „Hello Azure!“ sollte in der Ausgabe angezeigt werden.
 
-1. Verwenden Sie **STRG**-**C** , um den Host zu beenden.
+1. Verwenden Sie **STRG**-**C**, um den Host zu beenden.
 
 
 ## <a name="import-the-pytorch-model-and-add-helper-code"></a>Importieren des PyTorch-Modells und Hinzufügen von Hilfscode
@@ -172,7 +172,7 @@ Um die Funktion `classify` für die Klassifizierung eines Bilds auf der Grundlag
     torchvision==0.6.0+cpu
     ```
 
-1. Speichern Sie *requirements.txt* , und führen Sie anschließend im Ordner *start* den folgenden Befehl aus, um die Abhängigkeiten zu installieren:
+1. Speichern Sie *requirements.txt*, und führen Sie anschließend im Ordner *start* den folgenden Befehl aus, um die Abhängigkeiten zu installieren:
 
 
     ```
@@ -185,7 +185,7 @@ Die Installation kann einige Minuten dauern. Während dieses Vorgangs können Si
 
 ## <a name="update-the-function-to-run-predictions"></a>Aktualisieren der Funktion zum Durchführen von Vorhersagen
 
-1. Öffnen Sie *classify/\_\_init\_\_.py* in einem Text-Editor, und fügen Sie nach den vorhandenen `import`-Anweisungen die folgenden Zeilen hinzu, um die JSON-Standardbibliothek und die *predict* -Hilfsmethoden zu importieren:
+1. Öffnen Sie *classify/\_\_init\_\_.py* in einem Text-Editor, und fügen Sie nach den vorhandenen `import`-Anweisungen die folgenden Zeilen hinzu, um die JSON-Standardbibliothek und die *predict*-Hilfsmethoden zu importieren:
 
     :::code language="python" source="~/functions-pytorch/end/classify/__init__.py" range="1-6" highlight="5-6":::
 

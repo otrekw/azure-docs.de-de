@@ -11,10 +11,10 @@ ms.topic: include
 ms.reviewer: hux
 ms.custom: include file
 ms.openlocfilehash: a369eb7000fb8622a69f4205ffcc232ae9c9d242
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95545929"
 ---
 Wenn Sie Daten aus dem Archivspeicher lesen möchten, müssen Sie zuerst die Ebene des Blobs in „Hot“ oder „Cool“ ändern. Dieser Prozess wird als Aktivierung bezeichnet und kann mehrere Stunden dauern. Wir empfehlen die Verwendung großer Blobs, um eine optimale Aktivierungsleistung zu erzielen. Die Dauer kann sich ggf. erhöhen, wenn mehrere kleine Blobs gleichzeitig aktiviert werden. Derzeit stehen zwei Aktivierungsprioritäten zur Verfügung: „Hohe Priorität“ und „Standardpriorität“. Diese können über die optionale Eigenschaft *x-ms-rehydrate-priority* bei Vorgängen vom Typ [Blobtarif festlegen](/rest/api/storageservices/set-blob-tier) oder [Blob kopieren](/rest/api/storageservices/copy-blob) festgelegt werden.

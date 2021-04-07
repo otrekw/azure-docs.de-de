@@ -1,5 +1,5 @@
 ---
-title: 'Über die CLI: Wiederherstellen einer App aus einem Backup'
+title: 'CLI: Wiederherstellen einer App aus einem Backup'
 description: Hier erfahren Sie, wie Sie die Azure CLI zum Automatisieren der Bereitstellung und Verwaltung Ihrer App Service-App verwenden. In diesem Beispiel wird gezeigt, wie eine App auf der Grundlage einer Sicherung wiederhergestellt wird.
 author: msangapu-msft
 tags: azure-service-management
@@ -10,10 +10,10 @@ ms.author: msangapu
 ms.reviewer: cephalin
 ms.custom: mvc, seodec18
 ms.openlocfilehash: a8b7d20c3eee57d10a7025b05605603f82437cdb
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97006413"
 ---
 # <a name="restore-a-web-app-from-a-backup-using-cli"></a>Wiederherstellen einer Web-App aus einem Backup mithilfe der CLI

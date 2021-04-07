@@ -4,10 +4,10 @@ ms.topic: include
 ms.custom: include file
 ms.date: 5/17/2020
 ms.openlocfilehash: 79a45825be66b44d869ef741917436de87a1f5d0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "83653216"
 ---
 Informieren Sie sich über [Konzepte](../luis-concept-utterance.md#utterance-normalization-for-diacritics-and-punctuation) der Normalisierung, und erfahren Sie, wie Sie [Versions](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings)-APIs verwenden, um diese Einstellungen zu aktualisieren, oder verwenden Sie im LUIS-Portal den Abschnitt **Verwalten** auf der Seite **Einstellungen**.

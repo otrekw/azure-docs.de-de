@@ -1,5 +1,5 @@
 ---
-title: 'Mit PowerShell: Erstellen einer geplanten Sicherung'
+title: 'PowerShell: Erstellen einer geplanten Sicherung'
 description: Hier erfahren Sie, wie Sie mit Azure PowerShell die Bereitstellung und Verwaltung von App Service automatisieren. In diesem Beispiel wird das Erstellen einer geplanten Sicherung für eine App veranschaulicht.
 author: msangapu-msft
 tags: azure-service-management
@@ -9,10 +9,10 @@ ms.date: 10/30/2017
 ms.author: msangapu
 ms.custom: mvc, seodec18, devx-track-azurepowershell
 ms.openlocfilehash: c53872973dad3d438d0d948c4eaebaf0cb7ba4de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89075887"
 ---
 # <a name="create-a-scheduled-backup-for-a-web-app-using-powershell"></a>Erstellen einer geplanten Sicherung für eine Web-App mit PowerShell

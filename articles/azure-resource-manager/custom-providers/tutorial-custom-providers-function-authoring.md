@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 01/13/2021
 ms.author: jobreen
 ms.openlocfilehash: 54d0df287865d5d92403bf68227a2d4c5faa8bb4
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98200208"
 ---
 # <a name="author-a-restful-endpoint-for-custom-providers"></a>Erstellen eines RESTful-Endpunkts für benutzerdefinierte Anbieter
@@ -23,11 +23,11 @@ Ein benutzerdefinierter Anbieter ist ein Vertrag zwischen Azure und einem Endpun
 
 In diesem Tutorial aktualisieren Sie die Funktions-App, sodass sie als RESTful-Endpunkt für Ihren benutzerdefinierten Anbieter verwendet werden kann. Ressourcen und Aktionen in Azure werden basierend auf der grundlegenden RESTful-Spezifikation modelliert:
 
-- **PUT**: Neue Ressource erstellen
-- **GET (Instanz)** : Vorhandene Ressource abrufen
-- **DELETE**: Vorhandene Ressource löschen
-- **POST**: Aktion auslösen
-- **GET (Sammlung)** : Alle vorhandenen Ressourcen auflisten
+- **PUT**: Erstellen einer neuen Ressource
+- **GET (Instanz)** : Abrufen einer vorhandenen Ressource
+- **DELETE**: Entfernen einer vorhandenen Ressource
+- **POST**: Auslösen einer Aktion
+- **GET (Sammlung)** : Auflisten aller vorhandenen Ressourcen
 
  In diesem Tutorial wird Azure-Tabellenspeicher verwendet. Es kann aber auch ein anderer Datenbank- oder Speicherdienst verwendet werden.
 
@@ -370,4 +370,4 @@ Sollten Sie an einem Punkt in diesem Tutorial nicht mehr weiterkommen, finden Si
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie einen RESTful-Endpunkt erstellt, der als Azure-Endpunkt für einen benutzerdefinierten Anbieter verwendet werden kann. Im folgenden Artikel erfahren Sie, wie Sie einen benutzerdefinierten Anbieter erstellen: [Tutorial: Erstellen eines RESTful-Endpunkts für benutzerdefinierte Anbieter](./tutorial-custom-providers-create.md).
+In diesem Artikel haben Sie einen RESTful-Endpunkt erstellt, der als Azure-Endpunkt für einen benutzerdefinierten Anbieter verwendet werden kann. Informationen zum Erstellen eines benutzerdefinierten Anbieters finden Sie im Artikel [Erstellen und Verwenden eines benutzerdefinierten Anbieters](./tutorial-custom-providers-create.md).

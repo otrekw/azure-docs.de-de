@@ -9,15 +9,15 @@ ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
 ms.openlocfilehash: f45c3def84c548ba12221efa59e9ebbd4699df71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91316068"
 ---
-# <a name="tutorial-configure-cloud-resources-for-device-provisioning-with-the-iot-hub-device-provisioning-service"></a>Tutorial: Konfigurieren von Cloudressourcen für die Gerätebereitstellung mit dem IoT Hub Device Provisioning-Dienst
+# <a name="tutorial-configure-cloud-resources-for-device-provisioning-with-the-iot-hub-device-provisioning-service"></a>Tutorial: Konfigurieren von Cloudressourcen für die Gerätebereitstellung mit IoT Hub Device Provisioning Service
 
-In diesem Tutorial wird gezeigt, wie die Cloud für die automatische Gerätebereitstellung mithilfe des IoT Hub Device Provisioning-Diensts eingerichtet wird. In diesem Tutorial lernen Sie Folgendes:
+In diesem Tutorial wird gezeigt, wie die Cloud für die automatische Gerätebereitstellung mithilfe des IoT Hub Device Provisioning-Diensts eingerichtet wird. In diesem Tutorial lernen Sie, wie die folgenden Aufgaben ausgeführt werden:
 
 > [!div class="checklist"]
 > * Erstellen eines IoT Hub Device Provisioning-Diensts und Abrufen des ID-Bereichs mit dem Azure-Portal
@@ -43,7 +43,7 @@ Führen Sie zum Erstellen einer neuen Device Provisioning-Dienstinstanz folgende
 
 4. Geben Sie in das Formular **IoT Hub Device Provisioning-Dienst** folgende Informationen ein:
     
-   | Einstellung       | Vorgeschlagener Wert | Beschreibung | 
+   | Einstellung       | Vorgeschlagener Wert | BESCHREIBUNG | 
    | ------------ | ------------------ | ------------------------------------------------- | 
    | **Name** | Ein beliebiger eindeutiger Name | -- | 
    | **Abonnement** | Ihr Abonnement  | Ausführliche Informationen zu Ihren Abonnements finden Sie unter [Abonnements](https://account.windowsazure.com/Subscriptions). |
@@ -70,7 +70,7 @@ Sie haben nun Ihren IoT-Hub erstellt und verfügen über den Hostnamen und die I
 
 ## <a name="link-the-device-provisioning-service-to-an-iot-hub"></a>Verknüpfen des Device Provisioning-Diensts mit einer IoT Hub-Instanz
 
-Der nächste Schritt besteht darin, den Device Provisioning-Dienst und IoT Hub zu verknüpfen, damit der IoT Hub Device Provisioning-Dienst bei diesem Hub Geräte registrieren kann. Der Dienst kann nur Geräte mit IoT Hubs bereitstellen, die mit dem Device Provisioning-Dienst verknüpft wurden. Führen Sie folgende Schritte durch:
+Der nächste Schritt besteht darin, den Device Provisioning-Dienst und IoT Hub zu verknüpfen, damit der IoT Hub Device Provisioning-Dienst bei diesem Hub Geräte registrieren kann. Der Dienst kann nur Geräte mit IoT Hubs bereitstellen, die mit dem Device Provisioning-Dienst verknüpft wurden. Führen Sie die folgenden Schritte aus.
 
 1. Klicken Sie auf der Seite **Alle Ressourcen** auf die Device Provisioning-Dienstinstanz, die Sie zuvor erstellt haben.
 
@@ -82,7 +82,7 @@ Der nächste Schritt besteht darin, den Device Provisioning-Dienst und IoT Hub z
 
     * **Abonnement:** Stellen Sie sicher, dass das Abonnement mit der IoT Hub-Instanz ausgewählt ist. Sie können eine Verknüpfung mit einer IoT Hub-Instanz erstellen, die in einem anderen Abonnement enthalten ist.
 
-    * **IoT Hub**: Wählen Sie den Namen der IoT Hub-Instanz aus, die Sie mit dieser Device Provisioning-Dienst-Instanz verknüpfen möchten.
+    * **IoT Hub:** Wählen Sie den Namen der IoT Hub-Instanz aus, die Sie mit dieser Device Provisioning Service-Instanz verknüpfen möchten.
 
     * **Zugriffsrichtlinie:** Wählen Sie **iothubowner** als Anmeldeinformationen zum Erstellen der Verknüpfung mit der IoT Hub-Instanz aus.
 
@@ -90,13 +90,13 @@ Der nächste Schritt besteht darin, den Device Provisioning-Dienst und IoT Hub z
 
 ## <a name="set-the-allocation-policy-on-the-device-provisioning-service"></a>Festlegen der Zuordnungsrichtlinie im Device Provisioning-Dienst
 
-Die Zuordnungsrichtlinie ist eine Einstellung des IoT Hub Device Provisioning-Diensts, die festlegt, wie Geräte einer IoT Hub-Instanz zugewiesen werden. Es gibt drei unterstützte Zuordnungsrichtlinien: 
+Die Zuordnungsrichtlinie ist eine Einstellung des IoT Hub Device Provisioning-Diensts, die festlegt, wie Geräte einer IoT Hub-Instanz zugewiesen werden. Es gibt drei unterstützte Zuordnungsrichtlinien: 
 
 1. **Niedrigste Latenz**: Geräte werden basierend auf dem Hub mit der geringsten Latenz auf dem Gerät für eine IoT Hub-Instanz bereitgestellt.
 
-2. **Gleichmäßig gewichtete Verteilung** (Standard): Bei verknüpften IoT Hubs ist die Wahrscheinlichkeit gleich hoch, dass Geräte für sie bereitgestellt werden. Dies ist die Standardeinstellung. Wenn Sie nur für eine IoT Hub-Instanz Geräte bereitstellen, können Sie diese Einstellung beibehalten. 
+2. **Gleichmäßig gewichtete Verteilung** (Standard): Bei verknüpften IoT Hubs ist die Wahrscheinlichkeit gleich hoch, dass ihnen Geräte bereitgestellt werden. Dies ist die Standardeinstellung. Wenn Sie nur für eine IoT Hub-Instanz Geräte bereitstellen, können Sie diese Einstellung beibehalten. 
 
-3. **Statische Konfiguration per Registrierungsliste**: Die Angabe der gewünschten IoT Hub-Instanz in der Registrierungsliste hat gegenüber der Zuordnungsrichtlinie auf Ebene des Device Provisioning-Diensts Vorrang.
+3. **Statische Konfiguration über die Registrierungsliste**: Die Angabe der gewünschten IoT Hub-Instanz in der Registrierungsliste hat gegenüber der Zuordnungsrichtlinie auf Ebene des Device Provisioning-Diensts Vorrang.
 
 Klicken Sie zum Festlegen der Zuordnungsrichtlinie auf der Seite „Device Provisioning-Dienst“ auf **Zuordnungsrichtlinie verwalten**. Stellen Sie sicher, dass die Zuordnungsrichtlinie auf **Gleichmäßig gewichtete Verteilung** (Standard) festgelegt ist. Wenn Sie Änderungen vornehmen, klicken Sie danach auf **Speichern**.
 
@@ -112,7 +112,7 @@ Andere Tutorials in dieser Sammlung bauen auf diesem Tutorial auf. Wenn Sie plan
  
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie Folgendes gelernt:
+In diesem Tutorial haben Sie gelernt, wie die folgenden Aufgaben ausgeführt werden:
 
 > [!div class="checklist"]
 > * Erstellen eines IoT Hub Device Provisioning-Diensts und Abrufen des ID-Bereichs mit dem Azure-Portal
