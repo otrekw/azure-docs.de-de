@@ -159,7 +159,7 @@ In diesem Abschnitt erstellen Sie einen verknüpften Databricks-Dienst. Dieser v
            ```
            # Creating widgets for leveraging parameters, and printing the parameters
 
-           dbutils.widgets.text("input", "","")
+           dbutils.widgets.text("input&quot;, &quot;&quot;,&quot;")
            y = dbutils.widgets.get("input")
            print ("Param -\'input':")
            print (y)

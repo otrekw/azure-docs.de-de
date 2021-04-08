@@ -7,18 +7,18 @@ ms.service: azure-percept
 ms.topic: tutorial
 ms.date: 02/17/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 3c5e6fd62e4f4db9ccc1306d32d09b8338cbf963
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 76333e11916641be71c72ce6142cd59b496a17e9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102098025"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105023162"
 ---
 # <a name="create-a-voice-assistant-with-azure-percept-dk-and-azure-percept-audio"></a>Erstellen eines Sprach-Assistenten mit Azure Percept DK und Azure Percept-Audio
 
 In diesem Tutorial erstellen Sie einen Sprach-Assistenten aus einer Vorlage, den Sie für Ihr Azure Percept DK und für Azure Percept-Audio verwenden können. Die Demo für den Sprach-Assistenten wird in [Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819) ausgeführt und enthält eine Auswahl virtueller Objekte, die per Sprache gesteuert werden. Sagen Sie Ihr Schlüsselwort, um ein Objekt zu steuern. Beim Schlüsselwort handelt es sich um ein Wort oder einen kurzen Ausdruck, mit dem Sie Ihr Gerät aufwecken, gefolgt von einem Befehl. Jede Vorlage reagiert auf verschiedene spezifische Befehle.
 
-In diesem Leitfaden wird Schritt für Schritt der Prozess zum Einrichten Ihrer Geräte, Erstellen eines Sprach-Assistenten und der benötigten Ressourcen für [Speech-Dienste](https://docs.microsoft.com/azure/cognitive-services/speech-service/overview), Testen des Sprach-Assistenten, Konfigurieren Ihres Schlüsselworts und Erstellen von benutzerdefinierten Schlüsselwörtern beschrieben.
+In diesem Leitfaden wird Schritt für Schritt der Prozess zum Einrichten Ihrer Geräte, Erstellen eines Sprach-Assistenten und der benötigten Ressourcen für [Speech-Dienste](../cognitive-services/speech-service/overview.md), Testen des Sprach-Assistenten, Konfigurieren Ihres Schlüsselworts und Erstellen von benutzerdefinierten Schlüsselwörtern beschrieben.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -172,7 +172,7 @@ Nachdem Sie einen benutzerdefinierten Befehl erstellt haben, müssen Sie für di
 
     :::image type="content" source="./media/tutorial-no-code-speech/speech-studio.png" alt-text="Screenshot: Startseite von Speech Studio":::
 
-Weitere Informationen zur Entwicklung von benutzerdefinierten Befehlen finden Sie in der [Dokumentation zum Speech-Dienst](https://docs.microsoft.com/azure/cognitive-services/speech-service/custom-commands).
+Weitere Informationen zur Entwicklung von benutzerdefinierten Befehlen finden Sie in der [Dokumentation zum Speech-Dienst](../cognitive-services/speech-service/custom-commands.md).
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
