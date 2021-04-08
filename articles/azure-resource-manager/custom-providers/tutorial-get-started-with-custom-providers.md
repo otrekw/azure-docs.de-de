@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 06/19/2019
 ms.author: jobreen
 ms.openlocfilehash: 45f18727b53b802ba746da41b47fe955543ed9d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "75648547"
 ---
 # <a name="create-custom-actions-and-resources-in-azure"></a>Erstellen von benutzerdefinierten Aktionen und Ressourcen in Azure
@@ -40,10 +40,10 @@ In Teil 3 dieses Tutorials wird beschrieben, wie Sie einen benutzerdefinierten 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial wurden benutzerdefinierte Anbieter und deren Erstellung beschrieben. Fahren Sie mit dem nächsten Tutorial fort: [Tutorial: Einrichten von Azure-Funktionen für benutzerdefinierte Azure-Anbieter](./tutorial-custom-providers-function-setup.md).
+In diesem Tutorial wurden benutzerdefinierte Anbieter und deren Erstellung beschrieben. Sehen Sie sich das nächste Tutorial unter [Einrichten von Azure-Funktionen für benutzerdefinierte Azure-Anbieter](./tutorial-custom-providers-function-setup.md) an.
 
 Hier sind einige nützliche Links zu Referenzen und Schnellstartanleitungen:
 
-- [Schnellstart: Erstellen eines benutzerdefinierten Azure-Ressourcenanbieters und Bereitstellen benutzerdefinierter Ressourcen](./create-custom-provider.md)
+- [Schnellstart: Erstellen eines benutzerdefinierten Anbieters und Bereitstellen von benutzerdefinierten Ressourcen](./create-custom-provider.md)
 - [Vorgehensweise: Hinzufügen benutzerdefinierter Aktionen zur Azure-REST-API](./custom-providers-action-endpoint-how-to.md)
-- [Vorgehensweise: Hinzufügen benutzerdefinierter Ressourcen zur Azure-REST-API](./custom-providers-resources-endpoint-how-to.md)
+- [Hinzufügen benutzerdefinierter Ressourcen zur Azure-REST-API](./custom-providers-resources-endpoint-how-to.md)

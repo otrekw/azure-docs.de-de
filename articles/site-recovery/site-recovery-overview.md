@@ -5,10 +5,10 @@ ms.topic: overview
 ms.date: 03/17/2020
 ms.custom: MVC
 ms.openlocfilehash: 19860e64182cd73fe9f9fa1246f440a03109d465
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92281883"
 ---
 # <a name="about-site-recovery"></a>Informationen zu Azure Site Recovery
@@ -19,13 +19,13 @@ Organisationen benötigen eine BCDR-Strategie (Business Continuity and Disaster 
 
 Azure Recovery Services unterstützt Sie bei Ihrer BCDR-Strategie:
 
-- **Site Recovery-Dienst**: Site Recovery sorgt dafür, dass geschäftliche Apps und Workloads während Ausfällen weiter ausgeführt werden, und trägt so zur Aufrechterhaltung der Geschäftskontinuität bei. Site Recovery repliziert Workloads, die auf physischen und virtuellen Computern ausgeführt werden, von einem primären Standort an einen sekundären Standort. Im Falle eines Ausfalls am primären Standort können Sie ein Failover auf den sekundären Standort ausführen und von dort aus auf die Apps zugreifen. Wenn der primäre Standort dann wieder verfügbar ist, können Sie ein Failback ausführen.
-- **Backup-Dienst**: Mit dem [Azure Backup](../backup/index.yml)-Dienst sind Ihre Daten geschützt und wiederherstellbar.
+- **Site Recovery-Dienst:** Site Recovery sorgt dafür, dass geschäftliche Apps und Workloads während Ausfällen weiter ausgeführt werden, und trägt so zur Aufrechterhaltung der Geschäftskontinuität bei. Site Recovery repliziert Workloads, die auf physischen und virtuellen Computern ausgeführt werden, von einem primären Standort an einen sekundären Standort. Im Falle eines Ausfalls am primären Standort können Sie ein Failover auf den sekundären Standort ausführen und von dort aus auf die Apps zugreifen. Wenn der primäre Standort dann wieder verfügbar ist, können Sie ein Failback ausführen.
+- **Backup-Dienst:** Mit dem [Azure Backup](../backup/index.yml)-Dienst sind Ihre Daten geschützt und wiederherstellbar.
 
 Site Recovery kann die Replikation für folgende Bereiche verwalten:
 
 - Replikation von virtuellen Azure-Computern zwischen Azure-Regionen
-- Lokale virtuelle Computer, virtuelle Azure Stack-Computer und physische Server
+- Lokale VMs, Azure Stack-VMs und physische Server.
 
 ## <a name="what-does-site-recovery-provide"></a>Was bietet Site Recovery?
 
@@ -52,7 +52,7 @@ Site Recovery kann die Replikation für folgende Bereiche verwalten:
 **Replikationsszenarien** | Replizieren Sie virtuelle Azure-Computer aus einer Azure-Region in eine andere.<br/><br/>  Replizieren Sie lokale virtuelle VMware-Computer, virtuelle Hyper-V-Computer, physische Server (Windows und Linux) und virtuelle Azure Stack-Computer in Azure.<br/><br/> Replizieren Sie AWS-Windows-Instanzen nach Azure.<br/><br/> Replizieren Sie lokale virtuelle VMware-Computer, von System Center VMM verwaltete virtuelle Hyper-V-Computer und physische Server an einem sekundären Standort.
 **Regionen** | Informationen zu unterstützten Regionen für Site Recovery finden Sie [hier](https://azure.microsoft.com/global-infrastructure/services/?products=site-recovery). |
 **Replizierte Computer** | Überprüfen Sie die Replikationsanforderungen für die Replikation von [Azure-VMs](azure-to-azure-support-matrix.md#replicated-machine-operating-systems), [lokale VMware-VMs und physische Server](vmware-physical-azure-support-matrix.md#replicated-machines) sowie [lokale Hyper-V-VMs](hyper-v-azure-support-matrix.md#replicated-vms).
-**Workloads** | Sie können jede Workload replizieren, die auf einem für die Replikation geeigneten Computer ausgeführt wird. Darüber hinaus hat das Site Recovery-Team App-spezifische Tests für [einige Apps](site-recovery-workload.md#workload-summary) durchgeführt.
+**Workloads (Arbeitslasten)** | Sie können jede Workload replizieren, die auf einem für die Replikation geeigneten Computer ausgeführt wird. Darüber hinaus hat das Site Recovery-Team App-spezifische Tests für [einige Apps](site-recovery-workload.md#workload-summary) durchgeführt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

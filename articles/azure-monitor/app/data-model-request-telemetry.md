@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.reviewer: sergkanz
 ms.openlocfilehash: 7a352f4ce3528d395599a91b53031c74b0873152
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87320560"
 ---
 # <a name="request-telemetry-application-insights-data-model"></a>Anforderungstelemetrie: Application Insights-Datenmodell
@@ -43,7 +43,7 @@ Die Quelle der Anforderung. Beispiele sind der Instrumentierungsschlüssel des A
 
 Maximale Länge: 1.024 Zeichen
 
-## <a name="duration"></a>Dauer (Duration)
+## <a name="duration"></a>Duration
 
 Dauer der Anforderung im Format `DD.HH:MM:SS.MMMMMM`. Muss positiv sein und unter `1000` Tagen liegen. Dieses Feld ist erforderlich, da die Anforderungstelemetrie den Vorgang mit dem Beginn und dem Ende darstellt.
 
@@ -53,7 +53,7 @@ Das Ergebnis einer Anforderungsausführung. HTTP-Statuscode für HTTP-Anforderun
 
 Maximale Länge: 1.024 Zeichen
 
-## <a name="success"></a>Vorgang erfolgreich
+## <a name="success"></a>Erfolg
 
 Angabe eines erfolgreichen oder fehlgeschlagenen Aufrufs. Dieses Feld ist erforderlich. Wenn der Wert nicht explizit auf `false` festgelegt ist, gilt eine Anforderung als erfolgreich. Legen Sie diesen Wert auf `false` fest, wenn der Vorgang durch eine Ausnahme unterbrochen oder ein Fehlerergebniscode zurückgegeben wurde.
 

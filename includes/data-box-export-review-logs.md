@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 06/19/2020
 ms.author: alkohli
 ms.openlocfilehash: 526b3ad89e128d264b5d14d8cc87d9a81d431a9c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86208826"
 ---
 Vor dem Datenkopiervorgang:
@@ -90,5 +90,5 @@ Vor dem Datenkopiervorgang:
 
     Sie haben die folgenden Möglichkeiten, um diese Dateien zu exportieren: 
 
-    - Sie können die Dateien, die nicht kopiert werden konnten, über das Netzwerk übertragen. 
+    - Sie können die Dateien übertragen, die nicht über das Netzwerk kopiert werden konnten. 
     - Wenn die Datengröße über der verwendbaren Gerätekapazität liegt, wird eine Teilkopie erstellt und alle Dateien, die nicht kopiert wurden, werden in diesem Protokoll aufgeführt. Sie können dieses Protokoll als Eingabe-XML-Code verwenden, um einen neuen Data Box-Auftrag zu erstellen und diese Dateien anschließend zu kopieren.

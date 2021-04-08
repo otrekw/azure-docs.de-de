@@ -7,10 +7,10 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 07/01/2019
 ms.openlocfilehash: 80458d99ed6ad19c8a837f0989798d4dcc156b61
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92219529"
 ---
 # <a name="tutorial-make-network-connections-and-supply-power-to-the-azure-fxt-edge-filer-node"></a>Tutorial: Herstellen von Netzwerkverbindungen und Stromversorgung für den Azure FXT Edge Filer-Knoten
@@ -166,4 +166,4 @@ Das System kann bei Tests sowie vor dem Hinzufügen zu einem Cluster über den N
 
 Nachdem Sie die Hardware vollständig verkabelt haben, können Sie die einzelnen Knoten einschalten und ihre Stammkennwörter festlegen, um sie zu initialisieren.
 > [!div class="nextstepaction"]
-> [Tutorial: Set hardware passwords](fxt-node-password.md) (Tutorial: Festlegen von Hardwarekennwörtern)
+> [Festlegen anfänglicher Kennwörter](fxt-node-password.md)

@@ -10,10 +10,10 @@ ms.custom: include file
 author: mingshen-ms
 ms.author: mingshen
 ms.openlocfilehash: 7709f26b30d41b932569227b8b6f05b5725dc98f
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88815662"
 ---
 Wenn Sie Ihr Angebot über Partner Center im kommerziellen Marketplace veröffentlichen, müssen Sie das Angebot mit Ihrem CRM-System verbinden. So können Sie Kundenkontaktinformationen unverzüglich erhalten, wenn ein Kunde Interesse bekundet oder Ihr Produkt bereitstellt.
