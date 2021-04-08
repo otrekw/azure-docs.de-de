@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 601e5cf15c47b16c53ff9ca81a56cb613bcfc3f5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96006558"
 ---
 # <a name="tutorial-use-the-data-copy-service-to-copy-data-into-azure-data-box-heavy-preview"></a>Tutorial: Kopieren von Daten auf Azure Data Box Heavy (Vorschauversion) mithilfe des Datenkopierdiensts
@@ -33,7 +33,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Stellen Sie Folgendes sicher, bevor Sie beginnen:
 
-1. Sie haben das folgende Tutorial abgeschlossen: [Verkabeln und Herstellen der Verbindung mit Azure Data Box Heavy (Vorschauversion)](data-box-heavy-deploy-set-up.md).
+1. Sie haben das folgende Tutorial abgeschlossen: [Tutorial: Verkabeln und Herstellen einer Verbindung mit Azure Data Box Heavy](data-box-heavy-deploy-set-up.md).
 2. Sie haben Ihr Data Box Heavy-Gerät erhalten, und der Auftrag wird im Portal mit dem Status **Geliefert** angezeigt.
 3. Sie verfügen über die Anmeldeinformationen des NAS-Quellgeräts, mit dem Sie eine Verbindung für den Datenkopiervorgang herstellen.
 4. Sie verfügen über eine Verbindung mit einem Hochgeschwindigkeitsnetzwerk. Zur Erzielung der höchstmöglichen Kopiergeschwindigkeit können zwei 40-GbE-Verbindungen (jeweils eine pro Knoten) parallel genutzt werden. Falls Sie über keine 40-GbE-Verbindung verfügen, sollten Sie zwei Verbindungen mit mindestens 10 GbE verwenden (jeweils eine pro Knoten). 
