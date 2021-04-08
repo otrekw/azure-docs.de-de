@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Konfigurieren von Insight4GRC für die automatische Benutzerbereitstellung in Azure Active Directory | Microsoft-Dokumentation'
+title: 'Tutorial: Konfigurieren von Insight4GRC für die automatische Benutzerbereitstellung mit Azure Active Directory | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie Benutzerkonten aus Azure AD für Insight4GRC automatisch bereitstellen und die Bereitstellung wieder aufheben.
 services: active-directory
 author: Zhchia
@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/04/2020
 ms.author: Zhchia
 ms.openlocfilehash: 7d5904461d642f47e691d0a1aaa1f1faf439df1f
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96178142"
 ---
 # <a name="tutorial-configure-insight4grc-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Insight4GRC für die automatische Benutzerbereitstellung
@@ -51,7 +51,7 @@ Bevor Sie Insight4GRC für die automatische Benutzerbereitstellung mit Azure AD
 1. Um das Bearertoken zu erhalten, muss sich der Endkunde an das [Supportteam](mailto:support.ss@rsmuk.com) wenden.
 2. Zum Abrufen der SCIM-Endpunkt-URL benötigen Sie den Insight4GRC-Domänennamen, da er zum Erstellen der SCIM-Endpunkt-URL verwendet wird. Sie erhalten Ihren Insight4GRC-Domänennamen im Rahmen des anfänglichen Softwarekaufs von Insight4GRC.
 
-## <a name="step-3-add-insight4grc-from-the-azure-ad-application-gallery"></a>Schritt 3: Hinzufügen von Insight4GRC aus dem Azure AD-Anwendungskatalog
+## <a name="step-3-add-insight4grc-from-the-azure-ad-application-gallery"></a>Schritt 3: Hinzufügen von Insight4GRC aus dem Azure AD-Anwendungskatalog
 
 Fügen Sie Insight4GRC aus dem Azure AD-Anwendungskatalog hinzu, um mit dem Verwalten der Bereitstellung in Insight4GRC zu beginnen. Wenn Sie Insight4GRC zuvor für das einmalige Anmelden (SSO) eingerichtet haben, können Sie dieselbe Anwendung verwenden. Es ist jedoch empfehlenswert, beim erstmaligen Testen der Integration eine separate App zu erstellen. [Hier](../manage-apps/add-application-portal.md) erfahren Sie mehr über das Hinzufügen einer Anwendung aus dem Katalog. 
 
@@ -100,7 +100,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 9. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die von Azure AD mit Insight4GRC synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in Insight4GRC für Updatevorgänge verwendet werden. Wenn Sie sich dafür entscheiden, das [übereinstimmende Zielattribut](../app-provisioning/customize-application-attributes.md) zu ändern, müssen Sie sicherstellen, dass die Insight4GRC-API das Filtern von Benutzern anhand dieses Attributs unterstützt. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-   |attribute|type|
+   |Attribut|type|
    |---|---|
    |userName|String|
    |externalId|String|
@@ -115,7 +115,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 11. Überprüfen Sie im Abschnitt **Attributzuordnung** die Gruppenattribute, die von Azure AD mit Insight4GRC synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Gruppen in Insight4GRC für Updatevorgänge verwendet werden. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-      |attribute|type|
+      |Attribut|type|
       |---|---|
       |displayName|String|
       |externalId|String|

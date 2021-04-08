@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 10/16/2019
 ms.author: mebeatty
 ms.openlocfilehash: 64bbed9b558d4c20889b28a5247e2113d20daa77
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "73509834"
 ---
 # <a name="create-an-internet-analyzer-test-using-portal-preview"></a>Erstellen eines Internet Analyzer-Tests über das Portal (Vorschau)
@@ -19,7 +19,7 @@ ms.locfileid: "73509834"
 Es gibt zwei Möglichkeiten zum Erstellen einer Internet Analyzer-Ressource: über das Azure-Portal oder mithilfe der [CLI](internet-analyzer-cli.md). In diesem Abschnitt erfahren Sie, wie Sie eine neue Azure Internet Analyzer-Ressource mit unserem Portal erstellen.
 
 > [!IMPORTANT]
-> Diese öffentliche Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und sollte nicht für Produktionsworkloads verwendet werden. Unter Umständen werden bestimmte Features nicht unterstützt, verfügen über eingeschränkte Funktionen und sind nicht an allen Azure-Standorten verfügbar. Weitere Informationen finden Sie unter [Ergänzende Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Diese öffentliche Vorschauversion wird ohne Servicelevelvereinbarung bereitgestellt und sollte nicht für Produktionsworkloads verwendet werden. Unter Umständen werden bestimmte Features nicht unterstützt, verfügen über eingeschränkte Funktionen und sind nicht an allen Azure-Standorten verfügbar. Weitere Informationen finden Sie unter [Ergänzende Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
 
 ## <a name="before-you-begin"></a>Voraussetzungen
@@ -35,7 +35,7 @@ Die öffentliche Vorschau ist für die globale Verwendung verfügbar. Allerdings
 5. Klicken Sie auf der Seite **Internet Analyzer (preview)** (Internet Analyzer (Vorschau)) auf **Erstellen**, um die Seite **Create an Internet Analyzer** (Internet Analyzer-Instanz erstellen) zu öffnen.
 6. Geben Sie die folgenden Konfigurationseinstellungen für die Internet Analyzer-Ressource an:
 
-    * **Abonnement:** Das Azure-Abonnement zum Hosten der neuen Internet Analyzer-Ressource. ***Verwenden Sie dieselbe Abonnement-ID wie beim Anfordern des Zugriffs auf die Vorschauversion.***
+    * **Abonnement:** Das Azure-Abonnement zum Hosten der neuen Internet Analyzer-Ressource. **_Verwenden Sie dieselbe Abonnement-ID wie beim Anfordern des Zugriffs auf die Vorschauversion._**
     * **Ressourcengruppe:** Die Azure-Ressourcengruppe, in der die neue Internet Analyzer-Ressource erstellt wird. Sollte noch keine Ressourcengruppe vorhanden sein, können Sie eine neue Ressourcengruppe erstellen.
     * **Name:** Der Name des neuen Internet Analyzer-Ressourcenprofils
     * **Region:** Die öffentliche Azure-Region, in der die Ressource erstellt wird. Während der Vorschauphase ist nur *USA, Westen 2* verfügbar.
@@ -55,7 +55,7 @@ Die Ausführung der grundlegenden Schritte ist Voraussetzung für das Konfigurie
     * Wählen Sie eine Region oder mehrere Regionen aus einer [vorkonfigurierten Liste von Azure-Endpunkten](internet-analyzer-faq.md) aus.
     * Wählen Sie als Nächstes den Typ der Anwendungs- oder Inhaltsbereitstellungsarchitektur aus, die Sie auswerten möchten.
         * Einzelne Azure-Region: Websitebeschleunigung ([Azure Front Door](https://azure.microsoft.com/services/frontdoor/)), statisches Content Caching ([Azure CDN für Microsoft](https://azure.microsoft.com/services/cdn/)) oder keine Angabe
-        * Mehrere Azure-Regionen: Websitebeschleunigung ([Azure Front Door](https://azure.microsoft.com/services/frontdoor/)), DNS-Steuerung ([Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/))  
+        * Mehrere Azure-Regionen: Websitebeschleunigung ([Azure Front Door](https://azure.microsoft.com/services/frontdoor/)), DNS-Steering ([Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/))  
 
     ***Benutzerdefinierte Endpunkte***
     * Befolgen Sie die Anweisungen auf der Seite [Create Custom Endpoint](internet-analyzer-custom-endpoint.md) (Benutzerdefinierten Endpunkt erstellen).
@@ -65,7 +65,7 @@ Die Ausführung der grundlegenden Schritte ist Voraussetzung für das Konfigurie
 4. Klicken Sie auf **Hinzufügen**, um den Endpunkt zum Test hinzuzufügen.
 5. Wiederholen Sie die Schritte 1 bis 4, um den zweiten Endpunkt zu konfigurieren. Endpunkt B wird immer relativ zu Endpunkt A gemessen: Berücksichtigen Sie bei der Konfiguration von Endpunkten, welcher Endpunkt als Testelement verwendet werden soll.
 6. Klicken Sie auf die Schaltfläche **Speichern**, um den Test zu speichern. Nachdem Sie einen Test gespeichert haben, können Sie die Endpunkte eines bestimmten Tests nicht mehr bearbeiten.
-7. Wählen Sie die Tests aus, die Sie starten möchten, und klicken Sie auf **Test starten**. Dadurch wird der ***Zustand*** der Tests in ***Wird ausgeführt*** geändert. Sie können Tests jederzeit starten. Der JavaScript-Client muss jedoch eingebettet werden, damit der Test mit der Erfassung von Messungen beginnt.
+7. Wählen Sie die Tests aus, die Sie starten möchten, und klicken Sie auf **Test starten**. Dadurch wird der **_Zustand_ *_ der Tests in _* _Wird ausgeführt_** geändert. Sie können Tests jederzeit starten. Der JavaScript-Client muss jedoch eingebettet werden, damit der Test mit der Erfassung von Messungen beginnt.
 8. Fügen Sie jederzeit weitere Tests hinzu. Beachten Sie, dass der eindeutige JavaScript-Client erst generiert wird, wenn ein Test erstellt wurde.
 
 ## <a name="embed-client"></a>Einbetten des Clients

@@ -9,10 +9,10 @@ ms.date: 02/01/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 1aca39a7ff162aa3c42fdb3ca5999c71091ec02e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "67177824"
 ---
  Wenn Sie Azure Cloud Shell verwenden, melden Sie sich nach dem Klicken auf „Ausprobieren“ automatisch bei Ihrem Azure-Konto an. Öffnen Sie zum lokalen Anmelden Ihre PowerShell-Konsole mit erhöhten Rechten, und führen Sie das Cmdlet aus, um eine Verbindung herzustellen.

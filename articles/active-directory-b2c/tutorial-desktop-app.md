@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
 ms.openlocfilehash: 06d27c3a3daa4702653a2063d0ac70fd094e2d74
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "78186198"
 ---
 # <a name="tutorial-authenticate-users-in-a-native-desktop-client-using-azure-active-directory-b2c"></a>Tutorial: Authentifizieren von Benutzern in einem nativen Desktopclient mithilfe von Azure Active Directory B2C
@@ -95,7 +95,7 @@ Fahren Sie mit dem nächsten Tutorial fort, um eine geschützte Web-API in Ihrem
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie Folgendes gelernt:
+In diesem Tutorial haben Sie gelernt, wie die folgenden Aufgaben ausgeführt werden:
 
 > [!div class="checklist"]
 > * Hinzufügen der nativen Clientanwendung
@@ -105,4 +105,4 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 Wenn Sie die Schaltflächenfunktion **API aufrufen** aktivieren möchten, gewähren Sie der WPF-Desktopanwendung Zugriff auf eine Web-API, die in Ihrem eigenen Azure AD B2C-Mandanten registriert ist:
 
 > [!div class="nextstepaction"]
-> [Tutorial: Gewähren des Zugriffs auf eine Node.js-Web-API über eine Desktop-App unter Verwendung von Azure Active Directory B2C](tutorial-desktop-app-webapi.md).
+> [Tutorial: Gewähren des Zugriffs auf eine Node.js-Web-API über eine Desktop-App unter Verwendung von Azure Active Directory B2C](tutorial-desktop-app-webapi.md)
