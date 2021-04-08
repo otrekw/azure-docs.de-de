@@ -1,6 +1,6 @@
 ---
-title: Includedatei
-description: Includedatei
+title: include file
+description: include file
 services: storage
 author: roygara
 ms.service: storage
@@ -9,10 +9,10 @@ ms.date: 6/2/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 36069b5575cd0f11060c534a3699bf3064747576
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "84465143"
 ---
 Zum Einschränken des Zugriffs auf den öffentlichen Endpunkt des Speicherkontos auf bestimmte virtuelle Netzwerke mit Dienstendpunkten müssen wir zunächst Informationen zum Speicherkonto und virtuellen Netzwerk sammeln. Geben Sie die Werte für `<storage-account-resource-group>`, `<storage-account-name>`, `<vnet-resource-group-name>`, `<vnet-name>` und `<subnet-name>` ein, um diese Informationen zu sammeln.

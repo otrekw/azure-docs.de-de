@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/30/2020
 ms.author: alkohli
 ms.openlocfilehash: 92ccb6127e624ace9e719ffd23324b3a1b971f72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89272146"
 ---
 Sie können Azure Stack Edge-Geräte, für die die Computerolle konfiguriert ist, mithilfe von zwei verschiedenen Befehlen überwachen oder eine Problembehandlung an ihnen durchführen.

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/10/2019
 ms.author: jeedes
 ms.openlocfilehash: ed35a0b6e6f2ad620b528283a332507845e4f00d
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97588266"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-floqast"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit FloQast
@@ -61,8 +61,8 @@ Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
     * **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
     * **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
-1. **[Konfigurieren des einmaligen Anmeldens für FloQast](#configure-floqast-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
-    * **[Erstellen eines FloQast-Testbenutzers](#create-floqast-test-user)** , um ein Pendant von B. Simon in FloQast zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist
+1. **[Konfigurieren des einmaligen Anmeldens für FloQast](#configure-floqast-sso)**, um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
+    * **[Erstellen eines FloQast-Testbenutzers](#create-floqast-test-user)**, um ein Pendant von B. Simon in FloQast zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist
 1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD

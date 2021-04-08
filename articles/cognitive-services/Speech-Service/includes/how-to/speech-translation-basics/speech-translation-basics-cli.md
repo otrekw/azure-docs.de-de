@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 04/13/2020
 ms.author: v-demjoh
 ms.openlocfilehash: a5796dfb066ea8ac7c59c02b29ef67b184c67edb
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "94425081"
 ---
 Eines der zentralen Features des Speech-Diensts ist die Fähigkeit, menschliche Sprache zu erkennen und in andere Sprachen zu übersetzen. In diesem Schnellstart erfahren Sie, wie Sie das Speech SDK in Ihren Apps und Produkten verwenden, um hochwertige Sprachübersetzungen durchzuführen. Außerdem erfahren Sie, wie Sie Sprache von einem Mikrofon in Text in einer anderen Sprache übersetzen.

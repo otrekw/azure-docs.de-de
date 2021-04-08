@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Konfigurieren von Priority Matrix für die automatische Benutzerbereitstellung in Azure Active Directory | Microsoft-Dokumentation'
+title: 'Tutorial: Konfigurieren von Priority Matrix für die automatische Benutzerbereitstellung mit Azure Active Directory | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie Azure Active Directory für das automatische Bereitstellen und Aufheben der Bereitstellung von Benutzerkonten in Priority Matrix konfigurieren.
 services: active-directory
 author: zchia
@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/08/2019
 ms.author: Zhchia
 ms.openlocfilehash: e79f21300325c6b451dd564bf2c69830f003f55c
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94357860"
 ---
 # <a name="tutorial-configure-priority-matrix-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Priority Matrix für die automatische Benutzerbereitstellung
@@ -71,11 +71,11 @@ Bevor Sie Priority Matrix für die automatische Benutzerbereitstellung mit Azure
 
     ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
 
-2. Navigieren Sie zu **Unternehmensanwendungen** , und wählen Sie die Option **Alle Anwendungen**.
+2. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen**.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-3. Klicken Sie oben im Bereich auf die Schaltfläche **Neue Anwendung** , um eine neue Anwendung hinzuzufügen.
+3. Klicken Sie oben im Bereich auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
     ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
 
@@ -120,7 +120,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Screenshot der Dropdownliste „Bereitstellungsmodus“ mit aufgerufener Option „Automatisch“](common/provisioning-automatic.png)
 
-5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** im Feld **Mandanten-URL** die Zeichenfolge `https://sync.appfluence.com/scim/v2/` ein. Geben Sie im Feld **Geheimes Token** den Wert ein, den Sie zuvor aus Priority Matrix abgerufen und gespeichert haben. Klicken Sie auf **Verbindung testen** , um sicherzustellen, dass Azure AD eine Verbindung mit Priority Matrix herstellen kann. Stellen Sie sicher, dass Ihr Priority Matrix-Konto über Administratorberechtigungen verfügt, und versuchen Sie es noch einmal, falls der Verbindungsaufbau fehlschlägt.
+5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** im Feld **Mandanten-URL** die Zeichenfolge `https://sync.appfluence.com/scim/v2/` ein. Geben Sie im Feld **Geheimes Token** den Wert ein, den Sie zuvor aus Priority Matrix abgerufen und gespeichert haben. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Priority Matrix herstellen kann. Stellen Sie sicher, dass Ihr Priority Matrix-Konto über Administratorberechtigungen verfügt, und versuchen Sie es noch einmal, falls der Verbindungsaufbau fehlschlägt.
 
     ![Mandanten-URL + Token](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -134,7 +134,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Priority Matrix – Benutzerzuordnungen](media/priority-matrix-provisioning-tutorial/usermappings.png)
 
-9. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die von Azure AD mit Priority Matrix synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in Priority Matrix für Updatevorgänge verwendet werden. Wählen Sie die Schaltfläche **Speichern** , um alle Änderungen zu übernehmen.
+9. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die von Azure AD mit Priority Matrix synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in Priority Matrix für Updatevorgänge verwendet werden. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
     ![Priority Matrix – Benutzerattribute](media/priority-matrix-provisioning-tutorial/userattributes.png)
 

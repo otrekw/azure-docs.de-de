@@ -5,13 +5,13 @@ ms.topic: quickstart
 ms.date: 01/29/2019
 ms.custom: mvc, devcenter, seo-java-august2019, seo-java-september2019, devx-track-java
 ms.openlocfilehash: 2f1e5f8f73f74d4b427e574b9e6a75aaf84a4211
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91529847"
 ---
-# <a name="quickstart--deploy-a-java-app-to-azure-service-fabric-on-linux"></a>Schnellstart:  Bereitstellen einer Java-App in Azure Service Fabric unter Linux
+# <a name="quickstart--deploy-a-java-app-to-azure-service-fabric-on-linux"></a>Schnellstart: Bereitstellen einer Java-App in Azure Service Fabric unter Linux
 
 In dieser Schnellstartanleitung stellen Sie mithilfe der Eclipse-IDE eine Java-Anwendung in Azure Service Fabric auf einem Linux-Entwicklercomputer bereit. Das Ergebnis ist eine Anwendung mit einem Java-Web-Front-End, mit der Abstimmungsergebnisse im Cluster in einem zustandsbehafteten Back-End-Dienst gespeichert werden.
 
@@ -71,7 +71,7 @@ Service Fabric Explorer wird in allen Service Fabric-Clustern ausgeführt und k
 Gehen Sie zum Skalieren des Web-Front-End-Diensts wie folgt vor:
 
 1. Öffnen Sie Service Fabric Explorer in Ihrem Cluster. Beispiel: `https://localhost:19080`.
-2. Klicken Sie in der Strukturansicht neben dem Knoten **fabric:/Voting/VotingWeb** auf das Auslassungszeichen ( **...** ), und wählen Sie **Dienst skalieren** aus.
+2. Klicken Sie in der Strukturansicht neben dem Knoten **fabric:/Voting/VotingWeb** auf das Auslassungszeichen (**...**), und wählen Sie **Dienst skalieren** aus.
 
     ![Skalieren eines Diensts in Azure Service Fabric](./media/service-fabric-quickstart-java/service-fabric-scale-service.png)
 

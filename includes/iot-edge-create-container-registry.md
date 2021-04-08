@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 12/30/2019
 ms.author: kgremban
 ms.openlocfilehash: 8cae7ac2d3b961120cb9100f5072dc141769afff
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95563656"
 ---
 ## <a name="create-a-container-registry"></a>Erstellen einer Containerregistrierung
@@ -23,7 +23,7 @@ Sollten Sie noch keine Containerregistrierung besitzen, führen Sie die folgende
 
 2. Geben Sie die folgenden Werte an, um Ihre Containerregistrierung zu erstellen:
 
-   | Feld | value |
+   | Feld | Wert |
    | ----- | ----- |
    | Subscription | Wählen Sie ein Abonnement aus der Dropdownliste aus. |
    | Resource group | Es wird empfohlen, die gleiche Ressourcengruppe für alle Testressourcen zu verwenden, die Sie während der IoT Edge-Schnellstarts und -Tutorials erstellen. Beispielsweise **IoTEdgeResources**. |

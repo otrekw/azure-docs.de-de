@@ -4,13 +4,13 @@ description: 'Schnellstart: Dieser Artikel enthält Informationen zum Empfangen 
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.openlocfilehash: 099a3ff1ad57616de0d7929d787b82e9d55c9e00
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87087576"
 ---
-# <a name="quickstart-receive-events-from-event-hubs-using-apache-storm"></a>Schnellstart: Empfangen von Ereignissen von Event Hubs mithilfe von Apache Storm
+# <a name="quickstart-receive-events-from-event-hubs-using-apache-storm"></a>Schnellstart: Empfangen von Ereignissen aus Event Hubs mithilfe von Apache Storm
 
 [Apache Storm](https://storm.incubator.apache.org) ist ein verteiltes System für Echtzeitberechnungen, das die zuverlässige Verarbeitung unbegrenzter Datenströme vereinfacht. In diesem Abschnitt wird gezeigt, wie ein Azure Event Hubs-Storm-Spout verwendet wird, um Ereignisse von Event Hubs zu empfangen. Mit Apache Storm können Sie Ereignisse auf mehrere Prozesse aufteilen, die in verschiedenen Knoten gehostet werden. Die Ereignis-Hub-Integration in Storm vereinfacht die Ereignisnutzung durch transparente Prüfung des Fortschritts mithilfe der Zookeeper Installation von Storm, der Verwaltung von permanenten Prüfpunkten und dem parallelen von Ereignissen von Ereignis-Hubs.
 

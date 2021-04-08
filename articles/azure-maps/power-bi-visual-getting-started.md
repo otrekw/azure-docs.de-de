@@ -10,15 +10,15 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: a563a7776e84289e38743057778e8fe10fd17503
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96904702"
 ---
 # <a name="getting-started-with-the-azure-maps-power-bi-visual"></a>Erste Schritte mit dem Azure Maps-Visual in Power BI
 
-<Token>**GILT FÜR:** ![Grünes Häkchen.](media/power-bi-visual/yes.png) Power BI-Dienst für **_Consumer_* _ ![Grünes Häkchen.](media/power-bi-visual/yes.png) Power BI-Dienst für Designer und Entwickler ![Grünes Häkchen.](media/power-bi-visual/yes.png) Power BI Desktop ![X, das Nein anzeigt.](media/power-bi-visual/no.png) Erfordert eine Pro- oder Premium-Lizenz</Token>
+<Token>**GILT FÜR:** ![Grünes Häkchen.](media/power-bi-visual/yes.png) Power BI-Dienst für **_Consumer_** ![Grünes Häkchen.](media/power-bi-visual/yes.png) Power BI-Dienst für Designer und Entwickler ![Grünes Häkchen.](media/power-bi-visual/yes.png) Power BI Desktop ![X, das Nein anzeigt.](media/power-bi-visual/no.png) Erfordert eine Pro- oder Premium-Lizenz </Token>
 
 Dieser Artikel zeigt die Verwendung des Microsoft Azure Maps-Visuals für Power BI.
 
@@ -47,7 +47,7 @@ Weitere Informationen zu Datenschutz und Nutzungsbedingungen im Zusammenhang mit
 
 ## <a name="azure-maps-visual-preview-behavior-and-requirements"></a>Verhalten und Anforderungen des Azure Maps-Visuals (Vorschau)
 
-Für das _ *Azure Maps**-Visual sind einige Aspekte und Anforderungen zu beachten. :
+Für das **Azure Maps** Visual sind einige Aspekte und Anforderungen zu beachten. :
 
 -   Das **Azure Maps**-Visual (Vorschau) muss in Power BI Desktop aktiviert werden. Zum Aktivieren des **Azure Maps**-Visuals wählen Sie **Datei** &gt; **Optionen und Einstellungen** &gt; **Optionen** &gt; **Previewfunktionen** aus und aktivieren dann das Kontrollkästchen **Azure Maps-Visual**. Wenn das Azure Maps-Visual anschließend nicht verfügbar ist, muss wahrscheinlich eine Option des Mandantenadministrators im Verwaltungsportal aktiviert werden.
 -   Das Dataset muss Felder mit Informationen zu **Breitengrad** und **Längengrad** enthalten. Die Geocodierung von Standortfeldern wird in einem zukünftigen Update hinzugefügt.
