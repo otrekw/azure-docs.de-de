@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
 ms.openlocfilehash: 810ee757b70550c9dbeea708266b3fec48669571
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100378569"
 ---
 # <a name="copy-data-from-impala-by-using-azure-data-factory"></a>Kopieren von Daten aus Impala mithilfe von Azure Data Factory
@@ -53,7 +53,7 @@ Folgende Eigenschaften werden für den mit Impala verknüpften Dienst unterstüt
 | username | Der Benutzername für den Zugriff auf den Impala-Server. Der Standardwert ist „Anonymous“, wenn „SASLUsername“ verwendet wird.  | Nein |
 | password | Das Kennwort, das dem Benutzernamen entspricht, wenn Sie „UsernameAndPassword“ verwenden. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Nein |
 | enableSsl | Gibt an, ob die Verbindungen mit dem Server mit dem Server mittels TLS verschlüsselt werden. Der Standardwert ist **false**.  | Nein |
-| trustedCertPath | Der vollständige Pfad der PEM-Datei mit vertrauenswürdigen Zertifizierungsstellenzertifikaten, die beim Verbindungsaufbau über TLS zur Überprüfung des Servers verwendet werden. Diese Eigenschaft kann nur festgelegt werden, wenn Sie TLS für die selbstgehostete Integration Runtime verwenden. Der Standardwert ist die Datei „cacerts.pem“, die mit der Integration Runtime installiert wird.  | Nein |
+| trustedCertPath | Der vollständige Pfad der PEM-Datei mit vertrauenswürdigen Zertifizierungsstellenzertifikaten zur Überprüfung des Servers beim Verbindungsaufbau über TLS. Diese Eigenschaft kann nur festgelegt werden, wenn Sie TLS für die selbstgehostete Integration Runtime verwenden. Der Standardwert ist die Datei „cacerts.pem“, die mit der Integration Runtime installiert wird.  | Nein |
 | useSystemTrustStore | Gibt an, ob ein Zertifizierungsstellenzertifikat aus dem Vertrauensspeicher des Systems oder aus einer angegebenen PEM-Datei verwendet werden soll. Der Standardwert ist **false**.  | Nein |
 | allowHostNameCNMismatch | Gibt an, ob der Name eines von der Zertifizierungsstelle ausgestellten TLS/SSL-Zertifikats mit dem Hostnamen des Servers übereinstimmen muss, wenn eine Verbindung über TLS hergestellt wird. Der Standardwert ist **false**.  | Nein |
 | allowSelfSignedServerCert | Gibt an, ob vom Server selbstsignierte Zertifikate zugelassen werden. Der Standardwert ist **false**.  | Nein |

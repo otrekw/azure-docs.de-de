@@ -1,22 +1,22 @@
 ---
-title: 'Schnellstart: Abrufen von Antworten aus einer Wissensdatenbank mit dem URL-Tool – QnA Maker'
+title: Abrufen von Antworten aus einer Wissensdatenbank mit dem URL-Tool – QnA Maker
 titleSuffix: Azure Cognitive Services
-description: In diesem Schnellstart wird ausführlich erläutert, wie Sie mit einem URL-Testtool wie cURL oder Postman eine Antwort aus einer Wissensdatenbank abrufen.
+description: In diesem Artikel wird ausführlich erläutert, wie Sie mit einem URL-Testtool wie cURL oder Postman eine Antwort aus einer Wissensdatenbank abrufen.
 services: cognitive-services
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 zone_pivot_groups: URL-test-interface
-ms.topic: quickstart
+ms.topic: how-to
 ms.date: 07/16/2020
-ms.openlocfilehash: eddae69c0946ab135540b77d3cc89937079e6293
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: 46657cfaf513cdd2dd0ecfd284602d2277781626
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103016252"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104583070"
 ---
-# <a name="quickstart-get-an-answer-from-knowledge-base"></a>Schnellstart: Abrufen einer Antwort aus einer Wissensdatenbank
+# <a name="get-an-answer-from-a-knowledge-base"></a>Abrufen einer Antwort aus einer Wissensdatenbank
 
 
 ::: zone pivot="url-test-tool-curl"

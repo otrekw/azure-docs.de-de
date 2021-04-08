@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 05/06/2020
 ms.author: glenga
 ms.openlocfilehash: 3c9679f3d66d58c7a6c847b54c84438c979ecd39
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97936860"
 ---
 Ein [privater Azure-Endpunkt](../articles/private-link/private-endpoint-overview.md) ist eine Netzwerkschnittstelle, die Sie privat und sicher mit einem Dienst verbindet, der von Azure Private Link unterstützt wird.  Ein privater Endpunkt verwendet eine private IP-Adresse aus Ihrem virtuellen Netzwerk und macht den Dienst so in Ihrem virtuellen Netzwerk verfügbar.

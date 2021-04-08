@@ -7,22 +7,25 @@ ms.reviewer: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 11/09/2019
-ms.openlocfilehash: b0f564f68a638e7efd1cd1ce9116a26f4d19f277
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 03/11/2021
+ms.openlocfilehash: 52509dbf529076eaa0af73ea48db9a7f3fd10241
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96497043"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104584515"
 ---
 # <a name="transform-data-using-mapping-data-flows"></a>Transformieren von Daten mithilfe von Mapping Data Flow
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Falls Sie noch nicht mit Azure Data Factory vertraut sind, ist es ratsam, den Artikel [Einführung in Azure Data Factory](introduction.md) zu lesen.
 
 In diesem Tutorial erstellen Sie mithilfe der Azure Data Factory-Benutzeroberfläche eine Pipeline, mit der Daten aus einer Azure Data Lake Storage (ADLS) Gen2-Quelle in eine ADLS Gen2-Senke kopiert und mithilfe von Mapping Data Flow transformiert werden. Das Konfigurationsmuster in diesem Tutorial kann beim Transformieren von Daten mithilfe von Mapping Data Flow erweitert werden.
 
+ >[!NOTE]
+   >Dieses Tutorial ist für die Zuordnungsdatenflüsse ganz allgemein konzipiert. Datenflüsse sind sowohl in Azure Data Factory als auch in Synapse-Pipelines verfügbar. Wenn Sie mit den Datenflüssen in Azure Synapse-Pipelines noch nicht vertraut sind, lesen Sie den Artikel [Datenflüsse in Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics/concepts-data-flow-overview). 
+   
 In diesem Tutorial führen Sie die folgenden Schritte aus:
 
 > [!div class="checklist"]
@@ -51,7 +54,7 @@ In diesem Schritt erstellen Sie eine Data Factory und öffnen die Data Factory-B
 
    Der Name der Azure Data Factory muss *global eindeutig* sein. Wenn eine Fehlermeldung zum Namenswert angezeigt wird, geben Sie einen anderen Namen für die Data Factory ein. (Verwenden Sie beispielsweise „IhrNameADFTutorialDataFactory“.) Benennungsregeln für Data Factory-Artefakte finden Sie im Thema [Azure Data Factory – Benennungsregeln](naming-rules.md).
 
-     ![Neue Data Factory](./media/doc-common-process/name-not-available-error.png)
+    :::image type="content" source="./media/doc-common-process/name-not-available-error.png" alt-text="Fehlermeldung zu neuer Data Factory für doppelten Namen":::
 4. Wählen Sie das **Azure-Abonnement** aus, in dem die Data Factory erstellt werden soll.
 5. Führen Sie unter **Ressourcengruppe** einen der folgenden Schritte aus:
 

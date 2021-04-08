@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 03/05/2021
 ms.author: Zhchia
 ms.openlocfilehash: 7e11f60fee0565b86fe62008f418175bce21be03
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104585178"
 ---
 # <a name="tutorial-configure-bpanda-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Bpanda für die automatische Benutzerbereitstellung
@@ -124,7 +124,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 9. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die aus Azure AD mit Bpanda synchronisiert werden. Mit den als **übereinstimmende** Eigenschaften ausgewählten Attributen werden bei Aktualisierungsvorgängen die Benutzerkonten in Bpanda abgeglichen. Wenn Sie das [übereinstimmende Zielattribut](../app-provisioning/customize-application-attributes.md) ändern möchten, müssen Sie sicherstellen, dass die Bpanda-API das Filtern von Benutzern nach diesem Attribut unterstützt. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-   |attribute|type|Unterstützung für das Filtern|
+   |Attribut|Typ|Unterstützung für das Filtern|
    |---|---|---|
    |userName|String|&check;
    |aktiv|Boolean|
@@ -145,7 +145,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 11. Überprüfen Sie im Abschnitt **Attributzuordnung** die Gruppenattribute, die von Azure AD mit Bpanda synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden bei Aktualisierungsvorgängen für den Abgleich der Gruppen in Bpanda verwendet. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-      |attribute|type|Unterstützung für das Filtern|
+      |Attribut|Typ|Unterstützung für das Filtern|
       |---|---|---|
       |displayName|String|&check;
       |externalId|String|
