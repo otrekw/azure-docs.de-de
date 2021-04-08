@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: damendo
 ms.openlocfilehash: 8779381425d4180cc7320f251de9c2cfdd1f0510
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99223422"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-powershell"></a>Verwalten von Paketerfassungen mit Azure Network Watcher mithilfe von PowerShell
@@ -58,7 +58,7 @@ In diesem Artikel wird davon ausgegangen, dass Sie über die folgenden Ressource
 $VM = Get-AzVM -ResourceGroupName testrg -Name VM1
 ```
 
-### <a name="step-2"></a>Schritt 2
+### <a name="step-2"></a>Schritt 2
 
 Das folgende Beispiel ruft die benötigten Erweiterungsinformationen zum Ausführen des Cmdlets `Set-AzVMExtension` ab. Mit diesem Cmdlet wird der Paketerfassungs-Agent auf dem virtuellen Gastcomputer installiert.
 
@@ -131,7 +131,7 @@ Der nächste Schritt besteht im Abrufen der Network Watcher-Instanz. Diese Varia
 $networkWatcher = Get-AzNetworkWatcher  | Where {$_.Location -eq "westcentralus" }
 ```
 
-### <a name="step-2"></a>Schritt 2
+### <a name="step-2"></a>Schritt 2
 
 Erstellen Sie ein Speicherkonto. Dieses Speicherkonto wird verwendet, um die Paketerfassungsdatei zu speichern.
 
