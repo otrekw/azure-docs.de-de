@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 10/02/2020
-ms.openlocfilehash: 62f4b6c76cafab5c6cc46a73851abce1e38551a1
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: a708f0c1884073a2f2ea73092d25006415c59d5f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101677752"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104655222"
 ---
 # <a name="register-and-scan-an-azure-sql-database"></a>Registrieren und Überprüfen von Azure SQL-Datenbank
 
@@ -157,7 +157,8 @@ Gehen Sie auf dem Bildschirm **Register sources (Azure SQL Database)** (Quellen 
 [!INCLUDE [create and manage scans](includes/manage-scans.md)]
 
 > [!NOTE]
-> Beim Löschen der Überprüfung werden nicht die Ressourcen aus vorherigen Überprüfungen von Azure SQL-Datenbank gelöscht.
+> * Beim Löschen der Überprüfung werden nicht die Ressourcen aus vorherigen Überprüfungen von Azure SQL-Datenbank gelöscht.
+> * Die Ressource wird nicht mehr mit Schemaänderungen aktualisiert, wenn die Quelltabelle geändert wird, und die Quelltabelle wird nach dem Bearbeiten der Beschreibung auf der Registerkarte „Schema“ von Purview erneut überprüft.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -4,10 +4,10 @@ description: Hier erfahren Sie, wie Sie die vorhandene VM-Sicherungsrichtlinie m
 ms.topic: conceptual
 ms.date: 12/31/2020
 ms.openlocfilehash: 33083d6585d2b9296cd184ba258b8d2143d685b4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98728577"
 ---
 # <a name="update-the-existing-vm-backup-policy-using-cli"></a>Aktualisieren der vorhandenen VM-Sicherungsrichtlinie mit der Befehlszeilenschnittstelle

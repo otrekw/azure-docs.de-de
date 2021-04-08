@@ -9,18 +9,34 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
-ms.date: 12/31/2020
-ms.openlocfilehash: 54b650d598cf19e061465b3a4fa18d50808e7f29
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.date: 03/18/2020
+ms.openlocfilehash: f03fa84c02c4b3894efe069289b0ecbb9e90dfdb
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102426160"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104654627"
 ---
 # <a name="analyze-data-with-dedicated-sql-pools"></a>Analysieren von Daten mit dedizierten SQL-Pools
 
-Azure Synapse Analytics ermöglicht das Analysieren von Daten mit einem dedizierten SQL-Pool. In diesem Tutorial werden die NYC Taxi-Daten verwendet, um die Analysefunktionen eines dedizierten SQL-Pools zu untersuchen.
+In diesem Tutorial werden die NYC Taxi-Daten verwendet, um die Analysefunktionen eines dedizierten SQL-Pools zu untersuchen.
 
+## <a name="create-a-dedicated-sql-pool"></a>Erstellen eines dedizierten SQL-Pools
+
+1. Wählen Sie in Synapse Studio im linken Bereich **Verwalten** > **SQL-Pools** aus.
+1. Wählen Sie **Neu** aus.
+1. Wählen Sie unter **Name des SQL-Pools** den Namen **SQLPOOL1** aus.
+1. Wählen Sie für **Leistungsebene** die Option **DW100C** aus.
+1. Wählen Sie **Bewerten + erstellen** > **Erstellen** aus. Ihr dedizierter SQL-Pool steht in wenigen Minuten zur Verfügung. 
+
+Ihr dedizierter SQL-Pool ist einer SQL-Datenbank zugeordnet, die auch als **SQLPOOL1** bezeichnet wird.
+1. Navigieren Sie zu **Daten** > **Arbeitsbereich**.
+1. Eine Datenbank mit dem Namen **SQLPOOL1** sollte angezeigt werden. Wird sie nicht angezeigt, klicken Sie auf **Aktualisieren**.
+
+Ein dedizierter SQL-Pool nutzt abrechenbare Ressourcen, solange er aktiv ist. Sie können den Pool später anhalten, um die Kosten zu senken.
+
+> [!NOTE] 
+> Wenn Sie in Ihrem Arbeitsbereich einen neuen dedizierten SQL-Pool (ehemals SQL DW) erstellen, wird die Bereitstellungsseite für den dedizierten SQL-Pool geöffnet. Die Bereitstellung erfolgt auf dem logischen SQL-Server.
 ## <a name="load-the-nyc-taxi-data-into-sqlpool1"></a>Laden der NYC Taxi-Daten in SQLPOOL1
 
 1. Navigieren Sie in Synapse Studio zum Hub **Entwickeln**, klicken Sie auf die Schaltfläche **+** , um eine neue Ressource hinzuzufügen, und erstellen Sie dann ein neues SQL-Skript.
@@ -77,7 +93,6 @@ Azure Synapse Analytics ermöglicht das Analysieren von Daten mit einem dedizier
 ## <a name="explore-the-nyc-taxi-data-in-the-dedicated-sql-pool"></a>Untersuchen der NYC Taxi-Daten im dedizierten SQL-Pool
 
 1. Navigieren Sie in Synapse Studio zum Hub **Daten**.
-1. Eine Datenbank mit dem Namen **SQLPOOL1** sollte angezeigt werden. Wird sie nicht angezeigt, klicken Sie auf **Aktualisieren**.
 1. Navigieren Sie zu **SQLPOOL1** > **Tabellen**. 
 3. Klicken Sie mit der rechten Maustaste auf die Tabelle **dbo.Trip**, und wählen Sie **Neues SQL-Skript** > **OBERSTE 100 Zeilen auswählen** aus.
 4. Warten Sie, während ein neues SQL-Skript erstellt und ausgeführt wird.
@@ -103,4 +118,4 @@ Azure Synapse Analytics ermöglicht das Analysieren von Daten mit einem dedizier
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Analysieren mithilfe von Spark](get-started-analyze-spark.md)
+> [Analysieren von Daten in einem Azure Storage-Konto](get-started-analyze-storage.md)

@@ -8,12 +8,12 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 01/28/2021
 ms.author: allensu
-ms.openlocfilehash: ac21e1f00dc2a5580b90a1a5eb43da05288e800a
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: c49a721a4db758965c9cf8d71f5d73b5754b6088
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103489422"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104654474"
 ---
 # <a name="backend-pool-management"></a>Back-End-Pool-Verwaltung
 Der Back-End-Pool ist eine kritische Komponente des Lastenausgleichs. Der Back-End-Pool definiert die Gruppe der Ressourcen, die den Datenverkehr für eine bestimmte Lastenausgleichsregel verarbeiten.
@@ -156,99 +156,6 @@ az vm create \
 --generate-ssh-keys
 ```
 
-### <a name="rest-api"></a>REST-API
-Erstellen Sie den Back-End-Pool:
-
-```
-PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/loadBalancers/{load-balancer-name}/backendAddressPools/{backend-pool-name}?api-version=2020-05-01
-```
-
-Erstellen Sie eine Netzwerkschnittstelle, und fügen Sie sie dem Back-End-Pool hinzu, den Sie über die IP-Konfigurationseigenschaft der Netzwerkschnittstelle erstellt haben:
-
-```
-PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/networkInterfaces/{nic-name}?api-version=2020-05-01
-```
-
-JSON-Anforderungstext:
-```json
-{
-  "properties": {
-    "enableAcceleratedNetworking": true,
-    "ipConfigurations": [
-      {
-        "name": "ipconfig1",
-        "properties": {
-          "subnet": {
-            "id": "/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/virtualNetworks/{vnet-name}/subnets/{subnet-name}"
-          },
-          "loadBalancerBackendAddressPools": [
-            {
-              "id": "/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/loadBalancers/{load-balancer-name}/backendAddressPools/{backend-pool-name}"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  "location": "eastus"
-}
-```
-
-Rufen Sie die Back-End-Poolinformationen für den Lastenausgleich ab, um zu bestätigen, dass diese Netzwerkschnittstelle dem Back-End-Pool hinzugefügt ist:
-
-```
-GET https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name/providers/Microsoft.Network/loadBalancers/{load-balancer-name/backendAddressPools/{backend-pool-name}?api-version=2020-05-01
-```
-
-Erstellen Sie eine VM, und fügen Sie die NIC an, die auf den Back-End-Pool verweist:
-
-```
-PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Compute/virtualMachines/{vm-name}?api-version=2019-12-01
-```
-
-JSON-Anforderungstext:
-```JSON
-{
-  "location": "easttus",
-  "properties": {
-    "hardwareProfile": {
-      "vmSize": "Standard_D1_v2"
-    },
-    "storageProfile": {
-      "imageReference": {
-        "sku": "2016-Datacenter",
-        "publisher": "MicrosoftWindowsServer",
-        "version": "latest",
-        "offer": "WindowsServer"
-      },
-      "osDisk": {
-        "caching": "ReadWrite",
-        "managedDisk": {
-          "storageAccountType": "Standard_LRS"
-        },
-        "name": "myVMosdisk",
-        "createOption": "FromImage"
-      }
-    },
-    "networkProfile": {
-      "networkInterfaces": [
-        {
-          "id": "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{nic-name}",
-          "properties": {
-            "primary": true
-          }
-        }
-      ]
-    },
-    "osProfile": {
-      "adminUsername": "{your-username}",
-      "computerName": "myVM",
-      "adminPassword": "{your-password}"
-    }
-  }
-}
-```
-
 ### <a name="resource-manager-template"></a>Resource Manager-Vorlage
 
 Befolgen Sie diese [Resource Manager-Schnellstartvorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-load-balancer-standard-create/), um einen Lastenausgleich und virtuelle Computer bereitzustellen und die virtuellen Computer über die Netzwerkschnittstelle zum Back-End-Pool hinzuzufügen.
@@ -260,17 +167,6 @@ Befolgen Sie diese [Resource Manager-Schnellstartvorlage](https://github.com/Azu
 Verwenden Sie in Szenarien mit vorab aufgefüllten Back-End-Pool die IP-Adresse und das virtuelle Netzwerk.
 
 Die gesamte Back-End-Poolverwaltung erfolgt direkt in dem Back-End-Poolobjekt, wie in den folgenden Beispielen gezeigt.
-
-### <a name="limitations"></a>Einschränkungen
-Für einen per IP-Adresse konfigurierten Back-End-Pool gelten folgende Einschränkungen:
-  * Der Back-End-Pool kann nur für Load Balancer Standard-Instanzen verwendet werden.
-  * Limit von 100 IP-Adressen im Back-End-Pool
-  * Die Back-End-Ressourcen müssen sich im selben virtuellen Netzwerk wie der Lastenausgleich befinden.
-  * Ein Lastenausgleich mit IP-basiertem Back-End-Pool kann nicht als Private Link-Dienst fungieren.
-  * Diese Funktion wird im Azure-Portal derzeit nicht unterstützt.
-  * Derzeit werden keine ACI-Container von dieser Funktion unterstützt.
-  * Lastenausgleichsmodule oder von Lastenausgleichsmodulen verfügbar gemachte Dienste können nicht im Back-End-Pool des Lastenausgleichsmoduls platziert werden.
-  * NAT-Regel für eingehenden Datenverkehr können nicht per IP-Adresse angegeben werden.
 
 ### <a name="powershell"></a>PowerShell
 Erstellen Sie einen neuen Back-End-Pool:
@@ -411,128 +307,21 @@ az vm create \
   --admin-username azureuser \
   --generate-ssh-keys
 ```
+ 
+### <a name="limitations"></a>Einschränkungen
+Für einen per IP-Adresse konfigurierten Back-End-Pool gelten folgende Einschränkungen:
+  * Der Back-End-Pool kann nur für Load Balancer Standard-Instanzen verwendet werden.
+  * Limit von 100 IP-Adressen im Back-End-Pool
+  * Die Back-End-Ressourcen müssen sich im selben virtuellen Netzwerk wie der Lastenausgleich befinden.
+  * Ein Lastenausgleich mit IP-basiertem Back-End-Pool kann nicht als Private Link-Dienst fungieren.
+  * Diese Funktion wird im Azure-Portal derzeit nicht unterstützt.
+  * Derzeit werden keine ACI-Container von dieser Funktion unterstützt.
+  * Lastenausgleichsmodule oder Dienste wie Application Gateway können nicht im Back-End-Pool des Lastenausgleichsmoduls platziert werden.
+  * NAT-Regel für eingehenden Datenverkehr können nicht per IP-Adresse angegeben werden.
 
-### <a name="rest-api"></a>REST-API
-
-Erstellen Sie den Back-End-Pool, und definieren Sie die Back-End-Adressen über eine PUT-Anforderung des Back-End-Pools. Konfigurieren Sie die Back-End-Adressen im JSON-Text der PUT-Anforderung anhand von:
-
-* Adressname
-* IP-Adresse
-* ID des virtuellen Netzwerks 
-
-```
-PUT https://management.azure.com/subscriptions/subid/resourceGroups/testrg/providers/Microsoft.Network/loadBalancers/lb/backendAddressPools/backend?api-version=2020-05-01
-```
-
-JSON-Anforderungstext:
-```JSON
-{
-  "properties": {
-    "loadBalancerBackendAddresses": [
-      {
-        "name": "address1",
-        "properties": {
-          "virtualNetwork": {
-            "id": "/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/virtualNetworks/{vnet-name}"
-          },
-          "ipAddress": "10.0.0.4"
-        }
-      },
-      {
-        "name": "address2",
-        "properties": {
-          "virtualNetwork": {
-            "id": "/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/virtualNetworks/{vnet-name}"
-          },
-          "ipAddress": "10.0.0.5"
-        }
-      }
-    ]
-  }
-}
-```
-
-Rufen Sie die Back-End-Poolinformationen für den Lastenausgleich ab, um zu bestätigen, dass die Back-End-Adressen dem Back-End-Pool hinzugefügt wurden:
-```
-GET https://management.azure.com/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/loadBalancers/{load-balancer-name}/backendAddressPools/{backend-pool-name}?api-version=2020-05-01
-```
-
-Erstellen Sie eine Netzwerkschnittstelle, und fügen Sie sie dem Back-End-Pool hinzu. Legen Sie die IP-Adresse auf eine der Back-End-Adressen fest:
-```
-PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/networkInterfaces/{nic-name}?api-version=2020-05-01
-```
-
-JSON-Anforderungstext:
-```JSON
-{
-  "properties": {
-    "enableAcceleratedNetworking": true,
-    "ipConfigurations": [
-      {
-        "name": "ipconfig1",
-        "properties": {
-          "privateIPAddress": "10.0.0.4",
-          "subnet": {
-            "id": "/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/virtualNetworks/{vnet-name}/subnets/{subnet-name}"
-          }
-        }
-      }
-    ]
-  },
-  "location": "eastus"
-}
-```
-
-Erstellen Sie eine VM, und fügen Sie die NIC mit einer IP-Adresse im Back-End-Pool an:
-
-```
-PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Compute/virtualMachines/{vm-name}?api-version=2019-12-01
-```
-
-JSON-Anforderungstext:
-```JSON
-{
-  "location": "eastus",
-  "properties": {
-    "hardwareProfile": {
-      "vmSize": "Standard_D1_v2"
-    },
-    "storageProfile": {
-      "imageReference": {
-        "sku": "2016-Datacenter",
-        "publisher": "MicrosoftWindowsServer",
-        "version": "latest",
-        "offer": "WindowsServer"
-      },
-      "osDisk": {
-        "caching": "ReadWrite",
-        "managedDisk": {
-          "storageAccountType": "Standard_LRS"
-        },
-        "name": "myVMosdisk",
-        "createOption": "FromImage"
-      }
-    },
-    "networkProfile": {
-      "networkInterfaces": [
-        {
-          "id": "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{nic-name}",
-          "properties": {
-            "primary": true
-          }
-        }
-      ]
-    },
-    "osProfile": {
-      "adminUsername": "{your-username}",
-      "computerName": "myVM",
-      "adminPassword": "{your-password}"
-    }
-  }
-}
-```
-  
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel haben Sie die Back-End-Pool-Verwaltung von Azure Load Balancer kennen gelernt und wie Sie einen Back-End-Pool anhand von IP-Adresse und virtuellem Netzwerk konfigurieren.
 
 Weitere Informationen zu [Azure Load Balancer](load-balancer-overview.md).
+
+Informationen zur IP-basierten Back-End-Pool-Verwaltung finden Sie im Artikel zur [REST-API](https://docs.microsoft.com/rest/api/load-balancer/loadbalancerbackendaddresspools/createorupdate).

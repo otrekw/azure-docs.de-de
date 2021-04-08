@@ -9,10 +9,10 @@ ms.date: 1/22/2020
 ms.author: normesta
 ms.reviewer: dineshm
 ms.openlocfilehash: 36cdaa813e0eccb23563301052aee268ab61533a
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94888503"
 ---
 <!---Customer intent: I want to host files for a static website in Blob storage and access the website from an Azure endpoint.--->
@@ -21,7 +21,7 @@ ms.locfileid: "94888503"
 
 In diesem Tutorial wird beschrieben, wie Sie eine statische Website erstellen und in Azure Storage bereitstellen. Nach Abschluss des Vorgangs verfügen Sie über eine statische Website, auf die Benutzer öffentlich zugreifen können. 
 
-In diesem Tutorial lernen Sie Folgendes:
+In diesem Tutorial lernen Sie, wie die folgenden Aufgaben ausgeführt werden:
 
 > [!div class="checklist"]
 > * Konfigurieren des Hostens von statischen Websites
@@ -55,7 +55,7 @@ Im ersten Schritt wird Ihr Speicherkonto für das Hosten einer statischen Websit
 1. Suchen Sie nach Ihrem Speicherkonto, und zeigen Sie die Kontoübersicht an.
 1. Wählen Sie die Option **Statische Website**, um die Konfigurationsseite für statische Websites anzuzeigen.
 1. Wählen Sie **Aktiviert**, um das Hosten von statischen Websites für das Speicherkonto zu aktivieren.
-1. Geben Sie im Feld **Name des Indexdokuments**  die Standardindexseite *index.html* an. Die Standardindexseite wird angezeigt, wenn ein Benutzer zum Stammverzeichnis Ihrer statischen Website navigiert.  
+1. Geben Sie im Feld **Name des Indexdokuments** die Standardindexseite *index.html* an. Die Standardindexseite wird angezeigt, wenn ein Benutzer zum Stammverzeichnis Ihrer statischen Website navigiert.  
 1. Geben Sie im Feld **Pfad zum Fehlerdokument** die Standardfehlerseite *404.html* an. Die Standardfehlerseite wird angezeigt, wenn ein Benutzer versucht, zu einer Seite zu navigieren, die auf Ihrer statischen Website nicht vorhanden ist.
 1. Klicken Sie auf **Speichern**. Im Azure-Portal wird jetzt der Endpunkt Ihrer statischen Website angezeigt. 
 
