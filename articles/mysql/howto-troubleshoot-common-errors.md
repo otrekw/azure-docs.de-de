@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.topic: overview
 ms.date: 8/20/2020
 ms.openlocfilehash: ca75416a66bcf2c90028c7f1dc11fbe23a9a9bd9
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98631366"
 ---
 # <a name="common-errors"></a>Häufige Fehler
@@ -25,9 +25,9 @@ Der obige Fehler tritt nach erfolgreicher Anmeldung, aber vor Ausführung eines 
 
 Es gibt einige Serverparameter wie etwa „require_secure_transport“, die auf Sitzungsebene nicht unterstützt werden. Daher kann der Versuch, die Werte dieser Parameter mithilfe von „init_connect“ zu ändern, bei der Verbindungsherstellung mit dem MySQL-Server zum Fehler 1184 führen:
 
-mysql> show databases; ERROR 2006 (HY000): MySQL server has gone away No connection. Trying to reconnect... Connection id:    64897 Current database: *** NONE **_ ERROR 1184 (08S01): Aborted connection 22 to db: 'db-name' user: 'user' host: 'hostIP' (init_connect command failed) (mysql> show databases; FEHLER 2006 (HY000): MySQL-Server nicht mehr verfügbar. Keine Verbindung. Es wird versucht, die Verbindung wiederherzustellen... Verbindungs-ID: 64897 Aktuelle Datenbank: *** KEINE **_ FEHLER 1184 (08S01): Verbindung 22 mit DB "<Datenbankname>" abgebrochen. Benutzer: <Benutzer>, Host: <Host-IP-Adresse>. (Fehler beim Befehl "init_connect".))
+mysql> show databases; ERROR 2006 (HY000): MySQL server has gone away No connection. Trying to reconnect... Connection id:    64897 Current database: *** NONE **_ ERROR 1184 (08S01): Aborted connection 22 to db: 'db-name' user: 'user' host: 'hostIP' (init_connect command failed) (mysql&gt; show databases; FEHLER 2006 (HY000): MySQL-Server nicht mehr verfügbar. Keine Verbindung. Es wird versucht, die Verbindung wiederherzustellen... Verbindungs-ID: 64897 Aktuelle Datenbank: *** KEINE *** FEHLER 1184 (08S01): Verbindung 22 mit DB "&lt;Datenbankname&gt;" abgebrochen. Benutzer: &lt;Benutzer&gt;, Host: &lt;Host-IP-Adresse&gt;. (Fehler beim Befehl "init_connect".))
 
-**Resolution**: Setzen Sie den Wert von „init_connect“ im Azure-Portal auf der Registerkarte „Serverparameter“ zurück, und legen Sie mit „init_connect“ nur unterstützte Serverparameter fest. 
+**Lösung:** Setzen Sie den Wert von „init_connect“ im Azure-Portal auf der Registerkarte „Serverparameter“ zurück, und legen Sie mit „init_connect“ nur unterstützte Serverparameter fest. 
 
 
 ## <a name="errors-due-to-lack-of-super-privilege-and-dba-role"></a>Fehler aufgrund fehlender SUPER-Berechtigung und DBA-Rolle
