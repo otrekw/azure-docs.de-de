@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 02/07/2020
 ms.author: kumud
 ms.openlocfilehash: c8fdba59a8d31c064745c7a1904204359b386a7f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96015923"
 ---
 # <a name="configure-a-private-ip-address-for-a-vm-using-the-azure-portal"></a>Konfigurieren einer privaten IP-Adresse für eine VM im Azure-Portal
@@ -43,7 +43,7 @@ Wenn Sie eine VM im Resource Manager-Bereitstellungsmodus erstellen, können Sie
 
 Führen Sie die folgenden Schritte aus, um im virtuellen Netzwerk *TestVNet* im Subnetz *FrontEnd* die VM *DNS01* zu erstellen:
 
-1. Wählen Sie im Menü [Azure-Portal](https://portal.azure.com) die Option **Ressource erstellen** aus.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com)-Menü die Option **Ressource erstellen** aus.
 
     ![Erstellen einer Ressource, Azure-Portal](./media/virtual-networks-static-ip-arm-pportal/create-a-resource.png)
 2. Wählen Sie **Compute** > **Virtueller Computer** aus.
@@ -56,7 +56,7 @@ Führen Sie die folgenden Schritte aus, um im virtuellen Netzwerk *TestVNet* im 
     | **Abonnement** | Ihr aktuelles Abonnement |
     | **Ressourcengruppe** | **TestRG** (in Dropdownliste auswählen) |
     | **Name des virtuellen Computers** | *DNS01* |
-    | **Region** | **USA, Osten** |
+    | **Region** | **(USA) USA, Osten** |
     | **Image** | **Windows Server 2019 Datacenter** |
     | **Größe** | **VM-Größe**: **B1ls**, **Angebot**: **Standard** |
     | **Benutzername** | Der Benutzername Ihres Administratorkontos |

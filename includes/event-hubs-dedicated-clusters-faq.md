@@ -9,10 +9,10 @@ ms.date: 10/23/2020
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: 0335481566ae3f28ac0f1e6bddce7050a65e7dc2
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92516992"
 ---
 ### <a name="what-can-i-achieve-with-a-cluster"></a>Was kann ich mit einem Cluster erreichen?
@@ -35,7 +35,7 @@ Bei den Tests wurden folgende Kriterien verwendet:
 
 ### <a name="can-i-scale-updown-my-cluster"></a>Kann ich meinen Cluster zentral hoch-/herunterskalieren?
 
-Nach ihrer Erstellung werden bei Clustern mindestens vier Stunden Nutzung in Rechnung gestellt. In der Vorschauversion der Self-Service-Umgebung können Sie eine [Supportanfrage](https://ms.portal.azure.com/#create/Microsoft.Support) an das Event Hubs-Team übermitteln unter **Technisch** > **Kontingent** > **Anforderung zum Hoch- oder Herunterskalieren eines dedizierten Clusters** , um Ihren Cluster hoch- oder herunterzuskalieren. Es kann bis zu 7 Tage dauern, bis die Anfrage zum zentralen Herunterskalieren abgeschlossen wird. 
+Nach ihrer Erstellung werden bei Clustern mindestens vier Stunden Nutzung in Rechnung gestellt. In der Vorschauversion der Self-Service-Umgebung können Sie eine [Supportanfrage](https://ms.portal.azure.com/#create/Microsoft.Support) an das Event Hubs-Team übermitteln unter **Technisch** > **Kontingent** > **Anforderung zum Hoch- oder Herunterskalieren eines dedizierten Clusters**, um Ihren Cluster hoch- oder herunterzuskalieren. Es kann bis zu 7 Tage dauern, bis die Anfrage zum zentralen Herunterskalieren abgeschlossen wird. 
 
 ### <a name="how-does-geo-dr-work-with-my-cluster"></a>Wie funktioniert die Geo-Notfallwiederherstellung bei meinem Cluster?
 

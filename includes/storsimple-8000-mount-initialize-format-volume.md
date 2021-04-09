@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 23d0f16e025727f8d733f973a2c751ba7114fa49
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95557722"
 ---
 #### <a name="to-mount-initialize-and-format-a-volume"></a>So stellen Sie ein Volume bereit und initialisieren und formatieren dieses
@@ -22,7 +22,7 @@ ms.locfileid: "95557722"
 8. Im Fenster **Datenträgerverwaltung** werden die bereitgestellten Volumes wie in der folgenden Abbildung dargestellt angezeigt. Klicken Sie mit der rechten Maustaste auf das ermittelte Volume (klicken Sie auf den Datenträgernamen), und klicken Sie dann auf **Online**.
    
      ![Initialisieren und Formatieren von Volumes](./media/storsimple-8000-mount-initialize-format-volume/step7initializeformatvolume.png) 
-9. Klicken Sie erneut mit der rechten Maustaste auf das Volume (klicken Sie auf den Datenträgernamen), und klicken Sie dann auf **Initialisieren**.
+9. Klicken Sie mit der rechten Maustaste nochmals auf das Volume (klicken Sie auf den Datenträgernamen), und klicken Sie dann auf **Initialisieren**.
 10. Führen Sie die folgenden Schritte aus, um ein einfaches Volume zu formatieren.
     
     1. Wählen Sie das Volume aus, klicken Sie mit der rechten Maustaste darauf (klicken Sie im rechten Bereich), und klicken Sie dann auf **Neues einfaches Volume**.

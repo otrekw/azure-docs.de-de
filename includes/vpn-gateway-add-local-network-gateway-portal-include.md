@@ -9,13 +9,13 @@ ms.date: 10/22/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 5358bbbca716f5152a943c90cb7a5f735ae12047
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92479617"
 ---
-1. Geben Sie im [Azure-Portal](https://portal.azure.com) unter **Search resources, services, and docs (G+/)** (Nach Ressourcen, Diensten und Dokumenten suchen (G+/)) **Loakles Netzwerkgateway** ein. Suchen Sie unter **Marketplace** in den Suchergebnissen nach **Lokales Netzwerkgateway**, und wählen Sie es aus. Die Seite **Lokales Netzwerkgateway erstellen** wird geöffnet.
+1. Geben Sie im [Azure-Portal](https://portal.azure.com) unter **Search resources, services, and docs (G+/)** (Nach Ressourcen, Diensten und Dokumentation suchen (G+/)) **Lokales Netzwerkgateway** ein. Suchen Sie unter **Marketplace** in den Suchergebnissen nach **Lokales Netzwerkgateway**, und wählen Sie es aus. Die Seite **Lokales Netzwerkgateway erstellen** wird geöffnet.
 1. Geben Sie auf der Seite **Lokales Netzwerkgateway erstellen** die Werte für das lokale Netzwerkgateway ein.
 
    :::image type="content" source="./media/vpn-gateway-add-local-network-gateway-portal-include/create-ip.png" alt-text="Lokales Netzwerkgateway mit IP-Adresse erstellen":::

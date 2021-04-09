@@ -1,5 +1,5 @@
 ---
-title: 'Über die CLI: Zuordnen einer benutzerdefinierten Domäne zu einer App'
+title: 'CLI: Zuordnen einer benutzerdefinierten Domäne zu einer App'
 description: Hier erfahren Sie, wie Sie die Azure CLI zum Automatisieren der Bereitstellung und Verwaltung Ihrer App Service-App verwenden. In diesem Beispiel wird gezeigt, wie Sie einer App eine benutzerdefinierte Domäne zuordnen.
 tags: azure-service-management
 ms.assetid: 5ac4a680-cc73-4578-bcd6-8668c08802c2
@@ -8,10 +8,10 @@ ms.topic: sample
 ms.date: 12/11/2017
 ms.custom: mvc, seodec18
 ms.openlocfilehash: b7fa6955de306906de3be75bf465a955e4463ca2
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97006513"
 ---
 # <a name="map-a-custom-domain-to-an-app-service-app-using-cli"></a>Zuordnen einer benutzerdefinierten Domäne zu einer App Service-App mithilfe der Azure CLI
