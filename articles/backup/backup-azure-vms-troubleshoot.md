@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie Fehler beheben können, die
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 2cda13ea089ac08dff7c1ba5ca93ba56ab3c23cf
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2d09081533cdb2de5ee97cb000e9844b41a85ac3
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97831549"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105559365"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Problembehandlung bei Sicherungsfehlern auf virtuellen Azure-Computern
 
@@ -139,7 +139,7 @@ Navigieren Sie zur Überprüfung zu ***System and Event Viewer Application logs*
 
 Lösung:
 
-* Suchen Sie nach Möglichkeiten, die Last auf die VM-Datenträger zu verteilen. Hierdurch wird die Auslastung der einzelnen Datenträger reduziert. Sie können die [IOPS-Drosselung überprüfen, indem Sie Diagnosemetriken auf Speicherebene aktivieren](../virtual-machines/troubleshooting/performance-diagnostics.md#install-and-run-performance-diagnostics-on-your-vm).
+* Suchen Sie nach Möglichkeiten, die Last auf die VM-Datenträger zu verteilen. Hierdurch wird die Auslastung der einzelnen Datenträger reduziert. Sie können die [IOPS-Drosselung überprüfen, indem Sie Diagnosemetriken auf Speicherebene aktivieren](/troubleshoot/azure/virtual-machines/performance-diagnostics#install-and-run-performance-diagnostics-on-your-vm).
 * Ändern Sie die Sicherungsrichtlinie so, dass die Sicherungsvorgänge außerhalb der Spitzenzeiten durchgeführt werden, wenn die Auslastung auf der VM am niedrigsten ist.
 * Führen Sie ein Upgrade für die Azure-Datenträger durch, damit höhere IOPS-Werte unterstützt werden. [Weitere Informationen finden Sie hier](../virtual-machines/disks-types.md)
 
@@ -371,12 +371,12 @@ Normalerweise ist der VM-Agent auf virtuellen Computern, die über den Azure-Kat
 #### <a name="windows-vms---set-up-the-agent"></a>Virtuelle Windows-Computer – Einrichten des Agents
 
 * Laden Sie den [Agent-MSI](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)herunter, und installieren Sie ihn. Sie benötigen Administratorberechtigungen, um die Installation ausführen zu können.
-* [Aktualisieren Sie die VM-Eigenschaft](../virtual-machines/troubleshooting/install-vm-agent-offline.md#use-the-provisionguestagent-property-for-classic-vms) auf mit dem klassischen Bereitstellungsmodell erstellten virtuellen Computern, um anzugeben, dass der Agent installiert wurde. Dieser Schritt ist nicht für virtuelle Azure Resource Manager-Computer erforderlich.
+* [Aktualisieren Sie die VM-Eigenschaft](/troubleshoot/azure/virtual-machines/install-vm-agent-offline#use-the-provisionguestagent-property-for-classic-vms) auf mit dem klassischen Bereitstellungsmodell erstellten virtuellen Computern, um anzugeben, dass der Agent installiert wurde. Dieser Schritt ist nicht für virtuelle Azure Resource Manager-Computer erforderlich.
 
 #### <a name="linux-vms---set-up-the-agent"></a>Virtuelle Linux-Computer – Einrichten des Agents
 
 * Installieren Sie die neueste Version des Agents über das Repository der Distribution. Ausführliche Informationen zum Paketnamen finden Sie im [Linux-Agent-Repository](https://github.com/Azure/WALinuxAgent).
-* [Aktualisieren Sie die VM-Eigenschaft](../virtual-machines/troubleshooting/install-vm-agent-offline.md#use-the-provisionguestagent-property-for-classic-vms) auf mit dem klassischen Bereitstellungsmodell erstellten VMs, und stellen Sie sicher, dass der Agent installiert ist. Dieser Schritt ist nicht für virtuelle Azure Resource Manager-Computer erforderlich.
+* [Aktualisieren Sie die VM-Eigenschaft](/troubleshoot/azure/virtual-machines/install-vm-agent-offline#use-the-provisionguestagent-property-for-classic-vms) auf mit dem klassischen Bereitstellungsmodell erstellten VMs, und stellen Sie sicher, dass der Agent installiert ist. Dieser Schritt ist nicht für virtuelle Azure Resource Manager-Computer erforderlich.
 
 ### <a name="update-the-vm-agent"></a>Aktualisieren des VM-Agents
 

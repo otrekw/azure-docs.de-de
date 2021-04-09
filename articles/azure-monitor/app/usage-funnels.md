@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 07/17/2017
 ms.reviewer: mbullwin
-ms.openlocfilehash: d0e5cb5097a2f8833b10fec16a99b67c5c109fc8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c09667e0493fc39e8a2679a698f06301bab6ba45
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100583454"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105024947"
 ---
 # <a name="discover-how-customers-are-using-your-application-with-application-insights-funnels"></a>Informieren Sie sich mit Application Insights-Trichtern darüber, wie die Kunden Ihre Anwendung verwenden
 
@@ -47,6 +47,5 @@ Der obige Screenshot enthält fünf hervorgehobene Bereiche. Dies sind Features 
   * [Benutzer-, Sitzungs- und Ereignisanalyse in Azure Application Insights](usage-segmentation.md)
   * [Vermerkdauer](usage-retention.md)
   * [Arbeitsmappen](../visualize/workbooks-overview.md)
-  * [Hinzufügen von Benutzerkontext](usage-send-user-context.md)
+  * [Hinzufügen von Benutzerkontext](./usage-overview.md)
   * [Exportieren nach Power BI](./export-power-bi.md)
-

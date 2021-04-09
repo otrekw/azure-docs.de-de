@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2021
 ms.date: 02/09/2021
 ms.openlocfilehash: cb8d44353e826df14ed3baab2c4ca66ffed4a569
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100416691"
 ---
 # <a name="transform-data-in-delta-lake-using-mapping-data-flows"></a>Transformieren von Daten in einem Delta-Lake mithilfe von Zuordnungsdatenflüssen
@@ -68,11 +68,11 @@ In diesem Schritt erstellen Sie eine Pipeline mit einer Datenflussaktivität.
 
     ![Screenshot des Fensters, in dem beim Erstellen eines neuen Datenflusses der Name eingegeben wird](media/tutorial-data-flow/activity2.png)
 
-## <a name="build-transformation-logic-in-the-data-flow-canvas"></a>Erstellen von Transformationslogik auf der Datenflusscanvas
+## <a name="build-transformation-logic-in-the-data-flow-canvas&quot;></a>Erstellen von Transformationslogik auf der Datenflusscanvas
 
 In diesem Tutorial generieren Sie zwei Datenflüsse. Der erste Datenfluss verläuft einfach von der Quelle zur Senke, um aus der obigen CSV-Datei mit Filmen einen neuen Delta-Lake zu generieren. Abschließend erstellen Sie den Datenflussentwurf unten, um Daten im Delta-Lake zu aktualisieren.
 
-![Abschließender Flow](media/data-flow/data-flow-tutorial-6.png "Abschließender Flow")
+![Abschließender Flow](media/data-flow/data-flow-tutorial-6.png &quot;Abschließender Flow")
 
 ### <a name="tutorial-objectives"></a>Ziele des Tutorials
 
