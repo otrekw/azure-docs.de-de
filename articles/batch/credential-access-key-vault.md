@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 10/28/2020
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: eaaeaa05caca7897eb649b56504b643038f08d53
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99260128"
 ---
 # <a name="use-certificates-and-securely-access-azure-key-vault-with-batch"></a>Verwenden von Zertifikaten und sicheres Zugreifen auf Azure Key Vault mit Batch

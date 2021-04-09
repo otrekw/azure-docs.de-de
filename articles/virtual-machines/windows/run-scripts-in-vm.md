@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/02/2018
 ms.topic: how-to
 manager: carmonm
-ms.openlocfilehash: ab7d20a83c4cb8cb7a36c4603a5b0b2e69b0662f
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 24ff0d8089055f83c76156cf5fb163313faf9492
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102560666"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105043477"
 ---
 # <a name="run-scripts-in-your-windows-vm"></a>Ausführen von Skripts in Ihrer Windows-VM
 
@@ -58,7 +58,7 @@ Der [Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md
 
 ## <a name="serial-console"></a>Serielle Konsole
 
-Die [serielle Konsole](../troubleshooting/serial-console-windows.md) stellt direkten Zugriff auf eine VM zur Verfügung, ähnlich, als wäre eine Tastatur mit der VM verbunden.
+Die [serielle Konsole](/troubleshoot/azure/virtual-machines/serial-console-windows) stellt direkten Zugriff auf eine VM zur Verfügung, ähnlich, als wäre eine Tastatur mit der VM verbunden.
 
 * Ausführen von Befehlen auf virtuellen Azure-Computern.
 * Kann mithilfe einer textbasierten Konsole für den Computer im Azure-Portal ausgeführt werden.
@@ -72,4 +72,4 @@ Erfahren Sie mehr über die verschiedenen Funktionen, die zur Ausführung von Sk
 * [Benutzerdefinierte Skripterweiterung](../extensions/custom-script-windows.md)
 * [Befehl ausführen](run-command.md)
 * [Hybrid-Runbook-Worker](../../automation/automation-hybrid-runbook-worker.md)
-* [Serielle Konsole](../troubleshooting/serial-console-windows.md)
+* [Serielle Konsole](/troubleshoot/azure/virtual-machines/serial-console-windows)

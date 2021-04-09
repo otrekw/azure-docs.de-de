@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/07/2019
 ms.author: jeedes
 ms.openlocfilehash: bb91322df315d60adddf184905d0c619f5be8d6a
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92313562"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-aclp"></a>Tutorial: Azure Active Directory-Integration mit ACLP
@@ -73,10 +73,10 @@ Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem A
 Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit ACLP müssen Sie die folgenden Schritte ausführen:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-2. **[Konfigurieren des einmaligen Anmeldens für ACLP](#configure-aclp-single-sign-on)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
+2. **[Konfigurieren des einmaligen Anmeldens für ACLP](#configure-aclp-single-sign-on)**, um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
 3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
 4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Erstellen eines ACLP-Testbenutzers](#create-aclp-test-user)** , um eine Entsprechung von Britta Simon in ACLP zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
+5. **[Erstellen eines ACLP-Testbenutzers](#create-aclp-test-user)**, um eine Entsprechung von Britta Simon in ACLP zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
 6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
@@ -166,7 +166,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 ### <a name="create-aclp-test-user"></a>Erstellen eines ACLP-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in ACLP einen Benutzer namens Britta Simon. Wenden Sie sich an das  [ACLP-Supportteam](mailto:mrichards@sans.org), um die Benutzer auf der ACLP-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in ACLP einen Benutzer namens Britta Simon. Wenden Sie sich an das [ACLP-Supportteam](mailto:mrichards@sans.org), um die Benutzer auf der ACLP-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 

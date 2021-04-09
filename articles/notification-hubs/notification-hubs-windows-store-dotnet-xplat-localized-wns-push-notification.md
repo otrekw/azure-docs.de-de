@@ -18,10 +18,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/22/2019
 ms.openlocfilehash: d91320d8f78942ca916084cbf29a88818d95f531
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92314620"
 ---
 # <a name="tutorial-send-localized-push-notifications-to-windows-apps-using-azure-notification-hubs"></a>Tutorial: Senden von lokalisierten Pushbenachrichtigungen an Windows-Apps mit Azure Notification Hubs
@@ -32,14 +32,14 @@ ms.locfileid: "92314620"
 
 ## <a name="overview"></a>Übersicht
 
-In diesem Tutorial wird gezeigt, wie Sie lokalisierte Pushbenachrichtigungen an mobile Geräte senden, die beim Notification Hubs-Dienst registriert wurden. Sie aktualisieren in diesem Tutorial Anwendungen, die Sie unter [Tutorial: Senden von Pushbenachrichtigungen an bestimmte Windows Phone-Geräte mit Azure Notification Hubs](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md) erstellt haben, um die folgenden Szenarien zu unterstützen:
+In diesem Tutorial wird gezeigt, wie Sie lokalisierte Pushbenachrichtigungen an mobile Geräte senden, die beim Notification Hubs-Dienst registriert wurden. Im Tutorial aktualisieren Sie Anwendungen, die im Tutorial zum [Senden von Benachrichtigungen an bestimmte Geräte (Universelle Windows-Plattform)](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md) erstellt wurden, um die folgenden Szenarien zu unterstützen:
 
 - In der Windows Store-App können Clientgeräte eine Sprache angeben und verschiedene Nachrichtenkategorien abonnieren.
 - Die Back-End-App überträgt Benachrichtigungen mithilfe der Features für **Tags** und **Vorlagen** von Azure Notification Hubs.
 
 Nach Abschluss des Tutorials können Sie sich für Kategorien registrieren, die Sie interessieren, und zudem eine Sprache angeben, in der Sie die Benachrichtigungen empfangen möchten. Die Back-End-Anwendung sendet Benachrichtigungen, die je nach Sprache und Gerät lokalisiert werden.
 
-In diesem Tutorial lernen Sie Folgendes:
+In diesem Tutorial lernen Sie, wie die folgenden Aufgaben ausgeführt werden:
 
 > [!div class="checklist"]
 > * Aktualisieren der Windows-App zur Unterstützung von Gebietsschemainformationen
@@ -48,9 +48,9 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Absolvieren Sie [Tutorial: Senden von Pushbenachrichtigungen an bestimmte Windows Phone-Geräte mit Azure Notification Hubs](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md) erstellt haben.
+Schließen Sie das [Tutorial zum Senden von Benachrichtigungen an bestimmte Geräte (Universelle Windows-Plattform)](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md) ab.
 
-Unter [Tutorial: Senden von Pushbenachrichtigungen an bestimmte Windows Phone-Geräte mit Azure Notification Hubs](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md) haben Sie eine App erstellt, die mithilfe von **Tags** Benachrichtigungen für verschiedene **Kategorien** von Nachrichten abonniert. In diesem Tutorial verwenden Sie das Feature für **Vorlagen** von Notification Hubs, um **lokalisierte** Benachrichtigungen für Nachrichten zu verschicken.
+Im [Tutorial zum Senden von Benachrichtigungen an bestimmte Geräte (Universelle Windows-Plattform)](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md) haben Sie eine App erstellt, die mithilfe von **Tags** Benachrichtigungen für verschiedene **Kategorien** von Nachrichten abonniert. In diesem Tutorial verwenden Sie das Feature für **Vorlagen** von Notification Hubs, um **lokalisierte** Benachrichtigungen für Nachrichten zu verschicken.
 
 Mit Vorlagen können Sie auf einer hohen Ebene das Format festlegen, in dem ein bestimmtes Gerät eine Benachrichtigung empfangen soll. Die Vorlage gibt das exakte Format der Nutzlast anhand von Eigenschaften an, die Teil der von Ihrem Back-End verschickten Nachricht sind. In diesem Tutorial sendet die Back-End-Anwendung eine vom Gebietsschema unabhängige Nachricht, die alle unterstützten Sprachen enthält:
 
@@ -78,7 +78,7 @@ Weitere Informationen zu Vorlagen finden Sie im Artikel zu [Vorlagen](notificati
 
 ## <a name="update-windows-app-to-support-locale-information"></a>Aktualisieren der Windows-App zur Unterstützung von Gebietsschemainformationen
 
-1. Öffnen Sie die Visual Studio-Projektmappe, die Sie unter [Tutorial: Senden von Pushbenachrichtigungen an bestimmte Windows Phone-Geräte mit Azure Notification Hubs](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md) erstellt haben.
+1. Öffnen Sie die Visual Studio-Projektmappe, die Sie für das [Tutorial zum Senden von Benachrichtigungen an bestimmte Geräte (Universelle Windows-Plattform)](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md) erstellt haben.
 2. Fügen Sie in die Datei `MainPage.xaml` der Projektmappe ein Gebietsschema-Kombinationsfeld ein:
 
     ```xml

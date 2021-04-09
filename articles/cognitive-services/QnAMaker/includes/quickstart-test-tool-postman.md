@@ -9,10 +9,10 @@ ms.topic: include
 ms.custom: include file
 ms.date: 11/09/2020
 ms.openlocfilehash: fa497b69b067d5556f11effdb52505895ecc3bdd
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "94386519"
 ---
 In diesem Schnellstart auf Postman-Basis wird Schritt für Schritt erläutert, wie Sie eine Antwort aus einer Wissensdatenbank abrufen.
@@ -45,7 +45,7 @@ Verwenden Sie diese Vorgehensweise, um Postman zu konfigurieren, und lesen Sie a
     |`Content-type`|`application/json`|Headerwert für Ihren Inhalt.|
     ||`{"question":"<Your question>"}`|Text der POST-Anforderung als JSON-Objekt. Dieser Wert ändert sich in jedem der folgenden Abschnitte abhängig vom Zweck der jeweiligen Abfrage.|
 
-1. Öffnen Sie Postman, und erstellen Sie eine neue einfache **POST** -Anforderung mit den Einstellungen Ihrer veröffentlichten Wissensdatenbank. Ändern Sie in den folgenden Abschnitten den JSON-Code im POST-Text, um die Abfrage für Ihre Wissensdatenbank zu ändern.
+1. Öffnen Sie Postman, und erstellen Sie eine neue einfache **POST**-Anforderung mit den Einstellungen Ihrer veröffentlichten Wissensdatenbank. Ändern Sie in den folgenden Abschnitten den JSON-Code im POST-Text, um die Abfrage für Ihre Wissensdatenbank zu ändern.
 
 # <a name="qna-maker-managed-preview-release"></a>[Mit QnA Maker verwaltet (Vorschauversion)](#tab/v2)
 
@@ -63,7 +63,7 @@ Verwenden Sie diese Vorgehensweise, um Postman zu konfigurieren, und lesen Sie a
     |`Content-type`|`application/json`|Headerwert für Ihren Inhalt.|
     ||`{"question":"<Your question>"}`|Text der POST-Anforderung als JSON-Objekt. Dieser Wert ändert sich in jedem der folgenden Abschnitte abhängig vom Zweck der jeweiligen Abfrage.|
 
-1. Öffnen Sie Postman, und erstellen Sie eine neue einfache **POST** -Anforderung mit den Einstellungen Ihrer veröffentlichten Wissensdatenbank. Ändern Sie in den folgenden Abschnitten den JSON-Code im POST-Text, um die Abfrage für Ihre Wissensdatenbank zu ändern.
+1. Öffnen Sie Postman, und erstellen Sie eine neue einfache **POST**-Anforderung mit den Einstellungen Ihrer veröffentlichten Wissensdatenbank. Ändern Sie in den folgenden Abschnitten den JSON-Code im POST-Text, um die Abfrage für Ihre Wissensdatenbank zu ändern.
 ---
 
 ## <a name="use-metadata-to-filter-answer"></a>Filtern von Antworten mithilfe von Metadaten

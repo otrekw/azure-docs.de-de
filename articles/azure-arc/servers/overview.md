@@ -4,12 +4,12 @@ description: Hier erfahren Sie, wie Sie außerhalb von Azure gehostete Server mi
 keywords: Azure Automation, DSC, PowerShell, Desired State Configuration, Updateverwaltung, Änderungsnachverfolgung, Bestand, Runbooks, Python, grafisch, Hybrid
 ms.date: 02/18/2021
 ms.topic: overview
-ms.openlocfilehash: 92de3b1a9cf07c25b13e2d038534e93318882bb1
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 863cab073018c5a592cba6e94451a9af038ebd52
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102175973"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105023332"
 ---
 # <a name="what-is-azure-arc-enabled-servers"></a>Was sind Server mit Azure Arc-Aktivierung?
 
@@ -23,7 +23,7 @@ Wenn Sie Ihren Computer mit Servern mit Azure Arc-Unterstützung verbinden, kö
 
 - Zuweisen von [Azure Policy-Gastkonfigurationen](../../governance/policy/concepts/guest-configuration.md) mit der gleichen Vorgehensweise wie bei der Richtlinienzuweisung für virtuelle Azure-Computer Derzeit werden von den meisten Gastkonfigurationsrichtlinien keine Konfigurationen angewendet, sondern sie dienen lediglich zur Überwachung der Einstellungen des Computers. Informationen zu den Kosten der Nutzung von Azure Policy-Gastkonfigurationsrichtlinien mit Arc-fähigen Servern finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/details/azure-policy/).
 
-- Erstellen Sie mit [Änderungsnachverfolgung und Bestand](../../automation/change-tracking/overview.md) in Azure Automation und mit der [Überwachung der Dateiintegrität in Azure Security Center ](https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring) für Server, auf denen [Azure Defender für Server](https://docs.microsoft.com/azure/security-center/defender-for-servers-introduction) aktiviert ist, Berichte zu Konfigurationsänderungen an installierter Software, an Microsoft-Diensten, an der Windows-Registrierung und Windows-Dateien sowie an Linux-Daemons auf überwachten Servern.
+- Erstellen Sie mit [Änderungsnachverfolgung und Bestand](../../automation/change-tracking/overview.md) in Azure Automation und mit der [Überwachung der Dateiintegrität in Azure Security Center ](../../security-center/security-center-file-integrity-monitoring.md) für Server, auf denen [Azure Defender für Server](../../security-center/defender-for-servers-introduction.md) aktiviert ist, Berichte zu Konfigurationsänderungen an installierter Software, an Microsoft-Diensten, an der Windows-Registrierung und Windows-Dateien sowie an Linux-Daemons auf überwachten Servern.
 
 - Überwachen der Leistung des Gastbetriebssystems des verbundenen Computers und Erkennen von Anwendungskomponenten, um deren Prozesse und Abhängigkeiten mit anderen, von der Anwendung kommunizierten Ressourcen über [Azure Monitor für VMs](../../azure-monitor/vm/vminsights-overview.md) zu überwachen
 
