@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: tutorial
 ms.date: 5/6/2019
 ms.openlocfilehash: a12068259d82e833826bcac5e6c58059fb51c56c
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93336978"
 ---
 # <a name="tutorial-monitor-and-tune-azure-database-for-postgresql---single-server"></a>Tutorial: Überwachung und Optimierung in Azure Database for PostgreSQL – Einzelserver
@@ -27,10 +27,10 @@ Azure Database for PostgreSQL umfasst Features,mit denen Sie die Leistung Ihres 
 Sie benötigen einen Azure Database for PostgreSQL-Server mit der PostgreSQL-Version 9.6 oder 10. Sie können auch die unter [Entwerfen einer Azure Database for PostgreSQL-Instanz mithilfe des Azure-Portals](tutorial-design-database-using-azure-portal.md) beschriebenen Schritte ausführen, um einen Server zu erstellen.
 
 > [!IMPORTANT]
-> Der **Abfragespeicher** , **Query Performance Insight** und die **Leistungsempfehlungen** stehen als öffentliche Vorschauversion zur Verfügung.
+> Der **Abfragespeicher**, **Query Performance Insight** und die **Leistungsempfehlungen** stehen als öffentliche Vorschauversion zur Verfügung.
 
 ## <a name="enabling-data-collection"></a>Aktivieren von Datensammlung
-Der [Abfragespeicher](concepts-query-store.md) erfasst den Verlauf der Abfragen und Wartestatistiken auf Ihrem Server und speichert ihn in der **azure_sys** -Datenbank auf Ihrem Server. Dies ist eine optionale Funktion. Aktivieren Sie sie wie folgt:
+Der [Abfragespeicher](concepts-query-store.md) erfasst den Verlauf der Abfragen und Wartestatistiken auf Ihrem Server und speichert ihn in der **azure_sys**-Datenbank auf Ihrem Server. Dies ist eine optionale Funktion. So aktivieren Sie es:
 
 1. Öffnen Sie das Azure-Portal.
 
@@ -42,7 +42,7 @@ Der [Abfragespeicher](concepts-query-store.md) erfasst den Verlauf der Abfragen 
    
    :::image type="content" source="./media/tutorial-performance-intelligence/query-store-parameters.png" alt-text="Abfragespeicher-Serverparameter":::
 
-5. Es kann bis zu 20 Minuten dauern, bis der erste Datenbatch in der **azure-sys** -Datenbank gespeichert ist.
+5. Es kann bis zu 20 Minuten dauern, bis der erste Datenbatch in der **azure-sys**-Datenbank gespeichert ist.
 
 
 ## <a name="performance-insights"></a>Einblicke in die Leistung
@@ -83,7 +83,7 @@ Das Feature [Leistungsempfehlungen](concepts-performance-recommendations.md) ana
 
 4. Das Fenster **Leistungsempfehlungen** zeigt eine Liste mit den gefundenen Empfehlungen an. 
 
-5. Eine Empfehlung zeigt Informationen zur relevanten **Datenbank** , **Tabelle** , **Spalte** und **Indexgröße** an.
+5. Eine Empfehlung zeigt Informationen zur relevanten **Datenbank**, **Tabelle**, **Spalte** und **Indexgröße** an.
 
    :::image type="content" source="./media/tutorial-performance-intelligence/performance-recommendations-result.png" alt-text="Ergebnisse der Leistungsempfehlungen":::
 
