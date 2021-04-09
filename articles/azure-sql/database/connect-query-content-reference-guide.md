@@ -11,13 +11,13 @@ ms.topic: guide
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 05/29/2020
-ms.openlocfilehash: a9f9e03227bfb75d94ed79cdf858278e2efe4f31
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.date: 03/17/2021
+ms.openlocfilehash: 96f40f1abd14987b7c404f5a4210a2cab1fa9143
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102440393"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104594171"
 ---
 # <a name="azure-sql-database-and-azure-sql-managed-instance-connect-and-query-articles"></a>Artikel zum Verbinden mit und Abfragen von Azure SQL-Datenbank und Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -118,6 +118,7 @@ Die folgende Tabelle enthält Beispiele für ORM (Object-Relational Mapping)-Fra
   - [Verbinden und Abfragen mit Java](connect-query-java.md)
   - [Verbinden und Abfragen mit Python](connect-query-python.md)
   - [Verbinden und Abfragen mit Ruby](connect-query-ruby.md)
+  - [Installieren der SQL Server-Befehlszeilentools sqlcmd und bcp unter Linux:](/sql/linux/sql-server-linux-setup-tools) Versuchen Sie bei Linux-Benutzern, mithilfe von [sqlcmd](/sql/ssms/scripting/sqlcmd-use-the-utility) eine Verbindung mit Azure SQL-Datenbank oder Azure SQL Managed Instance herzustellen.
 - Codebeispiele für Wiederholungslogik:
   - [Herstellen resilienter Verbindungen mit ADO.NET][step-4-connect-resiliently-to-sql-with-ado-net-a78n]
   - [Herstellen resilienter Verbindungen mit PHP][step-4-connect-resiliently-to-sql-with-php-p42h]

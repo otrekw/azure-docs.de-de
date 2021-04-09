@@ -2,13 +2,13 @@
 title: Schaltfläche zum Bereitstellen in Azure
 description: Verwenden Sie diese Schaltfläche, um Azure Resource Manager-Vorlagen aus einem GitHub-Repository bereitzustellen.
 ms.topic: conceptual
-ms.date: 11/10/2020
-ms.openlocfilehash: abe59f377474540e9209691df8b1d1a7b806c26d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/25/2021
+ms.openlocfilehash: e25d49571347bb5ed27dbd52bb60c68cbeb4360d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98028742"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105543776"
 ---
 # <a name="use-a-deployment-button-to-deploy-templates-from-github-repository"></a>Verwenden einer Bereitstellungsschaltfläche zum Bereitstellen von Vorlagen aus einem GitHub-Repository
 
@@ -76,7 +76,7 @@ https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.github
 
 Damit ist die URL für Ihren Link vollständig.
 
-Die Vorlage wird in der Regel in einem öffentlichen Repository gehostet. Bei Verwendung eines privaten Repositorys müssen Sie ein Token für den Zugriff auf den unformatierten Inhalt der Vorlage einschließen. Das von GitHub generierte Token ist nur für kurze Zeit gültig. Der Link müsste daher häufig aktualisiert werden.
+[!INCLUDE [Deploy templates in private GitHub repo](../../../includes/resource-manager-private-github-repo-templates.md)]
 
 Wenn Sie [Git mit Azure Repos](/azure/devops/repos/git/) anstelle eines GitHub-Repositorys verwenden, können Sie die Schaltfläche **In Azure bereitstellen** dennoch verwenden. Sorgen Sie dafür, dass es sich bei Ihrem Repository um ein öffentliches handelt. Verwenden Sie den [Items-Vorgang](/rest/api/azure/devops/git/items/get), um die Vorlage abzurufen. Ihre Anforderung sollte das folgende Format aufweisen:
 

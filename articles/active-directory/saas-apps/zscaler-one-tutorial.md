@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/18/2020
 ms.author: jeedes
 ms.openlocfilehash: 3f825e247aff5c8fc53eb8610f33bd8e0b7fce3d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98735641"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-one"></a>Tutorial: Azure Active Directory-Integration in Zscaler One
@@ -189,14 +189,14 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
     b. Klicken Sie auf **Aktivieren**.
 
-## <a name="configuring-proxy-settings"></a>Konfigurieren von Proxyeinstellungen
-### <a name="to-configure-the-proxy-settings-in-internet-explorer"></a>So konfigurieren Sie die Proxyeinstellungen in Internet Explorer:
+## <a name="configuring-proxy-settings&quot;></a>Konfigurieren von Proxyeinstellungen
+### <a name=&quot;to-configure-the-proxy-settings-in-internet-explorer&quot;></a>So konfigurieren Sie die Proxyeinstellungen in Internet Explorer:
 
 1. Starten Sie **Internet Explorer**.
 
 2. Wählen Sie im Menü **Extras** die Option **Internetoptionen**, um das Dialogfeld **Internetoptionen** zu öffnen.   
 
-    ![Internetoptionen](./media/zscaler-one-tutorial/ic769492.png "Internetoptionen")
+    ![Internetoptionen](./media/zscaler-one-tutorial/ic769492.png &quot;Internetoptionen")
 
 3. Klicken Sie auf die Registerkarte **Verbindungen** .   
 

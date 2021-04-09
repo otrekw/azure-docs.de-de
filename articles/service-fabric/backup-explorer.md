@@ -5,12 +5,12 @@ author: athinanthny
 ms.topic: conceptual
 ms.date: 07/01/2020
 ms.author: atsenthi
-ms.openlocfilehash: 1da70c37c8a6ed93e7abe1b5d329e808c592e43a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a0131960d356e4862d1379c308e240e19e76205c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "86034750"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105048067"
 ---
 # <a name="read-and-update-a-reliable-collections-backup-by-using-backup-explorer"></a>Lesen und Aktualisieren einer Sicherung zuverlässiger Sammlungen mit dem Sicherungs-Explorer
 
@@ -45,4 +45,4 @@ Der Sicherungs-Explorer von NuGet (Microsoft.ServiceFabric.ReliableCollectionBac
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Erfahren Sie mehr zu [zuverlässigen Sammlungen in zustandsbehafteten Azure Service Fabric-Diensten](service-fabric-reliable-services-reliable-collections.md).
-* Machen Sie sich mit den [bewährten Methoden für Azure Service Fabric](service-fabric-best-practices-overview.md) vertraut.
+* Machen Sie sich mit den [bewährten Methoden für Azure Service Fabric](./service-fabric-best-practices-security.md) vertraut.

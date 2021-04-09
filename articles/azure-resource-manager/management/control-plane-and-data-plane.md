@@ -3,12 +3,12 @@ title: Vorgänge auf Steuerungsebene und auf Datenebene
 description: Beschreibt den Unterschied zwischen Vorgängen auf Steuerungsebene und auf Datenebene. Vorgänge auf Steuerungsebene werden von Azure Resource Manager verarbeitet. Vorgänge auf Datenebene werden von einem Dienst verarbeitet.
 ms.topic: conceptual
 ms.date: 09/10/2020
-ms.openlocfilehash: f478037c3e83c1d28cc900d64512a41619628dd7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 76304c81a1af1eef87d12cfd4130867851a61d28
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91371268"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105544093"
 ---
 # <a name="azure-control-plane-and-data-plane"></a>Azure-Steuerungsebene und -Datenebene
 
@@ -52,7 +52,7 @@ Die Steuerungsebene umfasst zwei Szenarien für die Verarbeitung von Anforderung
 
 ## <a name="data-plane"></a>Datenebene
 
-Anforderungen für Vorgänge auf Datenebene werden an einen Endpunkt gesendet, der für Ihre Instanz spezifisch ist. Beispielsweise ist der [Vorgang „Sprache erkennen“](/rest/api/cognitiveservices/textanalytics/detect%20language/detect%20language) in Cognitive Services ein Vorgang auf Datenebene, da die Anforderungs-URL wie folgt lautet:
+Anforderungen für Vorgänge auf Datenebene werden an einen Endpunkt gesendet, der für Ihre Instanz spezifisch ist. Beispielsweise ist der [Vorgang „Sprache erkennen“](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-language-detection) in Cognitive Services ein Vorgang auf Datenebene, da die Anforderungs-URL wie folgt lautet:
 
 ```http
 POST {Endpoint}/text/analytics/v2.0/languages

@@ -2,16 +2,16 @@
 title: 'Tutorial: Erstellen und Bereitstellen von Azure Resource Manager-Bicep-Dateien'
 description: Erstellen Sie Ihre erste Bicep-Datei zum Bereitstellen von Azure-Ressourcen. In diesem Tutorial lernen Sie die Syntax der Bicep-Datei kennen und erfahren, wie Sie ein Speicherkonto bereitstellen.
 author: mumian
-ms.date: 03/10/2021
+ms.date: 03/17/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: b04dbb7f708a4019ae70c716d4faa05ca2c28720
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: 8979585d7ec0fa6eac1866375fe1e80214f2d2e2
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102632576"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104594273"
 ---
 # <a name="tutorial-create-and-deploy-first-azure-resource-manager-bicep-file"></a>Tutorial: Erstellen und Bereitstellen Ihrer ersten Azure Resource Manager-Bicep-Datei
 
@@ -31,11 +31,11 @@ Zunächst sorgen wir dafür, dass Sie über die Tools verfügen, die Sie zum Ers
 
 ### <a name="editor"></a>Editor
 
-Zum Erstellen von Bicep-Dateien benötigen Sie einen guten Editor. Wir empfehlen Visual Studio Code mit der Bicep-Erweiterung. Informationen zum Installieren dieser Tools finden Sie bei Bedarf unter [Schnellstart: Erstellen von Bicep-Dateien mit Visual Studio Code](quickstart-create-bicep-use-visual-studio-code.md).
+Zum Erstellen von Bicep-Dateien benötigen Sie einen guten Editor. Wir empfehlen Visual Studio Code mit der Bicep-Erweiterung. Informationen zum Installieren dieser Tools finden Sie bei Bedarf unter [Entwicklungsumgebung](./bicep-install.md#development-environment).
 
 ### <a name="command-line-deployment"></a>Befehlszeilenbereitstellung
 
-Zum Bereitstellen der Bicep-Datei benötigen Sie außerdem die aktuelle Version von Azure PowerShell oder der Azure CLI. Die Installationsanweisungen finden Sie unter:
+Sie können Bicep-Dateien mithilfe der Azure CLI oder mithilfe von Azure PowerShell bereitstellen. Sie benötigen mindestens Version 2.20.0 der Azure CLI und mindestens Version 5.6.0 von Azure PowerShell. Die Installationsanweisungen finden Sie unter:
 
 - [Installieren von Azure PowerShell](/powershell/azure/install-az-ps)
 - [Installieren der Azure CLI unter Windows](/cli/azure/install-azure-cli-windows)
