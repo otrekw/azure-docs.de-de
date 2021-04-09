@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/18/2020
 ms.author: jeedes
 ms.openlocfilehash: 8c3d76f24cce860538dc3bd5dcf29b59708bdb5d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98726223"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-two"></a>Tutorial: Azure Active Directory-Integration in Zscaler Two
@@ -200,14 +200,14 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
     b. Klicken Sie auf **Aktivieren**.
 
-## <a name="configuring-proxy-settings"></a>Konfigurieren von Proxyeinstellungen
-### <a name="to-configure-the-proxy-settings-in-internet-explorer"></a>So konfigurieren Sie die Proxyeinstellungen in Internet Explorer:
+## <a name="configuring-proxy-settings&quot;></a>Konfigurieren von Proxyeinstellungen
+### <a name=&quot;to-configure-the-proxy-settings-in-internet-explorer&quot;></a>So konfigurieren Sie die Proxyeinstellungen in Internet Explorer:
 
 1. Starten Sie **Internet Explorer**.
 
 2. Wählen Sie im Menü **Extras** die Option **Internetoptionen**, um das Dialogfeld **Internetoptionen** zu öffnen.   
     
-     ![Internetoptionen](./media/zscaler-two-tutorial/ic769492.png "Internetoptionen")
+     ![Internetoptionen](./media/zscaler-two-tutorial/ic769492.png &quot;Internetoptionen")
 
 3. Klicken Sie auf die Registerkarte **Verbindungen** .   
   
