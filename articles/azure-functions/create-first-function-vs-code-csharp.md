@@ -8,12 +8,12 @@ adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./create-first-function-vs-code-csharp-ieux
-ms.openlocfilehash: b0c659c1b3bf373b7754dd9b058c74da35cc2e0a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ea0b66c49d6f37c6b8f7eaa7f667a63ab09155e0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101704785"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104952685"
 ---
 # <a name="quickstart-create-a-c-function-in-azure-using-visual-studio-code"></a>Schnellstart: Erstellen einer C#-Funktion in Azure mit Visual Studio Code
 
@@ -82,8 +82,10 @@ Nachdem Sie sich vergewissert haben, dass die Funktion auf Ihrem lokalen Compute
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sie haben [Visual Studio Code](functions-develop-vs-code.md?tabs=csharp) genutzt, um eine Funktions-App mit einer einfachen Funktion zu erstellen, die über HTTP ausgelöst wird. Im nächsten Artikel erweitern Sie diese Funktion, indem Sie eine Verbindung mit Azure Storage herstellen. Weitere Informationen zum Herstellen einer Verbindung mit anderen Azure-Diensten finden Sie unter [Hinzufügen von Bindungen zu einer vorhandenen Funktion in Azure Functions](add-bindings-existing-function.md?tabs=csharp). 
+Sie haben [Visual Studio Code](functions-develop-vs-code.md?tabs=csharp) genutzt, um eine Funktions-App mit einer einfachen Funktion zu erstellen, die über HTTP ausgelöst wird. Im nächsten Artikel erweitern Sie diese Funktion, indem Sie eine Verbindung mit Azure Cosmos DB oder Azure Storage herstellen. Weitere Informationen zum Herstellen einer Verbindung mit anderen Azure-Diensten finden Sie unter [Hinzufügen von Bindungen zu einer vorhandenen Funktion in Azure Functions](add-bindings-existing-function.md?tabs=csharp). 
 
+> [!div class="nextstepaction"]
+> [Herstellen einer Verbindung mit einer Datenbank](functions-add-output-binding-cosmos-db-vs-code.md?pivots=programming-language-csharp)
 > [!div class="nextstepaction"]
 > [Herstellen einer Verbindung mit einer Azure Storage-Warteschlange](functions-add-output-binding-storage-queue-vs-code.md?pivots=programming-language-csharp)
 

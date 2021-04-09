@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - mvc
 - device-developer
-ms.openlocfilehash: f69bbecfc2acc24cd63b87212197342b28723a9f
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 4423eea6c35ad44d55ad17f5703a95c6273422b8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102043098"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104585858"
 ---
 # <a name="iot-central-device-development-guide"></a>Entwicklungshandbuch für IoT Central-Geräte
 
@@ -105,7 +105,7 @@ Bei einem DTDL-Modell kann es sich um ein Modell _ohne Komponenten_ oder _mit me
 - Modell ohne Komponenten: Ein einfaches Modell verwendet keine eingebetteten oder weitergegebenen Komponenten. Alle Telemetriedaten, Eigenschaften und Befehle werden als einzelne _Standardkomponenten_ definiert. Ein Beispiel hierfür finden Sie unter dem [Thermostat](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json)-Modell.
 - Modell mit mehreren Komponenten: Ein komplexeres Modell, das mindestens zwei Komponenten umfasst. Zu diesen Komponenten gehören eine einzelne Standardkomponente und mindestens eine geschachtelte Komponente. Ein Beispiel hierfür finden Sie unter dem [Temperature Controller](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json)-Modell.
 
-Weitere Informationen finden Sie unter [IoT Plug & Play-Komponenten in Modellen](../../iot-pnp/concepts-components.md).
+Weitere Informationen finden Sie im [Modellhandbuch für IoT Plug & Play](../../iot-pnp/concepts-modeling-guide.md).
 
 ### <a name="conventions"></a>Konventionen
 

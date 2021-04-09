@@ -3,12 +3,12 @@ title: Schützen eines Windows-Clusters mithilfe von Windows-Sicherheit
 description: Es wird beschrieben, wie Sie die Knoten-zu-Knoten- und Client-zu-Knoten-Sicherheit in einem eigenständigen Cluster unter Windows mit Windows-Sicherheit konfigurieren.
 ms.topic: conceptual
 ms.date: 08/24/2017
-ms.openlocfilehash: e97a951f6dc0a97b1cfa8f960ed762084c82d2ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a34c7084a9faaf0d676d4f6c68da53b2bc84f01b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91839479"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103574610"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-windows-security"></a>Schützen eines eigenständigen Windows-Clusters mit Windows-Sicherheit
 Um nicht autorisierten Zugriff auf einen Service Fabric-Cluster zu verhindern, müssen Sie den Cluster schützen. Sicherheit ist besonders wichtig, wenn der Cluster Produktionsworkloads ausführt. In diesem Artikel wird beschrieben, wie Knoten-zu-Knoten- und Client-zu-Knoten-Sicherheit mit Windows-Sicherheit in der *ClusterConfig.JSON*-Datei konfiguriert wird.  Der Prozess entspricht dem Sicherheitskonfigurationsschritt von [Erstellen eines eigenständigen Clusters unter Windows Server](service-fabric-cluster-creation-for-windows-server.md). Weitere Informationen zur Verwendung von Windows-Sicherheit durch Service Fabric finden Sie unter [Szenarien für die Clustersicherheit](service-fabric-cluster-security.md).
@@ -19,13 +19,13 @@ Um nicht autorisierten Zugriff auf einen Service Fabric-Cluster zu verhindern, m
 >
 
 ## <a name="configure-windows-security-using-gmsa"></a>Konfigurieren der Windows-Sicherheit mithilfe von gMSA  
-Die Beispielkonfigurationsdatei *ClusterConfig.gMSA.Windows.MultiMachine.JSON*, die mit dem Paket [Microsoft.Azure.ServiceFabric.WindowsServer\<version>.zip](https://go.microsoft.com/fwlink/?LinkId=730690) für den eigenständigen Cluster heruntergeladen wurde, enthält eine Vorlage zum Konfigurieren der Windows-Sicherheit mithilfe eines [gruppenverwalteten Dienstkontos (Group Managed Service Account, gMSA)](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831782(v=ws.11)):  
+gMSA (gruppenverwaltetes Dienstkonto) ist das bevorzugte Sicherheitsmodell. Die Beispielkonfigurationsdatei *ClusterConfig.gMSA.Windows.MultiMachine.JSON*, die mit dem Paket [Microsoft.Azure.ServiceFabric.WindowsServer\<version>.zip](https://go.microsoft.com/fwlink/?LinkId=730690) für den eigenständigen Cluster heruntergeladen wurde, enthält eine Vorlage zum Konfigurieren der Windows-Sicherheit mithilfe eines [gruppenverwalteten Dienstkontos (Group Managed Service Account, gMSA)](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831782(v=ws.11)):  
 
 ```
 "security": {
     "ClusterCredentialType": "Windows",
     "ServerCredentialType": "Windows",
-    "WindowsIdentities": {  
+    "WindowsIdentities": {  
         "ClustergMSAIdentity": "[gMSA Identity]",
         "ClusterSPN": "[Registered SPN for the gMSA account]",
         "ClientIdentities": [
@@ -40,10 +40,10 @@ Die Beispielkonfigurationsdatei *ClusterConfig.gMSA.Windows.MultiMachine.JSON*, 
 
 | **Konfigurationseinstellung** | **Beschreibung** |
 | --- | --- |
-| ClusterCredentialType |Legen Sie den Wert *Windows* fest, um Windows-Sicherheit für Knoten-zu-Knoten-Kommunikation zu aktivieren.  | 
+| ClusterCredentialType |Legen Sie den Wert *Windows* fest, um Windows-Sicherheit für Knoten-zu-Knoten-Kommunikation zu aktivieren.  | 
 | ServerCredentialType |Legen Sie den Wert *Windows* fest, um Windows-Sicherheit für Client-zu-Knoten-Kommunikation zu aktivieren. |
 | WindowsIdentities |Enthält die Cluster und Clientidentitäten. |
-| ClustergMSAIdentity |Konfiguriert die Knoten-zu-Knoten-Sicherheit. Ein gruppenverwaltetes Dienstkonto. |
+| ClustergMSAIdentity |Konfiguriert die Knoten-zu-Knoten-Sicherheit. Ein von der Gruppe verwaltetes Dienstkonto |
 | ClusterSPN |Registrierter SPN für gMSA-Konto|
 | ClientIdentities |Konfiguriert die Client-zu-Knoten-Sicherheit. Ein Array mit Clientbenutzerkonten. |
 | Identity |Fügen Sie den Domänenbenutzer – „Domäne\Benutzername“ – für die Identität des Clients hinzu. |
@@ -75,7 +75,7 @@ Im folgenden Beispielabschnitt zur **Sicherheit** wird die Windows-Sicherheit mi
 ```
   
 ## <a name="configure-windows-security-using-a-machine-group"></a>Konfigurieren der Windows-Sicherheit mithilfe einer Computergruppe  
-Dieses Modell ist veraltet. Sie sollten gMSA wie oben beschrieben verwenden. Die Beispielkonfigurationsdatei *ClusterConfig.Windows.MultiMachine.JSON*, die mit dem Paket [Microsoft.Azure.ServiceFabric.WindowsServer\<version>.zip](https://go.microsoft.com/fwlink/?LinkId=730690) für den eigenständigen Cluster heruntergeladen wurde, enthält eine Vorlage zum Konfigurieren der Windows-Sicherheit.  Die Windows-Sicherheit wird im Abschnitt **Eigenschaften** konfiguriert: 
+Wie oben erläutert, wird gMSA bevorzugt, aber auch dieses Sicherheitsmodells wird unterstützt. Die Beispielkonfigurationsdatei *ClusterConfig.Windows.MultiMachine.JSON*, die mit dem Paket [Microsoft.Azure.ServiceFabric.WindowsServer\<version>.zip](https://go.microsoft.com/fwlink/?LinkId=730690) für den eigenständigen Cluster heruntergeladen wurde, enthält eine Vorlage zum Konfigurieren der Windows-Sicherheit.  Die Windows-Sicherheit wird im Abschnitt **Eigenschaften** konfiguriert: 
 
 ```
 "security": {
@@ -93,7 +93,7 @@ Dieses Modell ist veraltet. Sie sollten gMSA wie oben beschrieben verwenden. Die
 
 | **Konfigurationseinstellung** | **Beschreibung** |
 | --- | --- |
-| ClusterCredentialType |Legen Sie den Wert *Windows* fest, um Windows-Sicherheit für Knoten-zu-Knoten-Kommunikation zu aktivieren.  |
+| ClusterCredentialType |Legen Sie den Wert *Windows* fest, um Windows-Sicherheit für Knoten-zu-Knoten-Kommunikation zu aktivieren.  |
 | ServerCredentialType |Legen Sie den Wert *Windows* fest, um Windows-Sicherheit für Client-zu-Knoten-Kommunikation zu aktivieren. |
 | WindowsIdentities |Enthält die Cluster und Clientidentitäten. |
 | ClusterIdentity |Verwenden Sie einen Computergruppennamen – „Domäne\Computergruppe“ – um Knoten-zu-Knoten-Sicherheit zu konfigurieren. |

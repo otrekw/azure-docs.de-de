@@ -7,10 +7,10 @@ ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
 ms.openlocfilehash: da3302ac25aaac6202f42cee400b307fc701fe50
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "104674970"
 ---
 # <a name="how-to-connect-to-data-sources"></a>Herstellen einer Verbindung mit Datenquellen
@@ -62,5 +62,5 @@ Um es einfacher zu machen für Benutzer, die eine Datenquelle finden, aber keine
 ## <a name="summary"></a>Zusammenfassung
 Durch die Registrierung einer Datenquelle in **Azure Data Catalog** werden strukturelle und beschreibende Metadaten aus der Datenquelle in den Katalogdienst kopiert, sodass die darin enthaltenen Daten leichter auffindbar sind. Nachdem eine Datenquelle registriert und gefunden wurde, können Benutzer über das Menü „Öffnen in“ im **Azure Data Catalog**-Portal oder mit ihren bevorzugten Tools eine Verbindung mit der Datenquelle herstellen. oder mit ihren bevorzugten Tools eine Verbindung mit der Datenquelle herstellen.
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="see-also"></a>Siehe auch
 * [Erste Schritte mit Azure Data Catalog](data-catalog-get-started.md) .

@@ -14,10 +14,10 @@ ms.topic: reference
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: 0acb882410d103cf6f6c34bbecf2006094437b04
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102634684"
 ---
 # <a name="input-metadata"></a>Eingabemetadaten
@@ -49,7 +49,7 @@ Enthält eine Sammlung der AssetFile-Elemente für den Codierungsauftrag.
 
 ### <a name="other-child-elements"></a>Andere untergeordnete Elemente
 
-| Name | Beschreibung |
+| Name | BESCHREIBUNG |
 | --- | --- |
 | **Name**<br />Erforderlich |Name der Objektdatei <br /><br />Beispiel: `"Name": "Ignite-short.mp4"` |
 | **URI**<br />Erforderlich |Die URL, unter der sich das Eingabeobjekt befindet. Um das Eingabeobjekt zu bestimmen, zu dem das Ausgabeobjekt gehört, verwenden Sie das Feld `Uri` anstelle der ID.|

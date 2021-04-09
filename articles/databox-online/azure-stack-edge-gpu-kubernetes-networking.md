@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 02/21/2021
 ms.author: alkohli
-ms.openlocfilehash: 1a0fc569b7d552101c1e0bd1a065b2a91ebfa3c4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 139eeaa83629f3ef51f8eda414622f7da54dfab4
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102439611"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105560249"
 ---
 # <a name="kubernetes-networking-in-your-azure-stack-edge-pro-gpu-device"></a>Kubernetes-Netzwerke auf Ihrem Azure Stack Edge Pro-GPU-Gerät
 
@@ -86,4 +86,4 @@ Lesen Sie die folgenden Artikel, um Informationen zum Konfigurieren der Kubernet
 
 - [Externes Bereitstellen einer zustandslosen Anwendung auf Ihrem Azure Stack Edge Pro-Gerät über IoT Edge](azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md).
 
-- [Externes Bereitstellen einer zustandslosen Anwendung auf Ihrem Azure Stack Edge Pro-Gerät über kuebctl](azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md).
+- [Externes Bereitstellen einer zustandslosen Anwendung auf Ihrem Azure Stack Edge Pro-Gerät über kuebctl](./azure-stack-edge-gpu-deploy-stateless-application-kubernetes.md).
