@@ -9,13 +9,13 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
-ms.date: 03/18/2020
-ms.openlocfilehash: f03fa84c02c4b3894efe069289b0ecbb9e90dfdb
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/24/2021
+ms.openlocfilehash: a1f15330a912c8a8a93fe1f74e88ef8d117441c2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104654627"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105047897"
 ---
 # <a name="analyze-data-with-dedicated-sql-pools"></a>Analysieren von Daten mit dedizierten SQL-Pools
 
@@ -112,9 +112,6 @@ Ein dedizierter SQL-Pool nutzt abrechenbare Ressourcen, solange er aktiv ist. Si
     Diese Abfrage zeigt, wie die Gesamtzahl der Fahrtstrecken und die durchschnittliche Fahrtstrecke mit der Anzahl der Fahrgäste in Beziehung stehen.
 1. Ändern Sie im Ergebnisfenster des SQL-Skripts die **Ansicht** in **Diagramm**, um eine Visualisierung der Ergebnisse als Liniendiagramm anzuzeigen.
     
-    > [!NOTE]
-    > Ein dedizierter SQL-Pool (ehemals SQL DW) mit Arbeitsbereichsunterstützung kann über die QuickInfo im Datenhub identifiziert werden.
-
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]

@@ -7,10 +7,10 @@ ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, cc996988-fb4f-47, devx-track-python
 ms.openlocfilehash: f4477a09f151695b826d0becf28e92ceaf3f9e85
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "102453205"
 ---
 # <a name="azure-queue-storage-trigger-for-azure-functions"></a>Azure Queue Storage-Trigger für Azure Functions
@@ -427,7 +427,7 @@ Greifen Sie über den Parameter, der als [QueueMessage](/python/api/azure-functi
 
 Der Warteschlangentrigger stellt mehrere [Metadateneigenschaften](./functions-bindings-expressions-patterns.md#trigger-metadata) bereit. Diese Eigenschaften können als Teil der Bindungsausdrücke in anderen Bindungen oder als Parameter im Code verwendet werden. Die Eigenschaften sind Elemente der [CloudQueueMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage)-Klasse.
 
-|Eigenschaft|type|BESCHREIBUNG|
+|Eigenschaft|Typ|BESCHREIBUNG|
 |--------|----|-----------|
 |`QueueTrigger`|`string`|Die Warteschlangennutzlast (bei einer gültigen Zeichenfolge). Handelt es sich bei der Warteschlangennutzlast um eine Zeichenfolge, hat `QueueTrigger` den gleichen Wert wie die Variable, die durch die Eigenschaft `name` in *function.json* benannt wird.|
 |`DequeueCount`|`int`|Gibt an, wie oft diese Nachricht aus der Warteschlange entfernt wurde.|

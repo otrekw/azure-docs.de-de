@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 03/02/2021
 ms.topic: conceptual
 ms.service: azure-object-anchors
-ms.openlocfilehash: 74663f05c5ff995a090c7cd35e4edf46a754da17
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 551374824610c0257aaf52c45768d31849026524
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102034607"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105047540"
 ---
 # <a name="runtime-sdk-overview"></a>Übersicht über das Runtime-SDK
 
@@ -25,59 +25,59 @@ Die im Folgenden beschriebenen Typen finden Sie im Namespace **Microsoft.MixedRe
 
 ### <a name="objectmodel"></a>ObjectModel
 
-Eine [ObjectModel](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.objectmodel)-Klasse stellt die Geometrie eines physischen Objekts dar und codiert die erforderlichen Parameter für die Erkennung und die Schätzung der räumlichen Lage. Sie muss mithilfe des [Object Anchors-Diensts](../quickstarts/get-started-model-conversion.md) erstellt werden. Die generierte Modelldatei kann dann von einer Anwendung mithilfe der Object Anchors-API geladen, und das im Modell eingebettete Gittermodell kann zur Visualisierung abgefragt werden.
+Eine [ObjectModel](/dotnet/api/microsoft.azure.objectanchors.objectmodel)-Klasse stellt die Geometrie eines physischen Objekts dar und codiert die erforderlichen Parameter für die Erkennung und die Schätzung der räumlichen Lage. Sie muss mithilfe des [Object Anchors-Diensts](../quickstarts/get-started-model-conversion.md) erstellt werden. Die generierte Modelldatei kann dann von einer Anwendung mithilfe der Object Anchors-API geladen, und das im Modell eingebettete Gittermodell kann zur Visualisierung abgefragt werden.
 
 ### <a name="objectsearcharea"></a>ObjectSearchArea
 
-Eine [ObjectSearchArea](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.objectsearcharea)-Klasse gibt den Bereich an, in dem nach einem oder mehreren Objekten gesucht werden soll. Sie wird von der Knoten-ID eines Raumdiagramms und den räumlichen Begrenzungen in dem Koordinatensystem definiert, für das diese ID steht. Das Runtime-SDK für Object Anchors unterstützt vier Begrenzungsarten: **Sichtfeld**, **Begrenzungsrahmen**, **Kugel** und **Standort**.
+Eine [ObjectSearchArea](/dotnet/api/microsoft.azure.objectanchors.objectsearcharea)-Klasse gibt den Bereich an, in dem nach einem oder mehreren Objekten gesucht werden soll. Sie wird von der Knoten-ID eines Raumdiagramms und den räumlichen Begrenzungen in dem Koordinatensystem definiert, für das diese ID steht. Das Runtime-SDK für Object Anchors unterstützt vier Begrenzungsarten: **Sichtfeld**, **Begrenzungsrahmen**, **Kugel** und **Standort**.
 
 ### <a name="objectquery"></a>ObjectQuery
 
-Eine [ObjectQuery](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.objectquery)-Klasse teilt einem **Objektobserver** mit, wie die Objekte eines bestimmten Modells gefunden werden können. Sie stellt die folgenden anpassbaren Parameter bereit, deren Parameter von einem Objektmodell abgerufen werden können.
+Eine [ObjectQuery](/dotnet/api/microsoft.azure.objectanchors.objectquery)-Klasse teilt einem **Objektobserver** mit, wie die Objekte eines bestimmten Modells gefunden werden können. Sie stellt die folgenden anpassbaren Parameter bereit, deren Parameter von einem Objektmodell abgerufen werden können.
 
 #### <a name="minsurfacecoverage"></a>MinSurfaceCoverage
 
-Die Eigenschaft [MinSurfaceCoverage](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.objectquery.minsurfacecoverage) gibt den Wert an, bei dem eine Instanz als erkannt gelten soll.
+Die Eigenschaft [MinSurfaceCoverage](/dotnet/api/microsoft.azure.objectanchors.objectquery.minsurfacecoverage) gibt den Wert an, bei dem eine Instanz als erkannt gelten soll.
 
 Für jeden Objektkandidaten berechnet ein **Observer** das Verhältnis der überlappenden Oberflächen zwischen dem transformierten Objektmodell und der Szene. Dieser Kandidat wird dann nur an die Anmeldung weitergegeben, wenn das Deckungsverhältnis den festgelegten Schwellenwert übersteigt.
 
 #### <a name="isexpectedtobestandingongroundplane"></a>IsExpectedToBeStandingOnGroundPlane
 
-Die Eigenschaft [IsExpectedToBeStandingOnGroundPlane](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.objectquery.isexpectedtobestandingongroundplane) gibt an, ob erwartet wird, dass das Zielobjekt auf der Bodenfläche steht.
+Die Eigenschaft [IsExpectedToBeStandingOnGroundPlane](/dotnet/api/microsoft.azure.objectanchors.objectquery.isexpectedtobestandingongroundplane) gibt an, ob erwartet wird, dass das Zielobjekt auf der Bodenfläche steht.
 
 Die Bodenfläche ist die niedrigste horizontale Fläche im Suchbereich. Sie stellt eine gute Einschränkung für mögliche Objektlagen dar. Wenn Sie dieses Flag aktivieren, wird der **Observer** angewiesen, die räumliche Lage in einem eingeschränkten Bereich zu schätzen. Dadurch kann die Genauigkeit verbessert werden. Dieser Parameter wird ignoriert, wenn das Modell nicht auf der Bodenfläche stehen soll.
 
 #### <a name="expectedmaxverticalorientationindegrees"></a>ExpectedMaxVerticalOrientationInDegrees
 
-Die Eigenschaft [ExpectedMaxVerticalOrientationInDegrees](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.objectquery.expectedmaxverticalorientationindegrees) gibt den erwarteten maximalen Winkel in Grad an, der zwischen der Aufwärtsrichtung einer Objektinstanz und der Schwerkraft erwartet wird.
+Die Eigenschaft [ExpectedMaxVerticalOrientationInDegrees](/dotnet/api/microsoft.azure.objectanchors.objectquery.expectedmaxverticalorientationindegrees) gibt den erwarteten maximalen Winkel in Grad an, der zwischen der Aufwärtsrichtung einer Objektinstanz und der Schwerkraft erwartet wird.
 
 Dieser Parameter stellt eine weitere Einschränkung bei der Aufwärtsrichtung einer geschätzten räumlichen Lage dar. Wenn ein Objekt aufrecht steht, kann dieser Parameter beispielsweise 0 sein. Object Anchors ist nicht darauf ausgelegt, Objekte zu erkennen, die von diesem Modell abweichen. Wenn das Modell aufrecht ist, wird eine seitlich liegende Instanz nicht erkannt. Für das seitlich liegende Layout müsste ein neues Modell verwendet werden. Die gleiche Regel gilt für die Artikulation.
 
 #### <a name="maxscalechange"></a>MaxScaleChange
 
-Die Eigenschaft [MaxScaleChange](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.objectquery.maxscalechange) gibt die maximale Änderung am Objektmaßstab (zwischen 0 und 1) in Bezug auf die räumliche Zuordnung an. Der geschätzte Maßstab wird auf transformierte Objekteckpunkte angewendet, die auf den Nullpunkt zentriert und auf die Achsen ausgerichtet sind. Geschätzte Maßstäbe entsprechen möglicherweise nicht dem tatsächlichen Maßstab zwischen einem CAD-Modell und dem physischen Äquivalent, sondern liefern der App einige Werte, mit der ein Objektmodell in der Nähe der räumlichen Zuordnung für das physische Modell gerendert werden kann.
+Die Eigenschaft [MaxScaleChange](/dotnet/api/microsoft.azure.objectanchors.objectquery.maxscalechange) gibt die maximale Änderung am Objektmaßstab (zwischen 0 und 1) in Bezug auf die räumliche Zuordnung an. Der geschätzte Maßstab wird auf transformierte Objekteckpunkte angewendet, die auf den Nullpunkt zentriert und auf die Achsen ausgerichtet sind. Geschätzte Maßstäbe entsprechen möglicherweise nicht dem tatsächlichen Maßstab zwischen einem CAD-Modell und dem physischen Äquivalent, sondern liefern der App einige Werte, mit der ein Objektmodell in der Nähe der räumlichen Zuordnung für das physische Modell gerendert werden kann.
 
 #### <a name="searchareas"></a>SearchAreas
 
-Die Eigenschaft [SearchAreas](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.objectquery.searchareas) gibt ein Array räumlicher Begrenzungen an, in denen Objekte gefunden werden können.
+Die Eigenschaft [SearchAreas](/dotnet/api/microsoft.azure.objectanchors.objectquery.searchareas) gibt ein Array räumlicher Begrenzungen an, in denen Objekte gefunden werden können.
 
 Der **Observer** sucht nach Objekten in der Schnittmenge aller Suchbereiche, die in einer Abfrage angegeben werden. In diesem Release wird nur das Objekt mit der höchsten Zuverlässigkeit zurückgegeben, um die Latenz niedrig zu halten.
 
 ### <a name="objectinstance"></a>ObjectInstance
 
-Eine [ObjectInstance](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.objectinstance)-Klasse stellt eine hypothetische Position dar, in der sich eine Instanz eines bestimmten Modells im HoloLens-Koordinatensystem befinden könnte. Jede Instanz enthält die Eigenschaft `SurfaceCoverage`, um anzugeben, wie gut die räumliche Lage geschätzt wurde.
+Eine [ObjectInstance](/dotnet/api/microsoft.azure.objectanchors.objectinstance)-Klasse stellt eine hypothetische Position dar, in der sich eine Instanz eines bestimmten Modells im HoloLens-Koordinatensystem befinden könnte. Jede Instanz enthält die Eigenschaft `SurfaceCoverage`, um anzugeben, wie gut die räumliche Lage geschätzt wurde.
 
 Eine Instanz wird durch einen Aufruf der Methode `ObjectObserver.DetectAsync` erstellt und dann automatisch im Hintergrund aktualisiert, solange sie aktiv ist. Eine Anwendung kann dem Ereignis für die Statusveränderung in Instanzen lauschen oder den Nachverfolgungsmodus ändern, um Updates anzuhalten oder fortzusetzen. Wenn keine Nachverfolgung möglich ist, wird eine Instanz automatisch aus dem **Observer** entfernt.
 
 ### <a name="objectobserver"></a>ObjectObserver
 
-Eine [ObjectObserver](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.objectobserver)-Klasse lädt Objektmodelle, erkennt ihre Instanzen und meldet die räumliche Lage jeder Instanz im HoloLens-Koordinatensystem nach den sechs Freiheitsgraden (6-DoF, Six Degrees of Freedom).
+Eine [ObjectObserver](/dotnet/api/microsoft.azure.objectanchors.objectobserver)-Klasse lädt Objektmodelle, erkennt ihre Instanzen und meldet die räumliche Lage jeder Instanz im HoloLens-Koordinatensystem nach den sechs Freiheitsgraden (6-DoF, Six Degrees of Freedom).
 
 Obwohl alle Objektmodelle und Instanzen aus einem **Observer** generiert werden, ist deren Lebensdauer voneinander unabhängig. Eine Anwendung kann den Observer löschen und das Objektmodell oder die Instanz weiterhin verwenden.
 
 ### <a name="objectdiagnosticssession"></a>ObjectDiagnosticsSession
 
-Die [ObjectDiagnosticSession](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.diagnostics.objectdiagnosticssession)-Klasse zeichnet Diagnosedaten auf und schreibt diese in ein Archiv.
+Die [ObjectDiagnosticSession](/dotnet/api/microsoft.azure.objectanchors.diagnostics.objectdiagnosticssession)-Klasse zeichnet Diagnosedaten auf und schreibt diese in ein Archiv.
 
 Ein Diagnosearchiv enthält die Punktwolke für die Szene, den Observerstatus und Informationen zu den Modellen. Diese Informationen sind nützlich, um mögliche Runtimeprobleme zu identifizieren. Weitere Informationen finden Sie in den [häufig gestellten Fragen](../faq.md).
 
