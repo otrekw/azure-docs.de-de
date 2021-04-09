@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.custom: hdinsightactive
 ms.date: 03/20/2020
 ms.openlocfilehash: 5a1548cdf1d05a1f9d42f5c64b7fdc18f514518e
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98939205"
 ---
 # <a name="tutorial-use-apache-kafka-streams-api-in-azure-hdinsight"></a>Tutorial: Verwenden der Apache Kafka Streams-API in Azure HDInsight
@@ -22,7 +22,7 @@ Die Kafka-Streamverarbeitung erfolgt häufig über Apache Spark oder Apache Stor
 
 Weitere Informationen zu Kafka Streams finden Sie in der Dokumentation [Intro to Streams](https://kafka.apache.org/10/documentation/streams/) (Einführung in Streams) auf Apache.org.
 
-In diesem Tutorial lernen Sie Folgendes:
+In diesem Tutorial lernen Sie, wie die folgenden Aufgaben ausgeführt werden:
 
 > [!div class="checklist"]
 > * Grundlegendes zum Code
@@ -196,8 +196,8 @@ Führen Sie die folgenden Schritte aus, um das Projekt in Ihrem Cluster für Kaf
 
     Die Themen werden für folgende Zwecke verwendet:
 
-   * `test`: In diesem Thema werden Datensätze empfangen. Die Streaminganwendung liest von dort.
-   * `wordcounts`: In diesem Thema speichert die Streaminganwendung ihre Ausgabe.
+   * `test`: Dieses Thema befindet sich dort, wo Datensätze empfangen werden. Die Streaminganwendung liest von dort.
+   * `wordcounts`: Dieses Thema befindet sich dort, wo die Streaminganwendung ihre Ausgabe speichert.
    * `RekeyedIntermediateTopic`: Mit diesem Thema werden Daten neu partitioniert, wenn die Anzahl vom `countByKey`-Operator aktualisiert wird.
    * `wordcount-example-Counts-changelog`: Dieses Thema ist ein Zustandsspeicher, den der `countByKey`-Vorgang verwendet.
 

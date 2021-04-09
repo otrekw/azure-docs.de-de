@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
-ms.openlocfilehash: f4c1de484ce2659a7e84a1546a7c49c1d77a7d56
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e64abc008433c895e21690ccab8cc532ec1b34b1
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101674484"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105543855"
 ---
 # <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>Überprüfen und Problembehandlung beim Setup der SAP HANA-Hochverfügbarkeitskonfiguration zur horizontalen Skalierung unter SLES 12 SP3 
 
@@ -29,9 +29,9 @@ ms.locfileid: "101674484"
 [suse-cloud-netconfig]:https://www.suse.com/c/multi-nic-cloud-netconfig-ec2-azure/
 [sap-list-port-numbers]:https://help.sap.com/viewer/ports
 [sles-12-ha-paper]:https://www.suse.com/documentation/sle-ha-12/pdfdoc/book_sleha/book_sleha.pdf
-[sles-zero-downtime-paper]:https://www.suse.com/media/presentation/TUT90846_towards_zero_downtime%20_how_to_maintain_sap_hana_system_replication_clusters.pdf
+[sles-zero-downtime-paper]:https://www.youtube.com/embed/0FW3J6GbxOk
 [sap-nw-ha-guide-sles]:high-availability-guide-suse.md
-[sles-12-for-sap]:https://www.suse.com/media/white-paper/suse_linux_enterprise_server_for_sap_applications_12_sp1.pdf
+[sles-12-for-sap]:https://www.scribd.com/document/377847444/Suse-Linux-Enterprise-Server-for-Sap-Applications-12-Sp1
 
 
 Dieser Artikel unterstützt Sie beim Überprüfen der Pacemaker-Clusterkonfiguration für die horizontale Skalierung mit SAP HANA auf virtuellen Azure-Computern. Das Clustersetup wurde mit einer Kombination aus der SAP HANA-Systemreplikation (HSR) und dem SUSE RPM-Paket „SAPHanaSR-ScaleOut“ durchgeführt. Alle Tests wurden ausschließlich unter SUSE Linux Enterprise Server 12 SP3 (SLES) vorgenommen. Die Abschnitte dieses Artikels decken verschiedene Bereiche ab und bieten Beispielbefehle sowie Auszüge aus Konfigurationsdateien. Es wird empfohlen, diese Beispiele als Methode zum Überprüfen und Verifizieren des gesamten Clustersetups zu verwenden.

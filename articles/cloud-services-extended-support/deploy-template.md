@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: a606956483ddb7c7f3a4f3cef8728ade508ab461
-ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.openlocfilehash: 6d54216d8992b5bb233c79919284f96b24385651
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103574270"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865586"
 ---
 # <a name="deploy-a-cloud-service-extended-support-using-arm-templates"></a>Bereitstellen eines Clouddiensts (erweiterter Support) mithilfe von ARM-Vorlagen
 
@@ -45,7 +45,7 @@ In diesem Tutorial erfahren Sie, wie Sie mithilfe von [ARM-Vorlagen](../azure-re
 ## <a name="deploy-a-cloud-service-extended-support"></a>Bereitstellen eines Clouddiensts (erweiterter Support)
 
 > [!NOTE]
-> Alternativ können Sie Ihren Clouddienst (erweiterter Support) über das [Azure-Portal](https://portal.azure.com) bereitstellen. Sie können die generierte ARM-Vorlage über das Portal für Ihre zukünftigen Bereitstellungen herunterladen.
+> Die Erstellung der ARM-Vorlage und Parameterdatei über das [Azure-Portal](https://portal.azure.com) ist einfacher und schneller. Sie können die [generierte ARM-Vorlage über das Portal herunterladen](generate-template-portal.md), um Ihren Clouddienst über PowerShell zu erstellen.
  
 1. Erstellen Sie ein virtuelles Netzwerk. Der Name des virtuellen Netzwerks muss den Verweisen in der Dienstkonfigurationsdatei (.cscfg) entsprechen. Sollten Sie ein vorhandenes virtuelles Netzwerk verwenden, überspringen Sie diesen Abschnitt in der ARM-Vorlage.
 
@@ -141,7 +141,7 @@ In diesem Tutorial erfahren Sie, wie Sie mithilfe von [ARM-Vorlagen](../azure-re
     ```
  
 
-4. Fügen Sie im Abschnitt `OsProfile` der ARM-Vorlage Ihren Schlüsseltresorverweis hinzu. Key Vault wird zum Speichern von Zertifikaten verwendet, die Cloud Services (erweiterter Support) zugeordnet sind. Fügen Sie Key Vault die Zertifikate hinzu, und verweisen Sie dann in der Dienstkonfigurationsdatei (.cscfg) auf die Zertifikatfingerabdrücke. Außerdem müssen Sie Key Vault für entsprechende Berechtigungen aktivieren, damit Cloud Services (erweiterter Support) als Geheimnisse gespeicherte Zertifikate aus Key Vault abrufen kann. Der Schlüsseltresor muss in der gleichen Region und im gleichen Abonnement erstellt werden wie der Clouddienst und einen eindeutigen Namen besitzen. Weitere Informationen finden Sie unter [Verwenden von Zertifikaten mit Azure Cloud Services (erweiterter Support)](certificates-and-key-vault.md).
+4. Fügen Sie im Abschnitt `OsProfile` der ARM-Vorlage Ihren Schlüsseltresorverweis hinzu. Key Vault wird zum Speichern von Zertifikaten verwendet, die Cloud Services (erweiterter Support) zugeordnet sind. Fügen Sie Key Vault die Zertifikate hinzu, und verweisen Sie dann in der Dienstkonfigurationsdatei (.cscfg) auf die Zertifikatfingerabdrücke. Außerdem müssen Sie in Key Vault „Zugriffsrichtlinien“ für „Azure Virtual Machines für Bereitstellung“ (im Portal) aktivieren, damit Cloud Services (erweiterter Support) als Geheimnisse gespeicherte Zertifikate aus Key Vault abrufen kann. Der Schlüsseltresor muss in der gleichen Region und im gleichen Abonnement erstellt werden wie der Clouddienst und einen eindeutigen Namen besitzen. Weitere Informationen finden Sie unter [Verwenden von Zertifikaten mit Azure Cloud Services (erweiterter Support)](certificates-and-key-vault.md).
      
     ```json
     "osProfile": { 
@@ -191,7 +191,9 @@ In diesem Tutorial erfahren Sie, wie Sie mithilfe von [ARM-Vorlagen](../azure-re
     ```
 
 6. Optional: Erstellen Sie ein Erweiterungsprofil, um Ihrem Clouddienst Erweiterungen hinzuzufügen. In diesem Beispiel fügen wir die Erweiterung für Remotedesktop und für die Windows Azure-Diagnose hinzu.
-    
+   > [!Note] 
+   > Das Kennwort für Remotedesktop muss zwischen 8 und 123 Zeichen lang sein und mindestens 3 der folgenden Kennwortkomplexitätsanforderungen erfüllen: 1) Enthält einen Großbuchstaben 2) Enthält einen Kleinbuchstaben 3) Enthält eine Ziffer 4) Enthält ein Sonderzeichen 5) Steuerzeichen sind unzulässig.
+
     ```json
         "extensionProfile": {
           "extensions": [

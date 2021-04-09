@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 7d71820db3d58931f2fcd8d18441534ad36183c2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ab54243eb7109965941cf60edd9358133550c7d3
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101711993"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105046639"
 ---
 # <a name="azure-operational-security"></a>Azure Operational Security
 ## <a name="introduction"></a>Einführung
@@ -165,7 +165,7 @@ Azure Security Center erfasst kurzlebige Kopien Ihrer Absturzabbilddateien und a
 
 ## <a name="azure-monitor"></a>Azure Monitor
 
-Mit der [Sicherheits- und Überwachungslösung von Azure Monitor-Protokolle](../../security-center/security-center-monitoring.md) kann die IT-Abteilung aktiv alle Ressourcen überwachen. Dies kann zur Minimierung der Auswirkungen von Sicherheitsincidents beitragen. Die Sicherheits- und Überwachungslösung von Azure Monitor-Protokolle verfügt über Sicherheitsdomänen, die zum Überwachen von Ressourcen verwendet werden können. Die Sicherheitsdomäne ermöglicht den schnellen Zugriff auf Optionen. Für die Sicherheitsüberwachung werden die folgenden Domänen ausführlicher beschrieben:
+Mit der [Sicherheits- und Überwachungslösung von Azure Monitor-Protokolle](../../security-center/security-center-remediate-recommendations.md) kann die IT-Abteilung aktiv alle Ressourcen überwachen. Dies kann zur Minimierung der Auswirkungen von Sicherheitsincidents beitragen. Die Sicherheits- und Überwachungslösung von Azure Monitor-Protokolle verfügt über Sicherheitsdomänen, die zum Überwachen von Ressourcen verwendet werden können. Die Sicherheitsdomäne ermöglicht den schnellen Zugriff auf Optionen. Für die Sicherheitsüberwachung werden die folgenden Domänen ausführlicher beschrieben:
 
 -   Bewertung von Schadsoftware
 -   Updatebewertung

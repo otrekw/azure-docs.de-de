@@ -2,25 +2,25 @@
 title: Konzepte – Netzwerkinterkonnektivität
 description: Erfahren Sie mehr über wichtige Aspekte und Anwendungsfälle für Netzwerke und Interkonnektivität in Azure VMware Solution.
 ms.topic: conceptual
-ms.date: 02/02/2021
-ms.openlocfilehash: ddf8f5b6aa06154a6edde7b4a78902d8f13eab78
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 03/11/2021
+ms.openlocfilehash: 4c964151c49e2fea56031dd24bacf4655753a18d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100364901"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103491808"
 ---
 # <a name="azure-vmware-solution-networking-and-interconnectivity-concepts"></a>Azure VMware Solution – Netzwerk- und Interkonnektivitätskonzepte
 
 [!INCLUDE [avs-networking-description](includes/azure-vmware-solution-networking-description.md)]
 
-Eine Möglichkeit, Interkonnektivität zu veranschaulichen, besteht darin, die beiden Implementierungsarten von privaten Azure VMware Solution-Clouds zu betrachten:
+Es gibt zwei Möglichkeiten für die Interkonnektivität in der privaten Azure VMware Solution-Cloud:
 
-1. [**Die allgemeine reine Azure-Interkonnektivität**](#azure-virtual-network-interconnectivity) ermöglicht Ihnen die Verwaltung und Nutzung Ihrer privaten Cloud mit nur einem einzelnen virtuellen Netzwerk in Azure. Diese Implementierung eignet sich am besten für Azure VMware Solution-Evaluierungen oder -Implementierungen, die keinen Zugriff von lokalen Umgebungen erfordern.
+- [**Die allgemeine reine Azure-Interkonnektivität**](#azure-virtual-network-interconnectivity) ermöglicht Ihnen die Verwaltung und Nutzung Ihrer privaten Cloud mit nur einem einzelnen virtuellen Netzwerk in Azure. Diese Implementierung eignet sich am besten für Azure VMware Solution-Evaluierungen oder -Implementierungen, die keinen Zugriff von lokalen Umgebungen erfordern.
 
-1. [**Vollständige Interkonnektivität zwischen lokalen und privaten Clouds**](#on-premises-interconnectivity) erweitert die allgemeine reine Azure-Implementierung um die Interkonnektivität zwischen lokalen und privaten Azure VMware Solution-Clouds.
+- [**Vollständige Interkonnektivität zwischen lokalen und privaten Clouds**](#on-premises-interconnectivity) erweitert die allgemeine reine Azure-Implementierung um die Interkonnektivität zwischen lokalen und privaten Azure VMware Solution-Clouds.
  
-In diesem Artikel werden einige wichtige Konzepte, die Netzwerke und Interkonnektivität bilden, sowie Anforderungen und Beschränkungen behandelt. Es werden auch weitere Informationen zu den beiden Arten der Implementierungen der privaten Azure VMware Solution-Cloudinterkonnektivität behandeln. In diesem Artikel erfahren Sie, wie Sie Ihr Netzwerk ordnungsgemäß für die Verwendung von Azure VMware Solution konfigurieren.
+In diesem Artikel werden die wichtigsten Konzepte für Netzwerke und Interkonnektivität (einschließlich Anforderungen und Beschränkungen) beschrieben. In diesem Artikel erfahren Sie, wie Sie Ihr Netzwerk für die Verwendung von Azure VMware Solution konfigurieren.
 
 ## <a name="azure-vmware-solution-private-cloud-use-cases"></a>Anwendungsfälle für private Azure VMware Solution-Clouds
 
@@ -36,26 +36,32 @@ Die Anwendungsfälle für private Azure VMware Solution-Clouds umfassen:
 
 ## <a name="azure-virtual-network-interconnectivity"></a>Azure Virtual Network-Interkonnektivität
 
-In der Implementierung vom virtuellen Netzwerk zur privaten Cloud können Sie Ihre private Azure VMware Solution-Cloud verwalten, Workloads in Ihrer privaten Cloud verarbeiten und auf Azure-Dienste über die ExpressRoute-Leitung zugreifen. 
+Sie können Ihr virtuelles Azure-Netzwerk mit der Implementierung der privaten Azure VMware Solution-Cloud verbinden. Sie können Ihre private Azure VMware Solution-Cloud verwalten, Workloads in Ihrer privaten Cloud nutzen und auf weitere Azure-Dienste zugreifen.
 
-Im folgenden Diagramm ist die grundlegende Netzwerkinterkonnektivität dargestellt, die während der Bereitstellung einer privaten Cloud hergestellt wird. Das Diagramm zeigt logische ExpressRoute-basierte Netzwerkverbindungen zwischen einem virtuellen Netzwerk in Azure und einer privaten Cloud. Die Interkonnektivität wird drei der primären Anwendungsfälle gerecht:
-* Eingehender Zugriff auf vCenter Server und NSX-T Manager, der von den virtuellen Computern in Ihrem Azure-Abonnement und nicht von Ihren lokalen Systemen aus zugänglich ist. 
-* Ausgehender Zugriff von VMs auf Azure-Dienste. 
-* Eingehender Zugriff und Nutzung von Workloads, die in einer privaten Cloud ausgeführt werden.
+Im folgenden Diagramm ist die grundlegende Netzwerkinterkonnektivität dargestellt, die während der Bereitstellung einer privaten Cloud hergestellt wird. Die Abbildung zeigt logische Netzwerkverbindungen zwischen einem virtuellen Netzwerk in Azure und einer privaten Cloud. Diese Verbindung wird über ein ExpressRoute-Back-End hergestellt, das Teil des Azure VMware Solution-Diensts ist. Die Interkonnektivität wird den folgenden drei primären Anwendungsfällen gerecht:
+
+- Eingehender Zugriff auf vCenter Server und NSX-T-Manager (bei denen der Zugriff über VMs in Ihrem Azure-Abonnement erfolgt).
+- Ausgehender Zugriff von VMs in der privaten Cloud auf Azure-Dienste.
+- Eingehender Zugriff von Workloads, die in der privaten Cloud ausgeführt werden.
+
 
 :::image type="content" source="media/concepts/adjacency-overview-drawing-single.png" alt-text="Basiskonnektivität zwischen einem virtuellen Netzwerk und einer privaten Cloud" border="false":::
 
 ## <a name="on-premises-interconnectivity"></a>Lokale Interkonnektivität
 
-Bei der Implementierung vom lokalen oder virtuellen Netzwerk bis hin zur vollständigen privaten Cloud können Sie von lokalen Umgebungen aus auf Ihre privaten Azure VMware Solution-Clouds zugreifen. Diese Implementierung ist eine Erweiterung der grundlegenden Implementierung, die im vorherigen Abschnitt beschrieben wurde. Wie bei der grundlegenden Implementierung ist eine ExpressRoute-Leitung erforderlich, aber bei dieser Implementierung wird sie verwendet, um eine Verbindung von lokalen Umgebungen mit Ihrer privaten Cloud in Azure herzustellen. 
+Im vollständig vernetzten Szenario können Sie über Ihre virtuellen Azure-Netzwerke und lokal auf Azure VMware Solution zugreifen. Diese Implementierung ist eine Erweiterung der grundlegenden Implementierung, die im vorherigen Abschnitt beschrieben wurde. Um aus lokalen Umgebungen eine Verbindung mit Ihrer privaten Azure VMware Solution-Cloud herzustellen, ist eine ExpressRoute-Verbindung erforderlich.
 
 Das nachstehende Diagramm zeigt die Interkonnektivität von lokalen zu privaten Clouds, die die folgenden Anwendungsfälle ermöglicht:
-* Hot/Cold Cross-vCenter vMotion
-* Verwaltungszugriff von der lokalen Umgebung auf die private Azure VMware Solution-Cloud
+
+- Heiße/Kalte Migration mit vCenter vMotion zwischen lokalen Umgebungen und Azure VMware Solution.
+- Verwaltungszugriff von der lokalen Umgebung auf die private Azure VMware Solution-Cloud.
 
 :::image type="content" source="media/concepts/adjacency-overview-drawing-double.png" alt-text="Vollständige Konnektivität zwischen einem virtuellen Netzwerk und einer lokalen privaten Cloud" border="false":::
 
-Für eine vollständige Interkonnektivität mit Ihrer privaten Cloud aktivieren Sie ExpressRoute Global Reach und fordern dann einen Autorisierungsschlüssel und eine private Peering-ID für Global Reach im Azure-Portal an. Der Autorisierungsschlüssel und die Peering-ID werden verwendet, um Global Reach zwischen einer ExpressRoute-Leitung in Ihrem Abonnement und der ExpressRoute-Leitung für Ihre neue private Cloud zu aktivieren. Sobald die ExpressRoute-Leitungen verknüpft wurden, wird der Netzwerkdatenverkehr zwischen lokalen Umgebungen und der privaten Cloud über die beiden Leitungen geroutet.  Weitere Informationen zum Anfordern und Verwenden von Autorisierungsschlüssel und Peering-ID finden Sie im [Tutorial zum Erstellen eines ExpressRoute Global Reach-Peerings mit einer privaten Cloud](tutorial-expressroute-global-reach-private-cloud.md).
+Für eine vollständige Interkonnektivität mit Ihrer privaten Cloud aktivieren Sie ExpressRoute Global Reach und fordern dann einen Autorisierungsschlüssel und eine ID für privates Peering für Global Reach im Azure-Portal an. Der Autorisierungsschlüssel und die Peering-ID werden verwendet, um Global Reach zwischen einer ExpressRoute-Verbindung in Ihrem Abonnement und der ExpressRoute-Verbindung für Ihre private Cloud zu aktivieren. Sobald die ExpressRoute-Leitungen verknüpft wurden, wird der Netzwerkdatenverkehr zwischen lokalen Umgebungen und der privaten Cloud über die beiden Leitungen geroutet. Weitere Informationen zu diesen Verfahren finden Sie im [Tutorial zum Erstellen eines ExpressRoute Global Reach-Peerings mit einer privaten Cloud](tutorial-expressroute-global-reach-private-cloud.md).
+
+## <a name="limitations"></a>Einschränkungen
+[!INCLUDE [azure-vmware-solutions-limits](includes/azure-vmware-solutions-limits.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte 
 

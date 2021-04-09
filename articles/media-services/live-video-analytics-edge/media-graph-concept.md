@@ -3,12 +3,12 @@ title: 'Mediengraphkonzept: Azure'
 description: Mit einem Mediengraph können Sie definieren, von welchem Ort Medien erfasst, wie diese verarbeitet und wohin die Ergebnisse übermittelt werden sollen. Dieser Artikel bietet eine detaillierte Beschreibung des Konzepts eines Mediengraphs.
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 6f23e7db8cecb46106a63fdecdb6ba04dbd99682
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ad23acbbbdd0c15e92e471ee22a229470a8a3a75
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97401099"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105557665"
 ---
 # <a name="media-graph"></a>Mediendiagramm
 
@@ -74,7 +74,7 @@ Ein RTSP-Quellknoten ermöglicht Ihnen das Erfassen von Medien von einem [RTSP](
 
 #### <a name="iot-hub-message-source"></a>IoT Hub-Nachrichtenquelle 
 
-Wie andere [IoT Edge-Module](../../iot-edge/iot-edge-glossary.md#iot-edge-module) kann Live Video Analytics im IoT Edge-Modul Nachrichten über den [IoT Edge-Hub](../../iot-edge/iot-edge-glossary.md#iot-edge-hub) empfangen. Diese Nachrichten können von anderen Modulen, von Apps, die auf dem Edge-Gerät ausgeführt werden, oder aus der Cloud stammen. Solche Nachrichten werden an eine [benannte Eingabe](../../iot-edge/module-composition.md#sink) im Modul übermittelt (geroutet). Ein IoT Hub-Nachrichtenquellknoten ermöglicht es, dass die Nachrichten einen Mediengraph erreichen können. Diese Nachrichten oder Signale können dann intern im Mediengraph verwendet werden, normalerweise, um Signalgates zu aktivieren (siehe dazu [Signalgates](#signal-gate-processor) weiter unten). 
+Wie andere [IoT Edge-Module](../../iot-fundamentals/iot-glossary.md#iot-edge) kann Live Video Analytics im IoT Edge-Modul Nachrichten über den [IoT Edge-Hub](../../iot-fundamentals/iot-glossary.md#iot-edge-hub) empfangen. Diese Nachrichten können von anderen Modulen, von Apps, die auf dem Edge-Gerät ausgeführt werden, oder aus der Cloud stammen. Solche Nachrichten werden an eine [benannte Eingabe](../../iot-edge/module-composition.md#sink) im Modul übermittelt (geroutet). Ein IoT Hub-Nachrichtenquellknoten ermöglicht es, dass die Nachrichten einen Mediengraph erreichen können. Diese Nachrichten oder Signale können dann intern im Mediengraph verwendet werden, normalerweise, um Signalgates zu aktivieren (siehe dazu [Signalgates](#signal-gate-processor) weiter unten). 
 
 Beispielsweise können Sie ein IoT Edge-Modul verwenden, das eine Nachricht generiert, wenn eine Tür geöffnet wird. Die Nachricht von diesem Modul kann an IoT Edge-Hub geroutet und von dort aus dann an die IoT Hub-Nachrichtenquelle eines Mediengraphs geroutet werden. Innerhalb des Mediengraphs kann die IoT Hub-Nachrichtenquelle das Ereignis an einen Signalgateprozessor übergeben, der dann die Aufzeichnung des Videos aus einer RTSP-Quelle in eine Datei einschalten kann. 
 
