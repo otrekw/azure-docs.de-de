@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: jeedes
 ms.openlocfilehash: 3688dc2db67c0c1343a74be4652cb52466ef762e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92520437"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---public"></a>Tutorial: Azure Active Directory-Integration mit TOPdesk - Public
@@ -137,13 +137,13 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit TOPdesk 
 
     c. Abmelde-URL
 
-### <a name="configure-topdesk---public-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für TOPdesk - Public
+### <a name="configure-topdesk---public-single-sign-on&quot;></a>Konfigurieren des einmaligen Anmeldens für TOPdesk - Public
 
 1. Melden Sie sich auf Ihrer **TOPdesk - Public**-Unternehmenswebsite als Administrator an.
 
 2. Klicken Sie im **TOPdesk**-Menü auf **Einstellungen**.
    
-    ![Einstellungen](./media/topdesk-public-tutorial/ic790598.png "Einstellungen")
+    ![Einstellungen](./media/topdesk-public-tutorial/ic790598.png &quot;Einstellungen")
 
 3. Klicken Sie auf **Anmeldeeinstellungen**.
    
@@ -247,17 +247,17 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
-### <a name="create-topdesk---public-test-user"></a>Erstellen eines TOPdesk - Public-Testbenutzers
+### <a name="create-topdesk---public-test-user&quot;></a>Erstellen eines TOPdesk - Public-Testbenutzers
 
 Damit sich Azure AD-Benutzer bei TOPdesk - Public anmelden können, müssen sie in TOPdesk - Public bereitgestellt werden. Im Fall von TOPdesk - Public ist die Bereitstellung eine manuelle Aufgabe.
 
-### <a name="to-configure-user-provisioning-perform-the-following-steps"></a>So konfigurieren Sie die Benutzerbereitstellung
+### <a name=&quot;to-configure-user-provisioning-perform-the-following-steps&quot;></a>So konfigurieren Sie die Benutzerbereitstellung
 
 1. Melden Sie sich bei Ihrem **TOPdesk - Public** -Unternehmenswebsite als Administrator an.
 
 2. Klicken Sie im Menü oben auf **TOPdesk \> Neu \> Support-Dateien \> Person**.
    
-    ![Person](./media/topdesk-public-tutorial/ic790628.png "Person")
+    ![Person](./media/topdesk-public-tutorial/ic790628.png &quot;Person")
 
 3. Führen Sie im Dialogfeld „Neue Person“ die folgenden Schritte aus:
    
