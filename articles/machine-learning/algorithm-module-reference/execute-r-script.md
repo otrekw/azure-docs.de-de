@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 12/17/2020
 ms.openlocfilehash: bdd7fd8e19bf2de6d0b3c6b2edd4515771fae237
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "98119010"
 ---
 # <a name="execute-r-script-module"></a>Execute R Script-Module
@@ -147,7 +147,7 @@ Im Designer gespeicherte Datasets werden automatisch in einen R-Datenrahmen konv
 1. Geben oder fügen Sie in das Textfeld **R script** (R-Skript) ein gültiges R-Skript ein.
 
     > [!NOTE]
-    > Gehen Sie beim Schreiben Ihres Skripts mit Bedacht vor. Stellen Sie sicher, dass keine Syntaxfehler vorhanden sind, z. B. Verwendung von nicht deklarierten Variablen oder nicht importierten Modulen oder Funktionen. Achten Sie besonders auf die Liste der vorinstallierten Pakete am Ende dieses Artikels. Um nicht aufgelistete Pakete zu verwenden, installieren Sie sie in Ihrem Skript. z. B. `install.packages("zoo",repos = "http://cran.us.r-project.org")`.
+    > Gehen Sie beim Schreiben Ihres Skripts mit Bedacht vor. Stellen Sie sicher, dass keine Syntaxfehler vorhanden sind, z. B. Verwendung von nicht deklarierten Variablen oder nicht importierten Modulen oder Funktionen. Achten Sie besonders auf die Liste der vorinstallierten Pakete am Ende dieses Artikels. Um nicht aufgelistete Pakete zu verwenden, installieren Sie sie in Ihrem Skript. z. B. `install.packages("zoo&quot;,repos = &quot;http://cran.us.r-project.org")`.
     
     Um Ihnen den Einstieg zu erleichtern, ist das Textfeld **R Script** mit Beispielcode vorab ausgefüllt, den Sie bearbeiten oder ersetzen können.
     

@@ -2,16 +2,16 @@
 title: 'Tutorial: Hinzufügen von Ausgaben zu Azure Resource Manager-Bicep-Dateien'
 description: Fügen Sie zur Vereinfachung der Syntax Ausgaben zu Ihrer Bicep-Datei hinzu.
 author: mumian
-ms.date: 03/01/2021
+ms.date: 03/17/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 279417f22ded89db21abddad7a91a4cce520c6bd
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 4b7d7a1414091c516dba2c474e1681ba357b55a1
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101742968"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104594307"
 ---
 # <a name="tutorial-add-outputs-to-azure-resource-manager-bicep-file"></a>Tutorial: Hinzufügen von Ausgaben zu Azure Resource Manager-Bicep-Dateien
 
@@ -37,7 +37,7 @@ Der Code stellt ein Speicherkonto bereit, gibt aber keine Informationen zu diese
 
 Sie können Ausgaben verwenden, um Werte aus der Bereitstellung zurückzugeben. Beispielsweise kann es hilfreich sein, die Endpunkte für Ihr neues Speicherkonto abzurufen.
 
-Im folgenden Beispiel ist die Änderung hervorgehoben, die Sie vornehmen, um Ihrer Bicep-Datei einen Ausgabewert hinzuzufügen. Kopieren Sie die gesamte Datei, und ersetzen Sie Ihre Bicep-Datei durch den Inhalt der Datei.
+Im folgenden Beispiel ist die Änderung gezeigt, die Sie vornehmen, um Ihrer Bicep-Datei einen Ausgabewert hinzuzufügen. Kopieren Sie die gesamte Datei, und ersetzen Sie Ihre Bicep-Datei durch den Inhalt der Datei.
 
 :::code language="bicep" source="~/resourcemanager-templates/get-started-with-templates/add-outputs/azuredeploy.bicep" range="1-33" highlight="33":::
 
@@ -45,7 +45,9 @@ Beachten Sie bezüglich des von Ihnen hinzugefügten Ausgabewerts folgende wicht
 
 Der Typ des Rückgabewerts ist auf `object` festgelegt, d. h. es wird ein Vorlagenobjekt zurückgegeben.
 
-Verwenden Sie den symbolischen Namen des Speicherkontos, um die Eigenschaft `primaryEndpoints` aus dem Speicherkonto zu erhalten.
+Verwenden Sie den symbolischen Namen des Speicherkontos, um die Eigenschaft `primaryEndpoints` aus dem Speicherkonto zu erhalten. Mit der AutoVervollständigen-Funktion von Visual Studio Code wird eine vollständige Liste der Eigenschaften angezeigt:
+
+   ![Visual Studio Code: Bicep-Objekteigenschaften für symbolischen Namen](./media/bicep-tutorial-add-outputs/visual-studio-code-bicep-output-properties.png)
 
 ## <a name="deploy-bicep-file"></a>Bereitstellen der Bicep-Datei
 

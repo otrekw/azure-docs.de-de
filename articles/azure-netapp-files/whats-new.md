@@ -12,22 +12,32 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 12/04/2020
+ms.date: 03/19/2021
 ms.author: b-juche
-ms.openlocfilehash: b40bbd6c470302b78b78744307805021a3649376
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f2167159b03cd0387acfccf4bbd0a2e840f739df
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100571032"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104955227"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>Neues in Azure NetApp Files
 
 Azure NetApp Files wird regelmäßig aktualisiert. Dieser Artikel bietet eine Übersicht über die neuesten Features und Verbesserungen. 
 
+## <a name="march-2021"></a>März 2021
+
+* [SMB-Freigaben für fortlaufende Verfügbarkeit (Continuous Availability, CA)](azure-netapp-files-create-volumes-smb.md#add-an-smb-volume) (Vorschau)  
+
+    SMB Transparent Failover ermöglicht Wartungsvorgänge für den Azure NetApp Files-Dienst ohne Unterbrechung der Verbindung mit Serveranwendungen, die Daten auf SMB-Volumes speichern und auf diese Daten zugreifen. Zur Unterstützung von SMB Transparent Failover unterstützt Azure NetApp Files jetzt die Option für SMB-Freigaben für fortlaufende Verfügbarkeit zur Verwendung mit SQL Server-Anwendungen über SMB, die auf virtuellen Azure-Computern ausgeführt werden. Dieses Feature wird derzeit für SQL Server unter Windows unterstützt. SQL Server unter Linux wird zurzeit nicht unterstützt. Die Aktivierung dieses Features steigert die SQL Server-Leistung erheblich und bietet Skalierungs- und Kostenvorteile für [Bereitstellungen von einzelnen Instanzen, Always On-Failoverclusterinstanzen und Always On-Verfügbarkeitsgruppen](azure-netapp-files-solution-architectures.md#sql-server). Weitere Informationen finden Sie unter [Vorteile der Verwendung von Azure NetApp Files für die SQL Server-Bereitstellung](solutions-benefits-azure-netapp-files-sql-server.md).
+
+* [Automatische Größenänderung eines regionsübergreifenden Replikationszielvolumes](azure-netapp-files-resize-capacity-pools-or-volumes.md#resize-a-cross-region-replication-destination-volume)
+
+    In einer regionsübergreifenden Replikationsbeziehung wird die Größe eines Zielvolumes basierend auf der Größe des Quellvolumes automatisch angepasst. Daher müssen Sie die Größe des Zielvolumes nicht separat ändern. Dieses Verhalten zur automatischen Größenänderung gilt, wenn sich die Volumes in einer aktiven Replikationsbeziehung befinden oder wenn das Replikationspeering mit dem Vorgang zur Neusynchronisierung unterbrochen wird. Damit dieses Feature funktioniert, müssen Sie einen ausreichenden Toleranzbereich in den Kapazitätspools für die Quell- und Zielvolumes sicherstellen.
+
 ## <a name="december-2020"></a>Dezember 2020
 
-* [Tool für konsistente Momentaufnahmen in Azure-Anwendungen](azacsnap-introduction.md) (Public Preview)    
+* [Tool für konsistente Momentaufnahmen in Azure-Anwendungen](azacsnap-introduction.md) (Vorschau)    
 
     Das Tool für konsistente Momentaufnahmen in Azure-Anwendungen (Azure Application Consistent Snapshot Tool, AzAcSnap) ist ein Befehlszeilentool, mit dem Sie den Schutz von Daten für Drittanbieterdatenbanken (SAP HANA) in Linux-Umgebungen (z. B. SUSE und RHEL) vereinfachen können.   
 
@@ -47,7 +57,7 @@ Azure NetApp Files wird regelmäßig aktualisiert. Dieser Artikel bietet eine Ü
 
 ## <a name="september-2020"></a>September 2020
 
-* [Regionsübergreifende Replikation in Azure NetApp Files](cross-region-replication-introduction.md) (Öffentliche Vorschau)
+* [Regionsübergreifende Replikation in Azure NetApp Files](cross-region-replication-introduction.md) (Vorschau)
 
   Azure NetApp Files unterstützt jetzt regionsübergreifende Replikation. Mit dieser neuen Notfallwiederherstellungsfunktion können Sie Ihre Azure NetApp Files-Volumes schnell und kostengünstig von einer Azure-Region in eine andere replizieren und so Ihre Daten vor unvorhersehbaren regionalen Ausfällen schützen. Die regionsübergreifende Replikation in Azure NetApp Files nutzt die SnapMirror®-Technologie, bei der nur geänderte Blöcke in einem komprimierten, effizienten Format über das Netzwerk gesendet werden. Diese proprietäre Technologie minimiert die Menge an Daten, die regionsübergreifend repliziert werden muss, wodurch Datenübertragungskosten eingespart werden. Auch die Replikationszeit verkürzt sich dadurch, sodass Sie eine kürzere Recovery Point Objective (RPO) erreichen können.
 

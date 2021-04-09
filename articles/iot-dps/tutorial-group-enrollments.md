@@ -10,13 +10,13 @@ services: iot-dps
 ms.devlang: java
 ms.custom: mvc, devx-track-java
 ms.openlocfilehash: 4cfbfe3e3e3ba620d8292767012c9bb866d8a878
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94968093"
 ---
-# <a name="tutorial-create-and-provision-a-simulated-x509-device-using-java-device-and-service-sdk-and-group-enrollments-for-iot-hub-device-provisioning-service"></a>Tutorial: Erstellen und Bereitstellen eines simulierten X.509-Geräts per Java-Gerät und Dienst-SDK sowie Registrierungsgruppen für den IoT Hub Device Provisioning-Dienst
+# <a name="tutorial-create-and-provision-a-simulated-x509-device-using-java-device-and-service-sdk-and-group-enrollments-for-iot-hub-device-provisioning-service"></a>Tutorial: Erstellen und Bereitstellen eines simulierten X.509-Geräts per Java-Gerät und Dienst-SDK sowie Gruppenregistrierungen für IoT Hub Device Provisioning Service
 
 Mit diesen Schritten wird veranschaulicht, wie Sie ein X.509-Gerät auf Ihrem Entwicklungscomputer mit Windows-Betriebssystem simulieren und ein Codebeispiel verwenden, um für dieses simulierte Gerät eine Verbindung mit dem Device Provisioning-Dienst und Ihrem IoT Hub über Registrierungsgruppen herzustellen. 
 
@@ -48,7 +48,7 @@ Führen Sie zunächst die Schritte unter [Einrichten des IoT Hub Device Provisio
             - Wählen Sie die Datei **_RootCA.pem_** aus, die Sie erstellt haben.
             - Klicken Sie abschließend auf die Schaltfläche **Speichern**.
 
-           ![Hinzufügen des Zertifikats](./media/tutorial-group-enrollments/add-certificate.png)
+           ![Zertifikat hinzufügen](./media/tutorial-group-enrollments/add-certificate.png)
 
         1. Wählen Sie das neu erstellte Zertifikat aus:
             - Klicken Sie auf **Prüfcode generieren**. Kopieren Sie den generierten Code.
@@ -72,7 +72,7 @@ Führen Sie zunächst die Schritte unter [Einrichten des IoT Hub Device Provisio
     git clone https://github.com/Azure/azure-iot-sdk-java.git --recursive
     ```
 
-1. Navigieren Sie im heruntergeladenen Quellcode zum Beispielordner **_azure-iot-sdk-java/provisioning/provisioning-samples/service-enrollment-group-sample_**. Öffnen Sie die Datei **_/src/main/java/samples/com/microsoft/azure/sdk/iot/ServiceEnrollmentGroupSample.java_** in einem Editor Ihrer Wahl, und fügen Sie die folgenden Details hinzu:
+1. Navigieren Sie im heruntergeladenen Quellcode zum Beispielordner **_azure-iot-sdk-java/provisioning/provisioning-samples/service-enrollment-group-sample_** . Öffnen Sie die Datei **_/src/main/java/samples/com/microsoft/azure/sdk/iot/ServiceEnrollmentGroupSample.java_** in einem Editor Ihrer Wahl, und fügen Sie die folgenden Details hinzu:
 
     1. Fügen Sie das Element `[Provisioning Connection String]` für Ihren Provisioning-Dienst wie folgt aus dem Portal hinzu:
 
@@ -126,7 +126,7 @@ Führen Sie zunächst die Schritte unter [Einrichten des IoT Hub Device Provisio
 
     1. Speichern Sie die Datei _ServiceEnrollmentGroupSample.java_.
 
-1. Öffnen Sie ein Befehlsfenster, und navigieren Sie zum Ordner **_azure-iot-sdk-java/provisioning/provisioning-samples/service-enrollment-group-sample_**.
+1. Öffnen Sie ein Befehlsfenster, und navigieren Sie zum Ordner **_azure-iot-sdk-java/provisioning/provisioning-samples/service-enrollment-group-sample_** .
 
 1. Erstellen Sie den Beispielcode mit diesem Befehl:
 
