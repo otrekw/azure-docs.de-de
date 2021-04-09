@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/24/2020
 ms.author: Zhchia
 ms.openlocfilehash: d2c1704182a2a59f8e3f79c2d4e671167ce661d8
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96183072"
 ---
 # <a name="tutorial-configure-zapier-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Zapier für die automatische Benutzerbereitstellung
@@ -58,7 +58,7 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 
     ![Zapier: Erstellen des Tokens](media/zapier-provisioning-tutorial/token.png)
 
-## <a name="step-3-add-zapier-from-the-azure-ad-application-gallery"></a>Schritt 3: Hinzufügen von Zapier aus dem Azure AD-Anwendungskatalog
+## <a name="step-3-add-zapier-from-the-azure-ad-application-gallery"></a>Schritt 3: Hinzufügen von Zapier aus dem Azure AD-Anwendungskatalog
 
 Fügen Sie Zapier aus dem Azure AD-Anwendungskatalog hinzu, um mit dem Verwalten der Bereitstellung in Zapier zu beginnen. Wenn Sie Zapier zuvor für das einmalige Anmelden (SSO) eingerichtet haben, können Sie dieselbe Anwendung verwenden. Es ist jedoch empfehlenswert, beim erstmaligen Testen der Integration eine separate App zu erstellen. [Hier](../manage-apps/add-application-portal.md) erfahren Sie mehr über das Hinzufügen einer Anwendung aus dem Katalog. 
 

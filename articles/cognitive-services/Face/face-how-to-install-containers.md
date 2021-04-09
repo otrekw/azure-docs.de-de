@@ -13,10 +13,10 @@ ms.date: 02/23/2021
 ms.author: aahi
 keywords: Lokal, Docker, Container, Identifizieren
 ms.openlocfilehash: 36cbd7bd24304871593b107f9b8ed9be02ce46de
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "101706791"
 ---
 # <a name="install-and-run-face-containers-preview"></a>Installieren und Ausführen von Containern für die Gesichtserkennung (Vorschauversion)

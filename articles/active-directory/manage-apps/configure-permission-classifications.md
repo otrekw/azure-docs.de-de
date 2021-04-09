@@ -13,10 +13,10 @@ ms.author: phsignor
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
 ms.openlocfilehash: 12a4ffb311e01ebb78b1ae392d1243c5d67eff6b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101644563"
 ---
 # <a name="configure-permission-classifications"></a>Konfigurieren von Berechtigungsklassifizierungen
@@ -126,4 +126,4 @@ Weitere Informationen:
 * [Berechtigungen und Zustimmung im Microsoft Identity Platform-Endpunkt](../develop/v2-permissions-and-consent.md)
 
 So erhalten Sie Hilfe oder finden Antworten auf Ihre Fragen:
-* [Azure AD bei Microsoft Q&A](/answers/topics/azure-active-directory.html)
+* [Azure AD bei Microsoft Q&A](/answers/topics/azure-active-directory.html)

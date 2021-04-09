@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/27/2020
 ms.author: Zhchia
 ms.openlocfilehash: 0362f0d69581c252170b4f37f8564caa7acd3d29
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96182239"
 ---
 # <a name="tutorial-configure-teamviewer-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von TeamViewer für die automatische Benutzerbereitstellung
@@ -62,7 +62,7 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 
     ![TeamViewer-Token](./media/teamviewer-provisioning-tutorial/token.png)
 
-## <a name="step-3-add-teamviewer-from-the-azure-ad-application-gallery"></a>Schritt 3: Hinzufügen von TeamViewer aus dem Azure AD-Anwendungskatalog
+## <a name="step-3-add-teamviewer-from-the-azure-ad-application-gallery"></a>Schritt 3: Hinzufügen von TeamViewer aus dem Azure AD-Anwendungskatalog
 
 Fügen Sie TeamViewer aus dem Azure AD-Anwendungskatalog hinzu, um mit dem Verwalten der Bereitstellung in TeamViewer zu beginnen. Wenn Sie TeamViewer zuvor für das einmalige Anmelden (SSO) eingerichtet haben, können Sie dieselbe Anwendung verwenden. Es ist jedoch empfehlenswert, beim erstmaligen Testen der Integration eine separate App zu erstellen. [Hier](../manage-apps/add-application-portal.md) erfahren Sie mehr über das Hinzufügen einer Anwendung aus dem Katalog. 
 
@@ -111,7 +111,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 9. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit TeamViewer synchronisiert werden. Die als **Übereinstimmend** ausgewählten Attribute werden verwendet, um die Benutzerkonten in TeamViewer für Updatevorgänge abzugleichen. Wenn Sie sich dafür entscheiden, das [übereinstimmende Zielattribut](../app-provisioning/customize-application-attributes.md) zu ändern, müssen Sie sicherstellen, dass die TeamViewer-API das Filtern von Benutzern anhand dieses Attributs unterstützt. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-   |attribute|type|
+   |Attribut|type|
    |---|---|
    |userName|String|
    |displayName|String|

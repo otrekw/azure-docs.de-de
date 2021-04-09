@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 05/29/2018
 ms.author: kumud
 ms.openlocfilehash: 73562d8d32f265fa43ca80d2f8d4f84b1b631ec6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98223668"
 ---
 # <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>Diagnostizieren von Problemen mit dem Filter für Netzwerkdatenverkehr eines virtuellen Computers
@@ -174,9 +174,9 @@ Unabhängig davon, ob Sie das im [Szenario](#scenario) dieses Artikels dargestel
 | Source port ranges      | Any                                                                                |
 | Destination             | Die IP-Adresse der VM, ein Bereich von IP-Adressen oder alle Adressen im Subnetz. |
 | Zielportbereiche | 80                                                                                 |
-| Protocol                | TCP                                                                                |
-| Aktion                  | Allow                                                                              |
-| Priority                | 100                                                                                |
+| Protokoll                | TCP                                                                                |
+| Aktion                  | Zulassen                                                                              |
+| Priorität                | 100                                                                                |
 | Name                    | Allow-HTTP-All                                                                     |
 
 Nachdem Sie die Regel erstellt haben, wird Port 80 eingehender Datenverkehr aus dem Internet erlaubt, da die Priorität der Regel höher ist als die Standardsicherheitsregel mit dem Namen *DenyAllInBound*, die den Datenverkehr ablehnt. Weitere Informationen finden Sie unter [Erstellen einer Sicherheitsregel](manage-network-security-group.md#create-a-security-rule). Wenn verschiedene NSGs sowohl der Netzwerkschnittstelle als auch dem Subnetz zugeordnet sind, müssen Sie die gleiche Regel in beiden NSGs erstellen.

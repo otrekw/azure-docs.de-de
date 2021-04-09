@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/05/2020
 ms.author: russellcooks
 ms.openlocfilehash: 359c5f93516ea6f0561865bd86e4f51dedb4c3a5
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "94358237"
 ---
 1. Navigieren Sie in Visual Studio Code zu „src/edge“. Hier befinden sich die erstellte ENV-Datei sowie einige Bereitstellungsvorlagendateien.
