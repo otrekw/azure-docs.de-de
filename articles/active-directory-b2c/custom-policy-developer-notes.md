@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 76dcb9aec935dd4ea4f57a1362953d9741d8eaf0
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: c175a6d225be268f27854b9ab63886892cf029fb
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102095798"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105557274"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Entwicklerhinweise zu benutzerdefinierten Richtlinien in Azure Active Directory B2C
 
@@ -68,7 +68,7 @@ Die Funktionen für benutzerdefinierte Richtlinien werden ständig weiterentwick
 | [OAuth2-Autorisierungscode](authorization-code-flow.md) |  |  | X |  |
 | OAuth2-Autorisierungscode mit PKCE |  |  | X | [Öffentliche Clients und Single-Page-Webanwendungen](authorization-code-flow.md)  |
 | [Impliziter OAuth2-Fluss](implicit-flow-single-page-application.md) |  |  | X |  |
-| [Kennwortanmeldeinformationen von Ressourcenbesitzern mittels OAuth2](ropc-custom.md) |  | X |  |  |
+| [Kennwortanmeldeinformationen von Ressourcenbesitzern mittels OAuth2](add-ropc-policy.md) |  | X |  |  |
 | [OIDC Connect](openid-connect.md) |  |  | X |  |
 | [SAML2](saml-service-provider.md)  |  |  |X  | POST- und Umleitungsbindungen |
 | OAuth1 |  |  |  | Wird nicht unterstützt. |

@@ -7,12 +7,12 @@ ms.author: crtreasu
 ms.date: 04/01/2020
 ms.topic: overview
 ms.service: azure-object-anchors
-ms.openlocfilehash: 6de027f317072512bd9893303d3a79d0f34f3e3e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: aebc1013dcead6c32dab55512ce915e25f60f94a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101747745"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105047574"
 ---
 # <a name="frequently-asked-questions-about-azure-object-anchors"></a>Häufig gestellte Fragen zu Azure Object Anchors
 
@@ -78,7 +78,7 @@ Die Einheit stellt die Maßeinheit des Modells dar. Die unterstützten Einheiten
  1. Führen Sie eine Augenkalibrierung aus, um ein genaues Rendering zu ermöglichen.
  2. Stellen Sie sicher, dass der Raum eine ideale visuelle Struktur und gute Lichtverhältnisse aufweist.
  3. Verwenden Sie ein feststehendes Objekt, um das keine anderen Objekte herumliegen.
- 4. Optional können Sie den Cache [Spatial Mapping](https://docs.microsoft.com/windows/mixed-reality/spatial-mapping) (Räumliche Zuordnung) auf dem HoloLens-Gerät löschen.
+ 4. Optional können Sie den Cache [Spatial Mapping](/windows/mixed-reality/spatial-mapping) (Räumliche Zuordnung) auf dem HoloLens-Gerät löschen.
  5. Scannen Sie das Objekt, indem Sie um es herumgehen. Stellen Sie sicher, dass der größte Teil des Objekts erfasst wird.
  6. Legen Sie einen ausreichend großen Suchbereich fest, um das Objekt abzudecken.
  7. Das Objekt sollte während der Erkennung nicht bewegt werden.

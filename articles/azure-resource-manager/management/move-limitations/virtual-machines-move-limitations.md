@@ -4,10 +4,10 @@ description: Verwenden Sie Azure Resource Manager, um virtuelle Computer in eine
 ms.topic: conceptual
 ms.date: 12/01/2020
 ms.openlocfilehash: ad7023f309f1ca948711eaa9bdf3867d2ef7a6f8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100104908"
 ---
 # <a name="move-guidance-for-virtual-machines"></a>Anleitung zum Verschieben virtueller Computer

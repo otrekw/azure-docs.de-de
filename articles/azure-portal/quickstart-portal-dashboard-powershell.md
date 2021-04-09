@@ -3,13 +3,13 @@ title: Erstellen eines Dashboards im Azure-Portal mit PowerShell
 description: Hier erfahren Sie, wie Sie mithilfe von Azure PowerShell ein Dashboard im Azure-Portal erstellen.
 ms.topic: quickstart
 ms.custom: devx-track-azurepowershell
-ms.date: 07/24/2020
-ms.openlocfilehash: 02e243a7296555d73427f8e31c4abdf9c3e56735
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.date: 03/25/2021
+ms.openlocfilehash: cd001a8259c54f1d86aab5983da1413c8163008c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745739"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105557444"
 ---
 # <a name="quickstart-create-an-azure-portal-dashboard-with-powershell"></a>Schnellstart: Erstellen eines Dashboards im Azure-Portal mit PowerShell
 
@@ -104,7 +104,7 @@ Da Azure-Dashboards Ressourcen sind, können diese Dashboards als JSON-Code darg
 ```azurepowershell-interactive
 $myPortalDashboardTemplateUrl = 'https://raw.githubusercontent.com/Azure/azure-docs-powershell-samples/master/azure-portal/portal-dashboard-template-testvm.json'
 
-$myPortalDashboardTemplatePath = "$env:TEMP\portal-dashboard-template-testvm.json"
+$myPortalDashboardTemplatePath = "$HOME\portal-dashboard-template-testvm.json"
 
 Invoke-WebRequest -Uri $myPortalDashboardTemplateUrl -OutFile $myPortalDashboardTemplatePath -UseBasicParsing
 ```
@@ -146,19 +146,7 @@ New-AzPortalDashboard @DashboardParams
 Get-AzPortalDashboard -Name $dashboardName -ResourceGroupName $resourceGroupName
 ```
 
-Vergewissern Sie sich, dass Sie Daten zum virtuellen Computer im Azure-Portal anzeigen können.
-
-1. Wählen Sie im Azure-Portal **Dashboard** aus.
-
-   ![Azure-Portal-Navigation zum Dashboard](media/quickstart-portal-dashboard-powershell/navigate-to-dashboards.png)
-
-1. Wählen Sie auf der Seite „Dashboard“ **Einfaches VM-Dashboard** aus.
-
-   ![Navigieren zu einfachem VM-Dashboard](media/quickstart-portal-dashboard-powershell/select-simple-vm-dashboard.png)
-
-1. Überprüfen Sie das Dashboard. Sie können sehen, dass ein Teil des Inhalts statisch ist, aber es gibt auch Diagramme, die die Leistung des virtuellen Computers anzeigen.
-
-   ![Überprüfen des einfachen VM-Dashboards](media/quickstart-portal-dashboard-powershell/review-simple-vm-dashboard.png)
+[!INCLUDE [azure-portal-review-deployed-resources](../../includes/azure-portal-review-deployed-resources.md)]
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
@@ -170,6 +158,7 @@ Wenn Sie den virtuellen Computer und das zugehörige Dashboard entfernen möchte
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name $resourceGroupName
+Remove-Item -Path "$HOME\portal-dashboard-template-testvm.json"
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

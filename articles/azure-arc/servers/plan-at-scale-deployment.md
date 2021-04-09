@@ -1,18 +1,18 @@
 ---
-title: Planen einer Bereitstellung von Servern mit Azure Arc-Unterstützung im großen Umfang
+title: Planen und Bereitstellen von Servern mit Azure Arc-Unterstützung
 description: Erfahren Sie, wie Sie eine große Anzahl von Computern für Server mit Azure Arc-Unterstützung aktivieren, um die Konfiguration wichtiger Sicherheits-, Verwaltungs- und Überwachungsfunktionen in Azure zu vereinfachen.
-ms.date: 02/23/2021
+ms.date: 03/18/2021
 ms.topic: conceptual
-ms.openlocfilehash: 0e77fc00f94f2f46c60bb2c5dcecc10a4e2e3bc5
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 5aa7022dba943fa3de247404522408f4660e80e3
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102032227"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105023281"
 ---
-# <a name="planing-for-an-at-scale-deployment-of-azure-arc-enabled-servers"></a>Planen einer Bereitstellung von Servern mit Azure Arc-Unterstützung im großen Umfang
+# <a name="plan-and-deploy-arc-enabled-servers"></a>Planen und Bereitstellen von Servern mit Arc-Unterstützung
 
-Die Bereitstellung eines IT-Infrastrukturdiensts oder einer Geschäftsanwendung ist für jedes Unternehmen eine Herausforderung. Damit dies erfolgreich umgesetzt werden kann und dabei keine unangenehmen Überraschungen und unerwartete Kosten auftreten, müssen Sie gründlich planen, sodass Sie bestmöglich vorbereitet sind. Um die Bereitstellung von Servern mit Azure Arc-Unterstützung im großen Umfang zu planen, sollten Sie die Entwurfs- und Bereitstellungskriterien abdecken, die erfüllt sein müssen, damit die Aufgaben zur Unterstützung einer Bereitstellung im großen Umfang erfolgreich abgeschlossen werden können.
+Die Bereitstellung eines IT-Infrastrukturdiensts oder einer Geschäftsanwendung ist für jedes Unternehmen eine Herausforderung. Damit dies erfolgreich umgesetzt werden kann und dabei keine unangenehmen Überraschungen und unerwartete Kosten auftreten, müssen Sie gründlich planen, sodass Sie bestmöglich vorbereitet sind. Um die Bereitstellung von Servern mit Azure Arc-Unterstützung jeder Größenordnung zu planen, sollten Sie die Entwurfs- und Bereitstellungskriterien abdecken, die erfüllt sein müssen, damit die Aufgaben erfolgreich abgeschlossen werden können.
 
 Damit die Bereitstellung problemlos fortgesetzt werden kann, sollte Ihr Plan folgende Punkte deutlich hervorheben:
 
@@ -57,7 +57,7 @@ In dieser Phase aktivieren System Engineers oder Administratoren die Kernfunktio
 |Aufgabe |Detail |Duration |
 |-----|-------|---------|
 | [Erstellen einer Ressourcengruppe](../../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups) | Eine dedizierte Ressourcengruppe, um nur Server mit Arc-Unterstützung einzubeziehen und die Verwaltung und Überwachung dieser Ressourcen zu zentralisieren. | Eine Stunde |
-| Anwenden von [Tags](../../azure-resource-manager/management/tag-resources.md) zur Unterstützung der Organisation von Computern. | Bewerten und Entwickeln einer IT-ausgerichteten [Markierungsstrategie](/cloud-adoption-framework/decision-guides/resource-tagging/), mit der die Komplexität der Verwaltung Ihrer Server mit Arc-Unterstützung reduziert und Verwaltungsentscheidungen vereinfacht werden können. | Ein Tag |
+| Anwenden von [Tags](../../azure-resource-manager/management/tag-resources.md) zur Unterstützung der Organisation von Computern. | Bewerten und Entwickeln einer IT-ausgerichteten [Markierungsstrategie](/azure/cloud-adoption-framework/decision-guides/resource-tagging/), mit der die Komplexität der Verwaltung Ihrer Server mit Arc-Unterstützung reduziert und Verwaltungsentscheidungen vereinfacht werden können. | Ein Tag |
 | Entwerfen und Bereitstellen von [Azure Monitor-Protokollen](../../azure-monitor/logs/data-platform-logs.md) | Bewerten von [Entwurfs- und Bereitstellungsüberlegungen](../../azure-monitor/logs/design-logs-deployment.md), um zu bestimmen, ob Ihre Organisation einen vorhandenen Log Analytics-Arbeitsbereich verwenden oder einen anderen implementieren sollte, um gesammelte Protokolldaten von Hybridservern und -computern zu speichern.<sup>1</sup> | Ein Tag |
 | [Entwickeln eines Azure Policy](../../governance/policy/overview.md)-Governanceplans | Bestimmen Sie, wie Sie die Governance von Hybridservern und -computern im Abonnement- oder Ressourcengruppenumfang mit Azure Policy implementieren. | Ein Tag |
 | Konfigurieren der [rollenbasierten Zugriffssteuerung](../../role-based-access-control/overview.md) (Role Based Access Control, RBAC) | Entwickeln Sie einen Zugriffsplan, um zu steuern, wer Zugriff auf die Verwaltung von Servern mit Arc-Unterstützung hat, und wer Daten aus anderen Azure-Diensten und -Lösungen anzeigen kann. | Ein Tag |
@@ -67,11 +67,11 @@ In dieser Phase aktivieren System Engineers oder Administratoren die Kernfunktio
 
 ## <a name="phase-2-deploy-arc-enabled-servers"></a>Phase 2: Bereitstellen von Servern mit Arc-Unterstützung
 
-Als Nächstes ergänzen wir die in Phase 1 festgelegte Grundlage, indem wir die Bereitstellung vorbereiten und die Installation des Agents durchführen.
+Als Nächstes ergänzen wir die in Phase 1 gelegte Grundlage, indem wir den Connected Computer-Agent für die Server mit Arc-Unterstützung vorbereiten und bereitstellen.
 
 |Aufgabe |Detail |Duration |
 |-----|-------|---------|
-| Herunterladen des vordefinierten Installationsskripts | Überprüfen Sie das vordefinierte Installationsskript für die Bereitstellung des Connected Machine-Agents im großen Umfang, um Ihre Anforderungen der automatischen Bereitstellung zu unterstützen, und passen Sie es an.<br><br> Beispiel für das Onboarding von Ressourcen im großen Umfang:<br><br> <ul><li> [Grundlegendes Skript für die Bereitstellung im großen Umfang](onboard-service-principal.md)</ul></li> <ul><li>[Onboarding von VMware-vSphere-Windows Server-VMs im großen Umfang](https://github.com/microsoft/azure_arc/blob/master/azure_arc_servers_jumpstart/docs/vmware_scaled_powercli_win.md)</ul></li> <ul><li>[Onboarding von VMware-vSphere-Linux-VMs im großen Umfang](https://github.com/microsoft/azure_arc/blob/master/azure_arc_servers_jumpstart/docs/vmware_scaled_powercli_linux.md)</ul></li> <ul><li>[Onboarding von AWS EC2-Instanzen mithilfe von Ansible im großen Umfang](https://github.com/microsoft/azure_arc/blob/master/azure_arc_servers_jumpstart/docs/aws_scale_ansible.md)</ul></li> <ul><li>[Bereitstellung im großen Umfang mit PowerShell-Remoting](https://docs.microsoft.com/azure/azure-arc/servers/onboard-powershell) (nur Windows)</ul></li>| Ein oder mehrere Tage, abhängig von den Anforderungen, Organisationsprozessen (z. B. Änderungs- und Release Management) und verwendeter Automatisierungsmethode. |
+| Herunterladen des vordefinierten Installationsskripts | Überprüfen Sie das vordefinierte Installationsskript für die Bereitstellung des Connected Machine-Agents im großen Umfang, um Ihre Anforderungen der automatischen Bereitstellung zu unterstützen, und passen Sie es an.<br><br> Beispiel für das Onboarding von Ressourcen im großen Umfang:<br><br> <ul><li> [Grundlegendes Skript für die Bereitstellung im großen Umfang](onboard-service-principal.md)</ul></li> <ul><li>[Onboarding von VMware-vSphere-Windows Server-VMs im großen Umfang](https://github.com/microsoft/azure_arc/blob/main/docs/azure_arc_jumpstart/azure_arc_servers/scaled_deployment/vmware_scaled_powercli_win/_index.md)</ul></li> <ul><li>[Onboarding von VMware-vSphere-Linux-VMs im großen Umfang](https://github.com/microsoft/azure_arc/blob/main/docs/azure_arc_jumpstart/azure_arc_servers/scaled_deployment/vmware_scaled_powercli_linux/_index.md)</ul></li> <ul><li>[Onboarding von AWS EC2-Instanzen mithilfe von Ansible im großen Umfang](https://github.com/microsoft/azure_arc/blob/main/docs/azure_arc_jumpstart/azure_arc_servers/scaled_deployment/aws_scaled_ansible/_index.md)</ul></li> <ul><li>[Bereitstellung im großen Umfang mit PowerShell-Remoting](./onboard-powershell.md) (nur Windows)</ul></li>| Ein oder mehrere Tage, abhängig von den Anforderungen, Organisationsprozessen (z. B. Änderungs- und Release Management) und verwendeter Automatisierungsmethode. |
 | [Erstellen eines Dienstprinzipals](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) |Erstellen Sie einen Dienstprinzipal, um Computer mit Azure PowerShell oder über das Portal nicht-interaktiv zu verbinden.| Eine Stunde |
 | Bereitstellen des Connected Machine-Agents für Ihre Zielserver und -computer |Stellen Sie die Skripts mit dem Automatisierungstool auf Ihren Servern bereit, und stellen Sie deren Verbindung mit Azure her.| Ein oder mehrere Tage, abhängig von Ihrem Freigabeplan und je nachdem, ob ein Rollout in Phasen stattfindet. |
 

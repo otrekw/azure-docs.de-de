@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 01/11/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a1ee632e3aaae7b858ab43b45f6e72aff8d1fb77
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5e0125f14570e917b228c5f713e636335755581d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100361762"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105024267"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>Azure Active Directory B2C-ISV-Partner
 
@@ -26,12 +26,6 @@ Unser ISV-Partnernetzwerk erweitert unsere Lösungsmöglichkeiten, damit Sie nah
 >Auf der [Website der Azure Active Directory B2C-Community auf GitHub](https://azure-ad-b2c.github.io/azureadb2ccommunity.io/) finden Sie auch Beispiele benutzerdefinierter Richtlinien aus der Community.
 
 ## <a name="identity-verification-and-proofing"></a>Identitätsüberprüfung und -nachweis
-
-Über Azure AD B2C-Partner können Kunden Identitätsüberprüfungen und -nachweise für ihre Endbenutzer aktivieren, bevor diesen die Kontoregistrierung oder der Zugriff erlaubt wird. Für die Überprüfung und den Nachweis der Identität können Dokumente, Informationen und Livetests geprüft werden.
-
-Dieses allgemeine Architekturdiagramm veranschaulicht den Flow.
-
-![Diagramm des Flows für Identitätsüberprüfungen](./media/partner-gallery/third-party-identity-proofing.png)
 
 Microsoft arbeitet für Identitätsüberprüfungen und -nachweise mit den folgenden ISVs zusammen.
 

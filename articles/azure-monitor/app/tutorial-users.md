@@ -7,12 +7,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 09/20/2017
 ms.custom: mvc
-ms.openlocfilehash: 4f6eeb5265d99a17ed18ace91fa5f2d2f744dbb2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: db63d763da8cfe13a07cab15f7f18ad6e2e73eb7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100597604"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105026290"
 ---
 # <a name="use-azure-application-insights-to-understand-how-customers-are-using-your-application"></a>Verwenden von Azure Application Insights zur Analyse der Kundeninteraktion mit Ihrer Anwendung
 
@@ -38,7 +38,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 - Laden Sie den [Visual Studio Snapshot Debugger](https://aka.ms/snapshotdebugger) herunter, und installieren Sie diesen.
 - Stellen Sie eine .NET-Anwendung in Azure bereit, und [aktivieren Sie das Application Insights SDK](../app/asp-net.md). 
 - [Senden Sie Telemetriedaten aus Ihrer Anwendung](../app/usage-overview.md#send-telemetry-from-your-app) zum Hinzufügen von benutzerdefinierten Ereignis-/Seitenansichten.
-- Senden Sie [Benutzerkontext-IDs](../app/usage-send-user-context.md), um Benutzeraktivitäten über einen bestimmten Zeitraum nachzuverfolgen und alle Nutzungsfunktionen zu verwenden.
+- Senden Sie [Benutzerkontext-IDs](./usage-overview.md), um Benutzeraktivitäten über einen bestimmten Zeitraum nachzuverfolgen und alle Nutzungsfunktionen zu verwenden.
 
 ## <a name="log-in-to-azure"></a>Anmelden an Azure
 Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
@@ -165,4 +165,3 @@ In diesem Tutorial haben Sie erfahren, wie Sie Benutzerdaten analysieren. Im nä
 
 > [!div class="nextstepaction"]
 > [Erstellen benutzerdefinierter Dashboards](./tutorial-app-dashboards.md)
-

@@ -4,10 +4,10 @@ description: In diesem Artikel wird beschrieben, wie Sie Warnungen zu Azure Even
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 48cb402e31435cb3e9390e8aeb461fcc5f90702f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100572008"
 ---
 # <a name="set-alerts-on-azure-event-grid-metrics-and-activity-logs"></a>Festlegen von Warnungen für Azure Event Grid-Metriken und -Aktivitätsprotokolle

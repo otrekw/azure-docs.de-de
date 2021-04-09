@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/27/2019
 ms.openlocfilehash: ffba3b986b35c375d0404d9d2bae5af79f93c54f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98944803"
 ---
 # <a name="apache-phoenix-performance-best-practices"></a>Bewährte Methoden für Leistung – Apache Phoenix
@@ -256,4 +256,4 @@ Ausführliche Informationen hierzu und zu anderen Optionen finden Sie unter [Apa
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Optimierungsleitfaden für Apache Phoenix](https://phoenix.apache.org/tuning_guide.html)
-* [Sekundäre Indizes](https://phoenix.apache.org/secondary_indexing.html)
+* [Secondary Indexing](https://phoenix.apache.org/secondary_indexing.html) (Sekundäre Indizes)
