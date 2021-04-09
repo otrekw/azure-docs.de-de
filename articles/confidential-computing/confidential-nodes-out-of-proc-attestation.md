@@ -2,16 +2,17 @@
 title: Unterstützung des Out-of-Proc-Nachweises mit DaemonSet für Intel SGX-Angebotshilfe in Azure (Vorschau)
 description: DaemonSet zum Erstellen des Angebots außerhalb des SGX-Anwendungsprozesses. In diesem Artikel wird beschrieben, wie das Feature für Out-of-Proc-Nachweise für vertrauliche Workloads bereitgestellt wird, die in einem Container ausgeführt werden.
 ms.service: container-service
+ms.subservice: confidential-computing
 author: agowdamsft
 ms.topic: overview
 ms.date: 2/12/2021
 ms.author: amgowda
-ms.openlocfilehash: 5d872032ea5b4e08c3f436dd3bfc202786d8514d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0ebeb96557b7e20d123577c0ab9c8fc392abbfba
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102553254"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105932626"
 ---
 # <a name="platform-software-management-with-sgx-quote-helper-daemon-set-preview"></a>Plattformsoftwareverwaltung mit DaemonSet für SGX-Angebotshilfe (Vorschau)
 

@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.date: 03/17/2021
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 47d079aa5038a5ef09df30f0561c258bfbf6a9f7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 967b509ff4832bb8c70c5802699d62f1b209c516
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104608798"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105959652"
 ---
 # <a name="create-and-monitor-media-services-events-with-event-grid-using-the-azure-cli"></a>Erstellen und Überwachen von Media Services-Ereignissen mit Event Grid über die Azure CLI
 
@@ -34,7 +34,7 @@ In diesem Artikel verwenden Sie die Azure CLI, um Ereignisse für Ihr Azure Medi
 
     Derzeit funktionieren nicht alle Befehle der [CLI von Media Services v3](/cli/azure/ams) in Azure Cloud Shell. Es wird empfohlen, die CLI lokal zu verwenden.
 
-- [Erstellen Sie ein Media Services-Konto.](../create-account-howto.md)
+- [Erstellen Sie ein Media Services-Konto.](../account-create-how-to.md)
 
     Merken Sie sich die Werte, die Sie für den Namen der Ressourcengruppe und des Media Services-Kontos verwendet haben.
 

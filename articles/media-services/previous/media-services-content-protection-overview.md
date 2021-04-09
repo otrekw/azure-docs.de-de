@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/10/2021
 ms.author: inhenkel
-ms.openlocfilehash: edffa2dddd0ec877a4b825a69a76fb158928c89f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2922586d586dbbb98ae85fb86f3f76889a75aa6b
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103016762"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106067400"
 ---
 # <a name="content-protection-overview"></a>Übersicht über den Inhaltsschutz
 
@@ -117,7 +117,7 @@ Es gelten die folgenden Bedingungen:
 In den folgenden Artikeln werden die nächsten Schritte für den Einstieg in den Inhaltsschutz beschrieben:
 
 * [Schutz durch Speicherverschlüsselung](media-services-rest-storage-encryption.md)
-* [Schutz durch AES-Verschlüsselung](media-services-protect-with-aes128.md)
+* [Schutz durch AES-Verschlüsselung](media-services-playready-license-template-overview.md)
 * [Schutz mit PlayReady und/oder Widevine](media-services-protect-with-playready-widevine.md)
 * [Schutz mit FairPlay](media-services-protect-hls-with-FairPlay.md)
 

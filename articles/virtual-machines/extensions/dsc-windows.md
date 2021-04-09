@@ -9,10 +9,10 @@ ms.author: robreed
 ms.collection: windows
 ms.date: 03/26/2018
 ms.openlocfilehash: 72f66aeee64133a13ce0e49155c4b2a90240a3fb
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102559986"
 ---
 # <a name="powershell-dsc-extension"></a>PowerShell DSC-Erweiterung
@@ -115,7 +115,7 @@ Der folgende JSON-Code zeigt das Schema für den Bereich mit den Einstellungen d
 
 ### <a name="protected-settings-property-values"></a>Eigenschaftswerte geschützter Einstellungen
 
-| Name | Datentyp | Beschreibung
+| Name | Datentyp | BESCHREIBUNG
 | ---- | ---- | ---- |
 | protectedSettings.configurationArguments | Zeichenfolge | Definiert beliebige Parameter, die Sie Ihrer DSC-Konfiguration übergeben möchten. Diese Eigenschaft wird verschlüsselt. |
 | protectedSettings.configurationUrlSasToken | Zeichenfolge | Gibt das SAS-Token für den Zugriff auf durch „configuration.url“ definierte URL an. Diese Eigenschaft wird verschlüsselt. |
