@@ -9,10 +9,10 @@ ms.date: 01/06/2021
 ms.author: sngun
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 019ca26143a4879efafa973299703f0abcb21162
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "102488085"
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>Optimieren der Abfrageleistung mit Azure Cosmos DB
@@ -40,7 +40,7 @@ Wenn Sie eine Abfrage an Azure Cosmos DB ausgeben, führt das SDK folgende logis
 
 Die SDKs stellen verschiedene Optionen für die Abfrageausführung bereit. In .NET sind diese Optionen beispielsweise in der `FeedOptions`-Klasse verfügbar. Die folgende Tabelle beschreibt diese Optionen und erläutert, wie sie sich auf die Abfrageausführungszeit auswirken. 
 
-| Option | BESCHREIBUNG |
+| Option | Beschreibung |
 | ------ | ----------- |
 | `EnableCrossPartitionQuery` | Muss auf „true“ für eine Abfrage festgelegt werden, die partitionsübergreifend ausgeführt werden muss. Dies ist eine explizite Kennzeichnung, die es Ihnen bei der Entwicklung ermöglichen soll, gezielt Leistungskompromisse zu finden. |
 | `EnableScanInQuery` | Muss auf „true“ festgelegt werden, wenn Sie die Indizierung deaktiviert haben, die Abfrage jedoch trotzdem mittels einer Überprüfung ausführen möchten. Diese Option ist nur anwendbar, wenn die Indizierung für den angeforderten Filterpfad deaktiviert ist. | 
@@ -126,7 +126,7 @@ Date: Tue, 27 Jun 2017 21:59:49 GMT
 
 Die von der Abfrage zurückgegebenen Schlüsselantwortheader umfassen Folgendes:
 
-| Option | BESCHREIBUNG |
+| Option | Beschreibung |
 | ------ | ----------- |
 | `x-ms-item-count` | Die Anzahl der in der Antwort zurückgegebenen Elemente. Diese ist abhängig vom angegebenen `x-ms-max-item-count`-Header, der Anzahl der Elemente, die maximal als Antwortnutzlast übertragen werden können, dem bereitgestellten Durchsatz und der Abfrageausführungszeit. |  
 | `x-ms-continuation:` | Das Fortsetzungstoken zum Fortsetzen der Abfrageausführung, sofern zusätzliche Ergebnisse verfügbar sind. | 
@@ -260,7 +260,7 @@ Die Client-SDKs können intern möglicherweise mehrere Abfrageoperationen ausfü
 
 Im Folgenden werden einige Beispielabfragen vorgestellt und erläutert, wie einige von der Abfrageausführung zurückgegebenen Metriken zu interpretieren sind: 
 
-| Abfrage | Beispielmetrik | BESCHREIBUNG | 
+| Abfrage | Beispielmetrik | Beschreibung | 
 | ------ | -----| ----------- |
 | `SELECT TOP 100 * FROM c` | `"RetrievedDocumentCount": 101` | Die Anzahl der abgerufenen Dokumente beträgt 100+1 entsprechend der TOP-Klausel. Die Abfragezeit wird hauptsächlich für `WriteOutputTime` und `DocumentLoadTime` aufgewendet, da es sich um eine Überprüfung handelt. | 
 | `SELECT TOP 500 * FROM c` | `"RetrievedDocumentCount": 501` | „RetrievedDocumentCount“ ist nun höher (500+1 entsprechend der TOP-Klausel). | 

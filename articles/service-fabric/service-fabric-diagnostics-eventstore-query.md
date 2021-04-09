@@ -1,17 +1,15 @@
 ---
 title: Abfragen nach Clusterereignissen mithilfe von EventStore-APIs
 description: Es wird beschrieben, wie Sie die Azure Service Fabric-EventStore-APIs verwenden, um Plattformereignisse abzufragen.
-author: srrengar
 ms.topic: conceptual
 ms.date: 02/25/2019
-ms.author: srrengar
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6bed26227542cbf3ffc13ecc018aef9e659d026e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: bc8909a6f25c3adcba60de639d822769baff703f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98791627"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105628800"
 ---
 # <a name="query-eventstore-apis-for-cluster-events"></a>Abfragen von EventStore-APIs nach Clusterereignissen
 

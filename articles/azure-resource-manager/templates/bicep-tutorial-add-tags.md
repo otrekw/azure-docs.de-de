@@ -2,16 +2,16 @@
 title: 'Tutorial: Hinzufügen von Tags zu Ressourcen in einer Azure Resource Manager-Bicep-Datei'
 description: Fügen Sie Tags zu Ressourcen hinzu, die Sie in Ihren Bicep-Dateien bereitstellen. Mithilfe von Tags können Sie Ressourcen logisch organisieren.
 author: mumian
-ms.date: 03/01/2021
+ms.date: 03/10/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 05bb68609705ac4c13ad77d2c74db7c105ba23fb
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ea5e078eb692d002b3f86cd43663dd042d692611
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101742928"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102632600"
 ---
 # <a name="tutorial-add-tags-in-azure-resource-manager-bicep-files"></a>Tutorial: Hinzufügen von Tags in einer Azure Resource Manager-Bicep-Datei
 
@@ -37,7 +37,7 @@ Nach der Bereitstellung dieser Ressourcen müssen Sie möglicherweise die Kosten
 
 Sie taggen Ressourcen, um Werte hinzuzufügen, die Aufschluss über ihre Verwendung geben. Beispielsweise können Sie Tags hinzufügen, die die Umgebung und das Projekt auflisten. Sie können Tags hinzufügen, die eine Kostenstelle oder das für die Ressource zuständige Team identifizieren. Fügen Sie beliebige Werte hinzu, die für Ihre Organisation sinnvoll sind.
 
-Im folgenden Beispiel sind die Änderungen hervorgehoben, die an der Bicep-Datei vorgenommen werden. Kopieren Sie die gesamte Datei, und ersetzen Sie Ihre Bicep-Datei durch den Inhalt der Datei.
+Das folgende Beispiel zeigt die Änderungen an der Bicep-Datei. Kopieren Sie die gesamte Datei, und ersetzen Sie Ihre Bicep-Datei durch den Inhalt der Datei.
 
 :::code language="bicep" source="~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.bicep" range="1-81" highlight="27-30,38,51,71":::
 

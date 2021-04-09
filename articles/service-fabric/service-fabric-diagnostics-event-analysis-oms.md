@@ -1,16 +1,14 @@
 ---
 title: Azure Service Fabric-Ereignisanalyse mit Azure Monitor-Protokollen
 description: Erfahren Sie, wie Sie Ereignisse visualisieren und analysieren, indem Sie Azure Monitor-Protokolle zur Überwachung und Diagnose von Azure Service Fabric-Clustern verwenden.
-author: srrengar
 ms.topic: conceptual
 ms.date: 02/21/2019
-ms.author: srrengar
-ms.openlocfilehash: 678e96c9b5611cd6d72abd7c4582691b55ffe479
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f1e22213c857b400cc36c51cefb90e2379352893
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100581553"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105628967"
 ---
 # <a name="event-analysis-and-visualization-with-azure-monitor-logs"></a>Ereignisanalyse und -visualisierung mit Azure Monitor-Protokollen
  Azure Monitor-Protokolle sammeln und analysieren Telemetriedaten von Anwendungen und Diensten, die in der Cloud gehostet werden. Darüber hinaus sind Analysetools verfügbar, um die Verfügbarkeit und Leistung dieser Anwendungen und Dienste maximieren zu können. In diesem Artikel wird beschrieben, wie Sie Abfragen in Azure Monitor-Protokolle ausführen, um einen Einblick in den Cluster zu erhalten und Probleme zu beheben. Folgende allgemeine Fragen werden berücksichtigt:

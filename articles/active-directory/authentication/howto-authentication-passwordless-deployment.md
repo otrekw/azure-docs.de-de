@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc5916cf4277935f6d7d7f453fd4dd76d7909ef2
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 8d4ff717a49ba9c9b4d66e54e5eae1248af3fcea
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101651126"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104579364"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Planen einer Bereitstellung mit kennwortloser Authentifizierung in Azure Active Directory
 
@@ -330,4 +330,4 @@ Führen Sie die Schritte im Artikel [Aktivieren der kennwortlosen Anmeldung mit 
 
 - [Aktivieren der kennwortlosen Anmeldung mit Sicherheitsschlüsseln bei Azure AD](howto-authentication-passwordless-security-key.md)
 - [Aktivieren der kennwortlosen Anmeldung mit der Microsoft Authenticator-App (Vorschauversion)](howto-authentication-passwordless-phone.md)
-- [Authentifizierungsmethoden: Nutzung und Erkenntnisse](howto-authentication-methods-usage-insights.md)
+- [Authentifizierungsmethoden: Nutzung und Erkenntnisse](./howto-authentication-methods-activity.md)

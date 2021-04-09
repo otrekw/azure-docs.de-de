@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: f19625f1d558071ccb29487efe56146756c7692c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 56b691b2755b5e248b16e338f8fd82864f5bf218
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102437535"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105560334"
 ---
 # <a name="enable-edge-container-registry-on-your-azure-stack-edge-pro-gpu-device"></a>Aktivieren einer Edge-Containerregistrierung auf Ihrem Azure Stack Edge Pro-GPU-Gerät
 
@@ -294,4 +294,4 @@ Nachdem Sie die nicht verwendeten Images gelöscht haben, wird der Speicherplatz
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Bereitstellen einer zustandslosen Anwendung auf Ihrem Azure Stack Edge Pro-Gerät](azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md).
+- [Bereitstellen einer zustandslosen Anwendung auf Ihrem Azure Stack Edge Pro-Gerät](./azure-stack-edge-gpu-deploy-stateless-application-kubernetes.md).

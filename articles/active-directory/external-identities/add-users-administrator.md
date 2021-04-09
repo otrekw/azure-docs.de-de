@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d86ddd8d0fe53599e9dce3d2fc5fa7682f2aed08
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 2566b427777aec273df17863f06040de20649d97
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92897057"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104581846"
 ---
 # <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>Hinzufügen von Azure Active Directory B2B-Zusammenarbeitsbenutzern über das Azure-Portal
 
@@ -36,7 +36,7 @@ Stellen Sie sicher, dass die Einstellungen für externe Zusammenarbeit Ihrer Org
 Gehen Sie wie folgt vor, um B2B-Zusammenarbeitsbenutzer dem Verzeichnis hinzuzufügen:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) als Benutzer an, dem eine eingeschränkte Azure AD-Administratorrolle oder die Rolle „Gasteinladender“ zugewiesen ist.
-2. Suchen Sie auf einer beliebigen Seite nach **Azure Active Directory** , und wählen Sie es aus.
+2. Suchen Sie auf einer beliebigen Seite nach **Azure Active Directory**, und wählen Sie es aus.
 3. Wählen Sie unter **Verwalten** die Option **Benutzer** aus.
 4. Klicken Sie auf **Neuer Gastbenutzer**.
 
@@ -50,8 +50,8 @@ Gehen Sie wie folgt vor, um B2B-Zusammenarbeitsbenutzer dem Verzeichnis hinzuzuf
    - **Name**. Der Vor- und Nachname des Gastbenutzers.
    - **E-Mail-Adresse (erforderlich)** . Die E-Mail-Adresse des Gastbenutzers.
    - **Persönliche Nachricht (optional)** : Geben Sie eine persönliche Willkommensnachricht an den Gastbenutzer ein.
-   - **Gruppen** : Sie können den Gastbenutzer jetzt oder später einer oder mehreren vorhandenen Gruppen hinzufügen.
-   - **Verzeichnisrolle** : Wenn Sie Azure AD-Administratorberechtigungen für den Benutzer benötigen, können Sie diese einer Azure AD-Rolle hinzufügen. 
+   - **Gruppen**: Sie können den Gastbenutzer jetzt oder später einer oder mehreren vorhandenen Gruppen hinzufügen.
+   - **Verzeichnisrolle**: Wenn Sie Azure AD-Administratorberechtigungen für den Benutzer benötigen, können Sie diese einer Azure AD-Rolle hinzufügen. 
 
 7. Klicken Sie auf **Einladen**. Die Einladung wird daraufhin automatisch an den Gastbenutzer gesendet. 
  
@@ -64,12 +64,12 @@ Nach dem Senden der Einladung wird das Benutzerkonto dem Verzeichnis automatisch
 Gehen Sie wie folgt vor, um einer Gruppe Benutzer für die B2B-Zusammenarbeit manuell hinzuzufügen:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) als Azure AD-Administrator an.
-2. Suchen Sie auf einer beliebigen Seite nach **Azure Active Directory** , und wählen Sie es aus.
+2. Suchen Sie auf einer beliebigen Seite nach **Azure Active Directory**, und wählen Sie es aus.
 3. Wählen Sie unter **Verwalten** die Option **Gruppen** aus.
-4. Wählen Sie eine Gruppe aus, oder klicken Sie auf **Neue Gruppe** , um eine neue Gruppe zu erstellen. Es empfiehlt sich, in der Gruppenbeschreibung anzugeben, dass die Gruppe B2B-Gastbenutzer enthält.
+4. Wählen Sie eine Gruppe aus, oder klicken Sie auf **Neue Gruppe**, um eine neue Gruppe zu erstellen. Es empfiehlt sich, in der Gruppenbeschreibung anzugeben, dass die Gruppe B2B-Gastbenutzer enthält.
 5. Wählen Sie **Mitglieder** aus. 
 6. Führen Sie eines der folgenden Verfahren aus:
-   - Falls der Gastbenutzer bereits im Verzeichnis vorhanden ist, suchen Sie nach dem B2B-Benutzer. Wählen Sie den Benutzer aus, und klicken Sie auf **Auswählen** , um ihn der Gruppe hinzuzufügen.
+   - Falls der Gastbenutzer bereits im Verzeichnis vorhanden ist, suchen Sie nach dem B2B-Benutzer. Wählen Sie den Benutzer aus, und klicken Sie auf **Auswählen**, um ihn der Gruppe hinzuzufügen.
    - Wenn der Gastbenutzer im Verzeichnis nicht bereits vorhanden ist, laden Sie ihn in die Gruppe ein. Geben Sie dazu seine E-Mail-Adresse in das Suchfeld ein, verfassen Sie anschließend optional eine persönliche Nachricht, und klicken Sie dann auf **Auswählen**. Die Einladung wird automatisch an den eingeladenen Benutzer gesendet.
      
      ![Schaltfläche „Einladen“ zum Hinzufügen von Gastmitgliedern hinzufügen](./media/add-users-administrator/GroupInvite.png)
@@ -81,26 +81,26 @@ Für Azure AD B2B-Zusammenarbeit können auch dynamische Gruppen verwendet werde
 Gehen Sie wie folgt vor, um einer Anwendung Benutzer für die B2B-Zusammenarbeit hinzuzufügen:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) als Azure AD-Administrator an.
-2. Suchen Sie auf einer beliebigen Seite nach **Azure Active Directory** , und wählen Sie es aus.
+2. Suchen Sie auf einer beliebigen Seite nach **Azure Active Directory**, und wählen Sie es aus.
 3. Klicken Sie unter **Verwalten** auf **Unternehmensanwendungen** > **Alle Anwendungen**.
 4. Wählen Sie die Anwendung aus, der Sie Gastbenutzer hinzufügen möchten.
-5. Klicken Sie auf dem Anwendungsdashboard auf **Benutzer gesamt** , um den Bereich **Benutzer und Gruppen** zu öffnen.
+5. Klicken Sie auf dem Anwendungsdashboard auf **Benutzer gesamt**, um den Bereich **Benutzer und Gruppen** zu öffnen.
 
     ![Schaltfläche „Benutzer gesamt“ zum Öffnen von „Benutzern und Gruppen“](./media/add-users-administrator/AppUsersAndGroups.png)
 
 6. Klicken Sie auf **Benutzer hinzufügen**.
 7. Klicken Sie unter **Zuweisung hinzufügen** auf **Benutzer und Gruppen**.
 8. Führen Sie eines der folgenden Verfahren aus:
-   - Falls der Gastbenutzer bereits im Verzeichnis vorhanden ist, suchen Sie nach dem B2B-Benutzer. Wählen Sie den Benutzer aus, und klicken Sie dann auf **Auswählen** > **Zuweisen** , um ihn der App hinzuzufügen.
+   - Falls der Gastbenutzer bereits im Verzeichnis vorhanden ist, suchen Sie nach dem B2B-Benutzer. Wählen Sie den Benutzer aus, und klicken Sie dann auf **Auswählen** > **Zuweisen**, um ihn der App hinzuzufügen.
    - Falls der Gastbenutzer noch nicht im Verzeichnis vorhanden ist, geben Sie unter **Mitglied auswählen oder externen Benutzer einladen** die E-Mail-Adresse des Benutzers ein. Geben Sie im Nachrichtenfeld optional eine persönliche Nachricht ein. Klicken Sie unter dem Nachrichtenfeld auf **Einladen**.
            
        ![Screenshot: Hinzufügen der E-Mail-Adresse des Benutzers, der personalisierten Nachricht und hervorgehobene Schaltfläche „Einladen“](./media/add-users-administrator/AppInviteUsers.png)
    
-      Klicken Sie auf **Auswählen** > **Zuweisen** , um den Benutzer der App hinzuzufügen. Der eingeladenen Benutzer erhält die Einladung automatisch.
+      Klicken Sie auf **Auswählen** > **Zuweisen**, um den Benutzer der App hinzuzufügen. Der eingeladenen Benutzer erhält die Einladung automatisch.
 
 9. Der Gastbenutzer wird in der Anwendungsliste **Benutzer und Gruppen** mit der zugewiesenen Rolle **Standardzugriff** angezeigt. Wenn Sie die Rolle ändern möchten, führen Sie folgende Schritte aus:
    - Wählen Sie den Gastbenutzer aus, und klicken Sie dann auf **Bearbeiten**. 
-   - Klicken Sie unter **Zuweisung bearbeiten** auf **Rolle auswählen** , und wählen Sie die Rolle aus, die Sie dem ausgewählten Benutzer zuweisen möchten.
+   - Klicken Sie unter **Zuweisung bearbeiten** auf **Rolle auswählen**, und wählen Sie die Rolle aus, die Sie dem ausgewählten Benutzer zuweisen möchten.
    - Klicken Sie auf **Auswählen**.
    - Klicken Sie auf **Zuweisen**.
  
@@ -109,16 +109,15 @@ Gehen Sie wie folgt vor, um einer Anwendung Benutzer für die B2B-Zusammenarbeit
 Wenn ein Gastbenutzer seine Einladung noch nicht angenommen hat, können Sie die Einladungs-E-Mail erneut senden.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) als Azure AD-Administrator an.
-2. Suchen Sie auf einer beliebigen Seite nach **Azure Active Directory** , und wählen Sie es aus.
+2. Suchen Sie auf einer beliebigen Seite nach **Azure Active Directory**, und wählen Sie es aus.
 3. Wählen Sie unter **Verwalten** die Option **Benutzer** aus.
 5. Wählen Sie das Benutzerkonto aus.
 6. Klicken Sie unter **Verwalten** auf **Profil**.
-7. Sofern der Benutzer die Einladung noch nicht angenommen hat, steht die Option **Einladung erneut senden** zur Verfügung. Klicken Sie auf diese Schaltfläche, um die Einladung erneut zu senden.
-
-   ![Option „Einladung erneut senden“ im Benutzerprofil](./media/add-users-administrator/b2b-user-resend-invitation.png)
+7. Wenn der Benutzer die Einladung noch nicht angenommen hat, wird im Abschnitt **Identität** die Option **Einladung angenommen** auf **Nein** gesetzt. Um die Einladung erneut zu senden, wählen Sie **(verwalten)** aus. Klicken Sie dann auf der Seite **Einladungen verwalten** neben **Einladung erneut senden? Wählen Sie **Ja** aus, und wählen Sie dann **abgeschlossen** aus.
 
 > [!NOTE]
 > Wenn Sie eine Einladung erneut senden, in der der Benutzer ursprünglich zu einer bestimmten App weitergeleitet wurde, gelangt der Benutzer über den Link in der neuen Einladung stattdessen zur obersten Ebene des Zugriffsbereichs.
+> Darüber hinaus können nur Benutzer mit einladenden Berechtigungen Einladungen erneut senden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

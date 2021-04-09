@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 01/22/2021
 ms.openlocfilehash: 50216b83475e92cbabb5ed78c3836264ceff4600
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104866606"
 ---
 # <a name="tutorial-use-apache-hbase-in-azure-hdinsight"></a>Tutorial: Verwenden von Apache HBase in Azure HDInsight
@@ -41,7 +41,7 @@ Im folgenden Verfahren wird eine Azure Resource Manager-Vorlage verwendet, um ei
 
 2. Geben Sie im Dialogfeld **Benutzerdefinierte Bereitstellung** die folgenden Werte ein:
 
-    |Eigenschaft |BESCHREIBUNG |
+    |Eigenschaft |Beschreibung |
     |---|---|
     |Subscription|Wählen Sie Ihr Azure-Abonnement aus, das zum Erstellen des Clusters verwendet wird.|
     |Resource group|Erstellen Sie eine neue Azure Resource Management-Gruppe, oder verwenden Sie eine vorhandene Ressourcengruppe.|
