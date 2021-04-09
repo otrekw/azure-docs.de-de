@@ -7,11 +7,11 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: 125d4a02d06e2792f9a2a4e646c3788dcf223318
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: ef018e58f8336220b96eba568c94efc40a0fb0c7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102612829"
 ---
 # <a name="upgrade-azure-public-load-balancer"></a>Upgraden einer öffentlichen Azure Load Balancer-Instanz
@@ -21,9 +21,6 @@ Ein Upgrade umfasst zwei Phasen:
 
 1. Ändern Sie die IP-Zuordnungsmethode von dynamisch in statisch.
 2. Führen Sie das PowerShell-Skript aus, um das Upgrade und die Migration von Datenverkehr abzuschließen.
-
-> [!IMPORTANT]
-> Das Skript wird zurzeit gewartet. Informationen zum Upgraden von öffentlichen IP-Adressen von der Basic-SKU zur Standard-SKU finden Sie in [diesen Anweisungen](../virtual-network/virtual-network-public-ip-address-upgrade.md).
 
 ## <a name="upgrade-overview"></a>Upgradeübersicht
 
@@ -101,7 +98,7 @@ So führen Sie das Skript aus
     **Beispiel**
 
    ```azurepowershell
-   AzurePublicLBUpgrade.ps1 -oldRgName "test_publicUpgrade_rg" -oldLBName "LBForPublic" -newLbName "LBForUpgrade"
+   AzurePublicLBUpgrade.ps1 -oldRgName "test_publicUpgrade_rg&quot; -oldLBName &quot;LBForPublic&quot; -newLbName &quot;LBForUpgrade"
    ```
 
 ### <a name="create-an-outbound-rule-for-outbound-connection"></a>Erstellen einer Ausgangsregel für ausgehende Verbindungen

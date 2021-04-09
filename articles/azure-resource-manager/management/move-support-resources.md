@@ -3,12 +3,12 @@ title: Unterstützung des Verschiebevorgangs nach Ressourcentyp
 description: Eine Liste von Azure-Ressourcentypen, die in eine neue Ressourcengruppe oder ein neues Abonnement verschoben werden können.
 ms.topic: conceptual
 ms.date: 01/11/2021
-ms.openlocfilehash: ae59bcc65f296a10c68b88f5f6a1ecbc923f8856
-ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
+ms.openlocfilehash: 3a15ddc62c19d74871de33003d46ec2fc5437f51
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103232595"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104584685"
 ---
 # <a name="move-operation-support-for-resources"></a>Unterstützung des Verschiebevorgangs für Ressourcen
 
@@ -850,7 +850,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | flexibleServers | Ja | Ja |
+> | flexibleServers | Nein | Nein |
 > | servers | Ja | Ja |
 
 ## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL

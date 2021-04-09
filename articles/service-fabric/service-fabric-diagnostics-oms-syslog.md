@@ -1,16 +1,14 @@
 ---
 title: Überwachen von Linux-Clusterereignissen in Azure Service Fabric
 description: Erfahren Sie, wie Sie Linux-Clusterereignisse in Service Fabric überwachen, indem Sie Service Fabric-Plattformereignisse in Syslog schreiben.
-author: srrengar
 ms.topic: conceptual
 ms.date: 10/23/2018
-ms.author: srrengar
-ms.openlocfilehash: 6a98a833baefa9b1c2d1ebd9ff8147206c2106bf
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 895ff340c1b649c1ba8a20bf95edcefb9a72e246
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100570205"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105626961"
 ---
 # <a name="service-fabric-linux-cluster-events-in-syslog"></a>Service Fabric-Linux-Clusterereignisse in Syslog
 

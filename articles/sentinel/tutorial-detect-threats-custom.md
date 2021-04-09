@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/10/2021
 ms.author: yelevin
-ms.openlocfilehash: 6f0a94daef8c5db820a17fe8cb50eda616bcf260
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 70b56e70ec0e6f511142c48cc89720c054807a5c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102453934"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105042797"
 ---
 # <a name="tutorial-create-custom-analytics-rules-to-detect-threats"></a>Tutorial: Erstellen benutzerdefinierter Analyseregeln zum Erkennen von Bedrohungen
 
@@ -64,7 +64,7 @@ Auf der Registerkarte **Regellogik festlegen** können Sie im Feld **Regelabfrag
 
    :::image type="content" source="media/tutorial-detect-threats-custom/set-rule-logic-tab-1-new.png" alt-text="Konfigurieren von Abfrageregellogik und Einstellungen" lightbox="media/tutorial-detect-threats-custom/set-rule-logic-tab-all-1-new.png":::
 
-- Mit der folgenden Beispielabfrage werden Sie gewarnt, wenn im [Azure-Aktivitätsprotokoll](../azure-monitor/platform/activity-log.md) eine ungewöhnliche Anzahl von Ressourcen erstellt wird.
+- Mit der folgenden Beispielabfrage werden Sie gewarnt, wenn im [Azure-Aktivitätsprotokoll](../azure-monitor/essentials/activity-log.md) eine ungewöhnliche Anzahl von Ressourcen erstellt wird.
 
     ```kusto
     AzureActivity

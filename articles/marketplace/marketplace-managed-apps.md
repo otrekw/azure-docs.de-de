@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: msjogarrig
 ms.author: jogarrig
 ms.date: 09/04/2020
-ms.openlocfilehash: d4fb3354b7035149b80191528b2f5335b593b764
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 09badebab86da8e4fd8d35307aa6648a26e91821
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96433549"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103232255"
 ---
 # <a name="publishing-guide-for-azure-managed-applications"></a>Leitfaden für die Veröffentlichung von verwalteten Azure-Anwendungen
 
@@ -33,8 +33,8 @@ Verwenden Sie den Angebotstyp „Verwaltete Anwendung“ unter den folgenden Bed
 |Requirements (Anforderungen) |Details  |
 |---------|---------|
 |Ein Azure-Abonnement | Verwaltete Anwendungen müssen im Abonnement eines Kunden bereitgestellt werden, können aber von einem Drittanbieter verwaltet werden. |
-|Abrechnung und Messung    |  Die Ressourcen werden im Azure-Abonnement eines Kunden bereitgestellt. Bei VMs, für die das Modell der nutzungsbasierten Bezahlung verwendet wird, erfolgt die Transaktion mit dem Kunden über Microsoft, und die Abrechnung wird über das Azure-Abonnement des Kunden abgewickelt. <br><br> Bei Bring-Your-Own-License-VMs rechnet Microsoft die angefallenen Infrastrukturkosten im Kundenabonnement ab. Die Softwarelizenzgebühren rechnen Sie jedoch direkt mit dem Kunden ab.        |
-|Eine Azure-kompatible virtuelle Festplatte (Virtual Hard Disk, VHD)    |   VMs müssen unter Windows oder Linux erstellt werden.<br><br>Weitere Informationen zum Erstellen einer Linux-VHD finden Sie unter [Von Azure unterstützte Distributionen von Linux](../virtual-machines/linux/endorsed-distros.md).<br><br>Weitere Informationen zum Erstellen einer Windows-VHD finden Sie unter [Erstellen eines Azure-Anwendungsangebots](./create-new-azure-apps-offer.md). |
+|Abrechnung und Messung    |  Die Ressourcen werden im Azure-Abonnement eines Kunden bereitgestellt. Bei Azure-Ressourcen, für die das Modell der nutzungsbasierten Bezahlung verwendet wird, erfolgt die Transaktion mit dem Kunden über Microsoft, und die Abrechnung wird über das Azure-Abonnement des Kunden abgewickelt. <br><br> Bei Azure-Ressourcen im Bring-Your-Own-License-Modell rechnet Microsoft die angefallenen Infrastrukturkosten im Kundenabonnement ab. Die Softwarelizenzgebühren rechnen Sie jedoch direkt mit dem Kunden ab.        |
+|Ein Paket für eine verwaltete Azure-Anwendung    |   Die konfigurierte Azure Resource Manager-Vorlage und die Benutzeroberflächendefinition, die zum Bereitstellen Ihrer im Abonnement des Kunden verwendet werden.<br><br>Weitere Informationen zum Erstellen einer verwalteten Anwendung finden Sie unter [Schnellstart: Erstellen und Veröffentlichen einer Definition für die verwaltete Anwendung](../azure-resource-manager/managed-applications/publish-service-catalog-app.md).|
 
 ---
 

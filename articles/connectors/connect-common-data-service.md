@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/11/2021
 tags: connectors
 ms.openlocfilehash: bec3416195358121b85eb61679ab39647e664a9e
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100382349"
 ---
 # <a name="create-and-manage-records-in-common-data-service-microsoft-dataverse-by-using-azure-logic-apps"></a>Erstellen und Verwalten von Datensätzen in Common Data Service (Microsoft Dataverse) mithilfe von Azure Logic Apps
