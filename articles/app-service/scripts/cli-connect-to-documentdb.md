@@ -1,5 +1,5 @@
 ---
-title: 'Über die CLI: Verbinden einer App mit Cosmos DB'
+title: 'CLI: Verbinden einer App mit Cosmos DB'
 description: Hier erfahren Sie, wie Sie die Azure CLI zum Automatisieren der Bereitstellung und Verwaltung Ihrer App Service-App verwenden. In diesem Beispiel wird gezeigt, wie Sie eine Verbindung zwischen einer App und MongoDB (Cosmos DB) herstellen.
 author: msangapu-msft
 tags: azure-service-management
@@ -10,10 +10,10 @@ ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: mvc, seodec18
 ms.openlocfilehash: fa971bbb8526f1b0bc081e61ed5e7a7f2cf76d1f
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97006360"
 ---
 # <a name="connect-an-app-service-app-to-cosmos-db-using-cli"></a>Herstellen einer Verbindung zwischen einer App Service-App und Cosmos DB per CLI

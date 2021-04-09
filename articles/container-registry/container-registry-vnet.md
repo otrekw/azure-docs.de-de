@@ -4,10 +4,10 @@ description: Hier erfahren Sie, wie Sie den Zugriff auf eine Azure-Containerregi
 ms.topic: article
 ms.date: 05/04/2020
 ms.openlocfilehash: c49595ee4ee79aef264a87dd48bccd03f3d4f5a5
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104773894"
 ---
 # <a name="restrict-access-to-a-container-registry-using-a-service-endpoint-in-an-azure-virtual-network"></a>Beschränken des Zugriffs auf eine Containerregistrierung mithilfe eines Dienstendpunkts in einem virtuellen Azure-Netzwerk
