@@ -3,12 +3,12 @@ title: 'Schnellstart: Erstellen einer Blaupause mit PowerShell'
 description: In dieser Schnellstartanleitung verwenden Sie Azure Blueprints, um Artefakte mithilfe von PowerShell zu erstellen, zu definieren und bereitzustellen.
 ms.date: 01/27/2021
 ms.topic: quickstart
-ms.openlocfilehash: 65d573d0aec7d5f292bc985483e1f12c350ae03a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 002ba6fcf20b10bcc44fb486a85bc24bfdd12ae3
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98918278"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105559025"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-powershell"></a>Schnellstart: Definieren und Zuweisen einer Azure-Blaupause mit PowerShell
 
@@ -307,7 +307,7 @@ Der Wert für `{BlueprintVersion}` ist eine Zeichenfolge mit Buchstaben, Zahlen 
 
 Nachdem eine Blaupause mithilfe von PowerShell veröffentlicht wurde, kann sie einem Abonnement zugewiesen werden. Weisen Sie die erstellte Blaupause einem der Abonnements unter Ihrer Verwaltungsgruppenhierarchie zu. Wenn die Blaupause in einem Abonnement gespeichert wird, kann sie nur diesem Abonnement zugewiesen werden. Der Parameter **Blueprint** gibt die zuzuweisende Blaupause an. Verwenden Sie zum Angeben von Parametern für Name, Speicherort, Identität, Sperrung und Blaupause die entsprechenden PowerShell-Parameter im Cmdlet `New-AzBlueprintAssignment`, oder geben Sie sie in der JSON-Parameterdatei **AssignmentFile** an.
 
-1. Führen Sie die Blaupausenbereitstellung aus, indem Sie sie einem Abonnement zuweisen. Da für die Parameter **contributors** und **owners** ein Array von Objekt-IDs der Prinzipale, denen die Rollenzuweisung erteilt wird, erforderlich ist, verwenden Sie die [Azure Active Directory Graph-API](../../active-directory/develop/active-directory-graph-api.md), um die Objekt-IDs zu sammeln, die in **AssignmentFile** für Ihre eigenen Benutzer, Gruppen oder Dienstprinzipale verwendet werden.
+1. Führen Sie die Blaupausenbereitstellung aus, indem Sie sie einem Abonnement zuweisen. Da für die Parameter **contributors** und **owners** ein Array von Objekt-IDs der Prinzipale, denen die Rollenzuweisung erteilt wird, erforderlich ist, verwenden Sie die [Azure Active Directory Graph-API](/graph/migrate-azure-ad-graph-planning-checklist), um die Objekt-IDs zu sammeln, die in **AssignmentFile** für Ihre eigenen Benutzer, Gruppen oder Dienstprinzipale verwendet werden.
 
    - JSON-Datei: blueprintAssignment.json
 

@@ -6,12 +6,12 @@ ms.author: vimeht
 ms.date: 2/11/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 07310a5b6f275d4a35a3649c22aeea68045dde8b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ca55b1df347b47a6eb82557658d59a3de666b703
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101660352"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105558396"
 ---
 # <a name="azure-role-based-access-control-rbac-and-device-update"></a>Rollenbasierte Zugriffssteuerung in Azure (Role-Based Access Control, RBAC) und Device Update
 
@@ -39,7 +39,7 @@ Device Update verwendet auch Azure AD für die Authentifizierung, um Inhalte üb
 
 ### <a name="create-client-azure-ad-app"></a>Erstellen einer Azure AD-Client-App
 
-Um eine Anwendung oder einen Dienst in Azure AD zu integrieren, [registrieren](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app) Sie zunächst eine Anwendung bei Azure AD. Das Setup der Clientanwendung ist je nach verwendetem Autorisierungsflow unterschiedlich.  Die folgende Konfiguration dient als Leitfaden bei Verwendung der Device Update-REST-APIs.
+Um eine Anwendung oder einen Dienst in Azure AD zu integrieren, [registrieren](../active-directory/develop/quickstart-register-app.md) Sie zunächst eine Anwendung bei Azure AD. Das Setup der Clientanwendung ist je nach verwendetem Autorisierungsflow unterschiedlich.  Die folgende Konfiguration dient als Leitfaden bei Verwendung der Device Update-REST-APIs.
 
 * Festlegen der Clientauthentifizierung: „Umleitungs-URIs für native Apps oder einen Webclient“.
 * Festlegen von API-Berechtigungen: Device Update for IoT Hub stellt Folgendes bereit:

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 835e4f681d514bb6b92caa5ee076e3794ed59236
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5006a592b410685ad808ff01112234bc48f5d267
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94698817"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105728095"
 ---
 # <a name="security-control-data-recovery"></a>Sicherheitskontrolle: Datenwiederherstellung
 
@@ -38,7 +38,7 @@ Aktivieren Sie Azure Backup und die virtuellen Zielcomputer sowie die gewünscht
 
 - [Aktivieren von Azure Backup](../../backup/index.yml)
 
-- [Sichern von Schlüsseltresorschlüsseln in Azure](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+- [Sichern von Schlüsseltresorschlüsseln in Azure](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
 ## <a name="93-validate-all-backups-including-customer-managed-keys"></a>9.3: Überprüfen aller Sicherungen einschließlich der von Kunden verwalteten Schlüssel
 
@@ -50,7 +50,7 @@ Stellen Sie regelmäßig sicher, dass die Inhalte in Azure Backup wiederhergeste
 
 - [Wiederherstellen von Dateien aus einer Sicherung von virtuellen Azure-Computern](../../backup/backup-azure-restore-files-from-vm.md)
 
-- [Wiederherstellen von Schlüsseltresorschlüsseln in Azure](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+- [Wiederherstellen von Schlüsseltresorschlüsseln in Azure](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey)
 
 ## <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4: Sicherstellen des Schutzes von Sicherungen und von kundenseitig verwalteten Schlüsseln
 

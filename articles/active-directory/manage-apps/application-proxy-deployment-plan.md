@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/31/2020
 ms.author: kenwith
-ms.openlocfilehash: c08ce3bc8b722f2ea417c854a606f1060aa174e3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6da003612d98d107390c9f20a5172786c30665a6
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100580057"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105709751"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Planen der Bereitstellung eines Azure AD-Anwendungsproxys
 
@@ -172,7 +172,7 @@ Die Schritte zum Bereitstellen Ihres Anwendungsproxys sind in [diesem Tutorial z
 
 Beim Veröffentlichen von Anwendungen wird vorausgesetzt, dass Sie alle Voraussetzungen erfüllt haben und über mehrere Connectors verfügen, die auf der Seite für den Anwendungsproxy als registriert und aktiv angezeigt werden.
 
-Sie können Anwendungen auch mit [PowerShell](/powershell/module/azuread/?view=azureadps-2.0-preview) veröffentlichen.
+Sie können Anwendungen auch mit [PowerShell](/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true) veröffentlichen.
 
 Unten sind einige bewährte Methoden angegeben, an die Sie sich beim Veröffentlichen einer Anwendung halten sollten:
 

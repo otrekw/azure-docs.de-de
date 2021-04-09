@@ -6,14 +6,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 02/23/2021
+ms.date: 03/19/2021
 ms.author: victorh
-ms.openlocfilehash: 208bd0fe7f3869cbe15dd27e0b883c467e41c765
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: cfbd5301bc2b24c4d5614e5f88c6ae18d4affc66
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101735068"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104721629"
 ---
 # <a name="tutorial-create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>Tutorial: Erstellen und Konfigurieren eines Anwendungsgateways als Host mehrerer Websites über das Azure-Portal
 
@@ -27,7 +27,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Erstellen von Back-End-Pools mit den Back-End-Servern
 > * Erstellen von Back-End-Listenern
 > * Erstellen von Routingregeln
-> * Erstellen eines CNAME-Eintrags in Ihrer Domäne
+> * Bearbeiten der Hostdatei für die Namensauflösung
 
 :::image type="content" source="./media/create-multiple-sites-portal/scenario.png" alt-text="Anwendungsgateway für mehrere Standorte":::
 
@@ -212,9 +212,9 @@ In diesem Beispiel installieren Sie IIS auf den virtuellen Computern nur, um zu 
 
 Warten Sie, bis die Bereitstellung abgeschlossen ist, bevor Sie mit dem nächsten Schritt fortfahren.
 
-## <a name="edit-your-hosts-file"></a>Bearbeiten der Hostdatei
+## <a name="edit-your-hosts-file-for-name-resolution"></a>Bearbeiten der Hostdatei für die Namensauflösung
 
-Nachdem das Anwendungsgateway mit der zugehörigen öffentlichen IP-Adresse erstellt wurde, können Sie die IP-Adresse abrufen und sie verwenden, um Ihre Hostdatei für die Auflösung von `www.contoso.com` und `www.fabrikam.com` zu bearbeiten. 
+Nachdem das Anwendungsgateway mit der zugehörigen öffentlichen IP-Adresse erstellt wurde, können Sie die IP-Adresse abrufen und sie verwenden, um Ihre Hostdatei für die Auflösung von `www.contoso.com` und `www.fabrikam.com` zu bearbeiten. In einer Produktionsumgebung können Sie ein `CNAME`-Element in DNS für die Namensauflösung erstellen.
 
 1. Klicken Sie auf **Alle Ressourcen** und dann auf **myAGPublicIPAddress**.
 

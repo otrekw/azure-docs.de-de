@@ -3,12 +3,12 @@ title: Georedundante Notfallwiederherstellung in Azure Service Bus | Microsoft-D
 description: Verwenden von geografischen Regionen für Failover und Notfallwiederherstellung in Azure Service Bus
 ms.topic: article
 ms.date: 02/10/2021
-ms.openlocfilehash: 3e8050cdaaae7e16a0f5125292df4b89b3690ed3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2aa7ed118d0ba179ffff4f72a4d4df787edc9d88
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102035393"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105933754"
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Georedundante Notfallwiederherstellung in Azure Service Bus
 
@@ -156,7 +156,7 @@ Beachten Sie für diesen Release Folgendes:
 
 4. Das Synchronisieren von Entitäten kann einige Zeit dauern (etwa eine Minute pro 50 bis 100 Entitäten). Abonnements und Regeln zählen ebenfalls zu den Entitäten.
 
-### <a name="availability-zones"></a>Verfügbarkeitszonen
+## <a name="availability-zones"></a>Verfügbarkeitszonen
 
 Die Service Bus Premium-SKU unterstützt [Verfügbarkeitszonen](../availability-zones/az-overview.md), die fehlerisolierte Standorte innerhalb einer Azure-Region bieten. Service Bus verwaltet drei Kopien des Messagingstores (ein primäres und zwei sekundäre Replikate). Service Bus hält alle drei Kopien für Daten- und Verwaltungsvorgänge synchron. Wenn bei der primären Kopie ein Fehler auftritt, wird eine der sekundären Kopien ohne wahrnehmbare Ausfallzeit zum primären Replikat heraufgestuft. Wenn bei den Anwendungen vorübergehende Trennungen von Service Bus auftreten, stellt die Wiederholungslogik im SDK automatisch erneut eine Verbindung mit Service Bus her. 
 

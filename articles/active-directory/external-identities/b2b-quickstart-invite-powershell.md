@@ -12,14 +12,14 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0faaf0394bddc2e443afc194bbd0ecef72625f9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 07fa0551aee6241594b9c7d043666dad001adb62
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87910510"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106056707"
 ---
-# <a name="quickstart-add-a-guest-user-with-powershell"></a>Schnellstart: Hinzufügen von Gastbenutzern mit PowerShell
+# <a name="quickstart-add-a-guest-user-with-powershell"></a>Schnellstart: Hinzufügen eines Gastbenutzers mit PowerShell
 
 Es gibt viele Möglichkeiten, externe Partner zu Ihren Apps und Diensten für die Azure Active Directory B2B-Zusammenarbeit einzuladen. Im vorherigen Schnellstart haben Sie erfahren, wie Sie Gastbenutzer direkt im Azure Active Directory-Verwaltungsportal hinzufügen. Sie können auch PowerShell verwenden, um Gastbenutzer einzeln oder gruppenweise hinzuzufügen. In diesem Schnellstart fügen Sie mit dem Befehl „New-AzureADMSInvitation“ Ihrem Azure-Mandanten einen Gastbenutzer hinzu.
 

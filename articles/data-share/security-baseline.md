@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/18/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: d423a8aaf3ace78ccb4b2eb1d8424c6a1dfb61bc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6a804b6d6840b25993ad6e249305f531a818be32
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101705975"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105559450"
 ---
 # <a name="azure-security-baseline-for-azure-data-share"></a>Azure-Sicherheitsbaseline für Azure Data Share
 
@@ -34,7 +34,7 @@ Alternativ können Sie diese Daten in Azure Sentinel oder einer SIEM-Drittanbiet
 
 - [Durchführen des Onboardings für Azure Sentinel](../sentinel/quickstart-onboard.md) 
 
-- [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](/azure/azure-monitor/platform/diagnostic-settings) 
+- [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md) 
 
 - [Erste Schritte mit Azure Monitor und der Integration einer SIEM-Drittanbieterlösung](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
@@ -48,11 +48,11 @@ Alternativ können Sie diese Daten in Azure Sentinel oder einer SIEM-Drittanbiet
 
 Aktivieren Sie Diagnoseprotokolle für Azure Data Share, insbesondere die Diagnoseprotokolle für MicrosoftDataShareSentShareSnapshotsLog &amp; MicrosoftDataShareReceivedShareSnapshotsLog. Mit diesen Protokollen können Sie wichtige Informationen wie die Startzeit der Synchronisierung, die Endzeit, den Status und andere Details erfassen. Diese Protokolle können für die spätere Untersuchung von Sicherheitsvorfällen und die Durchführung forensischer Übungen von entscheidender Bedeutung sein.
 
-- [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](/azure/azure-monitor/platform/diagnostic-settings) 
+- [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [Grundlegendes zur Protokollierung und zu verschiedenen Protokolltypen in Azure](/azure/azure-monitor/platform/platform-logs-overview)
+- [Grundlegendes zur Protokollierung und zu verschiedenen Protokolltypen in Azure](../azure-monitor/essentials/platform-logs-overview.md)
 
-- [Azure-Aktivitätsprotokoll](/azure/azure-monitor/platform/activity-log)
+- [Azure-Aktivitätsprotokoll](../azure-monitor/essentials/activity-log.md)
 
 **Verantwortlichkeit**: Kunde
 
@@ -62,9 +62,9 @@ Aktivieren Sie Diagnoseprotokolle für Azure Data Share, insbesondere die Diagno
 
 **Leitfaden**: Stellen Sie sicher, dass für die Speicherkonten oder Log Analytics-Arbeitsbereiche zum Speichern der Azure Data Share-Protokolle der Protokollaufbewahrungszeitraum gemäß den Konformitätsbestimmungen Ihrer Organisation festgelegt ist.
 
-- [Verwalten von Nutzung und Kosten mit Azure Monitor-Protokollen](/azure/azure-monitor/platform/manage-cost-storage)
+- [Verwalten von Nutzung und Kosten mit Azure Monitor-Protokollen](../azure-monitor/logs/manage-cost-storage.md)
 
-- [Azure-Ressourcenprotokolle](/azure/azure-monitor/platform/resource-logs#send-to-azure-storage)
+- [Azure-Ressourcenprotokolle](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)
 
 **Verantwortlichkeit**: Kunde
 
@@ -78,9 +78,9 @@ Alternativ können Sie auch Daten in Azure Sentinel oder einer SIEM-Drittanbiete
 
 - [Durchführen des Onboardings für Azure Sentinel](../sentinel/quickstart-onboard.md) 
 
-- [Erste Schritte mit Log Analytics-Abfragen](/azure/azure-monitor/log-query/log-analytics-tutorial)
+- [Erste Schritte mit Log Analytics-Abfragen](../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [Ausführen benutzerdefinierter Abfragen in Azure Monitor](/azure/azure-monitor/log-query/get-started-queries)
+- [Ausführen benutzerdefinierter Abfragen in Azure Monitor](../azure-monitor/logs/get-started-queries.md)
 
 **Verantwortlichkeit**: Kunde
 
@@ -94,7 +94,7 @@ Alternativ können Sie auch Daten in Azure Sentinel oder einer SIEM-Drittanbiete
 
 - [Verwalten von Warnungen in Azure Security Center](../security-center/security-center-managing-and-responding-alerts.md) 
 
-- [Warnungen bei Log Analytics-Protokolldaten](/azure/azure-monitor/learn/tutorial-response)
+- [Warnungen bei Log Analytics-Protokolldaten](../azure-monitor/alerts/tutorial-response.md)
 
 **Verantwortlichkeit**: Kunde
 
@@ -144,7 +144,7 @@ Alternativ können Sie auch Daten in Azure Sentinel oder einer SIEM-Drittanbiete
 
 - [Erstellen und Konfigurieren einer Azure AD-Instanz](../active-directory/fundamentals/active-directory-access-create-new-tenant.md) 
 
-- [Azure Data Share funktioniert mit allgemeinen in Azure integrierten Rollen.](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#general)
+- [Azure Data Share funktioniert mit allgemeinen in Azure integrierten Rollen.](../role-based-access-control/built-in-roles.md#general)
 
 **Verantwortlichkeit**: Kunde
 
@@ -154,11 +154,11 @@ Alternativ können Sie auch Daten in Azure Sentinel oder einer SIEM-Drittanbiete
 
 **Leitfaden**: Azure AD enthält Protokolle zum Ermitteln von veralteten Konten. Verwenden Sie zusätzlich Azure AD-Identitäts und -Zugriffsüberprüfungen, um Gruppenmitgliedschaften, den Zugriff auf Unternehmensanwendungen sowie Rollenzuweisungen effizient zu verwalten. Der Benutzerzugriff kann regelmäßig überprüft werden, um sicherzustellen, dass nur die richtigen Benutzer weiterhin über Zugriff verfügen.
 
-- [Grundlegendes zur Azure AD-Berichterstellung](/azure/active-directory/reports-monitoring/) 
+- [Grundlegendes zur Azure AD-Berichterstellung](../active-directory/reports-monitoring/index.yml) 
 
 - [Was sind Azure AD-Zugriffsüberprüfungen?](../active-directory/governance/access-reviews-overview.md) 
 
-- [Azure Data Share funktioniert mit allgemeinen in Azure integrierten Rollen.](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#general)
+- [Azure Data Share funktioniert mit allgemeinen in Azure integrierten Rollen.](../role-based-access-control/built-in-roles.md#general)
 
 **Verantwortlichkeit**: Kunde
 
@@ -166,11 +166,11 @@ Alternativ können Sie auch Daten in Azure Sentinel oder einer SIEM-Drittanbiete
 
 ### <a name="311-monitor-attempts-to-access-deactivated-credentials"></a>3.11: Überwachen von Zugriffsversuchen auf deaktivierte Anmeldeinformationen
 
-**Leitfaden**: Sie haben Zugriff auf die Protokollquellen von Azure Active Directory (Azure AD)-Anmeldeaktivitäten und von Überwachungs- und Risikoereignissen, sodass die Integration in jedes SIEM- und Überwachungstool möglich ist.
+**Leitfaden**: Sie haben Zugriff auf die Protokollquellen von Azure AD-Anmeldeaktivitäten (Azure Active Directory) und von Überwachungs- und Risikoereignissen, sodass die Integration in jedes SIEM- und Überwachungstool möglich ist.
 
 Sie können diesen Prozess optimieren, indem Sie Diagnoseeinstellungen für Azure AD-Benutzerkonten erstellen und die Überwachungs- und Anmeldeprotokolle an einen Log Analytics-Arbeitsbereich senden. Sie können gewünschte Warnungen im Log Analytics-Arbeitsbereich konfigurieren.
 
-- [Integrieren von Azure-Aktivitätsprotokollen in Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Integrieren von Azure-Aktivitätsprotokollen in Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 **Verantwortlichkeit**: Kunde
 
@@ -208,7 +208,7 @@ Sie können diesen Prozess optimieren, indem Sie Diagnoseeinstellungen für Azur
 
 **Leitfaden**: Verwenden Sie Azure Monitor mit dem Azure-Aktivitätsprotokoll, um Azure Monitor-Warnungen zu erstellen, die bei Änderungen an wichtigen Azure-Ressourcen ausgegeben werden.
 
-- [Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls](/azure/azure-monitor/platform/alerts-activity-log)
+- [Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Verantwortlichkeit**: Kunde
 
@@ -291,7 +291,7 @@ Verwenden Sie Azure Resource Graph, um Ressourcen in Ihren Abonnements abzufrage
 
 **Leitfaden**: Entfernen Sie Azure-Ressourcen, wenn sie nicht mehr benötigt werden. Dies kann über das Azure-Portal, PowerShell oder die Befehlszeilenschnittstelle erfolgen.
 
-- [Löschen von Azure-Ressourcengruppen und -Ressourcen](https://docs.microsoft.com/azure/azure-resource-manager/management/delete-resource-group?tabs=azure-powershell)
+- [Löschen von Azure-Ressourcengruppen und -Ressourcen](../azure-resource-manager/management/delete-resource-group.md?tabs=azure-powershell)
 
 Azure Data Share macht das Betriebssystem nicht verfügbar und erlaubt nicht die Installation von Softwareanwendungen von Drittanbietern auf den eigenen Ressourcen.
 
@@ -305,7 +305,7 @@ Azure Data Share macht das Betriebssystem nicht verfügbar und erlaubt nicht die
 
 - [Konfigurieren und Verwalten von Azure Policy](../governance/policy/tutorials/create-and-manage.md) 
 
-- [Ablehnen eines bestimmten Ressourcentyps mit Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [Ablehnen eines bestimmten Ressourcentyps mit Azure Policy](../governance/policy/samples/built-in-policies.md#general)
 
 **Verantwortlichkeit**: Kunde
 
@@ -343,7 +343,7 @@ Azure Data Share macht das Betriebssystem nicht verfügbar und erlaubt nicht die
 
 - [Konfigurieren und Verwalten von Azure Policy](../governance/policy/tutorials/create-and-manage.md) 
 
-- [Verwenden von Aliasen](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#aliases)
+- [Verwenden von Aliasen](../governance/policy/concepts/definition-structure.md#aliases)
 
 **Verantwortlichkeit**: Kunde
 
@@ -361,5 +361,5 @@ Azure Data Share macht das Betriebssystem nicht verfügbar und erlaubt nicht die
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Sehen Sie sich die [Übersicht über Version 2 des Azure-Sicherheitsvergleichstests](/azure/security/benchmarks/overview) an.
-- Erfahren Sie mehr über [Azure-Sicherheitsbaselines](/azure/security/benchmarks/security-baselines-overview).
+- Sehen Sie sich die [Übersicht über Version 2 des Azure-Sicherheitsvergleichstests](../security/benchmarks/overview.md) an.
+- Erfahren Sie mehr über [Azure-Sicherheitsbaselines](../security/benchmarks/security-baselines-overview.md).

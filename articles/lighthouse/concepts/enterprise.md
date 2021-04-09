@@ -1,32 +1,34 @@
 ---
 title: Azure Lighthouse in Unternehmensszenarien
 description: Die Funktionen von Azure Lighthouse können zum Vereinfachen der mandantenübergreifenden Verwaltung in einem Unternehmen, in dem mehrere Azure AD-Mandanten vorhanden sind, verwendet werden.
-ms.date: 08/12/2020
+ms.date: 03/12/2021
 ms.topic: conceptual
-ms.openlocfilehash: ca3d73a6c5b88f7531c3d76eb3bd348fdfe8fa39
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 97b44f71750bdb533e889546f370a9b36ea5d3b4
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573021"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419353"
 ---
 # <a name="azure-lighthouse-in-enterprise-scenarios"></a>Azure Lighthouse in Unternehmensszenarien
 
-Ein häufiges Szenario für [Azure Lighthouse](../overview.md) ist ein Dienstanbieter, der Ressourcen in den Azure AD-Mandanten (Azure Active Directory) seiner Kunden verwaltet. Die Funktionen von Azure Lighthouse können aber auch zum Vereinfachen der mandantenübergreifenden Verwaltung in einem Unternehmen, in dem mehrere Azure AD-Mandanten vorhanden sind, verwendet werden.
+Ein gängiges Szenario für [Azure Lighthouse](../overview.md) ist ein Dienstanbieter, der Ressourcen in den Azure Active Directory-Mandanten (Azure AD) seiner Kunden verwaltet. Die Funktionen von Azure Lighthouse dienen auch zum Vereinfachen der mandantenübergreifenden Verwaltung in einem Unternehmen mit mehreren Azure AD-Mandanten.
 
 ## <a name="single-vs-multiple-tenants"></a>Einzelner Mandant und mehrere Mandanten
 
-Für die meisten Organisationen ist die Verwaltung mit nur einem Azure AD-Mandanten einfacher. Wenn sich alle Ressourcen unter einem Mandanten befinden, können die Verwaltungsaufgaben nach den jeweiligen Benutzern, Benutzergruppen oder Dienstprinzipalen des Mandanten zentralisiert werden. Wir empfehlen Ihnen, nach Möglichkeit nur einen Mandanten für Ihre Organisation zu verwenden. Einige Organisationen können allerdings über mehrere Azure AD-Mandanten verfügen. Manchmal ist dies nur vorübergehend erforderlich, wenn beispielsweise Übernahmen erfolgt sind und noch keine langfristige Konsolidierungsstrategie für Mandanten definiert wurde. Es kann auch sein, dass Organisationen aufgrund von unabhängigen Tochtergesellschaften, geografischen oder rechtlichen Anforderungen oder anderen Aspekten fortlaufend mehrere Mandanten verwalten müssen.
+Für die meisten Organisationen ist die Verwaltung mit nur einem Azure AD-Mandanten einfacher. Wenn sich alle Ressourcen unter einem Mandanten befinden, können die Verwaltungsaufgaben nach den jeweiligen Benutzern, Benutzergruppen oder Dienstprinzipalen des Mandanten zentralisiert werden. Wir empfehlen Ihnen, nach Möglichkeit nur einen Mandanten für Ihre Organisation zu verwenden.
+
+Einige Organisationen müssen möglicherweise mit mehreren Azure AD-Mandanten arbeiten. Dies kann vorübergehend erforderlich sein, wenn beispielsweise Übernahmen erfolgt sind und noch keine langfristige Konsolidierungsstrategie für Mandanten definiert wurde. Es kann auch sein, dass Organisationen aufgrund von unabhängigen Tochtergesellschaften, geografischen oder rechtlichen Anforderungen oder anderen Aspekten fortlaufend mehrere Mandanten verwalten müssen.
 
 Falls eine Architektur mit mehreren Mandanten benötigt wird, kann Azure Lighthouse zur Zentralisierung und Optimierung von Verwaltungsvorgängen beitragen. Durch Verwendung der [delegierten Azure-Ressourcenverwaltung](azure-delegated-resource-management.md) können Benutzer in einem verwalteten Mandanten [mandantenübergreifende Verwaltungsfunktionen](cross-tenant-management-experience.md) zentral und skalierbar ausführen.
 
 ## <a name="tenant-management-architecture"></a>Architektur für die Mandantenverwaltung
 
-Um Azure Lighthouse in einem Unternehmen zu verwenden, müssen Sie bestimmen, welcher Mandant die Benutzer umfasst, die Verwaltungsvorgänge für die anderen Mandanten durchführen. Sie müssen also ermitteln, welcher Mandant der verwaltende Mandant für die anderen Mandanten ist.
+Um Azure Lighthouse in einem Unternehmen zu verwenden, müssen Sie bestimmen, welcher Mandant die Benutzer enthält, die Verwaltungsvorgänge für die anderen Mandanten durchführen. Mit anderen Worten: Sie müssen einen Mandanten als verwaltenden Mandanten der anderen Mandanten benennen.
 
-Angenommen, Ihre Organisation verfügt über einen einzelnen Mandanten mit dem Namen *Mandant A*. Ihre Organisation schafft dann *Mandant B* und *Mandant C* an, die aus geschäftlichen Gründen separat verwaltet werden müssen.
+Angenommen, Ihre Organisation verfügt über einen einzelnen Mandanten mit dem Namen *Mandant A*. Ihre Organisation schafft dann *Mandant B* und *Mandant C* an, die aus geschäftlichen Gründen separat verwaltet werden müssen. Sie wünschen sich jedoch für alle dieselben Richtliniendefinitionen, Sicherungspraktiken und Sicherheitsprozesse, wobei die Verwaltungsaufgaben von denselben Benutzern ausgeführt werden sollen.
 
-Ihre Organisation möchte auf allen Mandanten die gleichen Richtliniendefinitionen, Sicherungsmethoden und Sicherheitsprozesse verwenden. Da Mandant A bereits Benutzer enthält, die für diese Aufgaben zuständig sind, können Sie Abonnements in Mandant B und Mandant C integrieren, damit die gleichen Benutzer in Mandant A diese Aufgaben durchführen können.
+Da Mandant A bereits Benutzer in Ihrer Organisation enthält, die diese Aufgaben für Mandant A durchgeführt haben, können Sie für Abonnements in Mandant B und Mandant C ein Onboarding durchführen, wodurch dieselben Benutzer in Mandant A diese Aufgaben in allen Mandanten durchführen können.
 
 ![Diagramm zu Benutzern in Mandant A, die Ressourcen in Mandant B und Mandant C verwalten](../media/enterprise-azure-lighthouse.jpg)
 
@@ -54,7 +56,7 @@ Für die mandantenübergreifende Verwaltung im Unternehmen können Verweise auf 
 
 Im obigen Beispiel können Sie sich Mandant A als Dienstanbietermandanten (verwaltender Mandant) und Mandant B und Mandant C als Kundenmandanten vorstellen.
 
-In diesem Beispiel können Benutzer von Mandant A, die über die richtigen Berechtigungen verfügen, [delegierte Ressourcen anzeigen und verwalten](../how-to/view-manage-customers.md), indem sie im Azure-Portal die Seite **Meine Kunden** verwenden. Ebenso können Benutzer von Mandant B und Mandant C mit den richtigen Berechtigungen [die Ressourcen anzeigen und verwalten](../how-to/view-manage-service-providers.md), die an Mandant A delegiert wurden, indem sie im Azure-Portal die Seite **Dienstanbieter** verwenden.
+Zur Fortführung dieses Beispiels können Benutzer in Mandant A, die über die entsprechenden Berechtigungen verfügen, auf der Seite **Meine Kunden** im Azure-Portal [delegierte Ressourcen anzeigen und verwalten](../how-to/view-manage-customers.md). Ebenso können Benutzer von Mandant B und Mandant C mit den richtigen Berechtigungen [die Ressourcen anzeigen und verwalten](../how-to/view-manage-service-providers.md), die an Mandant A delegiert wurden, indem sie im Azure-Portal die Seite **Dienstanbieter** verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

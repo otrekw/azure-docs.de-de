@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 2/11/2021
-ms.openlocfilehash: 50aaae9e71ac9de366ee4db1981e633491094946
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f2ea671a6d44d12b3b37d5d06fa9405b7c589cdf
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103199974"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105559416"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mariadb"></a>Verbindungsarchitektur in Azure Database for MariaDB
 In diesem Artikel wird die Verbindungsarchitektur von Azure Database for MariaDB beschrieben, und Sie erfahren, wie Datenverkehr von Clients innerhalb und außerhalb von Azure an Ihre Azure Database for MariaDB-Instanz weitergeleitet wird.
@@ -111,7 +111,7 @@ Nur Gatewayknoten werden außer Betrieb gesetzt. Wenn Benutzer eine Verbindung m
 ### <a name="how-can-you-validate-if-your-connections-are-going-to-old-gateway-nodes-or-new-gateway-nodes"></a>Wie können Sie überprüfen, ob Ihre Verbindungen an alte oder neue Gatewayknoten geleitet werden?
 Pingen Sie den vollqualifizierten Domänennamen Ihres Servers, z. B. ``ping xxx.mariadb.database.azure.com``. Wenn die zurückgegebene IP-Adresse in der Tabelle oben in diesem Dokument unter „Gateway-IP-Adressen (Außerbetriebnahme)“ aufgeführt ist, bedeutet das, dass Ihre Verbindung das alte Gateway verwendet. Wird Ihre IP-Adresse unter „Gateway-IP-Adressen“ aufgeführt, bedeutet dies, dass Ihre Verbindung über das neue Gateway führt.
 
-Sie können auch per [PSPing](https://docs.microsoft.com/sysinternals/downloads/psping) oder TCPPing den Datenbankserver von Ihrer Clientanwendung aus über Port 3306 testen und sich vergewissern, dass die zurückgegebene IP-Adresse nicht zu den Adressen gehört, die außer Betrieb gesetzt werden.
+Sie können auch per [PSPing](/sysinternals/downloads/psping) oder TCPPing den Datenbankserver von Ihrer Clientanwendung aus über Port 3306 testen und sich vergewissern, dass die zurückgegebene IP-Adresse nicht zu den Adressen gehört, die außer Betrieb gesetzt werden.
 
 ### <a name="how-do-i-know-when-the-maintenance-is-over-and-will-i-get-another-notification-when-old-ip-addresses-are-decommissioned"></a>Woher weiß ich, wann die Wartung abgeschlossen ist, und erhalte ich eine Benachrichtigung, wenn alte IP-Adressen außer Betrieb gesetzt wurden?
 Sie erhalten eine E-Mail, in der wir Sie darüber informieren, wann wir den Wartungsprozess starten. Die Wartung kann bis zu einen Monat dauern, je nachdem, wie viele Server wir in allen Regionen migrieren müssen. Bereiten Sie Ihren Client darauf vor, die Verbindung zum Datenbankserver über den vollqualifizierten Domänennamen oder über die neue IP-Adresse (siehe Tabelle oben) herzustellen. 

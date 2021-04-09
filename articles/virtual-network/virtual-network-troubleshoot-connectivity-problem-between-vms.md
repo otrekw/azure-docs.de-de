@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 6ece3e639e0ef3516696e2a0bad7deeb833433a6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5e602f8bbdf6ad92acacac6688326a555a0420b6
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98219197"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105042865"
 ---
 # <a name="troubleshooting-connectivity-problems-between-azure-vms"></a>Problembehandlung bei Konnektivitätsproblemen zwischen Azure-VMs
 
@@ -49,7 +49,7 @@ Führen Sie die folgenden Schritte aus, um das Problem zu beheben. Überprüfen 
 
 ### <a name="step-1-check-whether-nic-is-misconfigured"></a>Schritt 1: Überprüfen Sie, ob die NIC falsch konfiguriert ist
 
-Führen Sie die Schritte in [Die Netzwerkschnittstelle für den virtuellen Windows-Computer in Azure zurücksetzen](../virtual-machines/troubleshooting/reset-network-interface.md) aus. 
+Führen Sie die Schritte in [Die Netzwerkschnittstelle für den virtuellen Windows-Computer in Azure zurücksetzen](/troubleshoot/azure/virtual-machines/reset-network-interface) aus. 
 
 Wenn das Problem nach Änderung der NIC auftritt, führen Sie diese Schritte aus:
 
@@ -62,8 +62,8 @@ Weitere Informationen finden Sie unter [Virtuelle Computer: Hinzufügen oder Ent
 
 **Einzel-NIC-VM** 
 
-- [Erneutes Bereitstellen von virtuellen Windows-Computern](../virtual-machines/troubleshooting/redeploy-to-new-node-windows.md)
-- [Erneutes Bereitstellen von virtuellen Linux-Computern](../virtual-machines/troubleshooting/redeploy-to-new-node-linux.md)
+- [Erneutes Bereitstellen von virtuellen Windows-Computern](/troubleshoot/azure/virtual-machines/redeploy-to-new-node-windows)
+- [Erneutes Bereitstellen von virtuellen Linux-Computern](/troubleshoot/azure/virtual-machines/redeploy-to-new-node-linux)
 
 ### <a name="step-2-check-whether-network-traffic-is-blocked-by-nsg-or-udr"></a>Schritt 2: Überprüfen Sie, ob Netzwerkdatenverkehr von NSG oder UDR blockiert wird
 
@@ -107,7 +107,7 @@ Alle VMs, die Sie mit dem klassischen Bereitstellungsmodell in Azure erstellen, 
 
 ### <a name="step-8-try-to-connect-to-a-vm-network-share"></a>Schritt 8: Versuchen Sie, eine Verbindung mit einer VM-Netzwerkfreigabe herzustellen
 
-Wenn Sie keine Verbindung mit einer VM-Netzwerkfreigabe herstellen können, kann die Ursache des Problems sein, dass keine NICs auf dem virtuellen Computer verfügbar sind. Hinweise zum Löschen nicht verfügbarer NICs finden Sie unter [Löschen Sie die nicht verfügbaren NICs](../virtual-machines/troubleshooting/reset-network-interface.md#delete-the-unavailable-nics).
+Wenn Sie keine Verbindung mit einer VM-Netzwerkfreigabe herstellen können, kann die Ursache des Problems sein, dass keine NICs auf dem virtuellen Computer verfügbar sind. Hinweise zum Löschen nicht verfügbarer NICs finden Sie unter [Löschen Sie die nicht verfügbaren NICs](/troubleshoot/azure/virtual-machines/reset-network-interface#delete-the-unavailable-nics).
 
 ### <a name="step-9-check-inter-vnet-connectivity"></a>Schritt 9: Überprüfen Sie die VNET-übergreifende Konnektivität
 

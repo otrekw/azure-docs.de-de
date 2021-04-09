@@ -1,5 +1,5 @@
 ---
-title: Markieren einer Liste ausgewählter Ressourcen mit mehreren Glossarbegriffen
+title: Massenbearbeitung von Ressourcen zur Kennzeichnung von Klassifizierungen, Glossarbegriffen und zum Ändern von Kontakten
 description: Erfahren Sie mehr über die Massenbearbeitung von Ressourcen in Azure Purview.
 author: nayenama
 ms.author: nayenama
@@ -7,12 +7,12 @@ ms.service: data-catalog
 ms.subservice: data-catalog-gen2
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: 77bfa3d22d628cf179e95cd4892ec030f22ab35f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 149a70ea9b3fad919e771e8eb279e01d1492b3b3
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101693763"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952455"
 ---
 # <a name="how-to-bulk-edit-assets-to-tag-glossary-terms"></a>Massenbearbeitung von Ressourcen zum Taggen mit Glossarbegriffen
 
@@ -65,13 +65,13 @@ In diesem Artikel wird beschrieben, wie Sie eine Liste ausgewählter Objekte in 
 
 7. Wiederholen Sie die obigen Schritte für Klassifizierungen, Besitzer und Experten.
 
-    :::image type="content" source="media/how-to-bulk-edit-assets/all-list.png" alt-text="Screenshot des Entfernens von Begriffen":::
+    :::image type="content" source="media/how-to-bulk-edit-assets/all-list.png" alt-text="Screenshot der Klassifizierungen und Kontakte.":::
 
 8. Schließen Sie nach Abschluss des Vorgangs das Blatt für die Massenbearbeitung, indem Sie **Schließen** oder **Remove all and close** (Alle entfernen und schließen) auswählen. Durch „Schließen“ werden die ausgewählten Ressourcen nicht entfernt, mit „Remove all and close“ (Alle entfernen und schließen) hingegen schon.
     :::image type="content" source="media/how-to-bulk-edit-assets/close-list.png" alt-text="Screenshot des Schließens":::
 
    > [!Important]
-   > Die empfohlene Anzahl von Ressourcen für die Massenbearbeitung beträgt 15. Wenn Sie mehr als 25 auswählen, kann dies die Leistung beeinträchtigen.
+   > Die empfohlene Anzahl von Ressourcen für die Massenbearbeitung beträgt 25. Wenn Sie mehr als 25 auswählen, kann dies die Leistung beeinträchtigen.
    > Das Feld **Ausgewählte anzeigen** wird nur angezeigt, wenn mindestens eine Ressource ausgewählt ist.
 
 
