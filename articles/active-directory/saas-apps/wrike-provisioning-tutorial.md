@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Konfigurieren von Wrike für die automatische Benutzerbereitstellung in Azure Active Directory | Microsoft-Dokumentation'
+title: 'Tutorial: Konfigurieren von Wrike für die automatische Benutzerbereitstellung mit Azure Active Directory | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie Azure Active Directory zum automatischen Bereitstellen und Aufheben der Bereitstellung von Benutzerkonten in Wrike konfigurieren.
 services: active-directory
 author: zchia
@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/26/2019
 ms.author: Zhchia
 ms.openlocfilehash: 53b1db1a8c4da59055c0af5f448fa0c8a6933daf
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95988092"
 ---
 # <a name="tutorial-configure-wrike-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Wrike für die automatische Benutzerbereitstellung
@@ -95,7 +95,7 @@ Führen Sie die folgenden Schritte aus, um Wrike aus dem Azure AD-Anwendungskata
 
     ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
 
-4. Geben Sie im Suchfeld **Wrike**  ein, wählen Sie im Ergebnisbereich **Wrike**  aus, und wählen Sie dann die Schaltfläche **Hinzufügen** aus, um die Anwendung hinzuzufügen.
+4. Geben Sie im Suchfeld **Wrike** ein, wählen Sie im Ergebnisbereich **Wrike** aus, und wählen Sie dann die Schaltfläche **Hinzufügen** aus, um die Anwendung hinzuzufügen.
 
     ![Wrike in der Ergebnisliste](common/search-new-app.png)
 
@@ -163,7 +163,7 @@ Im Abschnitt **Aktueller Status** können Sie den Fortschritt überwachen und Li
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-* [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps im Azure-Portal](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Nächste Schritte

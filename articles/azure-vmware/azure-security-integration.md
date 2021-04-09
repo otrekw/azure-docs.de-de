@@ -4,10 +4,10 @@ description: Schützen Ihrer Azure VMware Solution-VMs über das Azure Security 
 ms.topic: how-to
 ms.date: 02/12/2021
 ms.openlocfilehash: 7292ea4486a61f5b0cfd8f656d2763a3ce655e79
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100578253"
 ---
 # <a name="protect-your-azure-vmware-solution-vms-with-azure-security-center-integration"></a>Schützen von Azure VMware Solution-VMs mit Azure Security Center-Integration

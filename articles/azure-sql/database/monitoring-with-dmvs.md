@@ -11,13 +11,13 @@ ms.topic: how-to
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sstein
-ms.date: 1/14/2021
-ms.openlocfilehash: b87d0a2446eb2b65c20ae0bef408320686cb5165
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.date: 03/15/2021
+ms.openlocfilehash: 5c0de2c1589bfa495ab6ad287b998c403041674c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98219129"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104592148"
 ---
 # <a name="monitoring-microsoft-azure-sql-database-and-azure-sql-managed-instance-performance-using-dynamic-management-views"></a>Überwachen der Leistung von Microsoft Azure SQL-Datenbank und Azure SQL Managed Instance mithilfe von dynamischen Verwaltungssichten
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -31,6 +31,10 @@ Microsoft Azure SQL-Datenbank und Azure SQL Managed Instance bieten eine Teilunt
 - Dynamische Verwaltungssichten für Transaktionen
 
 Ausführliche Informationen zu dynamischen Verwaltungssichten finden Sie unter [Dynamische Verwaltungssichten und Funktionen (Transact-SQL)](/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views).
+
+## <a name="monitor-with-sql-insights"></a>Überwachen mit SQL Insights
+
+[Azure Monitor SQL Insights](../../azure-monitor/insights/sql-insights-overview.md) ist ein Tool zum Überwachen von verwalteten Azure SQL-Instanzen, Azure SQL-Datenbanken und SQL Server-Instanzen in Azure SQL-VMS. Dieser Dienst erfasst Daten aus dynamischen Verwaltungsansichten (DMVs) mithilfe eines Remote-Agenten und leitet die Daten an Azure Log Analytics weiter, wo sie überwacht und analysiert werden können. Sie können diese Daten aus [Azure Monitor](../../azure-monitor/overview.md) in den bereitgestellten Ansichten anzeigen oder direkt auf die Protokolldaten zugreifen, um Abfragen auszuführen und Trends zu analysieren. Informationen zum Einstieg in Azure Monitor SQL Insights finden Sie unter [Aktivieren von SQL Insights](../../azure-monitor/insights/sql-insights-enable.md).
 
 ## <a name="permissions"></a>Berechtigungen
 

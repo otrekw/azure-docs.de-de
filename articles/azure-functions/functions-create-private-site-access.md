@@ -7,10 +7,10 @@ ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.openlocfilehash: 766ad12daeb6d2763f7ed5fe026cd4a0021eaf33
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97937041"
 ---
 # <a name="tutorial-establish-azure-functions-private-site-access"></a>Tutorial: Einrichten von privatem Websitezugriff für Azure Functions
@@ -80,7 +80,7 @@ Im ersten Schritt dieses Tutorials wird ein neuer virtueller Computer in einem v
     >[!div class="mx-imgBorder"]
     >![Erstellen eines neuen virtuellen Netzwerks für den neuen virtuellen Computer](./media/functions-create-private-site-access/create-vm-vnet-1.png)
 
-    | Einstellung      | Vorgeschlagener Wert  | Beschreibung      |
+    | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG      |
     | ------------ | ---------------- | ---------------- |
     | _Name_ | myResourceGroup-vnet | Sie können den für Ihr virtuelles Netzwerk generierten Standardnamen verwenden. |
     | _Adressbereich_ | 10.10.0.0/16 | Verwenden Sie einen einzelnen Adressbereich für das virtuelle Netzwerk. |
@@ -105,7 +105,7 @@ Im ersten Schritt dieses Tutorials wird ein neuer virtueller Computer in einem v
     >[!div class="mx-imgBorder"]
     >![Beginn der Azure Bastion-Erstellung](./media/functions-create-private-site-access/create-bastion-basics-1.png)
 
-    | Einstellung      | Vorgeschlagener Wert  | Beschreibung      |
+    | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG      |
     | ------------ | ---------------- | ---------------- |
     | _Name_ | myBastion | Der Name der neuen Bastion-Ressource. |
     | _Region_ | USA Nord Mitte | Wählen Sie eine [Region](https://azure.microsoft.com/regions/) in Ihrer Nähe oder in der Nähe von anderen Diensten aus, auf die Ihre Funktionen zugreifen. |

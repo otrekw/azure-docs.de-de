@@ -9,10 +9,10 @@ ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file, devx-track-azurecli
 ms.openlocfilehash: 923620c1c9719d857cc848507a4c5507f528d34e
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95564010"
 ---
 ### <a name="to-view-local-network-gateways"></a>So zeigen Sie Gateways des lokalen Netzwerks an
@@ -36,7 +36,7 @@ az network vpn-connection shared-key show --connection-name VNet1toSite2 --resou
 ```
 ### <a name="to-view-the-vpn-gateway-public-ip-address"></a>So zeigen Sie die öffentliche IP-Adresse des VPN-Gateways an
 
-Verwenden Sie den Befehl [az network public-ip list](/cli/azure/network/public-ip), um die öffentliche IP-Adresse des Gateways des virtuellen Netzwerks zu ermitteln. Zur besseren Lesbarkeit wird die Ausgabe für dieses Beispiel formatiert, damit die Liste mit den öffentlichen IP-Adressen in Tabellenform angezeigt wird.
+ Verwenden Sie den Befehl [az network public-ip list](/cli/azure/network/public-ip), um die öffentliche IP-Adresse des Gateways des virtuellen Netzwerks zu ermitteln. Zur besseren Lesbarkeit wird die Ausgabe für dieses Beispiel formatiert, damit die Liste mit den öffentlichen IP-Adressen in Tabellenform angezeigt wird.
 
 ```azurecli
 az network public-ip list --resource-group TestRG1 --output table
