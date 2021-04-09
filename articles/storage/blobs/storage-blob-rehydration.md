@@ -4,17 +4,17 @@ description: In diesem Artikel erfahren Sie, wie Sie Ihre Blobs aus dem Archivsp
 services: storage
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 01/08/2021
+ms.date: 03/11/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: 5a89e5a9eca653a2d15e5b09605b78bc18d76b8f
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: 2f0ddca9cbd7d85909b1d86e68b92fa1d847476d
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165670"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103225080"
 ---
 # <a name="rehydrate-blob-data-from-the-archive-tier"></a>Aktivieren von Blobdaten aus der Archivzugriffsebene
 
@@ -29,6 +29,10 @@ Während ein Blob sich auf der Archivzugriffsebene befindet, wird es als offline
 
 [!INCLUDE [storage-blob-rehydration](../../../includes/storage-blob-rehydrate-include.md)]
 
+### <a name="lifecycle-management"></a>Lebenszyklusverwaltung
+
+Das Aktivieren eines Blobs ändert den Wert von `Last-Modified` nicht. Durch Verwendung des Features [Lebenszyklusverwaltung](storage-lifecycle-management-concepts.md) kann Szenario entstehen, in dem ein Blob aktiviert und dann von einer Richtlinie der Lebenszyklusverwaltung wieder ins Archiv verschoben wird, weil der `Last-Modified`-Wert den für die Richtlinie festgelegten Schwellenwert überschreitet. Um dieses Szenario zu vermeiden, verwenden Sie die Methode zum *[Kopieren eines archivierten Blobs auf eine Onlineebene](#copy-an-archived-blob-to-an-online-tier)* . Die Kopiermethode erstellt eine neue Instanz des Blobs mit einem aktualisierten Wert für `Last-Modified` und löst die Richtlinie der Lebenszyklusverwaltung nicht aus.
+
 ## <a name="monitor-rehydration-progress"></a>Überwachen des Aktivierungsstatus
 
 Verwenden Sie während der Aktivierung den Vorgang „Get Blob Properties“, um das Attribut **Archive Status** (Archivstatus) zu überprüfen und zu ermitteln, wann die Ebenenänderung abgeschlossen ist. Je nach Zielebene lautet der Status entweder „rehydrate-pending-to-hot“ (Aktivierung für Ebene „Hot“ ausstehend) oder „rehydrate-pending-to-cool“ (Aktivierung für Ebene „Cool“ ausstehend). Nach Abschluss des Vorgangs wird die Eigenschaft „Archive Status“ (Archivstatus) entfernt, und die Eigenschaft **Access Tier** (Zugriffsebene) des Blobs spiegelt die neue Ebene vom Typ „Hot“ oder „Cool“ wider.
@@ -42,7 +46,7 @@ Das Kopieren eines Blobs aus dem Archiv kann je nach ausgewählter Aktivierungsp
 > [!IMPORTANT]
 > Löschen Sie das Quellblob erst, nachdem der Kopiervorgang am Ziel erfolgreich abgeschlossen wurde. Wenn das Quellblob gelöscht wird, wird das Kopieren des Zielblobs möglicherweise nicht beendet, und das Blob ist leer. Sie können den *x-ms-copy-status* überprüfen, um den Status des Kopiervorgangs zu bestimmen.
 
-Archivblobs können nur auf Onlinezielebenen innerhalb desselben Speicherkontos kopiert werden. Das Kopieren eines Archivblobs in ein anderes Archivblob wird nicht unterstützt. In der folgenden Tabelle sind die Funktionen von CopyBlob angegeben.
+Archivblobs können nur auf Onlinezielebenen innerhalb desselben Speicherkontos kopiert werden. Das Kopieren eines Archivblobs in ein anderes Archivblob wird nicht unterstützt. Die folgende Tabelle zeigt die Funktionen eines **Blob kopieren**-Vorgangs.
 
 |                                           | **Quelle: Heiße Ebene**   | **Quelle: Kalte Ebene** | **Quelle: Archivebene**    |
 | ----------------------------------------- | --------------------- | -------------------- | ------------------- |

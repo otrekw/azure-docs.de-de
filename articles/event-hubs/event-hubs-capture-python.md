@@ -4,10 +4,10 @@ description: In diesem Artikel erfahren Sie, wie Sie Python-Code zum Erfassen vo
 ms.topic: quickstart
 ms.date: 01/04/2021
 ms.openlocfilehash: acc2ce04add5fd837e9edc789e9616a9f04fb4b9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97883196"
 ---
 # <a name="capture-event-hubs-data-in-azure-storage-and-read-it-by-using-python-azure-eventhub"></a>Erfassen von Event Hubs-Daten in Azure Storage und Lesen dieser Daten mithilfe von Python (azure-eventhub)

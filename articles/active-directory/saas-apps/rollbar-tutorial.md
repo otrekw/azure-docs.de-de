@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/15/2019
 ms.author: jeedes
 ms.openlocfilehash: 2d5aedf24034c9ba5ee865dd0d2289169ea5f859
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92520652"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rollbar"></a>Tutorial: Azure Active Directory-Integration mit Rollbar
@@ -49,25 +49,25 @@ Zum Konfigurieren der Integration von Rollbar in Azure AD müssen Sie Rollbar au
 
 **Um Rollbar aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory** .
+1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
 
     ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
 
-2. Navigieren Sie zu **Unternehmensanwendungen** , und wählen Sie die Option **Alle Anwendungen** aus.
+2. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen** aus.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung** , um eine neue Anwendung hinzuzufügen.
+3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
     ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
 
-4. Geben Sie im Suchfeld **Rollbar** ein, wählen Sie im Ergebnisbereich **Rollbar** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen** , um die Anwendung hinzuzufügen.
+4. Geben Sie im Suchfeld **Rollbar** ein, wählen Sie im Ergebnisbereich **Rollbar** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
      ![Rollbar in der Ergebnisliste](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
-In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Rollbar basierend auf einer Testbenutzerin mit dem Namen **Britta Simon** .
+In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Rollbar basierend auf einer Testbenutzerin mit dem Namen **Britta Simon**.
 Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Rollbar eingerichtet werden.
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Rollbar müssen Sie die folgenden Bausteine ausführen:
@@ -93,7 +93,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Rollbar
 
     ![Auswahlmodus für einmaliges Anmelden](common/select-saml-option.png)
 
-3. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Symbol **Bearbeiten** , um das Dialogfeld **Grundlegende SAML-Konfiguration** zu öffnen.
+3. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Symbol **Bearbeiten**, um das Dialogfeld **Grundlegende SAML-Konfiguration** zu öffnen.
 
     ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
@@ -105,7 +105,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Rollbar
 
     b. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://rollbar.com/<accountname>/saml/sso/azure/`
 
-5. Klicken Sie auf **Zusätzliche URLs festlegen** , und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
+5. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 
     ![Screenshot: Option „Zusätzliche URLs festlegen“ zum Eingeben einer Anmelde-URL](common/metadata-upload-additional-signon.png)
 
@@ -114,7 +114,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Rollbar
     > [!NOTE]
     > Hierbei handelt es sich um Beispielwerte. Die Werte müssen durch die tatsächliche Antwort-URL und die tatsächliche Anmelde-URL ersetzt werden. Wenden Sie sich an den [Rollbar-Support](mailto:support@rollbar.com), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
-6. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen** , um den Ihren Anforderungen entsprechenden **Verbundmetadaten-XML** -Code aus den verfügbaren Optionen herunterzuladen und auf Ihrem Computer zu speichern.
+6. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um den Ihren Anforderungen entsprechenden **Verbundmetadaten-XML**-Code aus den verfügbaren Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 
     ![Downloadlink für das Zertifikat](common/metadataxml.png)
 
@@ -132,11 +132,11 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Rollbar
 
 1. Melden Sie sich in einem anderen Webbrowserfenster bei der Rollbar-Unternehmenswebsite als Administrator an.
 
-1. Klicken Sie in der oberen rechten Ecke auf **Profileinstellungen** , und klicken Sie dann auf **Einstellungen für den Kontonamen** .
+1. Klicken Sie in der oberen rechten Ecke auf **Profileinstellungen**, und klicken Sie dann auf **Einstellungen für den Kontonamen**.
 
     ![Screenshot: Auswahl von „Einstellungen für den Kontonamen“ unter „Profileinstellungen“](./media/rollbar-tutorial/general.png)
 
-1. Klicken Sie unter SICHERHEIT auf **Identitätsanbieter** .
+1. Klicken Sie unter SICHERHEIT auf **Identitätsanbieter**.
 
     ![Screenshot: Auswahl von „Identitätsanbieter“ unter „SICHERHEIT“](./media/rollbar-tutorial/configure1.png)
 
@@ -148,7 +148,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Rollbar
 
     b. Öffnen Sie Ihre Metadatendatei in Editor, kopieren Sie den Inhalt in die Zwischenablage, und fügen Sie ihn anschließend in das Textfeld **SAML-Metadaten** ein.
 
-    c. Klicken Sie auf **Speichern** .
+    c. Klicken Sie auf **Speichern**.
 
 1. Nach dem Klicken auf die Schaltfläche „Speichern“ sieht der Bildschirm wie folgt aus:
 
@@ -158,17 +158,17 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Rollbar
     > Zum Abschließen des folgenden Schritts müssen Sie sich zunächst selbst als Benutzer der Rollbar-App in Azure hinzufügen.
     >
 
-    a. Wenn sich alle Benutzer über Azure authentifizieren sollen, klicken Sie auf **Über Identitätsanbieter anmelden** , damit eine erneute Authentifizierung über Azure erfolgt.  
+    a. Wenn sich alle Benutzer über Azure authentifizieren sollen, klicken Sie auf **Über Identitätsanbieter anmelden**, damit eine erneute Authentifizierung über Azure erfolgt.  
 
-    b.  Nachdem Sie zu dem Bildschirm zurückgekehrt sind, aktivieren Sie das Kontrollkästchen **Anmeldung über SAML-Identitätsanbieter vorschreiben** .
+    b.  Nachdem Sie zu dem Bildschirm zurückgekehrt sind, aktivieren Sie das Kontrollkästchen **Anmeldung über SAML-Identitätsanbieter vorschreiben**.
 
-    b. Klicken Sie auf **Speichern** .
+    b. Klicken Sie auf **Speichern**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
 Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
 
-1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory** , **Benutzer** und dann **Alle Benutzer** aus.
+1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory**, **Benutzer** und dann **Alle Benutzer** aus.
 
     ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](common/users.png)
 
@@ -185,9 +185,9 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
     b. Geben Sie im Feld **Benutzername** den Namen `brittasimon@yourcompanydomain.extension` ein.  
     Zum Beispiel, BrittaSimon@contoso.com
 
-    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen** , und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
+    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Erstellen** .
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -205,15 +205,15 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
     ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
 
-4. Klicken Sie auf die Schaltfläche **Benutzer hinzufügen** , und wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+4. Klicken Sie auf die Schaltfläche **Benutzer hinzufügen**, und wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
     ![Bereich „Zuweisung hinzufügen“](common/add-assign-user.png)
 
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **Britta Simon** aus, und klicken Sie dann unten im Bildschirm auf die Schaltfläche **Auswählen** .
+5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **Britta Simon** aus, und klicken Sie dann unten im Bildschirm auf die Schaltfläche **Auswählen**.
 
-6. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** in der Liste die entsprechende Rolle für den Benutzer aus, und klicken Sie dann unten auf dem Bildschirm auf **Auswählen** .
+6. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** in der Liste die entsprechende Rolle für den Benutzer aus, und klicken Sie dann unten auf dem Bildschirm auf **Auswählen**.
 
-7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen** .
+7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
 ### <a name="create-rollbar-test-user"></a>Erstellen eines Rollbar-Testbenutzers
 
@@ -223,19 +223,19 @@ Damit sich Azure AD-Benutzer bei Rollbar anmelden können, müssen sie in Rollba
 
 1. Melden Sie sich bei Ihrer Rollbar-Unternehmenswebsite als Administrator an.
 
-1. Klicken Sie in der oberen rechten Ecke auf **Profileinstellungen** , und klicken Sie dann auf **Einstellungen für den Kontonamen** .
+1. Klicken Sie in der oberen rechten Ecke auf **Profileinstellungen**, und klicken Sie dann auf **Einstellungen für den Kontonamen**.
 
     ![Benutzer](./media/rollbar-tutorial/general.png)
 
-1. Klicken Sie auf **Users** .
+1. Klicken Sie auf **Users**.
 
     ![Mitarbeiter hinzufügen](./media/rollbar-tutorial/user1.png)
 
-1. Klicken Sie auf **Teammitglieder einladen** .
+1. Klicken Sie auf **Teammitglieder einladen**.
 
     ![Screenshot: Auswahl der Option „Teammitglieder einladen“](./media/rollbar-tutorial/user2.png)
 
-1. Geben Sie im Textfeld den Namen eines Benutzers ein, z. B. **brittasimon\@contoso.com** , und klicken Sie dann auf **Hinzufügen/Einladen** .
+1. Geben Sie im Textfeld den Namen eines Benutzers ein, z. B. **brittasimon\@contoso.com**, und klicken Sie dann auf **Hinzufügen/Einladen**.
 
     ![Screenshot: Option zum Hinzufügen/Einladen von Mitgliedern mit Angabe einer Adresse](./media/rollbar-tutorial/user3.png)
 

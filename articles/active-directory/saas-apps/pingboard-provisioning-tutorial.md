@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: arvinh
 ms.openlocfilehash: ac36f5d6d1f57fd8453c54bcc8cf19dd964f47f6
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94357894"
 ---
 # <a name="tutorial-configure-pingboard-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Pingboard für die automatische Benutzerbereitstellung
@@ -55,7 +55,7 @@ Dieser Abschnitt führt Sie durch das Verbinden Ihres Azure AD mit der Pingboard
 
 1. Wechseln Sie im [Azure-Portal](https://portal.azure.com) zum Abschnitt **Azure Active Directory** > **Unternehmens-Apps** > **Alle Anwendungen**.
 
-1. Suchen Sie über das Suchfeld nach Ihrer Pingboard-Instanz, wenn Sie Pingboard bereits für einmaliges Anmelden konfiguriert haben. Wählen Sie andernfalls **Hinzufügen** , und suchen Sie im Anwendungskatalog nach **Pingboard**. Wählen Sie **Pingboard** in den Suchergebnissen aus, und fügen Sie es Ihrer Anwendungsliste hinzu.
+1. Suchen Sie über das Suchfeld nach Ihrer Pingboard-Instanz, wenn Sie Pingboard bereits für einmaliges Anmelden konfiguriert haben. Wählen Sie andernfalls **Hinzufügen**, und suchen Sie im Anwendungskatalog nach **Pingboard**. Wählen Sie **Pingboard** in den Suchergebnissen aus, und fügen Sie es Ihrer Anwendungsliste hinzu.
 
 1. Wählen Sie Ihre Pingboard-Instanz und dann die Registerkarte **Bereitstellung** aus.
 
@@ -87,7 +87,7 @@ Dieser Abschnitt führt Sie durch das Verbinden Ihres Azure AD mit der Pingboard
 
 1. Um den Azure AD-Bereitstellungsdienst für Pingboard zu aktivieren, ändern Sie im Abschnitt **Einstellungen** den **Bereitstellungsstatus** in **Ein**.
 
-1. Klicken Sie auf **Speichern** , um die Erstsynchronisierung der Benutzer zu starten, die Pingboard zugewiesen sind.
+1. Klicken Sie auf **Speichern**, um die Erstsynchronisierung der Benutzer zu starten, die Pingboard zugewiesen sind.
 
 Die Erstsynchronisierung dauert länger als nachfolgende Synchronisierungen, die ungefähr alle 40 Minuten erfolgen, solange der Dienst ausgeführt wird. Überwachen Sie anhand des Abschnitts **Synchronisierungsdetails** den Fortschritt, und navigieren Sie über Links zu Protokollen zur Bereitstellungsaktivität. In den Protokollen werden sämtliche Aktionen beschrieben, die vom Bereitstellungsdienst für Ihre Pingboard-App ausgeführt werden.
 
@@ -95,6 +95,6 @@ Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden S
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-* [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps im Azure-Portal](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 * [Konfigurieren von einmaligem Anmelden](pingboard-tutorial.md)

@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2021
 ms.openlocfilehash: d848c1ed1ab9d4cb24dec9423d93ec62ab45633b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99537220"
 ---
 # <a name="estimate-and-manage-capacity-of-an-azure-cognitive-search-service"></a>Schätzen und Verwalten der Kapazität eines Azure Cognitive Search-Diensts
@@ -184,7 +184,7 @@ Alle Suchdienste vom Typ „Standard“ oder „Datenspeicheroptimiert“ könne
 | **4 Replikate** |4 SU |8 SU |12 SU |16 SU |24 SU |– |
 | **5 Replikate** |5 SU |10 SU |15 SU |20 SU |30 SU |– |
 | **6 Replikate** |6 SU |12 SU |18 SU |24 SU |36 SU |– |
-| **12 Replikate** |12 SU |24 SU |36 SU |– |– |– |
+| **12 Replikate** |12 SU |24 SU |36 SU |– |Nicht zutreffend |Nicht zutreffend |
 
 SUs, Preise und Kapazität werden auf der Azure-Website ausführlich erläutert. Weitere Informationen finden Sie unter [Preise](https://azure.microsoft.com/pricing/details/search/).
 

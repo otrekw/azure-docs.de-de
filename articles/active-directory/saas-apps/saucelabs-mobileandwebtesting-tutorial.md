@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/22/2019
 ms.author: jeedes
 ms.openlocfilehash: 087e2d7f2db8f27378b54675095e97256d6aae9b
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92895106"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sauce-labs---mobile-and-web-testing"></a>Tutorial: Azure Active Directory-Integration in „Sauce Labs - Mobile and Web Testing“
@@ -41,8 +41,8 @@ Um die Azure AD-Integration in „Sauce Labs - Mobile and Web Testing“ zu konf
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-* „Sauce Labs - Mobile and Web Testing“ unterstützt **IDP** -initiiertes einmaliges Anmelden.
-* „Sauce Labs - Mobile and Web Testing“ unterstützt die **Just-in-Time** -Benutzerbereitstellung.
+* „Sauce Labs - Mobile and Web Testing“ unterstützt **IDP**-initiiertes einmaliges Anmelden.
+* „Sauce Labs - Mobile and Web Testing“ unterstützt die **Just-in-Time**-Benutzerbereitstellung.
 
 ## <a name="adding-sauce-labs---mobile-and-web-testing-from-the-gallery"></a>Hinzufügen von „Sauce Labs - Mobile and Web Testing“ aus dem Katalog
 
@@ -54,15 +54,15 @@ Zum Konfigurieren der Integration von „Sauce Labs - Mobile and Web Testing“ 
 
     ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
 
-2. Navigieren Sie zu **Unternehmensanwendungen** , und wählen Sie die Option **Alle Anwendungen** aus.
+2. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen** aus.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung** , um eine neue Anwendung hinzuzufügen.
+3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
     ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
 
-4. Geben Sie in das Suchfeld **Sauce Labs - Mobile and Web Testing** ein, wählen Sie im Ergebnisbereich **Sauce Labs - Mobile and Web Testing** aus, und klicken Sie auf die Schaltfläche **Hinzufügen** , um die Anwendung hinzuzufügen.
+4. Geben Sie in das Suchfeld **Sauce Labs - Mobile and Web Testing** ein, wählen Sie im Ergebnisbereich **Sauce Labs - Mobile and Web Testing** aus, und klicken Sie auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
     ![„Sauce Labs - Mobile and Web Testing“ in der Ergebnisliste](common/search-new-app.png)
 
@@ -94,7 +94,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei „Sauce
 
     ![Auswahlmodus für einmaliges Anmelden](common/select-saml-option.png)
 
-3. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Symbol **Bearbeiten** , um das Dialogfeld **Grundlegende SAML-Konfiguration** zu öffnen.
+3. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Symbol **Bearbeiten**, um das Dialogfeld **Grundlegende SAML-Konfiguration** zu öffnen.
 
     ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
@@ -102,7 +102,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei „Sauce
 
     ![SSO-Informationen zur Domäne und zu den URLs für „Sauce Labs - Mobile and Web Testing“](common/preintegrated.png)
 
-5. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen** , um den Ihren Anforderungen entsprechenden **Verbundmetadaten-XML** -Code aus den verfügbaren Optionen herunterzuladen und auf Ihrem Computer zu speichern.
+5. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um den Ihren Anforderungen entsprechenden **Verbundmetadaten-XML**-Code aus den verfügbaren Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 
     ![Downloadlink für das Zertifikat](common/metadataxml.png)
 
@@ -120,7 +120,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei „Sauce
 
 1. Melden Sie sich in einem anderen Webbrowserfenster bei der Sauce Labs-Unternehmenswebsite als Administrator an.
 
-2. Klicken Sie auf das **Benutzersymbol** , und wählen Sie die Registerkarte **Team Management** (Teamverwaltung) aus.
+2. Klicken Sie auf das **Benutzersymbol**, und wählen Sie die Registerkarte **Team Management** (Teamverwaltung) aus.
 
     ![Screenshot, auf dem das Benutzersymbol und das Dropdownmenü „Team Management“ (Teamverwaltung) ausgewählt sind](./media/saucelabs-mobileandwebtesting-tutorial/configure1.png)
 
@@ -146,7 +146,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei „Sauce
 
 Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
 
-1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory** , **Benutzer** und dann **Alle Benutzer** aus.
+1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory**, **Benutzer** und dann **Alle Benutzer** aus.
 
     ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](common/users.png)
 
@@ -163,7 +163,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
     b. Geben Sie im Feld **Benutzername** den Namen `brittasimon@yourcompanydomain.extension` ein.  
     Zum Beispiel, BrittaSimon@contoso.com
 
-    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen** , und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
+    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
     d. Klicken Sie auf **Erstellen**.
 
@@ -183,7 +183,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
     ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
 
-4. Klicken Sie auf die Schaltfläche **Benutzer hinzufügen** , und wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+4. Klicken Sie auf die Schaltfläche **Benutzer hinzufügen**, und wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
     ![Bereich „Zuweisung hinzufügen“](common/add-assign-user.png)
 

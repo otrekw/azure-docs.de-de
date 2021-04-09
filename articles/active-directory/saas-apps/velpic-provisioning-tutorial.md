@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: zhchia
 ms.openlocfilehash: cdd4fb96a42d154ccd8b508950283978ddf58ef4
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94354902"
 ---
 # <a name="tutorial-configuring-velpic-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Velpic für die automatische Benutzerbereitstellung
@@ -66,11 +66,11 @@ Dieser Abschnitt führt Sie durch das Herstellen einer Verbindung von Azure AD m
 
     ![Bereitstellung von Velpic](./media/velpic-provisioning-tutorial/Velpic1.png)
 
-5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** die **Mandanten-URL und das geheime Token** von Velpic ein. (Sie finden diese Werte in Ihrem Velpic-Konto unter **Verwalten von** > **Integration** > **Plug-Ins** > **SCIM**.)
+5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** die **Mandanten-URL und das geheime Token** von Velpic ein. (Sie finden diese Werte in Ihrem Velpic-Konto unter **Verwalten** > **Integration** > **Plug-In** > **SCIM**.)
 
     ![Autorisierungswerte](./media/velpic-provisioning-tutorial/Velpic2.png)
 
-6. Klicken Sie im Azure-Portal auf **Verbindung testen** , um sicherzustellen, dass Azure AD eine Verbindung mit Ihrer Velpic-App herstellen kann. Wenn die Verbindung nicht möglich ist, stellen Sie sicher, dass Ihr Velpic-Konto über Teamadministratorberechtigungen verfügt, und wiederholen Sie Schritt 5.
+6. Klicken Sie im Azure-Portal auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Ihrer Velpic-App herstellen kann. Wenn die Verbindung nicht möglich ist, stellen Sie sicher, dass Ihr Velpic-Konto über Teamadministratorberechtigungen verfügt, und wiederholen Sie Schritt 5.
 
 7. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder einer Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das unten gezeigte Kontrollkästchen.
 
