@@ -4,12 +4,12 @@ description: Zeigt, wie Sie Tags zum Organisieren von Azure-Ressourcen für die 
 ms.topic: conceptual
 ms.date: 01/04/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: fb93673b643fd13efe9ffea148c5fb1d072f9e05
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1e755a378fd71ea2763cc3e43477876fa3e8c5d5
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98896222"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105934188"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>Verwenden von Tags zum Organisieren von Azure-Ressourcen und Verwaltungshierarchie
 
@@ -684,10 +684,10 @@ Mit der folgenden Vorlage werden die Tags eines Objekts entweder in einer Ressou
 
 Verwenden Sie zum Arbeiten mit Tags über die Azure-REST-API Folgendes:
 
-* [Tags: Erstellen oder Aktualisieren im Bereich](/rest/api/resources/tags/createorupdateatscope) (PUT-Vorgang)
-* [Tags: Aktualisieren im Bereich](/rest/api/resources/tags/updateatscope) (PATCH-Vorgang)
-* [Tags: Abrufen im Bereich](/rest/api/resources/tags/getatscope) (GET-Vorgang)
-* [Tags: Löschen im Bereich](/rest/api/resources/tags/deleteatscope) (DELETE-Vorgang)
+* [Tags: Erstellen oder Aktualisieren im Bereich](/rest/api/resources/resources/tags/createorupdateatscope) (PUT-Vorgang)
+* [Tags: Aktualisieren im Bereich](/rest/api/resources/resources/tags/updateatscope) (PATCH-Vorgang)
+* [Tags: Abrufen im Bereich](/rest/api/resources/resources/tags/getatscope) (GET-Vorgang)
+* [Tags: Löschen im Bereich](/rest/api/resources/resources/tags/deleteatscope) (DELETE-Vorgang)
 
 ## <a name="inherit-tags"></a>Erben von Tags
 

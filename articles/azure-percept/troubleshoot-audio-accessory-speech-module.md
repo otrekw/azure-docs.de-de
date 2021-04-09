@@ -1,18 +1,18 @@
 ---
-title: Behandeln von Problemen mit Azure Percept-Audio und Speech-Modulen
-description: Hier finden Sie Tipps zur Problembehandlung für einige der häufigsten Probleme während des Onboardings.
+title: Behandeln von Problemen mit Azure Percept Audio und Speech-Modulen
+description: Tipps zur Problembehandlung für Azure Percept Audio und azureearspeechclientmodule
 author: mimcco
 ms.author: mimcco
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/18/2021
 ms.custom: template-how-to
-ms.openlocfilehash: a3877ea680e7b4c705f127c54e0fa10c45d3b51d
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: f34013bdb14481bfe872a9b3c4234d603bc2d7ec
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102097974"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102635568"
 ---
 # <a name="azure-percept-audio-and-speech-module-troubleshooting"></a>Problembehandlung für Azure Percept-Audio und Speech-Module
 
@@ -23,13 +23,13 @@ Beheben Sie Probleme mit dem Sprach-Assistenten mithilfe der folgenden Anweisung
 Zum Ausführen dieser Befehle [stellen Sie eine Verbindung mit dem Azure Percept DK-WLAN-Zugriffspunkt sowie eine SSH-Verbindung mit dem DevKit her](./how-to-ssh-into-percept-dk.md) und geben die Befehle im SSH-Terminal ein.
 
 ```console
- iotedge logs azureearspeechclientmodule
+sudo iotedge logs azureearspeechclientmodule
 ```
 
 Verwenden Sie die folgende Syntax, um Ausgaben zur weiteren Analyse an eine TXT-Datei umzuleiten:
 
 ```console
-[command] > [file name].txt
+sudo [command] > [file name].txt
 ```
 
 Nach dem Umleiten einer Ausgabe an eine TXT-Datei kopieren Sie die Datei über SCP auf Ihren Host-PC:
@@ -52,18 +52,18 @@ Wird als Laufzeitstatus von **azureearspeechclientmodule** nicht **Wird ausgefü
 
 Anhand von LED-Anzeigen können Sie nachvollziehen, in welchem Zustand sich Ihr Gerät befindet. Es dauert in der Regel etwa zwei Minuten, bis das Modul nach dem *Einschalten* vollständig initialisiert wurde. Im Rahmen der Initialisierungsschritte wird Folgendes angezeigt:
 
-1. Weiße LED in der Mitte: Das Gerät ist eingeschaltet. 
-2. Weiß blinkende LED in der Mitte: Die Authentifizierung wird durchgeführt. 
+1. Weiße LED in der Mitte: Das Gerät ist eingeschaltet.
+2. Weiß blinkende LED in der Mitte: Die Authentifizierung wird durchgeführt.
 3. Alle drei LEDs leuchten blau, sobald das Gerät authentifiziert wurde und betriebsbereit ist.
 
-|LED|   LED-Zustand|  Status des akustischen SOM|
-|---|------------|----------------| 
-|L02|   1x Weiß, dauerhaft leuchtend |Einschalten |
-|L02|   1x Weiß, mit einer Frequenz von 0,5 Hz blinkend|  Authentifizierung wird durchgeführt |
-|L01 und L02 und L03|   3x Blau, dauerhaft leuchtend|     Warten auf Schlüsselwort|
-|L01 und L02 und L03|   Blinkendes LED-Array (20 FPS) | Lauschen oder Sprechen|
-|L01 und L02 und L03|   Schnell nacheinander aufblinkende LEDs (20 FPS)|    Berechnung|
-|L01 und L02 und L03|   3x Rot, dauerhaft leuchtend | Mute|
+|LED|LED-Zustand|Status des akustischen SOM|
+|---|---------|--------------|
+|L02|1x Weiß, dauerhaft leuchtend|Einschalten |
+|L02|1x Weiß, mit einer Frequenz von 0,5 Hz blinkend|Authentifizierung wird durchgeführt |
+|L01 und L02 und L03|3x Blau, dauerhaft leuchtend|Warten auf Schlüsselwort|
+|L01 und L02 und L03|Blinkendes LED-Array (20 FPS) |Lauschen oder Sprechen|
+|L01 und L02 und L03|Schnell nacheinander aufblinkende LEDs (20 FPS)|Berechnung|
+|L01 und L02 und L03|3x Rot, dauerhaft leuchtend |Mute|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

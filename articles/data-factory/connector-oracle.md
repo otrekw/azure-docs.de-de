@@ -4,14 +4,14 @@ description: Hier erfahren Sie, wie mithilfe von Data Factory Daten aus unterst�
 author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 09/28/2020
+ms.date: 03/17/2021
 ms.author: jingwang
-ms.openlocfilehash: bba1ae991f2a4702a0d55a8dc3f6c7a44b9e7b65
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 9e6be88af13d5dd7ddceba32ec08cab54ca5e3a0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100381340"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104587269"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Kopieren von Daten aus und nach Oracle mit Azure Data Factory
 
@@ -64,7 +64,7 @@ Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren 
 
 Der verknüpfte Oracle-Dienst unterstützt folgende Eigenschaften:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf **Oracle** festgelegt werden. | Ja |
 | connectionString | Gibt die Informationen an, die zum Herstellen einer Verbindung mit der Oracle-Datenbankinstanz erforderlich sind. <br/>Sie können auch ein Kennwort in Azure Key Vault speichern und die `password`-Konfiguration aus der Verbindungszeichenfolge pullen. Ausführlichere Informationen finden Sie in den folgenden Beispielen sowie unter [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md). <br><br>**Unterstützter Verbindungstyp:** Sie können die **Oracle-SID** oder den **Oracle-Dienstnamen** zur Identifizierung Ihrer Datenbank verwenden:<br>– Wenn Sie die SID verwenden: `Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>– Wenn Sie den Dienstnamen verwenden: `Host=<host>;Port=<port>;ServiceName=<servicename>;User Id=<username>;Password=<password>;`<br>Für erweiterte native Oracle-Verbindungsoptionen können Sie in einen Eintrag in der Datei [TNSNAMES.ORA](http://www.orafaq.com/wiki/Tnsnames.ora) auf dem Oracle-Server hinzufügen und im verknüpften ADF-Oracle-Dienst auswählen, dass als Verbindungstyp der Oracle-Dienstnamen verwendet wird, den Sie dann entsprechend konfigurieren müssen. | Ja |
@@ -171,7 +171,7 @@ Dieser Abschnitt enthält eine Liste der Eigenschaften, die vom Oracle-Dataset u
 
 Legen Sie zum Kopieren von Daten aus bzw. nach Oracle die Eigenschaft „type“ des Datasets auf `OracleTable` fest. Die folgenden Eigenschaften werden unterstützt.
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die Eigenschaft „type“ des Datasets muss auf `OracleTable` festgelegt werden. | Ja |
 | schema | Name des Schemas. |Quelle: Nein, Senke: Ja  |
@@ -210,7 +210,7 @@ Dieser Abschnitt enthält eine Liste der Eigenschaften, die von der Oracle-Quell
 
 Legen Sie zum Kopieren von Daten aus Oracle den Quelltyp in der Kopieraktivität auf `OracleSource` fest. Die folgenden Eigenschaften werden im Abschnitt **source** der Kopieraktivität unterstützt.
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die Eigenschaft „type“ der Quelle der Kopieraktivität muss auf `OracleSource` festgelegt werden. | Ja |
 | oracleReaderQuery | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. z. B. `"SELECT * FROM MyTable"`.<br>Wenn Sie partitioniertes Laden aktivieren, müssen Sie die entsprechenden integrierten Partitionsparameter in Ihre Abfrage integrieren. Beispiele finden Sie im Abschnitt [Paralleles Kopieren aus Oracle](#parallel-copy-from-oracle). | Nein |
@@ -257,12 +257,13 @@ Legen Sie zum Kopieren von Daten aus Oracle den Quelltyp in der Kopieraktivität
 
 Legen Sie zum Kopieren von Daten in Oracle den Senkentyp in der Kopieraktivität auf `OracleSink` fest. Die folgenden Eigenschaften werden im Abschnitt **sink** der Kopieraktivität unterstützt.
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die Eigenschaft „type“ der Senke der Kopieraktivität muss auf `OracleSink` festgelegt werden. | Ja |
 | writeBatchSize | Fügt Daten in die SQL-Tabelle ein, wenn die Puffergröße `writeBatchSize` erreicht.<br/>Zulässige Werte sind Integer-Werte (Anzahl der Zeilen). |Nein (Standardwert ist 10.000) |
 | writeBatchTimeout | Die Wartezeit für den Abschluss der Batcheinfügung, bevor ein Timeout auftritt.<br/>Zulässige Werte sind Timespan-Werte. Beispiel: 00:30:00 (30 Minuten). | Nein |
 | preCopyScript | Geben Sie eine SQL-Abfrage an, die bei jeder Ausführung von der Kopieraktivität ausgeführt werden soll, bevor Daten in Oracle geschrieben werden. Sie können diese Eigenschaft nutzen, um die vorab geladenen Daten zu bereinigen. | Nein |
+| maxConcurrentConnections |Die Obergrenze gleichzeitiger Verbindungen mit dem Datenspeicher während der Aktivitätsausführung. Geben Sie diesen Wert nur an, wenn Sie die Anzahl der gleichzeitigen Verbindungen begrenzen möchten.| Nein |
 
 **Beispiel:**
 
@@ -363,7 +364,8 @@ Beim Kopieren von Daten aus Oracle und nach Oracle gelten folgende Zuordnungen. 
 | LONG RAW |Byte[] |
 | NCHAR |String |
 | NCLOB |String |
-| NUMBER |Dezimal, Zeichenfolge (wenn Genauigkeit > 28) |
+| NUMBER (p,s) |Dezimal, Zeichenfolge (wenn Genauigkeit > 28) |
+| NUMBER ohne Genauigkeit und Dezimalstellen |Double |
 | NVARCHAR2 |String |
 | RAW |Byte[] |
 | ROWID |String |

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/04/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 372342611265640a2a64100f003880a430d61ca0
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 4b708e80bf335ba8bdce074285857a6f8b77b972
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96620941"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103439302"
 ---
 In der Vorschau weist NFS die folgenden Einschränkungen auf:
 
@@ -25,6 +25,7 @@ In der Vorschau weist NFS die folgenden Einschränkungen auf:
 - Nur für den Premium-Tarif verfügbar.
 - NFS-Freigaben akzeptieren nur numerische UID/GID. Um zu verhindern, dass Ihre Clients eine alphanumerische UID/GID senden, sollten Sie die ID-Zuordnung deaktivieren.
 - Freigaben können nur aus einem Speicherkonto auf einem einzelnen virtuellen Computer eingebunden werden, wenn private Verbindungen verwendet werden. Der Versuch, Freigaben aus anderen Speicherkonten einzubinden, schlägt fehl.
+- Es wird empfohlen, sich auf die Berechtigungen zu verlassen, die der primären Gruppe zugewiesen sind. Manchmal können Berechtigungen, die der nicht primären Gruppe des Benutzers zugeordnet sind, aufgrund eines bekannten Fehlers zu einer Verweigerung des Zugriffs führen.
 
 ### <a name="azure-storage-features-not-yet-supported"></a>Noch nicht unterstützte Azure Storage-Funktionen
 

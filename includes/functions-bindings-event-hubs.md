@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 02/21/2020
 ms.author: cshoe
-ms.openlocfilehash: b0f8055dcd8bdfb2ecb3ea99448838514eeb34f3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 05d136093bd509e8c23ce8622423216326b0f1f2
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96026332"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102623256"
 ---
 ## <a name="add-to-your-functions-app"></a>Hinzufügen zu Ihrer Funktions-App
 
@@ -20,7 +20,7 @@ Das Arbeiten mit Triggern und Bindungen erfordert, dass Sie auf das entsprechend
 | Sprache                                        | Hinzufügen nach...                                   | Bemerkungen 
 |-------------------------------------------------|---------------------------------------------|-------------|
 | C#                                              | Installieren des [NuGet-Paket], Version 3.x | |
-| C#-Skript, Java, JavaScript, Python, PowerShell | Registrieren des [Erweiterungspaket]          | Die [Azure-Tools-Erweiterung] wird zur Verwendung mit Visual Studio Code empfohlen. |
+| C#-Skript, Java, JavaScript, Python, PowerShell | Registrieren des [Erweiterungspaket]          | Die [Erweiterung für Azure-Tools] wird zur Verwendung mit Visual Studio Code empfohlen. |
 | C#-Skript (nur online im Azure-Portal)         | Hinzufügen einer Bindung                            | Informationen zum Aktualisieren vorhandener Bindungserweiterungen, ohne Ihre Funktions-App erneut veröffentlichen zu müssen, finden Sie unter [Aktualisieren Ihrer Erweiterungen]. |
 
 [NuGet-Paket]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventHubs
@@ -29,6 +29,26 @@ Das Arbeiten mit Triggern und Bindungen erfordert, dass Sie auf das entsprechend
 [Aktualisieren Ihrer Erweiterungen]: ../articles/azure-functions/functions-bindings-register.md
 [Azure-Tools-Erweiterung]: https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack
 
+### <a name="event-hubs-extension-5x-and-higher"></a>Event Hubs-Erweiterung 5.x und höher
+
+Eine neue Version der Event Hubs-Bindungserweiterung ist als [NuGet-Vorschaupaket](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventHubs/5.0.0-beta.1) verfügbar. Diese Vorschau bietet die Möglichkeit, eine [Verbindung mit einer Identität anstelle eines Geheimnisses](../articles/azure-functions/functions-reference.md#configure-an-identity-based-connection) herzustellen. Für .NET-Anwendungen werden auch die Typen geändert, mit denen eine Bindung erfolgen kann. Dabei werden die Typen aus `Microsoft.Azure.EventHubs` durch neuere Typen aus [Azure.Messaging.EventHubs](/dotnet/api/azure.messaging.eventhubs) ersetzt.
+
+> [!NOTE]
+> Das Vorschaupaket ist nicht in einem Erweiterungspaket enthalten und muss manuell installiert werden. Fügen Sie für .NET-Apps einen Verweis auf das Paket hinzu. Informationen zu allen anderen App-Typen finden Sie unter [Aktualisieren Ihrer Erweiterungen].
+
+[core tools]: ./functions-run-local.md
+[Erweiterungspaket]: ./functions-bindings-register.md#extension-bundles
+[NuGet-Paket]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventHubs/
+[Aktualisieren Ihrer Erweiterungen]: ./functions-bindings-register.md
+[Azure-Tools-Erweiterung]: https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack
+
 ### <a name="functions-1x"></a>Functions 1.x
 
 Functions 1.x-Apps enthalten automatisch einen Verweis auf das NuGet-Paket, Version 2.x, [Microsoft.Azure.WebJobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs).
+
+## <a name="hostjson-settings"></a>Einstellungen für „host.json“
+<a name="host-json"></a>
+
+Die Datei [host.json](../articles/azure-functions/functions-host-json.md#eventhub) enthält Einstellungen, die das Verhalten des Event Hubs-Triggers steuern. Die Konfiguration unterscheidet sich abhängig von der Azure Functions-Version.
+
+[!INCLUDE [functions-host-json-event-hubs](../articles/azure-functions/../../includes/functions-host-json-event-hubs.md)]

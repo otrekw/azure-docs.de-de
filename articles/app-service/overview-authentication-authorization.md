@@ -6,16 +6,16 @@ ms.topic: article
 ms.date: 07/08/2020
 ms.reviewer: mahender
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: 1b95b1e96dc26fb72338518fc969c69b035d5f68
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 83758f63b7e60d08a31f1da9da4a6eec6ba7d4a4
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095235"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102632066"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Authentifizierung und Autorisierung in Azure App Service und Azure Functions
 
-Azure App Service bietet integrierte Authentifizierungs- und Autorisierungsunterstützung, sodass Sie für das Anmelden von Benutzern und den Zugriff auf Daten nur wenig oder keinen Code in Ihrer Web-App, RESTful-API und dem mobilen Back-End sowie in [Azure Functions](../azure-functions/functions-overview.md) schreiben müssen. In diesem Artikel wird beschrieben, wie App Service zur Vereinfachung der Authentifizierung und Autorisierung für Ihre App beiträgt.
+Azure App Service bietet integrierte Authentifizierungs- und Autorisierungsunterstützung (manchmal auch „Easy Auth“ genannt), sodass Sie für das Anmelden von Benutzern und den Zugriff auf Daten nur wenig oder keinen Code in Ihrer Web-App, RESTful-API und dem mobilen Back-End sowie in [Azure Functions](../azure-functions/functions-overview.md) schreiben müssen. In diesem Artikel wird beschrieben, wie App Service zur Vereinfachung der Authentifizierung und Autorisierung für Ihre App beiträgt.
 
 Eine sichere Authentifizierung und Autorisierung erfordert umfassende Sicherheitskenntnisse, u.a. zu Verbund, Verschlüsselung, Verwaltung von [JSON-Webtoken (JWT)](https://wikipedia.org/wiki/JSON_Web_Token) und [Gewährungstypen](https://oauth.net/2/grant-types/). App Service bietet diese Hilfsprogramme, damit Sie mehr Zeit und Energie für das Bereitstellen von geschäftlichem Nutzen für Ihre Kunden aufwenden können.
 
@@ -24,9 +24,6 @@ Eine sichere Authentifizierung und Autorisierung erfordert umfassende Sicherheit
 >
 > Die von App Service gehosteten ASP.NET Core-Versionen ab 2.1 wurden bereits für diesen Breaking Change gepatcht und behandeln Chrome 80 sowie ältere Browser entsprechend. Im Januar 2020 wurde der gleiche Patch für ASP.NET Framework 4.7.2 außerdem in den App Service-Instanzen bereitgestellt. Weitere Informationen finden Sie unter [Azure App Service: Update für SameSite-Cookies](https://azure.microsoft.com/updates/app-service-samesite-cookie-update/).
 >
-
-> [!NOTE]
-> Das Authentifizierungs-/Autorisierungsfeature wird manchmal auch als „Einfache Autorisierung“ bezeichnet.
 
 > [!NOTE]
 > Durch Aktivieren dieser Funktion werden **alle** nicht sicheren HTTP-Anforderungen an Ihre Anwendung automatisch an HTTPS umgeleitet, unabhängig von der App Service-Konfigurationseinstellung zum [Erzwingen von HTTPS](configure-ssl-bindings.md#enforce-https). Bei Bedarf können Sie dies über die Einstellung `requireHttps` in der [Konfigurationsdatei für die Authentifizierungseinstellungen](app-service-authentication-how-to.md#configuration-file-reference) deaktivieren, Sie müssen dann jedoch sicherstellen, dass niemals Sicherheitstoken über unsichere HTTP-Verbindungen übertragen werden.

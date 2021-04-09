@@ -6,12 +6,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.custom: references_regions
-ms.openlocfilehash: 30be0343b7c3282e3ce4da165225ab8209d07f4a
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: 98f53ec1b6506a6d47146377e837576254f445e2
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102452406"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103601065"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-it-service-management-solution"></a>Verbinden von Azure mit ITSM-Tools mithilfe der IT-Service-Management-Lösung
 
@@ -90,7 +90,7 @@ Die wiederverwendbaren Aktionsgruppen bieten Ihnen die Möglichkeit, modular Akt
 
 ## <a name="define-a-template"></a>Definieren einer Vorlage
 
-Für bestimmte Arbeitselementtypen können Sie im ITSM-Tool Vorlagen definieren. Mithilfe von Vorlagen können Sie Felder definieren, die automatisch entsprechend den festgelegten Werten für eine Aktionsgruppe aufgefüllt werden. Sie können definieren, welche Vorlage als Teil der Aktionsgruppendefinition verwendet werden soll.
+Für bestimmte Arbeitselementtypen können Sie im ITSM-Tool Vorlagen definieren. Mithilfe von Vorlagen können Sie Felder definieren, die automatisch entsprechend den festgelegten Werten für eine Aktionsgruppe aufgefüllt werden. Sie können definieren, welche Vorlage als Teil der Aktionsgruppendefinition verwendet werden soll. Informationen zum Erstellen von Vorlagen finden Sie in der ServiceNow-Dokumentation – (hier)[https://docs.servicenow.com/bundle/paris-platform-administration/page/administer/form-administration/task/t_CreateATemplateUsingTheTmplForm.html ].
 
 So erstellen Sie eine Aktionsgruppe
 

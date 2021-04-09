@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
-ms.date: 03/08/2021
-ms.openlocfilehash: d53a36d99c9a54fdfef7baceb50edb4e8f5ae4c8
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.date: 03/10/2021
+ms.openlocfilehash: 7120b6ff17657232c0e614f49b75bb24263712b7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102561856"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102636334"
 ---
 # <a name="overview-azure-logic-apps-preview"></a>Übersicht: Vorschauversion von Azure Logic Apps
 
@@ -59,7 +59,7 @@ In der folgenden Tabelle werden die Unterschiede bei der gemeinsamen Verwendung 
 | Azure Logic Apps (mehrere Mandanten) | Workflows *von Kunden in mehreren Mandanten* nutzen dieselben Ressourcen für die Verarbeitung (Compute), den Speicher, das Netzwerk usw. |
 | Azure Logic Apps (Vorschau, einzelinstanzenfähig) | Workflows *in derselben Logik-App und einem einzelnen Mandanten* nutzen dieselben Ressourcen für die Verarbeitung (Compute), den Speicher, das Netzwerk usw. |
 | Integrationsdienstumgebung (in der Vorschau nicht verfügbar) | Workflows *in derselben Umgebung* nutzen dieselben Ressourcen für die Verarbeitung (Compute), den Speicher, das Netzwerk usw. |
-||||
+|||
 
 Derzeit können Sie auch weiterhin noch den mehrinstanzenfähigen Logik-App-Typ im Azure-Portal und in Visual Studio Code erstellen, indem Sie die mehrinstanzenfähige Azure Logic Apps-Erweiterung verwenden. Trotz der Unterschiede bei der Entwicklung zwischen dem mehrinstanzenfähigen und dem einzelinstanzenfähigen Logik-App-Typ kann Ihr Azure-Abonnement beide Typen enthalten. Sie können alle bereitgestellten Logik-Apps in Ihrem Azure-Abonnement anzeigen und darauf zugreifen, aber die Apps werden getrennt in ihren eigenen Kategorien und Abschnitten angeordnet.
 
@@ -122,7 +122,10 @@ Azure Logic Apps (Vorschau) umfasst viele aktuelle und zusätzliche Funktionen, 
 
 * Erstellen von Logik-Apps für Workflows mit [mehr als 400 Connectors](/connectors/connector-reference/connector-reference-logicapps-connectors) für SaaS- (Software-as-a-Service) und PaaS-Apps (Platform as a Service) und -Dienste sowie Connectors für lokale Systeme.
 
-  * Einige verwaltete Connectors, z. B. für Azure Service Bus, Azure Event Hubs, SQL Server und MQ, werden ähnlich wie die integrierten Trigger und Aktionen ausgeführt, die in die Azure Logic Apps-Runtime (Vorschau) integriert sind, wie z. B. der Anforderungstrigger und die HTTP-Aktion.
+  * Einige verwaltete Connectors sind nun als integrierte Versionen verfügbar, die ähnlich wie die integrierten Trigger und Aktionen ausgeführt werden, z. B. der Anforderungstrigger und die HTTP-Aktion, die nativ in der Vorschauversion der Azure Logic Apps-Runtime ausgeführt werden. Zu diesen neuen integrierten Connectors gehören z. B. Azure Service Bus, Azure Event Hubs, SQL Server und MQ.
+
+    > [!NOTE]
+    > Für den integrierten SQL Server-Connector kann nur die Aktion **Abfrage ausführen** direkt mit virtuellen Azure-Netzwerken verbunden werden, ohne dass das [lokale Datengateway](logic-apps-gateway-connection.md) erforderlich ist.
 
   * Erstellen Sie Ihre eigenen integrierten Connectors für jeden benötigten Dienst, indem Sie das [Erweiterbarkeitsframework der Vorschauversion](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-built-in-connector/ba-p/1921272) verwenden. Ähnlich wie integrierte Connectors wie Azure Service Bus und SQL Server, aber anders als [benutzerdefinierte Connectors](../connectors/apis-list.md#custom-apis-and-connectors), die zurzeit in der Vorschau nicht unterstützt werden, bieten diese Connectors einen höheren Durchsatz, niedrige Wartezeiten, lokale Konnektivität und werden nativ im selben Prozess wie die Vorschau-Runtime ausgeführt.
 

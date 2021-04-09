@@ -12,12 +12,12 @@ ms.topic: end-user-help
 ms.date: 01/28/2021
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 84dde96276414e98cbde05d6e046dce03227f60d
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 8ddc02075d2cdeba4a4fa83a2475ec20c3f18d6e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100547858"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103418078"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>Häufig gestellte Fragen zur Microsoft Authenticator-App
 
@@ -260,7 +260,7 @@ Die Microsoft Authenticator-App ersetzt die Azure Authenticator-App und ist die 
 
 **F:** Können meine Mitarbeiter oder Schüler/Studierende AutoAusfüllen für Kennwörter in der Authenticator-App ebenfalls nutzen?
 
-**A:** Ja, AutoAusfüllen funktioniert jetzt selbst dann für die meisten Unternehmensbenutzer, wenn ein Geschäfts-, Schul- oder Unikonto zur Authenticator-App hinzugefügt wird. Sie können ein Formular ausfüllen, um AutoAusfüllen für Ihre Organisation zu konfigurieren (zulassen oder verweigern), und das Formular [an das Authenticator-Team senden](https://aka.ms/ConfigureAutofillInAuthenticator).
+**A:** Ja, das automatische Ausfüllen für Ihre [persönlichen Microsoft-Konten](https://go.microsoft.com/fwlink/?linkid=2144423) funktioniert nun für die meisten Unternehmensbenutzer, auch wenn ein Geschäfts-, Schul- oder Unikonto zur Authenticator-App hinzugefügt wird. Sie können ein Formular ausfüllen, um das automatische Ausfüllen für Ihre Organisation zuzulassen oder zu verweigern, und [dieses an das Authenticator-Team senden](https://aka.ms/ConfigureAutofillInAuthenticator). Das automatische Ausfüllen ist derzeit nicht für Geschäfts-, Schul- oder Unikonten verfügbar.
 
 **F:** Werden die Kennwörter für Geschäfts-, Schul- oder Unikonten meiner Benutzer automatisch synchronisiert?
 

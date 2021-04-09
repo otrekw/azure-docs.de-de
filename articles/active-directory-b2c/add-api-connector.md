@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
-ms.openlocfilehash: b63db3d02b471a577586ecd54f56caa59af504d6
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 59246c3739ad4de27e65641cc9d2154b33a6ee5e
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99805511"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103008432"
 ---
 # <a name="add-an-api-connector-to-a-sign-up-user-flow-preview"></a>Hinzufügen eines API-Connectors zu einem Benutzerflow für die Registrierung (Vorschauversion)
 
@@ -34,12 +34,36 @@ Um einen [API-Connector](api-connectors-overview.md) zu verwenden, erstellen Sie
 
 5. Geben Sie einen Anzeigenamen für den Aufruf an, beispielsweise **Benutzerinformationen überprüfen**.
 6. Geben Sie die **Endpunkt-URL** für den API-Aufruf an.
-7. Geben Sie die Authentifizierungsinformationen für die API an.
+7. Wählen Sie den **Authentifizierungstyp** aus, und konfigurieren Sie die Authentifizierungsinformationen zum Aufrufen Ihrer API. Weitere Informationen zum Schützen Ihrer API finden Sie weiter unten in diesem Artikel.
 
-   - Derzeit wird nur die Standardauthentifizierung unterstützt. Wenn Sie eine API ohne Standardauthentifizierung für Entwicklungszwecke verwenden möchten, geben Sie einfach Dummywerte für **Benutzername** und **Kennwort** ein, die in der API ignoriert werden können. Sie können den Code zur Verwendung mit einer Azure-Funktion mit einem API-Schlüssel als Abfrageparameter in der **Endpunkt-URL** einfügen (z. B. `https://contoso.azurewebsites.net/api/endpoint?code=0123456789`).
+    ![Konfigurieren eines API-Connectors](./media/add-api-connector/api-connector-config.png)
 
-   ![Konfigurieren eines neuen API-Connectors](./media/add-api-connector/api-connector-config.png)
 8. Wählen Sie **Speichern** aus.
+
+## <a name="securing-the-api-endpoint"></a>Schützen des API-Endpunkts
+Sie können Ihren API-Endpunkt entweder mithilfe der HTTP-Standardauthentifizierung oder mithilfe der HTTPS-Clientzertifikatauthentifizierung (Vorschau) schützen. In beiden Fällen müssen Sie die Anmeldeinformationen angeben, die Azure AD B2C beim Aufrufen Ihres API-Endpunkts verwenden wird. Der API-Endpunkt überprüft dann die Anmeldeinformationen und führt Autorisierungsentscheidungen aus.
+
+### <a name="http-basic-authentication"></a>HTTP-Standardauthentifizierung
+Die HTTP-Standardauthentifizierung ist in [RFC 2617](https://tools.ietf.org/html/rfc2617) definiert. Azure AD B2C sendet eine HTTP-Anforderung mit den Clientanmeldeinformationen (`username` und `password`) im Header `Authorization`. Die Anmeldeinformationen werden als Base64-codierte Zeichenfolge im Format `username:password` angegeben. Die API überprüft dann diese Werte, um zu bestimmen, ob ein API-Aufruf abgelehnt werden soll oder nicht.
+
+### <a name="https-client-certificate-authentication-preview"></a>HTTPS-Clientzertifikatauthentifizierung (Vorschau)
+
+> [!IMPORTANT]
+> Diese Funktion befindet sich in der Vorschauhase und wird ohne Vereinbarung zum Servicelevel bereitgestellt. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Bei der Clientzertifikatauthentifizierung handelt es sich um eine gegenseitige zertifikatbasierte Authentifizierung, bei der der Client sein Clientzertifikat für den Server bereitstellt, um seine Identität nachzuweisen. In diesem Fall verwendet Azure AD B2C das Zertifikat, das Sie als Teil der API-Connectorkonfiguration hochladen. Dies erfolgt im Rahmen des SSL-Handshakes. Nur Dienste mit den richtigen Zertifikaten erhalten Zugriff auf Ihren REST-API-Dienst. Bei dem Clientzertifikat handelt es sich um ein digitales X.509-Zertifikat. In Produktionsumgebungen muss es von einer Zertifizierungsstelle signiert werden. 
+
+
+Zum Erstellen eines Zertifikats können Sie den [Azure Key Vault](../key-vault/certificates/create-certificate.md) verwenden, der über Optionen für selbstsignierte Zertifikate und Integrationen mit Zertifikatausstelleranbietern für signierte Zertifikate verfügt. Anschließend können Sie [das Zertifikat exportieren](../key-vault/certificates/how-to-export-certificate.md) und für die Verwendung in der API-Connectorkonfiguration hochladen. Hinweis: Das Kennwort ist nur für kennwortgeschützte Zertifikatdateien erforderlich. Sie können auch das PowerShell-Cmdlet [New-SelfSignedCertificate](./secure-rest-api.md#prepare-a-self-signed-certificate-optional) verwenden, um ein selbstsigniertes Zertifikat zu generieren.
+
+Informationen zum Aktivieren und Überprüfen des Zertifikats über Ihren API-Endpunkt in Azure App Service und Azure Functions finden Sie unter [Konfigurieren der gegenseitigen TLS-Authentifizierung](../app-service/app-service-web-configure-tls-mutual-auth.md).
+
+Es wird empfohlen, Erinnerungswarnungen für den Zeitpunkt festzulegen, an dem das Zertifikat abläuft. Wenn Sie ein neues Zertifikat in einen vorhandenen API-Connector hochladen möchten, wählen Sie unter **API-Connectors (Vorschau)** den API-Connector aus, und klicken Sie auf **Neues Zertifikat hochladen**. Das zuletzt hochgeladene Zertifikat, das nicht abgelaufen ist und über dem Startdatum liegt, wird automatisch von Azure AD B2C verwendet.
+
+### <a name="api-key"></a>API-Schlüssel
+Einige Dienste verwenden einen API-Schlüssel-Mechanismus, um den Zugriff auf die HTTP-Endpunkte während der Entwicklung zu verschleiern. Sie können diesen für [Azure Functions](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) einrichten, indem Sie `code` als Abfrageparameter in die **Endpunkt-URL** einschließen. Zum Beispiel `https://contoso.azurewebsites.net/api/endpoint`<b>`?code=0123456789`</b>). 
+
+Dabei handelt es sich nicht um einen Mechanismus, der allein in der Produktion verwendet werden sollte. Daher ist die Konfiguration für die Standard- oder Zertifikatauthentifizierung immer erforderlich. Wenn Sie für Entwicklungszwecke keine Authentifizierungsmethode implementieren möchten (nicht empfohlen), können Sie die Standardauthentifizierung auswählen und temporäre Werte für `username` und `password` verwenden, die von der API ignoriert werden können, während Sie die Autorisierung in Ihrer API implementieren.
 
 ## <a name="the-request-sent-to-your-api"></a>An die API gesendete Anforderung
 Ein API-Connector wird als **HTTP POST**-Anforderung dargestellt und sendet Benutzerattribute („Ansprüche“) als Schlüssel-Wert-Paare in einem JSON-Text. Attribute werden ähnlich wie [Microsoft Graph](/graph/api/resources/user#properties)-Benutzereigenschaften serialisiert. 
@@ -75,7 +99,7 @@ Content-type: application/json
 
 Nur Benutzereigenschaften und benutzerdefinierte Attribute, die unter **Azure AD B2C** > **Benutzerattribute** aufgeführt sind, können in der Anforderung gesendet werden.
 
-Benutzerdefinierte Attribute sind im Verzeichnis im Format **extension_\<extensions-app-id>_CustomAttribute** vorhanden. Die API sollte den Empfang von Ansprüchen in diesem serialisierten Format erwarten. Weitere Informationen zu benutzerdefinierten Attributen finden Sie unter [Definieren benutzerdefinierter Attribute in Azure Active Directory B2C](user-flow-custom-attributes.md).
+Benutzerdefinierte Attribute sind im Verzeichnis im Format **extension_\<extensions-app-id>_CustomAttribute** vorhanden. Die API sollte den Empfang von Ansprüchen in diesem serialisierten Format erwarten. Weitere Informationen zu benutzerdefinierten Attributen finden Sie unter [Definieren benutzerdefinierter Attribute in Azure AD B2C](user-flow-custom-attributes.md).
 
 Außerdem wird der Anspruch **Gebietsschema der Benutzeroberfläche („ui_locales“)** standardmäßig in allen Anforderungen gesendet. Er gibt das Gebietsschema (oder auch mehrere Gebietsschemas) eines Benutzers an, wie es auf seinem Gerät konfiguriert ist. Dieses kann von der API verwendet werden, um internationalisierte Antworten zurückzugeben.
 
@@ -155,13 +179,6 @@ Sehen Sie sich ein Beispiel für eine [Blockierungsantwort](#example-of-a-blocki
 
 Ein API-Connector in diesem Schritt des Registrierungsprozesses wird nach der Seite zur Attributsammlung aufgerufen, sofern vorhanden. Dieser Schritt wird immer aufgerufen, bevor ein Benutzerkonto erstellt wird.
 
-<!-- The following are examples of scenarios you might enable at this point during sign-up: -->
-<!-- 
-- Validate user input data and ask a user to resubmit data.
-- Block a user sign-up based on data entered by the user.
-- Perform identity verification.
-- Query external systems for existing data about the user and overwrite the user-provided value. -->
-
 ### <a name="example-request-sent-to-the-api-at-this-step"></a>In diesem Schritt an die API gesendete Beispielanforderung
 
 ```http
@@ -237,9 +254,8 @@ Content-type: application/json
 }
 ```
 
-| Parameter                                          | type              | Erforderlich | BESCHREIBUNG                                                                                                                                                                                                                                                                            |
+| Parameter                                          | Typ              | Erforderlich | BESCHREIBUNG                                                                                                                                                                                                                                                                            |
 | -------------------------------------------------- | ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| version                                            | String            | Ja      | Die Version der API.                                                                                                                                                                                                                                                                |
 | action                                             | String            | Ja      | Der Wert muss `Continue` sein.                                                                                                                                                                                                                                                              |
 | \<builtInUserAttribute>                            | \<attribute-type> | Nein       | Zurückgegebene Werte können Werte überschreiben, die von einem Benutzer gesammelt wurden. Diese können auch im Token zurückgegeben werden, wenn sie als **Anwendungsanspruch** ausgewählt sind.                                              |
 | \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | Nein       | Der Anspruch muss `_<extensions-app-id>_` nicht enthalten. Zurückgegebene Werte können Werte überschreiben, die von einem Benutzer gesammelt wurden. Diese können auch im Token zurückgegeben werden, wenn sie als **Anwendungsanspruch** ausgewählt sind.  |
@@ -258,7 +274,7 @@ Content-type: application/json
 
 ```
 
-| Parameter   | type   | Erforderlich | BESCHREIBUNG                                                                |
+| Parameter   | Typ   | Erforderlich | BESCHREIBUNG                                                                |
 | ----------- | ------ | -------- | -------------------------------------------------------------------------- |
 | version     | String | Ja      | Die Version der API.                                                    |
 | action      | String | Ja      | Der Wert muss `ShowBlockPage` sein.                                              |
@@ -269,8 +285,6 @@ Content-type: application/json
 ![Beispiel für eine Blockierungsseite](./media/add-api-connector/blocking-page-response.png)
 
 ### <a name="example-of-a-validation-error-response"></a>Beispiel für eine Validierungsfehlerantwort
-
-
 
 ```http
 HTTP/1.1 400 Bad Request
@@ -284,9 +298,9 @@ Content-type: application/json
 }
 ```
 
-| Parameter   | type    | Erforderlich | BESCHREIBUNG                                                                |
+| Parameter   | Typ    | Erforderlich | BESCHREIBUNG                                                                |
 | ----------- | ------- | -------- | -------------------------------------------------------------------------- |
-| version     | String  | Ja      | Die Version der API.                                                    |
+| version     | String  | Ja      | Die Version Ihrer API                                                    |
 | action      | String  | Ja      | Der Wert muss `ValidationError` sein.                                           |
 | status      | Integer | Ja      | Für eine Validierungsfehlerantwort muss der Wert `400` sein.                        |
 | userMessage | String  | Ja      | Meldung, die für den Benutzer angezeigt wird.                                            |
@@ -311,7 +325,7 @@ Stellen Sie Folgendes sicher:
 * In Ihrer API wird explizit auf NULL-Werte der empfangenen Ansprüche geprüft.
 * Ihre API antwortet so schnell wie möglich, um eine flüssige Darstellung für den Benutzer zu gewährleisten.
     * Wenn Sie eine serverlose Funktion oder einen skalierbaren Webdienst verwenden, nutzen Sie einen Hostingplan, mit dem die API im aktiven Zustand („wach“ oder „warm“) gehalten wird. Für Azure Functions wird empfohlen, den [Premium-Plan](../azure-functions/functions-scale.md) zu verwenden.
-
+ 
 
 ### <a name="use-logging"></a>Verwenden von Protokollierung
 Üblicherweise ist es nützlich, die von Ihrem Web-API-Dienst aktivierten Protokollierungstools, etwa [Application Insights](../azure-functions/functions-monitoring.md), zu verwenden, um Ihre API auf unerwartete Fehlercodes, Ausnahmen und schlechte Leistung zu überwachen.
@@ -321,5 +335,4 @@ Stellen Sie Folgendes sicher:
 * Überwachen Sie Ihre API hinsichtlich langer Antwortzeiten.
 
 ## <a name="next-steps"></a>Nächste Schritte
-<!-- - Learn how to [add a custom approval workflow to sign-up](add-approvals.md) -->
 - Erste Schritte mit den [Beispielen](code-samples.md#api-connectors)

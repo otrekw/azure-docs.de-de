@@ -7,12 +7,12 @@ author: vikancha-MSFT
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: vikancha
-ms.openlocfilehash: 2a799fed92bea627d5974f27d5328b6c62825556
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: d73bd81f15263c79e16b574eb961d4ae0ac61175
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102562400"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103417806"
 ---
 # <a name="ncast4_v3-series"></a>NCasT4_v3-Serie 
 
@@ -28,7 +28,7 @@ Die virtuellen Computer der NCasT4_v3-Serie basieren auf GPUs vom Typ [Nvidia Te
 [Unterstützung von VM-Generationen:](generation-2.md) Generation 1 und 2<br>
 [Beschleunigter Netzwerkbetrieb](../virtual-network/create-vm-accelerated-networking-cli.md): Unterstützt<br>
 [Kurzlebige Betriebssystemdatenträger:](ephemeral-os-disks.md) Nicht unterstützt <br>
-Nvidia NVLink Interconnect: Nicht unterstützt<br>
+Nvidia NVLink Interconnect: Unterstützt<br>
 <br>
 
 | Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | GPU | GPU-Arbeitsspeicher: GiB | Max. Anzahl Datenträger | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (MBps) |
@@ -46,6 +46,8 @@ Nvidia NVLink Interconnect: Nicht unterstützt<br>
 Um die GPU-Funktionen von virtuellen Azure-Computern der NCasT4_v3-Serie unter Windows oder Linux nutzen zu können, müssen Nvidia-GPU-Treiber installiert werden.
 
 Wenn Sie Nvidia-GPU-Treiber manuell installieren möchten, finden Sie Informationen zu unterstützten Betriebssystemen, Treibern und Installation sowie Schritte zur Überprüfung unter [Einrichten von GPU-Treibern der N-Serie für Windows](./windows/n-series-driver-setup.md).
+
+Die Azure-Nvidia-GPU-Treibererweiterung stellt CUDA-Treiber auf den VMs der NCasT4_v3-Serie bereit. Für Grafik- und Visualisierungsworkloads müssen Sie die von Azure unterstützten GRID-Treiber manuell installieren.
 
 ## <a name="other-sizes"></a>Andere Größen
 

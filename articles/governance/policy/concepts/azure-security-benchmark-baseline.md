@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 9916ad6d3b6cb1a63d34004915666226b7836490
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6e8bb4cf715c6cb8d0729399c1985376de18687b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101740347"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105561286"
 ---
 # <a name="azure-security-baseline-for-azure-policy"></a>Azure-Sicherheitsbaseline für Azure Policy
 
@@ -30,9 +30,9 @@ In Azure Policy wird der Begriff _Ownership_ anstelle von _Zuständigkeit_ verwe
 
 **Leitfaden**: Azure Policy verwendet automatisch aktivierte Aktivitätsprotokolle, um Elemente wie Ereignisquelle, Datum, Benutzer, Zeitstempel, Quelladressen, Zieladressen und andere nützliche Elemente einzuschließen.
 
-- [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](/azure/azure-monitor/platform/diagnostic-settings)
+- [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../../../azure-monitor/essentials/diagnostic-settings.md)
 
-- [Grundlegendes zur Protokollierung und zu verschiedenen Protokolltypen in Azure](/azure/azure-monitor/platform/platform-logs-overview)
+- [Grundlegendes zur Protokollierung und zu verschiedenen Protokolltypen in Azure](../../../azure-monitor/essentials/platform-logs-overview.md)
 
 **Verantwortlichkeit**: Kunde
 
@@ -48,7 +48,7 @@ In Azure Policy wird der Begriff _Ownership_ anstelle von _Zuständigkeit_ verwe
 
 **Verantwortlichkeit**: Kunde
 
-**Azure Security Center-Überwachung**: Der [Azure-Sicherheitsvergleichstest](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md) ist die Standardrichtlinieninitiative für Security Center und die Grundlage für die [Empfehlungen von Security Center](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md). Die Azure Policy-Definitionen für diese Kontrolle werden automatisch durch Security Center aktiviert. Warnungen für diese Kontrolle erfordern möglicherweise einen [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md)-Plan für die entsprechenden Dienste.
+**Azure Security Center-Überwachung**: Der [Azure-Sicherheitsvergleichstest](/azure/governance/policy/samples/azure-security-benchmark) ist die Standardrichtlinieninitiative für Security Center und die Grundlage für die [Empfehlungen von Security Center](/azure/security-center/security-center-recommendations). Die Azure Policy-Definitionen für diese Kontrolle werden automatisch durch Security Center aktiviert. Warnungen für diese Kontrolle erfordern möglicherweise einen [Azure Defender](/azure/security-center/azure-defender)-Plan für die entsprechenden Dienste.
 
 **Integrierte Azure Policy-Definitionen – Microsoft.GuestConfiguration**:
 
@@ -74,7 +74,7 @@ In Azure Policy wird der Begriff _Ownership_ anstelle von _Zuständigkeit_ verwe
 
 **Leitfaden**: Steuern Sie den Zugriff auf Azure Policy mithilfe der rollenbasierten Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC).
 
-- [Azure RBAC-Berechtigungen in Azure Policy](https://docs.microsoft.com/azure/governance/policy/overview#azure-rbac-permissions-in-azure-policy)
+- [Azure RBAC-Berechtigungen in Azure Policy](../overview.md#azure-rbac-permissions-in-azure-policy)
 
 - [Konfigurieren von Azure RBAC](../../../role-based-access-control/role-assignments-portal.md)
 
@@ -86,7 +86,7 @@ In Azure Policy wird der Begriff _Ownership_ anstelle von _Zuständigkeit_ verwe
 
 **Leitfaden**: Verwenden Sie Azure Monitor mit Aktivitätsprotokollen, um Warnungen zu erstellen, die ausgegeben werden, wenn Änderungen in Azure Policy vorgenommen werden.
 
-- [Erstellen von Warnungen für Azure-Aktivitätsprotokollereignisse](/azure/azure-monitor/platform/alerts-activity-log)
+- [Erstellen von Warnungen für Azure-Aktivitätsprotokollereignisse](../../../azure-monitor/alerts/alerts-activity-log.md)
 
 **Verantwortlichkeit**: Kunde
 
@@ -128,5 +128,5 @@ In Azure Policy wird der Begriff _Ownership_ anstelle von _Zuständigkeit_ verwe
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Sehen Sie sich die [Übersicht über Version 2 des Azure-Sicherheitsvergleichstests](/azure/security/benchmarks/overview) an.
-- Erfahren Sie mehr über [Azure-Sicherheitsbaselines](/azure/security/benchmarks/security-baselines-overview).
+- Sehen Sie sich die [Übersicht über Version 2 des Azure-Sicherheitsvergleichstests](../../../security/benchmarks/overview.md) an.
+- Erfahren Sie mehr über [Azure-Sicherheitsbaselines](../../../security/benchmarks/security-baselines-overview.md).

@@ -12,12 +12,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2020
-ms.openlocfilehash: a8f1ca1da54c816199a0504eb17fa0a7bbfc441b
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 54b1fd14f97855dd42afde9a4bb34795373ff229
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102522188"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103417636"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Erstellen von Azure Machine Learning-Datasets
 
@@ -182,9 +182,55 @@ titanic_ds.take(3).to_pandas_dataframe()
 
 [Registrieren Sie Ihr Dataset](#register-datasets), um Datasets in Ihrem Arbeitsbereich experimentübergreifend wiederverwenden und freigeben zu können.
 
+## <a name="wrangle-data"></a>Data Wrangling
+Nachdem Sie Ihr Dataset erstellt und [registriert](#register-datasets) haben, können Sie es für das Data Wrangling und zum [Durchsuchen](#explore-data) vor dem Modelltraining in Ihr Notebook laden. 
+
+Wenn Sie kein Data Wrangling und keine Durchsuchungen durchführen müssen, erfahren Sie unter [Trainieren mit Datasets](how-to-train-with-datasets.md), wie Sie Datasets in Ihren Trainingsskripts zum Übermitteln von ML-Experimenten nutzen.
+
+### <a name="filter-datasets-preview"></a>Filtern von Datasets (Vorschau)
+Die Filterfunktionen sind von dem Datasettyp abhängig, über den Sie verfügen. 
+> [!IMPORTANT]
+> Das Filtern von Datasets mit der Methode [`filter()`](/python/api/azureml-core/azureml.data.tabulardataset#filter-expression-), die sich in der öffentlichen Vorschau befindet, ist eine [experimentelle](/python/api/overview/azure/ml/#stable-vs-experimental) Previewfunktion und kann jederzeit geändert werden. 
+> 
+**Für TabularDatasets** können Sie Spalten mithilfe der Methoden [keep_columns()](/python/api/azureml-core/azureml.data.tabulardataset#keep-columns-columns--validate-false-) und [drop_columns()](/python/api/azureml-core/azureml.data.tabulardataset#drop-columns-columns-) beibehalten oder entfernen.
+
+Verwenden Sie die Methode [filter()](/python/api/azureml-core/azureml.data.tabulardataset#filter-expression-) (Vorschau), um Zeilen nach einem spezifischen Spaltenwert in einem tabellarischen Dataset (TabularDataset) herauszufiltern. 
+
+Die folgenden Beispiele geben ein nicht registriertes Dataset auf Grundlage der festgelegten Ausdrücke zurück.
+
+```python
+# TabularDataset that only contains records where the age column value is greater than 15
+tabular_dataset = tabular_dataset.filter(tabular_dataset['age'] > 15)
+
+# TabularDataset that contains records where the name column value contains 'Bri' and the age column value is greater than 15
+tabular_dataset = tabular_dataset.filter((tabular_dataset['name'].contains('Bri')) & (tabular_dataset['age'] > 15))
+```
+
+In **FileDatasets** entspricht jede Zeile einem Pfad einer Datei, weshalb das Filtern nach Spaltenwerten nicht hilfreich ist. Allerdings können Sie die [filter()](/python/api/azureml-core/azureml.data.filedataset#filter-expression-)-Methode zum Herausfiltern von Zeilen nach Metadaten wie CreationTime (Erstellungszeit), Größe und mehr verwenden.
+
+Die folgenden Beispiele geben ein nicht registriertes Dataset auf Grundlage der festgelegten Ausdrücke zurück.
+
+```python
+# FileDataset that only contains files where Size is less than 100000
+file_dataset = file_dataset.filter(file_dataset.file_metadata['Size'] < 100000)
+
+# FileDataset that only contains files that were either created prior to Jan 1, 2020 or where 
+file_dataset = file_dataset.filter((file_dataset.file_metadata['CreatedTime'] < datetime(2020,1,1)) | (file_dataset.file_metadata['CanSeek'] == False))
+```
+
+**Bezeichnete Datasets**, die mit [Datenbezeichnungsprojekten](how-to-create-labeling-projects.md) erstellt wurden, sind ein Sonderfall. Diese Datasets sind vom Typ „TabularDataset“ und bestehen aus Bilddateien. Für diese Datasettypen können Sie die [filter()](/python/api/azureml-core/azureml.data.tabulardataset#filter-expression-)-Methode zum Filtern von Bildern nach Metadaten und nach Spaltenwerten wie `label` und `image_details` verwenden.
+
+```python
+# Dataset that only contains records where the label column value is dog
+labeled_dataset = labeled_dataset.filter(labeled_dataset['label'] == 'dog')
+
+# Dataset that only contains records where the label and isCrowd columns are True and where the file size is larger than 100000
+labeled_dataset = labeled_dataset.filter((labeled_dataset['label']['isCrowd'] == True) & (labeled_dataset.file_metadata['Size'] > 100000))
+```
+
 ## <a name="explore-data"></a>Durchsuchen von Daten
 
-Nachdem Sie Ihr Dataset erstellt und [registriert](#register-datasets) haben, können Sie es in Ihr Notebook laden, um Daten vor dem Trainieren des Modells zu durchsuchen. Wenn Sie keine Datenuntersuchung ausführen müssen, finden Sie Informationen zum Nutzen von Datenskripts in Ihren Trainingsskripts zum Senden von ML-Experimenten unter [Trainieren mit Datasets](how-to-train-with-datasets.md).
+Wenn Sie mit dem Data Wrangling fertig sind, können Sie Ihr Dataset [registrieren](#register-datasets) und dann zum Durchsuchen der Daten vor dem Modelltraining in Ihr Notebook laden.
 
 FileDatasets können Sie wahlweise **einbinden** oder **herunterladen** und die Python-Bibliotheken auf sie anwenden, die Sie normalerweise zur Datenuntersuchung verwenden. [Weitere Informationen zum Vergleich von Einbinden und Herunterladen](how-to-train-with-datasets.md#mount-vs-download).
 
@@ -261,7 +307,7 @@ titanic_ds = titanic_ds.register(workspace=workspace,
 
 ## <a name="create-datasets-using-azure-resource-manager"></a>Erstellen von Datasets mithilfe des Azure Resource Managers
 
-Es gibt eine Reihe von Vorlagen unter [https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-dataset-create-*](https://github.com/Azure/azure-quickstart-templates/tree/master/), die zum Erstellen von Datasets verwendet werden können.
+Unter [https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-dataset-create-*](https://github.com/Azure/azure-quickstart-templates/tree/master/) werden viele Vorlagen zur Verfügung gestellt, die zum Erstellen von Datasets verwendet werden können.
 
 Informationen zur Verwendung dieser Vorlagen finden Sie unter [Verwenden einer Azure Resource Manager-Vorlage zum Erstellen eines Arbeitsbereichs für Azure Machine Learning](how-to-create-workspace-template.md).
 

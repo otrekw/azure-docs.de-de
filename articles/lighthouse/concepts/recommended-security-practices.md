@@ -1,14 +1,14 @@
 ---
 title: Empfohlene Sicherheitsmaßnahmen
 description: Beim Verwenden von Azure Lighthouse müssen Sicherheit und Zugriffssteuerung berücksichtigt werden.
-ms.date: 08/12/2020
+ms.date: 03/12/2021
 ms.topic: conceptual
-ms.openlocfilehash: ef2c41cf052e5f79ecf4abf01c8f3fab3dd1de14
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 3aa50833b547882506bfad125992bb1c2f4e85bc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843722"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103419302"
 ---
 # <a name="recommended-security-practices"></a>Empfohlene Sicherheitsmaßnahmen
 
@@ -21,7 +21,7 @@ Beim Verwenden von [Azure Lighthouse](../overview.md) müssen Sicherheit und Zug
 
 [Azure AD Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) (auch als zweistufige Überprüfung bezeichnet) trägt dazu bei, Angreifer daran zu hindern, Zugriff auf ein Konto zu erlangen, indem mehrere Authentifizierungsschritte erforderlich sind. Sie sollten Multi-Factor Authentication für alle Benutzer in Ihrem Verwaltungsmandanten anfordern, einschließlich Benutzer, die Zugriff auf delegierte Kundenressourcen haben werden.
 
-Wir schlagen vor, dass Sie Ihre Kunden auffordern, Azure AD Multi-Factor Authentication auch in ihren Mandanten zu implementieren.
+Es wird empfohlen, dass Sie Ihre Kunden auffordern, Azure AD Multi-Factor Authentication auch in ihren Mandanten zu implementieren.
 
 ## <a name="assign-permissions-to-groups-using-the-principle-of-least-privilege"></a>Zuweisen von Berechtigungen an Gruppen unter Verwendung des Prinzips der geringsten Rechte
 
@@ -47,5 +47,6 @@ Bedenken Sie, dass jede Gruppe (bzw. jeder Benutzer oder Dienstprinzipal), wenn 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+- Überprüfen Sie die [Informationen zur Sicherheitsbaseline](../security-baseline.md), um mehr darüber zu erfahren, inwiefern Anweisungen von Azure Security Benchmark für Azure Lighthouse gelten.
 - [Bereitstellen von Azure AD Multi-Factor Authentication](../../active-directory/authentication/howto-mfa-getstarted.md).
 - Erfahren Sie über [Mandantenübergreifende Verwaltungsmöglichkeiten](cross-tenant-management-experience.md).

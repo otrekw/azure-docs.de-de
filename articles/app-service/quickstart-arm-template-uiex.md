@@ -10,10 +10,10 @@ ms.custom: subject-armqs, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 7437a5208f94b435576b8a38dc65a6e798303a72
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102179084"
 ---
 # <a name="quickstart-create-app-service-app-using-an-arm-template"></a>Schnellstart: Erstellen einer App Service-App mit einer ARM-Vorlage
@@ -142,7 +142,7 @@ az deployment group create --resource-group myResourceGroup --parameters webAppN
 <summary>Wie stelle ich einen anderen Sprachstapel bereit?</summary>
 Aktualisieren Sie zum Bereitstellen eines anderen Sprachstapels <abbr title="Diese Vorlage ist mit .NET Core, .NET Framework, PHP, Node.js und statischen HTML-Apps kompatibel.">den Sprachparameter</abbr> mit entsprechenden Werten. Informationen zu Java finden Sie unter <a href="/azure/app-service/quickstart-java-uiex">Erstellen einer Java-App</a>.
 
-| Parameter | type    | Standardwert                | BESCHREIBUNG |
+| Parameter | type    | Standardwert                | Beschreibung |
 |------------|---------|------------------------------|-------------|
 | language   | Zeichenfolge  | ".net"                       | Sprachstapel (.NET, PHP, Node, HTML) |
 

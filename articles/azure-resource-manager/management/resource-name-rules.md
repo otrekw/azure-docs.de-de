@@ -3,12 +3,12 @@ title: Einschränkungen bei Ressourcennamen
 description: Zeigt die Benennungsregeln und -einschränkungen für Azure-Ressourcen
 ms.topic: conceptual
 ms.date: 01/27/2021
-ms.openlocfilehash: 40e17e518baec40d31918d24ab5b61da741f540a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 20f7b6dc6c49b972b873ae3b275451829dec5c14
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101700472"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105934171"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Benennungsregeln und -einschränkungen für Azure-Ressourcen
 
@@ -599,7 +599,7 @@ In den folgenden Tabellen bezieht sich der Begriff alphanumerisch auf:
 > | Entität | `Scope` | Länge | Gültige Zeichen |
 > | --- | --- | --- | --- |
 > | deployments | Ressourcengruppe | 1-64 | Alphanumerische Zeichen, Unterstriche, Klammern, Bindestriche und Punkte. |
-> | resourcegroups | Abonnement | 1-90 | Alphanumerische Zeichen, Unterstriche, Klammern, Bindestriche, Punkte und Unicode-Zeichen entsprechend der [Dokumentation zu regulären Ausdrücken](/rest/api/resources/resourcegroups/createorupdate).<br><br>Darf nicht mit einem Punkt enden. |
+> | resourcegroups | Abonnement | 1-90 | Alphanumerische Zeichen, Unterstriche, Klammern, Bindestriche, Punkte und Unicode-Zeichen entsprechend der [Dokumentation zu regulären Ausdrücken](/rest/api/resources/resources/resourcegroups/createorupdate).<br><br>Darf nicht mit einem Punkt enden. |
 > | tagNames | resource | 1–512 | Verwendung nicht möglich:<br>`<>%&\?/` |
 > | tagNames/tagValues | Tagname | 1–256 | Alle Zeichen. |
 > | templateSpecs | Ressourcengruppe | 1-90 | Alphanumerische Zeichen, Unterstriche, Klammern, Bindestriche und Punkte. |

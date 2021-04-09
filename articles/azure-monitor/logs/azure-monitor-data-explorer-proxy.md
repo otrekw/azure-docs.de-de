@@ -6,12 +6,12 @@ ms.author: bwren
 ms.reviewer: bwren
 ms.topic: conceptual
 ms.date: 12/02/2020
-ms.openlocfilehash: 1857f0e39cd5d9ddc616eed1db18cd58b98721a4
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: a800f78df26ce76144994bb9da2cac6271323eb4
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102031122"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103419421"
 ---
 # <a name="cross-resource-query-azure-data-explorer-by-using-azure-monitor"></a>Ressourcenübergreifende Abfrage: Azure Data Explorer mithilfe von Azure Monitor
 Azure Monitor unterstützt dienstübergreifende Abfragen zwischen Azure Data Explorer, [Application Insights](../app/app-insights-overview.md) und [Log Analytics](../logs/data-platform-logs.md). Anschließend können Sie den Azure Data Explorer-Cluster mit Log Analytics/Application Insights-Tools abfragen und in einer dienstübergreifenden Abfrage darauf verweisen. Der Artikel zeigt, wie eine dienstübergreifende Abfrage durchgeführt wird.
@@ -37,6 +37,7 @@ adx('https://help.kusto.windows.net/Samples').StormEvents
 > [!NOTE]
 >* Bei Datenbanknamen wird die Groß-/Kleinschreibung berücksichtigt.
 >* Eine ressourcenübergreifende Abfrage als Warnung wird nicht unterstützt.
+>* Das Identifizieren der Spalte „Timestamp“ im Cluster wird nicht unterstützt, die Log Analytics-Abfrage-API übergibt den Zeitfilter nicht.
 
 ## <a name="combine-azure-data-explorer-cluster-tables-with-a-log-analytics-workspace"></a>Kombinieren von Azure Data Explorer-Clustertabellen mit einem Log Analytics-Arbeitsbereich
 

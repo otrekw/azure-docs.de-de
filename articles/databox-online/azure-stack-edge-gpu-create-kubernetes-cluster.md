@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 02/22/2021
+ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: 5289f9b558a200bf3dbefdf584eab59d1792439b
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: ddbf3c99845f4c38f511260f4dec274903a9d586
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102437739"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102631954"
 ---
 # <a name="connect-to-and-manage-a-kubernetes-cluster-via-kubectl-on-your-azure-stack-edge-pro-gpu-device"></a>Verbinden mit einem Kubernetes-Cluster und Verwalten des Clusters über kubectl auf Ihrem Azure Stack Edge Pro-GPU-Gerät
 
@@ -105,7 +105,7 @@ Bei diesem Ansatz erstellen Sie einen Namespace und einen Benutzer. Anschließen
 
 4. Die Konfigurationsdatei sollte sich im Ordner `.kube` Ihres Benutzerprofils auf dem lokalen Computer befinden. Kopieren Sie die Datei in den Ordner in Ihrem Benutzerprofil.
 
-    ![Speicherort der Konfigurationsdatei auf dem Client](media/azure-stack-edge-j-series-create-kubernetes-cluster/location-config-file.png)
+    ![Speicherort der Konfigurationsdatei auf dem Client](media/azure-stack-edge-gpu-create-kubernetes-cluster/location-config-file.png)
 
 5. Ordnen Sie den Namespace dem Benutzer zu, den Sie erstellt haben. Typ:
 
@@ -169,9 +169,9 @@ Sie können Ihre Anwendungen jetzt im Namespace bereitstellen und dann diese Anw
 
 Zum Entfernen des Kubernetes-Clusters müssen Sie die IoT Edge-Konfiguration entfernen.
 
-Ausführliche Anweisungen finden Sie unter [Entfernen der IoT Edge-Konfiguration](azure-stack-edge-j-series-manage-compute.md#remove-iot-edge-service).
+Ausführliche Anweisungen finden Sie unter [Verwalten der IoT Edge-Konfiguration](azure-stack-edge-gpu-manage-compute.md#manage-iot-edge-configuration).
    
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Bereitstellen einer zustandslosen Anwendung auf Ihrem Azure Stack Edge Pro-Gerät](azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md).
+- [Bereitstellen einer zustandslosen Anwendung auf Ihrem Azure Stack Edge Pro-Gerät](azure-stack-edge-gpu-deploy-stateless-application-kubernetes.md).

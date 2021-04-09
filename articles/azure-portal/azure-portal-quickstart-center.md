@@ -1,14 +1,14 @@
 ---
 title: Erste Schritte mit dem Azure Quickstart Center
 description: Verwenden Sie die Einführung in Azure Quickstart Center für die ersten Schritte mit Azure. Erfahren Sie mehr über Einrichtung, Migration und Innovation.
-ms.date: 01/29/2020
+ms.date: 03/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: 2b64e52ed0a15db216d5fb298b66d8ec03fc2f42
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: dbfe1ea99b09813edbfaa7bc248b4c71f1dd8a45
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745705"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103232986"
 ---
 # <a name="get-started-with-the-azure-quickstart-center"></a>Erste Schritte mit dem Azure Quickstart Center
 

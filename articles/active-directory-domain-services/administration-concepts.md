@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 06/05/2020
+ms.date: 03/10/2021
 ms.author: justinha
-ms.openlocfilehash: 76af477af8290634d2658c58574b8f96cff7b1fb
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 5473ef46751d64fdbbf1d52f39c66f49d707e615
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96620340"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102631386"
 ---
 # <a name="management-concepts-for-user-accounts-passwords-and-administration-in-azure-active-directory-domain-services"></a>Verwaltungskonzepte für Benutzerkonten, Kennwörter und die Verwaltung in Azure Active Directory Domain Services
 
@@ -80,7 +80,7 @@ In Azure AD DS beruhen die verfügbare Leistung und die Funktionen auf der SKU. 
 
 | SKU-Name   | Maximale Anzahl von Objekten | Sicherungshäufigkeit | Maximale Anzahl von ausgehenden Gesamtstrukturvertrauensstellungen |
 |------------|----------------------|------------------|----|
-| Standard   | Unbegrenzt            | Alle 7 Tage     | 0  |
+| Standard   | Unbegrenzt            | Alle 5 Tage     | 0  |
 | Enterprise | Unbegrenzt            | Alle 3 Tage     | 5  |
 | Premium    | Unbegrenzt            | Täglich            | 10 |
 

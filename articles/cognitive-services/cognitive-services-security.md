@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: erhopf
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: 66de81387fe27bd2a81ebcfeab7d86aac7031ff1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 90fbc41edbfea0ea99d436906d3052e43bfb4fb8
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102425293"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105043872"
 ---
 # <a name="azure-cognitive-services-security"></a>Sicherheit von Azure Cognitive Services
 
@@ -29,13 +29,13 @@ Bei allen Cognitive Services-Endpunkten, die über HTTP verfügbar gemacht werd
 * Von der für den HTTP-Aufruf verwendeten Sprache (und Plattform) muss TLS 1.2 in der Anforderung angegeben werden.
   * Die Angabe von TLS ist je nach Sprache und Plattform entweder implizit oder explizit.
 
-Informationen für .NET-Benutzer finden Sie unter <a href="https://docs.microsoft.com/dotnet/framework/network-programming/tls" target="_blank">Bewährte Methoden für Transport Layer Security (TLS) mit .NET Framework</a>.
+Informationen für .NET-Benutzer finden Sie unter <a href="/dotnet/framework/network-programming/tls" target="_blank">Bewährte Methoden für Transport Layer Security (TLS) mit .NET Framework</a>.
 
 ## <a name="authentication"></a>Authentifizierung
 
 Bei der Authentifizierung gibt es einige weit verbreitete Irrtümer. Authentifizierung und Autorisierung werden häufig miteinander verwechselt. Die Identität ist ebenfalls eine wichtige Sicherheitskomponente. Bei einer Identität handelt es sich um eine Sammlung von Informationen zu einem <a href="https://en.wikipedia.org/wiki/Principal_(computer_security)" target="_blank">Prinzipal</a>. Identitätsanbieter (Identity Providers, IdPs) stellen Identitäten für Authentifizierungsdienste bereit. Bei der Authentifizierung handelt es sich um die Überprüfung der Identität eines Benutzers. Autorisierung ist die Angabe von Zugriffsrechten und Berechtigungen für Ressourcen für eine bestimmte Identität. Viele der Cognitive Services-Angebote beinhalten die rollenbasierte Zugriffssteuerung von Azure (Azure Role-Based Access Control, Azure RBAC). Mit der rollenbasierten Zugriffssteuerung von Azure lassen sich einige der Abläufe im Zusammenhang mit der manuellen Verwaltung von Prinzipalen vereinfachen. Ausführlichere Informationen finden Sie unter [Was ist die rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)?](../role-based-access-control/overview.md).
 
-Weitere Informationen zur Authentifizierung mit Abonnementschlüsseln, Zugriffstoken und Azure Active Directory (AAD) finden Sie unter <a href="https://docs.microsoft.com/azure/cognitive-services/authentication" target="_blank">Authentifizieren von Anforderungen an Azure Cognitive Services</a>.
+Weitere Informationen zur Authentifizierung mit Abonnementschlüsseln, Zugriffstoken und Azure Active Directory (AAD) finden Sie unter <a href="/azure/cognitive-services/authentication" target="_blank">Authentifizieren von Anforderungen an Azure Cognitive Services</a>.
 
 ## <a name="environment-variables-and-application-configuration"></a>Umgebungsvariablen und Anwendungskonfiguration
 
@@ -113,7 +113,7 @@ Wenn Sie eine Umgebungsvariable abrufen möchten, muss sie in den Arbeitsspeiche
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-Weitere Informationen finden Sie unter <a href="https://docs.microsoft.com/dotnet/api/system.environment.getenvironmentvariable" target="_blank">`Environment.GetEnvironmentVariable` </a>.
+Weitere Informationen finden Sie unter <a href="/dotnet/api/system.environment.getenvironmentvariable" target="_blank">`Environment.GetEnvironmentVariable` </a>.
 
 ```csharp
 using static System.Environment;
@@ -132,7 +132,7 @@ class Program
 
 # <a name="c"></a>[C++](#tab/cpp)
 
-Weitere Informationen finden Sie unter <a href="https://docs.microsoft.com/cpp/c-runtime-library/reference/getenv-wgetenv" target="_blank">`getenv` </a>.
+Weitere Informationen finden Sie unter <a href="/cpp/c-runtime-library/reference/getenv-wgetenv" target="_blank">`getenv` </a>.
 
 ```cpp
 #include <stdlib.h>

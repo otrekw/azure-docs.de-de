@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 09/23/2020
+ms.date: 03/16/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36e6642e230fa809630751e224ff9384ea8524d1
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 185638d683699403c304603d968cfe84e32a55b5
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319776"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103574559"
 ---
 # <a name="azure-active-directory-sign-in-activity-reports---preview"></a>Berichte zu Azure Active Directory-Anmeldeaktivitäten – Vorschau
 
@@ -125,7 +125,12 @@ Jede Registerkarte auf dem Blatt „Anmeldungen“ zeigt die unten aufgeführten
 
 Interaktive Benutzeranmeldungen sind Anmeldungen, bei denen ein Benutzer einen Authentifizierungsfaktor für Azure AD angibt oder aber mit Azure AD oder einer Hilfsanwendung (z. B. der Microsoft Authenticator-App) direkt interagiert. Zu den von Benutzern angegebenen Faktoren gehören Kennwörter, Antworten auf MFA-Anfragen, biometrische Faktoren oder QR-Codes, die ein Benutzer für Azure AD oder eine Hilfsanwendung angibt.
 
-Dieser Bericht enthält auch Verbundanmeldungen von Identitätsanbietern, die im Verbund mit Azure AD sind.  
+> [!NOTE]
+> Dieser Bericht enthält auch Verbundanmeldungen von Identitätsanbietern, die im Verbund mit Azure AD sind.  
+
+
+
+Hinweis: Der Bericht mit interaktiven Benutzeranmeldungen enthält einige nicht interaktive Anmeldungen von Microsoft Exchange-Clients. Obwohl diese Anmeldungen nicht interaktiv waren, werden sie für bessere Sichtbarkeit in den Bericht zu interaktiven Benutzeranmeldungen eingeschlossen. Seitdem der Bericht zu nicht interaktiven Benutzeranmeldungen im November 2020 als öffentliche Vorschauversion veröffentlicht wurde, werden die Protokolle zu nicht interaktiven Anmeldeereignissen richtigerweise dort erfasst. 
 
 
 **Berichtsgröße:** klein <br> 
