@@ -7,20 +7,23 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/12/2020
+ms.date: 03/15/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 48c60878a6a58b2f4629768b81af894a741dab1c
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 87415fc98bbcc9331ae4ff6282a65c85b570042d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509800"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104579772"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>Webanmeldungen mit OpenID Connect in Azure Active Directory B2C
 
 OpenID Connect ist ein Authentifizierungsprotokoll auf Grundlage von OAuth 2.0, mit dem Benutzer sicher bei Webanwendungen angemeldet werden können. Mithilfe der Azure Active Directory B2C (Azure AD B2C)-Implementierung von OpenID Connect können Sie die Registrierung, die Anmeldung und die sonstige Identitätsverwaltung Ihrer Webanwendungen nach Azure Active Directory (Azure AD) auslagern. In diesem Leitfaden wird dies sprachunabhängig erläutert. Er beschreibt das Senden und Empfangen von HTTP-Nachrichten ohne Verwendung unserer Open Source-Bibliotheken.
+
+> [!NOTE]
+> Die meisten Open-Source-Authentifizierungsbibliotheken erwerben und validieren die JWT-Token für Ihre Anwendung. Wir empfehlen die Verwendung einer dieser Optionen, anstatt Ihren eigenen Code zu implementieren. Weitere Informationen finden Sie in der [Übersicht über die Microsoft-Authentifizierungsbibliothek (MSAL)](../active-directory/develop/msal-overview.md) und unter [Microsoft Identity Web-Authentifizierungsbibliothek](../active-directory/develop/microsoft-identity-web.md).
 
 [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) erweitert das OAuth 2.0-Protokoll für die *Autorisierung*, damit es als Protokoll für die *Authentifizierung* verwendet werden kann. Authentifizierungsprotokoll ermöglicht Ihnen das Ausführen von SSO (Einmaliges Anmelden). Dabei wird das Konzept eines *ID-Tokens* eingeführt, mit dem der Client die Identität des Benutzers überprüfen und grundlegende Profilinformationen über den Benutzer erhalten kann.
 
@@ -57,6 +60,9 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 | redirect_uri | Nein  | Der `redirect_uri`-Parameter der Anwendung, in dem Authentifizierungsantworten gesendet und von der Anwendung empfangen werden können. Er muss genau mit einem der `redirect_uri`-Parameter übereinstimmen, die Sie im Azure-Portal registriert haben, mit dem Unterschied, dass er URL-codiert sein muss. |
 | response_mode | Nein  | Die Methode, die zum Senden des resultierenden Autorisierungscodes zurück an Ihre Anwendung verwendet wird. Es kann sich um `query`, `form_post`, oder `fragment` handeln.  Der `form_post`-Antwortmodus wird empfohlen, für die optimale Sicherheit. |
 | state | Nein  | Ein in der Anforderung enthaltener Wert, der ebenfalls in der Tokenantwort zurückgegeben wird. Es kann sich um eine Zeichenfolge mit jedem beliebigen Inhalt handeln. Ein zufällig generierter eindeutiger Wert wird normalerweise verwendet, um websiteübergreifende Anforderungsfälschungsangriffe zu verhindern. Der Status wird auch zum Codieren von Informationen über den Status des Benutzers in der Anwendung vor der Authentifizierungsanforderung verwendet, z.B. für Informationen zu der Seite, die der Benutzer besucht hat. |
+| login_hint | Nein| Kann zum Vorabausfüllen des Felds für den Anmeldenamen auf der Anmeldeseite verwendet werden. Weitere Informationen finden Sie unter [Auffüllen des Anmeldenamens](direct-signin.md#prepopulate-the-sign-in-name).  |
+| domain_hint | Nein| Bietet Hinweis für Azure AD B2C zu dem sozialen Netzwerk als Identitätsanbieter, das für die Anmeldung verwendet werden soll. Wenn ein gültiger Wert enthalten ist, wird der Benutzer direkt auf die Anmeldeseite des Identitätsanbieters geleitet.  Weitere Informationen finden Sie unter [Umleiten einer Anmeldung zu einem Anbieter sozialer Netzwerke](direct-signin.md#redirect-sign-in-to-a-social-provider). |
+| Benutzerdefinierte Parameter | Nein| Benutzerdefinierte Parameter, die mit [benutzerdefinierten Richtlinien](custom-policy-overview.md) verwendet werden können. Beispiele: [URI für dynamischen Seiteninhalt](customize-ui-with-html.md?pivots=b2c-custom-policy#configure-dynamic-custom-page-content-uri) oder [OAuth2-Schlüssel-Wert-Parameter](claim-resolver-overview.md#oauth2-key-value-parameters). |
 
 An diesem Punkt wird der Benutzer aufgefordert, den Workflow abzuschließen. Der Benutzer muss möglicherweise seinen Benutzernamen und sein Kennwort eingeben, sich mit einer Social-Media-Identität anmelden oder sich für das Verzeichnis registrieren. Je nach Definition des Benutzerflows ist eine andere Zahl von Schritten auszuführen.
 
@@ -94,7 +100,10 @@ error=access_denied
 
 ## <a name="validate-the-id-token"></a>Überprüfen des ID-Tokens
 
-Das Empfangen eines ID-Tokens reicht nicht aus, um den Benutzer zu authentifizieren. Validieren Sie die Signatur des ID-Tokens, und überprüfen Sie die Ansprüche im Token gemäß den Anforderungen Ihrer Anwendung. Azure AD B2C verwendet [JSON-Webtoken (JWT)](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) und die Verschlüsselung mit öffentlichem Schlüssel, um Token zu signieren und deren Gültigkeit zu überprüfen. Viele Open Source-Bibliotheken sind für die Überprüfung von JWTs für unterschiedliche Sprachen verfügbar. Wir empfehlen die Verwendung einer dieser Optionen, anstatt eine eigene Validierungslogik zu implementieren.
+Das Empfangen eines ID-Tokens reicht nicht aus, um den Benutzer zu authentifizieren. Validieren Sie die Signatur des ID-Tokens, und überprüfen Sie die Ansprüche im Token gemäß den Anforderungen Ihrer Anwendung. Azure AD B2C verwendet [JSON-Webtoken (JWT)](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) und die Verschlüsselung mit öffentlichem Schlüssel, um Token zu signieren und deren Gültigkeit zu überprüfen. 
+
+> [!NOTE]
+> Die meisten Open-Source-Authentifizierungsbibliotheken validieren die JWT-Token für Ihre Anwendung. Wir empfehlen die Verwendung einer dieser Optionen, anstatt Ihre eigene Validierungslogik zu implementieren. Weitere Informationen finden Sie in der [Übersicht über die Microsoft-Authentifizierungsbibliothek (MSAL)](../active-directory/develop/msal-overview.md) und unter [Microsoft Identity Web-Authentifizierungsbibliothek](../active-directory/develop/microsoft-identity-web.md).
 
 Azure AD B2C verfügt über einen OpenID Connect-Metadatenendpunkt, mit dem die Anwendung zur Laufzeit Informationen über Azure AD B2C abrufen kann. Diese Informationen umfassen Endpunkte, Tokeninhalte und Token-Signaturschlüssel. Es gibt ein JSON-Metadatendokument für jeden Benutzerflow in Ihrem B2C-Mandanten. Das Metadatendokument für den Benutzerflow `b2c_1_sign_in` in `fabrikamb2c.onmicrosoft.com` befindet sich beispielsweise unter:
 
@@ -126,7 +135,7 @@ Es gibt auch einige weitere Überprüfungen, die Sie durchführen sollten. Diese
 - Sicherstellen, dass der Benutzer über eine ordnungsgemäße Autorisierung und die richtigen Berechtigungen verfügt.
 - Sicherstellen, dass eine bestimmte Authentifizierungsmethode verwendet wird, z. B. Azure AD Multi-Factor Authentication.
 
-Nachdem Sie das ID-Token vollständig überprüft haben, können Sie eine Sitzung mit dem Benutzer beginnen. Verwenden Sie die Ansprüche im ID-Token, um Informationen über den Benutzer in Ihrer Anwendung zu erhalten. Die Verwendung dieser Information umfasst die Anzeige, Datensätze und Autorisierung.
+Nachdem das ID-Token validiert wurde, können Sie eine Sitzung mit dem Benutzer beginnen. Verwenden Sie die Ansprüche im ID-Token, um Informationen über den Benutzer in Ihrer Anwendung zu erhalten. Die Verwendung dieser Information umfasst die Anzeige, Datensätze und Autorisierung.
 
 ## <a name="get-a-token"></a>Abrufen von Token
 

@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
 ms.openlocfilehash: d299afca0bd8070a1da738e02812b64c41a7101c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101675057"
 ---
 # <a name="query-storage-files-with-serverless-sql-pool-in-azure-synapse-analytics"></a>Abfragen von Speicherdateien mit einem serverlosen SQL-Pool in Azure Synapse Analytics
@@ -248,7 +248,7 @@ Die Demodaten enthalten die folgenden Datasets:
 - Parquet-Beispieldateien mit geschachtelten Spalten
 - Bücher im JSON-Format
 
-| Ordnerpfad                                                  | BESCHREIBUNG                                                  |
+| Ordnerpfad                                                  | Beschreibung                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | /csv/                                                        | Übergeordneter Ordner für Daten im CSV-Format                         |
 | /csv/population/<br />/csv/population-unix/<br />/csv/population-unix-hdr/<br />/csv/population-unix-hdr-escape<br />/csv/population-unix-hdr-quoted | Ordner mit Bevölkerungsdatendateien in verschiedenen CSV-Formaten |

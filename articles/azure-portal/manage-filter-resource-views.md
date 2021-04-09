@@ -2,13 +2,13 @@
 title: Anzeigen und Filtern von Ressourceninformationen in Azure
 description: In diesem Artikel erfahren Sie, wie Sie Informationen filtern und verschiedene Ansichten verwenden, um Ihre Azure-Ressourcen besser zu verstehen.
 ms.topic: how-to
-ms.date: 09/11/2020
-ms.openlocfilehash: d3ad0c225a260fd0ae6b131b951b53c28042f4d9
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/16/2021
+ms.openlocfilehash: bb48d0b0a7bf6017fbf407a95c33ef17729e34e3
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101738632"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104771633"
 ---
 # <a name="view-and-filter-azure-resource-information"></a>Anzeigen und Filtern von Ressourceninformationen in Azure
 
@@ -48,7 +48,7 @@ Löschen einer Ansicht:
 
 1. Klicken Sie auf **Ansicht verwalten** und dann auf **Alle Ansichten durchsuchen**.
 
-1. Wählen Sie im Bereich **Gespeicherte Ansichten** für „Alle Ressourcen“ eine Ansicht aus, und klicken Sie dann auf das Symbol zum **Löschen** ![Symbol „Ansicht löschen“](media/manage-filter-resource-views/icon-delete.png).
+1. Wählen Sie im Bereich **Gespeicherte Ansichten** die Ansicht und dann das Symbol zum **Löschen** ![Symbol „Ansicht löschen“](media/manage-filter-resource-views/icon-delete.png) aus.
 
 ## <a name="export-information-from-a-view"></a>Exportieren von Informationen aus einer Ansicht
 

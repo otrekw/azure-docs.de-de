@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 10/29/2020
 ms.author: jingwang
 ms.openlocfilehash: a4082e1e00ecb1d3b0157fcc35616704eaab0aae
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100386355"
 ---
 # <a name="xml-format-in-azure-data-factory"></a>XML-Format in Azure Data Factory
@@ -70,7 +70,7 @@ Erfahren Sie, wie Sie XML-Daten und Senkendatenspeicher sowie das zugehörige Fo
 
 Die folgenden Eigenschaften werden im Abschnitt ***\*source\**** der Kopieraktivität unterstützt. Weitere Informationen finden Sie unter [Verhalten des XML-Connectors](#xml-connector-behavior).
 
-| Eigenschaft      | Beschreibung                                                  | Erforderlich |
+| Eigenschaft      | BESCHREIBUNG                                                  | Erforderlich |
 | ------------- | ------------------------------------------------------------ | -------- |
 | Typ          | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf **XmlSource** festgelegt sein. | Ja      |
 | formatSettings | Eine Gruppe von Eigenschaften. Weitere Informationen finden Sie in der Tabelle der **XML-Leseeinstellungen** weiter unten. | Nein       |
@@ -78,7 +78,7 @@ Die folgenden Eigenschaften werden im Abschnitt ***\*source\**** der Kopieraktiv
 
 Unterstützte **XML-Leseeinstellungen** unter `formatSettings`:
 
-| Eigenschaft      | Beschreibung                                                  | Erforderlich |
+| Eigenschaft      | BESCHREIBUNG                                                  | Erforderlich |
 | ------------- | ------------------------------------------------------------ | -------- |
 | Typ          | Der Typ von formatSettings muss auf **XmlReadSettings** festgelegt werden. | Ja      |
 | validationMode | Gibt an, ob das XML-Schema validiert werden soll.<br>Zulässige Werte sind **none** (Standard, keine Validierung), **xsd** (Validierung mithilfe von XSD) und **dtd** (Validierung mithilfe von DTD). | Nein |

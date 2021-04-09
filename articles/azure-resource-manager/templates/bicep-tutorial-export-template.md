@@ -2,15 +2,15 @@
 title: 'Tutorial: Exportieren einer JSON-Vorlage aus dem Azure-Portal für die Bicep-Entwicklung'
 description: Erfahren Sie, wie Sie eine exportierte JSON-Vorlage verwenden, um die Bicep-Entwicklung abzuschließen.
 author: mumian
-ms.date: 03/01/2021
+ms.date: 03/10/2021
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 0cba91a8c021f4baa90d1a4264bf84d3c56930ec
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 3bc7ed4ada4f7810e9864778c7f76a0573c9dc89
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101742838"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102632548"
 ---
 # <a name="tutorial-use-exported-json-template-from-the-azure-portal"></a>Tutorial: Verwenden einer exportieren JSON-Vorlage aus dem Azure-Portal
 
@@ -79,7 +79,7 @@ Derzeit unterstützt der Azure-Portal nur das Exportieren von JSON-Vorlagen. Es 
 
 Mit der exportierten Vorlage erhalten Sie den größten Teil des benötigten Bicep, müssen ihn aber für Ihre Bicep-Datei anpassen. Achten Sie besonders auf Unterschiede in den Parametern und Variablen zwischen Ihrer Bicep-Datei und der exportierten Bicep-Datei. Der Exportprozess kennt selbstverständlich nicht die Parameter und Variablen, die Sie bereits in ihrer Bicep-Datei definiert haben.
 
-Im folgenden Beispiel sind die Ergänzungen zu Ihrer Bicep-Datei hervorgehoben. Sie enthält den exportierten Code sowie einige Änderungen. Zuerst wird der Name des Parameters entsprechend ihrer Namenskonvention geändert. Zweitens wird der location-Parameter für den Standort des App Service-Plans verwendet. Drittens werden einige der Eigenschaften entfernt, bei denen der Standardwert in Ordnung ist.
+Im folgenden Beispiel sind die Ergänzungen zu Ihrer Bicep-Datei gezeigt. Sie enthält den exportierten Code sowie einige Änderungen. Zuerst wird der Name des Parameters entsprechend ihrer Namenskonvention geändert. Zweitens wird der location-Parameter für den Standort des App Service-Plans verwendet. Drittens werden einige der Eigenschaften entfernt, bei denen der Standardwert in Ordnung ist.
 
 Kopieren Sie die gesamte Datei, und ersetzen Sie Ihre Bicep-Datei durch den Inhalt der Datei.
 

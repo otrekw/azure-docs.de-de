@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 12/28/2020
 ms.author: tamram
 ms.openlocfilehash: a9d7f4f77d91abc88ea348e71a3d9c471b26a273
-ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103621945"
 ---
 Der Emulator unterstützt nur ein einziges festgelegtes Konto und einen bekannten Authentifizierungsschlüssel für die Authentifizierung mit einem gemeinsam verwendeten Schlüssel. Dieses Konto und dieser Schlüssel sind die einzigen gemeinsam verwendeten Anmeldeinformationen, die für den Emulator verwendet werden dürfen. Sie lauten wie folgt:
