@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: tutorial
 ms.date: 02/09/2021
 ms.author: aahi
-ms.openlocfilehash: 8444ae08aa2c25c20723b2f8c571422af3b24bc8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 47feddb88fd7ddae1f8be54709019b4c339d177d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101736677"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104599169"
 ---
 # <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>Tutorial: Integrieren von Power BI in die Textanalyse von Cognitive Services
 
@@ -190,7 +190,7 @@ Verwenden Sie diese Spalte nun, um eine Wortwolke zu generieren. Als Erstes klic
 > [!NOTE]
 > Warum werden Schlüsselbegriffe zum Erstellen einer Wortwolke verwendet, anstatt des vollständigen Texts aller Kommentare? Die Schlüsselbegriffe enthalten die *wichtigen* Wörter aus unseren Kundenkommentaren, nicht nur die *am häufigsten verwendeten* Wörter. Außerdem ist die Wortgrößenanpassung in der Wolke dann nicht durch die häufige Verwendung eines Worts in einer relativ geringen Anzahl von Kommentaren verzerrt.
 
-Installieren Sie das benutzerdefinierte visuelle Objekt „Wortwolke“, wenn es noch nicht installiert ist. Klicken Sie im Bereich „Visualisierungen“ rechts neben dem Arbeitsbereich auf die drei Punkte ( **...** ), und wählen Sie **Import from Store** (Aus Store importieren). Suchen Sie nach „Wolke“, und klicken Sie dann neben dem visuellen Element „Wortwolke“ auf **Hinzufügen**. Power BI installiert das Visual „Wortwolke“ und weist Sie auf eine erfolgreiche Installation hin.
+Installieren Sie das benutzerdefinierte visuelle Objekt „Wortwolke“, wenn es noch nicht installiert ist. Klicken Sie im Bereich „Visualisierungen“ rechts neben dem Arbeitsbereich auf die drei Punkte ( **...** ), und wählen Sie **Import from Market** (Aus Market importieren) aus. Befindet sich das Wort „Cloud“ nicht in der Liste der angezeigten Visualisierungstools, können Sie nach „Cloud“ suchen und neben dem visuellen Element „Wortwolke“ auf **Hinzufügen** klicken. Power BI installiert das Visual „Wortwolke“ und weist Sie auf eine erfolgreiche Installation hin.
 
 ![[Hinzufügen eines benutzerdefinierten visuellen Elements]](../media/tutorials/power-bi/add-custom-visuals.png)<br><br>
 
@@ -200,7 +200,7 @@ Klicken Sie zunächst im Visualisierungsbereich auf das Wortwolkensymbol.
 
 Im Arbeitsbereich wird ein neuer Bericht angezeigt. Ziehen Sie das Feld `keyphrases` aus den Bereich „Felder“ in das Feld „Kategorie“ im Visualisierungsbereich. Die Wortwolke wird innerhalb des Berichts angezeigt.
 
-Wechseln Sie nun zur Seite „Format“ des Visualisierungsbereichs. Aktivieren Sie in der Kategorie „Stoppwörter“ die Option **Standardstoppwörter**, um kurze häufige Wörter wie „von“ aus der Wolke auszuschließen. 
+Wechseln Sie nun zur Seite „Format“ des Visualisierungsbereichs. Aktivieren Sie in der Kategorie „Stoppwörter“ die Option **Standardstoppwörter**, um kurze häufige Wörter wie „von“ aus der Wolke auszuschließen. Da Sie jedoch Schlüsselausdrücke visualisieren, enthalten sie möglicherweise keine Stoppwörter.
 
 ![[Aktivieren von Standardstoppwörtern]](../media/tutorials/power-bi/default-stop-words.png)
 
@@ -232,8 +232,7 @@ Die unten dargestellte Standpunktanalysefunktion gibt ein Ergebnis zurück, das 
     headers     = [#"Ocp-Apim-Subscription-Key" = apikey],
     bytesresp   = Web.Contents(endpoint, [Headers=headers, Content=bytesbody]),
     jsonresp    = Json.Document(bytesresp),
-    sentiment   = jsonresp[documents]{0}[confidenceScores]
-in  sentiment
+    sentiment   = jsonresp[documents]{0}[detectedLanguage][confidenceScore] in  sentiment
 ```
 
 Hier sind zwei Versionen einer Sprachenerkennungsfunktion. Die erste Funktion gibt den ISO-Sprachencode (z.B. `en` für Englisch) zurück, während die zweite Funktion den Anzeigenamen zurückgibt (z.B. `English`). Sie stellen möglicherweise fest, dass sich zwischen den beiden Versionen nur die letzte Zeile des Texts unterscheidet.
@@ -249,8 +248,7 @@ Hier sind zwei Versionen einer Sprachenerkennungsfunktion. Die erste Funktion gi
     headers     = [#"Ocp-Apim-Subscription-Key" = apikey],
     bytesresp   = Web.Contents(endpoint, [Headers=headers, Content=bytesbody]),
     jsonresp    = Json.Document(bytesresp),
-    language    = jsonresp[documents]{0}[detectedLanguages]{0}[iso6391Name]
-in  language
+    language    = jsonresp [documents]{0}[detectedLanguage] [iso6391Name] in language 
 ```
 ```fsharp
 // Returns the name (for example, 'English') of the language in which the text is written
@@ -263,8 +261,7 @@ in  language
     headers     = [#"Ocp-Apim-Subscription-Key" = apikey],
     bytesresp   = Web.Contents(endpoint, [Headers=headers, Content=bytesbody]),
     jsonresp    = Json.Document(bytesresp),
-    language    = jsonresp[documents]{0}[detectedLanguages]{0}[name]
-in  language
+    language    jsonresp [documents]{0}[detectedLanguage] [iso6391Name] in language 
 ```
 
 Und hier ist schließlich eine Variante der bereits vorgestellten Schlüsselbegriffsfunktion, die die Begriffe als Listenobjekt anstatt als eine einzelne Zeichenfolge mit durch Trennzeichen getrennten Begriffen zurückgibt. 

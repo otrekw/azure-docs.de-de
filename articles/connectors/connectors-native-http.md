@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/18/2021
 tags: connectors
 ms.openlocfilehash: dab5b755347e46d8d509e8014bba8f496ca9c900
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101719439"
 ---
 # <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>Aufrufen von Dienstendpunkten per HTTP oder HTTPS aus Azure Logic Apps
@@ -104,14 +104,14 @@ Diese integrierte Aktion führt einen HTTP-Aufruf der angegebenen URL für einen
 
 Hier finden Sie weitere Informationen zu den Ausgaben aus einem HTTP-Trigger oder einer -Aktion, die diese Informationen zurückgeben:
 
-| Eigenschaft | type | BESCHREIBUNG |
+| Eigenschaft | Typ | BESCHREIBUNG |
 |----------|------|-------------|
 | `headers` | JSON-Objekt | Die Header aus der Anforderung |
 | `body` | JSON-Objekt | Das Objekt mit dem Inhalt des Texts aus der Anforderung |
 | `status code` | Integer | Der Statuscode aus der Anforderung |
 |||
 
-| Statuscode | BESCHREIBUNG |
+| Statuscode | Beschreibung |
 |-------------|-------------|
 | 200 | OK |
 | 202 | Zulässig |

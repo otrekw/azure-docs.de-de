@@ -5,10 +5,10 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 02/06/2020
 ms.openlocfilehash: 46063d5f2d9ff4b85914ad7c4cd74a2400298db0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98943073"
 ---
 # <a name="the-account-being-accessed-does-not-support-http-error-in-azure-hdinsight"></a>Das Konto, auf das zugegriffen wird, unterstützt keine HTTP-Fehler in Azure HDInsight.
@@ -31,7 +31,7 @@ Es gibt mehrere Gründe für diese Fehlermeldung:
 
 * Ein Cluster wurde mit einem Speicherkonto erstellt, für das die sichere Übertragung *deaktiviert* war. Anschließend wurde die sichere Übertragung für das Speicherkonto aktiviert.
 
-## <a name="resolution"></a>Auflösung
+## <a name="resolution"></a>Lösung
 
 Wenn die sichere Übertragung für Azure Storage oder Data Lake Storage Gen2 aktiviert ist, lautet der URI `wasbs://` bzw. `abfss://`.  Siehe auch [Vorschreiben einer sicheren Übertragung in Azure Storage](../../storage/common/storage-require-secure-transfer.md).
 

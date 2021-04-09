@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 06/08/2020
-ms.openlocfilehash: 8083b9edd49f65f29fe9c9b2cfa30edfacf89507
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: d8f9d4e0b002348f286f45c6b45c96531c5d6530
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102614886"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105558226"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>Vorbereiten von lokalen Computern für die Migration zu Azure
 
@@ -86,7 +86,7 @@ Die erforderlichen Änderungen sind in der Tabelle zusammengefasst.
 --- | --- | --- | ---
 **Konfigurieren der SAN-Richtlinie als „Online – Alle“**<br/><br/> Dadurch wird sichergestellt, dass für Windows-Volumes auf dem virtuellen Azure-Computer die gleichen Laufwerkbuchstaben verwendet werden wie auf dem lokalen virtuellen Computer. | Wird für Computer unter Windows Server 2008 R2 oder höher automatisch festgelegt.<br/><br/> Bei älteren Betriebssystemen muss dieser Konfigurationsschritt manuell ausgeführt werden. | Wird in den meisten Fällen automatisch festgelegt. | Muss manuell konfiguriert werden.
 **Installieren der Hyper-V-Gastintegration** | Muss auf Computern unter Windows Server 2003 [manuell installiert](prepare-windows-server-2003-migration.md#install-on-vmware-vms) werden. | Muss auf Computern unter Windows Server 2003 [manuell installiert](prepare-windows-server-2003-migration.md#install-on-vmware-vms) werden. | Muss auf Computern unter Windows Server 2003 [manuell installiert](prepare-windows-server-2003-migration.md#install-on-hyper-v-vms) werden.
-**Aktivieren der seriellen Azure-Konsole**<br/><br/>[Aktivieren Sie die Konsole](../virtual-machines/troubleshooting/serial-console-windows.md) auf virtuellen Azure-Computern, um die Problembehandlung zu erleichtern. Sie müssen den virtuellen Computer nicht neu starten. Der virtuelle Azure-Computer wird unter Verwendung des Datenträgerimages gestartet. Der Start mit dem Datenträgerimage entspricht einem Neustart für den neuen virtuellen Computer. | Muss manuell aktiviert werden. | Muss manuell aktiviert werden. | Muss manuell aktiviert werden.
+**Aktivieren der seriellen Azure-Konsole**<br/><br/>[Aktivieren Sie die Konsole](/troubleshoot/azure/virtual-machines/serial-console-windows) auf virtuellen Azure-Computern, um die Problembehandlung zu erleichtern. Sie müssen den virtuellen Computer nicht neu starten. Der virtuelle Azure-Computer wird unter Verwendung des Datenträgerimages gestartet. Der Start mit dem Datenträgerimage entspricht einem Neustart für den neuen virtuellen Computer. | Muss manuell aktiviert werden. | Muss manuell aktiviert werden. | Muss manuell aktiviert werden.
 **Herstellen der Verbindung nach der Migration**<br/><br/> Für die Verbindungsherstellung nach der Migration müssen vor der Migration mehrere Schritte ausgeführt werden. | [Manuelle Einrichtung](#prepare-to-connect-to-azure-windows-vms) erforderlich | [Manuelle Einrichtung](#prepare-to-connect-to-azure-windows-vms) erforderlich | [Manuelle Einrichtung](#prepare-to-connect-to-azure-windows-vms) erforderlich
 
 
@@ -126,7 +126,7 @@ Für andere Versionen müssen die Computer gemäß der Zusammenfassung in der Ta
 **Aktion** | **Details** | **Linux-Version**
 --- | --- | ---
 **Installieren von Linux Integration Services für Hyper-V** | Erstellen Sie das Linux-Initialisierungsimage neu, damit es die erforderlichen Hyper-V-Treiber enthält. Durch die Neuerstellung des Initialisierungsimages wird sichergestellt, dass der virtuelle Computer in Azure gestartet wird. | In den meisten neuen Versionen von Linux-Distributionen ist dies standardmäßig enthalten.<br/><br/> Andernfalls muss die Installation für alle oben nicht angegebenen Versionen manuell durchgeführt werden.
-**Aktivieren der Protokollierung der seriellen Azure-Konsole** | Die Aktivierung der Konsolenprotokollierung vereinfacht die Problembehandlung. Sie müssen den virtuellen Computer nicht neu starten. Der virtuelle Azure-Computer wird unter Verwendung des Datenträgerimages gestartet. Der Start mit dem Datenträgerimage entspricht einem Neustart für den neuen virtuellen Computer.<br/><br/> Befolgen Sie zur Aktivierung [diese Anleitung](../virtual-machines/troubleshooting/serial-console-linux.md).
+**Aktivieren der Protokollierung der seriellen Azure-Konsole** | Die Aktivierung der Konsolenprotokollierung vereinfacht die Problembehandlung. Sie müssen den virtuellen Computer nicht neu starten. Der virtuelle Azure-Computer wird unter Verwendung des Datenträgerimages gestartet. Der Start mit dem Datenträgerimage entspricht einem Neustart für den neuen virtuellen Computer.<br/><br/> Befolgen Sie zur Aktivierung [diese Anleitung](/troubleshoot/azure/virtual-machines/serial-console-linux).
 **Aktualisieren der Gerätezuordnungsdatei** | Aktualisieren Sie die Gerätezuordnungsdatei mit den Zuordnungen von Gerätenamen und Volumes so, dass persistente Gerätebezeichner verwendet werden. | Führen Sie die Installation für alle oben nicht angegebenen Versionen manuell durch. (Gilt nur für ein agent-basiertes VMware-Szenario)
 **Aktualisieren von fstab-Einträgen** |  Aktualisieren Sie die Einträge so, dass persistente Volumebezeichner verwendet werden.    | Führen Sie die Aktualisierung für alle oben nicht angegebenen Versionen manuell durch.
 **Entfernen der udev-Regel** | Entfernen Sie alle udev-Regeln, mit denen Schnittstellennamen basierend auf der MAC-Adresse usw. reserviert werden. | Führen Sie die Entfernung für alle oben nicht angegebenen Versionen manuell durch.
@@ -148,7 +148,7 @@ In der folgenden Tabelle sind die Schritte zusammengefasst, die automatisch für
 
 Machen Sie sich ausführlicher mit [Schritten zum Ausführen eines virtuellen Linux-Computers in Azure](../virtual-machines/linux/create-upload-generic.md) vertraut, und sehen Sie sich die Anleitungen für einige gängige Linux-Distributionen an.
 
-Sehen Sie sich die Liste der [erforderlichen Pakete](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux#requirements) zum Installieren des Linux-VM-Agents an. Azure Migrate installiert den Linux-VM-Agent automatisch für RHEL6, RHEL7, CentOS7 (die Unterstützung für 6 sollte der für RHEL ähneln), Ubuntu 14.04, Ubuntu 16.04, Ubuntu 18.04 bei Verwendung der Methode ohne Agent für die VMware-Migration.
+Sehen Sie sich die Liste der [erforderlichen Pakete](../virtual-machines/extensions/agent-linux.md#requirements) zum Installieren des Linux-VM-Agents an. Azure Migrate installiert den Linux-VM-Agent automatisch für RHEL6, RHEL7, CentOS7 (die Unterstützung für 6 sollte der für RHEL ähneln), Ubuntu 14.04, Ubuntu 16.04, Ubuntu 18.04 bei Verwendung der Methode ohne Agent für die VMware-Migration.
 
 ## <a name="check-azure-vm-requirements"></a>Überprüfen der Anforderungen von Azure-VMs
 
@@ -187,7 +187,7 @@ Führen Sie nach der Migration auf den erstellten virtuellen Azure-Computern die
 
 1. Um aus dem Internet auf die VM zugreifen zu können, müssen Sie ihr eine öffentliche IP-Adresse zuweisen. Die öffentliche IP-Adresse für den virtuellen Azure-Computer muss sich von der öffentlichen IP-Adresse Ihres lokalen Computers unterscheiden. [Weitere Informationen](../virtual-network/virtual-network-public-ip-address.md)
 2. Überprüfen Sie, ob die Regeln der Netzwerksicherheitsgruppen (NSG) auf dem virtuellen Computer eingehende Verbindungen am RDP- oder SSH-Port zulassen.
-3. Überprüfen Sie die [Startdiagnose](../virtual-machines/troubleshooting/boot-diagnostics.md#enable-boot-diagnostics-on-existing-virtual-machine), um den virtuellen Computer anzuzeigen.
+3. Überprüfen Sie die [Startdiagnose](/troubleshoot/azure/virtual-machines/boot-diagnostics#enable-boot-diagnostics-on-existing-virtual-machine), um den virtuellen Computer anzuzeigen.
 
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -200,4 +200,4 @@ Für VMware-VMs wird bei der Servermigration die [Migration mit oder ohne Agent]
 
 - **VMware-VMs:** Überprüfen Sie die [Migrationsanforderungen und -unterstützung](migrate-support-matrix-vmware-migration.md) für virtuelle VMware-Computer.
 - **Virtuelle Hyper-V-Computer:** Überprüfen Sie die [Migrationsanforderungen und -unterstützung](migrate-support-matrix-hyper-v-migration.md) in Bezug auf Hyper-V-VMs.
-- **Physische Computer:** Überprüfen Sie die [Migrationsanforderungen und -unterstützung](migrate-support-matrix-physical-migration.md) für lokale physische Computer und andere virtualisierte Server. 
+- **Physische Computer:** Überprüfen Sie die [Migrationsanforderungen und -unterstützung](migrate-support-matrix-physical-migration.md) für lokale physische Computer und andere virtualisierte Server.

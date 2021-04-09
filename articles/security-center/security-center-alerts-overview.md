@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 02/25/2021
 ms.author: memildin
-ms.openlocfilehash: 5824457a9f2ce411a871b5e76802ecf2e2f106c3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9d917b3682d3b503743e706e8c952854e86fbc5e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102099504"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105727041"
 ---
 # <a name="security-alerts-and-incidents-in-azure-security-center"></a>Sicherheitswarnungen und -incidents in Azure Security Center
 
@@ -73,13 +73,12 @@ Security Center weist Warnungen einen Schweregrad zu, um Ihnen zu helfen, die Re
 > [!NOTE]
 > Der Schweregrad der Warnung wird im Portal und in Versionen der REST-API vor dem 1.1.2019 unterschiedlich angezeigt. Wenn Sie eine ältere Version der API verwenden, führen Sie ein Upgrade aus, um die unten beschriebene konsistente Erfahrung zu erhalten.
 
-| severity          | Empfohlene Antwort                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-|-------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| severity          | Empfohlene Antwort      |
+|---|---|
 | **Hoch**          | Ihre Ressource wurde mit hoher Wahrscheinlichkeit kompromittiert. Sie sollten dies sofort überprüfen. Von Security Center werden sowohl die böswillige Absicht als auch die ermittelten Ergebnisse zur Ausgabe der Warnung als hoch eingestuft. Ein Beispiel hierfür ist eine Warnung, bei der die Ausführung eines bekannten schädlichen Tools wie Mimikatz erkannt wird, das häufig für den Diebstahl von Anmeldeinformationen verwendet wird.                                                                                                               |
 | **Mittel**        | Hiermit wird eine potenziell verdächtige Aktivität angegeben, die auf die Kompromittierung einer Ressource hinweisen kann. Security Center stuft die Analyse oder die ermittelten Ergebnisse als „Mittel“ und die schädliche Absicht als „Mittel“ bis „Hoch“ ein. Hierbei handelt es sich normalerweise um Erkennungen, die auf maschinellem Lernen oder Anomalien basieren. Ein Beispiel hierfür ist ein Anmeldeversuch, der von einem ungewöhnlichen Standort aus durchgeführt wird.                                                                                                                |
 | **Niedrig**           | Hierbei kann es sich um ein unschädliches positives Ergebnis oder um einen blockierten Angriff handeln. Security Center kann die Absicht nicht mit Sicherheit als schädlich einstufen, und die Aktivität ist möglicherweise harmlos. Das Löschen eines Protokolls ist beispielsweise eine Aktion, die von einem Angreifer ausgeführt werden kann, um Spuren zu verwischen. Aber in vielen Fällen handelt es sich um einen von Administratoren ausgeführten Routinevorgang. Security Center teilt Ihnen normalerweise nicht mit, wenn Angriffe blockiert wurden. Eine Ausnahme sind interessante Fälle, bei denen wir Ihnen raten, dass Sie sich diese ansehen. |
-| **Informational** (Nur zu Informationszwecken) | Warnungen vom Typ „Information“ werden nur angezeigt, wenn Sie für einen Sicherheitsincident einen Drilldown ausführen oder die REST-API mit einer bestimmten Warnungs-ID verwenden. Ein Incident besteht in der Regel aus einer Reihe von Warnungen, von denen einige für sich allein genommen nur informativen Charakter haben können, aber im Zusammenhang mit den anderen Warnungen durchaus eine genauere Untersuchung verdienen.                                                                                                                         |  |
-|                   |                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| **Informational** (Nur zu Informationszwecken) | Warnungen vom Typ „Information“ werden nur angezeigt, wenn Sie für einen Sicherheitsincident einen Drilldown ausführen oder die REST-API mit einer bestimmten Warnungs-ID verwenden. Ein Incident besteht in der Regel aus einer Reihe von Warnungen, von denen einige für sich allein genommen nur informativen Charakter haben können, aber im Zusammenhang mit den anderen Warnungen durchaus eine genauere Untersuchung verdienen.                                                                                                                         |
 
 ## <a name="export-alerts"></a>Exportieren von Warnungen
 
