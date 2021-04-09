@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
 ms.openlocfilehash: b6dd0fd95280a65615d38ab11a2f9814f58586f5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98945847"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>Vergleich der Speicheroptionen für die Verwendung mit Azure HDInsight-Clustern
@@ -32,7 +32,7 @@ Die folgende Tabelle enthält die Azure Storage-Dienste, die mit den unterschied
 |Azure Storage| Allgemein v2 | Object | Blob | Standard | Heiß, Kalt, Archiv | 3.6 und höher | All |
 |Azure Storage| Allgemein v1 | Object | Blob | Standard | – | All | All |
 |Azure Storage| Blob Storage** | Object | Blockblob | Standard | Heiß, Kalt, Archiv | All | All |
-|Azure Data Lake Storage Gen1| – | Hierarchisch (Dateisystem) | – | – | – | Nur 3.6 | Alle mit Ausnahme von HBase |
+|Azure Data Lake Storage Gen1| – | Hierarchisch (Dateisystem) | – | Nicht zutreffend | – | Nur 3.6 | Alle mit Ausnahme von HBase |
 |Azure Storage| Blockblob| Object | Blockblob | Premium | –| 3.6 und höher | Nur HBase mit beschleunigten Schreibvorgängen|
 |Azure Data Lake Storage Gen2| Blockblob| Hierarchisch (Dateisystem) | Blockblob | Premium | –| 3.6 und höher | Nur HBase mit beschleunigten Schreibvorgängen|
 

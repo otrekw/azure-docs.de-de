@@ -4,10 +4,10 @@ description: Transaktionen und Sperren in Azure Service Fabric Reliable State Ma
 ms.topic: conceptual
 ms.date: 5/1/2017
 ms.openlocfilehash: 5d2cbb517ea5ca45697cd9124b82e9ef13dd32db
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98784341"
 ---
 # <a name="transactions-and-lock-modes-in-azure-service-fabric-reliable-collections"></a>Transaktionen und Sperrmodi in Azure Service Fabric Reliable Collections

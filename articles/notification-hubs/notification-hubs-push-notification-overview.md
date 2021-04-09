@@ -18,10 +18,10 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 04/30/2019
 ms.openlocfilehash: ba5a329d12735fbddc86ff2e3725a1e7de6d9d89
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100546464"
 ---
 # <a name="what-is-azure-notification-hubs"></a>Was ist Azure Notification Hubs?
@@ -96,8 +96,8 @@ Notification Hubs ist eine sofort einsatzbereite Push-Engine mit den folgenden V
   - Übertragung an eine oder mehrere Plattformen: Über einen einzigen API-Aufruf können Sie Millionen von Geräten auf verschiedenen Plattformen erreichen.
   - Push an Gerät: Sie können Benachrichtigungen an einzelne Geräte richten.
   - Push an Benutzer: Tags und Vorlagen helfen Ihnen dabei, alle Geräte eines Benutzers auf verschiedenen Plattformen zu erreichen.
-  - Push an Segment mit dynamischen Tags: Das Feature „Tags“ hilft Ihnen dabei, Geräte zu segmentieren und sie per Push gemäß Ihren Anforderungen zu erreichen, ganz gleich, ob Sie eine Benachrichtigung an ein Segment oder an einen Ausdruck von Segmenten senden (Beispiel: aktiv UND lebt in Stuttgart NICHT neuer Benutzer). Sie können Gerätetags jederzeit und überall aktualisieren, anstatt auf Veröffentlichen/Abonnieren beschränkt zu sein.
-  - Lokalisierte Pushbenachrichtigungen: Das Feature „Vorlagen“ verhilft Ihnen zu einer Lokalisierung ohne Auswirkungen auf den Back-End-Code.
+  - Push an Segment mit dynamischen Tags: Das Feature „Tags“ hilft Ihnen, Geräte zu segmentieren und sie per Push gemäß Ihren Anforderungen zu erreichen, ganz gleich, ob Sie an ein Segment oder an einen Ausdruck von Segmenten senden (Beispiel: aktiv UND lebt in Stuttgart NICHT neuer Benutzer). Sie können Gerätetags jederzeit und überall aktualisieren, anstatt auf Veröffentlichen/Abonnieren beschränkt zu sein.
+  - Lokalisierte Pushbenachrichtigungen: Das Feature „Vorlagen“ verhilft Ihnen zu einer Lokalisierung, ohne sich auf den Back-End-Code auszuwirken.
   - Automatische Pushbenachrichtigungen: Sie können das Push-Pull-Muster aktivieren, indem Sie automatische Benachrichtigungen an Geräte senden, um auszulösen, dass sie bestimmte Pullvorgänge oder Aktionen ausführen.
   - Geplante Pushbenachrichtigungen: Sie können das Senden von Benachrichtigungen für einen beliebigen Zeitpunkt planen.
   - Direkte Pushbenachrichtigungen: Sie können das Registrieren von Geräten beim Notification Hubs-Dienst überspringen und direkte Pushbenachrichtigungen im Batch an eine Liste von Gerätehandles auslösen.
@@ -113,7 +113,7 @@ Notification Hubs ist eine sofort einsatzbereite Push-Engine mit den folgenden V
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zu den ersten Schritten beim Erstellen und Verwenden eines Benachrichtigungshubs finden Sie unter [Tutorial: Senden von Pushbenachrichtigungen an Android-Geräte mit Azure Notification Hubs und Google Firebase Cloud Messaging](notification-hubs-android-push-notification-google-fcm-get-started.md).
+Informationen zu den ersten Schritten beim Erstellen und Verwenden eines Benachrichtigungshubs finden Sie unter [Erste Schritte mit Azure Notification Hubs für Android-Apps und Firebase Cloud Messaging](notification-hubs-android-push-notification-google-fcm-get-started.md).
 
 [0]: ./media/notification-hubs-overview/registration-diagram.png
 [1]: ./media/notification-hubs-overview/notification-hub-diagram.png

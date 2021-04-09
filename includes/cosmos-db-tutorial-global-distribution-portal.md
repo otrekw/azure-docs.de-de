@@ -1,5 +1,5 @@
 ---
-title: 'Azure Cosmos DB: globale Verteilung'
+title: Globale Verteilung von Azure Cosmos DB
 description: Hier erfahren Sie, wie Sie Daten mit Azure Cosmos DB im Azure-Portal global replizieren.
 services: cosmos-db
 author: SnehaGunda
@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 12/26/2018
 ms.custom: include file
 ms.openlocfilehash: 58788d6194454c8bd40730c9c350aa901924ba3d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96027912"
 ---
 ## <a name="add-global-database-regions-using-the-azure-portal"></a><a id="addregion"></a>Hinzufügen globaler Datenbankregionen über das Azure-Portal
@@ -31,7 +31,7 @@ Nachdem Sie eine zweite Region hinzugefügt haben, wird im Portal auf der Seite 
 Es gibt zwei gängige Szenarios zum Konfigurieren von mindestens zwei oder mehr Regionen:
 
 1. Übermitteln von niedriger Latenz beim Zugriff auf Daten für Endbenutzer, unabhängig davon, wo sie sich befinden
-2. Hinzufügen von regionaler Resilienz für Geschäftskontinuität und Notfallwiederherstellung (BCDR)
+2. Hinzufügen von regionaler Resilienz für Geschäftskontinuität und Notfallwiederherstellung (Business Continuity & Disaster Recovery, BCDR)
 
 Zur Gewährleistung geringer Wartezeiten für Endbenutzer empfiehlt es sich, sowohl die Anwendung als auch Azure Cosmos DB in den Regionen bereitzustellen, in denen sich die Benutzer der Anwendung befinden.
 

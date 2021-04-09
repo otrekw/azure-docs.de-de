@@ -14,13 +14,13 @@ ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
 ms.openlocfilehash: d8a176fff0da932d0fafd40b9ab895b635acc5f6
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96169442"
 ---
-# <a name="how-to-configure-msal-for-ios-and-macos-to-use-different-identity-providers"></a>Gewusst wie: Konfigurieren von MSAL für iOS und macOS für die Verwendung verschiedener Identitätsanbieter
+# <a name="how-to-configure-msal-for-ios-and-macos-to-use-different-identity-providers"></a>Vorgehensweise: Konfigurieren von MSAL für iOS und macOS für die Verwendung verschiedener Identitätsanbieter
 
 Dieser Artikel zeigt Ihnen, wie Sie Ihre Microsoft-Authentifizierungsbibliothek-App für iOS und macOS (MSAL) für verschiedene autoritative Stellen wie Azure Active Directory (Azure AD), Business-to-Consumer (B2C), Sovereign Clouds und Gastbenutzer konfigurieren.  In diesem Artikel können Sie sich im Allgemeinen eine autoritative Stelle als Identitätsanbieter vorstellen.
 
@@ -180,7 +180,7 @@ Möglicherweise sollten Sie verschiedene Bereiche an jede Sovereign Cloud überg
 
 Wenn die URL der autoritativen Stelle auf `"login.microsoftonline.com/common"` festgelegt ist, wird der Benutzer bei seinem Basismandanten angemeldet. Einige Apps müssen den Benutzer jedoch möglicherweise mit einem anderen Mandanten signieren, und andere Apps funktionieren nur mit einem einzigen Mandanten.
 
-Um den Benutzer mit einem bestimmten Mandanten zu signieren, konfigurieren Sie `MSALPublicClientApplication` mit einer bestimmten autoritativen Stelle. Beispiel:
+Um den Benutzer mit einem bestimmten Mandanten zu signieren, konfigurieren Sie `MSALPublicClientApplication` mit einer bestimmten autoritativen Stelle. Beispiele:
 
 `https://login.microsoftonline.com/469fdeb4-d4fd-4fde-991e-308a78e4bea4`
 
