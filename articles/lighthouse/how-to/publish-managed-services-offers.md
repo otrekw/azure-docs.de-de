@@ -4,10 +4,10 @@ description: Erfahren Sie, wie Sie ein Angebot für verwaltete Dienste veröffen
 ms.date: 02/17/2021
 ms.topic: how-to
 ms.openlocfilehash: b906ba9961ae4f77ca16890fd0a9036123343111
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101092144"
 ---
 # <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>Veröffentlichen eines Angebots für verwaltete Dienste im Azure Marketplace

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 02/25/2020
-ms.openlocfilehash: 18225703b2a390f64b4bebd58b0167dd77c454d0
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 145dffea50040c86a4af9d77ba8f68cccc8d2958
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98930368"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104866045"
 ---
 # <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-azure-portal"></a>Schnellstart: Erstellen eines Apache Spark-Clusters in Azure HDInsight im Azure-Portal
 
@@ -35,13 +35,13 @@ Sie verwenden das Azure-Portal zum Erstellen eines HDInsight-Clusters, der Azure
 
 1. Klicken Sie im oberen Menü auf **+ Ressource erstellen**.
 
-    ![Azure-Portal: Erstellen einer Ressource](./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-create-resource.png "Erstellen einer Ressource im Azure-Portal")
+    :::image type="content" source="./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-create-resource.png " alt-text="Azure-Portal: Erstellen einer Ressource" border="true":::
 
 1. Wählen Sie **Analytics** > **Azure HDInsight** aus, um die Seite **HDInsight-Cluster erstellen** zu öffnen.
 
 1. Geben Sie auf der Registerkarte **Grundlagen** die folgenden Informationen an:
 
-    |Eigenschaft  |BESCHREIBUNG  |
+    |Eigenschaft  |Beschreibung  |
     |---------|---------|
     |Subscription  | Wählen Sie in der Dropdownliste das Azure-Abonnement aus, das für den Cluster verwendet wird. |
     |Resource group | Wählen Sie in der Dropdownliste Ihre vorhandene Ressourcengruppe oder die Option **Neu erstellen** aus.|
@@ -53,7 +53,7 @@ Sie verwenden das Azure-Portal zum Erstellen eines HDInsight-Clusters, der Azure
     |Kennwort für Clusteranmeldung| Geben Sie das Kennwort für die Clusteranmeldung ein. |
     |SSH-Benutzername (Secure Shell)| Geben Sie den SSH-Benutzernamen ein. Für diesen Schnellstart wird der SSH-Benutzername **sshuser** verwendet. Standardmäßig gilt für dieses Konto dasselbe Kennwort wie für das Konto mit dem *Benutzernamen für die Clusteranmeldung*. |
 
-    ![Screenshot von „HDInsight-Cluster erstellen“ mit ausgewählter Registerkarte „Grundlagen“](./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-cluster-basics-spark.png "Erstellen eines Spark-Clusters in HDInsight: grundlegende Konfigurationen")
+    :::image type="content" source="./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-cluster-basics-spark.png " alt-text="Screenshot von „HDInsight-Cluster erstellen“ mit ausgewählter Registerkarte „Grundlagen“" border="true":::
 
     Klicken Sie auf **Weiter: Speicher >>** , um zur Seite **Speicher** zu wechseln.
 
@@ -66,7 +66,7 @@ Sie verwenden das Azure-Portal zum Erstellen eines HDInsight-Clusters, der Azure
     |Primäres Speicherkonto|Verwenden Sie den automatisch ausgefüllten Wert.|
     |Container|Verwenden Sie den automatisch ausgefüllten Wert.|
 
-    ![Screenshot von „HDInsight-Cluster erstellen“ mit ausgewählter Registerkarte „Speicher“](./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-cluster-storage.png "Erstellen eines Spark-Clusters in HDInsight: grundlegende Konfigurationen")
+    :::image type="content" source="./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-cluster-storage.png " alt-text="Screenshot von „HDInsight-Cluster erstellen“ mit ausgewählter Registerkarte „Speicher“" border="true":::
 
     Wählen Sie zum Fortfahren **Überprüfen + erstellen** aus.
 
@@ -82,7 +82,7 @@ Jupyter Notebook ist eine interaktive Notebook-Umgebung, die verschiedene Progra
 
 1. Wählen Sie **Neu** > **PySpark** aus, um ein Notebook zu erstellen.
 
-   ![Erstellen einer Jupyter Notebook-Instanz zum Ausführen einer interaktiven Spark SQL-Abfrage](./media/apache-spark-jupyter-spark-sql-use-portal/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png "Erstellen einer Jupyter Notebook-Instanz zum Ausführen einer interaktiven Spark SQL-Abfrage")
+   :::image type="content" source="./media/apache-spark-jupyter-spark-sql-use-portal/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png " alt-text="Erstellen einer Jupyter Notebook-Instanz zum Ausführen einer interaktiven Spark SQL-Abfrage" border="true":::
 
    Ein neues Notebook mit dem Namen „Untitled“ (Untitled.pynb) wird erstellt und geöffnet.
 
@@ -92,7 +92,7 @@ SQL (Structured Query Language) ist die gängigste und am häufigsten verwendete
 
 1. Überprüfen Sie, ob der Kernel bereit ist. Der Kernel ist bereit, wenn im Notebook neben dem Kernelnamen ein leerer Kreis angezeigt wird. Ein ausgefüllter Kreis gibt an, dass der Kernel ausgelastet ist.
 
-    ![Screenshot eines Jupyter-Fensters mit einem PySpark-Indikator](./media/apache-spark-jupyter-spark-sql/jupyter-spark-kernel-status.png "Hive-Abfrage in HDInsight")
+    :::image type="content" source="./media/apache-spark-jupyter-spark-sql/jupyter-spark-kernel-status.png " alt-text="Screenshot: Jupyter-Fenster mit einem PySpark-Indikator" border="true"::: border="true":::
 
     Wenn Sie das Notebook zum ersten Mal starten, führt der Kernel im Hintergrund einige Aufgaben durch. Warten Sie, bis der Kernel bereit ist.
 
@@ -105,7 +105,7 @@ SQL (Structured Query Language) ist die gängigste und am häufigsten verwendete
 
     Wenn Sie eine Jupyter Notebook-Instanz mit Ihrem HDInsight-Cluster verwenden, erhalten Sie ein vordefiniertes `sqlContext`-Element, das Sie zum Ausführen von Hive-Abfragen mit Spark SQL verwenden können. `%%sql` weist Jupyter Notebook an, den vordefinierten `sqlContext` für die Ausführung der Hive-Abfrage zu verwenden. Die Abfrage ruft die ersten zehn Zeilen aus einer Hive-Tabelle (**hivesampletable**) ab, die standardmäßig in allen HDInsight-Clustern enthalten ist. Es dauert ungefähr 30 Sekunden, bis die Ergebnisse angezeigt werden. Die Ausgabe sieht wie folgt aus:
 
-    ![Screenshot eines Jupyter-Fensters für das in diesem Schnellstart erstellte Notebook](./media/apache-spark-jupyter-spark-sql-use-portal/hdinsight-spark-get-started-hive-query.png "Hive-Abfrage in HDInsight")
+    :::image type="content" source="./media/apache-spark-jupyter-spark-sql-use-portal/hdinsight-spark-get-started-hive-query.png " alt-text="Screenshot: Jupyter-Fenster für das in diesem Schnellstart erstellte Notebook" border="true"::: border="true":::
 
     Bei jeder Ausführung einer Abfrage in Jupyter wird auf der Titelleiste Ihres Webbrowserfensters neben dem Notebooktitel der Status **(Beschäftigt)** angezeigt. Außerdem sehen Sie in der rechten oberen Ecke einen ausgefüllten Kreis neben dem Text **PySpark**.
 
@@ -118,7 +118,7 @@ SQL (Structured Query Language) ist die gängigste und am häufigsten verwendete
 
     Der Bildschirm wird aktualisiert, und die Ausgabe der Abfrage wird angezeigt.
 
-    ![Hive-Abfrageausgabe in HDInsight](./media/apache-spark-jupyter-spark-sql-use-portal/hdinsight-spark-get-started-hive-query-output.png "Hive-Abfrageausgabe in HDInsight")
+    :::image type="content" source="./media/apache-spark-jupyter-spark-sql-use-portal/hdinsight-spark-get-started-hive-query-output.png " alt-text="Ausgabe der Hive-Abfrage in HDInsight" border="true":::
 
 1. Wählen Sie im Menü **Datei** des Notebooks die Option **Schließen und Anhalten** aus. Durch Herunterfahren des Notebooks werden die Clusterressourcen freigegeben.
 
@@ -128,7 +128,7 @@ HDInsight speichert Ihre Daten in Azure Storage oder Azure Data Lake Storage, so
 
 Wechseln Sie zurück zum Azure-Portal, und wählen Sie **Löschen** aus.
 
-![Azure-Portal: Löschen eines HDInsight-Clusters](./media/apache-spark-jupyter-spark-sql-use-portal/hdinsight-azure-portal-delete-cluster.png "Löschen eines HDInsight-Clusters")
+:::image type="content" source="./media/apache-spark-jupyter-spark-sql-use-portal/hdinsight-azure-portal-delete-cluster.png " alt-text="Azure-Portal: Löschen eines HDInsight-Clusters" border="true":::
 
 Sie können auch den Namen der Ressourcengruppe auswählen, um die Seite für die Ressourcengruppe zu öffnen, und dann **Ressourcengruppe löschen** auswählen. Indem Sie die Ressourcengruppe löschen, löschen Sie sowohl den HDInsight-Cluster als auch das Standardspeicherkonto.
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/10/2021
 ms.author: duau
-ms.openlocfilehash: 4a75931017bbde24c17ecdc0da498547c6088682
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: bb5efa11bcc723d0f373ae00cf7629a59b4a2ca9
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104581523"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105959805"
 ---
 # <a name="expressroute-connectivity-partners-and-peering-locations"></a>ExpressRoute-Konnektivitätspartner und Peeringstandorte
 
@@ -167,7 +167,7 @@ Die folgende Tabelle enthält die Standorte nach Service Provider. [Hier](expres
 | **[Telehouse - KDDI](https://www.telehouse.net/solutions/cloud-services/cloud-link)** |Unterstützt |Unterstützt |London, London2, Singapur2 |
 | **Telenor** |Unterstützt |Unterstützt |Amsterdam, London, Oslo |
 | **[Telia Carrier](https://www.teliacarrier.com/)** | Unterstützt | Unterstützt |Amsterdam, Chicago, Dallas, Frankfurt, Hongkong, London, Oslo, Paris, Silicon Valley, Stockholm, Washington DC |
-| **[Telin](https://www.telin.net/)** | Unterstützt | Unterstützt |Jakarta |
+| **[Telin](https://www.telin.net/product/data-connectivity/telin-cloud-exchange)** | Unterstützt | Unterstützt |Jakarta |
 | **Telmex Uninet**| Unterstützt | Unterstützt | Dallas |
 | **[Telstra Corporation](https://www.telstra.com.au/business-enterprise/network-services/networks/cloud-direct-connect/)** |Unterstützt |Unterstützt |Melbourne, Singapur, Sydney |
 | **[Telus](https://www.telus.com)** |Unterstützt |Unterstützt |Montreal, Seattle, Quebec City, Toronto, Vancouver |
@@ -255,7 +255,7 @@ Wenn Sie an einem Remotestandort nicht über Glasfaserkonnektivität verfügen o
 
 | **Konnektivitätsanbieter** | **Exchange** | **Speicherorte** |
 | --- | --- | --- |
-| **[1CLOUDSTAR](https://www.1cloudstar.com/service/cloudconnect-azure-expressroute/)** |Equinix |Singapur |
+| **[1CLOUDSTAR](https://www.1cloudstar.com/service/cloudconnect-azure-expressroute/)** | Equinix |Singapur |
 | **[Airgate Technologies, Inc.](https://www.airgate.ca/)** | Equinix, Cologix | Toronto, Montreal |
 | **[Alaska Communications](https://www.alaskacommunications.com/Business)** |Equinix |Seattle |
 | **[Altice Business](https://golightpath.com/transport)** |Equinix |New York, Washington DC |
@@ -263,10 +263,10 @@ Wenn Sie an einem Remotestandort nicht über Glasfaserkonnektivität verfügen o
 | **[Axtel](https://alestra.mx/landing/expressrouteazure/)** |Equinix |Dallas|
 | **[Beanfield Metroconnect](https://www.beanfield.com/business/cloud-exchange)** |Megaport |Toronto|
 | **[Bezeq International Ltd.](https://www.bezeqint.net/english)** | euNetworks | London |
-| **[BICS](https://bics.com/bics-solutions-suite/cloud-connect/)** | Equinix | Amsterdam, Frankfurt, London, Singapur, Washington DC |https://www.chief.com.tw/
+| **[BICS](https://bics.com/bics-solutions-suite/cloud-connect/)** | Equinix | Amsterdam, Frankfurt, London, Singapur, Washington DC |
 | **[BroadBand Tower, Inc.](https://www.bbtower.co.jp/product-service/data-center/network/dcconnect-for-azure/)** | Equinix | Tokio |
 | **[C3ntro Telecom](https://www.c3ntro.com/data/express-route)** | Equinix, Megaport | Dallas |
-| **[Chief]()** | Equinix | Hongkong (SAR) |
+| **[Chief](https://www.chief.com.tw/)** | Equinix | Hongkong (SAR) |
 | **[Cinia](https://www.cinia.fi/en/services/connectivity-services/direct-public-cloud-connection.html)** | Equinix, Megaport | Frankfurt, Hamburg |
 | **[CloudXpress](https://www2.telenet.be/fr/business/produits-services/internet/cloudxpress/)** | Equinix | Amsterdam | 
 | **[CMC Telecom](https://cmctelecom.vn/san-pham/value-added-service-and-it/cmc-telecom-cloud-express-en/)** | Equinix | Singapur | 

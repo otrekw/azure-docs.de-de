@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 03/13/2020
-ms.openlocfilehash: 1bbf3cbffe2ab51f10e86dc3b9fe4ea6040a7911
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 1fb36b30385abc72fb0966c928e0dd6f8ea80e73
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98930277"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104865926"
 ---
 # <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-arm-template"></a>Schnellstart: Erstellen eines Apache Spark-Clusters in Azure HDInsight mithilfe einer ARM-Vorlage
 
@@ -22,7 +22,7 @@ Bei gemeinsamer Verwendung mehrerer Cluster empfiehlt sich die Erstellung eines 
 
 Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen**. Die Vorlage wird im Azure-Portal geöffnet.
 
-[![In Azure bereitstellen](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-spark-linux%2Fazuredeploy.json)
+[:::image type="icon" source="../../media/template-deployments/deploy-to-azure.svg" alt-text="Bereitstellen in Azure":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-spark-linux%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -43,11 +43,11 @@ Zwei Azure-Ressourcen sind in der Vorlage definiert:
 
 1. Wählen Sie unten die Schaltfläche **In Azure bereitstellen** aus, um sich bei Azure anzumelden und die ARM-Vorlage zu öffnen.
 
-    [![In Azure bereitstellen](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-spark-linux%2Fazuredeploy.json)
+    [:::image type="icon" source="../../media/template-deployments/deploy-to-azure.svg" alt-text="Bereitstellen in Azure":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-spark-linux%2Fazuredeploy.json)
 
 1. Geben Sie folgende Werte ein bzw. wählen diese aus:
 
-    |Eigenschaft |BESCHREIBUNG |
+    |Eigenschaft |Beschreibung |
     |---|---|
     |Subscription|Wählen Sie in der Dropdownliste das Azure-Abonnement aus, das für den Cluster verwendet wird.|
     |Resource group|Wählen Sie in der Dropdownliste Ihre vorhandene Ressourcengruppe oder die Option **Neu erstellen** aus.|
@@ -58,7 +58,7 @@ Zwei Azure-Ressourcen sind in der Vorlage definiert:
     |SSH-Benutzername|Geben Sie den Benutzernamen an, der Standardwert ist **sshuser**.|
     |SSH-Kennwort|Geben Sie das Kennwort an.|
 
-    ![Erstellen eines Spark-Clusters in HDInsight unter Verwendung einer Azure Resource Manager-Vorlage](./media/apache-spark-jupyter-spark-sql/resource-manager-template-spark.png "Erstellen eines Spark-Clusters in HDInsight unter Verwendung einer Azure Resource Manager-Vorlage")
+    :::image type="content" source="./media/apache-spark-jupyter-spark-sql/resource-manager-template-spark.png " alt-text="Erstellen eines Spark-Clusters in HDInsight unter Verwendung einer Azure Resource Manager-Vorlage" border="true":::
 
 1. Sehen Sie sich die **GESCHÄFTSBEDINGUNGEN** an. Wählen Sie anschließend **Ich stimme den oben genannten Geschäftsbedingungen zu** und dann **Kaufen** aus. Sie erhalten eine Benachrichtigung, dass die Bereitstellung derzeit durchgeführt wird. Das Erstellen eines Clusters dauert ca. 20 Minuten.
 
@@ -76,15 +76,15 @@ Nachdem der Cluster erstellt wurde, erhalten Sie die Benachrichtigung **Bereitst
 
 2. Wählen Sie **HDInsight-Cluster** und dann den von Ihnen erstellten Cluster aus.
 
-    ![Öffnen eines HDInsight-Clusters im Azure-Portal](./media/apache-spark-jupyter-spark-sql/azure-portal-open-hdinsight-cluster.png)
+    :::image type="content" source="./media/apache-spark-jupyter-spark-sql/azure-portal-open-hdinsight-cluster.png" alt-text="Öffnen eines HDInsight-Clusters im Azure-Portal" border="true":::
 
 3. Wählen Sie im Portal im Abschnitt **Clusterdashboards** die Option **Jupyter Notebook** aus. Geben Sie die Anmeldeinformationen für den Cluster ein, wenn Sie dazu aufgefordert werden.
 
-   ![Öffnen von Jupyter Notebook zum Ausführen einer interaktiven Spark SQL-Abfrage](./media/apache-spark-jupyter-spark-sql/hdinsight-spark-open-jupyter-interactive-spark-sql-query.png "Öffnen von Jupyter Notebook zum Ausführen einer interaktiven Spark SQL-Abfrage")
+   :::image type="content" source="./media/apache-spark-jupyter-spark-sql/hdinsight-spark-open-jupyter-interactive-spark-sql-query.png " alt-text="Öffnen von Jupyter Notebook zum Ausführen einer interaktiven Spark SQL-Abfrage" border="true":::
 
 4. Wählen Sie **Neu** > **PySpark** aus, um ein Notebook zu erstellen.
 
-   ![Erstellen einer Jupyter Notebook-Datei zum Ausführen einer interaktiven Spark SQL-Abfrage](./media/apache-spark-jupyter-spark-sql/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png "Erstellen einer Jupyter Notebook-Instanz zum Ausführen einer interaktiven Spark SQL-Abfrage")
+   :::image type="content" source="./media/apache-spark-jupyter-spark-sql/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png " alt-text="Erstellen einer Jupyter Notebook-Datei zum Ausführen einer interaktiven Spark SQL-Abfrage" border="true":::
 
    Ein neues Notebook mit dem Namen „Untitled“ (Untitled.pynb) wird erstellt und geöffnet.
 
@@ -94,7 +94,7 @@ SQL (Structured Query Language) ist die gängigste und am häufigsten verwendete
 
 1. Überprüfen Sie, ob der Kernel bereit ist. Der Kernel ist bereit, wenn im Notebook neben dem Kernelnamen ein leerer Kreis angezeigt wird. Ein ausgefüllter Kreis gibt an, dass der Kernel ausgelastet ist.
 
-    ![Kernelstatus](./media/apache-spark-jupyter-spark-sql/jupyter-spark-kernel-status.png "Kernelstatus")
+    :::image type="content" source="./media/apache-spark-jupyter-spark-sql/jupyter-spark-kernel-status.png " alt-text="Kernel-Status" border="true":::
 
     Wenn Sie das Notebook zum ersten Mal starten, führt der Kernel im Hintergrund einige Aufgaben durch. Warten Sie, bis der Kernel bereit ist.
 
@@ -107,7 +107,7 @@ SQL (Structured Query Language) ist die gängigste und am häufigsten verwendete
 
     Wenn Sie eine Jupyter Notebook-Datei mit Ihrem HDInsight-Cluster verwenden, erhalten Sie eine vordefinierte `spark`-Sitzung, die Sie zum Ausführen von Hive-Abfragen mit Spark SQL verwenden können. `%%sql` weist Jupyter Notebook an, die vordefinierte `spark`-Sitzung für die Ausführung der Hive-Abfrage zu verwenden. Die Abfrage ruft die ersten zehn Zeilen aus einer Hive-Tabelle (**hivesampletable**) ab, die standardmäßig in allen HDInsight-Clustern enthalten ist. Wenn Sie die Abfrage erstmals übermitteln, erstellt Jupyter eine Spark-Anwendung für das Notebook. Dieser Vorgang dauert ungefähr 30 Sekunden. Sobald die Spark-Anwendung bereit ist, wird die Abfrage innerhalb etwa einer Sekunde ausgeführt, und die Ergebnisse werden zurückgegeben. Die Ausgabe sieht wie folgt aus:
 
-    ![Apache Hive-Abfrage in HDInsight](./media/apache-spark-jupyter-spark-sql/hdinsight-spark-get-started-hive-query.png "Hive-Abfrage in HDInsight")
+    :::image type="content" source="./media/apache-spark-jupyter-spark-sql/hdinsight-spark-get-started-hive-query.png " alt-text="Apache Hive-Abfrage in HDInsight" border="true":::
 
     Bei jeder Ausführung einer Abfrage in Jupyter wird auf der Titelleiste Ihres Webbrowserfensters neben dem Notebooktitel der Status **(Beschäftigt)** angezeigt. Außerdem sehen Sie in der rechten oberen Ecke einen ausgefüllten Kreis neben dem Text **PySpark**.
 
@@ -120,7 +120,7 @@ SQL (Structured Query Language) ist die gängigste und am häufigsten verwendete
 
     Der Bildschirm wird aktualisiert, und die Ausgabe der Abfrage wird angezeigt.
 
-    ![Hive-Abfrageausgabe in HDInsight](./media/apache-spark-jupyter-spark-sql/hdinsight-spark-get-started-hive-query-output.png "Hive-Abfrageausgabe in HDInsight")
+    :::image type="content" source="./media/apache-spark-jupyter-spark-sql/hdinsight-spark-get-started-hive-query-output.png " alt-text="Ausgabe der Hive-Abfrage in HDInsight" border="true":::
 
 1. Wählen Sie im Menü **Datei** des Notebooks die Option **Schließen und Anhalten** aus. Durch Herunterfahren des Notebooks werden die Clusterressourcen freigegeben (einschließlich der Spark-Anwendung).
 
@@ -130,7 +130,7 @@ Nachdem Sie den Schnellstart abgeschlossen haben, können Sie den Cluster lösch
 
 Navigieren Sie im Azure-Portal zu Ihrem Cluster, und wählen Sie **Löschen** aus.
 
-![Azure-Portal: Löschen eines HDInsight-Clusters](./media/apache-spark-jupyter-spark-sql/hdinsight-azure-portal-delete-cluster.png "Löschen eines HDInsight-Clusters")
+:::image type="content" source="./media/apache-spark-jupyter-spark-sql/hdinsight-azure-portal-delete-cluster.png " alt-text="Azure-Portal: Löschen eines HDInsight-Clusters" border="true":::
 
 Sie können auch den Namen der Ressourcengruppe auswählen, um die Seite für die Ressourcengruppe zu öffnen, und dann **Ressourcengruppe löschen** auswählen. Indem Sie die Ressourcengruppe löschen, löschen Sie sowohl den HDInsight-Cluster als auch das Standardspeicherkonto.
 

@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/07/2021
-ms.openlocfilehash: 07be5d29ccb55fe97f38123ff4a850d28cd39ead
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: ce7c97abfb879e9298edac5f38540bbc026274da
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100387681"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104584399"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>Problembehandlung für die Leistung der Kopieraktivität
 
@@ -168,7 +168,7 @@ Gehen Sie wie folgt vor, falls die Kopierleistung nicht Ihre Erwartungen erfüll
   - Erwägen Sie, die [parallelen Kopien](copy-activity-performance-features.md) allmählich zu optimieren. Beachten Sie, dass sich zu viele parallele Kopien ggf. negativ auf die Leistung auswirken können.
 
 
-## <a name="connector-and-ir-performance"></a>Leistung von Connector und Integration Runtime
+## <a name="connector-and-ir-performance"></a>Leistung von Connector und Integration Runtime 
 
 In diesem Abschnitt werden einige Hinweise zum Beheben Leistungsproblemen für bestimmte Connectortypen oder Integration Runtimes (IRs) erläutert.
 
@@ -176,9 +176,11 @@ In diesem Abschnitt werden einige Hinweise zum Beheben Leistungsproblemen für b
 
 Die Ausführungszeit für Aktivitäten variiert je nachdem, auf welcher Integration Runtime das Dataset basiert.
 
-- **Symptome:** Durch einfaches Umschalten der Dropdownliste „Verknüpfter Dienst“ im Dataset werden dieselben Pipelineaktivitäten ausgeführt, die Laufzeiten unterscheiden sich jedoch stark. Wenn das Dataset auf der Integration Runtime für verwaltete virtuelle Netzwerke basiert, dauert die Ausführung im Durchschnitt länger als 2 Minuten. Sie dauert jedoch ca. 20 Sekunden, wenn es auf der Standard-Integration Runtime basiert.
+- **Symptome:** Durch einfaches Umschalten der Dropdownliste „Verknüpfter Dienst“ im Dataset werden dieselben Pipelineaktivitäten ausgeführt, die Laufzeiten unterscheiden sich jedoch stark. Wenn das Dataset auf der Managed Virtual Network Integration Runtime basiert, dauert es im Durchschnitt länger als die Ausführung auf Basis der Standard Integration Runtime.  
 
-- **Ursache:** Wenn Sie die Details der Pipelineausführungen überprüfen, können Sie feststellen, dass die langsame Pipeline in der IR für das verwaltete VNET (virtuelles Netzwerk) ausgeführt wird, während die normale Pipeline in der Azure IR ausgeführt wird. Die Warteschlangenzeit ist im IR für das verwaltete VNET länger als in der Azur IR. Der Grund dafür ist, dass wir nicht einen Computeknoten pro Data Factory reservieren und somit vor dem Starten jeder Kopieraktivität eine Aufwärmphase von ca. 2 Minuten erfolgt. Dies geschieht hauptsächlich beim Beitritt zu einem VNET statt in der Azure IR.
+- **Ursache:** Wenn Sie die Details der Pipelineausführungen überprüfen, können Sie feststellen, dass die langsame Pipeline in der IR für das verwaltete VNET (virtuelles Netzwerk) ausgeführt wird, während die normale Pipeline in der Azure IR ausgeführt wird. Die Warteschlangenzeit ist im IR für das verwaltete VNET länger als in der Azur IR. Der Grund dafür ist, dass wir nicht einen Computerknoten pro Data Factory reservieren und somit vor dem Starten jeder Kopieraktivität eine Aufwärmphase von  erfolgt. Dies geschieht hauptsächlich beim Beitritt zu einem VNET statt in der Azure IR. 
+
+
 
     
 ### <a name="low-performance-when-loading-data-into-azure-sql-database"></a>Geringe Leistung beim Laden von Daten in Azure SQL-Datenbank

@@ -1,16 +1,14 @@
 ---
 title: Debuggen von Azure Service Fabric-Apps unter Windows
 description: Erfahren Sie, wie Sie mit Microsoft Azure Service Fabric erstellte Dienste auf einem lokalen Entwicklungscomputer überwachen und diagnostizieren.
-author: srrengar
 ms.topic: conceptual
 ms.date: 02/25/2019
-ms.author: srrengar
-ms.openlocfilehash: 58319b47c78a85b4f06c2c834db20f6c42cc1939
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a2502c24ef233c286872e2c265dcfdae6883f8ed
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "86247420"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105628831"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>Überwachen und Diagnostizieren von Diensten in einer Entwicklungsumgebung auf einem lokalen Computer
 > [!div class="op_single_selector"]

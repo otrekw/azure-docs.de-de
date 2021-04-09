@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 02/18/2021
 ms.author: jingwang
-ms.openlocfilehash: 17f3c31334517ad560cd40fd22b4def031279ca5
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 08ab3c9181f4fdcfc9b55bf80c53f88ff26f90ce
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101741054"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104584386"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-database-in-azure-sql-database-by-using-azure-data-factory"></a>Kopieren von Daten aus Azure Blob Storage in eine Datenbank in Azure SQL-Datenbank mithilfe von Azure Data Factory
 
@@ -90,7 +90,7 @@ In diesem Schritt erstellen Sie eine Data Factory und starten die Data Factory-B
 
    Der Name der Azure Data Factory muss *global eindeutig* sein. Wenn eine Fehlermeldung zum Namenswert angezeigt wird, geben Sie einen anderen Namen für die Data Factory ein. (Verwenden Sie beispielsweise „IhrNameADFTutorialDataFactory“.) Benennungsregeln für Data Factory-Artefakte finden Sie im Thema [Azure Data Factory – Benennungsregeln](naming-rules.md).
 
-     ![Neue Data Factory](./media/doc-common-process/name-not-available-error.png)
+    :::image type="content" source="./media/doc-common-process/name-not-available-error.png" alt-text="Fehlermeldung zu neuer Data Factory für doppelten Namen":::
 
 7. Wählen Sie unter **Version** die Option **V2**.
 8. Wählen Sie oben die Registerkarte **Git-Konfiguration** aus, und aktivieren Sie das Kontrollkästchen **Git später konfigurieren**.
