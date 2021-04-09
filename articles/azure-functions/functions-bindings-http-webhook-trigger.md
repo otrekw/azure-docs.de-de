@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: a9bb87206ccb0dca56c1744d5578eac7a17418c7
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 4550be7ae8c543eea1bdfa085db6f23fe668a121
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101726392"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105025695"
 ---
 # <a name="azure-functions-http-trigger"></a>HTTP-Trigger in Azure Functions
 
@@ -596,7 +596,7 @@ Mit dieser Konfiguration ist die Funktion jetzt über die folgende Route erreich
 http://<APP_NAME>.azurewebsites.net/api/products/electronics/357
 ```
 
-Diese Konfiguration gestattet dem Funktionscode, zwei Parameter in der Adresse unterstützen: _category_ und _id_.
+Diese Konfiguration gestattet dem Funktionscode, zwei Parameter in der Adresse unterstützen: _category_ und _id_. Weitere Informationen dazu, wie Routenparameter in einer URL mit einem Token versehen werden, finden Sie unter [Routing in ASP.NET Core](/aspnet/core/fundamentals/routing#route-constraint-reference).
 
 # <a name="c"></a>[C#](#tab/csharp)
 

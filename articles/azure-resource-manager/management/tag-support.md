@@ -4,10 +4,10 @@ description: Zeigt, welche Azure-Ressourcentypen Tags unterstützen. Enthält De
 ms.topic: conceptual
 ms.date: 10/21/2020
 ms.openlocfilehash: b1f9e61b409c395a13cc6a18d21d17530f38ac7e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101722890"
 ---
 # <a name="tag-support-for-azure-resources"></a>Tagunterstützung für Azure-Ressourcen
@@ -845,7 +845,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | ReservationRecommendations | Nein | Nein |
 > | ReservationSummaries | Nein | Nein |
 > | ReservationTransactions | Nein | Nein |
-> | `Tags` | Nein | Nein |
+> | Tags | Nein | Nein |
 > | tenants | Nein | Nein |
 > | Begriffe | Nein | Nein |
 > | UsageDetails | Nein | Nein |

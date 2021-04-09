@@ -1,16 +1,14 @@
 ---
 title: Ereignisaggregation mit der Windows Azure-Diagnose
 description: Erfahren Sie, wie Sie Ereignisse unter Verwendung von WAD zur Überwachung und Diagnose von Azure Service Fabric-Clustern aggregieren und sammeln.
-author: srrengar
 ms.topic: conceptual
 ms.date: 04/03/2018
-ms.author: srrengar
-ms.openlocfilehash: eaf40bafb68820b56fc9bf00dd4c11fbb337406f
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: bbc8efcb2600e1832ad8a37560ab231a4a7f3185
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102613458"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105626727"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Ereignisaggregation und -sammlung mit der Windows Azure-Diagnose
 > [!div class="op_single_selector"]
