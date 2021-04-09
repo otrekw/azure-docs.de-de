@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/04/2021
 ms.author: trbye
 ms.custom: devx-track-js
-ms.openlocfilehash: cc5e306aa9677c7370d03dbb26ef3fe69293a630
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: dd92cf24cf007418e52cb5091eb390b46d7a5571
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102180049"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104987743"
 ---
 Die Funktion zum Erkennen und Transkribieren von menschlicher Sprache (Spracherkennung) ist eines der zentralen Features des Speech-Diensts. In diesem Schnellstart erfahren Sie, wie Sie das Speech SDK in Ihren Apps und Produkten verwenden, um hochwertige Spracherkennungen durchzuführen.
 
@@ -62,11 +62,7 @@ Das Erkennen von Spracheingaben per Mikrofon wird **in Node.js nicht unterstütz
 
 ## <a name="recognize-from-file"></a>Erkennen aus Datei 
 
-Zum Erkennen von Sprache aus einer Audiodatei in Node.js muss ein alternatives Entwurfsmuster mit einem Pushstream verwendet werden, da das JavaScript-`File`-Objekt nicht in einer Node.js-Runtime verwendet werden kann. Der folgende Code
-
-* Erstellt einen Pushstream mithilfe von `createPushStream()`.
-* Öffnet die Datei `.wav`, indem ein Lesestream erstellt wird, und schreibt ihn in den Pushstream.
-* Erstellt eine Audiokonfiguration mithilfe des Pushstreams.
+Um die Sprache aus einer Audiodatei zu erkennen, erstellen Sie mithilfe von `fromWavFileInput()` ein `AudioConfig`-Objekt, das ein `Buffer`-Objekt akzeptiert. Initialisieren Sie dann [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest), und übergeben Sie `audioConfig` und `speechConfig`.
 
 ```javascript
 const fs = require('fs');
@@ -74,6 +70,31 @@ const sdk = require("microsoft-cognitiveservices-speech-sdk");
 const speechConfig = sdk.SpeechConfig.fromSubscription("<paste-your-subscription-key>", "<paste-your-region>");
 
 function fromFile() {
+    let audioConfig = sdk.AudioConfig.fromWavFileInput(fs.readFileSync("YourAudioFile.wav"));
+    let recognizer = new sdk.SpeechRecognizer(speechConfig, audioConfig);
+
+    recognizer.recognizeOnceAsync(result => {
+        console.log(`RECOGNIZED: Text=${result.text}`);
+        recognizer.close();
+    });
+}
+fromFile();
+```
+
+## <a name="recognize-from-in-memory-stream"></a>Erkennen über InMemory-Datenstrom
+
+Bei vielen Anwendungsfällen stammen Ihre Audiodaten wahrscheinlich aus Blobspeicher oder sind anderweitig bereits als [`ArrayBuffer`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer) oder eine ähnliche Rohdatenstruktur im Arbeitsspeicher vorhanden. Der folgende Code
+
+* Erstellt einen Pushstream mithilfe von `createPushStream()`.
+* Liest eine Datei vom Typ `.wav` mithilfe von `fs.createReadStream` zu Demonstrationszwecken. Wenn `ArrayBuffer` jedoch bereits Audiodaten enthält, können Sie direkt mit dem Schreiben von Inhalten in den Eingabestream fortfahren.
+* Erstellt eine Audiokonfiguration mithilfe des Pushstreams.
+
+```javascript
+const fs = require('fs');
+const sdk = require("microsoft-cognitiveservices-speech-sdk");
+const speechConfig = sdk.SpeechConfig.fromSubscription("<paste-your-subscription-key>", "<paste-your-region>");
+
+function fromStream() {
     let pushStream = sdk.AudioInputStream.createPushStream();
 
     fs.createReadStream("YourAudioFile.wav").on('data', function(arrayBuffer) {
@@ -89,7 +110,7 @@ function fromFile() {
         recognizer.close();
     });
 }
-fromFile();
+fromStream();
 ```
 
 Bei der Verwendung eines Pushstreams als Eingabe wird davon ausgegangen, dass es sich bei den Audiodaten um unformatiertes PCM handelt, d. h. Header werden übersprungen.

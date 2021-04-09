@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 7b3b8078a03ef0e891306f056c604545cde71459
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103489456"
 ---
 # <a name="troubleshoot-your-iot-edge-device"></a>Behandeln von Problemen bei Ihrem IoT Edge-Gerät
@@ -278,7 +278,7 @@ Zum Anzeigen von Nachrichten, die den IoT Edge-Hub durchlaufen, legen Sie die `R
 Die Module edgeHub und edgeAgent enthalten diese Laufzeitprotokoll-Umgebungsvariable, bei der der Standardwert auf `info` festgelegt wurde. Diese Umgebungsvariable kann die folgenden Werte haben:
 
 * fatal
-* Fehler
+* error
 * warning
 * info
 * debug

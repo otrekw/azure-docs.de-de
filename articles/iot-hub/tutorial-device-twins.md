@@ -16,10 +16,10 @@ ms.custom:
 - devx-track-js
 - devx-track-azurecli
 ms.openlocfilehash: 7dbc0404679927bcef1647dfdf46ce3360216a79
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98733299"
 ---
 <!-- **TODO** Update publish config with repo paths before publishing! -->
@@ -196,15 +196,15 @@ Im folgenden Screenshot ist die Ausgabe der Back-End-Anwendung dargestellt, und 
 
 ![Screenshot, der die Ausgabe der Back-End-Anwendung zeigt und auf dem das Senden einer Aktualisierung hervorgehoben ist](./media/tutorial-device-twins/BackEnd1.png)
 
-## <a name="receive-state-information"></a>Empfangen von Statusinformationen
+## <a name="receive-state-information&quot;></a>Empfangen von Statusinformationen
 
 Ihre Back-End-Anwendung empfängt Statusinformationen von einem Gerät als gemeldete Eigenschaften. Ein Gerät legt die gemeldeten Eigenschaften fest und sendet sie an Ihren Hub. Eine Back-End-Anwendung kann die aktuellen Werte der gemeldeten Eigenschaften vom Gerätezwilling lesen, der in Ihrem Hub gespeichert ist.
 
-### <a name="send-reported-properties-from-a-device"></a>Senden von gemeldeten Eigenschaften von einem Gerät
+### <a name=&quot;send-reported-properties-from-a-device&quot;></a>Senden von gemeldeten Eigenschaften von einem Gerät
 
 Sie können Aktualisierungen für Werte von gemeldeten Eigenschaften als Patch senden. Der folgende Codeausschnitt enthält eine Vorlage für den Patch, der vom simulierten Gerät gesendet wird. Das simulierte Gerät aktualisiert die Felder im Patch, bevor dieser an den Hub gesendet wird:
 
-[!code-javascript[Reported properties patches](~/iot-samples-node/iot-hub/Tutorials/DeviceTwins/SimulatedDevice.js?name=reportedpatch&highlight=2 "Reported properties patches")]
+[!code-javascript[Reported properties patches](~/iot-samples-node/iot-hub/Tutorials/DeviceTwins/SimulatedDevice.js?name=reportedpatch&highlight=2 &quot;Reported properties patches")]
 
 Für das simulierte Gerät wird die folgende Funktion verwendet, um den Patch mit den gemeldeten Eigenschaften an den Hub zu senden:
 
