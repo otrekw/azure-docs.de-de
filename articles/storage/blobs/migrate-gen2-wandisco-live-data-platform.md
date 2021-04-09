@@ -10,10 +10,10 @@ ms.service: storage
 ms.custom: references_regions
 ms.subservice: data-lake-storage-gen2
 ms.openlocfilehash: a0d02530ba2b8758b467b77ff639437675e4cc81
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99508928"
 ---
 # <a name="meet-demanding-migration-requirements-with-wandisco-livedata-platform-for-azure-preview"></a>WANdisco LiveData Platform for Azure (Vorschauversion) für anspruchsvolle Migrationsanforderungen
@@ -103,7 +103,7 @@ LiveData Plane for Azure stellt die Datenkonsistenz ohne nennenswerte Auswirkung
 
 - Testen Sie den LiveData Migrator, auch wenn Sie über keinen lokalen Hadoop-Cluster verfügen, in der [HDFS Sandbox](https://docs.wandisco.com/live-data-platform/docs/create-sandbox-intro/).
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="see-also"></a>Siehe auch
 
 - [LiveData Migrator for Azure auf Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/wandisco.ldm?tab=Overview)
 
