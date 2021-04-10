@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.openlocfilehash: e93d03ac9ec404a18b480a0cd1bfe289944b60d8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101689095"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bonusly"></a>Tutorial: Azure Active Directory-Integration mit Bonusly
@@ -124,13 +124,13 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Bonusly
 
     c. Abmelde-URL
 
-### <a name="configure-bonusly-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für Bonusly
+### <a name="configure-bonusly-single-sign-on&quot;></a>Konfigurieren des einmaligen Anmeldens für Bonusly
 
 1. Melden Sie sich in einem anderen Browserfenster bei Ihrem **Bonusly**-Mandanten an.
 
 1. Klicken Sie in der Symbolleiste oben auf **Einstellungen**, und wählen Sie dann **Integrationen und Apps** aus.
 
-    ![Abschnitt „Soziale Netzwerke“ von Bonusly](./media/bonus-tutorial/ic773686.png "Bonus.ly")
+    ![Abschnitt „Soziale Netzwerke“ von Bonusly](./media/bonus-tutorial/ic773686.png &quot;Bonus.ly")
 1. Wählen Sie unter **Einmaliges Anmelden** **SAML** aus.
 
 1. Führen Sie auf der Dialogseite **SAML** die folgenden Schritte aus:
@@ -197,7 +197,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
-### <a name="create-bonusly-test-user"></a>Erstellen eines Bonusly-Testbenutzers
+### <a name="create-bonusly-test-user&quot;></a>Erstellen eines Bonusly-Testbenutzers
 
 Damit sich Azure AD-Benutzer bei Bonusly anmelden können, müssen sie in Bonusly bereitgestellt werden. Im Fall von Bonusly ist die Bereitstellung eine manuelle Aufgabe.
 
@@ -210,7 +210,7 @@ Damit sich Azure AD-Benutzer bei Bonusly anmelden können, müssen sie in Bonusl
 
 1. Klicken Sie auf **Einstellungen**.
 
-    ![Einstellungen](./media/bonus-tutorial/ic781041.png "Einstellungen")
+    ![Einstellungen](./media/bonus-tutorial/ic781041.png &quot;Einstellungen")
 
 1. Klicken Sie auf die Registerkarte **Users and bonuses** .
 

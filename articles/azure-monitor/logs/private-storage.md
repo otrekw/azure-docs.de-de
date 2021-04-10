@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: noakup
 ms.author: noakuper
 ms.date: 09/03/2020
-ms.openlocfilehash: 69b5927c73dac14c76b94a4ee5bbb21449f8ec98
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a6d4c5811c08aa8c4de2eeea5f5f53967c3006b2
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102047451"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105025355"
 ---
 # <a name="using-customer-managed-storage-accounts-in-azure-monitor-log-analytics"></a>Verwenden von kundenseitig verwalteten Speicherkonten in Azure Monitor Log Analytics
 
@@ -50,7 +50,7 @@ Damit das Speicherkonto erfolgreich eine Verbindung mit Ihrer Private Link-Insta
 * Es muss den Zugriff auf das Speicherkonto durch Azure Monitor zulassen. Wenn Sie nur ausgewählten Netzwerken den Zugriff auf Ihr Speicherkonto gestatten möchten, sollten Sie die folgende Ausnahme auswählen: „Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben“.
 ![Abbildung zu vertrauenswürdigen Microsoft-Diensten für ein Speicherkonto](./media/private-storage/storage-trust.png)
 * Wenn Ihr Arbeitsbereich auch Datenverkehr aus anderen Netzwerken verarbeitet, sollten Sie das Speicherkonto so konfigurieren, dass eingehender Datenverkehr aus diesen Netzwerken/dem Internet zugelassen wird.
-* Koordinieren Sie die TLS-Version zwischen den Agents und dem Speicherkonto. Es wird empfohlen, Daten mit TLS 1.2 oder höher an Log Analytics zu senden. Lesen Sie die [plattformspezifischen Anleitungen](https://docs.microsoft.com/azure/azure-monitor/logs/data-security#sending-data-securely-using-tls-12) und, falls erforderlich, [Konfigurieren Ihrer Agents für TLS 1.2](https://docs.microsoft.com/azure/azure-monitor/agents/agent-windows#configure-agent-to-use-tls-12). Wenn das aus irgendeinem Grund nicht möglich ist, sollten Sie das Speicherkonto so konfigurieren, das TLS 1.0 akzeptiert wird.
+* Koordinieren Sie die TLS-Version zwischen den Agents und dem Speicherkonto. Es wird empfohlen, Daten mit TLS 1.2 oder höher an Log Analytics zu senden. Lesen Sie die [plattformspezifischen Anleitungen](./data-security.md#sending-data-securely-using-tls-12) und, falls erforderlich, [Konfigurieren Ihrer Agents für TLS 1.2](../agents/agent-windows.md#configure-agent-to-use-tls-12). Wenn das aus irgendeinem Grund nicht möglich ist, sollten Sie das Speicherkonto so konfigurieren, das TLS 1.0 akzeptiert wird.
 
 ### <a name="using-a-customer-managed-storage-account-for-cmk-data-encryption"></a>Verwenden eines kundenseitig verwalteten Speicherkontos für die CMK-Datenverschlüsselung
 Azure Storage verschlüsselt alle ruhenden Daten in einem Speicherkonto. Standardmäßig werden von Microsoft verwaltete Schlüssel (MMK) zum Verschlüsseln der Daten verwendet. Azure Storage erlaubt jedoch auch die Verwendung von CMK aus Azure Key Vault zum Verschlüsseln der Speicherdaten. Sie können entweder Ihre eigenen Schlüssel in Azure Key Vault importieren oder Schlüssel über die Azure Key Vault-APIs generieren.

@@ -4,10 +4,10 @@ description: Erfahren Sie mehr über Lösungsarchitektur, Netzwerkvorbereitung, 
 ms.date: 02/18/2021
 ms.topic: how-to
 ms.openlocfilehash: ed75995b7cbc3b051d77942698a5d0d948e6eef0
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104781805"
 ---
 # <a name="about-azure-defender-for-iot-network-setup"></a>Azure Defender für IoT: Netzwerkeinrichtung
@@ -559,7 +559,7 @@ Gehen Sie diese Liste vor der Bereitstellung durch:
 
 Mithilfe einer Übersicht des Industrienetzwerkdiagramms können Sie den richtigen Standort für die Defender für IoT-Ausrüstung bestimmen.
 
-1.  Sehen Sie sich ein globales Netzwerkdiagramm der industriellen OT-Umgebung an. Zum Beispiel:
+1.  Sehen Sie sich ein globales Netzwerkdiagramm der industriellen OT-Umgebung an. Beispiel:
 
     :::image type="content" source="media/how-to-set-up-your-network/ot-global-network-diagram.png" alt-text="Diagramm der industriellen OT-Umgebung für das globale Netzwerk.":::
 
@@ -601,7 +601,7 @@ Mithilfe einer Übersicht des Industrienetzwerkdiagramms können Sie den richtig
 
     Wie lautet die Richtlinie des Anbieters? __________________________________ 
 
-    Zum Beispiel:
+    Beispiel:
 
     - Siemens
 
@@ -691,6 +691,6 @@ Wenden Sie sich an einen Active Directory-Administrator, um eine Active Director
 | Kamera | |
 | Röntgengerät | |
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="see-also"></a>Siehe auch
 
 [Informationen zur Installation von Defender für IoT](how-to-install-software.md)

@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/16/2020
+ms.date: 03/22/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6b0bdc5a5b58c205d888c8892a4333225a9b316f
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: c42c6465af8e895d833332be847c134b97ee8ddc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100557144"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104781295"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>Tutorial: Erstellen von Benutzerflows in Azure Active Directory B2C
 
@@ -25,8 +25,9 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 > [!div class="checklist"]
 > * Erstellen eines Benutzerflows für Registrierung und Anmeldung
+> * Aktivieren der Self-Service-Kennwortzurücksetzung
 > * Erstellen eines Benutzerflows für die Profilbearbeitung
-> * Erstellen eines Benutzerflows zur Kennwortrücksetzung
+
 
 In diesem Tutorial wird gezeigt, wie Sie einige empfohlene Benutzerflows über das Azure-Portal erstellen. Wenn Sie Informationen zum Einrichten eines Flows für Kennwortanmeldeinformationen von Ressourcenbesitzern (ROPC) in Ihrer Anwendung benötigen, lesen Sie den Artikel [Konfigurieren des Flows für Kennwortanmeldeinformationen von Ressourcenbesitzern in Azure AD B2C](add-ropc-policy.md).
 
@@ -85,6 +86,24 @@ Der Benutzerflow für Registrierung und Anmeldung verarbeitet die Benutzeroberfl
 > [!NOTE]
 > Die Benutzeroberfläche für „Benutzerflow ausführen“ ist derzeit nicht mit dem SPA-URL-Antworttyp kompatibel, für den der Autorisierungscodeflow verwendet wird. Wenn Sie die Benutzeroberfläche für „Benutzerflow ausführen“ mit dieser Art von App nutzen möchten, müssen Sie eine Antwort-URL vom Typ „Web“ registrieren und den impliziten Flow wie [hier](tutorial-register-spa.md) beschrieben aktivieren.
 
+## <a name="enable-self-service-password-reset"></a>Aktivieren der Self-Service-Kennwortzurücksetzung
+
+So aktivieren Sie die [Self-Service-Kennwortzurücksetzung](add-password-reset-policy.md) für den Benutzerflow für die Registrierung oder Anmeldung:
+
+1. Wählen Sie den von Ihnen erstellten Registrierungs- oder Anmeldebenutzerflow aus.
+1. Wählen Sie im Menü auf der linken Seite unter **Einstellungen** die Option **Eigenschaften** aus.
+1. Wählen Sie unter **Kennwortkomplexität** die Option **Self-Service-Kennwortzurücksetzung** aus.
+1. Wählen Sie **Speichern** aus.
+
+### <a name="test-the-user-flow"></a>Testen des Benutzerflows
+
+1. Wählen Sie den von Ihnen erstellten Benutzerflow aus, um die entsprechende Übersichtsseite zu öffnen, und wählen Sie dann **Benutzerflow ausführen** aus.
+1. Wählen Sie für **Anwendung** die Webanwendung *webapp1* aus, die Sie zuvor registriert haben. Als **Antwort-URL** sollte `https://jwt.ms` angezeigt werden.
+1. Wählen Sie **Benutzerflow ausführen** aus.
+1. Wählen Sie auf der Seite für die Registrierung oder Anmeldung den Link **Kennwort vergessen?** aus.
+1. Überprüfen Sie die E-Mail-Adresse des Kontos, das Sie zuvor erstellt haben, und wählen Sie **Weiter** aus.
+1. Sie haben nun die Möglichkeit, das Kennwort des Benutzers zu ändern. Ändern Sie das Kennwort, und klicken Sie auf **Weiter**. Das Token wird an `https://jwt.ms` zurückgegeben und sollte Ihnen angezeigt werden.
+
 ## <a name="create-a-profile-editing-user-flow"></a>Erstellen eines Benutzerflows für die Profilbearbeitung
 
 Wenn Sie Benutzern die Profilbearbeitung in Ihrer Anwendung ermöglichen möchten, verwenden Sie einen Benutzerflow für die Profilbearbeitung.
@@ -103,26 +122,6 @@ Wenn Sie Benutzern die Profilbearbeitung in Ihrer Anwendung ermöglichen möchte
 1. Wählen Sie für **Anwendung** die Webanwendung *webapp1* aus, die Sie zuvor registriert haben. Als **Antwort-URL** sollte `https://jwt.ms` angezeigt werden.
 1. Klicken Sie auf **Benutzerflow ausführen**, und melden Sie sich mit dem zuvor erstellten Konto an.
 1. Sie haben jetzt die Möglichkeit, den Anzeigenamen und den Stellentitel für den Benutzer zu ändern. Klicken Sie auf **Weiter**. Das Token wird an `https://jwt.ms` zurückgegeben und sollte Ihnen angezeigt werden.
-
-## <a name="create-a-password-reset-user-flow"></a>Erstellen eines Benutzerflows zur Kennwortrücksetzung
-
-Damit Benutzer Ihrer Anwendung die eigenen Kennwörter zurücksetzten können, verwenden Sie einen Benutzerflow für die Kennwortzurücksetzung.
-
-1. Wählen Sie im Übersichtsmenü des Azure AD B2C-Mandanten die Option **Benutzerflows** und dann **Neuer Benutzerflow** aus.
-1. Wählen Sie auf der Seite **Benutzerflow erstellen** den Benutzerflow **Kennwortzurücksetzung** aus. 
-1. Wählen Sie unter **Version auswählen** die Option **Empfohlen** und dann **Erstellen** aus.
-1. Geben Sie unter **Name** einen Namen für den Benutzerflow ein. Beispiel *passwordreset1*.
-1. Aktivieren Sie unter **Identitätsanbieter** die Option **Kennwort mittels E-Mail-Adresse zurücksetzen**.
-2. Klicken Sie unter „Anwendungsansprüche“ auf **Mehr anzeigen**, und wählen Sie die Ansprüche aus, die in dem an die Anwendung gesendeten Autorisierungstoken zurückgegeben werden sollen. Wählen Sie beispielsweise **Objekt-ID des Benutzers**.
-3. Klicken Sie auf **OK**.
-4. Klicken Sie auf **Erstellen**, um den Benutzerflow hinzuzufügen. Dem Namen wird automatisch das Präfix *B2C_1* vorangestellt.
-
-### <a name="test-the-user-flow"></a>Testen des Benutzerflows
-
-1. Wählen Sie den von Ihnen erstellten Benutzerflow aus, um die entsprechende Übersichtsseite zu öffnen, und wählen Sie dann **Benutzerflow ausführen** aus.
-1. Wählen Sie für **Anwendung** die Webanwendung *webapp1* aus, die Sie zuvor registriert haben. Als **Antwort-URL** sollte `https://jwt.ms` angezeigt werden.
-1. Klicken Sie auf **Benutzerflow ausführen**, überprüfen Sie die E-Mail-Adresse des Kontos, das Sie zuvor erstellt haben, und klicken Sie auf **Weiter**.
-1. Sie haben nun die Möglichkeit, das Kennwort des Benutzers zu ändern. Ändern Sie das Kennwort, und klicken Sie auf **Weiter**. Das Token wird an `https://jwt.ms` zurückgegeben und sollte Ihnen angezeigt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

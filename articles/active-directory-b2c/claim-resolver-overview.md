@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b69492dc41786a677043df5e77c9d12aa26893f6
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 929463e346311d58da5ac75b28c774bcfe258f08
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102119772"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105557529"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Informationen zu Anspruchskonfliktlösern in benutzerdefinierten Azure Active Directory B2C-Richtlinien
 
@@ -72,12 +72,12 @@ In den folgenden Abschnitten werden die verfügbaren Anspruchskonfliktlöser auf
 | {OIDC:LoginHint} |  Der Abfragezeichenfolgen-Parameter `login_hint`. | someone@contoso.com |
 | {OIDC:MaxAge} | Das `max_age`. | – |
 | {OIDC:Nonce} |Der Abfragezeichenfolgen-Parameter `Nonce`. | defaultNonce |
-| {OIDC:Password}| Das Benutzerkennwort aus dem [Flow für Kennwortanmeldeinformationen von Ressourcenbesitzern](ropc-custom.md)| password1| 
+| {OIDC:Password}| Das Benutzerkennwort aus dem [Flow für Kennwortanmeldeinformationen von Ressourcenbesitzern](add-ropc-policy.md)| password1| 
 | {OIDC:Prompt} | Der Abfragezeichenfolgen-Parameter `prompt`. | login |
 | {OIDC:RedirectUri} |Der Abfragezeichenfolgen-Parameter `redirect_uri`. | https://jwt.ms |
 | {OIDC:Resource} |Der Abfragezeichenfolgen-Parameter `resource`. | – |
 | {OIDC:Scope} |Der Abfragezeichenfolgen-Parameter `scope`. | openid |
-| {OIDC:Username}| Der Benutzername des Benutzers aus dem [Flow für Kennwortanmeldeinformationen von Ressourcenbesitzern](ropc-custom.md)| emily@contoso.com| 
+| {OIDC:Username}| Der Benutzername des Benutzers aus dem [Flow für Kennwortanmeldeinformationen von Ressourcenbesitzern](add-ropc-policy.md)| emily@contoso.com| 
 
 ### <a name="context"></a>Kontext
 

@@ -4,12 +4,12 @@ description: Beschreibt, wie eine Begrenzung von Azure Resource Manager-Anforder
 ms.topic: conceptual
 ms.date: 12/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: 181ed1a3059d86f78e40a9949448af77a551efbc
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: c1fd707bf9f13ed88bf9acb5d2ad70d56c453a90
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97563125"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105024624"
 ---
 # <a name="throttling-resource-manager-requests"></a>Begrenzen von Resource Manager-Anforderungen
 
@@ -58,7 +58,7 @@ Der Ressourcenanbieter Microsoft.Network wendet die folgenden Drosselungsgrenzwe
 
 ### <a name="compute-throttling"></a>Computedrosselung
 
-Informationen zu Drosselungsgrenzwerten für Computevorgänge finden Sie unter [Behandeln von API-Drosselungsfehlern – Compute](../../virtual-machines/troubleshooting/troubleshooting-throttling-errors.md).
+Informationen zu Drosselungsgrenzwerten für Computevorgänge finden Sie unter [Behandeln von API-Drosselungsfehlern – Compute](/troubleshoot/azure/virtual-machines/troubleshooting-throttling-errors).
 
 Verwenden Sie zum Überprüfen von VM-Instanzen innerhalb einer VM-Skalierungsgruppe die [Vorgänge von Virtual Machine Scale Sets](/rest/api/compute/virtualmachinescalesetvms). Verwenden Sie beispielsweise die [List-Abfrage für VM-Skalierungsgruppen](/rest/api/compute/virtualmachinescalesetvms/list) mit Parametern zum Überprüfen des Betriebszustands von VM-Instanzen. Diese API reduziert die Anzahl der Anforderungen.
 
@@ -98,7 +98,7 @@ Sie können die Anzahl der verbleibenden Anforderungen durch Untersuchen der Ant
 | x-ms-ratelimit-remaining-tenant-resource-requests |Verbleibende mandantenbezogene Ressourcenanforderungen.<br /><br />Dieser Header wird nur für Anforderungen auf Mandantenebene hinzugefügt, und nur dann, wenn ein Dienst den standardmäßigen Grenzwert außer Kraft gesetzt hat. Resource Manager fügt diesen Wert anstelle der Lese- oder Schreibvorgänge des Mandanten hinzu. |
 | x-ms-ratelimit-remaining-tenant-resource-entities-read |Verbleibende mandantenbezogene Ressourcensammlungsanforderungen.<br /><br />Dieser Header wird nur für Anforderungen auf Mandantenebene hinzugefügt, und nur dann, wenn ein Dienst den standardmäßigen Grenzwert außer Kraft gesetzt hat. |
 
-Der Ressourcenanbieter kann auch Antwortheader mit Informationen zu verbleibenden Anforderungen zurückgeben. Informationen zu Antwortheadern, die vom Computeressourcenanbieter zurückgegeben werden, finden Sie unter [Aufrufrate für Informationsantwortkopfzeilen](../../virtual-machines/troubleshooting/troubleshooting-throttling-errors.md#call-rate-informational-response-headers).
+Der Ressourcenanbieter kann auch Antwortheader mit Informationen zu verbleibenden Anforderungen zurückgeben. Informationen zu Antwortheadern, die vom Computeressourcenanbieter zurückgegeben werden, finden Sie unter [Aufrufrate für Informationsantwortkopfzeilen](/troubleshoot/azure/virtual-machines/troubleshooting-throttling-errors#call-rate-informational-response-headers).
 
 ## <a name="retrieving-the-header-values"></a>Abrufen der Headerwerte
 

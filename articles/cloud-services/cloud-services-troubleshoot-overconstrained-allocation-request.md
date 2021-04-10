@@ -9,10 +9,10 @@ ms.service: cloud-services
 ms.topic: troubleshooting
 ms.date: 02/22/2021
 ms.openlocfilehash: 1b50ded166b3f62b38830b4c2d18da7c4c4f0d35
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101743425"
 ---
 # <a name="troubleshoot-overconstrainedallocationrequest-when-deploying-cloud-services-classic-to-azure"></a>Problembehandlung von OverconstrainedAllocationRequest beim Bereitstellen eines Clouddiensts (klassisch) in Azure
@@ -50,9 +50,9 @@ Die Grundursache variiert je nachdem, ob der Clouddienst **angeheftet** oder **n
 
 Befolgen Sie die Anleitungen zur Behandlung von Zuordnungsfehlern in den folgenden Szenarien.
 
-### <a name="not-pinned-to-a-cluster"></a>Nicht an einen Cluster geheftet
+### <a name="not-pinned-to-a-cluster"></a>Nicht an einen Cluster angeheftet
 
-Wenn Sie einen Clouddienst (klassisch) zum ersten Mal bereitstellen, wurde der Cluster noch nicht ausgewählt, sodass der Clouddienst nicht *angeheftet* ist. Bei Azure könnte aus folgenden Gründen ein Bereitstellungsfehler auftreten:
+Wenn Sie einen Clouddienst (klassisch) zum ersten Mal bereitstellen, wurde der Cluster noch nicht ausgewählt, sodass der Clouddienst nicht *angeheftet* ist. Bei Azure kann aus folgenden Gründen ein Bereitstellungsfehler auftreten:
 
 - Sie haben eine bestimmte Größe ausgewählt, die in der Region nicht verfügbar ist.
 - Die Kombination der Größen, die in verschiedenen Rollen benötigt werden, ist in der Region nicht verfügbar.
@@ -66,7 +66,7 @@ Wenn in diesem Szenario ein Zuordnungsfehler auftritt, sollten Sie die verfügba
 
 1. Aktualisieren Sie die Dienstdefinitionsdatei für Ihren Clouddienst (klassisch), um eine andere [Produktgröße](cloud-services-sizes-specs.md#configure-sizes-for-cloud-services) in Ihrer Region anzugeben.
 
-### <a name="pinned-to-a-cluster"></a>An einen Cluster geheftet
+### <a name="pinned-to-a-cluster"></a>An einen Cluster angeheftet
 
 Vorhandene Clouddienste werden an einen Cluster *angeheftet*. Alle weiteren Bereitstellungen für den Clouddienst (klassisch) erfolgen im gleichen Cluster.
 

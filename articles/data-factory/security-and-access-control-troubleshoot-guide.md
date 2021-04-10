@@ -6,12 +6,12 @@ ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 02/24/2021
 ms.author: lle
-ms.openlocfilehash: fa410441203c50d96c0de1d9188fb73b6fd4d577
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5e94ea989002d3d3c6d0e96123d5b8ddb5f078c3
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101706152"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105568034"
 ---
 # <a name="troubleshoot-azure-data-factory-security-and-access-control-issues"></a>Beheben von Problemen mit der Sicherheit und Zugriffssteuerung in Azure Data Factory
 
@@ -182,7 +182,7 @@ Beispiel: Die Azure Blob Storage-Senke hat Azure Integration Runtime (öffentlic
 
 #### <a name="cause"></a>Ursache
 
-ADF verwendet möglicherweise weiterhin die Integration Runtime für verwaltete VNETs, jedoch könnte ein solcher Fehler auftreten, weil der öffentliche Endpunkt für Azure Blob Storage im verwalteten VNET aufgrund des Testergebnisses nicht zuverlässig ist und die Verbindung mit Azure Blob Storage und Azure Data Lake Gen2 über einen öffentlichen Endpunkt eines verwalteten, virtuellen ADF-Netzwerks gemäß [Verwaltete virtuelle Netzwerke und verwaltete private Endpunkte](https://docs.microsoft.com/azure/data-factory/managed-virtual-network-private-endpoint#outbound-communications-through-public-endpoint-from-adf-managed-virtual-network) nicht unterstützt wird.
+ADF verwendet möglicherweise weiterhin die Integration Runtime für verwaltete VNETs, jedoch könnte ein solcher Fehler auftreten, weil der öffentliche Endpunkt für Azure Blob Storage im verwalteten VNET aufgrund des Testergebnisses nicht zuverlässig ist und die Verbindung mit Azure Blob Storage und Azure Data Lake Gen2 über einen öffentlichen Endpunkt eines verwalteten, virtuellen ADF-Netzwerks gemäß [Verwaltete virtuelle Netzwerke und verwaltete private Endpunkte](./managed-virtual-network-private-endpoint.md#outbound-communications-through-public-endpoint-from-adf-managed-virtual-network) nicht unterstützt wird.
 
 #### <a name="solution"></a>Lösung
 
