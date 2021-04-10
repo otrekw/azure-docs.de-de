@@ -4,36 +4,38 @@ description: Verwenden Sie Helm mit AKS und Azure Container Registry, um Anwendu
 services: container-service
 author: zr-msft
 ms.topic: article
-ms.date: 01/12/2021
+ms.date: 03/15/2021
 ms.author: zarhoads
-ms.openlocfilehash: 5656051ecd6e3fd39b051d2d0288e9762c83d9ad
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 4f5232920853908aa5ad714313ead201494caa0d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98249923"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103493075"
 ---
 # <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-helm"></a>Schnellstart: Entwickeln unter Azure Kubernetes Service (AKS) mit Helm
 
-[Helm][helm] ist ein Open Source-Verpackungstool, das Ihnen dabei hilft, Kubernetes-Anwendungen zu installieren und ihren Lebenszyklus zu verwalten. Ähnlich wie Linux-Paket-Manager (z.B. *APT* und *Yum*) wird Helm zur Verwaltung von Kubernetes-Diagrammen verwendet, bei denen es sich um Pakete aus vorkonfigurierten Kubernetes-Ressourcen handelt.
+[Helm][helm] ist ein Open Source-Verpackungstool, das Ihnen dabei hilft, Kubernetes-Anwendungen zu installieren und ihren Lebenszyklus zu verwalten. Ähnlich wie Linux-Paket-Manager (z. B. *APT* und *Yum*) wird Helm zur Verwaltung von Kubernetes-Charts verwendet, bei denen es sich um Pakete aus vorkonfigurierten Kubernetes-Ressourcen handelt.
 
-In diesem Artikel erfahren Sie, wie Sie das Helm-Paket zum Verpacken verwenden und eine Anwendung unter AKS ausführen können. Weitere Informationen zum Installieren einer vorhandenen Anwendung mit Helm finden Sie unter [Installieren vorhandener Anwendungen mit Helm in AKS][helm-existing].
+In diesem Schnellstart verwenden Sie Helm, um eine Anwendung in AKS zu packen und auszuführen. Weitere Informationen zum Installieren einer vorhandenen Anwendung mit Helm finden Sie in der Schrittanleitung [Installieren vorhandener Anwendungen mit Helm in AKS][helm-existing].
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* ein Azure-Abonnement. Falls Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free) erstellen.
+* Ein Azure-Abonnement. Falls Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free) erstellen.
 * Die [Azure CLI](/cli/azure/install-azure-cli) muss installiert sein.
 * [Helm v3 muss installiert sein][helm-install].
 
 ## <a name="create-an-azure-container-registry"></a>Erstellen einer Azure-Containerregistrierung
-Damit Sie Helm zum Ausführen Ihrer Anwendung in Ihrem AKS-Cluster verwenden können, benötigen Sie eine Azure Container Registry-Instanz (ACR), um darin Ihre Containerimages zu speichern. Im nachfolgenden Beispiel wird [az acr create][az-acr-create] verwendet, um mithilfe der SKU *Basic* eine ACR-Instanz mit dem Namen *MyHelmACR* in der Ressourcengruppe *MyResourceGroup* zu erstellen. Geben Sie Ihren eigenen eindeutigen Registrierungsnamen an. Der Registrierungsname muss innerhalb von Azure eindeutig sein und zwischen 5 und 50 alphanumerische Zeichen enthalten. Die *Basic*-SKU ist ein kostenoptimierter Einstiegspunkt für Entwicklungszwecke, der ein ausgewogenes Verhältnis von Speicher und Durchsatz bietet.
+Damit Sie Helm zum Ausführen Ihrer Anwendung in Ihrem AKS-Cluster verwenden können, müssen Sie Ihre Containerimages in einer Azure Container Registry-Instanz (ACR) speichern. Geben Sie Ihren eigenen, in Azure eindeutigen Registrierungsnamen an, der 5–50 alphanumerische Zeichen enthalten darf. Die *Basic*-SKU ist ein kostenoptimierter Einstiegspunkt für Entwicklungszwecke, der ein ausgewogenes Verhältnis von Speicher und Durchsatz bietet.
+
+Im nachfolgenden Beispiel wird [az acr create][az-acr-create] verwendet, um mithilfe der *Basic*-SKU eine ACR-Instanz mit dem Namen *MyHelmACR* in der Ressourcengruppe *MyResourceGroup* zu erstellen.
 
 ```azurecli
 az group create --name MyResourceGroup --location eastus
 az acr create --resource-group MyResourceGroup --name MyHelmACR --sku Basic
 ```
 
-Die Ausgabe sieht in etwa wie das folgende Beispiel aus: Notieren Sie sich den *loginServer*-Wert für Ihre ACR-Instanz, da Sie diesen in einem späteren Schritt benötigen werden. Im nachfolgenden Beispiel ist *myhelmacr.azurecr.io* der *loginServer*-Wert für *MyHelmACR*.
+Die Ausgabe ähnelt folgendem Beispiel. Notieren Sie sich den Wert von *loginServer* für Ihre ACR-Instanz, da Sie diesen in einem späteren Schritt benötigen. Im nachfolgenden Beispiel ist *myhelmacr.azurecr.io* der *loginServer*-Wert für *MyHelmACR*.
 
 ```console
 {
@@ -57,31 +59,32 @@ Die Ausgabe sieht in etwa wie das folgende Beispiel aus: Notieren Sie sich den *
 }
 ```
 
-## <a name="create-an-azure-kubernetes-service-cluster"></a>Erstellen eines Azure Kubernetes Service-Clusters
+## <a name="create-an-aks-cluster"></a>Erstellen eines AKS-Clusters
 
-Erstellen Sie einen AKS-Cluster. Der folgende Befehl erstellt einen AKS-Cluster mit dem Namen MyAKS und fügt MyHelmACR an.
+Ihr neuer AKS-Cluster benötigt Zugriff auf Ihre ACR-Instanz, um die Containerimages pullen und ausführen zu können. Verwenden Sie den folgenden Befehl, um folgende Aktionen auszuführen:
+* Erstellen Sie einen AKS-Cluster namens *MyAKS*, und fügen Sie *MyHelmACR* an.
+* Gewähren Sie dem *MyAKS*-Cluster Zugriff auf Ihre *MyHelmACR*-ACR.
+
 
 ```azurecli
 az aks create -g MyResourceGroup -n MyAKS --location eastus  --attach-acr MyHelmACR --generate-ssh-keys
 ```
 
-Ihr AKS-Cluster benötigt Zugriff auf Ihre ACR-Instanz, um dieser die Containerimages über einen Pullvorgang entnehmen und diese ausführen zu können. Der obige Befehl gewährt dem *MyAKS*-Cluster außerdem Zugriff auf Ihre *MYHelmACR*-ACR.
-
 ## <a name="connect-to-your-aks-cluster"></a>Herstellen einer Verbindung mit dem AKS-Cluster
 
-Zum Herstellen der Verbindung mit dem Kubernetes-Cluster auf Ihrem lokalen Computer verwenden Sie den Kubernetes-Befehlszeilenclient [kubectl][kubectl].
+Verwenden Sie zum lokalen Verbinden eines Kubernetes-Clusters den Kubernetes-Befehlszeilenclient [kubectl][kubectl]. `kubectl` ist bei Verwendung von Azure Cloud Shell bereits installiert. 
 
-Wenn Sie Azure Cloud Shell verwenden, ist `kubectl` bereits installiert. Mit dem Befehl [az aks install-cli][] können Sie ihn auch lokal installieren:
+1. Verwenden Sie für die lokale Installation von `kubectl` den Befehl `az aks install-cli`:
 
-```azurecli
-az aks install-cli
-```
+    ```azurecli
+    az aks install-cli
+    ```
 
-Mit dem Befehl [az aks get-credentials][] können Sie `kubectl` für die Verbindungsherstellung mit Ihrem Kubernetes-Cluster konfigurieren. Im folgenden Beispiel werden Anmeldeinformationen für den AKS-Cluster namens *MyAKS* in der Ressourcengruppe *myResourceGroup* abgerufen:
+2. Mit dem Befehl `az aks get-credentials` können Sie `kubectl` für die Verbindungsherstellung mit Ihrem Kubernetes-Cluster konfigurieren. Mit dem Befehl im folgenden Beispiel werden Anmeldeinformationen für den AKS-Cluster namens *MyAKS* in der Ressourcengruppe *MyResourceGroup* abgerufen:  
 
-```azurecli
-az aks get-credentials --resource-group MyResourceGroup --name MyAKS
-```
+    ```azurecli
+    az aks get-credentials --resource-group MyResourceGroup --name MyAKS
+    ```
 
 ## <a name="download-the-sample-application"></a>Herunterladen der Beispielanwendung
 
@@ -94,7 +97,7 @@ cd dev-spaces/samples/nodejs/getting-started/webfrontend
 
 ## <a name="create-a-dockerfile"></a>Erstellen eines Dockerfile
 
-Verwenden Sie zum Erstellen eines neuen *Dockerfile* Folgendes:
+Verwenden Sie zum Erstellen einer neuen *Dockerfile*-Datei die folgenden Befehle:
 
 ```dockerfile
 FROM node:latest
@@ -113,7 +116,7 @@ CMD ["node","server.js"]
 
 ## <a name="build-and-push-the-sample-application-to-the-acr"></a>Erstellen und Pushen der Beispielanwendung in die ACR
 
-Verwenden Sie den Befehl [az acr build][az-acr-build], um ein Image mithilfe der vorherigen Dockerfile zu erstellen und in die Registrierung zu pushen. Der Punkt (`.`) am Ende des Befehls legt den Speicherort des Dockerfile fest (in diesem Fall: das aktuelle Verzeichnis).
+Verwenden Sie den Befehl [az acr build][az-acr-build], um ein Image mithilfe des vorherigen Dockerfile zu erstellen und in die Registrierung zu pushen. Der Punkt (`.`) am Ende des Befehls legt den Speicherort des Dockerfile fest (in diesem Fall: das aktuelle Verzeichnis).
 
 ```azurecli
 az acr build --image webfrontend:v1 \
@@ -129,8 +132,8 @@ Generieren Sie Ihr Helm-Diagramm mit dem Befehl `helm create`.
 helm create webfrontend
 ```
 
-Nehmen Sie die folgenden Aktualisierungen an *webfrontend/values.yaml* vor: Ersetzen Sie den Anmeldeserver („loginServer“) Ihrer Registrierung, den Sie in einem früheren Schritt notiert haben, z. B. *myhelmacr.azurecr.io*:
-
+Aktualisieren Sie *webfrontend/values.yaml*:
+* Ersetzen Sie den Anmeldeserver („loginServer“) durch den Ihrer Registrierung, den Sie in einem früheren Schritt notiert haben, z. B. *myhelmacr.azurecr.io*.
 * Ändern Sie `image.repository` in `<loginServer>/webfrontend`.
 * Ändern Sie `service.type` in `LoadBalancer`.
 
@@ -166,13 +169,13 @@ appVersion: v1
 
 ## <a name="run-your-helm-chart"></a>Ausführen Ihres Helm-Diagramms
 
-Verwenden Sie den Befehl `helm install`, um Ihre Anwendung mithilfe Ihres Helm-Diagramms zu installieren.
+Verwenden Sie den Befehl `helm install`, um Ihre Anwendung mithilfe Ihres Helm-Charts zu installieren.
 
 ```console
 helm install webfrontend webfrontend/
 ```
 
-Es kann einige Minuten dauern, bis der Dienst eine öffentliche IP-Adresse zurückgibt. Verwenden Sie zum Überwachen des Status den Befehl `kubectl get service` mit dem *watch*-Parameter:
+Es kann einige Minuten dauern, bis der Dienst eine öffentliche IP-Adresse zurückgibt. Verwenden Sie zum Überwachen des Fortschritts den Befehl `kubectl get service` mit dem Argument `--watch`:
 
 ```console
 $ kubectl get service --watch
@@ -183,18 +186,20 @@ webfrontend         LoadBalancer  10.0.141.72   <pending>     80:32150/TCP   2m
 webfrontend         LoadBalancer  10.0.141.72   <EXTERNAL-IP> 80:32150/TCP   7m
 ```
 
-Navigieren Sie in einem Browser mithilfe der `<EXTERNAL-IP>` zum Lastenausgleich Ihrer Anwendung, um die Beispielanwendung anzuzeigen.
+Navigieren Sie in einem Browser mithilfe der `<EXTERNAL-IP>` zum Lastenausgleichsmodul Ihrer Anwendung, um die Beispielanwendung anzuzeigen.
 
 ## <a name="delete-the-cluster"></a>Löschen des Clusters
 
-Wenn der Cluster nicht mehr benötigt wird, entfernen Sie über den Befehl [az group delete][az-group-delete] die Ressourcengruppe, den AKS-Cluster, die Containerregistrierung, die darin gespeicherten Containerimages sowie alle weiteren mit dem Cluster in Verbindung stehenden Ressourcen.
+Entfernen Sie mit dem Befehl [az group delete][az-group-delete] die Ressourcengruppe, den AKS-Cluster, die Containerregistrierung, die darin gespeicherten Containerimages sowie alle weiteren zugehörigen Ressourcen.
 
 ```azurecli-interactive
 az group delete --name MyResourceGroup --yes --no-wait
 ```
 
 > [!NOTE]
-> Wenn Sie den Cluster löschen, wird der vom AKS-Cluster verwendete Azure Active Directory-Dienstprinzipal nicht entfernt. Schritte zum Entfernen des Dienstprinzipals finden Sie unter den [Überlegungen zum AKS-Dienstprinzipal und dessen Löschung][sp-delete]. Wenn Sie eine verwaltete Identität verwendet haben, wird die Identität von der Plattform verwaltet und muss nicht entfernt werden.
+> Wenn Sie den Cluster löschen, wird der vom AKS-Cluster verwendete Azure Active Directory-Dienstprinzipal nicht entfernt. Schritte zum Entfernen des Dienstprinzipals finden Sie unter den [Überlegungen zum AKS-Dienstprinzipal und dessen Löschung][sp-delete].
+> 
+> Wenn Sie eine verwaltete Identität verwendet haben, wird die Identität von der Plattform verwaltet und muss nicht entfernt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

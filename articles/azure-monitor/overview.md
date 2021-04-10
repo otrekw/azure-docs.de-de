@@ -5,12 +5,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 11/17/2019
-ms.openlocfilehash: 544d6937e412e3e1cfc2cf4e520c02f3f804fc8c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: afe6e82c3cc9773fbf0c17992fd6894d199d177f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102047161"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105937242"
 ---
 # <a name="azure-monitor-overview"></a>Azure Monitor – Übersicht
 
@@ -60,7 +60,7 @@ Azure Monitor kann Daten aus [vielen verschiedenen Quellen](monitor-reference.md
 - **Überwachungsdaten zum Azure-Abonnement**: Daten zum Betrieb und zur Verwaltung eines Azure-Abonnements sowie Daten zur Integrität und zum Betrieb von Azure selbst. 
 - **Überwachungsdaten zu Azure-Mandanten**: Daten zum Betrieb von Azure-Diensten auf Mandantenebene, z. B. Azure Active Directory.
 
-Sobald Sie ein Azure-Abonnement erstellen und damit beginnen, ihm Ressourcen hinzuzufügen, wie etwa VMs und Web-Apps, beginnt Azure Monitor mit dem Sammeln von Daten.  [Aktivitätsprotokolle](essentials/platform-logs-overview.md) zeichnen auf, wenn Ressourcen erstellt oder geändert werden. [Metriken](data-platform.md) teilen Ihnen mit, welche Leistung die Ressource aufweist und welche Ressourcen sie nutzt. 
+Sobald Sie ein Azure-Abonnement erstellen und damit beginnen, ihm Ressourcen hinzuzufügen, wie etwa VMs und Web-Apps, beginnt Azure Monitor mit dem Sammeln von Daten.  [Aktivitätsprotokolle](essentials/platform-logs-overview.md) zeichnen auf, wenn Ressourcen erstellt oder geändert werden. [Metriken](essentials/data-platform-metrics.md) teilen Ihnen mit, welche Leistung die Ressource aufweist und welche Ressourcen sie nutzt. 
 
 [Aktivieren Sie die Diagnose](essentials/platform-logs-overview.md), um Datenerfassung auf den internen Betrieb der Ressourcen zu erweitern.  [Fügen Sie einen Agent hin](agents/agents-overview.md), um Ressourcen zum Sammeln von Telemetriedaten von deren Gastbetriebssystemen zu berechnen. 
 
@@ -144,7 +144,7 @@ Bei [Azure Event Hubs](../event-hubs/index.yml) handelt es sich um eine Streamin
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen:
 
-* [Metriken und Protokolle](https://docs.microsoft.com/azure/azure-monitor/data-platform#metrics) für die von Azure Monitor gesammelten Daten
+* [Metriken und Protokolle](./data-platform.md#metrics) für die von Azure Monitor gesammelten Daten
 * [Datenquellen](agents/data-sources.md) dazu, wie die verschiedenen Komponenten Ihrer Anwendung Telemetriedaten senden
 * [Protokollabfragen](logs/log-query-overview.md) zur Analyse der gesammelten Daten
 * [Bewährte Methoden](/azure/architecture/best-practices/monitoring) zum Überwachen von Cloudanwendungen und-Diensten.

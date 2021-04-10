@@ -3,12 +3,12 @@ title: 'Tutorial: Ereignisbasierte Videoaufzeichnung in der Cloud und Wiedergabe
 description: In diesem Tutorial erfahren Sie, wie Sie Azure Live Video Analytics in Azure IoT Edge verwenden, um eine ereignisbasierte Videoaufzeichnung in der Cloud durchzuführen und sie aus der Cloud wiederzugeben.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: ea98b4c8981be9fffe7911e4c8402a8f522976f9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: de1a4d423108ddb18af4f8478c9bac60672d6062
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101702316"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106279815"
 ---
 # <a name="tutorial-event-based-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>Tutorial: Ereignisbasierte Videoaufzeichnung in der Cloud und Wiedergabe aus der Cloud
 
@@ -426,7 +426,7 @@ Sie können das Media Services-Medienobjekt, das vom Graph erstellt wurde, unter
 1. Übernehmen Sie im daraufhin angezeigten Assistenten die Standardoptionen, und wählen Sie **Hinzufügen** aus. Weitere Informationen finden Sie unter [Videowiedergabe](video-playback-concept.md).
 
     > [!TIP]
-    > Vergewissern Sie sich, [dass Ihr Streamingendpunkt aktiv ist](../latest/streaming-endpoint-concept.md).
+    > Vergewissern Sie sich, [dass Ihr Streamingendpunkt aktiv ist](../latest/stream-streaming-endpoint-concept.md).
 1. Der Player sollte das Video laden. Wählen Sie **Wiedergabe** aus, um es anzuzeigen.
 
 > [!NOTE]

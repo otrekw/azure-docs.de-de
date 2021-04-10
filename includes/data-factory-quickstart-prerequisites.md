@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: include
 ms.custom: include file
 ms.date: 06/27/2019
-ms.openlocfilehash: a979cd0a4c2ee6466edebadf61e8a98b8f17c9f3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0c21c576cbb99ccc96bf7edf733769a9b28b9344
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013356"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104611946"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -59,7 +59,8 @@ In diesem Abschnitt erstellen Sie einen Blobcontainer mit dem Namen **adftutoria
 2. Wählen Sie auf der Symbolleiste der Seite *\<Account name>*  - **Container** die Option **Container** aus.
 3. Geben Sie im Dialogfeld **Neuer Container** als Namen **adftutorial** ein, und klicken Sie auf **OK**. Die Seite *\<Account name>*  - **Container** wird aktualisiert, woraufhin die Liste der Container den Eintrag **adftutorial** enthält.
 
-   ![Liste der Container](media/data-factory-quickstart-prerequisites/list-of-containers.png)
+   :::image type="content" source="media/data-factory-quickstart-prerequisites/list-of-containers.png" alt-text="Liste der Container":::
+
 
 #### <a name="add-an-input-folder-and-file-for-the-blob-container"></a>Hinzufügen eines Eingabeordners und einer Datei für den Blobcontainer
 
@@ -82,7 +83,8 @@ Speichern Sie die Datei im Ordner **C:\ADFv2QuickStartPSH**. (Erstellen Sie den 
 3. Wählen Sie auf der Seite **Blob hochladen** das Feld **Dateien** aus. Navigieren Sie zur Datei **emp.txt**, und wählen Sie dann die Datei aus.
 4. Erweitern Sie die Überschrift **Erweitert**. Die Seite wird jetzt wie folgt angezeigt:
 
-   ![Klicken auf den Link „Erweitert“](media/data-factory-quickstart-prerequisites/upload-blob-advanced.png)
+   :::image type="content" source="media/data-factory-quickstart-prerequisites/upload-blob-advanced.png" alt-text="Klicken auf den Link „Erweitert“":::
+
 5. Geben Sie im Feld **In Ordner hochladen** den Namen **input** ein.
 6. Wählen Sie die Schaltfläche **Hochladen**. Daraufhin sollten in der Liste die Datei **emp.txt** und der Status des Uploads angezeigt werden.
 7. Wählen Sie das Symbol **Schließen** (das **X**) aus, um die Seite **Blob hochladen** zu schließen.

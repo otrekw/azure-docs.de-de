@@ -1,18 +1,18 @@
 ---
 title: Verwalten von Lesereplikaten auf flexiblen Azure Database for MySQL-Servern mithilfe der Azure-Befehlszeilenschnittstelle
 description: Erfahren Sie, wie Sie mit der Azure-Befehlszeilenschnittstelle Lesereplikate auf flexiblen Azure Database for MySQL-Servern einrichten und verwalten.
-author: ambhatna
-ms.author: ambhatna
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 10/23/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a7d63fd76a88430495c9f55200308f63b11c89d4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: bc95cd3ab471826538a551687c38d1422e4b7163
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96494306"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105108654"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-flexible-server-using-the-azure-cli"></a>Erstellen und Verwalten von Lesereplikaten auf flexiblen Azure Database for MySQL-Servern mithilfe der Azure-Befehlszeilenschnittstelle
 

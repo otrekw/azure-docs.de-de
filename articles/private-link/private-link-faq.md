@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 10/05/2019
 ms.author: allensu
-ms.openlocfilehash: 4e81d8f88a7c01b6d302bcdaa88559159bed04ea
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: d06e90a691389b99d8f439364203b921f49b2305
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101709407"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103496472"
 ---
 # <a name="azure-private-link-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zu Azure Private Link
 
@@ -54,6 +54,11 @@ Ja. Private Endpunkte können eine Verbindung mit Azure PaaS-Ressourcen zwischen
 
 ### <a name="can-i-modify-my-private-endpoint-network-interface-nic-"></a>Kann ich die Netzwerkschnittstelle (NIC) meines privaten Endpunkts ändern?
 Wenn ein privater Endpunkt erstellt wird, wird eine schreibgeschützte NIC zugewiesen. Dies kann nicht geändert werden und bleibt für den Lebenszyklus des privaten Endpunkts beibehalten.
+
+### <a name="how-do-i-achieve-availability-while-using-private-endpoints-in-case-of-regional-failures-"></a>Wie erreiche ich bei Verwendung von privaten Endpunkten Verfügbarkeit auch bei regionalen Ausfällen?
+
+Private Endpunkte sind hochverfügbare Ressourcen mit einer SLA von 99,99 % [[SLA für Azure Private Link]](https://azure.microsoft.com/support/legal/sla/private-link/v1_0/). Da es sich jedoch um regionale Ressourcen handelt, kann sich jeder Ausfall der Azure-Region auf die Verfügbarkeit auswirken. Um Verfügbarkeit bei regionalen Ausfällen sicherzustellen, können mehrere private Endpunkte, die mit derselben Zielressource verbunden sind, in unterschiedlichen Regionen bereitgestellt werden. Wenn eine Region ausfällt, können Sie auf diese Weise den Datenverkehr für Wiederherstellungsszenarien weiterhin über einen privaten Endpunkt in einer anderen Region weiterleiten, um auf die Zielressource zuzugreifen. Informationen dazu, wie regionale Ausfälle aufseiten des Zieldiensts behandelt werden, finden Sie in der Dienstdokumentation zu Failover und Wiederherstellung. Bei Private Link-Datenverkehr wird die Azure DNS-Auflösung für den Zielendpunkt befolgt. 
+
 
 ## <a name="private-link-service"></a>Private Link-Dienst
  

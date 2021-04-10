@@ -15,12 +15,12 @@ ms.date: 07/27/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: abb7f93437cd45914d3824e9f557241ba0d71162
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2cfb09f383d8425a644d3e2e87d190b350f5f41a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94835389"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105564635"
 ---
 # <a name="configure-privileged-access-group-settings-preview-in-privileged-identity-management"></a>Konfigurieren von Einstellungen für Gruppen mit privilegiertem Zugriff (Vorschau) in Privileged Identity Management
 
@@ -75,14 +75,14 @@ Bei der Konfiguration von Einstellungen für eine Rolle können Sie für jeden Z
 
 Sie können beim Typ **Berechtigt** eine dieser Optionen für die Zuweisungsdauer wählen:
 
-| | |
+| | BESCHREIBUNG |
 | --- | --- |
 | **Dauerhafte berechtigte Zuweisung zulassen** | Ressourcenadministratoren können dauerhaft berechtigte Zuweisungen veranlassen. |
 | **Berechtigte Zuweisungen laufen ab nach** | Ressourcenadministratoren können verlangen, dass alle berechtigten Zuweisungen ein bestimmtes Start- und Enddatum haben. |
 
 Beim Typ **Aktiv** können Sie eine dieser Optionen für die Zuweisungsdauer wählen:
 
-| | |
+| | BESCHREIBUNG |
 | --- | --- |
 | **Permanente aktive Zuweisung zulassen** | Ressourcenadministratoren können dauerhaft aktive Zuweisungen veranlassen. |
 | **Aktive Zuweisungen laufen ab nach** | Ressourcenadministratoren können verlangen, dass alle aktiven Zuweisungen ein bestimmtes Start- und Enddatum haben. |

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 08/06/2020
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q1
-ms.openlocfilehash: ab7a74166e85f2ba9fd73e7323cf9cd200cf32e4
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 4194c71823e1affde1dcae47fd7e64668b57c0cf
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97031027"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103149357"
 ---
 # <a name="create-compute-targets-for-model-training-and-deployment-in-azure-machine-learning-studio"></a>Erstellen von Computezielen für Modelltraining und -bereitstellung in Azure Machine Learning Studio
 
@@ -147,7 +147,7 @@ Führen Sie die [oben beschriebenen Schritte](#portal-create) aus, um eine Compu
 
 1. Geben Sie einen Namen für das Computeziel ein. 
 1. Wählen Sie den Computetyp aus, den Sie anfügen möchten. Nicht alle Computetypen können in Azure Machine Learning Studio angefügt werden. Derzeit können folgende Computetypen für das Training angefügt werden:
-    * Eine Remote-VM
+    * Eine Azure-VM (zum Anfügen einer Data Science Virtual Machine)
     * Azure Databricks (zur Verwendung in Machine Learning-Pipelines)
     * Azure Data Lake Analytics (zur Verwendung in Machine Learning-Pipelines)
     * Azure HDInsight

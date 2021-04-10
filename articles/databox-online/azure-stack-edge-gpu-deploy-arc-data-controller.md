@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: 57633df8c6482a9b0645813519991282bdbf22c1
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 53058d27e94c9fdf18d726369f6a1b75a9f34db9
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102633511"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105567541"
 ---
 # <a name="deploy-azure-data-services-on-your-azure-stack-edge-pro-gpu-device"></a>Bereitstellen von Azure Data Services auf Ihrem Azure Stack Edge Pro-GPU-Gerät
 
@@ -344,4 +344,4 @@ kubectl delete ns <Name of your namespace>
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Bereitstellen einer zustandslosen Anwendung auf Ihrem Azure Stack Edge Pro-Gerät](azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md).
+- [Bereitstellen einer zustandslosen Anwendung auf Ihrem Azure Stack Edge Pro-Gerät](./azure-stack-edge-gpu-deploy-stateless-application-kubernetes.md).

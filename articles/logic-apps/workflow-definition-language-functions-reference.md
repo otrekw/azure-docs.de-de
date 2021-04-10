@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: reference
-ms.date: 02/18/2021
-ms.openlocfilehash: 484ee9e67aa2adc11529f8a2239a813b3b12f7b2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/12/2021
+ms.openlocfilehash: 1414a7b0f17918caa16ccf854d70ea199fb42a47
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101702486"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104870193"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>Referenzhandbuch für die Verwendung von Funktionen in Ausdrücken für Azure Logic Apps und Power Automate
 
@@ -690,10 +690,10 @@ addProperty(<object>, '<property>', <value>)
 | <*updated-object*> | Object | Das aktualisierte JSON-Objekt mit der angegebenen Eigenschaft |
 ||||
 
-Verwenden Sie die folgende Syntax, um einer vorhandenen Eigenschaft eine untergeordnete Eigenschaft hinzuzufügen:
+Verwenden Sie zum Hinzufügen einer übergeordneten Eigenschaft zu einer vorhandenen Eigenschaft die `setProperty()`-Funktion und nicht die `addProperty()`-Funktion. Andernfalls gibt die Funktion nur das untergeordnete Objekt als Ausgabe zurück.
 
 ```
-addProperty(<object>['<parent-property>'], '<child-property>', <value>)
+setProperty(<object>['<parent-property>'], '<parent-property>', addProperty(<object>['<parent-property>'], '<child-property>', <value>)
 ```
 
 | Parameter | Erforderlich | type | BESCHREIBUNG |
@@ -741,7 +741,7 @@ Das aktualisierte JSON-Objekt sieht wie folgt aus:
 In diesem Beispiel wird die untergeordnete `middleName`-Eigenschaft zu der vorhandenen `customerName`-Eigenschaft in einem JSON-Objekt hinzugefügt, das mit der [JSON()](#json)-Funktion aus einer Zeichenfolge in JSON konvertiert wird. Die Funktion weist der neuen Eigenschaft den angegebenen Wert zu und gibt das aktualisierte Objekt zurück:
 
 ```
-addProperty(json('{ "customerName": { "firstName": "Sophia", "surName": "Owen" } }')['customerName'], 'middleName', 'Anne')
+setProperty(json('{ "customerName": { "firstName": "Sophia", "surName": "Owen" } }'), 'customerName', addProperty(json('{ "customerName": { "firstName": "Sophia", "surName": "Owen" } }')['customerName'], 'middleName', 'Anne'))
 ```
 
 Das aktuelle JSON-Objekt sieht wie folgt aus:
@@ -4708,16 +4708,22 @@ workflow().<property>
 
 | Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*property*> | Nein | String | Der Name der Workfloweigenschaft, deren Wert Sie abrufen möchten <p>Ein Workflowobjekt hat diese Eigenschaften: **name**, **type**, **id**, **location** und **run**. Der Wert der **run**-Eigenschaft ist ebenfalls ein Objekt, das diese Eigenschaften hat: **name**, **type** und **id**. |
+| <*property*> | Nein | String | Der Name der Workfloweigenschaft, deren Wert Sie abrufen möchten <p><p>Standardmäßig verfügt ein Workflowobjekt über folgende Eigenschaften: `name`, `type`, `id`, `location`, `run` und `tags`. <p><p>- Der Wert der `run`-Eigenschaft ist ein JSON-Objekt, das die folgenden Eigenschaften enthält: `name`, `type` und `id`. <p><p>- Die `tags`-Eigenschaft ist ein JSON-Objekt, das [-Tags, die ihrer Logik-App in Azure Logic Apps oder Flow in Power Automate](../azure-resource-manager/management/tag-resources.md) zugeordnet sind, sowie die Werte für diese Tags enthält. Weitere Informationen zu Tags in Azure-Ressourcen finden Sie unter [Tagressourcen, Ressourcengruppen und Abonnements für die logische Organisation in Azure](../azure-resource-manager/management/tag-resources.md). <p><p>**Hinweis**: Standardmäßig verfügt eine Logik-App nicht über Tags, aber ein Power Automate-Flow verfügt über die Tags `flowDisplayName` und `environmentName`. |
 |||||
 
-*Beispiel*
+*Beispiel 1*
 
 In diesem Beispiel wird der Name der aktuellen Ausführung eines Workflows zurückgegeben:
 
-```
-workflow().run.name
-```
+`workflow().run.name`
+
+*Beispiel 2*
+
+Wenn Sie die Power Automate verwenden, können Sie einen `@workflow()`-Ausdruck erstellen, der die Ausgabeeigenschaft `tags` verwendet, um die Werte aus der Eigenschaft `flowDisplayName` oder `environmentName` abzurufen.
+
+Beispielsweise können Sie aus dem Flow selbst benutzerdefinierte E-Mail-Benachrichtigungen senden, die widerum mit Ihrem Flow verlinkt sind. Diese Benachrichtigungen können einen HTML-Link enthalten, der den Anzeigenamen des Flows im E-Mail-Titel enthält und der folgenden Syntax folgt:
+
+`<a href=https://flow.microsoft.com/manage/environments/@{workflow()['tags']['environmentName']}/flows/@{workflow()['name']}/details>Open flow @{workflow()['tags']['flowDisplayName']}</a>`
 
 <a name="xml"></a>
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: tutorial
-ms.date: 05/07/2020
+ms.date: 03/17/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0f88b310bc00881e66ee8e8b5f2d40616d60315
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3b4e4892c01775b472cd8cdcf0f35b920d7e5e86
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87906914"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106055675"
 ---
 # <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users"></a>Tutorial: Masseneinladen von Benutzern für die Azure AD B2B-Zusammenarbeit
 
@@ -41,7 +41,7 @@ Die Zeilen der heruntergeladenen CSV-Vorlage lauten wie folgt:
 
 - **Versionsnummer**: Die erste Zeile, die die Versionsnummer enthält, muss in der hochzuladenden CSV-Datei enthalten sein.
 - **Spaltenüberschriften:** Das Format der Spaltenüberschriften lautet &lt;*Elementname*&gt; [Eigenschaftenname] &lt;*Required (erforderlich) oder leer*&gt;. Beispiel: `Email address to invite [inviteeEmail] Required`. Einige ältere Versionen der Vorlage können geringfügige Abweichungen aufweisen.
-- **Beispielzeile:** In der Vorlage ist eine Zeile mit Beispielen für zulässige Werte für alle Spalten enthalten. Sie müssen die Beispielzeile entfernen und durch Ihre eigenen Einträge ersetzen.
+- **Beispielzeile:** In der Vorlage ist eine Zeile mit Beispielen für Werte für alle Spalten enthalten. Sie müssen die Beispielzeile entfernen und durch Ihre eigenen Einträge ersetzen.
 
 ### <a name="additional-guidance"></a>Zusätzliche Anleitungen
 
@@ -56,18 +56,22 @@ Sie benötigen mindestens zwei Test-E-Mail-Konten, an die Sie die Einladungen se
 
 ## <a name="invite-guest-users-in-bulk"></a>Masseneinladung von Gastbenutzern
 
-1. Melden Sie sich beim Azure-Portal mit einem Konto an, das über Benutzeradministratorberechtigungen in der Organisation verfügt.
+1. Melden Sie sich beim Azure-Portal mit einem Konto an, das über Berechtigungen eines globalen Administrators in der Organisation verfügt.
 2. Klicken Sie im Navigationsbereich auf **Azure Active Directory**.
-3. Wählen Sie unter **Verwalten** die Optionen **Benutzer** > **Masseneinladung** aus.
+3. Wählen Sie unter **Verwalten** die Option **Alle Benutzer** aus.
+4. Wählen Sie **Massenvorgänge** > **Masseneinladung** aus.
+
+    ![Schaltfläche „Masseneinladung“](media/tutorial-bulk-invite/bulk-invite-button.png)
+
 4. Wählen Sie auf der Seite **Massenbenutzereinladung** die Option **Herunterladen** aus, um eine gültige CSV-Vorlage mit Einladungseigenschaften zu erhalten.
 
-    ![Downloadschaltfläche für Masseneinladungen](media/tutorial-bulk-invite/bulk-invite-button.png)
+     ![Herunterladen der CSV-Datei](media/tutorial-bulk-invite/download-button.png)
 
-5. Öffnen Sie die CSV-Vorlage, und fügen Sie eine Zeile für jeden Gastbenutzer hinzu. Erforderliche Werte:
+1. Öffnen Sie die CSV-Vorlage, und fügen Sie eine Zeile für jeden Gastbenutzer hinzu. Erforderliche Werte:
 
    * **E-Mail-Adresse für Einladung**: Der Benutzer, der eine Einladung erhält
 
-   * **Umleitungs-URL**: Die URL, an die der eingeladene Benutzer nach dem Akzeptieren der Einladung weitergeleitet wird
+   * **Umleitungs-URL**: Die URL, an die der eingeladene Benutzer nach dem Akzeptieren der Einladung weitergeleitet wird. Wenn Sie den Benutzer zur Seite „Meine Apps“ umleiten möchten, müssen Sie diesen Wert in https://myapps.microsoft.com oder https://myapplications.microsoft.com ändern.
 
     ![Beispiel für eine CSV-Datei mit eingegebenen Gastbenutzern](media/tutorial-bulk-invite/bulk-invite-csv.png)
 

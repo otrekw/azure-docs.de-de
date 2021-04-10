@@ -3,18 +3,18 @@ title: Freigeben von VM-Images für freigegebene Kataloge
 description: Erfahren Sie, wie Shared Image Gallerys verwendet werden, um Linux-VM-Images in Ihrer Organisation freizugeben.
 author: axayjo
 ms.service: virtual-machines
-ms.subservice: imaging
+ms.subservice: shared-image-gallery
 ms.topic: conceptual
 ms.workload: infrastructure
 ms.date: 10/14/2020
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: 3022e9c694d70359a90e71ecd1232e9274f92f10
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 32b4cf1555a2d0e074ae1551a5c0085f2758fa2b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98730321"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102609140"
 ---
 # <a name="shared-image-galleries-overview"></a>Übersicht über Kataloge mit freigegebenen Images
 
@@ -24,7 +24,7 @@ Katalog mit freigegebenen Images ist ein Dienst, der Ihnen hilft, Ihre Images zu
 - Versionsverwaltung und Gruppierung von Images zur einfacheren Verwaltung.
 - Hochverfügbare Images mit ZRS-Konten (zonenredundanter Speicher) in Regionen, die Verfügbarkeitszonen unterstützen. ZRS bietet bessere Ausfallsicherheit bei zonenbezogenen Fehlern.
 - Storage Premium-Support (Premium_LRS).
-- Freigeben über Abonnements hinweg und sogar zwischen Active Directory-Mandanten (AD) über RBAC.
+- Freigeben über Abonnements hinweg und sogar zwischen Active Directory-Mandanten (AD) über Azure RBAC
 - Skalieren Ihrer Bereitstellungen mit Imagereplikaten in jeder Region.
 
 Mit einem Katalog mit freigegebenen Images können Sie Ihre Images für unterschiedliche Benutzer, Dienstprinzipale oder AD-Gruppen in Ihrer Organisation freigeben. Freigegebene Images können zur schnelleren Skalierung Ihrer Bereitstellungen in mehreren Regionen repliziert werden.
@@ -104,7 +104,7 @@ Für spezialisierte virtuelle Computer wurden keine computerspezifischen Informa
 
 ## <a name="regional-support"></a>Regionsunterstützung
 
-Alle öffentlichen Regionen können Zielregionen sein, aber für die Replikation in „Australien, Mitte“ und „Australien, Mitte 2“ muss Ihr Abonnement in die Zulassungsliste aufgenommen werden. Navigieren Sie zu https://azure.microsoft.com/global-infrastructure/australia/contact/, um die Aufnahme eines Abonnements in die Zulassungsliste anzufordern.
+Alle öffentlichen Regionen können Zielregionen sein, in bestimmten Regionen ist es jedoch erforderlich, dass Kunden einen Anforderungsprozess durchlaufen, um Zugriff zu erhalten. Um anzufordern, dass ein Abonnement zur Zulassungsliste für eine Region wie „Australien, Mitte“ oder „Australien, Mitte 2“ hinzugefügt wird, senden Sie eine [Zugriffsanforderung](/troubleshoot/azure/general/region-access-request-process).
 
 ## <a name="limits"></a>Einschränkungen 
 
@@ -146,14 +146,14 @@ Die Regionen, in die eine Versionen eines freigegebenen Images repliziert wird, 
 
 ## <a name="access"></a>Zugriff
 
-Da es sich bei dem Katalog mit freigegebenen Images, der Imagedefinition und der Imageversion alles um Ressourcen handelt, lassen sich diese mithilfe der integrierten nativen Azure-RBAC-Steuerelemente freigeben. Mithilfe der rollenbasierten Zugriffssteuerung können Sie diese Ressourcen für andere Benutzer, Dienstprinzipalen und Gruppen freigeben. Sie können sogar Zugriff für Personen freigeben, die sich außerhalb des Mandanten befinden, in dem sie erstellt wurden. Sobald ein Benutzer Zugriff auf die Version eines freigegebenen Images hat, kann er einen virtuellen Computer oder eine VM-Skalierungsgruppe bereitstellen.  Im Folgenden finden Sie die Matrix für das Teilen, die dabei hilft, zu verstehen, worauf der Benutzer Zugriff erhält:
+Da es sich bei dem Katalog mit freigegebenen Images, der Imagedefinition und der Imageversion alles um Ressourcen handelt, lassen sich diese mithilfe der integrierten nativen Azure-RBAC-Steuerelemente freigeben. Mithilfe von Azure RBAC können Sie diese Ressourcen für andere Benutzer, Dienstprinzipale und Gruppen freigeben. Sie können sogar Zugriff für Personen freigeben, die sich außerhalb des Mandanten befinden, in dem sie erstellt wurden. Sobald ein Benutzer Zugriff auf die Version eines freigegebenen Images hat, kann er einen virtuellen Computer oder eine VM-Skalierungsgruppe bereitstellen.  Im Folgenden finden Sie die Matrix für das Teilen, die dabei hilft, zu verstehen, worauf der Benutzer Zugriff erhält:
 
 | Geteilt mit Benutzer     | Gemeinsamer Image-Katalog | Imagedefinition | Imageversion |
 |----------------------|----------------------|--------------|----------------------|
 | Gemeinsamer Image-Katalog | Ja                  | Ja          | Ja                  |
 | Imagedefinition     | Nein                   | Ja          | Ja                  |
 
-Zur Erzielung der besten Leistung empfiehlt sich ein Freigeben auf Katalogebene. Wir empfehlen nicht, einzelnen Imageversionen freizugeben. Weitere Informationen zu RBAC finden Sie unter [Verwalten des Zugriffs auf Azure-Ressourcen mit RBAC](../role-based-access-control/role-assignments-portal.md).
+Zur Erzielung der besten Leistung empfiehlt sich ein Freigeben auf Katalogebene. Wir empfehlen nicht, einzelnen Imageversionen freizugeben. Weitere Informationen zu Azure RBAC finden Sie unter [Zuweisen von Azure-Rollen](../role-based-access-control/role-assignments-portal.md).
 
 Images können auch, maßstäblich, freigegeben werden, sogar über eine mehrinstanzenfähige App-Registrierung zwischen Mandanten hinweg. Weitere Informationen zum Freigeben von Images zwischen Mandanten finden Sie unter „Freigeben von Katalog-VM-Images über Azure-Mandanten hinweg“ mithilfe der [Azure-Befehlszeilenschnittstelle](./linux/share-images-across-tenants.md) oder von [PowerShell](./windows/share-images-across-tenants.md).
 
@@ -325,4 +325,3 @@ Sie können Ihre Frage außerdem in [Q&A](/answers/topics/azure-virtual-machines
 ## <a name="next-steps"></a>Nächste Schritte
 
 Erfahren Sie, wie Sie freigegebene Images mit der [Azure-Befehlszeilenschnittstelle](shared-images-cli.md) oder [PowerShell](shared-images-powershell.md) bereitstellen.
-

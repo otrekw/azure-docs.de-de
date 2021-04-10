@@ -2,19 +2,21 @@
 title: 'Visual Studio Code: Erstellen von Bicep-Dateien'
 description: Hier erfahren Sie, wie Sie Visual Studio Code und die Bicep-Erweiterung für Bicep-Dateien zum Bereitstellen von Azure-Ressourcen verwenden.
 author: mumian
-ms.date: 03/02/2021
+ms.date: 03/26/2021
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: a5b5533cd87c417d03db960c477392c24fa59f8a
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 4d1064351ddfacdebfa67fd9b2f517f592de3a7c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102504149"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105612886"
 ---
 # <a name="quickstart-create-bicep-files-with-visual-studio-code"></a>Schnellstart: Erstellen von Bicep-Dateien mit Visual Studio Code
 
 Die Bicep-Erweiterung für Visual Studio Code bietet Sprachunterstützung und automatische Vervollständigung für Ressourcen. Diese Tools unterstützen Sie beim Erstellen und Überprüfen von [Bicep](./bicep-overview.md)-Dateien. In diesem Schnellstart verwenden Sie die Erweiterung, um eine Bicep-Datei von Grund auf zu erstellen. Dabei lernen Sie die Funktionen der Erweiterung kennen, z. B. die Überprüfung und Vervollständigung.
+
+[!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
 
 Für diesen Schnellstart benötigen Sie [Visual Studio Code](https://code.visualstudio.com/) mit der [Bicep-Erweiterung](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-bicep) installiert. Außerdem müssen Sie die neueste Version der [Azure CLI](/cli/azure/) oder das neueste [Azure PowerShell-Modul](/powershell/azure/new-azureps-module-az) installieren und authentifizieren.
 

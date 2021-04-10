@@ -1,28 +1,28 @@
 ---
-title: Bewerten von VMware-VMs für die Migration zu Azure VMware Solution (AVS) mit Azure Migrate
-description: Es wird beschrieben, wie Sie VMware-VMs für die Migration zu AVS bewerten, indem Sie die Azure Migrate-Serverbewertung verwenden.
+title: Bewerten von VMware-Servern für die Migration zu Azure VMware Solution (AVS) mit Azure Migrate
+description: Hier wird beschrieben, wie Sie mit Azure Migrate Server in der VMware-Umgebung für die Migration zu AVS bewerten.
 author: rashi-ms
 ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: MVC
-ms.openlocfilehash: e57084dab00210802edbd46e3380313e034eb036
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: 31bf3909012231996bd340cfa4d388f0fe20a4f5
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98566734"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104782129"
 ---
-# <a name="tutorial-assess-vmware-vms-for-migration-to-avs"></a>Tutorial: Bewerten von virtuellen VMware-Computern für die Migration zu AVS
+# <a name="tutorial-assess-vmware-servers-for-migration-to-avs"></a>Tutorial: Bewerten von VMware-Servern für die Migration zu AVS
 
 Im Rahmen Ihrer Migrationsjourney zu Azure bewerten Sie Ihre lokalen Workloads, um die Cloudbereitschaft zu messen, Risiken zu identifizieren und Kosten und Komplexität zu schätzen.
 
-In diesem Artikel wird veranschaulicht, wie Sie ermittelte virtuelle VMware-Computer (VMs) für die Migration zu Azure VMware Solution (AVS) per Azure Migrate-Serverbewertung bewerten. Bei AVS handelt es sich um einen verwalteten Dienst, mit dem Sie die VMware-Plattform in Azure ausführen.
+In diesem Artikel wird veranschaulicht, wie Sie ermittelte virtuelle VMware-Computer oder VMware-Server für die Migration zu Azure VMware Solution (AVS) per Azure Migrate bewerten. Bei AVS handelt es sich um einen verwalteten Dienst, mit dem Sie die VMware-Plattform in Azure ausführen.
 
 In diesem Tutorial lernen Sie Folgendes:
 > [!div class="checklist"]
-- Führen Sie eine Bewertung basierend auf den Computermetadaten und den Konfigurationsinformationen durch.
+- Führen Sie eine Bewertung basierend auf den Servermetadaten und den Konfigurationsinformationen durch.
 - Führen Sie eine Bewertung basierend auf den Leistungsdaten durch.
 
 > [!NOTE]
@@ -34,38 +34,42 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Stellen Sie sicher, dass Sie die zu bewertenden Computer richtig ermittelt haben, bevor Sie dieses Tutorial zum Bewerten Ihrer Computer für die Migration zu AVS durcharbeiten:
+Stellen Sie sicher, dass Sie die zu bewertenden Server richtig ermittelt haben, bevor Sie dieses Tutorial zum Bewerten Ihrer Server für die Migration zu AVS durcharbeiten:
 
-- Arbeiten Sie [dieses Tutorial](tutorial-discover-vmware.md) durch, um Computer mit der Azure Migrate-Appliance zu ermitteln. 
-- Bei der Ermittlung von Computern mit einer importierten CSV-Datei hilft Ihnen [dieses Tutorial](tutorial-discover-import.md) weiter.
+- Arbeiten Sie [dieses Tutorial](tutorial-discover-vmware.md) durch, um Server mit der Azure Migrate-Appliance zu ermitteln. 
+- Bei der Ermittlung von Servern mit einer importierten CSV-Datei hilft Ihnen [dieses Tutorial](tutorial-discover-import.md) weiter.
 
 
 ## <a name="decide-which-assessment-to-run"></a>Treffen einer Entscheidung für eine Bewertung
 
 
-Entscheiden Sie, ob Sie eine Bewertung durchführen möchten, bei der die Kriterien für die Größenanpassung auf den Daten bzw. Metadaten der Computerkonfiguration basieren, die lokal im unveränderten Zustand gesammelt werden, oder auf dynamischen Leistungsdaten.
+Entscheiden Sie, ob Sie eine Bewertung durchführen möchten, bei der die Kriterien für die Größenanpassung auf den Daten bzw. Metadaten der Server basieren, die lokal im unveränderten Zustand gesammelt werden, oder auf dynamischen Leistungsdaten.
 
 **Bewertung** | **Details** | **Empfehlung**
 --- | --- | ---
-**Aktuelle lokale Umgebung** | Bewertung basierend auf den Daten bzw. Metadaten für die Computerkonfiguration.  | Die empfohlene Knotengröße in AVS basiert auf der lokalen VM-Größe sowie auf den Einstellungen, die Sie in der Bewertung für den Knotentyp, für den Speichertyp und für tolerierbare Fehler angeben.
+**Aktuelle lokale Umgebung** | Bewertung basierend auf den Daten bzw. Metadaten für die Serverkonfiguration.  | Die empfohlene Knotengröße in AVS basiert auf der lokalen VM-/Servergröße sowie auf den Einstellungen, die Sie in der Bewertung für den Knotentyp, für den Speichertyp und für tolerierbare Fehler angeben.
 **Leistungsbasiert** | Bewertung basierend auf gesammelten dynamischen Leistungsdaten. | Die empfohlene Knotengröße in AVS basiert auf den Auslastungsdaten für CPU und Arbeitsspeicher sowie auf den Einstellungen, die Sie in der Bewertung für den Knotentyp, für den Speichertyp und für tolerierbare Fehler angeben.
+
+> [!NOTE]
+> Die AVS-Bewertung (Azure VMware Solution) kann nur für VMware-VMs bzw. -Server erstellt werden.
 
 ## <a name="run-an-assessment"></a>Durchführen einer Bewertung
 
 Führen Sie eine Bewertung wie folgt aus:
 
-1. Klicken Sie auf der Seite **Server** unter **Windows- und Linux-Server** auf **Server bewerten und migrieren**.
+1.  Klicken Sie auf der Seite **Übersicht** unter **Windows, Linux und SQL Server** auf **Server bewerten und migrieren**.
+    :::image type="content" source="./media/tutorial-assess-sql/assess-migrate.png" alt-text="Seite „Übersicht“ für Azure Migrate":::
 
-   ![Ort der Schaltfläche „Server bewerten und migrieren“](./media/tutorial-assess-vmware-azure-vmware-solution/assess.png)
+1. Klicken Sie unter **Azure Migrate: Ermittlung und Bewertung** auf **Bewerten**.
 
-1. Klicken Sie in **Azure Migrate: Server Assessment** (Azure Migrate-Serverbewertung) auf **Bewerten**.
+   ![Position der Schaltfläche „Bewerten“](./media/tutorial-assess-vmware-azure-vmware-solution/assess.png)
 
-1. Wählen Sie unter **Server bewerten** > **Bewertungstyp** die Option **Azure VMware Solution (AVS) (Vorschau)** aus.
+1. Wählen Sie unter **Server bewerten** > **Bewertungstyp** die Option **Azure VMware Solution (AVS)** aus.
 
 1. Unter **Ermittlungsquelle**:
 
-    - Wählen Sie die Option **Von Azure Migrate-Appliance erkannte Computer** aus, falls Sie Computer mit der Appliance ermittelt haben.
-    - Wählen Sie die Option **Importierte Computer** aus, falls Sie Computer mit einer importierten CSV-Datei ermittelt haben. 
+    - Wählen Sie die Option **Von Azure Migrate-Appliance erkannte Server** aus, falls Sie Server mit der Appliance ermittelt haben.
+    - Wählen Sie die Option **Imported servers** (Importierte Server) aus, falls Sie Server unter Verwendung einer importierten CSV-Datei ermittelt haben. 
     
 1. Klicken Sie auf **Bearbeiten**, um die Eigenschaften für die Bewertung zu überprüfen.
 
@@ -76,14 +80,14 @@ Führen Sie eine Bewertung wie folgt aus:
 
     - Geben Sie unter **Zielspeicherort** die Azure-Region an, zu der Sie die Migration durchführen möchten.
        - Empfehlungen zur Größe und zu den Kosten basieren auf dem von Ihnen angegebenen Standort.
-       - Derzeit können Sie die Bewertung für vier Regionen („Australien, Osten“, „USA, Osten“, „Europa, Westen“, „USA, Westen“) durchführen.
    - Der **Speichertyp** wird standardmäßig auf **vSAN** festgelegt. Dies ist der Standardspeichertyp für eine private AVS-Cloud.
    - **Reservierte Instanzen** werden für AVS-Knoten derzeit nicht unterstützt.
 1. Unter **VM-Größe**:
-    - Der **Knotentyp** wird standardmäßig auf **AV36** festgelegt. Azure Migrate empfiehlt aus der Gruppe der Knoten denjenigen Knoten, der zum Migrieren der VMs zu AVS benötigt wird.
-    - Wählen Sie unter **FTT-Einstellung, RAID-Ebene** die Kombination für tolerierbare Fehler (Failure to Tolerate, FTT) und RAID aus.  Die ausgewählte FTT-Option in Kombination mit der lokalen VM-Datenträgeranforderung bestimmt den insgesamt in AVS erforderlichen vSAN-Speicher.
+    - Der **Knotentyp** wird standardmäßig auf **AV36** festgelegt. Azure Migrate empfiehlt aus der Gruppe der Knoten denjenigen Knoten, der zum Migrieren der Server zu AVS benötigt wird.
+    - Wählen Sie unter **FTT-Einstellung, RAID-Ebene** die Kombination für tolerierbare Fehler (Failure to Tolerate, FTT) und RAID aus.  Die ausgewählte FTT-Option in Kombination mit der lokalen Server-Datenträgeranforderung bestimmt den insgesamt in AVS erforderlichen vSAN-Speicher.
     - Geben Sie unter **CPU-Überzeichnung** das Verhältnis der virtuellen Kerne an, die auf dem AVS-Knoten einem physischen Kern zugeordnet sind. Eine höhere Überzeichnung als 4:1 kann unter Umständen zwar zu einer Leistungsbeeinträchtigung führen, aber sie kann für Workloads vom Typ „Webserver“ verwendet werden.
-
+    - Geben Sie unter **Faktor für übermäßigen Speichercommit** das Verhältnis der Überbelegung des Speichers im Cluster an. Der Wert 1 gibt eine Speicherauslastung von 100 % an, 0,5 gibt 50 % an, und 2 bedeutet, dass 200 % des verfügbaren Speichers verwendet werden. Sie können nur Werte zwischen 0,5 und 10 mit bis zu einer Dezimalstelle hinzufügen.
+    - Geben Sie unter **Deduplizierungs- und Komprimierungsfaktor** den erwarteten Deduplizierungs- und Komprimierungsfaktor für Ihre Arbeitsauslastungen an. Der tatsächliche Wert kann aus der lokalen vSAN- oder Speicherkonfiguration abgerufen werden, und dieser kann je nach Arbeitsauslastung variieren. Ein Wert von 3 gibt eine Multiplikation mit 3 an, sodass für einen 300-GB-Datenträger nur 100 GB Speicher verwendet werden. Der Wert 1 bedeutet, dass keine Deduplizierung und keine Komprimierung erfolgen. Sie können nur Werte zwischen 1 und 10 mit bis zu einer Dezimalstelle hinzufügen.
 1. Unter **Knotengröße**: 
     - Wählen Sie unter **Größenkriterium** aus, ob die Bewertung auf statischen Metadaten oder leistungsbezogenen Daten basieren soll. Bei Verwendung von Leistungsdaten:
         - Geben Sie unter **Leistungsverlauf** die Datendauer an, auf der die Bewertung basieren soll.
@@ -96,7 +100,7 @@ Führen Sie eine Bewertung wie folgt aus:
         Arbeitsspeicher | 8 GB | 16 GB  
 
 1. Unter **Preise**:
-    - Unter **Angebot** wird das [Azure-Angebot](https://azure.microsoft.com/support/legal/offer-details/) angezeigt, für das Sie registriert sind. Bei der Serverbewertung werden die Kosten für dieses Angebot geschätzt.
+    - Zeigt unter **Angebot** das [Azure-Angebot](https://azure.microsoft.com/support/legal/offer-details/) an, bei dem Sie registriert sind. Bei der Bewertung werden die Kosten für dieses Angebot geschätzt.
     - Wählen Sie unter **Währung** die Abrechnungswährung für Ihr Konto aus.
     - Fügen Sie unter **Abzug (%)** alle abonnementspezifischen Rabatte hinzu, die Sie zusätzlich zum Azure-Angebot erhalten. Die Standardeinstellung ist 0 %.
 
@@ -106,13 +110,13 @@ Führen Sie eine Bewertung wie folgt aus:
 
 1. Klicken Sie unter **Server bewerten** auf **Weiter**.
 
-1. Geben Sie in **Computer für die Bewertung auswählen** > **Bewertungsname** einen Namen für die Bewertung an. 
+1. Geben Sie in **Server für die Bewertung auswählen** > **Bewertungsname** einen Namen für die Bewertung an. 
  
 1. Wählen Sie unter **Gruppe auswählen oder erstellen** die Option **Neu erstellen** aus, und geben Sie einen Namen für die Gruppe ein. 
     
-    :::image type="content" source="./media/tutorial-assess-vmware-azure-vmware-solution/assess-group.png" alt-text="Hinzufügen von VMs zu einer Gruppe":::
+    :::image type="content" source="./media/tutorial-assess-vmware-azure-vmware-solution/assess-group.png" alt-text="Hinzufügen von Servern zu einer Gruppe":::
  
-1. Wählen Sie die Appliance und dann die VMs aus, die Sie der Gruppe hinzufügen möchten. Klicken Sie dann auf **Weiter**.
+1. Wählen Sie die Appliance und dann die Server aus, die Sie der Gruppe hinzufügen möchten. Klicken Sie dann auf **Weiter**.
 
 1. Sehen Sie sich unter **Überprüfen + Bewertung erstellen** die Bewertungsdetails an, und klicken Sie auf **Bewertung erstellen**, um die Gruppe zu erstellen und die Bewertung durchzuführen.
 
@@ -123,18 +127,17 @@ Führen Sie eine Bewertung wie folgt aus:
 
 Mit einer AVS-Bewertung wird Folgendes beschrieben:
 
-- AVS-Bereitschaft: Ermittelt, ob die lokalen virtuellen Computer für die Migration zu Azure VMware Solution (AVS) geeignet sind.
-- Anzahl der AVS-Knoten: Geschätzte Anzahl der AVS-Knoten, die zur Ausführung der virtuellen Computer erforderlich sind.
+- AVS-Bereitschaft: Ermittelt, ob die lokalen Server für die Migration zu Azure VMware Solution (AVS) geeignet sind.
+- Anzahl von AVS-Knoten: Geschätzte Anzahl von AVS-Knoten, die zur Ausführung der Server erforderlich sind.
 - Übergreifende Nutzung auf AVS-Knoten: Projizierte CPU-, Arbeitsspeicher- und Speicherauslastung über alle Knoten hinweg.
     - Die Nutzung beinhaltet Voraus-Factoring in den folgenden Mehraufwandsbereichen der Clusterverwaltung wie vCenter Server, NSX-Manager (groß) und NSX Edge, wenn HCX bereitgestellt ist, außerdem den HCX-Manager und die IX-Appliance, das ~44vCPU (11 CPU), 75 GB RAM und 722 GB Speicher vor Komprimierung und Deduplizierung beansprucht. 
-    - Arbeitsspeicher, Deduplizierung und Komprimierung sind zurzeit auf 100 % Auslastung für den Arbeitsspeicher und 1,5 Deduplizierung und Komprimierung festgelegt, wobei es sich in zukünftigen Versionen um eine benutzerdefinierte Eingabe handeln wird, mit der der Benutzer seine erforderlichen Dimensionierungen anpassen kann.
-- Geschätzte monatliche Kosten: Die geschätzten monatlichen Kosten für alle AVS-Knoten (Azure VMware Solution), auf denen die lokalen virtuellen Computer ausgeführt werden.
+- Geschätzte monatliche Kosten: Die geschätzten monatlichen Kosten für alle AVS-Knoten (Azure VMware Solution), auf denen die lokalen Server ausgeführt werden.
 
 ## <a name="view-an-assessment"></a>Anzeigen einer Bewertung
 
 So zeigen Sie eine Bewertung an:
 
-1. Klicken Sie unter **Server** > **Azure Migrate: Serverbewertung** auf die Zahl neben **Bewertungen**.
+1. Klicken Sie unter **Windows, Linux und SQL Server** > **Azure Migrate: Ermittlung und Bewertung** auf die Zahl neben **Azure VMware Solution**.
 
 1. Wählen Sie unter **Bewertungen** eine Bewertung aus, um sie zu öffnen. Beispiel (Schätzungen und Kosten gelten nur für das Beispiel): 
 
@@ -146,31 +149,31 @@ So zeigen Sie eine Bewertung an:
 ### <a name="review-readiness"></a>Überprüfen der Bereitschaft
 
 1. Klicken Sie auf **Azure-Bereitschaft**.
-2. Sehen Sie sich unter **Azure-Bereitschaft** den VM-Status an.
+2. Sehen Sie sich unter **Azure-Bereitschaft** den Bereitschaftsstatus an.
 
-    - **Bereit für AVS**: Der Computer kann ohne Änderungen zu AVS migriert werden. Der Computer wird in AVS mit voller AVS-Unterstützung gestartet.
-    - **Bereit mit Bedingungen**: Für den Computer bestehen unter Umständen Kompatibilitätsprobleme in Bezug auf die aktuelle vSphere-Version. Gegebenenfalls müssen VMware-Tools installiert oder andere Einstellungen vorgenommen werden, bevor die volle Funktionalität in AVS zur Verfügung steht.
-    - **Nicht bereit für AVS**: Die VM wird in AVS nicht gestartet. Wenn an eine lokale VMware-VM beispielsweise ein externes Gerät (z. B. ein CD-ROM-Laufwerk) angefügt ist und Sie VMware VMotion verwenden, tritt beim VMotion-Vorgang ein Fehler auf.
- - **Bereitschaft unbekannt**: Azure Migrate konnte die Bereitschaft des Computers aufgrund unzureichender Metadaten aus der lokalen Umgebung nicht bestimmen.
+    - **Bereit für AVS**: Der Server kann ohne Änderungen zu AVS migriert werden. Der Server startet in AVS mit voller AVS-Unterstützung.
+    - **Bereit mit Bedingungen**: Für den Server bestehen unter Umständen Kompatibilitätsprobleme in Bezug auf die aktuelle vSphere-Version. Gegebenenfalls müssen VMware-Tools installiert oder andere Einstellungen vorgenommen werden, bevor die volle Funktionalität in AVS zur Verfügung steht.
+    - **Nicht bereit für AVS**: Die VM wird in AVS nicht gestartet. Wenn an einen lokalen VMware-Server beispielsweise ein externes Gerät (z. B. ein CD-ROM-Laufwerk) angefügt ist und Sie VMware VMotion verwenden, tritt beim VMotion-Vorgang ein Fehler auf.
+ - **Bereitschaft unbekannt**: Azure Migrate konnte die Bereitschaft des Servers aufgrund unzureichender Metadaten aus der lokalen Umgebung nicht bestimmen.
 
 3. Überprüfen Sie das vorgeschlagene Tool.
 
-    - VMware HCX oder Enterprise: Für VMware-Computer wird die VMware HCX-Lösung (Hybrid Cloud Extension) empfohlen, um Ihre lokale Workload zu Ihrer privaten AVS-Cloud (Azure VMware Solution) zu migrieren. Weitere Informationen
-    - Unbekannt: Für Computer, die über eine CSV-Datei importiert wurden, ist das Standardmigrationstool unbekannt. Für VMware-Computer empfiehlt sich jedoch die Verwendung der VMware HCX-Lösung (Hybrid Cloud Extension).
-4. Klicken Sie auf einen AVS-Bereitschaftsstatus. Sie können Details zur VM-Bereitschaft sowie VM-Details wie Compute-, Speicher- und Netzwerkeinstellungen anzeigen.
+    - VMware HCX oder Enterprise: Für VMware-Server wird die VMware HCX-Lösung (Hybrid Cloud Extension) empfohlen, um Ihre lokale Workload zu Ihrer privaten AVS-Cloud (Azure VMware Solution) zu migrieren. Weitere Informationen
+    - Unbekannt: Für Server, die über eine CSV-Datei importiert wurden, ist das Standardmigrationstool unbekannt. Für VMware-Server empfiehlt sich jedoch die Verwendung der VMware HCX-Lösung (Hybrid Cloud Extension).
+4. Klicken Sie auf einen AVS-Bereitschaftsstatus. Sie können Details zur Serverbereitschaft sowie Serverdetails wie Compute-, Speicher- und Netzwerkeinstellungen anzeigen.
 
 ### <a name="review-cost-estimates"></a>Überprüfen der Kostenschätzungen
 
-Die Zusammenfassung der Bewertung enthält die geschätzten Compute- und Speicherkosten für die VM-Ausführung in Azure. 
+Die Zusammenfassung der Bewertung enthält die geschätzten Compute- und Speicherkosten für die Serverausführung in Azure. 
 
-1. Überprüfen Sie die monatlichen Gesamtkosten. Die Kosten für alle VMs in der bewerteten Gruppe werden aggregiert.
+1. Überprüfen Sie die monatlichen Gesamtkosten. Die Kosten für alle Server in der bewerteten Gruppe werden aggregiert.
 
-    - Kostenschätzungen basieren auf der Anzahl von benötigten AVS-Knoten unter Berücksichtigung der Ressourcenanforderungen aller VMs insgesamt.
+    - Kostenschätzungen basieren auf der Anzahl von benötigten AVS-Knoten unter Berücksichtigung der Ressourcenanforderungen aller Server insgesamt.
     - Da die Preise für AVS pro Knoten angegeben werden, enthalten die Gesamtkosten keine Verteilung der Compute- und Speicherkosten.
-    - Die Kostenschätzung gilt für die Ausführung der lokalen VMs in AVS. PaaS- oder SaaS-Kosten werden von der Azure Migrate-Serverbewertung nicht berücksichtigt.
+    - Die Kostenschätzung gilt für die Ausführung der lokalen Server in AVS. Bei der AVS-Bewertung werden keine PaaS- oder SaaS-Kosten berücksichtigt.
 
 2. Überprüfen Sie den geschätzten monatlichen Speicheraufwand. In der Ansicht werden die aggregierten Speicherkosten für die bewertete Gruppe angezeigt, aufgeschlüsselt nach verschiedenen Arten von Speicherdatenträgern. 
-3. Sie können einen Drilldown ausführen, um Kostendetails für bestimmte virtuelle Computer anzuzeigen.
+3. Sie können einen Drilldown ausführen, um Kostendetails für bestimmte Server anzuzeigen.
 
 ### <a name="review-confidence-rating"></a>Prüfen der Zuverlässigkeitsstufe
 
@@ -197,5 +200,5 @@ Informieren Sie sich über [Zuverlässigkeitsstufen](concepts-assessment-calcula
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Suchen Sie nach Computerabhängigkeiten, indem Sie die [Zuordnung von Abhängigkeiten](concepts-dependency-visualization.md) verwenden.
+- Suchen Sie nach Serverabhängigkeiten, indem Sie die [Zuordnung von Abhängigkeiten](concepts-dependency-visualization.md) verwenden.
 - Richten Sie die Abhängigkeitszuordnung [ohne Agent](how-to-create-group-machine-dependencies-agentless.md) oder [mit Agent](how-to-create-group-machine-dependencies.md) ein.
