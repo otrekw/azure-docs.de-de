@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bab8e8c6dfb944e496c636d53217e63175be9fbc
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 297c0a53fb2ab4ee0b2c5291cabf5a63c8841664
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104587847"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105604701"
 ---
 # <a name="securing-service-principals"></a>Sichern von Dienstprinzipalen
 
@@ -96,6 +96,7 @@ Weitere Informationen finden Sie unter [Get-AzureADServicePrincipal](/powershell
 Stellen Sie sicher, dass Sie die Speicherung von Berechtigungen und Anmeldeinformationen evaluieren, um die Sicherheit Ihrer Dienstprinzipale zu bewerten.
 
 Verwenden Sie die folgenden Informationen, um Gegenmaßnahmen für potenzielle Herausforderungen zu ergreifen.
+
 |Herausforderungen | Gegenmaßnahmen|
 | - | - |
 | Ermitteln des Benutzers, der seine Einwilligung für eine mehrinstanzenfähige App erteilt hat, und Ermitteln von unrechtmäßigen Einwilligungserteilungen für eine mehrinstanzenfähige App | Führen Sie den folgenden PowerShell-Befehl aus, um nach mehrinstanzenfähigen Apps zu suchen.<br>`Get-AzureADServicePrincipal -All:$true ? {$_.Tags -eq WindowsAzureActiveDirectoryIntegratedApp"}`<br>Deaktivieren Sie die Benutzereinwilligung. <br>Zulassen der Benutzereinwilligung von verifizierten Herausgebern für ausgewählte Berechtigungen (empfohlen) <br> Verwenden Sie den bedingten Zugriff, um Dienstprinzipale von nicht vertrauenswürdigen Orten zu blockieren. Führen Sie die Konfiguration im Rahmen des Benutzerkontexts durch. Die zugehörigen Token sollten verwendet werden, um den Dienstprinzipal auszulösen.|

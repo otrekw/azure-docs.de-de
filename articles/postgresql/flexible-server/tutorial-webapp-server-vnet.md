@@ -6,14 +6,14 @@ ms.author: sumuth
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: tutorial
-ms.date: 09/22/2020
+ms.date: 03/18/2021
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: ab606e357bd911f4d7f266977bd14871f92744a0
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: ff9af90ca0b6b80ffece5ccd7d919c1d93e210c4
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546567"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104657585"
 ---
 # <a name="tutorial-create-an-azure-database-for-postgresql---flexible-server-with-app-services-web-app-in-virtual-network"></a>Tutorial: Erstellen einer Instanz von Azure Database for PostgreSQL Flexible Server mit App Services-Web-App im virtuellen Netzwerk
 
@@ -22,9 +22,10 @@ ms.locfileid: "92546567"
 
 In diesem Tutorial wird gezeigt, wie Sie eine Azure App Service-Web-App mit Azure Database for PostgreSQL Flexible Server (Vorschau) in einem [virtuellen Netzwerk](../../virtual-network/virtual-networks-overview.md) erstellen.
 
-In diesem Tutorial lernen Sie Folgendes:
+In diesem Lernprogramm lernen Sie Folgendes:
 >[!div class="checklist"]
 > * Erstellen einer PostgreSQL Flexible Server-Instanz in einem virtuellen Netzwerk
+> * Erstellen eines Subnetzes für die Delegation an App Service
 > * Erstellen einer Web-App
 > * Hinzufügen der Web-App zum virtuellen Netzwerk
 > * Herstellen einer Verbindung mit Postgres aus der Web-App 
@@ -41,10 +42,10 @@ Sie müssen sich mithilfe des Befehls [az login](/cli/azure/authenticate-azure-c
 az login
 ```
 
-Wenn Sie über mehrere Abonnements verfügen, wählen Sie das entsprechende Abonnement aus, in dem die Ressource fakturiert sein sollte. Wählen Sie mithilfe des Befehls [az account set](/cli/azure/account) die Abonnement-ID unter Ihrem Konto aus. Ersetzen Sie den Platzhalter für die Abonnement-ID durch die **subscription ID** -Eigenschaft der Ausgabe von **az login** für Ihr Abonnement.
+Wenn Sie über mehrere Abonnements verfügen, wählen Sie das entsprechende Abonnement aus, in dem die Ressource fakturiert sein sollte. Wählen Sie mithilfe des Befehls [az account set](/cli/azure/account) die Abonnement-ID unter Ihrem Konto aus. Ersetzen Sie den Platzhalter für die Abonnement-ID durch die **subscription ID**-Eigenschaft der Ausgabe von **az login** für Ihr Abonnement.
 
 ```azurecli
-az account set --subscription <subscription id>
+az account set --subscription <subscription ID>
 ```
 
 ## <a name="create-a-postgresql-flexible-server-in-a-new-virtual-network"></a>Erstellen einer PostgreSQL Flexible Server-Instanz in einem virtuellen Netzwerk
@@ -59,7 +60,7 @@ Durch diesen Befehl werden folgende Aktionen ausgeführt, was einige Minuten dau
 - Generiert einen Servernamen, wenn er nicht angegeben ist.
 - Erstellen Sie ein neues virtuelles Netzwerk für Ihre neue PostgreSQL-Serverinstanz. Notieren Sie sich den Namen des virtuellen Netzwerks und des Subnetzes, die für Ihre Serverinstanz erstellt wurden, da Sie die Web-App dem gleichen virtuellen Netzwerk hinzufügen müssen.
 - Erstellt einen Administratorbenutzernamen und ein Kennwort für Ihren Server, sofern nicht angegeben.
-- Erstellt eine leere Datenbank mit dem Namen **postgres** .
+- Erstellt eine leere Datenbank mit dem Namen **postgres**.
 
 > [!NOTE]
 > - Notieren Sie sich das Kennwort, das für Sie generiert wird, wenn es nicht angegeben wird. Wenn Sie das Kennwort vergessen haben, müssen Sie das Kennwort mit dem ``` az postgres flexible-server update```-Befehl zurücksetzen.
@@ -68,14 +69,21 @@ Durch diesen Befehl werden folgende Aktionen ausgeführt, was einige Minuten dau
 >  az postgres flexible-server firewall-rule list --resource-group myresourcegroup --server-name mydemoserver --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
 >  ```
 
+## <a name="create-subnet-for-app-service-endpoint"></a>Erstellen eines Subnetzes für den App Service-Endpunkt
+Sie benötigen nun ein Subnetz, das an den App Service-Web-App-Endpunkt delegiert wird. Führen Sie den folgenden Befehl aus, um ein neues Subnetz im gleichen virtuellen Netzwerk zu erstellen, in dem auch der Datenbankserver erstellt wurde. 
+
+```azurecli
+az network vnet subnet create -g myresourcegroup --vnet-name VNETName --name webappsubnetName  --address-prefixes 10.0.1.0/24  --delegations Microsoft.Web/serverFarms --service-endpoints Microsoft.Web
+```
+Notieren Sie sich nach diesem Befehl den Namen des virtuellen Netzwerks und des Subnetzes, da Sie diese nach der Erstellung der Web-App zum Hinzufügen einer VNet-Integrationsregel benötigen. 
 
 ## <a name="create-a-web-app"></a>Erstellen einer Web-App
-In diesem Abschnitt erstellen Sie einen App-Host in der App Service-App, verbinden die App mit der Postgres-Datenbank und stellen anschließend Ihren Code auf dem Host bereit. Vergewissern Sie sich im Terminal, dass Sie sich im Repositorystamm Ihres Anwendungscodes befinden.
+In diesem Abschnitt erstellen Sie einen App-Host in der App Service-App, verbinden die App mit der Postgres-Datenbank und stellen anschließend Ihren Code auf dem Host bereit. Vergewissern Sie sich im Terminal, dass Sie sich im Repositorystamm Ihres Anwendungscodes befinden. Im Basic-Tarif wird die VNet-Integration nicht unterstützt. Verwenden Sie den Standard- oder Premium-Tarif. 
 
 Erstellen Sie mithilfe des Befehls „az webapp up“ eine App Service-App (den Hostprozess):
 
 ```azurecli
-az webapp up --resource-group myresourcegroup --location westus2 --plan testappserviceplan --sku B1 --name mywebapp
+az webapp up --resource-group myresourcegroup --location westus2 --plan testappserviceplan --sku P2V2 --name mywebapp
 ```
 
 > [!NOTE]
@@ -85,16 +93,15 @@ az webapp up --resource-group myresourcegroup --location westus2 --plan testapps
 Durch diesen Befehl werden folgende Aktionen ausgeführt, was einige Minuten dauern kann:
 
 - Erstellen Sie die Ressourcengruppe, wenn sie noch nicht vorhanden ist. Verwenden Sie in diesem Befehl die gleiche Ressourcengruppe, in der Sie zuvor schon die Datenbank erstellt haben.
-- Erstellen Sie den App Service-Plan ```testappserviceplan``` im Basic-Tarif (B1), falls er nicht vorhanden ist. „--plan“ und „--sku“ sind optional.
 - Erstellen der App Service-App (sofern noch nicht vorhanden)
 - Aktivieren der Standardprotokollierung für die App (sofern noch nicht aktiviert)
 - Hochladen des Repositorys per ZIP-Bereitstellung mit aktivierter Buildautomatisierung
 
 ## <a name="add-the-web-app-to-the-virtual-network"></a>Hinzufügen der Web-App zum virtuellen Netzwerk
-Verwenden Sie den **az webapp vnet-integration** -Befehl, um eine regionale Integration eines virtuellen Netzwerks einer Web-App hinzuzufügen. Ersetzen Sie <vnet-name> und <subnet-name durch den Namen des virtuellen Netzwerks und des Subnetzes, die der flexible Server verwendet.
+Verwenden Sie den **az webapp vnet-integration**-Befehl, um eine regionale Integration eines virtuellen Netzwerks einer Web-App hinzuzufügen. Ersetzen Sie <vnet-name> und <subnet-name durch den Namen des virtuellen Netzwerks und des Subnetzes, die der flexible Server verwendet.
 
 ```azurecli
-az webapp vnet-integration add -g myresourcegroup -n  mywebapp --vnet <vnet-name> --subnet <subnet-name>
+az webapp vnet-integration add -g myresourcegroup -n  mywebapp --vnet VNETName --subnet webappsubnetName
 ```
 
 ## <a name="configure-environment-variables-to-connect-the-database"></a>Konfigurieren der Umgebungsvariablen für die Datenbankverbindung

@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 08/25/2020
 ms.author: raynew
-ms.openlocfilehash: 18d4d84462d528b718d784ff6a16ecf990ed0d20
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 9229fca9f98aac4ca628c0bb25c13c9ba1989626
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100094014"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105962593"
 ---
 # <a name="support-for-moving-azure-resources-across-regions"></a>Unterstützung für das regionenübergreifende Verschieben von Azure-Ressourcen
 
@@ -503,7 +503,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | Ressourcentyp | Regionenverschiebung | 
 > | ------------- | ----------- |
 > | capabilities | Nein | 
-> | domainnames | Ja | Nein |
+> | domainnames | Nein |
 > | quotas | Nein | 
 > | resourcetypes | Nein |
 > | validatesubscriptionmoveavailability | Nein | 
@@ -1061,7 +1061,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Regionenverschiebung | 
 > | ------------- | ----------- |
-> | accounts | Nein. [Weitere Informationen](../../azure-monitor/faq.md#how-do-i-move-an-application-insights-resource-to-a-new-region)
+> | accounts | Nein. [Weitere Informationen](../../azure-monitor/faq.md#how-do-i-move-an-application-insights-resource-to-a-new-region) |
 > | actiongroups |  Nein | 
 > | activitylogalerts | Nein | 
 > | alertrules |  Nein | 
@@ -1073,12 +1073,12 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | diagnosticsettingscategories | Nein | 
 > | eventcategories | Nein | 
 > | eventtypes | Nein | 
-> | extendeddiagnosticsettings | Nein | |
+> | extendeddiagnosticsettings | Nein |
 > | guestdiagnosticsettings | Nein | 
 > | listmigrationdate | Nein | 
 > | logdefinitions | Nein | 
 > | logprofiles | Nein | 
-> | logs | Nein | Nein |
+> | logs | Nein |
 > | metricalerts | Nein | 
 > | metricbaselines | Nein | 
 > | metricbatch | Nein | 
@@ -1399,7 +1399,8 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | networkwatchers/pingmeshes |  Nein | 
 > | p2svpngateways | Nein | 
 > | privatednszones |  Nein |  
-> | privatednszones/virtualnetworklinks | Nein |> | privatednszonesinternal | Nein |
+> | privatednszones/virtualnetworklinks | Nein |
+> | privatednszonesinternal | Nein |
 > | privateendpointredirectmaps | Nein |
 > | privateendpoints | Nein | 
 > | privatelinkservices | Nein | 

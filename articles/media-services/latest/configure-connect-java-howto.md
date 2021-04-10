@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 11/17/2020
 ms.custom: devx-track-java
 ms.author: inhenkel
-ms.openlocfilehash: 769b4bc431040ee4d872fa60270196db96978ed2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 06923d7c198edc324d85b726cf91694d8cf7e1ca
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94748181"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105961352"
 ---
 # <a name="connect-to-media-services-v3-api---java"></a>Verbinden mit der Media Services v3-API – Java
 
@@ -37,7 +37,7 @@ In diesem Artikel wird Visual Studio Code zum Entwickeln der Beispiel-App verwen
    - Apache Maven
    - Java-Erweiterungspaket
 - Achten Sie darauf, die Umgebungsvariablen `JAVA_HOME` und `PATH` festzulegen.
-- [Erstellen Sie ein Media Services-Konto.](./create-account-howto.md) Merken Sie sich unbedingt den Namen der Ressourcengruppe und den Namen des Media Services-Kontos.
+- [Erstellen Sie ein Media Services-Konto.](./account-create-how-to.md) Merken Sie sich unbedingt den Namen der Ressourcengruppe und den Namen des Media Services-Kontos.
 - Führen Sie die Schritte im Thema [Zugriff auf Azure Media Services API mit Azure CLI](./access-api-howto.md) aus. Halten Sie die Abonnement-ID, die Anwendungs-ID (Client-ID), den Authentifizierungsschlüssel und die Mandanten-ID fest. Sie benötigen diese Angaben in einem späteren Schritt.
 
 Lesen Sie außerdem:

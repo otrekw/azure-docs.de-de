@@ -6,14 +6,14 @@ ms.author: sumuth
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: tutorial
-ms.date: 9/21/2020
+ms.date: 03/18/2021
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: a7b673dc8dfeb2ebf86aec5b7449df91c2ffd635
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 3e334eda46e5e67a0fc0755f5e02a0724d34a4b4
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92534055"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104657636"
 ---
 # <a name="tutorial-create-an-azure-database-for-mysql---flexible-server-preview-with-app-services-web-app-in-virtual-network"></a>Tutorial: Erstellen einer Instanz von Azure Database for MySQL Flexible Server (Vorschau) mit App Services-Web-App im virtuellen Netzwerk
 
@@ -21,6 +21,14 @@ ms.locfileid: "92534055"
 > Azure Database for MySQL Flexible Server befindet sich aktuell in der öffentlichen Vorschau.
 
 In diesem Tutorial wird gezeigt, wie Sie eine Azure App Service-Web-App mit MySQL Flexible Server (Vorschau) in einem [virtuellen Netzwerk](../../virtual-network/virtual-networks-overview.md) erstellen.
+
+In diesem Lernprogramm lernen Sie Folgendes:
+>[!div class="checklist"]
+> * Erstellen einer MySQL Flexible Server-Instanz in einem virtuellen Netzwerk
+> * Erstellen eines Subnetzes für die Delegation an App Service
+> * Erstellen einer Web-App
+> * Hinzufügen der Web-App zum virtuellen Netzwerk
+> * Herstellen einer Verbindung mit Postgres aus der Web-App 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -34,10 +42,10 @@ Sie müssen sich mithilfe des Befehls [az login](/cli/azure/reference-index#az-l
 az login
 ```
 
-Wenn Sie über mehrere Abonnements verfügen, wählen Sie das entsprechende Abonnement aus, in dem die Ressource fakturiert sein sollte. Wählen Sie mithilfe des Befehls [az account set](/cli/azure/account) die Abonnement-ID unter Ihrem Konto aus. Ersetzen Sie den Platzhalter für die Abonnement-ID durch die **subscription ID** -Eigenschaft der Ausgabe von **az login** für Ihr Abonnement.
+Wenn Sie über mehrere Abonnements verfügen, wählen Sie das entsprechende Abonnement aus, in dem die Ressource fakturiert sein sollte. Wählen Sie mithilfe des Befehls [az account set](/cli/azure/account) die Abonnement-ID unter Ihrem Konto aus. Ersetzen Sie den Platzhalter für die Abonnement-ID durch die **subscription ID**-Eigenschaft der Ausgabe von **az login** für Ihr Abonnement.
 
 ```azurecli
-az account set --subscription <subscription id>
+az account set --subscription <subscription ID>
 ```
 
 ## <a name="create-an-azure-database-for-mysql-flexible-server"></a>Erstellen einer Instanz von Azure Database for MySQL Flexible Server
@@ -46,16 +54,24 @@ Erstellen Sie einen privaten flexiblen Server innerhalb eines virtuellen Netzwer
 ```azurecli
 az mysql flexible-server create --resource-group myresourcegroup --location westus2
 ```
-Durch diesen Befehl werden folgende Aktionen ausgeführt, was einige Minuten dauern kann:
+Kopieren Sie die Verbindungszeichenfolge und den Namen des neu erstellten virtuellen Netzwerks. Durch diesen Befehl werden folgende Aktionen ausgeführt, was einige Minuten dauern kann:
 
 - Erstellen Sie die Ressourcengruppe, wenn sie noch nicht vorhanden ist.
 - Generiert einen Servernamen, wenn er nicht angegeben ist.
 - Erstellen Sie ein neues virtuelles Netzwerk für Ihre neue MySQL-Serverinstanz. Notieren Sie sich den Namen des virtuellen Netzwerks und des Subnetzes, die für Ihre Serverinstanz erstellt wurden, da Sie die Web-App dem gleichen virtuellen Netzwerk hinzufügen müssen.
 - Erstellt einen Administratorbenutzernamen und ein Kennwort für Ihren Server, sofern nicht angegeben.
-- Erstellt eine leere Datenbank mit dem Namen **flexibleserverdb** .
+- Erstellt eine leere Datenbank mit dem Namen **flexibleserverdb**.
 
 > [!NOTE]
 > Notieren Sie sich das Kennwort, das für Sie generiert wird, wenn es nicht angegeben wird. Wenn Sie das Kennwort vergessen haben, müssen Sie das Kennwort mit dem ``` az mysql flexible-server update```-Befehl zurücksetzen.
+
+## <a name="create-subnet-for-app-service-endpoint"></a>Erstellen eines Subnetzes für den App Service-Endpunkt
+Sie benötigen nun ein Subnetz, das an den App Service-Web-App-Endpunkt delegiert wird. Führen Sie den folgenden Befehl aus, um ein neues Subnetz im gleichen virtuellen Netzwerk zu erstellen, in dem auch der Datenbankserver erstellt wurde. 
+
+```azurecli
+az network vnet subnet create -g myresourcegroup --vnet-name VNETName --name webappsubnetName  --address-prefixes 10.0.1.0/24  --delegations Microsoft.Web/serverFarms --service-endpoints Microsoft.Web
+```
+Notieren Sie sich nach diesem Befehl den Namen des virtuellen Netzwerks und des Subnetzes, da Sie diese nach der Erstellung der Web-App zum Hinzufügen einer VNet-Integrationsregel benötigen. 
 
 ## <a name="create-a-web-app"></a>Erstellen einer Web-App
 
@@ -64,12 +80,13 @@ In diesem Abschnitt erstellen Sie einen App-Host in der App Service-App und stel
 Erstellen Sie mithilfe des Befehls „az webapp up“ eine App Service-App (den Hostprozess):
 
 ```azurecli
-az webapp up --resource-group myresourcegroup --location westus2 --plan testappserviceplan --sku B1 --name mywebapp
+az webapp up --resource-group myresourcegroup --location westus2 --plan testappserviceplan --sku P2V2 --name mywebapp
 ```
 
 > [!NOTE]
 > - Verwenden Sie für das Argument „--location“ den gleichen Standort wie für die Datenbank im vorherigen Abschnitt.
 > - Ersetzen Sie _&lt;app-name>_ in ganz Azure durch einen eindeutigen Namen (der Serverendpunkt ist https://\<app-name>.azurewebsites.net). Gültige Zeichen für <app-name> sind A-Z, 0-9 und der Bindestrich (-). Ein bewährtes Muster ist eine Kombination aus Ihrem Firmennamen und einer App-ID.
+> - Im Basic-Tarif von App Service wird die VNet-Integration nicht unterstützt. Verwenden Sie den Standard- oder Premium-Tarif. 
 
 Durch diesen Befehl werden folgende Aktionen ausgeführt, was einige Minuten dauern kann:
 
@@ -81,10 +98,10 @@ Durch diesen Befehl werden folgende Aktionen ausgeführt, was einige Minuten dau
 
 ## <a name="add-the-web-app-to-the-virtual-network"></a>Hinzufügen der Web-App zum virtuellen Netzwerk
 
-Verwenden Sie den **az webapp vnet-integration** -Befehl, um eine regionale Integration eines virtuellen Netzwerks einer Web-App hinzuzufügen. Ersetzen Sie _&lt;vnet-name>_ und _&lt;subnet-name_ durch den Namen des virtuellen Netzwerks und des Subnetzes, die der flexible Server verwendet.
+Verwenden Sie den **az webapp vnet-integration**-Befehl, um eine regionale Integration eines virtuellen Netzwerks einer Web-App hinzuzufügen. Ersetzen Sie _&lt;vnet-name>_ und _&lt;subnet-name_ durch den Namen des virtuellen Netzwerks und des Subnetzes, die der flexible Server verwendet.
 
 ```azurecli
-az webapp vnet-integration add -g myresourcegroup -n  mywebapp --vnet <vnet-name> --subnet <subnet-name>
+az webapp vnet-integration add -g myresourcegroup -n  mywebapp --vnet VNETName --subnet webappsubnetName
 ```
 
 ## <a name="configure-environment-variables-to-connect-the-database"></a>Konfigurieren der Umgebungsvariablen für die Datenbankverbindung
