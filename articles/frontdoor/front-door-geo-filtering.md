@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 09/28/2020
 ms.author: duau
 ms.reviewer: tyao
-ms.openlocfilehash: 1cd3d4837c39fdeb0e7addced10ab2e7fd330b9a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 33ad17e3024011368c909a89e9164ca06d044bad
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100369423"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102612081"
 ---
 # <a name="geo-filtering-on-a-domain-for-azure-front-door"></a>Geofilterung in einer Domäne für Azure Front Door
 

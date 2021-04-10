@@ -1,26 +1,16 @@
 ---
-title: Klassische Ereignisaggregation für Sicherheitsmodule
+title: Klassische Ereignisaggregation für den Defender-IoT-Micro-Agent
 description: Weitere Informationen zur Ereignisaggregation in Defender für IoT.
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: shhazam-ms
-manager: rkarlin
-editor: ''
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 1/20/2021
-ms.author: shhazam
-ms.openlocfilehash: 0718c2637658e5519760a68f29c7a816b2aa61a1
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.date: 3/23/2021
+ms.openlocfilehash: e6c0f0e6e1f4027716ff8e3ca99f1c8803f33260
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809217"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104779136"
 ---
-# <a name="security-module-classic-event-aggregation"></a>Klassische Ereignisaggregation für Sicherheitsmodule
+# <a name="defender-iot-micro-agent-classic-event-aggregation"></a>Klassische Ereignisaggregation für den Defender-IoT-Micro-Agent
 
 Defender für IoT-Sicherheits-Agents erfassen Daten und Systemereignisse von Ihrem lokalen Gerät und senden diese Daten zur Verarbeitung und Analyse an die Azure-Cloud. Der Sicherheits-Agent sammelt viele Arten von Geräteereignissen, einschließlich neuer Prozess- und neuer Verbindungsereignisse. Sowohl neue Prozess- als auch neue Verbindungsereignisse können innerhalb einer Sekunde auf einem Gerät regelmäßig auftreten und sind wichtig für eine stabile und umfassende Sicherheit. Allerdings können aufgrund der Anzahl der Nachrichten, die die Sicherheits-Agents deshalb senden müssen, Ihr IoT Hub-Kontingent und die Kostengrenzen möglicherweise schnell erreicht oder überschritten werden. Diese Ereignisse enthalten jedoch äußerst wertvolle Sicherheitsinformationen, die für den Schutz Ihres Geräts von entscheidender Bedeutung sind.
 

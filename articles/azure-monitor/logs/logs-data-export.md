@@ -7,12 +7,12 @@ ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 02/07/2021
-ms.openlocfilehash: 556570b02664a0afd01137f939bea67a1014b680
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: ea33eff30e712c1597c3606d74cb6d56683211ae
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102449491"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102615583"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Datenexport im Log Analytics-Arbeitsbereich in Azure Monitor (Vorschau)
 Der Datenexport im Log Analytics-Arbeitsbereich in Azure Monitor ermöglicht es Ihnen, Daten aus ausgewählten Tabellen in Ihrem Log Analytics-Arbeitsbereich bei der Sammlung fortlaufend in ein Azure Storage-Konto oder in Azure Event Hubs zu exportieren. In diesem Artikel werden dieses Feature und die Schritte zum Konfigurieren des Datenexports in Ihren Arbeitsbereichen ausführlich beschrieben.
@@ -117,7 +117,7 @@ Wenn Sie Ihr Speicherkonto so konfiguriert haben, dass der Zugriff von ausgewäh
 ### <a name="create-or-update-data-export-rule"></a>Erstellen oder Aktualisieren der Datenexportregel
 Eine Datenexportregel definiert die Tabellen, für die Daten exportiert werden, und das Ziel. Sie können derzeit für jedes Ziel eine einzelne Regel erstellen.
 
-Wenn Sie in ihrem Arbeitsbereich eine Liste von Tabellen für die Konfiguration von Exportregeln benötigen, führen Sie diese Abfrage im Arbeitsbereich aus.
+Die Exportregel sollte Tabellen enthalten, die in Ihrem Arbeitsbereich enthalten sind. Führen Sie diese Abfrage für eine Liste verfügbarer Tabellen in Ihrem Arbeitsbereich aus.
 
 ```kusto
 find where TimeGenerated > ago(24h) | distinct Type

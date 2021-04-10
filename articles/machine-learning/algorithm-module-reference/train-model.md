@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 11/25/2020
-ms.openlocfilehash: 7063452d23d2975cf0c26a89e7a08a422de54942
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.date: 03/10/2021
+ms.openlocfilehash: 77927472dae6c8e7e6fddacf9088b479636edd37
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96751936"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103224327"
 ---
 # <a name="train-model-module"></a>Train Model-Modul
 
@@ -66,6 +66,28 @@ In Azure Machine Learning werden Machine Learning-Modelle in der Regel in einem 
     > Wenn Sie über eine ID-Spalte mit den IDs aller Zeilen oder eine Textspalte mit zu vielen eindeutigen Werten verfügen, tritt bei **Train Model** möglicherweise ein Fehler wie dieser auf: Anzahl der eindeutigen Werte in der Spalte "{Spaltenname}" ist größer als zulässig.
     >
     > Dies liegt daran, dass -Spalte den Schwellenwert für eindeutige Werte erreicht hat und möglicherweise den Arbeitsspeicher überlastet. Sie können [Metadaten bearbeiten](edit-metadata.md) verwenden, um diese Spalte als **Feature bereinigen** zu markieren, sodass sie im Training nicht verwendet wird. Sie können auch [N-Gramm-Features aus Textmodul extrahieren](extract-n-gram-features-from-text.md) verwenden, um eine Vorverarbeitung der Textspalte durchzuführen. Weitere Fehlerinformationen finden Sie unter [Designer-Fehlercodes](././designer-error-codes.md).
+
+## <a name="model-interpretability"></a>Interpretierbarkeit von Modellen
+
+Die Interpretierbarkeit von Modellen bietet die Möglichkeit, das ML-Modell zu verstehen und die zugrunde liegende Basis für die Entscheidungsfindung auf eine Weise darzustellen, die für Menschen verständlich ist.
+
+Derzeit unterstützt das Modul **Modell trainieren** [die Verwendung des Interpretierbarkeitspakets zum Erläutern von ML-Modellen](https://docs.microsoft.com/azure/machine-learning/how-to-machine-learning-interpretability-aml#generate-feature-importance-values-via-remote-runs). Folgende integrierte Algorithmen werden unterstützt:
+
+- Lineare Regression
+- Regression mit neuronalen Netzwerken
+- Logistische Regression mit zwei Klassen
+- Two-Class Support Vector Machine
+- Entscheidungswald mit mehreren Klassen
+
+Zum Generieren von Modellerklärungen können Sie in der Dropdownliste **Model Explanation** (Modellerklärung) im Modul „Modell trainieren“ die Option **true** auswählen. Standardmäßig ist der Wert im Modul **Modell trainieren** auf „false“ festgelegt. Hinweis: Durch die Generierung von Erklärungen entstehen zusätzliche Computekosten.
+
+![Screenshot: Kontrollkästchen für Modellerklärungen](./media/module/train-model-explanation-checkbox.png)
+
+Nach Abschluss der Pipelineausführung können Sie auf der rechten Seite des Moduls **Modell trainieren** die Registerkarte **Erklärungen** aufrufen und sich die Informationen zur Modellleistung, zum Dataset und zur Featurerelevanz ansehen.
+
+![Screenshot: Diagramme zur Modellerklärung](./media/module/train-model-explanations-tab.gif)
+
+Weitere Informationen zur Verwendung von Modellerklärungen in Azure Machine Learning finden Sie im Artikel zum [Interpretieren von ML-Modellen](https://docs.microsoft.com/azure/machine-learning/how-to-machine-learning-interpretability-aml#generate-feature-importance-values-via-remote-runs).
 
 ## <a name="results"></a>Ergebnisse
 

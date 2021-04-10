@@ -10,16 +10,23 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: wellsi
-ms.openlocfilehash: af66f2ec56551a5177cd9323d216e9bf4b0c41be
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 1b2418b248e995b0f64eec82ccb477b15583c81e
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95021846"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103562330"
 ---
 # <a name="release-notes-speech-devices-sdk"></a>Versionshinweise: Speech-Geräte-SDK
 
 In den folgenden Abschnitten sind Änderungen in den neuesten Versionen aufgeführt.
+
+## <a name="speech-devices-sdk-1150"></a>Speech Devices SDK 1.15.0:
+
+- Aktualisiert auf den neuen Microsoft Audio Stack (MAS) mit verbessertem Beamforming und optimierter Rauschunterdrückung für Sprache.
+- Die binäre Größe wird je nach Ziel um bis zu 70 % reduziert.
+- Unterstützung für [Azure Percept Audio](https://docs.microsoft.com/azure/azure-percept/overview-azure-percept-audio) mit [binärer Freigabe](https://aka.ms/sdsdk-download-APAudio).
+- Die [Speech SDK](./speech-sdk.md)-Komponente wurde auf Version 1.15.0 aktualisiert. Weitere Informationen finden Sie in den [Versionshinweisen](./releasenotes.md).
 
 ## <a name="speech-devices-sdk-1110"></a>Speech Devices SDK 1.11.0:
 

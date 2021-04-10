@@ -12,14 +12,16 @@ ms.custom:
 - amqp
 - mqtt
 - devx-track-js
-ms.openlocfilehash: 44fe128658b90d2327f17f22b2a33aaa1d4da1fc
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: dc2d2d3e92435c7a028b43a095f456c2c383ecb4
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102046124"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103199632"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>Verbinden eines nachgeschalteten Geräts mit einem Azure IoT Edge-Gateway
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Dieser Artikel enthält Anweisungen zum Herstellen einer vertrauenswürdigen Verbindung zwischen nachgeschalteten Geräten und transparenten IoT Edge-Gateways. In einem transparenten Gatewayszenario kann mindestens ein Gerät Nachrichten über ein einziges Gatewaygerät weiterleiten, das die Verbindung zu IoT Hub aufrechterhält.
 
@@ -44,7 +46,19 @@ In diesem Artikel beziehen sich die Begriffe *Gateway* und *IoT Edge-Gateway* au
 
 ## <a name="prepare-a-downstream-device"></a>Vorbereiten eines nachgeschalteten Geräts
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 Ein nachgeschaltetes Gerät kann eine beliebige Anwendung oder Plattform sein, deren Identität mit dem Azure IoT Hub-Clouddienst erstellt wurde. Oft verwenden diese Anwendungen das [Azure IoT-Geräte-SDK](../iot-hub/iot-hub-devguide-sdks.md). Ein nachgeschaltetes Gerät kann sogar eine Anwendung sein, die auf dem IoT Edge-Gatewaygerät selbst ausgeführt wird. Allerdings kann ein IoT Edge-Gerät einem IoT Edge-Gateway nicht nachgeschaltet werden.
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+Ein nachgeschaltetes Gerät kann eine beliebige Anwendung oder Plattform sein, deren Identität mit dem Azure IoT Hub-Clouddienst erstellt wurde. Oft verwenden diese Anwendungen das [Azure IoT-Geräte-SDK](../iot-hub/iot-hub-devguide-sdks.md). Ein nachgeschaltetes Gerät kann sogar eine Anwendung sein, die auf dem IoT Edge-Gatewaygerät selbst ausgeführt wird.
+
+Dieser Artikel enthält die Schritte, die zum Verbinden eines IoT-Geräts als nachgeschaltetes Gerät ausgeführt werden müssen. Wenn Sie ein IoT Edge-Gerät als nachgeschaltetes Gerät verwenden, finden Sie Informationen dazu unter [Verbinden eines nachgeschalteten IoT Edge-Geräts mit einem Azure IoT Edge-Gateway](how-to-connect-downstream-iot-edge-device.md).
+:::moniker-end
+<!-- end 1.2 -->
 
 >[!NOTE]
 >Mit IoT Hub registrierte IoT-Geräte können mithilfe von [Modulzwillingen](../iot-hub/iot-hub-devguide-module-twins.md) verschiedene Prozesse, Hardware oder Funktionen auf einem einzigen Gerät zu isolieren. IoT Edge-Gateways unterstützen nachgeschaltete Modulverbindungen mithilfe von Authentifizierung mit symmetrischen Schlüsseln, aber nicht mit X.509-Zertifikatauthentifizierung.

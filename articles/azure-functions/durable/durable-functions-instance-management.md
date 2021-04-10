@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 16fecf5ce0d4551125ded4ba05fcbc41530efaf1
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 7329962d547fcb0635e3a9af3d80e562da59f7f2
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102430563"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103199788"
 ---
 # <a name="manage-instances-in-durable-functions-in-azure"></a>Verwalten von Instanzen in Durable Functions in Azure
 
@@ -202,6 +202,9 @@ Die Methode gibt ein Objekt mit den folgenden Eigenschaften zurück:
   * **Fehler:** Bei der Instanz ist ein Fehler aufgetreten.
   * **Beendet:** Die Instanz wurde plötzlich beendet.
 * **History**: Der Ausführungsverlauf der Orchestrierung. Dieses Feld wird nur gefüllt, wenn `showHistory` auf `true` festgelegt ist.
+
+> [!NOTE]
+> Ein Orchestrator wird erst mit `Completed` gekennzeichnet, wenn alle seine geplanten Aufgaben abgeschlossen wurden _und_ der Orchestrator die Anweisung zum Zurückgeben ausgeführt hat. Das bedeutet, es reicht nicht aus, dass ein Orchestrator seine `return`-Anweisung erreicht, damit er mit `Completed` gekennzeichnet wird. Dies ist insbesondere in Fällen relevant, in denen `WhenAny` verwendet wird. Diese Orchestratoren führen oft die `return`-Anweisung aus, bevor alle geplanten Aufgaben durchgeführt wurden.
 
 Diese Methode gibt `null` (.NET), `undefined` (JavaScript) oder `None` (Python) zurück, wenn die Instanz nicht vorhanden ist.
 

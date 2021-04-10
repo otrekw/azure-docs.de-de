@@ -3,12 +3,12 @@ title: Regelmäßiges Sichern und Wiederherstellen in Azure Service Fabric
 description: Verwenden Sie das Feature für regelmäßige Sicherungen und Wiederherstellungen von Service Fabric, um eine regelmäßige Datensicherung Ihrer Anwendungsdaten zu ermöglichen.
 ms.topic: conceptual
 ms.date: 5/24/2019
-ms.openlocfilehash: 2d167b261f9b5915a970b4c219113f0765c039cb
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 42097b50277e78b3f0e8f5e61a2bf70cc08dbc02
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98927983"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103198713"
 ---
 # <a name="periodic-backup-and-restore-in-an-azure-service-fabric-cluster"></a>Regelmäßiges Sichern und Wiederherstellen in einem Azure Service Fabric-Cluster
 > [!div class="op_single_selector"]
@@ -215,6 +215,7 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 ``` 
 
 #### <a name="using-service-fabric-explorer"></a>Verwenden von Service Fabric Explorer
+Stellen Sie sicher, dass der [erweiterte Modus](service-fabric-visualizing-your-cluster.md#backup-and-restore) für Service Fabric Explorer aktiviert ist. 
 
 1. Wählen Sie eine Anwendung aus, und navigieren Sie zur Aktion. Klicken Sie auf „Anwendungssicherung aktivieren/aktualisieren“.
 

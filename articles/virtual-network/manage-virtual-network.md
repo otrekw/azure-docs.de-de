@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: kumud
-ms.openlocfilehash: cc0028a8c7d6d15277c3789118b13b80ed4306ea
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 1ec4e26e266a1777857fe0e890b093f60a3597f0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100596637"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102612523"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Erstellen, Ändern oder Löschen eines virtuellen Netzwerks
 
@@ -53,7 +53,7 @@ Führen Sie zuerst die folgenden Aufgaben aus, ehe Sie die Schritte in den Absch
      > Wenn ein virtuelles Netzwerk Adressbereiche enthält, die sich mit einem anderen virtuellen Netzwerk oder einem lokalen Netzwerk überschneiden, können die beiden Netzwerke nicht verbunden werden. Bevor Sie einen Adressbereich definieren, sollten Sie das virtuelle Netzwerk zukünftig eventuell mit anderen virtuellen Netzwerken oder lokalen Netzwerken verbinden. Microsoft empfiehlt, die Adressbereiche für virtuelle Netzwerke mit einem privaten Adressraum oder einem öffentlichen Adressraum im Besitz Ihrer Organisation zu konfigurieren.
      >
 
-     - **Subnetzname**: Der Subnetzname muss innerhalb des virtuellen Netzwerks eindeutig sein. Sie können den Subnetznamen nicht ändern, nachdem das Subnetz erstellt wurde. Das Portal erfordert, dass Sie bei der Erstellung eines virtuellen Netzwerks ein Subnetz definieren, obwohl ein virtuelles Netzwerk nicht unbedingt Subnetze umfassen muss. Im Portal können Sie nur ein Subnetz definieren, wenn Sie ein virtuelles Netzwerk erstellen. Sie können später weitere Subnetze zum virtuellen Netzwerk hinzufügen, nachdem das virtuelle Netzwerk erstellt wurde. Informationen zum Hinzufügen eines Subnetzes zu einem virtuellen Netzwerk finden Sie unter [Verwalten von Subnetzen](virtual-network-manage-subnet.md). Sie können über die Azure CLI oder über PowerShell ein virtuelles Netzwerk mit mehreren Subnetzen erstellen.
+     - **Subnetzname**: Der Subnetzname muss innerhalb des virtuellen Netzwerks eindeutig sein. Sie können den Subnetznamen nicht ändern, nachdem das Subnetz erstellt wurde. Das Portal erfordert, dass Sie bei der Erstellung eines virtuellen Netzwerks ein Subnetz definieren, obwohl ein virtuelles Netzwerk nicht unbedingt Subnetze umfassen muss. Im Portal können Sie Subnetze definieren, wenn Sie ein virtuelles Netzwerk erstellen. Sie können später weitere Subnetze zum virtuellen Netzwerk hinzufügen, nachdem das virtuelle Netzwerk erstellt wurde. Informationen zum Hinzufügen eines Subnetzes zu einem virtuellen Netzwerk finden Sie unter [Verwalten von Subnetzen](virtual-network-manage-subnet.md). Sie können über die Azure CLI oder über PowerShell ein virtuelles Netzwerk mit mehreren Subnetzen erstellen.
 
        >[!TIP]
        >Gelegentlich erstellen Administratoren unterschiedliche Subnetze, um das Datenverkehrsrouting zwischen ihnen zu filtern oder zu steuern. Erwägen Sie vor dem Definieren von Subnetzen, wie Sie Datenverkehr zwischen Ihren Subnetzen filtern und weiterleiten möchten. Weitere Informationen zum Filtern von Datenverkehr zwischen Subnetzen finden Sie unter [Netzwerksicherheitsgruppen](./network-security-groups-overview.md). Azure leitet Datenverkehr zwischen Subnetzen automatisch weiter, doch Sie können diese Standardrouten von Azure außer Kraft setzen. Weitere Informationen zum standardmäßigen Datenverkehrsrouting bei Azure-Subnetzen finden Sie in der [Übersicht über das Routing](virtual-networks-udr-overview.md).

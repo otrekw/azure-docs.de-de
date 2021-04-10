@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/09/2021
+ms.date: 03/22/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: cc385c3a7ceb0245e3a4acbedb037b1b28bde7b3
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 63183eb6a77b3a7aecfb6f3e8a7c9ee7c2544de2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102518108"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105543906"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-an-apple-id--using-azure-active-directory-b2c-preview"></a>Einrichten der Registrierung und Anmeldung mit einer Apple-ID mithilfe von Azure Active Directory B2C (Vorschau)
 
@@ -57,8 +57,8 @@ Wenn Sie für Benutzer die Anmeldung mit einer Apple-ID in Azure Active Director
 1. Wählen Sie unter **IDs** die von Ihnen erstellte ID aus.
 1. Wählen Sie **Mit Apple anmelden** aus, und wählen Sie dann **Konfigurieren** aus.
     1. Wählen Sie die **primäre App-ID** aus, die Sie für die Anmeldung mit Apple konfigurieren möchten.
-    1. Geben Sie im Feld **Domänen und Unterdomänen** die Zeichenfolge `your-tenant-name.b2clogin.com` ein. Ersetzen Sie „your-tenant-name“ durch den Namen Ihres Mandanten.
-    1. Geben Sie im Feld **Rückgabe-URLs** die Zeichenfolge `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` ein. Ersetzen Sie „your-tenant-name“ durch den Namen Ihres Mandanten.
+    1. Geben Sie im Feld **Domänen und Unterdomänen** die Zeichenfolge `your-tenant-name.b2clogin.com` ein. Ersetzen Sie „your-tenant-name“ durch den Namen Ihres Mandanten. Bei Verwendung einer [benutzerdefinierten Domäne](custom-domain.md) geben Sie `https://your-domain-name` ein.
+    1. Geben Sie im Feld **Rückgabe-URLs** die Zeichenfolge `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` ein. Bei Verwendung einer [benutzerdefinierten Domäne](custom-domain.md) geben Sie `https://your-domain-name/your-tenant-name.onmicrosoft.com/oauth2/authresp` ein. Ersetzen Sie `your-tenant-name` durch den Namen Ihres Mandanten und `your-domain-name` durch Ihre benutzerdefinierte Domäne.
     1. Wählen Sie **Weiter** aus, und wählen Sie dann **Fertig** aus.
     1. Wählen Sie nach dem Schließen des Popupfensters die Option **Weiter** aus, und wählen Sie dann **Speichern** aus.
 
@@ -195,7 +195,7 @@ Sie können eine Apple-ID als Anspruchsanbieter definieren, indem Sie in der Erw
             <Item Key="response_types">code</Item>
             <Item Key="external_user_identity_claim_id">sub</Item>
             <Item Key="response_mode">form_post</Item>
-            <Item Key="ReadBodyClaimsOnIdpRedirect">user.firstName user.lastName user.email</Item>
+            <Item Key="ReadBodyClaimsOnIdpRedirect">user.name.firstName user.name.lastName user.email</Item>
             <Item Key="client_id">You Apple ID</Item>
             <Item Key="UsePolicyInRedirectUri">false</Item>
           </Metadata>
@@ -206,8 +206,8 @@ Sie können eine Apple-ID als Anspruchsanbieter definieren, indem Sie in der Erw
             <OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="sub" />
             <OutputClaim ClaimTypeReferenceId="identityProvider" DefaultValue="https://appleid.apple.com" AlwaysUseDefaultValue="true" />
             <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="socialIdpAuthentication" AlwaysUseDefaultValue="true" />
-            <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="user.firstName"/>
-            <OutputClaim ClaimTypeReferenceId="surname" PartnerClaimType="user.lastName"/>
+            <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="user.name.firstName"/>
+            <OutputClaim ClaimTypeReferenceId="surname" PartnerClaimType="user.name.lastName"/>
             <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="user.email"/>
           </OutputClaims>
           <OutputClaimsTransformations>

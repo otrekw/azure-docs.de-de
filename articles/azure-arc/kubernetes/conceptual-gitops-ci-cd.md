@@ -8,12 +8,12 @@ author: tcare
 ms.author: tcare
 description: Dieser Artikel enthält eine konzeptionelle Übersicht über einen CI/CD-Workflow mit GitOps.
 keywords: GitOps, Kubernetes, K8s, Azure, Helm, Arc, AKS, Azure Kubernetes Service, Container, CI, CD, Azure DevOps
-ms.openlocfilehash: a51a9f2b32f1088cec390dc4d74300a38f37b160
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 47633ed5bec1a07c878983d0e93e03149d8967ba
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102121778"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105025865"
 ---
 # <a name="cicd-workflow-using-gitops---azure-arc-enabled-kubernetes"></a>CI/CD-Workflow mit GitOps: Kubernetes mit Azure Arc-Unterstützung
 
@@ -30,7 +30,7 @@ In diesem Beispiel wird eine Anwendung verwendet, die in mindestens einer Kubern
 ### <a name="application-repo"></a>Anwendungsrepository
 Das Anwendungsrepository enthält den Anwendungscode, an dem Entwickler während der inneren Schleife arbeiten. Die Bereitstellungsvorlagen der Anwendung sind in generischer Form (z. B. Helm oder Kustomize) in diesem Repository vorhanden. Es werden keine umgebungsspezifischen Werte gespeichert. Durch Änderungen an diesem Repository wird eine PR- oder CI-Pipeline aufgerufen, die den Bereitstellungsprozess startet.
 ### <a name="container-registry"></a>Container Registry
-Die Containerregistrierung enthält alle Erst- und Drittanbieterimages, die in den Kubernetes-Umgebungen verwendet werden. Versehen Sie Anwendungsimages von Erstanbietern mit lesbaren Tags und dem Git-Commit für die Imageerstellung. Speichern Sie Images von Drittanbietern zwischen, um die Sicherheit, Geschwindigkeit und Resilienz zu verbessern. Legen Sie einen Plan für zeitnahe Tests und die Integration von Sicherheitsupdates fest. Weitere Informationen sowie ein Beispiel finden Sie unter [Verwenden und Verwalten von öffentlichen Inhalten mit Azure Container Registry Tasks](https://docs.microsoft.com/azure/container-registry/tasks-consume-public-content).
+Die Containerregistrierung enthält alle Erst- und Drittanbieterimages, die in den Kubernetes-Umgebungen verwendet werden. Versehen Sie Anwendungsimages von Erstanbietern mit lesbaren Tags und dem Git-Commit für die Imageerstellung. Speichern Sie Images von Drittanbietern zwischen, um die Sicherheit, Geschwindigkeit und Resilienz zu verbessern. Legen Sie einen Plan für zeitnahe Tests und die Integration von Sicherheitsupdates fest. Weitere Informationen sowie ein Beispiel finden Sie unter [Verwenden und Verwalten von öffentlichen Inhalten mit Azure Container Registry Tasks](../../container-registry/tasks-consume-public-content.md).
 ### <a name="pr-pipeline"></a>PR-Pipeline
 Das Gating von PRs für das Anwendungsrepository basiert auf einer erfolgreichen Ausführung der PR-Pipeline. Von dieser Pipeline werden die grundlegenden Quality Gates (wie Linten und Komponententests) für den Anwendungscode ausgeführt. Die Pipeline testet die Anwendung und lintet Dockerfiles und Helm-Vorlagen, die für die Bereitstellung in einer Kubernetes-Umgebung verwendet werden. Docker-Images sollten erstellt und getestet, aber nicht gepusht werden. Halten Sie die Pipelinedauer relativ kurz, um schnelle Iterationen zu ermöglichen.
 ### <a name="ci-pipeline"></a>CI-Pipeline

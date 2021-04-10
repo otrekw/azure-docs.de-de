@@ -1,29 +1,29 @@
 ---
-title: Bewerten virtueller VMware-Computer für die Migration zu Azure-VMs mit Serverbewertung in Azure Migrate
-description: Es wird beschrieben, wie Sie VMware-VMs für die Migration zu Azure-VMs bewerten, indem Sie die Serverbewertung verwenden.
+title: Bewerten von VMware-Servern für die Migration zu virtuellen Azure-Computern in Azure Migrate
+description: Hier erfahren Sie, wie Sie VMware-Server für die Migration zu virtuellen Azure-Computern mit Azure Migrate bewerten.
 author: rashi-ms
 ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: MVC
-ms.openlocfilehash: e7251f8b83110bc24a7ba3d7b078993b39a2c001
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: 4fbc80330a28b92117061dc9473a6d5497b205e5
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98566833"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104780638"
 ---
 # <a name="tutorial-assess-vmware-vms-for-migration-to-azure-vms"></a>Tutorial: Bewerten von virtuellen VMware-Computern für die Migration zu virtuellen Azure-Computern
 
 Im Rahmen Ihrer Migrationsjourney zu Azure bewerten Sie Ihre lokalen Workloads, um die Cloudbereitschaft zu messen, Risiken zu identifizieren und Kosten und Komplexität zu schätzen.
 
-In diesem Artikel wird veranschaulicht, wie Sie ermittelte virtuelle VMware-Computer (VMs) als Vorbereitung für die Migration zu Azure-VMs per Azure Migrate-Serverbewertung bewerten.
+In diesem Artikel wird veranschaulicht, wie Sie ermittelte Server aus Ihrer VMware-Umgebung als Vorbereitung auf die Migration zu Azure-VMs bewerten, indem Sie das Azure Migrate-Tool für die Ermittlung und Bewertung verwenden.
 
 
-In diesem Tutorial lernen Sie Folgendes:
+In diesem Tutorial lernen Sie, wie die folgenden Aufgaben ausgeführt werden:
 > [!div class="checklist"]
-- Führen Sie eine Bewertung basierend auf den Computermetadaten und den Konfigurationsinformationen durch.
+- Führen Sie eine Bewertung basierend auf den Servermetadaten und den Konfigurationsinformationen durch.
 - Führen Sie eine Bewertung basierend auf den Leistungsdaten durch.
 
 > [!NOTE]
@@ -34,20 +34,20 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Stellen Sie sicher, dass Sie die zu bewertenden Computer richtig ermittelt haben, bevor Sie dieses Tutorial zum Bewerten Ihrer Computer für die Migration zu Azure-VMs durcharbeiten:
+Stellen Sie sicher, dass Sie die zu bewertenden Server richtig ermittelt haben, bevor Sie dieses Tutorial zum Bewerten Ihrer Server für die Migration zu virtuellen Azure-Computern durcharbeiten:
 
-- Arbeiten Sie [dieses Tutorial](tutorial-discover-vmware.md) durch, um Computer mit der Azure Migrate-Appliance zu ermitteln. 
-- Bei der Ermittlung von Computern mit einer importierten CSV-Datei hilft Ihnen [dieses Tutorial](tutorial-discover-import.md) weiter.
+- Arbeiten Sie [dieses Tutorial](tutorial-discover-vmware.md) durch, um Server mit der Azure Migrate-Appliance zu ermitteln. 
+- Bei der Ermittlung von Servern mit einer importierten CSV-Datei hilft Ihnen [dieses Tutorial](tutorial-discover-import.md) weiter.
 
 
 ## <a name="decide-which-assessment-to-run"></a>Treffen einer Entscheidung für eine Bewertung
 
 
-Entscheiden Sie, ob Sie eine Bewertung durchführen möchten, bei der die Kriterien für die Größenanpassung auf den Daten bzw. Metadaten der Computerkonfiguration basieren, die lokal im unveränderten Zustand gesammelt werden, oder auf dynamischen Leistungsdaten.
+Entscheiden Sie, ob Sie eine Bewertung durchführen möchten, bei der die Kriterien für die Größenanpassung auf den Daten bzw. Metadaten der Server basieren, die lokal im unveränderten Zustand gesammelt werden, oder auf dynamischen Leistungsdaten.
 
 **Bewertung** | **Details** | **Empfehlung**
 --- | --- | ---
-**Aktuelle lokale Umgebung** | Bewertung basierend auf den Daten bzw. Metadaten für die Computerkonfiguration.  | Die empfohlene Größe der Azure-VM basiert auf der lokalen VM-Größe.<br/><br> Der empfohlene Azure-Datenträgertyp basiert auf Ihrer Auswahl in der Speichertypeinstellung in der Bewertung.
+**Aktuelle lokale Umgebung** | Bewertung basierend auf den Daten bzw. Metadaten für die Serverkonfiguration.  | Die empfohlene Größe der Azure-VM basiert auf der lokalen VM-Größe.<br/><br> Der empfohlene Azure-Datenträgertyp basiert auf Ihrer Auswahl in der Speichertypeinstellung in der Bewertung.
 **Leistungsbasiert** | Bewertung basierend auf gesammelten dynamischen Leistungsdaten. | Die empfohlene Größe der Azure-VM basiert auf den Daten zur Auslastung der CPU und des Arbeitsspeichers.<br/><br/> Der empfohlene Datenträgertyp basiert auf dem IOPS-Wert und dem Durchsatz der lokalen Datenträger.
 
 
@@ -55,19 +55,19 @@ Entscheiden Sie, ob Sie eine Bewertung durchführen möchten, bei der die Kriter
 
 Führen Sie eine Bewertung wie folgt aus:
 
-1. Klicken Sie auf der Seite **Server** unter **Windows- und Linux-Server** auf **Server bewerten und migrieren**.
+1. Klicken Sie auf der Seite **Übersicht** unter **Windows, Linux und SQL Server** auf **Server bewerten und migrieren**.
 
    ![Ort der Schaltfläche „Server bewerten und migrieren“](./media/tutorial-assess-vmware-azure-vm/assess.png)
 
-2. Klicken Sie in **Azure Migrate: Server Assessment** (Azure Migrate-Serverbewertung) auf **Bewerten**.
+2. Klicken Sie unter **Azure Migrate: Ermittlung und Bewertung** auf **Bewerten**, und wählen Sie **Azure-VM** aus.
 
     ![Position der Schaltfläche „Bewerten“](./media/tutorial-assess-vmware-azure-vm/assess-servers.png)
 
-3. Wählen Sie unter **Server bewerten** > **Bewertungstyp** die Option **Azure-VM** aus.
+3. Unter **Server bewerten** > **Bewertungstyp**:
 4. Unter **Ermittlungsquelle**:
 
-    - Wählen Sie die Option **Von Azure Migrate-Appliance erkannte Computer** aus, falls Sie Computer mit der Appliance ermittelt haben.
-    - Wählen Sie die Option **Importierte Computer** aus, falls Sie Computer mit einer importierten CSV-Datei ermittelt haben. 
+    - Wählen Sie die Option **Von Azure Migrate-Appliance erkannte Server** aus, falls Sie Server mit der Appliance ermittelt haben.
+    - Wählen Sie die Option **Imported servers** (Importierte Server) aus, falls Sie Server unter Verwendung einer importierten CSV-Datei ermittelt haben. 
     
 1. Klicken Sie auf **Bearbeiten**, um die Eigenschaften für die Bewertung zu überprüfen.
 
@@ -84,7 +84,7 @@ Führen Sie eine Bewertung wie folgt aus:
         - Wenn Sie die Verwendung einer reservierten Instanz auswählen, können Sie nicht **Abzug (%)** oder **VM-Betriebszeit** angeben. 
         - [Weitere Informationen](https://aka.ms/azurereservedinstances)
  1. Unter **VM-Größe**:
-     - Wählen Sie unter **Größenkriterium** aus, ob die Bewertung auf Daten bzw. Metadaten für die Computerkonfiguration oder leistungsbezogenen Daten basieren soll. Bei Verwendung von Leistungsdaten:
+     - Wählen Sie unter **Größenkriterium** aus, ob die Bewertung auf Daten bzw. Metadaten für die Serverkonfiguration oder leistungsbezogenen Daten basieren soll. Bei Verwendung von Leistungsdaten:
         - Geben Sie unter **Leistungsverlauf** die Datendauer an, auf der die Bewertung basieren soll.
         - Geben Sie unter **Perzentilwert der Nutzung** den Perzentilwert an, den Sie für das Leistungsbeispiel verwenden möchten. 
     - Geben Sie unter **VM-Serie** die gewünschte Azure-VM-Serie an.
@@ -98,7 +98,7 @@ Führen Sie eine Bewertung wie folgt aus:
         Arbeitsspeicher | 8 GB | 16 GB
    
 1. Unter **Preise**:
-    - Geben Sie unter **Angebot** das [Azure-Angebot](https://azure.microsoft.com/support/legal/offer-details/) ein, wenn Sie registriert sind. Bei der Serverbewertung werden die Kosten für dieses Angebot geschätzt.
+    - Geben Sie unter **Angebot** das [Azure-Angebot](https://azure.microsoft.com/support/legal/offer-details/) ein, wenn Sie registriert sind. Bei der Bewertung werden die Kosten für dieses Angebot geschätzt.
     - Wählen Sie unter **Währung** die Abrechnungswährung für Ihr Konto aus.
     - Fügen Sie unter **Abzug (%)** alle abonnementspezifischen Rabatte hinzu, die Sie zusätzlich zum Azure-Angebot erhalten. Die Standardeinstellung ist 0 %.
     - Geben Sie unter **VM-Betriebszeit** die Dauer (Tage pro Monat/Stunden pro Tag) für die Ausführung der VMs an.
@@ -114,7 +114,7 @@ Führen Sie eine Bewertung wie folgt aus:
 
 1. Klicken Sie unter **Server bewerten** auf **Weiter**.
 
-1. Geben Sie in **Computer für die Bewertung auswählen** > **Bewertungsname** einen Namen für die Bewertung an. 
+1. Geben Sie in **Server für die Bewertung auswählen** > **Bewertungsname** einen Namen für die Bewertung an. 
 
 1. Wählen Sie unter **Gruppe auswählen oder erstellen** die Option **Neu erstellen** aus, und geben Sie einen Namen für die Gruppe ein. 
     
@@ -126,7 +126,7 @@ Führen Sie eine Bewertung wie folgt aus:
 
 1. Sehen Sie sich unter **Überprüfen + Bewertung erstellen** die Bewertungsdetails an, und klicken Sie auf **Bewertung erstellen**, um die Gruppe zu erstellen und die Bewertung durchzuführen.
 
-1. Zeigen Sie die erstellte Bewertung unter **Server** > **Azure Migrate: Server Assessment** (Azure Migrate-Serverbewertung) > **Bewertungen** an.
+1. Zeigen Sie die Bewertung nach der Erstellung unter **Server** > **Azure Migrate: Ermittlung und Bewertung** > **Bewertungen** an.
 
 1. Klicken Sie auf **Bewertung exportieren**, um sie als Excel-Datei herunterzuladen.
     > [!NOTE]
@@ -142,7 +142,7 @@ Eine Bewertung beschreibt Folgendes:
 
 So zeigen Sie eine Bewertung an:
 
-1. Klicken Sie unter **Server** > **Azure Migrate: Serverbewertung** auf die Zahl neben **Bewertungen**.
+1. Klicken Sie unter **Windows, Linux und SQL Server** > **Azure Migrate: Ermittlung und Bewertung** auf die Zahl neben **Azure VM assessment** (Azure-VM-Bewertung).
 2. Wählen Sie unter **Bewertungen** eine Bewertung aus, um sie zu öffnen. Beispiel (Schätzungen und Kosten gelten nur für das Beispiel): 
 
     ![Zusammenfassung der Bewertung](./media/tutorial-assess-vmware-azure-vm/assessment-summary.png)
@@ -167,7 +167,7 @@ Die Zusammenfassung der Bewertung enthält die geschätzten Compute- und Speiche
 
 1. Überprüfen Sie die monatlichen Gesamtkosten. Die Kosten für alle VMs in der bewerteten Gruppe werden aggregiert.
 
-    - Kostenschätzungen basieren auf den Größenempfehlungen für einen Computer sowie auf seinen Datenträgern und Eigenschaften.
+    - Kostenschätzungen basieren auf den Größenempfehlungen für einen Server sowie auf seinen Datenträgern und Eigenschaften.
     - Die geschätzten monatlichen Kosten für Compute und Speicher werden angezeigt.
     - Die Kostenschätzung gilt für die Ausführung der lokalen VMs auf Azure-VMs. Bei der Schätzung werden keine PaaS- oder SaaS-Kosten berücksichtigt.
 
@@ -176,7 +176,7 @@ Die Zusammenfassung der Bewertung enthält die geschätzten Compute- und Speiche
 
 ### <a name="review-confidence-rating"></a>Prüfen der Zuverlässigkeitsstufe
 
-Von der Serverbewertung wird für leistungsbezogene Bewertungen eine Zuverlässigkeitsstufe zugewiesen. Die Bewertung kann einen Wert zwischen einem Stern (am niedrigsten) und fünf Sternen (am höchsten) aufweisen.
+Von Azure Migrate wird für leistungsbezogene Bewertungen eine Zuverlässigkeitsstufe zugewiesen. Die Bewertung kann einen Wert zwischen einem Stern (am niedrigsten) und fünf Sternen (am höchsten) aufweisen.
 
 ![Zuverlässigkeitsstufe](./media/tutorial-assess-vmware-azure-vm/confidence-rating.png)
 
@@ -199,5 +199,5 @@ Informieren Sie sich über [Zuverlässigkeitsstufen](concepts-assessment-calcula
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Suchen Sie nach Computerabhängigkeiten, indem Sie die [Zuordnung von Abhängigkeiten](concepts-dependency-visualization.md) verwenden.
+- Suchen Sie nach Serverabhängigkeiten, indem Sie die [Zuordnung von Abhängigkeiten](concepts-dependency-visualization.md) verwenden.
 - Richten Sie die Abhängigkeitszuordnung [ohne Agent](how-to-create-group-machine-dependencies-agentless.md) oder [mit Agent](how-to-create-group-machine-dependencies.md) ein.

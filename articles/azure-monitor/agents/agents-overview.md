@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/12/2021
-ms.openlocfilehash: a2f6023b86b96266be8e625fd5b0d6625500e3fc
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 4d1dd358c03d051be4be5733d9e729d1d7ef5b0c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102551469"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105026171"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Übersicht über Azure Monitor-Agents
 
@@ -97,7 +97,7 @@ Verwenden Sie die Azure-Diagnoseerweiterung für Folgendes:
 - Senden von Daten an Azure Storage, um sie zu archivieren oder mit Tools wie dem [Azure Storage-Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md) zu analysieren
 - Senden von Daten an [Azure Monitor-Metriken](../essentials/data-platform-metrics.md), um sie mit dem [Metrik-Explorer](../essentials/metrics-getting-started.md) analysieren und Features wie [Metrikwarnungen](../alerts/alerts-metric-overview.md) in Quasi-Echtzeit und [automatische Skalierung](../autoscale/autoscale-overview.md) (nur unter Windows) nutzen zu können
 - Senden von Daten an Drittanbietertools mithilfe von [Azure Event Hubs](./diagnostics-extension-stream-event-hubs.md)
-- Erfassen von [Startdiagnosedaten](../../virtual-machines/troubleshooting/boot-diagnostics.md) zur Untersuchung von VM-Startfehlern
+- Erfassen von [Startdiagnosedaten](/troubleshoot/azure/virtual-machines/boot-diagnostics) zur Untersuchung von VM-Startfehlern
 
 Einschränkungen der Azure-Diagnoseerweiterung:
 

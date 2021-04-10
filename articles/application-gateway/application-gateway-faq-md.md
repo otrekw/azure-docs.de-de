@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: 90c20c1f463cf5143460510b9a409ad5ed3ba9f7
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 83779dcd319614ae15de6b7e3e4e3abfd9599089
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100576130"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102619153"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Häufig gestellte Fragen zu Application Gateway
 
@@ -470,9 +470,9 @@ In der Regel wird ein unbekannter Status angezeigt, wenn der Zugriff auf das Bac
 
 Wenn Sie über eine Netzwerksicherheitsgruppe im Application Gateway v2-Subnetz (Standard_v2, WAF_v2) verfügen, und wenn darin die NSG-Datenflussprotokolle aktiviert sind, kommt es aufgrund aktueller Plattformeinschränkungen zu nicht deterministischem Verhalten, und dieses Szenario wird derzeit nicht unterstützt.
 
-### <a name="does-application-gateway-store-customer-data"></a>Speichert Application Gateway Kundendaten?
+### <a name="where-does-application-gateway-store-customer-data"></a>Wo speichert Application Gateway Kundendaten?
 
-Nein, Kundendaten werden in Application Gateway nicht gespeichert.
+Application Gateway verschiebt oder speichert keine Kundendaten außerhalb der Region, in der es bereitgestellt ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

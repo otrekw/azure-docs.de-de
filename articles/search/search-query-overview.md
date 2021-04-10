@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/03/2021
-ms.openlocfilehash: c088625528190ad116676fbb51cec9f8de4b1578
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 21012848ba3624df6110eaea182beccc4646d234
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104600801"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105609274"
 ---
 # <a name="querying-in-azure-cognitive-search"></a>Abfragen in Azure Cognitive Search
 
@@ -77,7 +77,7 @@ Wenn Sie mit einem vermehrten Einsatz boolescher Operatoren rechnen – was in I
 
 ## <a name="autocomplete-and-suggested-queries"></a>AutoVervollständigen und vorgeschlagene Abfragen
 
-[AutoVervollständigen und Vorschläge](search-autocomplete-tutorial.md) sind Alternativen zu **`search`** , die in Funktionen zur Suche während der Eingabe mehrere aufeinander folgende Abfrageanforderungen basierend auf eingegebenen Teilzeichenfolgen (nach jedem Zeichen) auslösen. Sie können die Parameter **`autocomplete`** und **`suggestions`** gemeinsam oder separat verwenden, wie in [diesem Tutorial](tutorial-csharp-type-ahead-and-suggestions.md) beschrieben. Die Verwendung mit **`search`** ist allerdings nicht möglich. Sowohl automatisch vervollständigte Begriffe als auch vorgeschlagene Abfragen werden aus dem Indexinhalt abgeleitet. Die Engine gibt niemals eine Zeichenfolge oder einen Vorschlag zurück, die bzw. der im Index nicht vorhanden ist. Weitere Informationen finden Sie unter [AutoVervollständigen (REST-API)](/rest/api/searchservice/autocomplete) und [Vorschläge (REST-API)](/rest/api/searchservice/suggestions).
+[AutoVervollständigen und Vorschläge](search-add-autocomplete-suggestions.md) sind Alternativen zu **`search`** , die in Funktionen zur Suche während der Eingabe mehrere aufeinander folgende Abfrageanforderungen basierend auf eingegebenen Teilzeichenfolgen (nach jedem Zeichen) auslösen. Sie können die Parameter **`autocomplete`** und **`suggestions`** gemeinsam oder separat verwenden, wie in [diesem Tutorial](tutorial-csharp-type-ahead-and-suggestions.md) beschrieben. Die Verwendung mit **`search`** ist allerdings nicht möglich. Sowohl automatisch vervollständigte Begriffe als auch vorgeschlagene Abfragen werden aus dem Indexinhalt abgeleitet. Die Engine gibt niemals eine Zeichenfolge oder einen Vorschlag zurück, die bzw. der im Index nicht vorhanden ist. Weitere Informationen finden Sie unter [AutoVervollständigen (REST-API)](/rest/api/searchservice/autocomplete) und [Vorschläge (REST-API)](/rest/api/searchservice/suggestions).
 
 ## <a name="filter-search"></a>Filtern der Suche
 

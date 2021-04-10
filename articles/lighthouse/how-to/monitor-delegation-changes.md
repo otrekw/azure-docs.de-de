@@ -1,20 +1,20 @@
 ---
 title: Überwachen von Delegierungsänderungen in Ihrem Verwaltungsmandanten
 description: Erfahren Sie, wie Sie Delegierungsaktivitäten von Kundenmandanten für Ihren Verwaltungsmandanten überwachen.
-ms.date: 01/27/2021
+ms.date: 02/18/2021
 ms.topic: how-to
-ms.openlocfilehash: 3bf6cc044d807d0c830b15c6d9c9a6d507f1a54f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 8bd9e89039c114f3d1088df44198fe00c69bbf82
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100593138"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103199062"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>Überwachen von Delegierungsänderungen in Ihrem Verwaltungsmandanten
 
 Als Dienstanbieter möchten Sie möglicherweise wissen, wenn Kundenabonnements oder Ressourcengruppen über [Azure Lighthouse](../overview.md) an Ihren Mandanten delegiert oder zuvor delegierte Ressourcen entfernt werden.
 
-Im Verwaltungsmandanten werden Delegierungsaktivitäten auf Mandantenebene im [Azure-Aktivitätsprotokoll](../../azure-monitor/essentials/platform-logs-overview.md) erfasst. Diese protokollierten Aktivitäten umfassen alle hinzugefügten oder entfernten Delegierungen von allen Kundenmandanten.
+Im Verwaltungsmandanten werden Delegierungsaktivitäten auf Mandantenebene im [Azure-Aktivitätsprotokoll](../../azure-monitor/essentials/platform-logs-overview.md) erfasst. Diese protokollierten Aktivitäten umfassen alle hinzugefügten oder entfernten Delegierungen von Kundenmandanten.
 
 In diesem Thema werden die erforderlichen Berechtigungen zum Überwachen von Delegierungsaktivitäten für Ihren Mandanten (übergreifend für alle Ihre Kunden) erläutert. Es enthält auch ein Beispielskript, das eine Methode zum Abfragen und zur Berichterstellung für diese Daten zeigt.
 

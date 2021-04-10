@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 02/03/2021
-ms.openlocfilehash: 39a1400bfe642672ba276686851d4f0edebbeb00
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: cbf070dce056795ad8e4a5f3e4d609e7d36d631e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100387851"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103200815"
 ---
 # <a name="understanding-resource-sets"></a>Grundlegendes zu Ressourcensätzen
 
@@ -21,7 +21,7 @@ In diesem Artikel erfahren Sie, wie Azure Purview Datenressourcen mit Ressourcen
 
 In skalierbaren Datenverarbeitungssystemen wird eine einzelne Tabelle in der Regel in mehreren Dateien auf einem Datenträger gespeichert. Dieses Konzept wird in Azure Purview mithilfe von Ressourcensätzen dargestellt. Ein Ressourcensatz ist ein einzelnes Objekt im Katalog, das eine große Anzahl von Ressourcen im Speicher darstellt.
 
-Angenommen, Ihr Spark-Cluster hat einen DataFrame in einer Azure Data Lake Storage (ADLS) Gen2-Datenquelle persistent gespeichert. In Spark sieht die Tabelle zwar wie eine einzelne logische Ressource aus, aber auf dem Datenträger gibt es wahrscheinlich Tausende von Parquet-Dateien, von denen jede eine Partition des gesamten DataFrame-Inhalts darstellt. Für IoT-Daten und Webprotokolldaten gilt dieselbe Herausforderung. Stellen Sie sich vor, Sie verfügen über einen Sensor, der mehrmals pro Sekunde Protokolldateien ausgibt. Es dauert nicht lange, bis Hunderttausende von Protokolldateien dieses einzelnen Sensors vorliegen.
+Angenommen, Ihr Spark-Cluster hat einen DataFrame in einer Azure Data Lake Storage Gen2-Datenquelle (ADLS) persistent gespeichert. In Spark sieht die Tabelle zwar wie eine einzelne logische Ressource aus, aber auf dem Datenträger gibt es wahrscheinlich Tausende von Parquet-Dateien, von denen jede eine Partition des gesamten DataFrame-Inhalts darstellt. Für IoT-Daten und Webprotokolldaten gilt dieselbe Herausforderung. Stellen Sie sich vor, Sie verfügen über einen Sensor, der mehrmals pro Sekunde Protokolldateien ausgibt. Es dauert nicht lange, bis Hunderttausende von Protokolldateien dieses einzelnen Sensors vorliegen.
 
 Um der Herausforderung zu begegnen, eine große Anzahl von Datenressourcen einer einzelnen logischen Ressource zuzuordnen, verwendet Azure Purview Ressourcensätze.
 

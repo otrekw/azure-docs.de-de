@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 02/24/2021
+ms.date: 03/15/2021
 ms.author: alexeyo
-ms.openlocfilehash: f6c7ec3f66d0ab9186645654adf3c062c241e5d0
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 78e40250710c133cbed53c05137971247663b0df
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102449848"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103564421"
 ---
 # <a name="speech-services-quotas-and-limits"></a>Kontingente und Grenzwerte für Speech-Dienste
 
@@ -27,6 +27,7 @@ Zu [Kontingente und Grenzwerte für die Sprachsynthese nach Speech-Ressource](#t
 In den folgenden Tabellen sind Parameter ohne die Zeile „Anpassbar“ **nicht** für alle Tarife anpassbar.
 
 #### <a name="online-transcription"></a>Onlinetranskription
+Zur Verwendung mit dem [Speech SDK](speech-sdk.md) und/oder der [Spracherkennungs-REST-API für kurze Audiodaten](rest-speech-to-text.md#speech-to-text-rest-api-for-short-audio)
 
 | Kontingent | Free (F0)<sup>1</sup> | Standard (S0) |
 |--|--|--|
@@ -74,7 +75,7 @@ In der folgenden Tabelle sind Parameter ohne die Zeile „Anpassbar“ **nicht**
 | **WebSocket-spezifische Kontingente** |  |  |
 |Maximal generierte Audiolänge pro Turn | 10 Min. | 10 Min. |
 |Maximale SSML-Nachrichtengröße pro Turn |64 KB |64 KB |
-| **REST-API-Grenzwert** | 20 Anforderungen pro Minute | 25 Anforderungen pro fünf Sekunden |
+| **REST-API-Grenzwert** | 20 Anforderungen pro Minute | 300 Anforderungen pro Minute |
 
 
 <sup>3</sup> Sehen Sie sich im Zusammenhang mit dem Tarif **Free (F0)** auch die monatlichen Freibeträge auf der [Preisseite](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/) an.<br/>

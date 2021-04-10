@@ -1,17 +1,17 @@
 ---
 title: Clientfehlercodes für Device Update for IoT Hub | Microsoft-Dokumentation
 description: Dieses Dokument enthält eine Tabelle mit Clientfehlercodes für verschiedene Device Update-Komponenten.
-author: lichris
+author: chrisjlin
 ms.author: lichris
 ms.date: 2/18/2021
 ms.topic: reference
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 5251d0cb09e40305d1efd89c31d3af0fa36ad385
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: dbdddc7cee0c3664a83501ba619a38e1cc44e1f3
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101678459"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103200336"
 ---
 # <a name="device-update-for-iot-hub-error-codes"></a>Fehlercodes für Device Update for IoT Hub
 
@@ -59,26 +59,19 @@ Die Hexadezimaldarstellung ohne Vorzeichen von `-536870781` ist `FFFFFFFF E00000
 ## <a name="delivery-optimization-agent"></a>Übermittlungsoptimierungs-Agent
 In der folgenden Tabelle sind die Fehlercodes aufgeführt, die sich auf die Komponente zur Übermittlungsoptimierung (DO) des Device Update-Clients beziehen. Die DO-Komponente ist für das Herunterladen von Updateinhalten auf das IoT-Gerät verantwortlich.
 
-Der DO-Fehlercode kann durch Untersuchen der Ausnahmen abgerufen werden, die als Reaktion auf einen API-Befehl ausgelöst werden.
+Der DO-Fehlercode kann durch Untersuchen der Ausnahmen abgerufen werden, die als Reaktion auf einen API-Befehl ausgelöst werden. Alle Fehlercodes können durch das Präfix 0x80D0 identifiziert werden.
 
 | Fehlercode  | Zeichenfolgenfehler                       | type                 | BESCHREIBUNG |
 |-------------|------------------------------------|----------------------|-------------|
 | 0x80D01001L | DO_E_NO_SERVICE                    | –                  | Die Übermittlungsoptimierung konnte den Dienst nicht bereitstellen. |
 | 0x80D02002L | DO_E_DOWNLOAD_NO_PROGRESS          | Auftrag herunterladen         | Beim Herunterladen einer Datei ist innerhalb des definierten Zeitraums kein Fortschritt aufgetreten. |
-| 0x80D02003L | DO_E_JOB_NOT_FOUND                 | Auftrag herunterladen         | Auftrag wurde nicht gefunden. |
-| 0x80D02005L | DO_E_NO_DOWNLOADS                  | Auftrag herunterladen         | Zurzeit sind keine Downloads vorhanden. |
-| 0x80D0200CL | DO_E_JOB_TOO_OLD                   | Auftrag herunterladen         | Der Auftrag wurde nicht abgeschlossen oder vor dem Erreichen des maximalen Altersschwellenwerts abgebrochen. |
 | 0x80D02011L | DO_E_UNKNOWN_PROPERTY_ID           | Auftrag herunterladen         | SetProperty() oder GetProperty() wurde mit einer unbekannten Eigenschaften-ID aufgerufen. |
 | 0x80D02012L | DO_E_READ_ONLY_PROPERTY            | Auftrag herunterladen         | SetProperty() kann nicht für eine schreibgeschützte Eigenschaft aufgerufen werden. |
 | 0x80D02013L | DO_E_INVALID_STATE                 | Auftrag herunterladen         | Die angeforderte Aktion ist im aktuellen Auftragszustand unzulässig. Der Auftrag wurde möglicherweise abgebrochen, oder die Übertragung wurde abgeschlossen. Er befindet sich jetzt in einem schreibgeschützten Zustand. |
 | 0x80D02018L | DO_E_FILE_DOWNLOADSINK_UNSPECIFIED | Auftrag herunterladen         | Ein Download kann nicht gestartet werden, da keine Downloadsenke (lokale Datei oder Streamschnittstelle) angegeben wurde. |
 | 0x80D02200L | DO_E_DOWNLOAD_NO_URI               | IDODownload-Schnittstelle| Der Download wurde ohne Angabe eines URI gestartet. |
 | 0x80D03805L | DO_E_BLOCKED_BY_NO_NETWORK         | Vorübergehende Schwierigkeiten | Der Download wurde aufgrund des Verlusts der Netzwerkkonnektivität angehalten. |
-| 0x80D05001L | DO_E_HTTP_BLOCKSIZE_MISMATCH       | HTTP                 | Der HTTP-Server hat eine Antwort mit einer Datengröße zurückgegeben, die nicht der Anforderung entsprach. |
-| 0x80D05002L | DO_E_HTTP_CERT_VALIDATION          | HTTP                 | Fehler beim Überprüfen des HTTP-Serverzertifikats. |
-| 0x80D05010L | DO_E_INVALID_RANGE                 | HTTP                 | Der angegebene Bytebereich ist ungültig. |
-| 0x80D05011L | DO_E_INSUFFICIENT_RANGE_SUPPORT    | HTTP                 | Der Server unterstützt das erforderliche HTTP-Protokoll nicht. Übermittlungsoptimierung (DO) erfordert, dass der Server den Protokollheader „Range“ unterstützt. |
-| 0x80D05012L | DO_E_OVERLAPPING_RANGES            | HTTP                 | Die Liste der Bytebereiche enthält einige überlappende Bereiche, die nicht unterstützt werden. |
+
 ## <a name="device-update-content-service"></a>Device Update-Inhaltsdienst
 In der folgenden Tabelle werden Fehlercodes aufgeführt, die sich auf die Inhaltsdienstkomponente des Device Update-Diensts beziehen. Die Inhaltsdienstkomponente ist für die Verarbeitung des Imports von Updateinhalten zuständig.
 

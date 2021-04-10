@@ -10,12 +10,12 @@ ms.date: 02/17/2021
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9814dc06e7e570a923ba3ea5b3b0df7ade99bb28
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 5ec7d2b243a5eadab2d22dea14ebeac8eabb1722
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653708"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103563163"
 ---
 # <a name="use-azure-cli-to-manage-acls-in-azure-data-lake-storage-gen2"></a>Verwenden der Azure CLI zum Verwalten von Zugriffssteuerungslisten in Azure Data Lake Storage Gen2
 
@@ -31,7 +31,7 @@ Die Vererbung von Zugriffssteuerungslisten (ACLs) ist für neue untergeordnete E
 
 - Ein Speicherkonto, für das der hierarchische Namespace aktiviert ist. Befolgen Sie [diese Anleitung](create-data-lake-storage-account.md) für die Erstellung.
 
-- Azure CLI, Version `2.6.0` oder höher.
+- Azure CLI, Version `2.14.0` oder höher.
 
 - Eine der folgenden Sicherheitsberechtigungen:
 
@@ -137,6 +137,9 @@ In diesem Beispiel wird die Zugriffssteuerungsliste auf eine Datei für den zust
 az storage fs access set --acl "user::rw-,group::rw-,other::-wx" -p my-directory/upload.txt -f my-file-system --account-name mystorageaccount --auth-mode login
 ```
 
+> [!NOTE]
+> Verwenden Sie die entsprechenden Objekt-IDs, um die Zugriffssteuerungsliste einer spezifischen Gruppe oder eines spezifischen Benutzers festzulegen. Zum Beispiel: `group:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` oder `user:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`.
+
 Die folgende Abbildung zeigt die Ausgabe nach dem Festlegen der Zugriffssteuerungsliste einer Datei.
 
 ![Abrufen der Ausgabe der Zugriffssteuerungsliste 2](./media/data-lake-storage-directory-file-acl-cli/set-acl-file.png)
@@ -184,6 +187,9 @@ In diesem Beispiel wird die Zugriffssteuerungsliste einer **Datei** aktualisiert
 ```azurecli
 az storage fs access set --permissions rwxrwxrwx -p my-directory/upload.txt -f my-file-system --account-name mystorageaccount --auth-mode login
 ```
+
+> [!NOTE]
+> Verwenden Sie die entsprechenden Objekt-IDs, um ein Update an der Zugriffssteuerungsliste einer spezifischen Gruppe oder eines spezifischen Benutzers durchzuführen. Zum Beispiel: `group:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` oder `user:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`.
 
 Sie können den zuständigen Benutzer und die Gruppe eines Verzeichnisses oder einer Datei auch aktualisieren, indem Sie die Parameter `--owner` oder `group` auf die Entitäts-ID oder den Benutzerprinzipalnamen (UPN) eines Benutzers festlegen.
 
