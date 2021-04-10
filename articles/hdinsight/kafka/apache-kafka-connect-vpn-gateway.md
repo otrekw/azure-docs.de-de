@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-python
 ms.date: 03/04/2020
 ms.openlocfilehash: eb97e209bc7bb9bc1a15ecadc88593e4c0573b5c
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104870618"
 ---
 # <a name="connect-to-apache-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Herstellen einer Verbindung mit Apache Kafka in HDInsight über ein virtuelles Azure-Netzwerk
@@ -64,7 +64,7 @@ Um ein Kafka-Cluster zu erstellen, das mit Ihrem lokalen Netzwerk kommuniziert, 
 
 Mit diesen Schritten erstellen Sie die folgende Konfiguration:
 
-* Azure Virtual Network
+* Virtuelles Azure-Netzwerk
 * Standort-zu-Standort-VPN-Gateway
 * Azure-Storage-Konto (von HDInsight verwendet)
 * Kafka in HDInsight
@@ -75,7 +75,7 @@ Um sicherzustellen, dass ein Kafka-Client eine Verbindung von einem lokalen Stan
 
 Führen Sie die Schritte in diesem Abschnitt aus, um die folgende Konfiguration zu erstellen:
 
-* Azure Virtual Network
+* Virtuelles Azure-Netzwerk
 * Point-to-Site-VPN-Gateway
 * Azure-Speicherkonto (von HDInsight verwendet)
 * Kafka in HDInsight

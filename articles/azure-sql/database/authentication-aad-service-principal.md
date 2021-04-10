@@ -9,12 +9,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 02/11/2021
-ms.openlocfilehash: 15cc935457f76fb1d2fe4e8d699db831ebacc357
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 68267cdedd2f0b64549791866e8750cf42928ab4
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102181753"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103201241"
 ---
 # <a name="azure-active-directory-service-principal-with-azure-sql"></a>Azure Active Directory-Dienstprinzipal mit Azure SQL
 
@@ -52,7 +52,7 @@ Die Unterstützung dieser Funktionalität ist hilfreich in Automatisierungsproze
 
 Zum Aktivieren einer Azure AD-Objekterstellung in SQL-Datenbank und Azure Synapse im Auftrag einer Azure AD-Anwendung sind die folgenden Einstellungen erforderlich:
 
-1. Weisen Sie die Serveridentität zu. Die zugewiesene Serveridentität stellt die MSI (Managed System Identity, verwaltete Systemidentität) dar. Derzeit unterstützt die Serveridentität für Azure SQL keine UMIs (User Managed Identity, benutzerseitig zugewiesene verwaltete Identität).
+1. Weisen Sie die Serveridentität zu. Die zugewiesene Serveridentität stellt die MSI (Managed Service Identity, verwaltete Dienstidentität) dar. Derzeit unterstützt die Serveridentität für Azure SQL keine UMIs (User Managed Identity, benutzerseitig zugewiesene verwaltete Identität).
     - Führen Sie bei einem neuen logischen Azure SQL-Server den folgenden PowerShell-Befehl aus:
     
     ```powershell

@@ -1,18 +1,14 @@
 ---
 title: Behandeln von Problemen mit dem Sensor und der lokalen Verwaltungskonsole
 description: Beheben Sie Probleme mit dem Sensor und der lokalen Verwaltungskonsole, um möglicherweise bestehende Probleme zu beseitigen.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
-ms.date: 1/3/2021
+ms.date: 03/14/2021
 ms.topic: article
-ms.service: azure
-ms.openlocfilehash: 624f60441f56646c3633a2afa79d326c92ba1a37
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 83ffec959a5b38e9f4fd4d7d0dcfd3b1b9faa096
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100523718"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104785443"
 ---
 # <a name="troubleshoot-the-sensor-and-on-premises-management-console"></a>Behandeln von Problemen mit dem Sensor und der lokalen Verwaltungskonsole
 
@@ -54,7 +50,7 @@ So stellen Sie Ihr Kennwort wieder her:
 1. Wählen Sie **Weiter** aus. Ihr Benutzer und das vom System generierte Kennwort für Ihre Verwaltungskonsole werden angezeigt.
 
     > [!NOTE]
-    > Wenn Sie sich zum ersten Mal bei einem Sensor oder einer lokalen Verwaltungskonsole anmelden, wird er bzw. sie mit dem Abonnement verknüpft, mit dem Sie eine Verbindung hergestellt haben. Wenn Sie das Kennwort für das den Benutzer „CyberX“ oder „Support“ zurücksetzen müssen, müssen Sie dieses Abonnement auswählen. Weitere Informationen zum Wiederherstellen eines CyberX- oder Support-Kennworts finden Sie unter [Zurücksetzen eines Benutzerkennworts für den Sensor oder die lokale Verwaltungskonsole](how-to-create-and-manage-users.md#resetting-a-users-password-for-the-sensor-or-on-premises-management-console).
+    > Wenn Sie sich zum ersten Mal bei einem Sensor oder einer lokalen Verwaltungskonsole anmelden, wird er bzw. sie mit dem Abonnement verknüpft, mit dem Sie eine Verbindung hergestellt haben. Wenn Sie das Kennwort für das den Benutzer „CyberX“ oder „Support“ zurücksetzen müssen, müssen Sie dieses Abonnement auswählen. Weitere Informationen zum Wiederherstellen eines CyberX- oder Support-Kennworts finden Sie unter [Zurücksetzen von Kennwörtern](how-to-create-and-manage-users.md#resetting-passwords).
 
 ### <a name="investigate-a-lack-of-traffic"></a>Untersuchen eines fehlenden Datenverkehrs
 
@@ -283,7 +279,7 @@ Die exportierten Protokolle werden der Liste **Archived Logs** (Archivierte Prot
 
 Die Liste der archivierten Protokolle kann bis zu fünf Elemente enthalten. Wenn die Anzahl der Elemente in der Liste über diese Zahl hinausgeht, wird das älteste Element gelöscht.
 
-## <a name="next-steps"></a>Nächste Schritte
+## <a name="see-also"></a>Weitere Informationen
 
 - [Anzeigen von Warnungen](how-to-view-alerts.md)
 

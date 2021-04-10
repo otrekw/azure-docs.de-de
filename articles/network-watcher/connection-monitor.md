@@ -6,7 +6,6 @@ documentationcenter: na
 author: damendo
 editor: ''
 tags: azure-resource-manager
-Customer intent: I need to monitor communication between a VM and another VM. If the communication fails, I need to know why, so that I can resolve the problem.
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: tutorial
@@ -15,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: b734c4cdec022f2bf43ee7123b06331f67c10390
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 4f9f3e2af9abc054d3b1d5ce2bd1f1b27f7bf958
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100570845"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106066040"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>Tutorial: Überwachen der Netzwerkkommunikation zwischen zwei virtuellen Computern über das Azure-Portal
 
@@ -158,7 +157,7 @@ Standardmäßig ermöglicht Azure die Kommunikation über alle Ports zwischen vi
     | ---                     | ---            |
     | Zielportbereiche | 22             |
     | Aktion                  | Verweigern           |
-    | Priority                | 100            |
+    | Priorität                | 100            |
     | Name                    | DenySshInbound |
 
 5. Da der Verbindungsmonitor in Intervallen von 60 Sekunden prüft, warten Sie einige Minuten, und wählen Sie auf der linken Seite des Portals **Network Watcher**, dann **Verbindungsmonitor** und schließlich erneut den Monitor **myVm1-myVm2(22)** aus. Die Ergebnisse unterscheiden sich nun, wie in der folgenden Abbildung gezeigt:

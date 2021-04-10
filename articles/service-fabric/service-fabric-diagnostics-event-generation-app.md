@@ -1,16 +1,14 @@
 ---
 title: Überwachung auf Azure Service Fabric-Anwendungsebene
 description: In diesem Artikel erfahren Sie mehr über Ereignisse und Protokolle auf Anwendungs- und Dienstebene, die zum Überwachen und Diagnostizieren von Azure Service Fabric-Clustern verwendet werden.
-author: srrengar
 ms.topic: conceptual
 ms.date: 11/21/2018
-ms.author: srrengar
-ms.openlocfilehash: a1df5d033701195f4fe5f6b7174f3883b84393ab
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a60eef008afae4185acc266c74c4fb0ce694d560
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98791272"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105627488"
 ---
 # <a name="application-logging"></a>Anwendungsprotokollierung
 

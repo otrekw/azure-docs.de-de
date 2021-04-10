@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: pepogors
-ms.openlocfilehash: 3767a16656ac4d11511c0928be8b2703c4e94c7c
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: eb19005019a6e4e878f6b0bd6a145048d4a2804c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98680602"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103563775"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-with-stateless-only-node-types-preview"></a>Bereitstellen eines Azure Service Fabric-Clusters mit ausschließlich zustandslosen Knotentypen (Vorschau)
 Für Service Fabric-Knotentypen gilt die Annahme, dass zu einem bestimmten Zeitpunkt ggf. zustandsbehaftete Dienste auf den Knoten platziert werden. Zustandslose Knotentypen lockern diese Annahme für einen Knotentyp und ermöglichen so die Nutzung anderer Funktionen wie schnellere Aufskalierungsvorgänge, Unterstützung für automatische Betriebssystemupgrades bei Bronze-Dauerhaftigkeit und horizontales Skalieren auf mehr als 100 Knoten in einer einzigen VM-Skalierungsgruppe.
@@ -72,9 +72,13 @@ Legen Sie die **isStateless**-Eigenschaft auf TRUE fest, um mindestens einen Kno
 Zum Aktivieren von zustandslosen Knotentypen sollten Sie Folgendes für die zugrunde liegende VM-Skalierungsgruppenressource konfigurieren:
 
 * Den Wert der **singlePlacementGroup**-Eigenschaft, der auf **false** festgelegt werden muss, wenn eine Skalierung auf mehr als 100 VMs erforderlich ist.
-* Die **upgradePolicy** der Skalierungsgruppe, deren **mode** (Modus) auf **Rolling** (Parallel) festgelegt werden muss.
+* Der **Modus** **upgradePolicy** der Skalierungsgruppe sollte auf **Parallel** festgelegt werden.
 * Der parallele Upgrademodus erfordert die konfigurierte Anwendungsintegritätserweiterung oder Integritätstests. Konfigurieren Sie den Integritätstest mit der Standardkonfiguration für zustandslose Knotentypen, wie unten vorgeschlagen. Nach der Bereitstellung von Anwendungen für den Knotentyp können Integritätstest-/Integritätserweiterungsports geändert werden, um die Anwendungsintegrität zu überwachen.
 
+>[!NOTE]
+> Die Standardanzahl der Fehlerdomänen für die Plattform wir auf 5 aktualisiert, wenn ein zustandsloser Knotentyp von einer VM-Skalierungsgruppe gesichert wird, die sich über mehrere Zonen erstreckt. Weitere Informationen finden Sie in dieser [Vorlage](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/15-VM-2-NodeTypes-Windows-Stateless-CrossAZ-Secure) .
+> 
+> **platformFaultDomainCount:5**
 ```json
 {
     "apiVersion": "2018-10-01",

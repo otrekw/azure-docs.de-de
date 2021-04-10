@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 2a4d3f3f9465b8813cdf6ee26760d819d73a08c1
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: c5df0a5fc054a12e3fa2ef1e352645c57c357b01
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94353103"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104798730"
 ---
 # <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Salesforce für die automatische Benutzerbereitstellung
 
@@ -27,6 +27,9 @@ Das in diesem Tutorial verwendete Szenario setzt voraus, dass Sie bereits über 
 
 * Einen Azure Active Directory-Mandanten
 * Einen Salesforce.com-Mandanten
+
+> [!Note]
+> Bei Rollenimporten sollten Rollen nicht manuell in Azure Active Directory bearbeitet werden.
 
 > [!IMPORTANT]
 > Bei Verwendung eines Salesforce.com-Testkontos können Sie die automatisierte Benutzerbereitstellung nicht konfigurieren. Bei Testkonten ist der erforderliche API-Zugriff erst nach dem Erwerb aktiviert. Sie können diese Einschränkung umgehen, indem Sie für dieses Tutorial ein [kostenloses Entwicklerkonto](https://developer.salesforce.com/signup) verwenden.
@@ -79,7 +82,7 @@ In diesem Abschnitt wird erläutert, wie Sie die Bereitstellung von Active Direc
 
     ![Screenshot: Ausgewählter Link „Einstellungen“](./media/salesforce-provisioning-tutorial/sf-my-settings.png "Automatische Benutzerbereitstellung aktivieren")
 
-7. Klicken Sie im linken Navigationsbereich auf **Meine persönlichen Informationen** , um den entsprechenden Abschnitt zu erweitern, und dann auf **Mein Sicherheitstoken zurücksetzen**.
+7. Klicken Sie im linken Navigationsbereich auf **Meine persönlichen Informationen**, um den entsprechenden Abschnitt zu erweitern, und dann auf **Mein Sicherheitstoken zurücksetzen**.
   
     ![Screenshot: Ausgewählte Option „Reset My Security Token“ (Mein Sicherheitstoken zurücksetzen) unter „My Personal Information“ (Meine persönlichen Informationen)](./media/salesforce-provisioning-tutorial/sf-personal-reset.png "Automatische Benutzerbereitstellung aktivieren")
 
@@ -93,7 +96,7 @@ In diesem Abschnitt wird erläutert, wie Sie die Bereitstellung von Active Direc
 
 11. Die **Mandanten-URL** muss eingegeben werden, wenn sich die Instanz von Salesforce in der Salesforce Government Cloud befindet. Andernfalls ist die Angabe optional. Geben Sie die Mandanten-URL im Format „https://\<your-instance\>.my.salesforce.com“ ein. Ersetzen Sie dabei \<your-instance\> durch den Namen Ihrer Salesforce-Instanz.
 
-12. Klicken Sie im Azure-Portal auf **Verbindung testen** , um sicherzustellen, dass Azure AD eine Verbindung mit Ihrer Salesforce-App herstellen kann.
+12. Klicken Sie im Azure-Portal auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Ihrer Salesforce-App herstellen kann.
 
 13. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder einer Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das unten gezeigte Kontrollkästchen.
 

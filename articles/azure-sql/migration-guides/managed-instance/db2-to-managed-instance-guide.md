@@ -1,6 +1,6 @@
 ---
 title: 'DB2 zu SQL Managed Instance: Migrationsleitfaden'
-description: Befolgen Sie diese Anleitung, um Ihre Db2-Datenbanken zu Azure SQL Managed Instance zu migrieren.
+description: In diesem Leitfaden erfahren Sie, wie Sie Ihre DB2-Datenbanken mithilfe von SQL Server Migration Assistant für DB2 zu Azure SQL Managed Instance migrieren.
 ms.service: sql-managed-instance
 ms.subservice: migration-guide
 ms.custom: ''
@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 3902661553bbb390e6e999e0f67cd043eee8df09
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 9ad838b8c5f54d3ecdd5c8ce56b197cdb6cec1ba
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359182"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563860"
 ---
 # <a name="migration-guide-db2-to-sql-managed-instance"></a>Migrationsleitfaden: Db2 zu SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -142,9 +142,6 @@ Das Testvorgehen für die Datenbankmigration umfasst die folgenden Aktivitäten:
 1. **Einrichten der Testumgebung**: Die Testumgebung sollte eine Kopie der Quelldatenbank und der Zieldatenbank enthalten. Stellen Sie sicher, dass Sie die Testumgebung isolieren.
 1. **Ausführen der Validierungstests**: Führen Sie die Validierungstests für die Quelle und das Ziel aus, und analysieren Sie anschließend die Ergebnisse.
 1. **Ausführen von Leistungstests**: Führen Sie Leistungstests für die Quelle und das Ziel aus, und analysieren und vergleichen Sie anschließend die Ergebnisse.
-
-   > [!NOTE]
-   > Für Unterstützung bei der Entwicklung und Ausführung von Validierungstests nach der Migration sollten Sie die Datenqualitätslösung des Partners [QuerySurge](https://www.querysurge.com/company/partners/microsoft) in Erwägung ziehen. 
 
 
 ## <a name="leverage-advanced-features"></a>Nutzen der erweiterten Features 

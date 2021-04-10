@@ -1,25 +1,15 @@
 ---
 title: Lokale Konfiguration des Sicherheits-Agents von Defender für IoT (C#)
 description: Erfahren Sie mehr über den Defender für IoT-Sicherheitsdienst und die lokale Konfigurationsdatei des Sicherheits-Agents für C#.
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: elazark
-manager: rkarlin
-editor: ''
-ms.devlang: na
 ms.custom: devx-track-csharp
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 10/08/2020
-ms.author: v-ekrieg
-ms.openlocfilehash: 13c16407481d4fa6f7d468a73051cc4945e6314e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 42cf7f129005f057a9d51ce2e09db735e825f476
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91851232"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104784780"
 ---
 # <a name="understanding-the-local-configuration-file-c-agent"></a>Grundlegendes zur lokalen Konfigurationsdatei (C#-Agent)
 
@@ -84,7 +74,7 @@ Windows:
 
 | Konfigurationsname | Mögliche Werte | Details |
 |:-----------|:---------------|:--------|
-| moduleName | Zeichenfolge | Name der Sicherheitsmodulidentität. Dieser Name muss dem Namen der Modulidentität im Gerät entsprechen. |
+| moduleName | Zeichenfolge | Name der Defender-IoT-micro-agent-Identität Dieser Name muss dem Namen der Modulidentität im Gerät entsprechen. |
 | deviceId | Zeichenfolge | ID des Geräts (wie in Azure IoT Hub registriert). |
 | schedulerInterval | „TimeSpan“-Zeichenfolge | Internes Scheduler-Intervall. |
 | gatewayHostname | Zeichenfolge | Hostname des Azure IoT Hubs. Normalerweise <mein-hub>.azure-devices.net |

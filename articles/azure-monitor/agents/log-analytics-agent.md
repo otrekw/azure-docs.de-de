@@ -5,19 +5,19 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/12/2021
-ms.openlocfilehash: 1dc8e3a78e681947a70ad96638d1d6e09f0bbc88
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 8b3b1d39766d556b820f21c1775210611b995d92
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102050663"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103199899"
 ---
 # <a name="log-analytics-agent-overview"></a>Übersicht über den Log Analytics-Agent
 
 Der Azure Log Analytics-Agent sammelt Telemetrie von virtuellen Windows- und Linux-Computern in allen Clouds, lokalen Computern und von [System Center Operations Manager](/system-center/scom/) überwachten Computern und sendet die gesammelten Daten an Ihren Log Analytics-Arbeitsbereich in Azure Monitor. Der Log Analytics-Agent unterstützt auch Erkenntnisse und andere Dienste in Azure Monitor, z. B. [VM Insights](../vm/vminsights-enable-overview.md), [Azure Security Center](../../security-center/index.yml) und [Azure Automation](../../automation/automation-intro.md). Dieser Artikel enthält eine ausführliche Übersicht über die Anforderungen an den Agent, das System und das Netzwerk sowie über Bereitstellungsmethoden.
 
 > [!NOTE]
-> Der Log Analytics-Agent wird ggf. auch als Microsoft Monitoring Agent (MMA) oder als OMS-Linux-Agent bezeichnet.
+> Der Log Analytics-Agent wird ggf. auch als Microsoft Monitoring Agent (MMA) bezeichnet.
 
 ## <a name="comparison-to-azure-diagnostics-extension"></a>Vergleich mit der Azure-Diagnoseerweiterung
 Die [Azure-Diagnoseerweiterung](./diagnostics-extension-overview.md) in Azure Monitor kann ebenfalls zum Erfassen von Überwachungsdaten aus dem Gastbetriebssystem virtueller Azure-Computer verwendet werden. Je nach Ihren Anforderungen können Sie eine der Möglichkeiten oder beide nutzen. Einen ausführlichen Vergleich der Azure Monitor-Agents finden Sie unter [Übersicht über die Azure Monitor-Agents](../agents/agents-overview.md). 

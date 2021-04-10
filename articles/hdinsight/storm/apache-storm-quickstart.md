@@ -5,14 +5,14 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.date: 06/14/2019
 ms.custom: mvc
-ms.openlocfilehash: fe7b1cdc96ae95ac361183342ea491432c3ab4b4
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 73b0434065b06f25320a0666937fd7969c863b33
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98928860"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104870210"
 ---
-# <a name="quickstart-create-and-monitor-an-apache-storm-topology-in-azure-hdinsight"></a>Schnellstart: Erstellen und Überwachen einer Apache Storm-Topologie in Azure HDInsight
+# <a name="quickstart-create-and-monitor-an-apache-storm-topology-in-azure-hdinsight"></a>Schnellstart: Erstellen und Überwachen einer Apache Storm-Topologie in Azure HDInsight
 
 Apache Storm ist ein skalierbares, fehlertolerantes, verteiltes Echtzeit-Berechnungssystem für die Verarbeitung von Datenströmen. Mit Storm in Azure HDInsight können Sie einen cloudbasierten Storm-Cluster erstellen, der Big Data-Analysen in Echtzeit durchführt.
 
@@ -48,11 +48,11 @@ Führen Sie die folgenden Schritte aus, um die Topologie mithilfe der Storm-Benu
 
 2. Wählen Sie unter **Topologiezusammenfassung** in der Spalte **Name** den Eintrag **wordcount** aus. Informationen zur Topologie werden angezeigt.
 
-    ![Storm-Dashboard mit Informationen zur Storm-Starter-WordCount-Topologie.](./media/apache-storm-quickstart/hdi-topology-summary.png)
+    :::image type="content" source="./media/apache-storm-quickstart/hdi-topology-summary.png" alt-text="Storm-Dashboard mit Informationen zur Storm-Starter-WordCount-Topologie." border="true":::
 
     Auf der neuen Seite werden die folgenden Informationen angezeigt:
 
-    |Eigenschaft | BESCHREIBUNG |
+    |Eigenschaft | Beschreibung |
     |---|---|
     |Topologiestatistik|Grundlegende Informationen zur Leistung der Topologie, aufgeteilt in Zeitfenster. Durch die Auswahl eines bestimmten Zeitfensters werden die Informationen in den anderen Abschnitten der Seite entsprechend angepasst.|
     |Spouts|Grundlegende Informationen zu Spouts, einschließlich des letzten von einem Spout zurückgegebenen Fehlers.|
@@ -65,11 +65,11 @@ Führen Sie die folgenden Schritte aus, um die Topologie mithilfe der Storm-Benu
 
 3. Wählen Sie auf dieser Seite einen Eintrag aus dem Abschnitt **Spouts** oder **Bolts** aus. Informationen zur ausgewählten Komponente werden angezeigt.
 
-    ![Storm-Dashboard mit Informationen zu ausgewählten Komponenten.](./media/apache-storm-quickstart/hdi-component-summary.png)
+    :::image type="content" source="./media/apache-storm-quickstart/hdi-component-summary.png" alt-text="Storm-Dashboard mit Informationen zu ausgewählten Komponenten." border="true":::
 
     Auf der neuen Seite werden die folgenden Informationen angezeigt:
 
-    |Eigenschaft | BESCHREIBUNG |
+    |Eigenschaft | Beschreibung |
     |---|---|
     |Statistik für Spout/Bolt|Grundlegende Informationen zur Leistung der Komponente, aufgeteilt in Zeitfenster. Durch die Auswahl eines bestimmten Zeitfensters werden die Informationen in den anderen Abschnitten der Seite entsprechend angepasst.|
     |Eingabestatistik (nur Bolt)|Informationen zu Komponenten, die vom Bold konsumierte Daten generieren.|

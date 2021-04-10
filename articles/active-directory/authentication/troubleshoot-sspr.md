@@ -11,18 +11,20 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7099de23b825fa7af203dff9696bb53e23a099c8
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: a1dee21182349108c44f9d498417d3b760ac4913
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741115"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103600861"
 ---
 # <a name="troubleshoot-self-service-password-reset-in-azure-active-directory"></a>Problembehandlung bei der Self-Service-Kennwortzurücksetzung in Azure Active Directory
 
 Mit der Self-Service-Kennwortzurücksetzung (SSPR) in Azure Active Directory (Azure AD) können Benutzer ihre Kennwörter in der Cloud zurücksetzen.
 
-Wenn Sie Probleme mit der Self-Service-Kennwortzurücksetzung haben, können Ihnen die folgende Beschreibung häufiger Fehler und die Schritte zur Problembehandlung helfen. Wenn Sie keine Antwort für Ihr Problem finden, [stehen Ihnen unsere Supportteams stets für weitere Unterstützung zur Verfügung](#contact-microsoft-support).
+Wenn Sie Probleme mit der Self-Service-Kennwortzurücksetzung haben, können Ihnen die folgende Beschreibung häufiger Fehler und die Schritte zur Problembehandlung helfen. Sie können sich auch dieses Kurzvideo zum [Lösen der sechs gängigsten SSPR-Fehlermeldungen für Endbenutzer](https://www.youtube.com/watch?v=9RPrNVLzT8I&list=PL3ZTgFEc7LyuS8615yo39LtXR7j1GCerW&index=1) ansehen.
+
+Wenn Sie keine Antwort für Ihr Problem finden, [stehen Ihnen unsere Supportteams stets für weitere Unterstützung zur Verfügung](#contact-microsoft-support).
 
 ## <a name="sspr-configuration-in-the-azure-portal"></a>Konfiguration der Self-Service-Kennwortzurücksetzung (SSPR) im Azure-Portal
 

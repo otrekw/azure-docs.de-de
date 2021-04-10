@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 02/18/2021
-ms.openlocfilehash: 6f586cacaa983ea1e53b34f602f882c530a9bf28
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 310182a3b46f0682efe420387bba0da311707e8a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101716328"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104606598"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-the-azure-portal"></a>Inkrementelles Laden von Daten aus Azure SQL-Datenbank in Azure Blob Storage über das Azure-Portal
 
@@ -170,7 +170,7 @@ END
 8. Klicken Sie auf **Erstellen**.      
 9. Nach Abschluss der Erstellung wird die Seite **Data Factory** wie in der Abbildung angezeigt.
 
-   ![Data Factory-Startseite](./media/doc-common-process/data-factory-home-page.png)
+    :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="Startseite von Azure Data Factory mit der Kachel „Erstellen und überwachen“":::
 10. Klicken Sie auf die Kachel **Erstellen und überwachen**, um die Azure Data Factory-Benutzeroberfläche (User Interface, UI) auf einer separaten Registerkarte zu starten.
 
 ## <a name="create-a-pipeline"></a>Erstellen einer Pipeline
@@ -269,7 +269,7 @@ In diesem Tutorial erstellen Sie eine Pipeline mit zwei Lookup-Aktivitäten, ein
     1. Wählen Sie unter **Name der gespeicherten Prozedur** die Option **usp_write_watermark**.
     2. Klicken Sie zum Angeben von Werten für die Parameter der gespeicherten Prozedur auf **Import parameter** (Importparameter), und geben Sie die folgenden Werte für die Parameter ein:
 
-        | Name | type | Wert |
+        | Name | Typ | Wert |
         | ---- | ---- | ----- |
         | LastModifiedtime | Datetime | @{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue} |
         | TableName | String | @{activity('LookupOldWaterMarkActivity').output.firstRow.TableName} |

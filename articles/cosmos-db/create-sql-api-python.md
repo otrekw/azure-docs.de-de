@@ -13,12 +13,12 @@ ms.custom:
 - seo-javascript-september2019
 - seo-python-october2019
 - devx-track-python
-ms.openlocfilehash: c74da5e612609ce6a0525b24e5868059f06da179
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: fee0591622c1ee07b6e954b3cadc208a300ab6a5
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93078780"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104798781"
 ---
 # <a name="quickstart-build-a-python-application-using-an-azure-cosmos-db-sql-api-account"></a>Schnellstart: Erstellen einer Python-Anwendung mithilfe eines SQL-API-Kontos für Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -44,7 +44,7 @@ In dieser Schnellstartanleitung erstellen und verwalten Sie ein Azure Cosmos DB-
     * Ohne aktives Azure-Abonnement:
         * [Testen Sie Azure Cosmos DB kostenlos](https://azure.microsoft.com/try/cosmosdb/) mit einer Testumgebung, die 30 Tage lang verfügbar ist.
         * [Azure Cosmos DB-Emulator](https://aka.ms/cosmosdb-emulator) 
-- [Python 2.7 bzw. 3.5.3 oder höher](https://www.python.org/downloads/) mit der ausführbaren `python`-Datei unter Ihrem Pfad (`PATH`)
+- [Python 2.7 bzw. 3.6 oder höher](https://www.python.org/downloads/) mit der ausführbaren `python`-Datei unter Ihrem Pfad (`PATH`)
 - [Visual Studio Code](https://code.visualstudio.com/)
 - [Python-Erweiterung für Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-python.python#overview)
 - [Git](https://www.git-scm.com/downloads). 
@@ -122,7 +122,7 @@ Wechseln Sie nun zurück zum Azure-Portal, um die Informationen der Verbindungsz
 
 2. Öffnen Sie in Visual Studio Code die Datei *cosmos_get_started.py* in *\git-samples\azure-cosmos-db-python-getting-started*.
 
-3. Kopieren Sie den **URI** -Wert aus dem Portal (mithilfe der Schaltfläche zum Kopieren), und legen Sie ihn in *cosmos_get_started.py* als Wert der Variablen **endpoint** fest. 
+3. Kopieren Sie den **URI**-Wert aus dem Portal (mithilfe der Schaltfläche zum Kopieren), und legen Sie ihn in *cosmos_get_started.py* als Wert der Variablen **endpoint** fest. 
 
     `endpoint = 'https://FILLME.documents.azure.com',`
 
@@ -170,7 +170,7 @@ Die folgenden Codeausschnitte stammen alle aus der Datei *cosmos_get_started.py*
 
     Die Fußzeile in Visual Studio Code wird mit dem ausgewählten Interpreter aktualisiert. 
 
-3. Klicken Sie auf **Ansicht** > **Integriertes Terminal** , um das in Visual Studio Code integrierte Terminal zu öffnen.
+3. Klicken Sie auf **Ansicht** > **Integriertes Terminal**, um das in Visual Studio Code integrierte Terminal zu öffnen.
 
 4. Vergewissern Sie sich im Fenster des integrierten Terminals, dass Sie sich im Ordner *azure-cosmos-db-python-getting-started* befinden. Wechseln Sie andernfalls mithilfe des folgenden Befehls zum Beispielordner: 
 

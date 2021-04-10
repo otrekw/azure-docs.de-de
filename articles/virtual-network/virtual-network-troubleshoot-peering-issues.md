@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: f3e1ea8861646490875667f6238b3f8813bd6c4b
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 608f3d72aecb0c6d53325c0d082b1779822e9c80
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100518163"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103200532"
 ---
 # <a name="troubleshoot-virtual-network-peering-issues"></a>Beheben von Problemen mit dem Peering virtueller Netzwerke
 
@@ -44,7 +44,7 @@ Verwenden Sie die in den folgenden Artikeln aufgeführten Methoden, um ein Peeri
 >
 > * Virtuelle Computer hinter einem internen Lastenausgleich (Internal Load Balancer, ILB) im Tarif (SKU) „Basic“
 > * Redis Cache (verwendet Basic ILB SKU)
-> * Application Gateway (verwendet Basic ILB SKU)
+> * Application Gateway v1 (verwendet Basic ILB SKU)
 > * VM-Skalierungsgruppen (verwenden Basic ILB SKU)
 > * Azure Service Fabric-Cluster (verwenden Basic ILB SKU)
 > * SQL Server Always On (verwendet Basic ILB SKU)

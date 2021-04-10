@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 6ab310681ae7b63cb4e9f4e07984983727ae5ff2
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: ea75b9c1e8c7a1a242406b5a7f73db1b05c70276
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104953917"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105562204"
 ---
 # <a name="azure-security-baseline-for-automation"></a>Azure-Sicherheitsbaseline für Automation
 
@@ -544,7 +544,7 @@ Bei der Verwendung von Hybrid Runbook Worker-Instanzen werden die virtuellen Dat
 
 **Verantwortlichkeit**: Kunde
 
-**Azure Security Center-Überwachung**: Der [Azure-Sicherheitsvergleichstest](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md) ist die Standardrichtlinieninitiative für Security Center und die Grundlage für die [Empfehlungen von Security Center](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md). Die Azure Policy-Definitionen für diese Kontrolle werden automatisch durch Security Center aktiviert. Warnungen für diese Kontrolle erfordern möglicherweise einen [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md)-Plan für die entsprechenden Dienste.
+**Azure Security Center-Überwachung**: Der [Azure-Sicherheitsvergleichstest](/azure/governance/policy/samples/azure-security-benchmark) ist die Standardrichtlinieninitiative für Security Center und die Grundlage für die [Empfehlungen von Security Center](/azure/security-center/security-center-recommendations). Die Azure Policy-Definitionen für diese Kontrolle werden automatisch durch Security Center aktiviert. Warnungen für diese Kontrolle erfordern möglicherweise einen [Azure Defender](/azure/security-center/azure-defender)-Plan für die entsprechenden Dienste.
 
 **Integrierte Azure Policy-Definitionen – Microsoft.Automation**:
 
@@ -743,7 +743,7 @@ Sie können auch Empfehlungen von Azure Security Center als sichere Konfiguratio
 
 - [Grundlegendes zu Azure Policy-Auswirkungen](../governance/policy/concepts/effects.md)
 
-- [Bereitstellen eines Automation-Kontos mithilfe einer Azure Resource Manager-Vorlage](/azure/automation/quickstart-create-account-template#deploy-the-template)
+- [Bereitstellen eines Automation-Kontos mithilfe einer Azure Resource Manager-Vorlage](/azure/automation/quickstart-create-automation-account-template)
 
 - [Integrierte Azure Policy-Beispiele für Azure Automation](policy-reference.md)
 

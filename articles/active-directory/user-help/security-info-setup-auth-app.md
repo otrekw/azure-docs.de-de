@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 02/13/2019
 ms.author: curtand
-ms.openlocfilehash: e383896e50ccf06ef6d1b5caaeb0ef36ece2ce3b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: c947bee0b702797a86d1e038f74c6c10e2b23eb4
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348295"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103197479"
 ---
 # <a name="set-up-the-microsoft-authenticator-app-as-your-verification-method"></a>Einrichten der Microsoft Authenticator-App als Überprüfungsmethode
 
@@ -46,8 +46,8 @@ Sicherheitsinformationsmethoden werden sowohl für die zweistufige Sicherheitsü
 
 Je nach den Einstellungen Ihrer Organisation können Sie eine Authentifikator-App als eine Ihrer Methoden für Sicherheitsinformationen verwenden. Die Verwendung der Microsoft Authenticator-App ist nicht verpflichtend, und Sie können während der Einrichtung eine andere App auswählen. In diesem Artikel wird jedoch die Microsoft Authenticator-App verwendet.
 
->[!Important]
-> Wenn Sie die Microsoft Authenticator-App auf fünf verschiedenen Geräten oder fünf Hardwaretoken eingerichtet haben, ist eine sechste Einrichtung nicht möglich, und ggf. wird die folgende Fehlermeldung angezeigt.
+> [!IMPORTANT]
+> Wenn Sie die Microsoft Authenticator-App auf fünf verschiedenen Geräten eingerichtet oder fünf Hardwaretoken verwendet haben, können Sie kein sechstes Gerät oder Token einrichten, und möglicherweise wird Ihnen die folgende Fehlermeldung angezeigt:
 > 
 > **Sie können Microsoft Authenticator nicht einrichten, weil Sie bereits über fünf Authentifikator-Apps oder Hardwaretoken verfügen. Bitten Sie Ihren Administrator, eine der Authentifikator-Apps oder eines der Hardwaretoken zu löschen.**
 
@@ -57,7 +57,7 @@ Je nach den Einstellungen Ihrer Organisation können Sie eine Authentifikator-Ap
 
     ![Seite „Mein Profil“ mit hervorgehobenen Links zu Sicherheitsinformationen](media/security-info/securityinfo-myprofile-page.png)
 
-2. Wählen Sie im linken Navigationsbereich den Eintrag **Sicherheitsinformation** oder den entsprechenden Link im Block **Sicherheitsinformation** aus, und klicken Sie dann auf der Seite **Sicherheitsinformation** auf **Methode hinzufügen**.
+2. Klicken Sie im linken Menü auf **Sicherheitsinformation**, oder klicken Sie auf den Link im Bereich **Sicherheitsinformation**. Wenn Sie sich bereits registriert haben, werden Sie zur zweistufigen Überprüfung aufgefordert. Klicken Sie dann im Bereich **Sicherheitsinformation** auf **Methode hinzufügen**.
 
     ![Seite „Sicherheitsinformation“ mit hervorgehobener Option „Methode hinzufügen“](media/security-info/securityinfo-myprofile-addmethod-page.png)
 
