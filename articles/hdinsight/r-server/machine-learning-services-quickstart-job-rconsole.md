@@ -6,13 +6,13 @@ ms.topic: quickstart
 ms.date: 06/19/2019
 ms.custom: mvc
 ms.openlocfilehash: eac6fd14acfe12a0f505419a229bb78e423706d1
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98935731"
 ---
-# <a name="quickstart-execute-an-r-script-on-an-ml-services-cluster-in-azure-hdinsight-using-r-console"></a>Schnellstart: Ausführen eines R-Skripts in einem ML Services-Cluster in Azure HDInsight mithilfe der R-Konsole
+# <a name="quickstart-execute-an-r-script-on-an-ml-services-cluster-in-azure-hdinsight-using-r-console"></a>Schnellstart: Ausführen eines R-Skripts in einem ML Services-Cluster in Azure HDInsight mithilfe der R-Konsole
 
 Mithilfe von ML Services in Azure HDInsight können R-Skripts Apache Spark und Apache Hadoop MapReduce verwenden, um verteilte Berechnungen auszuführen. ML Services bestimmt durch Festlegen des Computekontexts, wie Aufrufe ausgeführt werden. Der Edgeknoten eines Clusters ist ein praktischer Ort für die Verbindungsherstellung mit dem Cluster und die Ausführung Ihrer R-Skripts. Mit einem Edgeknoten haben Sie die Möglichkeit, die parallelisierten verteilten Funktionen von RevoScaleR in allen Kernen der Edgeknotenserver auszuführen. Außerdem können Sie sie auf allen Knoten des Clusters ausführen, indem Sie Hadoop MapReduce von RevoScaleR oder Apache Spark-Computekontexte verwenden.
 
@@ -147,7 +147,7 @@ In diesem Schnellstart erfahren Sie, wie Sie ein R-Skript mithilfe der R-Konsole
     
       ---
     
-      Signif. codes:  0 ‘**_’ 0.001 ‘_*’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+      Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
     
       Condition number of final variance-covariance matrix: 11904202
       Number of iterations: 7

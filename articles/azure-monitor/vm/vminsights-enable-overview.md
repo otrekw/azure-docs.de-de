@@ -6,12 +6,12 @@ author: bwren
 ms.author: bwren
 ms.date: 12/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: 7aa8221c960685149a5d475665be105acaf7aa15
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: bb2e12082b80c397eec27409b1177379a92fdd7d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102046668"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102634157"
 ---
 # <a name="enable-vm-insights-overview"></a>Übersicht zum Aktivieren von VM Insights
 
@@ -54,6 +54,7 @@ VM Insights unterstützt alle Betriebssysteme, die den Log Analytics-Agent und d
 > [!IMPORTANT]
 > Das Feature „Gastintegrität“ von VM Insights weist eine eingeschränktere Betriebssystemunterstützung auf, während es sich in der öffentlichen Vorschau befindet. Unter [Aktivieren des Features „Gastintegrität“ von Azure Monitor für VMs (Vorschau)](../vm/vminsights-health-enable.md) finden Sie eine detaillierte Liste.
 
+### <a name="linux-considerations"></a>Überlegungen zu Linux
 In der folgenden Liste finden Sie Überlegungen zur Linux-Unterstützung des Dependency-Agents, der VM Insights unterstützt:
 
 - Es werden nur die Standardversion und SMP-Version des Linux-Kernels unterstützt.
@@ -61,7 +62,22 @@ In der folgenden Liste finden Sie Überlegungen zur Linux-Unterstützung des Dep
 - Benutzerdefinierte Kernels, einschließlich Neukompilierungen von Standardkernels, werden nicht unterstützt.
 - Für andere Debian-Distributionen als Version 9.4 wird das Zuordnungsfeature nicht unterstützt, und das Leistungsfeature ist nur über das Azure Monitor-Menü verfügbar. Es ist nicht direkt über den linken Bereich des virtuellen Azure-Computers verfügbar.
 - Der CentOSPlus-Kernel wird unterstützt.
-- Der Linux-Kernel muss für das Spectre-Sicherheitsrisiko gepatcht werden. Weitere Informationen erhalten Sie beim Anbieter der Linux-Distribution.
+
+Der Linux-Kernel muss für die Spectre- und Meltdown-Sicherheitsrisiken gepatcht werden. Weitere Informationen erhalten Sie beim Anbieter der Linux-Distribution. Führen Sie den folgenden Befehl aus, um zu überprüfen, ob der Schutz vor Spectre/Meltdown eingerichtet wurde:
+
+```
+$ grep . /sys/devices/system/cpu/vulnerabilities/*
+```
+
+Die Ausgabe für diesen Befehl ähnelt der folgenden und gibt an, ob ein Computer für eines der Probleme anfällig ist. Wenn diese Dateien fehlen, wurde der Computer nicht gepatcht.
+
+```
+/sys/devices/system/cpu/vulnerabilities/meltdown:Mitigation: PTI
+/sys/devices/system/cpu/vulnerabilities/spectre_v1:Vulnerable
+/sys/devices/system/cpu/vulnerabilities/spectre_v2:Vulnerable: Minimal generic ASM retpoline
+```
+
+
 ## <a name="log-analytics-workspace"></a>Log Analytics-Arbeitsbereich
 Für VM Insights ist ein Log Analytics-Arbeitsbereich erforderlich. Ausführliche Informationen sowie Anforderungen dieses Arbeitsbereichs finden Sie unter [Konfigurieren eines Log Analytics-Arbeitsbereichs für VM Insights](vminsights-configure-workspace.md).
 ## <a name="agents"></a>Agents

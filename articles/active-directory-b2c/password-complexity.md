@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/10/2020
+ms.date: 03/12/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: f9748d0d278375029fc9875f5b36674d19ad871a
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 81c6e58e34f30d5736c40c77a308321dee28ae34
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98058972"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103224264"
 ---
 # <a name="configure-complexity-requirements-for-passwords-in-azure-active-directory-b2c"></a>Konfigurieren der Komplexitätsanforderungen für Kennwörter in Azure Active Directory B2C
 
@@ -102,75 +102,89 @@ Um die Kennwortkomplexität zu konfigurieren, überschreiben Sie die [Anspruchst
 1. Fügen Sie dem Element **ClaimsSchema** die Ansprüche `newPassword` und `reenterPassword` hinzu.
 
     ```xml
-    <ClaimType Id="newPassword">
-      <PredicateValidationReference Id="CustomPassword" />
-    </ClaimType>
-    <ClaimType Id="reenterPassword">
-      <PredicateValidationReference Id="CustomPassword" />
-    </ClaimType>
+    <!-- 
+    <BuildingBlocks>
+      <ClaimsSchema> -->
+        <ClaimType Id="newPassword">
+          <PredicateValidationReference Id="CustomPassword" />
+        </ClaimType>
+        <ClaimType Id="reenterPassword">
+          <PredicateValidationReference Id="CustomPassword" />
+        </ClaimType>
+      <!-- 
+      </ClaimsSchema>
+    </BuildingBlocks>-->
     ```
 
 1. Das Element [Predicates](predicates.md) definiert eine grundlegende Überprüfung zum Prüfen des Werts eines Anspruchstyps und gibt „true“ oder „false“ zurück. Die Überprüfung erfolgt mit einem bestimmten Methodenelement und einer Reihe von Parametern, die für die Methode relevant sind. Fügen Sie dem Element **BuildingBlocks** unmittelbar nach dem Schließen des Elements `</ClaimsSchema>` die folgenden Prädikate hinzu:
 
     ```xml
-    <Predicates>
-      <Predicate Id="LengthRange" Method="IsLengthRange">
-        <UserHelpText>The password must be between 6 and 64 characters.</UserHelpText>
-        <Parameters>
-          <Parameter Id="Minimum">6</Parameter>
-          <Parameter Id="Maximum">64</Parameter>
-        </Parameters>
-      </Predicate>
-      <Predicate Id="Lowercase" Method="IncludesCharacters">
-        <UserHelpText>a lowercase letter</UserHelpText>
-        <Parameters>
-          <Parameter Id="CharacterSet">a-z</Parameter>
-        </Parameters>
-      </Predicate>
-      <Predicate Id="Uppercase" Method="IncludesCharacters">
-        <UserHelpText>an uppercase letter</UserHelpText>
-        <Parameters>
-          <Parameter Id="CharacterSet">A-Z</Parameter>
-        </Parameters>
-      </Predicate>
-      <Predicate Id="Number" Method="IncludesCharacters">
-        <UserHelpText>a digit</UserHelpText>
-        <Parameters>
-          <Parameter Id="CharacterSet">0-9</Parameter>
-        </Parameters>
-      </Predicate>
-      <Predicate Id="Symbol" Method="IncludesCharacters">
-        <UserHelpText>a symbol</UserHelpText>
-        <Parameters>
-          <Parameter Id="CharacterSet">@#$%^&amp;*\-_+=[]{}|\\:',.?/`~"();!</Parameter>
-        </Parameters>
-      </Predicate>
-    </Predicates>
+    <!-- 
+    <BuildingBlocks>-->
+      <Predicates>
+        <Predicate Id="LengthRange" Method="IsLengthRange">
+          <UserHelpText>The password must be between 6 and 64 characters.</UserHelpText>
+          <Parameters>
+            <Parameter Id="Minimum">6</Parameter>
+            <Parameter Id="Maximum">64</Parameter>
+          </Parameters>
+        </Predicate>
+        <Predicate Id="Lowercase" Method="IncludesCharacters">
+          <UserHelpText>a lowercase letter</UserHelpText>
+          <Parameters>
+            <Parameter Id="CharacterSet">a-z</Parameter>
+          </Parameters>
+        </Predicate>
+        <Predicate Id="Uppercase" Method="IncludesCharacters">
+          <UserHelpText>an uppercase letter</UserHelpText>
+          <Parameters>
+            <Parameter Id="CharacterSet">A-Z</Parameter>
+          </Parameters>
+        </Predicate>
+        <Predicate Id="Number" Method="IncludesCharacters">
+          <UserHelpText>a digit</UserHelpText>
+          <Parameters>
+            <Parameter Id="CharacterSet">0-9</Parameter>
+          </Parameters>
+        </Predicate>
+        <Predicate Id="Symbol" Method="IncludesCharacters">
+          <UserHelpText>a symbol</UserHelpText>
+          <Parameters>
+            <Parameter Id="CharacterSet">@#$%^&amp;*\-_+=[]{}|\\:',.?/`~"();!</Parameter>
+          </Parameters>
+        </Predicate>
+      </Predicates>
+    <!-- 
+    </BuildingBlocks>-->
     ```
 
 1. Fügen Sie dem Element **BuildingBlocks** unmittelbar nach dem Schließen des Elements `</Predicates>` die folgenden Prädikatüberprüfungen hinzu:
 
     ```xml
-    <PredicateValidations>
-      <PredicateValidation Id="CustomPassword">
-        <PredicateGroups>
-          <PredicateGroup Id="LengthGroup">
-            <PredicateReferences MatchAtLeast="1">
-              <PredicateReference Id="LengthRange" />
-            </PredicateReferences>
-          </PredicateGroup>
-          <PredicateGroup Id="CharacterClasses">
-            <UserHelpText>The password must have at least 3 of the following:</UserHelpText>
-            <PredicateReferences MatchAtLeast="3">
-              <PredicateReference Id="Lowercase" />
-              <PredicateReference Id="Uppercase" />
-              <PredicateReference Id="Number" />
-              <PredicateReference Id="Symbol" />
-            </PredicateReferences>
-          </PredicateGroup>
-        </PredicateGroups>
-      </PredicateValidation>
-    </PredicateValidations>
+    <!-- 
+    <BuildingBlocks>-->
+      <PredicateValidations>
+        <PredicateValidation Id="CustomPassword">
+          <PredicateGroups>
+            <PredicateGroup Id="LengthGroup">
+              <PredicateReferences MatchAtLeast="1">
+                <PredicateReference Id="LengthRange" />
+              </PredicateReferences>
+            </PredicateGroup>
+            <PredicateGroup Id="CharacterClasses">
+              <UserHelpText>The password must have at least 3 of the following:</UserHelpText>
+              <PredicateReferences MatchAtLeast="3">
+                <PredicateReference Id="Lowercase" />
+                <PredicateReference Id="Uppercase" />
+                <PredicateReference Id="Number" />
+                <PredicateReference Id="Symbol" />
+              </PredicateReferences>
+            </PredicateGroup>
+          </PredicateGroups>
+        </PredicateValidation>
+      </PredicateValidations>
+    <!-- 
+    </BuildingBlocks>-->
     ```
 
 ## <a name="disable-strong-password"></a>Deaktivieren sicherer Kennwörter 
@@ -178,22 +192,28 @@ Um die Kennwortkomplexität zu konfigurieren, überschreiben Sie die [Anspruchst
 Die folgenden technischen Profile sind [technische Active Directory-Profile](active-directory-technical-profile.md), die Daten in Azure Active Directory schreiben und daraus lesen. Überschreiben Sie diese technischen Profile in der Erweiterungsdatei. Verwenden Sie `PersistedClaims`, um die sichere Kennwortrichtlinie zu deaktivieren. Suchen Sie nach dem Element **ClaimsProviders**.  Fügen Sie wie folgt die folgenden Anspruchsanbieter hinzu:
 
 ```xml
-<ClaimsProvider>
-  <DisplayName>Azure Active Directory</DisplayName>
-  <TechnicalProfiles>
-    <TechnicalProfile Id="AAD-UserWriteUsingLogonEmail">
-      <PersistedClaims>
-        <PersistedClaim ClaimTypeReferenceId="passwordPolicies" DefaultValue="DisablePasswordExpiration, DisableStrongPassword"/>
-      </PersistedClaims>
-    </TechnicalProfile>
-    <TechnicalProfile Id="AAD-UserWritePasswordUsingObjectId">
-      <PersistedClaims>
-        <PersistedClaim ClaimTypeReferenceId="passwordPolicies" DefaultValue="DisablePasswordExpiration, DisableStrongPassword"/>
-      </PersistedClaims>
-    </TechnicalProfile>
-  </TechnicalProfiles>
-</ClaimsProvider>
+<!-- 
+<ClaimsProviders>-->
+  <ClaimsProvider>
+    <DisplayName>Azure Active Directory</DisplayName>
+    <TechnicalProfiles>
+      <TechnicalProfile Id="AAD-UserWriteUsingLogonEmail">
+        <PersistedClaims>
+          <PersistedClaim ClaimTypeReferenceId="passwordPolicies" DefaultValue="DisablePasswordExpiration, DisableStrongPassword"/>
+        </PersistedClaims>
+      </TechnicalProfile>
+      <TechnicalProfile Id="AAD-UserWritePasswordUsingObjectId">
+        <PersistedClaims>
+          <PersistedClaim ClaimTypeReferenceId="passwordPolicies" DefaultValue="DisablePasswordExpiration, DisableStrongPassword"/>
+        </PersistedClaims>
+      </TechnicalProfile>
+    </TechnicalProfiles>
+  </ClaimsProvider>
+<!-- 
+</ClaimsProviders>-->
 ```
+
+Wenn Sie die Richtlinie [Auf Benutzername basierende Anmeldung](https://github.com/azure-ad-b2c/samples/tree/master/policies/username-signup-or-signin) verwenden, aktualisieren Sie die technischen Profile `AAD-UserWriteUsingLogonEmail`, `AAD-UserWritePasswordUsingObjectId` und `LocalAccountWritePasswordUsingObjectId` mit der Richtlinie *DisableStrongPassword*.
 
 Speichern Sie die Richtliniendatei.
 

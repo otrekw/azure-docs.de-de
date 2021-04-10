@@ -6,10 +6,10 @@ ms.topic: sample
 ms.date: 11/08/2019
 ms.custom: devx-track-python
 ms.openlocfilehash: 1a15a8d343398dce7a049622b53ca5e2b2c217eb
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98931879"
 ---
 # <a name="azure-hdinsight-python-samples"></a>Azure HDInsight: Python-Beispiele
@@ -23,7 +23,7 @@ ms.locfileid: "98931879"
 > [!Important]
 > Python 2.7 gilt ab 1. Januar 2020 als veraltet. Wenn Sie noch Python 2.7 verwenden, führen Sie ein Upgrade auf 3.7 durch, um das HDInsight Python SDK verwenden zu können.  
 
-Dieser Artikel enthält Folgendes:
+Dieser Artikel enthält:
 
 * Links zu Beispielen für Aufgaben zur Clustererstellung
 * Links zu Referenzinhalten zu anderen Verwaltungsaufgaben

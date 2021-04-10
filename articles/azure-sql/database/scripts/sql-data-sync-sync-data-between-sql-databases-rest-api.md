@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: ef2823b870f76922dd0dc157341aea9b502fb4bb
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: d3ff8114c11b224a0bdbb0bd2d0e5686a7e57b55
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103564560"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105565902"
 ---
 # <a name="use-rest-api-to-sync-data-between-multiple-databases"></a>Verwenden der REST-API zum Synchronisieren von Daten zwischen mehreren Datenbanken 
 
@@ -31,7 +31,7 @@ Eine Übersicht über die SQL-Datensynchronisierung finden Sie unter [Was ist SQ
 
 ## <a name="create-sync-group"></a>Erstellen der Synchronisierungsgruppe
 
-Verwenden Sie die [Vorlage zum Erstellen oder Aktualisieren](https://docs.microsoft.com/rest/api/sql/syncgroups/createorupdate), um eine Synchronisierungsgruppe zu erstellen.
+Verwenden Sie die [Vorlage zum Erstellen oder Aktualisieren](/rest/api/sql/syncgroups/createorupdate), um eine Synchronisierungsgruppe zu erstellen.
  
 Übergeben Sie beim Erstellen einer Synchronisierungsgruppe weder das Synchronisierungsschema (Tabelle\Spalte) noch „masterSyncMemberName“, da die Synchronisierungsgruppe zu diesem Zeitpunkt noch nicht über Tabellen-\Spalteninformationen verfügt.
 
@@ -91,7 +91,7 @@ Statuscode: 201
 
 ## <a name="create-sync-member"></a>Erstellen eines Synchronisierungsmitglieds
 
-Verwenden Sie die [Vorlage zum Erstellen oder Aktualisieren](https://docs.microsoft.com/rest/api/sql/syncmembers/createorupdate), um ein Synchronisierungsmitglied zu erstellen.
+Verwenden Sie die [Vorlage zum Erstellen oder Aktualisieren](/rest/api/sql/syncmembers/createorupdate), um ein Synchronisierungsmitglied zu erstellen.
 
 Beispielanforderung zum Erstellen eines Synchronisierungsmitglieds:
 
@@ -151,7 +151,7 @@ Statuscode: 201
 
 Aktualisieren Sie nach erfolgreicher Erstellung der Synchronisierungsgruppe das Schema mithilfe der folgenden Vorlagen.
 
-Verwenden Sie die [Vorlage zum Aktualisieren des Hub-Schemas](https://docs.microsoft.com/rest/api/sql/syncgroups/refreshhubschema), um das Schema für die Hub-Datenbank zu aktualisieren. 
+Verwenden Sie die [Vorlage zum Aktualisieren des Hub-Schemas](/rest/api/sql/syncgroups/refreshhubschema), um das Schema für die Hub-Datenbank zu aktualisieren. 
 
 Beispielanforderung zum Aktualisieren eines Hub-Datenbankschemas: 
 
@@ -165,17 +165,17 @@ Statuscode: 200
 
 Statuscode: 202
 
-Verwenden Sie die [Vorlage zum Auflisten von Hub-Schemas](https://docs.microsoft.com/rest/api/sql/syncgroups/listhubschemas), um das Hub-Datenbankschema aufzulisten. 
+Verwenden Sie die [Vorlage zum Auflisten von Hub-Schemas](/rest/api/sql/syncgroups/listhubschemas), um das Hub-Datenbankschema aufzulisten. 
 
-Verwenden Sie die [Vorlage zum Aktualisieren des Mitgliederschemas](https://docs.microsoft.com/rest/api/sql/syncmembers/refreshmemberschema), um das Mitgliederdatenbankschema zu aktualisieren. 
+Verwenden Sie die [Vorlage zum Aktualisieren des Mitgliederschemas](/rest/api/sql/syncmembers/refreshmemberschema), um das Mitgliederdatenbankschema zu aktualisieren. 
 
-Verwenden Sie die [Vorlage zum Auflisten des Mitgliederschemas](https://docs.microsoft.com/rest/api/sql/syncmembers/listmemberschemas), um das Mitgliederdatenbankschema zu aufzulisten. 
+Verwenden Sie die [Vorlage zum Auflisten des Mitgliederschemas](/rest/api/sql/syncmembers/listmemberschemas), um das Mitgliederdatenbankschema zu aufzulisten. 
 
 Fahren Sie erst mit dem nächsten Schritt fort, wenn das Schema erfolgreich aktualisiert wurde. 
 
 ## <a name="update-sync-group"></a>Aktualisieren der Synchronisierungsgruppe 
 
-Verwenden Sie die [Vorlage zum Erstellen oder Aktualisieren](https://docs.microsoft.com/rest/api/sql/syncgroups/createorupdate), um Ihre Synchronisierungsgruppe zu aktualisieren.
+Verwenden Sie die [Vorlage zum Erstellen oder Aktualisieren](/rest/api/sql/syncgroups/createorupdate), um Ihre Synchronisierungsgruppe zu aktualisieren.
 
 Aktualisieren Sie die Synchronisierungsgruppe durch Angeben des Synchronisierungsschemas. Schließen Sie Ihr Schema sowie „masterSyncMemberName“ ein. Hierbei handelt es sich um den Namen, der das zu verwendende Schema enthält. 
 
@@ -232,7 +232,7 @@ Beispielantwort beim Aktualisieren der Synchronisierungsgruppe:
 ```
 ## <a name="update-sync-member"></a>Aktualisieren des Synchronisierungsmitglieds
 
-Verwenden Sie die [Vorlage zum Erstellen oder Aktualisieren](https://docs.microsoft.com/rest/api/sql/syncmembers/createorupdate), um Ihr Synchronisierungsmitglied zu aktualisieren.
+Verwenden Sie die [Vorlage zum Erstellen oder Aktualisieren](/rest/api/sql/syncmembers/createorupdate), um Ihr Synchronisierungsmitglied zu aktualisieren.
 
 Beispielanforderung zum Aktualisieren eines Synchronisierungsmitglieds: 
 
@@ -291,7 +291,7 @@ Statuscode: 201
 
 ## <a name="trigger-sync"></a>Auslösen einer Synchronisierung
 
-Verwenden Sie die [Vorlage zum Auslösen der Synchronisierung](https://docs.microsoft.com/rest/api/sql/syncgroups/triggersync), um einen Synchronisierungsvorgang auszulösen.
+Verwenden Sie die [Vorlage zum Auslösen der Synchronisierung](/rest/api/sql/syncgroups/triggersync), um einen Synchronisierungsvorgang auszulösen.
 
 Beispielanforderung zum Auslösen des Synchronisierungsvorgangs: 
 

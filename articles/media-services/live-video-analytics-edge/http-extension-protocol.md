@@ -3,16 +3,16 @@ title: HTTP-Erweiterungsprotokoll – Azure
 description: In diesem Artikel erfahren Sie mehr über die Verwendung des HTTP-Erweiterungsprotokolls zum Senden von Nachrichten zwischen dem Live Video Analytics-Modul und Ihrem KI- oder CV-Modul.
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: c3a9b5b70467479fdb9b1473a1f6738eaa8a7e1b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 54b25894c60a39de9c0ec00cdc4982f691bf1ee3
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102455889"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105565740"
 ---
 # <a name="http-extension-protocol"></a>HTTP-Erweiterungsprotokoll
 
-Mit Live Video Analytics in IoT Edge können Sie die Mediengraph-Verarbeitungsfunktionen über einen [Grapherweiterungsknoten](/azure/media-services/live-video-analytics-edge/media-graph-extension-concept) erweitern. Wenn Sie den HTTP-Erweiterungsprozessor als Erweiterungsknoten verwenden, erfolgt die Kommunikation zwischen dem Live Video Analytics-Modul und Ihrem KI- oder CV-Modul über HTTP.
+Mit Live Video Analytics in IoT Edge können Sie die Mediengraph-Verarbeitungsfunktionen über einen [Grapherweiterungsknoten](./media-graph-extension-concept.md) erweitern. Wenn Sie den HTTP-Erweiterungsprozessor als Erweiterungsknoten verwenden, erfolgt die Kommunikation zwischen dem Live Video Analytics-Modul und Ihrem KI- oder CV-Modul über HTTP.
 
 In diesem Artikel erfahren Sie mehr über die Verwendung des HTTP-Erweiterungsprotokolls zum Senden von Nachrichten zwischen dem Live Video Analytics-Modul und Ihrem KI- oder CV-Modul. 
 
@@ -87,11 +87,11 @@ Date: Fri, 17 Apr 2020 04:44:01 GMT
 }
 ```
 
-Es wird dringend empfohlen, dass Antworten mithilfe gültiger JSON-Dokumente zurückgegeben werden, die dem gemäß dem [Schemaobjektmodell für Rückschlussmetadaten](/azure/media-services/live-video-analytics-edge/inference-metadata-schema) vorab definierten Schema entsprechen. Dies gewährleistet eine bessere Interoperabilität mit anderen Komponenten und möglichen zukünftigen Funktionen, die dem Live Video Analytics-Modul hinzugefügt werden.
+Es wird dringend empfohlen, dass Antworten mithilfe gültiger JSON-Dokumente zurückgegeben werden, die dem gemäß dem [Schemaobjektmodell für Rückschlussmetadaten](./inference-metadata-schema.md) vorab definierten Schema entsprechen. Dies gewährleistet eine bessere Interoperabilität mit anderen Komponenten und möglichen zukünftigen Funktionen, die dem Live Video Analytics-Modul hinzugefügt werden.
 
 Wenn Ihr Modul eine Antwort zurückgibt, bei der der Inhaltstyp nicht „application/json“ lautet, codiert Live Video Analytics die Nachricht als Base64-Inhalt und serialisiert sie als transparente JSON-Nutzlast.
 
-Wenn Ihr Modul eine Antwort mit dem Inhaltstyp „application/json“ zurückgibt, das JSON-Schema jedoch nicht dem unten beschriebenen Rückschlussmetadatenschema folgt, wird die Nachrichtennutzlast über die Pipeline weitergeleitet, aber die Interoperabilität wird verringert. Ausführliche und aktuelle Informationen zum Rückschlussmetadatenschema finden Sie [hier](/azure/media-services/live-video-analytics-edge/inference-metadata-schema).
+Wenn Ihr Modul eine Antwort mit dem Inhaltstyp „application/json“ zurückgibt, das JSON-Schema jedoch nicht dem unten beschriebenen Rückschlussmetadatenschema folgt, wird die Nachrichtennutzlast über die Pipeline weitergeleitet, aber die Interoperabilität wird verringert. Ausführliche und aktuelle Informationen zum Rückschlussmetadatenschema finden Sie [hier](./inference-metadata-schema.md).
 
 > [!NOTE]
 > Wenn Ihr Modul kein Ergebnis liefert, sollte es den HTTP-204-Statuscode (kein Inhalt) mit einem leeren Antworttext zurückgeben. Live Video Analytics wird dies als leeres Ergebnis verstehen und das Ereignis nicht über die gesamte Pipeline weiterleiten.

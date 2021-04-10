@@ -2,18 +2,18 @@
 title: include file
 description: include file
 services: active-directory
-author: barclayn
+author: ajburnle
 ms.service: active-directory
 ms.topic: include
 ms.date: 12/07/2020
-ms.author: barclayn
+ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: 0b1606e4506e7a1781426632d1f22221f7028b88
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 9c91eb6cfa18c5302a83347f671e4552befcf3e2
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102193877"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102623420"
 ---
 ## <a name="create-one-or-more-access-reviews"></a>Erstellen einer oder mehrerer Zugriffsüberprüfungen
 
@@ -38,6 +38,7 @@ ms.locfileid: "102193877"
     > [!NOTE]
     > - Die hier ausgewählten Rollen enthalten [permanente und berechtigte Rollen](../articles/active-directory/privileged-identity-management/pim-how-to-add-role-to-user.md).
     > - Bei der Auswahl mehrerer Rollen werden mehrere Zugriffsüberprüfungen erstellt. Bei der Auswahl von fünf Rollen werden z. B. fünf separate Zugriffsüberprüfungen erstellt.
+    > - Für Rollen, denen Gruppen zugewiesen sind, wird der Zugriff auf jede Gruppe, die mit der zu überprüfenden Rolle verknüpft ist, im Rahmen der Zugriffsüberprüfung überprüft.
 
     Wenn Sie eine Zugriffsüberprüfung für **Azure AD-Rollen** erstellen, sieht die Liste der zu überprüfenden Mitgliedschaften in etwa wie im folgenden Beispiel aus.
 
@@ -52,8 +53,8 @@ ms.locfileid: "102193877"
     ![Liste der Prüfer mit ausgewählten Benutzer oder Mitgliedern (selbst)](./media/active-directory-privileged-identity-management-access-reviews/reviewers.png)
 
     - **Ausgewählte Benutzer**: Verwenden Sie diese Option, wenn Sie nicht wissen, wer Zugriff benötigt. Mit dieser Option können Sie die Überprüfungsdurchführung einem Ressourcenbesitzer oder Gruppen-Manager zuweisen.
-    - **Mitglieder (selbst)** : Mit dieser Option können Benutzer ihre Rollenzuweisungen selbst überprüfen.
-    - **Manager**: Verwenden Sie diese Option, wenn der Vorgesetzte des Benutzers seine Rollenzuweisung überprüfen soll. Wenn Sie „Manager“ auswählen, haben Sie auch die Möglichkeit, einen Fallbackprüfer anzugeben. Fallbackprüfer werden aufgefordert, eine Überprüfung für einen Benutzer durchzuführen, wenn für diesen kein Vorgesetzter (Manager) im Verzeichnis angegeben ist.
+    - **Mitglieder (selbst)** : Mit dieser Option können Benutzer ihre Rollenzuweisungen selbst überprüfen. Gruppen, die der Rolle zugewiesen sind, unterliegen nicht der Überprüfung, wenn diese Option ausgewählt ist.
+    - **Manager**: Verwenden Sie diese Option, wenn der Vorgesetzte des Benutzers seine Rollenzuweisung überprüfen soll. Wenn Sie „Manager“ auswählen, haben Sie auch die Möglichkeit, einen Fallbackprüfer anzugeben. Fallbackprüfer werden aufgefordert, eine Überprüfung für einen Benutzer durchzuführen, wenn für diesen kein Vorgesetzter (Manager) im Verzeichnis angegeben ist. Gruppen, die der Rolle zugewiesen sind, werden vom Fallbackprüfer überprüft, sofern ein solcher ausgewählt ist. 
 
 ### <a name="upon-completion-settings"></a>Einstellungen nach Abschluss
 

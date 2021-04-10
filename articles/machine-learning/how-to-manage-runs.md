@@ -12,23 +12,27 @@ ms.reviewer: nibaccam
 ms.date: 03/04/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: d142c523862d61bf56723726be50cd6f095c5ee9
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 977498abb17fe592cef344f407a662d3b79749b7
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102520335"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102634791"
 ---
-# <a name="start-monitor-and-cancel-training-runs-in-python"></a>Starten, Überwachen und Abbrechen von Trainingsausführungen in Python
+# <a name="start-monitor-and-track-runs"></a>Starten, Überwachen und Nachverfolgen von Ausführungen 
 
 Das [Azure Machine Learning SDK für Python](/python/api/overview/azure/ml/intro), die [Machine Learning-CLI](reference-azure-machine-learning-cli.md) und [Azure Machine Learning Studio](https://ml.azure.com) bieten verschiedene Methoden zum Überwachen, Organisieren und Verwalten Ihrer Ausführungen für Training und Experimentieren.
 
 In diesem Artikel finden Sie Beispiele für die folgenden Aufgaben:
 
 * Überwachen der Ausführungsleistung
+* Überwachen des Ausführungsstatus per E-Mail-Benachrichtigung
+* Markieren und Suchen von Ausführungen
+* Hinzufügen einer Ausführungsbeschreibung 
+* Ausführen einer Suche 
 * Abbrechen oder Fehler von Ausführungen
 * Erstellen untergeordneter Ausführungen
-* Markieren und Suchen von Ausführungen
+ 
 
 > [!TIP]
 > Informationen zur Überwachung des Azure Machine Learning-Diensts und der zugehörigen Azure-Dienste finden Sie unter [Überwachen von Azure Machine Learning](monitor-azure-machine-learning.md).
@@ -50,7 +54,8 @@ Sie benötige folgende Elemente:
     print(azureml.core.VERSION)
     ```
 
-* Die [Azure CLI](/cli/azure/) und die [CLI-Erweiterung für Azure Machine Learning](reference-azure-machine-learning-cli.md).
+* Die [Azure CLI](/cli/azure/?preserve-view=true&view=azure-cli-latest) und die [CLI-Erweiterung für Azure Machine Learning](reference-azure-machine-learning-cli.md).
+
 
 ## <a name="monitor-run-performance"></a>Überwachen der Ausführungsleistung
 
@@ -96,7 +101,7 @@ Sie benötige folgende Elemente:
     
         Dieser Befehl erstellt ein `.azureml`-Unterverzeichnis, das RUNCONFIG-Beispieldateien und Conda-Umgebungsdateien enthält. Es enthält auch eine `config.json`-Datei, die für die Kommunikation mit dem Azure Machine Learning-Arbeitsbereich verwendet wird.
     
-        Weitere Informationen finden Sie unter [az ml folder attach](/cli/azure/ext/azure-cli-ml/ml/folder#ext-azure-cli-ml-az-ml-folder-attach).
+        Weitere Informationen finden Sie unter [az ml folder attach](/cli/azure/ext/azure-cli-ml/ml/folder?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-folder-attach).
     
     2. Verwenden Sie den folgenden Befehl zum Starten der Ausführung. Wenn Sie diesen Befehl verwenden, geben Sie den Namen der Runconfig-Datei (den Text vor „\*.runconfig“, wenn Sie auf Ihr Dateisystem schauen) für den -c-Parameter an.
     
@@ -111,7 +116,7 @@ Sie benötige folgende Elemente:
         >
         > Weitere RUNCONFIG-Beispieldateien finden Sie unter [https://github.com/MicrosoftDocs/pipelines-azureml/](https://github.com/MicrosoftDocs/pipelines-azureml/).
     
-        Weitere Informationen finden Sie unter [az ml run submit-script](/cli/azure/ext/azure-cli-ml/ml/run#ext-azure-cli-ml-az-ml-run-submit-script).
+        Weitere Informationen finden Sie unter [az ml run submit-script](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-submit-script).
 
     # <a name="studio"></a>[Studio](#tab/azure-studio)
 
@@ -162,7 +167,7 @@ Sie benötige folgende Elemente:
     
         Dieser Befehl gibt ein JSON-Dokument zurück, in dem Informationen zu Ausführungen für dieses Experiment aufgelistet sind.
     
-        Weitere Informationen finden Sie unter [az ml experiment list](/cli/azure/ext/azure-cli-ml/ml/experiment#ext-azure-cli-ml-az-ml-experiment-list).
+        Weitere Informationen finden Sie unter [az ml experiment list](/cli/azure/ext/azure-cli-ml/ml/experiment?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-experiment-list).
     
     * Verwenden Sie den folgenden Befehl, um Informationen zu einer bestimmten Ausführung anzuzeigen. Ersetzen Sie `runid` durch die ID der Ausführung:
     
@@ -172,7 +177,7 @@ Sie benötige folgende Elemente:
     
         Dieser Befehl gibt ein JSON-Dokument zurück, in dem Informationen zur Ausführung aufgelistet sind.
     
-        Weitere Informationen finden Sie unter [az ml run show](/cli/azure/ext/azure-cli-ml/ml/run#ext-azure-cli-ml-az-ml-run-show).
+        Weitere Informationen finden Sie unter [az ml run show](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-show).
     
     
     # <a name="studio"></a>[Studio](#tab/azure-studio)
@@ -192,6 +197,29 @@ Sie benötige folgende Elemente:
     1. Wenn Sie die Ausführungsprotokolle anzeigen möchten, wählen Sie eine bestimmte Ausführung aus, und auf der Registerkarte **Ausgaben und Protokolle** finden Sie Diagnose- und Fehlerprotokolle für Ihre Ausführung.
     
     ---
+
+## <a name="monitor-the-run-status-by-email-notification"></a>Überwachen des Ausführungsstatus per E-Mail-Benachrichtigung
+
+1. Wählen Sie im [Azure-Portal](https://ms.portal.azure.com/) auf der linken Navigationsleiste die Registerkarte **Überwachen** aus. 
+
+1. Wählen Sie **Diagnoseeinstellungen** und dann **+ Diagnoseeinstellung hinzufügen** aus.
+
+    ![Screenshot der Diagnoseeinstellungen für die E-Mail-Benachrichtigung](./media/how-to-manage-runs/diagnostic-setting.png)
+
+1. Führen Sie für die Diagnoseeinstellung Folgendes aus: 
+    1. Wählen Sie unter **Kategoriedetails** das **AmlRunStatusChangedEvent** aus. 
+    1. Wählen Sie in den **Zieldetails** die Option **An Log Analytics-Arbeitsbereich senden** aus, und geben Sie das **Abonnement** und den **Log Analytics-Arbeitsbereich** an. 
+
+    > [!NOTE]
+    > Der **Azure Log Analytics-Arbeitsbereich** ist ein anderer Typ von Azure-Ressource als der **Azure Machine Learning Service-Arbeitsbereich**. Wenn diese Liste keine Optionen enthält, können Sie [einen Log Analytics-Arbeitsbereich erstellen](https://docs.microsoft.com/azure/azure-monitor/logs/quick-create-workspace). 
+    
+    ![Speicherort für E-Mail-Benachrichtigungen](./media/how-to-manage-runs/log-location.png)
+
+1. Fügen Sie auf der Registerkarte **Protokolle** eine **Neue Warnungsregel** hinzu. 
+
+    ![Neue Warnungsregel](./media/how-to-manage-runs/new-alert-rule.png)
+
+1. Weitere Informationen finden Sie unter [Erstellen, Anzeigen und Verwalten von Protokollwarnungen mithilfe von Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/alerts/alerts-log).
 
 ## <a name="run-description"></a>Ausführungsbeschreibung 
 
@@ -253,7 +281,7 @@ In Azure Machine Learning können Sie Eigenschaften und Tags zum Organisieren un
     az ml run update -r runid --add-tag quality='fantastic run'
     ```
     
-    Weitere Informationen finden Sie unter [az ml run update](/cli/azure/ext/azure-cli-ml/ml/run#ext-azure-cli-ml-az-ml-run-update).
+    Weitere Informationen finden Sie unter [az ml run update](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-update).
     
     # <a name="studio"></a>[Studio](#tab/azure-studio)
     
@@ -287,17 +315,17 @@ In Azure Machine Learning können Sie Eigenschaften und Tags zum Organisieren un
     az ml run list --experiment-name experiment [?properties.author=='azureml-user' && tags.quality=='fantastic run']
     ```
     
-    Weitere Informationen zum Abfragen von Azure CLI-Ergebnissen finden Sie unter [Abfragen der Azure CLI-Befehlsausgabe](/cli/azure/query-azure-cli).
+    Weitere Informationen zum Abfragen von Azure CLI-Ergebnissen finden Sie unter [Abfragen der Azure CLI-Befehlsausgabe](/cli/azure/query-azure-cli?preserve-view=true&view=azure-cli-latest).
     
     # <a name="studio"></a>[Studio](#tab/azure-studio)
     
-    1. Navigieren Sie zur Liste **Alle Ausführungen**.
+    Navigieren Sie zur Liste **Alle Ausführungen**, um nach bestimmten Ausführungen zu suchen. Hier haben Sie zwei Möglichkeiten:
     
-    1. Verwenden Sie die Suchleiste, um anhand von Ausführungsmetadaten wie Tags, Beschreibungen, Experimentnamen und Absendernamen zu filtern. Der Tagsfilter kann auch zum Filtern der Tags verwendet werden. 
+    1. Verwenden Sie die Schaltfläche **Filter hinzufügen**, und wählen Sie Filter für Tags aus, um Ihre Ausführungen nach Tags zu filtern, die den Ausführungen zugewiesen wurden. <br><br>
+    oder
     
-    ---
-
-
+    1. Verwenden Sie die Suchleiste, um anhand von Ausführungsmetadaten wie Ausführungsstatus, Beschreibungen, Experimentnamen und Absendernamen Ausführungen schnell zu finden. 
+    
 ## <a name="cancel-or-fail-runs"></a>Abbrechen oder Fehler von Ausführungen
 
 Wenn Sie einen Fehler bemerken oder die Ausführung zu lange dauert, können Sie die Ausführung abbrechen.
@@ -331,7 +359,7 @@ Verwenden Sie zum Abbrechen einer Ausführung mit der CLI den folgenden Befehl. 
 az ml run cancel -r runid -w workspace_name -e experiment_name
 ```
 
-Weitere Informationen finden Sie unter [az ml run cancel](/cli/azure/ext/azure-cli-ml/ml/run#ext-azure-cli-ml-az-ml-run-cancel).
+Weitere Informationen finden Sie unter [az ml run cancel](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-cancel).
 
 # <a name="studio"></a>[Studio](#tab/azure-studio)
 

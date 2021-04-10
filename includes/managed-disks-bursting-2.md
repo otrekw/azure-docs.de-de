@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/04/2021
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: a2f6a3fd8d36bb54773db21e3d36dab0060bae57
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 3035b5d2803ff91e84bc6b47a99963185f9195d3
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102178371"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102623208"
 ---
 ## <a name="disk-level-bursting"></a>Bursting auf Datenträgerebene
 
@@ -147,7 +147,7 @@ Wenn die VM gestartet wird, nutzt sie das Bursting, um ihre Burstgrenze von 1.28
 
 Nach dem Start starten Sie eine Anwendung mit einer nicht kritischen Workload. Diese Anwendung erfordert 15 MB/s, die gleichmäßig auf alle Datenträger verteilt werden.
 
-![Die Anwendung sendet eine Anforderung für einen Durchsatz von 15 MB/s an die VM, die anhand dieser Anforderung von allen Datenträgern 5 MB/s anfordert. Jeder Datenträger gibt 5 MB/s zurück, und die VM gibt 15 MB/s an die Anwendung zurück.](media/managed-disks-bursting/bursting-vm-bursting-disk/burst-vm-burst-disk-idling.jpg)
+![Die Anwendung sendet eine Anforderung für einen Durchsatz von 15 MB/s an die VM, die anhand dieser Anforderung von allen Datenträgern 5 MB/s anfordert. Jeder Datenträger antwortet mit 5 MB/s, und die VM gibt 15 MB/s an die Anwendung zurück.](media/managed-disks-bursting/bursting-vm-bursting-disk/burst-vm-burst-disk-idling.jpg)
 
 Anschließend muss die Anwendung einen Batchauftrag verarbeiten, der 360 MB/s erfordert. Der Standard_L8s_v2 nutzt das Bursting, um diese Anforderung zu erfüllen, und stellt dann Anforderungen. Es werden nur 20 MB/s vom Betriebssystemdatenträger benötigt. Die verbleibenden 340 MB/s werden per Bursting von den P4-Datenträgern verarbeitet.
 

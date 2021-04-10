@@ -9,12 +9,12 @@ ms.subservice: disks
 ms.date: 10/15/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: 302f53bd218a2e01a039be4780a0e2ff5974e7b4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e6630cbb44157f25bd2cbfcff25ec3132c74c61c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102215951"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105565570"
 ---
 # <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-the-azure-cli"></a>Verschlüsseln von Betriebssystem- und angefügten Datenträgern in einer VM-Skalierungsgruppe mit Azure CLI
 
@@ -61,7 +61,7 @@ Die Erstellung und Konfiguration aller Ressourcen und virtuellen Computer der Sk
 
 In Azure Key Vault können Schlüssel, geheime Schlüssel und Kennwörter gespeichert werden, um eine sichere Implementierung in Anwendungen und Diensten zu ermöglichen. Kryptografische Schlüssel werden in Azure Key Vault mit Softwareschutz gespeichert. Alternativ können Sie Schlüssel aber auch in Hardwaresicherheitsmodulen (HSMs) mit FIPS 140-2 Level 2-Zertifizierung importieren oder generieren. Die kryptografischen Schlüssel dienen zum Verschlüsseln und Entschlüsseln virtueller Datenträger, die an Ihren virtuellen Computer angefügt sind. Diese kryptografischen Schlüssel werden allein von Ihnen kontrolliert, und Sie können deren Verwendung überwachen.
 
-Geben Sie Ihren eigenen eindeutigen *keyvault_name* an. Erstellen Sie dann mit [az keyvault create](/cli/azure/ext/keyvault-preview/keyvault#ext-keyvault-preview-az-keyvault-create) einen Schlüsseltresor im gleichen Abonnement und derselben Region wie die Skalierungsgruppe, und legen Sie die Zugriffsrichtlinie *--enabled-for-disk-encryption* fest.
+Geben Sie Ihren eigenen eindeutigen *keyvault_name* an. Erstellen Sie dann mit [az keyvault create](/cli/azure/keyvault#ext-keyvault-preview-az-keyvault-create) einen Schlüsseltresor im gleichen Abonnement und derselben Region wie die Skalierungsgruppe, und legen Sie die Zugriffsrichtlinie *--enabled-for-disk-encryption* fest.
 
 ```azurecli-interactive
 # Provide your own unique Key Vault name
@@ -75,7 +75,7 @@ az keyvault create --resource-group myResourceGroup --name $keyvault_name --enab
 
 Dieser Schritt ist nur erforderlich, wenn Sie über einen vorhandenen Schlüsseltresor verfügen, den Sie mit der Datenträgerverschlüsselung verwenden möchten. Überspringen Sie diesen Schritt, wenn Sie im vorherigen Abschnitt einen Schlüsseltresor erstellt haben.
 
-Geben Sie Ihren eigenen eindeutigen *keyvault_name* an. Aktualisieren Sie dann Ihren Schlüsseltresor mit [az keyvault update](/cli/azure/ext/keyvault-preview/keyvault#ext-keyvault-preview-az-keyvault-update), und legen Sie die Zugriffsrichtlinie *--enabled-for-disk-encryption* fest.
+Geben Sie Ihren eigenen eindeutigen *keyvault_name* an. Aktualisieren Sie dann Ihren Schlüsseltresor mit [az keyvault update](/cli/azure/keyvault#ext-keyvault-preview-az-keyvault-update), und legen Sie die Zugriffsrichtlinie *--enabled-for-disk-encryption* fest.
 
 ```azurecli-interactive
 # Provide your own unique Key Vault name
@@ -87,7 +87,7 @@ az keyvault update --name $keyvault_name --enabled-for-disk-encryption
 
 ## <a name="enable-encryption"></a>Aktivieren der Verschlüsselung
 
-Rufen Sie zum Verschlüsseln von VM-Instanzen in einer Skalierungsgruppe zunächst Informationen über die Key Vault-Ressourcen-ID mit [az keyvault show](/cli/azure/ext/keyvault-preview/keyvault#ext-keyvault-preview-az-keyvault-show) ab. Die folgenden Variablen werden zum Starten des Verschlüsselungsvorgangs mit [az vmss encryption enable](/cli/azure/vmss/encryption#az-vmss-encryption-enable) verwendet:
+Rufen Sie zum Verschlüsseln von VM-Instanzen in einer Skalierungsgruppe zunächst Informationen über die Key Vault-Ressourcen-ID mit [az keyvault show](/cli/azure/keyvault#ext-keyvault-preview-az-keyvault-show) ab. Die folgenden Variablen werden zum Starten des Verschlüsselungsvorgangs mit [az vmss encryption enable](/cli/azure/vmss/encryption#az-vmss-encryption-enable) verwendet:
 
 ```azurecli-interactive
 # Get the resource ID of the Key Vault

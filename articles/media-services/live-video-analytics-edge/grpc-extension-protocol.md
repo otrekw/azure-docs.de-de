@@ -3,16 +3,16 @@ title: gRPC-Erweiterungsprotokoll – Azure
 description: Dieser Artikel enthält Informationen zur Verwendung des gRPC-Erweiterungsprotokolls zum Senden von Nachrichten zwischen dem Live Video Analytics-Modul und Ihrer benutzerdefinierten KI- oder CV-Erweiterung.
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: f7b5be859702199b07dfa0d6a43a09ca8ff0c42f
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 8d153b472e54b221b60a2b584043ffaf68e8ff82
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102455855"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105565808"
 ---
 # <a name="grpc-extension-protocol"></a>gRPC-Erweiterungsprotokoll
 
-Mit Live Video Analytics in IoT Edge können Sie die Mediengraph-Verarbeitungsfunktionen über einen [Grapherweiterungsknoten](/azure/media-services/live-video-analytics-edge/media-graph-extension-concept) erweitern. Wenn Sie den gRPC-Erweiterungsprozessor als Erweiterungsknoten verwenden, erfolgt die Kommunikation zwischen dem Live Video Analytics-Modul und Ihrem KI- oder CV-Modul über ein gRPC-basiertes, sehr leistungsfähiges strukturiertes Protokoll.
+Mit Live Video Analytics in IoT Edge können Sie die Mediengraph-Verarbeitungsfunktionen über einen [Grapherweiterungsknoten](./media-graph-extension-concept.md) erweitern. Wenn Sie den gRPC-Erweiterungsprozessor als Erweiterungsknoten verwenden, erfolgt die Kommunikation zwischen dem Live Video Analytics-Modul und Ihrem KI- oder CV-Modul über ein gRPC-basiertes, sehr leistungsfähiges strukturiertes Protokoll.
 
 Dieser Artikel enthält Informationen zur Verwendung des gRPC-Erweiterungsprotokolls zum Senden von Nachrichten zwischen dem Live Video Analytics-Modul und Ihrer benutzerdefinierten KI- oder CV-Erweiterung.
 
@@ -25,7 +25,7 @@ Eine gRPC-Sitzung ist eine einzelne Verbindung zwischen gRPC-Client und gRPC-Ser
 
 In einer einzelnen Sitzung geschieht Folgendes: Der Client sendet einen Mediendatenstrom-Deskriptor sowie Videoframes als Nachricht vom Typ [Protobuf](https://github.com/Azure/live-video-analytics/tree/master/contracts/grpc) über die gRPC-Streamsitzung an den Server. Der Server überprüft den Datenstromdeskriptor, analysiert den Videoframe und gibt Rückschlussergebnisse als Protobuf-Nachricht zurück. 
 
-Es wird dringend empfohlen, dass Antworten mithilfe gültiger JSON-Dokumente zurückgegeben werden, die dem gemäß dem [Schemaobjektmodell für Rückschlussmetadaten](/azure/media-services/live-video-analytics-edge/inference-metadata-schema) vorab definierten Schema entsprechen. Dies gewährleistet eine bessere Interoperabilität mit anderen Komponenten und möglichen zukünftigen Funktionen, die dem Live Video Analytics-Modul hinzugefügt werden.
+Es wird dringend empfohlen, dass Antworten mithilfe gültiger JSON-Dokumente zurückgegeben werden, die dem gemäß dem [Schemaobjektmodell für Rückschlussmetadaten](./inference-metadata-schema.md) vorab definierten Schema entsprechen. Dies gewährleistet eine bessere Interoperabilität mit anderen Komponenten und möglichen zukünftigen Funktionen, die dem Live Video Analytics-Modul hinzugefügt werden.
 
 ![Vertrag für die gRPC-Erweiterung](./media/grpc-extension-protocol/grpc.png)
 

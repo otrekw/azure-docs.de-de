@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/08/2021
+ms.date: 03/10/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e867fee753fb9db530db2b2015c3aea9280bc16f
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: b60b447d8302b89813ca462c3220603ef926eb26
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448643"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102631182"
 ---
 # <a name="localization-string-ids"></a>Lokalisierungszeichenfolgen-IDs
 
@@ -356,7 +356,7 @@ Im Folgenden finden Sie die IDs für ein [Anzeigesteuerelement zur Überprüfung
 
 | id | Standardwert |
 | -- | ------------- |
-|intro_msg| Es ist eine Überprüfung erforderlich. Klicken Sie auf die Schaltfläche „Senden“.|
+|intro_msg <sup>*</sup>| Es ist eine Überprüfung erforderlich. Klicken Sie auf die Schaltfläche „Senden“.|
 |success_send_code_msg | Prüfcode wurde gesendet. Kopieren Sie den Code in das nachstehende Eingabefeld.|
 |failure_send_code_msg | Beim Überprüfen Ihrer E-Mail-Adresse sind Probleme aufgetreten. Geben Sie eine gültige E-Mail-Adresse ein, und versuchen Sie es erneut.|
 |success_verify_code_msg | Die E-Mail-Adresse wurde verifiziert. Sie können den Vorgang jetzt fortsetzen.|
@@ -365,6 +365,12 @@ Im Folgenden finden Sie die IDs für ein [Anzeigesteuerelement zur Überprüfung
 |but_verify_code | Code überprüfen|
 |but_send_new_code | Neuen Code senden|
 |but_change_claims | E-Mail-Adresse ändern|
+
+Hinweis: Das `intro_msg`-Element ist ausgeblendet und wird auf der Seite zur Identitätsüberprüfung nicht angezeigt. Verwenden Sie die [HTML-Anpassung](customize-ui-with-html.md) mit Cascading Stylesheets, um es anzuzeigen. Beispiel:
+    
+```css
+.verificationInfoText div{display: block!important}
+```
 
 ### <a name="verification-display-control-example"></a>Beispiel für ein Anzeigesteuerelement zur Überprüfung
 

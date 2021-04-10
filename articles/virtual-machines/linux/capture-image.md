@@ -9,12 +9,12 @@ ms.date: 10/08/2018
 ms.author: cynthn
 ms.custom: legacy, devx-track-azurecli
 ms.collection: linux
-ms.openlocfilehash: 6b345f159ca30d93e43aae8fe34e7d469c57795b
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 8e81c204c1f05b7fc6bdf1efc7060e2094c648e5
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102556654"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102630621"
 ---
 # <a name="how-to-create-a-managed-image-of-a-virtual-machine-or-vhd"></a>Erstellen eines verwalteten Images eines virtuellen Computers oder einer VHD
 
@@ -40,7 +40,7 @@ Eine vereinfachte Version dieses Artikels sowie Informationen zum Testen und Aus
 
 
 ## <a name="step-1-deprovision-the-vm"></a>Schritt 1: Aufheben der Bereitstellung des virtuellen Computers
-Zuerst heben Sie die Bereitstellung des virtuellen Computers mithilfe des Azure-VM-Agents auf, um computerspezifische Dateien und Daten zu löschen. Verwenden Sie auf dem virtuellen Linux-Quellcomputer den Befehl `waagent` mit dem Parameter `-deprovision+user`. Weitere Informationen erhalten Sie im [Benutzerhandbuch für Azure Linux-Agent](../extensions/agent-linux.md).
+Zuerst heben Sie die Bereitstellung des virtuellen Computers mithilfe des Azure-VM-Agents auf, um computerspezifische Dateien und Daten zu löschen. Verwenden Sie auf dem virtuellen Linux-Quellcomputer den Befehl `waagent` mit dem Parameter `-deprovision+user`. Weitere Informationen erhalten Sie im [Benutzerhandbuch für Azure Linux-Agent](../extensions/agent-linux.md). Dieser Vorgang kann nicht rückgängig gemacht werden.
 
 1. Stellen Sie mit einem SSH-Client eine Verbindung mit Ihrem virtuellen Linux-Computer her.
 2. Geben Sie im SSH-Fenster den folgenden Befehl ein:

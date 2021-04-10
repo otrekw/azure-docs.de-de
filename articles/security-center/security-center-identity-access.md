@@ -1,68 +1,65 @@
 ---
-title: Überwachen von Identität und Zugriff in Azure Security Center | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie mithilfe der Identitäts- und Zugriffsfunktion in Azure Security Center die Zugriffsaktivitäten der Benutzer sowie identitätsbezogene Probleme überwachen können.
-services: security-center
-documentationcenter: na
+title: Azure Security Center-Sicherheitsempfehlungen für die MFA
+description: Hier erfahren Sie, wie Sie mithilfe von Azure Security Center die mehrstufige Authentifizierung für Ihre Azure-Abonnements erzwingen.
 author: memildin
 manager: rkarlin
-ms.assetid: 9f04e730-4cfa-4078-8eec-905a443133da
 ms.service: security-center
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 10/08/2020
+ms.date: 03/10/2021
 ms.author: memildin
-ms.openlocfilehash: 3c0dd2b4e7e48eeb76d82c26eb52b89b61e9f668
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 9af4f225b1b9ca5e8023a8d5b4bb7607762e4447
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98134108"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102631896"
 ---
-# <a name="monitor-identity-and-access"></a>Überwachen der Identität und des Zugriffs
+# <a name="manage-multi-factor-authentication-mfa-enforcement-on-your-subscriptions"></a>Verwalten der MFA-Erzwingung (mehrstufige Authentifizierung) für Ihre Abonnements
 
-Der Fokus bei der Entwicklung des Sicherheitsbereichs wurde von der Netzwerkorientierung auf die Identitätsorientierung verlagert. Aufgrund dieser Entwicklung geht es bei der Sicherheit weniger um die Verteidigung Ihres Netzwerks, sondern mehr um die Verwaltung der Sicherheit Ihrer Apps, Daten und Benutzer.
+Wenn Sie für die Benutzerauthentifizierung lediglich Kennwörter verwenden, kann dies einen Angriffsvektor darstellen. Benutzer verwenden oft schwache Kennwörter oder dieselben Kennwörter für mehrere Dienste. Wenn [Multi-Factor Authentication](https://www.microsoft.com/security/business/identity/mfa) (MFA) aktiviert ist, sind Ihre Konten sicherer, und Benutzer können sich weiterhin bei nahezu allen Anwendungen mit der einmaligen Anmeldung (Single Sign-On, SSO) authentifizieren.
 
-Durch die Überwachung von Aktivitäten und Konfigurationseinstellungen zu Identitäten können Sie proaktive Maßnahmen ergreifen, bevor es zu einem Vorfall kommt, oder auf einen Angriffsversuch reagieren.
+Es gibt mehrere Möglichkeiten, die mehrstufige Authentifizierung für Ihre Azure AD-Benutzer (Azure Active Directory) basierend auf den Lizenzen zu aktivieren, die Ihre Organisation besitzt. Diese Seite enthält die Details zu allen Möglichkeiten im Kontext von Azure Security Center.
 
-## <a name="what-identity-and-access-safeguards-does-security-center-provide"></a>Welche Vorkehrungen zum Schutz von Identitäten und Zugriff bietet Security Center? 
 
-Azure Security Center verfügt über zwei dedizierte Sicherheitskontrollen, mit denen Sie die Identitäts- und Sicherheitsanforderungen Ihrer Organisation erfüllen: 
+## <a name="mfa-and-security-center"></a>MFA und Security Center 
 
- - **Verwalten des Zugriffs und der Berechtigungen**: Es wird empfohlen, dem [Modell eines Zugriffs mit den geringsten Rechten](/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models) zu folgen und sicherzustellen, dass Ihre Benutzer nur über den für die Ausführung ihrer Aufgaben benötigten Zugriff verfügen. Diese Steuerung enthält auch Empfehlungen zum Implementieren der [rollenbasierten Zugriffssteuerung von Azure (Role-Based Access Control, Azure RBAC)](../role-based-access-control/overview.md), um den Zugriff auf Ihre Ressourcen zu kontrollieren.
- 
- - **Aktivieren der MFA**: Wenn [Multi-Factor Authentication (MFA)](https://www.microsoft.com/security/business/identity/mfa) aktiviert ist, sind Ihre Konten sicherer, und Benutzer können sich weiterhin bei nahezu allen Anwendungen mit der einmaligen Anmeldung (Single Sign-On, SSO) authentifizieren.
+Security Center legt viel Wert auf die mehrstufige Authentifizierung. Die Sicherheitskontrolle, die am meisten zur Ihrer Sicherheitsbewertung beiträgt, ist **MFA aktivieren**. 
 
-### <a name="example-recommendations-for-identity-and-access"></a>Beispiele für Empfehlungen für Identität und Zugriff
-
-Beispiele für Empfehlungen, die möglicherweise im Security Center auf der Seite **Empfehlungen** unter den beiden Steuerungen angezeigt werden:
+Durch die Empfehlungen in „MFA aktivieren“ wird sichergestellt, dass Sie sich an die empfohlenen Vorgehensweisen für Benutzer Ihrer Abonnements halten:
 
 - MFA sollte für Konten mit Besitzerberechtigungen in Ihrem Abonnement aktiviert sein.
-- Maximal 3 Besitzer sollten für Ihr Abonnement festgelegt sein.
-- Externe Konten mit Leseberechtigungen sollten aus Ihrem Abonnement entfernt werden
-- Veraltete Konten müssen aus Ihrem Abonnement entfernt werden. (Veraltete Konten sind Konten, die nicht mehr benötigt werden und bei denen die Anmeldung bei Azure Active Directory blockiert wurde.)
+- MFA sollte für Konten mit Schreibberechtigungen für Ihr Abonnement aktiviert werden.
 
-> [!TIP]
-> Weitere Informationen zu diesen und anderen Empfehlungen, die in diesen Steuerungen angezeigt werden können, finden Sie unter [Empfehlungen zu Identität und Zugriff](recommendations-reference.md#recs-identityandaccess).
+Es gibt drei Möglichkeiten, MFA zu aktivieren und sich an die zwei Empfehlungen in Security Center zu halten: Sicherheitsstandards, die Zuweisung nach Benutzer und die Richtlinie für bedingten Zugriff. All diese Optionen werden nachstehend erläutert.
 
-### <a name="limitations"></a>Einschränkungen
+### <a name="free-option---security-defaults"></a>Kostenlose Option: Sicherheitsstandards
+Wenn Sie die kostenlose Edition von Azure AD verwenden, aktivieren Sie die mehrstufige Authentifizierung für Ihren Mandanten mithilfe von [Sicherheitsstandards](../active-directory/fundamentals/concept-fundamentals-security-defaults.md).
 
-Es gibt einige Einschränkungen beim Identitäts- und Zugriffsschutz im Security Center:
+### <a name="mfa-for-microsoft-365-business-e3-or-e5-customers"></a>MFA für Microsoft 365 Business-, E3- oder E5-Kunden
+Kunden mit Microsoft 365 können die **Zuweisung nach Benutzer** verwenden. In diesem Szenario wird Azure AD MFA für alle Benutzer und alle Anmeldeereignisse aktiviert oder deaktiviert. Es besteht keine Möglichkeit, die mehrstufige Authentifizierung nur für einen Teil der Benutzer oder nur für bestimmte Szenarios zu aktivieren. Die Verwaltung erfolgt über das Office 365-Portal.
 
-- Empfehlungen zu Identitäten werden für Abonnements mit mehr als 600 Konten nicht angeboten. In solchen Fällen werden diese Empfehlungen unter „Nicht verfügbare Bewertungen“ aufgeführt.
-- Für die Administrator-Agents des CSP-Partners (Cloud Solution Provider) sind keine Empfehlungen zu Identitäten verfügbar.
-- Mit Empfehlungen zu Identitäten werden keine Konten identifiziert, die mit einem PIM-System (Privileged Identity Management) verwaltet werden. Wenn Sie ein PIM-Tool verwenden, werden unter der Steuerung **Zugriff und Berechtigungen verwalten** möglicherweise falsche Ergebnisse angezeigt.
+### <a name="mfa-for-azure-ad-premium-customers"></a>MFA für Azure AD Premium-Kunden
+Führen Sie zugunsten einer optimierten Benutzerumgebung ein Upgrade auf Azure AD Premium P1 oder P2 durch, und verwenden Sie **Richtlinien für bedingten Zugriff**. Sie benötigen [Berechtigungen für den Azure AD-Mandanten (Azure Active Directory)](../active-directory/roles/permissions-reference.md), um eine Richtlinie für bedingten Zugriff konfigurieren zu können.
 
-## <a name="multi-factor-authentication-mfa-and-azure-active-directory"></a>Mehrstufige Authentifizierung (MFA) und Azure Active Directory 
+Für Ihre Richtlinie für bedingten Zugriff muss Folgendes gelten:
+- Sie muss MFA erzwingen.
+- Sie muss die App-ID der Microsoft Azure-Verwaltung (797f4846-ba00-4fd7-ba43-dac1f8f63013) oder „Alle Apps“ angeben.
+- Sie darf die App-ID der Microsoft Azure-Verwaltung nicht ausschließen.
 
-Zum Aktivieren von MFA sind [Berechtigungen für Azure Active Directory (AD)-Mandanten](../active-directory/roles/permissions-reference.md) erforderlich.
+**Azure AD Premium P1**-Kunden können den bedingten Azure AD-Zugriff verwenden, um Benutzer in bestimmten Szenarios oder bei bestimmten Ereignissen zur mehrstufigen Authentifizierung aufzufordern und auf diese Weise die geschäftlichen Anforderungen zu erfüllen. Dieses Feature ist auch bei den folgenden Lizenzen enthalten: Enterprise Mobility + Security E3, Microsoft 365 F1 und Microsoft 365 E3.
 
-- Wenn Sie eine Premium-Edition von AD besitzen, können Sie MFA über den [bedingten Zugriff](../active-directory/conditional-access/concept-conditional-access-policy-common.md) aktivieren.
-- Wenn Sie die AD Free-Edition verwenden, aktivieren Sie **Sicherheitsstandards**, wie in der [Azure Active Directory-Dokumentation](../active-directory/fundamentals/concept-fundamentals-security-defaults.md) beschrieben.
+**Azure AD Premium P2** bietet die stärksten Sicherheitsfeatures und eine verbesserte Benutzerumgebung. Bei dieser Lizenz ist im Vergleich mit den Azure AD Premium P1-Features zusätzlich der [risikobasierte bedingte Zugriff](../active-directory/conditional-access/howto-conditional-access-policy-risk.md) möglich. Der risikobasierte bedingte Zugriff passt sich an die Muster Ihrer Benutzer an und fordert weniger häufig zur mehrstufigen Authentifizierung auf. Dieses Feature ist auch bei den folgenden Lizenzen enthalten: Enterprise Mobility + Security E5 und Microsoft 365 E5.
+
+Weitere Informationen finden Sie in der [Azure-Dokumentation zum bedingten Zugriff](../active-directory/conditional-access/overview.md).
 
 ## <a name="identify-accounts-without-multi-factor-authentication-mfa-enabled"></a>Identifizieren von Konten ohne aktivierte mehrstufige Authentifizierung (Multi-Factor Authentication, MFA)
 
+Die Liste der Benutzerkonten, bei denen MFA nicht aktiviert ist, wird entweder auf der Seite mit den Details der Security Center-Empfehlungen oder durch Verwenden von Azure Resource Graph angezeigt.
+
+### <a name="view-the-accounts-without-mfa-enabled-in-the-azure-portal"></a>Anzeigen der Konten ohne aktivierte mehrstufige Authentifizierung im Azure-Portal
+Wählen Sie auf der Seite mit den Details der Empfehlungen aus der Liste **Fehlerhafte Ressourcen** ein Abonnement aus, oder wählen Sie **Aktion ausführen** aus, damit die Liste angezeigt wird.
+
+### <a name="view-the-accounts-without-mfa-enabled-using-azure-resource-graph"></a>Anzeigen der Konten ohne aktivierte mehrstufige Authentifizierung mithilfe von Azure Resource Graph
 Verwenden Sie die folgende Azure Resource Graph-Abfrage, um anzuzeigen, für welche Konten MFA nicht aktiviert ist. Die Abfrage gibt alle fehlerhaften Ressourcen (Konten) zur Empfehlung „MFA sollte für Konten mit Besitzerberechtigungen in Ihrem Abonnement aktiviert sein“ zurück. 
 
 1. Öffnen Sie den **Azure Resource Graph-Explorer**.
@@ -85,6 +82,44 @@ Verwenden Sie die folgende Azure Resource Graph-Abfrage, um anzuzeigen, für wel
 
 > [!TIP]
 > Sie können auch die REST-API-Methode [Assessments – Get](/rest/api/securitycenter/assessments/get) im Security Center verwenden.
+
+
+## <a name="faq---mfa-in-security-center"></a>Häufig gestellte Fragen: MFA in Security Center
+
+- [Wir verwenden bereits die Richtlinie für bedingten Zugriff zum Erzwingen der mehrstufigen Authentifizierung. Wieso werden uns immer noch Security Center-Empfehlungen angezeigt?](#were-already-using-ca-policy-to-enforce-mfa-why-do-we-still-get-the-security-center-recommendations)
+- [Wir verwenden ein MFA-Tool eines Drittanbieters zum Erzwingen der mehrstufigen Authentifizierung. Wieso werden uns immer noch Security Center-Empfehlungen angezeigt?](#were-using-a-third-party-mfa-tool-to-enforce-mfa-why-do-we-still-get-the-security-center-recommendations)
+- [Wieso zeigt Security Center für Benutzerkonten ohne Berechtigungen für das Abonnement an, dass sie MFA erfordern?](#why-does-security-center-show-user-accounts-without-permissions-on-the-subscription-as-requiring-mfa)
+- [Wir erzwingen die mehrstufige Authentifizierung mit PIM. Wieso werden PIM-Konten als nicht konform angezeigt?](#were-enforcing-mfa-with-pim-why-are-pim-accounts-shown-as-noncompliant)
+- [Kann ich einige Konten ausschließen bzw. schließen?](#can-i-exempt-or-dismiss-some-of-the-accounts)
+- [Gibt es Einschränkungen beim Identitäts- und Zugriffsschutz von Security Center?](#are-there-any-limitations-to-security-centers-identity-and-access-protections)
+
+### <a name="were-already-using-ca-policy-to-enforce-mfa-why-do-we-still-get-the-security-center-recommendations"></a>Wir verwenden bereits die Richtlinie für bedingten Zugriff zum Erzwingen der mehrstufigen Authentifizierung. Wieso werden uns immer noch Security Center-Empfehlungen angezeigt?
+Überprüfen Sie die folgenden Konfigurationsoptionen in Ihrer MFA-Richtlinie für bedingten Zugriff, um zu untersuchen, wieso die Empfehlungen noch immer generiert werden:
+
+- Die Konten sind im Bereich **Benutzer** (oder eine der Gruppen ist im Bereich **Gruppen**) Ihrer MFA-Richtlinie für bedingten Zugriff enthalten.
+- Die App-ID der Azure-Verwaltung (797f4846-ba00-4fd7-ba43-dac1f8f63013) oder „Alle Apps“ ist im Abschnitt **Apps** Ihrer MFA-Richtlinie für bedingten Zugriff angegeben.
+- Die App-ID der Azure-Verwaltung ist im Bereich **Apps** Ihrer MFA-Richtlinie für bedingten Zugriff nicht ausgeschlossen.
+
+### <a name="were-using-a-third-party-mfa-tool-to-enforce-mfa-why-do-we-still-get-the-security-center-recommendations"></a>Wir verwenden ein MFA-Tool eines Drittanbieters zum Erzwingen der mehrstufigen Authentifizierung. Wieso werden uns immer noch Security Center-Empfehlungen angezeigt?
+Die Security Center-Empfehlungen zu MFA unterstützen keine MFA-Tools von Drittanbietern (z. B. DUO).
+
+Wenn die Empfehlungen für Ihre Organisation nicht relevant sind, können Sie diese wie unter [Ausschließen von Ressourcen und Empfehlungen aus der Sicherheitsbewertung](exempt-resource.md) beschrieben als „Entschärft“ kennzeichnen. Sie können auch [eine Empfehlung deaktivieren](tutorial-security-policy.md#disable-security-policies-and-disable-recommendations).
+
+### <a name="why-does-security-center-show-user-accounts-without-permissions-on-the-subscription-as-requiring-mfa"></a>Wieso zeigt Security Center für Benutzerkonten ohne Berechtigungen für das Abonnement an, dass sie MFA erfordern?
+Die Security Center-Empfehlungen zu MFA beziehen sich auf die [Azure RBAC-Rollen](../role-based-access-control/role-definitions-list.md) und die [Administratorrolle des klassischen Azure-Abonnements](../role-based-access-control/classic-administrators.md). Stellen Sie sicher, dass keines der Konten über diese Rollen verfügt.
+
+### <a name="were-enforcing-mfa-with-pim-why-are-pim-accounts-shown-as-noncompliant"></a>Wir erzwingen die mehrstufige Authentifizierung mit PIM. Wieso werden PIM-Konten als nicht konform angezeigt?
+PIM-Konten werden für die Security Center-Empfehlungen zu MFA derzeit nicht unterstützt. Sie können diese Konten im Abschnitt „Benutzer“ bzw. „Gruppe“einer Richtlinie für bedingten Zugriff hinzufügen.
+
+### <a name="can-i-exempt-or-dismiss-some-of-the-accounts"></a>Kann ich einige Konten ausschließen bzw. schließen?
+Die Funktion zum Ausschließen einiger Konten, die keine mehrstufige Authentifizierung verwenden, wird derzeit nicht unterstützt.  
+
+### <a name="are-there-any-limitations-to-security-centers-identity-and-access-protections"></a>Gibt es Einschränkungen beim Identitäts- und Zugriffsschutz von Security Center?
+Es gibt einige Einschränkungen beim Identitäts- und Zugriffsschutz im Security Center:
+
+- Empfehlungen zu Identitäten werden für Abonnements mit mehr als 600 Konten nicht angeboten. In solchen Fällen werden diese Empfehlungen unter „Nicht verfügbare Bewertungen“ aufgeführt.
+- Für die Administrator-Agents des CSP-Partners (Cloud Solution Provider) sind keine Empfehlungen zu Identitäten verfügbar.
+- Mit Empfehlungen zu Identitäten werden keine Konten identifiziert, die mit einem PIM-System (Privileged Identity Management) verwaltet werden. Wenn Sie ein PIM-Tool verwenden, werden unter der Steuerung **Zugriff und Berechtigungen verwalten** möglicherweise falsche Ergebnisse angezeigt.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

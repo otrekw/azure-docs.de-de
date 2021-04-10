@@ -3,14 +3,14 @@ title: Verwenden der Integration der Quellcodeverwaltung in Azure Automation
 description: In diesem Artikel erfahren Sie, wie Sie die Azure Automation-Quellcodeverwaltung mit anderen Repositorys synchronisieren.
 services: automation
 ms.subservice: process-automation
-ms.date: 11/12/2020
+ms.date: 03/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: e7a6b6d3e753352820cdcb910dcbfa9362793493
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 281da27ce95649e85dae5d0795bb743f21fdb578
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99050769"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102631743"
 ---
 # <a name="use-source-control-integration"></a>Verwenden der Integration der Quellcodeverwaltung
 
@@ -30,7 +30,7 @@ Azure Automation unterstützt drei Arten von Quellcodeverwaltung:
 
 * Ein Quellcodeverwaltungsrepository (GitHub oder Azure Repos)
 * Ein [ausführendes Konto](automation-security-overview.md#run-as-accounts).
-* Die [neuesten Azure-Module](automation-update-azure-modules.md) in Ihrem Automation-Konto, einschließlich des `Az.Accounts`-Moduls (Az-Modul-Entsprechung von `AzureRM.Profile`).
+* Das [`AzureRM.Profile`-Modul](/powershell/module/azurerm.profile/) muss in Ihr Azure Automation-Konto importiert werden. Beachten Sie, dass das entsprechende Az-Modul (`Az.Accounts`) nicht mit der Automation-Quellcodeverwaltung funktioniert.
 
 > [!NOTE]
 > Synchronisierungsaufträge für die Quellcodeverwaltung werden unter dem Automation-Konto eines Benutzers ausgeführt und mit der gleichen Rate wie andere Automation-Aufträge berechnet.

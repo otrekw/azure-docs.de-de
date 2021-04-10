@@ -2,15 +2,15 @@
 title: 'Tutorial: Hinzufügen von Parametern zur Azure Resource Manager-Bicep-Datei'
 description: Fügen Sie Parameter zu Ihrer Bicep-Datei hinzu, um sie wiederverwenden zu können.
 author: mumian
-ms.date: 03/01/2021
+ms.date: 03/10/2021
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 603aa8f8bdb8136f4418d8f9a77bb40ec39243c0
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 00df2ffc6272011127c5a1eb0c1e302011f8de5f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101742969"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102632780"
 ---
 # <a name="tutorial-add-parameters-to-azure-resource-manager-bicep-file"></a>Tutorial: Hinzufügen von Parametern zur Azure Resource Manager-Bicep-Datei
 
@@ -34,7 +34,7 @@ Möglicherweise haben Sie bemerkt, dass es bei dieser Bicep-Datei ein Problem gi
 
 ## <a name="make-bicep-file-reusable"></a>Eine Bicep-Datei wiederverwendbar machen
 
-Damit Ihre Bicep-Datei wiederverwendet werden kann, fügen Sie einen Parameter hinzu, mit dem Sie einen Speicherkontonamen übergeben können. Der hervorgehobene Bicep-Code im folgenden Beispiel zeigt, was sich in der Vorlage geändert hat. Der Parameter `storageName` wird als Zeichenfolge identifiziert. Die maximale Länge ist auf 24 Zeichen festgelegt, damit keine zu langen Namen verwendet werden.
+Damit Ihre Bicep-Datei wiederverwendet werden kann, fügen Sie einen Parameter hinzu, mit dem Sie einen Speicherkontonamen übergeben können. Die folgende Bicep-Datei zeigt, was sich in der Datei geändert hat. Der Parameter `storageName` wird als Zeichenfolge identifiziert. Die maximale Länge ist auf 24 Zeichen festgelegt, damit keine zu langen Namen verwendet werden.
 
 Kopieren Sie die gesamte Datei und ersetzen Sie sie durch den folgenden Inhalt.
 

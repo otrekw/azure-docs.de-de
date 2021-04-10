@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 12/05/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 67a521886f5ff7e7e68f82c80004e0cf2649e652
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: c2da1885d975ea6b4daf26714e430143dd89da42
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102565651"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105709768"
 ---
 # <a name="get-all-application-proxy-apps-with-a-token-lifetime-policy"></a>Abrufen aller Anwendungsproxy-Apps mit einer Richtlinie für die Tokengültigkeitsdauer
 
@@ -40,8 +40,8 @@ Für dieses Beispiel ist das [Azure AD PowerShell V2-Modul in der Vorschauversio
 |---|---|
 |[Get-AzureADServicePrincipal](/powershell/module/azuread/get-azureadserviceprincipal) | Ruft einen Dienstprinzipal ab. |
 |[Get-AzureADApplication](/powershell/module/azuread/get-azureadapplication) | Ruft eine Azure AD-Anwendung ab. |
-|[Get-AzureADPolicy](/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview) | Ruft eine Richtlinie in Azure AD ab. |
-|[Get-AzureADServicePrincipalPolicy](/powershell/module/azuread/get-azureadserviceprincipalpolicy?view=azureadps-2.0-preview) | Ruft die Richtlinie eines Dienstprinzipals in Azure AD ab. |
+|[Get-AzureADPolicy](/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) | Ruft eine Richtlinie in Azure AD ab. |
+|[Get-AzureADServicePrincipalPolicy](/powershell/module/azuread/get-azureadserviceprincipalpolicy?view=azureadps-2.0-preview&preserve-view=true) | Ruft die Richtlinie eines Dienstprinzipals in Azure AD ab. |
 
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -1,18 +1,18 @@
 ---
-title: 'Azure HDInsight: Beispiele für Java'
+title: 'Azure HDInsight: Java-Beispiele'
 description: Enthält Informationen zu Java-Beispielen für häufige Aufgaben auf GitHub, für die das HDInsight SDK für Java verwendet wird.
 ms.custom: devx-track-java
 ms.service: hdinsight
 ms.topic: sample
 ms.date: 11/29/2019
 ms.openlocfilehash: 178767847757660163515ec286eba48e1050f506
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98931901"
 ---
-# <a name="azure-hdinsight-java-samples"></a>Azure HDInsight: Beispiele für Java
+# <a name="azure-hdinsight-java-samples"></a>Azure HDInsight: Java-Beispiele
 
 > [!div class="op_single_selector"]
 > * [Java-Beispiele](hdinsight-sdk-java-samples.md)
@@ -20,7 +20,7 @@ ms.locfileid: "98931901"
 > * [Python-Beispiele](hdinsight-sdk-python-samples.md)
 <!-- * [Go Examples](hdinsight-sdk-dotnet-samples.md)-->
 
-Dieser Artikel enthält Folgendes:
+Dieser Artikel enthält:
 
 * Links zu Beispielen für Aufgaben zur Clustererstellung
 * Links zu Referenzinhalten zu anderen Verwaltungsaufgaben

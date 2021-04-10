@@ -7,12 +7,12 @@ ms.topic: include
 author: mingshen-ms
 ms.author: krsh
 ms.date: 10/20/2020
-ms.openlocfilehash: addc18a0ebf9e49d3474d3f40cb1e2a6e0f0b272
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: c60d2a9b13cce9251ff0f730081a9d677206770d
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97826700"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102630107"
 ---
 ## <a name="generalize-the-image"></a>Generalisieren des Images
 
@@ -38,60 +38,31 @@ Mit dem folgenden Prozess wird eine Linux-VM generalisiert und als separate VM e
     1. Wählen Sie im Azure-Portal Ihre Ressourcengruppe (RG) aus, und heben Sie die Zuordnung der VM auf.
     2. Ihre VM ist jetzt generalisiert, und Sie können mit diesem VM-Datenträger eine neue VM erstellen.
 
-### <a name="take-a-snapshot-of-the-vm-disk"></a>Erstellen einer Momentaufnahme des VM-Datenträgers
+### <a name="capture-image"></a>Erfassen des Images
 
-1. Melden Sie sich beim [Azure-Portal](https://ms.portal.azure.com/) an.
-2. Wählen Sie zunächst oben links **Ressource erstellen** aus, suchen Sie **Momentaufnahme**, und wählen Sie die Option aus.
-3. Wählen Sie im Blatt „Momentaufnahme“ **Erstellen** aus.
-4. Geben Sie einen **Namen** für die Momentaufnahme ein.
-5. Wählen Sie eine vorhandene Ressourcengruppe aus, oder geben Sie den Namen einer neuen Ressourcengruppe ein.
-6. Wählen Sie für **Quelldatenträger** den verwalteten Datenträger aus, für den eine Momentaufnahme erstellt werden soll.
-7. Wählen Sie den **Kontotyp** aus, der zum Speichern der Momentaufnahme verwendet werden soll. Wir empfehlen **Standard-Festplattenlaufwerke**, es sei denn, Sie benötigen eine leistungsstarke SSD.
-8. Wählen Sie **Erstellen** aus.
+Sobald Ihre VM bereit ist, können Sie sie in Azure Shared Image Gallery erfassen. Führen Sie hierzu die folgenden Schritte aus:
 
-#### <a name="extract-the-vhd"></a>Extrahieren der VHD
+1. Navigieren Sie im [Azure-Portal](https://ms.portal.azure.com/) zur Seite Ihres virtuellen Computers.
+2. Wählen Sie die Option **Erfassen** aus.
+3. Klicken Sie unter **Image in Shared Image Gallery freigeben** auf **Ja, als Imageversion für einen Katalog freigeben**.
+4. Wählen Sie unter **Betriebssystemstatus** die Option „Generalized“ (Generalisiert) aus.
+5. Wählen Sie ein Image Gallery-Ziel aus, oder klicken Sie auf **Neu erstellen**.
+6. Wählen Sie eine Zielimagedefinition aus, oder klicken Sie auf **Neu erstellen**.
+7. Geben Sie eine **Versionsnummer** für das Image ein.
+8. Wählen Sie **Bewerten + erstellen** aus, um Ihre Auswahl zu überprüfen.
+9. Klicken Sie auf **Erstellen**, sobald die Überprüfung bestanden wurde.
 
-Verwenden Sie das folgende Skript, um die Momentaufnahme in eine VHD in Ihrem Speicherkonto zu exportieren.
+Zum Veröffentlichen muss das Herausgeberkonto über Besitzerzugriff auf Shared Image Gallery verfügen. So gewähren Sie den Zugriff:
 
-```azurecli-interactive
-#Provide the subscription Id where the snapshot is created
-$subscriptionId=yourSubscriptionId
+1. Rufen Sie Shared Image Gallery auf.
+2. Wählen Sie im linken Bereich **Zugriffssteuerung (IAM)** aus.
+3. Klicken Sie auf **Hinzufügen**, und wählen Sie dann **Rollenzuweisung hinzufügen** aus.
+4. Wählen Sie eine **Rolle** oder einen **Besitzer** aus.
+5. Wählen Sie unter **Assign access to** (Zugriff zuweisen zu) die Option **User, group, or service principal** (Benutzer, Gruppe oder Dienstprinzipal) aus.
+6. Wählen Sie die Azure-E-Mail-Adresse der Person aus, die das Image veröffentlichen wird.
+7. Wählen Sie **Speichern** aus.
 
-#Provide the name of your resource group where the snapshot is created
-$resourceGroupName=myResourceGroupName
+:::image type="content" source="../media/create-vm/add-role-assignment.png" alt-text="Screenshot: Fenster „Rollenzuweisung hinzufügen“":::
 
-#Provide the snapshot name
-$snapshotName=mySnapshot
-
-#Provide Shared Access Signature (SAS) expiry duration in seconds (such as 3600)
-#Know more about SAS here: https://docs.microsoft.com/en-us/azure/storage/storage-dotnet-shared-access-signature-part-1
-$sasExpiryDuration=3600
-
-#Provide storage account name where you want to copy the underlying VHD file. 
-$storageAccountName=mystorageaccountname
-
-#Name of the storage container where the downloaded VHD will be stored.
-$storageContainerName=mystoragecontainername
-
-#Provide the key of the storage account where you want to copy the VHD 
-$storageAccountKey=mystorageaccountkey
-
-#Give a name to the destination VHD file to which the VHD will be copied.
-$destinationVHDFileName=myvhdfilename.vhd
-
-az account set --subscription $subscriptionId
-
-sas=$(az snapshot grant-access --resource-group $resourceGroupName --name $snapshotName --duration-in-seconds $sasExpiryDuration --query [accessSas] -o tsv)
-
-az storage blob copy start --destination-blob $destinationVHDFileName --destination-container $storageContainerName --account-name $storageAccountName --account-key $storageAccountKey --source-uri $sas
-```
-
-#### <a name="script-explanation"></a>Erläuterung des Skripts
-
-Dieses Skript verwendet die folgenden Befehle zum Generieren des SAS-URIs für eine Momentaufnahme und zum Kopieren der zugrunde liegenden VHD in ein Speicherkonto mithilfe des SAS-URIs. Jeder Befehl in der Tabelle ist mit der zugehörigen Dokumentation verknüpft.
-
-| Get-Help | Notizen |
-| --- | --- |
-| az disk grant-access | Generiert eine schreibgeschützte Shared Access Signature (SAS), die verwendet wird, um die zugrunde liegende VHD-Datei in ein Speicherkonto zu kopieren oder lokal herunterzuladen
-| az storage blob copy start | Kopiert ein Blob asynchron aus einem Speicherkonto in ein anderes. Verwenden Sie `az storage blob show`, um den Status des neuen Blobs zu überprüfen. |
-|
+> [!NOTE]
+> Sie müssen keinen URI (Uniform Resource Identifier) generieren, da Sie nun ein Shared Image Gallery-Image in Partner Center veröffentlichen können. Wenn Sie dennoch Informationen zu den Schritten zum Erstellen eines SAS-URIs benötigen, finden Sie diese unter [Generieren eines SAS-URIs für ein VM-Image](../azure-vm-get-sas-uri.md).

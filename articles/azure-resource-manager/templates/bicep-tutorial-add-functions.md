@@ -2,16 +2,16 @@
 title: 'Tutorial: Hinzufügen von Funktionen zu Azure Resource Manager-Bicep-Dateien'
 description: Fügen Sie Ihren Bicep-Dateien Funktionen hinzu, um Werte zu erstellen.
 author: mumian
-ms.date: 03/02/2021
+ms.date: 03/10/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: references_regions
-ms.openlocfilehash: 9c66ab132d3343115b1a9bd852d3eb3d83ae4ca7
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b909beb0cce9ad04ba00068ee25247520dcff47d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101742992"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102633154"
 ---
 # <a name="tutorial-add-functions-to-azure-resource-manager-bicep-file"></a>Tutorial: Hinzufügen von Funktionen zu Azure Resource Manager-Bicep-Dateien
 
@@ -37,7 +37,7 @@ Der Standort des Speicherkontos ist auf **USA, Osten** hartcodiert. Möglicherwe
 
 Funktionen rufen während der Bereitstellung dynamisch Werte ab und erhöhen dadurch die Flexibilität Ihrer Bicep-Datei. In diesem Tutorial verwenden Sie eine Funktion, um den Standort der Ressourcengruppe abzurufen, die Sie für die Bereitstellung verwenden.
 
-Das folgende Beispiel zeigt die Änderungen, die Sie vornehmen, um einen Parameter namens `location` hinzuzufügen. Der Standardwert des Parameters ruft die Funktion [resourceGroup](template-functions-resource.md#resourcegroup) auf. Diese Funktion gibt ein Objekt mit Informationen zu der für die Bereitstellung verwendeten Ressourcengruppe zurück. Eine der Eigenschaften im Objekt ist eine Standorteigenschaft. Wenn Sie den Standardwert verwenden, wird für das Speicherkonto der gleiche Standort verwendet wie für die Ressourcengruppe. Die Ressourcen in einer Ressourcengruppe müssen nicht den gleichen Standort haben. Sie können bei Bedarf auch einen anderen Standort angeben.
+Das folgende Beispiel zeigt die Änderungen, die Sie zum Hinzufügen eines Parameters namens `location` vornehmen. Der Standardwert des Parameters ruft die Funktion [resourceGroup](template-functions-resource.md#resourcegroup) auf. Diese Funktion gibt ein Objekt mit Informationen zu der für die Bereitstellung verwendeten Ressourcengruppe zurück. Eine der Eigenschaften im Objekt ist eine Standorteigenschaft. Wenn Sie den Standardwert verwenden, wird für das Speicherkonto der gleiche Standort verwendet wie für die Ressourcengruppe. Die Ressourcen in einer Ressourcengruppe müssen nicht den gleichen Standort haben. Sie können bei Bedarf auch einen anderen Standort angeben.
 
 Kopieren Sie die gesamte Datei, und ersetzen Sie Ihre Bicep-Datei durch den Inhalt der Datei.
 
