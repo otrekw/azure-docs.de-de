@@ -1,17 +1,17 @@
 ---
 title: Verwalten der Protokolle in Azure Database for PostgreSQL (Einzelserver) über das Azure-Portal
 description: In diesem Artikel wird beschrieben, wie Sie über das Azure-Portal die Serverprotokolle (Protokolldateien) in Azure Database for PostgreSQL (Einzelserver) konfigurieren und auf diese zugreifen.
-author: lfittl-msft
-ms.author: lufittl
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: 3b52cea1d440506caf5b8244c9643719edd8755c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3e44377ecb734f0036d05a347596f1ff003ae28a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95999245"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105604327"
 ---
 # <a name="configure-and-access-azure-database-for-postgresql---single-server-logs-from-the-azure-portal"></a>Konfigurieren von Protokollen für Azure Database for PostgreSQL (Einzelserver) und Zugreifen auf diese über das Azure-Portal
 

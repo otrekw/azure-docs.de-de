@@ -63,7 +63,7 @@
       items:
         - name: Verbessern der Genauigkeit mithilfe von Mandantenmodellen
           href: tutorial-tenant-model.md
-    - name: Referenz
+    - name: Verweis
       items:
         - name: C++
           displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
@@ -188,8 +188,6 @@
           href: rest-text-to-speech.md
     - name: Ressourcen
       items:
-        - name: Unterstützung von Standardstimmen
-          href: language-support.md#standard-voices
         - name: Unterstützung neuronaler Stimmen
           href: language-support.md#neural-voices
         - name: Unterstützung für Regionen
@@ -249,7 +247,7 @@
     - name: Übersicht über die Absichtserkennung
       href: intent-recognition.md
     - name: 'Schnellstart: Erkennen von Sprache, Absichten und Entitäten mit Language Understanding (LUIS)'
-      href: quickstarts/intent-recognition.md
+      href: get-started-intent-recognition.md
     - name: Anleitungen
       items:
         - name: 'Erkennen von Sprachabsichten mit LUIS, C#'
@@ -464,6 +462,8 @@
       href: how-to-track-speech-sdk-memory-usage.md
     - name: Aktivieren eines privaten Endpunkts
       href: speech-services-private-link.md
+    - name: Aktivieren des VNet-Dienstendpunkts
+      href: speech-service-vnet-service-endpoint.md
     - name: Konfigurieren von OpenSSL für Linux
       displayName: 'memory usage, memory consumption, object logging, object tracking, memory, openssl'
       href: how-to-configure-openssl-linux.md
@@ -591,7 +591,7 @@
       href: sovereign-clouds.md
     - name: Preisrechner
       href: 'https://azure.microsoft.com/pricing/calculator/#cognitive-services'
-    - name: Compliance
+    - name: Kompatibilität
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Verschlüsselung
       href: speech-encryption-of-data-at-rest.md

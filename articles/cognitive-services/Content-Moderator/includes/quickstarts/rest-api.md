@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: include
 ms.date: 12/08/2020
 ms.author: pafarley
-ms.openlocfilehash: 859c57fb6caeee730d5ba937bacf5d29a25ca173
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 747f97e54dbe10ca055281c189c805e3dd97c867
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102510666"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105582737"
 ---
 Hier finden Sie Informationen zu den ersten Schritten mit der Azure Content Moderator-REST-API. 
 
@@ -32,7 +32,7 @@ Verwenden Sie die Content Moderator-REST-API für Folgendes:
 * Wenn Sie über ein Azure-Abonnement verfügen, können Sie im Azure-Portal <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator"  title="Erstellen einer Content Moderator-Ressource"  target="_blank">eine Content Moderator-Ressource erstellen </a>, um Ihren Schlüssel und Endpunkt abzurufen. Warten Sie ihre Bereitstellung ab, und klicken Sie auf die Schaltfläche **Zu Ressource wechseln**.
     * Sie benötigen den Schlüssel und Endpunkt der von Ihnen erstellten Ressource, um für Ihre Anwendung eine Verbindung mit Content Moderator herzustellen. Der Schlüssel und der Endpunkt werden weiter unten in der Schnellstartanleitung in den Code eingefügt.
     * Sie können den kostenlosen Tarif (`F0`) verwenden, um den Dienst zu testen, und später für die Produktion auf einen kostenpflichtigen Tarif upgraden.
-* [PowerShell-Version 6.0 oder höher](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-windows) oder eine ähnliche Befehlszeilenanwendung
+* [PowerShell-Version 6.0 oder höher](/powershell/scripting/install/installing-powershell-core-on-windows) oder eine ähnliche Befehlszeilenanwendung
 
 
 ## <a name="moderate-text"></a>Moderieren von Text
@@ -178,4 +178,3 @@ In dieser Schnellstartanleitung haben Sie gelernt, wie Sie die Content Moderato
 
 * [Lernen von Bildmoderationskonzepten](../../image-moderation-api.md)
 * [Lernen von Textmoderationskonzepten](../../text-moderation-api.md)
-* [Was ist Azure Content Moderator?](../../overview.md)

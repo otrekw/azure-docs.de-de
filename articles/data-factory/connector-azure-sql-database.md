@@ -6,13 +6,13 @@ author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 01/11/2021
-ms.openlocfilehash: 07fbc7b1137d7eaf8a73a806c6a3714fab274df0
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 03/17/2021
+ms.openlocfilehash: 01f43ceab36b519f3aafbbdc711df15c80481398
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100393104"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104597435"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-database-by-using-azure-data-factory"></a>Kopieren und Transformieren von Daten in Azure SQL-Datenbank mithilfe von Azure Data Factory
 
@@ -384,6 +384,7 @@ Zum Kopieren von Daten in Azure SQL-Datenbank werden die folgenden Eigenschaften
 | writeBatchSize | Anzahl der Zeilen, die *pro Batch* in die SQL-Tabelle eingefügt werden sollen.<br/> Zulässiger Wert: **integer** (Anzahl der Zeilen) Standardmäßig bestimmt Azure Data Factory die geeignete Batchgröße dynamisch anhand der Zeilengröße. | Nein |
 | writeBatchTimeout | Wartezeit für den Abschluss der Batcheinfügung, bis das Timeout wirksam wird.<br/> Zulässiger Wert: **timespan**. Beispiel: 00:30:00 (30 Minuten). | Nein |
 | disableMetricsCollection | Data Factory sammelt Metriken wie Azure SQL-Datenbank-DTUs für die Leistungsoptimierung von Kopiervorgängen und Empfehlungen, wodurch zusätzlicher Zugriff auf die Masterdatenbank ermöglicht wird. Wenn Sie sich wegen dieses Verhaltens Gedanken machen, geben Sie `true` an, um es zu deaktivieren. | Nein (Standard = `false`) |
+| maxConcurrentConnections |Die Obergrenze gleichzeitiger Verbindungen mit dem Datenspeicher während der Aktivitätsausführung. Geben Sie diesen Wert nur an, wenn Sie die Anzahl der gleichzeitigen Verbindungen begrenzen möchten.| Nein |
 
 **Beispiel 1: Anfügen von Daten**
 
@@ -643,7 +644,12 @@ Spezifische Einstellungen für Azure SQL-Datenbank sind auf der Registerkarte **
 
 **Query** (Abfrage): Wenn Sie im Eingabefeld „Abfrage“ auswählen, geben Sie eine SQL-Abfrage für die Quelle ein. Diese Einstellung überschreibt jede Tabelle, die Sie im Dataset ausgewählt haben. **Order By**-Klauseln werden hier nicht unterstützt. Sie können aber eine vollständige SELECT FROM-Anweisung festlegen. Sie können auch benutzerdefinierte Tabellenfunktionen verwenden. **select * from udfGetData()** ist eine benutzerdefinierte Funktion in SQL, die eine Tabelle zurückgibt. Diese Abfrage generiert eine Quelltabelle, die Sie in Ihrem Datenfluss verwenden können. Die Verwendung von Abfragen stellt auch eine gute Möglichkeit dar, um die Zeilen für Tests oder Suchvorgänge zu verringern.
 
+**Gespeicherte Prozedur**: Wählen Sie diese Option aus, wenn Sie eine Projektion und Quelldaten aus einer gespeicherten Prozedur generieren möchten, die von der Quelldatenbank ausgeführt wird. Sie können das Schema, den Prozedurnamen und die Parameter eingeben oder auf „Aktualisieren“ klicken, um ADF aufzufordern, die Schemas und die Prozedurnamen zu ermitteln. Anschließend können Sie auf „Importieren“ klicken, um alle Prozedurparameter mit dem Formular ``@paraName`` zu importieren.
+
+![Gespeicherte Prozedur](media/data-flow/stored-procedure-2.png "Gespeicherte Prozedur")
+
 - SQL-Beispiel: ```Select * from MyTable where customerId > 1000 and customerId < 2000```
+- Parametrisiertes SQL-Beispiel: ``"select * from {$tablename} where orderyear > {$year}"``
 
 **Batchgröße**: Geben Sie eine Batchgröße ein, um große Datenmengen in Leseblöcke zu segmentieren.
 
@@ -772,7 +778,7 @@ Dies gilt insbesondere in folgenden Fällen:
         Driver={ODBC Driver 17 for SQL Server};Server=<serverName>;Database=<databaseName>;ColumnEncryption=Enabled;KeyStoreAuthentication=KeyVaultClientSecret;KeyStorePrincipalId=<servicePrincipalKey>;KeyStoreSecret=<servicePrincipalKey>
         ```
 
-    - Zur Verwendung der **Authentifizierung der verwalteten Identität über Data Factory**: 
+    - Wenn Sie die selbstgehostete Integration Runtime auf einer Azure-VM ausführen, können Sie die **Managed Identity-Authentifizierung** mit der Identität der Azure-VM verwenden:
 
         1. Stellen Sie sicher, dass diese [Voraussetzungen](#managed-identity) erfüllt sind, um einen Datenbankbenutzer für die verwaltete Identität zu erstellen, und weisen Sie in Ihrer Datenbank die entsprechende Rolle zu.
         2. Geben Sie im verknüpften Dienst die ODBC-Verbindungszeichenfolge wie unten gezeigt an, und wählen Sie die **anonyme Authentifizierung** aus, da die Verbindungszeichenfolge selbst `Authentication=ActiveDirectoryMsi` angibt.

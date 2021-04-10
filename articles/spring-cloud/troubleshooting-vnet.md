@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/19/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: b2369a6380c7b74302d32366d0604fca616fc3ed
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: a84ed5a6f80b038ced2077fe3c038bd9801ca033
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104877608"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105732940"
 ---
 # <a name="troubleshooting-azure-spring-cloud-in-virtual-networks"></a>Problembehandlung für Azure Spring Cloud in virtuellen Netzwerken
 
@@ -38,7 +38,6 @@ Wenn Sie die Azure Spring Cloud-Dienstinstanz mithilfe der Resource Manager-Vorl
 | Fehlermeldung | So behebt man den Fehler |
 |------|------|
 | Von Azure Spring Cloud erstellte Ressourcen wurden von der Richtlinie nicht zugelassen. | Netzwerkressourcen werden erstellt, wenn Sie Azure Spring Cloud in Ihrem eigenen virtuellen Netzwerk bereitstellen. Überprüfen Sie, ob Sie in [Azure Policy](../governance/policy/overview.md) definiert haben, diese Erstellung zu blockieren. Eine Fehlermeldung teilt mit, dass Ressourcen nicht erstellt werden konnten. |
-| Angegebene Subnetze sind Routingtabellen zugeordnet, bitte heben Sie die Zuordnung auf. | Derzeit wird die Bereitstellung von Azure Spring Cloud in Subnetzen, die vorhandenen Routingtabellen zugeordnet sind, nicht unterstützt. Heben Sie die Zuordnung auf, und versuchen Sie es erneut. |
 | Der erforderliche Datenverkehr ist nicht in der Positivliste enthalten. | Weitere Informationen dazu, wie Sie sicherstellen, dass der gewünschte Datenverkehr in der Positivliste enthalten ist, finden Sie unter [Kundenzuständigkeiten für die Ausführung von Azure Spring Cloud im VNet](spring-cloud-vnet-customer-responsibilities.md). |
 
 ## <a name="my-application-cant-be-registered"></a>Meine Anwendung kann nicht registriert werden
