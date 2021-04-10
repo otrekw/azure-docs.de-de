@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 10/15/2020
 ms.openlocfilehash: 0db6ed7566c53429f8b9798ac8cdafe76ca7bd5a
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102052142"
 ---
 # <a name="configure-monitoring-in-vm-insights-guest-health-using-data-collection-rules-preview"></a>Konfigurieren der Überwachung für das Feature „Gastintegrität“ von VM Insights mit Datensammlungsregeln (Vorschau)
@@ -99,7 +99,7 @@ Das Feature „Gastintegrität“ wird als Erweiterung des Azure Monitor-Agents 
 ]
 ```
 
-| Element | Erforderlich | BESCHREIBUNG |
+| Element | Erforderlich | Beschreibung |
 |:---|:---|:---|
 | `name` | Ja | Benutzerdefinierte Zeichenfolge für die Erweiterung. |
 | `streams` | Ja | Liste mit Streams, an die Daten zur Gastintegrität gesendet werden. In dieser Liste muss **Microsoft-HealthStateChange** enthalten sein.  |
@@ -118,7 +118,7 @@ Enthält Einstellungen für die Erweiterung.
 }
 ```
 
-| Element | Erforderlich | BESCHREIBUNG |
+| Element | Erforderlich | Beschreibung |
 |:---|:---|:---|
 | `schemaVersion` | Ja | Von Microsoft definierte Zeichenfolge, mit der das erwartete Schema des Elements dargestellt wird. Muss derzeit auf „1.0“ festgelegt sein. |
 | `contentVersion` | Nein | Die vom Benutzer definierte Zeichenfolge, mit der bei Bedarf unterschiedliche Versionen der Integritätskonfiguration nachverfolgt werden können. |
@@ -139,7 +139,7 @@ Enthält ein oder mehrere Elemente vom Typ `healthRuleOverride`, mit denen jewei
 ]
 ```
 
-| Element | Erforderlich | BESCHREIBUNG |
+| Element | Erforderlich | Beschreibung |
 |:---|:---|:---|
 | `scopes` | Ja | Liste mit einem oder mehreren Bereichen, mit denen die virtuellen Computer angegeben werden, für die diese Außerkraftsetzung gilt. Auch wenn die Datensammlungsregel einem virtuellen Computer zugeordnet ist, muss sich der virtuelle Computer in einem passenden Bereich befinden, damit die Außerkraftsetzung angewendet werden kann. |
 | `monitors` | Ja | Eine Liste mit einer oder mehreren Zeichenfolgen, mit denen definiert wird, für welche Monitore diese Außerkraftsetzung gilt.  |

@@ -8,12 +8,12 @@ ms.date: 11/19/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: a38af4c942de280e7b1c094885a1ede6774ead56
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 3fd504ec36abae3f00cd2a7eb4e1f7b639be0cea
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102433215"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103462676"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Abfragen des Zwillingsdiagramms von Azure Digital Twins
 
@@ -36,8 +36,10 @@ Abrufen von digitalen Zwillingen nach **Eigenschaften** (einschließlich ID und 
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByProperty1":::
 
-> [!NOTE]
-> Die ID eines digitalen Zwillings wird mithilfe des Metadatenfelds `$dtId` abgefragt.
+Wie in der obigen Abfrage gezeigt, wird die ID eines digitalen Zwillings mithilfe des Metadatenfelds `$dtId` abgefragt.
+
+>[!TIP]
+> Wenn Sie Cloud Shell verwenden, um eine Abfrage mit Metadatenfeldern auszuführen, die mit `$` beginnen, müssen Sie `$` mit einem Graviszeichen als Escapezeichen versehen, um Cloud Shell mitzuteilen, dass es sich dabei nicht um eine Variable handelt und dieses Zeichen im Abfragetext als Literal behandelt werden soll.
 
 Sie können Zwillinge auch auf der Grundlage abrufen, **ob eine bestimmte Eigenschaft definiert ist**. Hier folgt eine Abfrage, die Zwillinge abruft, die eine definierte *Location*-Eigenschaft aufweisen:
 

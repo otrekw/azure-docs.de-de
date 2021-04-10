@@ -8,10 +8,10 @@ author: nabhishek
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 05717352936bed888e108277d0163e43bc5a37af
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100368760"
 ---
 # <a name="sql-server-stored-procedure-activity"></a>SQL Server-Aktivität "Gespeicherte Prozedur"
@@ -298,7 +298,7 @@ So sieht das JSON-Format zum Definieren der Aktivität „Gespeicherte Prozedur�
 
 In der folgenden Tabelle werden diese JSON-Eigenschaften beschrieben:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
 | name | Der Name der Aktivität |Ja |
 | description |Ein Text, der beschreibt, wofür die Aktivität verwendet wird. |Nein |
