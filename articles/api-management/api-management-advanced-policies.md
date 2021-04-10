@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 3a37cde79cef59eaf9c3ef130bfbae9cff958bd7
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 03529fd3c0231617c477f4f16773039a02386683
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96919444"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103562483"
 ---
 # <a name="api-management-advanced-policies"></a>API Management – Erweiterte Richtlinien
 
@@ -134,7 +134,7 @@ In diesem Beispiel wird gezeigt, wie Inhalte gefiltert werden, indem Datenelemen
 
 ### <a name="attributes"></a>Attributes
 
-| attribute                                              | BESCHREIBUNG                                                                                               | Erforderlich |
+| Attribut                                              | BESCHREIBUNG                                                                                               | Erforderlich |
 | ------------------------------------------------------ | --------------------------------------------------------------------------------------------------------- | -------- |
 | condition="boolescher Ausdruck &#124; boolesche Konstante" | Der boolesche Ausdruck bzw. die Konstante, der bzw. die ausgewertet werden soll, wenn die enthaltende `when`-Richtlinienanweisung ausgewertet wird. | Ja      |
 
@@ -250,7 +250,7 @@ Bei dieser Richtlinie auf Vorgangsebene werden Anforderungen nicht an den Back-E
 
 ### <a name="attributes"></a>Attributes
 
-| attribute                                     | BESCHREIBUNG                                                                                                                                                                                                                                                                                                    | Erforderlich | Standard |
+| Attribut                                     | BESCHREIBUNG                                                                                                                                                                                                                                                                                                    | Erforderlich | Standard |
 | --------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
 | timeout="integer"                             | Die Zeitspanne in Sekunden, die darauf gewartet wird, dass der Back-End-Dienst die HTTP-Antwortheader zurückgibt. Danach wird ein Timeoutfehler ausgelöst. Der Mindestwert beträgt 0 Sekunden. Werte, die größer als 240 Sekunden sind, werden möglicherweise nicht berücksichtigt, weil die zugrunde liegende Netzwerkinfrastruktur Verbindungen im Leerlauf nach dieser Zeitspanne trennen kann. | Nein       | Keine    |
 | follow-redirects="false &#124; true"          | Gibt an, ob Umleitungen vom Back-End-Dienst vom Gateway verfolgt oder an den Aufrufer zurückgegeben werden.                                                                                                                                                                                                    | Nein       | false   |
@@ -918,7 +918,7 @@ Ausdrücke, die in der `set-variable`-Richtlinie verwendet werden, müssen einen
 Die `trace`-Richtlinie fügt der API-Inspektor-Ausgabe, Application Insights-Telemetrien und/oder Ressourcenprotokollen eine benutzerdefinierte Ablaufverfolgung hinzu.
 
 -   Die Richtlinie fügt der [API-Inspektor](./api-management-howto-api-inspector.md)-Ausgabe eine benutzerdefinierte Ablaufverfolgung hinzu, wenn die Ablaufverfolgung ausgelöst wird, d. h. der `Ocp-Apim-Trace`-Anforderungsheader ist vorhanden und auf „true“ festgelegt, und der `Ocp-Apim-Subscription-Key`-Anforderungsheader ist vorhanden und enthält einen gültigen Schlüssel, der Ablaufverfolgung zulässt.
--   Die Richtlinie erstellt in Application Insights eine [Ablaufverfolgungstelemetrie](../azure-monitor/app/data-model-trace-telemetry.md), wenn die [Application Insights-Integration](./api-management-howto-app-insights.md) aktiviert ist und der in der Richtlinie angegebene `severity`-Grad größer oder gleich dem in der Diagnose angegebenen `verbosity`-Grad ist.
+-   Die Richtlinie erstellt in Application Insights eine [Ablaufverfolgungstelemetrie](../azure-monitor/app/data-model-trace-telemetry.md), wenn die [Application Insights-Integration](./api-management-howto-app-insights.md) aktiviert wird und der in der Richtlinie angegebene `severity`-Grad größer oder gleich dem in der Diagnose angegebenen `verbosity`-Grad ist.
 -   Die Richtlinie fügt eine Eigenschaft in den Protokolleintrag ein, wenn [Ressourcenprotokolle](./api-management-howto-use-azure-monitor.md#activity-logs) aktiviert ist und der in der Richtlinie angegebene Schweregrad größer oder gleich dem Ausführlichkeitsgrad ist, der in der Diagnoseeinstellung angegeben ist.
 
 ### <a name="policy-statement"></a>Richtlinienanweisung

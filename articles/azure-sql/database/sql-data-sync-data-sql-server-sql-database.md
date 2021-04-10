@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/20/2019
-ms.openlocfilehash: 55fa106f0515405dcad969f05d28e0bc7b975b40
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: c38e4681c76fb0dd52d77c7dc1438b87a9571a80
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922285"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103562058"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Was ist die SQL-Datensynchronisierung für Azure?
 
@@ -100,6 +100,9 @@ Mit dem neuen Feature Private Link (Vorschau) können Sie einen von einem Dienst
 
 - [Verwenden von PowerShell zum Synchronisieren zwischen mehreren Datenbanken in Azure SQL-Datenbank](scripts/sql-data-sync-sync-data-between-sql-databases.md)
 - [Verwenden von PowerShell zum Synchronisieren zwischen einer Datenbank in Azure SQL-Datenbank und einer Datenbank in einer SQL Server-Instanz](scripts/sql-data-sync-sync-data-between-azure-onprem.md)
+
+### <a name="set-up-data-sync-with-rest-api"></a>Einrichten der Datensynchronisierung mit der REST-API
+- [Verwenden der REST-API zum Synchronisieren zwischen mehreren Datenbanken in Azure SQL-Datenbank](scripts/sql-data-sync-sync-data-between-sql-databases-rest-api.md)
 
 ### <a name="review-the-best-practices-for-data-sync"></a>Überprüfen der bewährten Methoden für die Datensynchronisierung
 

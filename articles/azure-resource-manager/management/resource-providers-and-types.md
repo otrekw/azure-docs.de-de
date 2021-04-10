@@ -2,14 +2,14 @@
 title: Ressourcenanbieter und Ressourcentypen
 description: Hier werden die Ressourcenanbieter beschrieben, die Azure Resource Manager unterstützen. Sie erfahren mehr über die Schemas, verfügbaren API-Versionen und die Regionen, in denen die Ressourcen gehostet werden können.
 ms.topic: conceptual
-ms.date: 12/04/2020
+ms.date: 03/15/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6d114fdfae12dd9ee96a23e4dafc3847c6429d0c
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 584f3065d0e696f2ee379a8cf6c048994a1e68d5
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745115"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103493134"
 ---
 # <a name="azure-resource-providers-and-types"></a>Azure-Ressourcenanbieter und -typen
 
@@ -32,7 +32,9 @@ Eine Liste, die Ressourcenanbieter zu Azure-Diensten zuordnet, finden Sie unter 
 
 ## <a name="register-resource-provider"></a>Registrieren des Ressourcenanbieters
 
-Bevor Sie einen Ressourcenanbieter verwenden können, müssen Sie Ihr Azure-Abonnement bei diesem registrieren. Durch die Registrierung wird Ihr Abonnement für die Verwendung mit dem Ressourcenanbieter konfiguriert. Einige Ressourcenanbieter sind standardmäßig registriert. Andere werden bei bestimmten Aktionen automatisch registriert. Wenn Sie beispielsweise über das Portal eine Ressource erstellen, wird der Ressourcenanbieter in der Regel für Sie registriert. In anderen Szenarien müssen Sie den Ressourcenanbieter unter Umständen manuell registrieren. Eine Liste der standardmäßig registrierten Anbieter von Azure-Ressourcen finden Sie unter [Ressourcenanbieter für Azure-Dienste](azure-services-resource-providers.md).
+Bevor Sie einen Ressourcenanbieter verwenden können, müssen Sie Ihr Azure-Abonnement bei diesem registrieren. Durch die Registrierung wird Ihr Abonnement für die Verwendung mit dem Ressourcenanbieter konfiguriert. Einige Ressourcenanbieter sind standardmäßig registriert. Eine Liste der standardmäßig registrierten Anbieter von Azure-Ressourcen finden Sie unter [Ressourcenanbieter für Azure-Dienste](azure-services-resource-providers.md).
+
+Andere werden bei bestimmten Aktionen automatisch registriert. Wenn Sie eine Azure Resource Manager-Vorlage bereitstellen, werden alle erforderlichen Ressourcenanbieter automatisch registriert. Beim Erstellen einer Ressource über das Portal wird der Ressourcenanbieter in der Regel für Sie registriert. In anderen Szenarien müssen Sie den Ressourcenanbieter unter Umständen manuell registrieren. 
 
 In diesem Artikel erfahren Sie, wie Sie den Registrierungsstatus eines Ressourcenanbieters überprüfen und den Ressourcenanbieter bei Bedarf registrieren. Sie benötigen Berechtigungen zum Ausführen des `/register/action`-Vorgangs für den Ressourcenanbieter. Die Berechtigung ist in den Rollen „Mitwirkender“ und „Besitzer“ enthalten.
 

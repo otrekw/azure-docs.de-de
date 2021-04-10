@@ -9,14 +9,14 @@ ms.topic: reference
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
-ms.date: 3/5/2021
+ms.date: 3/16/2021
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 014140b9b9832bab3de4f71c0b5f164b564b3fe5
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 227b573d3771efd3fd36e6d3d6222696647849f7
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102212721"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105644911"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>Unterschiede bei T-SQL zwischen SQL Server und Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -139,7 +139,7 @@ SQL Managed Instance kann nicht auf Dateien zugreifen. Daher können keine Krypt
 ### <a name="logins-and-users"></a>Anmeldungen und Benutzer
 
 - Mithilfe von `FROM CERTIFICATE`, `FROM ASYMMETRIC KEY` und `FROM SID` erstellte SQL-Anmeldungen werden unterstützt. Siehe [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql).
-- Azure Active Directory-Dienstprinzipale (Anmeldungen), die mit der Syntax [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) oder der Syntax [CREATE USER FROM LOGIN [Azure AD-Anmeldung]](/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current) erstellt wurden, werden unterstützt. Diese Anmeldungen werden auf Serverebene erstellt.
+- Azure Active Directory-Dienstprinzipale (Anmeldungen), die mit der Syntax [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true) oder der Syntax [CREATE USER FROM LOGIN [Azure AD-Anmeldung]](/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current&preserve-view=true) erstellt wurden, werden unterstützt. Diese Anmeldungen werden auf Serverebene erstellt.
 
     SQL Managed Instance unterstützt Azure AD-Datenbankprinzipale mit der Syntax `CREATE USER [AADUser/AAD group] FROM EXTERNAL PROVIDER`. Dieses Feature wird auch als Azure AD-Benutzer für eigenständige Datenbanken bezeichnet.
 
@@ -466,11 +466,13 @@ Weitere Informationen zu Anweisungen für Wiederherstellungen finden Sie unter [
 
 ### <a name="service-broker"></a>Service Broker
 
-Der instanzübergreifende Service Broker wird nicht unterstützt:
+Der instanzübergreifende Service Broker-Nachrichtenaustausch wird nur zwischen Azure SQL Managed Instance-Instanzen unterstützt:
 
-- `sys.routes`: Als Voraussetzung müssen Sie die Adresse aus „sys.routes“ auswählen. Die Adresse muss für jede Route auf LOCAL festgelegt sein. Informationen hierzu finden Sie unter [sys.routes](/sql/relational-databases/system-catalog-views/sys-routes-transact-sql).
-- `CREATE ROUTE`: Sie können `CREATE ROUTE` nicht mit einer anderen `ADDRESS` als `LOCAL` verwenden. Informationen hierzu finden Sie unter [CREATE ROUTE](/sql/t-sql/statements/create-route-transact-sql).
-- `ALTER ROUTE`: Sie können `ALTER ROUTE` nicht mit einer anderen `ADDRESS` als `LOCAL` verwenden. Informationen hierzu finden Sie unter [ALTER ROUTE](/sql/t-sql/statements/alter-route-transact-sql). 
+- `CREATE ROUTE`: Sie können `CREATE ROUTE` nicht mit `ADDRESS` verwenden, es sei denn, Sie verwenden `LOCAL` oder den DNS-Namen einer Instanz von SQL Managed Instance.
+- `ALTER ROUTE`: Sie können `ALTER ROUTE` nicht mit `ADDRESS` verwenden, es sei denn, Sie verwenden `LOCAL` oder den DNS-Namen einer Instanz von SQL Managed Instance.
+
+Transportsicherheit wird unterstützt, Dialogsicherheit dagegen nicht:
+- `CREATE REMOTE SERVICE BINDING` wird nicht unterstützt.
 
 Service Broker ist standardmäßig aktiviert und kann nicht deaktiviert werden. Die folgenden ALTER DATABSE-Optionen werden nicht unterstützt:
 - `ENABLE_BROKER`
@@ -523,7 +525,7 @@ Systemdatenbanken werden nicht auf die sekundäre Instanz in einer Failovergrupp
 ### <a name="tempdb"></a>TEMPDB
 - Die maximale Dateigröße von `tempdb` darf in der Dienstebene „Universell“ 24 GB pro Kern nicht überschreiten. Die maximale Größe von `tempdb` ist in der Dienstebene „Unternehmenskritisch“ auf die Speichergröße von SQL Managed Instance begrenzt. Die Größe der Protokolldatei `Tempdb` ist bei der Dienstebene „Universell“ auf 120 GB begrenzt. Einige Abfragen geben möglicherweise einen Fehler zurück, wenn für sie mehr als 24 GB pro Kern in `tempdb` erforderlich sind oder die erstellten Protokolldaten mehr als 120 GB benötigen.
 - `Tempdb` wird immer in 12 Datendateien aufgeteilt: 1 primäre Datendatei (auch als Masterdatei bezeichnet) und 11 nicht primäre Datendateien. Die Dateistruktur kann nicht geändert werden, und es können auch keine neuen Dateien zu `tempdb` hinzugefügt werden. 
-- [Speicheroptimierte `tempdb`-Metadaten](/sql/relational-databases/databases/tempdb-database?view=sql-server-ver15#memory-optimized-tempdb-metadata), ein neues In-Memory Database-Feature von SQL Server 2019, wird nicht unterstützt.
+- [Speicheroptimierte `tempdb`-Metadaten](/sql/relational-databases/databases/tempdb-database?view=sql-server-ver15&preserve-view=true#memory-optimized-tempdb-metadata), ein neues In-Memory Database-Feature von SQL Server 2019, wird nicht unterstützt.
 - In der Modelldatenbank erstellte Objekte können in `tempdb` nach einem Neustart oder Failover nicht automatisch erstellt werden, weil `tempdb` die anfängliche Objektliste nicht aus der Modelldatenbank abruft. Sie müssen Objekte in `tempdb` nach jedem Neustart oder Failover manuell erstellen.
 
 ### <a name="msdb"></a>MSDB
@@ -532,13 +534,13 @@ Die folgenden MSDB-Schemas in SQL Managed Instance müssen ihren jeweiligen vord
 
 - Allgemeine Rollen
   - TargetServersRole
-- [Feste Datenbankrollen](/sql/ssms/agent/sql-server-agent-fixed-database-roles?view=sql-server-ver15)
+- [Feste Datenbankrollen](/sql/ssms/agent/sql-server-agent-fixed-database-roles?view=sql-server-ver15&preserve-view=true)
   - SQLAgentUserRole
   - SQLAgentReaderRole
   - SQLAgentOperatorRole
-- [DatabaseMail-Rollen](/sql/relational-databases/database-mail/database-mail-configuration-objects?view=sql-server-ver15#DBProfile):
+- [DatabaseMail-Rollen](/sql/relational-databases/database-mail/database-mail-configuration-objects?view=sql-server-ver15&preserve-view=true#DBProfile):
   - DatabaseMailUserRole
-- [Integration Services-Rollen](/sql/integration-services/security/integration-services-roles-ssis-service?view=sql-server-ver15):
+- [Integration Services-Rollen](/sql/integration-services/security/integration-services-roles-ssis-service?view=sql-server-ver15&preserve-view=true):
   - db_ssisadmin
   - db_ssisltduser
   - db_ssisoperator

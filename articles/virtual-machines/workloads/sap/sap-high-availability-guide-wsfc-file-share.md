@@ -13,15 +13,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 07/24/2019
+ms.date: 03/15/2021
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 608401858c0119d281ab6ff46156fc7bdccd9d84
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: a51f874d09aebfcb2c0b73e0b484f68042d1bb6d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101675333"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103496200"
 ---
 # <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-file-share-in-azure"></a>Gruppieren einer SAP ASCS/SCS-Instanz in einem Windows-Failovercluster per Dateifreigabe in Azure
 
@@ -147,10 +147,14 @@ Um eine Dateifreigabe mit horizontaler Skalierung verwenden zu können, muss Ihr
 
 ### <a name="configure-sap-ascsscs-instances-and-a-scale-out-file-share-in-two-clusters"></a>Konfigurieren von SAP ASCS/SCS-Instanzen und einer Dateifreigabe mit horizontaler Skalierung in zwei Clustern
 
-Sie können SAP ASCS/SCS-Instanzen auch in einem Cluster mit eigener SAP-\<SID\>-Clusterrolle bereitstellen. In diesem Fall konfigurieren Sie die Dateifreigabe mit horizontaler Skalierung in einem anderen Cluster mit einer anderen Clusterrolle.
+Sie müssen SAP ASCS/SCS-Instanzen in einem separaten Cluster mit eigener SAP-\<SID\>-Clusterrolle bereitstellen. In diesem Fall konfigurieren Sie die Dateifreigabe mit horizontaler Skalierung in einem anderen Cluster mit einer anderen Clusterrolle.
+
 
 > [!IMPORTANT]
->In diesem Szenario wird die SAP ASCS/SCS-Instanz so konfiguriert, dass sie über den UNC-Pfad \\\\&lt;globaler SAP-Host&gt;\sapmnt\\&lt;SID&gt;\SYS\. auf den globalen SAP-Host zugreifen kann.
+> Das Setup muss die folgende Anforderung erfüllen: Die SAP ASCS/SCS-Instanzen und die SOFS-Freigabe müssen in separaten Clustern bereitgestellt werden.    
+>
+> [!IMPORTANT] 
+> In diesem Szenario wird die SAP ASCS/SCS-Instanz so konfiguriert, dass sie über den UNC-Pfad \\\\&lt;globaler SAP-Host&gt;\sapmnt\\&lt;SID&gt;\SYS\. auf den globalen SAP-Host zugreifen kann.
 >
 
 ![Abbildung 5: In zwei Clustern bereitgestellte SAP ASCS/SCS-Instanz und eine Dateifreigabe mit horizontaler Skalierung][sap-ha-guide-figure-8007]

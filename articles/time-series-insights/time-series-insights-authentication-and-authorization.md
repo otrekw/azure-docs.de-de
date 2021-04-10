@@ -11,19 +11,16 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 02/23/2021
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: 02d9edd555566f86fd8bb09cf4acef4956ae53e4
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 88fd575d40cc31f12f052158bda0aed9a5335555
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102041211"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103009265"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Authentifizierung und Autorisierung für die Azure Time Series Insights-API
 
-Je nach Ihren geschäftlichen Anforderungen kann Ihre Lösung eine oder mehrere Clientanwendungen enthalten, über die Sie mit den [APIs](/rest/api/time-series-insights/reference-data-access-overview) Ihrer Azure Time Series Insights-Umgebung interagieren. Die Authentifizierung erfolgt in Azure Time Series Insights über [OAuth 2.0-basierte Azure AD-Sicherheitstoken](../active-directory/develop/security-tokens.md#json-web-tokens-and-claims). Zum Authentifizieren Ihrer Clients müssen Sie ein Bearertoken mit den richtigen Berechtigungen abrufen und es bei Ihren API-Aufrufen übergeben. In diesem Artikel werden mehrere Methoden zum Abrufen von Anmeldeinformationen beschrieben, mit denen Sie ein Bearertoken abrufen und sich authentifizieren können.
-
-
-  Dieser Artikel beschreibt die Registrierung einer App in Azure Active Directory über das neue Blatt „Azure Active Directory“. In Azure Active Directory registrierte Apps ermöglichen es Benutzern, sich für die Azure Time Series Insights-API in einer Azure Time Series Insights-Umgebung authentifizieren und autorisieren zu lassen.
+Je nach Ihren geschäftlichen Anforderungen kann Ihre Lösung eine oder mehrere Clientanwendungen enthalten, über die Sie mit den [APIs](/rest/api/time-series-insights/reference-data-access-overview) Ihrer Azure Time Series Insights-Umgebung interagieren. Die Authentifizierung erfolgt in Azure Time Series Insights über [OAuth 2.0-basierte Azure AD-Sicherheitstoken](../active-directory/develop/security-tokens.md#json-web-tokens-and-claims). Zum Authentifizieren Ihrer Clients müssen Sie ein Bearertoken mit den richtigen Berechtigungen abrufen und es bei Ihren API-Aufrufen übergeben. In diesem Dokument werden verschiedene Methoden beschrieben, mit denen Sie Anmeldeinformationen zum Abrufen von Bearertoken und zum Authentifizieren erhalten können, einschließlich der Verwendung einer verwalteten Identität und der Azure Active Directory-App-Registrierung.
 
 ## <a name="managed-identities"></a>Verwaltete Identitäten
 
@@ -108,10 +105,7 @@ Nachdem die verwaltete Identität oder App-Registrierung bereitgestellt und mit 
 
 Wenn der Zugriff über Azure App Service oder Azure Functions erfolgt, befolgen Sie die Anweisungen unter [Abrufen von Token für Azure-Ressourcen](../app-service/overview-managed-identity.md).
 
-> [!TIP]
-> In .NET-Anwendungen und -Funktionen ist es am einfachsten, über die [Azure Identity-Clientbibliothek](/dotnet/api/overview/azure/identity-readme) mit einer verwalteten Identität zu arbeiten. 
-
-Bei .NET-Anwendungen und -Funktionen stellt das Microsoft.Azure.Services.AppAuthentication-Paket die einfachste Methode für das Arbeiten mit einer verwalteten Identität dar. Dieses Paket ist aufgrund seiner Einfachheit und seiner Sicherheitsvorteile beliebt. Entwickler können Code einmal schreiben und die Clientbibliothek auf Grundlage der Anwendungsumgebung über die Authentifizierung bestimmen lassen. Entscheidend ist, ob die Umgebung über ein Entwicklerkonto auf einer Entwicklungsarbeitsstation oder mithilfe einer verwalteten Dienstidentität in Azure bereitgestellt wurde. Eine Migrationsanleitung zur Vorgängerbibliothek „AppAuthentication“ finden Sie unter [Leitfaden für die Migration von AppAuthentication zu Azure.Identity](/dotnet/api/overview/azure/app-auth-migration).
+In .NET-Anwendungen und -Funktionen ist es am einfachsten, über die [Azure Identity-Clientbibliothek](/dotnet/api/overview/azure/identity-readme) mit einer verwalteten Identität zu arbeiten. Die Clientbibliothek ist aufgrund ihrer Einfachheit und ihrer Sicherheitsvorteile beliebt. Entwickler können Code einmal schreiben und die Clientbibliothek auf Grundlage der Anwendungsumgebung über die Authentifizierung bestimmen lassen. Entscheidend ist, ob die Umgebung über ein Entwicklerkonto auf einer Entwicklungsarbeitsstation oder mithilfe einer verwalteten Dienstidentität in Azure bereitgestellt wurde. Eine Migrationsanleitung zur Vorgängerbibliothek „AppAuthentication“ finden Sie unter [Leitfaden für die Migration von AppAuthentication zu Azure.Identity](/dotnet/api/overview/azure/app-auth-migration).
 
 Fordern Sie mit C# und der Azure Identity-Clientbibliothek für .NET ein Token für Azure Time Series Insights an:
 

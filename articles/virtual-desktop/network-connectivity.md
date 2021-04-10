@@ -6,12 +6,12 @@ author: gundarev
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: denisgun
-ms.openlocfilehash: e4149864e16196b695d38a8c46ab5af835453412
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 378d341ee867b69fac22f5eb15952d104a7bf19d
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99221209"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167327"
 ---
 # <a name="understanding-windows-virtual-desktop-network-connectivity"></a>Grundlegendes zur Netzwerkkonnektivität für Windows Virtual Desktop
 
@@ -50,7 +50,7 @@ Die Clientverbindungssequenz wird im Folgenden beschrieben:
 
 ## <a name="connection-security"></a>Verbindungssicherheit
 
-TLS 1.2 wird für alle Verbindungen verwendet, die von den Clients und Sitzungshosts mit den Komponenten der Windows Virtual Desktop-Infrastruktur initiiert werden. Windows Virtual Desktop verwendet dasselbe TLS 1.2-Verschlüsselungsverfahren wie [Azure Front Door](../frontdoor/front-door-faq.md#what-are-the-current-cipher-suites-supported-by-azure-front-door). Es ist wichtig, sicherzustellen, dass sowohl Clientcomputer als auch Sitzungshosts diese Verschlüsselungsverfahren verwenden können.
+TLS 1.2 wird für alle Verbindungen verwendet, die von den Clients und Sitzungshosts mit den Komponenten der Windows Virtual Desktop-Infrastruktur initiiert werden. Windows Virtual Desktop verwendet dasselbe TLS 1.2-Verschlüsselungsverfahren wie [Azure Front Door](../frontdoor/front-door-faq.yml#what-are-the-current-cipher-suites-supported-by-azure-front-door-). Es ist wichtig, sicherzustellen, dass sowohl Clientcomputer als auch Sitzungshosts diese Verschlüsselungsverfahren verwenden können.
 Für den Reverse Connection-Transport stellt sowohl der Client als auch der Sitzungshost eine Verbindung mit dem Windows Virtual Desktop-Gateway her. Nach dem Einrichten der TCP-Verbindung überprüft der Client oder Sitzungshost das Zertifikat des Windows Virtual Desktop-Gateways.
 Nach dem Einrichten des Basistransports stellt RDP mithilfe der Zertifikate des Sitzungshosts eine geschachtelte TLS-Verbindung zwischen dem Client und dem Sitzungshost her. Standardmäßig wird das Zertifikat, das für die RDP-Verschlüsselung verwendet wird, vom Betriebssystem bei der Bereitstellung selbst generiert. Bei Bedarf können Kunden zentral verwaltete Zertifikate bereitstellen, die von der Unternehmenszertifizierungsstelle ausgestellt werden. Weitere Informationen zur Konfiguration von Zertifikaten finden Sie in der [Windows Server-Dokumentation](/troubleshoot/windows-server/remote/remote-desktop-listener-certificate-configurations).
 

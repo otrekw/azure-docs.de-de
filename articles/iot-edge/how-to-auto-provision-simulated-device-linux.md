@@ -8,16 +8,23 @@ ms.date: 6/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 13f78691a3652cc82e261f807c690c04cebec3b4
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 5beb3c750f99b8fe314fabbc2ff6109bfa6bc67c
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102175515"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106166597"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-tpm-on-linux"></a>Erstellen und Bereitstellen eines IoT Edge-Geräts mit einem TPM unter Linux
 
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
+
 In diesem Artikel erfahren Sie, wie Sie die automatische Bereitstellung für ein Linux-basiertes IoT Edge-Gerät mit einem Trusted Platform Module (TPM) testen. Azure IoT Edge-Geräte können per [Gerätebereitstellungsdienst](../iot-dps/index.yml) automatisch bereitgestellt werden. Wenn Sie mit der automatischen Bereitstellung nicht vertraut sind, lesen Sie die Übersicht zur [Bereitstellung](../iot-dps/about-iot-dps.md#provisioning-process), bevor Sie fortfahren.
+
+:::moniker range=">=iotedge-2020-11"
+> [!NOTE]
+> Derzeit wird die automatische Bereitstellung mithilfe der TPM-Authentifizierung in IoT Edge Version 1.2 nicht unterstützt.
+:::moniker-end
 
 Aufgaben:
 
@@ -27,7 +34,7 @@ Aufgaben:
 1. Installieren Sie IoT Edge-Runtime, und verbinden Sie das Gerät mit einem IoT Hub.
 
 > [!TIP]
-> In diesem Artikel wird beschrieben, wie Sie die DPS-Bereitstellung mithilfe eines TPM-Simulators testen. Viele Informationen darin gelten aber auch für physische TPM-Hardware, wie z.B. das [Infineon OPTIGA&trade; TPM](https://catalog.azureiotsolutions.com/details?title=OPTIGA-TPM-SLB-9670-Iridium-Board), ein Azure Certified for IoT-Gerät.
+> In diesem Artikel wird beschrieben, wie Sie die DPS-Bereitstellung mithilfe eines TPM-Simulators testen. Viele Informationen darin gelten aber auch für physische TPM-Hardware, wie z.B. das [Infineon OPTIGA&trade; TPM](https://devicecatalog.azure.com/devices/3f52cdee-bbc4-d74e-6c79-a2546f73df4e), ein Azure Certified for IoT-Gerät.
 >
 > Wenn Sie ein physisches Gerät verwenden, können Sie mit dem Abschnitt [Abrufen von Bereitstellungsinformationen von einem physischen Gerät](#retrieve-provisioning-information-from-a-physical-device) in diesem Artikel fortfahren.
 

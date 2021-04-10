@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 696faaecd2227c9b9ef74f20763e36661991ff67
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c6f7182fe058bacb1236ff10dfc1553d23a7e1f2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102438982"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105645255"
 ---
 # <a name="troubleshoot-issues-on-your-azure-stack-edge-pro-gpu-device"></a>Beheben von Problemen auf Ihrem Azure Stack Edge Pro-GPU-Gerät 
 
@@ -144,9 +144,9 @@ Hier sind die Fehler, die bei der Konfiguration von Azure Resource Manager für 
 |------------|-----------------|
 |Allgemeine Probleme|<li>[Vergewissern Sie sich, dass das Edgegerät ordnungsgemäß konfiguriert ist](#verify-the-device-is-configured-properly).<li> [Vergewissern Sie sich, dass der Client ordnungsgemäß konfiguriert ist.](#verify-the-client-is-configured-properly)|
 |Add-AzureRmEnvironment: Fehler beim Senden der Anforderung.<br>Zeile:1 Zeichen:1<br>+ Add-AzureRmEnvironment -Name Az3 -ARMEndpoint "https://management.dbe ...|Dieser Fehler bedeutet, dass Ihr Azure Stack Edge Pro-Gerät nicht erreichbar oder nicht ordnungsgemäß konfiguriert ist. Überprüfen Sie, ob Edgegerät und Client ordnungsgemäß konfiguriert sind. Eine Anleitung finden Sie in der Zeile **Allgemeine Probleme** dieser Tabelle.|
-|Dienst hat einen Fehler zurückgegeben. Weitere Details finden Sie in der InnerException. Die zugrunde liegende Verbindung wurde geschlossen: Es konnte keine Vertrauensstellung für den sicheren SSL/TLS-Kanal eingerichtet werden. |   Dieser Fehler ist wahrscheinlich darauf zurückzuführen, dass ein oder mehrere Schritte bei der Bereitstellung Ihres eigenen Zertifikats nicht einwandfrei erfolgt sind. [Hier](./azure-stack-edge-j-series-connect-resource-manager.md#step-2-create-and-install-certificates) finden Sie Anleitungen. |
+|Dienst hat einen Fehler zurückgegeben. Weitere Details finden Sie in der InnerException. Die zugrunde liegende Verbindung wurde geschlossen: Es konnte keine Vertrauensstellung für den sicheren SSL/TLS-Kanal eingerichtet werden. |   Dieser Fehler ist wahrscheinlich darauf zurückzuführen, dass ein oder mehrere Schritte bei der Bereitstellung Ihres eigenen Zertifikats nicht einwandfrei erfolgt sind. [Hier](./azure-stack-edge-gpu-connect-resource-manager.md#step-2-create-and-install-certificates) finden Sie Anleitungen. |
 |Operation returned an invalid status code 'BadRequest'. (Der Vorgang hat den ungültigen Statuscode „ServiceUnavailable“ zurückgegeben.) <br> Der Antwortstatuscode gibt keinen Erfolg an: 503 (Dienst nicht verfügbar). | Dieser Fehler kann auf eine der folgenden Bedingungen zurückzuführen sein.<li>ArmStsPool befindet sich im beendeten Zustand.</li><li>Die Azure Resource Manager- oder die Sicherheitstokendienst-Website ist ausgefallen.</li><li>Die Azure Resource Manager-Clusterressource ist nicht verfügbar.</li><br><strong>Hinweis:</strong> Ein Neustart des Geräts kann das Problem möglicherweise beheben, aber Sie sollten das Supportpaket zusammenstellen, damit Sie es weiter untersuchen können.|
-|AADSTS50126: Ungültiger Benutzername oder ungültiges Kennwort.<br>Ablaufverfolgungs-ID: 29317da9-52fc-4ba0-9778-446ae5625e5a<br>Korrelations-ID: 1b9752c4-8cbf-4304-a714-8a16527410f4<br>Timestamp: 2019-11-15 09:21:57Z: The remote server returned an error: (400) Bad Request (400 (Ungültige Anforderung)).<br>Zeile:1 Zeichen:1 |Dieser Fehler kann auf eine der folgenden Bedingungen zurückzuführen sein.<li>Bei ungültigem Benutzernamen und Kennwort prüfen Sie, ob der Kunde das Kennwort im Azure-Portal geändert hat, indem Sie den Schritten [hier](./azure-stack-edge-j-series-set-azure-resource-manager-password.md) folgen und dann das richtige Kennwort verwenden.<li>Bei einer ungültigen Mandanten-ID ist die Mandanten-ID eine feste GUID und muss auf `c0257de7-538f-415c-993a-1b87a031879d` festgelegt werden.</li>|
+|AADSTS50126: Ungültiger Benutzername oder ungültiges Kennwort.<br>Ablaufverfolgungs-ID: 29317da9-52fc-4ba0-9778-446ae5625e5a<br>Korrelations-ID: 1b9752c4-8cbf-4304-a714-8a16527410f4<br>Timestamp: 2019-11-15 09:21:57Z: The remote server returned an error: (400) Bad Request (400 (Ungültige Anforderung)).<br>Zeile:1 Zeichen:1 |Dieser Fehler kann auf eine der folgenden Bedingungen zurückzuführen sein.<li>Bei ungültigem Benutzernamen und Kennwort prüfen Sie, ob der Kunde das Kennwort im Azure-Portal geändert hat, indem Sie den Schritten [hier](/azure/azure-stack-edge-gpu-set-azure-resource-manager-password) folgen und dann das richtige Kennwort verwenden.<li>Bei einer ungültigen Mandanten-ID ist die Mandanten-ID eine feste GUID und muss auf `c0257de7-538f-415c-993a-1b87a031879d` festgelegt werden.</li>|
 |connect-AzureRmAccount: AADSTS90056: Die Ressource ist deaktiviert oder nicht vorhanden. Überprüfen Sie den Code Ihrer App, um sicherzustellen, dass Sie die genaue Ressourcen-URL für die Ressource angegeben haben, auf die Sie zugreifen möchten.<br>Ablaufverfolgungs-ID: e19bdbc9-5dc8-4a74-85c3-ac6abdfda115<br>Korrelations-ID: 75c8ef5a-830e-48b5-b039-595a96488ff9 Zeitstempel: 2019-11-18 07:00:51Z: The remote server returned an error: (400) Fehlerhaft |Die im Befehl `Add-AzureRmEnvironment` verwendeten Ressourcenendpunkte sind falsch.|
 |Endpunkte können nicht aus der Cloud abgerufen werden.<br>Stellen Sie sicher, dass Sie über eine Netzwerkverbindung verfügen. Fehlerdetail: HTTPSConnectionPool(host='management.dbg-of4k6suvm.microsoftdatabox.com', port=30005): Maximale Anzahl von Wiederholungen überschritten mit URL: /metadata/endpoints?api-version=2015-01-01 (Caused by SSLError(SSLError("bad handshake: Error([('SSL routines', 'tls_process_server_certificate', 'certificate verify failed')],)",),)) |Dieser Fehler tritt meist in einer Mac-/Linux-Umgebung auf und ist auf die folgenden Probleme zurückzuführen:<li>Ein Zertifikat im PEM-Format wurde nicht dem Python-Zertifikatsspeicher hinzugefügt.</li> |
 
@@ -154,7 +154,7 @@ Hier sind die Fehler, die bei der Konfiguration von Azure Resource Manager für 
 
 1. Überprüfen Sie auf der lokalen Benutzeroberfläche, ob das Gerätenetzwerk ordnungsgemäß konfiguriert ist.
 
-2. Vergewissern Sie sich, dass die Zertifikate für alle Endpunkte wie [hier](azure-stack-edge-j-series-connect-resource-manager.md#step-2-create-and-install-certificates) erwähnt aktualisiert werden.
+2. Vergewissern Sie sich, dass die Zertifikate für alle Endpunkte wie [hier](./azure-stack-edge-gpu-connect-resource-manager.md#step-2-create-and-install-certificates) erwähnt aktualisiert werden.
 
 3. Rufen Sie den Verwaltungs- und Anmeldeendpunkt für Azure Resource Manager auf der Seite **Gerät** der lokalen Benutzeroberfläche ab.
 
@@ -163,18 +163,18 @@ Hier sind die Fehler, die bei der Konfiguration von Azure Resource Manager für 
 
 ### <a name="verify-the-client-is-configured-properly"></a>Überprüfen, ob der Client ordnungsgemäß konfiguriert ist
 
-1. Vergewissern Sie sich, dass die richtige PowerShell-Version wie [hier](azure-stack-edge-j-series-connect-resource-manager.md#step-3-install-powershell-on-the-client) erwähnt installiert ist.
+1. Vergewissern Sie sich, dass die richtige PowerShell-Version wie [hier](./azure-stack-edge-gpu-connect-resource-manager.md#step-3-install-powershell-on-the-client) erwähnt installiert ist.
 
-2. Vergewissern Sie sich, dass die richtigen PowerShell-Module wie [hier](azure-stack-edge-j-series-connect-resource-manager.md#step-4-set-up-azure-powershell-on-the-client) erwähnt installiert sind.
+2. Vergewissern Sie sich, dass die richtigen PowerShell-Module wie [hier](./azure-stack-edge-gpu-connect-resource-manager.md#step-4-set-up-azure-powershell-on-the-client) erwähnt installiert sind.
 
 3. Überprüfen Sie, ob die Azure Resource Manager- und Anmeldeendpunkte erreichbar sind. Sie können versuchen, die Endpunkte zu pingen. Beispiel:
 
    `ping management.28bmdw2-bb9.microsoftdatabox.com`
    `ping login.28bmdw2-bb9.microsoftdatabox.com`
    
-   Wenn sie nicht erreichbar sind, fügen Sie DNS-/Hostdateieinträge wie [hier](azure-stack-edge-j-series-connect-resource-manager.md#step-5-modify-host-file-for-endpoint-name-resolution) erwähnt hinzu.
+   Wenn sie nicht erreichbar sind, fügen Sie DNS-/Hostdateieinträge wie [hier](./azure-stack-edge-gpu-connect-resource-manager.md#step-5-modify-host-file-for-endpoint-name-resolution) erwähnt hinzu.
    
-4. Überprüfen Sie, ob die Clientzertifikate wie [hier](azure-stack-edge-j-series-connect-resource-manager.md#import-certificates-on-the-client-running-azure-powershell) erwähnt installiert sind.
+4. Überprüfen Sie, ob die Clientzertifikate wie [hier](./azure-stack-edge-gpu-connect-resource-manager.md#import-certificates-on-the-client-running-azure-powershell) erwähnt installiert sind.
 
 5. Wenn der Kunde PowerShell verwendet, sollten Sie die Debugvoreinstellung aktivieren, um detaillierte Meldungen anzuzeigen, indem Sie diesen PowerShell-Befehl ausführen. 
 

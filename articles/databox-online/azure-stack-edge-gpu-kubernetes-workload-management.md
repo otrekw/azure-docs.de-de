@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 03/01/2021
 ms.author: alkohli
-ms.openlocfilehash: b962d66349bbed112114c010e8d185ba16c74c8d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 67110a2a2bd7f34c735edd126cfc655f45247fc2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102443079"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105560232"
 ---
 # <a name="kubernetes-workload-management-on-your-azure-stack-edge-pro-device"></a>Kubernetes-Workloadverwaltung auf Ihrem Azure Stack Edge Pro-Gerät
 
@@ -83,7 +83,7 @@ Beachten Sie beim Bereitstellen von Anwendungen die folgenden Informationen:
 
 Informationen zum lokalen Bereitstellen einer App über kubectl finden Sie unter:
 
-- [Bereitstellen einer zustandslosen Anwendung auf einem Azure Stack Edge Pro-Gerät über kubectl](azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md).
+- [Bereitstellen einer zustandslosen Anwendung auf einem Azure Stack Edge Pro-Gerät über kubectl](./azure-stack-edge-gpu-deploy-stateless-application-kubernetes.md).
 
 Informationen zum Bereitstellen einer App über IoT Edge finden Sie unter:
 

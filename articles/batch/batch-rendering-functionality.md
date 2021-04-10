@@ -3,14 +3,14 @@ title: Renderingfunktionen
 description: Azure Batch-Standardfunktionen werden verwendet, um Renderingworkloads und -Apps auszuführen. Batch enthält bestimmte Funktionen zur Unterstützung von Renderingworkloads.
 author: mscurrell
 ms.author: markscu
-ms.date: 02/01/2021
+ms.date: 03/12/2021
 ms.topic: how-to
-ms.openlocfilehash: c748c51311a70cd3b4fc6d435e97a33d709467b9
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: a2e2cfb71999bd5ab83591448342d4bac1dabdd5
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99429801"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103496336"
 ---
 # <a name="azure-batch-rendering-capabilities"></a>Azure Batch-Renderingfunktionen
 
@@ -27,6 +27,9 @@ Die Befehlszeilen-Zeichenfolgen für eine Aufgabe müssen auf die Anwendungen un
 Die meisten Renderinganwendungen benötigen Lizenzen, die von einem Lizenzserver abgerufen werden. Wenn ein lokaler Lizenzserver vorhanden ist, müssen sich der Pool und der Lizenzserver im selben [virtuellen Netzwerk](../virtual-network/virtual-networks-overview.md) befinden. Es ist auch möglich, einen Lizenzserver auf einer Azure-VM auszuführen. Dann müssen sich der Batch-Pool und die Lizenzserver-VM im selben virtuellen Netzwerk befinden.
 
 ## <a name="batch-pools-using-rendering-vm-images"></a>Batch-Pools mit VM-Images für das Rendering
+
+> [!IMPORTANT]
+> Das Rendern von VM-Images und die nutzungsbasierte Lizenzierung wurden [als veraltet markiert und werden am 29. Februar 2024 eingestellt](https://azure.microsoft.com/updates/azure-batch-rendering-vm-images-licensing-will-be-retired-on-29-february-2024/). Um mit Batch zu rendern, [sollten ein benutzerdefiniertes VM-Image und eine Standardanwendungslizenz verwendet werden](batch-rendering-functionality.md#batch-pools-using-custom-vm-images-and-standard-application-licensing).
 
 ### <a name="rendering-application-installation"></a>Installation von Renderinganwendungen
 

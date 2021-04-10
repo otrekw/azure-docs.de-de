@@ -3,12 +3,12 @@ title: Azure Backup-Berichte per E-Mail
 description: Erstellen automatisierter Aufgaben zum Empfangen regelmäßiger Berichte per E-Mail
 ms.topic: conceptual
 ms.date: 03/01/2021
-ms.openlocfilehash: 8c18d4c7a3c7a9ba343296961fa9a44614366405
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: d3ec76fa1a23657578979e65c0e54bb428722244
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102510391"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105561337"
 ---
 # <a name="email-azure-backup-reports"></a>Azure Backup-Berichte per E-Mail
 
@@ -30,7 +30,7 @@ Um E-Mail-Aufgaben über Sicherungsberichte zu konfigurieren, führen Sie die fo
 
 ## <a name="authorize-connections-to-azure-monitor-logs-and-office-365"></a>Autorisieren von Verbindungen mit Azure Monitor-Protokollen und Office 365
 
-Die Logik-App verwendet den [azuremonitorlogs](https://docs.microsoft.com/connectors/azuremonitorlogs/)-Connector zum Abfragen der LA-Arbeitsbereiche und den [Office 365 Outlook](https://docs.microsoft.com/connectors/office365connector/)-Connector zum Senden von E-Mails. Sie müssen eine einmalige Autorisierung für diese beiden Connectors durchführen. 
+Die Logik-App verwendet den [azuremonitorlogs](/connectors/azuremonitorlogs/)-Connector zum Abfragen der LA-Arbeitsbereiche und den [Office 365 Outlook](/connectors/office365connector/)-Connector zum Senden von E-Mails. Sie müssen eine einmalige Autorisierung für diese beiden Connectors durchführen. 
  
 Führen Sie die folgenden Schritte aus, um die Autorisierung durchzuführen:
 
@@ -79,4 +79,4 @@ So beheben Sie dieses Problem
 Wenn das Problem weiterhin besteht, wenden Sie sich an den Microsoft-Support.
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Weitere Informationen zu Azure Backup-Berichten](https://docs.microsoft.com/azure/backup/configure-reports)
+[Weitere Informationen zu Azure Backup-Berichten](./configure-reports.md)

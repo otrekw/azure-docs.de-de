@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: aamalvea
 ms.author: aamalvea
 ms.reviewer: wiassaf, sstein
-ms.date: 02/26/2019
-ms.openlocfilehash: 1a74a2f44ac9b03e39e9fea48a3428b82111a48c
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.date: 03/24/2021
+ms.openlocfilehash: 4434c796a41126444b8785440427123e88e0b528
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103471998"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105107787"
 ---
 # <a name="use-resource-health-to-troubleshoot-connectivity-for-azure-sql-database-and-azure-sql-managed-instance"></a>Behandeln von Konnektivitätsproblemen für Azure SQL-Datenbank und verwalteten Azure SQL-Instanzen mithilfe von Resource Health
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -76,5 +76,5 @@ Neukonfigurationen gelten als vorübergehende Bedingungen und werden von Zeit zu
 - Informieren Sie sich ausführlicher über [Wiederholungslogik für vorübergehende Fehler](troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors).
 - Machen Sie sich mit [Durchführen der Problembehandlung, Diagnose und Verhinderung von SQL-Verbindungsfehlern und vorübergehenden Fehlern für SQL-Datenbank](troubleshoot-common-connectivity-issues.md) vertraut.
 - Erfahren Sie mehr über das [Konfigurieren von Resource Health-Warnungen](../../service-health/resource-health-alert-arm-template-guide.md).
-- Verschaffen Sie sich einen Überblick über [Resource Health](../../application-gateway/resource-health-overview.md).
+- Verschaffen Sie sich einen Überblick über [Resource Health](../../service-health/resource-health-overview.md).
 - Lesen Sie [Azure Resource Health – FAQ](../../service-health/resource-health-faq.md).

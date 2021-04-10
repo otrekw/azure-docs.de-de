@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 03/01/2021
-ms.openlocfilehash: 4782e6c0ed866c467051fc1811a60df0010a3db1
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: c1d4c9be1f76e62be3c17d4dec22479db003b77a
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101743339"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102608256"
 ---
 # <a name="pre-certification-checklist-for-iot-edge-modules"></a>Prüfliste vor der Zertifizierung für IoT Edge-Module
 
@@ -74,6 +74,7 @@ Das Zertifizierungsteam verwendet die folgende Hardware zum Überprüfen von Ima
 - Die Verbindungszeichenfolge für die Leadverwaltung ist vorhanden.
 - Die Datenschutzrichtlinie ist vorhanden.
 - Die Nutzungsbedingungen sind vorhanden.
+- IoT Edge-Gerätelink wurde vom [Azure IoT-Gerätekatalog](https://devicecatalog.azure.com/devices?certificationBadgeTypes=IoTEdgeCompatible) hinzugefügt 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

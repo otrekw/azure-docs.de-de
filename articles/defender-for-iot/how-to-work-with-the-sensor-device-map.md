@@ -4,10 +4,10 @@ description: Die Geräteübersicht bietet eine grafische Darstellung erkannter N
 ms.date: 1/7/2021
 ms.topic: how-to
 ms.openlocfilehash: f7579cbca618baef404236556993c9831dd84bdf
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104784593"
 ---
 # <a name="investigate-sensor-detections-in-the-device-map"></a>Untersuchen von Sensorerkennungen in der Geräteübersicht
@@ -320,7 +320,7 @@ Die folgenden Informationen können manuell geändert werden. Manuell eingegeben
 | Betriebssystem | Das vom Sensor erkannte Betriebssystem des Geräts. |
 | Purdue-Ebene | Die vom Sensor für dieses Gerät erkannte Purdue-Ebene wie z. B.: <br /> Automatisch <br /> Prozesssteuerung <br /> Aufsicht <br /> – Enterprise |
 | BESCHREIBUNG | Ein Feld für die freie Texteingabe. <br /> Fügen Sie weitere Informationen zum Gerät hinzu. |
-| Attributes | Alle zusätzlichen Informationen, die in der Lernphase über das Gerät entdeckt wurden und nicht zu anderen Kategorien gehören, werden im Abschnitt „Attribute“ angezeigt. <br /> Diese Informationen sind schreibgeschützt. |
+| Attribute | Alle zusätzlichen Informationen, die in der Lernphase über das Gerät entdeckt wurden und nicht zu anderen Kategorien gehören, werden im Abschnitt „Attribute“ angezeigt. <br /> Diese Informationen sind schreibgeschützt. |
 | Einstellungen | Sie können Geräteeinstellungen manuell ändern, um falsch positive Ergebnisse zu vermeiden: <br /> - **Autorisiertes Gerät**: In der Lernphase werden alle im Netzwerk erkannten Geräte als autorisierte Geräte identifiziert. Wenn ein Gerät nach der Lernphase erkannt wird, wird es standardmäßig als nicht autorisiertes Gerät ausgewiesen. Sie können diese Festlegung manuell ändern. <br /> - **Als Scanner bekannt**: Aktivieren Sie diese Option, wenn Sie wissen, dass dieses Gerät als Scanner bekannt ist und keine Notwendigkeit besteht, Sie davor zu warnen. <br /> - **Programmiergerät**: Aktivieren Sie diese Option, wenn Sie wissen, dass dieses Gerät als Programmiergerät bekannt ist und zur Vornahme von Programmierungsänderungen verwendet wird. Wenn Sie es als Programmiergerät identifizieren, werden Warnungen wegen Programmierungsänderungen verhindert, die von dieser Ressource stammen. |
 | Benutzerdefinierte Gruppen | Die benutzerdefinierten Gruppen in der Geräteübersicht, zu denen dieses Gerät gehört. |
 | State | Der Sicherheits- und Autorisierungsstatus des Geräts: <br /> Der Status ist `Secured`, wenn keine Warnungen vorhanden sind. <br /> Wenn Warnungen zum Gerät vorliegen, wird die Anzahl der Warnungen angezeigt. <br /> Der Status `Unauthorized` wird für Geräte angezeigt, die nach der Lernphase dem Netzwerk hinzugefügt wurden. Sie können das Gerät in den Einstellungen manuell als `Authorized Device` festlegen. <br /> Für den Fall, dass die Adresse dieses Geräts als dynamische Adresse festgelegt ist, wird `DHCP` dem Status hinzugefügt. |

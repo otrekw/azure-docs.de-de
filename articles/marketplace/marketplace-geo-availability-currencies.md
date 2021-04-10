@@ -6,19 +6,21 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 author: keferna
 ms.author: keferna
-ms.date: 12/07/2020
-ms.openlocfilehash: c71c13701d064110be0ef976920c0cc01f2fa308
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.date: 03/08/2021
+ms.openlocfilehash: e583d39e2eed1b08dfeb17cafc1e12c583176d7b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879763"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103493032"
 ---
 # <a name="geographic-availability-and-currency-support-for-the-commercial-marketplace"></a>Geografische Verfügbarkeit und Unterstützung von Währungen für den kommerziellen Marketplace
 
 ## <a name="supported-geographic-locations"></a>Unterstützte geografische Standorte
 
 Angebote im kommerziellen Marketplace können in 141 geografischen Regionen gemäß der Rechnungsadresse des Kunden erworben werden, und Transaktionen können in 17 Währungen abgeschlossen werden. In der folgenden Tabelle sind alle unterstützten geografischen Standorte mit dem jeweiligen [Alpha-2-Code nach ISO 3166](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes) und der zugewiesenen Währung aufgelistet.
+
+Ein CSP kann ein Angebot in Partner Center in der Währung des Endkunden erwerben, damit er Rechnungen für diesen Kunden in der gleichen Währung ausstellen kann. Weitere Informationen finden Sie in [diesen häufig gestellten Fragen](https://partner.microsoft.com/resources/detail/eu-efta-change-of-partner-billing-currency-faq-pdf).
 
 |   Name des Landes/der Region               |   ISO-2   |   Währung</br>(Alle Angebotsarten)  |    Währung</br>(Nur Beratungsdienstangebote)    |
 |-------------------------------------|-----------|--------------|---------------------------------------------|
