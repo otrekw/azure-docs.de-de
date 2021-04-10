@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/28/2021
-ms.openlocfilehash: 22e48239631850d82cbb3e3208748416087da87c
-ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+ms.openlocfilehash: 4fdc222fa20aef6639bf6d5d485f7dcf6b6ca535
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/13/2021
-ms.locfileid: "103422104"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105641146"
 ---
 # <a name="efficiently-scale-out-a-custom-skill"></a>Effizientes Aufskalieren eines benutzerdefinierten Skills
 
@@ -26,7 +26,7 @@ Benutzerdefinierte Skills sind Web-APIs, die eine bestimmte Schnittstelle implem
 
 + Unter [Schnittstelle für benutzerdefinierte Qualifikationen](cognitive-search-custom-skill-interface.md) finden Sie eine Einführung in die Eingabe/Ausgabe-Schnittstelle, die eine benutzerdefinierte Qualifikation implementieren sollte.
 
-+ Einrichten Ihrer Umgebung. Zunächst können Sie [dieses Tutorial von Anfang bis Ende](/python/tutorial-vs-code-serverless-python-01) durcharbeiten, um die serverlose Azure Function unter Verwendung von Visual Studio Code und Python-Erweiterungen einzurichten.
++ Einrichten Ihrer Umgebung. Zunächst können Sie [dieses Tutorial von Anfang bis Ende](/azure/azure-functions/create-first-function-vs-code-python) durcharbeiten, um die serverlose Azure Function unter Verwendung von Visual Studio Code und Python-Erweiterungen einzurichten.
 
 ## <a name="skillset-configuration"></a>Skillsetkonfiguration
 
@@ -42,7 +42,7 @@ Legen Sie für den [benutzerdefinierten Skill](cognitive-search-custom-skill-web
 
 3. Legen Sie `timeout` auf einen Wert fest, der groß genug ist, um eine gültige Antwort des Skills zu erhalten.
 
-4. Legen Sie in der Definition des `indexer` [`batchSize`](https://docs.microsoft.com/rest/api/searchservice/create-indexer#indexer-parameters) auf die Anzahl der Dokumente fest, die aus der Datenquelle gelesen und gleichzeitig angereichert werden sollen.
+4. Legen Sie in der Definition des `indexer` [`batchSize`](/rest/api/searchservice/create-indexer#indexer-parameters) auf die Anzahl der Dokumente fest, die aus der Datenquelle gelesen und gleichzeitig angereichert werden sollen.
 
 ### <a name="considerations"></a>Überlegungen
 
@@ -106,5 +106,5 @@ Glückwunsch! Sie haben Ihren benutzerdefinierten Skill jetzt so skaliert, dass 
 
 + [Power Skills: ein Repository benutzerdefinierter Skills](https://github.com/Azure-Samples/azure-search-power-skills)
 + [Hinzufügen einer benutzerdefinierten Qualifikation zu einer KI-Anreicherungspipeline](cognitive-search-custom-skill-interface.md)
-+ [Hinzufügen eines Azure Machine Learning-Skills](https://docs.microsoft.com/azure/search/cognitive-search-aml-skill)
-+ [Verwenden von Debugsitzungen zum Testen von Änderungen](https://docs.microsoft.com/azure/search/cognitive-search-debug-session)
++ [Hinzufügen eines Azure Machine Learning-Skills](./cognitive-search-aml-skill.md)
++ [Verwenden von Debugsitzungen zum Testen von Änderungen](./cognitive-search-debug-session.md)

@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 07/15/2020
 ms.author: chrande
 ms.openlocfilehash: de39aee73a6f4b422af4524d3302f8858f8b060b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101692231"
 ---
 # <a name="troubleshoot-common-issues-in-azure-cosmos-dbs-api-for-mongodb"></a>Behandeln häufiger Probleme in der Azure Cosmos DB-API für MongoDB
@@ -24,7 +24,7 @@ Im folgenden Artikel werden allgemeine Fehler und Lösungen für Bereitstellung 
 
 ## <a name="common-errors-and-solutions"></a>Häufige Fehler und Lösungen
 
-| Code       | Fehler                | BESCHREIBUNG  | Lösung  |
+| Code       | Fehler                | Beschreibung  | Lösung  |
 |------------|----------------------|--------------|-----------|
 | 2 | BadValue | Ein häufiger Grund ist, dass der Indexpfad zum angegebenen ORDER BY-Element ausgeschlossen ist. Es kann auch sein, dass die ORDER BY-Abfrage nicht über einen entsprechenden zusammengesetzten Index für die Bereitstellung verfügt. Die Abfrage fordert eine Sortierung für ein Feld an, das nicht indiziert ist. | Erstellen Sie einen übereinstimmenden Index (oder zusammengesetzten Index) für die durchzuführende Sortierabfrage. |
 | 2 | Die Transaktion ist nicht aktiv. | Bei der Transaktion mit mehreren Dokumenten wurde das feste Zeitlimit von fünf Sekunden überschritten. | Wiederholen Sie die Transaktion mit mehreren Dokumenten, oder schränken Sie den Umfang von Vorgängen innerhalb der Transaktion mit mehreren Dokumenten ein, damit sie innerhalb des Zeitlimits von fünf Sekunden abgeschlossen wird. |

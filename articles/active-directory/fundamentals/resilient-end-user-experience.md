@@ -13,12 +13,12 @@ ms.reviewer: ''
 ms.date: 11/30/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f6896a812ec173994a1299a28ff2e99a0f351391
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b47a4a79fd423806693e86aef1edd132d844069e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98724440"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105557903"
 ---
 # <a name="resilient-end-user-experience"></a>Resiliente Endbenutzerumgebung
 
@@ -62,7 +62,7 @@ Schließen Sie als Teil des Registrierungsprozesses des externen Identitätsanbi
 
 ## <a name="availability-of-multi-factor-authentication"></a>Verfügbarkeit von Multi-Factor Authentication
 
-Wenn Sie einen [Telefondienst für Multi-Factor Authentication (MFA)](../../active-directory-b2c/phone-authentication.md) verwenden, stellen Sie sicher, einen alternativen Dienstanbieter zu berücksichtigen. Beim lokalen Telco- oder Telefondienstanbieter können Unterbrechungen im Dienst auftreten.
+Wenn Sie einen [Telefondienst für Multi-Factor Authentication (MFA)](../../active-directory-b2c/phone-authentication-user-flows.md) verwenden, stellen Sie sicher, einen alternativen Dienstanbieter zu berücksichtigen. Beim lokalen Telco- oder Telefondienstanbieter können Unterbrechungen im Dienst auftreten.
 
 ### <a name="how-to-choose-an-alternate-mfa"></a>Auswählen einer alternativen MFA  
 

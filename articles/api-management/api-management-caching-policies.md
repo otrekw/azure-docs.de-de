@@ -4,21 +4,16 @@ description: Erfahren Sie mehr über die Cacherichtlinien, die für die Verwendu
 services: api-management
 documentationcenter: ''
 author: vladvino
-manager: erikre
-editor: ''
-ms.assetid: 8147199c-24d8-439f-b2a9-da28a70a890c
 ms.service: api-management
-ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/13/2020
+ms.date: 03/08/2021
 ms.author: apimpm
-ms.openlocfilehash: bd3a63db7dd4946a9836b3978992fb544b9ab0ab
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9888627bed0fbf90abc75c81564dacc0d1aac18e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101688041"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103233465"
 ---
 # <a name="api-management-caching-policies"></a>Cacherichtlinien für API Management
 Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](./api-management-policies.md).
@@ -29,8 +24,8 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 ## <a name="caching-policies"></a><a name="CachingPolicies"></a> Cacherichtlinien
 
 - Cacherichtlinien für Antworten
-    - [Aus Cache abrufen](api-management-caching-policies.md#GetFromCache): Führt eine Cachesuche aus und gibt ggf. gültige Antworten aus dem Cache zurück.
-    - [In Cache ablegen](api-management-caching-policies.md#StoreToCache): Speichert Antworten gemäß der angegebenen Konfiguration für die Cachesteuerung zwischen.
+    - [Aus Cache abrufen](#GetFromCache): Führt eine Cachesuche aus und gibt ggf. gültige Antworten aus dem Cache zurück.
+    - [In Cache ablegen](#StoreToCache): Speichert Antworten gemäß der angegebenen Konfiguration für die Cachesteuerung zwischen.
 - Cacherichtlinien für Werte
     - [Get value from cache (Wert aus dem Cache abrufen)](#GetFromCacheByKey) – ruft ein zwischengespeichertes Element nach Schlüssel ab.
     - [Store value in cache (Wert im Cache speichern)](#StoreToCacheByKey) – speichert ein Element im Cache auf Basis des Schlüssels.
@@ -40,7 +35,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 Verwenden Sie die `cache-lookup`-Richtlinie zum Durchführen einer Cachesuche und ggf. zum Zurückgeben einer gültigen Antwort aus dem Cache. Diese Richtlinie kann in Fällen angewendet werden, in denen sich der Inhalt von Antworten über längere Zeit nicht ändert. Das Zwischenspeichern von Antworten senkt die Bandbreitennutzung und die Prozessoranforderungen auf dem Back-End-Webserver und verringert die Latenz für API-Consumer.
 
 > [!NOTE]
-> Diese Richtlinie setzt das Vorhandensein einer entsprechenden Richtlinie [In Cache ablegen](api-management-caching-policies.md#StoreToCache) voraus.
+> Diese Richtlinie setzt das Vorhandensein einer entsprechenden Richtlinie [In Cache ablegen](#StoreToCache) voraus.
 
 ### <a name="policy-statement"></a>Richtlinienanweisung
 
@@ -135,7 +130,7 @@ Die `cache-store`-Richtlinie speichert Antworten gemäß den angegebenen Cacheei
 ### <a name="policy-statement"></a>Richtlinienanweisung
 
 ```xml
-<cache-store duration="seconds" />
+<cache-store duration="seconds" cache-response="true | false" />
 ```
 
 ### <a name="examples"></a>Beispiele
@@ -190,7 +185,8 @@ Weitere Informationen finden Sie unter [Richtlinienausdrücke](api-management-po
 
 | Name             | BESCHREIBUNG                                                                                                                                                                                                                                                                                                                                                 | Erforderlich | Standard           |
 |------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------|
-| duration         | Lebensdauer der zwischengespeicherten Einträge, angegeben in Sekunden.                                                                                                                                                                                                                                                                                                   | Ja      | –               |
+| duration         | Lebensdauer der zwischengespeicherten Einträge, angegeben in Sekunden.     | Ja      | –               |
+| cache-response         | Auf „True“ festlegen, um die aktuelle HTTP-Antwort zwischenzuspeichern. Wenn das Attribut weggelassen oder auf „False“ festgelegt wird, werden nur HTTP-Antworten mit dem Statuscode `200 OK` zwischengespeichert.                           | Nein      | false               |
 
 ### <a name="usage"></a>Verwendung
 Diese Richtlinie kann in den folgenden [Abschnitten](./api-management-howto-policies.md#sections) und [Bereichen](./api-management-howto-policies.md#scopes) von Richtlinien verwendet werden.

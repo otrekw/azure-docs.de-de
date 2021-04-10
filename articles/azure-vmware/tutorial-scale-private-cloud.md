@@ -4,10 +4,10 @@ description: In diesem Tutorial wird das Azure-Portal verwendet, um eine private
 ms.topic: tutorial
 ms.date: 03/13/2021
 ms.openlocfilehash: 2129a3f5d04311883369b7b708689a13f07ec118
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/14/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103463601"
 ---
 # <a name="tutorial-scale-an-azure-vmware-solution-private-cloud"></a>Tutorial: Skalieren einer privaten Azure VMware Solution-Cloud

@@ -7,19 +7,19 @@ author: tamram
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.date: 01/13/2021
+ms.date: 03/01/2021
 ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: 5653b59ed29495334079e932fb305fd4ba10475c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 389d3507c3406743e14324c7b4667e045cfdb3b5
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100592347"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105048033"
 ---
 # <a name="security-recommendations-for-blob-storage"></a>Sicherheitsempfehlungen für Blob Storage
 
-Dieser Artikel enthält Sicherheitsempfehlungen für Blob Storage. Die Umsetzung dieser Empfehlungen erleichtert es Ihnen, Ihre Sicherheitspflichten zu erfüllen, die in unserem Modell der gemeinsamen Verantwortung beschrieben werden. Wenn Sie sich darüber informieren möchten, wie Microsoft seiner Verantwortung als Dienstanbieter nachkommt, lesen Sie [Gemeinsame Verantwortung für das Cloud Computing](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91/file/225366/1/Shared%20Responsibility%20for%20Cloud%20Computing-2019-10-25.pdf).
+Dieser Artikel enthält Sicherheitsempfehlungen für Blob Storage. Die Umsetzung dieser Empfehlungen erleichtert es Ihnen, Ihre Sicherheitspflichten zu erfüllen, die in unserem Modell der gemeinsamen Verantwortung beschrieben werden. Weitere Informationen dazu, wie Microsoft seiner Verantwortung als Dienstanbieter nachkommt, finden Sie unter [Gemeinsame Verantwortung in der Cloud](../../security/fundamentals/shared-responsibility.md).
 
 Einige der in diesem Artikel enthaltenen Empfehlungen können automatisch durch Azure Security Center überwacht werden. Azure Security Center ist die erste Verteidigungslinie zum Schutz Ihrer Ressourcen in Azure. Informationen zu Azure Security Center finden Sie unter [Was ist Azure Security Center?](../../security-center/security-center-introduction.md).
 
@@ -33,7 +33,7 @@ Azure Security Center analysiert in regelmäßigen Abständen den Sicherheitssta
 | Aktivieren von Azure Defender für alle Speicherkonten | Azure Defender für Azure Storage bietet zusätzliche Sicherheitsanalysen für Daten zur Erkennung von ungewöhnlichen und möglicherweise schädlichen Versuchen, auf Speicherkonten zuzugreifen oder diese unbefugt zu nutzen. Sicherheitswarnungen werden in Azure Security Center bei Auftreten von Anomalien in Bezug auf Aktivitäten ausgelöst und werden mit Informationen zu verdächtigen Aktivitäten und Empfehlungen zur Untersuchung und Beseitigung von Bedrohungen auch per E-Mail an Abonnementadministratoren gesendet. Weitere Informationen finden Sie unter [Konfigurieren von Azure Defender für Azure Storage](../common/azure-defender-storage-configure.md). | [Ja](../../security-center/security-center-remediate-recommendations.md) |
 | Aktivieren des vorläufigen Löschens für Blobs | Das vorläufige Löschen für Blobs ermöglicht es Ihnen, Blobdaten nach dem Löschen wiederherzustellen. Weitere Informationen zum vorläufigen Löschen für Blobs finden Sie unter [Vorläufiges Löschen für Azure Storage-Blobs](./soft-delete-blob-overview.md). | - |
 | Aktivieren des vorläufigen Löschens für Container | Das vorläufige Löschen für Container ermöglicht es Ihnen, einen Container nach dem Löschen wiederherzustellen. Weitere Informationen zum vorläufigen Löschen für Container finden Sie unter [Vorläufiges Löschen für Container (Vorschau)](./soft-delete-container-overview.md). | - |
-| Sperren eines Speicherkontos, um eine versehentliche Kontolöschung zu verhindern | Sie können eine Azure Resource Manager-Ressource (z. B. ein Abonnement, eine Ressourcengruppe oder ein Speicherkonto) sperren, um zu verhindern, dass andere Benutzer in Ihrer Organisation sie versehentlich löschen oder ändern. Durch das Sperren eines Speicherkontos wird nicht verhindert, dass Daten in diesem Konto gelöscht werden. Dadurch wird nur verhindert, dass das Konto selbst gelöscht wird. Weitere Informationen finden Sie unter [Sperren von Ressourcen, um unerwartete Änderungen zu verhindern](../../azure-resource-manager/management/lock-resources.md).
+| Sperren eines Speicherkontos, um versehentliches oder böswilliges Löschen oder Konfigurationsänderungen zu verhindern | Wenden Sie eine Azure Resource Manager-Sperre auf Ihr Speicherkonto an, um das Konto vor versehentlichem oder böswilligem Löschen oder einer Konfigurationsänderung zu schützen. Durch das Sperren eines Speicherkontos wird nicht verhindert, dass Daten in diesem Konto gelöscht werden. Dadurch wird nur verhindert, dass das Konto selbst gelöscht wird. Weitere Informationen finden Sie unter [Anwenden einer Azure Resource Manager-Sperre auf ein Speicherkonto](../common/lock-account-resource.md).
 | Speichern unternehmenskritischer Daten in unveränderlichen Blobs | Konfigurieren Sie Richtlinien zur gesetzlichen Aufbewahrungspflicht und zeitbasierten Aufbewahrung für das Speichern von Blobdaten in einem WORM-Zustand (Write Once, Read Many). Unveränderlich gespeicherte Blobs können während des Aufbewahrungszeitraums gelesen, aber nicht geändert oder gelöscht werden. Weitere Informationen finden Sie unter [Speichern unternehmenskritischer Blobdaten mit unveränderlichem Speicher](storage-blob-immutable-storage.md). | - |
 | Vorschreiben einer sicheren Übertragung (HTTPS) in das Speicherkonto | Wenn Sie eine sichere Übertragung für ein Speicherkonto benötigen, müssen alle Anforderungen an das Speicherkonto über HTTPS erfolgen. Anforderungen über HTTP werden abgelehnt. Microsoft empfiehlt, immer eine sichere Übertragung für sämtliche Speicherkonten zu erzwingen. Weitere Informationen finden Sie unter [Erzwingen einer sicheren Übertragung für sichere Verbindungen](../common/storage-require-secure-transfer.md). | - |
 | Beschränken von SAS-Token (Shared Access Signature) auf HTTPS-Verbindungen | Durch das verbindliche Verwenden von HTTPS, wenn ein Client ein SAS-Token für den Zugriff auf Blobdaten nutzt, kann das Risiko eines Lauschangriffs reduziert werden. Weitere Informationen finden Sie unter [Gewähren von eingeschränktem Zugriff auf Azure Storage-Ressourcen mithilfe von SAS (Shared Access Signature)](../common/storage-sas-overview.md). | - |

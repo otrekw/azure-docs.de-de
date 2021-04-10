@@ -5,22 +5,22 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: a2bca34f683df27c97b131d57c6c3278f7cb175e
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 867f042332457ebc5fdd6b1f10ce7fb636309ba8
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98928905"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104865331"
 ---
 # <a name="what-is-apache-storm-on-azure-hdinsight"></a>Was ist Apache Storm in Azure HDInsight?
 
-[Apache Storm](https://storm.apache.org/) ist ein verteiltes, fehlertolerantes Open Source-Berechnungssystem. Mithilfe von Storm können Sie Datenströme in Echtzeit mit [Apache Hadoop](../hadoop/apache-hadoop-introduction.md) verarbeiten. Storm-Lösungen sind außerdem in der Lage, die Verarbeitung von Daten zu garantieren und Daten erneut wiederzugeben, die beim ersten Versuch nicht erfolgreich verarbeitet wurden.
+[Apache Storm](https://storm.apache.org/) ist ein verteiltes, fehlertolerantes Open Source-Berechnungssystem. Mithilfe von Storm können Sie Datenströme in Echtzeit mit [Apache Hadoop](../hadoop/apache-hadoop-introduction.md) verarbeiten. Mit Storm-Lösungen kann darüber hinaus die Verarbeitung von Daten garantiert werden, da Daten, die beim ersten Mal nicht erfolgreich verarbeitet wurden, erneut verarbeitet werden.
 
 ## <a name="why-use-apache-storm-on-hdinsight"></a>Vorteile von Apache Storm in HDInsight
 
 Storm in HDInsight umfasst die folgenden Features:
 
-* __Vereinbarung zum Servicelevel (SLA) mit 99% Verfügbarkeit von Storm__: Storm in HDInsight bietet durchgehend umfassenden Support. Außerdem gilt für Storm in HDInsight eine SLA von 99,9 Prozent. Für einen Storm-Cluster wird von Microsoft also eine externe Konnektivität für mindestens 99,9 Prozent der Zeit garantiert. Weitere Informationen finden Sie unter [Azure-Support](https://azure.microsoft.com/support/options/). Weitere Informationen finden Sie im Dokument [SLA für HDInsight](https://azure.microsoft.com/support/legal/sla/hdinsight/v1_0/).
+* __Vereinbarung zum Servicelevel (SLA) mit 99 % Verfügbarkeit von Storm__: Storm in HDInsight bietet durchgehend umfassenden Support. Außerdem gilt für Storm in HDInsight eine SLA von 99,9 Prozent. Für einen Storm-Cluster wird von Microsoft also eine externe Konnektivität für mindestens 99,9 Prozent der Zeit garantiert. Weitere Informationen finden Sie unter [Azure-Support](https://azure.microsoft.com/support/options/). Weitere Informationen finden Sie im Dokument [SLA für HDInsight](https://azure.microsoft.com/support/legal/sla/hdinsight/v1_0/).
 
 * Einfache Anpassung durch Ausführung von Skripts für einen Storm-Cluster während oder nach der Erstellung. Weitere Informationen finden Sie unter [Anpassen von HDInsight-Clustern mithilfe von Skriptaktionen](../hdinsight-hadoop-customize-cluster-linux.md).
 
@@ -32,7 +32,7 @@ Storm in HDInsight umfasst die folgenden Features:
 
 * **Dynamische Skalierung**: Sie können Workerknoten ohne Auswirkungen auf aktive Storm-Topologien hinzufügen oder entfernen. Sie müssen ausgeführte Topologien deaktivieren und neu aktivieren, um neue, durch Skalierungsvorgänge hinzugefügte Knoten nutzen zu können.
 
-* **Erstellen von Streamingpipelines mithilfe verschiedener Azure-Dienste**: Storm in HDInsight kann in andere Azure-Dienste integriert werden, etwa in Event Hubs, SQL-Datenbank, Azure Storage und Azure Data Lake Storage. Eine Beispiellösung, die in Azure-Dienste integriert wird, finden Sie unter [Verarbeiten von Ereignissen aus Event Hubs mit Apache Storm in HDInsight](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub).
+* **Erstellen von Streamingpipelines mithilfe verschiedener Azure-Dienste**: Storm in HDInsight kann in andere Azure-Dienste integriert werden. etwa in Event Hubs, SQL-Datenbank, Azure Storage und Azure Data Lake Storage. Eine Beispiellösung, die in Azure-Dienste integriert wird, finden Sie unter [Verarbeiten von Ereignissen aus Event Hubs mit Apache Storm in HDInsight](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub).
 
 Eine Liste der Unternehmen, die Apache Storm für ihre Echtzeitanalyselösungen verwenden, finden Sie unter [Unternehmen, die Apache Storm verwenden](https://storm.apache.org/Powered-By.html).
 
@@ -42,7 +42,7 @@ Informationen zu den ersten Schritten mit Storm finden Sie unter [Erstellen und 
 
 Anstelle der [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html)-Aufträge, die Sie möglicherweise kennen, führt Storm Topologien aus. Storm-Topologien setzen sich aus mehreren Komponenten zusammen, die in einem gerichteten azyklischen Graph (DAG) angeordnet sind. Daten werden zwischen den Komponenten im Diagramm übertragen. Jede Komponente nutzt einen oder mehrere Datenströme und kann optional einen oder mehrere Datenströme ausgeben kann. Das folgende Diagramm veranschaulicht den Datenfluss zwischen Komponenten in einer einfachen Wortzählungstopologie:
 
-![Beispielanordnung von Komponenten in einer Storm-Topologie](./media/apache-storm-overview/example-apache-storm-topology-diagram.png)
+:::image type="content" source="./media/apache-storm-overview/example-apache-storm-topology-diagram.png" alt-text="Beispielanordnung von Komponenten in einer Storm-Topologie" border="false":::
 
 * Spout-Komponenten bringen Daten in eine Topologie ein. Sie geben mindestens einen Datenstrom in die Topologie aus.
 
@@ -56,11 +56,11 @@ Der Nimbus-Knoten bietet ähnliche Funktionen wie Apache Hadoop JobTracker. Nimb
 
 In der Standardkonfiguration verfügen Apache Storm-Cluster über einen einzelnen Nimbus-Knoten. Storm in HDInsight bietet zwei Nimbus-Knoten. Wenn der primäre Knoten ausfällt, wechselt der Storm-Cluster auf den sekundären Knoten, während der primäre Knoten wiederhergestellt wird. Das folgende Diagramm veranschaulicht die Konfiguration des Aufgabenablaufs für Storm in HDInsight:
 
-![Diagramm mit Nimbus, Zookeeper und Supervisor](./media/apache-storm-overview/storm-diagram-nimbus.png)
+:::image type="content" source="./media/apache-storm-overview/storm-diagram-nimbus.png" alt-text="Diagramm mit Nimbus, Zookeeper und Supervisor" border="false":::
 
-## <a name="ease-of-use"></a>Einfache Bedienung
+## <a name="ease-of-use"></a>Einfache Nutzung
 
-|Zweck |BESCHREIBUNG |
+|Verwendung |Beschreibung |
 |---|---|
 |SSH-Konnektivität (Secure Shell)|Sie können per SSH über das Internet auf die Hauptknoten Ihres Storm-Clusters zugreifen. Mit SSH können Sie Befehle direkt in Ihrem Cluster ausführen. Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](../hdinsight-hadoop-linux-use-ssh-unix.md).|
 |Webkonnektivität|Für alle HDInsight-Cluster wird die Ambari-Webbenutzeroberfläche bereitgestellt. Über die Ambari-Webbenutzeroberfläche können Sie Dienste in Ihrem Cluster komfortabel überwachen, konfigurieren und verwalten. Storm-Cluster bieten auch die Storm-Benutzeroberfläche. Mit der Storm-Benutzeroberfläche können Sie die Ausführung von Storm-Topologien über Ihren Browser überwachen und verwalten. Weitere Informationen finden Sie in den Dokumenten [Verwalten von HDInsight mithilfe der Apache Ambari-Webbenutzeroberfläche](../hdinsight-hadoop-manage-ambari.md) und [Überwachen und Verwalten mit der Apache Storm-Benutzeroberfläche](apache-storm-deploy-monitor-topology-linux.md#monitor-and-manage-a-topology-using-the-storm-ui).|

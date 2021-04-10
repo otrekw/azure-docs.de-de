@@ -3,12 +3,12 @@ title: Konfigurieren von Azure Backup-Berichten
 description: Konfigurieren und Anzeigen von Berichten für Azure Backup mithilfe von Log Analytics und Azure-Arbeitsmappen
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: e9f3d9dfa33e71d827a338258001f2b52af62b06
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0720af0848aa8263587dfd9573d205abf73303d4
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102509364"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105562323"
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurieren von Azure Backup-Berichten
 
@@ -148,7 +148,7 @@ Es gibt zwei Ansichten zur Einhaltung von Richtlinien:
 
 * **Richtlinieneinhaltung nach Zeitraum:** In dieser Ansicht können Sie feststellen, für wie viele Elemente mindestens eine erfolgreiche Sicherung an einem bestimmten Tag erfolgte und bei wie vielen diese an dem Tag fehlschlug. Durch einen Klick auf eine Zeile können Sie die Details zu allen Sicherungsaufträgen anzeigen, die am ausgewählten Tag ausgelöst wurden. Beachten Sie, dass wenn Sie den Zeitbereich vergrößern (z. B. auf die letzten 60 Tage), das Raster in der Wochenansicht gerendert wird und die Anzahl aller Elemente anzeigt, die an jedem Tag der angegebenen Woche über mindestens eine erfolgreiche Sicherung verfügen. Ebenso gibt es eine Monatsansicht für größere Zeitbereiche.
 
-Im Fall von wöchentlich gesicherten Elementen hilft Ihnen dieses Raster, alle Elemente zu identifizieren, für die in einer angegebenen Woche mindestens eine erfolgreiche Sicherung vorhanden ist. Für einen größeren Zeitbereich (z. B. die letzten 120 Tage) wird das Raster in der Monatsansicht gerendert und zeigt die Anzahl aller Elemente an, die in jeder Woche des angegebenen Monats mindestens eine erfolgreiche Sicherung aufweisen. Weitere Informationen zur Tages-, Wochen- und Monatsansicht finden Sie unter [In Sicherungsberichten verwendete Konventionen](https://docs.microsoft.com/azure/backup/configure-reports#conventions-used-in-backup-reports).
+Im Fall von wöchentlich gesicherten Elementen hilft Ihnen dieses Raster, alle Elemente zu identifizieren, für die in einer angegebenen Woche mindestens eine erfolgreiche Sicherung vorhanden ist. Für einen größeren Zeitbereich (z. B. die letzten 120 Tage) wird das Raster in der Monatsansicht gerendert und zeigt die Anzahl aller Elemente an, die in jeder Woche des angegebenen Monats mindestens eine erfolgreiche Sicherung aufweisen. Weitere Informationen zur Tages-, Wochen- und Monatsansicht finden Sie unter [In Sicherungsberichten verwendete Konventionen](#conventions-used-in-backup-reports).
 
 ![Richtlinieneinhaltung nach Zeitraum](./media/backup-azure-configure-backup-reports/policy-adherence-by-time-period.png)
 
@@ -166,7 +166,7 @@ Sobald die Logik-App erstellt wurde, müssen Sie die Verbindungen mit Azure Moni
 
 Sicherungsberichte verwenden [Systemfunktionen für Azure Monitor-Protokolle](backup-reports-system-functions.md). Diese Funktionen verarbeiten Daten in den Rohtabellen von Azure Backup in Log Analytics und geben formatierte Daten zurück, mit denen Sie mit einfachen Abfragen problemlos Informationen aus all Ihren auf die Sicherung bezogenen Entitäten abrufen können. 
 
-Zum Erstellen eigener Berichtsarbeitsmappen auf Grundlage von Sicherungsberichten können Sie zu „Sicherungsberichte“ navigieren, oben im Bericht auf **Bearbeiten** klicken und die in den Berichten verwendeten Abfragen anzeigen/bearbeiten. Weitere Informationen zum Erstellen von benutzerdefinierten Berichten finden Sie in der [Dokumentation zu Azure-Arbeitsmappen](https://docs.microsoft.com/azure/azure-monitor/visualize/workbooks-overview). 
+Zum Erstellen eigener Berichtsarbeitsmappen auf Grundlage von Sicherungsberichten können Sie zu „Sicherungsberichte“ navigieren, oben im Bericht auf **Bearbeiten** klicken und die in den Berichten verwendeten Abfragen anzeigen/bearbeiten. Weitere Informationen zum Erstellen von benutzerdefinierten Berichten finden Sie in der [Dokumentation zu Azure-Arbeitsmappen](../azure-monitor/visualize/workbooks-overview.md). 
 
 ## <a name="export-to-excel"></a>Exportieren in Excel
 

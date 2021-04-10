@@ -1,14 +1,14 @@
 ---
 title: Verwalten einer Hybridinfrastruktur im großen Stil mit Azure Arc
 description: Erfahren Sie, wie Sie die Computer und Kubernetes-Cluster Ihrer Kunden außerhalb von Azure effektiv verwalten.
-ms.date: 09/22/2020
+ms.date: 03/12/2021
 ms.topic: how-to
-ms.openlocfilehash: 66a798265683045d7ff9f3d8d811141800d08f9b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: da7f016b507f8f876d27f6924f87f078a7806563
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91336614"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105563598"
 ---
 # <a name="manage-hybrid-infrastructure-at-scale-with-azure-arc"></a>Verwalten einer Hybridinfrastruktur im großen Stil mit Azure Arc
 
@@ -18,9 +18,9 @@ Als Dienstanbieter haben Sie möglicherweise mehrere Kundenmandanten in [Azure L
 
 Mit [Azure Arc-fähigen Servern](../../azure-arc/servers/overview.md) können Kunden Windows- und Linux-Computer, die außerhalb von Azure in ihrem Unternehmensnetzwerk gehostet werden, genauso verwalten wie native Azure-VMs. Durch das Verbinden eines Hybridcomputers mit Azure wird dieser vernetzt und als Ressource in Azure behandelt. Dienstanbieter können diese Nicht-Azure-Computer zusammen mit den Azure-Ressourcen ihrer Kunden verwalten.
 
-[Kubernetes mit Azure Arc-Aktivierung (Vorschau)](../../azure-arc/kubernetes/overview.md) ermöglicht Kunden, Kubernetes-Cluster innerhalb oder außerhalb von Azure anzufügen und zu konfigurieren. Wenn ein Kubernetes-Cluster an Azure Arc angefügt wird, wird er im Azure-Portal mit einer Azure Resource Manager-ID und einer verwalteten Identität angezeigt. Cluster sind an Azure-Standardabonnements angefügt, befinden sich in einer Ressourcengruppe und können wie jede andere Azure-Ressource Tags erhalten.
+Mithilfe von [Kubernetes mit Azure Arc-Unterstützung](../../azure-arc/kubernetes/overview.md) können Kunden Kubernetes-Cluster innerhalb oder außerhalb von Azure anfügen und konfigurieren. Wenn ein Kubernetes-Cluster an Azure Arc angefügt wird, wird er im Azure-Portal mit einer Azure Resource Manager-ID und einer verwalteten Identität angezeigt. Cluster sind an Azure-Standardabonnements angefügt, befinden sich in einer Ressourcengruppe und können wie jede andere Azure-Ressource Tags erhalten.
 
-Dieses Thema bietet eine Übersicht darüber, wie Dienstanbieter mit Azure Arc-fähigen Servern und Kubernetes mit Azure Arc-Aktivierung (Vorschau) auf skalierbare Weise die Hybridumgebung ihrer Kunden mit Sichtbarkeit für alle verwalteten Kundenmandanten verwalten können.
+In diesem Artikel finden Sie eine Übersicht darüber, wie Dienstanbieter mit Azure Arc-fähigen Servern und Kubernetes mit Azure Arc-Unterstützung auf skalierbare Weise die Hybridumgebung ihrer Kunden mit Sichtbarkeit für alle verwalteten Kundenmandanten verwalten können.
 
 > [!TIP]
 > Zwar beziehen wir uns in diesem Thema auf Dienstanbieter und Kunden, doch gelten diese Anweisungen auch für [Unternehmen, die Azure Lighthouse zum Verwalten mehrerer Mandanten verwenden](../concepts/enterprise.md).
@@ -33,24 +33,20 @@ Wenn Sie Ressourcen für ein delegiertes Abonnement im Azure-Portal anzeigen, we
 
 Beispielsweise können Sie [sicherstellen, dass dieselben Richtlinien auf allen Hybridcomputern der Kunden angewandt werden](../../azure-arc/servers/learn/tutorial-assign-policy-portal.md). Sie können auch Azure Security Center verwenden, um die Konformität in allen Hybridumgebungen Ihrer Kunden zu überwachen, oder [mithilfe von Azure Monitor Daten direkt von Ihren Hybridcomputern erfassen](../../azure-arc/servers/learn/tutorial-enable-vm-insights.md) und in einem Log Analytics-Arbeitsbereich anzeigen. [Erweiterungen für virtuelle Computer](../../azure-arc/servers/manage-vm-extensions.md) können auf Azure-fremden Windows- und Linux-VMs bereitgestellt werden, um die Verwaltung der Hybridcomputer des Kunden zu vereinfachen.
 
-## <a name="manage-hybrid-kubernetes-clusters-at-scale-with-azure-arc-enabled-kubernetes-preview"></a>Verwalten von Kubernetes-Hybridclustern im großen Stil mit Kubernetes mit Azure Arc-Aktivierung (Vorschau)
+## <a name="manage-hybrid-kubernetes-clusters-at-scale-with-azure-arc-enabled-kubernetes"></a>Verwalten von Kubernetes-Hybridclustern im großen Stil mithilfe von Kubernetes mit Azure Arc-Unterstützung
 
-> [!NOTE]
-> Kubernetes mit Azure Arc-Aktivierung befindet sich derzeit in der Vorschauphase. Es sollte derzeit nicht für Produktionsworkloads verwendet werden.
-
-Sie können Kubernetes-Cluster, die [mit dem Abonnement eines Kunden mit Azure Arc verbunden wurden](../../azure-arc/kubernetes/connect-cluster.md), genauso verwalten, als würden sie in Azure ausgeführt werden.
+Sie können Kubernetes-Cluster, die [mit dem Abonnement eines Kunden mit Azure Arc verbunden wurden](../../azure-arc/kubernetes/quickstart-connect-cluster.md), genauso verwalten, als würden sie in Azure ausgeführt werden.
 
 Wenn Ihr Kunde ein [Dienstprinzipalkonto zum Integrieren von Kubernetes-Clustern in Azure Arc](../../azure-arc/kubernetes/create-onboarding-service-principal.md) erstellt hat, können Sie Cluster über dieses Dienstprinzipalkonto integrieren und verwalten. Dies ist für Benutzer im Verwaltungsmandanten möglich, denen beim Integrieren des Abonnements mit dem Dienstprinzipalkonto [in Azure Lighthouse](onboard-customer.md) die integrierte Azure-Rolle „Kubernetes-Cluster – Azure Arc-Onboarding“ zugewiesen wurde.
 
-Sie können [Konfigurationen](../../azure-arc/kubernetes/use-gitops-connected-cluster.md) und [Helm-Charts](../../azure-arc/kubernetes/use-gitops-with-helm.md) mithilfe von GitOps für verbundene Cluster bereitstellen.
+Sie können [Konfigurationen](../../azure-arc/kubernetes/tutorial-use-gitops-connected-cluster.md) und [Helm-Charts](../../azure-arc/kubernetes/use-gitops-with-helm.md) mithilfe von GitOps für verbundene Cluster bereitstellen.
 
 Sie können auch verbundene Cluster mit Azure Monitor überwachen und [mithilfe von Azure Policy Clusterkonfigurationen im großen Stil anwenden](../../azure-arc/kubernetes/use-azure-policy.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erkunden Sie die Leitfäden für den schnellen Einstieg und die Beispiele im [GitHub-Repository zu Azure Arc](https://github.com/microsoft/azure_arc). 
+- Erkunden Sie die Leitfäden für den schnellen Einstieg und die Beispiele im [GitHub-Repository zu Azure Arc](https://github.com/microsoft/azure_arc).
 - Erfahren Sie, [welche Szenarien für Azure Arc-fähige Server unterstützt werden](../../azure-arc/servers/overview.md#supported-scenarios).
 - Erfahren Sie, [welche Kubernetes-Distributionen von Azure Arc unterstützt werden](../../azure-arc/kubernetes/overview.md#supported-kubernetes-distributions).
 - Erfahren Sie, wie Sie [eine Richtlinie im großen Stil bereitstellen](policy-at-scale.md).
 - Erfahren Sie, wie Sie [Azure Monitor-Protokolle im großen Stil verwenden](monitor-at-scale.md).
-

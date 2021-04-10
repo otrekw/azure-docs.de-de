@@ -4,10 +4,10 @@ description: Die Gerätebestand zeigt verschiedenste Geräteattribute an, die vo
 ms.date: 12/06/2020
 ms.topic: how-to
 ms.openlocfilehash: 4daec83f44a545d7837a7e73e847f56b1f5770e7
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104782094"
 ---
 # <a name="investigate-sensor-detections-in-a-device-inventory"></a>Grundlagen zu Sensorerkennungen in einem Gerätebestand

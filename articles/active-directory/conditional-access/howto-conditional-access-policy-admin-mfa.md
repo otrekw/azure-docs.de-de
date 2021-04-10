@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 08/03/2020
+ms.date: 03/04/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57826fcff03e79d5617c7eb69aac7d535d3c86f7
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 35178ecc9bc736bbaca3adc932022b15cc2fc956
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97915707"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102632083"
 ---
 # <a name="conditional-access-require-mfa-for-administrators"></a>Bedingter Zugriff: Vorschreiben der MFA für Administratoren
 
@@ -56,7 +56,7 @@ Die folgenden Schritte helfen bei der Erstellung einer Richtlinie für bedingten
 1. Wählen Sie **Neue Richtlinie**.
 1. Benennen Sie Ihre Richtlinie. Es wird empfohlen, dass Unternehmen einen aussagekräftigen Standard für die Namen ihrer Richtlinien erstellen.
 1. Wählen Sie unter **Zuweisungen** die Option **Benutzer und Gruppen** aus.
-   1. Wählen Sie unter **Einschließen** die Option **Verzeichnisrollen (Vorschau)** , und wählen Sie mindestens die folgenden Rollen aus:
+   1. Wählen Sie unter **Einschließen** die Option **Verzeichnisrollen** aus, und wählen Sie dann integrierte Rollen wie die folgenden aus:
       * Authentifizierungsadministrator
       * Rechnungsadministrator
       * Administrator für den bedingten Zugriff
@@ -69,12 +69,11 @@ Die folgenden Schritte helfen bei der Erstellung einer Richtlinie für bedingten
       * Benutzeradministrator
    
       > [!WARNING]
-      > Richtlinien für bedingten Zugriff unterstützen keine Benutzer, die einer [auf eine Verwaltungseinheit beschränkten](../roles/admin-units-assign-roles.md) Verzeichnisrolle zugewiesen sind. Das gleiche gilt für Benutzer, die Verzeichnisrollen zugewiesen sind, die sich direkt auf ein Objekt beziehen (z.B. über [benutzerdefinierte Rollen](../roles/custom-create.md)).
+      > Richtlinien für bedingten Zugriff unterstützen integrierte Rollen. Richtlinien für bedingten Zugriff werden nicht für andere Rollentypen erzwungen, einschließlich [Rollen einer administrativen Einheit](../roles/admin-units-assign-roles.md) oder [benutzerdefinierten Rollen](../roles/custom-create.md).
 
    1. Wählen Sie unter **Ausschließen** die Option **Benutzer und Gruppen** und dann die Konten für den Notfallzugriff Ihres Unternehmens aus. 
    1. Wählen Sie **Fertig** aus.
 1. Wählen Sie unter **Cloud-Apps oder -aktionen** > **Einschließen** die Option **Alle Cloud-Apps** und dann **Fertig** aus.
-1. Ändern Sie unter **Bedingungen** > **Client-Apps** den Wert von **Konfigurieren** in **Ja**, übernehmen Sie unter **Wählen Sie die Client-Apps aus, auf die diese Richtlinie angewendet wird** alle ausgewählten Standardeinstellungen, und wählen Sie **Fertig** aus.
 1. Wählen Sie unter **Zugriffssteuerung** > **Erteilen** die Option **Zugriff erteilen**, dann **Mehrstufige Authentifizierung erforderlich** und anschließend **Auswählen** aus.
 1. Bestätigen Sie die Einstellungen und legen Sie **Richtlinie aktivieren** auf **Ein** fest.
 1. Wählen Sie **Erstellen** aus, um die Richtlinie zu erstellen und zu aktivieren.

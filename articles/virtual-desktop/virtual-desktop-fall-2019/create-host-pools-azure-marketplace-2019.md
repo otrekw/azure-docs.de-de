@@ -3,15 +3,15 @@ title: 'Windows Virtual Desktop-Hostpool (klassisch) in Azure Marketplace: Azure
 description: Hier erfahren Sie, wie Sie einen Windows Virtual Desktop-Hostpool (klassisch) mit dem Azure Marketplace erstellen.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 03/30/2020
+ms.date: 03/31/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 04184a658ae1efd03afd3e920818eb5317bc7553
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: d7e0862bd7519f59602f1e769301614895bd6e09
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "88008592"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106121879"
 ---
 # <a name="tutorial-create-a-host-pool-in-windows-virtual-desktop-classic"></a>Tutorial: Erstellen eines Hostpools in Windows Virtual Desktop (klassisch)
 
@@ -80,10 +80,10 @@ Gehen Sie auf der Registerkarte zum **Konfigurieren virtueller Computer** wie fo
 1. Übernehmen Sie die Standardeinstellungen, oder passen Sie die Anzahl und Größe der VMs an.
 
     >[!NOTE]
-    >Wird die gewünschte VM-Größe nicht in der VM-Größenauswahl angezeigt, wurde sie noch nicht ins Azure Marketplace-Tool aufgenommen. Wenn Sie eine VM-Größe anfordern möchten, erstellen Sie im [Windows Virtual Desktop-UserVoice-Forum](https://windowsvirtualdesktop.uservoice.com/forums/921118-general) eine Anforderung, oder stimmen Sie dort für eine vorhandene Anforderung ab.
+    >Wird die gewünschte VM-Größe nicht in der VM-Größenauswahl angezeigt, wurde sie noch nicht ins Azure Marketplace-Tool aufgenommen.
 
-1. Geben Sie ein Namenspräfix für die virtuellen Computer ein. Wenn Sie also beispielsweise *prefix* eingeben, heißen die VMs **prefix-0**, **prefix-1** usw.
-1. Klicken Sie auf **Weiter: Virtual machine settings** (Weiter: VM-Einstellungen) aus.
+2. Geben Sie ein Namenspräfix für die virtuellen Computer ein. Wenn Sie also beispielsweise *prefix* eingeben, heißen die VMs **prefix-0**, **prefix-1** usw.
+3. Klicken Sie auf **Weiter: Virtual machine settings** (Weiter: VM-Einstellungen) aus.
 
 ### <a name="virtual-machine-settings"></a>Einstellungen des virtuellen Computers
 

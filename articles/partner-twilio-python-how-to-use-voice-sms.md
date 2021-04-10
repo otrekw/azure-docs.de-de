@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 02/19/2015
 ms.author: gwallace
 ms.custom: devx-track-python
-ms.openlocfilehash: ba93591ade730c4e9c9bdb6a42232e71e10d6469
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b4b9cd0db2a3a99aca80f42b6d69485a542bbadb
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000435"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104580948"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-python"></a>Verwenden von Twilio für Telefonie- und SMS-Funktionen in Python
 Dieser Leitfaden veranschaulicht die Ausführung allgemeiner Programmierungsaufgaben mit dem Twilio-API-Dienst in Azure. Die Szenarien behandeln das Tätigen eines Telefonanrufs und das Senden einer Kurznachricht (SMS). Weitere Informationen zu Twilio und zur Verwendung von Telefonie und SMS in Ihren Anwendungen finden Sie im Abschnitt [Nächste Schritte](#NextSteps) .
@@ -43,7 +43,7 @@ Schlüsselaspekte der Twilio API sind Twilio-Verben und die Twilio Markup Langua
 ### <a name="twilio-verbs"></a><a id="Verbs"></a>Twilio-Verben
 Die API verwendet Twilio-Verben; so weist beispielsweise das Verb **&lt;Say&gt;** Twilio an, eine Nachricht in einem Anruf akustisch zu übermitteln.
 
-Nachfolgend finden Sie eine Liste mit Twilio-Verben. Andere Verben und Funktionen werden in der [Dokumentation zur Twilio Markup Language][twiml]erläutert.
+Nachfolgend finden Sie eine Liste mit Twilio-Verben. Andere Verben und Funktionen werden in der [Twilio Markup Language documentation (Dokumentation zur Twilio Markup Language)][twiml] erläutert.
 
 * **&lt;Dial&gt;** : Verbindet den Anrufer mit einem anderen Telefon.
 * **&lt;Gather&gt;** : Erfasst Ziffern, die über die Telefontasten eingegeben werden.
@@ -86,7 +86,7 @@ Richten Sie [zuerst eine neue Azure-Linux-VM][azure_vm_setup] ein, die als Host 
 ### <a name="add-an-incoming-rule"></a>Eine eingehende Regel hinzufügen
   1. Navigieren Sie zur Seite „[Netzwerksicherheitsgruppe][Azure_nsg]“.
   2. Wählen Sie die mit Ihrem virtuellen Computer entsprechende Netzwerksicherheitsgruppe.
-  3. Hinzufügen einer **ausgehenden Regel** für **port 80**. Achten Sie darauf, dass Sie Eingehende von einer beliebigen Adresse zulassen.
+  3. Hinzufügen einer **Ausgehenden Regel** für **Port 80**. Achten Sie darauf, dass Sie Eingehende von einer beliebigen Adresse zulassen.
 
 ### <a name="set-the-dns-name-label"></a>DNS-Namensbezeichnung eingeben
   1. Navigieren Sie zur Seite [Die öffentlichen IP-Adressen][azure_ips].
@@ -151,6 +151,9 @@ call = client.calls.create(to=to_number,
                            url=url + urlencode({'Message': message}))
 print(call.sid)
 ```
+
+> [!IMPORTANT]
+> Telefonnummern sind mit "+" und Ländercode zu formatieren. Zum Beispiel: +16175551212 (E.164 Format). Twilio akzeptiert auch unformatierte US-Nummern. Beispiel: 415 oder 555-1212.
 
 Wie bereits erwähnt, verwendet dieser Code eine von Twilio bereitgestellte Website für die Rückgabe der TwiML-Antwort. Stattdessen können Sie die TwiML-Antwort auch von Ihrer eigenen Website bereitstellen lassen. Weitere Informationen dazu finden Sie unter [Bereitstellen von TwiML-Antworten von der eigenen Website](#howto_provide_twiml_responses).
 
@@ -243,7 +246,7 @@ Zusätzlich zu den hier gezeigten Beispielen bietet Twilio webbasierte APIs, mit
 ## <a name="next-steps"></a><a id="NextSteps"></a>Nächste Schritte
 Nachdem Sie nun mit den Grundlagen des Twilio-Dienstes vertraut sind, finden Sie unter diesen Links weitere Informationen:
 
-* [Twilio-Sicherheitsrichtlinien][twilio_security_guidelines]
+* [Twilio Security Guidelines (Twilio-Sicherheitsrichtlinien)][twilio_security_guidelines]
 * [Twilio-Anleitungen und Beispielcode][twilio_howtos]
 * [Twilio-Schnellstart-Tutorials][twilio_quickstarts]
 * [Twilio auf GitHub][twilio_on_github]
