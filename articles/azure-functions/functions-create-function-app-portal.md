@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie Ihre erste Azure-Funktion für die serverlose
 ms.topic: how-to
 ms.date: 03/26/2020
 ms.custom: devx-track-csharp, mvc, devcenter, cc996988-fb4f-47
-ms.openlocfilehash: 8d394a6f71fc5d31bd72a67a876a24a500a7cf01
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6ca187181d68d7924f97ebfac08e81dec77251e9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101732179"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103492116"
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>Erstellen Ihrer ersten Funktion im Azure-Portal
 
@@ -42,13 +42,11 @@ Erstellen Sie als Nächstes eine Funktion in der neuen Funktions-App.
 
 1. Wählen Sie im linken Menü des Fensters **Funktionen** die Option **Funktionen** aus, und wählen Sie dann im obersten Menü **Hinzufügen** aus. 
  
-1. Wählen Sie im Fenster **Neue Funktion** die Option **HTTP-Trigger** aus.
+1. Wählen Sie im Fenster **Funktion hinzufügen** die Vorlage **HTTP-Trigger** aus.
 
     ![Auswählen der HTTP-Triggerfunktion](./media/functions-create-first-azure-function/function-app-select-http-trigger.png)
 
-1. Akzeptieren Sie im Fenster **Neue Funktion** den Standardnamen für **Neue Funktion**, oder geben Sie einen neuen Namen ein. 
-
-1. Wählen Sie **Anonym** in der Dropdownliste **Autorisierungsstufe** aus, und wählen Sie dann **Funktion erstellen** aus.
+1. Wählen Sie unter **Vorlagendetails** für **Neue Funktion** den Eintrag `HttpExample` aus, wählen Sie aus der Dropdownliste **[Autorisierungsebene](functions-bindings-http-webhook-trigger.md#authorization-keys)** die Option **Anonym** aus, und klicken Sie dann auf **Hinzufügen**.
 
     Azure erstellt die HTTP-Triggerfunktion. Nun können Sie die neue Funktion ausführen, indem Sie eine HTTP-Anforderung senden.
 

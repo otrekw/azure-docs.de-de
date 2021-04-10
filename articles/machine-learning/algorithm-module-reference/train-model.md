@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 03/10/2021
-ms.openlocfilehash: 77927472dae6c8e7e6fddacf9088b479636edd37
-ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
+ms.openlocfilehash: 41b327e793c6b35a2b2aeae825c493a484d84fb4
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103224327"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105562765"
 ---
 # <a name="train-model-module"></a>Train Model-Modul
 
@@ -71,7 +71,7 @@ In Azure Machine Learning werden Machine Learning-Modelle in der Regel in einem 
 
 Die Interpretierbarkeit von Modellen bietet die Möglichkeit, das ML-Modell zu verstehen und die zugrunde liegende Basis für die Entscheidungsfindung auf eine Weise darzustellen, die für Menschen verständlich ist.
 
-Derzeit unterstützt das Modul **Modell trainieren** [die Verwendung des Interpretierbarkeitspakets zum Erläutern von ML-Modellen](https://docs.microsoft.com/azure/machine-learning/how-to-machine-learning-interpretability-aml#generate-feature-importance-values-via-remote-runs). Folgende integrierte Algorithmen werden unterstützt:
+Derzeit unterstützt das Modul **Modell trainieren** [die Verwendung des Interpretierbarkeitspakets zum Erläutern von ML-Modellen](../how-to-machine-learning-interpretability-aml.md#generate-feature-importance-values-via-remote-runs). Folgende integrierte Algorithmen werden unterstützt:
 
 - Lineare Regression
 - Regression mit neuronalen Netzwerken
@@ -87,7 +87,7 @@ Nach Abschluss der Pipelineausführung können Sie auf der rechten Seite des Mod
 
 ![Screenshot: Diagramme zur Modellerklärung](./media/module/train-model-explanations-tab.gif)
 
-Weitere Informationen zur Verwendung von Modellerklärungen in Azure Machine Learning finden Sie im Artikel zum [Interpretieren von ML-Modellen](https://docs.microsoft.com/azure/machine-learning/how-to-machine-learning-interpretability-aml#generate-feature-importance-values-via-remote-runs).
+Weitere Informationen zur Verwendung von Modellerklärungen in Azure Machine Learning finden Sie im Artikel zum [Interpretieren von ML-Modellen](../how-to-machine-learning-interpretability-aml.md#generate-feature-importance-values-via-remote-runs).
 
 ## <a name="results"></a>Ergebnisse
 
@@ -101,4 +101,4 @@ Nachdem das Modell trainiert wurde:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich den [Satz der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 
+Sehen Sie sich den [Satz der verfügbaren Module](module-reference.md) für Azure Machine Learning an.

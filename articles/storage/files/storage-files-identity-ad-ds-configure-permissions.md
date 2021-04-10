@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: rogarana
-ms.openlocfilehash: 02b8d72ab88f9eca2e1fac4858c14826dae57dbe
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 698b4ebedfc9b41e8c5732a0a81226a971d65585
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629171"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103470766"
 ---
 # <a name="part-three-configure-directory-and-file-level-permissions-over-smb"></a>Teil 3: Konfigurieren von Berechtigungen auf Verzeichnis- und Dateiebene über SMB 
 
@@ -93,9 +93,19 @@ Nachdem die Dateifreigabe mit dem Speicherkontoschlüssel eingebunden wurde, mü
 
 Wenn Sie über Verzeichnisse oder Dateien auf lokalen Dateiservern mit Windows-DACLs (Discretionary Access Control List) verfügen, die für die AD DS-Identitäten konfiguriert sind, können Sie diese in Azure Files speichern, indem Sie die ACLs mit herkömmlichen Tools zum Kopieren von Dateien wie Robocopy oder [Azure AzCopy V10.4.3 oder höher](https://github.com/Azure/azure-storage-azcopy/releases) beibehalten. Wenn Ihre Verzeichnisse und Dateien per Azure-Dateisynchronisierung in Azure Files ausgelagert werden, werden Ihre ACLs in ihrem nativen Format übertragen und gespeichert.
 
+### <a name="configure-windows-acls-with-icacls"></a>Konfigurieren von Windows-ACLs mit „icacls“
+
+Verwenden Sie den folgenden Windows-Befehl, um allen Verzeichnissen und Dateien unter der Dateifreigabe, einschließlich des Stammverzeichnisses, vollständige Berechtigungen zu erteilen. Denken Sie daran, die Platzhalterwerte in diesem Beispiel durch Ihre eigenen Werte zu ersetzen.
+
+```
+icacls <mounted-drive-letter>: /grant <user-email>:(f)
+```
+
+Weitere Informationen zur Verwendung von „icacls“ zum Festlegen von Windows-ACLs und zu den verschiedenen Arten von unterstützten Berechtigungen finden Sie in der [Befehlszeilenreferenz für „icacls“](/windows-server/administration/windows-commands/icacls).
+
 ### <a name="configure-windows-acls-with-windows-file-explorer"></a>Konfigurieren von Windows-ACLs mit dem Windows-Datei-Explorer
 
-Verwenden Sie den Windows-Datei-Explorer, um allen Verzeichnissen und Dateien unter der Dateifreigabe, einschließlich des Stammverzeichnisses, vollständige Berechtigungen zu erteilen.
+Verwenden Sie den Windows-Datei-Explorer, um allen Verzeichnissen und Dateien unter der Dateifreigabe, einschließlich des Stammverzeichnisses, vollständige Berechtigungen zu erteilen. Wenn Sie die AD-Domäneninformationen nicht ordnungsgemäß im Windows-Datei-Explorer laden können, liegt dies wahrscheinlich an der Vertrauenskonfiguration in Ihrer lokalen AD-Umgebung. Der Clientcomputer konnte den für die Azure Files-Authentifizierung registrierten AD-Domänencontroller nicht erreichen. Verwenden Sie in diesem Fall „icacls“ zum Konfigurieren von Windows-Zugriffssteuerungslisten.
 
 1. Öffnen Sie Windows-Explorer, klicken Sie mit der rechten Maustaste auf die Datei bzw. das Verzeichnis, und wählen Sie **Eigenschaften** aus.
 1. Wählen Sie die Registerkarte **Sicherheit** .
@@ -106,15 +116,6 @@ Verwenden Sie den Windows-Datei-Explorer, um allen Verzeichnissen und Dateien un
 1.    Wählen Sie auf der Registerkarte **Sicherheit** alle Berechtigungen aus, die Sie dem neuen Benutzer gewähren möchten.
 1.    Wählen Sie **Übernehmen**.
 
-### <a name="configure-windows-acls-with-icacls"></a>Konfigurieren von Windows-ACLs mit „icacls“
-
-Verwenden Sie den folgenden Windows-Befehl, um allen Verzeichnissen und Dateien unter der Dateifreigabe, einschließlich des Stammverzeichnisses, vollständige Berechtigungen zu erteilen. Denken Sie daran, die Platzhalterwerte in diesem Beispiel durch Ihre eigenen Werte zu ersetzen.
-
-```
-icacls <mounted-drive-letter>: /grant <user-email>:(f)
-```
-
-Weitere Informationen zur Verwendung von „icacls“ zum Festlegen von Windows-ACLs und zu den verschiedenen Arten von unterstützten Berechtigungen finden Sie in der [Befehlszeilenreferenz für „icacls“](/windows-server/administration/windows-commands/icacls).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

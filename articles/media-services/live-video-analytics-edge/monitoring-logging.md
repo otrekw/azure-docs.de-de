@@ -3,12 +3,12 @@ title: 'Überwachung und Protokollierung: Azure'
 description: Dieser Artikel bietet eine Übersicht der Überwachung und Protokollierung in Live Video Analytics in IoT Edge.
 ms.topic: reference
 ms.date: 04/27/2020
-ms.openlocfilehash: e81b1e98fb30bb8876c78c8c911585f5448db8f2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 08b2f5cce80581d71ce73e97ab30900aa8957c77
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101730240"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105564481"
 ---
 # <a name="monitoring-and-logging"></a>Überwachung und Protokollierung
 
@@ -312,7 +312,7 @@ Führen Sie die folgenden Schritte aus, um die Erfassung von Metriken aus dem Mo
    Wechseln Sie in diesem Fall im Azure-Portal zum IoT-Hub, und wählen Sie im linken Bereich **Metriken** aus. Die Metriken sollten dort angezeigt werden.
 
 ### <a name="log-analytics-metrics-collection"></a>Metrikerfassung in Log Analytics
-Wenn Sie den [Prometheus-Endpunkt](https://prometheus.io/docs/practices/naming/) zusammen mit [Log Analytics](https://docs.microsoft.com/azure/azure-monitor/log-query/log-analytics-tutorial) verwenden, können Sie [Metriken generieren und überwachen](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported), z. B. Nutzungsdaten zu CPUPercent oder MemoryUsedPercent.   
+Wenn Sie den [Prometheus-Endpunkt](https://prometheus.io/docs/practices/naming/) zusammen mit [Log Analytics](../../azure-monitor/logs/log-analytics-tutorial.md) verwenden, können Sie [Metriken generieren und überwachen](../../azure-monitor/essentials/metrics-supported.md), z. B. Nutzungsdaten zu CPUPercent oder MemoryUsedPercent.   
 
 > [!NOTE]
 > Bei der folgenden Konfiguration werden keine Protokolle erfasst, **nur Metriken**. Es ist möglich, das Erfassungsmodul so zu erweitern, dass auch Protokolle erfasst und hochgeladen werden.

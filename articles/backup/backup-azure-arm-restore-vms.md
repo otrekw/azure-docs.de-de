@@ -4,12 +4,12 @@ description: Wiederherstellen eines virtuellen Azure-Computers mithilfe eines Wi
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: c15b2dc39202c6f8386031bcf055688aa2d279df
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 83681d2bb3622857fb9141a3cec79d92d278a814
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101722686"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105568748"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Wiederherstellen von Azure-VM-Daten im Azure-Portal
 
@@ -181,7 +181,7 @@ Aktuell beträgt die [RPO](azure-backup-glossary.md#rpo-recovery-point-objective
 
 [An Azure-Zonen angeheftete VMs](../virtual-machines/windows/create-portal-availability-zone.md) können in beliebigen [Verfügbarkeitszonen](../availability-zones/az-overview.md) in derselben Region wiederhergestellt werden.
 
-Bei der Wiederherstellung wird die Option **Verfügbarkeitszone** angezeigt. Als erster Eintrag erscheint Ihre Standardzone. Um eine andere Zone auszuwählen, wählen Sie die Nummer der gewünschten Zone aus. Wenn die angeheftete Zone nicht verfügbar ist, können Sie die Daten nicht in einer anderen Zone wiederherstellen, da die gesicherten Daten nicht zonenbezogen repliziert werden.
+Bei der Wiederherstellung wird die Option **Verfügbarkeitszone** angezeigt. Als erster Eintrag erscheint Ihre Standardzone. Um eine andere Zone auszuwählen, wählen Sie die Nummer der gewünschten Zone aus. Wenn die angeheftete Zone nicht verfügbar ist, können Sie die Daten nicht in einer anderen Zone wiederherstellen, da die gesicherten Daten nicht zonenbezogen repliziert werden. Die Wiederherstellung in Verfügbarkeitszonen ist nur über Wiederherstellungspunkte der Tresorebene möglich.
 
 ![Auswahl der Verfügbarkeitszone](./media/backup-azure-arm-restore-vms/cross-zonal-restore.png)
 
@@ -249,10 +249,10 @@ Nach dem Wiederherstellen einer VM gilt es, eine Reihe von Dingen zu beachten:
 - Erweiterungen, die während der Konfiguration der Sicherung installiert, aber nicht aktiviert sind. Falls ein Problem auftritt, installieren Sie die Erweiterungen neu.
 - Wenn die gesicherte VM eine statische IP-Adresse hatte, hat die wiederhergestellte VM eine dynamische IP-Adresse, um Konflikte zu vermeiden. Sie können [eine statische IP-Adresse zur wiederhergestellten VM hinzufügen](/powershell/module/az.network/set-aznetworkinterfaceipconfig#description).
 - Für eine wiederhergestellte VM gibt es keine Verfügbarkeitsgruppe. Falls Sie aber die Option „Datenträger wiederherstellen“ verwenden, können Sie [eine Verfügbarkeitsgruppe](../virtual-machines/windows/tutorial-availability-sets.md) angeben, wenn Sie eine VM vom Datenträger aus mithilfe der bereitgestellten Vorlage oder von PowerShell erstellen.
-- Bei Verwendung einer Cloud-Init-basierten Linux-Verteilung wie etwa Ubuntu wird das Kennwort aus Sicherheitsgründen nach der Wiederherstellung blockiert. Verwenden Sie zum [Zurücksetzen des Kennworts](../virtual-machines/troubleshooting/reset-password.md) die VMAccess-Erweiterung auf dem wiederhergestellten virtuellen Computer. Wir empfehlen, bei diesen Verteilungen SSH-Schlüssel zu verwenden, sodass Sie das Kennwort nach der Wiederherstellung nicht zurücksetzen müssen.
+- Bei Verwendung einer Cloud-Init-basierten Linux-Verteilung wie etwa Ubuntu wird das Kennwort aus Sicherheitsgründen nach der Wiederherstellung blockiert. Verwenden Sie zum [Zurücksetzen des Kennworts](/troubleshoot/azure/virtual-machines/reset-password) die VMAccess-Erweiterung auf dem wiederhergestellten virtuellen Computer. Wir empfehlen, bei diesen Verteilungen SSH-Schlüssel zu verwenden, sodass Sie das Kennwort nach der Wiederherstellung nicht zurücksetzen müssen.
 - Wenn Sie nach der Wiederherstellung nicht auf einen virtuellen Computer zugreifen können, weil die Beziehung zwischen ihm und dem Domänencontroller getrennt wurde, führen Sie die folgenden Schritte aus, um den virtuellen Computer aufzurufen:
   - Fügen Sie den Betriebssystem-Datenträger als Datenträger an eine wiederhergestellte VM an.
-  - Wenn der Azure-Agent nicht reagiert, installieren Sie den VM-Agent manuell, indem Sie diesem [Link](../virtual-machines/troubleshooting/install-vm-agent-offline.md) folgen.
+  - Wenn der Azure-Agent nicht reagiert, installieren Sie den VM-Agent manuell, indem Sie diesem [Link](/troubleshoot/azure/virtual-machines/install-vm-agent-offline) folgen.
   - Aktivieren des Zugriffs auf die serielle Konsole auf der VM, um Befehlszeilenzugriff auf die VM zu ermöglichen
 
   ```cmd

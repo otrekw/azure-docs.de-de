@@ -4,14 +4,14 @@ description: Es wird beschrieben, wie Sie eine C#-ASP.NET-App in Azure mit Azure
 ms.assetid: 03c584f1-a93c-4e3d-ac1b-c82b50c75d3e
 ms.devlang: csharp
 ms.topic: tutorial
-ms.date: 06/25/2018
+ms.date: 03/18/2021
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18
-ms.openlocfilehash: a427fbc6fad1566ae10e11b61de981aded32e64a
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 533bd817b704db9976624b356a9950a9c48b8339
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "92000350"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104605976"
 ---
 # <a name="tutorial-deploy-an-aspnet-app-to-azure-with-azure-sql-database"></a>Tutorial: Bereitstellen einer ASP.NET-App in Azure mit Azure SQL-Datenbank
 
@@ -42,49 +42,56 @@ Falls Sie Visual Studio bereits installiert haben, können Sie die Workloads in 
 
 ## <a name="download-the-sample"></a>Herunterladen des Beispiels
 
-* [Laden Sie das Beispielprojekt](https://github.com/Azure-Samples/dotnet-sqldb-tutorial/archive/master.zip) herunter.
-* Extrahieren (entzippen) Sie die Datei *dotnet-sqldb-tutorial-master.zip*.
+1. [Laden Sie das Beispielprojekt](https://github.com/Azure-Samples/dotnet-sqldb-tutorial/archive/master.zip) herunter.
+
+1. Extrahieren (entzippen) Sie die Datei *dotnet-sqldb-tutorial-master.zip*.
 
 Das Beispielprojekt enthält eine einfache [ASP.NET MVC](https://www.asp.net/mvc)-CRUD-App (Create-Read-Update-Delete, Erstellen-Lesen-Aktualisieren-Löschen), die auf [Entity Framework Code First](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application) basiert.
 
 ### <a name="run-the-app"></a>Ausführen der App
 
-Öffnen Sie die Datei *dotnet-sqldb-tutorial-master/DotNetAppSqlDb.sln* in Visual Studio.
+1. Öffnen Sie die Datei *dotnet-sqldb-tutorial-master/DotNetAppSqlDb.sln* in Visual Studio.
 
-Geben Sie `Ctrl+F5` ein, um die App ohne Debuggen auszuführen. Die App wird im Standardbrowser angezeigt. Wählen Sie den Link **Neu erstellen**, und erstellen Sie einige *Aufgaben*-Elemente.
+1. Geben Sie `Ctrl+F5` ein, um die App ohne Debuggen auszuführen. Die App wird im Standardbrowser angezeigt.
 
-![Dialogfeld "Neues ASP.NET-Projekt"](media/app-service-web-tutorial-dotnet-sqldatabase/local-app-in-browser.png)
+1. Wählen Sie den Link **Neu erstellen**, und erstellen Sie einige *Aufgaben*-Elemente.
 
-Testen Sie die Links **Bearbeiten**, **Details** und **Löschen**.
+    ![Dialogfeld "Neues ASP.NET-Projekt"](media/app-service-web-tutorial-dotnet-sqldatabase/local-app-in-browser.png)
+
+1. Testen Sie die Links **Bearbeiten**, **Details** und **Löschen**.
 
 Die App nutzt einen Datenbankkontext, um die Verbindung mit der Datenbank herzustellen. In diesem Beispiel wird im Datenbankkontext eine Verbindungszeichenfolge mit dem Namen `MyDbConnection` verwendet. Die Verbindungszeichenfolge wird in der Datei *Web.config* festgelegt, und die Datei *Models/MyDatabaseContext.cs* enthält einen Verweis darauf. Der Name der Verbindungszeichenfolge wird später im Tutorial verwendet, um die Azure-App mit einer Azure SQL-Datenbank zu verbinden.
 
 ## <a name="publish-aspnet-application-to-azure"></a>Veröffentlichen einer ASP.NET-Anwendung in Azure
 
-Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt **DotNetAppSqlDb**, und wählen Sie **Veröffentlichen** aus.
+1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt **DotNetAppSqlDb**, und wählen Sie **Veröffentlichen** aus.
 
-![Veröffentlichen über den Projektmappen-Explorer](./media/app-service-web-tutorial-dotnet-sqldatabase/solution-explorer-publish.png)
+    ![Veröffentlichen über den Projektmappen-Explorer](./media/app-service-web-tutorial-dotnet-sqldatabase/solution-explorer-publish.png)
 
-Wählen Sie als Ziel **Azure** aus, klicken Sie auf „Weiter“, und vergewissern Sie sich, dass **Azure App Service (Windows)** ausgewählt ist. Klicken Sie anschließend erneut auf „Weiter“.
+1. Wählen Sie als Ziel **Azure** aus, und klicken Sie auf **Weiter**.
 
-![Veröffentlichen über die Projektübersichtsseite](./media/app-service-web-tutorial-dotnet-sqldatabase/publish-to-app-service.png)
+1. Vergewissern Sie sich, dass **Azure App Service (Windows)** ausgewählt ist, und klicken Sie auf **Veröffentlichen**.
 
-### <a name="sign-in-to-azure"></a>Anmelden bei Azure
+#### <a name="sign-in-and-add-an-app"></a>Anmelden und Hinzufügen einer App
 
-Klicken Sie im Dialogfeld **Veröffentlichen** im Dropdownmenü des Konto-Managers auf **Konto hinzufügen**, und melden Sie sich dann bei Ihrem Azure-Abonnement an. Falls Sie bereits bei einem Microsoft-Konto angemeldet sind, vergewissern Sie sich, dass dieses Konto Ihr Azure-Abonnement enthält. Wenn das Microsoft-Konto, bei dem Sie angemeldet sind, nicht Ihr Azure-Abonnement enthält, klicken Sie darauf, um das korrekte Konto hinzuzufügen.
+1. Klicken Sie im Dialogfeld **Veröffentlichen** im Dropdownmenü des Konto-Managers auf **Konto hinzufügen**.
 
-![Anmelden bei Azure](./media/app-service-web-tutorial-dotnet-sqldatabase/sign-in-azure.png)
+1. Melden Sie sich bei Ihrem Azure-Abonnement an. Falls Sie bereits bei einem Microsoft-Konto angemeldet sind, vergewissern Sie sich, dass dieses Konto Ihr Azure-Abonnement enthält. Wenn das Microsoft-Konto, bei dem Sie angemeldet sind, nicht Ihr Azure-Abonnement enthält, klicken Sie darauf, um das korrekte Konto hinzuzufügen.
 
-> [!NOTE]
-> Wenn Sie bereits angemeldet sind, wählen Sie noch nicht **Erstellen** aus.
+1. Klicken Sie im Bereich **App Service-Instanzen** auf **+** .
 
-### <a name="configure-the-web-app-name"></a>Konfigurieren des Web-App-Namens
+    ![Anmelden bei Azure](./media/app-service-web-tutorial-dotnet-sqldatabase/sign-in-azure.png)
+
+#### <a name="configure-the-web-app-name"></a>Konfigurieren des Web-App-Namens
 
 Sie können den generierten Web-App-Namen beibehalten oder in einen anderen eindeutigen Namen ändern (gültige Zeichen `a-z`, `0-9` und `-`). Der Web-App-Name wird als Teil der Standard-URL für Ihre App verwendet (`<app_name>.azurewebsites.net`, wobei `<app_name>` Ihr Web-App-Name ist). Der Web-App-Name muss in Azure über alle Apps hinweg eindeutig sein.
 
+> [!NOTE]
+> Wählen Sie noch nicht **Erstellen** aus.
+
 ![Dialogfeld „App Service erstellen“](media/app-service-web-tutorial-dotnet-sqldatabase/wan.png)
 
-### <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
+#### <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
 [!INCLUDE [resource-group](../../includes/resource-group.md)]
 
@@ -92,17 +99,15 @@ Sie können den generierten Web-App-Namen beibehalten oder in einen anderen eind
 
    ![Klicken Sie neben „Ressourcengruppe“ auf „Neu“.](media/app-service-web-tutorial-dotnet-sqldatabase/new_rg2.png)
 
-2. Geben Sie der Ressourcengruppe den Namen **myResourceGroup**.
+1. Geben Sie der Ressourcengruppe den Namen **myResourceGroup**.
 
-### <a name="create-an-app-service-plan"></a>Wie erstelle ich einen Plan?
+#### <a name="create-an-app-service-plan"></a>Wie erstelle ich einen Plan?
 
 [!INCLUDE [app-service-plan](../../includes/app-service-plan.md)]
 
-1. Klicken Sie neben **App Service-Plan** auf **Neu**.
+1. Klicken Sie neben **Hostingplan** auf **Neu**.
 
-2. Konfigurieren Sie den neuen App Service-Plan im Dialogfeld **App Service-Plan konfigurieren** mit den folgenden Einstellungen:
-
-   ![App Service-Plan erstellen](./media/app-service-web-tutorial-dotnet-sqldatabase/configure-app-service-plan.png)
+1. Konfigurieren Sie den neuen App Service-Plan im Dialogfeld **App Service-Plan konfigurieren** mit den folgenden Einstellungen, und klicken Sie auf **OK**:
 
    | Einstellung  | Vorgeschlagener Wert | Weitere Informationen finden Sie unter |
    | ----------------- | ------------ | ----|
@@ -110,24 +115,32 @@ Sie können den generierten Web-App-Namen beibehalten oder in einen anderen eind
    |**Location**| Europa, Westen | [Azure-Regionen](https://azure.microsoft.com/regions/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) |
    |**Größe**| Kostenlos | [Tarife](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)|
 
-3. Im Dialogfeld **Veröffentlichen** werden die von Ihnen konfigurierten Ressourcen angezeigt. Klicken Sie auf **Fertig stellen**.
+   ![App Service-Plan erstellen](./media/app-service-web-tutorial-dotnet-sqldatabase/configure-app-service-plan.png)
+
+1. Klicken Sie auf **Erstellen**, und warten Sie, bis die Azure-Ressourcen erstellt werden.
+
+1. Im Dialogfeld **Veröffentlichen** werden die von Ihnen konfigurierten Ressourcen angezeigt. Klicken Sie auf **Fertig stellen**.
 
    ![Erstellte Ressourcen](media/app-service-web-tutorial-dotnet-sqldatabase/app_svc_plan_done.png)
 
 
-### <a name="create-a-server"></a>Erstellen eines Servers
+#### <a name="create-a-server-and-database"></a>Erstellen eines Servers und einer Datenbank
 
 Bevor Sie eine Datenbank erstellen, benötigen Sie einen [logischen SQL-Server](../azure-sql/database/logical-servers.md). Ein logischer Server ist ein logisches Konstrukt, das eine Gruppe von Datenbanken enthält, die als Gruppe verwaltet werden.
 
-1. Klicken Sie unter **Verbundene Dienste** neben „SQL Server-Datenbank“ auf **Konfigurieren**.
+1. Scrollen Sie im Dialogfeld **Veröffentlichen** nach unten zum Abschnitt **Dienstabhängigkeiten**. Klicken Sie neben **SQL Server-Datenbank** auf **Konfigurieren**.
 
-   ![Erstellen einer SQL-Datenbank](media/app-service-web-tutorial-dotnet-sqldatabase/web-app-name.png)
+   ![Konfigurieren der SQL-Datenbank-Abhängigkeit](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sqldb-dependency.png)
 
-2. Klicken Sie im Dialogfeld **Azure SQL-Datenbank** neben **Datenbankserver** auf **Neu**.
+1. Wählen Sie **Azure SQL-Datenbank** aus, und klicken Sie auf **Weiter**.
 
-   Ein eindeutiger Servername wird generiert. Dieser Name wird als Teil der Standard-URL für Ihren Server `<server_name>.database.windows.net` verwendet. Er muss in Azure SQL über alle Server hinweg eindeutig sein. Sie können den Servernamen ändern, aber behalten Sie den generierten Wert für dieses Tutorial bei.
+1. Klicken Sie im Dialogfeld **Azure SQL-Datenbank konfigurieren** auf **+** .
 
-3. Fügen Sie den Benutzernamen und das Kennwort eines Administrators hinzu. Informationen zu den Anforderungen an die Komplexität von Kennwörtern finden Sie unter [Kennwortrichtlinie](/sql/relational-databases/security/password-policy).
+1. Klicken Sie neben **Datenbankserver** auf **Neu**.
+
+   Ein Servername wird generiert. Dieser Name wird als Teil der Standard-URL für Ihren Server `<server_name>.database.windows.net` verwendet. Er muss in Azure SQL über alle Server hinweg eindeutig sein. Sie können den Servernamen ändern, aber behalten Sie den generierten Wert für dieses Tutorial bei.
+
+1. Fügen Sie den Benutzernamen und das Kennwort eines Administrators hinzu. Informationen zu den Anforderungen an die Komplexität von Kennwörtern finden Sie unter [Kennwortrichtlinie](/sql/relational-databases/security/password-policy).
 
    Merken Sie sich diesen Benutzernamen und das Kennwort. Sie benötigen diese Angaben später zum Verwalten des Servers.
 
@@ -136,70 +149,73 @@ Bevor Sie eine Datenbank erstellen, benötigen Sie einen [logischen SQL-Server](
    > [!IMPORTANT]
    > Ihr Kennwort ist in den Verbindungszeichenfolgen zwar maskiert (sowohl in Visual Studio als auch in App Service), aber allein die Tatsache, dass es irgendwo gespeichert ist, macht die App bereits anfälliger für Angriffe. App Service kann dieses Risiko durch die Verwendung [verwalteter Dienstidentitäten](overview-managed-identity.md) beseitigen, da Geheimnisse dann nicht mehr im Code oder in der App-Konfiguration gespeichert werden müssen. Weitere Informationen finden Sie in den [nächsten Schritten](#next-steps).
 
-4. Klicken Sie auf **OK**. Schließen Sie das Dialogfeld **SQL-Datenbank konfigurieren** noch nicht.
+1. Klicken Sie auf **OK**.
 
-### <a name="create-a-database-in-azure-sql-database"></a>Erstellen einer Datenbank in Azure SQL-Datenbank
-
-1. Gehen Sie im Dialogfeld **Azure SQL-Datenbank** wie folgt vor:
-
-   * Behalten Sie den standardmäßig generierten **Datenbanknamen** bei.
-   * Klicken Sie auf **Erstellen**.
+1. Behalten Sie im Dialogfeld **Azure SQL-Datenbank** den standardmäßig generierten **Datenbanknamen** bei. Wählen Sie **Erstellen** aus, und warten Sie, bis die Datenbankressourcen erstellt werden.
 
     ![Konfigurieren der Datenbank](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database.png)
 
-2. Geben Sie unter **Name der Datenbankverbindungszeichenfolge** die Zeichenfolge _MyDbConnection_ ein. Dieser Name muss mit der Verbindungszeichenfolge übereinstimmen, auf die in _Models/MyDatabaseContext.cs_ verwiesen wird.
+#### <a name="configure-database-connection"></a>Konfigurieren der Datenbankverbindung
 
-3. Geben Sie den Benutzernamen und das Kennwort des Administrators, die Sie in Schritt 3 [Erstellen eines Servers](#create-a-server) verwendet haben, als Datenbankbenutzernamen und Datenbankkennwort ein.
+1. Wenn der Assistent die Erstellung der Datenbankressourcen abgeschlossen hat, klicken Sie auf **Weiter**.
+
+1. Geben Sie unter **Name der Datenbankverbindungszeichenfolge** die Zeichenfolge _MyDbConnection_ ein. Dieser Name muss mit der Verbindungszeichenfolge übereinstimmen, auf die in _Models/MyDatabaseContext.cs_ verwiesen wird.
+
+1. Geben Sie unter **Benutzername für Datenbankverbindung** und **Kennwort für Datenbankverbindung** den Benutzernamen und das Kennwort des Administrators ein, die Sie unter [Erstellen eines Servers](#create-a-server-and-database) verwendet haben.
+
+1. Vergewissern Sie sich, dass **Azure-App-Einstellungen** ausgewählt ist, und klicken Sie auf **Fertig stellen**.
 
     ![Konfigurieren der Datenbankverbindungszeichenfolge](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database-connection.png)
 
-4. Wählen Sie **Fertig stellen** aus.
+1. Warten Sie, bis der Konfigurations-Assistent abgeschlossen ist, und klicken Sie auf **Schließen**.
 
-Nachdem der Assistent die Erstellung der Azure-Ressourcen abgeschlossen hat, klicken Sie auf **Veröffentlichen**, um Ihre ASP.NET-App in Azure bereitzustellen. Ihr Standardbrowser wird mit der URL für die bereitgestellte App gestartet.
+#### <a name="deploy-your-aspnet-app"></a>Bereitstellen der ASP.NET-App
 
-Fügen Sie einige Aufgaben hinzu.
+1. Scrollen Sie auf der Registerkarte **Veröffentlichen** nach oben, und klicken Sie auf **Veröffentlichen**. Nach der Bereitstellung Ihrer ASP.NET-App in Azure Ihr Standardbrowser wird mit der URL für die bereitgestellte App gestartet.
 
-![Veröffentlichte ASP.NET-Anwendung in Azure-App](./media/app-service-web-tutorial-dotnet-sqldatabase/azure-app-in-browser.png)
+1. Fügen Sie einige Aufgaben hinzu.
 
-Glückwunsch! Ihre datengesteuerte ASP.NET-Anwendung wird live in Azure App Service ausgeführt.
+    ![Veröffentlichte ASP.NET-Anwendung in Azure-App](./media/app-service-web-tutorial-dotnet-sqldatabase/azure-app-in-browser.png)
+
+    Glückwunsch! Ihre datengesteuerte ASP.NET-Anwendung wird live in Azure App Service ausgeführt.
 
 ## <a name="access-the-database-locally"></a>Lokaler Zugriff auf die Datenbank
 
-In Visual Studio können Sie Ihre neue Datenbank bequem im **SQL Server-Objekt-Explorer** überprüfen und verwalten.
+Mit Visual Studio können Sie Ihre neue Datenbank in Azure bequem im **SQL Server-Objekt-Explorer** überprüfen und verwalten. Bei der neuen Datenbank ist bereits die Firewall für die von Ihnen erstellte App Service-App geöffnet. Um darauf von Ihrem lokalen Computer aus (etwa über Visual Studio) zugreifen zu können, müssen Sie eine Firewall für die öffentliche IP-Adresse Ihres lokalen Computers öffnen. Wenn Ihre öffentliche IP-Adresse von Ihrem Internetdienstanbieter geändert wird, müssen Sie die Firewall neu konfigurieren, um auf die Azure-Datenbank zugreifen zu können.
 
-### <a name="create-a-database-connection"></a>Erstellen einer Datenbankverbindung
+#### <a name="create-a-database-connection"></a>Erstellen einer Datenbankverbindung
 
-Wählen Sie im Menü **Ansicht** die Option **SQL Server-Objekt-Explorer**.
+1. Wählen Sie im Menü **Ansicht** die Option **SQL Server-Objekt-Explorer**.
 
-Klicken Sie oben im **SQL Server-Objekt-Explorer** auf die Schaltfläche **SQL Server hinzufügen**.
+1. Klicken Sie oben im **SQL Server-Objekt-Explorer** auf die Schaltfläche **SQL Server hinzufügen**.
 
-### <a name="configure-the-database-connection"></a>Konfigurieren der Datenbankverbindung
+#### <a name="configure-the-database-connection"></a>Konfigurieren der Datenbankverbindung
 
-Erweitern Sie im Dialogfeld **Verbinden** den Knoten **Azure**. Hier sind alle Ihre Instanzen von SQL-Datenbank in Azure aufgeführt.
+1. Erweitern Sie im Dialogfeld **Verbinden** den Knoten **Azure**. Hier sind alle Ihre Instanzen von SQL-Datenbank in Azure aufgeführt.
 
-Wählen Sie die Datenbank aus, die Sie zuvor erstellt haben. Die Verbindung, die Sie zuvor erstellt haben, wird automatisch im unteren Bereich angezeigt.
+1. Wählen Sie die Datenbank aus, die Sie zuvor erstellt haben. Die Verbindung, die Sie zuvor erstellt haben, wird automatisch im unteren Bereich angezeigt.
 
-Geben Sie das Administratorkennwort für die Datenbank ein, das Sie zuvor erstellt haben, und klicken Sie auf **Verbinden**.
+1. Geben Sie das Administratorkennwort für die Datenbank ein, das Sie zuvor erstellt haben, und klicken Sie auf **Verbinden**.
 
-![Datenbankverbindung in Visual Studio konfigurieren](./media/app-service-web-tutorial-dotnet-sqldatabase/connect-to-sql-database.png)
+    ![Datenbankverbindung in Visual Studio konfigurieren](./media/app-service-web-tutorial-dotnet-sqldatabase/connect-to-sql-database.png)
 
-### <a name="allow-client-connection-from-your-computer"></a>Zulassen der Clientverbindung auf dem Computer
+#### <a name="allow-client-connection-from-your-computer"></a>Zulassen der Clientverbindung auf dem Computer
 
-Das Dialogfeld zum Erstellen einer neuen **Firewallregel**wird angezeigt. Standardmäßig lässt ein Server nur Verbindungen von Azure-Diensten wie Ihrer Azure-App mit seiner Datenbank zu. Erstellen Sie zum Herstellen einer Verbindung mit Ihrer Datenbank von außerhalb von Azure aus eine Firewallregel auf Serverebene. Mit der Firewallregel wird die öffentliche IP-Adresse Ihres lokalen Computers zugelassen.
+Das Dialogfeld zum Erstellen einer neuen **Firewallregel** wird angezeigt. Standardmäßig lässt ein Server nur Verbindungen von Azure-Diensten wie Ihrer Azure-App mit seiner Datenbank zu. Erstellen Sie zum Herstellen einer Verbindung mit Ihrer Datenbank von außerhalb von Azure aus eine Firewallregel auf Serverebene. Mit der Firewallregel wird die öffentliche IP-Adresse Ihres lokalen Computers zugelassen.
 
 Das Dialogfeld ist bereits mit der öffentlichen IP-Adresse des Computers ausgefüllt.
 
-Stellen Sie sicher, dass **Meine IP-Clientadresse hinzufügen** ausgewählt ist, und klicken Sie auf **OK**.
+1. Stellen Sie sicher, dass **Meine IP-Clientadresse hinzufügen** ausgewählt ist, und klicken Sie auf **OK**.
 
-![Erstellen einer Firewallregel](./media/app-service-web-tutorial-dotnet-sqldatabase/sql-set-firewall.png)
+    ![Erstellen einer Firewallregel](./media/app-service-web-tutorial-dotnet-sqldatabase/sql-set-firewall.png)
 
-Sobald das Erstellen der Firewalleinstellung in Visual Studio für die SQL-Datenbankinstanz abgeschlossen wurde, wird die Verbindung im **SQL Server-Objekt-Explorer** angezeigt.
+    Sobald das Erstellen der Firewalleinstellung in Visual Studio für die SQL-Datenbankinstanz abgeschlossen wurde, wird die Verbindung im **SQL Server-Objekt-Explorer** angezeigt.
 
-Hier können Sie häufige Datenbankvorgänge ausführen, und z.B. Abfragen ausführen, Ansichten und gespeicherte Prozeduren erstellen usw.
+    Hier können Sie häufige Datenbankvorgänge ausführen, und z.B. Abfragen ausführen, Ansichten und gespeicherte Prozeduren erstellen usw.
 
-Erweitern Sie Ihre Verbindung unter **Datenbanken** >  **&lt;Ihre Datenbank>**  > **Tabellen**. Klicken Sie mit der rechten Maustaste auf die Tabelle `Todoes`, und wählen Sie **Daten anzeigen**.
+1. Erweitern Sie Ihre Verbindung unter **Datenbanken** >  **&lt;Ihre Datenbank>**  > **Tabellen**. Klicken Sie mit der rechten Maustaste auf die Tabelle `Todoes`, und wählen Sie **Daten anzeigen**.
 
-![SQL-Datenbank-Objekte ansehen](./media/app-service-web-tutorial-dotnet-sqldatabase/explore-sql-database.png)
+    ![SQL-Datenbank-Objekte ansehen](./media/app-service-web-tutorial-dotnet-sqldatabase/explore-sql-database.png)
 
 ## <a name="update-app-with-code-first-migrations"></a>Aktualisieren der App mit Code First-Migrationen
 
@@ -207,121 +223,119 @@ Sie können die vertrauten Tools in Visual Studio verwenden, um Ihre Datenbank u
 
 Weitere Informationen zur Verwendung von Entity Framework Code First-Migrationen finden Sie unter [Getting Started with Entity Framework 6 Code First using MVC 5](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application) (Erste Schritte mit Entity Framework 6 Code First per MVC 5).
 
-### <a name="update-your-data-model"></a>Aktualisieren Sie des Datenmodells
+#### <a name="update-your-data-model"></a>Aktualisieren Sie des Datenmodells
 
 Öffnen Sie _Models\Todo.cs_ im Code-Editor. Fügen Sie der `ToDo`-Klasse die folgende Eigenschaft hinzu:
 
 ```csharp
 public bool Done { get; set; }
 ```
-
-### <a name="run-code-first-migrations-locally"></a>Lokales Ausführen von Code First-Migrationen
+    
+#### <a name="run-code-first-migrations-locally"></a>Lokales Ausführen von Code First-Migrationen
 
 Führen Sie einige Befehle aus, um Aktualisierungen an Ihrer lokalen Datenbank vorzunehmen.
 
-Klicken Sie im Menü **Extras** auf **NuGet-Paket-Manager** > **Paket-Manager-Konsole**.
+1. Klicken Sie im Menü **Extras** auf **NuGet-Paket-Manager** > **Paket-Manager-Konsole**.
 
-Aktivieren Sie im Fenster „Paket-Manager-Konsole“ Code First-Migrationen:
+1. Aktivieren Sie im Fenster „Paket-Manager-Konsole“ Code First-Migrationen:
 
-```powershell
-Enable-Migrations
-```
+    ```powershell
+    Enable-Migrations
+    ```
+    
+1. Fügen Sie eine Migration hinzu:
 
-Fügen Sie eine Migration hinzu:
+    ```powershell
+    Add-Migration AddProperty
+    ```
+    
+1. Aktualisieren Sie die lokale Datenbank:
 
-```powershell
-Add-Migration AddProperty
-```
-
-Aktualisieren Sie die lokale Datenbank:
-
-```powershell
-Update-Database
-```
-
-Drücken Sie `Ctrl+F5`, um die App auszuführen. Testen Sie die Links „Bearbeiten“, „Details“ und „Erstellen“.
+    ```powershell
+    Update-Database
+    ```
+    
+1. Drücken Sie `Ctrl+F5`, um die App auszuführen. Testen Sie die Links „Bearbeiten“, „Details“ und „Erstellen“.
 
 Wenn die Anwendung ohne Fehler geladen wird, waren die Code First-Migrationen erfolgreich. Allerdings wird die Seite noch genauso angezeigt, weil die Anwendungslogik noch nicht die neue Eigenschaft verwendet.
 
-### <a name="use-the-new-property"></a>Verwenden der neuen Eigenschaft
+#### <a name="use-the-new-property"></a>Verwenden der neuen Eigenschaft
 
 Nehmen Sie einige Änderungen an Ihrem Code vor, um die `Done`-Eigenschaft zu verwenden. Der Einfachheit halber ändern Sie in diesem Lernprogramm nur Ansichten `Index` und `Create`, um die Eigenschaft in Aktion zu sehen.
 
-Öffnen Sie _Controllers\TodosController.cs_.
+1. Öffnen Sie _Controllers\TodosController.cs_.
 
-Suchen Sie die `Create()`-Methode in Zeile 52, und fügen Sie `Done` zur Liste der Eigenschaften im `Bind`-Attribut hinzu. Anschließend sieht Ihre `Create()`-Methodensignatur wie im folgenden Code aus:
+1. Suchen Sie die `Create()`-Methode in Zeile 52, und fügen Sie `Done` zur Liste der Eigenschaften im `Bind`-Attribut hinzu. Anschließend sieht Ihre `Create()`-Methodensignatur wie im folgenden Code aus:
 
-```csharp
-public ActionResult Create([Bind(Include = "Description,CreatedDate,Done")] Todo todo)
-```
+    ```csharp
+    public ActionResult Create([Bind(Include = "Description,CreatedDate,Done")] Todo todo)
+    ```
+    
+1. Öffnen Sie _Views\Todos\Create.cshtml_.
 
-Öffnen Sie _Views\Todos\Create.cshtml_.
+1. Im Razor-Code sollten Sie ein `<div class="form-group">`-Element sehen, das `model.Description` verwendet, sowie ein weiteres `<div class="form-group">`-Element, das `model.CreatedDate` verwendet. Fügen Sie direkt nach diesen beiden Elementen ein weiteres `<div class="form-group">`-Element hinzu, für das `model.Done` genutzt wird:
 
-Im Razor-Code sollten Sie ein `<div class="form-group">`-Element sehen, das `model.Description` verwendet, sowie ein weiteres `<div class="form-group">`-Element, das `model.CreatedDate` verwendet. Fügen Sie direkt nach diesen beiden Elementen ein weiteres `<div class="form-group">`-Element hinzu, für das `model.Done` genutzt wird:
-
-```csharp
-<div class="form-group">
-    @Html.LabelFor(model => model.Done, htmlAttributes: new { @class = "control-label col-md-2" })
-    <div class="col-md-10">
-        <div class="checkbox">
-            @Html.EditorFor(model => model.Done)
-            @Html.ValidationMessageFor(model => model.Done, "", new { @class = "text-danger" })
+    ```csharp
+    <div class="form-group">
+        @Html.LabelFor(model => model.Done, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Done)
+                @Html.ValidationMessageFor(model => model.Done, "", new { @class = "text-danger" })
+            </div>
         </div>
     </div>
-</div>
-```
+    ```
+    
+1. Öffnen Sie _Views\Todos\Index.cshtml_.
 
-Öffnen Sie _Views\Todos\Index.cshtml_.
+1. Suchen Sie nach dem leeren `<th></th>`-Element. Fügen Sie direkt oberhalb dieses Elements den folgenden Razor-Code hinzu:
 
-Suchen Sie nach dem leeren `<th></th>`-Element. Fügen Sie direkt oberhalb dieses Elements den folgenden Razor-Code hinzu:
+    ```csharp
+    <th>
+        @Html.DisplayNameFor(model => model.Done)
+    </th>
+    ```
+    
+1. Suchen Sie nach dem `<td>`-Element, das die `Html.ActionLink()`-Hilfsmethoden enthält. Fügen Sie _über_ diesem `<td>` ein weiteres `<td>`-Element mit folgendem Razor-Code hinzu:
 
-```csharp
-<th>
-    @Html.DisplayNameFor(model => model.Done)
-</th>
-```
+    ```csharp
+    <td>
+        @Html.DisplayFor(modelItem => item.Done)
+    </td>
+    ```
+    
+    Mehr ist nicht erforderlich, um die Änderungen in den Ansichten `Index` und `Create` anzuzeigen.
 
-Suchen Sie nach dem `<td>`-Element, das die `Html.ActionLink()`-Hilfsmethoden enthält. Fügen Sie _über_ diesem `<td>` ein weiteres `<td>`-Element mit folgendem Razor-Code hinzu:
-
-```csharp
-<td>
-    @Html.DisplayFor(modelItem => item.Done)
-</td>
-```
-
-Mehr ist nicht erforderlich, um die Änderungen in den Ansichten `Index` und `Create` anzuzeigen.
-
-Drücken Sie `Ctrl+F5`, um die App auszuführen.
+1. Drücken Sie `Ctrl+F5`, um die App auszuführen.
 
 Sie können jetzt eine Aufgabe hinzufügen und die Option **Fertig** aktivieren. Die Aufgabe sollte dann auf der Startseite als erledigt angezeigt werden. Beachten Sie, dass in der Ansicht `Edit` das Feld `Done` nicht angezeigt wird, da Sie die Ansicht `Edit` nicht geändert haben.
 
-### <a name="enable-code-first-migrations-in-azure"></a>Aktivieren von Code First-Migrationen in Azure
+#### <a name="enable-code-first-migrations-in-azure"></a>Aktivieren von Code First-Migrationen in Azure
 
 Da die Codeänderung, einschließlich der Datenbankmigration, funktioniert, können Sie sie in Ihrer Azure-App veröffentlichen und die SQL-Datenbank ebenfalls mit Code First-Migrationen aktualisieren.
 
-Klicken Sie wie zuvor mit der rechten Maustaste auf Ihr Projekt, und wählen Sie **Veröffentlichen** aus.
+1. Klicken Sie wie zuvor mit der rechten Maustaste auf Ihr Projekt, und wählen Sie **Veröffentlichen** aus.
 
-Klicken Sie auf **Konfigurieren**, um die Veröffentlichungseinstellungen zu öffnen.
+1. Klicken Sie auf **Weitere Aktionen** > **Bearbeiten**, um die Veröffentlichungseinstellungen zu öffnen.
 
-![Veröffentlichungseinstellungen öffnen](./media/app-service-web-tutorial-dotnet-sqldatabase/publish-settings.png)
+    ![Veröffentlichungseinstellungen öffnen](./media/app-service-web-tutorial-dotnet-sqldatabase/publish-settings.png)
 
-Klicken Sie im Assistenten auf **Weiter**.
+1. Wählen Sie in der Dropdownliste **MyDatabaseContext** die Datenbankverbindung für Ihre Azure SQL-Datenbank-Instanz aus.
 
-Stellen Sie sicher, dass die Verbindungszeichenfolge für die SQL-Datenbank unter **MyDatabaseContext (MyDbConnection)** angezeigt wird. Möglicherweise müssen Sie die Datenbank **myToDoAppDb** in der Dropdownliste auswählen.
+1. Wählen Sie **Code First-Migrationen ausführen (wird beim Anwendungsstart ausgeführt)** aus, und klicken Sie auf **Speichern**.
 
-Wählen Sie **Code First-Migrationen ausführen (wird beim Anwendungsstart ausgeführt)** aus, und klicken Sie auf **Speichern**.
+    ![Aktivieren von Code First-Migrationen in einer Azure-App](./media/app-service-web-tutorial-dotnet-sqldatabase/enable-migrations.png)
 
-![Aktivieren von Code First-Migrationen in einer Azure-App](./media/app-service-web-tutorial-dotnet-sqldatabase/enable-migrations.png)
-
-### <a name="publish-your-changes"></a>Veröffentlichen der Änderungen
+#### <a name="publish-your-changes"></a>Veröffentlichen der Änderungen
 
 Nachdem Sie Code First-Migrationen in der Azure-App aktiviert haben, können Sie die Änderungen am Code veröffentlichen.
 
-Klicken Sie auf der Veröffentlichungsseite auf **Veröffentlichen**.
+1. Klicken Sie auf der Veröffentlichungsseite auf **Veröffentlichen**.
 
-Versuchen Sie erneut, Aufgaben hinzuzufügen, und wählen Sie **Fertig** aus. Sie sollten auf der Startseite als abgeschlossene Aufgaben angezeigt werden.
+1. Versuchen Sie erneut, Aufgaben hinzuzufügen, und wählen Sie **Fertig** aus. Sie sollten auf der Startseite als abgeschlossene Aufgaben angezeigt werden.
 
-![Azure-App nach Code First-Migration](./media/app-service-web-tutorial-dotnet-sqldatabase/this-one-is-done.png)
+    ![Azure-App nach Code First-Migration](./media/app-service-web-tutorial-dotnet-sqldatabase/this-one-is-done.png)
 
 Ihre gesamten vorhandenen Aufgaben werden weiterhin angezeigt. Wenn Sie die ASP.NET-Anwendung erneut veröffentlichen, gehen in der SQL-Datenbank vorhandene Daten nicht verloren. Außerdem wird durch Code First-Migrationen nur das Datenschema geändert, die vorhandenen Daten bleiben unverändert.
 
@@ -333,49 +347,47 @@ Sie können Ablaufverfolgungsmeldungen direkt aus der Azure-App in Visual Studio
 
 Jede Aktion beginnt mit einer `Trace.WriteLine()`-Methode. Dieser Code wird hinzugefügt, um zu zeigen, wie Sie Ihrer Azure-App Ablaufverfolgungsnachrichten hinzufügen können.
 
-### <a name="open-server-explorer"></a>Öffnen des Server-Explorer
+#### <a name="enable-log-streaming"></a>Aktivieren des Protokollstreamings
 
-Wählen Sie im Menü **Ansicht** die Option **Server-Explorer**. Sie können die Protokollierung für die Azure-App im **Server-Explorer** konfigurieren.
+1. Wählen Sie im Menü **Ansicht** die Option **Cloud-Explorer** aus.
 
-### <a name="enable-log-streaming"></a>Aktivieren des Protokollstreamings
+1. Erweitern Sie im **Cloud-Explorer** das Azure-Abonnement mit Ihrer App und anschließend **App Service**.
 
-Erweitern Sie im **Server-Explorer** den Knoten **Azure** > **App Service**.
+1. Klicken Sie mit der rechten Maustaste auf Ihre Azure-App, und wählen Sie **Streamingprotokolle anzeigen** aus.
 
-Erweitern Sie die Ressourcengruppe **myResourceGroup**, die Sie beim Erstellen der Azure-App erstellt haben.
+    ![Aktivieren des Protokollstreamings](./media/app-service-web-tutorial-dotnet-sqldatabase/stream-logs.png)
 
-Klicken Sie mit der rechten Maustaste auf Ihre Azure-App, und wählen Sie **Streamingprotokolle anzeigen** aus.
+    Die Protokolle werden jetzt in das **Ausgabefenster** gestreamt.
 
-![Aktivieren des Protokollstreamings](./media/app-service-web-tutorial-dotnet-sqldatabase/stream-logs.png)
+    ![Protokollstreaming im Ausgabefenster](./media/app-service-web-tutorial-dotnet-sqldatabase/log-streaming-pane.png)
 
-Die Protokolle werden jetzt in das **Ausgabefenster** gestreamt.
+    Es werden allerdings noch keine Ablaufverfolgungsmeldungen angezeigt. Das liegt daran, dass beim ersten Auswählen von **Streamingprotokolle anzeigen** die Azure-App die Ablaufverfolgungsebene auf `Error` festlegt, womit nur Fehlerereignisse protokolliert werden (mit der `Trace.TraceError()`-Methode).
 
-![Protokollstreaming im Ausgabefenster](./media/app-service-web-tutorial-dotnet-sqldatabase/log-streaming-pane.png)
+#### <a name="change-trace-levels"></a>Ändern der Ablaufverfolgungsebenen
 
-Es werden allerdings noch keine Ablaufverfolgungsmeldungen angezeigt. Das liegt daran, dass beim ersten Auswählen von **Streamingprotokolle anzeigen** die Azure-App die Ablaufverfolgungsebene auf `Error` festlegt, womit nur Fehlerereignisse protokolliert werden (mit der `Trace.TraceError()`-Methode).
+1. Wenn Sie die Ablaufverfolgungsebenen ändern möchten, um andere Ablaufverfolgungsmeldungen auszugeben, wechseln Sie zurück zum **Cloud-Explorer**.
 
-### <a name="change-trace-levels"></a>Ändern der Ablaufverfolgungsebenen
+1. Klicken Sie mit der rechten Maustaste erneut auf Ihre App, und wählen Sie **Im Portal öffnen** aus.
 
-Wenn Sie die Ablaufverfolgungsebenen ändern möchten, um andere Ablaufverfolgungsmeldungen auszugeben, wechseln Sie zurück zum **Server-Explorer**.
+1. Wählen Sie auf der Portalverwaltungsseite für Ihre App im Menü auf der linken Seite **App Service-Protokolle** aus.
 
-Klicken Sie mit der rechten Maustaste auf Ihre Azure-App, und wählen Sie **Einstellungen anzeigen** aus.
+1. Wählen Sie unter **Anwendungsprotokollierung (Dateisystem)** unter **Ebene** die Option **Ausführlich** aus. Klicken Sie auf **Speichern**.
 
-Wählen Sie in der Dropdownliste **Anwendungsprotokollierung (Dateisystem)** die Option **Ausführlich** aus. Klicken Sie auf **Speichern**.
+    ![Ablaufverfolgungsebene in „Ausführlich“ ändern](./media/app-service-web-tutorial-dotnet-sqldatabase/trace-level-verbose.png)
 
-![Ablaufverfolgungsebene in „Ausführlich“ ändern](./media/app-service-web-tutorial-dotnet-sqldatabase/trace-level-verbose.png)
+    > [!TIP]
+    > Sie können mit verschiedenen Ablaufverfolgungsebenen experimentieren, um zu sehen, welche Nachrichten für die jeweiligen Ebenen angezeigt werden. Bei der Ebene **Informationen** werden alle von `Trace.TraceInformation()`, `Trace.TraceWarning()` und `Trace.TraceError()` erstellten Protokolle eingeschlossen, aber keine Protokolle, die von `Trace.WriteLine()` erstellt wurden.
 
-> [!TIP]
-> Sie können mit verschiedenen Ablaufverfolgungsebenen experimentieren, um zu sehen, welche Nachrichten für die jeweiligen Ebenen angezeigt werden. Bei der Ebene **Informationen** werden alle von `Trace.TraceInformation()`, `Trace.TraceWarning()` und `Trace.TraceError()` erstellten Protokolle eingeschlossen, aber keine Protokolle, die von `Trace.WriteLine()` erstellt wurden.
+1. Navigieren Sie in Ihrem Browser erneut zu Ihrer App unter *http://&lt;Ihr App-Name>.azurewebsites.net*, und versuchen Sie, auf die Anwendung „To-Do-Liste“ in Azure zu klicken. Die Ablaufverfolgungsmeldungen werden jetzt in das **Ausgabefenster** in Visual Studio gestreamt.
 
-Navigieren Sie in Ihrem Browser erneut zu Ihrer App unter *http://&lt;Ihr App-Name>.azurewebsites.net*, und versuchen Sie, auf die Anwendung „To-Do-Liste“ in Azure zu klicken. Die Ablaufverfolgungsmeldungen werden jetzt in das **Ausgabefenster**in Visual Studio gestreamt.
-
-```console
-Application: 2017-04-06T23:30:41  PID[8132] Verbose     GET /Todos/Index
-Application: 2017-04-06T23:30:43  PID[8132] Verbose     GET /Todos/Create
-Application: 2017-04-06T23:30:53  PID[8132] Verbose     POST /Todos/Create
-Application: 2017-04-06T23:30:54  PID[8132] Verbose     GET /Todos/Index
-```
-
-### <a name="stop-log-streaming"></a>Beenden des Protokollstreamings
+    ```console
+    Application: 2017-04-06T23:30:41  PID[8132] Verbose     GET /Todos/Index
+    Application: 2017-04-06T23:30:43  PID[8132] Verbose     GET /Todos/Create
+    Application: 2017-04-06T23:30:53  PID[8132] Verbose     POST /Todos/Create
+    Application: 2017-04-06T23:30:54  PID[8132] Verbose     GET /Todos/Index
+    ```
+    
+#### <a name="stop-log-streaming"></a>Beenden des Protokollstreamings
 
 Klicken Sie zum Beenden des Diensts für das Protokollstreaming auf die Schaltfläche **Überwachung beenden** im **Ausgabefenster**.
 

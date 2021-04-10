@@ -11,12 +11,12 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: wiassaf, sstein
 ms.date: 02/26/2019
-ms.openlocfilehash: a51840daa2c8b19c323ad761ff6e6d1dcef15f75
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 1a74a2f44ac9b03e39e9fea48a3428b82111a48c
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96497961"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103471998"
 ---
 # <a name="use-resource-health-to-troubleshoot-connectivity-for-azure-sql-database-and-azure-sql-managed-instance"></a>Behandeln von Konnektivitätsproblemen für Azure SQL-Datenbank und verwalteten Azure SQL-Instanzen mithilfe von Resource Health
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -61,7 +61,7 @@ Im Abschnitt „Integritätsverlauf“ von Resource Health stehen bis zu 14 Tage
 
 ### <a name="downtime-reasons"></a>Ursachen für Downtime
 
-Bei einer Downtime Ihrer Datenbank wird eine Analyse durchgeführt, um eine Ursache zu ermitteln. Die Ursache der Downtime wird (sofern verfügbar) im Abschnitt „Integritätsverlauf“ von Resource Health gemeldet. Ursachen für Downtime werden in der Regel 30 Minuten nach einem Ereignis veröffentlicht.
+Bei einer Downtime Ihrer Datenbank wird eine Analyse durchgeführt, um eine Ursache zu ermitteln. Die Ursache der Downtime wird (sofern verfügbar) im Abschnitt „Integritätsverlauf“ von Resource Health gemeldet. Die Gründe für Ausfallzeiten werden in der Regel innerhalb von 45 Minuten nach einem Ereignis veröffentlicht.
 
 #### <a name="planned-maintenance"></a>Geplante Wartung
 

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: 922480eb2f4795729919c6ed039ccf61f19875b3
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 84bf14caeec163c31004a430fa954fc36f4be68b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102630366"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105562782"
 ---
 # <a name="azure-stack-edge-2101-release-notes"></a>Versionshinweise zu Azure Stack Edge 2101
 
@@ -49,7 +49,7 @@ Die folgende Tabelle enthält eine Zusammenfassung der bekannten Probleme im Rel
 |**3.**|Kubernetes |Die Edgecontainerregistrierung funktioniert nicht, wenn ein Webproxy aktiviert ist.|Diese Funktion wird in einem zukünftigen Release verfügbar sein. |
 |**4.**|Kubernetes |Die Edgecontainerregistrierung funktioniert nicht mit IoT Edge-Modulen.| |
 |**5.**|Kubernetes |Kubernetes unterstützt für Umgebungsvariablen, die von .NET-Anwendungen verwendet werden, keine Namen mit Doppelpunkt („:“). Dies ist auch erforderlich, damit das IoT Edge-Modul für Event Grid auf Azure Stack Edge-Geräten und in anderen Anwendungen funktioniert. Weitere Informationen finden Sie in der [ASP.NET Core-Dokumentation](/aspnet/core/fundamentals/configuration/?tabs=basicconfiguration&view=aspnetcore-3.1&preserve-view=true#environment-variables).|Ersetzen Sie „:“ durch einen doppelten Unterstrich. Weitere Informationen finden Sie unter [Probleme mit Kubernetes](https://github.com/kubernetes/kubernetes/issues/53201).|
-|**6.** |Azure Arc und Kubernetes-Cluster |Wenn `yamls` für Ressourcen aus dem Git-Repository gelöscht werden, werden die entsprechenden Ressourcen standardmäßig nicht aus dem Kubernetes-Cluster entfernt.  |Um das Löschen von Ressourcen zu erlauben, wenn sie aus dem Git-Repository gelöscht werden, legen Sie in Arc OperatorParams `--sync-garbage-collection` fest. Weitere Informationen finden Sie unter [Löschen einer Konfiguration](../azure-arc/kubernetes/use-gitops-connected-cluster.md#additional-parameters). |
+|**6.** |Azure Arc und Kubernetes-Cluster |Wenn `yamls` für Ressourcen aus dem Git-Repository gelöscht werden, werden die entsprechenden Ressourcen standardmäßig nicht aus dem Kubernetes-Cluster entfernt.  |Um das Löschen von Ressourcen zu erlauben, wenn sie aus dem Git-Repository gelöscht werden, legen Sie in Arc OperatorParams `--sync-garbage-collection` fest. Weitere Informationen finden Sie unter [Löschen einer Konfiguration](../azure-arc/kubernetes/tutorial-use-gitops-connected-cluster.md#additional-parameters). |
 |**7.**|NFS |Anwendungen, die auf Ihrem Gerät eingebundene NFS-Freigaben zum Schreiben von Daten verwenden, sollten exklusiven Schreibzugriff verwenden. Dies stellt sicher, dass die Schreibvorgänge auf dem Datenträger erfolgen.| |
 |**8.**|Computekonfiguration |In Netzwerkkonfigurationen, in denen Gateways, Switches oder Router auf ARP-Anforderungen (Address Resolution Protocol) für Systeme antworten, die nicht im Netzwerk vorhanden sind, tritt bei der Computekonfiguration ein Fehler auf.| |
 |**9.**|Compute und Kubernetes |Wenn Kubernetes als Erstes auf dem Gerät eingerichtet wird, beansprucht es alle verfügbaren GPUs. Daher ist es nicht möglich, nach dem Einrichten von Kubernetes Azure Resource Manager-VMs mit GPUs zu erstellen. |Wenn Ihr Gerät über zwei GPUs verfügt, können Sie eine VM erstellen, die die GPU verwendet, und dann Kubernetes konfigurieren. In diesem Fall verwendet Kubernetes die verbleibende verfügbare GPU. |

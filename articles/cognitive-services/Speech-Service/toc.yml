@@ -63,7 +63,7 @@
       items:
         - name: Verbessern der Genauigkeit mithilfe von Mandantenmodellen
           href: tutorial-tenant-model.md
-    - name: Verweis
+    - name: Referenz
       items:
         - name: C++
           displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
@@ -456,7 +456,84 @@
                   href: windows-voice-assistants-best-practices.md
                 - name: Beispiele und häufig gestellte Fragen
                   href: windows-voice-assistants-faq.md
-- name: Tools
+- name: Anleitungen
+  items:
+    - name: Aktivieren der Protokollierung
+      href: how-to-use-logging.md
+    - name: Nachverfolgen der Arbeitsspeicherauslastung
+      href: how-to-track-speech-sdk-memory-usage.md
+    - name: Aktivieren eines privaten Endpunkts
+      href: speech-services-private-link.md
+    - name: Konfigurieren von OpenSSL für Linux
+      displayName: 'memory usage, memory consumption, object logging, object tracking, memory, openssl'
+      href: how-to-configure-openssl-linux.md
+    - name: Konfigurieren von RHEL/CentOS 7
+      href: how-to-configure-rhel-centos-7.md
+      displayName: 'RHEL, CentOS 7, CentOS, Configure RHEL, Configure CentO'
+    - name: Container
+      items:
+        - name: Installieren und Ausführen von Speech-Containern
+          displayName: 'containers,install container,run container'
+          href: speech-container-howto.md
+        - name: Konfigurieren von Speech-Containern
+          displayName: 'containers,configure containers,container config,configuration'
+          href: speech-container-configuration.md
+        - name: Batchverarbeitung mit Speech-Containern
+          href: speech-container-batch-processing.md
+        - name: Speech-Container mit Kubernetes und Helm
+          displayName: 'containers,kubernetes,k8s,helm,orchestration,on-prem,on-premises'
+          href: speech-container-howto-on-premises.md
+        - name: Speech-Container in Azure Container Instances
+          displayName: 'ACI,azure container instances,container instances,containers'
+          maintainContext: true
+          href: ../containers/azure-container-instance-recipe.md
+        - name: Häufig gestellte Fragen zu Containern
+          href: speech-container-faq.md
+        - name: "Dokumentation zu Cognitive\_Services-Containern"
+          href: ../containers/index.yml
+    - name: Migration
+      items:
+        - name: Von der Bing-Spracheingabe
+          href: how-to-migrate-from-bing-speech.md
+        - name: Von der Sprachübersetzungs-API
+          href: how-to-migrate-from-translator-speech-api.md
+- name: Geräte
+  items:
+    - name: Dokumentation zu Speech-Geräten
+      href: index-devices.yml
+    - name: Übersicht
+      items:
+        - name: "Was ist das Speech Devices\_SDK?"
+          href: speech-devices-sdk.md
+        - name: "Herunterladen des Speech Devices\_SDK"
+          href: get-speech-devices-sdk.md
+        - name: "Speech\_Devices\_SDK-Beispiele (GitHub)"
+          href: 'https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK'
+    - name: Hardware
+      items:
+        - name: Empfehlungen zum Mikrofonarray
+          href: speech-devices-sdk-microphone.md
+        - name: Details zu Roobo v1
+          href: speech-devices-sdk-roobo-v1.md
+        - name: Details zu Roobo v2
+          href: speech-devices-sdk-roobo-v2.md
+    - name: Anleitungen
+      items:
+        - name: Konfigurieren eines Mikrofonarrays
+          href: how-to-devices-microphone-array-configuration.md
+    - name: Schnellstart
+      items:
+        - name: "Verwenden des Speech Devices\_SDK"
+          href: speech-devices-sdk-quickstart.md
+    - name: Ressourcen
+      items:
+        - name: "Behandeln von Problemen mit dem Speech Devices\_SDK"
+          href: speech-devices-sdk-troubleshooting.md
+    - name: Verweis
+      items:
+        - name: "Versionshinweise zum Speech Devices\_SDK"
+          href: devices-sdk-release-notes.md
+- name: Ressourcen
   items:
     - name: Sprach-SDK
       items:
@@ -505,85 +582,6 @@
           href: 'https://speech.microsoft.com'
         - name: Erstellen einer App für benutzerdefinierte Befehle mit Speech Studio
           href: ./quickstart-custom-commands-application.md
-- name: Bereitstellen
-  items:
-    - name: Aktivieren der Protokollierung
-      href: how-to-use-logging.md
-    - name: Nachverfolgen der Arbeitsspeicherauslastung
-      href: how-to-track-speech-sdk-memory-usage.md
-    - name: Aktivieren eines privaten Endpunkts
-      href: speech-services-private-link.md
-    - name: Konfigurieren von OpenSSL für Linux
-      displayName: 'memory usage, memory consumption, object logging, object tracking, memory, openssl'
-      href: how-to-configure-openssl-linux.md
-    - name: Konfigurieren von RHEL/CentOS 7
-      href: how-to-configure-rhel-centos-7.md
-      displayName: 'RHEL, CentOS 7, CentOS, Configure RHEL, Configure CentO'
-    - name: Container
-      items:
-        - name: Installieren und Ausführen von Speech-Containern
-          displayName: 'containers,install container,run container'
-          href: speech-container-howto.md
-        - name: Konfigurieren von Speech-Containern
-          displayName: 'containers,configure containers,container config,configuration'
-          href: speech-container-configuration.md
-        - name: Batchverarbeitung mit Speech-Containern
-          href: speech-container-batch-processing.md
-        - name: Speech-Container mit Kubernetes und Helm
-          displayName: 'containers,kubernetes,k8s,helm,orchestration,on-prem,on-premises'
-          href: speech-container-howto-on-premises.md
-        - name: Speech-Container in Azure Container Instances
-          displayName: 'ACI,azure container instances,container instances,containers'
-          maintainContext: true
-          href: ../containers/azure-container-instance-recipe.md
-        - name: Häufig gestellte Fragen zu Containern
-          href: speech-container-faq.md
-        - name: "Dokumentation zu Cognitive\_Services-Containern"
-          href: ../containers/index.yml
-- name: Geräte
-  items:
-    - name: Dokumentation zu Speech-Geräten
-      href: index-devices.yml
-    - name: Übersicht
-      items:
-        - name: "Was ist das Speech Devices\_SDK?"
-          href: speech-devices-sdk.md
-        - name: "Herunterladen des Speech Devices\_SDK"
-          href: get-speech-devices-sdk.md
-        - name: "Speech\_Devices\_SDK-Beispiele (GitHub)"
-          href: 'https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK'
-    - name: Hardware
-      items:
-        - name: Empfehlungen zum Mikrofonarray
-          href: speech-devices-sdk-microphone.md
-        - name: Details zu Roobo v1
-          href: speech-devices-sdk-roobo-v1.md
-        - name: Details zu Roobo v2
-          href: speech-devices-sdk-roobo-v2.md
-    - name: Anleitungen
-      items:
-        - name: Konfigurieren eines Mikrofonarrays
-          href: how-to-devices-microphone-array-configuration.md
-    - name: Schnellstart
-      items:
-        - name: "Verwenden des Speech Devices\_SDK"
-          href: speech-devices-sdk-quickstart.md
-    - name: Ressourcen
-      items:
-        - name: "Behandeln von Problemen mit dem Speech Devices\_SDK"
-          href: speech-devices-sdk-troubleshooting.md
-    - name: Verweis
-      items:
-        - name: "Versionshinweise zum Speech Devices\_SDK"
-          href: devices-sdk-release-notes.md
-- name: Migration
-  items:
-    - name: Von der Bing-Spracheingabe
-      href: how-to-migrate-from-bing-speech.md
-    - name: Von der Sprachübersetzungs-API
-      href: how-to-migrate-from-translator-speech-api.md
-- name: Ressourcen
-  items:
     - name: Support- und Hilfeoptionen
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/speech-service/context/context
     - name: Swagger-Dokumentation
@@ -593,7 +591,7 @@
       href: sovereign-clouds.md
     - name: Preisrechner
       href: 'https://azure.microsoft.com/pricing/calculator/#cognitive-services'
-    - name: Kompatibilität
+    - name: Compliance
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Verschlüsselung
       href: speech-encryption-of-data-at-rest.md
