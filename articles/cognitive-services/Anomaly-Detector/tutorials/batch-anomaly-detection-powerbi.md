@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: mbullwin
-ms.openlocfilehash: b122765a3d77428008c91dda471706cad53a5616
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: fc2667dfddf4442acaf39f6783190e8640b22a89
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102430597"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105561728"
 ---
 # <a name="tutorial-visualize-anomalies-using-batch-detection-and-power-bi"></a>Tutorial: Visualisieren von Anomalien mithilfe von Batcherkennung und Power BI
 
@@ -175,4 +175,4 @@ Wenden Sie Farben auf Ihr Diagramm an, indem Sie auf das Tool **Format** und dan
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
->[Anomalieerkennung in Streamingdaten mit Azure Databricks](anomaly-detection-streaming-databricks.md)
+>[Anomalieerkennung in Streamingdaten mit Azure Databricks](../overview.md)

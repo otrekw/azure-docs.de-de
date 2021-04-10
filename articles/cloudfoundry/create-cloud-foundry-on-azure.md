@@ -15,10 +15,10 @@ ms.tgt_pltfrm: multiple
 ms.topic: tutorial
 ms.workload: web
 ms.openlocfilehash: 3444d6c62b5e36b7e68cfaf6da1ec534e2ea4ec6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102551452"
 ---
 # <a name="create-a-pivotal-cloud-foundry-cluster-on-azure"></a>Erstellen eines Pivotal Cloud Foundry-Clusters in Azure
@@ -98,7 +98,7 @@ Weitere Informationen finden Sie unter [Verwenden von SSH-Schlüsseln mit Window
     az login --service-principal -u {appId} -p {your-password}  --tenant {tenantId}
     ```
 
-7. Erstellen Sie eine JSON-Datei im folgenden Format. Verwenden Sie die Werte für **subscriptionID**, **tenantID**, **clientID** und **clientSecret**, die Sie zuvor kopiert haben. Speichern Sie die Datei .
+7. Erstellen Sie eine JSON-Datei im folgenden Format. Verwenden Sie die Werte für **subscriptionID**, **tenantID**, **clientID** und **clientSecret**, die Sie zuvor kopiert haben. Speichern Sie die Datei.
 
     ```json
     {

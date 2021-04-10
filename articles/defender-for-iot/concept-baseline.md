@@ -1,24 +1,14 @@
 ---
 title: Baselineüberprüfungen und benutzerdefinierte Überprüfungen
 description: Erfahren Sie mehr über das Konzept der Baseline für Azure Defender für IoT.
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: mlottner
-manager: rkarlin
-editor: ''
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 10/07/2019
-ms.author: mlottner
-ms.openlocfilehash: 04fe87cd69efc4c064b8fbdc596a5f9e187abbb1
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 1b8b9d62918e40262da6b3df48d0fece842e050f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100102239"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104779357"
 ---
 # <a name="azure-defender-for-iot-baseline-and-custom-checks"></a>Baseline und benutzerdefinierte Überprüfungen von Azure Defender für IoT
 
@@ -42,7 +32,7 @@ Benutzerdefinierte Überprüfungen der Baseline richten eine benutzerdefinierte 
 
 1. Laden Sie die Datei mit den **benutzerdefinierten Baseline-Überprüfungen** auf das Gerät hoch.
 
-1. Fügen Sie dem Sicherheitsmodul Baseline-Eigenschaften hinzu, und klicken Sie auf **Speichern**.
+1. Fügen Sie dem Defender-IoT-micro-agent Baseline-Eigenschaften hinzu, und klicken Sie auf **Speichern**.
 
 ### <a name="baseline-custom-check-file-example"></a>Beispiel für eine Datei mit benutzerdefinierten Baseline-Überprüfungen
 

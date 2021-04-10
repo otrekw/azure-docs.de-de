@@ -12,12 +12,12 @@ ms.date: 12/15/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: Content Moderator, Azure Content Moderator, Onlinemoderator, Inhaltsfilterungssoftware, Inhaltsmoderationsdienst, Inhaltsmoderation
-ms.openlocfilehash: 57a390a1da1e3a10b9fda4b531a83ee48e91125b
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: a53611fdad84f06661f3b8928296b6a45851cea4
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97560372"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867269"
 ---
 # <a name="what-is-azure-content-moderator"></a>Was ist Azure Content Moderator?
 
@@ -26,6 +26,13 @@ ms.locfileid: "97560372"
 Azure Content Moderator ist ein KI-Dienst für die Behandlung potenziell anstößiger, riskanter oder anderweitig unerwünschter Inhalte. Er umfasst den KI-gestützten Inhaltsmoderationsdienst, der Text, Bilder und Videos überprüft und automatisch mit Inhaltsflags versieht, sowie das Überprüfungstool (eine onlinebasierte Moderatorumgebung für eine Gruppe menschlicher Prüfer).
 
 Die Integration einer Inhaltsüberprüfungssoftware in Ihre App kann beispielsweise empfehlenswert sein, um gesetzliche Vorschriften einzuhalten oder Benutzern die für sie beabsichtigte Umgebung zu bieten.
+
+Diese Dokumentation enthält die folgenden Arten von Artikeln:  
+
+* [**Schnellstarts**](client-libraries.md) sind Anleitungen zu den ersten Schritten, die Sie durch das Senden von Anforderungen an den Dienst führen.  
+* [**Schrittanleitungen**](try-text-api.md) enthalten Anweisungen zur spezifischeren oder individuelleren Verwendung des Diensts.  
+* Die Artikel zu [**Konzepten**](text-moderation-api.md) enthalten ausführliche Erläuterungen der Dienstfunktionen und -features.  
+* [**Tutorials**](ecommerce-retail-catalog-moderation.md) sind ausführlichere Leitfäden, in denen die Verwendung des Diensts als Komponente in umfassenderen Unternehmenslösungen veranschaulicht wird.  
 
 ## <a name="where-its-used"></a>Verwendung des Diensts
 

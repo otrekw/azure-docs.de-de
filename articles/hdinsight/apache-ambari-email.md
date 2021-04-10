@@ -4,12 +4,12 @@ description: In diesem Artikel wird beschrieben, wie Sie SendGrid mit Apache Am
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 03/10/2020
-ms.openlocfilehash: 63d0f87925f14fddf3dbd722fa72326ee8b04f31
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 5b344c0c4b1db9159d0223c861e5d371cb225f5a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946965"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104867201"
 ---
 # <a name="tutorial-configure-apache-ambari-email-notifications-in-azure-hdinsight"></a>Tutorial: Konfigurieren von Apache Ambari-E-Mail-Benachrichtigungen in Azure HDInsight
 
@@ -33,15 +33,15 @@ In diesem Tutorial lernen Sie Folgendes:
 
 1. Wählen Sie auf der Übersichtsseite **Verwalten** aus, um zur SendGrid-Webseite für Ihr Konto zu navigieren.
 
-    ![SendGrid-Übersicht im Azure-Portal](./media/apache-ambari-email/azure-portal-sendgrid-manage.png)
+    :::image type="content" source="./media/apache-ambari-email/azure-portal-sendgrid-manage.png" alt-text="SendGrid-Übersicht im Azure-Portal":::
 
 1. Navigieren Sie im Menü auf der linken Seite zu Ihrem Kontonamen und dann zu **Kontodetails**.
 
-    ![Navigation auf dem SendGrid-Dashboard](./media/apache-ambari-email/sendgrid-dashboard-navigation.png)
+    :::image type="content" source="./media/apache-ambari-email/sendgrid-dashboard-navigation.png" alt-text="Navigation auf dem SendGrid-Dashboard":::
 
 1. Notieren Sie auf der Seite **Kontodetails** den Wert unter **Benutzername**.
 
-    ![SendGrid-Kontodetails](./media/apache-ambari-email/sendgrid-account-details.png)
+    :::image type="content" source="./media/apache-ambari-email/sendgrid-account-details.png" alt-text="SendGrid-Kontodetails":::
 
 ## <a name="configure-ambari-e-mail-notification"></a>Konfigurieren einer Ambari-E-Mail-Benachrichtigung
 
@@ -51,11 +51,11 @@ In diesem Tutorial lernen Sie Folgendes:
 
 1. Wählen Sie im Fenster **Manage Alert Notifications** (Warnungsbenachrichtigungen verwalten) das Symbol **+** aus.
 
-    ![Screenshot: Dialogfeld „Manage Alert Notifications“ (Warnungsbenachrichtigungen verwalten)](./media/apache-ambari-email/azure-portal-create-notification.png)
+    :::image type="content" source="./media/apache-ambari-email/azure-portal-create-notification.png" alt-text="Screenshot: Dialogfeld „Manage Alert Notifications“ (Warnungsbenachrichtigungen verwalten)":::
 
 1. Geben Sie im Dialogfenster **Create Alert Notification** (Warnungsbenachrichtigung erstellen) die folgenden Informationen an:
 
-    |Eigenschaft |BESCHREIBUNG |
+    |Eigenschaft |Beschreibung |
     |---|---|
     |Name|Geben Sie einen Namen für die Benachrichtigung ein.|
     |Gruppen|Nehmen Sie die Konfiguration nach Bedarf vor.|
@@ -72,7 +72,7 @@ In diesem Tutorial lernen Sie Folgendes:
     |Kennwortbestätigung|Geben Sie das Kennwort erneut ein.|
     |Start TLS (TLS starten)|Aktivieren Sie dieses Kontrollkästchen.|
 
-    ![Screenshot: Create Alert Notification (Warnungsbenachrichtigung erstellen)](./media/apache-ambari-email/ambari-create-alert-notification.png)
+    :::image type="content" source="./media/apache-ambari-email/ambari-create-alert-notification.png" alt-text="Screenshot: Create Alert Notification (Warnungsbenachrichtigung erstellen)":::
 
     Wählen Sie **Speichern** aus. Sie kehren zum Fenster **Manage Alert Notifications** (Warnungsbenachrichtigungen verwalten) zurück.
 

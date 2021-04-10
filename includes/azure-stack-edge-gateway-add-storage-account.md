@@ -4,12 +4,12 @@ ms.service: databox
 ms.topic: include
 ms.date: 03/12/2021
 ms.author: alkohli
-ms.openlocfilehash: 0c7e011cf8445164e0931f71e390813c9134dd89
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: cf67ea58c4c13756fdc6e437883f12124ca47eb9
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103200959"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105105946"
 ---
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihre Azure Stack Edge-Ressource aus, und navigieren Sie anschließend zu **Übersicht**. Ihr Gerät sollte online sein. Navigieren Sie zu **Cloudspeichergateway > Speicherkonten**.
 
@@ -35,4 +35,4 @@ ms.locfileid: "103200959"
 
     ![Hinzufügen eines Speicherkontos 2](media/azure-stack-edge-gateway-add-storage-account/add-storage-account-4.png)
 
-    Sie erhalten die Zugriffsschlüssel durch [Herstellen einer Verbindung mit den lokalen Geräte-APIs über Azure Resource Manager](../articles/databox-online/azure-stack-edge-j-series-connect-resource-manager.md). 
+    Sie erhalten die Zugriffsschlüssel durch [Herstellen einer Verbindung mit den lokalen Geräte-APIs über Azure Resource Manager](../articles/databox-online/azure-stack-edge-gpu-connect-resource-manager.md).

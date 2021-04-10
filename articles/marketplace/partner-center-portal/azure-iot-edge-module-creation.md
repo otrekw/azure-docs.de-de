@@ -7,12 +7,12 @@ ms.topic: how-to
 author: keferna
 ms.author: keferna
 ms.date: 08/07/2020
-ms.openlocfilehash: 23af7b3f7cfd5ec0531c5cac73cf8a334ef4aa62
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9f07a6376e3fdde46e9e0cb161acc97c5771d905
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99096439"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106166750"
 ---
 # <a name="create-an-iot-edge-module-offer"></a>Erstellen eines IoT Edge-Modulangebots
 
@@ -172,7 +172,7 @@ Stellen Sie ergänzende Onlinedokumente zu Ihrem Angebot bereit. Sie können bis
 - **Titel**: Kunden wird der Titel auf der Detailseite Ihres Angebots angezeigt.
 - **Link (URL)** : Geben Sie einen Link für Kunden ein, um Ihr Onlinedokument anzuzeigen. Der Link muss mit `http://` oder `https://` beginnen.
 
-Fügen Sie mindestens einen Link zu Ihrer Dokumentation und einen Link zu den kompatiblen IoT Edge-Geräten aus dem  [Azure IoT-Gerätekatalog](https://catalog.azureiotsolutions.com/) hinzu.
+Fügen Sie mindestens einen Link zu Ihrer Dokumentation und einen Link zu den kompatiblen IoT Edge-Geräten aus dem  [Azure IoT-Gerätekatalog](https://devicecatalog.azure.com/) hinzu.
 
 ### <a name="contact-information"></a>Kontaktinformationen
 

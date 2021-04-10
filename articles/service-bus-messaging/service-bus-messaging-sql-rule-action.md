@@ -4,10 +4,10 @@ description: Dieser Artikel enthält eine Referenz für die SQL-Regelaktionssynt
 ms.topic: article
 ms.date: 11/24/2020
 ms.openlocfilehash: 75ff437bace59d7f4de07342277f0760480a5b0f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100652835"
 ---
 # <a name="subscription-rule-sql-action-syntax"></a>SQL-Aktionssyntax für Abonnementregeln
@@ -55,7 +55,7 @@ Eine *SQL-Aktion* wird zum Bearbeiten von Nachrichtenmetadaten verwendet, nachde
   
 -   `<scope>` ist eine optionale Zeichenfolge, die den Bereich von `<property_name>` angibt. Gültige Werte sind `sys` und `user`. Der Wert `sys` gibt die Systembereich an, in dem `<property_name>` ein öffentlicher Eigenschaftenname der [BrokeredMessage-Klasse](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) ist. `user` gibt den Benutzerbereich an, in dem `<property_name>` ein Schlüssel des Wörterbuchs der [BrokeredMessage-Klasse](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) ist. Der `user`-Bereich ist der Standardbereich, wenn `<scope>` nicht angegeben wird.  
   
-### <a name="remarks"></a>Hinweise  
+### <a name="remarks"></a>Bemerkungen  
 
 Der Versuch, auf eine nicht existierende Systemeigenschaft zuzugreifen, löst einen Fehler aus, während der Versuch, auf eine nicht existierende Benutzereigenschaft zuzugreifen, keinen Fehler auslöst. Stattdessen wird eine nicht vorhandene Benutzereigenschaft intern als unbekannter Wert ausgewertet. Ein unbekannter Wert wird während der Operatorauswertung speziell behandelt.  
   
@@ -107,7 +107,7 @@ Der Versuch, auf eine nicht existierende Systemeigenschaft zuzugreifen, löst ei
       <expression>  
 ```  
   
-### <a name="remarks"></a>Hinweise
+### <a name="remarks"></a>Bemerkungen
   
  `<pattern>` muss ein Ausdruck sein, der als Zeichenfolge ausgewertet wird. Es wird als ein Muster für den LIKE-Operator verwendet.      Es kann die folgenden Platzhalterzeichen enthalten:  
   
@@ -122,7 +122,7 @@ Der Versuch, auf eine nicht existierende Systemeigenschaft zuzugreifen, löst ei
       <expression>  
 ```  
   
-### <a name="remarks"></a>Hinweise
+### <a name="remarks"></a>Bemerkungen
   
  `<escape_char>` muss ein Ausdruck sein, der als Zeichenfolge der Länge 1 ausgewertet wird. Es wird als Escapezeichen für den LIKE-Operator verwendet.  
   
@@ -171,7 +171,7 @@ Der Versuch, auf eine nicht existierende Systemeigenschaft zuzugreifen, löst ei
       TRUE | FALSE  
 ```  
   
-### <a name="remarks"></a>Hinweise
+### <a name="remarks"></a>Bemerkungen
   
 Boolesche Konstanten werden durch die Schlüsselwörter `TRUE` oder `FALSE` dargestellt. Die Werte werden als `System.Boolean` gespeichert.  
   
@@ -181,7 +181,7 @@ Boolesche Konstanten werden durch die Schlüsselwörter `TRUE` oder `FALSE` darg
 <string_constant>  
 ```  
   
-### <a name="remarks"></a>Hinweise
+### <a name="remarks"></a>Bemerkungen
   
 Zeichenfolgenkonstanten werden in einfache Anführungszeichen eingeschlossen und enthalten beliebige, gültige Unicodezeichen. Ein einfaches Anführungszeichen, das in eine Zeichenfolgenkonstante eingebettet ist, wird als zwei einfache Anführungszeichen dargestellt.  
   
@@ -193,7 +193,7 @@ Zeichenfolgenkonstanten werden in einfache Anführungszeichen eingeschlossen und
       property(name) | p(name)  
 ```  
   
-### <a name="remarks"></a>Hinweise  
+### <a name="remarks"></a>Bemerkungen  
 
 Die `newid()`-Funktion gibt ein `System.Guid` zurück, das von der `System.Guid.NewGuid()`-Methode generiert wird.  
   

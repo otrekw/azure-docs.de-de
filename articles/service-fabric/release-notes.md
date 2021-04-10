@@ -5,12 +5,12 @@ ms.date: 06/10/2019
 ms.topic: conceptual
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: 0eedd5ce67e96c9d732cf24cbe56a8c3c5e92aaa
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 38ec7949b5fc04852568e9e69f35f212b1edee5d
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880490"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103201032"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric-Versionen
 
@@ -48,6 +48,8 @@ Wir freuen uns, Ihnen mitteilen zu können, dass die Einführung von Release 7.
 | 10. November 2020  | Azure Service Fabric 7.2 Third Refresh Release | [Versionshinweise](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-72CU3-releasenotes.md) |
 | 2\. Dezember 2020 | [Azure Service Fabric 7.2 Fourth Refresh Release](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-2-fourth-refresh-release/ba-p/1950584) | [Versionshinweise](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-72CU4.md)
 | 25. Januar 2021 | [Azure Service Fabric 7.2 Fifth Refresh Release](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-2-fifth-refresh-release/ba-p/2096575) | [Versionshinweise](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-72CU5-ReleaseNotes.md)
+| 17. Februar 2021 | [Azure Service Fabric 7.2 Sixth Refresh Release](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-sixth-refresh-release/ba-p/2144685) | [Versionshinweise](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-72CU6-ReleaseNotes.md)
+| 10. März 2021 | [Azure Service Fabric 7.2 Seventh Refresh Release](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-seventh-refresh-release/ba-p/2201100) | [Versionshinweise](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-72CU7-releasenotes.md)
 
 ## <a name="previous-versions"></a>Vorgängerversionen
 
@@ -70,7 +72,7 @@ Wir haben [hier](./service-fabric-versions.md#supported-versions) auch Updates z
       -  Senken der Gesamtkosten (Die Datenträger sind kostenlos, und es fallen keine zusätzlichen Speicherkosten an.)
 - Unterstützung für die Deklaration von [**Dienstendpunktzertifikaten von Service Fabric-Anwendungen anhand des allgemeinen Namens des Antragsstellers**](./service-fabric-service-manifest-resources.md).
 - [**Unterstützung für Integritätstests bei containerbasierten Diensten**](./probes-codepackage.md): Unterstützung für einen Livetestmechanismus für containerbasierte Anwendungen. Der Livetest unterstützt die Ermittlung der Aktivität von containerisierten Anwendungen. Wenn sie nicht rechtzeitig reagieren, führt dies zu einem Neustart. 
-- [**Unterstützung für Initialisierercodepakete**](./initializer-codepackages.md) für [Container](https://review.docs.microsoft.com/azure/service-fabric/service-fabric-containers-overview) und [auf Gastcomputern ausführbare](https://review.docs.microsoft.com/azure/service-fabric/service-fabric-guest-executables-introduction) Anwendungen. Dies ermöglicht die Ausführung von Codepaketen (z. B. Containern) in einer bestimmten Reihenfolge, um Dienstpakete zu initialisieren.
+- [**Unterstützung für Initialisierercodepakete**](./initializer-codepackages.md) für [Container](/azure/service-fabric/service-fabric-containers-overview) und [auf Gastcomputern ausführbare](/azure/service-fabric/service-fabric-guest-executables-introduction) Anwendungen. Dies ermöglicht die Ausführung von Codepaketen (z. B. Containern) in einer bestimmten Reihenfolge, um Dienstpakete zu initialisieren.
 - **FabricObserver und ClusterObserver** sind zustandslose Anwendungen, die Service Fabric-Telemetriedaten zu verschiedenen Aspekten eines SF-Clusters erfassen. Beide Anwendungen können in Windows-Produktionsclustern bereitgestellt werden, um umfangreiche Telemetriedaten zu erfassen. Unterstützung für ApplicationInsights, EventSource und LogAnalytics ist implementiert.
     - [**FabricObserver (FO) 2.0**](https://github.com/microsoft/service-fabric-observer) – wird auf allen Knoten ausgeführt, generiert Integritätsereignisse und gibt Telemetriedaten aus, wenn vom Benutzer konfigurierte Schwellenwerte der Ressourcennutzung erreicht sind. Dieses Release enthält verschiedene Erweiterungen in Bezug auf Überwachung, Datenverwaltung, Details zu Integritätsereignissen und strukturierte Telemetrie.
      - [**ClusterObserver (CO) 1.1**](https://github.com/microsoft/service-fabric-observer/tree/master/ClusterObserver) – wird auf einem Knoten ausgeführt und erfasst Telemetriedaten zur Integrität auf Clusterebene. In diesem Release überwacht ClusterObserver auch den Knotenstatus und gibt Telemetriedaten aus, wenn ein Knoten länger als für einen vom Benutzer festgelegten Zeitraum heruntergefahren ist, deaktiviert wird oder deaktiviert ist.

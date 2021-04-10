@@ -1,6 +1,6 @@
 ---
-title: Anzeigen und Zuweisen von Berechtigungen der Administratorrolle – Azure AD | Microsoft-Dokumentation
-description: Sie können jetzt Mitglieder einer Azure AD-Administratorrolle im Portal anzeigen und verwalten. Für Benutzer vorgesehen, die häufig Rollenzuweisungen verwalten.
+title: Zuweisen von Azure AD-Rollen zu Benutzern – Azure Active Directory
+description: Erfahren Sie, wie Sie Benutzern in Azure Active Directory Zugriff gewähren, indem Sie Azure AD-Rollen zuweisen.
 services: active-directory
 author: rolyon
 manager: daveba
@@ -8,41 +8,49 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: how-to
-ms.date: 11/05/2020
+ms.date: 03/07/2021
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26217930b79b958ae86d976d06a28ba4a4852ab6
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 36ced586db1b4e417e623431c137c43dac8ba56f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98742011"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103466643"
 ---
-# <a name="view-and-assign-administrator-roles-in-azure-active-directory"></a>Anzeigen und Zuweisen von Benutzerrollen in Azure Active Directory
+# <a name="assign-azure-ad-roles-to-users"></a>Zuweisen von Azure AD-Rollen zu Benutzern
 
-Sie können jetzt im Azure Active Directory-Portal sämtliche Mitglieder der Administratorrollen anzeigen und verwalten. Wenn Sie häufig Rollenzuweisungen verwalten, bevorzugen Sie diese Funktionalität wahrscheinlich. Und wenn Sie sich jemals gefragt haben, welchen Zweck diese Rollen haben, können Sie für jede der Azure AD-Administratorrollen eine ausführliche Liste mit Berechtigungen anzeigen.
+Sie können jetzt im Azure AD Admin Center sämtliche Mitglieder der Administratorrollen anzeigen und verwalten. Wenn Sie häufig Rollenzuweisungen verwalten, bevorzugen Sie diese Funktionalität wahrscheinlich. In diesem Artikel wird beschrieben, wie Azure AD-Rollen über das Azure AD Admin Center zugewiesen werden.
 
-## <a name="view-all-roles"></a>Anzeigen aller Rollen
+## <a name="assign-a-role"></a>Zuweisen einer Rolle
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und wählen Sie **Azure Active Directory** aus.
+1. Melden Sie sich beim [Azure AD Admin Center](https://aad.portal.azure.com) als Benutzer mit Berechtigungen der Rollen „Globaler Administrator“ oder „Administrator für privilegierte Rollen“ an.
+
+1. Wählen Sie **Azure Active Directory** aus.
 
 1. Wählen Sie **Rollen und Administratoren** aus, um die Liste mit allen verfügbaren Rollen anzuzeigen.
 
-1. Wählen Sie die Auslassungspunkte rechts neben jeder Zeile aus, um die Berechtigungen für die Rolle anzuzeigen. Wählen Sie eine Rolle aus, um die Benutzer anzuzeigen, die der Rolle zugewiesen sind. Wenn Ihre Darstellung von der folgenden Abbildung abweicht, lesen Sie den Hinweis unter [Anzeigen von Zuweisungen für privilegierte Rollen](#view-assignments-for-privileged-roles), um zu überprüfen, ob Sie sich in Privileged Identity Management (PIM) befinden.
+    ![Screenshot der Seite „Rollen und Administratoren“](./media/manage-roles-portal/roles-and-administrators.png)
 
-    ![Liste der Rollen im Azure AD-Portal](./media/manage-roles-portal/view-roles-in-azure-active-directory.png)
+1. Wählen Sie eine Rolle aus, um ihre Zuweisungen anzuzeigen.
 
-## <a name="view-my-roles"></a>Anzeigen meiner Rollen
+    Um Ihnen die Suche nach der benötigten Rolle zu vereinfachen, können Sie in Azure AD Teilmengen der Rollen anhand der jeweiligen Rollenkategorien anzeigen. Sehen Sie sich den Filter **Typ** an, mit dem Sie nur die Rollen mit dem ausgewählten Typ anzeigen können.
 
-Sie können auch Ihre eigenen Berechtigungen ohne großen Aufwand anzeigen. Wählen Sie auf der Seite **Rollen und Administratoren** die Option **Ihre Rolle**, um die Rollen anzuzeigen, die Ihnen derzeit zugewiesen sind.
+1. Wählen Sie **Zuweisungen hinzufügen** und dann die Benutzer aus, die Sie dieser Rolle zuweisen möchten.
 
-## <a name="view-assignments-for-privileged-roles"></a>Anzeigen von Zuweisungen für privilegierte Rollen
+    Wenn Ihre Darstellung von der folgenden Abbildung abweicht, lesen Sie den Hinweis unter [Privileged Identity Management (PIM)](#privileged-identity-management-pim), um zu überprüfen, ob Sie PIM verwenden.
 
-Für weitere Verwaltungsfunktionen können Sie **Manage in PIM** (In PIM verwalten) auswählen. Administratoren für privilegierte Rollen können Zuweisungen vom Typ „Permanent“ (in der Rolle stets aktiv) in „Berechtigt“ (nur bei Erweiterung in die Rolle) ändern. Wenn Sie nicht über Privileged Identity Management verfügen, können Sie trotzdem **Manage in PIM** (In PIM verwalten) auswählen, um sich für eine Testversion zu registrieren. Für Privileged Identity Management ist ein [Azure AD Premium P2-Lizenzplan](../privileged-identity-management/subscription-requirements.md) erforderlich.
+    ![Liste der Berechtigungen für eine Administratorrolle](./media/manage-roles-portal/add-assignments.png)
 
-![Liste der Mitglieder einer Administratorrolle](./media/manage-roles-portal/member-list.png)
+1. Wählen Sie **Hinzufügen** aus, um die Rolle zuzuweisen.
+
+## <a name="privileged-identity-management-pim"></a>Privileged Identity Management (PIM)
+
+Sie können **Im PIM verwalten** auswählen, um zusätzliche Verwaltungsfunktionen mit [Azure AD Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) zu verwenden. Administratoren für privilegierte Rollen können Zuweisungen vom Typ „Permanent“ (in der Rolle stets aktiv) in „Berechtigt“ (nur bei Erweiterung in die Rolle) ändern. Wenn Sie nicht über Privileged Identity Management verfügen, können Sie trotzdem **Manage in PIM** (In PIM verwalten) auswählen, um sich für eine Testversion zu registrieren. Für Privileged Identity Management ist ein [Azure AD Premium P2-Lizenzplan](../privileged-identity-management/subscription-requirements.md) erforderlich.
+
+![Screenshot der Seite „Benutzeradministrator – Zuweisungen“ mit ausgewählter Aktion „Im PIM verwalten“](./media/manage-roles-portal/member-list-pim.png)
 
 Wenn Sie globaler Administrator oder Administrator für privilegierte Rollen sind, können Sie ganz einfach Mitglieder hinzufügen oder entfernen, die Liste filtern oder ein Mitglied auswählen, um dessen aktive zugewiesene Rollen anzuzeigen.
 
@@ -51,34 +59,8 @@ Wenn Sie globaler Administrator oder Administrator für privilegierte Rollen sin
 >
 > ![In PIM verwaltete Azure AD-Rollen für Benutzer, die PIM bereits nutzen und über eine Premium P2-Lizenz verfügen](./media/manage-roles-portal/pim-manages-roles-for-p2.png)
 
-## <a name="view-a-users-role-permissions"></a>Anzeigen der Rollenberechtigungen eines Benutzers
-
-Wenn Sie die Mitglieder einer Rolle anzeigen, wählen Sie **Beschreibung** aus, um die vollständige Liste der von der Rollenzuweisung gewährten Berechtigungen anzuzeigen. Die Seite enthält Links zu relevanter Dokumentation, die Ihnen bei der Verwaltung von Verzeichnisrollen als Unterstützung dienen soll.
-
-![Screenshot der Seite „Globaler Administrator | Beschreibung“](./media/manage-roles-portal/role-description.png)
-
-## <a name="download-role-assignments"></a>Herunterladen von Rollenzuweisungen
-
-Um alle Zuweisungen für eine bestimmte Rolle herunterzuladen, wählen Sie auf der Seite **Rollen und Administratoren** eine Rolle aus, und klicken Sie dann auf **Rollenzuweisungen herunterladen**. Es wird eine CSV-Datei heruntergeladen, die Zuweisungen in allen Bereichen für diese Rolle auflistet.
-
-![Herunterladen sämtlicher Zuweisungen für eine Rolle](./media/manage-roles-portal/download-role-assignments.png)
-
-## <a name="assign-a-role"></a>Zuweisen einer Rolle
-
-1. Melden Sie sich mit Berechtigungen vom Typ „Globaler Administrator“ oder Administrator für privilegierte Rollen“ beim [Azure-Portal](https://portal.azure.com) an, und wählen Sie **Azure Active Directory** aus.
-
-1. Wählen Sie **Rollen und Administratoren** aus, um die Liste mit allen verfügbaren Rollen anzuzeigen.
-
-1. Wählen Sie eine Rolle aus, um ihre Zuweisungen anzuzeigen.
-
-    ![Screenshot der Seite „Benutzeradministrator | Zuweisungen“, Aktion „Im PIM verwalten“ ausgewählt](./media/manage-roles-portal/member-list.png)
-
-1. Wählen Sie  **Zuweisungen hinzufügen** und anschließend die Rollen aus, die Sie zuweisen möchten. Für weitere Verwaltungsfunktionen können Sie **Manage in PIM** (In PIM verwalten) auswählen. Wenn Ihre Darstellung von der folgenden Abbildung abweicht, lesen Sie den Hinweis unter [Anzeigen von Zuweisungen für privilegierte Rollen](#view-assignments-for-privileged-roles), um zu überprüfen, ob Sie sich in PIM befinden.
-
-    ![Liste der Berechtigungen für eine Administratorrolle](./media/manage-roles-portal/directory-role-select-role.png)
-
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Im [Forum für Azure AD-Administratorrollen](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032) können Sie sich gerne mit uns in Verbindung setzen.
-* Weitere Informationen zu Rollen und zur Zuweisung von Administratorrollen finden Sie unter [Zuweisen von Administratorrollen](permissions-reference.md).
+* Weitere Informationen zu Rollen finden Sie unter [Integrierte Rollen in Azure AD](permissions-reference.md).
 * Informationen zu Standardbenutzerberechtigungen finden Sie unter [Vergleich von Standardbenutzerberechtigungen für Gäste und Mitglieder](../fundamentals/users-default-permissions.md).

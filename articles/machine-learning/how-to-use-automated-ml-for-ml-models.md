@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 12/20/2020
 ms.topic: conceptual
 ms.custom: how-to, automl
-ms.openlocfilehash: a91a4f3a2e686c8d502093dc41520df32b313209
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 2e06375441d6540d6630cfe9d4d8c3beec558879
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102520631"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103562721"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Erstellen, Überprüfen und Bereitstellen von automatisierten Machine Learning-Modellen mit Azure Machine Learning
 
@@ -37,7 +37,7 @@ Wenn Sie eine auf Python-Code basierende Umgebung bevorzugen, [konfigurieren Sie
 
 ## <a name="get-started"></a>Erste Schritte
 
-1. Melden Sie sich unter https://ml.azure.com bei Azure Machine Learning an. 
+1. Melden Sie sich bei [Azure Machine Learning Studio](https://ml.azure.com) an. 
 
 1. Wählen Sie Ihr Abonnement und Ihren Arbeitsbereich aus. 
 
@@ -198,6 +198,11 @@ So rufen Sie Erklärungen für ein bestimmtes Modell ab:
 ## <a name="deploy-your-model"></a>Bereitstellen Ihres Modells
 
 Sobald Ihnen das beste Modell vorliegt, ist es an der Zeit, das Modell als Webdienst bereitzustellen, um Vorhersagen für neue Daten zu erstellen.
+
+>[!TIP]
+> Wenn Sie ein Modell bereitstellen möchten, das über das `automl`-Paket mit dem Python SDK generiert wird, müssen Sie [Ihr Modell im Arbeitsbereich registrieren](how-to-deploy-and-where.md?tabs=python#register-a-model-from-an-azure-ml-training-run-1). 
+>
+> Nachdem Sie Ihr Modell registriert haben, navigieren Sie im Studio zu diesem, indem Sie im linken Bereich auf **Modelle** klicken. Sobald Sie Ihr Modell geöffnet haben, können Sie oben auf **Bereitstellen** klicken und dann die Anweisungen ausführen, die unter **Schritt 2** des Abschnitts **Bereitstellen Ihres Modells** beschrieben werden.
 
 Automatisiertes maschinelles Lernen unterstützt Sie dabei, das Modell bereitzustellen, ohne Code zu schreiben:
 

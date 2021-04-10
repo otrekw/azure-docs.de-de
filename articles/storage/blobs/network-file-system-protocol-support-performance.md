@@ -9,12 +9,12 @@ ms.date: 02/23/2021
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: f8a780afba1f5703fbe457e113ed1b455f1e9b64
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 28fb5ffc0ce9c554294eaca9e460694856cb95a0
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101743374"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104589870"
 ---
 # <a name="network-file-system-nfs-30-performance-considerations-in-azure-blob-storage-preview"></a>Überlegungen zur NFS 3.0-Leistung (Network File System) in Azure Blob Storage (Vorschau)
 
@@ -35,7 +35,7 @@ Das folgende Diagramm zeigt, wie die Bandbreite zunimmt, wenn Sie mehr Clients h
 Das folgende Diagramm zeigt den Effekt, wenn dieser Vorgang auf ein Konto in der Leistungsstufe „Premium“ angewendet wird.
 
 > [!div class="mx-imgBorder"]
-> ![Standardleistung](./media/network-file-system-protocol-support-performance/premium-performance-tier.png)
+> ![Premium-Leistung](./media/network-file-system-protocol-support-performance/premium-performance-tier.png)
 
 ## <a name="use-premium-performance-tier-for-small-scale-applications"></a>Verwenden der Leistungsstufe „Premium“ für kleinere Anwendungen
 
@@ -46,7 +46,7 @@ Jeder Balken im folgenden Diagramm zeigt den Unterschied in der erreichten Bandb
 > [!div class="mx-imgBorder"]
 > ![Relative Leistung](./media/network-file-system-protocol-support-performance/relative-performance.png)
 
-## <a name="avoid-frequent-overwrites-on-date"></a>Vermeiden von häufigen Überschreibungen der Daten
+## <a name="avoid-frequent-overwrites-on-data"></a>Vermeiden von häufigem Überschreiben der Daten
 
 Ein Überschreibungsvorgang dauert länger als ein neuer Schreibvorgang. Das liegt daran, dass ein NFS-Überschreibungsvorgang – insbesondere eine direkte Dateiteilbearbeitung – eine Kombination aus mehreren zugrunde liegenden Blobvorgängen ist: ein Lesevorgang, ein Änderungsvorgang und ein Schreibvorgang. Aus diesem Grund ist eine Anwendung, die häufige direkte Bearbeitungen erfordert, für NFS-fähige Blobspeicherkonten nicht geeignet. 
 

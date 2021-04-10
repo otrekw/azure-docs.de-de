@@ -3,14 +3,14 @@ title: JavaScript-Entwicklerreferenz für Azure Functions
 description: Erfahren Sie, wie Sie mithilfe von JavaScript Funktionen entwickeln können.
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
-ms.date: 11/17/2020
+ms.date: 03/07/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: 71fe2d342f928c9d50a3fcf3f5367c21d7fba2ff
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 971fb2a3239614a708e14c109e567081f1ec9ff6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100591038"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102614903"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>JavaScript-Entwicklerhandbuch für Azure Functions
 
@@ -507,20 +507,20 @@ Die folgende Tabelle zeigt die aktuell von den jeweiligen Hauptversionen der Fun
 
 | Functions-Version | Node-Version (Windows) | Node-Version (Linux) |
 |---|---| --- |
+| 3.x (empfohlen) | `~14` (empfohlen)<br/>`~12`<br/>`~10` | `node|14` (empfohlen)<br/>`node|12`<br/>`node|10` |
+| 2.x  | `~12`<br/>`~10`<br/>`~8` | `node|10`<br/>`node|8`  |
 | 1.x | 6.11.2 (durch die Laufzeit gesperrt) | – |
-| 2.x  | `~8`<br/>`~10` (empfohlen)<br/>`~12` | `node|8`<br/>`node|10` (empfohlen)  |
-| 3.x | `~10`<br/>`~12` (empfohlen)<br/>`~14` (Vorschau)  | `node|10`<br/>`node|12` (empfohlen)<br/>`node|14` (Vorschau) |
 
 Die aktuell von der Laufzeit verwendete Version ermitteln Sie, indem Sie `process.version` aus einer beliebigen Funktion protokollieren.
 
 ### <a name="setting-the-node-version"></a>Festlegen der Node-Version
 
-Legen Sie für Windows-Funktions-Apps die Zielversion in Azure fest, indem Sie die [App-Einstellung](functions-how-to-use-azure-function-app-settings.md#settings) `WEBSITE_NODE_DEFAULT_VERSION` auf eine unterstützte LTS-Version wie `~12` festlegen.
+Legen Sie für Windows-Funktions-Apps die Zielversion in Azure fest, indem Sie die [App-Einstellung](functions-how-to-use-azure-function-app-settings.md#settings) `WEBSITE_NODE_DEFAULT_VERSION` auf eine unterstützte LTS-Version wie `~14` festlegen.
 
 Führen Sie für Linux-Funktions-Apps den folgenden Azure CLI-Befehl aus, um die Node-Version zu aktualisieren.
 
 ```bash
-az functionapp config set --linux-fx-version "node|12" --name "<MY_APP_NAME>" --resource-group "<MY_RESOURCE_GROUP_NAME>"
+az functionapp config set --linux-fx-version "node|14" --name "<MY_APP_NAME>" --resource-group "<MY_RESOURCE_GROUP_NAME>"
 ```
 
 ## <a name="dependency-management"></a>Verwaltung von Abhängigkeiten
@@ -597,6 +597,23 @@ module.exports = async function (context, myTimer) {
 
     context.log("AzureWebJobsStorage: " + process.env["AzureWebJobsStorage"]);
     context.log("WEBSITE_SITE_NAME: " + process.env["WEBSITE_SITE_NAME"]);
+};
+```
+
+## <a name="ecmascript-modules-preview"></a><a name="ecmascript-modules"></a>ECMAScript-Module (Vorschau)
+
+> [!NOTE]
+> Da ECMAScript-Module derzeit in Node.js 14 als *experimentell* gekennzeichnet sind, stehen sie in Azure Functions als Previewfunktion für Node.js 14 zur Verfügung. Bis die Unterstützung für ECMAScript-Module in Node.js 14 als *stabil* gekennzeichnet wird, müssen Sie Änderungen an der API oder am Verhalten einplanen.
+
+[ECMAScript-Module](https://nodejs.org/docs/latest-v14.x/api/esm.html#esm_modules_ecmascript_modules) (ES-Module) sind das neue offizielle Standardmodulsystem für Node.js. Bisher wird in den Codebeispielen in diesem Artikel die CommonJS-Syntax verwendet. Wenn Sie Azure Functions in Node.js 14 ausführen, können Sie zum Schreiben Ihrer Funktionen auch die Syntax des ES-Moduls verwenden.
+
+Wenn Sie ES-Module in einer Funktion verwenden möchten, ändern Sie den Dateinamen so, dass als Erweiterung `.mjs` verwendet wird. Die folgende Beispieldatei *index.mjs* ist eine per HTTP ausgelöste Funktion, die mit der ES-Modulsyntax die Bibliothek `uuid` importiert und einen Wert zurückgibt.
+
+```js
+import { v4 as uuidv4 } from 'uuid';
+
+export default async function (context, req) {
+    context.res.body = uuidv4();
 };
 ```
 
