@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 keywords: Cognitive Services, kognitive Intelligenz, kognitive Lösungen, KI-Dienste
 ms.topic: quickstart
-ms.date: 09/14/2020
+ms.date: 3/22/2021
 ms.author: aahi
-ms.openlocfilehash: c1e8b260f6c06d8f26f5ba99b4fb02edfa5e8656
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.openlocfilehash: 08ff2f416a00002cde5767111ba5a6824a721324
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103472111"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104868170"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>Schnellstart: Erstellen einer Cognitive Services-Ressource mithilfe der Azure-Befehlszeilenschnittstelle (CLI)
 
@@ -196,7 +196,8 @@ az group delete --name cognitive-services-resource-group
 
 ## <a name="see-also"></a>Weitere Informationen
 
-* [Authentifizieren von Anforderungen an Azure Cognitive Services](authentication.md)
-* [Was ist Azure Cognitive Services?](./what-are-cognitive-services.md)
-* [Unterstützung für natürliche Sprachen in Azure Cognitive Services](language-support.md)
-* [Containerunterstützung in Azure Cognitive Services](cognitive-services-container-support.md)
+* Informationen zum sicheren Arbeiten mit Cognitive Services finden Sie unter **[Authentifizieren von Anforderungen an Azure Cognitive Services](authentication.md)** .
+* Eine Liste der verschiedenen Kategorien in Cognitive Services finden Sie unter **[Was ist Azure Cognitive Services?](./what-are-cognitive-services.md)** .
+* Eine Liste der natürlichen Sprachen, die von Cognitive Services unterstützt werden, finden Sie unter **[Unterstützung für natürliche Sprachen in Azure Cognitive Services](language-support.md)** .
+* Informationen zur lokalen Verwendung von Cognitive Services finden Sie unter **[Azure Cognitive Services-Container](cognitive-services-container-support.md)** .
+* Informationen zum Schätzen der Kosten für die Verwendung von Cognitive Services finden Sie unter **[Planen und Verwalten von Kosten für Azure Cognitive Services](plan-manage-costs.md)** .

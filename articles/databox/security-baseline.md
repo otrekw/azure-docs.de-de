@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 0a05a4692bb4a09213532ed29b2501f6b8056857
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 63b99cdeb7606798caa1b1d997dbb9f609c033b0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101721989"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105562187"
 ---
 # <a name="azure-security-baseline-for-azure-data-box"></a>Azure-Sicherheitsbaseline für Azure Data Box
 
@@ -88,7 +88,7 @@ Sie können beim Erstellen Ihres Auftrags festlegen, wer auf diesen Auftrag zugr
 
 - [Konfigurieren von Azure RBAC in Arbeitsmappen](../sentinel/quickstart-get-visibility.md)
 
-- [Grundlegendes zum Einrichten der Zugriffssteuerung für den Auftrag](https://docs.microsoft.com/azure/databox/data-box-logs#set-up-access-control-on-the-order)
+- [Grundlegendes zum Einrichten der Zugriffssteuerung für den Auftrag](./data-box-logs.md#set-up-access-control-on-the-order)
 
 **Verantwortlichkeit**: Kunde
 
@@ -172,7 +172,7 @@ Verwenden Sie zusätzlich Azure AD-Risikoerkennungen, um Warnungen und Berichte 
 
 Für die Data Box-Appliance wird dies in Echtzeit nicht unterstützt. Sie können die Protokolle am Ende des Auftrags überprüfen.
 
-- [Grundlegendes zur Azure AD-Berichterstellung](/azure/active-directory/reports-monitoring/)
+- [Grundlegendes zur Azure AD-Berichterstellung](../active-directory/reports-monitoring/index.yml)
 
 - [Verwenden von Zugriffsüberprüfungen für Azure-Identitäten](../active-directory/governance/access-reviews-overview.md)
 
@@ -190,7 +190,7 @@ Sie können diesen Prozess optimieren, indem Sie Diagnoseeinstellungen für Azur
 
 Azure Data Box-Dienstprotokolle werden nicht in den Log Analytics-Arbeitsbereich geschrieben.
 
-- [Integrieren von Azure-Aktivitätsprotokollen in Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Integrieren von Azure-Aktivitätsprotokollen in Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 - [Schnellstart: Ausführen des Onboardings für Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -216,7 +216,7 @@ Azure Data Box-Dienstprotokolle werden nicht in den Log Analytics-Arbeitsbereich
 
 **Leitfaden**: Bald verfügbar. Die Kunden-Lockbox wird für Azure Data Box noch nicht unterstützt. 
 
-- [Unterstützte Dienste und Szenarios bei allgemeiner Verfügbarkeit](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
+- [Unterstützte Dienste und Szenarios bei allgemeiner Verfügbarkeit](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
 **Verantwortlichkeit**: Kunde
 
@@ -254,7 +254,7 @@ Azure Data Box-Dienstprotokolle werden nicht in den Log Analytics-Arbeitsbereich
 
 - [Grundlegendes zu den ersten Schritten mit Azure Data Box](data-box-quickstart-portal.md)
 
-- [Grundlegendes zum Einrichten der Zugriffssteuerung](https://docs.microsoft.com/azure/databox/data-box-logs#set-up-access-control-on-the-order)
+- [Grundlegendes zum Einrichten der Zugriffssteuerung](./data-box-logs.md#set-up-access-control-on-the-order)
 
 **Verantwortlichkeit**: Kunde
 
@@ -281,7 +281,7 @@ Außerdem schützt Azure Data Box den Schlüssel für die Geräteentsperrung (au
 
 **Leitfaden**: Verwenden Sie Azure Monitor mit dem Azure-Aktivitätsprotokoll, um Warnungen für den Fall zu erstellen, dass Änderungen an Azure Data Box und anderen kritischen bzw. zugehörigen Ressourcen vorgenommen werden.
 
-- [Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls](/azure/azure-monitor/platform/alerts-activity-log)
+- [Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Verantwortlichkeit**: Kunde
 
@@ -459,5 +459,5 @@ Kennzeichnen Sie außerdem die Abonnements (z. B. Produktion, Nicht-Produktion)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Sehen Sie sich die [Übersicht über Version 2 des Azure-Sicherheitsvergleichstests](/azure/security/benchmarks/overview) an.
-- Erfahren Sie mehr über [Azure-Sicherheitsbaselines](/azure/security/benchmarks/security-baselines-overview).
+- Sehen Sie sich die [Übersicht über Version 2 des Azure-Sicherheitsvergleichstests](../security/benchmarks/overview.md) an.
+- Erfahren Sie mehr über [Azure-Sicherheitsbaselines](../security/benchmarks/security-baselines-overview.md).

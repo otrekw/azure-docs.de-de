@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/03/2021
 ms.author: bwren
-ms.openlocfilehash: 89264bc17180aaf47611aef73c9fd20427bce104
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 5048364aed1eea8d0c32d9134a4ba5a22d28b989
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104772279"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105560453"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Verwalten von Nutzung und Kosten mit Azure Monitor-Protokollen    
 
@@ -93,7 +93,7 @@ Gehen Sie folgendermaßen vor, um den Log Analytics-Tarif Ihres Arbeitsbereichs 
     
 3. Klicken Sie nach Überprüfung der geschätzten Kosten basierend auf der Nutzung der letzten 31 Tage auf **Auswählen**, wenn Sie sich für einen Wechsel des Tarifs entscheiden.  
 
-Es ist auch möglich, den [Tarif über Azure Resource Manager festzulegen](../samples/resource-manager-workspace.md). Verwenden Sie hierzu den Parameter `sku` (`pricingTier` in der Azure Resource Manager-Vorlage). 
+Es ist auch möglich, den [Tarif über Azure Resource Manager festzulegen](./resource-manager-workspace.md). Verwenden Sie hierzu den Parameter `sku` (`pricingTier` in der Azure Resource Manager-Vorlage). 
 
 ## <a name="legacy-pricing-tiers"></a>Legacytarife
 
@@ -145,7 +145,7 @@ So legen Sie die Standardaufbewahrungsdauer für Ihren Arbeitsbereich fest:
 
 Wenn die Aufbewahrungsdauer gesenkt wird, besteht ein Toleranzzeitraum von mehreren Tagen, bevor Daten, die älter als die Datenaufbewahrungseinstellung sind, entfernt werden. 
 
-Auf der Seite **Datenaufbewahrung** können Sie die Einstellung für die Datenaufbewahrung auf 30, 31, 60, 90, 120, 180, 270, 365, 550 und 730 Tage festlegen. Wenn eine andere Einstellung erforderlich ist, kann diese mit [Azure Resource Manager](../samples/resource-manager-workspace.md) und dem Parameter `retentionInDays` konfiguriert werden. Wenn Sie die Datenaufbewahrung auf 30 Tage festlegen, können Sie mit dem Parameter `immediatePurgeDataOn30Days` eine sofortige Bereinigung älterer Daten auslösen (und damit den Toleranzzeitraum von mehreren Tagen außer Kraft setzen). Dies kann in Szenarien nützlich sein, in denen für die Compliance das direkte Entfernen von Daten erforderlich ist. Diese sofortige Bereinigung wird ausschließlich über Azure Resource Manager verfügbar gemacht. 
+Auf der Seite **Datenaufbewahrung** können Sie die Einstellung für die Datenaufbewahrung auf 30, 31, 60, 90, 120, 180, 270, 365, 550 und 730 Tage festlegen. Wenn eine andere Einstellung erforderlich ist, kann diese mit [Azure Resource Manager](./resource-manager-workspace.md) und dem Parameter `retentionInDays` konfiguriert werden. Wenn Sie die Datenaufbewahrung auf 30 Tage festlegen, können Sie mit dem Parameter `immediatePurgeDataOn30Days` eine sofortige Bereinigung älterer Daten auslösen (und damit den Toleranzzeitraum von mehreren Tagen außer Kraft setzen). Dies kann in Szenarien nützlich sein, in denen für die Compliance das direkte Entfernen von Daten erforderlich ist. Diese sofortige Bereinigung wird ausschließlich über Azure Resource Manager verfügbar gemacht. 
 
 Arbeitsbereiche mit einer Datenaufbewahrung von 30 Tagen behalten Daten möglicherweise tatsächlich für 31 Tage bei. Wenn es zwingend erforderlich ist, dass Daten nur 30 Tage lang aufbewahrt werden, legen Sie mit Azure Resource Manager und dem Parameter `immediatePurgeDataOn30Days` die Datenaufbewahrung auf 30 Tage fest.  
 
@@ -322,7 +322,7 @@ Die Anzahl der Einheiten auf der Rechnung ist in Einheiten von Knoten × Monate 
 
 
 > [!TIP]
-> Verwenden Sie diese `find`-Abfragen mit Bedacht, da umfassende Scans verschiedener Datentypen [ressourcenintensiv](../log-query/query-optimization.md#query-performance-pane) sind. Wenn Sie keine Ergebnisse **pro Computer** benötigen, dann führen Sie Abfragen nach dem Datentyp „Usage“ aus (siehe unten).
+> Verwenden Sie diese `find`-Abfragen mit Bedacht, da umfassende Scans verschiedener Datentypen [ressourcenintensiv](./query-optimization.md#query-performance-pane) sind. Wenn Sie keine Ergebnisse **pro Computer** benötigen, dann führen Sie Abfragen nach dem Datentyp „Usage“ aus (siehe unten).
 
 ## <a name="understanding-ingested-data-volume"></a>Grundlegendes zur erfassten Datenmenge
 
@@ -406,7 +406,7 @@ find where TimeGenerated > ago(24h) project _IsBillable, Computer
 ```
 
 > [!TIP]
-> Verwenden Sie diese `find`-Abfragen mit Bedacht, da umfassende Scans verschiedener Datentypen [ressourcenintensiv](../log-query/query-optimization.md#query-performance-pane) sind. Wenn Sie keine Ergebnisse **pro Computer** benötigen, dann führen Sie Abfragen nach dem Datentyp „Usage“ aus.
+> Verwenden Sie diese `find`-Abfragen mit Bedacht, da umfassende Scans verschiedener Datentypen [ressourcenintensiv](./query-optimization.md#query-performance-pane) sind. Wenn Sie keine Ergebnisse **pro Computer** benötigen, dann führen Sie Abfragen nach dem Datentyp „Usage“ aus.
 
 ### <a name="data-volume-by-azure-resource-resource-group-or-subscription"></a>Datenmenge nach Azure-Ressource, Ressourcengruppe oder Abonnement
 
@@ -421,10 +421,9 @@ find where TimeGenerated > ago(24h) project _ResourceId, _BilledSize, _IsBillabl
 Für Daten von in Azure gehosteten Knoten können Sie die **Größe** der erfassten Daten __pro Azure-Abonnement__ mithilfe der Eigenschaft `_SubscriptionId` wie folgt abrufen:
 
 ```kusto
-find where TimeGenerated > ago(24h) project _ResourceId, _BilledSize, _IsBillable
+find where TimeGenerated > ago(24h) project _BilledSize, _IsBillable, _SubscriptionId
 | where _IsBillable == true 
-| summarize BillableDataBytes = sum(_BilledSize) by _ResourceId
-| summarize BillableDataBytes = sum(BillableDataBytes) by _SubscriptionId | sort by BillableDataBytes nulls last
+| summarize BillableDataBytes = sum(_BilledSize) by _SubscriptionId | sort by BillableDataBytes nulls last
 ```
 
 Zum Abrufen des Datenvolumens nach Ressourcengruppe können Sie `_ResourceId` analysieren:
@@ -445,7 +444,7 @@ Bei Bedarf können Sie auch `_ResourceId` auf folgende Weise noch vollständiger
 ```
 
 > [!TIP]
-> Verwenden Sie diese `find`-Abfragen mit Bedacht, da umfassende Scans verschiedener Datentypen [ressourcenintensiv](../log-query/query-optimization.md#query-performance-pane) sind. Wenn Sie keine Ergebnisse pro Abonnement, Ressourcengruppe oder Ressourcenname benötigen, dann führen Sie Abfragen nach dem Datentyp „Usage“ aus.
+> Verwenden Sie diese `find`-Abfragen mit Bedacht, da umfassende Scans verschiedener Datentypen [ressourcenintensiv](./query-optimization.md#query-performance-pane) sind. Wenn Sie keine Ergebnisse pro Abonnement, Ressourcengruppe oder Ressourcenname benötigen, dann führen Sie Abfragen nach dem Datentyp „Usage“ aus.
 
 > [!WARNING]
 > Einige der Felder vom Typ „Nutzungsdaten“ sind zwar weiterhin im Schema enthalten, jedoch veraltet, und ihre Werte werden nicht mehr aufgefüllt. Dies sind neben **Computer** Felder in Bezug auf die Erfassung: **TotalBatches**, **BatchesWithinSla**, **BatchesOutsideSla**, **BatchesCapped** und **AverageProcessingTimeMs**.
@@ -479,7 +478,7 @@ Hier finden Sie einige Vorschläge zum Verringern der erfassten Protokolle:
 
 | Quelle mit hohem Datenvolumen | Reduzieren des Datenvolumens |
 | -------------------------- | ------------------------- |
-| Container Insights         | [Konfigurieren Sie Container Insights](../insights/container-insights-cost.md#controlling-ingestion-to-reduce-cost), um nur die Daten zu erfassen, die Sie benötigen. |
+| Container Insights         | [Konfigurieren Sie Container Insights](../containers/container-insights-cost.md#controlling-ingestion-to-reduce-cost), um nur die Daten zu erfassen, die Sie benötigen. |
 | Sicherheitsereignisse            | Wählen Sie [Sicherheitsereignisse vom Typ „Allgemein“ oder „Minimal“](../../security-center/security-center-enable-data-collection.md#data-collection-tier) aus. <br> Ändern der Sicherheitsüberwachungsrichtlinie, sodass nur benötigte Ereignisse erfasst werden. Überprüfen Sie insbesondere die Notwendigkeit zum Erfassen von Ereignissen für die <br> - [Überwachung der Filterplattform](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772749(v=ws.10)) <br> - [Überwachung der Registrierung](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941614(v%3dws.10))<br> - [Überwachung des Dateisystems](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772661(v%3dws.10))<br> - [Überwachung des Kernelobjekts](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941615(v%3dws.10))<br> - [Überwachung der Handleänderung](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772626(v%3dws.10))<br> - Überwachung von Wechselmedien |
 | Leistungsindikatoren       | Ändern Sie [Leistungsindikatoren-Konfiguration](../agents/data-sources-performance-counters.md) in: <br> - Reduzieren der Sammlungshäufigkeit <br> - Reduzieren der Anzahl von Leistungsindikatoren |
 | Ereignisprotokolle                 | Ändern Sie die [Ereignisprotokollkonfiguration](../agents/data-sources-windows-events.md) in: <br> - Reduzieren der Anzahl von erfassten Ereignisprotokollen <br> - Ausschließliches Erfassen von erforderlichen Ereignisebenen. Erfassen Sie beispielsweise keine Ereignisse der Ebene *Informationen*. |
@@ -487,8 +486,8 @@ Hier finden Sie einige Vorschläge zum Verringern der erfassten Protokolle:
 | AzureDiagnostics           | Ändern Sie die [Ressourcenprotokollsammlung](../essentials/diagnostic-settings.md#create-in-azure-portal), um Folgendes zu erreichen: <br> - Verringern der Anzahl von Ressourcen, die Protokolle an Log Analytics senden <br> - Ausschließliches Erfassen von erforderlichen Protokollen |
 | Lösungsdaten von Computern, für die die Lösung nicht erforderlich ist | Verwenden Sie die [Zielgruppenadressierung für Lösungen](../insights/solution-targeting.md), um Daten nur für erforderliche Gruppen mit Computern zu erfassen. |
 | Application Insights | Überprüfungsoptionen für [https://docs.microsoft.com/azure/azure-monitor/app/pricing#managing-your-data-volume](managing Application Insights data volume) |
-| [Azure SQL-Analyse](https://docs.microsoft.com/azure/azure-monitor/insights/azure-sql) | Passen Sie die Überwachungseinstellungen mit [Set-AzSqlServerAudit](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserveraudit) an. |
-| Azure Sentinel | Überprüfen Sie alle [Sentinel-Datenquellen](https://docs.microsoft.com/azure/sentinel/connect-data-sources), die kürzlich als Quellen für zusätzliches Datenvolumen aktiviert wurden. |
+| [Azure SQL-Analyse](../insights/azure-sql.md) | Passen Sie die Überwachungseinstellungen mit [Set-AzSqlServerAudit](/powershell/module/az.sql/set-azsqlserveraudit) an. |
+| Azure Sentinel | Überprüfen Sie alle [Sentinel-Datenquellen](../../sentinel/connect-data-sources.md), die kürzlich als Quellen für zusätzliches Datenvolumen aktiviert wurden. |
 
 ### <a name="getting-nodes-as-billed-in-the-per-node-pricing-tier"></a>Abrufen von Knoten gemäß der Abrechnung im Tarif „Pro Knoten“
 

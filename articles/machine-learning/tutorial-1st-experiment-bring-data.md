@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 02/11/2021
 ms.custom: tracking-python
-ms.openlocfilehash: bbe28f4fda32ce7d55a437e4ac944dc206f436ee
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: ecabfde624ba6d3393bbf6d5480b83dbb5303c5e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102522358"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104604557"
 ---
 # <a name="tutorial-use-your-own-data-part-4-of-4"></a>Tutorial: Verwenden eigener Daten (Teil 4 von 4)
 
@@ -39,7 +39,12 @@ In diesem Tutorial führen Sie Folgendes durch:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Abschluss von [Teil 3](tutorial-1st-experiment-sdk-train.md) der Reihe.
+Sie benötigen die Daten und eine aktualisierte Version der PyTorch-Umgebung, die Sie im vorherigen Tutorial erstellt haben.  Stellen Sie sicher, dass Sie die folgenden Schritte ausgeführt haben:
+
+1. [Erstellen des Trainingsskripts](tutorial-1st-experiment-sdk-train.md#create-training-scripts)
+1. [Erstellen einer neuen Python-Umgebung](tutorial-1st-experiment-sdk-train.md#environment)
+1. [Lokales Testen](tutorial-1st-experiment-sdk-train.md#test-local)
+1. [Aktualisieren der Conda-Umgebungsdatei](tutorial-1st-experiment-sdk-train.md#update-the-conda-environment-file)
 
 ## <a name="adjust-the-training-script"></a>Anpassen des Trainingsskripts
 
@@ -75,6 +80,7 @@ optimizer = optim.SGD(
     momentum=args.momentum,    # get momentum from command-line argument
 )
 ```
+
 > [!div class="nextstepaction"]
 > [Ich habe das Trainingsskript angepasst.](?success=adjust-training-script#test-locally) [Es ist ein Problem aufgetreten.](https://www.research.net/r/7C6W7BQ?issue=adjust-training-script)
 
@@ -84,28 +90,27 @@ Ihr Skript akzeptiert nun _data path_ als Argument. Testen Sie es zunächst loka
 
 :::image type="content" source="media/tutorial-1st-experiment-bring-data/directory-structure.png" alt-text="Verzeichnisstruktur mit den Unterverzeichnissen „.azureml“, „data“ und „src“":::
 
+1. Beenden Sie die aktuelle Umgebung.
 
-Wenn Sie `train.py` im vorherigen Tutorial nicht lokal ausgeführt haben, ist das `data/`-Verzeichnis nicht vorhanden. Führen Sie in diesem Fall die `torchvision.datasets.CIFAR10` -Methode lokal mit `download=True` im `train.py`-Skript aus.
+    ```bash
+    conda deactivate
 
-Beenden Sie bei der lokalen Ausführung außerdem die Tutorialumgebung, und aktivieren Sie die neue Conda-Umgebung:
+1. Now create and activate the new environment.  This will rebuild the pytorch-aml-env with the [updated environment file](tutorial-1st-experiment-sdk-train.md#update-the-conda-environment-file)
 
-```bash
-conda deactivate                # If you are still using the tutorial environment, exit it
-```
 
-```bash
-conda env create -f .azureml/pytorch-env.yml    # create the new conda environment with updated dependencies
-```
+    ```bash
+    conda env create -f .azureml/pytorch-env.yml    # create the new conda environment with updated dependencies
+    ```
 
-```bash
-conda activate pytorch-aml-env          # activate new conda environment
-```
+    ```bash
+    conda activate pytorch-aml-env          # activate new conda environment
+    ```
 
-Zum lokalen Ausführen des geänderten Trainingsskripts nehmen Sie den folgenden Aufruf vor:
+1. Führen Sie abschließend das geänderte Trainingsskript lokal aus.
 
-```bash
-python src/train.py --data_path ./data --learning_rate 0.003 --momentum 0.92
-```
+    ```bash
+    python src/train.py --data_path ./data --learning_rate 0.003 --momentum 0.92
+    ```
 
 Sie können den Download des CIFAR10-Datasets vermeiden, indem Sie einen lokalen Pfad zu den Daten übergeben. Sie können auch mit verschiedenen Werten für die Hyperparameter _learning rate_ und _momentum_ experimentieren, ohne sie im Trainingsskript hartcodieren zu müssen.
 

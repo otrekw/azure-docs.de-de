@@ -1,24 +1,24 @@
 ---
-title: Kopieren von Daten in und aus Azure Database for MySQL
-description: Es wird beschrieben, wie Sie Daten mit einer Kopieraktivität in einer Azure Data Factory-Pipeline für Azure Database for MySQL kopieren.
+title: Kopieren und Transformieren von Daten in Azure Database for MySQL
+description: Hier erfahren Sie, wie Sie Daten in Azure Database for MySQL mithilfe von Azure Data Factory kopieren und transformieren.
 ms.author: jingwang
 author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/25/2019
-ms.openlocfilehash: 4b6cc13343a7ca7af1bba84ed84d2ce5c8387b1f
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 03/10/2021
+ms.openlocfilehash: 4d13f6f435a21b467cae1b8e14211a001792787f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100381374"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103012603"
 ---
-# <a name="copy-data-to-and-from-azure-database-for-mysql-using-azure-data-factory"></a>Kopieren von Daten für Azure Database for MySQL mit Azure Data Factory
+# <a name="copy-and-transform-data-in-azure-database-for-mysql-by-using-azure-data-factory"></a>Kopieren und Transformieren von Daten in Azure Database for MySQL mit Azure Data Factory
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus Azure Database for MySQL zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
+In diesem Artikel wird beschrieben, wie Sie Daten mithilfe der Copy-Aktivität in Azure Data Factory aus und in Azure Database for MySQL kopieren sowie Daten mit einem Datenfluss in Azure Database for MySQL transformieren. Informationen zu Azure Data Factory finden Sie im [Einführungsartikel](introduction.md).
 
 Dieser Connector ist speziell auf den [Dienst „Azure Database for MySQL“](../mysql/overview.md) ausgelegt. Verwenden Sie [MySQL-Connector](connector-mysql.md), um Daten aus der generischen MySQL-Datenbank zu kopieren, die lokal oder in der Cloud angeordnet ist.
 
@@ -27,11 +27,8 @@ Dieser Connector ist speziell auf den [Dienst „Azure Database for MySQL“](..
 Dieser Azure Database for MySQL-Connector wird für folgende Aktivitäten unterstützt:
 
 - [Kopieraktivität](copy-activity-overview.md) mit [unterstützter Quellen/Senken-Matrix](copy-activity-overview.md)
+- [Mapping Data Flow](concepts-data-flow-overview.md)
 - [Lookup-Aktivität](control-flow-lookup-activity.md)
-
-Sie können Daten aus Azure Database for MySQL in beliebige unterstützte Senkendatenspeicher kopieren. Alternativ können Sie Daten auch aus jedem beliebigen unterstützten Quelldatenspeicher in Azure Database for MySQL kopieren. Eine Liste der Datenspeicher, die als Quellen oder Senken für die Kopieraktivität unterstützt werden, finden Sie in der Tabelle [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
-
-Azure Data Factory enthält einen integrierten Treiber zum Sicherstellen der Konnektivität. Daher müssen Sie mit diesem Connector keinen Treiber manuell installieren.
 
 ## <a name="getting-started"></a>Erste Schritte
 
@@ -217,6 +214,63 @@ Beim Kopieren von Daten nach Azure Database for MySQL werden die folgenden Eigen
         }
     }
 ]
+```
+
+## <a name="mapping-data-flow-properties"></a>Eigenschaften von Mapping Data Flow
+
+Beim Transformieren von Daten in einen Zuordnungsdatenfluss können Sie über Azure Database for MySQL Tabellen lesen und in diese schreiben. Weitere Informationen finden Sie unter [Quellentransformation](data-flow-source.md) und [Senkentransformation](data-flow-sink.md) in Zuordnungsdatenflüssen. Sie können ein Azure Database for MySQL-Dataset oder ein [Inlinedataset](data-flow-source.md#inline-datasets) als Quell- und Senkentyp verwenden.
+
+### <a name="source-transformation"></a>Quellentransformation
+
+In der folgenden Tabelle werden die von der Azure Database for PostgreSQL-Quelle unterstützten Eigenschaften aufgeführt. Sie können diese Eigenschaften auf der Registerkarte **Quelloptionen** bearbeiten.
+
+| Name | BESCHREIBUNG | Erforderlich | Zulässige Werte | Datenflussskript-Eigenschaft |
+| ---- | ----------- | -------- | -------------- | ---------------- |
+| Tabelle | Wenn Sie „Tabelle“ als Eingabe auswählen, ruft der Datenfluss alle Daten aus der im Dataset angegebenen Tabelle ab. | Nein | - |*(nur für Inlinedataset)*<br>tableName |
+| Abfrage | Wenn Sie „Abfrage“ als Eingabe auswählen, geben Sie eine SQL-Abfrage zum Abrufen von Daten aus der Quelle an, die Vorrang vor jeder im Dataset angegebenen Tabelle hat. Die Verwendung von Abfragen stellt eine gute Möglichkeit dar, um die Zeilen für Tests oder Suchvorgänge zu verringern.<br><br>Die **Order By**-Klausel wird nicht unterstützt. Sie können aber eine vollständige SELECT FROM-Anweisung festlegen. Sie können auch benutzerdefinierte Tabellenfunktionen verwenden. **select * from udfGetData()** ist eine benutzerdefinierte Funktion in SQL, mit der eine Tabelle zurückgegeben wird, die Sie im Datenfluss verwenden können.<br>Abfragebeispiel: `select * from mytable where customerId > 1000 and customerId < 2000` oder `select * from "MyTable"`.| Nein | String | Abfrage |
+| Batchgröße | Geben Sie eine Batchgröße an, um große Datenmengen in Batches zu segmentieren. | Nein | Integer | batchSize |
+| Isolationsstufe | Wählen Sie eine der folgenden Isolationsstufen aus:<br>– Lesen zugesichert<br>– Lesen nicht zugesichert (Standard)<br>– Wiederholbarer Lesevorgang<br>– Serialisierbar<br>– Keine (Isolationsstufe ignorieren) | Nein | <small>READ_COMMITTED<br/>READ_UNCOMMITTED<br/>REPEATABLE_READ<br/>SERIALIZABLE<br/>NONE</small> |isolationLevel |
+
+#### <a name="azure-database-for-mysql-source-script-example"></a>Beispielskript für die Azure DB for MySQL-Quelle
+
+Wenn Sie Azure Database for MySQL als Quelltyp verwenden, sieht das zugehörige Datenflussskript wie folgt aus:
+
+```
+source(allowSchemaDrift: true,
+    validateSchema: false,
+    isolationLevel: 'READ_UNCOMMITTED',
+    query: 'select * from mytable',
+    format: 'query') ~> AzureMySQLSource
+```
+
+### <a name="sink-transformation"></a>Senkentransformation
+
+In der folgenden Tabelle werden die Eigenschaften aufgeführt, die von der Azure Database for MySQL-Senke unterstützt werden. Sie können diese Eigenschaften auf der Registerkarte **Senkenoptionen** bearbeiten.
+
+| Name | BESCHREIBUNG | Erforderlich | Zulässige Werte | Datenflussskript-Eigenschaft |
+| ---- | ----------- | -------- | -------------- | ---------------- |
+| Updatemethode | Geben Sie an, welche Vorgänge für das Datenbankziel zulässig sind. Standardmäßig sind lediglich Einfügevorgänge zulässig.<br>Um Aktualisierungs-, Upsert- oder Löschaktionen auf Zeilen anzuwenden, muss eine [Zeilenänderungstransformation](data-flow-alter-row.md) zum Kennzeichnen von Zeilen für diese Aktionen erfolgen. | Ja | `true` oder `false` | deletable <br/>insertable <br/>updateable <br/>upsertable |
+| Schlüsselspalten | Für Update-, Upsert- und Löschvorgänge müssen Schlüsselspalten festgelegt werden, um die Zeile zu bestimmen, die geändert werden soll.<br>Der Spaltenname, den Sie als Schlüssel auswählen, wird als Teil der nachfolgenden Update-, Upsert- und Löschvorgänge verwendet. Daher müssen Sie eine Spalte auswählen, die in der Senkenzuordnung vorhanden ist. | Nein | Array | keys |
+| Schreiben von Schlüsselspalten überspringen | Wenn Sie den Wert nicht in die Schlüsselspalte schreiben möchten, wählen Sie „Schreiben von Schlüsselspalten überspringen“ aus. | Nein | `true` oder `false` | skipKeyWrites |
+| Aktion table |Bestimmt, ob die Zieltabelle vor dem Schreiben neu erstellt werden soll oder alle Zeilen aus der Zieltabelle entfernt werden sollen.<br>- **Keine**: Es wird keine Aktion an der Tabelle vorgenommen.<br>- **Neu erstellen**: Die Tabelle wird gelöscht und neu erstellt. Erforderlich, wenn eine neue Tabelle dynamisch erstellt wird.<br>- **Abschneiden**: Alle Zeilen werden aus der Zieltabelle entfernt. | Nein | `true` oder `false` | Neu erstellen<br/>truncate |
+| Batchgröße | Geben Sie an, wie viele Zeilen in die einzelnen Batches geschrieben werden. Durch größere Batches werden zwar Komprimierung und Arbeitsspeicheroptimierung verbessert, beim Zwischenspeichern von Daten besteht aber die Gefahr, dass Ausnahmen wegen unzureichenden Arbeitsspeichers auftreten. | Nein | Integer | batchSize |
+| Pre- und Post-SQL-Skripts | Geben Sie mehrzeilige SQL-Skripts an, die ausgeführt werden, bevor Daten in die Senkendatenbank geschrieben werden (Vorverarbeitung) und danach (Nachbearbeitung). | Nein | String | preSQLs<br>postSQLs |
+
+#### <a name="azure-database-for-mysql-sink-script-example"></a>Beispielskript für die Azure DB for MySQL-Senke
+
+Wenn Sie Azure Database for MySQL als Senkentyp verwenden, sieht das zugehörige Datenflussskript wie folgt aus:
+
+```
+IncomingStream sink(allowSchemaDrift: true,
+    validateSchema: false,
+    deletable:false,
+    insertable:true,
+    updateable:true,
+    upsertable:true,
+    keys:['keyColumn'],
+    format: 'table',
+    skipDuplicateMapInputs: true,
+    skipDuplicateMapOutputs: true) ~> AzureMySQLSink
 ```
 
 ## <a name="lookup-activity-properties"></a>Eigenschaften der Lookup-Aktivität

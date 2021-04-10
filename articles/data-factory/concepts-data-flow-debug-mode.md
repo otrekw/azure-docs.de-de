@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/19/2021
 ms.openlocfilehash: 0aa472aca40acbaf3f8c8a09469d08fe6b37187a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101699758"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>Mapping Data Flow – Debugmodus
@@ -37,17 +37,17 @@ In den meisten Fällen ist es eine gute Vorgehensweise, Ihre Datenflüsse im Deb
 > [!NOTE]
 > Jede Debugsitzung, die ein Benutzer über die ADF-Browserbenutzeroberfläche startet, stellt eine neue Sitzung mit einem eigenen Spark-Cluster dar. Mithilfe der Überwachungsansicht für Debugsitzungen oben können Sie Debugsitzungen factoryweise anzeigen und verwalten. Ihnen wird jede Stunde in Rechnung gestellt, in der die einzelnen Debugsitzungen ausgeführt werden, einschließlich der Gültigkeitsdauer (TTL).
 
-## <a name="cluster-status"></a>Clusterstatus
+## <a name="cluster-status&quot;></a>Clusterstatus
 
 Die Clusterstatusanzeige im oberen Bereich der Entwurfsoberfläche wird grün, wenn der Cluster zum Debuggen bereit ist. Wenn Ihr Cluster bereits betriebsbereiten ist, wird die Anzeige nahezu sofort grün. Wenn der Cluster nicht bereits im Debugmodus ausgeführt wurde, führt der Spark-Cluster einen Kaltstart aus. Der Indikator dreht sich, bis die Umgebung für das interaktive Debuggen bereit ist.
 
 Wenn Sie mit dem Debuggen fertig sind, deaktivieren Sie den Debugmodus, damit der Spark-Cluster beendet werden kann. Danach werden Ihnen keine Debugaktivitäten mehr in Rechnung gestellt.
 
-## <a name="debug-settings"></a>Debug-Einstellungen
+## <a name=&quot;debug-settings&quot;></a>Debug-Einstellungen
 
 Wenn Sie den Debugmodus aktivieren, können Sie bearbeiten, wie ein Datenfluss Daten in der Vorschau anzeigt. Debugeinstellungen können bearbeitet werden, indem Sie auf „Debugeinstellungen“ in der Symbolleiste der Datenflusscanvas klicken. Hier können Sie den Zeilengrenzwert oder die Dateiquelle auswählen, der/die für jede Ihrer Quelltransformationen verwendet werden soll. Die Zeilengrenzwerte in dieser Einstellung gelten nur für die aktuelle Debugsitzung. Sie können außerdem den verknüpften Stagingdienst auswählen, der für eine Azure Synapse Analytics-Quelle verwendet werden soll. 
 
-![Debugeinstellungen](media/data-flow/debug-settings.png "Debug-Einstellungen")
+![Debugeinstellungen](media/data-flow/debug-settings.png &quot;Debug-Einstellungen")
 
 Wenn Sie in Ihrem Datenfluss oder in einem der referenzierten Datasets Parameter verwenden, können Sie angeben, welche Werte beim Debuggen verwendet werden sollen, indem Sie die Registerkarte **Parameter** auswählen.
 

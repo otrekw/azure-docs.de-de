@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: bb26a865ab8b8beba99fcba51e2d05e166b1e84b
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 82dcfa0942f21f01424c4744aa0b23f4672a135f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102095356"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105106716"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-net"></a>Schnellstart: Azure Blob Storage-Clientbibliothek v12 für .NET
 
@@ -164,7 +164,7 @@ Fügen Sie diesen Code am Ende der `Main`-Methode hinzu:
 
 ### <a name="download-blobs"></a>Herunterladen von Blobs
 
-Laden Sie das zuvor erstellte Blob herunter, indem Sie die [DownloadAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.downloadasync)-Methode aufrufen. Im Beispielcode wird das Suffix „DOWNLOADED“ an den Dateinamen angefügt, damit beide Dateien im lokalen Dateisystem angezeigt werden können.
+Laden Sie das zuvor erstellte Blob herunter, indem Sie die [DownloadAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.downloadtoasync)-Methode aufrufen. Im Beispielcode wird das Suffix „DOWNLOADED“ an den Dateinamen angefügt, damit beide Dateien im lokalen Dateisystem angezeigt werden können.
 
 Fügen Sie diesen Code am Ende der `Main`-Methode hinzu:
 

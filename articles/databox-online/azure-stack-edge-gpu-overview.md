@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: overview
 ms.date: 01/18/2021
 ms.author: alkohli
-ms.openlocfilehash: 31947ca4d5eb632998f5c50257c12ef9a52dfc66
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.openlocfilehash: 8e829d149e96cf658c7a5aaf37291e84def2061e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98570098"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104602654"
 ---
 # <a name="what-is-azure-stack-edge-pro-with-gpu"></a>Was ist Azure Stack Edge Pro mit GPU?
 
@@ -76,6 +76,8 @@ Das physische Azure Stack Edge Pro-Gerät, die Azure-Ressource und das Zielspeic
 - **Geräteverfügbarkeit** – Eine Liste aller Länder/Regionen, in denen das Azure Stack Edge Pro-Gerät verfügbar ist, finden Sie auf der Registerkarte **Azure Stack Edge Pro** für [Azure Stack Edge Pro-Preise](https://azure.microsoft.com/pricing/details/azure-stack/edge/#azureStackEdgePro) im Abschnitt **Verfügbarkeit**.
     
 - **Zielspeicherkonten**: Die Speicherkonten, in denen die Daten gespeichert werden, sind in allen Azure-Regionen verfügbar. Für eine optimale Leistung sollten sich die Regionen, in denen die Speicherkonten Azure Stack Edge Pro-Daten speichern, in der Nähe des Gerätestandorts befinden. Ein weit entfernt vom Gerät befindliches Speicherkonto führt zu langen Wartezeiten und einer langsameren Leistung.
+
+Der Azure Stack Edge-Dienst ist ein nicht regionaler Dienst. Weitere Informationen finden Sie unter [Regionen und Verfügbarkeitszonen in Azure](https://docs.microsoft.com/azure/availability-zones/az-overview). Beim Azure Stack Edge-Dienst besteht keine Abhängigkeit von einer bestimmten Azure-Region. Deshalb ist er resilienter gegen zonenweite oder regionsweite Ausfälle.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

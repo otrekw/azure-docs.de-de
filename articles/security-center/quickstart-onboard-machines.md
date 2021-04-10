@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
 zone_pivot_groups: non-azure-machines
-ms.openlocfilehash: b5dd06c148c53517214b47b39f083c99d0f37e0b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 68fcf8a8feb046fca2c26041d92264dd8b3a638e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101712197"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103465496"
 ---
 # <a name="connect-your-non-azure-machines-to-security-center"></a>Verbinden Ihrer Nicht-Azure-Computer mit Security Center
 
@@ -75,24 +75,24 @@ Erfahren Sie mehr über [Server mit Azure Arc-Unterstützung](../azure-arc/serve
 
     Wählen Sie hier das entsprechende nachstehende Verfahren aus, je nachdem, welchen Typ von Computern Sie integrieren möchten:
 
-    - [Integrieren Ihrer Azure Stack-VMs](#onboard-your-azure-stack-vms)
+    - [Integrieren Ihrer Azure Stack Hub-VMs](#onboard-your-azure-stack-hub-vms)
     - [Integrieren Ihrer Linux-Computer](#onboard-your-linux-machines)
     - [Integrieren Ihrer Windows-Computer](#onboard-your-windows-machines)
 
-### <a name="onboard-your-azure-stack-vms"></a>Integrieren Ihrer Azure Stack-VMs
+### <a name="onboard-your-azure-stack-hub-vms"></a>Integrieren Ihrer Azure Stack Hub-VMs
 
-Zum Hinzufügen von Azure Stack-VMs benötigen Sie die Informationen auf der Seite **Agent-Verwaltung**, und Sie müssen für alle virtuellen Computer, die auf Ihrem Azure Stack ausgeführt werden, die VM-Erweiterung für **Azure Monitor-, Update- und Konfigurationsverwaltung** konfigurieren.
+Zum Hinzufügen von Azure Stack Hub-VMs benötigen Sie die Informationen auf der Seite **Agent-Verwaltung**, und Sie müssen für alle virtuellen Computer, die in Ihrer Azure Stack Hub-Instanz ausgeführt werden, die VM-Erweiterung für **Azure Monitor, Update- und Konfigurationsverwaltung** konfigurieren.
 
 1. Kopieren Sie auf der Seite **Agent-Verwaltung** die **Arbeitsbereichs-ID** und den **Primärschlüssel** in Editor.
-1. Melden Sie sich bei Ihrem **Azure Stack**-Portal an, und öffnen Sie die Seite **Virtuelle Computer**.
+1. Melden Sie sich bei Ihrem **Azure Stack Hub**-Portal an, und öffnen Sie die Seite **Virtuelle Computer**.
 1. Wählen Sie den virtuellen Computer aus, der mit Security Center geschützt werden soll.
     >[!TIP]
-    > Informationen zum Erstellen einer VM in Azure Stack finden Sie im [Schnellstart für Windows-VMs ](/azure-stack/user/azure-stack-quick-windows-portal) oder im [Schnellstart für Linux-VMs](/azure-stack/user/azure-stack-quick-linux-portal).
+    > Informationen zum Erstellen eines virtuellen Computers in Azure Stack Hub finden Sie im [Schnellstart für Windows-VMs](/azure-stack/user/azure-stack-quick-windows-portal) oder im [Schnellstart für Linux-VMs](/azure-stack/user/azure-stack-quick-linux-portal).
 1. Wählen Sie **Erweiterungen**. Die Liste der auf dieser VM installierten VM-Erweiterungen wird angezeigt.
 1. Wählen Sie die Registerkarte **Hinzufügen** aus. Im Menü **Neue Ressource** wird eine Liste der verfügbaren VM-Erweiterungen angezeigt.
 1. Wählen Sie die Erweiterung **Azure Monitor-, Update- und Konfigurationsverwaltung** und dann **Erstellen** aus. Die Konfigurationsseite **Erweiterung installieren** wird geöffnet.
     >[!NOTE]
-    > Falls die Erweiterung **Azure Monitor, Update- und Konfigurationsverwaltung** in Ihrem Marketplace nicht aufgeführt ist, können Sie sich an Ihren Azure Stack-Betreiber wenden, damit sie zur Verfügung gestellt wird.
+    > Falls die Erweiterung **Azure Monitor, Update- und Konfigurationsverwaltung** in Ihrem Marketplace nicht aufgeführt ist, können Sie sich an Ihren Azure Stack Hub-Betreiber wenden, damit sie zur Verfügung gestellt wird.
 1. Fügen Sie auf der Konfigurationsseite **Erweiterung installieren** die **Arbeitsbereichs-ID** und den **Arbeitsbereichsschlüssel (Primärschlüssel)** ein, die Sie im vorherigen Schritt in Editor kopiert haben.
 1. Wählen Sie zum Abschluss der Konfiguration **OK** aus. Als Status der Erweiterung wird **Bereitstellung erfolgreich** angezeigt. Es kann bis zu einer Stunde dauern, bis der virtuelle Computer in Security Center angezeigt wird.
 

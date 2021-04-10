@@ -1,29 +1,24 @@
 ---
 title: Funktionsunterstützung und -einstellung
-titleSuffix: Azure Defender for IoT
 description: Defender für IoT unterstützt C, C# und Edge bis zum 1. März 2022 weiter.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 1/21/2021
-ms.service: azure
 ms.topic: how-to
-ms.openlocfilehash: 2779a73d3a5f77e3a3b144309baf6d2788565443
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: 782e2e8ab0c54e21da643ca73f647a7ea21e4223
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809634"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104784525"
 ---
 # <a name="feature-support-and-retirement"></a>Funktionsunterstützung und -einstellung
 
 In diesem Artikel werden die Features von Azure Defender für IoT und die Unterstützung der unterschiedlichen Funktionen in Defender für IoT beschrieben.
 
-## <a name="defender-for-iot-c-c-and-edge-security-module-deprecation"></a>Einstellung der Defender für IoT-Sicherheitsmodule für C, C# und Edge
+## <a name="defender-for-iot-c-c-and-edge-defender-iot-micro-agent-deprecation"></a>Einstellung der Defender für IoT-Micro-Agents für C, C# und Edge
 
-Der neue Micro-Agent ersetzt das aktuelle C-, C#- und Edge-Sicherheitsmodul.  
+Der neue Micro-Agent ersetzt den aktuellen Defender für IoT-Micro-Agent für C, C# und Edge.  
 
-In den Micro-Agent sind die Kenntnisse und Erfahrungen aus der Entwicklung der bestehenden Sicherheitsmodule und das Feedback von Kunden und Partnern eingeflossen. Er weist vier wichtige Verbesserungen auf: 
+In den neuen Micro-Agent sind die Kenntnisse und Erfahrungen aus der Entwicklung der bestehenden Defender für IoT-Micro-Agents und das Feedback von Kunden und Partnern eingeflossen. Er weist vier wichtige Verbesserungen auf: 
 
 - **Umfassender Sicherheitswert:**  Der neue Agent wird auf Hostebene ausgeführt und bietet damit mehr Einblick in die zugrunde liegenden Vorgänge des Geräts und eine bessere Sicherheitsabdeckung.
 

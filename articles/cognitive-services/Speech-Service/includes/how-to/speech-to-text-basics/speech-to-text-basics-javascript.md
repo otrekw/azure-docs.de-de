@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/04/2021
 ms.author: trbye
 ms.custom: devx-track-js
-ms.openlocfilehash: dd92cf24cf007418e52cb5091eb390b46d7a5571
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 5a8065daca11e5b79f02510f82ab622c8fb1af2d
+ms.sourcegitcommit: 91361cbe8fff7c866ddc4835251dcbbe2621c055
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104987743"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "105729756"
 ---
 Die Funktion zum Erkennen und Transkribieren von menschlicher Sprache (Spracherkennung) ist eines der zentralen Features des Speech-Diensts. In diesem Schnellstart erfahren Sie, wie Sie das Speech SDK in Ihren Apps und Produkten verwenden, um hochwertige Spracherkennungen durchzuführen.
 
@@ -26,7 +26,7 @@ In diesem Artikel wird vorausgesetzt, dass Sie über ein Azure-Konto und über e
 
 ## <a name="install-the-speech-sdk"></a>Installieren des Speech SDK
 
-Zuallererst muss das Speech SDK für Node.js installiert werden. Falls Sie lediglich den Paketnamen für die Installation benötigen, können Sie den folgenden Befehl ausführen: `npm install microsoft-cognitiveservices-speech-sdk`. Anweisungen zu einer geführten Installation finden Sie im Artikel zu den [ersten Schritten](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=dotnet%2Clinux%2Cjre%2Cnodejs&pivots=programming-language-javascript).
+Zuallererst muss das Speech SDK für Node.js installiert werden. Falls Sie lediglich den Paketnamen für die Installation benötigen, können Sie den folgenden Befehl ausführen: `npm install microsoft-cognitiveservices-speech-sdk`. Anweisungen zu einer geführten Installation finden Sie im Artikel zu den [ersten Schritten](../../../quickstarts/setup-platform.md?pivots=programming-language-javascript&tabs=dotnet%2clinux%2cjre%2cnodejs).
 
 Verwenden Sie die folgende `require`-Anweisung, um das SDK zu importieren.
 
@@ -62,7 +62,7 @@ Das Erkennen von Spracheingaben per Mikrofon wird **in Node.js nicht unterstütz
 
 ## <a name="recognize-from-file"></a>Erkennen aus Datei 
 
-Um die Sprache aus einer Audiodatei zu erkennen, erstellen Sie mithilfe von `fromWavFileInput()` ein `AudioConfig`-Objekt, das ein `Buffer`-Objekt akzeptiert. Initialisieren Sie dann [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest), und übergeben Sie `audioConfig` und `speechConfig`.
+Um die Sprache aus einer Audiodatei zu erkennen, erstellen Sie mithilfe von `fromWavFileInput()` ein `AudioConfig`-Objekt, das ein `Buffer`-Objekt akzeptiert. Initialisieren Sie dann [`SpeechRecognizer`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer), und übergeben Sie `audioConfig` und `speechConfig`.
 
 ```javascript
 const fs = require('fs');

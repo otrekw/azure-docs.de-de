@@ -1,18 +1,14 @@
 ---
 title: Verwalten der lokalen Verwaltungskonsole
 description: Erfahren Sie mehr über die Möglichkeiten der lokalen Verwaltungskonsole wie Sicherung und Wiederherstellung, Definition des Hostnamens und Einrichtung eines Proxys für Sensoren.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 1/12/2021
 ms.topic: article
-ms.service: azure
-ms.openlocfilehash: d76db6830839902a46aaf6515f816fdcc36d0df5
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 871c74eee4b74538a8a09188953916ff7376bc8d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100523939"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104781720"
 ---
 # <a name="manage-the-on-premises-management-console"></a>Verwalten der lokalen Verwaltungskonsole
 
@@ -57,11 +53,11 @@ Weiterleitungsregeln von Drittanbietern werden nicht überprüft. Beispiele sind
 
 Der Defender für IoT-Sensor und die lokale Verwaltungskonsole verwenden SSL- und TLS-Zertifikate für die folgenden Funktionen: 
 
- - Sichere Kommunikation zwischen Benutzern und der Webkonsole der Appliance 
+ - Sichere Kommunikation zwischen Benutzern und der Webkonsole der Appliance. 
  
- - Sichere Kommunikation mit der REST-API im Sensor und der lokalen Verwaltungskonsole
+ - Sichere Kommunikation mit der REST-API im Sensor und der lokalen Verwaltungskonsole.
  
- - Sichere Kommunikation zwischen den Sensoren und einer lokalen Verwaltungskonsole 
+ - Sichere Kommunikation zwischen den Sensoren und einer lokalen Verwaltungskonsole. 
 
 Nach der Installation generiert die Appliance ein lokales selbstsigniertes Zertifikat, um den vorläufigen Zugriff auf die Webkonsole zuzulassen. SSL- und TLS-Zertifikate des Unternehmens können mithilfe des Befehlszeilentools [`cyberx-xsense-certificate-import`](#cli-commands) installiert werden. 
 
@@ -158,7 +154,7 @@ Zertifikate mit anderen Parametern funktionieren möglicherweise, werden aber vo
 
 PEM-Dateien (Privacy Enhanced Mail) wurden früher als allgemeiner Dateityp zum Schützen von E-Mails verwendet. Heutzutage werden PEM-Dateien mit Zertifikaten und X.509 ASN1-Schlüssel verwendet.  
 
-Die Containerdatei ist in den RFCs 1421 bis 1424 definiert: ein Containerformat, das lediglich das öffentliche Zertifikat enthalten kann, beispielsweise Apache-Installationen, Zertifikatdateien von Zertifizierungsstellen und ETC-, SSL- oder CERTS-Dateien. Dabei kann es sich um eine vollständige Zertifikatkette handeln, einschließlich öffentlichem Schlüssel, privatem Schlüssel und Stammzertifikaten.  
+Die Containerdatei ist in den RFCs 1421 bis 1424 definiert: ein Containerformat, das lediglich das öffentliche Zertifikat enthalten kann. Beispielsweise Apache-Installationen, Zertifikatdateien von Zertifizierungsstellen und ETC-, SSL- oder CERTS-Dateien. Dabei kann es sich um eine vollständige Zertifikatkette handeln, einschließlich öffentlichem Schlüssel, privatem Schlüssel und Stammzertifikaten.  
 
 Außerdem kann eine CSR-Datei im PKCS10-Format codiert werden, die in PEM umgewandelt werden kann.
 
@@ -172,15 +168,15 @@ Eine KEY-Datei hat das gleiche Format wie eine PEM-Datei, aber eine andere Erwei
 
 #### <a name="additional-commonly-available-key-artifacts"></a>Zusätzliche allgemein verfügbare Schlüsselartefakte
 
-**.csr: Zertifikatsignieranforderung**  
+**.csr: Zertifikatsignieranforderung**.  
 
-Diese Datei wird für die Übermittlung an Zertifizierungsstellen verwendet. Das tatsächliche Format ist PKCS10, das in RFC 2986 definiert ist, und kann einige oder alle Schlüsseldetails des angeforderten Zertifikats enthalten, z. B. Antragsteller, Organisation und Status. Es handelt sich um den öffentlichen Schlüssel des Zertifikats, das von der Zertifizierungsstelle signiert wird und auf das ein Zertifikat zurückgegeben wird.  
+Diese Datei wird für die Übermittlung an Zertifizierungsstellen verwendet. Das tatsächliche Format ist PKCS10, das in RFC 2986 definiert ist, und kann einige oder alle Schlüsseldetails des angeforderten Zertifikats enthalten. Beispielsweise Antragsteller, Organisation und Status. Es handelt sich um den öffentlichen Schlüssel des Zertifikats, das von der Zertifizierungsstelle signiert wird und auf das ein Zertifikat zurückgegeben wird.  
 
 Das zurückgegebene Zertifikat ist das öffentliche Zertifikat, das den öffentlichen Schlüssel, jedoch nicht den privaten Schlüssel enthält. 
 
-**.pkcs12, .pfx, .p12: Kennwortcontainer** 
+**.pkcs12 .pfx .p12: Kennwortcontainer**. 
 
-Ursprünglich durch RSA in den Public-Key Cryptography Standards (PKCS) definiert, wurde die PKCS12-Variante zunächst von Microsoft erweitert und später als RFC 7292 eingereicht.  
+Ursprünglich durch RSA in den Public-Key Cryptography Standards (PKCS) definiert, wurde die PKCS12-Variante ursprünglich von Microsoft erweitert und später als RFC 7292 übermittelt.  
 
 Dieses Containerformat erfordert ein Kennwort, das öffentliche sowie private Zertifikatpaare enthält. Im Unterschied zu `.pem` -Dateien ist dieser Container vollständig verschlüsselt.  
 
@@ -252,9 +248,9 @@ Führen Sie die folgenden Befehle aus, um Zertifikate und Schlüssel in untersch
 
 | Beschreibung | CLI-Befehl |
 |--|--|
-| Konvertieren einer DER-Datei (.crt, .cer, .der) in PEM  | `openssl x509 -inform der -in certificate.cer -out certificate.pem`  |
+| Konvertieren einer DER-Datei (.crt .cer .der) in PEM  | `openssl x509 -inform der -in certificate.cer -out certificate.pem`  |
 | Konvertieren einer PEM-Datei in DER | `openssl x509 -outform der -in certificate.pem -out certificate.der`  |
-| Konvertieren einer PKCS#12-Datei (.pfx, .p12) mit einem privaten Schlüssel und Zertifikaten in PEM | `openssl pkcs12 -in keyStore.pfx -out keyStore.pem -nodes` <br />Sie können `-nocerts` hinzufügen, um nur den privaten Schlüssel auszugeben, oder `-nokeys`, um nur die Zertifikate auszugeben. |
+| Konvertieren einer PKCS#12-Datei (.pfx .p12) mit einem privaten Schlüssel und Zertifikaten in PEM | `openssl pkcs12 -in keyStore.pfx -out keyStore.pem -nodes` <br />Sie können `-nocerts` hinzufügen, um nur den privaten Schlüssel auszugeben, oder `-nokeys`, um nur die Zertifikate auszugeben. |
 | Konvertieren einer PEM-Zertifikatdatei und eines privaten Schlüssels in PKCS#12 (.pfx, .p12) | `openssl pkcs12 -export -out certificate.pfx -inkey privateKey.key -in certificate.crt -certfile CACert.crt` |
 
 ## <a name="define-backup-and-restore-settings"></a>Festlegen von Sicherungs- und Wiederherstellungseinstellungen
@@ -278,7 +274,7 @@ So speichern Sie die Sicherung auf einem externen SMB-Server
 
 1. Erstellen Sie auf dem externen SMB-Server einen freigegebenen Ordner.  
 
-   Rufen Sie die Angaben für Ordnerpfad, Benutzername und Kennwort ab, die für den Zugriff auf den SMB-Server erforderlich sind. 
+   Rufen Sie den Ordnerpfad, den Benutzernamen und das Kennwort ab, die für den Zugriff auf den SMB-Server erforderlich sind. 
 
 2. Erstellen Sie in Defender für IoT ein Verzeichnis für die Sicherungen:
 
@@ -415,7 +411,21 @@ Im folgenden Verfahren wird beschrieben, wie Sie die Softwareversion der lokalen
 
 1. Wählen Sie die Datei aus, die Sie von der Seite **Updates** in Defender für IoT heruntergeladen haben.
 
-## <a name="next-steps"></a>Nächste Schritte
+## <a name="mail-server-settings"></a>Einstellungen des E-Mail-Servers
+
+Legen Sie die Einstellungen des SMTP-Mailservers für die lokale Verwaltungskonsole fest.
+
+So definieren Sie die Einstellungen
+
+1. Melden Sie sich mit administrativen Anmeldeinformationen bei der Befehlszeilenschnittstelle der lokalen Verwaltungskonsole an.
+1. Geben Sie ```nano /var/cyberx/properties/remote-interfaces.properties```ein.
+1. Drücken Sie die EINGABETASTE. Die folgende Eingabeaufforderung wird angezeigt.
+```mail.smtp_server= ```
+```mail.port=25 ```
+```mail.sender=```
+1. Geben Sie den SMTP-Servernamen und den Absender ein, und drücken Sie die EINGABETASTE.
+
+## <a name="see-also"></a>Siehe auch
 
 [Verwalten von Sensoren über die Verwaltungskonsole](how-to-manage-sensors-from-the-on-premises-management-console.md)
 

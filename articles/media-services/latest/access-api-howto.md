@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 08/31/2020
+ms.date: 03/31/2021
 ms.author: inhenkel
-ms.openlocfilehash: 00808c25ac84da852cce6169fb210767ee2b56cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e45a0eefff3a6a7f7dd37bde3ee3bffaedd93dcd
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89265880"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106166614"
 ---
 # <a name="get-credentials-to-access-media-services-api"></a>Abrufen von Anmeldeinformationen für den Zugriff auf die Media Services-API
 
@@ -37,8 +37,8 @@ In diesem Artikel werden Schritte zum Abrufen von Anmeldeinformationen für den 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Ein Azure-Konto. Beginnen Sie mit einer [kostenlosen Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/), falls Sie kein Konto haben. 
-- Media Services-Konto. Weitere Informationen finden Sie unter [Erstellen eines Azure Media Services-Kontos mithilfe des Azure-Portals](create-account-howto.md).
+- Ein Azure-Konto. Beginnen Sie mit einer [kostenlosen Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/), falls Sie kein Konto haben.
+- Media Services-Konto. Weitere Informationen finden Sie unter [Erstellen eines Azure Media Services-Kontos mithilfe des Azure-Portals](account-create-how-to.md).
 
 ## <a name="portal"></a>[Portal](#tab/portal/)
 
@@ -47,7 +47,7 @@ In diesem Artikel werden Schritte zum Abrufen von Anmeldeinformationen für den 
 Auf der Seite **API-Zugriff** können Sie die Authentifizierungsmethode auswählen, die Sie für die Verbindung mit der API verwenden möchten. Auf der Seite befinden sich auch die Werte, die Sie zum Herstellen einer Verbindung mit der API benötigen.
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihr Media Services-Konto aus.
-2. Wählen Sie im linken Navigationsmenü das Blatt **API-Zugriff (neu)** aus.
+2. Wählen Sie auf der linken Navigationsleiste das Blatt **API-Zugriff** aus.
 3. Wählen Sie unter **Verbindung mit Media Services-API herstellen** die Version der Media Services-API aus, mit der Sie eine Verbindung herstellen möchten. (V3 ist die aktuelle Version des Diensts.)
 
 ### <a name="service-principal-authentication--recommended"></a>Dienstprinzipalauthentifizierung (empfohlen)

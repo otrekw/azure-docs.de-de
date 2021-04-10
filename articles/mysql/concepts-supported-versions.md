@@ -6,16 +6,16 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/3/2020
-ms.openlocfilehash: 920f6a4fec1ec8a260a98641888268e4955bbf44
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 8b85307f01a11366a2147c947f26658f548932e8
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101718776"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103467713"
 ---
 # <a name="supported-azure-database-for-mysql-server-versions"></a>Unterstützte Azure-Datenbank für MySQL-Serverversionen
 
-Azure Database for MySQL wurde basierend auf [MySQL Community Edition](https://www.mysql.com/products/community/) mit der InnoDB-Speicher-Engine entwickelt. Dieser Dienst unterstützt alle aktuellen Hauptversionen, die von der Community unterstützt werden, und zwar MySQL 5.6, 5.7 und 8.0. Für MySQL wird das Benennungsschema X.Y.Z verwendet. X steht dabei für die Hauptversion, Y für die Nebenversion und Z für das Programmfehlerbehebungs-Release. Weitere Informationen zum Schema finden Sie in der [MySQL-Dokumentation](https://dev.mysql.com/doc/refman/5.7/en/which-version.html).
+Azure Database for MySQL wurde basierend auf [MySQL Community Edition](https://www.mysql.com/products/community/) mit der InnoDB-Speicher-Engine entwickelt. Dieser Dienst unterstützt alle aktuellen Hauptversionen, die von der Community unterstützt werden, und zwar MySQL 5.6, 5.7 und 8.0. Für MySQL wird das Benennungsschema „X.Y.Z“ verwendet. „X“ steht dabei für die Hauptversion, „Y“ für die Nebenversion und „Z“ für das Programmfehlerbehebungs-Release. Weitere Informationen zum Schema finden Sie in der [MySQL-Dokumentation](https://dev.mysql.com/doc/refman/5.7/en/which-version.html).
 
 > [!NOTE]
 > Bei der Bereitstellungsoption „Einzelserver“ werden die Verbindungen mit einem Gateway zu Serverinstanzen umgeleitet. Sobald die Verbindung hergestellt ist, zeigt der MySQL-Client die im Gateway festgelegte Version von MySQL an, nicht die tatsächliche Version, die auf Ihrer MySQL-Serverinstanz ausgeführt wird. Um die Version Ihrer MySQL-Serverinstanz zu ermitteln, geben Sie den `SELECT VERSION();`-Befehl an der MySQL-Eingabeaufforderung ein.
@@ -25,9 +25,11 @@ Azure Database for MySQL unterstützt derzeit die folgenden Haupt- und Nebenvers
 
 | Version | Einzelner Server <br/> Aktuelle Nebenversion |Flexible Server (Vorschau) <br/> Aktuelle Nebenversion  |
 |:-------------------|:-------------------------------------------|:---------------------------------------------|
-|MySQL-Version 5.6 |  [5.6.47](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-47.html) | Nicht unterstützt|
+|MySQL-Version 5.6 |  [5.6.47](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-47.html) (eingestellt) | Nicht unterstützt|
 |MySQL-Version 5.7 | [5.7.29](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-29.html) | [5.7.29](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-29.html)|
 |MySQL, Version 8.0 | [8.0.15](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-15.html) | [8.0.21](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-21.html)|
+
+Lesen Sie die Richtlinie zur Versionsunterstützung für eingestellte Versionen in der [Dokumentation zur Richtlinie für die Versionsunterstützung](concepts-version-policy.md#retired-mysql-engine-versions-not-supported-in-azure-database-for-mysql).
 
 ## <a name="managing-updates-and-upgrades"></a>Verwalten von Updates und Upgrades
 Das Patchen von Versionsupdates zur Fehlerbehebung wird vom Dienst automatisch verwaltet. Beispiel: 5.7.20 bis 5.7.21.  
