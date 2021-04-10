@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 01/18/2021
-ms.openlocfilehash: 5cc3c4a07cc698f3592a2ff2fd76e9f4bbef441b
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 727e744c59d0a8d90cf320e1ee2e2a17e10ff847
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102036451"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103471523"
 ---
 # <a name="connector-status-errors-in-the-itsmc-dashboard"></a>Connectorstatusfehler auf dem Dashboard des ITSM-Connectors
 
@@ -88,3 +88,11 @@ In den folgenden Abschnitten finden Sie Informationen zu allgemeinen Fehlern, di
 
 * Wenn eine neue ITSM-Connectorinstanz erstellt wird, beginnt sie mit der Synchronisierung von Informationen aus dem ITSM-System. Zu den synchronisierten Informationen zählen beispielsweise Arbeitselementvorlagen und Arbeitselemente. [Synchronisieren Sie den ITSM-Connector, um ein neues Aktualisierungstoken zu generieren.](./itsmc-resync-servicenow.md)
 * [Überprüfen Sie Ihre Verbindungsdetails im ITSM-Connector](./itsmc-connections-servicenow.md#create-a-connection), und vergewissern Sie sich, dass der ITSM-Connector erfolgreich [synchronisiert](./itsmc-resync-servicenow.md) werden kann.
+
+
+## <a name="ip-restrictions"></a>IP-Einschränkungen
+**Fehler:** „Failed to add ITSM Connection named „XXX“ due to Bad Request. Error: Bad request. Invalid parameters provided for connection. Http Exception: Status Code Forbidden.“ (Fehler beim Hinzufügen der ITSM-Verbindung „XXX“ aufgrund einer ungültigen Anforderung. Fehler: Ungültige Anforderung. Für die Verbindung wurden ungültige Parameter angegeben. HTTP-Ausnahme: Statuscode „Unzulässig“.)
+
+**Ursache:** Die IP-Adresse der ITSM-Anwendung lässt keine ITSM-Verbindungen von Partner-ITSM-Tools zu.
+
+**Lösung:** Wenn Sie die ITSM-IP-Adressen auflisten möchten, um ITSM-Verbindungen von Partner-ITSM-Tools zuzulassen, empfiehlt es sich, den gesamten öffentlichen IP-Adressbereich der Azure-Region aufzulisten, zu der der entsprechende Log Analytics-Arbeitsbereich gehört. [Weitere Informationen dazu finden Sie hier.](https://www.microsoft.com/download/details.aspx?id=56519) Für die Regionen „Europa, Süden“, „Europa, Westen“, „Europa, Süden 2“, „USA, Westen 2“ und „USA, Süden-Mitte“ können Kunden nur das Netzwerktag „ActionGroup“ auflisten.

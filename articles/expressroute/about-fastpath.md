@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: duau
-ms.openlocfilehash: ba23319c35aed1d09da652e6f84b60e5f8e9495e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: c953668d6b2e364e6e703b1769317f1c520317ca
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101740884"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104654372"
 ---
 # <a name="about-expressroute-fastpath"></a>Informationen zu ExpressRoute FastPath
 
@@ -34,7 +34,7 @@ Zum Konfigurieren von FastPath muss das Gateway für virtuelle Netzwerke eines d
 * ErGw3AZ
 
 > [!IMPORTANT]
-> Wenn Sie FastPath mit dem IPv6-basierten privaten Peering über ExpressRoute verwenden möchten, wählen Sie unbedingt ErGw3AZ für die **SKU** aus.
+> Wenn Sie FastPath mit dem IPv6-basierten privaten Peering über ExpressRoute verwenden möchten, wählen Sie unbedingt ErGw3AZ für die **SKU** aus. Beachten Sie, dass dies nur für Verbindungen mit ExpressRoute Direct verfügbar ist.
 > 
 >
 
@@ -42,7 +42,7 @@ Zum Konfigurieren von FastPath muss das Gateway für virtuelle Netzwerke eines d
 
 FastPath unterstützt zwar die meisten Konfigurationen, aber nicht die folgenden Features:
 
-* UDR auf dem Gatewaysubnetz: Wenn Sie ein UDR auf das Gatewaysubnetz Ihres virtuellen Netzwerks anwenden, wird der Netzwerkdatenverkehr aus Ihrem lokalen Netzwerk weiterhin an das virtuelle Netzwerkgateway gesendet.
+* UDR im gatewaysubnetz: Diese UDR hat keine Auswirkung auf den Netzwerkdatenverkehr, den FastPath direkt von Ihrem lokalen Netzwerk an die virtuellen Computer in Azure Virtual Network sendet. 
 
 * VNet-Peering: Wenn andere virtuelle Netzwerke per Peering mit dem Netzwerk verbunden sind, das mit ExpressRoute verbunden ist, wird der Netzwerkdatenverkehr von Ihrem lokalen Netzwerk zu den anderen virtuellen Netzwerken (d. h. den sogenannten virtuellen „Spoke“-Netzwerken) weiterhin an das virtuelle Netzwerkgateway gesendet. Die Problemumgehung besteht darin, alle virtuellen Netzwerke direkt mit der ExpressRoute-Verbindung zu verbinden.
 

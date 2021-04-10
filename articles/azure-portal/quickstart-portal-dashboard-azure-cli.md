@@ -4,16 +4,18 @@ description: 'Schnellstart: Hier erfahren Sie, wie Sie mithilfe der Azure CLI e
 ms.topic: quickstart
 ms.custom: devx-track-azurepowershell
 ms.date: 12/4/2020
-ms.openlocfilehash: ede915df5cd2967c3b6b700bcb9174c89af8f233
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: ddfee1932c6887c6ca7593ca7a28c03e68e09899
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745654"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104613210"
 ---
 # <a name="quickstart-create-an-azure-portal-dashboard-with-azure-cli"></a>Schnellstart: Erstellen eines Dashboards im Azure-Portal mithilfe der Azure CLI
 
-Ein Dashboard im Azure-Portal bietet eine fokussierte und organisierte Ansicht Ihrer Cloudressourcen.
+Ein Dashboard im Azure-Portal bietet eine fokussierte und organisierte Ansicht Ihrer Cloudressourcen. Dieser Artikel konzentriert sich auf die Verwendung der Azure CLI zum Erstellen eines Dashboards.
+Das Dashboard zeigt die Leistung eines virtuellen Computers (VM) sowie einige statische Informationen und Verknüpfungen an.
+
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
@@ -103,19 +105,7 @@ az portal dashboard update --resource-group myResourceGroup --name 'Simple VM Da
    --input-path portal-dashboard-template-testvm.json --location centralus
 ```
 
-Vergewissern Sie sich, dass Sie im Azure-Portal Daten zum virtuellen Computer anzeigen können.
-
-1. Wählen Sie im Azure-Portal **Dashboard** aus.
-
-   ![Azure-Portal-Navigation zum Dashboard](media/quickstart-portal-dashboard-powershell/navigate-to-dashboards.png)
-
-1. Wählen Sie auf der Seite „Dashboard“ **Einfaches VM-Dashboard** aus.
-
-   ![Navigieren zu einfachem VM-Dashboard](media/quickstart-portal-dashboard-powershell/select-simple-vm-dashboard.png)
-
-1. Überprüfen Sie das Dashboard. Sie können sehen, dass ein Teil des Inhalts statisch ist, aber es gibt auch Diagramme, die die Leistung des virtuellen Computers anzeigen.
-
-   ![Überprüfen des einfachen VM-Dashboards](media/quickstart-portal-dashboard-powershell/review-simple-vm-dashboard.png)
+[!INCLUDE [azure-portal-review-deployed-resources](../../includes/azure-portal-review-deployed-resources.md)]
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

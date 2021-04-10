@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 03/01/2021
-ms.openlocfilehash: c1d4c9be1f76e62be3c17d4dec22479db003b77a
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 31c19f62f0328fca05562eaa2f19b7a79c0f3e15
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102608256"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105562697"
 ---
 # <a name="pre-certification-checklist-for-iot-edge-modules"></a>Prüfliste vor der Zertifizierung für IoT Edge-Module
 
@@ -55,7 +55,7 @@ Das Zertifizierungsteam verwendet die folgende Hardware zum Überprüfen von Ima
 #### <a name="steps"></a>Schritte
 
 1. Stellen Sie sicher, dass über Putty auf erstelle Geräte/VM zugegriffen werden kann.
-1. Laden Sie die [IoT Edge-Runtime](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge) auf das Gerät herunter.
+1. Laden Sie die [IoT Edge-Runtime](../iot-edge/how-to-install-iot-edge.md) auf das Gerät herunter.
 1. Aktualisieren Sie die in Schritt 5 kopierte Verbindungszeichenfolge in der Datei „config.yaml“.
 1. Starten Sie das Edge-Modul mit `sudo systemctl restart iotedge` neu.
 1. Überprüfen Sie, ob das Modul auf dem Gerät mit `sudo iotedge list` bereitgestellt wird. Es sollte sich im Ausführungsstatus befinden.
@@ -78,6 +78,6 @@ Das Zertifizierungsteam verwendet die folgende Hardware zum Überprüfen von Ima
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Bereitstellen von Modulen aus dem kommerziellen Marketplace](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-portal#deploy-from-azure-marketplace)
-- [Veröffentlichen des Edge-Moduls im Partner Center](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-iot-edge-module-creation)
-- [Bereitstellen eines IoT Edge-Moduls](https://docs.microsoft.com/azure/iot-edge/quickstart-linux)  
+- [Bereitstellen von Modulen aus dem kommerziellen Marketplace](../iot-edge/how-to-deploy-modules-portal.md#deploy-from-azure-marketplace)
+- [Veröffentlichen des Edge-Moduls im Partner Center](./partner-center-portal/azure-iot-edge-module-creation.md)
+- [Bereitstellen eines IoT Edge-Moduls](../iot-edge/quickstart-linux.md)

@@ -3,12 +3,12 @@ title: Azure Event Grid-Ereignisschema
 description: Beschreibt die Eigenschaften und das Schema für alle Ereignisse. Ereignisse bestehen aus einer Gruppe von fünf erforderlichen Zeichenfolgeneigenschaften und einem erforderlichen Datenobjekt.
 ms.topic: reference
 ms.date: 07/07/2020
-ms.openlocfilehash: 7ddc7c78c5a9e5ba2a57b21c45fb9fab65056ee9
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5ff7b41a45cf467074e18a50be398b2a3c9866a4
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "86105879"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105732158"
 ---
 # <a name="azure-event-grid-event-schema"></a>Azure Event Grid-Ereignisschema
 
@@ -88,6 +88,7 @@ Alle Ereignisse weisen die gleichen Daten auf oberster Ebene auf:
 
 Weitere Informationen zu den Eigenschaften im Datenobjekt finden Sie in der Ereignisquelle:
 
+* [Azure Policy](./event-schema-policy.md)
 * [Azure-Abonnements (Verwaltungsvorgänge)](event-schema-subscriptions.md)
 * [Container Registry](event-schema-container-registry.md)
 * [Blob Storage](event-schema-blob-storage.md)

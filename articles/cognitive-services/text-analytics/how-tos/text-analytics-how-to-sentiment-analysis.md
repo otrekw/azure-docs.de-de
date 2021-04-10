@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 12/04/2020
+ms.date: 03/09/2021
 ms.author: aahi
-ms.openlocfilehash: 6ea7b992a682537471ce0e78385b37674199d687
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: e9d8e7b514dca7d4930ad33bf08d4ceb07fb860d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673052"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104599125"
 ---
 # <a name="how-to-sentiment-analysis-and-opinion-mining"></a>Vorgehensweise: Stimmungsanalyse und Opinion Mining
 
-Das Standpunktanalysefeature der Textanalyse-API bietet zwei Möglichkeiten zur Erkennung von positiver und negativer Stimmung. Wenn Sie eine Standpunktanalyseanforderung senden, gibt die API Stimmungsbezeichnungen (z. B. „negativ“, „neutral“ und „positiv“) und Zuverlässigkeitsbewertungen auf Satz- und Dokumentebene zurück. Der Endpunkt der Standpunktanalyse kann auch zum Senden von Opinion Mining-Anforderungen verwendet werden. Dieses Feature liefert detaillierte Informationen zu den Meinungen in Bezug auf im Text enthaltene Aspekte (beispielsweise Attribute von Produkten oder Dienstleistungen). 
+Das Standpunktanalysefeature der Textanalyse-API bietet zwei Möglichkeiten zur Erkennung von positiver und negativer Stimmung. Wenn Sie eine Standpunktanalyseanforderung senden, gibt die API Stimmungsbezeichnungen (z. B. „negativ“, „neutral“ und „positiv“) und Zuverlässigkeitsbewertungen auf Satz- und Dokumentebene zurück. Der Endpunkt der Standpunktanalyse kann auch zum Senden von Opinion Mining-Anforderungen verwendet werden. Dieses Feature liefert detaillierte Informationen zu den Meinungen in Bezug auf im Text enthaltene Wörter (beispielsweise Attribute von Produkten oder Dienstleistungen). 
 
 Die von der API verwendeten KI-Modelle werden vom Dienst bereitgestellt. Sie müssen lediglich Inhalte für die Analyse senden.
 
@@ -49,9 +49,9 @@ Zuverlässigkeitsbewertungen liegen zwischen 1 und 0. Werte, die näher an 1 lie
 
 ## <a name="opinion-mining"></a>Opinion Mining
 
-Opinion Mining ist ein Feature der Standpunktanalyse ab Version 3.1 Preview. Dieses Feature wird in der Verarbeitung natürlicher Sprache (Natural Language Processing, NLP) auch als aspektbasierte Standpunktanalyse bezeichnet und bietet feiner abgestufte Informationen zu den Meinungen in Bezug auf Aspekte (z. B. Attribute von Produkten oder Dienstleistungen) in Texten.
+Opinion Mining ist ein Feature der Standpunktanalyse ab Version 3.1 Preview. Dieses Feature wird in der Verarbeitung natürlicher Sprache (Natural Language Processing, NLP) auch als aspektbasierte Standpunktanalyse bezeichnet und bietet feiner abgestufte Informationen zu den Meinungen in Bezug auf Attribute von Produkten oder Dienstleistungen im Texten. Die API zeigt Meinungen als Ziel (Substantiv oder Verb) und eine Bewertung (Adjektiv) an.
 
-Wenn ein Kunde für ein Hotel beispielsweise Feedback wie „Das Zimmer war toll, aber das Personal war unfreundlich.“ hinterlässt, werden vom Opinion Mining Aspekte im Text sowie die zugehörigen Meinungen und Stimmungen ermittelt. Von der Standpunktanalyse wird unter Umständen nur eine negative Stimmung gemeldet.
+Wenn ein Kunde für ein Hotel beispielsweise Feedback wie „Das Zimmer war toll, aber das Personal war unfreundlich.“ hinterlässt, werden vom Opinion Mining Ziele (Aspekte) im Text sowie die zugehörigen Bewertungen (Meinungen) und Stimmungen ermittelt. Von der Standpunktanalyse wird unter Umständen nur eine negative Stimmung gemeldet.
 
 :::image type="content" source="../media/how-tos/opinion-mining.png" alt-text="Diagramm: Opinion Mining-Beispiel" lightbox="../media/how-tos/opinion-mining.png":::
 
@@ -72,7 +72,7 @@ Ein Dokument darf maximal 5.120 Zeichen enthalten. Die maximal zulässige Anzahl
 
 Erstellen Sie eine POST-Anforderung. Um eine Anforderung schnell zu strukturieren und zu senden, können Sie in den folgenden Verweislinks [Postman](text-analytics-how-to-call-api.md) oder die **API-Testkonsole** verwenden. 
 
-#### <a name="version-31-preview3"></a>[Version 3.1-preview.3](#tab/version-3-1)
+#### <a name="version-31-preview"></a>[Version 3.1-preview](#tab/version-3-1)
 
 [Referenz zu Standpunktanalyse v3.1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/Sentiment)
 
@@ -89,17 +89,17 @@ Legen Sie den HTTPS-Endpunkt für die Standpunktanalyse entweder mithilfe einer 
 > [!NOTE]
 > Den Schlüssel und den Endpunkt für Ihre Textanalyseressource finden Sie im Azure-Portal. Sie befinden sich auf der Seite **Schnellstart** der Ressource unter **Ressourcenverwaltung**. 
 
-#### <a name="version-31-preview3"></a>[Version 3.1-preview.3](#tab/version-3-1)
+#### <a name="version-31-preview"></a>[Version 3.1-preview](#tab/version-3-1)
 
 **Standpunktanalyse**
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/sentiment`
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/sentiment`
 
 **Opinion Mining**
 
 Um Opinion Mining-Ergebnisse zu erhalten, muss der Parameter `opinionMining=true` eingeschlossen werden. Beispiel:
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/sentiment?opinionMining=true`
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/sentiment?opinionMining=true`
 
 Dieser Parameter ist standardmäßig auf `false` festgelegt. 
 
@@ -142,7 +142,7 @@ Die Textanalyse-API ist zustandslos. Auf Ihrem Konto werden keine Daten gespeich
 
 Die Ausgabe wird umgehend zurückgegeben. Sie können die Ergebnisse an eine Anwendung streamen, die JSON akzeptiert, oder die Ausgabe in einer Datei im lokalen System speichern. Importieren Sie dann die Ausgabe in eine Anwendung, mit der Sie die Daten sortieren, durchsuchen und bearbeiten können. Aufgrund der Unterstützung von Emojis und mehreren Sprachen enthält der Antworttext unter Umständen Textversätze. Weitere Informationen finden Sie unter [Textversätze in der Ausgabe der Textanalyse-API](../concepts/text-offsets.md).
 
-#### <a name="version-31-preview3"></a>[Version 3.1-preview.3](#tab/version-3-1)
+#### <a name="version-31-preview"></a>[Version 3.1-preview](#tab/version-3-1)
 
 ### <a name="sentiment-analysis-and-opinion-mining-example-response"></a>Beispielantwort für Standpunktanalyse und Opinion Mining
 
@@ -151,97 +151,99 @@ Die Ausgabe wird umgehend zurückgegeben. Sie können die Ergebnisse an eine Anw
 
 Von Version 3.1 der Standpunktanalyse können Antwortobjekte für die Standpunktanalyse und für das Opinion Mining zurückgegeben werden.
   
-Die Standpunktanalyse gibt eine Stimmungsbezeichnung und eine Zuverlässigkeitsbewertung für das gesamte Dokument und jeden Satz darin zurück. Werte, die näher an 1 liegen, weisen auf eine höhere Zuverlässigkeit der Bezeichnungsklassifizierung hin, während niedrigere Bewertungen eine geringere Zuverlässigkeit bedeuten. Ein Dokument kann mehrere Sätze enthalten, und die Zuverlässigkeitsbewertungen in jedem Dokument oder Satz ergeben addiert 1.
+Die Standpunktanalyse gibt eine Stimmungsbezeichnung und eine Zuverlässigkeitsbewertung für das gesamte Dokument und jeden Satz darin zurück. Werte, die näher an 1 liegen, weisen auf eine höhere Zuverlässigkeit der Bezeichnungsklassifizierung hin, während niedrigere Bewertungen eine geringere Zuverlässigkeit bedeuten. Ein Dokument kann mehrere Sätze enthalten, und die Zuverlässigkeitsbewertungen in jedem Dokument oder Satz ergeben addiert 1. assessments 
 
-Beim Opinion Mining werden Aspekte im Text sowie die zugehörigen Meinungen und Stimmungen ermittelt. In der nachstehenden Antwort weist der Satz *Im Restaurant gab es großartiges Essen, und der Kellner war freundlich* zwei Aspekte auf: *Essen* und *Kellner*. Die `relations`-Eigenschaft jedes Aspekts enthält einen `ref`-Wert mit dem URI-Verweis auf die zugeordneten Objekte `documents`, `sentences` und `opinions`.
+Beim Opinion Mining werden Ziele (Substantive oder Verben) im Text sowie die zugehörige Bewertung (Adjektiv) ermittelt. In der nachstehenden Antwort weist der Satz *Im Restaurant gab es großartiges Essen, und der Kellner war freundlich.* zwei Ziele auf: *Essen* und *Kellner*. Die `relations`-Eigenschaft jedes Ziels enthält einen `ref`-Wert mit dem URI-Verweis auf die zugeordneten Objekte `documents`, `sentences` und `assessments`.
+
+Die API gibt Meinungen als Ziel (Substantiv oder Verb) und eine Bewertung (Adjektiv) zurück.
 
 ```json
 {
-    "documents": [
+  "documents": [
+    {
+      "id": "1",
+      "sentiment": "positive",
+      "confidenceScores": {
+        "positive": 1,
+        "neutral": 0,
+        "negative": 0
+      },
+      "sentences": [
         {
-            "id": "1",
-            "sentiment": "positive",
-            "confidenceScores": {
-                "positive": 1.0,
-                "neutral": 0.0,
-                "negative": 0.0
-            },
-            "sentences": [
+          "sentiment": "positive",
+          "confidenceScores": {
+            "positive": 1,
+            "neutral": 0,
+            "negative": 0
+          },
+          "offset": 0,
+          "length": 58,
+          "text": "The restaurant had great food and our waiter was friendly.",
+          "targets": [
+            {
+              "sentiment": "positive",
+              "confidenceScores": {
+                "positive": 1,
+                "negative": 0
+              },
+              "offset": 25,
+              "length": 4,
+              "text": "food",
+              "relations": [
                 {
-                    "sentiment": "positive",
-                    "confidenceScores": {
-                        "positive": 1.0,
-                        "neutral": 0.0,
-                        "negative": 0.0
-                    },
-                    "offset": 0,
-                    "length": 58,
-                    "text": "The restaurant had great food and our waiter was friendly.",
-                    "aspects": [
-                        {
-                            "sentiment": "positive",
-                            "confidenceScores": {
-                                "positive": 1.0,
-                                "negative": 0.0
-                            },
-                            "offset": 25,
-                            "length": 4,
-                            "text": "food",
-                            "relations": [
-                                {
-                                    "relationType": "opinion",
-                                    "ref": "#/documents/0/sentences/0/opinions/0"
-                                }
-                            ]
-                        },
-                        {
-                            "sentiment": "positive",
-                            "confidenceScores": {
-                                "positive": 1.0,
-                                "negative": 0.0
-                            },
-                            "offset": 38,
-                            "length": 6,
-                            "text": "waiter",
-                            "relations": [
-                                {
-                                    "relationType": "opinion",
-                                    "ref": "#/documents/0/sentences/0/opinions/1"
-                                }
-                            ]
-                        }
-                    ],
-                    "opinions": [
-                        {
-                            "sentiment": "positive",
-                            "confidenceScores": {
-                                "positive": 1.0,
-                                "negative": 0.0
-                            },
-                            "offset": 19,
-                            "length": 5,
-                            "text": "great",
-                            "isNegated": false
-                        },
-                        {
-                            "sentiment": "positive",
-                            "confidenceScores": {
-                                "positive": 1.0,
-                                "negative": 0.0
-                            },
-                            "offset": 49,
-                            "length": 8,
-                            "text": "friendly",
-                            "isNegated": false
-                        }
-                    ]
+                  "relationType": "assessment",
+                  "ref": "#/documents/0/sentences/0/assessments/0"
                 }
-            ],
-            "warnings": []
+              ]
+            },
+            {
+              "sentiment": "positive",
+              "confidenceScores": {
+                "positive": 1,
+                "negative": 0
+              },
+              "offset": 38,
+              "length": 6,
+              "text": "waiter",
+              "relations": [
+                {
+                  "relationType": "assessment",
+                  "ref": "#/documents/0/sentences/0/assessments/1"
+                }
+              ]
+            }
+          ],
+          "assessments": [
+            {
+              "sentiment": "positive",
+              "confidenceScores": {
+                "positive": 1,
+                "negative": 0
+              },
+              "offset": 19,
+              "length": 5,
+              "text": "great",
+              "isNegated": false
+            },
+            {
+              "sentiment": "positive",
+              "confidenceScores": {
+                "positive": 1,
+                "negative": 0
+              },
+              "offset": 49,
+              "length": 8,
+              "text": "friendly",
+              "isNegated": false
+            }
+          ]
         }
-    ],
-    "errors": [],
-    "modelVersion": "2020-04-01"
+      ],
+      "warnings": []
+    }
+  ],
+  "errors": [],
+  "modelVersion": "2020-04-01"
 }
 ```
 

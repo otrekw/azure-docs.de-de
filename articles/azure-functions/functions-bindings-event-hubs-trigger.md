@@ -6,12 +6,12 @@ ms.assetid: daf81798-7acc-419a-bc32-b5a41c6db56b
 ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
-ms.openlocfilehash: efc785c96c76cca5deeadbd30fa962becb18d25b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c2b8302e64f7dcc657fd20ed5d918ed6816d750d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997302"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102608909"
 ---
 # <a name="azure-event-hubs-trigger-for-azure-functions"></a>Azure Event Hubs-Trigger für Azure Functions
 
@@ -20,6 +20,10 @@ In diesem Artikel erfahren Sie, wie Sie [Azure Event Hubs](../event-hubs/event-h
 Informationen zu Setup- und Konfigurationsdetails finden Sie in der [Übersicht](functions-bindings-event-hubs.md).
 
 [!INCLUDE [functions-bindings-event-hubs-trigger](../../includes/functions-bindings-event-hubs-trigger.md)]
+
+## <a name="hostjson-settings"></a>Einstellungen für „host.json“
+
+Die Datei [host.json](functions-host-json.md#eventhub) enthält Einstellungen, die das Verhalten des Event Hub-Triggers steuern. Informationen zu verfügbaren Einstellungen finden Sie im Abschnitt [Einstellungen für „host.json“](functions-bindings-event-hubs.md#hostjson-settings).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

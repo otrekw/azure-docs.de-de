@@ -1,17 +1,17 @@
 ---
 title: 'Benachrichtigung über geplante Wartung: Azure Database for MySQL – Einzelserver'
 description: In diesem Artikel wird das Feature für Benachrichtigungen über geplante Wartungsmaßnahmen in Azure Database for MySQL (Einzelserver) beschrieben.
-author: ambhatna
-ms.author: ambhatna
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: ff197f8add65782a594d64661ffecdaced4598c2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c6d1bfbf1592da3a5e632eb875221225630aed3f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94919623"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105108671"
 ---
 # <a name="planned-maintenance-notification-in-azure-database-for-mysql---single-server"></a>Benachrichtigung über geplante Wartung in Azure Database for MySQL – Einzelserver
 
