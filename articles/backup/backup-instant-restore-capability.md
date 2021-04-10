@@ -4,12 +4,12 @@ description: Azure-Funktion zur sofortigen Wiederherstellung und häufig gestell
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 147fadc92429157ed2f9ba3eb68297a3e1d08d24
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 3448b162c17dec2ab5b7637a3527d1c470bd415c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "96014447"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102618575"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Verbesserte Sicherungs- und Wiederherstellungsleistung mit der Azure Backup-Funktion zur sofortigen Wiederherstellung
 
@@ -112,7 +112,13 @@ Das neue Modell lässt das Löschen des Wiederherstellungspunkts (Tarif 2) nur 
 
 ### <a name="why-does-my-snapshot-still-exist-even-after-the-set-retention-period-in-backup-policy"></a>Warum ist meine Momentaufnahme auch nach Ablauf des in der Sicherungsrichtlinie festgelegten Aufbewahrungszeitraums noch vorhanden?
 
-Wenn der Wiederherstellungspunkt eine Momentaufnahme aufweist und diese der letzte verfügbare Wiederherstellungspunkt ist, wird sie bis zur nächsten erfolgreichen Sicherung aufbewahrt. Dies entspricht der festgelegten Richtlinie für die Garbage Collection (GC). Diese gibt an, dass immer mindestens ein letzter Wiederherstellungspunkt vorhanden sein muss, falls alle nachfolgenden Sicherungen aufgrund eines Problems auf der VM zu Fehlern führen. In normalen Szenarien werden Wiederherstellungspunkte spätestens 24 Stunden nach ihrem Ablauf bereinigt.
+Wenn der Wiederherstellungspunkt eine Momentaufnahme aufweist und diese der letzte verfügbare Wiederherstellungspunkt ist, wird sie bis zur nächsten erfolgreichen Sicherung aufbewahrt. Dies entspricht der festgelegten Richtlinie für die Garbage Collection (GC). Diese gibt an, dass immer mindestens ein letzter Wiederherstellungspunkt vorhanden sein muss, falls alle nachfolgenden Sicherungen aufgrund eines Problems auf der VM zu Fehlern führen. In normalen Szenarien werden Wiederherstellungspunkte spätestens 24 Stunden nach ihrem Ablauf bereinigt. In seltenen Fällen gibt es möglicherweise eine oder zwei zusätzliche Momentaufnahmen, wenn die automatische Speicherbereinigung (Garbage Collection, GC) stark ausgelastet ist.
+
+### <a name="why-do-i-see-more-snapshots-than-my-retention-policy"></a>Warum werden mehr Momentaufnahmen angezeigt, als laut meiner Aufbewahrungsrichtlinie vorhanden sein sollten?
+
+Wenn die Aufbewahrungsrichtlinie z. B. auf „1“ festgelegt ist, können in bestimmten Fällen zwei Momentaufnahmen angezeigt werden. Die Ursache hierfür ist, dass immer mindestens ein aktueller Wiederherstellungspunkt vorhanden sein muss, falls alle nachfolgenden Sicherungen aufgrund eines Problems auf der VM zu Fehlern führen. Dies kann dazu führen, dass zwei Momentaufnahmen vorhanden sind.<br></br>Wenn die Richtlinie also auf „n“ Momentaufnahmen festgelegt ist, können manchmal „n+1“ Momentaufnahmen vorhanden sein. Darüber hinaus treten sogar „n + 1 + 2“ Momentaufnahmen auf, wenn die Garbage Collection verzögert ausgeführt wird. Dies kann in seltenen Fällen vorkommen:
+- Sie bereinigen Momentaufnahmen, deren Aufbewahrungszeitraum abgelaufen ist.
+- Die Garbage Collection (GC) am Back-End ist stark ausgelastet.
 
 ### <a name="i-dont-need-instant-restore-functionality-can-it-be-disabled"></a>Ich benötige keine sofortige Wiederherstellung. Kann ich sie deaktivieren?
 
@@ -120,5 +126,5 @@ Das Feature für die sofortige Wiederherstellung ist für alle Benutzer aktivier
 
 ### <a name="is-it-safe-to-restart-the-vm-during-the-transfer-process-which-can-take-many-hours-will-restarting-the-vm-interrupt-or-slow-down-the-transfer"></a>Ist es sicher, die VM während des Übertragungsprozesses (der viele Stunden dauern kann) neu zu starten? Wird der Neustart der VM die Übertragung unterbrechen oder verlangsamen?
 
-Ja, es ist sicher, und es gibt absolut keine Auswirkungen auf die Datenübertragungsgeschwindigkeit.
+Ja, es ist sicher, und es hat absolut keine Auswirkungen auf die Datenübertragungsgeschwindigkeit.
 

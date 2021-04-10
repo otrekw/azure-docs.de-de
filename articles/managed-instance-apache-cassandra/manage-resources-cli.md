@@ -4,14 +4,14 @@ description: Hier erfahren Sie mehr über die allgemeinen Befehle zum Automatisi
 author: TheovanKraay
 ms.service: managed-instance-apache-cassandra
 ms.topic: how-to
-ms.date: 03/02/2021
+ms.date: 03/15/2021
 ms.author: thvankra
-ms.openlocfilehash: 3cd5fdbf6cdc504a1290c8fbd80cf89cf85ce714
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 3e44625d23a302c58ea065a4fc3ecec5605e60b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101743443"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103564523"
 ---
 # <a name="manage-azure-managed-instance-for-apache-cassandra-resources-using-azure-cli-preview"></a>Verwalten von Azure SQL Managed Instance für Apache Cassandra-Ressourcen mithilfe der Azure CLI (Vorschau)
 
@@ -24,9 +24,9 @@ In diesem Artikel werden allgemeine Befehle zum Automatisieren der Verwaltung vo
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-* Für diesen Artikel ist die Azure CLI-Version 2.12.1 oder höher erforderlich. Wenn Sie Azure Cloud Shell verwenden, ist die neueste Version bereits installiert.
-
 > [!IMPORTANT]
+> Für diesen Artikel ist die Azure CLI-Version 2.17.1 oder höher erforderlich. Wenn Sie Azure Cloud Shell verwenden, ist die neueste Version bereits installiert.
+>
 > Ressourcen für die Verwaltung von Azure SQL Managed Instance für Apache Cassandra können nicht umbenannt werden, da dies gegen die Funktionsweise von Azure Resource Manager mit Ressourcen-URIs verstößt.
 
 ## <a name="azure-managed-instance-for-apache-cassandra-clusters"></a>Azure SQL Managed Instance für Apache Cassandra-Cluster
@@ -42,7 +42,7 @@ In den folgenden Abschnitten wird die Verwaltung von Azure SQL Managed Instance 
 
 ### <a name="create-a-managed-instance-cluster"></a><a id="create-cluster"></a>Erstellen eines Managed Instance-Clusters
 
-So erstellen Sie einen Azure SQL Managed Instance für Apache Cassandra-Cluster:
+Erstellen Sie einen Azure Managed Instance for Apache Cassandra-Cluster mithilfe des Befehls [az managed-cassandra cluster create](/cli/azure/ext/cosmosdb-preview/managed-cassandra/cluster?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_cluster_create):
 
 ```azurecli-interactive
 resourceGroupName='MyResourceGroup'
@@ -65,7 +65,7 @@ az managed-cassandra cluster create \
 
 ### <a name="delete-a-managed-instance-cluster"></a><a id="delete-cluster"></a>Löschen eines Managed Instance-Clusters
 
-So löschen Sie einen Cluster:
+Löschen Sie einen Cluster mithilfe des Befehls [az managed-cassandra cluster delete](/cli/azure/ext/cosmosdb-preview/managed-cassandra/cluster?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_cluster_delete):
 
 ```azurecli-interactive
 resourceGroupName='MyResourceGroup'
@@ -78,7 +78,7 @@ az managed-cassandra cluster delete \
 
 ### <a name="get-the-cluster-details"></a><a id="get-cluster-details"></a>Abrufen der Clusterdetails
 
-So rufen Sie Clusterdetails ab:
+Rufen Sie Clusterdetails mithilfe des Befehls [az managed-cassandra cluster show](/cli/azure/ext/cosmosdb-preview/managed-cassandra/cluster?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_cluster_show) ab:
 
 ```azurecli-interactive
 resourceGroupName='MyResourceGroup'
@@ -91,7 +91,7 @@ az managed-cassandra cluster show \
 
 ### <a name="get-the-cluster-node-status"></a><a id="get-cluster-status"></a>Abrufen des Clusterknotenstatus
 
-So rufen Sie Clusterdetails ab:
+Rufen Sie den Clusterknotenstatus mithilfe des Befehls [az managed-cassandra cluster node-status](/cli/azure/ext/cosmosdb-preview/managed-cassandra/cluster?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_cluster_node_status) ab:
 
 ```azurecli-interactive
 clusterName='cassandra-hybrid-cluster'
@@ -104,7 +104,7 @@ az managed-cassandra cluster node-status \
 
 ### <a name="list-the-clusters-by-resource-group"></a><a id="list-clusters-resource-group"></a>Auflisten von Clustern nach Ressourcengruppe
 
-So listen Sie die Cluster nach Ressourcengruppe auf:
+Listen Sie Cluster mithilfe des Befehls [az managed-cassandra cluster list](/cli/azure/ext/cosmosdb-preview/managed-cassandra/cluster?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_cluster_list) nach Ressourcengruppe auf:
 
 ```azurecli-interactive
 subscriptionId='MySubscriptionId'
@@ -116,7 +116,7 @@ az managed-cassandra cluster list\
 
 ### <a name="list-clusters-by-subscription-id"></a><a id="list-clusters-subscription"></a>Auflisten von Clustern nach Abonnement-ID
 
-So listen Sie die Cluster nach der Abonnement-ID auf:
+Listen Sie Cluster mithilfe des Befehls [az managed-cassandra cluster list](/cli/azure/ext/cosmosdb-preview/managed-cassandra?view=azure-cli-latest&preserve-view=true) nach Abonnement-ID auf:
 
 ```azurecli-interactive
 # set your subscription id
@@ -137,7 +137,7 @@ In den folgenden Abschnitten wird die Verwaltung von Azure SQL Managed Instance 
 
 ### <a name="create-a-datacenter"></a><a id="create-datacenter"></a>Erstellen eines Rechenzentrums
 
-So erstellen Sie ein Rechenzentrum:
+Erstellen Sie ein Rechenzentrum mithilfe des Befehls [az managed-cassandra datacenter create](/cli/azure/ext/cosmosdb-preview/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_datacenter_create):
 
 ```azurecli-interactive
 resourceGroupName='MyResourceGroup'
@@ -157,7 +157,7 @@ az managed-cassandra datacenter create \
 
 ### <a name="delete-a-datacenter"></a><a id="delete-datacenter"></a>Löschen eines Rechenzentrums
 
-So löschen Sie ein Rechenzentrum:
+Löschen Sie ein Rechenzentrum mithilfe des Befehls [az managed-cassandra datacenter delete](/cli/azure/ext/cosmosdb-preview/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_datacenter_delete):
 
 ```azurecli-interactive
 resourceGroupName='MyResourceGroup'
@@ -172,7 +172,7 @@ az managed-cassandra datacenter delete \
 
 ### <a name="get-datacenter-details"></a><a id="get-datacenter-details"></a>Abrufen von Details zu Rechenzentren
 
-So rufen Sie Details zu Rechenzentren ab:
+Rufen Sie Details zu einem Rechenzentrum mithilfe des Befehls [az managed-cassandra datacenter show](/cli/azure/ext/cosmosdb-preview/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_datacenter_show) ab:
 
 ```azurecli-interactive
 resourceGroupName='MyResourceGroup'
@@ -187,7 +187,7 @@ az managed-cassandra datacenter show \
 
 ### <a name="update-or-scale-a-datacenter"></a><a id="update-datacenter"></a>Aktualisieren oder Skalieren eines Rechenzentrums
 
-So aktualisieren oder skalieren Sie ein Rechenzentrum (ändern Sie zum Skalieren den nodeCount-Wert):
+Aktualisieren oder skalieren Sie ein Rechenzentrum (zum Skalieren des nodeCount-Werts für Änderungen) mithilfe des Befehls [az managed-cassandra datacenter update](/cli/azure/ext/cosmosdb-preview/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_datacenter_update):
 
 ```azurecli-interactive
 resourceGroupName='MyResourceGroup'
@@ -205,7 +205,7 @@ az managed-cassandra datacenter update \
 
 ### <a name="get-the-datacenters-in-a-cluster"></a><a id="get-datacenters-cluster"></a>Abrufen der Rechenzentren in einem Cluster
 
-So rufen Sie die Rechenzentren in einem Cluster ab:
+Rufen Sie die Rechenzentren in einem Cluster mithilfe des Befehls [az managed-cassandra datacenter list](/cli/azure/ext/cosmosdb-preview/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_datacenter_list) ab:
 
 ```azurecli-interactive
 resourceGroupName='MyResourceGroup'

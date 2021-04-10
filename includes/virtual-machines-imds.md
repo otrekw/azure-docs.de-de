@@ -8,12 +8,12 @@ ms.date: 01/04/2021
 ms.author: chhenk
 ms.reviewer: azmetadatadev
 ms.custom: references_regions
-ms.openlocfilehash: 554730919d4226c07e099d5e457cd0fd20dbad30
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 357223751112af03bf797ae9a0e6352a10132ab9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102510942"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103464992"
 ---
 Der Azure Instance Metadata Service (IMDS) stellt Informationen zu Instanzen virtueller Computer bereit, die derzeit ausgeführt werden. Sie können ihn zur Verwaltung und Konfiguration Ihrer virtuellen Computer verwenden.
 Hierzu gehören die SKU, der Speicher, Netzwerkkonfigurationen und bevorstehende Wartungsereignisse. Eine umfassende Liste der verfügbaren Daten finden Sie in der [Übersicht über die Endpunktkategorien](#endpoint-categories).
@@ -314,7 +314,7 @@ GET /metadata/instance
 
 #### <a name="parameters"></a>Parameter
 
-| Name | Erforderlich/Optional | Beschreibung |
+| Name | Erforderlich/Optional | BESCHREIBUNG |
 |------|-------------------|-------------|
 | `api-version` | Erforderlich | Die zum Durchführen der Anforderung verwendete Version
 | `format` | Optional* | Das Format (`json` oder `text`) der Antwort. *Hinweis: Ist möglicherweise erforderlich, wenn Anforderungsparameter verwendet werden.
@@ -908,7 +908,7 @@ GET /metadata/attested/document
 
 #### <a name="parameters"></a>Parameter
 
-| Name | Erforderlich/Optional | Beschreibung |
+| Name | Erforderlich/Optional | BESCHREIBUNG |
 |------|-------------------|-------------|
 | `api-version` | Erforderlich | Die zum Durchführen der Anforderung verwendete Version
 | `nonce` | Optional | Eine 10-stellige Zeichenfolge, die als kryptografische Nonce fungiert. Wenn kein Wert angegeben wird, verwendet IMDS den aktuellen UTC-Zeitstempel.
@@ -1140,174 +1140,168 @@ Wenn ein Datenelement nicht gefunden wird oder eine Anforderung ungültig ist, g
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
-**Ich erhalte die Fehlermeldung `400 Bad Request, Required metadata header not specified`. Was bedeutet das?**
+- Ich erhalte die Fehlermeldung `400 Bad Request, Required metadata header not specified`. Was bedeutet dies?
+  - Für den IMDS muss der Header `Metadata: true` in der Anforderung übergeben werden. Die Übergabe dieses Headers im REST-Aufruf ermöglicht den Zugriff auf den IMDS.
 
-Für den IMDS muss der Header `Metadata: true` in der Anforderung übergeben werden. Die Übergabe dieses Headers im REST-Aufruf ermöglicht den Zugriff auf den IMDS.
+- Warum erhalte ich keine Compute-Informationen für meine VM?
+  - Derzeit unterstützt der IMDS nur Instanzen, die mit Azure Resource Manager erstellt wurden.
 
-**Warum erhalte ich keine Compute-Informationen für meine VM?**
+- Ich habe meine VM vor einiger Zeit mithilfe von Azure Resource Manager erstellt. Warum sehe ich keine Computemetadateninformationen?
+  - Wenn Sie Ihre VM nach September 2016 erstellt haben, fügen Sie ein [Tag](../articles/azure-resource-manager/management/tag-resources.md) hinzu, damit Computemetadaten angezeigt werden. Wenn Sie Ihre VM vor September 2016 erstellt haben, fügen Sie der VM-Instanz Erweiterungen oder Datenträger für Daten hinzu oder entfernen Sie diese, um die Metadaten zu aktualisieren.
 
-Derzeit unterstützt der IMDS nur Instanzen, die mit Azure Resource Manager erstellt wurden.
+- Warum werden nicht alle Daten für eine neue Version ausgefüllt?
+  - Wenn Sie Ihre VM nach September 2016 erstellt haben, fügen Sie ein [Tag](../articles/azure-resource-manager/management/tag-resources.md) hinzu, damit Computemetadaten angezeigt werden. Wenn Sie Ihre VM vor September 2016 erstellt haben, fügen Sie der VM-Instanz Erweiterungen oder Datenträger für Daten hinzu oder entfernen Sie diese, um die Metadaten zu aktualisieren.
 
-**Ich habe meine VM vor einiger Zeit mithilfe von Azure Resource Manager erstellt. Warum sehe ich keine Computemetadateninformationen?**
+- Warum erhalte ich die Fehler `500 Internal Server Error` oder `410 Resource Gone`?
+  - Wiederholen Sie die Anforderung. Weitere Informationen finden Sie unter [Behandeln vorübergehender Fehler](/azure/architecture/best-practices/transient-faults). Wenn das Problem weiterhin besteht, erstellen Sie im Azure-Portal ein Supportproblem für den virtuellen Computer.
 
-Wenn Sie Ihre VM nach September 2016 erstellt haben, fügen Sie ein [Tag](../articles/azure-resource-manager/management/tag-resources.md) hinzu, damit Computemetadaten angezeigt werden. Wenn Sie Ihre VM vor September 2016 erstellt haben, fügen Sie der VM-Instanz Erweiterungen oder Datenträger für Daten hinzu oder entfernen Sie diese, um die Metadaten zu aktualisieren.
+- Gilt dies auch für VM-Skalierungsgruppeninstanzen?
+  - Ja, IMDS ist für Instanzen von VM-Skalierungsgruppen verfügbar.
 
-**Warum werden nicht alle Daten für eine neue Version ausgefüllt?**
+- Ich habe die Tags in VM-Skalierungsgruppen aktualisiert, aber sie werden (im Gegensatz zu Einzelinstanz-VMs) nicht in den Instanzen angezeigt. Mache ich etwas falsch?
+  - Derzeit werden Tags für VM-Skalierungsgruppen nur nach einem Neustart, einer Neuerstellung des Images oder der Änderung eines Datenträgers für die Instanz angezeigt.
 
-Wenn Sie Ihre VM nach September 2016 erstellt haben, fügen Sie ein [Tag](../articles/azure-resource-manager/management/tag-resources.md) hinzu, damit Computemetadaten angezeigt werden. Wenn Sie Ihre VM vor September 2016 erstellt haben, fügen Sie der VM-Instanz Erweiterungen oder Datenträger für Daten hinzu oder entfernen Sie diese, um die Metadaten zu aktualisieren.
+- Warum sehe ich keine SKU-Informationen für meinen virtuellen Computer in den `instance/compute`-Details?
+  - Bei benutzerdefinierten Images, die von Azure Marketplace aus erstellt wurden, behält die Azure-Plattform keine SKU-Informationen für das benutzerdefinierte Image und die Details für VMs, die aus dem benutzerdefinierten Image erstellt wurden, bei. Dies ist entwurfsbedingt und wird daher nicht in den VM- `instance/compute` Details aufgeführt.
 
-**Warum erhalte ich die Fehler `500 Internal Server Error` oder `410 Resource Gone`?**
+- Warum ist bei meiner Anforderung für meinen Dienstaufruf ein Timeout aufgetreten?
+  - Metadatenaufrufe müssen über die primäre IP-Adresse erfolgen, die der primären Netzwerkkarte des virtuellen Computers zugewiesen ist. Wenn Sie die Routen geändert haben, muss außerdem eine Route für die Adresse 169.254.169.254/32 in der lokalen Routingtabelle des virtuellen Computers vorhanden sein.
 
-Wiederholen Sie die Anforderung. Weitere Informationen finden Sie unter [Behandeln vorübergehender Fehler](/azure/architecture/best-practices/transient-faults). Wenn das Problem weiterhin besteht, erstellen Sie im Azure-Portal ein Supportproblem für den virtuellen Computer.
+    ### <a name="windows"></a>[Windows](#tab/windows/)
 
-**Gilt dies auch für VM-Skalierungsgruppeninstanzen?**
+    1. Erstellen Sie eine Sicherung der lokalen Routingtabelle, und suchen Sie den IMDS-Eintrag. Zum Beispiel:
+        ```console
+        > route print
+        IPv4 Route Table
+        ===========================================================================
+        Active Routes:
+        Network Destination        Netmask          Gateway       Interface  Metric
+                0.0.0.0          0.0.0.0      172.16.69.1      172.16.69.7     10
+                127.0.0.0        255.0.0.0         On-link         127.0.0.1    331
+                127.0.0.1  255.255.255.255         On-link         127.0.0.1    331
+        127.255.255.255  255.255.255.255         On-link         127.0.0.1    331
+            168.63.129.16  255.255.255.255      172.16.69.1      172.16.69.7     11
+        169.254.169.254  255.255.255.255      172.16.69.1      172.16.69.7     11
+        ... (continues) ...
+        ```
+    1. Überprüfen Sie, ob eine Route für `169.254.169.254` vorhanden ist, und notieren Sie sich die entsprechende Netzwerkschnittstelle (z. B. `172.16.69.7`).
+    1. Erstellen Sie eine Sicherung der Schnittstellenkonfiguration, und suchen Sie die Schnittstelle, die der in der Routingtabelle referenzierten Schnittstelle entspricht. Notieren Sie sich die (physische) MAC-Adresse.
+        ```console
+        > ipconfig /all
+        ... (continues) ...
+        Ethernet adapter Ethernet:
 
-Ja, IMDS ist für Instanzen von VM-Skalierungsgruppen verfügbar.
+        Connection-specific DNS Suffix  . : xic3mnxjiefupcwr1mcs1rjiqa.cx.internal.cloudapp.net
+        Description . . . . . . . . . . . : Microsoft Hyper-V Network Adapter
+        Physical Address. . . . . . . . . : 00-0D-3A-E5-1C-C0
+        DHCP Enabled. . . . . . . . . . . : Yes
+        Autoconfiguration Enabled . . . . : Yes
+        Link-local IPv6 Address . . . . . : fe80::3166:ce5a:2bd5:a6d1%3(Preferred)
+        IPv4 Address. . . . . . . . . . . : 172.16.69.7(Preferred)
+        Subnet Mask . . . . . . . . . . . : 255.255.255.0
+        ... (continues) ...
+        ```
+    1. Vergewissern Sie sich, dass die Schnittstelle der primären NIC und der primären IP-Adresse des virtuellen Computers entspricht. Sie finden die primäre NIC und primäre IP-Adresse in der Netzwerkkonfiguration im Azure-Portal oder durch Suchen mithilfe der Azure-Befehlszeilenschnittstelle. Notieren Sie sich die privaten IP-Adressen (und bei Verwendung der Azure CLI auch die MAC-Adresse). Hier ist ein PowerShell-CLI-Beispiel:
+        ```powershell
+        $ResourceGroup = '<Resource_Group>'
+        $VmName = '<VM_Name>'
+        $NicNames = az vm nic list --resource-group $ResourceGroup --vm-name $VmName | ConvertFrom-Json | Foreach-Object { $_.id.Split('/')[-1] }
+        foreach($NicName in $NicNames)
+        {
+            $Nic = az vm nic show --resource-group $ResourceGroup --vm-name $VmName --nic $NicName | ConvertFrom-Json
+            Write-Host $NicName, $Nic.primary, $Nic.macAddress
+        }
+        # Output: wintest767 True 00-0D-3A-E5-1C-C0
+        ```
+    1. Wenn sie nicht übereinstimmen, aktualisieren Sie die Routingtabelle so, dass die primäre NIC und die primäre IP-Adresse als Ziel festgelegt sind.
 
-**Ich habe die Tags in VM-Skalierungsgruppen aktualisiert, aber sie werden (im Gegensatz zu Einzelinstanz-VMs) nicht in den Instanzen angezeigt. Mache ich etwas falsch?**
+    ### <a name="linux"></a>[Linux](#tab/linux/)
 
-Derzeit werden Tags für VM-Skalierungsgruppen nur nach einem Neustart, einer Neuerstellung des Images oder der Änderung eines Datenträgers für die Instanz angezeigt.
+    1. Erstellen Sie eine Sicherung der lokalen Routingtabelle mit einem Befehl wie beispielsweise `netstat -r`, und suchen Sie den IMDS-Eintrag, z. B.:
+        ```console
+        ~$ netstat -r
+        Kernel IP routing table
+        Destination     Gateway         Genmask         Flags   MSS Window  irtt Iface
+        default         _gateway        0.0.0.0         UG        0 0          0 eth0
+        168.63.129.16   _gateway        255.255.255.255 UGH       0 0          0 eth0
+        169.254.169.254 _gateway        255.255.255.255 UGH       0 0          0 eth0
+        172.16.69.0     0.0.0.0         255.255.255.0   U         0 0          0 eth0
+        ```
+    1. Überprüfen Sie, ob eine Route für `169.254.169.254` vorhanden ist, und notieren Sie sich die entsprechende Netzwerkschnittstelle (z. B. `eth0`).
+    1. Speichern Sie die Schnittstellenkonfiguration für die entsprechende Schnittstelle in der Routingtabelle. (Beachten Sie, dass der genaue Name der Konfigurationsdatei variieren kann.)
+        ```console
+        ~$ cat /etc/netplan/50-cloud-init.yaml
+        network:
+        ethernets:
+            eth0:
+                dhcp4: true
+                dhcp4-overrides:
+                    route-metric: 100
+                dhcp6: false
+                match:
+                    macaddress: 00:0d:3a:e4:c7:2e
+                set-name: eth0
+        version: 2
+        ```
+    1. Notieren Sie sich bei Verwendung einer dynamischen IP-Adresse die MAC-Adresse (Media Access Control). Wenn Sie eine statische IP-Adresse verwenden, notieren Sie sich die aufgelisteten IPs und/oder die MAC-Adresse.
+    1. Vergewissern Sie sich, dass die Schnittstelle der primären NIC und der primären IP-Adresse des virtuellen Computers entspricht. Sie finden die primäre NIC und primäre IP-Adresse in der Netzwerkkonfiguration im Azure-Portal oder durch Suchen mithilfe der Azure-Befehlszeilenschnittstelle. Notieren Sie sich die privaten IP-Adressen (und bei Verwendung der Azure CLI auch die MAC-Adresse). Hier ist ein PowerShell-CLI-Beispiel:
+        ```powershell
+        $ResourceGroup = '<Resource_Group>'
+        $VmName = '<VM_Name>'
+        $NicNames = az vm nic list --resource-group $ResourceGroup --vm-name $VmName | ConvertFrom-Json | Foreach-Object { $_.id.Split('/')[-1] }
+        foreach($NicName in $NicNames)
+        {
+            $Nic = az vm nic show --resource-group $ResourceGroup --vm-name $VmName --nic $NicName | ConvertFrom-Json
+            Write-Host $NicName, $Nic.primary, $Nic.macAddress
+        }
+        # Output: ipexample606 True 00-0D-3A-E4-C7-2E
+        ```
+    1. Wenn sie nicht übereinstimmen, aktualisieren Sie die Routingtabelle so, dass die primäre NIC und die primäre IP-Adresse als Ziel festgelegt sind.
 
-**Warum ist bei meiner Anforderung für meinen Dienstaufruf ein Timeout aufgetreten?**
+    ---
 
-Metadatenaufrufe müssen über die primäre IP-Adresse erfolgen, die der primären Netzwerkkarte des virtuellen Computers zugewiesen ist. Wenn Sie die Routen geändert haben, muss außerdem eine Route für die Adresse 169.254.169.254/32 in der lokalen Routingtabelle des virtuellen Computers vorhanden sein.
+- Failoverclustering in Windows Server
+  - Wenn Sie den IMDS mit Failoverclustering abfragen, ist es gelegentlich erforderlich, der Routingtabelle eine Route hinzuzufügen. Gehen Sie dabei folgendermaßen vor:
 
-#### <a name="windows"></a>[Windows](#tab/windows/)
+    1. Öffnen Sie eine Eingabeaufforderung mit Administratorrechten.
 
-1. Erstellen Sie eine Sicherung der lokalen Routingtabelle, und suchen Sie den IMDS-Eintrag. Zum Beispiel:
-    ```console
-    > route print
+    1. Führen Sie den folgenden Befehl aus, und notieren Sie die Adresse der Schnittstelle für das Netzwerkziel (`0.0.0.0`) in der IPv4-Routingtabelle.
+
+    ```bat
+    route print
+    ```
+
+    > [!NOTE]
+    > Die folgende Beispielausgabe stammt aus einer Windows Server-VM mit aktiviertem Failovercluster. Der Einfachheit halber enthält die Ausgabe nur die IPv4-Routingtabelle.
+
+    ```
     IPv4 Route Table
     ===========================================================================
     Active Routes:
     Network Destination        Netmask          Gateway       Interface  Metric
-              0.0.0.0          0.0.0.0      172.16.69.1      172.16.69.7     10
+            0.0.0.0          0.0.0.0         10.0.1.1        10.0.1.10    266
+            10.0.1.0  255.255.255.192         On-link         10.0.1.10    266
+            10.0.1.10  255.255.255.255         On-link         10.0.1.10    266
+            10.0.1.15  255.255.255.255         On-link         10.0.1.10    266
+            10.0.1.63  255.255.255.255         On-link         10.0.1.10    266
             127.0.0.0        255.0.0.0         On-link         127.0.0.1    331
             127.0.0.1  255.255.255.255         On-link         127.0.0.1    331
-      127.255.255.255  255.255.255.255         On-link         127.0.0.1    331
-        168.63.129.16  255.255.255.255      172.16.69.1      172.16.69.7     11
-      169.254.169.254  255.255.255.255      172.16.69.1      172.16.69.7     11
-    ... (continues) ...
+    127.255.255.255  255.255.255.255         On-link         127.0.0.1    331
+        169.254.0.0      255.255.0.0         On-link     169.254.1.156    271
+        169.254.1.156  255.255.255.255         On-link     169.254.1.156    271
+    169.254.255.255  255.255.255.255         On-link     169.254.1.156    271
+            224.0.0.0        240.0.0.0         On-link         127.0.0.1    331
+            224.0.0.0        240.0.0.0         On-link     169.254.1.156    271
+    255.255.255.255  255.255.255.255         On-link         127.0.0.1    331
+    255.255.255.255  255.255.255.255         On-link     169.254.1.156    271
+    255.255.255.255  255.255.255.255         On-link         10.0.1.10    266
     ```
-1. Überprüfen Sie, ob eine Route für `169.254.169.254` vorhanden ist, und notieren Sie sich die entsprechende Netzwerkschnittstelle (z. B. `172.16.69.7`).
-1. Erstellen Sie eine Sicherung der Schnittstellenkonfiguration, und suchen Sie die Schnittstelle, die der in der Routingtabelle referenzierten Schnittstelle entspricht. Notieren Sie sich die (physische) MAC-Adresse.
-    ```console
-    > ipconfig /all
-    ... (continues) ...
-    Ethernet adapter Ethernet:
 
-       Connection-specific DNS Suffix  . : xic3mnxjiefupcwr1mcs1rjiqa.cx.internal.cloudapp.net
-       Description . . . . . . . . . . . : Microsoft Hyper-V Network Adapter
-       Physical Address. . . . . . . . . : 00-0D-3A-E5-1C-C0
-       DHCP Enabled. . . . . . . . . . . : Yes
-       Autoconfiguration Enabled . . . . : Yes
-       Link-local IPv6 Address . . . . . : fe80::3166:ce5a:2bd5:a6d1%3(Preferred)
-       IPv4 Address. . . . . . . . . . . : 172.16.69.7(Preferred)
-       Subnet Mask . . . . . . . . . . . : 255.255.255.0
-    ... (continues) ...
+    Führen Sie den folgenden Befehl aus, und verwenden Sie dabei die Adresse der Schnittstelle für das Netzwerkziel (`0.0.0.0`), in diesem Beispiel `10.0.1.10`.
+
+    ```bat
+    route add 169.254.169.254/32 10.0.1.10 metric 1 -p
     ```
-1. Vergewissern Sie sich, dass die Schnittstelle der primären NIC und der primären IP-Adresse des virtuellen Computers entspricht. Sie finden die primäre NIC und primäre IP-Adresse in der Netzwerkkonfiguration im Azure-Portal oder durch Suchen mithilfe der Azure-Befehlszeilenschnittstelle. Notieren Sie sich die privaten IP-Adressen (und bei Verwendung der Azure CLI auch die MAC-Adresse). Hier ist ein PowerShell-CLI-Beispiel:
-    ```powershell
-    $ResourceGroup = '<Resource_Group>'
-    $VmName = '<VM_Name>'
-    $NicNames = az vm nic list --resource-group $ResourceGroup --vm-name $VmName | ConvertFrom-Json | Foreach-Object { $_.id.Split('/')[-1] }
-    foreach($NicName in $NicNames)
-    {
-        $Nic = az vm nic show --resource-group $ResourceGroup --vm-name $VmName --nic $NicName | ConvertFrom-Json
-        Write-Host $NicName, $Nic.primary, $Nic.macAddress
-    }
-    # Output: wintest767 True 00-0D-3A-E5-1C-C0
-    ```
-1. Wenn sie nicht übereinstimmen, aktualisieren Sie die Routingtabelle so, dass die primäre NIC und die primäre IP-Adresse als Ziel festgelegt sind.
-
-#### <a name="linux"></a>[Linux](#tab/linux/)
-
- 1. Erstellen Sie eine Sicherung der lokalen Routingtabelle mit einem Befehl wie beispielsweise `netstat -r`, und suchen Sie den IMDS-Eintrag, z. B.:
-    ```console
-    ~$ netstat -r
-    Kernel IP routing table
-    Destination     Gateway         Genmask         Flags   MSS Window  irtt Iface
-    default         _gateway        0.0.0.0         UG        0 0          0 eth0
-    168.63.129.16   _gateway        255.255.255.255 UGH       0 0          0 eth0
-    169.254.169.254 _gateway        255.255.255.255 UGH       0 0          0 eth0
-    172.16.69.0     0.0.0.0         255.255.255.0   U         0 0          0 eth0
-    ```
-1. Überprüfen Sie, ob eine Route für `169.254.169.254` vorhanden ist, und notieren Sie sich die entsprechende Netzwerkschnittstelle (z. B. `eth0`).
-1. Speichern Sie die Schnittstellenkonfiguration für die entsprechende Schnittstelle in der Routingtabelle. (Beachten Sie, dass der genaue Name der Konfigurationsdatei variieren kann.)
-    ```console
-    ~$ cat /etc/netplan/50-cloud-init.yaml
-    network:
-    ethernets:
-        eth0:
-            dhcp4: true
-            dhcp4-overrides:
-                route-metric: 100
-            dhcp6: false
-            match:
-                macaddress: 00:0d:3a:e4:c7:2e
-            set-name: eth0
-    version: 2
-    ```
-1. Notieren Sie sich bei Verwendung einer dynamischen IP-Adresse die MAC-Adresse (Media Access Control). Wenn Sie eine statische IP-Adresse verwenden, notieren Sie sich die aufgelisteten IPs und/oder die MAC-Adresse.
-1. Vergewissern Sie sich, dass die Schnittstelle der primären NIC und der primären IP-Adresse des virtuellen Computers entspricht. Sie finden die primäre NIC und primäre IP-Adresse in der Netzwerkkonfiguration im Azure-Portal oder durch Suchen mithilfe der Azure-Befehlszeilenschnittstelle. Notieren Sie sich die privaten IP-Adressen (und bei Verwendung der Azure CLI auch die MAC-Adresse). Hier ist ein PowerShell-CLI-Beispiel:
-    ```powershell
-    $ResourceGroup = '<Resource_Group>'
-    $VmName = '<VM_Name>'
-    $NicNames = az vm nic list --resource-group $ResourceGroup --vm-name $VmName | ConvertFrom-Json | Foreach-Object { $_.id.Split('/')[-1] }
-    foreach($NicName in $NicNames)
-    {
-        $Nic = az vm nic show --resource-group $ResourceGroup --vm-name $VmName --nic $NicName | ConvertFrom-Json
-        Write-Host $NicName, $Nic.primary, $Nic.macAddress
-    }
-    # Output: ipexample606 True 00-0D-3A-E4-C7-2E
-    ```
-1. Wenn sie nicht übereinstimmen, aktualisieren Sie die Routingtabelle so, dass die primäre NIC und die primäre IP-Adresse als Ziel festgelegt sind.
-
----
-
-**Failoverclustering in Windows Server**
-
-Wenn Sie den IMDS mit Failoverclustering abfragen, ist es gelegentlich erforderlich, der Routingtabelle eine Route hinzuzufügen. Gehen Sie dabei folgendermaßen vor:
-
-1. Öffnen Sie eine Eingabeaufforderung mit Administratorrechten.
-
-1. Führen Sie den folgenden Befehl aus, und notieren Sie die Adresse der Schnittstelle für das Netzwerkziel (`0.0.0.0`) in der IPv4-Routingtabelle.
-
-```bat
-route print
-```
-
-> [!NOTE]
-> Die folgende Beispielausgabe stammt aus einer Windows Server-VM mit aktiviertem Failovercluster. Der Einfachheit halber enthält die Ausgabe nur die IPv4-Routingtabelle.
-
-```
-IPv4 Route Table
-===========================================================================
-Active Routes:
-Network Destination        Netmask          Gateway       Interface  Metric
-          0.0.0.0          0.0.0.0         10.0.1.1        10.0.1.10    266
-         10.0.1.0  255.255.255.192         On-link         10.0.1.10    266
-        10.0.1.10  255.255.255.255         On-link         10.0.1.10    266
-        10.0.1.15  255.255.255.255         On-link         10.0.1.10    266
-        10.0.1.63  255.255.255.255         On-link         10.0.1.10    266
-        127.0.0.0        255.0.0.0         On-link         127.0.0.1    331
-        127.0.0.1  255.255.255.255         On-link         127.0.0.1    331
-  127.255.255.255  255.255.255.255         On-link         127.0.0.1    331
-      169.254.0.0      255.255.0.0         On-link     169.254.1.156    271
-    169.254.1.156  255.255.255.255         On-link     169.254.1.156    271
-  169.254.255.255  255.255.255.255         On-link     169.254.1.156    271
-        224.0.0.0        240.0.0.0         On-link         127.0.0.1    331
-        224.0.0.0        240.0.0.0         On-link     169.254.1.156    271
-  255.255.255.255  255.255.255.255         On-link         127.0.0.1    331
-  255.255.255.255  255.255.255.255         On-link     169.254.1.156    271
-  255.255.255.255  255.255.255.255         On-link         10.0.1.10    266
-```
-
-Führen Sie den folgenden Befehl aus, und verwenden Sie dabei die Adresse der Schnittstelle für das Netzwerkziel (`0.0.0.0`), in diesem Beispiel `10.0.1.10`.
-
-```bat
-route add 169.254.169.254/32 10.0.1.10 metric 1 -p
-```
 
 ## <a name="support"></a>Support
 
@@ -1315,12 +1309,12 @@ Wenn Sie nach mehreren Versuchen keine Antwort auf die Metadaten erhalten, könn
 
 ## <a name="product-feedback"></a>Produktfeedback
 
-Sie können in unserem Kanal für Benutzerfeedback in https://feedback.azure.com/forums/216843-virtual-machines?category_id=394627 unter „Virtuelle Computer“ > „Instance Metadata Service“ Feedback zu Produkten geben und Ideen unterbreiten.
+Sie können [hier](https://feedback.azure.com/forums/216843-virtual-machines?category_id=394627) in unserem Kanal für Benutzerfeedback unter „Virtuelle Computer“ > „Instance Metadata Service“ Feedback zu Produkten geben und Ideen unterbreiten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Abrufen eines Zugriffstokens für die VM](../articles/active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)
+- [Abrufen eines Zugriffstokens für die VM](../articles/active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)
 
-[Scheduled Events für Linux](../articles/virtual-machines/linux/scheduled-events.md)
+- [Scheduled Events für Linux](../articles/virtual-machines/linux/scheduled-events.md)
 
-[Scheduled Events für Windows](../articles/virtual-machines/windows/scheduled-events.md)
+- [Scheduled Events für Windows](../articles/virtual-machines/windows/scheduled-events.md)

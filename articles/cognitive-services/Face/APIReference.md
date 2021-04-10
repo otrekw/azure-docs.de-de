@@ -11,11 +11,11 @@ ms.topic: reference
 ms.date: 02/17/2021
 ms.author: sbowles
 ms.openlocfilehash: 712b18b471b7595f5278c77ead9f845048d4783e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100643876"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105566097"
 ---
 # <a name="face-api-reference-list"></a>Referenzliste zur Gesichtserkennungs-API
 

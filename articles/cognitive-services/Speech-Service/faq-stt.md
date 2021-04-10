@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/01/2021
 ms.author: panosper
-ms.openlocfilehash: 1ebba3231a7b3a86b98bcc14d1257412d1557ff3
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: bcb4408df08f3854b067c8b805b78433a3d5075c
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101738190"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103491247"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Häufig gestellte Fragen zur Spracherkennung
 
@@ -57,7 +57,7 @@ Die anderen Ergebnisse sind wahrscheinlich schlechter und verfügen möglicherwe
 
 **F: Warum gibt es unterschiedliche Basismodelle?**
 
-**A:** Im Speech-Dienst können Sie aus mehreren Basismodellen auswählen. Jeder Modellname enthält das Datum, an dem es hinzugefügt wurde. Wenn Sie damit beginnen, ein benutzerdefiniertes Modell zu trainieren, verwenden Sie das neueste Modell, um die höchste Genauigkeit zu erzielen. Ältere Basismodelle sind für einige Zeit weiterhin verfügbar, nachdem ein neues Modell veröffentlicht wurde. Sie können das Modell, mit dem Sie bisher gearbeitet haben, weiterhin verwenden, bis es außer Betrieb gesetzt wird (siehe [Modelllebenszyklus](custom-speech-overview.md#model-lifecycle)). Es wird weiterhin empfohlen, zum neuesten Basismodell zu wechseln, um die Genauigkeit zu verbessern.
+**A:** Im Speech-Dienst können Sie aus mehreren Basismodellen auswählen. Jeder Modellname enthält das Datum, an dem es hinzugefügt wurde. Wenn Sie damit beginnen, ein benutzerdefiniertes Modell zu trainieren, verwenden Sie das neueste Modell, um die höchste Genauigkeit zu erzielen. Ältere Basismodelle sind für einige Zeit weiterhin verfügbar, nachdem ein neues Modell veröffentlicht wurde. Sie können das Modell, mit dem Sie bisher gearbeitet haben, weiterhin verwenden, bis es außer Betrieb gesetzt wird (siehe [Lebenszyklus von Modell und Endpunkt](./how-to-custom-speech-model-and-endpoint-lifecycle.md)). Es wird weiterhin empfohlen, zum neuesten Basismodell zu wechseln, um die Genauigkeit zu verbessern.
 
 **F: Kann ich mein vorhandenes Modell aktualisieren (Modellstapel)?**
 
@@ -71,7 +71,7 @@ Das alte und das neue Dataset müssen in einer einzigen ZIP-Datei (für akustisc
 
 Wenn Sie ein Modell angepasst und bereitgestellt haben, bleibt diese Bereitstellung unverändert. Sie können das bereitgestellte Modell außer Betrieb nehmen, mithilfe der neueren Version des Basismodells neu anpassen und dann wieder bereitstellen, um eine höhere Genauigkeit zu erzielen.
 
-Sowohl Basismodelle als auch benutzerdefinierte Modelle werden nach einiger Zeit außer Betrieb gesetzt (siehe [Modelllebenszyklus](custom-speech-overview.md#model-lifecycle)).
+Sowohl Basismodelle als auch benutzerdefinierte Modelle werden nach einiger Zeit außer Betrieb gesetzt (siehe [Lebenszyklus von Modell und Endpunkt](./how-to-custom-speech-model-and-endpoint-lifecycle.md)).
 
 **F: Kann ich mein Modell herunterladen und lokal ausführen?**
 

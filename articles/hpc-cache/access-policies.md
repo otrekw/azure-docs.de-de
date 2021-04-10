@@ -4,26 +4,26 @@ description: Erstellen und Anwenden von benutzerdefinierten Zugriffsrichtlinien,
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 12/28/2020
+ms.date: 03/11/2021
 ms.author: v-erkel
-ms.openlocfilehash: 795b194eb7cd31e633128c22ddffe808b32e07da
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: eb9e71cc8ec463077e3b12b8738203a4945a2eab
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97802410"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103471782"
 ---
-# <a name="use-client-access-policies"></a>Verwenden von Clientzugriffsrichtlinien
+# <a name="control-client-access"></a>Steuern des Clientzugriffs
 
 In diesem Artikel wird erläutert, wie Sie benutzerdefinierte Clientzugriffsrichtlinien für Ihre Speicherziele erstellen und anwenden.
 
-Mithilfe von Clientzugriffsrichtlinien wird gesteuert, wie Clients eine Verbindung mit den Exporten von Speicherzielen herstellen können. Sie können Dinge wie Root Squash und Lese-/Schreibzugriff auf der Clienthost- oder der Netzwerkebene steuern.
+Mithilfe von Clientzugriffsrichtlinien wird gesteuert, wie Clients das Herstellen von Verbindungen mit Speicherzielexporten erlaubt wird. Sie können Dinge wie Root Squash und Lese-/Schreibzugriff auf der Clienthost- oder der Netzwerkebene steuern.
 
 Zugriffsrichtlinien werden auf einen Namespacepfad angewendet. Dies bedeutet, dass Sie für zwei verschiedene Exporte in einem NFS-Speichersystem unterschiedliche Zugriffsrichtlinien verwenden können.
 
 Diese Funktion ist für Workflows vorgesehen, in denen Sie steuern müssen, wie verschiedene Gruppen von Clients auf die Speicherziele zugreifen.
 
-Wenn Sie die detaillierte Kontrolle des Speicherzugriffs nicht benötigen, können Sie die Standardrichtlinie verwenden oder die Standardrichtlinie mit Zusatzregeln anpassen.
+Wenn Sie die detaillierte Kontrolle des Speicherzugriffs nicht benötigen, können Sie die Standardrichtlinie verwenden oder die Standardrichtlinie mit Zusatzregeln anpassen. Wenn Sie beispielsweise Root-Squash für alle Clients aktivieren möchten, die eine Verbindung über den Cache herstellen, können Sie die Richtlinie namens **default** (Standard) bearbeiten, um die Root-Squash-Einstellung hinzuzufügen.
 
 ## <a name="create-a-client-access-policy"></a>Erstellen einer Clientzugriffsrichtlinie
 
@@ -81,15 +81,21 @@ Aktivieren Sie dieses Feld, um zuzulassen, dass die angegebenen Clients die Unte
 
 Wählen Sie aus, ob für Clients, die dieser Regel entsprechen, Root Squash festgelegt werden soll.
 
-Mit diesem Wert können Sie Root Squash auf der Ebene des Speicherexports zulassen. Darüber hinaus können Sie [Root Squash auf der Cacheebene festlegen](configuration.md#configure-root-squash).
+Diese Einstellung steuert, wie Azure HPC Cache Anforderungen vom Stammbenutzer auf Clientcomputern behandelt. Wenn Root-Squash aktiviert ist, werden Stammbenutzer eines Clients automatisch einem Benutzer ohne Berechtigungen zugeordnet, wenn sie Anforderungen über Azure HPC Cache senden. Die Einstellung verhindert außerdem, dass Clientanforderungen set-UID-Berechtigungsbits verwenden.
 
-Wenn Sie Root Squash aktivieren, müssen Sie außerdem den Benutzerwert für die anonyme ID auf eine dieser Optionen festlegen:
+Bei deaktiviertem Root-Squash werden Anforderungen vom Stammbenutzer des Clients (UID 0) als Stamm an ein Back-End-NFS-Speichersystem übergeben. Diese Konfiguration kann einen unangemessenen Dateizugriff ermöglichen.
 
-* **-2** (niemand)
-* **65534** (niemand)
-* **-1** (kein Zugriff)
-* **65535** (kein Zugriff)
+Das Festlegen von Root-Squash für Clientanforderungen kann dazu beitragen, die erforderliche ``no_root_squash``-Einstellung in NAS-Systemen auszugleichen, die als Speicherziele verwendet werden. (Weitere Informationen zu [Voraussetzungen für NFS-Speicherziele](hpc-cache-prerequisites.md#nfs-storage-requirements).) Außerdem kann dadurch die Sicherheit verbessert werden, wenn sie mit Azure-Blobspeicherzielen verwendet wird.
+
+Wenn Sie Root-Squash aktivieren, müssen Sie außerdem den ID-Wert des anonymen Benutzers festlegen. Das Portal akzeptiert Integerwerte zwischen 0 und 4294967295. (Die alten Werte -2 und -1 werden aus Gründen der Abwärtskompatibilität unterstützt, für neue Konfigurationen aber nicht empfohlen.)
+
+Diese Werte werden spezifischen Benutzerwerten zugeordnet:
+
+* **-2** oder **65534** (niemand)
+* **-1** oder **65535** (kein Zugriff)
 * **0** (Root ohne Berechtigungen)
+
+Ihr Speichersystem umfasst möglicherweise andere Werte mit speziellen Bedeutungen.
 
 ## <a name="update-access-policies"></a>Aktualisieren von Zugriffsrichtlinien
 

@@ -3,15 +3,15 @@ title: Konfigurieren von Continuous Deployment
 description: Hier erfahren Sie, wie Sie in Azure App Service CI/CD aus GitHub, BitBucket, Azure Repos und anderen Repositorys aktivieren. Wählen Sie die Buildpipeline aus, die Ihren Anforderungen entspricht.
 ms.assetid: 6adb5c84-6cf3-424e-a336-c554f23b4000
 ms.topic: article
-ms.date: 03/03/2021
+ms.date: 03/12/2021
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 5af8294518759181326e7736ef755f0a83581014
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 52f0db739cff9614dc4e9f5ef71d582e926fc65a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102564957"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103470267"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>Continuous Deployment in Azure App Service
 
@@ -91,7 +91,7 @@ Siehe [Lokale Git-Bereitstellung in Azure App Service](deploy-local-git.md).
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zur Verwaltungsseite Ihrer App Service-App.
 
-1. Klicken Sie im Menü auf der linken Seite auf **Deployment Center** > **Einstellungen** > **Trennen**. 
+1. Klicken Sie im Menü auf der linken Seite auf **Bereitstellungscenter** > **Einstellungen** > **Trennen**. 
 
     ![Zeigt, wie Sie die Synchronisierung Ihres Cloudordners mit Ihrer App Service-App im Azure-Portal trennen.](media/app-service-continuous-deployment/disable.png)
 
@@ -116,6 +116,8 @@ Sie können den GitHub Actions-Buildanbieter auf folgende Weise anpassen:
 - Anstatt ein Veröffentlichungsprofil zu verwenden, stellen Sie mithilfe eines [Dienstprinzipals](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) in Azure Active Directory bereit.
 
 #### <a name="authenticate-with-a-service-principal"></a>Authentifizieren mit einem Dienstprinzipal
+
+Diese optionale Konfiguration ersetzt die Standardauthentifizierung mit Veröffentlichungsprofilen in der generierten Workflowdatei.
 
 1. Generieren Sie mit dem Befehl [az ad sp create-for-rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) in der [Azure CLI](/cli/azure/) einen Dienstprinzipal. Ersetzen Sie im folgenden Beispielen *\<subscription-id>* , *\<group-name>* und *\<app-name>* durch Ihre eigenen Werte:
 

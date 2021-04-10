@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/10/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 15aab28b7dfbaf305412f1080346b54cc6827437
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 870b567d5917c405a3eef70a27b1a19c021d7a80
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103009639"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106055143"
 ---
 # <a name="protect-your-hls-content-with-apple-fairplay-or-microsoft-playready"></a>Schützen von HLS-Inhalten mit Apple FairPlay oder Microsoft PlayReady
 
@@ -33,7 +33,7 @@ Mit Azure Media Services können Sie Ihre HLS-Inhalte (HTTP Live Streaming) unte
 
 * **Unverschlüsselter Schlüssel mit AES-128-Umschlag**
 
-    Der gesamte Block wird mit dem **AES-128 CBC**-Modus verschlüsselt. Die Entschlüsselung des Streams wird von iOS- und OS X-Playern nativ unterstützt. Weitere Informationen finden Sie unter [Verwenden der dynamischen AES-128-Verschlüsselung und des Schlüsselübermittlungsdiensts](media-services-protect-with-aes128.md).
+    Der gesamte Block wird mit dem **AES-128 CBC**-Modus verschlüsselt. Die Entschlüsselung des Streams wird von iOS- und OS X-Playern nativ unterstützt. Weitere Informationen finden Sie unter [Verwenden der dynamischen AES-128-Verschlüsselung und des Schlüsselübermittlungsdiensts](media-services-playready-license-template-overview.md).
 * **Apple FairPlay**
 
     Die einzelnen Audio- und Videosamples werden mit dem **AES-128 CBC**-Modus verschlüsselt. **FairPlay Streaming** (FPS) ist in die Gerätebetriebssysteme integriert und wird von iOS und Apple TV nativ unterstützt. Safari unter OS X ermöglicht FPS durch Unterstützung der EME-Schnittstelle (Encrypted Media Extensions).

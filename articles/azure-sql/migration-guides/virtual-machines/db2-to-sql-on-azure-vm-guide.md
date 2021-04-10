@@ -1,6 +1,6 @@
 ---
-title: DB2 zu SQL Server auf Azure-VMs (Migrationsleitfaden)
-description: Befolgen Sie diesen Leitfaden, um Ihren DB2-Server zu SQL Server auf Azure-VMs zu migrieren.
+title: 'DB2 zu SQL Server auf Azure-VMs: Migrationsleitfaden'
+description: In diesem Leitfaden erfahren Sie, wie Sie Ihre DB2-Datenbank mithilfe von SQL Server Migration Assistant für DB2 zu SQL Server auf Azure-VMs migrieren.
 ms.custom: ''
 ms.service: virtual-machines-sql
 ms.subservice: migration-guide
@@ -10,12 +10,12 @@ author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
 ms.date: 11/06/2020
-ms.openlocfilehash: c3f3af6a1c114d6587992f79e95dcc0c1ccb41e6
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: aadfd2d96e2ed610ee1e3eaaec9276212e912b0d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797471"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103562228"
 ---
 # <a name="migration-guide-db2-to-sql-server-on-azure-vms"></a>Migrationsleitfaden: DB2 zu SQL Server auf Azure-VMs
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
@@ -144,8 +144,6 @@ Das Testvorgehen für die Datenbankmigration umfasst die folgenden Aktivitäten:
 1. **Ausführen der Validierungstests**: Führen Sie die Validierungstests für die Quelle und das Ziel aus, und analysieren Sie anschließend die Ergebnisse.
 1. **Ausführen von Leistungstests**: Führen Sie Leistungstests für die Quelle und das Ziel aus, und analysieren und vergleichen Sie anschließend die Ergebnisse.
 
-   > [!NOTE]
-   > Für Unterstützung bei der Entwicklung und Ausführung von Validierungstests nach der Migration sollten Sie die Datenqualitätslösung des Partners [QuerySurge](https://www.querysurge.com/company/partners/microsoft) in Erwägung ziehen. 
 
 ## <a name="migration-assets"></a>Migrationsressourcen 
 
@@ -169,5 +167,4 @@ Eine Übersicht über die verfügbaren Dienste und Tools von Microsoft und Dritt
 Weitere Migrationsleitfäden finden Sie im [Leitfaden zur Azure-Datenbankmigration](https://datamigration.microsoft.com/). 
 
 Videoinhalte finden Sie unter:
-- [Verwenden des Leitfadens zur Azure-Datenbankmigration](https://azure.microsoft.com/resources/videos/how-to-use-the-azure-database-migration-guide/)
 - [Übersicht über den Migrationsprozess und die für das Durchführen einer Bewertung und Migration empfohlenen Tools und Dienste](https://azure.microsoft.com/resources/videos/overview-of-migration-and-recommended-tools-services/)

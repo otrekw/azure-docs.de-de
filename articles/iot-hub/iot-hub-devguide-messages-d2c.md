@@ -11,12 +11,12 @@ ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
 - devx-track-csharp
-ms.openlocfilehash: 19ae5dc24e0a08548f4914114c9c0a6be65f4f0b
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 07bbd50dbc415b86aa0c511d46ead9f0612df107
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101096093"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105642493"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Verwenden des IoT Hub-Nachrichtenroutings zum Senden von D2C-Nachrichten an verschiedene Endpunkte
 
@@ -71,7 +71,7 @@ IoT Hub verarbeitet Nachrichten batchweise und schreibt Daten in den Speicher, w
 
 Sie können eine beliebige Dateibenennungskonvention verwenden, müssen jedoch alle aufgelisteten Tokens verwenden. IoT Hub schreibt in ein leeres Blob, wenn keine Daten zum Schreiben vorhanden sind.
 
-Wir empfehlen, die Blobs oder Dateien aufzulisten und anschließend zu durchlaufen, um sicherzustellen, dass alle Blobs oder Dateien gelesen werden, ohne dass eine Partition vorhanden ist. Der Partitionsbereich könnte sich möglicherweise bei einem [von Microsoft initiierten Failover](iot-hub-ha-dr.md#microsoft-initiated-failover) oder einem [manuellen Failover](iot-hub-ha-dr.md#manual-failover) in Zusammenhang mit IoT Hub ändern. Sie können die Liste der Blobs oder die [Liste der ADLS Gen2-APIs](/rest/api/storageservices/datalakestoragegen2/path/list) mithilfe der [Liste der Blobs-APIs](/rest/api/storageservices/list-blobs) aufzählen, um die gewünschte Liste von Dateien zu erhalten. Das folgende Beispiel dient als Anleitung.
+Wir empfehlen, die Blobs oder Dateien aufzulisten und anschließend zu durchlaufen, um sicherzustellen, dass alle Blobs oder Dateien gelesen werden, ohne dass eine Partition vorhanden ist. Der Partitionsbereich könnte sich möglicherweise bei einem [von Microsoft initiierten Failover](iot-hub-ha-dr.md#microsoft-initiated-failover) oder einem [manuellen Failover](iot-hub-ha-dr.md#manual-failover) in Zusammenhang mit IoT Hub ändern. Sie können die Liste der Blobs oder die [Liste der ADLS Gen2-APIs](/rest/api/storageservices/datalakestoragegen2/path) mithilfe der [Liste der Blobs-APIs](/rest/api/storageservices/list-blobs) aufzählen, um die gewünschte Liste von Dateien zu erhalten. Das folgende Beispiel dient als Anleitung.
 
 ```csharp
 public void ListBlobsInContainer(string containerName, string iothub)
@@ -126,7 +126,7 @@ Sie können die Fallbackroute im Azure-Portal auf dem Blatt „Nachrichtenroutin
 
 ## <a name="non-telemetry-events"></a>Nicht telemetriebezogene Ereignisse
 
-Das Nachrichtenrouting ermöglicht zusätzlich zum Weiterleiten von Gerätetelemetriedaten auch das Senden von Änderungsereignissen bei Gerätezwillingen und von Ereignissen im Gerätelebenszyklus. Wenn beispielsweise eine Route erstellt wird, deren Datenquelle auf **Änderungsereignisse für Gerätezwillinge** festgelegt ist, sendet IoT Hub Nachrichten an den Endpunkt, der die Änderung im Gerätezwilling enthält. Ebenso gilt: Wenn eine Route erstellt wird, deren Datenquelle auf **Ereignisse im Gerätelebenszyklus** festgelegt ist, sendet IoT Hub eine Nachricht, die mitteilt, ob das Gerät erstellt oder gelöscht wurde. Ein Entwickler kann im Rahmen von [Azure IoT Plug & Play](../iot-pnp/overview-iot-plug-and-play.md) Routen erstellen, deren Datenquelle auf **Änderungsereignisse bei digitalen Zwillingen** festgelegt ist. Dann sendet IoT Hub Nachrichten, wenn eine [Eigenschaft](../iot-pnp/iot-plug-and-play-glossary.md) des digitalen Zwillings festgelegt oder geändert wird, ein [digitaler Zwilling](../iot-pnp/iot-plug-and-play-glossary.md) ersetzt wird oder beim zugrunde liegenden Gerätezwilling ein Änderungsereignis auftritt.
+Das Nachrichtenrouting ermöglicht zusätzlich zum Weiterleiten von Gerätetelemetriedaten auch das Senden von Änderungsereignissen bei Gerätezwillingen und von Ereignissen im Gerätelebenszyklus. Wenn beispielsweise eine Route erstellt wird, deren Datenquelle auf **Änderungsereignisse für Gerätezwillinge** festgelegt ist, sendet IoT Hub Nachrichten an den Endpunkt, der die Änderung im Gerätezwilling enthält. Ebenso gilt: Wenn eine Route erstellt wird, deren Datenquelle auf **Ereignisse im Gerätelebenszyklus** festgelegt ist, sendet IoT Hub eine Nachricht, die mitteilt, ob das Gerät erstellt oder gelöscht wurde. Ein Entwickler kann im Rahmen von [Azure IoT Plug & Play](../iot-pnp/overview-iot-plug-and-play.md) Routen erstellen, deren Datenquelle auf **Änderungsereignisse bei digitalen Zwillingen** festgelegt ist. Dann sendet IoT Hub Nachrichten, wenn eine Eigenschaft des digitalen Zwillings festgelegt oder geändert wird, ein digitaler Zwilling ersetzt wird oder beim zugrunde liegenden Gerätezwilling ein Änderungsereignis auftritt.
 
 [IoT Hub lässt sich auch in Azure Event Grid integrieren](iot-hub-event-grid.md), um Geräteereignisse zu veröffentlichen und so Echtzeitintegrationen und die Automatisierung von Workflows basierend auf diesen Ereignissen zu unterstützen. Informationen dazu, welche Methode sich am besten für Ihr Szenario eignet, finden Sie unter [Vergleichen von Nachrichtenweiterleitung und Event Grid für IoT Hub](iot-hub-event-grid-routing-comparison.md).
 

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: 2c86086a636ea667cff4fc8a853c4ef20fa6ae04
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: dae9ab56ca1349d288aee02f7e2dfa4eccf1508c
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102041840"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199161"
 ---
 # <a name="install-log-analytics-agent-on-linux-computers"></a>Installieren des Log Analytics-Agents auf Linux-Computern
 Dieser Artikel enthält ausführliche Informationen zum Installieren des Log Analytics-Agents auf Linux-Computern mithilfe der folgenden Methoden:
@@ -41,7 +41,7 @@ Beginnend mit den nach August 2018 veröffentlichten Versionen gelten folgende �
 * Versionen, für die der Support des Herstellers abgelaufen ist, werden nicht unterstützt.
 * Es werden nur VM-Images unterstützt. Container werden nicht unterstützt (auch nicht, wenn sie auf Images von offiziellen Distributionsherausgebern basieren).
 * Neue Versionen von AMI werden nicht unterstützt.  
-* Nur Versionen, die standardmäßig SSL 1.x ausführen, werden unterstützt.
+* Nur Versionen, die standardmäßig OpenSSL 1.x ausführen, werden unterstützt.
 
 >[!NOTE]
 >Wenn Sie eine Distribution oder eine Version verwenden, die derzeit nicht unterstützt wird und nicht auf unser Supportmodell abgestimmt ist, wird empfohlen, dieses Repository zu forken und dabei anzuerkennen, dass der Microsoft-Support bei geforkten Agent-Versionen keine Unterstützung bietet.
