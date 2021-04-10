@@ -4,17 +4,17 @@ description: Herstellen einer privaten Verbindung mit einer Web-App mithilfe ein
 author: ericgre
 ms.assetid: 2dceac28-1ba6-4904-a15d-9e91d5ee162c
 ms.topic: article
-ms.date: 10/09/2020
+ms.date: 03/16/2021
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 4534a315429a120af45dfd495df4a8c29b233de7
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 4de405e07a9ae9d1efb33f2cee3630a1eefdef33
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98763028"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104655902"
 ---
 # <a name="using-private-endpoints-for-azure-web-app"></a>Verwenden von Private Endpoint für eine Azure-Web-App
 
@@ -68,7 +68,7 @@ Wenn Sie einen privaten Endpunkt für die Web-App verwenden, muss die angeforder
 Standardmäßig ist der öffentliche Name Ihrer Web-App ohne einen privaten Endpunkt ein kanonischer Name für den Cluster.
 Der Name wird beispielsweise wie folgt aufgelöst:
 
-|Name |type |Wert |
+|Name |Typ |Wert |
 |-----|-----|------|
 |mywebapp.azurewebsites.net|CNAME|clustername.azurewebsites.windows.net|
 |clustername.azurewebsites.windows.net|CNAME|cloudservicename.cloudapp.net|
@@ -78,7 +78,7 @@ Der Name wird beispielsweise wie folgt aufgelöst:
 Wenn Sie einen privaten Endpunkt bereitstellen, wird der DNS-Eintrag so aktualisiert, dass er auf den kanonischen Namen mywebapp.privatelink.azurewebsites.net verweist.
 Der Name wird beispielsweise wie folgt aufgelöst:
 
-|Name |type |Wert |Anmerkung |
+|Name |Typ |Wert |Anmerkung |
 |-----|-----|------|-------|
 |mywebapp.azurewebsites.net|CNAME|mywebapp.privatelink.azurewebsites.net|
 |mywebapp.privatelink.azurewebsites.net|CNAME|clustername.azurewebsites.windows.net|
@@ -89,7 +89,7 @@ Sie müssen einen privaten DNS-Server oder eine private Azure DNS-Zone einrichte
 Die DNS-Zone, die Sie erstellen müssen, ist: **privatelink.azurewebsites.net**. Registrieren Sie den Eintrag für Ihre Web-App mit einem A-Eintrag und der IP des privaten Endpunkts.
 Der Name wird beispielsweise wie folgt aufgelöst:
 
-|Name |type |Wert |Anmerkung |
+|Name |Typ |Wert |Anmerkung |
 |-----|-----|------|-------|
 |mywebapp.azurewebsites.net|CNAME|mywebapp.privatelink.azurewebsites.net|<--Azure erstellt diesen Eintrag im öffentlichen Azure-DNS, um die App auf die private Verbindung zu verweisen. Dies wird von uns verwaltet.|
 |mywebapp.privatelink.azurewebsites.net|Ein|10.10.10.8|<– Sie verwalten diesen Eintrag in Ihrem DNS-System, sodass er auf die IP-Adresse Ihres privaten Endpunkts verweist|
@@ -101,7 +101,7 @@ Wenn Sie einen benutzerdefinierten DNS-Namen verwenden müssen, müssen Sie den 
 
 Für die Kudu-Konsole oder die Kudu-REST-API (z. B. zusammen mit selbstgehosteten DevOps-Agents bereitgestellt) müssen Sie zwei Einträge in Ihrer privaten Azure DNS-Zone oder auf Ihrem benutzerdefinierten DNS-Server erstellen. 
 
-| Name | type | Wert |
+| Name | Typ | Wert |
 |-----|-----|-----|
 | mywebapp.privatelink.azurewebsites.net | Ein | PrivateEndpointIP | 
 | mywebapp.scm.privatelink.azurewebsites.net | Ein | PrivateEndpointIP | 
@@ -118,9 +118,9 @@ Wenn Sie die Azure Functions in einem elastischen Premium-Plan mit einem private
 
 Sie können bis zu 100 private Endpunkte mit einer bestimmten Web-App verbinden.
 
-Für Einschubfächer kann Private Endpoint nicht verwendet werden.
-
 Die Funktion „Remotedebuggen“ ist nicht verfügbar, wenn Private Endpoint für die Web-App aktiviert wurde. Daher wird empfohlen, den Code für ein Einschubfach bereitzustellen und dort ein Remotedebugging durchzuführen.
+
+FTP-Zugriff wird über die eingehende öffentliche IP-Adresse gewährt. Der private Endpunkt unterstützt keinen FTP-Zugriff auf die Web-App.
 
 Wir verbessern regelmäßig die Funktionen private Verbindung (Private Link) und privater Endpunkt. Aktuelle Informationen zu Einschränkungen finden Sie in [diesem Artikel][pllimitations].
 

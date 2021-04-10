@@ -3,12 +3,12 @@ title: 'Schnellstart: Erstellen eines Modulzwillings für Sicherheit'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie einen Modulzwilling für Azure Defender für IoT zur Verwendung mit Azure Defender für IoT erstellen.
 ms.topic: quickstart
 ms.date: 1/21/2021
-ms.openlocfilehash: 2ee88bd23b7d125ef9244f8ff630ee5eb8cdd015
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 27447f00546ab0d01a33b286f4bb1fbc810c260b
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104782672"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384560"
 ---
 # <a name="quickstart-create-an-azureiotsecurity-module-twin"></a>Schnellstart: Erstellen eines Azure IoT-Sicherheitsmodulzwillings
 
@@ -16,7 +16,7 @@ In dieser Schnellstartanleitung wird beschrieben, wie Sie individuelle _azureiot
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Keine
+- Keine
 
 ## <a name="understanding-azureiotsecurity-module-twins"></a>Grundlegendes zu azureiotsecurity-Modulzwillingen
 

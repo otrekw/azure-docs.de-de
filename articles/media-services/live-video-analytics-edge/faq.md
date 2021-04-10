@@ -3,12 +3,12 @@ title: 'Häufig gestellte Fragen zu Live Video Analytics in IoT Edge: Azure'
 description: Dieser Artikel bietet Antworten auf häufig gestellte Fragen zu Live Video Analytics in IoT Edge.
 ms.topic: conceptual
 ms.date: 12/01/2020
-ms.openlocfilehash: 72a07a1a509aebcd7ba4048d0c84e913481c978e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 2e5ec6e3a303bb8d655e666a820cfe67943b4eb6
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101702248"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106275956"
 ---
 # <a name="live-video-analytics-on-iot-edge-faq"></a>Häufig gestellte Fragen zu Live Video Analytics in IoT Edge
 
@@ -57,7 +57,7 @@ Nein, die ONVIF-Ermittlung (Open Network Video Interface Forum) von Geräten am 
 
 **Kann ich mithilfe von Streamingtechnologien wie HLS oder DASH Medienobjekte wiedergeben, die am Edge für Azure Media Services aufgezeichnet wurden?**
 
-Ja. Sie können die aufgezeichneten Medienobjekte wie jedes andere Medienobjekt in Azure Media Services streamen. Um den Inhalt zu streamen, müssen Sie einen Streamingendpunkt erstellt haben, der den Status „Wird ausgeführt“ aufweist. Wenn Sie den Standarderstellungsprozess für den Streaminglocator ausführen, erhalten Sie Zugriff auf ein HLS- (HTTP Live Streaming von Apple) oder DASH-Manifest (Dynamic Adaptive Streaming over HTTP, auch als MPEG-DASH bezeichnet), mit dem das Streaming an ein beliebiges unterstütztes Wiedergabeframework möglich ist. Weitere Informationen zum Erstellen und Veröffentlichen von HLS- oder DASH-Manifesten finden Sie unter [Dynamische Paketerstellung](../latest/dynamic-packaging-overview.md).
+Ja. Sie können die aufgezeichneten Medienobjekte wie jedes andere Medienobjekt in Azure Media Services streamen. Um den Inhalt zu streamen, müssen Sie einen Streamingendpunkt erstellt haben, der den Status „Wird ausgeführt“ aufweist. Wenn Sie den Standarderstellungsprozess für den Streaminglocator ausführen, erhalten Sie Zugriff auf ein HLS- (HTTP Live Streaming von Apple) oder DASH-Manifest (Dynamic Adaptive Streaming over HTTP, auch als MPEG-DASH bezeichnet), mit dem das Streaming an ein beliebiges unterstütztes Wiedergabeframework möglich ist. Weitere Informationen zum Erstellen und Veröffentlichen von HLS- oder DASH-Manifesten finden Sie unter [Dynamische Paketerstellung](../latest/encode-dynamic-packaging-concept.md).
 
 **Kann ich die Standardschutzfunktionen für Inhalte und die DRM-Features von Media Services für ein archiviertes Medienobjekt verwenden?**
 
@@ -69,7 +69,7 @@ Es werden alle Standardplayer unterstützt, die mit Version 3 oder 4 von HLS ko
 
 Empfohlene Player für Tests:
 
-* [Azure Media Player](../latest/use-azure-media-player.md)
+* [Azure Media Player](../latest/player-use-azure-media-player-how-to.md)
 * [HLS.js](https://hls-js.netlify.app/demo/)
 * [Video.js](https://videojs.com/)
 * [Dash.js](https://github.com/Dash-Industry-Forum/dash.js/wiki)
@@ -129,7 +129,7 @@ Die Lösungen unterscheiden sich je nach dem Kommunikationsprotokoll, das vom R�
    
 *Verwenden des gRPC-Protokolls:* 
 
-* Mit dem Live Video Analytics-Modul 1.0 gibt es bei Verwendung eines allgemeinen RPC-Protokolls (gRPC, general-purpose Remote Procedure Call) nur die Möglichkeit, dass der gRPC-Server verschiedene KI-Modelle über verschiedene Ports verfügbar macht. In [diesem Codebeispiel](https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/grpcExtension/topology.json) stellt ein einzelner Port (44000) alle yolo-Modelle zur Verfügung. Theoretisch könnte der yolo-gRPC-Server umgeschrieben werden, um einige Modelle an Port 44000 verfügbar zu machen, andere an Port 45000 usw. 
+* Mit dem Live Video Analytics-Modul 1.0 gibt es bei Verwendung eines allgemeinen RPC-Protokolls (gRPC, general-purpose Remote Procedure Call) nur die Möglichkeit, dass der gRPC-Server verschiedene KI-Modelle über verschiedene Ports verfügbar macht. In [diesem Codebeispiel](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/grpcExtensionOpenVINO/2.0/topology.json) stellt ein einzelner Port (44000) alle yolo-Modelle zur Verfügung. Theoretisch könnte der yolo-gRPC-Server umgeschrieben werden, um einige Modelle an Port 44000 verfügbar zu machen, andere an Port 45000 usw. 
 
 * Mit dem Live Video Analytics-Modul 2.0 wird dem gRPC-Erweiterungsknoten eine neue Eigenschaft hinzugefügt. Diese **extensionConfiguration** Eigenschaft ist eine optionale Zeichenfolge, die als Teil des gRPC-Vertrags verwendet werden kann. Wenn Sie mehrere KI-Modelle in einem einzelnen Rückschlussserver gepackt haben, müssen Sie nicht für jedes KI-Modell einen Knoten verfügbar machen. Stattdessen können Sie als Erweiterungsanbieter für eine Graphinstanz mithilfe der **extensionConfiguration**-Eigenschaft festlegen, wie die verschiedenen KI-Modelle ausgewählt werden. Während der Ausführung übergibt Live Video Analytics diese Zeichenfolge an den Rückschlussserver, der sie zum Aufrufen des gewünschten KI-Modells verwenden kann. 
 

@@ -3,12 +3,12 @@ title: 'Bereitstellen des Blaupausenbeispiels „ISO 27001: ASE-/SQL-Workload“
 description: 'Bereitstellungsschritte für das Blaupausenbeispiel „ISO 27001: App Service-Umgebungs-/SQL-Datenbank-Workload“, einschließlich Details zum Blaupausenartefaktparameter'
 ms.date: 02/05/2021
 ms.topic: sample
-ms.openlocfilehash: 60867c117c9f1fda6f8ba33333c19a7bd764d219
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 5c329a9d7175772e80ea6d9d8da3baf85ce0d170
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99627482"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104669643"
 ---
 # <a name="deploy-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>Bereitstellung des Blaupausenbeispiels „ISO 27001: App Service-Umgebungs-/SQL-Datenbank-Workload“
 
@@ -133,7 +133,7 @@ Die folgende Tabelle enthält eine Aufstellung der Parameter des Blaupausenartef
 |Azure SQL-Datenbank-Ressourcengruppe|Resource group|Name|**Gesperrt:** Verkettet den **Namen der Organisation** mit `-workload-azsql-rg`, sodass die Ressourcengruppe eindeutig ist.|
 |Azure SQL-Datenbank-Ressourcengruppe|Resource group|Standort|**Gesperrt:** Verwendet den Blaupausenparameter.|
 |Vorlage für Azure SQL-Datenbank|Resource Manager-Vorlage|Azure SQL Server-Administratorbenutzername|Benutzername für Azure SQL Server. Muss mit dem Eigenschaftswert in **Key Vault-Vorlage** übereinstimmen. Der Standardwert ist _sql-admin-user_.|
-|Vorlage für Azure SQL-Datenbank|Resource Manager-Vorlage|Azure SQL Server-Administratorkennwort (Key Vault-Ressourcen-ID)|Die Ressourcen-ID der Key Vault-Instanz. Verwenden Sie „/ subscription/{subscriptionId}/resourceGroups/{orgName}-workload-kv/providers/Microsoft.KeyVault/vaults/{orgName}-workload-kv“, und ersetzen Sie `{subscriptionId}` durch Ihre Abonnement-ID und `{orgName}` durch den Blaupausenparameter **Name der Organisation**.|
+|Vorlage für Azure SQL-Datenbank|Resource Manager-Vorlage|Azure SQL Server-Administratorkennwort (Key Vault-Ressourcen-ID)|Die Ressourcen-ID der Key Vault-Instanz. Verwenden Sie „/subscriptions/{subscriptionId}/resourceGroups/{orgName}-workload-kv-rg/providers/Microsoft.KeyVault/vaults/{orgName}-workload-kv“, und ersetzen Sie `{subscriptionId}` durch Ihre Abonnement-ID und `{orgName}` durch den Blaupausenparameter **Name der Organisation**.|
 |Vorlage für Azure SQL-Datenbank|Resource Manager-Vorlage|Azure SQL Server-Administratorkennwort (Key Vault-Geheimnisname)|Benutzername des SQL Server-Administrators. Muss mit dem Wert in der Eigenschaft **Azure SQL Server-Administratorbenutzername** von **Key Vault-Vorlage** übereinstimmen.|
 |Vorlage für Azure SQL-Datenbank|Resource Manager-Vorlage|Protokollaufbewahrung in Tagen|Datenaufbewahrung in Tagen. Der Standardwert ist _365_.|
 |Vorlage für Azure SQL-Datenbank|Resource Manager-Vorlage|AAD-Administratorobjekt-ID|AAD-Objekt-ID des Benutzers, der als Active Directory-Administrator zugewiesen wird. Hat keinen Standardwert und darf nicht leer sein. Diesen Wert finden Sie im Azure-Portal, indem Sie unter _Dienste_ die Option „Benutzer“ suchen und auswählen. Verwenden Sie das Feld _Name_, um den Kontonamen zu filtern und das entsprechende Konto auszuwählen. Wählen Sie auf der Seite _Benutzerprofil_ das Symbol „Klicken Sie zum Kopieren“ neben der _Objekt-ID_ aus.|

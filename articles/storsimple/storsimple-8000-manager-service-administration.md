@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/17/2021
 ms.author: alkohli
 ms.openlocfilehash: 0e25d41fbf6a9683f178cbfd1b07fde1b6796509
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104656820"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-device"></a>Verwalten Ihres StorSimple-Geräts mithilfe des StorSimple-Geräte-Manager-Diensts

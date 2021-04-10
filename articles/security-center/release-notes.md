@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: reference
-ms.date: 03/11/2021
+ms.date: 03/22/2021
 ms.author: memildin
-ms.openlocfilehash: 4f2b31a4760a07779eebdd9492731ffe7e324d37
-ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
+ms.openlocfilehash: f6ec14c577d1203b92085b791f89e4873a97c41a
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103149635"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104786086"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Neuerungen in Azure Security Center
 
@@ -26,7 +26,6 @@ Weitere Informationen zu den *geplanten* Änderungen, die demnächst im Security
 > Elemente, die älter als sechs Monate sind, finden Sie im [Archiv zu den Neuerungen in Azure Security Center](release-notes-archive.md).
 
 
-
 ## <a name="march-2021"></a>März 2021
 
 Zu den Updates im März gehören:
@@ -38,6 +37,7 @@ Zu den Updates im März gehören:
 - [Empfehlungsdaten können mit „In ARG untersuchen“ in Azure Resource Graph angezeigt werden](#recommendation-data-can-be-viewed-in-azure-resource-graph-with-explore-in-arg)
 - [Updates der Richtlinien für die Bereitstellung der Workflowautomatisierung](#updates-to-the-policies-for-deploying-workflow-automation)
 - [Von zwei Legacyempfehlungen werden keine Daten mehr direkt in das Azure-Aktivitätsprotokoll geschrieben](#two-legacy-recommendations-no-longer-write-data-directly-to-azure-activity-log)
+- [Verbesserungen der Seite „Empfehlungen“](#recommendations-page-enhancements)
 
 
 ### <a name="azure-firewall-management-integrated-into-security-center"></a>In Security Center integrierte Azure Firewall-Verwaltung
@@ -140,6 +140,22 @@ Die beiden Legacyempfehlungen sind:
 
 Wenn Sie auf Informationen für diese beiden Empfehlungen in der Kategorie „Empfehlung vom Typ "TaskDiscovery"“ zugegriffen haben, ist dies nicht mehr möglich.
 
+
+### <a name="recommendations-page-enhancements"></a>Verbesserungen der Seite „Empfehlungen“ 
+
+Wir haben eine verbesserte Version der Empfehlungsliste veröffentlicht, um mehr Informationen auf einen Blick zu präsentieren.
+
+Auf der Seite sehen Sie nun Folgendes:
+
+1. Die maximale Bewertung und die aktuelle Bewertung für jede Sicherheitskontrolle
+1. Symbole, die Tags ersetzen, etwa **Schnelle Problembehebung** und **Vorschau**
+1. Eine neue Spalte mit der [Richtlinieninitiative](security-policy-concept.md) für jede Empfehlung (sichtbar, wenn „Nach Kontrollen gruppieren“ deaktiviert ist)
+
+:::image type="content" source="media/release-notes/recommendations-grid-enhancements.png" alt-text="Verbesserungen der Seite „Empfehlungen“ für Azure Security Center: März 2021" lightbox="media/release-notes/recommendations-grid-enhancements.png":::
+
+:::image type="content" source="media/release-notes/recommendations-grid-enhancements-initiatives.png" alt-text="Verbesserungen der flachen Liste „Empfehlungen“ für Azure Security Center: März 2021" lightbox="media/release-notes/recommendations-grid-enhancements-initiatives.png":::
+
+Weitere Informationen finden Sie unter [Sicherheitsempfehlungen in Azure Security Center](security-center-recommendations.md).
 
 
 ## <a name="february-2021"></a>Februar 2021
@@ -513,12 +529,12 @@ Wir haben zwei neue cloudnative und breit gefächerte Bedrohungsschutzfunktionen
 
 Diese neuen Schutzmaßnahmen sorgen für eine erhebliche Verbesserung der Resilienz gegenüber Angriffen von Bedrohungsakteuren sowie für eine deutliche Erhöhung der Anzahl von Azure-Ressourcen, die durch Azure Defender geschützt werden.
 
-- **Azure Defender für Resource Manager**: Überwacht automatisch alle in Ihrer Organisation ausgeführten Ressourcenverwaltungsvorgänge. Weitere Informationen finden Sie unter
+- **Azure Defender für Resource Manager**: Überwacht automatisch alle in Ihrer Organisation ausgeführten Ressourcenverwaltungsvorgänge.    Weitere Informationen finden Sie unter
     - [Einführung in Azure Defender für Resource Manager](defender-for-resource-manager-introduction.md)
     - [Reagieren auf Warnungen von Azure Defender für Resource Manager](defender-for-resource-manager-usage.md)
     - [Warnungen für Resource Manager](alerts-reference.md#alerts-resourcemanager)
 
-- **Azure Defender für DNS**: Überwacht kontinuierlich alle DNS-Abfragen Ihrer Azure-Ressourcen. Weitere Informationen finden Sie unter
+- **Azure Defender für DNS**: Überwacht kontinuierlich alle DNS-Abfragen Ihrer Azure-Ressourcen.    Weitere Informationen finden Sie unter
     - [Einführung in Azure Defender für DNS](defender-for-dns-introduction.md)
     - [Reagieren auf Warnungen von Azure Defender für DNS](defender-for-dns-usage.md)
     - [Warnungen für DNS](alerts-reference.md#alerts-dns)
