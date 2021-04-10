@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: shkale-msft
 ms.author: shkale
 ms.reviewer: mathoma, stevestein, danil
-ms.date: 11/18/2020
-ms.openlocfilehash: 862d33e523562511796999d82b67d2b4b11efaf3
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/10/2021
+ms.openlocfilehash: 5879c9107a0ab5a2ef150d119e8b5ac8e16ac01d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101690612"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102609922"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Automatisierte Sicherungen – Azure SQL-Datenbank und SQL Managed Instance
 
@@ -140,9 +140,12 @@ Sowohl für SQL-Datenbank als auch für SQL Managed Instance können Sie eine la
 
 Weitere Informationen zu LTR finden Sie unter [Langfristiges Aufbewahren von Sicherungen](long-term-retention-overview.md).
 
-## <a name="storage-costs"></a>Speicherkosten
+## <a name="backup-storage-costs"></a>Kosten von Sicherungsspeicher
 
 Der Preis für Sicherungsspeicher variiert und ist abhängig von Ihrem Kaufmodell (DTU oder vCore), der ausgewählten Option zur Redundanz für Sicherungsspeicher und auch Ihrer Region. Der Sicherungsspeicher wird pro GB/Verbrauchsmonat in Rechnung gestellt. Die Preise finden Sie auf der Seite [Preise für Azure SQL-Datenbank](https://azure.microsoft.com/pricing/details/sql-database/single/) und der Seite [Preise für Azure SQL Managed Instance](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/).
+
+> [!NOTE]
+> In der Azure-Rechnung wird nur der zusätzlich verbrauchte, nicht der insgesamt verbrauchte Sicherungsspeicher aufgeführt. Angenommen, Sie haben beispielsweise einen Datenspeicher mit einer Größe 4 TB bereitgestellt. In diesem Fall sind die 4 TB Sicherungsspeicher für Sie kostenlos. Wenn Sie in diesem Beispielszenario eine Gesamtspeichermenge von 5,8 TB verbrauchen, werden in der Azure-Rechnung nur 1,8 TB berechnet, da nur der zusätzliche Sicherungsspeicher in Rechnung gestellt wird.
 
 ### <a name="dtu-model"></a>DTU-Modell
 
@@ -446,7 +449,7 @@ Eine vollständige Liste integrierter Richtliniendefinitionen für SQL-Datenbank
 Wenn Sie Data-Residency-Anforderungen auf Organisationsebene erzwingen möchten, können diese Richtlinien einem Abonnement zugewiesen werden. Nachdem diese einer Abonnementebene zugewiesen wurden, können Benutzer im jeweiligem Abonnement keine Datenbank oder verwaltete Instanz mit georedundantem Sicherungsspeicher mehr über das Azure-Portal oder Azure PowerShell erstellen. 
 
 > [!IMPORTANT]
-> Azure-Richtlinien werden nicht erzwungen, wenn Datenbanken über T-SQL erstellt werden. Wenn Sie Data Residency für das Erstellen einer Datenbank mit T-SQL erzwingen möchten, [verwenden Sie „LOCAL“ oder „ZONE“ als Eingabe für den BACKUP_STORAGE_REDUNDANCY-Parameter der CREATE DATABASE-Anweisung](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current#create-database-using-zone-redundancy-for-backups).
+> Azure-Richtlinien werden nicht erzwungen, wenn Datenbanken über T-SQL erstellt werden. Wenn Sie Data Residency für das Erstellen einer Datenbank mit T-SQL erzwingen möchten, [verwenden Sie „LOCAL“ oder „ZONE“ als Eingabe für den BACKUP_STORAGE_REDUNDANCY-Parameter der CREATE DATABASE-Anweisung](/sql/t-sql/statements/create-database-transact-sql#create-database-using-zone-redundancy-for-backups).
 
 Unter [Schnellstart: Erstellen einer Richtlinienzuweisung zum Identifizieren nicht konformer Ressourcen](../../governance/policy/assign-policy-portal.md) bzw. [Schnellstart: Erstellen einer Richtlinienzuweisung zum Identifizieren nicht konformer Ressourcen mithilfe von Azure PowerShell](../../governance/policy/assign-policy-powershell.md) finden Sie Informationen zum Zuweisen von Richtlinien über das Azure-Portal bzw. über Azure PowerShell.
 
@@ -458,4 +461,5 @@ Unter [Schnellstart: Erstellen einer Richtlinienzuweisung zum Identifizieren nic
 - Erfahren Sie mehr zum [Wiederherstellen einer Datenbank bis zu einem bestimmten Zeitpunkt mit PowerShell](scripts/restore-database-powershell.md).
 - Informationen zum Konfigurieren, Verwalten und Wiederherstellen aus der Langzeitaufbewahrung automatisierter Sicherungen in Azure Blob Storage im Azure-Portal finden Sie im Artikel [Verwalten der langfristigen Aufbewahrung von Sicherungen im Azure-Portal](long-term-backup-retention-configure.md).
 - Informationen zum Konfigurieren, Verwalten und Wiederherstellen aus der langfristigen Aufbewahrung automatisierter Sicherungen in Azure Blob Storage mit PowerShell finden Sie unter [Verwalten der langfristigen Aufbewahrung von Sicherungen mit PowerShell](long-term-backup-retention-configure.md).
+- Weitere Informationen zum Verbrauch von Sicherungsspeicher in Azure SQL Managed Instance finden Sie unter [Erläuterung des Verbrauchs von Sicherungsspeicher in Managed Instance](https://aka.ms/mi-backup-explained).
 - Informationen zum Optimieren der Aufbewahrung im Sicherungsspeicher und der Kosten für Azure SQL Managed Instance finden Sie unter [Optimieren der Kosten für Sicherungsspeicher einer verwalteten Instanz](https://aka.ms/mi-backup-tuning).

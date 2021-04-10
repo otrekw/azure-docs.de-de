@@ -1,24 +1,14 @@
 ---
 title: Lokale Sicherheits-Agent-Konfiguration (C)
 description: Erfahren Sie mehr über die lokalen Konfigurationen des Defender für IoT-Sicherheits-Agents für C.
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: elazark
-manager: rkarlin
-editor: ''
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 10/08/2020
-ms.author: v-ekrieg
-ms.openlocfilehash: d96a73c3ba996fecf24a4232e1391f0b814be868
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc4ea30080711633e52f966b89a16f7246a30673
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91851253"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104779408"
 ---
 # <a name="understanding-the-localconfigurationjson-file---c-agent"></a>Grundlegendes zur Datei „LocalConfiguration.json“ – C-Agent
 
@@ -39,7 +29,7 @@ Die Datei befindet sich standardmäßig unter: „/var/ASCIoTAgent/LocalConfigur
 | TriggerdEventsInterval | ISO8601-Zeichenfolge | Scheduler-Intervall für die Sammlung von ausgelösten Ereignissen |
 | ConnectionTimeout | ISO8601-Zeichenfolge | Zeitraum vor dem Ablauf der Verbindung zu IoT Hub |
 | Authentifizierung | JsonObject | Authentifizierungskonfiguration. Dieses Objekt enthält alle Informationen, die für die Authentifizierung bei IoT Hub erforderlich sind. |
-| Identity | „DPS“, „SecurityModule“, „Device“ | Authentifizierungsidentität – „DPS“, wenn die Authentifizierung über DPS erfolgt, „SecurityModule“, wenn sie über Anmeldeinformationen für das Sicherheitsmodul erfolgt, oder „Device“, wenn sie mit Geräteanmeldeinformationen erfolgt. |
+| Identity | „DPS“, „SecurityModule“, „Device“ | Authentifizierungsidentität: „DPS“, wenn die Authentifizierung über DPS erfolgt, „SecurityModule“, wenn die Authentifizierung über die Anmeldeinformationen des Defender-IoT-Micro-Agents erfolgt, oder „Device“, wenn die Authentifizierung über Geräteanmeldeinformationen erfolgt. |
 | AuthenticationMethod | „SasToken“, „SelfSignedCertificate“ | Das Benutzergeheimnis zur Authentifizierung: Wählen Sie „SasToken“ aus, wenn das Benutzergeheimnis ein symmetrischer Schlüssel ist, und „SelfSignedCertificate“, wenn das Geheimnis ein selbstsigniertes Zertifikat ist.  |
 | FilePath | Pfad zur Datei (Zeichenfolge) | Der Pfad zu der Datei, die das Authentifizierungsgeheimnis enthält. |
 | HostName | Zeichenfolge | Der Hostname des Azure IoT-Hubs. normalerweise <mein-hub>.azure-devices.net |

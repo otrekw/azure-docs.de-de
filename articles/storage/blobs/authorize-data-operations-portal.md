@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: blobs
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 319bbdd7809e224ca608fdac06d4b304c2052e86
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: a12936f8f9f84dacfab4850253df665ae7758be1
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100391540"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102613244"
 ---
 # <a name="choose-how-to-authorize-access-to-blob-data-in-the-azure-portal"></a>Auswählen der Autorisierung des Zugriffs auf Blobdaten im Azure-Portal
 
@@ -66,9 +66,9 @@ Benutzerdefinierte Rollen können verschiedene Kombinationen der von den integri
 
 ## <a name="navigate-to-blobs-in-the-azure-portal"></a>Navigieren zu Blobs im Azure-Portal
 
-Um Blobdaten im Portal anzuzeigen, navigieren Sie zur **Übersicht** Ihres Speicherkontos und klicken auf die Links zu **Blobs**. Alternativ können Sie im Menü zum Abschnitt **Blob-Dienst** navigieren.
+Um Blobdaten im Portal anzuzeigen, navigieren Sie zur **Übersicht** Ihres Speicherkontos und klicken auf die Links zu **Blobs**. Alternativ können Sie im Menü zum Abschnitt **Container** navigieren.
 
-:::image type="content" source="media/anonymous-read-access-configure/blob-public-access-portal.png" alt-text="Screenshot der Navigation zu Blobdaten im Azure-Portal":::
+:::image type="content" source="media/authorize-data-operations-portal/blob-access-portal.png" alt-text="Screenshot der Navigation zu Blobdaten im Azure-Portal":::
 
 ## <a name="determine-the-current-authentication-method"></a>Bestimmen der aktuellen Authentifizierungsmethode
 

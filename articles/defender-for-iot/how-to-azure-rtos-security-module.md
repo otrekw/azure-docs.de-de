@@ -1,26 +1,16 @@
 ---
-title: Konfigurieren und Anpassen des Sicherheitsmoduls für Azure RTOS
-description: Erfahren Sie, wie Sie Ihr Sicherheitsmodul für Azure RTOS konfigurieren und anpassen.
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: shhazam-ms
-manager: rkarlin
-editor: ''
-ms.devlang: na
+title: Konfigurieren und Anpassen des Defender-IoT-Micro-Agents für Azure RTOS
+description: Hier erfahren Sie, wie Sie den Defender-IoT-Micro-Agent für Azure RTOS konfigurieren und anpassen.
 ms.topic: how-to
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 03/07/2021
-ms.author: shhazam
-ms.openlocfilehash: 524286fa7a923485d0085fb63f3ef9669db1a4d5
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: afab823b6bb187c9a7b7529f52efc37b20e8c66f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102449814"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104778983"
 ---
-# <a name="configure-and-customize-defender-iot-micro-agent-for-azure-rtos-ga"></a>Konfigurieren und Anpassen des Defender-IoT-Micro-Agents für Azure RTOS GA
+# <a name="configure-and-customize-defender-iot-micro-agent-for-azure-rtos-preview"></a>Konfigurieren und Anpassen des Defender-IoT-Micro-Agents für Azure RTOS (Vorschau)
 
 In diesem Artikel wird beschrieben, wie Sie den Defender-IoT-Micro-Agent für Ihr Azure RTOS-Gerät konfigurieren, damit er Ihre Anforderungen an Netzwerk, Bandbreite und Arbeitsspeicher erfüllt.
 
@@ -89,5 +79,6 @@ Sie können Log Analytics aktivieren und konfigurieren, um Geräteereignisse und
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Überprüfen und Anpassen von [Sicherheitswarnungen und -empfehlungen](concept-rtos-security-alerts-recommendations.md) für das Sicherheitsmodul für Azure RTOS
-- Lesen Sie bei Bedarf in [Sicherheitsmodul für Azure RTOS-API](azure-rtos-security-module-api.md) nach.
+
+- Überprüfen und Anpassen von [Sicherheitswarnungen und -empfehlungen](concept-rtos-security-alerts-recommendations.md) für den Defender-IoT-Micro-Agent für Azure RTOS
+- Weitere Informationen finden Sie bei Bedarf in der [API für den Defender-IoT-Micro-Agent für Azure RTOS](azure-rtos-security-module-api.md).

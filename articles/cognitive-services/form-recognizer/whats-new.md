@@ -2,29 +2,58 @@
 title: Neuerungen in der Formularerkennung
 titleSuffix: Azure Cognitive Services
 description: Informieren Sie sich über die neuesten Änderungen an der Formularerkennungs-API.
-author: PatrickFarley
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 05/19/2020
-ms.author: pafarley
-ms.openlocfilehash: f194f0bc7ec8d0bf2265c0863f93bfd11337b5f4
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/15/2021
+ms.author: lajanuar
+ms.openlocfilehash: 81115f5a9ed802f1d07c45ec928dc4b84ea2917b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101703387"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105048747"
 ---
+<!-- markdownlint-disable MD024 -->
 # <a name="whats-new-in-form-recognizer"></a>Neuerungen in der Formularerkennung
 
 Der Formularerkennungsdienst wird fortlaufend aktualisiert. In diesem Artikel finden Sie aktuelle Informationen zu Featureverbesserungen, Fixes und Dokumentationsaktualisierungen.
+
+## <a name="march-2021"></a>März 2021
+
+**Die öffentliche Vorschauversion 3 der Formularerkennung v2.1 ist jetzt verfügbar.** v2.1-preview.3 wurde veröffentlicht und enthält die folgenden Funktionen:
+
+- **Neues vordefiniertes ID-Modell:** Mit dem neuen vordefinierten ID-Modell können Kunden Ausweispapiere erfassen und strukturierte Daten zurückgeben, um die Verarbeitung zu automatisieren. Dabei werden unsere leistungsstarken Funktionen der optischen Zeichenerkennung (Optical Character Recognition, OCR) mit ID-Erkennungsmodellen kombiniert, mit denen wesentliche Informationen aus Reisepässen und US-Führerscheinen extrahiert werden, z. B. Name, Geburtsdatum, Ausstellungsdatum, Ablaufdatum usw.
+
+  [Weitere Informationen zum vordefinierten ID-Modell](concept-identification-cards.md)
+
+   :::image type="content" source="./media/id-canada-passport-example.png" alt-text="Beispiel eines Reisepasses" lightbox="./media/id-canada-passport-example.png":::
+
+- **Extraktion von Einzelposten im vordefinierten Rechnungsmodell:** Im vordefinierten Rechnungsmodell wird jetzt die Extraktion von Einzelposten unterstützt. Nun können vollständige Posten und deren Bestandteile extrahiert werden, z. B. Beschreibung, Betrag, Menge, Produkt-ID, Datum usw. Mit einem einfachen API-/SDK-Aufruf können Sie nützliche Daten aus Rechnungen extrahieren, z. B. Text, Tabellen, Schlüssel-Wert-Paare und Einzelposten.
+
+   [Weitere Informationen zum vordefinierten Rechnungsmodell](concept-invoices.md)
+
+- **Überwachtes Beschriften und Trainieren von Tabellen, Beschriftung leerer Werte:** Zusätzlich zu den [hochmodernen Deep Learning-Funktionen der Formularerkennung zur automatischen Tabellenextraktion](https://techcommunity.microsoft.com/t5/azure-ai/enhanced-table-extraction-from-documents-with-form-recognizer/ba-p/2058011) können Kunden nun auch Tabellen beschriften und trainieren. Dieses neue Release bietet die Möglichkeit, Einzelposten und Tabellen (dynamisch und fest) zu beschriften und zu trainieren sowie ein benutzerdefiniertes Modell zum Extrahieren von Schlüssel-Wert-Paaren und Einzelposten zu trainieren. Nach dem Trainieren eines Modells werden mit dem Modell Einzelposten als Teil der JSON-Ausgabe im Abschnitt „documentResults“ extrahiert.
+
+    :::image type="content" source="./media/table-labeling.png" alt-text="Tabellenbeschriftung" lightbox="./media/table-labeling.png":::
+
+    Neben der Beschriftung von Tabellen können nun auch leere Werte beschriftet werden. Wenn einige Dokumente im Trainingssatz keine Werte für bestimmte Felder enthalten, können Sie diese Funktion verwenden, damit im Modell festgelegt ist, wie Werte aus analysierten Dokumenten ordnungsgemäß extrahiert werden.
+
+- **Unterstützung für 66 neue Sprachen:** Die Layout-API der Formularerkennung und benutzerdefinierte Modelle unterstützen jetzt 73 Sprachen.
+
+  [Weitere Informationen zur Sprachunterstützung für die Formularerkennung](language-support.md)
+
+- **Natürliche Leserichtung, Handschriftklassifizierung und Seitenauswahl:** Mit diesem Update können Sie festlegen, dass Textzeilen in der natürlichen Leserichtung ausgegeben werden anstatt in der standardmäßigen Leserichtung von links nach rechts und von oben nach unten. Dazu verwenden Sie den neuen Abfrageparameter „readingOrder“ und legen ihn für eine benutzerfreundlichere Ausgabe der Leserichtung auf den Wert „natural“ fest. Für lateinische Sprachen klassifiziert die Formularerkennung außerdem Textzeilen als handschriftlich oder nicht handschriftlich und gibt eine Konfidenzbewertung an.
+
+- **Qualitätsverbesserungen beim vordefinierten Belegmodell:** Dieses Update enthält eine Reihe von Qualitätsverbesserungen für das vordefinierte Belegmodell, insbesondere bei der Extraktion von Einzelposten.
 
 ## <a name="november-2020"></a>November 2020
 
 ### <a name="new-features"></a>Neue Funktionen
 
-**Die öffentliche Vorschauversion 2 der Formularerkennung v2.1 ist jetzt verfügbar.** V2.1-preview.2 wurde veröffentlicht, einschließlich der folgenden Features: 
+**Die öffentliche Vorschauversion 2 der Formularerkennung v2.1 ist jetzt verfügbar.** v2.1-preview.2 wurde veröffentlicht und enthält die folgenden Funktionen: 
 
 - **Neues vordefiniertes Rechnungsmodell** – Mit dem neuen vordefinierten Rechnungsmodell können Kunden Rechnungen in verschiedenen Formaten erstellen und strukturierte Daten zurückgeben, um die Rechnungsverarbeitung zu automatisieren. Es kombiniert unsere leistungsstarken Funktionen zur optischen Zeichenerkennung (Optical Character Recognition, OCR) mit Deep Learning-Modellen zum Rechnungsverständnis, um wichtige Informationen aus Rechnungen in englischer Sprache zu extrahieren. Es extrahiert den Text, Tabellen und Informationen wie Kunde, Anbieter, Rechnungs-ID, Fälligkeitsdatum für die Rechnung, Summe, fälliger Betrag, Steuerbetrag, Lieferadresse, Rechnungsadresse und mehr.
 
@@ -68,36 +97,33 @@ Der Formularerkennungsdienst wird fortlaufend aktualisiert. In diesem Artikel fi
 - **[Neue Gebietsschemas für vordefinierte Belege](concept-receipts.md)** : Neben en-US ist jetzt zusätzliche Unterstützung für en-AU, en-CA, en-GB und en-IN verfügbar.
 - **Qualitätsverbesserungen** für `Layout`, `Train Custom Model` - _Trainieren ohne Bezeichnungen_ und _Trainieren mit Bezeichnungen_.
 
-
 **v2.0** enthält das folgende Update:
 
 - Die [Clientbibliotheken](quickstarts/client-library.md) für .NET, Python, Java und JavaScript sind nun allgemein verfügbar. 
 
-
 **Neue Beispiele** sind auf GitHub verfügbar. 
+
 - Unter [Knowledge Extraction Recipes - Forms Playbook](https://github.com/microsoft/knowledge-extraction-recipes-forms) werden bewährte Methoden aus echten Kundenengagements mit der Formularerkennung gesammelt und nützliche Codebeispiele, Checklisten und Beispielpipelines für die Entwicklung dieser Projekte bereitgestellt. 
 - Das [Samplebezeichnungstool](https://github.com/microsoft/OCR-Form-Tools) wurde aktualisiert, um die neue Funktionalität von v2.1 zu unterstützen. Informationen zu den ersten Schritten mit dem Tool finden Sie in diesem [Schnellstart](quickstarts/label-tool.md). 
 - Im Formularerkennungsbeispiel [Intelligent Kiosk](https://github.com/microsoft/Cognitive-Samples-IntelligentKiosk/blob/master/Documentation/FormRecognizer.md) wird gezeigt, wie `Analyze Receipt` und `Train Custom Model` - _Trainieren ohne Bezeichnungen_ integriert werden.
 
-
-
 ## <a name="july-2020"></a>Juli 2020
 
 ### <a name="new-features"></a>Neue Funktionen
-
+<!-- markdownlint-disable MD004 -->
 * **v2.0-Referenz verfügbar** – Mehr dazu finden Sie in der [v2.0 API-Referenz](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm) sowie in den aktualisierten SDKs für [.NET](/dotnet/api/overview/azure/ai.formrecognizer-readme), [Python](/python/api/overview/azure/), [Java](/java/api/overview/azure/ai-formrecognizer-readme) und [JavaScript](/javascript/api/overview/azure/).
 * **Tabellenerweiterungen und Extraktionserweiterungen** – Umfasst Verbesserungen der Genauigkeit und der Tabellenextraktion, insbesondere eine Funktion zum Erlernen von Tabellenheadern und -strukturen beim _benutzerdefinierten Trainieren ohne Bezeichnungen_. 
 
 * **Währungsunterstützung** – Erkennung und Extraktion von globalen Währungssymbolen.
 * **Azure Gov** – Die Formularerkennung steht jetzt auch in Azure Gov zur Verfügung.
 * **Erweiterte Sicherheitsfeatures**: 
-   * **Bring Your Own Key (BYOK)**  – Die Formularerkennung verschlüsselt Ihre Daten automatisch, wenn sie in der Cloud persistent gespeichert werden, um sie zu schützen und Sie bei der Einhaltung der Sicherheits- und Complianceverpflichtungen Ihrer Organisation zu unterstützen. Standardmäßig verwendet Ihr Abonnement von Microsoft verwaltete Verschlüsselungsschlüssel. Sie können Ihr Abonnement jetzt auch mit eigenen Verschlüsselungsschlüsseln verwalten. [Kundenseitig verwaltete Schlüssel, auch bezeichnet als „Bring Your Own Key“ (BYOK),](./encrypt-data-at-rest.md) bieten eine größere Flexibilität beim Erstellen, Rotieren, Deaktivieren und Widerrufen von Zugriffssteuerungen. Außerdem können Sie die zum Schutz Ihrer Daten verwendeten Verschlüsselungsschlüssel überwachen.  
-   * **Private Endpunkte**: ermöglichen Ihnen in einem virtuellen Netzwerk (VNet) den [sicheren Zugriff auf Daten über einen privaten Link.](../../private-link/private-link-overview.md)
-
+  * **Bring Your Own Key (BYOK)**  – Die Formularerkennung verschlüsselt Ihre Daten automatisch, wenn sie in der Cloud persistent gespeichert werden, um sie zu schützen und Sie bei der Einhaltung der Sicherheits- und Complianceverpflichtungen Ihrer Organisation zu unterstützen. Standardmäßig verwendet Ihr Abonnement von Microsoft verwaltete Verschlüsselungsschlüssel. Sie können Ihr Abonnement jetzt auch mit eigenen Verschlüsselungsschlüsseln verwalten. [Kundenseitig verwaltete Schlüssel, auch bezeichnet als „Bring Your Own Key“ (BYOK),](./encrypt-data-at-rest.md) bieten eine größere Flexibilität beim Erstellen, Rotieren, Deaktivieren und Widerrufen von Zugriffssteuerungen. Außerdem können Sie die zum Schutz Ihrer Daten verwendeten Verschlüsselungsschlüssel überwachen.  
+  * **Private Endpunkte:** ermöglichen Ihnen in einem virtuellen Netzwerk (VNet) den [sicheren Zugriff auf Daten über einen privaten Link](../../private-link/private-link-overview.md).
 
 ## <a name="june-2020"></a>Juni 2020
 
 ### <a name="new-features"></a>Neue Funktionen
+
 * **CopyModel-API wurde zu Client-SDKs hinzugefügt** – Sie können jetzt Modelle mithilfe der Client-SDKs aus einem Abonnement in ein anderes kopieren. Allgemeine Informationen zu diesem Feature finden Sie unter [Sichern und Wiederherstellen von Modellen](./disaster-recovery.md).
 * **Azure Active Directory-Integration** – Sie können jetzt Clientobjekte der Formularerkennung mithilfe Ihrer Azure AD-Anmeldeinformationen in den SDKs authentifizieren.
 * **SDK-spezifische Änderungen** – Dazu gehören sowohl geringfügige Ergänzungen als auch entscheidende Änderungen bei den Features. Weitere Informationen finden Sie in den SDK-Änderungsprotokollen.
@@ -109,24 +135,26 @@ Der Formularerkennungsdienst wird fortlaufend aktualisiert. In diesem Artikel fi
 ## <a name="april-2020"></a>April 2020
 
 ### <a name="new-features"></a>Neue Funktionen
+
 * **SDK-Unterstützung für Version 2.0 der Formularerkennungs-API (Public Preview):**  – In diesem Monat haben wir unsere Dienstunterstützung um ein Vorschau-SDK für Version 2.0 der Formularerkennung (Vorschauversion) erweitert. Verwenden Sie die folgenden Links, um die ersten Schritte mit Ihrer bevorzugten Sprache auszuführen: 
-   * [.NET SDK](/dotnet/api/overview/azure/ai.formrecognizer-readme)
-   * [Java SDK](/java/api/overview/azure/ai-formrecognizer-readme)
-   * [Python SDK](/python/api/overview/azure/ai-formrecognizer-readme)
-   * [JavaScript SDK](/javascript/api/overview/azure/ai-form-recognizer-readme)
+  * [.NET SDK](/dotnet/api/overview/azure/ai.formrecognizer-readme)
+  * [Java SDK](/java/api/overview/azure/ai-formrecognizer-readme)
+  * [Python SDK](/python/api/overview/azure/ai-formrecognizer-readme)
+  * [JavaScript SDK](/javascript/api/overview/azure/ai-form-recognizer-readme)
 
   Das neue SDK unterstützt alle Features von Version 2.0 der REST-API für die Formularerkennung. Sie können beispielsweise ein Modell mit oder ohne Bezeichnungen trainieren und Text, Schlüssel-Wert-Paare und Tabellen aus Ihren Formularen extrahieren, mit dem vorgefertigten Belegdienst Daten aus Belegen extrahieren sowie mit dem Layoutdienst Text und Tabellen aus Ihren Dokumenten extrahieren. Sie können Ihr Feedback zu den SDKs über das [SDK-Feedbackformular](https://aka.ms/FR_SDK_v1_feedback) teilen.
- 
+
 * **Kopieren eines benutzerdefinierten Modells:** Mithilfe der neuen Funktion zum Kopieren benutzerdefinierter Modelle können Sie nun Modelle zwischen Regionen und Abonnements kopieren. Vor dem Aufrufen der API zum Kopieren eines benutzerdefinierten Modells müssen Sie zunächst die Autorisierung zum Kopieren in die Zielressource erhalten, indem Sie den Vorgang für die Kopierautorisierung für den Zielressourcenendpunkt aufrufen.
-   * REST-API zum [Generieren einer Kopierautorisierung](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/CopyCustomFormModelAuthorization)
-   * REST-API zum [Kopieren eines benutzerdefinierten Modells](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/CopyCustomFormModel) 
+
+  * REST-API zum [Generieren einer Kopierautorisierung](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/CopyCustomFormModelAuthorization)
+  * REST-API zum [Kopieren eines benutzerdefinierten Modells](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/CopyCustomFormModel) 
 
 ### <a name="security-improvements"></a>Verbesserungen der Sicherheit
 
 * Kundenseitig verwaltete Schlüssel stehen jetzt für die Formularerkennung zur Verfügung. Weitere Informationen finden Sie unter [Verschlüsselung für ruhende Daten der Formularerkennung](./encrypt-data-at-rest.md).
 * Verwenden Sie verwaltete Identitäten für den Zugriff auf Azure-Ressourcen mit Azure Active Directory. Weitere Informationen finden Sie unter [Autorisieren des Zugriffs auf verwaltete Identitäten](../authentication.md#authorize-access-to-managed-identities).
 
-## <a name="march-2020"></a>März 2020 
+## <a name="march-2020"></a>März 2020
 
 ### <a name="new-features"></a>Neue Funktionen
 

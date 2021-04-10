@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2020
-ms.openlocfilehash: e429b87397b91de28f7fea14729b0d18187fa8ff
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 99a8e331e265e686d1de06f8143d2345e51143f1
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102031377"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102612999"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>Herstellen einer Verbindung zwischen Operations Manager und Azure Monitor
 
@@ -99,6 +99,10 @@ Um die Sicherheit von Daten bei der Übertragung an Azure Monitor sicherzustelle
 ## <a name="connecting-operations-manager-to-azure-monitor"></a>Herstellen einer Verbindung zwischen Operations Manager und Azure Monitor
 
 Führen Sie die folgenden Schritte aus, um Ihre Operations Manager-Verwaltungsgruppe mit einem Ihrer Log Analytics-Arbeitsbereiche zu verbinden.
+
+> [!NOTE]
+> Wenn Sie feststellen, dass von einem bestimmten Agent oder Verwaltungsserver keine Log Analytics-Daten mehr eintreffen, können Sie versuchen, den Winsock-Katalog zurückzusetzen (`netsh winsock reset`) und dann den Server neu zu starten. Durch das Zurücksetzen des Winsock-Katalogs können getrennte Netzwerkverbindungen wiederhergestellt werden.
+
 
 Bei der ersten Registrierung Ihrer Operations Manager-Verwaltungsgruppe bei einem Log Analytics-Arbeitsbereich ist die Option zum Angeben der Proxykonfiguration für die Verwaltungsgruppe in der Betriebskonsole nicht verfügbar.  Die Verwaltungsgruppe muss erfolgreich beim Dienst registriert werden. Erst dann wird diese Option verfügbar.  Um dies zu umgehen, müssen Sie die Systemproxykonfiguration mit Netsh auf dem System aktualisieren, von dem aus Sie die Betriebskonsole ausführen, um die Integration sowie alle Verwaltungsserver in der Verwaltungsgruppe zu konfigurieren.  
 

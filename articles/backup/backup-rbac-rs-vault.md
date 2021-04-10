@@ -3,13 +3,13 @@ title: Verwalten von Sicherungen mit der rollenbasierten Zugriffssteuerung in Az
 description: Verwenden Sie die rollenbasierte Zugriffssteuerung in Azure zum Verwalten des Zugriffs auf Vorgänge der Sicherungsverwaltung im Recovery Services-Tresor.
 ms.reviewer: utraghuv
 ms.topic: conceptual
-ms.date: 06/24/2019
-ms.openlocfilehash: 0dd8d08c4ee79082f47929cf7d453f3f4bbd60ee
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.date: 03/09/2021
+ms.openlocfilehash: 0b321a5f33bd75ce8615d6d2a90442a83d9fff67
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92090878"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102613441"
 ---
 # <a name="use-azure-role-based-access-control-to-manage-azure-backup-recovery-points"></a>Verwenden der rollenbasierten Zugriffssteuerung in Azure zum Verwalten von Azure Backup-Wiederherstellungspunkten
 
@@ -28,26 +28,29 @@ Wenn Sie Ihre eigenen Rollen definieren möchten, um eine noch bessere Kontrolle
 
 ## <a name="mapping-backup-built-in-roles-to-backup-management-actions"></a>Zuordnen der integrierten Backup-Rollen zu Aktionen der Sicherungsverwaltung
 
+### <a name="minimum-role-requirements-for-azure-vm-backup"></a>Mindestrollenanforderungen für die Azure-VM-Sicherung
+
 In der folgenden Tabelle sind die Aktionen der Sicherungsverwaltung und die entsprechende minimale Azure-Rolle aufgeführt, die zum Ausführen des jeweiligen Vorgangs erforderlich ist.
 
-| Verwaltungsvorgang | Minimal erforderliche Azure-Rolle | Bereich erforderlich |
-| --- | --- | --- |
-| Erstellen eines Recovery Services-Tresors | Mitwirkender für Sicherungen | Ressourcengruppe mit dem Tresor |
-| Aktivieren der Sicherung von virtuellen Azure-Computern | Sicherungsoperator | Ressourcengruppe mit dem Tresor |
-| | Mitwirkender von virtuellen Computern | VM-Ressource |
-| Bedarfsgesteuerte Sicherung eines virtuellen Computers | Sicherungsoperator | Recovery Services-Tresor |
-| Wiederherstellen eines virtuellen Computers | Sicherungsoperator | Recovery Services-Tresor |
-| | Mitwirkender | Ressourcengruppe, in der der virtuelle Computer bereitgestellt wird. |
-| | Mitwirkender von virtuellen Computern | Gesicherte Quell-VM |
+| Verwaltungsvorgang | Minimal erforderliche Azure-Rolle | Bereich erforderlich | Alternative |
+| --- | --- | --- | --- |
+| Erstellen eines Recovery Services-Tresors | Mitwirkender für Sicherungen | Ressourcengruppe mit dem Tresor |   |
+| Aktivieren der Sicherung von virtuellen Azure-Computern | Sicherungsoperator | Ressourcengruppe mit dem Tresor |   |
+| | Mitwirkender von virtuellen Computern | VM-Ressource |  Alternativ können Sie anstelle einer integrierten Rolle eine benutzerdefinierte Rolle mit den folgenden Berechtigungen in Erwägung ziehen: Microsoft.Compute/virtualMachines/write |
+| Bedarfsgesteuerte Sicherung eines virtuellen Computers | Sicherungsoperator | Recovery Services-Tresor |   |
+| Wiederherstellen eines virtuellen Computers | Sicherungsoperator | Recovery Services-Tresor |   |
+| | Mitwirkender | Ressourcengruppe, in der der virtuelle Computer bereitgestellt wird. |   Alternativ können Sie anstelle einer integrierten Rolle eine benutzerdefinierte Rolle mit den folgenden Berechtigungen in Erwägung ziehen: Microsoft.Resources/subscriptions/resourceGroups/write Microsoft.DomainRegistration/domains/write, Microsoft.Compute/virtualMachines/write Microsoft.Network/virtualNetworks/read Microsoft.Network/virtualNetworks/subnets/join/action |
+| | Mitwirkender von virtuellen Computern | Gesicherte Quell-VM |   Alternativ können Sie anstelle einer integrierten Rolle eine benutzerdefinierte Rolle mit den folgenden Berechtigungen in Erwägung ziehen: Microsoft.Compute/virtualMachines/write |
 | Wiederherstellen von VM-Sicherung nicht verwalteter Datenträger | Sicherungsoperator | Recovery Services-Tresor |
-| | Mitwirkender von virtuellen Computern | Gesicherte Quell-VM |
-| | Mitwirkender von Speicherkonto | Speicherkontoressource, in dem Datenträger wiederhergestellt werden sollen |
+| | Mitwirkender von virtuellen Computern | Gesicherte Quell-VM | Alternativ können Sie anstelle einer integrierten Rolle eine benutzerdefinierte Rolle mit den folgenden Berechtigungen in Erwägung ziehen: Microsoft.Compute/virtualMachines/write |
+| | Mitwirkender von Speicherkonto | Speicherkontoressource, in dem Datenträger wiederhergestellt werden sollen |   Alternativ können Sie anstelle einer integrierten Rolle eine benutzerdefinierte Rolle mit den folgenden Berechtigungen in Erwägung ziehen: Microsoft.Storage/storageAccounts/write |
 | Wiederherstellen von verwalteten Datenträgern aus VM-Sicherung | Sicherungsoperator | Recovery Services-Tresor |
-| | Mitwirkender von virtuellen Computern | Gesicherte Quell-VM |
-| | Mitwirkender von Speicherkonto | Temporäres Speicherkonto, das als Teil der Wiederherstellung ausgewählt wurde, um Daten aus dem Tresor zu speichern, bevor sie in verwaltete Datenträger konvertiert werden |
-| | Mitwirkender | Die Ressourcengruppe, in der der/die verwaltete(n) Datenträger wiederhergestellt wird |
+| | Mitwirkender von virtuellen Computern | Gesicherte Quell-VM |    Alternativ können Sie anstelle einer integrierten Rolle eine benutzerdefinierte Rolle mit den folgenden Berechtigungen in Erwägung ziehen: Microsoft.Compute/virtualMachines/write |
+| | Mitwirkender von Speicherkonto | Temporäres Speicherkonto, das als Teil der Wiederherstellung ausgewählt wurde, um Daten aus dem Tresor zu speichern, bevor sie in verwaltete Datenträger konvertiert werden |   Alternativ können Sie anstelle einer integrierten Rolle eine benutzerdefinierte Rolle mit den folgenden Berechtigungen in Erwägung ziehen: Microsoft.Storage/storageAccounts/write |
+| | Mitwirkender | Die Ressourcengruppe, in der der/die verwaltete(n) Datenträger wiederhergestellt wird | Alternativ können Sie anstelle einer integrierten Rolle eine benutzerdefinierte Rolle mit den folgenden Berechtigungen in Erwägung ziehen: Microsoft.Resources/subscriptions/resourceGroups/write|
 | Wiederherstellen von einzelnen Dateien aus VM-Sicherungen | Sicherungsoperator | Recovery Services-Tresor |
-| | Mitwirkender von virtuellen Computern | Gesicherte Quell-VM |
+| | Mitwirkender von virtuellen Computern | Gesicherte Quell-VM | Alternativ können Sie anstelle einer integrierten Rolle eine benutzerdefinierte Rolle mit den folgenden Berechtigungen in Erwägung ziehen: Microsoft.Compute/virtualMachines/write |
+| Regionsübergreifende Wiederherstellung | Sicherungsoperator | Abonnement des Recovery Services-Tresors | Dies geschieht zusätzlich zu den oben erwähnten Wiederherstellungsberechtigungen. Speziell für CRR können Sie anstelle einer integrierten Rolle eine benutzerdefinierte Rolle mit den folgenden Berechtigungen verwenden: "Microsoft.RecoveryServices/locations/backupAadProperties/read" "Microsoft.RecoveryServices/locations/backupCrrJobs/action"         "Microsoft.RecoveryServices/locations/backupCrrJob/action" "Microsoft.RecoveryServices/locations/backupCrossRegionRestore/action"          "Microsoft.RecoveryServices/locations/backupCrrOperationResults/read" "Microsoft.RecoveryServices/locations/backupCrrOperationsStatus/read" |
 | Erstellen einer Sicherungsrichtlinie für Azure-VM-Sicherungen | Mitwirkender für Sicherungen | Recovery Services-Tresor |
 | Ändern der Sicherungsrichtlinie der Azure-VM-Sicherungen | Mitwirkender für Sicherungen | Recovery Services-Tresor |
 | Löschen der Sicherungsrichtlinie der Azure-VM-Sicherungen | Mitwirkender für Sicherungen | Recovery Services-Tresor |
@@ -56,9 +59,27 @@ In der folgenden Tabelle sind die Aktionen der Sicherungsverwaltung und die ents
 | Löschen der registrierten lokalen Instanz von Windows Server/Client/SCDPM oder Azure Backup Server | Mitwirkender für Sicherungen | Recovery Services-Tresor |
 
 > [!IMPORTANT]
-> Wenn Sie als Teil der VM-Einstellungen den VM-Mitwirkenden in einem VM-Ressourcenbereich angeben und **Sicherung** auswählen, öffnet sich der Bildschirm **Sicherung aktivieren** , obwohl die VM bereits gesichert ist. Dies liegt daran, dass der Aufruf zur Überprüfung des Sicherungsstatus nur auf Abonnementebene funktioniert. Um dies zu vermeiden, navigieren Sie entweder zum Tresor und öffnen die Sicherungselementansicht der VM, oder geben Sie die Rolle „VM-Mitwirkender“ auf Abonnementebene an.
+> Wenn Sie als Teil der VM-Einstellungen den VM-Mitwirkenden in einem VM-Ressourcenbereich angeben und **Sicherung** auswählen, öffnet sich der Bildschirm **Sicherung aktivieren**, obwohl die VM bereits gesichert ist. Dies liegt daran, dass der Aufruf zur Überprüfung des Sicherungsstatus nur auf Abonnementebene funktioniert. Um dies zu vermeiden, navigieren Sie entweder zum Tresor und öffnen die Sicherungselementansicht der VM, oder geben Sie die Rolle „VM-Mitwirkender“ auf Abonnementebene an.
 
-## <a name="minimum-role-requirements-for-the-azure-file-share-backup"></a>Mindestanforderungen an Rollen für die Sicherung von Azure-Dateifreigaben
+### <a name="minimum-role-requirements-for-azure-workload-backups-sql-and-hana-db-backups"></a>Mindestrollenanforderungen für Azure-Workloadsicherungen (SQL- und HANA DB-Sicherungen)
+
+In der folgenden Tabelle sind die Aktionen der Sicherungsverwaltung und die entsprechende minimale Azure-Rolle aufgeführt, die zum Ausführen des jeweiligen Vorgangs erforderlich ist.
+
+| Verwaltungsvorgang | Minimal erforderliche Azure-Rolle | Bereich erforderlich | Alternative |
+| --- | --- | --- | --- |
+| Erstellen eines Recovery Services-Tresors | Mitwirkender für Sicherungen | Ressourcengruppe mit dem Tresor |   |
+| Aktivieren der Sicherung von SQL- und/oder HANA-Datenbanken | Sicherungsoperator | Ressourcengruppe mit dem Tresor |   |
+| | Mitwirkender von virtuellen Computern | VM-Ressource, auf der die Datenbank installiert ist |  Alternativ können Sie anstelle einer integrierten Rolle eine benutzerdefinierte Rolle mit den folgenden Berechtigungen in Erwägung ziehen: Microsoft.Compute/virtualMachines/write |
+| Bedarfsgesteuerte Sicherung einer Datenbank | Sicherungsoperator | Recovery Services-Tresor |   |
+| Wiederherstellen einer Datenbank oder Wiederherstellen als Dateien | Sicherungsoperator | Recovery Services-Tresor |   |
+| | Mitwirkender von virtuellen Computern | Gesicherte Quell-VM |   Alternativ können Sie anstelle einer integrierten Rolle eine benutzerdefinierte Rolle mit den folgenden Berechtigungen in Erwägung ziehen: Microsoft.Compute/virtualMachines/write |
+| | Mitwirkender von virtuellen Computern | Ziel-VM, in der die Datenbank wiederhergestellt wird oder die Dateien erstellt werden |   Alternativ können Sie anstelle einer integrierten Rolle eine benutzerdefinierte Rolle mit den folgenden Berechtigungen in Erwägung ziehen: Microsoft.Compute/virtualMachines/write |
+| Erstellen einer Sicherungsrichtlinie für Azure-VM-Sicherungen | Mitwirkender für Sicherungen | Recovery Services-Tresor |
+| Ändern der Sicherungsrichtlinie der Azure-VM-Sicherungen | Mitwirkender für Sicherungen | Recovery Services-Tresor |
+| Löschen der Sicherungsrichtlinie der Azure-VM-Sicherungen | Mitwirkender für Sicherungen | Recovery Services-Tresor |
+| Beenden der Sicherung (mit Beibehaltung oder Löschung von Daten) für VM-Sicherungen | Mitwirkender für Sicherungen | Recovery Services-Tresor |
+
+### <a name="minimum-role-requirements-for-the-azure-file-share-backup"></a>Mindestanforderungen an Rollen für die Sicherung von Azure-Dateifreigaben
 
 In der folgenden Tabelle sind die Aktionen der Sicherungsverwaltung und die entsprechende Rolle aufgeführt, die zum Ausführen des Vorgangs für die Azure-Dateifreigabe erforderlich ist.
 

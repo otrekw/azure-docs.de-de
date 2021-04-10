@@ -6,10 +6,10 @@ ms.topic: overview
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/20/2020
 ms.openlocfilehash: 87f4181e820b1c6ecdeb0fda85a88e80db248dd2
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98943918"
 ---
 # <a name="what-is-ml-services-in-azure-hdinsight"></a>Worum handelt es sich bei ML Services in Azure HDInsight?
@@ -71,7 +71,7 @@ Sie können den Zugriff auf weiteren Blobspeicher und Data Lake Storage während
 
 Außerdem können Sie Azure Files als Speicheroption für den Edgeknoten wählen. Azure Files ermöglicht die Nutzung von in Azure Storage erstellten Dateifreigaben für das Linux-Dateisystem. Weitere Informationen finden Sie unter [Azure Storage-Lösungen für ML Services in HDInsight](r-server-storage.md).
 
-## <a name="access-ml-services-edge-node"></a>Zugreigen auf ML Services-Edgeknoten
+## <a name="access-ml-services-edge-node"></a>Zugreifen auf ML Services-Edgeknoten
 
 Sie können über einen Browser oder SSH/PuTTY eine Verbindung mit ML Server auf dem Edgeknoten herstellen. Die R-Konsole wird standardmäßig während der Clustererstellung installiert.  
 
@@ -93,7 +93,7 @@ Verwenden Sie für die Bewertung mit Azure Machine Learning das Open-Source-Azur
 
 ### <a name="score-on-premises"></a>Lokale Bewertung
 
-Gehen Sie wie folgt vor, um nach der Erstellung Ihres Modells eine lokale Bewertung durchzuführen: Serialisieren Sie das Modell in R, laden Sie es herunter, deserialisieren Sie es, und verwenden Sie es anschließend für die Bewertung neuer Daten. Sie können die Bewertung für neue Daten durchführen, indem Sie den weiter oben unter „Bewertung in HDInsight“ beschriebenen Ansatz verwenden oder [Webdienste](/machine-learning-server/operationalize/concept-what-are-web-services) nutzen.
+Gehen Sie wie folgt vor, um nach der Erstellung Ihres Modells eine lokale Bewertung durchzuführen: Serialisieren Sie das Modell in R, laden Sie es herunter, deserialisieren Sie es, und verwenden Sie es anschließend für die Bewertung neuer Daten. Sie können die Bewertung für neue Daten durchführen, indem Sie den weiter oben unter Bewertung in HDInsight beschriebenen Ansatz verwenden oder [Webdienste](/machine-learning-server/operationalize/concept-what-are-web-services) nutzen.
 
 ## <a name="maintain-the-cluster"></a>Verwalten des Clusters
 
@@ -129,7 +129,7 @@ Während der Wartung kann es für aktive Aufträge zu einer Verlangsamung kommen
 
 Der Linux-Edgeknoten auf einem HDInsight-Cluster stellt die Landezone für R-basierte Analysen dar. Neuere Versionen von HDInsight verfügen über eine browserbasierte IDE von RStudio auf dem Edgeknoten. RStudio Server weist in Bezug auf die Entwicklung und Ausführung eine höhere Produktivität als die R-Konsole auf.
 
-Eine Desktop-IDE verfügt per MapReduce- oder Spark-Remote-Computekontext über Zugriff auf den Cluster. Beispiele für Optionen: [R Tools für Visual Studio](https://marketplace.visualstudio.com/items?itemName=MikhailArkhipov007.RTVS2019) (RTVS) von Microsoft, RStudio und die auf Eclipse basierende Anwendung StatET von Walware
+Eine Desktop-IDE verfügt per MapReduce- oder Spark-Remote-Computekontext über Zugriff auf den Cluster. Zu den Optionen gehören [R Tools für Visual Studio](https://marketplace.visualstudio.com/items?itemName=MikhailArkhipov007.RTVS2019) (RTVS) von Microsoft, RStudio und das auf Eclipse basierende StatET von Walware.
 
 Greifen Sie auf die R-Konsole auf dem Edgeknoten zu, indem Sie an der Eingabeaufforderung **R** eingeben. Bei Nutzung der Konsolenoberfläche ist es ratsam, R-Skripts in einem Text-Editor zu entwickeln. Sie können die Abschnitte Ihres Skripts dann je nach Bedarf ausschneiden und in die R-Konsole einfügen.
 

@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/19/2017
+ms.date: 02/17/2021
 ms.author: apimpm
-ms.openlocfilehash: 312a496a5acda05a6b04a0bb47abb101f4ffcc8e
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: e809efa9da32da5fe9ca296608c602e770f78265
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107588"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103562347"
 ---
 # <a name="api-management-policies"></a>Richtlinien für die API-Verwaltung
 Dieser Abschnitt enthält eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](api-management-howto-policies.md).
@@ -81,6 +81,12 @@ Dieser Abschnitt enthält eine Referenz für die folgenden API Management-Richtl
     - [Send request to a service](api-management-dapr-policies.md#invoke) (Anforderung an einen Dienst senden): Nutzt eine Dapr-Runtime für die Ermittlung eines Dapr-Microservice und die zuverlässige Kommunikation mit diesem Microservice.
     -  [Send message to Pub/Sub topic](api-management-dapr-policies.md#pubsub) (Nachricht an Veröffentlichen/Abonnieren-Thema senden): Nutzt eine Dapr-Runtime zum Veröffentlichen einer Nachricht in einem Veröffentlichen/Abonnieren-Thema.
     -  [Trigger output binding](api-management-dapr-policies.md#bind) (Ausgabebindung auslösen): Nutzt eine Dapr-Runtime zum Aufrufen eines externen Systems über eine Ausgabebindung.
+- [Überprüfungsrichtlinien](validation-policies.md)
+    - [Validate content](validation-policies.md#validate-content) (Validieren von Inhalten): Hiermit wird die Größe oder das JSON-Schema eines Anforderungs- oder Antworttexts anhand des API-Schemas überprüft.
+. 
+    - [Validate parameters](validation-policies.md#validate-parameters) (Validieren von Parametern): Hiermit können Sie den Anforderungsheader, die Abfrage oder die Pfadparameter anhand des API-Schemas überprüfen.
+    - [Validate headers](validation-policies.md#validate-headers) (Validieren von Headern): Hiermit werden die Anforderungsheader anhand des API-Schemas überprüft.
+    - [Validate status code](validation-policies.md#validate-status-code) (Validieren von Statuscodes): Hiermit werden die HTTP-Statuscodes in Antworten anhand des API-Schemas überprüft.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zur Verwendung von Richtlinien finden Sie unter:

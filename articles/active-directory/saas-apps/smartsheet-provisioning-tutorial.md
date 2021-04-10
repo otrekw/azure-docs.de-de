@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 06/07/2019
 ms.author: jeedes
 ms.openlocfilehash: e9ee994564e175d3c41cfd5ce415ead8c67df353
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/10/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100103548"
 ---
 # <a name="tutorial-configure-smartsheet-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Smartsheet für die automatische Benutzerbereitstellung
@@ -137,7 +137,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 9. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit Smartsheet synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in Smartsheet für Aktualisierungsvorgänge verwendet. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-   |attribute|type|Unterstützung für das Filtern|
+   |Attribut|type|Unterstützung für das Filtern|
    |---|---|---|
    |userName|String|&check;|
    |aktiv|Boolean|
