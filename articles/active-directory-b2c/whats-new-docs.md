@@ -9,12 +9,12 @@ ms.workload: identity
 ms.author: mimart
 author: msmimart
 manager: CelesteDG
-ms.openlocfilehash: 00be0a18984f1ad3eacf86a2cf3477d8b0d9065f
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 3fcc4f01d926f5c624adabd51e6215e0106af1fa
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102454616"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105557869"
 ---
 # <a name="azure-active-directory-b2c-whats-new"></a>Azure Active Directory B2C: Neuerungen
 
@@ -73,7 +73,7 @@ Hier erfahren Sie mehr über die Neuerungen in der Dokumentation von Azure Acti
 
 ### <a name="new-articles"></a>Neue Artikel
 
-- [Erstellen eines Benutzerflows in Azure Active Directory B2C](create-user-flow.md)
+- [Erstellen eines Benutzerflows in Azure Active Directory B2C](add-sign-up-and-sign-in-policy.md)
 - [Einrichten der telefonischen Registrierung und Anmeldung für Benutzerflows (Vorschau)](phone-authentication-user-flows.md)
 
 ### <a name="updated-articles"></a>Aktualisierte Artikel
@@ -114,7 +114,7 @@ Hier erfahren Sie mehr über die Neuerungen in der Dokumentation von Azure Acti
 ### <a name="updated-articles"></a>Aktualisierte Artikel
 - [Festlegen von Umleitungs-URLs zu b2clogin.com für Azure Active Directory B2C](b2clogin.md)
 - [Definieren eines technischen OpenID Connect-Profils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C](openid-connect-technical-profile.md)
-- [Einrichten von Telefonregistrierung und -anmeldung mit benutzerdefinierten Richtlinien in Azure AD B2C](phone-authentication.md)
+- [Einrichten von Telefonregistrierung und -anmeldung mit benutzerdefinierten Richtlinien in Azure AD B2C](phone-authentication-user-flows.md)
 
 
 ## <a name="august-2020"></a>August 2020

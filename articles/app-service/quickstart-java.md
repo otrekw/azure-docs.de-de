@@ -15,10 +15,10 @@ adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts
 adobe-target-experience: Experience B
 adobe-target-content: ./quickstart-java-uiex
 ms.openlocfilehash: ebd189e1cf6e053f5400b8217fc1c2fc385cdac9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101701721"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service"></a>Schnellstart: Erstellen einer Java-App in Azure App Service
@@ -215,7 +215,7 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.12.0:config
 
 Sie können bei Bedarf die Konfigurationen für App Service direkt in der Datei `pom.xml` ändern. Im Folgenden sind einige gängige Konfigurationen aufgeführt:
 
-Eigenschaft | Erforderlich | BESCHREIBUNG | Version
+Eigenschaft | Erforderlich | Beschreibung | Version
 ---|---|---|---
 `<schemaVersion>` | false | Gibt die Version des Konfigurationsschemas an. Folgende Werte werden unterstützt: `v1` und `v2`. | 1.5.2
 `<subscriptionId>` | false | Geben Sie die Abonnement-ID an. | 0.1.0+

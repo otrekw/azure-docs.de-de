@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b447873df882847f052125254ea52b5ae6ab9ec4
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: d41d7d45fd11f2dc26fc50182a7649b23cd21196
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101644866"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103008755"
 ---
 # <a name="add-a-custom-approval-workflow-to-self-service-sign-up"></a>Hinzufügen eines benutzerdefinierten Genehmigungsworkflows zur Self-Service-Registrierung
 
@@ -105,7 +105,7 @@ Content-type: application/json
 
 {
  "email": "johnsmith@fabrikam.onmicrosoft.com",
- "identities": [ //Sent for Google and Facebook identity providers
+ "identities": [ //Sent for Google, Facebook, and Email One Time Passcode identity providers 
      {
      "signInType":"federated",
      "issuer":"facebook.com",
@@ -156,7 +156,6 @@ Content-type: application/json
     "version": "1.0.0",
     "action": "ShowBlockPage",
     "userMessage": "Your access request is already processing. You'll be notified when your request has been approved.",
-    "code": "CONTOSO-APPROVAL-PENDING"
 }
 ```
 
@@ -168,7 +167,6 @@ Content-type: application/json
     "version": "1.0.0",
     "action": "ShowBlockPage",
     "userMessage": "Your sign up request has been denied. Please contact an administrator if you believe this is an error",
-    "code": "CONTOSO-APPROVAL-DENIED"
 }
 ```
 
@@ -182,7 +180,7 @@ Content-type: application/json
 
 {
  "email": "johnsmith@fabrikam.onmicrosoft.com",
- "identities": [ //Sent for Google and Facebook identity providers
+ "identities": [ // Sent for Google, Facebook, and Email One Time Passcode identity providers 
      {
      "signInType":"federated",
      "issuer":"facebook.com",
@@ -244,7 +242,6 @@ Content-type: application/json
     "version": "1.0.0",
     "action": "ShowBlockPage",
     "userMessage": "Your account is now waiting for approval. You'll be notified when your request has been approved.",
-    "code": "CONTOSO-APPROVAL-REQUESTED"
 }
 ```
 
@@ -256,7 +253,6 @@ Content-type: application/json
     "version": "1.0.0",
     "action": "ShowBlockPage",
     "userMessage": "Your sign up request has been denied. Please contact an administrator if you believe this is an error",
-    "code": "CONTOSO-APPROVAL-AUTO-DENIED"
 }
 ```
 
@@ -268,12 +264,12 @@ Die `userMessage` in der Antwort wird dem Benutzer angezeigt, z. B.:
 
 Nach dem Erhalt der manuellen Genehmigung erstellt das benutzerdefinierte Genehmigungssystem mit [Microsoft Graph](/graph/use-the-api) ein [Benutzerkonto](/graph/azuread-users-concept-overview). Wie das Genehmigungssystem das Benutzerkonto bereitstellt, hängt von dem Identitätsanbieter ab, der vom Benutzer verwendet wurde.
 
-### <a name="for-a-federated-google-or-facebook-user"></a>Für einen verbundenen Google- oder Facebook-Benutzer
+### <a name="for-a-federated-google-or-facebook-user-and-email-one-time-passcode"></a>Für Verbundbenutzer von Google oder Facebook und einmalige Passcode per E-Mail
 
 > [!IMPORTANT]
-> Das Genehmigungssystem sollte explizit prüfen, ob `identities`, `identities[0]` und `identities[0].issuer` vorhanden sind und `identities[0].issuer` „facebook“ oder „google“ ist, um diese Methode zu verwenden.
+> Das Genehmigungssystem muss explizit überprüfen, ob `identities`, `identities[0]` und `identities[0].issuer` vorhanden sind und dass `identities[0].issuer` „facebook“, „google“ oder „mail“ entspricht, damit diese Methode verwendet werden kann.
 
-Wenn sich Ihr Benutzer mit einem Google- oder Facebook-Konto angemeldet hat, können Sie die [Benutzererstellungs-API](/graph/api/user-post-users?tabs=http) verwenden.
+Wenn Ihr Benutzer sich mit einem Google- oder Facebook-Konto oder mit einem einmaligen Passcode per E-Mail angemeldet hat, können Sie die [Benutzererstellungs-API](/graph/api/user-post-users?tabs=http) verwenden.
 
 1. Das Genehmigungssystem verwendet die HTTP-Anforderung aus dem Benutzerflow.
 
@@ -331,9 +327,9 @@ Content-type: application/json
 | \<otherBuiltInAttribute>                            | Nein       | Andere integrierte Attribute wie `displayName`, `city` und andere. Parameternamen sind identisch mit den vom API-Connector gesendeten Parametern.                            |
 | \<extension\_\{extensions-app-id}\_CustomAttribute> | Nein       | Benutzerdefinierte Attribute über den Benutzer. Parameternamen sind identisch mit den vom API-Connector gesendeten Parametern.                                                            |
 
-### <a name="for-a-federated-azure-active-directory-user"></a>Für einen verbundenen Azure Active Directory-Benutzer
+### <a name="for-a-federated-azure-active-directory-user-or-microsoft-account-user"></a>Für einen Azure Active Directory-Verbundbenutzer oder Microsoft-Kontobenutzer
 
-Wenn ein Benutzer sich mit einem verbundenen Azure Active Directory-Konto anmeldet, müssen Sie den Benutzer mit der [Einladungs-API](/graph/api/invitation-post) erstellen und ihm dann optional mit der [Benutzeraktualisierungs-API](/graph/api/user-update) weitere Attribute zuweisen.
+Wenn ein Benutzer sich mit einem verbundenen Azure Active Directory oder einem Microsoft-Konto anmeldet, müssen Sie den Benutzer mit der [Einladungs-API](/graph/api/invitation-post) erstellen und ihm dann optional mit der [Benutzeraktualisierungs-API](/graph/api/user-update) weitere Attribute zuweisen.
 
 1. Das Genehmigungssystem empfängt die HTTP-Anforderung aus dem Benutzerflow.
 

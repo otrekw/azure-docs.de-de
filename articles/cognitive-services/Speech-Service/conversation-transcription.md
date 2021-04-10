@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/16/2020
+ms.date: 03/26/2021
 ms.author: trbye
-ms.openlocfilehash: c27493748381a3aced92aab41745f352f228c50e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 903e8db14a2830236ae81a2a3b5416491d03e8c7
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95024992"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105643251"
 ---
-# <a name="what-is-conversation-transcription-in-meetings-preview"></a>Worum handelt es sich bei der Unterhaltungstranskription (Vorschau) in Besprechungen?
+# <a name="what-is-conversation-transcription-preview"></a>Was ist Unterhaltungstranskription (Vorschau)?
 
 Die Unterhaltungstranskription ist eine [Spracherkennungslösung](speech-to-text.md), die Spracherkennung, Sprecheridentifikation und Satzzuordnung zu jedem Sprecher (auch als _Diarisierung_ bezeichnet) kombiniert, um eine Echtzeit- und/oder asynchrone Transkription einer beliebigen Unterhaltung zu ermöglichen. Die Unterhaltungstranskription unterscheidet Sprecher in einer Unterhaltung, um festzustellen, wer was wann gesagt hat, und vereinfacht es für Entwickler, ihren Anwendungen, die eine Diarisierung mit mehreren Sprechern durchführen, eine Spracherkennung hinzuzufügen.
 

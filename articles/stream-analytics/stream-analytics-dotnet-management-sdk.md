@@ -5,14 +5,14 @@ author: jseb225
 ms.author: jeanb
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 12/06/2018
+ms.date: 3/12/2021
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 633885bb1062edac8226c073768ffdeba84fcb55
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 9adc4c92e3e637b9d3e18249b5de00782a94baab
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98012630"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103232884"
 ---
 # <a name="management-net-sdk-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>Management .NET SDK: Einrichten und Ausführen von Analyseaufträgen mit der Azure Stream Analytics-API für .NET
 Erfahren Sie, wie Sie mit der Azure Stream Analytics-API für .NET über das Management .NET SDK Analyseaufträge einrichten und ausführen. Richten Sie ein Projekt ein, erstellen Sie Eingabe- und Ausgabequellen sowie Transformationen, und starten und beenden Sie Aufträge. Für Ihre Analyseaufträge können Sie Daten aus dem Blob-Speicher oder einem Event Hub streamen.
@@ -207,6 +207,12 @@ Die Methode **TestConnection** überprüft, ob der Stream Analytics-Auftrag sich
    // Test the connection to the input
    ResourceTestStatus testInputResult = streamAnalyticsManagementClient.Inputs.Test(resourceGroupName, streamingJobName, inputName);
    ```
+Das Ergebnis des TestConnection-Aufrufs ist ein *ResourceTestResult*-Objekt, das zwei Eigenschaften enthält:
+
+- *Status:* Dabei kann es sich um eine der folgenden Zeichenfolgen handeln: [„TestNotAttempted“, „TestSucceeded“, „TestFailed“]
+- *Error:* Diese Eigenschaft weist den ErrorResponse-Typ auf und enthält die folgenden Eigenschaften:
+   - *Code:* Hierbei handelt es sich um eine erforderliche Eigenschaft vom Typ „String“ (Zeichenfolge). Der Standardwert lautet „System.Net.HttpStatusCode“, der beim Testen empfangen wurde.
+   - *Message:* Hierbei handelt es sich um eine erforderliche Eigenschaft vom Typ „String“ (Zeichenfolge), die den Fehler darstellt. 
 
 ## <a name="create-a-stream-analytics-output-target"></a>Erstellen eines Stream Analytics-Ausgabeziels
 Das Erstellen eines Ausgabeziels ähnelt dem Erstellen einer Stream Analytics-Eingabequelle. Genau wie Eingabequellen sind Ausgabeziele an einen bestimmten Auftrag gebunden. Um dasselbe Ausgabeziel für verschiedene Aufträge zu verwenden, müssen Sie die Methode erneut aufrufen und einen anderen Auftragsnamen angeben.

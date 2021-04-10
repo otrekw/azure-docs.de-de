@@ -2,13 +2,13 @@
 title: Übersicht über Vorlagen
 description: Beschreibung der Vorteile der Verwendung von Azure Resource Manager-Vorlagen (ARM-Vorlagen) für die Bereitstellung von Ressourcen
 ms.topic: conceptual
-ms.date: 01/20/2021
-ms.openlocfilehash: dd9207ca1d0397b7dce63eb826567f07b1d0b892
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.date: 03/12/2021
+ms.openlocfilehash: 14bcbbd7a7ae7315dbb8e9d3e7e44ce0ffe0a4b4
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98621838"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103419982"
 ---
 # <a name="what-are-arm-templates"></a>Was sind ARM-Vorlagen?
 
@@ -17,6 +17,12 @@ Mit dem Wechsel zur Cloud haben viele Teams agile Entwicklungsmethoden eingefüh
 Um diese Herausforderungen zu erfüllen, können Bereitstellungen automatisiert und die Infrastructure-as-Code-Methode verwendet werden. Im Code definieren Sie die Infrastruktur, die bereitgestellt werden muss. Der Infrastrukturcode wird Teil des Projekts. Genau wie Anwendungscode speichern Sie den Infrastrukturcode in einem Quellrepository und versionieren ihn. Jeder in Ihrem Team kann den Code ausführen und ähnliche Umgebungen bereitstellen.
 
 Verwenden Sie Azure Resource Manager-Vorlagen (ARM-Vorlagen), um Infrastructure-as-Code für Ihre Azure-Lösungen zu implementieren. Die Vorlage ist eine JSON-Datei (JavaScript Object Notation), in der die Infrastruktur und die Konfiguration für Ihr Projekt definiert sind. Für die Vorlage wird deklarative Syntax verwendet. Hiermit können Sie angeben, was Sie bereitstellen möchten, ohne dass Sie die Folge der Programmierbefehle für die Erstellung schreiben müssen. In der Vorlage geben Sie die bereitzustellenden Ressourcen und die Eigenschaften für diese Ressourcen an.
+
+Wir haben eine neue Sprache für die Entwicklung von ARM-Vorlagen eingeführt. Die Sprache heißt Bicep und befindet sich derzeit in der Vorschauphase. Bicep- und JSON-Vorlagen bieten dieselben Funktionen. Sie können Vorlagen zwischen den beiden Sprachen konvertieren. Bicep bietet eine einfacher zu verwendende Syntax für das Erstellen von Vorlagen. Weitere Informationen finden Sie unter [Was ist Bicep (Vorschau)?](bicep-overview.md).
+
+Im folgenden Video erfahren Sie, wie Sie Ihre ersten Schritte mit ARM-Vorlagen tätigen können.
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Enablement/How-and-why-to-learn-about-ARM-templates/player]
 
 ## <a name="why-choose-arm-templates"></a>Warum ARM-Vorlagen verwenden?
 
@@ -68,7 +74,7 @@ Die Vorlage hat die folgenden Abschnitte:
 
 * [Benutzerdefinierte Funktionen](template-user-defined-functions.md): Erstellen angepasster Funktionen zum Vereinfachen Ihrer Vorlage.
 
-* [Ressourcen](template-syntax.md#resources): Angeben der bereitzustellenden Ressourcen.
+* [Ressourcen](resource-declaration.md): Angeben der bereitzustellenden Ressourcen.
 
 * [Ausgaben](template-outputs.md): Zurückgeben von Werte aus den bereitgestellten Ressourcen.
 
@@ -109,6 +115,15 @@ REQUEST BODY
 ```
 
 Beachten Sie, dass die **apiVersion**, die Sie in der Vorlage für die Ressource festlegen, als API-Version für den REST-Vorgang verwendet wird. Sie können die Vorlage wiederholt bereitstellen und darauf vertrauen, dass sie weiterhin funktionieren wird. Durch die Verwendung derselben API-Version müssen Sie sich keine Sorgen über Änderungen mit Auswirkung auf die Lauffähigkeit machen, die in späteren Versionen eingeführt werden könnten.
+
+Verwenden Sie eine der folgenden Optionen zum Bereitstellen einer Vorlage:
+
+* [Azure portal](deploy-portal.md)
+* [Azure-Befehlszeilenschnittstelle](deploy-cli.md)
+* [PowerShell](deploy-powershell.md)
+* [REST-API](deploy-rest.md)
+* [Schaltfläche im GitHub-Repository](deploy-to-azure-button.md)
+* [Azure Cloud Shell](deploy-cloud-shell.md)
 
 ## <a name="template-design"></a>Vorlagenentwurf
 

@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/23/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 54010359f226fe02336f039e3dcbb98075e9b06a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7ff77a407dfa87e408170573249876bbefee0abe
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97360083"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105558573"
 ---
 # <a name="security-considerations-for-sql-server-on-azure-virtual-machines"></a>Überlegungen zur Sicherheit von SQL Server auf Azure Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -87,7 +87,7 @@ Sie möchten verhindern, dass Angreifer Kontonamen oder Kennwörter leicht errat
 
 - Erstellen Sie ein eindeutiges lokales Administratorkonto, das nicht den Namen **Administrator** hat.
 
-- Verwenden Sie komplexe, sichere Kennwörter für alle Konten. Weitere Informationen zum Erstellen eines sicheren Kennworts finden Sie im Artikel [Erstellen eines sicheren Kennworts](https://support.microsoft.com/instantanswers/9bd5223b-efbe-aa95-b15a-2fb37bef637d/create-a-strong-password).
+- Verwenden Sie komplexe, sichere Kennwörter für alle Konten. Weitere Informationen zum Erstellen eines sicheren Kennworts finden Sie im Artikel [Erstellen eines sicheren Kennworts](https://support.microsoft.com/account-billing/how-to-create-a-strong-password-for-your-microsoft-account-f67e4ddd-0dbe-cd75-cebe-0cfda3cf7386).
 
 - Standardmäßig wird für Azure während des Einrichtens von virtuellen Computern mit SQL Server die Windows-Authentifizierung ausgewählt. Aus diesem Grund wird beim Einrichten die **SA** -Anmeldung deaktiviert und ein Kennwort zugewiesen. Es wird empfohlen, die **SA**-Anmeldung nicht zu verwenden oder zu aktivieren. Verwenden Sie eine der folgenden Strategien, falls Sie eine SQL-Anmeldung benötigen:
 

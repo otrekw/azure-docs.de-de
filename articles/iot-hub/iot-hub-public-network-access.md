@@ -6,13 +6,13 @@ ms.author: jlian
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 02/12/2021
-ms.openlocfilehash: 27552b2c39f2d1e5d9cc1719a9cc2944e088773a
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.date: 03/22/2021
+ms.openlocfilehash: fbbdaeb796dfa23906c8010a54af14eff6df0b97
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100517126"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105026639"
 ---
 # <a name="managing-public-network-access-for-your-iot-hub"></a>Verwalten des Zugriffs über öffentliche Netzwerke für Ihren IoT-Hub
 
@@ -29,6 +29,10 @@ Deaktivieren Sie den Zugriff über öffentliche Netzwerke, um den Zugriff auf de
 :::image type="content" source="media/iot-hub-publicnetworkaccess/turn-off-public-network-access.png" alt-text="Screenshot des Navigationspfads im Azure-Portal zum Deaktivieren des Zugriffs über öffentliche Netzwerke" lightbox="media/iot-hub-publicnetworkaccess/turn-off-public-network-access.png":::
 
 Wenn Sie den Zugriff über öffentliche Netzwerke aktivieren möchten, wählen Sie **Alle Netzwerke** und dann **Speichern** aus.
+
+## <a name="accessing-the-iot-hub-after-disabling-public-network-access"></a>Zugreifen auf den IoT Hub nach dem Deaktivieren des Zugriffs auf das öffentliche Netzwerk
+
+Nachdem der Zugriff auf das öffentliche Netzwerk deaktiviert wurde, ist der IoT Hub nur über den [privaten VNet-Endpunkt über Azure Private Link](virtual-network-support.md) zu erreichen. Diese Einschränkung schließt den Zugriff über das Azure-Portal mit ein, da API-Aufrufe an den IoT Hub-Dienst direkt über Ihren Browser mit Ihren Anmeldeinformationen erfolgen.
 
 ## <a name="iot-hub-endpoint-ip-address-and-ports-after-disabling-public-network-access"></a>IoT Hub-Endpunkt, IP-Adresse und Ports nach Deaktivierung des Zugriffs auf öffentliche Netzwerke
 

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 02/14/2020
+ms.date: 03/11/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 34bc50f5f95725b59c0d2b30b529e12abb6aa7fa
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: d2d4a61f653c5bedb31223d2eb3d37b92a076821
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98661152"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103010166"
 ---
 # <a name="migrate-users-to-azure-ad-b2c"></a>Migrieren von Benutzern zu Azure AD B2C
 
@@ -50,7 +50,7 @@ Die nahtlose Migration umfasst somit zwei Phasen: *Prämigration* und *Festlegen
 ### <a name="phase-1-pre-migration"></a>Phase 1: Prämigration
 
 1. Ihre Migrationsanwendung liest die Benutzerkonten des alten Identitätsanbieters.
-1. Die Migrationsanwendung erstellt entsprechende Benutzerkonten in Ihrem Azure AD B2C-Verzeichnis, *legt aber keine Kennwörter fest*.
+1. Die Migrationsanwendung erstellt entsprechende Benutzerkonten in Ihrem Azure AD B2C-Verzeichnis, *legt aber zufällige Kennwörter fest*, die Sie generieren.
 
 ### <a name="phase-2-set-credentials"></a>Phase 2: Festlegen von Anmeldeinformationen
 

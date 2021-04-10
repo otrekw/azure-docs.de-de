@@ -12,12 +12,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, sstein
 ms.date: 08/17/2020
-ms.openlocfilehash: f3c34526fd4005dbbb0be7e763721e125ed7828e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 9e7b337d4358f9685d683c308d6df9110607207a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103201214"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105643419"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>Konfigurieren und Verwalten der Azure Active Directory-Authentifizierung mit Azure SQL
 
@@ -115,7 +115,7 @@ Wenn Sie Ihrer Instanz von SQL Managed Instance über das Azure-Portal Leseberec
 
     Der Vorgang zum Ändern des Administrators kann einige Minuten in Anspruch nehmen. Anschließend wird der neue Administrator im Feld „Active Directory-Administrator“ angezeigt.
 
-Nachdem Sie einen Azure AD-Administrator für Ihre Instanz von SQL Managed Instance bereitgestellt haben, können Sie unter Verwendung der Syntax <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN</a> mit der Erstellung von Azure AD-Serverprinzipalen (Anmeldungen) beginnen. Weitere Informationen finden Sie in der [Übersicht über SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md#azure-active-directory-integration).
+Nachdem Sie einen Azure AD-Administrator für Ihre Instanz von SQL Managed Instance bereitgestellt haben, können Sie unter Verwendung der Syntax [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true) mit der Erstellung von Azure AD-Serverprinzipalen (Anmeldungen) beginnen. Weitere Informationen finden Sie in der [Übersicht über SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md#azure-active-directory-integration).
 
 > [!TIP]
 > Wenn Sie später einen Administrator entfernen möchten, wählen Sie oben auf der Seite „Active Directory-Administrator“ **Administrator entfernen** und anschließend **Speichern** aus.
@@ -345,8 +345,8 @@ Auf allen Clientcomputern, über die Ihre Anwendungen oder Benutzer unter Verwen
 - .NET Framework 4.6 oder höher aus [https://msdn.microsoft.com/library/5a4x27ek.aspx](/dotnet/framework/install/guide-for-developers).
 - Azure Active Directory-Authentifizierungsbibliothek für SQL Server (*ADAL.DLL*). Nachstehend finden Sie die Downloadlinks zum Installieren der neuesten SSMS-, ODBC-und OLE DB-Treiber, die die Bibliothek *ADAL.DLL* enthalten.
   - [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)
-  - [ODBC Driver 17 for SQL Server](/sql/connect/odbc/download-odbc-driver-for-sql-server?view=sql-server-ver15)
-  - [OLE DB Driver 18 for SQL Server](/sql/connect/oledb/download-oledb-driver-for-sql-server?view=sql-server-ver15)
+  - [ODBC Driver 17 for SQL Server](/sql/connect/odbc/download-odbc-driver-for-sql-server?view=sql-server-ver15&preserve-view=true)
+  - [OLE DB Driver 18 for SQL Server](/sql/connect/oledb/download-oledb-driver-for-sql-server?view=sql-server-ver15&preserve-view=true)
 
 Sie können diese Anforderungen folgendermaßen erfüllen:
 
@@ -357,7 +357,7 @@ Sie können diese Anforderungen folgendermaßen erfüllen:
 
 ## <a name="create-contained-users-mapped-to-azure-ad-identities"></a>Erstellen eigenständiger Benutzer mit Zuordnung zu Azure AD-Identitäten
 
-SQL Managed Instance unterstützt Azure AD-Serverprinzipale (Anmeldungen), deshalb ist die Verwendung eigenständiger Datenbankbenutzer nicht erforderlich. Azure AD-Serverprinzipale (Anmeldungen) ermöglichen es Ihnen, Anmeldungen für Azure AD-Benutzer, -Gruppen oder -Anwendungen zu erstellen. Dies bedeutet, dass Sie sich über die Azure AD-Serveranmeldung bei Ihrer Instanz von SQL Managed Instance authentifizieren können, statt sich über einen eigenständigen Datenbankbenutzer zu authentifizieren. Weitere Informationen finden Sie in der [Übersicht über SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md#azure-active-directory-integration). Die Syntax zum Erstellen von Azure AD-Serverprinzipalen (Anmeldungen) finden Sie unter <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN</a>.
+SQL Managed Instance unterstützt Azure AD-Serverprinzipale (Anmeldungen), deshalb ist die Verwendung eigenständiger Datenbankbenutzer nicht erforderlich. Azure AD-Serverprinzipale (Anmeldungen) ermöglichen es Ihnen, Anmeldungen für Azure AD-Benutzer, -Gruppen oder -Anwendungen zu erstellen. Dies bedeutet, dass Sie sich über die Azure AD-Serveranmeldung bei Ihrer Instanz von SQL Managed Instance authentifizieren können, statt sich über einen eigenständigen Datenbankbenutzer zu authentifizieren. Weitere Informationen finden Sie in der [Übersicht über SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md#azure-active-directory-integration). Die Syntax zum Erstellen von Azure AD-Serverprinzipalen (Anmeldungen) finden Sie unter [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true).
 
 Die Verwendung der Azure Active Directory-Authentifizierung bei SQL-Datenbank und Azure Synapse erfordert jedoch die Verwendung von eigenständigen Datenbankbenutzern auf der Grundlage einer Azure AD-Identität. Ein eigenständiger Datenbankbenutzer umfasst keine Anmeldung in der Masterdatenbank und ist einer Identität in Azure AD zugeordnet, die mit der Datenbank verknüpft ist. Bei der Azure AD-Identität kann es sich entweder um ein einzelnes Benutzerkonto oder um eine Gruppe handeln. Weitere Informationen zu eigenständigen Datenbankbenutzern finden Sie unter [Eigenständige Datenbankbenutzer – machen Sie Ihre Datenbank portabel](/sql/relational-databases/security/contained-database-users-making-your-database-portable).
 

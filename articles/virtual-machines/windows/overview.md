@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 2432cc49d770471979e089a496b9d0351eec26fd
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 799a7ea6d76df06cea9d3960f43fc78de9bdf5b6
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102550330"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106067791"
 ---
 # <a name="windows-virtual-machines-in-azure"></a>Virtuelle Windows-Computer in Azure
 
@@ -50,7 +50,7 @@ Die folgende Tabelle enthält einige Methoden, mit denen Sie eine Liste verfügb
 | --- | --- |
 | Azure-Portal |Wählen Sie beim Erstellen eines virtuellen Computers einen Standort aus der Liste aus. |
 | Azure PowerShell |Verwenden Sie den Befehl [Get-AzLocation](/powershell/module/az.resources/get-azlocation). |
-| REST-API |Verwenden Sie den Vorgang [List locations](/rest/api/resources/subscriptions) (Standorte auflisten). |
+| REST-API |Verwenden Sie den Vorgang [List locations](/rest/api/resources/subscriptions/subscriptions/listlocations) (Standorte auflisten). |
 | Azure CLI |Verwenden Sie den Vorgang [az account list-locations](/cli/azure/account). |
 
 ## <a name="availability"></a>Verfügbarkeit
