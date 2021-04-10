@@ -4,13 +4,13 @@ description: In diesem Artikel werden gängige Probleme mit Azure Monitor-Metrik
 author: harelbr
 ms.author: harelbr
 ms.topic: troubleshooting
-ms.date: 01/21/2021
-ms.openlocfilehash: 2bd82d18d6647e47d9838702af45cff68f2bc6cd
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.date: 03/15/2021
+ms.openlocfilehash: f14142632f6ded9f598d6e94fd1e91ec17f6d0a7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102037862"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103466496"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Behandeln von Problemen mit Azure Monitor-Metrikwarnungen 
 
@@ -138,11 +138,9 @@ Um zu vermeiden, dass bei der Bereitstellung Fehler auftreten, wenn Sie versuche
 ## <a name="export-the-azure-resource-manager-template-of-a-metric-alert-rule-via-the-azure-portal"></a>Exportieren der Azure Resource Manager-Vorlage einer Metrikwarnungsregel über das Azure-Portal
 
 Indem Sie die Resource Manager-Vorlage einer Metrikwarnungsregel exportieren, können Sie die JSON-Syntax und -Eigenschaften besser nachvollziehen. Der Export kann außerdem zur Automatisierung zukünftiger Bereitstellungen verwendet werden.
-1. Navigieren Sie im Portal zum Abschnitt **Ressourcengruppen**, und wählen Sie die Ressourcengruppe aus, die die Regel enthält.
-2. Aktivieren Sie im Abschnitt „Übersicht“ das Kontrollkästchen **Ausgeblendete Typen anzeigen**.
-3. Wählen Sie im Filter **Typ** die Option *microsoft.insights/metricalerts* aus.
-4. Wählen Sie die entsprechende Warnungsregel aus, um die zugehörigen Details anzuzeigen.
-5. Klicken Sie unter **Einstellungen** auf **Vorlage exportieren**.
+1. Öffnen Sie die Warnungsregel im Azure-Portal, um die zugehörigen Details anzuzeigen.
+2. Klicken Sie auf **Eigenschaften**.
+3. Wählen Sie unter **Automatisierung** die Option **Vorlage exportieren** aus.
 
 ## <a name="metric-alert-rules-quota-too-small"></a>Kontingent für Metrikwarnungsregeln zu klein
 

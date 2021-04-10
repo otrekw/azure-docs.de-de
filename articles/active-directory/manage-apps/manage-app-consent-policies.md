@@ -13,10 +13,10 @@ ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
 ms.openlocfilehash: 9c269e2ab37a08e48eedd3ee468080a382f9a8e3
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102558728"
 ---
 # <a name="manage-app-consent-policies"></a>Verwalten von Richtlinien zur Einwilligung für die App
@@ -152,4 +152,4 @@ Weitere Informationen:
 * [Berechtigungen und Zustimmung im Microsoft Identity Platform-Endpunkt](../develop/v2-permissions-and-consent.md)
 
 So erhalten Sie Hilfe oder finden Antworten auf Ihre Fragen:
-* [Azure AD bei Microsoft Q&A](/answers/products/)
+* [Azure AD bei Microsoft Q&A](/answers/products/)

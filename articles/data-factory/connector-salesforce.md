@@ -6,13 +6,13 @@ author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/02/2021
-ms.openlocfilehash: d820be66c70ae336361de7209722c4018ffd5077
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 03/17/2021
+ms.openlocfilehash: 5b49e62330c789d6d5cbe2af2edb28a2c3e1238f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100392169"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104583092"
 ---
 # <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>Kopieren von Daten aus und nach Salesforce mit Azure Data Factory
 
@@ -38,7 +38,7 @@ Dieser Salesforce-Connector unterstützt insbesondere Folgendes:
 - Salesforce Developer, Professional, Enterprise oder Unlimited Edition.
 - Datenkopiervorgänge aus der und in die Produktionsumgebung, den Sandkasten und die benutzerdefinierte Domäne von Salesforce.
 
-Der Salesforce-Connector baut auf der Salesforce REST/Bulk-API auf. Beim Kopieren von Daten aus Salesforce verwendet der Connector standardmäßig [v45](https://developer.salesforce.com/docs/atlas.en-us.218.0.api_rest.meta/api_rest/dome_versions.htm) und wählt basierend auf der Datengröße automatisch zwischen REST-API und Bulk API aus. Bei einem umfangreichen Resultset wird Bulk API verwendet, um eine bessere Leistung zu erzielen. Beim Schreiben von Daten in Salesforce verwendet der Connector [v40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api_asynch.meta/api_asynch/asynch_api_intro.htm) von Bulk API. Sie können die zum Lesen/Schreiben von Daten verwendete API-Version auch explizit über die Eigenschaft [`apiVersion` ](#linked-service-properties) im verknüpften Dienst festlegen.
+Der Salesforce-Connector baut auf der Salesforce REST/Bulk-API auf. Beim Kopieren von Daten aus Salesforce verwendet der Connector standardmäßig [v45](https://developer.salesforce.com/docs/atlas.en-us.218.0.api_rest.meta/api_rest/dome_versions.htm) und wählt basierend auf der Datengröße automatisch zwischen REST-API und Bulk-API. Bei einem umfangreichen Resultset wird die Bulk-API verwendet, um eine bessere Leistung zu erzielen. Beim Schreiben von Daten in Salesforce verwendet der Connector [v40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api_asynch.meta/api_asynch/asynch_api_intro.htm) der Bulk-API. Sie können die zum Lesen/Schreiben von Daten verwendete API-Version auch explizit über die Eigenschaft [`apiVersion` ](#linked-service-properties) im verknüpften Dienst festlegen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -63,14 +63,14 @@ Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren 
 
 Folgende Eigenschaften werden für den mit Salesforce verknüpften Dienst unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type |Die type-Eigenschaft muss auf **Salesforce** festgelegt sein. |Ja |
-| environmentUrl | Geben Sie die URL der Salesforce-Instanz an. <br> – Der Standardwert ist `"https://login.salesforce.com"`. <br> – Um Daten aus einem Sandkasten zu kopieren, geben Sie `"https://test.salesforce.com"` an. <br> – Geben Sie zum Kopieren von Daten aus einer benutzerdefinierten Domäne z.B. `"https://[domain].my.salesforce.com"` an. |Nein  |
+| environmentUrl | Geben Sie die URL der Salesforce-Instanz an. <br> – Der Standardwert ist `"https://login.salesforce.com"`. <br> – Um Daten aus einem Sandkasten zu kopieren, geben Sie `"https://test.salesforce.com"` an. <br> – Geben Sie zum Kopieren von Daten aus einer benutzerdefinierten Domäne z.B. `"https://[domain].my.salesforce.com"` an. |Nein |
 | username |Geben Sie einen Benutzernamen für das Benutzerkonto an. |Ja |
 | password |Geben Sie ein Kennwort für das Benutzerkonto an.<br/><br/>Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). |Ja |
-| securityToken |Geben Sie ein Sicherheitstoken für das Benutzerkonto an. <br/><br/>Allgemeine Informationen zu Sicherheitstoken finden Sie unter [Security and the API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm)(Sicherheit und die API). Das Sicherheits Token kann nur übersprungen werden, wenn Sie die IP-Adresse der Integration Runtime zur Liste [vertrauenswürdige IP-Adressen](https://developer.salesforce.com/docs/atlas.en-us.securityImplGuide.meta/securityImplGuide/security_networkaccess.htm) in Salesforce hinzufügen. Weitere Informationen zur Verwendung von Azure Integration Runtime (Azure IR) finden Sie unter [IP-Adressen von Azure Integration Runtime](azure-integration-runtime-ip-addresses.md).<br/><br/>Anleitungen zum Abrufen und Zurücksetzen eines Sicherheitstokens finden Sie unter [Get a security token](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) (Abrufen eines Sicherheitstokens). Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). |Nein  |
-| apiVersion | Geben Sie die zu verwendende Salesforce REST/Bulk-API-Version an, z. B. `48.0`. Standardmäßig verwendet der Connector [v45](https://developer.salesforce.com/docs/atlas.en-us.218.0.api_rest.meta/api_rest/dome_versions.htm) zum Kopieren von Daten aus Salesforce und [v40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api_asynch.meta/api_asynch/asynch_api_intro.htm) zum Kopieren von Daten in Salesforce. | Nein  |
+| securityToken |Geben Sie ein Sicherheitstoken für das Benutzerkonto an. <br/><br/>Allgemeine Informationen zu Sicherheitstoken finden Sie unter [Security and the API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm)(Sicherheit und die API). Das Sicherheits Token kann nur übersprungen werden, wenn Sie die IP-Adresse der Integration Runtime zur Liste [vertrauenswürdige IP-Adressen](https://developer.salesforce.com/docs/atlas.en-us.securityImplGuide.meta/securityImplGuide/security_networkaccess.htm) in Salesforce hinzufügen. Weitere Informationen zur Verwendung von Azure Integration Runtime (Azure IR) finden Sie unter [IP-Adressen von Azure Integration Runtime](azure-integration-runtime-ip-addresses.md).<br/><br/>Anleitungen zum Abrufen und Zurücksetzen eines Sicherheitstokens finden Sie unter [Get a security token](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) (Abrufen eines Sicherheitstokens). Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). |Nein |
+| apiVersion | Geben Sie die zu verwendende Salesforce REST/Bulk-API-Version an, z. B. `48.0`. Standardmäßig verwendet der Connector [v45](https://developer.salesforce.com/docs/atlas.en-us.218.0.api_rest.meta/api_rest/dome_versions.htm) zum Kopieren von Daten aus Salesforce und [v40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api_asynch.meta/api_asynch/asynch_api_intro.htm) zum Kopieren von Daten in Salesforce. | Nein |
 | connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden soll. Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. | Nein |
 
 **Beispiel: Speichern von Anmeldeinformationen in Data Factory**
@@ -139,7 +139,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definier
 
 Legen Sie zum Kopieren von Daten aus und nach Salesforce die type-Eigenschaft des Datasets auf **SalesforceObject** fest. Die folgenden Eigenschaften werden unterstützt.
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf **SalesforceObject** festgelegt sein.  | Ja |
 | objectApiName | Der Name des Salesforce-Objekts, aus dem Daten abgerufen werden sollen. | Quelle: Nein, Senke: Ja |
@@ -171,7 +171,7 @@ Legen Sie zum Kopieren von Daten aus und nach Salesforce die type-Eigenschaft de
 >[!NOTE]
 >Abwärtskompatibilität: Wenn Sie beim Kopieren von Daten aus Salesforce das vorherige Dataset vom Typ „RelationalTable“ verwenden, funktioniert dieses weiterhin. Es wird jedoch eine Empfehlung angezeigt, stattdessen den neuen Typ „SalesforceObject“ zu verwenden.
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft des Datasets muss auf **RelationalTable** festgelegt werden. | Ja |
 | tableName | Name der Tabelle in Salesforce. | Nein (wenn „query“ in der Aktivitätsquelle angegeben ist) |
@@ -184,7 +184,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren vo
 
 Legen Sie zum Kopieren von Daten aus Salesforce den Quelltyp in der Kopieraktivität auf **SalesforceSource** fest. Die folgenden Eigenschaften werden im Abschnitt **source** der Kopieraktivität unterstützt.
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf **SalesforceSource** festgelegt werden. | Ja |
 | Abfrage |Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten. Sie können eine Abfrage vom Typ [Salesforce Object Query Language (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) oder eine SQL-92-Abfrage verwenden. Weitere Tipps finden Sie im Abschnitt [Tipps zu Abfragen](#query-tips). Wenn die Abfrage nicht angegeben ist, werden alle Daten des Salesforce-Objekts abgerufen, die im Dataset unter „objectApiName“ angegeben sind. | Nein (wenn „objectApiName“ im Dataset angegeben ist) |
@@ -234,13 +234,14 @@ Legen Sie zum Kopieren von Daten aus Salesforce den Quelltyp in der Kopieraktivi
 
 Legen Sie zum Kopieren von Daten nach Salesforce den Senkentyp in der Kopieraktivität auf **SalesforceSink** fest. Die folgenden Eigenschaften werden im Abschnitt **sink** der Kopieraktivität unterstützt.
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft der Senke der Kopieraktivität muss auf **SalesforceSink** festgelegt werden. | Ja |
 | writeBehavior | Das Schreibverhalten für den Vorgang.<br/>Zulässige Werte: **Insert** und **Upsert**. | Nein (Standardwert ist „Insert“) |
 | externalIdFieldName | Der Name des externen ID-Felds für den upsert-Vorgang. Das angegebene Feld muss als „Externes ID-Feld“ im Salesforce-Objekt definiert werden. Es kann keine NULL-Werte in den entsprechenden Eingabedaten haben. | Ja für „Upsert“ |
 | writeBatchSize | Die Zeilenanzahl der Daten, die in jedem Batch in Salesforce geschrieben werden. | Nein (Standardwert ist 5000) |
 | ignoreNullValues | Gibt an, ob NULL-Werte aus Eingabedaten während eines Schreibvorgangs ignoriert werden sollen.<br/>Zulässige Werte sind **true** und **false**.<br>- **true**: Daten im Zielobjekt bleiben unverändert, wenn Sie einen upsert- oder update-Vorgang ausführen. Fügt beim Ausführen eines insert-Vorgangs einen definierten Standardwert ein.<br/>- **false**: Daten im Zielobjekt werden auf NULL aktualisiert, wenn Sie einen upsert- oder update-Vorgang ausführen. Fügt beim Ausführen eines insert-Vorgangs einen NULL-Wert ein. | Nein (Standardwert ist „false“) |
+| maxConcurrentConnections |Die Obergrenze gleichzeitiger Verbindungen mit dem Datenspeicher während der Aktivitätsausführung. Geben Sie diesen Wert nur an, wenn Sie die Anzahl der gleichzeitigen Verbindungen begrenzen möchten.| Nein |
 
 **Beispiel: Salesforce-Senke in einer Kopieraktivität**
 

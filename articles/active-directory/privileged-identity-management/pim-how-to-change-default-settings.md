@@ -14,12 +14,12 @@ ms.date: 02/28/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06eb7e8d1be2e58fd6cf87167a585a2ffeee0d7f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 676fdf264cb930069425a330c3da9cd753bf8e0a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97708482"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105567032"
 ---
 # <a name="configure-azure-ad-role-settings-in-privileged-identity-management"></a>Konfigurieren von Einstellungen für Azure AD-Rollen in PIM
 
@@ -64,14 +64,14 @@ Bei der Konfiguration von Einstellungen für eine Rolle können Sie für jeden Z
 
 Sie können beim Typ **Berechtigt** eine dieser Optionen für die Zuweisungsdauer wählen:
 
-| | |
+| | Beschreibung |
 | --- | --- |
 | **Dauerhafte berechtigte Zuweisung zulassen** | Globale Administratoren und Administratoren mit einer privilegierten Rolle können dauerhafte berechtigte Zuweisungen zuweisen. |
 | **Berechtigte Zuweisungen laufen ab nach** | Globale Administratoren und Administratoren mit einer privilegierten Rolle können anfordern, dass alle berechtigten Zuweisungen ein bestimmtes Start- und Enddatum haben. |
 
 Beim Typ **Aktiv** können Sie eine dieser Optionen für die Zuweisungsdauer wählen:
 
-| | |
+| | Beschreibung |
 | --- | --- |
 | **Permanente aktive Zuweisung zulassen** | Globale Administratoren und Administratoren mit einer privilegierten Rolle können dauerhafte aktive Zuweisungen zuweisen. |
 | **Aktive Zuweisungen laufen ab nach** | Globale Administratoren und Administratoren mit einer privilegierten Rolle können anfordern, dass alle aktiven Zuweisungen ein bestimmtes Start- und Enddatum haben. |

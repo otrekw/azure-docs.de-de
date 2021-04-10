@@ -2,7 +2,7 @@
 title: Sicherung und Wiederherstellung – Momentaufnahmen (georedundant)
 description: Hier erfahren Sie, wie Sicherung und Wiederherstellung in einem dedizierten Azure Synapse Analytics-SQL-Pool funktionieren. Verwenden Sie Sicherungen, um Ihr Data Warehouse mithilfe eines Wiederherstellungspunkts in der primären Region wiederherzustellen. Mithilfe von georedundanten Sicherungen können Sie eine Wiederherstellung in einer anderen geografischen Region ausführen.
 services: synapse-analytics
-author: kevinvngo
+author: joannapea
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
@@ -11,12 +11,12 @@ ms.date: 11/13/2020
 ms.author: joanpo
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019"
-ms.openlocfilehash: 8fd64023b9c07e8dd426b2b51916db4515a5405a
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: 0fa6777dc5b587150f630ed8ccc110d16448cc21
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102451505"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104602246"
 ---
 # <a name="backup-and-restore-in-azure-synapse-dedicated-sql-pool"></a>Sichern und Wiederherstellen in einem dedizierten Azure Synapse SQL-Pool
 
@@ -48,7 +48,7 @@ order by run_id desc
 Dieses Feature ermöglicht das manuelle Auslösen von Momentaufnahmen, um vor und nach umfangreichen Änderungen Wiederherstellungspunkte Ihres Data Warehouse zu erstellen. Diese Funktion gewährleistet die logische Konsistenz von Wiederherstellungspunkten und sorgt somit für zusätzlichen Datenschutz und eine schnelle Wiederherstellung bei Workloadunterbrechungen oder Benutzerfehlern. Benutzerdefinierte Wiederherstellungspunkte sind sieben Tage lang verfügbar und werden automatisch für Sie gelöscht. Sie können die Aufbewahrungsdauer für benutzerdefinierte Wiederherstellungspunkte nicht ändern. **42 benutzerdefinierte Wiederherstellungspunkte** werden jeweils garantiert. Vor der Erstellung eines weiteren Wiederherstellungspunkts müssen also erst andere Wiederherstellungspunkte [gelöscht](/powershell/module/azurerm.sql/remove-azurermsqldatabaserestorepoint) werden. Sie können Momentaufnahmen zum Erstellen benutzerdefinierter Wiederherstellungspunkte über [PowerShell](/powershell/module/az.sql/new-azsqldatabaserestorepoint?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.jsont#examples) oder das Azure-Portal auslösen.
 
 > [!NOTE]
-> Wenn Wiederherstellungspunkte nach sieben Tagen noch zur Verfügung stehen sollen, stimmen Sie [hier](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/35114410-user-defined-retention-periods-for-restore-points) für diese Funktion ab. Sie können auch einen benutzerdefinierten Wiederherstellungspunkt erstellen und auf der Grundlage dieses neuen Wiederherstellungspunkts ein neues Data Warehouse wiederherstellen. Nach der Wiederherstellung ist der dedizierte SQL-Pool online, und Sie können ihn unbegrenzt anhalten, um Computekosten zu sparen. Für die angehaltene Datenbank fallen Speichergebühren nach dem Azure Storage Premium-Tarif an. Falls Sie eine aktive Kopie des wiederhergestellten Data Warehouse benötigen, können Sie die Datenbank fortsetzen. Dies sollte nur wenige Minuten dauern.
+> Wenn Wiederherstellungspunkte nach sieben Tagen noch zur Verfügung stehen sollen, stimmen Sie [hier](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/35114410-user-defined-retention-periods-for-restore-points) für diese Funktion ab. Sie können auch einen benutzerdefinierten Wiederherstellungspunkt erstellen und auf der Grundlage dieses neuen Wiederherstellungspunkts ein neues Data Warehouse wiederherstellen. Nach der Wiederherstellung ist der dedizierte SQL-Pool online, und Sie können ihn unbegrenzt anhalten, um Computekosten zu sparen. Für die angehaltene Datenbank fallen Speichergebühren gemäß Azure Synapse-Speichertarif an. Falls Sie eine aktive Kopie des wiederhergestellten Data Warehouse benötigen, können Sie die Datenbank fortsetzen. Dies sollte nur wenige Minuten dauern.
 
 ### <a name="restore-point-retention"></a>Aufbewahrung des Wiederherstellungspunkts
 

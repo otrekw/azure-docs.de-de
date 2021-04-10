@@ -12,10 +12,10 @@ ms.author: gaursa
 ms.reviewer: igorstan
 ms.custom: azure-synapse
 ms.openlocfilehash: 04bd4767445f9378aedb303e63bf463f44e40034
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104602195"
 ---
 # <a name="data-loading-strategies-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Strategien zum Laden von Daten für einen dedizierten SQL-Pool in Azure Synapse Analytics

@@ -8,12 +8,12 @@ ms.date: 11/19/2020
 ms.topic: conceptual
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 9549e6ea30be0cd9eb1a8c200a5af4a4721793a6
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: fc9cd95063f84a9af7f989af9a65ce8f99852dc1
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102034675"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103490975"
 ---
 # <a name="about-the-query-language-for-azure-digital-twins"></a>Abfragesprache für Azure Digital Twins
 
@@ -85,7 +85,7 @@ Dieser Abschnitt beschreibt Einschränkungen der Abfragesprache.
 * In der `FROM`-Anweisung werden keine Unterabfragen unterstützt.
 * `OUTER JOIN`-Semantik wird nicht unterstützt. Das bedeutet, dass die gesamte „Zeile“ aus dem Ausgaberesultset entfernt wird, wenn die Beziehung den Rang null aufweist.
 * Die Durchlauftiefe für den Graphen ist auf fünf `JOIN`-Ebenen pro Abfrage beschränkt.
-* Die Quelle für `JOIN`-Vorgänge ist eingeschränkt: Die Abfrage muss die Zwillinge deklarieren, in denen die Abfrage beginnt.
+* Beziehungen in Azure Digital Twins können nicht als unabhängige Entitäten abgefragt werden. Sie müssen zudem Informationen über den Quellzwilling angeben, von dem die Beziehung stammt. Dies bedeutet, dass gewisse Einschränkungen für den `JOIN`-Vorgang bestehen, mit dem Beziehungen abgefragt werden. So wird sichergestellt, dass die Abfrage den oder die Zwillinge deklariert, in denen die Abfrage beginnt. Beispiele hierfür finden Sie unter [*Abfragen nach Beziehung*](how-to-query-graph.md#query-by-relationship) im Artikel *Abfragen des Zwillingsdiagramms von Azure Digital Twins*.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,5 +1,5 @@
 ---
-title: Benutzerdefinierte Rollenberechtigungen für Zugriffszuweisungen für Unternehmens-Apps – Azure Active Directory | Microsoft-Dokumentation
+title: Erstellen benutzerdefinierter Rollen zum Verwalten von Unternehmens-Apps in Azure Active Directory
 description: Erstellen und Zuweisen benutzerdefinierter Azure AD-Rollen für den Zugriff auf Unternehmens-Apps in Azure Active Directory
 services: active-directory
 author: rolyon
@@ -13,14 +13,14 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3cb65503ffab610f9545acb313f7284ffb11ed1
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 1a76e2d37e9dcdd285a8608fdbfd715bfb834eb8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98741144"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103467747"
 ---
-# <a name="assign-custom-roles-to-manage-enterprise-apps-in-azure-active-directory"></a>Zuweisen benutzerdefinierter Rollen zum Verwalten von Unternehmens-Apps in Azure Active Directory
+# <a name="create-custom-roles-to-manage-enterprise-apps-in-azure-active-directory"></a>Erstellen benutzerdefinierter Rollen zum Verwalten von Unternehmens-Apps in Azure Active Directory
 
 In diesem Artikel wird erläutert, wie Sie eine benutzerdefinierte Rolle mit Berechtigungen zum Verwalten von Unternehmens-App-Zuweisungen für Benutzer und Gruppen in Azure Active Directory (Azure AD) erstellen. Erläuterungen der Elemente von Rollenzuweisungen und der Bedeutung von Begriffen wie Untertyp, Berechtigung und Eigenschaftensatz finden Sie in der [Übersicht über benutzerdefinierte Rollen](custom-overview.md).
 
@@ -89,18 +89,16 @@ Ausführliche Informationen finden Sie unter [Erstellen und Zuweisen einer benut
 Installieren Sie zunächst das Azure AD PowerShell-Modul aus dem [PowerShell-Katalog](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.17). Importieren Sie anschließend das Azure AD PowerShell-Vorschaumodul mithilfe des folgenden Befehls:
 
 ```powershell
-PowerShell
-import-module azureadpreview
+Import-Module -Name AzureADPreview
 ```
 
 Gleichen Sie die Version, die durch den folgenden Befehl zurückgegeben wird, mit der hier aufgeführten Version ab, um sich zu vergewissern, dass das Modul verwendungsbereit ist:
 
 ```powershell
-PowerShell
-get-module azureadpreview
+Get-Module -Name AzureADPreview
   ModuleType Version      Name                         ExportedCommands
   ---------- ---------    ----                         ----------------
-  Binary     2.0.0.115    azureadpreview               {Add-AzureADAdministrati...}
+  Binary     2.0.0.115    AzureADPreview               {Add-AzureADAdministrati...}
 ```
 
 ### <a name="create-a-custom-role"></a>Erstellen einer benutzerdefinierten Rolle

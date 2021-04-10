@@ -8,12 +8,12 @@ ms.author: parkerra
 ms.date: 11/20/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 3048eb1ca7f9312a43bc1ab5885bf19d4c2e7931
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 3ed9b18144bb727af751fbcbbdd5cc6631afc40f
+ms.sourcegitcommit: 91361cbe8fff7c866ddc4835251dcbbe2621c055
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185386"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "105727228"
 ---
 # <a name="tutorial-share-spatial-anchors-across-sessions-and-devices"></a>Tutorial: Sitzungs- und geräteübergreifendes Freigeben von Raumankern
 
@@ -86,7 +86,7 @@ Klicken Sie auf **OK**.
 
 Öffnen Sie Visual Studio Code und dann das Projekt im Ordner *Sharing\SharingServiceSample*. 
 
-Wenn Sie den Freigabedienst über Visual Studio Code bereitstellen möchten, befolgen Sie die Anweisungen unter <a href="/aspnet/core/tutorials/publish-to-azure-webapp-using-vscode?view=aspnetcore-2.2#open-it-with-visual-studio-code" target="_blank">Veröffentlichen einer ASP.NET Core-App in Azure mit Visual Studio Code</a>. Beginnen Sie mit dem Abschnitt „Öffnen mit Visual Studio Code“. Erstellen Sie kein weiteres ASP.NET-Projekt wie in den obigen Schritten beschrieben, da Sie bereits über das Projekt für die Bereitstellung und Veröffentlichung verfügen: SharingServiceSample.
+Wenn Sie den Freigabedienst über Visual Studio Code bereitstellen möchten, befolgen Sie die Anweisungen unter <a href="/aspnet/core/tutorials/publish-to-azure-webapp-using-vscode?view=aspnetcore-2.2&preserve-view=true#open-it-with-visual-studio-code" target="_blank">Veröffentlichen einer ASP.NET Core-App in Azure mit Visual Studio Code</a>. Beginnen Sie mit dem Abschnitt „Öffnen mit Visual Studio Code“. Erstellen Sie kein weiteres ASP.NET-Projekt wie in den obigen Schritten beschrieben, da Sie bereits über das Projekt für die Bereitstellung und Veröffentlichung verfügen: SharingServiceSample.
 
 ---
 

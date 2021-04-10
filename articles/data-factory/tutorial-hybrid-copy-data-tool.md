@@ -6,13 +6,13 @@ author: nabhishek
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 02/18/2021
-ms.openlocfilehash: 43097b520297ff17350620faff3da884dcbd2073
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/26/2021
+ms.openlocfilehash: 70905d23b61ee9fee319bae41aeb421d808fa4d0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104606717"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105566760"
 ---
 # <a name="copy-data-from-a-sql-server-database-to-azure-blob-storage-by-using-the-copy-data-tool"></a>Kopieren von Daten aus einer SQL Server-Datenbank in Azure Blob Storage mithilfe des Tools zum Kopieren von Daten
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -87,21 +87,6 @@ In diesem Tutorial verwenden Sie Name und Schlüssel Ihres Speicherkontos. Den N
 
 
 1. Kopieren Sie in den Feldern **Speicherkontoname** und **key1** die Werte, und fügen Sie sie zur späteren Verwendung im Tutorial in einen Editor ein.
-
-#### <a name="create-the-adftutorial-container"></a>Erstellen des Containers „adftutorial“
-In diesem Abschnitt erstellen Sie einen Blobcontainer mit dem Namen **adftutorial** in Ihrer Blob Storage-Instanz.
-
-1. Wechseln Sie im Fenster **Speicherkonto** zu **Übersicht**, und wählen Sie die Option **Blobs**.
-
-1. Wählen Sie im Fenster **Blobs** die Option **+ Container** aus.
-
-1. Geben Sie im Fenster **Neuer Container** unter **Name** den Namen **adftutorial** ein, und wählen Sie **OK** aus.
-
-1. Wählen Sie in der Liste mit den Containern die Option **adftutorial**.
-
-
-1. Lassen Sie das Fenster **Container** für **adftutorial** geöffnet. Sie überprüfen darin am Ende des Tutorials die Ausgabe. Data Factory erstellt den Ausgabeordner automatisch in diesem Container, damit Sie ihn nicht selbst erstellen müssen.
-
 
 ## <a name="create-a-data-factory"></a>Erstellen einer Data Factory
 

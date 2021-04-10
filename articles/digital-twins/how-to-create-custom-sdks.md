@@ -1,39 +1,44 @@
 ---
-title: Erstellen von benutzerdefinierten SDKs für Azure Digital Twins mit AutoRest
+title: Erstellen von SDKs mit benutzerdefinierter Sprache mithilfe von AutoRest
 titleSuffix: Azure Digital Twins
-description: Erfahren Sie, wie Sie benutzerdefinierte SDKs generieren, um Azure Digital Twins mit anderen Sprachen als C# zu verwenden.
+description: Hier erfahren Sie, wie Sie mithilfe von AutoRest SDKs für eine benutzerdefinierte Sprache generieren, um Code für Azure Digital Twins in anderen Sprachen zu schreiben, für die bisher keine SDKs veröffentlicht wurden.
 author: baanders
 ms.author: baanders
-ms.date: 4/24/2020
+ms.date: 3/9/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.custom: devx-track-js
-ms.openlocfilehash: e7239bfdca1dc464048c0db08488029b0868deb5
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.custom:
+- devx-track-js
+- contperf-fy21q3
+ms.openlocfilehash: 35cf54199f8f2c187ad397c21fb941111f07c4a3
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102049796"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102561839"
 ---
-# <a name="create-custom-sdks-for-azure-digital-twins-using-autorest"></a>Erstellen von benutzerdefinierten SDKs für Azure Digital Twins mit AutoRest
+# <a name="create-custom-language-sdks-for-azure-digital-twins-using-autorest"></a>Erstellen von SDKs für eine benutzerdefinierte Sprache für Azure Digital Twins mit AutoRest
 
-Zurzeit sind die einzigen veröffentlichten Datenebenen-SDKs für die Interaktion mit den APIs für Azure Digital Twins für .NET (C#), JavaScript und Java bestimmt. Informationen zum diesen SDKs und die APIs im Allgemeinen finden Sie unter [*Vorgehensweise: Verwenden der Azure Digital Twins-APIs und SDKs*](how-to-use-apis-sdks.md). Wenn Sie in einer anderen Sprache arbeiten, erfahren Sie in diesem Artikel, wie Sie mithilfe von AutoRest ein eigenes Datenebenen-SDK in der Sprache Ihrer Wahl generieren.
+Wenn Sie mit Azure Digital Twins arbeiten müssen und eine Sprache verwenden, für die es kein [veröffentlichtes Azure Digital Twins-SDK](how-to-use-apis-sdks.md) gibt, erfahren Sie in diesem Artikel, wie Sie mit AutoRest Ihr eigenes SDK in der Sprache Ihrer Wahl generieren können. 
 
->[!NOTE]
-> Wenn Sie möchten, können Sie auch AutoRest verwenden, um ein Steuerungsebenen-SDK zu generieren. Führen Sie dazu die Schritte in diesem Artikel mithilfe der neuesten **Swagger-Datei für die Steuerungsebene** (OpenAPI) im [Swagger-Ordner der Steuerungsebene](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/) anstelle der Datei für die Datenebene aus.
+In den Beispielen in diesem Artikel wird die Erstellung eines [Datenebenen-SDK](how-to-use-apis-sdks.md#overview-data-plane-apis) gezeigt. Mit dieser Vorgehensweise kann jedoch auch ein [Steuerungsebenen-SDK](how-to-use-apis-sdks.md#overview-control-plane-apis) generiert werden.
 
-## <a name="set-up-your-machine"></a>Einrichten Ihres Computers
+## <a name="prerequisites"></a>Voraussetzungen
 
-Zum Generieren eines SDK benötigen Sie Folgendes:
-* [AutoRest](https://github.com/Azure/autorest), Version 2.0.4413 (Version 3 wird derzeit nicht unterstützt)
-* [Node.js](https://nodejs.org) als erforderliche Komponente für AutoRest
-* Die neueste **Azure Digital Twins-Swagger-Datei für die Datenebene** (OpenAPI) im [Swagger-Ordner auf Datenebene](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins) und die zugehörigen Ordner mit Beispielen.  Laden Sie die Swagger-Datei *digitaltwins.json* und den zugehörigen Ordner mit Beispielen auf Ihren lokalen Computer herunter.
+Zum Generieren eines SDK müssen Sie zuerst die folgenden Einrichtungsschritte auf Ihrem lokalen Computer ausführen:
+* Installieren Sie [**AutoRest**](https://github.com/Azure/autorest), Version 2.0.4413 (Version 3 wird derzeit nicht unterstützt).
+* Installieren Sie [**Node.js**](https://nodejs.org). Dies ist eine Voraussetzung für die Verwendung von AutoRest.
+* Installieren Sie [**Visual Studio**](https://visualstudio.microsoft.com/downloads/).
+* Laden Sie im [Swagger-Ordner für die Datenebene](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins) die neueste **Swagger-Datei für die Datenebene** von Azure Digital Twins (OpenAPI) sowie die zugehörigen Ordner mit Beispielen herunter. Die Swagger-Datei ist *digitaltwins.json*.
 
-Sobald der Computer alle Voraussetzungen gemäß der obigen Liste erfüllt, können Sie mit AutoRest das SDK erstellen.
+>[!TIP]
+> Wenn Sie stattdessen ein **Steuerungsebenen-SDK** erstellen möchten, führen Sie die Schritte in diesem Artikel mit der neuesten **Swagger-Datei für die Steuerungsebene** (OpenAPI) im [Swagger-Ordner für die Steuerungsebene](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/) statt dem für die Datenebene aus.
 
-## <a name="create-the-sdk-with-autorest"></a>Erstellen des SDK mit AutoRest 
+Wenn Ihr Computer über alles auf der obigen Liste verfügt, können Sie mit AutoRest ein SDK erstellen.
 
-Wenn Sie Node.js installiert haben, können Sie diesen Befehl ausführen, um sicherzustellen, dass Sie die richtige Version von AutoRest installiert haben:
+## <a name="create-the-sdk-using-autorest"></a>Erstellen des SDK mit AutoRest 
+
+Wenn Sie Node.js installiert haben, können Sie den folgenden Befehl ausführen, um sicherzustellen, dass die richtige Version von AutoRest installiert ist:
 ```cmd/sh
 npm install -g autorest@2.0.4413
 ```
@@ -51,11 +56,11 @@ Daraufhin wird in Ihrem Arbeitsverzeichnis ein neuer Ordner mit dem Namen *Digit
 
 AutoRest unterstützt eine breite Palette von Sprachcodegeneratoren.
 
-## <a name="add-the-sdk-to-a-visual-studio-project"></a>Hinzufügen des SDK zu einem Visual Studio-Projekt
+## <a name="make-the-sdk-into-a-class-library"></a>Erstellen einer auf dem SDK basierenden Klassenbibliothek
 
-Sie können die von AutoRest generierten Dateien direkt in eine .NET-Projektmappe einschließen. Wahrscheinlich möchten Sie das Azure Digital Twins SDK jedoch in mehrere separate Projekte (Ihre Client-Apps, Azure Functions-Apps usw.) einbinden. Aus diesem Grund kann es hilfreich sein, ein separates Projekt (eine .NET-Klassenbibliothek) aus den generierten Dateien zu erstellen. Sie können dieses Klassenbibliotheksprojekt dann als Projektverweis in mehrere Projektmappen einbinden.
+Sie können die von AutoRest generierten Dateien direkt in eine .NET-Projektmappe einschließen. Wahrscheinlich möchten Sie jedoch das Azure Digital Twins-SDK in mehrere separate Projekte einbinden (z. B. Ihre Client-Apps und Azure Functions-Apps). Aus diesem Grund kann es hilfreich sein, ein separates Projekt (eine .NET-Klassenbibliothek) aus den generierten Dateien zu erstellen. Sie können dieses Klassenbibliotheksprojekt dann als Projektverweis in mehrere Projektmappen einbinden.
 
-Dieser Abschnitt enthält Anweisungen zum Erstellen des SDK als Klassenbibliothek, wobei es sich um ein eigenes Projekt handelt, das in andere Projekte eingebunden werden kann. Diese Schritte basieren auf **Visual Studio** ([hier](https://visualstudio.microsoft.com/downloads/) können Sie die neueste Version installieren).
+Dieser Abschnitt enthält Anweisungen zum Erstellen des SDK als Klassenbibliothek, wobei es sich um ein eigenes Projekt handelt, das in andere Projekte eingebunden werden kann. Für die Schritte in diesem Abschnitt benötigen Sie **Visual Studio**.
 
 Im Folgenden werden die Schritte aufgeführt:
 
@@ -81,7 +86,7 @@ Um diese Verweise hinzuzufügen, öffnen Sie *Tools > NuGet-Paket-Manager > NuGe
 
 Sie können nun das Projekt erstellen und als Projektverweis in eine beliebige Azure Digital Twins-Anwendung einschließen, die Sie schreiben.
 
-## <a name="general-guidelines-for-generated-sdks"></a>Allgemeine Richtlinien für generierte SDKs
+## <a name="tips-for-using-the-sdk"></a>Tipps für die Verwendung des SDK
 
 Dieser Abschnitt enthält allgemeine Informationen und Richtlinien zur Verwendung des generierten SDK.
 

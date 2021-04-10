@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 03/15/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 39896d88aeab4c592c74ded2d6edddfb46d2d203
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 3c5df0c4112f07a465d38e789b1401132ed25931
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448284"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103488804"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-idme-account-using-azure-active-directory-b2c"></a>Einrichten der Registrierung und Anmeldung mit einem ID.me-Konto mithilfe von Azure Active Directory B2C
 
@@ -45,7 +45,7 @@ Wenn Sie die Anmeldung für Benutzer mit einem ID.me-Konto in Azure Active Dire
 1. Wählen Sie **Meine Anwendungen anzeigen** und dann **Weiter** aus.
 1. Wählen Sie **Neu erstellen** aus.
     1. Geben Sie einen **Namen** und einen **Anzeigenamen** ein.
-    1. Geben Sie im Feld **Umleitungs-URI** die Zeichenfolge `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` ein. Ersetzen Sie `your-tenant-name` durch den Namen Ihres Mandanten. 
+    1. Geben Sie im Feld **Umleitungs-URI** die Zeichenfolge `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` ein. Bei Verwendung einer [benutzerdefinierten Domäne](custom-domain.md) geben Sie `https://your-domain-name/your-tenant-name.onmicrosoft.com/oauth2/authresp` ein. Ersetzen Sie `your-tenant-name` durch den Namen Ihres Mandanten und `your-domain-name` durch Ihre benutzerdefinierte Domäne. 
 1. Klicken Sie auf **Continue**(Weiter).
 1. Kopieren Sie die Werte für **Client ID** und **Client Secret**. Sie benötigen beide Angaben, um den Identitätsanbieter Ihrem Mandanten hinzuzufügen.
 

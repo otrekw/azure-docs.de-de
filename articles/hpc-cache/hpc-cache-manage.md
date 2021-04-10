@@ -4,14 +4,14 @@ description: Verwalten und Aktualisieren von Azure HPC Cache im Azure-Portal ode
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 08/31/2020
+ms.date: 03/08/2021
 ms.author: v-erkel
-ms.openlocfilehash: 40d091782f37a32b75659cd274e49798dbe527cb
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: b34beb65bb8c4136887651d8365c937b17718572
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100590785"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103471884"
 ---
 # <a name="manage-your-cache"></a>Verwalten Ihres Caches
 
@@ -254,6 +254,20 @@ Auf der Übersichtsseite werden Diagramme für einige grundlegende Cachestatisti
 ![Screenshot: drei Liniendiagramme mit den oben genannten Statistiken für einen Beispielcache](media/hpc-cache-overview-stats.png)
 
 Diese Diagramme sind Bestandteil der integrierten Überwachungs- und Analysetools von Azure. Weitere Tools und Warnungen sind auf den Seiten unter der Überschrift **Überwachung** auf der Seitenleiste des Portals verfügbar. Weitere Informationen finden Sie im Abschnitt zum Azure-Portal in der [Dokumentation zur Überwachung mit Azure Monitor](../azure-monitor/essentials/monitor-azure-resource.md#monitoring-in-the-azure-portal).
+
+## <a name="view-warnings"></a>Warnungen anzeigen
+
+Wenn der Cache in einen fehlerhaften Zustand wechselt, überprüfen Sie die Seite **Warnungen**. Auf dieser Seite werden Benachrichtigungen der Cachesoftware angezeigt, die Ihnen möglicherweise helfen, den Zustand der Software zu verstehen.
+
+Diese Benachrichtigungen werden nicht im Aktivitätsprotokoll angezeigt, da sie nicht vom Azure-Portal gesteuert werden. Sie sind häufig mit benutzerdefinierten Einstellungen verknüpft, die Sie unter Umständen vorgenommen haben.
+
+Folgende Warnungen können bspw. angezeigt werden:
+
+* Der Cache kann den NTP-Server nicht erreichen.
+* Der Cache konnte die Benutzernamen von erweiterten Gruppen nicht herunterladen.
+* Benutzerdefinierte DNS-Einstellungen wurden für ein Speicherziel geändert.
+
+![Screenshot der Seite „Überwachung > Warnungen“ mit der Meldung, dass die Benutzernamen von erweiterten Gruppen nicht heruntergeladen werden konnten](media/warnings-page.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

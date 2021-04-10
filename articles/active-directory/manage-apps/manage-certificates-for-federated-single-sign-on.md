@@ -15,12 +15,12 @@ ms.date: 04/04/2019
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9b6e81fd090a625ec7ac86963cc9d5e66f5010e
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 63054b18589cdcc2d950d70452b4f982c324a6c3
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99259218"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104603997"
 ---
 # <a name="manage-certificates-for-federated-single-sign-on-in-azure-active-directory"></a>Verwalten von Zertifikaten für die einmalige Verbundanmeldung in Azure Active Directory
 
@@ -34,7 +34,7 @@ Wenn Sie eine neue Anwendung aus dem Katalog hinzufügen und eine SAML-basierte 
 
 ![Downloadoptionen für aktives SAML-Signaturzertifikat](./media/manage-certificates-for-federated-single-sign-on/active-certificate-download-options.png)
 
-Sie können auch ein aktives oder inaktives Zertifikat herunterladen, indem Sie neben der Überschrift **SAML-Signaturzertifikat** das Symbol **Bearbeiten** (Stiftsymbol) auswählen, wodurch die Seite **SAML-Signaturzertifikat** angezeigt wird. Wählen Sie die Auslassungspunkte ( **...** ) neben dem Zertifikat aus, das Sie herunterladen möchten, und wählen Sie dann das gewünschte Zertifikatformat aus. Als zusätzliche Option können Sie das Zertifikat im Privacy Enhanced Mail-Format (PEM) herunterladen. Dieses Format ist mit Base64 identisch, weist jedoch die Dateinamenerweiterung **PEM** auf, die in Windows nicht als Zertifikatformat erkannt wird.
+Sie können auch ein aktives oder inaktives Zertifikat herunterladen, indem Sie neben der Überschrift **SAML-Signaturzertifikat** das Symbol **Bearbeiten** (Stiftsymbol) auswählen, wodurch die Seite **SAML-Signaturzertifikat** angezeigt wird. Wählen Sie die Auslassungspunkte (**...**) neben dem Zertifikat aus, das Sie herunterladen möchten, und wählen Sie dann das gewünschte Zertifikatformat aus. Als zusätzliche Option können Sie das Zertifikat im Privacy Enhanced Mail-Format (PEM) herunterladen. Dieses Format ist mit Base64 identisch, weist jedoch die Dateinamenerweiterung **PEM** auf, die in Windows nicht als Zertifikatformat erkannt wird.
 
 ![Downloadoptionen für SAML-Signaturzertifikat (aktives und inaktives Zertifikat)](./media/manage-certificates-for-federated-single-sign-on/all-certificate-download-options.png)
 
@@ -77,7 +77,7 @@ Als Nächstes müssen Sie das neue Zertifikat im richtigen Format herunterladen,
 
 1. Beachten Sie in den Anweisungen das für den Zertifikatupload erforderliche Codierungsformat.
 1. Befolgen Sie die weiter oben im Abschnitt [Automatisch generiertes Zertifikat für Katalog- und Nicht-Kataloganwendungen](#auto-generated-certificate-for-gallery-and-non-gallery-applications) aufgeführten Anweisungen. In diesem Schritt wird das Zertifikat in dem für den Upload durch die Anwendung erforderlichen Codierungsformat heruntergeladen.
-1. Wenn Sie einen Rollover auf das neue Zertifikat ausführen möchten, wechseln Sie zurück zur Seite **SAML-Signaturzertifikat**, und wählen Sie in der neu gespeicherten Zertifikatzeile die Auslassungspunkte ( **...** ) aus, und wählen Sie dann **Zertifikat als aktiv festlegen** aus. Der Status des neuen Zertifikats ändert sich in **Aktiv**, und der Status des zuvor aktiven Zertifikats ändert sich in **Inaktiv**.
+1. Wenn Sie einen Rollover auf das neue Zertifikat ausführen möchten, wechseln Sie zurück zur Seite **SAML-Signaturzertifikat**, und wählen Sie in der neu gespeicherten Zertifikatzeile die Auslassungspunkte (**...**) aus, und wählen Sie dann **Zertifikat als aktiv festlegen** aus. Der Status des neuen Zertifikats ändert sich in **Aktiv**, und der Status des zuvor aktiven Zertifikats ändert sich in **Inaktiv**.
 1. Fahren Sie mit den zuvor angezeigten Konfigurationsanweisungen für die SAML-basierte Anmeldung für die Anwendung fort, um das SAML-Signaturzertifikat im richtigen Codierungsformat hochzuladen.
 
 ## <a name="add-email-notification-addresses-for-certificate-expiration"></a>Hinzufügen von E-Mail-Adressen für Benachrichtigungen für den Zertifikatablauf
@@ -90,6 +90,8 @@ Azure AD sendet 60, 30 und 7 Tage vor Ablauf des SAML-Zertifikats eine Benachric
 1. Wählen Sie für jede zu löschende E-Mail-Adresse das Symbol **Löschen** (den Papierkorb) neben der jeweiligen E-Mail-Adresse aus.
 1. Wählen Sie **Speichern** aus.
 
+Sie können der Benachrichtigungsliste bis zu 5 E-Mail-Adressen hinzufügen (einschließlich der E-Mail-Adresse des Administrators, der die Anwendung hinzugefügt hat). Wenn Sie mehr Personen Benachrichtigen möchten, verwenden Sie die E-Mail-Verteilerliste.
+
 Sie erhalten die Benachrichtigungs-E-Mail von aadnotification@microsoft.com. Um zu verhindern, dass die E-Mail in Ihrem Spamordner landet, müssen Sie die E-Mail-Adresse zu Ihren Kontakten hinzufügen.
 
 ## <a name="renew-a-certificate-that-will-soon-expire"></a>Erneuern eines in Kürze ablaufenden Zertifikats
@@ -99,7 +101,7 @@ Wenn ein Zertifikat in Kürze abläuft, können Sie es mithilfe eines Verfahrens
 1. Befolgen Sie die weiter oben im Abschnitt [Erstellen eines neuen Zertifikats](#create-a-new-certificate) aufgeführten Anweisungen, und verwenden Sie dabei ein Datum, das sich mit dem des vorhandenen Zertifikats überschneidet. Das Datum beschränkt die durch den Ablauf des Zertifikats verursachten Ausfallzeiten.
 1. Wenn die Anwendung einen automatischen Rollover für das Zertifikat ausführen kann, legen Sie das neue Zertifikat durch Ausführen der folgenden Schritte als aktiv fest:
    1. Wechseln Sie zurück zur Seite **SAML-Signaturzertifikat**.
-   1. Wählen Sie in der neu gespeicherten Zertifikatzeile die Auslassungspunkte ( **...** ) aus, und wählen Sie dann **Zertifikat als aktiv festlegen** aus.
+   1. Wählen Sie in der neu gespeicherten Zertifikatzeile die Auslassungspunkte (**...**) aus, und wählen Sie dann **Zertifikat als aktiv festlegen** aus.
    1. Überspringen Sie die nächsten zwei Schritte.
 
 1. Wenn die App jeweils nur ein Zertifikat verarbeiten kann, wählen Sie ein Intervall für Ausfallzeiten aus, um den nächsten Schritt ausführen zu können. (Andernfalls, wenn die Anwendung das neue Zertifikat nicht automatisch übernimmt, aber mehrere Signaturzertifikate gleichzeitig verarbeiten kann, können Sie den nächsten Schritt jederzeit auszuführen.)
