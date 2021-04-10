@@ -12,12 +12,12 @@ ms.date: 12/05/2019
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aeff14e1676389eb2204cad45ea7b00d5aa9796b
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: e5189df623325578bb3b579f5c4c3456067986ff
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102566650"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105709479"
 ---
 # <a name="azure-ad-powershell-examples-for-azure-ad-application-proxy"></a>Azure AD PowerShell-Beispiele für Azure AD-Anwendungsproxy
 
@@ -32,7 +32,7 @@ Weitere Informationen zu den in diesen Beispielen verwendeten Cmdlets finden Sie
 | [Auflisten grundlegender Informationen für alle Anwendungsproxy-Apps](scripts/powershell-get-all-app-proxy-apps-basic.md) | Listet grundlegende Informationen („AppId“, „DisplayName“, „ObjId“) zu allen Anwendungsproxy-Apps in Ihrem Verzeichnis auf. |
 | [Auflisten erweiterter Informationen für alle Anwendungsproxy-Apps](scripts/powershell-get-all-app-proxy-apps-extended.md) | Listet erweiterte Informationen („AppId“, „DisplayName“, „ExternalUrl“, „InternalUrl“, „ExternalAuthenticationType“) zu allen Anwendungsproxy-Apps in Ihrem Verzeichnis auf.  |
 | [Auflisten aller Anwendungsproxy-Apps nach Connectorgruppe](scripts/powershell-get-all-app-proxy-apps-by-connector-group.md) | Listet Informationen zu allen Anwendungsproxy-Apps in Ihrem Verzeichnis auf und gibt an, welchen Connectorgruppen die Apps zugewiesen sind. |
-| [Abrufen aller Anwendungsproxy-Apps mit einer Richtlinie für die Tokengültigkeitsdauer](scripts/powershell-get-all-app-proxy-apps-with-policy.md) | Listet alle in Ihrem Verzeichnis enthaltenen Anwendungsproxy-Apps mit einer Richtlinie für die Tokengültigkeitsdauer sowie deren Details auf. Für dieses Beispiel ist das [Azure AD PowerShell V2-Modul in der Vorschauversion für Graph](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview) erforderlich. |
+| [Abrufen aller Anwendungsproxy-Apps mit einer Richtlinie für die Tokengültigkeitsdauer](scripts/powershell-get-all-app-proxy-apps-with-policy.md) | Listet alle in Ihrem Verzeichnis enthaltenen Anwendungsproxy-Apps mit einer Richtlinie für die Tokengültigkeitsdauer sowie deren Details auf. Für dieses Beispiel ist das [Azure AD PowerShell V2-Modul in der Vorschauversion für Graph](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview&preserve-view=true) erforderlich. |
 |**Connectorgruppen**||
 | [Abrufen aller Connectorgruppen und Connectors im Verzeichnis](scripts/powershell-get-all-connectors.md) | Listet alle Connectorgruppen und Connectors in Ihrem Verzeichnis auf. |
 | [Verschieben aller einer Connectorgruppe zugewiesenen Apps in eine andere Connectorgruppe](scripts/powershell-move-all-apps-to-connector-group.md) | Verschiebt alle Anwendungen, die derzeit einer Connectorgruppe zugewiesen sind, in eine andere Connectorgruppe. |

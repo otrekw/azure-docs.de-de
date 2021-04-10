@@ -10,12 +10,12 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2038587aebe8fe98bd1adcccef6b895ec7370656
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5c7f3de20ea3e86e3b56dc71d698354f7eaf782d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102176857"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105709717"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>Migrieren zur Cloudauthentifizierung mithilfe eines gestaffelten Rollouts (Vorschau)
 
@@ -98,7 +98,7 @@ Die folgenden Szenarien werden für gestaffelten Rollout nicht unterstützt:
 
 Zum Testen der *Kennworthashsynchronisierung* melden Sie sich mithilfe des gestaffelten Rollouts an und befolgen die Anweisungen für die Vorbereitung im nächsten Abschnitt.
 
-Weitere Informationen dazu, welche PowerShell-Cmdlets verwendet werden sollten, finden Sie unter [Azure AD 2.0 Vorschau](/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout).
+Weitere Informationen dazu, welche PowerShell-Cmdlets verwendet werden sollten, finden Sie unter [Azure AD 2.0 Vorschau](/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true#staged_rollout).
 
 ## <a name="pre-work-for-password-hash-sync"></a>Vorbereitende Schritte für die Kennworthashsynchronisierung
 
@@ -251,9 +251,9 @@ A: Nein, dieses Feature ist für das Testen der Cloudauthentifizierung konzipier
 
 **F: Kann PowerShell verwendet werden, um einen gestaffelten Rollout auszuführen?**
 
-A: Ja. Informationen zum Verwenden von PowerShell zum Ausführen eines gestaffelten Rollouts finden Sie unter [Azure AD Vorschau](/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout).
+A: Ja. Informationen zum Verwenden von PowerShell zum Ausführen eines gestaffelten Rollouts finden Sie unter [Azure AD Vorschau](/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true#staged_rollout).
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [Azure AD 2.0 Vorschau](/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout )
+- [Azure AD 2.0 Vorschau](/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true#staged_rollout )
 - [Ändern der Anmeldemethode in die Kennworthashsynchronisierung](plan-migrate-adfs-password-hash-sync.md#step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso)
 - [Ändern der Anmeldemethode in die Passthrough-Authentifizierung](plan-migrate-adfs-password-hash-sync.md#step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso)

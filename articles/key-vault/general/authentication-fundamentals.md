@@ -7,18 +7,18 @@ ms.date: 09/25/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: a75ecac20c553f697585648c5654d375b85e5183
-ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
+ms.openlocfilehash: 25f00024fb7371fd08bf6c4ceec3177cfaca029b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100535194"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103572807"
 ---
 # <a name="key-vault-authentication-fundamentals"></a>Grundlagen der Key Vault-Authentifizierung
 
 Mit Azure Key Vault können Sie die Anmeldeinformationen von Anwendungen, z. B. Geheimnisse, Schlüssel und Zertifikate, in einem zentralen und sicheren Cloudrepository speichern und verwalten. Mit Key Vault entfällt die Notwendigkeit, Anmeldeinformationen in Ihren Anwendungen zu speichern. Ihre Anwendungen können sich zur Laufzeit bei Key Vault authentifizieren, um die Anmeldeinformationen abzurufen.
 
-Als Administrator können Sie genau steuern, welche Benutzer und Anwendungen auf Ihren Schlüsseltresor zugreifen dürfen, und Sie können die von ihnen ausgeführten Vorgänge einschränken und überwachen. In diesem Dokument werden die grundlegenden Konzepte des Zugriffsmodells von Key Vault erläutert. Es enthält das erforderliche Basiswissen und zeigt, wie Sie einen Benutzer oder eine Anwendung im Schlüsseltresor vom Anfang bis zum Ende authentifizieren können.
+Als Administrator können Sie genau steuern, welche Benutzer und Anwendungen auf Ihren Schlüsseltresor zugreifen dürfen, und Sie können die von ihnen ausgeführten Vorgänge einschränken und überwachen. In diesem Dokument werden die grundlegenden Konzepte des Zugriffsmodells von Key Vault erläutert. Ihnen wird ein Basiswissen vermittelt und Sie erfahren, wie Sie einen Benutzer oder eine Anwendung bei einem Schlüsseltresor authentifizieren.
 
 ## <a name="required-knowledge"></a>Erforderliche Kenntnisse
 

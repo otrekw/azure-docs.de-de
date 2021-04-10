@@ -5,12 +5,12 @@ ms.assetid: f9a5cfa1-fbb0-41e6-95d1-75d457347a35
 ms.topic: article
 ms.date: 01/14/2016
 ms.custom: seodec18
-ms.openlocfilehash: 92e893fe9f74d51856faf39d3e4800dd5a8155db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e3ae342e7cbd8a9c2e126de7666d07f0664be407
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88815384"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103573641"
 ---
 # <a name="azure-app-service-app-cloning-using-powershell"></a>Klonen der Azure App Service-App mit PowerShell
 
@@ -123,6 +123,7 @@ Hier finden Sie die bekannten Einschränkungen für das App-Klonen:
 * Datenbankinhalte werden nicht geklont.
 * Ausgehende IP-Adressen ändern sich beim Klonen in eine andere Skalierungseinheit.
 * Nicht für Linux-Apps verfügbar
+* Verwaltete Identitäten werden nicht geklont.
 
 ### <a name="references"></a>References
 * [Klonen in App Service](app-service-web-app-cloning.md)
