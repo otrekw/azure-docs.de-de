@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/27/2021
+ms.date: 03/18/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a39230cc65db6ef12b6fa4364454aeb434efddf6
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 2ec67669edeb52af1044c97c984eb6ba36fd1a0b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98918211"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104579636"
 ---
 # <a name="tutorial-register-a-web-application-in-azure-active-directory-b2c"></a>Tutorial: Registrieren einer Webanwendung in Azure Active Directory B2C
 
@@ -80,7 +80,7 @@ Zum Registrieren einer Webanwendung in Ihrem Azure AD B2C-Mandanten können Sie
 
 ## <a name="create-a-client-secret"></a>Erstellen eines Clientgeheimnisses
 
-Für eine Webanwendung müssen Sie ein Anwendungsgeheimnis erstellen. Dieses Geheimnis wird von Ihrer Anwendung verwendet, um einen Autorisierungscode durch ein Zugriffstoken zu ersetzen.
+Für eine Webanwendung müssen Sie ein Anwendungsgeheimnis erstellen. Der geheime Clientschlüssel wird auch als *Anwendungskennwort* bezeichnet. Das Geheimnis wird von Ihrer Anwendung verwendet, um einen Autorisierungscode durch ein Zugriffstoken zu ersetzen.
 
 #### <a name="app-registrations"></a>[App-Registrierungen](#tab/app-reg-ga/)
 
@@ -89,7 +89,7 @@ Für eine Webanwendung müssen Sie ein Anwendungsgeheimnis erstellen. Dieses Geh
 1. Wählen Sie **Neuer geheimer Clientschlüssel**.
 1. Geben Sie im Feld **Beschreibung** eine Beschreibung für das Clientgeheimnis ein. Beispielsweise *clientsecret1*.
 1. Wählen Sie unter **Läuft ab** einen Zeitraum aus, für den das Geheimnis gültig ist, und wählen Sie dann **Hinzufügen** aus.
-1. Notieren Sie den **Wert** des Geheimnisses. Sie verwenden diesen Wert als Anwendungsgeheimnis im Code Ihrer Anwendung.
+1. Notieren Sie sich den **Wert** des Geheimnisses, das in Ihrem Clientanwendungscode verwendet werden soll. Dieser Geheimniswert kann nach Verlassen dieser Seite nicht erneut angezeigt werden. Sie verwenden diesen Wert als Anwendungsgeheimnis im Code Ihrer Anwendung.
 
 #### <a name="applications-legacy"></a>[Anwendungen (Legacy)](#tab/applications-legacy/)
 
@@ -98,6 +98,9 @@ Für eine Webanwendung müssen Sie ein Anwendungsgeheimnis erstellen. Dieses Geh
 1. Wählen Sie **Speichern**, um den Schlüssel anzuzeigen. Notieren Sie sich den Wert für **App-Schlüssel**. Sie verwenden diesen Wert als Anwendungsgeheimnis im Code Ihrer Anwendung.
 
 * * *
+
+> [!NOTE]
+> Aus Sicherheitsgründen können Sie ein Rollover des Anwendungsgeheimnisses periodisch oder im Notfall auch sofort durchführen. Jede in Azure AD B2C integrierte Anwendung muss in der Lage sein, ein Geheimnisrollover zu verarbeiten, unabhängig davon, wie häufig dies geschieht. Sie können zwei Anwendungsgeheimnisse festlegen, sodass Ihre Anwendung das alte Geheimnis während eines Ereignisses für die Anwendungsgeheimnisrotation weiterhin verwenden kann. Um einen weiteren geheimen Clientschlüssel hinzuzufügen, wiederholen Sie die Schritte in diesem Abschnitt. 
 
 ## <a name="enable-id-token-implicit-grant"></a>Aktivieren der impliziten Genehmigung von ID-Token
 

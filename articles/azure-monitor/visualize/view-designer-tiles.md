@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 01/17/2018
 ms.openlocfilehash: d1d0da70dc1e47d0a1ddb90abbed2eaea83919cd
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102040174"
 ---
 # <a name="reference-guide-to-view-designer-tiles-in-azure-monitor"></a>Referenzleitfaden zu Ansicht-Designer-Kacheln in Azure Monitor
@@ -42,7 +42,7 @@ Die Kachel **Zahl** zeigt sowohl die Anzahl von Datensätzen einer Protokollabfr
 
 ![Kachel „Zahl“](media/view-designer-tiles/tile-number.png)
 
-| Einstellung | BESCHREIBUNG |
+| Einstellung | Beschreibung |
 |:--- |:--- |
 | Name |Der Text, der im oberen Bereich der Kachel angezeigt wird. |
 | BESCHREIBUNG |Der Text, der unter dem Kachelnamen angezeigt wird. |
@@ -60,7 +60,7 @@ Diese Kachel zeigt die Anzahl von Datensätzen aus zwei verschiedenen Protokolla
 
 ![Kachel „Zwei Zahlen“](media/view-designer-tiles/tile-two-numbers.png)
 
-| Einstellung | BESCHREIBUNG |
+| Einstellung | Beschreibung |
 |:--- |:--- |
 | Name |Der Text, der im oberen Bereich der Kachel angezeigt wird. |
 | BESCHREIBUNG |Der Text, der unter dem Kachelnamen angezeigt wird. |
@@ -81,7 +81,7 @@ Die Kachel **Ring** zeigt eine einzelne Zahl an, die eine Spalte mit Werten in e
 
 ![Kachel „Ring“](media/view-designer-tiles/tile-donut.png)
 
-| Einstellung | BESCHREIBUNG |
+| Einstellung | Beschreibung |
 |:--- |:--- |
 | Name |Der Text, der im oberen Bereich der Kachel angezeigt wird. |
 | BESCHREIBUNG |Der Text, der unter dem Kachelnamen angezeigt wird. |
@@ -105,7 +105,7 @@ Diese Kachel ist ein Liniendiagramm, das mehrere Datenreihen aus einer Protokoll
 
 ![Screenshot einer Liniendiagramm-Kachel im Azure Monitor-Ansicht-Designer](media/view-designer-tiles/tile-line-chart.png)
 
-| Einstellung | BESCHREIBUNG |
+| Einstellung | Beschreibung |
 |:--- |:--- |
 | Name |Der Text, der im oberen Bereich der Kachel angezeigt wird. |
 | BESCHREIBUNG |Der Text, der unter dem Kachelnamen angezeigt wird. |
@@ -126,7 +126,7 @@ Diese Kachel umfasst sowohl ein Liniendiagramm mit mehreren Datenreihen aus eine
 
 ![Screenshot einer Liniendiagramm- und Legende-Kachel im Azure Monitor-Ansicht-Designer. Die Legende erweitert das Liniendiagramm, indem ein zusammengefasster Wert angezeigt wird.](media/view-designer-tiles/tile-line-chart-callout.png)
 
-| Einstellung | BESCHREIBUNG |
+| Einstellung | Beschreibung |
 |:--- |:--- |
 | Name |Der Text, der im oberen Bereich der Kachel angezeigt wird. |
 | BESCHREIBUNG |Der Text, der unter dem Kachelnamen angezeigt wird. |
@@ -151,7 +151,7 @@ Die Kachel **Zwei Zeitachsen** zeigt die Ergebnisse von zwei Protokollabfragen i
 
 ![Kachel „Zwei Zeitachsen“](media/view-designer-tiles/tile-two-timelines.png)
 
-| Einstellung | BESCHREIBUNG |
+| Einstellung | Beschreibung |
 |:--- |:--- |
 | Name |Der Text, der im oberen Bereich der Kachel angezeigt wird. |
 | BESCHREIBUNG |Der Text, der unter dem Kachelnamen angezeigt wird. |

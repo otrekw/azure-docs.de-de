@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/03/2021
 ms.author: TomSh
-ms.openlocfilehash: a62326d99eee8407b65c0c640b4db8a6f051c758
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: b5f9df4e6f682b5d1e9e3cd35affe6e4191e3d53
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102101187"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105047778"
 ---
 # <a name="introduction-to-azure-security"></a>Einführung in die Azure-Sicherheit
 
@@ -201,6 +201,14 @@ Azure-Netzwerke unterstützen verschiedene Szenarien für den sicheren Remotezug
 - [Verbinden eines lokalen Netzwerks mit einem Azure Virtual Network mithilfe eines dedizierten WAN-Links](../../expressroute/expressroute-introduction.md)
 
 - [Verbinden von Azure Virtual Networks untereinander](../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)
+
+### <a name="azure-private-link"></a>Azure Private Link
+
+Mit [Azure Private Link](https://azure.microsoft.com/services/private-link/) können Sie über einen [privaten Endpunkt](../../private-link/private-endpoint-overview.md) in Ihrem virtuellen Netzwerk auf Azure-PaaS-Dienste (beispielsweise Azure Storage und SQL Database) sowie auf in Azure gehostete kundeneigene Dienste/Partnerdienste zugreifen. Die Einrichtung und Nutzung von Azure Private Link ist in Azure PaaS-, Kunden- und gemeinsam genutzten Partnerdiensten einheitlich. Der Datenverkehr aus Ihrem virtuellen Netzwerk an den Azure-Dienst verbleibt immer im Backbone-Netzwerk von Microsoft Azure.
+
+[Private Endpunkte](../../private-link/private-endpoint-overview.md) ermöglichen es Ihnen, Ihre kritischen Azure-Dienstressourcen auf Ihre virtuellen Netzwerke zu beschränken und so zu schützen. Private Azure-Endpunkte verwenden eine private IP-Adresse Ihres virtuellen Netzwerks (VNet), um eine private und sichere Verbindung mit einem von Azure Private Link unterstützten Dienst herzustellen, wodurch der Dienst im Grunde in Ihr VNet eingebunden wird. Es ist nicht mehr erforderlich, Ihr virtuelles Netzwerk im öffentlichen Internet zur Verfügung zu stellen, um Dienste in Azure zu nutzen. 
+
+Sie können auch Ihren eigenen Private Link-Dienst in Ihrem virtuellen Netzwerk erstellen. Der [Azure Private Link-Dienst](../../private-link/private-link-service-overview.md) ist der Verweis auf Ihren eigenen Dienst, der von Azure Private Link unterstützt wird. Ihr Dienst, der hinter Azure Load Balancer Standard ausgeführt wird, kann für den Zugriff auf Private Link aktiviert werden, sodass die Benutzer Ihres Diensts privat über ihre eigenen virtuellen Netzwerke auf diesen zugreifen können. Ihre Kunden können einen privaten Endpunkt in ihrem virtuellen Netzwerk erstellen und diesem Dienst zuordnen. Es ist nicht mehr erforderlich, Ihren Dienst im öffentlichen Internet zur Verfügung zu stellen, um Dienste in Azure zu rendern. 
 
 ### <a name="vpn-gateway"></a>VPN Gateway
 

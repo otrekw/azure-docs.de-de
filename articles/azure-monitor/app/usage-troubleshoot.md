@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 07/11/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 02d1bd9d204d88ba90218b1254c66ac0da80be85
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a1d77016fdf94de4fdd574b0d4cbd22d6b0b8490
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "87323501"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105024743"
 ---
 # <a name="troubleshoot-user-behavior-analytics-tools-in-application-insights"></a>Problembehandlung in Analysetools für Benutzerverhalten in Application Insights
 Haben Sie Fragen zu [Analysetools für das Benutzerverhalten in Application Insights](usage-overview.md): [Benutzer, Sitzungen, Ereignisse](usage-segmentation.md), [Trichter](usage-funnels.md), [Benutzerabläufe](usage-flows.md), [Vermerkdauer](usage-retention.md) oder Kohorten? Hier finden Sie ein paar Antworten.
@@ -23,7 +23,7 @@ Alle Telemetrieereignisse in Application Insights weisen als Standardeigenschaft
 
 Wenn Sie eine Web-App überwachen, besteht die einfachste Lösung darin, Ihrer App das [Application Insights JavaScript-SDK](./javascript.md) hinzuzufügen und dafür zu sorgen, dass der Skriptcodeausschnitt auf jeder Seite geladen wird, die Sie überwachen möchten. Das JavaScript-SDK generiert automatisch anonyme Benutzer- und Sitzungs-IDs und füllt die Telemetrieereignisse dann automatisch mit diesen IDs auf, wenn sie von Ihrer App gesendet werden.
 
-Wenn Sie einen Webdienst (keine Benutzeroberfläche) überwachen, [erstellen Sie einen Telemetrieinitialisierer, der die Eigenschaften „anonyme Benutzer-ID“ und „Sitzungs-ID“](usage-send-user-context.md) entsprechend den Auffassungen von eindeutigen Benutzern und Sitzungen Ihres Diensts auffüllt.
+Wenn Sie einen Webdienst (keine Benutzeroberfläche) überwachen, [erstellen Sie einen Telemetrieinitialisierer, der die Eigenschaften „anonyme Benutzer-ID“ und „Sitzungs-ID“](./usage-overview.md) entsprechend den Auffassungen von eindeutigen Benutzern und Sitzungen Ihres Diensts auffüllt.
 
 Wenn Ihre App [authentifizierte Benutzer-IDs](./api-custom-events-metrics.md#authenticated-users) sendet, können Sie anhand von authentifizierten Benutzer-IDs im Tool Benutzer zählen. Wählen Sie in der Dropdownliste „Anzeigen“ „Authentifizierte Benutzer“ aus.
 
@@ -50,4 +50,3 @@ Wenn Ihre App zu viele Namen von benutzerdefinierten Ereignissen sendet, ändern
 
 ## <a name="get-help"></a>Hier erhalten Sie Hilfe
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/ms-application-insights)
-

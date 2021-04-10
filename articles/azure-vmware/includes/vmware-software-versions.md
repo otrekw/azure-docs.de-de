@@ -2,31 +2,28 @@
 title: Versionen von VMware-Software
 description: Unterstützte VMware-Softwareversionen für Azure VMware Solution
 ms.topic: include
-ms.date: 12/29/2020
-ms.openlocfilehash: c6ba2904bab6c6f44001cafed1bd4cbdeb786373
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.date: 03/13/2021
+ms.openlocfilehash: 9a1781d163e67c2f9b6a4f756a616e59a969696f
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825067"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103462512"
 ---
 <!-- Used in faq.md and concepts-private-clouds-clusters.md -->
 
 
-Im Folgenden die aktuellen in Clustern privater Azure VMware Solution-Clouds verwendeten VMware-Softwareversionen:
+Die VMware-Softwareversionen in neuen Bereitstellungen von Private Cloud-Clustern von Azure VMware Solution sind wie folgt:
 
 | Software              |    Version   |
 | :---                  |     :---:    |
 | VCSA/vSphere/ESXi |    6.7 U3    | 
 | ESXi                  |    6.7 U3    | 
 | vSAN                  |    6.7 U3    |
-| NSX-T                 |      2.5     |
+| NSX-T <br />**HINWEIS:** NSX-T ist die einzige unterstützte Version von NSX.               |      2.5     |
 
 
->[!NOTE]
->NSX-T ist die einzige unterstützte Version von NSX.
-
-Bei allen neuen Clustern in einer privaten Cloud stimmt die Softwareversion mit der aktuell ausgeführten überein. Für alle neuen privaten Clouds in einem Abonnement wird die aktuelle Version des Softwarestapels installiert. Weitere Informationen finden Sie in den [Anforderungen der VMware-Softwareversion](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-54E5293B-8707-4D29-BFE8-EE63539CC49B.html).
+Bei neuen Clustern, die einer vorhandenen privaten Cloud hinzugefügt werden, wird die aktuell ausgeführte Softwareversion übernommen. Weitere Informationen finden Sie in den [Anforderungen der VMware-Softwareversion](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-54E5293B-8707-4D29-BFE8-EE63539CC49B.html).
 
 Die Upgrades für die Softwarepakete der privaten Cloud behalten eine Version der Software des neuesten Release des Softwarepakets von VMware bei. Die Softwareversionen der privaten Cloud können sich von den aktuellen Versionen der einzelnen Softwarekomponenten (ESXi, NSX-T, vCenter und vSAN) unterscheiden. Die allgemeinen Upgraderichtlinien und -prozesse für die Azure VMware Solution-Plattformsoftware werden unter [Updates und Upgrades für private Clouds](../concepts-upgrades.md) beschrieben.
 

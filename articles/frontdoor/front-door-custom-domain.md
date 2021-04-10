@@ -12,14 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/24/2020
 ms.author: duau
-ms.openlocfilehash: e153edd807dcb119c34f60dc34e33fed510916bb
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6abed66a5fbd9987e5a8a677dde7b4a77589e907
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96011522"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106065043"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-front-door"></a>Tutorial: Hinzufügen einer benutzerdefinierten Domäne für Ihre „Front Door“
+
 In diesem Tutorial erfahren Sie, wie Sie Ihrer Azure Front Door Service-Konfiguration eine benutzerdefinierte Domäne hinzufügen. Wenn Sie Azure Front Door für die Anwendungsbereitstellung verwenden, ist eine benutzerdefinierte Domäne erforderlich, sofern Ihr eigener Domänenname in der Endbenutzeranforderung sichtbar sein soll. Die Verwendung eines sichtbaren Domänennamens kann für Ihre Kunden komfortabel und für Branding-Zwecke hilfreich sein.
 
 Nachdem Sie eine Front Door-Instanz erstellt haben, wird der Front-End-Standardhost (eine Unterdomäne von `azurefd.net`) standardmäßig in die URL für die Übermittlung von Front Door-Inhalten von Ihrem Back-End eingeschlossen (z. B. „https:\//contoso-frontend.azurefd.net/activeusers.htm“). Zur Vereinfachung bietet Azure Front Door Service Ihnen die Möglichkeit, dem Standardhost eine benutzerdefinierte Domäne zuzuordnen. Bei Verwendung dieser Option stellen Sie Ihre Inhalte mit einer benutzerdefinierten Domäne in Ihrer URL bereit und nicht über einen Domänennamen im Besitz von Azure Front Door Service (z. B. „https:\//www.contoso.com/photo.png“). 

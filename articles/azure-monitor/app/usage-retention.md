@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 05/03/2017
 ms.reviewer: mbullwin
-ms.openlocfilehash: 37de27e8dc707133595b71b39e45bdec554289e5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 45f3a7152add8d64d961feb055413760df01eb94
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100583383"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105025610"
 ---
 # <a name="user-retention-analysis-for-web-applications-with-application-insights"></a>Benutzerbindungsanalyse für Webanwendungen mit Azure Application Insights
 
@@ -36,7 +36,7 @@ Wenn im Vermerkdauer-Tool des Application Insights-Portals noch keine Daten zu s
 
 Benutzer können auf die Zellen im Vermerkdauer-Tool zeigen, um auf die Analyseschaltfläche zuzugreifen und QuickInfos zur Bedeutung der Zelle zu erhalten. Über die Analyseschaltfläche gelangen Benutzer zum Analysetool, in dem bereits eine Abfrage zur Generierung von Benutzern auf der Grundlage der Zelle angegeben ist. 
 
-## <a name="use-business-events-to-track-retention"></a>Nachverfolgen der Vermerkdauer mithilfe von Geschäftsereignissen
+## <a name="use-business-events-to-track-retention&quot;></a>Nachverfolgen der Vermerkdauer mithilfe von Geschäftsereignissen
 
 Um die nützlichste Vermerkdaueranalyse zu erhalten, messen Sie Ereignisse, die wichtige Geschäftsaktivitäten darstellen. 
 
@@ -45,7 +45,7 @@ Beispielsweise können viele Benutzer eine Seite in Ihrer App öffnen, ohne das 
 Es empfiehlt sich, benutzerdefinierte Ereignisse zu codieren, die wichtige geschäftliche Aktionen darstellen, und diese für die Vermerkdaueranalyse zu verwenden. Zum Erfassen des Spielergebnisses müssen Sie eine Codezeile zum Senden eines benutzerdefinierten Ereignisses an Application Insights schreiben. Wenn Sie diese im Webseitencode oder in Node.JS schreiben, sieht sie wie folgt aus:
 
 ```JavaScript
-    appinsights.trackEvent("won game");
+    appinsights.trackEvent(&quot;won game");
 ```
 
 Oder im ASP.NET-Servercode:
@@ -64,5 +64,4 @@ Oder im ASP.NET-Servercode:
     - [Trichter](usage-funnels.md)
     - [Benutzerabläufe](usage-flows.md)
     - [Arbeitsmappen](../visualize/workbooks-overview.md)
-    - [Hinzufügen von Benutzerkontext](usage-send-user-context.md)
-
+    - [Hinzufügen von Benutzerkontext](./usage-overview.md)
