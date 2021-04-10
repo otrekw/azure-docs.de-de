@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/4/2020
-ms.openlocfilehash: b13e8e088eff95071247a53ad1a4a18879f94053
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 43d616bc82c608918f5e7ee51481a393dd55a284
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101742193"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105566069"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Migrieren von Azure HDInsight 3.6-Hive-Workloads zu HDInsight 4.0
 
@@ -71,7 +71,7 @@ In diesem Schritt wird das [`Hive Schema Tool`](https://cwiki.apache.org/conflue
     > [!NOTE]
     > Dieses Hilfsprogramm verwendet Client-`beeline` zum Ausführen von SQL-Skripts in `/usr/hdp/$STACK_VERSION/hive/scripts/metastore/upgrade/mssql/upgrade-*.mssql.sql`.
     >
-    > Die SQL-Syntax in diesen Skripts ist nicht unbedingt mit anderen Clienttools kompatibel. Beispielsweise verlangen [SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) und der [Abfrage-Editor im Azure-Portal](../../azure-sql/database/connect-query-portal.md) nach jedem Befehl das Schlüsselwort `GO`.
+    > Die SQL-Syntax in diesen Skripts ist nicht unbedingt mit anderen Clienttools kompatibel. Beispielsweise verlangen [SSMS](/sql/ssms/download-sql-server-management-studio-ssms) und der [Abfrage-Editor im Azure-Portal](../../azure-sql/database/connect-query-portal.md) nach jedem Befehl das Schlüsselwort `GO`.
     >
     > Wenn ein Skript aufgrund der Ressourcenkapazität oder von Transaktionstimeouts fehlschlägt, skalieren Sie die SQL-Datenbank hoch.
 

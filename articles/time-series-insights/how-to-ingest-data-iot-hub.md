@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 01/21/2021
 ms.custom: seodec18
 ms.openlocfilehash: 85773ec66dbe567afcfd1afca1d14aa0119fb8f6
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103464019"
 ---
 # <a name="add-an-iot-hub-event-source-to-your-azure-time-series-insight-environment"></a>Hinzufügen einer IoT-Hub-Ereignisquelle zu Ihrer Azure Time Series Insights-Umgebung
@@ -72,7 +72,7 @@ So fügen Sie Ihrem IoT-Hub eine neue Consumergruppe hinzu
 
        [![Bereich „Neue Ereignisquelle“: In der Option „IoT Hub aus verfügbaren Abonnements verwenden“ festzulegende Eigenschaften](media/time-series-insights-how-to-add-an-event-source-iothub/tsi-create-configure-confirm.png)](media/time-series-insights-how-to-add-an-event-source-iothub/tsi-create-configure-confirm.png#lightbox)
 
-       | Eigenschaft | BESCHREIBUNG |
+       | Eigenschaft | Beschreibung |
        | --- | --- |
        | Subscription | Das Abonnement, zu dem der gewünschte IoT-Hub gehört. |
        | IoT Hub-Name | Der Name des ausgewählten IoT-Hubs. |

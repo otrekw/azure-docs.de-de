@@ -11,12 +11,12 @@ author: NilsPohlmann
 ms.date: 03/02/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 188df9564905443b8f975eb743b24885b5d03c32
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 38fd5b779c3a8ae71c2e4fafcaf65921b1be3f93
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102618201"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105642255"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Erstellen und Ausführen von Machine Learning-Pipelines mit dem Azure Machine Learning SDK
 
@@ -89,7 +89,7 @@ from azureml.core import Dataset
 my_dataset = Dataset.File.from_files([(def_blob_store, 'train-images/')])
 ```
 
-Zwischendaten (oder die Ausgabe eines Schritts) werden durch ein [OutputFileDatasetConfig](/python/api/azureml-pipeline-core/azureml.data.output_dataset_config.outputfiledatasetconfig)-Objekt dargestellt. `output_data1` wird als Ausgabe eines Schritts produziert. Optional können diese Daten durch Aufruf von`register_on_complete` als Dataset registriert werden. Wenn Sie ein `OutputFileDatasetConfig`-Objekt in einem Schritt erstellen und als Eingabe für einen anderen Schritt verwenden, entsteht durch die Datenabhängigkeit zwischen den Schritten eine implizite Ausführungsreihenfolge in der Pipeline.
+Zwischendaten (oder die Ausgabe eines Schritts) werden durch ein [OutputFileDatasetConfig](/python/api/azureml-core/azureml.data.output_dataset_config.outputfiledatasetconfig)-Objekt dargestellt. `output_data1` wird als Ausgabe eines Schritts produziert. Optional können diese Daten durch Aufruf von`register_on_complete` als Dataset registriert werden. Wenn Sie ein `OutputFileDatasetConfig`-Objekt in einem Schritt erstellen und als Eingabe für einen anderen Schritt verwenden, entsteht durch die Datenabhängigkeit zwischen den Schritten eine implizite Ausführungsreihenfolge in der Pipeline.
 
 `OutputFileDatasetConfig`-Objekte geben ein Verzeichnis zurück, und schreiben ihre Ausgaben standardmäßig in den Standarddatenspeicher des Arbeitsbereichs.
 
@@ -247,7 +247,7 @@ pipeline1 = Pipeline(workspace=ws, steps=[compare_models])
 
 ### <a name="use-a-dataset"></a>Verwenden eines Datasets 
 
-Aus Azure Blob Storage, Azure Files, Azure Data Lake Storage Gen1, Azure Data Lake Storage Gen2, Azure SQL-Datenbank und Azure Database for PostgreSQL erstellte Datasets können für jeden Pipelineschritt als Eingabe verwendet werden. Sie können die Ausgabe in [DataTransferStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep) oder [DatabricksStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep) schreiben oder [OutputFileDatasetConfig](/python/api/azureml-pipeline-core/azureml.data.outputfiledatasetconfig) verwenden, wenn Sie Daten in einen bestimmten Datenspeicher schreiben möchten. 
+Aus Azure Blob Storage, Azure Files, Azure Data Lake Storage Gen1, Azure Data Lake Storage Gen2, Azure SQL-Datenbank und Azure Database for PostgreSQL erstellte Datasets können für jeden Pipelineschritt als Eingabe verwendet werden. Sie können die Ausgabe in [DataTransferStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep) oder [DatabricksStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep) schreiben oder [OutputFileDatasetConfig](/python/api/azureml-core/azureml.data.outputfiledatasetconfig) verwenden, wenn Sie Daten in einen bestimmten Datenspeicher schreiben möchten. 
 
 > [!IMPORTANT]
 > Das Schreiben von Ausgabedaten in einen Datenspeicher mit `OutputFileDatasetConfig` wird nur für Azure-Blob-, Azure-Dateifreigabe-, ADLS Gen1- und Gen2-Datenspeicher unterstützt. 

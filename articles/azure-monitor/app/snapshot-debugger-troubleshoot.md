@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: a285f26a406caa88d91da5647b3b79cffc9b614f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: bd83367ae073e03f03188cdf62cb60faaad7ac97
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102217413"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105026452"
 ---
 # <a name="troubleshoot-problems-enabling-application-insights-snapshot-debugger-or-viewing-snapshots"></a><a id="troubleshooting"></a> Behandeln von Problemen beim Aktivieren des Application Insights-Momentaufnahmedebuggers oder Anzeigen von Momentaufnahmen
 Wenn Sie den Application Insights-Momentaufnahmedebugger für Ihre Anwendung aktiviert haben, aber keine Momentaufnahmen für Ausnahmen angezeigt werden, können Sie diese Anweisungen zur Problembehandlung verwenden.
@@ -20,7 +20,7 @@ Es kann viele verschiedene Gründe geben, warum keine Momentaufnahmen generiert 
 
 ## <a name="make-sure-youre-using-the-appropriate-snapshot-debugger-endpoint"></a>Stellen Sie sicher, dass Sie den richtigen Endpunkt für den Momentaufnahmedebugger verwenden.
 
-Derzeit sind [Azure Government](https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure#application-insights) und [Azure China](https://docs.microsoft.com/azure/china/resources-developer-guide) die einzigen Regionen, für die Endpunktänderungen erforderlich sind.
+Derzeit sind [Azure Government](../../azure-government/compare-azure-government-global-azure.md#application-insights) und [Azure China](/azure/china/resources-developer-guide) die einzigen Regionen, für die Endpunktänderungen erforderlich sind.
 
 Für App Service und Anwendungen, die das Application Insights SDK verwenden, müssen Sie die Verbindungszeichenfolge mithilfe den unterstützten Überschreibungen für den Momentaufnahmedebugger aktualisieren, wie unten gezeigt:
 
@@ -28,7 +28,7 @@ Für App Service und Anwendungen, die das Application Insights SDK verwenden, m�
 |---------------|---------------------|-------------|
 |SnapshotEndpoint         | `https://snapshot.monitor.azure.us`    | `https://snapshot.monitor.azure.cn` |
 
-Weitere Informationen zu anderen Verbindungsüberschreibungen finden Sie in der [Application Insights-Dokumentation](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net#connection-string-with-explicit-endpoint-overrides).
+Weitere Informationen zu anderen Verbindungsüberschreibungen finden Sie in der [Application Insights-Dokumentation](./sdk-connection-string.md?tabs=net#connection-string-with-explicit-endpoint-overrides).
 
 Für Funktions-Apps müssen Sie die Datei `host.json` mithilfe der unterstützten Überschreibungen wie unten aktualisieren:
 

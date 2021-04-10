@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 02/11/2021
-ms.openlocfilehash: 1857eab485e8651c05959f82cf11e69b6353c575
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 3802d25ebd8f21ab5b8991a66ceb6650f2f276a9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101673526"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103461707"
 ---
 # <a name="credentials-for-source-authentication-in-azure-purview"></a>Anmeldeinformationen für die Quellenauthentifizierung in Azure Purview
 
@@ -41,7 +41,7 @@ Wenn Sie die verwaltete Purview-Identität zum Einrichten von Überprüfungen ve
 
 Bevor Sie Anmeldeinformationen erstellen können, müssen Sie Ihrem Azure Purview-Konto mindestens eine Ihrer vorhandenen Azure Key Vault-Instanzen zuordnen.
 
-1. Wählen Sie Ihr Azure Purview-Konto im [Azure-Portal](https://portal.azure.com) aus. Navigieren Sie zum **Verwaltungscenter** und dann zu den **Anmeldeinformationen**.
+1. Wählen Sie im Ihr Azure Purview-Abonnement im [Azure-Portal](https://portal.azure.com) aus, und öffnen Sie Azure Purview Studio. Navigieren Sie in Azure Purview Studio zu **Verwaltungscenter** und dort zu **Anmeldeinformationen**.
 
 2. Wählen Sie auf der Seite **Anmeldeinformationen** die Option **Manage Key Vault Connections** (Key Vault-Verbindungen verwalten) aus.
 

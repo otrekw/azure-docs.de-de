@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 03/10/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: bd16f0ef330d1d4a33dd796af0ec3e94dda5acfc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 45c52e141ed2d93f89c9d7c1426a9d7cbbbd47f5
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98684592"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105023927"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>Ändern einer VM-Skalierungsgruppe
 
@@ -350,7 +350,7 @@ Einige Eigenschaften können mit Ausnahmen je nach aktuellem Wert geändert werd
 
 - **singlePlacementGroup:** Wenn für singlePlacementGroup die Option „true“ festgelegt ist, kann diese in „false“ geändert werden. Wenn für „singlePlacementGroup“ jedoch „false“ festgelegt ist, kann die Einstellung **nicht** in „true“ geändert werden.
 - **Subnetz:** Das Subnetz einer Skalierungsgruppe kann geändert werden, solange sich das ursprüngliche und das neue Subnetz im selben virtuellen Netzwerk befinden.
-- **imageReferenceSku:** Imageverweis-SKU kann für unterstützte [Linux-Distributionen](../virtual-machines/linux/endorsed-distros.md), Server-/Clientimages unter Windows und Images ohne [Planinformationen](../virtual-machines/linux/cli-ps-findimage.md#view-plan-properties) aktualisiert werden. 
+- **imageReferenceSku:** Imageverweis-SKU kann für unterstützte [Linux-Distributionen](../virtual-machines/linux/endorsed-distros.md), Server-/Clientimages unter Windows und Images ohne [Planinformationen](../virtual-machines/linux/cli-ps-findimage.md#check-the-purchase-plan-information) aktualisiert werden. 
 
 ### <a name="properties-that-require-deallocation-to-change"></a>Eigenschaften, für die zur Änderung die Aufhebung der Zuordnung erforderlich ist
 Einige Eigenschaften können nur in bestimmte Werte geändert werden, wenn die Zuordnung der virtuellen Computer in der Skalierungsgruppe aufgehoben wird. Zu diesen Eigenschaften zählen folgende:

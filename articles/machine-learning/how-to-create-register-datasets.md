@@ -12,12 +12,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2020
-ms.openlocfilehash: 54b1fd14f97855dd42afde9a4bb34795373ff229
-ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+ms.openlocfilehash: 81779d942b31f940d579de623ecb39c35d3a8b14
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/13/2021
-ms.locfileid: "103417636"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105642142"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Erstellen von Azure Machine Learning-Datasets
 
@@ -52,7 +52,7 @@ Sie benötigen Folgendes, um Datasets zu erstellen und zu nutzen:
     * Arbeiten Sie an Ihrem eigenen Jupyter-Notebook, und installieren Sie selbst das SDK mit [diesen Anweisungen](/python/api/overview/azure/ml/install).
 
 > [!NOTE]
-> Einige Datasetklassen sind vom Paket [azureml-dataprep](/python/api/azureml-dataprep/) abhängig, das nur mit 64-Bit Python kompatibel ist. Für Linux-Benutzer werden diese Klassen nur unter den folgenden Distributionen unterstützt:  Red Hat Enterprise Linux (7, 8), Ubuntu (14.04, 16.04, 18.04), Fedora (27, 28), Debian (8, 9) und CentOS (7). Wenn Sie nicht unterstützte Distributionen verwenden, befolgen Sie [diese Anleitung](/dotnet/core/install/linux), um .NET Core 2.1 zu installieren und fortzufahren. 
+> Einige Datasetklassen sind vom Paket [azureml-dataprep](https://pypi.org/project/azureml-dataprep/) abhängig, das nur mit 64-Bit Python kompatibel ist. Für Linux-Benutzer werden diese Klassen nur unter den folgenden Distributionen unterstützt:  Red Hat Enterprise Linux (7, 8), Ubuntu (14.04, 16.04, 18.04), Fedora (27, 28), Debian (8, 9) und CentOS (7). Wenn Sie nicht unterstützte Distributionen verwenden, befolgen Sie [diese Anleitung](/dotnet/core/install/linux), um .NET Core 2.1 zu installieren und fortzufahren. 
 
 ## <a name="compute-size-guidance"></a>Leitfaden für die Computegröße
 

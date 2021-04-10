@@ -7,12 +7,12 @@ ms.author: jingwang
 author: linda33wj
 ms.custom: seo-lt-2019
 ms.date: 03/17/2021
-ms.openlocfilehash: ec24fa1bde21c70aa95fc33c92048aebc9f6659c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f2db75fdcd4519b5ba0869bf4ef89c8323435539
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104597384"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105565978"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-servicemicrosoft-dataverse-or-dynamics-crm-by-using-azure-data-factory"></a>Kopieren von Daten aus und in Dynamics 365 (Common Data Service/Microsoft Dataverse) oder Dynamics CRM mithilfe von Azure Data Factory
 
@@ -73,7 +73,7 @@ Die folgenden Eigenschaften werden für den mit Dynamics verknüpften Dienst unt
 
 ### <a name="dynamics-365-and-dynamics-crm-online"></a>Dynamics 365 und Dynamics CRM Online
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf "Dynamics", "DynamicsCrm" oder "CommonDataServiceForApps" festgelegt werden. | Ja |
 | deploymentType | Der Bereitstellungstyp der Dynamics-Instanz. Für die Onlineversion von Dynamics muss der Wert "Online" lauten. | Ja |
@@ -170,7 +170,7 @@ Die folgenden Eigenschaften werden für den mit Dynamics verknüpften Dienst unt
 
 Die zusätzlichen Eigenschaften im Vergleich zur Onlineversion von Dynamics lauten **hostName** und **port**.
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf "Dynamics", "DynamicsCrm" oder "CommonDataServiceForApps" festgelegt werden. | Ja. |
 | deploymentType | Der Bereitstellungstyp der Dynamics-Instanz. Der Wert muss für die lokale Dynamics-Bereitstellung mit IFD "OnPremisesWithIfd" lauten.| Ja. |
@@ -216,7 +216,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definier
 
 Beim Kopieren von Daten aus und nach Dynamics werden die folgenden Eigenschaften unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft des Datasets muss auf "DynamicsEntity", "DynamicsCrmEntity" oder "CommonDataServiceForAppsEntity" festgelegt werden. |Ja |
 | entityName | Der logische Name der abzurufenden Entität. | Nein für die Quelle, wenn für die Aktivitätsquelle "query" angegeben ist. Ja für die Senke. |
@@ -248,7 +248,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren vo
 
 Beim Kopieren von Daten aus Dynamics werden die folgenden Eigenschaften im Abschnitt **source** der Kopieraktivität unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf "DynamicsSource", "DynamicsCrmSource" oder "CommonDataServiceForAppsSource" festgelegt werden. | Ja |
 | Abfrage | FetchXML ist eine proprietäre Abfragesprache, die in Dynamics (online und lokal) verwendet wird. Siehe folgendes Beispiel. Weitere Informationen finden Sie unter [Erstellen von Abfragen mit FetchXML](/previous-versions/dynamicscrm-2016/developers-guide/gg328332(v=crm.8)). | Nein, wenn `entityName` im Dataset angegeben ist |
@@ -316,14 +316,14 @@ Beim Kopieren von Daten aus Dynamics werden die folgenden Eigenschaften im Absch
 
 Beim Kopieren von Daten nach Dynamics werden die folgenden Eigenschaften im Abschnitt **sink** der Kopieraktivität unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft der Senke der Kopieraktivität muss auf "DynamicsSink", "DynamicsCrmSink" oder "CommonDataServiceForAppsSink" festgelegt werden. | Ja. |
 | writeBehavior | Das Schreibverhalten des Vorgangs. Der Wert muss "Upsert" lauten. | Ja |
 | alternateKeyName | Der alternative Schlüsselname, der zum Ausführen eines upsert-Vorgangs für Ihre Entität definiert wurde | Nein. |
 | writeBatchSize | Die Zeilenanzahl der Daten, die in jedem Batch in Dynamics geschrieben werden. | Nein. Der Standardwert ist 10. |
 | ignoreNullValues | Gibt an, ob NULL-Werte aus anderen Eingabedaten als Schlüsselfeldern während eines Schreibvorgangs ignoriert werden sollen.<br/><br/>Gültige Werte sind **TRUE** und **FALSE**.<ul><li>**TRUE**: Daten im Zielobjekt bleiben unverändert, wenn Sie einen upsert- oder update-Vorgang ausführen. Fügt beim Ausführen eines insert-Vorgangs einen definierten Standardwert ein.</li><li>**FALSE**: Aktualisieren Sie die Daten im Zielobjekt auf einen NULL-Wert, wenn Sie einen upsert- oder update-Vorgang ausführen. Fügen Sie beim Ausführen eines insert-Vorgangs einen NULL-Wert ein.</li></ul> | Nein. Der Standardwert ist **FALSE**. |
-| maxConcurrentConnections |Die Obergrenze gleichzeitiger Verbindungen mit dem Datenspeicher während der Aktivitätsausführung. Geben Sie diesen Wert nur an, wenn Sie die Anzahl der gleichzeitigen Verbindungen begrenzen möchten.| No |
+| maxConcurrentConnections |Die Obergrenze gleichzeitiger Verbindungen mit dem Datenspeicher während der Aktivitätsausführung. Geben Sie diesen Wert nur an, wenn Sie die Anzahl der gleichzeitigen Verbindungen begrenzen möchten.| Nein |
 
 >[!NOTE]
 >Sowohl für die Senke **writeBatchSize** als auch für die Kopieraktivität **[parallelCopies](copy-activity-performance-features.md#parallel-copy)** für die Dynamics-Senke lautet der Standardwert 10. Daher werden standardmäßig 100 Datensätze gleichzeitig an Dynamics übermittelt.
@@ -370,7 +370,7 @@ Die optimale Kombination von **writeBatchSize** und **parallelCopies** hängt vo
 
 Wenn Sie Daten aus Dynamics-Sichten abrufen möchten, müssen Sie die gespeicherte Abfrage der Sicht abrufen und dann die Daten mithilfe der Abfrage abrufen.
 
-Es gibt zwei Entitäten, in denen verschiedene Sichttypen gespeichert werden: „gespeicherte Abfrage“ speichert die Systemsicht, und „Benutzerabfrage“ speichert die Benutzersicht. Informationen zu den Sichten finden Sie in der folgenden FetchXML-Abfrage. Ersetzen Sie darin „TARGETENTITY“ durch `savedquery` oder `userquery`. Jeder Entitätstyp hat mehrere Attribute, die Sie der Abfrage nach Bedarf hinzufügen können. Weitere Informationen dazu finden Sie unter [„savedquery“-Entität](https://docs.microsoft.com/dynamics365/customer-engagement/web-api/savedquery) und [„userquery“-Entität](https://docs.microsoft.com/dynamics365/customer-engagement/web-api/userquery).
+Es gibt zwei Entitäten, in denen verschiedene Sichttypen gespeichert werden: „gespeicherte Abfrage“ speichert die Systemsicht, und „Benutzerabfrage“ speichert die Benutzersicht. Informationen zu den Sichten finden Sie in der folgenden FetchXML-Abfrage. Ersetzen Sie darin „TARGETENTITY“ durch `savedquery` oder `userquery`. Jeder Entitätstyp hat mehrere Attribute, die Sie der Abfrage nach Bedarf hinzufügen können. Weitere Informationen dazu finden Sie unter [„savedquery“-Entität](/dynamics365/customer-engagement/web-api/savedquery) und [„userquery“-Entität](/dynamics365/customer-engagement/web-api/userquery).
 
 ```xml
 <fetch top="5000" >

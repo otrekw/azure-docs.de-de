@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: tutorial
 ms.date: 02/10/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 6de86cbc065b5352b3b643708dd55c6856b37dd7
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 49e5db729dab7abaa440b1adf6a61e9e52a1efbc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102097906"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105023128"
 ---
 # <a name="create-a-no-code-vision-solution-in-azure-percept-studio"></a>Erstellen einer Vision-Lösung ohne Code in Azure Percept Studio
 
@@ -29,7 +29,7 @@ Dieses Tutorial ist für Entwickler geeignet, die über wenig oder gar keine KI-
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Azure Percept DK (DevKit)
+- Azure Percept DK (DevKit)
 - [Azure-Abonnement](https://azure.microsoft.com/free/)
 - Azure Percept DK-Setup: Sie haben Ihr DevKit mit einem WLAN verbunden, eine IoT Hub-Instanz erstellt und das DevKit mit der IoT Hub-Instanz verbunden.
 
@@ -106,7 +106,7 @@ Fügen Sie Ihren Bildern Bezeichnungen hinzu, bevor Sie Ihr Modell trainieren.
 
 1. Klicken Sie links auf der Seite **Custom Vision** unter **Tags** auf **Untagged** (Ohne Tags), um die Bilder anzuzeigen, die Sie eben im vorherigen Schritt erfasst haben. Wählen Sie eines oder mehrere Ihrer nicht mit Tags gekennzeichneten Bilder aus.
 
-1. Klicken Sie im Fenster **Image Detail** (Bilddetail) auf das Bild, um mit dem Kennzeichnen zu beginnen. Falls Sie die Objekterkennung als Projekttyp ausgewählt haben, müssen Sie zusätzlich einen [Begrenzungsrahmen](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/get-started-build-detector#upload-and-tag-images) um bestimmte Objekte ziehen, die Sie mit Tags kennzeichnen möchten. Passen Sie den Begrenzungsrahmen je nach Bedarf an. Geben Sie Ihr Objekttag ein, und klicken Sie auf **+** , um das Tag anzuwenden. Wenn Sie beispielsweise eine Vision-Lösung erstellen, bei der Sie benachrichtigt werden, dass ein Regel in einem Geschäft aufgefüllt werden muss, gehen Sie wie folgt vor: Sie fügen Bildern von leeren Regalen das Tag „Leeres Regal“ und Bildern von aufgefüllten Regalen das Tag „Volles Regal“ hinzu. Wiederholen Sie dies für alle nicht gekennzeichneten Bilder.
+1. Klicken Sie im Fenster **Image Detail** (Bilddetail) auf das Bild, um mit dem Kennzeichnen zu beginnen. Falls Sie die Objekterkennung als Projekttyp ausgewählt haben, müssen Sie zusätzlich einen [Begrenzungsrahmen](../cognitive-services/custom-vision-service/get-started-build-detector.md#upload-and-tag-images) um bestimmte Objekte ziehen, die Sie mit Tags kennzeichnen möchten. Passen Sie den Begrenzungsrahmen je nach Bedarf an. Geben Sie Ihr Objekttag ein, und klicken Sie auf **+** , um das Tag anzuwenden. Wenn Sie beispielsweise eine Vision-Lösung erstellen, bei der Sie benachrichtigt werden, dass ein Regel in einem Geschäft aufgefüllt werden muss, gehen Sie wie folgt vor: Sie fügen Bildern von leeren Regalen das Tag „Leeres Regal“ und Bildern von aufgefüllten Regalen das Tag „Volles Regal“ hinzu. Wiederholen Sie dies für alle nicht gekennzeichneten Bilder.
 
     :::image type="content" source="./media/tutorial-nocode-vision/image-tagging.png" alt-text="Bildschirm zum Kennzeichnen von Bildern in Custom Vision":::
 
@@ -116,7 +116,7 @@ Fügen Sie Ihren Bildern Bezeichnungen hinzu, bevor Sie Ihr Modell trainieren.
 
     :::image type="content" source="./media/tutorial-nocode-vision/train-model.png" alt-text="Bildauswahl für Training mit hervorgehobener Schaltfläche „Trainieren“":::
 
-1. Nach Abschluss des Trainingsvorgangs wird die Leistung Ihres Modells auf dem Bildschirm angezeigt. Weitere Informationen zum Auswerten dieser Ergebnisse finden Sie unter [Auswerten des Erkennungsmoduls](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/get-started-build-detector#evaluate-the-detector). Nach dem Training haben Sie auch die Möglichkeit, [Ihr Modell mit weiteren Bildern zu testen](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/test-your-model) und das Training bei Bedarf zu wiederholen. Jeder Trainingsvorgang für Ihr Modell wird als neue Iteration gespeichert. Weitere Informationen zur Verbesserung der Modellleistung finden Sie in der [Custom Vision-Dokumentation](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-improving-your-classifier).
+1. Nach Abschluss des Trainingsvorgangs wird die Leistung Ihres Modells auf dem Bildschirm angezeigt. Weitere Informationen zum Auswerten dieser Ergebnisse finden Sie unter [Auswerten des Erkennungsmoduls](../cognitive-services/custom-vision-service/get-started-build-detector.md#evaluate-the-detector). Nach dem Training haben Sie auch die Möglichkeit, [Ihr Modell mit weiteren Bildern zu testen](../cognitive-services/custom-vision-service/test-your-model.md) und das Training bei Bedarf zu wiederholen. Jeder Trainingsvorgang für Ihr Modell wird als neue Iteration gespeichert. Weitere Informationen zur Verbesserung der Modellleistung finden Sie in der [Custom Vision-Dokumentation](../cognitive-services/custom-vision-service/getting-started-improving-your-classifier.md).
 
     :::image type="content" source="./media/tutorial-nocode-vision/iteration.png" alt-text="Ergebnisse des Modelltrainings":::
 
@@ -143,7 +143,7 @@ Nachdem Sie dieses Fenster geschlossen haben, können Sie Ihr Vision-Projekt jed
 
 ## <a name="improve-your-model-by-setting-up-retraining"></a>Verbessern Ihres Modells durch Einrichten des erneuten Trainings
 
-Nachdem Sie Ihr Modell trainiert und auf dem Gerät bereitgestellt haben, können Sie die Modellleistung verbessern, indem Sie die Parameter für das erneute Training einrichten, um weitere Trainingsdaten zu erfassen. Dieses Feature ermöglicht die Erfassung von Bildern auf der Grundlage eines Wahrscheinlichkeitsbereichs, um die Leistung eines trainierten Modells zu verbessern. So können Sie beispielsweise festlegen, dass Ihr Gerät nur Trainingsbilder erfassen soll, wenn die Wahrscheinlichkeit niedrig ist. Hier finden Sie einige [zusätzliche Anleitungen](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-improving-your-classifier) zum Hinzufügen weiterer Bilder sowie zum Ausbalancieren von Trainingsdaten.
+Nachdem Sie Ihr Modell trainiert und auf dem Gerät bereitgestellt haben, können Sie die Modellleistung verbessern, indem Sie die Parameter für das erneute Training einrichten, um weitere Trainingsdaten zu erfassen. Dieses Feature ermöglicht die Erfassung von Bildern auf der Grundlage eines Wahrscheinlichkeitsbereichs, um die Leistung eines trainierten Modells zu verbessern. So können Sie beispielsweise festlegen, dass Ihr Gerät nur Trainingsbilder erfassen soll, wenn die Wahrscheinlichkeit niedrig ist. Hier finden Sie einige [zusätzliche Anleitungen](../cognitive-services/custom-vision-service/getting-started-improving-your-classifier.md) zum Hinzufügen weiterer Bilder sowie zum Ausbalancieren von Trainingsdaten.
 
 1. Kehren Sie zum Einrichten des erneuten Trainings zu Ihrem **Projekt** zurück, und navigieren Sie zur **Projektzusammenfassung**.
 1. Wählen Sie auf der Registerkarte **Bilderfassung** die Option **Automatische Bilderfassung** und anschließend **Erneutes Training einrichten** aus.
@@ -161,6 +161,16 @@ Falls Sie für dieses Tutorial eine neue Azure-Ressource erstellt haben und Sie 
 1. Klicken Sie auf **Alle Ressourcen**.
 1. Aktivieren Sie das Kontrollkästchen neben der Ressource, die Sie in diesem Tutorial erstellt haben. Als Ressourcentyp wird **Cognitive Services** angezeigt.
 1. Klicken Sie oben auf dem Bildschirm auf das Symbol **Löschen**.
+
+## <a name="video-walkthrough"></a>Exemplarische Vorgehensweise per Video
+
+Eine visuelle exemplarische Vorgehensweise für die oben beschriebenen Schritte finden Sie im folgenden Video:
+
+</br>
+
+> [!VIDEO https://www.youtube.com/embed/9LvafyazlJM]
+
+</br>
 
 ## <a name="next-steps"></a>Nächste Schritte
 
