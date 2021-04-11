@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 02/22/2021
+ms.date: 03/09/2021
 ms.author: alkohli
-ms.openlocfilehash: 51c4a873ca0f4d8c3013e77399f0f9b948875fb6
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 01ba8e1f22deb376fd461be24d3f66f0a7f5e1ae
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102520709"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102610483"
 ---
 # <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-a-persistentvolume-on-your-azure-stack-edge-pro-device"></a>Verwenden von kubectl zum Ausführen einer zustandsbehafteten Kubernetes-Anwendung mit PersistentVolume auf einem Azure Stack Edge Pro-Gerät
 
@@ -21,7 +21,7 @@ ms.locfileid: "102520709"
 
 In diesem Artikel erfahren Sie, wie Sie eine zustandsbehaftete Einzelinstanzanwendung in Kubernetes mit einem PersistentVolume (PV) und einer Bereitstellung bereitstellen. Die Bereitstellung wendet `kubectl`-Befehle auf einen vorhandenen Kubernetes-Cluster an und stellt die Anwendung MySQL bereit. 
 
-Dieses Verfahren ist für Benutzer vorgesehen, die den Artikel [Kubernetes-Speicher auf dem Azure Stack Edge Pro-Gerät](azure-stack-edge-gpu-kubernetes-storage.md) gelesen haben und mit den [Kubernetes-Speicherkonzepten](https://kubernetes.io/docs/concepts/storage/) vertraut sind.
+Dieses Verfahren ist für Benutzer vorgesehen, die den Artikel [Kubernetes-Speicher auf dem Azure Stack Edge Pro-Gerät](azure-stack-edge-gpu-kubernetes-storage.md) gelesen haben und mit den [Kubernetes-Speicherkonzepten](https://kubernetes.io/docs/concepts/storage/) vertraut sind. 
 
 Azure Stack Edge Pro unterstützt auch das Ausführen von Azure SQL Edge-Containern, die auf ähnliche Weise bereitgestellt werden, wie hier für MySQL beschrieben. Weitere Informationen finden Sie unter [Azure SQL Edge](../azure-sql-edge/overview.md).
 
@@ -62,7 +62,8 @@ Sie können nun eine zustandsbehaftete Anwendung auf dem Azure Stack Edge Pro-Ge
 Zum statischen Bereitstellen eines PV müssen Sie auf Ihrem Gerät eine Freigabe erstellen. Führen Sie die folgenden Schritte aus, um ein PV für Ihre SMB-Freigabe bereitzustellen. 
 
 > [!NOTE]
-> Das in diesem Anleitungsartikel verwendete Beispiel funktioniert nicht bei Verwendung von NFS-Freigaben. Im Allgemeinen können NFS-Freigaben auf Ihrem Azure Stack Edge-Gerät mit Nicht-Datenbankanwendungen bereitgestellt werden.
+> - Das in diesem Anleitungsartikel verwendete Beispiel funktioniert nicht bei Verwendung von NFS-Freigaben. Im Allgemeinen können NFS-Freigaben auf Ihrem Azure Stack Edge-Gerät mit Nicht-Datenbankanwendungen bereitgestellt werden.
+> - Zum Bereitstellen zustandsbehafteter Anwendungen, die mithilfe von Speichervolumes persistenten Speicher bereitstellen, wird die Verwendung von `StatefulSet` empfohlen. In diesem Beispiel wird `Deployment` nur mit einem Replikat verwendet. Das Beispiel eignet sich für Entwicklung und Tests. 
 
 1. Wählen Sie aus, ob Sie eine Edge-Freigabe oder lokale Edge-Freigabe erstellen möchten. Befolgen Sie die Anweisungen unter [Hinzufügen einer Freigabe](azure-stack-edge-manage-shares.md#add-a-share), um eine Freigabe zu erstellen. Aktivieren Sie das Kontrollkästchen **Freigabe mit Edgecomputing verwenden**.
 

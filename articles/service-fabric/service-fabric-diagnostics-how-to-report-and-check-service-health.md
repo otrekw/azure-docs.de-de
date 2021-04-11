@@ -1,17 +1,15 @@
 ---
 title: Melden und Überprüfen der Integrität mit Azure Service Fabric
 description: Erfahren Sie, wie Sie Integritätsberichte aus Ihrem Dienstcode senden und die Integrität Ihres Diensts mithilfe von Integritätsüberwachungstools prüfen können, die von Azure Service Fabric bereitgestellt werden.
-author: srrengar
 ms.topic: conceptual
 ms.date: 02/25/2019
-ms.author: srrengar
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 59c8202b03bf1be2be5a68b75a1d7c7404b2213d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: dc15ea7f062d3912c297050ffac755990fdd3b7a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95998242"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105625941"
 ---
 # <a name="report-and-check-service-health"></a>Melden und Überprüfen der Dienstintegrität
 Wenn in Ihren Diensten Probleme auftreten, hängt Ihre Fähigkeit zum Reagieren auf und Beheben von Vorfällen und Ausfällen von Ihrer Fähigkeit ab, die Probleme schnell zu erkennen. Indem Ihr Dienstcode Probleme und Ausfälle dem Azure Service Fabric-Integritätsdienst meldet, können Sie standardmäßige Systemüberwachungstools nutzen, die Service Fabric zum Überprüfen des Integritätsstatus bereitstellt.

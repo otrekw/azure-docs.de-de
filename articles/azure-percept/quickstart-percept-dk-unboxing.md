@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: quickstart
 ms.date: 02/16/2021
 ms.custom: template-quickstart
-ms.openlocfilehash: 40751401760d877fe3feab39f3fea1f2fbeee54b
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: efa255ba38f7e00785335bf458ecc0ed91da646b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101664299"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104608179"
 ---
 # <a name="quickstart-unbox-and-assemble-your-azure-percept-dk-components"></a>Schnellstart: Auspacken und Zusammensetzen der Komponenten Ihres Azure Percept DK
 
@@ -32,7 +32,7 @@ Nachdem Sie Ihr Azure Percept DK erhalten haben, finden Sie in diesem Handbuch I
 1. Verbinden Sie die DevKit-Komponenten.
 
     > [!NOTE]
-    > Der Netzwerkadapterport befindet sich auf der rechten Seite der Trägerplatine. Die übrigen Ports (2 x USB-A, 1 x USB-C, 1 x HDMI und 1 x Ethernet) und die Taste zum Zurücksetzen befinden sich auf der linken Seite der Trägerplatine.
+    > Der Netzwerkadapterport befindet sich auf der rechten Seite der Trägerplatine. Die übrigen Ports (2 x USB-A, 1 x USB-C und 1 x Ethernet) und der Netzschalter befinden sich auf der linken Seite der Trägerplatine.
 
     1. Schrauben Sie beide WLAN-Antennen von Hand in die Trägerplatine.
 
@@ -44,11 +44,17 @@ Nachdem Sie Ihr Azure Percept DK erhalten haben, finden Sie in diesem Handbuch I
 
     1. Verbinden Sie den Netzadapter/das Netzkabel mit der Trägerplatine und einer Steckdose. Um den Stecker des Netzkabels sicher auf der Trägerplatine zu befestigen, verwenden Sie einen P7-Schraubendreher (nicht im DevKit enthalten), um die Schrauben des Steckers festzuziehen.
 
-    1. Nach Einstecken des Netzkabels in eine Steckdose schaltet sich das Gerät automatisch ein. Die Taste zum Zurücksetzen auf der linken Seite der Trägerplatine leuchtet dann. Warten Sie einige Zeit, bis das Gerät gestartet wird.
+    1. Nach Einstecken des Netzkabels in eine Steckdose schaltet sich das Gerät automatisch ein. Der Netzschalter auf der linken Seite der Trägerplatine leuchtet dann. Warten Sie einige Zeit, bis das Gerät gestartet wird.
 
         > [!NOTE]
-        > Die Taste zum Zurücksetzen dient zum Ausschalten oder Zurücksetzen des Geräts, während es an eine Steckdose angeschlossen ist. Bei einem Stromausfall wird das Gerät automatisch zurückgesetzt und wieder eingeschaltet.
+        > Der Netzschalter dient zum Ausschalten oder Neustarten des Geräts, während es an eine Steckdose angeschlossen ist. Bei einem Stromausfall wird das Gerät automatisch neu gestartet.
+
+Im folgenden Video (0:00 bis 0:50) wird die DevKit-Assembly veranschaulicht:
+
+</br>
+
+> [!VIDEO https://www.youtube.com/embed/-dmcE2aQkDE]
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Jetzt, wo Ihr DevKit angeschlossen und eingeschaltet ist, lesen Sie die Anleitung zur Einrichtung des Azure Percept DK, um die Einrichtung des Geräts abzuschließen. Bei der Einrichtung können Sie Ihr DevKit mit einem WLAN-Netzwerk verbinden, eine SSH-Anmeldung einrichten, einen IoT-Hub erstellen und Ihr DevKit mit Ihrem Azure-Konto verbinden. Nachdem Sie die Einrichtung des Geräts abgeschlossen haben, können Sie mit dem Erstellen von Prototypen beginnen.
+Jetzt, wo Ihr DevKit angeschlossen und eingeschaltet ist, lesen Sie die [Anleitung zur Einrichtung des Azure Percept DK](./quickstart-percept-dk-set-up.md), um die Einrichtung des Geräts abzuschließen. Bei der Einrichtung können Sie Ihr DevKit mit einem WLAN-Netzwerk verbinden, eine SSH-Anmeldung einrichten, einen IoT-Hub erstellen und Ihr DevKit mit Ihrem Azure-Konto verbinden. Nachdem Sie die Einrichtung des Geräts abgeschlossen haben, können Sie mit dem Erstellen von Prototypen beginnen.

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 1e1a8cb24b47277b38bd2d64b733a6f28ee8acff
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 57862a450d313f5d8850b14047ecc3d25d6ba5c1
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101742496"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105563683"
 ---
 # <a name="azure-security-baseline-for-event-hubs"></a>Azure-Sicherheitsbaseline für Event Hubs
 
@@ -44,7 +44,7 @@ Sie können Ihren Azure Event Hubs-Namespace auch mithilfe von Firewalls sichern
 
 **Verantwortlichkeit**: Kunde
 
-**Azure Security Center-Überwachung**: Der [Azure-Sicherheitsvergleichstest](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md) ist die Standardrichtlinieninitiative für Security Center und die Grundlage für die [Empfehlungen von Security Center](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md). Die Azure Policy-Definitionen für diese Kontrolle werden automatisch durch Security Center aktiviert. Warnungen für diese Kontrolle erfordern möglicherweise einen [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md)-Plan für die entsprechenden Dienste.
+**Azure Security Center-Überwachung**: Der [Azure-Sicherheitsvergleichstest](/azure/governance/policy/samples/azure-security-benchmark) ist die Standardrichtlinieninitiative für Security Center und die Grundlage für die [Empfehlungen von Security Center](/azure/security-center/security-center-recommendations). Die Azure Policy-Definitionen für diese Kontrolle werden automatisch durch Security Center aktiviert. Warnungen für diese Kontrolle erfordern möglicherweise einen [Azure Defender](/azure/security-center/azure-defender)-Plan für die entsprechenden Dienste.
 
 **Integrierte Azure Policy-Definitionen – Microsoft.EventHub**:
 
@@ -68,7 +68,7 @@ Sie können Ihren Azure Event Hubs-Namespace auch mithilfe von Firewalls sichern
 
 - [Konfigurieren von DDoS-Schutz](../ddos-protection/manage-ddos-protection.md)
 
-- [Weitere Informationen zur integrierten Threat Intelligence in Azure Security Center](/azure/security-center/security-center-alerts-service-layer)
+- [Weitere Informationen zur integrierten Threat Intelligence in Azure Security Center](../security-center/azure-defender.md)
 
 **Verantwortlichkeit**: Kunde
 
@@ -112,9 +112,9 @@ Zusätzliche Informationen finden Sie unter den aufgeführten Links.
 
 - [Konfigurieren und Verwalten von Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [Integrierte Azure-Richtlinie für Event Hubs-Namespace](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#event-hub)
+- [Integrierte Azure-Richtlinie für Event Hubs-Namespace](../governance/policy/samples/built-in-policies.md#event-hub)
 
-- [Azure Policy-Beispiele für Netzwerke](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#network)
+- [Azure Policy-Beispiele für Netzwerke](../governance/policy/samples/built-in-policies.md#network)
 
 - [Erstellen einer Azure-Blaupause](../governance/blueprints/create-blueprint-portal.md)
 
@@ -126,7 +126,7 @@ Zusätzliche Informationen finden Sie unter den aufgeführten Links.
 
 **Leitfaden**: Verwenden Sie Tags für virtuelle Netzwerke und andere Ressourcen im Zusammenhang mit Netzwerksicherheit und Datenverkehrsfluss, die mit ihren Event Hubs verknüpft sind.
 
-- [Erstellen und Verwenden von Tags](/azure/azure-resource-manager/resource-group-using-tags)
+- [Erstellen und Verwenden von Tags](../azure-resource-manager/management/tag-resources.md)
 
 **Verantwortlichkeit**: Kunde
 
@@ -136,9 +136,9 @@ Zusätzliche Informationen finden Sie unter den aufgeführten Links.
 
 **Leitfaden**: Verwenden Sie das Azure-Aktivitätsprotokoll zum Überwachen der Konfigurationen von Netzwerkressourcen und zum Erkennen von Änderungen bei Netzwerkressourcen, die sich auf Ihre Azure Event Hubs beziehen. Erstellen Sie Warnungen in Azure Monitor, die bei Änderungen an wichtigen Netzwerkressourcen ausgelöst werden.
 
-- [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](/azure/azure-monitor/platform/activity-log-view)
+- [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Erstellen von Warnungen in Azure Monitor](/azure/azure-monitor/platform/alerts-activity-log)
+- [Erstellen von Warnungen in Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Verantwortlichkeit**: Kunde
 
@@ -154,7 +154,7 @@ Zusätzliche Informationen finden Sie unter den aufgeführten Links.
 
 - [Konfigurieren von Diagnoseeinstellungen für Azure Event Hubs](event-hubs-diagnostic-logs.md)
 
-- [Grundlegendes zum Azure-Aktivitätsprotokoll](/azure/azure-monitor/platform/platform-logs-overview)
+- [Grundlegendes zum Azure-Aktivitätsprotokoll](../azure-monitor/essentials/platform-logs-overview.md)
 
 **Verantwortlichkeit**: Kunde
 
@@ -168,11 +168,11 @@ Außerdem können Sie Diagnoseeinstellungen des Azure-Aktivitätsprotokolls akti
 
 - [Aktivieren von Diagnoseeinstellungen für Azure Event Hubs](event-hubs-diagnostic-logs.md)
 
-- [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../azure-monitor/essentials/activity-log.md)
 
 **Verantwortlichkeit**: Kunde
 
-**Azure Security Center-Überwachung**: Der [Azure-Sicherheitsvergleichstest](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md) ist die Standardrichtlinieninitiative für Security Center und die Grundlage für die [Empfehlungen von Security Center](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md). Die Azure Policy-Definitionen für diese Kontrolle werden automatisch durch Security Center aktiviert. Warnungen für diese Kontrolle erfordern möglicherweise einen [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md)-Plan für die entsprechenden Dienste.
+**Azure Security Center-Überwachung**: Der [Azure-Sicherheitsvergleichstest](/azure/governance/policy/samples/azure-security-benchmark) ist die Standardrichtlinieninitiative für Security Center und die Grundlage für die [Empfehlungen von Security Center](/azure/security-center/security-center-recommendations). Die Azure Policy-Definitionen für diese Kontrolle werden automatisch durch Security Center aktiviert. Warnungen für diese Kontrolle erfordern möglicherweise einen [Azure Defender](/azure/security-center/azure-defender)-Plan für die entsprechenden Dienste.
 
 **Integrierte Azure Policy-Definitionen – Microsoft.EventHub**:
 
@@ -182,7 +182,7 @@ Außerdem können Sie Diagnoseeinstellungen des Azure-Aktivitätsprotokolls akti
 
 **Leitfaden**: Legen Sie in Azure Monitor den Aufbewahrungszeitraum Ihres Log Analytics-Arbeitsbereichs gemäß den Compliancevorschriften Ihrer Organisation fest, um Event Hub-bezogene Vorfälle zu erfassen und zu überprüfen.
 
-- [Ändern des Datenaufbewahrungszeitraums](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [Ändern des Datenaufbewahrungszeitraums](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Verantwortlichkeit**: Kunde
 
@@ -192,9 +192,9 @@ Außerdem können Sie Diagnoseeinstellungen des Azure-Aktivitätsprotokolls akti
 
 **Leitfaden**: Analysieren und überwachen Sie Protokolle auf anormales Verhalten, und prüfen Sie die Ergebnisse regelmäßig, die sich auf Ihre Event Hubs beziehen. Verwenden Sie Log Analytics von Azure Monitor, um Protokolle zu überprüfen und Abfragen für Protokolldaten auszuführen. Alternativ dazu können Sie Daten in Azure Sentinel oder eine SIEM-Lösung eines Drittanbieters integrieren und dort weiter nutzen.
 
-- [Weitere Informationen zum Log Analytics-Arbeitsbereich](/azure/azure-monitor/log-query/get-started-portal)
+- [Weitere Informationen zum Log Analytics-Arbeitsbereich](../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [Ausführen benutzerdefinierter Abfragen in Azure Monitor](/azure/azure-monitor/log-query/get-started-queries)
+- [Ausführen benutzerdefinierter Abfragen in Azure Monitor](../azure-monitor/logs/get-started-queries.md)
 
 - [Durchführen des Onboardings für Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -208,11 +208,11 @@ Außerdem können Sie Diagnoseeinstellungen des Azure-Aktivitätsprotokolls akti
 
 Alternativ dazu können Sie auch Daten in Azure Sentinel aktivieren und integrieren. 
 
-- [Grundlegendes zum Azure-Aktivitätsprotokoll](/azure/azure-monitor/platform/platform-logs-overview)
+- [Grundlegendes zum Azure-Aktivitätsprotokoll](../azure-monitor/essentials/platform-logs-overview.md)
 
 - [Konfigurieren von Diagnoseeinstellungen für Azure Event Hubs](event-hubs-diagnostic-logs.md)
 
-- [Erstellen von Warnungen für Protokolldaten eines Log Analytics-Arbeitsbereichs](/azure/azure-monitor/learn/tutorial-response)
+- [Erstellen von Warnungen für Protokolldaten eines Log Analytics-Arbeitsbereichs](../azure-monitor/alerts/tutorial-response.md)
 
 - [Durchführen des Onboardings für Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -310,9 +310,9 @@ Zusätzliche Informationen finden Sie unter den aufgeführten Links.
 
 **Leitfaden**: Verwenden Sie Privileged Identity Management (PIM) von Azure Active Directory (Azure AD) für die Generierung von Protokollen und Warnungen bei verdächtigen oder sicherheitsrelevanten Aktivitäten in der Umgebung. Verwenden Sie Azure AD-Risikoerkennungen, um Warnungen und Berichte zum Verhalten von Risikobenutzern anzuzeigen. Wenn Sie eine zusätzliche Protokollierung benötigen, senden Sie die Risikoerkennungswarnungen von Azure Security Center an Azure Monitor, und konfigurieren Sie mithilfe von Aktionsgruppen benutzerdefinierte Warnungen/Benachrichtigungen.
 
-- [Grundlegendes zu Azure AD-Risikoerkennungen](/azure/active-directory/reports-monitoring/concept-risk-events)
+- [Grundlegendes zu Azure AD-Risikoerkennungen](../active-directory/identity-protection/overview-identity-protection.md)
 
-- [Konfigurieren von Aktionsgruppen für benutzerdefinierte Warnungen und Benachrichtigungen](/azure/azure-monitor/platform/action-groups)
+- [Konfigurieren von Aktionsgruppen für benutzerdefinierte Warnungen und Benachrichtigungen](../azure-monitor/alerts/action-groups.md)
 
 **Verantwortlichkeit**: Kunde
 
@@ -346,7 +346,7 @@ Zusätzliche Informationen finden Sie unter den aufgeführten Links.
 
 Rotieren Sie außerdem regelmäßig die Shared Access Signatures (SAS) Ihrer Event Hubs.
 
-- [Grundlegendes zur Azure AD-Berichterstellung](/azure/active-directory/reports-monitoring/)
+- [Grundlegendes zur Azure AD-Berichterstellung](../active-directory/reports-monitoring/index.yml)
 
 - [Verwenden von Zugriffsüberprüfungen für Azure-Identitäten](../active-directory/governance/access-reviews-overview.md)
 
@@ -362,7 +362,7 @@ Rotieren Sie außerdem regelmäßig die Shared Access Signatures (SAS) Ihrer Eve
 
 Sie können diesen Prozess optimieren, indem Sie Diagnoseeinstellungen für Azure AD-Benutzerkonten erstellen und die Überwachungs- und Anmeldeprotokolle an einen Log Analytics-Arbeitsbereich senden. Sie können gewünschte Warnungen in Log Analytics konfigurieren.
 
-- [Integrieren von Azure-Aktivitätsprotokollen in Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Integrieren von Azure-Aktivitätsprotokollen in Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 - [Autorisieren des Zugriffs auf Event Hubs-Ressourcen mit Azure AD](authorize-access-azure-active-directory.md)
 
@@ -374,7 +374,7 @@ Sie können diesen Prozess optimieren, indem Sie Diagnoseeinstellungen für Azur
 
 **Leitfaden**: Verwenden Sie die Azure Active Directory-Features für Identitätsschutz und Risikoerkennung, um automatisierte Reaktionen auf erkannte verdächtige Aktionen im Zusammenhang mit Ihren Event Hubs-fähigen Ressourcen zu konfigurieren. Sie sollten automatisierte Antworten über Azure Sentinel aktivieren, um die Sicherheitsmaßnahmen Ihrer Organisation zu implementieren.
 
-- [Anzeigen riskanter Azure AD-Anmeldungen](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [Anzeigen riskanter Azure AD-Anmeldungen](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Konfigurieren und Aktivieren von Risikorichtlinien für den Identitätsschutz](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
@@ -388,7 +388,7 @@ Sie können diesen Prozess optimieren, indem Sie Diagnoseeinstellungen für Azur
 
 **Leitfaden**: Zurzeit nicht verfügbar. Kunden-Lockbox wird für Event Hubs noch nicht unterstützt.
 
-- [Unterstützte Dienste und Szenarios bei allgemeiner Verfügbarkeit](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
+- [Unterstützte Dienste und Szenarios bei allgemeiner Verfügbarkeit](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
 **Verantwortlichkeit**: Kunde
 
@@ -402,7 +402,7 @@ Sie können diesen Prozess optimieren, indem Sie Diagnoseeinstellungen für Azur
 
 **Leitfaden**: Verwenden Sie Tags für Ressourcen Ihrer Event Hubs als Hilfe beim Nachverfolgen von Azure-Ressourcen, die vertrauliche Informationen speichern oder verarbeiten.
 
-- [Erstellen und Verwenden von Tags](/azure/azure-resource-manager/resource-group-using-tags)
+- [Erstellen und Verwenden von Tags](../azure-resource-manager/management/tag-resources.md)
 
 **Verantwortlichkeit**: Kunde
 
@@ -414,13 +414,13 @@ Sie können diesen Prozess optimieren, indem Sie Diagnoseeinstellungen für Azur
 
 Sie können Ihren Azure Event Hubs-Namespace auch mithilfe von Firewalls sichern. Azure Event Hubs unterstützt IP-basierte Zugriffssteuerung zur Unterstützung der Firewall für eingehende Verbindungen. Sie können Firewallregeln über das Azure-Portal, mit Azure Resource Manager-Vorlagen oder der Azure CLI bzw Azure PowerShell festlegen.
 
-- [Erstellen zusätzlicher Azure-Abonnements](/azure/billing/billing-create-subscription)
+- [Erstellen zusätzlicher Azure-Abonnements](../cost-management-billing/manage/create-subscription.md)
 
-- [Erstellen von Verwaltungsgruppen](/azure/governance/management-groups/create)
+- [Erstellen von Verwaltungsgruppen](../governance/management-groups/create-management-group-portal.md)
 
 - [Konfigurieren von IP-Firewallregeln für Azure Event Hubs-Namespaces](event-hubs-ip-filtering.md)
 
-- [Verwenden von Tags zum Organisieren von Azure-Ressourcen und Verwaltungshierarchie](/azure/azure-resource-manager/resource-group-using-tags)
+- [Verwenden von Tags zum Organisieren von Azure-Ressourcen und Verwaltungshierarchie](../azure-resource-manager/management/tag-resources.md)
 
 - [Erstellen eines virtuellen Netzwerks](../virtual-network/quick-create-portal.md)
 
@@ -440,7 +440,7 @@ Microsoft verwaltet die zugrunde liegende Infrastruktur für Azure Event Hubs un
 
 - [Integrieren von Azure Event Hubs in Azure Private Link](private-link-service.md)
 
-- [Grundlegendes zu Netzwerksicherheitsgruppen und Diensttags](/azure/virtual-network/security-overview)
+- [Grundlegendes zu Netzwerksicherheitsgruppen und Diensttags](../virtual-network/network-security-groups-overview.md)
 
 - [Grundlegendes zum Schutz von Kundendaten in Azure](../security/fundamentals/protection-customer-data.md)
 
@@ -484,7 +484,7 @@ Für die zugrundeliegende Plattform, die von Microsoft verwaltet wird, behandelt
 
 **Leitfaden**: Verwenden Sie Azure Monitor mit dem Azure-Aktivitätsprotokoll, um Warnungen für den Fall zu erstellen, dass Änderungen an Produktionsinstanzen von Azure Event Hubs und anderen kritischen bzw. verwandten Ressourcen vorgenommen werden.
 
-- [Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls](/azure/azure-monitor/platform/alerts-activity-log)
+- [Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Verantwortlichkeit**: Kunde
 
@@ -512,7 +512,7 @@ Für die zugrundeliegende Plattform, die von Microsoft verwaltet wird, behandelt
 
 **Leitfaden**: Wenden Sie Tags auf Ihre Azure-Ressourcen an, die Metadaten erzeugen, um sie logisch in einer Taxonomie zu organisieren.
 
-- [Erstellen und Verwenden von Tags](/azure/azure-resource-manager/resource-group-using-tags)
+- [Erstellen und Verwenden von Tags](../azure-resource-manager/management/tag-resources.md)
 
 **Verantwortlichkeit**: Kunde
 
@@ -522,11 +522,11 @@ Für die zugrundeliegende Plattform, die von Microsoft verwaltet wird, behandelt
 
 **Leitfaden**: Verwenden Sie nach Bedarf Tagging, Verwaltungsgruppen und separate Abonnements zum Organisieren und Nachverfolgen von Azure Event Hubs-Namespaces und zugehörigen Ressourcen. Stimmen Sie den Bestand regelmäßig ab, und stellen Sie sicher, dass nicht autorisierte Ressourcen rechtzeitig aus dem Abonnement gelöscht werden.
 
-- [Erstellen zusätzlicher Azure-Abonnements](/azure/billing/billing-create-subscription)
+- [Erstellen zusätzlicher Azure-Abonnements](../cost-management-billing/manage/create-subscription.md)
 
-- [Erstellen von Verwaltungsgruppen](/azure/governance/management-groups/create)
+- [Erstellen von Verwaltungsgruppen](../governance/management-groups/create-management-group-portal.md)
 
-- [Erstellen und Verwenden von Tags](/azure/azure-resource-manager/resource-group-using-tags)
+- [Erstellen und Verwenden von Tags](../azure-resource-manager/management/tag-resources.md)
 
 **Verantwortlichkeit**: Kunde
 
@@ -562,7 +562,7 @@ Zusätzliche Informationen finden Sie unter den aufgeführten Links.
 
 - [Konfigurieren und Verwalten von Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [Ablehnen eines bestimmten Ressourcentyps mit Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [Ablehnen eines bestimmten Ressourcentyps mit Azure Policy](../governance/policy/samples/built-in-policies.md#general)
 
 **Verantwortlichkeit**: Kunde
 
@@ -592,7 +592,7 @@ Zusätzliche Informationen finden Sie unter den aufgeführten Links.
 
 Zusätzliche Informationen finden Sie unter den aufgeführten Links.
 
-- [Integrierte Azure-Richtlinie für Event Hubs-Namespace](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#event-hub)
+- [Integrierte Azure-Richtlinie für Event Hubs-Namespace](../governance/policy/samples/built-in-policies.md#event-hub)
 
 - [Anzeigen verfügbarer Azure Policy-Aliase](/powershell/module/az.resources/get-azpolicyalias)
 
@@ -639,15 +639,15 @@ Zusätzliche Informationen finden Sie unter den aufgeführten Links.
 
 **Leitfaden**: Verwenden Sie für virtuelle Azure-Computer oder Webanwendungen, die in Azure App Service für den Zugriff auf Ihre Event Hubs ausgeführt werden, verwaltete Dienstidentitäten in Verbindung mit Azure Key Vault, um die SAS-Verwaltung (Shared Access Signature) für Ihre Azure Event Hubs-Bereitstellungen zu vereinfachen und zu schützen. Stellen Sie sicher, dass Azure Key Vault mit vorläufigem Löschen konfiguriert ist.
 
-- [Authentifizieren einer verwalteten Identität mit Azure Active Directory (Azure AD) für den Zugriff auf Event Hubs-Ressourcen](https://docs.microsoft.com/azure/event-hubs/authenticate-managed-identity?tabs=latest)
+- [Authentifizieren einer verwalteten Identität mit Azure Active Directory (Azure AD) für den Zugriff auf Event Hubs-Ressourcen](./authenticate-managed-identity.md?tabs=latest)
 
 - [Konfigurieren von kundenseitig verwalteten Schlüsseln für Event Hubs](configure-customer-managed-key.md)
 
 - [Integrieren mit verwalteten Azure-Identitäten](../azure-app-configuration/howto-integrate-azure-managed-service-identity.md)
 
-- [Erstellen einer Key Vault-Instanz](/azure/key-vault/quick-create-portal)
+- [Erstellen einer Key Vault-Instanz](../key-vault/secrets/quick-create-portal.md)
 
-- [Bereitstellen der Key Vault-Authentifizierung mit einer verwalteten Identität](/azure/key-vault/managed-identity)
+- [Bereitstellen der Key Vault-Authentifizierung mit einer verwalteten Identität](../key-vault/general/assign-access-policy-portal.md)
 
 **Verantwortlichkeit**: Kunde
 
@@ -659,7 +659,7 @@ Zusätzliche Informationen finden Sie unter den aufgeführten Links.
 
 Verwenden Sie verwaltete Identitäten, um Azure-Dienste mit einer automatisch verwalteten Identität in Azure Active Directory (AAD) bereitzustellen. Mit verwalteten Identitäten können Sie die Authentifizierung bei jedem Dienst verwenden, der die Azure AD-Authentifizierung unterstützt, einschließlich Azure Key Vault. Hierfür müssen keine Anmeldeinformationen im Code enthalten sein.
 
-- [Authentifizieren einer verwalteten Identität mit Azure AD für den Zugriff auf Event Hubs-Ressourcen](https://docs.microsoft.com/azure/event-hubs/authenticate-managed-identity?tabs=latest)
+- [Authentifizieren einer verwalteten Identität mit Azure AD für den Zugriff auf Event Hubs-Ressourcen](./authenticate-managed-identity.md?tabs=latest)
 
 - [Konfigurieren von kundenseitig verwalteten Schlüsseln für Event Hubs](configure-customer-managed-key.md)
 
@@ -703,7 +703,7 @@ Microsoft-Antischadsoftware ist auf dem zugrunde liegenden Host für die Azure-D
 
 **Leitfaden**: Konfigurieren georedundanter Notfallwiederherstellung für Azure Event Hubs. Falls gesamte Azure-Regionen oder -Rechenzentren ausfallen (wenn keine Verfügbarkeitszonen verwendet werden), ist es von entscheidender Bedeutung, dass die Datenverarbeitung in einer anderen Region oder in einem anderen Rechenzentrum fortgesetzt werden kann. Daher sind georedundante Notfallwiederherstellung und Georeplikation wichtige Funktionen für jedes Unternehmen. Azure Event Hubs unterstützt die georedundante Notfallwiederherstellung und die Georeplikation auf Namespaceebene. 
 
-- [Grundlegendes zur georedundanten Notfallwiederherstellung für Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/event-hubs-geo-dr#availability-zones)
+- [Grundlegendes zur georedundanten Notfallwiederherstellung für Azure Event Hubs](./event-hubs-geo-dr.md#availability-zones)
 
 **Verantwortlichkeit**: Kunde
 
@@ -739,11 +739,11 @@ Stellen Sie mithilfe des folgenden PowerShell-Befehls sicher, dass regelmäßig 
 
 Konfigurieren Sie das vorläufige Löschen für das Azure Storage-Konto, das zum Erfassen von Event Hubs-Daten verwendet wird. Beachten Sie, dass dieses Feature für Azure Data Lake Storage Gen 2 noch nicht unterstützt wird.
 
-- [Aktivieren des vorläufigen Löschens in Key Vault](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [Aktivieren des vorläufigen Löschens in Key Vault](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 - [Einrichten eines Schlüsseltresors mit Schlüsseln](configure-customer-managed-key.md)
 
-- [Vorläufiges Löschen für Azure Storage-Blobs](https://docs.microsoft.com//azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [Vorläufiges Löschen für Azure Storage-Blobs](//azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
 
 **Verantwortlichkeit**: Kunde
 
@@ -831,5 +831,5 @@ Konfigurieren Sie das vorläufige Löschen für das Azure Storage-Konto, das zum
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Sehen Sie sich die [Übersicht über Version 2 des Azure-Sicherheitsvergleichstests](/azure/security/benchmarks/overview) an.
-- Erfahren Sie mehr über [Azure-Sicherheitsbaselines](/azure/security/benchmarks/security-baselines-overview).
+- Sehen Sie sich die [Übersicht über Version 2 des Azure-Sicherheitsvergleichstests](../security/benchmarks/overview.md) an.
+- Erfahren Sie mehr über [Azure-Sicherheitsbaselines](../security/benchmarks/security-baselines-overview.md).

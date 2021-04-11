@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2020
 ms.author: duau
-ms.openlocfilehash: 7f40b48473c04238d504288307039948fcacf90a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5989f91233448c04d50ba1c69a06851b91426a03
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97511143"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167803"
 ---
 # <a name="protocol-support-for-http-headers-in-azure-front-door"></a>Protokollunterstützung für HTTP-Header in Azure Front Door
 Dieser Artikel beschreibt das Protokoll, das Front Door mit Teilen des Aufrufpfads unterstützt (siehe Abbildung). Die folgenden Abschnitte enthalten weitere Informationen zu HTTP-Headern, die von Front Door unterstützt werden.
@@ -40,7 +40,7 @@ Front Door enthält Header für eine eingehende Anforderung, sofern sie nicht au
 | X-Azure-SocketIP |  *X-Azure-SocketIP: 127.0.0.1* </br> Stellt die Socket-IP-Adresse dar, die mit der TCP-Verbindung verknüpft ist, von der die aktuelle Anforderung stammt. Die Client-IP-Adresse einer Anforderung entspricht möglicherweise nicht der Socket-IP-Adresse, da sie durch einen Benutzer willkürlich überschrieben werden kann.|
 | X-Azure-Ref | *X-Azure-Ref: 0zxV+XAAAAABKMMOjBv2NT4TY6SQVjC0zV1NURURHRTA2MTkANDM3YzgyY2QtMzYwYS00YTU0LTk0YzMtNWZmNzA3NjQ3Nzgz* </br> Dies ist eine eindeutige Referenzzeichenfolge, die eine von Front Door verarbeitete Anforderung identifiziert. Sie wird zum Durchsuchen von Zugriffsprotokollen verwendet und ist zur Problembehandlung wichtig.|
 | X-Azure-RequestChain | *X-Azure-RequestChain: hops=1* </br> Diesen Header verwendet Front Door, um Anforderungsschleifen zu erkennen, und Benutzer sollten dafür keine Abhängigkeit erstellen. |
-| X-Azure-FDID | *X-Azure-FDID: 55ce4ed1-4b06-4bf1-b40e-4638452104da* <br/> Eine Verweiszeichenfolge, die angibt, dass die Anforderung von einer bestimmten Front Door-Ressource stammt. Der Wert kann im Azure-Portal angezeigt oder über die Verwaltungs-API abgerufen werden. Sie können diesen Header in Kombination mit IP-ACLs verwenden, um den Endpunkt so zu sperren, dass nur Anforderungen von einer bestimmten Front Door-Ressource angenommen werden. [Weitere Informationen](front-door-faq.md#how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door) finden Sie in den häufig gestellten Fragen (FAQ). |
+| X-Azure-FDID | *X-Azure-FDID: 55ce4ed1-4b06-4bf1-b40e-4638452104da* <br/> Eine Verweiszeichenfolge, die angibt, dass die Anforderung von einer bestimmten Front Door-Ressource stammt. Der Wert kann im Azure-Portal angezeigt oder über die Verwaltungs-API abgerufen werden. Sie können diesen Header in Kombination mit IP-ACLs verwenden, um den Endpunkt so zu sperren, dass nur Anforderungen von einer bestimmten Front Door-Ressource angenommen werden. [Weitere Informationen](front-door-faq.yml#how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door-) finden Sie in den häufig gestellten Fragen (FAQ). |
 | X-Forwarded-For | *X-Forwarded-For: 127.0.0.1* </br> Das HTTP-Headerfeld „X-Forwarded-For (XFF)“ identifiziert oft die Ursprungs-IP-Adresse eines Clients, der über einen HTTP-Proxy oder Lastverteiler eine Verbindung zu einem Webserver herstellt. Falls ein XFF-Header vorhanden ist, fügt Front Door die Socket-IP-Adresse des Clients daran an, oder fügt den XFF-Header mit der Socket-IP-Adresse des Clients hinzu. |
 | X-Forwarded-Host | *X-Forwarded-Host: contoso.azurefd.net* </br> Das X-Forwarded-Host-HTTP-Headerfeld ist eine gängige Methode zum Identifizieren des ursprünglich vom Client im Host-HTTP-Anforderungsheader angeforderten Hosts. Dies liegt daran, dass der Hostname aus Front Door für den Back-End-Server, der die Anforderung verarbeitet, abweichen kann. |
 | X-Forwarded-Proto | *X-Forwarded-Proto: http* </br> Das X-Forwarded-Proto-HTTP-Headerfeld wird häufig zum Identifizieren des Ursprungsprotokolls einer HTTP-Anforderung verwendet. Front Door könnte basierend auf der Konfiguration über HTTPS mit dem Back-End kommunizieren. Dies gilt auch, wenn eine HTTP-Anforderung an den Reverseproxy gesendet wird. |

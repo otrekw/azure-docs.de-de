@@ -3,12 +3,12 @@ title: 'Tutorial: Sichern von SAP HANA-Datenbanken auf virtuellen Azure-Compute
 description: In diesem Tutorial wird beschrieben, wie Sie SAP HANA-Datenbanken, die auf einem virtuellen Azure-Computer ausgeführt werden, in einem Azure Backup Recovery Services-Tresor sichern.
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: 5548717b25ea3ec027ba5f588e5e28faafbb5d6f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 00109de349c1fdfdbaff9de30d18f64d8b986a59
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101703680"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104587643"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>Tutorial: Sichern von SAP HANA-Datenbanken auf einem virtuellen Azure-Computer
 
@@ -167,6 +167,18 @@ Die Ausgabe des Befehls sollte den Schlüssel {SID} {DBNAME} und den Benutzer AZ
 
 >[!NOTE]
 > Stellen Sie sicher, dass sich unter `/usr/sap/{SID}/home/.hdb/` eine eindeutige Gruppe von SSFS-Dateien befindet. In diesem Pfad darf nur ein Ordner vorhanden sein.
+
+Nachfolgend finden Sie eine Zusammenfassung der Schritte, die zum Abschließen der Ausführung des Vorregistrierungsskripts erforderlich sind.
+
+|Wer  |From  |Auszuführendes Programm  |Kommentare  |
+|---------|---------|---------|---------|
+|```<sid>```adm (Betriebssystem)     |  HANA-Betriebssystem       |   Lesen Sie das Tutorial, und laden Sie das Vorregistrierungsskript herunter.      |   Lesen Sie die [oben angegebenen Voraussetzungen](#prerequisites), und laden Sie [hier](https://aka.ms/scriptforpermsonhana) das Vorregistrierungsskript herunter.  |
+|```<sid>```adm (Betriebssystem) und SYSTEM-Benutzer (HANA)    |      HANA-Betriebssystem   |   Führen Sie den Befehl „hdbuserstore Set“ aus.      |   Beispiel: hdbuserstore Set SYSTEM hostname>:3```<Instance#>```13 SYSTEM ```<password>``` **Hinweis:** Verwenden Sie nicht die IP-Adresse oder den vollqualifizierten Domänennamen, sondern den Hostnamen.      |
+|```<sid>```adm (Betriebssystem)    |   HANA-Betriebssystem      |  Führen Sie den Befehl „hdbuserstore List“ aus.       |   Überprüfen Sie, ob das Ergebnis den Standardspeicher enthält: ```KEY SYSTEM  ENV : <hostname>:3<Instance#>13  USER: SYSTEM```      |
+|Root (Betriebssystem)     |   HANA-Betriebssystem        |    Führen Sie das Azure Backup-HANA-Vorregistrierungsskript aus.      |    ```./msawb-plugin-config-com-sap-hana.sh -a --sid <SID> -n <Instance#> --system-key SYSTEM```     |
+|```<sid>```adm (Betriebssystem)    |  HANA-Betriebssystem       |   Führen Sie den Befehl „hdbuserstore List“ aus.      |    Überprüfen Sie, ob das Ergebnis neue Zeilen enthält: ```KEY AZUREWLBACKUPHANAUSER  ENV : localhost: 3<Instance#>13   USER: AZUREWLBACKUPHANAUSER```     |
+
+Nach erfolgreicher Ausführung des Vorregistrierungsskripts und anschließender Überprüfung können Sie die [Konnektivitätsanforderungen](#set-up-network-connectivity) überprüfen und dann über den Recovery Services-Tresor die [Sicherung konfigurieren](#discover-the-databases).
 
 ## <a name="create-a-recovery-services-vault"></a>Erstellen eines Recovery Services-Tresors
 

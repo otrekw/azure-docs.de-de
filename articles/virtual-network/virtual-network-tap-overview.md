@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/14/2019
 ms.author: kaanan
-ms.openlocfilehash: 8347dcd60dcdfbf03f52e25eb24744909c69465a
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 6160dd09edc57f2f52306d4dad0dde413fff0616
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99804869"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102617181"
 ---
 # <a name="virtual-network-tap"></a>TAP eines virtuellen Netzwerks
 > [!IMPORTANT]
-> Die Vorschau des TAP für virtuelle Netzwerke ist derzeit in allen Azure-Regionen ausgesetzt. Sie können eine E-Mail mit Ihrer Abonnement-ID an <azurevnettap@microsoft.com> senden. Wir informieren Sie über künftige Updates zur Vorschau. In der Zwischenzeit können Sie Agent-basierte Lösungen oder NVA-Lösungen verwenden, die über unsere im [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/networking?page=1&subcategories=appliances%3Ball&search=Network%20Traffic&filters=partners) verfügbaren [Paketbroker-Partnerlösungen](#virtual-network-tap-partner-solutions) Funktionen für TAP-/Netzwerksichtbarkeit bieten.
+> Die Vorschau des TAP für virtuelle Netzwerke ist derzeit in allen Azure-Regionen ausgesetzt. Sie können eine E-Mail mit Ihrer Abonnement-ID an <azurevnettap@microsoft.com> senden. Wir informieren Sie über künftige Updates zur Vorschau. In der Zwischenzeit können Sie Agent-basierte Lösungen oder NVA-Lösungen verwenden, die über unsere im [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking?page=1&subcategories=appliances%3Ball&search=Network%20Traffic&filters=partners) verfügbaren [Paketbroker-Partnerlösungen](#virtual-network-tap-partner-solutions) Funktionen für TAP-/Netzwerksichtbarkeit bieten.
 
 Mit dem TAP (Terminal Access Point) für virtuelle Azure-Netzwerke können Sie Ihren VM-Netzwerkdatenverkehr kontinuierlich an einen Netzwerkpaketcollector oder ein Analysetool streamen. Der Collector oder das Analysetool wird von einem Partner für [virtuelle Netzwerkappliances](https://azure.microsoft.com/solutions/network-appliances/) bereitgestellt. Eine Liste der Partnerlösungen, die für die Arbeit mit einem TAP eines virtuellen Netzwerks geprüft wurden, finden Sie unter [Partnerlösungen für TAPs von virtuellen Netzwerken](#virtual-network-tap-partner-solutions).
 In der folgenden Abbildung wird gezeigt, wie der TAP des virtuellen Netzwerks funktioniert. Sie können eine [Netzwerkschnittstelle](virtual-network-network-interface.md) um eine TAP-Konfiguration erweitern, die einem in Ihrem virtuellen Netzwerk bereitgestellten virtuellen Computer angefügt ist. Das Ziel ist eine IP-Adresse eines virtuellen Netzwerks, das sich im gleichen virtuellen Netzwerk wie die überwachte Netzwerkschnittstelle oder einem [mittels Peering verknüpften virtuellen Netzwerk](virtual-network-peering-overview.md) befindet. Die Collectorlösung für den TAP des virtuellen Netzwerks kann für Hochverfügbarkeitszwecke hinter einem internen Azure-Lastenausgleich bereitgestellt werden.
@@ -64,6 +64,7 @@ Die Konten, mit denen Sie die TAP-Konfiguration auf Netzwerkschnittstellen anwen
 - [Flowmon](https://www.flowmon.com/blog/azure-vtap)
 - [NetFort LANGuardian](https://www.netfort.com/languardian/solutions/visibility-in-azure-network-tap/)
 - [Netscout vSTREAM]( https://www.netscout.com/marketplace-azure)
+- [Noname Security](https://nonamesecurity.com/)
 - [Riverbed SteelCentral AppResponse]( https://www.riverbed.com/products/steelcentral/steelcentral-appresponse-11.html)
 - [RSA NetWitness® Platform](https://www.rsa.com/content/dam/en/solution-brief/rsa-netwitness-platform-overview-for-federal-agencies.pdf)
 - [Vectra Cognito](https://vectra.ai/microsoftazure)

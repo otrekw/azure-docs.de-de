@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: zhshang
-ms.openlocfilehash: 9d0e94cf2318db777bb44c15037f73531cd969fa
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 3c4d28addac0ecfc9605678582562550a1c96b8d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100593324"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103491944"
 ---
 # <a name="messages-and-connections-in-azure-signalr-service"></a>Nachrichten und Verbindungen in Azure SignalR Service
 
@@ -48,9 +48,16 @@ Sie besitzen drei Clients und einen Anwendungsserver. Ein Client sendet eine 4 
 
 Es gibt Server- und Clientverbindungen mit Azure SignalR Service. Standardmäßig beginnt jeder Anwendungsserver mit fünf Anfangsverbindungen pro Hub, und jeder Client hat eine Clientverbindung.
 
-Die im Azure-Portal angezeigte Verbindungsanzahl umfasst sowohl Server- als auch Clientverbindungen.
-
 Ein Beispiel: Angenommen, Sie verfügen über zwei Anwendungsserver und definieren fünf Hubs im Code. Dadurch ergeben sich 50 Serververbindungen: 2 App-Server × 5 Hubs × 5 Verbindungen pro Hub
+
+Die im Azure-Portal angezeigte Verbindungsanzahl umfasst Serververbindungen, Clientverbindungen, Diagnoseverbindungen und Verbindungen für Liveablaufverfolgungen. Die Verbindungstypen werden in der folgenden Liste definiert:
+
+- **Serververbindung**: Verbindet den Azure SignalR Service mit dem App-Server.
+- **Clientverbindung**: Verbindet den Azure SignalR Service mit der Client-App.
+- **Diagnoseverbindung**: Eine besondere Art der Clientverbindung, die ein ausführlicheres Protokoll liefern kann, was sich auf die Leistung auswirken könnte. Diese Art von Client ist für die Problembehandlung konzipiert.
+- **Verbindung für Liveablaufverfolgungen**: Es wird eine Verbindung mit dem Endpunkt der Liveablaufverfolgung hergestellt und Liveablaufverfolgungen werden vom Azure SignalR Service empfangen. 
+ 
+Beachten Sie, dass eine Verbindung für Liveablaufverfolgungen nicht als Client- oder Serververbindung gezählt wird. 
 
 Bei ASP.NET SignalR werden Serververbindungen anders berechnet. In diesem Fall ist zusätzlich zu den definierten Hubs ein einzelner Standardhub enthalten. Jeder Anwendungsserver benötigt standardmäßig fünf weitere anfängliche Serververbindungen. Die Anzahl anfänglicher Verbindungen für den Standardhub bleibt mit anderen Hubs konsistent.
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: genli
-ms.openlocfilehash: 518b8e33ac9adfdd1aa121e0cb8d1558545980e7
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: c28790b2ef423a3d0f996d7c6030b04198756eb1
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054853"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102607610"
 ---
 # <a name="troubleshoot-outbound-smtp-connectivity-problems-in-azure"></a>Behandeln von Problemen mit ausgehenden SMTP-Verbindungen in Azure
 
@@ -76,6 +76,10 @@ Für Abonnements der folgenden Typen, die nach dem 15. November 2017 erstellt 
 Wenn Sie E-Mails von einer Azure-VM direkt an externe E-Mail-Anbieter senden möchten (ohne authentifiziertes SMTP-Relay), können Sie die Aufhebung der Einschränkung anfordern. Erstellen Sie dazu eine Supportanfrage mit dem folgenden Problemtyp: **Technisch** > **virtuelles Netzwerk** > **Konnektivität** > **E-Mail kann nicht gesendet werden (SMTP/Port 25)** . Geben Sie unbedingt Informationen dazu an, warum Ihre Bereitstellung E-Mails direkt an E-Mail-Anbieter senden muss, anstatt ein authentifiziertes Relay zu verwenden. Die Anfragen werden geprüft und nach Ermessen von Microsoft genehmigt. Die Anforderungen werden erst nach zusätzlichen Betrugsüberprüfungen erteilt. 
 
 Sobald für ein Abonnement eine Ausnahmeregelung gilt und die VMs im Azure-Portal beendet und erneut gestartet wurden, werden alle VMs in diesem Abonnement in Zukunft ausgenommen. Die Ausnahme gilt nur für das angeforderte Abonnement und ausschließlich für den VM-Datenverkehr, der direkt an das Internet weitergeleitet wird.
+
+## <a name="changing-subscription-type"></a>Ändern des Abonnementtyps
+
+Wenn Sie den Abonnementtyp ändern oder wenn Ihr Cloud Solution Provider-Abonnement oder Ihr Abonnement mit nutzungsbasierter Bezahlung genehmigt wird, müssen Sie die VM beenden, ihre Zuordnung aufheben und sie dann neu starten, damit die neue Richtlinie wirksam wird. Wenn Sie von einem Abonnementtyp, der standardmäßig genehmigt wird, zu einem nicht zulässigen Abonnementtyp wechseln, kann Port 25 entsprechend aufgrund der Änderungen an der Bereitstellung blockiert werden.
 
 ## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Support kontaktieren
 

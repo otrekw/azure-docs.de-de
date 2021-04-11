@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 9576730d9c4f8d4d237dce9ce8f207ea14b04f45
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.openlocfilehash: d91c88da1416071b5eee2a8eb10e3029086839e9
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103471597"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105561779"
 ---
 # <a name="enable-logging-in-ml-training-runs"></a>Aktivieren der Protokollierung in ML-Trainingsausführungen
 
@@ -41,7 +41,7 @@ Sie können mehrere Datentypen protokollieren, einschließlich skalarer Werte, L
 
 ### <a name="logging-run-metrics"></a>Protokollieren von Ausführungsmetriken 
 
-Verwenden Sie die folgenden Methoden in den Protokollierungs-APIs, um die Visualisierung Ihrer Metriken anzupassen. Beachten Sie die [Diensteinschränkungen](https://docs.microsoft.com/azure/machine-learning/resource-limits-quotas-capacity#metrics) für diese protokollierten Metriken. 
+Verwenden Sie die folgenden Methoden in den Protokollierungs-APIs, um die Visualisierung Ihrer Metriken anzupassen. Beachten Sie die [Diensteinschränkungen](./resource-limits-quotas-capacity.md#metrics) für diese protokollierten Metriken. 
 
 |Protokollierter Wert|Beispielcode| Formatieren im Portal|
 |----|----|----|

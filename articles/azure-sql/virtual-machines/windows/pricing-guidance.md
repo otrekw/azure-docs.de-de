@@ -16,12 +16,12 @@ ms.date: 08/09/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: bd58f18959df3aa290083f907be8ab703366a7c6
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: d980b92bc4effc58ef84ef6ec70c3908f575e484
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97360100"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102615600"
 ---
 # <a name="pricing-guidance-for-sql-server-on-azure-vms"></a>Preisinformationen für Azure-VMs mit SQL Server
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -97,10 +97,7 @@ Informationen zum Erstellen einer Azure-VM mit SQL Server 2017 mit einem dieser
 
 ## <a name="bring-your-own-license-byol"></a><a id="byol"></a> BYOL (Bring Your Own License)
 
-Das Konzept der **Verwendung eigener SQL-Lizenzen über die „Lizenzmobilität“** , auch als **BYOL** bezeichnet, bedeutet, dass Sie eine vorhandene SQL Server-Volumenlizenz mit Software Assurance auf einem virtuellen Azure-Computer nutzen. Bei einem virtuellen SQL Server-Computer mit BYOL-Modell werden nur die Kosten für die Ausführung des Computers berechnet, nicht für die SQL Server-Lizenzierung. Dies setzt voraus, dass Sie bereits über ein Volumenlizenzprogramm Lizenzen und Software Assurance erworben haben.
-
-> [!IMPORTANT]
-> BYOL-Images erfordern ein Enterprise Agreement mit Software Assurance. Sie sind derzeit nicht im Rahmen von Azure Cloud Solution Partner (CSP) verfügbar. CSP-Kunden können eigene Lizenzen nutzen, indem sie ein Image mit nutzungsbasierter Bezahlung bereitstellen und dann den [Azure-Hybridvorteil](licensing-model-azure-hybrid-benefit-ahb-change.md) aktivieren.
+Das Konzept der **Verwendung eigener SQL-Lizenzen über die „Lizenzmobilität“** , auch als **BYOL** bezeichnet, bedeutet, dass Sie eine vorhandene SQL Server-Volumenlizenz mit Software Assurance auf einem virtuellen Azure-Computer nutzen. Bei einem virtuellen SQL Server-Computer mit BYOL-Modell werden nur die Kosten für die Ausführung des Computers berechnet, nicht für die SQL Server-Lizenzierung. Dies setzt voraus, dass Sie bereits Lizenzen und Software Assurance über ein Volumenlizenzprogramm oder Cloud Solution Partner erworben haben.
 
 > [!NOTE]
 > BYOL-Images sind zurzeit nur für virtuelle Windows-Computer verfügbar. Sie können SQL Server jedoch manuell auf einem virtuellen Nur-Linux-Computer installieren. Weitere Informationen finden Sie in den Richtlinien zu [Häufig gestellte Fragen zu SQL Server auf einer Linux-VM](../linux/frequently-asked-questions-faq.md).

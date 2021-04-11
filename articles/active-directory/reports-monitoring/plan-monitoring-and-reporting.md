@@ -12,12 +12,12 @@ ms.date: 11/13/2018
 ms.author: baselden
 ms.reviewer: plenzke
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 683367251c220abe36660d61463bce9e5a0c52f9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c37c672f8784052424e058837d31bc1d22fcfc57
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100577765"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552613"
 ---
 # <a name="plan-an-azure-active-directory-reporting-and-monitoring-deployment"></a>Planen einer Azure Active Directory-Bereitstellung für Berichterstellung und Überwachung
 
@@ -47,7 +47,7 @@ Mit Azure AD-Überwachung können Sie Protokolle folgendermaßen weiterleiten:
 * einen Azure Event Hub, in dem die Protokolle mit vorhandenen SIEM-Tools wie Splunk, Sumologic oder QRadar integriert werden können
 
 > [!NOTE]
-Seit Kurzem wird der Begriff „Azure Monitor-Protokolle“ anstelle von „Log Analytics“ verwendet. Protokolldaten werden immer noch in einem Log Analytics-Arbeitsbereich gespeichert und weiterhin mit dem gleichen Log Analytics-Dienst erfasst und analysiert. Die Terminologie hat sich geändert, um der Rolle von [Protokollen in Azure Monitor](../../azure-monitor/data-platform.md) besser Rechnung zu tragen. Weitere Informationen finden Sie unter [Terminologieänderungen bei Azure Monitor](../../azure-monitor/terminology.md).
+> Seit Kurzem wird der Begriff „Azure Monitor-Protokolle“ anstelle von „Log Analytics“ verwendet. Protokolldaten werden immer noch in einem Log Analytics-Arbeitsbereich gespeichert und weiterhin mit dem gleichen Log Analytics-Dienst erfasst und analysiert. Die Terminologie hat sich geändert, um der Rolle von [Protokollen in Azure Monitor](../../azure-monitor/data-platform.md) besser Rechnung zu tragen. Weitere Informationen finden Sie unter [Terminologieänderungen bei Azure Monitor](../../azure-monitor/terminology.md).
 
 [Weitere Informationen zu Aufbewahrungsrichtlinien für Berichte](./reference-reports-data-retention.md)
 

@@ -5,16 +5,15 @@ author: mimckitt
 ms.author: mimckitt
 ms.topic: conceptual
 ms.service: virtual-machine-scale-sets
-ms.subservice: template
 ms.date: 04/26/2019
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 55c826b4baf38732684aaa0465aeaab6a45564db
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: c759cf564654990149424acf5aa3efaea4b37be0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "87831497"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105933439"
 ---
 # <a name="learn-about-virtual-machine-scale-set-templates"></a>Informationen zu Vorlagen für VM-Skalierungsgruppen
 [Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/overview.md#template-deployment-process) sind eine hervorragende Möglichkeit, Gruppen aufeinander bezogener Ressourcen bereitzustellen. In dieser Reihe von Tutorials wird gezeigt, wie Sie eine Vorlage für eine grundlegende Skalierungsgruppe erstellen und für verschiedene Szenarien anpassen. Alle Beispiele stammen aus diesem [GitHub-Repository](https://github.com/gatneil/mvss).

@@ -8,10 +8,10 @@ author: sayantanroy83
 ms.author: sroy
 ms.date: 3/08/2021
 ms.openlocfilehash: 7c39f8bc0db44f1d8aa885969ca09d90b0dcd332
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102583627"
 ---
 # <a name="delete-report-api"></a>API zum Löschen eines Berichts
@@ -97,7 +97,7 @@ Antwortnutzlast:
 | `StartTime` | Uhrzeit, zu der die Berichtsausführung beginnt. Das Zeitformat lautet yyyy-MM-ddTHH:mm:ssZ |
 | `ReportStatus` | Status der Berichtsausführung. Die möglichen Werte sind „Angehalten“, „Aktiv“ und „Inaktiv“. |
 | `RecurrenceInterval` | Wiederholungsintervall, das bei der Erstellung des Berichts angegeben wurde |
-| `RecurrenceCount` | Wiederholungsanzahl, die bei der Erstellung des Berichts angegeben wurde |
+| `RecurrenceCount` | Anzahl der Wiederholungen, die bei der Erstellung des Berichts angegeben wurde |
 | `CallbackUrl` | Rückruf-URL, die in der Anforderung angegeben wurde |
 | `Format` | Format der Berichtsdateien |
 |||
