@@ -10,16 +10,19 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/21/2020
 ms.author: Zhchia
-ms.openlocfilehash: f1600dfc5705ca97f16e8966a796b54fc556d216
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9d9699c564476e116654f700c32dd47b7f6d5b81
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94359261"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504565"
 ---
 # <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von GitHub für die automatische Benutzerbereitstellung
 
 In diesem Tutorial werden die Schritte beschrieben, die Sie in GitHub und Azure AD ausführen müssen, um Benutzerkonten von Azure AD in GitHub automatisch bereitzustellen bzw. deren Bereitstellung automatisch aufzuheben.
+
+> [!NOTE]
+> Die Integration der Azure AD-Bereitstellung basiert auf der [GitHub-SCIM-API](https://developer.github.com/v3/scim/), die für [GitHub Enterprise Cloud](https://help.github.com/articles/github-s-products/#github-enterprise)-Kunden gemäß dem [GitHub Enterprise-Abrechnungsplan](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations) zur Verfügung steht.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -33,7 +36,7 @@ Das in diesem Tutorial verwendete Szenario setzt voraus, dass Sie bereits über 
 * Die SCIM-Bereitstellung in einer einzelnen Organisation wird nur unterstützt, wenn SSO auf Organisationsebene aktiviert ist.
 
 > [!NOTE]
-> Die Integration der Azure AD-Bereitstellung basiert auf der [GitHub-SCIM-API](https://developer.github.com/v3/scim/), die für [GitHub Enterprise Cloud](https://help.github.com/articles/github-s-products/#github-enterprise)-Kunden gemäß dem [GitHub Enterprise-Abrechnungsplan](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations) zur Verfügung steht.
+> Diese Integration kann auch über die Azure AD-Umgebung für die US Government-Cloud verwendet werden. Sie finden diese Anwendung im Azure AD-Katalog für US Government-Cloudanwendungen und konfigurieren sie auf die gleiche Weise wie in der öffentlichen Cloud.
 
 ## <a name="assigning-users-to-github"></a>Zuweisen von Benutzern zu GitHub
 

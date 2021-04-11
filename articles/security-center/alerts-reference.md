@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: reference
 ms.date: 03/04/2021
 ms.author: memildin
-ms.openlocfilehash: 0c14b9a0c927ef9ed96853ddeed64b161df0d277
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: c0ae5ae4a66ce55da40eae3959945c96013af3ea
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102176704"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075643"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Sicherheitswarnungen (Referenzhandbuch)
 
@@ -510,7 +510,7 @@ Die von Security Center unterstützten Kill Chain-Absichten basieren auf [Versi
 | **Exfiltration**        | „Extrafiltration" bezieht sich auf Techniken und Attribute, die das Entfernen von Dateien und Informationen aus einem Zielnetzwerk zur Folge haben oder dem Angreifer dies ermöglichen. Diese Kategorie deckt auch Speicherorte in einem System oder Netzwerk ab, in denen der Angreifer nach Informationen für die Exfiltration suchen könnte.                                                                                                                                                                                                                                                                                                                                  |
 | **CommandAndControl**   | „Command-and-Control“ repräsentiert, wie Angreifer mit Systemen innerhalb eines Zielnetzwerks kommunizieren, die ihrer Kontrolle unterliegen.                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | **Auswirkung**              | Ereignisse vom Typ „Auswirkung“ versuchen in erster Linie, die Verfügbarkeit oder Integrität eines Systems, Diensts oder Netzwerks unmittelbar zu verringern, einschließlich der Manipulation von Daten, um einen Geschäfts- oder Betriebsprozess zu beeinträchtigen. Dies bezieht sich häufig auf Techniken wie Ransomware, Verunstaltung, Datenmanipulation und andere.                                                                                                                                                                                                                                                                                                     |
-|                         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |  |
+|                         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | 
 
 > [!NOTE]
 > Für Warnungen, die sich in der Vorschau befinden: [!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)]
