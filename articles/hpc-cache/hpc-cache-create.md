@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: v-erkel
-ms.openlocfilehash: 77bd5e3b7a258ef83e5de4ec645ea70578fb9dfb
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 63a179f7123f088c9c60fbfb8996a5b21d1c704d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94657090"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104773265"
 ---
 # <a name="create-an-azure-hpc-cache"></a>Erstellen einer Azure HPC Cache-Instanz
 
@@ -59,7 +59,7 @@ Mit Azure HPC Cache wird verwaltet, welche Dateien zwischengespeichert und vorab
 
 ## <a name="enable-azure-key-vault-encryption-optional"></a>Aktivieren der Azure Key Vault-Verschlüsselung (optional)
 
-Wenn sich Ihr Cache in einer Region befindet, die kundenseitig verwaltete Verschlüsselungsschlüssel unterstützt, wird die Seite **Datenträgerverschlüsselungsschlüssel** zwischen den Registerkarten **Cache** und **Tags** angezeigt. Weitere Informationen zur Unterstützung von Regionen finden Sie unter [Regionale Verfügbarkeit](hpc-cache-overview.md#region-availability).
+Die Seite **Datenträgerverschlüsselungsschlüssel** wird zwischen den Registerkarten **Cache** und **Tags** angezeigt.<!-- Read [Regional availability](hpc-cache-overview.md#region-availability) to learn more about region support. -->
 
 Wenn Sie die für Ihren Cachespeicher verwendeten Verschlüsselungsschlüssel verwalten möchten, geben Sie die Azure Key Vault-Informationen auf der Seite **Datenträgerverschlüsselungsschlüssel** an. Der Schlüsseltresor muss sich in derselben Region und im selben Abonnement befinden wie der Cache.
 

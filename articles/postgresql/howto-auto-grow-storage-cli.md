@@ -1,18 +1,18 @@
 ---
 title: Automatisches Vergrößern des Speichers – Azure-Befehlszeilenschnittstelle – Azure Database for PostgreSQL (Einzelserver)
 description: In diesem Artikel wird beschrieben, wie Sie das automatische Vergrößern von Speicher über die Azure-Befehlszeilenschnittstelle in Azure Database for PostgreSQL (Einzelserver) aktivieren.
-author: ambhatna
-ms.author: ambhatna
+author: rothja
+ms.author: jroth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 8/7/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6b6f3875af4c7f0eace327d810c632a6bb217092
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e323dfd0449b0fb4ad5119955227a2aa9bea1031
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94534193"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106551151"
 ---
 # <a name="auto-grow-azure-database-for-postgresql-storage---single-server-using-the-azure-cli"></a>Automatisches Vergrößern des Azure Database for PostgreSQL-Speichers: Einzelserver über die Azure CLI
 In diesem Artikel wird beschrieben, wie Sie die Speichervergrößerung für einen Azure Database for PostgreSQL-Server konfigurieren können, ohne die Workload zu beeinträchtigen.

@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: cshoe
-ms.openlocfilehash: 2dbf7c31e6b0b40fa9dc2d59e86c0ecc731657e1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 73282145abd8bfe804b47fda3bf5f12dc691ff3a
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102172408"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106551355"
 ---
 # <a name="azure-functions-deployment-slots"></a>Azure Functions-Bereitstellungsslots
 
@@ -20,9 +20,6 @@ Im Folgenden wird dargestellt, wie sich der Austausch von Slots auf Funktionen a
 
 - Die Umleitung des Datenverkehrs erfolgt nahtlos, und es gehen keine Anforderungen aufgrund des Tauschs verloren.
 - Wenn eine Funktion während eines Austauschs ausgeführt wird, wird die Ausführung fortgesetzt, und die nächsten Trigger werden an die getauscht App-Instanz weitergeleitet.
-
-> [!NOTE]
-> Slots sind für den Linux-Verbrauch-Plan derzeit nicht verfügbar.
 
 ## <a name="why-use-slots"></a>Gründe für die Verwendung von Slots
 
@@ -229,7 +226,7 @@ Es gibt zwei Ebenen der Unterstützung für Bereitstellungsslots:
 | Windows: Verbrauch       | Allgemeine Verfügbarkeit |
 | Windows Premium           | Allgemeine Verfügbarkeit  |
 | Windows: Dediziert         | Allgemeine Verfügbarkeit |
-| Linux: Verbrauch         | Nicht unterstützt          |
+| Linux: Verbrauch         | Vorschau          |
 | Linux Premium             | Allgemeine Verfügbarkeit  |
 | Linux: Dediziert           | Allgemeine Verfügbarkeit |
 

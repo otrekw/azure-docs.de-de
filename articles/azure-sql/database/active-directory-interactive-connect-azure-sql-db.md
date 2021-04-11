@@ -11,12 +11,12 @@ author: GithubMirek
 ms.author: MirekS
 ms.reviewer: vanto
 ms.date: 04/23/2020
-ms.openlocfilehash: 93831ec4c1dc3e34c2ea144e71b67dae711ee870
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e2fa09ac8609310d4579590214bc25e5d7ee309f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94841647"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105641558"
 ---
 # <a name="connect-to-azure-sql-database-with-azure-ad-multi-factor-authentication"></a>Herstellen einer Verbindung zu Azure SQL-Datenbank mit Azure AD Multi-Factor Authentication
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -113,7 +113,7 @@ Das C#-Beispiel basiert auf dem [`System.Data.SqlClient`](/dotnet/api/system.dat
   Verwenden Sie diesen Wert für Authentifizierungen, die Azure AD-Benutzernamen und -Kennwörter erfordern. Azure SQL-Datenbank führt die Authentifizierung durch. Diese Methode unterstützt keine Multi-Factor Authentication.
 
 > [!NOTE]
-> Wenn Sie .NET Core verwenden, werden Sie wahrscheinlich den Namespace [Microsoft.Data.SqlClient](/dotnet/api/microsoft.data.sqlclient?view=sqlclient-dotnet-core-1.1) nutzen. Weitere Informationen finden Sie im folgenden [Blogbeitrag](https://devblogs.microsoft.com/dotnet/introducing-the-new-microsoftdatasqlclient/).
+> Wenn Sie .NET Core verwenden, werden Sie wahrscheinlich den Namespace [Microsoft.Data.SqlClient](/dotnet/api/microsoft.data.sqlclient) nutzen. Weitere Informationen finden Sie im folgenden [Blogbeitrag](https://devblogs.microsoft.com/dotnet/introducing-the-new-microsoftdatasqlclient/).
 
 ## <a name="set-c-parameter-values-from-the-azure-portal"></a>Festlegen von C#-Parameterwerten über das Azure-Portal
 
@@ -148,7 +148,7 @@ Weitere Informationen finden Sie unter [Konfigurieren der Multi-Factor Authentic
 ## <a name="c-code-example"></a>C#-Codebeispiel
 
 > [!NOTE]
-> Wenn Sie .NET Core verwenden, werden Sie wahrscheinlich den Namespace [Microsoft.Data.SqlClient](/dotnet/api/microsoft.data.sqlclient?view=sqlclient-dotnet-core-1.1) nutzen. Weitere Informationen finden Sie im folgenden [Blogbeitrag](https://devblogs.microsoft.com/dotnet/introducing-the-new-microsoftdatasqlclient/).
+> Wenn Sie .NET Core verwenden, werden Sie wahrscheinlich den Namespace [Microsoft.Data.SqlClient](/dotnet/api/microsoft.data.sqlclient) nutzen. Weitere Informationen finden Sie im folgenden [Blogbeitrag](https://devblogs.microsoft.com/dotnet/introducing-the-new-microsoftdatasqlclient/).
 
 Das C#-Beispielprogramm basiert auf der DLL-Assembly [*Microsoft.IdentityModel.Clients.ActiveDirectory*](/dotnet/api/microsoft.identitymodel.clients.activedirectory).
 
