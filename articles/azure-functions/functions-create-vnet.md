@@ -3,12 +3,12 @@ title: Verwenden privater Endpunkte zum Integrieren von Azure Functions in ein 
 description: In diesem Tutorial wird erläutert, wie Sie eine Funktion mit einem virtuellen Azure-Netzwerk verbinden und mithilfe privater Endpunkte sperren.
 ms.topic: article
 ms.date: 2/22/2021
-ms.openlocfilehash: 3dd5e700b3081f1c1ef8e4601385c707a5738321
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: e1ed944250f05f52860c47f6cb61130f50b08e7c
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102630468"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078773"
 ---
 # <a name="tutorial-integrate-azure-functions-with-an-azure-virtual-network-by-using-private-endpoints"></a>Tutorial: Integrieren von Azure Functions in ein virtuelles Azure-Netzwerk mithilfe privater Endpunkte
 
@@ -125,7 +125,7 @@ Erstellen Sie das virtuelle Netzwerk, in das die Funktions-App integriert wird:
 
 1. Verwenden Sie auf der Registerkarte **Grundlagen** die folgende Tabelle, um die Einstellungen für das virtuelle Netzwerk zu konfigurieren.
 
-    | Einstellung      | Vorgeschlagener Wert  | Beschreibung      |
+    | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG      |
     | ------------ | ---------------- | ---------------- |
     | **Abonnement** | Ihr Abonnement | Das Abonnement, in dem Ihre Ressourcen erstellt werden. | 
     | **[Ressourcengruppe](../azure-resource-manager/management/overview.md)**  | myResourceGroup | Die Ressourcengruppe aus, die Sie mit Ihrer Funktions-App erstellt haben. |
@@ -136,7 +136,7 @@ Erstellen Sie das virtuelle Netzwerk, in das die Funktions-App integriert wird:
 
     :::image type="content" source="./media/functions-create-vnet/1-create-vnet-ip-address.png" alt-text="Screenshot der Konfigurationsansicht für das Erstellen eines virtuellen Netzwerks.":::
 
-    | Einstellung      | Vorgeschlagener Wert  | Beschreibung      |
+    | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG      |
     | ------------ | ---------------- | ---------------- |
     | **Subnetzname** | functions | Der Name des Subnetzes, mit dem Ihre Funktions-App eine Verbindung herstellt. | 
     | **Subnetzadressbereich** | 10.0.1.0/24 | Subnetzadressbereich. Beachten Sie, dass der IPv4-Adressraum in der obigen Abbildung 10.0.0.0/16 lautet. Beim Adressraum 10.1.0.0/16 würde der empfohlene Subnetzadressbereich 10.1.1.0/24 lauten. |
@@ -157,16 +157,16 @@ Erstellen Sie die privaten Endpunkte für Azure Files-Speicher und Azure Blob S
 
 1. Verwenden Sie auf der Registerkarte **Grundlagen** die in der folgenden Tabelle aufgeführten Einstellungen für den privaten Endpunkt.
 
-    | Einstellung      | Vorgeschlagener Wert  | Beschreibung      |
+    | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG      |
     | ------------ | ---------------- | ---------------- |
     | **Abonnement** | Ihr Abonnement | Das Abonnement, in dem Ihre Ressourcen erstellt werden. | 
-    | **[Ressourcengruppe](../azure-resource-manager/management/overview.md)**  | myResourceGroup | Wählen Sie die Ressourcengruppe aus, die Sie mit Ihrer Funktions-App erstellt haben. | |
+    | **[Ressourcengruppe](../azure-resource-manager/management/overview.md)**  | myResourceGroup | Wählen Sie die Ressourcengruppe aus, die Sie mit Ihrer Funktions-App erstellt haben. |
     | **Name** | file-endpoint | Der Name des privaten Endpunkts für Dateien aus Ihrem Speicherkonto. |
     | **[Region](https://azure.microsoft.com/regions/)** | myFunctionRegion | Wählen Sie die Region aus, in der Sie Ihr Speicherkonto erstellt haben. |
 
 1. Verwenden Sie auf der Registerkarte **Ressource** die in der folgenden Tabelle aufgeführten Einstellungen für den privaten Endpunkt.
 
-    | Einstellung      | Vorgeschlagener Wert  | Beschreibung      |
+    | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG      |
     | ------------ | ---------------- | ---------------- |
     | **Abonnement** | Ihr Abonnement | Das Abonnement, in dem Ihre Ressourcen erstellt werden. | 
     | **Ressourcentyp**  | Microsoft.Storage/storageAccounts | Der Ressourcentyp für Speicherkonten. |
@@ -179,7 +179,7 @@ Erstellen Sie die privaten Endpunkte für Azure Files-Speicher und Azure Blob S
 
 1. Erstellen Sie einen weiteren privaten Endpunkt für Blobs. Verwenden Sie auf der Registerkarte **Ressourcen** die in der folgenden Tabelle aufgeführten Einstellungen. Verwenden Sie für alle anderen Einstellungen die gleichen Werte, die Sie zum Erstellen des privaten Endpunkts für Dateien verwendet haben.
 
-    | Einstellung      | Vorgeschlagener Wert  | Beschreibung      |
+    | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG      |
     | ------------ | ---------------- | ---------------- |
     | **Abonnement** | Ihr Abonnement | Das Abonnement, in dem Ihre Ressourcen erstellt werden. | 
     | **Ressourcentyp**  | Microsoft.Storage/storageAccounts | Der Ressourcentyp für Speicherkonten. |
@@ -198,7 +198,7 @@ Erstellen Sie den privaten Endpunkt, um den Service Bus zu sperren:
 
 1. Verwenden Sie auf der Registerkarte **Grundlagen** die in der folgenden Tabelle aufgeführten Einstellungen für den privaten Endpunkt.
 
-    | Einstellung      | Vorgeschlagener Wert  | Beschreibung      |
+    | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG      |
     | ------------ | ---------------- | ---------------- |
     | **Abonnement** | Ihr Abonnement | Das Abonnement, in dem Ihre Ressourcen erstellt werden. | 
     | **[Ressourcengruppe](../azure-resource-manager/management/overview.md)**  | myResourceGroup | Die Ressourcengruppe aus, die Sie mit Ihrer Funktions-App erstellt haben. |
@@ -207,7 +207,7 @@ Erstellen Sie den privaten Endpunkt, um den Service Bus zu sperren:
 
 1. Verwenden Sie auf der Registerkarte **Ressource** die in der folgenden Tabelle aufgeführten Einstellungen für den privaten Endpunkt.
 
-    | Einstellung      | Vorgeschlagener Wert  | Beschreibung      |
+    | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG      |
     | ------------ | ---------------- | ---------------- |
     | **Abonnement** | Ihr Abonnement | Das Abonnement, in dem Ihre Ressourcen erstellt werden. | 
     | **Ressourcentyp**  | Microsoft.ServiceBus/namespaces | Der Ressourcentyp für den Service Bus. |
@@ -332,7 +332,7 @@ Glückwunsch! Sie haben Ihre Beispiel-Funktions-App erfolgreich bereitgestellt.
 
 Erstellen Sie nun den privaten Endpunkt zum Sperren Ihrer Funktions-App. Dieser private Endpunkt verbindet Ihre Funktions-App mithilfe einer privaten IP-Adresse über eine private und sichere Verbindung mit Ihrem virtuellen Netzwerk. 
 
-Weitere Informationen finden Sie in der [Dokumentation zum privaten Endpunkt](https://docs.microsoft.com/azure/private-link/private-endpoint-overview).
+Weitere Informationen finden Sie in der [Dokumentation zum privaten Endpunkt](../private-link/private-endpoint-overview.md).
 
 1. Wählen Sie in ihrer Funktions-App im Menü auf der linken Seite die Option **Netzwerk** aus.
 

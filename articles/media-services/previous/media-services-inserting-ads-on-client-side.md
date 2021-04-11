@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/10/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2d942099d0abbdfc4ddfa0276184500166250728
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d4ed0f075aad09b77a0c50682bad92522f4e5472
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103014957"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106280274"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>Einfügen von Anzeigen auf Clientseite
 
@@ -590,7 +590,7 @@ In diesem Beispiel wird „VmapSchedulerPlugin“ verwendet, um Werbeeinblendung
 ```
 
 ## <a name="implementing-an-ios-video-player-with-ad-support"></a>Implementieren eines iOS-Videoplayers mit Unterstützung für Werbeeinblendungen
-Microsoft Media-Plattform: Player Framework für iOS enthält eine Sammlung von Beispielanwendungen, die zeigen, wie Sie eine Videoplayeranwendung mithilfe des Frameworks implementieren. Sie können das Player Framework und die Beispiele unter [Azure Media Player Framework](https://github.com/CloudMetal/azure-media-player-framework)herunterladen. Die GitHub-Seite enthält einen Link zu einem Wiki, das zusätzliche Informationen zum Player Framework und eine Einführung in das Playerbeispiel enthält: [Azure Media Player Wiki](https://github.com/CloudMetal/azure-media-player-framework/wiki/How-to-use-Azure-media-player-framework).
+Microsoft Media-Plattform: Player Framework für iOS enthält eine Sammlung von Beispielanwendungen, die zeigen, wie Sie eine Videoplayeranwendung mithilfe des Frameworks implementieren. Sie können das Player Framework und die Beispiele unter [Azure Media Player Framework](https://github.com/CloudMetal/azure-media-player-framework)herunterladen. Die GitHub-Seite enthält einen Link zu einem Wiki, das zusätzliche Informationen zum Player Framework und eine Einführung in das Playerbeispiel enthält: [Azure Media Player Wiki](https://github.com/CloudMetal/azure-media-player-framework/wiki/How-to-player-use-azure-media-player-how-to-framework).
 
 ### <a name="scheduling-ads-with-vmap"></a>Planen von Werbeeinblendungen mit VMAP
 Das folgende Beispiel zeigt, wie Sie Werbeeinblendungen mithilfe einer VMAP-Datei planen.

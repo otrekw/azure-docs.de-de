@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 06/09/2020
 ms.author: surmb
-ms.openlocfilehash: 95b74e5fc6c5d2c09ff04b3f14e920ae675ab6e1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 1373e0eeead805dcd3a439878c9737c46d75bf3b
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99592754"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078501"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>Behandeln von Problemen mit der Back-End-Integrität in Application Gateway
 ==================================================
@@ -176,12 +176,12 @@ Also check whether any NSG/UDR/Firewall is blocking access to the Ip and port of
 
 | **Fehler** | **Aktionen** |
 | --- | --- |
-| Probe status code mismatch: (Teststatuscode-Konflikt:) Received 401 (401 empfangen) | Überprüfen Sie, ob der Back-End-Server Authentifizierung erfordert. Application Gateway-Tests können keine Anmeldeinformationen für die Authentifizierung übergeben. Lassen Sie \"HTTP 401\" in einer Teststatuscode-Übereinstimmung zu, oder testen Sie einen Pfad, in dem der Server keine Authentifizierung erfordert. | |
-| Probe status code mismatch: (Teststatuscode-Konflikt:) Received 403 (403 empfangen) | Access forbidden. (Zugriff verweigert.) Überprüfen Sie, ob der Zugriff auf den Pfad auf dem Back-End-Server zulässig ist. | |
-| Probe status code mismatch: (Teststatuscode-Konflikt:) Received 404 (404 empfangen) | Page not found. (Seite nicht gefunden.) Überprüfen Sie, ob der Zugriff auf den Hostnamenpfad auf dem Back-End-Server zulässig ist. Ändern Sie den Hostnamen- oder Pfadparameter in einen Wert, auf den zugegriffen werden kann. | |
-| Probe status code mismatch: (Teststatuscode-Konflikt:) Received 405 (405 empfangen) | Die Testanforderungen für Application Gateway verwenden die HTTP GET-Methode. Überprüfen Sie, ob Ihr Server diese Methode zulässt. | |
-| Probe status code mismatch: (Teststatuscode-Konflikt:) Received 500 (500 empfangen) | Interner Serverfehler. Überprüfen Sie die Integrität des Back-End-Servers, und stellen Sie fest, ob die Dienste ausgeführt werden. | |
-| Probe status code mismatch: (Teststatuscode-Konflikt:) Received 503 (503 empfangen) | Service unavailable. (Dienst nicht verfügbar.) Überprüfen Sie die Integrität des Back-End-Servers, und stellen Sie fest, ob die Dienste ausgeführt werden. | |
+| Probe status code mismatch: (Teststatuscode-Konflikt:) Received 401 (401 empfangen) | Überprüfen Sie, ob der Back-End-Server Authentifizierung erfordert. Application Gateway-Tests können keine Anmeldeinformationen für die Authentifizierung übergeben. Lassen Sie \"HTTP 401\" in einer Teststatuscode-Übereinstimmung zu, oder testen Sie einen Pfad, in dem der Server keine Authentifizierung erfordert. |
+| Probe status code mismatch: (Teststatuscode-Konflikt:) Received 403 (403 empfangen) | Access forbidden. (Zugriff verweigert.) Überprüfen Sie, ob der Zugriff auf den Pfad auf dem Back-End-Server zulässig ist. |
+| Probe status code mismatch: (Teststatuscode-Konflikt:) Received 404 (404 empfangen) | Page not found. (Seite nicht gefunden.) Überprüfen Sie, ob der Zugriff auf den Hostnamenpfad auf dem Back-End-Server zulässig ist. Ändern Sie den Hostnamen- oder Pfadparameter in einen Wert, auf den zugegriffen werden kann. |
+| Probe status code mismatch: (Teststatuscode-Konflikt:) Received 405 (405 empfangen) | Die Testanforderungen für Application Gateway verwenden die HTTP GET-Methode. Überprüfen Sie, ob Ihr Server diese Methode zulässt. |
+| Probe status code mismatch: (Teststatuscode-Konflikt:) Received 500 (500 empfangen) | Interner Serverfehler. Überprüfen Sie die Integrität des Back-End-Servers, und stellen Sie fest, ob die Dienste ausgeführt werden. |
+| Probe status code mismatch: (Teststatuscode-Konflikt:) Received 503 (503 empfangen) | Service unavailable. (Dienst nicht verfügbar.) Überprüfen Sie die Integrität des Back-End-Servers, und stellen Sie fest, ob die Dienste ausgeführt werden. |
 
 Oder, wenn Sie der Ansicht sind, dass die Antwort legitim ist und Sie möchten, dass Application Gateway andere Statuscodes als fehlerfrei akzeptiert, können Sie einen benutzerdefinierten Test erstellen. Dieser Ansatz ist in Situationen hilfreich, in denen die Back-End-Website Authentifizierung benötigt. Da die Testanforderungen keine Benutzeranmeldeinformationen enthalten, schlagen sie fehl, und vom Back-End-Server wird ein HTTP 401-Statuscode zurückgegeben.
 

@@ -8,12 +8,12 @@ ms.author: ramero
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/06/2020
-ms.openlocfilehash: 97797e309c32c6ea996d5ae1901b9a266a683173
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: afe56bb8637c9b2a88bda23944fd5097413fce97
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91537632"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106077719"
 ---
 # <a name="add-scoring-profiles-to-an-azure-cognitive-search-index"></a>Hinzufügen von Bewertungsprofilen zu einem Index für die kognitive Azure-Suche
 
@@ -161,7 +161,7 @@ Eine Suchbewertung wird auf Basis der statistischen Eigenschaften der Daten und 
 
  Der Hauptteil des Bewertungsprofils wird aus gewichteten Feldern und Funktionen erstellt.  
 
-|||  
+|Eigenschaften |BESCHREIBUNG|  
 |-|-|  
 |**Gewichtungen**|Geben Sie Name/Wert-Paare an, die einem Feld eine relative Gewichtung zuweisen. In diesem [Beispiel](#bkmk_ex) werden die Felder „albumTitle“, „genre“ und „artistName“ entsprechend um 1,5, 5 und 2 verstärkt. Warum wird "genre" so viel stärker als die anderen Felder erhöht? Wenn die Suche in relativ homogenen Daten durchgeführt wird (wie bei „genre“ in `musicstoreindex`), ist bei den relativen Gewichtungen möglicherweise eine größere Varianz erforderlich. In `musicstoreindex` wird „rock“ z. B. sowohl für „genre“ als auch für identisch formulierte Genrebeschreibungen angezeigt. Wenn "genre" schwerer wiegen soll als die Genrebeschreibung, dann benötigt das Feld "genre" eine viel höhere relative Gewichtung.|  
 |**Funktionen**|Funktionen werden verwendet, wenn für bestimmte Kontexte zusätzliche Berechnungen erforderlich sind. Gültige Werte sind `freshness`, `magnitude`, `distance` und `tag`. Jede Funktion verfügt über Parameter, die für sie eindeutig sind.<br /><br /> -   `freshness` sollte verwendet werden, wenn Sie Elemente in Abhängigkeit davon verstärken möchten, wie neu oder alt diese sind. Diese Funktion kann nur mit `datetime`-Feldern verwendet werden (edm.DataTimeOffset). Beachten Sie, dass das Attribut `boostingDuration` nur mit der Funktion `freshness` verwendet wird.<br />-   `magnitude` sollte verwendet werden, wenn die Verstärkung basierend auf der Höhe eines numerischen Werts erfolgen soll. Szenarien, die diese Funktion erforderlich machen, umfassen die Verstärkung nach Gewinnspanne, Höchstpreis, Mindestpreis oder Downloadanzahl. Diese Funktion kann nur mit Double- und Integer-Feldern verwendet werden.<br />     Für die `magnitude`-Funktion können Sie den Bereich (absteigend) umkehren, wenn Sie das umgekehrte Muster anwenden möchten (z. B. um preiswerteren Elemente eine höhere Relevanz zuzuordnen als teureren Elementen). Legen Sie bei einer Preisspanne zwischen 100 € und 1 € `boostingRangeStart` auf 100 und `boostingRangeEnd` auf 1 fest, um preiswertere Artikeln zu fördern.<br />-   `distance` sollte verwendet werden, wenn die Verstärkung entsprechend der Nähe oder geografischen Lage erfolgen soll. Diese Funktion kann nur mit `Edm.GeographyPoint` -Feldern verwendet werden.<br />-   `tag` sollte verwendet werden, wenn die Verstärkung nach gemeinsamen Tags in Dokumenten und Suchabfragen erfolgen soll. Diese Funktion kann nur mit `Edm.String`- und `Collection(Edm.String)`-Feldern verwendet werden.<br /><br /> **Regeln für die Verwendung von Funktionen**<br /><br /> `tag` für den Funktionstyp (`freshness`, `magnitude`, `distance`,) muss in Kleinbuchstaben angegeben werden.<br /><br /> Funktionen dürfen nicht Null sein oder leere Werte enthalten. Insbesondere beim Einbeziehen von Feldnamen muss ein Wert festgelegt werden.<br /><br /> Funktionen können nur auf filterbare Felder angewendet werden. Weitere Informationen zu filterbaren Feldern finden Sie unter [Erstellen eines Index &#40;REST-API für die kognitive Azure-Suche&#41;](/rest/api/searchservice/create-index).<br /><br /> Funktionen können nur auf Felder angewendet werden, die in der Felderauflistung für einen Index definiert sind.|  
