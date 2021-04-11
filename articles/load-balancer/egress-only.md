@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2020
 ms.author: allensu
-ms.openlocfilehash: ee264a22de5ce094e8a4c1335ace77cbbba49270
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a96e6b567c04f2e0561a0a754e854a0e2b1ad6b0
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94694992"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106076257"
 ---
 # <a name="outbound-only-load-balancer-configuration"></a>Lastenausgleichskonfiguration (nur ausgehender Datenverkehr)
 
@@ -278,7 +278,7 @@ Erstellen Sie den Back-End-Adresspool **myPublicBackendPool**:
     | Front-End-IP-Adresse | Wählen Sie **LoadBalancerFrontEnd** aus.|
     | Leerlaufzeitüberschreitung (Minuten) | Bewegen Sie den Schieberegler auf **15 Minuten**.|
     | TCP-Zurücksetzung | Wählen Sie **Aktiviert**.|
-    | Back-End-Pool | Wählen Sie **myPublicBackendPool** aus.| |
+    | Back-End-Pool | Wählen Sie **myPublicBackendPool** aus.|
     | Portzuordnung -> Portzuordnung | Wählen Sie **Standardanzahl ausgehender Ports verwenden** aus. |
 
 4. Wählen Sie **Hinzufügen**.

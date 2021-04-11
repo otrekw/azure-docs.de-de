@@ -3,17 +3,18 @@ title: Azure Cloud Services (klassisch) – Definitionsschema (CSCFG-Datei) | Mi
 description: Eine Dienstkonfigurationsdatei (.cscfg) gibt an, wie viele Rolleninstanzen für die einzelnen Rollen, Konfigurationswerte und Zertifikatsfingerabdrücke für eine Rolle bereitgestellt werden sollen.
 ms.topic: article
 ms.service: cloud-services
+ms.subservice: deployment-files
 ms.date: 10/14/2020
 ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: ba933d4981fb7ed209a7fb5d5c41113750f312de
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 17fea7c1eb75f8041c4c6a79870bfc653ea767ae
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98743473"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105935140"
 ---
 # <a name="azure-cloud-services-classic-config-schema-cscfg-file"></a>Azure Cloud Services (klassisch) – Konfigurationsschema (CSCFG-Datei)
 
@@ -59,7 +60,7 @@ Das Element `ServiceConfiguration` ist das Element der obersten Ebene der Dienst
 
 In der folgenden Tabelle werden die Attribute des Elements `ServiceConfiguration` beschrieben. Alle Attributwerte sind Zeichenfolgentypen.
 
-| attribute | BESCHREIBUNG |
+| Attribut | BESCHREIBUNG |
 | --------- | ----------- |
 |serviceName|Erforderlich. Der Name des Clouddiensts. Der hier angegebene Name muss mit dem Namen in der Dienstdefinitionsdatei übereinstimmen.|
 |osFamily|Optional. Gibt das Gastbetriebssystem an, das auf Rolleninstanzen im Clouddienst ausgeführt wird. Nähere Informationen zu unterstützten Gastbetriebssystem-Releases finden Sie unter [Azure Gastbetriebssystem-Releases und SDK-Kompatibilitätsmatrix](cloud-services-guestos-update-matrix.md).<br /><br /> Wenn Sie keinen `osFamily`-Wert einschließen, und wenn Sie das `osVersion`-Attribut nicht für eine bestimmte Gastbetriebssystem-Version festgelegt haben, wird ein Standardwert 1 verwendet.|

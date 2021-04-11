@@ -4,12 +4,12 @@ description: Hier erfahren Sie, wie Sie über die Azure-Befehlszeilenschnittstel
 services: container-service
 ms.topic: article
 ms.date: 07/16/2020
-ms.openlocfilehash: 4d429b7136158723fa6110975326217c5540bc2e
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 13b4fbd21bb348d1ef79a3ca68128869115745cc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102180971"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103200908"
 ---
 # <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Erstellen eines Windows Server-Containers auf einem Azure Kubernetes Service (AKS)-Cluster mit der Azure-Befehlszeilenschnittstelle
 
@@ -70,31 +70,34 @@ Die folgende Beispielausgabe zeigt, dass die Ressourcengruppe erfolgreich erstel
 Um einen AKS-Cluster auszuführen, der Knotenpools für Windows Server-Container unterstützt, muss Ihr Cluster eine Netzwerkrichtlinie verwenden, die das [Azure CNI][azure-cni-about]-Netzwerk-Plug-In (Erweitert) verwendet. Detaillierte Informationen zur Planung der erforderlichen Subnetzbereiche sowie Netzwerküberlegungen finden Sie unter [Konfigurieren von Azure CNI-Netzwerken][use-advanced-networking]. Erstellen Sie mithilfe des Befehls [az aks create][az-aks-create] einen AKS-Cluster namens *myAKSCluster*. Dieser Befehl erstellt die erforderlichen Netzwerkressourcen, wenn sie nicht vorhanden sind.
 
 * Der Cluster wird mit zwei Knoten konfiguriert.
-* Die Parameter *windows-admin-password* und *windows-admin-username* legen die Anmeldeinformationen für alle Windows Server-Container fest, die auf dem Cluster erstellt wurden, und müssen die [Kennwortanforderungen von Windows Server][windows-server-password] erfüllen.
+* Die Parameter `--windows-admin-password` und `--windows-admin-username` legen die Anmeldeinformationen für alle Windows Server-Container fest, die auf dem Cluster erstellt wurden, und müssen die [Kennwortanforderungen von Windows Server][windows-server-password] erfüllen. Wenn Sie den Parameter *windows-admin-password* nicht festlegen, werden Sie dazu aufgefordert, einen Wert anzugeben.
 * Der Knotenpool verwendet `VirtualMachineScaleSets`.
 
 > [!NOTE]
 > Um zu gewährleisten, dass Ihr Cluster zuverlässig funktioniert, sollten Sie mindestens zwei Knoten im Standardknotenpool ausführen.
 
-Geben Sie Ihr eigenes sicheres Kennwort (*PASSWORD_WIN*) an (für diesen Artikel werden Befehle in eine BASH-Shell eingegeben):
+Erstellen Sie einen Benutzernamen, der für die Administratoranmeldeinformationen für Ihre Windows Server-Container in Ihrem Cluster verwendet wird. Die folgenden Befehle fordern einen Benutzernamen von Ihnen an und legen ihn auf WINDOWS_USERNAME für die spätere Verwendung in einem Befehl fest (beachten Sie, dass die Befehle in diesem Artikel in eine BASH-Shell eingegeben werden).
 
 ```azurecli-interactive
-PASSWORD_WIN="P@ssw0rd1234"
+echo "Please enter the username to use as administrator credentials for Windows Server containers on your cluster: " && read WINDOWS_USERNAME
+```
 
+Erstellen Sie Ihren Cluster, und stellen Sie dabei sicher, dass Sie den Parameter `--windows-admin-username` festlegen. Der folgende Beispielbefehl erstellt einen Cluster mithilfe des Werts von *WINDOWS_USERNAME*, den Sie mit dem vorherigen Befehl festgelegt haben. Alternativ können Sie einen anderen Benutzernamen direkt im Parameter angeben, anstatt *WINDOWS_USERNAME* zu verwenden. Der folgende Befehl fordert Sie außerdem dazu auf, ein Kennwort für die Administratoranmeldeinformationen für Ihre Windows Server-Container in Ihrem Cluster zu erstellen. Alternativ können Sie den Parameter *windows-admin-password* verwenden und Ihren eigenen Wert festlegen.
+
+```azurecli-interactive
 az aks create \
     --resource-group myResourceGroup \
     --name myAKSCluster \
     --node-count 2 \
     --enable-addons monitoring \
     --generate-ssh-keys \
-    --windows-admin-password $PASSWORD_WIN \
-    --windows-admin-username azureuser \
+    --windows-admin-username $WINDOWS_USERNAME \
     --vm-set-type VirtualMachineScaleSets \
     --network-plugin azure
 ```
 
 > [!NOTE]
-> Wenn ein Kennwortvalidierungsfehler zurückgegeben wird, überprüfen Sie, ob der Parameter *windows-admin-password* die [Kennwortanforderungen von Windows Server][windows-server-password] erfüllt. Wenn das Kennwort die Anforderungen erfüllt, versuchen Sie, Ihre Ressourcengruppe in einer anderen Region zu erstellen. Versuchen Sie anschließend, den Cluster mit der neuen Ressourcengruppe zu erstellen.
+> Wenn ein Fehler bei der Kennwortüberprüfung auftritt, stellen Sie sicher, dass das festgelegte Kennwort die [Kennwortanforderungen von Windows Server][windows-server-password] erfüllt. Wenn das Kennwort die Anforderungen erfüllt, versuchen Sie, Ihre Ressourcengruppe in einer anderen Region zu erstellen. Versuchen Sie anschließend, den Cluster mit der neuen Ressourcengruppe zu erstellen.
 
 Nach wenigen Minuten ist die Ausführung des Befehls abgeschlossen, und es werden Informationen zum Cluster im JSON-Format zurückgegeben. Gelegentlich kann die Bereitstellung des Clusters länger als ein paar Minuten dauern. Warten Sie in diesen Fällen bis zu 10 Minuten.
 

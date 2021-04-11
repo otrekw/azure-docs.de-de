@@ -3,12 +3,12 @@ title: Unterstützungsmatrix für VMware- oder physische Notfallwiederherstellun
 description: Fasst die Unterstützung der Notfallwiederherstellung von VMware-VMs und physische Server in Azure mit Azure Site Recovery zusammen.
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: e025b1681306a3bb837a338655dc561e897226c2
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: c7f2d6ecd01959e239a1ab048018452b2ae5fc20
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102449253"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103495214"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Unterstützungsmatrix für die Notfallwiederherstellung von virtuellen VMware-Computern und physischen Servern in Azure
 
@@ -250,6 +250,7 @@ Gast-/Servermultipfad (MPIO) | Nein
 GPT-Partitionen von Gast/Server | Fünf Partitionen werden ab [Update Rollup 37](https://support.microsoft.com/help/4508614/) (Version 9.25 des Mobilitätsdiensts) unterstützt. Bisher wurden vier unterstützt.
 ReFS | Resilient File System (Robustes Dateisystem) wird ab Version 9.23 des Mobilitätsdiensts unterstützt.
 EFI-/UEFI-Start von Gast/Server | – Wird für alle [UEFI-Betriebssysteme in Azure Marketplace](../virtual-machines/generation-2.md#generation-2-vm-images-in-azure-marketplace) mit Version 9.30 und höher des Mobilitäts-Agents von Site Recovery unterstützt. <br/> – Sichere UEFI-Starttypen werden nicht unterstützt. [Weitere Informationen.](../virtual-machines/generation-2.md#on-premises-vs-azure-generation-2-vms)
+RAID-Datenträger| Nein
 
 ## <a name="replication-channels"></a>Replikationskanäle
 

@@ -4,14 +4,14 @@ description: Es wird beschrieben, wie Sie mithilfe von Azure Data Factory Daten 
 author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 10/14/2020
+ms.date: 03/17/2021
 ms.author: jingwang
-ms.openlocfilehash: 4d8ddb89055d318aaea9ada7f38f908223ff5a57
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: b8e518ba23c877ee80197ad94a6bc01b23b044a3
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388446"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104588986"
 ---
 # <a name="copy-data-from-google-cloud-storage-by-using-azure-data-factory"></a>Kopieren von Daten aus Google Cloud Storage mithilfe von Azure Data Factory
 
@@ -59,7 +59,7 @@ Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren 
 
 Folgende Eigenschaften werden für mit Google Cloud Storage verknüpfte Dienste unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die **type**-Eigenschaft muss auf **GoogleCloudStorage** festgelegt werden. | Ja |
 | accessKeyId | ID des geheimen Zugriffsschlüssels. Informationen zum Ermitteln des Zugriffsschlüssels und des Geheimnisses finden Sie unter [Voraussetzungen](#prerequisites). |Ja |
@@ -96,7 +96,7 @@ Hier sehen Sie ein Beispiel:
 
 Folgende Eigenschaften werden für Google Cloud Storage unter `location`-Einstellungen in einem formatbasierten Dataset unterstützt:
 
-| Eigenschaft   | BESCHREIBUNG                                                  | Erforderlich |
+| Eigenschaft   | Beschreibung                                                  | Erforderlich |
 | ---------- | ------------------------------------------------------------ | -------- |
 | type       | Die **type**-Eigenschaft unter `location` im Dataset muss auf **GoogleCloudStorageLocation** festgelegt werden. | Ja      |
 | bucketName | Der Name des GCS-Buckets.                                          | Ja      |
@@ -140,7 +140,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren vo
 
 Folgende Eigenschaften werden für Google Cloud Storage unter `storeSettings`-Einstellungen in einer formatbasierten Kopierquelle unterstützt:
 
-| Eigenschaft                 | BESCHREIBUNG                                                  | Erforderlich                                                    |
+| Eigenschaft                 | Beschreibung                                                  | Erforderlich                                                    |
 | ------------------------ | ------------------------------------------------------------ | ----------------------------------------------------------- |
 | type                     | Die **type**-Eigenschaft unter `storeSettings` muss auf **GoogleCloudStorageReadSettings** festgelegt werden. | Ja                                                         |
 | ***Suchen Sie die zu kopierenden Dateien:*** |  |  |
@@ -156,7 +156,7 @@ Folgende Eigenschaften werden für Google Cloud Storage unter `storeSettings`-Ei
 | modifiedDatetimeEnd      | Wie oben.                                               | Nein                                                          |
 | enablePartitionDiscovery | Geben Sie bei partitionierten Dateien an, ob die Partitionen anhand des Dateipfads analysiert und als zusätzliche Quellspalten hinzugefügt werden sollen.<br/>Zulässige Werte sind **false** (Standard) und **true**. | Nein                                            |
 | partitionRootPath | Wenn die Partitionsermittlung aktiviert ist, geben Sie den absoluten Stammpfad an, um partitionierte Ordner als Datenspalten zu lesen.<br/><br/>Ohne Angabe gilt standardmäßig Folgendes:<br/>- Wenn Sie den Dateipfad im Dataset oder die Liste der Dateien in der Quelle verwenden, ist der Partitionsstammpfad der im Dataset konfigurierte Pfad.<br/>Wenn Sie einen Platzhalterordnerfilter verwenden, ist der Stammpfad der Partition der Unterpfad vor dem ersten Platzhalter.<br/><br/>Angenommen, Sie konfigurieren den Pfad im Dataset als „root/folder/year=2020/month=08/day=27“:<br/>- Wenn Sie den Stammpfad der Partition als „root/folder/year=2020“ angeben, generiert die Kopieraktivität zusätzlich zu den Spalten in den Dateien die beiden weiteren Spalten `month` und `day` mit den Werten „08“ bzw. „27“.<br/>- Wenn kein Stammpfad für die Partition angegeben ist, wird keine zusätzliche Spalte generiert. | Nein                                            |
-| maxConcurrentConnections | Die Anzahl gleichzeitiger Verbindungen mit dem Speicher. Geben Sie diesen Wert nur an, wenn Sie die gleichzeitigen Verbindungen mit dem Datenspeicher begrenzen möchten. | Nein                                                          |
+| maxConcurrentConnections |Die Obergrenze gleichzeitiger Verbindungen mit dem Datenspeicher während der Aktivitätsausführung. Geben Sie diesen Wert nur an, wenn Sie die Anzahl der gleichzeitigen Verbindungen begrenzen möchten.| Nein                                                          |
 
 **Beispiel:**
 

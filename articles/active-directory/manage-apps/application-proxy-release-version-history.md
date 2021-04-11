@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD-Anwendungsproxy: Verlauf der Versionsveröffentlichungen'
-description: In diesem Artikel werden alle Versionen des Azure AD-Anwendungsproxys aufgeführt sowie neue Features und behobene Probleme beschrieben.
+title: 'Azure Active Directory-Anwendungsproxy: Verlauf der Versionsreleases'
+description: In diesem Artikel werden alle Releases des Azure Active Directory-Anwendungsproxys aufgeführt und neue Features sowie behobene Probleme beschrieben.
 services: active-directory
 author: kenwith
 manager: daveba
@@ -8,15 +8,16 @@ ms.assetid: ''
 ms.service: active-directory
 ms.topic: reference
 ms.workload: identity
-ms.date: 07/22/2020
+ms.date: 02/17/2021
 ms.subservice: app-mgmt
 ms.author: kenwith
-ms.openlocfilehash: 6ba622bd52dc13fb0053b61b65529db6e6912611
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.reviewer: japere
+ms.openlocfilehash: 0244e0ca66f452649d3136eb122d1c2666182ae2
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101686715"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103200965"
 ---
 # <a name="azure-ad-application-proxy-version-release-history"></a>Azure AD-Anwendungsproxy: Verlauf der Versionsveröffentlichungen
 In diesem Artikel werden die veröffentlichten Versionen und Features des Anwendungsproxys von Azure Active Directory (Azure AD) aufgeführt. Das Azure AD-Team aktualisiert den Anwendungsproxy regelmäßig mit neuen Features und Funktionen. Anwendungsproxyconnectors werden automatisch aktualisiert, wenn eine neue Version veröffentlicht wird. 
@@ -25,11 +26,11 @@ Wir empfehlen die Aktivierung von automatischen Updates für Ihre Connectors, um
 
 Hier finden Sie eine Liste der zugehörigen Ressourcen:
 
-Resource |  Details
---------- | --------- |
-Aktivieren des Anwendungsproxys | In diesem [Tutorial](application-proxy-add-on-premises-application.md) werden die Voraussetzungen zum Aktivieren des Anwendungsproxys und zum Installieren und Registrieren eines Connectors beschrieben.
-Grundlegendes zu Azure AD-Anwendungsproxyconnectors | Erfahren Sie mehr über die [Connectorverwaltung](application-proxy-connectors.md) und die [automatische Aktualisierung](application-proxy-connectors.md#automatic-updates) von Connectors.
-Herunterladen des Azure AD-Anwendungsproxyconnectors |  [Laden Sie den aktuellen Connector herunter](https://download.msappproxy.net/subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/connector/download).
+| Resource                                         | Details                                                      |
+| ------------------------------------------------ | ------------------------------------------------------------ |
+| Aktivieren des Anwendungsproxys                  | In diesem [Tutorial](application-proxy-add-on-premises-application.md) werden die Voraussetzungen zum Aktivieren des Anwendungsproxys und zum Installieren und Registrieren eines Connectors beschrieben. |
+| Grundlegendes zu Azure AD-Anwendungsproxyconnectors | Erfahren Sie mehr über die [Connectorverwaltung](application-proxy-connectors.md) und die [automatische Aktualisierung](application-proxy-connectors.md#automatic-updates) von Connectors. |
+| Herunterladen des Azure AD-Anwendungsproxyconnectors    | [Laden Sie den aktuellen Connector herunter](https://download.msappproxy.net/subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/connector/download). |
 
 ## <a name="1519750"></a>1.5.1975.0
 
@@ -41,6 +42,7 @@ Herunterladen des Azure AD-Anwendungsproxyconnectors |  [Laden Sie den aktuellen
 -   Verbesserte Unterstützung für Azure Government-Cloudumgebungen. Ausführliche Informationen zur ordnungsgemäßen Installation des Connectors für die Azure Government-Cloudprüfung finden Sie unter [Voraussetzungen](../hybrid/reference-connect-government-cloud.md#allow-access-to-urls) und [Installieren des Agents für die Azure Government-Cloud](../hybrid/reference-connect-government-cloud.md#install-the-agent-for-the-azure-government-cloud).
 - Unterstützung für die Verwendung des Webclients der Remotedesktopdienste mit dem Anwendungsproxy. Weitere Informationen finden Sie unter [Veröffentlichen des Remotedesktops per Azure AD-Anwendungsproxy](application-proxy-integrate-with-remote-desktop-services.md).
 - Verbesserte Aushandlungen für WebSocket-Erweiterungen 
+- Die Unterstützung für optimiertes Routing zwischen Connectorgruppen und Anwendungsproxy-Clouddiensten basierend auf der Region wurde hinzugefügt. Weitere Informationen finden Sie unter [Optimieren des Datenverkehrsflusses mit dem Azure Active Directory-Anwendungsproxy](application-proxy-network-topology.md). 
 
 ### <a name="fixed-issues"></a>Behobene Probleme
 - Behoben: WebSocket-Problem, das Zeichenfolgen in Kleinbuchstaben erzwingt

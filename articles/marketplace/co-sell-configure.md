@@ -8,16 +8,16 @@ author: palanis-MSFT
 ms.author: palanis
 ms.reviewer: stmummer
 ms.date: 3/17/2021
-ms.openlocfilehash: e8019a30d4f5bf24814d88fc749cefd6b529b73b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: db502f4652a6ae541a504249475898e3e771f90d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104608599"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105563394"
 ---
 # <a name="configure-co-sell-for-a-commercial-marketplace-offer"></a>Konfigurieren von Co-Selling für ein Angebot im kommerziellen Marketplace
 
-In diesem Artikel wird beschrieben, wie Sie die Registerkarte **Co-Selling mit Microsoft** für ein Angebot im kommerziellen Marketplace konfigurieren. Die Angabe von Informationen auf dieser Registerkarte ist vollkommen optional. Um die [Status „Co-Sell Ready“ und „IP Co-Sell Incentivized“](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status) zu erreichen, sind die Angaben jedoch erforderlich. Die von Ihnen angegebenen Informationen werden von den Microsoft-Vertriebsteams verwendet, um mehr über Ihr Angebot zu erfahren, wenn sie dessen Eignung für die Anforderungen Ihrer Kunden auswerten. Sie sind nicht direkt für Kunden verfügbar. Weitere Informationen zum Co-Selling finden Sie in der [Übersicht über das Co-Selling mit Microsoft-Verkäufern und -Partnern](marketplace-co-sell.md) und unter [Co-Selling mit Microsoft](https://partner.microsoft.com/membership/co-sell-with-microsoft).
+In diesem Artikel wird beschrieben, wie Sie die Registerkarte **Co-Selling mit Microsoft** für ein Angebot im kommerziellen Marketplace konfigurieren. Die Angabe von Informationen auf dieser Registerkarte ist vollkommen optional. Um die [Status „Co-Sell Ready“ und „IP Co-Sell Incentivized“](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status) zu erreichen, sind die Angaben jedoch erforderlich. Die von Ihnen angegebenen Informationen werden von den Microsoft-Vertriebsteams verwendet, um mehr über Ihr Angebot zu erfahren, wenn sie dessen Eignung für die Anforderungen Ihrer Kunden auswerten. Sie sind nicht direkt für Kunden verfügbar. Weitere Informationen zum Co-Selling finden Sie in der [Übersicht über das Co-Selling mit Microsoft-Verkäufern und -Partnern](marketplace-co-sell.md) und unter [Co-Selling mit Microsoft](https://partner.microsoft.com/membership/co-sell-with-microsoft).
 
 Die Co-Selling-Option ist für die folgenden Angebotstypen verfügbar.
 

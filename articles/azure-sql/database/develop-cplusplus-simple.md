@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/12/2018
-ms.openlocfilehash: e891c5797c9ce93e6cab7a07d2f68de1a9157249
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0460317a47a1cf01707990b6f92532d4ade01439
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92674771"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105643275"
 ---
 # <a name="connect-to-sql-database-using-c-and-c"></a>Herstellen einer Verbindung mit SQL-Datenbank mit C und C++
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,7 +29,7 @@ Stellen Sie sicher, dass Sie über Folgendes verfügen:
 
 * Ein aktives Azure-Konto. Wenn Sie kein Konto haben, können Sie sich für eine [kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/)registrieren.
 * [Visual Studio](https://www.visualstudio.com/downloads/). Sie müssen die C++-Sprachkomponenten installieren, um dieses Beispiel erstellen und ausführen zu können.
-* [Visual Studio-Linux-Entwicklung](/cpp/linux/?view=vs-2019). Wenn Sie unter Linux entwickeln, müssen Sie auch die Linux-Erweiterung für Visual Studio installieren.
+* [Visual Studio-Linux-Entwicklung](/cpp/linux/). Wenn Sie unter Linux entwickeln, müssen Sie auch die Linux-Erweiterung für Visual Studio installieren.
 
 ## <a name="azure-sql-database-and-sql-server-on-virtual-machines"></a><a id="AzureSQL"></a>Azure SQL-Datenbank und SQL Server auf virtuellen Computern
 

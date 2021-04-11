@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 06/22/2020
 ms.author: rogarana
-ms.openlocfilehash: 9807563c768b82c823ff754aaa679ddc917bf62d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1dd2768c7541312b68e2a44a35fc4260d67c5655
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87535058"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104586997"
 ---
 # <a name="part-four-mount-a-file-share-from-a-domain-joined-vm"></a>Teil 4: Einbinden einer Dateifreigabe von einer in eine Domäne eingebundenen VM
 
@@ -28,10 +28,10 @@ Melden Sie sich mithilfe der Anmeldeinformationen beim Client an, denen Sie die 
 
 Bevor Sie die Dateifreigabe einbinden können, müssen Sie sicherstellen, dass die folgenden Voraussetzungen erfüllt sind:
 
-- Wenn Sie die Dateifreigabe von einem Client einbinden, der zuvor die Dateifreigabe mithilfe Ihres Speicherkontoschlüssels eingebunden hat, müssen Sie sicherstellen, dass Sie die Freigabe entkoppelt haben, die persistenten Anmeldeinformationen des Speicherkontoschlüssels entfernt haben und derzeit AD DS-Anmeldeinformationen für die Authentifizierung verwenden.
+- Wenn Sie die Dateifreigabe von einem Client einbinden, der zuvor die Dateifreigabe mithilfe Ihres Speicherkontoschlüssels eingebunden hat, müssen Sie sicherstellen, dass Sie die Freigabe entkoppelt haben, die persistenten Anmeldeinformationen des Speicherkontoschlüssels entfernt haben und derzeit AD DS-Anmeldeinformationen für die Authentifizierung verwenden. Anweisungen zum Löschen der eingebundenen Freigabe mit dem Speicherkontoschlüssel finden Sie auf der [Seite mit häufig gestellten Fragen](./storage-files-faq.md#ad-ds--azure-ad-ds-authentication).
 - Ihr Client muss über eine Sichtverbindung zu Ihrer AD DS-Domäne verfügen. Wenn Ihr Computer oder Ihre VM sich außerhalb des Netzwerks befindet, das von Ihrer AD DS-Domäne verwaltet wird, müssen Sie den VPN aktivieren, um AD DS für die Authentifizierung zu erreichen.
 
-Ersetzen Sie die Platzhalterwerte durch Ihre eigenen Werte, und verwenden Sie dann den folgenden Befehl zum Einbinden der Azure-Dateifreigabe:
+Ersetzen Sie die Platzhalterwerte durch Ihre eigenen Werte, und verwenden Sie dann den folgenden Befehl zum Einbinden der Azure-Dateifreigabe. Sie müssen immer den unten gezeigten Pfad für die Einbindung verwenden. Die Verwendung von CNAME wird für die identitätsbasierte Authentifizierung (AD DS oder Azure AD DS) nicht unterstützt.
 
 ```PSH
 # Always mount your share using.file.core.windows.net, even if you setup a private endpoint for your share.

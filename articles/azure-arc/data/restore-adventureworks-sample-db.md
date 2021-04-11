@@ -9,16 +9,16 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: d238a889648e789087a0803f6b50288318462c7b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a6b3577fe820c9dadcb3c8415aa7a951a3283284
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91629062"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105641802"
 ---
 # <a name="restore-the-adventureworks-sample-database-into-sql-managed-instance---azure-arc"></a>Wiederherstellen der AdventureWorks-Beispieldatenbank in SQL Managed Instance: Azure Arc
 
-[AdventureWorks](/sql/samples/adventureworks-install-configure?view=sql-server-ver15&tabs=tsql&preserve-view=true) ist eine Beispieldatenbank, die eine OLTP-Datenbank enthält, die häufig in Tutorials und Beispielen verwendet wird. Sie wird von Microsoft als Teil des [GitHub-Repositorys für SQL Server-Beispiele](https://github.com/microsoft/sql-server-samples/tree/master/samples/databases) bereitgestellt und verwaltet.
+[AdventureWorks](/sql/samples/adventureworks-install-configure) ist eine Beispieldatenbank, die eine OLTP-Datenbank enthält, die häufig in Tutorials und Beispielen verwendet wird. Sie wird von Microsoft als Teil des [GitHub-Repositorys für SQL Server-Beispiele](https://github.com/microsoft/sql-server-samples/tree/master/samples/databases) bereitgestellt und verwaltet.
 
 In diesem Dokument wird ein einfacher Prozess beschrieben, mit dem die AdventureWorks-Beispieldatenbank in Ihrer SQL Managed Instance-Instanz (Azure Arc) wiederhergestellt werden kann.
 

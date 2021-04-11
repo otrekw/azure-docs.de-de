@@ -12,12 +12,12 @@ ms.date: 09/08/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 6958302a429fd88d4e26087b860b7f473bf4a1f9
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 226e94510709b37a7e6b1aae90a7e0ec5b4222b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100103990"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103199579"
 ---
 # <a name="use-microsoft-authenticator-or-intune-company-portal-on-xamarin-applications"></a>Verwenden von Microsoft Authenticator oder des Intune-Unternehmensportals für Xamarin-Anwendungen
 
@@ -326,6 +326,8 @@ Der Schrägstrich (`/`) vor der Signatur im `android:path`-Wert ist **erforderli
                     android:path="/hgbUYHVBYUTvuvT&Y6tr554365466="/>
 ```
 
+Weitere Informationen zum Konfigurieren Ihrer Anwendung für die Unterstützung des Systembrowsers und von Android 11 finden Sie unter [Aktualisieren des Android-Manifests für die Systembrowserunterstützung](msal-net-xamarin-android-considerations.md#update-the-android-manifest-for-system-webview-support).
+
 Alternativ können Sie MSAL so konfigurieren, dass MSAL ein Fallback auf den eingebetteten Browser durchführt, der nicht von einem Umleitungs-URI abhängig ist:
 
 ```csharp
@@ -344,22 +346,22 @@ Hier finden Sie einige Tipps zum Vermeiden von Problemen bei der Implementierung
 
     Beispiel: Wenn Sie Microsoft Authenticator zuerst und dann das Intune-Unternehmensportal installieren, wird die Brokerauthentifizierung *nur* auf dem Microsoft Authenticator erfolgen.
 - **Protokolle**: Wenn ein Problem mit der Brokerauthentifizierung auftritt, können Sie mithilfe der Brokerprotokolle die Ursache diagnostizieren.
-  - Anzeigen der Microsoft Authenticator-Protokolle:
+  - Rufen Sie Microsoft Authenticator-Protokolle ab:
 
     1. Wählen Sie oben rechts in der App die Menüschaltfläche aus.
-    1. Wählen Sie **Hilfe** > **Protokolle senden** > **Protokolle anzeigen** aus.
-    1. Wählen Sie **Alles kopieren** aus, um die Brokerprotokolle in die Zwischenablage des Geräts zu kopieren.
+    1. Klicken Sie auf **Feedback senden** > **Treten Probleme auf?** .
+    1. Wählen Sie unter **Was möchten Sie tun?** eine Option aus, und fügen Sie eine Beschreibung hinzu.
+    1. Klicken Sie auf den Pfeil in der oberen rechten Ecke der App, um die Protokolle zu senden.
 
-    Um diese Protokolle zum Debuggen zu nutzen, senden Sie sie am besten per E-Mail an sich selbst und zeigen sie auf Ihrem Entwicklungscomputer an. Möglicherweise ist es einfacher, wenn Sie die Protokolle auf Ihrem Computer analysieren anstatt auf dem Gerät selbst. Sie können auch einen Test-Editor unter Android verwenden, um die Protokolle als Textdatei zu speichern, und dann die Datei per USB-Kabel auf einen Computer kopieren.
+    Nachdem Sie die Protokolle gesendet haben, wird die Incident-ID in einem Dialogfeld angezeigt. Notieren Sie die Incident-ID, und geben Sie diese an, wenn Sie Hilfe anfordern.
 
-  - Anzeigen der Intune-Unternehmensportal-Protokolle:
+  - Rufen Sie Protokolle des Intune-Unternehmensportals ab:
 
-    1. Wählen Sie oben links in der App die Menüschaltfläche aus.
-    1. Wählen Sie **Einstellungen** > **Diagnosedaten** aus.
-    1. Wählen Sie **Protokolle kopieren** aus, um die Brokerprotokolle auf die SD-Karte des Geräts zu kopieren.
-    1. Stellen Sie mit einem USB-Kabel eine Verbindung zwischen dem Gerät und einem Computer her, um die Protokolle auf dem Entwicklungscomputer anzuzeigen.
+    1. Klicken Sie auf die Menüschaltfläche in der oberen linken Ecke der App.
+    1. Klicken Sie auf **Hilfe** > **E-Mail an Support senden**.
+    1. Klicken Sie auf **Nur Protokolle hochladen**, um die Protokolle zu senden.
 
-    Sobald Sie über die Protokolle verfügen, können Sie sie über die Korrelations-ID nach Ihren Authentifizierungsversuchen durchsuchen. Die Korrelations-ID wird jeder Authentifizierungsanforderung angefügt. Um Fehler zu finden, die vom Authentifizierungsendpunkt der Microsoft Identity Platform zurückgegeben werden, suchen Sie nach `AADSTS`.
+    Nachdem Sie die Protokolle gesendet haben, wird die Incident-ID in einem Dialogfeld angezeigt. Notieren Sie die Incident-ID, und geben Sie diese an, wenn Sie Hilfe anfordern.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

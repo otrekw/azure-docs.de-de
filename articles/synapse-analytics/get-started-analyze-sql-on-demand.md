@@ -10,24 +10,32 @@ ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
 ms.date: 12/31/2020
-ms.openlocfilehash: c9f8760bd1a7b5d3700f3fdf03331fe7013e116f
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 5f0a7477df2e281748c053ea8c7e7d3e79626296
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98209405"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104588017"
 ---
-# <a name="analyze-data-with-serverless-sql-pool-in-azure-synapse-analytics"></a>Analysieren von Daten mit einem serverlosen SQL-Pool in Azure Synapse Analytics
+# <a name="analyze-data-with-a-serverless-sql-pool"></a>Analysieren von Daten mit einem serverlosen SQL-Pool
 
 In diesem Tutorial erfahren Sie, wie Sie Daten mit einem serverlosen SQL-Pool analysieren und dabei Daten in Spark-Datenbanken verwenden. 
 
+## <a name="the-built-in-serverless-sql-pool"></a>Der serverlose SQL-Pool „Built-in“
+
+Mit serverlosen SQL-Pools können Sie SQL verwenden, ohne dass Sie Kapazität reservieren müssen. Die Abrechnung für einen serverlosen SQL-Pool basiert auf der Menge der Daten, die zum Ausführen der Abfrage verarbeitet werden, und nicht auf der Anzahl von Knoten, die zum Ausführen der Abfrage verwendet werden.
+
+Jeder Arbeitsbereich wird mit einem vorkonfigurierten serverlosen SQL-Pool namens **Built-in** (Integriert) bereitgestellt. 
+
 ## <a name="analyze-nyc-taxi-data-in-blob-storage-using-serverless-sql-pool"></a>Analysieren von NYC Taxi-Daten im Blobspeicher mithilfe eines serverlosen SQL-Pools
 
-1. Klicken Sie im Hub **Daten** unter **Verknüpft** mit der rechten Maustaste auf **Azure Blob Storage > Beispieldatasets > nyc_tlc_yellow**, und wählen Sie **Neues SQL-Skript** und anschließend **ERSTE 100 Zeilen auswählen** aus.
-1. Dadurch wird ein neues SQL-Skript mit dem folgendem Code erstellt:
+In diesem Abschnitt verwenden Sie einen serverlosen SQL-Pool, um NYC Taxi-Daten in einem Azure Blob Storage-Konto zu analysieren.
+
+1. Navigieren Sie in Synapse Studio zum Hub **Entwickeln**.
+1. Erstellen Sie ein neues SQL-Skript.
+1. Fügen Sie den folgenden Code in das Skript ein:
 
     ```
-    -- This is auto-generated code
     SELECT
         TOP 100 *
     FROM
@@ -38,25 +46,7 @@ In diesem Tutorial erfahren Sie, wie Sie Daten mit einem serverlosen SQL-Pool an
     ```
 1. Klicken Sie auf **Run**.
 
-## <a name="analyze-nyc-taxi-data-in-spark-databases-using-serverless-sql-pool"></a>Analysieren von NYC Taxi-Daten in Spark-Datenbanken mithilfe eines serverlosen SQL-Pools
-
-Tabellen in Spark-Datenbanken sind automatisch sichtbar und können von einem serverlosen SQL-Pool abgefragt werden.
-
-1. Navigieren Sie in Synapse Studio zum Hub **Entwickeln**, und erstellen Sie ein neues SQL-Skript.
-1. Legen Sie die Option **Verbinden mit**  auf den **integrierten** serverlosen SQL-Pool fest.
-1. Fügen Sie den folgenden Text in das Skript ein, und führen Sie das Skript aus.
-
-    ```sql
-    SELECT *
-    FROM nyctaxi.dbo.passengercountstats
-    ```
-
-    > [!NOTE]
-    > Beim erstmaligen Ausführen einer Abfrage, die einen serverlosen SQL-Pool nutzt, dauert es ungefähr zehn Sekunden, bis der serverlose SQL-Pool die SQL-Ressourcen gesammelt hat, die zum Ausführen Ihrer Abfragen benötigt werden. Für nachfolgende Abfragen wird dann deutlich weniger Zeit benötigt.
-  
-
-
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Analysieren von Daten im Speicher](get-started-analyze-storage.md)
+> [Analysieren von Daten mit einem serverlosen Spark-Pool](get-started-analyze-spark.md)

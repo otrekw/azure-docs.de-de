@@ -4,12 +4,12 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/20/2020
-ms.openlocfilehash: 43a8600a288a9797edcd326a1cb5dbcc8688d61f
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: 1d54429d901ca6caeadabfa7580e7270ceabcf45
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99834148"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104612784"
 ---
 In diesem Tutorial erfahren Sie, wie Sie eine IoT Plug & Play-Beispielgeräteanwendung mit Komponenten erstellen, mit Ihrem IoT-Hub verbinden und die an den Hub gesendeten Informationen mithilfe des Tools Azure IoT-Explorer anzeigen. Die Beispielanwendung wurde für Node.js geschrieben und ist im Azure IoT Hub-Geräte-SDK für Node.js enthalten. Ein Lösungsentwickler kann mithilfe von Azure IoT-Explorer mehr über die Funktionen eines IoT Plug & Play-Geräts erfahren, ohne Gerätecode anzeigen zu müssen.
 
@@ -60,7 +60,7 @@ Navigieren Sie zum Ordner *azure-iot-sdk-node\device\samples\pnp*.
 
 Der Ordner *azure-iot-sdk-node\device\samples\pnp* enthält den Beispielcode für den IoT Plug & Play-Temperaturregler.
 
-Der Code in der Datei *pnpTemperatureController.js* dient zum Implementieren eines IoT Plug & Play-Temperaturreglers. Das in diesem Beispiel implementierte Modell umfasst [mehrere Komponenten](../articles/iot-pnp/concepts-components.md). In der [DTDL-Modelldatei (Digital Twins Definition Language) für das Temperaturgerät](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json) werden die vom Gerät implementierten Telemetriedaten, Eigenschaften und Befehle definiert.
+Der Code in der Datei *pnpTemperatureController.js* dient zum Implementieren eines IoT Plug & Play-Temperaturreglers. Das in diesem Beispiel implementierte Modell umfasst [mehrere Komponenten](../articles/iot-pnp/concepts-modeling-guide.md). In der [DTDL-Modelldatei (Digital Twins Definition Language) für das Temperaturgerät](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json) werden die vom Gerät implementierten Telemetriedaten, Eigenschaften und Befehle definiert.
 
 Öffnen Sie die Datei *pnpTemperatureController.js* in einem Code-Editor Ihrer Wahl. Mithilfe des Beispielcodes wird Folgendes gezeigt:
 

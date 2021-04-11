@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperf-fy21q1, automl
-ms.openlocfilehash: e8e904511178f494890b25764a84df8ca64a6b6c
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 24c0d57490ecd039039992310f93ca3e21c47b3b
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102498862"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563486"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurieren automatisierter ML-Experimente in Python
 
@@ -396,9 +396,29 @@ Eine Zusammenfassung der Featurisierung und Informationen zu den Features, die z
 > Die Algorithmen, die beim automatisierten maschinellen Lernen eingesetzt werden, weisen eine inhärente Zufälligkeit auf, die zu geringfügigen Abweichungen in der abschließenden metrischen Bewertung eines empfohlenen Modells führen kann, z. B. bei der Genauigkeit. Automatisiertes maschinelles Lernen führt bei Bedarf auch Vorgänge an Daten wie Training-Test-Aufteilung, Training-Validierung-Aufteilung oder Kreuzvalidierung durch. Wenn Sie also ein Experiment mit denselben Konfigurationseinstellungen und derselben primären Metrik mehrmals durchführen, werden Sie aufgrund dieser Faktoren wahrscheinlich bei jedem Experiment eine Abweichung in der abschließenden metrischen Bewertung sehen. 
 
 ## <a name="register-and-deploy-models"></a>Registrieren und Bereitstellen von Modellen
+Sie können ein Modell registrieren, damit Sie es später wiederverwenden können. 
 
-Details zum Herunterladen oder Registrieren eines Modells für die Bereitstellung in einem Webdienst finden Sie unter [Wie und wo Modelle bereitgestellt werden](how-to-deploy-and-where.md).
+Zum Registrieren eines Modells aus einer Ausführung für das automatisierte maschinelle Lernen verwenden Sie die [`register_model()`](/python/api/azureml-train-automl-client/azureml.train.automl.run.automlrun#register-model-model-name-none--description-none--tags-none--iteration-none--metric-none-)-Methode. 
 
+```Python
+
+best_run, fitted_model = run.get_output()
+print(fitted_model.steps)
+
+model_name = best_run.properties['model_name']
+description = 'AutoML forecast example'
+tags = None
+
+model = remote_run.register_model(model_name = model_name, 
+                                  description = description, 
+                                  tags = tags)
+```
+
+
+Details zum Erstellen einer Bereitstellungskonfiguration und Bereitstellen eines registrierten Modells in einem Webdienst finden Sie unter [Wie und wo Modelle bereitgestellt werden](how-to-deploy-and-where.md?tabs=python#define-a-deployment-configuration).
+
+> [!TIP]
+> Für registrierte Modelle steht in [Azure Machine Learning Studio](https://ml.azure.com) die Bereitstellung mit nur einem Klick zur Verfügung. Weitere Informationen finden Sie unter [Bereitstellen registrierter Modelle aus Studio](how-to-use-automated-ml-for-ml-models.md#deploy-your-model). 
 <a name="explain"></a>
 
 ## <a name="model-interpretability"></a>Interpretierbarkeit von Modellen

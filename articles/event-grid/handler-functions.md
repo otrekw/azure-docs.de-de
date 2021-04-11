@@ -2,13 +2,13 @@
 title: Verwenden einer Funktion in Azure als Ereignishandler für Azure Event Grid-Ereignisse
 description: Erfahren Sie, wie Sie Funktionen, die in Azure Functions erstellt und dort gehostet werden, als Ereignishandler für Event Grid-Ereignisse verwenden können.
 ms.topic: conceptual
-ms.date: 09/18/2020
-ms.openlocfilehash: beddc35f2dd8db974492d14aec27ce754a74737c
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.date: 03/15/2021
+ms.openlocfilehash: f547b09fe7e62eb3fa9e02bd17298a936350f871
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632511"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103496540"
 ---
 # <a name="use-a-function-as-an-event-handler-for-event-grid-events"></a>Verwenden einer Funktion als Ereignishandler für Event Grid-Ereignisse
 
@@ -79,6 +79,9 @@ Sie können den Befehl [az eventgrid event-subscription create](/cli/azure/event
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 Sie können das Cmdlet [New-AzEventGridSubscription](/powershell/module/az.eventgrid/new-azeventgridsubscription) oder [Update-AzEventGridSubscription](/powershell/module/az.eventgrid/update-azeventgridsubscription) zum Konfigurieren von batchbezogenen Einstellungen mithilfe der folgenden Parameter verwenden: `-MaxEventsPerBatch` oder `-PreferredBatchSizeInKiloBytes`.
+
+> [!NOTE]
+> Wenn Sie Event Grid-Trigger verwenden, ruft der Event Grid-Dienst den geheimen Clientschlüssel für die Azure-Zielfunktion ab und verwendet diesen zum Übermitteln von Ereignissen an die Azure-Funktion. Wenn Sie Ihre Azure-Funktion mit einer Azure Active Directory-Anwendung schützen, müssen Sie den Ansatz für einen generischen Webhook und den HTTP-Trigger verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Eine Liste der unterstützten Ereignishandler finden Sie im Artikel zu [Ereignishandlern](event-handlers.md).

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/06/2020
 ms.author: justinha
-ms.openlocfilehash: 7967347fa63c657ba6211328bdd1d55512358521
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 3341f290a5a5bb169b6e70ea22459a2afafedbbc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96618772"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103198961"
 ---
 # <a name="troubleshoot-account-lockout-problems-with-an-azure-active-directory-domain-services-managed-domain"></a>Beheben von Problemen mit gesperrten Konten bei einer verwalteten Azure Active Directory Domain Services-Domäne
 
@@ -83,6 +83,23 @@ AADDomainServicesAccountManagement
 | where OperationName has "4740"
 | sort by TimeGenerated asc
 ```
+
+**Hinweis**
+
+Möglicherweise sind die Eventdetails 4776 und 4740 von „Source Workstation“ (Quellarbeitsstation) leer. Das liegt daran, dass ein Kennwortfehler im Netzwerkprotokoll über einige andere Geräte aufgetreten ist.
+Beispiel: Wenn Sie über einen RADIUS-Server verfügen, der die Authentifizierung an AAD DS weiterleiten kann. Aktivieren Sie RDP für das Back-End des Rechenzentrums zum Konfigurieren von Netlogon-Protokollen, um dies zu bestätigen.
+
+„03/04 19:07:29 [LOGON] [10752] contoso: SamLogon: Transitive Network logon of contoso\Nagappan.Veerappan from (via LOB11-RADIUS)“ wurde eingegeben. 
+
+„03/04 19:07:29 [LOGON] [10752] contoso: SamLogon: Transitive Network logon of contoso\Nagappan.Veerappan from (via LOB11-RADIUS)“ gibt 0xC000006A zurück.
+
+„03/04 19:07:35 [LOGON] [10753] contoso: SamLogon: Transitive Network logon of contoso\Nagappan.Veerappan from (via LOB11-RADIUS)“ wurde eingegeben. 
+
+„03/04 19:07:35 [LOGON] [10753] contoso: SamLogon: Transitive Network logon of contoso\Nagappan.Veerappan from (via LOB11-RADIUS)“ gibt 0xC000006A zurück.
+
+Aktivieren Sie RDP für Ihre Rechenzentren in Netzwerksicherheitsgruppen für das Back-End, um die Erfassung von Diagnosedaten zu konfigurieren (d. h. Netlogon). Informationen dazu finden Sie unter https://docs.microsoft.com/azure/active-directory-domain-services/alert-nsg#inbound-security-rules. Wenn Sie die Standard-Netzwerksicherheitsgruppe bereits geändert haben, führen Sie zur Aktivierung die Anweisungen unter https://docs.microsoft.com/azure/active-directory-domain-services/network-considerations#port-3389---management-using-remote-desktop aus.
+
+Informationen zum Aktivieren der Netlogon-Anmeldung auf jedem Server finden Sie unter https://docs.microsoft.com/troubleshoot/windows-client/windows-security/enable-debug-logging-netlogon-service.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

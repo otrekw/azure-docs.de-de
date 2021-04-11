@@ -7,26 +7,26 @@ author: ChristopherHouser
 ms.author: chrishou
 ms.reviewer: valthom, estfan, logicappspm
 ms.topic: article
-ms.date: 05/14/2020
+ms.date: 03/10/2021
 tags: connectors
-ms.openlocfilehash: e9e554fdc092e49f5a87049de0e3dc3163105f58
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a07eb6e592c68794f0e4038a7cf9a42bd396b47a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85609502"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103495231"
 ---
 # <a name="connect-to-an-ibm-mq-server-from-azure-logic-apps"></a>Herstellen einer Verbindung mit dem IBM MQ-Server über Azure Logic Apps
 
-Der IBM MQ-Connector sendet und empfängt Nachrichten, die lokal oder in Azure auf einem IBM MQ-Server gespeichert sind. Dieser Connector umfasst einen Microsoft-Client zum Kommunizieren mit einem IBM MQ-Remoteserver über ein TCP/IP-Netzwerk. Der vorliegende Artikel ist ein Leitfaden für den Einstieg in die Verwendung des MQ-Connectors. Sie können zuerst eine einzelne Nachricht in einer Warteschlange suchen und anschließend andere Aktionen ausprobieren.
+Der MQ-Connector sendet und empfängt Nachrichten, die lokal oder in Azure auf einem MQ-Server gespeichert sind. Dieser Connector umfasst einen Microsoft-Client zum Kommunizieren mit einem IBM MQ-Remoteserver über ein TCP/IP-Netzwerk. Der vorliegende Artikel ist ein Leitfaden für den Einstieg in die Verwendung des MQ-Connectors. Sie können zuerst eine einzelne Nachricht in einer Warteschlange suchen und anschließend andere Aktionen ausprobieren.
 
-Der IBM MQ-Connector stellt die folgenden Aktionen, jedoch keine Trigger bereit:
+Der MQ-Connector stellt die folgenden Aktionen, jedoch keine Trigger bereit:
 
-- Durchsuchen einer einzelnen Nachricht ohne Löschen der Nachricht vom IBM MQ-Server
-- Durchsuchen eines Batchs von Nachrichten ohne Löschen der Nachrichten vom IBM MQ-Server
-- Empfangen einer einzelnen Nachricht und Löschen der Nachricht vom IBM MQ-Server
-- Empfangen eines Batchs von Nachrichten und Löschen der Nachrichten vom IBM MQ-Server
-- Senden einer einzelnen Nachricht an den IBM MQ-Server
+- Durchsuchen einer einzelnen Nachricht ohne Löschen der Nachricht vom MQ-Server
+- Durchsuchen eines Batchs von Nachrichten ohne Löschen der Nachrichten vom MQ-Server
+- Empfangen einer einzelnen Nachricht und Löschen der Nachricht vom MQ-Server
+- Empfangen eines Batchs von Nachrichten und Löschen der Nachrichten vom MQ-Server
+- Senden einer einzelnen Nachricht an den MQ-Server
 
 Offiziell unterstützte IBM WebSphere MQ-Versionen:
 
@@ -37,15 +37,20 @@ Offiziell unterstützte IBM WebSphere MQ-Versionen:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Wenn Sie einen lokalen MQ-Server verwenden, [installieren Sie das lokale Datengateway](../logic-apps/logic-apps-gateway-install.md) auf einem Server in Ihrem Netzwerk. Der Server, auf dem das lokale Datengateway installiert ist, muss über .NET Framework 4.6 verfügen, damit der MQ-Connector funktioniert.
+* Wenn Sie einen lokalen MQ-Server verwenden, [installieren Sie das lokale Datengateway](../logic-apps/logic-apps-gateway-install.md) auf einem Server in Ihrem Netzwerk.
 
-  Nach dem Installieren des Gateways müssen Sie in Azure außerdem eine Ressource für das lokale Datengateway erstellen. Weitere Informationen finden Sie unter [Einrichten der Datengatewayverbindung](../logic-apps/logic-apps-gateway-connection.md).
+  > [!NOTE]
+  > Wenn Ihr MQ-Server öffentlich oder in Azure verfügbar ist, müssen Sie das Datengateway nicht verwenden.
 
-  Wenn Ihr MQ-Server öffentlich oder in Azure verfügbar ist, müssen Sie das Datengateway nicht verwenden.
+  * Für eine ordnungsgemäße Funktionsweise des MQ-Connectors muss der Server, auf dem das lokale Datengateway installiert wird, auch über .NET Framework 4.6 verfügen.
+  
+  * Nach der Installation des lokalen Datengateways [erstellen Sie eine Azure-Gatewayressource für das lokale Datengateway](../logic-apps/logic-apps-gateway-connection.md), die der MQ-Connector für den Zugriff auf Ihren lokalen MQ-Server verwendet.
 
-* Die Logik-App, der Sie die MQ-Aktion hinzufügen möchten. Für diese Logik-App müssen derselbe Standort wie für die Verbindung mit dem lokalen Datengateway und ein bereits vorhandener Trigger verwendet werden, der den Workflow startet.
+* Die Logik-App, für die Sie den MQ-Connector verwenden möchten. Da der MQ-Connector keine Trigger bereitstellt, müssen Sie Ihrer Logik-App zuerst einen hinzufügen. Sie können beispielsweise den [Wiederholungstrigger](../connectors/connectors-native-recurrence.md) verwenden. Falls Sie noch nicht mit Logik-Apps gearbeitet haben, lesen Sie zuerst den [Schnellstart zum Erstellen Ihrer ersten Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-  Da der MQ-Connector keine Trigger bereitstellt, müssen Sie Ihrer Logik-App zuerst einen hinzufügen. Sie können beispielsweise den Wiederholungstrigger verwenden. Falls Sie noch nicht mit Logik-Apps gearbeitet haben, lesen Sie zuerst den [Schnellstart zum Erstellen Ihrer ersten Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+## <a name="limitations"></a>Einschränkungen
+
+Das Feld **Format** der Nachricht wird nicht vom MQ-Connector verwendet. Außerdem wird keine Konvertierung von Zeichensätzen durchgeführt. Der Connector platziert die Daten im Nachrichtenfeld lediglich in einer JSON-Nachricht und übermittelt diese Nachricht.
 
 <a name="create-connection"></a>
 
@@ -61,7 +66,7 @@ Wenn Sie beim Hinzufügen einer MQ-Aktion noch über keine MQ-Verbindung verfüg
 
    * Für **Server** können Sie den Namen des MQ-Server oder die IP-Adresse gefolgt von einem Doppelpunkt und der Portnummer eingeben.
 
-   * Um SSL (Secure Sockets Layer) zu verwenden, wählen Sie **SSL aktivieren?** aus.
+   * Für die Verwendung von Transport Layer Security (TLS) oder Secure Sockets Layer (SSL) wählen Sie **SSL aktivieren?** aus.
 
      Der MQ-Connector unterstützt derzeit nur die Serverauthentifizierung, jedoch nicht die Clientauthentifizierung. Weitere Informationen finden Sie unter [Probleme bei der Verbindung und Authentifizierung](#connection-problems).
 
@@ -185,7 +190,7 @@ Die Aktion **Nachrichten empfangen** umfasst dieselben Eingaben und Ausgaben wie
 
 ## <a name="connector-reference"></a>Connector-Referenz
 
-Technische Details zu Aktionen und Einschränkungen aus der Swagger-Beschreibung des Connectors finden Sie auf der [Referenzseite](/connectors/mq/) des Connectors.
+Technische Details, z. B. Aktionen und Einschränkungen, die in der Swagger-Datei des Connectors beschrieben sind, finden Sie auf der [Referenzseite](/connectors/mq/) des Connectors.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

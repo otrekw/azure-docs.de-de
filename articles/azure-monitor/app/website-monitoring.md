@@ -2,14 +2,14 @@
 title: 'Schnellstart: Überwachen von Websites mit Azure Monitor Application Insights'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mit Azure Monitor Application Insights eine client-/browserseitige Websiteüberwachung einrichten.
 ms.topic: quickstart
-ms.date: 08/19/2020
+ms.date: 03/19/2021
 ms.custom: mvc
-ms.openlocfilehash: 1773ebb9c490420451a119c8343fb613ff50f029
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: 0e10db39c8dbbf81087d696cfbb5b2ded1ae79ac
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102488578"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104654941"
 ---
 # <a name="quickstart-start-monitoring-your-website-with-azure-monitor-application-insights"></a>Schnellstart: Beginnen der Überwachung Ihrer Website mit Azure Monitor Application Insights
 
@@ -33,7 +33,7 @@ Application Insights kann Telemetriedaten aus jeder mit dem Internet verbundenen
    >Wenn Sie zum ersten Mal eine Application Insights-Ressource erstellen, finden Sie unter [Erstellen einer Application Insights-Ressource](./create-new-resource.md) weitere Informationen dazu.
 1. Wenn das Dialogfeld für die Konfiguration angezeigt wird, füllen Sie die Eingabefelder anhand der Informationen in der folgenden Tabelle aus:
 
-    | Einstellungen        | Wert           | Beschreibung  |
+    | Einstellungen        | Wert           | BESCHREIBUNG  |
    | ------------- |:-------------|:-----|
    | **Name**      | Global eindeutiger Wert | Der Name, der die zu überwachende App identifiziert |
    | **Ressourcengruppe**     | myResourceGroup      | Der Name der neuen Ressourcengruppe, die Application Insights-Daten hosten soll. Sie können eine neue Ressourcengruppe erstellen oder eine bereits vorhandene Ressourcengruppe verwenden. |
@@ -60,9 +60,9 @@ Application Insights kann Telemetriedaten aus jeder mit dem Internet verbundenen
 
 ## <a name="configure-application-insights-sdk"></a>Konfigurieren des Application Insights SDK
 
-1. Wählen Sie **Übersicht** > **Grundlagen** aus, und kopieren Sie den **Instrumentierungsschlüssel** Ihrer Anwendung.
+1. Wählen Sie **Übersicht** aus, und kopieren Sie die **Verbindungszeichenfolge** Ihrer Anwendung. In diesem Beispiel benötigen wir nur den Instrumentationsschlüsselteil der Verbindungszeichenfolge `InstrumentationKey=00000000-0000-0000-0000-000000000000;`.
 
-   ![Formular „Neue Application Insights-Ressource“](media/website-monitoring/instrumentation-key-001.png)
+    :::image type="content" source="media/website-monitoring/keys.png" alt-text="Screenshot: Übersichtsseite mit dem Instrumentierungsschlüssel und der Verbindungszeichenfolge":::
 
 1. Fügen Sie der Datei ``hello_world.html`` das folgende Skript vor dem schließenden Tag ``</head>`` hinzu:
 
@@ -76,7 +76,7 @@ Application Insights kann Telemetriedaten aus jeder mit dem Internet verbundenen
     crossOrigin: "anonymous", // When supplied this will add the provided value as the cross origin attribute on the script tag
     // onInit: null, // Once the application insights instance has loaded and initialized this callback function will be called with 1 argument -- the sdk instance (DO NOT ADD anything to the sdk.queue -- As they won't get called)
     cfg: { // Application Insights Configuration
-        instrumentationKey: "YOUR_INSTRUMENTATION_KEY_GOES_HERE"
+        connectionString:"InstrumentationKey=YOUR_INSTRUMENTATION_KEY_GOES_HERE;" 
         /* ...Other Configuration Options... */
     }});
     </script>
@@ -84,7 +84,7 @@ Application Insights kann Telemetriedaten aus jeder mit dem Internet verbundenen
 
     > [!NOTE]
     > Der aktuelle Codeausschnitt (oben aufgeführt) ist Version „5“. Die Version ist im Ausschnitt als „sv:"#"“ codiert, und die [aktuelle Version und Konfigurationsdetails sind auf GitHub verfügbar](https://go.microsoft.com/fwlink/?linkid=2156318).
-   
+
 1. Bearbeiten Sie ``hello_world.html``, und fügen Sie Ihren Instrumentierungsschlüssel hinzu.
 
 1. Öffnen Sie ``hello_world.html`` in einer lokalen Browsersitzung. Mit dieser Aktion wird ein einzelner Seitenaufruf generiert. Sie können Ihren Browser aktualisieren, um mehrere Testseitenaufrufe zu generieren.
@@ -95,7 +95,7 @@ Application Insights kann Telemetriedaten aus jeder mit dem Internet verbundenen
 
    Die vier Standarddiagramme auf der Übersichtsseite sind auf serverseitige Anwendungsdaten ausgelegt. Da Sie die client-/browserseitigen Interaktionen mit dem JavaScript SDK instrumentieren, ist diese spezielle Ansicht nicht relevant (es sei denn, es ist auch ein serverseitiges SDK installiert).
 
-1. Wählen Sie **Analytics** ![Symbol Anwendungsübersicht“](media/website-monitoring/006.png) aus.  Mit dieser Aktion wird **Analytics** geöffnet. Hier steht eine erweiterte Abfragesprache zum Analysieren aller Daten zur Verfügung, die von Application Insights gesammelt werden. Führen Sie die folgende Abfrage aus, um Daten im Zusammenhang mit den clientseitigen Browseranforderungen anzuzeigen:
+1. Wählen Sie **Protokolle** aus.  Mit dieser Aktion wird **Protokolle** geöffnet. Hier steht eine erweiterte Abfragesprache zum Analysieren aller Daten zur Verfügung, die von Application Insights gesammelt werden. Führen Sie die folgende Abfrage aus, um Daten im Zusammenhang mit den clientseitigen Browseranforderungen anzuzeigen:
 
     ```kusto
     // average pageView duration by name
@@ -112,19 +112,15 @@ Application Insights kann Telemetriedaten aus jeder mit dem Internet verbundenen
     | render timechart
     ```
 
-   ![Analysediagramm der Benutzeranforderungen in einem bestimmten Zeitraum](./media/website-monitoring/analytics-query.png)
+   :::image type="content" source="media/website-monitoring/log-query.png" alt-text="Screenshot: Protokollanalysediagramm der Benutzeranforderungen in einem bestimmten Zeitraum":::
 
-1. Kehren Sie zur Seite **Übersicht** zurück. Wählen Sie unter der Überschrift **Untersuchen** die Option **Browser** und anschließend **Leistung** aus.  Metriken im Zusammenhang mit der Leistung Ihrer Website werden angezeigt. Es gibt eine Ansicht zum Analysieren von Fehlern und Ausnahmen für Ihre Website. Sie können **Beispiele** auswählen, um auf die [End-to-End-Transaktionsdetails](./transaction-diagnostics.md) zuzugreifen.
+1. Kehren Sie zur Seite **Übersicht** zurück. Wählen Sie unter der Überschrift **Untersuchen** die Option **Leistung** und anschließend die Registerkarte **Browser** aus.  Metriken im Zusammenhang mit der Leistung Ihrer Website werden angezeigt. Es gibt eine Ansicht zum Analysieren von Fehlern und Ausnahmen für Ihre Website. Sie können **Beispiele** auswählen, um auf die [End-to-End-Transaktionsdetails](./transaction-diagnostics.md) zuzugreifen.
 
-   ![Servermetriken – Diagramm](./media/website-monitoring/browser-performance.png)
+     :::image type="content" source="media/website-monitoring/performance.png" alt-text="Screenshot: Registerkarte „Leistung“ mit dem Browsermetrikdiagramm":::
 
-1. Wählen Sie im Hauptmenü von Application Insights unter der Überschrift **Nutzung** die Option [**Benutzer**](./usage-segmentation.md) aus, um die [Analysetools für Benutzerverhalten](./usage-overview.md) zu erkunden. Da wir zum Testen einen einzelnen Computer verwenden, werden nur Daten für einen einzelnen Benutzer angezeigt. Bei einer Livewebsite kann die Benutzerverteilung beispielsweise wie folgt aussehen:
-
-     ![Benutzerdiagramm](./media/website-monitoring/usage-users.png)
+1. Wählen Sie im Hauptmenü von Application Insights unter der Überschrift **Nutzung** die Option [**Benutzer**](./usage-segmentation.md) aus, um die [Analysetools für Benutzerverhalten](./usage-overview.md) zu erkunden. Da wir zum Testen einen einzelnen Computer verwenden, werden nur Daten für einen einzelnen Benutzer angezeigt.
 
 1. Für eine komplexere Website mit mehreren Seiten können Sie das Tool [**Benutzerabläufe**](./usage-flows.md) verwenden, um die Navigation der Besucher auf Ihrer Website nachzuvollziehen.
-
-   ![Visualisierung von Benutzerabläufen](./media/website-monitoring/user-flows.png)
 
 Informationen zu komplexeren Konfigurationen für die Websiteüberwachung finden Sie in der [API-Referenz für das JavaScript SDK](./javascript.md).
 

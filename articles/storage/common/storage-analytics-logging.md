@@ -9,16 +9,16 @@ ms.date: 01/29/2021
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: f1d254eecc41ebef690b4fc9f8294bee5a368ae4
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a5d1d6af68fcbd6a5822b2652ee79c464d02241f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100570023"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103200763"
 ---
 # <a name="azure-storage-analytics-logging"></a>Azure Storage Analytics-Protokollierung
 
-Storage Analytics protokolliert ausführliche Informationen zu erfolgreichen und nicht erfolgreichen Anforderungen an einen Speicherdienst. Anhand dieser Informationen können einzelne Anforderungen überwacht und Probleme mit einem Speicherdienst untersucht werden. Anforderungen werden auf Grundlage der besten Leistung protokolliert.
+Storage Analytics protokolliert ausführliche Informationen zu erfolgreichen und nicht erfolgreichen Anforderungen an einen Speicherdienst. Anhand dieser Informationen können einzelne Anforderungen überwacht und Probleme mit einem Speicherdienst untersucht werden. Anforderungen werden auf Grundlage der besten Leistung protokolliert. Das bedeutet, dass die meisten Anforderungen einen Protokolleintrag zur Folge haben. Die Vollständigkeit und Aktualität von Storage Analytics-Protokollen werden jedoch nicht garantiert. 
 
 > [!NOTE]
 > Wir empfehlen, Azure Storage-Protokolle in Azure Monitor (statt Storage Analytics-Protokollen) zu verwenden. Azure Storage-Protokolle in Azure Monitor befinden sich in der öffentlichen Vorschauphase und stehen in allen Regionen für die öffentliche Cloud für Vorschautests zur Verfügung. Diese Vorschau unterstützt Protokolle für Blobdateien (einschließlich Azure Data Lake Storage Gen2), Dateien, Warteschlangen und Tabellen. Weitere Informationen finden Sie in einem der folgenden Artikel:
