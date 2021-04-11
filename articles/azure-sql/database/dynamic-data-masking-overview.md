@@ -12,12 +12,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 01/25/2021
 tags: azure-synpase
-ms.openlocfilehash: b10b00e724324779eb753bfefccce77a5eb2a39d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ccc648f06cad46b490ac73fe777066c9de2ff2b9
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98918076"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106551644"
 ---
 # <a name="dynamic-data-masking"></a>Dynamische Datenmaskierung 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -72,13 +72,13 @@ Sie können die REST-API verwenden, um Datenmaskierungsrichtlinien und -regeln p
 
 ### <a name="data-masking-policies"></a>Datenmaskierungsrichtlinien
 
-- [Erstellen oder aktualisieren:](/rest/api/sql/datamaskingpolicies/createorupdate) Erstellt oder aktualisiert eine Datenbank-Datenmaskierungsrichtlinie.
-- [Get](/rest/api/sql/datamaskingpolicies/get) (Abrufen): Ruft eine Datenbank-Datenmaskierungsrichtlinie ab. 
+- [Erstellen oder aktualisieren:](/rest/api/sql/2014-04-01/datamaskingpolicies/createorupdate) Erstellt oder aktualisiert eine Datenbank-Datenmaskierungsrichtlinie.
+- [Get](/rest/api/sql/2014-04-01/datamaskingpolicies/get) (Abrufen): Ruft eine Datenbank-Datenmaskierungsrichtlinie ab. 
 
 ### <a name="data-masking-rules"></a>Datenmaskierungsregeln
 
-- [Erstellen oder aktualisieren:](/rest/api/sql/datamaskingrules/createorupdate) Erstellt oder aktualisiert eine Datenbank-Datenmaskierungsregel.
-- [Nach Datenbank auflisten](/rest/api/sql/datamaskingrules/listbydatabase): Ruft eine Liste von Datenbank-Datenmaskierungsregeln ab.
+- [Erstellen oder aktualisieren:](/rest/api/sql/2014-04-01/datamaskingrules/createorupdate) Erstellt oder aktualisiert eine Datenbank-Datenmaskierungsregel.
+- [Nach Datenbank auflisten](/rest/api/sql/2014-04-01/datamaskingrules/listbydatabase): Ruft eine Liste von Datenbank-Datenmaskierungsregeln ab.
 
 ## <a name="permissions"></a>Berechtigungen
 

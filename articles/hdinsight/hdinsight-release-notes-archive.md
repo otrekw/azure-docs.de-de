@@ -5,18 +5,61 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/08/2021
-ms.openlocfilehash: 4e7b25315aaadffe7f34b28195c25b77a36fa5f8
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 108dfb48f602f776ae50290c1b45ceecd8569421
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104872148"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105607302"
 ---
 # <a name="archived-release-notes"></a>Archivierte Versionshinweise
 
 ## <a name="summary"></a>Zusammenfassung
 
 Azure HDInsight ist einer der beliebtesten Dienste unter Enterprise-Kunden für die Open Source-Analyseframeworks Apache Hadoop und Apache Spark in Azure.
+
+## <a name="release-date-02052021"></a>Veröffentlichungsdatum: 05.02.2021
+
+Diese Version gilt sowohl für HDInsight 3.6 als auch für HDInsight 4.0. Das HDInsight-Release wird über mehrere Tage für alle Regionen verfügbar gemacht. Das hier angegebene Veröffentlichungsdatum entspricht dem Veröffentlichungsdatum in der ersten Region. Es kann sein, dass die unten angegebenen Änderungen bei Ihnen erst ein paar Tage später verfügbar werden.
+
+### <a name="new-features"></a>Neue Funktionen
+#### <a name="dav4-series-support"></a>Unterstützung der Dav4-Serie
+In HDInsight wurde in dieser Version Unterstützung für die Dav4-Serie hinzugefügt. Weitere Informationen zur [Dav4-Serie finden Sie hier](/azure/virtual-machines/dav4-dasv4-series).
+
+#### <a name="kafka-rest-proxy-ga"></a>Kafka-REST-Proxy allgemein verfügbar 
+Mithilfe des REST-Proxys von Kafka können Sie über eine REST-API per HTTPS mit Ihrem Kafka-Cluster interagieren. Der Kafka-REST-Proxy ist ab dieser Version allgemein verfügbar. Weitere Informationen zum [Kafka-REST-Proxy finden Sie hier](/azure/hdinsight/kafka/rest-proxy).
+
+#### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Wechsel zu Azure-VM-Skalierungsgruppen
+HDInsight verwendet jetzt virtuelle Azure-Computer für die Bereitstellung des Clusters. Der Dienst wird schrittweise zu [Azure-VM-Skalierungsgruppen](../virtual-machine-scale-sets/overview.md) migriert. Der gesamte Prozess kann Monate dauern. Nachdem Ihre Regionen und Abonnements migriert wurden, werden neu erstellte HDInsight-Cluster ohne Kundenaktionen in VM-Skalierungsgruppen ausgeführt. Es wird kein Breaking Change erwartet.
+
+### <a name="deprecation"></a>Eingestellte Unterstützung
+#### <a name="disabled-vm-sizes"></a>Deaktivierte VM-Größen
+Ab dem 9. Januar 2021 hindert HDInsight alle Kunden daran, Cluster mit den VM-Größen standand_A8, standand_A9, standand_A10 und standand_A11 zu erstellen. Vorhandene Cluster werden unverändert ausgeführt. Sie sollten zu HDInsight 4.0 wechseln, um potenzielle System-/Supportunterbrechungen zu vermeiden.
+
+### <a name="behavior-changes"></a>Verhaltensänderungen
+#### <a name="default-cluster-vm-size-changes-to-ev3-series"></a>Änderung der VM-Standardgröße für Cluster in Ev3-Serie 
+Di VM-Standardgröße für Cluster wird von der D-Serie in die Ev3-Serie geändert. Diese Änderung gilt für Hauptknoten und Workerknoten. Um zu vermeiden, dass sich diese Änderung auf Ihre getesteten Workflows auswirkt, geben Sie die VM-Größen an, die Sie in der ARM-Vorlage verwenden möchten.
+
+#### <a name="network-interface-resource-not-visible-for-clusters-running-on-azure-virtual-machine-scale-sets"></a>Netzwerkschnittstellen-Ressource nicht sichtbar für Cluster, die in Azure-VM-Skalierungsgruppen ausgeführt werden
+HDInsight wird schrittweise zu Azure-VM-Skalierungsgruppen migriert. Netzwerkschnittstellen virtueller Computer sind für Kunden in Clustern, die Azure-VM-Skalierungsgruppen verwenden, nicht mehr sichtbar.
+
+#### <a name="breaking-change-for-net-for-apache-spark-100"></a>Breaking Change für .NET für Apache Spark 1.0.0
+Mit der neuesten Version führt HDInsight die erste offizielle Version v1.0.0 der [„.NET für Apache Spark“](https://github.com/dotnet/spark)-Bibliothek ein. Sie stellt neben einer Vielzahl von [anderen Features](https://github.com/dotnet/spark/blob/master/docs/release-notes/1.0.0/release-1.0.0.md) DataFrame-API-Vollständigkeit für Spark 2.4.x und Spark 3.0.x bereit. Es gibt Breaking Changes für diese Hauptversion. Informationen zu den Schritten zum Aktualisieren von Code und Pipelines finden Sie im [Migrationsleitfaden für .NET für Apache Spark](https://github.com/dotnet/spark/blob/master/docs/migration-guide.md#upgrading-from-microsoftspark-0x-to-10). Weitere Informationen finden Sie in diesem [Leitfaden zu .NET für Apache Spark v1.0 unter Azure HDInsight](/azure/hdinsight/spark/spark-dotnet-version-update#using-net-for-apache-spark-v10-in-hdinsight).
+
+### <a name="upcoming-changes"></a>Bevorstehende Änderungen
+Die folgenden Änderungen werden in kommenden Versionen durchgeführt.
+
+#### <a name="default-cluster-version-will-be-changed-to-40"></a>Standardclusterversion wird in 4.0 geändert
+Ab Februar 2021 wird die Standardversion des HDInsight-Clusters von 3.6 in 4.0 geändert. Weitere Informationen zu verfügbaren Versionen finden Sie unter [Verfügbare Versionen](./hdinsight-component-versioning.md). Erfahren Sie mehr über die Neuerungen in [HDInsight 4.0](./hdinsight-version-release.md).
+
+#### <a name="os-version-upgrade"></a>Upgrade der Betriebssystemversion
+Für HDInsight erfolgt ein Upgrade der Betriebssystemversion von Ubuntu 16.04 auf 18.04. Das Upgrade wird vor April 2021 abgeschlossen sein.
+
+#### <a name="hdinsight-36-end-of-support-on-june-30-2021"></a>Ende der Unterstützung von HDInsight 3.6 am 30. Juni 2021
+Die Unterstützung von HDInsight 3.6 endet bald. Ab dem 30. Juni 2021 können Kunden keine neuen HDInsight 3.6-Cluster mehr erstellen. Vorhandene Cluster werden unverändert ohne Unterstützung durch Microsoft ausgeführt. Sie sollten zu HDInsight 4.0 wechseln, um potenzielle System-/Supportunterbrechungen zu vermeiden.
+
+### <a name="component-version-change"></a>Änderung der Komponentenversion
+Für dieses Release gibt es keine Änderung der Komponentenversion. Die aktuellen Komponentenversionen für HDInsight 4.0 und HDInsight 3.6 finden Sie in [dieser Dokumentation](./hdinsight-component-versioning.md).
 
 ## <a name="release-date-11182020"></a>Veröffentlichungsdatum: 11/18/2020
 

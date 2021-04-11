@@ -3,19 +3,19 @@ title: Planen der Bereitstellung eines Azure Service Fabric-Clusters
 description: Erfahren Sie in diesem Artikel, wie Sie die Bereitstellung von Service Fabric-Clusters für eine Produktionsumgebung in Azure planen und vorbereiten.
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: 9de59811397eb47809c6d71f608e43beae5bfadb
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 82521487b9a3e9438784e010a32cf6df8e7be2ef
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97109622"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105046316"
 ---
 # <a name="plan-and-prepare-for-a-cluster-deployment"></a>Planen und Vorbereiten der Clusterbereitstellung
 
 Die Planung und Vorbereitung einer Clusterbereitstellung für eine Produktionsumgebung ist äußerst wichtig.  Hierbei müssen zahlreiche Faktoren berücksichtigt werden.  Dieser Artikel führt Sie durch die Schritte zur Vorbereitung Ihrer Cluster-Bereitstellung.
 
 ## <a name="read-the-best-practices-information"></a>Durchlesen der Informationen zu den bewährten Methoden
-Für die erfolgreiche Verwaltung von Azure Service Fabric-Anwendungen und -Clustern empfehlen wir Ihnen dringend, bestimmte Vorgänge auszuführen, um die Zuverlässigkeit Ihrer Produktionsumgebung zu optimieren.  Weitere Informationen finden Sie im Artikel [Bewährte Methoden für Azure Service Fabric-Anwendungen und -Cluster](service-fabric-best-practices-overview.md).
+Für die erfolgreiche Verwaltung von Azure Service Fabric-Anwendungen und -Clustern empfehlen wir Ihnen dringend, bestimmte Vorgänge auszuführen, um die Zuverlässigkeit Ihrer Produktionsumgebung zu optimieren.  Weitere Informationen finden Sie im Artikel [Bewährte Methoden für Azure Service Fabric-Anwendungen und -Cluster](./service-fabric-best-practices-security.md).
 
 ## <a name="select-the-os-for-the-cluster"></a>Auswählen des Betriebssystems für den Cluster
 Service Fabric ermöglicht die Erstellung von Service Fabric-Clustern auf VMs oder Computern mit Windows Server oder Linux.  Vor dem Bereitstellen Ihres Clusters müssen Sie das Betriebssystem auswählen:  Windows oder Linux.  Auf allen Knoten (bzw. virtuellen Computern) im Cluster wird dasselbe Betriebssystem ausgeführt. Es ist nicht möglich, virtuelle Windows- und Linux-Computer im selben Cluster zu kombinieren.
@@ -117,7 +117,7 @@ Zur Gewährleistung von hoher Verfügbarkeit muss unter anderem sichergestellt w
 Sind Ihre Anwendung und Ihr Cluster bereit für den Produktionsdatenverkehr? Gehen Sie die [Prüfliste für die Produktionsbereitschaft](service-fabric-production-readiness-checklist.md) durch, bevor Sie Ihren Cluster in einer Produktionsumgebung bereitstellen. Sorgen Sie dafür, dass Ihre Anwendung und Ihr Cluster störungsfrei laufen, indem Sie die Elemente dieser Checkliste durcharbeiten. Es wird dringend empfohlen, vor dem Wechsel in die Produktionsphase alle diese Elemente zu prüfen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Create a Service Fabric cluster running Windows (Erstellen eines Service Fabric-Clusters unter Windows)](service-fabric-best-practices-overview.md)
+* [Create a Service Fabric cluster running Windows (Erstellen eines Service Fabric-Clusters unter Windows)](./service-fabric-best-practices-security.md)
 * [Create a Service Fabric cluster running Linux (Erstellen eines Service Fabric-Clusters unter Linux)](service-fabric-tutorial-create-vnet-and-linux-cluster.md)
 
 [placementconstraints]: service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints

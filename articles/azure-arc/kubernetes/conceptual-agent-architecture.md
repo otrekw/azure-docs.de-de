@@ -9,10 +9,10 @@ ms.author: shasb
 description: Dieser Artikel enthält eine Übersicht über die Architekturen Azure Arc-fähiger Kubernetes-Agents.
 keywords: Kubernetes, Arc, Azure, Container
 ms.openlocfilehash: ec95efdfef871777e7f53617b057529e301739dd
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104953067"
 ---
 # <a name="azure-arc-enabled-kubernetes-agent-architecture"></a>Architektur eines Azure Arc-fähigen Kubernetes-Agents

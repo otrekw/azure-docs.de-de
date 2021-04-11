@@ -3,12 +3,12 @@ title: 'Verwenden von direkten Methoden in Live Video Analytics in IoT Edge: Azu
 description: Live Video Analytics in IoT Edge stellt verschiedene direkte Methoden zur Verfügung. Die direkten Methoden basieren auf den in diesem Thema beschriebenen Konventionen.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 8b5c16dc72beed4ec757e48461a2fc194c113f8d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 56fbf565af45a9b3877ff8d6c48a56713ddc3da6
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97656239"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106076988"
 ---
 # <a name="direct-methods"></a>Direkte Methoden
 
@@ -381,7 +381,7 @@ Schlüsselaspekte:
 | Graphüberprüfungsfehler | 400 | GraphValidationError |
 | Modulüberprüfungsfehler | 400 | ModuleValidationError |
 | Ressourcenüberprüfungsfehler | 409 | ResourceValidationError |
-| Allgemeine Serverfehler | 500er Bereich |  |  |
+| Allgemeine Serverfehler | 500er Bereich |  | 
 
 ### <a name="graphinstancedelete"></a>GraphInstanceDelete
 
