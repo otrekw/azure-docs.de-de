@@ -11,12 +11,12 @@ ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: Gesichtserkennung, Gesichtserkennungssoftware, Gesichtsanalyse, Gesichtsabgleich, Gesichtserkennungs-App, Gesichtserkennungssuche nach Bild, Gesichtserkennungssuche
-ms.openlocfilehash: 600ca48cc19ee8723b423e484ec96736a55ae7fc
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: e159ead12179f86406fd7df22475229298f95ee8
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95532255"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106285466"
 ---
 # <a name="what-is-the-azure-face-service"></a>Was ist der Azure-Gesichtserkennungsdienst?
 
@@ -28,6 +28,12 @@ ms.locfileid: "95532255"
 Der Azure-Gesichtserkennungsdienst verfügt über KI-Algorithmen zum Ermitteln, Erkennen und Analysieren menschlicher Gesichter in Bildern. Gesichtserkennungssoftware ist für viele unterschiedliche Szenarien wichtig, z. B. Sicherheit, natürliche Benutzeroberfläche, Analyse und Verwaltung von Bildinhalten, mobile Apps und Robotik.
 
 Der Gesichtserkennungsdienst verfügt über verschiedene Funktionen für die Gesichtsanalyse, die in den folgenden Abschnitten beschrieben werden.
+
+Diese Dokumentation enthält die folgenden Arten von Artikeln:
+* In den [Schnellstarts](./Quickstarts/client-libraries.md) finden Sie Schritt-für-Schritt-Anleitungen, mit denen Sie Aufrufe an den Dienst senden können und in kurzer Zeit Ergebnisse erhalten. 
+* Die [Anleitungen](./Face-API-How-to-Topics/HowtoDetectFacesinImage.md) enthalten Anweisungen zur spezifischeren oder individuelleren Verwendung des Diensts.
+* Die [konzeptionellen Artikel](./concepts/face-detection.md) enthalten ausführliche Erläuterungen der Funktionen und Features eines Diensts.
+* Die [Tutorials](./Tutorials/FaceAPIinCSharpTutorial.md) sind ausführlichere Leitfäden, in denen die Verwendung dieses Diensts als Komponente in umfassenderen Unternehmenslösungen veranschaulicht wird.
 
 ## <a name="face-detection"></a>Gesichtserkennung
 
