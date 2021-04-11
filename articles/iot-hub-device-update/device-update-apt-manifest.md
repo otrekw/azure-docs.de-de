@@ -6,12 +6,12 @@ ms.author: vimeht
 ms.date: 2/17/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 0b68b78499aa3bf0d84d8bd0fa5ab55d1f969113
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 878748fcfc9b096e340b53c06969962af99f603f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101678502"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105561167"
 ---
 # <a name="device-update-apt-manifest"></a>APT-Manifest für Device Update
 
@@ -103,7 +103,7 @@ Wenn die Version ausgelassen wird, erfolgt die Installation der neuesten verfüg
 > Der APT-Paket-Manager ignoriert die von einem Paket angegebenen Anforderungen zur Versionsverwaltung, wenn die zu installierenden abhängigen Pakete automatisch aufgelöst werden. Wenn keine expliziten Versionen von abhängigen Paketen angegeben werden, wird die neueste Version verwendet, auch wenn das Paket selbst eine strikte Anforderung (=) an eine bestimmte Version stellt. Diese automatische Auflösung kann zu Fehlern bezüglich einer nicht erfüllten Abhängigkeit führen. [Weitere Informationen](https://unix.stackexchange.com/questions/350192/apt-get-not-properly-resolving-a-dependency-on-a-fixed-version-in-a-debian-ubunt)
 
 Wenn Sie eine bestimmte Version des Azure IoT Edge-Sicherheitsdaemons aktualisieren, sollten Sie die gewünschte Version des `iotedge`-Pakets und des abhängigen `libiothsm-std`-Pakets in Ihr APT-Manifest aufnehmen.
-[Weitere Informationen](https://docs.microsoft.com/azure/iot-edge/how-to-update-iot-edge#update-the-security-daemon)
+[Weitere Informationen](../iot-edge/how-to-update-iot-edge.md#update-the-security-daemon)
 
 > [!NOTE]
 > Ein APT-Manifest kann verwendet werden, um den Device Update-Agent und seine Abhängigkeiten zu aktualisieren. Führen Sie den Namen des Device Update-Agents und die gewünschte Version im APT-Manifest auf, wie bei jedem anderen Paket auch. Dieses APT-Manifest kann dann über die Device Update for IoT Hub-Pipeline importiert und bereitgestellt werden. 
@@ -202,4 +202,3 @@ Dieses Update enthält das Paket „foo“ und auch das Paket „bar“.
 
 > [!div class="nextstepaction"]
 > [Importieren eines neuen Updates](import-update.md)
-

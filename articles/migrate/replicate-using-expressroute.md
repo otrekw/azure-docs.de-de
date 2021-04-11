@@ -6,19 +6,19 @@ ms.author: deseelam
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 02/22/2021
-ms.openlocfilehash: 5dd27e4502ac70ef10f2623ed6dfb2f62de37f06
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9aa9a42422f3c114490d1dbb28a146b6e76ca8cd
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102448782"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105558617"
 ---
 # <a name="replicate-data-over-expressroute-with-azure-migrate-server-migration"></a>Replizieren von Daten über ExpressRoute mithilfe des Azure Migrate-Servermigrationstools
 
-In diesem Artikel wird erläutert, wie Sie das [Azure Migrate-Servermigrationstool](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-server-migration-tool) zum Replizieren von Daten über eine ExpressRoute-Verbindung konfigurieren, während Sie Server zu Azure migrieren.
+In diesem Artikel wird erläutert, wie Sie das [Azure Migrate-Servermigrationstool](./migrate-services-overview.md#azure-migrate-server-migration-tool) zum Replizieren von Daten über eine ExpressRoute-Verbindung konfigurieren, während Sie Server zu Azure migrieren.
 
 ## <a name="understand-azure-expressroute-circuits"></a>Informationen zu Azure ExpressRoute-Verbindungen
-Über eine ExpressRoute-Verbindung (ER) wird Ihre lokale Infrastruktur über einen Konnektivitätsanbieter mit Microsoft verbunden. ExpressRoute-Verbindungen können konfiguriert werden, um privates Peering, Microsoft-Peering oder beides zu verwenden. Lesen Sie den Artikel zu [ExpressRoute-Verbindungen und Peering](https://docs.microsoft.com/azure/expressroute/expressroute-circuit-peerings#peeringcompare), um mehr über die verschiedenen Peeringoptionen zu erfahren, die mit ExpressRoute verfügbar sind.
+Über eine ExpressRoute-Verbindung (ER) wird Ihre lokale Infrastruktur über einen Konnektivitätsanbieter mit Microsoft verbunden. ExpressRoute-Verbindungen können konfiguriert werden, um privates Peering, Microsoft-Peering oder beides zu verwenden. Lesen Sie den Artikel zu [ExpressRoute-Verbindungen und Peering](../expressroute/expressroute-circuit-peerings.md#peeringcompare), um mehr über die verschiedenen Peeringoptionen zu erfahren, die mit ExpressRoute verfügbar sind.
 
 Das Azure Migrate-Servermigrationstool unterstützt Sie beim Migrieren von lokalen Servern und Servern von anderen Clouds zu virtuellen Azure-Computern. Das Tool richtet einen kontinuierlichen Replikationsstream zum Replizieren von Daten von den zu migrierenden Servern zu den verwalteten Datenträgern in Ihrem Azure-Abonnement ein. Wenn Sie bereit sind, die Server zu migrieren, werden die replizierten Daten in Azure zum Migrieren der Server verwendet.
 
@@ -104,7 +104,7 @@ Sie können private Endpunkte nur für ein Speicherkonto des Typs „Universell 
     > [!Note]
     > Das virtuelle Netzwerk muss den ExpressRoute-Gatewayendpunkt enthalten oder eine Verbindung mit dem virtuellen Netzwerk mit dem ExpressRoute-Gateway aufweisen. 
 
-    Klicken Sie im Abschnitt **Private DNS-Integration** auf **Ja**, und integrieren Sie mit einer privaten DNS-Zone. Wenn Sie auf **Ja** klicken, wird die DNS-Zone automatisch mit dem ausgewählten virtuellen Netzwerk verknüpft, und es werden die DNS-Einträge für die DNS-Auflösung der neuen IP-Adressen und vollqualifizierten Domänennamen hinzugefügt, die für den privaten Endpunkt erstellt wurden. Informieren Sie sich weiter über [private DNS-Zonen](https://docs.microsoft.com/azure/dns/private-dns-overview).
+    Klicken Sie im Abschnitt **Private DNS-Integration** auf **Ja**, und integrieren Sie mit einer privaten DNS-Zone. Wenn Sie auf **Ja** klicken, wird die DNS-Zone automatisch mit dem ausgewählten virtuellen Netzwerk verknüpft, und es werden die DNS-Einträge für die DNS-Auflösung der neuen IP-Adressen und vollqualifizierten Domänennamen hinzugefügt, die für den privaten Endpunkt erstellt wurden. Informieren Sie sich weiter über [private DNS-Zonen](../dns/private-dns-overview.md).
 
     ![Private DNS-Zone](./media/replicate-using-expressroute/private-dns-zone.png)
 
@@ -144,14 +144,14 @@ Wenn Sie zum Zeitpunkt der Erstellung des privaten Endpunkts nicht die Option zu
     b. Fügen Sie auf der Seite **Datensatzgruppe hinzufügen** einen Eintrag für den vollqualifizierten Domänennamen und die private IP-Adresse als A-Eintrag hinzu.
 
 > [!Important]
-> Möglicherweise benötigen Sie zusätzliche DNS-Einstellungen, um die private IP-Adresse des privaten Endpunkts des Speicherkontos aus der Quellumgebung aufzulösen. [Lesen Sie diesen Artikel](https://docs.microsoft.com/azure/private-link/private-endpoint-dns#on-premises-workloads-using-a-dns-forwarder), um zu verstehen, welche DNS-Konfiguration erforderlich ist.
+> Möglicherweise benötigen Sie zusätzliche DNS-Einstellungen, um die private IP-Adresse des privaten Endpunkts des Speicherkontos aus der Quellumgebung aufzulösen. [Lesen Sie diesen Artikel](../private-link/private-endpoint-dns.md#on-premises-workloads-using-a-dns-forwarder), um zu verstehen, welche DNS-Konfiguration erforderlich ist.
 
 ## <a name="replicate-data-using-an-expressroute-circuit-with-microsoft-peering"></a>Replizieren von Daten mithilfe einer ExpressRoute-Verbindung mit Microsoft-Peering
 
 Sie können das Microsoft-Peering oder eine vorhandene öffentliche Peeringdomäne verwenden (für neue ExpressRoute-Verbindungen veraltet), um den Replikationsdatenverkehr wie auf der folgenden Abbildung dargestellt über eine ExpressRoute-Verbindung weiterzuleiten.
 ![Replikation mit Microsoft-Peering](./media/replicate-using-expressroute/replication-with-microsoft-peering.png)
 
-Auch wenn Replikationsdaten über die Microsoft-Peeringverbindung weitergeleitet werden, benötigen Sie für die Kommunikation (Steuerungsebene) mit dem Azure Migrate-Dienst weiterhin eine Internetverbindung vom lokalen Standort aus. Es gibt einige zusätzliche URLs, die über ExpressRoute nicht erreichbar sind, auf die die Replikationsappliance bzw. der Hyper-V-Host für die Orchestrierung des Replikationsprozesses Zugriff benötigt. Sie können die auf den Migrationsszenarios [URLs für die öffentliche Cloud](https://docs.microsoft.com/azure/migrate/migrate-appliance#public-cloud-urls) und [Replikationsappliance](https://docs.microsoft.com/azure/migrate/migrate-replication-appliance) basierenden URL-Anforderungen überprüfen.  
+Auch wenn Replikationsdaten über die Microsoft-Peeringverbindung weitergeleitet werden, benötigen Sie für die Kommunikation (Steuerungsebene) mit dem Azure Migrate-Dienst weiterhin eine Internetverbindung vom lokalen Standort aus. Es gibt einige zusätzliche URLs, die über ExpressRoute nicht erreichbar sind, auf die die Replikationsappliance bzw. der Hyper-V-Host für die Orchestrierung des Replikationsprozesses Zugriff benötigt. Sie können die auf den Migrationsszenarios [URLs für die öffentliche Cloud](./migrate-appliance.md#public-cloud-urls) und [Replikationsappliance](./migrate-replication-appliance.md) basierenden URL-Anforderungen überprüfen.  
 
 Wenn Sie an Ihrem lokalen Standort einen Proxyserver nutzen und ExpressRoute für den Replikationsdatenverkehr verwenden möchten, müssen Sie eine Proxyumgehung für relevante URLs auf der lokalen Appliance konfigurieren. 
 
@@ -172,7 +172,7 @@ Wenn Sie an Ihrem lokalen Standort einen Proxyserver nutzen und ExpressRoute fü
 
 Führen Sie die folgenden Schritte aus, um die Proxyumgehungsliste auf dem Konfigurationsserver und den Prozessservern zu konfigurieren:
 
-1. [Laden Sie das PsExec-Tool herunter](https://docs.microsoft.com/sysinternals/downloads/psexec), um auf Systembenutzerkontext zuzugreifen.
+1. [Laden Sie das PsExec-Tool herunter](/sysinternals/downloads/psexec), um auf Systembenutzerkontext zuzugreifen.
 2. Öffnen Sie Internet Explorer im Systembenutzerkontext, indem Sie die folgende Befehlszeile ausführen: psexec -s -i "%programfiles%\Internet Explorer\iexplore.exe".
 3. Fügen Sie in Internet Explorer Proxyeinstellungen hinzu.
 4. Fügen Sie in der Umgehungsliste die Azure-Speicher-URL „.*.blob.core.windows.net“ hinzu.  
@@ -185,10 +185,10 @@ Außerdem müssen Sie Routen im Routenfilter für die folgenden BGP-Communitys a
 - Regionale BGP-Community für die Azure-Zielregion (Region für die Migration)
 - BGP-Community für Azure Active Directory (12076:5060)
 
-Informieren Sie sich weiter über [Routenfilter](https://docs.microsoft.com/azure/expressroute/how-to-routefilter-portal), und sehen Sie sich die Liste der [BGP-Communitys für ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-routing#bgp) an. 
+Informieren Sie sich weiter über [Routenfilter](../expressroute/how-to-routefilter-portal.md), und sehen Sie sich die Liste der [BGP-Communitys für ExpressRoute](../expressroute/expressroute-routing.md#bgp) an. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zu [ExpressRoute-Verbindungen](https://docs.microsoft.com/azure/expressroute/expressroute-circuit-peerings)
-- Weitere Informationen zu [ExpressRoute-Routingdomänen](https://docs.microsoft.com/azure/expressroute/expressroute-circuit-peerings#peeringcompare)
-- Weitere Informationen zu [privaten Endpunkten](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)
+- Weitere Informationen zu [ExpressRoute-Verbindungen](../expressroute/expressroute-circuit-peerings.md)
+- Weitere Informationen zu [ExpressRoute-Routingdomänen](../expressroute/expressroute-circuit-peerings.md#peeringcompare)
+- Weitere Informationen zu [privaten Endpunkten](../private-link/private-endpoint-overview.md)

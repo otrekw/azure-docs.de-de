@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 02/23/2021
 ms.author: victorh
 ms.openlocfilehash: b0ab3cbd2891ef1677c0d4ba7a00821d67714b6d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101708950"
 ---
 # <a name="tutorial-create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>Tutorial: Erstellen eines Anwendungsgateways mit pfadbasierten Routingregeln mithilfe des Azure-Portals
@@ -79,7 +79,7 @@ In diesem Beispiel erstellen Sie drei virtuelle Computer, die als Back-End-Serve
 2. Führen Sie den folgenden Befehl aus, um IIS auf dem virtuellen Computer zu installieren: 
 
     ```azurepowershell
-         $publicSettings = @{ "fileUris" = (,"https://raw.githubusercontent.com/Azure/azure-docs-powershell-samples/master/application-gateway/iis/appgatewayurl.ps1");  "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File appgatewayurl.ps1" }
+         $publicSettings = @{ "fileUris&quot; = (,&quot;https://raw.githubusercontent.com/Azure/azure-docs-powershell-samples/master/application-gateway/iis/appgatewayurl.ps1");  "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File appgatewayurl.ps1" }
 
         Set-AzVMExtension `
          -ResourceGroupName myResourceGroupAG `

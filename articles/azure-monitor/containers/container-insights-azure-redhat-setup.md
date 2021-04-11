@@ -4,10 +4,10 @@ description: In diesem Artikel wird beschrieben, wie Sie die Überwachung eines 
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.openlocfilehash: b46dfda0bdb0f3b582aa751786187a4d74524f75
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101708372"
 ---
 # <a name="configure-azure-red-hat-openshift-v3-with-container-insights"></a>Konfigurieren von Azure Red Hat OpenShift, Version 3 mit Container Insights

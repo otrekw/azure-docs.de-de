@@ -13,12 +13,12 @@ ms.date: 08/28/2019
 ms.author: negoe
 ms.reviewer: marsma, negoe,celested
 ms.custom: aaddev,references_regions
-ms.openlocfilehash: 719d89fafe57e7f5132698404bcc0a41a9f9db37
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 41bb7287aaa045e191d61abb00f470018fda9cbe
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104780071"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105031595"
 ---
 # <a name="national-clouds"></a>Nationale Clouds
 
@@ -55,7 +55,7 @@ Die folgende Tabelle enthält die Basis-URLs für die Azure AD-Endpunkte, die zu
 |----------------|-------------------------|
 | Azure AD für US-Regierungsbehörden | `https://login.microsoftonline.us` |
 | Azure AD Deutschland| `https://login.microsoftonline.de` |
-| Azure AD China, betrieben von 21Vianet | `https://login.partner.microsoftonline.cn/common` |
+| Azure AD China, betrieben von 21Vianet | `https://login.partner.microsoftonline.cn` |
 | Azure AD (globaler Dienst)| `https://login.microsoftonline.com` |
 
 Anforderungen an die Autorisierungs- oder Tokenendpunkte von Azure AD können mit der entsprechenden regionsspezifischen Basis-URL generiert werden. Z.B. für Azure Deutschland:

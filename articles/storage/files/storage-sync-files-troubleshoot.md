@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 2/1/2021
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 4439346a065f17f5b2136f51fd5e8b990fa1b914
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: f20ebfdf9bdd1272ac1cb16e1ad88b4cbc287e5d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103491298"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105727602"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Problembehandlung für Azure-Dateisynchronisierung
 Mit der Azure-Dateisynchronisierung können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -373,7 +373,7 @@ Die folgende Tabelle enthält alle Unicode-Zeichen, die die Azure-Dateisynchroni
 ### <a name="common-sync-errors"></a>Allgemeine Synchronisierungsfehler
 <a id="-2147023673"></a>**Die Synchronisierungssitzung wurde abgebrochen.**  
 
-| | |
+| Fehler | Code |
 |-|-|
 | **HRESULT** | 0x800704c7 |
 | **HRESULT (dezimal)** | -2147023673 | 
@@ -384,7 +384,7 @@ Bei Synchronisierungssitzungen kann aus verschiedenen Gründen ein Fehler auftre
 
 <a id="-2147012889"></a>**Eine Verbindung mit dem Dienst konnte nicht hergestellt werden.**    
 
-| | |
+| Fehler | Code |
 |-|-|
 | **HRESULT** | 0x80072ee7 |
 | **HRESULT (dezimal)** | -2147012889 | 
@@ -395,7 +395,7 @@ Bei Synchronisierungssitzungen kann aus verschiedenen Gründen ein Fehler auftre
 
 <a id="-2134376372"></a>**Die Benutzeranforderung wurde durch den Dienst gedrosselt.**  
 
-| | |
+| Fehler | Code |
 |-|-|
 | **HRESULT** | 0x80c8004c |
 | **HRESULT (dezimal)** | -2134376372 |
@@ -406,7 +406,7 @@ Es ist keine Aktion erforderlich. Der Server wiederholt den Vorgang. Wenn dieser
 
 <a id="-2134364043"></a>**Synchronisierung wird blockiert, bis die Änderungserkennung nach der Wiederherstellung abgeschlossen ist**  
 
-| | |
+| Fehler | Code |
 |-|-|
 | **HRESULT** | 0x80c83075 |
 | **HRESULT (dezimal)** | -2134364043 |
@@ -417,7 +417,7 @@ Keine Aktion erforderlich. Wenn eine Datei oder Dateifreigabe (Cloudendpunkt) mi
 
 <a id="-2147216747"></a>**Fehler bei der Synchronisierung, weil die Synchronisierungsdatenbank entladen wurde.**  
 
-| | |
+| Fehler | Code |
 |-|-|
 | **HRESULT** | 0x80041295 |
 | **HRESULT (dezimal)** | -2147216747 |
@@ -428,7 +428,7 @@ Dieser Fehler tritt normalerweise auf, wenn eine Sicherungsanwendung eine VSS-Mo
 
 <a id="-2134364065"></a>**Die Synchronisierung kann nicht auf die im Cloudendpunkt angegebene Azure-Dateifreigabe zugreifen.**  
 
-| | |
+| Fehler | Code |
 |-|-|
 | **HRESULT** | 0x80c8305f |
 | **HRESULT (dezimal)** | -2134364065 |
@@ -444,7 +444,7 @@ Dieser Fehler tritt auf, da der Azure-Dateisynchronisierungs-Agent nicht auf die
 
 <a id="-2134351804"></a>**Fehler bei der Synchronisierung, weil die Anforderung nicht berechtigt zum Ausführen dieses Vorgangs ist.**  
 
-| | |
+| Fehler | Code |
 |-|-|
 | **HRESULT** | 0x80c86044 |
 | **HRESULT (dezimal)** | -2134351804 |
@@ -460,7 +460,7 @@ Dieser Fehler tritt auf, weil der Azure-Dateisynchronisierungs-Agent nicht berec
 
 <a id="-2134364064"></a><a id="cannot-resolve-storage"></a>**Der verwendete Speicherkontoname konnte nicht aufgelöst werden.**  
 
-| | |
+| Fehler | Code |
 |-|-|
 | **HRESULT** | 0x80C83060 |
 | **HRESULT (dezimal)** | -2134364064 |
@@ -477,7 +477,7 @@ Dieser Fehler tritt auf, weil der Azure-Dateisynchronisierungs-Agent nicht berec
 
 <a id="-2134364022"></a><a id="storage-unknown-error"></a>**Unbekannter Fehler beim Zugriff auf das Speicherkonto.**  
 
-| | |
+| Fehler | Code |
 |-|-|
 | **HRESULT** | 0x80c8308a |
 | **HRESULT (dezimal)** | -2134364022 |
@@ -489,7 +489,7 @@ Dieser Fehler tritt auf, weil der Azure-Dateisynchronisierungs-Agent nicht berec
 
 <a id="-2134364014"></a>**Fehler bei der Synchronisierung aufgrund eines gesperrten Speicherkontos.**  
 
-| | |
+| Fehler | Code |
 |-|-|
 | **HRESULT** | 0x80c83092 |
 | **HRESULT (dezimal)** | -2134364014 |
@@ -500,7 +500,7 @@ Dieser Fehler tritt auf, da für das Speicherkonto eine schreibgeschützte [Ress
 
 <a id="-1906441138"></a>**Fehler bei der Synchronisierung aufgrund eines Problems mit der Synchronisierungsdatenbank.**  
 
-| | |
+| Fehler | Code |
 |-|-|
 | **HRESULT** | 0x8e5e044e |
 | **HRESULT (dezimal)** | -1906441138 |
@@ -511,7 +511,7 @@ Dieser Fehler tritt auf, wenn ein Problem mit der internen Datenbank besteht, di
 
 <a id="-2134364053"></a>**Die auf dem Server installierte Version des Azure-Dateisynchronisierungs-Agents wird nicht unterstützt.**  
 
-| | |
+| Fehler | Code |
 |-|-|
 | **HRESULT** | 0x80C8306B |
 | **HRESULT (dezimal)** | -2134364053 |
@@ -522,7 +522,7 @@ Dieser Fehler tritt auf, wenn die auf dem Server installierte Version des Azure-
 
 <a id="-2134351810"></a>**Sie haben das Speicherlimit für die Azure-Dateifreigabe erreicht.**  
 
-| | |
+| Fehler | Code |
 |-|-|
 | **HRESULT** | 0x80c8603e |
 | **HRESULT (dezimal)** | -2134351810 |
@@ -548,7 +548,7 @@ Wenn die Freigabe ausgeschöpft ist und kein Kontingent festgelegt ist, besteht 
 
 <a id="-2134351824"></a>**Die gelöschte Azure-Dateifreigabe kann nicht gefunden werden.**  
 
-| | |
+| Fehler | Code |
 |-|-|
 | **HRESULT** | 0x80c86030 |
 | **HRESULT (dezimal)** | -2134351824 |
@@ -564,7 +564,7 @@ Falls die Azure-Dateifreigabe gelöscht wurde, müssen Sie eine neue Dateifreiga
 
 <a id="-2134364042"></a>**Die Synchronisierung wird angehalten, solange dieses Azure-Abonnement ausgesetzt ist.**  
 
-| | |
+| Fehler | Code |
 |-|-|
 | **HRESULT** | 0x80C83076 |
 | **HRESULT (dezimal)** | -2134364042 |
@@ -575,7 +575,7 @@ Dieser Fehler tritt auf, wenn das Azure-Abonnement ausgesetzt ist. Die Synchroni
 
 <a id="-2134375618"></a>**Für das Speicherkonto wurden eine Firewall oder virtuelle Netzwerke konfiguriert.**  
 
-| | |
+| Fehler | Code |
 |-|-|
 | **HRESULT** | 0x80c8033e |
 | **HRESULT (dezimal)** | -2134375618 |
@@ -586,7 +586,7 @@ Dieser Fehler tritt auf, wenn aufgrund einer Firewall oder der Zugehörigkeit de
 
 <a id="-2134375911"></a>**Fehler bei der Synchronisierung aufgrund eines Problems mit der Synchronisierungsdatenbank.**  
 
-| | |
+| Fehler | Code |
 |-|-|
 | **HRESULT** | 0x80c80219 |
 | **HRESULT (dezimal)** | -2134375911 |
@@ -602,7 +602,7 @@ Wenn dieser Fehler länger anhält als ein paar Stunden, erstellen Sie eine Supp
 
 <a id="-2146762487"></a>**Der Server konnte keine sichere Verbindung herstellen. Der Clouddienst hat ein unerwartetes Zertifikat empfangen.**  
 
-| | |
+| Fehler | Code |
 |-|-|
 | **HRESULT** | 0x800b0109 |
 | **HRESULT (dezimal)** | -2146762487 |
@@ -627,7 +627,7 @@ Durch das Festlegen dieses Registrierungswerts akzeptiert der Azure-Dateisynchro
 
 <a id="-2147012894"></a>**Eine Verbindung mit dem Dienst konnte nicht hergestellt werden.**  
 
-| | |
+| Fehler | Code |
 |-|-|
 | **HRESULT** | 0x80072ee2 |
 | **HRESULT (dezimal)** | -2147012894 |
@@ -638,7 +638,7 @@ Durch das Festlegen dieses Registrierungswerts akzeptiert der Azure-Dateisynchro
 
 <a id="-2134375680"></a>**Fehler bei der Synchronisierung aufgrund eines Problems mit der Authentifizierung.**  
 
-| | |
+| Fehler | Code |
 |-|-|
 | **HRESULT** | 0x80c80300 |
 | **HRESULT (dezimal)** | -2134375680 |
@@ -649,7 +649,7 @@ Dieser Fehler tritt normalerweise auf, weil die Serverzeit falsch ist. Wenn der 
 
 <a id="-2134364040"></a>**Fehler bei der Synchronisierung aufgrund eines abgelaufenen Zertifikats.**  
 
-| | |
+| Fehler | Code |
 |-|-|
 | **HRESULT** | 0x80c83078 |
 | **HRESULT (dezimal)** | -2134364040 |
@@ -673,7 +673,7 @@ Wenn das Clientauthentifizierungszertifikat abgelaufen ist, führen Sie die folg
 
 <a id="-2134375896"></a>**Fehler bei der Synchronisierung, weil das Authentifizierungszertifikat nicht gefunden wurde.**  
 
-| | |
+| Fehler | Code |
 |-|-|
 | **HRESULT** | 0x80c80228 |
 | **HRESULT (dezimal)** | -2134375896 |
@@ -693,7 +693,7 @@ Führen Sie die folgenden Schritte aus, um das Problem zu beheben:
 
 <a id="-2134364039"></a>**Fehler bei der Synchronisierung, weil die Authentifizierungsidentität nicht gefunden wurde.**  
 
-| | |
+| Fehler | Code |
 |-|-|
 | **HRESULT** | 0x80c83079 |
 | **HRESULT (dezimal)** | -2134364039 |
@@ -704,14 +704,14 @@ Dieser Fehler tritt auf, weil das Löschen des Serverendpunkts fehlgeschlagen is
 
 <a id="-1906441711"></a><a id="-2134375654"></a><a id="doesnt-have-enough-free-space"></a>**Das Volume, auf dem sich der Serverendpunkt befindet, weist nicht genügend Speicherplatz auf dem Datenträger auf.**  
 
-| | |
+| Fehler | Code |
 |-|-|
 | **HRESULT** | 0x8e5e0211 |
 | **HRESULT (dezimal)** | -1906441711 |
 | **Fehlerzeichenfolge** | JET_errLogDiskFull |
 | **Korrektur erforderlich** | Ja |
 
-| | |
+| Fehler | Code |
 |-|-|
 | **HRESULT** | 0x80c8031a |
 | **HRESULT (dezimal)** | -2134375654 |
@@ -722,7 +722,7 @@ Dieser Fehler tritt auf, da sich das Volume gefüllt hat. Dieser Fehler tritt h�
 
 <a id="-2134364145"></a><a id="replica-not-ready"></a>**Der Dienst ist für die Synchronisierung mit diesem Serverendpunkt noch nicht bereit.**  
 
-| | |
+| Fehler | Code |
 |-|-|
 | **HRESULT** | 0x80c8300f |
 | **HRESULT (dezimal)** | -2134364145 |
@@ -733,21 +733,21 @@ Dieser Fehler tritt auf, weil der Cloudendpunkt mit Inhalten erstellt wurde, die
 
 <a id="-2134375877"></a><a id="-2134375908"></a><a id="-2134375853"></a>**Fehler bei der Synchronisierung aufgrund von Problemen mit einer Vielzahl einzelner Dateien.**  
 
-| | |
+| Fehler | Code |
 |-|-|
 | **HRESULT** | 0x80c8023b |
 | **HRESULT (dezimal)** | –2.134.375.877 |
 | **Fehlerzeichenfolge** | ECS_E_SYNC_METADATA_KNOWLEDGE_SOFT_LIMIT_REACHED |
 | **Korrektur erforderlich** | Ja |
 
-| | |
+| Fehler | Code |
 |-|-|
 | **HRESULT** | 0x80c8021c |
 | **HRESULT (dezimal)** | -2134375908 |
 | **Fehlerzeichenfolge** | ECS_E_SYNC_METADATA_KNOWLEDGE_LIMIT_REACHED |
 | **Korrektur erforderlich** | Ja |
 
-| | |
+| Fehler | Code |
 |-|-|
 | **HRESULT** | 0x80c80253 |
 | **HRESULT (dezimal)** | -2134375853 |
@@ -761,7 +761,7 @@ Synchronisierungssitzungen scheitern mit einem dieser Fehler, wenn es viele Date
 
 <a id="-2134376423"></a>**Fehler bei der Synchronisierung aufgrund eines Problems mit dem Serverendpunktpfad.**  
 
-| | |
+| Fehler | Code |
 |-|-|
 | **HRESULT** | 0x80c80019 |
 | **HRESULT (dezimal)** | -2134376423 |
@@ -772,7 +772,7 @@ Stellen Sie sicher, dass der Pfad vorhanden ist, sich in einem lokalen NTFS-Volu
 
 <a id="-2134375817"></a>**Fehler beim Synchronisieren, da die Version des Filtertreibers nicht mit der Agentversion kompatibel ist**  
 
-| | |
+| Fehler | Code |
 |-|-|
 | **HRESULT** | 0x80C80277 |
 | **HRESULT (dezimal)** | -2134375817 |
@@ -783,7 +783,7 @@ Dieser Fehler tritt auf, da die geladene Version des Cloudtiering-Filtertreibers
 
 <a id="-2134376373"></a>**Der Dienst ist derzeit nicht verfügbar.**  
 
-| | |
+| Fehler | Code |
 |-|-|
 | **HRESULT** | 0x80c8004b |
 | **HRESULT (dezimal)** | -2134376373 |
@@ -794,7 +794,7 @@ Dieser Fehler tritt auf, da der Azure-Dateisynchronisierungsdienst nicht verfüg
 
 <a id="-2146233088"></a>**Fehler bei der Synchronisierung aufgrund einer Ausnahme.**  
 
-| | |
+| Fehler | Code |
 |-|-|
 | **HRESULT** | 0x80131500 |
 | **HRESULT (dezimal)** | -2146233088 |
@@ -805,7 +805,7 @@ Dieser Fehler tritt auf, weil die Synchronisierung aufgrund einer Ausnahme fehlg
 
 <a id="-2134364045"></a>**Fehler bei der Synchronisierung, weil für das Speicherkonto ein Failover in eine andere Region ausgeführt wurde.**  
 
-| | |
+| Fehler | Code |
 |-|-|
 | **HRESULT** | 0x80c83073 |
 | **HRESULT (dezimal)** | -2134364045 |
@@ -816,7 +816,7 @@ Dieser Fehler tritt auf, weil für das Speicherkonto ein Failover in eine andere
 
 <a id="-2134375922"></a>**Fehler bei der Synchronisierung aufgrund eines vorübergehenden Problems mit der Synchronisierungsdatenbank.**  
 
-| | |
+| Fehler | Code |
 |-|-|
 | **HRESULT** | 0x80c8020e |
 | **HRESULT (dezimal)** | -2134375922 |
@@ -827,7 +827,7 @@ Dieser Fehler tritt aufgrund eines internen Problems mit der Synchronisierungsda
 
 <a id="-2134364024"></a>**Fehler bei der Synchronisierung aufgrund einer Änderung im Azure Active Directory-Mandanten**  
 
-| | |
+| Fehler | Code |
 |-|-|
 | **HRESULT** | 0x80c83088 |
 | **HRESULT (dezimal)** | -2134364024 | 
@@ -840,7 +840,7 @@ Sobald Sie über die neueste Agent-Version verfügen, müssen Sie der Anwendung 
 
 <a id="-2134364010"></a>**Fehler bei der Synchronisierung aufgrund einer nicht konfigurierten Ausnahme für Firewall und virtuelles Netzwerk**  
 
-| | |
+| Fehler | Code |
 |-|-|
 | **HRESULT** | 0x80c83096 |
 | **HRESULT (dezimal)** | -2134364010 | 
@@ -851,7 +851,7 @@ Dieser Fehler tritt auf, wenn die Einstellungen für Firewall und virtuelles Net
 
 <a id="-2147024891"></a>**Fehler bei der Synchronisierung, weil die Berechtigungen für den Ordner „Systemvolumeinformationen“ falsch sind.**  
 
-| | |
+| Fehler | Code |
 |-|-|
 | **HRESULT** | 0x80070005 |
 | **HRESULT (dezimal)** | -2147024891 |
@@ -870,7 +870,7 @@ Führen Sie die folgenden Schritte aus, um das Problem zu beheben:
 
 <a id="-2134375810"></a>**Fehler bei der Synchronisierung, weil die Azure-Dateifreigabe gelöscht und neu erstellt wurde.**  
 
-| | |
+| Fehler | Code |
 |-|-|
 | **HRESULT** | 0x80c8027e |
 | **HRESULT (dezimal)** | -2134375810 |
@@ -889,7 +889,7 @@ Zur Behebung dieses Problems müssen Sie die Synchronisierungsgruppe löschen un
 
 <a id="-2145844941"></a>**Die Synchronisierung war fehlerhaft, weil die HTTP-Anforderung umgeleitet wurde.**  
 
-| | |
+| Fehler | Code |
 |-|-|
 | **HRESULT** | 0x80190133 |
 | **HRESULT (dezimal)** | -2145844941 |
@@ -900,7 +900,7 @@ Dieser Fehler tritt auf, weil die Azure-Dateisynchronisierung keine HTTP-Umleitu
 
 <a id="-2134364027"></a>**Timeout beim Übertragen der Offlinedaten. Der Vorgang wird jedoch weiterhin ausgeführt.**  
 
-| | |
+| Fehler | Code |
 |-|-|
 | **HRESULT** | 0x80c83085 |
 | **HRESULT (dezimal)** | -2134364027 |
@@ -911,7 +911,7 @@ Dieser Fehler tritt auf, wenn ein Datenerfassungsvorgang das Timeout überschrei
 
 <a id="-2134375814"></a>**Fehler bei der Synchronisierung, da der Serverendpunktpfad auf dem Server nicht gefunden werden kann.**  
 
-| | |
+| Fehler | Code |
 |-|-|
 | **HRESULT** | 0x80c8027a |
 | **HRESULT (dezimal)** | -2134375814 |

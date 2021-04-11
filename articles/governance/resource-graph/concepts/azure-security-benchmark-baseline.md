@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: e5e01c8d1ac16e5e8be405660a0726796789e645
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ad8968fdb6548da29a031f0e44bd3671f67b5553
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101738972"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105557716"
 ---
 # <a name="azure-security-baseline-for-azure-resource-graph"></a>Azure-Sicherheitsbaseline für Azure Resource Graph
 
@@ -30,7 +30,7 @@ Die gesamte Zuordnung zwischen Azure Resource Graph und Azure-Sicherheitsverglei
 
 **Leitfaden**: Azure Resource Graph ermöglicht den Zugriff auf Ressourcentypen und -eigenschaften auf der Grundlage der rollenbasierten Zugriffssteuerung von Azure (Azure Role-Based Access Control, Azure RBAC). Überwachen und überprüfen Sie regelmäßig den Zugriff, der Sicherheitsprinzipalen (Benutzern, Gruppen und Dienstkonten) gewährt wurde, um sicherzustellen, dass bei Abfragen Ergebnisse für die entsprechenden Ressourcen zurückgegeben werden.
 
-- [Berechtigungen in Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/overview#permissions-in-azure-resource-graph)
+- [Berechtigungen in Azure Resource Graph](../overview.md#permissions-in-azure-resource-graph)
 
 - [Verwenden von Zugriffsüberprüfungen für Azure-Identitäten](../../../active-directory/governance/access-reviews-overview.md)
 
@@ -46,7 +46,7 @@ Die gesamte Zuordnung zwischen Azure Resource Graph und Azure-Sicherheitsverglei
 
 **Leitfaden**: Steuern Sie den Zugriff auf Daten und Ressourcen mithilfe der Azure RBAC (Role-Based Access Control, rollenbasierte Zugriffssteuerung). Für die Verwendung von Azure Resource Graph ist auch entsprechender Zugriff auf die abzufragenden Ressourcen erforderlich. Dabei sollte es sich um reinen Lesezugriff handeln, und dieser sollte lediglich den erforderlichen Mitarbeitern gewährt werden.
 
-- [Berechtigungen in Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/overview#permissions-in-azure-resource-graph)
+- [Berechtigungen in Azure Resource Graph](../overview.md#permissions-in-azure-resource-graph)
 
 - [Konfigurieren von Azure RBAC](../../../role-based-access-control/role-assignments-rest.md)
 
@@ -96,5 +96,5 @@ Die gesamte Zuordnung zwischen Azure Resource Graph und Azure-Sicherheitsverglei
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Sehen Sie sich die [Übersicht über Version 2 des Azure-Sicherheitsvergleichstests](/azure/security/benchmarks/overview) an.
-- Erfahren Sie mehr über [Azure-Sicherheitsbaselines](/azure/security/benchmarks/security-baselines-overview).
+- Sehen Sie sich die [Übersicht über Version 2 des Azure-Sicherheitsvergleichstests](../../../security/benchmarks/overview.md) an.
+- Erfahren Sie mehr über [Azure-Sicherheitsbaselines](../../../security/benchmarks/security-baselines-overview.md).

@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie mit Azure Custom Vision ein Containermodell e
 ms.topic: tutorial
 ms.date: 09/08/2020
 zone_pivot_groups: ams-lva-edge-programming-languages
-ms.openlocfilehash: e6b911ad555c4ce10a9576861e1c2e650e63cd94
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1abf123883a89bb41909e8aa67aedfadffc3d37e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101698806"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105561201"
 ---
 # <a name="tutorial-analyze-live-video-with-live-video-analytics-on-iot-edge-and-azure-custom-vision"></a>Tutorial: Analysieren von Livevideo mit Live Video Analytics in IoT Edge and Azure Custom Vision
 
@@ -77,7 +77,7 @@ In diesem Tutorial verwenden Sie Live Video Analytics in IoT Edge, um Spielzeug-
 
 In diesem Diagramm ist der Fluss der Signale in diesem Tutorial dargestellt. Ein [Edge-Modul](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) simuliert eine IP-Kamera, die einen RTSP-Server (Real-Time Streaming Protocol) hostet. Der Knoten einer [RTSP-Quelle](media-graph-concept.md#rtsp-source) ruft den Videofeed von diesem Server ab und sendet Videoframes an den Knoten des [HTTP-Erweiterungsprozessors](media-graph-concept.md#http-extension-processor).
 
-Der HTTP-Erweiterungsknoten übernimmt dabei die Rolle eines Proxys.  Dabei werden die eingehenden Videoframes, die durch das Feld `samplingOptions` festgelegt wurden, abgetastet und darüber hinaus in den angegebenen Bildtyp umgewandelt. Anschließend leitet der das Bild über REST an ein anderes Edge-Modul weiter, das ein KI-Modell hinter einem HTTP-Endpunkt ausführt. In diesem Beispiel handelt es sich bei dem Edge-Modul um das mithilfe von Custom Vision erstellte Spielzeug-LKW-Erkennungsmodell. Der Prozessorknoten der HTTP-Erweiterung erfasst die Erkennungsergebnisse und veröffentlicht Ereignisse auf dem Knoten der [Azure IoT-Hub-Senke](media-graph-concept.md#iot-hub-message-sink). Anschließend sendet der Knoten diese Ereignisse an den [IoT Edge-Hub](../../iot-edge/iot-edge-glossary.md#iot-edge-hub).
+Der HTTP-Erweiterungsknoten übernimmt dabei die Rolle eines Proxys.  Dabei werden die eingehenden Videoframes, die durch das Feld `samplingOptions` festgelegt wurden, abgetastet und darüber hinaus in den angegebenen Bildtyp umgewandelt. Anschließend leitet der das Bild über REST an ein anderes Edge-Modul weiter, das ein KI-Modell hinter einem HTTP-Endpunkt ausführt. In diesem Beispiel handelt es sich bei dem Edge-Modul um das mithilfe von Custom Vision erstellte Spielzeug-LKW-Erkennungsmodell. Der Prozessorknoten der HTTP-Erweiterung erfasst die Erkennungsergebnisse und veröffentlicht Ereignisse auf dem Knoten der [Azure IoT-Hub-Senke](media-graph-concept.md#iot-hub-message-sink). Anschließend sendet der Knoten diese Ereignisse an den [IoT Edge-Hub](../../iot-fundamentals/iot-glossary.md#iot-edge-hub).
 
 ## <a name="build-and-deploy-a-custom-vision-toy-detection-model"></a>Erstellen und Bereitstellen eines Custom Vision-Spielzeugerkennungsmodells 
 

@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 author: mathapli
 ms.author: mathapli
 ms.date: 01/18/2021
-ms.openlocfilehash: adcd91d58b3bb5fde3ffa81c828c58d4b6db48d4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7a9fa4a6f44e88caa6f98d5e1c56adaa065fa29a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101721156"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105558707"
 ---
 # <a name="troubleshoot-virtual-machine-certification"></a>Problembehandlung bei der Zertifizierung von virtuellen Computern
 
@@ -620,11 +620,10 @@ Unter [Überprüfen und Veröffentlichen von Angeboten](review-publish-offer.md)
 * Python über Version 2.8 
 
 
-Weitere Informationen finden Sie unter [VM-Erweiterung](https://docs.microsoft.com/azure/virtual-machines/extensions/diagnostics-linux).
+Weitere Informationen finden Sie unter [VM-Erweiterung](../virtual-machines/extensions/diagnostics-linux.md).
      
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Konfigurieren von VM-Angebotseigenschaften](azure-vm-create-properties.md)
 - [Aktive Marketplace-Prämien](partner-center-portal/marketplace-rewards.md)
 - Wenden Sie sich an den [Partner Center-Support](https://aka.ms/marketplacepublishersupport), wenn Sie Fragen oder Verbesserungsvorschläge haben.
- 

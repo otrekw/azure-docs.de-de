@@ -3,12 +3,12 @@ title: Analysieren von Livevideos mit maschinellem Sehen für die räumliche Ana
 description: In diesem Tutorial wird gezeigt, wie Sie Live Video Analytics zusammen mit dem KI-Feature Maschinelles Sehen für die räumliche Analyse aus Azure Cognitive Services verwenden, um einen Livevideofeed von einer (simulierten) IP-Kamera zu analysieren.
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: b20cdb9bbc64f9adc49cfbde4ff80576b149dbcd
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1c3fd411e60cabb504f01bece62d497ddeea31d8
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101698755"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105561014"
 ---
 # <a name="analyze-live-video-with-computer-vision-for-spatial-analysis-preview"></a>Analysieren von Livevideos mit maschinellem Sehen für die räumliche Analyse (Vorschau)
 
@@ -56,7 +56,7 @@ In diesem Diagramm ist der Fluss der Signale in diesem Tutorial dargestellt. Ein
 
 Der Knoten „MediaGraphCognitiveServicesVisionExtension“ fungiert als Proxy. Er wandelt die Video-Einzelbilder in den angegebenen Bildtyp um. Anschließend leitet er das Bild über **gemeinsam genutzten Speicher** an ein anderes Edge-Modul weiter, das KI-Vorgänge hinter einem gRPC-Endpunkt ausführt. In diesem Beispiel ist das Edge-Modul das Modul „spatial-analysis“. Der Verarbeitungsknoten „MediaGraphCognitiveServicesVisionExtension“ erfüllt zwei Aufgaben:
 
-* Er sammelt die Ergebnisse und veröffentlicht Ereignisse im Knoten der [IoT Hub-Senke](media-graph-concept.md#iot-hub-message-sink). Der Knoten sendet diese Ereignisse dann an den [IoT Edge Hub-](../../iot-edge/iot-edge-glossary.md#iot-edge-hub). 
+* Er sammelt die Ergebnisse und veröffentlicht Ereignisse im Knoten der [IoT Hub-Senke](media-graph-concept.md#iot-hub-message-sink). Der Knoten sendet diese Ereignisse dann an den [IoT Edge Hub-](../../iot-fundamentals/iot-glossary.md#iot-edge-hub). 
 * Er erfasst außerdem mit einem [Signalgateprozessor](media-graph-concept.md#signal-gate-processor) einen Videoclip von 30 Sekunden aus der RTSP-Quelle und speichert ihn als Media Services-Medienobjekt.
 
 ## <a name="create-the-computer-vision-resource"></a>Erstellen der Ressource für maschinelles Sehen

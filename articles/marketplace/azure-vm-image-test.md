@@ -7,12 +7,12 @@ ms.topic: how-to
 author: kriti-ms
 ms.author: krsh
 ms.date: 03/10/2021
-ms.openlocfilehash: 9ffba221625c57332cd695125651d92adc11cf60
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 467b7d605b57c479d84fc995b4e0dc53b3ac5275
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103200380"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105558294"
 ---
 # <a name="test-a-virtual-machine-image"></a>Testen eines VM-Images
 
@@ -28,7 +28,7 @@ So stellen Sie eine VM über das Shared Image Gallery-Image bereit:
 1. Klicken Sie auf „Überprüfen + erstellen“. Klicken Sie nach Abschluss der Überprüfung auf „Erstellen“.
 
 > [!NOTE]
-> Wenn Sie eine VM über eine VHD-Datei erstellen müssen, befolgen Sie die Anweisungen in diesen Artikeln: [Vorbereiten einer Azure Resource Manager-Vorlage](https://docs.microsoft.com/azure/marketplace/azure-vm-image-test#prepare-an-azure-resource-manager-template) oder [Bereitstellen einer Azure-VM mithilfe von PowerShell](https://docs.microsoft.com/azure/marketplace/azure-vm-image-test#deploy-an-azure-vm-using-powershell).
+> Wenn Sie eine VM über eine VHD-Datei erstellen müssen, befolgen Sie die Anweisungen in diesen Artikeln: [Vorbereiten einer Azure Resource Manager-Vorlage](#connect-the-certification-tool-to-a-vm-image) oder [Bereitstellen einer Azure-VM mithilfe von PowerShell](#how-to-use-powershell-to-consume-the-self-test-api).
 
 In diesem Artikel wird beschrieben, wie Sie ein VM-Image im kommerziellen Marketplace testen und übermitteln, um sicherzustellen, dass es die aktuellen Anforderungen für die Veröffentlichung im Azure Marketplace erfüllt.
 

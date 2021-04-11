@@ -216,7 +216,9 @@
               href: azure-to-azure-how-to-reprotect.md
             - name: Einrichten der Notfallwiederherstellung für Azure-VMs nach der Migration in Azure
               href: azure-to-azure-replicate-after-migration.md
-            - name: Notfallwiederherstellung zwischen Zonen
+        - name: Notfallwiederherstellung zwischen Zonen
+          items:
+            - name: Aktivieren der Replikation zwischen Zonen innerhalb einer Region
               href: azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery.md
         - name: Verwalten
           items:
