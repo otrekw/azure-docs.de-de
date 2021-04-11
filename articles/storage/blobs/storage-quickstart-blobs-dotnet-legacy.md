@@ -1,19 +1,19 @@
 ---
 title: 'Schnellstart: Azure Blob Storage-Clientbibliothek für .NET'
 description: In diesem Schnellstart erfahren Sie, wie mithilfe der Azure Blob Storage-Clientbibliothek für .NET ein Container und ein Blob in Blob Storage (Objekt) erstellt werden. Als Nächstes erfahren Sie, wie Sie den Blob auf Ihren lokalen Computer herunterladen, und wie Sie alle Blobs in einem Container auflisten.
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.date: 07/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: effb193e54be7331c9dc2874a4a34ef55442ed30
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5eacf9c53715bf42c466aaf6a58938bd681630b9
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96021740"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106280648"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v11-for-net"></a>Schnellstart: Azure Blob Storage-Clientbibliothek v11 für .NET
 

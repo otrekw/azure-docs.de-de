@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 02/17/2021
-ms.openlocfilehash: ee6b0e1b745e86c72843af88c0f6d17f91512e15
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 456aaf20c0b6d198ae353490d961a69a319b6601
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102176755"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105045109"
 ---
 # <a name="manage-your-azure-cognitive-search-service-with-the-azure-cli"></a>Verwalten Ihres Azure Cognitive Search-Diensts mit der Azure CLI
 > [!div class="op_single_selector"]
@@ -260,7 +260,7 @@ az network private-endpoint dns-zone-group create \
    --zone-name "searchServiceZone"
 ```
 
-Weitere Informationen zum Erstellen privater Endpunkte in PowerShell finden Sie in [dieser Schnellstartanleitung zu Private Link](https://docs.microsoft.com/azure/private-link/create-private-endpoint-cli).
+Weitere Informationen zum Erstellen privater Endpunkte in PowerShell finden Sie in [dieser Schnellstartanleitung zu Private Link](../private-link/create-private-endpoint-cli.md).
 
 ### <a name="manage-private-endpoint-connections"></a>Verwalten von Verbindungen mit dem privaten Endpunkt
 

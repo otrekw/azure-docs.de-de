@@ -2,15 +2,15 @@
 title: 'Tutorial: Hinzufügen von Variablen zu Azure Resource Manager-Bicep-Dateien'
 description: Verwenden Sie Module, um komplexe Details der rohen Ressourcen-Deklaration zu kapseln.
 author: mumian
-ms.date: 03/10/2021
+ms.date: 03/25/2021
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 6efd9c230df49c83adc17361082af85b0ef9edc5
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 8c7ab1038cbe62d6f15faf56796193df12b38546
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102633137"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105568765"
 ---
 # <a name="tutorial-add-modules-to-azure-resource-manager-bicep-file"></a>Tutorial: Hinzufügen von Variablen zu Azure Resource Manager-Bicep-Dateien
 
@@ -128,4 +128,4 @@ Herzlichen Glückwunsch, Sie haben diese Einführung zur Bereitstellung von Bice
 In der nächsten Tutorialreihe wird ausführlicher auf die Bereitstellung von Vorlagen eingegangen.
 
 > [!div class="nextstepaction"]
-> [Hinzufügen von Modulen](./bicep-tutorial-add-modules.md)
+> [Bereitstellen einer lokalen Vorlage](./deployment-tutorial-local-template.md)

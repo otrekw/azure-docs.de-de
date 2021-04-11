@@ -3,12 +3,12 @@ title: Unterstützung der Zugriffsebene „Archiv“ (Vorschau)
 description: Informationen zur Unterstützung der Zugriffsebene „Archiv“ für Azure Backup
 ms.topic: conceptual
 ms.date: 02/18/2021
-ms.openlocfilehash: 6c597d640f24dc4c680bfd5db16f9df09017ee54
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 322bc9d7e2160cc9156c793859b9fda833b3df09
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102609851"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105563972"
 ---
 # <a name="archive-tier-support-preview"></a>Unterstützung der Zugriffsebene „Archiv“ (Vorschau)
 
@@ -46,7 +46,7 @@ Unterstützte Clients:
     install-module -name Az.RecoveryServices -Repository PSGallery -RequiredVersion 4.0.0-preview -AllowPrerelease -force
     ```
 
-1. Stellen Sie mithilfe des Cmdlets [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) eine Verbindung mit Azure her.
+1. Stellen Sie mithilfe des Cmdlets [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) eine Verbindung mit Azure her.
 1. Melden Sie sich bei Ihrem Abonnement an:
 
    `Set-AzContext -Subscription "SubscriptionName"`
@@ -128,7 +128,7 @@ $rp = Get-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -Item $bckItm
 
 Für Wiederherstellungspunkte im Archiv stellt Azure Backup eine integrierte Wiederherstellungsmethode bereit.
 
-Bei der integrierten Wiederherstellung handelt es sich um einen zweistufigen Vorgang. Zuerst werden die im Archiv gespeicherten Wiederherstellungspunkte aktiviert und temporär für einen Zeitraum von 10 bis 30 Tagen (auch als Aktivierungsdauer bezeichnet) auf der Tresorstandardebene gespeichert. Der Standardwert beträgt 15 Tage. Bei der Aktivierung gibt es zwei unterschiedliche Prioritäten: Standardpriorität und hohe Priorität. Weitere Informationen hierzu finden Sie unter [Aktivierungspriorität](https://docs.microsoft.com/azure/storage/blobs/storage-blob-rehydration#rehydrate-an-archived-blob-to-an-online-tier).
+Bei der integrierten Wiederherstellung handelt es sich um einen zweistufigen Vorgang. Zuerst werden die im Archiv gespeicherten Wiederherstellungspunkte aktiviert und temporär für einen Zeitraum von 10 bis 30 Tagen (auch als Aktivierungsdauer bezeichnet) auf der Tresorstandardebene gespeichert. Der Standardwert beträgt 15 Tage. Bei der Aktivierung gibt es zwei unterschiedliche Prioritäten: Standardpriorität und hohe Priorität. Weitere Informationen hierzu finden Sie unter [Aktivierungspriorität](../storage/blobs/storage-blob-rehydration.md#rehydrate-an-archived-blob-to-an-online-tier).
 
 >[!NOTE]
 >

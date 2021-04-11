@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/04/2021
 ms.author: terrylan
-ms.openlocfilehash: 00a44bd0a6176270e70eca030fcfada46effe3a5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 54be25317717bcf98b9e296d5c9ed59643cd334e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101735776"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105044752"
 ---
 # <a name="azure-security-technical-capabilities"></a>Technische Funktionen der Azure-Sicherheit
 Dieser Artikel enthält eine Einführung in die Sicherheitsdienste in Azure, die helfen, Ihre Daten, Ressourcen und Anwendungen in der Cloud zu schützen, und die Sicherheitsanforderungen Ihres Unternehmens erfüllen.
@@ -278,7 +278,7 @@ Mithilfe der [Tunnelerzwingung](https://www.petri.com/azure-forced-tunneling) k�
 
 Azure unterstützt eine dedizierte WAN-Linkkonnektivität mit Ihrem lokalen Netzwerk und ein Azure Virtual Network mit [ExpressRoute](../../expressroute/expressroute-introduction.md). Für den Link zwischen Azure und Ihrem Standort wird eine dedizierte Verbindung verwendet, die nicht über das öffentliche Internet verläuft. Wenn Ihre Azure-Anwendung in mehreren Datencentern ausgeführt wird, können Sie den [Azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md) verwenden, um Anfragen von Benutzern auf intelligente Weise zwischen Instanzen der Anwendung weiterzuleiten. Sie können Datenverkehr auch an Dienste leiten, die nicht in Azure ausgeführt werden, sofern sie über das Internet zugänglich sind.
 
-Azure unterstützt außerdem private und sichere Konnektivität zu Ihren PaaS-Ressourcen (z. B. Azure Storage und SQL-Datenbank) in Ihrer Azure Virtual Network-Instanz mithilfe von [Azure Private Link](https://docs.microsoft.com/azure/private-link/private-link-overview). PaaS-Ressourcen werden einem [privaten Endpunkt](https://docs.microsoft.com/azure/private-link/private-endpoint-overview) in Ihrem virtuellen Netzwerk zugeordnet. Die Verbindung zwischen dem privaten Endpunkt in Ihrem virtuellen Netzwerk und Ihrer PaaS-Ressource verwendet das Backbonenetzwerk von Microsoft und nicht das öffentliche Internet. Es ist nicht mehr erforderlich, dass Sie Ihren Dienst über das öffentliche Internet verfügbar machen. Sie können auch Azure Private Link verwenden, um auf in Azure gehostete kundeneigene Dienste und Partnerdienste in Ihrem virtuellen Netzwerk zu hosten.  Zusätzlich ermöglicht es Ihnen Azure Private Link, einen eigenen [Private Link-Dienst](https://docs.microsoft.com/azure/private-link/private-link-service-overview) in Ihrem virtuellen Netzwerk zu erstellen und für Ihre Kunden privat in ihren virtuellen Netzwerken bereitzustellen. Die Einrichtung und Nutzung von Azure Private Link ist in Azure PaaS-, Kunden- und gemeinsam genutzten Partnerdiensten einheitlich.
+Azure unterstützt außerdem private und sichere Konnektivität zu Ihren PaaS-Ressourcen (z. B. Azure Storage und SQL-Datenbank) in Ihrer Azure Virtual Network-Instanz mithilfe von [Azure Private Link](../../private-link/private-link-overview.md). PaaS-Ressourcen werden einem [privaten Endpunkt](../../private-link/private-endpoint-overview.md) in Ihrem virtuellen Netzwerk zugeordnet. Die Verbindung zwischen dem privaten Endpunkt in Ihrem virtuellen Netzwerk und Ihrer PaaS-Ressource verwendet das Backbonenetzwerk von Microsoft und nicht das öffentliche Internet. Es ist nicht mehr erforderlich, dass Sie Ihren Dienst über das öffentliche Internet verfügbar machen. Sie können auch Azure Private Link verwenden, um auf in Azure gehostete kundeneigene Dienste und Partnerdienste in Ihrem virtuellen Netzwerk zu hosten.  Zusätzlich ermöglicht es Ihnen Azure Private Link, einen eigenen [Private Link-Dienst](../../private-link/private-link-service-overview.md) in Ihrem virtuellen Netzwerk zu erstellen und für Ihre Kunden privat in ihren virtuellen Netzwerken bereitzustellen. Die Einrichtung und Nutzung von Azure Private Link ist in Azure PaaS-, Kunden- und gemeinsam genutzten Partnerdiensten einheitlich.
 
 ## <a name="virtual-machine-security"></a>Sicherheit virtueller Computer
 

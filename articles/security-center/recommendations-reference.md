@@ -4,15 +4,15 @@ description: In diesem Artikel sind die Azure Security Center-Sicherheitsempfehl
 author: memildin
 ms.service: security-center
 ms.topic: reference
-ms.date: 03/14/2021
+ms.date: 03/22/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: b4fe575039c6e913ca20198f204b6529f6c482c7
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.openlocfilehash: 2d9f76bd3c6ad0060a90f52abba1c7378b310e67
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103466192"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104801463"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>Sicherheitsempfehlungen: Referenzhandbuch
 
@@ -48,6 +48,10 @@ Ihre Sicherheitsbewertung basiert auf der Anzahl der Security Center-Empfehlung
 
 [!INCLUDE [asc-recs-identityandaccess](../../includes/asc-recs-identityandaccess.md)]
 
+## <a name="iot-recommendations"></a><a name='recs-iot'></a>IoT-Empfehlungen
+
+[!INCLUDE [asc-recs-iot](../../includes/asc-recs-iot.md)]
+
 ## <a name="networking-recommendations"></a><a name='recs-networking'></a>Netzwerkempfehlungen
 
 [!INCLUDE [asc-recs-networking](../../includes/asc-recs-networking.md)]
@@ -56,8 +60,8 @@ Ihre Sicherheitsbewertung basiert auf der Anzahl der Security Center-Empfehlung
 
 |Empfehlung|Beschreibung und zugehörige Richtlinie|severity|Schnelle Behebung aktiviert?([Weitere Informationen](security-center-remediate-recommendations.md#quick-fix-remediation))|Ressourcentyp|
 |----|----|----|----|----|
-|**Der Zugriff auf App Services sollte eingeschränkt werden**|Schränken Sie den Zugriff auf Ihre App Services ein, indem Sie die Netzwerkkonfiguration ändern, um eingehenden Datenverkehr aus Bereichen abzulehnen, die zu weit gefasst sind.<br>(Zugehörige Richtlinie: [Vorschau]: Zugriff auf App Services muss eingeschränkt sein)|High|N|App Service|
-|**Die Regeln für Webanwendungen in IaaS-Netzwerksicherheitsgruppen sollten verstärkt werden**|Härten Sie die Netzwerksicherheitsgruppe (NSG) Ihrer virtuellen Computer, auf denen Webanwendungen ausgeführt werden, mit NSG-Regeln, die in Bezug auf Webanwendungsports zu tolerant sind.<br>(Zugehörige Richtlinie: Für Webanwendungen in IaaS müssen die NSG-Regeln verstärkt werden)|High|N|Virtueller Computer|
+|**Der Zugriff auf App Services sollte eingeschränkt werden**|Schränken Sie den Zugriff auf Ihre App Services ein, indem Sie die Netzwerkkonfiguration ändern, um eingehenden Datenverkehr aus Bereichen abzulehnen, die zu weit gefasst sind.<br>(Zugehörige Richtlinie: [Vorschau]: Zugriff auf App Services muss eingeschränkt sein)|Hoch|N|App Service|
+|**Die Regeln für Webanwendungen in IaaS-Netzwerksicherheitsgruppen sollten verstärkt werden**|Härten Sie die Netzwerksicherheitsgruppe (NSG) Ihrer virtuellen Computer, auf denen Webanwendungen ausgeführt werden, mit NSG-Regeln, die in Bezug auf Webanwendungsports zu tolerant sind.<br>(Zugehörige Richtlinie: Für Webanwendungen in IaaS müssen die NSG-Regeln verstärkt werden)|Hoch|N|Virtueller Computer|
 |**Podsicherheitsrichtlinien sollten definiert werden, um den Angriffsvektor zu reduzieren, indem nicht erforderliche Anwendungsberechtigungen entfernt werden (Vorschau)**|Definieren Sie Podsicherheitsrichtlinien, um den Angriffsvektor zu reduzieren, indem nicht erforderliche Anwendungsberechtigungen entfernt werden. Wir empfehlen Ihnen die Konfiguration von Podsicherheitsrichtlinien durchzuführen, damit Pods nur auf Ressourcen zugreifen können, für die sie über eine Zugriffsberechtigung verfügen.<br>(Zugehörige Richtlinie: [Vorschau]: Podsicherheitsrichtlinien für Kubernetes Service definieren)|Medium|N|Computeressourcen (Container)|
 |**Für bessere Einblicke in Ihre IoT-Geräte das Sicherheitsmodul „Azure Security Center für IoT“ installieren**|Installieren Sie für bessere Einblicke in Ihre IoT-Geräte das Sicherheitsmodul „Azure Security Center für IoT“.|Niedrig|N|IoT-Gerät|
 

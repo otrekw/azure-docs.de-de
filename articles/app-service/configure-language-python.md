@@ -2,15 +2,15 @@
 title: Konfigurieren von Linux-Python-Apps
 description: Es wird beschrieben, wie Sie den Python-Container konfigurieren, in dem Web-Apps ausgeführt werden, indem Sie sowohl das Azure-Portal als auch die Azure CLI verwenden.
 ms.topic: quickstart
-ms.date: 02/01/2021
+ms.date: 03/16/2021
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: cfbbb7064fcadc06714b237066bb6a009246baac
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 094755ed6c018b3ac82d6f62a43f17e2536bbd9a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101709086"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104953509"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Konfigurieren einer Linux-Python-App für Azure App Service
 
@@ -114,7 +114,7 @@ Vorhandene Webanwendungen können in Azure wie folgt erneut bereitgestellt werde
 
 1. **App-Start**: Lesen Sie den Abschnitt [Startprozess des Containers](#container-startup-process) weiter unten in diesem Artikel, um sich damit vertraut zu machen, wie App Service versucht, Ihre App auszuführen. Von App Service wird standardmäßig der Gunicorn-Webserver verwendet. Dieser muss dazu in der Lage sein, auf Ihr App-Objekt oder den Ordner *wsgi.py* zuzugreifen. Bei Bedarf können Sie den [Startbefehl anpassen](#customize-startup-command).
 
-1. **Continuous Deployment:** Richten Sie Continuous Deployment so ein, wie dies unter [Continuous Deployment in Azure App Service](deploy-continuous-deployment.md) beschrieben ist, wenn Sie die Azure Pipelines- oder Kudu-Bereitstellung verwenden. Bei Verwendung von GitHub Actions helfen Ihnen die Informationen unter [Bereitstellen in App Service mithilfe von GitHub Actions](deploy-github-actions.md) weiter.
+1. **Continuous Deployment:** Richten Sie Continuous Deployment so ein, wie dies unter [Continuous Deployment in Azure App Service](deploy-continuous-deployment.md) beschrieben ist, wenn Sie die Azure Pipelines- oder Kudu-Bereitstellung verwenden. Bei Verwendung von GitHub Actions helfen Ihnen die Informationen unter [Bereitstellen in App Service mithilfe von GitHub Actions](./deploy-continuous-deployment.md) weiter.
 
 1. **Benutzerdefinierte Aktionen**: Zum Durchführen von Aktionen in dem App Service-Container, von dem Ihre App gehostet wird, z. B. Django-Datenbankmigrationen, können Sie eine [Verbindung mit dem Container per SSH herstellen](configure-linux-open-ssh-session.md). Ein Beispiel für die Ausführung von Django-Datenbankmigrationen finden Sie unter [Tutorial: Bereitstellen einer Django-Web-App mit PostgreSQL in Azure App Service: Ausführen von Django-Datenbankmigrationen](tutorial-python-postgresql-app.md#43-run-django-database-migrations).
     - Bei Verwendung von Continuous Deployment können Sie diese Aktionen mit Postbuildbefehlen durchführen. Dies ist weiter oben unter [Anpassen der Buildautomatisierung](#customize-build-automation) beschrieben.
@@ -373,6 +373,7 @@ Die folgenden Abschnitte bieten weitere Anleitungen zu spezifischen Problemen.
 - [App wird nicht angezeigt: Meldung „Dienst nicht verfügbar“](#service-unavailable)
 - [„setup.py“ oder „requirements.txt“ wurde nicht gefunden](#could-not-find-setuppy-or-requirementstxt)
 - [ModuleNotFoundError beim Start](#modulenotfounderror-when-app-starts)
+- [Die Datenbank ist gesperrt.](#database-is-locked)
 - [Kennwörter werden bei der Eingabe in der SSH-Sitzung nicht angezeigt](#other-issues)
 - [Befehle in der SSH-Sitzung scheinen abgeschnitten zu werden](#other-issues)
 - [Statische Objekte werden in einer Django-App nicht angezeigt](#other-issues)
@@ -409,6 +410,14 @@ Die folgenden Abschnitte bieten weitere Anleitungen zu spezifischen Problemen.
 #### <a name="modulenotfounderror-when-app-starts"></a>ModuleNotFoundError beim Starten der App
 
 Wenn Ihnen eine Fehlermeldung wie `ModuleNotFoundError: No module named 'example'` angezeigt wird, bedeutet dies, dass Python beim Starten der Anwendung mindestens eines Ihrer Module nicht finden konnte. Dies oft der Fall, wenn Sie Ihre virtuelle Umgebung mit Ihrem Code bereitstellen. Virtuelle Umgebungen sind nicht portierbar. Daher sollten sie nicht mit dem Anwendungscode bereitgestellt werden. Lassen Sie stattdessen Oryx eine virtuelle Umgebung erstellen, und installieren Sie Ihre Pakete in der Web-App, indem Sie die App-Einstellung `SCM_DO_BUILD_DURING_DEPLOYMENT` erstellen und sie auf `1` festlegen. Dadurch wird Oryx gezwungen, Ihre Pakete zu installieren, wann immer Sie eine Bereitstellung in App Service durchführen. Weitere Informationen finden Sie [in diesem Artikel über die Portabilität von virtuellen Umgebungen](https://azure.github.io/AppService/2020/12/11/cicd-for-python-apps.html).
+
+### <a name="database-is-locked"></a>Die Datenbank ist gesperrt.
+
+Wenn Sie versuchen, die Datenbankmigration mit einer Django-App auszuführen, wird möglicherweise Folgendes angezeigt: sqlite3. OperationalError: Die Datenbank ist gesperrt. Der Fehler weist darauf hin, dass Ihre Anwendung eine SQLite-Datenbank verwendet, für die standardmäßig Django konfiguriert ist, statt eine Clouddatenbank wie PostgreSQL für Azure.
+
+Überprüfen Sie die Variable `DATABASES` in der Datei *settings.py* der App, um sicherzustellen, dass Ihre App anstelle von SQLite eine Clouddatenbank verwendet.
+
+Tritt dieser Fehler im Zusammenhang mit dem Beispiel unter [Tutorial: Bereitstellen einer Django-Web-App mit PostgreSQL in Azure App Service](tutorial-python-postgresql-app.md) auf, vergewissern Sie sich, dass Sie die Schritte unter [4.2 Konfigurieren der Umgebungsvariablen für die Datenbankverbindung](tutorial-python-postgresql-app.md#42-configure-environment-variables-to-connect-the-database) ausgeführt haben.
 
 #### <a name="other-issues"></a>Andere Probleme
 

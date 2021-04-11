@@ -7,12 +7,12 @@ ms.topic: article
 author: sayantanroy83
 ms.author: sroy
 ms.date: 3/08/2021
-ms.openlocfilehash: 3b109048be4a94990c26e31aa5bc2ad36fdd0211
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1cdd3dba8203ce9e8daeaa963f1722389d89d19d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102583492"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105563819"
 ---
 # <a name="prerequisites-to-programmatically-access-analytics-data"></a>Voraussetzungen für den programmgesteuerten Zugriff auf Analysedaten
 
@@ -24,7 +24,7 @@ Um programmgesteuert auf Analysedaten für den kommerziellen Marketplace zugreif
 
 ## <a name="create-azure-active-directory-application"></a>Erstellen der Azure Active Directory-Anwendung
 
-Für den programmgesteuerten Zugriff auf Analysedaten für den kommerziellen Marketplace können keine normalen Benutzeranmeldeinformationen verwendet werden. Es muss eine Azure AD-Anwendung (Azure Active Directory) zusammen mit einem geheimen Schlüssel für den Zugriff auf die Analyse-APIs erstellt werden. Informationen zum Erstellen einer Azure AD-Anwendung und eines geheimen Schlüssels finden Sie unter [Schnellstart: Registrieren einer Anwendung bei Microsoft Identity Platform](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app).
+Für den programmgesteuerten Zugriff auf Analysedaten für den kommerziellen Marketplace können keine normalen Benutzeranmeldeinformationen verwendet werden. Es muss eine Azure AD-Anwendung (Azure Active Directory) zusammen mit einem geheimen Schlüssel für den Zugriff auf die Analyse-APIs erstellt werden. Informationen zum Erstellen einer Azure AD-Anwendung und eines geheimen Schlüssels finden Sie unter [Schnellstart: Registrieren einer Anwendung bei Microsoft Identity Platform](../active-directory/develop/quickstart-register-app.md).
 
 ## <a name="associate-the-azure-ad-application-to-the-partner-center-tenant"></a>Zuordnen der Azure AD-Anwendung zum Partner Center-Mandanten
 
@@ -41,7 +41,7 @@ Die Azure AD-Anwendung, die Sie im Azure-Portal erstellt haben, muss mit Ihrem 
 
 ## <a name="generate-an-azure-ad-token"></a>Generieren eines Azure AD-Tokens
 
-Sie müssen ein Azure AD-Token mithilfe der Anwendungs-ID (Client-ID) generieren. Mit dieser ID können Sie Ihre Clientanwendung in Microsoft Identity Platform und den geheimen Clientschlüssel aus dem vorherigen Schritt eindeutig identifizieren. Die Schritte zum Generieren eines Azure AD-Tokens finden Sie unter [Dienst-zu-Dienst-Aufrufe mit Clientanmeldeinformationen (freigegebenes Geheimnis oder Zertifikat)](https://docs.microsoft.com/azure/active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow).
+Sie müssen ein Azure AD-Token mithilfe der Anwendungs-ID (Client-ID) generieren. Mit dieser ID können Sie Ihre Clientanwendung in Microsoft Identity Platform und den geheimen Clientschlüssel aus dem vorherigen Schritt eindeutig identifizieren. Die Schritte zum Generieren eines Azure AD-Tokens finden Sie unter [Dienst-zu-Dienst-Aufrufe mit Clientanmeldeinformationen (freigegebenes Geheimnis oder Zertifikat)](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md).
 
 > [!NOTE]
 > Das Token ist für eine Stunde gültig.
