@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: f4baca7f261aa7544b54992a5e1ddf620794774f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ce53e8a77186f96801879e5c9d8f8c65809470d0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94962279"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105639799"
 ---
 # <a name="troubleshoot-common-azure-database-migration-service-issues-and-errors"></a>Troubleshooting von häufigen Problemen und Fehlern bei Azure Database Migration Service
 
@@ -102,7 +102,7 @@ Wenn Sie im Projektassistenten des Azure Database Migration Service versuchen, e
 
 | Ursache         | Lösung    |
 | ------------- | ------------- |
-| Bei Verwendung von [ExpressRoute](https://azure.microsoft.com/services/expressroute/)[müssen](./tutorial-sql-server-azure-sql-online.md) für den Azure Database Migration Service drei Dienstendpunkte in dem dem Dienst zugeordneten Subnetz des virtuellen Netzwerks bereitgestellt werden:<br> \- Service Bus-Endpunkt<br> \- Speicherendpunkt<br> \- Zieldatenbankendpunkt (z.B. SQL-Endpunkt, Cosmos DB-Endpunkt)<br><br><br><br><br> | [Aktivieren](./tutorial-sql-server-azure-sql-online.md) Sie die erforderlichen Dienstendpunkte für die ExpressRoute-Verbindung zwischen Quelle und Azure Database Migration Service. <br><br><br><br><br><br><br><br> |
+| Bei Verwendung von [ExpressRoute](https://azure.microsoft.com/services/expressroute/)[müssen](./tutorial-sql-server-to-azure-sql.md) für den Azure Database Migration Service drei Dienstendpunkte in dem dem Dienst zugeordneten Subnetz des virtuellen Netzwerks bereitgestellt werden:<br> \- Service Bus-Endpunkt<br> \- Speicherendpunkt<br> \- Zieldatenbankendpunkt (z.B. SQL-Endpunkt, Cosmos DB-Endpunkt)<br><br><br><br><br> | [Aktivieren](./tutorial-sql-server-to-azure-sql.md) Sie die erforderlichen Dienstendpunkte für die ExpressRoute-Verbindung zwischen Quelle und Azure Database Migration Service. <br><br><br><br><br><br><br><br> |
 
 ## <a name="lock-wait-timeout-error-when-migrating-a-mysql-database-to-azure-db-for-mysql"></a>Sperrenwartezeit-Timeoutfehler bei der Migration einer MySQL-Datenbank zu Azure Database for MySQL
 
@@ -126,13 +126,13 @@ Wenn Sie versuchen, Azure Database Migration Service mit einer SQL Server-Datenq
 
 ## <a name="additional-known-issues"></a>Weitere bekannte Probleme
 
-* [Bekannte Probleme/Migrationseinschränkungen bei Onlinemigrationen zu Azure SQL-Datenbank](./known-issues-azure-sql-online.md)
+* [Bekannte Probleme/Migrationseinschränkungen bei Onlinemigrationen zu Azure SQL-Datenbank](./index.yml)
 * [Bekannte Problemen/Migrationseinschränkungen bei Onlinemigrationen zu Azure Database for MySQL](./known-issues-azure-mysql-online.md)
 * [Bekannte Problemen/Migrationseinschränkungen bei Onlinemigrationen zu Azure Database for PostgreSQL](./known-issues-azure-postgresql-online.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Lesen Sie den Artikel [Azure Database Migration Service PowerShell](/powershell/module/azurerm.datamigration/?view=azurermps-6.13.0#data_migration).
+* Lesen Sie den Artikel [Azure Database Migration Service PowerShell](/powershell/module/azurerm.datamigration#data_migration).
 * Lesen Sie den Artikel [Konfigurieren von Serverparametern in Azure Database for MySQL mit dem Azure-Portal](../mysql/howto-server-parameters.md).
 * Lesen Sie den Artikel [Übersicht über die Voraussetzungen für die Verwendung von Azure Database Migration Service](./pre-reqs.md).
 * Lesen Sie [Häufig gestellte Fragen zur Verwendung von Azure Database Migration Service](./faq.md).

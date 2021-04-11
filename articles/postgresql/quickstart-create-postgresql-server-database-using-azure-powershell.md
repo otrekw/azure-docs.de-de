@@ -1,19 +1,19 @@
 ---
 title: 'Schnellstart: Erstellen eines Servers – Azure PowerShell – Azure Database for PostgreSQL-Einzelserver'
 description: Schnellstartanleitung zum Erstellen eines Azure Database for PostgreSQL-Einzelservers mithilfe von Azure PowerShell
-author: lfittl-msft
-ms.author: lufittl
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.devlang: azurepowershell
 ms.topic: quickstart
 ms.date: 06/08/2020
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 91351c0b2982c6ee0e96cc1433c0fadf67e3bcc0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 79a070dbd49ed6ee00dd790c8157057aebde30df
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96010655"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105606734"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql---single-server-using-powershell"></a>Schnellstart: Erstellen eines Azure Database for PostgreSQL-Einzelservers mithilfe von PowerShell
 

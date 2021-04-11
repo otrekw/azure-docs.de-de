@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/15/2020
-ms.openlocfilehash: 7615e1dbce040002d9d1a13502637f78100965fb
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 65ee741ee928a4883def68a5c0b6d20beee441c7
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99538906"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105609206"
 ---
 # <a name="features-of-azure-cognitive-search"></a>Azure Cognitive Search-Features
 
@@ -43,7 +43,7 @@ Azure Cognitive Search bietet eine Volltextsuche-Engine, die persistente Speiche
 | Relevance | Ein zentraler Vorteil von Azure Cognitive Search ist die [**einfache Bewertung**](index-add-scoring-profiles.md). Anhand von Bewertungsprofilen kann die Relevanz als Funktion der Werte in den Dokumenten selbst modelliert werden. Beispielsweise kann es wünschenswert sein, dass neuere Produkte oder herabgesetzte Produkte in den Suchergebnissen weiter oben angezeigt werden. Sie können Bewertungsprofile auch mithilfe von Tags für eine personalisierte Bewertung erstellen, die auf den Sucheinstellungen der Kunden basiert, die Sie nachverfolgt und separat gespeichert haben. |
 | Geografische Suche | Azure Cognitive Search bietet Verarbeitung, Filterung und Anzeige geografischer Standorte. Mit Azure Search können die Benutzer Daten auf der Grundlage der Nähe eines Suchergebnisses zu einem physischen Ort untersuchen. [In diesem Video](https://channel9.msdn.com/Shows/Data-Exposed/Azure-Search-and-Geospatial-Data) oder [in diesem Beispiel](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs) erfahren Sie mehr. |
 | Filter und Facets | Die [**Facettennavigation**](search-faceted-navigation.md) wird über einen einzigen Abfrageparameter aktiviert. Azure Cognitive Search gibt eine Struktur für die Facettennavigation zurück, die Sie als Code hinter einer Kategorieliste für eine selbstgesteuerte Filterung nutzen können (etwa, um Katalogartikel nach Preisbereich oder Marke zu filtern). <br/><br/> [**Filter**](query-odata-filter-orderby-syntax.md) ermöglichen die Integration einer Facettennavigation in die Benutzeroberfläche Ihrer Anwendung, die Erweiterung von Abfrageformulierungen sowie die Filterung auf der Grundlage von Kriterien von Benutzern oder Entwicklern. Erstellen Sie Filter mithilfe der OData-Syntax. |
-| Benutzererfahrung | [**AutoVervollständigen**](search-autocomplete-tutorial.md) kann für Abfragen mit Textvervollständigung auf einer Suchleiste aktiviert werden. <br/><br/>[**Suchvorschläge**](/rest/api/searchservice/suggesters) funktioniert auch mit Eingaben von Textteilen in eine Suchleiste, jedoch werden die Ergebnisse als tatsächliche Dokumente in Ihrem Index dargestellt und nicht als Abfragebegriffe. <br/><br/>[**Synonyme**](search-synonyms.md) ordnen entsprechende Begriffe zu, die den Bereich einer Abfrage implizit erweitern, ohne dass der Benutzer die alternativen Begriffe bereitstellen muss. <br/><br/>Mit der [**Treffermarkierung**](/rest/api/searchservice/Search-Documents) wird eine Textformatierung auf ein übereinstimmendes Schlüsselwort in den Suchergebnissen angewendet. Sie können auswählen, für welche Felder hervorgehobene Ausschnitte zurückgegeben werden sollen.<br/><br/>Eine [**Sortierung**](/rest/api/searchservice/Search-Documents) wird über das Indexschema für mehrere Felder bereitgestellt und dann zur Abfragezeit mit einem einzelnen Suchparameter umgeschaltet.<br/><br/> Dank der fein abgestimmten Steuerung, die Azure Cognitive Search für Ihre Suchergebnisse bietet, sind [**Paginierung**](search-pagination-page-layout.md) und Drosselung Ihrer Suchergebnisse kein Problem.  <br/><br/>|
+| Benutzererfahrung | [**AutoVervollständigen**](search-add-autocomplete-suggestions.md) kann für Abfragen mit Textvervollständigung auf einer Suchleiste aktiviert werden. <br/><br/>[**Suchvorschläge**](/rest/api/searchservice/suggesters) funktioniert auch mit Eingaben von Textteilen in eine Suchleiste, jedoch werden die Ergebnisse als tatsächliche Dokumente in Ihrem Index dargestellt und nicht als Abfragebegriffe. <br/><br/>[**Synonyme**](search-synonyms.md) ordnen entsprechende Begriffe zu, die den Bereich einer Abfrage implizit erweitern, ohne dass der Benutzer die alternativen Begriffe bereitstellen muss. <br/><br/>Mit der [**Treffermarkierung**](/rest/api/searchservice/Search-Documents) wird eine Textformatierung auf ein übereinstimmendes Schlüsselwort in den Suchergebnissen angewendet. Sie können auswählen, für welche Felder hervorgehobene Ausschnitte zurückgegeben werden sollen.<br/><br/>Eine [**Sortierung**](/rest/api/searchservice/Search-Documents) wird über das Indexschema für mehrere Felder bereitgestellt und dann zur Abfragezeit mit einem einzelnen Suchparameter umgeschaltet.<br/><br/> Dank der fein abgestimmten Steuerung, die Azure Cognitive Search für Ihre Suchergebnisse bietet, sind [**Paginierung**](search-pagination-page-layout.md) und Drosselung Ihrer Suchergebnisse kein Problem.  <br/><br/>|
 
 ## <a name="security-features"></a>Sicherheitsfeatures
 

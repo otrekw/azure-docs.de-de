@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: ecf115b7ce902fcd8b50f0eca32ffda6ef47e068
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: cc470d12377f50f9f9ae4b362bcabf3a5ce34e8f
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102618473"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106169282"
 ---
 # <a name="about-azure-cloud-services-extended-support"></a>Grundlegendes zu Azure Cloud Services (erweiterter Support)
 
@@ -48,12 +48,9 @@ Hauptunterschiede zwischen Cloud Services (klassisch) und Cloud Services (erweit
 - Alle Ressourcen, die über [Azure Resource Manager](../azure-resource-manager/templates/overview.md) bereitgestellt werden, müssen sich in einem virtuellen Netzwerk befinden. Virtuelle Netzwerke und Subnetze werden in Azure Resource Manager erstellt, indem vorhandene Azure Resource Manager-APIs verwendet werden. Beim Bereitstellen von Cloud Services (erweiterter Support) muss im Abschnitt „NetworkConfiguration“ der CSCFG-Datei dann darauf verwiesen werden.   
 
 - Bei jeder Instanz von Cloud Services (erweiterter Support) handelt es sich um eine unabhängige Bereitstellung. Für Cloud Services (erweiterter Support) werden für einen Clouddienst nicht mehrere Slots unterstützt.  
-    - Die Funktion für den VIP-Austausch (VIP Swap<sup>*</sup>) kann genutzt werden, um zwischen zwei Instanzen von Cloud Services (erweiterter Support) zu wechseln. Um eine neue Version eines Clouddiensts zu testen und zu stagen, stellen Sie einen Clouddienst (erweiterter Support) bereit und geben dafür an, dass der VIP-Austausch mit einem anderen Clouddienst vom Typ „Erweiterter Support“ möglich ist.  
+    - Die Funktion für den VIP-Austausch (VIP Swap) kann genutzt werden, um zwischen zwei Instanzen von Cloud Services (erweiterter Support) zu wechseln. Um eine neue Version eines Clouddiensts zu testen und zu stagen, stellen Sie einen Clouddienst (erweiterter Support) bereit und geben dafür an, dass der VIP-Austausch mit einem anderen Clouddienst vom Typ „Erweiterter Support“ möglich ist.  
 
 - Die DNS-Bezeichnung (Domain Name Service) ist für Cloud Services (erweiterter Support) optional. In Azure Resource Manager ist die DNS-Bezeichnung eine Eigenschaft der öffentlichen IP-Ressource, die dem Clouddienst zugeordnet ist. 
-
-
-<sup>*</sup> Während der öffentlichen Vorschauphase ist die Funktion für den VIP-Austausch für Cloud Services (erweiterter Support) nicht verfügbar.  
 
 ## <a name="migration-to-azure-resource-manager"></a>Migration zu Azure Resource Manager
 

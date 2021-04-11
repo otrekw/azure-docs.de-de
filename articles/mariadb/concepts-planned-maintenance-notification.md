@@ -1,17 +1,17 @@
 ---
 title: 'Benachrichtigung über geplante Wartung: Azure Database for MariaDB'
 description: In diesem Artikel wird das Feature für Benachrichtigungen über geplante Wartungsmaßnahmen in Azure Database for MariaDB beschrieben.
-author: ambhatna
-ms.author: ambhatna
+author: rothja
+ms.author: jroth
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: c290236dfe7e88999847f8cb0d66b2d3c868c1ab
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b3e46f2fdbedddcdaa548feee2662f9c23d1a61d
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98664264"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552970"
 ---
 # <a name="planned-maintenance-notification-in-azure-database-for-mariadb"></a>Benachrichtigung über geplante Wartung in Azure Database for MariaDB
 

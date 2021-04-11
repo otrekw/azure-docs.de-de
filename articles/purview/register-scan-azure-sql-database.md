@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 10/02/2020
-ms.openlocfilehash: a708f0c1884073a2f2ea73092d25006415c59d5f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 74a8bc4209696682c294bccab450d25ae86e3645
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104655222"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105643933"
 ---
 # <a name="register-and-scan-an-azure-sql-database"></a>Registrieren und Überprüfen von Azure SQL-Datenbank
 
@@ -100,7 +100,7 @@ Der Dienstprinzipal oder die verwaltete Identität muss über die Berechtigung z
     ```
 
     > [!Note]
-    > `Username` ist Ihr eigener Dienstprinzipal oder eine verwaltete Identität von Purview. Weitere Informationen finden Sie unter den [festen Datenbankrollen und ihren Möglichkeiten](/sql/relational-databases/security/authentication-access/database-level-roles?view=sql-server-ver15&preserve-view=true#fixed-database-roles).
+    > `Username` ist Ihr eigener Dienstprinzipal oder eine verwaltete Identität von Purview. Weitere Informationen finden Sie unter den [festen Datenbankrollen und ihren Möglichkeiten](/sql/relational-databases/security/authentication-access/database-level-roles#fixed-database-roles).
     
 ##### <a name="add-service-principal-to-key-vault-and-purviews-credential"></a>Hinzufügen des Dienstprinzipals zum Schlüsseltresor und zu den Anmeldeinformationen von Purview
 

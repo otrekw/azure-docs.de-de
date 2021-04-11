@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: trbye
-ms.openlocfilehash: eb8d2d956eac23c02201f7fd855dcae71e960e8d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7e43c472c939049e5dfd4ec4df909a3178ef8e2d
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100388582"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106553259"
 ---
 # <a name="improve-synthesis-with-the-audio-content-creation-tool"></a>Verbessern der Synthese mit dem Audio Content Creation-Tool
 
@@ -44,7 +44,7 @@ Nachdem Sie sich für das Azure-Konto registriert haben, müssen Sie eine Speech
 Es dauert einen Moment, bis die neue Speech-Ressource bereitgestellt wird. Sobald die Bereitstellung abgeschlossen ist können Sie Ihre Reise in der Audioinhaltserstellung antreten. 
 
  >[!NOTE]
-   > Wenn Sie neuronale Stimmen verwenden möchten, achten Sie darauf, Ihre Ressource in einer [Region, die neuronale Stimmen unterstützt](regions.md#standard-and-neural-voices) zu erstellen.
+   > Wenn Sie neuronale Stimmen verwenden möchten, achten Sie darauf, Ihre Ressource in einer [Region, die neuronale Stimmen unterstützt](regions.md#neural-and-standard-voices) zu erstellen.
  
 ### <a name="step-3---log-into-the-audio-content-creation-with-your-azure-account-and-speech-resource"></a>Schritt 3: Anmelden bei der Audioinhaltserstellung mit Ihrem Azure-Konto und der Speech-Ressource
 

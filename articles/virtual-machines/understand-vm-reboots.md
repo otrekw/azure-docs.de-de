@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/08/2021
 ms.author: mimckitt
 ms.reviewer: cynthn
-ms.openlocfilehash: af371a8f7da5ef32e95d4096b69c5d52ce3e3700
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 9342e0c39b558cf8b6ff5773d623ce55062f9ab5
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102510400"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105607472"
 ---
 # <a name="understand-vm-reboots---maintenance-vs-downtime"></a>Grundlegendes zu VM-Neustarts – Gegenüberstellung von Wartung und Downtime
 Drei Szenarien können zu einer Beeinträchtigung von VMs in Azure führen: eine ungeplante Hardwarewartung, eine unerwartete Downtime und eine geplante Wartung.
@@ -34,7 +34,7 @@ Um die Downtime aufgrund eines oder mehrerer dieser Ereignisse zu verringern, so
 
 * Verwenden von [Verfügbarkeitszonen](../availability-zones/az-overview.md) als Schutz vor Rechenzentrumsausfällen
 * Konfigurieren mehrerer VMs in einer [Verfügbarkeitsgruppe](availability-set-overview.md) für höhere Redundanz
-* Verwenden von [geplanten Ereignissen für Linux](/linux/scheduled-events.md) oder [geplanten Ereignissen für Windows](/windows/scheduled-events.md) für proaktive Antworten auf Ereignisse, die sich auf VMs auswirken
+* Verwenden von [geplanten Ereignissen für Linux](/azure/virtual-machines/linux/scheduled-events) oder [geplanten Ereignissen für Windows](/azure/virtual-machines/windows/scheduled-events) für proaktive Antworten auf Ereignisse, die sich auf VMs auswirken
 * Konfigurieren einzelner Anwendungsebenen in separaten Verfügbarkeitsgruppen
 * Kombinieren des [Lastenausgleichs](../load-balancer/load-balancer-overview.md) mit Verfügbarkeitszonen oder -gruppen
 
