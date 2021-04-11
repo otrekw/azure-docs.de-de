@@ -1,15 +1,15 @@
 ---
 title: Kontrollen zur Einhaltung gesetzlicher Bestimmungen in Azure Policy für Azure Event Grid
 description: Hier sind Kontrollen zur Einhaltung gesetzlicher Bestimmungen in Azure Policy aufgelistet, die für Azure Event Grid verfügbar sind. Diese integrierten Richtliniendefinitionen bieten allgemeine Ansätze für die Verwaltung der Compliance Ihrer Azure-Ressourcen.
-ms.date: 03/17/2021
+ms.date: 03/31/2021
 ms.topic: sample
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: f34c2cdaa62aa2a418273baef40f5f404c940989
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a045fa086dddb72cbaf866ad08040423492d33e3
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104600978"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106094138"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-event-grid"></a>Kontrollen zur Einhaltung gesetzlicher Bestimmungen in Azure Policy für Azure Event Grid
 
