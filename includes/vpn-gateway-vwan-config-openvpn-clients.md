@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/17/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 55fa01d100c60c6411774373428ff4bbd9a56822
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee9dc61169b182356e8ed272bc64785e9c3f6384
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80986661"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106072894"
 ---
 ## <a name="windows-clients"></a><a name="windows"></a>Windows-Clients
 
@@ -25,7 +25,7 @@ ms.locfileid: "80986661"
    * Anweisungen zu [VPN Gateway](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site.md#clientexport)
    
    * Anweisungen zu [Virtual WAN](../articles/virtual-wan/certificates-point-to-site.md#clientexport)
-5. Extrahieren Sie den privaten Schlüssel und den Base64-Fingerabdruck aus der *PFX*-Datei. Dazu gibt es verschiedene Möglichkeiten. Die Verwendung von OpenSSL auf Ihrem Computer ist eine Möglichkeit. Die Datei *profileinfo.txt* enthält den privaten Schlüssel und den Fingerabdruck für die Zertifizierungsstelle sowie das Clientzertifikat. Verwenden Sie unbedingt den Fingerabdruck des Clientzertifikats.
+5. Extrahieren Sie den privaten Schlüssel und den Base64-Fingerabdruck aus der *PFX*-Datei. Hierfür gibt es mehrere Möglichkeiten. Die Verwendung von OpenSSL auf Ihrem Computer ist eine Möglichkeit. Die Datei *profileinfo.txt* enthält den privaten Schlüssel und den Fingerabdruck für die Zertifizierungsstelle sowie das Clientzertifikat. Verwenden Sie unbedingt den Fingerabdruck des Clientzertifikats.
 
    ```
    openssl pkcs12 -in "filename.pfx" -nodes -out "profileinfo.txt"
@@ -92,7 +92,7 @@ ms.locfileid: "80986661"
 
 9. Tippen Sie auf **More** (Mehr) wenn die Option **Copy to OpenVPN** (In OpenVPN kopieren) nicht angezeigt wird.
 
-    ![Weitere Informationen](./media/vpn-gateway-vwan-config-openvpn-clients/ios3.png)
+    ![Mehr](./media/vpn-gateway-vwan-config-openvpn-clients/ios3.png)
 
 10. Tippen Sie auf **Copy to OpenVPN** (In OpenVPN kopieren). 
 
@@ -127,7 +127,7 @@ ms.locfileid: "80986661"
    * Anweisungen zu [VPN Gateway](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site.md#clientexport) 
    
    * Anweisungen zu [Virtual WAN](../articles/virtual-wan/certificates-point-to-site.md#clientexport)
-5. Extrahieren Sie den privaten Schlüssel und den Base64-Fingerabdruck aus der PFX-Datei. Dazu gibt es verschiedene Möglichkeiten. Die Verwendung von OpenSSL auf Ihrem Computer ist eine Möglichkeit.
+5. Extrahieren Sie den privaten Schlüssel und den Base64-Fingerabdruck aus der PFX-Datei. Hierfür gibt es mehrere Möglichkeiten. Die Verwendung von OpenSSL auf Ihrem Computer ist eine Möglichkeit.
 
     ```
     openssl pkcs12 -in "filename.pfx" -nodes -out "profileinfo.txt"

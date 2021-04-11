@@ -6,12 +6,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 12/19/2019
 ms.author: bwren
-ms.openlocfilehash: 3300b0587cbb6c2193b56c9152af0cb11ea51936
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f2b22746b7a78349580220f4aa7579876fd21c33
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102033298"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106074589"
 ---
 # <a name="overview-of-azure-platform-logs"></a>Übersicht über Protokolle der Azure-Plattform
 Plattformprotokolle liefern detaillierte Diagnose- und Überwachungsinformationen für Azure-Ressourcen und die Azure-Plattform, von der sie abhängen. Sie werden automatisch generiert, obwohl Sie bestimmte Plattformprotokolle so konfigurieren müssen, dass sie an mindestens ein Ziel weitergeleitet werden, damit sie gespeichert werden. Dieser Artikel bietet einen Überblick über die Plattformprotokolle, einschließlich der Informationen, die sie liefern und wie Sie sie für die Erfassung und Analyse konfigurieren können.
@@ -45,8 +45,8 @@ Abhängig von den Überwachungsanforderungen können Sie Plattformprotokolle an 
 
 | Destination | BESCHREIBUNG |
 |:---|:---|
-| Log Analytics-Arbeitsbereich | Analysieren Sie die Protokolle aller ihrer Azure-Ressourcen zusammen, und nutzen Sie alle Features, die für [Azure Monitor-Protokolle](../logs/data-platform-logs.md) verfügbar sind, einschließlich [Protokollabfragen](../logs/log-query-overview.md) und [Protokollwarnungen](../alerts/alerts-log.md). Heften Sie die Ergebnisse einer Protokollabfrage an ein Azure-Dashboard an, oder fügen Sie diese als Teil eines interaktiven Berichts in eine Arbeitsmappe ein. |  |
-| Event Hub | Senden Sie Protokolldaten zu Plattformen außerhalb von Azure, z. B. an eine externe SIEM- oder eine benutzerdefinierte Telemetrieplattform.
+| Log Analytics-Arbeitsbereich | Analysieren Sie die Protokolle aller ihrer Azure-Ressourcen zusammen, und nutzen Sie alle Features, die für [Azure Monitor-Protokolle](../logs/data-platform-logs.md) verfügbar sind, einschließlich [Protokollabfragen](../logs/log-query-overview.md) und [Protokollwarnungen](../alerts/alerts-log.md). Heften Sie die Ergebnisse einer Protokollabfrage an ein Azure-Dashboard an, oder fügen Sie diese als Teil eines interaktiven Berichts in eine Arbeitsmappe ein. | 
+| Event Hub | Senden Sie Protokolldaten zu Plattformen außerhalb von Azure, z. B. an eine externe SIEM- oder eine benutzerdefinierte Telemetrieplattform. |
 | Azure-Speicher | Archivieren Sie die Protokolle zur Überwachung oder Sicherung. |
 
 - Einzelheiten zum Erstellen einer Diagnoseeinstellung für Aktivitäts- und Ressourcenprotokolle finden Sie unter [Erstellen einer Diagnoseeinstellung zum Sammeln von Ressourcenprotokollen und -metriken in Azure](../essentials/diagnostic-settings.md). 

@@ -10,12 +10,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 4747c958b5e592458c14bbf4244953564c252678
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3e6ed6bc8ba426a981b7a2390e7d00d9c3b1e785
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98790122"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105643456"
 ---
 # <a name="about-azure-key-vault"></a>Informationen zu Azure Key Vault
 
@@ -71,8 +71,8 @@ Darüber hinaus können Azure Key Vault-Instanzen auch zur Isolierung von Anwend
 
 Als sicherer Speicher in Azure wurde Key Vault u. a. zur Vereinfachung folgender Szenarien verwendet:
 -  [Azure-Datenträgerverschlüsselung](../../security/fundamentals/encryption-overview.md)
--  Die Funktionen [Immer verschlüsselt]( https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) und [Transparent Data Encryption]( https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-ver15) in SQL Server und Azure SQL-Datenbank
-- [Azure App Service]( https://docs.microsoft.com/azure/app-service/configure-ssl-certificate). 
+-  Die Funktionen [Immer verschlüsselt](/sql/relational-databases/security/encryption/always-encrypted-database-engine) und [Transparent Data Encryption](/sql/relational-databases/security/encryption/transparent-data-encryption) in SQL Server und Azure SQL-Datenbank
+- [Azure App Service](/azure/app-service/configure-ssl-certificate).
 
 Key Vault selbst kann in Speicherkonten, Event Hubs und Protokollanalysen integriert werden.
 

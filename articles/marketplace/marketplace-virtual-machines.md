@@ -8,14 +8,14 @@ ms.topic: conceptual
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: 9169d691b58ad4a59796123c64f856128a0f8c83
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0b5d0a8b12ad07c5be3a4cfc0840acc81aa0c395
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98879325"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106060731"
 ---
-# <a name="how-to-plan-a-virtual-machine-offer"></a>Planen eines VM-Angebots
+# <a name="plan-a-virtual-machine-offer"></a>Planen eines VM-Angebots
 
 In diesem Artikel werden die verschiedenen Möglichkeiten und Anforderungen für das Veröffentlichen eines VM-Angebots (Virtual Machine, virtueller Computer) im kommerziellen Marketplace erläutert. VM-Angebote sind transaktionsfähige Angebote, die über den Azure Marketplace bereitgestellt und abgerechnet werden.
 
@@ -102,7 +102,7 @@ Sie können die Auffindbarkeit und Bereitstellung Ihrer VM auf eine bestimmte Gr
 
 Weitere Informationen finden Sie unter [Pläne und Preise für Angebote im kommerziellen Marketplace](plans-pricing.md) und [Private Angebote im kommerziellen Microsoft-Marketplace](private-offers.md).
 
-## <a name="test-drives"></a>Testversionen
+## <a name="test-drive"></a>Testversion
 
 Sie können eine Testversion für Ihre VM aktivieren. Über Testversionen können Kunden für eine feste Anzahl von Stunden auf eine vorkonfigurierte Umgebung zugreifen. Sie können Testversionen für beliebige Veröffentlichungsoptionen aktivieren, allerdings gelten für dieses Feature zusätzliche Anforderungen. Weitere Informationen zu Testversionen finden Sie unter [Was ist eine Testversion?](what-is-test-drive.md) Weitere Informationen zum Konfigurieren verschiedener Arten von Testversionen finden Sie unter [Technische Konfiguration der Testversion](test-drive-technical-configuration.md).
 

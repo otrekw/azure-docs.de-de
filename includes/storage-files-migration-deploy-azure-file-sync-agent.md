@@ -1,18 +1,19 @@
 ---
-title: Bereitstellen des Azure-Dateisynchronisierungs-Agents
-description: Bereitstellen des Agents für die Azure-Dateisynchronisierung Ein gemeinsamer Textblock der Migrationsdokumentation.
+title: include file
+description: include file
+services: storage
 author: fauhse
 ms.service: storage
-ms.topic: conceptual
+ms.topic: include
 ms.date: 2/20/2020
 ms.author: fauhse
-ms.subservice: files
-ms.openlocfilehash: f038392f03b94aa2c2450531c9da4a11d9900295
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.custom: include file
+ms.openlocfilehash: 7c1ea3fbf8e5cef4b1e8f8a2b0963fdd66584f5a
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043172"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075572"
 ---
 In diesem Abschnitt installieren Sie den Azure-Dateisynchronisierungs-Agent auf Ihrer Windows Server-Instanz.
 

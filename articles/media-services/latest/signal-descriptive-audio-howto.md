@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.custom: devx-track-csharp
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 3d029f23a094646d20dd6ae8cb6560aeef4aed54
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 00a3fa397bf88520fa4923b6fbe7495c0aa0b8a2
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954511"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277401"
 ---
 # <a name="signal-descriptive-audio-tracks"></a>Signalisieren beschreibender Audiospuren
 
@@ -29,9 +29,9 @@ Dieser Artikel erläutert, wie Sie ein Video codieren, eine nur Audio enthaltend
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- [Erstellen Sie ein Media Services-Konto.](./create-account-howto.md)
+- [Erstellen Sie ein Media Services-Konto.](./account-create-how-to.md)
 - Führen Sie die Schritte unter [Zugreifen auf die Azure Media Services-API mit der Azure CLI](./access-api-howto.md) aus, und speichern Sie die Anmeldeinformationen. Sie benötigen sie für den Zugriff auf die API.
-- Lesen Sie [Dynamische Paketerstellung](dynamic-packaging-overview.md).
+- Lesen Sie [Dynamische Paketerstellung](encode-dynamic-packaging-concept.md).
 - Arbeiten Sie das Tutorial [Hochladen, Codieren und Streamen von Videos](stream-files-tutorial-with-api.md) durch.
 
 ## <a name="create-an-input-asset-and-upload-a-local-file-into-it"></a>Erstellen eines Eingabeobjekts und Hochladen einer lokalen Datei in dieses 
@@ -64,7 +64,7 @@ Wenn Sie den Namen des erstellten Ausgabemedienobjekts an andere Methoden überg
 
 ## <a name="create-a-transform-and-a-job-that-encodes-the-uploaded-file"></a>Erstellen einer Transformation und eines Auftrags, der die hochgeladene Datei codiert
 
-Bei der Codierung oder Verarbeitung von Inhalten in Media Services besteht ein allgemeines Muster darin, die Codierungseinstellungen als eine Anleitung einzurichten. Anschließend übermitteln Sie einen **Auftrag**, um diese Anleitung auf ein Video anzuwenden. Durch die Übermittlung von neuen Aufträgen für jedes neue Video wenden Sie diese Anleitung auf alle Videos in Ihrer Bibliothek an. Eine Anleitung wird in Media Services als eine **Transformation** aufgerufen. Weitere Informationen finden Sie unter [Transformationen und Aufträge](./transforms-jobs-concept.md). Das in diesem Tutorial beschriebene Beispiel definiert eine Anleitung, die das Video codiert, damit es auf eine Vielzahl von iOS- und Android-Geräte gestreamt werden kann. 
+Bei der Codierung oder Verarbeitung von Inhalten in Media Services besteht ein allgemeines Muster darin, die Codierungseinstellungen als eine Anleitung einzurichten. Anschließend übermitteln Sie einen **Auftrag**, um diese Anleitung auf ein Video anzuwenden. Durch die Übermittlung von neuen Aufträgen für jedes neue Video wenden Sie diese Anleitung auf alle Videos in Ihrer Bibliothek an. Eine Anleitung wird in Media Services als eine **Transformation** aufgerufen. Weitere Informationen finden Sie unter [Transformationen und Aufträge](./transform-jobs-concept.md). Das in diesem Tutorial beschriebene Beispiel definiert eine Anleitung, die das Video codiert, damit es auf eine Vielzahl von iOS- und Android-Geräte gestreamt werden kann. 
 
 Im folgenden Beispiel wird eine Transformation erstellt (falls keine vorhanden ist).
 
@@ -80,7 +80,7 @@ Der Abschluss des Auftrags nimmt einige Zeit in Anspruch. Wenn er erfolgt ist, m
 
 Der Auftrag durchläuft in der Regel die folgenden Zustände: **Geplant**, **In Warteschlange**, **Wird verarbeitet**, **Abgeschlossen** (Endzustand). Wenn für den Auftrag ein Fehler aufgetreten ist, erhalten Sie den Zustand **Fehler**. Wenn der Auftrag aktuell abgebrochen wird, erhalten Sie **Abbrechen** und **Abgebrochen**, wenn dies geschehen ist.
 
-Weitere Informationen finden Sie unter [Behandeln von Event Grid-Ereignissen](reacting-to-media-services-events.md).
+Weitere Informationen finden Sie unter [Behandeln von Event Grid-Ereignissen](monitoring/reacting-to-media-services-events.md).
 
 ## <a name="upload-the-audio-only-mp4-file"></a>Laden Sie die nur das Audiosignal enthaltende MP4-Datei hoch
 
@@ -245,4 +245,4 @@ Azure Media Player kann zum Testen verwendet werden, sollte jedoch nicht in eine
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Analysieren von Videos](analyze-videos-tutorial-with-api.md)
+[Analysieren von Videos](analyze-videos-tutorial.md)

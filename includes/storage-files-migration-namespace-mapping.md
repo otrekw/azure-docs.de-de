@@ -1,18 +1,19 @@
 ---
-title: Zuordnen einer Ordnerstruktur zu einer Azure-Dateisynchronisierungstopologie
-description: Ordnen Sie eine vorhandene Datei- und Ordnerstruktur zu Azure-Dateifreigaben für die Verwendung mit der Azure-Dateisynchronisierung zu. Ein gemeinsamer Textblock der Migrationsdokumentation.
+title: include file
+description: include file
+services: storage
 author: fauhse
 ms.service: storage
-ms.topic: conceptual
+ms.topic: include
 ms.date: 2/20/2020
 ms.author: fauhse
-ms.subservice: files
-ms.openlocfilehash: 265d14d7cca05ff510e747c8d3a3b071e44a0a68
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: include file
+ms.openlocfilehash: a8dd83a9584d218d56c7350d6d634bfe4610b790
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102202398"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075573"
 ---
 In diesem Schritt ermitteln Sie, wie viele Azure-Dateifreigaben Sie benötigen. Eine einzelne Windows Server-Instanz (oder ein Cluster) kann bis zu 30 Azure-Dateifreigaben synchronisieren.
 

@@ -5,12 +5,12 @@ ms.subservice: B2C
 ms.topic: include
 ms.date: 01/27/2021
 ms.author: mimart
-ms.openlocfilehash: 41d9962657aa81dbe34a52302d1b68ec655f2893
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e26dd7ea9f45af6f725f4deaefd9b5bd79a37e1c
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102095288"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106073418"
 ---
 Wenn Sie noch nicht über ein Zertifikat verfügen, können Sie ein selbstsigniertes Zertifikat verwenden. Ein selbstsigniertes Zertifikat ist ein Sicherheitszertifikat, das nicht von einer Zertifizierungsstelle (ZS) signiert ist und nicht die Sicherheitsgarantien eines Zertifikats bietet, das von einer Zertifizierungsstelle signiert wurde. 
 

@@ -1,17 +1,17 @@
 ---
 title: Verwalten von virtuellen Netzwerken – Azure Database for PostgreSQL – Flexible Server
 description: Erstellen und Verwalten von virtuellen Netzwerken für Azure Database for PostgreSQL Flexible Server über das Azure-Portal
-author: ambhatna
-ms.author: ambhatna
+author: rothja
+ms.author: jroth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 746f15d2d712f4b571d3f27e3535c69f5f4f9732
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8a3c983a60dc542cf83f9e818b7f9c1f20265b49
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101732767"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552358"
 ---
 # <a name="create-and-manage-virtual-networks-for-azure-database-for-postgresql---flexible-server-using-the-azure-portal"></a>Erstellen und Verwalten von virtuellen Netzwerken für Azure Database for PostgreSQL Flexible Server über das Azure-Portal
 

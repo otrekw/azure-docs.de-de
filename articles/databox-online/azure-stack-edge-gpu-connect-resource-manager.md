@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 03/01/2021
 ms.author: alkohli
-ms.openlocfilehash: 27c0c211b9844a34b0cb43dcd05037ba4a548f3e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e244c93fbe809c52eff1c42c284ce2e8389bbcc4
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102637085"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106553582"
 ---
 # <a name="connect-to-azure-resource-manager-on-your-azure-stack-edge-pro-device"></a>Herstellen einer Verbindung mit Azure Resource Manager auf Ihrem Azure Stack Edge Pro-Gerät
 
@@ -360,7 +360,7 @@ Legen Sie die Azure Resource Manager-Umgebung fest, und überprüfen Sie, ob die
         
             Alternativ kann für die Anmeldung das Cmdlet `login-AzureRmAccount` verwendet werden. 
             
-            `login-AzureRMAccount -EnvironmentName <Environment Name>` -TenantId c0257de7-538f-415c-993a-1b87a031879d 
+            `login-AzureRMAccount -EnvironmentName <Environment Name> -TenantId c0257de7-538f-415c-993a-1b87a031879d` 
 
             Nachfolgend finden Sie eine Beispielausgabe des Befehls. 
          
