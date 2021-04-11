@@ -14,12 +14,12 @@ ms.date: 02/05/2021
 ms.author: kenwith
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac3ea7ea6b3ed0bb8e1e9f7575b34f9dbf116a04
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: 1e05a7af3f0b95470432b4fb9602e1b41da9f72f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102453254"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104952965"
 ---
 # <a name="migrate-application-authentication-to-azure-active-directory"></a>Migrieren der Anwendungsauthentifizierung zu Azure Active Directory
 
@@ -61,7 +61,7 @@ Bei Ihren Anwendungen werden wahrscheinlich die folgenden Authentifizierungstype
 
 Azure AD verfügt über eine [vollständige Suite von Funktionen zur Identitätsverwaltung](../fundamentals/active-directory-whatis.md#which-features-work-in-azure-ad). Die Standardisierung der App-Authentifizierung und -Autorisierung auf Azure AD ermöglicht es Ihnen, die Vorteile dieser Funktionen zu nutzen.
 
-Zusätzliche Ressourcen für die Migration finden Sie unter [https://aka.ms/migrateapps](./migration-resources.md).
+Weitere Migrationsressourcen finden Sie unter [https://aka.ms/migrateapps](./migration-resources.md).
 
 ## <a name="benefits-of-migrating-app-authentication-to-azure-ad"></a>Vorteile einer Migration der App-Authentifizierung zu Azure AD
 
@@ -81,7 +81,7 @@ Zum Schutz Ihrer Apps müssen Sie eine vollständige Übersicht über alle Risik
 
 ### <a name="manage-cost"></a>Kostenmanagement
 
-Unter Umständen verfügt Ihre Organisation auch über mehrere Lösungen für die Identitäts- und Zugriffsverwaltung (Identity and Access Management, IAM). Die Migration zu einer Azure AD-Infrastruktur ist eine Möglichkeit zur Reduzierung der Abhängigkeiten von IAM-Lizenzen (lokal oder in der Cloud) und der Infrastrukturkosten. In Fällen, in denen Sie über M365-Lizenzen ggf. bereits für Azure AD bezahlt haben, gibt es keinen vernünftigen Grund, zusätzlich die Kosten für eine weitere IAM-Lösung zu bezahlen.
+Unter Umständen verfügt Ihre Organisation auch über mehrere Lösungen für die Identitäts- und Zugriffsverwaltung (Identity and Access Management, IAM). Die Migration zu einer Azure AD-Infrastruktur ist eine Möglichkeit zur Reduzierung der Abhängigkeiten von IAM-Lizenzen (lokal oder in der Cloud) und der Infrastrukturkosten. Wenn Sie mit Microsoft 365-Lizenzen beispielsweise bereits für Azure AD gezahlt haben, gibt es keinen Grund, die zusätzlichen Gebühren für eine weitere IAM-Lösung auszugeben.
 
 **Mit Azure AD können Sie Infrastrukturkosten auf folgende Weise verringern:**
 
@@ -104,7 +104,7 @@ Aufgrund der Vorteile in Hinsicht auf Wirtschaftlichkeit und Sicherheit wird Azu
 
 - Möglichkeit der Entwickler für den sicheren Zugriff auf ihre Apps und Verbesserung der Endbenutzererfahrung durch Verwendung der [Microsoft Identity Platform](../develop/v2-overview.md) mit der Microsoft Authentication Library (MSAL)
 
-- Möglichkeit Ihrer Partner für den Zugriff auf Cloudressourcen mithilfe der [Azure AD B2B-Zusammenarbeit](../external-identities/what-is-b2b.md). Dadurch entfällt der Aufwand für die Konfiguration des Point-to-Point-Verbunds mit ihren Partnern.
+- Möglichkeit Ihrer Partner für den Zugriff auf Cloudressourcen mithilfe der [Azure AD B2B-Zusammenarbeit](../external-identities/what-is-b2b.md). Mit Cloudressourcen entfällt der Mehraufwand der Konfiguration eines Point-to-Point-Verbunds mit Ihren Partnern.
 
 ### <a name="address-compliance-and-governance"></a>Umsetzen von Compliance und Governance
 
@@ -276,7 +276,7 @@ Legacy-Apps, die Sie modernisieren möchten
 
 Für Legacy-Apps, die Sie modernisieren möchten, werden durch die Umstellung auf Azure AD für die Kernauthentifizierung und -autorisierung der gesamte Leistungs- und Datenumfang freigegeben, den [Microsoft Graph](https://developer.microsoft.com/graph/gallery/?filterBy=Samples,SDKs) und [Intelligent Security Graph](https://www.microsoft.com/security/operations/intelligence?rtc=1) zu bieten haben.
 
-Es wird eine **Aktualisierung des Authentifizierungsstapelcodes** für diese Anwendungen von dem älteren Protokoll (z. B. integrierte Windows-Authentifizierung, eingeschränkte Kerberos-Delegierung, auf HTTP-Headern basierende Authentifizierung) in ein modernes Protokoll (z. B. SAML oder OpenID Connect) empfohlen.
+Für diese Anwendungen wird eine **Codeaktualisierung des Authentifizierungsstapels** vom Legacyprotokoll (z. B. integrierte Windows-Authentifizierung, eingeschränkte Kerberos-Delegierung, auf HTTP-Headern basierende Authentifizierung) auf ein modernes Protokoll (z. B. SAML oder OpenID Connect) empfohlen.
 
 ### <a name="legacy-apps-that-you-choose-not-to-modernize"></a>Legacy-Apps, die Sie NICHT modernisieren möchten
 
@@ -304,7 +304,7 @@ Apps ohne eindeutige Besitzer und klare Wartung und Überwachung stellen ein Sic
 
 - es besteht eindeutig **keine Verwendung**
 
-Natürlich **dürfen keine wichtigen, geschäftskritischen Anwendungen als veraltet gekennzeichnet werden**. Arbeiten Sie in diesen Fällen mit den geschäftlichen Besitzern zusammen, um die richtige Strategie zu ermitteln.
+**Wichtige, geschäftskritische Anwendungen sollten nicht als veraltet erklärt werden.** Arbeiten Sie in diesen Fällen mit den geschäftlichen Besitzern zusammen, um die richtige Strategie zu ermitteln.
 
 ### <a name="exit-criteria"></a>Beendigungskriterien
 
@@ -314,8 +314,8 @@ Sie haben diese Phase erfolgreich abgeschlossen, wenn Sie über Folgendes verfü
 
 - Eine Liste von Apps, die folgende Angaben enthält:
 
-  - mit welchen Systemen diese Apps eine Verbindung herstellen o von welchen Orten und Geräten aus Benutzer darauf zugreifen
-
+  - mit welchen Systemen diese Apps Verbindungen herstellen können
+  - von wo und von welchen Geräten aus Benutzer darauf zugreifen
   - ob sie migriert, als veraltet gekennzeichnet oder mit [Azure AD Connect](../hybrid/whatis-azure-ad-connect.md) verbunden werden
 
 > [!NOTE]
@@ -365,7 +365,7 @@ Wichtige Informationen für Migrationsentscheidungen umfassen Folgendes:
 
 - **App-Name**: Unter welcher Bezeichnung ist die App im Unternehmen bekannt?
 
-- **App-Typ**: Handelt es sich um eine SaaS-App eines Drittanbieters? Eine benutzerdefinierte Line-of-Business-Web-App? Eine API?
+- **App-Typ:** Handelt es sich um eine SaaS-App eines Drittanbieters? Handelt es sich um eine benutzerdefinierte branchenspezifische Web-App? Eine API?
 
 - **Geschäftliche Bedeutung**: Ist sie von großer Bedeutung? Geringer Bedeutung? Irgendwo dazwischen?
 
@@ -379,7 +379,7 @@ Wichtige Informationen für Migrationsentscheidungen umfassen Folgendes:
 
 - **Angabe, ob der App-Code aktualisiert werden soll**: Befindet sich die App in einer geplanten oder aktiven Entwicklungsphase?
 
-- **Angabe, ob die App lokal beibehalten werden soll**: Möchten Sie die App langfristig in Ihrem Rechenzentrum behalten?
+- **Ob die App lokal ausgeführt werden soll:** Möchten Sie die App langfristig in Ihrem Rechenzentrum behalten?
 
 - **Angabe, ob die App von anderen Apps oder APIs abhängig ist**: Ruft die App derzeit andere Apps oder APIs auf?
 
@@ -401,7 +401,7 @@ Sobald Sie die Anwendung klassifiziert und die Details dokumentiert haben, sollt
 
 Die Apps, die Sie für das Pilotprojekt auswählen, sollten die wichtigsten Identitäts- und Sicherheitsanforderungen Ihrer Organisation repräsentieren, und Sie müssen über eine eindeutige Zustimmung der Anwendungsbesitzer verfügen. Pilotprojekte werden in der Regel in einer separaten Testumgebung ausgeführt. Weitere Informationen finden Sie auf der Seite mit Bereitstellungsplänen unter [Bewährte Methoden für einen Pilotversuch](../fundamentals/active-directory-deployment-plans.md#best-practices-for-a-pilot).
 
-**Vergessen Sie nicht Ihre externen Partner.** Stellen Sie sicher, dass sie an Migrationszeitplänen und Tests beteiligt sind. Stellen Sie schließlich sicher, dass Ihre Partner im Falle von Problemen auf den Helpdesk zugreifen können.
+**Vergessen Sie nicht Ihre externen Partner.** Stellen Sie sicher, dass sie an Migrationszeitplänen und Tests beteiligt sind. Stellen Sie zuletzt sicher, dass Ihre Partner im Falle kritischer Probleme auf Ihren Helpdesk zugreifen können.
 
 ### <a name="plan-for-limitations"></a>Planen von Einschränkungen
 
@@ -417,13 +417,13 @@ Geschäftskritische und universell genutzte Anwendungen erfordern möglicherweis
 
 ### <a name="plan-the-security-posture"></a>Planen des Sicherheitsstatus
 
-Bevor Sie den Migrationsprozess einleiten, sollten Sie sich Zeit nehmen, um den Sicherheitsstatus, den Sie für das Identitätssystem des Unternehmens entwickeln möchten, umfassend zu bedenken. Die Grundlage dafür bildet das Sammeln der folgenden wertvollen Informationen: **Identitäten und Daten, wer auf die Daten zugreift, sowie Geräte und Standorte**.
+Bevor Sie den Migrationsprozess einleiten, sollten Sie sich Zeit nehmen, um den Sicherheitsstatus, den Sie für das Identitätssystem des Unternehmens entwickeln möchten, umfassend zu bedenken. Die Grundlage dafür bilden die folgenden wertvollen Informationen: **Identitäten, Geräte und Standorte, die auf Ihre Daten zugreifen**.
 
 ### <a name="identities-and-data"></a>Identitäten und Daten
 
 Die meisten Organisationen haben spezifische Anforderungen in Bezug auf Identitäten und Datenschutz, die je nach Branchensegment und Aufgabenbereich innerhalb von Organisationen variieren. Unter [Konfigurationen für den Identitäts- und Gerätezugriff](/microsoft-365/enterprise/microsoft-365-policies-configurations) finden Sie unsere Empfehlungen, einschließlich eines vorgeschriebenen Satzes von [Richtlinien für den bedingten Zugriff](../conditional-access/overview.md) und zugehörige Funktionen.
 
-Anhand dieser Informationen können Sie den Zugriff auf alle in Azure AD integrierten Dienste schützen. Diese Empfehlungen entsprechen der Microsoft-Sicherheitsbewertung sowie der [Identitätsbewertung in Azure AD](../fundamentals/identity-secure-score.md). Anhand der Bewertung können Sie:
+Anhand dieser Informationen können Sie den Zugriff auf alle in Azure AD integrierten Dienste schützen. Diese Empfehlungen sind an der Microsoft-Sicherheitsbewertung sowie der [Identitätsbewertung in Azure AD](../fundamentals/identity-secure-score.md) ausgerichtet. Anhand der Bewertung können Sie:
 
 - Den Status Ihrer Identitätssicherheit objektiv messen
 
@@ -443,7 +443,7 @@ Es gibt zwei Hauptkategorien von Benutzern Ihrer Apps und Ressourcen, die von Az
 
 Sie können Gruppen für diese Benutzer definieren und diese Gruppen auf unterschiedlichste Weise auffüllen. Sie können auswählen, dass ein Administrator manuell Mitglieder zu einer Gruppe hinzufügen muss, oder Sie können die Self-Service-Gruppenmitgliedschaft aktivieren. Es können Regeln eingerichtet werden, mit denen Mitglieder mithilfe [dynamischer Gruppen](../enterprise-users/groups-dynamic-membership.md) und basierend auf spezifischen Kriterien automatisch zu Gruppen hinzugefügt werden.
 
-Externe Benutzer können sich auch auf Kunden beziehen, was besondere Beachtung erfordert. [Azure AD B2C](../../active-directory-b2c/overview.md), ein separates Produkt, unterstützt die Kundenauthentifizierung. Dies ist jedoch nicht Thema dieses Whitepapers.
+Externe Benutzer können auch Kunden sein. [Azure AD B2C](../../active-directory-b2c/overview.md), ein separates Produkt, unterstützt die Kundenauthentifizierung. Dies ist jedoch nicht Thema dieses Whitepapers.
 
 ### <a name="devicelocation-used-to-access-data"></a>Gerät/Standort für den Datenzugriff
 
@@ -481,7 +481,7 @@ Verwenden Sie die folgenden Tools und Anleitungen, um die exakten Schritte zum M
 
 - **Lokal ausgeführte Anwendungen**: Informieren Sie sich über den [Azure AD-Anwendungsproxy](./application-proxy.md), und verwenden Sie den vollständigen [Bereitstellungsplan für den Azure AD-Anwendungsproxy](https://aka.ms/AppProxyDPDownload), um schnell loslegen zu können.
 
-- **Von Ihnen entwickelte Apps**: Lesen Sie unsere schrittweisen Anleitungen für [Integration](../develop/quickstart-register-app.md) und [Registrierung](../develop/quickstart-register-app.md).
+- **Von Ihnen entwickelte Apps:** Lesen Sie unsere ausführlichen Anleitungen für die [Integration](../develop/quickstart-register-app.md) und [Registrierung](../develop/quickstart-register-app.md).
 
 Nach der Migration können Sie die Benutzer über die erfolgreiche Bereitstellung informieren und an alle neuen Schritte erinnern, die sie durchführen müssen.
 
@@ -489,7 +489,7 @@ Nach der Migration können Sie die Benutzer über die erfolgreiche Bereitstellun
 
 Während des Migrationsprozesses verfügt Ihre App möglicherweise bereits über eine Testumgebung, die bei regulären Bereitstellungen verwendet wird. Sie können diese Umgebung weiterhin für Migrationstests verwenden. Wenn zurzeit keine Testumgebung zur Verfügung steht, können Sie diese je nach Architektur der Anwendung möglicherweise mithilfe von Azure App Service oder Azure Virtual Machines einrichten. Sie können einen separaten Azure AD-Testmandanten einrichten, der bei der Entwicklung Ihrer App-Konfigurationen verwendet werden soll. Dieser Mandant wird in einem fehlerfreien Zustand gestartet und ist nicht für die Synchronisierung mit einem System konfiguriert.
 
-Sie können die einzelnen Apps testen, indem Sie sich mit einem Testbenutzer anmelden und sicherstellen, dass alle Funktionen mit denen vor der Migration übereinstimmen. Wenn Sie während der Tests feststellen, dass Benutzer ihre [MFA](/active-directory/authentication/howto-mfa-userstates)- oder [SSPR](../authentication/tutorial-enable-sspr.md)-Einstellungen aktualisieren müssen, oder wenn Sie diese Funktionalität während der Migration hinzufügen, denken Sie daran, dies zum Kommunikationsplan für Endbenutzer hinzufügen. Weitere Informationen finden Sie in den [MFA](https://aka.ms/mfatemplates)- und [SSPR](https://aka.ms/ssprtemplates)-Vorlagen für die Endbenutzerkommunikation.
+Sie können die einzelnen Apps testen, indem Sie sich mit einem Testbenutzer anmelden und sicherstellen, dass alle Funktionen mit denen vor der Migration übereinstimmen. Wenn Sie während der Tests feststellen, dass Benutzer ihre [MFA](/azure/active-directory/authentication/howto-mfa-userstates)- oder [SSPR](../authentication/tutorial-enable-sspr.md)-Einstellungen aktualisieren müssen, oder wenn Sie diese Funktionalität während der Migration hinzufügen, sollten Sie daran denken, dies zu Ihrem Kommunikationsplan für Endbenutzer hinzuzufügen. Weitere Informationen finden Sie in den [MFA](https://aka.ms/mfatemplates)- und [SSPR](https://aka.ms/ssprtemplates)-Vorlagen für die Endbenutzerkommunikation.
 
 Nachdem Sie die Apps migriert haben, wechseln Sie zum [Azure-Portal](https://aad.portal.azure.com/), um zu testen, ob die Migration erfolgreich war. Befolgen Sie die nachstehenden Anweisungen:
 
@@ -511,21 +511,21 @@ Vergewissern Sie sich, dass das einmalige Anmelden je nach Konfiguration Ihrer A
 
 ### <a name="troubleshoot"></a>Problembehandlung
 
-Falls Probleme auftreten, finden Sie Hilfe in unserem [Leitfaden zum Beheben von Problemen mit Apps](../app-provisioning/isv-automatic-provisioning-multi-tenant-apps.md). Weitere Informationen finden Sie auch unter [Probleme bei der Anmeldung bei benutzerdefiniert entwickelten Anwendungen](./application-sign-in-problem-federated-sso-gallery.md).
+Falls Probleme auftreten, finden Sie Hilfe in unserem [Leitfaden zum Beheben von Problemen mit Apps](../app-provisioning/isv-automatic-provisioning-multi-tenant-apps.md). Weitere Informationen finden Sie in den Artikeln zur Problembehandlung, z. B. [Probleme bei der Anmeldung bei SAML-basierten Apps mit konfigurierter einmaliger Anmeldung](/troubleshoot/azure/active-directory/troubleshoot-sign-in-saml-based-apps).
 
 ### <a name="plan-rollback"></a>Planen eines Rollbacks
 
-Falls die Migration fehlschlägt, ist die beste Strategie ein Rollback und anschließender Test. Nachfolgend sind die Schritte angegeben, die Sie zum Beheben von Migrationsproblemen ausführen können:
+Falls die Migration fehlschlägt, besteht die beste Strategie in einem Rollback und anschließenden Tests. Nachfolgend sind die Schritte angegeben, die Sie zum Beheben von Migrationsproblemen ausführen können:
 
 - **Erstellen Sie Screenshots** der bestehenden Konfiguration Ihrer App. Wenn Sie die App erneut konfigurieren müssen, können Sie darauf zurückgreifen.
 
-- Im Fall von Problemen mit der Cloudauthentifizierung können Sie auch die **Bereitstellung von Links zur Legacyauthentifizierung** in Betracht ziehen.
+- Bei Problemen mit der Cloudauthentifizierung können Sie auch die **Bereitstellung von Links zur Legacyauthentifizierung** in Betracht ziehen.
 
 - **Ändern Sie nicht die vorhandene Konfiguration** mit dem früheren Identitätsanbieter, bevor Sie die Migration abgeschlossen haben.
 
 - Migrieren Sie zunächst **die Apps, die mehrere IdPs unterstützen**. Wenn etwas schief geht, können Sie jederzeit zur Konfiguration des bevorzugten IdP wechseln.
 
-- Stellen Sie sicher, dass die Benutzeroberfläche Ihrer App für den Fall von Problemen eine **Feedback-Schaltfläche** oder Hinweise auf Ihren **Helpdesk** enthält.
+- Stellen Sie sicher, dass Ihre App für den Fall von Problemen über eine **Feedbackschaltfläche** oder einen Verweis auf Ihren **Helpdesk** verfügt.
 
 ### <a name="exit-criteria"></a>Beendigungskriterien
 
@@ -573,7 +573,7 @@ Sie können den Benutzern Hilfen zum Entdecken ihrer Apps bereitstellen:
 
 Benutzer können einen **Intune Managed Browser** herunterladen:
 
-- **Für Android-Geräte** im [Google Play Store](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser)
+- **Für Android-Geräte** im [Google Play Store](https://play.google.com/store/apps/details?id=com.microsoft.intune)
 
 - **Für Apple-Geräte** im [Apple App Store](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8), oder sie können die [mobile App für „Meine Apps" für iOS](https://apps.apple.com/us/app/my-apps-azure-active-directory/id824048653) herunterladen
 
@@ -595,7 +595,7 @@ Azure AD bietet einen zentralen Zugriffsort zur Verwaltung Ihrer migrierten App
 
 - **Sicherer Benutzerzugriff auf Apps.** Aktivieren Sie [Richtlinien für bedingten Zugriff](../conditional-access/overview.md) oder [Identitätsschutz](../identity-protection/overview-identity-protection.md), um den Benutzerzugriff auf Anwendungen basierend auf dem Gerätestatus, dem Standort usw. zu schützen.
 
-- **Automatische Bereitstellung.** Richten Sie die [automatische Bereitstellung von Benutzern](../app-provisioning/user-provisioning.md) mit einer Vielzahl von SaaS-Apps von Drittanbietern ein, auf die Benutzer zugreifen müssen. Zusätzlich zur Erstellung von Benutzeridentitäten umfasst dies auch die Wartung und Entfernung von Benutzeridentitäten, wenn sich der Status oder die Rollen ändern.
+- **Automatische Bereitstellung.** Sie können die [automatische Bereitstellung von Benutzern](../app-provisioning/user-provisioning.md) für eine Vielzahl von SaaS-Drittanbieter-Apps einrichten, auf die Benutzer zugreifen müssen. Zusätzlich zur Erstellung von Benutzeridentitäten umfasst dies auch die Wartung und Entfernung von Benutzeridentitäten, wenn sich der Status oder die Rollen ändern.
 
 - **Delegieren der** **Benutzerzugriffsverwaltung.** Aktivieren Sie nach Bedarf den Self-Service-Anwendungszugriff auf Ihre Apps, und *weisen Sie eine genehmigende Person des Unternehmens zu, um den Zugriff auf diese Apps zu genehmigen*. Verwenden Sie die [Self-Service-Gruppenverwaltung](../enterprise-users/groups-self-service-management.md) für Gruppen, die Sammlungen von Apps zugewiesen sind.
 
@@ -605,13 +605,13 @@ Azure AD bietet einen zentralen Zugriffsort zur Verwaltung Ihrer migrierten App
 
 Sie können das [Azure-Portal](https://portal.azure.com/) auch verwenden, um alle Ihre Apps von einem zentralen Ort aus zu überwachen:
 
-- **Überwachen Ihrer App** mithilfe von **Unternehmensanwendungen, Überwachen** oder Zugreifen auf die gleichen Informationen über die [Azure AD-Berichterstellungs-API](../reports-monitoring/concept-reporting-api.md) zur Integration in Ihre bevorzugten Tools
+- **App-Überwachung** mithilfe von **Unternehmensanwendungen, Überwachung, oder Zugriff auf die gleichen Informationen über die [Azure AD-Berichterstellungs-API](../reports-monitoring/concept-reporting-api.md), um eine Integration mit Ihren bevorzugten Tools durchzuführen
 
 - **Anzeigen der Berechtigungen für eine App** mithilfe von **Unternehmensanwendungen, Berechtigungen** für Apps über OAuth/OpenID Connect
 
 - **Einblicke in Anmeldungen** mithilfe von **Unternehmensanwendungen, Anmeldungen** Zugreifen auf die gleichen Informationen über die [Azure AD-Berichterstellungs-API](../reports-monitoring/concept-reporting-api.md)
 
-- **Visualisieren der Nutzung Ihrer App** über das [Azure AD-Power BI-Inhaltspaket](../reports-monitoring/howto-use-azure-monitor-workbooks.md)
+- **Visualisierung der Nutzung Ihrer App** über das [Power BI-Inhaltspaket für Azure AD](../reports-monitoring/howto-use-azure-monitor-workbooks.md)
 
 ### <a name="exit-criteria"></a>Beendigungskriterien
 

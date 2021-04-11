@@ -1,17 +1,16 @@
 ---
 title: Entwerfen Ihrer Azure Monitor-Protokollbereitstellung | Microsoft-Dokumentation
 description: In diesem Artikel werden die Überlegungen und Empfehlungen für Kunden beschrieben, die sich auf die Bereitstellung eines Arbeitsbereichs in Azure Monitor vorbereiten.
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: a889275782388781eadffb7cf0a24771bf6e9e4f
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 8502c35a145e4a041f9d44b8396fe16f5db3febc
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102030833"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384203"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>Entwerfen Ihrer Azure Monitor-Protokollbereitstellung
 

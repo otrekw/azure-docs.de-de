@@ -9,12 +9,12 @@ ms.topic: overview
 ms.custom: sqldbrb=1, fasttrack-edit
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 506982a22fd53dfb4f8f3d94735c11fc491469eb
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 0ce8e45f301ac0fd84f7d5d27d81b63103768f89
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102097277"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105567711"
 ---
 # <a name="azure-private-link-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure Private Link für Azure SQL-Datenbank und Azure Synapse Analytics
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -62,7 +62,7 @@ Clients können über das gleiche virtuelle Netzwerk, über ein mittels Peering 
 
  ![Diagramm: Konnektivitätsoptionen][1]
 
-Außerdem können Dienste, die nicht direkt im virtuellen Netzwerk ausgeführt werden, aber darin integriert sind (z. B. App Service-Web-Apps oder Azure Functions), auch eine private Konnektivität mit der Datenbank herstellen. Weitere Informationen zu diesem speziellen Anwendungsfall finden Sie im Architekturszenario [Private Konnektivität von Web-Apps mit Azure SQL-Datenbank](https://docs.microsoft.com/azure/architecture/example-scenario/private-web-app/private-web-app).
+Außerdem können Dienste, die nicht direkt im virtuellen Netzwerk ausgeführt werden, aber darin integriert sind (z. B. App Service-Web-Apps oder Azure Functions), auch eine private Konnektivität mit der Datenbank herstellen. Weitere Informationen zu diesem speziellen Anwendungsfall finden Sie im Architekturszenario [Private Konnektivität von Web-Apps mit Azure SQL-Datenbank](/azure/architecture/example-scenario/private-web-app/private-web-app).
 
 ## <a name="test-connectivity-to-sql-database-from-an-azure-vm-in-same-virtual-network"></a>Testen der Konnektivität mit SQL-Datenbank über einen virtuellen Azure-Computer im gleichen virtuellen Netzwerk
 
@@ -185,7 +185,7 @@ PolyBase und die COPY-Anweisung werden häufig verwendet, um Daten aus Azure Sto
 
 - Eine Übersicht über die Sicherheit von Azure SQL-Datenbank finden Sie unter [Sichern der SQL-Datenbank](security-overview.md).
 - Eine Übersicht über die Azure SQL-Datenbank-Konnektivität finden Sie unter [Verbindungsarchitektur von Azure SQL-Datenbank](connectivity-architecture.md).
-- Möglicherweise interessieren Sie sich auch für das Architekturszenario [Web-App mit privater Konnektivität mit Azure SQL-Datenbank](https://docs.microsoft.com/azure/architecture/example-scenario/private-web-app/private-web-app). Darin wird eine Webanwendung außerhalb des virtuellen Netzwerks mit dem privaten Endpunkt einer Datenbank verbunden.
+- Möglicherweise interessieren Sie sich auch für das Architekturszenario [Web-App mit privater Konnektivität mit Azure SQL-Datenbank](/azure/architecture/example-scenario/private-web-app/private-web-app). Darin wird eine Webanwendung außerhalb des virtuellen Netzwerks mit dem privaten Endpunkt einer Datenbank verbunden.
 
 <!--Image references-->
 [1]: media/quickstart-create-single-database/pe-connect-overview.png

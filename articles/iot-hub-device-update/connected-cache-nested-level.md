@@ -7,18 +7,18 @@ ms.author: andyriv
 ms.date: 2/16/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 0128d0de4f078b62bc9571c8758d80cb26585354
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 7facb74cd407c576b2a7b119f19427dcd185f04e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102615379"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105568816"
 ---
 # <a name="microsoft-connected-cache-preview-deployment-scenario-sample-two-level-nested-azure-iot-edge-gateway-with-outbound-unauthenticated-proxy"></a>Beispiel für ein Szenario zur Bereitstellung von Microsoft Connected Cache: Geschachteltes Azure IoT Edge-Gateway mit zwei Ebenen ausgehendem nicht authentifiziertem Proxy
 
 In diesem Szenario gibt es ein Azure IoT Edge-Gateway und ein Azure IoT Edge-Downstreamgerät, ein Azure IoT Edge-Gateway, das einem anderen Azure IoT Edge-Gateway übergeordnet ist, und einen Proxyserver in der IT-DMZ. Nachfolgend finden Sie ein Beispiel für die Microsoft Connected Cache-Umgebungsvariablen, die auf der Benutzeroberfläche des Azure-Portals für die beiden MCC-Module, die für die Azure IoT Edge-Gateways bereitgestellt werden, festgelegt werden würden. Das gezeigte Beispiel veranschaulicht die Konfiguration für Azure IoT Edge-Gateways auf zwei Ebenen, aber es gibt keinen Grenzwert für die Tiefe der Upstreamhosts, die von Microsoft Connected Cache unterstützt werden. Es gibt keinen Unterschied bei den Optionen zum Erstellen von MCC-Containern aus den vorherigen Beispielen.
 
-Weitere Informationen zur Konfiguration von mehrstufigen Bereitstellungen von Azure IoT Edge-Gateways finden Sie in der Dokumentation [Verbinden nachgeschalteter IoT Edge-Geräte – Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/how-to-connect-downstream-iot-edge-device?view=iotedge-2020-11&tabs=azure-portal&preserve-view=true). Beachten Sie außerdem, dass sich bei der Bereitstellung von Azure IoT Edge-, Microsoft Connected Cache- und benutzerdefinierten Modulen alle Module in derselben Containerregistrierung befinden müssen.
+Weitere Informationen zur Konfiguration von mehrstufigen Bereitstellungen von Azure IoT Edge-Gateways finden Sie in der Dokumentation [Verbinden nachgeschalteter IoT Edge-Geräte – Azure IoT Edge](../iot-edge/how-to-connect-downstream-iot-edge-device.md?preserve-view=true&tabs=azure-portal&view=iotedge-2020-11). Beachten Sie außerdem, dass sich bei der Bereitstellung von Azure IoT Edge-, Microsoft Connected Cache- und benutzerdefinierten Modulen alle Module in derselben Containerregistrierung befinden müssen.
 
 Das folgende Diagramm beschreibt das Szenario, in dem ein Azure IoT Edge-Gateway als direkter Zugriff auf CDN-Ressourcen als übergeordnetes Gateway für ein anderes Azure IoT Edge-Gateway fungiert, das als übergeordnetes Gerät für ein Azure IoT-Blattgerät wie Raspberry Pi fungiert. Nur das übergeordnete Azure IoT Edge-Gateway verfügt über eine Internetverbindung mit CDN-Ressourcen und sowohl das untergeordnete Azure IoT Edge-Gerät als auch das Azure IoT-Gerät sind vom Internet isoliert. 
 
@@ -70,7 +70,7 @@ Das folgende Diagramm beschreibt das Szenario, in dem ein Azure IoT Edge-Gateway
 ## <a name="child-gateway-configuration"></a>Untergeordnete Gatewaykonfiguration
 
 >[!Note]
->Wenn Sie in Ihrer Konfiguration replizierte Container in Ihrer eigenen privaten Registrierung verwendet haben, ist eine Änderung der config.toml-Einstellungen und Runtimeeinstellungen in Ihrer Modulbereitstellung erforderlich. Weitere Informationen finden Sie unter [Tutorial: Erstellen einer Hierarchie für IoT Edge-Geräte – Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/tutorial-nested-iot-edge?view=iotedge-2020-11&tabs=azure-portal&preserve-view=true#deploy-modules-to-the-lower-layer-device).
+>Wenn Sie in Ihrer Konfiguration replizierte Container in Ihrer eigenen privaten Registrierung verwendet haben, ist eine Änderung der config.toml-Einstellungen und Runtimeeinstellungen in Ihrer Modulbereitstellung erforderlich. Weitere Informationen finden Sie unter [Tutorial: Erstellen einer Hierarchie für IoT Edge-Geräte – Azure IoT Edge](../iot-edge/tutorial-nested-iot-edge.md?preserve-view=true&tabs=azure-portal&view=iotedge-2020-11#deploy-modules-to-the-lower-layer-device).
 
 1. Ändern Sie den Imagepfad für den Edge-Agent wie im folgenden Beispiel gezeigt:
 

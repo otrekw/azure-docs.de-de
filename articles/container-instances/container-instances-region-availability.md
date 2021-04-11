@@ -4,12 +4,12 @@ description: Verfügbarkeit von Compute- und Arbeitsspeicherressourcen für den 
 ms.topic: article
 ms.date: 04/27/2020
 ms.custom: references_regions
-ms.openlocfilehash: 4decf29be23c2f1ed51f422052869e99abe4a511
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b1783204ae416412579e63654ff236fbc6cf1a18
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103573607"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105046010"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Ressourcenverfügbarkeit für Azure Container Instances in Azure-Regionen
 
@@ -88,21 +88,21 @@ Die folgenden Regionen und maximalen Ressourcen stehen Containergruppen mit [unt
 | Brasilien Süd | 4 | 16 | 4 | 16 | 20 |
 | Kanada, Mitte | 2 | 8 | 2 | 3,5 | 20 |
 | Indien, Mitte | 2 | 3,5 | 2 | 3,5 | 20 |
-| USA (Mitte) | 2 | 3,5 | 2 | 3,5 | 20 |
+| USA (Mitte) | 2 | 8 | 2 | 3,5 | 20 |
 | Asien, Osten | 2 | 3,5 | 2 | 3,5 | 20 |
-| East US | 4 | 16 | 2 | 8 | 20 |
-| USA (Ost) 2 | 2 | 3,5 | 4 | 16 | 20 |
+| East US | 2 | 8 | 2 | 8 | 20 |
+| USA (Ost) 2 | 2 | 8 | 4 | 16 | 20 |
 | Japan, Osten | 4 | 16 | 4 | 16 | 20 |
 | Korea, Mitte | 4 | 16 | 4 | 16 | 20 |
-| USA Nord Mitte | 4 | 16 | 4 | 16 | 20 |
+| USA Nord Mitte | 2 | 8 | 4 | 16 | 20 |
 | Nordeuropa | 2 | 8 | 2 | 8 | 20 |
-| USA Süd Mitte | 2 | 3,5 | 2 | 8 | 20 |
+| USA Süd Mitte | 2 | 8 | 2 | 8 | 20 |
 | Asien, Südosten | – | – | 2 | 3,5 | 20 |
 | Indien (Süden) | 2 | 3,5 | 2 | 3,5 | 20 |
 | UK, Süden | 2 | 8 | 2 | 3,5 | 20 |
-| USA, Westen-Mitte | 4 | 16 | 2 | 8 | 20 |
+| USA, Westen-Mitte | 2 | 8 | 2 | 8 | 20 |
 | Europa, Westen | 4 | 16 | 4 | 16 | 20 |
-| USA (Westen) | 4 | 16 | 2 | 8 | 20 |
+| USA (Westen) | 2 | 8 | 2 | 8 | 20 |
 | USA, Westen 2 | 2 | 8 | 2 | 3,5 | 20 |
 
 

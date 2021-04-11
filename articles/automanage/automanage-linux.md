@@ -4,16 +4,17 @@ description: Erfahren Sie mehr über die bewährten Methoden für Azure Automana
 author: deanwe
 ms.service: virtual-machines
 ms.subservice: automanage
+ms.collection: linux
 ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: deanwe
-ms.openlocfilehash: b4ca9a69ab56a81e192560a3a61ec90f82cbbe80
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 3aab43be49cb98fbe136e1f0216590785d650392
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101688398"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104953248"
 ---
 # <a name="azure-automanage-for-virtual-machines-best-practices---linux"></a>Bewährte Methoden für Azure Automanage für virtuelle Computer: Linux
 
@@ -35,7 +36,7 @@ Automanage unterstützt die folgenden Linux-Distributionen und -Versionen:
 >[!NOTE]
 > Microsoft Antimalware wird auf Linux-VMs zurzeit nicht unterstützt.
 
-|Dienst    |BESCHREIBUNG    |Unterstützte Umgebungen<sup>1</sup>    |Unterstützte Voreinstellungen<sup>1</sup>    |
+|Dienst    |Beschreibung    |Unterstützte Umgebungen<sup>1</sup>    |Unterstützte Voreinstellungen<sup>1</sup>    |
 |-----------|---------------|----------------------|-------------------------|
 |VM Insights-Überwachung    |Azure Monitor für VMs überwacht die Leistung und Integrität Ihrer virtuellen Computer, einschließlich ihrer ausgeführten Prozesse und Abhängigkeiten von anderen Ressourcen. [Weitere Informationen](../azure-monitor/vm/vminsights-overview.md).    |Bereitstellung    |Nein    |
 |Backup    |Azure Backup bietet unabhängige und isolierte Sicherungen zum Schutz vor dem versehentlichen Löschen der Daten auf Ihren VMs. [Weitere Informationen](../backup/backup-azure-vms-introduction.md). Die Gebühren basieren auf der Anzahl und Größe der VMs, die geschützt werden. [Weitere Informationen](https://azure.microsoft.com/pricing/details/backup/).    |Bereitstellung    |Ja    |

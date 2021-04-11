@@ -5,12 +5,12 @@ services: automation
 ms.date: 02/11/2021
 ms.topic: troubleshooting
 ms.custom: has-adal-ref
-ms.openlocfilehash: 1ff5adf3ec974cc922d73cf5993a78722ca1b591
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ea9d8a4899b0d725c9791192d68373b44acee11f
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101723808"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168738"
 ---
 # <a name="troubleshoot-runbook-issues"></a>Beheben von Runbookproblemen
 
@@ -90,9 +90,9 @@ Führen Sie die folgenden Schritte aus, um den Fehler zu ermitteln:
    ```powershell
    $Cred = Get-Credential
    #Using Azure Service Management
-   Add-AzureAccount –Credential $Cred
+   Add-AzureAccount -Credential $Cred
    #Using Azure Resource Manager
-   Connect-AzAccount –Credential $Cred
+   Connect-AzAccount -Credential $Cred
    ```
 
 1. Wenn die Authentifizierung lokal fehlschlägt, haben Sie Ihre Azure Active Directory (Azure AD)-Anmeldeinformationen nicht ordnungsgemäß eingerichtet. Informationen zur richtigen Einrichtung des Azure AD-Kontos finden Sie im Artikel [Authentifizieren bei Azure mithilfe von Azure AD](../automation-use-azure-ad.md).
@@ -201,11 +201,11 @@ Führen Sie die folgenden Schritte aus, um zu ermitteln, ob die Authentifizierun
 
 1. Testen Sie Ihr Skript außerhalb von Azure Automation, um sicherzustellen, dass es eigenständig verwendet werden kann.
 1. Stellen Sie sicher, dass Ihr Skript das Cmdlet [Connect-AzAccount](/powershell/module/Az.Accounts/Connect-AzAccount) vor dem Cmdlet `Select-*` ausführt.
-1. Fügen Sie am Anfang Ihres Runbooks `Disable-AzContextAutosave –Scope Process` hinzu. Dieses Cmdlet stellt sicher, dass alle Anmeldeinformationen nur für die Ausführung des aktuellen Runbooks gelten.
+1. Fügen Sie am Anfang Ihres Runbooks `Disable-AzContextAutosave -Scope Process` hinzu. Dieses Cmdlet stellt sicher, dass alle Anmeldeinformationen nur für die Ausführung des aktuellen Runbooks gelten.
 1. Wenn die Fehlermeldung weiterhin angezeigt wird, ändern Sie Ihren Code, indem Sie den Parameter `AzContext` für `Connect-AzAccount` hinzufügen und dann den Code ausführen.
 
    ```powershell
-   Disable-AzContextAutosave –Scope Process
+   Disable-AzContextAutosave -Scope Process
 
    $Conn = Get-AutomationConnection -Name AzureRunAsConnection
    Connect-AzAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
@@ -242,7 +242,7 @@ Der Abonnementkontext geht möglicherweise verloren, wenn ein Runbook mehrere Ru
 * Um zu vermeiden, dass auf das falsche Abonnement verwiesen wird, deaktivieren Sie das Speichern von Kontext in ihren Automation-Runbooks, indem Sie den folgenden Code am Anfang jedes Runbooks verwenden.
 
    ```azurepowershell-interactive
-   Disable-AzContextAutosave –Scope Process
+   Disable-AzContextAutosave -Scope Process
    ```
 
 * Die Azure PowerShell-Cmdlets unterstützen den `-DefaultProfile`-Parameter. Dieser wurde allen Az- und AzureRm-Cmdlets hinzugefügt, um die Ausführung mehrerer PowerShell-Skripts im selben Prozess zu unterstützen, sodass Sie den Kontext und das Abonnement angeben können, das für das jeweilige Cmdlet verwendet werden soll. Bei Ihren Runbooks sollten Sie das Kontextobjekt in Ihrem Runbook speichern, wenn das Runbook erstellt wird (d. h. wenn sich ein Konto anmeldet), und jedes Mal, wenn es geändert wird. Ferner sollten Sie auf den Kontext verweisen, wenn Sie ein Az-Cmdlet angeben.

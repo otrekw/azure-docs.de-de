@@ -11,12 +11,12 @@ ms.date: 03/22/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50eac71203a94ffb5c7dddc8995b56980c3f8815
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: e5053bd0c3d63b13b1021476a09dca39dd08f581
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104798713"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105108756"
 ---
 # <a name="pilot-cloud-sync-for-an-existing-synced-ad-forest"></a>Pilotcloudsynchronisierung für eine vorhandene synchronisierte AD-Gesamtstruktur 
 
@@ -39,7 +39,7 @@ Beachten Sie Folgendes, bevor Sie dieses Tutorial durchführen:
 Im Folgenden finden Sie die erforderlichen Komponenten für die Durchführung dieses Tutorials:
 - Eine Testumgebung mit Version 1.4.32.0 oder höher der Azure AD Connect-Synchronisierung.
 - Eine Organisationseinheit oder Gruppe, die im Synchronisierungsbereich enthalten ist und für die Pilotbereitstellung verwendet werden kann. Wir empfehlen, mit einer kleinen Gruppe von Objekten zu beginnen.
-- Ein Server unter Windows Server 2012 R2 oder höher, der den Bereitstellungs-Agent hostet.  Dies darf nicht der Azure AD Connect-Server sein.
+- Ein Server unter Windows Server 2012 R2 oder höher, der den Bereitstellungs-Agent hostet.
 - Als Quellanker für die Azure AD Connect-Synchronisierung muss entweder *objectGuid* oder *ms-ds-consistencyGUID* verwendet werden.
 
 ## <a name="update-azure-ad-connect"></a>Aktualisieren von Azure AD Connect

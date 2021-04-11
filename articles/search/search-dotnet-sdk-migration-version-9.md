@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7726877efcb72caf5bb4c92e2e1c65e5df68f270
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 76cb2f94c949217c36fdccb8c64a53555bab227c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "89002707"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105606333"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-9"></a>Upgrade auf Version 9 des Azure Search .NET SDK
 
@@ -40,7 +40,7 @@ Version 9 des Azure Search .NET SDK zielt mit den folgenden Features auf Version
 
 * [KI-Anreicherung](cognitive-search-concept-intro.md) ist die Möglichkeit, Text aus Bildern, Blobs und anderen unstrukturierten Datenquellen zu extrahieren, um den Inhalt anzureichern und in einem Azure Search-Index besser durchsuchbar zu machen.
 * Die Unterstützung für [komplexe Typen](search-howto-complex-data-types.md) ermöglicht Ihnen, nahezu jede geschachtelte JSON-Struktur in einem Azure Search-Index zu modellieren.
-* [AutoVervollständigen](search-autocomplete-tutorial.md) bietet eine Alternative zur **Vorschlags**-API für das Implementieren der Suche während der Eingabe. AutoVervollständigen vervollständigt die von einem Benutzer aktuell eingegebenen Wörter bzw. Ausdrücke.
+* [AutoVervollständigen](search-add-autocomplete-suggestions.md) bietet eine Alternative zur **Vorschlags**-API für das Implementieren der Suche während der Eingabe. AutoVervollständigen vervollständigt die von einem Benutzer aktuell eingegebenen Wörter bzw. Ausdrücke.
 * Der [Analysemodus JsonLines](search-howto-index-json-blobs.md) ist Teil der Azure-Blobindizierung. Dabei wird ein Suchdokument pro JSON-Entität erstellt, die durch eine neue Zeile getrennt ist.
 
 ### <a name="new-preview-features-in-version-80-preview"></a>Neue Previewfunktionen in Version 8.0-preview

@@ -10,12 +10,12 @@ author: GitHubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 11/06/2019
-ms.openlocfilehash: 9161bf4f99ddfed479451d2091458ab309aa2c17
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 50544507f9d83c216bb6c18e004c5ce7ad1ca346
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92788620"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105639852"
 ---
 # <a name="tutorial-security-in-azure-sql-managed-instance-using-azure-ad-server-principals-logins"></a>Tutorial: Sicherheit für verwaltete Azure SQL-Instanz durch Azure AD-Serverprinzipale (Anmeldungen)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -106,7 +106,7 @@ Beispiele für das Herstellen einer Verbindung mit der verwalteten SQL-Instanz f
 
     ![Screenshot der Registerkarte „Ergebnisse“ im SSMS-Objekt-Explorer mit „name“, „principal_id“, „sid“, „type“ und „type_desc“ der neu hinzugefügten Anmeldung](./media/aad-security-configure-tutorial/native-login.png)
 
-Weitere Informationen finden Sie unter [CREATE LOGIN (Transact-SQL)](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current).
+Weitere Informationen finden Sie unter [CREATE LOGIN (Transact-SQL)](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true).
 
 ## <a name="grant-permissions-to-create-logins"></a>Gewähren von Berechtigungen zum Erstellen von Anmeldungen
 
@@ -182,7 +182,7 @@ Nachdem der Azure AD-Serverprinzipal (Anmeldung) erstellt und mit Berechtigunge
     GO
     ```
 
-1. Erstellen Sie mithilfe der Syntax für [CREATE DATABASE](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-mi-current) eine Datenbank in der verwalteten Instanz. Diese Datenbank wird im nächsten Abschnitt zum Testen von Benutzeranmeldungen verwendet.
+1. Erstellen Sie mithilfe der Syntax für [CREATE DATABASE](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-mi-current&preserve-view=true) eine Datenbank in der verwalteten Instanz. Diese Datenbank wird im nächsten Abschnitt zum Testen von Benutzeranmeldungen verwendet.
     1. Klicken Sie im **Objekt-Explorer** mit der rechten Maustaste auf den Server, und wählen Sie **Neue Abfrage** aus.
     1. Verwenden Sie im Abfragefenster die folgende Syntax, um eine Datenbank namens **MyMITestDB** zu erstellen:
 
@@ -264,7 +264,7 @@ Weitere Informationen zum Gewähren von Datenbankberechtigungen finden Sie unter
     > [!IMPORTANT]
     > Wenn Sie einen Benutzer (**USER**) auf der Grundlage eines Azure AD-Serverprinzipals (Anmeldung) erstellen, müssen Sie als Benutzername den gleichen Anmeldenamen angeben wie in der Anmeldung (**LOGIN**).
 
-    Weitere Informationen finden Sie unter [CREATE USER (Transact-SQL)](/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current).
+    Weitere Informationen finden Sie unter [CREATE USER (Transact-SQL)](/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current&preserve-view=true).
 
 1. Erstellen Sie in einem neuen Abfragefenster mithilfe des folgenden T-SQL-Befehls eine Testtabelle:
 

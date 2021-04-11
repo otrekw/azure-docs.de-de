@@ -3,12 +3,12 @@ title: Vorlagenfunktionen – Zeichenfolge
 description: Informationen zu den Funktionen, die in einer Azure Resource Manager-Vorlage (ARM-Vorlage) zum Arbeiten mit Zeichenfolgen verwendet werden können.
 ms.topic: conceptual
 ms.date: 03/02/2021
-ms.openlocfilehash: e823acc07ce0618c064f30e103ec52b7133cea18
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: cff1424562b45bc722f87fa3ec896c1c641ee758
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101731118"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105108841"
 ---
 # <a name="string-functions-for-arm-templates"></a>Zeichenfolgenfunktionen für ARM-Vorlagen
 
@@ -2189,12 +2189,12 @@ param testArray array = [
   'two'
   'three'
 ]
-param elementsToSkip int = 2
+param elementsToTake int = 2
 param testString string = 'one two three'
-param charactersToSkip int = 2
+param charactersToTake int = 2
 
-output arrayOutput array = take(testArray, elementsToSkip)
-output stringOutput string = take(testString, charactersToSkip)
+output arrayOutput array = take(testArray, elementsToTake)
+output stringOutput string = take(testString, charactersToTake)
 ```
 
 ---

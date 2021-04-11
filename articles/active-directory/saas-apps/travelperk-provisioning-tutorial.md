@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 02/22/2021
 ms.author: Zhchia
 ms.openlocfilehash: 19436b7faef081757e4500c76e7537ee78081bfa
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104950379"
 ---
 # <a name="tutorial-configure-travelperk-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von TravelPerk für die automatische Benutzerbereitstellung
@@ -124,7 +124,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 9. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit TravelPerk synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden zum Abgleichen der Benutzerkonten in TravelPerk für Updatevorgänge verwendet. Wenn Sie sich dafür entscheiden, das [übereinstimmende Zielattribut](../app-provisioning/customize-application-attributes.md) zu ändern, müssen Sie sicherstellen, dass die TravelPerk-API das Filtern von Benutzern anhand dieses Attributs unterstützt. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-   | attribute                                                                         | type      | Unterstützung für das Filtern |
+   | Attribut                                                                         | type      | Unterstützung für das Filtern |
    | --------------------------------------------------------------------------------- | --------- | ----------------------- |
    | userName                                                                          | String    | &check;                 |
    | externalId                                                                        | String    |
