@@ -1,21 +1,21 @@
 ---
 title: Übersicht über Speicher – Azure Time Series Insights Gen2 | Microsoft-Dokumentation
 description: Hier erfahren Sie mehr über Datenspeicherung in Azure Time Series Insights Gen2.
-author: lyrana
-ms.author: lyhughes
-manager: deepakpalled
+author: deepakpalled
+ms.author: dpalled
+manager: diviso
 ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 01/21/2021
 ms.custom: seodec18
-ms.openlocfilehash: 748eaca93eaee5ec858ea43261995111cef8ceda
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 67ab4c8cf079adaf3b38cdcc30abeec43cd4612f
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98676850"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106505194"
 ---
 # <a name="data-storage"></a>Datenspeicherung
 
@@ -87,7 +87,7 @@ Löschen Sie nicht Ihre Azure Time Series Insights Gen2-Dateien. Verwalten Sie z
 
 ### <a name="parquet-file-format-and-folder-structure"></a>Parquet-Dateiformat und Ordnerstruktur
 
-Parquet ist ein spaltenbasiertes Open-Source-Dateiformat, das für effiziente Speicherung und Leistung konzipiert wurde. Azure Time Series Insights Gen2 verwendet Parquet, um eine Time Series-ID-basierte Abfrageleistung im richtigen Maßstab zu ermöglichen.  
+Parquet ist ein spaltenbasiertes Open-Source-Dateiformat, das für effiziente Speicherung und Leistung konzipiert wurde. Azure Time Series Insights Gen2 verwendet Parquet, um eine Time Series-ID-basierte Abfrageleistung im richtigen Maßstab zu ermöglichen.
 
 Weitere Informationen zum Parquet-Dateityp finden Sie in der [Parquet-Dokumentation](https://parquet.apache.org/documentation/latest/).
 

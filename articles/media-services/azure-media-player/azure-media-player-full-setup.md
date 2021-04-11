@@ -5,14 +5,14 @@ author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: how-to
-ms.date: 04/20/2020
+ms.date: 04/05/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: e6ec59e3cb8d285652935b42493c820a7379eeb8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d7c103a7eba2e5da7ac040b50fcc0009a0b7237b
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104956076"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449867"
 ---
 # <a name="azure-media-player-full-setup"></a>Vollständiges Setup von Azure Media Player #
 
@@ -20,7 +20,7 @@ Die Einrichtung von Azure Media Player ist einfach. Es dauert nur einige Augenbl
 
 ## <a name="step-1-include-the-javascript-and-css-files-in-the-head-of-your-page"></a>Schritt 1: Fügen Sie die JavaScript- und CSS-Dateien in den Header Ihrer Seite ein. ##
 
-Mithilfe von Azure Media Player können Sie auf die Skripts der gehosteten CDN-Version zugreifen. Es wird in letzter Zeit häufig empfohlen, JavaScript vor dem Endtag des Hauptteils `<body>` anstelle von `<head>` einzufügen, Azure Media Player enthält jedoch eine „HTML5 Shiv“, die im Header platziert werden muss, damit ältere IE-Versionen das Videotag als gültiges Element anerkennen.
+Mithilfe von Azure Media Player können Sie auf die Skripts der gehosteten CDN-Version zugreifen. Es wird in letzter Zeit häufig empfohlen, JavaScript vor dem Endtag des Hauptteils `<body>` anstelle von `<head>` einzufügen, Azure Media Player enthält jedoch eine 'HTML5 Shiv', die im Header platziert werden muss, damit ältere IE-Versionen das Videotag als gültiges Element anerkennen.
 
 > [!NOTE]
 > Wenn Sie bereits eine HTML5-Shiv wie [Modernizr](https://modernizr.com/) verwenden, können Sie das JavaScript von Azure Media Player an jeder beliebigen Position einfügen. Vergewissern Sie sich aber, dass Ihre Version von Modernizr die Shiv für Video enthält.
@@ -33,7 +33,7 @@ Mithilfe von Azure Media Player können Sie auf die Skripts der gehosteten CDN-V
 ```
 
 > [!IMPORTANT]
-> Es wird **NICHT** empfohlen, die Version vom Typ `latest` in der Produktion zu nutzen, da sie bedarfsabhängigen Änderungen unterliegt. Ersetzen Sie `latest` durch eine Version von Azure Media Player. Ersetzen Sie beispielsweise `latest` durch `2.1.1`. Azure Media Player-Versionen können [hier](azure-media-player-changelog.md) abgefragt werden.
+> Es wird **NICHT** empfohlen, die Version vom Typ `latest` in der Produktion zu nutzen, da sie bedarfsabhängigen Änderungen unterliegt. Ersetzen Sie `latest` durch eine Version von Azure Media Player. Ersetzen Sie beispielsweise `latest` durch `2.1.1`. Azure Media Player-Versionen können [hier](https://amp.azure.net/libs/amp/latest/docs/changelog.html) abgefragt werden.
 
 > [!NOTE]
 > Seit Version `1.2.0` ist es nicht mehr erforderlich, den Speicherort in die Angaben zum Fallback einzuschließen (der Speicherort wird automatisch aus dem relativen Pfad der Datei „azuremediaplayer.min.js“ ermittelt). Sie können den Speicherort der Angaben zum Fallback ändern, indem Sie im `<head>` das folgende Skript nach den oben aufgeführten Skripts hinzufügen.

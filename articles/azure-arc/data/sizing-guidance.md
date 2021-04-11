@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 6e7f2e445c3e4e8df7420c0587e156968f3a2c92
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3bbd778eabf150b734b04e004006dfeea2254ec4
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94542676"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106077475"
 ---
 # <a name="sizing-guidance"></a>Dimensionierungsleitfaden
 
@@ -92,9 +92,9 @@ Jeder erstellte SQL Managed Instance-Pod umfasst drei Container:
 
 |Containername|CPU-Anforderung|Arbeitsspeicheranforderung|CPU-Limit|Arbeitsspeicherlimit|Hinweise|
 |---|---|---|---|---|---|
-|fluentbit|100m|100Mi|Nicht angegeben|Nicht angegeben|Die fluentbit-Containerressourcenanforderungen gelten _zusätzlich_ zu den für die verwaltete SQL-Instanz angegebenen Anforderungen.||
-|arc-sqlmi|Vom Benutzer angegeben oder nicht angegeben|Vom Benutzer angegeben oder nicht angegeben|Vom Benutzer angegeben oder nicht angegeben|Vom Benutzer angegeben oder nicht angegeben||
-|collectd|Nicht angegeben|Nicht angegeben|Nicht angegeben|Nicht angegeben||
+|fluentbit|100m|100Mi|Nicht angegeben|Nicht angegeben|Die fluentbit-Containerressourcenanforderungen gelten _zusätzlich_ zu den für die verwaltete SQL-Instanz angegebenen Anforderungen.|
+|arc-sqlmi|Vom Benutzer angegeben oder nicht angegeben|Vom Benutzer angegeben oder nicht angegeben|Vom Benutzer angegeben oder nicht angegeben|Vom Benutzer angegeben oder nicht angegeben|
+|collectd|Nicht angegeben|Nicht angegeben|Nicht angegeben|Nicht angegeben|
 
 Die Standardvolumegröße für alle persistenten Volumes beträgt 5gi.
 

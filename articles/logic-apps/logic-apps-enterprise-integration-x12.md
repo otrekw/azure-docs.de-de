@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/29/2020
-ms.openlocfilehash: 61f3f2af61bc24f76d061de672a3eaacd54f7f0e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 87a2bcc386ec5688fadb68aabdd2e5239e205516
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96015195"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106077469"
 ---
 # <a name="exchange-x12-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Austauschen von X12-Nachrichten für die B2B-Unternehmensintegration in Azure Logic Apps mit Enterprise Integration Pack
 
@@ -79,7 +79,6 @@ Nachdem Sie die Vereinbarungseigenschaften festgelegt haben, können Sie konfigu
 |----------|-------------|
 | **TA1 erwartet** | Gibt eine technische Bestätigung (TA1) an den Absender des Austauschs zurück. |
 | **FA erwartet** | Gibt eine funktionale Bestätigung (FA) an den Absender des Austauschs zurück. <p>Wählen Sie basierend auf der Schemaversion für die **FA-Version** Die Bestätigungen des Typs 997 oder 999 aus. <p>Um die Generierung von AK2-Schleifen in funktionalen Bestätigungen für akzeptierte Transaktionssätze zu aktivieren, wählen Sie **AK2-/IK2-Schleife einschließen** aus. |
-||||
 
 <a name="inbound-schemas"></a>
 

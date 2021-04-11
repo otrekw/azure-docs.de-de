@@ -2,7 +2,7 @@
 title: Überwachen von Time Series Insights | Microsoft-Dokumentation
 description: Überwachen Sie mit Time Series Insights Verfügbarkeit, Leistung und Betrieb.
 author: deepakpalled
-ms.author: lyhughes
+ms.author: dpalled
 manager: diviso
 ms.workload: big-data
 ms.service: time-series-insights
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/10/2020
 ms.custom: lyrana
-ms.openlocfilehash: a46ddeddfcefcd4d6e7f87747fe36cfc6ec82e35
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 15054cd508ce7a6de51fea86ca02302fba258757
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101737561"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504922"
 ---
 # <a name="monitoring-time-series-insights"></a>Überwachung mithilfe von Time Series Insights
 
@@ -44,7 +44,7 @@ Die folgenden Abschnitte bauen dahingehend auf diesem Artikel auf, dass die für
 
 ## <a name="monitoring-data-from-azure-time-series-insights"></a>Überwachen von aus Azure Time Series Insights stammenden Daten
 
-Azure Time Series Insights sammelt dieselben Arten von Überwachungsdaten wie andere Azure-Ressourcen, die in [Überwachungsdaten von Azure-Ressourcen](../azure-monitor/essentials/monitor-azure-resource.md#monitoring-data) beschrieben werden. 
+Azure Time Series Insights sammelt dieselben Arten von Überwachungsdaten wie andere Azure-Ressourcen, die in [Überwachungsdaten von Azure-Ressourcen](../azure-monitor/essentials/monitor-azure-resource.md#monitoring-data) beschrieben werden.
 
 Eine ausführliche Referenz zu den Protokollen und Metriken finden Sie unter [Referenz zu Time Series Insights-Überwachungsdaten](how-to-monitor-tsi-reference.md).
 
