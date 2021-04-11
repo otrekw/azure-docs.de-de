@@ -9,20 +9,20 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: business-intelligence
 ms.topic: tutorial
-ms.date: 12/31/2020
-ms.openlocfilehash: 952d69cccff86d1a0119391c400a40908c62ed69
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/25/2021
+ms.openlocfilehash: 829daaa9c739657528a9085201c61c88635931d0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98208963"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105608441"
 ---
 # <a name="visualize-data-with-power-bi"></a>Visualisieren von Daten mit Power BI
 
 In diesem Tutorial wird beschrieben, wie Sie einen Power BI-Arbeitsbereich erstellen, Ihren Azure Synapse-Arbeitsbereich verlinken und ein Power BI-Dataset erstellen, bei dem Daten in Ihrem Azure Synapse-Arbeitsbereich genutzt werden. 
 
-> [!NOTE]
-> Für dieses Tutorial müssen Sie [Power BI Desktop installieren](https://aka.ms/pbidesktopstore).
+## <a name="prerequisites"></a>Voraussetzungen
+Für dieses Tutorial müssen Sie [Power BI Desktop installieren](https://aka.ms/pbidesktopstore).
 
 ## <a name="overview"></a>Übersicht
 

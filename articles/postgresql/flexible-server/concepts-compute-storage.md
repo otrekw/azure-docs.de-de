@@ -1,17 +1,17 @@
 ---
 title: 'Compute- und Speicheroptionen – Azure Database for PostgreSQL: Flexible Server'
 description: 'In diesem Artikel werden die Compute- und Speicheroptionen in Azure Database for PostgreSQL: Flexible Server beschrieben.'
-author: lfittl-msft
-ms.author: lufittl
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/19/2021
-ms.openlocfilehash: b76b6ff788d3d7f44db33af96944d528282f0ac7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 93a439c814b6bac630c5231f46d7a022a131687c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101712214"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105608169"
 ---
 # <a name="compute-and-storage-options-in-azure-database-for-postgresql---flexible-server"></a>Compute- und Speicheroptionen in Azure Database for PostgreSQL: Flexible Server
 
@@ -121,7 +121,7 @@ Sie können Ihren E/A-Verbrauch im Azure-Portal oder mit Azure CLI-Befehlen übe
 Wenn sie mit einem \* markiert sind, werden IOPS durch den von Ihnen gewählten VM-Typ begrenzt. Andernfalls werden IOPS durch die ausgewählte Speichergröße beschränkt.
 
 >[!NOTE]
-> In den Metriken werden aufgrund des Datenträger-Burstings möglicherweise höhere IOPS-Werte angezeigt. Weitere Informationen finden Sie in der [Dokumentation](https://docs.microsoft.com/azure/virtual-machines/disk-bursting#disk-level-bursting). 
+> In den Metriken werden aufgrund des Datenträger-Burstings möglicherweise höhere IOPS-Werte angezeigt. Weitere Informationen finden Sie in der [Dokumentation](../../virtual-machines/disk-bursting.md#disk-level-bursting). 
 
 ### <a name="maximum-io-bandwidth-mibsec-for-your-configuration"></a>Maximale E/A-Bandbreite (MiB/s) für Ihre Konfiguration
 
