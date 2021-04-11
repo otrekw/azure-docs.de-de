@@ -12,16 +12,21 @@ ms.date: 01/4/2020
 ms.author: metang
 ms.custom: cog-serv-seo-aug-2020
 keywords: Leser, Sprachenlernende, Bilder anzeigen, Lesen verbessern, Inhalte lesen, übersetzen
-ms.openlocfilehash: 0661bd5f917a2bf071f11393ad8ac9af53ddfe97
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 1911d3ce62434f1dc24966798e9ace259ae072bc
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631238"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104801569"
 ---
 # <a name="what-is-immersive-reader"></a>Worum handelt es sich beim plastischen Reader?
 
 Der [plastische Reader](https://www.onenote.com/learningtools) ist ein für die Inklusion konzipiertes Tool, das bewährte Techniken implementiert, um das Leseverständnis von Leseanfängern, Sprachenlernenden und Personen mit Lernschwierigkeiten (beispielsweise Dyslexie) zu verbessern. Mit der Clientbibliothek für den plastischen Reader können Sie Ihre Webanwendungen mit der gleichen Technologie verbessern, die auch in Microsoft Word und Microsoft OneNote zum Einsatz kommt. 
+
+Diese Dokumentation enthält die folgenden Arten von Artikeln:  
+
+* **[Schnellstarts](quickstarts/client-libraries.md)** sind Anleitungen zu den ersten Schritten, die Sie durch das Senden von Anforderungen an den Dienst führen.
+* **[Schrittanleitungen](how-to-create-immersive-reader.md)** enthalten Anweisungen zur spezifischeren oder individuelleren Verwendung des Diensts.
 
 ## <a name="use-immersive-reader-to-improve-reading-accessibility"></a>Verbessern der Zugänglichkeit des Lesens mithilfe des plastischen Readers 
 
@@ -72,10 +77,3 @@ Der plastische Reader ist eine eigenständige Webanwendung. Nach dem Aufrufen ü
 Die Clientbibliothek für den plastischen Reader ist in C#, JavaScript, Java (Android), Kotlin (Android) und Swift (iOS) verfügbar. Erste Schritte mit:
 
 * [Schnellstart: Verwenden der Clientbibliothek für den plastischen Reader](quickstarts/client-libraries.md)
-
-## <a name="next-steps"></a>Nächste Schritte
-
-Erste Schritte mit dem plastischen Reader:
-
-* Lesen Sie die [Referenz zur Clientbibliothek für den plastischen Reader](./reference.md).
-* Sehen Sie sich die [Clientbibliothek für den plastischen Reader auf GitHub](https://github.com/microsoft/immersive-reader-sdk) an.

@@ -7,23 +7,25 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 01/12/2021
-ms.openlocfilehash: d07b52d8abeab34d565ebde4bac58eec66780dce
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.date: 03/21/2021
+ms.openlocfilehash: d3e1b73789d6bd4df3dfe9a0e05048f9bbbb25bb
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98179264"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104770970"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-cognitive-skillset-in-the-azure-portal"></a>Schnellstart: Erstellen eines kognitiven Skillsets für Azure Cognitive Search über das Azure-Portal
 
-Ein Skillset ist ein KI-basiertes Feature, das mithilfe von Deep Learning-Modellen Informationen und Strukturdaten aus umfangreichen, undifferenzierten Text- oder Bilddateien extrahiert und den Inhalt in Azure Cognitive Search indizierbar und durchsuchbar macht. 
+In dieser Schnellstartanleitung wird die Skillset-Unterstützung im Portal veranschaulicht und gezeigt, wie mithilfe der optischen Zeichenerkennung (Optical Character Recognition, OCR) und der Entitätserkennung durchsuchbare Textinhalte aus Bildern und Anwendungsdateien erstellt werden können.
 
-In dieser Schnellstartanleitung werden Dienste und Daten in der Azure-Cloud miteinander kombiniert, um ein Skillset zu erstellen. Nach Abschluss der Einrichtung wird im Azure-Portal der **Datenimport-Assistent** ausgeführt, um alles miteinander zu verknüpfen. Am Ende verfügen Sie über einen durchsuchbaren Index mit Daten, die mittels KI-Verarbeitung erstellt wurden und im Portal mithilfe des [Suchexplorers](search-explorer.md) abgefragt werden können.
+Zur Vorbereitung erstellen Sie einige Ressourcen und laden Beispielbilder und Anwendungsinhaltsdateien hoch. Nach Abschluss der Einrichtung wird im Azure-Portal der **Datenimport-Assistent** ausgeführt, um alles miteinander zu verknüpfen. Am Ende verfügen Sie über einen durchsuchbaren Index mit Daten, die mittels KI-Verarbeitung erstellt wurden und im Portal mithilfe des [Suchexplorers](search-explorer.md) abgefragt werden können.
+
+Beginnen Sie lieber mit Code? Lesen Sie stattdessen die Informationen unter [Tutorial: Verwenden von REST und KI zum Generieren von durchsuchbarem Inhalt über Azure-Blobs](cognitive-search-tutorial-blob.md) oder [Tutorial: Durch KI generierter durchsuchbarer Inhalt aus Azure-Blobs mit dem .NET SDK](cognitive-search-tutorial-blob-dotnet.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Bevor Sie beginnen, müssen folgende Voraussetzungen erfüllt und eingerichtet sein:
+Bevor Sie beginnen können, müssen die folgenden Voraussetzungen erfüllt werden:
 
 + Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/).
 
@@ -44,7 +46,7 @@ In den folgenden Schritten richten Sie einen Blobcontainer in Azure Storage ein,
 
    + Es muss sich in der gleichen Region wie Azure Cognitive Search befinden, um Bandbreitengebühren zu vermeiden. 
 
-   + Wählen Sie den Kontotyp „StorageV2 (allgemein, Version 2)“ aus, wenn Sie später auch das Wissensspeicher-Feature (in einer anderen exemplarischen Vorgehensweise) ausprobieren möchten. Andernfalls können Sie einen beliebigen Typ auswählen.
+   + Wählen Sie „StorageV2 (universell V2)“ aus.
 
 1. Öffnen Sie die Seiten für Blobdienste, und erstellen Sie einen Container. Sie können die standardmäßige öffentliche Zugriffsebene verwenden. 
 
@@ -173,7 +175,7 @@ Außerdem haben Sie gelernt, dass Sie Inhalte durch Abfragen des Index überprü
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie in Ihrem eigenen Abonnement arbeiten, sollten Sie sich am Ende eines Projekts überlegen, ob Sie die erstellten Ressourcen noch benötigen. Ressourcen, die weiterhin ausgeführt werden, können Sie Geld kosten. Sie können entweder einzelne Ressourcen oder aber die Ressourcengruppe löschen, um den gesamten Ressourcensatz zu entfernen.
+Wenn Sie in Ihrem eigenen Abonnement arbeiten, sollten Sie sich am Ende eines Projekts überlegen, ob Sie die erstellten Ressourcen noch benötigen. Für weiterhin aktive Ressourcen können Kosten anfallen. Sie können entweder einzelne Ressourcen oder aber die Ressourcengruppe löschen, um den gesamten Ressourcensatz zu entfernen.
 
 Ressourcen können im Portal über den Link **Alle Ressourcen** oder **Ressourcengruppen** im linken Navigationsbereich gesucht und verwaltet werden.
 

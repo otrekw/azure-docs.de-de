@@ -4,15 +4,15 @@ description: Erfahren Sie mehr über den Azure Cosmos DB-Transaktionsspeicher (
 author: Rodrigossz
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/30/2020
+ms.date: 03/16/2021
 ms.author: rosouz
 ms.custom: seo-nov-2020
-ms.openlocfilehash: 5dc233348188791404f826870b235d2bdfa4c202
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 77c84e4b4a8129a95ee18b4ae89b48a687e9fce1
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452853"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104951588"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store"></a>Was ist der Azure Cosmos DB-Analysespeicher?
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -65,32 +65,61 @@ Die automatische Synchronisierung bezieht sich auf die vollständig verwaltete F
 
 Die Funktion der automatischen Synchronisierung bietet zusammen mit dem Analysespeicher die folgenden wichtigen Vorteile:
 
-#### <a name="scalability--elasticity"></a>Skalierbarkeit und Elastizität
+### <a name="scalability--elasticity"></a>Skalierbarkeit und Elastizität
 
 Mithilfe der horizontalen Partitionierung kann der Transaktionsspeicher von Azure Cosmos DB den Speicher und den Durchsatz ohne Ausfallzeiten elastisch skalieren. Die horizontale Partitionierung im Transaktionsspeicher bietet Skalierbarkeit und Elastizität bei der automatischen Synchronisierung, um sicherzustellen, dass die Daten nahezu in Echtzeit in den Analysespeicher synchronisiert werden. Die Datensynchronisierung erfolgt unabhängig vom Durchsatz des transaktionalen Datenverkehrs, ganz gleich, ob es sich um 1000 Vorgänge/Sek. oder 1 Million Vorgänge/Sek. handelt. Zudem wirkt sie sich nicht auf den bereitgestellten Durchsatz im Transaktionsspeicher aus. 
 
-#### <a name="automatically-handle-schema-updates"></a><a id="analytical-schema"></a>Automatische Handhabung von Schemaaktualisierungen
+### <a name="automatically-handle-schema-updates"></a><a id="analytical-schema"></a>Automatische Handhabung von Schemaaktualisierungen
 
 Der Azure Cosmos DB-Transaktionsspeicher ist schemaunabhängig und ermöglicht es Ihnen, Ihre Transaktionsanwendungen zu durchlaufen, ohne sich mit Schema- oder Indexverwaltung befassen zu müssen. Im Gegensatz dazu wird der Azure Cosmos DB-Analysespeicher schematisiert, um die Leistung von analytischen Abfragen zu optimieren. Mit der Funktion der automatischen Synchronisierung verwaltet Azure Cosmos DB den Schemarückschluss über die neuesten Aktualisierungen aus dem Transaktionsspeicher.  Außerdem wird die Schemadarstellung im Analysespeicher standardmäßig verwaltet, einschließlich der Handhabung geschachtelter Datentypen.
 
 Während Ihr Schema weiterentwickelt wird und im Laufe der Zeit neue Eigenschaften hinzugefügt werden, stellt der Analysespeicher ein zusammengefasstes Schema für alle verlaufsbezogenen Schemata im Transaktionsspeicher automatisch dar.
 
-##### <a name="schema-constraints"></a>Schemaeinschränkungen
+#### <a name="schema-constraints"></a>Schemaeinschränkungen
 
 Die folgenden Einschränkungen gelten für die operativen Daten in Azure Cosmos DB, wenn Sie den Analysespeicher aktivieren, damit das Schema automatisch abgeleitet und richtig dargestellt wird:
 
-* Sie können maximal 200 Eigenschaften auf jeder Schachtelungsebene im Schema und eine maximale Schachtelungstiefe von 5 festlegen.
+* Sie können maximal 1000 Eigenschaften auf jeder Schachtelungsebene im Schema und eine maximale Schachtelungstiefe von 127 festlegen.
+  * Nur die ersten 1000 Eigenschaften werden im Analysespeicher dargestellt.
+  * Nur die ersten 127 Eigenschaften werden im Analysespeicher dargestellt.
+
+* Während JSON-Dokumente (und Cosmos DB-Sammlungen/Container) im Hinblick auf die Eindeutigkeit zwischen Groß- und Kleinschreibung unterscheiden, ist dies beim Analysespeicher nicht der Fall.
+
+  * **Im gleichen Dokument:** Namen von Eigenschaften in der gleichen Ebene sollten im Vergleich zur Groß-/Kleinschreibung eindeutig sein. Das folgende JSON-Dokument enthält z. B. „Name“ und „name“ auf der gleichen Ebene. Obwohl es sich um ein gültiges JSON-Dokument handelt, erfüllt es nicht die Bedingung der Eindeutigkeit und wird daher nicht vollständig im Analysespeicher dargestellt. In diesem Beispiel sind „Name“ und „name“ identisch, wenn sie ohne Berücksichtigung der Groß-/Kleinschreibung verglichen werden. Wird nur `"Name": "fred"` im Analysespeicher dargestellt, da es das erste Vorkommen ist. Und `"name": "john"` wird überhaupt nicht dargestellt.
   
-  * Ein Element mit 201 Eigenschaften auf oberster Ebene erfüllt diese Einschränkung nicht und wird daher im Analysespeicher nicht dargestellt.
-  * Ein Element mit mehr als fünf geschachtelten Ebenen im Schema erfüllt diese Einschränkung ebenfalls nicht und wird daher im Analysespeicher ebenfalls nicht dargestellt. Beispielsweise erfüllt das folgende Element nicht die Anforderung:
+  
+  ```json
+  {"id": 1, "Name": "fred", "name": "john"}
+  ```
+  
+  * **In unterschiedlichen Dokumenten:** Eigenschaften in der gleichen Ebene und mit dem gleichen Namen, aber in unterschiedlichen Fällen, werden innerhalb der gleichen Spalte dargestellt, wobei das Namensformat des ersten Vorkommens verwendet wird. Beispielsweise haben die folgenden JSON-Dokumente `"Name"` und `"name"` auf derselben Ebene. Da das erste Dokumentformat `"Name"` ist, wird dies verwendet, um den Eigenschaftsnamen im Analysespeicher darzustellen. Anders ausgedrückt: der Spaltenname im Analysespeicher lautet `"Name"` . Sowohl `"fred"` als auch werden `"john"` in der `"Name"` Spalte dargestellt.
 
-     `{"level1": {"level2":{"level3":{"level4":{"level5":{"too many":12}}}}}}`
 
-* Eigenschaftsnamen sollten eindeutig sein, wenn sie ohne Berücksichtigung der Groß-/Kleinschreibung verglichen werden. Die folgenden Elemente beispielsweise erfüllen diese Einschränkung nicht und werden daher im Analysespeicher nicht dargestellt:
+  ```json
+  {"id": 1, "Name": "fred"}
+  {"id": 2, "name": "john"}
+  ```
 
-  `{"Name": "fred"} {"name": "john"}` – „Name“ und „name“ sind identisch, wenn sie ohne Berücksichtigung der Groß-/Kleinschreibung verglichen werden.
 
-##### <a name="schema-representation"></a>Schemadarstellung
+* Das erste Dokument der Auflistung definiert das anfängliche Schema des Analysespeichers.
+  * Eigenschaften in der ersten Ebene des Dokuments werden als Spalten dargestellt.
+  * Dokumente, die mehr Eigenschaften als das anfängliche Schema aufweisen, generieren neue Spalten im Analysespeicher.
+  * Spalten können nicht entfernt werden.
+  * Das Löschen aller Dokumente in einer Sammlung setzt das Schema des analytischen Speichers nicht zurück.
+  * Eine Versionierung des Schemas gibt es nicht. Die letzte Version, die aus dem Transaktionsspeicher abgeleitet wird, ist die, die Sie im Analysespeicher sehen werden.
+
+* Derzeit unterstützen wir das Lesen von Spaltennamen, die Leerzeichen enthalten, durch Azure Synapse Spark nicht.
+
+* Erwarten Sie ein anderes Verhalten hinsichtlich expliziter `null` Werte:
+  * Spark-Pools in Azure Synapse lesen diese Werte als `0` (null).
+  * SQL Serverless-Pools in Azure Synapse lesen diese Werte so, als `NULL` ob das erste Dokument der Sammlung für dieselbe Eigenschaft einen Wert mit einem anderen Datentyp als hat `integer`.
+  * SQL Serverless-Pools in Azure Synapse lesen diese Werte so, als `0` (null) ob das erste Dokument der Sammlung für dieselbe Eigenschaft einen Wert hat, der eine Ganzzahl ist.
+
+* Erwarten Sie ein anderes Verhalten hinsichtlich expliziter  Werte:
+  * Spark-Pools in Azure Synapse stellen diese Spalten als `undefined` dar.
+  * SQL Serverless-Pools in Azure Synapse stellen diese Spalten als `NULL` dar.
+
+#### <a name="schema-representation"></a>Schemadarstellung
 
 Im Analysespeicher gibt es zwei Modi der Schemadarstellung. Bei diesen Modi bestehen Kompromisse zwischen der Einfachheit einer Spaltendarstellung, der Verarbeitung der polymorphen Schemata und der Einfachheit der Abfrageleistung:
 
@@ -106,7 +135,7 @@ Die genau definierte Schemadarstellung erstellt eine einfache tabellarische Dars
 
 * Eine Eigenschaft verfügt immer über denselben Typ für mehrere Elemente.
 
-  * Beispielsweise verfügt `{"a":123} {"a": "str"}` nicht über ein genau definiertes Schema, da `"a"` manchmal eine Zeichenfolge und manchmal eine Zahl ist. In diesem Fall registriert der Analysespeicher den Datentyp von `“a”` als den Datentyp von `“a”` im zuerst vorkommenden Element in der Lebensdauer des Containers. Elemente, bei denen der Datentyp von `“a”` abweicht, werden nicht in den Analysespeicher aufgenommen.
+  * Beispielsweise verfügt `{"a":123} {"a": "str"}` nicht über ein genau definiertes Schema, da `"a"` manchmal eine Zeichenfolge und manchmal eine Zahl ist. In diesem Fall registriert der Analysespeicher den Datentyp von `"a"` als den Datentyp von `“a”` im zuerst vorkommenden Element in der Lebensdauer des Containers. Das Dokument wird weiterhin in den Analysespeicher aufgenommen, aber Elemente, bei denen der Datentyp von `"a"` abweicht, werden nicht berücksichtigt.
   
     Diese Bedingung gilt nicht für NULL-Eigenschaften. Beispielsweise ist `{"a":123} {"a":null}` weiterhin genau definiert.
 
@@ -116,6 +145,11 @@ Die genau definierte Schemadarstellung erstellt eine einfache tabellarische Dars
 
 > [!NOTE]
 > Wenn der Azure Cosmos DB-Analysespeicher der genau definierten Schemadarstellung folgt und die vorstehende Spezifikation durch bestimmte Elemente verletzt wird, werden diese Elemente in den Analysespeicher nicht einbezogen.
+
+* Erwarten Sie unterschiedliches Verhalten in Bezug auf verschiedene Typen in einem gut definierten Schema:
+  * Spark-Pools in Azure Synapse stellen diese Werte als `undefined` dar.
+  * SQL Serverless-Pools in Azure Synapse stellen diese Werte als `NULL` dar.
+
 
 **Schemadarstellung mit vollständiger Genauigkeit**
 

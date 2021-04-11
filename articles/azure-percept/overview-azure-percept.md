@@ -1,18 +1,18 @@
 ---
 title: Übersicht über Azure Percept
 description: Weitere Informieren zur Azure Percept-Plattform
-author: elqu20
-ms.author: v-elqu
+author: mimcco
+ms.author: mimcco
 ms.service: azure-percept
 ms.topic: overview
 ms.date: 03/23/2021
 ms.custom: template-overview
-ms.openlocfilehash: 12ca7dff7d106941cc8947d9d3040bcefefde00a
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 09ee8346b62f868be3811ebfb6b3dc36ff9d0f83
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104953590"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105567660"
 ---
 # <a name="introduction-to-azure-percept"></a>Einführung in Azure Percept
 
@@ -28,21 +28,21 @@ Die Herausforderungen der Integration, denen man sich gegenübersieht, wenn man 
 
 Die Hauptkomponenten von Azure Percept sind:
 
-1. [Azure Percept DK](./overview-azure-percept-dk.md)
+- [Azure Percept DK](./overview-azure-percept-dk.md)
 
     - Ein Development Kit (Entwicklungskit), das flexibel genug ist, um eine Vielzahl verschiedener Prototyperstellungsszenarien für Geräteentwickler, Lösungsentwickler und Kunden zu unterstützen
 
         > [!div class="nextstepaction"]
         > [Jetzt kaufen](https://go.microsoft.com/fwlink/p/?LinkId=2155270)
 
-1. Dienste und Workflows zum Beschleunigen der Entwicklung bahnbrechender KI-Modelle und -Lösungen
+- Dienste und Workflows zum Beschleunigen der Entwicklung bahnbrechender KI-Modelle und -Lösungen
 
     - Entwicklungsworkflows und vorgefertigte Modelle, auf die aus [Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819) zugegriffen werden kann
     - Modellentwicklungsdienste
     - Geräteverwaltungsdienste für die Skalierung
     - End-to-End-Sicherheit.
 
-1. Programme für KI-Hardware-Referenzdesign und -Zertifizierung.
+- Programme für KI-Hardware-Referenzdesign und -Zertifizierung.
 
     - Stellt dem Ökosystem von Hardwareentwicklern Muster und bewährte Methoden für die Entwicklung bahnbrechender KI-Hardware bereit, die sich problemlos in Azure KI- und IoT-Dienste integrieren lässt.
 

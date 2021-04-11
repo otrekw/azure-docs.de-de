@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - contperf-fy21q1
 - device-developer
-ms.openlocfilehash: 22e948a0100f23dbddef8fc138576bb4b9372c77
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 9ef4be54f5c6025a09314a04504cff40fc39478d
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100363201"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168160"
 ---
 # <a name="define-a-new-iot-device-type-in-your-azure-iot-central-application"></a>Definieren eines neuen IoT-Gerätetyps in Ihrer Azure IoT Central-Anwendung
 
@@ -59,7 +59,7 @@ Einige [Anwendungsvorlagen](concepts-app-templates.md) enthalten bereits Geräte
 
 ## <a name="create-a-device-template-from-the-device-catalog"></a>Erstellen einer Gerätevorlage aus dem Gerätekatalog
 
-Als Ersteller können Sie mit einem zertifizierten Gerät schnell mit der Erstellung Ihrer Lösung beginnen. Weitere Informationen finden Sie in der Liste im [Azure IoT-Gerätekatalog](https://catalog.azureiotsolutions.com/alldevices). IoT Central ist in den Gerätekatalog integriert, sodass Sie ein Gerätemodell von einem dieser zertifizierten Geräte importieren können. Zum Erstellen einer Gerätevorlage von einem dieser Geräte in IoT Central führen Sie die folgenden Schritte aus:
+Als Ersteller können Sie mit einem zertifizierten Gerät schnell mit der Erstellung Ihrer Lösung beginnen. Weitere Informationen finden Sie in der Liste im [Azure IoT-Gerätekatalog](https://devicecatalog.azure.com). IoT Central ist in den Gerätekatalog integriert, sodass Sie ein Gerätemodell von einem dieser zertifizierten Geräte importieren können. Zum Erstellen einer Gerätevorlage von einem dieser Geräte in IoT Central führen Sie die folgenden Schritte aus:
 
 1. Navigieren Sie in Ihrer IoT Central-Anwendung zur Seite **Gerätevorlagen**.
 1. Wählen Sie **+ Neu** und dann im Katalog eines der zertifizierten Geräte aus. IoT Central erstellt eine Gerätevorlage basierend auf diesem Gerätemodell.

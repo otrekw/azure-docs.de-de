@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 01/06/2016
 ms.custom: seodec18
 ms.openlocfilehash: aec23c28e075dd38fa65f1315f9abd9e21cdc9cb
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104951469"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>Vorhersagbares Bereitstellen von Microservices in Azure
@@ -145,10 +145,10 @@ Die Verbindungszeichenfolgen werden auch als geschachtelte Ressource definiert.
 
 ![Definition der Verbindungszeichenfolgen im JSON-Code als geschachtelte Ressource](./media/app-service-deploy-complex-application-predictably/examinejson-7-webappconnstr.png)
 
-Im `properties`-Element für `config/connectionstrings` ist jede Verbindungszeichenfolge auch als Name-Wert-Paar im Format `"<name>" : {"value": "…", "type": "…"}` definiert. Mögliche Werte für das `type`-Element sind `MySql`, `SQLServer`, `SQLAzure` und `Custom`.
+Im `properties`-Element für `config/connectionstrings` ist jede Verbindungszeichenfolge auch als Name-Wert-Paar im Format `"<name>&quot; : {&quot;value&quot;: &quot;…&quot;, &quot;type&quot;: &quot;…&quot;}` definiert. Mögliche Werte für das `type`-Element sind `MySql`, `SQLServer`, `SQLAzure` und `Custom`.
 
 > [!TIP]
-> Eine endgültige Liste der Typen von Verbindungszeichenfolgen erhalten Sie, indem Sie den folgenden Befehl in Azure PowerShell ausführen: \[Enum]::GetNames("Microsoft.WindowsAzure.Commands.Utilities.Websites.Services.WebEntities.DatabaseType")
+> Eine endgültige Liste der Typen von Verbindungszeichenfolgen erhalten Sie, indem Sie den folgenden Befehl in Azure PowerShell ausführen: \[Enum]::GetNames(&quot;Microsoft.WindowsAzure.Commands.Utilities.Websites.Services.WebEntities.DatabaseType")
 > 
 > 
 

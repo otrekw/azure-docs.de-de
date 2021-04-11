@@ -4,12 +4,12 @@ ms.service: media-services
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: inhenkel
-ms.openlocfilehash: 59ff0ba854fa609e6d29f3473f662a89ab5f3dbc
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 419d8d0cd20c13bffdd192060d81975ee94b47fe
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95555483"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106126033"
 ---
 > [!NOTE]
 > Erstellen Sie für Ressourcen ohne festes Limit ein Supportticket, um eine Erhöhung der Kontingente anzufordern. Erstellen Sie keine zusätzlichen Azure Media Services-Konten, um höhere Limits zu erhalten.
@@ -66,9 +66,9 @@ Alle Auftragsdatensätze in Ihrem Konto, die älter als 90 Tage sind, werden aut
 | --- | --- |
 | Liveereignisse <sup>(4)</sup> pro Media Services-Konto |5|
 | Live-Ausgaben pro Liveereignis |3 <sup>(5)</sup> |
-| Max. Dauer für Liveausgabe | [Größe des DVR-Fensters](../articles/media-services/latest/live-event-cloud-dvr.md) |
+| Max. Dauer für Liveausgabe | [Größe des DVR-Fensters](../articles/media-services/latest/live-event-cloud-dvr-time-how-to.md) |
 
-<sup>4</sup> Ausführliche Informationen zu den Einschränkungen bei Liveereignissen finden Sie unter [Liveereignistypen – Vergleich und Einschränkungen](../articles/media-services/latest/live-event-types-comparison.md).
+<sup>4</sup> Ausführliche Informationen zu den Einschränkungen bei Liveereignissen finden Sie unter [Liveereignistypen – Vergleich und Einschränkungen](../articles/media-services/latest/live-event-types-comparison-reference.md).
 
 <sup>5</sup> Liveausgaben werden bei der Erstellung gestartet und beim Löschen beendet.
 

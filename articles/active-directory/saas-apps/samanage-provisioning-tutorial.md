@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/13/2020
 ms.author: Zhchia
-ms.openlocfilehash: cca46d47003a1611c861986f8df839de57500db6
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: d68811c5e7b92698944d7b1b1736eef864d97d20
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181480"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104802300"
 ---
 # <a name="tutorial-configure-solarwinds-service-desk-previously-samanage-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von SolarWinds Service Desk (vormals Samanage) für die automatische Benutzerbereitstellung
 
@@ -57,6 +57,9 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 * Ein Benutzerkonto in Azure AD mit der [Berechtigung](../roles/permissions-reference.md) für die Konfiguration von Bereitstellungen (z. B. Anwendungsadministrator, Cloudanwendungsadministrator, Anwendungsbesitzer oder Globaler Administrator). 
 * Einen [SolarWinds Service Desk-Mandanten](https://www.samanage.com/pricing/) mit dem Professional-Paket
 * Ein Benutzerkonto in SolarWinds Service Desk mit Administratorberechtigungen
+
+> [!Note]
+> Bei Rollenimporten sollten Rollen nicht manuell in Azure Active Directory bearbeitet werden.
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>Schritt 1: Planen der Bereitstellung
 1. Erfahren Sie, [wie der Bereitstellungsdienst funktioniert](../app-provisioning/user-provisioning.md).

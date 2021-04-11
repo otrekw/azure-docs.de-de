@@ -4,12 +4,12 @@ description: Erfahren Sie mehr über das Anwendungsprojekt, das Sie gerade in Vi
 ms.topic: conceptual
 ms.date: 12/21/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 59c8eb0737d2cef1c4b1df34d673b74944fef4e1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4d162918644727d4c79ad606f1ed34816f543d81
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97760434"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105044378"
 ---
 # <a name="your-service-fabric-application-and-next-steps"></a>Ihre Service Fabric-Anwendung und nächste Schritte
 Ihre Azure Service Fabric-Anwendung wurde erstellt. Dieser Artikel enthält eine Reihe von Ressourcen, einige weitere Informationen, die möglicherweise von Interesse sind, und die möglichen [nächsten Schritte](#next-steps).
@@ -59,7 +59,7 @@ Ihre Anwendung kann vertrauliche Informationen (z. B. Speicherverbindungszeiche
 Ähnlich wie auf anderen Plattformen durchläuft eine Service Fabric-Anwendung normalerweise die folgenden Phasen: Entwurf, Entwicklung, Test, Bereitstellung, Upgrade, Wartung und Deinstallation. [Dieser Artikel](service-fabric-application-lifecycle.md) bietet eine Übersicht über die APIs und wie sie von den verschiedenen Rollen während der Phasen des Service Fabric-Anwendungslebenszyklus verwendet werden.
 
 ## <a name="learn-about-best-practices"></a>Erfahren Sie mehr über bewährte Methoden
-Es gibt eine Reihe von Artikeln zu Service Fabric, in denen [bewährten Methoden](./service-fabric-best-practices-overview.md) beschrieben werden. Nutzen Sie diese Informationen, um sicherzustellen, dass Ihr Cluster und Ihre Anwendung so gut wie möglich ausgeführt werden.
+Es gibt eine Reihe von Artikeln zu Service Fabric, in denen [bewährten Methoden](./service-fabric-best-practices-security.md) beschrieben werden. Nutzen Sie diese Informationen, um sicherzustellen, dass Ihr Cluster und Ihre Anwendung so gut wie möglich ausgeführt werden.
 Folgende Themen werden behandelt:
 * [Security](./service-fabric-best-practices-security.md)
 * [Netzwerk](./service-fabric-best-practices-networking.md)

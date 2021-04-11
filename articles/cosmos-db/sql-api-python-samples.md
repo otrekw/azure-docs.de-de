@@ -9,12 +9,12 @@ ms.topic: sample
 ms.date: 08/11/2020
 ms.author: rosouz
 ms.custom: devx-track-python
-ms.openlocfilehash: 4a1cd5b1773a58cf385fc6cc5c22be8df7b21e20
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 947a958b7cce6909332ebdb1832be168bfdd0bde
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98018954"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104801807"
 ---
 # <a name="azure-cosmos-db-python-examples"></a>Python-Beispiele für Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -22,7 +22,7 @@ ms.locfileid: "98018954"
 > [!div class="op_single_selector"]
 > * [.NET V2 SDK-Beispiele](sql-api-dotnet-samples.md)
 > * [.NET V3 SDK-Beispiele](sql-api-dotnet-v3sdk-samples.md)
-> * [Java v4 SDK-Beispiele](sql-api-java-sdk-samples.md)
+> * [Java V4 SDK-Beispiele](sql-api-java-sdk-samples.md)
 > * [Spring Data V3 SDK-Beispiele](sql-api-spring-data-sdk-samples.md)
 > * [Node.js-Beispiele](sql-api-nodejs-samples.md)
 > * [Python-Beispiele](sql-api-python-samples.md)
@@ -43,7 +43,7 @@ Beispiellösungen, in denen CRUD-Vorgänge und andere gängige Vorgänge für Az
     * Ohne aktives Azure-Abonnement:
         * [Testen Sie Azure Cosmos DB kostenlos](https://azure.microsoft.com/try/cosmosdb/) mit einer Testumgebung, die 30 Tage lang verfügbar ist.
         * [Azure Cosmos DB-Emulator](https://aka.ms/cosmosdb-emulator) 
-- [Python 2.7 bzw. 3.5.3 oder höher](https://www.python.org/downloads/) mit der ausführbaren `python`-Datei unter Ihrem Pfad (`PATH`)
+- [Python 2.7 bzw. 3.6 oder höher](https://www.python.org/downloads/) mit der ausführbaren `python`-Datei unter Ihrem Pfad (`PATH`)
 - [Visual Studio Code](https://code.visualstudio.com/)
 - [Python-Erweiterung für Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-python.python#overview)
 - [Git](https://www.git-scm.com/downloads). 

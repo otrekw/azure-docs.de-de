@@ -1,43 +1,39 @@
 ---
 title: Neuerungen in Azure Defender für IoT
 description: In diesem Artikel wird beschrieben, welche Neuerungen das aktuelle Release von Defender für IoT enthält.
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: shhazam-ms
-manager: rkarlin
-editor: ''
-ms.devlang: na
-ms.topic: how-to
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/08/2021
-ms.author: shhazam
-ms.openlocfilehash: f15c4ed6bb7da5cd33eca96c171bfada68092b35
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.topic: overview
+ms.date: 03/14/2021
+ms.openlocfilehash: 7d8c4ebfc55c80878b780fe9f663aaec62a75f9d
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820669"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106382911"
 ---
 # <a name="whats-new-in-azure-defender-for-iot"></a>Neuerungen in Azure Defender für IoT
 
 In diesem Artikel sind neue und verbesserte Features von Defender für IoT aufgeführt.
 
 Die genannten Features befinden sich in der Vorschauphase. Die [ergänzenden Bestimmungen für Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten zusätzliche rechtliche Bedingungen, die für Azure-Features gelten, die sich in der Beta- oder Vorschauversion befinden bzw. anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
-## <a name="february-2021"></a>Februar 2021
+## <a name="march-2021"></a>März 2021
 
-### <a name="sensor---enhanced-custom-alert-rules"></a>Sensor: erweiterte benutzerdefinierte Warnungsregeln
+### <a name="sensor---enhanced-custom-alert-rules-public-preview"></a>Sensor: erweiterte benutzerdefinierte Warnungsregeln (Public Preview)
 
 Sie können jetzt benutzerdefinierte Regeln für Warnungen erstellen, die auf dem Tag, einer Gruppe von Tagen und dem Zeitraum basieren, in dem Netzwerkaktivität erkannt wurde.  Das Arbeiten mit Regelbedingungen für Tag und Uhrzeit ist nützlich, z. B. in Fällen, in denen der Schweregrad einer Warnung von der Uhrzeit des Ereignisses abgeleitet wird. Erstellen Sie z. B. eine benutzerdefinierte Regel, die eine Warnung mit hohem Schweregrad auslöst, wenn am Wochenende oder am Abend Netzwerkaktivität festgestellt wird.
 
-Dieses Feature ist mit der Veröffentlichung der Version 10.1 im Sensor verfügbar.
+Dieses Feature ist mit der Veröffentlichung der Version 10.2 im Sensor verfügbar.
 
-### <a name="on-premises-management-console---export-alerts"></a>Lokale Verwaltungskonsole: Exportieren von Warnungen
+### <a name="on-premises-management-console---export-alerts-public-preview"></a>Lokale Verwaltungskonsole: Exportieren von Warnungen (Public Preview)
 
 Informationen zu Warnungen können jetzt aus der lokalen Verwaltungskonsole in eine CSV-Datei exportiert werden. Sie können Informationen zu allen erkannten Warnungen oder Informationen basierend auf der gefilterten Ansicht exportieren.
 
-Dieses Feature ist in der lokalen Verwaltungskonsole mit Veröffentlichung von Version 10.1 verfügbar.
+Dieses Feature ist in der lokalen Verwaltungskonsole mit Veröffentlichung von Version 10.2 verfügbar.
+
+### <a name="add-second-network-interface-to-on-premises-management-console-public-preview"></a>Hinzufügen einer zweiten Netzwerkschnittstelle zur lokalen Verwaltungskonsole (Public Preview)
+
+Sie können die Sicherheit Ihrer Bereitstellung nun verbessern, indem Sie Ihrer lokalen Verwaltungskonsole eine zweite Netzwerkschnittstelle hinzufügen. Mit diesem Feature können Sie die verbundenen Sensoren Ihrer lokalen Verwaltung in einem sicheren Netzwerk verwenden und gleichzeitig Ihren Benutzern den Zugriff auf die lokale Verwaltungskonsole über eine zweite separate Netzwerkschnittstelle ermöglichen.
+
+Dieses Feature ist in der lokalen Verwaltungskonsole mit Veröffentlichung von Version 10.2 verfügbar.
 ### <a name="device-builder---new-micro-agent-public-preview"></a>Gerätehersteller: neuer Mikro-Agent (öffentliche Vorschau)
 
 Ein neues Geräteherstellermodul ist verfügbar. Das Modul, das als Micro-Agent bezeichnet wird, ermöglicht Folgendes:
@@ -48,7 +44,7 @@ Ein neues Geräteherstellermodul ist verfügbar. Das Modul, das als Micro-Agent 
 - **Verwaltung des Sicherheitsstatus**: Sie können den Sicherheitsstatus Ihrer IoT-Geräte aktiv verwalten.
 - **Kontinuierliche Erkennung von IoT/OT-Bedrohungen in Echtzeit**: Erkennung von Bedrohungen wie Botnets, Brute-Force-Angriffen, Krypto-Minern und verdächtigen Netzwerkaktivitäten
 
-Die veraltete Dokumentation zum Sicherheitsmodul wird in den Ordner *Agent-basierte Lösung für Gerätehersteller > Classic* verschoben.
+Die veraltete Dokumentation zum Defender für IoT-Micro-Agent wird in den Ordner *Agent-basierte Lösung für Gerätehersteller > Classic* verschoben.
 
 Diese Featuregruppe ist in der aktuellen öffentlichen Vorschauversion verfügbar.
 

@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: keys
 ms.topic: quickstart
 ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 7d1e4018382d26e4df289838ffbb03f1c87505e6
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: b2c69b4358b99bfd4fff2a3434ff8fe956a2a1f5
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935018"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104801161"
 ---
 # <a name="quickstart-azure-key-vault-keys-client-library-for-python"></a>Schnellstart: Azure Key Vault-Schlüsselclientbibliothek für Python
 
@@ -24,14 +24,14 @@ Hier finden Sie Informationen zu den ersten Schritten mit der Azure Key Vault-
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Azure-Abonnement ([kostenloses Abonnement erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F))
-- [Python 2.7+ oder 3.5.3+](/azure/developer/python/configure-local-development-environment)
+- [Python 2.7 oder höher bzw. 3.6 oder höher](/azure/developer/python/configure-local-development-environment)
 - [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli)
 
 In diesem Schnellstart wird davon ausgegangen, dass Sie die [Azure CLI](/cli/azure/install-azure-cli) in einem Linux-Terminalfenster ausführen.
 
 ## <a name="set-up-your-local-environment"></a>Einrichten Ihrer lokalen Umgebung
 
-In dieser Schnellstartanleitung wird die Azure Identity-Bibliothek mit der Azure CLI verwendet, um den Benutzer bei Azure-Diensten zu authentifizieren. Entwickler können auch Visual Studio oder Visual Studio Code verwenden, um ihre Aufrufe zu authentifizieren. Weitere Informationen finden Sie unter [Authentifizieren des Clients mit der Azure Identity-Clientbibliothek](/java/api/overview/azure/identity-readme).
+In dieser Schnellstartanleitung wird die Azure Identity-Bibliothek mit der Azure CLI verwendet, um den Benutzer bei Azure-Diensten zu authentifizieren. Entwickler können auch Visual Studio oder Visual Studio Code verwenden, um ihre Aufrufe zu authentifizieren. Weitere Informationen finden Sie unter [Authentifizieren des Clients mit der Azure Identity-Clientbibliothek](/python/api/overview/azure/identity-readme).
 
 ### <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
