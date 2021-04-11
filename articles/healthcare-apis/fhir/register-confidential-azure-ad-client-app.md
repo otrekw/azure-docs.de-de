@@ -6,14 +6,14 @@ author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: conceptual
-ms.date: 03/16/2021
+ms.date: 04/08/2021
 ms.author: matjazl
-ms.openlocfilehash: fbc683c98eb0124e8d879eada276593ca9bf7042
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c10b27d375e2bfb8c64130eceb416a633241cf68
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105934705"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107284431"
 ---
 # <a name="register-a-confidential-client-application-in-azure-active-directory"></a>Registrieren einer vertraulichen Clientanwendung in Azure Active Directory
 
@@ -29,7 +29,7 @@ Weitere Informationen zum Registrieren einer neuen vertraulichen Client Anwendun
 
 1. Wählen Sie **App-Registrierungen** aus. 
 
-    ![Azure-Portal. Neue App-Registrierung.](media/how-to-aad/portal-aad-new-app-registration.png)
+    :::image type="content" source="media/how-to-aad/portal-aad-new-app-registration.png" alt-text="Azure-Portal. Neue APP-Registrierung.":::
 
 1. Wählen Sie **Neue Registrierung** aus.
 
@@ -39,7 +39,7 @@ Weitere Informationen zum Registrieren einer neuen vertraulichen Client Anwendun
 
 1. Optionale Gibt einen **Umleitungs-URI** an. Diese Details können später geändert werden, aber wenn Sie die Antwort-URL Ihrer Anwendung kennen, geben Sie sie jetzt ein.
 
-    ![Registrierung einer neuen vertraulichen Client-App.](media/how-to-aad/portal-aad-register-new-app-registration-CONF-CLIENT.png)
+    :::image type="content" source="media/how-to-aad/portal-aad-register-new-app-registration-CONF-CLIENT.png" alt-text="Registrierung einer neuen vertraulichen Client-App.":::
 
 1. Wählen Sie **Registrieren**.
 
@@ -49,7 +49,7 @@ Nachdem Sie Ihre Anwendung registriert haben, müssen Sie auswählen, welche API
 
 1. Wählen Sie **API-Berechtigungen anfordern** aus.
 
-    ![Vertraulicher Client. API-Berechtigungen](media/how-to-aad/portal-aad-register-new-app-registration-CONF-CLIENT-API-Permissions.png)
+    :::image type="content" source="media/how-to-aad/portal-aad-register-new-app-registration-CONF-CLIENT-API-Permissions.png" alt-text="Vertraulicher Client. API-Berechtigungen.":::
 
 1. Wählen Sie **Berechtigung hinzufügen** aus.
 
@@ -70,11 +70,11 @@ Nachdem Sie Ihre Anwendung registriert haben, müssen Sie auswählen, welche API
 
 1. Wählen Sie **Zertifikate & Geheimnisse** und dann **Neuer geheimer Clientschlüssel** aus. 
 
-    ![Vertraulicher Client. Anwendungsgeheimnis](media/how-to-aad/portal-aad-register-new-app-registration-CONF-CLIENT-SECRET.png)
+    :::image type="content" source="media/how-to-aad/portal-aad-register-new-app-registration-CONF-CLIENT-SECRET.png" alt-text="Vertraulicher Client. Geheimer Anwendungs Schlüssel.":::
 
-1. Geben Sie unter **Beschreibung** eine Beschreibung für Ihren geheimen Clientschlüssel ein. Wählen Sie das Ablaufdatum (in 1 Jahr, in 2 Jahren oder nie) aus, und klicken Sie dann auf **Hinzufügen**.
+1. Geben Sie unter **Beschreibung** eine Beschreibung für Ihren geheimen Clientschlüssel ein. Wählen Sie das Dropdown Menü **ablaufen** aus, um einen Ablaufzeit Rahmen auszuwählen, und klicken Sie dann auf **Hinzufügen**.
 
-   ![Geheimen Clientschlüssel hinzufügen](media/how-to-aad/add-a-client-secret.png)
+   :::image type="content" source="media/how-to-aad/add-a-client-secret.png" alt-text="Fügen Sie einen geheimen Client Schlüssel hinzu.":::
 
 1. Kopieren Sie nach der Erstellung der geheimen Client Schlüssel Zeichenfolge den **Wert** und die **ID**, und speichern Sie Sie an einem sicheren Ort Ihrer Wahl.
 

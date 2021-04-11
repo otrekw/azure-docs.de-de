@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 10/16/2018
 ms.title: include
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 5687fb99c27b8b2141e0a2a817327cfbb124951a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 40e9e2b0e7437566a132f2402d3bed01b284d11a
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102109325"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106081023"
 ---
 ## <a name="create-a-manually-triggered-webjob"></a><a name="CreateOnDemand"></a> Erstellen eines manuell ausgelösten WebJobs
 
@@ -33,7 +33,7 @@ ms.locfileid: "102109325"
    | <abbr title="Ein Name, der innerhalb einer App Service-App eindeutig ist. Der Name muss mit einem Buchstaben oder einer Ziffer beginnen und darf nur die Sonderzeichen `-` und `_` enthalten.">Name</abbr> | myTriggeredWebJob | 
     | <abbr title="Eine *ZIP*-Datei, die die ausführbare Datei oder Skriptdatei sowie für die Ausführung des Programms oder Skripts erforderliche Hilfsdateien enthält.">Dateiupload</abbr> | ConsoleApp.zip |
     | <abbr title="Als Typ ist „continuous“ (fortlaufend) oder „triggered“ (ausgelöst) verfügbar.">type</abbr> | Ausgelöst | 
-    | <abbr title="Als Typ ist „scheduled“ (geplant) oder „manual“ (manuell) verfügbar.">Triggers</a> (Trigger) | Manuell | |
+    | <abbr title="Als Typ ist „scheduled“ (geplant) oder „manual“ (manuell) verfügbar.">Triggers</a> (Trigger) | Manuell | 
 
 4. Klicken Sie auf **OK**. 
 

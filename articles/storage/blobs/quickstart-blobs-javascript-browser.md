@@ -1,19 +1,19 @@
 ---
 title: 'Schnellstart: Azure Blob Storage-Bibliothek v12: JavaScript in einem Browser'
 description: In diesem Schnellstart erfahren Sie, wie Sie die Azure Blob Storage-Clientbibliothek, Version 12 für JavaScript in einem Browser verwenden. Sie erstellen einen Container und ein Objekt in Blob Storage. Anschließend erfahren Sie, wie Sie alle Blobs in einem Container auflisten. Zum Schluss wird gezeigt, wie Sie Blobs und einen Container löschen.
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.date: 07/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: 998d49e91d38a1f2fdc2503165ee99635e153027
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bc02f9c526ec9b0826bbe640efc4b474794f30ae
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96001897"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106278489"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 

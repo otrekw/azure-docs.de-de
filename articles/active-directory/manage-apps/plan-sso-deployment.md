@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 89f234ece2f7437e4a9d4092334e3dd3690e288d
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 2eaa630097c76a4ecb863f3f1711d38e5e0dbbeb
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258098"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106064142"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>Planen einer Bereitstellung für einmaliges Anmelden
 
@@ -291,17 +291,12 @@ Die folgenden Links stellen Problembehandlungsszenarien dar. Möglicherweise mö
 
 - [Problem bei der Anmeldung bei einer Microsoft-Anwendung](./application-sign-in-problem-first-party-microsoft.md)
 
-#### <a name="sso-issues-for-applications-listed-in-the-azure-application-gallery"></a>SSO-Probleme für Anwendungen, die im Azure-Anwendungskatalog aufgeführt werden
+#### <a name="sso-issues-for-applications"></a>SSO-Probleme bei Anwendungen
 
-- [Probleme mit Kennwort-SSO für Anwendungen, die im Azure-Anwendungskatalog aufgeführt werden](./troubleshoot-password-based-sso.md) 
+- [Problem bei Kennwort-SSO für Anwendungen](./troubleshoot-password-based-sso.md) 
 
-- [Probleme mit Verbund-SSO für Anwendungen, die im Azure-Anwendungskatalog aufgeführt werden](./application-sign-in-problem-federated-sso-gallery.md)   
+- [Probleme beim Anmelden bei für SAML-basiertes einmaliges Anmelden konfigurierten Apps](/troubleshoot/azure/active-directory/troubleshoot-sign-in-saml-based-apps)   
 
-#### <a name="sso-issues-for-applications-not-listed-in-the-azure-application-gallery"></a>SSO-Probleme für Anwendungen, die NICHT im Azure-Anwendungskatalog aufgeführt werden
-
-- [Probleme mit Kennwort-SSO für Anwendungen, die NICHT im Azure-Anwendungskatalog aufgeführt werden](./troubleshoot-password-based-sso.md) 
-
-- [Probleme mit Verbund-SSO für Anwendungen, die NICHT im Azure-Anwendungskatalog aufgeführt werden](./application-sign-in-problem-federated-sso-gallery.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
