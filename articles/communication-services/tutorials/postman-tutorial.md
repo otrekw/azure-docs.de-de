@@ -8,12 +8,12 @@ ms.author: rifox
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: c21d8696c0c4edd743aab6cbe7866d27ce46a314
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 5805734a9253962d672a4236a5650e9de8b37f0a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103492607"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105044293"
 ---
 # <a name="tutorial-sign-and-make-requests-with-postman"></a>Tutorial: Signieren und Senden von Anforderungen mit Postman
 In diesem Tutorial wird Postman eingerichtet und dazu verwendet, eine HTTP-Anforderung an Azure Communication Services (ACS) zu senden. Am Ende dieses Tutorials haben Sie mithilfe von ACS und Postman erfolgreich eine SMS gesendet und können mit Postman weitere APIs in ACS erkunden.
@@ -68,7 +68,7 @@ Weitere Informationen zu Variablen finden Sie in der [entsprechenden Postman-Dok
 
 ### <a name="creating-a-pre-request-script"></a>Erstellen eines Voranforderungsskripts
 
-Als Nächstes erstellen wir in Postman ein Voranforderungsskript. Ein Voranforderungsskript ist ein Skript, das vor jeder Anforderung in Postman ausgeführt wird, um Anforderungsparameter für Sie zu ändern oder anzupassen. Wir verwenden dieses Skript, um die HTTP-Anforderungen zu signieren, damit sie von ACS autorisiert werden können. Weitere Informationen zu den Signaturanforderungen finden Sie in [unserem Leitfaden zur Authentifizierung](https://docs.microsoft.com/rest/api/communication/authentication).
+Als Nächstes erstellen wir in Postman ein Voranforderungsskript. Ein Voranforderungsskript ist ein Skript, das vor jeder Anforderung in Postman ausgeführt wird, um Anforderungsparameter für Sie zu ändern oder anzupassen. Wir verwenden dieses Skript, um die HTTP-Anforderungen zu signieren, damit sie von ACS autorisiert werden können. Weitere Informationen zu den Signaturanforderungen finden Sie in [unserem Leitfaden zur Authentifizierung](/rest/api/communication/authentication).
 
 Dieses Skript wird innerhalb der Sammlung erstellt, sodass es für jede Anforderung in der Sammlung ausgeführt wird. Klicken Sie hierzu auf der Registerkarte „Collection“ (Sammlung) auf die Unterregisterkarte „Pre-request Script“ (Voranforderungsskript).
 
@@ -186,7 +186,7 @@ Nachdem nun alles eingerichtet ist, können wir in Postman eine ACS-Anforderung 
 
 :::image type="content" source="media/postman/create-request.png" alt-text="Plusschaltfläche in Postman":::
 
-Dadurch wird in Postman eine neue Registerkarte für die Anforderung erstellt. Als Nächstes müssen wir uns um die Konfiguration kümmern. Wir senden eine Anforderung an die API zum Senden von SMS. Hilfreiche Informationen zu dieser API finden Sie in [dieser Dokumentation](https://docs.microsoft.com/rest/api/communication/sms/send). Gehen Sie zum Konfigurieren der Anforderung von Postman wie folgt vor:
+Dadurch wird in Postman eine neue Registerkarte für die Anforderung erstellt. Als Nächstes müssen wir uns um die Konfiguration kümmern. Wir senden eine Anforderung an die API zum Senden von SMS. Hilfreiche Informationen zu dieser API finden Sie in [dieser Dokumentation](/rest/api/communication/sms/send). Gehen Sie zum Konfigurieren der Anforderung von Postman wie folgt vor:
 
 Legen Sie zunächst den Anforderungstyp auf `POST` fest, und geben Sie `{{endpoint}}/sms?api-version=2021-03-07` in das Feld für die Anforderungs-URL ein. Diese URL enthält die zuvor von uns erstellte Variable `endpoint`, um sie automatisch an Ihre ACS-Ressource zu senden.
 
@@ -238,13 +238,13 @@ Bei dem Mobiltelefon, zu dem die Nummer gehört, die Sie im Wert „to“ (An) a
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Erkunden von ACS-APIs](https://docs.microsoft.com/rest/api/communication/)
-> [Weitere Informationen zur Authentifizierung](https://docs.microsoft.com/rest/api/communication/authentication)
+> [Erkunden von ACS-APIs](/rest/api/communication/)
+> [Weitere Informationen zur Authentifizierung](/rest/api/communication/authentication)
 > [Weitere Informationen zu Postman](https://learning.postman.com/)
 
 Weitere Möglichkeiten:
 
 - [Hinzufügen von Chatfunktionen zu Ihrer App](../quickstarts/chat/get-started.md)
-- [Schnellstart: Erstellen und Verwalten von Zugriffstoken](../quickstarts/access-tokens.md)
+- [Erstellen von Benutzerzugriffstoken](../quickstarts/access-tokens.md)
 - [Erfahren Sie mehr über die Client- und Serverarchitektur](../concepts/client-and-server-architecture.md)
 - [Informationen zur Authentifizierung](../concepts/authentication.md)

@@ -3,34 +3,34 @@ title: Systemfunktionen für Azure Monitor-Protokolle
 description: Schreiben von benutzerdefinierten Abfragen für Azure Monitor-Protokolle unter Verwendung von Systemfunktionen
 ms.topic: conceptual
 ms.date: 03/01/2021
-ms.openlocfilehash: 1d26adfd2bd1a3fc1506a334b4b661b66172192d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: acb45e6ad0250a1f8d10377fdd509e40051f25b9
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102510412"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105564907"
 ---
 # <a name="system-functions-on-azure-monitor-logs"></a>Systemfunktionen für Azure Monitor-Protokolle
 
 Azure Backup bietet eine Reihe von Funktionen, so genannte Systemfunktionen oder Lösungsfunktionen, die standardmäßig in den Arbeitsbereichen von Log Analytics (LA) verfügbar sind.
  
-Diese Funktionen verarbeiten Daten in den [Rohtabellen von Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-reports-data-model) in Log Analytics und geben formatierte Daten zurück, mit denen Sie mit einfachen Abfragen problemlos Informationen aus all Ihren auf die Sicherung bezogenen Entitäten abrufen können. Benutzer können Parameter an diese Funktionen übergeben, um die von diesen Funktionen zurückgegebenen Daten zu filtern. 
+Diese Funktionen verarbeiten Daten in den [Rohtabellen von Azure Backup](./backup-azure-reports-data-model.md) in Log Analytics und geben formatierte Daten zurück, mit denen Sie mit einfachen Abfragen problemlos Informationen aus all Ihren auf die Sicherung bezogenen Entitäten abrufen können. Benutzer können Parameter an diese Funktionen übergeben, um die von diesen Funktionen zurückgegebenen Daten zu filtern. 
 
 Es empfiehlt sich, Systemfunktionen für die Abfrage Ihrer Sicherungsdaten in LA-Arbeitsbereichen für die Erstellung von benutzerdefinierten Berichten zu verwenden, da sie, wie im folgenden Abschnitt beschrieben, eine Reihe von Vorteilen bieten.
 
 ## <a name="benefits-of-using-system-functions"></a>Vorteile der Verwendung von Systemfunktionen
 
-* **Einfachere Abfragen**: Mithilfe von Funktionen können Sie die Anzahl der benötigten Joins in Ihren Abfragen reduzieren. Standardmäßig geben die Funktionen vereinfachte Schemas zurück, die alle Informationen zu der abgefragten Entität (Sicherungsinstanz, Auftrag, Tresor usw.) enthalten. Wenn Sie beispielsweise eine Liste erfolgreicher Sicherungsaufträge nach Sicherungselementname und zugehörigem Container benötigen, erhalten Sie durch einen einfachen Aufruf der Funktion **_AzureBackup_getJobs()** alle diese Informationen für jeden Auftrag. Bei einer direkten Abfrage der Rohtabellen müssten Sie hingegen mehrere Joins zwischen den Tabellen [AddonAzureBackupJobs](https://docs.microsoft.com/azure/backup/backup-azure-reports-data-model#addonazurebackupjobs) und [CoreAzureBackup](https://docs.microsoft.com/azure/backup/backup-azure-reports-data-model#coreazurebackup) durchführen.
+* **Einfachere Abfragen**: Mithilfe von Funktionen können Sie die Anzahl der benötigten Joins in Ihren Abfragen reduzieren. Standardmäßig geben die Funktionen vereinfachte Schemas zurück, die alle Informationen zu der abgefragten Entität (Sicherungsinstanz, Auftrag, Tresor usw.) enthalten. Wenn Sie beispielsweise eine Liste erfolgreicher Sicherungsaufträge nach Sicherungselementname und zugehörigem Container benötigen, erhalten Sie durch einen einfachen Aufruf der Funktion **_AzureBackup_getJobs()** alle diese Informationen für jeden Auftrag. Bei einer direkten Abfrage der Rohtabellen müssten Sie hingegen mehrere Joins zwischen den Tabellen [AddonAzureBackupJobs](./backup-azure-reports-data-model.md#addonazurebackupjobs) und [CoreAzureBackup](./backup-azure-reports-data-model.md#coreazurebackup) durchführen.
 
-* **Reibungsloserer Übergang vom Diagnoseereignis einer Vorgängerversion**: Die Verwendung von Systemfunktionen hilft Ihnen bei einem reibungslosen Übergang vom [Diagnoseereignis einer Vorgängerversion](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events#legacy-event) („AzureBackupReport“ im AzureDiagnostics-Modus) zu den [ressourcenspezifischen Ereignissen](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events#diagnostics-events-available-for-azure-backup-users). Bei allen von Azure Backup bereitgestellten Systemfunktionen können Sie einen Parameter angeben, mit dem Sie wählen können, ob die Funktion nur Daten aus den ressourcenspezifischen Tabellen abfragen soll oder Daten sowohl aus der Tabelle der Vorgängerversion als auch aus den ressourcenspezifischen Tabellen abfragen soll (mit Deduplizierung der Datensätze).
+* **Reibungsloserer Übergang vom Diagnoseereignis einer Vorgängerversion**: Die Verwendung von Systemfunktionen hilft Ihnen bei einem reibungslosen Übergang vom [Diagnoseereignis einer Vorgängerversion](./backup-azure-diagnostic-events.md#legacy-event) („AzureBackupReport“ im AzureDiagnostics-Modus) zu den [ressourcenspezifischen Ereignissen](./backup-azure-diagnostic-events.md#diagnostics-events-available-for-azure-backup-users). Bei allen von Azure Backup bereitgestellten Systemfunktionen können Sie einen Parameter angeben, mit dem Sie wählen können, ob die Funktion nur Daten aus den ressourcenspezifischen Tabellen abfragen soll oder Daten sowohl aus der Tabelle der Vorgängerversion als auch aus den ressourcenspezifischen Tabellen abfragen soll (mit Deduplizierung der Datensätze).
     * Wenn Sie erfolgreich zu den ressourcenspezifischen Tabellen migriert haben, können Sie wählen, ob die Tabelle der Vorgängerversion von der Abfrage durch die Funktion ausgeschlossen werden soll.
     * Wenn Sie sich gerade in der Migration befinden und sich einige Daten, die Sie für die Analyse benötigen, in der Tabelle der Vorgängerversion befinden, können Sie die Tabelle der Vorgängerversion einbeziehen. Wenn der Übergang abgeschlossen ist und Sie die Daten aus der Tabelle der Vorgängerversion nicht mehr benötigen, können Sie den Wert des an die Funktion übergebenen Parameters einfach in Ihren Abfragen aktualisieren, um die Tabelle der Vorgängerversion auszuschließen.
-    * Wenn Sie noch nur die Tabelle der Vorgängerversion verwenden, funktionieren die Funktionen trotzdem, auch wenn Sie die Tabelle der Vorgängerversion über denselben Parameter einbeziehen. Es wird jedoch empfohlen, frühestmöglich [auf die ressourcenspezifischen Tabellen umzusteigen](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events#steps-to-move-to-new-diagnostics-settings-for-a-log-analytics-workspace).
+    * Wenn Sie noch nur die Tabelle der Vorgängerversion verwenden, funktionieren die Funktionen trotzdem, auch wenn Sie die Tabelle der Vorgängerversion über denselben Parameter einbeziehen. Es wird jedoch empfohlen, frühestmöglich [auf die ressourcenspezifischen Tabellen umzusteigen](./backup-azure-diagnostic-events.md#steps-to-move-to-new-diagnostics-settings-for-a-log-analytics-workspace).
 
 * **Reduzieren die Möglichkeit, dass benutzerdefinierte Abfragen abbrechen**: Wenn Azure Backup Verbesserungen am Schema der zugrunde liegenden LA-Tabellen einführt, um zukünftige Berichtsszenarien zu ermöglichen, wird die Definition der Funktionen ebenfalls aktualisiert, um die Schemaänderungen zu berücksichtigen. Wenn Sie also Systemfunktionen zum Erstellen von benutzerdefinierten Abfragen verwenden, werden Ihre Abfragen nicht abbrechen, selbst wenn das zugrunde liegenden Schema der Tabellen sich ändert.
 
 > [!NOTE]
-> Die Systemfunktionen werden von Microsoft verwaltet, und ihre Definitionen können von den Benutzern nicht bearbeitet werden. Wenn Sie bearbeitbare Funktionen benötigen, können Sie [gespeicherte Funktionen](https://docs.microsoft.com/azure/azure-monitor/logs/functions) in LA erstellen.
+> Die Systemfunktionen werden von Microsoft verwaltet, und ihre Definitionen können von den Benutzern nicht bearbeitet werden. Wenn Sie bearbeitbare Funktionen benötigen, können Sie [gespeicherte Funktionen](../azure-monitor/logs/functions.md) in LA erstellen.
 
 ## <a name="types-of-system-functions-offered-by-azure-backup"></a>Von Azure Backup bereitgestellte Systemfunktionstypen
 
@@ -390,4 +390,4 @@ Im Folgenden finden Sie einige Beispielabfragen, die Ihnen beim Einstieg in die 
     ````
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Weitere Informationen zu Azure Backup-Berichten](https://docs.microsoft.com/azure/backup/configure-reports)
+[Weitere Informationen zu Azure Backup-Berichten](./configure-reports.md)
