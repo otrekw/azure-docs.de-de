@@ -1,17 +1,17 @@
 ---
 title: Herstellen einer Verbindung mit GitHub
 description: Verwenden von GitHub zum Angeben von Common Data Model-Entitätsverweisen
-author: djpmsft
+author: dcstwh
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.author: daperlov
-ms.openlocfilehash: 5d555d7bc4d3aae9c016cacbe17b68c30859d99a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: weetok
+ms.openlocfilehash: 7461a0332a36509c7bb6dfdd6db5948b056b35a6
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100372279"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106222111"
 ---
 # <a name="use-github-to-read-common-data-model-entity-references"></a>Verwenden von GitHub zum Lesen von Common Data Model-Entitätsverweisen
 

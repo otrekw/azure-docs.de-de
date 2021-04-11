@@ -4,15 +4,15 @@ description: In diesem Artikel sind die Azure Security Center-Sicherheitsempfehl
 author: memildin
 ms.service: security-center
 ms.topic: reference
-ms.date: 03/22/2021
+ms.date: 04/06/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: 2d9f76bd3c6ad0060a90f52abba1c7378b310e67
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: a44a5e4e715238c42e51e65dfe16d4f70dfcf54d
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104801463"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504810"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>Sicherheitsempfehlungen: Referenzhandbuch
 
@@ -58,12 +58,15 @@ Ihre Sicherheitsbewertung basiert auf der Anzahl der Security Center-Empfehlung
 
 ## <a name="deprecated-recommendations"></a>Veraltete Empfehlungen
 
-|Empfehlung|Beschreibung und zugehörige Richtlinie|severity|Schnelle Behebung aktiviert?([Weitere Informationen](security-center-remediate-recommendations.md#quick-fix-remediation))|Ressourcentyp|
-|----|----|----|----|----|
-|**Der Zugriff auf App Services sollte eingeschränkt werden**|Schränken Sie den Zugriff auf Ihre App Services ein, indem Sie die Netzwerkkonfiguration ändern, um eingehenden Datenverkehr aus Bereichen abzulehnen, die zu weit gefasst sind.<br>(Zugehörige Richtlinie: [Vorschau]: Zugriff auf App Services muss eingeschränkt sein)|Hoch|N|App Service|
-|**Die Regeln für Webanwendungen in IaaS-Netzwerksicherheitsgruppen sollten verstärkt werden**|Härten Sie die Netzwerksicherheitsgruppe (NSG) Ihrer virtuellen Computer, auf denen Webanwendungen ausgeführt werden, mit NSG-Regeln, die in Bezug auf Webanwendungsports zu tolerant sind.<br>(Zugehörige Richtlinie: Für Webanwendungen in IaaS müssen die NSG-Regeln verstärkt werden)|Hoch|N|Virtueller Computer|
-|**Podsicherheitsrichtlinien sollten definiert werden, um den Angriffsvektor zu reduzieren, indem nicht erforderliche Anwendungsberechtigungen entfernt werden (Vorschau)**|Definieren Sie Podsicherheitsrichtlinien, um den Angriffsvektor zu reduzieren, indem nicht erforderliche Anwendungsberechtigungen entfernt werden. Wir empfehlen Ihnen die Konfiguration von Podsicherheitsrichtlinien durchzuführen, damit Pods nur auf Ressourcen zugreifen können, für die sie über eine Zugriffsberechtigung verfügen.<br>(Zugehörige Richtlinie: [Vorschau]: Podsicherheitsrichtlinien für Kubernetes Service definieren)|Medium|N|Computeressourcen (Container)|
-|**Für bessere Einblicke in Ihre IoT-Geräte das Sicherheitsmodul „Azure Security Center für IoT“ installieren**|Installieren Sie für bessere Einblicke in Ihre IoT-Geräte das Sicherheitsmodul „Azure Security Center für IoT“.|Niedrig|N|IoT-Gerät|
+|Empfehlung|Beschreibung und zugehörige Richtlinie|severity|
+|----|----|----|
+|Der Zugriff auf App Services sollte eingeschränkt werden.|Schränken Sie den Zugriff auf Ihre App Services ein, indem Sie die Netzwerkkonfiguration ändern, um eingehenden Datenverkehr aus Bereichen abzulehnen, die zu weit gefasst sind.<br>(Zugehörige Richtlinie: [Vorschau]: Zugriff auf App Services muss eingeschränkt sein)|High|
+|Die Regeln für Webanwendungen in IaaS-Netzwerksicherheitsgruppen sollten verstärkt werden.|Härten Sie die Netzwerksicherheitsgruppe (NSG) Ihrer virtuellen Computer, auf denen Webanwendungen ausgeführt werden, mit NSG-Regeln, die in Bezug auf Webanwendungsports zu tolerant sind.<br>(Zugehörige Richtlinie: Für Webanwendungen in IaaS müssen die NSG-Regeln verstärkt werden)|High|
+|Podsicherheitsrichtlinien sollten definiert werden, um den Angriffsvektor zu reduzieren, indem nicht erforderliche Anwendungsberechtigungen entfernt werden (Vorschau)|Definieren Sie Podsicherheitsrichtlinien, um den Angriffsvektor zu reduzieren, indem nicht erforderliche Anwendungsberechtigungen entfernt werden. Wir empfehlen Ihnen die Konfiguration von Podsicherheitsrichtlinien durchzuführen, damit Pods nur auf Ressourcen zugreifen können, für die sie über eine Zugriffsberechtigung verfügen.<br>(Zugehörige Richtlinie: [Vorschau]: Podsicherheitsrichtlinien für Kubernetes Service definieren)|Medium|
+|Für bessere Einblicke in Ihre IoT-Geräte das Sicherheitsmodul „Azure Security Center für IoT“ installieren|Installieren Sie für bessere Einblicke in Ihre IoT-Geräte das Sicherheitsmodul „Azure Security Center für IoT“.|Niedrig|
+|Ihre Computer sollten zur Anwendung von Systemupdates neu gestartet werden|Starten Sie Ihre Computer neu, um die Systemupdates anzuwenden und Ihre Computer vor Sicherheitsrisiken zu schützen. (Zugehörige Richtlinie: Systemupdates müssen auf Ihren Computern installiert werden)|Medium|
+| Der Überwachungs-Agent sollte auf Ihren Computern installiert werden.|Durch diese Aktion wird ein Überwachungs-Agent auf den ausgewählten virtuellen Computern installiert. Wählen Sie einen Arbeitsbereich aus, an den der Agent Berichte übermitteln soll. (Keine zugehörige Richtlinie)|High|
+||||
 
 ## <a name="next-steps"></a>Nächste Schritte
 
