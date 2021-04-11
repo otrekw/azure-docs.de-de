@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - fasttrack-edit
 - iot
-ms.openlocfilehash: adcbf4efc4dfaa7701c18440531327949640cb53
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: fca5c1a0aee6e62890d734e3233177549d932672
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100581986"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105643680"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Überwachen von Gerät-zu-Cloud-Nachrichten in Azure IoT mit der verteilten Ablaufverfolgung (Vorschau)
 
@@ -93,7 +93,7 @@ Diese Anweisungen betreffen die Erstellung des Beispiels unter Windows. Informat
 
 ### <a name="clone-the-source-code-and-initialize"></a>Klonen des Quellcodes und Initialisieren
 
-1. Installieren Sie die Workload [Desktop development with C++](/cpp/build/vscpp-step-0-installation?view=vs-2019) für Visual Studio 2019. Visual Studio 2017 und 2015 werden ebenfalls unterstützt.
+1. Installieren Sie die Workload [Desktop development with C++](/cpp/build/vscpp-step-0-installation?view=vs-2019&preserve-view=true) für Visual Studio 2019. Visual Studio 2017 und 2015 werden ebenfalls unterstützt.
 
 1. Installieren Sie [CMake](https://cmake.org/). Stellen Sie sicher, dass das Tool sich in Ihrem `PATH` befindet, indem Sie an einer Eingabeaufforderung `cmake -version` eingeben.
 

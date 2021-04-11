@@ -9,12 +9,12 @@ ms.author: vinsonyu
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 9c42acb69e13cc1eb0fbba3fcafaec1451bc4d77
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 9c3f973da688a20fa60f2fb649b2c8d689bc2a98
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97589218"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106076648"
 ---
 # <a name="features-and-capabilities-of-azure-arc-enabled-sql-managed-instance"></a>Features und Funktionen von Azure Arc-fähigen SQL Managed Instance-Instanzen
 
@@ -117,19 +117,19 @@ Azure Arc-fähige SQL Managed Instance-Instanzen nutzen eine gemeinsame Codebasi
 | Funktion | Azure Arc-fähige SQL Managed Instance-Instanz |
 |--|--|
 | JSON | Ja |
-| Abfragespeicher | Ja |  |
-| Temporal | Ja |  |
-| Systemeigene XML-Unterstützung | Ja |  |
-| XML-Indizierung | Ja |  |
-| MERGE- und UPSERT-Funktionen | Ja |  |
-| Datums- und Uhrzeitdatentypen | Ja |  |
-| Internationalisierungsunterstützung | Ja |  |
+| Abfragespeicher | Ja | 
+| Temporal | Ja | 
+| Systemeigene XML-Unterstützung | Ja | 
+| XML-Indizierung | Ja | 
+| MERGE- und UPSERT-Funktionen | Ja | 
+| Datums- und Uhrzeitdatentypen | Ja | 
+| Internationalisierungsunterstützung | Ja | 
 | Volltextsuche und semantische Suche | Nein |
-| Angabe der Sprache in einer Abfrage | Ja |  |
-| Service Broker (Messaging) | Ja |  |
-| Transact-SQL-Endpunkte | Ja |  |
-| Graph | Ja |  |
-| Machine Learning Services | Nein |  |
+| Angabe der Sprache in einer Abfrage | Ja | 
+| Service Broker (Messaging) | Ja | 
+| Transact-SQL-Endpunkte | Ja | 
+| Graph | Ja | 
+| Machine Learning Services | Nein |
 | PolyBase | Nein |
 
 

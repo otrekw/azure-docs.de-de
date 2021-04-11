@@ -9,12 +9,12 @@ ms.subservice: monitoring
 ms.date: 11/30/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: ac5b1df5ff246623b73dbc41d18216396e6ed7ef
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 6861fd7a92c26fad883f14fb430a03b237c90122
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102549854"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105609257"
 ---
 # <a name="use-azure-monitor-with-your-azure-synapse-analytics-workspace"></a>Verwenden von Azure Monitor mit Ihrem Azure Synapse Analytics-Arbeitsbereich
 
@@ -171,7 +171,7 @@ Sie können Diagnoseeinstellungen für Ihren Arbeitsbereich, Ihren dedizierten S
 1. Legen Sie einen Namen für Ihre Einstellung fest, wählen Sie **An Log Analytics senden** aus, und wählen Sie dann unter **Log Analytics-Arbeitsbereich** einen Arbeitsbereich aus.
 
     > [!NOTE]
-    > Da eine Azure-Protokolltabelle nicht mehr als 500 Spalten enthalten darf, **empfehlen wir Ihnen dringend**, den _Modus „Ressourcenspezifisch“_ auszuwählen. Weitere Informationen finden Sie in der [Referenz zu AzureDiagnostics-Protokollen](/azure-monitor/reference/tables/azurediagnostics#additionalfields-column).
+    > Da eine Azure-Protokolltabelle nicht mehr als 500 Spalten enthalten darf, **empfehlen wir Ihnen dringend**, den _Modus „Ressourcenspezifisch“_ auszuwählen. Weitere Informationen finden Sie in der [Referenz zu AzureDiagnostics-Protokollen](/azure/azure-monitor/reference/tables/azurediagnostics).
 
 1. Wählen Sie **Speichern** aus.
 

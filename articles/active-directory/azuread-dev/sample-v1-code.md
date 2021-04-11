@@ -14,12 +14,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 662a0f53a5d5e8e02ef3b29640009fd07bf4f1d0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4d2b1a60856877c24d61379a688ea630e506a848
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97652143"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075235"
 ---
 # <a name="azure-active-directory-code-samples-v10-endpoint"></a>Azure Active Directory-Codebeispiele (v1.0-Endpunkt)
 
@@ -63,8 +63,8 @@ Die folgenden Beispiele zeigen Webanwendungen, die Benutzer anmelden. Einige die
 
 Die folgenden Beispiele zeigen, wie rollenbasierte Zugriffssteuerung (RBAC) implementiert wird. RBAC wird verwendet, um die Berechtigungen bestimmter Features in einer Webanwendung auf bestimmte Benutzer einzuschränken. Die Benutzerberechtigung hängt von der Zugehörigkeit zu einer **Azure AD-Gruppe** oder **Anwendungsrolle** ab.
 
-| Plattform | Beispiel |
-|--|--|
+| Plattform | Beispiel | BESCHREIBUNG |
+|--|--|--|
 | ![Diese Abbildung zeigt das ASP.NET Framework-Logo.](media/sample-v2-code/logo-netframework.png)</p> ASP.NET 4.5 | [dotnet-webapp-groupclaims](https://github.com/Azure-Samples/active-directory-dotnet-webapp-groupclaims) </p>  [dotnet-webapp-roleclaims](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims) | Eine .NET 4.5 MVC-Web-App, die Azure AD-**Rollen** für die Autorisierung verwendet |
 
 ## <a name="desktop-and-mobile-public-client-applications-calling-microsoft-graph-or-a-web-api"></a>Desktop und mobile öffentliche Clientanwendungen, die Microsoft Graph oder eine Web-API aufrufen

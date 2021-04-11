@@ -3,12 +3,12 @@ title: Bewährte Methoden für Vorlagen
 description: In diesem Artikel werden empfohlene Vorgehensweisen zum Erstellen von Azure Resource Manager-Vorlagen (ARM-Vorlagen) beschrieben. Bietet Vorschläge zur Vermeidung häufig auftretender Probleme bei der Verwendung von Vorlagen.
 ms.topic: conceptual
 ms.date: 12/01/2020
-ms.openlocfilehash: 583a113df9cdb1951daf1002dd69531f050cfb54
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ff2b9ecf0e4004aa6689294867f5ff93006211ec
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99257996"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219942"
 ---
 # <a name="arm-template-best-practices"></a>Bewährte Methoden für ARM-Vorlagen
 
@@ -160,7 +160,7 @@ Wenn Ihre Vorlage wie erwartet funktioniert, empfehlen wir Ihnen, weiterhin dies
 
 Verwenden Sie keinen Parameter für die API-Version. Ressourceneigenschaften und -werte können je nach API-Version variieren. Mithilfe von IntelliSense kann in Code-Editoren nicht das richtige Schema ermittelt werden, wenn die API-Version auf einen Parameter festgelegt ist. Wenn Sie eine API-Version übergeben, die nicht mit den Eigenschaften in Ihrer Vorlage übereinstimmt, tritt bei der Bereitstellung ein Fehler auf.
 
-Verwenden Sie keine Variablen für die API-Version. Verwenden Sie insbesondere nicht die [providers-Funktion](template-functions-resource.md#providers), um während der Bereitstellung dynamisch API-Versionen abzurufen. Die dynamisch abgerufene API-Version stimmt möglicherweise nicht mit den Eigenschaften in Ihrer Vorlage überein.
+Verwenden Sie keine Variablen für die API-Version. 
 
 ## <a name="resource-dependencies"></a>Ressourcenabhängigkeiten
 

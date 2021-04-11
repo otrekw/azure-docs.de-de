@@ -3,14 +3,14 @@ title: Verwalten von Zeitplänen in Azure Automation
 description: In diesem Artikel wird beschrieben, wie in Azure Automation ein Zeitplan erstellt und verwendet wird.
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 03/19/2021
+ms.date: 03/29/2021
 ms.topic: conceptual
-ms.openlocfilehash: 6f7cd1f3684bb14d25a77fe8e3980e8e2041808a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8f732cd8c588ffc08dbe48f6a92add65c2bc2e9f
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104669558"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105963239"
 ---
 # <a name="manage-schedules-in-azure-automation"></a>Verwalten von Zeitplänen in Azure Automation
 
@@ -123,7 +123,7 @@ New-AzAutomationSchedule -AutomationAccountName "TestAzureAuto" -Name "1st, 15th
 
 ## <a name="create-a-schedule-with-a-resource-manager-template"></a>Erstellen eines Zeitplans mithilfe einer Resource Manager-Vorlage
 
-In diesem Beispiel verwenden wir eine ARM-Vorlage (Automation Resource Manager), die einen neuen Auftragszeitplan erstellt. Allgemeine Informationen zu dieser Vorlage für die Verwaltung von Automation-Auftragszeitplänen finden Sie in der [Vorlagenreferenz für Microsoft.Automation automationAccounts/jobSchedules](/templates/microsoft.automation/automationaccounts/jobschedules#quickstart-templates).
+In diesem Beispiel verwenden wir eine ARM-Vorlage (Automation Resource Manager), die einen neuen Auftragszeitplan erstellt. Allgemeine Informationen zu dieser Vorlage für die Verwaltung von Automation-Auftragszeitplänen finden Sie in der [Vorlagenreferenz für Microsoft.Automation automationAccounts/jobSchedules](/azure/templates/microsoft.automation/2015-10-31/automationaccounts/jobschedules#quickstart-templates).
 
 Kopieren Sie diese Vorlagendatei in einen Text-Editor:
 
@@ -183,8 +183,8 @@ $automationAccountName = "MyAutomationAccount"
 $runbookName = "Test-Runbook"
 $scheduleName = "Sample-DailySchedule"
 $params = @{"FirstName"="Joe";"LastName"="Smith";"RepeatCount"=2;"Show"=$true}
-Register-AzAutomationScheduledRunbook –AutomationAccountName $automationAccountName `
-–Name $runbookName –ScheduleName $scheduleName –Parameters $params `
+Register-AzAutomationScheduledRunbook -AutomationAccountName $automationAccountName `
+-Name $runbookName -ScheduleName $scheduleName -Parameters $params `
 -ResourceGroupName "ResourceGroup01"
 ```
 
@@ -218,8 +218,8 @@ Das folgende Beispiel verdeutlicht, wie Sie einen Zeitplan für ein Runbook mith
 ```azurepowershell-interactive
 $automationAccountName = "MyAutomationAccount"
 $scheduleName = "Sample-MonthlyDaysOfMonthSchedule"
-Set-AzAutomationSchedule –AutomationAccountName $automationAccountName `
-–Name $scheduleName –IsEnabled $false -ResourceGroupName "ResourceGroup01"
+Set-AzAutomationSchedule -AutomationAccountName $automationAccountName `
+-Name $scheduleName -IsEnabled $false -ResourceGroupName "ResourceGroup01"
 ```
 
 ## <a name="remove-a-schedule"></a>Entfernen eines Zeitplans
