@@ -11,12 +11,12 @@ ms.workload: media
 ms.topic: tutorial
 ms.date: 02/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: b7efa37747e6d116b4cf26b4cf54377037f22cdd
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5bb061af37f6f6d7e6e27cf25f0faa63bca7353c
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102212755"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109185"
 ---
 # <a name="how-to-encode-and-stream-video-files-with-nodejs"></a>Codieren und Streamen von Videodateien mit Node.js
 
@@ -58,7 +58,7 @@ Das Beispiel befindet sich im Ordner [StreamFilesSample](https://github.com/Azur
 
 Mit dem Beispiel werden die folgenden Aktionen durchgeführt:
 
-1. Es wird eine **Transformation** mit einer [Voreinstellung für die inhaltsbezogene Codierung](./content-aware-encoding.md) erstellt. Zunächst wird überprüft, ob die angegebene Transformation vorhanden ist.
+1. Es wird eine **Transformation** mit einer [Voreinstellung für die inhaltsbezogene Codierung](./encode-content-aware-concept.md) erstellt. Zunächst wird überprüft, ob die angegebene Transformation vorhanden ist.
 1. Es wird eine **Ressource** für die Ausgabe erstellt, die vom **Codierungsauftrag** für die Ausgabe genutzt wird.
 1. Optional kann mit dem Storage Blob-SDK eine lokale Datei hochgeladen werden.
 1. Die Eingabe für den **Auftrag** wird erstellt, die auf einer HTTPS-URL oder einer hochgeladenen Datei basiert.
@@ -71,7 +71,7 @@ Mit dem Beispiel werden die folgenden Aktionen durchgeführt:
 
 ## <a name="run-the-sample"></a>Ausführen des Beispiels
 
-1. Die Anwendung lädt codierte Dateien herunter. Erstellen Sie einen Ordner, in dem die Ausgabedateien abgelegt werden sollen, und aktualisieren Sie in der Datei [index.ts](https://github.com/Azure-Samples/media-services-v3-node-tutorials/blob/master/AMSv3Samples/StreamFilesSample/index.js#L59) den Wert der Variablen **outputFolder**. Standardmäßig ist der Wert auf „Temp“ festgelegt.
+1. Die Anwendung lädt codierte Dateien herunter. Erstellen Sie einen Ordner, in dem die Ausgabedateien abgelegt werden sollen, und aktualisieren Sie in der Datei [index.ts](https://github.com/Azure-Samples/media-services-v3-node-tutorials/blob/main/AMSv3Samples/StreamFilesSample/index.ts#L59) den Wert der Variablen **outputFolder**. Standardmäßig ist der Wert auf „Temp“ festgelegt.
 1. Öffnen Sie eine **Eingabeaufforderung**, und navigieren Sie zum Verzeichnis für das Beispiel.
 1. Wechseln Sie zum Ordner „AMSv3Samples“.
 

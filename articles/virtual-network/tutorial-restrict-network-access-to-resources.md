@@ -7,7 +7,6 @@ author: KumudD
 manager: mtillman
 editor: ''
 tags: azure-resource-manager
-Customer intent: I want only resources in a virtual network subnet to access an Azure PaaS resource, such as an Azure Storage account.
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
@@ -16,12 +15,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 12/11/2020
 ms.author: kumud
-ms.openlocfilehash: cb3a4b6a726ee9163582b15586c65fc750712c63
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 22494d292077f4b6018a4512b45b5fe2caa9c8ee
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368244"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106057200"
 ---
 # <a name="tutorial-restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-portal"></a>Tutorial: Einschränken des Netzwerkzugriffs auf PaaS-Ressourcen mit VNET-Dienstendpunkten mithilfe des Azure-Portals
 
@@ -51,7 +50,7 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 
    |Einstellung|Wert|
    |----|----|
-   |Subscription| Wählen Sie Ihr Abonnement aus.|
+   |Abonnement| Wählen Sie Ihr Abonnement aus.|
    |Resource group | Klicken Sie auf **Neu erstellen**, und geben Sie *myResourceGroup* ein.|
    |Name| Geben Sie *myVirtualNetwork* ein. |
    |Region| Wählen Sie **USA, Osten** aus. |
@@ -112,7 +111,7 @@ Standardmäßig können alle Instanzen von virtuellen Computern in einem Subnetz
 
     |Einstellung|Wert|
     |----|----|
-    |Subscription| Wählen Sie Ihr Abonnement aus.|
+    |Abonnement| Wählen Sie Ihr Abonnement aus.|
     |Ressourcengruppe | Wählen Sie *myResourceGroup* in der Liste aus.|
     |Name| Geben Sie **myNsgPrivate** ein. |
     |Standort| Wählen Sie **USA, Osten** aus. |
@@ -131,8 +130,8 @@ Standardmäßig können alle Instanzen von virtuellen Computern in einem Subnetz
     |Zieldiensttag | Wählen Sie **Storage** aus.|
     |Zielportbereiche| Lassen Sie den Standardwert *8080* unverändert. |
     |Protocol|Any|
-    |Aktion|Allow|
-    |Priority|100|
+    |Aktion|Zulassen|
+    |Priorität|100|
     |Name|Benennen Sie es in **Allow-Storage-All** um.|
 
 10. Erstellen Sie eine weitere Ausgangssicherheitsregel, die Kommunikation mit dem Internet verweigert. Diese Regel überschreibt eine Standardregel in allen Netzwerksicherheitsgruppen, die ausgehende Internetkommunikation zulässt. Wiederholen Sie die obigen Schritte 6–9 mit folgenden Werten:
@@ -160,7 +159,7 @@ Standardmäßig können alle Instanzen von virtuellen Computern in einem Subnetz
     |Destination | Wählen Sie **VirtualNetwork** aus.|
     |Zielportbereiche| Ändern Sie den Wert in *3389*. |
     |Protocol|Any|
-    |Aktion|Allow|
+    |Aktion|Zulassen|
     |Priority|120|
     |Name|Ändern Sie den Wert in *Allow-RDP-All*.|
 
@@ -185,7 +184,7 @@ Die Schritte, die erforderlich sind, um den Netzwerkzugriff auf Ressourcen einzu
 
     |Einstellung|Wert|
     |----|----|
-    |Subscription| Wählen Sie Ihr Abonnement aus.|
+    |Abonnement| Wählen Sie Ihr Abonnement aus.|
     |Ressourcengruppe| Wählen Sie *myResourceGroup* aus.|
     |Speicherkontoname| Geben Sie einen Namen ein, der an allen Azure-Standorten eindeutig, zwischen 3 und 24 Zeichen lang ist und nur aus Ziffern und Kleinbuchstaben besteht.|
     |Standort| Wählen Sie **USA, Osten** aus. |
@@ -226,7 +225,7 @@ Standardmäßig akzeptieren Speicherkonten Netzwerkverbindungen von Clients in a
 
     |Einstellung|Wert|
     |----|----|
-    |Subscription| Wählen Sie Ihr Abonnement aus.|
+    |Abonnement| Wählen Sie Ihr Abonnement aus.|
     |Virtuelle Netzwerke| **myVirtualNetwork**|
     |Subnetze| **Privat**|
 
@@ -251,7 +250,7 @@ Zum Testen des Netzwerkzugriffs auf ein Speicherkonto stellen Sie einen virtuell
 
    |Einstellung|Wert|
    |----|----|
-   |Subscription| Wählen Sie Ihr Abonnement aus.|
+   |Abonnement| Wählen Sie Ihr Abonnement aus.|
    |Ressourcengruppe| Wählen Sie **myResourceGroup aus, die zuvor erstellt wurde.|
    |Name des virtuellen Computers| Geben Sie *myVmPublic* ein.|
    |Region | (USA) USA, Osten

@@ -13,18 +13,18 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: bb5561ced93c3f5a899c6e48fdab0f14e52914bb
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 6ba9a4d5ac427533c2ce005a74fe43b0ce80de79
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "89291550"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109440"
 ---
 # <a name="filters"></a>Filter
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-Bei der Inhaltsbereitstellung für Ihre Kunden (Livestreaming von Ereignissen oder Video on Demand) benötigen Ihre Kunden möglicherweise mehr Flexibilität als in der Manifestdatei für das Standardmedienobjekt beschrieben. Azure Media Services bietet [dynamische Manifeste](filters-dynamic-manifest-overview.md), die auf vordefinierten Filtern basieren. 
+Bei der Inhaltsbereitstellung für Ihre Kunden (Livestreaming von Ereignissen oder Video on Demand) benötigen Ihre Kunden möglicherweise mehr Flexibilität als in der Manifestdatei für das Standardmedienobjekt beschrieben. Azure Media Services bietet [dynamische Manifeste](filters-dynamic-manifest-concept.md), die auf vordefinierten Filtern basieren. 
 
 Filter sind serverseitige Regeln, die Ihren Kunden Folgendes ermöglichen: 
 
@@ -141,12 +141,12 @@ Das folgende Beispiel definiert einen Livestreamingfilter:
 
 ## <a name="associating-filters-with-streaming-locator"></a>Zuordnen von Filtern mit Streaminglocator
 
-Sie können eine Liste von [Medienobjekt- oder Kontofiltern](filters-concept.md) für Ihren [Streaminglocator](/rest/api/media/streaminglocators/create#request-body) angeben. Der [dynamische Paketerstellungs-Manager](dynamic-packaging-overview.md) wendet diese Liste der Filter zusammen mit den Filtern an, die Ihr Client in der URL angibt. Diese Kombination generiert ein [dynamisches Manifest](filters-dynamic-manifest-overview.md), das auf Filtern in den URL und Filtern basiert, die Sie im Streaminglocator angeben. 
+Sie können eine Liste von [Medienobjekt- oder Kontofiltern](filters-concept.md) für Ihren [Streaminglocator](/rest/api/media/streaminglocators/create#request-body) angeben. Der [dynamische Paketerstellungs-Manager](encode-dynamic-packaging-concept.md) wendet diese Liste der Filter zusammen mit den Filtern an, die Ihr Client in der URL angibt. Diese Kombination generiert ein [dynamisches Manifest](filters-dynamic-manifest-concept.md), das auf Filtern in den URL und Filtern basiert, die Sie im Streaminglocator angeben. 
 
 Hierzu folgende Beispiele:
 
-* [Zuordnen von Filtern mit Streaminglocator: .NET](filters-dynamic-manifest-dotnet-howto.md#associate-filters-with-streaming-locator)
-* [Zuordnen von Filtern mit Streaminglocator: CLI](filters-dynamic-manifest-cli-howto.md#associate-filters-with-streaming-locator)
+* [Zuordnen von Filtern mit Streaminglocator: .NET](filters-dynamic-manifest-dotnet-how-to.md#associate-filters-with-streaming-locator)
+* [Zuordnen von Filtern mit Streaminglocator: CLI](filters-dynamic-manifest-cli-how-to.md#associate-filters-with-streaming-locator)
 
 ## <a name="updating-filters"></a>Aktualisieren von Filtern
  
@@ -161,5 +161,5 @@ Wenn die Filterdefinition geändert werden muss, erwägen Sie, einen neuen Filte
 Die folgenden Artikel enthalten Informationen zum programmgesteuerten Erstellen von Filtern.  
 
 - [Erstellen von Filtern mit REST-APIs](filters-dynamic-manifest-rest-howto.md)
-- [Erstellen von Filtern mit .NET](filters-dynamic-manifest-dotnet-howto.md)
-- [Erstellen von Filtern mit der CLI](filters-dynamic-manifest-cli-howto.md)
+- [Erstellen von Filtern mit .NET](filters-dynamic-manifest-dotnet-how-to.md)
+- [Erstellen von Filtern mit der CLI](filters-dynamic-manifest-cli-how-to.md)

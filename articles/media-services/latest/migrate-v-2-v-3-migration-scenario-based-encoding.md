@@ -7,14 +7,14 @@ manager: femila
 ms.service: media-services
 ms.topic: conceptual
 ms.workload: media
-ms.date: 03/17/2021
+ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 915fdcb059d9e7bf9e1853040b90b82a0457652e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2cdf068d31cf621538eb265977ea0dae20e16e85
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104598404"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109321"
 ---
 # <a name="encoding-scenario-based-migration-guidance"></a>Szenariobasierter Migrationsleitfaden für die Codierung
 
@@ -91,7 +91,7 @@ In v2 werden Eingabe- und Ausgabe-Metadatendateien als Ergebnis eines Codierungs
 
 ## <a name="premium-encoder-to-v3-standard-encoder-or-partner-based-solutions"></a>Premium-Encoder zum V3-Media Encoder Standard oder zu Partnerlösungen
 
-Der Premium-Encoder wird von der V2-API nicht mehr unterstützt. Wenn Sie zuvor den workflowbasierten Premium-Encoder für die HEVC-Codierung verwendet haben, sollten Sie zum neuen V3-[Media Encoder Standard](media-encoder-standard-formats.md) mit Unterstützung für die HEVC-Codierung migrieren.
+Der Premium-Encoder wird von der V2-API nicht mehr unterstützt. Wenn Sie zuvor den workflowbasierten Premium-Encoder für die HEVC-Codierung verwendet haben, sollten Sie zum neuen V3-[Media Encoder Standard](encode-media-encoder-standard-formats-reference.md) mit Unterstützung für die HEVC-Codierung migrieren.
 
 Wenn Sie die erweiterten Workflowfunktionen des Premium-Encoders benötigen, sollten Sie eine der erweiterten Partnerlösungen für die Codierung in Azure von [Imagine Communications](https://imaginecommunications.com), [Telestream](https://www.telestream.net) oder [Bitmovin](https://bitmovin.com) einsetzen.
 
@@ -109,14 +109,14 @@ Für Kunden, die den Indexer V1-Prozessor in der V2-API verwenden, müssen Sie v
 
 ### <a name="concepts"></a>Konzepte
 
-- [Codieren von Video- und Audiodaten mit Media Services](encoding-concept.md)
-- [Media Encoder Standard-Formate und -Codecs](media-encoder-standard-formats.md)
-- [Codieren mit einer automatisch generierten Reihe von Bitraten-/Auflösungspaaren](autogen-bitrate-ladder.md)
-- [Ermitteln des optimalen Bitratenwerts für eine bestimmte Auflösung unter Verwendung der Voreinstellung für die inhaltsbezogene Codierung](content-aware-encoding.md)
+- [Codieren von Video- und Audiodaten mit Media Services](encode-concept.md)
+- [Media Encoder Standard-Formate und -Codecs](encode-media-encoder-standard-formats-reference.md)
+- [Codieren mit einer automatisch generierten Reihe von Bitraten-/Auflösungspaaren](encode-autogen-bitrate-ladder.md)
+- [Ermitteln des optimalen Bitratenwerts für eine bestimmte Auflösung unter Verwendung der Voreinstellung für die inhaltsbezogene Codierung](encode-content-aware-concept.md)
 - [Reservierte Einheiten für Medien](concept-media-reserved-units.md)
 - [Eingeben von Metadaten](input-metadata-schema.md)
 - [Ausgeben von Metadaten](output-metadata-schema.md)
-- [Dynamische Paketerstellung in Media Services V3: Audiocodecs](dynamic-packaging-overview.md#audio-codecs-supported-by-dynamic-packaging)
+- [Dynamische Paketerstellung in Media Services V3: Audiocodecs](encode-dynamic-packaging-concept.md#audio-codecs-supported-by-dynamic-packaging)
 
 ### <a name="tutorials"></a>Lernprogramme
 
@@ -129,13 +129,13 @@ Für Kunden, die den Indexer V1-Prozessor in der V2-API verwenden, müssen Sie v
 - [Erstellen einer Auftragseingabe aus einer lokalen Datei](job-input-from-local-file-how-to.md)
 - [Erstellen einer einfachen Audiotransformation](how-to-create-basic-audio-transform.md)
 - Mit .NET
-  - [Codieren mit einer benutzerdefinierten Transformation – .NET](customize-encoder-presets-how-to.md)
+  - [Codieren mit einer benutzerdefinierten Transformation – .NET](encode-custom-presets-how-to.md)
   - [Gewusst wie: Erstellen einer Überlagerung mit Media Encoder Standard](how-to-create-overlay.md)
   - [Generieren von Vorschauminiaturen mithilfe des Media Encoder Standards mit .NET](media-services-generate-thumbnails-dotnet.md)
 - Mit der Azure-Befehlszeilenschnittstelle
-  - [Codieren mit einer benutzerdefinierten Transformation: Azure CLI](custom-preset-cli-howto.md)
+  - [Codieren mit einer benutzerdefinierten Transformation: Azure CLI](encode-custom-preset-cli-how-to.md)
 - Mit REST
-  - [Codieren mit einer benutzerdefinierten Transformation: REST](custom-preset-rest-howto.md)
+  - [Codieren mit einer benutzerdefinierten Transformation: REST](encode-custom-preset-rest-how-to.md)
   - [Generieren von Vorschauminiaturen mithilfe des Media Encoder Standards mit REST](media-services-generate-thumbnails-rest.md)
 - [Erstellen von Subclips für ein Video beim Codieren mit Media Services: .NET](subclip-video-dotnet-howto.md)
 - [Erstellen von Subclips für ein Video beim Codieren mit Media Services: REST](subclip-video-rest-howto.md)
@@ -143,7 +143,3 @@ Für Kunden, die den Indexer V1-Prozessor in der V2-API verwenden, müssen Sie v
 ## <a name="samples"></a>Beispiele
 
 Sehen Sie sich auch den [Vergleich von V2- und V3-Code in den Codebeispielen](migrate-v-2-v-3-migration-samples.md) an.
-
-## <a name="next-steps"></a>Nächste Schritte
-
-[!INCLUDE [migration guide next steps](./includes/migration-guide-next-steps.md)]

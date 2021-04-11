@@ -7,12 +7,12 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 08/27/2020
 tags: connectors
-ms.openlocfilehash: 7c6f3c4e3e4a2a29fe6a02c03043e3dfb81a2010
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: cdbf853a96f319cb27c10136004a1398014e602f
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "89227898"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109151"
 ---
 # <a name="create-and-run-automated-event-based-workflows-by-using-http-webhooks-in-azure-logic-apps"></a>Erstellen und Ausführen automatisierter ereignisbasierter Workflows mithilfe von HTTP-Webhooks in Azure Logic Apps
 
@@ -145,9 +145,9 @@ Hier finden Sie weitere Informationen zu den Ausgaben aus einem HTTP-Webhooktrig
 | Eigenschaftenname | type | BESCHREIBUNG |
 |---------------|------|-------------|
 | headers | Objekt (object) | Die Header aus der Anforderung |
-| body | Objekt (object) | JSON-Objekt | Das Objekt mit dem Inhalt des Texts aus der Anforderung |
+| body | Objekt (object) | Das Objekt mit dem Inhalt des Texts aus der Anforderung |
 | status code | INT | Der Statuscode aus der Anforderung |
-|||
+||||
 
 | Statuscode | BESCHREIBUNG |
 |-------------|-------------|

@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 01/28/2021
 ms.author: glenga
-ms.openlocfilehash: 5bc1d2ddb5b9ddb185a8349fb42d5f5db79c1498
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: eae828d03431dd339c5399d8db8c6e46141ab11b
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103201383"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075326"
 ---
 ## <a name="run-the-function-locally"></a>Lokales Ausführen der Funktion
 
@@ -27,7 +27,7 @@ Dank der Integration zwischen Visual Studio Code und [Azure Functions Core Tools
     
 1. Unter **Enter request body** (Anforderungstext eingeben) wird `{ "name": "Azure" }` als Wert für den Text der Anforderungsnachricht angezeigt. Drücken Sie die EINGABETASTE, um diese Anforderungsnachricht an Ihre Funktion zu senden. 
 
-   Sie könnten stattdessen eine HTTP GET-Anforderung an die Adresse <http://localhost:7071/api/HttpExample> in einem Webbrowser gesendet haben.
+   Sie könnten stattdessen eine HTTP GET-Anforderung an die Adresse `http://localhost:7071/api/HttpExample` in einem Webbrowser gesendet haben.
 
 1. Wenn die Funktion lokal ausgeführt wird und eine Antwort zurückgibt, wird in Visual Studio Code eine Benachrichtigung ausgelöst. Informationen zur Funktionsausführung werden im **Terminal**-Bereich angezeigt.
 

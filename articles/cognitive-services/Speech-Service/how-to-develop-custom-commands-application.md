@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: trbye
-ms.openlocfilehash: 1a002b6efbe2603ae254c19f9e3cc7377198cea2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ddf36530e52703ab1033b8e2e787b42b6dc60332
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97935817"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106553276"
 ---
 # <a name="develop-custom-commands-applications"></a>Entwickeln von Anwendungen mit benutzerdefinierten Befehlen
 
@@ -212,7 +212,7 @@ Bearbeiten Sie zunächst den vorhandenen `TurnOn`-Befehl zum Ein- und Ausschalte
     | **Is Global**          | Nicht markiert             |
     | **Erforderlich**           | Aktiviert               |
     | **Antwort auf erforderlichen Parameter**     | **Einfacher Editor** > `Which device do you want to control?`    | 
-    | **Typ**               | **String**                |          |
+    | **Typ**               | **String**                |     
     | **Configuration**      | **Accept predefined input values from an internal catalog** (Vordefinierte Eingabewerte aus einem internen Katalog akzeptieren) | 
     | **Vordefinierte Eingabewerte** | `tv`, `fan`               |
     | **Aliase** (`tv`)      | `television`, `telly`     |
@@ -633,7 +633,7 @@ Eine weitere Möglichkeit zum Anpassen von Antworten auf benutzerdefinierte Befe
 > ![Screenshot von Beispielsätzen und Parametern.](media/custom-commands/select-custom-voice.png)
 
 > [!NOTE]
-> Bei den öffentlichen Stimmen sind neuronale Typen nur für bestimmte Regionen verfügbar. Weitere Informationen finden Sie unter [Vom Speech-Dienst unterstützte Regionen](./regions.md#standard-and-neural-voices).
+> Bei den öffentlichen Stimmen sind neuronale Typen nur für bestimmte Regionen verfügbar. Weitere Informationen finden Sie unter [Vom Speech-Dienst unterstützte Regionen](./regions.md#neural-and-standard-voices).
 >
 > Sie können benutzerdefinierte Stimmen auf der Projektseite **Custom Voice** erstellen. Weitere Informationen finden Sie unter [Erste Schritte mit Custom Voice](./how-to-custom-voice.md).
 
