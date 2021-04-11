@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: f57114fc4cb76c500cc422966635273c3a923046
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 1891af9acae2b976a18f68983693a7df559b6476
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181618"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104800768"
 ---
 # <a name="tutorial-configure-ringcentral-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von RingCentral für die automatische Benutzerbereitstellung
 
@@ -46,15 +46,7 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 
 ## <a name="step-2-configure-ringcentral-to-support-provisioning-with-azure-ad"></a>Schritt 2: Konfigurieren von RingCentral für die Unterstützung der Bereitstellung mit Azure AD
 
-1. Melden Sie sich bei Ihrer [RingCentral-Verwaltungskonsole](https://login.ringcentral.com/sw.html) an. Navigieren Sie zu **Tools > Verzeichnisintegration**.
-
-    ![RingCentral-Verwaltungskonsole](media/ringcentral-provisioning-tutorial/admin.png)
-
-2.  Wählen Sie unter **Select Directory Provider** (Verzeichnisanbieter auswählen) die Option **SCIM** aus. (Künftig wird es eine Option namens „Azure Active Directory“ geben.) Klicken Sie auf **Enable SCIM service** (SCIM-Dienst aktivieren).
-
-    ![RingCentral – SCIM hinzufügen](media/ringcentral-provisioning-tutorial/scim.png)
-
-3.  Kontaktieren Sie das RingCentral-Supportteam unter matthew.hunt@ringcentral.com, um ein **SCIM-Authentifizierungstoken** zu erhalten. Dieser Wert wird im Azure-Portal auf der Registerkarte „Bereitstellung“ Ihrer RingCentral-Anwendung im Feld „Geheimes Token“ eingegeben.
+Ein [RingCentral](https://www.ringcentral.com/office/plansandpricing.html)-Administratorkonto ist in Schritt 5 im Abschnitt „Administratoranmeldeinformationen“ zum Autorisieren erforderlich.
 
 > [!NOTE]
 > Informationen zum Zuweisen von Lizenzen zu Benutzern erhalten Sie in diesem [Video](https://support.ringcentral.com/s/article/5-10-Adding-Extensions-via-Web?language).
@@ -94,9 +86,13 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Screenshot der Dropdownliste „Bereitstellungsmodus“ mit aufgerufener Option „Automatisch“](common/provisioning-automatic.png)
 
-5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** im Feld **Mandanten-URL** die Zeichenfolge `https://platform.ringcentral.com/scim/v2` ein. Geben Sie den Wert des **SCIM-Authentifizierungstokens** ein, den Sie zuvor unter **geheimes Token** abgerufen haben. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit RingCentral herstellen kann. Wenn die Verbindung nicht möglich ist, stellen Sie sicher, dass Ihr RingCentral-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
+5. Klicken Sie im Abschnitt **Administratoranmeldeinformationen** auf **Autorisieren**. Sie werden zur Anmeldeseite von RingCentral umgeleitet. Geben Sie E-Mail-Adresse/Telefonnummer und Kennwort ein, und klicken Sie auf die Schaltfläche **Anmelden**. Klicken Sie in RingCentral auf der Seite **Zugriff anfordern** auf **Autorisieren**. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit RingCentral herstellen kann. Wenn die Verbindung nicht möglich ist, stellen Sie sicher, dass Ihr RingCentral-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
 
-    ![Screenshot der Textfelder „Mandanten-URL“ und „Geheimes Token“ mit hervorgehobener Option „Verbindung testen“.](./media/ringcentral-provisioning-tutorial/provisioning.png)
+   ![AAD](./media/ringcentral-provisioning-tutorial/admincredentials.png)
+
+   ![Access](./media/ringcentral-provisioning-tutorial/authorize.png)
+
+   ![Authorize](./media/ringcentral-provisioning-tutorial/accessrequest.png)
 
 6. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden**.
 
@@ -108,7 +104,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 9. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit RingCentral synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in RingCentral für Updatevorgänge verwendet. Wenn Sie sich dafür entscheiden, das [übereinstimmende Zielattribut](../app-provisioning/customize-application-attributes.md) zu ändern, müssen Sie sicherstellen, dass die RingCentral-API das Filtern von Benutzern anhand dieses Attributs unterstützt. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-   |attribute|type|
+   |Attribut|type|
    |---|---|
    |userName|String|
    |externalId|String|
@@ -151,6 +147,7 @@ Nachdem Sie die Bereitstellung konfiguriert haben, können Sie mit den folgenden
 ## <a name="change-log"></a>Änderungsprotokoll
 
 * 10.9.2020: Unterstützung für die Attribute „displayName“ und „manager“ wurde entfernt.
+* 15.03.2021: Aktualisierung der Autorisierungsmethode von permanentem Bearertoken in OAuth-Autorisierungscodeflow
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

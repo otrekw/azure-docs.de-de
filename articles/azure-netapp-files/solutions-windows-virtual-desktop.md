@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/13/2020
 ms.author: b-juche
-ms.openlocfilehash: 0cd1f6210fbdb74e3fd511150157dccca3e92dda
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a765d689307b7f56e5100e75d9f7121e944cea14
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91932463"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168279"
 ---
 # <a name="benefits-of-using-azure-netapp-files-with-windows-virtual-desktop"></a>Vorteile der Verwendung von Azure NetApp Files mit Windows Virtual Desktop 
 
@@ -29,7 +29,7 @@ Azure NetApp Files ist ein äußerst leistungsfähiger Dateispeicherdienst von A
 
 ## <a name="sample-blueprints"></a>Beispielblaupausen
 
-In den folgenden Beispielblaupausen wird die Integration von Windows Virtual Desktop in Azure NetApp Files veranschaulicht. In einem Szenario mit gepoolten Desktops werden Benutzer mithilfe von [virtuellen Computern mit mehreren Sitzungen](../virtual-desktop/windows-10-multisession-faq.md#what-is-windows-10-enterprise-multi-session) an den besten verfügbaren Sitzungshost ([Modus „Breiter Ansatz“](../virtual-desktop/host-pool-load-balancing.md#breadth-first-load-balancing-method)) im Pool weitergeleitet. Andererseits sind persönliche Desktops für Szenarios reserviert, in denen jeder Benutzer über einen eigenen virtuellen Computer verfügt.
+In den folgenden Beispielblaupausen wird die Integration von Windows Virtual Desktop in Azure NetApp Files veranschaulicht. In einem Szenario mit gepoolten Desktops werden Benutzer mithilfe von [virtuellen Computern mit mehreren Sitzungen](../virtual-desktop/windows-10-multisession-faq.yml#what-is-windows-10-enterprise-multi-session) an den besten verfügbaren Sitzungshost ([Modus „Breiter Ansatz“](../virtual-desktop/host-pool-load-balancing.md#breadth-first-load-balancing-method)) im Pool weitergeleitet. Andererseits sind persönliche Desktops für Szenarios reserviert, in denen jeder Benutzer über einen eigenen virtuellen Computer verfügt.
 
 ### <a name="pooled-desktop-scenario"></a>Szenario mit gepoolten Desktops
 

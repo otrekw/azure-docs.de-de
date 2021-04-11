@@ -7,12 +7,12 @@ ms.topic: article
 author: sayantanroy83
 ms.author: sroy
 ms.date: 3/08/2021
-ms.openlocfilehash: 2d0c0e7322ecb92fd371f5bf7924a370dd29fe85
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 9e5fbdfca80d19f026a014a89ffbf137bacb521c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102583493"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105639572"
 ---
 # <a name="make-your-first-api-call-to-access-commercial-marketplace-analytics-data"></a>Erstellen Ihres ersten API-Aufrufs für den Zugriff auf kommerzielle Marketplace-Analysedaten
 
@@ -50,7 +50,7 @@ curl --location --request POST 'https://login.microsoftonline.com/{TenantId}/oau
 }
 ```
 
-Weitere Informationen zum Abrufen eines Azure AD-Tokens für Ihre Anwendung finden Sie unter [Zugriff auf Analysedaten mithilfe von Speicherdiensten](https://docs.microsoft.com/windows/uwp/monetize/access-analytics-data-using-windows-store-services#step-2-obtain-an-azure-ad-access-token).
+Weitere Informationen zum Abrufen eines Azure AD-Tokens für Ihre Anwendung finden Sie unter [Zugriff auf Analysedaten mithilfe von Speicherdiensten](/windows/uwp/monetize/access-analytics-data-using-windows-store-services#step-2-obtain-an-azure-ad-access-token).
 
 ## <a name="programmatic-api-call"></a>Programmgesteuerter API-Aufruf
 
@@ -337,5 +337,5 @@ Curl
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Sie können die APIs über die [Swagger-API-URL](https://partneranalytics-api.azure-api.net/analytics/cmp/swagger/index.html) testen.
+- Sie können die APIs über die [Swagger-API-URL](https://swagger.io/docs/specification/api-host-and-base-path/) testen.
 - [Paradigma für den programmgesteuerten Zugriff](analytics-programmatic-access.md)

@@ -3,25 +3,23 @@ title: Übergeben von Authentifizierungstoken an Azure Media Services | Microsof
 description: Erfahren Sie, wie Sie Authentifizierungstoken vom Client an den Schlüsselbereitstellungsdienst von Azure Media Services senden.
 services: media-services
 keywords: Content Protection, DRM, Tokenauthentifizierung
-documentationcenter: ''
 author: IngridAtMicrosoft
 manager: femila
-editor: ''
 ms.assetid: 7c3b35d9-1269-4c83-8c91-490ae65b0817
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/10/2021
+ms.date: 03/22/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ba4daec8ef5f2cc1da3a211113e7236dfd22803d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 1fe692e1eb20956f339c9b861f50163cee9c5063
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103008239"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105564652"
 ---
 # <a name="learn-how-clients-pass-tokens-to-the-azure-media-services-key-delivery-service"></a>Erfahren Sie, wie Clients Token an den Schlüsselbereitstellungsdienst von Azure Media Services übergeben.
 
@@ -33,7 +31,7 @@ Kunden fragen häufig, wie ein Player Token für die Überprüfung an den Schlü
 
 - Über die HTTP-Autorisierungsheader.
     > [!NOTE]
-    > Das Präfix „Bearer“ wird gemäß den OAuth 2.0-Spezifikationen erwartet. Ein Beispielplayer mit einer Tokenkonfiguration wird auf der Azure Media Player-[Demoseite](https://ampdemo.azureedge.net/) gehostet. Wählen Sie **AES (JWT-Token)** oder **AES (SWT-Token)** aus, um die Videoquelle festzulegen. Das Token wird über den Autorisierungsheader übergeben.
+    > Das Präfix „Bearer“ wird gemäß den OAuth 2.0-Spezifikationen erwartet. Wählen Sie **AES (JWT-Token)** oder **AES (SWT-Token)** aus, um die Videoquelle festzulegen. Das Token wird über den Autorisierungsheader übergeben.
 
 - Durch Hinzufügen eines URL-Abfrageparameters mit „token=tokenvalue“:  
     > [!NOTE]

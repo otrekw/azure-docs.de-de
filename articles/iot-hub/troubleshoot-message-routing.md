@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: asrastog
-ms.openlocfilehash: 29127a9dff42c0f733e3721d1ea5fea7350e774e
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 3abff5645775d724042acba3ee2461c7cad771a7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547355"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103149663"
 ---
 # <a name="troubleshooting-message-routing"></a>Behandeln von Problemen mit dem Nachrichtenrouting
 
@@ -53,7 +53,7 @@ Analysieren Sie Folgendes:
 
 #### <a name="was-a-new-route-created"></a>Wurde eine neue Route erstellt?
 
-Sobald eine Route erstellt wird, werden keine Daten mehr an den integrierten Endpunkt gesendet, es sei denn, eine Route zu diesem Endpunkt wird erstellt. Konfigurieren Sie eine Route zum Endpunkt *events* , um sicherzustellen, dass Nachrichten weiterhin an den integrierten Endpunkt weitergeleitet werden, wenn eine neue Route hinzugefügt wird. 
+Sobald eine Route erstellt wird, werden keine Daten mehr an den integrierten Endpunkt gesendet, es sei denn, eine Route zu diesem Endpunkt wird erstellt. Konfigurieren Sie eine Route zum Endpunkt *events*, um sicherzustellen, dass Nachrichten weiterhin an den integrierten Endpunkt weitergeleitet werden, wenn eine neue Route hinzugefügt wird. 
 
 #### <a name="was-the-fallback-route-disabled"></a>Wurde die Fallbackroute deaktiviert?
 
@@ -82,4 +82,4 @@ Im Anschluss finden Sie die Vorgangsnamen und Fehlercodes, die in den [Ressource
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Sie weitere Hilfe benötigen, können Sie sich über das [MSDN Azure-Forum oder über das Stack Overflow-Forum](https://azure.microsoft.com/support/forums/) mit Azure-Experten in Verbindung setzen. Alternativ dazu haben Sie die Möglichkeit, einen Azure-Supportfall zu erstellen. Rufen Sie die [Azure-Support-Website](https://azure.microsoft.com/support/options/) auf, und wählen Sie **Support erhalten** aus.
+Wenn Sie weitere Hilfe benötigen, können Sie sich über das [Microsoft Q&A-Forum oder das Stack Overflow-Forum](https://azure.microsoft.com/support/forums/) mit Azure-Experten in Verbindung setzen. Alternativ dazu haben Sie die Möglichkeit, einen Azure-Supportfall zu erstellen. Rufen Sie die [Azure-Support-Website](https://azure.microsoft.com/support/options/) auf, und wählen Sie **Support erhalten** aus.

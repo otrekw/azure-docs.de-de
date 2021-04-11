@@ -5,12 +5,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/07/2020
-ms.openlocfilehash: 06a73b495cefc361db88d80413f4f4be50e105d1
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: a5788e5ac64c1c74a06c94c5634a05315ee098b8
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102041143"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104799291"
 ---
 # <a name="log-analytics-tutorial"></a>Log Analytics-Tutorial
 Log Analytics ist ein Tool im Azure-Portal, mit dem Protokollabfragen aus den von Azure Monitor-Protokollen erfassten Daten bearbeitet und ausgeführt sowie deren Ergebnisse interaktiv analysiert werden können. Mit Log Analytics-Abfragen können Sie Datensätze abrufen, die bestimmte Kriterien erfüllen, Trends identifizieren, Muster analysieren und eine Vielzahl von Erkenntnissen aus Ihren Daten gewinnen. 
@@ -72,7 +72,7 @@ Der Abfrage wird eine **where**-Anweisung mit dem von Ihnen ausgewählten Wert h
 ## <a name="time-range"></a>Uhrzeitbereich
 Alle Tabellen in einem Log Analytics-Arbeitsbereich verfügen über eine Spalte **TimeGenerated**, die den Zeitpunkt der Erstellung des Datensatzes angibt. Alle Abfragen weisen einen Zeitbereich auf, durch den die Ergebnisse auf Datensätze mit einem **TimeGenerated**-Wert innerhalb dieses Bereichs beschränkt werden. Der Zeitbereich kann entweder in der Abfrage oder mit dem Selektor oben auf dem Bildschirm festgelegt werden.
 
-Standardmäßig gibt die Abfrage Datensätze der letzten 24 Stunden zurück. Wählen Sie das Dropdownmenü **Zeitbereich** aus, und ändern Sie den Wert in **7 Tage**. Klicken Sie erneut auf **Ausführen**, um die Ergebnisse zurückzugeben. Wie Sie sehen, werden Ergebnisse zurückgegeben, eine Meldung weist jedoch darauf hin, dass nicht alle Ergebnisse angezeigt werden. Dies liegt daran, dass Log Analytics maximal 10.000 Datensätze zurückgeben kann und unsere Abfrage mehr Datensätze zurückgegeben hat. 
+Standardmäßig gibt die Abfrage Datensätze der letzten 24 Stunden zurück. Wählen Sie das Dropdownmenü **Zeitbereich** aus, und ändern Sie den Wert in **7 Tage**. Klicken Sie erneut auf **Ausführen**, um die Ergebnisse zurückzugeben. Wie Sie sehen, werden Ergebnisse zurückgegeben, eine Meldung weist jedoch darauf hin, dass nicht alle Ergebnisse angezeigt werden. Dies liegt daran, dass Log Analytics maximal 30.000 Datensätze zurückgeben kann und unsere Abfrage mehr Datensätze zurückgegeben hat. 
 
 [![Uhrzeitbereich](media/log-analytics-tutorial/query-results-max.png)](media/log-analytics-tutorial/query-results-max.png#lightbox)
 

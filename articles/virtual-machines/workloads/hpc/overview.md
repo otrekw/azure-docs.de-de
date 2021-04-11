@@ -6,14 +6,14 @@ ms.author: amverma
 ms.service: virtual-machines
 ms.subservice: hpc
 ms.topic: overview
-ms.date: 07/29/2020
+ms.date: 03/18/2021
 ms.reviewer: cynthn
-ms.openlocfilehash: 15d05632e5ebf6e45a61adebbbbf647efca2a1a1
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 65b37a8c07e083f5e9809812e2d4446cc48717d1
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101666890"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104720592"
 ---
 # <a name="high-performance-computing-on-infiniband-enabled-h-series-and-n-series-vms"></a>High Performance Computing auf InfiniBand-fähigen virtuellen Computern der H- und N-Serie
 
@@ -32,19 +32,19 @@ Weitere Informationen zur Einrichtung von InfiniBand auf den InfiniBand-fähigen
 
 ### <a name="message-passing-interface"></a>Message Passing Interface
 
-Von den SR-IOV-fähigen virtuellen Computern der H- und N-Serie werden nahezu alle MPI-Bibliotheken und -Versionen unterstützt. Im Anschluss finden Sie einige der gängigsten unterstützten MPI-Bibliotheken: Intel MPI, OpenMPI, MPICH, MVAPICH2, Platform MPI und alle Verben für Remotezugriff auf den direkten Speicher (Remote Direct Memory Access, RDMA).
+Von den SR-IOV-fähigen virtuellen Computern der H- und N-Serie werden nahezu alle MPI-Bibliotheken und -Versionen unterstützt. Einige der am häufigsten verwendeten MPI-Bibliotheken: Intel MPI, OpenMPI, HPC-X, MVAPICH2, MPICH, Platform MPI. Alle Verben für den Remotezugriff auf den direkten Speicher (Remote Direct Memory Access, RDMA) werden unterstützt.
 Weitere Informationen zur Installation verschiedener unterstützter MPI-Bibliotheken sowie zur optimalen Konfiguration finden Sie unter [Einrichten von Message Passing Interface für HPC](setup-mpi.md).
 
 ## <a name="get-started"></a>Erste Schritte
 
 Der erste Schritt besteht darin, auf der Grundlage der VM-Spezifikationen und der [RDMA-Fähigkeit](../../sizes-hpc.md#rdma-capable-instances) den optimalen VM-Typ der [H-Serie](../../sizes-hpc.md)/[N-Serie](../../sizes-gpu.md) für die Workload auszuwählen.
 Konfigurieren Sie anschließend den virtuellen Computer, indem Sie InfiniBand aktivieren. Hierfür gibt es verschiedene Methoden – beispielsweise die Verwendung optimierter VM-Images mit integrierten Treibern. Ausführliche Informationen finden Sie unter [Konfigurieren und Optimieren virtueller Computer](configure.md) sowie unter [Aktivieren von InfiniBand](enable-infiniband.md).
-Drittens: Für verteilte Knotenworkloads muss unbedingt MPI ausgewählt und konfiguriert werden. Weitere Informationen finden Sie unter [Einrichten von Message Passing Interface für HPC](setup-mpi.md).
-Viertens: Konfigurieren Sie die Workloads optimal, wie im spezifischen Leitfaden für die VM-Familie beschrieben, um die bestmögliche Leistung und Skalierbarkeit zu erzielen. Entsprechende Informationen finden Sie beispielsweise in der [Übersicht über virtuelle Computer der HB-Serie](hb-series-overview.md) sowie in der [Übersicht über virtuelle Computer der HC-Serie](hc-series-overview.md).
+Drittens: Für verteilte Knotenworkloads muss unbedingt MPI ausgewählt und ordnungsgemäß konfiguriert werden. Weitere Informationen finden Sie unter [Einrichten von Message Passing Interface für HPC](setup-mpi.md).
+Viertens: Konfigurieren Sie die Workloads optimal, wie im spezifischen Leitfaden für die VM-Familie beschrieben, um die bestmögliche Leistung und Skalierbarkeit zu erzielen. Entsprechende Informationen finden Sie beispielsweise in der [Übersicht über virtuelle Computer der HBv3-Serie](hbv3-series-overview.md) sowie in der [Übersicht über virtuelle Computer der HC-Serie](hc-series-overview.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Informieren Sie sich über das [Konfigurieren und Optimieren](configure.md) der InfiniBand-fähigen virtuellen Computer der [H-Serie](../../sizes-hpc.md) und der [N-Serie](../../sizes-gpu.md).
-- Sehen Sie sich die [Übersicht über virtuelle Computer der HB-Serie](hb-series-overview.md) und die [Übersicht über virtuelle Computer der HC-Serie](hc-series-overview.md) an, um zu erfahren, wie Sie Workloads optimal konfigurieren, um die bestmögliche Leistung und Skalierbarkeit zu erzielen.
-- Informieren Sie sich in den [Tech Community-Blogs zu Azure Compute](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute) über die neuesten Ankündigungen, und machen Sie sich mit einigen HPC-Beispielen und Ergebnissen vertraut.
-- Eine allgemeinere Architekturübersicht zur Ausführung von HPC-Workloads finden Sie unter [High Performance Computing (HPC) in Azure](/azure/architecture/topics/high-performance-computing/).
+- Sehen Sie sich die [Übersicht über virtuelle Computer der HBv3-Serie](hb-series-overview.md) und die [Übersicht über virtuelle Computer der HC-Serie](hc-series-overview.md) an, um zu erfahren, wie Sie Workloads optimal konfigurieren, um die bestmögliche Leistung und Skalierbarkeit zu erzielen.
+- Informieren Sie sich über die neuesten Ankündigungen, HPC-Workloadbeispiele und Leistungsergebnisse in den [Tech Community-Blogs zu Azure Compute](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
+- Eine allgemeinere Übersicht über die Architektur für die Ausführung von HPC-Workloads finden Sie unter [High Performance Computing (HPC) in Azure](/azure/architecture/topics/high-performance-computing/).

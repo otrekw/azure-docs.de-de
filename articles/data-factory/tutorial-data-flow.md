@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/11/2021
-ms.openlocfilehash: 52509dbf529076eaa0af73ea48db9a7f3fd10241
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2363afc4c84ee7606410ceecd6819c12d0333dbb
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104584515"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105563292"
 ---
 # <a name="transform-data-using-mapping-data-flows"></a>Transformieren von Daten mithilfe von Mapping Data Flow
 
@@ -24,7 +24,7 @@ Falls Sie noch nicht mit Azure Data Factory vertraut sind, ist es ratsam, den Ar
 In diesem Tutorial erstellen Sie mithilfe der Azure Data Factory-Benutzeroberfläche eine Pipeline, mit der Daten aus einer Azure Data Lake Storage (ADLS) Gen2-Quelle in eine ADLS Gen2-Senke kopiert und mithilfe von Mapping Data Flow transformiert werden. Das Konfigurationsmuster in diesem Tutorial kann beim Transformieren von Daten mithilfe von Mapping Data Flow erweitert werden.
 
  >[!NOTE]
-   >Dieses Tutorial ist für die Zuordnungsdatenflüsse ganz allgemein konzipiert. Datenflüsse sind sowohl in Azure Data Factory als auch in Synapse-Pipelines verfügbar. Wenn Sie mit den Datenflüssen in Azure Synapse-Pipelines noch nicht vertraut sind, lesen Sie den Artikel [Datenflüsse in Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics/concepts-data-flow-overview). 
+   >Dieses Tutorial ist für die Zuordnungsdatenflüsse ganz allgemein konzipiert. Datenflüsse sind sowohl in Azure Data Factory als auch in Synapse-Pipelines verfügbar. Wenn Sie mit den Datenflüssen in Azure Synapse-Pipelines noch nicht vertraut sind, lesen Sie den Artikel [Datenflüsse in Azure Synapse Analytics](../synapse-analytics/concepts-data-flow-overview.md). 
    
 In diesem Tutorial führen Sie die folgenden Schritte aus:
 
