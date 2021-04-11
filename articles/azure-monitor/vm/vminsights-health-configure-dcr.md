@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/15/2020
-ms.openlocfilehash: 0db6ed7566c53429f8b9798ac8cdafe76ca7bd5a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 889a04d68de45a6270ae0c38615d841a526ad86a
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102052142"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106490691"
 ---
 # <a name="configure-monitoring-in-vm-insights-guest-health-using-data-collection-rules-preview"></a>Konfigurieren der Überwachung für das Feature „Gastintegrität“ von VM Insights mit Datensammlungsregeln (Vorschau)
 Mit dem [Feature „Gastintegrität“ von VM Insights](vminsights-health-overview.md) können Sie Informationen zur Integrität einer VM anzeigen. Dies wird anhand von verschiedenen Leistungsmessungen definiert, für die in regelmäßigen Abständen Stichproben genommen werden. In diesem Artikel wird beschrieben, wie Sie die Standardüberwachung übergreifend für mehrere virtuelle Computer mit Datensammlungsregeln ändern können.
@@ -99,7 +99,7 @@ Das Feature „Gastintegrität“ wird als Erweiterung des Azure Monitor-Agents 
 ]
 ```
 
-| Element | Erforderlich | Beschreibung |
+| Element | Erforderlich | BESCHREIBUNG |
 |:---|:---|:---|
 | `name` | Ja | Benutzerdefinierte Zeichenfolge für die Erweiterung. |
 | `streams` | Ja | Liste mit Streams, an die Daten zur Gastintegrität gesendet werden. In dieser Liste muss **Microsoft-HealthStateChange** enthalten sein.  |
@@ -118,7 +118,7 @@ Enthält Einstellungen für die Erweiterung.
 }
 ```
 
-| Element | Erforderlich | Beschreibung |
+| Element | Erforderlich | BESCHREIBUNG |
 |:---|:---|:---|
 | `schemaVersion` | Ja | Von Microsoft definierte Zeichenfolge, mit der das erwartete Schema des Elements dargestellt wird. Muss derzeit auf „1.0“ festgelegt sein. |
 | `contentVersion` | Nein | Die vom Benutzer definierte Zeichenfolge, mit der bei Bedarf unterschiedliche Versionen der Integritätskonfiguration nachverfolgt werden können. |
@@ -139,7 +139,7 @@ Enthält ein oder mehrere Elemente vom Typ `healthRuleOverride`, mit denen jewei
 ]
 ```
 
-| Element | Erforderlich | Beschreibung |
+| Element | Erforderlich | BESCHREIBUNG |
 |:---|:---|:---|
 | `scopes` | Ja | Liste mit einem oder mehreren Bereichen, mit denen die virtuellen Computer angegeben werden, für die diese Außerkraftsetzung gilt. Auch wenn die Datensammlungsregel einem virtuellen Computer zugeordnet ist, muss sich der virtuelle Computer in einem passenden Bereich befinden, damit die Außerkraftsetzung angewendet werden kann. |
 | `monitors` | Ja | Eine Liste mit einer oder mehreren Zeichenfolgen, mit denen definiert wird, für welche Monitore diese Außerkraftsetzung gilt.  |
@@ -175,17 +175,17 @@ Eine Liste mit einer oder mehreren Zeichenfolgen, mit denen definiert wird, für
 In der folgenden Tabelle sind die Monitornamen aufgeführt, die derzeit verfügbar sind.
 
 | Typname | Name | Beschreibung |
-|:---|:---|:---|
-| root | root | Monitor der obersten Ebene für die Integrität des virtuellen Computers | |
-| cpu-utilization | cpu-utilization | Monitor für CPU-Auslastung | |
-| logical-disks | logical-disks | Aggregatmonitor für den Integritätsstatus aller überwachten Datenträger auf dem virtuellen Windows-Computer | |
-| logical-disks\|* | logical-disks\|C:<br>logical-disks\|D: | Aggregatmonitor zur Nachverfolgung der Integrität eines bestimmten Datenträgers auf einem virtuellen Windows-Computer | 
-| logical-disks\|*\|free-space | logical-disks\|C:\|free-space<br>logical-disks\|D:\|free-space | Monitor für freien Speicherplatz auf dem Datenträger des virtuellen Windows-Computers |
+|:----------|:-----|:------------|
+| root | root | Monitor der obersten Ebene für die Integrität des virtuellen Computers |
+| cpu-utilization | cpu-utilization | Monitor für CPU-Auslastung |
+| logical-disks | logical-disks | Aggregatmonitor für den Integritätsstatus aller überwachten Datenträger auf dem virtuellen Windows-Computer |
+| logical-disks\|\* | logical-disks\|C:<br>logical-disks\|D: | Aggregatmonitor zur Nachverfolgung der Integrität eines bestimmten Datenträgers auf einem virtuellen Windows-Computer |
+| logical-disks\|\*\|free-space | logical-disks\|C:\|free-space<br>logical-disks\|D:\|free-space | Monitor für freien Speicherplatz auf dem Datenträger des virtuellen Windows-Computers |
 | filesystems | filesystems | Aggregatmonitor für die Integrität aller Dateisysteme auf einem virtuellen Linux-Computer |
-| filesystems\|* | filesystems\|/<br>filesystems\|/mnt | Aggregatmonitor zur Nachverfolgung der Integrität des Dateisystems eines virtuellen Linux-Computers | filesystems|/var/log |
-| filesystems\|*\|free-space | filesystems\|/\|free-space<br>filesystems\|/mnt\|free-space | Monitor für freien Speicherplatz im Dateisystem eines virtuellen Linux-Computers | 
-| Arbeitsspeicher | Arbeitsspeicher | Aggregatmonitor für die Integrität des Arbeitsspeichers eines virtuellen Computers | |
-| memory\|available| memory\|available | Monitor zur Nachverfolgung des verfügbaren Arbeitsspeichers auf dem virtuellen Computer | |
+| filesystems\|\* | filesystems\|/<br>filesystems\|/mnt | Aggregatmonitor zur Nachverfolgung der Integrität des Dateisystems eines virtuellen Linux-Computers |
+| filesystems\|\*\|free-space | filesystems\|/\|free-space<br>filesystems\|/mnt\|free-space | Monitor für freien Speicherplatz im Dateisystem eines virtuellen Linux-Computers |
+| Arbeitsspeicher | Arbeitsspeicher | Aggregatmonitor für die Integrität des Arbeitsspeichers eines virtuellen Computers |
+| memory\|available | memory\|available | Monitor zur Nachverfolgung des verfügbaren Arbeitsspeichers auf dem virtuellen Computer |
 
 
 ## <a name="alertconfiguration-element"></a>Element „alertConfiguration“

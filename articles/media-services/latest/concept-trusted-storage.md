@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: conceptual
 ms.date: 1/29/2020
 ms.author: inhenkel
-ms.openlocfilehash: fd92eed127ec50a3d3a86f667d9aa764b79c190a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 87f52bef07644370c268168c984a452d5ae3f9bd
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100585392"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106279458"
 ---
 # <a name="trusted-storage-for-media-services"></a>Vertrauenswürdiger Speicher für Media Services
 
@@ -29,7 +29,7 @@ Wenn Sie jedoch eine Firewall einsetzen möchten, um Ihr Speicherkonto zu schüt
 
 ## <a name="tutorial"></a>Lernprogramm
 
-Weitere Informationen zum Aktivieren von vertrauenswürdigem Speicher finden Sie im Tutorial [Media Services: Vertrauenswürdiger Speicher](tutorial-trusted-storage-rest.md).
+Weitere Informationen zum Aktivieren von vertrauenswürdigem Speicher finden Sie im Tutorial [Media Services: Vertrauenswürdiger Speicher](security-trusted-storage-rest-tutorial.md).
 
 > [!NOTE]
 > Sie müssen den Zugriff „Mitwirkender an Storage-Blobdaten“ der Funktion „Verwaltete Identität“ von Azure Media Services gewähren, damit Media Services Speicherkontodaten lesen und schreiben kann.  Das Gewähren der allgemeinen Rolle „Mitwirkender“ funktioniert nicht, da dadurch nicht die ordnungsgemäßen Berechtigungen auf Datenebene aktiviert werden.

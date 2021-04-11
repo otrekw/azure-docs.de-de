@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 10/16/2018
 ms.title: include
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: ef0aa8ba1983ca30fd44c27fe570b6b5f51733a5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5105df5793d37b166b017585a62c962933a0b019
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101743433"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106081128"
 ---
 ## <a name="create-a-scheduled-webjob"></a><a name="CreateScheduledCRON"></a> Erstellen eines geplanten WebJobs
 
@@ -31,7 +31,7 @@ ms.locfileid: "101743433"
     
     | Einstellung      | Beispielwert   |
     | ------------ | ----------------- | 
-    | <abbr title="Ein Name, der innerhalb einer App Service-App eindeutig ist. Der Name muss mit einem Buchstaben oder einer Ziffer beginnen und darf nur die Sonderzeichen `-` und `_` enthalten.">Name</a> | myScheduledWebJob |  |
+    | <abbr title="Ein Name, der innerhalb einer App Service-App eindeutig ist. Der Name muss mit einem Buchstaben oder einer Ziffer beginnen und darf nur die Sonderzeichen `-` und `_` enthalten.">Name</a> | myScheduledWebJob | 
     | <abbr title="Eine *ZIP*-Datei, die die ausführbare Datei oder Skriptdatei sowie für die Ausführung des Programms oder Skripts erforderliche Hilfsdateien enthält.">Dateiupload</abbr> | ConsoleApp.zip |
     | <abbr title="Als Typ ist „continuous“ (fortlaufend) oder „triggered“ (ausgelöst) verfügbar.">type</abbr> | Ausgelöst |
     | <abbr title="Damit die Planung zuverlässig funktioniert, aktivieren Sie das Feature „Always On“. Dieses Feature steht nur in den Tarifen „Basic“, „Standard“ und „Premium“ zur Verfügung.">Trigger</a> | Geplant |

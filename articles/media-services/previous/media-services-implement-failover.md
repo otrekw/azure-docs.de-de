@@ -3,7 +3,7 @@ title: Implementieren von Failoverstreaming mit Azure Media Services | Microsoft
 description: In diesem Artikel wird gezeigt, wie ein Failoverstreamingszenario mit Azure Media Services implementiert wird.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 68cd107b2606643d712c4de94b6d1a82e8ee614a
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: ef4eb3eb55ec1f062efb0f8215a3619f526b1ad2
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97657259"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106063983"
 ---
 # <a name="implement-failover-streaming-with-media-services-v2"></a>Implementieren von Failoverstreaming mit Media Services v2
 
@@ -67,7 +67,7 @@ In diesem Abschnitt werden Sie ein C#-Konsolenanwendungsprojekt erstellen und ei
 1. Verwenden Sie Visual Studio, um eine neue Projektmappe zu erstellen, die das C#-Konsolenanwendungsprojekt enthält. Geben Sie **HandleRedundancyForOnDemandStreaming** als Namen ein, und klicken Sie auf **OK**.
 2. Erstellen Sie den Ordner **SupportFiles** auf der gleichen Ebene wie die Projektdatei **HandleRedundancyForOnDemandStreaming.csproj**. Erstellen Sie im Ordner **SupportFiles** die Ordner **OutputFiles** und **MP4Files**. Kopieren Sie eine MP4-Datei in den Ordner **MP4Files**. (In diesem Beispiel wird die Datei **ignite.mp4** verwendet.) 
 3. Verwenden Sie **NuGet**, um Verweise auf DLLs im Zusammenhang mit Media Services hinzuzufügen. Wählen Sie im **Hauptmenü in Visual Studio** die Option **EXTRAS** > **NuGet-Paket-Manager** > **Paket-Manager-Konsole** aus. Geben Sie im Konsolenfenster **Install-Package windowsazure.mediaservices** ein, und betätigen Sie die Eingabetaste.
-4. Fügen Sie andere Verweise hinzu, die für dieses Projekt erforderlich sind: System.Runtime.Serialization und System.Web.
+4. Fügen Sie weitere Verweise hinzu, die für dieses Projekt erforderlich sind: System.Runtime.Serialization und System.Web.
 5. Ersetzen Sie die **using**-Anweisungen, die der Datei **Programs.cs** standardmäßig hinzugefügt wurden, durch die folgenden Anweisungen:
 
 ```csharp
@@ -753,9 +753,9 @@ In diesem Abschnitt ermöglichen Sie das Verarbeiten von Redundanz.
 
 Das Beispiel in diesem Thema zeigt das unverschlüsseltes Streaming. Wenn Sie geschütztes Streaming durchführen möchten, müssen Sie einige weitere Schritte ausführen: Sie benötigen die gleiche **AssetDeliveryPolicy** und die gleiche **ContentKeyAuthorizationPolicy** oder externe Schlüsselserver-URL, und Sie müssen die Inhaltsschlüssel mit demselben Bezeichner duplizieren.
 
-Weitere Informationen zum Inhaltsschutz finden Sie unter [Verwenden der dynamischen AES-128-Verschlüsselung und des Schlüsselübermittlungsdiensts](media-services-protect-with-aes128.md).
+Weitere Informationen zum Inhaltsschutz finden Sie unter [Verwenden der dynamischen AES-128-Verschlüsselung und des Schlüsselübermittlungsdiensts](media-services-playready-license-template-overview.md).
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="see-also"></a>Siehe auch
 
 [Verwenden von Azure-Webhooks zum Überwachen von Media Services-Auftragsbenachrichtigungen](media-services-dotnet-check-job-progress-with-webhooks.md)
 

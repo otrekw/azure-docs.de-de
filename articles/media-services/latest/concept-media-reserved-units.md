@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: inhenkel
-ms.openlocfilehash: e0cfc47b546c31e6b93d224e64de20b79baacfd9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4b3a06d2d441c918c4c109d9dc624ebfa1cd4c97
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98891295"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106120808"
 ---
 # <a name="media-reserved-units"></a>Reservierte Einheiten für Medien
 
@@ -52,8 +52,8 @@ Die Abrechnung erfolgt nach der Anzahl der Minuten, in denen die MRUs in Ihrem K
 
 ## <a name="next-step"></a>Nächster Schritt
 [Skalieren von reservierten Einheiten für Medien mit der CLI](media-reserved-units-cli-how-to.md)
-[Analysieren von Videos](analyze-videos-tutorial-with-api.md)
+[Analysieren von Videos](analyze-videos-tutorial.md)
 
 ## <a name="see-also"></a>Weitere Informationen
 
-* [Kontingente und Grenzwerte](limits-quotas-constraints.md)
+* [Kontingente und Grenzwerte](limits-quotas-constraints-reference.md)

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.custom: ''
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: a87525248273db38e4e7bc8d1b59bbd9f99bb4c6
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: c334888f5b85b0d2211225282680d5f791b50793
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106106977"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277877"
 ---
 # <a name="high-availability-with-media-services-and-video-on-demand-vod"></a>Hochverfügbarkeit bei Media Services und Video on Demand (VoD)
 
@@ -36,7 +36,7 @@ Es gibt ein Beispiel, das Sie verwenden können, um sich mit der Hochverfügbark
 
 Die in dieser Beispielarchitektur verwendeten Dienste umfassen Folgendes:
 
-| Symbol | Name | BESCHREIBUNG |
+| Symbol | name | BESCHREIBUNG |
 | :--: | ---- | ----------- |
 |![Dies ist das Symbol für das Media Services-Konto.](./media/architecture-high-availability-encoding-concept/azure-media-services.svg)| Media Services-Konto | **Beschreibung:**<br>Ein Media Services-Konto ist der Ausgangspunkt für Verwaltung, Verschlüsselung, Codierung, Analyse und Streaming von Medieninhalten in Azure. Es ist einer Azure Storage-Kontoressource zugeordnet. Das Konto und der gesamte zugeordnete Speicher müssen sich in demselben Azure-Abonnement befinden.<br><br>**VoD-Nutzung:**<br>Dies sind die Dienste, die Sie zum Codieren und Bereitstellen Ihrer Video- und Audiomedienobjekte verwenden.  Für Hochverfügbarkeit sollten Sie mindestens zwei Media Services-Konten einrichten, die sich jeweils in einer anderen Region befinden. [Informieren Sie sich ausführlicher über Azure Media Services](media-services-overview.md). |
 |![Dies ist das Symbol für das Speicherkonto.](./media/architecture-high-availability-encoding-concept/storage-account.svg)| Speicherkonto | **Beschreibung:**<br>Ein Azure-Speicherkonto enthält Ihre gesamten Azure Storage-Datenobjekte: Blobs, Dateien, Warteschlangen, Tabellen und Datenträger. Der Zugriff auf die Daten ist von überall auf der Welt über HTTP oder HTTPS möglich.<br><br>Zu jedem Media Services-Konto in jeder Region sollte es ein Speicherkonto in derselben Region geben.<br><br>**VoD-Nutzung:**<br>Sie können Ein- und Ausgabedaten für VoD-Verarbeitung und -Streaming speichern. [Informieren Sie sich ausführlicher über Azure Storage](../../storage/common/storage-introduction.md). |
@@ -61,7 +61,7 @@ Dieses allgemeine Diagramm zeigt die Architektur des Beispiels, das für Ihren E
 
 * [Erstellen](./account-create-how-to.md) Sie zwei (oder mehr) Azure Media Services-Konten. Die beiden Konten müssen sich in verschiedenen Regionen befinden. Weitere Informationen finden Sie unter [Regionen, in denen der Azure Media Services-Dienst bereitgestellt wird](https://azure.microsoft.com/global-infrastructure/services/?products=media-services).
 * Laden Sie Ihre Medien in dieselbe Region hoch, von der aus Sie den Auftrag übermitteln möchten. Weitere Informationen über den Beginn der Codierung finden Sie unter [Erstellen einer Auftragseingabe aus einer HTTPS-URL](./job-input-from-http-how-to.md) oder [Erstellen einer Auftragseingabe aus einer lokalen Datei](./job-input-from-local-file-how-to.md).
-* Wenn Sie dann den [Auftrag](./transforms-jobs-concept.md) erneut in eine andere Region übermitteln müssen, können Sie die Daten mithilfe von `JobInputHttp` oder `Copy-Blob` aus dem Quellcontainer für Medienobjekte in einen Medienobjektcontainer in der alternativen Region kopieren.
+* Wenn Sie dann den [Auftrag](./transform-jobs-concept.md) erneut in eine andere Region übermitteln müssen, können Sie die Daten mithilfe von `JobInputHttp` oder `Copy-Blob` aus dem Quellcontainer für Medienobjekte in einen Medienobjektcontainer in der alternativen Region kopieren.
 
 ### <a name="monitoring"></a>Überwachung
 
@@ -72,10 +72,10 @@ Dieses allgemeine Diagramm zeigt die Architektur des Beispiels, das für Ihren E
 
     Weitere Informationen finden Sie unter:
 
-    * Sehen Sie sich das [Beispiel zur Audioanalyse](./transforms-jobs-concept.md) an. Es zeigt, wie ein Auftrag mit Azure Event Grid überwacht werden kann, einschließlich des Hinzufügens eines Fallbacks für den Fall, dass die Azure Event Grid-Nachrichten aus irgendeinem Grund verzögert werden.
+    * Sehen Sie sich das [Beispiel zur Audioanalyse](./transform-jobs-concept.md) an. Es zeigt, wie ein Auftrag mit Azure Event Grid überwacht werden kann, einschließlich des Hinzufügens eines Fallbacks für den Fall, dass die Azure Event Grid-Nachrichten aus irgendeinem Grund verzögert werden.
     * Sehen Sie sich auch die [Azure Event Grid-Schemas für Media Services-Ereignisse](./media-services-event-schemas.md) an.
 
-* Wenn Sie einen [Auftrag](./transforms-jobs-concept.md) erstellen:
+* Wenn Sie einen [Auftrag](./transform-jobs-concept.md) erstellen:
     * Wählen Sie ein zufälliges Konto aus der Liste der zurzeit verwendeten Konten aus (diese Liste enthält normalerweise beide Konten; wenn aber Probleme festgestellt werden, enthält sie vielleicht nur ein Konto). Wenn die Liste leer ist, geben Sie eine Warnung aus, damit ein Operator dies untersuchen kann.
     * Erstellen Sie einen Datensatz, um die einzelnen Inflight-Aufträge und die verwendete Region/das verwendete Konto nachzuverfolgen.
 * Wenn Ihr `JobStateChange`-Handler eine Benachrichtigung erhält, dass ein Auftrag den geplanten Zustand erreicht hat, notieren Sie sich die Uhrzeit, zu der er in den geplanten Zustand wechselt, sowie die verwendete Region bzw. das verwendete Konto.

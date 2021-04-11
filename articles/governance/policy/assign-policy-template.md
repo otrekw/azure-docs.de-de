@@ -1,15 +1,15 @@
 ---
 title: 'Schnellstart: Neue Richtlinienzuweisung mit Vorlagen'
 description: In dieser Schnellstartanleitung erstellen Sie mit einer Azure Resource Manager-Vorlage (ARM-Vorlage) eine Richtlinienzuweisung zum Identifizieren von nicht konformen Ressourcen.
-ms.date: 08/17/2020
+ms.date: 03/31/2021
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.openlocfilehash: c32f833520a811d47129196ae4d67c92bad7e21f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b61198fecf0c3a6ba9aad19abc60bc042b68c29c
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "89651434"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106096613"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-an-arm-template"></a>Schnellstart: Erstellen einer Richtlinienzuweisung zum Identifizieren von nicht konformen Ressourcen mit einer ARM-Vorlage
 
@@ -53,7 +53,7 @@ In der Vorlage ist die folgende Ressource definiert:
    |------|-------|
    | Subscription | Wählen Sie Ihr Azure-Abonnement. |
    | Resource group | Wählen Sie **Neu erstellen**, geben Sie einen Namen an, und wählen Sie dann **OK**. Im Screenshot lautet der Name der Ressourcengruppe _mypolicyquickstart\<Date in MMDD\>rg_. |
-   | Standort | Wählen Sie eine Region aus. Beispiel: **USA, Mitte**. |
+   | Location | Wählen Sie eine Region aus. Beispiel: **USA, Mitte**. |
    | Name der Richtlinienzuweisung | Geben Sie einen Namen für die Richtlinienzuweisung an. Bei Bedarf können Sie die Anzeige für die Richtliniendefinitionen verwenden. Beispiel: _Virtuelle Computer überwachen, die keine verwalteten Datenträger verwenden_. |
    | Ressourcengruppenname | Geben Sie den Namen einer Ressourcengruppe an, der Sie die Richtlinie zuweisen möchten. In dieser Schnellstartanleitung verwenden Sie den Standardwert **[resourceGroup().name]** . **[resourceGroup()](../../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)** ist eine Vorlagenfunktion, mit der die Ressourcengruppe abgerufen wird. |
    | Richtliniendefinitions-ID | Geben Sie **/providers/Microsoft.Authorization/policyDefinitions/0a914e76-4921-4c19-b460-a2d36003525a** an. |

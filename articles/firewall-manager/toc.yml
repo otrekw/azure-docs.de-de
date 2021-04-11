@@ -51,6 +51,8 @@
   items:
     - name: Bereitstellen von Sicherheitspartneranbietern
       href: deploy-trusted-security-partner.md
+    - name: Schützen privater Endpunkte
+      href: private-link-inspection-secure-virtual-hub.md
     - name: 'Migrieren zur Firewallrichtlinie: PowerShell'
       href: migrate-to-policy.md
     - name: DNS-Einstellungen

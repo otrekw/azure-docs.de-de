@@ -3,12 +3,12 @@ title: Diagnoseprotokolle für Hybrid Connections
 description: Dieser Artikel enthält eine Übersicht über alle verfügbaren Aktivitäts- und Diagnoseprotokolle für Azure Relay.
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: 9b459750ad1445da89a8e89a10a35b878bfb64e1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7ca6dc95567a4867d3c58e0efad0fc74289e586c
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100590881"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106079096"
 ---
 # <a name="enable-diagnostics-logs-for-azure-relay-hybrid-connections"></a>Aktivieren von Diagnoseprotokollen für Azure Relay Hybrid Connections
 Wenn Sie Azure Relay Hybrid Connections verwenden, möchten Sie möglicherweise überwachen, wie und wann Ihre Listener und Absender geöffnet und geschlossen werden und wie Hybrid Connections erstellt und Nachrichten gesendet werden. Dieser Artikel enthält eine Übersicht über die verfügbaren Aktivitäts- und Diagnoseprotokolle, die vom Azure Relay-Dienst bereitgestellt werden. 
@@ -80,29 +80,29 @@ Im Folgenden finden Sie ein Beispiel für ein Hybridverbindungsereignis im JSON-
 
 ## <a name="events-and-operations-captured-in-diagnostic-logs"></a>In Diagnoseprotokollen erfasste Ereignisse und Vorgänge
 
-| Vorgang | BESCHREIBUNG | 
-| --------- | ----------- | 
-| AuthorizationFailed | Fehler bei der Autorisierung.|
-| InvalidSasToken | Ungültiges SAS-Token. | 
-| ListenerAcceptingConnection | Der Listener akzeptiert die Verbindung. |
-| ListenerAcceptingConnectionTimeout | Timeout des Listeners, der die Verbindung annimmt. |
-| ListenerAcceptingHttpRequestFailed | Fehler beim Listener, der die HTTP-Anforderung akzeptiert, aufgrund einer Ausnahme. |
-| ListenerAcceptingRequestTimeout | Timeout des Listeners, der die Anforderung annimmt. |  
-| ListenerClosingFromExpiredToken | Der Listener wird geschlossen, da das Sicherheitstoken abgelaufen ist. | 
-| ListenerRejectedConnection | Der Listener hat die Verbindung abgelehnt. |
-| ListenerReturningHttpResponse | Der Listener gibt eine HTTP-Antwort zurück. |  
-| ListenerReturningHttpResponseFailed | Der Listener gibt eine HTTP-Antwort mit einem Fehlercode zurück. | 
- ListenerSentHttpResponse | Der Relaydienst hat eine HTTP-Antwort vom Listener empfangen. | 
-| ListenerUnregistered | Die Registrierung des Listeners wird aufgehoben. | 
-| ListenerUnresponsive | Der Listener reagiert beim Zurückgeben einer Antwort nicht. | 
-| MessageSendingToListener | Nachricht wird aktuell an den Listener gesendet. |
-| MessageSentToListener | Nachricht wird an den Listener gesendet. | 
-| NewListenerRegistered | Neuer Listener wurde registriert. |
-| NewSenderRegistering | Neuer Absender wird aktuell registriert. | 
-| ProcessingRequestFailed | Die Verarbeitung eines Hybrid Verbindungs-Vorgangs ist fehlgeschlagen. | 
-| SenderConnectionClosed | Die Absenderverbindung wurde geschlossen. |
-| SenderListenerConnectionEstablished | Der Absender und der Listener haben die Verbindung erfolgreich hergestellt. |
-| SenderSentHttpRequest | Der Absender hat eine HTTP-Anforderung gesendet. | 
+| Vorgang                           | BESCHREIBUNG                                                     |
+|-------------------------------------|-----------------------------------------------------------------|
+| AuthorizationFailed                 | Fehler bei der Autorisierung.                                           |
+| InvalidSasToken                     | Ungültiges SAS-Token.                                              |
+| ListenerAcceptingConnection         | Der Listener akzeptiert die Verbindung.                           |
+| ListenerAcceptingConnectionTimeout  | Timeout des Listeners, der die Verbindung annimmt.                |
+| ListenerAcceptingHttpRequestFailed  | Fehler beim Listener, der die HTTP-Anforderung akzeptiert, aufgrund einer Ausnahme. |
+| ListenerAcceptingRequestTimeout     | Timeout des Listeners, der die Anforderung annimmt.                   |
+| ListenerClosingFromExpiredToken     | Der Listener wird geschlossen, da das Sicherheitstoken abgelaufen ist. |
+| ListenerRejectedConnection          | Der Listener hat die Verbindung abgelehnt.                       |
+| ListenerReturningHttpResponse       | Der Listener gibt eine HTTP-Antwort zurück.                     |
+| ListenerReturningHttpResponseFailed | Der Listener gibt eine HTTP-Antwort mit einem Fehlercode zurück. |
+| ListenerSentHttpResponse            | Der Relaydienst hat eine HTTP-Antwort vom Listener empfangen.  |
+| ListenerUnregistered                | Die Registrierung des Listeners wird aufgehoben.                                   |
+| ListenerUnresponsive                | Der Listener reagiert beim Zurückgeben einer Antwort nicht.         |
+| MessageSendingToListener            | Nachricht wird aktuell an den Listener gesendet.                              |
+| MessageSentToListener               | Nachricht wird an den Listener gesendet.                                    |
+| NewListenerRegistered               | Neuer Listener wurde registriert.                                        |
+| NewSenderRegistering                | Neuer Absender wird aktuell registriert.                                      |
+| ProcessingRequestFailed             | Die Verarbeitung eines Hybrid Verbindungs-Vorgangs ist fehlgeschlagen.     |
+| SenderConnectionClosed              | Die Absenderverbindung wurde geschlossen.                                |
+| SenderListenerConnectionEstablished | Der Absender und der Listener haben die Verbindung erfolgreich hergestellt.    |
+| SenderSentHttpRequest               | Der Absender hat eine HTTP-Anforderung gesendet.                                |
 
 
 ## <a name="next-steps"></a>Nächste Schritte
