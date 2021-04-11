@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc,seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: 285c6c05a1a216303ee9d8019093c963cad60aa0
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 3e0632b2ad1ac237d8899e9d3bdc7f1d3350fa76
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946480"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106057931"
 ---
 # <a name="tutorial-analyze-apache-spark-data-using-power-bi-in-hdinsight"></a>Tutorial: Analysieren von Apache Spark-Daten mithilfe von Power BI in HDInsight
 
@@ -43,7 +43,7 @@ Das im [vorherigen Tutorial](apache-spark-load-data-run-query.md) erstellte [Jup
 
     Die Ausgabe sieht wie folgt aus:
 
-    ![Anzeigen von Tabellen in Spark](./media/apache-spark-use-bi-tools/apache-spark-show-tables.png)
+    :::image type="content" source="./media/apache-spark-use-bi-tools/apache-spark-show-tables.png" alt-text="Anzeigen von Tabellen in Spark" border="true":::
 
     Wenn Sie das Notebook vor dem Starten dieses Tutorials geschlossen haben, wird `hvactemptable` bereinigt und ist daher nicht in der Ausgabe enthalten.  Nur Hive-Tabellen, die im Metastore gespeichert werden (angegeben durch **False** in der Spalte **isTemporary**), sind für die BI-Tools zugänglich. In diesem Tutorial stellen Sie eine Verbindung mit der erstellten Tabelle **hvac** her.
 
@@ -56,7 +56,7 @@ Das im [vorherigen Tutorial](apache-spark-load-data-run-query.md) erstellte [Jup
 
     Die Ausgabe sieht wie folgt aus:
 
-    ![Anzeigen von Zeilen aus der hvac-Tabelle in Spark](./media/apache-spark-use-bi-tools/apache-spark-select-limit.png)
+    :::image type="content" source="./media/apache-spark-use-bi-tools/apache-spark-select-limit.png" alt-text="Anzeigen von Zeilen aus der hvac-Tabelle in Spark" border="true":::
 
 3. Wählen Sie im Menü **Datei** des Notebooks die Option **Schließen und Anhalten** aus. Fahren Sie das Notebook herunter, um die Ressourcen freizugeben.
 
@@ -72,11 +72,11 @@ Die ersten Schritte bei der Verwendung von Spark bestehen darin, eine Verbindung
 
 2. Navigieren Sie auf der Registerkarte **Home** zu **Daten abrufen** > **Mehr..** .
 
-    ![Abrufen von Daten aus HDInsight Apache Spark in Power BI Desktop](./media/apache-spark-use-bi-tools/hdinsight-spark-power-bi-desktop-get-data.png "Abrufen von Daten aus Apache Spark BI in Power BI")
+    :::image type="content" source="./media/apache-spark-use-bi-tools/hdinsight-spark-power-bi-desktop-get-data.png " alt-text="Abrufen von Daten aus HDInsight Apache Spark in Power BI Desktop" border="true":::
 
 3. Geben Sie `Spark` in das Suchfeld ein, wählen Sie **Azure HDInsight Spark** aus, und wählen Sie dann **Verbinden** aus.
 
-    ![Abrufen von Daten aus Apache Spark BI in Power BI](./media/apache-spark-use-bi-tools/apache-spark-bi-import-data-power-bi.png "Abrufen von Daten aus Apache Spark BI in Power BI")
+    :::image type="content" source="./media/apache-spark-use-bi-tools/apache-spark-bi-import-data-power-bi.png " alt-text="Abrufen von Daten aus Apache Spark BI in Power BI" border="true":::
 
 4. Geben Sie Ihre Cluster-URL (in der Form `mysparkcluster.azurehdinsight.net`) in das Textfeld **Server** ein.
 
@@ -88,7 +88,7 @@ Die ersten Schritte bei der Verwendung von Spark bestehen darin, eine Verbindung
 
 7. Wählen Sie die Tabelle `hvac` aus, warten Sie, um eine Vorschau der Daten anzuzeigen, und wählen Sie dann **Laden** aus.
 
-    ![Benutzername und Kennwort des Spark-Clusters](./media/apache-spark-use-bi-tools/apache-spark-bi-select-table.png "Benutzername und Kennwort des Spark-Clusters")
+    :::image type="content" source="./media/apache-spark-use-bi-tools/apache-spark-bi-select-table.png " alt-text="Benutzername und Kennwort des Spark-Clusters" border="true":::
 
     Power BI Desktop verfügt nun über alle Informationen, die zum Herstellen einer Verbindung mit dem Spark-Cluster und zum Laden von Daten aus der Tabelle `hvac` erforderlich sind. Die Tabelle und ihre Spalten werden im Bereich **Felder** angezeigt.
 
@@ -98,21 +98,21 @@ Die ersten Schritte bei der Verwendung von Spark bestehen darin, eine Verbindung
 
     2. Ziehen Sie das Feld **BuildingID** unter **Achse** und die Felder **ActualTemp** und **TargetTemp** unter **Wert**.
 
-        ![Hinzufügen von Spaltenwerten](./media/apache-spark-use-bi-tools/apache-spark-bi-add-value-columns.png "Hinzufügen von Spaltenwerten")
+        :::image type="content" source="./media/apache-spark-use-bi-tools/apache-spark-bi-add-value-columns.png " alt-text="Hinzufügen von Wertspalten" border="true":::
 
         Das Diagramm sieht wie folgt aus:
 
-        ![Summe des Bereichsdiagramms](./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph-sum.png "Summe des Bereichsdiagramms")
+        :::image type="content" source="./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph-sum.png " alt-text="Summe des Bereichsdiagramms" border="true":::
 
         Standardmäßig werden in der Visualisierung die Summen für **ActualTemp** und **TargetTemp** angezeigt. Wählen Sie den Pfeil nach unten neben **ActualTemp** und **TargetTemp** im Bereich „Visualisierungen“ aus. Sie sehen, dass **Summe** ausgewählt ist.
 
     3. Wählen Sie den Pfeil nach unten neben **ActualTemp** und **TargetTemp** im Bereich „Visualisierungen“ aus, wählen Sie **Durchschnitt** aus, um den Durchschnittswert zwischen tatsächlicher und Zieltemperatur für jedes Gebäude zu erhalten.
 
-        ![Durchschnitt der Werte](./media/apache-spark-use-bi-tools/apache-spark-bi-average-of-values.png "Durchschnitt der Werte")
+        :::image type="content" source="./media/apache-spark-use-bi-tools/apache-spark-bi-average-of-values.png " alt-text="Durchschnitt der Werte" border="true":::
 
         Ihre Datenvisualisierung sollte ähnlich dem Screenshot aussehen. Bewegen Sie den Cursor über die Visualisierung, um QuickInfos mit relevanten Daten abzurufen.
 
-        ![Bereichsdiagramm](./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph.png "Bereichsdiagramm")
+        :::image type="content" source="./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph.png " alt-text="Bereichsdiagramm" border="true":::
 
 9. Navigieren Sie zu **Datei** > **Speichern**, geben Sie den Namen `BuildingTemperature` für die Datei ein, und wählen Sie dann **Speichern** aus.
 
@@ -124,31 +124,31 @@ Mit dem Power BI-Dienst können Sie Berichte und Dashboards in Ihrer Organisatio
 
 1. Klicken Sie auf der Registerkarte **Start** auf **Veröffentlichen**.
 
-    ![Veröffentlichen aus Power BI Desktop](./media/apache-spark-use-bi-tools/apache-spark-bi-publish.png "Veröffentlichen aus Power BI Desktop")
+    :::image type="content" source="./media/apache-spark-use-bi-tools/apache-spark-bi-publish.png " alt-text="Veröffentlichen aus Power BI Desktop" border="true":::
 
 1. Wählen Sie einen Arbeitsbereich für die Veröffentlichung des Datasets und des Berichts aus, und wählen Sie dann **Auswählen**. In der folgenden Abbildung wird die Standardoption **My Workspace** (Mein Arbeitsbereich) ausgewählt.
 
-    ![Auswählen eines Arbeitsbereichs zum Veröffentlichen eines Datasets und eines Berichts](./media/apache-spark-use-bi-tools/apache-spark-bi-select-workspace.png "Auswählen eines Arbeitsbereichs zum Veröffentlichen eines Datasets und eines Berichts")
+    :::image type="content" source="./media/apache-spark-use-bi-tools/apache-spark-bi-select-workspace.png " alt-text="Auswählen eines Arbeitsbereichs zum Veröffentlichen eines Datasets und eines Berichts" border="true":::
 
 1. Nachdem die Veröffentlichung abgeschlossen ist, wählen Sie **Open „BuildingTemperature.pbix“ in Power BI** („BuildingTemperature.pbix“ in Power BI öffnen).
 
-    ![Erfolgreiche Veröffentlichung, Klicken zum Eingeben der Anmeldeinformationen](./media/apache-spark-use-bi-tools/apache-spark-bi-publish-success.png "Erfolgreiche Veröffentlichung, Klicken zum Eingeben der Anmeldeinformationen")
+    :::image type="content" source="./media/apache-spark-use-bi-tools/apache-spark-bi-publish-success.png " alt-text="Erfolgreiche Veröffentlichung, Klicken zum Eingeben der Anmeldeinformationen" border="true":::
 
 1. Wählen Sie im Power BI-Dienst **Anmeldeinformationen eingeben**.
 
-    ![Eingeben von Anmeldeinformationen im Power BI-Dienst](./media/apache-spark-use-bi-tools/apache-spark-bi-enter-credentials.png "Eingeben von Anmeldeinformationen im Power BI-Dienst")
+    :::image type="content" source="./media/apache-spark-use-bi-tools/apache-spark-bi-enter-credentials.png " alt-text="Eingeben von Anmeldeinformationen im Power BI-Dienst" border="true":::
 
 1. Wählen Sie **Anmeldeinformationen bearbeiten**.
 
-    ![Bearbeiten von Anmeldeinformationen im Power BI-Dienst](./media/apache-spark-use-bi-tools/apache-spark-bi-edit-credentials.png "Bearbeiten von Anmeldeinformationen im Power BI-Dienst")
+    :::image type="content" source="./media/apache-spark-use-bi-tools/apache-spark-bi-edit-credentials.png " alt-text="Bearbeiten von Anmeldeinformationen im Power BI-Dienst" border="true":::
 
 1. Geben Sie die Kontoinformationen für die HDInsight-Anmeldung ein, und wählen Sie **Anmelden**. Der Standardkontoname lautet *admin*.
 
-    ![Anmelden beim Spark-Cluster](./media/apache-spark-use-bi-tools/apache-spark-bi-sign-in.png "Anmelden beim Spark-Cluster")
+    :::image type="content" source="./media/apache-spark-use-bi-tools/apache-spark-bi-sign-in.png " alt-text="Anmelden beim Spark-Cluster" border="true":::
 
 1. Navigieren Sie im linken Bereich zu **Arbeitsbereiche** > **Mein Arbeitsbereich** > **BERICHTE**, und wählen Sie **BuildingTemperature**.
 
-    ![Bericht aufgeführt in den Berichten im linken Bereich](./media/apache-spark-use-bi-tools/apache-spark-bi-service-left-pane.png "Bericht aufgeführt in den Berichten im linken Bereich")
+    :::image type="content" source="./media/apache-spark-use-bi-tools/apache-spark-bi-service-left-pane.png " alt-text="Bericht aufgeführt in den Berichten im linken Bereich" border="true":::
 
     Im linken Bereich sollte unter **DATASETS** außerdem **BuildingTemperature** aufgeführt sein.
 
@@ -156,11 +156,11 @@ Mit dem Power BI-Dienst können Sie Berichte und Dashboards in Ihrer Organisatio
 
 1. Zeigen Sie mit der Maus auf die Visualisierung, und wählen Sie dann das Symbol zum Anheften in der rechten oberen Ecke.
 
-    ![Bericht im Power BI-Dienst](./media/apache-spark-use-bi-tools/apache-spark-bi-service-report.png "Bericht im Power BI-Dienst")
+    :::image type="content" source="./media/apache-spark-use-bi-tools/apache-spark-bi-service-report.png " alt-text="Bericht im Power BI-Dienst" border="true":::
 
 1. Wählen Sie „Neues Dashboard“, geben Sie den Namen `Building temperature` ein, und wählen Sie dann **Anheften**.
 
-    ![Anheften an neues Dashboard](./media/apache-spark-use-bi-tools/apache-spark-bi-pin-dashboard.png "Anheften an neues Dashboard")
+    :::image type="content" source="./media/apache-spark-use-bi-tools/apache-spark-bi-pin-dashboard.png " alt-text="An neues Dashboard anheften" border="true":::
 
 1. Wählen Sie im Bericht **Zu Dashboard wechseln**.
 
