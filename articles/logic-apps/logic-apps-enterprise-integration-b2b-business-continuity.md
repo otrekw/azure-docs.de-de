@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/10/2017
-ms.openlocfilehash: 1e006dd690e9c008afada8a490da6c3238bc0791
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 09fb738a499d6016c3aead0d33436f034bc5d339
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91565410"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105728401"
 ---
 # <a name="set-up-cross-region-disaster-recovery-for-integration-accounts-in-azure-logic-apps"></a>Einrichten einer regionsübergreifenden Notfallwiederherstellung für Integrationskonten in Azure Logic Apps
 
@@ -60,7 +60,7 @@ Die Geschäftskontinuität im Logic Apps-Integrationskonto bietet Unterstützung
 
 Wenn während eines Notfallereignisses die primäre Region für die Geschäftskontinuität nicht verfügbar ist, wird der Datenverkehr an die sekundäre Region weitergeleitet. Mit einer sekundären Region können Unternehmen Funktionen schnell wiederherstellen, um die mit ihren Partnern vereinbarten RPO/RTO zu erfüllen. Zudem wird dadurch der Aufwand zum Durchführen eines Failovers von einer Region auf eine andere Region auf ein Minimum beschränkt. 
 
-Beim Kopieren von Kontrollnummern von der primären Region in eine sekundäre Region ist eine Latenzzeit zu erwarten. Um zu vermeiden, dass während eines Notfallereignisses doppelt generierte Kontrollnummern an Partner gesendet werden, wird empfohlen, die Kontrollnummern in den Vereinbarungen für die sekundäre Region mithilfe von [PowerShell-Cmdlets](/powershell/module/azurerm.logicapp/set-azurermintegrationaccountgeneratedicn?view=azurermps-6.13.0) zu erhöhen.
+Beim Kopieren von Kontrollnummern von der primären Region in eine sekundäre Region ist eine Latenzzeit zu erwarten. Um zu vermeiden, dass während eines Notfallereignisses doppelt generierte Kontrollnummern an Partner gesendet werden, wird empfohlen, die Kontrollnummern in den Vereinbarungen für die sekundäre Region mithilfe von [PowerShell-Cmdlets](/powershell/module/azurerm.logicapp/set-azurermintegrationaccountgeneratedicn) zu erhöhen.
 
 ## <a name="fall-back-to-a-primary-region-post-disaster-event"></a>Durchführen eines Fallbacks auf eine primäre Region nach dem Notfallereignis
 
@@ -68,7 +68,7 @@ Um ein Fallback auf eine primäre Region durchzuführen, sobald sie verfügbar i
 
 1. Legen Sie fest, dass Nachrichten von Partnern in der sekundären Region nicht mehr akzeptiert werden.  
 
-2. Erhöhen Sie die generierten Kontrollnummern für alle Vereinbarungen für die primäre Region mithilfe von [PowerShell-Cmdlets](/powershell/module/azurerm.logicapp/set-azurermintegrationaccountgeneratedicn?view=azurermps-6.13.0).  
+2. Erhöhen Sie die generierten Kontrollnummern für alle Vereinbarungen für die primäre Region mithilfe von [PowerShell-Cmdlets](/powershell/module/azurerm.logicapp/set-azurermintegrationaccountgeneratedicn).  
 
 3. Leiten Sie Datenverkehr von der sekundären Region an die primäre Region weiter.
 

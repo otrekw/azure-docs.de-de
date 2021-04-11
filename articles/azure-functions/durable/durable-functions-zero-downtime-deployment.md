@@ -7,10 +7,10 @@ ms.date: 10/10/2019
 ms.author: azfuncdf
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 707d624c47c536e00e98910a8902772703733515
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102558762"
 ---
 # <a name="zero-downtime-deployment-for-durable-functions"></a>Bereitstellung ohne Ausfallzeit für Durable Functions
@@ -60,42 +60,42 @@ Die folgende Abbildung zeigt die beschriebene Konfiguration mit Bereitstellungss
 
 ![Bereitstellungsslots und Speicherkonten](media/durable-functions-zero-downtime-deployment/deployment-slot.png)
 
-### <a name="hostjson-examples"></a>Beispiele für „host.json“
+### <a name="hostjson-examples&quot;></a>Beispiele für „host.json“
 
 Die folgenden JSON-Fragmente sind Beispiele für die Einstellung der Verbindungszeichenfolge in der Datei *host.json*.
 
-#### <a name="functions-20"></a>Functions 2.0
+#### <a name=&quot;functions-20&quot;></a>Functions 2.0
 
 ```json
 {
-  "version": 2.0,
-  "extensions": {
-    "durableTask": {
-      "hubName": "MyTaskHub",
-      "storageProvider": {
-        "connectionStringName": "DurableManagementStorage"
+  &quot;version&quot;: 2.0,
+  &quot;extensions&quot;: {
+    &quot;durableTask&quot;: {
+      &quot;hubName&quot;: &quot;MyTaskHub&quot;,
+      &quot;storageProvider&quot;: {
+        &quot;connectionStringName&quot;: &quot;DurableManagementStorage&quot;
       }
     }
   }
 }
 ```
 
-#### <a name="functions-1x"></a>Functions 1.x
+#### <a name=&quot;functions-1x&quot;></a>Functions 1.x
 
 ```json
 {
-  "durableTask": {
-    "azureStorageConnectionStringName": "DurableManagementStorage"
+  &quot;durableTask&quot;: {
+    &quot;azureStorageConnectionStringName&quot;: &quot;DurableManagementStorage&quot;
   }
 }
 ```
 
-### <a name="cicd-pipeline-configuration"></a>Konfiguration der CI/CD-Pipeline
+### <a name=&quot;cicd-pipeline-configuration&quot;></a>Konfiguration der CI/CD-Pipeline
 
 Konfigurieren Sie Ihre CI/CD-Pipeline so, dass die Bereitstellung nur dann durchgeführt wird, wenn Ihre Funktions-App nicht über ausstehende oder ausgeführte Orchestrierungsinstanzen verfügt. Bei Verwendung von Azure Pipelines können Sie eine Funktion erstellen, mit der eine Überprüfung auf diese Bedingungen durchgeführt wird. Dies ist im folgenden Beispiel dargestellt:
 
 ```csharp
-[FunctionName("StatusCheck")]
+[FunctionName(&quot;StatusCheck")]
 public static async Task<IActionResult> StatusCheck(
     [HttpTrigger(AuthorizationLevel.Function, "get", "post")] HttpRequestMessage req,
     [DurableClient] IDurableOrchestrationClient client,

@@ -3,12 +3,12 @@ title: MABS (Azure Backup Server) V3 UR1-Schutzmatrix
 description: Dieser Artikel bietet eine Unterstützungsmatrix aller Workloads, Datentypen und Installationen, die von Azure Backup Server geschützt werden.
 ms.date: 03/19/2020
 ms.topic: conceptual
-ms.openlocfilehash: d8f2a38db468ec57cdc0a4f0813fe7ae8e341d52
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: cfdd227135a2124e22a604bad4bd41594a38fb37
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102609769"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105561269"
 ---
 # <a name="mabs-azure-backup-server-v3-ur1-protection-matrix"></a>MABS (Azure Backup Server) V3 UR1-Schutzmatrix
 
@@ -127,7 +127,7 @@ Azure Backup Server kann Workloads schützen, die sich in derselben Domäne wie 
   * Dateiserver
   * Hyper-V
 
-  Diese Arbeitslasten können auf einem einzelnen Server oder in einer Clusterkonfiguration ausgeführt werden. Ausführliche Informationen zur Unterstützung und zur erforderlichen Authentifizierung, um eine Workload zu schützen, die sich nicht in einer vertrauenswürdigen Domäne befindet, finden Sie unter [Vorbereiten von Computern in Arbeitsgruppen und nicht vertrauenswürdigen Domänen](https://docs.microsoft.com/system-center/dpm/prepare-environment-for-dpm).
+  Diese Arbeitslasten können auf einem einzelnen Server oder in einer Clusterkonfiguration ausgeführt werden. Ausführliche Informationen zur Unterstützung und zur erforderlichen Authentifizierung, um eine Workload zu schützen, die sich nicht in einer vertrauenswürdigen Domäne befindet, finden Sie unter [Vorbereiten von Computern in Arbeitsgruppen und nicht vertrauenswürdigen Domänen](/system-center/dpm/prepare-environment-for-dpm).
 
 ## <a name="unsupported-data-types"></a>Nicht unterstützte Datentypen
 

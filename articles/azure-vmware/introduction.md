@@ -2,13 +2,13 @@
 title: Einführung
 description: Hier finden Sie Informationen zu den Features und Vorteilen von Azure VMware Solution für die Bereitstellung und Verwaltung VMware-basierter Workloads in Azure.
 ms.topic: overview
-ms.date: 11/11/2020
-ms.openlocfilehash: 255d3599385c60d3b13f4769796ced41a1177311
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/24/2021
+ms.openlocfilehash: 32dd73108dc12d7d7acc605f43a0fbf6d2cf1cd7
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100579284"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106107984"
 ---
 # <a name="what-is-azure-vmware-solution"></a>Was ist Azure VMware Solution?
 
@@ -55,6 +55,9 @@ In Ihrer privaten Cloud haben Sie folgende Möglichkeiten:
 
 Überwachungsmuster innerhalb von Azure VMware Solution sind mit virtuellen Azure-Computern auf der IaaS-Plattform vergleichbar. Weitere Informationen und Anleitungen finden Sie unter [Überwachen von virtuellen Azure-Computern mit Azure Monitor](../azure-monitor/vm/monitor-vm-azure.md).
 
+## <a name="customer-communication"></a>Kundenkommunikation
+[!INCLUDE [customer-communications](includes/customer-communications.md)]
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Machen Sie sich als Nächstes mit zentralen [Konzepten privater Clouds und Cluster](concepts-private-clouds-clusters.md) vertraut.
@@ -63,3 +66,5 @@ Machen Sie sich als Nächstes mit zentralen [Konzepten privater Clouds und Clust
 
 <!-- LINKS - internal -->
 [concepts-private-clouds-clusters]: ./concepts-private-clouds-clusters.md
+
+

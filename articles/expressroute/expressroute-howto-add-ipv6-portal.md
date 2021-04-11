@@ -7,19 +7,19 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 03/09/2021
 ms.author: duau
-ms.openlocfilehash: 9b85caa3611c484fc17423637dc36ce20b48b823
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 7f5afc05a8d03d33366a2f76318bcf5e039d4d30
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104868476"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105561660"
 ---
 # <a name="add-ipv6-support-for-private-peering-using-the-azure-portal-preview"></a>Hinzufügen der IPv6-Unterstützung für privates Peering mithilfe des Azure-Portal (Vorschau)
 
 In diesem Artikel wird beschrieben, wie Sie die IPv6-Unterstützung zum Herstellen einer Verbindung mit Ihren Ressourcen in Azure über ExpressRoute mithilfe des Azure-Portal hinzufügen. 
 
 > [!Note]
-> Dieses Feature ist derzeit als Vorschauversion in den [Azure-Regionen mit Verfügbarkeitszonen](https://docs.microsoft.com/azure/availability-zones/az-region#azure-regions-with-availability-zones) verfügbar. Die ExpressRoute-Verbindung kann daher über einen beliebigen Peeringstandort erstellt werden, aber die IPv6-basierten Bereitstellungen, mit denen sie verknüpft ist, müssen sich in einer Region mit Verfügbarkeitszonen befinden.
+> Dieses Feature ist derzeit als Vorschauversion in den [Azure-Regionen mit Verfügbarkeitszonen](../availability-zones/az-region.md#azure-regions-with-availability-zones) verfügbar. Die ExpressRoute-Verbindung kann daher über einen beliebigen Peeringstandort erstellt werden, aber die IPv6-basierten Bereitstellungen, mit denen sie verknüpft ist, müssen sich in einer Region mit Verfügbarkeitszonen befinden.
 
 ## <a name="register-for-public-preview"></a>Registrieren für die Public Preview
 Bevor Sie die IPv6-Unterstützung hinzufügen können, müssen Sie Ihr Abonnement registrieren. Öffnen Sie Azure PowerShell, und führen Sie zum Registrieren die folgenden Befehle aus:
