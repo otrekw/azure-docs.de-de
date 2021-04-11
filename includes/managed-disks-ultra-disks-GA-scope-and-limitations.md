@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/28/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 26a5537496d9e881ece135437c403baf4a4fd67c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c8f817ad06742e6f84c3cb87dda0c36866540267
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96016630"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106450430"
 ---
 Derzeit gibt es für Ultra-Datenträger weitere Einschränkungen, die wie folgt lauten:
 
@@ -31,6 +31,7 @@ In der folgenden Tabelle sind die Regionen, in denen Disk Ultra-Datenträger ver
 |Asien, Osten     |Nur einzelne VMs (Verfügbarkeitsgruppen und VM-Skalierungsgruppen werden nicht unterstützt)|
 |Deutschland, Westen-Mitte     |Nur einzelne VMs (Verfügbarkeitsgruppen und VM-Skalierungsgruppen werden nicht unterstützt)|
 |Korea, Mitte     |Nur einzelne VMs (Verfügbarkeitsgruppen und VM-Skalierungsgruppen werden nicht unterstützt)|
+|USA Nord Mitte    |Nur einzelne VMs (Verfügbarkeitsgruppen und VM-Skalierungsgruppen werden nicht unterstützt)|
 |USA Süd Mitte    |Nur einzelne VMs (Verfügbarkeitsgruppen und VM-Skalierungsgruppen werden nicht unterstützt)|
 |US Gov Arizona     |Nur einzelne VMs (Verfügbarkeitsgruppen und VM-Skalierungsgruppen werden nicht unterstützt)|
 |US Government, Virginia     |Nur einzelne VMs (Verfügbarkeitsgruppen und VM-Skalierungsgruppen werden nicht unterstützt)|
@@ -39,7 +40,7 @@ In der folgenden Tabelle sind die Regionen, in denen Disk Ultra-Datenträger ver
 |Australien, Mitte    |Nur einzelne VMs (Verfügbarkeitsgruppen und VM-Skalierungsgruppen werden nicht unterstützt)|
 |Australien (Osten)     |Drei Verfügbarkeitszonen         |
 |Asien, Südosten    |Drei Verfügbarkeitszonen        |
-|Kanada, Mitte*     |Drei Verfügbarkeitszonen          |
+|Kanada, Mitte     |Drei Verfügbarkeitszonen          |
 |USA (Mitte)     |Drei Verfügbarkeitszonen          |
 |East US     |Drei Verfügbarkeitszonen          |
 |USA (Ost) 2     |Drei Verfügbarkeitszonen         |
@@ -49,8 +50,6 @@ In der folgenden Tabelle sind die Regionen, in denen Disk Ultra-Datenträger ver
 |UK, Süden    |Drei Verfügbarkeitszonen        |
 |Europa, Westen    | Drei Verfügbarkeitszonen|
 |USA, Westen 2    |Drei Verfügbarkeitszonen|
-
-\* Wenden Sie sich an den Azure-Support, um Zugriff auf Verfügbarkeitszonen für diese Region zu erhalten.
 
 - Werden nur auf den folgenden VM-Serien unterstützt:
     - [ESv3](../articles/virtual-machines/ev3-esv3-series.md#esv3-series)
@@ -67,11 +66,11 @@ In der folgenden Tabelle sind die Regionen, in denen Disk Ultra-Datenträger ver
     - [Mv2](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md)
 - Nicht jede VM-Größe ist in allen unterstützten Regionen mit Ultra-Datenträgern verfügbar.
 - Nur als Datenträger verfügbar. 
-- Unterstützt standardmäßig die physische Sektorgröße von 4K. Die Sektorgröße 512E ist als allgemein verfügbares Angebot verfügbar (keine Registrierung erforderlich), ist aber derzeit nur über die CLI oder PowerShell verfügbar. Die meisten Anwendungen sind mit der Sektorgröße 4K kompatibel, einige benötigen jedoch eine Sektorgröße von 512 Byte. Für Oracle Database ist beispielsweise die Version 12.2 oder höher erforderlich, um native Datenträger mit 4K zu unterstützen. Ältere Oracle DB-Versionen benötigen eine Sektorgröße von 512 Byte.
+- Unterstützt standardmäßig die physische Sektorgröße von 4K. Die Sektorgröße 512E steht als allgemein verfügbares Angebot zur Verfügung (keine Registrierung erforderlich). Die meisten Anwendungen sind mit der Sektorgröße 4K kompatibel, einige benötigen jedoch eine Sektorgröße von 512 Byte. Für Oracle Database ist beispielsweise die Version 12.2 oder höher erforderlich, um native Datenträger mit 4K zu unterstützen. Ältere Oracle DB-Versionen benötigen eine Sektorgröße von 512 Byte.
 - Können nur als leere Datenträger erstellt werden.
 - Unterstützt derzeit keine Momentaufnahmen von Datenträgern, VM-Images, Verfügbarkeitsgruppen, Azure Dedicated Hosts oder Azure Disk Encryption.
 - Unterstützt derzeit keine Integration in Azure Backup oder Azure Site Recovery.
 - Unterstützt nur Lese- und Schreibvorgänge, die nicht zwischengespeichert sind.
 - Die IOPS-Obergrenze liegt bei allgemein verfügbaren virtuellen Computern derzeit bei 80.000.
 
-Azure Ultra-Datenträger bieten standardmäßig bis zu 16 TiB pro Region pro Abonnement, aber Disk Ultra-Datenträger unterstützen auf Anfrage auch höhere Kapazitäten. Wenden Sie sich an den Azure-Support, um eine Erhöhung der Kapazität anzufordern.
+Ultra Disks bieten in Azure pro Region und Abonnement standardmäßig bis zu 32 TiB, auf Anfrage aber auch mehr Kapazität. Wenn Sie mehr Kapazität wünschen, beantragen Sie eine Kontingenterhöhung, oder wenden Sie sich an den Azure-Support.

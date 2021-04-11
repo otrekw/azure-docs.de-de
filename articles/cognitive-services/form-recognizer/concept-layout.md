@@ -10,16 +10,16 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 03/15/2021
 ms.author: lajanuar
-ms.openlocfilehash: 73bef21f430bde1c6c2c95d7c3f685cccbbd9179
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.openlocfilehash: cc19d5652f416657cbcd339de61379265587b4e7
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103467016"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106505381"
 ---
 # <a name="form-recognizer-layout-service"></a>Layoutdienst für die Formularerkennung
 
-Die Azure-Formularerkennung kann Text, Tabellen, Auswahlmarkierungen und Strukturinformationen aus Dokumenten mithilfe ihres Layoutdiensts extrahieren. Die Layout-API ermöglicht Kunden, aus Dokumenten in vielen verschiedenen Formaten strukturierte Datendarstellungen der Dokumente zurückzugeben. Die API kombiniert unsere leistungsstarken Funktionen zur [optischen Zeichenerkennung (Optical Character Recognition, OCR)](../computer-vision/concept-recognizing-text.md) mit Deep Learning-Modellen zum Extrahieren von Text, Tabellen, Auswahlmarkierungen und der Dokumentstruktur. 
+Die Azure-Formularerkennung kann Text, Tabellen, Auswahlmarkierungen und Strukturinformationen aus Dokumenten mithilfe ihres Layoutdiensts extrahieren. Die Layout-API ermöglicht Kunden, aus Dokumenten in vielen verschiedenen Formaten strukturierte Datendarstellungen der Dokumente zurückzugeben. Die API kombiniert unsere leistungsstarken Funktionen zur [optischen Zeichenerkennung (Optical Character Recognition, OCR)](../computer-vision/overview-ocr.md) mit Deep Learning-Modellen zum Extrahieren von Text, Tabellen, Auswahlmarkierungen und der Dokumentstruktur. 
 
 ## <a name="what-does-the-layout-service-do"></a>Welche Aufgaben führt der Layoutdienst aus?
 
@@ -32,7 +32,7 @@ Die Layout-API extrahiert Text, Tabellen, Auswahlmarkierungen und Strukturinform
 Wenn Sie den Layoutdienst für die Formularerkennung ausprobieren möchten, wechseln Sie zum Onlinetool für die Beispielbenutzeroberfläche:
 
 > [!div class="nextstepaction"]
-> [Form OCR Test Tool (FOTT)](https://fott-preview.azurewebsites.net)
+> [Formularerkennung ausprobieren](https://fott-preview.azurewebsites.net)
 
 Zum Ausprobieren der Layout-API für die Formularerkennung benötigen Sie ein Azure-Abonnement ([kann hier kostenlos erstellt werden](https://azure.microsoft.com/free/cognitive-services)), einen Endpunkt für eine [Formularerkennungsressource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) und einen entsprechenden Schlüssel. 
 
@@ -48,7 +48,7 @@ Rufen Sie zunächst den Vorgang [Analyze Layout](https://westcentralus.dev.cogni
 
 |Antwortheader| Ergebnis-URL |
 |:-----|:----|
-|Operation-Location | `https://cognitiveservice/formrecognizer/v2.1-preview.3/prebuilt/layout/analyzeResults/44a436324-fc4b-4387-aa06-090cfbf0064f` |
+|Operation-Location | `https://cognitiveservice/formrecognizer/v2.1-preview.3/layout/analyzeResults/44a436324-fc4b-4387-aa06-090cfbf0064f` |
 
 ### <a name="natural-reading-order-output-latin-only"></a>Ausgabe der natürlichen Leserichtung (nur lateinische Sprachen)
 

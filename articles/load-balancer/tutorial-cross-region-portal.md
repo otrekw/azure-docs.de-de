@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: load-balancer
 ms.topic: tutorial
 ms.date: 02/24/2021
-ms.openlocfilehash: c16123fae63b89eff57b5c91864d9a947e01b386
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 65d85f51afef36aa618868e2fda1d2bbf583ea21
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104576916"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106221125"
 ---
 # <a name="tutorial-create-a-cross-region-azure-load-balancer-using-the-azure-portal"></a>Tutorial: Erstellen einer regionsübergreifenden Azure Load Balancer-Instanz mithilfe des Azure-Portals
 
@@ -105,34 +105,6 @@ Erstellen Sie den Back-End-Adresspool **myBackendPool-CR**, der die regionalen L
 8. Wählen Sie **Hinzufügen**.
 
     :::image type="content" source="./media/tutorial-cross-region-portal/add-to-backendpool.png" alt-text="Hinzufügen von regionalen Lastenausgleichsmodulen zum Back-End-Pool" border="true":::
-
-## <a name="create-a-health-probe"></a>Erstellen eines Integritätstests
-
-In diesem Abschnitt erstellen Sie einen Integritätstest, um die Lastenausgleichsregel zu erstellen:
-
-* Name: **myHealthProbe**
-* Protokoll: **TCP**
-* Intervall: **5** Sekunden
-* Fehlerschwellenwert: **zwei** Fehler
-
-1. Wählen Sie im linken Menü **Alle Dienste** > **Alle Ressourcen** und anschließend in der Ressourcenliste den Eintrag **myLoadBalancer-CR** aus.
-
-2. Klicken Sie unter **Einstellungen** auf **Integritätstests**.
-
-3. Verwenden Sie folgende Werte, um den Integritätstest zu konfigurieren:
-
-    | Einstellung | Wert |
-    | ------- | ----- |
-    | Name | Geben Sie **myHealthProbe** ein. |
-    | Protocol | Wählen Sie **TCP** aus. |
-    | Port | Geben Sie **80** ein. |
-    | Intervall | Geben Sie **5** ein. |
-    | Fehlerhafter Schwellenwert | Geben Sie **2** ein. |
-
-4. Klicken Sie auf **OK**.
-
-    > [!NOTE]
-    > Der regionsübergreifende Lastenausgleich verfügt über einen integrierten Integritätstest. Dieser Test ist ein Platzhalter, damit die Erstellung der Lastenausgleichsregel funktioniert.  Weitere Informationen finden Sie unter **[Einschränkungen des regionsübergreifenden Lastenausgleichs](cross-region-overview.md#limitations)** .
 
 ## <a name="create-a-load-balancer-rule"></a>Erstellen einer Load Balancer-Regel
 

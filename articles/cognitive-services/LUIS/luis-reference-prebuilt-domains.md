@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 09/27/2019
-ms.openlocfilehash: 73b279f98011181b329cdb010041022ab0da57f0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6f9637a24bcb722fc20ee08408c8bb3d8b240113
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95018632"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106076320"
 ---
 # <a name="prebuilt-domain-reference-for-your-luis-app"></a>Vordefinierter Domänenverweis für die LUIS-App
 Diese Referenz enthält Informationen über die [vordefinierten Domänen](./howto-add-prebuilt-models.md), bei denen es sich um vordefinierte Sammlungen der von LUIS gebotenen Absichten und Entitäten handelt.
@@ -25,19 +25,19 @@ Diese Referenz enthält Informationen über die [vordefinierten Domänen](./howt
 
 In der folgenden Tabelle sind die derzeit unterstützten Domänen zusammengefasst. Die Unterstützung für Englisch ist in der Regel vollständiger als für andere Sprachen.
 
-| Entitätstyp       | EN-US      | ZH-CN   | DE    | BV     | ES    | IT      | PT-BR |  JP  |      KO |        NL |    TR |
-|:-----------------:|:-------:|:-------:|:-----:|:------:|:-----:|:-------:| :-------:| :-------:| :-------:| :-------:|  :-------:|
-| Kalender  | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
-|Kommunikation  | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
-| Email     | ✓    | ✓       | ✓   | ✓     | ✓     | ✓  | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
-| HomeAutomation          | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
-| Notizen     | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
-| Orte   | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
-| RestaurantReservation  | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
-| ToDo     | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
-| Versorgungsunternehmen      | ✓    | ✓        | ✓    | ✓      | ✓     | ✓       | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
-| Weather        | ✓    | ✓        | ✓    | ✓      | ✓     | ✓       | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
-| Web    | ✓    | ✓        | ✓    | ✓      | ✓     | ✓       | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
+|      Entitätstyp      | EN-US | ZH-CN | DE | BV | ES | IT | PT-BR | JP | KO | NL | TR |
+|:---------------------:|:-----:|:-----:|:--:|:--:|:--:|:--:|------:|---:|---:|---:|---:|
+|       Kalender        |   ✓   |   ✓   | ✓  | ✓  | ✓  | ✓  |     ✓ |  ✓ |  ✓ |  ✓ |  ✓ |
+|     Kommunikation     |   ✓   |   ✓   | ✓  | ✓  | ✓  | ✓  |     ✓ |  ✓ |  ✓ |  ✓ |  ✓ |
+|         Email         |   ✓   |   ✓   | ✓  | ✓  | ✓  | ✓  |     ✓ |  ✓ |  ✓ |  ✓ |  ✓ |
+|    HomeAutomation     |   ✓   |   ✓   | ✓  | ✓  | ✓  | ✓  |     ✓ |  ✓ |  ✓ |  ✓ |  ✓ |
+|         Notizen         |   ✓   |   ✓   | ✓  | ✓  | ✓  | ✓  |     ✓ |  ✓ |  ✓ |  ✓ |  ✓ |
+|        Orte         |   ✓   |   ✓   | ✓  | ✓  | ✓  | ✓  |     ✓ |  ✓ |  ✓ |  ✓ |  ✓ |
+| RestaurantReservation |   ✓   |   ✓   | ✓  | ✓  | ✓  | ✓  |     ✓ |  ✓ |  ✓ |  ✓ |  ✓ |
+|         ToDo          |   ✓   |   ✓   | ✓  | ✓  | ✓  | ✓  |     ✓ |  ✓ |  ✓ |  ✓ |  ✓ |
+|       Versorgungsunternehmen       |   ✓   |   ✓   | ✓  | ✓  | ✓  | ✓  |     ✓ |  ✓ |  ✓ |  ✓ |  ✓ |
+|        Weather        |   ✓   |   ✓   | ✓  | ✓  | ✓  | ✓  |     ✓ |  ✓ |  ✓ |  ✓ |  ✓ |
+|          Web          |   ✓   |   ✓   | ✓  | ✓  | ✓  | ✓  |     ✓ |  ✓ |  ✓ |  ✓ |  ✓ |
 
 Vordefinierte Domänen werden in den folgenden Sprachen **nicht unterstützt**:
 

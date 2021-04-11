@@ -1,0 +1,20 @@
+---
+author: DCtheGeek
+ms.service: azure-policy
+ms.topic: include
+ms.date: 03/31/2021
+ms.author: dacoulte
+ms.custom: generated
+ms.openlocfilehash: fa0dbaf3cb4d91ef3ae54849584e46241abf4eb1
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106095561"
+---
+|Name<br /><sub>(Azure-Portal)</sub> |BESCHREIBUNG |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
+|---|---|---|---|
+|[Die Azure-Dateisynchronisierung sollte eine private Verbindung verwenden](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1d320205-c6a1-4ac6-873d-46224024e8e2) |Durch das Erstellen eines privaten Endpunkts für die angegebene Speichersynchronisierungsdienst-Ressource können Sie aus dem privaten IP-Adressraum Ihres Organisationsnetzwerk auf Ihre Speichersynchronisierungsdienst-Ressource zugreifen, anstatt für den Zugriff den über das Internet zugänglichen öffentlichen Endpunkt zu verwenden. Das Erstellen eines privaten Endpunkts führt nicht dazu, dass der öffentliche Endpunkt deaktiviert wird. |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/StorageSync_PrivateEndpoint_AuditIfNotExists.json) |
+|[Konfigurieren der Azure-Dateisynchronisierung mit privaten Endpunkten](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb35dddd9-daf7-423b-8375-5a5b86806d5a) |Hiermit wird ein privater Endpunkt für die angegebene Speichersynchronisierungsdienst-Ressource erstellt. So können Sie aus dem privaten IP-Adressraum Ihres Organisationsnetzwerk auf Ihre Speichersynchronisierungsdienst-Ressource zugreifen, anstatt für den Zugriff den über das Internet zugänglichen öffentlichen Endpunkt zu verwenden. Das Vorhandensein von einem oder mehreren privaten Endpunkten an sich führt nicht dazu, dass der öffentliche Endpunkt deaktiviert wird. |DeployIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/StorageSync_PrivateEndpoint_DeployIfNotExists.json) |
+|[Ändern – Azure-Dateisynchronisierung zum Deaktivieren des Zugriffs auf öffentliche Netzwerke konfigurieren](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0e07b2e9-6cd9-4c40-9ccb-52817b95133b) |Die über das Internet zugänglichen öffentlichen Endpunkte der Azure-Dateisynchronisierung wurden durch eine organisationsweite Richtlinie deaktiviert. Sie können über die privaten Endpunkte weiterhin auf den Azure-Dateisynchronisierungsdienst zugreifen. |Modify, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/StorageSync_IncomingTrafficPolicy_Modify.json) |
+|[Für die Azure-Dateisynchronisierung sollte der Zugriff auf öffentliche Netzwerke deaktiviert sein](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F21a8cd35-125e-4d13-b82d-2e19b7208bb7) |Durch das Deaktivieren des öffentlichen Endpunkts können Sie den Zugriff auf Ihre Speichersynchronisierungsdienst-Ressource auf Anforderungen beschränken, die für genehmigte private Endpunkte im Netzwerk Ihrer Organisation bestimmt sind. Das Zulassen von Anforderungen an den öffentlichen Endpunkt ist nicht grundsätzlich unsicher, aber möglicherweise muss der öffentliche Endpunkt zur Erfüllung gesetzlicher, rechtlicher oder organisatorischer Richtlinienanforderungen deaktiviert werden. Sie können den öffentlichen Endpunkt für einen Speichersynchronisierungsdienst deaktivieren, indem Sie „incomingTrafficPolicy“ für die Ressource auf „AllowVirtualNetworksOnly“ festlegen. |Audit, Deny, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/StorageSync_IncomingTrafficPolicy_AuditDeny.json) |

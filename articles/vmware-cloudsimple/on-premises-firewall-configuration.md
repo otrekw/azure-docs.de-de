@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 6ff057d99e29c7c6fe30e77f38a0bff265dbe7bf
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 3cc9ad0c694be8f95ddcffbc3d952d59b83f89f3
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "86998889"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106077209"
 ---
 # <a name="accessing-your-cloudsimple-private-cloud-environment-and-applications-from-on-premises"></a>Lokales Zugreifen auf Ihre private CloudSimple-Cloudumgebung und darin enthaltene Anwendungen
 
@@ -43,7 +43,7 @@ Um das lokale Active Directory als Identitätsquelle für vCenter in der private
 | 389 (TCP/UDP) | Verwaltungsnetzwerk für die private Cloud | Lokale Active Directory-Domänencontroller     | Erforderlich für die LDAP-Kommunikation vom vCenter-Server in der privaten Cloud mit Active Directory-Domänencontrollern für die Benutzerauthentifizierung.                |
 | 636 (TCP)     | Verwaltungsnetzwerk für die private Cloud | Lokale Active Directory-Domänencontroller     | Erforderlich für die Secure LDAP-Kommunikation (LDAPS) vom vCenter-Server in der privaten Cloud mit Active Directory-Domänencontrollern für die Benutzerauthentifizierung. |
 | 3268 (TCP)    | Verwaltungsnetzwerk für die private Cloud | Globale Katalogserver für das lokale Active Directory | Erforderlich für die LDAP-Kommunikation in Bereitstellungen mit mehreren Domänencontrollern.                                                                        |
-| 3269 (TCP)    | Verwaltungsnetzwerk für die private Cloud | Globale Katalogserver für das lokale Active Directory | Erforderlich für die LDAPS-Kommunikation in Bereitstellungen mit mehreren Domänencontrollern.                                                                       |                                           |
+| 3269 (TCP)    | Verwaltungsnetzwerk für die private Cloud | Globale Katalogserver für das lokale Active Directory | Erforderlich für die LDAPS-Kommunikation in Bereitstellungen mit mehreren Domänencontrollern.                                                                       |
 
 ## <a name="common-ports-required-for-accessing-workload-virtual-machines"></a>Allgemeine erforderliche Ports für den Zugriff auf virtuelle Computer für Workloads
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: jeedes
-ms.openlocfilehash: ef1ca41f54a15554a04fa3edf608bb13f5fb3398
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 94ab61a5c6335d43842ada48f17572c186af773c
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96182018"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106077192"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workday-mobile-application"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Workday Mobile Application
 
@@ -132,13 +132,11 @@ Um sicherzustellen, dass die Anmeldung für iOS-Geräte nur über eine Workday-I
 
 | Szenario | Schlüssel-Wert-Paare |
 |----------------------------------------------------------------------------------------   |-----------|
-| Automatisches Ausfüllen der Mandanten- und Webadressfelder für Folgendes:<br>● Workday unter Android, wenn Sie Arbeitsprofile für Android aktivieren<br>● Workday auf iPad und iPhone     | Konfigurieren Sie Ihren Mandanten mit folgenden Werten: <br>● Konfigurationsschlüssel = `UserGroupCode`<br>● Werttyp: Zeichenfolge <br>●   Konfigurationswert: Name Ihres Mandanten. Ein Beispiel: `gms`<br>Konfigurieren Sie Ihre Webadresse mit folgenden Werten:<br>● Konfigurationsschlüssel = `AppServiceHost`<br>●   Werttyp: Zeichenfolge<br>●    Konfigurationswert: Basis-URL für Ihren Mandanten. Ein Beispiel: `https://www.myworkday.com`                                |   |
+| Automatisches Ausfüllen der Mandanten- und Webadressfelder für Folgendes:<br>● Workday unter Android, wenn Sie Arbeitsprofile für Android aktivieren<br>● Workday auf iPad und iPhone     | Konfigurieren Sie Ihren Mandanten mit folgenden Werten: <br>● Konfigurationsschlüssel = `UserGroupCode`<br>● Werttyp: Zeichenfolge <br>●   Konfigurationswert: Name Ihres Mandanten. Ein Beispiel: `gms`<br>Konfigurieren Sie Ihre Webadresse mit folgenden Werten:<br>● Konfigurationsschlüssel = `AppServiceHost`<br>●   Werttyp: Zeichenfolge<br>●    Konfigurationswert: Basis-URL für Ihren Mandanten. Ein Beispiel: `https://www.myworkday.com`                                | 
 | Deaktivieren Sie für Workday auf iPad und iPhone die folgenden Aktionen:<br>●    Ausschneiden, Kopieren und Einfügen<br>●   Drucken                       | Legen Sie den (booleschen) Wert für die folgenden Schlüssel auf `False` fest, um die entsprechenden Funktionen zu deaktivieren:<br>●   `AllowCutCopyPaste`<br>●    `AllowPrint`    |
 | Deaktivieren Sie Screenshots für Workday unter Android. |Legen Sie den (booleschen) Wert für den Schlüssel `AllowScreenshots` auf `False` fest, um die entsprechenden Funktionen zu deaktivieren.|
 | Deaktivieren Sie vorgeschlagene Updates für Ihre Benutzer.|Legen Sie den (booleschen) Wert für den Schlüssel `AllowSuggestedUpdates` auf `False` fest, um die entsprechenden Funktionen zu deaktivieren.|
 |Passen Sie die App Store-URL an, um mobile Benutzer zum App Store Ihrer Wahl weiterzuleiten.|Ändern Sie die App Store-URL wie folgt:<br>● Konfigurationsschlüssel = `AppUpdateURL`<br>● Werttyp: Zeichenfolge<br> ●   Konfigurationswert: App Store-URL|
-|       |
-
 
 ## <a name="ios-configuration-policies"></a>iOS-Konfigurationsrichtlinien
 

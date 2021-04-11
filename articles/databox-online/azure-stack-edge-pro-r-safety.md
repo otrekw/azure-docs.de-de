@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: alkohli
-ms.openlocfilehash: dacc9ecc28ffa482b60d1e48735fe3620b5b7558
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 7b3589349feed2e20711aa756d8be8ebc433ac0b
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100363065"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106077600"
 ---
 # <a name="azure-stack-edge-pro-r-safety-instructions"></a>Sicherheitsanweisungen für Azure Stack Edge Pro R
 
@@ -37,7 +37,8 @@ Beim Einrichten und Ausführen des Azure Stack Edge Pro R-Geräts sind die folg
 | Symbol | BESCHREIBUNG |
 |:--- |:--- |
 | ![Alle Anleitungen zuvor lesen](./media/azure-stack-edge-pro-r-safety/icon-safety-read-all-instructions.png) | Alle Anleitungen zuvor lesen |
-| ![Symbol „Hinweis“](./media/azure-stack-edge-mini-r-safety/icon-safety-notice.png) **HINWEIS:** | Zeigt als wichtig erachtete Informationen an, die allerdings nicht mit Gefahren in Verbindung stehen. || ![Gefahrensymbol](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png) | Gefahrensymbol |
+| ![Symbol „Hinweis“](./media/azure-stack-edge-mini-r-safety/icon-safety-notice.png) **HINWEIS:** | Zeigt als wichtig erachtete Informationen an, die allerdings nicht mit Gefahren in Verbindung stehen. |
+| ![Gefahrensymbol](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png) | Gefahrensymbol |
 | ![Symbol "Kippgefahr"](./media/azure-stack-edge-pro-r-safety/icon-safety-tip-hazard.png)  | Kippgefahr|
 | ![Symbol "Hohes Gewicht"](./media/azure-stack-edge-pro-r-safety/icon-safety-heavy-weight.png)  | Gefahr „Hohes Gewicht“|
 | ![Symbol "Stromschlag"](./media/azure-stack-edge-pro-r-safety/icon-safety-electric-shock.png) | Gefahr eines Stromschlags |
@@ -45,7 +46,7 @@ Beim Einrichten und Ausführen des Azure Stack Edge Pro R-Geräts sind die folg
 | ![Symbol „Mehrere Stromquellen“](./media/azure-stack-edge-pro-r-safety/icon-safety-disconnect-all-power.png)  | Mehrere Stromquellen Ziehen Sie alle Netzkabel ab, um die gesamte Stromversorgung des Geräts zu entfernen. |
 | ![Symbol „Quetchkanten“](./media/azure-stack-edge-pro-r-safety/icon-pinching-points.png)  | Es gibt Quetchkanten. |
 | ![Symbol „Heiße Komponenten oder Oberflächen“](./media/azure-stack-edge-pro-r-safety/icon-hot-component-surface.png)  | Weist auf heiße Komponenten oder Oberflächen hin. |
-|
+
 
 ## <a name="handling-precautions-and-site-selection"></a>Vorsichtsmaßnahmen für die Arbeit und Standortauswahl
 

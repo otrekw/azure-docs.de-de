@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 2cdf068d31cf621538eb265977ea0dae20e16e85
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: a01571f4a1f852deb84b7f20d61b8048e8000790
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106109321"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106490096"
 ---
 # <a name="encoding-scenario-based-migration-guidance"></a>Szenariobasierter Migrationsleitfaden für die Codierung
 
@@ -103,7 +103,7 @@ Wenn Sie zuvor Workflows zum Kopieren von Dateien aus Azure-Blobdateien in leere
 
 ## <a name="indexer-v1-audio-transcription-to-the-new-audioanalyzer-basic-mode"></a>Indexer V1-Audioaufzeichnung im neuen „einfachen Modus“ von AudioAnalyzer
 
-Für Kunden, die den Indexer V1-Prozessor in der V2-API verwenden, müssen Sie vor dem Übermitteln eines Auftrags eine Transformation erstellen, die den neuen `AudioAnalyzer` im [einfachen Modus](how-to-create-basic-audio-transform.md) aufruft.
+Für Kunden, die den Indexer V1-Prozessor in der V2-API verwenden, müssen Sie vor dem Übermitteln eines Auftrags eine Transformation erstellen, die den neuen `AudioAnalyzer` im [einfachen Modus](transform-create-basic-audio-how-to.md) aufruft.
 
 ## <a name="encoding-transforms-and-jobs-concepts-tutorials-and-how-to-guides"></a>Konzepte, Tutorials und Schrittanleitungen für Codierung, Transformationen und Aufträge
 
@@ -127,18 +127,18 @@ Für Kunden, die den Indexer V1-Prozessor in der V2-API verwenden, müssen Sie v
 
 - [Erstellen einer Auftragseingabe aus einer HTTPS-URL](job-input-from-http-how-to.md)
 - [Erstellen einer Auftragseingabe aus einer lokalen Datei](job-input-from-local-file-how-to.md)
-- [Erstellen einer einfachen Audiotransformation](how-to-create-basic-audio-transform.md)
+- [Erstellen einer einfachen Audiotransformation](transform-create-basic-audio-how-to.md)
 - Mit .NET
-  - [Codieren mit einer benutzerdefinierten Transformation – .NET](encode-custom-presets-how-to.md)
-  - [Gewusst wie: Erstellen einer Überlagerung mit Media Encoder Standard](how-to-create-overlay.md)
-  - [Generieren von Vorschauminiaturen mithilfe des Media Encoder Standards mit .NET](media-services-generate-thumbnails-dotnet.md)
+  - [Codieren mit einer benutzerdefinierten Transformation – .NET](transform-custom-presets-how-to.md)
+  - [Gewusst wie: Erstellen einer Überlagerung mit Media Encoder Standard](transform-create-overlay-how-to.md)
+  - [Generieren von Vorschauminiaturen mithilfe des Media Encoder Standards mit .NET](transform-generate-thumbnails-dotnet-how-to.md)
 - Mit der Azure-Befehlszeilenschnittstelle
-  - [Codieren mit einer benutzerdefinierten Transformation: Azure CLI](encode-custom-preset-cli-how-to.md)
+  - [Codieren mit einer benutzerdefinierten Transformation: Azure CLI](transform-custom-preset-cli-how-to.md)
 - Mit REST
-  - [Codieren mit einer benutzerdefinierten Transformation: REST](encode-custom-preset-rest-how-to.md)
-  - [Generieren von Vorschauminiaturen mithilfe des Media Encoder Standards mit REST](media-services-generate-thumbnails-rest.md)
-- [Erstellen von Subclips für ein Video beim Codieren mit Media Services: .NET](subclip-video-dotnet-howto.md)
-- [Erstellen von Subclips für ein Video beim Codieren mit Media Services: REST](subclip-video-rest-howto.md)
+  - [Codieren mit einer benutzerdefinierten Transformation: REST](transform-custom-preset-rest-how-to.md)
+  - [Generieren von Vorschauminiaturen mithilfe des Media Encoder Standards mit REST](transform-generate-thumbnails-rest-how-to.md)
+- [Erstellen von Subclips für ein Video beim Codieren mit Media Services: .NET](transform-subclip-video-dotnet-how-to.md)
+- [Erstellen von Subclips für ein Video beim Codieren mit Media Services: REST](transform-subclip-video-rest-how-to.md)
 
 ## <a name="samples"></a>Beispiele
 
