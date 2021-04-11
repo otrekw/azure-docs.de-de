@@ -1,16 +1,14 @@
 ---
 title: Leistungsüberwachung mit der Microsoft Azure-Diagnose
 description: Verwenden Sie die Microsoft Azure-Diagnose, um Leistungsindikatoren für Ihre Azure Service Fabric-Cluster zu erfassen.
-author: srrengar
 ms.topic: conceptual
 ms.date: 11/21/2018
-ms.author: srrengar
-ms.openlocfilehash: c2114f5392da788bb440589e69e704a148731e02
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 6803494d29bf97336e30128f9f5ad20ec73ce202
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "86258618"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105627403"
 ---
 # <a name="performance-monitoring-with-the-windows-azure-diagnostics-extension"></a>Leistungsüberwachung mit der Microsoft Azure-Diagnoseerweiterung
 

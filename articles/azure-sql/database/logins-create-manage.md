@@ -13,12 +13,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 03/23/2020
-ms.openlocfilehash: d03bce1566d4f56a576c980723571f587296236f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a0e9cc9967509eba05bd26f3bad86eefeeb6ca3e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96452433"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105639473"
 ---
 # <a name="authorize-database-access-to-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Autorisieren des Datenbankzugriffs für Azure SQL-Datenbank, SQL Managed Instance und Azure Synapse Analytics
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -85,7 +85,7 @@ An diesem Punkt ist Ihr Server oder Ihre verwaltete Instanz lediglich für den Z
 
   - Erstellen Sie eine weitere SQL-Anmeldung in der Masterdatenbank.
   - Fügen Sie die Anmeldung mit der Anweisung [ALTER SERVER ROLE](/sql/t-sql/statements/alter-server-role-transact-sql) zur [festen Serverrolle „sysadmin“](/sql/relational-databases/security/authentication-access/server-level-roles) hinzu. Diese Anmeldung verfügt über vollständige Administratorberechtigungen.
-  - Alternativ können Sie eine [Azure AD-Anmeldung](authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance) mithilfe der Syntax [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) erstellen.
+  - Alternativ können Sie eine [Azure AD-Anmeldung](authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance) mithilfe der Syntax [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true) erstellen.
 
 - **Erstellen von SQL-Anmeldungen mit eingeschränkten Administratorberechtigungen in Azure SQL-Datenbank**
 
@@ -122,9 +122,9 @@ Sie können Konten für Benutzer ohne Administratorberechtigungen mithilfe einer
 
 Beispiele zum Erstellen von Anmeldungen und Benutzern finden Sie unter:
 
-- [Erstellen einer Anmeldung für Azure SQL-Datenbank](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-current#examples-1)
-- [Erstellen einer Anmeldung für Azure SQL Managed Instance](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current#examples-2)
-- [Erstellen einer Anmeldung für Azure Synapse](/sql/t-sql/statements/create-login-transact-sql?view=azure-sqldw-latest#examples-3)
+- [Erstellen einer Anmeldung für Azure SQL-Datenbank](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-current&preserve-view=true#examples-1)
+- [Erstellen einer Anmeldung für Azure SQL Managed Instance](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true#examples-2)
+- [Erstellen einer Anmeldung für Azure Synapse](/sql/t-sql/statements/create-login-transact-sql?view=azure-sqldw-latest&preserve-view=true#examples-3)
 - [Benutzer erstellen](/sql/t-sql/statements/create-user-transact-sql#examples)
 - [Erstellen eigenständiger Azure AD-Benutzer](authentication-aad-configure.md#create-contained-users-mapped-to-azure-ad-identities)
 
@@ -142,7 +142,7 @@ Nachdem Sie ein Benutzerkonto basierend auf einer Anmeldung oder als eigenständ
   - So fügen Sie einen Benutzer zu einer festen Datenbankrolle hinzu:
 
     - Verwenden Sie die Anweisung [ALTER ROLE](/sql/t-sql/statements/alter-role-transact-sql) in Azure SQL-Datenbank. Beispiele finden Sie unter [Beispiele zu ALTER ROLE](/sql/t-sql/statements/alter-role-transact-sql#examples).
-    - Verwenden Sie die Anweisung [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) in Azure Synapse. Beispiele finden Sie unter [Beispiele zu sp_addrolemember](/sql/t-sql/statements/alter-role-transact-sql).
+    - Verwenden Sie die Anweisung [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) in Azure Synapse. Beispiele finden Sie unter [Beispiele zu sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql#examples).
 
 - **Benutzerdefinierte Datenbankrolle**
 

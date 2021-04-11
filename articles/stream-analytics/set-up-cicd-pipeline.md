@@ -7,12 +7,12 @@ ms.author: sujie
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/10/2020
-ms.openlocfilehash: b601a3586cfa971b2e8337a914f4e10bb0178ba0
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 82a2c3047f851c9fbc273cd13e730572c38b6bcd
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98014245"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105640384"
 ---
 # <a name="use-azure-devops-to-create-a-cicd-pipeline-for-a-stream-analytics-job"></a>Erstellen einer CI/CD-Pipeline für einen Stream Analytics-Auftrag mit Azure DevOps
 
@@ -20,27 +20,27 @@ In diesem Artikel erfahren Sie, wie Sie [Build](/azure/devops/pipelines/get-star
 
 ## <a name="commit-your-stream-analytics-project"></a>Ausführen eines Commits für ein Stream Analytics-Projekt
 
-Bevor Sie beginnen, führen Sie einen Commit für alle Stream Analytics-Projekte als Quelldateien in ein [Azure DevOps](/azure/devops/user-guide/source-control)-Repository aus. Sie können dabei auf dieses [Beispielrepository](https://dev.azure.com/wenyzou/azure-streamanalytics-cicd-demo) und den [Stream Analytics-Projektquellcode ](https://dev.azure.com/wenyzou/_git/azure-streamanalytics-cicd-demo?path=%2FmyASAProject) in Azure Pipelines zurückgreifen.
+Bevor Sie beginnen, führen Sie einen Commit für alle Stream Analytics-Projekte als Quelldateien in ein [Azure DevOps](/azure/devops/user-guide/source-control)-Repository aus. Sie können dabei auf dieses [Beispielrepository](https://dev.azure.com/ASA-CICD-sample/azure-streamanalytics-cicd-demo) und den [Stream Analytics-Projektquellcode ](https://dev.azure.com/ASA-CICD-sample/_git/azure-streamanalytics-cicd-demo) in Azure Pipelines zurückgreifen.
 
 In den Schritten in diesem Artikel wird ein Stream Analytics Visual Studio Code-Projekt verwendet. Wenn Sie ein Visual Studio-Projekt verwenden, führen Sie die Schritte in [Automate builds, tests, and deployments of an Azure Stream Analytics job using CI/CD tools](cicd-tools.md) (Automatisieren von Builds, Tests und Bereitstellungen eines Azure Stream Analytics-Auftrags mithilfe von CI/CD-Tools) aus.
 
 ## <a name="create-a-build-pipeline"></a>Erstellen einer Buildpipeline
 
-In diesem Abschnitt erfahren Sie, wie Sie eine Buildpipeline erstellen. Sie können dabei auf dieses [Beispiel für eine Auto-Build- und Testpipeline](https://dev.azure.com/wenyzou/_git/azure-streamanalytics-cicd-demo?path=%2FmyASAProject) in Azure DevOps zurückgreifen.
+In diesem Abschnitt erfahren Sie, wie Sie eine Buildpipeline erstellen. 
 
 1. Öffnen Sie einen Webbrowser, und navigieren Sie zum gewünschten Projekt in Azure DevOps.  
 
-1. Wählen Sie unter **Pipelines** im linken Navigationsmenü **Builds** aus. Wählen Sie dann **Neue Pipeline** aus.
+2. Wählen Sie unter **Pipelines** im linken Navigationsmenü **Builds** aus. Wählen Sie dann **Neue Pipeline** aus.
 
    :::image type="content" source="media/set-up-cicd-pipeline/new-pipeline.png" alt-text="Erstellen einer neue Azure-Pipeline":::
 
-1. Wählen Sie **Klassischen Editor verwenden** aus, um eine Pipeline ohne YAML zu erstellen.
+3. Wählen Sie **Klassischen Editor verwenden** aus, um eine Pipeline ohne YAML zu erstellen.
 
-1. Wählen Sie Ihren Quelltyp, das Teamprojekt und das Repository aus. Wählen Sie anschließend **Weiter** aus.
+4. Wählen Sie Ihren Quelltyp, das Teamprojekt und das Repository aus. Wählen Sie anschließend **Weiter** aus.
 
    :::image type="content" source="media/set-up-cicd-pipeline/select-repo.png" alt-text="Auswählen eines Azure Stream Analytics-Projekts":::
 
-1. Wählen Sie auf der Seite **Eine Vorlage auswählen** den Eintrag **Leerer Auftrag** aus.
+5. Wählen Sie auf der Seite **Eine Vorlage auswählen** den Eintrag **Leerer Auftrag** aus.
 
 ## <a name="install-npm-package"></a>Installieren des npm-Pakets
 
@@ -55,6 +55,22 @@ In diesem Abschnitt erfahren Sie, wie Sie eine Buildpipeline erstellen. Sie kön
    ```
 
    :::image type="content" source="media/set-up-cicd-pipeline/npm-config.png" alt-text="Konfiguration für npm-Aufgabe eingeben":::
+
+Führen Sie die folgenden Schritte aus, wenn Sie den gehosteten Linux-Agent verwenden müssen:
+1.  Wählen Sie Ihre **Agentspezifikation** aus.
+   
+    :::image type="content" source="media/set-up-cicd-pipeline/select-linux-agent.png" alt-text="Screenshot der ausgewählten Agentspezifikation":::
+
+2.  Wählen Sie auf der Registerkarte **Aufgaben** das Pluszeichen neben **Agent-Auftrag 1** aus. Geben Sie in der Aufgabensuche *Befehlszeile* ein, und wählen Sie die **Befehlszeile** aus.
+   
+    :::image type="content" source="media/set-up-cicd-pipeline/cmd-search.png" alt-text="Screenshot der Suche nach der Aufgabe „Befehlszeile“":::
+
+3.  Weisen Sie der Aufgabe einen **Anzeigenamen** zu. Geben Sie den folgenden Befehl in **Skript** ein. Belassen Sie die übrigen Optionen in ihrer Standardeinstellung.
+
+      ```bash
+      sudo npm install -g azure-streamanalytics-cicd --unsafe-perm=true --allow-root
+      ```
+      :::image type="content" source="media/set-up-cicd-pipeline/cmd-scripts.png" alt-text="Screenshot der Eingabe eines Skripts für die Befehlszeilenaufgabe":::
 
 ## <a name="add-a-build-task"></a>Hinzufügen einer Buildaufgabe
 
@@ -139,7 +155,7 @@ Die Testzusammenfassungsdatei und Azure Resource Manager-Vorlagendateien finden 
 
 ## <a name="release-with-azure-pipelines"></a>Release mit Azure Pipelines
 
-In diesem Abschnitt erfahren Sie, wie Sie eine Releasepipeline erstellen. Sie können dabei auf dieses [Beispiel für eine Releasepipeline](https://dev.azure.com/wenyzou/azure-streamanalytics-cicd-demo/_release?_a=releases&view=mine&definitionId=2&preserve-view=true) in Azure DevOps zurückgreifen.
+In diesem Abschnitt erfahren Sie, wie Sie eine Releasepipeline erstellen. 
 
 Öffnen Sie einen Webbrowser, und navigieren Sie zu Ihrem Azure Stream Analytics Visual Studio Code-Projekt.
 

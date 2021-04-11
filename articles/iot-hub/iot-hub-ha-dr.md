@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: philmea
-ms.openlocfilehash: c665e30ed9b284f7c93cf8588b710c9f22457a0a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 9d2ffac813456398c02066c978c37bdb09501aeb
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92151667"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105628984"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>Hochverfügbarkeit und Notfallwiederherstellung von IoT Hub
 
@@ -64,7 +64,7 @@ Sobald der Failovervorgang für die IoT Hub-Instanz abgeschlossen ist, wird erwa
 >
 > - Wenn Sie für die Verbindung des integrierten Events-Endpunkts Azure Functions oder Azure Stream Analytics verwenden, müssen Sie möglicherweise einen **Neustart** durchführen. Der Grund: Während eines Failovers sind frühere Offsets nicht mehr gültig.
 >
-> - Beim Routing zum Speicher sollten die Blobs oder Dateien aufgelistet und anschließend durchlaufen werden, um sicherzustellen, dass alle Blobs oder Dateien gelesen werden, ohne dass eine Partition vorhanden ist. Der Partitionsbereich könnte sich möglicherweise bei einem von Microsoft initiierten Failover oder einem manuellen Failover ändern. Sie können die Liste der Blobs oder die [Liste der ADLS Gen2-APIs](/rest/api/storageservices/datalakestoragegen2/path/list) mithilfe der [Liste der Blobs-APIs](/rest/api/storageservices/list-blobs) aufzählen, um die gewünschte Liste von Dateien zu erhalten. Weitere Informationen finden Sie unter [Azure Storage als Routingendpunkt](iot-hub-devguide-messages-d2c.md#azure-storage-as-a-routing-endpoint).
+> - Beim Routing zum Speicher sollten die Blobs oder Dateien aufgelistet und anschließend durchlaufen werden, um sicherzustellen, dass alle Blobs oder Dateien gelesen werden, ohne dass eine Partition vorhanden ist. Der Partitionsbereich könnte sich möglicherweise bei einem von Microsoft initiierten Failover oder einem manuellen Failover ändern. Sie können die Liste der Blobs oder die [Liste der ADLS Gen2-APIs](/rest/api/storageservices/datalakestoragegen2/filesystem/listpaths) mithilfe der [Liste der Blobs-APIs](/rest/api/storageservices/list-blobs) aufzählen, um die gewünschte Liste von Dateien zu erhalten. Weitere Informationen finden Sie unter [Azure Storage als Routingendpunkt](iot-hub-devguide-messages-d2c.md#azure-storage-as-a-routing-endpoint).
 
 ## <a name="microsoft-initiated-failover"></a>Von Microsoft initiiertes Failover
 

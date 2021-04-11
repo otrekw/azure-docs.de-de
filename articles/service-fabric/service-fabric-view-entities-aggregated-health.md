@@ -1,17 +1,15 @@
 ---
 title: Anzeigen der aggregierten Integrität für Azure Service Fabric-Entitäten
 description: Beschreibt, wie Sie die aggregierte Integrität von Azure Service Fabric-Entitäten abfragen, anzeigen und auswerten, indem Sie Integritätsabfragen und allgemeine Abfragen nutzen.
-author: georgewallace
 ms.topic: conceptual
 ms.date: 2/28/2018
-ms.author: gwallace
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7127d9906cfe1ba87241bd3810a9567e77bf0391
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 261343537b6d18c98c27c9cc9453d2a64f064216
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98785497"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105628066"
 ---
 # <a name="view-service-fabric-health-reports"></a>Anzeigen von Service Fabric-Integritätsberichten
 Mit Azure Service Fabric wird ein [Integritätsmodell](service-fabric-health-introduction.md) eingeführt, das Integritätsentitäten enthält, auf denen Systemkomponenten und Watchdogs die von ihnen überwachten lokalen Bedingungen melden können. Im so genannten [Integritätsspeicher](service-fabric-health-introduction.md#health-store) werden alle Integritätsdaten zusammengefasst, um zu ermitteln, ob die Entitäten fehlerfrei sind.

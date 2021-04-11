@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 45c510fd5bba8dc3164b68f8f2093aec9f90705c
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 84d3fd31f3da047b263a3e3a46761dfc4538e499
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106068475"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106279543"
 ---
 # <a name="protect-your-content-with-media-services-dynamic-encryption"></a>Schützen Sie Ihren Inhalt mit der dynamischen Verschlüsselung von Media Services
 
@@ -71,9 +71,9 @@ Das Beispiel veranschaulicht die folgenden Schritte:
      ContentKeyPolicyFairPlayConfiguration fairPlayConfig = ConfigureFairPlayPolicyOptions();
      ```
 
-2. Erstellen Sie einen [Streaminglocator](streaming-locators-concept.md), der so konfiguriert ist, dass er das verschlüsselte Objekt streamen kann.
+2. Erstellen Sie einen [Streaminglocator](stream-streaming-locators-concept.md), der so konfiguriert ist, dass er das verschlüsselte Objekt streamen kann.
   
-   Der Streaminglocator muss einer [Streamingrichtlinie](streaming-policy-concept.md) zugeordnet sein. In diesem Beispiel wird `StreamingLocator.StreamingPolicyName` auf die Richtlinie „Predefined_MultiDrmCencStreaming“ festgelegt.
+   Der Streaminglocator muss einer [Streamingrichtlinie](stream-streaming-policy-concept.md) zugeordnet sein. In diesem Beispiel wird `StreamingLocator.StreamingPolicyName` auf die Richtlinie „Predefined_MultiDrmCencStreaming“ festgelegt.
 
    Die PlayReady- und Widevine-Verschlüsselungen werden angewendet, und der Schlüssel wird basierend auf den konfigurierten DRM-Lizenzen an den Wiedergabeclient übermittelt. Wenn Sie den Stream auch mit CBCS (FairPlay) verschlüsseln möchten, verwenden Sie die Richtlinie „Predefined_MultiDrmStreaming“.
 

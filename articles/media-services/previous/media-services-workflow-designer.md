@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 3/10/2021
 ms.author: anilmur
 ms.reviewer: juliako;johndeu
-ms.openlocfilehash: 8173da37792948e267aae2078fee9f864bf7bdc9
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 744d302afd21e6521fb17bf7bef6e68d21fb8372
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103011152"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105639393"
 ---
 # <a name="create-advanced-encoding-workflows-with-workflow-designer"></a>Erstellen von erweiterten Codierungsworkflows mit Workflow-Designer
 
@@ -45,7 +45,7 @@ Dieses Tool kann auch verwendet werden, um unsere [veröffentlichten Workflows](
 Sobald eine Workflowdatei erstellt wurde, kann sie als Medienobjekt hochgeladen werden und anschließend zum Codieren von Mediendateien verwendet werden. Informationen zum Codieren mit dem **Medienencoder-Premium-Workflow** unter Verwendung von **.NET** finden Sie im Thema [Erweiterte Codierung mit dem Medienencoder-Premium-Workflow](media-services-encode-with-premium-workflow.md).
 
 ## <a name="modify-existing-workflows"></a><a id="existing_workflows"></a>Ändern vorhandener Workflows
-Die standardmäßigen [veröffentlichten Workflows](media-services-workflow-designer.md#existing_workflows) können mit dem Designer-Tool geändert werden. Sie können die standardmäßigen Workflowdateien [hier](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows)abrufen. Der Ordner enthält auch Beschreibungen dieser Dateien.
+Die standardmäßigen [veröffentlichten Workflows](media-services-workflow-designer.md#existing_workflows) können mit dem Designer-Tool geändert werden. Sie können die standardmäßigen Workflowdateien [hier](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/media-services/previous/media-services-encode-with-premium-workflow.md)abrufen. Der Ordner enthält auch Beschreibungen dieser Dateien.
 
 In den folgenden Videos wird die Verwendung des Designers veranschaulicht.
 

@@ -1,17 +1,17 @@
 ---
 title: Konfiguration und Zugriffsprotokolle für Azure Database for PostgreSQL – Flexible Server
 description: Zugreifen auf Datenbankprotokolle für Azure Database for PostgreSQL – Flexible Server
-author: lfittl-msft
-ms.author: lufittl
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: e52f0f22065d89788d08659476d14af0351cc493
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 59a2ddcc68a7c5a3b6fa3a3b315f4294d1625204
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100590585"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105607404"
 ---
 # <a name="configure-and-access-logs-in-azure-database-for-postgresql---flexible-server"></a>Konfiguration und Zugriffsprotokolle für Azure Database for PostgreSQL – Flexible Server
 
