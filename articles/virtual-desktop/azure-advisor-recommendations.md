@@ -3,15 +3,15 @@ title: 'Exemplarische Vorgehensweise zu Azure Advisor für Windows Virtual Deskt
 description: Vorgehensweise beim Auflösen von Azure Advisor-Empfehlungen für Windows Virtual Desktop.
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 08/28/2020
+ms.date: 03/31/2021
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 760e0212d2d863e6b869c23c2e523a0e056a28ed
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+manager: femila
+ms.openlocfilehash: 666f882dec6c00b9fe5421485afded1fbd57d961
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "90033029"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448303"
 ---
 # <a name="how-to-resolve-azure-advisor-recommendations"></a>Auflösen von Azure Advisor-Empfehlungen
 
@@ -72,10 +72,6 @@ Diese Empfehlung wird unter „Optimaler Betrieb“ angezeigt.
 Sie müssen die Blockierung bestimmter URLs aufheben, um sicherzustellen, dass Ihr virtueller Computer (VM) ordnungsgemäß funktioniert. Die Liste wird in der [Liste der sicheren URLs](safe-url-list.md) angezeigt. Wenn die Blockierung der URLs nicht aufgehoben wird, funktioniert die VM nicht ordnungsgemäß.
 
 Um diese Empfehlung aufzulösen, stellen Sie sicher, dass Sie die Blockierung aller URLs in der [Liste der sicheren URLs](safe-url-list.md) aufheben. Sie können auch das Diensttag oder FQDN-Tags verwenden, um die Blockierung von URLs aufzuheben.
-
-## <a name="propose-new-recommendations"></a>Vorschlagen neuer Empfehlungen
-
-Sie können uns helfen, Azure Advisor zu verbessern, indem Sie Vorschläge für Empfehlungen einreichen. Ihre Empfehlung könnte einem anderen Benutzer in einer schwierigen Lage unterstützen. Um einen Vorschlag einzureichen, besuchen Sie [unser UserVoice-Forum](https://windowsvirtualdesktop.uservoice.com/forums/930847-azure-advisor-recommendations), und füllen Sie das Übermittlungsformular aus. Wenn Sie das Formular ausfüllen, stellen Sie sicher, dass Sie so viele Details wie möglich angeben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 10/21/2020
 ms.author: alkohli
-ms.openlocfilehash: 887aaf32592c74a5884916bc7ad63d79544fb554
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 7deba32eb9d0e098b75f98cc81fac2c01b8bb7f8
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99575854"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105567252"
 ---
 # <a name="azure-stack-edge-blob-storage-requirements"></a>Blobspeicheranforderungen für Azure Stack Edge
 
@@ -70,7 +70,7 @@ So installieren Sie den PHP-Client über Composer
 
 ## <a name="endpoint-declaration"></a>Endpunktdeklaration
 
-Im Azure Stack Edge-Blobspeicher-SDK identifiziert das Endpunktsuffix – `<device serial number>.microsoftdatabox.com` – die Azure Stack Edge-Domäne. Weitere Informationen zum Blobdienstendpunkt finden Sie unter [Übertragen von Daten an Speicherkonten mit einem Azure Stack Edge Pro-Gerät mit GPU](azure-stack-edge-j-series-deploy-add-storage-accounts.md).
+Im Azure Stack Edge-Blobspeicher-SDK identifiziert das Endpunktsuffix – `<device serial number>.microsoftdatabox.com` – die Azure Stack Edge-Domäne. Weitere Informationen zum Blobdienstendpunkt finden Sie unter [Übertragen von Daten an Speicherkonten mit einem Azure Stack Edge Pro-Gerät mit GPU](./azure-stack-edge-gpu-deploy-add-storage-accounts.md).
 
 
 ## <a name="examples"></a>Beispiele

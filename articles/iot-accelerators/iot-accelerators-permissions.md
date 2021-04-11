@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: dobett
-ms.openlocfilehash: 5a088cb07fa74b65e497de54be8c97bd51d31c16
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e3c9296a909ba23ee8a3475149911af629a01b1a
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97387835"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167463"
 ---
 # <a name="use-the-azureiotsolutionscom-site-to-deploy-your-solution-accelerator"></a>Verwenden der azureiotsolutions.com-Website zum Bereitstellen Ihres Solution Accelerators
 
@@ -54,7 +54,7 @@ Weitere Informationen zu Benutzern und Rollen in Azure AD finden Sie in den folg
 
 ## <a name="choose-your-device"></a>Wählen Ihres Geräts
 
-Die AzureIoTSolutions.com-Website enthält Links zum [Azure Certified for IoT-Gerätekatalog](https://catalog.azureiotsolutions.com/).
+Die AzureIoTSolutions.com-Website enthält Links zum [Azure Certified for IoT-Gerätekatalog](https://devicecatalog.azure.com/).
 
 Der Katalog enthält Hunderte von zertifizierten IoT-Hardwaregeräten, die Sie mit Ihren Solution Accelerators verbinden können, um mit der Erstellung Ihrer IoT-Lösung zu beginnen.
 

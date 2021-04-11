@@ -4,10 +4,10 @@ description: Informationen zu den Funktionen, die in einer Azure Resource Manage
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.openlocfilehash: abff5b86ad1e10042596b11f613cdb594e307209
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104889925"
 ---
 # <a name="date-functions-for-arm-templates"></a>Datumsfunktionen für ARM-Vorlagen
@@ -27,7 +27,7 @@ Hiermit wird einem Basiswert eine Dauer hinzugefügt. ISO 8601-Format wird erwa
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | base | Ja | Zeichenfolge | Der datetime-Startwert für die Hinzufügung. Verwenden Sie das [Zeitstempelformat nach ISO 8601](https://en.wikipedia.org/wiki/ISO_8601). |
 | duration | Ja | Zeichenfolge | Der Zeitwert, der der Basis hinzugefügt werden soll. Dieser darf kein negativer Wert sein. Verwenden Sie das [Format der Zeitspanne nach ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Durations). |
@@ -94,7 +94,7 @@ output add1HourOutput string = add1Hour
 
 Wenn die obige Vorlage mit dem time-Basiswert `2020-04-07 14:53:14Z` bereitgestellt wird, erhalten wir folgende Ausgabe:
 
-| Name | type | Wert |
+| Name | Typ | Wert |
 | ---- | ---- | ----- |
 | add3YearsOutput | String | 07.04.2023 14:53:14 |
 | subtract9DaysOutput | String | 29.03.2020 14:53:14 |
@@ -186,7 +186,7 @@ Gibt den aktuellen datetime-Wert (UTC) im festgelegten Format zurück. Wenn kein
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | format |Nein |Zeichenfolge |Der als URI codierte Wert, der in eine Zeichenfolge konvertiert werden soll. Verwenden Sie entweder [Standardformatzeichenfolgen](/dotnet/standard/base-types/standard-date-and-time-format-strings) oder [benutzerdefinierte Formatzeichenfolgen](/dotnet/standard/base-types/custom-date-and-time-format-strings). |
 
@@ -261,7 +261,7 @@ output utcCustomOutput string = utcCustomValue
 
 Die Ausgabe des vorherigen Beispiels variiert bei jeder Bereitstellung. Sie sollte jedoch folgender ähneln:
 
-| Name | type | Wert |
+| Name | Typ | Wert |
 | ---- | ---- | ----- |
 | utcOutput | Zeichenfolge | 20190305T175318Z |
 | utcShortOutput | Zeichenfolge | 03/05/2019 |

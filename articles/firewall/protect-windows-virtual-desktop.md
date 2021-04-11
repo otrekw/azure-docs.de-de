@@ -7,12 +7,12 @@ services: firewall
 ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: victorh
-ms.openlocfilehash: ad4f42d0e33f6d70c75abfcd1daab4f5aa9a515f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d5320f44aa5d922cea852ab09e5141fad277e2b0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94654982"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105566025"
 ---
 # <a name="use-azure-firewall-to-protect-window-virtual-desktop-deployments"></a>Verwenden von Azure Firewall zum Schutz von Windows Virtual Desktop-Bereitstellungen
 
@@ -54,7 +54,7 @@ Die virtuellen Azure-Computer, die Sie für Windows Virtual Desktop erstellen, m
 - Erstellen Sie eine Netzwerkregelsammlung mit den folgenden Regeln:
 
    - DNS zulassen: Lassen Sie Datenverkehr von Ihrer privaten ADDS-IP-Adresse auf * für den TCP- und den UDP-Port 53 zu.
-   - KMS zulassen: Lassen Sie Datenverkehr von Ihren virtuellen Windows Virtual Desktop-Computern an den TCP-Port 1688 für Windows Activation Service zu. Weitere Informationen zu den Ziel-IP-Adressen finden Sie unter [Fehler bei der Windows-Aktivierung in einem Szenario mit Tunnelerzwingung](../virtual-machines/troubleshooting/custom-routes-enable-kms-activation.md#solution).
+   - KMS zulassen: Lassen Sie Datenverkehr von Ihren virtuellen Windows Virtual Desktop-Computern an den TCP-Port 1688 für Windows Activation Service zu. Weitere Informationen zu den Ziel-IP-Adressen finden Sie unter [Fehler bei der Windows-Aktivierung in einem Szenario mit Tunnelerzwingung](/troubleshoot/azure/virtual-machines/custom-routes-enable-kms-activation#solution).
 
 > [!NOTE]
 > Für einige Bereitstellungen sind möglicherweise keine DNS-Regeln erforderlich, z. B. leiten Azure Active Directory-Domänencontroller DNS-Abfragen unter 168.63.129.16 an Azure DNS weiter.

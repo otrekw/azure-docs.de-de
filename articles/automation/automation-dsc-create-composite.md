@@ -10,12 +10,12 @@ ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8c834caa2285135b7d39c440489b42c366418042
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5833308f03d328d988ac818d83ff5ee618a4c79c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86186468"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103563571"
 ---
 # <a name="convert-configurations-to-composite-resources"></a>Konvertieren von Konfigurationen in zusammengesetzte Ressourcen
 
@@ -49,7 +49,7 @@ Das Cmdlet lädt den Inhalt Ihrer Konfiguration, ruft die Liste der Parameter ab
 
 Nachdem Sie ein Modul generiert haben, können Sie jedes Mal, wenn Sie Änderungen vornehmen und es in Ihrem eigenen [PowerShellGet-Repository](https://powershellexplained.com/2018-03-03-Powershell-Using-a-NuGet-server-for-a-PSRepository/?utm_source=blog&utm_medium=blog&utm_content=psscriptrepo) veröffentlichen, die Version hochzählen und Versionshinweise hinzufügen.
 
-Nachdem Sie ein Modul für eine zusammengesetzte Ressource erstellt haben, das Ihre Konfiguration (oder mehrere Konfigurationen) enthält, können Sie sie in der [Zusammensetzbaren-Erstellungserfahrung](./compose-configurationwithcompositeresources.md) in Azure verwenden oder sie den [DSC-Konfigurationsskripts](/powershell/scripting/dsc/configurations/configurations) hinzufügen, um MOF-Dateien zu generieren, und [die MOF-Dateien in Azure Automation](./tutorial-configure-servers-desired-state.md#create-and-upload-a-configuration-to-azure-automation) hochladen.
+Nachdem Sie ein Modul für zusammengesetzte Ressourcen erstellt haben, das Ihre Konfiguration (oder mehrere Konfigurationen) enthält, können Sie es in der [Funktionalität für das Zusammenstellen einer Konfiguration](./compose-configurationwithcompositeresources.md) in Azure verwenden oder [DSC-Konfigurationsskripts](/powershell/scripting/dsc/configurations/configurations) hinzufügen, um MOF-Dateien zu generieren, und diese [MOF-Dateien in Azure Automation hochladen](./tutorial-configure-servers-desired-state.md#create-and-upload-a-configuration-to-azure-automation).
 Danach registrieren Sie Ihre Server entweder von [lokal](./automation-dsc-onboarding.md#enable-physicalvirtual-linux-machines) oder [in Azure](./automation-dsc-onboarding.md#enable-azure-vms) um Konfigurationen abzurufen.
 Das neueste Update für das Projekt verfügt auch über veröffentlichte [Runbooks](https://www.powershellgallery.com/packages?q=DscGallerySamples) für Azure Automation, um den Prozess des Importierens von Konfigurationen aus dem PowerShell-Katalog zu automatisieren.
 
@@ -57,6 +57,6 @@ Um die Automatisierung der Erstellung von zusammengesetzten Ressourcen zu testen
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Eine Einführung in PowerShell DSC finden Sie unter [Windows PowerShell DSC – Übersicht](/powershell/scripting/dsc/overview/overview).
+- Eine Einführung in PowerShell DSC finden Sie unter [Windows PowerShell DSC – Übersicht](/powershell/scripting/dsc/overview/overview).
 - Erfahren Sie mehr über PowerShell DSC-Ressourcen in [DSC-Ressourcen](/powershell/scripting/dsc/resources/resources).
 - Weitere Informationen zur Konfiguration des lokalen Konfigurations-Managers finden Sie unter [Konfigurieren des lokalen Konfigurations-Managers](/powershell/scripting/dsc/managing-nodes/metaconfig).

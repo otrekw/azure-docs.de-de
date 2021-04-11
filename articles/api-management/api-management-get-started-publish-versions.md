@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 02/10/2021
 ms.author: apimpm
 ms.openlocfilehash: dc3d3b4658bd9a26363b6d41377d448059e30c0f
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104889670"
 ---
 # <a name="tutorial-publish-multiple-versions-of-your-api"></a>Tutorial: Veröffentlichen mehrerer Versionen Ihrer API 
@@ -60,7 +60,7 @@ Geben Sie die Werte aus der folgenden Tabelle ein. Wählen Sie anschließend **E
 
 
 
-|Einstellung   |Wert  |BESCHREIBUNG  |
+|Einstellung   |Wert  |Beschreibung  |
 |---------|---------|---------|
 |**Name**     |  *demo-conference-api-v1*       |  Eindeutiger Name in Ihrer API Management-Instanz<br/><br/>Da eine Version eigentlich eine neue API ist, die auf der [Revision](api-management-get-started-revise-api.md) einer API basiert, wird mit dieser Einstellung der Name der neuen API angegeben.   |
 |**Versionsverwaltungsschema**     |  **Pfad**       |  Die Art und Weise, wie Aufrufer die API-Version angeben     |

@@ -5,15 +5,15 @@ author: msftradford
 manager: MehranAzimi-msft
 services: azure-spatial-anchors
 ms.author: parkerra
-ms.date: 11/20/2020
+ms.date: 03/18/2021
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 3c17eadfad71f58b4557f8115a0d1d3de392b4b9
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: e1554b1728b120145a06124e4703065a98a4e466
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "96015127"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104670094"
 ---
 # <a name="quickstart-create-a-unity-android-app-with-azure-spatial-anchors"></a>Schnellstart: Erstellen einer Unity Android-App mit Azure Spatial Anchors
 
@@ -34,7 +34,7 @@ Sie lernen Folgendes:
 
 Stellen Sie für diese Schnellstartanleitung sicher, dass Sie über Folgendes verfügen:
 
-- Einen Windows- oder macOS-Computer mit <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019.4 (LTS)</a>, einschließlich der **Android-Buildunterstützung** mit den Modulen **Android SDK- und NDK-Tools** sowie **OpenJDK**.
+- Einen Windows- oder macOS-Computer mit <a href="https://unity3d.com/get-unity/download" target="_blank">Unity LTS</a>, einschließlich der **Android-Buildunterstützung** mit den Modulen **Android SDK- und NDK-Tools** sowie **OpenJDK**. Verwenden Sie **Unity 2020 LTS** mit Version 2.9 oder höher des ASA SDK (das das [Unity XR-Plug-In-Framework](https://docs.unity3d.com/Manual/XRPluginArchitecture.html) nutzt) oder **Unity 2019 LTS** mit Version 2.8 oder einer älteren Version des ASA SDK.
   - Unter Windows benötigen Sie auch <a href="https://git-scm.com/download/win" target="_blank">Git für Windows</a> und <a href="https://git-lfs.github.com/">Git LFS</a>.
   - Unter macOS muss Git über Homebrew installiert werden. Geben Sie den folgenden Befehl in einer einzelnen Zeile am Terminal ein: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`. Führen Sie dann `brew install git` und `brew install git-lfs` aus.
 - Ein <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">für Entwickler geeignetes</a> und <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">ARCore-fähiges</a> Android-Gerät.

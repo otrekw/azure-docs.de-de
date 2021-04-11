@@ -3,14 +3,14 @@ title: Verwalten von Zeitplänen in Azure Automation
 description: In diesem Artikel wird beschrieben, wie in Azure Automation ein Zeitplan erstellt und verwendet wird.
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 09/10/2020
+ms.date: 03/19/2021
 ms.topic: conceptual
-ms.openlocfilehash: 844a45c9b596522b949443b6edc311308da7806c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6f7cd1f3684bb14d25a77fe8e3980e8e2041808a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90004611"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104669558"
 ---
 # <a name="manage-schedules-in-azure-automation"></a>Verwalten von Zeitplänen in Azure Automation
 
@@ -38,7 +38,7 @@ Um ein Runbook in Azure-Automation für die Ausführung zu einer bestimmten Uhrz
 
 ## <a name="create-a-schedule"></a>Erstellen eines Zeitplans
 
-Sie können im Azure-Portal oder mit PowerShell einen neuen Zeitplan für Runbooks erstellen. Zum Vermeiden von Auswirkungen auf Ihre Runbooks und die Prozesse, die Sie automatisieren, testen Sie zuerst alle Runbooks mit verknüpften Zeitplänen mit einem für Testzwecke vorgesehenen Automation-Konto. Bei einem Test wird überprüft, ob Ihre geplanten Runbooks weiterhin ordnungsgemäß funktionieren. Wenn ein Problem auftritt, können Sie es beheben und alle erforderlichen Änderungen anwenden, bevor Sie die aktualisierte Runbookversion zur Produktion migrieren.
+Sie können einen neuen Zeitplan für Ihre Runbooks erstellen, indem Sie das Azure-Portal, PowerShell oder eine ARM-Vorlage (Azure Resource Manager) verwenden. Zum Vermeiden von Auswirkungen auf Ihre Runbooks und die Prozesse, die Sie automatisieren, testen Sie zuerst alle Runbooks mit verknüpften Zeitplänen mit einem für Testzwecke vorgesehenen Automation-Konto. Bei einem Test wird überprüft, ob Ihre geplanten Runbooks weiterhin ordnungsgemäß funktionieren. Wenn ein Problem auftritt, können Sie es beheben und alle erforderlichen Änderungen anwenden, bevor Sie die aktualisierte Runbookversion zur Produktion migrieren.
 
 > [!NOTE]
 > Ihr Automation-Konto erhält nicht automatisch neue Versionen der Module. Dazu müssen Sie sie manuell aktualisieren, indem Sie unter **Module** die Option [Azure-Module aktualisieren](../automation-update-azure-modules.md) auswählen. In Azure Automation werden die neuesten Module in Ihrem Automation-Konto verwendet, wenn ein neuer geplanter Auftrag ausgeführt wird. 
@@ -119,6 +119,47 @@ Das folgende Beispiel zeigt, wie Sie einen sich wiederholenden Zeitplan erstelle
 ```azurepowershell-interactive
 $StartTime = (Get-Date "18:00:00").AddDays(1)
 New-AzAutomationSchedule -AutomationAccountName "TestAzureAuto" -Name "1st, 15th and Last" -StartTime $StartTime -DaysOfMonth @("One", "Fifteenth", "Last") -ResourceGroupName "TestAzureAuto" -MonthInterval 1
+```
+
+## <a name="create-a-schedule-with-a-resource-manager-template"></a>Erstellen eines Zeitplans mithilfe einer Resource Manager-Vorlage
+
+In diesem Beispiel verwenden wir eine ARM-Vorlage (Automation Resource Manager), die einen neuen Auftragszeitplan erstellt. Allgemeine Informationen zu dieser Vorlage für die Verwaltung von Automation-Auftragszeitplänen finden Sie in der [Vorlagenreferenz für Microsoft.Automation automationAccounts/jobSchedules](/templates/microsoft.automation/automationaccounts/jobschedules#quickstart-templates).
+
+Kopieren Sie diese Vorlagendatei in einen Text-Editor:
+
+```json
+{
+  "name": "5d5f3a05-111d-4892-8dcc-9064fa591b96",
+  "type": "Microsoft.Automation/automationAccounts/jobSchedules",
+  "apiVersion": "2015-10-31",
+  "properties": {
+    "schedule": {
+      "name": "scheduleName"
+    },
+    "runbook": {
+      "name": "runbookName"
+    },
+    "runOn": "hybridWorkerGroup",
+    "parameters": {}
+  }
+}
+```
+
+Bearbeiten Sie die folgenden Parameterwerte, und speichern Sie die Datei als JSON-Datei:
+
+* Name des Auftragszeitplanobjekts: Als Name des Auftragszeitplanobjekts wird eine GUID (Globally Unique Identifier, global eindeutiger Bezeichner) verwendet.
+
+   >[!IMPORTANT]
+   > Die GUID muss für jeden Auftragszeitplan, der mit einer ARM-Vorlage bereitgestellt wird, eindeutig sein. Auch wenn Sie einen vorhandenen Zeitplan neu planen, müssen Sie die GUID ändern. Dies gilt auch dann, wenn Sie zuvor einen vorhandenen Auftragszeitplan gelöscht haben, der mit derselben Vorlage erstellt wurde. Die Wiederverwendung einer GUID führt zu einem Fehler in der Bereitstellung.</br></br>
+   > Im Internet finden Sie zahlreiche Dienste, die eine neue GUID für Sie generieren, wie z. B. diesen [kostenlosen Online-GUID-Generator](https://guidgenerator.com/).
+
+* Name des Zeitplans: Der Name des Automation-Auftragszeitplans, der mit dem angegebenen Runbook verknüpft wird.
+* Runbookname: Der Name des Automation-Runbooks, dem der Auftragszeitplan zugeordnet werden soll.
+
+Nachdem die Datei gespeichert wurde, können Sie mit folgendem PowerShell-Befehl den Zeitplan für den Runbookauftrag erstellen. Der Befehl verwendet den Parameter `TemplateFile`, um den Pfad und den Dateinamen der Vorlage anzugeben.
+
+```powershell
+New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateFile "<path>\RunbookJobSchedule.json"
 ```
 
 ## <a name="link-a-schedule-to-a-runbook"></a>Verknüpfen eines Zeitplans mit einem Runbook

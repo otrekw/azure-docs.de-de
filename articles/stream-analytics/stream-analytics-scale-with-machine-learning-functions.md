@@ -5,13 +5,13 @@ author: jseb225
 ms.author: jeanb
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 03/16/2020
-ms.openlocfilehash: b9768bacf8d29b37f479ea080afddd494b506262
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.date: 01/15/2021
+ms.openlocfilehash: 1ee1411aba7724d76ed8626de9b8b038d02339dc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98013939"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103574253"
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-studio-classic-functions"></a>Skalieren eines Stream Analytics-Auftrags mit Azure Machine Learning Studio-Funktionen (klassisch)
 
@@ -24,7 +24,7 @@ In diesem Artikel wird beschrieben, wie Sie Azure Stream Analytics-Aufträge eff
 
 Eine Funktion von Machine Learning Studio (klassisch) kann in Stream Analytics wie ein normaler Funktionsaufruf in der Stream Analytics-Abfragesprache verwendet werden. Im Hintergrund handelt es sich bei den Funktionsaufrufen aber um Webdienstanforderungen von Studio (klassisch).
 
-Sie können den Durchsatz der Webdienstanforderungen von Studio (klassisch) verbessern, indem Sie mehrere Zeilen im selben Webdienst-API-Aufruf zusammen im Batch verarbeiten. Diese Gruppierung wird als Mini-Batch bezeichnet. Weitere Informationen finden Sie unter [Azure Machine Learning Studio-Webdienste (klassisch)](../machine-learning/classic/consume-web-services.md). Die Unterstützung für Studio (klassisch) in Stream Analytics befindet sich in der Vorschauphase.
+Sie können den Durchsatz der Webdienstanforderungen von Studio (klassisch) verbessern, indem Sie mehrere Zeilen im selben Webdienst-API-Aufruf zusammen im Batch verarbeiten. Diese Gruppierung wird als Mini-Batch bezeichnet. Weitere Informationen finden Sie unter [Azure Machine Learning Studio-Webdienste (klassisch)](../machine-learning/classic/consume-web-services.md). Unterstützung für Studio (klassisch) in Stream Analytics
 
 ## <a name="configure-a-stream-analytics-job-with-studio-classic-functions"></a>Konfigurieren eines Stream Analytics-Auftrags mit Funktionen von Studio (klassisch)
 
@@ -51,7 +51,7 @@ Zum Verarbeiten von 200.000 Ereignissen pro Sekunde benötigt der Stream Analyti
 
 ![Skalieren von Stream Analytics mit Studio-Funktionen (klassisch) – Beispiel mit zwei Aufträgen](./media/stream-analytics-scale-with-ml-functions/stream-analytics-scale-with-ml-functions-00.png "Skalieren von Stream Analytics mit Studio-Funktionen (klassisch) – Beispiel mit zwei Aufträgen")
 
-Wenn **_B_* _ die Batchgröße und _*_L_*_ die Webdienstlatenz bei Batchgröße B in Millisekunden ist, beträgt der Durchsatz eines Stream Analytics-Auftrags mit _*_N_*_ SUs:
+Wenn ***B** _ die Batchgröße und _*_L_*_ die Webdienstlatenz bei Batchgröße B in Millisekunden ist, beträgt der Durchsatz eines Stream Analytics-Auftrags mit _ *_N_** SUs:
 
 ![Skalieren von Stream Analytics mit Studio-Funktionen (klassisch) – Formel](./media/stream-analytics-scale-with-ml-functions/stream-analytics-scale-with-ml-functions-02.png "Skalieren von Stream Analytics mit Studio-Funktionen (klassisch) – Formel")
 
@@ -62,7 +62,7 @@ Weitere Informationen zu dieser Einstellung finden Sie im [Artikel zur Skalierun
 ## <a name="example--sentiment-analysis"></a>Beispiel: Stimmungsanalyse
 Das folgende Beispiel enthält einen Stream Analytics-Auftrag mit der Studio-Funktion (klassisch) für die Stimmungsanalyse, die im [Tutorial zur Integration von Machine Learning Studio (klassisch) für Stream Analytics](stream-analytics-machine-learning-integration-tutorial.md) beschrieben ist.
 
-Die Abfrage umfasst eine einfache vollständig partitionierte Abfrage gefolgt von der Funktion _ *sentiment**, wie im folgenden Beispiel dargestellt:
+Die Abfrage umfasst eine einfache vollständig partitionierte Abfrage gefolgt von der Funktion **sentiment**, wie im folgenden Beispiel dargestellt:
 
 ```SQL
     WITH subquery AS (

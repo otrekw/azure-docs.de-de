@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: mvc
-ms.openlocfilehash: 0dcb750871eeae504ddb3d4e3851c834bcad125c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a1d745c95b89efefabbd0b83061f9dcd9fe13911
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104604541"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105567117"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>Migrieren von VMware-VMs zu Azure (ohne Agent)
 
@@ -91,7 +91,7 @@ Aktivieren Sie die Replikation:
     - Mehrfachverschlüsselung mit plattformseitig und kundenseitig verwalteten Schlüsseln
 
    > [!NOTE]
-   > Um VMs mit CMK zu replizieren, müssen Sie unter der Zielressourcengruppe einen [Datenträgerverschlüsselungssatz erstellen](https://go.microsoft.com/fwlink/?linkid=2151800). Ein Datenträgerverschlüsselungssatz-Objekt ordnet verwaltete Datenträger einer Key Vault-Instanz zu, die den für SSE zu verwendenden CMK enthält.
+   > Um VMs mit CMK zu replizieren, müssen Sie unter der Zielressourcengruppe einen [Datenträgerverschlüsselungssatz erstellen](../virtual-machines/disks-enable-customer-managed-keys-portal.md#set-up-your-disk-encryption-set). Ein Datenträgerverschlüsselungssatz-Objekt ordnet verwaltete Datenträger einer Key Vault-Instanz zu, die den für SSE zu verwendenden CMK enthält.
   
 10. Wählen Sie unter **Azure-Hybridvorteil**
 
@@ -189,7 +189,7 @@ Nachdem Sie sich vergewissert haben, dass die Testmigration wie erwartet funktio
 ## <a name="complete-the-migration"></a>Fertigstellen der Migration
 
 1. Klicken Sie nach Abschluss der Migration mit der rechten Maustaste auf den virtuellen Computer, und wählen Sie **Replikation beenden** aus. Daraufhin wird Replikation für den lokalen Computer beendet, und die Informationen zum Replikationsstatus der VM werden bereinigt.
-2. Der VM-Agent für Windows-VMs und Linux wird bei der Migration automatisch installiert. Überprüfen Sie die [Anforderungen](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux#requirements) für den Linux-Agent der Azure-VM auf den migrierten Computern, wenn der Computer über ein Linux-Betriebssystem verfügt, um sicherzustellen, dass die Installation des Linux-VM-Agents ordnungsgemäß durchgeführt wurde. 
+2. Der VM-Agent für Windows-VMs und Linux wird bei der Migration automatisch installiert. Überprüfen Sie die [Anforderungen](../virtual-machines/extensions/agent-linux.md#requirements) für den Linux-Agent der Azure-VM auf den migrierten Computern, wenn der Computer über ein Linux-Betriebssystem verfügt, um sicherzustellen, dass die Installation des Linux-VM-Agents ordnungsgemäß durchgeführt wurde. 
 3. Führen Sie App-Anpassungen nach der Migration durch, z.B. die Aktualisierung von Datenbankverbindungszeichenfolgen und Webserverkonfigurationen.
 4. Führen Sie endgültige Anwendungs- und Migrationsakzeptanztests für die migrierte Anwendung durch, die nun in Azure ausgeführt wird.
 5. Leiten Sie den Datenverkehr auf die migrierte Instanz der Azure-VM um.

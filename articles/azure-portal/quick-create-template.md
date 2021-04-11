@@ -3,13 +3,13 @@ title: Erstellen eines Azure-Portal-Dashboards mithilfe einer Azure Resource Man
 description: Erfahren Sie, wie Sie mit einer Azure Resource Manager-Vorlage ein Azure-Portal-Dashboard erstellen.
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.date: 06/15/2020
-ms.openlocfilehash: 55ac24e48c1c976eca1e6e8e51cf6e88361ec630
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.date: 03/15/2021
+ms.openlocfilehash: a3ab8767e09256ed8235dbd980ea3336a6f0fb1d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745722"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104658323"
 ---
 # <a name="quickstart-create-a-dashboard-in-the-azure-portal-by-using-an-arm-template"></a>Schnellstart: Erstellen eines Dashboards im Azure-Portal mithilfe einer ARM-Vorlage
 
@@ -30,9 +30,13 @@ Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von A
 
 Das Dashboard, das Sie im nächsten Teil dieses Schnellstarts erstellen, erfordert eine vorhandene VM. Führen Sie diese Schritte durch, um eine VM zu erstellen.
 
-1. Wählen Sie im Azure-Portal „Cloud Shell“ aus.
+1. Wählen Sie im Azure-Portal die Option **Cloud Shell** aus.
 
     ![Auswählen von „Cloud Shell“ im Menüband des Azure-Portals](media/quick-create-template/cloud-shell.png)
+
+1. Wählen Sie im Fenster **Cloud Shell** die Option **PowerShell** aus.
+
+    ![Auswählen von PowerShell im Terminalfenster](media/quick-create-template/powershell.png)
 
 1. Kopieren Sie den folgenden Befehl, und geben Sie ihn an der Eingabeaufforderung ein, um eine Ressourcengruppe zu erstellen.
 
@@ -85,19 +89,7 @@ Zum Bereitstellen der Vorlage wurde das Azure-Portal verwendet. Neben dem Azure-
 
 ## <a name="review-deployed-resources"></a>Überprüfen der bereitgestellten Ressourcen
 
-Überprüfen Sie, ob das Dashboard erfolgreich erstellt wurde und dass Sie Daten von der VM anzeigen können.
-
-1. Wählen Sie im Azure-Portal **Dashboard** aus.
-
-    ![Azure-Portal-Navigation zum Dashboard](media/quick-create-template/navigate-to-dashboards.png)
-
-1. Wählen Sie auf der Seite „Dashboard“ **Einfaches VM-Dashboard** aus.
-
-    ![Navigieren zu einfachem VM-Dashboard](media/quick-create-template/select-simple-vm-dashboard.png)
-
-1. Überprüfen Sie das von der ARM-Vorlage erstellte Dashboard. Sie können sehen, dass ein Teil des Inhalts statisch ist, aber es gibt auch Diagramme, die die Leistung des virtuellen Computers anzeigen, den Sie am Anfang erstellt haben.
-
-    ![Überprüfen des einfachen VM-Dashboards](media/quick-create-template/review-simple-vm-dashboard.png)
+[!INCLUDE [azure-portal-review-deployed-resources](../../includes/azure-portal-review-deployed-resources.md)]
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

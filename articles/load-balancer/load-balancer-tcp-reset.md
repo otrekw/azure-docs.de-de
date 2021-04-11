@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/07/2020
 ms.author: allensu
-ms.openlocfilehash: 0d02b46345af13770f77a7dac452127a665e01fd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9b555d7972e88df85e08dbcb1737231755c21361
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94696743"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448847"
 ---
 # <a name="load-balancer-tcp-reset-and-idle-timeout"></a>TCP-Zurücksetzung und Leerlauftimeout für Load Balancer
 
@@ -58,7 +58,6 @@ TCP-Keep-Alive eignet sich für Szenarien, in denen die Akkulaufzeit keine Einsc
 ## <a name="limitations"></a>Einschränkungen
 
 - TCP-Zurücksetzung wird nur während der TCP-Verbindung im Status ESTABLISHED gesendet.
-- TCP-Zurücksetzung wird nicht für interne Load Balancer mit konfigurierten HA-Ports gesendet.
 - Der TCP-Leerlauftimeout wirkt sich nicht auf die Lastenausgleichsregeln des UDP-Protokolls aus.
 
 ## <a name="next-steps"></a>Nächste Schritte

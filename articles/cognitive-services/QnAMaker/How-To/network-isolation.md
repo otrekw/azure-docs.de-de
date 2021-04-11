@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: afb396bc364a2fa2db923fbcbe6bfe1b7aedbc26
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.openlocfilehash: c2fad19bd84418d41aca1b2e0770eaa3cde488b0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103467543"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105043358"
 ---
 # <a name="recommended-settings-for-network-isolation"></a>Empfohlene Einstellungen für die Netzwerkisolation
 
@@ -60,7 +60,7 @@ Die Cognitive Search-Instanz kann über einen privaten Endpunkt isoliert werden,
 
 Wenn QnA Maker App Service über eine App Service-Umgebung eingeschränkt ist, verwenden Sie das gleiche VNet, um eine Verbindung mit privatem Endpunkt mit der Cognitive Search-Instanz herzustellen. Erstellen Sie einen neuen DNS-Eintrag im VNet, um den Cognitive Search-Endpunkt der IP-Adresse des privaten Cognitive Search-Endpunkts zuzuordnen. 
 
-Wenn eine App Service-Umgebung nicht für QnA Maker App Service verwendet wird, erstellen Sie zunächst eine neue VNet-Ressource und dann die Verbindung des privaten Endpunkts mit der Cognitive Search-Instanz. In diesem Fall muss QnA Maker App Service in [das VNet integriert werden](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet), um eine Verbindung mit der Cognitive Search-Instanz herzustellen. 
+Wenn eine App Service-Umgebung nicht für QnA Maker App Service verwendet wird, erstellen Sie zunächst eine neue VNet-Ressource und dann die Verbindung des privaten Endpunkts mit der Cognitive Search-Instanz. In diesem Fall muss QnA Maker App Service in [das VNet integriert werden](../../../app-service/web-sites-integrate-with-vnet.md), um eine Verbindung mit der Cognitive Search-Instanz herzustellen. 
 
 #  <a name="qna-maker-managed-preview-release"></a>[QnA Maker verwaltet (Vorschauversion)](#tab/v2)
 

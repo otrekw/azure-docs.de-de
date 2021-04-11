@@ -1,6 +1,6 @@
 ---
 title: 'SQL Server zu SQL Managed Instance: Migrationsleitfaden'
-description: Befolgen Sie diese Anleitung, um Ihre SQL Server-Datenbank-Instanzen zu Azure SQL Managed Instance zu migrieren.
+description: In diesem Leitfaden erfahren Sie, wie Sie Ihre SQL Server-Datenbanken zu Azure SQL Managed Instance migrieren.
 ms.service: sql-managed-instance
 ms.subservice: migration-guide
 ms.custom: ''
@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 67f5665225bc1297d0eb1b1e1da954fb47660dee
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: 6dcbf4a570fb5cdb58c914ea5e4b1164ed6a76ca
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102488952"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103564489"
 ---
 # <a name="migration-guide-sql-server-to-sql-managed-instance"></a>Migrationsleitfaden: SQL Server zu SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -197,10 +197,6 @@ Das Testvorgehen für die Datenbankmigration umfasst die folgenden Aktivitäten:
 1. **Einrichten der Testumgebung**: Die Testumgebung sollte eine Kopie der Quelldatenbank und der Zieldatenbank enthalten. Stellen Sie sicher, dass Sie die Testumgebung isolieren.
 1. **Ausführen der Validierungstests**: Führen Sie die Validierungstests für die Quelle und das Ziel aus, und analysieren Sie anschließend die Ergebnisse.
 1. **Ausführen von Leistungstests**: Führen Sie Leistungstests für die Quelle und das Ziel aus, und analysieren und vergleichen Sie anschließend die Ergebnisse.
-
-   > [!NOTE]
-   > Für Unterstützung bei der Entwicklung und Ausführung von Validierungstests nach der Migration sollten Sie die Datenqualitätslösung des Partners [QuerySurge](https://www.querysurge.com/company/partners/microsoft) in Erwägung ziehen. 
-
 
 
 ## <a name="leverage-advanced-features"></a>Nutzen der erweiterten Features 

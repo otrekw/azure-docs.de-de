@@ -179,6 +179,8 @@
           href: identity-provider-google.md
         - name: ID.me
           href: identity-provider-id-me.md
+        - name: itsme
+          href: partner-itsme.md
         - name: LinkedIn
           href: identity-provider-linkedin.md
         - name: Microsoft-Konto
@@ -209,6 +211,9 @@
           href: customize-ui-with-html.md
         - name: JavaScript und Seitenlayouts
           href: javascript-and-page-layout.md
+        - name: Eingebettete Anmeldung mit iframe
+          displayName: iframe
+          href: embedded-login.md
         - name: Anpassen der Sprache
           href: language-customization.md
           displayName: localization
@@ -217,8 +222,25 @@
         - name: Deaktivieren der E-Mail-Überprüfung
           href: disable-email-verification.md
         - name: MFA aktivieren
-          href: multi-factor-authentication.md
-          displayName: multi-factor auth
+          items:
+            - name: Multi-Factor Authentication
+              href: multi-factor-authentication.md
+            - name: Partnerintegration
+              items:
+                - name: HYPR
+                  href: partner-hypr.md
+                - name: Keyless
+                  href: partner-keyless.md
+                - name: Nevis
+                  href: partner-nevis.md
+                - name: Trusona
+                  href: partner-trusona.md
+                - name: Twilio
+                  href: partner-twilio.md
+                - name: TypingDNA
+                  href: partner-typingdna.md
+                - name: WhoIAM
+                  href: partner-whoiam.md
         - name: Einrichten der direkten Anmeldung
           href: direct-signin.md
     - name: Token und Sitzungsverwaltung
@@ -380,51 +402,46 @@
       items:
         - name: Azure AD B2C-Partnerkatalog
           href: partner-gallery.md
-        - name: Arkose Labs
-          href: partner-arkose-labs.md
+    - name: Identitätsüberprüfung und -nachweis
+      items:
+        - name: Partner für Identitätsüberprüfung und -nachweis
+          href: identity-verification-proofing.md
+          displayName: 'id verify, id verification, azure ad b2c proofing, id proofing'
         - name: Experian
           href: partner-experian.md
-        - name: HYPR
-          href: partner-hypr.md
         - name: IDology
           href: partner-idology.md
-        - name: itsme
-          href: partner-itsme.md
         - name: Jumio
           href: partner-jumio.md
-        - name: Keyless
-          href: partner-keyless.md
         - name: LexisNexis
           href: partner-lexisnexis.md
-        - name: "Microsoft Dynamics\_365 Fraud Protection"
-          href: partner-dynamics-365-fraud-protection.md
-        - name: N8 Identity
-          href: partner-n8identity.md
-        - name: Nevis
-          href: partner-nevis.md
         - name: Onfido
           href: partner-onfido.md
+    - name: Betrugsschutz
+      items:
+        - name: "Microsoft Dynamics\_365 Fraud Protection"
+          href: partner-dynamics-365-fraud-protection.md
+          displayName: 'm365 dynamics, dynamics fraud protection, fraud, 365 protection'
+        - name: Arkose Labs
+          href: partner-arkose-labs.md
+          displayName: 'fraud protection, fraud, Azure AD b2c, protection, B2Cprotection'
+    - name: Schützen von Legacy-Apps und lokalen Apps
+      items:
         - name: Ping Identity
           href: partner-ping-identity.md
-        - name: Saviynt
-          href: partner-saviynt.md
         - name: Strata
           href: partner-strata.md
-        - name: Trusona
-          href: partner-trusona.md
-        - name: Twilio
-          href: partner-twilio.md
-        - name: TypingDNA
-          href: partner-typingdna.md
-        - name: WhoIAM
-          href: partner-whoiam.md
+          displayName: 'AAD b2c access, legacy app, onpremises apps'
         - name: Zscaler
           href: partner-zscaler.md
-    - name: Verwenden von b2clogin.com
+          displayName: 'zscaler b2c, vpn, sdp b2c'
+    - name: Domänenname
       items:
         - name: Übersicht über b2clogin.com
           href: b2clogin.md
-        - name: Migrieren der Web-API zu b2clogin.com
+        - name: Konfigurieren einer benutzerdefinierten Domäne
+          href: custom-domain.md
+        - name: Konfigurieren von Web-API-Domänen
           href: multiple-token-endpoints.md
           displayName: 'migrate, b2clogin, owin'
     - name: Automation
@@ -438,9 +455,17 @@
         - name: Verwalten von Richtlinien mit PowerShell
           href: manage-custom-policies-powershell.md
           displayName: 'scripting, scripts, psh, custom policy'
-    - name: 'Verwalten von Benutzern: Azure-Portal'
-      href: manage-users-portal.md
-      displayName: 'create users, add users, delete users'
+    - name: Verwalten von Benutzern
+      items:
+        - name: Azure-Portal
+          href: manage-users-portal.md
+          displayName: 'create users, add users, delete users'
+        - name: Partnerintegration
+          items:
+            - name: N8identity
+              href: partner-n8identity.md
+            - name: Saviynt
+              href: partner-saviynt.md
     - name: Sichere API Management-API
       href: secure-api-management.md
       displayName: 'apim, api management, migrate, b2clogin.com'
@@ -491,6 +516,7 @@
       href: custom-policy-developer-notes.md
     - name: Seitenlayoutversionen
       href: page-layout.md
+      displayName: Page version
     - name: Regionale Verfügbarkeit und Datenresidenz
       href: data-residency.md
     - name: Erstellen resilienter Lösungen

@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 09/17/2020
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 327bc687c466a30d4f92810e48dc08f822f752ec
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4d54e1ff07b250b5595d2f8aee5f022bd2359721
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101726426"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105729506"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>Tutorial: Verwenden von Featureflags in einer ASP.NET Core-App
 
@@ -218,7 +218,7 @@ Der Abschnitt `FeatureManagement` dieses JSON-Dokuments wird konventionsgemäß 
 
 ## <a name="use-dependency-injection-to-access-ifeaturemanager"></a>Verwenden von Abhängigkeitsinjektion für den Zugriff auf „IFeatureManager“ 
 
-Bei einigen Vorgängen (etwa beim manuellen Überprüfen von Featureflagwerten) muss eine Instanz von [IFeatureManager](/dotnet/api/microsoft.featuremanagement.ifeaturemanager?view=azure-dotnet-preview) abgerufen werden. In ASP.NET Core MVC kann auf den Feature-Manager `IFeatureManager` mittels Abhängigkeitsinjektion zugegriffen werden. Im folgenden Beispiel wird der Signatur des Konstruktors für einen Controller ein Argument vom Typ `IFeatureManager` hinzugefügt. Die Runtime löst den Verweis automatisch auf und stellt beim Aufrufen des Konstruktors eine Instanz der Schnittstelle bereit. Wenn Sie eine Anwendungsvorlage verwenden, in der für den Controller bereits mindestens ein Abhängigkeitsinjektionsargument im Konstruktor (beispielsweise `ILogger`) vorhanden ist, können Sie einfach `IFeatureManager` als zusätzliches Argument hinzufügen:
+Bei einigen Vorgängen (etwa beim manuellen Überprüfen von Featureflagwerten) muss eine Instanz von [IFeatureManager](/dotnet/api/microsoft.featuremanagement.ifeaturemanager?preserve-view=true&view=azure-dotnet-preview) abgerufen werden. In ASP.NET Core MVC kann auf den Feature-Manager `IFeatureManager` mittels Abhängigkeitsinjektion zugegriffen werden. Im folgenden Beispiel wird der Signatur des Konstruktors für einen Controller ein Argument vom Typ `IFeatureManager` hinzugefügt. Die Runtime löst den Verweis automatisch auf und stellt beim Aufrufen des Konstruktors eine Instanz der Schnittstelle bereit. Wenn Sie eine Anwendungsvorlage verwenden, in der für den Controller bereits mindestens ein Abhängigkeitsinjektionsargument im Konstruktor (beispielsweise `ILogger`) vorhanden ist, können Sie einfach `IFeatureManager` als zusätzliches Argument hinzufügen:
 
 ### <a name="net-5x"></a>[.NET 5.x](#tab/core5x)
     
@@ -322,7 +322,7 @@ public IActionResult Index()
 }
 ```
 
-Ist ein MVC-Controller oder eine Aktion blockiert, da das steuernde Featureflag *deaktiviert* ist, wird eine registrierte Schnittstelle vom Typ [IDisabledFeaturesHandler](/dotnet/api/microsoft.featuremanagement.mvc.idisabledfeatureshandler?view=azure-dotnet-preview) aufgerufen. Die Standardschnittstelle `IDisabledFeaturesHandler` gibt den Statuscode 404 ohne Antworttext an den Client zurück.
+Ist ein MVC-Controller oder eine Aktion blockiert, da das steuernde Featureflag *deaktiviert* ist, wird eine registrierte Schnittstelle vom Typ [IDisabledFeaturesHandler](/dotnet/api/microsoft.featuremanagement.mvc.idisabledfeatureshandler?preserve-view=true&view=azure-dotnet-preview) aufgerufen. Die Standardschnittstelle `IDisabledFeaturesHandler` gibt den Statuscode 404 ohne Antworttext an den Client zurück.
 
 ## <a name="mvc-views"></a>MVC-Ansichten
 

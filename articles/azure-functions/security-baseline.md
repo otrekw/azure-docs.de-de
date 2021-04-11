@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 4fd53067309f83b284da25040f9f6534936cead9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8987c4ac61e81c35f664e19dfc72936bb6754e18
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101704638"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105566954"
 ---
 # <a name="azure-security-baseline-for-azure-functions"></a>Azure-Sicherheitsbaseline für Azure Functions
 
@@ -36,7 +36,7 @@ Sehen Sie sich die [vollständige Zuordnungsdatei der Azure Functions-Sicherheit
 
 **Verantwortlichkeit**: Kunde
 
-**Azure Security Center-Überwachung**: Der [Azure-Sicherheitsvergleichstest](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md) ist die Standardrichtlinieninitiative für Security Center und die Grundlage für die [Empfehlungen von Security Center](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md). Die Azure Policy-Definitionen für diese Kontrolle werden automatisch durch Security Center aktiviert. Warnungen für diese Kontrolle erfordern möglicherweise einen [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md)-Plan für die entsprechenden Dienste.
+**Azure Security Center-Überwachung**: Der [Azure-Sicherheitsvergleichstest](/azure/governance/policy/samples/azure-security-benchmark) ist die Standardrichtlinieninitiative für Security Center und die Grundlage für die [Empfehlungen von Security Center](/azure/security-center/security-center-recommendations). Die Azure Policy-Definitionen für diese Kontrolle werden automatisch durch Security Center aktiviert. Warnungen für diese Kontrolle erfordern möglicherweise einen [Azure Defender](/azure/security-center/azure-defender)-Plan für die entsprechenden Dienste.
 
 **Integrierte Azure Policy-Definitionen – Microsoft.Web**:
 
@@ -72,13 +72,13 @@ Stellen Sie außerdem sicher, dass das Remotedebuggen für Ihre Produktionsinsta
 
 Erwägen Sie, die Azure Web Application Firewall (WAF) im Rahmen der Netzwerkkonfiguration bereitzustellen, um eine zusätzliche Untersuchung des eingehenden Datenverkehrs zu ermöglichen. Aktivieren Sie die Diagnoseeinstellung für WAF, und erfassen Sie Protokolle in ein Speicherkonto, einen Event Hub oder einen Log Analytics-Arbeitsbereich. 
 
-- [Schützen eines Azure Functions-Endpunkts in einer Produktionsumgebung](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook-trigger?tabs=csharp#secure-an-http-endpoint-in-production)
+- [Schützen eines Azure Functions-Endpunkts in einer Produktionsumgebung](./functions-bindings-http-webhook-trigger.md?tabs=csharp#secure-an-http-endpoint-in-production)
 
 - [Bereitstellen von Azure WAF](../web-application-firewall/ag/create-waf-policy-ag.md)
 
 **Verantwortlichkeit**: Kunde
 
-**Azure Security Center-Überwachung**: Der [Azure-Sicherheitsvergleichstest](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md) ist die Standardrichtlinieninitiative für Security Center und die Grundlage für die [Empfehlungen von Security Center](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md). Die Azure Policy-Definitionen für diese Kontrolle werden automatisch durch Security Center aktiviert. Warnungen für diese Kontrolle erfordern möglicherweise einen [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md)-Plan für die entsprechenden Dienste.
+**Azure Security Center-Überwachung**: Der [Azure-Sicherheitsvergleichstest](/azure/governance/policy/samples/azure-security-benchmark) ist die Standardrichtlinieninitiative für Security Center und die Grundlage für die [Empfehlungen von Security Center](/azure/security-center/security-center-recommendations). Die Azure Policy-Definitionen für diese Kontrolle werden automatisch durch Security Center aktiviert. Warnungen für diese Kontrolle erfordern möglicherweise einen [Azure Defender](/azure/security-center/azure-defender)-Plan für die entsprechenden Dienste.
 
 **Integrierte Azure Policy-Definitionen – Microsoft.Web**:
 
@@ -132,7 +132,7 @@ Als Alternative stehen verschiedene Marketplace-Optionen wie Barracuda Web Appli
 
 - [Verwenden privater Endpunkte für eine Azure-Web-App (Vorschau)](../app-service/networking/private-endpoint.md)
 
-- [Konfiguration des Barracuda WAF-Clouddiensts](https://docs.microsoft.com/azure/app-service/environment/app-service-app-service-environment-web-application-firewall#configuring-your-barracuda-waf-cloud-service)
+- [Konfiguration des Barracuda WAF-Clouddiensts](../app-service/environment/app-service-app-service-environment-web-application-firewall.md#configuring-your-barracuda-waf-cloud-service)
 
 **Verantwortlichkeit**: Kunde
 
@@ -208,9 +208,9 @@ Sie können Azure PowerShell oder die Azure-Befehlszeilenschnittstelle verwenden
 
 **Leitfaden**: Verwenden Sie das Azure-Aktivitätsprotokoll zum Überwachen der Konfigurationen bzw. Erkennen von Änderungen für Netzwerkeinstellungen und -ressourcen, die sich auf Ihre Azure Functions-Bereitstellungen beziehen. Erstellen Sie Warnungen in Azure Monitor, die bei Änderungen an wichtigen Netzwerkeinstellungen oder -ressourcen ausgelöst werden. 
 
-- [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](/azure/azure-monitor/platform/activity-log#view-the-activity-log)
+- [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Erstellen von Warnungen in Azure Monitor](/azure/azure-monitor/platform/alerts-activity-log)
+- [Erstellen von Warnungen in Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Verantwortlichkeit**: Kunde
 
@@ -230,7 +230,7 @@ Wenn Ihre Funktions-App über eine integrierte benutzerdefinierte Sicherheits- b
 
 Optional können Sie Daten in Azure Sentinel oder eine SIEM-Lösung eines Drittanbieters integrieren und dort weiter nutzen. 
 
-- [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](/azure/azure-monitor/platform/activity-log)
+- [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../azure-monitor/essentials/activity-log.md)
 
 - [Überwachen von Azure Functions](functions-monitoring.md)
 
@@ -248,13 +248,13 @@ Optional können Sie Daten in Azure Sentinel oder eine SIEM-Lösung eines Dritta
 
 Wenn Ihre Funktions-App über eine integrierte benutzerdefinierte Sicherheits- bzw. Überwachungsprotokollierung verfügt, aktivieren Sie die Diagnoseeinstellung „FunctionAppLogs“, und senden Sie die Protokolle an einen Log Analytics-Arbeitsbereich, einen Azure Event Hub oder ein Azure-Speicherkonto zur Archivierung. 
 
-- [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](/azure/azure-monitor/platform/activity-log)
+- [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../azure-monitor/essentials/activity-log.md)
 
 - [Überwachen von Azure Functions mit Azure Monitor-Protokollen](functions-monitor-log-analytics.md)
 
 **Verantwortlichkeit**: Kunde
 
-**Azure Security Center-Überwachung**: Der [Azure-Sicherheitsvergleichstest](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md) ist die Standardrichtlinieninitiative für Security Center und die Grundlage für die [Empfehlungen von Security Center](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md). Die Azure Policy-Definitionen für diese Kontrolle werden automatisch durch Security Center aktiviert. Warnungen für diese Kontrolle erfordern möglicherweise einen [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md)-Plan für die entsprechenden Dienste.
+**Azure Security Center-Überwachung**: Der [Azure-Sicherheitsvergleichstest](/azure/governance/policy/samples/azure-security-benchmark) ist die Standardrichtlinieninitiative für Security Center und die Grundlage für die [Empfehlungen von Security Center](/azure/security-center/security-center-recommendations). Die Azure Policy-Definitionen für diese Kontrolle werden automatisch durch Security Center aktiviert. Warnungen für diese Kontrolle erfordern möglicherweise einen [Azure Defender](/azure/security-center/azure-defender)-Plan für die entsprechenden Dienste.
 
 **Integrierte Azure Policy-Definitionen – Microsoft.Web**:
 
@@ -272,7 +272,7 @@ Wenn Ihre Funktions-App über eine integrierte benutzerdefinierte Sicherheits- b
 
 **Leitfaden**: Legen Sie in Azure Monitor den Aufbewahrungszeitraum für Protokolle für Log Analytics-Arbeitsbereiche, die Ihren Funktions-Apps zugeordnet sind, gemäß den Compliancevorschriften Ihrer Organisation fest.
 
-- [Ändern des Datenaufbewahrungszeitraums](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [Ändern des Datenaufbewahrungszeitraums](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Verantwortlichkeit**: Kunde
 
@@ -288,7 +288,7 @@ Wenn Ihre Funktions-App über eine integrierte benutzerdefinierte Sicherheits- b
 
 Optional können Sie Daten in Azure Sentinel oder eine SIEM-Lösung eines Drittanbieters integrieren und dort weiter nutzen.
 
-- [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](/azure/azure-monitor/platform/activity-log)
+- [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../azure-monitor/essentials/activity-log.md)
 
 - [Überwachen von Azure Functions mit Azure Monitor-Protokollen](functions-monitor-log-analytics.md)
 
@@ -308,11 +308,11 @@ Aktivieren Sie Application Insights für Ihre Funktions-Apps, um Protokoll-, Lei
 
 Optional können Sie Daten in Azure Sentinel oder eine SIEM-Lösung eines Drittanbieters integrieren und dort weiter nutzen.
 
-- [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](/azure/azure-monitor/platform/activity-log)
+- [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../azure-monitor/essentials/activity-log.md)
 
 - [Überwachen von Azure Functions mit Azure Monitor-Protokollen](functions-monitor-log-analytics.md)
 
-- [Aktivieren der Application Insights-Integration](https://docs.microsoft.com/azure/azure-functions/configure-monitoring#enable-application-insights-integration)
+- [Aktivieren der Application Insights-Integration](./configure-monitoring.md#enable-application-insights-integration)
 
 **Verantwortlichkeit**: Kunde
 
@@ -326,9 +326,9 @@ Optional können Sie Daten in Azure Sentinel oder eine SIEM-Lösung eines Dritta
 
 **Leitfaden**: Azure Active Directory (Azure AD) umfasst integrierte Rollen, die explizit zugewiesen werden müssen und abgefragt werden können. Verwenden Sie das Azure AD PowerShell-Modul, um Ad-hoc-Abfragen zum Ermitteln von Konten auszuführen, die Mitglieder von administrativen Gruppen sind.
 
-- [Abrufen einer Verzeichnisrolle in Azure AD mit PowerShell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0&amp;preserve-view=true)
+- [Abrufen einer Verzeichnisrolle in Azure AD mit PowerShell](/powershell/module/azuread/get-azureaddirectoryrole?preserve-view=true&view=azureadps-2.0)
 
-- [Abrufen von Mitgliedern einer Verzeichnisrolle in Azure AD mit PowerShell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0&amp;preserve-view=true)
+- [Abrufen von Mitgliedern einer Verzeichnisrolle in Azure AD mit PowerShell](/powershell/module/azuread/get-azureaddirectoryrolemember?preserve-view=true&view=azureadps-2.0)
 
 **Verantwortlichkeit**: Kunde
 
@@ -342,9 +342,9 @@ Der Zugriff auf Datenebene kann auf unterschiedliche Weise gesteuert werden, z.�
 
 Für Funktions-Apps sind mehrere Bereitstellungsmethoden verfügbar, bei denen teilweise generierte Anmeldeinformationen genutzt werden. Informieren Sie sich über die Bereitstellungsmethoden, die für Ihre Anwendung verwendet werden sollen.
 
-- [Schützen eines HTTP-Endpunkts in einer Produktionsumgebung](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook-trigger?tabs=csharp#secure-an-http-endpoint-in-production)
+- [Schützen eines HTTP-Endpunkts in einer Produktionsumgebung](./functions-bindings-http-webhook-trigger.md?tabs=csharp#secure-an-http-endpoint-in-production)
 
-- [Abrufen von Schlüsseln](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook-trigger?tabs=csharp#obtaining-keys)
+- [Abrufen von Schlüsseln](./functions-bindings-http-webhook-trigger.md?tabs=csharp#obtaining-keys)
 
 - [Bereitstellungstechnologien in Azure Functions](functions-deployment-technologies.md)
 
@@ -378,7 +378,7 @@ Zusätzliche Informationen finden Sie unter den aufgeführten Links.
 
 **Leitfaden**: Verwenden Sie nach Möglichkeit SSO in Azure Active Directory (Azure AD), anstatt einzelne eigenständige Anmeldeinformationen für den Datenzugriff auf Ihre Funktions-App zu konfigurieren. Wenden Sie die Empfehlungen für die Identitäts- und Zugriffsverwaltung in Azure Security Center an. Implementieren Sie mithilfe des Features für die App Service-Authentifizierung/Autorisierung das einmalige Anmelden für Ihre Funktions-Apps.
 
-- [Authentifizierung und Autorisierung in Azure App Service und Azure Functions](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization#identity-providers)
+- [Authentifizierung und Autorisierung in Azure App Service und Azure Functions](../app-service/overview-authentication-authorization.md#identity-providers)
 
 - [Grundlegendes zu SSO mit Azure AD](../active-directory/manage-apps/what-is-single-sign-on.md)
 
@@ -450,7 +450,7 @@ Verwenden Sie zusätzlich Azure AD-Risikoerkennungen, um Warnungen und Berichte 
 
 **Leitfaden**: Azure Active Directory (Azure AD) enthält Protokolle zum Ermitteln von veralteten Konten. Verwenden Sie zusätzlich Zugriffsüberprüfungen für Azure-Identitäten, um Gruppenmitgliedschaften, den Zugriff auf Unternehmensanwendungen und Rollenzuweisungen effizient zu verwalten. Der Benutzerzugriff kann regelmäßig überprüft werden, um sicherzustellen, dass nur die richtigen Benutzer weiterhin Zugriff haben.
 
-- [Grundlegendes zur Azure AD-Berichterstellung](/azure/active-directory/reports-monitoring/)
+- [Grundlegendes zur Azure AD-Berichterstellung](../active-directory/reports-monitoring/index.yml)
 
 - [Verwenden von Zugriffsüberprüfungen für Azure-Identitäten](../active-directory/governance/access-reviews-overview.md)
 
@@ -468,7 +468,7 @@ Sie können diesen Prozess optimieren, indem Sie Diagnoseeinstellungen für Azur
 
 - [Konfigurieren Ihrer Funktions-App zur Verwendung der Azure AD-Anmeldung](../app-service/configure-authentication-provider-aad.md)
 
-- [Integrieren von Azure-Aktivitätsprotokollen in Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Integrieren von Azure-Aktivitätsprotokollen in Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 - [Schnellstart: Ausführen des Onboardings für Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -532,11 +532,11 @@ Sie können auch private Endpunkte verwenden, um eine Netzwerkisolation zu erzie
 
 **Leitfaden**: Aktivieren Sie im Azure-Portal für Ihre Funktions-Apps unter „Plattformfeatures:  Netzwerk: SSL“ die Einstellung „Nur HTTPS“, und legen Sie die Mindestversion für TLS auf 1.2 fest.
 
-- [Erzwingen von HTTPS für Funktions-Apps](https://docs.microsoft.com/azure/azure-functions/security-concepts#require-https)
+- [Erzwingen von HTTPS für Funktions-Apps](./security-concepts.md#require-https)
 
 **Verantwortlichkeit**: Kunde
 
-**Azure Security Center-Überwachung**: Der [Azure-Sicherheitsvergleichstest](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md) ist die Standardrichtlinieninitiative für Security Center und die Grundlage für die [Empfehlungen von Security Center](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md). Die Azure Policy-Definitionen für diese Kontrolle werden automatisch durch Security Center aktiviert. Warnungen für diese Kontrolle erfordern möglicherweise einen [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md)-Plan für die entsprechenden Dienste.
+**Azure Security Center-Überwachung**: Der [Azure-Sicherheitsvergleichstest](/azure/governance/policy/samples/azure-security-benchmark) ist die Standardrichtlinieninitiative für Security Center und die Grundlage für die [Empfehlungen von Security Center](/azure/security-center/security-center-recommendations). Die Azure Policy-Definitionen für diese Kontrolle werden automatisch durch Security Center aktiviert. Warnungen für diese Kontrolle erfordern möglicherweise einen [Azure Defender](/azure/security-center/azure-defender)-Plan für die entsprechenden Dienste.
 
 **Integrierte Azure Policy-Definitionen – Microsoft.Web**:
 
@@ -592,7 +592,7 @@ Microsoft verwaltet die zugrunde liegende Infrastruktur für Azure Functions und
 
 **Leitfaden**: Verwenden Sie Azure Monitor mit dem Azure-Aktivitätsprotokoll, um Warnungen für den Fall zu erstellen, dass Änderungen an Funktions-Apps für die Produktion und anderen kritischen bzw. zugehörigen Ressourcen vorgenommen werden.
 
-- [Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls](/azure/azure-monitor/platform/alerts-activity-log)
+- [Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Verantwortlichkeit**: Kunde
 
@@ -608,7 +608,7 @@ Microsoft verwaltet die zugrunde liegende Infrastruktur für Azure Functions und
 
 Befolgen Sie außerdem die Empfehlungen aus Azure Security Center, um Ihre Funktions-Apps zu schützen.
 
-- [Hinzufügen einer ständigen Sicherheitsüberprüfung zu Ihrer CI/CD-Pipeline](https://docs.microsoft.com/azure/devops/migrate/security-validation-cicd-pipeline?view=azure-devops&amp;preserve-view=true)
+- [Hinzufügen einer ständigen Sicherheitsüberprüfung zu Ihrer CI/CD-Pipeline](/azure/devops/migrate/security-validation-cicd-pipeline?preserve-view=true&view=azure-devops)
 
 - [Implementieren von Empfehlungen für die Sicherheitsrisikobewertung aus Azure Security Center](../security-center/deploy-vulnerability-assessment-vm.md)
 
@@ -638,7 +638,7 @@ Obwohl klassische Azure-Ressourcen über das Resource Graph ermittelt werden kö
 
 - [Erstellen von Abfragen mit Azure Resource Graph](../governance/resource-graph/first-query-portal.md)
 
-- [Anzeigen Ihrer Azure-Abonnements](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-4.8.0&amp;preserve-view=true)
+- [Anzeigen Ihrer Azure-Abonnements](/powershell/module/az.accounts/get-azsubscription?preserve-view=true&view=azps-4.8.0)
 
 - [Grundlegendes zu Azure RBAC](../role-based-access-control/overview.md)
 
@@ -712,7 +712,7 @@ Zusätzliche Informationen finden Sie unter den aufgeführten Links.
 
 - [Konfigurieren und Verwalten von Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [Ablehnen eines bestimmten Ressourcentyps mit Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [Ablehnen eines bestimmten Ressourcentyps mit Azure Policy](../governance/policy/samples/built-in-policies.md#general)
 
 **Verantwortlichkeit**: Kunde
 
@@ -744,7 +744,7 @@ Zusätzliche Informationen finden Sie unter den aufgeführten Links.
 
 Zusätzliche Informationen finden Sie unter den aufgeführten Links.
 
-- [Anzeigen verfügbarer Azure Policy-Aliase](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&amp;preserve-view=true)
+- [Anzeigen verfügbarer Azure Policy-Aliase](/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-4.8.0)
 
 - [Konfigurieren und Verwalten von Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -772,9 +772,9 @@ Zusätzliche Informationen finden Sie unter den aufgeführten Links.
 
 - [Entwerfen von Workflows für Policy-as-Code](../governance/policy/concepts/policy-as-code.md)
 
-- [Speichern von Code in Azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&amp;preserve-view=true)
+- [Speichern von Code in Azure DevOps](/azure/devops/repos/git/gitworkflow?preserve-view=true&view=azure-devops)
 
-- [Dokumentation zu Azure Repos](https://docs.microsoft.com/azure/devops/repos/?view=azure-devops&amp;preserve-view=true)
+- [Dokumentation zu Azure Repos](/azure/devops/repos/?preserve-view=true&view=azure-devops)
 
 **Verantwortlichkeit**: Kunde
 
@@ -826,7 +826,7 @@ Zusätzliche Informationen finden Sie unter den aufgeführten Links.
 
 **Verantwortlichkeit**: Kunde
 
-**Azure Security Center-Überwachung**: Der [Azure-Sicherheitsvergleichstest](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md) ist die Standardrichtlinieninitiative für Security Center und die Grundlage für die [Empfehlungen von Security Center](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md). Die Azure Policy-Definitionen für diese Kontrolle werden automatisch durch Security Center aktiviert. Warnungen für diese Kontrolle erfordern möglicherweise einen [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md)-Plan für die entsprechenden Dienste.
+**Azure Security Center-Überwachung**: Der [Azure-Sicherheitsvergleichstest](/azure/governance/policy/samples/azure-security-benchmark) ist die Standardrichtlinieninitiative für Security Center und die Grundlage für die [Empfehlungen von Security Center](/azure/security-center/security-center-recommendations). Die Azure Policy-Definitionen für diese Kontrolle werden automatisch durch Security Center aktiviert. Warnungen für diese Kontrolle erfordern möglicherweise einen [Azure Defender](/azure/security-center/azure-defender)-Plan für die entsprechenden Dienste.
 
 **Integrierte Azure Policy-Definitionen – Microsoft.Web**:
 
@@ -854,11 +854,11 @@ Nutzen Sie auch eine Lösung für die Quellcodeverwaltung, z. B. Azure Repos un
 
 - [Sichern Ihrer App in Azure](../app-service/manage-backup.md)
 
-- [Datenverfügbarkeit](https://docs.microsoft.com/azure/devops/organizations/security/data-protection?view=azure-devops#data-availability&amp;preserve-view=true)
+- [Datenverfügbarkeit](/azure/devops/organizations/security/data-protection?preserve-view=true&view=azure-devops#data-availability)
 
-- [Speichern von Code in Azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&amp;preserve-view=true)
+- [Speichern von Code in Azure DevOps](/azure/devops/repos/git/gitworkflow?preserve-view=true&view=azure-devops)
 
-- [Dokumentation zu Azure Repos](https://docs.microsoft.com/azure/devops/repos/?view=azure-devops&amp;preserve-view=true)
+- [Dokumentation zu Azure Repos](/azure/devops/repos/?preserve-view=true&view=azure-devops)
 
 **Verantwortlichkeit**: Kunde
 
@@ -874,11 +874,11 @@ Nutzen Sie auch eine Lösung für die Quellcodeverwaltung, z. B. Azure Repos un
 
 - [Sichern von Schlüsseltresorschlüsseln in Azure](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
-- [Datenverfügbarkeit](https://docs.microsoft.com/azure/devops/organizations/security/data-protection?view=azure-devops#data-availability&amp;preserve-view=true)
+- [Datenverfügbarkeit](/azure/devops/organizations/security/data-protection?preserve-view=true&view=azure-devops#data-availability)
 
-- [Speichern von Code in Azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&amp;preserve-view=true)
+- [Speichern von Code in Azure DevOps](/azure/devops/repos/git/gitworkflow?preserve-view=true&view=azure-devops)
 
-- [Dokumentation zu Azure Repos](https://docs.microsoft.com/azure/devops/repos/?view=azure-devops&amp;preserve-view=true)
+- [Dokumentation zu Azure Repos](/azure/devops/repos/?preserve-view=true&view=azure-devops)
 
 **Verantwortlichkeit**: Kunde
 
@@ -892,7 +892,7 @@ Nutzen Sie auch eine Lösung für die Quellcodeverwaltung, z. B. Azure Repos un
 
 - [Wiederherstellen einer App in Azure auf der Grundlage einer Momentaufnahme](../app-service/app-service-web-restore-snapshots.md)
 
-- [Wiederherstellen von Schlüsseltresorschlüsseln in Azure](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
+- [Wiederherstellen von Schlüsseltresorschlüsseln in Azure](/powershell/module/az.keyvault/restore-azkeyvaultkey?preserve-view=true&view=azps-4.8.0)
 
 **Verantwortlichkeit**: Kunde
 
@@ -1002,5 +1002,5 @@ Kennzeichnen Sie außerdem die Abonnements (z. B. Produktion, Nicht-Produktion)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Sehen Sie sich die [Übersicht über Version 2 des Azure-Sicherheitsvergleichstests](/azure/security/benchmarks/overview) an.
-- Erfahren Sie mehr über [Azure-Sicherheitsbaselines](/azure/security/benchmarks/security-baselines-overview).
+- Sehen Sie sich die [Übersicht über Version 2 des Azure-Sicherheitsvergleichstests](../security/benchmarks/overview.md) an.
+- Erfahren Sie mehr über [Azure-Sicherheitsbaselines](../security/benchmarks/security-baselines-overview.md).

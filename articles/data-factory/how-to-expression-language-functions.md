@@ -7,12 +7,12 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/08/2020
-ms.openlocfilehash: 090c738d06b9b8acd53a4c194e97fa3a0515e1d6
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: c9e1abc5fb6f66981f56bc262319587d9fc4265e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104783386"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105566658"
 ---
 # <a name="how-to-use-parameters-expressions-and-functions-in-azure-data-factory"></a>Verwenden von Parametern, Ausdrücken und Funktionen in Azure Data Factory
 
@@ -25,7 +25,7 @@ In diesem Dokument konzentrieren wir uns in erster Linie auf das Erlernen grundl
 
 ## <a name="azure-data-factory-ui-and-parameters"></a>Benutzeroberfläche und Parameter in Azure Data Factory
 
-Wenn Sie noch nicht mit der Verwendung von Azure Data Factory-Parametern in der ADF-Benutzeroberfläche vertraut sind, nutzen Sie die visuelle Erläuterung in den Artikeln zur [Data Factory-Benutzeroberfläche für verknüpfte Dienste mit Parametern](https://docs.microsoft.com/azure/data-factory/parameterize-linked-services#data-factory-ui) und [Data Factory-Benutzeroberfläche für metadatengesteuerte Pipelines mit Parametern](https://docs.microsoft.com/azure/data-factory/how-to-use-trigger-parameterization#data-factory-ui).
+Wenn Sie noch nicht mit der Verwendung von Azure Data Factory-Parametern in der ADF-Benutzeroberfläche vertraut sind, nutzen Sie die visuelle Erläuterung in den Artikeln zur [Data Factory-Benutzeroberfläche für verknüpfte Dienste mit Parametern](./parameterize-linked-services.md#data-factory-ui) und [Data Factory-Benutzeroberfläche für metadatengesteuerte Pipelines mit Parametern](./how-to-use-trigger-parameterization.md#data-factory-ui).
 
 ## <a name="parameter-and-expression-concepts"></a>Parameter- und Ausdruckskonzepte 
 
@@ -313,11 +313,11 @@ In diesem [Tutorial zur Übergabe von Azure Data Factory-Kopierpipeline-Paramete
 
 ### <a name="detailed--mapping-data-flow-pipeline-with-parameters"></a>Zuordnungsdatenfluss-Pipeline mit Parametern im Detail 
 
-Ein ausführliches Beispiel zum Verwenden von Parametern im Datenfluss finden Sie unter [Parametrisieren von Zuordnungsdatenflüssen](https://docs.microsoft.com/azure/data-factory/parameters-data-flow).
+Ein ausführliches Beispiel zum Verwenden von Parametern im Datenfluss finden Sie unter [Parametrisieren von Zuordnungsdatenflüssen](./parameters-data-flow.md).
 
 ### <a name="detailed-metadata-driven-pipeline-with-parameters"></a>Metadatengesteuerte Pipeline mit Parametern im Detail
 
-Unter [Verweisen auf Triggermetadaten in Pipelineausführungen](https://docs.microsoft.com/azure/data-factory/how-to-use-trigger-parameterization) finden Sie weitere Informationen zur Verwendung von Parametern zum Entwerfen metadatengesteuerter Pipelines. Dies ist ein beliebter Anwendungsfall für Parameter.
+Unter [Verweisen auf Triggermetadaten in Pipelineausführungen](./how-to-use-trigger-parameterization.md) finden Sie weitere Informationen zur Verwendung von Parametern zum Entwerfen metadatengesteuerter Pipelines. Dies ist ein beliebter Anwendungsfall für Parameter.
 
 
 ## <a name="next-steps"></a>Nächste Schritte
