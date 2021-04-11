@@ -5,14 +5,14 @@ author: elqu20
 ms.author: v-elqu
 ms.service: azure-percept
 ms.topic: overview
-ms.date: 02/18/2021
+ms.date: 03/23/2021
 ms.custom: template-overview
-ms.openlocfilehash: eca0c28b016b2e57f6fe47495c90bf113f0179a6
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 12ca7dff7d106941cc8947d9d3040bcefefde00a
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103490108"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104953590"
 ---
 # <a name="introduction-to-azure-percept"></a>Einführung in Azure Percept
 
@@ -28,24 +28,24 @@ Die Herausforderungen der Integration, denen man sich gegenübersieht, wenn man 
 
 Die Hauptkomponenten von Azure Percept sind:
 
-1. Programme für KI-Hardware-Referenzdesign und -Zertifizierung.
-
-    - Stellt dem Ökosystem von Hardwareentwicklern Muster und bewährte Methoden für die Entwicklung bahnbrechender KI-Hardware bereit, die sich problemlos in Azure KI- und IoT-Dienste integrieren lässt.
-
-2. Azure Percept DK (DevKit)
+1. [Azure Percept DK](./overview-azure-percept-dk.md)
 
     - Ein Development Kit (Entwicklungskit), das flexibel genug ist, um eine Vielzahl verschiedener Prototyperstellungsszenarien für Geräteentwickler, Lösungsentwickler und Kunden zu unterstützen
 
         > [!div class="nextstepaction"]
         > [Jetzt kaufen](https://go.microsoft.com/fwlink/p/?LinkId=2155270)
 
-3. Dienste und Workflows zum Beschleunigen der Entwicklung bahnbrechender KI-Modelle und -Lösungen.
+1. Dienste und Workflows zum Beschleunigen der Entwicklung bahnbrechender KI-Modelle und -Lösungen
 
     - Entwicklungsworkflows und vorgefertigte Modelle, auf die aus [Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819) zugegriffen werden kann
     - Modellentwicklungsdienste
-    - Skalierbare Geräteverwaltungsdienste.
+    - Geräteverwaltungsdienste für die Skalierung
     - End-to-End-Sicherheit.
+
+1. Programme für KI-Hardware-Referenzdesign und -Zertifizierung.
+
+    - Stellt dem Ökosystem von Hardwareentwicklern Muster und bewährte Methoden für die Entwicklung bahnbrechender KI-Hardware bereit, die sich problemlos in Azure KI- und IoT-Dienste integrieren lässt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erste Schritte mit [Azure Percept DK](./overview-azure-percept-dk.md). 
+Informieren Sie sich ausführlicher über [Azure Percept DK](./overview-azure-percept-dk.md) und [Azure Percept Studio](./overview-azure-percept-studio.md).

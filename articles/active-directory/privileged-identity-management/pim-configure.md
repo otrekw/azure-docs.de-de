@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: pim
 ms.topic: overview
-ms.date: 09/29/2020
+ms.date: 03/19/2021
 ms.author: curtand
 ms.custom: pim ; azuread-video-2020
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c3c7003ce3e8c65f6fdb7f3d847947114aee251f
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d42611705b7756ed2fd0c7a488339f0f638fb5b4
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370184"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104802164"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Was ist Azure AD Privileged Identity Management?
 
@@ -36,18 +36,18 @@ Organisationen möchten die Anzahl von Personen mit Zugriff auf sichere Informat
 
 Privileged Identity Management bietet eine zeit- und genehmigungsbasierte Rollenaktivierung, um die Risiken durch übermäßige, unnötige oder missbrauchte Zugriffsberechtigungen für wichtige Ressourcen zu verringern. Im Anschluss folgen einige der wichtigsten Features von Privileged Identity Management:
 
-- Gewähren von privilegiertem **Just-In-Time** -Zugriff auf Azure AD- und Azure-Ressourcen
+- Gewähren von privilegiertem **Just-In-Time**-Zugriff auf Azure AD- und Azure-Ressourcen
 - Zuweisen von **zeitgebundenem** Zugriff auf Ressourcen (mit Start- und Enddatum)
 - Anfordern einer **Genehmigung** bei der Aktivierung privilegierter Rollen
 - Erzwingen der **mehrstufigen Authentifizierung** für alle Rollenaktivierungen
-- Anfordern einer **Begründung** , um nachvollziehen zu können, warum Benutzer eine Aktivierung vornehmen
-- Erhalten von **Benachrichtigungen** , wenn privilegierte Rollen aktiviert werden
-- Durchführen von **Zugriffsüberprüfungen** , um zu prüfen, ob Benutzer die Rollen weiterhin benötigen
+- Anfordern einer **Begründung**, um nachvollziehen zu können, warum Benutzer eine Aktivierung vornehmen
+- Erhalten von **Benachrichtigungen**, wenn privilegierte Rollen aktiviert werden
+- Durchführen von **Zugriffsüberprüfungen**, um zu prüfen, ob Benutzer die Rollen weiterhin benötigen
 - Herunterladen eines **Überwachungsverlaufs** zur internen oder externen Überwachung
 
 ## <a name="what-can-i-do-with-it"></a>Verwendungsmöglichkeiten
 
-Nachdem Sie Privileged Identity Management eingerichtet haben, werden im linken Navigationsmenü die Optionen **Aufgaben** , **Verwalten** und **Aktivität** angezeigt. Als Administrator wählen Sie zwischen verschiedenen Optionen, etwa zum Verwalten von **Azure AD-Rollen** , Verwalten von Rollen für **Azure-Ressourcen** oder Gruppen mit privilegiertem Zugriff. Bei Auswahl der zu verwaltenden Elementen werden die entsprechenden Optionen angezeigt.
+Nachdem Sie Privileged Identity Management eingerichtet haben, werden im linken Navigationsmenü die Optionen **Aufgaben**, **Verwalten** und **Aktivität** angezeigt. Als Administrator wählen Sie zwischen verschiedenen Optionen, etwa zum Verwalten von **Azure AD-Rollen**, Verwalten von Rollen für **Azure-Ressourcen** oder Gruppen mit privilegiertem Zugriff. Bei Auswahl der zu verwaltenden Elementen werden die entsprechenden Optionen angezeigt.
 
 ![Screenshot: Privileged Identity Management im Azure-Portal](./media/pim-configure/pim-quickstart.png)
 
@@ -92,8 +92,8 @@ Machen Sie sich zum besseren Verständnis von Privileged Identity Management und
 | aktiviert | State | Ein Benutzer mit einer Rollenzuweisung vom Typ „berechtigt“, der die Aktionen zum Aktivieren der Rolle ausgeführt hat und nun aktiv ist.  Nach der Aktivierung kann der Benutzer die Rolle für einen vorkonfigurierten Zeitraum nutzen. Danach muss sie erneut aktiviert werden. |
 | dauerhaft berechtigt | Duration | Eine Rollenzuweisung, bei der ein Benutzer immer zum Aktivieren der Rolle berechtigt ist. |
 | dauerhaft aktiv | Duration | Eine Rollenzuweisung, bei der ein Benutzer die Rolle jederzeit ohne vorherige Aktion verwenden kann. |
-| Ablauf (berechtigt) | Duration | Eine Rollenzuweisung, bei der ein Benutzer innerhalb eines angegebenen Zeitraums (Start- und Enddatum) zum Aktivieren der Rolle berechtigt ist. |
-| Ablauf (aktiv) | Duration | Eine Rollenzuweisung, bei der ein Benutzer die Rolle innerhalb eines angegebenen Zeitraums (Start- und Enddatum) ohne vorherige Aktion verwenden kann. |
+| zeitgebunden berechtigt | Duration | Eine Rollenzuweisung, bei der ein Benutzer nur innerhalb eines Zeitraums (Start- und Enddatum) zum Aktivieren der Rolle berechtigt ist. |
+| zeitgebunden aktiv | Duration | Eine Rollenzuweisung, bei der ein Benutzer die Rolle nur innerhalb eines Zeitraums (Start- und Enddatum) verwenden kann |
 | Just-in-Time-Zugriff (JIT) |  | Ein Modell, bei dem Benutzer temporäre Berechtigungen zum Ausführen privilegierter Aufgaben erhalten. Dieses Modell verhindert, dass böswillige oder nicht autorisierte Benutzer nach dem Ablauf der Berechtigungen Zugriff erhalten. Der Zugriff wird nur gewährt, wenn Benutzer ihn benötigen. |
 | Prinzip des Zugriffs mit den geringsten Rechten |  | Eine empfohlene Sicherheitsmethode, bei der alle Benutzer nur die zum Ausführen der Aufgaben, für die sie autorisiert sind, mindestens erforderlichen Berechtigungen erhalten. Diese Methode minimiert die Anzahl von globalen Administratoren, indem stattdessen spezifische Administratorrollen für bestimmte Szenarien verwendet werden. |
 

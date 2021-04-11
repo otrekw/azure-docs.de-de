@@ -2,19 +2,19 @@
 title: Aktivieren von Blobdaten aus der Archivzugriffsebene
 description: In diesem Artikel erfahren Sie, wie Sie Ihre Blobs aus dem Archivspeicher aktivieren, um auf die Blobdaten zugreifen zu können. Sie erfahren außerdem, wie Sie ein archiviertes Blob auf eine Onlinedienstebene kopieren.
 services: storage
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.date: 03/11/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: 2f0ddca9cbd7d85909b1d86e68b92fa1d847476d
-ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
+ms.openlocfilehash: aaea21dca5304a7a75b24bd7f974712db38d1815
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103225080"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106276772"
 ---
 # <a name="rehydrate-blob-data-from-the-archive-tier"></a>Aktivieren von Blobdaten aus der Archivzugriffsebene
 

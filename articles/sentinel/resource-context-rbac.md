@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/03/2021
 ms.author: bagol
-ms.openlocfilehash: 26124f8f650e1006244b4871e26962d417d90fd4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: fc1246d079760fd86513840aebbffa34d192f8ed
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102054180"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105044174"
 ---
 # <a name="manage-access-to-azure-sentinel-data-by-resource"></a>Verwalten des Zugriffs auf Azure Sentinel-Daten nach Ressource
 
@@ -36,7 +36,7 @@ Wenn Benutzer nicht über den Azure Sentinel-Arbeitsbereich, sondern über die f
 
 - **Über Azure Monitor**. Verwenden Sie diese Methode, wenn Sie Abfragen erstellen möchten, mit denen mehrere Ressourcen bzw. Ressourcengruppen abgedeckt werden. Legen Sie Ihren Bereich beim Navigieren zu Protokollen und Arbeitsmappen in Azure Monitor auf eine oder mehrere bestimmte Ressourcengruppen oder Ressourcen fest.
 
-Aktivieren Sie in Azure Monitor die rollenbasierte Zugriffssteuerung (RBAC) für den Ressourcenkontext. Weitere Informationen finden Sie unter [Verwalten des Zugriffs auf Protokolldaten und Arbeitsbereiche in Azure Monitor](/azure/azure-monitor/logs/manage-access).
+Aktivieren Sie in Azure Monitor die rollenbasierte Zugriffssteuerung (RBAC) für den Ressourcenkontext. Weitere Informationen finden Sie unter [Verwalten des Zugriffs auf Protokolldaten und Arbeitsbereiche in Azure Monitor](../azure-monitor/logs/manage-access.md).
 
 > [!NOTE]
 > Falls es sich bei Ihren Daten nicht um eine Azure-Ressource, z. B. Syslog-, CEF- oder AAD-Daten, oder von einem benutzerdefinierten Sammler erfasste Daten handelt, müssen Sie manuell die Ressourcen-ID konfigurieren, die zum Ermitteln der Daten und Aktivieren des Zugriffs verwendet wird.
@@ -66,7 +66,7 @@ Die folgende Liste enthält Beschreibungen von Szenarien, in denen andere Datenz
 |---------|---------|
 |**Ein SOC-Team in einem Tochterunternehmen benötigt eine vollständige Azure Sentinel-Umgebung**.     |  Verwenden Sie in diesem Fall eine Architektur mit mehreren Arbeitsbereichen, damit Sie Ihre Datenberechtigungen trennen können. <br><br>Weitere Informationen finden Sie unter: <br>- [Erweitern von Azure Sentinel auf Arbeitsbereiche und Mandanten](extend-sentinel-across-workspaces-tenants.md)<br>    - [Arbeiten mit Vorfällen in vielen Arbeitsbereichen gleichzeitig](multiple-workspace-view.md)          |
 |**Sie möchten Zugriff auf eine bestimmte Art von Ereignis gewähren**.     |  Gewähren Sie für einen Windows-Administrator den Zugriff auf Windows-Sicherheitsereignisse auf allen Systemen. <br><br>Verwenden Sie in solchen Fällen [RBAC auf Tabellenebene](https://techcommunity.microsoft.com/t5/azure-sentinel/table-level-rbac-in-azure-sentinel/ba-p/965043), um die Berechtigungen für die einzelnen Tabellen festzulegen.       |
-| **Der Zugriff auf eine Ebene mit höherer Granularität soll eingeschränkt werden (entweder nicht basierend auf der Ressource oder nur auf einen Teil der Felder eines Ereignisses).**   |   Es kann beispielsweise sein, dass Sie den Zugriff auf Office 365-Protokolle auf ein Tochterunternehmen eines Benutzers beschränken möchten. <br><br>Gewähren Sie in diesem Fall Zugriff auf die Daten, indem Sie die integrierte Integration mit [Power BI-Dashboards und -Berichten](/azure/azure-monitor/platform/powerbi) verwenden.      |
+| **Der Zugriff auf eine Ebene mit höherer Granularität soll eingeschränkt werden (entweder nicht basierend auf der Ressource oder nur auf einen Teil der Felder eines Ereignisses).**   |   Es kann beispielsweise sein, dass Sie den Zugriff auf Office 365-Protokolle auf ein Tochterunternehmen eines Benutzers beschränken möchten. <br><br>Gewähren Sie in diesem Fall Zugriff auf die Daten, indem Sie die integrierte Integration mit [Power BI-Dashboards und -Berichten](../azure-monitor/visualize/powerbi.md) verwenden.      |
 | | |
 
 ## <a name="explicitly-configure-resource-context-rbac"></a>Explizites Konfigurieren der rollenbasierten Zugriffssteuerung im Ressourcenkontext
@@ -77,11 +77,11 @@ Beispiele für Daten in Ihrem Azure Sentinel-Arbeitsbereich, bei denen es sich n
 
 **Gehen Sie wie folgt vor, um die rollenbasierte Zugriffssteuerung im Ressourcenkontext explizit zu konfigurieren**:
 
-1. Vergewissern Sie sich, dass Sie die [rollenbasierte Zugriffssteuerung (RBAC) im Ressourcenkontext](/azure/azure-monitor/platform/manage-access) in Azure Monitor aktiviert haben. 
+1. Vergewissern Sie sich, dass Sie die [rollenbasierte Zugriffssteuerung (RBAC) im Ressourcenkontext](../azure-monitor/logs/manage-access.md) in Azure Monitor aktiviert haben. 
 
-1. [Erstellen Sie eine Ressourcengruppe](/azure/azure-resource-manager/management/manage-resource-groups-portal) für jedes Team mit Benutzern, die ohne Verwendung der gesamten Azure Sentinel-Umgebung Zugriff auf Ihre Ressourcen benötigen.
+1. [Erstellen Sie eine Ressourcengruppe](../azure-resource-manager/management/manage-resource-groups-portal.md) für jedes Team mit Benutzern, die ohne Verwendung der gesamten Azure Sentinel-Umgebung Zugriff auf Ihre Ressourcen benötigen.
 
-    Weisen Sie jedem Teammitglied [Berechtigungen für das Lesen von Protokollen](/azure/azure-monitor/platform/manage-access#resource-permissions) zu.
+    Weisen Sie jedem Teammitglied [Berechtigungen für das Lesen von Protokollen](../azure-monitor/logs/manage-access.md#resource-permissions) zu.
 
 1. Weisen Sie den von Ihnen erstellten Ressourcenteamgruppen Ressourcen zu, und versehen Sie die Ereignisse mit den relevanten Ressourcen-IDs.
 
@@ -110,7 +110,7 @@ Falls mehrere Teams vorhanden sind, sollten Sie sicherstellen, dass Sie über se
 Durch die Trennung Ihrer VMs wird beispielsweise dafür gesorgt, dass Syslog-Ereignisse, die zu Team „A“ gehören, auch mit der Sammler-VM „A“ erfasst werden.
 
 > [!TIP]
-> - Stellen Sie bei Verwendung einer lokalen VM oder anderen Cloud-VM, z. B. AWS, als Mittel für die Protokollweiterleitung sicher, dass diese über eine Ressourcen-ID verfügt, indem Sie [Azure Arc](/azure/azure-arc/servers/overview) implementieren.
+> - Stellen Sie bei Verwendung einer lokalen VM oder anderen Cloud-VM, z. B. AWS, als Mittel für die Protokollweiterleitung sicher, dass diese über eine Ressourcen-ID verfügt, indem Sie [Azure Arc](../azure-arc/servers/overview.md) implementieren.
 > - Erwägen Sie, zur Skalierung Ihrer VM-Umgebung für die Protokollweiterleitung eine [VM-Skalierungsgruppe](https://techcommunity.microsoft.com/t5/azure-sentinel/scaling-up-syslog-cef-collection/ba-p/1185854) zu erstellen, über die Ihre CEF- und Sylog-Protokolle erfasst werden.
 
 
@@ -145,7 +145,7 @@ Der folgende Code enthält ein Beispiel für eine Logstash-Konfigurationsdatei:
 >
 ### <a name="resource-ids-with-the-log-analytics-api-collection"></a>Ressourcen-IDs mit der Log Analytics-API-Sammlung
 
-Bei Verwendung der [Log Analytics-Datensammler-API](/azure/azure-monitor/platform/data-collector-api) können Sie für die Zuweisung zu Ereignissen eine Ressourcen-ID nutzen, indem Sie den HTTP-Anforderungsheader [*x-ms-AzureResourceId*](/azure/azure-monitor/platform/data-collector-api#request-headers) verwenden.
+Bei Verwendung der [Log Analytics-Datensammler-API](../azure-monitor/logs/data-collector-api.md) können Sie für die Zuweisung zu Ereignissen eine Ressourcen-ID nutzen, indem Sie den HTTP-Anforderungsheader [*x-ms-AzureResourceId*](../azure-monitor/logs/data-collector-api.md#request-headers) verwenden.
 
 Wenn Sie die rollenbasierte Zugriffssteuerung (RBAC) im Ressourcenkontext nutzen und die per API erfassten Ereignisse für bestimmte Benutzer verfügbar sein sollen, verwenden Sie die Ressourcen-ID der Ressourcengruppe, die Sie [für Ihre Benutzer erstellt](#explicitly-configure-resource-context-rbac) haben.
 

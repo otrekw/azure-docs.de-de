@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 1/19/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 6aeb7489b455840eeca0a8e1967c7e6e2ed50b7a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 608f883304dbc8e1ea8b0127668125ae50ca0b11
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102199899"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105564941"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>Integrieren von Azure Digital Twins in Azure Time Series Insights
 
@@ -157,7 +157,7 @@ Als nächstes müssen Sie in ihrer Funktions-App von oben Umgebungsvariablen fes
 
 ## <a name="create-and-connect-a-time-series-insights-instance"></a>Erstellen und Verbinden einer Time Series Insights-Instanz
 
-Als Nächstes richten Sie eine Time Series Insights-Instanz (TSI) ein, um die Daten aus dem zweiten Event Hub zu empfangen. Führen Sie die folgenden Schritte aus. Weitere Informationen zu diesem Prozess finden Sie im [*Tutorial: Einrichten einer Azure Time Series Insights Gen2-Umgebung*](../time-series-insights/tutorials-set-up-tsi-environment.md).
+Als Nächstes richten Sie eine Time Series Insights-Instanz (TSI) ein, um die Daten aus dem zweiten Event Hub zu empfangen. Führen Sie die folgenden Schritte aus. Weitere Informationen zu diesem Prozess finden Sie im [*Tutorial: Einrichten einer Azure Time Series Insights Gen2-Umgebung*](../time-series-insights/tutorial-set-up-environment.md).
 
 1. Beginnen Sie im Azure-Portal mit der Erstellung einer Time Series Insights-Umgebung. 
     1. Wählen Sie als Tarif **Gen2(L1)** aus.
@@ -201,7 +201,7 @@ Nun sollten Daten in Ihre Time Series Insights-Instanz übertragen werden, die z
 
 Die digitalen Zwillinge werden standardmäßig als flache Hierarchie in Time Series Insights gespeichert, können jedoch für die Organisation mit Modellinformationen und einer Hierarchie mit mehreren Ebenen erweitert werden. Weitere Informationen zu diesem Vorgang finden Sie im 
 
-* [*Tutorial: Definieren und Anwenden eines Modells*](../time-series-insights/tutorials-set-up-tsi-environment.md#define-and-apply-a-model) 
+* [*Tutorial: Definieren und Anwenden eines Modells*](../time-series-insights/tutorial-set-up-environment.md#define-and-apply-a-model) 
 
 Sie können eine benutzerdefinierte Logik schreiben, um diese Informationen mithilfe der bereits in Azure Digital Twins gespeicherten Modell- und Diagrammdaten automatisch bereitzustellen. Weitere Informationen zum Verwalten, Aktualisieren und Abrufen von Informationen aus dem Zwillingsgraphen finden Sie in den folgenden Referenzen:
 

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: devx-track-python
 ms.date: 9/17/2020
 ms.author: drewbat
-ms.openlocfilehash: 954f4edcd10d701d00d9cd23280aaac7c287992d
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 1be74ceeb1f4808a8df8f56b71b66aa870cdd91d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91997451"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104800872"
 ---
 # <a name="quickstart-create-a-python-app-with-azure-app-configuration"></a>Schnellstart: Erstellen einer Python-App mit Azure App Configuration
 
@@ -22,7 +22,7 @@ In dieser Schnellstartanleitung verwenden Sie Azure App Configuration zum Zentra
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/)
-- Python 2.7, 3.5 oder höher: Informationen zum Einrichten von Python unter Windows finden Sie in [dieser Dokumentation]( https://docs.microsoft.com/windows/python/).
+- Python 2.7, 3.6 oder höher: Informationen zum Einrichten von Python unter Windows finden Sie in [dieser Dokumentation]( https://docs.microsoft.com/windows/python/).
 
 ## <a name="create-an-app-configuration-store"></a>Erstellen eines App Configuration-Speichers
 

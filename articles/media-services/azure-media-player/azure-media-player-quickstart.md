@@ -5,13 +5,13 @@ author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: quickstart
-ms.date: 04/20/2020
-ms.openlocfilehash: 0d0fa88fdf182ae2214da40ee3fe8b20ced025e4
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.date: 04/05/2021
+ms.openlocfilehash: a6fd603318a25e15d1d4dcc1e3eaf75f96fc5ade
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104956059"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448626"
 ---
 # <a name="azure-media-player-quickstart"></a>Schnellstart für Azure Media Player
 Die Einrichtung von Azure Media Player ist einfach. Es dauert nur wenige Minuten, bis die einfache Wiedergabe von Medieninhalten über Ihr Azure Media Services-Konto möglich ist. In diesem Abschnitt werden die grundlegenden Schritte beschrieben, ohne zu sehr ins Detail zu gehen. Die nachfolgenden Abschnitte enthalten dann genauere Informationen zur Einrichtung und Konfiguration von Azure Media Player.  Fügen Sie dem `<head>`-Element Ihres Dokuments einfach Folgendes hinzu:
@@ -22,7 +22,7 @@ Die Einrichtung von Azure Media Player ist einfach. Es dauert nur wenige Minuten
 ```
 
 > [!IMPORTANT]
-> Es wird **NICHT** empfohlen, die Version vom Typ `latest` in der Produktion zu nutzen, da sie bedarfsabhängigen Änderungen unterliegt. Ersetzen Sie `latest` durch eine andere Version von Azure Media Player. Ersetzen Sie beispielsweise `latest` durch `1.0.0`. Azure Media Player-Versionen können von [hier](azure-media-player-changelog.md) aus abgefragt werden.
+> Es wird **NICHT** empfohlen, die Version vom Typ `latest` in der Produktion zu nutzen, da sie bedarfsabhängigen Änderungen unterliegt. Ersetzen Sie `latest` durch eine andere Version von Azure Media Player. Ersetzen Sie beispielsweise `latest` durch `1.0.0`. Azure Media Player-Versionen können von [hier](https://amp.azure.net/libs/amp/latest/docs/changelog.html) aus abgefragt werden.
 
 ## <a name="use-the-video-element"></a>Verwenden des Videoelemente
 

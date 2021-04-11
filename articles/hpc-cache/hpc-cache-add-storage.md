@@ -4,20 +4,20 @@ description: Definieren von Speicherzielen, damit Ihr Azure HPC Cache Ihr lokale
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 01/28/2021
+ms.date: 03/15/2021
 ms.author: v-erkel
-ms.openlocfilehash: b4df5863cc746490f13685a8d412232217af3bc8
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: afb896100ea60c21aaf37890d7b520bf38c6ce18
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054364"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104772721"
 ---
 # <a name="add-storage-targets"></a>Hinzufügen von Speicherzielen
 
 *Speicherziele* sind Back-End-Speicher für Dateien, auf die über einen Azure HPC Cache zugegriffen wird. Sie können NFS-Speicher hinzufügen, z. B. ein lokales Hardwaresystem, oder Daten in Azure Blob Storage speichern.
 
-Es können bis zu zehn verschiedene Speicherziele für einen Cache definiert werden. Der Cache stellt alle Speicherziele in einem aggregierten Namespace dar.
+Sie können bis zu 20 verschiedene Speicherziele für einen Cache definieren. Der Cache stellt alle Speicherziele in einem aggregierten Namespace dar.
 
 Die Namespacepfade werden separat konfiguriert, nachdem Sie die Speicherziele hinzugefügt haben. Im Allgemeinen kann ein NFS-Speicherziel über bis zu zehn Namespacepfade verfügen, oder bei manchen umfangreichen Konfigurationen über mehr. Details finden Sie unter [NFS-Namespacepfade](add-namespace-paths.md#nfs-namespace-paths).
 
@@ -29,7 +29,7 @@ Fügen Sie nach dem Erstellen des Caches Speicherziele hinzu. Folgen Sie diesem 
 1. Definieren eines Speicherziels (Informationen in diesem Artikel)
 1. [Erstellen Sie die clientseitigen Pfade](add-namespace-paths.md) (für den [aggregierten Namespace](hpc-cache-namespace.md)).
 
-Das Verfahren zum Hinzufügen eines Speicherziels unterscheidet sich geringfügig, je nachdem, ob Sie Azure Blobspeicher oder einen NFS-Export hinzufügen. Details zu beiden Szenarien finden Sie unten.
+Je nachdem, welche Art von Speicher verwendet wird, weist das Verfahren zum Hinzufügen eines Speicherziels geringfügige Unterschiede auf. Details zu beiden Szenarien finden Sie unten.
 
 Klicken Sie auf das Bild unten, um eine [Videodemonstration](https://azure.microsoft.com/resources/videos/set-up-hpc-cache/) der Cacheerstellung und des Hinzufügens eines Speicherziels im Azure-Portal anzusehen.
 
@@ -40,6 +40,9 @@ Klicken Sie auf das Bild unten, um eine [Videodemonstration](https://azure.micro
 Für ein neues Blobspeicherziel ist ein leerer Blobcontainer oder ein Container erforderlich, der mit Daten im Format des Azure HPC Cache-Clouddateisystems aufgefüllt ist. Weitere Informationen zum Vorabladen eines Blobcontainers finden Sie unter [Daten in Azure-Blobspeicher verschieben](hpc-cache-ingest.md).
 
 Im Azure-Portal finden Sie auf der Seite **Speicherziel hinzufügen** die Option, mit der Sie einen neuen Blobcontainer direkt vor dem Hinzufügen erstellen können.
+
+> [!NOTE]
+> Verwenden Sie für in NFS eingebundenen Blobspeicher den Typ [ADLS-NFS storage target](#) (ADLS-NFS-Speicherziel).
 
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -161,38 +164,40 @@ Ein NFS-Speicherziel besitzt andere Einstellungen als ein Blob-Speicherziel. Mit
 > Stellen Sie vor dem Erstellen eines NFS-Speicherziels sicher, dass das Speichersystem über den Azure HPC Cache zugänglich ist und die Berechtigungsanforderungen erfüllt. Das Erstellen des Speicherziels schlägt fehl, wenn der Cache auf das Speichersystem nicht zugreifen kann. Einzelheiten dazu finden Sie in [NFS-Speicheranforderungen](hpc-cache-prerequisites.md#nfs-storage-requirements) und [Behandeln von Problemen mit der NAS-Konfiguration und dem NFS-Speicherziel](troubleshoot-nas.md).
 
 ### <a name="choose-a-usage-model"></a>Auswählen eines Nutzungsmodells
-<!-- referenced from GUI - update aka.ms link if you change this heading -->
+<!-- referenced from GUI by aka.ms link -->
 
-Wenn Sie ein Speicherziel erstellen, das auf ein NFS-Speichersystem verweist, müssen Sie das Nutzungsmodell für dieses Ziel auswählen. Dieses Modell bestimmt, wie Ihre Daten zwischengespeichert werden.
+Wenn Sie ein Speicherziel erstellen, das NFS zum Erreichen des Speicherziels verwendet, müssen Sie ein Nutzungsmodell für dieses Ziel auswählen. Dieses Modell bestimmt, wie Ihre Daten zwischengespeichert werden.
 
-Mit den integrierten Nutzungsmodellen können Sie zwischen kurzen Reaktionszeiten und dem Risiko veralteter Daten abwägen. Wenn Sie die Geschwindigkeit bei Dateilesevorgängen optimieren möchten, spielt es möglicherweise eine untergeordnete Rolle, ob die Dateien im Cache mit den Back-End-Dateien abgeglichen werden. Wenn Sie jedoch sicherstellen möchten, dass Ihre Dateien immer auf dem neuesten Stand sind und den Dateien im Remotespeicher entsprechen, wählen Sie ein Modell aus, bei dem regelmäßig eine Überprüfung durchgeführt wird.
+Weitere Informationen zu diesen Einstellungen finden Sie unter [Grundlegendes zu Nutzungsmodellen](cache-usage-models.md).
 
-Drei Optionen stehen zur Verfügung:
+Mit den integrierten Nutzungsmodellen können Sie zwischen kurzen Reaktionszeiten und dem Risiko veralteter Daten abwägen. Wenn Sie die Geschwindigkeit von Dateilesevorgängen optimieren möchten, spielt es für Sie möglicherweise keine Rolle, ob die Dateien im Cache mit den Back-End-Dateien abgeglichen werden. Wenn Sie jedoch sicherstellen möchten, dass Ihre Dateien immer auf dem neuesten Stand sind und den Dateien im Remotespeicher entsprechen, wählen Sie ein Modell aus, bei dem regelmäßig eine Überprüfung durchgeführt wird.
 
-* **Leseintensive, unregelmäßige Schreibvorgänge**: Verwenden Sie diese Option, wenn Sie den Lesezugriff auf Dateien beschleunigen möchten, die statisch sind oder selten geändert werden.
+Die folgenden drei Optionen decken die meisten Situationen ab:
 
-  Mit dieser Option werden von Clients gelesene Dateien zwischengespeichert, die Schreibvorgänge werden jedoch sofort an den Back-End-Speicher übergeben. Im Cache gespeicherte Dateien werden nicht automatisch mit den Dateien auf dem NFS-Speichervolume verglichen. (Weitere Informationen finden Sie im nachfolgenden Hinweis zur Back-End-Überprüfung.)
+* **Read heavy, infrequent writes** (Leseintensiv, unregelmäßige Schreibvorgänge): Der Lesezugriff auf Dateien wird beschleunigt, die statisch sind oder selten geändert werden.
+
+  Mit dieser Option werden Dateien aus Lesevorgängen des Clients zwischengespeichert, aber Schreibvorgänge des Clients werden sofort an den Back-End-Speicher übergeben. Im Cache gespeicherte Dateien werden nicht automatisch mit den Dateien auf dem NFS-Speichervolume verglichen.
 
   Verwenden Sie diese Option nicht, wenn das Risiko besteht, dass eine Datei direkt im Speichersystem geändert werden kann, ohne sie zuvor in den Cache zu schreiben. In diesem Fall ist die zwischengespeicherte Version der Datei nicht mit der Back-End-Datei synchron.
 
-* **Mehr als 15 % Schreibvorgänge**: Diese Option beschleunigt die Lese-und Schreibleistung. Wenn diese Option verwendet wird, müssen alle Clients über den Azure HPC-Cache auf Dateien zugreifen, anstatt den Back-End-Speicher direkt einzubinden. Die zwischengespeicherten Dateien enthalten aktuelle Änderungen, die nicht auf dem Back-End gespeichert werden.
+* **Mehr als 15 % Schreibvorgänge**: Diese Option beschleunigt die Lese-und Schreibleistung.
 
-  Bei diesem Nutzungsmodell werden Dateien im Cache nur alle acht Stunden mit den Dateien im Back-End-Speicher verglichen. Es wird davon ausgegangen, dass die zwischengespeicherte Version der Datei aktueller ist. Eine geänderte Datei im Cache wird in das Back-End-Speichersystem geschrieben, nachdem sie sich eine Stunde lang ohne zusätzliche Änderungen im Cache befunden hat.
+  Die Lese- und Schreibvorgänge des Clients werden zwischengespeichert. Es wird davon ausgegangen, dass Dateien im Cache neuer als die Dateien im Back-End-Speichersystem sind. Zwischengespeicherte Dateien werden nur alle acht Stunden mit den Dateien im Back-End-Speicher verglichen. Geänderte Dateien im Cache werden in das Back-End-Speichersystem geschrieben, nachdem sie sich 20 Minuten lang ohne zusätzliche Änderungen im Cache befunden haben.
 
-* **Clients umgehen den Cache und schreiben in das NFS-Ziel**: Wählen Sie diese Option aus, wenn Clients in Ihrem Workflow Daten direkt in das Speichersystem schreiben, ohne zuvor in den Cache zu schreiben, oder wenn Sie die Datenkonsistenz verbessern möchten. Die von Clients angeforderten Dateien werden zwischengespeichert, aber alle Änderungen an diesen Dateien vom Client werden sofort an das Back-End-Speichersystem zurückgegeben.
+  Verwenden Sie diese Option nicht, wenn Clients das Back-End-Speichervolume direkt einbinden, da dies zu veralteten Dateien führen kann.
 
-  Bei diesem Nutzungsmodell werden die Dateien im Cache häufig anhand der Back-End-Versionen auf Updates überprüft. Bei dieser Überprüfung können Dateien außerhalb des Caches geändert werden, während die Datenkonsistenz gewahrt bleibt.
+* **Clients umgehen den Cache und schreiben in das NFS-Ziel**: Wählen Sie diese Option aus, wenn Clients in Ihrem Workflow Daten direkt in das Speichersystem schreiben, ohne zuvor in den Cache zu schreiben, oder wenn Sie die Datenkonsistenz verbessern möchten.
 
-In dieser Tabelle werden die Unterschiede im Nutzungsmodell zusammengefasst:
+  Die von Clients angeforderten Dateien werden zwischengespeichert, aber alle Änderungen an diesen Dateien vom Client werden sofort an das Back-End-Speichersystem übergeben. Die Dateien im Cache werden regelmäßig anhand der Back-End-Versionen auf Änderungen überprüft. Durch diese Überprüfung wird die Datenkonsistenz bewahrt, wenn Dateien direkt oder im Speichersystem geändert werden, anstatt über den Cache.
 
-| Nutzungsmodell                   | Cachemodus | Back-End-Überprüfung | Maximale Zurückschreibverzögerung |
-|-------------------------------|--------------|-----------------------|--------------------------|
-| Leseintensiv, unregelmäßige Schreibvorgänge | Lesen         | Nie                 | Keine                     |
-| Mehr als 15 % Schreibvorgänge       | Lesen/Schreiben   | 8 Stunden               | 1 Stunde                   |
-| Clients umgehen den Cache      | Lesen         | 30 Sekunden            | Keine                     |
+Weitere Informationen zu den anderen Optionen finden Sie unter [Grundlegendes zu Nutzungsmodellen](cache-usage-models.md).
+
+In dieser Tabelle werden die Unterschiede zwischen allen Nutzungsmodellen zusammengefasst:
+
+[!INCLUDE [usage-models-table.md](includes/usage-models-table.md)]
 
 > [!NOTE]
-> Der Wert **Back-End-Überprüfung** wird angezeigt, wenn der Cache Dateien automatisch mit Quelldateien im Remotespeicher vergleicht. Sie können jedoch erzwingen, dass Azure HPC Cache Dateien vergleicht, indem Sie einen Verzeichnisvorgang ausführen, der eine readdirplus-Anforderung enthält. Readdirplus ist eine standardmäßige NFS-API (erweiterter Lesevorgang), die Verzeichnismetadaten zurückgibt. Durch diesen Vorgang wird erzwungen, dass der Cache Dateien vergleicht und aktualisiert.
+> Der Wert **Back-End-Überprüfung** wird angezeigt, wenn der Cache Dateien automatisch mit Quelldateien im Remotespeicher vergleicht. Sie können jedoch einen Vergleich auslösen, indem Sie eine Clientanforderung senden, die einen readdirplus-Vorgang für das Back-End-Speichersystem enthält. Readdirplus ist eine standardmäßige NFS-API (erweiterter Lesevorgang), die Verzeichnismetadaten zurückgibt. Durch diesen Vorgang wird erzwungen, dass der Cache Dateien vergleicht und aktualisiert.
 
 ### <a name="create-an-nfs-storage-target"></a>Erstellen eines NFS-Speicherziels
 
@@ -291,6 +296,43 @@ Ausgabe:
 ```
 
 ---
+
+## <a name="add-a-new-adls-nfs-storage-target-preview"></a>Hinzufügen eines neuen ADLS-NFS-Speicherziels (Vorschau)
+
+ADLS-NFS-Speicherziele verwenden Azure-Blobcontainer, die das NFS 3.0-Protokoll (Network File System, Netzwerkdateisystem) unterstützen.
+
+> [!NOTE]
+> Die Unterstützung des NFS 3.0-Protokolls für Azure Blob Storage befindet sich in der öffentlichen Vorschauphase. Die Verfügbarkeit ist eingeschränkt, und es können Änderungen an den Features vorgenommen werden, bevor diese allgemein verfügbar sind. Verwenden Sie in Produktionssystemen keine Technologien, die sich in der Vorschau befinden.
+>
+> Die neuesten Informationen finden Sie unter [Unterstützung für NFS 3.0-Protokolle](../storage/blobs/network-file-system-protocol-support.md).
+
+ADLS-NFS-Speicherziele weisen einige Ähnlichkeiten mit Blobspeicherzielen und NFS-Speicherzielen auf. Zum Beispiel:
+
+* Ähnlich wie bei einem Blobspeicherziel müssen Sie Azure HPC Cache die Berechtigung erteilen, um [auf Ihr Speicherkonto zuzugreifen](#add-the-access-control-roles-to-your-account).
+* Wie bei einem NFS-Speicherziel müssen Sie ein [Nutzungsmodell](#choose-a-usage-model) für den Cache festlegen.
+* Da NFS-fähige Blobcontainer über eine mit NFS kompatible hierarchische Struktur verfügen, müssen Sie den Cache nicht zum Erfassen von Daten verwenden, und die Container können von anderen NFS-Systemen gelesen werden. Sie können Daten vorab in einem ADLS-NFS-Container laden, diesen dann zu einem HPC-Cache als Speicherziel hinzufügen und später außerhalb eines HPC-Caches auf diese Daten zugreifen. Wenn Sie einen Standardblobcontainer als Speicherziel für einen HPC-Cache verwenden, werden die Daten in einem proprietären Format geschrieben, und der Zugriff auf diese Daten kann lediglich über andere mit Azure HPC Cache kompatible Produkte erfolgen.
+
+Bevor Sie ein ADLS-NFS-Speicherziel erstellen können, müssen Sie ein NFS-fähiges Speicherkonto erstellen. Befolgen Sie die Tipps unter [Voraussetzungen für Azure HPC Cache](hpc-cache-prerequisites.md#nfs-mounted-blob-adls-nfs-storage-requirements-preview), und führen Sie die Anweisungen unter [Einbinden eines Blobspeichers mit einem NFS](../storage/blobs/network-file-system-protocol-support-how-to.md). Nachdem Sie Ihr Speicherkonto eingerichtet haben, können Sie einen neuen Container erstellen, wenn Sie das Speicherziel erstellen.
+
+Öffnen Sie die Seite **Speicherziel hinzufügen** im Azure-Portal, um ein ADLS-NFS-Speicherziel zu erstellen. (Zusätzliche Methoden befinden sich in der Entwicklung.)
+
+![Screenshot: Seite „Speicherziel hinzufügen“ mit definiertem ADLS-NFS-Ziel](media/add-adls-target.png)
+
+Geben Sie die folgenden Informationen ein.
+
+* **Name des Speicherziels**: Legen Sie einen Namen fest, der dieses Speicherziel im Azure HPC Cache identifiziert.
+* **Zieltyp:** Wählen Sie **ADLS-NFS** aus.
+* **Speicherkonto**: Wählen Sie das Speicherkonto aus, das Sie verwenden möchten. Wenn Ihr NFS-fähiges Speicherkonto nicht in der Liste angezeigt wird, stellen Sie sicher, dass es den Voraussetzungen entspricht und dass der Cache auf dieses zugreifen kann.
+
+  Sie müssen die Cache-Instanz für den Zugriff auf das Speicherkonto autorisieren, wie unter [Hinzufügen der Zugriffsrollen](#add-the-access-control-roles-to-your-account) beschrieben.
+
+* **Speichercontainer:** Wählen Sie den NFS-fähigen Blobcontainer für dieses Ziel aus, oder klicken Sie auf **Neu erstellen**.
+
+* **Nutzungsmodell**: Wählen Sie auf der Grundlage Ihres Workflows eines der oben im Abschnitt [Auswählen eines Nutzungsmodells](#choose-a-usage-model) beschriebenen Datencacheprofile aus.
+
+Klicken Sie abschließend auf **OK**, um das Speicherziel hinzuzufügen.
+
+<!-- **** -->
 
 ## <a name="view-storage-targets"></a>Anzeigen von Speicherzielen
 
