@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: f0dd5cf5209924972080af6d22429252338754de
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 338de996b06769b9d2891c7208b9050cc3acc7ed
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99491247"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167293"
 ---
 # <a name="create-modular-runbooks"></a>Erstellen von modularen Runbooks
 
@@ -56,15 +56,15 @@ Wenn Ihr Runbook ein untergeordnetes grafisches Runbook oder ein untergeordnetes
 Im folgenden Beispiel wird ein untergeordnetes Testrunbook gestartet, das ein komplexes Objekt, eine ganze Zahl und einen booleschen Wert akzeptiert. Die Ausgabe des untergeordneten Runbooks wird einer Variablen zugewiesen. In diesem Fall ist das untergeordnete Runbook ein PowerShell-Workflow-Runbook.
 
 ```azurepowershell-interactive
-$vm = Get-AzVM –ResourceGroupName "LabRG" –Name "MyVM"
-$output = PSWF-ChildRunbook –VM $vm –RepeatCount 2 –Restart $true
+$vm = Get-AzVM -ResourceGroupName "LabRG" -Name "MyVM"
+$output = PSWF-ChildRunbook -VM $vm -RepeatCount 2 -Restart $true
 ```
 
 Hier sehen Sie das gleiche Beispiel mit einem PowerShell-Runbook als untergeordnetes Runbook:
 
 ```azurepowershell-interactive
-$vm = Get-AzVM –ResourceGroupName "LabRG" –Name "MyVM"
-$output = .\PS-ChildRunbook.ps1 –VM $vm –RepeatCount 2 –Restart $true
+$vm = Get-AzVM -ResourceGroupName "LabRG" -Name "MyVM"
+$output = .\PS-ChildRunbook.ps1 -VM $vm -RepeatCount 2 -Restart $true
 ```
 
 ## <a name="start-a-child-runbook-using-a-cmdlet"></a>Starten eines untergeordneten Runbooks mithilfe eines Cmdlets
@@ -84,7 +84,7 @@ Parameter für ein per Cmdlet gestartetes untergeordnetes Runbook werden wie unt
 
 Beim Starten untergeordneter Runbooks als separate Aufträge geht möglicherweise der Abonnementkontext verloren. Damit das untergeordnete Runbook Cmdlets des Azure-Moduls für ein bestimmtes Azure-Abonnement ausführen kann, muss sich das untergeordnete Runbook unabhängig vom übergeordneten Runbook bei diesem Abonnement authentifizieren.
 
-Wenn bei Aufträgen innerhalb des gleichen Automation-Kontos mehrere Abonnements verwendet werden, ändert sich durch die Auswahl eines Abonnements in einem Auftrag unter Umständen auch der aktuell ausgewählte Abonnementkontext für andere Aufträge. Verwenden Sie zur Vermeidung dieser Situation `Disable-AzContextAutosave –Scope Process` am Anfang jedes Runbooks. Bei dieser Aktion wird nur der Kontext der Runbookausführung gespeichert.
+Wenn bei Aufträgen innerhalb des gleichen Automation-Kontos mehrere Abonnements verwendet werden, ändert sich durch die Auswahl eines Abonnements in einem Auftrag unter Umständen auch der aktuell ausgewählte Abonnementkontext für andere Aufträge. Verwenden Sie zur Vermeidung dieser Situation `Disable-AzContextAutosave -Scope Process` am Anfang jedes Runbooks. Bei dieser Aktion wird nur der Kontext der Runbookausführung gespeichert.
 
 ### <a name="example"></a>Beispiel
 
@@ -92,7 +92,7 @@ Im folgenden Beispiel wird ein untergeordnetes Runbook mit Parametern gestartet 
 
 ```azurepowershell-interactive
 # Ensure that the runbook does not inherit an AzContext
-Disable-AzContextAutosave –Scope Process
+Disable-AzContextAutosave -Scope Process
 
 # Connect to Azure with Run As account
 $ServicePrincipalConnection = Get-AutomationConnection -Name 'AzureRunAsConnection'
@@ -108,11 +108,11 @@ $AzureContext = Set-AzContext -SubscriptionId $ServicePrincipalConnection.Subscr
 $params = @{"VMName"="MyVM";"RepeatCount"=2;"Restart"=$true}
 
 Start-AzAutomationRunbook `
-    –AutomationAccountName 'MyAutomationAccount' `
-    –Name 'Test-ChildRunbook' `
+    -AutomationAccountName 'MyAutomationAccount' `
+    -Name 'Test-ChildRunbook' `
     -ResourceGroupName 'LabRG' `
     -AzContext $AzureContext `
-    –Parameters $params –Wait
+    -Parameters $params -Wait
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

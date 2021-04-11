@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 13585173b54c79158161da54f968ba66eb018f6a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 27a0d5b809480b2ce4aff36c5acd43c149ed5bb3
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101705737"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105562833"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Azure-Sicherheitsbaseline für Azure DevTest Labs
 
@@ -78,11 +78,11 @@ Stellen Sie die Azure Firewall an allen Netzwerkgrenzen der Organisation bereit,
 
 - [Konfigurieren eines virtuellen Netzwerks für Azure DevTest Labs](devtest-lab-configure-vnet.md)
 
-- [Konfigurieren von DDoS-Schutz](/azure/virtual-network/manage-ddos-protection)
+- [Konfigurieren von DDoS-Schutz](../ddos-protection/manage-ddos-protection.md)
 
 - [Bereitstellen von Azure Firewall](../firewall/tutorial-firewall-deploy-portal.md)
 
-- [Grundlegendes zur integrierten Threat Intelligence in Azure Security Center](/azure/security-center/threat-protection)
+- [Grundlegendes zur integrierten Threat Intelligence in Azure Security Center](../security-center/azure-defender.md)
 
 - [Grundlegendes zur adaptiven Netzwerkhärtung von Azure Security Center](../security-center/security-center-adaptive-network-hardening.md)
 
@@ -144,7 +144,7 @@ Sie können auch Anwendungssicherheitsgruppen verwenden, um eine komplexe Sicher
 
 - [Grundlegendes zu Diensttags und deren Verwendung](../virtual-network/service-tags-overview.md)
 
-- [Grundlegendes zu Anwendungssicherheitsgruppen und deren Verwendung](/azure/virtual-network/security-overview#application-security-groups)
+- [Grundlegendes zu Anwendungssicherheitsgruppen und deren Verwendung](../virtual-network/network-security-groups-overview.md#application-security-groups)
 
 **Verantwortlichkeit**: Kunde
 
@@ -158,7 +158,7 @@ Sie können umfangreiche Azure-Bereitstellungen auch mithilfe von Azure Blueprin
 
 - [Konfigurieren und Verwalten von Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [Azure Policy-Beispiele für Netzwerke](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#network)
+- [Azure Policy-Beispiele für Netzwerke](../governance/policy/samples/built-in-policies.md#network)
 
 - [Erstellen einer Azure-Blaupause](../governance/blueprints/create-blueprint-portal.md)
 
@@ -188,9 +188,9 @@ Sie können Azure PowerShell oder die Azure-Befehlszeilenschnittstelle verwenden
 
 **Leitfaden**: Verwenden Sie das Azure-Aktivitätsprotokoll zum Überwachen von Ressourcenkonfigurationen und Erkennen von Änderungen an Ihren Azure-Ressourcen. Erstellen Sie in Azure Monitor Warnungen, die bei Änderungen an wichtigen Ressourcen ausgelöst werden.
 
-- [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](/azure/azure-monitor/platform/activity-log#view-the-activity-log)
+- [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Erstellen von Warnungen in Azure Monitor](/azure/azure-monitor/platform/alerts-activity-log)
+- [Erstellen von Warnungen in Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Verantwortlichkeit**: Kunde
 
@@ -214,7 +214,7 @@ Sie können Azure PowerShell oder die Azure-Befehlszeilenschnittstelle verwenden
 
 **Leitfaden**: Aktivieren Sie die Diagnoseeinstellungen für das Azure-Aktivitätsprotokoll, und senden Sie die Protokolle zwecks Archivierung an einen Log Analytics-Arbeitsbereich, eine Azure Event Hub-Instanz oder ein Azure-Speicherkonto. Aktivitätsprotokolle geben Einblick in die Vorgänge, die für Ihre Azure DevTest Labs-Instanzen auf Verwaltungsebene erfolgen. Mit den Daten aus Azure-Aktivitätsprotokollen können Sie die Antworten auf die Fragen „Was“, „Wer“ und „Wann“ für Schreibvorgänge (PUT, POST, DELETE) ermitteln, die auf Verwaltungsebene für Ihre Azure DevTest Labs-Instanzen durchgeführt werden.
 
-- [Erstellen von Diagnoseeinstellungen zum Senden von Plattformprotokollen und Metriken an verschiedene Ziele](/azure/azure-monitor/platform/diagnostic-settings)
+- [Erstellen von Diagnoseeinstellungen zum Senden von Plattformprotokollen und Metriken an verschiedene Ziele](../azure-monitor/essentials/diagnostic-settings.md)
 
 **Verantwortlichkeit**: Kunde
 
@@ -224,7 +224,7 @@ Sie können Azure PowerShell oder die Azure-Befehlszeilenschnittstelle verwenden
 
 **Leitfaden**: Aktivieren Sie die Diagnoseeinstellungen für das Azure-Aktivitätsprotokoll, und senden Sie die Protokolle zwecks Archivierung an einen Log Analytics-Arbeitsbereich, eine Azure Event Hub-Instanz oder ein Azure-Speicherkonto. Aktivitätsprotokolle geben Einblick in die Vorgänge, die für Ihre Azure DevTest Labs-Instanzen auf Verwaltungsebene erfolgen. Mit den Daten aus Azure-Aktivitätsprotokollen können Sie die Antworten auf die Fragen „Was“, „Wer“ und „Wann“ für alle Schreibvorgänge (PUT, POST, DELETE) ermitteln, die auf Verwaltungsebene für Ihre Azure DevTest Labs-Instanzen durchgeführt werden.
 
-- [Erstellen von Diagnoseeinstellungen zum Senden von Plattformprotokollen und Metriken an verschiedene Ziele](/azure/azure-monitor/platform/diagnostic-settings)
+- [Erstellen von Diagnoseeinstellungen zum Senden von Plattformprotokollen und Metriken an verschiedene Ziele](../azure-monitor/essentials/diagnostic-settings.md)
 
 **Verantwortlichkeit**: Kunde
 
@@ -236,7 +236,7 @@ Sie können Azure PowerShell oder die Azure-Befehlszeilenschnittstelle verwenden
 
 Weitere Informationen finden Sie in den folgenden Artikeln:
 
-- [Sammeln von internen Azure Virtual Machine-Hostprotokollen mit Azure Monitor](/azure/azure-monitor/learn/quick-collect-azurevm)
+- [Sammeln von internen Azure Virtual Machine-Hostprotokollen mit Azure Monitor](../azure-monitor/vm/quick-collect-azurevm.md)
 
 - [Grundlegendes zur Datensammlung in Azure Security Center](../security-center/security-center-enable-data-collection.md)
 
@@ -248,7 +248,7 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 
 **Leitfaden**: Legen Sie in Azure Monitor die Protokollaufbewahrungsdauer für Log Analytics-Arbeitsbereiche, die Ihren Azure DevTest Labs-Instanzen zugeordnet sind, gemäß den Compliancevorschriften Ihres Unternehmens fest.
 
-- [Weitere Informationen finden Sie im folgenden Artikel](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period).
+- [Weitere Informationen finden Sie im folgenden Artikel](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period).
 
 **Verantwortlichkeit**: Kunde
 
@@ -260,9 +260,9 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 
 Weitere Informationen finden Sie in den folgenden Artikeln:
 
-- [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](/azure/azure-monitor/platform/diagnostic-settings)
+- [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
 
-- [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](/azure/azure-monitor/platform/activity-log)
+- [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../azure-monitor/essentials/activity-log.md)
 
 **Verantwortlichkeit**: Kunde
 
@@ -272,7 +272,7 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 
 **Leitfaden**: Verwenden Sie den Azure Log Analytics-Arbeitsbereich zum Überwachen von und Warnen vor anomalen Aktivitäten in Sicherheitsprotokollen und -ereignissen für Azure DevTest Labs.
 
-- [Warnungen bei Log Analytics-Protokolldaten](/azure/azure-monitor/learn/tutorial-response)
+- [Warnungen bei Log Analytics-Protokolldaten](../azure-monitor/alerts/tutorial-response.md)
 
 **Verantwortlichkeit**: Kunde
 
@@ -333,7 +333,7 @@ Zusätzlich können Sie, um den Überblick über dedizierte Verwaltungskonten zu
 - Ressourcenverwaltung: Ermöglicht den Zugriff auf das Azure-Portal, um Ressourcen zu verwalten (Erstellen von VMs und Umgebungen sowie Starten, Beenden, Neustarten, Löschen und Anwenden von Artefakten). Die Ressourcenverwaltung erfolgt in Azure über die rollenbasierte Zugriffssteuerung von Azure (Azure RBAC). Sie weisen Rollen den Benutzern zu und legen Ressourcen- und Zugriffsberechtigungen fest.
 - Virtuelle Computer (Netzwerkebene): In der Standardkonfiguration verwenden VMs ein lokales Administratorkonto. Ist eine Domäne verfügbar (Azure Active Directory Domain Services (Azure AD DS), eine lokale Domäne oder eine cloudbasierte Domäne), können Computer dieser Domäne beitreten. Benutzer können dann Ihre domänenbasierten Identitäten mithilfe des Artefakts „Domänenbeitritt“ verwenden, um eine Verbindung mit den Computern herzustellen.
 
-- [Referenzarchitektur für DevTest Labs](https://docs.microsoft.com/azure/devtest-labs/devtest-lab-reference-architecture#architecture)
+- [Referenzarchitektur für DevTest Labs](./devtest-lab-reference-architecture.md#architecture)
 
 - [Grundlegendes zu SSO mit Azure AD](../active-directory/manage-apps/what-is-single-sign-on.md)
 
@@ -463,7 +463,7 @@ Sie können diesen Prozess optimieren, indem Sie Diagnoseeinstellungen für Azur
 
 **Leitfaden:** Verwenden Sie Azure Monitor mit dem Azure-Aktivitätsprotokoll, um Warnungen für den Fall zu erstellen, dass Änderungen an DevTest Labs-Instanzen und anderen kritischen bzw. zugehörigen Ressourcen vorgenommen werden.
 
-- [Erstellen von Warnungen für Azure-Aktivitätsprotokollereignisse](/azure/azure-monitor/platform/alerts-activity-log)
+- [Erstellen von Warnungen für Azure-Aktivitätsprotokollereignisse](../azure-monitor/alerts/alerts-activity-log.md)
 
 - [Erstellen von Warnungen für DevTest Labs-Aktivitätsprotokollereignisse](create-alerts.md)
 
@@ -481,7 +481,7 @@ Sie können diesen Prozess optimieren, indem Sie Diagnoseeinstellungen für Azur
 
 - [Erstellen von Abfragen mit Azure Graph](../governance/resource-graph/first-query-portal.md)
 
-- [Anzeigen Ihrer Azure-Abonnements](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-4.8.0&amp;preserve-view=true)
+- [Anzeigen Ihrer Azure-Abonnements](/powershell/module/az.accounts/get-azsubscription?preserve-view=true&view=azps-4.8.0)
 
 - [Grundlegendes zu Azure RBAC](../role-based-access-control/overview.md)
 
@@ -595,7 +595,7 @@ Referenzmaterial:
 
 - [Konfigurieren und Verwalten von Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [Ablehnen eines bestimmten Ressourcentyps mit Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [Ablehnen eines bestimmten Ressourcentyps mit Azure Policy](../governance/policy/samples/built-in-policies.md#general)
 
 **Verantwortlichkeit**: Kunde
 
@@ -625,7 +625,7 @@ Referenzmaterial:
 
 **Leitfaden**: Abhängig vom Skripttyp können Sie betriebssystemspezifische Konfigurationen oder Ressourcen von Drittanbietern verwenden, um die Möglichkeit der Benutzer zur Skriptausführung innerhalb der VMs einzuschränken, die in DevTest Labs gehostet werden. Sie können auch die adaptiven Anwendungssteuerungen in Azure Security Center verwenden, um sicherzustellen, dass nur autorisierte Software ausgeführt und die Ausführung jeglicher nicht autorisierter Software auf den zugrunde liegenden Azure-VMs blockiert wird.
 
-- [Steuern der PowerShell-Skriptausführung in Windows-Umgebungen](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-7&amp;preserve-view=true)
+- [Steuern der PowerShell-Skriptausführung in Windows-Umgebungen](/powershell/module/microsoft.powershell.security/set-executionpolicy?preserve-view=true&view=powershell-7)
 
 - [Verwenden der adaptiven Anwendungssteuerungen in Azure Security Center](../security-center/security-center-adaptive-application.md)
 
@@ -665,7 +665,7 @@ Außerdem hat Azure Resource Manager die Möglichkeit, die Vorlage in JSON-Code 
 
 Sie können auch Empfehlungen von Azure Security Center als sichere Konfigurationsbaseline für Ihre Azure-Ressourcen verwenden.
 
-- [Anzeigen verfügbarer Azure Policy-Aliase](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&amp;preserve-view=true)
+- [Anzeigen verfügbarer Azure Policy-Aliase](/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-4.8.0)
 
 - [Tutorial: Erstellen und Verwalten von Richtlinien zur Konformitätserzwingung](../governance/policy/tutorials/create-and-manage.md)
 
@@ -721,7 +721,7 @@ Von Microsoft im Azure Marketplace veröffentlichte VM-Images werden außerdem v
 
 - [Übersicht über die Azure Automation-Zustandskonfiguration](../automation/automation-dsc-overview.md)
 
-- [Beispielskript zum Hochladen einer generalisierten virtuellen Festplatte nach Azure und Erstellen eines neuen virtuellen Computers](/azure/virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script)
+- [Beispielskript zum Hochladen einer generalisierten virtuellen Festplatte nach Azure und Erstellen eines neuen virtuellen Computers](/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script)
 
 - [Erstellen einer Image Factory in DevTest Labs](image-factory-create.md)
 
@@ -735,7 +735,7 @@ Von Microsoft im Azure Marketplace veröffentlichte VM-Images werden außerdem v
 
 - [Git-Tutorial zu Azure Repos](/azure/devops/repos/git/gitworkflow)
 
-- [Informationen zu Berechtigungen und Gruppen](https://docs.microsoft.com/azure/devops/organizations/security/about-permissions?view=azure-devops&amp;tabs=preview-page&amp;preserve-view=true)
+- [Informationen zu Berechtigungen und Gruppen](/azure/devops/organizations/security/about-permissions?preserve-view=true&tabs=preview-page&view=azure-devops)
 
 - [Integration zwischen Azure DevTest Labs und dem Azure DevOps-Workflow](devtest-lab-dev-ops.md)
 
@@ -765,7 +765,7 @@ Von Microsoft im Azure Marketplace veröffentlichte VM-Images werden außerdem v
 
 - [Konfigurieren und Verwalten von Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [Verwenden von Aliasen](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#aliases)
+- [Verwenden von Aliasen](../governance/policy/concepts/definition-structure.md#aliases)
 
 **Verantwortlichkeit**: Kunde
 
@@ -853,7 +853,7 @@ Von Microsoft im Azure Marketplace veröffentlichte VM-Images werden außerdem v
 
 - [Konfigurieren von Microsoft Antimalware für Azure](../security/fundamentals/antimalware.md) 
 
-- [Bedrohungsschutz in Azure Security Center](/azure/security-center/threat-protection)
+- [Bedrohungsschutz in Azure Security Center](../security-center/azure-defender.md)
 
 **Verantwortlichkeit**: Kunde
 
@@ -869,7 +869,7 @@ Mithilfe der Bedrohungserkennung für Datendienste in Azure Security Center kön
 
 - [Grundlegendes zu Microsoft Antimalware für Azure](../security/fundamentals/antimalware.md) 
 
-- [Grundlegendes zur Bedrohungserkennung für Datendienste in Azure Security Center](/azure/security-center/security-center-alerts-data-services)
+- [Grundlegendes zur Bedrohungserkennung für Datendienste in Azure Security Center](../security-center/azure-defender.md)
 
 **Verantwortlichkeit**: Kunde
 
@@ -913,7 +913,7 @@ Aktivieren Sie Azure Backup auf Azure-Ziel-VMs, und geben Sie die gewünschte H�
 
 - [Übersicht über die Sicherung von Azure-VMs](../backup/backup-azure-vms-introduction.md)
 
-- [Sichern von Key Vault-Schlüsseln in Azure](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
+- [Sichern von Key Vault-Schlüsseln in Azure](/powershell/module/az.keyvault/backup-azkeyvaultkey?preserve-view=true&view=azps-4.8.0)
 
 **Verantwortlichkeit**: Kunde
 
@@ -929,7 +929,7 @@ Wenn Sie Azure Disk Encryption verwenden, können Sie die Azure-VM mit den Versc
 
 - [Wiederherstellen von Dateien aus einer Azure-VM-Sicherung](../backup/backup-azure-restore-files-from-vm.md)
 
-- [Wiederherstellen von Schlüsseltresorschlüsseln in Azure](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
+- [Wiederherstellen von Schlüsseltresorschlüsseln in Azure](/powershell/module/az.keyvault/restore-azkeyvaultkey?preserve-view=true&view=azps-4.8.0)
 
 - [Sichern und Wiederherstellen einer verschlüsselten VM](../backup/backup-azure-vms-encryption.md)
 
@@ -975,7 +975,7 @@ Markieren Sie Abonnements außerdem mithilfe von Tags, und erstellen Sie ein Ben
 
 - [Sicherheitswarnungen in Azure Security Center](../security-center/security-center-alerts-overview.md) 
 
-- [Verwenden von Tags zum Organisieren von Azure-Ressourcen](/azure/azure-resource-manager/resource-group-using-tags)
+- [Verwenden von Tags zum Organisieren von Azure-Ressourcen](../azure-resource-manager/management/tag-resources.md)
 
 **Verantwortlichkeit**: Kunde
 
@@ -1041,5 +1041,5 @@ Markieren Sie Abonnements außerdem mithilfe von Tags, und erstellen Sie ein Ben
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Sehen Sie sich die [Übersicht über Version 2 des Azure-Sicherheitsvergleichstests](/azure/security/benchmarks/overview) an.
-- Erfahren Sie mehr über [Azure-Sicherheitsbaselines](/azure/security/benchmarks/security-baselines-overview).
+- Sehen Sie sich die [Übersicht über Version 2 des Azure-Sicherheitsvergleichstests](../security/benchmarks/overview.md) an.
+- Erfahren Sie mehr über [Azure-Sicherheitsbaselines](../security/benchmarks/security-baselines-overview.md).

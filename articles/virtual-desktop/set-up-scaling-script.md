@@ -3,15 +3,15 @@ title: Skalieren von Sitzungshosts mit Azure Automation – Azure
 description: Erfahren Sie, wie Sie mit Azure Automation eine automatische Skalierung von Windows Virtual Desktop-Sitzungshosts durchführen.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 03/30/2020
+ms.date: 03/09/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 12a15ab1a4c7369c448e9f65862121b03ca05bba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f60341ea51f1cf4e856b1b4598887da3dc37ebb2
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89078553"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102613118"
 ---
 # <a name="scale-session-hosts-using-azure-automation"></a>Skalieren von Sitzungshosts mit Azure Automation
 
@@ -52,6 +52,9 @@ Für das Tool gelten allerdings folgende Einschränkungen:
 - Diese Lösung gilt nur für in einem Pool zusammengefasste Multisession-Sitzungshost-VMs.
 - Mit dieser Lösung können VMs in allen Regionen verwaltet werden, sie kann jedoch nur unter demselben Abonnement wie Ihr Azure Automation-Konto und Azure Logic Apps verwendet werden.
 - Die maximale Laufzeit eines Auftrags im Runbook beträgt 3 Stunden. Wenn das Starten oder Beenden der VMs im Hostpool länger dauert, tritt bei dem Auftrag ein Fehler auf. Weitere Informationen finden Sie unter [Freigegebene Ressourcen](../automation/automation-runbook-execution.md#fair-share).
+- Mindestens eine VM oder ein Sitzungshost muss aktiviert sein, damit der Skalierungsalgorithmus ordnungsgemäß funktioniert.
+- Das Skalierungstool unterstützt keine Skalierung, die auf CPU oder Arbeitsspeicher basiert.
+- Die Skalierung funktioniert nur mit vorhandenen Hosts im Hostpool. Das Skalierungstool unterstützt die Skalierung neuer Sitzungshosts nicht.
 
 >[!NOTE]
 >Das Skalierungstool steuert den Lastenausgleichsmodus des Hostpools, den es zurzeit skaliert. Es nutzt den breitenorientierten Lastenausgleichsmodus sowohl zu Spitzenzeiten als auch außerhalb der Spitzenzeiten.
@@ -124,7 +127,7 @@ Zunächst benötigen Sie ein Azure Automation-Konto zum Ausführen des PowerShel
     >[!div class="mx-imgBorder"]
     >![Abbildung der Azure-Übersicht mit dem neu erstellten Azure Automation-Konto und den Runbooks](media/automation-account.png)
 
-    Wählen Sie den Namen Ihres Runbooks aus, um zu überprüfen, ob sich Ihr Webhook dort befindet, wo er sein sollte. Navigieren Sie als nächstes zum Abschnitt „Ressourcen“ des Runbooks, und wählen Sie **Webhooks**aus.
+    Wählen Sie den Namen Ihres Runbooks aus, um zu überprüfen, ob sich Ihr Webhook dort befindet, wo er sein sollte. Navigieren Sie als nächstes zum Abschnitt „Ressourcen“ des Runbooks, und wählen Sie **Webhooks** aus.
 
 ## <a name="create-an-azure-automation-run-as-account"></a>Erstellen eines ausführenden Azure Automation-Kontos
 

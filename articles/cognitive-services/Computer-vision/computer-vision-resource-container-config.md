@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/23/2020
 ms.author: aahi
 ms.custom: seodec18
-ms.openlocfilehash: 0539f37fe15f68d8bfd47bf426333f9d5c67c37d
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: ee2e4fca697c086b95e83feb9d40ce8e07dc344c
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96006870"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102611894"
 ---
 # <a name="configure-read-ocr-docker-containers"></a>Konfigurieren von Read-OCR-Docker-Containern
 
@@ -39,6 +39,8 @@ Der Container hat außerdem die folgenden containerspezifischen Konfigurationsei
 |Nein|Queue:Azure:QueueVisibilityTimeoutInMilliseconds | Gilt nur für v3.x-Container. Hiermit wir die Zeit angegeben, während der eine Nachricht nicht sichtbar ist, wenn sie von einem anderen Worker verarbeitet wird. |
 |Nein|Storage::DocumentStore::MongoDB|Gilt nur für v2.0-Container. Aktiviert MongoDB für den permanenten Ergebnisspeicher. |
 |Nein|Storage:ObjectStore:AzureBlob:ConnectionString| Gilt nur für v3.x-Container. Verbindungszeichenfolge für Azure Blob Storage. |
+|No|Storage:TimeToLiveInDays| Gilt nur für v3.x-Container. Ablaufzeitraum für das Ergebnis in Tagen. Die Einstellung gibt an, wann das System Erkennungsergebnisse löschen soll. Der Standardwert ist 2 Tage (48 Stunden) und bedeutet, dass alle Ergebnisse, die länger als der Zeitraum sind, nicht garantiert erfolgreich abgerufen werden. |
+|No|Task:MaxRunningTimeSpanInMinutes| Gilt nur für v3.x-Container. Maximale Ausführungszeit für eine einzelne Anforderung. Der Standardwert ist 60 Sekunden. |
 
 ## <a name="apikey-configuration-setting"></a>Konfigurationseinstellung „ApiKey“
 
@@ -62,7 +64,7 @@ Diese Einstellung finden Sie hier:
 
 Denken Sie daran, die `vision/v1.0`-Weiterleitung an den Endpunkt-URI anzufügen, wie in der folgenden Tabelle dargestellt. 
 
-|Erforderlich| Name | Datentyp | Beschreibung |
+|Erforderlich| Name | Datentyp | BESCHREIBUNG |
 |--|------|-----------|-------------|
 |Ja| `Billing` | String | URI des Abrechnungsendpunkts<br><br>Beispiel:<br>`Billing=https://westcentralus.api.cognitive.microsoft.com/vision/v1.0` |
 

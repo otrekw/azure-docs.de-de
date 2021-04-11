@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/02/2020
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 1b47ad27abbe59eceabd15d091f88f4659d8dad6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 592a9b89379094c88881c3c8485c7e38a1613b34
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102486385"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219483"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---under-the-hood"></a>Globale Datenverteilung mit Azure Cosmos DB: Hintergrundinformationen
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -61,7 +61,7 @@ Der Dienst ermöglicht es Ihnen, Ihre Cosmos-Datenbanken mit einer einzelnen ode
 
 ## <a name="conflict-resolution"></a>Konfliktlösung
 
-Unser Ansatz zur Updateverteilung, Konfliktlösung und Ursachenverfolgung beruht auf der Vorarbeit zu [epidemischen Algorithmen](https://www.cs.utexas.edu/~lorenzo/corsi/cs395t/04S/notes/naor98load.pdf) und dem [Bayou](https://zoo.cs.yale.edu/classes/cs422/2013/bib/terry95managing.pdf)-System. Teile dieser Ideen haben überlebt und stellen einen passenden Referenzrahmen für die Beschreibung des Systementwurfs von Cosmos DB dar, sie haben aber auch eine erhebliche Transformation durchlaufen, während sie auf das Cosmos DB-System übertragen wurden. Diese Anpassungen waren erforderlich, da bei früheren Systemen weder die Ressourcenverwaltung noch die angestrebte Zielskalierung von Cosmos DB noch die erforderlichen Funktionen (z.B. Konsistenz mit begrenzter Veraltung) gegeben waren. Auch konnten ohne die Änderungen die strikten und umfassenden SLAs von Cosmos DB für die Kunden nicht erreicht werden.  
+Unser Ansatz zur Updateverteilung, Konfliktlösung und Ursachenverfolgung beruht auf der Vorarbeit zu [epidemischen Algorithmen](https://www.cs.utexas.edu/~lorenzo/corsi/cs395t/04S/notes/naor98load.pdf) und dem [Bayou](https://people.cs.umass.edu/~mcorner/courses/691M/papers/terry.pdf)-System. Teile dieser Ideen haben überlebt und stellen einen passenden Referenzrahmen für die Beschreibung des Systementwurfs von Cosmos DB dar, sie haben aber auch eine erhebliche Transformation durchlaufen, während sie auf das Cosmos DB-System übertragen wurden. Diese Anpassungen waren erforderlich, da bei früheren Systemen weder die Ressourcenverwaltung noch die angestrebte Zielskalierung von Cosmos DB noch die erforderlichen Funktionen (z.B. Konsistenz mit begrenzter Veraltung) gegeben waren. Auch konnten ohne die Änderungen die strikten und umfassenden SLAs von Cosmos DB für die Kunden nicht erreicht werden.  
 
 Denken Sie sich daran, dass eine Partitionsgruppe über mehrere Regionen verteilt ist und das Replikationsprotokoll (für Schreibvorgänge für mehrere Regionen) von Cosmos DB bei der Replikation der Daten auf den physischen Partitionen einer Partitionsgruppe befolgt. Jede physische Partition (einer Partitionsgruppe) akzeptiert Schreibanforderungen und verarbeitet Leseanforderungen in der Regel für die Clients in derselben Region. Die von einer physischen Partition akzeptierten Schreibanforderungen innerhalb einer Region werden dauerhaft committet und innerhalb der physischen Partition hochverfügbar gemacht, bevor sie dem Client bestätigt werden. Dies sind vorläufige Schreibvorgänge, die über einen Anti-Entropie-Kanal an andere physische Partitionen in der Partitionsgruppe übermittelt werden. Clients können über einen Anforderungsheader vorläufige oder committete Schreibvorgänge anfordern. Die Anti-Entropie-Übertragung ist (einschließlich ihrer Häufigkeit) dynamisch. Sie basiert auf der Topologie der Partitionsgruppe, der regionalen Nähe der physischen Partitionen und der konfigurierten Konsistenzstufe. Innerhalb einer Partitionsgruppe befolgt Cosmos DB ein Schema mit einem primären Commit mit einer dynamisch ausgewählten Vermittlungspartition. Die Vermittlungsauswahl ist dynamisch und ein integraler Bestandteil der Neukonfiguration der Partitionsgruppe basierend auf der Topologie der Überlagerung. Für die committeten Schreibvorgänge (einschließlich mehrzeiliger/Batchupdates) wird die Sortierung garantiert. 
 

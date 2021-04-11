@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: be202a6016842ee82b3230c2841d416d3b53ea15
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: cf3d8fd1566f3d71541aab7648680063e85079bf
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102505578"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106121828"
 ---
 # <a name="troubleshooting-application-insights-agent-formerly-named-status-monitor-v2"></a>Behandeln von Problemen mit dem Application Insights-Agent (ehemals „Statusmonitor v2“)
 
@@ -152,8 +152,6 @@ Lesen Sie die [API-Referenz](status-monitor-v2-api-reference.md) mit einer ausf�
 3. Führen Sie in einer Befehlskonsole mit Administratorrechten den Befehl `iisreset /start` aus, um IIS zu starten.
 4. Versuchen Sie, zu Ihrer App zu navigieren.
 5. Nachdem Ihre App geladen wurde, kehren Sie zu PerfView zurück, und wählen Sie **Sammlung beenden** aus.
-
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

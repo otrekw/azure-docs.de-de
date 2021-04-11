@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: bbac794263fec176e03c7148d860c479a2ed9d39
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 57d5627e45e79263408b9b5760c8332122ce8c91
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102501227"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167395"
 ---
 # <a name="author-graphical-runbooks-in-azure-automation"></a>Erstellen von grafischen Azure Automation-Runbooks
 
@@ -328,19 +328,19 @@ Verwenden Sie [Vergleichsoperatoren](/powershell/module/microsoft.powershell.cor
 Mit der folgenden Bedingung wird beispielsweise bestimmt, ob der virtuelle Computer einer Aktivität mit dem Namen `Get-AzureVM` derzeit beendet ist.
 
 ```powershell-interactive
-$ActivityOutput["Get-AzureVM"].PowerState –eq "Stopped"
+$ActivityOutput["Get-AzureVM"].PowerState -eq "Stopped"
 ```
 
 Die folgende Bedingung bestimmt, ob sich derselbe virtuelle Computer in einem anderen Zustand als „Beendet“ befindet.
 
 ```powershell-interactive
-$ActivityOutput["Get-AzureVM"].PowerState –ne "Stopped"
+$ActivityOutput["Get-AzureVM"].PowerState -ne "Stopped"
 ```
 
 Sie können in Ihrem Runbook mehrere Bedingungen mit einem [logischen Operator](/powershell/module/microsoft.powershell.core/about/about_logical_operators) wie `-and` oder `-or` verknüpfen. Mit der folgenden Bedingung wird beispielsweise überprüft, ob sich der virtuelle Computer aus dem vorherigen Beispiel im Zustand „Beendet“ oder „Wird beendet“ befindet.
 
 ```powershell-interactive
-($ActivityOutput["Get-AzureVM"].PowerState –eq "Stopped") -or ($ActivityOutput["Get-AzureVM"].PowerState –eq "Stopping")
+($ActivityOutput["Get-AzureVM"].PowerState -eq "Stopped") -or ($ActivityOutput["Get-AzureVM"].PowerState -eq "Stopping")
 ```
 
 ### <a name="use-hashtables"></a>Verwenden von Hashtabellen

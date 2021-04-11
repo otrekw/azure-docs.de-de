@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: reference
 ms.date: 03/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: 6b502690a62410f1e8d2950074e8b479f7dc7f88
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 6b9d3f6973c210e7bd91c088ee7a276bfbcc48ce
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104608792"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106121981"
 ---
 # <a name="azure-event-grid-schemas-for-media-services-events"></a>Azure Event Grid-Schemas für Media Services-Ereignisse
 
@@ -330,7 +330,7 @@ Das Datenobjekt weist die folgenden Eigenschaften auf:
 | encoderPort | Zeichenfolge | Port des Encoders, von dem dieser Stream stammt. |
 | resultCode | Zeichenfolge | Der Grund, aus dem die Verbindung abgelehnt wurde. Diese Ergebniscodes werden in der folgenden Tabelle aufgeführt. |
 
-Die Fehlerergebniscodes finden Sie unter [Fehlercodes für Liveereignisse](../live-event-error-codes.md).
+Die Fehlerergebniscodes finden Sie unter [Fehlercodes für Liveereignisse](../live-event-error-codes-reference.md).
 
 ### <a name="liveeventencoderconnected"></a>LiveEventEncoderConnected
 
@@ -400,7 +400,7 @@ Das Datenobjekt weist die folgenden Eigenschaften auf:
 | encoderPort | Zeichenfolge | Port des Encoders, von dem dieser Stream stammt. |
 | resultCode | Zeichenfolge | Der Grund für die Trennung der Verbindung mit dem Encoder. Die Trennung kann ordnungsgemäß oder verursacht durch einen Fehler erfolgen. Diese Ergebniscodes werden in der folgenden Tabelle aufgeführt. |
 
-Die Fehlerergebniscodes finden Sie unter [Fehlercodes für Liveereignisse](../live-event-error-codes.md).
+Die Fehlerergebniscodes finden Sie unter [Fehlercodes für Liveereignisse](../live-event-error-codes-reference.md).
 
 Ergebniscodes für ordnungsgemäße Trennungen sind:
 
@@ -676,4 +676,4 @@ Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
 
 - [EventGrid .NET SDK mit Media Services-Ereignissen](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/)
 - [Definitionen von Media Services-Ereignissen](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/eventgrid/data-plane/Microsoft.Media/stable/2018-01-01/MediaServices.json)
-- [Fehlercodes für Liveereignisse](../live-event-error-codes.md)
+- [Fehlercodes für Liveereignisse](../live-event-error-codes-reference.md)

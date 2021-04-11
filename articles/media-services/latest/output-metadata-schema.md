@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 1a27db81866760bff56c900a908162f356c01a66
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: f26905366949c2c198e52f78bc7adb734cbb7f90
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98895202"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102612455"
 ---
 # <a name="output-metadata"></a>Ausgeben von Metadaten
 
@@ -42,7 +42,7 @@ Sammlung von „AssetFile“-Einträgen für den Codierauftrag.
 | **VideoTracks**|Jede physische Medienobjektdatei kann null oder mehr Videospuren enthalten, die zu einem entsprechenden Containerformat zusammengeführt werden. <br />Siehe dazu [VideoTracks](#videotracks). |
 | **AudioTracks**|Jede physische Medienobjektdatei kann null oder mehr Audiospuren enthalten, die zu einem entsprechenden Containerformat zusammengeführt werden. Dies ist die Sammlung aller dieser Audiospuren.<br /> Weitere Informationen finden Sie unter [AudioTracks](#audiotracks). |
 | **Name**<br />Erforderlich |Der Name der Medienobjektdatei. <br /><br />Beispiel: `"Name": "Ignite-short_1280x720_AACAudio_3551.mp4"`|
-| **Größe**<br />Erforderlich |Größe der Objektdatei in Byte <br /><br />Beispiel: `"Size": 32414631`|
+| **Größe**<br />Erforderlich |Größe der Assetdatei in Byte <br /><br />Beispiel: `"Size": 32414631`|
 | **Duration**<br />Erforderlich |Dauer der Inhaltswiedergabe. Weitere Informationen finden Sie in der Dokumentation zum [ISO8601](https://www.iso.org/iso-8601-date-and-time-format.html)-Format. <br /><br />Beispiel: `"Duration": "PT1M10.315S"`|
 
 ## <a name="videotracks"></a>VideoTracks 
@@ -52,8 +52,8 @@ Jede physische Medienobjektdatei kann null oder mehr Videospuren enthalten, die 
 | Name | BESCHREIBUNG |
 | --- | --- |
 | **Id**<br /> Erforderlich |Nullbasierter Index dieser Videospur. **Hinweis:**  Diese **ID** ist nicht unbedingt die „TrackID“, die in einer MP4-Datei verwendet wird. <br /><br />Beispiel: `"Id": 1`|
-| **FourCC**<br />Erforderlich | FourCC-Code des Videocodecs, der von ffmpeg gemeldet wird.  <br /><br />Beispiel: `"FourCC": "avc1"`|
-| **Profil** |H264-Profil (gilt nur für den H264-Codec).  <br /><br />Beispiel: `"Profile": "High"` |
+| **FourCC**<br />Erforderlich | FourCC-Code des Videocodecs, der von ffmpeg gemeldet wird.  <br /><br />Beispiel: `"FourCC": "avc1" | "hev1" | "hvc1"`|
+| **Profil** |H264-Profil (gilt nur für den H264-Codec)  <br /><br />Beispiel: `"Profile": "High"` |
 | **Level** |H264-Pegel (gilt nur für den H264-Codec).  <br /><br />Beispiel: `"Level": "3.2"`|
 | **Width**<br />Erforderlich |Breite des codierten Videos in Pixel  <br /><br />Beispiel: `"Width": "1280"`|
 | **Height**<br />Erforderlich |Höhe des codierten Videos in Pixel  <br /><br />Beispiel: `"Height": "720"`|

@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: a0f0324d1f7308eb1392c4f7a98a6a5d226026be
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: b765d92778df40caec0864dc6f547324216fdb07
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705505"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102611979"
 ---
 # <a name="infrastructure-as-code"></a>Infrastructure-as-Code
 
@@ -91,7 +91,7 @@ microservices_sfpkg.close()
 ```
 
 ## <a name="azure-virtual-machine-operating-system-automatic-upgrade-configuration"></a>Konfiguration des automatischen Betriebssystemupgrades für virtuelle Azure-Computer 
-Das Upgraden Ihrer virtuellen Computer ist ein vom Benutzer initiierter Vorgang, und es empfiehlt sich, [automatische Betriebssystemimageupgrades mit Azure-VM-Skalierungsgruppen](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md) für die Hostpatchverwaltung von Azure Service Fabric-Clustern zu verwenden. Die Patchorchestrierungsanwendung (POA) ist eine alternative Lösung für das Hosten außerhalb von Azure. Die POA kann zwar auch in Azure verwendet werden, aufgrund des Zusatzaufwands, der durch das Hosten von POA in Azure entsteht, werden für virtuelle Computer jedoch häufig automatische Betriebssystemupgrades über POA bevorzugt. Im Anschluss finden Sie die Resource Manager-Vorlageneigenschaften für Compute-VM-Skalierungsgruppen, um automatische Betriebssystemupgrades zu aktivieren:
+Das Upgraden Ihrer virtuellen Computer ist ein vom Benutzer initiierter Vorgang, und es empfiehlt sich, [automatische Betriebssystemimageupgrades mit Azure-VM-Skalierungsgruppen](service-fabric-patch-orchestration-application.md) für die Hostpatchverwaltung von Azure Service Fabric-Clustern zu verwenden. Die Patchorchestrierungsanwendung (POA) ist eine alternative Lösung für das Hosten außerhalb von Azure. Die POA kann zwar auch in Azure verwendet werden, aufgrund des Zusatzaufwands, der durch das Hosten von POA in Azure entsteht, werden für virtuelle Computer jedoch häufig automatische Betriebssystemupgrades über POA bevorzugt. Im Anschluss finden Sie die Resource Manager-Vorlageneigenschaften für Compute-VM-Skalierungsgruppen, um automatische Betriebssystemupgrades zu aktivieren:
 
 ```json
 "upgradePolicy": {

@@ -9,10 +9,10 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: d9bf1b54f1bfeebacbb406a50c8496817857204c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102507567"
 ---
 # <a name="azure-cloud-services-extended-support-definition-schema-csdef-file"></a>Azure Cloud Services (erweiterter Support) – Definitionsschema (CSDEF-Datei)
@@ -63,7 +63,7 @@ Das Element `ServiceDefinition` ist das Element der obersten Ebene der Dienstdef
 
 In der folgenden Tabelle werden die Attribute des Elements `ServiceDefinition` beschrieben.
 
-| attribute               | BESCHREIBUNG |
+| Attribut               | BESCHREIBUNG |
 | ----------------------- | ----------- |
 | name                    |Erforderlich. Der Name des Diensts. Der Name muss innerhalb des Dienstkontos eindeutig sein.|
 | topologyChangeDiscovery | Optional. Gibt die Änderungsbenachrichtigung zur Art der Topologie an. Dabei sind folgende Werte möglich:<br /><br /> -   `Blast`: Sendet das Update so schnell wie möglich an alle Rolleninstanzen. Wenn Sie die Option auswählen, sollte die Rolle das Topologieupdate verarbeiten können, ohne neu gestartet werden zu müssen.<br />-   `UpgradeDomainWalk`: Sendet das Update sequenziell an alle Rolleninstanzen, nachdem die vorherige Instanz das Update erfolgreich akzeptiert hat.|

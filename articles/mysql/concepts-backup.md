@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/27/2020
-ms.openlocfilehash: a124f576b2540399d27fcd97e0e58476dba4ba4b
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 883b76929ac3310dd3089ecb088a4691adbb4ca1
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492810"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103010353"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>Sicherung und Wiederherstellung in Azure Database for MySQL
 
@@ -86,7 +86,17 @@ Es gibt zwei Arten der Wiederherstellung:
 - Die **Point-in-Time-Wiederherstellung** ist für beide Sicherungsredundanzoptionen verfügbar. Es wird unter Verwendung einer Kombination aus vollständigen Sicherungen und Transaktionsprotokollsicherungen in der Region des ursprünglichen Servers ein neuer Server erstellt.
 - Die **Geowiederherstellung** ist nur verfügbar, wenn Sie Ihren Server für georedundanten Speicher konfiguriert haben. Hierbei können Sie den Server unter Verwendung der aktuellsten Sicherung in einer anderen Region wiederherstellen.
 
-Die geschätzte Wiederherstellungszeit hängt von verschiedenen Faktoren ab, z.B. der Datenbankgröße, Transaktionsprotokollgröße und Netzwerkbandbreite sowie der Gesamtzahl von Datenbanken, die gleichzeitig in derselben Region wiederhergestellt werden müssen. Die Wiederherstellungszeit beträgt für gewöhnlich weniger als 12 Stunden.
+Die geschätzte Zeit für die Wiederherstellung des Servers ist von mehreren Faktoren abhängig:
+* Größe der Datenbanken
+* Anzahl der beteiligten Transaktionsprotokolle
+* Menge der erneut auszuführenden Aktivitäten, um den Wiederherstellungspunkt wiederherzustellen
+* Netzwerkbandbreite, sofern die Wiederherstellung in einer anderen Region erfolgt
+* Anzahl der gleichzeitigen Wiederherstellungsanforderungen, die aktuell in der Zielregion verarbeitet werden
+* Vorhandensein eines Primärschlüssels in den Tabellen in der Datenbank. Um die Wiederherstellung zu beschleunigen, sollten Sie für alle Tabellen in der Datenbank einen Primärschlüssel hinzufügen. Mit der folgenden Abfrage können Sie überprüfen, ob Ihre Tabellen über einen Primärschlüssel verfügen:
+```sql
+select tab.table_schema as database_name, tab.table_name from information_schema.tables tab left join information_schema.table_constraints tco on tab.table_schema = tco.table_schema and tab.table_name = tco.table_name and tco.constraint_type = 'PRIMARY KEY' where tco.constraint_type is null and tab.table_schema not in('mysql', 'information_schema', 'performance_schema', 'sys') and tab.table_type = 'BASE TABLE' order by tab.table_schema, tab.table_name;
+```
+Bei einer großen oder sehr aktiven Datenbank kann die Wiederherstellung mehrere Stunden dauern. Bei einem längeren Ausfall in einer Region ist es möglich, dass eine große Anzahl von Geowiederherstellungsanforderungen für die Notfallwiederherstellung initiiert wird. Wenn es viele Anforderungen gibt, kann sich die Wiederherstellungszeit bei einzelnen Datenbanken erhöhen. Der Großteil der Datenbankwiederherstellungen erfolgt in weniger als 12 Stunden.
 
 > [!IMPORTANT]
 > Gelöschte Server können nur innerhalb von **fünf Tagen** nach dem Löschen wiederhergestellt werden. Danach werden die Sicherungen gelöscht. Auf die Datenbanksicherung kann nur über das Azure-Abonnement zugegriffen werden, unter dem der Server gehostet wird. Und nur über dieses Abonnement kann die Datenbanksicherung auch wiederhergestellt werden. Informationen zum Wiederherstellen eines gelöschten Servers finden Sie in den [dokumentierten Schritten](howto-restore-dropped-server.md). Um Serverressourcen nach der Bereitstellung vor versehentlichem Löschen oder unerwarteten Änderungen zu schützen, können Administratoren [Verwaltungssperren](../azure-resource-manager/management/lock-resources.md) nutzen.

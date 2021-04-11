@@ -6,20 +6,17 @@ ms.author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 02/25/2021
-ms.openlocfilehash: b3ddbdf04dc736b6f78a04dc6bb2bc484e67f70f
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.date: 03/11/2021
+ms.openlocfilehash: 0a24546579df020dcb7c7a9b01ee3d181226d2df
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102107120"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102617487"
 ---
 # <a name="grant-and-request-tenant-wide-visibility"></a>Gewähren und Anfordern der mandantenweiten Sichtbarkeit
 
 Ein Benutzer mit der Azure Active Directory-Rolle **Globaler Administrator** hat möglicherweise mandantenweite Aufgaben, aber keine Azure-Berechtigungen zum Anzeigen der organisationsweiten Informationen in Azure Security Center. Eine Berechtigungserhöhung ist erforderlich, da Azure AD-Rollenzuweisungen keinen Zugriff auf Azure-Ressourcen gewähren. 
-
-> [!TIP]
-> Weitere Informationen zur Berechtigungserhöhung für die Rolle „Globaler Administrator“ finden Sie unter [Erhöhen des Zugriffs zur Verwaltung aller Azure-Abonnements und Verwaltungsgruppen](../role-based-access-control/elevate-access-global-admin.md).
 
 ## <a name="grant-tenant-wide-permissions-to-yourself"></a>Erteilen von mandantenweiten Berechtigungen an sich selbst
 
@@ -45,6 +42,14 @@ So weisen Sie sich selbst Berechtigungen auf Mandantenebene zu:
 1. Melden Sie sich vom Azure-Portal ab und dann wieder an.
 
 1. Wenn Sie erhöhte Zugriffsrechte besitzen, können Sie Azure Security Center öffnen bzw. aktualisieren, um sicherzustellen, dass die Sichtbarkeit für alle Abonnements Ihres Azure AD-Mandanten erzielt wurde. 
+
+Mit dem oben beschriebenen einfachen Prozess wird automatisch eine Reihe von Vorgängen für Sie durchführt:
+
+1. Die Benutzerberechtigungen werden vorübergehend erhöht.
+1. Mithilfe der neuen Berechtigungen wird der Benutzer der gewünschten Azure RBAC-Rolle in der Stammverwaltungsgruppe zugewiesen.
+1. Die erhöhten Berechtigungen werden entfernt.
+
+Weitere Informationen zur Erhöhung der Azure AD-Rechte finden Sie unter [Erhöhen der Zugriffsrechte zum Verwalten aller Azure-Abonnements und Verwaltungsgruppen](../role-based-access-control/elevate-access-global-admin.md).
 
 
 ## <a name="request-tenant-wide-permissions-when-yours-are-insufficient"></a>Anfordern mandantenweiter Berechtigungen, wenn die eigenen Berechtigungen nicht ausreichen

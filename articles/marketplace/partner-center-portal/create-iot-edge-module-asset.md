@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/03/2020
-ms.openlocfilehash: aca27b89a3b92b410fa560c8b4bd7eb3d4e0a935
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f8eddd5d346003af0c2b41d65fc0aa09c86f48c7
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93346773"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167446"
 ---
 # <a name="prepare-your-iot-edge-module-technical-assets"></a>Vorbereiten der technischen Ressourcen für das IoT Edge-Modul
 
@@ -39,14 +39,14 @@ Ihr Modul muss alle Plattformen der Ebene 1 unterstützen, die von IoT Edge unt
 
 - Es muss ein latest-Tag und ein Versionstag (z. B. 1.0.1) bereitstellen. Dabei handelt es sich um Manifesttags, die mit dem [Manifesttool von GitHub](https://github.com/estesp/manifest-tool) erstellt werden.
 
-- Verwenden Sie die Registerkarte „Angebotsliste“ in [Partner Center](https://partner.microsoft.com/dashboard/commercial-marketplace), um unter dem Abschnitt **Nützliche Links** dem [Azure IoT Edge Certified](https://catalog.azureiotsolutions.com/alldevices?filters={%2218%22:[%221%22]}/)-Gerätekatalog einen Link hinzuzufügen.
+- Verwenden Sie die Registerkarte „Angebotsliste“ in [Partner Center](https://partner.microsoft.com/dashboard/commercial-marketplace), um unter dem Abschnitt **Nützliche Links** dem [Azure IoT Edge Certified](https://devicecatalog.azure.com/devices?certificationBadgeTypes=IoTEdgeCompatible)-Gerätekatalog einen Link hinzuzufügen.
 
 #### <a name="a-subset-of-tier-1-platforms-supported-by-iot-edge"></a>Eine Teilmenge der von IoT Edge unterstützten Plattformen der Ebene 1
 
 Ihr Modul muss eine Teilmenge (mindestens eine) der Plattformen der Ebene 1 unterstützen, die von IoT Edge unterstützt werden (wie unter [Azure IoT Edge-Support](../../iot-edge/support.md) dargestellt). Für ein Modul mit dieser Plattformoption muss Folgendes gelten:
 
 - Es muss ein latest-Tag und ein Versionstag (z. B. 1.0.1) bereitstellen. Dabei handelt es sich um Manifesttags, die mit dem [Manifesttool](https://github.com/estesp/manifest-tool) von GitHub erstellt werden, wenn mehr als eine Plattform unterstützt wird. Manifesttags sind optional, wenn nur eine Plattform unterstützt wird.
-- Verwenden Sie die Registerkarte „Angebotsliste“ in [Partner Center](https://partner.microsoft.com/dashboard/commercial-marketplace), um unter dem Abschnitt **Nützliche Links** mindestens einem IoT Edge-Gerät im [Azure IoT Edge Certified](https://catalog.azureiotsolutions.com/)-Gerätekatalog einen Link hinzuzufügen.
+- Verwenden Sie die Registerkarte „Angebotsliste“ in [Partner Center](https://partner.microsoft.com/dashboard/commercial-marketplace), um unter dem Abschnitt **Nützliche Links** mindestens einem IoT Edge-Gerät im [Azure IoT Edge Certified](https://devicecatalog.azure.com/)-Gerätekatalog einen Link hinzuzufügen.
 
 :::image type="content" source="media/iot-edge-module-technical-assets-offer-listing.png" alt-text="Abbildung: Abschnitt „Angebotsliste“ in „Partner Center“":::
 
@@ -54,7 +54,7 @@ Ihr Modul muss eine Teilmenge (mindestens eine) der Plattformen der Ebene 1 unt
 
 IoT Edge-Modulgrößen (wie CPU, RAM, Speicher und GPU) auf IoT Edge-Zielgeräten müssen die folgenden Anforderungen erfüllen:
 
-- Das Modul muss mit mindestens einem IoT Edge-Gerät aus dem [Azure IoT Edge Certified](https://catalog.azureiotsolutions.com/)-Gerätekatalog funktionieren.
+- Das Modul muss mit mindestens einem IoT Edge-Gerät aus dem [Azure IoT Edge Certified](https://devicecatalog.azure.com/)-Gerätekatalog funktionieren.
 
 - Die minimalen Hardwareanforderungen müssen im letzten Absatz in der Beschreibung des Angebots dokumentiert werden (unter der Registerkarte „Angebotsliste“ in [Partner Center](https://partner.microsoft.com/dashboard/commercial-marketplace)). Optional können Sie auch die empfohlenen Hardwareanforderungen auflisten, wenn sie sich deutlich unterscheiden. Fügen Sie z.B. folgenden Abschnitt am Ende der Angebotsbeschreibung hinzu:
 
