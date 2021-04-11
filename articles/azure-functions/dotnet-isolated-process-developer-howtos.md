@@ -4,14 +4,14 @@ description: Erfahren Sie, wie Sie C#-Funktionen mithilfe von .NET 5.0 erstelle
 ms.date: 03/03/2021
 ms.topic: how-to
 zone_pivot_groups: development-environment-functions
-ms.openlocfilehash: 70eacc5ec7f6adb65ba6e01c55acc6c6e3075ca9
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 6403e5d898b76d459a9712f7847e81e5442deeda
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102583640"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075327"
 ---
-# <a name="develop-and-publish-net-5-function-using-azure-functions"></a>Entwickeln und Veröffentlichen von .NET 5-Funktionen mit Azure Functions 
+# <a name="develop-and-publish-net-5-functions-using-azure-functions"></a>Entwickeln und Veröffentlichen von .NET 5-Funktionen mit Azure Functions 
 
 In diesem Artikel erfahren Sie, wie Sie unter Verwendung von .NET 5.0 mit C#-Funktionen arbeiten, die prozessextern außerhalb der Azure Functions-Laufzeit ausgeführt werden. Sie erfahren, wie Sie diese .NET-Funktionen für einen isolierten Prozess in Azure erstellen, lokal debuggen und veröffentlichen. In Azure werden diese Funktionen in einem isolierten Prozess ausgeführt, der .NET 5.0 unterstützt. Weitere Informationen finden Sie im [Handbuch zum Ausführen von Funktionen unter .NET 5.0 in Azure](dotnet-isolated-process-guide.md).
 
@@ -152,7 +152,7 @@ An diesem Punkt können Sie den `func start`-Befehl aus dem Stammverzeichnis des
  
 1. Notieren Sie sich in der Azure Functions-Laufzeitausgabe die Prozess-ID des Hostprozesses, dem Sie einen Debugger anfügen. Beachten Sie auch die URL Ihrer lokalen Funktion.
 
-1. Wählen Sie in Visual Studio im Menü **Debuggen** die Option **An Prozess anhängen...** aus, suchen Sie den dotnet.exe-Prozess, der mit der Prozess-ID übereinstimmt, und wählen Sie **Anfügen** aus. 
+1. Wählen Sie in Visual Studio im Menü **Debuggen** die Option **An Prozess anhängen...** aus, suchen Sie den Prozess, der mit der Prozess-ID übereinstimmt, und wählen Sie **Anfügen** aus. 
     
     :::image type="content" source="media/dotnet-isolated-process-developer-howtos/attach-to-process.png" alt-text="Anfügen des Debuggers an den Functions-Hostprozess":::    
 
@@ -160,7 +160,7 @@ An diesem Punkt können Sie den `func start`-Befehl aus dem Stammverzeichnis des
 
 1. Geben Sie in die Adressleiste Ihres Browsers Ihre lokale Funktions-URL ein, die wie folgt aussieht, und führen Sie die Anforderung aus. 
 
-    <http://localhost:7071/api/HttpExample>
+    `http://localhost:7071/api/HttpExample`
 
     Die Ausgabe der Ablaufverfolgung sollte in der in das ausgegebene Terminal geschriebenen Anforderung angezeigt werden. Die Codeausführung wird an allen Breakpoints angehalten, die Sie in Ihrem Funktionscode festlegen.
 

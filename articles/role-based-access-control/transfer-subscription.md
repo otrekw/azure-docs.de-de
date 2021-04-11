@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 12/10/2020
 ms.author: rolyon
-ms.openlocfilehash: 5a4be6052e72c27ad83b5af64f1acb3ad8d4e3be
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 93821979e0c14a879b805049a4f662e9ef6d5b15
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100555900"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075677"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>Übertragen eines Azure-Abonnements in ein anderes Azure AD-Verzeichnis
 
@@ -74,7 +74,7 @@ Mehrere Azure-Ressourcen weisen eine Abhängigkeit von einem Abonnement oder ein
 | Vom System zugewiesene verwaltete Identitäten | Ja | Ja | [Auflisten verwalteter Identitäten](#list-role-assignments-for-managed-identities) | Sie müssen die verwalteten Identitäten deaktivieren und erneut aktivieren. Sie müssen die Rollenzuweisungen erneut erstellen. |
 | Vom Benutzer zugewiesene verwaltete Identitäten | Ja | Ja | [Auflisten verwalteter Identitäten](#list-role-assignments-for-managed-identities) | Sie müssen die verwalteten Identitäten löschen, erneut erstellen und an die entsprechende Ressource anfügen. Sie müssen die Rollenzuweisungen erneut erstellen. |
 | Azure-Schlüsseltresor | Ja | Ja | [Auflisten von Key Vault-Zugriffsrichtlinien](#list-key-vaults) | Sie müssen die Mandanten-ID aktualisieren, die den Schlüsseltresoren zugeordnet ist. Sie müssen Zugriffsrichtlinien entfernen und neue Zugriffsrichtlinien hinzufügen. |
-| Azure SQL-Datenbanken mit aktivierter Azure AD-Authentifizierungsintegration | Ja | Nein | [Überprüfen von Azure SQL-Datenbanken mit Azure AD Authentifizierung](#list-azure-sql-databases-with-azure-ad-authentication) |  |  |
+| Azure SQL-Datenbanken mit aktivierter Azure AD-Authentifizierungsintegration | Ja | Nein | [Überprüfen von Azure SQL-Datenbanken mit Azure AD Authentifizierung](#list-azure-sql-databases-with-azure-ad-authentication) |  | 
 | Azure Storage und Azure Data Lake Storage Gen2 | Ja | Ja |  | ACLs müssen erneut erstellt werden. |
 | Azure Data Lake Storage Gen1 | Ja | Ja |  | ACLs müssen erneut erstellt werden. |
 | Azure Files | Ja | Ja |  | ACLs müssen erneut erstellt werden. |

@@ -1,16 +1,16 @@
 ---
 title: 'Schnellstart: Neue Richtlinienzuweisung mit PowerShell'
 description: In dieser Schnellstartanleitung erstellen Sie mit Azure PowerShell eine Azure Policy-Zuweisung zum Identifizieren nicht konformer Ressourcen.
-ms.date: 08/17/2020
+ms.date: 03/31/2021
 ms.topic: quickstart
-ms.openlocfilehash: e941b74101308af703f243197fb4043f8f32d233
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 1043bd53fa2c494d34b0007a851b95afd937d991
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88548411"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106091411"
 ---
-# <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-azure-powershell"></a>Schnellstart: Erstellen einer Richtlinienzuweisung zum Identifizieren nicht konformer Ressourcen mit Azure PowerShell
+# <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-azure-powershell"></a>Schnellstart: Erstellen einer Richtlinienzuweisung zum Identifizieren nicht konformer Ressourcen mithilfe von Azure PowerShell
 
 Zum Verständnis der Konformität in Azure müssen Sie zunächst wissen, wie Sie den Status Ihrer Ressourcen ermitteln. Im Rahmen dieser Schnellstartanleitung erstellen Sie eine Richtlinienzuweisung zur Identifizierung von virtuellen Computern, die keine verwalteten Datenträger verwenden. Im Anschluss identifizieren Sie virtuelle Computer, die _nicht konform_ sind.
 

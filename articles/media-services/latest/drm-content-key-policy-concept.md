@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: c9709c444dfde4897c1364c8ab3d9dbfa315bb6f
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: 6e60292c817ccad8eb1dd6cb3c33b944ab1c18a0
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106122151"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277684"
 ---
 # <a name="content-key-policies"></a>Richtlinien für Inhaltsschlüssel
 
@@ -25,9 +25,9 @@ ms.locfileid: "106122151"
 
 Mit Media Services können Sie Ihre zu übermittelnden Live- und On-Demand-Inhalte dynamisch mit Advanced Encryption Standard (AES-128) oder einem der drei wichtigsten DRM-Systeme verschlüsseln: Microsoft PlayReady, Google Widevine und Apple FairPlay. Media Services bietet auch einen Dienst für die Übermittlung von AES-Schlüsseln und DRM-Lizenzen (PlayReady, Widevine und FairPlay) an autorisierte Clients. 
 
-Um Verschlüsselungsoptionen für Ihren Datenstrom festzulegen, müssen Sie die [Streamingrichtlinie](streaming-policy-concept.md) erstellen und sie mit Ihrem [Streaminglocator](streaming-locators-concept.md) verknüpfen. Sie erstellen die [Richtlinie für den Inhaltsschlüssel](/rest/api/media/contentkeypolicies), um zu konfigurieren, wie der Inhaltsschlüssel (der den sicheren Zugriff auf Ihre [Medienobjekte](assets-concept.md) ermöglicht) an Endclients übermittelt wird. Sie müssen die Anforderungen (Einschränkungen) für die Richtlinie für den Inhaltsschlüssel festlegen, die erfüllt sein müssen, damit Schlüssel mit der angegebenen Konfiguration an Clients übermittelt werden. Die Richtlinie für den Inhaltsschlüssel ist zum Streamen oder Herunterladen als Klartext nicht erforderlich. 
+Um Verschlüsselungsoptionen für Ihren Datenstrom festzulegen, müssen Sie die [Streamingrichtlinie](stream-streaming-policy-concept.md) erstellen und sie mit Ihrem [Streaminglocator](stream-streaming-locators-concept.md) verknüpfen. Sie erstellen die [Richtlinie für den Inhaltsschlüssel](/rest/api/media/contentkeypolicies), um zu konfigurieren, wie der Inhaltsschlüssel (der den sicheren Zugriff auf Ihre [Medienobjekte](assets-concept.md) ermöglicht) an Endclients übermittelt wird. Sie müssen die Anforderungen (Einschränkungen) für die Richtlinie für den Inhaltsschlüssel festlegen, die erfüllt sein müssen, damit Schlüssel mit der angegebenen Konfiguration an Clients übermittelt werden. Die Richtlinie für den Inhaltsschlüssel ist zum Streamen oder Herunterladen als Klartext nicht erforderlich. 
 
-Normalerweise ordnen Sie Ihre Richtlinie für Inhaltsschlüssel Ihrem [Streaminglocator](streaming-locators-concept.md) zu. Alternativ können Sie die Richtlinie für Inhaltsschlüssel auch in einer [Streamingrichtlinie](streaming-policy-concept.md) angeben (beim Erstellen einer benutzerdefinierten Streamingrichtlinie für erweiterte Szenarien). 
+Normalerweise ordnen Sie Ihre Richtlinie für Inhaltsschlüssel Ihrem [Streaminglocator](stream-streaming-locators-concept.md) zu. Alternativ können Sie die Richtlinie für Inhaltsschlüssel auch in einer [Streamingrichtlinie](stream-streaming-policy-concept.md) angeben (beim Erstellen einer benutzerdefinierten Streamingrichtlinie für erweiterte Szenarien). 
 
 ## <a name="best-practices-and-considerations"></a>Bewährte Methoden und Überlegungen
 

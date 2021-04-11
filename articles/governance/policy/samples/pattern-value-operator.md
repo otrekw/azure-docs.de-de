@@ -1,14 +1,14 @@
 ---
 title: 'Muster: Der Operator „value“ in einer Richtliniendefinition'
 description: Dieses Azure Policy-Muster enthält ein Beispiel für die Verwendung des Operators „value“ in einer Richtliniendefinition.
-ms.date: 10/14/2020
+ms.date: 03/31/2021
 ms.topic: sample
-ms.openlocfilehash: 8392c69ff3d63ff4ecad2a26d5d914b4766147b8
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 560f128dc5f78ca2335f2712e7fd81bd94eda761
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92072882"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106092794"
 ---
 # <a name="azure-policy-pattern-the-value-operator"></a>Azure Policy-Muster: Der Operator „value“
 

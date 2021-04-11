@@ -3,15 +3,15 @@ title: Erweitern eines vorhandenen Hostpools in Windows Virtual Desktop (klassis
 description: Hier finden Sie Informationen dazu, wie Sie einen vorhandenen Hostpool in Windows Virtual Desktop (klassisch) um neue Sitzungshosts erweitern.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 03/30/2020
+ms.date: 03/31/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 61cf28b0f1ebee6a0312ec3f23f22b01c6c4919e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ab661943542b3621792dfe0ca8c3fb26f64508a5
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "88009170"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106120706"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts-in-windows-virtual-desktop-classic"></a>Erweitern eines vorhandenen Hostpools in Windows Virtual Desktop (klassisch) mit neuen Sitzungshosts
 
@@ -96,7 +96,7 @@ Alle Parameterwerte in diesem Abschnitt müssen den Informationen entsprechen, d
 1. Wählen Sie die VM-Größe aus, die den vorhandenen Sitzungshost-VMs entspricht.
 
     >[!NOTE]
-    >Wird die gewünschte VM-Größe nicht in der VM-Größenauswahl angezeigt, liegt das daran, dass sie noch nicht ins Azure Marketplace-Tool aufgenommen wurde. Wenn Sie eine VM-Größe anfordern möchten, erstellen Sie im [Windows Virtual Desktop-UserVoice-Forum](https://windowsvirtualdesktop.uservoice.com/forums/921118-general) eine Anforderung, oder stimmen Sie dort für eine vorhandene Anforderung ab.
+    >Wird die gewünschte VM-Größe nicht in der VM-Größenauswahl angezeigt, liegt das daran, dass sie noch nicht ins Azure Marketplace-Tool aufgenommen wurde.
 
 2. Passen Sie die Parameter *Nutzungsprofil*, *Gesamtanzahl Benutzer* und *Anzahl von virtuellen Computern* an, um die Gesamtzahl von Sitzungshosts auszuwählen, die in Ihrem Hostpool enthalten sein sollen. Ein Beispiel: Wenn Sie Ihren Hostpool von fünf auf acht Sitzungshosts erweitern, konfigurieren Sie diese Optionen so, dass Sie acht virtuelle Computer erhalten.
 3. Geben Sie ein Namenspräfix für die virtuellen Computer ein. Wenn Sie also beispielsweise „prefix“ eingeben, heißen die virtuellen Computer „prefix-0“, „prefix-1“ usw.

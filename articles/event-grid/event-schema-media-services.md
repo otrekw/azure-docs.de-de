@@ -3,12 +3,12 @@ title: Azure Media Services als Event Grid-Quelle
 description: Beschreibt die Eigenschaften, die mit Azure Event Grid für Media Services-Ereignisse bereitgestellt werden.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 1f2f62f0a5ceed0e000c8bb7690fff009593bf82
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b5772a2332e1864d0b8df0d4e102006b29b6a61e
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104591927"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106120111"
 ---
 # <a name="azure-media-services-as-an-event-grid-source"></a>Azure Media Services als Event Grid-Quelle
 
@@ -514,7 +514,7 @@ Das Datenobjekt weist die folgenden Eigenschaften auf:
 | `encoderPort` | Zeichenfolge | Port des Encoders, von dem dieser Stream stammt. |
 | `resultCode` | Zeichenfolge | Der Grund, aus dem die Verbindung abgelehnt wurde. Diese Ergebniscodes werden in der folgenden Tabelle aufgeführt. |
 
-Die Fehlerergebniscodes finden Sie unter [Fehlercodes für Liveereignisse](../media-services/latest/live-event-error-codes.md).
+Die Fehlerergebniscodes finden Sie unter [Fehlercodes für Liveereignisse](../media-services/latest/live-event-error-codes-reference.md).
 
 ### <a name="liveeventencoderconnected"></a>LiveEventEncoderConnected
 
@@ -639,7 +639,7 @@ Das Datenobjekt weist die folgenden Eigenschaften auf:
 | `encoderPort` | Zeichenfolge | Port des Encoders, von dem dieser Stream stammt. |
 | `resultCode` | Zeichenfolge | Der Grund für die Trennung der Verbindung mit dem Encoder. Die Trennung kann ordnungsgemäß oder verursacht durch einen Fehler erfolgen. Diese Ergebniscodes werden in der folgenden Tabelle aufgeführt. |
 
-Die Fehlerergebniscodes finden Sie unter [Fehlercodes für Liveereignisse](../media-services/latest/live-event-error-codes.md).
+Die Fehlerergebniscodes finden Sie unter [Fehlercodes für Liveereignisse](../media-services/latest/live-event-error-codes-reference.md).
 
 Ergebniscodes für ordnungsgemäße Trennungen sind:
 
@@ -1118,4 +1118,4 @@ Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
 
 - [EventGrid .NET SDK mit Media Services-Ereignissen](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/)
 - [Definitionen von Media Services-Ereignissen](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/eventgrid/data-plane/Microsoft.Media/stable/2018-01-01/MediaServices.json)
-- [Fehlercodes für Liveereignisse](../media-services/latest/live-event-error-codes.md)
+- [Fehlercodes für Liveereignisse](../media-services/latest/live-event-error-codes-reference.md)

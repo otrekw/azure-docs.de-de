@@ -1,14 +1,14 @@
 ---
 title: 'Schnellstart: Neue Richtlinienzuweisung mit Terraform'
 description: In dieser Schnellstartanleitung erstellen Sie mit Terraform und HCL-Syntax eine Richtlinienzuweisung zum Identifizieren von nicht konformen Ressourcen.
-ms.date: 10/27/2020
+ms.date: 03/31/2021
 ms.topic: quickstart
-ms.openlocfilehash: dc4dae2dc6e43e7532117bf64af3ce97ddc7c496
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6c1a43010c48f71872d935a8fb52f608b479da8a
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93104908"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106092343"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-terraform"></a>Schnellstart: Erstellen einer Richtlinienzuweisung zum Identifizieren nicht konformer Ressourcen mithilfe von Terraform
 
