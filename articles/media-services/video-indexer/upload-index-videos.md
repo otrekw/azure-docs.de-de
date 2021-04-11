@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/04/2021
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3a3c2812a4ecfa1a80539804122042bc2dc2f3a2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3cc9051190bd314ac93e3de2689a6aa0ec2b6235
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102199185"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106108080"
 ---
 # <a name="upload-and-index-your-videos"></a>Hochladen und Indizieren Ihrer Videos  
 
@@ -35,7 +35,7 @@ In diesem Artikel wird gezeigt, wie Sie Ihre Videos mit den folgenden Optionen h
 
 ## <a name="supported-file-formats-for-video-indexer"></a>Unterstützte Dateiformate für Video Indexer
 
-Im Artikel [Eingabecontainer/Dateiformate](../latest/media-encoder-standard-formats.md#input-containerfile-formats) finden Sie eine Liste der Dateiformate, die Sie mit Video Indexer verwenden können.
+Im Artikel [Eingabecontainer/Dateiformate](../latest/encode-media-encoder-standard-formats-reference.md) finden Sie eine Liste der Dateiformate, die Sie mit Video Indexer verwenden können.
 
 ## <a name="video-files-storage"></a>Videodateispeicher
 
@@ -113,7 +113,7 @@ Nachdem Ihr Video hochgeladen wurde, kann das Video von Video Indexer optional c
 Bei Verwendung der [Upload video](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?)- oder [Re-Index Video](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?)-API lautet einer der optionalen Parameter `streamingPreset`. Wenn Sie `streamingPreset` auf `Default`, `SingleBitrate` oder `AdaptiveBitrate` festlegen, wird der Codierungsprozess ausgelöst. Wenn die Indizierung und Codierung von Aufträgen abgeschlossen ist, wird das Video veröffentlicht, damit Sie Ihr Video auch streamen können. Der Streamingendpunkt, von dem aus Sie das Video streamen möchten, muss sich im Status **Wird ausgeführt** befinden.
 
 Für SingleBitrate werden die Kosten für den Standardencoder pro Ausgabe berechnet. Wenn das Videoformat größer oder gleich 720 ist, codiert Video Indexer dieses als 1280 ×­ 720. Andernfalls wird die Einstellung 640 × 468 verwendet.
-Die Standardeinstellung ist die [inhaltsbezogene Codierung](../latest/content-aware-encoding.md).
+Die Standardeinstellung ist die [inhaltsbezogene Codierung](../latest/encode-content-aware-concept.md).
 
 Zum Ausführen der Indizierung und Codierung von Aufträgen sind für das [Azure Media Services-Konto, das mit Ihrem Video Indexer-Konto verbunden ist](connect-to-azure.md), reservierte Einheiten (Reserved Units, RUs) erforderlich. Weitere Informationen finden Sie unter [Übersicht über das Skalieren der Medienverarbeitung](../previous/media-services-scale-media-processing-overview.md). Da es sich hierbei um rechenintensive Aufträge handelt, wird dringend die Verwendung des Einheitentyps S3 empfohlen. Die Anzahl von RUs definiert die maximale Anzahl von Aufträgen, die parallel ausgeführt werden können. Die Baseline-Empfehlung lautet: zehn RUs vom Typ S3. 
 

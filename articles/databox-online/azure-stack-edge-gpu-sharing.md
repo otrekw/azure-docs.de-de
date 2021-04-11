@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 03/05/2021
 ms.author: alkohli
-ms.openlocfilehash: 6683e39cfa3601b1ae1fbbe02e69e4dc0a54e8e7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ff1c7b79a49b0b659056c89af3c61f28b72ebc50
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103564632"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105645233"
 ---
 # <a name="gpu-sharing-on-your-azure-stack-edge-pro-gpu-device"></a>GPU-Freigabe auf Ihrem Azure Stack Edge Pro-Gerät mit GPU
 
-Der Grafikprozessor (Graphics Processing Unit, GPU) ist ein spezieller Prozessor zum Beschleunigen der Grafikdarstellung. Da GPUs eine Vielzahl von Datenelementen gleichzeitig verarbeiten können, sind sie für maschinelles Lernen (ML), Videobearbeitung und Gaminganwendungen nützlich. Neben der CPU für allgemeine Computezwecke können Ihre Azure Stack Edge Pro-Geräte mit GPU ein oder zwei Nvidia Tesla T4-GPUs für rechenintensive Workloads wie das hardwarebeschleunigte Rückschließen umfassen. Weitere Informationen finden Sie auf der Seite zur [Nvidia Tesla T4-GPU](https://www.nvidia.com/data-center/tesla-t4/).
+Der Grafikprozessor (Graphics Processing Unit, GPU) ist ein spezieller Prozessor zum Beschleunigen der Grafikdarstellung. Da GPUs eine Vielzahl von Datenelementen gleichzeitig verarbeiten können, sind sie für maschinelles Lernen (ML), Videobearbeitung und Gaminganwendungen nützlich. Neben der CPU für allgemeine Computezwecke können Ihre Azure Stack Edge Pro-Geräte mit GPU ein oder zwei Nvidia Tesla T4-GPUs für rechenintensive Workloads wie das hardwarebeschleunigte Rückschließen umfassen. Weitere Informationen finden Sie auf der Seite zur [Nvidia Tesla T4-GPU](https://www.nvidia.com/en-us/data-center/tesla-t4/).
 
 
 ## <a name="about-gpu-sharing"></a>Informationen zur GPU-Freigabe

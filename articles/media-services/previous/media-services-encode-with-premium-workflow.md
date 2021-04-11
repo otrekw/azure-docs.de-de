@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/10/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b58a1ae2a20afb357f6363077e70b692256d2ce7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 8d39d54498872201afe2f705da1fc5654d8befb2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103013498"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105645007"
 ---
 # <a name="advanced-encoding-with-media-encoder-premium-workflow"></a>Erweiterte Codierung mit dem Media Encoder Premium Workflow
 
@@ -42,7 +42,8 @@ Dieser Artikel veranschaulicht die Codierung mit **Media Encoder Premium Workflo
 
 Für Codieraufgaben für den **Media Encoder Premium Workflow** ist eine separate Konfigurationsdatei, die sogenannte Workflowdatei, erforderlich. Diese Dateien haben die Erweiterung .workflow und werden mit dem [Workflow Designer](media-services-workflow-designer.md) erstellt.
 
-Sie können die standardmäßigen Workflowdateien [hier](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows)abrufen. Der Ordner enthält auch Beschreibungen dieser Dateien.
+Sie können die standardmäßigen Workflowdateien [hier](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/media-services/previous/media-services-encode-with-premium-workflow.md
+)abrufen. Der Ordner enthält auch Beschreibungen dieser Dateien.
 
 Die Workflowdateien müssen als Medienobjekt in Ihr Media Services-Konto hochgeladen und das Medienobjekt muss an die Codierungsaufgabe übergeben werden.
 

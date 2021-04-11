@@ -10,13 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 04/24/2020
 ms.author: sudbalas
-Customer intent: As a key vault administrator, I want to move my vault to another region.
-ms.openlocfilehash: 54a1894c88d12cfac1a2d8062425de9549c4292e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 97956b8c6f18d37acd07543b8921b4973be3bda9
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93285212"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106066652"
 ---
 # <a name="move-an-azure-key-vault-across-regions"></a>Regionsübergreifendes Verschieben eines Azure Key Vault
 
@@ -35,7 +34,7 @@ Bevor Sie beginnen, bedenken Sie folgende Konzepte:
 
 ## <a name="option-1-use-the-key-vault-backup-and-restore-commands"></a>Option 1: Verwenden der Key Vault-Befehle zum Sichern und Wiederherstellen
 
-Mit dem Sicherungsbefehl können Sie die einzelnen Geheimnisse, Schlüssel und Zertifikate in Ihrem Tresor sichern. Ihre Geheimnisse werden als verschlüsseltes Blob heruntergeladen. Anschließend können Sie das Blob in Ihrem neuen Schlüsseltresor wiederherstellen. Eine Liste der Befehle finden Sie unter [Azure Key Vault-Befehle](/powershell/module/azurerm.keyvault/?view=azurermps-6.13.0#key_vault).
+Mit dem Sicherungsbefehl können Sie die einzelnen Geheimnisse, Schlüssel und Zertifikate in Ihrem Tresor sichern. Ihre Geheimnisse werden als verschlüsseltes Blob heruntergeladen. Anschließend können Sie das Blob in Ihrem neuen Schlüsseltresor wiederherstellen. Eine Liste der Befehle finden Sie unter [Azure Key Vault-Befehle](/powershell/module/azurerm.keyvault#key_vault).
 
 Die Verwendung der Befehle Sichern und Wiederherstellen weist zwei Einschränkungen auf:
 

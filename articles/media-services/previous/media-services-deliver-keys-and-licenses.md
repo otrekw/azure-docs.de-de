@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/10/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 10ff568ede601c57369f8c942ed61cb7a39ba703
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f2d965ec17fb605362c1e8cd8ef781a6bd2029d0
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103465707"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106067383"
 ---
 # <a name="use-media-services-to-deliver-drm-licenses-or-aes-keys"></a>Übermitteln von DRM-Lizenzen oder AES-Schlüsseln mithilfe von Media Services
 
@@ -54,7 +54,7 @@ Das folgende Diagramm zeigt die wichtigsten Schritte, die erfolgen müssen, dami
     ```
  
 ## <a name="net-code-example"></a>Codebeispiel für .NET
-Das folgende Codebeispiel zeigt, wie ein allgemeiner symmetrischer Schlüssel erstellt und Lizenzerwerbs-URLs für PlayReady und Widevine abgerufen werden. Zum Konfigurieren Ihres lokalen Servers benötigen Sie einen Inhaltsschlüssel, die Schlüssel-ID und die Lizenzerwerbs-URL. Nach dem Konfigurieren Ihres lokalen Servers können Sie von Ihrem eigenen Streamingserver streamen. Da der verschlüsselte Stream auf einen Media Services-Lizenzserver verweist, fordert Ihr Player eine Lizenz bei Media Services an. Wenn Sie sich für Tokenauthentifizierung entscheiden, überprüft der Media Services-Lizenzserver das Token, das Sie per HTTPS gesendet haben. Wenn das Token gültig ist, übermittelt der Lizenzserver die Lizenz an Ihren Player. Das folgende Codebeispiel zeigt nur, wie ein allgemeiner symmetrischer Schlüssel erstellt und Lizenzerwerbs-URLs für PlayReady oder Widevine abgerufen werden. Wenn Sie AES-128 Schlüssel übermitteln möchten, müssen Sie einen Umschlaginhaltsschlüssel erstellen und eine Schlüsselerwerbs-URL abrufen. Weitere Informationen finden Sie unter [Verwenden der dynamischen AES-128-Verschlüsselung und des Schlüsselbereitstellungsdiensts](media-services-protect-with-aes128.md).
+Das folgende Codebeispiel zeigt, wie ein allgemeiner symmetrischer Schlüssel erstellt und Lizenzerwerbs-URLs für PlayReady und Widevine abgerufen werden. Zum Konfigurieren Ihres lokalen Servers benötigen Sie einen Inhaltsschlüssel, die Schlüssel-ID und die Lizenzerwerbs-URL. Nach dem Konfigurieren Ihres lokalen Servers können Sie von Ihrem eigenen Streamingserver streamen. Da der verschlüsselte Stream auf einen Media Services-Lizenzserver verweist, fordert Ihr Player eine Lizenz bei Media Services an. Wenn Sie sich für Tokenauthentifizierung entscheiden, überprüft der Media Services-Lizenzserver das Token, das Sie per HTTPS gesendet haben. Wenn das Token gültig ist, übermittelt der Lizenzserver die Lizenz an Ihren Player. Das folgende Codebeispiel zeigt nur, wie ein allgemeiner symmetrischer Schlüssel erstellt und Lizenzerwerbs-URLs für PlayReady oder Widevine abgerufen werden. Wenn Sie AES-128 Schlüssel übermitteln möchten, müssen Sie einen Umschlaginhaltsschlüssel erstellen und eine Schlüsselerwerbs-URL abrufen. Weitere Informationen finden Sie unter [Verwenden der dynamischen AES-128-Verschlüsselung und des Schlüsselbereitstellungsdiensts](media-services-playready-license-template-overview.md).
 
 ```csharp
 using System;
@@ -357,4 +357,4 @@ namespace DeliverDRMLicenses
 
 ## <a name="see-also"></a>Weitere Informationen
 * [Verwenden von dynamischer allgemeiner Verschlüsselung mit PlayReady und/oder Widevine](media-services-protect-with-playready-widevine.md)
-* [Verwenden der dynamischen AES-128-Verschlüsselung und des Schlüsselübermittlungsdiensts](media-services-protect-with-aes128.md)
+* [Verwenden der dynamischen AES-128-Verschlüsselung und des Schlüsselübermittlungsdiensts](media-services-playready-license-template-overview.md)

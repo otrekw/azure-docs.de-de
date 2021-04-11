@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 03/09/2021
+ms.date: 03/29/2021
 ms.author: aahi
-ms.openlocfilehash: e9d8e7b514dca7d4930ad33bf08d4ceb07fb860d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7cd2b0a6b943ceb32420ef119a7fc5eddefa2e19
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104599125"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106276993"
 ---
 # <a name="how-to-sentiment-analysis-and-opinion-mining"></a>Vorgehensweise: Stimmungsanalyse und Opinion Mining
 
-Das Standpunktanalysefeature der Textanalyse-API bietet zwei Möglichkeiten zur Erkennung von positiver und negativer Stimmung. Wenn Sie eine Standpunktanalyseanforderung senden, gibt die API Stimmungsbezeichnungen (z. B. „negativ“, „neutral“ und „positiv“) und Zuverlässigkeitsbewertungen auf Satz- und Dokumentebene zurück. Der Endpunkt der Standpunktanalyse kann auch zum Senden von Opinion Mining-Anforderungen verwendet werden. Dieses Feature liefert detaillierte Informationen zu den Meinungen in Bezug auf im Text enthaltene Wörter (beispielsweise Attribute von Produkten oder Dienstleistungen). 
+Das Standpunktanalysefeature der Textanalyse-API bietet zwei Möglichkeiten zur Erkennung von positiver und negativer Stimmung. Wenn Sie eine Standpunktanalyseanforderung senden, gibt die API Stimmungsbezeichnungen (z. B. „negativ“, „neutral“ und „positiv“) und Zuverlässigkeitsbewertungen auf Satz- und Dokumentebene zurück. Der Endpunkt der Standpunktanalyse kann auch zum Senden von Opinion Mining-Anforderungen verwendet werden. Dieses Feature liefert detaillierte Informationen zu den Meinungen in Bezug auf im Text enthaltene Wörter (beispielsweise Attribute von Produkten oder Dienstleistungen).
 
 Die von der API verwendeten KI-Modelle werden vom Dienst bereitgestellt. Sie müssen lediglich Inhalte für die Analyse senden.
 
@@ -151,7 +151,7 @@ Die Ausgabe wird umgehend zurückgegeben. Sie können die Ergebnisse an eine Anw
 
 Von Version 3.1 der Standpunktanalyse können Antwortobjekte für die Standpunktanalyse und für das Opinion Mining zurückgegeben werden.
   
-Die Standpunktanalyse gibt eine Stimmungsbezeichnung und eine Zuverlässigkeitsbewertung für das gesamte Dokument und jeden Satz darin zurück. Werte, die näher an 1 liegen, weisen auf eine höhere Zuverlässigkeit der Bezeichnungsklassifizierung hin, während niedrigere Bewertungen eine geringere Zuverlässigkeit bedeuten. Ein Dokument kann mehrere Sätze enthalten, und die Zuverlässigkeitsbewertungen in jedem Dokument oder Satz ergeben addiert 1. assessments 
+Die Standpunktanalyse gibt eine Stimmungsbezeichnung und eine Zuverlässigkeitsbewertung für das gesamte Dokument und jeden Satz darin zurück. Werte, die näher an 1 liegen, weisen auf eine höhere Zuverlässigkeit der Bezeichnungsklassifizierung hin, während niedrigere Bewertungen eine geringere Zuverlässigkeit bedeuten. Ein Dokument kann mehrere Sätze enthalten, und die Zuverlässigkeitsbewertungen in jedem Dokument oder Satz ergeben addiert 1.
 
 Beim Opinion Mining werden Ziele (Substantive oder Verben) im Text sowie die zugehörige Bewertung (Adjektiv) ermittelt. In der nachstehenden Antwort weist der Satz *Im Restaurant gab es großartiges Essen, und der Kellner war freundlich.* zwei Ziele auf: *Essen* und *Kellner*. Die `relations`-Eigenschaft jedes Ziels enthält einen `ref`-Wert mit dem URI-Verweis auf die zugeordneten Objekte `documents`, `sentences` und `assessments`.
 

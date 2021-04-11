@@ -1,15 +1,15 @@
 ---
 title: Liste der integrierten Richtliniendefinitionen
 description: Hier finden Sie eine Liste der integrierten Richtliniendefinitionen für Azure Policy. Zu den Kategorien zählen Tags, Einhaltung gesetzlicher Bestimmungen, Key Vault, Kubernetes, Gastkonfiguration und vieles mehr.
-ms.date: 03/17/2021
+ms.date: 03/31/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: cf7bafa624bfcd3c819d94f46cb5684b22455ebb
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 13b772a5e80db12ee4be4bec7731f72e46f0898f
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104605186"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106090719"
 ---
 # <a name="azure-policy-built-in-policy-definitions"></a>Integrierte Azure Policy-Richtliniendefinitionen
 
@@ -157,7 +157,7 @@ Die Namen der einzelnen Integrationen sind Links zur entsprechenden Richtliniend
 
 [!INCLUDE [azure-policy-reference-policies-managed-application](../../../../includes/policy/reference/bycat/policies-managed-application.md)]
 
-## <a name="migrate"></a>Migrieren
+## <a name="migrate"></a>Migrate
 
 [!INCLUDE [azure-policy-reference-policies-migrate](../../../../includes/policy/reference/bycat/policies-migrate.md)]
 

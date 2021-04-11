@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 02/26/2021
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy20q4, devx-track-python, data4ml
-ms.openlocfilehash: a4d1d1c4f4d6354d0206bf598a0622112dc99453
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 3f6071813a8189605d632231a5f9b8942068a48a
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102518703"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106067434"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>Verschieben von Daten in ML-Pipelineschritte und zwischen ML-Pipelineschritten (Python)
 
@@ -28,7 +28,7 @@ In diesem Artikel wird Folgendes gezeigt:
 - Aufteilen von `Dataset`-Daten in Teilmengen, z. B. Teilmengen für Training und Validierung
 - Erstellen von `OutputFileDatasetConfig`-Objekten zum Übertragen von Daten in den nächsten Pipelineschritt
 - Verwenden von `OutputFileDatasetConfig`-Objekten als Eingabe für Pipelineschritte
-- Erstellen neuer Objekte vom Typ `Dataset` auf der Grundlage von `OutputFileDatasetConfig`, um sie beizubehalten
+- Erstellen neuer `Dataset`-Objekte aus `OutputFileDatasetConfig`, die Sie beibehalten möchten
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -126,7 +126,7 @@ train_step = PythonScriptStep(
     name="train_data",
     script_name="train.py",
     compute_target=cluster,
-    arguments=['--training-folder', train.as_named_input('train').as_download()]
+    arguments=['--training-folder', train.as_named_input('train').as_download()],
     inputs=[test.as_named_input('test').as_download()]
 )
 
@@ -245,7 +245,7 @@ step1_output_ds = step1_output_data.register_on_complete(name='processed_data',
 Zwischendaten, die mit `OutputFileDatasetConfig` geschrieben werden, werden von Azure nicht automatisch gelöscht. Um Speichergebühren für große Mengen nicht benötigter Daten zu vermeiden, empfiehlt es sich, einen der folgenden Schritte auszuführen:
 
 * Programmgesteuertes Löschen von Zwischendaten am Ende einer Pipelineausführung, wenn sie nicht mehr benötigt werden
-* Verwenden von Blobspeicher mit einer kurzfristigen Speicherrichtlinie für Zwischendaten (siehe [Optimieren der Kosten durch Automatisieren der Azure Blob Storage-Zugriffsebenen](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal)) 
+* Verwenden von Blobspeicher mit einer kurzfristigen Speicherrichtlinie für Zwischendaten (siehe [Optimieren der Kosten durch Automatisieren der Azure Blob Storage-Zugriffsebenen](../storage/blobs/storage-lifecycle-management-concepts.md?tabs=azure-portal)) 
 * Regelmäßiges Überprüfen und Löschen nicht mehr benötigter Daten
 
 Weitere Informationen finden Sie unter [Planen und Verwalten von Kosten für Azure Machine Learning](concept-plan-manage-cost.md).

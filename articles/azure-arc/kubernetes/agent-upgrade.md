@@ -8,12 +8,12 @@ author: shashankbarsin
 ms.author: shasb
 description: Steuern von Agent-Upgrades für Kubernetes mit Azure Arc-Aktivierung
 keywords: Kubernetes, Arc, Azure, K8s, Container, Agent, Upgrade
-ms.openlocfilehash: d81a00ed4f30f446aeed96d59a455935c652b7d5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 29df9973ead167e7774924cc3a0c685606092d28
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104954546"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106442523"
 ---
 # <a name="upgrading-azure-arc-enabled-kubernetes-agents"></a>Upgrade für Kubernetes-Agents mit Azure Arc-Aktivierung
 
@@ -53,7 +53,7 @@ az connectedk8s update --name AzureArcTest1 --resource-group AzureArcTest --auto
 Wenn Sie das automatische Upgrade für Agents deaktiviert haben, können Sie Upgrades für diese Agenten manuell initiieren, indem Sie den Befehl `az connectedk8s upgrade` folgendermaßen verwenden:
 
 ```console
-az connectedk8s upgrade -g AzureArcTest1 -n AzureArcTest --agent-version 1.0.1
+az connectedk8s upgrade -g AzureArcTest1 -n AzureArcTest --agent-version 1.1.0
 ```
 
 Kubernetes mit Azure Arc-Aktivierung folgt dem standardmäßigen [semantischen Versionsverwaltungsschema](https://semver.org/) von `MAJOR.MINOR.PATCH` für die Versionsverwaltung seiner Agents. 

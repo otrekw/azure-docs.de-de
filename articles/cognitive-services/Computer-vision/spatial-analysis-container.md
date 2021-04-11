@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: 1a107f812ceb46649126bdbefcf3b828e1938ff3
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 87076febd4597556fd2b28245f47442308cd6e6c
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102612897"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106108358"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>Installieren und Ausführen des Containers für räumliche Analyse (Vorschau)
 
@@ -311,7 +311,7 @@ Registrieren Sie den Hostcomputer als Nächstes als IoT Edge-Gerät auf Ihrer Io
 Sie müssen das IoT Edge-Gerät mit Ihrer Azure IoT Hub-Instanz verbinden. Sie müssen die Verbindungszeichenfolge von dem IoT Edge-Gerät kopieren, das Sie weiter oben erstellt haben. Alternativ können Sie auch den unten angegebenen Befehl über die Azure CLI ausführen.
 
 ```bash
-sudo az iot hub device-identity show-connection-string --device-id my-edge-device --hub-name test-iot-hub-123
+sudo az iot hub device-identity connection-string show --device-id my-edge-device --hub-name test-iot-hub-123
 ```
 
 Öffnen Sie auf dem Hostcomputer `/etc/iotedge/config.yaml` zur Bearbeitung. Ersetzen Sie `ADD DEVICE CONNECTION STRING HERE` durch die Verbindungszeichenfolge. Speichern und schließen Sie die Datei. Führen Sie diesen Befehl aus, um den IoT Edge-Dienst auf dem Hostcomputer neu zu starten.
@@ -334,7 +334,7 @@ Ein virtueller Azure-Computer mit einer GPU kann auch verwendet werden, um eine 
 
 Geben Sie Ihrer VM einen Namen, und wählen Sie die Region „(USA) USA, Westen 2“ aus. Stellen Sie sicher, dass Sie für „Verfügbarkeitsoptionen“ die Option „Keine Infrastrukturredundanz erforderlich.“ festlegen. Die folgende Abbildung zeigt die vollständige Konfiguration. Der nächste Schritt hilft Ihnen dabei, die richtige VM-Größe zu finden. 
 
-:::image type="content" source="media/spatial-analysis/virtual-machine-instance-details.png" alt-text="Konfigurationsdetails für den virtuellen Computer" lightbox="media/spatial-analysis/virtual-machine-instance-details.png":::
+:::image type="content" source="media/spatial-analysis/virtual-machine-instance-details.jpg" alt-text="Konfigurationsdetails für den virtuellen Computer" lightbox="media/spatial-analysis/virtual-machine-instance-details.jpg":::
 
 Klicken Sie zum Finden der VM-Größe auf „See all sizes“ (Alle Größen anzeigen), und zeigen Sie dann die unten gezeigte Liste für „Non-premium storage VM sizes“ (VM-Größen ohne Storage Premium) an.
 
@@ -473,7 +473,7 @@ Registrieren Sie die VM als nächstes als IoT Edge-Gerät auf Ihrer IoT Hub-Inst
 Sie müssen das IoT Edge-Gerät mit Ihrer Azure IoT Hub-Instanz verbinden. Sie müssen die Verbindungszeichenfolge von dem IoT Edge-Gerät kopieren, das Sie weiter oben erstellt haben. Alternativ können Sie auch den unten angegebenen Befehl über die Azure CLI ausführen.
 
 ```bash
-sudo az iot hub device-identity show-connection-string --device-id my-edge-device --hub-name test-iot-hub-123
+sudo az iot hub device-identity connection-string show --device-id my-edge-device --hub-name test-iot-hub-123
 ```
 
 Öffnen Sie `/etc/iotedge/config.yaml` auf der VM zur Bearbeitung. Ersetzen Sie `ADD DEVICE CONNECTION STRING HERE` durch die Verbindungszeichenfolge. Speichern und schließen Sie die Datei. Führen Sie diesen Befehl aus, um den IoT Edge-Dienst auf der VM neu zu starten.
@@ -542,10 +542,6 @@ Nach Abschluss der Bereitstellung und dem Beginn der Containerausführung beginn
 ## <a name="configure-the-operations-performed-by-spatial-analysis"></a>Konfigurieren der von der räumlichen Analyse durchgeführten Vorgänge
 
 Sie müssen die [Vorgänge der räumlichen Analyse](spatial-analysis-operations.md) nutzen, um den Container für die Verwendung von vernetzten Kameras zu konfigurieren, die Vorgänge zu konfigurieren usw. Für jedes von Ihnen konfigurierte Kameragerät wird über die Vorgänge der räumlichen Analyse ein Ausgabestream mit JSON-Nachrichten generiert, die an Ihre Instanz von Azure IoT Hub gesendet werden.
-
-## <a name="redeploy-or-delete-the-deployment"></a>Erneutes Bereitstellen oder Löschen der Bereitstellung
-
-Wenn Sie die Bereitstellung aktualisieren müssen, müssen Sie sicherstellen, dass Ihre vorherigen Bereitstellungen erfolgreich waren. Alternativ müssen Sie die Bereitstellungen von IoT Edge-Geräten löschen, die nicht erfolgreich abgeschlossen werden konnten. Andernfalls werden diese Bereitstellungen fortgesetzt, und das System befindet sich in einem Fehlerzustand. Sie können das Azure-Portal oder die [Azure CLI](../cognitive-services-apis-create-account-cli.md?tabs=windows) verwenden.
 
 ## <a name="use-the-output-generated-by-the-container"></a>Verwenden der vom Container generierten Ausgabe
 
