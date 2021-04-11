@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 03/18/2020
 ms.author: janutter
-ms.openlocfilehash: 5ac6a19fc569d60f75f9da788629331a70b0a4c9
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: bab92a6d7e30f5aefdd28d06b34a006d065cee3c
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103225046"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105966842"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-an-angular-single-page-application"></a>Schnellstart: Anmelden von Benutzern und Abrufen eines Zugriffstokens in einer Angular-Single-Page-Webanwendung
 
@@ -105,12 +105,28 @@ In diesem Schnellstart laden Sie ein Codebeispiel herunter und führen es aus, d
 >
 > Die Werte für **Anwendungs-ID (Client)** , **Verzeichnis-ID (Mandant)** und **Unterstützte Kontotypen** finden Sie im Azure-Portal auf der Seite **Übersicht** der App.
 
-Weitere Informationen zu den verfügbaren konfigurierbaren Optionen finden Sie unter [Initialisieren von Clientanwendungen](msal-js-initializing-client-applications.md).
+> Weitere Informationen zu den verfügbaren konfigurierbaren Optionen finden Sie unter [Initialisieren von Clientanwendungen](msal-js-initializing-client-applications.md).
 
-Den Quellcode für die MSAL.js-Bibliothek finden Sie auf GitHub im Repository [AzureAD/microsoft-authentication-library-for-js](https://github.com/AzureAD/microsoft-authentication-library-for-js).
+> Den Quellcode für die MSAL.js-Bibliothek finden Sie auf GitHub im Repository [AzureAD/microsoft-authentication-library-for-js](https://github.com/AzureAD/microsoft-authentication-library-for-js).
 
->[!div class="sxs-lookup" renderon="portal"]
->#### <a name="step-3-run-the-project"></a>Schritt 3: Ausführen des Projekts
+> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>Schritt 3: Ihre App ist konfiguriert und betriebsbereit
+> Wir haben das Projekt mit Werten der Eigenschaften ihrer App konfiguriert.
+
+> [!div renderon="docs"]
+>
+> Scrollen Sie in derselben Datei nach unten, und aktualisieren Sie `graphMeEndpoint`. 
+> - Ersetzen Sie die Zeichenfolge `Enter_the_Graph_Endpoint_Herev1.0/me` durch `https://graph.microsoft.com/v1.0/me`.
+> - `Enter_the_Graph_Endpoint_Herev1.0/me` ist der Endpunkt, für den API-Aufrufe ausgeführt werden. Geben Sie für den Microsoft Graph-API-Hauptdienst (global) `https://graph.microsoft.com/` (einschließlich des nachstehenden Schrägstrichs) ein. Weitere Informationen finden Sie in der [Dokumentation](https://docs.microsoft.com/graph/deployments).
+>
+>
+> ```javascript
+>      protectedResourceMap: [
+>        ['Enter_the_Graph_Endpoint_Herev1.0/me', ['user.read']]
+>      ],
+> ```
+>
+>
 
 >[!div renderon="docs"]
 >#### <a name="step-4-run-the-project"></a>Schritt 4: Ausführen des Projekts

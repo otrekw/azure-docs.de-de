@@ -1,19 +1,19 @@
 ---
 title: Azure CLI-Skript – Erstellen einer Azure Database for PostgreSQL-Instanz
 description: 'Azure CLI-Skriptbeispiel: Erstellt einen Azure-Datenbank für PostgreSQL-Server und konfiguriert eine Firewallregel auf Serverebene.'
-author: lfittl-msft
-ms.author: lufittl
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.custom: mvc, devx-track-azurecli
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 02/28/2018
-ms.openlocfilehash: 959873d68f8812acb08ef0c7194f53b61404c918
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e20e9481c86db639a1e68b3e3d7d5c2146605afb
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94660490"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105608475"
 ---
 # <a name="create-an-azure-database-for-postgresql-server-and-configure-a-firewall-rule-using-the-azure-cli"></a>Erstellen eines Azure-Datenbank für PostgreSQL-Servers und Konfigurieren einer Firewallregel mit der Azure CLI
 Dieses Azure CLI-Beispielskript erstellt einen Azure-Datenbank für PostgreSQL-Server und konfiguriert eine Firewallregel auf Serverebene. Nach erfolgreicher Ausführung des Skripts können alle Azure-Dienste und die konfigurierte IP-Adresse auf den PostgreSQL-Server zugreifen.

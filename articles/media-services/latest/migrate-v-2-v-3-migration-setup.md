@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 62723f5c833ca89618a6d9e0781539a13efba4f3
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: 9d61e9ff753c37268be19e95db9450e2cd923d96
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105959669"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106279679"
 ---
 # <a name="step-3---set-up-to-migrate-to-the-v3-rest-api-or-client-sdk"></a>Schritt 3: Einrichten der Migration zur V3-REST-API oder zum Client-SDK
 
@@ -43,7 +43,7 @@ Kunden, die zuvor Version 2015-10-01 der ARM-Verwaltungs-API zum Verwalten Ihre
 
 ## <a name="create-a-new-media-services-account-for-testing"></a>Erstellen eines neuen Media Services-Konto für Tests
 
-Befolgen Sie die Schritte im Schnellstart zum [Einrichten Ihrer Umgebung](how-to-set-azure-subscription.md?tabs=portal) mithilfe des Azure-Portals. Wählen Sie den API-Zugriff und die Authentifizierung per Dienstprinzipal aus, um eine neue Azure AD-Anwendungs-ID und Geheimnisse für die Verwendung mit diesem Testkonto zu generieren.
+Befolgen Sie die Schritte im Schnellstart zum [Einrichten Ihrer Umgebung](setup-azure-subscription-how-to.md?tabs=portal) mithilfe des Azure-Portals. Wählen Sie den API-Zugriff und die Authentifizierung per Dienstprinzipal aus, um eine neue Azure AD-Anwendungs-ID und Geheimnisse für die Verwendung mit diesem Testkonto zu generieren.
 
 [Erstellen Sie ein Media Services-Konto.](account-create-how-to.md?tabs=portal)
 [Rufen Sie die Anmeldeinformationen für den Zugriff auf die Media Services-API ab.](access-api-howto.md?tabs=portal)
@@ -66,7 +66,7 @@ Befolgen Sie die Schritte im Schnellstart zum [Einrichten Ihrer Umgebung](how-to
 
 ## <a name="rest"></a>[REST](#tab/rest)
 
-Verwenden Sie [Postman](./media-rest-apis-with-postman.md) für Aufrufe der REST-API von Media Services V3.
+Verwenden Sie [Postman](./setup-postman-rest-how-to.md) für Aufrufe der REST-API von Media Services V3.
 Lesen Sie die [REST-API-Referenzseiten](/rest/api/media/).
 
 Sie sollten die Versionszeichenfolge „2020-05-01“ in der Postman-Sammlung verwenden.

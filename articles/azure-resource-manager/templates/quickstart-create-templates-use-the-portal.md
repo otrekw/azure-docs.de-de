@@ -2,23 +2,24 @@
 title: 'Bereitstellen einer Vorlage: Azure-Portal'
 description: Hier erfahren Sie, wie Sie über das Azure-Portal Ihre erste Azure Resource Manager-Vorlage (ARM-Vorlage) erstellen und bereitstellen.
 author: mumian
-ms.date: 03/09/2021
+ms.date: 03/26/2021
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: 20b1bf47ae2fd63e91a11c8cccd1f03cf3464899
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.custom: contperfq1
+ms.openlocfilehash: 279dde9c4cd7b19086d29d3ba31a32c60a8cdf0b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102548181"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105612924"
 ---
 # <a name="quickstart-create-and-deploy-arm-templates-by-using-the-azure-portal"></a>Schnellstart: Erstellen und Bereitstellen von ARM-Vorlagen über das Azure-Portal
 
 Hier erfahren Sie, wie Sie mithilfe des Azure-Portals eine Azure Resource Manager-Vorlage (ARM-Vorlage) erstellen und diese dann über das Portal bearbeiten und bereitstellen. ARM-Vorlagen sind JSON-Dateien, mit denen die Ressourcen definiert werden, die Sie für Ihre Lösung bereitstellen müssen. Weitere Informationen zu den Konzepten der Bereitstellung und Verwaltung Ihrer Azure-Lösungen finden Sie unter [Übersicht über Azure Resource Manager-Vorlagen](overview.md).
 
-![Diagramm: Resource Manager-Schnellstartvorlage über Portal](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-export-deploy-template-portal.png)
-
 Nach Abschluss des Tutorials stellen Sie ein Azure Storage-Konto bereit. Andere Azure-Ressourcen werden nach dem gleichen Verfahren bereitgestellt.
+
+![Diagramm: Resource Manager-Schnellstartvorlage über Portal](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-export-deploy-template-portal.png)
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 

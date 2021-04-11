@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 02/27/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: ad5595f7eebc8feca2f00a6f95e10c547ded9529
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: da47893839322f06cebfbee40902414040bb87d8
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "85383733"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075201"
 ---
 # <a name="error-handling-best-practices-for-azure-active-directory-authentication-library-adal-clients"></a>Bewährte Methoden bei der Fehlerbehandlung von ADAL-Clients (Azure Active Directory Authentication Library)
 
@@ -197,7 +197,7 @@ Im Fehlerfall kann eine Anwendung eine Benutzeroberfläche anzeigen, die es dem 
 
 Die Fehlerbehandlung in nativen Anwendungen kann durch zwei Fälle definiert werden:
 
-|  |  |
+| Fall | BESCHREIBUNG  |
 |------|-------------|
 | **Fall 1**:<br>Nicht wiederholbarer Fehler (Mehrzahl der Fälle) | 1. Versuchen Sie keinen sofortigen Wiederholungsversuch. Zeigen Sie dem Endbenutzer eine Benutzeroberfläche anhand des speziellen Fehlers an, der einen Wiederholungsversuch auslöst (z.B. „Versuchen Sie, sich erneut anzumelden“ oder „Azure AD-Brokeranwendung herunterladen“). |
 | **Fall 2**:<br>Wiederholbarer Fehler | 1. Führen Sie einen einzelnen Wiederholungsversuch aus. Möglicherweise hat der Endbenutzer einen Status eingegeben, der zu einem Erfolg führt.<br><br>2. Wenn der Wiederholungsversuch fehlschlägt, zeigen Sie die Benutzeroberfläche des Endbenutzers auf der Grundlage des spezifischen Fehlers an, der einen Wiederholungsversuch auslöst („Versuchen Sie, sich erneut anzumelden“, „Azure AD-Brokeranwendung herunterladen“ usw.). |
@@ -371,7 +371,7 @@ Wenn Sie eine Single-Page-Webanwendung mit „adal.js“ mit AcquireToken erstel
 
 Für ein fehlgeschlagenes AcquireToken gelten die folgenden Fällen:
 
-|  |  |
+| Fall | BESCHREIBUNG  |
 |------|-------------|
 | **Fall 1**:<br>Mit einer interaktiven Anforderung auflösbar | 1. Wenn bei login() ein Fehler auftritt, führen Sie keinen sofortigen Wiederholungsversuch aus. Wiederholen Sie den Aufruf erst, nachdem eine Benutzeraktion zu einem Wiederholungsversuch auffordert.|
 | **Fall 2**:<br>Nicht mit einer interaktiven Anforderung auflösbar. Fehler ist wiederholbar. | 1. Führen Sie einen einzelnen Wiederholungsversuch aus. Möglicherweise hat der Endbenutzer einen Status eingegeben, der zu einem Erfolg führt.<br><br>2. Wenn der Wiederholungsversuch fehlschlägt, zeigen Sie dem Endbenutzer eine Aktion auf der Grundlage des spezifischen Fehlers an, der einen Wiederholungsversuch auslösen kann („Versuchen Sie, sich erneut anzumelden“). |

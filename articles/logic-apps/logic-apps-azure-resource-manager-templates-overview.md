@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: article
 ms.date: 11/06/2020
-ms.openlocfilehash: ec72431d927fd59677075e7adfdf7df171574882
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 44131ecf6fd3d8d2f07f0fe567fb924ac8621682
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104772942"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106110001"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>Übersicht: Automatisieren der Bereitstellung für Azure Logic Apps durch Verwenden von Azure Resource Manager-Vorlagen
 
@@ -67,7 +67,7 @@ In einer Logik-App-Vorlage arbeiten Sie hauptsächlich mit diesen Vorlagenobjekt
 |-----------|-------------|
 | `parameters` | Deklariert die [Vorlagenparameter](../azure-resource-manager/templates/template-syntax.md#parameters) zum Akzeptieren der Werte, die verwendet werden sollen, wenn Ressourcen zur Bereitstellung in Azure erstellt und angepasst werden. Diese Parameter akzeptieren z. B. die Werte für den Namen und den Speicherort Ihrer Logik-App, Verbindungen und weitere Ressourcen, die für die Bereitstellung erforderlich sind. Sie können diese Parameterwerte in einer [Parameterdatei](#template-parameter-files) speichern, die weiter unten in diesem Thema beschrieben ist. Allgemeine Informationen finden Sie unter [Parameter – Struktur und Syntax einer Resource Manager-Vorlage](../azure-resource-manager/templates/template-syntax.md#parameters). |
 | `resources` | Definiert die [Ressourcen](../azure-resource-manager/templates/template-syntax.md#resources), die erstellt oder aktualisiert und in einer Azure-Ressourcengruppe bereitgestellt werden sollen, wozu Ihre Logik-App, Verbindungen, Azure-Speicherkonten usw. gehören. Allgemeine Informationen finden Sie unter [Ressourcen – Struktur und Syntax einer Resource Manager-Vorlage](../azure-resource-manager/templates/template-syntax.md#resources). |
-||||
+|||
 
 Für eine Logik-App-Vorlage wird das folgende Dateinamenformat verwendet:
 

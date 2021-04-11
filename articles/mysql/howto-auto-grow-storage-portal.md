@@ -1,17 +1,17 @@
 ---
 title: Automatisches Vergrößern des Speichers – Azure-Portal – Azure Database for MySQL
 description: In diesem Artikel ist beschrieben, wie Sie die automatische Speichervergrößerung für Azure Database for MySQL über das Azure-Portal aktivieren können.
-author: ambhatna
-ms.author: ambhatna
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 9355c2b2c780b6ccd63100e576850fe5566db3cc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5242ef7d5d2eb9fb3aca2138ad525199c8a6afee
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95998599"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105109946"
 ---
 # <a name="auto-grow-storage-in-azure-database-for-mysql-using-the-azure-portal"></a>Automatische Speichervergrößerung in Azure Database for MySQL über das Azure-Portal
 In diesem Artikel ist beschrieben, wie Sie die Speichervergrößerung für einen Azure Database for MySQL-Server konfigurieren können, ohne die Workload zu beeinträchtigen.
