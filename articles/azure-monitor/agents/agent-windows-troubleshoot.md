@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
 ms.openlocfilehash: 7ab67602ebba2ae5446ecc0052ef4b03bba1e1bf
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104952982"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-windows"></a>Behandeln von Problemen mit dem Log Analytics-Agent für Windows 
@@ -95,7 +95,7 @@ Es gibt mehrere Möglichkeiten zur Überprüfung, ob der Agent erfolgreich mit A
 
 - Filtern Sie das *Operations Manager*-Ereignisprotokoll nach **Ereignisquellen** - *Integritätsdienstmodule*, *Integritätsdienst* und *Dienstconnector*, und filtern Sie nach der **Ereignisebene** *Warnung* und *Fehler*, um zu überprüfen, ob Ereignisse geschrieben wurden, die in der folgenden Tabelle aufgeführt sind. Wenn dies der Fall ist, sehen Sie sich die Lösungsschritte für jedes mögliche Ereignis an.
 
-    |Ereignis-ID |`Source` |BESCHREIBUNG |Lösung |
+    |Ereignis-ID |`Source` |Beschreibung |Lösung |
     |---------|-------|------------|-----------|
     |2133 und 2129 |Integritätsdienst |Fehler bei der Verbindung des Agents mit dem Dienst |Dieser Fehler kann auftreten, wenn der Agent nicht direkt oder über eine Firewall/einen Proxyserver mit dem Azure Monitor-Dienst kommunizieren kann. Überprüfen Sie die Proxyeinstellungen des Agents, und stellen Sie sicher, dass die Netzwerkfirewall/der Netzwerkproxy den TCP-Datenverkehr vom Computer zum Dienst zulässt.|
     |2138 |Integritätsdienstmodule |Proxy erfordert Authentifizierung |Konfigurieren Sie die Proxyeinstellungen des Agents, und geben Sie den erforderlichen Benutzernamen und das Kennwort für die Authentifizierung beim Proxyserver an. |
@@ -133,7 +133,7 @@ Wenn die Abfrage Ergebnisse zurückgibt, müssen Sie feststellen, ob ein bestimm
 
 3. Wenn nach einigen Minuten nicht die erwarteten Daten in den Abfrageergebnissen oder der Visualisierung angezeigt werden (je nachdem, ob Sie die Daten aus einer Lösung oder Insight anzeigen), suchen Sie im *Operations Manager*-Ereignisprotokoll nach den **Ereignisquellen** *Integritätsdienst* und *Integritätsdienstmodule*, und filtern Sie nach der **Ereignisebene** *Warnung* und *Fehler*, um zu überprüfen, ob Ereignisse geschrieben wurden, die in der folgenden Tabelle aufgeführt sind.
 
-    |Ereignis-ID |`Source` |BESCHREIBUNG |Lösung |
+    |Ereignis-ID |`Source` |Beschreibung |Lösung |
     |---------|-------|------------|
     |8.000 |Integritätsdienst |Dieses Ereignis gibt an, ob ein Workflow im Zusammenhang mit der Leistung, ein Ereignis oder ein anderer gesammelter Datentyp nicht zur Erfassung im Arbeitsbereich an den Dienst weitergeleitet werden kann. | Ereignis-ID 2136 aus der Integritätsdienstquelle wird zusammen mit diesem Ereignis geschrieben und kann angeben, dass der Agent nicht mit dem Dienst kommunizieren kann. Der Grund dafür ist möglicherweise eine falsche Konfiguration der Proxy- und Authentifizierungseinstellungen, ein Netzwerkausfall oder dass die Netzwerkfirewall/der Netzwerkproxy keinen TCP-Datenverkehr vom Computer zum Dienst zulässt.| 
     |10102 und 10103 |Integritätsdienstmodule |Workflow konnte Datenquelle nicht auflösen. |Dies kann auftreten, wenn der angegebene Leistungsindikator oder die Instanz auf dem Computer nicht vorhanden oder in den Einstellungen des Arbeitsbereichs falsch definiert ist. Wenn es sich um einen vom Benutzer angegebenen [Leistungsindikator](data-sources-performance-counters.md#configuring-performance-counters) handelt, überprüfen Sie, ob die angegebenen Informationen das richtige Format aufweisen und auf den Zielcomputern vorhanden sind. |

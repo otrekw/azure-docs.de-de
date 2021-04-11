@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: kumud
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 539d11205ffead52d7f40526f2c712e8cf8b5cdd
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 97d63598f6a9cca199779e56cc211b9622117301
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "87501439"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105048832"
 ---
 # <a name="azure-cli-samples-for-virtual-network"></a>Azure CLI-Beispiele für virtuelle Netzwerke
 
@@ -35,4 +35,4 @@ Die folgende Tabelle enthält Links zu Bashskripts mit Azure CLI-Befehlen:
 | [Filtern von ein- und ausgehenden VM-Netzwerkdatenverkehr](./scripts/virtual-network-cli-sample-filter-network-traffic.md) | Erstellt ein virtuelles Netzwerk mit Front-End- und Back-End-Subnetzen. Der im Front-End-Subnetz eingehende Netzwerkdatenverkehr ist auf HTTP, HTTPS und SSH beschränkt. Aus dem Back-End-Subnetz an das Internet ausgehender Datenverkehr ist nicht zulässig. |
 |[Konfigurieren eines virtuellen Dual-Stack-Netzwerks (IPv4 und IPv6)mit Load Balancer im Tarif „Basic“](./scripts/virtual-network-cli-sample-ipv6-dual-stack.md)|Stellt ein virtuelles Dual-Stack-Netzwerk (IPv4 + IPv6) mit zwei virtuellen Computern und einem Azure Load Balancer Basic mit öffentlichen IPv4- und IPv6-Adressen bereit. |
 |[Konfigurieren eines virtuellen Dual-Stack-Netzwerks (IPv4 und IPv6) mit Load Balancer Standard](./scripts/virtual-network-cli-sample-ipv6-dual-stack-standard-load-balancer.md)|Stellt ein virtuelles Dual-Stack-Netzwerk (IPv4 und IPv6) mit zwei virtuellen Computern und einer Azure Load Balancer Standard-Instanz mit öffentlichen IPv4- und IPv6-Adressen bereit. |
-|[Tutorial: Erstellen eines NAT-Gateways mit der Azure CLI und Testen des NAT-Diensts](../virtual-network/tutorial-create-validate-nat-gateway-cli.md)|Hier erfahren Sie, wie Sie ein NAT-Gateway unter Verwendung eines virtuellen Quell- und Zielcomputers erstellen und überprüfen. |
+|[Tutorial: Erstellen eines NAT-Gateways mit der Azure CLI und Testen des NAT-Diensts](./tutorial-create-nat-gateway-cli.md)|Hier erfahren Sie, wie Sie ein NAT-Gateway unter Verwendung eines virtuellen Quell- und Zielcomputers erstellen und überprüfen. |

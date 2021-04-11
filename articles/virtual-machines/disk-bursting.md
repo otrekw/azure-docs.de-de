@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 4024d2b1357f3dda8216e9ebdd2055b28b064d33
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9758b026ef205e6608f7fc4110219dc5f267369e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101677486"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105568714"
 ---
 # <a name="managed-disk-bursting"></a>Verwaltetes Datenträgerbursting
 [!INCLUDE [managed-disks-bursting](../../includes/managed-disks-bursting.md)]
@@ -27,10 +27,10 @@ Zusätzlich kann die [Leistungsstufe der verwalteten Datenträger geändert werd
 
 |  |Guthabenbasiertes Bursting  |Bedarfsgesteuertes Bursting  |Ändern der Leistungsstufe  |
 |---------|---------|---------|---------|
-| Szenarien|Ideal für die kurzfristige Skalierung (30 Minuten oder weniger).|Ideal für die kurzfristige Skalierung (keine Zeitbeschränkung).|Ideal, wenn Ihre Workload andernfalls ständig im Burstmodus ausgeführt werden würde.|
-|Kosten     |Kostenlos         |Die Kosten sind variabel. Weitere Informationen finden Sie im Abschnitt [Abrechnung](#billing).        |Die Kosten für die einzelnen Leistungsstufen sind festgelegt. Details finden Sie unter [Preise für verwaltete Datenträger](https://azure.microsoft.com/pricing/details/managed-disks/).         |
-|Verfügbarkeit     |Nur verfügbar für SSD Premium-Datenträger mit 512 GiB und weniger.         |Nur verfügbar für SSD Premium-Datenträger, die größer als 512 GiB sind.         |Verfügbar für alle SSD Premium-Größen.         |
-|Aktivierung     |Standardmäßig auf berechtigten Datenträgern aktiviert.         |Muss vom Benutzer aktiviert werden.         |Der Benutzer muss seine Leistungsstufe manuell ändern.         |
+| **Szenarios**|Ideal für die kurzfristige Skalierung (30 Minuten oder weniger).|Ideal für die kurzfristige Skalierung (keine Zeitbeschränkung).|Ideal, wenn Ihre Workload andernfalls ständig im Burstmodus ausgeführt werden würde.|
+|**Kosten**     |Kostenlos         |Die Kosten sind variabel. Weitere Informationen finden Sie im Abschnitt [Abrechnung](#billing).        |Die Kosten für die einzelnen Leistungsstufen sind festgelegt. Details finden Sie unter [Preise für verwaltete Datenträger](https://azure.microsoft.com/pricing/details/managed-disks/).         |
+|**Verfügbarkeit**     |Nur verfügbar für SSD Premium-Datenträger mit 512 GiB und weniger.         |Nur verfügbar für SSD Premium-Datenträger, die größer als 512 GiB sind.         |Verfügbar für alle SSD Premium-Größen.         |
+|**Aktivierung**     |Standardmäßig auf berechtigten Datenträgern aktiviert.         |Muss vom Benutzer aktiviert werden.         |Der Benutzer muss seine Leistungsstufe manuell ändern.         |
 
 ## <a name="common-scenarios"></a>Häufige Szenarios
 Die folgenden Szenarien können von einem Bursting stark profitieren:

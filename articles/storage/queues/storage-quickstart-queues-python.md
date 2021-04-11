@@ -1,19 +1,19 @@
 ---
 title: 'Schnellstart: Azure Queue Storage-Clientbibliothek v12 – Python'
 description: Hier erfahren Sie, wie Sie mithilfe der Azure Queue Storage-Clientbibliothek v12 für Python eine Warteschlange erstellen und ihr Nachrichten hinzufügen. Dann lernen Sie, wie Sie Nachrichten in der Warteschlange lesen und löschen. Zudem erfahren Sie, wie Sie eine Warteschlange löschen.
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.date: 12/10/2019
 ms.topic: quickstart
 ms.service: storage
 ms.subservice: queues
 ms.custom: devx-track-python
-ms.openlocfilehash: 0eeb1333952533cdf392b93a926f256097557151
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 1881af372c1f4e1c5cbb4ea7be0ede4c96bbf4ee
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97585495"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106276143"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-python"></a>Schnellstart: Azure Queue Storage-Clientbibliothek v12 für Python
 
@@ -40,7 +40,7 @@ Zusätzliche Ressourcen:
 
 - Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/)
 - Azure Storage-Konto – [Erstellen eines Speicherkontos](../common/storage-account-create.md)
-- [Python](https://www.python.org/downloads/) für Ihr Betriebssystem – 2.7, 3.5 oder höher
+- [Python](https://www.python.org/downloads/) für Ihr Betriebssystem – 2.7 bzw. 3.6 oder höher
 
 ## <a name="setting-up"></a>Einrichten
 

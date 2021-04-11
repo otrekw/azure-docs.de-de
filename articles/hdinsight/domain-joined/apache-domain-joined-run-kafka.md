@@ -4,12 +4,12 @@ description: Tutorial – Erfahren Sie, wie Sie Apache Ranger-Richtlinien für K
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 05/19/2020
-ms.openlocfilehash: 552998de23bebd98f56ba28eb6ad581689e52e41
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: bab3df857dfdac3ca3b9193bda1caea0040a4cbb
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98933679"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104866980"
 ---
 # <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Tutorial: Konfigurieren von Apache Kafka-Richtlinien in HDInsight mit dem Enterprise-Sicherheitspaket (Vorschau)
 
@@ -33,7 +33,7 @@ Ein [HDInsight-Kafka-Cluster mit dem Enterprise-Sicherheitspaket](./apache-domai
 
 2. Melden Sie sich mit Ihren Administratoranmeldeinformationen für Azure Active Directory (AD) an. Die Azure AD-Administratoranmeldeinformationen sind nicht identisch mit HDInsight-Clusteranmeldeinformationen oder Linux-HDInsight-Knoten-SSH-Anmeldeinformationen.
 
-   ![Apache Ranger-Administratoroberfläche in HDInsight](./media/apache-domain-joined-run-kafka/apache-ranger-admin-login.png)
+   :::image type="content" source="./media/apache-domain-joined-run-kafka/apache-ranger-admin-login.png" alt-text="Apache Ranger-Administratoroberfläche in HDInsight" border="true":::
 
 ## <a name="create-domain-users"></a>Erstellen von Domänenbenutzern
 
@@ -61,7 +61,7 @@ Erstellen Sie eine Ranger-Richtlinie für **sales_user** und **marketing_user**.
    * „*“ weist auf null (0) oder mehr Vorkommen von Zeichen hin.
    * „?“ weist auf ein einzelnes Zeichen hin.
 
-   ![Apache Ranger-Administratoroberfläche – Richtlinie1 erstellen](./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy.png)
+   :::image type="content" source="./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy.png" alt-text="Apache Ranger-Administratoroberfläche – Richtlinie1 erstellen" border="true":::
 
    Warten Sie kurz, bis Ranger mit AAD synchronisiert ist, wenn unter **Benutzer auswählen** nicht automatisch ein Domänenbenutzer eingetragen wird.
 
@@ -76,7 +76,7 @@ Erstellen Sie eine Ranger-Richtlinie für **sales_user** und **marketing_user**.
    |Benutzer auswählen  |  marketing_user1 |
    |Berechtigungen  | Veröffentlichen, Nutzen, Erstellen |
 
-   ![Apache Ranger-Administratoroberfläche – Richtlinie2 erstellen](./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy-2.png)  
+   :::image type="content" source="./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy-2.png" alt-text="Apache Ranger-Administratoroberfläche – Richtlinie2 erstellen" border="true":::  
 
 6. Wählen Sie **Hinzufügen** aus, um die Richtlinie zu speichern.
 
@@ -177,7 +177,7 @@ Basierend auf den konfigurierten Ranger-Richtlinien kann **sales_user** für das
 
 8. Zeigen Sie die Überwachungszugriffsereignisse in der Ranger-Benutzeroberfläche an.
 
-   ![Richtlinienüberwachung auf der Ranger-Benutzeroberfläche – Zugriffsereignisse ](./media/apache-domain-joined-run-kafka/apache-ranger-admin-audit.png)
+   :::image type="content" source="./media/apache-domain-joined-run-kafka/apache-ranger-admin-audit.png" alt-text="Richtlinienüberwachung auf der Ranger-Benutzeroberfläche – Zugriffsereignisse" border="true":::
    
 ## <a name="produce-and-consume-topics-in-esp-kafka-by-using-the-console"></a>Produzieren und Nutzen von Themen in Kafka mit ESP über die Konsole
 

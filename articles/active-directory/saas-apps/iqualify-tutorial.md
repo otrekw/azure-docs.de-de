@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: f2baeaf72bb77dfe9247380b8b26f3860cbfd5b0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bdd68a4f0dafd3b336bf5a3fb34399d725c9ff5c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95999160"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105626111"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iqualify-lms"></a>Tutorial: Azure Active Directory-Integration mit iQualify LMS
 
@@ -74,10 +74,10 @@ Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem A
 Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD mit iQualify LMS zu konfigurieren und zu testen:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-2. **[Konfigurieren des einmaligen Anmeldens für iQualify LMS](#configure-iqualify-lms-single-sign-on)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
+2. **[Konfigurieren des einmaligen Anmeldens für iQualify LMS](#configure-iqualify-lms-single-sign-on)**, um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
 3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
 4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Erstellen eines iQualify LMS-Testbenutzers](#create-iqualify-lms-test-user)** , um eine Entsprechung von Britta Simon in iQualify LMS zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
+5. **[Erstellen eines iQualify LMS-Testbenutzers](#create-iqualify-lms-test-user)**, um eine Entsprechung von Britta Simon in iQualify LMS zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
 6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
@@ -88,44 +88,41 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit iQualif
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **iQualify LMS** die Option **Einmaliges Anmelden** aus.
 
-    ![Konfigurieren des Links für einmaliges Anmelden](common/select-sso.png)
+   ![Konfigurieren des Links für einmaliges Anmelden](common/select-sso.png)
 
 2. Wählen Sie im Dialogfeld **SSO-Methode auswählen** den Modus **SAML/WS-Fed** aus, um einmaliges Anmelden zu aktivieren.
 
-    ![Auswahlmodus für einmaliges Anmelden](common/select-saml-option.png)
+   ![Auswahlmodus für einmaliges Anmelden](common/select-saml-option.png)
 
 3. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Symbol **Bearbeiten**, um das Dialogfeld **Grundlegende SAML-Konfiguration** zu öffnen.
 
-    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
+   ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
 4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP**-initiierten Modus konfigurieren möchten:
 
-    ![Screenshot: Seite „Grundlegende SAML-Konfiguration“ zum Eingeben des Bezeichners und einer Antwort-URL sowie zum Klicken auf „Speichern“](common/idp-intiated.png)
+   ![Screenshot: Seite „Grundlegende SAML-Konfiguration“ zum Eingeben des Bezeichners und einer Antwort-URL sowie zum Klicken auf „Speichern“](common/idp-intiated.png)
+   
+   1. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein:
 
-    a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein:
-    | |
-    |--|--|
-    | Produktionsumgebung: `https://<yourorg>.iqualify.com/`|
-    | Testumgebung: `https://<yourorg>.iqualify.io`|
+      * Produktionsumgebung: `https://<yourorg>.iqualify.com/`
+      * Testumgebung: `https://<yourorg>.iqualify.io`
 
-    b. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein:
-    | |
-    |--|--|
-    | Produktionsumgebung: `https://<yourorg>.iqualify.com/auth/saml2/callback` |
-    | Testumgebung: `https://<yourorg>.iqualify.io/auth/saml2/callback` |
+   2. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein:
+
+      * Produktionsumgebung: `https://<yourorg>.iqualify.com/auth/saml2/callback` 
+      * Testumgebung: `https://<yourorg>.iqualify.io/auth/saml2/callback`
 
 5. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 
-    ![Screenshot: Option „Zusätzliche URLs festlegen“ zum Eingeben einer Anmelde-URL](common/metadata-upload-additional-signon.png)
+   ![Screenshot: Option „Zusätzliche URLs festlegen“ zum Eingeben einer Anmelde-URL](common/metadata-upload-additional-signon.png)
 
-    Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein:
-    | |
-    |--|--|
-    | Produktionsumgebung: `https://<yourorg>.iqualify.com/login` |
-    | Testumgebung: `https://<yourorg>.iqualify.io/login` |
+   Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein:
 
-    > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Sie müssen diese Werte mit dem tatsächlichen Bezeichner, der Antwort-URL und der Anmelde-URL aktualisieren. Wenden Sie sich an das [Supportteam für den iQualify LMS-Client](https://www.iqualify.com/), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+      * Produktionsumgebung: `https://<yourorg>.iqualify.com/login`
+      * Testumgebung: `https://<yourorg>.iqualify.io/login`
+
+   > [!NOTE]
+   > Hierbei handelt es sich um Beispielwerte. Sie müssen diese Werte mit dem tatsächlichen Bezeichner, der Antwort-URL und der Anmelde-URL aktualisieren. Wenden Sie sich an das [Supportteam für den iQualify LMS-Client](https://www.iqualify.com/), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
 6. Ihre iQualify LMS-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute. Klicken Sie auf das Symbol **Bearbeiten**, um das Dialogfeld **Benutzerattribute** zu öffnen.
 
@@ -181,7 +178,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit iQualif
 
 1. Klicken Sie nach der Anmeldung rechts oben auf Ihren Avatar und anschließend auf **Account settings** (Kontoeinstellungen).
 
-    ![Kontoeinstellungen](./media/iqualify-tutorial/setting1.png)
+    ![Konteneinstellungen](./media/iqualify-tutorial/setting1.png)
 
 1. Klicken Sie im linken Bereich der Kontoeinstellungen auf das Menüband und anschließend auf **INTEGRATIONS**.
 

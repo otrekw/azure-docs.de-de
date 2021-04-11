@@ -4,12 +4,12 @@ ms.service: media-services
 ms.topic: include
 ms.date: 09/16/2020
 ms.author: jroth
-ms.openlocfilehash: c315c071aeb36eea0bd1af84b1344cf2fef5f703
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f4bdd5332b3c10cf375c7c04ede25137328714a2
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91329657"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106072859"
 ---
 >[!NOTE]
 >Erstellen Sie für Ressourcen ohne festes Limit ein Supportticket, um eine Erhöhung der Kontingente anzufordern. Erstellen Sie keine zusätzlichen Azure Media Services-Konten, um höhere Limits zu erhalten.
@@ -41,7 +41,7 @@ Seit 1. April 2017 werden alle Auftragsdatensätze in Ihrem Konto, die älter 
 
 <sup>3</sup> Wenn Sie eine Anforderung zum Auflisten von Auftragsentitäten senden, werden pro Anforderung maximal 1.000 Aufträge zurückgegeben. Wenn Sie alle übermittelten Aufträge nachverfolgen möchten, verwenden Sie die unter [OData-Systemabfrageoptionen](/previous-versions/dynamicscrm-2015/developers-guide/gg309461(v=crm.7)) beschriebenen Abfragen „$top“ oder „$skip“.
 
-<sup>4</sup> Locators sind nicht für die Verwaltung der benutzerspezifischen Zugriffssteuerung konzipiert. Wenn Sie einzelnen Benutzern unterschiedliche Zugriffsrechte zuweisen möchten, verwenden Sie eine DRM-Lösung (Digital Rights Management). Weitere Informationen finden Sie in der [Übersicht über den Inhaltsschutz](../articles/media-services/previous/media-services-content-protection-overview.md).
+<sup>4</sup> Locators sind nicht für die Verwaltung der benutzerspezifischen Zugriffssteuerung konzipiert. Wenn Sie einzelnen Benutzern unterschiedliche Zugriffsrechte zuweisen möchten, verwenden Sie eine DRM-Lösung (Digital Rights Management). Weitere Informationen finden Sie in der [Übersicht über den Inhaltsschutz](../articles/media-services/latest/drm-content-protection-concept.md).
 
 <sup>5</sup> Die Speicherkonten müssen aus dem gleichen Azure-Abonnement stammen.
 

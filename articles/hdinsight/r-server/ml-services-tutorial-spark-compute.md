@@ -5,18 +5,18 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/21/2019
-ms.openlocfilehash: bd6015529fb521e3b157e46ee808aea43e993dee
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 07c004fa5f03c53ed0778613a0c16a0ba2aff11f
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98935667"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869496"
 ---
 # <a name="tutorial-use-r-in-a-spark-compute-context-in-azure-hdinsight"></a>Tutorial: Verwenden von R in einem Spark-Computekontext in Azure HDInsight
 
 Dieses Tutorial enthält eine schrittweise Einführung in die Verwendung der R-Funktionen in Apache Spark, die auf einem Machine Learning Services-Cluster in Azure HDInsight ausgeführt werden.
 
-In diesem Tutorial lernen Sie Folgendes:
+In diesem Tutorial lernen Sie, wie die folgenden Aufgaben ausgeführt werden:
 
 > [!div class="checklist"]
 > * Herunterladen der Beispieldaten in den lokalen Speicher
@@ -56,7 +56,7 @@ Das *Dataset „Airline 2012 On-Time“* besteht aus zwölf CSV-Dateien mit Inf
 
 1. Wählen Sie im rechten Bereich die Registerkarte **Umgebung** aus. Die Variablen werden unter **Werte** angezeigt.
 
-    ![HDInsight R Studio-Webkonsole](./media/ml-services-tutorial-spark-compute/hdinsight-rstudio-image.png)
+    :::image type="content" source="./media/ml-services-tutorial-spark-compute/hdinsight-rstudio-image.png" alt-text="HDInsight R Studio-Webkonsole" border="true":::
 
 1. Erstellen Sie ein lokales Verzeichnis, und laden Sie die Beispieldaten herunter. Geben Sie in RStudio den folgenden Code ein:
 
@@ -222,14 +222,14 @@ rxSetComputeContext(mySparkCluster)
     Coefficients:
                    Estimate Std. Error t value Pr(>|t|)     | Counts
     DayOfWeek=Mon   3.54210    0.03736   94.80 2.22e-16 *** | 901592
-    DayOfWeek=Tues  1.80696    0.03835   47.12 2.22e-16 **_ | 855805
-    DayOfWeek=Wed   2.19424    0.03807   57.64 2.22e-16 _*_ | 868505
-    DayOfWeek=Thur  4.65502    0.03757  123.90 2.22e-16 _*_ | 891674
-    DayOfWeek=Fri   5.64402    0.03747  150.62 2.22e-16 _*_ | 896495
-    DayOfWeek=Sat   0.91008    0.04144   21.96 2.22e-16 _*_ | 732944
-    DayOfWeek=Sun   2.82780    0.03829   73.84 2.22e-16 _*_ | 858366
+    DayOfWeek=Tues  1.80696    0.03835   47.12 2.22e-16 *** | 855805
+    DayOfWeek=Wed   2.19424    0.03807   57.64 2.22e-16 *** | 868505
+    DayOfWeek=Thur  4.65502    0.03757  123.90 2.22e-16 *** | 891674
+    DayOfWeek=Fri   5.64402    0.03747  150.62 2.22e-16 *** | 896495
+    DayOfWeek=Sat   0.91008    0.04144   21.96 2.22e-16 *** | 732944
+    DayOfWeek=Sun   2.82780    0.03829   73.84 2.22e-16 *** | 858366
     ---
-    Signif. codes:  0 ‘_*_’ 0.001 ‘_*’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+    Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
     
     Residual standard error: 35.48 on 6005374 degrees of freedom
     Multiple R-squared: 0.001827 (as if intercept included)
@@ -328,7 +328,7 @@ Dieser Schritt sollte nach etwa zehn Minuten abgeschlossen sein.
 
 Bei Verwendung eines `RxSpark`-Computekontexts ist `createFileSet` standardmäßig auf `TRUE` festgelegt, und `rowsPerOutFile` hat keine Auswirkung. Wenn Sie eine einzelne CSV-Datei erstellen oder die Anzahl der Zeilen pro Datei anpassen möchten, führen Sie `rxDataStep` daher in einem `local`-Computekontext aus (Daten können sich dennoch in HDFS befinden).
 
-## <a name="final-steps"></a>Letzte Schritte
+## <a name="final-steps"></a>Abschließende Schritte
 
 1. Bereinigen Sie die Daten. Geben Sie in RStudio den folgenden Code ein:
 

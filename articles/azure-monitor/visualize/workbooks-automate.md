@@ -6,12 +6,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 77190b85da08d09cf05a02dcc5787f0c24229948
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9d4aac17ca823f4eaa0f52ab260b1daca3f52f94
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100602000"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109746"
 ---
 # <a name="programmatically-manage-workbooks"></a>Programmgesteuertes Verwalten von Arbeitsmappen
 
@@ -99,19 +99,19 @@ Es gibt zwei Arten von Arbeitsmappenressourcen, die programmgesteuert verwaltet 
 
 ### <a name="galleries"></a>Kataloge
 
-| Galerie                                        | Ressourcentyp                                      | Arbeitsmappentyp |
-| :--------------------------------------------- |:---------------------------------------------------|:--------------|
-| Arbeitsmappen in Azure Monitor                     | `Azure Monitor`                                    | `workbook`    |
-| VM Insights in Azure Monitor                   | `Azure Monitor`                                    | `vm-insights` |
-| Arbeitsmappen im Log Analytics-Arbeitsbereich           | `microsoft.operationalinsights/workspaces`         | `workbook`    |
-| Arbeitsmappen in Application Insights              | `microsoft.insights/component`                     | `workbook`    |
-| Leitfäden zur Problembehandlung in Application Insights | `microsoft.insights/component`                     | `tsg`         |
-| Nutzung in Application Insights                  | `microsoft.insights/component`                     | `usage`       |
-| Arbeitsmappen in Kubernetes Service                | `Microsoft.ContainerService/managedClusters`       | `workbook`    |
-| Arbeitsmappen in Ressourcengruppen                   | `microsoft.resources/subscriptions/resourcegroups` | `workbook`    |
-| Arbeitsmappen in Azure Active Directory            | `microsoft.aadiam/tenant`                          | `workbook`    |
-| VM Insights in virtuellen Computern                | `microsoft.compute/virtualmachines`                | `insights`    |
-| VM Insights in VM-Skalierungsgruppen      | `microsoft.compute/virtualmachinescalesets`        | `insights`    |
+| Galerie                                        | Ressourcentyp                                       | Arbeitsmappentyp |
+|:-----------------------------------------------|:----------------------------------------------------|:--------------|
+| Arbeitsmappen in Azure Monitor                     | `Azure Monitor`                                     | `workbook`    |
+| VM Insights in Azure Monitor                   | `Azure Monitor`                                     | `vm-insights` |
+| Arbeitsmappen im Log Analytics-Arbeitsbereich           | `microsoft.operationalinsights/workspaces`          | `workbook`    |
+| Arbeitsmappen in Application Insights              | `microsoft.insights/components`                     | `workbook`    |
+| Leitfäden zur Problembehandlung in Application Insights | `microsoft.insights/components`                     | `tsg`         |
+| Nutzung in Application Insights                  | `microsoft.insights/components`                     | `usage`       |
+| Arbeitsmappen in Kubernetes Service                | `Microsoft.ContainerService/managedClusters`        | `workbook`    |
+| Arbeitsmappen in Ressourcengruppen                   | `microsoft.resources/subscriptions/resourcegroups`  | `workbook`    |
+| Arbeitsmappen in Azure Active Directory            | `microsoft.aadiam/tenant`                           | `workbook`    |
+| VM Insights in virtuellen Computern                | `microsoft.compute/virtualmachines`                 | `insights`    |
+| VM Insights in VM-Skalierungsgruppen      | `microsoft.compute/virtualmachinescalesets`         | `insights`    |
 
 ## <a name="azure-resource-manager-template-for-deploying-a-workbook-instance"></a>Azure Resource Manager-Vorlage für das Bereitstellen einer Arbeitsmappeninstanz
 

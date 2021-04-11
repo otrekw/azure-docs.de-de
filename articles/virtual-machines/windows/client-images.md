@@ -1,19 +1,19 @@
 ---
 title: Verwenden von Windows-Clientimages in Azure
 description: Verwenden von Visual Studio-Abonnementvorteilen zum Bereitstellen von Windows 7, Windows 8 oder Windows 10 in Azure für Entwicklungs-/Testszenarien
-author: cynthn
+author: mimckitt
 ms.subservice: imaging
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 12/15/2017
-ms.author: cynthn
-ms.openlocfilehash: d09f27eebba5db2edb56185b658c8ae2b06e42d3
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.author: mimckitt
+ms.openlocfilehash: 7879e355573d2b9952728828bd3780094a919fe3
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102552268"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104869054"
 ---
 # <a name="use-windows-client-in-azure-for-devtest-scenarios"></a>Verwenden des Windows-Clients in Azure für Entwicklungs-/Testszenarien
 Sie können Windows 7, Windows 8 oder Windows 10 Enterprise (x64) in Azure für Entwicklungs-/Testszenarien verwenden, sofern Sie über ein entsprechendes Visual Studio-Abonnement (früher MSDN) verfügen. 
@@ -29,6 +29,9 @@ Bestimmte Windows-Clientimages sind im Azure Marketplace verfügbar. Visual Stud
 ## <a name="eligible-offers-and-client-images"></a>Berechtigte Angebote und Clientimages
 In der folgenden Tabelle werden die Angebots-IDs aufgeführt, die über den Azure Marketplace in Windows-Clientimages bereitgestellt werden können. Die Windows-Clientimages sind nur für die folgenden Angebote sichtbar. 
 
+> [!NOTE]
+> Imageangebote unter **Windows Client** im Azure Marketplace. Verwenden Sie den **Windows-Client** beim Suchen nach Clientimages für Visual Studio-Abonnenten. 
+
 | Angebotsname | Angebotsnummer | Verfügbare Client-images | 
 |:--- |:---:|:---:|
 | [Pay-As-You-Go Dev/Test](https://azure.microsoft.com/offers/ms-azr-0023p/) |0023P | Windows 10 Enterprise N (x64) <br> Windows 8.1 Enterprise N (x64) <br> Windows 7 Enterprise N mit SP1 (x64) |
@@ -41,10 +44,10 @@ In der folgenden Tabelle werden die Angebots-IDs aufgeführt, die über den Azur
 | [Enterprise Dev/Test](https://azure.microsoft.com/offers/ms-azr-0148p/) |0148P | Windows 10 Enterprise N (x64) <br> Windows 8.1 Enterprise N (x64) <br> Windows 7 Enterprise N mit SP1 (x64) |
 
 ## <a name="check-your-azure-subscription"></a>Überprüfen Ihres Azure-Abonnements
-Wenn Sie Ihre Angebots-ID nicht kennen, können Sie sie auf eine der beiden folgenden Weisen beim Azure-Portal abrufen:  
+Wenn Sie Ihre Angebots-ID nicht kennen, können Sie sie über das Azure-Portal abrufen.  
 - Im Fenster *Abonnements*: ![Angebots-ID im Azure-Portal](./media/client-images/offer-id-azure-portal.png) 
-- Klicken Sie alternativ auf **Abrechnung** und dann auf Ihre Abonnement-ID. Die Angebots-ID wird im Fenster *Abrechnung* angezeigt.
-Sie können die Angebots-ID auch auf der [Registerkarte „Abonnements“](https://account.windowsazure.com/Subscriptions) des Azure-Kontoportals anzeigen: ![Angebots-ID im Azure-Kontoportal](./media/client-images/offer-id-azure-account-portal.png) 
+- Klicken Sie alternativ auf **Abrechnung** und dann auf Ihre Abonnement-ID. Die Angebots-ID wird im Fenster *Abrechnung* angezeigt. 
+- Sie können die Angebots-ID auch auf der [Registerkarte „Abonnements“](https://account.windowsazure.com/Subscriptions) des Azure-Kontoportals anzeigen: ![Angebots-ID im Azure-Kontoportal](./media/client-images/offer-id-azure-account-portal.png) 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Jetzt können Sie Ihre VMs mit [PowerShell](quick-create-powershell.md), [Resource Manager-Vorlagen](ps-template.md) oder [Visual Studio](../../azure-resource-manager/templates/create-visual-studio-deployment-project.md) bereitstellen.
