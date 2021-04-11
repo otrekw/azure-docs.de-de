@@ -6,18 +6,18 @@ ms.author: valls
 ms.date: 2/12/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: e932238849baf267983fb3ca1ebb082db169d9fd
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: efe5d0171463668bda19a0d0445fc67f3734aaee
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101678504"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105561235"
 ---
 # <a name="device-update-for-iot-hub-agent-overview"></a>Device Update for IoT Hub-Agent: Übersicht
 
 Der Device Update-Agent besteht aus zwei konzeptionellen Ebenen:
 
-* Die Schnittstellenebene baut auf dem [Azure IoT Plug & Play (PNP)](https://docs.microsoft.com/azure/iot-pnp/overview-iot-plug-and-play) auf und ermöglicht das Übertragen von Nachrichten zwischen dem Device Update-Agent und den Device Update-Diensten.
+* Die Schnittstellenebene baut auf dem [Azure IoT Plug & Play (PNP)](../iot-pnp/overview-iot-plug-and-play.md) auf und ermöglicht das Übertragen von Nachrichten zwischen dem Device Update-Agent und den Device Update-Diensten.
 * Die Plattformebene ist für die Aktualisierungsaktionen auf hoher Ebene wie Herunterladen, Installieren und Anwenden zuständig, die plattform- oder gerätespezifisch sein können.
 
 :::image type="content" source="media/understand-device-update/client-agent-reference-implementations.png" alt-text="Agent-Implementierungen." lightbox="media/understand-device-update/client-agent-reference-implementations.png":::
@@ -72,8 +72,7 @@ Der APT-Updatehandler verarbeitet ein APT-spezifisches Updatemanifest und ruft A
 
 ## <a name="self-update-device-update-agent"></a>Selbstupdate des Device Update-Agents
 
-Der Geräteupdate-Agent und seine Abhängigkeiten können über die Device Update for IoT Hub-Pipeline aktualisiert werden. Wenn Sie ein imagebasiertes Update verwenden, schließen Sie den neuesten Geräteupdate-Agent in das neue Image ein. Wenn Sie ein paketbasiertes Update verwenden, schließen Sie den Geräteupdate-Agent und seine gewünschte Version wie jedes andere Paket in das APT-Manifest ein. [Weitere Informationen](device-update-apt-manifest.md) zum APT-Manifest. Sie können die installierte Version des Device Update-Agents und des Übermittlungsoptimierungs-Agents im Abschnitt „Device Properties“ (Geräteeigenschaften) Ihres [IoT-Gerätezwillings](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-device-twins) überprüfen. [Weitere Informationen zu Geräteeigenschaften finden Sie unter ADU Core-Schnittstelle](device-update-plug-and-play.md#device-properties).
+Der Geräteupdate-Agent und seine Abhängigkeiten können über die Device Update for IoT Hub-Pipeline aktualisiert werden. Wenn Sie ein imagebasiertes Update verwenden, schließen Sie den neuesten Geräteupdate-Agent in das neue Image ein. Wenn Sie ein paketbasiertes Update verwenden, schließen Sie den Geräteupdate-Agent und seine gewünschte Version wie jedes andere Paket in das APT-Manifest ein. [Weitere Informationen](device-update-apt-manifest.md) zum APT-Manifest. Sie können die installierte Version des Device Update-Agents und des Übermittlungsoptimierungs-Agents im Abschnitt „Device Properties“ (Geräteeigenschaften) Ihres [IoT-Gerätezwillings](../iot-hub/iot-hub-devguide-device-twins.md) überprüfen. [Weitere Informationen zu Geräteeigenschaften finden Sie unter ADU Core-Schnittstelle](device-update-plug-and-play.md#device-properties).
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Grundlegendes zur Konfigurationsdatei des Device Update-Agents](device-update-configuration-file.md)
-

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 03/30/2020
-ms.openlocfilehash: d996a2e0732ad9b4da104265710970e04cdbd368
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 067a30d8f16b06b1b29ad494363d180886d1ab8b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98199772"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105560079"
 ---
 # <a name="configure-lead-management-for-dynamics-365-customer-engagement"></a>Konfigurieren der Leadverwaltung für Dynamics 365 Customer Engagement
 
@@ -32,7 +32,7 @@ Für die Schritte in diesem Artikel werden die folgenden Benutzerberechtigungen 
 
 ## <a name="install-the-solution"></a>Installieren der Lösung
 
-1. Laden Sie die [Microsoft Marketplace-Lead Writer-Lösung](https://mpsapiprodwus.blob.core.windows.net/documentation/MicrosoftMarketplacesLeadIntegrationSolution_1_0_0_0_target_CRM_6.1_managed.zip) herunter, und speichern Sie sie lokal auf Ihrem Computer.
+1. Laden Sie die [Microsoft Marketplace-Lead Writer-Lösung](https://referralsflowpackages.blob.core.windows.net/documentation/MicrosoftMarketplacesLeadIntegrationSolution_1_0_0_0_target_CRM_6.1_managed.zip) herunter, und speichern Sie sie lokal auf Ihrem Computer.
 
 1. Öffnen Sie Dynamics 365 Customer Engagement, indem Sie zur URL Ihrer Dynamics-Instanz navigieren (z. B. `https://tenant.crm.dynamics.com`).
 

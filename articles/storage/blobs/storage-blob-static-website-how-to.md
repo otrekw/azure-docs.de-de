@@ -8,21 +8,18 @@ ms.topic: conceptual
 ms.author: normesta
 ms.date: 03/04/2020
 ms.custom: devx-track-js, devx-track-azurecli
-ms.openlocfilehash: a90251097f2b4cced5b30f5d6eea03b6ca0b1c61
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 2ba0e836f1be97681d677158f5cb81c5b033e915
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98664748"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103008500"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>Hosten einer statischen Website in Azure Storage
 
-Sie können statische Inhalte (HTML-, CSS-, JavaScript- und Bilddateien) direkt über einen Container in einem Azure Storage GPv2-Konto bereitstellen. Weitere Informationen finden Sie unter [Hosten von statischen Websites in Azure Storage](storage-blob-static-website.md).
+Sie können statische Inhalte (HTML, CSS, JavaScript und Imagedateien) direkt aus einem Container in einem [general-purpose V2](../common/storage-account-create.md)- oder [BlockBlobStorage](storage-blob-create-account-block-blob.md)-Konto bereitstellen. Weitere Informationen finden Sie unter [Hosten von statischen Websites in Azure Storage](storage-blob-static-website.md).
 
 In diesem Artikel erfahren Sie, wie Sie das Hosting statischer Websites über das Azure-Portal, mit der Azure-CLI oder mit Azure PowerShell aktivieren.
-
-> [!NOTE]
-> Erstellen Sie unbedingt ein Standardspeicherkonto vom Typ „Universell v2 (GPv2)“. Statische Websites sind in keinem anderen Speicherkontotyp verfügbar.
 
 ## <a name="enable-static-website-hosting"></a>Aktivieren des Hostings statischer Websites
 

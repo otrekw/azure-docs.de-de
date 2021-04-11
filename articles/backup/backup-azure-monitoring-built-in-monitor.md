@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie mehr über die Überwachungs- und Be
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: 2273b66be88cb22a15d0779ed2918ba3d94da1ce
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 83ed5af00bb61d7a8929e710b52e60c33c0f479b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101713370"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105559212"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Überwachen von Azure Backup-Workloads
 
@@ -130,7 +130,7 @@ Diese Funktion ist derzeit für Azure Database for PostgreSQL-Server, Azure Blob
 - Sicherungsfehler (um Warnungen zu Sicherungsfehlern zu erhalten, müssen Sie das AFEC-Flag namens **EnableAzureBackupJobFailureAlertsToAzureMonitor** über das Vorschauportal registrieren)
 - Wiederherstellungsfehler (um Warnungen zu Wiederherstellungsfehlern zu erhalten, müssen Sie das AFEC-Flag namens **EnableAzureBackupJobFailureAlertsToAzureMonitor** über das Vorschauportal registrieren)
 
-Weitere Informationen zu Azure Monitor-Warnungen finden Sie unter [Überblick über Warnungen in Azure](https://docs.microsoft.com/azure/azure-monitor/alerts/alerts-overview).
+Weitere Informationen zu Azure Monitor-Warnungen finden Sie unter [Überblick über Warnungen in Azure](../azure-monitor/alerts/alerts-overview.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

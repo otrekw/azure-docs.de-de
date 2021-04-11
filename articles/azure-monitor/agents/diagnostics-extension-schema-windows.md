@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 01/20/2020
 ms.openlocfilehash: 70b27fec07d074dadb413d1debb098e23b4d33b3
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102428727"
 ---
 # <a name="windows-diagnostics-extension-schema"></a>Schema der Diagnoseerweiterung für Windows
@@ -233,7 +233,7 @@ Das Element der obersten Ebene der Diagnosekonfigurationsdatei
 
  Definiert die Pufferkonfiguration für grundlegende Azure-Protokolle.  
 
-|attribute|Typ|BESCHREIBUNG|  
+|attribute|type|BESCHREIBUNG|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|**unsignedInt**|Optional. Gibt die Höchstmenge des Dateisystemspeichers an, der für die angegebenen Daten verfügbar ist.<br /><br /> Die Standardeinstellung ist 0.|  
 |**scheduledTransferLogLevelFilter**|**string**|Optional. Gibt den minimalen Schweregrad für Protokolleinträge an, die übertragen werden. Der Standardwert ist **Undefined**, der alle Protokolle überträgt. Weitere mögliche Werte (meiste Informationen bis wenigste Informationen) sind **Verbose**, **Information**, **Warning**, **Error** und **Critical**.|  
@@ -265,11 +265,11 @@ Das Element der obersten Ebene der Diagnosekonfigurationsdatei
 
  Definiert die Standorte, an die die Diagnosedaten gesendet werden sollen. Beispiel: der Application Insights-Dienst.  
 
-|attribute|Typ|Beschreibung|  
+|attribute|type|BESCHREIBUNG|  
 |---------------|----------|-----------------|  
 |**name**|Zeichenfolge|Eine Zeichenfolge für den Senkennamen.|  
 
-|Element|Typ|BESCHREIBUNG|  
+|Element|type|BESCHREIBUNG|  
 |-------------|----------|-----------------|  
 |**Application Insights**|Zeichenfolge|Wird nur beim Senden von Daten an Application Insights verwendet. Enthält den Instrumentationsschlüssel für ein aktives Application Insights-Konto, für das Sie Zugriff besitzen.|  
 |**Channels**|Zeichenfolge|Einer für jeden zusätzlichen Filter, den Sie streamen|  
@@ -281,7 +281,7 @@ Das Element der obersten Ebene der Diagnosekonfigurationsdatei
 
  Definiert die Filter für Datenströme von Protokolldaten, die durch eine Senke übergeben werden.  
 
-|Element|Typ|BESCHREIBUNG|  
+|Element|type|BESCHREIBUNG|  
 |-------------|----------|-----------------|  
 |**Channel**|Zeichenfolge|Siehe Beschreibung an anderer Stelle auf dieser Seite.|  
 

@@ -7,10 +7,10 @@ ms.topic: reference
 ms.date: 07/03/2019
 ms.author: vitalyg
 ms.openlocfilehash: bae7980137c1da5e1755450863af4f9029d6ed62
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104583461"
 ---
 # <a name="application-insights-log-based-metrics"></a>Protokollbasierte Metriken von Application Insights
@@ -191,9 +191,9 @@ Die Metriken der Kategorie **Fehler** zeigen Probleme bei der Verarbeitung von A
 
 Diese Metrik spiegelt die Anzahl der ausgelösten Ausnahmen von Ihrem Anwendungscode im Browser wider. Nur Ausnahmen, die mit einem ```trackException()``` Application Insights API-Aufruf verfolgt werden, sind in der Metrik enthalten.
 
-|Unit of measure|Unterstützte Aggregationen|Vorab aggregierte Dimensionen|Notizen|
+|Unit of measure|Unterstützte Aggregationen|Vorab aggregierte Dimensionen|Hinweise|
 |---|---|---|---|
-|Anzahl|Anzahl|Keine|Protokollbasierte Version verwendet **Sum**-Aggregation|
+|Anzahl|Anzahl|Keiner|Protokollbasierte Version verwendet **Sum**-Aggregation|
 
 ```Kusto
 exceptions
@@ -206,9 +206,9 @@ exceptions
 
 Die Anzahl fehlerhafter Abhängigkeitsaufrufe.
 
-|Unit of measure|Unterstützte Aggregationen|Vorab aggregierte Dimensionen|Notizen|
+|Unit of measure|Unterstützte Aggregationen|Vorab aggregierte Dimensionen|Hinweise|
 |---|---|---|---|
-|Anzahl|Anzahl|Keine|Protokollbasierte Version verwendet **Sum**-Aggregation|
+|Anzahl|Anzahl|Keiner|Protokollbasierte Version verwendet **Sum**-Aggregation|
 
 ```Kusto
 dependencies
@@ -221,7 +221,7 @@ dependencies
 
 Jedes Mal, wenn Sie eine Ausnahme bei Application Insights protokollieren, erfolgt ein Aufruf der [trackException()-Methode](../app/api-custom-events-metrics.md#trackexception) des SDK. Die Metrik „Ausnahmen“ zeigt die Anzahl der protokollierten Ausnahmen an.
 
-|Unit of measure|Unterstützte Aggregationen|Vorab aggregierte Dimensionen|Notizen|
+|Unit of measure|Unterstützte Aggregationen|Vorab aggregierte Dimensionen|Hinweise|
 |---|---|---|---|
 |Anzahl|Anzahl|Cloudrollenname, Cloudrolleninstanz, Gerätetyp|Protokollbasierte Version verwendet **Sum**-Aggregation|
 
@@ -235,7 +235,7 @@ exceptions
 
 Die Anzahl der verfolgten Serveranforderungen, die als *fehlgeschlagen* markiert wurden. Standardmäßig markiert das Application Insights SDK automatisch jede Serveranforderung, die den HTTP-Antwortcode 5xx oder 4xx zurückgegeben hat, als fehlerhafte Anforderung. Sie können diese Logik anpassen, indem Sie die Eigenschaft *Erfolg* des Anforderungstelemetrieelements in einem [benutzerdefinierten Telemetrieinitialisierer](../app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer) ändern.
 
-|Unit of measure|Unterstützte Aggregationen|Vorab aggregierte Dimensionen|Notizen|
+|Unit of measure|Unterstützte Aggregationen|Vorab aggregierte Dimensionen|Hinweise|
 |---|---|---|---|
 |Anzahl|Anzahl|Cloudrolleninstanz, Cloudrollenname, Echter oder synthetischer Datenverkehr, Anforderungsleistung, Antwortcode|Protokollbasierte Version verwendet **Sum**-Aggregation|
 
@@ -250,7 +250,7 @@ requests
 
 Diese Metrik zeigt die Anzahl der Serverausnahmen.
 
-|Unit of measure|Unterstützte Aggregationen|Vorab aggregierte Dimensionen|Notizen|
+|Unit of measure|Unterstützte Aggregationen|Vorab aggregierte Dimensionen|Hinweise|
 |---|---|---|---|
 |Anzahl|Anzahl|Cloudrollenname, Cloudrolleninstanz|Protokollbasierte Version verwendet **Sum**-Aggregation|
 

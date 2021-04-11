@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 56ec893de159f4c8a90c5a229ccf7669856fb066
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e77bbd6e82d0d4a48b72e13e60b60608f2d7674
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89020217"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103419590"
 ---
 # <a name="how-to-process-and-extract-information-from-images-in-ai-enrichment-scenarios"></a>Verarbeiten und Extrahieren von Informationen aus Bildern in KI-Anreicherungsszenarien
 
@@ -88,7 +88,7 @@ Wenn *imageAction* auf einen anderen Wert als „none“ festgelegt wird, enthä
 ]
 ```
 
-## <a name="image-related-skills"></a>Bildbezogene Qualifikationen
+## <a name="image-related-skills"></a>Skills für Bilder
 
 Es gibt zwei integrierte kognitive Qualifikationen, die Bilder als Eingabe akzeptieren: [OCR](cognitive-search-skill-ocr.md) und [Bildanalyse](cognitive-search-skill-image-analysis.md). 
 
@@ -213,11 +213,83 @@ Um die normalisierten Koordinaten auf den ursprünglichen Koordinatenraum zu üb
             return original;
         }
 ```
+## <a name="passing-images-to-custom-skills"></a>Übergeben von Bildern an benutzerdefinierte Skills
+
+Für Szenarios, in denen Sie einen benutzerdefinierten Skill für Bilder erfordern, können Sie Bilder an den benutzerdefinierten Skill übergeben, damit dieser Text oder Bilder zurückgibt. Die Bildverarbeitung des [Python-Beispiels](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/Image-Processing) veranschaulicht den Workflow. Das folgende Skillset stammt aus dem Beispiel.
+
+Das folgende Skillset erfasst das normalisierte Bild (das bei der Dokumententschlüsselung abgerufen wird) und gibt Segmente des Bilds aus.
+
+#### <a name="sample-skillset"></a>Beispielskillset
+```json
+{
+  "description": "Extract text from images and merge with content text to produce merged_text",
+  "skills":
+  [
+    {
+          "@odata.type": "#Microsoft.Skills.Custom.WebApiSkill",
+          "name": "ImageSkill",
+          "description": "Segment Images",
+          "context": "/document/normalized_images/*",
+          "uri": "https://your.custom.skill.url",
+          "httpMethod": "POST",
+          "timeout": "PT30S",
+          "batchSize": 100,
+          "degreeOfParallelism": 1,
+          "inputs": [
+            {
+              "name": "image",
+              "source": "/document/normalized_images/*"
+            }
+          ],
+          "outputs": [
+            {
+              "name": "slices",
+              "targetName": "slices"
+            }
+          ],
+          "httpHeaders": {}
+        }
+  ]
+}
+```
+
+#### <a name="custom-skill"></a>Benutzerdefinierter Skill
+
+Der benutzerdefinierte Skill selbst ist extern vom Skillset. In diesem Fall durchläuft der Python-Code zunächst den Batch der Anforderungsaufzeichnung im Format für den benutzerdefinierten Skill und konvertiert dann die mit Base64 verschlüsselte Zeichenfolge in ein Bild.
+
+```python
+# deserialize the request, for each item in the batch
+for value in values:
+  data = value['data']
+  base64String = data["image"]["data"]
+  base64Bytes = base64String.encode('utf-8')
+  inputBytes = base64.b64decode(base64Bytes)
+  # Use numpy to convert the string to an image
+  jpg_as_np = np.frombuffer(inputBytes, dtype=np.uint8)
+  # you now have an image to work with
+```
+Ähnlich gilt, wenn Sie ein Bild zurückgeben möchten, geben Sie eine mit Base64 verschlüsselte Zeichenfolge in einem JSON-Objekt mit der `$type`-Eigenschaft `file` zurück.
+
+```python
+def base64EncodeImage(image):
+    is_success, im_buf_arr = cv2.imencode(".jpg", image)
+    byte_im = im_buf_arr.tobytes()
+    base64Bytes = base64.b64encode(byte_im)
+    base64String = base64Bytes.decode('utf-8')
+    return base64String
+
+ base64String = base64EncodeImage(jpg_as_np)
+ result = { 
+  "$type": "file", 
+  "data": base64String 
+}
+```
 
 ## <a name="see-also"></a>Weitere Informationen
 + [Create Indexer (Azure Search Service REST api-version=2017-11-11-Preview)](/rest/api/searchservice/create-indexer) (Erstellen eines Indexers (REST-API für den Azure Search-Dienst: Version 2017-11-11-Preview))
 + [Skill für Bildanalyse](cognitive-search-skill-image-analysis.md)
-+ [OCR cognitive skill](cognitive-search-skill-ocr.md) (Kognitive Qualifikation: OCR)
++ [OCR-Qualifikation](cognitive-search-skill-ocr.md)
 + [Text Merge cognitive skill](cognitive-search-skill-textmerger.md) (Kognitive Qualifikation: Textzusammenführung)
 + [Definieren eines Skillsets](cognitive-search-defining-skillset.md)
 + [Zuordnen angereicherter Felder](cognitive-search-output-field-mapping.md)
++ [Übergeben von Bildern an benutzerdefinierte Skills](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/Image-Processing)

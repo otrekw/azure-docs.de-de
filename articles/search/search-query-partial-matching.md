@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/03/2020
-ms.openlocfilehash: 79ba186351cc145e012658abc30572e99b123dbb
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 2e2625fff802e71f797bf6970e763f2bf11c393e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96573985"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104584175"
 ---
 # <a name="partial-term-search-and-patterns-with-special-characters-hyphens-wildcard-regex-patterns"></a>Suche nach Teilausdrücken und Mustern mit Sonderzeichen (Bindestriche, Platzhalter, reguläre Ausdrücke, Muster)
 
@@ -85,7 +85,7 @@ Für die Generierung von Token mit vollständigen Ausdrücken werden häufig die
 | [Sprachanalysen](index-add-language-analyzers.md) | Behält Bindestriche in zusammengesetzten Wörtern oder Zeichenfolgen, Umlaute und Verbformen bei. Wenn Abfragemuster Bindestriche enthalten, kann die Verwendung einer Sprachanalyse ausreichen. |
 | [keyword](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) | Der Inhalt des gesamten Felds wird als ein Ausdruck tokenisiert. |
 | [whitespace](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/WhitespaceAnalyzer.html) | Die Trennung erfolgt nur anhand von Leerzeichen. Ausdrücke, die Bindestriche oder andere Zeichen enthalten, werden als einzelnes Token behandelt. |
-| [Benutzerdefiniertes Analysetool](index-add-custom-analyzers.md) | (Empfohlen) Beim Erstellen eines benutzerdefinierten Analysetools können Sie sowohl den Tokenizer als auch den Tokenfilter angeben. Die obigen Analysetools müssen unverändert verwendet werden. Bei einem benutzerdefinierten Analysetool können Sie auswählen, welche Tokenizer und Tokenfilter genutzt werden sollen. <br><br>Eine empfohlene Kombination ist der [Schlüsselwort-Tokenizer](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordTokenizer.html) mit einem [Kleinbuchstaben-Tokenfilter](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/LowerCaseFilter.html). Ohne Filter wandelt das vordefinierte [Schlüsselwort-Analysetool](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) Großbuchstaben nicht in Kleinbuchstaben um. Dies kann dazu führen, dass Abfragen nicht erfolgreich sind. Bei einem benutzerdefinierten Analysetool erhalten Sie einen Mechanismus zum Hinzufügen des Kleinbuchstaben-Tokenfilters. |
+| [Benutzerdefiniertes Analysetool](index-add-custom-analyzers.md) | (Empfohlen) Beim Erstellen eines benutzerdefinierten Analysetools können Sie sowohl den Tokenizer als auch den Tokenfilter angeben. Die obigen Analysetools müssen unverändert verwendet werden. Bei einem benutzerdefinierten Analysetool können Sie auswählen, welche Tokenizer und Tokenfilter genutzt werden sollen. <br><br>Eine empfohlene Kombination ist der [Schlüsselwort-Tokenizer](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordTokenizer.html) mit einem [Kleinbuchstaben-Tokenfilter](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/LowerCaseFilter.html). Ohne Filter wandelt das integrierte [Schlüsselwort-Analysetool](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) Großbuchstaben nicht in Kleinbuchstaben um. Dies kann dazu führen, dass Abfragen nicht erfolgreich sind. Bei einem benutzerdefinierten Analysetool erhalten Sie einen Mechanismus zum Hinzufügen des Kleinbuchstaben-Tokenfilters. |
 
 Wenn Sie ein Web-API-Testtool wie Postman nutzen, können Sie den [REST-Aufruf für die Textanalyse](/rest/api/searchservice/test-analyzer) hinzufügen, um die tokenisierte Ausgabe zu untersuchen.
 
@@ -160,9 +160,9 @@ Unabhängig davon, ob Sie Analysetools auswerten oder eine bestimmte Konfigurati
 
 ### <a name="use-built-in-analyzers"></a>Verwenden von integrierten Analysetools
 
-Integrierte oder vordefinierte Analysetools können anhand des Namens in einer `analyzer`-Eigenschaft einer Felddefinition angegeben werden, ohne dass im Index eine zusätzliche Konfiguration erforderlich ist. Im folgenden Beispiel wird veranschaulicht, wie Sie das Analysetool `whitespace` für ein Feld festlegen. 
+Integrierte Analysetools können anhand des Namens in einer `analyzer` Eigenschaft einer Felddefinition angegeben werden, ohne dass im Index eine zusätzliche Konfiguration erforderlich ist. Im folgenden Beispiel wird veranschaulicht, wie Sie das Analysetool `whitespace` für ein Feld festlegen. 
 
-Weitere Szenarios und weitere Informationen zu anderen integrierten Analysemodulen finden Sie unter [Vordefinierte Analysetoolreferenz](./index-add-custom-analyzers.md#predefined-analyzers-reference). 
+Weitere Szenarios und weitere Informationen zu anderen integrierten Analysemodulen finden Sie unter [Integrierte Analysetoolreferenz](./index-add-custom-analyzers.md#built-in-analyzers). 
 
 ```json
     {

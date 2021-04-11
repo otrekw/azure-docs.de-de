@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5265b875769e6a1b8f1728c9c41c0bee00619956
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 703e3b4c951bc4c3a22f82b9faa31789d1abf868
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101647386"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103008721"
 ---
 # <a name="add-an-api-connector-to-a-user-flow"></a>Hinzufügen eines API-Connectors zu einem Benutzerflow
 
@@ -27,7 +27,7 @@ Um einen [API-Connector](api-connectors-overview.md) zu verwenden, erstellen Sie
 
 ## <a name="create-an-api-connector"></a>Erstellen eines API-Connectors
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) als Azure AD-Administrator an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 2. Wählen Sie unter **Azure-Dienste** die Option **Azure Active Directory** aus.
 3. Wählen Sie im Menü auf der linken Seite **Externe Identitäten** aus.
 4. Wählen Sie **Alle API-Connectors** und dann **Neuer API-Connector** aus.
@@ -36,15 +36,35 @@ Um einen [API-Connector](api-connectors-overview.md) zu verwenden, erstellen Sie
 
 5. Geben Sie einen Anzeigenamen für den Aufruf an, z. B. **Genehmigungsstatus überprüfen**.
 6. Geben Sie die **Endpunkt-URL** für den API-Aufruf an.
-7. Geben Sie die Authentifizierungsinformationen für die API an.
+7. Wählen Sie den **Authentifizierungstyp** aus, und konfigurieren Sie die Authentifizierungsinformationen zum Aufrufen Ihrer API. Weitere Informationen zum Schützen Ihrer API finden Sie weiter unten in diesem Artikel.
 
-   - Derzeit wird nur die Standardauthentifizierung unterstützt. Wenn Sie eine API ohne Standardauthentifizierung für Entwicklungszwecke verwenden möchten, geben Sie einfach Dummywerte für **Benutzername** und **Kennwort** ein, die in der API ignoriert werden können. Zur Verwendung mit einer Azure-Funktion mit einem API-Schlüssel können Sie den Code als Abfrageparameter in die **Endpunkt-URL** einfügen (z. B. `https://contoso.azurewebsites.net/api/endpoint?code=0123456789`).
+    ![Konfigurieren eines API-Connectors](./media/self-service-sign-up-add-api-connector/api-connector-config.png)
 
-   ![Konfigurieren eines neuen API-Connectors](./media/self-service-sign-up-add-api-connector/api-connector-config.png)
 8. Wählen Sie **Speichern** aus.
 
+## <a name="securing-the-api-endpoint"></a>Schützen des API-Endpunkts
+Sie können Ihren API-Endpunkt entweder mithilfe der HTTP-Standardauthentifizierung oder mithilfe der HTTPS-Clientzertifikatauthentifizierung (Vorschau) schützen. In beiden Fällen müssen Sie die Anmeldeinformationen angeben, die Azure Active Directory beim Aufrufen Ihres API-Endpunkts verwenden wird. Der API-Endpunkt überprüft dann die Anmeldeinformationen und führt Autorisierungsentscheidungen aus.
+
+### <a name="http-basic-authentication"></a>HTTP-Standardauthentifizierung
+Die HTTP-Standardauthentifizierung ist in [RFC 2617](https://tools.ietf.org/html/rfc2617) definiert. Azure Active Directory sendet eine HTTP-Anforderung mit den Clientanmeldeinformationen (`username` und `password`) im Header `Authorization`. Die Anmeldeinformationen werden als Base64-codierte Zeichenfolge im Format `username:password` angegeben. Die API überprüft dann diese Werte, um zu bestimmen, ob ein API-Aufruf abgelehnt werden soll oder nicht.
+
+### <a name="https-client-certificate-authentication-preview"></a>HTTPS-Clientzertifikatauthentifizierung (Vorschau)
+
 > [!IMPORTANT]
-> Bisher mussten Sie konfigurieren, welche Benutzerattribute an die API gesendet („Zu sendende Ansprüche“) und von der API angenommen („Zu empfangende Ansprüche“) werden sollten. Jetzt werden standardmäßig alle Benutzerattribute gesendet, wenn sie einen Wert haben, und jedes Benutzerattribut kann von der API in einer „Fortsetzungsantwort“ zurückgegeben werden.
+> Diese Funktion befindet sich in der Vorschauhase und wird ohne Vereinbarung zum Servicelevel bereitgestellt. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Bei der Clientzertifikatauthentifizierung handelt es sich um eine gegenseitige zertifikatbasierte Authentifizierung, bei der der Client sein Clientzertifikat für den Server bereitstellt, um seine Identität nachzuweisen. In diesem Fall verwendet Azure Active Directory das Zertifikat, das Sie als Teil der API-Connectorkonfiguration hochladen. Dies erfolgt im Rahmen des SSL-Handshakes. Nur Dienste mit den richtigen Zertifikaten erhalten Zugriff auf Ihren API-Dienst. Bei dem Clientzertifikat handelt es sich um ein digitales X.509-Zertifikat. In Produktionsumgebungen muss es von einer Zertifizierungsstelle signiert werden. 
+
+Zum Erstellen eines Zertifikats können Sie den [Azure Key Vault](../../key-vault/certificates/create-certificate.md) verwenden, der über Optionen für selbstsignierte Zertifikate und Integrationen mit Zertifikatausstelleranbietern für signierte Zertifikate verfügt. Anschließend können Sie [das Zertifikat exportieren](../../key-vault/certificates/how-to-export-certificate.md) und für die Verwendung in der API-Connectorkonfiguration hochladen. Hinweis: Das Kennwort ist nur für kennwortgeschützte Zertifikatdateien erforderlich. Sie können auch das PowerShell-Cmdlet [New-SelfSignedCertificate](../../active-directory-b2c/secure-rest-api.md#prepare-a-self-signed-certificate-optional) verwenden, um ein selbstsigniertes Zertifikat zu generieren.
+
+Informationen zum Aktivieren und Überprüfen des Zertifikats über Ihren API-Endpunkt in Azure App Service und Azure Functions finden Sie unter [Konfigurieren der gegenseitigen TLS-Authentifizierung](../../app-service/app-service-web-configure-tls-mutual-auth.md).
+
+Es wird empfohlen, Erinnerungswarnungen für den Zeitpunkt festzulegen, an dem das Zertifikat abläuft. Wenn Sie ein neues Zertifikat in einen vorhandenen API-Connector hochladen möchten, wählen Sie diesen API-Connector unter **All API connectors** (Alle API-Connectors) aus, und klicken Sie auf **Upload new certificate** (Neues Zertifikat hochladen). Azure Active Directory verwendet automatisch das zuletzt hochgeladene Zertifikat, das nicht abgelaufen ist und nach dem Startdatum erstellt wurde.
+
+### <a name="api-key"></a>API-Schlüssel
+Einige Dienste verwenden einen API-Schlüssel-Mechanismus, um den Zugriff auf die HTTP-Endpunkte während der Entwicklung zu verschleiern. Sie können diesen für [Azure Functions](../../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) einrichten, indem Sie `code` als Abfrageparameter in die **Endpunkt-URL** einschließen. Beispiel: `https://contoso.azurewebsites.net/api/endpoint`<b>`?code=0123456789`</b>. 
+
+Hierbei handelt es sich nicht um einen Mechanismus, der allein in der Produktion verwendet werden sollte. Daher ist die Konfiguration für die Standard- oder Zertifikatauthentifizierung immer erforderlich. Wenn Sie für Entwicklungszwecke keine Authentifizierungsmethode implementieren möchten (nicht empfohlen), können Sie die Standardauthentifizierung auswählen und temporäre Werte für `username` und `password` verwenden, die von der API ignoriert werden können, während Sie die Autorisierung in Ihrer API implementieren.
 
 ## <a name="the-request-sent-to-your-api"></a>An die API gesendete Anforderung
 Ein API-Connector wird als **HTTP POST**-Anforderung dargestellt und sendet Benutzerattribute („Ansprüche“) als Schlüssel-Wert-Paare in einem JSON-Text. Attribute werden ähnlich wie [Microsoft Graph](/graph/api/resources/user#properties)-Benutzereigenschaften serialisiert. 
@@ -56,7 +76,7 @@ Content-type: application/json
 
 {
  "email": "johnsmith@fabrikam.onmicrosoft.com",
- "identities": [ //Sent for Google and Facebook identity providers
+ "identities": [ // Sent for Google, Facebook, and Email One Time Passcode identity providers 
      {
      "signInType":"federated",
      "issuer":"facebook.com",
@@ -85,7 +105,7 @@ Benutzerdefinierte Attribute sind im Verzeichnis im Format **extension_\<extensi
 Außerdem wird der Anspruch **Gebietsschema der Benutzeroberfläche („ui_locales“)** standardmäßig in allen Anforderungen gesendet. Er gibt das Gebietsschema (oder auch mehrere Gebietsschemas) eines Benutzers an, wie es auf seinem Gerät konfiguriert ist. Dieses kann von der API verwendet werden, um internationalisierte Antworten zurückzugeben.
 
 > [!IMPORTANT]
-> Wenn ein zu sendender Anspruch zum Zeitpunkt des Aufrufs des API-Endpunkts keinen Wert enthält, wird er nicht an die API gesendet. Die API sollte so entworfen werden, dass sie explizit den erwarteten Wert überprüft.
+> Wenn ein Anspruch zum Zeitpunkt des Aufrufs des API-Endpunkts keinen Wert enthält, wird der Anspruch nicht an die API gesendet. Ihre API sollte so entworfen sein, dass explizit geprüft wird, ob ein Anspruch in der Anforderung enthalten ist. Fehlt der Anspruch, sollte eine entsprechende Verarbeitung erfolgen.
 
 > [!TIP] 
 > Mit den Ansprüchen [**Identitäten („identities“)**](/graph/api/resources/objectidentity) und **E-Mail-Adresse („email“)** kann Ihre API einen Benutzer identifizieren, bevor er über ein Konto in Ihrem Mandanten verfügt. Der Anspruch „identities“ wird gesendet, wenn sich ein Benutzer mit einem Identitätsanbieter (z. B. Google oder Facebook) authentifiziert. Der Anspruch „email“ wird immer gesendet.
@@ -109,11 +129,7 @@ Führen Sie die folgenden Schritte aus, um einem Benutzerflow für die Self-Serv
 
 ## <a name="after-signing-in-with-an-identity-provider"></a>Nach Anmeldung bei einem Identitätsanbieter
 
-Ein API-Connector in diesem Schritt des Registrierungsprozesses wird unmittelbar nach der Authentifizierung des Benutzers bei einem Identitätsanbieter (Google, Facebook, Azure AD) aufgerufen. Dieser Schritt geht der ***Seite zur Attributsammlung***  voraus, die dem Benutzer zum Sammeln von Benutzerattributen angezeigt wird. 
-
-<!-- The following are examples of API connector scenarios you may enable at this step:
-- Use the email or federated identity that the user provided to look up claims in an existing system. Return these claims from the existing system, pre-fill the attribute collection page, and make them available to return in the token.
-- Validate whether the user is included in an allow or deny list, and control whether they can continue with the sign-up flow. -->
+Ein API-Connector in diesem Schritt des Registrierungsprozesses wird unmittelbar nach der Authentifizierung des Benutzers bei einem Identitätsanbieter (etwa Google, Facebook und Azure AD) aufgerufen. Dieser Schritt geht der ***Seite zur Attributsammlung***  voraus, die dem Benutzer zum Sammeln von Benutzerattributen angezeigt wird. Dieser Schritt wird nicht aufgerufen, wenn sich ein Benutzer mit einem lokalen Konto registriert.
 
 ### <a name="example-request-sent-to-the-api-at-this-step"></a>In diesem Schritt an die API gesendete Beispielanforderung
 ```http
@@ -122,7 +138,7 @@ Content-type: application/json
 
 {
  "email": "johnsmith@fabrikam.onmicrosoft.com",
- "identities": [ //Sent for Google and Facebook identity providers
+ "identities": [ // Sent for Google, Facebook, and Email One Time Passcode identity providers 
      {
      "signInType":"federated",
      "issuer":"facebook.com",
@@ -165,13 +181,6 @@ Sehen Sie sich ein Beispiel für eine [Blockierungsantwort](#example-of-a-blocki
 
 Ein API-Connector in diesem Schritt des Registrierungsprozesses wird nach der Seite zur Attributsammlung aufgerufen, sofern vorhanden. Dieser Schritt wird stets aufgerufen, ehe ein Benutzerkonto in Azure AD erstellt wird. 
 
-<!-- The following are examples of scenarios you might enable at this point during sign-up: -->
-<!-- 
-- Validate user input data and ask a user to resubmit data.
-- Block a user sign-up based on data entered by the user.
-- Perform identity verification.
-- Query external systems for existing data about the user and overwrite the user-provided value. -->
-
 ### <a name="example-request-sent-to-the-api-at-this-step"></a>In diesem Schritt an die API gesendete Beispielanforderung
 
 ```http
@@ -180,7 +189,7 @@ Content-type: application/json
 
 {
  "email": "johnsmith@fabrikam.onmicrosoft.com",
- "identities": [ //Sent for Google and Facebook identity providers
+ "identities": [ // Sent for Google, Facebook, and Email One Time Passcode identity providers 
      {
      "signInType":"federated",
      "issuer":"facebook.com",
@@ -212,7 +221,6 @@ Wenn die Web-API während eines Benutzerflows eine HTTP-Anforderung von Azure A
 - Überprüfungsantwort
 
 #### <a name="continuation-response"></a>Fortsetzungsantwort
-
 Eine Fortsetzungsantwort gibt an, dass der Benutzerflow mit dem nächsten Schritt fortgesetzt werden soll: Erstellen des Benutzers im Verzeichnis.
 
 In einer Fortsetzungsantwort kann die API Ansprüche zurückgeben. Wenn ein Anspruch von der API zurückgegeben wird, passiert mit dem Anspruch Folgendes:
@@ -247,12 +255,12 @@ Content-type: application/json
 }
 ```
 
-| Parameter                                          | type              | Erforderlich | BESCHREIBUNG                                                                                                                                                                                                                                                                            |
+| Parameter                                          | Typ              | Erforderlich | BESCHREIBUNG                                                                                                                                                                                                                                                                            |
 | -------------------------------------------------- | ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | version                                            | String            | Ja      | Die Version der API.                                                                                                                                                                                                                                                                |
 | action                                             | String            | Ja      | Der Wert muss `Continue` sein.                                                                                                                                                                                                                                                              |
 | \<builtInUserAttribute>                            | \<attribute-type> | Nein       | Werte können im Verzeichnis gespeichert werden, wenn sie als **zu empfangender Anspruch** in der API-Connector-Konfiguration und als **Benutzerattribute** für einen Benutzerflow ausgewählt sind. Werte können im Token zurückgegeben werden, wenn sie als **Anwendungsanspruch** ausgewählt sind.                                              |
-| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | Nein       | Der zurückgegebene Anspruch muss `_<extensions-app-id>_` nicht enthalten. Werte werden im Verzeichnis gespeichert, wenn sie als **zu empfangender Anspruch** in der API-Connector-Konfiguration und als **Benutzerattribute** für einen Benutzerflow ausgewählt sind. Benutzerdefinierte Attribute können im Token nicht zurückgesendet werden. |
+| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | Nein       | Der zurückgegebene Anspruch muss `_<extensions-app-id>_` nicht enthalten. Zurückgegebene Werte können Werte überschreiben, die von einem Benutzer gesammelt wurden. Sie können auch im Token zurückgegeben werden, wenn dieses als Teil der Anwendung konfiguriert ist.  |
 
 ### <a name="example-of-a-blocking-response"></a>Beispiel für eine Blockierungsantwort
 
@@ -264,17 +272,15 @@ Content-type: application/json
     "version": "1.0.0",
     "action": "ShowBlockPage",
     "userMessage": "There was a problem with your request. You are not able to sign up at this time.",
-    "code": "CONTOSO-BLOCK-00"
 }
 
 ```
 
-| Parameter   | type   | Erforderlich | BESCHREIBUNG                                                                |
+| Parameter   | Typ   | Erforderlich | BESCHREIBUNG                                                                |
 | ----------- | ------ | -------- | -------------------------------------------------------------------------- |
 | version     | String | Ja      | Die Version der API.                                                    |
 | action      | String | Ja      | Der Wert muss `ShowBlockPage` sein.                                              |
 | userMessage | String | Ja      | Meldung, die für den Benutzer angezeigt wird.                                            |
-| code        | String | Nein       | Fehlercode Kann zum Debuggen verwendet werden. Wird nicht für den Benutzer angezeigt. |
 
 **Anzeige einer Blockierungsantwort für den Endbenutzer**
 
@@ -291,17 +297,18 @@ Content-type: application/json
     "status": 400,
     "action": "ValidationError",
     "userMessage": "Please enter a valid Postal Code.",
-    "code": "CONTOSO-VALIDATION-00"
 }
 ```
 
-| Parameter   | type    | Erforderlich | BESCHREIBUNG                                                                |
+| Parameter   | Typ    | Erforderlich | BESCHREIBUNG                                                                |
 | ----------- | ------- | -------- | -------------------------------------------------------------------------- |
-| version     | String  | Ja      | Die Version der API.                                                    |
+| version     | String  | Ja      | Die Version Ihrer API                                                    |
 | action      | String  | Ja      | Der Wert muss `ValidationError` sein.                                           |
 | status      | Integer | Ja      | Für eine Validierungsfehlerantwort muss der Wert `400` sein.                        |
 | userMessage | String  | Ja      | Meldung, die für den Benutzer angezeigt wird.                                            |
-| code        | String  | Nein       | Fehlercode Kann zum Debuggen verwendet werden. Wird nicht für den Benutzer angezeigt. |
+
+> [!NOTE]
+> Der HTTP-Statuscode muss „400“ lauten, und der Antworttext muss den Wert „status“ enthalten.
 
 **Anzeige einer Validierungsfehlerantwort für den Endbenutzer**
 
@@ -311,7 +318,7 @@ Content-type: application/json
 ## <a name="best-practices-and-how-to-troubleshoot"></a>Bewährte Methoden und Problembehandlungen
 
 ### <a name="using-serverless-cloud-functions"></a>Verwenden von serverlosen Cloudfunktionen
-Serverlose Funktionen, z. B. HTTP-Trigger in Azure Functions, bieten eine einfache Möglichkeit zum Erstellen von API-Endpunkten, die mit dem API-Connector verwendet werden. Sie können die serverlosen Cloudfunktionen [beispielsweise](code-samples-self-service-sign-up.md#api-connector-azure-function-quickstarts) verwenden, um Validierungslogik auszuführen und Registrierungen auf bestimmte Domänen zu beschränken. Mit den serverlosen Cloudfunktionen können auch andere Web-APIs, Benutzerspeicher und weitere Clouddienste für komplexere Szenarien aufgerufen werden.
+Serverlose Funktionen, z. B. HTTP-Trigger in Azure Functions, bieten eine einfache Möglichkeit zum Erstellen von API-Endpunkten, die mit dem API-Connector verwendet werden. Sie können die serverlosen Cloudfunktionen [beispielsweise](code-samples-self-service-sign-up.md#api-connector-azure-function-quickstarts) verwenden, um Validierungslogik auszuführen und Registrierungen auf bestimmte E-Mail-Domänen zu beschränken. Mit den serverlosen Cloudfunktionen können auch andere Web-APIs, Benutzerspeicher und weitere Clouddienste für komplexere Szenarien aufgerufen werden.
 
 ### <a name="best-practices"></a>Bewährte Methoden
 Stellen Sie Folgendes sicher:
@@ -319,8 +326,7 @@ Stellen Sie Folgendes sicher:
 * Die **Endpunkt-URL** des API-Connectors verweist auf den richtigen API-Endpunkt.
 * In Ihrer API wird explizit auf NULL-Werte der empfangenen Ansprüche geprüft.
 * Ihre API antwortet so schnell wie möglich, um eine flüssige Darstellung für den Benutzer zu gewährleisten.
-    * Wenn Sie eine serverlose Funktion oder einen skalierbaren Webdienst verwenden, nutzen Sie einen Hostingplan, mit dem die API im aktiven Zustand („wach“ oder „warm“) Für Azure Functions wird empfohlen, den [Premium-Plan](../../azure-functions/functions-premium-plan.md) zu verwenden. 
-
+    * Wenn Sie eine serverlose Funktion oder einen skalierbaren Webdienst verwenden, nutzen Sie einen Hostingplan, mit dem die API im aktiven Zustand („wach“ oder „warm“) gehalten wird. Für Azure Functions wird empfohlen, den [Premium-Plan](../../azure-functions/functions-scale.md) zu verwenden.
 
 ### <a name="use-logging"></a>Verwenden von Protokollierung
 Üblicherweise ist es nützlich, die von Ihrem Web-API-Dienst aktivierten Protokollierungstools, etwa [Application Insights](../../azure-functions/functions-monitoring.md), zu verwenden, um Ihre API auf unerwartete Fehlercodes, Ausnahmen und schlechte Leistung zu überwachen.
@@ -330,7 +336,5 @@ Stellen Sie Folgendes sicher:
 * Überwachen Sie Ihre API hinsichtlich langer Antwortzeiten.
 
 ## <a name="next-steps"></a>Nächste Schritte
-<!-- - Learn [where you can enable an API connector](api-connectors-overview.md#where-you-can-enable-an-api-connector-in-a-user-flow) -->
 - Erfahren Sie, wie Sie [der Self-Service-Registrierung einen benutzerdefinierten Genehmigungsworkflow hinzufügen](self-service-sign-up-add-approvals.md).
-- Erste Schritte mit den [Azure Functions-Schnellstartbeispielen](code-samples-self-service-sign-up.md#api-connector-azure-function-quickstarts).
-<!-- - Learn how to [use API connectors to verify a user identity](code-samples-self-service-sign-up.md#identity-verification) -->
+- Verwenden Sie unsere [Schnellstartbeispiele](code-samples-self-service-sign-up.md#api-connector-azure-function-quickstarts), um direkt loszulegen.

@@ -5,16 +5,16 @@ author: bsiva
 ms.author: bsiva
 ms.manager: abhemraj
 ms.topic: tutorial
-ms.date: 06/08/2020
+ms.date: 03/18/2021
 ms.custom:
 - MVC
 - fasttrack-edit
-ms.openlocfilehash: 9d0fa516fefefe4c3d8e67c3e6d592ec4274943c
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 0072ce81fc619c39770eba52e24dc5a0c57280a6
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878171"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104604575"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>Migrieren von virtuellen Hyper-V-Computern zu Azure 
 
@@ -135,12 +135,7 @@ Nachdem die Ermittlung abgeschlossen ist, können Sie mit der Replikation von Hy
 ## <a name="provision-for-the-first-time"></a>Erste Bereitstellung
 
 Ist dies der erste virtuelle Computer, den Sie im Azure Migrate-Projekt replizieren, werden von der Azure Migrate-Servermigration diese Ressourcen automatisch in derselben Ressourcengruppe wie das Projekt bereitgestellt.
-
-- **Service Bus**: Von der Azure Migrate-Servermigration wird Service Bus verwendet, um Nachrichten zur Replikationsorchestrierung an die Appliance zu senden.
-- **Gatewayspeicherkonto**: Von der Azure Bei der Servermigration wird das Gatewayspeicherkonto verwendet, um Statusinformationen zu den replizierten VMs zu speichern.
-- **Protokollspeicherkonto**: Die Azure Migrate-Appliance lädt Replikationsprotokolle für VMs in ein Protokollspeicherkonto hoch. Azure Migrate wendet die Replikationsinformationen auf die verwalteten Replikatdatenträger an.
-- **Schlüsseltresor**: Von der Azure Migrate-Appliance wird der Schlüsseltresor verwendet, um Verbindungszeichenfolgen für den Service Bus zu verwalten, und Zugriffsschlüssel werden für die Speicherkonten genutzt, die bei der Replikation eingesetzt werden. Sie sollten die Berechtigungen, die vom Schlüsseltresor für den Zugriff auf das Speicherkonto benötigt werden, während der [Vorbereitung von Azure](./tutorial-discover-hyper-v.md#prepare-an-azure-user-account) für die Bewertung und Migration von virtuellen Hyper-V-Computern eingerichtet haben. 
-
+- **Cachespeicherkonto:** Die auf Hyper-V-Hosts installierte Azure Site Recovery-Anbietersoftware lädt Replikationsdaten für die virtuellen Computer, die für die Replikation konfiguriert wurden, in ein Speicherkonto (als Cachespeicherkonto oder Protokollspeicherkonto bezeichnet) in Ihrem Abonnement hoch. Der Azure Migrate-Dienst kopiert dann die hochgeladenen Replikationsdaten aus dem Speicherkonto auf die zum virtuellen Computer gehörenden verwalteten Replikatdatenträger. Das Cachespeicherkonto muss beim Konfigurieren der Replikation für einen virtuellen Computer angegeben werden. Im Azure Migrate-Portal wird automatisch ein Konto für das Azure Migrate-Projekt erstellt, wenn die Replikation zum ersten Mal im Projekt konfiguriert wird.
 
 ## <a name="track-and-monitor"></a>Nachverfolgen und Überwachen
 
