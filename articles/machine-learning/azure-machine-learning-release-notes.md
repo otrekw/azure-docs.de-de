@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 02/18/2021
-ms.openlocfilehash: b61337f29eac11ca3fb45056b9348fbc70956b53
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 04ed2e76797474a65d5c7c669066926225c1c1f9
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102521202"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103471741"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning: Anmerkungen zu dieser Version
 
@@ -26,7 +26,7 @@ __RSS-Feed__: Lassen Sie sich benachrichtigen, wenn diese Seite aktualisiert wir
 ## <a name="2021-03-08"></a>08.03.2021
 
 ### <a name="azure-machine-learning-sdk-for-python-v1240"></a>Azure Machine Learning SDK für Python v1.24.0
-+ **Neue Features**
++ **Fehlerbehebungen und Verbesserungen**
   + **azureml-automl-core**
     + Abwärtskompatible Importe aus `azureml.automl.core.shared` entfernt. Fehler vom Typ „Modul nicht gefunden“ im Namespace `azureml.automl.core.shared` können per Import von `azureml.automl.runtime.shared` behoben werden.
   + **azureml-contrib-automl-dnn-vision**
@@ -59,8 +59,8 @@ __RSS-Feed__: Lassen Sie sich benachrichtigen, wenn diese Seite aktualisiert wir
   + [Natives Terminal (GA)](https://docs.microsoft.com/azure/machine-learning/how-to-access-terminal). Benutzer haben jetzt über das integrierte Terminal Zugriff auf ein integriertes Terminal und auf Git-Vorgänge.
   + [Notebook-Codeausschnitte (Vorschauversion)](https://azure.github.io/azureml-web/docs/vs-code-snippets/snippets). Häufig verwendete Azure ML-Codeauszüge sind jetzt direkt verfügbar. Navigieren Sie über die Symbolleiste zum Bereich mit den Codeausschnitten, oder aktivieren Sie mit STRG+LEERTASTE das Menü mit den Codeausschnitten.  
   + [Tastenkombinationen](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#shortcut-keys). Vollständige Parität mit den in Jupyter verfügbaren Tastenkombinationen. 
-  + Angeben von Zellenparametern. Zeigt für Benutzer mit Zellen in einem Notebook die Parameterzellen an, und über [Papermill](https://github.com/nteract/papermill) können auf der Compute-Instanz parametrisierte Notebooks ausgeführt werden.
-  + Terminal- und Kernel-Sitzungs-Manager: Benutzer können alle Kernel und Terminalsitzungen verwalten, die auf Ihrer Compute-Instanz ausgeführt werden.
+  + Angeben von Zellenparametern. Zeigt Benutzern, welche Zellen in einem Notebook Parameterzellen sind und über [Papermill](https://github.com/nteract/papermill) auf der Compute-Instanz parametrisierte Notebooks ausführen können.
+  + Terminal- und Kernel-Sitzungs-Manager: Benutzer können alle Kernel und Terminalsitzungen verwalten, die auf ihrer Compute-Instanz ausgeführt werden.
   + Schaltfläche zum Teilen. Benutzer können nun alle Dateien im Notebook-Datei-Explorer teilen, indem sie mit der rechten Maustaste auf die Datei klicken und die Schaltfläche „Teilen“ verwenden.
 
 
@@ -75,7 +75,7 @@ __RSS-Feed__: Lassen Sie sich benachrichtigen, wenn diese Seite aktualisiert wir
 ## <a name="2021-02-16"></a>16.2.2021
 
 ### <a name="azure-machine-learning-sdk-for-python-v1230"></a>Azure Machine Learning SDK für Python v1.23.0
-+ **Neue Features**
++ **Fehlerbehebungen und Verbesserungen**
   + **azureml-core**
     + [Experimentelles Feature] Unterstützung für das Verknüpfen eines Synapse-Arbeitsbereichs in AML als verknüpften Dienst hinzugefügt
     + [Experimentelle Funktion] Unterstützung zum Anfügen des Synapse Spark-Pools in AML als Compute-Instanz hinzugefügt

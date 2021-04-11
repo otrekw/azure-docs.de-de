@@ -1,24 +1,14 @@
 ---
 title: Konfigurieren von Sicherheits-Agents
 description: Erfahren Sie, wie Sie Defender für IoT-Sicherheits-Agents für die Verwendung mit dem Sicherheitsdienst Defender für IoT konfigurieren.
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: mlottner
-manager: rkarlin
-editor: ''
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 09/09/2020
-ms.author: mlottner
-ms.openlocfilehash: aa863ce556840903d16238d6afef32136ba2b80d
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 5ac9a5cdb4cc13ed91c0e5e29447b9cdbe71bcce
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92090844"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104784406"
 ---
 # <a name="tutorial-configure-security-agents"></a>Tutorial: Konfigurieren von Sicherheits-Agents
 
@@ -88,7 +78,7 @@ Um einen Standardeigenschaftswert zu verwenden, entfernen Sie die Eigenschaft au
 
 1. Klicken Sie auf **Modulidentitätszwilling**.
 
-1. Bearbeiten Sie die zu ändernden Eigenschaften im Sicherheitsmodul.
+1. Bearbeiten Sie die gewünschten Eigenschaften für den Defender für IoT-Micro-Agent.
 
    Verwenden Sie z. B. die folgende Konfiguration, um Verbindungsereignisse mit hoher Priorität zu konfigurieren und Ereignisse mit hoher Priorität alle 7 Minuten zu sammeln.
 

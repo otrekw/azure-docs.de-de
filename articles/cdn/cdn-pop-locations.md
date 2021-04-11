@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2020
 ms.author: allensu
-ms.openlocfilehash: 01bae85241950ffa1ccf77189694fb648b8c7d03
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: ba6710629f52abd13ef84f2a814c10c6dca18837
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103494086"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105641729"
 ---
 # <a name="azure-cdn-coverage-by-metro"></a>Azure CDN-Abdeckung nach Metropolregion 
 > [!div class="op_single_selector"]
@@ -49,4 +49,5 @@ Dieser Artikel enthält die aktuellen Metropolregionen mit POP-Standorten (Point
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Informationen zum Abrufen der aktuellen IP-Adressen für Positivlisten finden Sie unter der [Azure CDN-Edgeknoten-API](https://docs.microsoft.com/rest/api/cdn/edgenodes).
+
+* Informationen zum Abrufen der aktuellen IP-Adressen für Positivlisten finden Sie unter der [Azure CDN-Edgeknoten-API](/rest/api/cdn/cdn/edgenodes).

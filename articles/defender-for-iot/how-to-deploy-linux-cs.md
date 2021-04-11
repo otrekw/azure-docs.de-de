@@ -1,25 +1,14 @@
 ---
 title: Installieren und Bereitstellen des C#-basierten Linux-Agents
 description: Erfahren Sie, wie Sie den C#-basierten Sicherheits-Agent von Defender für IoT unter Linux installieren und bereitstellen.
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: mlottner
-manager: rkarlin
-editor: ''
-ms.devlang: na
-ms.custom: devx-track-csharp
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 09/09/2020
-ms.author: mlottner
-ms.openlocfilehash: ec26cd0b66b6d08d8bd686d8f3e5ad8011df10b1
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: c84a70928be13212b56636ad1fbb9baaadd0e7d0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102449763"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104784202"
 ---
 # <a name="deploy-defender-for-iot-c-based-security-agent-for-linux"></a>Bereitstellen des C#-basierten Sicherheits-Agents von Defender für IoT unter Linux
 
@@ -38,7 +27,7 @@ Informationen zu anderen Plattformen und Agent-Varianten finden Sie unter [Choos
 
 1. Um den Sicherheits-Agent bereitstellen zu können, müssen Sie auf dem Computer, auf dem Sie ihn installieren möchten, über lokale Administratorrechte verfügen.
 
-1. [Erstellen Sie ein Sicherheitsmodul](quickstart-create-security-twin.md) für das Gerät.
+1. [Erstellen Sie einen Defender-IoT-Micro-Agent](quickstart-create-security-twin.md) für das Gerät.
 
 ## <a name="installation"></a>Installation
 

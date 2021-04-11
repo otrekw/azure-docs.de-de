@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: cfc980fdabdb9c6e7085088db12754243f133d89
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0ddbd4b798d37498af92cec40af6a80a88115fab
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100581392"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103014892"
 ---
 # <a name="security-best-practices"></a>Bewährte Sicherheitsmethoden
 
@@ -117,7 +117,6 @@ So testen Sie diese neue Funktion
 >[!NOTE]
 >Während der Vorschau unterstützen nur vollständige Desktopverbindungen von Windows 10-Endpunkten diese Funktion.
 
-
 ### <a name="enable-endpoint-protection"></a>Aktivieren von Endpoint Protection
 
 Zum Schutz Ihrer Bereitstellung vor bekannter bösartiger Software empfehlen wir, Endpoint Protection auf allen Sitzungshosts zu aktivieren. Sie können entweder Windows Defender Antivirus oder ein Programm eines Drittanbieters verwenden. Weitere Informationen finden Sie unter [Leitfaden zur Bereitstellung für Windows Defender Antivirus in einer VDI-Umgebung](/windows/security/threat-protection/windows-defender-antivirus/deployment-vdi-windows-defender-antivirus).
@@ -169,6 +168,52 @@ Indem Sie die Funktionen des Betriebssystems einschränken, können Sie die Sich
 - Gewähren Sie Benutzern eingeschränkte Berechtigungen, wenn sie auf lokale und Remotedateisysteme zugreifen. Sie können Berechtigungen einschränken, indem Sie sicherstellen, dass Ihre lokalen und Remotedateisysteme Zugriffssteuerungslisten mit geringsten Rechten verwenden. Auf diese Weise können Benutzer nur auf erforderliche Daten zugreifen und können wichtige Ressourcen nicht ändern oder löschen.
 
 - Verhindern Sie die Ausführung unerwünschter Software auf Sitzungshosts. Sie können AppLocker für zusätzliche Sicherheit auf Sitzungshosts aktivieren, um sicherzustellen, dass nur die von Ihnen zugelassenen Apps auf dem Host ausgeführt werden können.
+
+## <a name="windows-virtual-desktop-support-for-trusted-launch"></a>Windows Virtual Desktop-Unterstützung für vertrauenswürdigen Start
+
+Der vertrauenswürdige Start bezieht sich auf Azure-Gen2-VMs mit erweiterten Sicherheitsfeatures zum Schutz vor Bedrohungen in der unteren Ebene des Stapels durch Angriffsvektoren wie z. B. Rootkits, Bootkits und Schadsoftware auf Kernelebene. Im Folgenden werden alle erweiterten Sicherheitsfeatures des vertrauenswürdigen Starts beschrieben, die in Windows Virtual Desktop unterstützt werden. Weitere Informationen zum vertrauenswürdigen Start finden Sie unter [Vertrauenswürdiger Start für Azure-VMs (Vorschau)](../virtual-machines/trusted-launch.md).
+
+### <a name="secure-boot"></a>Sicherer Start
+
+Der sichere Start ist ein in der Plattformfirmware unterstützter Modus, der die Firmware vor schadsoftwarebasierten Rootkits und Bootkits schützt. In diesem Modus kann der Computer ausschließlich über signierte Betriebssysteme und Treiber gestartet werden. 
+
+### <a name="monitor-boot-integrity-using-remote-attestation"></a>Überwachen der Startintegrität über Remotenachweis
+
+Der Remotenachweis eignet sich ideal zum Überprüfen der Integrität Ihrer VMs. Mit dem Remotenachweis wird geprüft, ob Datensätze des kontrollierten Starts vorhanden und echt sind und aus dem virtuellen Trusted Platform Module (vTPM) stammen. Als Integritätsprüfung bietet er kryptografische Sicherheit, dass eine Plattform ordnungsgemäß gestartet wurde. 
+
+### <a name="vtpm"></a>vTPM
+
+Ein vTPM ist eine virtualisierte Version eines Trusted Platform Module (TPM) mit einer virtuellen Instanz eines TPM pro VM. vTPM ermöglicht den Remotenachweis über eine Integritätsmessung der gesamten Startkette der VM (UEFI, Betriebssystem, System und Treiber). 
+
+Es wird empfohlen, das vTPM für die Verwendung des Remotenachweises auf Ihren VMs zu aktivieren. Bei aktiviertem vTPM können Sie außerdem die BitLocker-Funktionalität aktivieren, mit der vollständige Volumeverschlüsselung zum Schutz von ruhenden Daten gewährleistet wird. Alle Funktionen, bei denen das vTPM verwendet wird, haben zur Folge, dass Geheimnisse an die spezifische VM gebunden sind. Wenn Benutzer in einem Poolszenario eine Verbindung mit dem Windows Virtual Desktop-Dienst herstellen, können sie zu jeder VM im Hostpool umgeleitet werden. Je nachdem, wie die Funktion gestaltet ist, wirkt sich dies möglicherweise negativ aus.
+
+>[!NOTE]
+>BitLocker sollte nicht dazu verwendet werden, den Datenträger zu verschlüsseln, auf dem Ihre FSLogix-Profildaten gespeichert sind.
+
+### <a name="virtualization-based-security"></a>Virtualisierungsbasierte Sicherheit
+
+Bei der virtualisierungsbasierten Sicherheit (VBS) wird über Hypervisor ein sicherer Speicherbereich erstellt und isoliert, der für das Betriebssystem nicht zugänglich ist. Bei HVCI (Hypervisor-Protected Code Integrity) und Windows Defender Credential Guard sorgt VBS für einen verstärkten Schutz vor Sicherheitsrisiken. 
+
+#### <a name="hypervisor-protected-code-integrity"></a>Hypervisor-Protected Code Integrity
+
+HVCI bietet eine leistungsstarke Risikominderung für das System unter Verwendung von VBS und schützt Windows-Kernelmodusprozesse vor der Einschleusung und Ausführung von schädlichem oder nicht überprüftem Code.
+
+#### <a name="windows-defender-credential-guard"></a>Windows Defender Credential Guard
+
+Mit Windows Defender Credential Guard werden Geheimnisse mithilfe von VBS isoliert und geschützt, sodass der Zugriff nur über privilegierte Systemsoftware erfolgen kann. Dies verhindert einen nicht autorisierten Zugriff auf diese Geheimnisse und Angriffe zum Diebstahl von Anmeldeinformationen, z. B. Pass-the-Hash-Angriffe.
+
+### <a name="deploy-trusted-launch-in-your-windows-virtual-desktop-environment"></a>Bereitstellen des vertrauenswürdigen Starts in Ihrer Windows Virtual Desktop-Umgebung
+
+In Windows Virtual Desktop ist es derzeit nicht möglich, den vertrauenswürdigen Start beim Setupprozess des Hostpools automatisch zu konfigurieren. Zur Verwendung des vertrauenswürdigen Starts in Ihrer Windows Virtual Desktop-Umgebung müssen Sie den vertrauenswürdigen Start normal bereitstellen und dann die VM manuell in den gewünschten Hostpool einfügen.
+
+## <a name="nested-virtualization"></a>Geschachtelte Virtualisierung
+
+Die Ausführung der geschachtelten Virtualisierung in Windows Virtual Desktop wird unter den folgenden Betriebssystemen unterstützt:
+
+- Windows Server 2016
+- Windows Server 2019
+- Windows 10 Enterprise
+- Windows 10 Enterprise (mehrere Sitzungen)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

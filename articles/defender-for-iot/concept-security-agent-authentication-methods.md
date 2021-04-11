@@ -1,30 +1,20 @@
 ---
 title: Authentifizierungsmethoden des Sicherheits-Agents
 description: Lernen Sie die verschiedenen Authentifizierungsmethoden kennen, die für den Defender für IoT-Dienst verfügbar sind.
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: shhazam-ms
-manager: rkarlin
-editor: ''
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 01/24/2021
-ms.author: shhazam
-ms.openlocfilehash: 85a5edc1485cb5a1eeb4428b201380ad9ca89422
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: bd4d89d8664dae2421ff7f268b3710b5a906427b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102449168"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104784610"
 ---
 # <a name="security-agent-authentication-methods"></a>Authentifizierungsmethoden des Sicherheits-Agents
 
 In diesem Artikel werden die verschiedenen Authentifizierungsmethoden erläutert, die Sie mit dem AzureIoTSecurity-Agent für die Authentifizierung beim IoT Hub verwenden können.
 
-Für jedes Gerät, das im IoT Hub in Defender für IoT integriert ist, ist ein Sicherheitsmodul erforderlich. Für die Authentifizierung des Geräts kann Defender für IoT eine der beiden Methoden verwenden. Wählen Sie die Methode aus, die sich am besten für Ihre vorhandene IoT-Lösung eignet.
+Für jedes Gerät, für das in der IoT Hub-Instanz ein Onboarding in Defender für IoT durchgeführt wurde, ist ein IoT-Micro-Agent von Defender erforderlich. Für die Authentifizierung des Geräts kann Defender für IoT eine der beiden Methoden verwenden. Wählen Sie die Methode aus, die sich am besten für Ihre vorhandene IoT-Lösung eignet.
 
 - Option „SecurityModule“
 - Geräteoption
@@ -33,12 +23,12 @@ Für jedes Gerät, das im IoT Hub in Defender für IoT integriert ist, ist ein S
 
 Für den AzureIoTSecurity-Agent von Azure Defender für IoT gibt es die beiden folgenden Authentifizierungsmethoden:
 
-- Authentifizierungsmodus **SecurityModule**<br>
-Der Agent wird unabhängig von der Geräteidentität mithilfe der Sicherheitsmodulidentität authentifiziert.
-Verwenden Sie diesen Authentifizierungstyp, wenn der Sicherheits-Agent eine dedizierte Authentifizierungsmethode über Sicherheitsmodul (nur symmetrischer Schlüssel) verwenden soll.
+- Authentifizierungsmodus **IoT-Micro-Agent von Defender**<br>
+Der Agent wird unabhängig von der Geräteidentität mithilfe der Identität „IoT-Micro-Agent von Defender“ authentifiziert.
+Diese Authentifizierung bietet sich an, wenn der Sicherheits-Agent eine dedizierte Authentifizierungsmethode über den IoT-Micro-Agent von Defender (nur symmetrischer Schlüssel) verwenden soll.
 
 - Authentifizierungsmodus **Gerät**<br>
-Bei dieser Methode wird der Sicherheits-Agent zunächst mit der Geräteidentität authentifiziert. Nach der ersten Authentifizierung führt der Defender für IoT-Agent den Aufruf **REST** am IoT Hub durch und verwendet dabei die REST-API mit den Authentifizierungsdaten des Geräts. Der Defender für IoT-Agent fordert dann die Authentifizierungsmethode und -daten des Sicherheitsmoduls vom IoT Hub an. Im letzten Schritt nimmt der Defender für IoT-Agent eine Authentifizierung beim Defender für IoT-Modul vor.
+Bei dieser Methode wird der Sicherheits-Agent zunächst mit der Geräteidentität authentifiziert. Nach der ersten Authentifizierung führt der Defender für IoT-Agent den Aufruf **REST** am IoT Hub durch und verwendet dabei die REST-API mit den Authentifizierungsdaten des Geräts. Der Defender für IoT-Agent fordert dann die Authentifizierungsmethode „IoT-Micro-Agent von Defender“ und die zugehörigen Daten von der IoT Hub-Instanz an. Im letzten Schritt nimmt der Defender für IoT-Agent eine Authentifizierung beim Defender für IoT-Modul vor.
 
 Verwenden Sie diesen Authentifizierungstyp, wenn der Sicherheits-Agent eine vorhandene Geräteauthentifizierungsmethode (selbstsigniertes Zertifikat oder symmetrischer Schlüssel) erneut verwenden soll.
 

@@ -3,15 +3,16 @@ title: Häufig gestellte Fragen zur Unterstützung von vertraulichen Knoten in A
 description: Hier finden Sie Antworten auf einige häufig gestellte Fragen zur Unterstützung von Azure Kubernetes Service (AKS)- und Azure Confidential Computing (ACC)-Knoten.
 author: agowdamsft
 ms.service: container-service
+ms.subservice: confidential-computing
 ms.topic: conceptual
 ms.date: 02/09/2020
 ms.author: amgowda
-ms.openlocfilehash: 550995f0be3d634e7e9f24a8bf6826916003308e
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 94b585078ce5e78a658fd8f110f09963200010b6
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653396"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105933558"
 ---
 # <a name="frequently-asked-questions-about-confidential-computing-nodes-on-azure-kubernetes-service-aks"></a>Häufig gestellte Fragen zu Confidential Computing-Knoten in Azure Kubernetes Service (AKS)
 

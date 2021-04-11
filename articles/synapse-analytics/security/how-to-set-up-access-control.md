@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 12/03/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 513d23de3d7f823ec934af32e5f3776e876f02d8
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 97f9d0e0037090a8c058eb6e2393451d975e79c6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100368998"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103472261"
 ---
 # <a name="how-to-set-up-access-control-for-your-synapse-workspace"></a>Einrichten der Zugriffssteuerung für Ihren Synapse-Arbeitsbereich 
 
@@ -124,7 +124,7 @@ Zum Ausführen von Pipelines und Systemaufgaben in Synapse muss eine vom Arbeits
 
 ## <a name="step-5-grant-synapse-administrators-the-azure-contributor-role-on-the-workspace"></a>SCHRITT 5: Gewähren der Azure-Rolle „Mitwirkender“ im Arbeitsbereich für Synapse-Administratoren 
 
-Für das Erstellen von SQL-Pools, Apache Spark-Pools und Integration Runtimes benötigen Benutzer mindestens die Azure-Zugriffsberechtigung „Mitwirkender“ für den Arbeitsbereich. Die Rolle „Mitwirkender“ ermöglicht es diesen Benutzern auch, die Ressourcen zu verwalten (einschließlich anhalten und skalieren).
+Für das Erstellen von SQL-Pools, Apache Spark-Pools und Integration Runtimes benötigen Benutzer mindestens die Berechtigung „Azure Contributor“ (Azure-Mitwirkender) für den Arbeitsbereich. Die Rolle „Mitwirkender“ ermöglicht es diesen Benutzern auch, die Ressourcen zu verwalten (einschließlich anhalten und skalieren). Wenn Sie SQL-Pools, Apache Spark-Pools und Integration Runtimes über das Azure-Portal oder Synapse Studio erstellen, benötigen Sie die Rolle „Azure-Mitwirkender“ auf Ressourcengruppenebene. 
 
 - Öffnen Sie das Azure-Portal.
 - Suchen Sie den Arbeitsbereich `workspace1`.

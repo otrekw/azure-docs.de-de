@@ -2,13 +2,13 @@
 title: Aktionsregeln für Azure Monitor-Warnungen
 description: In diesem Artikel wird erläutert, was Aktionsregeln in Azure Monitor sind und wie sie konfiguriert und verwaltet werden können.
 ms.topic: conceptual
-ms.date: 04/25/2019
-ms.openlocfilehash: 07d179f557671a515a7933b64a25e6d41f75219b
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.date: 03/15/2021
+ms.openlocfilehash: f70d798270ad82193f7ae5935d34f8f418d35e05
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102045614"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103471682"
 ---
 # <a name="action-rules-preview"></a>Aktionsregeln (Vorschau)
 
@@ -61,19 +61,33 @@ Wählen Sie zunächst den Bereich aus (Azure-Abonnement, Ressourcengruppe oder Z
 
 ### <a name="filter-criteria"></a>Filterkriterien
 
-Sie können außerdem mindestens einen Filter zum Eingrenzen auf eine bestimmte Teilmenge von Warnungen festlegen.
+Optional können Sie Filter definieren, damit die Regel für eine spezifische Teilmenge der Warnungen oder für spezifische Ereignisse in jeder Warnung gilt (z. B. nur „Ausgelöst“ oder nur „Behoben“).
 
 Die folgenden Filter sind verfügbar:
 
-* **Schweregrad**: Wählen Sie mindestens einen Schweregrad für Warnungen aus. **Schweregrad = Sev1** bedeutet, dass die Aktionsregel für alle Warnungen mit dem Schweregrad Sev1 gilt.
-* **Überwachungsdienst**: Ein Filter, der auf dem ursprünglichen Überwachungsdienst basiert. Dieser Filter bietet ebenfalls eine Mehrfachauswahl. **Überwachungsdienst = „Application Insights“** bedeutet beispielsweise, dass die Aktionsregel für alle auf „Application Insights“ basierenden Warnungen gilt.
-* **Ressourcentyp**:  Ein Filter, der auf einem bestimmten Ressourcentyp basiert. Dieser Filter bietet ebenfalls eine Mehrfachauswahl. **Ressourcentyp = „Virtual Machines“** bedeutet, dass die Aktionsregel für alle virtuellen Computer gilt.
-* **Warnungsregel-ID**: Eine Option zum Filtern nach bestimmten Warnungsregeln anhand der Resource Manager-ID der Warnungsregel.
-* **Überwachungsbedingung**:  Ein Filter für Warnungsinstanzen mit der Überwachungsbedingung **Ausgelöst** oder **Aufgelöst**.
-* **Beschreibung**: Eine Regex-Entsprechung (regulärer Ausdruck), die eine Zeichenfolgenübereinstimmung mit der Beschreibung definiert, die als Teil der Warnungsregel definiert ist. **Description contains 'prod'** findet beispielsweise alle Warnungen, die die Zeichenfolge „prod“ in ihren Beschreibungen enthalten.
-* **Warnungskontext (Nutzlast)** : Eine Regex-Übereinstimmung, die eine Zeichenfolgenübereinstimmung mit den Warnungskontextfeldern der Nutzlast einer Warnung definiert. **Alert context (payload) contains 'Computer-01'** findet beispielsweise alle Warnungen, deren Nutzlasten die Zeichenfolge „Computer-01“ enthalten.
+* **Severity**  
+Diese Regel gilt nur für Warnungen mit den ausgewählten Schweregraden.  
+Zum Beispiel bedeutet **severity = "Sev1"** , dass die Regel nur für Warnungen mit dem Schweregrad „Sev1“ gilt.
+* **Überwachungsdienst**  
+Diese Regel gilt nur für Warnungen, die von den ausgewählten Überwachungsdiensten stammen.  
+Zum Beispiel bedeutet **monitor service = "Azure Backup"** , dass die Regel nur für Sicherungswarnungen gilt (die von Azure Backup stammen).
+* **Ressourcentyp**  
+Diese Regel gilt nur für Warnungen für die ausgewählten Ressourcentypen.  
+Zum Beispiel bedeutet **resource type = "Virtual Machines"** , dass die Regel nur für Warnungen für virtuelle Computer gilt.
+* **Warnungsregel-ID**  
+Diese Regel gilt nur für Warnungen, die von einer bestimmten Warnungsregel stammen. Der Wert sollte der Ressourcen-Manager-ID der Warnungsregel entsprechen.  
+Zum Beispiel bedeutet **alert rule ID = "/subscriptions/SubId1/resourceGroups/RG1/providers/microsoft.insights/metricalerts/API-Latency"** , dass diese Regel nur für Warnungen gilt, die von der Metrikwarnungsregel „API-Latency“ stammen.  
+_HINWEIS: Sie können die entsprechende Warnungsregel-ID abrufen, indem Sie Ihre Warnungsregeln über die CLI auflisten oder indem Sie eine spezifische Warnungsregel im Portal öffnen. Hierzu klicken Sie auf „Eigenschaften“ und kopieren den Wert „Ressourcen-ID“._
+* **Überwachungsbedingung**  
+Diese Regel gilt nur für Warnungsereignisse mit der festgelegten Überwachungsbedingung – entweder **Ausgelöst** oder **Behoben**.
+* **Beschreibung**  
+Diese Regel gilt nur für Warnungen, die eine bestimmte Zeichenfolge im Beschreibungsfeld enthalten. Dieses Feld enthält die Beschreibung der Warnungsregel.  
+Zum Beispiel bedeutet **description contains 'prod'** , dass die Regel nur Warnungen abgleicht, die die Zeichenfolge „prod“ in ihrer Beschreibung enthalten.
+* **Warnungskontext (Nutzlast)**  
+Diese Regel gilt nur für Warnungen, die mindestens einen der spezifischen Werte in den Warnungskontextfeldern enthalten.  
+Zum Beispiel bedeutet **alert context (payload) contains 'Computer-01'** , dass die Regel nur für Warnungen gilt, deren Nutzlasten die Zeichenfolge „Computer-01“ enthalten.
 
-Diese Filter werden in Verbindung miteinander angewendet. Wenn Sie beispielsweise **Ressourcentyp' = „Virtual Machines** und **Schweregrad' = Sev0** festlegen, wird nach allen **Sev0**-Warnungen ausschließlich auf Ihren VMs gefiltert.
+Wenn Sie mehrere Filter in einer Regel festlegen, gelten sie alle. Wenn Sie beispielsweise **resource type = "Virtual Machines"** und **severity = "Sev0"** festlegen, gilt die Regel nur für Warnungen mit dem Schweregrad „Sev0“ auf virtuellen Computern.
 
 ![Filter für Aktionsregeln](media/alerts-action-rules/action-rules-new-rule-creation-flow-filters.png)
 

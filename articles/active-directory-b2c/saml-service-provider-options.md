@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/04/2021
+ms.date: 03/15/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: adfe5318949ffa624ebe3548944b558bd0dda9e1
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 09cfdd026105a34db976118f38b011e2c4578a24
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102198471"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103470779"
 ---
 # <a name="options-for-registering-a-saml-application-in-azure-ad-b2c"></a>Optionen zum Registrieren einer SAML-Anwendung in Azure AD B2C
 
@@ -278,6 +278,19 @@ Beispiel:
 ## <a name="session-management"></a>Sitzungsverwaltung
 
 Sie können die Sitzung zwischen Azure AD B2C und der SAML-Anwendung der vertrauenden Seite verwalten, indem Sie das Element `UseTechnicalProfileForSessionManagement` und [SamlSSOSessionProvider](custom-policy-reference-sso.md#samlssosessionprovider) verwenden.
+
+## <a name="force-users-to-re-authenticate"></a>Erneutes Authentifizieren von Benutzern erzwingen 
+
+Um die erneute Authentifizierung von Benutzern zu erzwingen, kann die Anwendung das `ForceAuthn`-Attribut in die SAML-Authentifizierungsanforderung einschließen. Das `ForceAuthn`-Attribut ist ein boolescher Wert. Wenn diese Einstellung auf „true“ festgelegt ist, wird die Benutzersitzung bei Azure AD B2C ungültig, und der Benutzer wird gezwungen, sich erneut zu authentifizieren. Die folgende SAML-Authentifizierungsanforderung veranschaulicht, wie das `ForceAuthn`-Attribut auf „true“ festgelegt wird. 
+
+
+```xml
+<samlp:AuthnRequest 
+       Destination="https://contoso.b2clogin.com/contoso.onmicrosoft.com/B2C_1A_SAML2_signup_signin/samlp/sso/login"
+       ForceAuthn="true" ...>
+    ...
+</samlp:AuthnRequest>
+```
 
 ## <a name="debug-the-saml-protocol"></a>Debuggen des SAML-Protokolls
 
