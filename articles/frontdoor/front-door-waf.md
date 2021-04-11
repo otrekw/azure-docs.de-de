@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/01/2020
 ms.author: duau
-ms.openlocfilehash: f894fd5ca7bb98c48b106c13b8fe6130b2c76c6e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: fa5d34d195cfed2d5dbfa6954d83b28487bf0bba
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102201055"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167752"
 ---
 # <a name="tutorial-quickly-scale-and-protect-a-web-application-by-using-azure-front-door-and-azure-web-application-firewall-waf"></a>Tutorial: Schnelles Skalieren und Schützen einer Webanwendung mithilfe von Azure Front Door und Azure Web Application Firewall (WAF)
 
@@ -140,7 +140,7 @@ Wenn Sie eine benutzerdefinierte Domäne verwenden, um Ihre Webanwendung zu erre
 
 ## <a name="lock-down-your-web-application"></a>Sperren der Webanwendung
 
-Es empfiehlt sich, dafür zu sorgen, dass nur Azure Front Door-Edges mit Ihrer Webanwendung kommunizieren können. Dadurch wird sichergestellt, dass niemand den Azure Front Door-Schutz umgehen und direkt auf Ihre Anwendung zugreifen kann. Informationen zur Implementierung dieser Sperre finden Sie unter [Wie kann ich den Zugriff auf mein Back-End nur auf Azure Front Door beschränken?](./front-door-faq.md#how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door).
+Es empfiehlt sich, dafür zu sorgen, dass nur Azure Front Door-Edges mit Ihrer Webanwendung kommunizieren können. Dadurch wird sichergestellt, dass niemand den Azure Front Door-Schutz umgehen und direkt auf Ihre Anwendung zugreifen kann. Informationen zur Implementierung dieser Sperre finden Sie unter [Wie kann ich den Zugriff auf mein Back-End nur auf Azure Front Door beschränken?](./front-door-faq.yml#how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door-).
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

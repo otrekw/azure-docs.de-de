@@ -5,10 +5,10 @@ keywords: Portal
 ms.date: 03/12/2021
 ms.topic: overview
 ms.openlocfilehash: 8f61934e6af150c18d1331c2b28e2686641967d1
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103563993"
 ---
 # <a name="azure-portal-overview"></a>Azure-Portal – Übersicht
@@ -59,7 +59,7 @@ In der nachstehenden Abbildung sind die Grundelemente des Azure-Portals gekennze
 
 ![Screenshot mit erweitertem Portalmenü](./media/azure-portal-overview/azure-portal-overview-portal-menu-callouts.png)
 
-|Schlüssel|Beschreibung
+|Schlüssel|BESCHREIBUNG
 |:---:|---|
 |1|Kopfzeile. Wird oben auf jeder Portalseite angezeigt und enthält globale Elemente.|
 |2| Globale Suche. Über die Suchleiste können Sie schnell eine bestimmte Ressource, einen Dienst oder Dokumentation finden.|

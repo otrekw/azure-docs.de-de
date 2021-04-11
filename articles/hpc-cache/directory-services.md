@@ -4,14 +4,14 @@ description: Konfigurieren der Verzeichnisdienste für den Clientzugriff auf Spe
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 12/22/2020
+ms.date: 03/15/2021
 ms.author: v-erkel
-ms.openlocfilehash: 28265861c98cceaedf7d2662f6526a9f62fe68de
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: fd5dce0760953bf19c72e1a1062a9c03ffe861e7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803764"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103563369"
 ---
 # <a name="configure-directory-services"></a>Konfigurieren von Verzeichnisdiensten
 
@@ -75,13 +75,13 @@ Der Server und der Basis-DN sind die einzigen erforderlichen Einstellungen, dami
 
 Im Abschnitt **Sicherer Zugriff** können Sie die Verschlüsselung und Zertifikatüberprüfung für die LDAP-Verbindung aktivieren. Nachdem Sie auf **Ja** geklickt haben, um die Verschlüsselung zu aktivieren, stehen Ihnen folgende Optionen zur Verfügung:
 
-* **Require valid certificate** (Gültiges Zertifikat erfordern): Wenn diese Option aktiviert ist, wird das Zertifikat des LDAP-Servers mit der Zertifizierungsstelle im URI-Feld darunter überprüft.
+* **Validate certificate** (Zertifikat überprüfen): Wenn diese Option festgelegt wird, wird das Zertifikat des LDAP-Servers anhand der Zertifizierungsstelle im URI-Feld unten überprüft.
 
 * **CA certificate URI** (Zertifikat-URI der Zertifizierungsstelle): Geben Sie den Pfad zum autorisierenden Zertifikat an. Dies kann ein Link zu einem von einer Zertifizierungsstelle überprüften Zertifikat oder zu einem selbstsignierten Zertifikat sein. Dieses Feld ist erforderlich, um die Einstellung für extern überprüfte Zertifikate verwenden zu können.
 
 * **Auto-download certificate** (Zertifikat automatisch herunterladen): Wählen Sie **Ja** aus, wenn Sie versuchen möchten, direkt nach der Übermittlung dieser Einstellungen ein Zertifikat herunterzuladen.
 
-Füllen Sie den Abschnitt **Anmeldeinformationen** aus, wenn Sie statische Anmeldeinformationen für die LDAP-Sicherheit verwenden möchten.
+Füllen Sie den Abschnitt **Anmeldeinformationen** aus, wenn Sie statische Anmeldeinformationen für die LDAP-Sicherheit verwenden möchten. Diese Informationen werden bei der Speicherung verschlüsselt und können nicht abgefragt werden.
 
 * **Bindungs-DN:** Geben Sie den für die Authentifizierung beim LDAP-Server zu verwendenden Distinguished Name der Bindung ein. (Verwenden Sie das DN-Format.)
 * **Bindungskennwort:** Geben Sie das Kennwort zum Bindungs-DN an.

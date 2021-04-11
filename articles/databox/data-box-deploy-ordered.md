@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: 281b22db692087f2876b4011563fee8c56bd476e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: aa3614aa3c4fbaec3611806406e5129379999bc3
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102522392"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106067140"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Tutorial: Bestellen von Azure Data Box
 
@@ -790,7 +790,7 @@ Führen Sie zum Stornieren einer Azure Data Box-Bestellung den Befehl [`az datab
    |resource-group [erforderlich]| Der Name der Ressourcengruppe, die der zu löschenden Bestellung zugeordnet ist. Eine Ressourcengruppe ist ein logischer Container für die Ressourcen, die zusammen verwaltet oder bereitgestellt werden können. | „myresourcegroup“|
    |name [erforderlich]| Der Name der zu löschenden Bestellung. | „mydataboxorder“|
    |reason [erforderlich]| Der Grund für die Stornierung der Bestellung. | „Ich habe falsche Informationen eingegeben und musste die Bestellung daher stornieren.“ |
-   |ja| Nicht zur Bestätigung auffordern | --yes (-y)| --yes -y |
+   |ja| Nicht zur Bestätigung auffordern | --yes (-y)| 
    |debug| Einfügen von Debuginformationen in die ausführliche Protokollierung | --debug |
    |help| Zeigt Hilfeinformationen für diesen Befehl an. | --help -h |
    |only-show-errors| Nur Fehler anzeigen und Warnungen unterdrücken. | --only-show-errors |
@@ -827,7 +827,7 @@ Wenn Sie eine Azure Data Box-Bestellung storniert haben, können Sie [`az databo
    |resource-group [erforderlich]| Der Name der Ressourcengruppe, die der zu löschenden Bestellung zugeordnet ist. Eine Ressourcengruppe ist ein logischer Container für die Ressourcen, die zusammen verwaltet oder bereitgestellt werden können. | „myresourcegroup“|
    |name [erforderlich]| Der Name der zu löschenden Bestellung. | „mydataboxorder“|
    |Abonnement| Der Name oder die ID (GUID) Ihres Azure-Abonnements. | „xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx“ |
-   |ja| Nicht zur Bestätigung auffordern | --yes (-y)| --yes -y |
+   |ja| Nicht zur Bestätigung auffordern | --yes (-y)|
    |debug| Einfügen von Debuginformationen in die ausführliche Protokollierung | --debug |
    |help| Zeigt Hilfeinformationen für diesen Befehl an. | --help -h |
    |only-show-errors| Nur Fehler anzeigen und Warnungen unterdrücken. | --only-show-errors |

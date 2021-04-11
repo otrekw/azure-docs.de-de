@@ -7,16 +7,16 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/30/2020
-ms.openlocfilehash: ceb30cee194994e5b31db312f191194932c937b4
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 476355f41de5e0e6aaffdedea8947cab5221767a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96550436"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103200727"
 ---
 # <a name="data-lineage-in-azure-purview-data-catalog-client"></a>Datenherkunft in Azure Purview Data Catalog-Client
 
-Dieser Artikel bietet eine Übersicht über die Datenherkunft im Azure Purview Data Catalog. Außerdem wird erläutert, wie Datensysteme in den Katalog integriert werden können, um Datenherkunft zu erfassen. Purview kann die Herkunft für Daten in unterschiedlichen Teilen der Datenumgebung ihrer Organisation und auf unterschiedlichen Vorbereitungsstufen erfassen, einschließlich:
+Dieser Artikel bietet eine Übersicht über die Datenherkunft im Azure Purview Data Catalog. Außerdem wird erläutert, wie Datensysteme in den Katalog integriert werden können, um Datenherkunft zu erfassen. Purview kann die Herkunft für Daten in verschiedenen Teilen des Datenbestands Ihrer Organisation und auf unterschiedlichen Vorbereitungsstufen erfassen, einschließlich:
 
 - Von verschiedenen Plattformen bereitgestellte Rohdaten
 - Transformierte und vorbereitete Daten

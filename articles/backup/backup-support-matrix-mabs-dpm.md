@@ -3,12 +3,12 @@ title: MABS & System Center DPM-Unterstützungsmatrix
 description: Dieser Artikel enthält eine Zusammenfassung der Unterstützung für Azure Backup bei Verwendung von Microsoft Azure Backup Server (MABS) oder System Center DPM zum Sichern von lokalen Ressourcen und Ressourcen auf virtuellen Azure-Computern.
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: aaa68dba0bbd1f3f5ffb5480a2bdb0a48ae85656
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: e888b43ea5641f1943a096f045747d547c52fcfa
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98986055"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102609752"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Unterstützungsmatrix für die Sicherung mit Microsoft Azure Backup Server oder System Center DPM
 
@@ -60,9 +60,9 @@ DPM und MABS können wie in der folgenden Tabelle zusammengefasst bereitgestellt
 
 **Bereitstellung** | **Unterstützung** | **Details**
 --- | --- | ---
-**Lokale Bereitstellung** | Physischer Server<br/><br/>Virtueller Hyper-V-Computer<br/><br/> Virtueller VMware-Computer | Weitere Informationen finden Sie in der [Schutzmatrix](backup-mabs-protection-matrix.md). 
+**Lokale Bereitstellung** | Physischer Server, der sich nicht in einem physischen Cluster befindet<br/><br/>Hyper-V-VM: Sie können MABS als Gastcomputer auf einem eigenständigen Hypervisor oder Cluster bereitstellen. Dieser kann nicht auf einem Knoten eines Clusters oder eigenständigen Hypervisors bereitgestellt werden. Azure Backup Server ist für die Ausführung auf einem dedizierten Server konzipiert, der nur zu einem Zweck verwendet wird.<br/><br/> Als Windows-VM in einer VMware-Umgebung | Lokale MABS-Server können keine auf Azure basierenden Workloads schützen. <br><br> Weitere Informationen finden Sie unter [Schutzmatrix](backup-mabs-protection-matrix.md).
 **Bereitstellung als virtueller Azure Stack-Computer** | Nur MABS | DPM kann nicht zum Sichern virtueller Azure Stack-Computer verwendet werden.
-**Bereitstellung als virtueller Azure-Computer** | Schutz von virtuellen Azure-Computern und Workloads, die auf diesen VMs ausgeführt werden | Bei Ausführung von MABS/DPM in Azure können lokale Computer nicht gesichert werden.
+**Bereitstellung als virtueller Azure-Computer** | Schutz von virtuellen Azure-Computern und Workloads, die auf diesen VMs ausgeführt werden | Bei Ausführung von MABS/DPM in Azure können lokale Computer nicht gesichert werden. Nur Workloads können geschützt werden, die auf Azure-IaaS-VMs ausgeführt werden.
 
 ## <a name="supported-mabs-and-dpm-operating-systems"></a>Unterstützte MABS- und DPM-Betriebssysteme
 
@@ -87,6 +87,9 @@ Mit Azure Backup können MABS- und DPM-Instanzen bei Ausführung unter den folge
 **Storage** | Modern Backup Storage (MBS) wird ab DPM 2016 und MABS v2 und höher unterstützt. In MABS v1 ist die Funktion dagegen nicht verfügbar.
 **Upgrade von MABS** | Sie können MABS v3 direkt installieren oder ein Upgrade von MABS v2 auf MABS v3 durchführen. [Weitere Informationen](backup-azure-microsoft-azure-backup.md#upgrade-mabs)
 **Verschieben von MABS** | Bei Verwendung von MBS kann MABS unter Beibehaltung des Speichers auf einen neuen Server verschoben werden.<br/><br/> Der neue und der ursprüngliche Server müssen den gleichen Namen haben. Sie können den Namen nicht ändern, wenn der Speicherpool beibehalten werden soll und Sie dieselbe MABS-Datenbank zum Speichern von Datenwiederherstellungspunkten verwenden möchten.<br/><br/> Sie benötigen eine Sicherungskopie der MABS-Datenbank, da Sie sie wiederherstellen müssen.
+
+>[!NOTE]
+>Das Umbenennen des DPM-/MAPS-Servers wird nicht unterstützt.
 
 ## <a name="mabs-support-on-azure-stack"></a>Unterstützung von MABS in Azure Stack
 
@@ -168,11 +171,19 @@ Keine Verbindung für mehr als 15 Tage | Abgelaufen oder Bereitstellung aufgehob
 |Anforderung |Details |
 |---------|---------|
 |Domain    | Der DPM/MABS-Server muss sich in einer Windows Server 2019-, Windows Server 2016-, Windows Server 2012 R2- oder Windows Server 2012-Domäne befinden.        |
-|Domänenvertrauensstellung   |  DPM/MABS unterstützt Datenschutz über Gesamtstrukturen hinweg, sofern Sie auf Gesamtstrukturebene eine bidirektionale Vertrauensstellung zwischen den einzelnen Gesamtstrukturen einrichten.   <BR><BR>   Server und Arbeitsstationen können in einer Gesamtstruktur, die eine bidirektionale Vertrauensstellung mit der DPM/MABS-Serverdomäne hat, von DPM/MABS domänenübergreifend geschützt werden. Informationen zum Schützen von Computern in Arbeitsgruppen oder nicht vertrauenswürdigen Domänen finden Sie unter [Sichern und Wiederherstellen von Workloads in Arbeitsgruppen und nicht vertrauenswürdigen Domänen](/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains).  |
+|Domänenvertrauensstellung   |  DPM/MABS unterstützt Datenschutz über Gesamtstrukturen hinweg, sofern Sie auf Gesamtstrukturebene eine bidirektionale Vertrauensstellung zwischen den einzelnen Gesamtstrukturen einrichten.   <BR><BR>   Server und Arbeitsstationen können in einer Gesamtstruktur, die eine bidirektionale Vertrauensstellung mit der DPM/MABS-Serverdomäne hat, von DPM/MABS domänenübergreifend geschützt werden. Informationen zum Schützen von Computern in Arbeitsgruppen oder nicht vertrauenswürdigen Domänen finden Sie unter [Sichern und Wiederherstellen von Workloads in Arbeitsgruppen und nicht vertrauenswürdigen Domänen](/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains). <br><br> Zum Sichern von Hyper-V-Serverclustern müssen diese sich in derselben Domäne wie der MABS-Server oder einer vertrauenswürdigen/untergeordneten Domäne befinden. Sie können Server und Cluster in einer nicht vertrauenswürdigen Domäne oder Arbeitslast mithilfe von NTLM oder Zertifikat-Authentifizierung für einen einzelnen Server sichern oder nur die Zertifikat-Authentifizierung für einen Cluster einrichten.  |
 
 ## <a name="dpmmabs-storage-support"></a>DPM- oder MABS-Speicherunterstützung
 
 Die in DPM oder MABS gesicherten Daten werden im lokalen Datenträgerspeicher gespeichert.
+
+USB-Laufwerke oder Wechseldatenträger werden nicht unterstützt.
+
+Die NTFS-Komprimierung wird auf Volumes mit DPM/MABS nicht unterstützt.
+
+BitLocker kann nur aktiviert werden, nachdem Sie den Datenträger zum Speicherpool hinzugefügt haben. Aktivieren Sie BitLocker nicht, bevor Sie den Datenträger hinzugefügt haben.
+
+Network Attached Storage wird nicht für die Verwendung im DPM-Speicherpool unterstützt.
 
 **Storage** | **Details**
 --- | ---
@@ -199,6 +210,38 @@ Informationen zu den verschiedenen Servern und Workloads, die Sie mit Data Prote
 
 - Clusterworkloads, die mit DPM oder MABS gesichert werden, müssen sich in derselben Domäne wie DPM bzw. MABS oder in einer untergeordneten oder vertrauenswürdigen Domäne befinden.
 - Sie können die NTLM- oder Zertifikatauthentifizierung verwenden, um Daten in nicht vertrauenswürdigen Domänen oder Arbeitsgruppen zu sichern.
+
+## <a name="deduplicated-volumes-support"></a>Unterstützung deduplizierter Volumes
+
+>[!NOTE]
+> Die Unterstützung der Deduplizierung für MABS hängt von der Betriebssystemunterstützung ab.
+
+### <a name="for-ntfs-volumes"></a>NTFS-Volumes
+
+| Betriebssystem des geschützten Servers  | Betriebssystem des MABS-Servers  | MABS-Version  | Dedup-Unterstützung |
+| ------------------------------------------ | ------------------------------------- | ------------------ | -------------------- |
+| Windows Server 2019                       | Windows Server 2019                  | MABS v3            | J                    |
+| Windows Server 2016                       | Windows Server 2019                  | MABS v3            | J*                   |
+| Windows Server 2012 R2                    | Windows Server 2019                  | MABS v3            | N                    |
+| Windows Server 2012                       | Windows Server 2019                  | MABS v3            | N                    |
+| Windows Server 2019                       | Windows Server 2016                  | MABS v3            | J**                  |
+| Windows Server 2016                       | Windows Server 2016                  | MABS v3            | J                    |
+| Windows Server 2012 R2                    | Windows Server 2016                  | MABS v3            | J                    |
+| Windows Server 2012                       | Windows Server 2016                  | MABS v3            | J                    |
+
+- \* Beim Schutz eines deduplizierten WS 2016 NTFS-Volumes mit MABS v3 auf WS 2019 können die Wiederherstellungen betroffen sein. Es gibt einen Fix zum Durchführen von Wiederherstellungen auf eine Weise ohne Deduplizierung. Wenden Sie sich an den MABS-Support, wenn Sie diesen Fix für MABS v3 UR1 benötigen.
+- \** Beim Schutz eines deduplizierten WS 2019 NTFS-Volumes mit MABS v3 auf WS 2016 werden die Sicherungen und Wiederherstellungen nicht dedupliziert. Das bedeutet, dass die Sicherungen mehr Platz auf dem MABS-Server verbrauchen als das ursprüngliche deduplizierte NTFS-Volume.
+
+**Problem:** Wenn Sie ein Upgrade von Windows Server 2016 auf Windows Server 2019 für das Betriebssystem des geschützten Servers durchführen, ist die Sicherung des deduplizierten NTFS-Volumes aufgrund der Änderungen an der Deduplizierungslogik betroffen.
+
+**Problemumgehung:** Wenden Sie sich an den MABS-Support, wenn Sie diesen Fix für MABS v3 UR1 benötigen.
+
+### <a name="for-refs-volumes"></a>ReFS-Volumes
+
+>[!NOTE]
+> Es wurden einige Probleme mit Sicherungen von deduplizierten ReFS-Volumes festgestellt. Wir arbeiten daran, diese Probleme zu beheben und aktualisieren diesen Abschnitt, sobald eine Korrektur verfügbar ist. Bis dahin wird die Sicherung deduplizierter ReFS-Volumes mit MABS v3 nicht unterstützt.
+>
+> Ab MABS v3 UR1 wird der Schutz und die Wiederherstellung von normalen ReFS-Volumes weiterhin unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

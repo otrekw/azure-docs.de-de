@@ -7,12 +7,12 @@ services: firewall
 ms.topic: conceptual
 ms.date: 03/09/2021
 ms.author: victorh
-ms.openlocfilehash: 621bf6138e4336c63ca137a6a8c54f77a4a99d61
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 47ebc752dedd72bbdedc02908911f1686584acda
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102520284"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102615498"
 ---
 # <a name="azure-firewall-premium-preview-certificates"></a>Zertifikate der Vorschauversion von Azure Firewall Premium 
 
@@ -111,7 +111,8 @@ Die Skripts generieren die folgenden Dateien:
 
 > [!IMPORTANT]
 > rootCA.key – Sollte an einem sicheren Offlinespeicherort gespeichert werden. Die Skripts generieren ein Zertifikat mit einer Gültigkeit von 1.024 Tagen.
-
+> Für die Skripts müssen OpenSSL-Binärdateien auf dem lokalen Computer installiert werden. Weitere Informationen finden Sie unter https://www.openssl.org/.
+> 
 Nachdem die Zertifikate erstellt wurden, stellen Sie sie an den folgenden Speicherorten bereit:
 - rootCA.crt – Stellen Sie auf Endpunktcomputern bereit (nur öffentliches Zertifikat).
 - interCA.pfx – Importieren Sie als Zertifikat auf einer Key Vault und weisen Sie der Firewallrichtlinie zu.

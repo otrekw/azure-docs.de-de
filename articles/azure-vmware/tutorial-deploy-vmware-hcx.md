@@ -3,12 +3,12 @@ title: 'Tutorial: Bereitstellen und Konfigurieren von VMware HCX'
 description: Erfahren Sie, wie Sie eine VMware HCX-Lösung für Ihre private Azure VMware Solution-Cloud bereitstellen und konfigurieren.
 ms.topic: tutorial
 ms.date: 03/13/2021
-ms.openlocfilehash: d1b0792ab9b9975edf45ab8addb81410e1da4107
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.openlocfilehash: ab59b4a29f8ba372c1892613d5e0461bf3fdc512
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/14/2021
-ms.locfileid: "103462291"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104869088"
 ---
 # <a name="deploy-and-configure-vmware-hcx"></a>Bereitstellen und Konfigurieren von VMware HCX
 
@@ -265,7 +265,7 @@ Eine umfassende Übersicht über diese Vorgehensweise vermittelt das Video [Azur
 1. Wählen Sie unter **Select Distributed Switches for Network Extensions** (Verteilte Switches für Network Extensions auswählen) die Switches aus, die die virtuellen Computer, die zu Azure VMware Solution migriert werden sollen, in einem erweiterten Schicht-2-Netzwerk enthalten. Klicken Sie anschließend auf **Weiter**.
 
    > [!NOTE]
-   > Falls Sie keine virtuellen Computer in erweiterten Schicht-2-Netzwerken migrieren, können Sie diesen Schritt überspringen.
+   > Falls Sie keine virtuellen Computer in erweiterten Schicht-2-Netzwerken (L2) migrieren, können Sie diesen Schritt überspringen.
    
    :::image type=" content" source="media/tutorial-vmware-hcx/select-layer-2-distributed-virtual-switch.png" alt-text="Screenshot: Auswahl eines verteilten virtuellen Switches und die Schaltfläche „Continue“ (Weiter)." lightbox="media/tutorial-vmware-hcx/select-layer-2-distributed-virtual-switch.png":::
 
@@ -376,3 +376,4 @@ Weitere Informationen zur Verwendung von HCx finden Sie in der technischen VMwar
 * [VMware HCX-Dokumentation](https://docs.vmware.com/en/VMware-HCX/index.html)
 * [Migrieren virtueller Computer mit VMware HCX](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-D0CD0CC6-3802-42C9-9718-6DA5FEC246C6.html?hWord=N4IghgNiBcIBIGEAaACAtgSwOYCcwBcMB7AOxAF8g)
 * [Für HCX erforderliche Ports](https://ports.vmware.com/home/VMware-HCX)
+* [Einrichten eines HCX-Proxyservers vor der Genehmigung des Lizenzschlüssels](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-920242B3-71A3-4B24-9ACF-B20345244AB2.html?hWord=N4IghgNiBcIA4CcD2APAngAgBIGEAaIAvkA)

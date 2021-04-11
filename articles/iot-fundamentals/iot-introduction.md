@@ -10,12 +10,12 @@ ms.author: dobett
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: d2afd88500801f1e2b1e4da5a1e267bddfa69fc7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f1053062302c9a00cf49cee1cd8de5ca6652b745
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96453015"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167701"
 ---
 # <a name="what-is-azure-internet-of-things-iot"></a>Was ist Azure IoT (Internet der Dinge)?
 
@@ -23,14 +23,14 @@ Azure IoT (Internet der Dinge) ist eine Sammlung von Clouddiensten, die von Micr
 
 ## <a name="iot-devices"></a>IoT-Geräte
 
-Ein IoT-Gerät besteht in der Regel aus einer Leiterplatte mit Sensoren, das per WLAN mit dem Internet verbunden ist. Zum Beispiel:
+Ein IoT-Gerät besteht in der Regel aus einer Leiterplatte mit Sensoren, das per WLAN mit dem Internet verbunden ist. Beispiel:
 
 * Ein Drucksensor einer Ölpumpe an einem entfernten Ort
 * Temperatur- und Luftfeuchtigkeitssensoren in einer Klimaanlage
 * Ein Beschleunigungsmesser in einem Fahrstuhl
 * Präsenzmelder in einem Raum
 
-Bei der Erstellung Ihrer Lösung können Sie aus einer Vielzahl von Geräten von verschiedenen Herstellern wählen. Eine Liste mit Geräten, die für die Verwendung mit Azure IoT Hub zertifiziert sind, finden Sie im [Azure Certified for IoT-Gerätekatalog](https://catalog.azureiotsolutions.com/alldevices). Für die Prototyperstellung können Sie Geräte wie [MXChip IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/) oder [Raspberry Pi](https://www.raspberrypi.org/) verwenden. Das DevKit-Gerät verfügt über integrierte Sensoren für Temperatur, Druck und Luftfeuchtigkeit sowie über ein Gyroskop, einen Beschleunigungsmesser und ein Magnetometer. An einen Raspberry Pi können verschiedenste Sensoren angeschlossen werden. 
+Bei der Erstellung Ihrer Lösung können Sie aus einer Vielzahl von Geräten von verschiedenen Herstellern wählen. Eine Liste mit Geräten, die für die Verwendung mit Azure IoT Hub zertifiziert sind, finden Sie im [Azure Certified for IoT-Gerätekatalog](https://devicecatalog.azure.com). Für die Prototyperstellung können Sie Geräte wie [MXChip IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/) oder [Raspberry Pi](https://www.raspberrypi.org/) verwenden. Das DevKit-Gerät verfügt über integrierte Sensoren für Temperatur, Druck und Luftfeuchtigkeit sowie über ein Gyroskop, einen Beschleunigungsmesser und ein Magnetometer. An einen Raspberry Pi können verschiedenste Sensoren angeschlossen werden. 
 
 Microsoft stellt Open-Source-basierte [Geräte-SDKs](../iot-hub/iot-hub-devguide-sdks.md) bereit, mit denen Sie die Apps erstellen können, die auf Ihren Geräten ausgeführt werden. Diese [SDKs vereinfachen und beschleunigen](https://azure.microsoft.com/blog/benefits-of-using-the-azure-iot-sdks-in-your-azure-iot-solution/) die Entwicklung Ihrer IoT-Lösungen.
 

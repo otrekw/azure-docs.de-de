@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 09/02/2020
 ms.author: kirpas
 ms.subservice: disks
-ms.openlocfilehash: 2f991dd93549cf73005127569af496df541eecde
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: af57bc396349286c3edcaefc8385ddbaec066226
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102549599"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103199465"
 ---
 # <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>Erweitern des Betriebssystemlaufwerks eines virtuellen Computers
 
@@ -49,21 +49,21 @@ Beim Erstellen eines neuen virtuellen Computers in einer Ressourcengruppe durch 
 
     :::image type="content" source="./media/expand-os-disk/disk-name.png" alt-text="Screenshot des Bereichs „Datenträger“, in dem der Name eines Datenträgers ausgewählt ist":::
 
-4. Wählen Sie im linken Menü unter **Einstellungen** die Option **Konfiguration** aus.
+4. Klicken Sie im Menü auf der linken Seite unter **Einstellungen** auf **Größe und Leistung**.
 
-    :::image type="content" source="./media/expand-os-disk/configuration.png" alt-text="Screenshot: Im Abschnitt „Einstellungen“ des Menüs ist die Option „Konfiguration“ ausgewählt.":::
+    :::image type="content" source="./media/expand-os-disk/configuration.png" alt-text="Screenshot: Ausgewählte Option „Größe und Leistung“ im Abschnitt „Einstellungen“ des Menüs":::
 
-5. Wählen Sie in **Größe (GiB)** die gewünschte Datenträgergröße aus.
+5. Wählen Sie unter **Größe und Leistung** die gewünschte Datenträgergröße aus.
    
    > [!WARNING]
    > Die neue Größe sollte die Größe des vorhandenen Datenträgers überschreiten. Der zulässige Höchstwert für Betriebssystemdatenträger beträgt 2.048 GB. (Sie können auch einen größeren VHD-Blob einsetzen, doch das Betriebssystem arbeitet nur mit den ersten 2.048 GB.)
    > 
 
-    :::image type="content" source="./media/expand-os-disk/size.png" alt-text="Screenshot des Bereichs „Konfiguration“ mit der ausgewählten Datenträgergröße":::
+    :::image type="content" source="./media/expand-os-disk/size.png" alt-text="Screenshot: Bereich „Größe und Leistung“ mit ausgewählter Datenträgergröße":::
 
-6. Wählen Sie **Speichern** aus.
+6. Klicken Sie unten auf der Seite auf **Größe ändern**.
 
-    :::image type="content" source="./media/expand-os-disk/save.png" alt-text="Screenshot des Bereichs „Konfiguration“ mit ausgewählter Schaltfläche „Speichern“":::
+    :::image type="content" source="./media/expand-os-disk/save.png" alt-text="Screenshot: Bereich „Größe und Leistung“ mit ausgewählter Schaltfläche „Größe ändern“":::
 
 
 ## <a name="resize-a-managed-disk-by-using-powershell"></a>Ändern der Größe eines verwalteten Datenträgers mithilfe von PowerShell

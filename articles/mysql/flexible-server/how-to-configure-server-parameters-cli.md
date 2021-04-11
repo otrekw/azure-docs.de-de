@@ -1,19 +1,19 @@
 ---
 title: 'Konfigurieren von Serverparametern – Azure CLI – Azure Database for MySQL: Flexible Server'
 description: 'In diesem Artikel wird beschrieben, wie Sie mit der Azure CLI die Dienstparameter in Azure Database for MySQL: Flexible Server konfigurieren.'
-author: ambhatna
-ms.author: ambhatna
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 11/10/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 58e7c024d6494aee745884997e42b527c51ab237
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 21f9b3dcb94be105c8b7279e6ac447540da65447
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94489538"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105110099"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mysql-flexible-server-using-the-azure-cli"></a>Konfigurieren von Serverparametern für Azure Database for MySQL: Flexible Server mit der Azure CLI
 

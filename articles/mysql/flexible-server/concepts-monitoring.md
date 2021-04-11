@@ -1,17 +1,17 @@
 ---
 title: Überwachung – Azure Database for MySQL – Flexible Server
 description: In diesem Artikel werden die Überwachungs- und Warnmetriken (CPU, Speicher, Verbindungsstatistiken und Ähnliches) für Azure Database for MySQL Flexible Server beschrieben.
-author: ambhatna
-ms.author: ambhatna
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
-ms.openlocfilehash: c2883a2ddba9a322c09a318aa9f232de5f4704b4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 660e87e0c09d1bf052b20f60276a30e572ab825b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "100595161"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105110473"
 ---
 # <a name="monitor-azure-database-for-mysql-flexible-servers-with-built-in-metrics"></a>Überwachen von Azure Database for MySQL Flexible Server mit integrierten Metriken
 

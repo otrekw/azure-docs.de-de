@@ -10,14 +10,16 @@ ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: kgremban
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 9d6bb9da67f66f46e5c72d5d64b8b6c111c98e08
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 330eaf5c12372347917e9f3a4aeafb6a2088c592
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102215356"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103492573"
 ---
 # <a name="what-is-azure-iot-edge-for-linux-on-windows-preview"></a>Was ist Azure IoT Edge für Linux unter Windows (Vorschau)?
+
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
 
 Azure IoT Edge für Linux unter Windows ermöglicht Ihnen das Ausführen von Linux-Workloads in Containern zusammen mit Windows-Anwendungen in Windows-IoT-Bereitstellungen. Unternehmen, die für die Unterstützung ihrer Edgegeräte Windows-IoT nutzen, können jetzt von den cloudnativen Analyselösungen profitieren, die in Linux erstellt werden.
 
@@ -52,13 +54,11 @@ Beispiele für die Kommunikation zwischen Windows-Anwendungen und IoT Edge-Modul
 
 IoT Edge für Linux unter Windows befindet sich derzeit in der [öffentlichen Vorschau](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Die Installations- und Verwaltungsprozesse können sich von denen bei allgemeiner Verfügbarkeit unterscheiden.
 
-Derzeit verwendet IoT Edge für Linux unter Windows die Windows-Insider-Vorschauversion von Windows Admin Center. Weitere Informationen zum Windows-Insider-Programm und zur Registrierung finden Sie unter [Was ist das Windows-Insider-Programm?](https://insider.windows.com/about-windows-insider-program).
-
 ## <a name="support"></a>Support
 
 Nutzen Sie die Kanäle des IoT Edge-Supports und für Feedback, um Unterstützung bei IoT Edge für Linux unter Windows zu erhalten.
 
-**Melden von Fehlern:** Fehler können auf der Seite [Probleme](https://github.com/azure/iotedge/issues) des Open-Source-Projekts für IoT Edge gemeldet werden. 
+**Melden von Fehlern:** Fehler können auf der Seite [Probleme](https://github.com/azure/iotedge/issues) des Open-Source-Projekts für IoT Edge gemeldet werden. Fehler im Zusammenhang mit Azure IoT Edge für Linux unter Windows können auf der Seite [iotedge-eflow-Probleme](https://github.com/azure/iotedge-eflow/issues) gemeldet werden.
 
 **Microsoft-Kundendienstteam:** Benutzer mit einem [Supportplan](https://azure.microsoft.com/support/plans/) können direkt über das [Azure-Portal](https://ms.portal.azure.com/signin/index/?feature.settingsportalinstance=mpac) ein Supportticket erstellen, um sich an das Microsoft-Kundendienstteam zu wenden.
 

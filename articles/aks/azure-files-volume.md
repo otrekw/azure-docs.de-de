@@ -5,12 +5,12 @@ description: Erfahren Sie, wie Sie manuell ein Volume mit Azure Files für die V
 services: container-service
 ms.topic: article
 ms.date: 03/01/2019
-ms.openlocfilehash: a6e28464df2ff9c9dcc7734a127cc00f887e08dd
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: 4e009c5de2e24c1b0bd94fb4c11b0c52a3bc378d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98246960"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102609072"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-files-share-in-azure-kubernetes-service-aks"></a>Manuelles Erstellen und Verwenden eines Volumes mit Azure Files-Freigabe in Azure Kubernetes Service (AKS)
 
@@ -67,7 +67,8 @@ Verwenden Sie den Befehl `kubectl create secret`, um das Geheimnis zu erstellen.
 kubectl create secret generic azure-secret --from-literal=azurestorageaccountname=$AKS_PERS_STORAGE_ACCOUNT_NAME --from-literal=azurestorageaccountkey=$STORAGE_KEY
 ```
 
-## <a name="mount-the-file-share-as-a-volume"></a>Einbinden der Dateifreigabe als Volume
+## <a name="mount-file-share-as-an-inline-volume"></a>Einbinden von Dateifreigaben als Inlinevolume
+> Hinweis: Ab 1.18.15, 1.19.7, 1.20.2, 1.21.0 kann der Geheimnisnamespace in `azureFile`-Inlinevolumes nur als `default`-Namespace festgelegt werden. Verwenden Sie das folgende Beispiel für ein persistentes Volume, um einen anderen Geheimnisnamespace anzugeben.
 
 Um die Azure Files-Freigabe in den Pod einzubinden, konfigurieren Sie das Volume in der Containerspezifikation. Erstellen Sie eine neue Datei namens „`azure-files-pod.yaml`“ mit folgendem Inhalt. Wenn Sie den Namen oder den geheimen Namen der Files-Freigabe geändert haben, aktualisieren Sie *shareName* und *secretName*. Aktualisieren Sie bei Bedarf den Wert `mountPath`. Dies ist der Pfad, unter dem die Files-Freigabe im Pod eingebunden wird. Geben Sie für Windows Server-Container einen *mountPath* gemäß Windows-Pfadkonvention an (z. B. *D:* ).
 
@@ -131,9 +132,10 @@ Volumes:
 [...]
 ```
 
-## <a name="mount-options"></a>Einbindungsoptionen
+## <a name="mount-file-share-as-an-persistent-volume"></a>Einbinden einer Dateifreigabe als persistentes Volume
+ - Einbindungsoptionen
 
-Der Standardwert für *fileMode* und *dirMode* lautet bei Kubernetes-Version 1.9.1 und höher *0755*. Wenn Sie einen Cluster mit Kubernetes-Version 1.8.5 oder höher verwenden und das Objekt für das persistente Volume statisch erstellen, müssen die Einbindungsoptionen im *PersistentVolume*-Objekt angegeben werden. Im folgenden Beispiel wird *0777* festgelegt:
+Der Standardwert für *fileMode* und *dirMode* lautet *0777* in Kubernetes-Version 1.15 und höher. Im folgenden Beispiel wird *0755* für das Objekt *PersistentVolume* festgelegt:
 
 ```yaml
 apiVersion: v1
@@ -147,18 +149,17 @@ spec:
     - ReadWriteMany
   azureFile:
     secretName: azure-secret
+    secretNamespace: default
     shareName: aksshare
     readOnly: false
   mountOptions:
-  - dir_mode=0777
-  - file_mode=0777
+  - dir_mode=0755
+  - file_mode=0755
   - uid=1000
   - gid=1000
   - mfsymlinks
   - nobrl
 ```
-
-Bei Verwendung eines Clusters der Version 1.8.0 bis 1.8.4 kann ein Sicherheitskontext angegeben werden, indem der Wert *runAsUser* auf *0* festgelegt wird. Weitere Informationen zum Sicherheitskontext für Pods finden Sie unter [Konfigurieren eines Sicherheitskontexts][kubernetes-security-context].
 
 Zum Aktualisieren Ihrer Einbindungsoptionen erstellen Sie eine Datei *azurefile-mount-options-pv.yaml* mit einem *PersistentVolume*-Objekt. Beispiel:
 
