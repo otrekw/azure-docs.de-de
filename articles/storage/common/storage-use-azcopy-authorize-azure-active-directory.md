@@ -4,15 +4,15 @@ description: Sie können Autorisierungsanmeldeinformationen für AzCopy-Vorgäng
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/17/2020
+ms.date: 04/01/2021
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 99e06a36c2afa66f2874c14990d50c6287623efd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dd3aeaf133c02ef54eceaff776ead34cc2318260
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97672490"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220476"
 ---
 # <a name="authorize-access-to-blobs-with-azcopy-and-azure-active-directory-azure-ad"></a>Autorisieren des Zugriffs auf Blobs mit AzCopy und Azure Active Directory (Azure AD)
 
@@ -261,9 +261,10 @@ Geben Sie den folgenden Befehl ein, und drücken Sie die EINGABETASTE.
 export AZCOPY_AUTO_LOGIN_TYPE=SPN
 export AZCOPY_SPA_APPLICATION_ID=<application-id>
 export AZCOPY_SPA_CLIENT_SECRET=<client-secret>
+export AZCOPY_TENANT_ID=<tenant-id>
 ```
 
-Ersetzen Sie den Platzhalter `<application-id>` mit der Anwendungs-ID der App-Registrierung Ihres Dienstprinzipals. Ersetzen Sie den Platzhalter `<client-secret>` durch den geheimen Clientschlüssel.
+Ersetzen Sie den Platzhalter `<application-id>` mit der Anwendungs-ID der App-Registrierung Ihres Dienstprinzipals. Ersetzen Sie den Platzhalter `<client-secret>` durch den geheimen Clientschlüssel. Ersetzen Sie den Platzhalter `<tenant-id>` mit der Mandanten-ID der Organisation, zu der das Speicherkonto gehört. Wählen Sie **Azure Active Directory > Eigenschaften > Verzeichnis-ID** im Azure-Portal aus, um die Mandanten-ID zu finden. 
 
 > [!NOTE]
 > Verwenden Sie ggf. eine Eingabeaufforderung, um das Kennwort vom Benutzer zu erfassen. Auf diese Weise wird Ihr Kennwort in Ihrem Befehlsverlauf nicht angezeigt. 
@@ -282,9 +283,10 @@ Geben Sie den folgenden Befehl ein, und drücken Sie die EINGABETASTE.
 export AZCOPY_AUTO_LOGIN_TYPE=SPN
 export AZCOPY_SPA_CERT_PATH=<path-to-certificate-file>
 export AZCOPY_SPA_CERT_PASSWORD=<certificate-password>
+export AZCOPY_TENANT_ID=<tenant-id>
 ```
 
-Ersetzen Sie den Platzhalter `<path-to-certificate-file>` mit einem relativen oder vollqualifizierten Pfad zur Zertifikatdatei. AzCopy speichert den Pfad zu diesem Zertifikat, speichert jedoch keine Kopie des Zertifikats. Achten Sie darauf, dass das Zertifikat dort bleibt, wo es ist. Ersetzen Sie den Platzhalter `<certificate-password>` durch das Kennwort des Zertifikats.
+Ersetzen Sie den Platzhalter `<path-to-certificate-file>` mit einem relativen oder vollqualifizierten Pfad zur Zertifikatdatei. AzCopy speichert den Pfad zu diesem Zertifikat, speichert jedoch keine Kopie des Zertifikats. Achten Sie darauf, dass das Zertifikat dort bleibt, wo es ist. Ersetzen Sie den Platzhalter `<certificate-password>` durch das Kennwort des Zertifikats. Ersetzen Sie den Platzhalter `<tenant-id>` mit der Mandanten-ID der Organisation, zu der das Speicherkonto gehört. Wählen Sie **Azure Active Directory > Eigenschaften > Verzeichnis-ID** im Azure-Portal aus, um die Mandanten-ID zu finden. 
 
 > [!NOTE]
 > Verwenden Sie ggf. eine Eingabeaufforderung, um das Kennwort vom Benutzer zu erfassen. Auf diese Weise wird Ihr Kennwort in Ihrem Befehlsverlauf nicht angezeigt. 

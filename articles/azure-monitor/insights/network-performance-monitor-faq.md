@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: 909cbd6174fe7eceaa8b53b5ba44fe72990b56d9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a17dcf36cd8b23bf3bc014e2d101d057221de2b8
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101708049"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504892"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Netzwerkleistungsmonitor-Lösung: häufig gestellte Fragen
 
@@ -95,9 +95,6 @@ Wenn ein Hop rot gekennzeichnet ist, heißt das, dass er Teil mindestens eines f
 
 ### <a name="how-does-fault-localization-in-performance-monitor-work"></a>Wie funktioniert die Fehlerlokalisierung im Systemmonitor?
 Der Netzwerkleistungsmonitor verwendet eine Wahrscheinlichkeitsmethode, um den einzelnen Netzwerkpfaden, Netzwerksegmenten und den zugehörigen Netzwerkhops basierend auf der Anzahl der fehlerhaften Pfade, zu denen sie gehören, Fehlerwahrscheinlichkeiten zuzuweisen. Wenn die Netzwerksegmente und Netzwerkhops zu einer höheren Anzahl von fehlerhaften Pfaden gehören, steigt auch die zugewiesene Fehlerwahrscheinlichkeit. Dieser Algorithmus lässt sich am besten bei vielen Knoten anwenden, die über einen NPM-Agent miteinander verbunden sind, da sich dadurch die Datenpunkte zur Berechnung der Fehlerwahrscheinlichkeiten erhöhen.
-
-### <a name="how-can-i-create-alerts-in-npm"></a>Wie kann ich Warnungen im Netzwerkleistungsmonitor erstellen?
-Derzeit treten beim Erstellen von Warnungen über die Benutzeroberfläche des Netzwerkleistungsmonitors Fehler aufgrund eines bekannten Problems auf. [Erstellen Sie Warnungen manuell](../alerts/alerts-log.md).
 
 ### <a name="what-are-the-default-log-analytics-queries-for-alerts"></a>Welche Log Analytics-Standardabfragen für Warnungen gibt es?
 Abfrage des Systemmonitors

@@ -6,19 +6,18 @@ documentationcenter: na
 author: KumudD
 manager: mtillman
 ms.service: virtual-network
-Customer intent: As an Azure customer, I want to learn more about enabling routing preference for my CDN origin resources.
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2021
 ms.author: mnayak
-ms.openlocfilehash: 1fcc918e5b4b54a415fed0f38d210aeeaa62c008
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e6276ec1a1c3f52b6574ee60d40e743a183086eb
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101678722"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106060583"
 ---
 # <a name="what-is-routing-preference-unmetered"></a>Was ist Routing Preference Unmetered?
 
@@ -45,4 +44,4 @@ Sie können auch die Routingpräferenz für Ihr Speicherkonto aktivieren und ein
 
 * [Konfigurieren der Routingpräferenz für einen virtuellen Computer mithilfe von Azure PowerShell](configure-routing-preference-virtual-machine-powershell.md)
 * [Konfigurieren der Routingpräferenz für einen virtuellen Computer mithilfe der Azure CLI](configure-routing-preference-virtual-machine-cli.md)
-* [Konfigurieren der Routingpräferenz für ein Speicherkonto](/azure/storage/common/network-routing-preference)
+* [Konfigurieren der Routingpräferenz für ein Speicherkonto](../storage/common/network-routing-preference.md)

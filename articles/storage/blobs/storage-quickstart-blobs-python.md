@@ -1,19 +1,19 @@
 ---
 title: 'Schnellstart: Azure Blob Storage-Bibliothek v12 – Python'
 description: In dieser Schnellstartanleitung erfahren Sie, wie mithilfe der Azure Blob Storage-Clientbibliothek Version 12 für Python ein Container und ein Blob in Blob Storage (Objektspeicher) erstellt werden. Als Nächstes erfahren Sie, wie Sie den Blob auf Ihren lokalen Computer herunterladen, und wie Sie alle Blobs in einem Container auflisten.
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.date: 01/28/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-python
-ms.openlocfilehash: e315f0f4f7bfff03a659de430e6fe182037f1b8a
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: a5d56b20bec7e668bb2119c9174fe03278c805c1
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99096405"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106278013"
 ---
 # <a name="quickstart-manage-blobs-with-python-v12-sdk"></a>Schnellstart: Verwalten von Blobs per Python v12 SDK
 
@@ -30,7 +30,7 @@ Weitere Ressourcen:
 
 - Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - Azure Storage-Konto [Informationen zu Azure-Speicherkonten](../common/storage-account-create.md)
-- [Python](https://www.python.org/downloads/) 2.7, 3.5 oder höher.
+- [Python](https://www.python.org/downloads/) 2.7 bzw. 3.6 oder höher
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 

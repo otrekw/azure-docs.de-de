@@ -3,12 +3,12 @@ title: Datenmodell „Azure Monitor-Protokolle“
 description: In diesem Artikel werden die Details des Azure Monitor Log Analytics-Datenmodells für Azure Backup-Daten vorgestellt.
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: 004c5a6c0c2c4dcfcf13134bd5a5143ba647048f
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 2682bf0483b38c50e64bf4ec5255c89f931ab0f0
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102500987"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078909"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Log Analytics-Datenmodell für Azure Backup-Daten
 
@@ -199,9 +199,9 @@ Diese Tabelle enthält Details zu richtlinienbezogenen Feldern.
 | MonthlyRetentionDaysOfTheWeek_s |Text ||Tage der Woche, die für die monatliche Beibehaltung ausgewählt sind |
 | MonthlyRetentionWeeksOfTheMonth_s |Text ||Wochen des Monats, in denen die monatliche Beibehaltung konfiguriert ist, z. B. „Erste“, „Letzte“. |
 | YearlyRetentionDuration_s |Decimal Number ||Gesamte Beibehaltungsdauer in Jahren für konfigurierte Sicherungen |
-| YearlyRetentionTimes_s |Text ||Konfiguration von Datum und Uhrzeit der jährlichen Beibehaltung |
-| YearlyRetentionMonthsOfTheYear_s |Text ||Monate des Jahres, die für die jährliche Beibehaltung ausgewählt sind |
-| YearlyRetentionFormat_s |Text ||Typ der Konfiguration für die jährliche Beibehaltung, z.B. „Täglich“ für tagesbasiert, „Wöchentlich“ für wochenbasiert | |
+| YearlyRetentionTimes_s |Text | | Konfiguration von Datum und Uhrzeit der jährlichen Beibehaltung |
+| YearlyRetentionMonthsOfTheYear_s |Text | | Monate des Jahres, die für die jährliche Beibehaltung ausgewählt sind |
+| YearlyRetentionFormat_s |Text ||Typ der Konfiguration für die jährliche Beibehaltung, z.B. „Täglich“ für tagesbasiert, „Wöchentlich“ für wochenbasiert |
 | YearlyRetentionDaysOfTheMonth_s |Text ||Datumsangaben des Monats, die für die jährliche Beibehaltung ausgewählt sind |
 | SynchronisationFrequencyPerDay_s |Ganze Zahl |V2|Anzahl der Male, die eine Dateisicherung pro Tag mit SC DPM und MABS synchronisiert wird |
 | DiffBackupFormat_s |Text |V2|Format für differenzielle Sicherungen für SQL in Sicherungen von Azure-VMs |

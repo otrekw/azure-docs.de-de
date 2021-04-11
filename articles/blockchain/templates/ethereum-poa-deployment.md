@@ -5,12 +5,12 @@ ms.date: 03/01/2021
 ms.topic: how-to
 ms.reviewer: ravastra
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: 70c9498bae9117585963e111bea4f1e127cab232
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f4b12a9b3b830fcc4f45cb5e957232fee5a756a3
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102097940"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078644"
 ---
 # <a name="deploy-ethereum-proof-of-authority-consortium-solution-template-on-azure"></a>Bereitstellen der Lösungsvorlage „Ethereum-Proof-of-Authority-Konsortium“ auf Azure
 
@@ -169,8 +169,8 @@ Parameter | BESCHREIBUNG | Beispielwert
 Überwachung | Option zum Aktivieren der Überwachung | Aktivieren
 Connect to existing Azure Monitor logs (Mit vorhandenen Azure Monitor-Protokollen verbinden) | Option zum Erstellen einer neuen Azure Monitor-Protokollinstanz oder zum Beitritt zu einer vorhandenen Instanz | Neu erstellen
 Standort | Die Region, in der die neue Instanz bereitgestellt wird | East US
-Existing log analytics workspace ID (Connect to existing Azure Monitor logs = Join Existing) (Vorhandene Log Analytics-Arbeitsbereichs-ID (Mit vorhandener Azure Monitor-Protokollinstanz verbinden = Vorhandener beitreten))|Die Arbeitsbereichs-ID der vorhandenen Azure Monitor-Protokollinstanz||Nicht verfügbar
-Existing log analytics primary key (Connect to existing Azure Monitor logs = Join Existing) (Vorhandener Log Analytics-Primärschlüssel (Mit vorhandener Azure Monitor-Protokollinstanz verbinden = Vorhandener beitreten))|Der Primärschlüssel, der zum Herstellen einer Verbindung mit der vorhandenen Azure Monitor-Protokollinstanz verwendet wird.||Nicht verfügbar
+Existing log analytics workspace ID (Connect to existing Azure Monitor logs = Join Existing) (Vorhandene Log Analytics-Arbeitsbereichs-ID (Mit vorhandener Azure Monitor-Protokollinstanz verbinden = Vorhandener beitreten))|Die Arbeitsbereichs-ID der vorhandenen Azure Monitor-Protokollinstanz|Nicht verfügbar
+Existing log analytics primary key (Connect to existing Azure Monitor logs = Join Existing) (Vorhandener Log Analytics-Primärschlüssel (Mit vorhandener Azure Monitor-Protokollinstanz verbinden = Vorhandener beitreten))|Der Primärschlüssel, der zum Herstellen einer Verbindung mit der vorhandenen Azure Monitor-Protokollinstanz verwendet wird.|Nicht verfügbar
 
 Klicken Sie auf **OK**.
 

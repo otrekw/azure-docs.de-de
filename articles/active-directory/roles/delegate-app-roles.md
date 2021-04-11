@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fea9662b6f5890c6240e91b26cf641d6166d560a
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: f9dcbb12f48a98a35013a80f986b67f75118d74c
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102051190"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106060250"
 ---
 # <a name="delegate-app-registration-permissions-in-azure-active-directory"></a>Delegieren von App-Registrierungsberechtigungen in Azure Active Directory
 
@@ -30,7 +30,7 @@ In diesem Artikel wird beschrieben, wie Sie über Berechtigungen, die von benutz
 - [Zuweisen einer integrierten Administratorrolle](#assign-built-in-application-admin-roles), mit der Zugriff zum Verwalten der Konfiguration in Azure AD für alle Anwendungen gewährt wird. Dies ist die empfohlene Vorgehensweise, um IT-Experten Zugriff zum Verwalten von umfassenden Berechtigungen für die Anwendungskonfiguration zu gewähren, ohne Zugriff auf die Verwaltung anderer Bereiche von Azure AD zu gewähren, die nicht mit der Anwendungskonfiguration zusammenhängen.
 - [Erstellen einer benutzerdefinierten Rolle](#create-and-assign-a-custom-role-preview), die sehr spezifische Berechtigungen definiert, und Zuweisen dieser Rolle zu einem Benutzer im Bereich einer einzelnen Anwendung als eingeschränkter Besitzer oder im Verzeichnisbereich (alle Anwendungen) als eingeschränkter Administrator.
 
-Es ist aus zwei Gründen wichtig, den Zugriff mithilfe einer der oben genannten Methoden zu gewähren. Erstens wird durch die Delegierung der Möglichkeit zum Ausführen administrativer Aufgaben der Aufwand für globale Administratoren reduziert. Zweitens verbessert die Verwendung eingeschränkter Berechtigungen den Sicherheitsstatus und reduziert das Potenzial für nicht autorisierten Zugriff. Delegierungsprobleme und allgemeine Richtlinien werden unter [Delegieren der Administration in Azure Active Directory (Azure AD)](concept-delegation.md) erörtert.
+Es ist aus zwei Gründen wichtig, den Zugriff mithilfe einer der oben genannten Methoden zu gewähren. Erstens wird durch die Delegierung der Möglichkeit zum Ausführen administrativer Aufgaben der Aufwand für globale Administratoren reduziert. Zweitens verbessert die Verwendung eingeschränkter Berechtigungen den Sicherheitsstatus und reduziert das Potenzial für nicht autorisierten Zugriff. Richtlinien zur Planung der Rollensicherheit finden Sie unter [Schützen des privilegierten Zugriffs für hybride und Cloudbereitstellungen in Azure AD](security-planning.md).
 
 ## <a name="restrict-who-can-create-applications"></a>Einschränken, welche Benutzer Anwendungen erstellen können
 
