@@ -1,14 +1,14 @@
 ---
 title: Erstellen von Definitionen der Gastkonfigurationsrichtlinie anhand der Gruppenrichtlinien-Baseline für Windows
 description: Erfahren Sie, wie Sie die Gruppenrichtlinie aus der Sicherheitsbaseline von Windows Server 2019 in eine Richtliniendefinition konvertieren.
-ms.date: 08/17/2020
+ms.date: 03/31/2021
 ms.topic: how-to
-ms.openlocfilehash: 7f7e2af70efa6771d94d7ceaa14d1408175b1d12
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a49c8044914c8c23b4f99cad7838652eb94c4b92
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93348643"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106096579"
 ---
 # <a name="how-to-create-guest-configuration-policy-definitions-from-group-policy-baseline-for-windows"></a>Erstellen von Definitionen der Gastkonfigurationsrichtlinie anhand der Gruppenrichtlinien-Baseline für Windows
 
@@ -96,13 +96,13 @@ Im nächsten Schritt wird die heruntergeladene Server 2019-Baseline mithilfe der
 1. Nachdem ein benutzerdefiniertes Richtlinienpaket für Gastkonfigurationen erstellt und hochgeladen wurde, erstellen Sie die Richtliniendefinition für Gastkonfigurationen. Verwenden Sie das Cmdlet `New-GuestConfigurationPolicy`, um die Gastkonfiguration zu erstellen.
 
    ```azurepowershell-interactive
-    $NewGuestConfigurationPolicySplat = @{
+   $NewGuestConfigurationPolicySplat = @{
         ContentUri = $Uri 
         DisplayName = 'Server 2019 Configuration Baseline' 
         Description 'Validation of using a completely custom baseline configuration for Windows VMs' 
         Path = 'C:\git\policyfiles\policy'  
         Platform = Windows 
-        }
+   }
    New-GuestConfigurationPolicy @NewGuestConfigurationPolicySplat
    ```
     

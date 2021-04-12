@@ -8,13 +8,12 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 03/03/2021
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: b108e757ed9fe9ab7038cae4240f0f749ac19675
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e58473f5c3bc4bc6314fb0dc5c532e24daa225d6
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102036043"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106065700"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro-with-gpu"></a>Tutorial: Vorbereiten der Bereitstellung von Azure Stack Edge Pro-Geräten mit GPU 
 
@@ -47,8 +46,8 @@ Für die Azure Stack Edge Pro-Bereitstellung müssen Sie zunächst Ihre Umgebung
 |**[6. Konfigurieren von Sicherheitseinstellungen für Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-configure-certificates.md)** |Konfigurieren Sie Zertifikate für Ihr Gerät. Verwenden Sie von Geräten generierte Zertifikate, oder stellen Sie Ihre eigenen Zertifikate bereit.   |
 |**[7. Aktivieren von Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-activate.md)** |Verwenden Sie den Aktivierungsschlüssel des Diensts, um das Gerät zu aktivieren. Das Gerät ist bereit, SMB- oder NFS-Freigaben einzurichten oder eine Verbindung über REST herzustellen. |
 |**[8. Konfigurieren von Compute](azure-stack-edge-gpu-deploy-configure-compute.md)** |Konfigurieren Sie die Computerolle auf Ihrem Gerät. Außerdem wird ein Kubernetes-Cluster erstellt. |
-|**[9A. Übertragen von Daten mit Edge-Freigaben](azure-stack-edge-j-series-deploy-add-shares.md)** |Fügen Sie Freigaben hinzu, und stellen Sie über SMB oder NFS eine Verbindung mit Freigaben her. |
-|**[9B. Übertragen von Daten mit Edge-Speicherkonten](azure-stack-edge-j-series-deploy-add-storage-accounts.md)** |Fügen Sie Speicherkonten hinzu, und stellen Sie über REST-APIs eine Verbindung mit Blob Storage her. |
+|**[9A. Übertragen von Daten mit Edge-Freigaben](./azure-stack-edge-gpu-deploy-add-shares.md)** |Fügen Sie Freigaben hinzu, und stellen Sie über SMB oder NFS eine Verbindung mit Freigaben her. |
+|**[9B. Übertragen von Daten mit Edge-Speicherkonten](./azure-stack-edge-gpu-deploy-add-storage-accounts.md)** |Fügen Sie Speicherkonten hinzu, und stellen Sie über REST-APIs eine Verbindung mit Blob Storage her. |
 
 
 Sie können nun damit beginnen, Informationen über die Softwarekonfiguration Ihres Azure Stack Edge Pro-Geräts zu erfassen.

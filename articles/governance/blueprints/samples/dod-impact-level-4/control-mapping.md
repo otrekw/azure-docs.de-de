@@ -1,14 +1,14 @@
 ---
 title: Steuerungen des Blaupausenbeispiels „DoD-Auswirkungsstufe 4“
 description: Steuerungszuordnung des Blaupausenbeispiels „DoD-Auswirkungsstufe 4“ Jede Steuerung wird mindestens einer Azure Policy-Definition zugeordnet, die Sie bei der Bewertung unterstützt.
-ms.date: 01/08/2021
+ms.date: 04/02/2021
 ms.topic: sample
-ms.openlocfilehash: 4345cd67cda5b00d89d9eae1f8abaedb40228759
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5e022f4cea10be628d7d58c85ac10eb960d8ffa0
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98035103"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106386974"
 ---
 # <a name="control-mapping-of-the-dod-impact-level-4-blueprint-sample"></a>Steuerungszuordnung des Blaupausenbeispiels „DoD-Auswirkungsstufe 4“
 
