@@ -3,12 +3,12 @@ title: Erstellen einer Verwaltungsgruppe mit dem Portal
 description: In dieser Schnellstartanleitung erstellen Sie mithilfe des Azure-Portals eine Verwaltungsgruppe, um Ihre Ressourcen in einer Ressourcenhierarchie zu organisieren.
 ms.date: 02/05/2021
 ms.topic: quickstart
-ms.openlocfilehash: 5a336fe4caf5d2f825a93b5c7b8f8d05f6255c39
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2fa9b667079104fe9728ab41ecd87685c35de1b7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99592431"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105024689"
 ---
 # <a name="quickstart-create-a-management-group"></a>Schnellstart: Erstellen einer Verwaltungsgruppe
 
@@ -32,7 +32,7 @@ Es kann bis zu 15 Minuten dauern, bis die Erstellung der ersten Verwaltungsgrupp
 
 1. Wählen Sie **+ Verwaltungsgruppe hinzufügen** aus.
 
-   :::image type="content" source="./media/main.png" alt-text="Screenshot: Seite „Verwaltungsgruppen“ mit untergeordneten Verwaltungsgruppen und Abonnements" border="false":::
+   :::image type="content" source="./media/main.png" alt-text="Screenshot: Seite „Verwaltungsgruppen“ mit untergeordneten Verwaltungsgruppen und Abonnements":::
 
 1. Lassen Sie die Option **Neu erstellen** aktiviert, und füllen Sie das Feld für die Verwaltungsgruppen-ID aus.
 

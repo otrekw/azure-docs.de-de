@@ -7,10 +7,10 @@ ms.date: 02/18/2021
 ms.topic: article
 ms.service: api-management
 ms.openlocfilehash: 051bf4398555f318f613c66d58ec65be1d30e215
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101646808"
 ---
 # <a name="api-management-dapr-integration-policies"></a>API Management-Richtlinien für die Integration von Dapr
@@ -89,7 +89,7 @@ Die Richtlinie `forward-request` wird hier der besseren Verständlichkeit halber
 
 ### <a name="attributes"></a>Attributes
 
-| attribute        | BESCHREIBUNG                     | Erforderlich | Standard |
+| Attribut        | BESCHREIBUNG                     | Erforderlich | Standard |
 |------------------|---------------------------------|----------|---------|
 | backend-id       | Muss auf „dapr“ festgelegt werden           | Ja      | N/V     |
 | dapr-app-id      | Der Name des Ziel-Microservice. Wird zum Erstellen des Parameters [appId](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/service_invocation_api.md) in Dapr verwendet.| Ja | N/V |
@@ -158,7 +158,7 @@ Der Abschnitt „backend“ ist leer, und die Anforderung wird nicht an das Back
 
 ### <a name="attributes"></a>Attributes
 
-| attribute        | BESCHREIBUNG                     | Erforderlich | Standard |
+| Attribut        | BESCHREIBUNG                     | Erforderlich | Standard |
 |------------------|---------------------------------|----------|---------|
 | pubsub-name      | Der Name der PubSub-Zielkomponente. Wird dem Parameter [pubsubname](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/pubsub_api.md) in Dapr zugeordnet. Falls nicht vorhanden, muss der Attributwert __Thema__ die Form `pubsub-name/topic-name` haben.    | Nein       | Keine    |
 | topic            | Der Name des Themas. Wird dem Parameter [topic](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/pubsub_api.md) in Dapr zugeordnet.               | Ja      | –     |
@@ -244,7 +244,7 @@ Der Abschnitt „backend“ ist leer, und die Anforderung wird nicht an das Back
 
 ### <a name="attributes"></a>Attributes
 
-| attribute        | BESCHREIBUNG                     | Erforderlich | Standard |
+| Attribut        | BESCHREIBUNG                     | Erforderlich | Standard |
 |------------------|---------------------------------|----------|---------|
 | name            | Name der Zielbindung. Muss dem Namen der Bindungen entsprechen, die in Dapr [definiert](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/bindings_api.md#bindings-structure) sind.           | Ja      | N/V     |
 | operation       | Name des Zielvorgangs (bindungsspezifisch). Der Eigenschaft [operation](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/bindings_api.md#invoking-output-bindings) in Dapr zugeordnet. | Nein | Keine |

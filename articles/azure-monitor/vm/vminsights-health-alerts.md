@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/10/2020
-ms.openlocfilehash: 1b5fd10b3e0bd84aa7d34a918f4f2376130d2e45
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9c4b15fa2a8be32aa7397ae425f28f1deaac6b71
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102052261"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105024607"
 ---
 # <a name="vm-insights-guest-health-alerts-preview"></a>Gastintegritätswarnungen von VM Insights (Vorschau)
 Mit dem Feature „Gastintegrität“ von VM Insights können Sie Informationen zur Integrität einer VM anzeigen. Dies wird anhand von verschiedenen Leistungsmessungen definiert, für die in regelmäßigen Abständen Stichproben genommen werden. Eine Warnung kann erstellt werden, wenn ein virtueller Computer oder ein „Monitor“ (Überwachungskomponente) in den Status „Fehlerhaft“ wechselt. Sie können diese Warnungen zusammen mit den Warnungen anzeigen und verwalten, die [mit den Warnungsregeln in Azure Monitor erstellt werden](../alerts/alerts-overview.md), und die proaktive Benachrichtigung über die Erstellung neuer Warnungen auswählen.
@@ -35,7 +35,7 @@ Für jeden virtuellen Computer wird immer dann eine [Azure-Warnung](../alerts/al
 Falls sich eine Warnung bereits im Status **Ausgelöst** befindet, wenn sich der Status des virtuellen Computers ändert, wird keine zweite Warnung erstellt. Allerdings wird der Schweregrad dieser Warnung so geändert, dass er dem Status des virtuellen Computers entspricht. Falls der virtuelle Computer beispielsweise in den Status **Kritisch** versetzt wird, wenn sich eine Warnung vom Typ **Warnung** bereits im Status **Ausgelöst** befindet, wird der Schweregrad dieser Warnung in **Sev1** geändert. Falls der virtuelle Computer in den Status **Warnung** versetzt wird, wenn sich eine Warnung mit **Sev1** bereits im Status **Ausgelöst** befindet, wird der Schweregrad dieser Warnung in **Sev2** geändert. Wenn der virtuelle Computer dann wieder in den Status **Fehlerfrei** versetzt wird, ist die Warnung behoben, und der Schweregrad wird in **Sev4** geändert.
 
 ## <a name="viewing-alerts"></a>Anzeigen von Warnungen
-Sie können Warnungen, die vom Feature „Gastintegrität“ von VM Insights erstellt wurden, zusammen mit anderen [Warnungen im Azure-Portal](../platform/alerts-overview.md#alerts-experience) anzeigen. Sie können die Option **Warnungen** im **Azure Monitor**-Menü auswählen, um die Warnungen für alle überwachten Ressourcen anzuzeigen, oder im Menü eines virtuellen Computers die Option **Warnungen** verwenden, um die Warnungen nur für den entsprechenden virtuellen Computer anzuzeigen.
+Sie können Warnungen, die vom Feature „Gastintegrität“ von VM Insights erstellt wurden, zusammen mit anderen [Warnungen im Azure-Portal](../alerts/alerts-overview.md#alerts-experience) anzeigen. Sie können die Option **Warnungen** im **Azure Monitor**-Menü auswählen, um die Warnungen für alle überwachten Ressourcen anzuzeigen, oder im Menü eines virtuellen Computers die Option **Warnungen** verwenden, um die Warnungen nur für den entsprechenden virtuellen Computer anzuzeigen.
 
 ## <a name="alert-properties"></a>Warnungseigenschaften
 

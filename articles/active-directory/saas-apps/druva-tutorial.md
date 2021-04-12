@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/06/2020
 ms.author: jeedes
 ms.openlocfilehash: a7868d702ff3f1190d7f51e4ad7316508d453015
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92454523"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-druva"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory in Druva
@@ -136,13 +136,13 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anme
 1. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer in der Liste aus, und klicken Sie dann im unteren Bildschirmbereich auf die Schaltfläche **Auswählen**.
 1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
-## <a name="configure-druva-sso"></a>Konfigurieren des einmaligen Anmeldens für Druva
+## <a name="configure-druva-sso&quot;></a>Konfigurieren des einmaligen Anmeldens für Druva
 
 1. Melden Sie sich in einem anderen Webbrowserfenster bei der Druva-Unternehmenswebsite als Administrator an.
 
 1. Klicken Sie in der oberen linken Ecke auf das Druva-Logo, und klicken Sie dann auf **Druva-Cloud-Einstellungen**.
 
-    ![Einstellungen](./media/druva-tutorial/ic795091.png "Einstellungen")
+    ![Einstellungen](./media/druva-tutorial/ic795091.png &quot;Einstellungen")
 
 1. Klicken Sie auf der Registerkarte **Einmaliges Anmelden** auf **Bearbeiten**.
 

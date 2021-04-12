@@ -1,39 +1,43 @@
 ---
-title: Konfigurieren des Ähnlichkeitsalgorithmus für die Rangfolge
+title: Konfigurieren des Ähnlichkeitsalgorithmus
 titleSuffix: Azure Cognitive Search
-description: Festlegen des Ähnlichkeitsalgorithmus zum Testen eines neuen Ähnlichkeitsalgorithmus für die Rangfolge
+description: Erfahren Sie, wie Sie BM25 für ältere Suchdienste aktivieren und wie BM25-Parameter geändert werden können, um den Inhalt ihrer Indizes besser zu unterstützen.
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/02/2021
-ms.openlocfilehash: 9f806b512ae8e118fca8f32115c8be3b493fd681
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.date: 03/12/2021
+ms.openlocfilehash: 52b3523d3c092f1b9375f53038cc3b20d0ddedcc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101677783"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103232833"
 ---
-# <a name="configure-ranking-algorithms-in-azure-cognitive-search"></a>Konfigurieren der Rangfolgealgorithmen in Azure Cognitive Search
+# <a name="configure-the-similarity-ranking-algorithm-in-azure-cognitive-search"></a>Konfigurieren des Ähnlichkeitsrangfolgenalgorithmus in Azure Cognitive Suche
 
 Azure Cognitive Search unterstützt zwei Ähnlichkeitsalgorithmen für die Rangfolge:
 
 + Einen *klassischen* Ähnlichkeitsalgorithmus, der von allen Suchdiensten bis zum 15. Juli 2020 verwendet wurde.
 + Eine Implementierung des *Okapi BM25*-Algorithmus, der in allen Suchdiensten verwendet wird, die nach dem 15. Juli erstellt wurden.
 
-Die BM25-Rangfolge ist die neue Standardeinstellung, da sie tendenziell Suchrangfolgen erzeugt, die den Erwartungen von Benutzern besser entsprechen. BM25 ermöglicht zudem Konfigurationsoptionen, mit denen Ergebnisse auf der Basis von Faktoren wie der Dokumentgröße optimiert werden können. Für neue Dienste, die nach dem 15. Juli 2020 erstellt werden, wird BM25 automatisch verwendet und ist der einzige Ähnlichkeitsalgorithmus. Wenn Sie versuchen, Ähnlichkeit für einen neuen Dienst auf „ClassicSimilarity“ festzulegen, wird ein HTTP 400-Fehler zurückgegeben, da dieser Algorithmus durch den Dienst nicht unterstützt wird.
+Die BM25-Rangfolge ist die neue Standardeinstellung, da sie tendenziell Suchrangfolgen erzeugt, die den Erwartungen von Benutzern besser entsprechen. Sie verfügt über [Parameter](#set-bm25-parameters), mit denen Ergebnisse auf der Basis von Faktoren wie der Dokumentgröße optimiert werden können. 
 
-Für ältere Dienste, die vor dem 15. Juli 2020 erstellt wurden, bleibt die klassische Ähnlichkeit der Standardalgorithmus. Ältere Dienste können Eigenschaften für einen Suchindex festlegen, um BM25 aufzurufen, wie unten erläutert. Wenn Sie von „klassisch“ zu „BM25“ wechseln, sind einige Unterschiede in der Anordnung der Suchergebnisse zu erwarten.
+Für neue Dienste, die nach dem 15. Juli 2020 erstellt werden, wird BM25 automatisch verwendet und ist der einzige Ähnlichkeitsalgorithmus. Wenn Sie versuchen, Ähnlichkeit für einen neuen Dienst auf „ClassicSimilarity“ festzulegen, wird ein HTTP 400-Fehler zurückgegeben, da dieser Algorithmus durch den Dienst nicht unterstützt wird.
+
+Für ältere Dienste, die vor dem 15. Juli 2020 erstellt wurden, bleibt die klassische Ähnlichkeit der Standardalgorithmus. Ältere Dienste können pro Index auf BM25 aktualisiert werden, wie unten erläutert. Wenn Sie von „klassisch“ zu „BM25“ wechseln, sind einige Unterschiede in der Anordnung der Suchergebnisse zu erwarten.
 
 > [!NOTE]
-> Die semantische Suche ist ein zusätzlicher Semantikalgorithmus zur Neuerstellung der Rangfolge, der die Kluft zwischen Erwartungen und Ergebnissen noch weiter verkleinert. Im Gegensatz zu den anderen Algorithmen handelt es sich um ein zusätzliches Feature, das eine bestehende Ergebnismenge durchläuft. Um den in der Vorschau befindlichen Algorithmus für die semantische Suche zu verwenden, müssen Sie einen neuen Dienst erstellen und eine [Abfrage vom Typ „semantic“ (semantisch)](semantic-how-to-query-request.md) angeben. Weitere Informationen finden Sie unter [Übersicht über die semantische Suche](semantic-search-overview.md).
+> Die semantische Rangfolge, die sich derzeit in ausgewählten Regionen in der Vorschau für Standarddienste befindet, ist ein zusätzlicher Schritt, relevantere Ergebnisse zu erzielen. Im Gegensatz zu den anderen Algorithmen handelt es sich um ein zusätzliches Feature, das eine bestehende Ergebnismenge durchläuft. Weitere Informationen finden Sie unter [Übersicht über die semantische Suche](semantic-search-overview.md) und [Semantische Rangfolge in Azure Cognitive Search](semantic-ranking.md).
 
-## <a name="create-a-search-index-for-bm25-scoring"></a>Erstellen eines Suchindex für die BM25-Bewertung
+## <a name="enable-bm25-scoring-on-older-services"></a>Aktivieren der BM25-Bewertung für ältere Dienste
 
-Wenn Sie einen Suchdienst ausführen, der vor dem 15. Juli 2020 erstellt wurde, können Sie die Ähnlichkeitseigenschaft in der Indexdefinition entweder auf „BM25Similarity“ oder „ClassicSimilarity“ festlegen. Wenn die Eigenschaft Ähnlichkeit ausgelassen oder auf NULL festgelegt wird, verwendet der Index den klassischen Algorithmus.
+Wenn Sie einen Suchdienst ausführen, der vor dem 15. Juli 2020 erstellt wurde, können Sie BM25 aktivieren, indem Sie für neue Indizes eine Ähnlichkeitseigenschaft festlegen. Die Eigenschaft wird nur für neue Indizes verfügbar gemacht. Wenn Sie also BM25 für einen vorhandenen Index benötigen, müssen Sie den Index löschen und [neu erstellen](search-howto-reindex.md), wobei eine neue Ähnlichkeitseigenschaft auf „Microsoft.Azure.Search.BM25Similarity“ festgelegt wird.
 
-Der Ähnlichkeitsalgorithmus kann nur zum Zeitpunkt der Indexerstellung festgelegt werden. Nachdem ein Index jedoch mit BM25 erstellt wurde, können Sie den vorhandenen Index aktualisieren, um die BM25-Parameter festzulegen oder zu ändern.
+Sobald ein Index mit einer Ähnlichkeitseigenschaft vorhanden ist, können Sie zwischen BM25Similarity und ClassicSimilarity wechseln. 
+
+Unter den folgenden Links wird die Ähnlichkeitseigenschaft in den Azure SDKs beschrieben. 
 
 | Clientbibliothek | Ähnlichkeitseigenschaft |
 |----------------|---------------------|
@@ -70,7 +74,7 @@ PUT https://[search service name].search.windows.net/indexes/[index name]?api-ve
 }
 ```
 
-## <a name="bm25-similarity-parameters"></a>BM25-Ähnlichkeitsparameter
+## <a name="set-bm25-parameters"></a>Festlegen von BM25-Parametern
 
 BM25-Ähnlichkeit fügt zwei durch Benutzer anpassbare Parameter hinzu, um die berechnete Relevanzbewertung zu steuern. Sie können BM25-Parameter während der Indexerstellung oder als Indexupdate festlegen, wenn der BM25-Algorithmus während der Indexerstellung angegeben wurde.
 

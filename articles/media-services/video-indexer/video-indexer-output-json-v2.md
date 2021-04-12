@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 11/16/2020
 ms.author: juliako
 ms.openlocfilehash: 2ac7c3c2149ce43c860c7726381733ef377de8d3
-ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100530738"
 ---
 # <a name="examine-the-video-indexer-output"></a>Überprüfen der Video Indexer-Ausgabe
