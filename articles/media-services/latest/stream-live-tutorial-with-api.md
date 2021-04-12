@@ -28,14 +28,14 @@ Das Tutorial veranschaulicht folgende Vorgehensweisen:
 Für dieses Tutorial benötigen Sie Folgendes:
 
 - Installieren Sie Visual Studio Code oder Visual Studio.
-- [Erstellen Sie ein Media Services-Konto.](./create-account-howto.md)<br/>Wichtig: Kopieren Sie die API-Zugriffsdetails im JSON-Format, oder speichern Sie die Werte, die zum Herstellen einer Verbindung mit dem Media Services-Konto benötigt werden, im ENV-Dateiformat, das in diesem Beispiel verwendet wird.
+- [Erstellen Sie ein Media Services-Konto.](./account-create-how-to.md)<br/>Wichtig: Kopieren Sie die API-Zugriffsdetails im JSON-Format, oder speichern Sie die Werte, die zum Herstellen einer Verbindung mit dem Media Services-Konto benötigt werden, im ENV-Dateiformat, das in diesem Beispiel verwendet wird.
 - Führen Sie die Schritte unter [Zugreifen auf die Azure Media Services-API mit der Azure CLI](./access-api-howto.md) aus, und speichern Sie die Anmeldeinformationen. Sie müssen für den Zugriff auf die API in diesem Beispiel verwendet oder im ENV-Dateiformat eingegeben werden. 
 - Eine Kamera oder ein Gerät (beispielsweise ein Laptop) zum Übertragen eines Ereignisses.
-- Ein lokaler Softwareencoder, der Ihren Kameradatenstrom codiert und unter Verwendung des RTM-Protokolls an den Media Services-Livestreamingdienst sendet (siehe [Überprüfte lokale Livestreamingencoder](recommended-on-premises-live-encoders.md)). Der Datenstrom muss das Format **RTMP** oder **Smooth Streaming** haben.  
+- Ein lokaler Softwareencoder, der Ihren Kameradatenstrom codiert und unter Verwendung des RTM-Protokolls an den Media Services-Livestreamingdienst sendet (siehe [Überprüfte lokale Livestreamingencoder](encode-recommended-on-premises-live-encoders.md)). Der Datenstrom muss das Format **RTMP** oder **Smooth Streaming** haben.  
 - Für dieses Beispiel empfiehlt es sich, mit einem Softwareencoder wie [Open Broadcast Software OBS Studio](https://obsproject.com/download) (kostenlos) zu beginnen, um den Einstieg zu erleichtern. 
 
 > [!TIP]
-> Lesen Sie [Live streaming with Azure Media Services v3](live-streaming-overview.md) (Livestreaming mit Azure Media Services v3), bevor Sie mit diesem Tutorial fortfahren. 
+> Lesen Sie [Live streaming with Azure Media Services v3](stream-live-streaming-concept.md) (Livestreaming mit Azure Media Services v3), bevor Sie mit diesem Tutorial fortfahren. 
 
 ## <a name="download-and-configure-the-sample"></a>Herunterladen und Konfigurieren des Beispiels
 
@@ -70,15 +70,15 @@ Um mit der Verwendung von Media Services-APIs in .NET zu beginnen, müssen Sie e
 
 ### <a name="create-a-live-event"></a>Erstellen eines Liveereignisses
 
-In diesem Abschnitt erfahren Sie, wie Sie ein Liveereignis vom Typ **Pass-Through** erstellen. („LiveEventEncodingType“ ist in diesem Fall auf „None“ festgelegt.) Weitere Informationen zu den anderen verfügbaren Arten von Liveereignissen finden Sie unter [Liveereignistypen](live-events-outputs-concept.md#live-event-types). Neben Passthrough können Sie ein Liveereignis mit Livetranscodierung für eine Cloudcodierung mit adaptiver Bitrate (720p oder 1080p) verwenden. 
+In diesem Abschnitt erfahren Sie, wie Sie ein Liveereignis vom Typ **Pass-Through** erstellen. („LiveEventEncodingType“ ist in diesem Fall auf „None“ festgelegt.) Weitere Informationen zu den anderen verfügbaren Arten von Liveereignissen finden Sie unter [Liveereignistypen](live-event-outputs-concept.md#live-event-types). Neben Passthrough können Sie ein Liveereignis mit Livetranscodierung für eine Cloudcodierung mit adaptiver Bitrate (720p oder 1080p) verwenden. 
  
 Beim Erstellen des Liveereignisses können Sie folgende Punkte angeben:
 
 * Erfassungsprotokoll für das Liveereignis (aktuell unterstützte Protokolle: RTMP(S) und Smooth Streaming).<br/>Die Protokolloption kann nicht geändert werden, während das Liveereignis oder die zugehörigen Liveausgaben aktiv sind. Sollten Sie verschiedene Protokolle benötigen, erstellen Sie für jedes Streamingprotokoll ein separates Liveereignis.  
 * IP-Einschränkungen für Erfassung und Vorschau. Sie können die IP-Adressen definieren, die ein Video für dieses Liveereignis erfassen dürfen. Zulässige IP-Adressen können als einzelne IP-Adresse (Beispiel: 10.0.0.1), als IP-Adressbereiche mit einer IP-Adresse und einer CIDR-Subnetzmaske (Beispiel: 10.0.0.1/22) oder als IP-Adressbereiche mit einer IP-Adresse und einer Subnetzmaske in Punkt-Dezimalschreibweise (Beispiel: 10.0.0.1(255.255.252.0)) angegeben werden.<br/>Wenn keine IP-Adressen angegeben sind und es keine Regeldefinition gibt, sind keine IP-Adressen zulässig. Um alle IP-Adressen zuzulassen, erstellen Sie eine Regel und legen 0.0.0.0/0 fest.<br/>Die IP-Adressen müssen in einem der folgenden Formate vorliegen: IPv4-Adresse mit vier Ziffern oder CIDR-Adressbereich
-* Bei der Ereigniserstellung können Sie angeben, dass das Ereignis automatisch gestartet werden soll. <br/>Wenn für den automatischen Start „true“ festgelegt ist, wird das Liveereignis nach der Erstellung gestartet. Dies bedeutet, dass die Abrechnung beginnt, sobald das Liveereignis startet. Sie müssen für die Liveereignisressource explizit „Beenden“ auswählen, damit keine Gebühren mehr anfallen. Weitere Informationen finden Sie im Abschnitt [LiveEvent-Zustandswerte und Abrechnung](live-event-states-billing.md).
+* Bei der Ereigniserstellung können Sie angeben, dass das Ereignis automatisch gestartet werden soll. <br/>Wenn für den automatischen Start „true“ festgelegt ist, wird das Liveereignis nach der Erstellung gestartet. Dies bedeutet, dass die Abrechnung beginnt, sobald das Liveereignis startet. Sie müssen für die Liveereignisressource explizit „Beenden“ auswählen, damit keine Gebühren mehr anfallen. Weitere Informationen finden Sie im Abschnitt [LiveEvent-Zustandswerte und Abrechnung](live-event-states-billing-concept.md).
 Es stehen auch Standbymodi zur Verfügung, um das Liveereignis in einem preisgünstigeren „zugeordneten“ Zustand zu starten, der einen schnelleren Wechsel zu einem Ausführungszustand ermöglicht. Dies ist etwa im Falle von Pools der heißen Ebene hilfreich, die schnell Kanäle für Streamer bereitstellen müssen.
-* Legen Sie die Eigenschaft „useStaticHostname“ auf „true“ fest, um eine Erfassungs-URL zu erhalten, die vorhersagbar und in einem hardwarebasierten Liveencoder einfacher zu verwalten ist. Ausführliche Informationen finden Sie unter [Erfassungs-URLs für Liveereignisse](live-events-outputs-concept.md#live-event-ingest-urls).
+* Legen Sie die Eigenschaft „useStaticHostname“ auf „true“ fest, um eine Erfassungs-URL zu erhalten, die vorhersagbar und in einem hardwarebasierten Liveencoder einfacher zu verwalten ist. Ausführliche Informationen finden Sie unter [Erfassungs-URLs für Liveereignisse](live-event-outputs-concept.md#live-event-ingest-urls).
 
 [!code-csharp[Main](../../../media-services-v3-dotnet/Live/LiveEventWithDVR/Program.cs#CreateLiveEvent)]
 
@@ -128,7 +128,7 @@ Liveausgaben werden bei der Erstellung gestartet und beim Löschen beendet. Hier
 #### <a name="create-a-streaming-locator"></a>Erstellen eines Streaminglocators
 
 > [!NOTE]
-> Beim Erstellen Ihres Media Services-Kontos wird dem Konto ein **Standard**-Streamingendpunkt im Zustand **Beendet** hinzugefügt. Um mit dem Streamen Ihrer Inhalte zu beginnen und die [dynamische Paketerstellung](dynamic-packaging-overview.md) und dynamische Verschlüsselung zu nutzen, muss der Streamingendpunkt, von dem Sie Inhalte streamen möchten, den Zustand **Wird ausgeführt** aufweisen.
+> Beim Erstellen Ihres Media Services-Kontos wird dem Konto ein **Standard**-Streamingendpunkt im Zustand **Beendet** hinzugefügt. Um mit dem Streamen Ihrer Inhalte zu beginnen und die [dynamische Paketerstellung](encode-dynamic-packaging-concept.md) und dynamische Verschlüsselung zu nutzen, muss der Streamingendpunkt, von dem Sie Inhalte streamen möchten, den Zustand **Wird ausgeführt** aufweisen.
 
 Wenn Sie das Medienobjekt mit einem Streaminglocator veröffentlicht haben, ist das Liveereignis (bis zur DVR-Fensterlänge) weiterhin bis zum Ablauf oder zur Löschung des Streaminglocators sichtbar (je nachdem, was zuerst eintritt). Auf diese Weise können Sie die virtuelle Aufzeichnung so verfügbar machen, dass sie von Ihrer Zielgruppe live und nach Bedarf angesehen werden kann. Die gleiche URL kann verwendet werden, um das Liveereignis, das DVR-Fenster oder das On-Demand-Medienobjekt anzusehen, wenn die Aufzeichnung abgeschlossen ist (nach dem Löschen der Liveausgabe).
 

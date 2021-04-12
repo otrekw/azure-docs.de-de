@@ -4,25 +4,20 @@ description: Enthält eine Zusammenfassung der Unterstützungseinstellungen und 
 ms.topic: conceptual
 ms.date: 01/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: 922bd532275cdd6b09df83b0e9d36fdec1da0b47
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 88ec26837cc8f69c1e84c77ea6b57ce16e462e0a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101707216"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105612856"
 ---
-# <a name="azure-disk-backup-support-matrix-in-preview"></a>Supportmatrix für Azure Disk Backup (Vorschau)
-
->[!IMPORTANT]
->Die Vorschauversion von Azure Disk Backup wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
->[Füllen Sie dieses Formular aus](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR1vE8L51DIpDmziRt_893LVUNFlEWFJBN09PTDhEMjVHS05UWFkxUlUzUS4u), wenn Sie sich für die Vorschau registrieren möchten.
+# <a name="azure-disk-backup-support-matrix"></a>Supportmatrix für die Azure Disk-Sicherung
 
 Sie können [Azure Backup](./backup-overview.md) zum Schutz von Azure-Datenträgern verwenden. In diesem Artikel werden regionale Verfügbarkeit, unterstützte Szenarien und Einschränkungen zusammengefasst.
 
 ## <a name="supported-regions"></a>Unterstützte Regionen
 
-Azure Disk Backup ist als Vorschau in den folgenden Regionen verfügbar: „USA, Westen“, „USA, Westen-Mitte“, „USA, Osten 2“, „Kanada, Mitte“, „Vereinigtes Königreich, Westen“, „Schweiz, Norden“, „Schweiz, Westen“, „Australien, Mitte“, „Australien, Mitte 2“, „Südkorea, Mitte“, „Südkorea, Süden“, „Japan, Westen“, „Asien, Osten“, „VAE, Norden“, „Brasilien, Süden“, „Indien, Mitte“. 
+Azure Disk Backup ist in den folgenden Regionen verfügbar: „USA, Westen“, „USA, Westen 2“, „USA, Westen-Mitte“, „USA, Osten“, „USA, Osten 2“, „USA, Mitte“, „USA, Süden-Mitte“, „USA, Norden-Mitte“, „Kanada, Mitte“, „Brasilien, Süden“, „Südafrika, Norden“, „Vereinigtes Königreich, Süden“, „Vereinigtes Königreich, Westen“, „Europa, Westen“, „Europa, Norden“, „Schweiz, Norden“, „Schweiz, Westen“, „Deutschland, Westen-Mitte“, „Frankreich, Mitte, „Norwegen, Osten“, „VAE, Norden“, „Australien, Mitte“, „Australien, Mitte 2“, „Australien, Osten“, „Südkorea, Mitte“, „Südkorea, Süden“, „Japan, Osten“, „Japan, Westen“, „Asien, Osten“, „Asien, Südosten“, „Indien, Mitte“. 
 
 Weitere Regionen werden angekündigt, sobald sie verfügbar werden.
 
@@ -56,7 +51,7 @@ Weitere Regionen werden angekündigt, sobald sie verfügbar werden.
 
 - Derzeit ist das Azure-Portal zum Konfigurieren der Datenträgersicherung auf maximal 20 Datenträger aus demselben Abonnement beschränkt.
 
-- Aktuell (also während der Vorschauphase) können PowerShell und die Azure CLI nicht zum Konfigurieren der Sicherung und Wiederherstellung von Datenträgern verwendet werden.
+- Azure Disk Backup unterstützt PowerShell. Derzeit wird Azure CLI nicht unterstützt.
 
 - Beim Konfigurieren der Sicherung müssen der für die Sicherung ausgewählte Datenträger und die Ressourcengruppe für Momentaufnahmen, in der die Momentaufnahmen gespeichert werden sollen, demselben Abonnement angehören. Sie können keine inkrementelle Momentaufnahme für einen bestimmten Datenträger außerhalb des Abonnements dieses Datenträgers erstellen. Weitere Informationen finden Sie unter [Inkrementelle Momentaufnahmen](../virtual-machines/disks-incremental-snapshots.md#restrictions) für verwaltete Datenträger. Weitere Informationen zum Auswählen einer Ressourcengruppe für Momentaufnahmen finden Sie unter [Konfigurieren der Sicherung](backup-managed-disks.md#configure-backup).
 
@@ -66,7 +61,7 @@ Weitere Regionen werden angekündigt, sobald sie verfügbar werden.
 
 - Die Unterstützung für [private Verbindungen](../virtual-machines/disks-enable-private-links-for-import-export-portal.md) für verwaltete Datenträger ermöglicht es Ihnen, den Export und Import von verwalteten Datenträgern einzuschränken, sodass diese Vorgänge nur in Ihrem virtuellen Azure-Netzwerk stattfinden. Azure Disk Backup unterstützt die Sicherung von Datenträgern, auf denen private Endpunkte aktiviert sind. Dies bedeutet nicht, dass die Sicherungsdaten oder Momentaufnahmen über den privaten Endpunkt zugänglich sind.
 
-- In der Vorschauphase können Sie die Sicherung nicht deaktivieren, sodass die Option zum **Anhalten der Sicherung und Beibehalten der Sicherungsdaten** nicht unterstützt wird. Sie können eine Sicherungsinstanz löschen. Dadurch wird nicht nur die Sicherung beendet, sondern es werden auch alle Sicherungsdaten gelöscht.
+- Sie können eine Sicherungsinstanz löschen. Dadurch wird die Sicherung beendet, und es werden alle Sicherungsdaten gelöscht. Aktuell können Sie eine Sicherung nicht deaktivieren, da die Option zum **Beenden der Sicherung und Beibehalten der Sicherungsdaten** nicht unterstützt wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
