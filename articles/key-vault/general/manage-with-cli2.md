@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: cb7e047d998342125a52af5ea3ae1e88fe88d313
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c084df60fa2293a614726be44669a1465b399d2c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93289903"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105557206"
 ---
 # <a name="manage-key-vault-using-the-azure-cli"></a>Verwalten von Key Vault mit der Azure CLI 
 
@@ -147,7 +147,7 @@ Wenn bereits ein Schlüssel in einer PEM-Datei vorhanden ist, können Sie diesen
 az keyvault key import --vault-name "ContosoKeyVault" --name "ContosoFirstKey" --pem-file "./softkey.pem" --pem-password "hVFkk965BuUv" --protection software
 ```
 
-Jetzt können Sie mittels seiner URI auf den Schlüssel verweisen, den Sie erstellt oder in  Azure-Schlüsseltresor hochgeladen haben. Mit **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey** können Sie immer die aktuelle Version abrufen. Verwenden Sie zum Abrufen dieser Version „https://[Name-des-Schlüsseltresors].vault.azure.net/keys/[Schlüsselname]/[Eindeutige-Schlüssel-ID]“. Beispiel: **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87** 
+Jetzt können Sie mittels seiner URI auf den Schlüssel verweisen, den Sie erstellt oder in  Azure-Schlüsseltresor hochgeladen haben. Mit `https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey` können Sie immer die aktuelle Version abrufen. Verwenden Sie zum Abrufen dieser Version „https://[Name-des-Schlüsseltresors].vault.azure.net/keys/[Schlüsselname]/[Eindeutige-Schlüssel-ID]“. Beispielsweise `https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87`. 
 
 Fügen Sie dem Schlüsseltresor ein Geheimnis hinzu – in diesem Fall das Kennwort „SQLPassword“ mit dem Wert „hVFkk965BuUv“ für Azure Key Vault-Instanzen. 
 

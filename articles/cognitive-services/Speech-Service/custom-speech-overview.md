@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: trbye
 ms.custom: contperf-fy21q2; references_regions
-ms.openlocfilehash: 39370659e71a7d281914b360eea83eb0b68b25ba
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 13bf0f2430e0d58dd9ef28061aad897acf94ac3f
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101716566"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493049"
 ---
 # <a name="what-is-custom-speech"></a>Was ist Custom Speech?
 
@@ -79,43 +79,9 @@ Wählen Sie zum Erstellen Ihres ersten Projekts die **Spracherkennung/Custom Spe
 > [!IMPORTANT]
 > [Speech Studio](https://aka.ms/custom-speech), ehemals als „Custom Speech-Portal“ bezeichnet, wurde vor Kurzem aktualisiert. Wenn Sie vorherige Daten, Modelle, Tests und veröffentlichte Endpunkte im CRIS.ai-Portal oder mit APIs erstellt haben, müssen Sie im neuen Portal ein neues Projekt erstellen, um eine Verbindung mit diesen alten Entitäten herzustellen.
 
-## <a name="model-lifecycle"></a>Lebenszyklus von Modellen
+## <a name="model-and-endpoint-lifecycle"></a>Lebenszyklus von Modell und Endpunkt
 
-Custom Speech verwendet sowohl *Basismodelle* als auch *benutzerdefinierte Modelle*. Jede Sprache verfügt über ein oder mehrere Basismodelle. Wenn ein neues Sprachmodell für den regulären Speech-Dienst freigegeben wird, wird es im Allgemeinen auch als neues Basismodell in den Custom Speech-Dienst importiert. Sie werden alle 3 bis 6 Monate aktualisiert. Ältere Modelle werden in der Regel mit der Zeit weniger nützlich, da das neueste Modell in der Regel eine höhere Genauigkeit aufweist.
-
-Im Gegensatz dazu werden benutzerdefinierte Modelle erstellt, indem ein gewähltes Basismodell an ein bestimmtes Kundenszenario angepasst wird. Sie können ein bestimmtes benutzerdefiniertes Modell für einen längeren Zeitraum weiterhin verwenden, sobald Sie eines für Ihre Anforderungen gefunden haben. Es wird jedoch empfohlen, regelmäßig ein Update auf das neueste Basismodell durchzuführen und es mit zusätzlichen Daten erneut zu trainieren. 
-
-Weitere Schlüsselbegriffe im Zusammenhang mit dem Modelllebenszyklus sind:
-
-* **Anpassung:** Die Übernahme eines Basismodells und dessen Anpassung mithilfe von Text- und/oder Audiodaten an Ihre Domäne/Ihr Szenario.
-* **Decodierung:** Die Verwendung eines Modells und Durchführung der Spracherkennung (Decodierung von Audio- in Textdaten).
-* **Endpunkt**: Eine benutzerspezifische Bereitstellung eines Basismodells oder eines benutzerdefinierten Modells, das *nur* für einen bestimmten Benutzer zugänglich ist.
-
-### <a name="expiration-timeline"></a>Zeitskala für den Ablauf
-
-Wenn neue Modelle und neue Funktionalitäten verfügbar werden und ältere, weniger genaue Modelle eingestellt werden, finden Sie weitere Informationen in den folgenden Zeitskalen für den Ablauf von Modell und Endpunkt:
-
-**Basismodelle** 
-
-* Anpassung: Verfügbar für ein Jahr. Nachdem das Modell importiert wurde, steht es für ein Jahr zur Verfügung, um benutzerdefinierte Modelle zu erstellen. Nach einem Jahr müssen neue benutzerdefinierte Modelle aus einer neueren Basismodellversion erstellt werden.  
-* Decodierung: Für zwei Jahre nach dem Import verfügbar. Das bedeutet, dass Sie einen Endpunkt erstellen und mithilfe dieses Modells die Batch-Transkription für zwei Jahre verwenden können. 
-* Endpunkte: Auf derselben Zeitskala wie die Decodierung verfügbar.
-
-**Benutzerdefinierte Modelle**
-
-* Decodierung: Verfügbar für zwei Jahre, nachdem das Modell erstellt wurde. Dies bedeutet, dass Sie das benutzerdefinierte Modell nach seiner Erstellung zwei Jahre lang (Batch/Echtzeit/Test) verwenden können. Nach zwei Jahren sollten Sie *Ihr Modell erneut trainieren*, da das Basismodell in in der Regel für die Anpassung veraltet sein wird.  
-* Endpunkte: Auf derselben Zeitskala wie die Decodierung verfügbar.
-
-Wenn entweder ein Basismodell oder ein benutzerdefiniertes Modell abläuft, wird immer ein Fallback auf die *neueste Basismodellversion* durchgeführt. Auf diese Weise wird Ihre Implementierung niemals unterbrochen, aber sie ist möglicherweise für *Ihre bestimmten Daten* weniger genau, wenn benutzerdefinierte Modelle das Ablaufdatum erreichen. Sie können das Ablaufdatum für ein Modell an den folgenden Stellen im Custom Speech-Bereich von Speech Studio sehen:
-
-* Zusammenfassung zum Modelltraining
-* Modelltrainingsdetails
-* Zusammenfassung der Bereitstellungen
-* Bereitstellungsdetails
-
-Sie können die Ablaufdaten auch über die Custom Speech-APIs [`GetModel`](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetModel) und [`GetBaseModel`](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetBaseModel) unter der Eigenschaft `deprecationDates` in der JSON-Antwort überprüfen.
-
-Beachten Sie, dass Sie das Modell über einen Custom Speech-Endpunkt ohne Downtime aktualisieren können, indem Sie das vom Endpunkt verwendete Modell im Abschnitt „Bereitstellung“ in Speech Studio oder über die Custom Speech-API ändern.
+Ältere Modelle werden in der Regel mit der Zeit weniger nützlich, da das neueste Modell in der Regel eine höhere Genauigkeit aufweist. Daher laufen Basismodelle sowie benutzerdefinierte Modelle und Endpunkte, die über das Portal erstellt wurden, nach einem Jahr für die Anpassung und nach zwei Jahren für die Decodierung ab. Eine ausführliche Beschreibung finden Sie im Artikel [Lebenszyklus von Modell und Endpunkt](./how-to-custom-speech-model-and-endpoint-lifecycle.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

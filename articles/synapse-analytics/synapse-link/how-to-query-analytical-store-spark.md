@@ -9,12 +9,13 @@ ms.subservice: synapse-link
 ms.date: 09/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 32e8ad5028920cefd717cdaa5429786c83367f6d
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.custom: cosmos-db
+ms.openlocfilehash: d862fa15a655fd9b4ab16dfeaefe45cf8c57fc0d
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101671267"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868493"
 ---
 # <a name="interact-with-azure-cosmos-db-using-apache-spark-in-azure-synapse-link"></a>Interagieren mit Azure Cosmos DB mithilfe von Apache Spark in Azure Synapse Link
 
@@ -28,6 +29,10 @@ Die folgenden Funktionen werden für die Interaktion mit Azure Cosmos DB unterst
 * Synapse Apache Spark unterstützt außerdem strukturiertes Streaming in Spark mit Azure Cosmos DB als Quelle sowie als Senke. 
 
 Die folgenden Abschnitte führen Sie durch die Syntax der oben genannten Funktionen. Gesten in Azure Synapse Analytics-Arbeitsbereichen dienen einem einfachen Start der Verwendung. Gesten werden angezeigt, wenn Sie auf einen Azure Cosmos DB-Container auf der Registerkarte **Daten** im Synapse-Arbeitsbereich rechtsklicken. Mit Gesten können Sie schnell Code generieren und an Ihre Anforderungen anpassen. Gesten eignen sich auch ideal zum Ermitteln von Daten mit nur einem Mausklick.
+
+> [!IMPORTANT]
+> Sie müssen einige Einschränkungen im analytischen Schema beachten, die zu unerwartetem Verhalten bei Datenladevorgängen führen können.
+> Beispiel: Nur die ersten 1.000 Eigenschaften aus dem Transaktionsschema sind im analytischen Schema verfügbar, Eigenschaften mit Leerzeichen sind nicht verfügbar usw. Treten unerwartete Ergebnisse auf, finden Sie weitere Details unter [Schemaeinschränkungen](../../cosmos-db/analytical-store-introduction.md#schema-constraints).
 
 ## <a name="query-azure-cosmos-db-analytical-store"></a>Abfragen von Azure Cosmos DB-Analysespeicher
 

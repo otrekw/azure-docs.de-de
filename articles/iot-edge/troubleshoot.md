@@ -4,16 +4,16 @@ description: In diesem Artikel werden grundlegende Diagnoseverfahren für Azure 
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/12/2020
+ms.date: 04/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 7b3b8078a03ef0e891306f056c604545cde71459
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 56eff095cca1b24678f742e4c3ce8dfb1aaea2dd
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103489456"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106275582"
 ---
 # <a name="troubleshoot-your-iot-edge-device"></a>Behandeln von Problemen bei Ihrem IoT Edge-Gerät
 
@@ -30,6 +30,8 @@ Ihr erster Schritt im Rahmen der Problembehandlung bei IoT Edge sollte die Verwe
 
 Sie können den Befehl `check` wie folgt ausführen oder das Flag `--help` einbinden, um alle Optionen anzuzeigen:
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 Unter Linux:
 
 ```bash
@@ -41,6 +43,19 @@ Unter Windows:
 ```powershell
 iotedge check
 ```
+
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.1 -->
+:::moniker range=">=iotedge-2020-11"
+
+```bash
+sudo iotedge check
+```
+
+:::moniker-end
+<!-- end 1.2 -->
 
 Das Problembehandlungstool führt viele Überprüfungen durch, die in folgende drei Kategorien eingeteilt werden:
 
@@ -58,6 +73,9 @@ Wenn Sie Protokolle von einem IoT Edge-Gerät sammeln müssen, verwenden Sie daz
 
 Führen Sie den Befehl `support-bundle` mit dem Flag `--since` aus, um anzugeben, wie alt die Protokolle sein sollen, die Sie abrufen möchten. So werden beispielsweise mit `6h` die Protokolle der letzten sechs Stunden, mit `6d` die der letzten Tage und mit `6m` die der letzten sechs Minuten usw. abgerufen. Beziehen Sie das Flag `--help` mit ein, damit eine vollständige Liste der Optionen angezeigt wird.
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+
 Unter Linux:
 
 ```bash
@@ -69,6 +87,19 @@ Unter Windows:
 ```powershell
 iotedge support-bundle --since 6h
 ```
+
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+```bash
+sudo iotedge support-bundle --since 6h
+```
+
+:::moniker-end
+<!-- end 1.2 -->
 
 Sie können auch einen Aufruf der [direkten Methode](how-to-retrieve-iot-edge-logs.md#upload-support-bundle-diagnostics) für das Gerät verwenden, um die Ausgabe des Befehls „support-bundle“ in Azure Blob Storage hochzuladen.
 
@@ -102,10 +133,9 @@ Mit diesem Befehl werden alle [gemeldeten edgeAgent-Eigenschaften](./module-edge
 
 [IoT Edge Security Manager](iot-edge-security-manager.md) ist für Vorgänge wie das Initialisieren des IoT Edge-Systems beim Starten und Bereitstellen von Geräten verantwortlich. Wenn IoT Edge nicht gestartet wird, können die Security Manager-Protokolle nützliche Informationen enthalten.
 
-Unter Linux:
-
 <!-- 1.1 -->
 :::moniker range="iotedge-2018-06"
+Unter Linux:
 
 * Zeigen Sie den Status von IoT Edge Security Manager so an:
 
@@ -141,42 +171,6 @@ Unter Linux:
      sudo systemctl daemon-reload
      sudo systemctl restart iotedge
      ```
-<!--end 1.1 -->
-:::moniker-end
-
-<!-- 1.2 -->
-:::moniker range=">=iotedge-2020-11"
-
-* Zeigen Sie den Status der IoT Edge-Systemdienste an:
-
-   ```bash
-   sudo iotedge system status
-   ```
-
-* Zeigen Sie die Protokolle der IoT Edge-Systemdienste an:
-
-   ```bash
-   sudo iotedge system logs -- -f
-   ```
-
-* Aktivieren Sie Protokolle auf Debugebene, um ausführlichere Protokolle der IoT Edge-Systemdienste anzuzeigen:
-
-  1. Aktivieren Sie Protokolle auf Debugebene.
-
-     ```bash
-     sudo iotedge system set-log-level debug
-     sudo iotedge system restart
-     ```
-
-  1. Wechseln Sie nach dem Debuggen zu den Standardprotokollen auf Infoebene zurück.
-
-     ```bash
-     sudo iotedge system set-log-level info
-     sudo iotedge system restart
-     ```
-
-<!-- end 1.2 -->
-:::moniker-end
 
 Unter Windows:
 
@@ -211,6 +205,43 @@ Unter Windows:
      ```powershell
      Restart-Service iotedge
      ```
+
+:::moniker-end
+<!--end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+* Zeigen Sie den Status der IoT Edge-Systemdienste an:
+
+   ```bash
+   sudo iotedge system status
+   ```
+
+* Zeigen Sie die Protokolle der IoT Edge-Systemdienste an:
+
+   ```bash
+   sudo iotedge system logs -- -f
+   ```
+
+* Aktivieren Sie Protokolle auf Debugebene, um ausführlichere Protokolle der IoT Edge-Systemdienste anzuzeigen:
+
+  1. Aktivieren Sie Protokolle auf Debugebene.
+
+     ```bash
+     sudo iotedge system set-log-level debug
+     sudo iotedge system restart
+     ```
+
+  1. Wechseln Sie nach dem Debuggen zu den Standardprotokollen auf Infoebene zurück.
+
+     ```bash
+     sudo iotedge system set-log-level info
+     sudo iotedge system restart
+     ```
+
+:::moniker-end
+<!-- end 1.2 -->
 
 ## <a name="check-container-logs-for-issues"></a>Überprüfen von Containerprotokollen auf Probleme
 

@@ -1,18 +1,23 @@
 ---
 title: Handbuch zur Leistung und Skalierbarkeit der Kopieraktivität
 description: Hier erfahren Sie, welche Faktoren sich entscheidend auf die Leistung auswirken, wenn Sie Daten in Azure Data Factory mithilfe der Kopieraktivität verschieben.
+services: data-factory
+documentationcenter: ''
 ms.author: jingwang
 author: linda33wj
+manager: shwang
+ms.reviewer: douglasl
 ms.service: data-factory
+ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/15/2020
-ms.openlocfilehash: 1c166b99243e5a6ee576100b8470aa38b9535c7a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: cba248d3f254c9bb97c66ff7a3d39275b4b912c4
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100387664"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102616076"
 ---
 # <a name="copy-activity-performance-and-scalability-guide"></a>Handbuch zur Leistung und Skalierbarkeit der Kopieraktivität
 
@@ -48,8 +53,8 @@ ADF bietet eine serverlose Architektur, die Parallelität auf verschiedenen Eben
 
 Diese Architektur ermöglicht es Ihnen, Pipelines zu entwickeln, die den Datenverschiebungsdurchsatz für Ihre Umgebung maximieren. Diese Pipelines nutzen die folgenden Ressourcen vollständig:
 
-* Netzwerkbandbreite
-* IOPS (E/A-Speichervorgänge pro Sekunde) und Bandbreite
+* Netzwerkbandbreite zwischen den Quell- und Zieldatenspeichern
+* Eingabe/Ausgabe-Vorgänge pro Sekunde (IOPS) und Bandbreite des Quell- oder Zieldatenspeichers
 
 Diese volle Auslastung bedeutet, dass Sie den Gesamtdurchsatz durch Messung des Mindestdurchsatzes einschätzen können, der mit den folgenden Ressourcen zur Verfügung steht:
 
@@ -57,7 +62,7 @@ Diese volle Auslastung bedeutet, dass Sie den Gesamtdurchsatz durch Messung des 
 * Zieldatenspeicher
 * Netzwerkbandbreite zwischen den Quell- und Zieldatenspeichern
 
-In der folgenden Tabelle wird die Kopierdauer berechnet. Die Dauer richtet sich nach der Datengröße und der Bandbreitenbegrenzung für Ihre Umgebung.
+In der folgenden Tabelle wird die Kopierdauer berechnet. Die Dauer richtet sich nach der Datengröße und der Bandbreitenbegrenzung des Netzwerks oder Datenspeichers für Ihre Umgebung.
 
 &nbsp;
 

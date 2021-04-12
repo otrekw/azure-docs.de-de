@@ -8,10 +8,10 @@ author: sayantanroy83
 ms.author: sroy
 ms.date: 3/08/2021
 ms.openlocfilehash: 3383af447f40ea984bce9cbc956f22ee6c5af200
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102583516"
 ---
 # <a name="get-report-api"></a>API zum Abrufen eines Berichts
@@ -39,7 +39,7 @@ Keine
 
 | **Parametername** | **Erforderlich** | **Typ** | **Beschreibung** |
 | --- | --- | --- | --- |
-| `reportId` | Nein | Zeichenfolge | Filter, mit dem Sie ausschließlich Details zu Berichten mit der in diesem Argument angegebenen `reportId` abrufen können. |
+| `reportId` | Nein | Zeichenfolge | Filter, mit dem Sie ausschließlich Details zu Berichten mit dem in diesem Argument angegebenen `reportId` abrufen können. |
 | `reportName` | Nein | Zeichenfolge | Filter, mit dem Sie ausschließlich Details zu Berichten mit dem in diesem Argument angegebenen `reportName` abrufen können. |
 | `queryId` | Nein | boolean | Vordefinierte Systemabfragen in die Antwort einschließen |
 

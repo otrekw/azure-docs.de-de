@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: 7b9ae52a0d62da6a8637f63f15d8680b54aeefd1
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 058873df989c444ebe06fc20a2f8a40fd2d3c594
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101688568"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104594545"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Dienste, die verwaltete Identitäten für Azure-Ressourcen unterstützen
 
@@ -73,7 +73,19 @@ Konfigurieren Sie die verwaltete Identität für Azure App Service anhand der fo
 | Vom System zugewiesen | Vorschau | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar |
 | Vom Benutzer zugewiesen | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar |
 
-Kubernetes mit Azure Arc-Aktivierung [unterstützt derzeit systemseitig zugewiesene Identitäten](../../azure-arc/kubernetes/connect-cluster.md#azure-arc-agents-for-kubernetes). Das Zertifikat der Identität für den verwalteten Dienst wird von allen Kubernetes-Agents mit Azure Arc-Aktivierung zur Kommunikation mit Azure verwendet.
+Kubernetes mit Azure Arc-Aktivierung [unterstützt derzeit systemseitig zugewiesene Identitäten](../../azure-arc/kubernetes/quickstart-connect-cluster.md). Das Zertifikat der Identität für den verwalteten Dienst wird von allen Kubernetes-Agents mit Azure Arc-Aktivierung zur Kommunikation mit Azure verwendet.
+
+### <a name="azure-arc-enabled-servers"></a>Server mit Azure Arc-Unterstützung
+
+| Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen | Azure Government | Azure Deutschland | Azure China 21Vianet |
+| --- | :-: | :-: | :-: | :-: |
+| Vom System zugewiesen | ![Verfügbar][check] | ![Verfügbar][check] | Nicht verfügbar | Nicht verfügbar |
+| Vom Benutzer zugewiesen | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar |
+
+Alle Azure Arc-fähigen Server verfügen über eine vom System zugewiesene Identität. Die vom System zugewiesene Identität kann auf einem Azure Arc-fähigen Server nicht deaktiviert oder geändert werden. Weitere Informationen zur Nutzung von verwalteten Identitäten auf Azure Arc-fähigen Servern finden Sie in den folgenden Ressourcen:
+
+- [Authentifizieren bei Azure-Ressourcen mit Arc-fähigen Servern](../../azure-arc/servers/managed-identity-authentication.md)
+- [Verwenden einer verwalteten Identität mit Arc-fähigen Servern](../../azure-arc/servers/security-overview.md#using-a-managed-identity-with-arc-enabled-servers)
 
 ### <a name="azure-automanage"></a>Automatische Azure-Verwaltung
 

@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/19/2019
+ms.date: 03/10/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 10444974cf31b95fccd2d11aef20bfd57fab7939
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: a6a993fdf4fd266afb9459fedd13412d8796e0a5
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92275280"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102611503"
 ---
 # <a name="oauth-20-authorization-code-flow-in-azure-active-directory-b2c"></a>OAuth 2.0-Autorisierungscodefluss in Azure Active Directory B2C
 
@@ -24,7 +24,7 @@ Durch Gewähren des OAuth 2.0-Autorisierungcodes in Apps, die auf einem Gerät i
 
 Der OAuth 2.0-Autorisierungscodefluss wird in [Abschnitt 4.1 der OAuth 2.0-Spezifikation](https://tools.ietf.org/html/rfc6749)beschrieben. Sie können ihn zum Ausführen der Authentifizierung und Autorisierung bei den meisten [Anwendungstypen](application-types.md) verwenden, einschließlich Webanwendungen, Single-Page-Webanwendungen und nativ installierter Anwendungen. Über den OAuth 2.0-Autorisierungscodeflow können Sie Zugriffstoken und Aktualisierungstoken für Ihre Anwendungen auf sichere Weise abrufen, die für den Zugriff auf mit einem [Autorisierungsserver](protocols-overview.md) geschützte Ressourcen verwendet werden können.  Mit dem Aktualisierungstoken kann der Client neue Zugriffstoken (und Aktualisierungstoken) beschaffen, nachdem das Zugriffstoken abgelaufen ist. Dies ist meist nach einer Stunde der Fall.
 
-Dieser Artikel behandelt den OAuth 2.0-Autorisierungscodeflow von **öffentlichen Clients** . Ein öffentlicher Client ist jede Clientanwendung, der nicht bei der sicheren Verwaltung der Integrität von geheimen Kennwörtern vertraut werden kann. Dazu gehören Single-Page-Webanwendungen, mobile Apps, Desktopanwendungen und im Grunde genommen jede beliebige Anwendung, die auf einem Server ausgeführt werden kann.
+Dieser Artikel behandelt den OAuth 2.0-Autorisierungscodeflow von **öffentlichen Clients**. Ein öffentlicher Client ist jede Clientanwendung, der nicht bei der sicheren Verwaltung der Integrität von geheimen Kennwörtern vertraut werden kann. Dazu gehören Single-Page-Webanwendungen, mobile Apps, Desktopanwendungen und im Grunde genommen jede beliebige Anwendung, die auf einem Server ausgeführt werden kann.
 
 > [!NOTE]
 > Wenn Sie in einer Web-App mit Azure AD B2C eine Identitätsverwaltung hinzufügen möchten, verwenden Sie [OpenID Connect](openid-connect.md) anstelle von OAuth 2.0.
@@ -72,6 +72,9 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 | prompt |Optional |Der Typ der erforderlichen Benutzerinteraktion. Gegenwärtig ist der einzige gültige Wert `login`, der den Benutzer zur Eingabe seiner Anmeldeinformationen für diese Anforderung zwingt. Einmaliges Anmelden wird nicht verwendet. |
 | code_challenge  | Empfohlen/erforderlich | Wird verwendet, um die Gewährung von Autorisierungscodes über Proof Key for Code Exchange (PKCE) zu sichern. Erforderlich, wenn `code_challenge_method` enthalten ist. Weitere Informationen finden Sie unter [PKCE RFC](https://tools.ietf.org/html/rfc7636). Dies wird jetzt für alle Anwendungstypen (native Apps, SPAs und vertrauliche Clients wie Web-Apps) empfohlen. | 
 | `code_challenge_method` | Empfohlen/erforderlich | Die Methode wird zum Codieren von `code_verifier` für den `code_challenge`-Parameter verwendet. Dieser *SOLLTE* `S256` lauten, die Spezifikation ermöglicht jedoch die Verwendung von `plain`, wenn der Client aus irgendeinem Grund SHA256 nicht unterstützt. <br/><br/>Wenn ausgeschlossen, wird angenommen, dass `code_challenge` Klartext ist, wenn `code_challenge` enthalten ist. Microsoft Identity Platform unterstützt sowohl `plain` als auch `S256`. Weitere Informationen finden Sie unter [PKCE RFC](https://tools.ietf.org/html/rfc7636). Dies ist für [Single-Page-Webanwendungen erforderlich, die den Autorisierungscodeflow verwenden](tutorial-register-spa.md).|
+| login_hint | Nein| Kann zum Vorabausfüllen des Felds für den Anmeldenamen auf der Anmeldeseite verwendet werden. Weitere Informationen finden Sie unter [Auffüllen des Anmeldenamens](direct-signin.md#prepopulate-the-sign-in-name).  |
+| domain_hint | Nein| Bietet Hinweis für Azure AD B2C zu dem sozialen Netzwerk als Identitätsanbieter, das für die Anmeldung verwendet werden soll. Wenn ein gültiger Wert enthalten ist, wird der Benutzer direkt auf die Anmeldeseite des Identitätsanbieters geleitet.  Weitere Informationen finden Sie unter [Umleiten einer Anmeldung zu einem Anbieter sozialer Netzwerke](direct-signin.md#redirect-sign-in-to-a-social-provider). |
+| Benutzerdefinierte Parameter | Nein| Benutzerdefinierte Parameter, die mit [benutzerdefinierten Richtlinien](custom-policy-overview.md) verwendet werden können. Beispiele: [URI für dynamischen Seiteninhalt](customize-ui-with-html.md?pivots=b2c-custom-policy#configure-dynamic-custom-page-content-uri) oder [OAuth2-Schlüssel-Wert-Parameter](claim-resolver-overview.md#oauth2-key-value-parameters). |
 
 An diesem Punkt wird der Benutzer aufgefordert, den Workflow des Benutzerflows abzuschließen. Dafür muss der Benutzer z.B. den Benutzernamen und das Kennwort angeben, sich mit der Identität eines sozialen Netzwerks anmelden, sich für das Verzeichnis registrieren oder andere Schritte ausführen. Die Benutzeraktionen hängen davon ab, wie der Benutzerflow definiert ist.
 
