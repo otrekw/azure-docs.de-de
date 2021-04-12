@@ -3,12 +3,12 @@ title: Übersicht über die operative Sicherung für Azure-Blobs
 description: Erfahren Sie mehr über die operative Sicherung für Azure-Blobs (Vorschau).
 ms.topic: conceptual
 ms.date: 02/16/2021
-ms.openlocfilehash: b10191c8a01d3cc7a92dee8ca9bf59a506497a60
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1f6bc98b92a2af4b05cae766a2186f2970b7133c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101743302"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105558753"
 ---
 # <a name="overview-of-operational-backup-for-azure-blobs-in-preview"></a>Übersicht über die operative Sicherung für Azure-Blobs (Vorschau)
 
@@ -22,7 +22,7 @@ Die operative Sicherung von Blobs ist eine **lokale Sicherungslösung**. Die Sic
 
 Die operative Sicherung verwendet Blobplattformfunktionen, um Ihre Daten zu schützen und eine Wiederherstellung nach Bedarf zu ermöglichen:
 
-- **Zeitpunktwiederherstellung**: Die [Zeitpunktwiederherstellung für Blobs](https://docs.microsoft.com/azure/storage/blobs/point-in-time-restore-overview) ermöglicht die Wiederherstellung von Blobdaten in einem früheren Zustand. Dafür wiederum werden die Features **vorläufiges Löschen**, **Änderungsfeed** und **Blobversionsverwaltung** verwendet, um Daten für den angegebenen Zeitraum aufzubewahren. Die operative Sicherung ermöglicht sowohl Zeitpunktwiederherstellungen als auch die zugrunde liegenden Funktionen, mit denen sichergestellt wird, dass Daten für den angegebenen Zeitraum aufbewahrt werden.
+- **Zeitpunktwiederherstellung**: Die [Zeitpunktwiederherstellung für Blobs](../storage/blobs/point-in-time-restore-overview.md) ermöglicht die Wiederherstellung von Blobdaten in einem früheren Zustand. Dafür wiederum werden die Features **vorläufiges Löschen**, **Änderungsfeed** und **Blobversionsverwaltung** verwendet, um Daten für den angegebenen Zeitraum aufzubewahren. Die operative Sicherung ermöglicht sowohl Zeitpunktwiederherstellungen als auch die zugrunde liegenden Funktionen, mit denen sichergestellt wird, dass Daten für den angegebenen Zeitraum aufbewahrt werden.
 
 - **Löschsperre**: Eine Löschsperre verhindert, dass das Speicherkonto versehentlich durch nicht autorisierte Benutzer gelöscht wird. Die operative Sicherung wendet auch automatisch eine Löschsperre an (sofern diese konfiguriert wurde), um Datenverluste zu verringern, die auftreten können, wenn das Speicherkontos gelöscht wird.
 
@@ -63,9 +63,9 @@ Bei der operativen Sicherung können Sie auswählen, ob Sie alle Blockblobs im S
 
 Für die Verwendung der operativen Sicherung für Blobs fallen keine Verwaltungs- oder Instanzgebühren an. Allerdings werden Ihnen folgende Gebühren berechnet:
 
-- Wiederherstellungen erfolgen über Zeitpunktwiederherstellungen für Blobs, daher fallen Gebühren basierend auf der Menge der verarbeiteten Daten an. Weitere Informationen finden Sie unter [Zeitpunktwiederherstellung – Preise](https://docs.microsoft.com/azure/storage/blobs/point-in-time-restore-overview#pricing-and-billing).
+- Wiederherstellungen erfolgen über Zeitpunktwiederherstellungen für Blobs, daher fallen Gebühren basierend auf der Menge der verarbeiteten Daten an. Weitere Informationen finden Sie unter [Zeitpunktwiederherstellung – Preise](../storage/blobs/point-in-time-restore-overview.md#pricing-and-billing).
 
-- Datenaufbewahrung aufgrund folgender Features: [Vorläufiges Löschen für Blobs](https://docs.microsoft.com/azure/storage/blobs/soft-delete-blob-overview), [Unterstützung für den Änderungsfeed in Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blob-change-feed) und [Blobversionsverwaltung](https://docs.microsoft.com/azure/storage/blobs/versioning-overview).
+- Datenaufbewahrung aufgrund folgender Features: [Vorläufiges Löschen für Blobs](../storage/blobs/soft-delete-blob-overview.md), [Unterstützung für den Änderungsfeed in Azure Blob Storage](../storage/blobs/storage-blob-change-feed.md) und [Blobversionsverwaltung](../storage/blobs/versioning-overview.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

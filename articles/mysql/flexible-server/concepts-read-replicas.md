@@ -1,17 +1,17 @@
 ---
 title: Lesereplikate – Azure Database for MySQL – Flexible Server
 description: 'Weitere Informationen zu Lesereplikaten in Azure Database for MySQL Flexible Server: Erstellen von Replikaten, Herstellen einer Verbindung mit Replikaten und Beenden der Replikation.'
-author: ambhatna
-ms.author: ambhatna
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/14/2021
-ms.openlocfilehash: fa7cc9b9a09bfd2bc503640272b5e7ac3a0a7b58
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e51b9667e3bb20a6bd463d3286888085a927f2c0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98251300"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105109657"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql---flexible-server"></a>Lesereplikate in Azure Database for MySQL – Flexible Server
 

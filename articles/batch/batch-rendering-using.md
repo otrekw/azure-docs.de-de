@@ -3,16 +3,19 @@ title: Verwenden von Renderingfunktionen
 description: Hier erfahren Sie mehr über die Verwendung von Azure Batch-Renderingfunktionen Testen Sie die Batch Explorer-Anwendung entweder direkt oder über ein Plug-In einer Clientanwendung.
 author: mscurrell
 ms.author: markscu
-ms.date: 03/05/2020
+ms.date: 03/12/2020
 ms.topic: how-to
-ms.openlocfilehash: a5bf4d0ed2173d048d968f60dea72a1a0c25ab05
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: dc3d2cc53b478b1ec955d8f4b3717b0407772849
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99429784"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103496625"
 ---
 # <a name="using-azure-batch-rendering"></a>Verwenden des Renderings mit Azure Batch
+
+> [!IMPORTANT]
+> Das Rendern von VM-Images und die nutzungsbasierte Lizenzierung wurden [als veraltet markiert und werden am 29. Februar 2024 eingestellt](https://azure.microsoft.com/updates/azure-batch-rendering-vm-images-licensing-will-be-retired-on-29-february-2024/). Um mit Batch zu rendern, [sollten ein benutzerdefiniertes VM-Image und eine Standardanwendungslizenz verwendet werden](batch-rendering-functionality.md#batch-pools-using-custom-vm-images-and-standard-application-licensing).
 
 Es gibt mehrere Möglichkeiten, das Rendering mit Azure Batch zu verwenden:
 

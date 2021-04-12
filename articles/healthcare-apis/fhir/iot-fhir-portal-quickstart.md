@@ -6,14 +6,14 @@ author: ms-puneet-nagpal
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: quickstart
-ms.date: 11/13/2020
+ms.date: 04/05/2021
 ms.author: punagpal
-ms.openlocfilehash: 3e293782e6f00852a51e0617a07eebd5d8c56261
-ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
+ms.openlocfilehash: 0a382ad948e7fd2efc6ab59eb94da3d6cbb210d7
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2021
-ms.locfileid: "105644845"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106443769"
 ---
 # <a name="quickstart-deploy-azure-iot-connector-for-fhir-preview-using-azure-portal"></a>Schnellstart: Bereitstellen von Azure IoT-Konnektor für FHIR (Vorschauversion) mithilfe des Azure-Portals
 
@@ -171,6 +171,11 @@ Stellen Sie die [Anwendungsvorlage für die ständige Überwachung von Patienten
 ## <a name="connect-your-iot-data-with-the-azure-iot-connector-for-fhir-preview"></a>Verbinden Ihrer IoT-Daten mit Azure IoT-Konnektor für FHIR (Vorschauversion)
 
 Nach der Bereitstellung Ihrer IoT Central-Anwendung beginnen Ihre beiden vordefinierten simulierten Geräte mit dem Generieren von Telemetriedaten. In diesem Tutorial erfassen Sie die Telemetriedaten vom Simulator *Smart Vitals Patch* in FHIR über Azure IoT-Konnektor für FHIR. Wenn Sie Ihre IoT-Daten in Azure IoT-Konnektor für FHIR exportieren möchten, sollten Sie einen [fortlaufenden Datenexport in IoT Central einrichten](../../iot-central/core/howto-export-data.md). Wir müssen zuerst eine Verbindung mit dem Ziel herstellen und dann einen Datenexport Auftrag erstellen, der fortlaufend ausgeführt wird: 
+
+> [!NOTE]
+> Wählen Sie in den IOT Central App-Einstellungen für diesen Abschnitt **Datenexport** im Vergleich zu **Datenexport (Legacy)** aus.
+
+[![IOT Central Daten Export Einstellungen](media/quickstart-iot-fhir-portal/iot-central-data-export-dashboard.png)](media/quickstart-iot-fhir-portal/iot-central-data-export-dashboard.png#lightbox)
 
 Erstellen Sie ein neues Ziel:
 - Wechseln Sie zur Registerkarte **Ziele** , und erstellen Sie ein neues Ziel.

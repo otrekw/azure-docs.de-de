@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 12/24/2019
 ms.openlocfilehash: 032c070a9485fc4720ae7966a0991bc0c5ae3921
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104867847"
 ---
 # <a name="run-apache-hive-queries-using-hdinsight-net-sdk"></a>Ausführen von Apache Hive-Abfragen per HDInsight .NET-SDK
@@ -139,7 +139,7 @@ Die Ausgabe der Anwendung sollte Folgendem ähneln:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel erfahren Sie, wie Sie Apache Hive-Abfragen mit dem HDInsight .NET SDK übermitteln. Weitere Informationen finden Sie in den folgenden Artikeln:
+In diesem Artikel erfahren Sie, wie Sie Apache Hive-Abfragen mit dem HDInsight .NET SDK übermitteln. Weitere Informationen erhalten Sie in den folgenden Artikeln:
 
 * [Erste Schritte mit Azure HDInsight](apache-hadoop-linux-tutorial-get-started.md)
 * [Erstellen von Apache Hadoop-Clustern in HDInsight](../hdinsight-hadoop-provision-linux-clusters.md)

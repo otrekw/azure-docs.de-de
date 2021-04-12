@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 03/02/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions, contperf-fy21q1
-ms.openlocfilehash: fcb678efe29178784c9233e79b307f705c40e3f7
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 1c3d9b286a8262efa126ba9c661c50dd88e78b64
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102518675"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103573471"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>Übersicht zu Isolation und Datenschutz bei virtuellen Netzwerken
 
@@ -36,7 +36,6 @@ In diesem Artikel wird vorausgesetzt, dass Sie mit den folgenden Themen vertraut
 + [Azure Private Link](how-to-configure-private-link.md)
 + [Netzwerksicherheitsgruppen (NSGs)](../virtual-network/network-security-groups-overview.md):
 + [Netzwerkfirewalls](../firewall/overview.md)
-
 ## <a name="example-scenario"></a>Beispielszenario
 
 In diesem Abschnitt erfahren Sie, wie ein Netzwerkszenario grundsätzlich eingerichtet wird, um die Azure Machine Learning-Kommunikation mit privaten IP-Adressen zu schützen.
@@ -62,8 +61,8 @@ In den nächsten fünf Abschnitten wird gezeigt, wie Sie das oben beschriebene N
 1. [**Trainingsumgebung schützen**](#secure-the-training-environment)
 1. [**Rückschlussumgebung schützen**](#secure-the-inferencing-environment)
 1. [**Studio-Funktionalität aktivieren**](#optional-enable-studio-functionality) (optional)
-1. [**Firewalleinstellungen konfigurieren**](#configure-firewall-settings)
-
+1. [**Firewalleinstellungen**](#configure-firewall-settings) konfigurieren
+1. [DNS-Namensauflösung](#custom-dns) konfigurieren
 ## <a name="secure-the-workspace-and-associated-resources"></a>Schützen des Arbeitsbereichs und zugehöriger Ressourcen
 
 Führen Sie die folgenden Schritte aus, um Ihren Arbeitsbereich und zugehörige Ressourcen zu schützen. Danach können Ihre Dienste im virtuellen Netzwerk kommunizieren.
@@ -186,3 +185,5 @@ Dieser Artikel ist der erste Teil einer fünfteiligen Serie zu virtuellen Netzwe
 * [Teil 3: Schützen der Trainingsumgebung](how-to-secure-training-vnet.md)
 * [Teil 4: Schützen der Rückschlussumgebung](how-to-secure-inferencing-vnet.md)
 * [Teil 5: Verwenden von Studio in einem virtuellen Netzwerk](how-to-enable-studio-virtual-network.md)
+
+Sehen Sie sich ebenso den Artikel zur Verwendung des [benutzerdefinierten DNS](how-to-custom-dns.md) für die Namensauflösung an.

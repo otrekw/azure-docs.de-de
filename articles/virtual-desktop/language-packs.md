@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: how-to
 ms.date: 12/03/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: dfedec85208ef9afaa58db2b200dc9f9988a845b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+manager: femila
+ms.openlocfilehash: eaf6fc789020553b80967341cc9219a30ffce749
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101709239"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106446110"
 ---
 # <a name="add-language-packs-to-a-windows-10-multi-session-image"></a>Hinzufügen von Language Packs zu einem Image für Windows 10 (mehrere Sitzungen)
 
@@ -54,6 +54,7 @@ Sie benötigen folgende Komponenten, um die Images für Windows 10 Enterprise (
           - [Windows 10, Version 2004 oder 20H2 **10C** LXP-ISO](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2010C.iso)
           - [Windows 10, Version 2004 oder 20H2 **11C** LXP-ISO](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2011C.iso)
           - [Windows 10, Version 2004 oder 20H2 **1C** LXP ISO](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2101C.iso)
+          - [Windows 10, Version 2004 oder 20H2 **2C** LXP-ISO](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2102C.iso)
 
 - Eine Azure Files-Freigabe oder eine Dateifreigabe auf einer Windows-Dateiserver-VM
 
@@ -264,4 +265,4 @@ Nachdem ein Benutzer seine Spracheinstellungen geändert hat, muss er sich von s
 
 Wenn Sie etwas über bekannte Probleme bei Language Packs erfahren möchten, finden Sie weitere Informationen unter [Hinzufügen von Sprachpaketen in Windows 10, Version 1803 und höher: Bekannte Probleme](/windows-hardware/manufacture/desktop/language-packs-known-issue).
 
-Wenn Sie weitere Fragen zu Windows 10 Enterprise (mehrere Sitzungen) haben, sehen Sie sich die Informationen unter [Häufig gestellte Fragen](windows-10-multisession-faq.md) an.
+Wenn Sie weitere Fragen zu Windows 10 Enterprise (mehrere Sitzungen) haben, sehen Sie sich die Informationen unter [Häufig gestellte Fragen](windows-10-multisession-faq.yml) an.

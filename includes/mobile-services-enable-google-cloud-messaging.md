@@ -9,10 +9,10 @@ ms.date: 04/06/2018
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: b32ff0926aa2b797bdb8dfcbb01cf845080a0ce9
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93376160"
 ---
 1. Navigieren Sie zur [Google Developers Console](https://console.developers.google.com/cloud-resource-manager), und melden Sie sich mit den Anmeldeinformationen Ihres Google-Kontos an. 
@@ -29,10 +29,10 @@ ms.locfileid: "93376160"
 6. Wählen Sie im Dashboard auf der Kachel **APIs** die Option **Go to APIs overview** (Zur API-Übersicht wechseln) aus. 
 
     ![API-Übersichtslink](./media/mobile-services-enable-google-cloud-messaging/go-to-api-overview.png)
-7. Wählen Sie auf der **API** -Seite **ENABLE APIS AND SERVICES** (APIS UND DIENSTE AKTIVIEREN) aus. 
+7. Wählen Sie auf der **API**-Seite **ENABLE APIS AND SERVICES** (APIS UND DIENSTE AKTIVIEREN) aus. 
 
     ![Schaltfläche „Enable APIs and Services“ (APIs und Dienste aktivieren)](./media/mobile-services-enable-google-cloud-messaging/enable-api-services-button.png)
-8. Suchen Sie **Google Cloud Messaging** , und wählen Sie es aus. 
+8. Suchen Sie **Google Cloud Messaging**, und wählen Sie es aus. 
 
     ![Suchen Sie Google Cloud Messaging, und wählen Sie es aus.](./media/mobile-services-enable-google-cloud-messaging/search-select-gcm.png)
 9. Um Google Cloud Messaging für das Projekt zu aktivieren, wählen Sie **AKTIVIEREN** aus.
