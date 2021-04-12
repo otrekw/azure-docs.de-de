@@ -1,24 +1,14 @@
 ---
 title: Häufig gestellte Fragen zu Defender für IoT
 description: Hier finden Sie Antworten auf die am häufigsten gestellten Fragen zu Features und Diensten zu Azure Defender für IoT.
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: rkarlin
-manager: rkarlin
-editor: ''
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 10/07/2020
-ms.author: rkarlin
-ms.openlocfilehash: 678b50ffb2df2cd16312548109b93f6f1a7f08ff
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.date: 03/02/2021
+ms.openlocfilehash: 0ce8ded3eea344d72679e0f8b805f45b00279b58
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98247464"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104778592"
 ---
 # <a name="azure-defender-for-iot-frequently-asked-questions"></a>Häufig gestellte Fragen zu Azure Defender für IoT
 
@@ -57,23 +47,17 @@ Zum Beispiel:
 
 ## <a name="how-does-defender-for-iot-compare-to-the-competition"></a>Wie hebt sich Defender für IoT vom Wettbewerb ab?
 
-Andere Lösungen bieten eine Reihe von Funktionen, die es Kunden ermöglichen, ihre eigenen Lösungen zu erstellen. Defender für IoT hingegen bietet eine einzigartige End-to-End-IoT-Sicherheitslösung, die einen umfassenden Überblick über die Sicherheit aller Ihrer zugehörigen Azure-Ressourcen bietet. Azure ermöglicht eine schnelle Bereitstellung und vollständige Integration mit IoT Hub-Modulzwillingen für eine einfache Integration in bestehende Geräteverwaltungstools.
+Azure Defender für IoT bietet umfassende Sicherheit auf allen IoT-/OT-Geräten. Für **Endbenutzerorganisationen** bietet Azure Defender für IoT Sicherheit auf Netzwerkebene ohne Agents, die schnell bereitgestellt werden kann, mit verschiedenen proprietären OT-Geräten und Windows-Legacysystemen funktioniert und mit Azure Sentinel und anderen SOC-Tools interagiert. Die Bereitstellung kann vollständig lokal oder in mit Azure verbundenen Umgebungen erfolgen. Für **Hersteller von IoT-Geräten** bietet Azure Defender für IoT einfache Agents zum Integrieren von Sicherheit auf Geräteebene in neue IoT-/OT-Initiativen.
 
+## <a name="do-i-have-to-be-an-azure-customer"></a>Muss ich Azure-Kunde sein?
 
-## <a name="do-i-have-to-be-an-azure-iot-customer"></a>Muss ich Azure-IoT-Kunde sein?
+Nein, für die Version von Azure Defender für IoT ohne Agents müssen Sie kein Azure-Kunde sein. Wenn Sie jedoch Warnungen an Azure Sentinel senden, Netzwerksensoren bereitstellen und deren Integrität über die Cloud überwachen sowie automatische Updates zu Software- und Bedrohungsinformationen erhalten möchten, müssen Sie die Sensoren über Azure IoT Hub mit Azure verbinden.
 
-Ja. In mit der Cloud verbundenen Bereitstellungen nutzt Azure Defender für IoT die Azure IoT-Konnektivität und -Infrastruktur.
+Für die Version von Azure Defender für IoT mit Agents müssen Sie in jedem Fall Azure-Kunde sein.
+
 ## <a name="can-i-create-my-own-alerts"></a>Kann ich meine eigenen Warnungen erstellen?
 
-Ja. Sie können eine benutzerdefinierte Warnung für vordefinierte Verhaltensweisen wie IP-Adresse und offene Ports festlegen. Weitere Informationen zu benutzerdefinierten Warnungen und deren Ausführung finden Sie unter [Erstellen von benutzerdefinierten Warnungen](quickstart-create-custom-alerts.md).
-
-## <a name="where-can-i-see-logs-can-i-customize-logs"></a>Wo kann ich Protokolle sehen? Kann ich Protokolle anpassen?
-
-- Warnungen und Empfehlungen können Sie über Ihren angeschlossenen Log Analytics-Arbeitsbereich anzeigen. Im Arbeitsbereich können Sie die Speichergröße und die Dauern konfigurieren.
-
-- Rohdaten von Ihrem Sicherheits-Agent können auch in Ihrem Log Analytics-Konto gespeichert werden. Berücksichtigen Sie Größe, Dauer, Speicherbedarf und damit verbundene Kosten, bevor Sie die Konfiguration dieser Option ändern.
-
-
+Ja, Sie können benutzerdefinierte Warnungen erstellen, die auf mehreren Parametern, z. B. IP-/MAC-Adresse, Protokolltyp, Klasse, Dienst, Funktion, Befehl usw., sowie auf in den Nutzdaten enthaltenen Werten benutzerdefinierter Tags basieren.  Weitere Informationen zu benutzerdefinierten Warnungen und deren Erstellung finden Sie unter [Erstellen benutzerdefinierter Warnungen](quickstart-create-custom-alerts.md).
 
 ## <a name="what-happens-when-the-internet-connection-stops-working"></a>Was geschieht, wenn die Internetverbindung nicht mehr funktioniert?
 

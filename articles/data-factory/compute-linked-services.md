@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nabhishek
 ms.author: abnarain
 ms.date: 05/08/2019
-ms.openlocfilehash: 71e02ea1265a81da7dd2e85549f6d1390a46311a
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: b9f7cce39e4f51aea7fc4db5ca37ee054f42c5cb
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104952234"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078642"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Von Azure Data Factory unterstützte Compute-Umgebungen
 
@@ -436,14 +436,15 @@ Sie können einen mit Azure Machine Learning verknüpften Dienst erstellen, um e
 ```
 
 ### <a name="properties"></a>Eigenschaften
+
 | Eigenschaft               | BESCHREIBUNG                              | Erforderlich                                 |
 | ---------------------- | ---------------------------------------- | ---------------------------------------- |
 | type                   | Legen Sie die type-Eigenschaft auf **AzureMLService**. | Ja                                      |
 | subscriptionId         | Azure-Abonnement-ID              | Ja                                      |
 | resourceGroupName      | name | Ja                                      |
 | mlWorkspaceName        | Name des Azure Machine Learning-Arbeitsbereichs | Ja  |
-| servicePrincipalId     | Geben Sie die Client-ID der Anwendung an.     | Nein |
-| servicePrincipalKey    | Geben Sie den Schlüssel der Anwendung an.           | Nein |
+| servicePrincipalId     | Geben Sie die Client-ID der Anwendung an.     | Ja |
+| servicePrincipalKey    | Geben Sie den Schlüssel der Anwendung an.           | Ja |
 | tenant                 | Geben Sie die Mandanteninformationen (Domänenname oder Mandanten-ID) für Ihre Anwendung an. Diese können Sie abrufen, indem Sie im Azure-Portal mit der Maus auf den Bereich oben rechts zeigen. | Erforderlich, wenn updateResourceEndpoint angegeben wird |
 | connectVia             | Die Integration Runtime, mit der die Aktivitäten diesem verknüpften Dienst zugeteilt werden. Sie können Azure Integration Runtime oder selbstgehostete Integration Runtime verwenden. Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. | Nein |
 

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 2/25/2021
-ms.openlocfilehash: 2008e014e9f160b643ed5f591fff81c0b215e24a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 8f300f214ed36b7a5257b7276364027b91edc746
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102175072"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105048101"
 ---
 # <a name="register-and-scan-teradata-source-preview"></a>Registrieren und Überprüfen einer Teradata-Quelle (Vorschauversion)
 
@@ -25,7 +25,7 @@ Die Teradata-Quelle unterstützt die **vollständige Überprüfung**, um Metadat
 ## <a name="prerequisites"></a>Voraussetzungen
 
 1.  Richten Sie die neueste [selbstgehostete Integration Runtime](https://www.microsoft.com/download/details.aspx?id=39717) ein.
-    Weitere Informationen finden Sie unter [Erstellen und Konfigurieren einer selbstgehosteten Integration Runtime](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime).
+    Weitere Informationen finden Sie unter [Erstellen und Konfigurieren einer selbstgehosteten Integration Runtime](../data-factory/create-self-hosted-integration-runtime.md).
 
 2.  Stellen Sie sicher, dass [JDK 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) auf dem virtuellen Computer installiert ist, auf dem auch die selbstgehostete Integration Runtime installiert ist.
 
@@ -70,7 +70,7 @@ Gehen Sie auf dem Bildschirm **Register sources (Teradata)** (Quellen registrier
 
 Gehen Sie zum Erstellen und Ausführen einer neuen Überprüfung wie folgt vor:
 
-1.  Klicken Sie im Verwaltungscenter auf **Integration Runtimes**. Vergewissern Sie sich, dass eine selbstgehosteten Integration Runtime eingerichtet ist. Falls sie nicht eingerichtet ist, richten Sie mit den [hier](https://docs.microsoft.com/azure/purview/manage-integration-runtimes) beschriebenen Schritten eine selbstgehostete Integration Runtime ein.
+1.  Klicken Sie im Verwaltungscenter auf **Integration Runtimes**. Vergewissern Sie sich, dass eine selbstgehosteten Integration Runtime eingerichtet ist. Falls sie nicht eingerichtet ist, richten Sie mit den [hier](./manage-integration-runtimes.md) beschriebenen Schritten eine selbstgehostete Integration Runtime ein.
 
 2.  Navigieren Sie zu **Quellen**.
 
@@ -90,7 +90,7 @@ Gehen Sie zum Erstellen und Ausführen einer neuen Überprüfung wie folgt vor:
     -   im Eingabefeld „Benutzername“ einen Benutzernamen zur Herstellung der Verbindung mit dem Datenbankserver eingeben.
     -   das Kennwort für den Datenbankserver im geheimen Schlüssel speichern.
 
-        Weitere Informationen zu Anmeldeinformationen finden Sie [hier](https://docs.microsoft.com/azure/purview/manage-credentials).
+        Weitere Informationen zu Anmeldeinformationen finden Sie [hier](./manage-credentials.md).
 
 6.  **Schema**: Eine durch Semikolons getrennte Liste mit einer Teilmenge von Schemas, die importiert werden sollen. Beispiel: Schema1; Schema2. Ist diese Liste leer, werden alle Benutzerschemas importiert. Alle Systemschemas (beispielsweise „SysAdmin“) und Objekte werden standardmäßig ignoriert. Wenn die Liste leer ist, werden alle verfügbaren Schemas importiert.
 

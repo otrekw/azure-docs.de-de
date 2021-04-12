@@ -7,12 +7,12 @@ ms.reviewer: ''
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/4/2020
-ms.openlocfilehash: 825204fe40125a65e8e6f27c6973417813700a9e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4a0258d5e448c59baa1cd63e98058fe7116a8485
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101743361"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105566114"
 ---
 # <a name="migrate-default-hive-metastore-db-to-external-metastore-db"></a>Migrieren der standardmäßigen Hive-Metastore-Datenbank zu einer externen Metastore-Datenbank
 
@@ -46,7 +46,7 @@ Diese Aktion ähnelt dem Ersetzen von Symlinks durch ihre vollständigen Pfade.
 
 Nur nach dem 15.10.2020 erstellte HDInsight-Cluster unterstützen SQL-Export-/Importfunktionen für die standardmäßige Hive-Metastore-Datenbank über `sqlpackage`.
 
-1. Installieren Sie [sqlpackage](https://docs.microsoft.com/sql/tools/sqlpackage-download#get-sqlpackage-net-core-for-linux) im Cluster.
+1. Installieren Sie [sqlpackage](/sql/tools/sqlpackage-download#get-sqlpackage-net-core-for-linux) im Cluster.
 
 2. Exportieren Sie mit dem folgenden Befehl die standardmäßige Metastore-Datenbank in eine BACPAC-Datei.
 
@@ -94,7 +94,7 @@ QUERY="SELECT DBS.NAME, TBLS.TBL_NAME, SDS.LOCATION FROM SDS, TBLS, DBS WHERE TB
 sudo python "$SCRIPT" --query "$QUERY" > $OUTPUT_FILE
 ```
 
-## <a name="further-reading"></a>Weitere Informationsquellen
+## <a name="further-reading"></a>Weiterführende Themen
 
 * [Migrieren von Azure HDInsight 3.6-Hive-Workloads zu HDInsight 4.0](./apache-hive-migrate-workloads.md)
 * [Hive-Workloadmigration zu neuem Konto in Azure Storage](./hive-migration-across-storage-accounts.md)

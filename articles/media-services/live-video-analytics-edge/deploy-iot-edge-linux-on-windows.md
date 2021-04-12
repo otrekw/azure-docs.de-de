@@ -3,16 +3,16 @@ title: 'Bereitstellen für IoT Edge für Linux unter Windows: Azure'
 description: Dieser Artikel enthält eine Anleitung für die Bereitstellung für IoT Edge für Linux auf einem Windows-Gerät.
 ms.topic: how-to
 ms.date: 02/18/2021
-ms.openlocfilehash: 9ec28c62ca804137ede3cd60d1980e55fbaa2807
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: d5c3d89ae7447b062714ad90be117a6426a39581
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102618133"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105561082"
 ---
 # <a name="deploy-to-an-iot-edge-for-linux-on-windows-eflow-device"></a>Bereitstellen für IoT Edge für Linux auf einem Windows-Gerät (EFLOW)
 
-In diesem Artikel wird beschrieben, wie Sie Live Video Analytics auf einem Edgegerät bereitstellen, das über [IoT Edge für Linux unter Windows (EFLOW)](https://docs.microsoft.com/azure/iot-edge/iot-edge-for-linux-on-windows) verfügt. Nachdem Sie die Schritte in diesem Dokument befolgt haben, können Sie einen [Mediengraphen](media-graph-concept.md) ausführen, mit dem Bewegung in einem Video erkannt wird und die entsprechenden Ereignisse an den IoT-Hub in der Cloud ausgegeben werden. Anschließend können Sie den Mediengraphen für erweiterte Szenarien einsetzen und die Leistungsstärke von Live Video Analytics für Ihr Windows-basiertes IoT Edge-Gerät nutzen.
+In diesem Artikel wird beschrieben, wie Sie Live Video Analytics auf einem Edgegerät bereitstellen, das über [IoT Edge für Linux unter Windows (EFLOW)](../../iot-edge/iot-edge-for-linux-on-windows.md) verfügt. Nachdem Sie die Schritte in diesem Dokument befolgt haben, können Sie einen [Mediengraphen](media-graph-concept.md) ausführen, mit dem Bewegung in einem Video erkannt wird und die entsprechenden Ereignisse an den IoT-Hub in der Cloud ausgegeben werden. Anschließend können Sie den Mediengraphen für erweiterte Szenarien einsetzen und die Leistungsstärke von Live Video Analytics für Ihr Windows-basiertes IoT Edge-Gerät nutzen.
 
 ## <a name="prerequisites"></a>Voraussetzungen 
 
@@ -21,7 +21,7 @@ In diesem Artikel wird beschrieben, wie Sie Live Video Analytics auf einem Edgeg
     > [!NOTE]
     > Sie benötigen ein Azure-Abonnement mit Berechtigungen zum Erstellen von Dienstprinzipalen. (Die **Rolle „Besitzer“** stellt diese Berechtigungen bereit.) Wenn Sie nicht über die richtigen Berechtigungen verfügen, sollten Sie Ihren Kontoadministrator bitten, Ihnen die richtigen Berechtigungen zu erteilen.
 * Installation von [Visual Studio Code](https://code.visualstudio.com/) auf Ihrem Entwicklungscomputer. Stellen Sie sicher, dass Sie über die [Azure IoT Tools-Erweiterung](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) verfügen.
-* Weitere Informationen finden Sie unter [Was ist Azure IoT Edge für Linux unter Windows (Vorschau)?](https://aka.ms/AzEFLOW-docs).
+* Weitere Informationen finden Sie unter [Was ist Azure IoT Edge für Linux unter Windows (Vorschau)?](../../iot-edge/iot-edge-for-linux-on-windows.md).
 
 ## <a name="deployment-steps"></a>Bereitstellungsschritte
 
@@ -29,9 +29,9 @@ Hier ist der Inhalt und Ablauf des Dokuments dargestellt. Sie können fünf einf
 
 :::image type="content" source="./media/deploy-iot-edge-linux-on-windows/eflow.png" alt-text="Diagramm: IoT Edge für Linux unter Windows (EFLOW)":::
 
-1. [Installieren Sie EFLOW](https://aka.ms/AzEFLOW-install) auf Ihrem Windows-Gerät. 
+1. [Installieren Sie EFLOW](../../iot-edge/how-to-install-iot-edge-on-windows.md) auf Ihrem Windows-Gerät. 
 
-    1. Falls Sie Ihren Windows-PC verwenden, wird auf der Startseite von [Windows Admin Center](https://docs.microsoft.com/windows-server/manage/windows-admin-center/overview) unter der Liste mit den Verbindungen eine Verbindung mit dem lokalen Host angezeigt. Diese stellt den PC dar, auf dem Sie Windows Admin Center ausführen. 
+    1. Falls Sie Ihren Windows-PC verwenden, wird auf der Startseite von [Windows Admin Center](/windows-server/manage/windows-admin-center/overview) unter der Liste mit den Verbindungen eine Verbindung mit dem lokalen Host angezeigt. Diese stellt den PC dar, auf dem Sie Windows Admin Center ausführen. 
     1. Alle weiteren von Ihnen verwalteten Server, PCs oder Cluster werden hier ebenfalls aufgeführt.
     1. Sie können Windows Admin Center verwenden, um Azure EFLOW entweder auf Ihrem lokalen Gerät oder auf verwalteten Remotegeräten zu installieren und zu verwalten. In diesem Leitfaden fungiert die Verbindung mit dem lokalen Host als Zielgerät für die Bereitstellung von Azure IoT Edge für Linux unter Windows. Aus diesem Grund ist „Localhost“ auch als IoT Edge-Gerät aufgeführt.
 
@@ -110,4 +110,3 @@ Hier ist der Inhalt und Ablauf des Dokuments dargestellt. Sie können fünf einf
 * Führen Sie [KI für Livevideos](use-your-model-quickstart.md#overview) aus. (Sie können die Erfüllung der Voraussetzungen überspringen, da Sie dies oben bereits durchgeführt haben.)
 * Verwenden Sie unsere [VS Code-Erweiterung](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.live-video-analytics-edge), um weitere Mediengraphen anzuzeigen.
 * Verwenden Sie eine [IP-Kamera](https://en.wikipedia.org/wiki/IP_camera) mit RTSP-Unterstützung anstelle des RTSP-Simulators. IP-Kameras, die RTSP unterstützen, finden Sie auf der [Seite mit den ONVIF-konformen Produkten](https://www.onvif.org/conformant-products/). Suchen Sie nach Geräten, die mit den Profilen G, S oder T konform sind.
-

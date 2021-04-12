@@ -3,19 +3,14 @@ title: Übersicht über Azure Disk Backup
 description: Erfahren Sie mehr über die Azure Disk Backup-Lösung.
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: 4db2a5f3f02322f18fcf9203c3560905cde86996
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9449fdc57909cb143d381ae074913c79d24c8893
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98915507"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105107294"
 ---
-# <a name="overview-of-azure-disk-backup-in-preview"></a>Übersicht über Azure Disk Backup (Vorschau)
-
->[!IMPORTANT]
->Die Vorschauversion von Azure Disk Backup wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Informationen zur regionalen Verfügbarkeit finden Sie in der [Supportmatrix](disk-backup-support-matrix.md).
->
->[Füllen Sie dieses Formular aus](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR1vE8L51DIpDmziRt_893LVUNFlEWFJBN09PTDhEMjVHS05UWFkxUlUzUS4u), wenn Sie sich für die Vorschau registrieren möchten.
+# <a name="overview-of-azure-disk-backup"></a>Übersicht über Azure Disk Backup
 
 Azure Disk Backup ist eine native, cloudbasierte Sicherungslösung, die Ihre Daten auf verwalteten Datenträgern schützt. Es handelt sich um eine einfache, sichere und kostengünstige Lösung, mit der Sie den Schutz für verwaltete Datenträger in wenigen Schritten konfigurieren können. Damit wird sichergestellt, dass Sie Ihre Daten in einem Notfallszenario wiederherstellen können.
 

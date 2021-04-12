@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/17/2020
 ms.author: jeedes
-ms.openlocfilehash: 29384457f946eff5708c319e14161d670adf6ca8
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 5fe539521213a6c25804c5c0db1e6b18646cceea
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98729872"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105563836"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-clever"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Clever
 
@@ -118,7 +118,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 ## <a name="configure-clever-sso"></a>Konfigurieren des einmaligen Anmeldens für Clever
 
-Befolgen Sie die Anweisungen unter [diesem Link](https://support.clever.com/hc/articles/205889768-Single-Sign-On-SSO-Log-in-with-Office-365-Azure-), um einmaliges Anmelden aufseiten von Clever zu konfigurieren.
+Befolgen Sie die Anweisungen unter [diesem Link](https://support.clever.com/hc/s/articles/205889768), um einmaliges Anmelden aufseiten von Clever zu konfigurieren.
 
 ### <a name="create-clever-test-user"></a>Erstellen eines Clever-Testbenutzers
 

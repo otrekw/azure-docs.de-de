@@ -9,10 +9,10 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 10/15/2017
 ms.openlocfilehash: 42c592e6aede4537dc983fd2cff043a878f81f1c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100593106"
 ---
 # <a name="create-logic-app-workflows-from-prebuilt-templates"></a>Erstellen von Logik-App-Workflows aus vorgefertigten Vorlagen
@@ -97,9 +97,9 @@ Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein 
    > [!NOTE] 
    > Viele Vorlagen enthalten Connectors, die unter Umständen bereits über vorab aufgefüllte erforderliche Eigenschaften verfügen. Für einige Vorlagen kann aber trotzdem das Angeben von Werten erforderlich sein, bevor Sie die Logik-App richtig bereitstellen können. Wenn Sie versuchen, die Bereitstellung ohne das Ausfüllen der fehlenden Eigenschaftenfelder durchzuführen, erhalten Sie eine Fehlermeldung. 
 
-## <a name="update-logic-apps-with-templates"></a>Aktualisieren von Logik-Apps mit Vorlagen
+## <a name="update-logic-apps-with-templates&quot;></a>Aktualisieren von Logik-Apps mit Vorlagen
 
-1. Suchen oder öffnen Sie Ihre Logik-App im [Azure-Portal](https://portal.azure.com "Azure-Portal") im Logik-App-Designer.
+1. Suchen oder öffnen Sie Ihre Logik-App im [Azure-Portal](https://portal.azure.com &quot;Azure-Portal") im Logik-App-Designer.
 
 2. Wählen Sie in der Symbolleiste des Designers die Option **Vorlagen**. Bei dieser Aktion werden alle nicht gespeicherten Änderungen verworfen, und es wird eine Warnmeldung angezeigt, damit Sie das Fortfahren bestätigen können. Wählen Sie **OK**, um den Vorgang zu bestätigen. Beispiel:
 

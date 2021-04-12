@@ -57,4 +57,4 @@ Unten sind die wichtigsten Szenarien aufgeführt, die bewirken, dass ein Media S
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen dazu, wie Sie ein Speicherkonto an Ihr Media Services-Konto anfügen, finden Sie unter [Erstellen eines Kontos](./create-account-howto.md).
+Informationen dazu, wie Sie ein Speicherkonto an Ihr Media Services-Konto anfügen, finden Sie unter [Erstellen eines Kontos](./account-create-how-to.md).

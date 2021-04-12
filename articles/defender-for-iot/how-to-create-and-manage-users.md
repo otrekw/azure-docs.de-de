@@ -1,18 +1,14 @@
 ---
 title: Erstellen und Verwalten von Benutzern
 description: Erfahren Sie, wie Sie Benutzer von Sensoren und der lokalen Verwaltungskonsole erstellen und verwalten. Benutzern kann eine der Rollen „Administrator“, „Sicherheitsanalyst“ oder „Benutzer mit Lesezugriff“ zugewiesen werden.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
-ms.date: 1/3/2021
+ms.date: 03/03/2021
 ms.topic: article
-ms.service: azure
-ms.openlocfilehash: fd0c7b74bea979737644824f93b4dce7a2364b99
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 2afc3cb2b9cfc0ac6b75c98198d9f0965b6dc04c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100522341"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104779017"
 ---
 # <a name="about-defender-for-iot-console-users"></a>Grundlegendes zu Benutzern der Defender für IoT-Konsole
 
@@ -162,7 +158,7 @@ Zwei LDAP-basierte Authentifizierungstypen werden unterstützt:
 
 ### <a name="active-directory-and-defender-for-iot-permissions"></a>Berechtigungen für Active Directory und Defender für IoT
 
-Sie können den hier definierten Active Directory-Gruppen bestimmte Berechtigungsebenen zuordnen. Konfigurieren Sie z. B. eine bestimmte Active Directory-Gruppe, und weisen Sie allen Benutzern in der Gruppe die Berechtigungen für den Lesezugriff zu. Einzelheiten hierzu finden Sie unter [Erstellen und Verwalten von Benutzern](how-to-create-and-manage-users.md).
+Sie können den hier definierten Active Directory-Gruppen bestimmte Berechtigungsebenen zuordnen. Konfigurieren Sie z. B. eine bestimmte Active Directory-Gruppe, und weisen Sie allen Benutzern in der Gruppe die Berechtigungen für den Lesezugriff zu.
 
 So konfigurieren Sie Active Directory
 
@@ -170,11 +166,11 @@ So konfigurieren Sie Active Directory
 
     :::image type="content" source="media/how-to-setup-active-directory/ad-system-settings-v2.png" alt-text="Anzeigen Ihrer Active Directory-Systemeinstellungen":::
 
-1. Wählen Sie im Bereich **Systemeinstellungen** die Option **Active Directory** aus.
+2. Wählen Sie im Bereich **Systemeinstellungen** die Option **Active Directory** aus.
 
     :::image type="content" source="media/how-to-setup-active-directory/ad-configurations-v2.png" alt-text="Bearbeiten Ihrer Active Directory-Konfigurationen":::
 
-1. Wählen Sie im Dialogfeld **Edit Active Directory Configuration** (Active Directory Konfiguration bearbeiten) die Option **Active Directory Integration Enabled (Active Directory-Integration aktiviert)**  > **Speichern** aus. Das Dialogfeld **Edit Active Directory Configuration** (Active Directory Konfiguration bearbeiten) wird erweitert, sodass Sie nun die Parameter zum Konfigurieren von Active Directory eingeben können.
+3. Wählen Sie im Dialogfeld **Edit Active Directory Configuration** (Active Directory Konfiguration bearbeiten) die Option **Active Directory Integration Enabled (Active Directory-Integration aktiviert)**  > **Speichern** aus. Das Dialogfeld **Edit Active Directory Configuration** (Active Directory Konfiguration bearbeiten) wird erweitert, sodass Sie nun die Parameter zum Konfigurieren von Active Directory eingeben können.
 
     :::image type="content" source="media/how-to-setup-active-directory/ad-integration-enabled-v2.png" alt-text="Eingeben der Parameter zum Konfigurieren von Active Directory":::
 
@@ -183,7 +179,7 @@ So konfigurieren Sie Active Directory
     > - Verwenden Sie für alle Active Directory-Parameter nur Kleinbuchstaben. Verwenden Sie selbst dann Kleinbuchstaben, wenn bei den Konfigurationen in Active Directory Großbuchstaben verwendet werden.
     > - Es ist nicht möglich, sowohl LDAP als auch LDAPS für dieselbe Domäne zu konfigurieren. Sie können jedoch beide gleichzeitig für verschiedene Domänen verwenden.
 
-1. Legen Sie die Parameter für Active Directory-Server wie folgt fest:
+4. Legen Sie die Parameter für Active Directory-Server wie folgt fest:
 
    | Serverparameter | BESCHREIBUNG |
    |--|--|
@@ -193,11 +189,15 @@ So konfigurieren Sie Active Directory
    | Active Directory-Gruppen | Geben Sie die Gruppennamen ein, die in der Active Directory-Konfiguration auf dem LDAP-Server definiert sind. |
    | Vertrauenswürdige Domänen | Wenn Sie vertrauenswürdige Domänen hinzufügen möchten, geben Sie den Domänennamen und den Verbindungstyp an. <br />Vertrauenswürdige Domänen können nur für Benutzer konfiguriert werden, die unter „Benutzer“ definiert wurden. |
 
+#### <a name="activedirectory-groups-for-the-on-premises-management-console"></a>ActiveDirectory-Gruppen für die lokale Verwaltungskonsole
+
+Wenn Sie Active Directory-Gruppen für Benutzer der lokalen Verwaltungskonsole erstellen, müssen Sie für jede Active Directory-Gruppe eine Zugriffsgruppenregel erstellen. Die Active Directory-Anmeldeinformationen für die lokale Verwaltungskonsole können nicht verwendet werden, wenn für die Active Directory-Benutzergruppe keine Zugriffsgruppenregel vorhanden ist. Weitere Informationen finden Sie unter [Definieren der globalen Zugriffssteuerung](how-to-define-global-user-access-control.md).
+
 1. Wählen Sie **Speichern** aus.
 
-1. Wählen Sie zum Hinzufügen eines vertrauenswürdigen Servers **Server hinzufügen** aus, und konfigurieren Sie einen weiteren Server.
+2. Wählen Sie zum Hinzufügen eines vertrauenswürdigen Servers **Server hinzufügen** aus, und konfigurieren Sie einen weiteren Server.
 
-## <a name="resetting-a-users-password-for-the-sensor-or-on-premises-management-console"></a>Zurücksetzen des Kennworts eines Benutzers für den Sensor oder eine lokale Verwaltungskonsole
+## <a name="resetting-passwords"></a>Zurücksetzen von Kennwörtern
 
 ### <a name="cyberx-or-support-user"></a>Benutzer „CyberX“ und „Support“
 
@@ -265,7 +265,7 @@ So setzen Sie das Kennwort eines Benutzers für die lokale Verwaltungskonsole zu
 
 1. Wählen Sie **Aktualisieren** aus.
 
-## <a name="next-steps"></a>Nächste Schritte
+## <a name="see-also"></a>Weitere Informationen
 
 [Aktivieren und Einrichten Ihres Sensors](how-to-activate-and-set-up-your-sensor.md)
 [Aktivieren und Einrichten Ihrer lokalen Verwaltungskonsole](how-to-activate-and-set-up-your-on-premises-management-console.md)
