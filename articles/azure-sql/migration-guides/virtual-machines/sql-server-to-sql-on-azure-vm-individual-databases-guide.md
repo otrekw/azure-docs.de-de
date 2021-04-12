@@ -1,6 +1,6 @@
 ---
-title: Leitfaden für die Migration von SQL Server zu SQL Server auf Azure-VMs
-description: Befolgen Sie diese Anleitung, um einzelne SQL Server-Datenbank-Instanzen zu SQL Server auf Azure-VMs zu migrieren.
+title: 'Migrationsleitfaden: SQL Server zu SQL Server auf Azure-VMs'
+description: In diesem Leitfaden erfahren Sie, wie Sie Ihre individuellen SQL Server-Datenbanken zu SQL Server auf Azure-VMs migrieren.
 ms.custom: ''
 ms.service: virtual-machines-sql
 ms.subservice: migration-guide
@@ -9,13 +9,13 @@ ms.topic: how-to
 author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
-ms.date: 11/06/2020
-ms.openlocfilehash: d95da29b732e2d520b3413628c9b4a1c403abed6
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.date: 03/19/2021
+ms.openlocfilehash: 0e1b44667a5ff42978b22ab9450d6a8e9870960b
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102488228"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563214"
 ---
 # <a name="migration-guide-sql-server-to-sql-server-on-azure-vms"></a>Migrationsleitfaden: SQL Server zu SQL Server auf Azure-VMs 
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
@@ -195,7 +195,7 @@ Das Testvorgehen für die Datenbankmigration umfasst die folgenden Aktivitäten:
 
 > [!TIP]
 > Verwenden Sie den [Assistenten für Datenbankexperimente (DEA)](/sql/dea/database-experimentation-assistant-overview), um die Leistung der SQL Server-Zielinstanz zu bewerten.
->
+
 
 ### <a name="optimize"></a>Optimieren
 

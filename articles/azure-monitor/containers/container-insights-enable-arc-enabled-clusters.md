@@ -4,10 +4,10 @@ description: In diesem Artikel wird beschrieben, wie Sie mit Container Insights 
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.openlocfilehash: 307f9d9928042410dc9b4443aba5c019c592980c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101711296"
 ---
 # <a name="enable-monitoring-of-azure-arc-enabled-kubernetes-cluster"></a>Aktivieren der Überwachung eines Kubernetes-Clusters mit Azure Arc-Aktivierung

@@ -6,12 +6,12 @@ ms.author: andbrown
 ms.date: 2/11/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 6502728a14ea825fadfde107e61f235db5619ae0
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: b9d40848abdd85beeca592001b697e3c50b7cd59
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102507278"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103008561"
 ---
 # <a name="import-new-update"></a>Importieren eines neuen Updates
 Hier erfahren Sie, wie Sie ein neues Update in Device Update für IoT Hub importieren. Wenn Sie es noch nicht getan haben, sollten Sie sich mit den grundlegenden [Importkonzepten](import-concepts.md) vertraut machen.
@@ -33,9 +33,9 @@ Hier erfahren Sie, wie Sie ein neues Update in Device Update für IoT Hub import
 
 1. Stellen Sie sicher, dass sich Ihre Updateimagedatei oder APT-Manifestdatei in einem Verzeichnis befindet, auf das PowerShell zugreifen kann.
 
-2. Klonen Sie das [Device Update für IoT Hub-Repository](https://github.com/azure/iot-hub-device-update), oder laden Sie es als ZIP-Datei an einen Speicherort herunter, auf den Sie über PowerShell zugreifen können (klicken Sie nach dem Herunterladen der ZIP-Datei mit der rechten Maustaste auf die Registerkarte `Properties` > `General`, und aktivieren Sie `Unblock` im Abschnitt `Security`, um Eingabeaufforderungen bei PowerShell-Sicherheitswarnungen zu vermeiden).
+2. Erstellen Sie eine Textdatei namens **AduUpdate.psm1** im Verzeichnis, indem sich Ihre Updateimagedatei oder die APT-Manifestdatei befinden. Öffnen Sie dann das PowerShell-Cmdlet [AduUpdate.psm1](https://github.com/Azure/iot-hub-device-update/tree/main/tools/AduCmdlets), kopieren Sie den Inhalt in Ihre Textdatei, und speichern Sie dann die Textdatei.
 
-3. Navigieren Sie in PowerShell zum Verzeichnis `tools/AduCmdlets`, und führen Sie Folgendes aus:
+3. Navigieren Sie in PowerShell zum Verzeichnis, indem Sie in Schritt 2 Ihr PowerShell-Cmdlet erstellt haben. Führen Sie dann Folgendes aus:
 
     ```powershell
     Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
@@ -61,7 +61,7 @@ Hier erfahren Sie, wie Sie ein neues Update in Device Update für IoT Hub import
     | deviceModel | Modell des Geräts, mit dem das Update kompatibel ist, z. B. „Toaster“. Dieser Parameter muss mit der _model_-[Geräteeigenschaft](https://docs.microsoft.com/azure/iot-hub-device-update/device-update-plug-and-play#device-properties) übereinstimmen.
     | updateProvider | Bei diesem Parameter handelt es sich um die Entität, die das Update erstellt oder verantwortlich für dieses ist. Oft ist dies ein Firmenname.
     | updateName | Hierbei handelt es sich um einen Bezeichner für eine Klasse von Updates. Die Klasse kann etwas von Ihnen Gewähltes sein. Oft ist es ein Geräte- oder Modellname.
-    | updateVersion | Hierbei handelt es sich um die Versionsnummer, die dieses Update von anderen mit denselben Anbietern und Namen unterscheidet. Diese Versionsnummer kann einer Version einer individuellen Softwarekomponente auf dem Gerät entsprechen.
+    | updateVersion | Hierbei handelt es sich um die Versionsnummer, die dieses Update von anderen mit denselben Anbietern und Namen unterscheidet. Der Parameter entspricht nicht der Version einer einzelnen Softwarekomponente auf dem Gerät (kann jedoch ausgewählt werden).
     | updateType | <ul><li>`microsoft/swupdate:1` für Imageupdate angeben</li><li>`microsoft/apt:1` für Paketupdate angeben</li></ul>
     | installedCriteria | <ul><li>Wert von „SWVersion“ für Updatetyp `microsoft/swupdate:1` angeben</li><li>Geben Sie den empfohlenen Wert für den Updatetyp `microsoft/apt:1` an.
     | updateFilePath(s) | Pfad zu der/den Updatedatei(en) auf Ihrem Computer
@@ -111,6 +111,9 @@ Beispiel:
 ```
 
 ## <a name="import-update"></a>Importieren des Updates
+
+[!NOTE]
+Die folgenden Anweisungen zeigen, wie Sie ein Update über die Benutzeroberfläche des Azure-Portals importieren. Sie können auch das [Geräteupdate für IoT Hub-APIs](https://github.com/Azure/iot-hub-device-update/tree/main/docs/publish-api-reference) verwenden, um ein Update zu importieren. 
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und navigieren Sie zu Ihrer IoT Hub-Instanz mit Device Update.
 

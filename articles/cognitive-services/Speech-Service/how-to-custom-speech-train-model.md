@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: trbye
-ms.openlocfilehash: 4da93503c32e380adb82028e7c5e11dddb247d6f
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 166fb94f5a3aea505c0d20df861b8bc4de9ad8aa
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100373367"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103491111"
 ---
 # <a name="train-and-deploy-a-custom-speech-model"></a>Trainieren und Bereitstellen eines Custom Speech-Modells
 
@@ -61,7 +61,7 @@ In der **Trainingstabelle** wird ein neuer Eintrag angezeigt, der diesem neuen M
 Weitere Informationen zur Bewertung und Verbesserung der Genauigkeit des Custom Speech-Modells finden Sie in dieser [Schrittanleitung](how-to-custom-speech-evaluate-data.md). Wenn Sie sich für einen Genauigkeitstest entscheiden, ist es wichtig, ein anderes akustisches Dataset auszuwählen, als Sie für Ihr Modell verwendet haben, um ein realistisches Bild von der Leistung des Modells zu erhalten.
 
 > [!NOTE]
-> Sowohl Basismodelle als auch benutzerdefinierte Modelle können bis zu einem gewissen Datum verwendet werden. (Weitere Informationen finden Sie unter [Lebenszyklus von Modellen](custom-speech-overview.md#model-lifecycle).) In Speech Studio wird dieses Datum in der Spalte **Ablaufdatum** für jedes Modell und jeden Endpunkt angezeigt. Nach diesem Datum treten für Anforderungen an einen Endpunkt oder für eine Batchtranskription möglicherweise Fehler auf, oder es wird ein Fallback zu einem Basismodell durchgeführt.
+> Sowohl Basismodelle als auch benutzerdefinierte Modelle können nur bis zu einem bestimmten Datum verwendet werden (siehe [Lebenszyklus von Modellen und Endpunkten](./how-to-custom-speech-model-and-endpoint-lifecycle.md)). In Speech Studio wird dieses Datum in der Spalte **Ablaufdatum** für jedes Modell und jeden Endpunkt angezeigt. Nach diesem Datum treten für Anforderungen an einen Endpunkt oder für eine Batchtranskription möglicherweise Fehler auf, oder es wird ein Fallback zu einem Basismodell durchgeführt.
 >
 > Trainieren Sie Ihr Modell mithilfe des aktuellen Basismodells noch mal, um die Vorteile der Verbesserungen der Genauigkeit zu nutzen und zu vermeiden, dass Ihr Modell sein Ablaufdatum erreicht.
 

@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: article
 ms.date: 10/25/2019
 ms.author: victorh
-ms.openlocfilehash: 262987b5d5cdccec967193d855b17c5c74e16575
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 116c12900f015c849c9492ed67bc11d116286c43
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94563391"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102611928"
 ---
 # <a name="resource-logs-for-azure-web-application-firewall"></a>Ressourcenprotokolle für Azure Web Application Firewall
 
@@ -232,7 +232,7 @@ Das Firewallprotokoll wird nur generiert, wenn Sie es für jedes Anwendungsgatew
 |ruleSetVersion     | Verwendete Regelsatzversion. Verfügbare Werte sind 2.2.9 und 3.0.     |
 |ruleId     | Regel-ID des auslösenden Ereignisses        |
 |message     | Benutzerfreundliche Meldung für das auslösende Ereignis. Weitere Details im Abschnitt „Details“.        |
-|action     |  Aktion, die für die Anforderung durchgeführt wird. Verfügbare Werte sind „Blocked“ und „Allowed“.      |
+|action     |  Aktion, die für die Anforderung durchgeführt wird. Verfügbare Werte sind „Blocked“ (Blockiert) und „Allowed“ (Zulässig) für benutzerdefinierte Regeln, „Matched“ (Übereinstimmend), wenn eine Regel mit einem Teil der Anforderung übereinstimmt, und „Detected“ (Erkannt) und „Blocked“ (Blockiert), beide für obligatorische Regeln, je nachdem, ob sich die WAF im Erkennungs- oder Präventionsmodus befindet.      |
 |site     | Standort, für den das Protokoll generiert wurde. Derzeit ist nur „Global“ aufgeführt, da Regeln global sind.|
 |Details     | Details zum auslösenden Ereignis        |
 |details.message     | Beschreibung der Regel        |
