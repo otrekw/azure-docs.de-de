@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.custom: mvc, devx-track-csharp
 ms.date: 02/27/2020
 ms.openlocfilehash: bd1715dc0a3767bc5826154616bbdc97c7b61dd3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99576362"
 ---
 # <a name="tutorial-automate-tasks-to-process-emails-by-using-azure-logic-apps-azure-functions-and-azure-storage"></a>Tutorial: Automatisieren von Aufgaben zur Verarbeitung von E-Mails mithilfe von Azure Logic Apps, Azure Functions und Azure Storage
@@ -57,7 +57,7 @@ Eingehende E-Mails und Anlagen können als Blobs in einem [Azure-Speichercontain
 
 1. Damit Sie einen Speichercontainer erstellen können, müssen Sie zunächst im Azure-Portal auf der Registerkarte **Grundlagen**[ein Speicherkonto](../storage/common/storage-account-create.md) mit den folgenden Einstellungen erstellen:
 
-   | Einstellung | Wert | Beschreibung |
+   | Einstellung | Wert | BESCHREIBUNG |
    |---------|-------|-------------|
    | **Abonnement** | <*Name des Azure-Abonnements*> | Der Name Ihres Azure-Abonnements |  
    | **Ressourcengruppe** | <*Azure-resource-group*> | Der Name der [Azure-Ressourcengruppe](../azure-resource-manager/management/overview.md), die zum Organisieren und Verwalten verwandter Ressourcen verwendet wird. In diesem Beispiel wird „LA-Tutorial-RG“ verwendet. <p>**Hinweis:** Eine Ressourcengruppe befindet sich in einer bestimmten Region. Die Elemente in diesem Tutorial sind unter Umständen nicht in allen Regionen verfügbar. Versuchen Sie aber nach Möglichkeit, die gleiche Region zu verwenden. |
@@ -141,7 +141,7 @@ Erstellen Sie nun mithilfe des in diesen Schritten bereitgestellten Codeausschni
 
 1. [Erstellen Sie zunächst eine Funktions-App](../azure-functions/functions-create-function-app-portal.md) mit den folgenden Einstellungen, um eine Funktion erstellen können:
 
-   | Einstellung | Wert | Beschreibung |
+   | Einstellung | Wert | BESCHREIBUNG |
    | ------- | ----- | ----------- |
    | **App-Name** | <*Funktions-App-Name*> | Der Name Ihrer Funktions-App (muss innerhalb von Azure global eindeutig sein). Da „CleanTextFunctionApp“ in diesem Beispiel bereits verwendet wird, muss ein anderer Name angegeben werden (beispielsweise „MyCleanTextFunctionApp-<*Ihr Name*>“). |
    | **Abonnement** | <*Name Ihres Azure Abonnements*> | Das gleiche Azure-Abonnement, das Sie auch zuvor verwendet haben. |
@@ -238,7 +238,7 @@ Nachdem Sie sich vergewissert haben, dass die Funktion funktioniert, können Sie
 
    ![Angeben von Informationen zur Logik-App](./media/tutorial-process-email-attachments-workflow/create-logic-app-settings.png)
 
-   | Einstellung | Wert | Beschreibung |
+   | Einstellung | Wert | BESCHREIBUNG |
    | ------- | ----- | ----------- |
    | **Abonnement** | <*Name Ihres Azure Abonnements*> | Das gleiche Azure-Abonnement, das Sie auch zuvor verwendet haben. |
    | **Ressourcengruppe** | LA-Tutorial-RG | Die gleiche Azure-Ressourcengruppe, die Sie auch zuvor verwendet haben. |

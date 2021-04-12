@@ -1,5 +1,5 @@
 ---
-title: TechnicalProfiles
+title: Technische Profile
 titleSuffix: Azure AD B2C
 description: Erfahren Sie, wie Sie das TechnicalProfiles-Element einer benutzerdefinierten Richtlinie in Azure Active Directory B2C angeben.
 services: active-directory-b2c
@@ -11,60 +11,60 @@ ms.topic: reference
 ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e3d3a41e4100e36ae2400c8076d4c5b713b899d6
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: bcff1ffd574db910c3206d82e4da0e9428db788f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102174868"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102631794"
 ---
-# <a name="technicalprofiles"></a>TechnicalProfiles
+# <a name="technical-profiles"></a>Technische Profile
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Ein technisches Profil bietet ein Framework mit einem integrierten Mechanismus für die Kommunikation mit verschiedenen Typen von Parteien. Technische Profile werden verwendet, um mit Ihrem Azure AD B2C-Mandanten zu kommunizieren, einen Benutzer zu erstellen oder ein Benutzerprofil zu lesen. Ein selbstbestätigtes technisches Profil kann die Interaktion mit dem Benutzer ermöglichen. Beispiel: Sammeln der Anmeldeinformationen des Benutzers für die Anmeldung und anschließendes Rendern der Anmeldeseite oder der Seite zum Zurücksetzen des Kennworts.
+Ein *technisches Profil* bietet ein Framework mit einem integrierten Mechanismus für die Kommunikation mit verschiedenen Typen von Seiten. Technische Profile werden verwendet, um mit Ihrem Azure Active Directory B2C-Mandanten (Azure AD B2C) zu kommunizieren, einen Benutzer zu erstellen oder ein Benutzerprofil zu lesen. Ein selbstbestätigtes technisches Profil kann die Interaktion mit dem Benutzer ermöglichen. Beispiel: Ein technisches Profil kann die Anmeldeinformationen des Benutzers für die Anmeldung sammeln und anschließend die Anmeldeseite oder die Seite zum Zurücksetzen des Kennworts rendern.
 
-## <a name="type-of-technical-profiles"></a>Typen technischer Profile
+## <a name="types-of-technical-profiles"></a>Typen technischer Profile
 
 Ein technisches Profil ermöglicht die folgenden Szenarien:
 
-- [Application Insights](analytics-with-application-insights.md) – Senden von Ereignisdaten an [Application Insights](../azure-monitor/app/app-insights-overview.md).
-- [Azure Active Directory](active-directory-technical-profile.md) – Bietet Unterstützung für die Azure Active Directory B2C-Benutzerverwaltung.
-- [Azure AD Multi-Factor Authentication](multi-factor-auth-technical-profile.md): Bietet Unterstützung für die Überprüfung einer Telefonnummer mithilfe von Azure AD Multi-Factor Authentication (MFA). 
-- [Anspruchstransformation](claims-transformation-technical-profile.md) – Aufrufen von Transformationen für Ausgabeansprüche, um Anspruchswerte zu ändern, Ansprüche zu überprüfen oder Standardwerte für eine Gruppe von Ausgabeansprüchen festzulegen.
-- [ID-Tokenhinweis](id-token-hint.md): Überprüft die `id_token_hint`-JWT-Tokensignatur, den Ausstellernamen und die Tokenzielgruppe und extrahiert den Anspruch aus dem eingehenden Token.
-- [JWT-Tokenaussteller](jwt-issuer-technical-profile.md) – Gibt ein JWT-Token aus, das an die Anwendung der vertrauenden Seite zurückgegeben wird.
-- [OAuth1](oauth1-technical-profile.md) – Verbund mit einem beliebigen Identitätsanbieter für das Protokoll OAuth 1.0.
-- [OAuth2](oauth2-technical-profile.md) – Verbund mit einem beliebigen Identitätsanbieter für das Protokoll OAuth 2.0.
-- [Einmalkennwort](one-time-password-technical-profile.md): Bietet Unterstützung zum Verwalten der Erstellung und Überprüfung von Einmalkennwörtern.
-- [OpenID Connect](openid-connect-technical-profile.md) – Verbund mit einem beliebigen Identitätsanbieter für das OpenID Connect-Protokoll
-- [MFA per Telefon](phone-factor-technical-profile.md) – Unterstützung für das Registrieren und Überprüfen von Telefonnummern.
-- [RESTful-Anbieter](restful-technical-profile.md) – Aufrufen von REST-API-Diensten, z. B. Überprüfung von Benutzereingaben, Ergänzung von Benutzerdaten oder Integration von Branchenanwendungen
-- [SAML-Identitätsanbieter](identity-provider-generic-saml.md) – Verbund mit einem beliebigen Identitätsanbieter für das SAML-Protokoll.
-- [SAML-Tokenaussteller](saml-service-provider.md) – gibt ein SAML-Token aus, das an die Anwendung der vertrauenden Seite zurückgegeben wird.
-- [Selbstbestätigt](self-asserted-technical-profile.md) – Interaktion mit dem Benutzer. Beispiel: Sammeln der Anmeldeinformationen des Benutzers für die Anmeldung, Rendern der Anmeldeseite oder Kennwortzurücksetzung.
-- [Sitzungsverwaltung](custom-policy-reference-sso.md) – Verarbeiten verschiedener Typen von Sitzungen.
+- [Application Insights:](analytics-with-application-insights.md) sendet Ereignisdaten an [Application Insights](../azure-monitor/app/app-insights-overview.md)
+- [Azure AD:](active-directory-technical-profile.md) bietet Unterstützung für die Azure AD B2C-Benutzerverwaltung
+- [Azure AD Multifactor Authentication:](multi-factor-auth-technical-profile.md) bietet Unterstützung für die Überprüfung einer Telefonnummer mithilfe von Azure AD Multifactor Authentication
+- [Anspruchstransformation:](claims-transformation-technical-profile.md) ruft Transformationen für Ausgabeansprüche auf, um Anspruchswerte zu ändern, Ansprüche zu überprüfen oder Standardwerte für Ausgabeansprüche festzulegen
+- [ID-Tokenhinweis](id-token-hint.md): überprüft die `id_token_hint`-JWT-Tokensignatur, den Ausstellernamen und die Tokenzielgruppe und extrahiert den Anspruch aus dem eingehenden Token
+- [JWT-Tokenaussteller:](jwt-issuer-technical-profile.md) gibt ein JWT-Token aus, das an die Anwendung der vertrauenden Seite zurückgegeben wird
+- [OAuth1:](oauth1-technical-profile.md) Verbund mit einem beliebigen Identitätsanbieter für das Protokoll OAuth 1.0
+- [OAuth2:](oauth2-technical-profile.md) Verbund mit einem beliebigen Identitätsanbieter für das Protokoll OAuth 2.0
+- [Einmalkennwort](one-time-password-technical-profile.md): bietet Unterstützung zum Verwalten der Erstellung und Überprüfung von Einmalkennwörtern
+- [OpenID Connect:](openid-connect-technical-profile.md) Verbund mit einem beliebigen Identitätsanbieter für das OpenID Connect-Protokoll
+- [MFA per Telefon:](phone-factor-technical-profile.md) unterstützt das Registrieren und Überprüfen von Telefonnummern
+- [RESTful-Anbieter:](restful-technical-profile.md) ruft REST-API-Dienste auf, z. B. Überprüfung von Benutzereingaben, Ergänzung von Benutzerdaten oder Integration mit Branchenanwendungen
+- [SAML-Identitätsanbieter:](identity-provider-generic-saml.md) Verbund mit einem beliebigen Identitätsanbieter für das SAML-Protokoll
+- [SAML-Tokenaussteller:](saml-service-provider.md) gibt ein SAML-Token aus, das an die Anwendung der vertrauenden Seite zurückgegeben wird
+- [Selbstbestätigt:](self-asserted-technical-profile.md) interagiert mit dem Benutzer. Beispiel: Die Anmeldeinformationen des Benutzers werden für die Anmeldung, zum Rendern der Anmeldeseite oder für die Kennwortzurücksetzung gesammelt.
+- [Sitzungsverwaltung:](custom-policy-reference-sso.md) verarbeitet verschiedene Typen von Sitzungen
 
 ## <a name="technical-profile-flow"></a>Fluss technischer Profile
 
-Allen Typen von technischen Profilen liegt das gleiche Konzept zugrunde. Beginnen Sie mit dem Lesen der Eingabeansprüche, und führen Sie Anspruchstransformationen aus. Kommunizieren Sie dann mit der konfigurierten Partei, z. B. mit einem Identitätsanbieter, der REST-API oder Azure AD-Verzeichnisdiensten. Nach Abschluss des Prozesses gibt das technische Profil die Ausgabeansprüche zurück und führt ggf. Ausgabeanspruchstransformationen aus. Im folgenden Diagramm ist dargestellt, wie die im technischen Profil referenzierten Transformationen und Zuordnungen verarbeitet werden. Unabhängig von der Partei, mit der das technische Profil interagiert, werden die Ausgabeansprüche nach der Ausführung der Anspruchstransformationen sofort im Anspruchsbehälter gespeichert.
+Allen Typen von technischen Profilen liegt das gleiche Konzept zugrunde. Sie beginnen mit dem Lesen der Eingabeansprüche, und führen Anspruchstransformationen aus. Dann kommunizieren sie mit der konfigurierten Seite, z. B. mit einem Identitätsanbieter, der REST-API oder Azure AD-Verzeichnisdiensten. Nach Abschluss des Prozesses gibt das technische Profil die Ausgabeansprüche zurück und führt ggf. Ausgabeanspruchstransformationen aus. Im folgenden Diagramm ist dargestellt, wie die im technischen Profil referenzierten Transformationen und Zuordnungen verarbeitet werden. Unabhängig von der Seite, mit der das technische Profil interagiert, werden die Ausgabeansprüche nach der Ausführung der Anspruchstransformationen sofort im Anspruchsbehälter gespeichert.
 
-![Diagramm des Flows für technische Profile](./media/technical-profiles/technical-profile-flow.png)
+![Diagramm: Flow für technische Profile](./media/technical-profiles/technical-profile-flow.png)
 
-1. **Einmaliges Anmelden (Single Sign-On, SSO) für Sitzungsverwaltung**: Stellt den Sitzungszustand des technischen Profils wieder her, indem die [SSO-Sitzungsverwaltung](custom-policy-reference-sso.md) verwendet wird.
-1. **Transformation von Eingabeansprüchen**: Bevor ein technisches Profil gestartet wird, führt Azure AD B2C eine [Anspruchstransformation](claimstransformations.md) des Eingabeanspruchs aus.
-1. **Eingabeansprüche**: Ansprüche werden dem Anspruchsbehälter entnommen, der für das technische Profil verwendet wird.
-1. **Ausführung des technischen Profils** – Das technische Profil tauscht die Ansprüche mit der konfigurierten Partei aus. Beispiel:
+1. **Sitzungsverwaltung für einmaliges Anmelden (Single Sign-On, SSO):** stellt den Sitzungszustand des technischen Profils wieder her, indem die [SSO-Sitzungsverwaltung](custom-policy-reference-sso.md) verwendet wird
+1. **Transformation von Eingabeansprüchen:** Bevor das technische Profil gestartet wird, führt Azure AD B2C eine [Transformation](claimstransformations.md) des Eingabeanspruchs aus.
+1. **Eingabeansprüche:** Ansprüche werden dem Anspruchsbehälter entnommen, der für das technische Profil verwendet wird.
+1. **Ausführung des technischen Profils:** Das technische Profil tauscht die Ansprüche mit der konfigurierten Seite aus. Beispiel:
     - Der Benutzer wird an den Identitätsanbieter umgeleitet, um die Anmeldung abzuschließen. Nach der erfolgreichen Anmeldung kehrt der Benutzer zurück, und die Ausführung des technischen Profils wird fortgesetzt.
-    - Rufen Sie eine REST-API auf, während Sie Parameter als InputClaims senden und Informationen als OutputClaims zurückerhalten.
-    - Erstellen oder aktualisieren Sie das Benutzerkonto.
-    - Die MFA-Textnachricht wird gesendet und überprüft.
-1. **Technische Validierungsprofile**: Ein [selbstbestätigtes technisches Profil](self-asserted-technical-profile.md) kann [technische Validierungsprofile](validation-technical-profile.md) aufrufen, um die Daten zu validieren, für die vom Benutzer ein Profil erstellt wurde.
-1. **Ausgabeansprüche**: Ansprüche werden an den Anspruchsbehälter zurückgegeben. Sie können diese Ansprüche im nächsten Orchestrierungsschritt bzw. Transformationen von Ausgabeansprüchen verwenden.
-1. **Transformationen von Ausgabeansprüchen**: Wenn das technische Profil fertig erstellt wurde, führt Azure AD B2C eine [Anspruchstransformation](claimstransformations.md) des Ausgabeanspruchs aus. 
-1. **Einmaliges Anmelden (Single Sign-On, SSO): Sitzungsverwaltung**: Speichert die Daten des technischen Profils dauerhaft in der Sitzung, indem die [SSO-Sitzungsverwaltung](custom-policy-reference-sso.md) genutzt wird.
+    - Eine REST-API wird aufgerufen, während Parameter als InputClaims-Elemente gesendet und Informationen als OutputClaims-Elemente empfangen werden.
+    - Das Benutzerkonto wird erstellt oder aktualisiert.
+    - Die SMS für Multifactor Authentification wird gesendet und überprüft.
+1. **Technische Validierungsprofile:** Ein [selbstbestätigtes technisches Profil](self-asserted-technical-profile.md) kann [technische Validierungsprofile](validation-technical-profile.md) aufrufen, um die Daten zu validieren, für die vom Benutzer ein Profil erstellt wurde.
+1. **Ausgabeansprüche:** Ansprüche werden an den Anspruchsbehälter zurückgegeben. Sie können diese Ansprüche im nächsten Orchestrierungsschritt oder Transformationen von Ausgabeansprüchen verwenden.
+1. **Transformationen von Ausgabeansprüchen**: Wenn das technische Profil erstellt wurde, führt Azure AD B2C [Transformationen](claimstransformations.md) der Ausgabeansprüche aus.
+1. **Sitzungsverwaltung für SSO:** speichert die Daten des technischen Profils mithilfe der [SSO-Sitzungsverwaltung](custom-policy-reference-sso.md) dauerhaft in der Sitzung.
 
-Ein **TechnicalProfiles**-Element enthält eine Reihe technischer Profile, die vom Anspruchsanbieter unterstützt werden. Jeder Anspruchsanbieter muss über mindestens ein technisches Profil verfügen. Das technische Profil bestimmt die Endpunkte und die Protokolle, die für die Kommunikation mit dem Anspruchsanbieter erforderlich sind. Ein Anspruchsanbieter kann über mehrere technische Profile verfügen.
+Ein **TechnicalProfiles**-Element enthält mehrere technische Profile, die vom Anspruchsanbieter unterstützt werden. Jeder Anspruchsanbieter muss über mindestens ein technisches Profil verfügen. Das technische Profil bestimmt die Endpunkte und die Protokolle, die für die Kommunikation mit dem Anspruchsanbieter erforderlich sind. Ein Anspruchsanbieter kann über mehrere technische Profile verfügen.
 
 ```xml
 <ClaimsProvider>
@@ -88,7 +88,7 @@ Das **TechnicalProfile**-Element enthält die folgenden Attribute:
 |---------|---------|---------|
 | Id | Ja | Ein eindeutiger Bezeichner des technischen Profils. Auf das technische Profil kann mit diesem Bezeichner von anderen Elementen in der Richtliniendatei verwiesen werden. Beispiele: **OrchestrationSteps** und **ValidationTechnicalProfile**. |
 
-**TechnicalProfile** enthält die folgenden Elemente:
+Das **TechnicalProfile**-Element enthält die folgenden Elemente:
 
 | Element | Vorkommen | BESCHREIBUNG |
 | ------- | ----------- | ----------- |
@@ -96,23 +96,23 @@ Das **TechnicalProfile**-Element enthält die folgenden Attribute:
 | DisplayName | 1:1 | Dies ist der Anzeigename des technischen Profils. |
 | BESCHREIBUNG | 0:1 | Dies ist die Beschreibung des technischen Profils. |
 | Protocol | 1:1 | Das Protokoll, das für die Kommunikation mit der anderen Seite verwendet wird. |
-| Metadaten | 0:1 | Eine Sammlung von Schlüssel-Wert-Paaren, die das Verhalten des technischen Profils steuert. |
-| InputTokenFormat | 0:1 | Das Format des Eingabetokens. Mögliche Werte: `JSON`, `JWT`, `SAML11` oder `SAML2`. Der Wert `JWT` stellt ein JSON-Webtoken gemäß IETF-Spezifikation dar. Der Wert `SAML11` stellt ein SAML 1.1-Sicherheitstoken gemäß OASIS-Spezifikation dar.  Der Wert `SAML2` stellt ein SAML 2.0-Sicherheitstoken gemäß OASIS-Spezifikation dar. |
-| OutputTokenFormat | 0:1 | Das Format des Ausgabetokens. Mögliche Werte: `JSON`, `JWT`, `SAML11` oder `SAML2`. |
+| Metadaten | 0:1 | Schlüssel und Werte, die das Verhalten des technischen Profils steuern |
+| InputTokenFormat | 0:1 | Das Format des Eingabetokens. Mögliche Werte sind `JSON`, `JWT`, `SAML11` oder `SAML2`. Der Wert `JWT` stellt ein JSON Web Token (JWT) gemäß IETF-Spezifikation dar Der Wert `SAML11` stellt ein SAML 1.1-Sicherheitstoken gemäß OASIS-Spezifikation dar Der Wert `SAML2` stellt ein SAML 2.0-Sicherheitstoken gemäß OASIS-Spezifikation dar |
+| OutputTokenFormat | 0:1 | Das Format des Ausgabetokens. Mögliche Werte sind `JSON`, `JWT`, `SAML11` oder `SAML2`. |
 | CryptographicKeys | 0:1 | Eine Liste kryptografischer Schlüssel, die im technischen Profil verwendet werden. |
 | InputClaimsTransformations | 0:1 | Eine Liste zuvor definierter Verweise auf Anspruchstransformationen, die ausgeführt werden sollen, bevor Ansprüche an den Anspruchsanbieter oder die vertrauende Seite gesendet werden. |
-| InputClaims | 0:1 | Eine Liste von zuvor definierten Verweisen auf Anspruchstypen, die als Eingabe für das technische Profil verwendet werden. |
-| PersistedClaims | 0:1 | Eine Liste der zuvor definierten Verweise auf Anspruchstypen, die vom technischen Profil beibehalten werden. |
-| DisplayClaims | 0:1 | Eine Liste der zuvor definierten Verweise auf Anspruchstypen, die vom [selbstbestätigten technischen Profil](self-asserted-technical-profile.md) dargestellt werden. Das DisplayClaims-Feature steht derzeit als **Vorschau** zur Verfügung. |
-| OutputClaims | 0:1 | Eine Liste von zuvor definierten Verweisen auf Anspruchstypen, die als Ausgabe für das technische Profil verwendet werden. |
+| InputClaims | 0:1 | Eine Liste von zuvor definierten Verweisen auf Anspruchstypen, die als Eingabe für das technische Profil verwendet werden |
+| PersistedClaims | 0:1 | Eine Liste der zuvor definierten Verweise auf Anspruchstypen, die vom technischen Profil dauerhaft gespeichert werden |
+| DisplayClaims | 0:1 | Eine Liste der zuvor definierten Verweise auf Anspruchstypen, die vom [selbstbestätigten technischen Profil](self-asserted-technical-profile.md) dargestellt werden Das DisplayClaims-Feature steht derzeit als Vorschau zur Verfügung. |
+| OutputClaims | 0:1 | Eine Liste der zuvor definierten Verweise auf Anspruchstypen, die als Ausgabe für das technische Profil verwendet werden |
 | OutputClaimsTransformations | 0:1 | Eine Liste zuvor definierter Verweise auf Anspruchstransformationen, die ausgeführt werden sollen, nachdem Ansprüche vom Anspruchsanbieter empfangen wurden. |
 | ValidationTechnicalProfiles | 0:n | Eine Liste der Verweise auf andere technische Profile, die das technische Profil für die Überprüfung verwendet. Weitere Informationen finden Sie unter [Technisches Validierungsprofil](validation-technical-profile.md).|
-| SubjectNamingInfo | 0:1 | Steuert die Erzeugung von Antragstellernamen in Token, wenn der Name des Antragstellers getrennt von den Ansprüchen angegeben wird. Beispiele: OAuth oder SAML.  |
-| IncludeInSso | 0:1 |  Gibt an, ob bei Verwendung dieses technischen Profils SSO-Verhalten (Single Sign-On, einmaliges Anmelden) für die Sitzung verwendet werden soll oder ob stattdessen eine explizite Interaktion erforderlich ist. Dieses Element ist nur in Profilen vom Typ „SelfAsserted“ gültig, die in einem technischen Validierungsprofil verwendet werden. Mögliche Werte: `true` (Standard) oder `false`. |
+| SubjectNamingInfo | 0:1 | Steuert die Erzeugung von Antragstellernamen in Token, wenn der Name des Antragstellers getrennt von den Ansprüchen angegeben wird. Beispiele: OAuth oder SAML. |
+| IncludeInSso | 0:1 | Gibt an, ob bei Verwendung dieses technischen Profils SSO-Verhalten für die Sitzung verwendet werden soll oder ob stattdessen eine explizite Interaktion erforderlich ist. Dieses Element ist nur in Profilen vom Typ „SelfAsserted“ gültig, die in einem technischen Validierungsprofil verwendet werden. Mögliche Werte sind: `true` (Standard) oder `false`. |
 | IncludeClaimsFromTechnicalProfile | 0:1 | Ein Bezeichner eines technischen Profils, von dem alle Eingabe- und Ausgabeansprüche diesem technischen Profil hinzugefügt werden sollen. Das referenzierte technische Profil muss in derselben Richtliniendatei definiert sein. |
 | IncludeTechnicalProfile |0:1 | Ein Bezeichner eines technischen Profils, von dem alle Daten diesem technischen Profil hinzugefügt werden sollen. |
 | UseTechnicalProfileForSessionManagement | 0:1 | Ein anderes technische Profil, das für die Sitzungsverwaltung verwendet werden soll. |
-|EnabledForUserJourneys| 0:1 |Steuert, ob das technische Profil in einer User Journey ausgeführt wird.  |
+|EnabledForUserJourneys| 0:1 |Steuert, ob das technische Profil in einer User Journey ausgeführt wird. |
 
 ## <a name="protocol"></a>Protocol
 
@@ -125,11 +125,11 @@ Das Element **Protocol** gibt das Protokoll an, das für die Kommunikation mit d
 
 ## <a name="metadata"></a>Metadaten
 
-Das Element **Metadata** enthält die relevanten Konfigurationsoptionen für ein bestimmtes Protokoll. Die Liste der unterstützten Metadaten ist in der Spezifikation des entsprechenden [technischen Profils](#type-of-technical-profiles) dokumentiert. Das **Metadata**-Element enthält das folgende Element:
+Das Element **Metadata** enthält die relevanten Konfigurationsoptionen für ein bestimmtes Protokoll. Die Liste der unterstützten Metadaten ist in der Spezifikation des entsprechenden [technischen Profils](#types-of-technical-profiles) dokumentiert. Das **Metadata**-Element enthält das folgende Element:
 
 | Element | Vorkommen | BESCHREIBUNG |
 | ------- | ----------- | ----------- |
-| Element | 0:n | Die Metadaten zu dem technischen Profil. Jeder Typ von technischem Profil verfügt über einen anderen Satz von Metadatenelementen. Weitere Informationen finden Sie im Abschnitt „Typen technischer Profile“.  |
+| Element | 0:n | Die Metadaten zu dem technischen Profil. Jeder Typ von technischem Profil verfügt über einen anderen Satz von Metadatenelementen. Weitere Informationen finden Sie im Abschnitt „Typen technischer Profile“. |
 
 ### <a name="item"></a>Element
 
@@ -137,7 +137,7 @@ Das **Item**-Element des **Metadata**-Elements enthält das folgende Attribut:
 
 | Attribut | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
-| Schlüssel | Ja | Der Metadatenschlüssel. Eine Liste der entsprechenden Metadata-Elemente finden Sie bei den einzelnen [Typen von technischen Profilen](#type-of-technical-profiles). |
+| Schlüssel | Ja | Der Metadatenschlüssel. Eine Liste der entsprechenden Metadata-Elemente finden Sie bei den einzelnen [Typen von technischen Profilen](#types-of-technical-profiles). |
 
 Das folgende Beispiel veranschaulicht die Verwendung von Metadaten für ein [technisches OAuth2-Profil](oauth2-technical-profile.md#metadata).
 
@@ -173,11 +173,11 @@ Das folgende Beispiel veranschaulicht die Verwendung von Metadaten für ein [tec
 
 ## <a name="cryptographic-keys"></a>Kryptografische Schlüssel
 
-Azure AD B2C speichert Geheimnisse und Zertifikate in Form von [Richtlinienschlüsseln](policy-keys-overview.md), um eine Vertrauensstellung mit den Diensten herzustellen, in die Azure AD B2C integriert ist. Während der Ausführung eines technischen Profils ruft Azure AD B2C die kryptografischen Schlüssel aus Azure AD B2C-Richtlinienschlüsseln ab. Dann werden die Schlüssel verwendet, um eine Vertrauensstellung herzustellen, ein Token zu verschlüsseln oder ein Token zu signieren. Diese Vertrauensstellungen bestehen aus folgenden Elementen:
+Azure AD B2C speichert Geheimnisse und Zertifikate in Form von [Richtlinienschlüsseln](policy-keys-overview.md), um eine Vertrauensstellung mit den Diensten herzustellen, in die Azure AD B2C integriert ist. Während der Ausführung eines technischen Profils ruft Azure AD B2C die kryptografischen Schlüssel aus Azure AD B2C-Richtlinienschlüsseln ab. Dann verwendet Azure AD B2C die Schlüssel, um eine Vertrauensstellung herzustellen, ein Token zu verschlüsseln oder ein Token zu signieren. Diese Vertrauensstellungen bestehen aus folgenden Elementen:
 
 - Verbund mit den Identitätsanbietern [OAuth1](oauth1-technical-profile.md#cryptographic-keys), [OAuth2](oauth2-technical-profile.md#cryptographic-keys) und [SAML](identity-provider-generic-saml.md)
-- Sichern der Verbindungsherstellung mit [REST-API-Diensten](secure-rest-api.md)
-- Signieren und Verschlüsseln der [JWT](jwt-issuer-technical-profile.md#cryptographic-keys)- und [SAML](saml-service-provider.md)-Token
+- Schutz der Verbindung mit [Rest-API-Diensten](secure-rest-api.md)
+- Signierung und Verschlüsselung der [JWT](jwt-issuer-technical-profile.md#cryptographic-keys) und [SAML](saml-service-provider.md)-Token
 
 Das **CryptographicKeys**-Element enthält das folgende Element:
 
@@ -196,9 +196,9 @@ Das **Key**-Element enthält das folgende Attribut:
 
 ## <a name="input-claims-transformations"></a>Eingabeanspruchstransformationen
 
-Das **InputClaimsTransformations**-Element kann eine Sammlung von Elementen der Eingabeanspruchstransformation enthalten, die zum Ändern von Eingabeansprüchen oder zum Generieren eines neuen Eingabeanspruchs verwendet werden. 
+Das **InputClaimsTransformations**-Element kann eine Sammlung von Transformationselementen von Eingabeansprüchen enthalten, die zum Ändern von Eingabeansprüchen oder zum Generieren eines neuen Eingabeanspruchs verwendet werden.
 
-Die Ausgabeansprüche einer vorherigen Anspruchstransformation in der Sammlung der Anspruchstransformationen können Eingabeansprüche einer nachfolgenden Eingabeanspruchstransformation sein. So kann eine Sequenz von Anspruchstransformationen entstehen, die voneinander abhängig sind.
+Bei den Ausgabeansprüchen einer vorherigen Anspruchstransformation in der Sammlung der Anspruchstransformationen kann es sich um Eingabeansprüche einer nachfolgenden Eingabeanspruchstransformation handeln. Auf diese Weise können Sie eine Sequenz von Anspruchstransformationen verwenden, die voneinander abhängig sind.
 
 Das **InputClaimsTransformations**-Element enthält das folgende Element:
 
@@ -237,7 +237,7 @@ Die folgenden technischen Profile beziehen sich auf die Anspruchstransformation 
 
 ## <a name="input-claims"></a>Eingabeansprüche
 
-**InputClaims**: Ansprüche werden dem Anspruchsbehälter entnommen und für das technische Profil verwendet. Ein [selbstbestätigtes technisches Profil](self-asserted-technical-profile.md) verwendet beispielsweise die Eingabeansprüche, um die Ausgabeansprüche im Vorhinein auszufüllen, die der Benutzer angibt. Ein technisches REST-API-Profil verwendet die Eingabeansprüche, um Eingabeparameter an den REST-API-Endpunkt zu senden. Azure Active Directory verwendet einen Eingabeanspruch als eindeutigen Bezeichner zum Lesen, Aktualisieren oder Löschen eines Kontos.
+Das Element **InputClaims** entnimmt dem Anspruchsbehälter Ansprüche, die für das technische Profil verwendet werden. Ein [selbstbestätigtes technisches Profil](self-asserted-technical-profile.md) verwendet beispielsweise die Eingabeansprüche, um die Ausgabeansprüche im Vorhinein auszufüllen, die der Benutzer angibt. Ein technisches REST-API-Profil verwendet die Eingabeansprüche, um Eingabeparameter an den REST-API-Endpunkt zu senden. Azure AD verwendet einen Eingabeanspruch als eindeutigen Bezeichner zum Lesen, Aktualisieren oder Löschen eines Kontos.
 
 Das **InputClaims**-Element enthält das folgende Element:
 
@@ -252,20 +252,20 @@ Das **InputClaim**-Element enthält die folgenden Attribute:
 | attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | Ja | Der Bezeichner eines Anspruchstyps. Der Anspruch ist bereits im Abschnitt für das Anspruchsschema in der Richtliniendatei oder der übergeordneten Richtliniendatei definiert. |
-| DefaultValue | Nein | Ein Standardwert, der verwendet wird, um einen Anspruch zu erstellen, wenn der von ClaimTypeReferenceId angegebene Anspruch nicht vorhanden ist, sodass der resultierende Anspruch vom technischen Profil als Eingabeanspruch verwendet werden kann. |
-| PartnerClaimType | Nein | Der Bezeichner des Anspruchstyps des externen Partners, dem der angegebene Anspruchstyp der Richtlinie zugeordnet ist. Wenn das PartnerClaimType-Attribut nicht angegeben wurde, wird der angegebene Anspruchstyp der Richtlinie dem Partneranspruchstyp mit dem gleichen Namen zugeordnet. Verwenden Sie diese Eigenschaft, wenn sich der Name des Anspruchstyps vom dem der anderen Partei unterscheidet. Der erste Anspruchsname lautet beispielsweise „givenName“, während der Partner einen Anspruch mit dem Namen „first_name“ verwendet. |
+| DefaultValue | Nein | Ein Standardwert, der verwendet wird, um einen Anspruch zu erstellen, wenn der von ClaimTypeReferenceId angegebene Anspruch nicht vorhanden ist, sodass der resultierende Anspruch vom technischen Profil als InputClaim-Element verwendet werden kann. |
+| PartnerClaimType | Nein | Der Bezeichner des Anspruchstyps des externen Partners, dem der angegebene Anspruchstyp der Richtlinie zugeordnet ist. Wenn das PartnerClaimType-Attribut nicht angegeben wurde, wird der angegebene Anspruchstyp der Richtlinie dem Partneranspruchstyp mit dem gleichen Namen zugeordnet. Verwenden Sie diese Eigenschaft, wenn sich der Name des Anspruchstyps vom dem der anderen Partei unterscheidet. Der erste Anspruchsname lautet beispielsweise *givenName*, während der Partner einen Anspruch mit dem Namen *first_name* verwendet. |
 
 ## <a name="display-claims"></a>Anzeigeansprüche
 
-Das **DisplayClaims**-Element enthält eine Liste mit anzuzeigenden Ansprüchen zum Erfassen von Daten vom Benutzer. In die Sammlung der Anzeigeansprüche können Sie einen Verweis auf einen [Anspruchstyp](claimsschema.md) oder ein von Ihnen erstelltes [DisplayControl](display-controls.md)-Element einbeziehen. 
+Das **DisplayClaims**-Element enthält eine Liste mit anzuzeigenden Ansprüchen zum Erfassen von Daten vom Benutzer. In die Sammlung der Anzeigeansprüche können Sie einen Verweis auf einen [Anspruchstyp](claimsschema.md) oder ein von Ihnen erstelltes [Anzeigesteuerelement](display-controls.md) einbeziehen.
 
-- Ein Anspruchstyp ist ein Verweis auf einen Anspruch, der auf dem Bildschirm angezeigt werden soll. 
+- Ein Anspruchstyp ist ein Verweis auf einen Anspruch, der auf dem Bildschirm angezeigt werden soll.
   - Um den Benutzer zur Eingabe eines Werts für einen bestimmten Anspruch zu zwingen, legen Sie das Attribut **Required** des **DisplayClaim**-Elements auf `true` fest.
   - Um Anzeigeansprüche vorab mit Werten aufzufüllen, verwenden Sie die zuvor beschriebenen Eingabeansprüche. Das Element kann darüber hinaus auch einen Standardwert enthalten.
-  - Das **ClaimType**-Element in der **DisplayClaims**-Sammlung muss das **UserInputType**-Element auf einen von Azure AD B2C unterstützten Benutzereingabetyp festlegen. Zum Beispiel: `TextBox` oder `DropdownSingleSelect`.
-- Ein Anzeigesteuerelement ist ein Benutzeroberflächenelement mit spezieller Funktionalität, das mit dem Azure AD B2C-Back-End-Dienst interagiert. Es ermöglicht dem Benutzer das Durchführen von Aktionen auf der Seite, die ein technisches Validierungsprofil auf dem Back-End aufrufen. Beispielsweise das Überprüfen einer E-Mail-Adresse, Telefonnummer oder Kundentreuenummer.
+  - Das **ClaimType**-Element in der **DisplayClaims**-Sammlung muss das **UserInputType**-Element auf einen von Azure AD B2C unterstützten Benutzereingabetyp festlegen. Bespiele sind `TextBox` oder `DropdownSingleSelect`.
+- Ein Anzeigesteuerelement ist ein Benutzeroberflächenelement mit spezieller Funktionalität, das mit dem Azure AD B2C-Back-End-Dienst interagiert. Es ermöglicht dem Benutzer das Durchführen von Aktionen auf der Seite, die ein technisches Validierungsprofil auf dem Back-End aufrufen. Beispiel: Überprüfen einer E-Mail-Adresse, Telefonnummer oder Kundentreuenummer.
 
-Die Reihenfolge der Elemente in **DisplayClaims** bestimmt die Reihenfolge, in der Azure AD B2C die Ansprüche auf dem Bildschirm rendert. 
+Die Reihenfolge der Elemente in **DisplayClaims** bestimmt die Reihenfolge, in der Azure AD B2C die Ansprüche auf dem Bildschirm rendert.
 
 Das **DisplayClaims**-Element enthält das folgende Element:
 
@@ -285,13 +285,13 @@ Das **DisplayClaim**-Element enthält die folgenden Attribute:
 
 Das folgende Beispiel veranschaulicht die Verwendung von Anzeigeansprüchen und -steuerelementen in einem selbstbestätigten technischen Profil.
 
-![Ein selbstbestätigtes technisches Profil mit Anzeigeansprüchen](./media/technical-profiles/display-claims.png)
+![Screenshot: selbstbestätigtes technisches Profil mit Anzeigeansprüchen](./media/technical-profiles/display-claims.png)
 
 Für das folgende technische Profil gilt:
 
 - Der erste Anzeigeanspruch verweist auf das `emailVerificationControl`-Anzeigesteuerelement, das die E-Mail-Adresse erfasst und überprüft.
 - Der fünfte Anzeigeanspruch verweist auf das `phoneVerificationControl`-Anzeigesteuerelement, das eine Telefonnummer erfasst und überprüft.
-- Die anderen Anzeigeansprüche sind ClaimTypes, die vom Benutzer erfasst werden sollen.
+- Bei den anderen Anzeigeansprüchen handelt es sich um ClaimTypes-Elemente, die vom Benutzer erfasst werden sollen.
 
 ```xml
 <TechnicalProfile Id="Id">
@@ -307,9 +307,9 @@ Für das folgende technische Profil gilt:
 </TechnicalProfile>
 ```
 
-### <a name="persisted-claims"></a>Persistente Ansprüche
+## <a name="persisted-claims"></a>Persistente Ansprüche
 
-Das **PersistedClaims**-Element enthält alle Werte, die vom [technischen Azure AD-Profil](active-directory-technical-profile.md) dauerhaft gespeichert werden sollen, sowie mögliche Zuordnungsinformationen zwischen einem Anspruchstyp, der bereits im Abschnitt [ClaimsSchema](claimsschema.md) in der Richtlinie definiert ist, und dem Azure AD-Attributnamen.
+Das Element **PersistedClaims** enthält alle Werte, die vom [technischen Azure AD-Profil](active-directory-technical-profile.md) dauerhaft gespeichert werden sollen, sowie mögliche Zuordnungsinformationen zwischen einem Anspruchstyp, der bereits im Abschnitt [ClaimsSchema](claimsschema.md) in der Richtlinie definiert ist, und dem Azure AD-Attributnamen.
 
 Der Name des Anspruchs ist der Name des [Azure AD-Attributs](user-profile-attributes.md), sofern nicht das **PartnerClaimType**-Attribut angegeben wurde, das den Namen des Azure AD-Attributs enthält.
 
@@ -326,10 +326,10 @@ Das **PersistedClaim**-Element enthält die folgenden Attribute:
 | attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | Ja | Der Bezeichner eines Anspruchstyps, der bereits im ClaimsSchema-Abschnitt der Richtliniendatei oder der übergeordneten Richtliniendatei definiert ist. |
-| DefaultValue | Nein | Ein Standardwert, der zum Erstellen eines Anspruchs verwendet wird, wenn der Anspruch nicht vorhanden ist. |
-| PartnerClaimType | Nein | Der Bezeichner des Anspruchstyps des externen Partners, dem der angegebene Anspruchstyp der Richtlinie zugeordnet ist. Wenn das PartnerClaimType-Attribut nicht angegeben wurde, wird der angegebene Anspruchstyp der Richtlinie dem Partneranspruchstyp mit dem gleichen Namen zugeordnet. Verwenden Sie diese Eigenschaft, wenn sich der Name des Anspruchstyps vom dem der anderen Partei unterscheidet. Der erste Anspruchsname lautet beispielsweise „givenName“, während der Partner einen Anspruch mit dem Namen „first_name“ verwendet. |
+| DefaultValue | Nein | Ein Standardwert, der zum Erstellen eines Anspruchs verwendet wird, wenn der Anspruch nicht vorhanden ist |
+| PartnerClaimType | Nein | Der Bezeichner des Anspruchstyps des externen Partners, dem der angegebene Anspruchstyp der Richtlinie zugeordnet ist. Wenn das PartnerClaimType-Attribut nicht angegeben wurde, wird der angegebene Anspruchstyp der Richtlinie dem Partneranspruchstyp mit dem gleichen Namen zugeordnet. Verwenden Sie diese Eigenschaft, wenn sich der Name des Anspruchstyps vom dem der anderen Partei unterscheidet. Der erste Anspruchsname lautet beispielsweise *givenName*, während der Partner einen Anspruch mit dem Namen *first_name* verwendet. |
 
-Im folgenden Beispiel werden die folgenden Ansprüche durch das technische Profil **AAD-UserWriteUsingLogonEmail** oder das [Starter Pack](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/SocialAndLocalAccounts), das ein neues lokales Konto erstellt, dauerhaft gespeichert:
+Im folgenden Beispiel werden die folgenden Ansprüche durch das technische Profil **AAD-UserWriteUsingLogonEmail** oder das [Startpaket](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/SocialAndLocalAccounts) dauerhaft gespeichert, das ein neues lokales Konto erstellt:
 
 ```xml
 <PersistedClaims>
@@ -344,7 +344,7 @@ Im folgenden Beispiel werden die folgenden Ansprüche durch das technische Profi
 
 ## <a name="output-claims"></a>Ausgabeansprüche
 
-**OutputClaims** ist die Sammlung mit Ansprüchen, die nach Abschluss des technischen Profils an den Anspruchsbehälter zurückgegeben werden. Sie können diese Ansprüche im nächsten Orchestrierungsschritt bzw. Transformationen von Ausgabeansprüchen verwenden. Das **OutputClaims**-Element enthält das folgende Element:
+Das Element **OutputClaims** ist die Sammlung mit Ansprüchen, die nach Abschluss des technischen Profils an den Anspruchsbehälter zurückgegeben werden. Sie können diese Ansprüche im nächsten Orchestrierungsschritt oder Transformationen von Ausgabeansprüchen verwenden. Das **OutputClaims**-Element enthält das folgende Element:
 
 | Element | Vorkommen | BESCHREIBUNG |
 | ------- | ----------- | ----------- |
@@ -357,15 +357,15 @@ Das **OutputClaim**-Element enthält die folgenden Attribute:
 | attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | Ja | Der Bezeichner eines Anspruchstyps, der bereits im ClaimsSchema-Abschnitt der Richtliniendatei oder der übergeordneten Richtliniendatei definiert ist. |
-| DefaultValue | Nein | Ein Standardwert, der zum Erstellen eines Anspruchs verwendet wird, wenn der Anspruch nicht vorhanden ist. |
-|AlwaysUseDefaultValue |Nein |Erzwingt die Verwendung des Standardwerts.  |
-| PartnerClaimType | Nein | Der Bezeichner des Anspruchstyps des externen Partners, dem der angegebene Anspruchstyp der Richtlinie zugeordnet ist. Wenn das „PartnerClaimType“-Attribut nicht angegeben wurde, wird der angegebene Anspruchstyp der Richtlinie dem Partneranspruchstyp mit demselben Namen zugeordnet. Verwenden Sie diese Eigenschaft, wenn sich der Name des Anspruchstyps vom dem der anderen Partei unterscheidet. Der erste Anspruchsname lautet beispielsweise „givenName“, während der Partner einen Anspruch mit dem Namen „first_name“ verwendet. |
+| DefaultValue | Nein | Ein Standardwert, der zum Erstellen eines Anspruchs verwendet wird, wenn der Anspruch nicht vorhanden ist |
+|AlwaysUseDefaultValue |Nein |Erzwingt die Verwendung des Standardwerts |
+| PartnerClaimType | Nein | Der Bezeichner des Anspruchstyps des externen Partners, dem der angegebene Anspruchstyp der Richtlinie zugeordnet ist. Wenn das Attribut PartnerClaimType nicht angegeben wurde, wird der angegebene Anspruchstyp der Richtlinie dem Partneranspruchstyp mit demselben Namen zugeordnet. Verwenden Sie diese Eigenschaft, wenn sich der Name des Anspruchstyps vom dem der anderen Partei unterscheidet. Der erste Anspruchsname lautet beispielsweise *givenName*, während der Partner einen Anspruch mit dem Namen *first_name* verwendet. |
 
 ## <a name="output-claims-transformations"></a>Transformationen von Ausgabeansprüchen
 
-Das **OutputClaimsTransformations**-Element kann eine Sammlung von **OutputClaimsTransformation**-Elementen enthalten. Die Transformationen von Ausgabeansprüchen werden zum Ändern der Ausgabeansprüche oder zum Generieren neuer Ansprüche verwendet. Nach der Ausführung werden die Ausgabeansprüche wieder im Anspruchsbehälter abgelegt. Sie können diese Ansprüche im nächsten Orchestrierungsschritt verwenden.
+Das Element **OutputClaimsTransformations** kann eine Sammlung von **OutputClaimsTransformation**-Elementen enthalten. Die Transformationen von Ausgabeansprüchen werden zum Ändern der Ausgabeansprüche oder zum Generieren neuer Ansprüche verwendet. Nach der Ausführung werden die Ausgabeansprüche wieder im Anspruchsbehälter abgelegt. Sie können diese Ansprüche im nächsten Orchestrierungsschritt verwenden.
 
-Die Ausgabeansprüche einer vorherigen Anspruchstransformation in der Sammlung der Anspruchstransformationen können Eingabeansprüche einer nachfolgenden Eingabeanspruchstransformation sein. Auf diese Weise kann eine Sequenz aus Anspruchstransformationen entstehen, die voneinander abhängig sind.
+Bei den Ausgabeansprüchen einer vorherigen Anspruchstransformation in der Sammlung der Anspruchstransformationen kann es sich um Eingabeansprüche einer nachfolgenden Eingabeanspruchstransformation handeln. Auf diese Weise können Sie eine Sequenz von Anspruchstransformationen verwenden, die voneinander abhängig sind.
 
 Das **OutputClaimsTransformations**-Element enthält das folgende Element:
 
@@ -381,7 +381,7 @@ Das **OutputClaimsTransformation**-Element enthält das folgende Attribut:
 | --------- | -------- | ----------- |
 | ReferenceId | Ja | Ein Bezeichner einer Anspruchstransformation, die bereits in der Richtliniendatei oder der übergeordneten Richtliniendatei definiert ist. |
 
-Das folgende technische Profil verweist auf die Anspruchstransformation „AssertAccountEnabledIsTrue“, um nach dem Auslesen des `accountEnabled`-Anspruchs aus dem Verzeichnis zu bewerten, ob das Konto aktiviert ist oder nicht.    
+Das folgende technische Profil verweist auf die Anspruchstransformation „AssertAccountEnabledIsTrue“, um nach dem Auslesen des `accountEnabled`-Anspruchs aus dem Verzeichnis zu bewerten, ob das Konto aktiviert ist oder nicht.
 
 ```xml
 <TechnicalProfile Id="AAD-UserReadUsingEmailAddress">
@@ -404,11 +404,11 @@ Das folgende technische Profil verweist auf die Anspruchstransformation „Asser
 
 ## <a name="validation-technical-profiles"></a>Verwenden von technischen Validierungsprofilen
 
-Ein technisches Validierungsprofil wird zum Überprüfen von Ausgabeansprüchen in einem [selbstbestätigten technischen Profil](self-asserted-technical-profile.md#validation-technical-profiles) verwendet. Ein technisches Validierungsprofil ist ein ganz einfaches technisches Profil aus jedem beliebigen Protokoll, z. B. [Azure Active Directory](active-directory-technical-profile.md) oder einer [REST-API](restful-technical-profile.md). Das technische Validierungsprofil gibt Ausgabeansprüche oder einen Fehlercode zurück. Die Fehlermeldung wird für Benutzer auf dem Bildschirm gerendert, sodass sie den Vorgang wiederholen können.
+Ein technisches Validierungsprofil wird zum Überprüfen von Ausgabeansprüchen in einem [selbstbestätigten technischen Profil](self-asserted-technical-profile.md#validation-technical-profiles) verwendet. Ein technisches Validierungsprofil ist ein ganz einfaches technisches Profil aus jedem beliebigen Protokoll, z. B. [Azure AD](active-directory-technical-profile.md) oder eine [REST-API](restful-technical-profile.md). Das technische Validierungsprofil gibt Ausgabeansprüche oder einen Fehlercode zurück. Die Fehlermeldung wird dem Benutzer auf dem Bildschirm angezeigt, damit er den Vorgang wiederholen kann.
 
-Das folgende Diagramm zeigt, wie Azure AD B2C ein technisches Validierungsprofil verwendet, um die Benutzeranmeldeinformationen zu überprüfen.
+Im folgenden Diagramm wird veranschaulicht, wie Azure AD B2C die Benutzeranmeldeinformationen mit einem technischen Validierungsprofil überprüft.
 
-![Flussdiagramm für technisches Validierungsprofil](./media/technical-profiles/validation-technical-profile.png) 
+![Diagramm: Validierungsflow für ein technisches Profil](./media/technical-profiles/validation-technical-profile.png)
 
 Das **ValidationTechnicalProfiles**-Element enthält das folgende Element:
 
@@ -426,7 +426,7 @@ Das **ValidationTechnicalProfile**-Element enthält das folgende Attribut:
 
 ## <a name="subjectnaminginfo"></a>SubjectNamingInfo
 
-**SubjectNamingInfo** definiert den Antragstellernamen, der in einer [Richtlinie für die vertrauende Seite](relyingparty.md#subjectnaminginfo) in Token verwendet wird. **SubjectNamingInfo** enthält das folgende Attribut:
+Das Element **SubjectNamingInfo** definiert den Antragstellernamen, der in einer [Richtlinie für die vertrauende Seite](relyingparty.md#subjectnaminginfo) in Token verwendet wird. Das **SubjectNamingInfo**-Element enthält das folgende Attribut:
 
 | attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
@@ -434,22 +434,21 @@ Das **ValidationTechnicalProfile**-Element enthält das folgende Attribut:
 
 ## <a name="include-technical-profile"></a>Einschließen eines technischen Profils
 
-Ein technisches Profil kann ein anderes technisches Profil enthalten, um Einstellungen zu ändern oder neue Funktionalität hinzuzufügen. Das Element **IncludeTechnicalProfile** ist ein Verweis auf das allgemeine technische Profil, von dem ein technisches Profil abgeleitet wird. Um die Redundanz und Komplexität von Richtlinienelementen zu verringern, schließen Sie Profile in andere Profile ein, wenn Sie über mehrere technische Profile mit den gleichen Kernelementen verfügen. Verwenden Sie ein allgemeines technisches Profil mit einem gemeinsamen Konfigurationssatz sowie technische Profile für bestimmte Aufgaben, die das allgemeine Profil einschließen. 
+Ein technisches Profil kann ein anderes technisches Profil enthalten, um Einstellungen zu ändern oder neue Funktionalität hinzuzufügen. Das Element **IncludeTechnicalProfile** ist ein Verweis auf das allgemeine technische Profil, von dem ein technisches Profil abgeleitet wird. Um die Redundanz und Komplexität von Richtlinienelementen zu verringern, schließen Sie Profile in andere Profile ein, wenn Sie über mehrere technische Profile mit den gleichen Kernelementen verfügen. Verwenden Sie ein allgemeines technisches Profil mit einem gemeinsamen Konfigurationssatz sowie technische Profile für bestimmte Aufgaben, die das allgemeine Profil einschließen.
 
-Angenommen, Sie verfügen über ein [technisches REST-API-Profil](restful-technical-profile.md) mit einem einzigen Endpunkt, an den Sie verschiedene Anspruchssätze für verschiedene Szenarien senden müssen. Erstellen Sie ein allgemeines technisches Profil mit den gemeinsamen Funktionen wie REST-API-Endpunkt-URI, Metadaten, Authentifizierungstyp und kryptografischen Schlüsseln. Erstellen Sie spezielle technische Aufgabenprofile, die das allgemeine technische Profil enthalten. Fügen Sie dann die Eingabeansprüche und Ausgabeansprüche hinzu, oder überschreiben Sie den REST-API-Endpunkt-URI, der für dieses technische Profil relevant ist.
+Angenommen, Sie verfügen über ein [technisches REST-API-Profil](restful-technical-profile.md) mit einem einzigen Endpunkt, an den Sie verschiedene Ansprüche für unterschiedliche Szenarios senden müssen. Erstellen Sie ein allgemeines technisches Profil mit den gemeinsamen Funktionen wie REST-API-Endpunkt-URL, Metadaten, Authentifizierungstyp und Kryptografieschlüsseln. Erstellen Sie spezielle technische Aufgabenprofile, die das allgemeine technische Profil enthalten. Fügen Sie dann die Eingabe- und Ausgabeansprüche hinzu, oder überschreiben Sie den REST-API-Endpunkt-URI, der für dieses technische Profil relevant ist.
 
 Das **IncludeTechnicalProfile**-Element enthält das folgende Attribut:
 
 | attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
-| ReferenceId | Ja | Ein Bezeichner eines technischen Profils, das bereits in der Richtliniendatei oder der übergeordneten Richtliniendatei definiert ist |
-
+| ReferenceId | Ja | Ein Bezeichner eines technischen Profils, das bereits in der Richtliniendatei oder der übergeordneten Richtliniendatei definiert ist. |
 
 Das folgende Beispiel veranschaulicht das Einschließen von Profilen:
 
-- *REST-API-Common*: Dies ist ein allgemeines technisches Profil mit der Basiskonfiguration.
-- *REST-ValidateProfile:* schließt das technische Profil *REST-API-Common* ein und gibt die Eingabe- und Ausgabeansprüche an.
-- *REST-UpdateProfile:* schließt das technische Profil *REST-API-Common* ein, gibt die Eingabe- und Ausgabeansprüche an und überschreibt die `ServiceUrl`-Metadaten.
+- **REST-API-Common:** ein allgemeines technisches Profil mit der Basiskonfiguration
+- **REST-ValidateProfile:** schließt das technische Profil **REST-API-Common** ein und gibt die Eingabe- und Ausgabeansprüche an
+- **REST-UpdateProfile:** schließt das technische Profil **REST-API-Common** ein, gibt die Eingabe- und Ausgabeansprüche an und überschreibt die `ServiceUrl`-Metadaten
 
 ```xml
 <ClaimsProvider>
@@ -498,9 +497,9 @@ Das folgende Beispiel veranschaulicht das Einschließen von Profilen:
 </ClaimsProvider>
 ```
 
-### <a name="multi-level-inclusion"></a>Einschluss auf mehreren Ebenen 
+### <a name="multilevel-inclusion"></a>Einschluss auf mehreren Ebenen
 
-Ein technisches Profil kann ein einzelnes technisches Profil einschließen. Die Anzahl von Einschlussebenen ist nicht begrenzt. Das technische Profil **AAD-UserReadUsingAlternativeSecurityId-NoError** enthält z. B. das Profil **AAD-UserReadUsingAlternativeSecurityId**. Dieses technische Profil legt das Metadatenelement `RaiseErrorIfClaimsPrincipalDoesNotExist` auf `true` fest und löst einen Fehler aus, wenn ein Konto für ein soziales Netzwerk nicht im Verzeichnis vorhanden ist. **AAD-UserReadUsingAlternativeSecurityId-NoError** setzt dieses Verhalten außer Kraft und deaktiviert die Fehlermeldung.
+Ein technisches Profil kann ein einzelnes technisches Profil einschließen. Die Anzahl von Einschlussebenen ist nicht begrenzt. Das technische Profil **AAD-UserReadUsingAlternativeSecurityId-NoError** enthält z. B. das Profil **AAD-UserReadUsingAlternativeSecurityId**. Dieses technische Profil legt das Metadatenelement `RaiseErrorIfClaimsPrincipalDoesNotExist` auf `true` fest und löst einen Fehler aus, wenn ein Social Media-Konto nicht im Verzeichnis vorhanden ist. **AAD-UserReadUsingAlternativeSecurityId-NoError** setzt dieses Verhalten außer Kraft und deaktiviert die Fehlermeldung.
 
 ```xml
 <TechnicalProfile Id="AAD-UserReadUsingAlternativeSecurityId-NoError">
@@ -547,7 +546,7 @@ Ein technisches Profil kann ein einzelnes technisches Profil einschließen. Die 
 
 ## <a name="use-technical-profile-for-session-management"></a>Verwenden eines technischen Profils für die Sitzungsverwaltung
 
-Das Element **UseTechnicalProfileForSessionManagement** verweist auf ein [technisches Profil für SSO-Sitzungen](custom-policy-reference-sso.md). Das **UseTechnicalProfileForSessionManagement**-Element enthält das folgende Attribut:
+Das Element **UseTechnicalProfileForSessionManagement** verweist auf die [SSO-Sitzung für das technische Profil](custom-policy-reference-sso.md). Das **UseTechnicalProfileForSessionManagement**-Element enthält das folgende Attribut:
 
 | attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
@@ -555,18 +554,18 @@ Das Element **UseTechnicalProfileForSessionManagement** verweist auf ein [techni
 
 ## <a name="enabled-for-user-journeys"></a>Aktiviert für User Journeys
 
-Das [ClaimsProviderSelections](userjourneys.md#claims-provider-selection)-Element in einer User Journey definiert die Liste der Auswahloptionen für Anspruchsanbieter und deren Reihenfolge. Mit dem **EnabledForUserJourneys**-Element filtern Sie, welcher Anspruchsanbieter für den Benutzer verfügbar ist. Das **EnabledForUserJourneys**-Element enthält einen der folgenden Werte:
+Das [ClaimsProviderSelections](userjourneys.md#claims-provider-selection)-Element in einer User Journey definiert die Liste der Auswahloptionen für Anspruchsanbieter und deren Reihenfolge. Mit dem Element **EnabledForUserJourneys** filtern Sie, welcher Anspruchsanbieter für den Benutzer verfügbar ist. Das **EnabledForUserJourneys**-Element enthält einen der folgenden Werte:
 
-- **Immer** – das technische Profil wird ausgeführt.
-- **Nie** – das technische Profil wird übersprungen.
-- **OnClaimsExistence** – die Ausführung erfolgt nur, wenn ein angegebener Anspruch im technischen Profil vorhanden ist.
-- **OnItemExistenceInStringCollectionClaim** – die Ausführung erfolgt nur, wenn ein Element in einem Anspruch mit einer Zeichenfolgensammlung vorhanden ist.
-- **OnItemAbsenceInStringCollectionClaim** – die Ausführung erfolgt nur, wenn ein Element in einem Anspruch mit einer Zeichenfolgensammlung nicht enthalten ist.
+- **Immer:** Das technische Profil wird ausgeführt.
+- **Nie:** Das technische Profil wird übersprungen.
+- **OnClaimsExistence:** Die Ausführung erfolgt nur, wenn ein angegebener Anspruch im technischen Profil vorhanden ist.
+- **OnItemExistenceInStringCollectionClaim:** Die Ausführung erfolgt nur, wenn ein Element in einem Anspruch mit einer Zeichenfolgensammlung vorhanden ist.
+- **OnItemAbsenceInStringCollectionClaim:** Die Ausführung erfolgt nur, wenn ein Element in einem Anspruch mit einer Zeichenfolgensammlung nicht enthalten ist.
 
-Bei Verwendung von **OnClaimsExistence**, **OnItemExistenceInStringCollectionClaim** oder **OnItemAbsenceInStringCollectionClaim** müssen Sie die folgenden Metadaten angeben: 
+Bei Verwendung von **OnClaimsExistence**, **OnItemExistenceInStringCollectionClaim** oder **OnItemAbsenceInStringCollectionClaim** müssen Sie die folgenden Metadaten angeben:
 
-- **ClaimTypeOnWhichToEnable**: Gibt den auszuwertenden Typ des Anspruchs an.
-- **ClaimValueOnWhichToEnable**: Gibt den zu vergleichenden Wert an.
+- **ClaimTypeOnWhichToEnable:** gibt den Anspruchstyp zurück, der bewertet werden soll
+- **ClaimValueOnWhichToEnable**: gibt den Wert zurück, der verglichen werden soll
 
 Das folgende technische Profil wird nur ausgeführt, wenn die **identityProviders**-Zeichenfolgensammlung den Wert `facebook.com` enthält:
 

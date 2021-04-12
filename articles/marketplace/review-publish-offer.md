@@ -7,13 +7,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
-ms.date: 10/27/2020
-ms.openlocfilehash: 8b63dfb015c7337e36dac3812e92ddc53914206d
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.date: 03/10/2021
+ms.openlocfilehash: f8ddcbef6d2ce4a9cba625374db9908335954424
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98247164"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102630893"
 ---
 # <a name="how-to-review-and-publish-an-offer-to-the-commercial-marketplace"></a>Überprüfen und Veröffentlichen eines Angebots im kommerziellen Marketplace
 
@@ -74,6 +74,13 @@ Der erste Schritt im Veröffentlichungsprozess sieht eine Reihe automatisierter 
 - **Überprüfung der Leadverwaltung und Registrierung** (>15 Min.)
 
     Wir stellen sicher, dass Ihr Leadverwaltungssystem Kundenleads basierend auf Ihren Angaben auf der Seite **Angebotseinrichtung** empfangen kann. Dieser Schritt gilt nur für Angebote mit aktivierter Leadverwaltung.
+
+- **Angebotsvalidierung** (< 30 min.)
+
+    Ausschließlich bei SaaS-Angeboten führen wir eine schnelle Validierung von Inhalts- und technischen Konfigurationen durch. Eine Vorschau der Erstellung wird bei den in diesem Schritt ermittelten Validierungsproblemen nicht blockiert. Wenn Probleme gefunden werden, die zu Fehlern bei der Zertifizierung führen können, wird auf der Seite **Angebotsübersicht** der Link **Prüfbericht anzeigen** angezeigt. Der Bericht enthält Beschreibungen von Richtlinienverstößen.
+
+    > [!IMPORTANT]
+    > Sie müssen alle Warnungen aus dem Schritt „Angebotsvalidierung“ überprüfen und beheben, bevor Sie die Schaltfläche **Live schalten** auswählen. Andernfalls riskieren Sie eine fehlerhafte Zertifizierung, die zu einer Verzögerung bei der Aktivierung Ihres Angebots führt.
 
 ## <a name="certification-phase"></a>Phase „Zertifizierung“
 
@@ -143,16 +150,19 @@ Wenn Sie das Angebot zu einem späteren Zeitpunkt veröffentlichen möchten, mü
 
 Wenn das Angebot für Ihre Prüfung und Genehmigung bereit ist, senden wir Ihnen eine E-Mail mit der Bitte, Ihre Angebotsvorschau zu prüfen und zu genehmigen. Sie können auch die Seite **Angebotsübersicht** in Ihrem Browser aktualisieren, um festzustellen, ob Ihr Angebot die Phase „Einholen der Genehmigung des Herausgebers“ erreicht hat. Wenn dies der Fall ist, sind die Schaltfläche **Live schalten** und Vorschaulinks verfügbar.
 
-Im folgenden Screenshot ist die Seite **Angebotsübersicht** für ein SaaS-Angebot zu sehen. Die auf dieser Seite angezeigten Validierungsschritte variieren je nach Angebotstyp und der Auswahl, die Sie beim Erstellen des Angebots getroffen haben.
+Der folgende Screenshot zeigt die Seite **Angebotsübersicht** im Programm „Kommerzieller Marketplace“ in Partner Center. Die auf dieser Seite angezeigten Validierungsschritte variieren je nach Angebotstyp und der Auswahl, die Sie beim Erstellen des Angebots getroffen haben. Beachten Sie, dass die Zertifizierungsphase je nach Angebotstyp während der Übermittlung zur Vorschau oder zur Liveschaltung erfolgen kann.
 
 ![Veranschaulicht die Seite „Angebotsübersicht“ für ein Angebot im Partner Center. Die Schaltfläche „Live schalten“ und Vorschaulinks sind dargestellt.](./media/publish-status-publisher-signoff.png)
 
 ### <a name="previewing-and-approving-your-offer"></a>Vorschau und Genehmigung Ihres Angebots
 
 > [!IMPORTANT]
-> Um den gesamten Flow vom Kauf bis zur Einrichtung zu überprüfen, erwerben Sie Ihr Angebot, während es sich in der Vorschau befindet. Benachrichtigen Sie zunächst Microsoft mit einem [Supportticket](https://aka.ms/marketplacesupport), um sicherzustellen, dass wir keine Gebühren erheben. Wenn es sich bei Ihrem Angebot um eine Auflistung vom Typ „Kontakt mit mir aufnehmen“ handelt, überprüfen Sie, ob erwartungsgemäß ein Lead generiert wird, indem Sie während der Vorschau die Kontaktdetails bereitstellen.
+> Um den gesamten Flow vom Kauf bis zur Einrichtung zu überprüfen, erwerben Sie Ihr Angebot, während es sich in der Vorschau befindet. Benachrichtigen Sie zunächst Microsoft mit einem [Supportticket](https://aka.ms/marketplacesupport), um sicherzustellen, dass wir keine Gebühren erheben. Wenn es sich bei Ihrem Angebot um ein Listing vom Typ _Kontakt mit mir aufnehmen_ handelt, überprüfen Sie, ob erwartungsgemäß ein Lead generiert wird, indem Sie während der Vorschau die Kontaktdetails bereitstellen.
 
 Auf der Seite **Angebotsübersicht** werden unter der Schaltfläche **Live schalten** Vorschaulinks angezeigt. Abhängig von den Optionen, die Sie beim Erstellen Ihres Angebots ausgewählt haben, ist ein Link für die AppSource-Vorschau, die Azure Marketplace-Vorschau oder beide verfügbar. Wenn Sie sich für den Verkauf Ihres Angebots über Microsoft entschieden haben, können alle Mitglieder der Vorschauzielgruppe den Kauf und die Bereitstellung Ihres Angebots testen, um sicherzustellen, dass es Ihre Anforderungen in dieser Phase erfüllt.
+
+> [!IMPORTANT]
+> Sie müssen alle Warnungen aus dem Schritt _Angebotsvalidierung_ überprüfen und beheben, bevor Sie die Schaltfläche **Live schalten** auswählen. Andernfalls riskieren Sie eine fehlerhafte Zertifizierung, die zu einer Verzögerung bei der Aktivierung Ihres Angebots führt.
 
 Nachdem Sie Ihre Vorschau genehmigt haben, wählen Sie **Live schalten** aus, um Ihr Angebot live im kommerziellen Marketplace zu veröffentlichen. 
 

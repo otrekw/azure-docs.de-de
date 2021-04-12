@@ -3,12 +3,12 @@ title: Phasen einer Blaupausenbereitstellung
 description: Erfahren Sie mehr über die Schritte in Bezug auf Sicherheit und Artefakte, die von den Azure Blueprints-Diensten beim Erstellen einer Blaupausenzuweisung durchlaufen werden.
 ms.date: 01/27/2021
 ms.topic: conceptual
-ms.openlocfilehash: e686dec1c9d79e42dafee17d8a937284aac4fdd6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 473f8c7957994401ea6000ecc0d8023a89f8c349
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98918550"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105560147"
 ---
 # <a name="stages-of-a-blueprint-deployment"></a>Phasen einer Blaupausenbereitstellung
 
@@ -27,7 +27,7 @@ Die Blaupausenbereitstellung wird durch Zuweisen einer Blaupause zu einem Abonne
 
 Dem Azure Blueprints-Dienstprinzipal werden Besitzerrechte für die zugewiesenen Abonnements oder für Abonnements gewährt, wenn eine [systemseitig zugewiesene verwaltete Identität](../../../active-directory/managed-identities-azure-resources/overview.md) verwendet wird. Mit der gewährten Rolle kann Azure Blueprints die **systemseitig zugewiesene verwaltete Identität** erstellen und später widerrufen. Wenn eine **vom Benutzer zugewiesene** verwaltete Identität verwendet wird, erhält der Azure Blueprints-Dienstprinzipal keine Besitzerrechte für das Abonnement, und er benötigt diese auch nicht.
 
-Die Rechte werden automatisch gewährt, wenn die Zuweisung über das Portal erfolgt. Wenn die Zuweisung jedoch über die REST-API erfolgt, müssen die Rechte mithilfe eines separaten API-Aufrufs gewährt werden. Die Azure Blueprints-App-ID lautet `f71766dc-90d9-4b7d-bd9d-4499c4331c3f`, die Dienstprinzipale variieren jedoch je nach Mandant. Verwenden Sie die [Azure Active Directory Graph-API](../../../active-directory/develop/active-directory-graph-api.md) und den REST-Endpunkt [servicePrincipals](/graph/api/resources/serviceprincipal), um den Dienstprinzipal abzurufen. Gewähren Sie dann Azure Blueprints die Rolle _Besitzer_ über das [Portal](../../../role-based-access-control/role-assignments-portal.md), die [Azure CLI](../../../role-based-access-control/role-assignments-cli.md), [Azure PowerShell](../../../role-based-access-control/role-assignments-powershell.md), die [REST-API](../../../role-based-access-control/role-assignments-rest.md) oder eine [Azure Resource Manager-Vorlage](../../../role-based-access-control/role-assignments-template.md).
+Die Rechte werden automatisch gewährt, wenn die Zuweisung über das Portal erfolgt. Wenn die Zuweisung jedoch über die REST-API erfolgt, müssen die Rechte mithilfe eines separaten API-Aufrufs gewährt werden. Die Azure Blueprints-App-ID lautet `f71766dc-90d9-4b7d-bd9d-4499c4331c3f`, die Dienstprinzipale variieren jedoch je nach Mandant. Verwenden Sie die [Azure Active Directory Graph-API](/graph/migrate-azure-ad-graph-planning-checklist) und den REST-Endpunkt [servicePrincipals](/graph/api/resources/serviceprincipal), um den Dienstprinzipal abzurufen. Gewähren Sie dann Azure Blueprints die Rolle _Besitzer_ über das [Portal](../../../role-based-access-control/role-assignments-portal.md), die [Azure CLI](../../../role-based-access-control/role-assignments-cli.md), [Azure PowerShell](../../../role-based-access-control/role-assignments-powershell.md), die [REST-API](../../../role-based-access-control/role-assignments-rest.md) oder eine [Azure Resource Manager-Vorlage](../../../role-based-access-control/role-assignments-template.md).
 
 Der Azure Blueprints-Dienst stellt die Ressourcen nicht direkt bereit.
 

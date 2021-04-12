@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/09/2020
 ms.custom: devx-track-java
 ms.author: mametcal
-ms.openlocfilehash: 076ab0bb7dbc85a31b626a24d977e6fea558143e
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: 590f221b0a4980d462267dd8c3a73ca7d02583fd
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102636537"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105625516"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-java-spring-app"></a>Tutorial: Verwenden der dynamischen Konfiguration in einer Java Spring-App
 
@@ -89,6 +89,7 @@ Wenn Sie die automatisierte Aktualisierung verwenden möchten, beginnen Sie mit 
     ```
 
 1. Öffnen Sie zum Testen der dynamischen Konfiguration das Azure App Configuration-Portal, das Ihrer Anwendung zugeordnet ist. Wählen Sie den **Konfigurations-Explorer** aus, und aktualisieren Sie den Wert des angezeigten Schlüssels. Beispiel:
+
     | Schlüssel | Wert |
     |---|---|
     | application/config.message | Hello - Updated |
