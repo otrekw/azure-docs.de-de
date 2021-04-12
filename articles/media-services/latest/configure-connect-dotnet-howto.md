@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 11/17/2020
 ms.author: inhenkel
 ms.custom: has-adal-ref, devx-track-csharp
-ms.openlocfilehash: 677c5998d25205f8de9792888af2554674944798
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: e4d1ed0c015b75cc058c7d6136069a8858d835e2
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106107560"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106492527"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>Verbinden mit der Media Services v3-API – .NET
 
@@ -240,7 +240,7 @@ namespace ConsoleApp1
 - [Tutorial: Analysieren von Videos mit Media Services v3 mithilfe von .NET](analyze-videos-tutorial.md)
 - [Erstellen einer Auftragseingabe aus einer lokalen Datei](job-input-from-local-file-how-to.md)
 - [Erstellen einer Auftragseingabe aus einer HTTPS-URL](job-input-from-http-how-to.md)
-- [Codieren einer benutzerdefinierten Transformation](encode-custom-presets-how-to.md)
+- [Codieren einer benutzerdefinierten Transformation](transform-custom-presets-how-to.md)
 - [Verwenden der dynamischen AES-128-Verschlüsselung und des Schlüsselübermittlungsdiensts](drm-playready-license-template-concept.md)
 - [Verwenden der dynamischen DRM-Verschlüsselung und des Lizenzbereitstellungsdiensts](drm-protect-with-drm-tutorial.md)
 - [Abrufen eines Signaturschlüssels aus der vorhandenen Richtlinie](drm-get-content-key-policy-dotnet-how-to.md)

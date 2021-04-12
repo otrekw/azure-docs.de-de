@@ -3,12 +3,12 @@ title: 'Videowiedergabe: Azure'
 description: Platzhalter
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 2020d64538b2fcc846ab9a146e2fc95325abd26b
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: be42b39c167798e4e288c77dbd48a8734eb71fdf
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106063371"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106278591"
 ---
 # <a name="video-playback"></a>Videowiedergabe 
 
@@ -24,7 +24,7 @@ Sie können [Mediengraphen](media-graph-concept.md) verwenden, um Video in einem
 
 ## <a name="streaming-endpoint"></a>Streamingendpunkt 
 
-Sie können Azure Media Services verwenden, um das Medienobjekt mithilfe von Branchenstandards für HTTP-basierte Medienstreamingprotokolle wie HTTP Live Streaming (HLS) und MPEG-DASH an Videoplayer zu [streamen](terminology.md#streaming). Diese Konvertierung von Medien aus aufgezeichneten Inhalten in Streamingformate erfolgt durch einen [Streamingendpunkt](../latest/streaming-endpoint-concept.md). Das ist eine Ressource, die Sie in Ihrem Azure Media Service-Konto bereitstellen müssen.
+Sie können Azure Media Services verwenden, um das Medienobjekt mithilfe von Branchenstandards für HTTP-basierte Medienstreamingprotokolle wie HTTP Live Streaming (HLS) und MPEG-DASH an Videoplayer zu [streamen](terminology.md#streaming). Diese Konvertierung von Medien aus aufgezeichneten Inhalten in Streamingformate erfolgt durch einen [Streamingendpunkt](../latest/stream-streaming-endpoint-concept.md). Das ist eine Ressource, die Sie in Ihrem Azure Media Service-Konto bereitstellen müssen.
 
 ## <a name="streaming-policy"></a>Streamingrichtlinie 
 
@@ -34,11 +34,11 @@ Azure Media Services bietet Ihnen verschiedene Methoden zum Schützen Ihrer Vide
 * **Verwenden von AES-128 (Advanced Encryption Standard)** : Sie müssen eine Methode implementieren, um die Ausgabe von Schlüsseln zum Entschlüsseln des Videos nur an authentifizierte Viewer sicherzustellen.
 * **Verwenden von DRM-Systemen (Digital Rights Management, Verwaltung digitaler Rechte)** : Sie können die Nutzung, Bearbeitung und Übermittlung von Video an Geräte steuern, die diese Richtlinien durchsetzen.
 
-Um den Schutz von Inhalten zu erreichen, können Sie eine [Streamingrichtlinie](../latest/streaming-policy-concept.md) in Ihrem Media Service-Konto erstellen und sie für das Streaming aller Medienobjekte verwenden (unter der Annahme, dass für alle Medienobjekte die gleichen Sicherheitsanforderungen gelten). Sie können auch jede der vordefinierten Richtlinien (z. B. Predefined_ClearStreamingOnly) verwenden.
+Um den Schutz von Inhalten zu erreichen, können Sie eine [Streamingrichtlinie](../latest/stream-streaming-policy-concept.md) in Ihrem Media Service-Konto erstellen und sie für das Streaming aller Medienobjekte verwenden (unter der Annahme, dass für alle Medienobjekte die gleichen Sicherheitsanforderungen gelten). Sie können auch jede der vordefinierten Richtlinien (z. B. Predefined_ClearStreamingOnly) verwenden.
 
 ## <a name="streaming-locator"></a>Streaminglocator  
 
-Nachdem Sie einen Streamingendpunkt in Ihrem Media Services-Konto gestartet haben und die Streaming-Richtlinie definiert wurde, können Sie mit dem Streamen von aufgezeichneten Medien aus einem Medienobjekt mithilfe der HLS- oder DASH-Protokolle fortfahren. Webplayer und mobile Apps benötigen eine URL, die auf den HLS- oder DASH-Datenstrom verweist. Sie können diese URL mit dem [Streaminglocator](../latest/streaming-locators-concept.md) erstellen. Wie im Artikel [Erstellen eines Streaminglocators und von URLs](../latest/create-streaming-locator-build-url.md) erläutert und dort im Beispiel gezeigt, setzt sich die Streaming-URL aus dem Streamingendpunkt, der Streamingrichtlinie und dem Streaminglocator zusammen.
+Nachdem Sie einen Streamingendpunkt in Ihrem Media Services-Konto gestartet haben und die Streaming-Richtlinie definiert wurde, können Sie mit dem Streamen von aufgezeichneten Medien aus einem Medienobjekt mithilfe der HLS- oder DASH-Protokolle fortfahren. Webplayer und mobile Apps benötigen eine URL, die auf den HLS- oder DASH-Datenstrom verweist. Sie können diese URL mit dem [Streaminglocator](../latest/stream-streaming-locators-concept.md) erstellen. Wie im Artikel [Erstellen eines Streaminglocators und von URLs](../latest/create-streaming-locator-build-url.md) erläutert und dort im Beispiel gezeigt, setzt sich die Streaming-URL aus dem Streamingendpunkt, der Streamingrichtlinie und dem Streaminglocator zusammen.
 
 ## <a name="content-recorded-using-file-sink"></a>Mithilfe der Dateisenke aufgezeichnete Inhalte  
 
