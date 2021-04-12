@@ -9,12 +9,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/14/2020
-ms.openlocfilehash: 5764a8df862610fc076ce2810fcc0d4bf8dbda3c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d764c6b6cff6a0ba23d659d4fda63e21aac9b155
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99094555"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105644185"
 ---
 # <a name="directory-readers-role-in-azure-active-directory-for-azure-sql"></a>Rolle „Verzeichnisleseberechtigte“ in Azure Active Directory für Azure SQL
 
@@ -25,13 +25,13 @@ ms.locfileid: "99094555"
 
 Azure Active Directory (Azure AD) hat die [Verwendung von Cloudgruppen zum Verwalten von Rollenzuweisungen in Azure Active Directory (Vorschau)](../../active-directory/roles/groups-concept.md) eingeführt. Dadurch können Azure AD-Rollen Gruppen zugewiesen werden.
 
-Wenn Sie eine [verwaltete Identität](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) für Azure SQL-Datenbank, Azure SQL Managed Instance oder Azure Synapse Analytics aktivieren, muss der Identität die Azure AD-Rolle [**Verzeichnisleseberechtigte**](../../active-directory/roles/permissions-reference.md#directory-readers) zugewiesen werden, um Lesezugriff auf die [Azure AD Graph-API](../../active-directory/develop/active-directory-graph-api.md) zu ermöglichen. Die verwaltete Identität von SQL-Datenbank und Azure Synapse wird als Serveridentität bezeichnet. Die verwaltete Identität von SQL Managed Instance wird als verwaltete Instanzidentität bezeichnet und automatisch zugewiesen, wenn die Instanz erstellt wird. Weitere Informationen zum Zuweisen einer Serveridentität zu SQL-Datenbank oder Azure Synapse finden Sie unter [Aktivieren von Dienstprinzipalen zum Erstellen von Azure AD-Benutzern](authentication-aad-service-principal.md#enable-service-principals-to-create-azure-ad-users).
+Wenn Sie eine [verwaltete Identität](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) für Azure SQL-Datenbank, Azure SQL Managed Instance oder Azure Synapse Analytics aktivieren, muss der Identität die Azure AD-Rolle [**Verzeichnisleseberechtigte**](../../active-directory/roles/permissions-reference.md#directory-readers) zugewiesen werden, um Lesezugriff auf die [Azure AD Graph-API](/graph/migrate-azure-ad-graph-planning-checklist) zu ermöglichen. Die verwaltete Identität von SQL-Datenbank und Azure Synapse wird als Serveridentität bezeichnet. Die verwaltete Identität von SQL Managed Instance wird als verwaltete Instanzidentität bezeichnet und automatisch zugewiesen, wenn die Instanz erstellt wird. Weitere Informationen zum Zuweisen einer Serveridentität zu SQL-Datenbank oder Azure Synapse finden Sie unter [Aktivieren von Dienstprinzipalen zum Erstellen von Azure AD-Benutzern](authentication-aad-service-principal.md#enable-service-principals-to-create-azure-ad-users).
 
 Die Rolle **Verzeichnisleseberechtigte** ist für Folgendes erforderlich:
 
 - Erstellen von Azure AD-Anmeldungen für SQL Managed Instance
 - Annehmen der Identität von Azure AD Benutzern in Azure SQL
-- Migrieren von SQL Server-Benutzern, die Windows-Authentifizierung verwenden, zu SQL Managed Instance mit Azure AD-Authentifizierung (mit dem Befehl [ALTER USER (Transact-SQL)](/sql/t-sql/statements/alter-user-transact-sql?view=azuresqldb-mi-current#d-map-the-user-in-the-database-to-an-azure-ad-login-after-migration))
+- Migrieren von SQL Server-Benutzern, die Windows-Authentifizierung verwenden, zu SQL Managed Instance mit Azure AD-Authentifizierung (mit dem Befehl [ALTER USER (Transact-SQL)](/sql/t-sql/statements/alter-user-transact-sql?view=azuresqldb-mi-current&preserve-view=true#d-map-the-user-in-the-database-to-an-azure-ad-login-after-migration))
 - Ändern des Azure AD-Administrators für SQL Managed Instance
 - Ermöglichen, dass [Dienstprinzipale (Anwendungen)](authentication-aad-service-principal.md) Azure AD-Benutzer in Azure SQL erstellen können
 

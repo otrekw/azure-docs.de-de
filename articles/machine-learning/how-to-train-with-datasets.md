@@ -12,12 +12,12 @@ ms.reviewer: nibaccam
 ms.date: 07/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: 15bad877be00e143ce6f6956a4e1f23378c275c0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8b984a17c8c10c3dff7c57b7d0223ba8b4197012
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102521780"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105640129"
 ---
 # <a name="train-models-with-azure-machine-learning-datasets"></a>Trainieren von Modellen mit Azure Machine Learning-Datasets 
 
@@ -38,7 +38,7 @@ Sie benötigen Folgendes, um Datasets zu erstellen und für das Training zu nutz
 * Eine [Installation des Azure Machine Learning SDK für Python](/python/api/overview/azure/ml/install) (ab Version 1.13.0), in dem das Paket `azureml-datasets` enthalten ist.
 
 > [!Note]
-> Einige Datasetklassen sind vom Paket [azureml-dataprep](/python/api/azureml-dataprep/) abhängig. Für Linux-Benutzer werden diese Klassen nur unter den folgenden Distributionen unterstützt:  Red Hat Enterprise Linux, Ubuntu, Fedora und CentOS.
+> Einige Datasetklassen sind vom Paket [azureml-dataprep](https://pypi.org/project/azureml-dataprep/) abhängig. Für Linux-Benutzer werden diese Klassen nur unter den folgenden Distributionen unterstützt:  Red Hat Enterprise Linux, Ubuntu, Fedora und CentOS.
 
 ## <a name="consume-datasets-in-machine-learning-training-scripts"></a>Nutzen von Datasets in Trainingsskripts für maschinelles Lernen
 

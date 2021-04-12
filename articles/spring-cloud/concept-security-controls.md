@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 62a0bd19f6b10bbe6561f5587ed85d4d1e5880b3
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 1447e7eec9909c8af33005aab00c267e1a251720
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104877636"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105966825"
 ---
 # <a name="security-controls-for-azure-spring-cloud-service"></a>Sicherheitskontrollen für den Azure Spring Cloud-Dienst
 
@@ -34,7 +34,7 @@ Eine Sicherheitskontrolle stellt eine Qualitätseigenschaft oder ein Feature ein
 
 | Sicherheitskontrolle | Ja/Nein | Notizen | Dokumentation |
 |:-------------|:-------|:-------------------------------|:----------------------|
-| Diensttag | Ja | Verwenden Sie das **AzureSpringCloud**-Diensttag, um Zugriffssteuerungen für ausgehenden Netzwerkzugriff für [Netzwerksicherheitsgruppen](../virtual-network/network-security-groups-overview.md#security-rules) oder [Azure-Firewall](../firewall/service-tags.md) zu definieren, um Datenverkehr zu Azure Spring Cloud-Anwendungen zu ermöglichen.<br><br>*Hinweis:* Derzeit unterstützt nur die neue Azure Spring Cloud-Dienstinstanz, die nach dem 14.7.2020 erstellt wurde, das **AzureSpringCloud**-Diensttag. | [Diensttags](../virtual-network/service-tags-overview.md) |
+| Diensttag | Ja | Verwenden Sie das **AzureSpringCloud**-Diensttag, um Zugriffssteuerungen für ausgehenden Netzwerkzugriff für [Netzwerksicherheitsgruppen](../virtual-network/network-security-groups-overview.md#security-rules) oder [Azure-Firewall](../firewall/service-tags.md) zu definieren, um Datenverkehr zu Azure Spring Cloud-Anwendungen zu ermöglichen. | [Diensttags](../virtual-network/service-tags-overview.md) |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

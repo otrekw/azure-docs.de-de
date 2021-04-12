@@ -4,13 +4,13 @@ description: In dieser Schnellstartanleitung erstellen Sie die grundlegenden Kom
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 11/30/2020
-ms.openlocfilehash: a5443dce9fc8bc028232f66f45b537a46858f35a
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.date: 03/26/2021
+ms.openlocfilehash: c2f2bafe68dd3f3dad704ba12cdd4d01bf4f6588
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436673"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106278761"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Schnellstart: Erstellen einer neuen App im LUIS-Portal
 
@@ -24,7 +24,7 @@ Wählen Sie zum Erstellen einer Anwendung die Option **+ Neue App**.
 
 Geben Sie im angezeigten Fenster die folgenden Informationen ein:
 
-|Name  |Beschreibung  |
+|Name  |BESCHREIBUNG  |
 |---------|---------|
 |Name     | Ein Name für Ihre App. Beispiel: „Home Automation“. Erforderlich.        |
 |culture     | Die Sprache, die Ihre App versteht und spricht. Erforderlich.   |
@@ -164,4 +164,4 @@ Wenn Sie mit diesem Schnellstart fertig sind und nicht mit dem nächsten Schnell
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [2. Bereitstellen einer App](get-started-portal-deploy-app.md)
+> [Bereitstellen einer App](get-started-portal-deploy-app.md)
