@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 09/29/2020
-ms.openlocfilehash: 3b1e102385f43dd9a1ba6996e657f49d435038a2
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 16c3ac10af7d39ec35cde1cd9d279bced54fd8aa
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102503611"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106062504"
 ---
 # <a name="what-are-compute-targets-in-azure-machine-learning"></a>Was sind Computeziele in Azure Machine Learning?
 
@@ -98,30 +98,30 @@ Bei der Auswahl einer VM-Größe gelten einige Ausnahmen und Einschränkungen:
 
 In der folgenden Tabelle finden Sie weitere Informationen zu unterstützten Serien und Einschränkungen.
 
-| **Unterstützte VM-Serie**  | **Einschränkungen** |
-|------------|------------|
-| D | Keine. |
-| DDSv4 | Keine. |
-| Dv2 | Keine. |  
-| Dv3 | Keine.|
-| DSv2 | Keine. | 
-| DSv3 | Keine.|
-| EAv4 | Keine. |
-| Ev3 | Keine. |
-| FSv2 | Keine. | 
-| H | Keine. |
-| HB | Genehmigung erforderlich. |
-| HBv2 | Genehmigung erforderlich. |  
-| HCS | Genehmigung erforderlich. |  
-| M | Genehmigung erforderlich. |
-| NC | Keine. |  
-| NC Promo | Keine. |
-| NCsv2 | Genehmigung erforderlich. |
-| NCsv3 | Genehmigung erforderlich. |  
-| NDs | Genehmigung erforderlich. |
-| NDv2 | Genehmigung erforderlich. |
-| SH | Keine. |
-| NVv3 | Genehmigung erforderlich. | 
+| **Unterstützte VM-Serie**  | **Einschränkungen** | **Kategorie** | **Unterstützt von** |
+|------------|------------|------------|------------|
+| D | Keine. | Allgemeiner Zweck | Computecluster und -instanzen |
+| DDSv4 | Keine. | Allgemeiner Zweck | Computecluster und -instanzen |
+| Dv2 | Keine. | Allgemeiner Zweck | Computecluster und -instanzen |
+| Dv3 | Keine.| Allgemeiner Zweck | Computecluster und -instanzen |
+| DSv2 | Keine. | Allgemeiner Zweck | Computecluster und -instanzen |
+| DSv3 | Keine.| Allgemeiner Zweck | Computecluster und -instanzen |
+| EAv4 | Keine. | Arbeitsspeicheroptimiert | Computecluster und -instanzen |
+| Ev3 | Keine. | Arbeitsspeicheroptimiert | Computecluster und -instanzen |
+| FSv2 | Keine. | Computeoptimiert | Computecluster und -instanzen |
+| H | Keine. | High Performance Computing | Computecluster und -instanzen |
+| HB | Genehmigung erforderlich. | High Performance Computing | Computecluster und -instanzen |
+| HBv2 | Genehmigung erforderlich. |  High Performance Computing | Computecluster und -instanzen |
+| HCS | Genehmigung erforderlich. |  High Performance Computing | Computecluster und -instanzen |
+| M | Genehmigung erforderlich. | Arbeitsspeicheroptimiert | Computecluster und -instanzen |
+| NC | Keine. |  GPU | Computecluster und -instanzen |
+| NC Promo | Keine. | GPU | Computecluster und -instanzen |
+| NCsv2 | Genehmigung erforderlich. | GPU | Computecluster und -instanzen |
+| NCsv3 | Genehmigung erforderlich. | GPU | Computecluster und -instanzen |  
+| NDs | Genehmigung erforderlich. | GPU | Computecluster und -instanzen | 
+| NDv2 | Genehmigung erforderlich. | GPU | Computecluster und -instanzen | 
+| SH | Keine. | GPU | Computecluster und -instanzen | 
+| NVv3 | Genehmigung erforderlich. | GPU | Computecluster und -instanzen | 
 
 
 Obwohl Azure Machine Learning diese VM-Serien unterstützt, sind sie möglicherweise nicht in allen Azure-Regionen verfügbar. Informationen zum Überprüfen, ob VM-Serien verfügbar sind, finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines).

@@ -3,19 +3,14 @@ title: Problembehandlung bei Sicherungsfehlern in Azure Disk Backup
 description: Informationen zur Problembehandlung bei Sicherungsfehlern in Azure Disk Backup
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: 855c6c5b19b10bdb699a25f89ebc29001b7941ac
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f6e9bcbbd618cf820ce91f8a3092d5be4aa045cb
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98737726"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105107243"
 ---
-# <a name="troubleshooting-backup-failures-in-azure-disk-backup-in-preview"></a>Problembehandlung bei Sicherungsfehlern in Azure Disk Backup (Vorschau)
-
->[!IMPORTANT]
->Die Vorschauversion von Azure Disk Backup wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Informationen zur regionalen Verfügbarkeit finden Sie in der [Supportmatrix](disk-backup-support-matrix.md).
->
->[Füllen Sie dieses Formular aus](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR1vE8L51DIpDmziRt_893LVUNFlEWFJBN09PTDhEMjVHS05UWFkxUlUzUS4u), wenn Sie sich für die Vorschau registrieren möchten.
+# <a name="troubleshooting-backup-failures-in-azure-disk-backup"></a>Problembehandlung bei Sicherungsfehlern in Azure Disk Backup
 
 Dieser Artikel enthält Informationen zur Problembehandlung bei Sicherungs- und Wiederherstellungsproblemen mit Azure Disk. Weitere Informationen zur regionalen Verfügbarkeit von [Azure Disk Backup](disk-backup-overview.md), zu unterstützten Szenarien und zu Einschränkungen finden Sie in der [Supportmatrix](disk-backup-support-matrix.md).
 
@@ -157,7 +152,7 @@ Empfohlene Maßnahme: Wählen Sie ggf. einen anderen Wiederherstellungspunkt fü
 
 Fehlermeldung: Die Datenträgersicherung ist in der Region des Sicherungstresors, in dem die Konfiguration des Schutzes versucht wird, noch nicht verfügbar.
 
-Empfohlene Maßnahme: Der Sicherungstresor muss sich in einer von der Vorschauversion unterstützten Region befinden. Informationen zur regionalen Verfügbarkeit finden Sie in der [Unterstützungsmatrix](disk-backup-support-matrix.md).
+Empfohlene Aktion: Der Sicherungstresor muss sich in einer unterstützten Region befinden. Informationen zur regionalen Verfügbarkeit finden Sie in der [Unterstützungsmatrix](disk-backup-support-matrix.md).
 
 ### <a name="error-code-usererrordppdatasourcealreadyhasbackupinstance"></a>Fehlercode: UserErrorDppDatasourceAlreadyHasBackupInstance
 
