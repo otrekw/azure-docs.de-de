@@ -9,10 +9,10 @@ ms.date: 03/12/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 3b68fce603801c7bc1aee2af871df257b5f69197
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96027959"
 ---
 1. Installieren Sie Clientzertifikate auf dem Windows 10-Client wie in diesem Artikel zum [Point-to Site-VPN-Client](../articles/vpn-gateway/point-to-site-how-to-vpn-client-install-azure-cert.md) gezeigt. Das Zertifikat muss sich im Speicher des aktuellen Benutzers befinden.
@@ -128,6 +128,6 @@ Nachdem Sie das virtuelle Netzwerkgateway konfiguriert und das Clientzertifikat 
    ```
    
    ![MachineCertTest](./media/vpn-gateway-vwan-always-on-user/p2s2.jpg)
-1. Suchen Sie unter **VPN-Einstellungen** nach dem Eintrag **UserTest** , und klicken Sie auf **Verbinden**.
+1. Suchen Sie unter **VPN-Einstellungen** nach dem Eintrag **UserTest**, und klicken Sie auf **Verbinden**.
 
 1. Wenn die Verbindung hergestellt wird, haben Sie erfolgreich einen Always On-Benutzertunnel konfiguriert.

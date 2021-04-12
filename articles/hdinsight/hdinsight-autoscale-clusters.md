@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: contperf-fy21q1, contperf-fy21q2
 ms.date: 12/14/2020
-ms.openlocfilehash: 130a5a58fc7dab6f94c011cf9764743f9114e48a
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 5dabae76308f32da7968d8cfa89b95f1eb19c142
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98942637"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104863767"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>Automatisches Skalieren von Azure HDInsight-Clustern
 
@@ -91,7 +91,7 @@ Um das Feature „Autoskalierung“ mit lastbasierter Skalierung zu aktivieren, 
     * **Minimale** Anzahl von Workerknoten.
     * **Maximale** Anzahl von Workerknoten.
 
-    ![Aktivieren der lastbasierten Autoskalierung des Workerknotens](./media/hdinsight-autoscale-clusters/azure-portal-cluster-configuration-pricing-autoscale.png)
+    :::image type="content" source="./media/hdinsight-autoscale-clusters/azure-portal-cluster-configuration-pricing-autoscale.png" alt-text="Aktivieren der lastbasierten Autoskalierung des Workerknotens":::
 
 Die anfängliche Anzahl der Workerknoten kann vom Mindest- bis zum Höchstwert reichen. Dieser Wert definiert die Anfangsgröße des Clusters bei der Erstellung. Die Mindestzahl der Workerknoten sollte auf drei oder mehr festgelegt werden. Die Skalierung des Clusters auf weniger als drei Knoten kann dazu führen, dass der Cluster aufgrund unzureichender Dateireplikation im abgesicherten Modus hängen bleibt.  Weitere Informationen finden Sie unter [Hängenbleiben im abgesicherten Modus](./hdinsight-scaling-best-practices.md#getting-stuck-in-safe-mode).
 
@@ -108,7 +108,7 @@ Um das Feature „Autoskalierung“ mit zeitplanbasierter Skalierung zu aktivier
 1. Bearbeiten Sie die Zeit, zu der die Bedingung wirksam werden soll, und die Anzahl der Knoten, auf die der Cluster skaliert werden soll.
 1. Fügen Sie gegebenenfalls weitere Bedingungen hinzu.
 
-    ![Aktivieren der zeitplanbasierten Erstellung des Workerknotens](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-schedule-creation.png)
+    :::image type="content" source="./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-schedule-creation.png" alt-text="Aktivieren der zeitplanbasierten Erstellung des Workerknotens":::
 
 Die Anzahl der Knoten muss zwischen 3 und der maximalen Anzahl der Workerknoten liegen, die Sie vor dem Hinzufügen von Bedingungen eingegeben haben.
 
@@ -116,7 +116,7 @@ Die Anzahl der Knoten muss zwischen 3 und der maximalen Anzahl der Workerknoten 
 
 Wählen Sie den VM-Typ für Workerknoten aus, indem Sie in der Dropdownliste unter **Knotengröße** eine VM auswählen. Nachdem Sie den VM-Typ für jeden Knotentyp ausgewählt haben, können Sie den Bereich der geschätzten Kosten für den gesamten Cluster sehen. Passen Sie die VM-Typen entsprechend Ihrem Budget an.
 
-![Aktivieren der Knotengröße für die zeitplanbasierte Autoskalierung des Workerknotens](./media/hdinsight-autoscale-clusters/azure-portal-cluster-configuration-pricing-vmsize.png)
+:::image type="content" source="./media/hdinsight-autoscale-clusters/azure-portal-cluster-configuration-pricing-vmsize.png" alt-text="Aktivieren der Knotengröße für die zeitplanbasierte Autoskalierung des Workerknotens":::
 
 Ihr Abonnement verfügt für jede Region über ein Kapazitätskontingent. Die Gesamtanzahl der Kerne Ihrer Hauptknoten und der maximalen Workerknoten darf das Kapazitätskontingent nicht überschreiten. Dieses Kontingent ist jedoch eine weiche Grenze. Sie können immer ein Supportticket erstellen, um es problemlos erhöhen zu lassen.
 
@@ -193,7 +193,7 @@ Sie können einen HDInsight-Cluster mit zeitplanbasierter Autoskalierung und ein
 
 Zum Aktivieren der Autoskalierung in einem ausgeführten Cluster wählen **Clustergröße** unter **Einstellungen**. Wählen Sie dann **Automatische Skalierung aktivieren** aus. Wählen Sie die gewünschte Art der Autoskalierung, und geben Sie die Optionen für die last- oder zeitplanbasierte Skalierung ein. Klicken Sie abschließend auf **Speichern**.
 
-![Aktivieren der zeitplanbasierte Autoskalierung des Workerknotens für einen aktiven Cluster](./media/hdinsight-autoscale-clusters/azure-portal-settings-autoscale.png)
+:::image type="content" source="./media/hdinsight-autoscale-clusters/azure-portal-settings-autoscale.png" alt-text="Aktivieren der zeitplanbasierte Autoskalierung des Workerknotens für einen aktiven Cluster":::
 
 #### <a name="using-the-rest-api"></a>Verwenden der REST-API
 
@@ -217,7 +217,7 @@ Eine vollständige Beschreibung aller Nutzlastparameter finden Sie im vorherigen
 
 Der im Azure-Portal aufgeführte Clusterstatus kann Ihnen helfen, die Aktivitäten der Autoskalierung zu überwachen.
 
-![Aktivieren des Clusterstatus für die lastbasierte Autoskalierung des Workerknotens](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-cluster-status.png)
+:::image type="content" source="./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-cluster-status.png" alt-text="Aktivieren des Clusterstatus für die lastbasierte Autoskalierung des Workerknotens":::
 
 Alle Statusmeldungen des Clusters, die möglicherweise angezeigt werden, werden in der folgenden Liste erläutert.
 
@@ -237,7 +237,7 @@ Sie können den Verlauf des zentralen Hoch- und Herunterskalierens des Clusters 
 
 Wählen Sie unter **Überwachung** **Metriken** aus. Wählen Sie dann im Dropdownfeld **Metrik** die Option **Metrik hinzufügen** und dann **Anzahl der aktiven Worker** aus. Wählen Sie die Schaltfläche in der rechten oberen Ecke aus, um den Zeitbereich zu ändern.
 
-![Aktivieren der Metrik für die zeitplanbasierte Autoskalierung des Workerknotens](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-chart-metric.png)
+:::image type="content" source="./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-chart-metric.png" alt-text="Aktivieren der Metrik für die zeitplanbasierte Autoskalierung des Workerknotens":::
 
 ## <a name="best-practices"></a>Bewährte Methoden
 

@@ -14,10 +14,10 @@ ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 22faba20cb12ae755f19fe43c295d98f9b364cbe
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100416564"
 ---
 # <a name="securing-computer-accounts"></a>Schützen von Computerkonten
@@ -26,7 +26,7 @@ Das Computerkonto oder auch LocalSystem-Konto ist ein integriertes Konto mit hoh
 
 ![[Abb. 4](.\media\securing-service-accounts\secure-computer-accounts-image-1.png)](.\media\securing-service-accounts\secure-computer-accounts-image-1.png)
 
-## <a name="benefits-of-using-the-computer-account"></a>Vorteile der Verwendung des Computerkontos
+## <a name="benefits-of-using-the-computer-account&quot;></a>Vorteile der Verwendung des Computerkontos
 
 Das Computerkonto bietet folgende Vorteile:
 
@@ -36,7 +36,7 @@ Das Computerkonto bietet folgende Vorteile:
 
 * **Eingeschränkte Zugriffsrechte außerhalb des Computers**: Die standardmäßige Zugriffssteuerungsliste in Active Directory Domain Services gewährt Computerkonten nur minimalen Zugriff. Sollte dieser Dienst gehackt werden, hätte er nur eingeschränkten Zugriff auf Ressourcen in Ihrem Netzwerk.
 
-## <a name="assess-security-posture-of-computer-accounts"></a>Bewerten des Sicherheitsstatus von Computerkonten
+## <a name=&quot;assess-security-posture-of-computer-accounts&quot;></a>Bewerten des Sicherheitsstatus von Computerkonten
 
 Mögliche Probleme und entsprechende Gegenmaßnahmen bei der Verwendung von Computerkonten: 
 
@@ -48,13 +48,13 @@ Mögliche Probleme und entsprechende Gegenmaßnahmen bei der Verwendung von Comp
 | Unbekannte Dienste, die als „LocalSystem“ ausgeführt werden| Stellen Sie sicher, dass alle Dienste, die unter dem LocalSystem-Konto ausgeführt werden, Microsoft-Dienste oder vertrauenswürdige Dienste von Drittanbietern sind. |
 
 
-## <a name="find-services-running-under-the-computer-account"></a>Suchen nach unter dem Computerkonto ausgeführten Diensten
+## <a name=&quot;find-services-running-under-the-computer-account&quot;></a>Suchen nach unter dem Computerkonto ausgeführten Diensten
 
 Suchen Sie mit dem folgenden PowerShell-Cmdlet nach Diensten, die im LocalSystem-Kontext ausgeführt werden.
 
 ```powershell
 
-Get-WmiObject win32_service | select Name, StartName | Where-Object {($_.StartName -eq "LocalSystem")}
+Get-WmiObject win32_service | select Name, StartName | Where-Object {($_.StartName -eq &quot;LocalSystem")}
 ```
 
 **Suchen nach Computerkonten, die Mitglied einer bestimmten Gruppe sind**

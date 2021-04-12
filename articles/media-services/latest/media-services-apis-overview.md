@@ -21,7 +21,7 @@ Sie müssen zuerst authentifiziert werden, um berechtigt zu sein, auf Media Serv
 * **Dienstprinzipalauthentifizierung**: Wird zur Authentifizierung eines Dienstes verwendet (z. B. Web-Apps, Funktions-Apps, Logik-Apps, API und Microservices). Bei Anwendungen, die diese Authentifizierungsmethode normalerweise nutzen, handelt es sich um Apps, mit denen Daemondienste, Dienste der mittleren Ebene oder geplante Aufträge ausgeführt werden. Beispielsweise sollte es für Web-Apps immer einen Dienst der mittleren Ebene geben, der sich mit einem Dienstprinzipal mit Media Services verbindet.
 * **Benutzerauthentifizierung**: Dient zum Authentifizieren einer Person, die die App für die Interaktion mit Media Services-Ressourcen verwendet. Die interaktive App sollte den Benutzer zuerst zur Eingabe seiner Anmeldeinformationen auffordern. Ein Beispiel hierfür ist eine Verwaltungskonsolen-App, die von autorisierten Benutzern zum Überwachen von Codierungsaufträgen oder Livestreaming verwendet wird.
 
-Die Media Services-API erfordert, dass der Benutzer oder die App, die die REST-API-Anforderungen sendet, Zugriff auf die Media Services-Kontoressource hat und eine Rolle **Mitwirkender** oder **Besitzer** verwendet. Auf die API kann mit der Rolle **Leser** zugegriffen werden, es sind aber nur **Get**- oder **List**-Operationen verfügbar.Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung von Azure (Azure RBAC) für Media Services-Konten](rbac-overview.md).
+Die Media Services-API erfordert, dass der Benutzer oder die App, die die REST-API-Anforderungen sendet, Zugriff auf die Media Services-Kontoressource hat und eine Rolle **Mitwirkender** oder **Besitzer** verwendet. Auf die API kann mit der Rolle **Leser** zugegriffen werden, es sind aber nur **Get**- oder **List**-Operationen verfügbar.Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung von Azure (Azure RBAC) für Media Services-Konten](security-rbac-concept.md).
 
 Anstatt ein Dienstprinzipal zu erstellen, sollten Sie die Verwendung verwalteter Identitäten für Azure-Ressourcen in Betracht ziehen, um über den Azure Resource Manager auf die Media Services-API zuzugreifen. Weitere Informationen zu verwalteten Identitäten für Azure-Ressourcen finden Sie unter [Was sind verwaltete Identitäten für Azure-Ressourcen?](../../active-directory/managed-identities-azure-resources/overview.md).
 
@@ -52,7 +52,7 @@ In der folgenden Abbildung stellen die Zahlen den Fluss der Anforderungen in chr
 
 Sehen Sie sich die folgenden Beispiele an, die zeigen, wie Sie sich mit dem Azure AD-Dienstprinzipal verbinden können:
 
-* [Herstellen einer Verbindung mit REST](media-rest-apis-with-postman.md)  
+* [Herstellen einer Verbindung mit REST](setup-postman-rest-how-to.md)  
 * [Herstellen einer Verbindung mit Java](configure-connect-java-howto.md)
 * [Herstellen einer Verbindung mit .NET](configure-connect-dotnet-howto.md)
 * [Herstellen einer Verbindung mit Node.js](configure-connect-nodejs-howto.md)

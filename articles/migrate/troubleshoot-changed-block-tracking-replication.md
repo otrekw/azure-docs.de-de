@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: troubleshooting
 ms.date: 08/17/2020
-ms.openlocfilehash: 33e2bf641b75a5dd360498478f1ea70c7614fb38
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5487e51ad73ab903e7b61de266e2c28d282a56c1
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98071373"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105568657"
 ---
 # <a name="troubleshooting-replication-issues-in-agentless-vmware-vm-migration"></a>Behandeln von Replikationsproblemen bei der Migration virtueller VMware-Computer ohne Agent
 
@@ -292,7 +292,7 @@ Dieses Problem tritt auf, wenn vCenter Server-Verwaltungs-Agents nicht mehr funk
 
 ### <a name="error-message-an-internal-error-occurred-snapshot-disk-size-invalid"></a>Fehlermeldung: Ein interner Fehler ist aufgetreten. [Snapshot Disk size invalid] (Größe des Momentaufnahme-Datenträgers ist ungültig).
 
-Dies ist ein bekanntes VMware-Problem, bei dem die für die Momentaufnahme angegebene Datenträgergröße 0 (null) wird. Befolgen Sie die im [VMware-KB](https://go.microsoft.com/fwlink/?linkid=2138972)-Artikel angegebenen Lösungsschritte.
+Dies ist ein bekanntes VMware-Problem, bei dem die für die Momentaufnahme angegebene Datenträgergröße 0 (null) wird. Befolgen Sie die im [VMware-KB](https://kb.vmware.com/s/)-Artikel angegebenen Lösungsschritte.
 
 ### <a name="error-message-an-internal-error-occurred-memory-allocation-failed-out-of-memory"></a>Fehlermeldung: Ein interner Fehler ist aufgetreten. [Memory allocation failed. Out of memory] (Fehler bei der Speicherbelegung. Nicht genügend Arbeitsspeicher).
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 877f589c19663503b9bb0b1627f1dffe0eba1a23
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96302746"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wikispaces"></a>Tutorial: Azure Active Directory-Integration mit Wikispaces
@@ -176,17 +176,17 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
-### <a name="create-wikispaces-test-user"></a>Erstellen eines Wikispaces-Testbenutzers
+### <a name="create-wikispaces-test-user&quot;></a>Erstellen eines Wikispaces-Testbenutzers
 
 Damit sich Azure AD-Benutzer bei Wikispaces anmelden können, müssen sie in Wikispaces bereitgestellt werden. Im Fall von Wikispaces ist die Bereitstellung eine manuelle Aufgabe.
 
-### <a name="to-provision-a-user-accounts-perform-the-following-steps"></a>So stellen Sie Benutzerkonten bereit:
+### <a name=&quot;to-provision-a-user-accounts-perform-the-following-steps&quot;></a>So stellen Sie Benutzerkonten bereit:
 
 1. Melden Sie sich bei Ihrer **Wikispaces**-Unternehmenswebsite als Administrator an.
 
 2. Wechseln Sie zu **Mitglieder**.
    
-    ![Mitglieder](./media/wikispaces-tutorial/ic787193.png "Members")
+    ![Mitglieder](./media/wikispaces-tutorial/ic787193.png &quot;Members")
 
 3. Klicken Sie auf **Personen einladen**.
    

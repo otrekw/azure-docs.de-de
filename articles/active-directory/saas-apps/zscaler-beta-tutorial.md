@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/18/2020
 ms.author: jeedes
 ms.openlocfilehash: 4e8dce970c9e7cfb2aa7887cf1fb3ed6ef9030a1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98735581"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-beta"></a>Tutorial: Azure Active Directory-Integration in Zscaler Beta
@@ -190,14 +190,14 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
     b. Wählen Sie **Aktivieren** aus.
 
-## <a name="configure-proxy-settings"></a>Konfigurieren von Proxyeinstellungen
+## <a name="configure-proxy-settings&quot;></a>Konfigurieren von Proxyeinstellungen
 Führen Sie zum Konfigurieren der Proxyeinstellungen in Internet Explorer die folgenden Schritte aus:
 
 1. Starten Sie **Internet Explorer**.
 
 2. Wählen Sie im Menü **Extras** die Option **Internetoptionen** aus, um das Dialogfeld **Internetoptionen** zu öffnen. 
     
-     ![Dialogfeld „Internetoptionen“](./media/zscaler-beta-tutorial/ic769492.png "Internetoptionen")
+     ![Dialogfeld „Internetoptionen“](./media/zscaler-beta-tutorial/ic769492.png &quot;Internetoptionen")
 
 3. Wählen Sie die Registerkarte **Verbindungen** aus. 
   

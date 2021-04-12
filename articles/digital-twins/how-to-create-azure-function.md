@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 4889744347b72603a0f6318f981bc2db4906b835
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: f1ed4b9beda9848bba8fb12783f49dcf8016d3dd
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102433538"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104590618"
 ---
 # <a name="connect-function-apps-in-azure-for-processing-data"></a>Verbinden von Funktions-Apps in Azure für die Verarbeitung von Daten
 
@@ -25,7 +25,7 @@ Dieser Artikel führt Sie durch die Erstellung einer Funktion in Azure zur Verwe
 Hier finden Sie eine Übersicht über die darin enthaltenen Schritte:
 
 1. Erstellen eines Azure Functions-Projekts in Visual Studio
-2. Schreiben Sie eine Funktion mit einem [Event Grid](../event-grid/overview.md)-Trigger.
+2. Schreiben einer Funktion mit einem [Event Grid](../event-grid/overview.md)-Trigger
 3. Hinzufügen von Authentifizierungscode zur Funktion (für den Zugriff auf Azure Digital Twins)
 4. Veröffentlichen der Funktions-App in Azure
 5. Richten Sie [Sicherheitszugriff](concepts-security.md) für die Funktions-App ein.
@@ -63,7 +63,7 @@ Wenn Sie das SDK verwenden möchten, müssen Sie die folgenden Pakete in Ihr Pro
 * [System.Net.Http](https://www.nuget.org/packages/System.Net.Http/)
 * [Azure.Core](https://www.nuget.org/packages/Azure.Core/)
 
-Öffnen Sie als Nächstes in Ihrem Visual Studio-Projektmappen-Explorer die Datei _Function1.cs_, die den Beispielcode enthält, und fügen Sie Ihrer Funktion die folgenden `using`-Anweisungen für diese Pakete hinzu. 
+Öffnen Sie als Nächstes in Ihrem Visual Studio-Projektmappen-Explorer die Datei _Function1.cs_, die den Beispielcode enthält, und fügen Sie Ihrer Funktion die folgenden `using`-Anweisungen für diese Pakete hinzu.
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIngestFunctionSample.cs" id="Function_dependencies":::
 
@@ -97,6 +97,20 @@ Nachdem Sie Ihre Anwendung geschrieben haben, können Sie sie mithilfe der Schri
 
 [!INCLUDE [digital-twins-publish-azure-function.md](../../includes/digital-twins-publish-azure-function.md)]
 
+### <a name="verify-function-publish"></a>Überprüfen der Veröffentlichung der Funktion
+
+1. Melden Sie sich mit Ihren Anmeldeinformationen im [Azure-Portal](https://portal.azure.com/) an.
+2. Suchen Sie auf der Suchleiste oben im Fenster nach dem **Namen Ihrer Funktions-App**.
+
+    :::image type="content" source="media/how-to-create-azure-function/search-function-app.png" alt-text="Suchen des Namens einer Funktions-App im Azure-Portal" lightbox="media/how-to-create-azure-function/search-function-app.png":::
+
+3. Wählen Sie auf der daraufhin geöffneten Seite der *Funktions-App* in den Menüoptionen auf der linken Seite *Funktionen* aus. Wenn Ihre Funktion veröffentlicht wurde, ist der Funktionsname in der Liste enthalten.
+Beachten Sie, dass Sie möglicherweise einige Minuten warten oder die Seite mehrmals aktualisieren müssen, bevor die Funktion in der Liste der veröffentlichten Funktionen aufgeführt wird.
+
+    :::image type="content" source="media/how-to-create-azure-function/view-published-functions.png" alt-text="Anzeigen veröffentlichter Funktionen im Azure-Portal" lightbox="media/how-to-create-azure-function/view-published-functions.png":::
+
+Damit Ihre Functions-App auf Azure Digital Twins zugreifen kann, muss sie über eine systemseitig verwaltete Identität mit Zugriffsberechtigungen für Ihre Azure Digital Twins-Instanz verfügen. Dies wird im nächsten Schritt eingerichtet.
+
 ## <a name="set-up-security-access-for-the-function-app"></a>Einrichten des Sicherheitszugriffs für die Funktions-App
 
 Sie können den Sicherheitszugriff für die Funktions-App mithilfe der Azure CLI oder des Azure-Portals einrichten. Führen Sie die folgenden Schritte für Ihre bevorzugte Option aus.
@@ -104,12 +118,14 @@ Sie können den Sicherheitszugriff für die Funktions-App mithilfe der Azure CLI
 # <a name="cli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/cli)
 
 Sie können diese Befehle in [Azure Cloud Shell](https://shell.azure.com) oder einer [lokalen Azure CLI-Installation](/cli/azure/install-azure-cli) ausführen.
+Sie können die systemseitig verwaltete Identität der Funktions-App verwenden, um ihr die Rolle _**Azure Digital Twins-Datenbesitzer**_ für Ihre Azure Digital Twins-Instanz zuzuweisen. Dadurch erhält die Funktions-App die Berechtigung in der Instanz zum Ausführen von Aktivitäten auf Datenebene. Dann gestalten Sie die URL Ihrer Azure Digital Twins-Instanz für Ihre Funktion zugänglich, indem Sie eine Umgebungsvariable festlegen.
 
 ### <a name="assign-access-role"></a>Zuweisen der Zugriffsrolle
 
+[!INCLUDE [digital-twins-permissions-required.md](../../includes/digital-twins-permissions-required.md)]
+
 Das Funktionsgerüst aus früheren Beispielen erfordert, dass ihm ein Bearertoken übergeben wird, um sich bei Azure Digital Twins authentifizieren zu können. Um sicherzustellen, dass dieses Bearertoken übergeben wird, müssen Sie für die Funktions-App Berechtigungen vom Typ [Verwaltete Dienstidentität (Managed Service Identity, MSI)](../active-directory/managed-identities-azure-resources/overview.md) einrichten, damit der Zugriff auf Azure Digital Twins möglich ist. Dies muss nur einmal für jede Funktions-App durchgeführt werden.
 
-Sie können die systemseitig verwaltete Identität der Funktions-App verwenden, um ihr die Rolle _**Azure Digital Twins-Datenbesitzer**_ für Ihre Azure Digital Twins-Instanz zuzuweisen. Dadurch erhält die Funktions-App die Berechtigung in der Instanz zum Ausführen von Aktivitäten auf Datenebene. Dann gestalten Sie die URL Ihrer Azure Digital Twins-Instanz für Ihre Funktion zugänglich, indem Sie eine Umgebungsvariable festlegen.
 
 1. Verwenden Sie den folgenden Befehl, um die Details der systemseitig verwalteten Identität für die Funktion anzuzeigen. Beachten Sie in der Ausgabe das Feld _principalId_.
 
@@ -148,6 +164,8 @@ az functionapp config appsettings set -g <your-resource-group> -n <your-App-Serv
 Führen Sie im [Azure-Portal](https://portal.azure.com/) die folgenden Schritte aus.
 
 ### <a name="assign-access-role"></a>Zuweisen der Zugriffsrolle
+
+[!INCLUDE [digital-twins-permissions-required.md](../../includes/digital-twins-permissions-required.md)]
 
 Azure-Ressourcen können über eine systemseitig zugewiesene verwaltete Identität bei Clouddiensten (z. B. Azure Key Vault) authentifiziert werden, ohne dass Anmeldeinformationen im Code gespeichert werden. Einmal aktiviert, können alle erforderlichen Berechtigungen über die rollenbasierte Zugriffssteuerung von Azure erteilt werden. Der Lebenszyklus dieser Art verwalteter Identitäten ist an den Lebenszyklus dieser Ressource gebunden. Zusätzlich kann jede Ressource nur eine systemseitig zugewiesene verwaltete Identität aufweisen.
 
