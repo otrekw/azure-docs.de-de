@@ -64,8 +64,8 @@ Die Tutorials enthalten szenariobasierte Verfahren für einige der wichtigsten M
 * [Codieren von Remotedateien und Streamen von Videos: REST](stream-files-tutorial-with-rest.md)
 * [Codieren von hochgeladenen Dateien und Streamen von Videos: .NET](stream-files-tutorial-with-api.md)
 * [Livestreaming: .NET](stream-live-tutorial-with-api.md)
-* [Analysieren Ihres Videos: .NET](analyze-videos-tutorial-with-api.md)
-* [Dynamische AES-128-Verschlüsselung: .NET](protect-with-aes128.md)
+* [Analysieren Ihres Videos: .NET](analyze-videos-tutorial.md)
+* [Dynamische AES-128-Verschlüsselung: .NET](drm-playready-license-template-concept.md)
 
 ### <a name="samples"></a>Beispiele
 
@@ -75,12 +75,12 @@ Verwenden Sie diesen [Beispielbrowser](/samples/browse/?products=azure-media-ser
 
 Die Anleitungen enthalten Codebeispiele, um die Ausführung einer Aufgabe zu veranschaulichen. In diesem Abschnitt finden Sie viele Beispiele. Einige davon sind:
 
-* [Erstellen eines Azure Media Services-Kontos](./create-account-howto.md)
+* [Erstellen eines Azure Media Services-Kontos](./account-create-how-to.md)
 * [Zugriff auf Azure Media Services-API mit Azure CLI](./access-api-howto.md)
 * [Codieren mit HTTPS als Auftragseingabe: .NET](job-input-from-http-how-to.md)  
 * [Überwachen von Ereignissen: Portal](monitoring/monitor-events-portal-how-to.md)
-* [Dynamische Verschlüsselung mit Multi-DRM: .NET](protect-with-drm.md) 
-* [Codieren mit einer benutzerdefinierten Transformation: CLI](custom-preset-cli-howto.md)
+* [Dynamische Verschlüsselung mit Multi-DRM: .NET](drm-protect-with-drm-tutorial.md) 
+* [Codieren mit einer benutzerdefinierten Transformation: CLI](transform-custom-preset-cli-how-to.md)
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>Fragen stellen, Feedback geben, Updates abrufen
 

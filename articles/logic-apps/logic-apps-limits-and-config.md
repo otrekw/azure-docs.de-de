@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 03/18/2021
-ms.openlocfilehash: f4336350af92c27760369d668c6babddc4d4ea30
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 04/05/2021
+ms.openlocfilehash: 2debf7d350f4f1fde5e86a60ad03a6858bc02743
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103462915"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106490334"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Grenzwert- und Konfigurationsinformationen für Azure Logic Apps
 
@@ -120,11 +120,13 @@ Dies sind die Grenzwerte für eine einzelne Ausführung der Logik-App:
 | Until-Timeout | - Standardwert: PT1H (1 Stunde) | Die maximale Zeitspanne, die die Until-Schleife vor dem Beenden ausgeführt wird. Die Angabe erfolgt im [ISO 8601-Format](https://en.wikipedia.org/wiki/ISO_8601). Der Timeoutwert wird für jeden Schleifendurchlauf ausgewertet. Wenn eine Aktion in der Schleife länger als die Zeitüberschreitung dauert, wird der aktuelle Zyklus nicht beendet. Der nächste Zyklus beginnt jedoch nicht, weil die Grenzwertbedingung nicht erfüllt ist. <p><p>Um diesen Grenzwert zu ändern, wählen Sie in der Until-Schleife die Option **Grenzwerte ändern** aus und geben einen Wert für die **Timeout**-Eigenschaft an. |
 ||||
 
+<a name="concurrency-debatching"></a>
+
 ### <a name="concurrency-and-debatching"></a>Parallelität und Auflösen von Batches
 
 | Name | Begrenzung | Notizen |
 | ---- | ----- | ----- |
-| Triggerparallelität | Bei deaktivierter Parallelität: Unbegrenzt <p><p>Bei aktivierter Parallelität, die nach dem Aktivieren nicht rückgängig gemacht werden kann: <p><p>- Standardwert: 25 <br>- Min: 1 <br>- Max: 50 | Dieser Grenzwert gibt die maximale Anzahl von Logik-App-Instanzen an, die gleichzeitig bzw. parallel ausgeführt werden können. <p><p>**Hinweis**: Wenn Parallelität aktiviert ist, wird das SplitOn-Limit auf 100 Elemente für das [Auflösen von Arraybatches](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) reduziert. <p><p>Informationen zum Ändern dieses Grenzwerts finden Sie unter [Ändern der Triggerparallelität](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) und [Sequenzielles Auslösen von Instanzen](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger). |
+| Triggerparallelität | Bei deaktivierter Parallelität: Unbegrenzt <p><p>Bei aktivierter Parallelität, die nach dem Aktivieren nicht rückgängig gemacht werden kann: <p><p>- Standardwert: 25 <br>- Min: 1 <br>- Max: 100 | Dieser Grenzwert gibt die maximale Anzahl von Logik-App-Instanzen an, die gleichzeitig bzw. parallel ausgeführt werden können. <p><p>**Hinweis**: Wenn Parallelität aktiviert ist, wird das SplitOn-Limit auf 100 Elemente für das [Auflösen von Arraybatches](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) reduziert. <p><p>Informationen zum Ändern dieses Grenzwerts finden Sie unter [Ändern der Triggerparallelität](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) und [Sequenzielles Auslösen von Instanzen](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger). |
 | Maximale Anzahl von wartenden Ausführungen | Bei deaktivierter Parallelität: <p><p>- Min: 1 <br>- Max: 50 <p><p>Bei aktivierter Parallelität: <p><p>- Min: 10 plus die Anzahl gleichzeitiger Ausführungen (Triggerparallelität) <br>- Max: 100 | Dieser Grenzwert gibt die maximale Anzahl von Logik-App-Instanzen an, die auf die Ausführung warten können, wenn für Ihre Logik-App bereits die maximale Anzahl gleichzeitiger Instanzen ausgeführt wird. <p><p>Informationen zum Ändern dieses Grenzwerts finden Sie unter [Ändern des Limits für wartende Ausführungen](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs). |
 | SplitOn-Elemente | Bei deaktivierter Parallelität: 100.000 <p><p>Bei aktivierter Parallelität: 100 | Für Trigger, die ein Array zurückgeben, können Sie einen Ausdruck angeben, der eine SplitOn-Eigenschaft verwendet, um [Arrayelemente für die Verarbeitung in mehrere Workflowinstanzen aufzuteilen bzw. aufzulösen](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch), anstatt eine Foreach-Schleife zu verwenden. Dieser Ausdruck verweist auf das Array, das zum Erstellen und Ausführen einer Workflowinstanz für jedes Arrayelement verwendet werden soll. <p><p>**Hinweis**: Wenn Parallelität aktiviert ist, wird das SplitOn-Limit auf 100 Elemente reduziert. |
 ||||

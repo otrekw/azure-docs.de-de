@@ -1,18 +1,18 @@
 ---
 title: 'Schnellstart: Azure Blob Storage-Bibliothek v12 – C++'
 description: In dieser Schnellstartanleitung erfahren Sie, wie mithilfe der Azure Blob Storage-Clientbibliothek Version 12 für C++ ein Container und ein Blob in Blob Storage (Objektspeicher) erstellt werden. Als Nächstes erfahren Sie, wie Sie den Blob auf Ihren lokalen Computer herunterladen, und wie Sie alle Blobs in einem Container auflisten.
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.date: 10/21/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 246d2677c784daee4cc6b083cff04b6993ab3818
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7a0d2bdb1879e4f68b582ee56367f0238285a401
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96006488"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106278081"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-c"></a>Schnellstart: Azure Blob Storage-Clientbibliothek v12 für C++
 

@@ -10,15 +10,12 @@ ms.service: security
 ms.subservice: security-develop
 services: azure
 ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
-ms.devlang: na
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.openlocfilehash: 743412b7602e5781911cdf190e41a5ee15bfddd4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9e5246edd2d6490e823bacbdfff0f60ef553878b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96487676"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105729132"
 ---
 # <a name="design-secure-applications-on-azure"></a>Entwerfen von sicheren Anwendungen in Azure
 In diesem Artikel werden Sicherheitsaktivitäten und -kontrollen vorgestellt, die Sie berücksichtigen sollten, wenn Sie Anwendungen für die Cloud entwerfen. Es werden Trainingsressourcen zusammen mit Sicherheitsfragen und -konzepten behandelt, die Sie in der Anforderungen- und in der Entwurfsphase von Microsoft [Security Development Lifecycle (SDL)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) berücksichtigen müssen. Das Ziel ist, Ihnen das Festlegen von Aktivitäten und Azure-Diensten zu ermöglichen, mit denen Sie eine sicherere Anwendung entwickeln können.
@@ -126,7 +123,7 @@ Verwenden Sie für die Entwicklung eine sichere Codierungsbibliothek und ein Sof
 Achten Sie darauf, dass Sie die neueste Version Ihres Frameworks und alle Sicherheitsfunktionen verwenden, die im Framework verfügbar sind. Microsoft bietet eine umfassende [Auswahl an Entwicklungstools](https://azure.microsoft.com/product-categories/developer-tools/), mit denen alle Entwickler, die mit einer beliebige Plattform oder Sprache arbeiten, Cloudanwendungen bereitstellen können. Sie können mit der von Ihnen bevorzugten Sprache codieren, indem Sie aus verschiedenen [SDKs](https://azure.microsoft.com/downloads/) wählen.
 Sie können von integrierten Entwicklungsumgebungen (IDEs) mit umfassendem Funktionsumfang sowie von Editoren profitieren, die erweiterte Debuggingfunktionen und integrierten Azure-Support haben.
 
-Microsoft stellt eine Vielzahl von [Sprachen, Frameworks und Tools](../../index.yml?panel=sdkstools-all&pivot=sdkstools) bereit, mit denen Sie Anwendungen in Azure entwickeln können. Ein Beispiel ist [Azure für .NET- und .NET Core-Entwickler](/dotnet/azure/). Für jede Sprache und jedes Framework, das wir anbieten, finden Sie Schnellstarts, Tutorials und API-Referenzen, die Ihnen einen schnellen Einstieg ermöglichen.
+Microsoft stellt eine Vielzahl von [Sprachen, Frameworks und Tools](../../index.yml?panel=sdkstools-all&pivot=sdkstools) bereit, mit denen Sie Anwendungen in Azure entwickeln können. Ein Beispiel ist [Azure für .NET- und .NET Core-Entwickler](/dotnet/azure/). Für alle Sprachen und Frameworks, die wir anbieten, finden Sie Schnellstarts, Tutorials und API-Referenzen, die Ihnen einen schnellen Einstieg ermöglichen.
 
 Azure bietet eine Vielzahl von Diensten, die Sie zum Hosten von Websites und Webanwendungen verwenden können. Mit diesen Diensten können Sie in Ihrer bevorzugten Sprache entwickeln, egal, ob dies .NET, .NET Core, Java, Ruby, Node.js, PHP oder Python ist.
 [Azure App Service-Web-Apps](../../app-service/overview.md) (Web-Apps) ist einer dieser Dienste.
@@ -153,7 +150,7 @@ Das Modellieren des Anwendungsentwurfs und das Aufzählen von [STRIDE](https://d
 
 | Bedrohung | Sicherheitseigenschaft | Mindern potenzieller Risiken für die Azure-Plattform |
 | ---------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Spoofing               | Authentifizierung        | [Legen Sie fest, dass HTTPS-Verbindungen erforderlich sind](/aspnet/core/security/enforcing-ssl?tabs=visual-studio&view=aspnetcore-2.1). |
+| Spoofing               | Authentifizierung        | [Legen Sie fest, dass HTTPS-Verbindungen erforderlich sind](/aspnet/core/security/enforcing-ssl?tabs=visual-studio). |
 | Manipulation              | Integrität             | Überprüfen Sie SSL/TLS-Zertifikate. Anwendungen, die SSL/TLS verwenden, müssen die X.509-Zertifikate der Entitäten, mit denen sie eine Verbindung herstellen, umfassend überprüfen. Verwenden Sie Azure Key Vault-Zertifikate, um [Ihre X509-Zertifikate zu verwalten](../../key-vault/general/about-keys-secrets-certificates.md). |
 | Nichtanerkennung            | Unleugbarkeit       | Aktivieren Sie die [Überwachung und Diagnose](/azure/architecture/best-practices/monitoring) von Azure.|
 | Veröffentlichung von Informationen | Vertraulichkeit       | Verschlüsseln Sie sensible [ruhende](../fundamentals/encryption-atrest.md) Daten und Daten [während einer Übertragung](../fundamentals/data-encryption-best-practices.md#protect-data-in-transit). |
@@ -233,7 +230,7 @@ Implementieren Sie *Just-In-Time-Zugriff* (JIT-Zugriff), um die Zeit, in der Rec
 
 ### <a name="require-re-authentication-for-important-transactions"></a>Verlangen einer erneuten Authentifizierung für wichtige Transaktionen
 
-Bei einer [websiteübergreifenden Anforderungsfälschung](/aspnet/core/security/anti-request-forgery?view=aspnetcore-2.1) (auch bekannt als *XSRF* oder *CSRF*) handelt es sich um einen Angriff auf im Web gehostete Apps, in denen eine schädliche Web-App die Interaktion zwischen einem Clientbrowser und einer Web-App beeinflusst, die diesem Browser vertraut. Angriffe in Form von websiteübergreifenden Anforderungsfälschungen sind möglich, weil Webbrowser einige Typen von Authentifizierungstoken automatisch bei jeder Anforderung an eine Website senden.
+Bei einer [websiteübergreifenden Anforderungsfälschung](/aspnet/core/security/anti-request-forgery) (auch bekannt als *XSRF* oder *CSRF*) handelt es sich um einen Angriff auf im Web gehostete Apps, in denen eine schädliche Web-App die Interaktion zwischen einem Clientbrowser und einer Web-App beeinflusst, die diesem Browser vertraut. Angriffe in Form von websiteübergreifenden Anforderungsfälschungen sind möglich, weil Webbrowser einige Typen von Authentifizierungstoken automatisch bei jeder Anforderung an eine Website senden.
 Diese Form missbräuchlicher Verwendung wird auch als *Ein-Klick-Angriff* oder *Session-Riding* bezeichnet, weil für den Angriff die zuvor authentifizierte Sitzung des Benutzers verwendet wird.
 
 Die beste Möglichkeit, diese Art von Angriff abzuwehren, besteht darin, den Benutzer vor jeder wichtigen Transaktion, z. B. eine Bestellung, Kontodeaktivierung oder Kennwortänderung, nach etwas zu fragen, das nur er bereitstellen kann. Sie können den Benutzer bitten, sein Passwort erneut einzugeben, ein Captcha zu vervollständigen oder ein geheimes Token zu senden, das nur der Benutzer hat. Der gängigste Ansatz ist das geheime Token.
@@ -303,7 +300,7 @@ Stellen Sie Folgendes sicher:
 
 ### <a name="use-logging-and-alerting"></a>Verwenden von Protokollierung und Benachrichtigungen
 
-[Protokollieren](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1) Sie sicherheitsbezogene Probleme für Sicherheitsuntersuchungen, und lösen Sie Benachrichtigungen zu Problemen aus, damit sichergestellt ist, dass betroffene Personen rechtzeitig über Probleme informiert werden. Aktivieren Sie die Überwachung und Protokollierung für alle Komponenten. Überwachungsprotokolle sollten den Benutzerkontext erfassen und alle wichtigen Ereignisse identifizieren.
+[Protokollieren](/aspnet/core/fundamentals/logging/) Sie sicherheitsbezogene Probleme für Sicherheitsuntersuchungen, und lösen Sie Benachrichtigungen zu Problemen aus, damit sichergestellt ist, dass betroffene Personen rechtzeitig über Probleme informiert werden. Aktivieren Sie die Überwachung und Protokollierung für alle Komponenten. Überwachungsprotokolle sollten den Benutzerkontext erfassen und alle wichtigen Ereignisse identifizieren.
 
 Stellen Sie sicher, dass Sie keine sensiblen Daten protokollieren, die ein Benutzer an Ihre Website übermittelt. Beispiele für sensible Daten:
 

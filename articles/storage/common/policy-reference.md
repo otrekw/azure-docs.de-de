@@ -1,18 +1,18 @@
 ---
 title: Integrierte Richtliniendefinitionen für Azure Storage
 description: Hier finden Sie eine Liste der integrierten Azure Policy-Richtliniendefinitionen für Azure Storage. Diese integrierten Richtliniendefinitionen bieten allgemeine Ansätze für die Verwaltung von Azure-Ressourcen.
-ms.date: 03/17/2021
+ms.date: 03/31/2021
 ms.topic: reference
 author: tamram
 ms.author: tamram
 ms.service: storage
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 483eacc4278772d50470f937c36eff6c1104dd8f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7872a5ca34c474c702e7f8cb0a72bb50bf71f563
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104588288"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106095580"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-storage"></a>Integrierte Azure Policy-Definitionen für Azure Storage
 

@@ -3,12 +3,12 @@ title: 'Videowiedergabe: Azure'
 description: Platzhalter
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 17b1f93c18dfb013916c4c0d3756fb97a73e2675
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2020d64538b2fcc846ab9a146e2fc95325abd26b
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "87042960"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106063371"
 ---
 # <a name="video-playback"></a>Videowiedergabe 
 
@@ -28,7 +28,7 @@ Sie können Azure Media Services verwenden, um das Medienobjekt mithilfe von Bra
 
 ## <a name="streaming-policy"></a>Streamingrichtlinie 
 
-Azure Media Services bietet Ihnen verschiedene Methoden zum Schützen Ihrer Videostreams, wie im Artikel [Schützen Sie Ihren Inhalt mit der dynamischen Verschlüsselung von Media Services](../latest/content-protection-overview.md) beschrieben. Dies sind die allgemeinen Optionen für den Schutz von Inhalten:
+Azure Media Services bietet Ihnen verschiedene Methoden zum Schützen Ihrer Videostreams, wie im Artikel [Schützen Sie Ihren Inhalt mit der dynamischen Verschlüsselung von Media Services](../latest/drm-content-protection-concept.md) beschrieben. Dies sind die allgemeinen Optionen für den Schutz von Inhalten:
 
 * **Unverschlüsseltes Streaming**: Es wird während des Streamings keine Verschlüsselung angewendet.
 * **Verwenden von AES-128 (Advanced Encryption Standard)** : Sie müssen eine Methode implementieren, um die Ausgabe von Schlüsseln zum Entschlüsseln des Videos nur an authentifizierte Viewer sicherzustellen.
