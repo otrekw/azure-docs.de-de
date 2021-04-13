@@ -6,150 +6,105 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/10/2021
+ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 22ffa59339d85af80a7398e581862d19eef17222
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 292f430a1b08d59efdf05405437b3d1aa49ea2b7
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103490652"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168591"
 ---
-# <a name="chat-concepts"></a>Chatkonzepte
+# <a name="chat-concepts"></a>Chatkonzepte 
 
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
+[!INCLUDE [Public Preview Notice](../../includes/public-preview-include-chat.md)]
+
+Azure Communication Services Chat SDKs können verwendet werden, um Ihre Anwendungen mit Echtzeittextchat auszustatten. Auf dieser Seite werden wichtige Chatkonzepte und -funktionen zusammengefasst.    
+
+Weitere Informationen zu bestimmten SDK-Sprachen und -Funktionen finden Sie in der [Übersicht über das Communication Services Chat SDK](./sdk-features.md).  
+
+## <a name="chat-overview"></a>Übersicht über den Chat    
+
+Chatkonversationen finden innerhalb von **Chatthreads** statt. Chatthreads haben folgende Eigenschaften:
+
+- Ein Chatthread wird durch seine ID (`ChatThreadId`) eindeutig identifiziert. 
+- Chatthreads verfügen über mindestens einen Benutzer als Teilnehmer, der Nachrichten an den Thread senden kann. 
+- Ein Benutzer kann an einem einzelnen Chatthread oder an mehreren Chatthreads teilnehmen. 
+- Nur die Threadteilnehmer haben Zugriff auf einen bestimmten Chatthread, und nur sie können Chatthreadvorgänge ausführen. Diese Vorgänge umfassen das Senden und Empfangen von Nachrichten sowie das Hinzufügen und Entfernen von Teilnehmern. 
+- Der Ersteller eines Chatthreads wird ihm automatisch als Teilnehmer hinzugefügt.
+
+### <a name="user-access"></a>Benutzerzugriff
+In der Regel haben der Threadersteller und die Teilnehmer den gleichen Zugriff auf den Thread und können alle zugehörigen, im SDK verfügbaren Vorgänge ausführen (einschließlich Löschen). Teilnehmer haben keinen Schreibzugriff auf Nachrichten, die von anderen Teilnehmern gesendet wurden. Somit können Nachrichten nur vom jeweiligen Absender aktualisiert oder gelöscht werden. Wenn ein anderer Teilnehmer versucht, einen solchen Vorgang auszuführen, tritt ein Fehler auf. 
+
+Wenn Sie den Zugriff auf Chatfeatures für eine Gruppe von Benutzern einschränken möchten, können Sie den Zugriff als Teil Ihres vertrauenswürdigen Diensts konfigurieren. Ihr vertrauenswürdiger Dienst ist der Dienst, der die Authentifizierung und Autorisierung von Chatteilnehmern orchestriert. Dies wird weiter unten noch ausführlicher erläutert.  
+
+### <a name="chat-data"></a>Chatdaten 
+Der Chatverlauf wird von Communication Services gespeichert, bis er explizit gelöscht wird. Chatthreadteilnehmer können `ListMessages` verwenden, um den Nachrichtenverlauf für einen bestimmten Thread anzuzeigen. Benutzer, die aus einem Chatthread entfernt wurden, können zwar weiterhin den bisherigen Nachrichtenverlauf anzeigen, aber keine neuen Nachrichten für diesen Chatthread mehr senden oder empfangen. Ein vollständig im Leerlauf befindlicher Thread ohne Teilnehmer wird nach 30 Tagen automatisch gelöscht. Weitere Informationen zu von Communication Services gespeicherten Daten finden Sie in der [Dokumentation zum Datenschutz](../privacy.md).  
+
+### <a name="service-limits"></a>Diensteinschränkungen  
+- Pro Chatthread sind maximal 250 Teilnehmer zulässig.   
+- Die maximal zulässige Nachrichtengröße beträgt ca. 28 KB.  
+- Bei Chatthreads mit mehr als 20 Teilnehmern werden Lesebestätigungen und Eingabeindikator nicht unterstützt.    
+
+## <a name="chat-architecture"></a>Chatarchitektur    
+
+Die Chatarchitektur besteht aus zwei zentralen Teilen: 1) einem vertrauenswürdigen Dienst und 2) einer Clientanwendung.    
+
+:::image type="content" source="../../media/chat-architecture.png" alt-text="Diagramm, das die Chatarchitektur von Communication Services zeigt"::: 
+
+ - **Vertrauenswürdiger Dienst:** Damit Sie eine Chatsitzung ordnungsgemäß verwalten können, benötigen Sie einen Dienst, der Ihnen hilft, mithilfe ihrer Ressourcen-Verbindungszeichenfolge eine Verbindung mit Communication Services herzustellen. Dieser Dienst ist für das Erstellen von Chatthreads sowie das Hinzufügen und Entfernen von Teilnehmern und das Ausstellen von Zugriffstoken für Benutzer zuständig. Weitere Informationen zu Zugriffstoken finden Sie in unserem Schnellstart zu [Zugriffstoken](../../quickstarts/access-tokens.md).  
+ - **Client-App:** Die Clientanwendung stellt eine Verbindung mit Ihrem vertrauenswürdigen Dienst her und empfängt die Zugriffstoken, die von Benutzern zum Herstellen einer direkten Verbindung mit Communication Services verwendet werden. Nachdem Ihr vertrauenswürdiger Dienst den Chatthread erstellt und Benutzer als Teilnehmer hinzugefügt hat, können diese die Client-App verwenden, um eine Verbindung mit dem Chatthread herzustellen und Nachrichten zu senden. Verwenden Sie das Feature für Echtzeitbenachrichtigungen (siehe Erläuterung weiter unten) in Ihrer Client-App, um Nachrichten- und Threadaktualisierungen von anderen Teilnehmern zu abonnieren.
+    
+        
+## <a name="message-types"></a>Nachrichtentypen    
+
+Im Rahmen des Nachrichtenverlaufs werden benutzerseitig generierte Nachrichten sowie systemseitig generierte Nachrichten weitergegeben. Systemnachrichten werden generiert, wenn ein Chatthread aktualisiert wird. Mit ihrer Hilfe kann ermittelt werden, wann ein Teilnehmer hinzugefügt oder entfernt wurde oder wann das Chatthreadthema aktualisiert wurde. Wenn Sie `List Messages` oder `Get Messages` in einem Chatthread aufrufen, enthält das Ergebnis beide Arten von Nachrichten in chronologischer Reihenfolge.
+
+Bei benutzerseitig generierten Nachrichten kann der Nachrichtentyp in `SendMessageOptions` festgelegt werden, wenn eine Nachricht an den Chatthread gesendet wird. Ohne Angabe eines Werts wird von Communication Services standardmäßig der Typ `text` verwendet. Das Festlegen dieses Werts ist beim Senden von HTML wichtig. Bei Angabe von `html` wird der Inhalte durch Communication Services bereinigt, um sicherzustellen, dass er auf Clientgeräten gefahrlos gerendert wird.
+ - `text`: Eine von einem Benutzer im Rahmen eines Chatthreads verfasste und gesendete Nur-Text-Nachricht. 
+ - `html`: Eine formatierte Nachricht mit HTML, die von einem Benutzer im Rahmen eines Chatthreads verfasst und gesendet wurde. 
+
+Arten von Systemnachrichten: 
+ - `participantAdded`: Systemnachricht mit dem Hinweis, dass dem Chatthread mindestens ein Teilnehmer hinzugefügt wurde
+ - `participantRemoved`: Systemnachricht mit dem Hinweis, dass ein Teilnehmer aus dem Chatthread entfernt wurde
+ - `topicUpdated`: Systemnachricht mit dem Hinweis, dass das Threadthema aktualisiert wurde.
+
+## <a name="real-time-notifications"></a>Echtzeitbenachrichtigungen  
+
+Von bestimmten SDKs werden Echtzeitbenachrichtigungen unterstützt. (Hierzu zählt beispielsweise das JavaScript Chat SDK.) Dieses Feature ermöglicht es Clients, bei Communication Services auf Echtzeitaktualisierungen und eingehende Nachrichten in einem Chatthread zu lauschen, ohne die APIs abfragen zu müssen. Von der Client-App können folgende Ereignisse abonniert werden:
+ - `chatMessageReceived`: Wenn von einem Teilnehmer eine neue Nachricht an einen Chatthread gesendet wird.
+ - `chatMessageEdited`: Wenn eine Nachricht in einem Chatthread bearbeitet wird. 
+ - `chatMessageDeleted`: Wenn eine Nachricht in einem Chatthread gelöscht wird.   
+ - `typingIndicatorReceived`: Wenn ein anderer Teilnehmer einen Eingabeindikator an den Chatthread sendet.    
+ - `readReceiptReceived`: Wenn ein anderer Teilnehmer eine Lesebestätigung für eine gelesene Nachricht sendet.  
+ - `chatThreadCreated`: Wenn ein Communication Services-Benutzer einen Chatthread erstellt.    
+ - `chatThreadDeleted`: Wenn ein Communication Services-Benutzer einen Chatthread löscht.    
+ - `chatThreadPropertiesUpdated`: Wenn die Eigenschaften eines Chatthread aktualisiert werden. Aktuell wird nur das Aktualisieren des Threadthemas unterstützt. 
+ - `participantsAdded`: Wenn ein Benutzer als Chatthreadteilnehmer hinzugefügt wird.     
+ - `participantsRemoved`: Wenn ein vorhandener Teilnehmer aus dem Chatthread entfernt wird.
+
+Echtzeitbenachrichtigungen können verwendet werden, um eine Echtzeitchat-Umgebung für Ihre Benutzer bereitzustellen. Um Pushbenachrichtigungen für Nachrichten zu senden, die Benutzer während ihrer Abwesenheit verpasst haben, arbeitet Communication Services mit Azure Event Grid zusammen, um chatbezogene Ereignisse (POST-Vorgang) zu veröffentlichen, die in Ihren benutzerdefinierten App-Benachrichtigungsdienst integriert werden können. Ausführlichere Informationen finden Sie unter [Ereignisbehandlung in Azure Communication Services](https://docs.microsoft.com/azure/event-grid/event-schema-communication-services?toc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fcommunication-services%2Ftoc.json&bc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fbread%2Ftoc.json).
 
 
-Die Clientbibliotheken für Chats von Azure Communication Services können verwendet werden, um Echtzeittextchat zu Ihren Anwendungen hinzuzufügen. Auf dieser Seite werden wichtige Chatkonzepte und -funktionen zusammengefasst.
+## <a name="build-intelligent-ai-powered-chat-experiences"></a>Erstellen intelligenter, KI-gestützter Chatumgebungen   
 
-Weitere Informationen zu den einzelnen Sprachen und Funktionen der Clientbibliothek finden Sie in der [Übersicht über die Clientbibliothek für Chats von Communication Services](./sdk-features.md).
+Sie können [Azure Cognitive-APIs](../../../cognitive-services/index.yml) mit dem Chat SDK verwenden, um Anwendungsfälle wie die folgenden zu erstellen:
 
-## <a name="chat-overview"></a>Übersicht über den Chat
-
-Chatkonversationen erfolgen innerhalb von Chatthreads. Ein Chatthread kann viele Nachrichten und Benutzer umfassen. Jede Nachricht gehört zu einem einzelnen Thread, und ein Benutzer kann einem oder mehreren Threads angehören.
-
-Die einzelnen Benutzer im Chatthread werden als Mitglieder bezeichnet. In einem Chatthread sind bis zu 250 Mitglieder möglich. Nur Threadmitglieder können Nachrichten senden und empfangen oder Mitglieder zu einem Chatthread hinzufügen bzw. daraus entfernen. Die maximal zulässige Nachrichtengröße beträgt ca. 28 KB. Mithilfe des `List/Get Messages`-Vorgangs können Sie alle Nachrichten in einem Chatthread abrufen. Communication Services speichert den Chatverlauf, bis Sie einen Löschvorgang für den Chatthread oder die Nachricht ausführen oder bis keine Mitglieder mehr im Chatthread verbleiben – an diesem Punkt ist er verwaist und wird für die Löschung verarbeitet.
-
-Für Chatthreads mit mehr als 20 Mitgliedern sind Lesebestätigungen und Eingabeindikatorfunktionen deaktiviert.
-
-## <a name="chat-architecture"></a>Chatarchitektur
-
-Die Chatarchitektur besteht aus zwei zentralen Teilen: 1) einem vertrauenswürdigen Dienst und 2) einer Clientanwendung.
-
-:::image type="content" source="../../media/chat-architecture.png" alt-text="Diagramm, das die Chatarchitektur von Communication Services zeigt":::
-
- - **Vertrauenswürdiger Dienst:** Damit Sie eine Chatsitzung ordnungsgemäß verwalten können, benötigen Sie einen Dienst, der Ihnen hilft, mithilfe ihrer Ressourcen-Verbindungszeichenfolge eine Verbindung mit Communication Services herzustellen. Dieser Dienst ist für das Erstellen von Chatthreads, das Verwalten von Threadmitgliedschaften und das Bereitstellen von Zugriffstoken für Benutzer verantwortlich. Weitere Informationen zu Zugriffstoken finden Sie in unserem Schnellstart zu [Zugriffstoken](../../quickstarts/access-tokens.md).
-
- - **Client-App:**  Die Clientanwendung stellt eine Verbindung mit Ihrem vertrauenswürdigen Dienst her und empfängt die Zugriffstoken, die zum Herstellen einer direkten Verbindung mit Communication Services verwendet werden. Nachdem diese Verbindung hergestellt wurde, kann Ihre Client-App Nachrichten senden und empfangen.
-
-Es wird empfohlen, Zugriffstoken unter Verwendung der vertrauenswürdigen Dienstebene zu erstellen. In diesem Szenario ist die Serverseite für die Erstellung und Verwaltung von Benutzern sowie für die Ausstellung ihrer Token zuständig.
-
-## <a name="message-types"></a>Nachrichtentypen
-
-Ein Communication Services-Chat teilt vom Benutzer sowie vom System generierte Nachrichten, die als **Threadaktivitäten** bezeichnet werden. Threadaktivitäten werden generiert, wenn ein Chatthread aktualisiert wird. Wenn Sie `List Messages` oder `Get Messages` in einem Chatthread aufrufen, enthält das Ergebnis die vom Benutzer generierten Textnachrichten sowie die Systemnachrichten in chronologischer Reihenfolge. Auf diese Weise können Sie ermitteln, wann ein Mitglied hinzugefügt oder entfernt wurde oder wann das Thema des Chatthreads aktualisiert wurde. Die folgende Nachrichtentypen werden unterstützt:
-
- - `Text`: Die von einem Benutzer als Teil der Chatkonversation verfasste und gesendete Nur-Text-Nachricht.
- - `RichText/HTML`: Eine formatierte Textnachricht. Beachten Sie, dass Communication Services-Benutzer derzeit keine RichText-Nachrichten senden können. Dieser Nachrichtentyp wird von Nachrichten unterstützt, die in Teams-Interoperabilitätsszenarien von Teams-Benutzern an Communication Services-Benutzer gesendet werden.
-
- - `ThreadActivity/ParticipantAdded`: Eine Systemnachricht mit dem Hinweis, dass dem Chatthread mindestens ein Teilnehmer hinzugefügt wurde. Beispiel:
-
-```
-{
-            "id": "1613589626560",
-            "type": "participantAdded",
-            "sequenceId": "7",
-            "version": "1613589626560",
-            "content":
-            {
-                "participants":
-                [
-                    {
-                        "id": "8:acs:d2a829bc-8523-4404-b727-022345e48ca6_00000008-511c-4df6-f40f-343a0d003226",
-                        "displayName": "Jane",
-                        "shareHistoryTime": "1970-01-01T00:00:00Z"
-                    }
-                ],
-                "initiator": "8:acs:d2a829bc-8523-4404-b727-022345e48ca6_00000008-511c-4ce0-f40f-343a0d003224"
-            },
-            "createdOn": "2021-02-17T19:20:26Z"
-        }
-```
-
-- `ThreadActivity/ParticipantRemoved`: Systemnachricht mit dem Hinweis, dass ein Teilnehmer aus dem Chatthread entfernt wurde Beispiel:
-
-```
-{
-            "id": "1613589627603",
-            "type": "participantRemoved",
-            "sequenceId": "8",
-            "version": "1613589627603",
-            "content":
-            {
-                "participants":
-                [
-                    {
-                        "id": "8:acs:d2a829bc-8523-4404-b727-022345e48ca6_00000008-511c-4df6-f40f-343a0d003226",
-                        "displayName": "Jane",
-                        "shareHistoryTime": "1970-01-01T00:00:00Z"
-                    }
-                ],
-                "initiator": "8:acs:d2a829bc-8523-4404-b727-022345e48ca6_00000008-511c-4ce0-f40f-343a0d003224"
-            },
-            "createdOn": "2021-02-17T19:20:27Z"
-        }
-```
-
-- `ThreadActivity/TopicUpdate`: Systemnachricht mit dem Hinweis, dass das Threadthema aktualisiert wurde. Beispiel:
-
-```
-{
-            "id": "1613589623037",
-            "type": "topicUpdated",
-            "sequenceId": "2",
-            "version": "1613589623037",
-            "content":
-            {
-                "topic": "New topic",
-                "initiator": "8:acs:d2a829bc-8523-4404-b727-022345e48ca6_00000008-511c-4ce0-f40f-343a0d003224"
-            },
-            "createdOn": "2021-02-17T19:20:23Z"
-        }
-```
-
-## <a name="real-time-signaling"></a>Echtzeitsignalisierung
-
-Die JavaScript-Clientbibliothek für Chats enthält Echtzeitsignalisierung. Dadurch können Clients auf Echtzeitaktualisierungen und eingehende Nachrichten in einem Chatthread lauschen, ohne die APIs abfragen zu müssen. Verfügbare Ereignisse umfassen Folgendes:
-
- - `ChatMessageReceived`: wenn eine neue Nachricht an einen Chatthread gesendet wird, in dem der Benutzer Mitglied ist. Dieses Ereignis wird nicht für automatisch generierte Systemnachrichten gesendet, die im vorherigen Thema erläutert wurden.
- - `ChatMessageEdited`: wenn eine Nachricht in einem Chatthread bearbeitet wird, in dem der Benutzer Mitglied ist
- - `ChatMessageDeleted`: wenn eine Nachricht in einem Chatthread gelöscht wird, in dem der Benutzer Mitglied ist
- - `TypingIndicatorReceived`: wenn ein anderes Mitglied eine Nachricht in einem Chatthread eingibt, in dem der Benutzer Mitglied ist
- - `ReadReceiptReceived`: wenn ein anderes Mitglied die Nachricht gelesen hat, die der Benutzer in einem Chatthread gesendet hat
-
-## <a name="chat-events"></a>Chatereignisse
-
-Die Echtzeitsignalisierung ermöglicht es Ihren Benutzern, in Echtzeit zu chatten. Ihre Dienste können Azure Event Grid verwenden, um Ereignisse zu abonnieren, die für den Chat relevant sind. Weitere Informationen finden Sie unter [Konzepte für die Ereignisbehandlung](../event-handling.md).
-
-## <a name="using-cognitive-services-with-chat-client-library-to-enable-intelligent-features"></a>Verwenden von Cognitive Services mit der Clientbibliothek für Chats zum Aktivieren intelligenter Features
-
-Sie können [Azure Cognitive-APIs](../../../cognitive-services/index.yml) zusammen mit der Clientbibliothek für Chats verwenden, um intelligente Features zu Ihren Anwendungen hinzuzufügen. Beispielsweise können Sie folgende Aktionen ausführen:
-
-- Ermöglichen Sie es Benutzern, miteinander in verschiedenen Sprachen zu chatten.
-- Helfen Sie einem Support-Agent bei der Priorisierung von Tickets, indem Sie eine negative Stimmung in einem eingehenden Problem eines Kunden erkennen.
+- Ermöglichen Sie es Benutzern, miteinander in verschiedenen Sprachen zu chatten.  
+- Helfen Sie einem Support-Agent bei der Priorisierung von Tickets, indem Sie eine negative Stimmung in einer eingehenden Nachricht eines Kunden erkennen. 
 - Analysieren Sie die eingehenden Nachrichten zur Schlüssel- und Entitätserkennung, und fordern Sie von Ihrem Benutzer in Ihrer App basierend auf dem Nachrichteninhalt relevante Informationen an.
 
-Eine Möglichkeit, um dies zu erreichen, besteht darin, dass Ihr vertrauenswürdiger Dienst als Mitglied eines Chatthreads fungiert. Angenommen, Sie möchten die Sprachübersetzung aktivieren. Dieser Dienst ist dafür zuständig, auf Nachrichten zu lauschen, die von anderen Mitgliedern ausgetauscht werden [1], Cognitive-APIs aufzurufen, um den Inhalt in die gewünschte Sprache zu übersetzen [2,3] und das übersetzte Ergebnis als Nachricht im Chatthread zu senden [4].
+Dies kann unter anderem erreicht werden, indem Ihr vertrauenswürdiger Dienst als Teilnehmer eines Chatthreads fungiert. Angenommen, Sie möchten die Sprachübersetzung aktivieren. Dieser Dienst ist dafür zuständig, auf Nachrichten zu lauschen, die von anderen Teilnehmern ausgetauscht werden[1], Cognitive-APIs aufzurufen, um den Inhalt in die gewünschte Sprache zu übersetzen[2, 3] und das übersetzte Ergebnis als Nachricht im Chatthread zu senden[4].
 
-So enthält der Nachrichtenverlauf sowohl die ursprünglichen als auch übersetzte Nachrichten. In der Clientanwendung können Sie Logik hinzufügen, um die ursprüngliche oder die übersetzte Nachricht anzuzeigen. Informationen zur Verwendung von Cognitive APIs zum Übersetzen von Text in verschiedene Sprachen finden Sie in [diesem Schnellstart](../../../cognitive-services/translator/quickstart-translator.md).
+So enthält der Nachrichtenverlauf sowohl die ursprünglichen als auch übersetzte Nachrichten. In der Clientanwendung können Sie Logik hinzufügen, um die ursprüngliche oder die übersetzte Nachricht anzuzeigen. Informationen zur Verwendung von Cognitive APIs zum Übersetzen von Text in verschiedene Sprachen finden Sie in [diesem Schnellstart](../../../cognitive-services/translator/quickstart-translator.md). 
+    
+:::image type="content" source="../media/chat/cognitive-services.png" alt-text="Diagramm, das zeigt, wie Cognitive Services mit Communication Services interagieren"::: 
 
-:::image type="content" source="../media/chat/cognitive-services.png" alt-text="Diagramm, das zeigt, wie Cognitive Services mit Communication Services interagieren":::
+## <a name="next-steps"></a>Nächste Schritte   
 
-## <a name="next-steps"></a>Nächste Schritte
+> [!div class="nextstepaction"] 
+> [Erste Schritte mit dem Chat](../../quickstarts/chat/get-started.md)    
 
-> [!div class="nextstepaction"]
-> [Erste Schritte mit dem Chat](../../quickstarts/chat/get-started.md)
-
-Die folgenden Dokumente könnten Sie auch interessieren:
-
-- Machen Sie sich mit der [Chatclientbibliothek](sdk-features.md) vertraut.
+Die folgenden Dokumente könnten Sie auch interessieren:  
+- Machen Sie sich mit dem [Chat SDK](sdk-features.md) vertraut.

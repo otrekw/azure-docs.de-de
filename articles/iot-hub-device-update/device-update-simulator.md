@@ -6,12 +6,12 @@ ms.author: valls
 ms.date: 2/11/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 4740bf02c33314dd7c887356f2ef1ed12bea44cf
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 90e72bd12d9115e5ff95213428ae4ac37979dcf3
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102443810"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106120094"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-the-ubuntu-1804-x64-simulator-reference-agent"></a>Device Update for Azure IoT Hub: Tutorial zum Verwenden des Ubuntu (18.04 x64) Simulator Reference Agent
 
@@ -30,10 +30,8 @@ In diesem Lernprogramm lernen Sie Folgendes:
 > * Bereitstellen eines Imageupdates
 > * Überwachen der Updatebereitstellung
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
-
 ## <a name="prerequisites"></a>Voraussetzungen
-* Zugriff auf einen IoT Hub. Es wird empfohlen, einen S1-Tarif (Standard) oder höher zu verwenden.
+* Erstellen Sie [ein Konto und eine Instanz für Device Update](create-device-update-account.md) (einschließlich der Konfiguration einer IoT Hub-Instanz), sofern noch nicht geschehen.
 
 ### <a name="download-and-install"></a>Herunterladen und Installieren
 
@@ -104,7 +102,7 @@ Es gibt zwei Versionen des Agents. Wenn Ihr Szenario imagebasiert ist, verwenden
   ```
 Die Software Device Update for Azure IoT Hub unterliegt den folgenden Lizenzbedingungen:
    * [Lizenz für Device Update für IoT Hub](https://github.com/Azure/iot-hub-device-update/blob/main/LICENSE.md)
-   * [Lizenz für den Übermittlungsoptimierungs-Client](https://github.com/microsoft/do-client/blob/main/LICENSE.md)
+   * [Lizenz für den Übermittlungsoptimierungs-Client](https://github.com/microsoft/do-client/blob/main/LICENSE)
    
 Lesen Sie vor Verwendung des Agents die Lizenzbedingungen. Durch die Installation und Verwendung erklären Sie Ihre Zustimmung zu diesen Bestimmungen. Wenn Sie den Lizenzbedingungen nicht zustimmen, verwenden Sie den Device Update for IoT Hub-Agent nicht.
 
@@ -149,9 +147,9 @@ Agent running. [main]
 
 1. Melden Sie sich am [Azure-Portal](https://portal.azure.com) an, und navigieren Sie zum IoT Hub.
 
-2. Suchen Sie im linken Navigationsbereich unter „IoT Devices“ (IoT-Geräte) oder „IoT Edge“ nach Ihrem IoT-Gerät, und navigieren Sie zum Gerätezwilling.
+2. Suchen Sie im linken Navigationsbereich unter „IoT-Geräte“ oder „IoT Edge“ nach Ihrem IoT-Gerät, und navigieren Sie zum Gerätezwilling oder Modulzwilling.
 
-3. Löschen Sie im Gerätezwilling alle vorhandenen Device Update-Tagwerte, indem Sie diese auf NULL festlegen.
+3. Löschen Sie im Modulzwilling des Device Update-Agent-Moduls alle vorhandenen Device Update-Tagwerte, indem Sie diese auf NULL festlegen. Wenn Sie eine Geräteidentität mit dem Device Update-Agent verwenden, nehmen Sie diese Änderungen im Gerätezwilling vor.
 
 4. Fügen Sie wie unten gezeigt einen neuen Device Update-Tagwert hinzu.
 

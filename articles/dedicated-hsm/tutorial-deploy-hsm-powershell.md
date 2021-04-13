@@ -11,14 +11,14 @@ ms.topic: tutorial
 ms.custom: mvc, seodec18, devx-track-azurepowershell
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/14/2020
-ms.author: mbaldwin
-ms.openlocfilehash: 52b62e463edc51b3d93d7af69623a88abd9cc6be
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/25/2021
+ms.author: keithp
+ms.openlocfilehash: 5ed5ac90f446f74c54488f6d0cf23adbd63a3e1e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98108601"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105606877"
 ---
 # <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-powershell"></a>Tutorial: Bereitstellen von HSMs in einem vorhandenen virtuellen Netzwerk mithilfe von PowerShell
 
@@ -68,7 +68,7 @@ Fahren Sie erst mit den weiteren Schritten fort, wenn beim Befehl der Status „
 
 ### <a name="creating-hsm-resources"></a>Erstellen von HSM-Ressourcen
 
-Ein HSM-Gerät wird im virtuellen Netzwerk eines Kunden bereitgestellt. Dies impliziert den Bedarf für ein Subnetz. Um die Kommunikation zwischen dem virtuellen Netzwerk und dem physischen Gerät zu ermöglichen, benötigt das HSM ein ExpressRoute-Gateway. Und schließlich wird noch ein virtueller Computer benötigt, um unter Verwendung der Gemalto-Clientsoftware auf das HSM-Gerät zugreifen zu können. Diese Ressourcen wurden zur Vereinfachung in einer Vorlagendatei mit entsprechender Parameterdatei zusammengefasst. Die Dateien können Sie direkt bei Microsoft anfordern: HSMrequest@Microsoft.com.
+Ein HSM-Gerät wird im virtuellen Netzwerk eines Kunden bereitgestellt. Dies impliziert den Bedarf für ein Subnetz. Um die Kommunikation zwischen dem virtuellen Netzwerk und dem physischen Gerät zu ermöglichen, benötigt das HSM ein ExpressRoute-Gateway. Und schließlich wird noch ein virtueller Computer benötigt, um unter Verwendung der Thales-Clientsoftware auf das HSM-Gerät zugreifen zu können. Diese Ressourcen wurden zur Vereinfachung in einer Vorlagendatei mit entsprechender Parameterdatei zusammengefasst. Die Dateien können Sie direkt bei Microsoft anfordern: HSMrequest@Microsoft.com.
 
 Wenn Sie über die Dateien verfügen, müssen Sie die Parameterdatei bearbeiten, um Ihre bevorzugten Ressourcennamen einzufügen. Dazu müssen Zeilen bearbeitet werden, die Folgendes enthalten: "value":""
 
@@ -184,7 +184,7 @@ Die Ausführung dieses Befehls dauert etwa 20 Minuten. Die Option „-verbose“
 
 ![Bereitstellungsstatus](media/tutorial-deploy-hsm-powershell/progress-status.png)
 
-Nach erfolgreichem Abschluss des Vorgangs ("provisioningState": "Succeeded") können Sie sich bei Ihrem vorhandenen virtuellen Computer anmelden und sich per SSH vergewissern, dass das HSM-Gerät verfügbar ist.
+Nach erfolgreichem Abschluss des Vorgangs ("provisioningState&quot;: &quot;Succeeded") können Sie sich bei Ihrem vorhandenen virtuellen Computer anmelden und sich per SSH vergewissern, dass das HSM-Gerät verfügbar ist.
 
 ## <a name="verifying-the-deployment"></a>Überprüfen der Bereitstellung
 
@@ -235,14 +235,14 @@ Die Ausgabe sollte in etwa wie folgt aussehen:
 
 ![Screenshot: Ausgabe des Befehls „hsm show“](media/tutorial-deploy-hsm-powershell/output.png)
 
-Sie haben nun alle Ressourcen für eine hoch verfügbare Bereitstellung mit zwei HSMs zugeordnet und den Zugriff sowie die Betriebsbereitschaft geprüft. Die weiteren Konfigurations-/Testschritte erfordern eine intensivere Interaktion mit dem eigentlichen HSM-Gerät. Gehen Sie hierzu gemäß der Anleitung in Kapitel 7 des Administratorhandbuchs für Gemalto Luna Network HSM 7 vor, um das HSM zu initialisieren und Partitionen zu erstellen. Die gesamte Dokumentation und Software kann direkt von Gemalto heruntergeladen werden, nachdem Sie sich beim Kundensupportportal von Gemalto registriert und eine Kunden-ID erhalten haben. Laden Sie die Version 7.2 der Clientsoftware herunter, um alle erforderlichen Komponenten zu erhalten.
+Sie haben nun alle Ressourcen für eine hoch verfügbare Bereitstellung mit zwei HSMs zugeordnet und den Zugriff sowie die Betriebsbereitschaft geprüft. Die weiteren Konfigurations-/Testschritte erfordern eine intensivere Interaktion mit dem eigentlichen HSM-Gerät. Gehen Sie hierzu gemäß der Anleitung in Kapitel 7 des Administratorhandbuchs für Thales Luna 7 HSM vor, um das HSM zu initialisieren und Partitionen zu erstellen. Die gesamte Dokumentation und Software kann direkt von Thales heruntergeladen werden, nachdem Sie sich beim [Kundensupportportal von Thales](https://supportportal.thalesgroup.com/csm) registriert und eine Kunden-ID erhalten haben. Laden Sie die Version 7.2 der Clientsoftware herunter, um alle erforderlichen Komponenten zu erhalten.
 
 ## <a name="delete-or-clean-up-resources"></a>Löschen oder Bereinigen von Ressourcen
 
 Wenn Sie das HSM-Gerät nicht mehr benötigen, kann es als Ressource gelöscht und wieder dem freien Pool zugeführt werden. Ein wichtiger Aspekt bei diesem Schritt sind natürlich vertrauliche Kundendaten, die sich ggf. auf dem Gerät befinden. Ein Gerät lässt sich am besten durch dreimalige Falscheingabe des HSM-Administratorkennworts nullen. (Hinweis: Hierbei handelt es sich um das Kennwort des HSM-Administrators, nicht um das des Applianceadministrators.) Als Sicherheitsmaßnahme zum Schutz der Schlüsseldaten kann das Gerät erst als Azure-Ressource gelöscht werden, wenn es sich im genullten Zustand befindet.
 
 > [!NOTE]
-> Wenden Sie sich bei Problemen mit der Gemalto-Gerätekonfiguration bitte an den [Gemalto-Kundensupport](https://safenet.gemalto.com/technical-support/).
+> Wenden Sie sich bei Problemen mit der Thales-Gerätekonfiguration an den [Thales-Kundensupport](https://supportportal.thalesgroup.com/csm).
 
 Wenn Sie die HSM-Ressource in Azure entfernen möchten, können Sie den folgenden Befehl verwenden. Ersetzen Sie dabei die „$“-Variablen durch Ihre eindeutigen Parameter:
 

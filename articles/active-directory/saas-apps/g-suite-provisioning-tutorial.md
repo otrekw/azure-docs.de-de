@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/06/2020
+ms.date: 03/18/2021
 ms.author: Zhchia
-ms.openlocfilehash: 5243e9490c9de0d6df1520edb970da93fabef85a
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: f6ef2f91d178db01e618c19df55705bc9c1209e4
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746120"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104583750"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von G Suite für die automatische Benutzerbereitstellung
 
@@ -154,7 +154,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 9. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit G Suite synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in G Suite für Updatevorgänge verwendet werden. Wenn Sie sich dafür entscheiden, das [übereinstimmende Zielattribut](../app-provisioning/customize-application-attributes.md) zu ändern, müssen Sie sicherstellen, dass die G Suite-API das Filtern von Benutzern anhand dieses Attributs unterstützt. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-   |attribute|type|
+   |Attribut|type|
    |---|---|
    |primaryEmail|String|
    |relations.[type eq "manager"].value|String|
@@ -235,7 +235,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 11. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Gruppenattribute, die von Azure AD mit G Suite synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden verwendet, um die Gruppen in G Suite für Updatevorgänge abzugleichen. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-      |attribute|type|
+      |Attribut|type|
       |---|---|
       |email|String|
       |Members|String|
@@ -273,6 +273,7 @@ Nachdem Sie die Bereitstellung konfiguriert haben, können Sie mit den folgenden
 * 17.10.2020: Unterstützung für zusätzliche G Suite-Benutzerattribute und -Gruppenattribute hinzugefügt
 * 17.10.2020: Die Namen der G Suite-Zielattribute wurden so aktualisiert, dass sie den [hier](https://developers.google.com/admin-sdk/directory) definierten Angaben entsprechen.
 * 17.10.2020: Standardattributzuordnungen aktualisiert
+* 18.03.2021: Für alle neuen Benutzer wird jetzt die E-Mail-Adresse des Vorgesetzten anstelle der ID synchronisiert. Für alle vorhandenen Benutzer, für die der Vorgesetzte in Form einer ID bereitgestellt wurde, können Sie über [Microsoft Graph](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http) einen Neustart mit dem Bereich „vollständig“ durchführen, um sicherzustellen, dass die E-Mail bereitgestellt wird. Diese Änderung wirkt sich nur auf den GSuite-Bereitstellungsauftrag und nicht auf den älteren mit „Goov2OutDelta“ beginnenden Auftrag aus. Beachten Sie, dass die E-Mail-Adresse des Vorgesetzten bei der erstmaligen Erstellung des Benutzers oder bei einer Änderung des Vorgesetzten bereitgestellt wird. Die E-Mail-Adresse des Vorgesetzten wird nicht bereitgestellt, wenn der Vorgesetzte seine E-Mail-Adresse ändert. 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

@@ -9,14 +9,16 @@ ms.author: rifox
 ms.date: 03/12/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 5e17943d7867bfd6b93d95b6ec0b6e0049a784ef
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 1803afa1fd274ca3a7b2d5668a836ff5ca0b62c6
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103555011"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106076086"
 ---
 # <a name="samples"></a>Beispiele
+
+[!INCLUDE [Public Preview Notice](../includes/public-preview-include-android-ios.md)]
 
 Azure Communication Services bietet viele Beispiele, mit denen Sie ACS-Dienste und -Funktionen testen können, bevor Sie eine eigene Anwendung oder einen eigenen Anwendungsfall erstellen.
 
@@ -24,9 +26,9 @@ Azure Communication Services bietet viele Beispiele, mit denen Sie ACS-Dienste u
 
 | Name des Beispiels                                                                                          | Beschreibung                                                         | Verfügbare Sprachen/Plattformen      |
 | :--------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------ | :--------------------------------- |
-| [Hero-Beispiel für Gruppenanrufe](./calling-hero-sample.md)                                                | Enthält ein Beispiel zum Erstellen einer Anwendung für Gruppenanrufe.          | Web, iOS                           |
-| [Beispiel für Webanrufe](./web-calling-sample.md)                                                        | Eine Schritt-für-Schritt-Anleitung für ACS-Anruffunktionen im Web | Web                                |
-| [Hero-Beispiel für Chats](./chat-hero-sample.md)                                                            | Enthält ein Beispiel für das Erstellen einer Chatanwendung.                   | Web und C# .NET                      |
+| [Hero-Beispiel für Gruppenanrufe](./calling-hero-sample.md)                                                | Enthält ein Beispiel zum Erstellen einer Anwendung für Gruppenanrufe.          | [Web](https://github.com/Azure-Samples/communication-services-web-calling-hero), [iOS](https://github.com/Azure-Samples/communication-services-ios-calling-hero), [Android](https://github.com/Azure-Samples/communication-services-android-calling-hero)                           |
+| [Beispiel für Webanrufe](./web-calling-sample.md)                                                        | Eine Schritt-für-Schritt-Anleitung für ACS-Anruffunktionen im Web | [Web](https://github.com/Azure-Samples/communication-services-web-calling-tutorial/)                                |
+| [Hero-Beispiel für Chats](./chat-hero-sample.md)                                                            | Enthält ein Beispiel für das Erstellen einer Chatanwendung.                   | [Web](https://github.com/Azure-Samples/communication-services-web-chat-hero)                    |
 | [Contoso Medical-App](https://github.com/Azure-Samples/communication-services-contoso-med-app)       | Beispiel-App zur Veranschaulichung eines Patienten-Arzt-Flows.                     | Web und Node.js                      |
 | [Contoso Retail-App](https://github.com/Azure-Samples/communication-services-contoso-retail-app)     | Beispiel-App zur Veranschaulichung des Supportflows für den Einzelhandel.                     | ASP.NET, .NET Core, JavaScript/Web |
 | [Beispiel für WPF-Anrufe](https://github.com/Azure-Samples/communication-services-web-calling-wpf-sample) | Beispiel-App für Windows zur Veranschaulichung von Anruffunktionen          | WPF/Node.js                      |

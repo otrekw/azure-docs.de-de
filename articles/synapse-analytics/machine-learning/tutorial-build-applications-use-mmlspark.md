@@ -7,23 +7,23 @@ ms.subservice: machine-learning
 ms.topic: tutorial
 ms.reviewer: ''
 ms.date: 03/08/2021
-author: ruxu
+author: ruixinxu
 ms.author: ruxu
-ms.openlocfilehash: a3899b83133b3f951547fae0b11c044bfa85a5fc
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 928e2ef8b373626a91a291b1798f3ebb7ef290e8
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104589598"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105608832"
 ---
 # <a name="tutorial-build-machine-learning-applications-using-microsoft-machine-learning-for-apache-spark-preview"></a>Tutorial: Erstellen von Machine Learning-Anwendungen mithilfe von Microsoft Machine Learning für Apache Spark (Vorschau)
 
 In diesem Artikel erfahren Sie, wie Sie mithilfe von Microsoft Machine Learning für Apache Spark ([MMLSpark](https://github.com/Azure/mmlspark)) Machine Learning-Anwendungen erstellen. Mit MMLSpark wird die Lösung für verteiltes maschinelles Lernen von Apache Spark erweitert, indem zahlreiche Deep Learning- und Data Science-Tools wie [Azure Cognitive Services](../../cognitive-services/big-data/cognitive-services-for-big-data.md), [OpenCV](https://opencv.org/), [LightGBM](https://github.com/Microsoft/LightGBM) usw. hinzugefügt werden.  MMLSpark ermöglicht die Erstellung leistungsstarker und hochgradig skalierbarer Vorhersage- und Analysemodelle auf der Grundlage verschiedener Spark-Datenquellen.
 Synapse Spark bietet integrierte MMLSpark-Bibliotheken, u. a.:
 
-- [Vowpal Wabbit:](https://github.com/VowpalWabbit/vowpal_wabbit) Bibliotheksdienste für maschinelles Lernen, um die Textanalyse (etwa Stimmungsanalyse) in Tweets zu ermöglichen
-- [Cognitive Services in Spark:](../../cognitive-services/big-data/cognitive-services-for-big-data.md) Dient zum Kombinieren der Azure Cognitive Services-Features in SparkML-Pipelines, um einen Lösungsentwurf für kognitive Datenmodellierungsdienste wie Anomalieerkennung abzuleiten.
-- [LightBGM:](https://github.com/Azure/mmlspark/blob/master/docs/lightgbm.md) Machine Learning-Modell, um das Trainieren des Modells für Vorhersageanalysen wie Gesichtserkennung zu ermöglichen
+- [Vowpal Wabbit:](https://github.com/Azure/mmlspark/blob/master/docs/vw.md) Bibliotheksdienste für maschinelles Lernen, um die Textanalyse (etwa Stimmungsanalyse) in Tweets zu ermöglichen
+- [Cognitive Services in Spark:](https://github.com/Azure/mmlspark/blob/master/docs/cogsvc.md) Dient zum Kombinieren der Azure Cognitive Services-Features in SparkML-Pipelines, um einen Lösungsentwurf für kognitive Datenmodellierungsdienste wie Anomalieerkennung abzuleiten.
+- [LightBGM:](https://github.com/Azure/mmlspark/blob/master/docs/lightgbm.md) LightGBM ist ein Gradient Boosting-Framework, das baumstrukturbasierte Lernalgorithmen nutzt. Es ist für Verteilung und höhere Effizienz vorgesehen.
 - Bedingtes KNN-Modell: Skalierbare KNN-Modelle mit bedingten Abfragen
 - [HTTP in Spark:](https://github.com/Azure/mmlspark/blob/master/docs/http.md) Ermöglicht die Orchestrierung verteilter Microservices bei der Integration von Spark und HTTP-basiertem Zugriff.
 
@@ -44,7 +44,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 
 ## <a name="get-started"></a>Erste Schritte
-Importieren Sie zunächst MMLSpark, und konfigurieren Sie Dienstschlüssel.
+Importieren Sie zunächst MMLSpark, und konfigurieren Sie Dienstschlüssel. 
 
 ```python
 import mmlspark
@@ -59,13 +59,16 @@ service_key =  "ADD_YOUR_SUBSCRIPION_KEY"
 bing_search_key = "ADD_YOUR_SUBSCRIPION_KEY" 
 # An Anomaly Dectector subscription key
 anomaly_key =  "ADD_YOUR_SUBSCRIPION_KEY" 
+# Your linked key vault for Synapse workspace
+key_vault = "YOUR_KEY_VAULT_NAME"
 
 
-cognitive_service_key = mssparkutils.credentials.getSecret("keyvaultForSynapse", service_key)
-bingsearch_service_key = mssparkutils.credentials.getSecret("keyvaultForSynapse", bing_search_key)
-anomalydetector_key = mssparkutils.credentials.getSecret("keyvaultForSynapse", anomaly_key)
+cognitive_service_key = mssparkutils.credentials.getSecret(key_vault, service_key)
+bingsearch_service_key = mssparkutils.credentials.getSecret(key_vault, bing_search_key)
+anomalydetector_key = mssparkutils.credentials.getSecret(key_vault, anomaly_key)
 
 ```
+
 
 ## <a name="text-analytics-sample"></a>Beispiel für Textanalyse
 

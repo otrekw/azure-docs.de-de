@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: b63f42ccc0a9d8d138e38a262db528fd36ea701a
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: d36bae57a9e1609e053326cf7288b5b1bc470cef
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102123036"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106166886"
 ---
 # <a name="deploy-cloud-services-extended-support-by-using-the-azure-sdk"></a>Bereitstellen von Cloud Services (erweiterter Support) mithilfe des Azure SDK
 
@@ -156,7 +156,8 @@ Informieren Sie sich über die [Bereitstellungsvoraussetzungen](deploy-prerequis
     m_NrpClient.VirtualNetworks.CreateOrUpdate(resourceGroupName, “ContosoVNet”, vnet);
     ```
 
-7. Erstellen Sie eine öffentliche IP-Adresse, und legen Sie (optional) die DNS-Bezeichnungseigenschaft der öffentlichen IP-Adresse fest. Wenn Sie eine statische IP-Adresse verwenden, muss darauf in der Dienstkonfigurationsdatei als reservierte IP verwiesen werden.
+7. Erstellen Sie eine öffentliche IP-Adresse, und legen Sie die DNS-Bezeichnungseigenschaft der öffentlichen IP-Adresse fest. Von Cloud Services (erweiterter Support) werden nur öffentliche IP-Adressen mit [Basic]-SKU (https://docs.microsoft.com/azure/virtual-network/public-ip-addresses#basic) unterstützt. Öffentliche IP-Adressen der Standard-SKU funktionieren nicht mit Cloud Services.
+Wenn Sie eine statische IP-Adresse verwenden, muss darauf in der Dienstkonfigurationsdatei (.cscfg) als reservierte IP verwiesen werden.
 
     ```csharp
     PublicIPAddress publicIPAddressParams = new PublicIPAddress(name: “ContosIp”) 
@@ -171,7 +172,7 @@ Informieren Sie sich über die [Bereitstellungsvoraussetzungen](deploy-prerequis
     PublicIPAddress publicIpAddress = m_NrpClient.PublicIPAddresses.CreateOrUpdate(resourceGroupName, publicIPAddressName, publicIPAddressParams);
     ```
 
-8. Erstellen Sie ein Netzwerkprofilobjekt, und ordnen Sie die öffentliche IP-Adresse dem Front-End des durch die Plattform erstellten Lastenausgleichs zu.
+8. Erstellen Sie ein Netzwerkprofilobjekt, und ordnen Sie die öffentliche IP-Adresse dem Front-End des Lastenausgleichs zu. Die Azure-Plattform erstellt automatisch eine Lastenausgleichsressource der SKU „Klassisch“ in demselben Abonnement wie die Clouddienstressource. Die Lastenausgleichsressource ist eine schreibgeschützte Ressource in ARM. Alle Aktualisierungen der Ressource werden nur über die Clouddienst-Bereitstellungsdateien (.cscfg und .csdef) unterstützt.
 
     ```csharp
     LoadBalancerFrontendIPConfiguration feipConfiguration = new LoadBalancerFrontendIPConfiguration() 

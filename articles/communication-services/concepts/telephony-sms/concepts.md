@@ -9,35 +9,30 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: c866629677790447d0ed730ae9cc62cb37e338e9
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: e879b7938eb778d4cdbbef4a970325501a6124db
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103495503"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105932147"
 ---
 # <a name="sms-concepts"></a>SMS-Konzepte
 
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
-
+[!INCLUDE [Public Preview Notice](../../includes/public-preview-include-phone-numbers.md)]
 
 [!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
 
-Azure Communication Services ermöglicht das Senden und Empfangen von SMS-Textnachrichten unter Verwendung der SMS-Client Bibliotheken von Communication Services. Diese Clientbibliotheken können zur Unterstützung von Kundendienstszenarien, Terminerinnerungen, zweistufiger Authentifizierung und anderer Echtzeitkommunikationsanforderungen verwendet werden. Das SMS-Feature von Communication Services ermöglicht das zuverlässige Senden von Nachrichten sowie die Nutzung von Informationen zur Zustellbarkeit und zur Antwortrate rund um Ihre Kampagnen.
+Azure Communication Services ermöglicht das Senden und Empfangen von SMS-Textnachrichten unter Verwendung der Communication Services SMS SDKs. Diese SDKs können zur Unterstützung von Kundendienstszenarien, Terminerinnerungen, zweistufiger Authentifizierung und anderer Echtzeitkommunikationsanforderungen verwendet werden. Das SMS-Feature von Communication Services ermöglicht das zuverlässige Senden von Nachrichten sowie die Bereitstellung von Zustellbarkeits- und Antwortmetriken.
 
-Zu den wichtigsten Features der SMS-Clientbibliotheken von Azure Communication Services gehören folgende:
+Zu den wichtigsten Features der Azure Communication Services SMS SDKs gehören folgende:
 
 -  **Unkomplizierte Einrichtungsumgebung** zum Hinzufügen von SMS-Funktionen zu Ihren Anwendungen
 - **Unterstützung von Hochgeschwindigkeitsnachrichten** über gebührenfreie Nummern für A2P-Anwendungsfälle (Application to Person) in den USA
+- Unterstützung von **Massennachrichten**, um das gleichzeitige Senden von Nachrichten an mehrere Empfänger zu ermöglichen
 - **Bidirektionale Konversationen** zur Unterstützung von Szenarien wie Kundensupport, Warnungen und Terminerinnerungen
 - **Zuverlässige Zustellung** mit Zustellberichten in Echtzeit für Nachrichten, die von Ihrer Anwendung gesendet wurden
-- **Analysen** zur Nachverfolgung von Verwendungsmustern und Kundeninteraktion
+- **Analysen** zur Nachverfolgung von SMS-Verwendungsmustern
 - **Unterstützung von Abmeldungen**, um Abmeldungen für gebührenfreie Nummern automatisch zu erkennen und zu berücksichtigen. Abmeldungen für gebührenfreie Nummern in den USA werden von US-Netzbetreibern vorgeschrieben und durchgesetzt.
-  - STOP – Wenn ein SMS-Empfänger sich abmelden möchte, kann er „STOP“ an die gebührenfreie Nummer senden. Der Netzbetreiber sendet die folgende Standardantwort für „STOP“: *„NETZWERKNACHRICHT: You replied with the word „stop“ which blocks all texts sent from this number. Text back „unstop“ to receive messages again.“ (Sie haben mit dem Wort „stop“ geantwortet, das alle von dieser Nummer gesendeten Texte blockiert. Antworten Sie mit „unstop“, um wieder Nachrichten zu erhalten.)*
-  - START/UNSTOP – Wenn der Empfänger Textnachrichten von einer gebührenfreien Nummer erneut abonnieren möchte, kann er „START“ oder „UNSTOP“ an die gebührenfreie Nummer senden. Der Netzbetreiber sendet die folgende Standardantwort für „START/UNSTOP“: *„NETZWERKNACHRICHT: You have replied „unstop“ and will begin receiving messages again from this number.“ (Sie haben mit „unstop“ geantwortet und werden wieder Nachrichten von dieser Nummer erhalten.)*
-  - Azure Communication Services erkennt die STOP-Nachricht und blockiert alle weiteren Nachrichten an den Empfänger. Im Zustellbericht wird eine fehlerhafte Zustellung mit der Statusmeldung „Sender blocked for given recipient“ (Absender für bestimmten Empfänger gesperrt) angezeigt.
-  - Die STOP-, UNSTOP- und START-Nachrichten werden an Sie weitergeleitet. Von Azure Communication Services wird die Überwachung und Implementierung dieser Abmeldungen empfohlen, um sicherzustellen, dass nicht weiter versucht wird, Nachrichten an Empfänger zu senden, die sich von Ihrer Kommunikation abgemeldet haben.
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -46,6 +41,6 @@ Zu den wichtigsten Features der SMS-Clientbibliotheken von Azure Communication S
 
 Die Artikel zu den folgenden Themen könnten Sie auch interessieren:
 
-- Informationen zur [Clientbibliothek für SMS](../telephony-sms/sdk-features.md)
+- Machen Sie sich mit dem [SMS SDK](../telephony-sms/sdk-features.md) vertraut.
 - Beziehen einer für SMS geeigneten [Telefonnummer](../../quickstarts/telephony-sms/get-phone-number.md)
 - [Telefonnummerntypen in Azure Communication Services](../telephony-sms/plan-solution.md)

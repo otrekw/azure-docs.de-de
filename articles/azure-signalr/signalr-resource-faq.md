@@ -7,12 +7,12 @@ ms.topic: overview
 ms.custom: devx-track-dotnet
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: c65bc7e92d925f819a48fd8ab9a8160bc3eb72e3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d3b84756f390930be5124c6bda54d07078d29053
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100579304"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106166920"
 ---
 # <a name="azure-signalr-service-faq"></a>Azure SignalR Service FAQ
 
@@ -62,13 +62,13 @@ Für neue Anwendungen sollten nur der Standard- und der serverlose Modus verwend
 
 Der klassische Modus ist für Abwärtskompatibilität mit vorhandenen Anwendungen ausgelegt und sollte für neue Anwendungen nicht verwendet werden.
 
-Weitere Informationen zum Dienstmodus finden Sie in [diesem Dokument](concept-service-mode.md).
+Weitere Informationen zum Dienstmodus finden Sie unter [Dienstmodi in Azure SignalR Service](concept-service-mode.md).
 
 ## <a name="can-i-send-message-from-client-in-serverless-mode"></a>Kann ich im serverlosen Modus Nachrichten vom Client senden?
 
 Sie können Nachrichten vom Client senden, wenn Sie in Ihrer SignalR-Instanz Upstream konfigurieren. Upstream ist ein Satz von Endpunkten, die Nachrichten und Verbindungsereignisse vom SignalR-Dienst empfangen können. Wenn kein Upstream konfiguriert ist, werden Nachrichten vom Client ignoriert.
 
-Weitere Informationen über Upstream finden Sie in [diesem Dokument](concept-upstream.md).
+Weitere Informationen über Upstream finden Sie unter [Upstreameinstellungen](concept-upstream.md).
 
 Upstream befindet sich derzeit in der öffentlichen Vorschauphase.
 

@@ -8,20 +8,16 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 0c1b67e42e7988a836ec58ac022b11d736210bca
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: bcf6b2f6b964a056b9d90f08c0586fcbdec5b260
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104865620"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167276"
 ---
 # <a name="deploy-a-cloud-service-extended-support-using-azure-powershell"></a>Bereitstellen eines Clouddiensts (erweiterter Support) mithilfe von Azure PowerShell
 
 In diesem Artikel erfahren Sie, wie Sie das PowerShell-Modul `Az.CloudService` verwenden, um Cloud Services (erweiterter Support) mit mehreren Rollen („WebRole“ und „WorkerRole“) und mit Remotedesktoperweiterung in Azure bereitzustellen. 
-
-> [!IMPORTANT]
-> Cloud Services (erweiterter Support) befindet sich derzeit in der Public Preview-Phase.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="before-you-begin"></a>Vorbereitung
 
@@ -73,13 +69,14 @@ Informieren Sie sich über die [Bereitstellungsvoraussetzungen](deploy-prerequis
     $virtualNetwork = New-AzVirtualNetwork -Name “ContosoVNet” -Location “East US” -ResourceGroupName “ContosOrg” -AddressPrefix "10.0.0.0/24" -Subnet $subnet 
     ```
  
-7. Erstellen Sie eine öffentliche IP-Adresse, und legen Sie (optional) die DNS-Bezeichnungseigenschaft der öffentlichen IP-Adresse fest. Wenn Sie eine statische IP-Adresse verwenden, muss darauf in der Dienstkonfigurationsdatei als reservierte IP verwiesen werden.  
+7. Erstellen Sie eine öffentliche IP-Adresse, und legen Sie die DNS-Bezeichnungseigenschaft der öffentlichen IP-Adresse fest. Von Cloud Services (erweiterter Support) werden nur öffentliche IP-Adressen mit [Basic]-SKU (https://docs.microsoft.com/azure/virtual-network/public-ip-addresses#basic) unterstützt. Öffentliche IP-Adressen der Standard-SKU funktionieren nicht mit Cloud Services.
+Wenn Sie eine statische IP-Adresse verwenden, muss darauf in der Dienstkonfigurationsdatei (.cscfg) als reservierte IP verwiesen werden. 
 
     ```powershell
     $publicIp = New-AzPublicIpAddress -Name “ContosIp” -ResourceGroupName “ContosOrg” -Location “East US” -AllocationMethod Dynamic -IpAddressVersion IPv4 -DomainNameLabel “contosoappdns” -Sku Basic 
     ```
 
-8. Erstellen Sie das Netzwerkprofilobjekt, und ordnen Sie die öffentliche IP-Adresse dem Front-End des durch die Plattform erstellten Lastenausgleichs zu.  
+8. Erstellen Sie ein Netzwerkprofilobjekt, und ordnen Sie die öffentliche IP-Adresse dem Front-End des Lastenausgleichs zu. Die Azure-Plattform erstellt automatisch eine Lastenausgleichsressource der SKU „Klassisch“ in demselben Abonnement wie die Clouddienstressource. Die Lastenausgleichsressource ist eine schreibgeschützte Ressource in ARM. Alle Aktualisierungen der Ressource werden nur über die Clouddienst-Bereitstellungsdateien (.cscfg und .csdef) unterstützt.
 
     ```powershell
     $publicIP = Get-AzPublicIpAddress -ResourceGroupName ContosOrg -Name ContosIp  

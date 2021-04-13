@@ -7,12 +7,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 82f4d9028fa94d4df0ff089fda213d64e13d56ec
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 5b7fd8e8cd5bd3ab0f15115365ed057fc67f1204
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103487869"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105604429"
 ---
 # <a name="quickstart-add-11-video-calling-to-your-app-javascript"></a>Schnellstart: Hinzufügen der 1:1-Videoanruffunktion zu Ihrer App (JavaScript)
 
@@ -23,8 +23,8 @@ Den fertigen Code für diesen Schnellstart finden Sie auf [GitHub](https://githu
 ## <a name="prerequisites"></a>Voraussetzungen
 - Rufen Sie ein Azure-Konto mit einem aktiven Abonnement ab. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Node.js](https://nodejs.org/en/): Active LTS- und Maintenance LTS-Versionen (8.11.1 und 10.14.1).
-- Erstellen Sie eine aktive Communication Services-Ressource. [Erstellen Sie eine Communication Services-Ressource](https://docs.microsoft.com/azure/communication-services/quickstarts/create-communication-resource?tabs=windows&pivots=platform-azp).
-- Erstellen Sie ein Benutzerzugriffstoken, um den Anrufclient zu instanziieren. Lernen Sie mehr über das [Erstellen und Verwalten von Benutzerzugriffstoken](https://docs.microsoft.com/azure/communication-services/quickstarts/access-tokens?pivots=programming-language-csharp).
+- Erstellen Sie eine aktive Communication Services-Ressource. [Erstellen Sie eine Communication Services-Ressource](../create-communication-resource.md?pivots=platform-azp&tabs=windows).
+- Erstellen Sie ein Benutzerzugriffstoken, um den Anrufclient zu instanziieren. Lernen Sie mehr über das [Erstellen und Verwalten von Benutzerzugriffstoken](../access-tokens.md?pivots=programming-language-csharp).
 
 ## <a name="setting-up"></a>Einrichten
 ### <a name="create-a-new-nodejs-application"></a>Erstellen einer neuen Node.js-Anwendung
@@ -33,9 +33,11 @@ Den fertigen Code für diesen Schnellstart finden Sie auf [GitHub](https://githu
 mkdir calling-quickstart && cd calling-quickstart
 ```
 ### <a name="install-the-package"></a>Installieren des Pakets
-Verwenden Sie den Befehl `npm install`, um die Clientbibliothek für Telefonie von Azure Communication Services für JavaScript zu installieren.
+Verwenden Sie den Befehl `npm install`, um das Azure Communication Services Calling SDK für JavaScript zu installieren.
 
-In diesem Schnellstart wird die Clientbibliothek `1.0.0.beta-6` für die Azure Communication-Telefonie verwendet. 
+> [!IMPORTANT]
+> In dieser Schnellstartanleitung wird Version `1.0.0.beta-10` des Azure Communication Services Calling SDK verwendet. 
+
 
 ```console
 npm install @azure/communication-common --save
@@ -105,7 +107,7 @@ Der Code lautet wie folgt:
 Erstellen Sie im Stammverzeichnis Ihres Projekts eine Datei mit dem Namen `client.js`, die die Anwendungslogik für diese Schnellstartanleitung enthalten soll. Fügen Sie den folgenden Code hinzu, um den anrufenden Client zu importieren und Verweise auf die DOM-Elemente abzurufen.
 
 ```JavaScript
-import { CallClient, CallAgent, Renderer, LocalVideoStream } from "@azure/communication-calling";
+import { CallClient, CallAgent, VideoStreamRenderer, LocalVideoStream } from "@azure/communication-calling";
 import { AzureCommunicationTokenCredential } from '@azure/communication-common';
 
 let call;
@@ -124,18 +126,18 @@ let rendererRemote;
 ```
 ## <a name="object-model"></a>Objektmodell
 
-Die folgenden Klassen und Schnittstellen befassen sich mit einigen der wichtigsten Features der Azure Communication Services-Clientbibliothek „Calling“:
+Die folgenden Klassen und Schnittstellen befassen sich mit einigen der wichtigsten Features des Azure Communication Services Calling SDK:
 
 | Name      | Beschreibung | 
 | :---        |    :----   |
-| CallClient  | CallClient ist der Haupteinstiegspunkt in die Clientbibliothek „Calling“.      |
+| CallClient  | „CallClient“ ist der Haupteinstiegspunkt des Calling SDK.      |
 | CallAgent  | CallAgent dient zum Starten und Verwalten von Anrufen.        |
 | DeviceManager | DeviceManager wird zum Verwalten von Mediengeräten verwendet.    |
 | AzureCommunicationTokenCredential | Die AzureCommunicationTokenCredential-Klasse implementiert die CommunicationTokenCredential-Schnittstelle, die zum Instanziieren von CallAgent verwendet wird.        |
 
 ## <a name="authenticate-the-client-and-access-devicemanager"></a>Authentifizieren des Clients und Zugreifen auf DeviceManager
 
-Sie müssen <USER_ACCESS_TOKEN> durch ein gültiges Benutzerzugriffstoken für Ihre Ressource ersetzen. Wenn Sie noch über kein Token verfügen, finden Sie unter Benutzerzugriffstoken weitere Informationen. Initialisieren Sie mithilfe von CallClient eine CallAgent-Instanz mit einem CommunicationUserCredential-Objekt, das es uns ermöglicht, Anrufe zu tätigen und zu empfangen. Um auf DeviceManager zugreifen zu können, muss zunächst eine callAgent-Instanz erstellt werden. Anschließend können Sie die `getDeviceManager`-Methode für die `CallClient`-Instanz ausführen, um `DeviceManager` abzurufen.
+Sie müssen <USER_ACCESS_TOKEN> durch ein gültiges Benutzerzugriffstoken für Ihre Ressource ersetzen. Wenn Sie noch über kein Token verfügen, finden Sie unter Benutzerzugriffstoken weitere Informationen. Initialisieren Sie mithilfe von `CallClient` eine `CallAgent`-Instanz mit einem `CommunicationUserCredential`-Objekt, das es uns ermöglicht, Anrufe zu tätigen und zu empfangen. Um auf `DeviceManager` zugreifen zu können, muss zunächst eine callAgent-Instanz erstellt werden. Anschließend können Sie die `getDeviceManager`-Methode für die `CallClient`-Instanz ausführen, um `DeviceManager` abzurufen.
 
 Fügen Sie den folgenden Code zu `client.js` hinzu:
 
@@ -154,7 +156,7 @@ init();
 
 Fügen Sie einen Ereignislistener hinzu, um einen Anruf zu initiieren, wenn auf `callButton` geklickt wird:
 
-Zunächst müssen Sie lokale Kameras mithilfe der deviceManager getCameraList-API auflisten. In dieser Schnellstartanleitung verwenden wir die erste Kamera in der Sammlung. Sobald die gewünschte Kamera ausgewählt ist, wird eine LocalVideoStream-Instanz erstellt und innerhalb von videoOptions als Element innerhalb des localVideoStream-Arrays an die call-Methode übermittelt. Sobald eine Verbindung hergestellt wird, wird automatisch ein Videostream an den anderen Teilnehmer gesendet. 
+Zunächst müssen Sie lokale Kameras mithilfe der deviceManager-API `getCameraList` auflisten. In dieser Schnellstartanleitung verwenden wir die erste Kamera in der Sammlung. Sobald die gewünschte Kamera ausgewählt ist, wird eine LocalVideoStream-Instanz erstellt und innerhalb von `videoOptions` als Element innerhalb des localVideoStream-Arrays an die call-Methode übermittelt. Sobald eine Verbindung hergestellt wird, wird automatisch ein Videostream an den anderen Teilnehmer gesendet. 
 
 ```JavaScript
 callButton.addEventListener("click", async () => {
@@ -179,47 +181,47 @@ callButton.addEventListener("click", async () => {
     callButton.disabled = true;
 });
 ```  
-Sie müssen eine neue `Renderer`-Instanz erstellen und anschließend eine neue RendererView-Instanz mithilfe der `createView`-Methode erstellen, um einen `LocalVideoStream` zu rendern. Sie können dann `view.target` an ein beliebiges Benutzeroberflächenelement anfügen. 
+Wenn Sie einen `LocalVideoStream` rendern möchten, müssen Sie eine neue Instanz von `VideoStreamRenderer` erstellen und anschließend eine neue `VideoStreamRendererView`-Instanz mithilfe der asynchronen `createView`-Methode erstellen. Sie können dann `view.target` an ein beliebiges Benutzeroberflächenelement anfügen. 
 
 ```JavaScript
 async function localVideoView() {
-    rendererLocal = new Renderer(localVideoStream);
+    rendererLocal = new VideoStreamRenderer(localVideoStream);
     const view = await rendererLocal.createView();
     document.getElementById("myVideo").appendChild(view.target);
 }
 ```
-Alle Remoteteilnehmer sind über die `remoteParticipants`-Sammlung für eine Anrufinstanz verfügbar. Sie müssen die Remoteteilnehmer des aktuellen Anrufs abonnieren und am Ereignis `remoteParticipantsUpdated` lauschen, um die hinzugefügten Remoteteilnehmer zu abonnieren.
+Alle Remoteteilnehmer sind über die `remoteParticipants`-Sammlung für eine Anrufinstanz verfügbar. Sie müssen auf das Ereignis `remoteParticipantsUpdated` lauschen, um benachrichtigt zu werden, wenn dem Anruf ein neuer Remoteteilnehmer hinzugefügt wird. Außerdem müssen Sie die Sammlung `remoteParticipants` durchlaufen, um die einzelnen Teilnehmer und damit ihre Videostreams abonnieren zu können. 
 
 ```JavaScript
 function subscribeToRemoteParticipantInCall(callInstance) {
-    callInstance.remoteParticipants.forEach( p => {
-        subscribeToRemoteParticipant(p);
-    })
     callInstance.on('remoteParticipantsUpdated', e => {
         e.added.forEach( p => {
-            subscribeToRemoteParticipant(p);
+            subscribeToParticipantVideoStreams(p);
         })
-    });   
+    }); 
+    callInstance.remoteParticipants.forEach( p => {
+        subscribeToParticipantVideoStreams(p);
+    })
 }
 ```
-Sie können die `remoteParticipants`-Sammlung des aktuellen Anrufs abonnieren und die `videoStreams`-Sammlungen untersuchen, um die Streams jedes Teilnehmers aufzulisten. Außerdem müssen Sie das remoteParticipantsUpdated-Ereignis abonnieren, um die hinzugefügten Remoteteilnehmer zu verarbeiten. 
+Sie müssen das Ereignis `videoStreamsUpdated` abonnieren, um die hinzugefügten Videostreams von Remoteteilnehmern zu verarbeiten. Sie können die `videoStreams`-Sammlungen untersuchen, um die Streams der einzelnen Teilnehmer aufzulisten, während Sie die `remoteParticipants`-Sammlung des aktuellen Anrufs durchgehen.
 
 ```JavaScript
-function subscribeToRemoteParticipant(remoteParticipant) {
-    remoteParticipant.videoStreams.forEach(v => {
-        handleVideoStream(v);
-    });
+function subscribeToParticipantVideoStreams(remoteParticipant) {
     remoteParticipant.on('videoStreamsUpdated', e => {
         e.added.forEach(v => {
             handleVideoStream(v);
         })
+    });
+    remoteParticipant.videoStreams.forEach(v => {
+        handleVideoStream(v);
     });
 }
 ```
 Zum Rendern eines `remoteVideoStream` müssen Sie ein `isAvailableChanged`-Ereignis abonnieren. Wenn sich die Eigenschaft `isAvailable` in `true` ändert, sendet ein Remoteteilnehmer einen Stream. Immer wenn sich die Verfügbarkeit eines Remotestreams ändert, können Sie wählen, ob Sie den gesamten `Renderer`, eine bestimmte `RendererView` zerstören oder sie behalten möchten, was jedoch zur Anzeige leerer Videobilder führt.
 ```JavaScript
 function handleVideoStream(remoteVideoStream) {
-    remoteVideoStream.on('availabilityChanged', async () => {
+    remoteVideoStream.on('isAvailableChanged', async () => {
         if (remoteVideoStream.isAvailable) {
             remoteVideoView(remoteVideoStream);
         } else {
@@ -231,11 +233,11 @@ function handleVideoStream(remoteVideoStream) {
     }
 }
 ```
-Wenn Sie einen `RemoteVideoStream` rendern möchten, müssen Sie eine neue Instanz von `Renderer` erstellen und anschließend eine neue `RendererView`-Instanz mithilfe der asynchronen `createView`-Methode erstellen. Sie können dann `view.target` an ein beliebiges Benutzeroberflächenelement anfügen. 
+Wenn Sie einen `RemoteVideoStream` rendern möchten, müssen Sie eine neue Instanz von `VideoStreamRenderer` erstellen und anschließend eine neue `VideoStreamRendererView`-Instanz mithilfe der asynchronen `createView`-Methode erstellen. Sie können dann `view.target` an ein beliebiges Benutzeroberflächenelement anfügen. 
 
 ```JavaScript
 async function remoteVideoView(remoteVideoStream) {
-    rendererRemote = new Renderer(remoteVideoStream);
+    rendererRemote = new VideoStreamRenderer(remoteVideoStream);
     const view = await rendererRemote.createView();
     document.getElementById("remoteVideo").appendChild(view.target);
 }
@@ -259,7 +261,7 @@ callAgent.on('incomingCall', async e => {
     const addedCall = await e.incomingCall.accept({videoOptions: {localVideoStreams:[localVideoStream]}});
     call = addedCall;
 
-    subscribeToRemoteParticipantInCall(addedCall);   
+    subscribeToRemoteParticipantInCall(addedCall);  
 });
 ```
 ## <a name="end-the-current-call"></a>Beenden des aktuellen Anrufs
@@ -330,10 +332,12 @@ Sie können einen ausgehenden 1:1-Videoanruf tätigen, indem Sie eine Benutzer-I
 Sie können die Beispiel-App von [GitHub](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/add-1-on-1-video-calling) herunterladen.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
-Wenn Sie ein Communication Services-Abonnement bereinigen und entfernen möchten, können Sie die Ressource oder die Ressourcengruppe löschen. Wenn Sie die Ressourcengruppe löschen, werden auch alle anderen Ressourcen gelöscht, die ihr zugeordnet sind. Weitere Informationen zum Bereinigen von Ressourcen finden Sie [hier](https://docs.microsoft.com/azure/communication-services/quickstarts/create-communication-resource?tabs=windows&pivots=platform-azp#clean-up-resources).
+Wenn Sie ein Communication Services-Abonnement bereinigen und entfernen möchten, können Sie die Ressource oder die Ressourcengruppe löschen. Wenn Sie die Ressourcengruppe löschen, werden auch alle anderen Ressourcen gelöscht, die ihr zugeordnet sind. Weitere Informationen zum Bereinigen von Ressourcen finden Sie [hier](../create-communication-resource.md?pivots=platform-azp&tabs=windows#clean-up-resources).
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen finden Sie in den folgenden Artikeln:
+
 - Sehen Sie sich das [Beispiel für Webanrufe](https://docs.microsoft.com/azure/communication-services/samples/web-calling-sample) an.
-- Informieren Sie sich über die [Funktionen der Clientbibliothek für Telefonie](https://docs.microsoft.com/azure/communication-services/quickstarts/voice-video-calling/calling-client-samples?pivots=platform-web).
+- Informieren Sie sich über die [Funktionen des Calling SDK](https://docs.microsoft.com/azure/communication-services/quickstarts/voice-video-calling/calling-client-samples?pivots=platform-web).
 - Informieren Sie sich über die [Funktionsweise von Anrufen](https://docs.microsoft.com/azure/communication-services/concepts/voice-video-calling/about-call-types).
+

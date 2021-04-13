@@ -14,12 +14,12 @@ ms.date: 03/05/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a632c0e31de1c2d7e5417656d537e5f9f82ecfbe
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 26b519ce11747ab3374d9bd286800a6c93129019
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96180488"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105565230"
 ---
 # <a name="configure-security-alerts-for-azure-ad-roles-in-privileged-identity-management"></a>Konfigurieren von Sicherheitswarnungen für Azure AD-Rollen in Privileged Identity Management
 
@@ -50,9 +50,10 @@ Dieser Abschnitt enthält alle Sicherheitswarnungen für Azure AD-Rollen sowie I
 
 ### <a name="administrators-arent-using-their-privileged-roles"></a>Administratoren verwenden ihre privilegierten Rollen nicht.
 
-| | |
+Schweregrad: **Niedrig**
+
+| | BESCHREIBUNG |
 | --- | --- |
-| **Severity** | Niedrig |
 | **Warum erhalte ich diese Warnung?** | Benutzer, denen nicht benötigte privilegierte Rollen zugewiesen wurden, erhöhen die Möglichkeit eines Angriffs. Es ist auch einfacher für Angreifer, auf Konten, die nicht aktiv genutzt werden, unbemerkt zu bleiben. |
 | **Wie behebe ich das Problem?** | Überprüfen Sie die Benutzer in der Liste, und entfernen Sie die Zuweisung zu privilegierten Rollen, die sie nicht benötigen. |
 | **Prävention** | Weisen Sie privilegierte Rollen nur Benutzern zu, die eine geschäftliche Begründung angegeben haben. </br>Planen Sie regelmäßige [Zugriffsüberprüfungen](pim-how-to-start-security-review.md), um sicherzustellen, dass die Benutzer ihren Zugriff weiterhin benötigen. |
@@ -62,9 +63,10 @@ Dieser Abschnitt enthält alle Sicherheitswarnungen für Azure AD-Rollen sowie I
 
 ### <a name="roles-dont-require-multi-factor-authentication-for-activation"></a>Rollen erfordern für die Aktivierung keine Multi-Factor Authentication.
 
-| | |
+Schweregrad: **Niedrig**
+
+| | BESCHREIBUNG |
 | --- | --- |
-| **Severity** | Niedrig |
 | **Warum erhalte ich diese Warnung?** | Ohne mehrstufige Authentifizierung können kompromittierte Benutzer privilegierte Rollen aktivieren. |
 | **Wie behebe ich das Problem?** | Überprüfen Sie die Liste der Rollen, und [erzwingen Sie die mehrstufige Authentifizierung](pim-how-to-change-default-settings.md) für jede Rolle. |
 | **Prävention** | [Fordern Sie MFA](pim-how-to-change-default-settings.md) für jede Rolle an.  |
@@ -72,17 +74,19 @@ Dieser Abschnitt enthält alle Sicherheitswarnungen für Azure AD-Rollen sowie I
 
 ### <a name="the-organization-doesnt-have-azure-ad-premium-p2"></a>Die Organisation verfügt nicht über Azure AD Premium P2
 
-| | |
+Schweregrad: **Niedrig**
+
+| | BESCHREIBUNG |
 | --- | --- |
-| **Severity** | Niedrig |
 | **Warum erhalte ich diese Warnung?** | Die aktuelle Azure AD-Organisation verfügt nicht über Azure AD Premium P2. |
 | **Wie behebe ich das Problem?** | Lesen Sie die Informationen zu [Azure AD-Editionen](../fundamentals/active-directory-whatis.md). Führen Sie ein Upgrade auf Azure AD Premium P2 durch. |
 
 ### <a name="potential-stale-accounts-in-a-privileged-role"></a>Potenzielle veraltete Konten in einer privilegierten Rolle
 
-| | |
+Schweregrad: **Mittel**
+
+| | BESCHREIBUNG |
 | --- | --- |
-| **Severity** | Medium |
 | **Warum erhalte ich diese Warnung?** | Für Konten in einer privilegierten Rolle wurde das Kennwort in den letzten 90 Tagen nicht geändert. Diese Konten können Dienst- oder gemeinsam genutzte Konten sein, die nicht verwaltet werden und anfällig für Angriffe sind. |
 | **Wie behebe ich das Problem?** | Überprüfen Sie die Konten in der Liste. Wenn kein Zugriff darauf mehr erforderlich ist, entfernen sie aus ihren privilegierten Rollen. |
 | **Prävention** | Stellen Sie sicher, dass die starken Kennwörter für freigegebenen Konten rotiert werden, wenn sich die Benutzer ändern, die das Kennwort kennen. </br>Überprüfen Sie Konten mit privilegierten Rollen regelmäßig mithilfe von [Zugriffsüberprüfungen](pim-how-to-start-security-review.md), und entfernen Sie nicht mehr benötigte Rollenzuweisungen. |
@@ -91,9 +95,10 @@ Dieser Abschnitt enthält alle Sicherheitswarnungen für Azure AD-Rollen sowie I
 
 ### <a name="roles-are-being-assigned-outside-of-privileged-identity-management"></a>Rollen werden außerhalb von Privileged Identity Management zugewiesen
 
-| | |
+Schweregrad: **Hoch**
+
+| | BESCHREIBUNG |
 | --- | --- |
-| **Severity** | High |
 | **Warum erhalte ich diese Warnung?** | Außerhalb von Privileged Identity Management vorgenommene Zuweisungen privilegierter Rollen werden nicht ordnungsgemäß überwacht und können auf einen aktiven Angriff hinweisen. |
 | **Wie behebe ich das Problem?** | Überprüfen Sie die Benutzer in der Liste, und entfernen Sie die Benutzer aus privilegierten Rollen, die außerhalb von Privileged Identity Management zugewiesen wurden. |
 | **Prävention** | Untersuchen Sie, wo Benutzern privilegierte Rollen außerhalb von Privileged Identity Management zugewiesen werden, und verbieten Sie zukünftige Zuweisungen, die von dort stammen. |
@@ -101,9 +106,10 @@ Dieser Abschnitt enthält alle Sicherheitswarnungen für Azure AD-Rollen sowie I
 
 ### <a name="there-are-too-many-global-administrators"></a>Es gibt zu viele globale Administratoren
 
-| | |
+Schweregrad: **Niedrig**
+
+| | BESCHREIBUNG |
 | --- | --- |
-| **Severity** | Niedrig |
 | **Warum erhalte ich diese Warnung?** | „Globaler Administrator“ ist die höchste privilegierte Rolle. Wenn ein globaler Administrator gefährdet ist, erhält der Angreifer Zugriff auf alle Berechtigungen dieses Administrators, sodass Ihr gesamtes System gefährdet ist. |
 | **Wie behebe ich das Problem?** | Überprüfen Sie die Benutzer in der Liste, und entfernen Sie alle Benutzer, die nicht unbedingt die Rolle „Globaler Administrator“ benötigen. </br>Weisen Sie diesen Benutzern stattdessen weniger privilegierte Rollen zu. |
 | **Prävention** | Weisen Sie Benutzern die am wenigsten privilegierte Rolle zu, die sie benötigen. |
@@ -114,9 +120,10 @@ Dieser Abschnitt enthält alle Sicherheitswarnungen für Azure AD-Rollen sowie I
 
 ### <a name="roles-are-being-activated-too-frequently"></a>Rollen werden zu häufig aktiviert
 
-| | |
+Schweregrad: **Niedrig**
+
+| | BESCHREIBUNG |
 | --- | --- |
-| **Severity** | Niedrig |
 | **Warum erhalte ich diese Warnung?** | Mehrere Aktivierungen für dieselbe privilegierte Rolle durch denselben Benutzer sind ein Zeichen für einen Angriff. |
 | **Wie behebe ich das Problem?** | Überprüfen Sie die Benutzer in der Liste, und stellen Sie sicher, dass die [Aktivierungsdauer](pim-how-to-change-default-settings.md) für die privilegierte Rolle lang genug gewählt ist, damit diese Aufgaben durchgeführt werden können. |
 | **Prävention** | Stellen Sie sicher, dass die [Aktivierungsdauer](pim-how-to-change-default-settings.md) für privilegierte Rollen lang genug gewählt ist, damit Benutzer diese Aufgaben durchführen können.</br>[Erzwingen Sie die mehrstufige Authentifizierung](pim-how-to-change-default-settings.md) für privilegierte Rollen, deren Konten von mehreren Administratoren gemeinsam verwendet werden. |
@@ -149,9 +156,10 @@ Dieser Abschnitt enthält alle Sicherheitswarnungen für Azure AD-Rollen sowie I
 
 ### <a name="administrators-arent-using-their-privileged-roles"></a>Administratoren verwenden ihre privilegierten Rollen nicht.
 
-| | |
+Schweregrad: **Niedrig**
+
+| | BESCHREIBUNG |
 | --- | --- |
-| **Severity** | Niedrig |
 | **Warum erhalte ich diese Warnung?** | Benutzer, denen nicht benötigte privilegierte Rollen zugewiesen wurden, erhöhen die Möglichkeit eines Angriffs. Es ist auch einfacher für Angreifer, auf Konten, die nicht aktiv genutzt werden, unbemerkt zu bleiben. |
 | **Wie behebe ich das Problem?** | Überprüfen Sie die Benutzer in der Liste, und entfernen Sie die Zuweisung zu privilegierten Rollen, die sie nicht benötigen. |
 | **Prävention** | Weisen Sie privilegierte Rollen nur Benutzern zu, die eine geschäftliche Begründung angegeben haben. </br>Planen Sie regelmäßige [Zugriffsüberprüfungen](pim-how-to-start-security-review.md), um sicherzustellen, dass die Benutzer ihren Zugriff weiterhin benötigen. |
@@ -161,9 +169,10 @@ Dieser Abschnitt enthält alle Sicherheitswarnungen für Azure AD-Rollen sowie I
 
 ### <a name="roles-dont-require-multi-factor-authentication-for-activation"></a>Rollen erfordern für die Aktivierung keine Multi-Factor Authentication.
 
-| | |
+Schweregrad: **Niedrig**
+
+| | BESCHREIBUNG |
 | --- | --- |
-| **Severity** | Niedrig |
 | **Warum erhalte ich diese Warnung?** | Ohne mehrstufige Authentifizierung können kompromittierte Benutzer privilegierte Rollen aktivieren. |
 | **Wie behebe ich das Problem?** | Überprüfen Sie die Liste der Rollen, und [erzwingen Sie die mehrstufige Authentifizierung](pim-how-to-change-default-settings.md) für jede Rolle. |
 | **Prävention** | [Fordern Sie MFA](pim-how-to-change-default-settings.md) für jede Rolle an.  |
@@ -171,17 +180,19 @@ Dieser Abschnitt enthält alle Sicherheitswarnungen für Azure AD-Rollen sowie I
 
 ### <a name="the-organization-doesnt-have-azure-ad-premium-p2"></a>Die Organisation verfügt nicht über Azure AD Premium P2
 
-| | |
+Schweregrad: **Niedrig**
+
+| | BESCHREIBUNG |
 | --- | --- |
-| **Severity** | Niedrig |
 | **Warum erhalte ich diese Warnung?** | Die aktuelle Azure AD-Organisation verfügt nicht über Azure AD Premium P2. |
 | **Wie behebe ich das Problem?** | Lesen Sie die Informationen zu [Azure AD-Editionen](../fundamentals/active-directory-whatis.md). Führen Sie ein Upgrade auf Azure AD Premium P2 durch. |
 
 ### <a name="potential-stale-accounts-in-a-privileged-role"></a>Potenzielle veraltete Konten in einer privilegierten Rolle
 
-| | |
+Schweregrad: **Mittel**
+
+| | BESCHREIBUNG |
 | --- | --- |
-| **Severity** | Medium |
 | **Warum erhalte ich diese Warnung?** | Für Konten in einer privilegierten Rolle wurde das Kennwort in den letzten 90 Tagen nicht geändert. Diese Konten können Dienst- oder gemeinsam genutzte Konten sein, die nicht verwaltet werden und anfällig für Angriffe sind. |
 | **Wie behebe ich das Problem?** | Überprüfen Sie die Konten in der Liste. Wenn kein Zugriff darauf mehr erforderlich ist, entfernen sie aus ihren privilegierten Rollen. |
 | **Prävention** | Stellen Sie sicher, dass die starken Kennwörter für freigegebenen Konten rotiert werden, wenn sich die Benutzer ändern, die das Kennwort kennen. </br>Überprüfen Sie Konten mit privilegierten Rollen regelmäßig mithilfe von [Zugriffsüberprüfungen](pim-how-to-start-security-review.md), und entfernen Sie nicht mehr benötigte Rollenzuweisungen. |
@@ -190,9 +201,10 @@ Dieser Abschnitt enthält alle Sicherheitswarnungen für Azure AD-Rollen sowie I
 
 ### <a name="roles-are-being-assigned-outside-of-privileged-identity-management"></a>Rollen werden außerhalb von Privileged Identity Management zugewiesen
 
-| | |
+Schweregrad: **Hoch**
+
+| | BESCHREIBUNG |
 | --- | --- |
-| **Severity** | High |
 | **Warum erhalte ich diese Warnung?** | Außerhalb von Privileged Identity Management vorgenommene Zuweisungen privilegierter Rollen werden nicht ordnungsgemäß überwacht und können auf einen aktiven Angriff hinweisen. |
 | **Wie behebe ich das Problem?** | Überprüfen Sie die Benutzer in der Liste, und entfernen Sie die Benutzer aus privilegierten Rollen, die außerhalb von Privileged Identity Management zugewiesen wurden. |
 | **Prävention** | Untersuchen Sie, wo Benutzern privilegierte Rollen außerhalb von Privileged Identity Management zugewiesen werden, und verbieten Sie zukünftige Zuweisungen, die von dort stammen. |
@@ -200,9 +212,10 @@ Dieser Abschnitt enthält alle Sicherheitswarnungen für Azure AD-Rollen sowie I
 
 ### <a name="there-are-too-many-global-administrators"></a>Es gibt zu viele globale Administratoren
 
-| | |
+Schweregrad: **Niedrig**
+
+| | BESCHREIBUNG |
 | --- | --- |
-| **Severity** | Niedrig |
 | **Warum erhalte ich diese Warnung?** | „Globaler Administrator“ ist die höchste privilegierte Rolle. Wenn ein globaler Administrator gefährdet ist, erhält der Angreifer Zugriff auf alle Berechtigungen dieses Administrators, sodass Ihr gesamtes System gefährdet ist. |
 | **Wie behebe ich das Problem?** | Überprüfen Sie die Benutzer in der Liste, und entfernen Sie alle Benutzer, die nicht unbedingt die Rolle „Globaler Administrator“ benötigen. </br>Weisen Sie diesen Benutzern stattdessen weniger privilegierte Rollen zu. |
 | **Prävention** | Weisen Sie Benutzern die am wenigsten privilegierte Rolle zu, die sie benötigen. |
@@ -213,9 +226,10 @@ Dieser Abschnitt enthält alle Sicherheitswarnungen für Azure AD-Rollen sowie I
 
 ### <a name="roles-are-being-activated-too-frequently"></a>Rollen werden zu häufig aktiviert
 
-| | |
+Schweregrad: **Niedrig**
+
+| | BESCHREIBUNG |
 | --- | --- |
-| **Severity** | Niedrig |
 | **Warum erhalte ich diese Warnung?** | Mehrere Aktivierungen für dieselbe privilegierte Rolle durch denselben Benutzer sind ein Zeichen für einen Angriff. |
 | **Wie behebe ich das Problem?** | Überprüfen Sie die Benutzer in der Liste, und stellen Sie sicher, dass die [Aktivierungsdauer](pim-how-to-change-default-settings.md) für die privilegierte Rolle lang genug gewählt ist, damit diese Aufgaben durchgeführt werden können. |
 | **Prävention** | Stellen Sie sicher, dass die [Aktivierungsdauer](pim-how-to-change-default-settings.md) für privilegierte Rollen lang genug gewählt ist, damit Benutzer diese Aufgaben durchführen können.</br>[Erzwingen Sie die mehrstufige Authentifizierung](pim-how-to-change-default-settings.md) für privilegierte Rollen, deren Konten von mehreren Administratoren gemeinsam verwendet werden. |

@@ -7,12 +7,12 @@ ms.author: dademath
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 7356fb90914e948b6a74a478ce1e19722b224346
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7d6b0d01ec3de1cb4ce91b1c81cd8a0ccd73b1d1
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103488056"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105825797"
 ---
 # <a name="quickstart-get-started-with-ui-framework-composite-components"></a>Schnellstart: Erste Schritte mit zusammengesetzten Komponenten des Benutzeroberflächen-Frameworks
 
@@ -47,7 +47,7 @@ Am Ende dieses Prozesses sollten Sie über eine vollständige Anwendung im Ordne
 
 ### <a name="install-the-package"></a>Installieren des Pakets
 
-Verwenden Sie den Befehl `npm install`, um die Clientbibliothek für Telefonie von Azure Communication Services für JavaScript zu installieren. Verschieben Sie den bereitgestellten Tarball (private Vorschau) in das Verzeichnis „my-app“.
+Verwenden Sie den Befehl `npm install`, um das Azure Communication Services Calling SDK für JavaScript zu installieren. Verschieben Sie den bereitgestellten Tarball (private Vorschau) in das Verzeichnis „my-app“.
 
 ```console
 
@@ -71,7 +71,7 @@ npm run start
 
 ## <a name="object-model"></a>Objektmodell
 
-Die folgenden Klassen und Schnittstellen dienen zur Behandlung einiger der wichtigsten Features der Benutzeroberflächen-Clientbibliothek von Azure Communication Services:
+Die folgenden Klassen und Schnittstellen dienen zur Behandlung einiger der wichtigsten Features des Azure Communication Services UI SDK:
 
 | Name                                  | BESCHREIBUNG                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |

@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/26/2021
+ms.date: 03/30/2021
 ms.author: justinha
-ms.openlocfilehash: 8eb1560887c08c3f64fa599c39e5577242d2a1e8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8bcd3ebef027ec72728be21b0fe1504236f553ba
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101689061"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106058169"
 ---
 # <a name="replica-sets-concepts-and-features-for-azure-active-directory-domain-services"></a>Konzepte und Features zu Replikatgruppen für Azure Active Directory Domain Services
 
@@ -54,7 +54,7 @@ Das folgende Beispiel zeigt eine verwaltete Domäne, für die mit drei Replikatg
 
 Die Standard-SKU für eine verwaltete Domäne ist die *Enterprise*-SKU, die mehrere Replikatgruppen unterstützt. Um bei einem Wechsel von der *Standard*-SKU zusätzliche Replikatgruppen zu erstellen, [führen Sie ein Upgrade der verwalteten Domänen](change-sku.md) auf *Enterprise* oder *Premium* durch.
 
-Die unterstützte maximale Anzahl von Replikatgruppen beträgt vier. Dies schließt auch das erste Replikat ein, das beim Erstellen der verwalteten Domäne erstellt wird.
+Die unterstützte maximale Anzahl von Replikatgruppen beträgt fünf. Dies schließt auch das erste Replikat ein, das beim Erstellen der verwalteten Domäne erstellt wird.
 
 Die Abrechnung für die einzelnen Replikatgruppe basiert auf der für die Domäne konfigurierten SKU. Wenn Sie z. B. eine verwaltete Domäne mit der *Enterprise*-SKU verwenden und über drei Replikatgruppen verfügen, erfolgt die Abrechnung in Ihrem Abonnement pro Stunde für jede der drei Replikatgruppen.
 
@@ -66,7 +66,7 @@ Nein. Replikatgruppen müssen sich im selben Abonnement befinden wie die verwalt
 
 ### <a name="how-many-replica-sets-can-i-create"></a>Wie viele Replikatgruppen kann ich erstellen?
 
-Sie können maximal vier Replikatgruppen erstellen (die anfängliche Replikatgruppe für die verwaltete Domäne und drei zusätzliche Replikatgruppen).
+Sie können maximal fünf Replikatgruppen erstellen (die anfängliche Replikatgruppe für die verwaltete Domäne und vier zusätzliche Replikatgruppen).
 
 ### <a name="how-does-user-and-group-information-get-synchronized-to-my-replica-sets"></a>Wie werden Benutzer- und Gruppeninformationen mit meinen Replikatgruppen synchronisiert?
 

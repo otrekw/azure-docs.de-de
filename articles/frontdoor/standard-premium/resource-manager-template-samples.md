@@ -6,13 +6,13 @@ author: johndowns
 ms.author: jodowns
 ms.service: frontdoor
 ms.topic: sample
-ms.date: 03/16/2021
-ms.openlocfilehash: 241c4c713890af0db8fce74b0817b5bdcf9a1403
-ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.date: 03/24/2021
+ms.openlocfilehash: 929adb0be948339af033d85b0dabd7e1cedf353e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103573794"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105561745"
 ---
 # <a name="azure-resource-manager-templates-for-azure-front-door"></a>Azure Resource Manager-Vorlagen für Azure Front Door
 
@@ -21,21 +21,23 @@ ms.locfileid: "103573794"
 
 Die folgende Tabelle enthält Links zu Azure Resource Manager-Vorlagen für Azure Front Door mit Referenzarchitekturen, die andere Azure-Dienste beinhalten.
 
-| App Service | BESCHREIBUNG |
+| Beispiel | BESCHREIBUNG |
 |-|-|
+| [Regelsatz](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-standard-premium-rule-set/) | Erstellt ein Front Door-Profil und einen Regelsatz.  |
+|**App Service-Ursprünge**| **Beschreibung** |
 | [App Service](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-standard-premium-app-service-public) | Erstellt eine App Service-App mit einem öffentlichen Endpunkt und ein Front Door-Profil.  |
 | [App Service mit Private Link](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-premium-app-service-private-link) | Erstellt eine App Service-App mit einem privaten Endpunkt und ein Front Door-Profil.  |
 | [App Service-Umgebung mit Private Link](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-premium-app-service-environment-internal-private-link) | Erstellt eine App Service-Umgebung, eine App mit einem privaten Endpunkt und ein Front Door-Profil.  |
-|**Azure-Funktionen**| **Beschreibung** |
+|**Azure Functions-Ursprünge**| **Beschreibung** |
 | [Azure-Funktionen](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-standard-premium-function-public/) | Erstellt eine App Functions-App mit einem öffentlichen Endpunkt und ein Front Door-Profil.  |
 | [Azure Functions mit Private Link](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-premium-function-private-link) | Erstellt eine App Functions-App mit einem privaten Endpunkt und ein Front Door-Profil.  |
-|**API Management**| **Beschreibung** |
+|**API Management-Ursprünge**| **Beschreibung** |
 | [API Management (extern)](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-standard-premium-api-management-external) | Erstellt eine API Management-Instanz mit externer VNet-Integration und ein Front Door-Profil.  |
-|**Storage**| **Beschreibung** |
+|**Storage-Ursprünge**| **Beschreibung** |
 | [Statische Speicherwebsite](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-standard-premium-storage-static-website) | Erstellt ein Azure Storage-Konto und eine statische Website mit einem öffentlichen Endpunkt sowie ein Front Door-Profil.  |
 | [Storage-Blobs mit Private Link](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-premium-storage-blobs-private-link) | Erstellt ein Azure Storage-Konto und einen Blobcontainer mit einem privaten Endpunkt sowie ein Front Door-Profil.  |
-|**Application Gateway**| **Beschreibung** |
+|**Application Gateway-Ursprünge**| **Beschreibung** |
 | [Application Gateway](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-standard-premium-application-gateway-public) | Erstellt eine Application Gateway-Instanz und ein Front Door-Profil. |
-|**Virtueller Computer**| **Beschreibung** |
+|**VM-Ursprünge**| **Beschreibung** |
 | [Virtueller Computer mit Private Link-Dienst](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-premium-vm-private-link) | Erstellt einen virtuellen Computer und einen Private Link-Dienst sowie ein Front Door-Profil. |
 | | |

@@ -8,12 +8,12 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 10/16/2020
-ms.openlocfilehash: d125bca5ed67476897eec7cd32a586776d8b1ea8
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 15b67c969cb0464256caed58a2e7388eb7a76b9c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102176619"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105608769"
 ---
 # <a name="tutorial-create-apache-spark-job-definition-in-synapse-studio"></a>Tutorial: Erstellen einer Apache Spark-Auftragsdefinition in Synapse Studio
 
@@ -25,8 +25,11 @@ Dieses Tutorial enthält die folgenden Aufgaben:
 > - Erstellen einer Apache Spark-Auftragsdefinition für PySpark (Python)
 > - Erstellen einer Apache Spark-Auftragsdefinition für Spark (Scala)
 > - Erstellen einer Apache Spark-Auftragsdefinition für .NET Spark (C#/F#)
+> - Erstellen einer Auftragsdefinition durch Importieren einer JSON-Datei
+> - Exportieren einer Apache Spark-Auftragsdefinitionsdatei in eine lokale Datei
 > - Übermitteln einer Apache Spark-Auftragsdefinition als Batchauftrag
 > - Hinzufügen einer Apache Spark-Auftragsdefinition in einer Pipeline
+
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -36,6 +39,7 @@ Vergewissern Sie sich zunächst, dass die folgenden Anforderungen erfüllt sind 
 * Ein serverloser Apache Spark-Pool
 * Ein ADLS Gen2-Speicherkonto. Sie müssen der **Mitwirkende der Speicherblobdaten** des ADLS Gen2-Dateisystems sein, das Sie verwenden möchten. Andernfalls müssen Sie die Berechtigung manuell hinzufügen.
 * Wenn Sie nicht den Standardspeicher des Arbeitsbereichs verwenden möchten, verknüpfen Sie das erforderliche ADLS Gen2-Speicherkonto in Synapse Studio. 
+
 
 ## <a name="create-an-apache-spark-job-definition-for-pyspark-python"></a>Erstellen einer Apache Spark-Auftragsdefinition für PySpark (Python)
 
@@ -160,6 +164,57 @@ In diesem Abschnitt erstellen Sie eine Apache Spark-Auftragsdefinition für .NET
 
       ![DotNet-Definition veröffentlichen](./media/apache-spark-job-definitions/publish-dotnet-definition.png)
 
+## <a name="create-apache-spark-job-definition-by-importing-a-json-file"></a>Erstellen einer Apache Spark-Auftragsdefinition durch Importieren einer JSON-Datei
+
+ Sie können eine vorhandene lokale JSON-Datei über das Menü **Aktionen** (...) des Apache Spark-Auftragsdefinitions-Explorers in den Azure Synapse-Arbeitsbereich importieren, um eine neue Apache Spark-Auftragsdefinition zu erstellen.
+
+ ![Erstellen einer Importdefinition](./media/apache-spark-job-definitions/create-import-definition.png)
+
+ 
+ Die Spark-Auftragsdefinition ist vollständig mit der Livy-API kompatibel. Sie können zusätzliche Parameter für andere Livy-Eigenschaften [(Livy-Dokumentation: REST-API (apache.org)](https://livy.incubator.apache.org/docs/latest/rest-api.html)) in der lokalen JSON-Datei hinzufügen. Sie können die Parameter für die Spark-Konfiguration auch wie unten gezeigt in der config-Eigenschaft angeben. Anschließend können Sie die JSON-Datei wieder importieren, um eine neue Apache Spark-Auftragsdefinition für den Batchauftrag zu erstellen. JSON-Beispiel für den Import der Spark-Definition:
+ 
+```Scala
+   {
+  "targetBigDataPool": {
+    "referenceName": "socdemolarge",
+    "type": "BigDataPoolReference"
+  },
+  "requiredSparkVersion": "2.3",
+  "language": "scala",
+  "jobProperties": {
+    "name": "robinSparkDefinitiontest",
+    "file": "adl://socdemo-c14.azuredatalakestore.net/users/robinyao/wordcount.jar",
+    "className": "WordCount",
+    "args": [
+      "adl://socdemo-c14.azuredatalakestore.net/users/robinyao/shakespeare.txt"
+    ],
+    "jars": [],
+    "files": [],
+    "conf": {
+      "spark.dynamicAllocation.enabled": "false",
+      "spark.dynamicAllocation.minExecutors": "2",
+      "spark.dynamicAllocation.maxExecutors": "2"
+    },
+    "numExecutors": 2,
+    "executorCores": 8,
+    "executorMemory": "24g",
+    "driverCores": 8,
+    "driverMemory": "24g"
+  }
+}
+
+```
+
+![Weitere Livy-Eigenschaften](./media/apache-spark-job-definitions/other-livy-properties.png)
+
+## <a name="export-an-existing-apache-spark-job-definition-file"></a>Exportieren einer vorhandenen Apache Spark-Auftragsdefinitionsdatei
+
+ Sie können vorhandene Apache Spark-Auftragsdefinitionsdateien über das Menü **Aktionen** (...) des Datei-Explorers in eine lokale Datei exportieren. Sie können die JSON-Datei für zusätzliche Livy-Eigenschaften weiter aktualisieren und sie wieder importieren, um bei Bedarf eine neue Auftragsdefinition zu erstellen.
+
+ ![Erstellen einer Exportdefinition](./media/apache-spark-job-definitions/create-export-definition.png)
+
+ ![Erstellen einer Exportdefinition 2](./media/apache-spark-job-definitions/create-export-definition-2.png)
+
 ## <a name="submit-an-apache-spark-job-definition-as-a-batch-job"></a>Übermitteln einer Apache Spark-Auftragsdefinition als Batchauftrag
 
 Nachdem Sie eine Apache Spark-Auftragsdefinition erstellt haben, können Sie sie an einen Apache Spark-Pool übermitteln. Stellen Sie sicher, dass Sie der **Mitwirkende der Speicherblobdaten** des ADLS Gen2-Dateisystems sind, das Sie verwenden möchten. Andernfalls müssen Sie die Berechtigung manuell hinzufügen.
@@ -202,6 +257,7 @@ In diesem Abschnitt fügen Sie eine Apache Spark-Auftragsdefinition in einer Pip
      ![Hinzufügen zur Pipeline1](./media/apache-spark-job-definitions/add-to-pipeline01.png)
 
      ![Hinzufügen zur Pipeline2](./media/apache-spark-job-definitions/add-to-pipeline02.png)
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -7,12 +7,12 @@ ms.custom:
 - seo-python-october2019
 - mvc
 - devx-track-python
-ms.openlocfilehash: e3792a88104c359b014a7a12cf6e48e690c2a865
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: e213ec7aee7172bb5ebb49097ad9fd09f9106255
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "88511013"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105046809"
 ---
 # <a name="quickstart-use-python-api-to-run-an-azure-batch-job"></a>Schnellstart: Ausführen eines Azure Batch-Auftrags mit der Python-API
 
@@ -28,7 +28,7 @@ Nach Abschluss dieser Schnellstartanleitung sind Sie mit den wichtigsten Konzept
 
 - Ein Batch-Konto und ein verknüpftes Azure Storage-Konto. Informationen zur Erstellung dieser Konten finden Sie in den Batch-Schnellstartanleitungen zum [Azure-Portal](quick-create-portal.md) und zur [Azure CLI](quick-create-cli.md).
 
-- [Python](https://python.org/downloads), Version 2.7 bzw. 3.3 oder höher, einschließlich des [pip](https://pip.pypa.io/en/stable/installing/)-Paket-Managers
+- [Python](https://python.org/downloads), Version 2.7 oder 3.6, einschließlich des [pip](https://pip.pypa.io/en/stable/installing/)-Paket-Managers
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 

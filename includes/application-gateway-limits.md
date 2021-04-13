@@ -4,12 +4,12 @@ ms.service: application-gateway
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: victorh
-ms.openlocfilehash: 4c7c68bf690097004f2f3310a8d89ce954d7f87f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c98d88d66e89df3efe186212d8c004ec2a65158d
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98612897"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106450549"
 ---
 | Resource | Begrenzung | Hinweis |
 | --- | --- | --- |
@@ -35,7 +35,7 @@ ms.locfileid: "98612897"
 | Anzahl von Regelsätzen für das erneute Generieren |400| |
 | Anzahl von Header- oder URL-Konfigurationen pro Regelsatz für das erneute Generieren|40| |
 | Anzahl von Bedingungen pro Regelsatz für das erneute Generieren|40| |
-| Gleichzeitige WebSocket-Verbindungen |Mittelgroße Gateways 20K<br> Große Gateways 50K| |
+| Gleichzeitige WebSocket-Verbindungen |Mittelgroße Gateways 20.000<sup>2</sup><br> Große Gateways 50.000<sup>2</sup>| |
 | Maximale URL-Länge|32 KB| |
 | Maximale Headergröße für HTTP/2 |4 KB| |
 | Maximale Dateiuploadgröße (Standard) |2 GB | |
@@ -45,3 +45,5 @@ ms.locfileid: "98612897"
 | Maximale WAF-Ausschlüsse pro Application Gateway|40||
 
 <sup>1</sup> Bei WAF-fähigen SKUs muss die Anzahl von Ressourcen auf 40 beschränkt werden.
+
+<sup>2</sup> Der Grenzwert gilt pro Application Gateway-Instanz nicht pro Application Gateway-Ressource.

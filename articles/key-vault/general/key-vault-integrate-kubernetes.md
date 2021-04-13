@@ -7,19 +7,19 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/25/2020
-ms.openlocfilehash: b130fd3f85b676f0a394ad95730181ff499dac96
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 6cf76e980fab4e5be3f8c2c6d72baff05ab03815
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102216495"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106108386"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>Tutorial: Konfigurieren und Ausführen des Azure Key Vault-Anbieters für den Secrets Store CSI-Treiber auf Kubernetes
 
 > [!IMPORTANT]
-> Der Secrets Store CSI-Treiber ist ein Open-Source-Projekt, das vom technischen Support von Azure nicht unterstützt wird. Senden Sie Feedback und Probleme im Zusammenhang mit der Key Vault-Integration des CSI-Treibers über den GitHub-Link am unteren Rand der Seite. Dieses Tool wird den Benutzern zur Verfügung gestellt, damit sie es selbst in Clustern installieren und Feedback von unserer Community erhalten können.
+> Der Secrets Store CSI-Treiber ist ein Open-Source-Projekt, das vom technischen Support von Azure nicht unterstützt wird. Senden Sie Feedback und Probleme im Zusammenhang mit der Key Vault-Integration des CSI-Treibers über das [GitHub-Repository](https://github.com/kubernetes-sigs/secrets-store-csi-driver) für CSI-Treiber. Dieses Tool wird den Benutzern zur Verfügung gestellt, damit sie es selbst in Clustern installieren und Feedback von unserer Community erhalten können.
 
-In diesem Tutorial greifen Sie auf Geheimnisse in Azure Key Vault zu und rufen sie daraus ab, indem Sie den Secrets Store CSI-Treiber (Container Storage Interface) für die Einbindung der Geheimnisse in Kubernetes-Pods verwenden.
+In diesem Tutorial greifen Sie auf Geheimnisse in Azure Key Vault zu und rufen sie daraus ab, indem Sie den Secrets Store CSI-Treiber (Container Storage Interface) für die Einbindung der Geheimnisse in Kubernetes-Pods als Volume verwenden.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -164,11 +164,14 @@ Die folgende Abbildung zeigt die Konsolenausgabe für **az keyvault show --name 
     Die Dokumentation für alle erforderlichen Rollenzuweisungen mit der Podidentität für Azure Active Directory (Azure AD) ist [hier](https://azure.github.io/aad-pod-identity/docs/getting-started/role-assignment/) verfügbar.
 
     ```azurecli
-    RESOURCE_GROUP=contosoResourceGroup
+    VAULT_RESOURCE_GROUP=contosoResourceGroup
+    NODE_RESOURCE_GROUP=contosoResourceGroup
     
-    az role assignment create --role "Managed Identity Operator" --assignee $clientId --scope /subscriptions/<SUBID>/resourcegroups/$RESOURCE_GROUP
+    az role assignment create --role "Managed Identity Operator" --assignee $clientId --scope /subscriptions/<SUBID>/resourcegroups/$VAULT_RESOURCE_GROUP
     
-    az role assignment create --role "Virtual Machine Contributor" --assignee $clientId --scope /subscriptions/<SUBID>/resourcegroups/$RESOURCE_GROUP
+    az role assignment create --role "Managed Identity Operator" --assignee $clientId --scope /subscriptions/<SUBID>/resourcegroups/$NODE_RESOURCE_GROUP
+    
+    az role assignment create --role "Virtual Machine Contributor" --assignee $clientId --scope /subscriptions/<SUBID>/resourcegroups/$NODE_RESOURCE_GROUP
     ```
 
 2. Installieren Sie die Azure AD-Identität (Azure Active Directory) in AKS.
@@ -292,7 +295,11 @@ kubectl exec nginx-secrets-store-inline -- cat /mnt/secrets-store/secret1
 
 Überprüfen Sie, ob der Inhalt des Geheimnisses angezeigt wird.
 
-## <a name="next-steps"></a>Nächste Schritte
+## <a name="resources"></a>Ressourcen
+[Informationen zu Azure Key Vault](overview.md)
+[Entwicklerleitfaden zu Azure Key Vault](developers-guide.md)
+[Secrets Store CSI-Treiber](https://secrets-store-csi-driver.sigs.k8s.io/introduction.html)
+
 
 Um sicherzustellen, dass Ihr Schlüsseltresor wiederherstellbar ist:
 > [!div class="nextstepaction"]

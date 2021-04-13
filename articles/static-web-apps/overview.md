@@ -5,26 +5,26 @@ services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: overview
-ms.date: 05/08/2020
+ms.date: 04/01/2021
 ms.author: cshoe
-ms.openlocfilehash: 9cd5136d69e4b14aa50a96d20f3187ce88db6e96
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e81f0a9e4fc50cf0d80f2905b9328af3c721865c
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92320489"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106166399"
 ---
 # <a name="what-is-azure-static-web-apps-preview"></a>Was ist Azure Static Web Apps (Vorschauversion)?
 
-Azure Static Web Apps ist ein Dienst, der auf der Grundlage eines GitHub-Repositorys automatisch umfassende Web-Apps erstellt und in Azure bereitstellt.
+Azure Static Web Apps ist ein Dienst, der auf der Grundlage eines Coderepositorys automatisch umfassende Web-Apps erstellt und in Azure bereitstellt.
 
-:::image type="content" source="media/overview/static-apps-overview.png" alt-text="Übersicht über Static Web Apps":::
+:::image type="content" source="media/overview/azure-static-web-apps-overview.png" alt-text="Übersichtsdiagramm für Azure Static Web Apps":::
 
-Der Workflow von Azure Static Web Apps wurde auf den alltäglichen Workflow von Entwicklern zugeschnitten. Die Erstellung und Bereitstellung von Apps basiert auf GitHub-Interaktionen.
+Der Workflow von Azure Static Web Apps wurde auf den alltäglichen Workflow von Entwicklern zugeschnitten. Die Erstellung und Bereitstellung von Apps basiert auf Codeänderungen.
 
-Wenn Sie eine Azure Static Web Apps-Ressource erstellen, wird von Azure im Quellcoderepository der App ein GitHub Actions-Workflow zur Überwachung eines Branchs Ihrer Wahl eingerichtet. Sobald Sie Commits an den überwachten Branch pushen oder Pull Requests für den überwachten Branch akzeptieren, sorgt die GitHub-Aktion automatisch dafür, dass Ihre App und die zugehörige API erstellt und in Azure bereitgestellt werden.
+Wenn Sie eine Azure Static Web Apps-Ressource erstellen, interagiert Azure direkt mit GitHub oder Azure DevOps, um einen Branch Ihrer Wahl zu überwachen. Sobald Sie Commits an den überwachten Branch pushen oder Pull Requests für den überwachten Branch akzeptieren, wird automatisch ein Build ausgeführt, und Ihre App und die API werden in Azure bereitgestellt.
 
-Statische Web-Apps werden in der Regel mithilfe von Bibliotheken und Frameworks wie Angular, React, Svelte, Vue oder Blazor erstellt. Diese Apps enthalten HTML-, CSS-, JavaScript- und Bildressourcen, aus denen sich die Anwendung zusammensetzt. Bei einem herkömmlichen Webserver werden diese Ressourcen von einem einzelnen Server sowie über ggf. erforderliche API-Endpunkte bereitgestellt.
+Statische Web-Apps werden in der Regel mithilfe von Bibliotheken und Frameworks wie Angular, React, Svelte, Vue oder Blazor erstellt, für die kein serverseitiges Rendering erforderlich ist. Diese Apps enthalten HTML-, CSS-, JavaScript- und Bildressourcen, aus denen sich die Anwendung zusammensetzt. Bei einem herkömmlichen Webserver werden diese Ressourcen von einem einzelnen Server sowie über ggf. erforderliche API-Endpunkte bereitgestellt.
 
 Bei Static Web Apps sind statische Ressourcen von einem herkömmlichen Webserver getrennt und werden stattdessen über Punkte bereitgestellt, die auf der ganzen Welt verteilt sind. Dank dieser Verteilung können Dateien deutlich schneller bereitgestellt werden, da sie dem Endbenutzer physisch näher sind. Darüber hinaus werden API-Endpunkte mithilfe einer [serverlosen Architektur](../azure-functions/functions-overview.md) gehostet, wodurch kein vollwertiger Back-End-Server mehr benötigt wird.
 
@@ -32,7 +32,7 @@ Bei Static Web Apps sind statische Ressourcen von einem herkömmlichen Webserver
 
 - **Webhosting** statischer Inhalte wie HTML-, CSS-, JavaScript- und Bildressourcen.
 - **Integrierte API** (unterstützt durch Azure Functions)
-- **GitHub-Erstanbieterintegration** mit Auslösung von Build- und Bereitstellungsvorgängen bei Repositoryänderungen
+- **GitHub- und Azure DevOps-Erstanbieterintegration** mit Auslösung von Build- und Bereitstellungsvorgängen bei Repositoryänderungen
 - **Global verteilte** statische Inhalte, um die Entfernung zwischen Inhalten und Benutzern zu verringern
 - **Kostenlose SSL-Zertifikate** mit automatischer Verlängerung
 - **Benutzerdefinierte Domänen** für App-Anpassungen mit Branding

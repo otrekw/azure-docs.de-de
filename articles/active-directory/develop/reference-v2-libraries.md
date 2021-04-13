@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: reference
 ms.workload: identity
-ms.date: 01/29/2021
+ms.date: 03/30/2021
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 590e57d587c8e6e254811892b5c5e740b511c302
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 321a5c473df30dd6f00bbcd1294d48ce8da34009
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104690652"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106060379"
 ---
 # <a name="microsoft-identity-platform-authentication-libraries"></a>Microsoft Identity Plattform: Authentifizierungsbibliotheken
 
@@ -29,7 +29,7 @@ Wenn Sie Ihre eigene Implementierung von [OAuth 2.0 oder OpenID Connect 1.0](a
 
 ## <a name="single-page-application-spa"></a>Single-Page-Webanwendung (SPA)
 
-Eine Single-Page-Webanwendung wird vollständig auf der Browseroberfläche ausgeführt und ruft die Seitendaten (HTML, CSS und JavaScript) dynamisch oder zur Ladezeit der Anwendung ab. Sie kann für die Interaktion mit Back-End-Datenquellen Web-APIs aufrufen.
+Eine Single-Page-Webanwendung wird vollständig im Browser ausgeführt und ruft die Seitendaten (HTML, CSS und JavaScript) dynamisch oder zur Ladezeit der Anwendung ab. Sie kann für die Interaktion mit Back-End-Datenquellen Web-APIs aufrufen.
 
 Da der Code einer Single-Page-Webanwendung vollständig im Browser ausgeführt wird, gilt er als *öffentlicher Client*, der Geheimnisse nicht sicher speichern kann.
 
@@ -45,7 +45,7 @@ Da der Code einer Webanwendung auf dem Webserver ausgeführt wird, gilt er als *
 
 ## <a name="desktop-application"></a>Desktopanwendung
 
-Eine Desktopanwendung ist in der Regel (kompilierter) Binärcode, der eine Benutzeroberfläche bereitstellt und auf dem Desktop der Benutzer ausgeführt werden soll.
+Eine Desktopanwendung ist in der Regel (kompilierter) Binärcode, der eine Benutzeroberfläche anzeigt und auf dem Desktop der Benutzer ausgeführt werden soll.
 
 Da eine Desktopanwendung auf dem Desktop des Benutzers ausgeführt wird, gilt sie als *öffentlicher Client*, der Geheimnisse nicht sicher speichern kann.
 
@@ -53,7 +53,7 @@ Da eine Desktopanwendung auf dem Desktop des Benutzers ausgeführt wird, gilt si
 
 ## <a name="mobile-application"></a>Mobile Anwendung
 
-Eine mobile Anwendung ist in der Regel (kompilierter) Binärcode, der eine Benutzeroberfläche bereitstellt und auf dem mobilen Gerät der Benutzer ausgeführt werden soll.
+Eine mobile Anwendung ist in der Regel (kompilierter) Binärcode, der eine Benutzeroberfläche anzeigt und auf dem mobilen Gerät der Benutzer ausgeführt werden soll.
 
 Da eine mobile Anwendung auf dem mobilen Gerät des Benutzers ausgeführt wird, gilt sie als *öffentlicher Client*, der Geheimnisse nicht sicher speichern kann.
 

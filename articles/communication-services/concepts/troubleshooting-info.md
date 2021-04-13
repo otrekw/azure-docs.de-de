@@ -8,12 +8,12 @@ ms.author: manoskow
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: daa89380894a57e58191edd95303a2160846da04
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 80db53a5ed8d2edc90bc847578d5df4d603cc437
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103492692"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105107226"
 ---
 # <a name="troubleshooting-in-azure-communication-services"></a>Problembehandlung in Azure Communication Services
 
@@ -33,11 +33,11 @@ Um Ihnen bei der Behandlung bestimmter Arten von Problemen zu helfen, werden Sie
 
 ## <a name="access-your-ms-cv-id"></a>Zugreifen auf Ihre MS-CV-ID
 
-Der Zugriff auf die MS-CV-ID kann durch Konfigurieren der Diagnose in der `clientOptions`-Objektinstanz erfolgen, wenn Sie die Clientbibliotheken initialisieren. Die Diagnose kann für jede der Azure-Clientbibliotheken konfiguriert werden, einschließlich Chat, Identität und VoIP-Anrufe.
+Der Zugriff auf die MS-CV-ID kann durch Konfigurieren der Diagnose in der `clientOptions`-Objektinstanz erfolgen, wenn Sie die SDKs initialisieren. Die Diagnose kann für jedes der Azure-SDKs konfiguriert werden, einschließlich Chat, Identität und VoIP-Anrufe.
 
 ### <a name="client-options-example"></a>Beispiel für Clientoptionen
 
-Die folgenden Codeausschnitte veranschaulichen die Diagnosekonfiguration. Wenn die Clientbibliotheken mit aktivierter Diagnose verwendet werden, werden Diagnosedetails an den konfigurierten Ereignislistener ausgegeben:
+Die folgenden Codeausschnitte veranschaulichen die Diagnosekonfiguration. Wenn die SDKs mit aktivierter Diagnose verwendet werden, werden Diagnosedetails an den konfigurierten Ereignislistener ausgegeben:
 
 # <a name="c"></a>[C#](#tab/csharp)
 ```
@@ -79,7 +79,7 @@ chat_client = ChatClient(
 
 ## <a name="access-your-call-id"></a>Zugreifen auf Ihre Anruf-ID
 
-Wenn Sie eine Supportanfrage über das Azure-Portal einreichen, der sich auf Anrufprobleme bezieht, werden Sie möglicherweise aufgefordert, die ID des Anrufs anzugeben, auf den Sie verweisen. Auf diese kann über die anrufende Clientbibliothek zugegriffen werden:
+Wenn Sie eine Supportanfrage über das Azure-Portal einreichen, der sich auf Anrufprobleme bezieht, werden Sie möglicherweise aufgefordert, die ID des Anrufs anzugeben, auf den Sie verweisen. Auf diese kann über das Calling SDK zugegriffen werden:
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 ```javascript
@@ -127,7 +127,7 @@ console.log(result); // your message ID will be in the result
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Der folgende Code kann verwendet werden, um `AzureLogger` für die Ausgabe von Protokollen an die Konsole mithilfe der JavaScript-Clientbibliothek zu konfigurieren:
+Der folgende Code kann verwendet werden, um `AzureLogger` für die Ausgabe von Protokollen an die Konsole mithilfe des JavaScript SDK zu konfigurieren:
 
 ```javascript
 import { AzureLogger } from '@azure/logger';
@@ -157,16 +157,16 @@ Navigieren Sie in Android Studio zum Gerätedatei-Explorer, indem Sie im Simulat
 
 ---
 
-## <a name="calling-client-library-error-codes"></a>Fehlercodes der Clientbibliothek für Telefonie
+## <a name="calling-sdk-error-codes"></a>Fehlercodes des Calling SDK
 
-Die Clientbibliothek für Telefonie von Azure Communication Services verwendet die folgenden Fehlercodes, um Sie beim Beheben von Anrufproblemen zu unterstützen. Diese Fehlercodes werden durch die `call.callEndReason`-Eigenschaft bereitgestellt, nachdem ein Anruf beendet wurde.
+Die Azure Communication Services Calling SDKs verwenden die folgenden Fehlercodes, um Sie beim Beheben von Anrufproblemen zu unterstützen. Diese Fehlercodes werden durch die `call.callEndReason`-Eigenschaft bereitgestellt, nachdem ein Anruf beendet wurde.
 
 | Fehlercode | BESCHREIBUNG | Auszuführende Aktion |
 | -------- | ---------------| ---------------|
 | 403 | Unzulässig/Authentifizierungsfehler. | Stellen Sie sicher, dass Ihr Communication Services-Token gültig und nicht abgelaufen ist. |
 | 404 | Anruf nicht gefunden. | Stellen Sie sicher, dass die Telefonnummer, die Sie anrufen (oder die Telefonkonferenz, der Sie beitreten möchten), vorhanden ist. |
 | 408 | Timeout des Anrufcontrollers. | Timeout des Anrufcontrollers beim Warten auf Protokollmeldungen von Benutzerendpunkten. Stellen Sie sicher, dass die Clients verbunden und verfügbar sind. |
-| 410 | Fehler des lokalen Medienstapels oder der Medieninfrastruktur. | Stellen Sie sicher, dass Sie die neueste Clientbibliothek in einer unterstützten Umgebung verwenden. |
+| 410 | Fehler des lokalen Medienstapels oder der Medieninfrastruktur. | Stellen Sie sicher, dass Sie das neueste SDK in einer unterstützten Umgebung verwenden. |
 | 430 | Nachricht kann nicht an die Clientanwendung übermittelt werden. | Stellen Sie sicher, dass die Clientanwendung ausgeführt wird und verfügbar ist. |
 | 480 | Remoteclientendpunkt ist nicht registriert. | Stellen Sie sicher, dass der Remoteendpunkt verfügbar ist. |
 | 481 | Fehler beim Verarbeiten des eingehenden Anrufs. | Reichen Sie eine Supportanfrage über das Azure-Portal ein. |

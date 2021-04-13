@@ -10,18 +10,16 @@ ms.date: 03/10/2021
 ms.topic: overview
 ms.custom: references_regions
 ms.service: azure-communication-services
-ms.openlocfilehash: 6ec0b32e487739c33b1b2b49bd0645130fc88581
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 66edf35f292f5b681578d49b8be784de66e4d904
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104729531"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105936528"
 ---
 # <a name="phone-number-types-in-azure-communication-services"></a>Telefonnummerntypen in Azure Communication Services
 
-
-
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
+[!INCLUDE [Public Preview Notice](../../includes/public-preview-include-phone-numbers.md)]
 
 > [!IMPORTANT]
 > Derzeit ist die Verfügbarkeit von Telefonnummern auf kostenpflichtige Azure-Abonnements, für die eine Abrechnungsadresse in den USA festgelegt ist, und auf Communication Services-Ressourcen beschränkt, deren Daten in den USA gespeichert werden. Telefonnummern können nicht mit Testkonten oder kostenlosem Azure-Guthaben erworben werden. Weitere Informationen finden Sie in diesem Dokument im Abschnitt [Abonnementberechtigung](#azure-subscriptions-eligibility).
@@ -31,7 +29,7 @@ Mit Azure Communication Services können Sie Telefonnummern verwenden, um Sprach
 
 ## <a name="azure-subscriptions-eligibility"></a>Berechtigung für Azure-Abonnements
 
-Für den Erhalt einer Telefonnummer müssen Sie ein kostenpflichtiges Azure-Abonnement abgeschlossen haben. Telefonnummern können mit Testkonten oder kostenlosem Azure-Guthaben nicht erworben werden. 
+Für den Erhalt einer Telefonnummer müssen Sie ein kostenpflichtiges Azure-Abonnement abgeschlossen haben. Telefonnummern können mit Testkonten oder kostenlosem Azure-Guthaben nicht erworben werden.
 
 Derzeit ist die Verfügbarkeit von Telefonnummern auf Azure-Abonnements, für die eine Abrechnungsadresse in den USA festgelegt ist, und auf Communication Services-Ressourcen beschränkt, deren Daten in den USA gespeichert werden.
 
@@ -59,13 +57,13 @@ In der folgenden Tabelle sind diese Telefonnummerntypen zusammengefasst:
 | Gebührenfrei         | +1 (gebührenfreie *Ortsvorwahl*) XXX XX XX | US                      | Anrufe (ausgehend), SMS (eingehend/ausgehend)| Zuweisen von Telefonnummern zu IVR-Systemen (Interactive Voice Response, Interaktive Sprachantwort) oder Bots, SMS-Anwendungen                                        |
 
 
-### <a name="phone-number-features-in-azure-communication-services"></a>Telefonnummernfeatures in Azure Communication Services
+### <a name="phone-number-capabilities-in-azure-communication-services"></a>Telefonnummernfunktionen in Azure Communication Services
 
 [!INCLUDE [Emergency Calling Notice](../../includes/emergency-calling-notice-include.md)]
 
-Für die meisten Telefonnummern können die Features beliebig zusammengestellt werden. Diese Features können ausgewählt werden, wenn Sie Ihre Telefonnummern in Azure Communication Services leasen.
+Für die meisten Telefonnummern können die Funktionen beliebig zusammengestellt werden. Diese Funktionen können ausgewählt werden, wenn Sie Ihre Telefonnummern in Azure Communication Services leasen.
 
-Welche Features Ihnen zur Verfügung stehen, hängt von dem Land/der Region ab, in dem/der Sie tätig sind, von Ihrem Anwendungsfall und von der Art der Telefonnummer, die Sie gewählt haben. Diese Features variieren aufgrund der rechtlichen Anforderungen je nach Land/Region. Azure Communication Services bietet die folgenden Telefonnummernfeatures:
+Welche Funktionen Ihnen zur Verfügung stehen, hängt von dem Land ab, in dem Sie tätig sind, von Ihrem Anwendungsfall und von der Art der Telefonnummer, die Sie gewählt haben. Diese Funktionen variieren aufgrund der rechtlichen Anforderungen je nach Land. Azure Communication Services bietet die folgenden Telefonnummernfunktionen:
 
 - **Unidirektionale ausgehende SMS:** Diese Option ermöglicht es Ihnen, SMS-Nachrichten an Ihre Benutzer zu senden. Sie ist nützlich für die Benachrichtigung und Szenarien mit zweistufiger Authentifizierung.
 - **Bidirektionale ein- und ausgehende SMS:** Diese Option ermöglicht es Ihnen, Nachrichten von Ihren Benutzern mithilfe von Telefonnummern zu senden und zu empfangen. Diese Option ist in Kundendienstszenarien hilfreich.

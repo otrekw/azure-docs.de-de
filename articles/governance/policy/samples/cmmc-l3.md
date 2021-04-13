@@ -1,15 +1,15 @@
 ---
 title: Informationen zur Einhaltung der gesetzlichen Bestimmungen für CMMC Level 3
 description: Hier finden Sie Details zur integrierten Initiative zur Einhaltung der gesetzlichen Bestimmungen für CMMC Level 3. Jede Steuerung wird mindestens einer Azure Policy-Definition zugeordnet, die Sie bei der Bewertung unterstützt.
-ms.date: 03/17/2021
+ms.date: 03/31/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: a97d6b0971b52baa52786df3433c36f30ec61eec
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f6b30de446269d764d5dfa8be97245d0df577862
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104590431"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106094012"
 ---
 # <a name="details-of-the-cmmc-level-3-regulatory-compliance-built-in-initiative"></a>Details zur integrierten Initiative zur Einhaltung der gesetzlichen Bestimmungen für CMMC Level 3
 
@@ -18,6 +18,8 @@ Weitere Informationen zu diesem Compliancestandard finden Sie unter [CMMC Level
 
 Die folgenden Zuordnungen gelten für die Steuerungen für **CMMC Level 3**. Über den rechten Navigationsbereich können Sie direkt zu einem bestimmten **Steuerungsbereich** springen. Viele der Steuerungen werden über die Definition einer [Azure Policy](../overview.md)-Initiative implementiert. Zum Anzeigen der vollständigen Initiativendefinition öffnen Sie **Policy** im Azure-Portal und wählen dann die Seite **Definitionen** aus.
 Suchen Sie anschließend nach der integrierten Initiativendefinition zur Einhaltung der gesetzlichen Bestimmungen für **CMMC Level 3**, und wählen Sie sie aus.
+
+Diese integrierte Initiative wird als Teil des [Blaupausenbeispiels „CMMC Level 3“](../../blueprints/samples/cmmc-l3.md) bereitgestellt.
 
 > [!IMPORTANT]
 > Jede Steuerung unten ist einer oder mehreren [Azure Policy](../overview.md)-Definitionen zugeordnet.

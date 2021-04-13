@@ -16,22 +16,29 @@ ms.date: 10/20/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: effdd156858caf5717aac92433e8bc5f4f6147ad
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 8e81cb9018d817fb206915a81fdc3bdd60f6b08c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101686868"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105611887"
 ---
 # <a name="renew-federation-certificates-for-microsoft-365-and-azure-active-directory"></a>Erneuern von Verbundzertifikaten für Microsoft 365 und Azure Active Directory
 ## <a name="overview"></a>Übersicht
 Damit ein erfolgreicher Verbund zwischen Azure Active Directory (Azure AD) und Active Directory-Verbunddienste (AD FS) eingerichtet werden kann, müssen die Zertifikate, die AD FS zum Signieren der Sicherheitstoken für Azure AD verwendet, mit den in Azure AD konfigurierten Werten übereinstimmen. Jede fehlende Übereinstimmung kann zu einem Bruch der Vertrauensstellung führen. Azure AD stellt sicher, dass die Informationen bei der Bereitstellung von AD FS und einem Webanwendungsproxy (für Extranetzugriff) synchron gehalten werden.
+
+> [!NOTE]
+> Dieser Artikel enthält Informationen zur Verwaltung von Verbundzertifikaten.  Informationen zur Notfallrotation finden Sie im Artikel zur [Notfallrotation von AD FS-Zertifikaten](how-to-connect-emergency-ad-fs-certificate-rotation.md).
 
 Dieser Artikel enthält weitere Informationen zum Verwalten der Tokensignaturzertifikate und Synchronisieren der Zertifikate mit Azure AD in den folgenden Fällen:
 
 * Sie stellen den Webanwendungsproxy nicht bereit, und daher sind die Verbundmetadaten nicht im Extranet verfügbar.
 * Sie verwenden nicht die Standardkonfiguration von AD FS für Tokensignaturzertifikate.
 * Sie verwenden einen externen Identitätsanbieter.
+
+> [!IMPORTANT]
+> Microsoft empfiehlt dringend, ein Hardwaresicherheitsmodul (HSM) zu verwenden, um Zertifikate zu schützen und zu sichern.
+> Weitere Informationen finden Sie in den bewährten Methoden zum Sichern von AD FS im Artikel zu [Hardwaresicherheitsmodulen](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#hardware-security-module-hsm).
 
 ## <a name="default-configuration-of-ad-fs-for-token-signing-certificates"></a>Standardkonfiguration von AD FS für Tokensignaturzertifikate
 Bei Tokensignatur- und Tokenentschlüsselungszertifikaten handelt es sich in der Regel um selbstsignierte Zertifikate, die ein Jahr lang gültig sind. AD FS enthält standardmäßig einen automatischen Erneuerungsprozess mit der Bezeichnung **AutoCertificateRollover**. Wenn Sie AD FS 2.0 oder höher verwenden, aktualisieren Microsoft 365 und Azure AD das Zertifikat automatisch, bevor es abläuft.

@@ -1,5 +1,5 @@
 ---
-title: 'Azure-Diagnoseüberwachung: Azure Attestation'
+title: Azure-Diagnoseüberwachung für Azure Attestation
 description: Azure-Diagnoseüberwachung für Azure Attestation
 services: attestation
 author: msmbaldwin
@@ -7,22 +7,20 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: d01e7817906927295591353b710afe2899aacdf1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d2773be4bc67e125c18d5d38c951685e4f4fceaf
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101726477"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168347"
 ---
-# <a name="setting-up-diagnostics-with-trusted-platform-module-tpm-endpoint-of-azure-attestation"></a>Einrichten der Diagnose mit dem TPM-Endpunkt (Trusted Platform Module) von Azure Attestation
+# <a name="set-up-diagnostics-with-a-trusted-platform-module-tpm-endpoint-of-azure-attestation"></a>Einrichten der Diagnose mit einem TPM-Endpunkt (Trusted Platform Module) von Azure Attestation
 
-[Plattformprotokolle](../azure-monitor/essentials/platform-logs-overview.md) in Azure, z. B. das Azure-Aktivitätsprotokoll und Ressourcenprotokolle, liefern ausführliche Diagnose- und Überwachungsinformationen für Azure-Ressourcen und die Azure-Plattform, von der sie abhängen. [Plattformmetriken](../azure-monitor/essentials/data-platform-metrics.md) werden standardmäßig gesammelt und in der Regel in der Azure Monitor-Metrikdatenbank gespeichert. Dieser Artikel enthält Details zum Erstellen und Konfigurieren von Diagnoseeinstellungen, um Plattformmetriken und -protokolle an verschiedene Ziele zu senden. 
+Dieser Artikel unterstützt Sie beim Erstellen und Konfigurieren von Diagnoseeinstellungen, um Plattformmetriken und -protokolle an verschiedene Ziele zu senden. [Plattformprotokolle](/azure/azure-monitor/platform/platform-logs-overview) in Azure, z. B. das Azure-Aktivitätsprotokoll und Ressourcenprotokolle, liefern ausführliche Diagnose- und Überwachungsinformationen für Azure-Ressourcen und die Azure-Plattform, von der sie abhängen. [Plattformmetriken](/azure/azure-monitor/platform/data-platform-metrics) werden standardmäßig gesammelt und in der Azure Monitor-Metrikdatenbank gespeichert.
 
-Der TPM-Endpunktdienst wird mit der Diagnoseeinstellung aktiviert und kann zum Überwachen der Aktivität verwendet werden. Führen Sie die folgenden Schritte aus, um die [Azure-Überwachung](../azure-monitor/overview.md) für den TPM-Dienstendpunkt mithilfe von PowerShell einzurichten: 
+Stellen Sie zunächst sicher, dass Sie [Azure Attestation mit Azure PowerShell eingerichtet haben](quickstart-powershell.md).
 
-Einrichten des Azure Attestation-Diensts 
-
-[Einrichten von Azure Attestation mithilfe von Azure PowerShell](./quickstart-powershell.md)
+Der TMP-Endpunktdienst (Trusted Platform Module) wird in den Diagnoseeinstellungen aktiviert und kann zum Überwachen der Aktivität verwendet werden. Richten Sie die [Azure-Überwachung](/azure/azure-monitor/overview) für den TPM-Dienstendpunkt mithilfe des folgenden Codes ein:
 
 ```powershell
 
@@ -41,4 +39,5 @@ Einrichten des Azure Attestation-Diensts
  Set-AzDiagnosticSetting -ResourceId $ attestationProvider.Id -StorageAccountId $ storageAccount.Id -Enabled $true 
 
 ```
-Die Aktivitätsprotokolle finden Sie im Abschnitt „Container“ des Speicherkontos. Ausführliche Informationen finden Sie unter [Tutorial: Sammeln und Analysieren von Ressourcenprotokollen von einer Azure-Ressource](../azure-monitor/essentials/tutorial-resource-logs.md).
+
+Aktivitätsprotokolle befinden sich im Abschnitt **Container** des Speicherkontos. Weitere Informationen finden Sie unter [Tutorial: Sammeln und Analysieren von Ressourcenprotokollen von einer Azure-Ressource](/azure/azure-monitor/learn/tutorial-resource-logs).

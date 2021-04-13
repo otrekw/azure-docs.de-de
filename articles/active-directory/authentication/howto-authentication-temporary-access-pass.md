@@ -5,25 +5,25 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 03/18/2021
+ms.date: 03/31/2021
 ms.author: justinha
-author: inbarckms
+author: justinha
 manager: daveba
 ms.reviewer: inbarckms
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44b80b9c6847cfdc8402cb3b4983f15873e367d3
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 8774df6a2eee15f8b5a0c37362e5b20f14b07549
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104579381"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167361"
 ---
 # <a name="configure-temporary-access-pass-in-azure-ad-to-register-passwordless-authentication-methods-preview"></a>Konfigurieren eines befristeten Zugriffspasses in Azure AD für die Registrierung von kennwortlosen Authentifizierungsmethoden (Vorschau)
 
 Kennwortlose Authentifizierungsmethoden (wie z. B. FIDO2 und die kennwortlose Anmeldung per Telefon über die Microsoft Authenticator-App) ermöglichen Benutzern die sichere Anmeldung ohne Kennwort. Für das Bootstrapping kennwortloser Methoden stehen Benutzern zwei Möglichkeiten zur Verfügung:
 
 - Verwenden vorhandener Azure AD Multi-Factor Authentication-Methoden 
-- Verwenden eines befristeten Zugriffspasses 
+- Verwenden eines befristeten Zugriffspasses (Temporary Access Pass, TAP) 
 
 Ein befristeter Zugriffspass ist ein von einem Administrator ausgegebener zeitlich begrenzter Passcode, der strenge Authentifizierungsanforderungen erfüllt und zum Integrieren anderer Authentifizierungsmethoden einschließlich kennwortloser Methoden verwendet werden kann. Ein befristeter Zugriffspass erleichtert auch die Wiederherstellung, wenn ein Benutzer seinen Faktor für die strenge Authentifizierung (z. B. FIDO2-Sicherheitsschlüssel oder Microsoft Authenticator-App) verloren oder vergessen hat, sich jedoch anmelden muss, um neue strenge Authentifizierungsmethoden zu registrieren.
 
@@ -49,15 +49,15 @@ So konfigurieren Sie die Authentifizierungsmethodenrichtlinie für den befristet
    Die Standardwerte und der Bereich der zulässigen Werte werden in der folgenden Tabelle beschrieben.
 
 
-   | Einstellung          | Standardwerte | Zulässige Werte               | Kommentare                                                                                                                                                                                                                                                                 |   |
-   |------------------|----------------|------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---|
-    Mindestlebensdauer | 1 Stunde         | 10 – 43200 Minuten (30 Tage) | Die Mindestanzahl von Minuten, die der befristete Zugriffspass gültig ist.                                                                                                                                                                                                                         |   |
-   | Maximale Lebensdauer | 24 Stunden       | 10 – 43200 Minuten (30 Tage) | Die Höchstzahl von Minuten, die der befristete Zugriffspass gültig ist.                                                                                                                                                                                                                         |   |
-   | Standardlebensdauer | 1 Stunde         | 10 – 43200 Minuten (30 Tage) | Die Standardwerte können von den einzelnen Pässen innerhalb der in der Richtlinie konfigurierten minimalen und maximalen Lebensdauer überschrieben werden.                                                                                                                                                |   |
-   | Einmalige Verwendung     | False          | True/False                 | Wenn die Richtlinie auf „False“ festgelegt ist, können Pässe im Mandanten entweder einmal oder mehrmals während der jeweiligen Gültigkeitsdauer (maximalen Lebensdauer) verwendet werden. Durch Erzwingen der einmaligen Verwendung in der TAP-Richtlinie werden alle im Mandanten erstellten befristeten Zugriffspässe zur einmaligen Verwendung erstellt. |   |
-   | Länge           | 8              | 8 – 48 Zeichen              | Definiert die Länge des Passcodes.                                                                                                                                                                                                                                      |   |
+   | Einstellung | Standardwerte | Zulässige Werte | Kommentare |
+   |---|---|---|---|
+   | Mindestlebensdauer | 1 Stunde | 10 – 43200 Minuten (30 Tage) | Die Mindestanzahl von Minuten, die der befristete Zugriffspass gültig ist. |
+   | Maximale Lebensdauer | 24 Stunden | 10 – 43200 Minuten (30 Tage) | Die Höchstzahl von Minuten, die der befristete Zugriffspass gültig ist. |
+   | Standardlebensdauer | 1 Stunde | 10 – 43200 Minuten (30 Tage) | Die Standardwerte können von den einzelnen Pässen innerhalb der in der Richtlinie konfigurierten minimalen und maximalen Lebensdauer überschrieben werden. |
+   | Einmalige Verwendung | False | True/False | Wenn die Richtlinie auf „False“ festgelegt ist, können Pässe im Mandanten entweder einmal oder mehrmals während der jeweiligen Gültigkeitsdauer (maximalen Lebensdauer) verwendet werden. Durch Erzwingen der einmaligen Verwendung in der TAP-Richtlinie werden alle im Mandanten erstellten befristeten Zugriffspässe zur einmaligen Verwendung erstellt. |
+   | Länge | 8 | 8 – 48 Zeichen | Definiert die Länge des Passcodes. |
 
-## <a name="create-a-temporary-access-pass-in-the-azure-ad-portal"></a>Erstellen eines befristeten Zugriffspasses im Azure AD-Portal
+## <a name="create-a-temporary-access-pass"></a>Erstellen eines befristeten Zugriffspasses
 
 Nachdem Sie eine TAP-Richtlinie aktiviert haben, können Sie in Azure AD einen befristeten Zugriffspass für einen Benutzer erstellen. Folgende Rollen können in Bezug auf den befristeten Zugriffspass die folgenden Aktionen ausführen:
 
@@ -66,9 +66,7 @@ Nachdem Sie eine TAP-Richtlinie aktiviert haben, können Sie in Azure AD einen 
 - Authentifizierungsadministratoren können einen befristeten Zugriffspass für Mitglieder (außer für sich selbst) erstellen, löschen und anzeigen.
 - Globale Administratoren können die Details des befristeten Zugriffspasses für den Benutzer anzeigen (ohne den Code selbst zu lesen).
 
-So erstellen Sie einen befristeten Zugriffspass
-
-1. Melden Sie sich als globaler Administrator, als privilegierter Authentifizierungsadministrator oder als Authentifizierungsadministrator beim Portal an. 
+1. Melden Sie sich als globaler Administrator, als privilegierter Authentifizierungsadministrator oder als Authentifizierungsadministrator beim Azure-Portal an. 
 1. Klicken Sie auf **Azure Active Directory**, navigieren Sie zu „Benutzer“, wählen Sie einen Benutzer (z. B. *Chris Green*) aus, und wählen Sie dann **Authentifizierungsmethoden** aus.
 1. Wählen Sie ggf. die Option zum **Testen der neuen Oberfläche für Benutzerauthentifizierungsmethoden** aus.
 1. Wählen Sie die Option **Authentifizierungsmethoden hinzufügen** aus.
@@ -80,6 +78,30 @@ So erstellen Sie einen befristeten Zugriffspass
 1. Nach dem Hinzufügen werden die Details des befristeten Zugriffspasses angezeigt. Notieren Sie sich den tatsächlichen Wert für den befristeten Zugriffspass. Diesen Wert stellen Sie für den Benutzer bereit. Nachdem Sie auf **OK** geklickt haben, können Sie diesen Wert nicht mehr anzeigen.
    
    ![Screenshot: Details zum befristeten Zugriffspass](./media/how-to-authentication-temporary-access-pass/details.png)
+
+Die folgenden Befehle zeigen, wie Sie mit PowerShell einen befristeten Zugriffspass erstellen und abrufen:
+
+```powershell
+# Create a Temporary Access Pass for a user
+$properties = @{}
+$properties.isUsableOnce = $True
+$properties.startDateTime = '2021-03-11 06:00:00'
+$propertiesJSON = $properties | ConvertTo-Json
+
+New-MgUserAuthenticationTemporaryAccessPassMethod -UserId user2@contoso.com -BodyParameter $propertiesJSON
+
+Id                                   CreatedDateTime       IsUsable IsUsableOnce LifetimeInMinutes MethodUsabilityReason StartDateTime         TemporaryAccessPass
+--                                   ---------------       -------- ------------ ----------------- --------------------- -------------         -------------------
+c5dbd20a-8b8f-4791-a23f-488fcbde3b38 9/03/2021 11:19:17 PM False    True         60                NotYetValid           11/03/2021 6:00:00 AM TAPRocks!
+
+# Get a user's Temporary Access Pass
+Get-MgUserAuthenticationTemporaryAccessPassMethod -UserId user3@contoso.com
+
+Id                                   CreatedDateTime       IsUsable IsUsableOnce LifetimeInMinutes MethodUsabilityReason StartDateTime         TemporaryAccessPass
+--                                   ---------------       -------- ------------ ----------------- --------------------- -------------         -------------------
+c5dbd20a-8b8f-4791-a23f-488fcbde3b38 9/03/2021 11:19:17 PM False    True         60                NotYetValid           11/03/2021 6:00:00 AM
+
+```
 
 ## <a name="use-a-temporary-access-pass"></a>Verwenden eines befristeten Zugriffspasses
 
@@ -108,6 +130,13 @@ Ein abgelaufener befristeter Zugriffspass kann nicht mehr verwendet werden. Unte
 1. Navigieren Sie im Azure AD-Portal zu **Benutzer**, wählen Sie einen Benutzer (z. B. *TAP-Benutzer*) aus, und wählen Sie dann **Authentifizierungsmethoden** aus.
 1. Wählen Sie auf der rechten Seite der in der Liste angezeigten Authentifizierungsmethode **Befristeter Zugriffspass (Vorschau)** die Option **Löschen** aus.
 
+Sie können auch PowerShell verwenden:
+
+```powershell
+# Remove a user's Temporary Access Pass
+Remove-MgUserAuthenticationTemporaryAccessPassMethod -UserId user3@contoso.com -TemporaryAccessPassAuthenticationMethodId c5dbd20a-8b8f-4791-a23f-488fcbde3b38
+```
+
 ## <a name="replace-a-temporary-access-pass"></a>Ersetzen eines befristeten Zugriffspasses 
 
 - Ein Benutzer kann nur über einen befristeten Zugriffspass verfügen. Der Passcode kann innerhalb der Start- und Endzeit des befristeten Zugriffspasses verwendet werden.
@@ -123,8 +152,8 @@ Beachten Sie die folgenden Einschränkungen:
 
 - Bei Verwendung eines einmaligen befristeten Zugriffspasses zum Registrieren einer kennwortlosen Methode wie FIDO2 oder die Anmeldung per Telefon muss der Benutzer die Registrierung innerhalb von 10 Minuten nach der Anmeldung mit dem einmaligen befristeten Zugriffspass abschließen. Diese Einschränkung gilt nicht für einen befristeten Zugriffspass, der mehrmals verwendet werden kann.
 - Gastbenutzer können sich nicht mit einem befristeten Zugriffspass anmelden.
-- Benutzer im Geltungsbereich der Richtlinie für die Self-Service-Kennwortzurücksetzung (Self Service Password Reset, SSPR) müssen eine der SSPR-Methoden registrieren, nachdem sie sich mit einem befristeten Zugriffspass angemeldet haben. Wenn der Benutzer nur FIDO2-Schlüssel verwendet, schließen Sie ihn von der SSPR-Richtlinie aus, oder deaktivieren Sie die SSPR-Registrierungsrichtlinie. 
-- Ein befristeter Zugriffspass kann nicht mit der NPS-Erweiterung (Network Policy Server) und dem AD FS-Adapter (Active Directory Federation Services) verwendet werden.
+- Benutzer im Geltungsbereich der Richtlinie für die Self-Service-Kennwortzurücksetzung (SSPR) *oder* [MFA-Registrierungsrichtlinie für den Identitätsschutz](../identity-protection/howto-identity-protection-configure-mfa-policy.md) müssen eine der Authentifizierungsmethoden registrieren, nachdem sie sich mit einem befristeten Zugriffspass angemeldet haben. Benutzer im Gültigkeitsbereich für diese Richtlinien werden an den [Interruptmodus der kombinierten Registrierung](concept-registration-mfa-sspr-combined.md#combined-registration-modes) umgeleitet. Diese Vorgehensweise unterstützt derzeit keine FIDO2-Registrierung und keine Registrierung mit Anmeldung per Telefon. 
+- Ein befristeter Zugriffspass kann nicht mit der NPS-Erweiterung (Network Policy Server) und dem AD FS-Adapter (Active Directory Federation Services) oder bei Verwendung von Windows Setup/Out-of-Box-Experience (OOBE) und AutoPilot verwendet werden. 
 - Wenn nahtloses einmaliges Anmelden für den Mandanten aktiviert ist, werden die Benutzer zur Eingabe eines Kennworts aufgefordert. Der Link **Verwenden Sie stattdessen Ihren befristeten Zugriffspass** ist für den Benutzer verfügbar, damit er sich mit einem befristeten Zugriffspass anmelden kann.
 
   ![Screenshot des Links „Verwenden Sie stattdessen Ihren befristeten Zugriffspass“](./media/how-to-authentication-temporary-access-pass/alternative.png)
