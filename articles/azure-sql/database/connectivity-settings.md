@@ -9,17 +9,17 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: sstein, vanto
 ms.date: 07/06/2020
-ms.openlocfilehash: 84fdca96f2ce42c608e7def98f6a3400964cfe46
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0c45a48e6cafa722945400554f2f81916da13775
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101691925"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105627607"
 ---
 # <a name="azure-sql-connectivity-settings"></a>Azure SQL-Konnektivitätseinstellungen
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
-In diesem Artikel werden Einstellungen vorgestellt, die die Konnektivität mit dem Server für Azure SQL-Datenbank und Azure Synapse Analytics steuern. Diese Einstellungen gelten für alle SQL-Datenbank-Instanzen und Azure Synapse Analytics-Datenbanken, die dem Server zugeordnet sind.
+In diesem Artikel werden Einstellungen vorgestellt, die die Konnektivität mit dem Server für Azure SQL-Datenbank und dem [dedizierten SQL-Pool (früher „SQL DW“)](../../synapse-analytics\sql-data-warehouse\sql-data-warehouse-overview-what-is.md) in Azure Synapse Analytics steuern. Diese Einstellungen gelten für alle SQL-Datenbank-Datenbanken und die Datenbanken des dedizierten SQL-Pools (früher „SQL DW“), die dem Server zugeordnet sind.
 
 > [!IMPORTANT]
 > Dieser Artikel gilt nicht für Azure SQL Managed Instance.

@@ -7,14 +7,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: managed-hsm
 ms.topic: tutorial
-ms.date: 09/15/2020
+ms.date: 03/30/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 7420ffbe5b365c635c1eac2620cfd54ceb649ebf
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0d5749894fd277ff6a2f77e3db9721e6989d72ac
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102211803"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109236"
 ---
 # <a name="managed-hsm-logging"></a>Protokollierung für verwaltete HSMs 
 
@@ -74,9 +74,10 @@ az monitor diagnostic-settings create --name ContosoMHSM-Diagnostics --resource 
 Protokollierte Daten:
 
 * Alle authentifizierten REST-API-Anforderungen, z. B. auch Anforderungen, die aufgrund von Zugriffsberechtigungen, Systemfehlern oder fehlerhaften Anforderungen nicht erfolgreich sind.
-* Vorgänge für das eigentliche verwaltete HSM – einschließlich Erstellung, Löschung und Aktualisierung von Attributen (beispielsweise Tags).
+* Vorgänge auf der verwalteten Ebene für die eigentliche verwaltete HSM-Ressource – einschließlich Erstellung, Löschung und Aktualisierung von Attributen (beispielsweise Tags)
 * Vorgänge im Zusammenhang mit der Sicherheitsdomäne wie Initialisieren und Herunterladen, Initialisieren der Wiederherstellung oder Hochladen
 * Vollständige Sicherung, vollständige Wiederherstellung und selektive Wiederherstellung für das HSM
+* Rollenverwaltungsvorgänge, etwa Erstellen/Anzeigen/Löschen von Rollenzuweisungen und Erstellen/Anzeigen/Löschen von benutzerdefinierten Rollendefinitionen
 * Vorgänge für Schlüssel. Beispielsweise:
   * Erstellen, Ändern oder Löschen der Schlüssel
   * Signieren, Überprüfen, Verschlüsseln, Entschlüsseln, Packen und Entpacken von Schlüsseln sowie Auflisten von Schlüsseln
@@ -121,30 +122,13 @@ Einzelne Blobs werden als Text im JSON-Format gespeichert. Schauen wir uns einen
 ]
 ```
 
-In der folgenden Tabelle sind die Feldnamen und Beschreibungen aufgeführt:
 
-| Feldname | BESCHREIBUNG |
-| --- | --- |
-| **TenantId** | Azure Active Directory-Mandanten-ID des Abonnements, in dem das verwaltete HSM erstellt wird |
-| **time** |Datum und Uhrzeit (UTC). |
-| **Ressourcen-ID** |Azure Resource Manager-Ressourcen-ID Bei Protokollen für verwaltete HSMs handelt es sich hierbei immer um die Ressourcen-ID des verwalteten HSM. |
-| **operationName** |Name des Vorgangs, wie in der folgenden Tabelle beschrieben |
-| **operationVersion** |Die vom Client angeforderte REST-API-Version. |
-| **category** |Der Typ des Ergebnisses. Bei Protokollen für verwaltete HSMs ist **AuditEvent** der einzige verfügbare Wert. |
-| **resultType** |Das Ergebnis der REST-API-Anforderung. |
-| **properties** |Informationen, die je nach Vorgang (**operationName**) variieren|
-| **resultSignature** |HTTP-Status |
-| **resultDescription** |Zusätzliche Beschreibung zum Ergebnis, falls verfügbar |
-| **durationMs** |Verarbeitungsdauer der REST-API-Anforderung in Millisekunden. Die Netzwerklatenz ist hierin nicht enthalten, sodass die auf der Clientseite gemessene Zeit unter Umständen nicht mit diesem Zeitraum übereinstimmt. |
-| **callerIpAddress** |Die IP-Adresse des Clients, der die Anforderung gestellt hat. |
-| **correlationId** |Optionale GUID, die vom Client zum Korrelieren von clientseitigen Protokollen mit dienstseitigen Protokollen übergeben werden kann |
-| **Identität** |Identität des Tokens, das in der REST-API-Anforderung angegeben wurde. Hierbei handelt es sich in der Regel um einen Benutzer oder Dienstprinzipal. |
-| **requestUri** | Anforderungs-URI der REST-API |
-| **clientInfo** | 
 
 ## <a name="use-azure-monitor-logs"></a>Verwenden von Azure Monitor-Protokollen
 
-Sie können die Key Vault-Lösung in Azure Monitor verwenden, um Protokolle vom Typ **AuditEvent** für verwaltete HSMs zu überprüfen. In Azure Monitor-Protokollen verwenden Sie Protokollabfragen, um Daten zu analysieren und die benötigten Informationen zu erhalten. 
+Sie können die Key Vault-Lösung in Azure Monitor verwenden, um Protokolle vom Typ **AuditEvent** für verwaltete HSMs zu überprüfen. In Azure Monitor-Protokollen verwenden Sie Protokollabfragen, um Daten zu analysieren und die benötigten Informationen zu erhalten.
+
+Weitere Informationen, z. B. zur Einrichtung, finden Sie im Artikel zu [Azure Key Vault in Azure Monitor](../../azure-monitor/insights/key-vault-insights-overview.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

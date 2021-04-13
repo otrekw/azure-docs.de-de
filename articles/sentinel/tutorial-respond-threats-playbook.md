@@ -17,10 +17,10 @@ ms.workload: na
 ms.date: 02/18/2021
 ms.author: yelevin
 ms.openlocfilehash: 365ba9df39b4b3bd7397e86e6a51b285bf049242
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104600581"
 ---
 # <a name="tutorial-use-playbooks-with-automation-rules-in-azure-sentinel"></a>Tutorial: Verwenden von Playbooks mit Automatisierungsregeln in Azure Sentinel
@@ -139,7 +139,7 @@ Dieser Screenshot zeigt die Aktionen und Bedingungen, die Sie bei der Erstellung
 
 Sie haben Ihr Playbook erstellt und den Trigger definiert, die Bedingungen festgelegt und die auszuführenden Aktionen sowie die zu generierenden Ausgaben vorgegeben. Nun müssen Sie die Kriterien für die Ausführung bestimmen und den Automatisierungsmechanismus einrichten, durch den es ausgeführt wird, wenn diese Kriterien erfüllt sind.
 
-### <a name="respond-to-incidents"></a>Reagieren auf Vorfälle
+### <a name="respond-to-incidents"></a>Reagieren auf Incidents
 
 Sie verwenden ein Playbook, um auf einen **Vorfall** zu reagieren. Hierzu erstellen Sie eine [Automatisierungsregel](automate-incident-handling-with-automation-rules.md), die ausgeführt wird, wenn der Vorfall generiert wird, und das Playbook aufruft.
 

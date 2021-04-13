@@ -4,7 +4,6 @@ description: Enthält Informationen zu den Überwachungs-, Diagnose-, Metrik- un
 services: network-watcher
 documentationcenter: na
 author: damendo
-Customer intent: As someone with basic Azure network experience, I want to understand how Azure Network Watcher can help me resolve some of the network-related problems I've encountered and provide insight into how I use Azure networking.
 ms.assetid: 14bc2266-99e3-42a2-8d19-bd7257fec35e
 ms.service: network-watcher
 ms.devlang: na
@@ -14,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: 9b19beae43f1d4a5b0788d9d7662828355c3dd2c
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 5e032eaa5138f63122ed019441d29ad7eafca2a2
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97895885"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106055891"
 ---
 # <a name="what-is-azure-network-watcher"></a>Was ist Azure Network Watcher?
 
@@ -89,7 +88,7 @@ Die Informationen sind für die Planung von Bereitstellungen zukünftiger Ressou
 
 Über Netzwerksicherheitsgruppen (NSG) wird ein- oder ausgehender Datenverkehr einer Netzwerkschnittstelle auf einer VM zugelassen oder verweigert. Mit der Funktion *NSG-Flussprotokollierung* können Sie die IP-Quell- und -Zieladresse, den Port und das Protokoll erfassen (und ob Datenverkehr von einer NSG zugelassen oder verweigert wurde). Sie können Protokolle mit vielen verschiedenen Tools analysieren, z.B. Power BI und der Funktion *Datenverkehrsanalyse*. Bei der Datenverkehrsanalyse werden umfassende Visualisierungen von Daten bereitgestellt, die in NSG-Flussprotokolle geschrieben werden. In der folgenden Abbildung sind einige Informationen und Visualisierungen dargestellt, die über die Datenverkehrsanalyse aus den Daten des NSG-Flussprotokolls bereitgestellt werden:
 
-![Datenverkehrsanalyse](./media/network-watcher-monitoring-overview/traffic-analytics.png)
+![Traffic Analytics](./media/network-watcher-monitoring-overview/traffic-analytics.png)
 
 Weitere Informationen zur NSG-Flussprotokollierung erhalten Sie im Tutorial [Protokollieren des Netzwerkdatenverkehrs zu und von einem virtuellen Computer über das Azure-Portal](network-watcher-nsg-flow-logging-portal.md). Informationen zur Implementierung der Datenverkehrsanalyse finden Sie [hier](traffic-analytics.md).
 

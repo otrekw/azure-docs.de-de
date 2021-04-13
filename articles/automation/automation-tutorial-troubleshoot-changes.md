@@ -4,15 +4,15 @@ description: In diesem Artikel wird beschrieben, wie Sie Probleme bei Änderunge
 services: automation
 ms.subservice: change-inventory-management
 keywords: Änderung, Nachverfolgung, Änderungsnachverfolgung, Bestand, Automation
-ms.date: 12/05/2018
+ms.date: 03/21/2021
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: a223ac4296dd160bbdd904e1d3443552d4f49a23
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 980740d387f9e953d1ea764327c8aa13f8650948
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100587931"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104775804"
 ---
 # <a name="troubleshoot-changes-on-an-azure-vm"></a>Problembehandlung bei Änderungen auf einem virtuellen Azure-Computer
 
@@ -95,7 +95,7 @@ Bei der Änderungsnachverfolgung wählen Sie die zu sammelnden und nachzuverfolg
 
 1. Geben Sie auf der Seite „Windows-Registrierung für Änderungsnachverfolgung hinzufügen“ die Informationen zu dem Schlüssel ein, der nachverfolgt werden soll, und klicken Sie auf **Speichern**.
 
-    |Eigenschaft  |BESCHREIBUNG  |
+    |Eigenschaft  |Beschreibung  |
     |---------|---------|
     |Aktiviert     | Bestimmt, ob die Einstellung angewendet wird        |
     |Item Name     | Anzeigename der nachzuverfolgenden Datei        |
@@ -108,7 +108,7 @@ Bei der Änderungsnachverfolgung wählen Sie die zu sammelnden und nachzuverfolg
 
 1. Geben Sie auf der Seite „Windows-Datei für Änderungsnachverfolgung hinzufügen“ die Informationen zu der Datei oder dem Verzeichnis ein, die bzw. das nachverfolgt werden soll, und klicken Sie auf **Speichern**.
 
-    |Eigenschaft  |BESCHREIBUNG  |
+    |Eigenschaft  |Beschreibung  |
     |---------|---------|
     |Aktiviert     | Bestimmt, ob die Einstellung angewendet wird        |
     |Item Name     | Anzeigename der nachzuverfolgenden Datei        |
@@ -123,7 +123,7 @@ Bei der Änderungsnachverfolgung wählen Sie die zu sammelnden und nachzuverfolg
 
 1. Geben Sie auf der Seite „Linux-Datei für Änderungsnachverfolgung hinzufügen“ die Informationen zu der Datei oder dem Verzeichnis ein, die bzw. das nachverfolgt werden soll, und klicken Sie auf **Speichern**.
 
-    |Eigenschaft  |BESCHREIBUNG  |
+    |Eigenschaft  |Beschreibung  |
     |---------|---------|
     |Aktiviert     | Bestimmt, ob die Einstellung angewendet wird        |
     |Item Name     | Anzeigename der nachzuverfolgenden Datei        |
@@ -212,11 +212,11 @@ Das Anzeigen von Änderungen im Azure-Portal kann praktisch sein, es ist jedoch 
 
 16. Wählen Sie unter **DETAILS** die Option **Details bearbeiten** aus.
 
-    ![Hinzufügen einer Aktionsgruppe](./media/automation-tutorial-troubleshoot-changes/add-action-group.png)
+    :::image type="content" source="./media/automation-tutorial-troubleshoot-changes/add-action-group.png" alt-text="Nutzung und geschätzte Kosten" lightbox="./media/automation-tutorial-troubleshoot-changes/add-action-group.png":::
 
-17. Geben Sie im Bereich „E-Mail/SMS/Push/Sprachanruf“ einen Namen ein, aktivieren Sie das Kontrollkästchen **E-Mail**, und geben Sie dann eine gültige E-Mail-Adresse ein. Wenn Sie fertig sind, klicken Sie im Bereich auf **OK**, und klicken Sie dann auf der Seite „Aktionsgruppe hinzufügen“ auf **OK**.
+17. Geben Sie im Bereich **E-Mail/SMS/Push/Sprachanruf** einen Namen ein, aktivieren Sie das Kontrollkästchen **E-Mail**, und geben Sie dann eine gültige E-Mail-Adresse ein. Wenn Sie fertig sind, klicken Sie im Bereich auf **OK**, und klicken Sie dann auf der Seite **Aktionsgruppe hinzufügen** auf **OK**.
 
-18. Wählen Sie **Aktionen anpassen** aus, um den Betreff der Warnungs-E-Mail anzupassen. 
+18. Wählen Sie **Aktionen anpassen** aus, um den Betreff der Warnungs-E-Mail anzupassen.
 
 19. Wählen Sie für **Regel erstellen** die Option **E-Mail-Betreff** aus, und wählen Sie dann **Warnungsregel erstellen**. Die Warnung informiert Sie, wenn die Bereitstellung eines Updates erfolgreich war. Außerdem wird angegeben, welche Computer Teil der durchgeführten Updatebereitstellung waren. Die folgende Abbildung zeigt eine Beispiel-E-Mail, die bei Beendigung des W3SVC-Diensts eingeht.
 

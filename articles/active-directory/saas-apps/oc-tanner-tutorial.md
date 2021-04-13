@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/28/2020
 ms.author: jeedes
 ms.openlocfilehash: 683cfc65e8154d4f409f5d4a33bf7ccf61c6f7c6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92518584"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-oc-tanner---appreciatehub"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit O.C. Tanner – AppreciateHub
@@ -64,14 +64,14 @@ Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD 
     * **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
     * **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
 1. **[Konfigurieren des einmaligen Anmeldens für O.C. Tanner – AppreciateHub](#configure-oc-tanner---appreciatehub-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
-    * **[Erstellen eines O.C. Tanner – AppreciateHub-Testbenutzers](#create-oc-tanner---appreciatehub-test-user)** , um eine Entsprechung von B. Simon in O.C. Tanner – AppreciateHub zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
+    * **[Erstellen eines Testbenutzers für O.C. Tanner – AppreciateHub](#create-oc-tanner---appreciatehub-test-user)** , um eine Entsprechung von B. Simon in O.C. Tanner – AppreciateHub zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
 1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
 
 Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **O.C. Tanner – AppreciateHub** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **O.C. Tanner – AppreciateHub** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
 1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
@@ -125,7 +125,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 ## <a name="configure-oc-tanner---appreciatehub-sso"></a>Konfigurieren des einmaligen Anmeldens für O.C. Tanner – AppreciateHub
 
-Um das einmalige Anmelden aufseiten von **O.C. Tanner – AppreciateHub** zu konfigurieren, müssen Sie die heruntergeladene **Verbundmetadaten-XML** und die entsprechenden kopierten URLs aus dem Azure-Portal an [O.C. Tanner – AppreciateHub](mailto:sso@octanner.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+Zum Konfigurieren des einmaligen Anmeldens aufseiten von **O.C. Tanner – AppreciateHub** müssen Sie die heruntergeladene **Verbundmetadaten-XML** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von O.C. Tanner – AppreciateHub](mailto:sso@octanner.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
 ### <a name="create-oc-tanner---appreciatehub-test-user"></a>Erstellen eines O.C. C. Tanner – AppreciateHub-Testbenutzers
 
@@ -133,7 +133,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon
 
 **Für das Erstellen eines Benutzers namens Britta Simon in O.C. Tanner – AppreciateHub sind folgende Schritte erforderlich:**
 
-Bitten Sie das [Supportteam von O.C. Tanner – AppreciateHub](mailto:sso@octanner.com), einen Benutzer zu erstellen, dessen nameID-Attribut dem Benutzernamen „Britta Simon“ aus Azure AD entspricht.
+Bitten Sie das [Supportteam von Tanner – AppreciateHub](mailto:sso@octanner.com), einen Benutzer zu erstellen, dessen nameID-Attribut dem Benutzernamen „Britta Simon“ aus Azure AD entspricht.
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 

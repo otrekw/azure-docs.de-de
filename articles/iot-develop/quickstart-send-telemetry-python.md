@@ -7,12 +7,12 @@ ms.service: iot-develop
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/11/2021
-ms.openlocfilehash: d0dcca0c4be801f385a48afcd41b6a547bab3fbe
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 5d872dd7c94a0b3ab23623bb246ff7ae81609779
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100654710"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105047166"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-azure-iot-central-python"></a>Schnellstart: Senden von Telemetriedaten von einem Gerät an Azure IoT Central (Python)
 
@@ -265,6 +265,6 @@ In dieser Schnellstartanleitung haben Sie einen grundlegenden Workflow für Azur
 
 Im nächsten Schritt erkunden Sie das Azure IoT Python SDK mithilfe von Anwendungsbeispielen.
 
-- [Asynchrone Beispiele](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/async-hub-scenarios): Dieses Verzeichnis enthält asynchrone Python-Beispiele für zusätzliche IoT Hub-Szenarien.
-- [Synchrone Beispiele](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/sync-samples): Dieses Verzeichnis enthält Python-Beispiele für die Verwendung mit Python 2.7 und synchrone Kompatibilitätsszenarien für Python 3.5 und höher.
-- [IoT Edge-Beispiele](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/async-edge-scenarios): Dieses Verzeichnis enthält Python-Beispiele zum Arbeiten mit Edge-Modulen und nachgeschalteten Geräten.
+- [Asynchrone Beispiele](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/async-hub-scenarios): Dieses Verzeichnis enthält asynchrone Python-Beispiele für zusätzliche IoT Hub-Szenarien.
+- [Synchrone Beispiele](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/sync-samples): Dieses Verzeichnis enthält Python-Beispiele für die Verwendung mit Python 2.7 und synchrone Kompatibilitätsszenarien für Python 3.6 und höher.
+- [IoT Edge-Beispiele](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/async-edge-scenarios): Dieses Verzeichnis enthält Python-Beispiele zum Arbeiten mit Edge-Modulen und nachgeschalteten Geräten.

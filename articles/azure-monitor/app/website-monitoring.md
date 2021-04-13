@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 03/19/2021
 ms.custom: mvc
 ms.openlocfilehash: 0e10db39c8dbbf81087d696cfbb5b2ded1ae79ac
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104654941"
 ---
 # <a name="quickstart-start-monitoring-your-website-with-azure-monitor-application-insights"></a>Schnellstart: Beginnen der Überwachung Ihrer Website mit Azure Monitor Application Insights
@@ -33,7 +33,7 @@ Application Insights kann Telemetriedaten aus jeder mit dem Internet verbundenen
    >Wenn Sie zum ersten Mal eine Application Insights-Ressource erstellen, finden Sie unter [Erstellen einer Application Insights-Ressource](./create-new-resource.md) weitere Informationen dazu.
 1. Wenn das Dialogfeld für die Konfiguration angezeigt wird, füllen Sie die Eingabefelder anhand der Informationen in der folgenden Tabelle aus:
 
-    | Einstellungen        | Wert           | BESCHREIBUNG  |
+    | Einstellungen        | Wert           | Beschreibung  |
    | ------------- |:-------------|:-----|
    | **Name**      | Global eindeutiger Wert | Der Name, der die zu überwachende App identifiziert |
    | **Ressourcengruppe**     | myResourceGroup      | Der Name der neuen Ressourcengruppe, die Application Insights-Daten hosten soll. Sie können eine neue Ressourcengruppe erstellen oder eine bereits vorhandene Ressourcengruppe verwenden. |
@@ -114,7 +114,7 @@ Application Insights kann Telemetriedaten aus jeder mit dem Internet verbundenen
 
    :::image type="content" source="media/website-monitoring/log-query.png" alt-text="Screenshot: Protokollanalysediagramm der Benutzeranforderungen in einem bestimmten Zeitraum":::
 
-1. Kehren Sie zur Seite **Übersicht** zurück. Wählen Sie unter der Überschrift **Untersuchen** die Option **Leistung** und anschließend die Registerkarte **Browser** aus.  Metriken im Zusammenhang mit der Leistung Ihrer Website werden angezeigt. Es gibt eine Ansicht zum Analysieren von Fehlern und Ausnahmen für Ihre Website. Sie können **Beispiele** auswählen, um auf die [End-to-End-Transaktionsdetails](./transaction-diagnostics.md) zuzugreifen.
+1. Kehren Sie zur Seite **Übersicht** zurück. Wählen Sie unter der Überschrift **Untersuchen** die Option **Leistung** und anschließend die Registerkarte **Browser** aus. Metriken im Zusammenhang mit der Leistung Ihrer Website werden angezeigt. Es gibt eine Ansicht zum Analysieren von Fehlern und Ausnahmen für Ihre Website. Sie können **Beispiele** auswählen, um auf die [End-to-End-Transaktionsdetails](./transaction-diagnostics.md) zuzugreifen.
 
      :::image type="content" source="media/website-monitoring/performance.png" alt-text="Screenshot: Registerkarte „Leistung“ mit dem Browsermetrikdiagramm":::
 

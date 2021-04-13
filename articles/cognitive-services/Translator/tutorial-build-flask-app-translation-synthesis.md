@@ -11,16 +11,16 @@ ms.topic: tutorial
 ms.date: 03/04/2021
 ms.author: lajanuar
 ms.custom: devx-track-python, devx-track-js
-ms.openlocfilehash: c04bac76453d565abb99a971386b9ce0461b88ae
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 6ec951e57b40ae1440f541c02b26e7788b3cf151
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102172078"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105043732"
 ---
 # <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>Tutorial: Erstellen einer Flask-App mit Azure Cognitive Services
 
-In diesem Tutorial erstellen Sie eine Flask-Web-App, für die Azure Cognitive Services genutzt wird, um Text zu übersetzen, Stimmungen (auch als „Standpunkt“ bezeichnet) zu analysieren und für übersetzten Text die Sprachsynthese durchzuführen. Der Schwerpunkt liegt auf dem Python-Code und den Flask-Routen als Grundlage unserer Anwendung. Wir geben als Hilfe für Sie aber den HTML- und JavaScript-Code an, auf dem unsere App basiert. Falls bei Ihnen Probleme auftreten, können Sie uns über die Schaltfläche „Feedback“ am Ende dieses Artikels darüber informieren.
+In diesem Tutorial erstellen Sie eine Flask-Web-App, für die Azure Cognitive Services genutzt wird, um Text zu übersetzen, Stimmungen (auch als „Standpunkt“ bezeichnet) zu analysieren und für übersetzten Text die Sprachsynthese durchzuführen. Der Schwerpunkt liegt auf dem Python-Code und den Flask-Routen als Grundlage unserer Anwendung. Wir geben als Hilfe für Sie aber den HTML- und JavaScript-Code an, auf dem die App basiert. Falls bei Ihnen Probleme auftreten, können Sie uns über die Schaltfläche „Feedback“ am Ende dieses Artikels darüber informieren.
 
 Hier ist angegeben, was in diesem Tutorial vermittelt wird:
 
@@ -49,7 +49,7 @@ Hier sind einige hilfreiche Links angegeben, falls Sie sich nach Abschluss diese
 
 Hier sind die Software und Abonnementschlüssel angegeben, die Sie für dieses Tutorial benötigen.
 
-* [Python 3.5.2 oder höher](https://www.python.org/downloads/)
+* [Python 3.6 oder höher](https://www.python.org/downloads/)
 * [Git-Tools](https://git-scm.com/downloads)
 * Eine IDE oder ein Text-Editor, z. B. [Visual Studio Code](https://code.visualstudio.com/) oder [Atom](https://atom.io/)  
 * [Chrome](https://www.google.com/chrome/browser/) oder [Firefox](https://www.mozilla.org/firefox)

@@ -4,12 +4,12 @@ description: Anwendungsleistungsverwaltung und Nachverfolgen der Nutzung Ihrer a
 ms.topic: overview
 ms.date: 06/03/2019
 ms.custom: mvc
-ms.openlocfilehash: ac6b6f2b47df0bce9ae164c83df54adfdf00b184
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f25a53cb227d6894aaabaf82033178f15f61c173
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100575697"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106076206"
 ---
 # <a name="what-is-application-insights"></a>Was ist Application Insights?
 Application Insights, ein Feature von [Azure Monitor](../overview.md), ist ein erweiterbarer Dienst zur Verwaltung der Anwendungsleistung (Application Performance Management, APM) für Entwickler und DevOps-Profis. Überwachen Sie damit Ihre aktiven Anwendungen. Der Dienst erkennt automatisch Leistungsanomalien und verfügt über leistungsstarke Analysetools, mit denen Sie Probleme diagnostizieren und nachvollziehen können, wie Ihre App von den Benutzern verwendet wird.  Der Dienst unterstützt Sie bei der kontinuierlichen Verbesserung der Leistung und Benutzerfreundlichkeit Ihrer App. Er lässt sich für Apps auf einer Vielzahl von Plattformen einsetzen. Dazu zählen unter anderem .NET, Node.js, Java und Python (lokal gehostet, als Hybridmodell oder in einer öffentlichen Cloud). Der Dienst lässt sich in Ihren DevOps-Prozess integrieren und verfügt über Verbindungspunkte mit einer Vielzahl von Entwicklungstools. Sie können Telemetriedaten von mobilen Apps durch die Integration in Visual Studio App Center überwachen und analysieren.
@@ -47,7 +47,7 @@ Application Insights ist für Entwicklerteams konzipiert und hilft Ihnen dabei, 
 
 Es gibt zahlreiche Möglichkeiten, Ihre Daten zu untersuchen. Informationen finden Sie in den folgenden Artikeln:
 
-|  |  |
+| Artikelbeschreibung   | Image |
 | --- | --- |
 | [**Intelligente Erkennung und manuelle Warnungen**](./proactive-diagnostics.md)<br/>Richten Sie automatische Warnungen ein, die sich den normalen Telemetriemustern Ihrer App anpassen und ausgelöst werden, wenn etwas nicht den üblichen Mustern entspricht. Sie können auch auf bestimmten Ebenen benutzerdefinierter oder standardmäßiger Metriken [Warnungen festlegen](../alerts/alerts-log.md). |![Beispiel für Warnungen](./media/app-insights-overview/alerts-tn.png) |
 | [**Anwendungszuordnung**](./app-map.md)<br/>Untersuchen Sie die Komponenten der App mit wichtigen Metriken und Warnungen. |![Anwendungszuordnung](./media/app-insights-overview/appmap-tn.png)  |

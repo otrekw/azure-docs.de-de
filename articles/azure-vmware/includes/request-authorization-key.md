@@ -3,12 +3,12 @@ title: Anfordern eines Autorisierungsschlüssels für ExpressRoute
 description: Schritte zum Anfordern eines Autorisierungsschlüssels für ExpressRoute
 ms.topic: include
 ms.date: 03/15/2021
-ms.openlocfilehash: 54a610c8b0f3f3fe9d3ebe39291bba7767007839
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 99d9fba33d64fca1d9c5b960041fbabe1f9060db
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103491837"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105026972"
 ---
 <!-- used in expressroute-global-reach-private-cloud.md and create-ipsec-tunnel.md -->
 
@@ -22,7 +22,7 @@ ms.locfileid: "103491837"
 
    :::image type="content" source="../media/expressroute-global-reach/show-global-reach-auth-key.png" alt-text="Screenshot: ExpressRoute Global Reach-Autorisierungsschlüssel":::
   
-1. Notieren Sie sich den Autorisierungsschlüssel und die ExpressRoute-ID. Diese Angaben werden verwendet, um das Peering abzuschließen.  
+1. Kopieren Sie den Autorisierungsschlüssel und die ExpressRoute-ID. Diese Angaben werden verwendet, um das Peering abzuschließen.  
 
    > [!NOTE]
    > Der Autorisierungsschlüssel wird nach einiger Zeit nicht mehr angezeigt. Kopieren Sie ihn daher, sobald er angezeigt wird.

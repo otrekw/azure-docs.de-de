@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 03/09/2021
+ms.date: 03/29/2021
 ms.author: aahi
 keywords: Textmining, Stimmungsanalyse, Textanalyse
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 7fcc030e3c63c24fa255e578c2d8aaf1b466e99c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b586478b6b3943fb0154ed6c50bade6fd8b08b76
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104598965"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219500"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Worum handelt es sich bei der Textanalyse-API?
 
@@ -26,6 +26,12 @@ Die Textanalyse-API ist ein cloudbasierter Dienst für Features zur Verarbeitung
 Die API ist ein Teil von [Azure Cognitive Services](../index.yml), einer Sammlung von Algorithmen für maschinelles Lernen und künstliche Intelligenz (KI) in der Cloud, die Sie für Ihre Entwicklungsprojekte verwenden können. Sie können diese Funktionen mit [Version 3.0](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V3-0/) oder [Version 3.1-preview](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/) der REST-API oder mit der [Clientbibliothek](quickstarts/client-libraries-rest-api.md) verwenden.
 
 > [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Whats-New-in-Text-Analytics-Opinion-Mining-and-Async-API/player]
+
+Diese Dokumentation enthält die folgenden Arten von Artikeln:
+* Die [Schnellstarts](./quickstarts/client-libraries-rest-api.md) sind Schritt-für-Schritt-Anleitungen, mit denen Sie Aufrufe an den Dienst senden können und in kurzer Zeit Ergebnisse erhalten. 
+* [Anleitungen](./how-tos/text-analytics-how-to-call-api.md) enthalten Anweisungen zur spezifischeren oder individuelleren Verwendung des Diensts.
+* [Konzepte](text-analytics-user-scenarios.md) enthalten ausführliche Erläuterungen der Funktionen und Features des Diensts.
+* [Tutorials](./tutorials/tutorial-power-bi-key-phrases.md) sind ausführlichere Leitfäden, in denen die Verwendung dieses Diensts als Komponente in umfassenderen Unternehmenslösungen veranschaulicht wird.
 
 ## <a name="sentiment-analysis"></a>Stimmungsanalyse
 

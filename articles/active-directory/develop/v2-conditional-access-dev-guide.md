@@ -14,12 +14,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
-ms.openlocfilehash: e4021f0ca2c1c9ca9434744a4aebb4b7938315f0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ed8007c81479c73e4503d74af4c4043e503baf2b
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99584229"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106120145"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Anleitung für Entwickler zum bedingten Zugriff mit Azure Active Directory
 
@@ -72,10 +72,10 @@ Insbesondere stellen alle Microsoft Graph-Bereiche ein bestimmtes Dataset dar, a
 Wenn eine App beispielsweise die folgenden Microsoft Graph-Bereiche anfordert,
 
 ```
-scopes="Bookings.Read.All Mail.Read"
+scopes="ChannelMessages.Read.All Mail.Read"
 ```
 
-Eine App kann von ihren Benutzern fordern, dass alle Richtlinien erfüllt werden, die in „Buchungen“ und „Exchange“ festgelegt sind. Einigen Bereichen können mehrere Datasets zugeordnet sein, wenn der Zugriff gewährt wird.
+Eine App kann fordern, dass ihre Benutzer alle Richtlinien erfüllen, die in Teams und Exchange festgelegt sind. Einigen Bereichen können mehrere Datasets zugeordnet sein, wenn der Zugriff gewährt wird.
 
 ### <a name="complying-with-a-conditional-access-policy"></a>Einhalten einer Richtlinie für den bedingten Zugriff
 

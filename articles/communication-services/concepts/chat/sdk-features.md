@@ -1,7 +1,7 @@
 ---
-title: Übersicht über die Clientbibliothek für Chats von Azure Communication Services
+title: Übersicht über das Chat SDK für Azure Communication Services
 titleSuffix: An Azure Communication Services concept document
-description: Hier finden Sie Informationen zur Clientbibliothek für Chats von Azure Communication Services.
+description: Hier finden Sie Informationen zum Chat SDK von Azure Communication Services.
 author: mikben
 manager: jken
 services: azure-communication-services
@@ -9,26 +9,26 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 705bd926c2ac6f414464254969b5c511c88891f0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 520dc611e49675f35b8ba0330448438192770773
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104656106"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168874"
 ---
-# <a name="chat-client-library-overview"></a>Übersicht über die Clientbibliothek für Chats  
+# <a name="chat-sdk-overview"></a>Übersicht über das Chat SDK 
 
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]    
+[!INCLUDE [Public Preview Notice](../../includes/public-preview-include-chat.md)]
 
-Die Clientbibliotheken für Chats von Azure Communication Services können verwendet werden, um Ihren Anwendungen umfassende Echtzeitchatfunktionen hinzuzufügen.
+Die Chat SDKs von Azure Communication Services können verwendet werden, um Ihren Anwendungen umfassende Echtzeitchatfunktionen hinzuzufügen.
     
-## <a name="chat-client-library-capabilities"></a>Funktionen der Clientbibliothek für Chats 
+## <a name="chat-sdk-capabilities"></a>Funktionen der Chat SDKs    
 
-Die folgende Liste enthält die Features, die aktuell in den Clientbibliotheken für Chats von Communication Services verfügbar sind:  
+Die folgende Liste enthält die Features, die aktuell in den Chat SDKs von Communication Services verfügbar sind:  
 
 | Featuregruppe | Funktion | JavaScript  | Java | .NET | Python | iOS | Android |
 |-----------------|-------------------|---|-----|----|-----|----|----|
-| Grundlegende Funktionen | Erstellen eines Chatthreads zwischen zwei oder mehr Benutzern (bis zu 250 Benutzer)                                                       | ✔️   | ✔️  | ✔️    | ✔️   |  ✔️    | ✔️   |    
+| Grundlegende Funktionen | Erstellen eines Chatthreads zwischen zwei oder mehr Benutzern                                                     | ✔️   | ✔️  | ✔️    | ✔️   |  ✔️    | ✔️   |    
 |                   | Aktualisieren des Themas eines Chatthreads                                                                              | ✔️   | ✔️ | ✔️    | ✔️   |  ✔️    | ✔️   |   
 |                   | Hinzufügen oder Entfernen von Teilnehmern zu bzw. aus einem Chatthread                                                                           | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |  
 |                   | Auswählen, ob der Chatnachrichtenverlauf mit dem hinzugefügten Teilnehmer geteilt werden soll                                   | ✔️   | ✔️   | ✔️    | ✔️  |  ✔️    | ✔️   | 
@@ -37,27 +37,27 @@ Die folgende Liste enthält die Features, die aktuell in den Clientbibliotheken 
 |                   | Abrufen der Liste der Chatthreads, denen der Benutzer angehört (bei Kommunikationsbenutzern)                                           | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |   
 |                   | Abrufen von Informationen für einen bestimmten Chatthread                                                                              | ✔️   | ✔️  | ✔️ | ✔️ |  ✔️    | ✔️   |   
 |                   | Senden und Empfangen von Nachrichten in einem Chatthread                                                                            | ✔️   | ✔️   | ✔️    | ✔️  |  ✔️    | ✔️   |   
-|                   | Bearbeiten des Inhalts einer gesendeten Nachricht                                                                                | ✔️   | ✔️  | ✔️ | ✔️ |  ✔️    | ✔️   |   
-|                   | Löschen einer Nachricht                                                                                                       | ✔️   | ✔️  | ✔️ | ✔️ |  ✔️    | ✔️   |   
-|                   | Lesebestätigungen für Nachrichten, die von anderen Teilnehmern in einem Chat gelesen wurden <br/> *Bei Chatthreads mit mehr als 20 Teilnehmern nicht verfügbar*    | ✔️   | ✔️  | ✔️    | ✔️   |  ✔️    | ✔️   |   
-|                   | Erhalten einer Benachrichtigung, wenn Teilnehmer aktiv eine Nachricht in einem Chatthread eingeben <br/> *Bei Chatthreads mit mehr als 20 Mitgliedern nicht verfügbar*      | ✔️   | ✔️   | ✔️    | ✔️    |  ✔️    | ✔️   | 
-|                   | Abrufen aller Nachrichten in einem Chatthread <br/>                                                                         | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |  
+|                   | Aktualisieren des Inhalts der gesendeten Nachricht                                                                               | ✔️   | ✔️  | ✔️ | ✔️ |  ✔️    | ✔️   |    
+|                   | Löschen einer zuvor von Ihnen gesendeten Nachricht                                                                                                      | ✔️   | ✔️  | ✔️ | ✔️ |  ✔️    | ✔️   |    
+|                   | Lesebestätigungen für Nachrichten, die von anderen Teilnehmern in einem Chat gelesen wurden                                        | ✔️   | ✔️  | ✔️    | ✔️   |  ✔️    | ✔️   |   
+|                   | Erhalten einer Benachrichtigung, wenn Teilnehmer aktiv eine Nachricht in einem Chatthread eingeben                                         | ✔️   | ✔️   | ✔️    | ✔️    |  ✔️    | ✔️   | 
+|                   | Abrufen aller Nachrichten in einem Chatthread                                                                        | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   | 
 |                   | Senden von Unicode-Emojis im Nachrichteninhalt                                                                            | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |    
-|Echtzeitsignalisierung (durch proprietäres Signalisierungspaket**)|  Abonnieren von Echtzeitaktualisierungen für eingehende Nachrichten und andere Vorgänge in Ihrer Chat-App. Eine Liste der unterstützten Aktualisierungen für die Echtzeitsignalisierung finden Sie unter [Chatkonzepte](concepts.md#real-time-signaling).                                     | ✔️   | ❌    | ❌  | ❌  | ❌  | ❌  |    
-| Event Grid-Unterstützung             | Nutzen der Integration in Azure Event Grid und Konfigurieren des Kommunikationsdiensts zum Ausführen von Geschäftslogik basierend auf Chataktivitäten oder zum Einbinden eines benutzerdefinierten Pushbenachrichtigungsdiensts   | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |  
-| Überwachung        | Verwenden der im Azure-Portal ausgegebenen API-Anforderungsmetriken, um Dashboards zu erstellen, die Integrität Ihrer Chat-App zu überwachen und Warnungen zum Erkennen von Anomalien festzulegen      | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |    
-|                   | Konfigurieren der Communication Services-Ressource zum Empfangen von Chatbetriebsprotokollen zu Überwachungs- und Diagnosezwecken          | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |  
+|Echtzeitbenachrichtigungen (durch proprietäres Signalisierungspaket**)|  Chatclients können Echtzeitaktualisierungen für eingehende Nachrichten und andere Vorgänge abonnieren, die in einem Chatthread stattfinden. Eine Liste der unterstützten Aktualisierungen für Echtzeitbenachrichtigungen finden Sie unter [Chatkonzepte](concepts.md#real-time-notifications).                                     | ✔️   | ❌    | ❌  | ❌  | ❌  | ❌  | 
+| Integration in Azure Event Grid             | Verwenden Sie die in Azure Event Grid verfügbaren Chatereignisse, um benutzerdefinierte Benachrichtigungsdienste einzubinden oder dieses Ereignis in einem Webhook zu posten und um Geschäftslogik (etwa Aktualisieren von CRM-Datensätzen nach Abschluss eines Chats) auszuführen.   | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |    
+| Berichterstellung </br>(Diese Informationen finden Sie auf der Registerkarte „Überwachung“ für Ihre Communication Services-Ressource im Azure-Portal.)      | Vollziehen Sie den API-Datenverkehr aus Ihrer Chat-App nach, indem Sie die veröffentlichten Metriken im Azure-Metrik-Explorer überwachen und Warnungen zum Erkennen von Anomalien festlegen.     | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |  
+|                   | Überwachen und Debuggen der Communication Services-Lösung durch Aktivieren der Diagnoseprotokollierung für Ihre Ressource    | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |   
 
 
 **Das proprietäre Signalisierungspaket wird mithilfe von Websockets implementiert. Es wird ein Fallback auf ein langes Abrufintervall durchgeführt, falls Websockets nicht unterstützt werden.  
 
-## <a name="javascript-chat-client-library-support-by-os-and-browser"></a>JavaScript-Chatclientbibliothek: Unterstützung nach Betriebssystemen und Browsern 
+## <a name="javascript-chat-sdk-support-by-os-and-browser"></a>JavaScript Chat SDK: Unterstützung nach Betriebssystem und Browser    
 
 Die folgende Tabelle enthält die unterstützten Browser und Versionen, die derzeit verfügbar sind:
     
 |                                  | Windows          | macOS          | Ubuntu | Linux  | Android | iOS    | iPad-Betriebssystem|
 |--------------------------------|----------------|--------------|-------|------|------|------|-------|
-| **Chatclientbibliothek** | Firefox *, Chrome*, Microsoft Edge (neu) | Firefox *, Chrome*, Safari* | Chrome*  | Chrome* | Chrome* | Safari* | Safari* |
+| **Chat SDK** | Firefox *, Chrome*, Microsoft Edge (neu) | Firefox *, Chrome*, Safari* | Chrome*  | Chrome* | Chrome* | Safari* | Safari* |
 
 \* Hinweis: Neben den beiden vorherigen Releases wird auch die neueste Version unterstützt.<br/>   
 
@@ -68,3 +68,4 @@ Die folgende Tabelle enthält die unterstützten Browser und Versionen, die derz
 
 Die folgenden Dokumente könnten Sie auch interessieren:  
 - Machen Sie sich mit [Chatkonzepten](../chat/concepts.md) vertraut.
+- Grundlegendes zu den [Preisen](../pricing.md#chat) für die Chatfunktion

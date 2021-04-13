@@ -7,12 +7,12 @@ ms.author: dademath
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 47a32815ded5809edfde856a38c69ec7c6fd6fdf
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 4ab1a157cdf3ef5017b227cd090379dcab91997e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103493355"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105931555"
 ---
 # <a name="azure-communication-services-ui-framework"></a>Azure Communication Services: Benutzeroberflächen-Framework
 
@@ -25,11 +25,11 @@ Mit dem Benutzeroberflächen-Framework von Azure Communication Services ist es f
 - **Zusammengesetzte Komponenten**: Bei diesen Komponenten handelt es sich um fertige Lösungen, mit denen gängige Kommunikationsszenarien implementiert werden. Sie können Ihren Anwendungen schnell Umgebungen für Videoanrufe oder Chats hinzufügen. Zusammengesetzte Komponenten bestehen aus mehreren Basiskomponenten.
 - **Basiskomponenten**: Bei diesen Komponenten handelt es sich um Open-Source-Bausteine, mit denen Sie benutzerdefinierte Kommunikationsumgebungen erstellen können. Es werden sowohl Komponenten für Anruf- als auch für Chatfunktionen angeboten, die für die Entwicklung von Benutzeroberflächen kombiniert werden können. 
 
-Für diese Clientbibliotheken für Benutzeroberflächen werden jeweils die [Fluent-Entwurfssprache von Microsoft](https://developer.microsoft.com/fluentui/) und die zugehörigen Objekte verwendet. Die Fluent-Benutzeroberfläche stellt eine Grundlage für das Benutzeroberflächen-Framework dar, das sich für die verschiedensten Microsoft-Produkte im Einsatz bewährt hat.
+Für diese Benutzeroberflächen-SDKs werden jeweils die [Fluent-Entwurfssprache von Microsoft](https://developer.microsoft.com/fluentui/) und die zugehörigen Objekte verwendet. Die Fluent-Benutzeroberfläche stellt eine Grundlage für das Benutzeroberflächen-Framework dar, das sich für die verschiedensten Microsoft-Produkte im Einsatz bewährt hat.
 
 ## <a name="differentiating-components-and-composites"></a>**Vergleich von Basis- und zusammengesetzten Komponenten**
 
-**Basiskomponenten** basieren auf den zentralen Azure Communication Services-Clientbibliotheken und dienen zum Implementieren von grundlegenden Aktionen, z. B. Initialisieren der zentralen Clientbibliotheken, Rendern von Videos und Bereitstellen von Benutzersteuerelementen für Stummschalten, Video ein/aus usw. Sie können diese **Basiskomponenten** nutzen, um Ihre eigenen Benutzeroberflächen mit benutzerdefiniertem Layout zu entwickeln, indem Sie vordefinierte und für die Produktion geeignete Kommunikationskomponenten verwenden.
+**Basiskomponenten** basieren auf den zentralen Azure Communication Services SDKs und dienen zum Implementieren von grundlegenden Aktionen, z. B. Initialisieren der zentralen SDKs, Rendern von Videos und Bereitstellen von Benutzersteuerelementen für Stummschalten, Video ein/aus usw. Sie können diese **Basiskomponenten** nutzen, um Ihre eigenen Benutzeroberflächen mit benutzerdefiniertem Layout zu entwickeln, indem Sie vordefinierte und für die Produktion geeignete Kommunikationskomponenten verwenden.
 
 :::image type="content" source="../media/ui-framework/component-overview.png" alt-text="Übersicht über Komponenten für das Benutzeroberflächen-Framework":::
 
@@ -39,19 +39,19 @@ Für **zusammengesetzte Komponenten** werden mehrere **Basiskomponenten** kombin
 
 ## <a name="what-ui-framework-is-best-for-my-project"></a>Welches Benutzeroberflächen-Framework ist für mein Projekt am besten geeignet?
 
-Wenn Sie sich mit den folgenden Anforderungen vertraut machen, können Sie die richtige Clientbibliothek auswählen:
+Wenn Sie sich mit den folgenden Anforderungen vertraut machen, können Sie das richtige SDK auswählen:
 
-- **Welchen Anpassungsgrad streben Sie an?** Die zentralen Azure Communication Services-Clientbibliotheken weisen keine Benutzeroberfläche auf und sind so konzipiert, dass Sie die Benutzeroberfläche nach Ihren Vorstellungen erstellen können. Mit den Komponenten des Benutzeroberflächen-Frameworks werden Benutzeroberflächenobjekte auf Kosten einer verringerten Anpassungsmöglichkeit bereitgestellt.
-- **Benötigen Sie Features für Besprechungen?** Das Besprechungssystem verfügt über mehrere besondere Funktionen, die in den zentralen Azure Communication Services-Clientbibliotheken derzeit nicht verfügbar sind, z. B. verschwommener Hintergrund und Heben der Hand.
+- **Welchen Anpassungsgrad streben Sie an?** Die zentralen Azure Communication Services SDKs weisen keine Benutzeroberfläche auf und sind so konzipiert, dass Sie die Benutzeroberfläche nach Ihren Vorstellungen erstellen können. Mit den Komponenten des Benutzeroberflächen-Frameworks werden Benutzeroberflächenobjekte auf Kosten einer verringerten Anpassungsmöglichkeit bereitgestellt.
+- **Benötigen Sie Features für Besprechungen?** Das Besprechungssystem verfügt über mehrere besondere Funktionen, die in den zentralen Azure Communication Services SDKs derzeit nicht verfügbar sind, z. B. verschwommener Hintergrund und Heben der Hand.
 - **Welche Plattformen sollen verwendet werden?** Verschiedene Plattformen verfügen über unterschiedliche Funktionen.
 
 Ausführliche Informationen zur Verfügbarkeit von Features in den verschiedenen Benutzeroberflächen-SDKs finden Sie [hier](ui-sdk-features.md). Eine Zusammenfassung der wichtigsten Nachteile ist unten angegeben.
 
-|Clientbibliothek/SDK|Implementierungskomplexität|    Möglichkeit zur Anpassung|  Aufrufen| Chat| [Teams-Interoperabilität](./../teams-interop.md)
+|SDK/SDK|Implementierungskomplexität|   Möglichkeit zur Anpassung|  Aufrufen| Chat| [Teams-Interoperabilität](./../teams-interop.md)
 |---|---|---|---|---|---|---|
 |Zusammengesetzte Komponenten|Niedrig|Niedrig|✔|✔|✕
 |Basiskomponenten|Medium|Medium|✔|✔|✕
-|Zentrale Clientbibliotheken|High|High|✔|✔ |✔
+|Zentrale SDKs|High|High|✔|✔ |✔
 
 ## <a name="cost"></a>„Cost“ (Kosten)
 
@@ -78,7 +78,7 @@ Es wird eine Azure Communication Services-Identität benötigt, um das Benutzero
 
 Zusammengesetzte Komponenten und Basiskomponenten werden mit einem Azure Communication Services-Zugriffstoken initialisiert. Zugriffstoken sollten über einen vertrauenswürdigen Dienst, der von Ihnen verwaltet wird, aus Azure Communication Services beschafft werden. Weitere Informationen finden Sie unter [Schnellstart: Erstellen und Verwalten von Zugriffstoken](../../quickstarts/access-tokens.md) und [Erstellen eines vertrauenswürdigen Authentifizierungsdiensts mithilfe von Azure Functions](../../tutorials/trusted-service-tutorial.md).
 
-Für diese Clientbibliotheken wird auch der Kontext für den Anruf oder Chat benötigt, zu dem der Beitritt erfolgt. Ähnlich wie bei Zugriffstoken sollte dieser Kontext über Ihren eigenen vertrauenswürdigen Dienst an Clients übermittelt werden. In der Liste unten sind die Funktionen für die Initialisierung und Ressourcenverwaltung zusammengefasst, die Sie operationalisieren müssen.
+Für diese SDKs wird auch der Kontext für den Anruf oder Chat benötigt, zu dem der Beitritt erfolgt. Ähnlich wie bei Zugriffstoken sollte dieser Kontext über Ihren eigenen vertrauenswürdigen Dienst an Clients übermittelt werden. In der Liste unten sind die Funktionen für die Initialisierung und Ressourcenverwaltung zusammengefasst, die Sie operationalisieren müssen.
 
 | Contoso-Zuständigkeiten                                 | Zuständigkeiten des Benutzeroberflächen-Frameworks                         |
 |----------------------------------------------------------|-----------------------------------------------------------------|

@@ -11,12 +11,12 @@ ms.date: 03/11/2019
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 4c7382f84522333b6aae0d79941aae8f2147a12f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5b67f505a71d2af7950422a86ab45ef8aebb3bf4
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "81729162"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106056435"
 ---
 # <a name="azure-iot-hub-pricing-information"></a>Azure IoT Hub – Preisinformationen
 
@@ -33,9 +33,9 @@ ms.locfileid: "81729162"
 | C2D-Nachrichten | Erfolgreich gesendete Nachrichten werden in Blöcken von 4 KB berechnet, sodass eine Nachricht mit 6 KB beispielsweise wie zwei Nachrichten berechnet wird. |
 | Dateiuploads | Die Dateiübertragung an Azure Storage wird von IoT Hub nicht getaktet. Nachrichten für die Initiierung und den Abschluss der Dateiübertragung werden als Nachrichten mit 4-KB-Taktung berechnet. Für die Übertragung einer Datei mit 10MB werden z.B. zusätzlich zu den Azure Storage-Kosten zwei Nachrichten berechnet. |
 | Direkte Methoden | Erfolgreiche Methodenanforderungen werden in Blöcken von 4KB berechnet, und Antworten werden als zusätzliche Nachrichten in Blöcken von 4KB berechnet. Anforderungen an nicht verbundene Geräte werden als Nachrichten in Blöcken von 4 KB berechnet. Eine Methode mit einem Text von 4KB, die zu einer Antwort ohne Text vom Gerät führt, wird z.B. als zwei Nachrichten berechnet. Eine Methode mit einem Text von 6 KB, die zu einer Antwort mit 1 KB vom Gerät führt, wird als zwei Nachrichten für die Anforderung plus eine Nachricht für die Antwort berechnet. |
-| Zwillingslesevorgänge vom Gerät und Modul | Zwillingslesevorgänge vom Gerät und Modul und vom Lösungs-Back-End werden als Nachrichten in Blöcken mit jeweils 512 Bytes berechnet. Ein Lesevorgang von einem 6-KB-Zwilling wird beispielsweise als zwölf Nachrichten berechnet. |
-| Geräte- und Modulzwillingsupdates (Tags und Eigenschaften) | Zwillingsupdates vom Gerät oder Modul und vom Lösungs-Back-End werden als Nachrichten in Blöcken mit jeweils 512 Bytes berechnet. Ein Lesevorgang von einem 6-KB-Zwilling wird beispielsweise als zwölf Nachrichten berechnet. |
-| Abfragen von Geräte- und Modulzwillingen | Abfragen werden als Nachrichten je nach Ergebnisgröße in Blöcken von 512 Byte berechnet. |
+| Zwillingslesevorgänge vom Gerät und Modul | Zwillingslesevorgänge vom Gerät oder Modul und vom Lösungs-Back-End werden als Nachrichten in Blöcken von jeweils 4 KB berechnet. Ein Lesevorgang von einem 8-KB-Zwilling wird beispielsweise als 2 Nachrichten berechnet. |
+| Geräte- und Modulzwillingsupdates (Tags und Eigenschaften) | Zwillingsupdates vom Gerät oder Modul und vom Lösungs-Back-End werden als Nachrichten in Blöcken von jeweils 4 KB berechnet. Ein Lesevorgang von einem 12-KB-Zwilling wird beispielsweise als 3 Nachrichten berechnet. |
+| Abfragen von Geräte- und Modulzwillingen | Abfragen werden als Nachrichten je nach Ergebnisgröße in Blöcken von 4 KB berechnet. |
 | Auftragsvorgänge <br/> (Erstellen, Aktualisieren, Auflisten, Löschen) | Keine Gebühren. |
 | Vorgänge vom Typ „Aufträge pro Gerät“ | Auftragsvorgänge (z.B. Zwillingsupdates und Methoden) werden normal berechnet. Ein Auftrag, der zu 1000 Methodenaufrufen mit 1-KB-Anforderungen und Antworten mit leerem Textbereich führt, wird als 1000 Nachrichten berechnet. |
 | Keep-Alive-Nachrichten | Wenn Sie AMQP- oder MQTT-Protokolle verwenden, werden Nachrichten zum Herstellen der Verbindung und bei der Aushandlung ausgetauschte Nachrichten nicht in Rechnung gestellt. |

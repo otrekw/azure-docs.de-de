@@ -10,18 +10,18 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/21/2020
+ms.date: 03/26/2021
 ms.author: duau
-ms.openlocfilehash: 17677ea89b04659de66b9bda35975b96ff33473a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: d2c8d4179dbaa44929031ce7e14b597b145ed72a
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101740782"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106067604"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>Tutorial: Konfigurieren von HTTPS in einer benutzerdefinierten Front Door-Domäne
 
-In diesem Tutorial erfahren Sie, wie Sie im Abschnitt mit den Front-End-Hosts das HTTPS-Protokoll für eine benutzerdefinierte Domäne aktivieren, die Ihrer Front Door-Instanz zugeordnet ist. Durch die Verwendung des HTTPS-Protokolls in Ihrer benutzerdefinierten Domäne (Beispiel: https:\//www.contoso.com) stellen Sie sicher, dass Ihre sensiblen Daten per TLS/SSL-Verschlüsselung sicher zugestellt werden, wenn diese über das Internet gesendet werden. Wenn Ihr Webbrowser über HTTPS eine Verbindung mit einer Website herstellt, überprüft er das Sicherheitszertifikat der Website, um sicherzustellen, dass es von einer legitimen Zertifizierungsstelle stammt. Dieser Prozess sorgt für Sicherheit und schützt Ihre Webanwendungen vor Angriffen.
+In diesem Tutorial erfahren Sie, wie Sie im Abschnitt mit den Front-End-Hosts das HTTPS-Protokoll für eine benutzerdefinierte Domäne aktivieren, die Ihrer Front Door-Instanz zugeordnet ist. Durch die Verwendung des HTTPS-Protokolls in Ihrer benutzerdefinierten Domäne (Beispiel: https:\//www.contoso.com) stellen Sie sicher, dass Ihre vertraulichen Daten per TLS/SSL-Verschlüsselung sicher zugestellt werden, wenn diese über das Internet gesendet werden. Wenn Ihr Webbrowser über HTTPS eine Verbindung mit einer Website herstellt, überprüft er das Sicherheitszertifikat der Website, um sicherzustellen, dass es von einer legitimen Zertifizierungsstelle stammt. Dieser Prozess sorgt für Sicherheit und schützt Ihre Webanwendungen vor Angriffen.
 
 Azure Front Door unterstützt HTTPS standardmäßig für einen Front Door-Standardhostnamen. Wenn Sie beispielsweise eine Front Door-Instanz erstellen (z. B. `https://contoso.azurefd.net`), wird HTTPS automatisch für Anforderungen an `https://contoso.azurefd.net` aktiviert. Nachdem Sie jedoch die benutzerdefinierte Domäne „www.contoso.com“ integriert haben, müssen Sie zusätzlich HTTPS für den Front-End-Host aktivieren.   
 
@@ -63,19 +63,20 @@ Um HTTPS für eine benutzerdefinierte Domäne zu aktivieren, führen Sie die fol
 
 2. Wählen Sie in der Liste der Front-End-Hosts die benutzerdefinierte Domäne aus, für die Sie HTTPS aktivieren möchten.
 
-3. Klicken Sie im Abschnitt **HTTPS für benutzerdefinierte Domänen** auf **Aktiviert**, und wählen Sie **Mit Front Door verwaltet** als Zertifikatquelle aus.
+3. Wählen Sie im Abschnitt **HTTPS für benutzerdefinierte Domänen** die Option **Aktiviert** und als Zertifikatquelle **Mit Front Door verwaltet** aus.
 
-4. Klicken Sie auf Speichern.
+4. Wählen Sie „Speichern“ aus.
 
-5. Fahren Sie mit [Domäne überprüfen](#validate-the-domain) fort.
+5. Fahren Sie mit [Überprüfen der Domäne](#validate-the-domain) fort.
 
 > [!NOTE]
 > Bei von AFD verwalteten Zertifikaten wird der Grenzwert von 64 Zeichen von DigiCert erzwungen. Bei der Überprüfung tritt ein Fehler auf, wenn dieser Grenzwert überschritten wird.
 
+![HINWEIS] Die Aktivierung von HTTPS über ein durch Front Door verwaltetes Zertifikat wird für Apex-/Stammdomänen (Beispiel: contoso.com) nicht unterstützt. Sie können Ihr eigenes Zertifikat für dieses Szenario verwenden.  Fahren Sie mit Option 2 fort, um weitere Informationen zu erhalten.
 
 ### <a name="option-2-use-your-own-certificate"></a>Option 2: Verwenden Ihres eigenen Zertifikats
 
-Sie können das HTTPS-Feature mit Ihrem eigenen Zertifikat aktivieren. Dabei erfolgt eine Integration in Azure Key Vault, was eine sichere Speicherung Ihrer Zertifikate ermöglicht. Azure Front Door nutzt diesen sicheren Mechanismus zum Abrufen Ihres Zertifikats, und es sind einige zusätzliche Schritte erforderlich. Wenn Sie Ihr TLS-/SSL-Zertifikat erstellen, müssen Sie dafür eine zulässige Zertifizierungsstelle verwenden. Bei Verwendung einer unzulässigen Zertifizierungsstelle wird Ihre Anforderung abgelehnt. Eine Liste mit zulässigen Zertifizierungsstellen für die Aktivierung von benutzerdefiniertem HTTPS für Azure Front Door finden Sie [hier](front-door-troubleshoot-allowed-ca.md).
+Sie können das HTTPS-Feature mit Ihrem eigenen Zertifikat aktivieren. Dabei erfolgt eine Integration in Azure Key Vault, was eine sichere Speicherung Ihrer Zertifikate ermöglicht. Azure Front Door nutzt diesen sicheren Mechanismus zum Abrufen Ihres Zertifikats, und es sind einige zusätzliche Schritte erforderlich. Wenn Sie Ihr TLS-/SSL-Zertifikat erstellen, müssen Sie dafür eine zulässige Zertifizierungsstelle verwenden. Bei Verwendung einer unzulässigen Zertifizierungsstelle wird Ihre Anforderung abgelehnt. Eine Liste mit zulässigen Zertifizierungsstellen für die Aktivierung von benutzerdefiniertem HTTPS für Azure Front Door finden Sie [hier](front-door-troubleshoot-allowed-ca.md).
 
 #### <a name="prepare-your-azure-key-vault-account-and-certificate"></a>Vorbereiten Ihres Azure Key Vault-Kontos und Ihres Zertifikats
  
@@ -128,19 +129,21 @@ Gewähren Sie Azure Front Door Berechtigungen für den Zugriff auf die Zertifika
 
 3. Wählen Sie unter „Zertifikatverwaltungstyp“ die Option **Eigenes Zertifikat verwenden** aus. 
 
-4. Azure Front Door erfordert, dass das Abonnement des Key Vault-Kontos mit dem von Front Door identisch ist. Wählen Sie einen Schlüsseltresor, ein Zertifikat (Geheimnis) und eine Zertifikatversion aus.
+4. Azure Front Door erfordert, dass das Abonnement des Key Vault-Kontos mit dem von Front Door identisch ist. Wählen Sie einen Schlüsseltresor, ein Geheimnis und eine Geheimnisversion aus.
 
     Azure Front Door führt die folgenden Informationen auf: 
     - Die Schlüsseltresorkonten für Ihre Abonnement-ID 
-    - Die Zertifikate (Geheimnisse) unter dem ausgewählten Schlüsseltresor 
-    - Die verfügbaren Zertifikatversionen
+    - Die Geheimnisse unter dem ausgewählten Schlüsseltresor 
+    - Die verfügbaren Geheimnisversionen
+
+    > [!NOTE]
+    >  Legen Sie die Geheimnisversion auf „Neueste“ fest, damit das Zertifikat automatisch zur neuesten Version rotiert wird, wenn eine neuere Version des Zertifikats in Ihrer Key Vault-Instanz verfügbar ist. Wenn eine bestimmte Version ausgewählt ist, müssen Sie die neue Version für die Zertifikatrotation manuell erneut auswählen. Es dauert bis zu 24 Stunden, bis die neue Version des Zertifikats/Geheimnisses bereitgestellt wird. 
  
 5. Wenn Sie Ihr eigenes Zertifikat verwenden, ist keine Domänenüberprüfung erforderlich. Fahren Sie mit [Warten auf die Weitergabe](#wait-for-propagation) fort.
 
 ## <a name="validate-the-domain"></a>Überprüfen der Domäne
 
-Wenn Sie bereits eine benutzerdefinierte Domäne verwenden, die Ihrem benutzerdefinierten Endpunkt mit einem CNAME-Eintrag zugeordnet ist, oder Sie Ihr eigenes Zertifikat verwenden, können Sie mit  
-[Benutzerdefinierte Domäne ist Front Door zugeordnet](#custom-domain-is-mapped-to-your-front-door-by-a-cname-record) fortfahren. Fahren Sie andernfalls mit [Benutzerdefinierte Domäne ist Front Door nicht zugeordnet](#custom-domain-is-not-mapped-to-your-front-door) fort, falls der CNAME-Eintrag für Ihre Domäne nicht mehr vorhanden ist oder falls er die Unterdomäne „afdverify“ enthält.
+Wenn Sie bereits eine benutzerdefinierte Domäne verwenden, die Ihrem benutzerdefinierten Endpunkt mit einem CNAME-Eintrag zugeordnet ist, oder Sie Ihr eigenes Zertifikat verwenden, können Sie mit [Benutzerdefinierte Domäne ist Front Door zugeordnet](#custom-domain-is-mapped-to-your-front-door-by-a-cname-record) fortfahren. Fahren Sie andernfalls mit [Benutzerdefinierte Domäne ist Front Door nicht zugeordnet](#custom-domain-is-not-mapped-to-your-front-door) fort, falls der CNAME-Eintrag für Ihre Domäne nicht mehr vorhanden ist oder falls er die Unterdomäne „afdverify“ enthält.
 
 ### <a name="custom-domain-is-mapped-to-your-front-door-by-a-cname-record"></a>Benutzerdefinierte Domäne ist Front Door mit einem CNAME-Eintrag zugeordnet
 
@@ -167,11 +170,11 @@ Die automatische Überprüfung dauert normalerweise einige Minuten. Öffnen Sie 
 
 Wenn der CNAME-Eintrag für Ihren Endpunkt nicht mehr vorhanden ist oder die afdverify-Unterdomäne enthält, folgen Sie den weiteren Anweisungen in diesem Schritt.
 
-Nach der Aktivierung von HTTPS für Ihre benutzerdefinierte Domäne überprüft die DigiCert-CA, ob die Domäne wirklich Ihnen gehört. Hierzu setzt sich DigiCert mit dem Registranten der Domäne in Verbindung, der in den [WHOIS](http://whois.domaintools.com/)-Registranteninformationen der Domäne angegeben ist. Der Kontakt wird über die E-Mail-Adresse (Standardverfahren) oder die Telefonnummer in der WHOIS-Registrierung hergestellt. HTTPS wird für Ihre benutzerdefinierte Domäne erst nach Abschluss der Domänenüberprüfung aktiviert. Die Genehmigung der Domäne muss innerhalb von sechs Werktagen erfolgen. Anforderungen, die nicht innerhalb von sechs Werktagen genehmigt werden, werden automatisch abgebrochen. 
+Nach der Aktivierung von HTTPS für Ihre benutzerdefinierte Domäne überprüft die DigiCert-CA, ob die Domäne wirklich Ihnen gehört. Hierzu setzt sich DigiCert mit dem Registranten der Domäne in Verbindung, der in den [WHOIS](http://whois.domaintools.com/)-Registranteninformationen der Domäne angegeben ist. Der Kontakt wird über die E-Mail-Adresse (Standardverfahren) oder die Telefonnummer in der WHOIS-Registrierung hergestellt. HTTPS wird für Ihre benutzerdefinierte Domäne erst nach Abschluss der Domänenüberprüfung aktiviert. Die Genehmigung der Domäne muss innerhalb von sechs Werktagen erfolgen. Anforderungen, die nicht innerhalb von sechs Werktagen genehmigt werden, werden automatisch abgebrochen. 
 
 ![WHOIS-Datensatz](./media/front-door-custom-domain-https/whois-record.png)
 
-DigiCert sendet zur Überprüfung auch eine E-Mail an zusätzliche E-Mail-Adressen. Falls die WHOIS-Registranteninformationen privat sind, vergewissern Sie sich, dass Sie die Bestätigung direkt über eine der folgenden Adressen vornehmen können:
+DigiCert sendet zur Überprüfung auch eine E-Mail an andere E-Mail-Adressen. Falls die WHOIS-Registranteninformationen privat sind, vergewissern Sie sich, dass Sie die Bestätigung direkt über eine der folgenden Adressen vornehmen können:
 
 admin@&lt;Ihr-Domänenname.com&gt;  
 administrator@&lt;Ihr-Domänenname.com&gt;  
@@ -181,9 +184,9 @@ postmaster@&lt;Ihr-Domänenname.com&gt;
 
 Sie sollten ähnlich wie im folgenden Beispiel nach wenigen Minuten eine E-Mail-Nachricht erhalten, in der Sie aufgefordert werden, die Anforderung zu genehmigen. Wenn Sie einen Spamfilter verwenden, fügen Sie admin@digicert.com der Zulassungsliste hinzu. Sollten Sie nach 24 Stunden noch keine E-Mail erhalten haben, setzen Sie sich mit dem Microsoft-Support in Verbindung.
 
-Wenn Sie auf den Genehmigungslink klicken, werden Sie an ein Onlineformular für die Genehmigung weitergeleitet. Befolgen Sie die Anweisungen im Formular. Sie haben zwei Möglichkeiten zur Genehmigung:
+Wenn Sie den Genehmigungslink auswählen, werden Sie zu einem Onlineformular für die Genehmigung weitergeleitet. Befolgen Sie die Anweisungen im Formular. Sie haben zwei Möglichkeiten zur Genehmigung:
 
-- Sie können alle zukünftigen Aufträge genehmigen, die über dasselbe Konto und für dieselbe Stammdomäne (beispielsweise „contoso.com“) getätigt werden. Dies empfiehlt sich, wenn Sie planen, zusätzliche benutzerdefinierte Domänen für die gleiche Stammdomäne hinzuzufügen.
+- Sie können alle zukünftigen Aufträge genehmigen, die über dasselbe Konto und für dieselbe Stammdomäne (beispielsweise „contoso.com“) getätigt werden. Dies empfiehlt sich, wenn Sie planen, weitere benutzerdefinierte Domänen für die gleiche Stammdomäne hinzuzufügen.
 
 - Sie können lediglich den spezifischen Hostnamen aus dieser Anforderung genehmigen. Für nachfolgende Anforderungen ist eine zusätzliche Genehmigung erforderlich.
 
@@ -239,7 +242,7 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
 5. *Benötige ich einen CAA-Datensatz (Certificate Authority Authorization) bei meinem DNS-Anbieter?*
 
-    Nein. Ein CAA-Datensatz ist momentan nicht erforderlich. Wenn Sie allerdings über einen solchen Datensatz verfügen, muss er DigiCert als gültige Zertifizierungsstelle enthalten.
+    Nein, aktuell wird kein CAA-Datensatz benötigt. Wenn Sie allerdings über einen solchen Datensatz verfügen, muss er DigiCert als gültige Zertifizierungsstelle enthalten.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
@@ -249,7 +252,7 @@ In den obigen Schritten haben Sie das HTTPS-Protokoll für Ihre benutzerdefinier
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrer **Azure Front Door**-Konfiguration.
 
-2. Klicken Sie in der Liste der Front-End-Hosts auf die benutzerdefinierte Domäne, für die Sie HTTPS deaktivieren möchten.
+2. Wählen Sie in der Liste der Front-End-Hosts die benutzerdefinierte Domäne aus, für die Sie HTTPS deaktivieren möchten.
 
 3. Klicken Sie auf **Deaktiviert**, um HTTPS zu deaktivieren, und klicken Sie dann auf **Speichern**.
 
