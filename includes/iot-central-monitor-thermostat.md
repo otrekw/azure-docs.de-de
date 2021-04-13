@@ -8,44 +8,63 @@ ms.topic: include
 ms.date: 03/12/2020
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 28f676892967abbd0da63d7a75ea3d164b87ce97
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 77fdaf297fff0e145b1dd53908887bc14f9d3f14
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96017487"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106491140"
 ---
+<!-- All needs updating -->
 Als Operator in Ihrer Azure IoT Central-Anwendung haben Sie folgende Möglichkeiten:
 
-* Anzeigen der vom Gerät gesendeten Telemetriedaten auf der Seite **Übersicht**:
+* Anzeigen der von den beiden Thermostatkomponenten gesendeten Telemetriedaten auf der Seite **Übersicht**:
 
     :::image type="content" source="media/iot-central-monitor-thermostat/view-telemetry.png" alt-text="Anzeigen der Gerätetelemetrie":::
 
-* Anzeigen der Geräteeigenschaften auf der Seite **Info**:
+* Anzeigen der Geräteeigenschaften auf der Seite **Info**. Auf dieser Seite werden die Eigenschaften der Geräteinformationskomponente und der beiden Thermostatkomponenten angezeigt:
 
     :::image type="content" source="media/iot-central-monitor-thermostat/about-properties.png" alt-text="Anzeigen von Geräteeigenschaften":::
 
 ## <a name="customize-the-device-template"></a>Anpassen der Gerätevorlage
 
-Als Lösungsentwickler können Sie die Gerätevorlage anpassen, die von IoT Central automatisch erstellt wurde, als das Thermostat eine Verbindung hergestellt hat.
+Als Lösungsentwickler können Sie die Gerätevorlage anpassen, die von IoT Central automatisch erstellt wurde, als der Temperaturregler eine Verbindung hergestellt hat.
 
 So fügen Sie eine Cloudeigenschaft hinzu, um den dem Gerät zugeordneten Kundennamen zu speichern:
 
-1. Navigieren Sie in Ihrer IoT Central-Anwendung auf der Seite **Gerätevorlagen** zur Gerätevorlage **Thermostat**.
+1. Navigieren Sie in Ihrer IoT Central-Anwendung auf der Seite **Gerätevorlagen** zur Gerätevorlage **Temperaturregler**.
 
-1. Wählen Sie in der Gerätevorlage **Thermostat** die Option **Cloudeigenschaften** aus.
+1. Wählen Sie in der Gerätevorlage **Temperaturregler** die Option **Cloudeigenschaften** aus.
 
 1. Wählen Sie **Cloudeigenschaft hinzufügen** aus. Geben Sie unter **Anzeigename** den *Kundennamen* ein, und wählen Sie unter **Schema** die Option **Zeichenfolge** aus. Klicken Sie dann auf **Speichern**.
 
-Wählen Sie in der Gerätevorlage die Option **Anpassen** aus, um die Darstellung des Befehls **Get Max-Min report** (Bericht zu Maximal-/Mindesttemperatur abrufen) in Ihrer IoT Central-Anwendung anzupassen. Ersetzen Sie **Get Max-Min report** (Bericht zu Maximal-/Mindesttemperatur abrufen) durch *Get status report* (Statusbericht abrufen). Klicken Sie dann auf **Speichern**.
+So passen Sie die Darstellung des Befehls **Get Max-Min report** (Bericht zu Maximal-/Mindesttemperatur abrufen) in Ihrer IoT Central-Anwendung an:
 
-Das Modell **Thermostat** enthält die schreibbare Eigenschaft **Target Temperature** (Zieltemperatur), und die Gerätevorlage enthält die Cloudeigenschaft **Customer Name** (Kundenname). Erstellen Sie eine Ansicht, die von einem Operator zum Bearbeiten dieser Eigenschaften verwendet werden kann:
+1. Wählen Sie in der Gerätevorlage die Option **Anpassen** aus.
+
+1. Ersetzen Sie unter **getMaxMinReport (thermostat1)** die Option *Get Max-Min report* (Bericht zu Maximal-/Mindesttemperatur abrufen) durch *Get thermostat1 status report* (Statusbericht für "thermostat1" abrufen).
+
+1. Ersetzen Sie unter **getMaxMinReport (thermostat2)** die Option *Get Max-Min report* (Bericht zu Maximal-/Mindesttemperatur abrufen) durch *Get thermostat2 status report* (Statusbericht für "thermostat2" abrufen).
+
+1. Wählen Sie **Speichern** aus.
+
+So passen Sie die Darstellung der schreibbaren Eigenschaften für die **Zieltemperatur** in der IoT Central-Anwendung an:
+
+1. Wählen Sie in der Gerätevorlage die Option **Anpassen** aus.
+
+1. Ersetzen Sie unter **targetTemperature (thermostat1)** die Option *Zieltemperatur* durch *Zieltemperatur (1)* .
+
+1. Ersetzen Sie unter **targetTemperature (thermostat2)** die Option *Zieltemperatur* durch *Zieltemperatur (2)* .
+
+1. Wählen Sie **Speichern** aus.
+
+Die Thermostatkomponenten im Modell **Thermostat** enthalten die schreibbare Eigenschaft **Target Temperature** (Zieltemperatur), und die Gerätevorlage enthält die Cloudeigenschaft **Customer Name** (Kundenname). Erstellen Sie eine Ansicht, die von einem Operator zum Bearbeiten dieser Eigenschaften verwendet werden kann:
 
 1. Wählen Sie **Ansichten** und anschließend die Kachel **Geräte- und Clouddaten bearbeiten** aus.
 
 1. Geben Sie _Properties_ (Eigenschaften) als Formularname ein.
 
-1. Wählen Sie die Eigenschaften **Target Temperature** (Zieltemperatur) und **Customer Name** (Kundenname) aus. Wählen Sie anschließend **Abschnitt hinzufügen** aus.
+1. Wählen Sie die Eigenschaften **Target Temperature (1)** (Zieltemperatur (1)), **Target Temperature (2)** (Zieltemperatur (2)) und **Customer Name** (Kundenname) aus. Wählen Sie anschließend **Abschnitt hinzufügen** aus.
 
 1. Speichern Sie die Änderungen.
 
@@ -57,7 +76,7 @@ Damit die von Ihnen vorgenommenen Anpassungen von einem Operator angezeigt und v
 
 Wählen Sie in der Gerätevorlage **Thermostat** die Option **Veröffentlichen** aus. Wählen Sie im Bereich **Diese Gerätevorlage für die Anwendung veröffentlichen** die Option **Veröffentlichen** aus.
 
-Ein Operator kann nun die Ansicht **Eigenschaften** verwenden, um die Eigenschaftswerte zu aktualisieren, und auf der Seite mit Gerätebefehlen einen Befehl namens **Get status report** (Statusbericht abrufen) aufrufen:
+Ein Operator kann nun die Ansicht **Eigenschaften** verwenden, um die Eigenschaftswerte zu aktualisieren, und auf der Seite mit Gerätebefehlen Befehle namens **Get thermostat1 status report** (Statusbericht für "thermostat1" abrufen) und **Get thermostat2 status report** (Statusbericht für "thermostat2" abrufen) aufrufen:
 
 * Aktualisieren schreibbarer Eigenschaftswerte auf der Seite **Properties** (Eigenschaften):
 

@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 2d65889a841655fe27994d3855f30f7a7e20e1ed
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4c7474b001284286ed589f6b7995db6bc7fd50af
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94647595"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075065"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Gewusst wie: Anpassen von in Token ausgegebenen Ansprüchen für eine bestimmte App in einem Mandanten (Vorschau)
 
@@ -304,7 +304,7 @@ Das ID-Element identifiziert, welche Eigenschaft in der Quelle den Wert für den
 | Benutzer | streetaddress | Anschrift |
 | Benutzer | postalcode | Postleitzahl |
 | Benutzer | preferredlanguage | Bevorzugte Sprache |
-| Benutzer | onpremisesuserprincipalname | Lokaler UPN |*
+| Benutzer | onpremisesuserprincipalname | Lokaler UPN |
 | Benutzer | mailNickname | E-Mail-Kontoname |
 | Benutzer | extensionattribute1 | Erweiterungsattribut 1 |
 | Benutzer | extensionattribute2 | Erweiterungsattribut 2 |
@@ -419,16 +419,6 @@ Auf der Grundlage der ausgewählten Methode wird eine Reihe von Eingaben und Aus
 | ExtractMailPrefix | Keine |
 | Join | Bei dem zu verknüpfenden Suffix muss es sich um eine überprüfte Domäne des Ressourcenmandanten handeln. |
 
-### <a name="custom-signing-key"></a>Benutzerdefinierte Signaturschlüssel
-
-Ein benutzerdefinierter Signaturschlüssel muss dem Dienstprinzipalobjekt zugewiesen werden, damit die Anspruchszuordnungsrichtlinie wirksam werden kann. Dies sorgt für die Bestätigung, dass Token vom Ersteller der Anspruchszuordnungsrichtlinie geändert wurden. Zudem werden Anwendungen vor Anspruchszuordnungsrichtlinien geschützt, die von böswilligen Akteuren erstellt wurden. Zum Hinzufügen eines benutzerdefinierten Signaturschlüssels können Sie mit dem Azure PowerShell-Cmdlet [`New-AzureADApplicationKeyCredential`](/powerShell/module/Azuread/New-AzureADApplicationKeyCredential) Anmeldeinformationen für einen Zertifikatschlüssel für Ihr Anwendungsobjekt erstellen.
-
-Apps mit aktivierter Anspruchszuordnung müssen ihre Tokensignaturschlüssel überprüfen, indem sie `appid={client_id}` an ihre [OpenID Connect-Metadatenanforderungen](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document) anfügen. Im Folgenden finden Sie das Format des OpenID Connect-Metadatendokuments, das Sie verwenden sollten:
-
-```
-https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration?appid={client-id}
-```
-
 ### <a name="cross-tenant-scenarios"></a>Mandantenübergreifende Szenarios
 
 Anspruchszuordnungsrichtlinien gelten nicht für Gastbenutzer. Wenn ein Gastbenutzer versucht, auf eine Anwendung zuzugreifen, deren Dienstprinzipal eine Anspruchszuordnungsrichtlinie zugewiesen wurde, wird das Standardtoken ausgestellt (die Richtlinie hat keine Auswirkung).
@@ -531,6 +521,33 @@ In diesem Beispiel erstellen Sie eine Richtlinie, die einen benutzerdefinierten 
       ``` powershell
       Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
       ```
+
+## <a name="security-considerations"></a>Sicherheitshinweise
+
+Anwendungen, die Token empfangen, basieren auf der Tatsache, dass die Anspruchswerte von Azure AD autoritativ ausgestellt werden und nicht manipuliert werden können. Wenn Sie jedoch den Tokeninhalt über Anspruchszuordnungsrichtlinien ändern, sind diese Annahmen möglicherweise nicht mehr korrekt. Anwendungen müssen explizit bestätigen, dass Token vom Ersteller der Anspruchszuordnungsrichtlinie geändert wurden, um sich vor Anspruchszuordnungsrichtlinien zu schützen, die von böswilligen Akteuren erstellt wurden. Dafür gibt es folgende Möglichkeiten:
+
+- Konfigurieren eines benutzerdefinierten Signaturschlüssels
+- Aktualisieren des Anwendungsmanifests, um zugeordnete Ansprüche zu akzeptieren
+ 
+Andernfalls gibt Azure AD einen [`AADSTS50146`Fehlercode](reference-aadsts-error-codes.md#aadsts-error-codes) zurück.
+
+### <a name="custom-signing-key"></a>Benutzerdefinierte Signaturschlüssel
+
+Zum Hinzufügen eines benutzerdefinierten Signaturschlüssels zum Dienstprinzipalobjekt können Sie mit dem Azure PowerShell-Cmdlet [`New-AzureADApplicationKeyCredential`](/powerShell/module/Azuread/New-AzureADApplicationKeyCredential) Anmeldeinformationen für einen Zertifikatschlüssel für Ihr Anwendungsobjekt erstellen.
+
+Apps mit aktivierter Anspruchszuordnung müssen ihre Tokensignaturschlüssel überprüfen, indem sie `appid={client_id}` an ihre [OpenID Connect-Metadatenanforderungen](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document) anfügen. Im Folgenden finden Sie das Format des OpenID Connect-Metadatendokuments, das Sie verwenden sollten:
+
+```
+https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration?appid={client-id}
+```
+
+### <a name="update-the-application-manifest"></a>Aktualisieren des Anwendungsmanifests
+
+Alternativ können Sie die `acceptMappedClaims`-Eigenschaft im [Anwendungsmanifest](reference-app-manifest.md) auf `true` festlegen. Laut Dokumentation für den [apiApplication-Ressourcentyp](/graph/api/resources/apiapplication#properties) kann eine Anwendung die Anspruchszuordnung verwenden, ohne einen benutzerdefinierten Signaturschlüssel anzugeben.
+
+Dazu muss die angeforderte Tokenzielgruppe einen verifizierten Domänennamen Ihres Azure AD-Mandanten verwenden. Dies bedeutet, dass Sie `Application ID URI` (im Anwendungsmanifest durch `identifierUris` dargestellt) beispielsweise auf `https://contoso.com/my-api` oder `https://contoso.onmicrosoft.com/my-api` (Verwendung des Standardmandantennamens) festlegen.
+
+Wenn Sie keine überprüfte Domäne verwenden, gibt Azure AD einen `AADSTS501461`-Fehlercode mit der Meldung aus, dass *AcceptMappedClaims nur für eine Tokenzielgruppe, die mit der Anwendungs-GUID übereinstimmt, oder einer Zielgruppe in den überprüften Domänen des Mandanten unterstützt wird, und Sie entweder den Ressourcenbezeichner ändern oder einen anwendungsspezifischen Signaturschlüssel verwenden müssen*.
 
 ## <a name="see-also"></a>Weitere Informationen
 

@@ -5,18 +5,18 @@ author: vineetvikram
 ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: tutorial
-ms.date: 03/10/2021
+ms.date: 03/25/2021
 ms.custom: mvc
-ms.openlocfilehash: ff83b488a6e3193eee8cb12af7de0a60b42e4c75
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: f461778f988fafeacc480e100b00be7d4c165dfb
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104771395"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105612516"
 ---
 # <a name="tutorial-discover-servers-running-on-hyper-v-with-azure-migrate-discovery-and-assessment"></a>Tutorial: Ermitteln von Servern in Hyper-V mit der Ermittlung und Bewertung von Azure Migrate
 
-Im Rahmen der Migration zu Azure ermitteln Sie den lokalen Bestand und die lokalen Workloads. 
+Im Rahmen der Migration zu Azure ermitteln Sie den lokalen Bestand und die lokalen Workloads.
 
 In diesem Tutorial wird gezeigt, wie Sie lokale Server auf Hyper-V-Hosts mit dem Azure Migrate-Tool zur Ermittlung und Bewertung und einer einfachen Azure Migrate-Appliance ermitteln. Sie stellen die Appliance als Server auf dem Hyper-V-Host bereit, um kontinuierlich Computer- und Leistungsmetadaten zu ermitteln.
 
@@ -42,7 +42,7 @@ Bevor Sie mit diesem Tutorial beginnen, überprüfen Sie, ob die folgenden Vorau
 --- | ---
 **Hyper-V-Host** | Hyper-V-Hosts mit Servern können eigenständig oder Teil eines Clusters sein.<br/><br/> Der Host muss unter Windows Server 2019, Windows Server 2016 oder Windows Server 2012 R2 ausgeführt werden.<br/><br/> Überprüfen Sie, ob eingehende Verbindungen an WinRM-Port 5985 (HTTP) zugelassen sind, damit die Appliance mithilfe einer CIM-Sitzung (Common Information Model) eine Verbindung herstellen und Servermetadaten und -leistungsdaten pullen kann.
 **Bereitstellung einer Appliance** | Der Hyper-V-Host benötigt Ressourcen, um einen Server für die Appliance zuzuordnen:<br/><br/> - 16 GB RAM, acht vCPUs und ca. 80 GB Speicherplatz auf dem Datenträger<br/><br/> - Einen externen virtuellen Switch und Internetzugriff für die Appliance (direkt oder über einen Proxy)
-**Server** | Server können unter einem beliebigen Windows- oder Linux-Betriebssystem ausgeführt werden. 
+**Server** | Server können unter einem beliebigen Windows- oder Linux-Betriebssystem ausgeführt werden.
 
 ## <a name="prepare-an-azure-user-account"></a>Vorbereiten eines Azure-Benutzerkontos
 
@@ -56,7 +56,7 @@ Wenn Sie gerade erst ein kostenloses Azure-Konto erstellt haben, sind Sie der Be
 
     ![Suchfeld, um nach dem Azure-Abonnement zu suchen](./media/tutorial-discover-hyper-v/search-subscription.png)
 
-2. Wählen Sie auf der Seite **Abonnements** das Abonnement aus, in dem Sie ein Projekt erstellen möchten. 
+2. Wählen Sie auf der Seite **Abonnements** das Abonnement aus, in dem Sie ein Projekt erstellen möchten.
 3. Wählen Sie im Abonnement die Option **Zugriffssteuerung (IAM)**  > **Zugriff überprüfen** aus.
 4. Suchen Sie unter **Zugriff überprüfen** nach dem entsprechenden Benutzerkonto.
 5. Klicken Sie unter **Rollenzuweisung hinzufügen** auf **Hinzufügen**.
@@ -101,7 +101,7 @@ Delegieren von Anmeldeinformationen, wenn sich Serverdatenträger auf SMB-Remote
     ```powershell
     C:\>CertUtil -HashFile C:\Users\Administrators\Desktop\ MicrosoftAzureMigrate-Hyper-V.ps1 SHA256
     ```
-3. Führen Sie nach der Überprüfung der Skriptintegrität das Skript mit dem folgenden PowerShell-Befehl auf jedem Hyper-V-Host aus:
+3. Führen Sie nach der Überprüfung der Skriptintegrität das Skript mit dem folgenden PowerShell-Befehl mit erhöhten Berechtigungen auf jedem Hyper-V-Host aus:
 
     ```powershell
     PS C:\Users\Administrators\Desktop> MicrosoftAzureMigrate-Hyper-V.ps1
@@ -176,7 +176,7 @@ Vergewissern Sie sich vor der Bereitstellung, dass die gezippte Datei sicher ist
 
         **Szenario** | **Download** | **SHA256**
         --- | --- | ---
-        Hyper-V (8,91 GB) | [Aktuelle Version](https://go.microsoft.com/fwlink/?linkid=2140422) |  40aa037987771794428b1c6ebee2614b092e6d69ac56d48a2bbc75eeef86c99a
+        Hyper-V (8,91 GB) | [Aktuelle Version](https://go.microsoft.com/fwlink/?linkid=2140422) |  79c151588de049cc102f61b910d6136e02324dc8d8a14f47772da351b46d9127
 
     - Azure Government:
 
@@ -293,5 +293,3 @@ Nach Abschluss der Ermittlung können Sie überprüfen, ob die Server im Portal 
 
 - [Bewerten Sie Server in der Hyper-V-Umgebung](tutorial-assess-hyper-v.md) für die Migration zu virtuellen Azure-Computern.
 - [Informieren Sie sich über die Daten](migrate-appliance.md#collected-data---hyper-v), die von der Appliance im Zuge der Ermittlung gesammelt werden.
-
-

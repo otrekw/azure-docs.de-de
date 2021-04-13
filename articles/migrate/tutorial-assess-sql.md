@@ -5,20 +5,17 @@ author: rashi-ms
 ms.author: rajosh
 ms.topic: tutorial
 ms.date: 02/07/2021
-ms.openlocfilehash: 9b33890d53f67eee870b42462a65b4a0b7ba9981
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: d4078d1403df01475c6055dded2bd012e97af98e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102053626"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105557988"
 ---
 # <a name="tutorial-assess-sql-instances-for-migration-to-azure-sql"></a>Tutorial: Bewerten von SQL-Instanzen für die Migration zu Azure SQL
 
 Im Rahmen Ihrer Migrationsjourney zu Azure bewerten Sie Ihre lokalen Workloads, um die Cloudbereitschaft zu messen, Risiken zu identifizieren und Kosten und Komplexität zu schätzen.
 In diesem Artikel wird veranschaulicht, wie Sie ermittelte SQL Server-Instanzdatenbanken als Vorbereitung auf die Migration zu Azure SQL bewerten, indem Sie das Azure Migrate-Tool für die Ermittlung und Bewertung verwenden.
-
-> [!Note]
-> Das Feature für die Ermittlung und Bewertung von SQL Server-Instanzen und -Datenbanken, die in Ihrer VMware-Umgebung ausgeführt werden, befindet sich nun in der Vorschauphase. Verwenden Sie [**diesen Link**](https://aka.ms/AzureMigrate/SQL), und erstellen Sie ein Projekt in der Region **Australien, Osten**, um dieses Feature zu testen. Falls Sie bereits über ein Projekt in „Australien, Osten“ verfügen und dieses Feature ausprobieren möchten, sollten Sie sicherstellen, dass Sie im Portal die [**Voraussetzungen**](how-to-discover-sql-existing-project.md) erfüllt haben.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -35,6 +32,8 @@ In diesem Tutorial lernen Sie Folgendes:
 - Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) erstellen, bevor Sie beginnen.
 
 - Bevor Sie dieses Tutorial zur Bewertung Ihrer SQL Server-Instanzen für die Migration zu Azure SQL durcharbeiten, sollten Sie sicherstellen, dass Sie die zu bewertenden SQL-Instanzen mit der Azure Migrate-Appliance ermittelt haben. Befolgen Sie hierfür [dieses Tutorial](tutorial-discover-vmware.md).
+- Falls Sie dieses Feature in einem vorhandenen Projekt ausprobieren möchten, sollten Sie sicherstellen, dass Sie die in diesem Artikel beschriebenen [Voraussetzungen](how-to-discover-sql-existing-project.md) erfüllt haben.
+
 
 ## <a name="run-an-assessment"></a>Durchführen einer Bewertung
 Führen Sie eine Bewertung wie folgt aus:
@@ -194,4 +193,4 @@ Informieren Sie sich über [Zuverlässigkeitsstufen](concepts-azure-sql-assessme
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Informieren Sie sich über die [Berechnung von Azure SQL-Bewertungen](concepts-azure-sql-assessment-calculation.md).
-- Steigen Sie in die Migration von SQL-Instanzen und -Datenbanken mit [Azure Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview) ein.
+- Steigen Sie in die Migration von SQL-Instanzen und -Datenbanken mit [Azure Database Migration Service](../dms/dms-overview.md) ein.

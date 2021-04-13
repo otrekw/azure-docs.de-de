@@ -9,38 +9,37 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/10/2020
+ms.date: 03/22/2021
 ms.author: jeedes
-ms.openlocfilehash: 7b4c8ab55a9b2afc9c1a215236fa1276a630a5cf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 42a6bc9bfb06f1c80b719bdda686ae111a8884ab
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97963620"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106221993"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---aperture"></a>Tutorial: Azure Active Directory-Integration mit Palo Alto Networks - Aperture
 
-In diesem Tutorial erfahren Sie, wie Sie Palo Alto Networks - Aperture in Azure Active Directory (Azure AD) integrieren.
-Die Integration von Palo Alto Networks - Aperture in Azure AD bietet Ihnen folgende Vorteile:
+In diesem Tutorial erfahren Sie, wie Sie Palo Alto Networks - Aperture in Azure Active Directory (Azure AD) integrieren. Die Integration von Palo Alto Networks - Aperture in Azure AD ermöglicht Folgendes:
 
-* Sie können in Azure AD steuern, wer Zugriff auf Palo Alto Networks - Aperture hat.
-* Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Palo Alto Networks - Aperture anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
-* Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
+* Steuern Sie in Azure AD, wer Zugriff auf Palo Alto Networks - Aperture hat.
+* Ermöglichen Sie es Benutzern, sich mit ihren Azure AD-Konten automatisch bei Palo Alto Networks - Aperture anzumelden.
+* Verwalten Sie Ihre Konten zentral im Azure-Portal.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um die Azure AD-Integration mit Palo Alto Networks - Aperture konfigurieren zu können, benötigen Sie Folgendes:
+Für die ersten Schritte benötigen Sie Folgendes:
 
-* Ein Azure AD-Abonnement Wenn Sie keine Azure AD-Umgebung besitzen, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern.
-* Ein Abonnement für Palo Alto Networks - Aperture, für das einmaliges Anmelden aktiviert ist
+* Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
+* Ein Abonnement für Palo Alto Networks - Aperture, für das einmaliges Anmelden (Single Sign-On, SSO) aktiviert ist
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-* Palo Alto Networks - Aperture unterstützt **SP-** und **IDP-initiiertes** einmaliges Anmelden.
+* Palo Alto Networks - Aperture unterstützt **SP**- und **IDP**-initiiertes einmaliges Anmelden.
 
-## <a name="adding-palo-alto-networks---aperture-from-the-gallery"></a>Hinzufügen von Palo Alto Networks - Aperture aus dem Katalog
+## <a name="add-palo-alto-networks---aperture-from-the-gallery"></a>Hinzufügen von Palo Alto Networks - Aperture aus dem Katalog
 
 Zum Konfigurieren der Integration von Palo Alto Networks - Aperture in Azure AD müssen Sie Palo Alto Networks - Aperture aus dem Katalog zur Liste mit den verwalteten SaaS-Apps hinzufügen.
 
@@ -59,10 +58,10 @@ Damit einmaliges Anmelden funktioniert, muss zwischen einem Azure AD-Benutzer u
 Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Palo Alto Networks - Aperture die folgenden Schritte aus:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
-    * **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-    * **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+    1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+    1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
 2. **[Konfigurieren des einmaligen Anmeldens für Palo Alto Networks - Aperture](#configure-palo-alto-networks---aperture-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
-    * **[Erstellen eines Palo Alto Networks - Aperture-Testbenutzers](#create-palo-alto-networks---aperture-test-user)**, um ein Pendant von Britta Simon in Palo Alto Networks - Aperture zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist
+    1. **[Erstellen eines Palo Alto Networks - Aperture-Testbenutzers](#create-palo-alto-networks---aperture-test-user)**, um ein Pendant von Britta Simon in Palo Alto Networks - Aperture zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist
 3. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
@@ -77,15 +76,11 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP-initiierten** Modus konfigurieren möchten:
 
-    ![Screenshot: „Grundlegende SAML-Konfiguration“ mit den hervorgehobenen Textfeldern „Bezeichner“ und „Antwort-URL“ und der ausgewählten Aktion „Speichern“](common/idp-intiated.png)
-
     a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `https://<subdomain>.aperture.paloaltonetworks.com/d/users/saml/metadata`
 
     b. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://<subdomain>.aperture.paloaltonetworks.com/d/users/saml/auth`
 
 5. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
-
-    ![SSO-Informationen zur Domäne und zu den URLs für Palo Alto Networks - Aperture (SP)](common/metadata-upload-additional-signon.png)
 
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<subdomain>.aperture.paloaltonetworks.com/d/users/saml/sign_in`
 
@@ -130,15 +125,15 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 2. Klicken Sie auf der oberen Menüleiste auf **SETTINGS** (EINSTELLUNGEN).
 
-    ![Registerkarte „Settings“ (Einstellungen)](./media/paloaltonetworks-aperture-tutorial/tutorial_paloaltonetwork_settings.png)
+    ![Registerkarte „Settings“ (Einstellungen)](./media/paloaltonetworks-aperture-tutorial/settings.png)
 
 3. Navigieren Sie zum Abschnitt **APPLICATION** (ANWENDUNG), und klicken Sie links im Menü auf **Authentication** (Authentifizierung).
 
-    ![Registerkarte „Authentication“ (Authentifizierung)](./media/paloaltonetworks-aperture-tutorial/tutorial_paloaltonetwork_auth.png)
+    ![Registerkarte „Authentication“ (Authentifizierung)](./media/paloaltonetworks-aperture-tutorial/authentication.png)
     
 4. Führen Sie auf der Seite **Authentication** (Authentifizierung) die folgenden Schritte aus:
     
-    ![Registerkarte „Authentication“ (Authentifizierung)](./media/paloaltonetworks-aperture-tutorial/tutorial_paloaltonetwork_singlesignon.png)
+    ![Registerkarte „Authentication“ (Authentifizierung)](./media/paloaltonetworks-aperture-tutorial/tab.png)
 
     a. Aktivieren Sie im Feld **Single Sign-On** (Einmaliges Anmelden) die Option **Enable Single Sign-On (Supported SSP Providers are Okta, One login)** (Einmaliges Anmelden aktivieren (unterstützte SSP-Anbieter: Okta, Onelogin)).
 

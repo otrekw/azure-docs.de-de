@@ -5,15 +5,15 @@ services: cdn
 author: asudbring
 ms.service: azure-cdn
 ms.topic: tutorial
-ms.date: 01/27/2021
+ms.date: 03/26/2021
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 275afc504a5e7b92ae3274c02372eee6b488c782
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 6f77bac93b7bb5e3319409c01e328c73cd08a9a0
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102616399"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106058951"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>Tutorial: Konfigurieren von HTTPS in einer benutzerdefinierten Azure CDN-Domäne
 
@@ -172,15 +172,18 @@ Gewähren Sie Azure CDN Berechtigungen für den Zugriff auf die Zertifikate (Geh
 
 3. Wählen Sie unter „Zertifikatverwaltungstyp“ die Option **Eigenes Zertifikat verwenden** aus. 
 
-    ![Konfigurieren Ihres Zertifikats](./media/cdn-custom-ssl/cdn-configure-your-certificate.png)
+    :::image type="content" source="./media/cdn-custom-ssl/cdn-configure-your-certificate.png" alt-text="Screenshot: Konfigurieren des Zertifikats für den CDN-Endpunkt":::
 
-4. Wählen Sie einen Schlüsseltresor, ein Zertifikat (Geheimnis) und eine Zertifikatversion aus.
+4. Wählen Sie einen Schlüsseltresor, ein Zertifikat/Geheimnis und eine Zertifikat-/Geheimnisversion aus.
 
     Das Azure CDN listet folgende Informationen auf: 
     - Die Schlüsseltresorkonten für Ihre Abonnement-ID 
-    - Die Zertifikate (Geheimnisse) unter dem ausgewählten Schlüsseltresor 
-    - Die verfügbaren Zertifikatversionen 
+    - Die Zertifikate/Geheimnisse unter dem ausgewählten Schlüsseltresor 
+    - Die verfügbaren Zertifikat-/Geheimnisversionen
  
+    > [!NOTE]
+    > Legen Sie die Zertifikat-/Geheimnisversion auf „Neueste“ fest, damit das Zertifikat automatisch zur neuesten Version rotiert wird, wenn eine neuere Version des Zertifikats in Ihrer Key Vault-Instanz verfügbar ist. Wenn eine bestimmte Version ausgewählt ist, müssen Sie die neue Version für die Zertifikatrotation manuell erneut auswählen. Es dauert bis zu 24 Stunden, bis die neue Version des Zertifikats/Geheimnisses bereitgestellt wird. 
+   
 5. Klicken Sie auf **Ein**, um HTTPS zu aktivieren.
   
 6. Wenn Sie Ihr eigenes Zertifikat verwenden, ist keine Domänenüberprüfung erforderlich. Fahren Sie mit [Warten auf die Weitergabe](#wait-for-propagation) fort.
@@ -206,7 +209,7 @@ Ihr CNAME-Eintrag muss das folgende Format aufweisen:
 * *Name* ist Ihr benutzerdefinierter Domänenname.
 * *Wert* ist der Hostname Ihres CDN-Endpunkts.
 
-| Name            | Typ  | Wert                 |
+| Name            | type  | Wert                 |
 |-----------------|-------|-----------------------|
 | <www.contoso.com> | CNAME | contoso.azureedge.net |
 

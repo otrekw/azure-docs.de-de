@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/09/2021
+ms.date: 04/02/2021
 ms.author: jeedes
-ms.openlocfilehash: f7167df523ca6f84eacd92fc7af1011e8b3b00b6
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: ba6eb0a1b607fc05c4d0c660dd3d7016f81ef4b3
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104950334"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449493"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cornerstone-single-sign-on"></a>Tutorial: Integration des einmaligen Anmeldens von Azure Active Directory (Single Sign-On, SSO) mit Cornerstone Single Sign-On
 
@@ -123,49 +123,11 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 ## <a name="configure-cornerstone-single-sign-on-sso"></a>Konfigurieren des einmaligen Anmeldens für Cornerstone Single Sign-On SSO
 
-1. Melden Sie sich bei Cornerstone Single Sign-On SSO als Administrator an.
-
-1. Navigieren Sie zur **Admin > Tools** (Verwaltung > Tools).
-
-    ![Screenshot: Seite „Admin“ (Verwaltung)](./media/cornerstone-ondemand-tutorial/admin.png)
-
-1. Wählen Sie unter **Configuration Tools** (Konfigurationstools) den Bereich **EDGE** aus.
-
-    ![Screenshot: Bereich „EDGE“](./media/cornerstone-ondemand-tutorial/edge-panel.png)
-
-1. Wählen Sie im Abschnitt **Integrate** (Integrieren) die Option „Single Sign-On“ (Einmaliges Anmelden) aus.
-
-    ![Screenshot: Option „Single Sign-On“ (Einmaliges Anmelden)](./media/cornerstone-ondemand-tutorial/single-sign-on.png)
-
-1. Klicken Sie auf die Schaltfläche **Add SSO** (SSO hinzufügen). Wählen Sie in dem unten gezeigten Popupfenster **Inbound SAML** (SAML (eingehend)) aus, und klicken Sie dann auf **Add** (Hinzufügen).
-
-    ![Screenshot: Inbound SAML (SAML (eingehend))](./media/cornerstone-ondemand-tutorial/inbound.png)
-
-1. Führen Sie die folgenden Schritte auf der im Anschluss angegebenen Seite aus:
-
-    ![Screenshot: Konfigurationsabschnitt für Cornerstone](./media/cornerstone-ondemand-tutorial/configuration.png)
-
-    a. Klicken Sie unter **General Properties** (Allgemeine Eigenschaften) auf **Upload File** (Datei hochladen), um die Datei **Zertifikat (Base64)** hochzuladen, die Sie aus dem Azure-Portal heruntergeladen haben.
-
-    b. Aktivieren Sie das Kontrollkästchen **Enable** (Aktivieren), und fügen Sie im Textfeld **IDP URL** (IDP-URL) den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
-
-    c. Klicken Sie auf **Speichern**.
+Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Cornerstone Single Sign-On** müssen Sie das heruntergeladene **Zertifikat (Base64)** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von Cornerstone Single Sign-On](mailto:moreinfo@csod.com) senden oder sich an Ihren Partner wenden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
 ### <a name="create-cornerstone-single-sign-on-test-user"></a>Erstellen eines Cornerstone Single Sign-On-Testbenutzers
 
 In diesem Abschnitt wird in Cornerstone Single Sign-On ein Benutzer namens B. Simon erstellt. Cornerstone Single Sign-On unterstützt die automatische Benutzerbereitstellung (standardmäßig aktiviert). Weitere Details zur Konfiguration der automatischen Benutzerbereitstellung finden Sie [hier](./cornerstone-ondemand-provisioning-tutorial.md).
-
-**Wenn Sie einen Benutzer manuell erstellen möchten, führen Sie die folgenden Schritte aus:**
-
-1. Melden Sie sich bei Cornerstone Single Sign-On SSO als Administrator an.
-
-1. Navigieren Sie zu **Admin > Users** (Verwaltung > Benutzer), und klicken Sie unten auf der Seite auf **Add User** (Benutzer hinzufügen).
-
-    ![Screenshot: Erstellung eines Cornerstone-Testbenutzers](./media/cornerstone-ondemand-tutorial/user-1.png)
-
-1. Füllen Sie auf der Seite **Add new user** (Neuen Benutzer hinzufügen) die erforderlichen Felder aus, und klicken Sie auf **Save** (Speichern).
-
-    ![Screenshot: Erstellung eines Testbenutzers mit den erforderlichen Feldern](./media/cornerstone-ondemand-tutorial/user-2.png)
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 

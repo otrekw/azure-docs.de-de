@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: wiassaf, sstein
 ms.date: 06/25/2019
-ms.openlocfilehash: 453d7e118b946d60eb3d84c6a66abdbea7db2410
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ca1a2edec70b13f111ffd89278aa39d1ddea7f67
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96499219"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105035641"
 ---
 # <a name="dynamically-scale-database-resources-with-minimal-downtime"></a>Dynamisches Skalieren von Datenbankressourcen bei minimaler Downtime
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -60,6 +60,9 @@ In Azure SQL Managed Instance ist ebenfalls ein Skalieren möglich:
 - [SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md) verwendet den Modus [Virtuelle Kerne](../managed-instance/sql-managed-instance-paas-overview.md#vcore-based-purchasing-model) und ermöglicht Ihnen das Definieren der maximalen Anzahl von CPU-Kernen und des maximalen Speichers für Ihre Instanz. Alle Datenbanken innerhalb der verwalteten Instanz nutzen die der Instanz zugeordneten Ressourcen gemeinsam.
 
 Wenn Sie die Aktion zum Hoch- oder Herunterskalieren in einer der Varianten initiieren, wird der Datenbank-Engine-Prozess neu gestartet und bei Bedarf auf einen anderen virtuellen Computer verschoben. Das Verschieben des Datenbank-Engine-Prozesses auf einen neuen virtuellen Computer ist ein **Onlineprozess**, bei dem Sie den vorhandenen Azure SQL-Datenbank-Dienst weiterhin verwenden können, während der Prozess ausgeführt wird. Sobald die Zieldatenbank-Engine vollständig initialisiert und zum Verarbeiten der Abfragen bereit ist, werden die Verbindungen [von der Quell- zur Zieldatenbank-Engine umgeleitet](single-database-scale.md#impact).
+
+> [!NOTE]
+> Es wird davon abgeraten, dass Sie Ihre verwaltete Instanz skalieren, wenn eine Transaktion mit langer Laufzeit – z. B. ein Datenimport, Datenverarbeitungsaufträge, eine Indexneuerstellung usw. – ausgeführt wird oder wenn es eine aktive Verbindung mit der Instanz gibt. Wenn Sie verhindern möchten, dass die Skalierung länger als üblich dauert, sollten Sie die Instanz nach Abschluss aller Vorgänge mit langer Laufzeit skalieren.
 
 > [!NOTE]
 > Sie müssen mit einer kurzen Unterbrechung der Verbindung rechnen, wenn das Hoch-/Herunterskalieren abgeschlossen ist. Wenn Sie [Wiederholungslogik bei vorübergehenden Standardfehlern](troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors) implementiert haben, bemerken Sie den Failover nicht.

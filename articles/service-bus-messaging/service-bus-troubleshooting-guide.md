@@ -3,12 +3,12 @@ title: Leitfaden zur Problembehandlung für Azure Service Bus | Microsoft-Dokume
 description: Lernen Sie Tipps zur Problembehandlung und Empfehlungen für einige Probleme kennen, die bei der Verwendung von Azure Service Bus auftreten können.
 ms.topic: article
 ms.date: 03/03/2021
-ms.openlocfilehash: 7de39e5a3a7b6cbb8e5fa504f073023853e18366
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b44587747a59acb3c0124c0a76b63de68d6d8ae7
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102179696"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105031289"
 ---
 # <a name="troubleshooting-guide-for-azure-service-bus"></a>Leitfaden zur Problembehandlung für Azure Service Bus
 In diesem Artikel finden Sie Tipps zur Problembehandlung und Empfehlungen für einige Probleme, die bei der Verwendung von Azure Service Bus auftreten können. 
@@ -98,6 +98,25 @@ Die Anzahl von Token, die zum Senden und Empfangen von Nachrichten über eine ei
 
 ### <a name="resolution"></a>Lösung
 Öffnen Sie eine neue Verbindung mit dem Service Bus-Namespace, um weitere Nachrichten senden zu können.
+
+## <a name="adding-virtual-network-rule-using-powershell-fails"></a>Fehler beim Hinzufügen einer VNET-Regel mithilfe von PowerShell
+
+### <a name="symptoms"></a>Symptome
+Sie haben zwei Subnetze aus einem einzelnen virtuellen Netzwerk in einer VNET-Regel konfiguriert. Wenn Sie versuchen, ein Subnetz mithilfe des Cmdlets [Remove-AzServiceBusVirtualNetworkRule](/powershell/module/az.servicebus/remove-azservicebusvirtualnetworkrule) zu entfernen, wird das Subnetz nicht aus der VNET-Regel entfernt. 
+
+```azurepowershell-interactive
+Remove-AzServiceBusVirtualNetworkRule -ResourceGroupName $resourceGroupName -Namespace $serviceBusName -SubnetId $subnetId
+```
+
+### <a name="cause"></a>Ursache
+Die Azure Resource Manager-ID, die Sie für das Subnetz angegeben haben, ist möglicherweise ungültig. Dies kann der Fall sein, wenn sich das virtuelle Netzwerk in einer anderen Ressourcengruppe als der Service Bus-Namespace befindet. Wenn Sie die Ressourcengruppe des virtuellen Netzwerks nicht explizit angeben, erstellt der CLI-Befehl die Azure Resource Manager-ID mithilfe der Ressourcengruppe des Service Bus-Namespace. Daher schlägt das Entfernen des Subnetzes aus der Netzwerkregel fehl. 
+
+### <a name="resolution"></a>Lösung
+Geben Sie die vollständige Azure Resource Manager-ID des Subnetzes an, die den Namen der Ressourcengruppe enthält, in der sich das virtuelle Netzwerk befindet. Beispiel:
+
+```azurepowershell-interactive
+Remove-AzServiceBusVirtualNetworkRule -ResourceGroupName myRG -Namespace myNamespace -SubnetId "/subscriptions/SubscriptionId/resourcegroups/ResourceGroup/myOtherRG/providers/Microsoft.Network/virtualNetworks/myVNet/subnets/mySubnet"
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen finden Sie in folgenden Artikeln: 

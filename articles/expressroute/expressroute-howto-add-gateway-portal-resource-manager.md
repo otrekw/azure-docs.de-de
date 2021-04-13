@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/03/2021
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 6c6969fdf413c4eb5e7bbcf046fc397834d6c0a2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f81446111ab87b280d50caceb93beefc7aedef3b
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102038916"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106110324"
 ---
 # <a name="tutorial-configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>Tutorial: Konfigurieren eines virtuellen Netzwerkgateways für ExpressRoute mit dem Azure-Portal
 > [!div class="op_single_selector"]
@@ -51,7 +51,7 @@ Bei den Schritten für diese Aufgabe wird ein VNet basierend auf den Werten verw
 Sie können sich ein [Video](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-vpn-gateway-for-your-virtual-network) über diese Schritte ansehen, bevor Sie mit der Konfiguration beginnen.
 
 > [!IMPORTANT]
-> Die IPv6-Unterstützung für privates Peering befindet sich zurzeit in **Public Preview**. Wenn Sie Ihr virtuelles Netzwerk mit einer ExpressRoute-Verbindung verbinden möchten, bei der IPv6-basiertes privates Peering konfiguriert ist, stellen Sie sicher, dass Ihr virtuelles Netzwerk ein dualer Stapel ist und die Richtlinien für [IPv6 für Azure VNet](https://docs.microsoft.com/azure/virtual-network/ipv6-overview) einhält.
+> Die IPv6-Unterstützung für privates Peering befindet sich zurzeit in **Public Preview**. Wenn Sie Ihr virtuelles Netzwerk mit einer ExpressRoute-Verbindung verbinden möchten, bei der IPv6-basiertes privates Peering konfiguriert ist, stellen Sie sicher, dass Ihr virtuelles Netzwerk ein dualer Stapel ist und die Richtlinien für [IPv6 für Azure VNet](../virtual-network/ipv6-overview.md) einhält.
 > 
 > 
 
@@ -63,7 +63,7 @@ Sie können sich ein [Video](https://azure.microsoft.com/documentation/videos/az
    
     :::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/add-gateway-subnet.png" alt-text="Hinzufügen des Gatewaysubnetzes":::
 
-1. Als **Name** für Ihr Subnetz wird automatisch der Wert „GatewaySubnet“ eingefügt. Dieser Wert ist erforderlich, damit Azure das Subnetz als Gatewaysubnetz erkennt. Passen Sie die automatisch ausgefüllten Werte für **Adressbereich** an Ihre Konfigurationsanforderungen an. Es empfiehlt sich, ein Gatewaysubnetz mit /27 oder größer (/26, /25 usw.) zu erstellen.
+1. Als **Name** für Ihr Subnetz wird automatisch der Wert „GatewaySubnet“ eingefügt. Dieser Wert ist erforderlich, damit Azure das Subnetz als Gatewaysubnetz erkennt. Passen Sie die automatisch ausgefüllten Werte für **Adressbereich** an Ihre Konfigurationsanforderungen an. Es empfiehlt sich, ein Gatewaysubnetz mit /27 oder größer (/26, /25 usw.) zu erstellen. Wenn Sie 16 ExpressRoute-Leitungen mit Ihrem Gateway verbinden möchten, **müssen** Sie ein Gatewaysubnetz mit einer Größe von mindestens /26 erstellen.
 
     Wenn Sie ein virtuelles Netzwerk für den dualen Stapel verwenden und IPv6-basiertes privates Peering über ExpressRoute verwenden möchten, klicken Sie auf **IPv6-Adressraum hinzufügen**, und geben Sie die Werte für den **IPv6-Adressbereich** ein.
 

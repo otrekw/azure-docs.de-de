@@ -10,13 +10,13 @@ ms.topic: reference
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein
-ms.date: 01/22/2021
-ms.openlocfilehash: 619f4deee81c97f2d7a0b4359e2b999c476b1ae2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/23/2021
+ms.openlocfilehash: fa21acc09858f4468e53788428e4928dc381a94e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98737556"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105107855"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-purchasing-model"></a>Ressourcenlimits für Pools für elastische Datenbanken, die das V-Kern-Kaufmodell verwenden
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -47,7 +47,7 @@ Sie können im [Azure-Portal](elastic-pool-manage.md#azure-portal), mit [PowerSh
 |Arbeitsspeicher (GB)|7|14|21|28|35|42|
 |Max. Anzahl von Datenbanken pro Pool <sup>1</sup>|100|200|500|500|500|500|
 |Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|
-|In-Memory-OLTP-Speicher (GB)|–|–|–|–|–|–|
+|In-Memory-OLTP-Speicher (GB)|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|–|
 |Maximale Datengröße (GB)|512|756|1536|1536|1536|2048|
 |Maximale Protokollgröße|154|227|461|461|461|614|
 |Max. Datengröße von TempDB (GB)|32|64|96|128|160|192|
@@ -60,8 +60,8 @@ Sie können im [Azure-Portal](elastic-pool-manage.md#azure-portal), mit [PowerSh
 |Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|30.000|30.000|
 |Min/Max. V-Kern-Auswahl pro Datenbank für Pools für elastische Datenbanken|0, 0,25, 0,5, 1|0, 0,25, 0,5, 1, 2|0, 0,25, 0,5, 1...3|0, 0,25, 0,5, 1...4|0, 0,25, 0,5, 1...5|0, 0,25, 0,5, 1...6|
 |Anzahl von Replikaten|1|1|1|1|1|1|
-|Multi-AZ|–|–|–|–|–|–|
-|Horizontale Leseskalierung|–|–|–|–|–|–|
+|Multi-AZ|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|–|
+|Horizontale Leseskalierung|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|–|
 |Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
 
 <sup>1</sup> Weitere Überlegungen finden Sie unter [Ressourcenverwaltung in umfangreichen Pools für elastische Datenbanken](elastic-pool-resource-management.md).
@@ -79,21 +79,21 @@ Sie können im [Azure-Portal](elastic-pool-manage.md#azure-portal), mit [PowerSh
 |Arbeitsspeicher (GB)|49|56|63|70|112|159,5|
 |Max. Anzahl von Datenbanken pro Pool <sup>1</sup>|500|500|500|500|500|500|
 |Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|
-|In-Memory-OLTP-Speicher (GB)|–|–|–|–|–|–|
+|In-Memory-OLTP-Speicher (GB)|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|–|
 |Maximale Datengröße (GB)|2048|2048|2048|2048|3.584|4096|
 |Maximale Protokollgröße (GB)|614|614|614|614|1075|1229|
 |Max. Datengröße von TempDB (GB)|224|256|288|320|512|768|
 |Speichertyp|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|
 |E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
 |Max. IOPS für Daten pro Pool <sup>2</sup>|2800|3200|3600|4000|6400|9600|
-|Maximale Protokollrate pro Pool (MBit/s)|42|48|48|48|48|48|
+|Maximale Protokollrate pro Pool (MBit/s)|42|48|54|60|62,5|62,5|
 |Max. gleichzeitige Worker pro Pool (Anforderungen) <sup>3</sup>|1470|1680|1890|2100|3360|5040|
 |Max. Anzahl von gleichzeitigen Anmeldungen (Anforderungen) <sup>3</sup>|1470|1680|1890|2100|3360|5040|
 |Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|30.000|30.000|
 |Min/Max. V-Kern-Auswahl pro Datenbank für Pools für elastische Datenbanken|0, 0,25, 0,5, 1...7|0, 0,25, 0,5, 1...8|0, 0,25, 0,5, 1...9|0, 0,25, 0,5, 1...10|0, 0,25, 0,5, 1...10, 16|0, 0,25, 0,5, 1...10, 16, 24|
 |Anzahl von Replikaten|1|1|1|1|1|1|
-|Multi-AZ|–|–|–|–|–|–|
-|Horizontale Leseskalierung|–|–|–|–|–|–|
+|Multi-AZ|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|–|
+|Horizontale Leseskalierung|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|–|
 |Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
 
 <sup>1</sup> Weitere Überlegungen finden Sie unter [Ressourcenverwaltung in umfangreichen Pools für elastische Datenbanken](elastic-pool-resource-management.md).
@@ -113,21 +113,21 @@ Sie können im [Azure-Portal](elastic-pool-manage.md#azure-portal), mit [PowerSh
 |Arbeitsspeicher (GB)|10,4|20,8|31,1|41,5|51,9|62,3|72,7|
 |Max. Anzahl von Datenbanken pro Pool <sup>1</sup>|100|200|500|500|500|500|500|
 |Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
-|In-Memory-OLTP-Speicher (GB)|–|–|–|–|–|–|–|
+|In-Memory-OLTP-Speicher (GB)|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|–|
 |Maximale Datengröße (GB)|512|756|1536|1536|1536|2048|2048|
 |Maximale Protokollgröße (GB)|154|227|461|461|461|614|614|
 |Max. Datengröße von TempDB (GB)|64|128|192|256|320|384|448|
 |Speichertyp|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|
 |E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
 |Max. IOPS für Daten pro Pool <sup>2</sup>|800|1600|2400|3200|4000|4800|5600|
-|Maximale Protokollrate pro Pool (MBit/s)|12|24|36|48|48|48|48|
+|Maximale Protokollrate pro Pool (MBit/s)|12|24|36|48|60|62,5|62,5|
 |Max. gleichzeitige Worker pro Pool (Anforderungen) <sup>3</sup>|210|420|630|840|1050|1260|1470|
 |Maximale Anzahl von gleichzeitigen Anmeldungen pro Pool (Anforderungen) <sup>3</sup>|210|420|630|840|1050|1260|1470|
 |Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|30.000|30.000|30.000|
 |Min/Max. V-Kern-Auswahl pro Datenbank für Pools für elastische Datenbanken|0, 0,25, 0,5, 1, 2|0, 0,25, 0,5, 1...4|0, 0,25, 0,5, 1...6|0, 0,25, 0,5, 1...8|0, 0,25, 0,5, 1...10|0, 0,25, 0,5, 1...12|0, 0,25, 0,5, 1...14|
 |Anzahl von Replikaten|1|1|1|1|1|1|1|
 |Multi-AZ|[In der Vorschau verfügbar](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[In der Vorschau verfügbar](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[In der Vorschau verfügbar](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[In der Vorschau verfügbar](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[In der Vorschau verfügbar](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[In der Vorschau verfügbar](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[In der Vorschau verfügbar](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|
-|Horizontale Leseskalierung|–|–|–|–|–|–|–|
+|Horizontale Leseskalierung|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|–|
 |Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
 
 <sup>1</sup> Weitere Überlegungen finden Sie unter [Ressourcenverwaltung in umfangreichen Pools für elastische Datenbanken](elastic-pool-resource-management.md).
@@ -145,21 +145,21 @@ Sie können im [Azure-Portal](elastic-pool-manage.md#azure-portal), mit [PowerSh
 |Arbeitsspeicher (GB)|83|93,4|103,8|124,6|166,1|207,6|415,2|
 |Max. Anzahl von Datenbanken pro Pool <sup>1</sup>|500|500|500|500|500|500|500|
 |Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
-|In-Memory-OLTP-Speicher (GB)|–|–|–|–|–|–|–|
+|In-Memory-OLTP-Speicher (GB)|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|–|
 |Maximale Datengröße (GB)|2048|3072|3072|3072|4096|4096|4096|
 |Maximale Protokollgröße (GB)|614|922|922|922|1229|1229|1229|
 |Max. Datengröße von TempDB (GB)|512|576|640|768|1024|1280|2560|
 |Speichertyp|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|
 |E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
 |Max. IOPS für Daten pro Pool <sup>2</sup> |6\.400|7\.200|8\.000|9\.600|12.800|16.000|16.000|
-|Maximale Protokollrate pro Pool (MBit/s)|48|48|48|48|48|48|48|
+|Maximale Protokollrate pro Pool (MBit/s)|62,5|62,5|62,5|62,5|62,5|62,5|62,5|
 |Max. gleichzeitige Worker pro Pool (Anforderungen) <sup>3</sup>|1680|1890|2100|2520|3360|4.200|8.400|
 |Maximale Anzahl von gleichzeitigen Anmeldungen pro Pool (Anforderungen) <sup>3</sup>|1680|1890|2100|2520|3360|4.200|8.400|
 |Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|30.000|30.000|30.000|
 |Min/Max. V-Kern-Auswahl pro Datenbank für Pools für elastische Datenbanken|0, 0,25, 0,5, 1...16|0, 0,25, 0,5, 1...18|0, 0,25, 0,5, 1...20|0, 0,25, 0,5, 1...20, 24|0, 0,25, 0,5, 1...20, 24, 32|0, 0,25, 0,5, 1...16, 24, 32, 40|0, 0,25, 0,5, 1...16, 24, 32, 40, 80|
 |Anzahl von Replikaten|1|1|1|1|1|1|1|
 |Multi-AZ|[In der Vorschau verfügbar](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[In der Vorschau verfügbar](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[In der Vorschau verfügbar](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[In der Vorschau verfügbar](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[In der Vorschau verfügbar](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[In der Vorschau verfügbar](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[In der Vorschau verfügbar](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|
-|Horizontale Leseskalierung|–|–|–|–|–|–|–|
+|Horizontale Leseskalierung|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|–|
 |Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
 
 <sup>1</sup> Weitere Überlegungen finden Sie unter [Ressourcenverwaltung in umfangreichen Pools für elastische Datenbanken](elastic-pool-resource-management.md).
@@ -179,23 +179,22 @@ Sie können im [Azure-Portal](elastic-pool-manage.md#azure-portal), mit [PowerSh
 |Arbeitsspeicher (GB)|15,1|18,9|22,7|26,5|30,2|
 |Max. Anzahl von Datenbanken pro Pool <sup>1</sup>|500|500|500|500|500|
 |Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|
-|In-Memory-OLTP-Speicher (GB)|–|–|–|–|–|
+|In-Memory-OLTP-Speicher (GB)|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|–|
 |Maximale Datengröße (GB)|1024|1024|1024|1024|1536|
 |Maximale Protokollgröße (GB)|336|336|336|336|512|
-|Max. Datengröße von TempDB (GB)|333|333|333|333|333|
+|Max. Datengröße von TempDB (GB)|37|46|56|65|74|
 |Speichertyp|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|
 |E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
 |Max. IOPS für Daten pro Pool <sup>2</sup>|2560|3200|3840|4480|5120|
-|Maximale Protokollrate pro Pool (MBit/s)|48|48|48|48|48|
+|Maximale Protokollrate pro Pool (MBit/s)|48|60|62,5|62,5|62,5|
 |Max. gleichzeitige Worker pro Pool (Anforderungen) <sup>3</sup>|400|500|600|700|800|
 |Maximale Anzahl von gleichzeitigen Anmeldungen pro Pool (Anforderungen) <sup>3</sup>|800|1000|1200|1400|1600|
 |Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|30.000|
 |Min/Max. V-Kern-Auswahl pro Datenbank für Pools für elastische Datenbanken|0–8|0–10|0–12|0–14|0–16|
 |Anzahl von Replikaten|1|1|1|1|1|
-|Multi-AZ|–|–|–|–|–|
-|Horizontale Leseskalierung|–|–|–|–|–|
+|Multi-AZ|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|–|
+|Horizontale Leseskalierung|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|–|
 |Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
-
 
 <sup>1</sup> Weitere Überlegungen finden Sie unter [Ressourcenverwaltung in umfangreichen Pools für elastische Datenbanken](elastic-pool-resource-management.md).
 
@@ -212,21 +211,21 @@ Sie können im [Azure-Portal](elastic-pool-manage.md#azure-portal), mit [PowerSh
 |Arbeitsspeicher (GB)|34,0|37,8|45,4|60,5|68,0|136,0|
 |Max. Anzahl von Datenbanken pro Pool <sup>1</sup>|500|500|500|500|500|
 |Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|
-|In-Memory-OLTP-Speicher (GB)|–|–|–|–|–|–|
+|In-Memory-OLTP-Speicher (GB)|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|–|
 |Maximale Datengröße (GB)|1536|1536|1536|3072|3072|4096|
 |Maximale Protokollgröße (GB)|512|512|512|1024|1024|1024|
-|Max. Datengröße von TempDB (GB)|83,25|92,5|111|148|166,5|333|
+|Max. Datengröße von TempDB (GB)|83|93|111|148|167|333|
 |Speichertyp|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|
 |E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
 |Max. IOPS für Daten pro Pool <sup>2</sup>|5760|6400|7680|10.240|11.520|12800|
-|Maximale Protokollrate pro Pool (MBit/s)|48|48|48|48|48|48|
+|Maximale Protokollrate pro Pool (MBit/s)|62,5|62,5|62,5|62,5|62,5|62,5|
 |Max. gleichzeitige Worker pro Pool (Anforderungen) <sup>3</sup>|900|1000|1200|1600|1800|3600|
 |Maximale Anzahl von gleichzeitigen Anmeldungen pro Pool (Anforderungen) <sup>3</sup>|1800|2000|2400|3200|3600|7200|
 |Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|30.000|30.000|
 |Min/Max. V-Kern-Auswahl pro Datenbank für Pools für elastische Datenbanken|0–18|0 - 20|0-24|0–32|0–36|0–72|
 |Anzahl von Replikaten|1|1|1|1|1|1|
-|Multi-AZ|–|–|–|–|–|–|
-|Horizontale Leseskalierung|–|–|–|–|–|–|
+|Multi-AZ|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|–|
+|Horizontale Leseskalierung|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|–|
 |Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
 
 <sup>1</sup> Weitere Überlegungen finden Sie unter [Ressourcenverwaltung in umfangreichen Pools für elastische Datenbanken](elastic-pool-resource-management.md).
@@ -234,7 +233,6 @@ Sie können im [Azure-Portal](elastic-pool-manage.md#azure-portal), mit [PowerSh
 <sup>2</sup> Der maximale Wert für E/A-Größen im Bereich von 8 KB bis 64 KB. Die tatsächlichen IOPS sind von der Arbeitsauslastung abhängig. Weitere Informationen finden Sie unter [Daten-E/A-Governance](resource-limits-logical-server.md#resource-governance).
 
 <sup>3</sup> Den Wert für die maximale Anzahl von gleichzeitigen Workern (Anforderungen) für einzelne Datenbanken finden Sie unter [Ressourceneinschränkungen für einzelne Datenbanken](resource-limits-vcore-single-databases.md). Wenn für den Pool für elastische Datenbanken beispielsweise Gen5 verwendet wird und die maximale Anzahl von V-Kernen pro Datenbank auf 2 festgelegt ist, ist der Wert für die Anzahl von gleichzeitigen Workern 200.  Wenn die maximale Anzahl von V-Kernen pro Datenbank auf 0,5 festgelegt ist, beträgt der Wert für die Anzahl von gleichzeitigen Workern 50, da unter Gen5 maximal 100 gleichzeitige Worker pro V-Kern verwendet werden. Für andere Einstellungen zur maximalen Anzahl von V-Kernen pro Datenbank (1 V-Kern oder weniger), wird die maximale Anzahl von gleichzeitigen Workern auf ähnliche Weise neu skaliert.
-
 
 ## <a name="general-purpose---provisioned-compute---dc-series"></a>Universell – bereitgestelltes Computing – DC-Serie
 
@@ -245,21 +243,21 @@ Sie können im [Azure-Portal](elastic-pool-manage.md#azure-portal), mit [PowerSh
 |Arbeitsspeicher (GB)|9|18|27|36|
 |Max. Anzahl von Datenbanken pro Pool <sup>1</sup>|100|400|400|400|
 |Columnstore-Unterstützung|Ja|Ja|Ja|Ja|
-|In-Memory-OLTP-Speicher (GB)|–|–|–|–|
+|In-Memory-OLTP-Speicher (GB)|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|–|
 |Maximale Datengröße (GB)|756|1536|2048|2048|
 |Maximale Protokollgröße (GB)|227|461|614|614|
 |Max. Datengröße von TempDB (GB)|64|128|192|256|
 |Speichertyp|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|
 |E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
 |Max. IOPS für Daten pro Pool <sup>2</sup>|800|1600|2400|3200|
-|Maximale Protokollrate pro Pool (MBit/s)|9,4|18,8|28,1|32,8|
+|Maximale Protokollrate pro Pool (MBit/s)|12|24|36|48|
 |Max. gleichzeitige Worker pro Pool (Anforderungen) <sup>3</sup>|168|336|504|672|
 |Maximale Anzahl von gleichzeitigen Anmeldungen pro Pool (Anforderungen) <sup>3</sup>|168|336|504|672|
 |Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|
 |Min/Max. V-Kern-Auswahl pro Datenbank für Pools für elastische Datenbanken|2|2...4|2...6|2...8|
 |Anzahl von Replikaten|1|1|1|1|
-|Multi-AZ|–|–|–|–|
-|Horizontale Leseskalierung|–|–|–|–|
+|Multi-AZ|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|–|
+|Horizontale Leseskalierung|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|–|
 |Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
 
 <sup>1</sup> Weitere Überlegungen finden Sie unter [Ressourcenverwaltung in umfangreichen Pools für elastische Datenbanken](elastic-pool-resource-management.md).
@@ -313,7 +311,7 @@ Sie können im [Azure-Portal](elastic-pool-manage.md#azure-portal), mit [PowerSh
 |V-Kerne|7|8|9|10|16|24|
 |Arbeitsspeicher (GB)|49|56|63|70|112|159,5|
 |Max. Anzahl von Datenbanken pro Pool <sup>1</sup>|100|100|100|100|100|100|
-|Columnstore-Unterstützung|–|–|–|–|–|–|
+|Columnstore-Unterstützung|–|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|–|
 |In-Memory-OLTP-Speicher (GB)|7|8|9.5|11|20|36|
 |Speichertyp|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|
 |Maximale Datengröße (GB)|1024|1024|1024|1024|1024|1024|
@@ -446,12 +444,12 @@ Wenn alle virtuellen Kerne eines Pools für elastische Datenbanken verwendet wer
 |Computegeneration|M-Serie|M-Serie|M-Serie|M-Serie|M-Serie|
 |V-Kerne|20|24|32|64|128|
 |Arbeitsspeicher (GB)|588,6|706,3|941,8|1883,5|3767,0|
-|Max. Anzahl von Datenbanken pro Pool <sup>1</sup>|100|100|100|100|100|100|
+|Max. Anzahl von Datenbanken pro Pool <sup>1</sup>|100|100|100|100|100|
 |Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|
 |In-Memory-OLTP-Speicher (GB)|172|216|304|704|1768|
 |Maximale Datengröße (GB)|1280|1536|2048|4096|4096|
 |Maximale Protokollgröße (GB)|427|512|683|1024|1024|
-|Max. Datengröße von TempDB (GB)|4096|2048|1024|768|640|
+|Max. Datengröße von TempDB (GB)|640|768|1024|2048|4096|
 |Speichertyp|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|
 |E/A-Wartezeit (ungefähr)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|
 |Max. IOPS für Daten pro Pool <sup>2</sup>|31.248|37.497|49.996|99.993|160.000|

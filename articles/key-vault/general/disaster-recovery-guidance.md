@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/28/2020
 ms.author: sudbalas
-ms.openlocfilehash: d66fe736936963e601aad7cba7bdaa94f0c3ec3f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 27184e267bb0472dad6fc9176dfdeee68d5eae58
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96518446"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105611819"
 ---
 # <a name="azure-key-vault-availability-and-redundancy"></a>Azure Key Vault: Verfügbarkeit und Redundanz
 
@@ -23,7 +23,7 @@ Azure Key Vault-Features bieten mehrere Redundanzebenen, um sicherzustellen, das
 > [!NOTE]
 > Diese Anleitung gilt für Tresore. Pools verwalteter HSMs verwenden ein anderes Modell für Hochverfügbarkeit und Notfallwiederherstellung. Weitere Informationen finden Sie unter [Notfallwiederherstellung für „Verwaltetes HSM“](../managed-hsm/disaster-recovery-guide.md).
 
-Der Inhalt Ihres Schlüsseltresors wird innerhalb der Region sowie in eine sekundäre Region repliziert, die mindestens 240 km entfernt ist (jedoch innerhalb des gleichen Gebiets liegt), um eine hohe Dauerhaftigkeit Ihrer Schlüssel und Geheimnisse zu gewährleisten. Einzelheiten zu spezifischen Regionspaaren finden Sie im Dokument [Azure-Regionspaare](../../best-practices-availability-paired-regions.md). Eine Ausnahme vom Modell mit Regionspaaren ist die Region „Brasilien, Süden“. Sie bietet nur die Möglichkeit, Daten in „Brasilien, Süden“ zu speichern. „Brasilien, Süden“ nutzt zonenredundanten Speicher (ZRS), um Ihre Daten dreimal innerhalb des einzelnen Standorts/der einzelnen Region zu replizieren.   
+Der Inhalt Ihres Schlüsseltresors wird innerhalb der Region sowie in eine sekundäre Region repliziert, die mindestens 240 km entfernt ist (jedoch innerhalb des gleichen Gebiets liegt), um eine hohe Dauerhaftigkeit Ihrer Schlüssel und Geheimnisse zu gewährleisten. Einzelheiten zu spezifischen Regionspaaren finden Sie im Dokument [Azure-Regionspaare](../../best-practices-availability-paired-regions.md). Eine Ausnahme vom Modell mit Regionspaaren ist die Region „Brasilien, Süden“. Sie bietet nur die Möglichkeit, Daten in „Brasilien, Süden“ zu speichern. „Brasilien, Süden“ nutzt zonenredundanten Speicher (ZRS), um Ihre Daten dreimal innerhalb des einzelnen Standorts/der einzelnen Region zu replizieren. Bei AKV Premium werden nur zwei der drei Regionen verwendet, um Daten aus dem HSM zu replizieren.  
 
 Wenn einzelne Komponenten innerhalb des Key Vault-Diensts ausfallen, springen andere Komponenten in der Region ein, um Ihre Anforderung zu erfüllen, sodass die Funktionalität nicht beeinträchtigt wird. Sie müssen keine Maßnahmen ergreifen, um diesen Prozess zu starten. Dieser wird automatisch initiiert und ist für Sie transparent.
 
