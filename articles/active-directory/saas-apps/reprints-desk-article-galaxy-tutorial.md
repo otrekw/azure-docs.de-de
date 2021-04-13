@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/21/2020
 ms.author: jeedes
 ms.openlocfilehash: e28281b783c66f8dbb0bc4842679eeec43755508
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92514999"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-reprints-desk---article-galaxy"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Reprints Desk – Article Galaxy
@@ -43,7 +43,7 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 * Für Reprints Desk – Article Galaxy wird die **Just-In-Time**-Benutzerbereitstellung unterstützt.
 
-* [Nach dem Konfigurieren von Reprints Desk – Article Galaxy können Sie Sitzungssteuerungen erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützen. Sitzungssteuerungen basieren auf bedingtem Zugriff. Erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen](/cloud-app-security/proxy-deployment-any-app).
+* [Nach dem Konfigurieren von Reprints Desk – Article Galaxy können Sie Sitzungssteuerungen erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützen. Sitzungssteuerungen basieren auf bedingtem Zugriff. Erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.](/cloud-app-security/proxy-deployment-any-app)
 
 ## <a name="adding-reprints-desk---article-galaxy-from-the-gallery"></a>Hinzufügen von Reprints Desk – Article Galaxy aus dem Katalog
 

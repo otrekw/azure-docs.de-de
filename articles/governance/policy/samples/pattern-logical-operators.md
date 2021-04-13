@@ -1,14 +1,14 @@
 ---
 title: 'Muster: Logische Operatoren in einer Richtliniendefinition'
 description: Dieses Azure Policy-Muster enthält Beispiele für die Verwendung der logischen Operatoren in einer Richtliniendefinition.
-ms.date: 08/17/2020
+ms.date: 03/31/2021
 ms.topic: sample
-ms.openlocfilehash: 3f644cdbfc45b06d1ad5db8e7727c0fa69742f00
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: feb9e50b0c73c19027b747cf0f95fa1cb6fbd47c
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "88545589"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106093349"
 ---
 # <a name="azure-policy-pattern-logical-operators"></a>Azure Policy-Muster: Logische Operatoren
 
@@ -16,7 +16,7 @@ Eine Richtliniendefinition kann mehrere Bedingungsanweisungen enthalten. In manc
 
 ## <a name="sample-1-one-logical-operator"></a>Beispiel 1: Einzelner logischer Operator
 
-Mit der folgenden Richtliniendefinition werden Cosmos DB-Konten ausgewertet, um zu ermitteln, ob automatische Failover und mehrere Schreibstandorte konfiguriert sind. Falls nicht, wird [audit](../concepts/effects.md#audit) ausgelöst und ein Protokolleintrag erstellt, wenn die nicht konforme Ressource erstellt oder aktualisiert wird.
+Mit der folgenden Richtliniendefinition werden [Azure Cosmos DB](../../../cosmos-db/introduction.md)-Konten ausgewertet, um zu ermitteln, ob automatische Failover und mehrere Schreibstandorte konfiguriert sind. Falls nicht, wird [audit](../concepts/effects.md#audit) ausgelöst und ein Protokolleintrag erstellt, wenn die nicht konforme Ressource erstellt oder aktualisiert wird.
 
 :::code language="json" source="~/policy-templates/patterns/pattern-logical-operators-1.json":::
 
@@ -41,7 +41,7 @@ Der Block **policyRule.if** in diesem Beispiel enthält ebenfalls einen einzelne
 
 ## <a name="sample-3-combining-logical-operators"></a>Beispiel 3: Kombinieren logischer Operatoren
 
-Diese Richtliniendefinition wertet Java Spring-Konten aus, um festzustellen, ob die Ablaufverfolgung nicht aktiviert ist oder sich nicht in einem erfolgreichen Status befindet.
+Diese Richtliniendefinition wertet Konten vom Typ [Spring in Azure](/azure/developer/java/spring-framework) aus, um festzustellen, ob die Ablaufverfolgung nicht aktiviert ist oder sich nicht in einem erfolgreichen Status befindet.
 
 :::code language="json" source="~/policy-templates/patterns/pattern-logical-operators-3.json":::
 

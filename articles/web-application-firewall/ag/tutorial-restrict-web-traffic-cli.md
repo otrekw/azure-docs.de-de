@@ -4,16 +4,16 @@ description: Hier erfahren Sie, wie Sie die Azure-Befehlszeilenschnittstelle ver
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 08/31/2020
+ms.date: 03/29/2021
 ms.author: victorh
 ms.topic: how-to
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 967d4d4a49809c2b5fa7a344286469bb67eec6cf
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d53f4b640154e4d7b02115d5043b37f6bb6e89ba
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102217600"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105731138"
 ---
 # <a name="enable-web-application-firewall-using-the-azure-cli"></a>Aktivieren einer Web Application Firewall mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -109,13 +109,15 @@ Es kann einige Minuten dauern, bis das Anwendungsgateway erstellt wird. Nachdem 
 
 In diesem Beispiel erstellen Sie eine VM-Skalierungsgruppe, die zwei Server für den Back-End-Pool im Anwendungsgateway bereitstellt. Die virtuellen Computer in der Skalierungsgruppe sind dem Subnetz *myBackendSubnet* zugeordnet. Zum Erstellen der Skalierungsgruppe können Sie [az vmss create](/cli/azure/vmss#az-vmss-create) verwenden.
 
+Ersetzen Sie \<username> und \<password> durch Ihre eigenen Werte, bevor Sie diesen Befehl ausführen.
+
 ```azurecli-interactive
 az vmss create \
   --name myvmss \
   --resource-group myResourceGroupAG \
   --image UbuntuLTS \
-  --admin-username azureuser \
-  --admin-password Azure123456! \
+  --admin-username <username> \
+  --admin-password <password> \
   --instance-count 2 \
   --vnet-name myVNet \
   --subnet myBackendSubnet \

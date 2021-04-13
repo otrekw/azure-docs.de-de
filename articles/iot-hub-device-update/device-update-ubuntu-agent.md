@@ -6,20 +6,20 @@ ms.author: vimeht
 ms.date: 2/16/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: f7e12567269304b33a98ff1eb9727cfdf0afbdc4
-ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+ms.openlocfilehash: 6464ad632251053ac481fbd1f6a3e1197aa470df
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/13/2021
-ms.locfileid: "103418639"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106121301"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-the-package-agent-on-ubuntu-server-1804-x64"></a>Device Update for Azure IoT Hub: Tutorial zum Verwenden des Paket-Agents unter Ubuntu Server 18.04 x64
 
 Device Update for IoT Hub unterstützt zwei Arten von Updates: imagebasiert und paketbasiert.
 
-Paketbasierte Updates sind gezielte Updates, die nur eine bestimmte Komponente oder Anwendung auf dem Gerät ändern. Dies führt zu einem geringeren Verbrauch an Bandbreite und verringert die Zeit zum Herunterladen und Installieren des Updates. Paketupdates ermöglichen in der Regel eine geringere Ausfallzeit der Geräte beim Anwenden eines Updates und vermeiden den Mehraufwand beim Erstellen von Images.
+Paketbasierte Updates sind gezielte Updates, die nur eine bestimmte Komponente oder Anwendung auf dem Gerät ändern. Paketbasierte Updates führen zu einem geringeren Verbrauch an Bandbreite und verringern die Zeit zum Herunterladen und Installieren des Updates. Paketupdates ermöglichen in der Regel eine geringere Ausfallzeit der Geräte beim Anwenden eines Updates und vermeiden den Mehraufwand beim Erstellen von Images.
 
-In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie ein paketbasiertes End-to-End-Update über Device Update for IoT Hub ausführen. Im Rahmen dieses Tutorials wird Ubuntu Server 18.04 x64 mit Azure IoT Edge und dem Device Update-Paket-Agent verwendet. In diesem Tutorial wird die Aktualisierung eines Beispielpakets veranschaulicht. Mit ähnlichen Schritten können sie jedoch auch andere Pakete wie Azure IoT Edge oder die verwendete Container-Engine aktualisieren.
+In diesem End-to-End-Tutorial werden Sie durch das Aktualisieren von Azure IoT Edge unter Ubuntu Server 18.04 x64 mithilfe des Device Update-Paket-Agents geführt. In diesem Tutorial wird zwar die Aktualisierung von IoT Edge veranschaulicht, mit ähnlichen Schritten können sie aber auch andere Pakete wie die verwendete Container-Engine aktualisieren.
 
 Die Tools und Konzepte in diesem Tutorial gelten weiterhin, auch wenn Sie beabsichtigen, eine andere Konfiguration der Betriebssystemplattform zu verwenden. Vervollständigen Sie diese Einführung in einen End-to-End-Updateprozess, und wählen Sie dann Ihre bevorzugte Aktualisierungsform und Betriebssystemplattform aus, um sich mit den Details vertraut zu machen.
 
@@ -32,23 +32,19 @@ In diesem Lernprogramm lernen Sie Folgendes:
 > * Bereitstellen eines Paketupdates
 > * Überwachen der Updatebereitstellung
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
-
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Zugriff auf einen IoT Hub. Es wird empfohlen, einen S1-Tarif (Standard) oder höher zu verwenden.
-* Eine Device Update-Instanz und ein mit Ihrer IoT Hub-Instanz verknüpftes Konto
-  * Befolgen Sie die Anleitung zum [Erstellen und Verknüpfen eines Device Update-Kontos](create-device-update-account.md), falls Sie dies noch nicht getan haben.
+* Erstellen Sie [ein Konto und eine Instanz für Device Update](create-device-update-account.md) (einschließlich der Konfiguration einer IoT Hub-Instanz), sofern noch nicht geschehen.
 * Die [Verbindungszeichenfolge für ein IoT Edge-Gerät](../iot-edge/how-to-register-device.md?view=iotedge-2020-11&preserve-view=true#view-registered-devices-and-retrieve-connection-strings)
 
 ## <a name="prepare-a-device"></a>Vorbereiten eines Geräts
 ### <a name="using-the-automated-deploy-to-azure-button"></a>Verwenden der Schaltfläche für die automatisierte Bereitstellung in Azure
 
-Der Einfachheit halber wird in diesem Tutorial eine [Cloud-Init](../virtual-machines/linux/using-cloud-init.md)-basierte [Azure Resource Manager-Vorlage](../azure-resource-manager/templates/overview.md) verwendet, mit der Sie schnell einen virtuellen Computer mit Ubuntu 18.04 LTS einrichten können. Mit dieser Vorlage werden die Azure IoT Edge-Runtime und der Device Update-Paket-Agent installiert. Anschließend wird das Gerät mithilfe der Geräteverbindungszeichenfolge für ein von Ihnen bereitgestelltes Iot Edge Gerät (erforderlich) automatisch mit Bereitstellungsinformationen konfiguriert. Dadurch entfällt die Notwendigkeit, zum Abschließen des Setups eine SSH-Sitzung zu starten.
+Der Einfachheit halber wird in diesem Tutorial eine [Cloud-Init](../virtual-machines/linux/using-cloud-init.md)-basierte [Azure Resource Manager-Vorlage](../azure-resource-manager/templates/overview.md) verwendet, mit der Sie schnell einen virtuellen Computer mit Ubuntu 18.04 LTS einrichten können. Mit dieser Vorlage werden die Azure IoT Edge-Runtime und der Device Update-Paket-Agent installiert. Anschließend wird das Gerät mithilfe der Geräteverbindungszeichenfolge für ein von Ihnen bereitgestelltes Iot Edge Gerät (erforderlich) automatisch mit Bereitstellungsinformationen konfiguriert. Mit der Azure Resource Manager-Vorlage entfällt außerdem die Notwendigkeit, zum Abschließen des Setups eine SSH-Sitzung zu starten.
 
 1. Klicken Sie zunächst auf die folgende Schaltfläche:
 
-   [![Schaltfläche „In Azure bereitstellen“ für „iotedge-vm-deploy“](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fiotedge-vm-deploy%2F1.2.0-rc4%2FedgeDeploy.json)
+   [![Schaltfläche „In Azure bereitstellen“ für „iotedge-vm-deploy“](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fiotedge-vm-deploy%2Fdevice-update-tutorial%2FedgeDeploy.json)
 
 1. Füllen Sie im neu gestarteten Fenster die verfügbaren Formularfelder aus:
 
@@ -90,7 +86,7 @@ Der Einfachheit halber wird in diesem Tutorial eine [Cloud-Init](../virtual-mach
    > Wenn Sie nach dem Setup eine SSH-Verbindung mit diesem virtuellen Computer herstellen möchten, verwenden Sie den zugeordneten **DNS-Namen** mit folgendem Befehl: `ssh <adminUsername>@<DNS_Name>`.
 
 ### <a name="optional-manually-prepare-a-device"></a>(Optional) Manuelles Vorbereiten eines Geräts
-Die folgenden manuellen Schritte zum Installieren und Konfigurieren des Geräts entsprechen den Schritten, die durch [dieses Cloud-Init-Skripts](https://github.com/Azure/iotedge-vm-deploy/blob/1.2.0-rc4/cloud-init.txt) automatisiert wurden. Sie können zum Vorbereiten eines physischen Geräts verwendet werden.
+Die folgenden manuellen Schritte zum Installieren und Konfigurieren des Geräts ähneln den Schritten, die durch [dieses cloud-init-Skript](https://github.com/Azure/iotedge-vm-deploy/blob/1.2.0-rc4/cloud-init.txt) automatisiert wurden. Diese Schritte können zum Vorbereiten eines physischen Geräts verwendet werden.
 
 1. Befolgen Sie die Anleitung unter [Installieren oder Deinstallieren von Azure IoT Edge für Linux](../iot-edge/how-to-install-iot-edge.md?view=iotedge-2020-11&preserve-view=true).
    > [!NOTE]
@@ -114,9 +110,9 @@ Lesen Sie die Lizenzbedingungen, bevor Sie ein Paket verwenden. Durch Ihre Insta
 
 1. Melden Sie sich am [Azure-Portal](https://portal.azure.com) an, und navigieren Sie zum IoT Hub.
 
-2. Suchen Sie im linken Navigationsbereich unter „IoT Edge“ nach Ihrem IoT Edge-Gerät, und navigieren Sie zum Gerätezwilling.
+2. Suchen Sie im linken Navigationsbereich unter „IoT Edge“ nach Ihrem IoT Edge-Gerät, und navigieren Sie zum Gerätezwilling oder Modulzwilling.
 
-3. Löschen Sie im Gerätezwilling alle vorhandenen Device Update-Tagwerte, indem Sie diese auf NULL festlegen.
+3. Löschen Sie im Modulzwilling des Device Update-Agent-Moduls alle vorhandenen Device Update-Tagwerte, indem Sie diese auf NULL festlegen. Wenn Sie eine Geräteidentität mit dem Device Update-Agent verwenden, nehmen Sie diese Änderungen im Gerätezwilling vor.
 
 4. Fügen Sie wie unten gezeigt einen neuen Device Update-Tagwert hinzu.
 
@@ -130,9 +126,9 @@ Lesen Sie die Lizenzbedingungen, bevor Sie ein Paket verwenden. Durch Ihre Insta
 
 1. Navigieren Sie zu [Device Update-Releases](https://github.com/Azure/iot-hub-device-update/releases) auf GitHub, und klicken Sie auf das Dropdownmenü „Assets“.
 
-3. Klicken Sie auf `apt-update-import-samples.zip`, um die ZIP-Datei herunterzuladen.
+3. Klicken Sie auf `Edge.package.update.samples.zip`, um die ZIP-Datei herunterzuladen.
 
-5. Extrahieren Sie den Inhalt des Ordners, um verschiedene Updatebeispiele und die zugehörigen Importmanifeste zu entdecken. 
+5. Extrahieren Sie den Inhalt des Ordners, um ein Updatebeispiel und die zugehörigen Importmanifeste zu entdecken. 
 
 2. Wählen Sie im Azure-Portal in der linken Navigationsleiste in Ihrem IoT Hub unter „Automatic Device Management“ (Automatische Geräteverwaltung) die Option „Device Updates“ aus.
 
@@ -140,10 +136,8 @@ Lesen Sie die Lizenzbedingungen, bevor Sie ein Paket verwenden. Durch Ihre Insta
 
 4. Wählen Sie „+ Import New Update“ (Neues Update importieren) aus.
 
-5. Wählen Sie das Ordnersymbol oder das Textfeld unter „Select an Import Manifest File“ (Importmanifestdatei auswählen) aus. Daraufhin wird ein Dialogfeld für Dateiauswahl angezeigt. Wählen Sie das Importmanifest `sample-package-update-1.0.1-importManifest.json` in dem zuvor heruntergeladenen Ordner aus. Wählen Sie als Nächstes das Ordnersymbol oder das Textfeld unter „Select one or more update files“ (Mindestens eine Updatedatei auswählen) aus. Daraufhin wird ein Dialogfeld für Dateiauswahl angezeigt. Wählen Sie die apt-Manifestupdatedatei `sample-1.0.1-libcurl4-doc-apt-manifest.json` in dem zuvor heruntergeladenen Ordner aus.
-Mit diesem Update wird die neueste verfügbare Version von `libcurl4-doc package` auf Ihrem Gerät installiert.
-
-   Alternativ können Sie die Importmanifestdatei `sample-package-update-2-2.0.1-importManifest.json` und die apt-Manifestupdatedatei `sample-2.0.1-libcurl4-doc-7.58-apt-manifest.json` in dem zuvor heruntergeladenen Ordner auswählen. Dadurch wird die spezifische Version v7.58.0 von `libcurl4-doc package` auf Ihrem Gerät installiert.
+5. Wählen Sie das Ordnersymbol oder das Textfeld unter „Select an Import Manifest File“ (Importmanifestdatei auswählen) aus. Daraufhin wird ein Dialogfeld für Dateiauswahl angezeigt. Wählen Sie das Importmanifest `sample-1.0.1-aziot-edge-importManifest.json` in dem zuvor heruntergeladenen Ordner aus. Wählen Sie als Nächstes das Ordnersymbol oder das Textfeld unter „Select one or more update files“ (Mindestens eine Updatedatei auswählen) aus. Daraufhin wird ein Dialogfeld für Dateiauswahl angezeigt. Wählen Sie die apt-Manifestupdatedatei `sample-1.0.1-aziot-edge-apt-manifest.json` in dem zuvor heruntergeladenen Ordner aus.
+Mit diesem Update werden die Pakete `aziot-identity-service` und `aziot-edge` auf Ihrem Gerät auf Version 1.2.0~rc4-1 aktualisiert.
 
    :::image type="content" source="media/import-update/select-update-files.png" alt-text="Screenshot: Auswahl der Updatedatei." lightbox="media/import-update/select-update-files.png":::
 
@@ -155,7 +149,7 @@ Mit diesem Update wird die neueste verfügbare Version von `libcurl4-doc package
 
 8. Wählen Sie „Submit“ (Übermitteln) aus, um den Importvorgang zu starten.
 
-9. Der Importvorgang beginnt, und der Bildschirm ändert sich in den Abschnitt „Import History“ (Importverlauf). Wählen Sie „Refresh“ (Aktualisieren) aus, um den Fortschritt anzuzeigen, bis der Importvorgang abgeschlossen ist. Abhängig von der Größe des Updates kann dieser Vorgang in wenigen Minuten abgeschlossen werden, er kann aber auch länger dauern.
+9. Der Importvorgang beginnt, und der Bildschirm ändert sich in den Abschnitt „Import History“ (Importverlauf). Wählen Sie „Refresh“ (Aktualisieren) aus, um den Fortschritt anzuzeigen, bis der Importvorgang abgeschlossen ist. Abhängig von der Größe des Updates kann der Importvorgang in wenigen Minuten abgeschlossen sein, er kann aber auch länger dauern.
 
    :::image type="content" source="media/import-update/update-publishing-sequence-2.png" alt-text="Screenshot: Updateimportsequenz." lightbox="media/import-update/update-publishing-sequence-2.png":::
 
@@ -214,17 +208,11 @@ Mit diesem Update wird die neueste verfügbare Version von `libcurl4-doc package
 
 1. Wählen Sie „Refresh“ (Aktualisieren) aus, um die neuesten Statusdetails anzuzeigen. Setzen Sie diesen Prozess fort, bis der Status in „Succeeded“ (Erfolgreich) geändert wurde.
 
-Sie haben nun ein erfolgreiches End-to-End-Paketupdate mit Device Update for IoT Hub auf einem Ubuntu Server 18.04 x64-Gerät abgeschlossen. 
-
-## <a name="bonus-steps"></a>Bonusschritte
-
-1. Wiederholen Sie die in den Abschnitten „Importieren des Updates“ und Bereitstellen des Updates“ beschriebenen Aktionen.
-
-3. Wählen Sie während des Schritts zum Importieren des Updates die Importmanifestdatei `sample-package-update-1.0.2-importManifest.json` und die apt-Manifestupdatedatei `sample-1.0.2-libcurl4-doc-remove-apt-manifest.json` in dem zuvor heruntergeladenen Ordner aus. Dieses Update entfernt das installierte Paket `libcurl4-doc package` von Ihrem Gerät.
+Sie haben nun ein erfolgreiches End-to-End-Paketupdate mit Device Update für IoT Hub auf einem Ubuntu Server 18.04 x64-Gerät abgeschlossen. 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie das Device Update-Konto, die Device Update- und die IoT Hub-Instanz und das IoT Edge-Gerät (falls Sie den virtuellen Computer über die Schaltfläche „In Azure bereitstellen“ erstellt haben) nicht mehr benötigen, können Sie diese Komponenten bereinigen. Sie können zu diesem Zweck zu jeder einzelnen Ressource navigieren und dann „Löschen“ auswählen. Beachten Sie, dass Sie eine Geräteupdateinstanz bereinigen müssen, bevor Sie das Geräteupdatekonto bereinigen.
+Wenn Sie das Device Update-Konto, die Device Update- und die IoT Hub-Instanz und das IoT Edge-Gerät (falls Sie den virtuellen Computer über die Schaltfläche „In Azure bereitstellen“ erstellt haben) nicht mehr benötigen, können Sie diese Komponenten bereinigen. Sie können zu diesem Zweck zu jeder einzelnen Ressource navigieren und dann „Löschen“ auswählen. Sie müssen eine Geräteupdateinstanz bereinigen, bevor Sie das Geräteupdatekonto bereinigen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

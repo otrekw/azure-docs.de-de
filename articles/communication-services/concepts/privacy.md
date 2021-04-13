@@ -8,16 +8,14 @@ ms.author: chpalm
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 933b5605cf38be90d419673a94e23e4c36f0ef36
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: beb8b81710cf4728259a8eb1df920cd74efce3ce
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103495707"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105728129"
 ---
 # <a name="region-availability-and-data-residency"></a>Regionale Verfügbarkeit und Datenresidenz
-
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 Azure Communication Services unterstützt Kunden bei der Erfüllung ihrer Anforderungen in puncto Datenschutz und persönliche Daten. Entwickler, die Communication Services mit einer direkten Beziehung zu Benutzern der Anwendung verwenden, fungieren möglicherweise als Datencontroller. Da Azure Communication Services diese ruhenden Daten in Ihrem Namen speichert und verschlüsselt, fungieren wir höchstwahrscheinlich als Datenverarbeiter. Hier erfahren Sie, wie Daten durch den Dienst gespeichert werden und wie Sie diese Daten identifizieren, exportieren und löschen können.
 
@@ -58,10 +56,12 @@ Von Azure Communication Services wird ein Verzeichnis mit Telefonnummern gepfleg
 
 ### <a name="chat"></a>Chat
 
-Chatthreads und -nachrichten werden aufbewahrt, bis sie explizit gelöscht werden. Ein vollständig im Leerlauf befindlicher Thread wird nach 30 Tagen automatisch gelöscht. Verwenden Sie [Chat-APIs](/rest/api/communication/chat/chatthread), um Nachrichten abzurufen, aufzulisten, zu aktualisieren und zu löschen.
+Chatthreads und -nachrichten werden aufbewahrt, bis sie explizit gelöscht werden. Ein vollständig im Leerlauf befindlicher Thread ohne Teilnehmer wird nach 30 Tagen automatisch gelöscht. Verwenden Sie [Chat-APIs](/rest/api/communication/chat/chatthread), um Nachrichten abzurufen, aufzulisten, zu aktualisieren und zu löschen.
 
 - `Get Thread`
 - `Get Message`
+- `List Messages`
+- `Update Message`
 - `Delete Thread`
 - `Delete Message`
 

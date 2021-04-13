@@ -9,22 +9,18 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-zone_pivot_groups: acs-plat-azp-net
-ms.openlocfilehash: ffb40d7fb45f43349004fc4d18e7582aa3521185
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+zone_pivot_groups: acs-plat-azp-azcli-net-ps
+ms.openlocfilehash: aabb8bdf4105702aa623c45bc291770b05b8279e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103495881"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105726770"
 ---
 # <a name="quickstart-create-and-manage-communication-services-resources"></a>Schnellstart: Erstellen und Verwalten einer Communication Services-Ressource
 
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
+Führen Sie erste Schritte mit Azure Communication Services aus, indem Sie Ihre erste Communication Services-Ressource bereitstellen. Communication Services-Ressourcen können über das [Azure-Portal](https://portal.azure.com) oder mit dem .NET Management SDK bereitgestellt werden. Mithilfe des Management SDK und des Azure-Portals können Sie Ihre Ressourcen und Schnittstellen mit [Azure Resource Manager](../../azure-resource-manager/management/overview.md), dem Bereitstellungs- und Verwaltungsdienst von Azure, erstellen, konfigurieren, aktualisieren und löschen. Alle in den SDKs verfügbaren Funktionen sind auch im Azure-Portal verfügbar. 
 
-Führen Sie erste Schritte mit Azure Communication Services aus, indem Sie Ihre erste Communication Services-Ressource bereitstellen. Communication Services-Ressourcen können über das [Azure-Portal](https://portal.azure.com) oder mit der .NET-Verwaltungsclientbibliothek bereitgestellt werden. Mithilfe der Verwaltungsclientbibliothek und dem Azure-Portal können Sie Ihre Ressource und Schnittstellen mit [Azure Resource Manager](../../azure-resource-manager/management/overview.md), dem Bereitstellungs- und Verwaltungsdienst von Azure, erstellen, konfigurieren, aktualisieren und löschen. Alle in den Clientbibliotheken verfügbaren Funktionen sind auch im Azure-Portal verfügbar. 
-
-
-Führen Sie erste Schritte mit Azure Communication Services aus, indem Sie Ihre erste Communication Services-Ressource bereitstellen. Communication Services-Ressourcen können über das [Azure-Portal](https://portal.azure.com) oder mit der .NET-Verwaltungsclientbibliothek bereitgestellt werden. Mithilfe der Verwaltungsclientbibliothek und dem Azure-Portal können Sie Ihre Ressource und Schnittstellen mit [Azure Resource Manager](../../azure-resource-manager/management/overview.md), dem Bereitstellungs- und Verwaltungsdienst von Azure, erstellen, konfigurieren, aktualisieren und löschen. Alle in den Clientbibliotheken verfügbaren Funktionen sind auch im Azure-Portal verfügbar.
 
 > [!WARNING]
 > Beachten Sie Folgendes: Obwohl Communication Services in mehreren geografischen Regionen verfügbar sind, muss für die Ressource ein Datenspeicherort auf „US“ festgelegt sein, um eine Telefonnummer zu erhalten. Beachten Sie zudem, dass während der öffentlichen Vorschauphase keine Kommunikationsressourcen in ein anderes Abonnement übertragen werden können.
@@ -41,25 +37,43 @@ Führen Sie erste Schritte mit Azure Communication Services aus, indem Sie Ihre 
 [!INCLUDE [.NET](./includes/create-resource-net.md)]
 ::: zone-end
 
+::: zone pivot="platform-powershell"
+[!INCLUDE [PowerShell](./includes/create-resource-powershell.md)]
+::: zone-end
+
+
 ## <a name="access-your-connection-strings-and-service-endpoints"></a>Zugreifen auf die Verbindungszeichenfolgen und Dienstendpunkte
 
-Mit Verbindungszeichenfolgen können Communication Services-Clientbibliotheken eine Verbindung mit Azure herstellen und sich bei Azure authentifizieren. Sie können auf die Communication Services-Verbindungszeichenfolgen und -Dienstendpunkte über das Azure-Portal oder programmgesteuert mit Azure Resource Manager-APIs zugreifen.
+Mit Verbindungszeichenfolgen können Communication Services-SDKs eine Verbindung mit Azure herstellen und sich bei Azure authentifizieren. Sie können auf die Communication Services-Verbindungszeichenfolgen und -Dienstendpunkte über das Azure-Portal oder programmgesteuert mit Azure Resource Manager-APIs zugreifen.
 
-Navigieren Sie zur Communication Services-Ressource, wählen Sie im Navigationsmenü **Schlüssel** aus, und kopieren Sie die Werte **Verbindungszeichenfolge** oder **Endpunkt** zur Verwendung durch die Communication Services-Clientbibliotheken. Beachten Sie, dass Sie Zugriff auf Primär- und Sekundärschlüssel haben. Dies kann in Szenarien nützlich sein, in denen Sie für einen Drittanbieter oder eine Stagingumgebung temporären Zugriff auf Ihre Communication Services-Ressourcen bereitstellen möchten.
+Navigieren Sie zur Communication Services-Ressource, wählen Sie im Navigationsmenü **Schlüssel** aus, und kopieren Sie die Werte **Verbindungszeichenfolge** oder **Endpunkt** zur Verwendung durch die Communication Services-SDKs. Beachten Sie, dass Sie Zugriff auf Primär- und Sekundärschlüssel haben. Dies kann in Szenarien nützlich sein, in denen Sie für einen Drittanbieter oder eine Stagingumgebung temporären Zugriff auf Ihre Communication Services-Ressourcen bereitstellen möchten.
 
 :::image type="content" source="./media/key.png" alt-text="Screenshot: Communication Services-Seite „Schlüssel“":::
 
-Auf Schlüsselinformationen kann auch über die Azure CLI zugegriffen werden:
+Auf Schlüsselinformationen (etwa die Ressourcengruppe oder die Schlüssel für eine bestimmte Ressource) kann auch über die Azure CLI zugegriffen werden: 
 
+Installieren Sie die [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?tabs=azure-cli), und verwenden Sie den folgenden Befehl für die Anmeldung. Sie müssen Ihre Anmeldeinformationen eingeben, um eine Verbindung mit Ihrem Azure-Konto herzustellen.
+```azurecli
+az login
+```
+
+Nun können Sie auf wichtige Informationen zu Ihren Ressourcen zugreifen.
 ```azurecli
 az communication list --resource-group "<resourceGroup>"
 
 az communication list-key --name "<communicationName>" --resource-group "<resourceGroup>"
 ```
 
+Wenn Sie ein bestimmtes Abonnement auswählen möchten, können Sie auch das Flag ```--subscription``` und die Abonnement-ID angeben.
+```
+az communication list --resource-group  "resourceGroup>"  --subscription "<subscriptionID>"
+
+az communication list-key --name "<communicationName>" --resource-group "resourceGroup>" --subscription "<subscriptionID>"
+```
+
 ## <a name="store-your-connection-string"></a>Speichern der Verbindungszeichenfolge
 
-Communication Services-Clientbibliotheken verwenden Verbindungszeichenfolgen, um an Communication Services gesendete Anforderungen zu autorisieren. Es gibt mehrere Möglichkeiten, die Verbindungszeichenfolge zu speichern:
+Communication Services-SDKs verwenden Verbindungszeichenfolgen, um an Communication Services gesendete Anforderungen zu autorisieren. Es gibt mehrere Möglichkeiten, die Verbindungszeichenfolge zu speichern:
 
 * Eine Anwendung, die auf dem Desktop oder auf einem Gerät ausgeführt wird, kann die Verbindungszeichenfolge in der Datei **app.config** oder **web.config** speichern. Fügen Sie die Verbindungszeichenfolge dem Abschnitt **AppSettings** in diesen Dateien hinzu.
 * Eine Anwendung, die in einer Azure App Service-Instanz ausgeführt wird, kann die Verbindungszeichenfolge in den [App Service-Anwendungseinstellungen](../../app-service/configure-common.md) speichern. Fügen Sie die Verbindungszeichenfolge dem Abschnitt **Verbindungszeichenfolgen** auf der Registerkarte „Anwendungseinstellungen“ im Portal hinzu.

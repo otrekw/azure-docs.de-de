@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Konfigurieren von New Relic by Organization für die automatische Benutzerbereitstellung in Azure Active Directory | Microsoft-Dokumentation'
+title: 'Tutorial: Konfigurieren von New Relic by Organization für die automatische Benutzerbereitstellung mit Azure Active Directory | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie Benutzerkonten aus Azure AD in New Relic by Organization automatisch bereitstellen und die Bereitstellung aufheben.
 services: active-directory
 author: zchia
@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: Zhchia
 ms.openlocfilehash: 6d196f7037fe9c0209e66e9d6e9ab25bdf807b59
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96181899"
 ---
 # <a name="tutorial-configure-new-relic-by-organization-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von New Relic by Organization für die automatische Benutzerbereitstellung
@@ -60,7 +60,7 @@ Ihr Kontovertreter stellt Ihnen die folgenden Informationen zur Verfügung, die 
 
 Das SCIM-Bearertoken ermöglicht die Bereitstellung Ihrer Benutzer bei New Relic. Sie sollten den Wert daher sicher aufbewahren. Ihr Kontovertreter überträgt das SCIM-Bearertoken auf sichere Weise an Sie.
 
-## <a name="step-3-add-new-relic-by-organization-from-the-azure-ad-application-gallery"></a>Schritt 3: Hinzufügen von New Relic by Organization aus dem Azure AD-Anwendungskatalog
+## <a name="step-3-add-new-relic-by-organization-from-the-azure-ad-application-gallery"></a>Schritt 3: Hinzufügen von New Relic by Organization aus dem Azure AD-Anwendungskatalog
 
 Fügen Sie New Relic by Organization aus dem Azure AD-Anwendungskatalog hinzu, um die Bereitstellung für New Relic by Organization zu verwalten. Wenn Sie New Relic by Organization zuvor für das einmalige Anmelden (Single Sign-On, SSO) eingerichtet haben, können Sie dieselbe Anwendung verwenden. Es ist jedoch empfehlenswert, beim erstmaligen Testen der Integration eine separate App zu erstellen. [Hier](../manage-apps/add-application-portal.md) erfahren Sie mehr über das Hinzufügen einer Anwendung aus dem Katalog. 
 
@@ -109,7 +109,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 9. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die von Azure AD mit New Relic by Organization synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in New Relic by Organization für Updatevorgänge verwendet. Wenn Sie sich dafür entscheiden, das [übereinstimmende Zielattribut](../app-provisioning/customize-application-attributes.md) zu ändern, müssen Sie sicherstellen, dass die New Relic by Organization-API das Filtern von Benutzern anhand dieses Attributs unterstützt. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-   |attribute|type|
+   |Attribut|type|
    |---|---|
    |userName|String|
    |externalId|String|
@@ -123,7 +123,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 11. Überprüfen Sie im Abschnitt **Attributzuordnung** die Gruppenattribute, die von Azure AD mit New Relic by Organization synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Gruppen in New Relic by Organization für Updatevorgänge verwendet. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-      |attribute|type|
+      |Attribut|type|
       |---|---|
       |displayName|String|
       |externalId|String|

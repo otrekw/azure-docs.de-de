@@ -16,12 +16,12 @@ ms.date: 12/23/2020
 ms.author: ajburnle
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d21783f0ef32289aad4b7d136dc8200d61fc0852
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 9ad10cfc661b80eaac146087d85dc87002f6a455
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104592930"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105960145"
 ---
 # <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management"></a>Erstellen und Verwalten eines Ressourcenkatalogs in der Azure AD-Berechtigungsverwaltung
 
@@ -81,7 +81,7 @@ Um Ressourcen in ein Zugriffspaket einschließen zu können, müssen die Ressour
 
     Diese Ressourcen können jetzt in Zugriffspakete im Katalog aufgenommen werden.
 
-### <a name="add-a-multi-geo-sharepoint-site"></a>Hinzufügen einer SharePoint-Website mit mehreren geografischen Regionen
+### <a name="add-a-multi-geo-sharepoint-site-preview"></a>Hinzufügen einer SharePoint-Website mit mehreren geografischen Regionen (Vorschau)
 
 1. Wenn für SharePoint [Multi-Geo](/microsoft-365/enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-microsoft-365) aktiviert ist, wählen Sie die Umgebung aus, aus der Sie Websites auswählen möchten.
     

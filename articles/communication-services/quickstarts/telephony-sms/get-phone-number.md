@@ -1,6 +1,6 @@
 ---
-title: 'Schnellstart: Beschaffen einer Telefonnummer über Azure Communication Services'
-description: Es wird beschrieben, wie Sie über das Azure-Portal eine Communication Services-Telefonnummer erwerben.
+title: 'Schnellstart: Verwalten von Telefonnummern mithilfe von Azure Communication Services'
+description: Hier erfahren Sie, wie Sie Telefonnummern mithilfe von Azure Communication Services verwalten.
 author: prakulka
 manager: nmurav
 services: azure-communication-services
@@ -9,108 +9,37 @@ ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
 ms.custom: references_regions
-ms.openlocfilehash: 390c804692029d7cdee8f78325b441592879582b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+zone_pivot_groups: acs-azp-java-net-python-csharp-js
+ms.openlocfilehash: 0f4a461ac5d459c6e3311400785e34bc22f40a00
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103488583"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105728452"
 ---
-# <a name="quickstart-get-a-phone-number-using-the-azure-portal"></a>Schnellstart: Beschaffen einer Telefonnummer über das Azure-Portal
+# <a name="quickstart-manage-phone-numbers"></a>Schnellstart: Verwalten von Telefonnummern
 
 [!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
 
-Steigen Sie in Azure Communication Services ein, indem Sie über das Azure-Portal eine Telefonnummer erwerben.
+::: zone pivot="platform-azp"
+[!INCLUDE [Azure portal](./includes/phone-numbers-portal.md)]
+::: zone-end
 
-## <a name="prerequisites"></a>Voraussetzungen
+::: zone pivot="programming-language-csharp"
+[!INCLUDE [Azure portal](./includes/phone-numbers-net.md)]
+::: zone-end
 
-- Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- [Eine aktive Communication Services-Ressource.](../create-communication-resource.md)
+::: zone pivot="programming-language-java"
+[!INCLUDE [Java](./includes/phone-numbers-java.md)]
+::: zone-end
 
-## <a name="get-a-phone-number"></a>Beschaffen einer Telefonnummer
+::: zone pivot="programming-language-python"
+[!INCLUDE [Python](./includes/phone-numbers-python.md)]
+::: zone-end
 
-Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrer Communication Services-Ressource, um mit der Bereitstellung von Telefonnummern zu beginnen.
-
-:::image type="content" source="../media/manage-phone-azure-portal-start.png" alt-text="Screenshot: Hauptseite einer Communication Services-Ressource":::
-
-### <a name="getting-new-phone-numbers"></a>Beschaffen von neuen Telefonnummern
-
-Navigieren Sie im Ressourcenmenü zum Blatt **Telefonnummern**.
-
-:::image type="content" source="../media/manage-phone-azure-portal-phone-page.png" alt-text="Screenshot: Telefonnummernseite einer Communication Services-Ressource":::
-
-Klicken Sie auf die Schaltfläche **Abrufen**, um den Assistenten zu starten. Im Assistenten werden auf dem Blatt **Telefonnummern** einige Fragen gestellt, um die Telefonnummer zu ermitteln, die für Ihr Szenario am besten geeignet ist.
-
-Zuerst müssen Sie eine Auswahl für **Land/Region** treffen, um anzugeben, wo die Telefonnummer bereitgestellt werden soll. Nach der Auswahl des Lands bzw. der Region müssen Sie den **Anwendungsfall** auswählen, der Ihre Anforderungen am besten erfüllt.
-
-:::image type="content" source="../media/manage-phone-azure-portal-get-numbers.png" alt-text="Screenshot: Ansicht „Telefonnummer erhalten“":::
-
-### <a name="select-your-phone-number-features"></a>Auswählen der Telefonnummernfeatures
-
-Das Konfigurieren Ihrer Telefonnummer ist in zwei Schritte unterteilt:
-
-1. Auswahl des [Nummerntyps](../../concepts/telephony-sms/plan-solution.md#phone-number-types-in-azure-communication-services)
-2. Auswahl der [Telefonnummernfeatures](../../concepts/telephony-sms/plan-solution.md#phone-number-features-in-azure-communication-services)
-
-Sie haben die Wahl zwischen zwei Telefonnummerntypen: **Geografisch** und **Gebührenfrei**. Nach der Wahl eines Nummerntyps können Sie das Feature auswählen.
-
-In diesem Beispiel wurde der Nummerntyp **Gebührenfrei** mit den Features **Outbound calling** (Ausgehende Anrufe) und **Inbound and Outbound SMS** (Ein- und ausgehende SMS) ausgewählt.
-
-:::image type="content" source="../media/manage-phone-azure-portal-select-plans.png" alt-text="Screenshot: Ansicht für die Featureauswahl":::
-
-Klicken Sie hier auf die Schaltfläche **Weiter: Nummern** (unten auf der Seite), um die Telefonnummern anzupassen, die Sie bereitstellen möchten.
-
-### <a name="customizing-phone-numbers"></a>Anpassen von Telefonnummern
-
-Auf der Seite **Nummern** können Sie die Telefonnummern anpassen, die Sie bereitstellen möchten.
-
-:::image type="content" source="../media/manage-phone-azure-portal-select-numbers-start.png" alt-text="Screenshot: Seite für die Nummernauswahl":::
-
-> [!NOTE]
-> In dieser Schnellstartanleitung wird der Anpassungsvorgang für den Nummerntyp **Gebührenfrei** gezeigt. Der Vorgang unterscheidet sich etwas, wenn Sie den Nummerntyp **Geografisch** ausgewählt haben, das Endergebnis ist jedoch gleich.
-
-Treffen Sie in der Liste mit den verfügbaren Ortsvorwahlen eine Auswahl für **Ortsvorwahl**, und geben Sie die Menge an, die Sie bereitstellen möchten. Klicken Sie anschließend auf **Suchen**, um nach Nummern zu suchen, die die ausgewählten Anforderungen erfüllen. Die Telefonnummern, die Ihre Anforderungen erfüllen, werden zusammen mit den monatlichen Kosten angezeigt.
-
-:::image type="content" source="../media/manage-phone-azure-portal-found-numbers.png" alt-text="Screenshot: Seite für die Nummernauswahl mit reservierten Nummern":::
-
-> [!NOTE]
-> Die Verfügbarkeit hängt davon ab, welche Optionen Sie für Nummerntyp, Standort und Features ausgewählt haben.
-> Die Nummern werden im Zeitraum bis zum Ablauf der Transaktion für kurze Zeit reserviert. Wenn die Transaktion abläuft, müssen Sie die Nummern erneut auswählen.
-
-Klicken Sie am unteren Rand der Seite auf die Schaltfläche **Weiter: Zusammenfassung**, um eine Zusammenfassung des Kaufs anzuzeigen und Ihre Bestellung aufzugeben.
-
-### <a name="place-order"></a>Aufgeben der Bestellung
-
-Auf der Seite mit der Zusammenfassung werden noch einmal der Nummerntyp, die Features, die Telefonnummern und die monatlichen Gesamtkosten für die Bereitstellung der Telefonnummern angezeigt.
-
-> [!NOTE]
-> Bei den angezeigten Preisen handelt es sich um die **monatlichen Gebühren**. Dies sind die Kosten für das Leasen der ausgewählten Telefonnummer an Sie. Nicht in dieser Anzeige enthalten sind die **Kosten für die nutzungsbasierte Bezahlung**, die beim Tätigen bzw. Empfangen von Anrufen anfallen. Die Preislisten finden Sie [hier](../../concepts/pricing.md). Diese Kosten richten sich nach dem Nummerntyp und den angerufenen Zielen. Die Preise pro Minute für einen Anruf von einer Nummer in der Region Seattle bei einer Nummer in der Region New York und für einen Anruf von derselben Nummer bei einer Mobiltelefonnummer im Vereinigten Königreich können sich beispielsweise unterscheiden.
-
-Klicken Sie abschließend unten auf der Seite auf **Bestellen**, um die Bestellung zu bestätigen.
-
-:::image type="content" source="../media/manage-phone-azure-portal-get-numbers-summary.png" alt-text="Screenshot: Seite mit der Zusammenfassung zu Nummerntyp, Features, Telefonnummern und monatlichen Gesamtkosten":::
-
-## <a name="find-your-phone-numbers-on-the-azure-portal"></a>Suchen nach Ihren Telefonnummern im Azure-Portal
-
-Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrer Azure Communication Services-Ressource:
-
-:::image type="content" source="../media/manage-phone-azure-portal-start.png" alt-text="Screenshot: Hauptseite einer Communication Services-Ressource":::
-
-Wählen Sie im Menü das Blatt „Telefonnummern“ aus, um Ihre Telefonnummern zu verwalten.
-
-:::image type="content" source="../media/manage-phone-azure-portal-phones.png" alt-text="Screenshot: Telefonnummernseite einer Communication Services-Ressource":::
-
-> [!NOTE]
-> Es kann einige Minuten dauern, bis die bereitgestellten Nummern auf dieser Seite angezeigt werden.
-
-
-### <a name="customizing-phone-numbers"></a>Anpassen von Telefonnummern
-
-Auf der Seite **Nummern** können Sie eine Telefonnummer auswählen, um sie zu konfigurieren.
-
-:::image type="content" source="../media/manage-phone-azure-portal-capability-update.png" alt-text="Screenshot: Seite zum Aktualisieren von Features":::
-
-Wählen Sie aus den verfügbaren Optionen die gewünschten Features aus, und klicken Sie anschließend auf **Bestätigen**, um Ihre Auswahl anzuwenden.
+::: zone pivot="programming-language-javascript"
+[!INCLUDE [JavaScript](./includes/phone-numbers-js.md)]
+::: zone-end
 
 ## <a name="troubleshooting"></a>Problembehandlung
 

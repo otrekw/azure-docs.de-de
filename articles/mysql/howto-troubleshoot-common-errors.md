@@ -7,14 +7,16 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/20/2020
-ms.openlocfilehash: ca75416a66bcf2c90028c7f1dc11fbe23a9a9bd9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3bfcfee0f5dab2d978eb1856bdc915c270d43ed6
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98631366"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105109793"
 ---
-# <a name="common-errors"></a>Häufige Fehler
+# <a name="commonly-encountered-errors-during-or-post-migration-to-azure-database-for-mysql-service"></a>Häufig auftretende Fehler während oder nach der Migration zum Azure Database for MySQL-Dienst
+
+[!INCLUDE[applies-to-single-flexible-server](includes/applies-to-single-flexible-server.md)]
 
 Azure Database for MySQL ist ein vollständig verwalteter Dienst, der auf der Communityversion von MySQL basiert. Die MySQL-Umgebung in einer verwalteten Dienstumgebung kann sich von der MySQL-Ausführung in Ihrer eigenen Umgebung unterscheiden. Dieser Artikel enthält Informationen zu einigen der häufigen Fehler, die bei Benutzern auftreten können, die zu Azure Database for MySQL migrieren oder zum ersten Mal mit Azure Database for MySQL entwickeln.
 
@@ -25,7 +27,7 @@ Der obige Fehler tritt nach erfolgreicher Anmeldung, aber vor Ausführung eines 
 
 Es gibt einige Serverparameter wie etwa „require_secure_transport“, die auf Sitzungsebene nicht unterstützt werden. Daher kann der Versuch, die Werte dieser Parameter mithilfe von „init_connect“ zu ändern, bei der Verbindungsherstellung mit dem MySQL-Server zum Fehler 1184 führen:
 
-mysql> show databases; ERROR 2006 (HY000): MySQL server has gone away No connection. Trying to reconnect... Connection id:    64897 Current database: *** NONE **_ ERROR 1184 (08S01): Aborted connection 22 to db: 'db-name' user: 'user' host: 'hostIP' (init_connect command failed) (mysql&gt; show databases; FEHLER 2006 (HY000): MySQL-Server nicht mehr verfügbar. Keine Verbindung. Es wird versucht, die Verbindung wiederherzustellen... Verbindungs-ID: 64897 Aktuelle Datenbank: *** KEINE *** FEHLER 1184 (08S01): Verbindung 22 mit DB "&lt;Datenbankname&gt;" abgebrochen. Benutzer: &lt;Benutzer&gt;, Host: &lt;Host-IP-Adresse&gt;. (Fehler beim Befehl "init_connect".))
+mysql> show databases; ERROR 2006 (HY000): MySQL server has gone away No connection. Trying to reconnect... Connection id:    64897 Current database: *** NONE *** ERROR 1184 (08S01): Aborted connection 22 to db: 'db-name' user: 'user' host: 'hostIP' (init_connect command failed) (mysql&gt; show databases; FEHLER 2006 (HY000): MySQL-Server nicht mehr verfügbar. Keine Verbindung. Es wird versucht, die Verbindung wiederherzustellen... Verbindungs-ID: 64897 Aktuelle Datenbank: *** KEINE *** FEHLER 1184 (08S01): Verbindung 22 mit DB "&lt;Datenbankname&gt;" abgebrochen. Benutzer: &lt;Benutzer&gt;, Host: &lt;Host-IP-Adresse&gt;. (Fehler beim Befehl "init_connect".))
 
 **Lösung:** Setzen Sie den Wert von „init_connect“ im Azure-Portal auf der Registerkarte „Serverparameter“ zurück, und legen Sie mit „init_connect“ nur unterstützte Serverparameter fest. 
 
@@ -48,7 +50,7 @@ BEGIN
 END;
 ```
 
-**Lösung:**  Legen Sie „log_bin_trust_function_creators“ auf dem Blatt [Serverparameter](howto-server-parameters.md) des Portals auf „1“ fest, führen Sie die DDL-Anweisungen aus, oder importieren Sie das Schema, um die gewünschten Objekte zu erstellen, und legen Sie den Parameter „log_bin_trust_function_creators“ nach der Erstellung wieder auf den vorherigen Wert fest.
+**Lösung:** Legen Sie „log_bin_trust_function_creators“ auf dem Blatt [Serverparameter](howto-server-parameters.md) des Portals auf „1“ fest, führen Sie die DDL-Anweisungen aus, oder importieren Sie das Schema, um die gewünschten Objekte zu erstellen. Sie können „log_bin_trust_function_creators“ für Ihren Server auf „1“ festgelegt lassen, um den Fehler in Zukunft zu vermeiden. Wir empfehlen, „log_bin_trust_function_creators“ festzulegen. Das in der [Dokumentation zu MySQL Community](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) angegebene Sicherheitsrisiko im Azure DB for MySQL-Dienst ist minimal, da das binäre Protokoll keinen Bedrohungen ausgesetzt ist.
 
 #### <a name="error-1227-42000-at-line-101-access-denied-you-need-at-least-one-of-the-super-privileges-for-this-operation-operation-failed-with-exitcode-1"></a>FEHLER 1227 (42000) in Zeile 101: Zugriff verweigert. Für diesen Vorgang benötigen Sie (mindestens) eine SUPER-Berechtigung. Fehler für Vorgang mit Exitcode 1
 
@@ -84,6 +86,14 @@ Der obige Fehler kann beim Ausführen von CREATE VIEW mit DEFINER-Anweisungen im
 
 > [!Tip] 
 > Verwenden Sie „sed“ oder „perl“ zum Ändern einer Dumpdatei oder eines SQL-Skripts und zum Ersetzen der DEFINER=-Anweisung.
+
+#### <a name="error-1227-42000-at-line-18-access-denied-you-need-at-least-one-of-the-super-privileges-for-this-operation"></a>FEHLER 1227 (42000) in Zeile 18: Zugriff verweigert. Für diesen Vorgang benötigen Sie (mindestens) eine SUPER-Berechtigung.
+
+Dieser Fehler kann auftreten, wenn Sie versuchen, die Dumpdatei vom MySQL-Server mit aktiviertem GTID auf dem Azure Database for MySQL-Zielserver zu importieren. Mysqldump fügt einer Dumpdatei von einem Server, auf dem GTIDs verwendet werden, die Anweisung „SET @@SESSION.sql_log_bin=0“ hinzu. Dadurch wird beim erneuten Laden der Dumpdatei die binäre Protokollierung deaktiviert.
+
+**Lösung:** Um diesen Fehler beim Importieren zu beheben, entfernen Sie die unten aufgeführten Zeilen in der mysqldump-Datei, oder kommentieren Sie sie aus. Führen Sie anschließend den Import erneut aus, um sicherzustellen, dass er erfolgreich war. 
+
+SET @MYSQLDUMP_TEMP_LOG_BIN = @@SESSION.SQL_LOG_BIN; SET @@SESSION.SQL_LOG_BIN= 0; SET @@GLOBAL.GTID_PURGED=''; SET @@SESSION.SQL_LOG_BIN = @MYSQLDUMP_TEMP_LOG_BIN;
 
 ## <a name="common-connection-errors-for-server-admin-login"></a>Häufige Verbindungsfehler bei der Serveradministratoranmeldung
 

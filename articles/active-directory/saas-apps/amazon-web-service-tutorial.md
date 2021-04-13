@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/05/2021
 ms.author: jeedes
-ms.openlocfilehash: f217a13ce68b42d3f9ee2dec4bfae47a0b64b0ca
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: 842ab27fe02501efbbc6c06c3d36d2218c3c17b9
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103200037"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104799240"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-aws-single-account-access"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit AWS Single-Account Access
 
@@ -31,11 +31,11 @@ Verwenden Sie die folgenden Informationen, um sich zwischen den Anwendungen „A
 
 **AWS Single Sign-On**
 
-[AWS Single Sign-On](https://docs.microsoft.com/azure/active-directory/saas-apps/aws-single-sign-on-tutorial) wurde dem Azure AD-Anwendungskatalog im Februar 2021 hinzugefügt. Die Anwendung erleichtert die zentrale Zugriffsverwaltung für mehrere AWS-Konten und AWS-Anwendungen (mit Anmeldung über Microsoft Azure AD). Richten Sie einmalig einen Verbund zwischen Microsoft Azure AD und AWS SSO ein, und verwenden Sie AWS SSO, um Berechtigungen für alle Ihre AWS-Konten an einem zentralen Ort zu verwalten. AWS SSO stellt Berechtigungen automatisch bereit und hält sie auf dem neuesten Stand, wenn Sie Richtlinien und Zugriffszuweisungen aktualisieren. Endbenutzer können sich mit ihren Azure AD Anmeldeinformationen authentifizieren, um auf die AWS-Konsole, auf die Befehlszeilenschnittstelle und auf integrierte AWS SSO-Anwendungen zuzugreifen.
+[AWS Single Sign-On](./aws-single-sign-on-tutorial.md) wurde dem Azure AD-Anwendungskatalog im Februar 2021 hinzugefügt. Die Anwendung erleichtert die zentrale Zugriffsverwaltung für mehrere AWS-Konten und AWS-Anwendungen (mit Anmeldung über Microsoft Azure AD). Richten Sie einmalig einen Verbund zwischen Microsoft Azure AD und AWS SSO ein, und verwenden Sie AWS SSO, um Berechtigungen für alle Ihre AWS-Konten an einem zentralen Ort zu verwalten. AWS SSO stellt Berechtigungen automatisch bereit und hält sie auf dem neuesten Stand, wenn Sie Richtlinien und Zugriffszuweisungen aktualisieren. Endbenutzer können sich mit ihren Azure AD Anmeldeinformationen authentifizieren, um auf die AWS-Konsole, auf die Befehlszeilenschnittstelle und auf integrierte AWS SSO-Anwendungen zuzugreifen.
 
 **AWS Single-Account Access**
 
-[AWS Single-Account Access](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial) wird bereits seit einigen Jahren von Kunden verwendet. Die Anwendung ermöglicht die Einrichtung eines Verbunds zwischen Azure AD und einem einzelnen AWS-Konto sowie die Verwaltung des Zugriffs auf AWS-IAM-Rollen mithilfe von Azure AD. AWS-IAM-Administratoren definieren Rollen und Richtlinien in jedem AWS-Konto. Azure AD-Administratoren richten für jedes AWS-Konto einen Verbund mit AWS-IAM ein, weisen dem Konto Benutzer oder Gruppen zu und konfigurieren Azure AD so, dass Assertionen zum Autorisieren des Rollenzugriffs gesendet werden.  
+[AWS Single-Account Access]() wird bereits seit einigen Jahren von Kunden verwendet. Die Anwendung ermöglicht die Einrichtung eines Verbunds zwischen Azure AD und einem einzelnen AWS-Konto sowie die Verwaltung des Zugriffs auf AWS-IAM-Rollen mithilfe von Azure AD. AWS-IAM-Administratoren definieren Rollen und Richtlinien in jedem AWS-Konto. Azure AD-Administratoren richten für jedes AWS-Konto einen Verbund mit AWS-IAM ein, weisen dem Konto Benutzer oder Gruppen zu und konfigurieren Azure AD so, dass Assertionen zum Autorisieren des Rollenzugriffs gesendet werden.  
 
 | Funktion | AWS Single Sign-On | AWS Single-Account Access |
 |:--- |:---:|:---:|
@@ -73,6 +73,9 @@ Für die ersten Schritte benötigen Sie Folgendes:
 
 * Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
 * Ein SSO-fähiges AWS-Abonnement
+
+> [!Note]
+> Bei Rollenimporten sollten Rollen nicht manuell in Azure AD bearbeitet werden.
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 

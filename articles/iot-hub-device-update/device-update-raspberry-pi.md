@@ -6,12 +6,12 @@ ms.author: valls
 ms.date: 2/11/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: ca689df97e7268a5c0f7c0479e6514b98ffda9f2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 143a7c411bea6a451645c860b7b5d12d2aa8d9f5
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102443453"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106121335"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-the-raspberry-pi-3-b-reference-image"></a>Device Update for Azure IoT Hub unter Verwendung des Raspberry Pi 3 B+-Referenzimages
 
@@ -30,10 +30,8 @@ In diesem Lernprogramm lernen Sie Folgendes:
 > * Bereitstellen eines Imageupdates
 > * Überwachen der Updatebereitstellung
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
-
 ## <a name="prerequisites"></a>Voraussetzungen
-* Zugriff auf einen IoT Hub. Es wird empfohlen, einen S1-Tarif (Standard) oder höher zu verwenden.
+* Erstellen Sie [ein Konto und eine Instanz für Device Update](create-device-update-account.md) (einschließlich der Konfiguration einer IoT Hub-Instanz), sofern noch nicht geschehen.
 
 ## <a name="download-image"></a>Herunterladen eines Images
 
@@ -75,7 +73,7 @@ Installieren Sie mithilfe Ihres bevorzugten Tools zum Einspielen von Betriebssys
    
 Die Software Device Update for Azure IoT Hub unterliegt den folgenden Lizenzbedingungen:
    * [Lizenz für Device Update für IoT Hub](https://github.com/Azure/iot-hub-device-update/blob/main/LICENSE.md)
-   * [Lizenz für den Übermittlungsoptimierungs-Client](https://github.com/microsoft/do-client/blob/main/LICENSE.md)
+   * [Lizenz für den Übermittlungsoptimierungs-Client](https://github.com/microsoft/do-client/blob/main/LICENSE)
    
 Lesen Sie vor Verwendung des Agents die Lizenzbedingungen. Durch die Installation und Verwendung erklären Sie Ihre Zustimmung zu diesen Bestimmungen. Wenn Sie den Lizenzbedingungen nicht zustimmen, verwenden Sie den Device Update for IoT Hub-Agent nicht.
 
@@ -83,7 +81,7 @@ Lesen Sie vor Verwendung des Agents die Lizenzbedingungen. Durch die Installatio
 
 Jetzt muss das Gerät zu Azure IoT Hub hinzugefügt werden.  In Azure IoT Hub wird eine Verbindungszeichenfolge für das Gerät generiert.
 
-1. Starten Sie im Azure-Portal Device Update for IoT Hub.
+1. Starten Sie Azure IoT Hub über das Azure-Portal.
 2. Erstellen Sie ein neues Gerät.
 3. Navigieren Sie auf der linken Seite der Seite zu „Explorers > IoT Devices“ (Explorers > IoT-Geräte), und wählen Sie „New“ (Neu) aus.
 4. Geben Sie unter „Device ID“ (Geräte-ID) einen Namen für das Gerät an. Stellen Sie sicher, dass das Kontrollkästchen „Autogenerate keys“(Schlüssel automatisch generieren) aktiviert ist.
@@ -105,9 +103,9 @@ Jetzt muss das Gerät zu Azure IoT Hub hinzugefügt werden.  In Azure IoT Hub wi
  
 Ersetzen Sie `<device connection string>` durch Ihre Verbindungszeichenfolge.
  ```markdown
-    echo "connection_string=<device connection string>" > adu-conf.txt  
-    echo "aduc_manufacturer=ADUTeam" >> adu-conf.txt
-    echo "aduc_model=RefDevice" >> adu-conf.txt
+    echo "connection_string=<device connection string>" > /adu/adu-conf.txt  
+    echo "aduc_manufacturer=ADUTeam" >> /adu/adu-conf.txt
+    echo "aduc_model=RefDevice" >> /adu/adu-conf.txt
    ```
 
 ## <a name="connect-the-device-in-device-update-iot-hub"></a>Verbinden Sie das Gerät in Device Update IoT Hub.
@@ -129,9 +127,9 @@ Verwenden Sie diese Versionsnummer im nachfolgenden Schritt „Import Update“ 
 
 1. Melden Sie sich am [Azure-Portal](https://portal.azure.com) an, und navigieren Sie zum IoT Hub.
 
-2. Suchen Sie im linken Navigationsbereich unter „IoT Devices“ (IoT-Geräte) oder „IoT Edge“ nach Ihrem IoT-Gerät, und navigieren Sie zum Gerätezwilling.
+2. Suchen Sie im linken Navigationsbereich unter „IoT-Geräte“ oder „IoT Edge“ nach Ihrem IoT-Gerät, und navigieren Sie zum Gerätezwilling oder Modulzwilling.
 
-3. Löschen Sie im Gerätezwilling alle vorhandenen Device Update-Tagwerte, indem Sie diese auf NULL festlegen.
+3. Löschen Sie im Modulzwilling des Device Update-Agent-Moduls alle vorhandenen Device Update-Tagwerte, indem Sie diese auf NULL festlegen. Wenn Sie eine Geräteidentität mit dem Device Update-Agent verwenden, nehmen Sie diese Änderungen im Gerätezwilling vor.
 
 4. Fügen Sie wie unten gezeigt einen neuen Device Update-Tagwert hinzu.
 

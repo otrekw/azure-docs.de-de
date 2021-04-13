@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: 44245bc3cd9fd1afcfe9a74d60e2f51135a247ee
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2262290486047c225cec8e8f6bb73242df7258fa
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101734043"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106271527"
 ---
 ### <a name="networking-limits---azure-resource-manager"></a><a name="azure-resource-manager-virtual-networking-limits"></a>Netzwerkgrenzwerte – Azure Resource Manager
 Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den **Azure Resource Manager** pro Region pro Abonnement verwaltet werden. Erfahren Sie, wie Sie [die aktuelle Ressourcennutzung anhand der Grenzwerte Ihres Abonnements anzeigen](../articles/networking/check-usage-against-limits.md).
@@ -73,12 +73,12 @@ Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den Azure
 | Regeln pro NIC (für alle IPs einer NIC) | 300                           |
 | Front-End-IP-Konfigurationen              | 600                           |
 | Größe des Back-End-Pools                       | 1\.000 IP-Konfigurationen, einzelnes virtuelles Netzwerk |
-| Back-End-Ressourcen pro Lastenausgleich <sup>1<sup> | 250                   |
+| Back-End-Ressourcen pro Lastenausgleich <sup>1<sup> | 1\.200                   |
 | Hochverfügbarkeitsports                 | 1 pro internem Front-End       |
 | Ausgangsregeln pro Lastenausgleichsmodul        | 600                           |
 | Lastenausgleichsmodule pro virtuellem Computer                   | 2 (1x öffentlich, 1x intern)   |
 
-<sup>1</sup> Der Grenzwert liegt bei bis zu 150 Ressourcen in beliebiger Kombination aus eigenständigen VM-Ressourcen, Verfügbarkeitsgruppenressourcen und VM-Platzierungsgruppen für Skalierungsgruppen.
+<sup>1</sup> Der Grenzwert liegt bei bis zu 1.200 Ressourcen in beliebiger Kombination aus eigenständigen VM-Ressourcen, Verfügbarkeitsgruppenressourcen und VM-Platzierungsgruppen für Skalierungsgruppen.
 
 **Load Balancer Basic**
 

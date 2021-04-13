@@ -10,19 +10,19 @@ author: curtand
 ms.author: curtand
 manager: daveba
 ms.reviewer: krbain
-ms.date: 12/02/2020
+ms.date: 03/29/2021
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 826ca9fc20d8bbcf9a5f90ccc895b9f9867a6be1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 578e8f5f3126542c579cd573c82b732049d407b6
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96860574"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105959821"
 ---
 # <a name="revoke-user-access-in-azure-active-directory"></a>Widerrufen des Benutzerzugriffs in Azure Active Directory
 
-Zu den Szenarien, die einen Administrator dazu zwingen könnten, einem Benutzer jeglichen Zugriff zu entziehen, gehören kompromittierte Konten, die Kündigung des Beschäftigungsverhältnisses und andere innerbetriebliche Bedrohungen. Je nach Komplexität der Umgebung können Administratoren mehrere Schritte unternehmen, um sicherzustellen, dass der Zugriff widerrufen wird. In einigen Szenarien kann zwischen der Einleitung des Widerrufs des Zugriffs und dem Zeitpunkt, an dem der Zugriff tatsächlich widerrufen wird, eine gewisse Zeitspanne liegen.
+Szenarien, die einen Administrator dazu zwingen könnten, einem Benutzer jeglichen Zugriff zu entziehen, umfassen kompromittierte Konten, die Kündigung des Beschäftigungsverhältnisses und andere innerbetriebliche Bedrohungen. Je nach Komplexität der Umgebung können Administratoren mehrere Schritte unternehmen, um sicherzustellen, dass der Zugriff widerrufen wird. In einigen Szenarien kann zwischen der Einleitung des Widerrufs des Zugriffs und dem Zeitpunkt, an dem der Zugriff tatsächlich widerrufen wird, eine gewisse Zeitspanne liegen.
 
 Um die Risiken zu entschärfen, müssen Sie verstehen, wie Token funktionieren. Es gibt viele Arten von Token, die unter eines der in den folgenden Abschnitten erwähnten Muster fallen.
 
@@ -36,9 +36,9 @@ Zugriffs- und Aktualisierungstoken werden häufig bei umfangreichen Clientanwend
 
 - Von Azure AD ausgestellte Zugriffstoken sind standardmäßig 1 Stunde gültig. Wenn das Authentifizierungsprotokoll es zulässt, kann die App den Benutzer automatisch erneut authentifizieren, indem sie das Aktualisierungstoken an Azure AD übergibt, sobald das Zugriffstoken abläuft.
 
-Azure AD wertet dann die Autorisierungsrichtlinien erneut aus. Wenn der Benutzer weiterhin autorisiert ist, stellt Azure AD ein neues Zugriffs- und Aktualisierungstoken aus.
+Azure AD wertet dann die Autorisierungsrichtlinien erneut aus. Wenn der Benutzer weiterhin autorisiert ist, stellt Azure AD ein neues Zugriffstoken aus und aktualisiert dieses.
 
-Zugriffstoken können ein Sicherheitsproblem darstellen, wenn der Zugriff innerhalb einer Zeitspanne widerrufen werden muss, die kürzer als die Gültigkeitsdauer des Token ist, die normalerweise etwa eine Stunde beträgt. Aus diesem Grund arbeitet Microsoft daran, eine [kontinuierliche Zugriffsauswertung](../conditional-access/concept-continuous-access-evaluation.md) für Microsoft 365-Anwendungen bereitzustellen, sodass Zugriffstoken nahezu in Echtzeit ungültig gemacht werden können.  
+Zugriffstoken können ein Sicherheitsproblem darstellen, wenn der Zugriff innerhalb einer Zeitspanne widerrufen werden muss, die kürzer als die Gültigkeitsdauer des Token ist, die normalerweise etwa eine Stunde beträgt. Aus diesem Grund arbeitet Microsoft aktiv daran, [die kontinuierliche Auswertung](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-continuous-access-evaluation) des Zugriffs in Office 365-Anwendungen vorzunehmen, was dazu beiträgt, die Invalidierung von Zugriffstoken nahezu in Echtzeit zu gewährleisten.  
 
 ## <a name="session-tokens-cookies"></a>Sitzungstoken (Cookies)
 
@@ -60,18 +60,18 @@ Für eine Hybridumgebung mit lokalem Active Directory, das mit Azure Active Dire
 
 Stellen Sie als Active Directory-Administrator eine Verbindung mit Ihrem lokalen Netzwerk her, öffnen Sie PowerShell, und führen Sie die folgenden Aktionen durch:
 
-1. Deaktivieren Sie den Benutzer in Active Directory. Weitere Informationen finden Sie unter [Disable-ADAccount](/powershell/module/addsadministration/disable-adaccount).
+1. Deaktivieren Sie den Benutzer in Active Directory. Weitere Informationen finden Sie unter [Disable-ADAccount](https://docs.microsoft.com/powershell/module/addsadministration/disable-adaccount?view=win10-ps).
 
     ```PowerShell
     Disable-ADAccount -Identity johndoe  
     ```
 
-1. Setzen Sie das Kennwort des Benutzers in Active Directory zweimal zurück. Weitere Informationen finden Sie unter [Set-ADAccountPassword](/powershell/module/addsadministration/set-adaccountpassword).
+2. Setzen Sie das Kennwort des Benutzers in Active Directory zweimal zurück. Weitere Informationen finden Sie unter [Set-ADAccountPassword](https://docs.microsoft.com/powershell/module/addsadministration/set-adaccountpassword?view=win10-ps).
 
     > [!NOTE]
     > Der Grund für das zweimalige Ändern des Kennworts eines Benutzers besteht darin, das Pass-the-Hash-Risiko zu verringern, insbesondere wenn es zu Verzögerungen bei der Replikation des lokalen Kennworts kommt. Wenn Sie sicher davon ausgehen können, dass dieses Konto nicht kompromittiert ist, genügt es, das Kennwort nur einmal zurückzusetzen.
 
-    > [!IMPORTANT] 
+    > [!IMPORTANT]
     > Verwenden Sie die Beispielkennwörter nicht in den folgenden Cmdlets. Stellen Sie sicher, dass Sie die Kennwörter in eine Zufallszeichenfolge ändern.
 
     ```PowerShell
@@ -83,32 +83,23 @@ Stellen Sie als Active Directory-Administrator eine Verbindung mit Ihrem lokalen
 
 Öffnen Sie als Azure Active Directory-Administrator PowerShell. Führen Sie dann ``Connect-AzureAD`` und die folgenden Aktionen aus:
 
-1. Deaktivieren Sie den Benutzer in Azure AD. Weitere Informationen finden Sie unter [Set-AzureADUser](/powershell/module/azuread/Set-AzureADUser).
+1. Deaktivieren Sie den Benutzer in Azure AD. Weitere Informationen finden Sie unter [Set-AzureADUser](https://docs.microsoft.com/powershell/module/azuread/Set-AzureADUser?view=azureadps-2.0).
 
     ```PowerShell
     Set-AzureADUser -ObjectId johndoe@contoso.com -AccountEnabled $false
     ```
-1. Widerrufen Sie die Azure AD-Aktualisierungstoken des Benutzers. Weitere Informationen finden Sie unter [Revoke-AzureADUserAllRefreshToken](/powershell/module/azuread/revoke-azureaduserallrefreshtoken).
+
+2. Widerrufen Sie die Azure AD-Aktualisierungstoken des Benutzers. Weitere Informationen finden Sie unter [Revoke-AzureADUserAllRefreshToken](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0).
 
     ```PowerShell
     Revoke-AzureADUserAllRefreshToken -ObjectId johndoe@contoso.com
     ```
 
-1. Deaktivieren Sie die Geräte des Benutzers. Weitere Informationen finden Sie unter [Get-AzureADUserRegisteredDevice](/powershell/module/azuread/get-azureaduserregistereddevice).
+3. Deaktivieren Sie die Geräte des Benutzers. Weitere Informationen finden Sie unter [Get-AzureADUserRegisteredDevice](https://docs.microsoft.com/powershell/module/azuread/get-azureaduserregistereddevice?view=azureadps-2.0).
 
     ```PowerShell
     Get-AzureADUserRegisteredDevice -ObjectId johndoe@contoso.com | Set-AzureADDevice -AccountEnabled $false
     ```
-
-## <a name="optional-steps"></a>Optionale Schritte
-
-- [Zurücksetzen von Unternehmensdaten in von in Intune verwalteten Anwendungen](/mem/intune/apps/apps-selective-wipe).
-
-- [Zurücksetzen unternehmenseigener Geräte durch Zurücksetzen des Geräts auf die Werkseinstellungen](/mem/intune/remote-actions/devices-wipe).
-
-> [!NOTE]
-> Daten auf dem Gerät können nach dem Zurücksetzen nicht wiederhergestellt werden.
-
 ## <a name="when-access-is-revoked"></a>Wann der Zugriff widerrufen wird
 
 Sobald Administratoren die oben genannten Schritte ausgeführt haben, kann der Benutzer keine neuen Token für Anwendungen erhalten, die an Azure Active Directory gebunden sind. Die Zeit, die zwischen dem Widerruf und dem Entzug des Zugriffs durch den Benutzer vergeht, hängt davon ab, wie die Anwendung Zugriff gewährt:
@@ -117,7 +108,25 @@ Sobald Administratoren die oben genannten Schritte ausgeführt haben, kann der B
 
 - Bei **Anwendungen, in denen Sitzungstoken verwendet werden**, enden die bestehenden Sitzungen, sobald das Token abläuft. Wenn der deaktivierte Zustand des Benutzers mit der Anwendung synchronisiert ist, kann die Anwendung die bestehenden Sitzungen des Benutzers automatisch widerrufen, sofern sie entsprechend konfiguriert ist.  Die Zeitspanne hängt von der Häufigkeit der Synchronisierung zwischen Anwendung und Azure AD ab.
 
+## <a name="best-practices"></a>Bewährte Methoden
+
+- Stellen Sie eine automatisierte Lösung für Bereitstellung und Aufhebung bereit. Das Aufheben der Bereitstellung von Benutzern für Anwendungen ist eine effektive Möglichkeit, den Zugriff zu widerrufen, insbesondere für Anwendungen, die Sitzungstoken verwenden. Entwickeln Sie einen Prozess zum Aufheben der Bereitstellung von Benutzern für Apps, die keine automatische Bereitstellung und Aufhebung unterstützen. Stellen Sie sicher, dass Anwendungen ihre eigenen Sitzungstoken widerrufen und keine Azure AD-Zugriffstoken akzeptieren, auch wenn diese noch gültig sind.
+
+  - Verwenden Sie [SaaS-App-Bereitstellung von Azure AD](https://docs.microsoft.com/azure/active-directory/app-provisioning/user-provisioning). Die SaaS-App-Bereitstellung von Azure AD wird in der Regel automatisch alle 20 bis 40 Minuten ausgeführt. [Konfigurieren Sie die Azure AD-Bereitstellung](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list), um die Bereitstellung von deaktivierten Benutzern in Anwendungen aufzuheben oder diese endgültig zu deaktivieren.
+  
+  - Verwenden Sie für Anwendungen, die nicht die SaaS-App-Bereitstellung von Azure AD verwenden, [Identity Manager (MIM)](https://docs.microsoft.com/microsoft-identity-manager/mim-how-provision-users-adds) oder eine Drittanbieterlösung, um die Aufhebung der Benutzerbereitstellung zu automatisieren.  
+  - Ermitteln und entwickeln Sie einen Prozess für Anwendungen, für die eine manuelle Aufhebung der Bereitstellung erforderlich ist. Stellen Sie sicher, dass Administratoren die erforderlichen manuellen Aufgaben zum Aufheben der Benutzerbereitstellung für diese Apps schnell ausführen können.
+  
+- [Verwalten Sie Geräte und Anwendungen mit Microsoft Intune](https://docs.microsoft.com/mem/intune/remote-actions/device-management). Mit Intune verwaltete [Geräte können auf die Werkseinstellungen zurückgesetzt werden](https://docs.microsoft.com/mem/intune/remote-actions/devices-wipe). Wenn das Gerät nicht verwaltet wird, können Sie [Unternehmensdaten aus verwalteten Apps löschen](https://docs.microsoft.com/mem/intune/apps/apps-selective-wipe). Diese Prozesse sind effektiv, um potenziell sensible Daten von Endbenutzergeräten zu entfernen. Allerdings muss das Gerät mit dem Internet verbunden sein, damit diese Prozesse ausgelöst werden können. Wenn das Gerät offline ist, kann das Gerät weiterhin auf lokal gespeicherte Daten zugreifen.
+
+> [!NOTE]
+> Daten auf dem Gerät können nach dem Zurücksetzen nicht wiederhergestellt werden.
+
+- Verwenden Sie [Microsoft Cloud App Security (MCAS), um den Datendownload ggf. zu blockieren](https://docs.microsoft.com/cloud-app-security/use-case-proxy-block-session-aad). Wenn nur ein Online-Zugriff auf die Daten möglich ist, können Organisationen Sitzungen überwachen und die Durchsetzung von Richtlinien in Echtzeit erreichen.
+
+- Aktivieren Sie die [fortlaufende Zugriffsevaluierung (CAE) in Azure AD](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-continuous-access-evaluation). Mithilfe von CAE können Administratoren die Sitzungstoken und Zugriffstoken für Anwendungen widerrufen, die CAE unterstützen.  
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Sichere Zugriffsmethoden für Azure AD-Administratoren](../roles/security-planning.md)
+- [Sichere Zugriffsmethoden für Azure AD-Administratoren](https://docs.microsoft.com/azure/active-directory/roles/security-planning)
 - [Hinzufügen oder Aktualisieren von Benutzerprofilinformationen](../fundamentals/active-directory-users-profile-azure-portal.md)

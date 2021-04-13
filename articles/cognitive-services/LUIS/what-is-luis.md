@@ -5,14 +5,14 @@ keywords: Azure, künstliche Intelligenz, KI, Verarbeitung natürlicher Sprache,
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: overview
-ms.date: 11/23/2020
+ms.date: 03/22/2021
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: f21a2cc8218dde8b0cf7203a1fcb1f5cfb9424a2
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: f32f58bebc0a7d64443259981590e368b109b19b
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98790866"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106278948"
 ---
 # <a name="what-is-language-understanding-luis"></a>Worum handelt es sich bei Language Understanding (LUIS)?
 
@@ -23,6 +23,13 @@ Language Understanding (LUIS) ist ein cloudbasierter Konversations-KI-Dienst, de
 Bei einer Clientanwendung für LUIS handelt es sich um eine beliebige Konversationsanwendung, die zum Durchführen einer Aufgabe mit einem Benutzer in natürlicher Sprache kommuniziert. Beispiele für Clientanwendungen sind Social Media-Apps, KI-Chatbots und sprachfähige Desktopanwendungen.
 
 ![Konzeptionelle Abbildung dreier Clientanwendungen, die mit Cognitive Services Language Understanding (LUIS) arbeiten](./media/luis-overview/luis-entry-point.png "Konzeptionelle Abbildung dreier Clientanwendungen, die mit Cognitive Services Language Understanding (LUIS) arbeiten")
+
+Diese Dokumentation enthält die folgenden Arten von Artikeln:  
+
+* [**Schnellstarts**](luis-get-started-create-app.md) sind Anleitungen zu den ersten Schritten, die Sie durch das Senden von Anforderungen an den Dienst führen.  
+* [**Schrittanleitungen**](luis-how-to-start-new-app.md) enthalten Anweisungen zur spezifischeren oder individuelleren Verwendung des Diensts.  
+* Die Artikel zu [**Konzepten**](artificial-intelligence.md) enthalten ausführliche Erläuterungen der Dienstfunktionen und -features.  
+* [**Tutorials**](tutorial-intents-only.md) sind ausführlichere Leitfäden, in denen die Verwendung des Diensts als Komponente in umfassenderen Unternehmenslösungen veranschaulicht wird.  
 
 ## <a name="use-luis-in-a-chat-bot"></a>Verwendung von LUIS in einen Chatbot
 
@@ -139,8 +146,6 @@ Erfahren Sie mit praktischen Schnellstarts, in denen das [Portal](get-started-po
 
 * [Neuerungen](whats-new.md "Neues") beim Dienst und bei der Dokumentation
 * [Planen Ihrer App](luis-how-plan-your-app.md "Planen der App") mit [Absichten](luis-concept-intent.md "Absichten") und [Entitäten](luis-concept-entity-types.md "entities")
-* [Abfragen des Vorhersageendpunkts](luis-get-started-get-intent-from-browser.md "Abfragen des Vorhersageendpunkts")
-* [Entwicklerressourcen](developer-reference-resource.md "Entwicklerressourcen") für LUIS.
 
 [bot-framework]: /bot-framework/
 [flow]: /connectors/luis/

@@ -12,12 +12,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, contperf-fy21q1, contperf-fy21q2
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: c72ae2a2e6dbd2278bdd78f26c145386be22764e
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 7b7adde8a6e60042bec7695e4553d6470e548316
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102175429"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106055686"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Schnellstart: Registrieren einer Anwendung bei Microsoft Identity Platform
 
@@ -56,7 +56,10 @@ Führen Sie die folgenden Schritte aus, um die App-Registrierung zu erstellen:
 
     :::image type="content" source="media/quickstart-register-app/portal-02-app-reg-01.png" alt-text="Screenshot: Azure-Portal in einem Webbrowser mit dem Bereich „Anwendung registrieren“":::
 
-Nach Abschluss der Registrierung wird im Azure-Portal die **Übersicht** für die App-Registrierung angezeigt. Hier finden Sie auch die **Anwendungs-ID (Client-ID)** . Dieser Wert wird auch als *Client-ID* bezeichnet und ermöglicht die eindeutige Identifizierung Ihrer Anwendung in Microsoft Identity Platform.
+Nach Abschluss der Registrierung wird im Azure-Portal die **Übersicht** für die App-Registrierung angezeigt. Hier finden Sie auch die **Anwendungs-ID (Client-ID)** . Dieser Wert wird auch als *Client-ID* bezeichnet und ermöglicht die eindeutige Identifizierung Ihrer Anwendung in Microsoft Identity Platform. 
+
+> [!IMPORTANT]
+> Neue App-Registrierungen werden für Benutzer standardmäßig ausgeblendet. Wenn die App Benutzern auf der [Seite „Meine Apps“](../user-help/my-apps-portal-end-user-access.md) angezeigt werden soll, können Sie sie aktivieren. Navigieren Sie zum Aktivieren der App im Azure-Portal zu **Azure Active Directory** > **Unternehmensanwendungen**, und wählen Sie die App aus. Legen Sie anschließend auf der Seite **Eigenschaften** die Option **Für Benutzer sichtbar?** auf „Ja“ fest.
 
 Die Client-ID wird auch vom Code Ihrer Anwendung (bzw. üblicherweise von einer in Ihrer Anwendung verwendeten Authentifizierungsbibliothek) genutzt. Sie wird bei der Überprüfung der von Identity Platform empfangenen Sicherheitstoken herangezogen.
 
@@ -89,7 +92,7 @@ So konfigurieren Sie Anwendungseinstellungen auf Basis der Zielplattform oder de
     | **Einzelseitenanwendung** | Geben Sie einen **Umleitungs-URI** für Ihre Anwendung ein. Dieser URI ist die Adresse, an die Microsoft Identity Platform den Client eines Benutzers umleitet und nach der Authentifizierung die Sicherheitstoken sendet.<br/><br/>Wählen Sie diese Plattform aus, wenn Sie eine clientseitige Web-App in JavaScript oder mit einem Framework wie Angular, Vue.js, React.js oder Blazor WebAssembly erstellen. |
     | **iOS/macOS** | Geben Sie die **Paket-ID** der App ein. Diese Angabe finden Sie in den **Buildeinstellungen** oder in Xcode in *Info.plist*.<br/><br/>Wenn Sie eine **Paket-ID** angeben, wird ein Umleitungs-URI für Sie generiert. |
     | **Android** | Geben Sie den **Paketnamen** der App ein. Diese Angabe finden Sie in der Datei *AndroidManifest.xml*. Generieren Sie außerdem den **Signaturhash**, und geben Sie ihn ein.<br/><br/>Bei der Angabe dieser Einstellungen wird ein Umleitungs-URI für Sie generiert. |
-    | **Mobile Anwendungen und Desktopanwendungen** | Wählen Sie einen der **vorgeschlagenen Umleitungs-URIs** aus, oder geben Sie einen **benutzerdefinierten Umleitungs-URI** an.<br/><br/>Empfehlung für Desktopanwendungen:<br/>`https://login.microsoftonline.com/common/oauth2/nativeclient`<br/><br/>Wählen Sie diese Plattform für mobile Anwendungen aus, die nicht die aktuelle Microsoft-Authentifizierungsbibliothek (Microsoft Authentication Library, MSAL) oder keinen Broker verwenden. Wählen Sie diese Plattform auch für Desktopanwendungen aus. |
+    | **Mobile Anwendungen und Desktopanwendungen** | Wählen Sie einen der **vorgeschlagenen Umleitungs-URIs** aus, oder geben Sie einen **benutzerdefinierten Umleitungs-URI** an.<br/><br/>Für Desktopanwendungen mit eingebettetem Browser wird Folgendes empfohlen:<br/>`https://login.microsoftonline.com/common/oauth2/nativeclient`<br/><br/>Für Desktopanwendungen mit Systembrowser wird Folgendes empfohlen:<br/>`http://localhost`<br/><br/>Wählen Sie diese Plattform für mobile Anwendungen aus, die nicht die aktuelle Microsoft-Authentifizierungsbibliothek (Microsoft Authentication Library, MSAL) oder keinen Broker verwenden. Wählen Sie diese Plattform auch für Desktopanwendungen aus. |
 1. Wählen Sie **Konfigurieren** aus, um die Plattformkonfiguration abzuschließen.
 
 ### <a name="redirect-uri-restrictions"></a>Einschränkungen bei Umleitungs-URIs

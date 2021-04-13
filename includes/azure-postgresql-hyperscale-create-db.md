@@ -9,10 +9,10 @@ ms.date: 12/16/2020
 ms.author: jonels
 ms.custom: include file
 ms.openlocfilehash: 26289f6bdfa086708548d17125a6dfdf50b02a8f
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97665144"
 ---
 ## <a name="create-a-hyperscale-citus-server-group"></a>Erstellen einer Hyperscale (Citus)-Servergruppe
@@ -27,7 +27,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 Führen Sie die folgenden Schritte aus, um eine Azure-Datenbank für PostgreSQL-Server zu erstellen:
 1. Klicken Sie im Azure-Portal links oben auf **Ressource erstellen**.
 2. Wählen Sie auf der Seite **Neu** die Option **Datenbanken** und dann auf der Seite **Datenbanken** die Option **Azure-Datenbank für PostgreSQL** aus.
-3. Klicken Sie als Bereitstellungsoption auf die Schaltfläche **Erstellen** unter **Hyperscale-Servergruppe (Citus)** .
+3. Klicken Sie als Bereitstellungsoption auf die Schaltfläche **Erstellen** unter **Hyperscale-Servergruppe (Citus)**.
 4. Geben Sie im Formular für den neuen Server folgende Informationen an:
    - Ressourcengruppe: Klicken Sie auf den Link **Neue erstellen** unterhalb des Textfelds für dieses Feld. Geben Sie einen Namen ein, z.B. **myresourcegroup**.
    - Servergruppenname: Geben Sie einen eindeutigen Namen für die neue Servergruppe ein, der ebenfalls für eine Serverunterdomäne verwendet wird.
@@ -39,7 +39,7 @@ Führen Sie die folgenden Schritte aus, um eine Azure-Datenbank für PostgreSQL-
    > Das hier angegebene Kennwort für den Serveradministrator ist erforderlich, um die Anmeldung am Server und bei den zugehörigen Datenbanken auszuführen. Behalten Sie diese Angaben im Kopf, oder notieren Sie sie zur späteren Verwendung.
 
 5. Klicken Sie auf **Servergruppe konfigurieren**. Übernehmen Sie die Einstellungen in diesem Abschnitt unverändert, und klicken Sie auf **Speichern**.
-6. Klicken Sie unten auf der Seite auf **Weiter: Netzwerk >** .
+6. Klicken Sie im unteren Bildschirmbereich auf **Weiter: Netzwerk >** .
 
 7. Klicken Sie auf der Registerkarte **Netzwerk** auf das Optionsfeld **Öffentlicher Endpunkt**.
    ![Öffentlicher Endpunkt ausgewählt](./media/azure-postgresql-hyperscale-create-db/network-public-endpoint.png)

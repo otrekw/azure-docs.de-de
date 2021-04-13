@@ -6,12 +6,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 06/27/2019
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1a6274ce36878af6cfbae04be935485c462bc86a
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 34ee7eb25b1d106ea8bb53197d69ca5a9d528773
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98941375"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104871604"
 ---
 # <a name="tutorial-query-apache-hive-with-odbc-and-powershell"></a>Tutorial: Abfragen von Apache Hive mit ODBC und PowerShell
 
@@ -42,7 +42,7 @@ Die folgenden Schritte zeigen Ihnen, wie Sie eine Apache Hive-ODBC-Datenquelle e
 
 1. Navigieren Sie in Windows zu **Start** > **Windows-Verwaltungsprogramme** > **ODBC-Datenquellen (32-Bit)/(64-Bit)** .  Das Fenster **ODBC-Datenquellen-Administrator** wird geöffnet.
 
-    ![ODBC-Datenquellen-Administrator](./media/apache-hive-query-odbc-driver-powershell/hive-odbc-driver-dsn-setup.png "Konfigurieren eines DSN mithilfe des ODBC-Datenquellen-Administrators")
+    :::image type="content" source="./media/apache-hive-query-odbc-driver-powershell/hive-odbc-driver-dsn-setup.png " alt-text="ODBC-Datenquellen-Administrator" border="true":::
 
 1. Wählen Sie auf der Registerkarte **Benutzer-DSN** die Option **Hinzufügen** aus, um das Fenster **Neue Datenquelle erstellen** zu öffnen.
 
@@ -53,7 +53,7 @@ Die folgenden Schritte zeigen Ihnen, wie Sie eine Apache Hive-ODBC-Datenquelle e
    | Eigenschaft | BESCHREIBUNG |
    | --- | --- |
    |  Datenquellenname |Geben Sie einen Namen für die Datenquelle an. |
-   |  Host(s) |Geben Sie `CLUSTERNAME.azurehdinsight.net` ein. Zum Beispiel, `myHDICluster.azurehdinsight.net` |
+   |  Host(s) |Geben Sie `CLUSTERNAME.azurehdinsight.net` ein. Beispiel: `myHDICluster.azurehdinsight.net` |
    |  Port |Verwenden Sie **443**.|
    |  Datenbank |Verwenden Sie **default**. |
    |  Mechanismus |Wählen Sie **Microsoft Azure HDInsight Service**. |
@@ -68,7 +68,7 @@ Die folgenden Schritte zeigen Ihnen, wie Sie eine Apache Hive-ODBC-Datenquelle e
    |  Rows fetched per block |Wenn Sie viele Datensätze abrufen, ist es möglicherweise erforderlich, diesen Parameter zu optimieren, um optimale Leistung zu garantieren. |
    |  Default string column length, Binary column length, Decimal column scale |Längen und Genauigkeiten der Datentypen können beeinflussen, wie die Daten zurückgegeben werden. Aufgrund zu geringer Genauigkeit und von Abschneidevorgängen werden falsche Informationen zurückgegeben. |
 
-    ![Erweiterte DSN-Konfigurationsoptionen](./media/apache-hive-query-odbc-driver-powershell/odbc-data-source-advanced-options.png "Erweiterte DSN-Konfigurationsoptionen")
+    :::image type="content" source="./media/apache-hive-query-odbc-driver-powershell/odbc-data-source-advanced-options.png " alt-text="Erweiterte DSN-Konfigurationsoptionen" border="true":::
 
 1. Wählen Sie **Testen** aus, um die Datenquelle zu testen. Wenn die Datenquelle richtig konfiguriert wurde, wird als Testergebnis **SUCCESS** angezeigt.  
 

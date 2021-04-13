@@ -2,14 +2,14 @@
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: include
-ms.date: 11/17/2020
+ms.date: 03/25/2021
 ms.author: jgao
-ms.openlocfilehash: e70deb835d45f35ac3448f2cd363b14cd378b463
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bf4c9914f533ae1428548f394d76ca4e6e33175c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994134"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105612885"
 ---
 > [!NOTE]
-> Dieser Artikel enthält Bicep-Beispiele.  Bicep ist zurzeit als Vorschau verfügbar.  Weitere Informationen finden Sie unter [Projekt „Bicep“](https://github.com/azure/bicep).
+> Dieser Artikel enthält Bicep-Beispiele.  Bicep ist zurzeit als Vorschau verfügbar. Weitere Informationen finden Sie unter [Was ist Bicep (Vorschau)?](../articles/azure-resource-manager/templates/bicep-overview.md).

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/05/2020
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 2b75e6e0a8b79f374900e6cb2dfc49680d3d0190
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 120bfe2eefae3c1721073060231c6c2a1962b7c8
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101739057"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106110273"
 ---
 # <a name="tutorial-configure-a-virtual-network-gateway-for-expressroute-using-powershell"></a>Tutorial: Konfigurieren eines Gateways für ein virtuelles Netzwerk für ExpressRoute mit PowerShell
 > [!div class="op_single_selector"]
@@ -54,7 +54,7 @@ Bei den Schritten für diese Aufgabe wird ein VNet basierend auf den Werten verw
 | Name der öffentlichen Gateway-IP  | *gwpip* |
 
 > [!IMPORTANT]
-> Die IPv6-Unterstützung für privates Peering befindet sich zurzeit in der **Public Preview**. Wenn Sie Ihr virtuelles Netzwerk mit einer ExpressRoute-Verbindung verbinden möchten, für die IPv6-basiertes privates Peering konfiguriert ist, stellen Sie sicher, dass Ihr virtuelles Netzwerk ein Dual Stack ist und die [hier](https://docs.microsoft.com/azure/virtual-network/ipv6-overview) beschriebenen Richtlinien einhält.
+> Die IPv6-Unterstützung für privates Peering befindet sich zurzeit in der **Public Preview**. Wenn Sie Ihr virtuelles Netzwerk mit einer ExpressRoute-Verbindung verbinden möchten, für die IPv6-basiertes privates Peering konfiguriert ist, stellen Sie sicher, dass Ihr virtuelles Netzwerk ein Dual Stack ist und die [hier](../virtual-network/ipv6-overview.md) beschriebenen Richtlinien einhält.
 > 
 > 
 
@@ -77,7 +77,7 @@ Bei den Schritten für diese Aufgabe wird ein VNet basierend auf den Werten verw
    ```azurepowershell-interactive
    $vnet = Get-AzVirtualNetwork -Name $VNetName -ResourceGroupName $RG
    ```
-1. Fügen Sie Ihrem virtuellen Netzwerk ein Gatewaysubnetz hinzu. Das Gatewaysubnetz muss den Namen GatewaySubnet tragen. Das Gatewaysubnetz muss /27 oder größer sein (/26, /25 usw.).
+1. Fügen Sie Ihrem virtuellen Netzwerk ein Gatewaysubnetz hinzu. Das Gatewaysubnetz muss den Namen GatewaySubnet tragen. Das Gatewaysubnetz muss /27 oder größer sein (/26, /25 usw.). Wenn Sie 16 ExpressRoute-Leitungen mit Ihrem Gateway verbinden möchten, **müssen** Sie ein Gatewaysubnetz mit einer Größe von mindestens /26 erstellen.
 
    ```azurepowershell-interactive
    Add-AzVirtualNetworkSubnetConfig -Name GatewaySubnet -VirtualNetwork $vnet -AddressPrefix 192.168.200.0/26
