@@ -11,13 +11,14 @@ ms.topic: how-to
 ms.date: 12/16/2020
 ms.author: mimart
 ms.subservice: B2C
+ms.custom: b2c-support
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 29dd67e9e6e15aaafec0cc47d89da32cbf369938
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: fbcdef0002a227d5319fc01e625146480e4c99fc
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97618611"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105043749"
 ---
 # <a name="set-up-a-sign-up-and-sign-in-flow-in-azure-active-directory-b2c"></a>Einrichten eines Registrierungs- und Anmeldeflows in Azure Active Directory B2C
 
@@ -66,6 +67,7 @@ Der Benutzerflow für Registrierung und Anmeldung verarbeitet die Benutzeroberfl
     ![Auswahlseite für Attribute und Ansprüche mit drei ausgewählten Ansprüchen](./media/add-sign-up-and-sign-in-policy/signup-signin-attributes.png)
 
 1. Klicken Sie auf **Erstellen**, um den Benutzerflow hinzuzufügen. Dem Namen wird automatisch das Präfix *B2C_1* vorangestellt.
+2. Führen Sie die Schritte für die [Verarbeitung des Ablaufs für "Kennwort vergessen?"](add-password-reset-policy.md?pivots=b2c-user-flow.md#self-service-password-reset-recommended) in der Registrierungs- oder Anmelderichtlinie aus.
 
 ### <a name="test-the-user-flow"></a>Testen des Benutzerflows
 
@@ -73,7 +75,7 @@ Der Benutzerflow für Registrierung und Anmeldung verarbeitet die Benutzeroberfl
 1. Wählen Sie für **Anwendung** die Webanwendung *webapp1* aus, die Sie zuvor registriert haben. Als **Antwort-URL** sollte `https://jwt.ms` angezeigt werden.
 1. Klicken Sie auf **Benutzerflow ausführen**, und wählen Sie dann **Jetzt registrieren** aus.
 
-    ![Seite „Benutzerflow ausführen“ im Portal mit hervorgehobener Schaltfläche „Benutzerflow ausführen“](./media/add-sign-up-and-sign-in-policy/signup-signin-run-now.PNG)
+    ![Seite „Benutzerflow ausführen“ im Portal mit hervorgehobener Schaltfläche „Benutzerflow ausführen“](./media/add-sign-up-and-sign-in-policy/signup-signin-run-now.png)
 
 1. Geben Sie eine gültige E-Mail-Adresse ein, klicken Sie auf **Überprüfungscode senden**, geben Sie den Überprüfungscode ein, und wählen Sie dann **Code überprüfen** aus.
 1. Geben Sie ein neues Kennwort ein, und bestätigen Sie es.

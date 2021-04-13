@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/22/2020
 ms.author: jeedes
 ms.openlocfilehash: 529c4e6433d16f9d70530ba516b5ec1426806984
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92519230"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-wedo"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit WEDO
@@ -41,7 +41,7 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 * WEDO unterstützt **SP- und IDP-initiiertes** einmaliges Anmelden.
 
-* [Nach dem Konfigurieren von WEDO können Sie Sitzungssteuerungen erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützen. Sitzungssteuerungen basieren auf bedingtem Zugriff. Erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen](/cloud-app-security/proxy-deployment-any-app).
+* [Nach dem Konfigurieren von WEDO können Sie Sitzungssteuerungen erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützen. Sitzungssteuerungen basieren auf bedingtem Zugriff. Erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.](/cloud-app-security/proxy-deployment-any-app)
 
 ## <a name="adding-wedo-from-the-gallery"></a>Hinzufügen von WEDO über den Katalog
 
