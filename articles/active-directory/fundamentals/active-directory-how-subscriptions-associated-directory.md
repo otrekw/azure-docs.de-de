@@ -1,6 +1,6 @@
 ---
 title: Hinzufügen eines vorhandenen Azure-Abonnements zu Ihrem Mandanten – Azure AD
-description: Anleitungen zum Hinzufügen eines vorhandenen Azure-Abonnements zu Ihrem Azure Active Directory-Mandanten.
+description: Anleitungen zum Hinzufügen eines vorhandenen Azure-Abonnements zu Ihrem Azure Active Directory (Azure AD)-Mandanten.
 services: active-directory
 author: ajburnle
 manager: daveba
@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: how-to
-ms.date: 09/01/2020
+ms.date: 03/05/2021
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18, contperf-fy20q4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c7a39340f44e2c6eeae5b5f1a8e687bc73b3b0fe
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: b7ac9553660aace8242c81b41fa2cc9171d28219
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97028409"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104594630"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>Zuordnen oder Hinzufügen eines Azure-Abonnements zu Ihrem Azure Active Directory-Mandanten
 
@@ -45,17 +45,17 @@ Bevor Sie Ihr Abonnement zuweisen oder hinzufügen können, müssen Sie die folg
 
   - Benutzer, denen Rollen mithilfe von Azure RBAC zugewiesen wurden, verlieren den Zugriff.
   - Dienstadministrator und Co-Admins verlieren den Zugriff.
-  - Wenn Sie über Schlüsseltresore verfügen, kann darauf nicht mehr zugegriffen werden, und Sie müssen sie nach der Zuweisung korrigieren.
-  - Wenn Sie über verwaltete Identitäten für Ressourcen wie Virtual Machines oder Logic Apps verfügen, müssen Sie diese nach der Zuordnung nochmal aktivieren oder erstellen.
-  - Wenn Sie eine Azure Stack-Instanz konfiguriert haben, müssen Sie diese nach der Zuweisung erneut registrieren.
-  - Weitere Informationen finden Sie unter [Übertragen eines Azure-Abonnements in ein anderes Azure AD-Verzeichnis](../../role-based-access-control/transfer-subscription.md).
+  - Wenn Sie über Schlüsseltresore verfügen, kann darauf nicht mehr zugegriffen werden. Sie müssen das Problem nach der Zuordnung beheben.
+  - Wenn Sie über verwaltete Identitäten für Ressourcen wie Virtual Machines oder Logic Apps verfügen, müssen Sie diese nach der Zuordnung erneut aktivieren oder erstellen.
+  - Wenn Sie Azure Stack registriert haben, müssen Sie es nach der Zuordnung erneut registrieren.
+  - Weitere Informationen finden Sie unter [Übertragen eines Azure-Abonnements in ein anderes Azure AD-Verzeichnis](../../role-based-access-control/transfer-subscription.md).
 
 - Melden Sie sich mit einem Konto an, das:
 
-  - Über die Rollenzuweisung [Besitzer](../../role-based-access-control/built-in-roles.md#owner) für das Abonnement verfügt. Weitere Informationen zum Zuweisen der Rolle „Besitzer“ finden Sie unter [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen über das Azure-Portal](../../role-based-access-control/role-assignments-portal.md).
+  - Über die Rollenzuweisung [Besitzer](../../role-based-access-control/built-in-roles.md#owner) für das Abonnement verfügt. Informationen zum Zuweisen der Rolle „Besitzer“ finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](../../role-based-access-control/role-assignments-portal.md).
   - Ist im aktuellen Verzeichnis und im neuen Verzeichnis vorhanden. Das aktuelle Verzeichnis ist dem Abonnement zugeordnet. Verknüpfen Sie das neue Verzeichnis mit dem Abonnement. Weitere Informationen zum Zugriff auf ein anderes Verzeichnis finden Sie unter [Hinzufügen von Azure Active Directory B2B-Zusammenarbeitsbenutzern über das Azure-Portal](../external-identities/add-users-administrator.md).
 
-- Achten Sie darauf, dass Sie kein Azure-Clouddienstanbieter-Abonnement (MS-AZR-0145P, MS-AZR-0146P, MS-AZR-0146P, MS-AZR-159P), kein internes Microsoft-Abonnement (MS-AZR-0015P) und kein Microsoft Imagine-Abonnement (MS-AZR-0144P) verwenden.
+- Achten Sie darauf, dass Sie kein Azure-Cloud-Dienstanbieter-Abonnement (MS-AZR-0145P, MS-AZR-0146P, MS-AZR-159P), kein internes Microsoft-Abonnement (MS-AZR-0015P) und kein Microsoft Azure for Students Starter-Abonnement (MS-AZR-0144P) verwenden.
 
 ## <a name="associate-a-subscription-to-a-directory"></a>Zuordnen eines Abonnements zu einem Verzeichnis<a name="to-associate-an-existing-subscription-to-your-azure-ad-directory"></a>
 
@@ -65,17 +65,17 @@ Führen Sie die folgenden Schritte aus, um Ihrem Azure AD-Verzeichnis ein vorhan
 
 1. Wählen Sie **Verzeichnis ändern** aus.
 
-   ![Seite „Abonnements“ mit hervorgehobener Option „Verzeichnis ändern“](media/active-directory-how-subscriptions-associated-directory/change-directory-in-azure-subscriptions.png)
+   :::image type="content" source="media/active-directory-how-subscriptions-associated-directory/change-directory-in-azure-subscriptions.png" alt-text="Screenshot der Seite „Abonnements“ mit hervorgehobener Option „Verzeichnis ändern“.":::
 
 1. Überprüfen Sie alle angezeigten Warnungen, und wählen Sie dann **Ändern** aus.
 
-   ![Ändern der Verzeichnisseite und Anzeigen des zu ändernden Verzeichnisses](media/active-directory-how-subscriptions-associated-directory/edit-directory-ui.png)
+   :::image type="content" source="media/active-directory-how-subscriptions-associated-directory/edit-directory-ui.png" alt-text="Screenshot der Seite „Verzeichnis ändern“ mit einem Beispielverzeichnis und der hervorgehobenen Schaltfläche „Ändern“.":::
 
    Nachdem das Verzeichnis für das Abonnement geändert wurde, wird eine Erfolgsmeldung angezeigt.
 
 1. Wählen Sie auf der Abonnementseite **Verzeichnis wechseln** aus, um zu Ihrem neuen Verzeichnis zu wechseln.
 
-   ![Seite mit dem Verzeichnisumschalter mit Beispielinformationen](media/active-directory-how-subscriptions-associated-directory/directory-switcher.png)
+   :::image type="content" source="media/active-directory-how-subscriptions-associated-directory/directory-switcher.png" alt-text="Screenshot der Seite „Verzeichnis wechseln“ mit Beispielinformationen.":::
 
    Es kann mehrere Stunden dauern, bis alles ordnungsgemäß angezeigt wird. Wenn es zu lange dauert, überprüfen Sie den **globalen Abonnementfilter**. Stellen Sie sicher, dass das verschobene Abonnement nicht ausgeblendet ist. Möglicherweise müssen Sie sich beim Azure-Portal abmelden und wieder anmelden, damit das neue Verzeichnis angezeigt wird.
 
@@ -87,11 +87,11 @@ Nachdem Sie ein Abonnement einem anderen Verzeichnis zugeordnet haben, müssen S
 
 - Wenn Sie über Schlüsseltresore verfügen, müssen Sie die Mandanten-ID des Schlüsseltresors ändern. Weitere Informationen finden Sie unter [Ändern der Mandanten-ID des Schlüsseltresors nach einer Abonnementverschiebung](../../key-vault/general/move-subscription.md).
 
-- Wenn Sie vom System zugewiesene verwaltete Identitäten für Ressourcen verwendet haben, müssen Sie diese nochmal aktivieren. Wenn Sie vom Benutzer zugewiesene verwaltete Identitäten verwendet haben, müssen Sie diese nochmal erstellen. Nach dem erneuten Aktivieren oder Erstellen der verwalteten Identitäten müssen Sie die Berechtigungen, die diesen Identitäten zugewiesen sind, erneut einrichten. Weitere Informationen finden Sie im unter [Was sind verwaltete Identitäten für Azure-Ressourcen?](../managed-identities-azure-resources/overview.md).
+- Wenn Sie vom System zugewiesene verwaltete Identitäten für Ressourcen verwendet haben, müssen Sie diese nochmal aktivieren. Wenn Sie vom Benutzer zugewiesene verwaltete Identitäten verwendet haben, müssen Sie diese nochmal erstellen. Nach dem erneuten Aktivieren oder Erstellen der verwalteten Identitäten müssen Sie die Berechtigungen, die diesen Identitäten zugewiesen sind, erneut einrichten. Weitere Informationen finden Sie unter [Was sind verwaltete Identitäten für Azure-Ressourcen?](../managed-identities-azure-resources/overview.md).
 
-- Wenn Sie mit diesem Abonnement eine Azure Stack-Instanz registriert haben, müssen Sie diese nochmal registrieren. Weitere Informationen finden Sie unter [Registrieren von Azure Stack in Azure](/azure-stack/operator/azure-stack-registration).
+- Wenn Sie mit diesem Abonnement eine Azure Stack-Instanz registriert haben, müssen Sie diese nochmal registrieren. Weitere Informationen finden Sie unter [Registrieren von Azure Stack Hub in Azure](/azure-stack/operator/azure-stack-registration).
 
-- Weitere Informationen finden Sie unter [Übertragen eines Azure-Abonnements in ein anderes Azure AD-Verzeichnis](../../role-based-access-control/transfer-subscription.md).
+- Weitere Informationen finden Sie unter [Übertragen eines Azure-Abonnements in ein anderes Azure AD-Verzeichnis](../../role-based-access-control/transfer-subscription.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

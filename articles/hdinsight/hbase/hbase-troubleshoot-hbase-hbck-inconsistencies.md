@@ -5,17 +5,17 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/08/2019
 ms.openlocfilehash: cbe4231bbecdf279c637cd334336437a020188d4
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98936993"
 ---
 # <a name="scenario-hbase-hbck-command-returns-inconsistencies-in-azure-hdinsight"></a>Szenario: Der Befehl `hbase hbck` gibt Inkonsistenzen in Azure HDInsight zurück
 
 In diesem Artikel werden Schritte zur Problembehandlung und mögliche Lösungen für Probleme bei der Interaktion mit Azure HDInsight-Clustern beschrieben.
 
-## <a name="issue-region-is-not-in-hbasemeta"></a>Problem: Die Region ist nicht in `hbase:meta` vorhanden.
+## <a name="issue-region-is-not-in-hbasemeta"></a>Problem: Region ist nicht in `hbase:meta` vorhanden
 
 Die Region xxx ist in HDFS, jedoch nicht in `hbase:meta` aufgeführt oder auf einem beliebigen Regionsserver bereitgestellt.
 
@@ -38,7 +38,7 @@ Verschiedene Ursachen.
     ```
 ---
 
-## <a name="issue-region-is-offline"></a>Problem: Die Region ist offline.
+## <a name="issue-region-is-offline"></a>Problem: Region ist offline
 
 Die Region xxx wurde auf keinem RegionServer bereitgestellt. Dies bedeutet, dass die Region in `hbase:meta` vorhanden, aber offline ist.
 
@@ -78,7 +78,7 @@ In diesem Szenario müssen Sie RegionA und RegionC mergen, RegionD mit demselben
 
 ---
 
-## <a name="issue-cant-load-regioninfo"></a>Problem: `.regioninfo` kann nicht geladen werden.
+## <a name="issue-cant-load-regioninfo"></a>Problem: `.regioninfo` kann nicht geladen werden
 
 `.regioninfo` kann nicht für die Region `/hbase/data/default/tablex/regiony` geladen werden.
 

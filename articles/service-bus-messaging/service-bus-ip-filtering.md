@@ -2,31 +2,30 @@
 title: Konfigurieren von IP-Firewallregeln für Azure Service Bus
 description: Hier erfahren Sie, wie Sie mithilfe von Firewallregeln Verbindungen von bestimmten IP-Adressen mit Azure Service Bus zulassen.
 ms.topic: article
-ms.date: 02/12/2021
-ms.openlocfilehash: e73f566533cb2357653f7f584ec9ca77333c0a63
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/29/2021
+ms.openlocfilehash: 747e15e912033c5bc6a1f64ab389f1ab03f40c0b
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100560873"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105962321"
 ---
 # <a name="allow-access-to-azure-service-bus-namespace-from-specific-ip-addresses-or-ranges"></a>Zulassen des Zugriffs auf den Azure Service Bus-Namespace von bestimmten IP-Adressen oder -Adressbereichen
 Standardmäßig kann über das Internet auf Service Bus-Namespaces zugegriffen werden, solange die Anforderung eine gültige Authentifizierung und Autorisierung aufweist. Mit der IP-Firewall können Sie den Zugriff auf eine Gruppe von IPv4-Adressen oder IPv4-Adressbereichen in der [CIDR-Notation (Classless Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) weiter einschränken.
 
 Diese Funktion ist in Szenarien hilfreich, in denen Azure Service Bus nur von bestimmten bekannten Websites aus zugänglich sein soll. Mithilfe von Firewallregeln können Sie Regeln konfigurieren, um Datenverkehr von bestimmten IPv4-Adressen zuzulassen. Wenn Sie Service Bus mit [Azure ExpressRoute][express-route] verwenden, können Sie beispielsweise eine **Firewallregel** erstellen, um nur Datenverkehr von den IP-Adressen Ihrer lokalen Infrastruktur oder von Adressen eines unternehmenseigenen NAT-Gateways zuzulassen. 
 
-> [!IMPORTANT]
-> - Firewalls und virtuelle Netzwerke werden nur im Tarif **Premium** von Service Bus unterstützt. Wenn ein Upgrade auf den Tarif **Premium** nicht möglich ist, wird empfohlen, dass Sie die Sicherheit des SAS-Tokens (Shared Access Signature) gewährleisten und es nur für autorisierte Benutzer freigeben. Weitere Informationen zur SAS-Authentifizierung finden Sie unter [Authentifizierung und Autorisierung](service-bus-authentication-and-authorization.md#shared-access-signature).
-> - Geben Sie mindestens eine IP-Regel oder VNET-Regel für den Namespace an, um nur Datenverkehr von den angegebenen IP-Adressen oder dem Subnetz eines virtuellen Netzwerks zuzulassen. Wenn keine IP- und VNET-Regeln vorhanden sind, kann (mithilfe des Zugriffsschlüssels) über das öffentliche Internet auf den Namespace zugegriffen werden.  
-
 ## <a name="ip-firewall-rules"></a>IP-Firewallregeln
 Die IP-Firewallregeln werden auf der Service Bus-Namespaceebene angewendet. Daher gelten die Regeln für alle Clientverbindungen mit einem beliebigen unterstützten Protokoll. Jeder Verbindungsversuch über eine IP-Adresse, die nicht mit einer IP-Zulassungsregel im Service Bus-Namespace übereinstimmt, wird als nicht autorisiert abgelehnt. In der Antwort wird die IP-Regel nicht erwähnt. IP-Filterregeln werden der Reihe nach angewendet, und die erste Regel, die eine Übereinstimmung mit der IP-Adresse ergibt, bestimmt die Aktion (Zulassen oder Ablehnen).
 
-Durch Implementieren von Firewallregeln kann verhindert werden, dass andere Azure-Dienste mit Service Bus interagieren. Als Ausnahme können Sie bestimmten vertrauenswürdigen Diensten selbst dann den Zugriff auf Service Bus-Ressourcen erlauben, wenn die IP-Filterung aktiviert ist. Eine Liste der vertrauenswürdigen Dienste finden Sie unter [Vertrauenswürdige Dienste](#trusted-microsoft-services). 
+## <a name="important-points"></a>Wichtige Punkte
+- Firewalls und virtuelle Netzwerke werden nur im Tarif **Premium** von Service Bus unterstützt. Wenn ein Upgrade auf den Tarif **Premium** nicht möglich ist, wird empfohlen, dass Sie die Sicherheit des SAS-Tokens (Shared Access Signature) gewährleisten und es nur für autorisierte Benutzer freigeben. Weitere Informationen zur SAS-Authentifizierung finden Sie unter [Authentifizierung und Autorisierung](service-bus-authentication-and-authorization.md#shared-access-signature).
+- Geben Sie **mindestens eine IP-Firewallregel oder VNET-Regel** für den Namespace an, um nur Datenverkehr von den angegebenen IP-Adressen oder dem Subnetz eines virtuellen Netzwerks zuzulassen. Wenn keine IP- und VNET-Regeln vorliegen, kann (mithilfe des Zugriffsschlüssels) über das öffentliche Internet auf den Namespace zugegriffen werden.  
+- Durch Implementieren von Firewallregeln kann verhindert werden, dass andere Azure-Dienste mit Service Bus interagieren. Als Ausnahme können Sie bestimmten **vertrauenswürdigen Diensten** selbst dann den Zugriff auf Service Bus-Ressourcen erlauben, wenn die IP-Filterung aktiviert ist. Eine Liste der vertrauenswürdigen Dienste finden Sie unter [Vertrauenswürdige Dienste](#trusted-microsoft-services). 
 
-Die folgenden Microsoft-Dienste müssen sich in einem virtuellen Netzwerk befinden:
-- Azure App Service
-- Azure-Funktionen
+    Die folgenden Microsoft-Dienste müssen sich in einem virtuellen Netzwerk befinden:
+    - Azure App Service
+    - Azure-Funktionen
 
 ## <a name="use-azure-portal"></a>Verwenden des Azure-Portals
 In diesem Abschnitt erfahren Sie, wie Sie im Azure-Portal IP-Firewallregeln für einen Service Bus-Namespace erstellen. 

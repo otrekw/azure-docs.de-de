@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
 ms.author: yegu
-ms.openlocfilehash: fe777c3aa7b314dc56a42cc64712d18281a6ea7d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3fe3131263d3cf1984eae1692854d8d6bcd2746a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102121166"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105109487"
 ---
 # <a name="configure-active-geo-replication-for-enterprise-azure-cache-for-redis-instances-preview"></a>Konfigurieren der aktiven Georeplikation für Azure Cache for Redis-Enterprise-Instanzen (Vorschau)
 
@@ -26,9 +26,11 @@ Die aktive Georeplikation gruppiert zwei oder mehr Azure Cache for Redis-Enterpr
 >
 >
 
-1. Klicken Sie in der Benutzeroberfläche zum Erstellen eines **Neuer Redis Cache** auf **Konfigurieren**, um **Aktive Georeplikation** auf der Registerkarte **Erweitert** einzurichten.
+1. Wählen Sie auf der Registerkarte **Erweitert** der Erstellungsbenutzeroberfläche **Neuer Redis Cache** die Option **Enterprise** für **Clusterrichtlinie** aus.
 
     ![Konfigurieren der aktiven Georeplikation](./media/cache-how-to-active-geo-replication/cache-active-geo-replication-not-configured.png)
+
+1. Klicken Sie auf **Konfigurieren**, um die **Aktive Georeplikation** einzurichten.
 
 1. Erstellen Sie eine neue Replikationsgruppe für eine erste Cache-Instanz, oder wählen Sie eine vorhandene aus der Liste aus.
 
@@ -38,7 +40,7 @@ Die aktive Georeplikation gruppiert zwei oder mehr Azure Cache for Redis-Enterpr
 
     ![Konfigurierte aktive Georeplikation](./media/cache-how-to-active-geo-replication/cache-active-geo-replication-configured.png)
 
-1. Wiederholen Sie die obigen Schritte für jede zusätzliche Cache-Instanz in der Georeplikationsgruppe.
+1. Warten Sie, bis der erste Cache erfolgreich erstellt wurde. Wiederholen Sie die obigen Schritte für jede zusätzliche Cache-Instanz in der Georeplikationsgruppe.
 
 ## <a name="remove-from-an-active-geo-replication-group"></a>Entfernen aus einer aktiven Georeplikationsgruppe
 

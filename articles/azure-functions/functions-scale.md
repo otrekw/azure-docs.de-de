@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 08/17/2020
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 490fa46deabc822e416705fe9bf9c5cdb58f8cd6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 079ac41f8b138bccbe4d435a79836d3acee71b7d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97936759"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105728622"
 ---
 # <a name="azure-functions-hosting-options"></a>Azure Functions-Hostingoptionen
 
@@ -28,7 +28,7 @@ Dieser Artikel enthält einen ausführlichen Vergleich zwischen den verschiedene
 
 Im Folgenden finden Sie eine Zusammenfassung der Vorteile der drei wichtigsten Hostingpläne für Functions:
 
-| | |
+| Planen | Vorteile |
 | --- | --- |  
 |**[Verbrauchsplan](consumption-plan.md)**| Skalieren Sie Ihre Computeressourcen automatisch, und zahlen Sie nur dann für diese Ressourcen, wenn Ihre Funktionen tatsächlich ausgeführt werden.<br/><br/>Im Verbrauchsplan werden Instanzen des Functions-Hosts basierend auf der Anzahl von eingehenden Ereignissen dynamisch hinzugefügt und entfernt.<br/><br/> ✔ Standardhostingplan.<br/>✔ Sie bezahlen nur, wenn Ihre Funktionen ausgeführt werden.<br/>✔ Die Skalierung erfolgt automatisch – selbst in Zeiten hoher Last.|  
 |**[Premium-Plan](functions-premium-plan.md)**|In diesem Plan werden Ressourcen automatisch nach Bedarf skaliert. Nutzen Sie vorab aufgewärmte (also betriebsbereite) Worker, um Anwendungen nach einem Leerlauf ohne jede Verzögerung auszuführen, profitieren Sie von leistungsstärkeren Instanzen für die Ausführung, und stellen Sie Verbindungen mit virtuellen Netzwerken her. <br/><br/>Ziehen Sie den Premium-Plan für Azure Functions in folgenden Situationen in Betracht: <br/><br/>✔ Ihre Funktions-Apps werden kontinuierlich oder nahezu kontinuierlich ausgeführt.<br/>✔ Sie verfügen über eine hohe Anzahl kleiner Ausführungen und haben im Verbrauchstarif hohe Ausführungskosten, aber geringe Kosten für Gigabytesekunden.<br/>✔ Sie benötigen weitere CPU- oder Arbeitsspeicheroptionen zusätzlich zu den vom Verbrauchsplan bereitgestellten.<br/>✔ Ihr Code muss länger ausgeführt werden, als im Verbrauchsplan als maximal zulässige Ausführungsdauer angegeben ist.<br/>✔ Sie benötigen Features, die im Rahmen des Verbrauchstarifs nicht zur Verfügung stehen, z. B. Konnektivität mit virtuellen Netzwerken.|  
@@ -36,7 +36,7 @@ Im Folgenden finden Sie eine Zusammenfassung der Vorteile der drei wichtigsten H
 
 Die Vergleichstabellen in diesem Artikel enthalten auch die folgenden Hostingoptionen, die die größtmögliche Kontrolle und Isolation bereitstellen, in denen Sie Ihre Funktions-Apps ausführen können.  
 
-| | |
+| Hostingoption | Details |
 | --- | --- |  
 |**[ASE](dedicated-plan.md)** | Die App Service-Umgebung (App Service Environment, ASE) ist ein App Service-Feature, das eine vollständig isolierte und dedizierte Umgebung zur sicheren Ausführung von App Service-Apps in großem Maßstab bereitstellt.<br/><br/>App Service-Umgebungen eignen sich ideal für Anwendungsworkloads mit folgenden Anforderungen: <br/><br/>✔ Sehr großer Umfang.<br/>✔ Vollständige Computeisolation und sicherer Netzwerkzugriff<br/>✔ Hohe Speicherauslastung|  
 | **[Kubernetes](functions-kubernetes-keda.md)** | Kubernetes bietet eine vollständig isolierte und dedizierte Umgebung, die auf der Kubernetes-Plattform aufsetzt.<br/><br/> Kubernetes eignet sich für Anwendungsworkloads mit folgenden Anforderungen: <br/>✔ Benutzerdefinierte Hardwareanforderungen.<br/>✔ Isolierung und sicherer Netzwerkzugriff.<br/>✔ Möglichkeit zur Ausführung in Hybrid- oder Multicloudumgebungen.<br/>✔ Parallele Ausführung mit vorhandenen Kubernetes-Anwendungen und -Diensten.|  
@@ -65,7 +65,7 @@ In der folgenden Tabelle werden die in den einzelnen Hostingplänen unterstützt
 
 In der folgenden Tabelle wird das Skalierungsverhalten der verschiedenen Hostingpläne verglichen.
 
-| | Aufskalieren | Maximale Anzahl Instanzen |
+| Planen | Aufskalieren | Maximale Anzahl Instanzen |
 | --- | --- | --- |
 | **[Verbrauchsplan](consumption-plan.md)** | [Ereignisgesteuert.](event-driven-scaling.md) Das Aufskalieren erfolgt automatisch – selbst in Zeiten hoher Lasten. Die Azure Functions-Infrastruktur skaliert CPU- und Arbeitsspeicherressourcen durch Hinzufügen zusätzlicher Instanzen des Functions-Hosts basierend auf der Anzahl der eingehenden Triggerereignisse. | 200 |
 | **[Premium-Plan](functions-premium-plan.md)** | [Ereignisgesteuert.](event-driven-scaling.md) Das Aufskalieren erfolgt automatisch – selbst in Zeiten hoher Lasten. Die Azure Functions-Infrastruktur skaliert CPU- und Arbeitsspeicherressourcen durch Hinzufügen zusätzlicher Instanzen des Functions-Hosts basierend auf der Anzahl der Ereignisse, für die Funktionen ausgelöst werden. |100|
@@ -77,7 +77,7 @@ In der folgenden Tabelle wird das Skalierungsverhalten der verschiedenen Hosting
 
 ## <a name="cold-start-behavior"></a>Kaltstartverhalten
 
-|    |    | 
+| Planen | Details | 
 | -- | -- |
 | **[Verbrauchsplan](consumption-plan.md)** | Apps im Leerlauf werden möglicherweise auf null skaliert, sodass bei einigen Anforderungen die Latenz beim Start steigen kann.  Der Verbrauchsplan bietet einige Optimierungen, um die Kaltstartzeit zu verkürzen, beispielsweise den Abruf von vorab aufgewärmten (betriebsbereiten) Platzhalterfunktionen, für die bereits der Funktionshost und die Sprachprozesse ausgeführt werden. |
 | **[Premium-Plan](functions-premium-plan.md)** | Ständig betriebsbereite (warme) Instanzen, um jegliche Kaltstarts zu vermeiden. |
@@ -95,7 +95,7 @@ In der folgenden Tabelle wird das Skalierungsverhalten der verschiedenen Hosting
 
 ## <a name="billing"></a>Abrechnung
 
-| | | 
+| Planen | Details |
 | --- | --- |
 | **[Verbrauchsplan](consumption-plan.md)** | Sie bezahlen nur für die Zeit, in der Ihre Funktionen ausgeführt werden. Die Abrechnung erfolgt auf der Grundlage der Anzahl von Ausführungen, der Ausführungszeit und des verwendeten Arbeitsspeichers. |
 | **[Premium-Plan](functions-premium-plan.md)** | Die Abrechnung für den Premium-Plan basiert auf der Anzahl von Kernsekunden und dem für benötigte und vorab aufgewärmte Instanzen verwendeten Arbeitsspeicher. Pro Plan muss immer mindestens eine Instanz aufgewärmt sein. Dieser Plan bietet die am besten vorhersagbaren Preise. |

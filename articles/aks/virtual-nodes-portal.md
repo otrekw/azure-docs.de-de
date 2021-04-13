@@ -3,14 +3,14 @@ title: Erstellen von virtuellen Knoten mit dem Portal in Azure Kubernetes Servic
 description: Erfahren Sie, wie Sie das Azure-Portal verwenden, um einen Azure Kubernetes Service-Cluster (AKS) zu erstellen, der virtuelle Knoten zum Ausführen von Pods verwendet.
 services: container-service
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 03/15/2021
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 06a3e7263b2e03cfc37f7ba3c733e07536b5d473
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: c1ecaa88dd5329d86818565983a6ba891a6d8424
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102501803"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104577823"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>Erstellen und Konfigurieren eines AKS-Clusters zur Verwendung von virtuellen Knoten im Azure-Portal
 
@@ -54,15 +54,15 @@ Klicken Sie im Azure-Portal oben links auf **Ressource erstellen** > **Kubernete
 Konfigurieren Sie auf der Seite **Grundlagen** die folgenden Optionen:
 
 - *PROJEKTDETAILS*: Wählen Sie ein Azure-Abonnement und dann eine Azure-Ressourcengruppe aus, bzw. erstellen Sie eine Ressourcengruppe, z.B. *myResourceGroup*. Geben Sie unter **Kubernetes cluster name** (Name des Kubernetes-Clusters) einen Namen ein, etwa *myAKSCluster*.
-- *CLUSTERDETAILS*: Wählen Sie eine Region, eine Kubernetes-Version und ein DNS-Namenspräfix für den AKS-Cluster aus.
+- *CLUSTERDETAILS*:Wählen Sie eine Region und eine Kubernetes-Version für den AKS-Cluster aus.
 - *PRIMÄRER KNOTENPOOL:* Wählen Sie eine VM-Größe für die AKS-Knoten aus. Die VM-Größe kann **nicht** geändert werden, sobald ein AKS-Cluster bereitgestellt wurde.
      - Wählen Sie die Anzahl von Knoten für die Bereitstellung im Cluster aus. Legen Sie für diesen Artikel **Knotenanzahl** auf *1* fest. Die Knotenanzahl **kann** nach der Clusterbereitstellung angepasst werden.
 
-Klicken Sie auf **Weiter: Skalieren**.
+Klicken Sie auf **Weiter: Knotenpools**.
 
-Wählen Sie auf der Seite **Skalieren** unter **Virtuelle Knoten** die Option *Aktiviert* aus.
+Wählen Sie auf der Seite **Knotenpools** die Option *Virtuelle Knoten aktivieren* aus.
 
-![Erstellen von AKS-Clustern und Aktivieren der virtuellen Knoten](media/virtual-nodes-portal/enable-virtual-nodes.png)
+:::image type="content" source="media/virtual-nodes-portal/enable-virtual-nodes.png" alt-text=" Zeigt in einem Browser das Erstellen eines Clusters mit aktivierten virtuellen Knoten im Azure-Portal. Die Option „Virtuelle Knoten aktivieren“ ist hervorgehoben.":::
 
 Standardmäßig wird eine Clusteridentität erstellt. Diese Clusteridentität wird für die Clusterkommunikation und die Integration in andere Azure-Dienste verwendet. Diese Clusteridentität ist standardmäßig eine verwaltete Identität. Weitere Informationen finden Sie unter [Verwenden verwalteter Identitäten](use-managed-identity.md). Sie können auch einen Dienstprinzipal als Ihre Clusteridentität verwenden.
 
@@ -158,7 +158,7 @@ Dem Pod wird von dem Subnetz des virtuellen Azure-Netzwerks, das für die Verwen
 Um den Pod zu testen, der auf dem virtuellen Knoten ausgeführt werden soll, wechseln Sie in einem Webclient zur Demoanwendung. Da dem Pod eine interne IP-Adresse zugewiesen wurde, können Sie diese Konnektivität schnell von einem anderen Pod im AKS-Cluster aus testen. Erstellen Sie einen Testpod, und fügen Sie an diesen eine Terminalsitzung an:
 
 ```console
-kubectl run -it --rm virtual-node-test --image=debian
+kubectl run -it --rm virtual-node-test --image=mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11
 ```
 
 Installieren Sie `curl` mit `apt-get` im Pod:

@@ -6,12 +6,12 @@ keywords: DSC, PowerShell, Azure, Erweiterung
 services: automation
 ms.subservice: dsc
 ms.topic: conceptual
-ms.openlocfilehash: e51bce6e015ef7367625b010b74e5d2422b35051
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b272993cdb1b89e63190d2c8c9ef80db2327ccc1
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100651801"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167514"
 ---
 # <a name="work-with-azure-desired-state-configuration-extension-version-history"></a>Arbeiten mit der Versionsgeschichte der Azure Desired State Configuration-Erweiterung
 

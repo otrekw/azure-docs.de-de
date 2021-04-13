@@ -3,15 +3,15 @@ title: Häufig gestellte Fragen zu Windows Virtual Desktop – Azure
 description: Häufig gestellte Fragen und Best Practices für Windows Virtual Desktop.
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 10/15/2020
+ms.date: 03/09/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3bdb38b8a9590cf6191c75fdef024543c2b1c190
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ffea2d84f1a5149670976beef3b9af847ae31a35
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101720272"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104582135"
 ---
 # <a name="windows-virtual-desktop-faq"></a>Häufig gestellte Fragen zu Windows Virtual Desktop
 
@@ -110,7 +110,7 @@ Nachdem Sie einen Pool erstellt haben, können Sie seinen Typ nicht mehr ändern
 
 Beschränkungen oder Kontingente in FSLogix hängen von dem Speicherfabric ab, das zum Speichern der VHD- oder VHDX-Dateien mit Benutzerprofilen verwendet wird.
 
-In der folgenden Tabelle finden Sie Beispiele dafür, wie viele Ressourcen ein FSLogix-Profil zur Unterstützung jedes einzelnen Benutzers benötigt. Die Anforderungen können je nach Benutzer, Anwendungen und Aktivität in jedem Profil stark variieren.
+In der folgenden Tabelle finden Sie Beispiele dafür, wie viele IOPS ein FSLogix-Profil zur Unterstützung jedes einzelnen Benutzers benötigt. Die Anforderungen können je nach Benutzer, Anwendungen und Aktivität in jedem Profil stark variieren.
 
 | Resource | Anforderung |
 |---|---|
@@ -140,3 +140,22 @@ Wenn Sie den Ressourcenanbieter mit dem CSP-Besitzerkonto aktiviert haben, kann 
 ## <a name="how-often-should-i-turn-my-vms-on-to-prevent-registration-issues"></a>Wie oft sollte ich meine VMs aktivieren, um Registrierungsprobleme zu vermeiden?
 
 Nachdem Sie einen virtuellen Computer in einem Hostpool Windows Virtual Desktop-Diensts registriert haben, aktualisiert der Agent das Token der VM regelmäßig, wenn der virtuelle Computer aktiv ist. Das Zertifikat für das Registrierungstoken ist 90 Tage lang gültig. Aufgrund dieses Limits von 90 Tagen empfiehlt es sich, die VMs alle 90 Tage zu starten. Wenn Sie Ihre VM innerhalb dieses Zeitraums aktivieren, wird verhindert, dass das Registrierungstoken abläuft oder ungültig wird. Wenn Sie Ihre VM nach mehr als 90 Tagen gestartet haben und Registrierungsprobleme auftreten, befolgen Sie die Anweisungen im [Leitfaden zur Problembehandlung für den Windows Virtual Desktop-Agent](troubleshoot-agent.md#your-issue-isnt-listed-here-or-wasnt-resolved), um die VM aus dem Hostpool zu entfernen, den Agent neu zu installieren und ihn erneut beim Pool zu registrieren.
+
+## <a name="can-i-set-availability-options-when-creating-host-pools"></a>Kann ich beim Erstellen von Hostpools Verfügbarkeitsoptionen festlegen?
+
+Ja. Beim Erstellen einer VM können Sie bei Windows Virtual Desktop-Hostpools entweder eine Verfügbarkeitsgruppe oder Verfügbarkeitszonen auswählen. Diese Verfügbarkeitsoptionen sind identisch mit den von Azure Compute verwendeten. Wenn Sie eine Zone für die in einem Hostpool erstellte VM auswählen, gilt die Einstellung automatisch für alle VMs, die Sie in dieser Zone erstellen. Wenn Sie Ihre Hostpool-VMs lieber auf mehrere Zonen verteilen möchten, müssen Sie die Anweisungen unter [Hinzufügen von virtuellen Computern mit dem Azure-Portal](expand-existing-host-pool.md#add-virtual-machines-with-the-azure-portal) befolgen, um manuell eine neue Zone für jede neu erstellte VM auszuwählen.
+
+## <a name="which-availability-option-is-best-for-me"></a>Welche Verfügbarkeitsoption eignet sich am besten für mich?
+
+Welche Verfügbarkeitsoption Sie für Ihre VMs verwenden sollten, hängt vom Speicherort Ihres Images und seinen verwalteten Datenträgerfeldern ab. In der folgenden Tabelle wird der Zusammenhang zwischen den einzelnen Einstellungen und diesen Variablen erläutert, damit Sie ermitteln können, welche Option für Ihre Bereitstellung am besten geeignet ist. 
+
+| Verfügbarkeitsoption | Imagespeicherort | Optionsfeld „Verwalteten Datenträger verwenden“ |
+|---|---|---|
+| Keine | Galerie | Deaktiviert mit „Ja“ als Standardeinstellung |
+| Keine | Blobspeicher | Aktiviert mit „Nein“ als Standardeinstellung |
+| Verfügbarkeitszone | Katalog (Blobspeicheroption deaktiviert) | Deaktiviert mit „Ja“ als Standardeinstellung |
+| Verfügbarkeitsgruppe mit verwalteter SKU (verwalteter Datenträger) | Galerie | Deaktiviert mit „Ja“ als Standardeinstellung |
+| Verfügbarkeitsgruppe mit verwalteter SKU (verwalteter Datenträger) | Blobspeicher | Aktiviert mit „Nein“ als Standardeinstellung |
+| Verfügbarkeitsgruppe mit verwalteter SKU (verwalteter Datenträger) | Blobspeicher (Katalogoption deaktiviert) | Deaktiviert mit „Nein“ als Standardeinstellung |
+| Verfügbarkeitsgruppe (von Benutzer neu erstellt) | Galerie | Deaktiviert mit „Ja“ als Standardeinstellung |
+| Verfügbarkeitsgruppe (von Benutzer neu erstellt) | Blobspeicher | Aktiviert mit „Nein“ als Standardeinstellung |

@@ -1,5 +1,5 @@
 ---
-title: 'Vorgehensweise: Erstellen einer Konfiguration für bereichsbezogene Ressourcensätze'
+title: Erstellen einer Konfiguration für bereichsbezogene Ressourcensätze
 description: Erfahren Sie, wie Sie eine Regel für bereichsbezogene Ressourcensätze erstellen, um zu überschreiben, wie Ressourcen in Ressourcensätzen gruppiert werden.
 author: djpmsft
 ms.author: daperlov
@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 02/17/2021
-ms.openlocfilehash: 8d7d482f38d58c8d6a8959acb51c94c0fb814697
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 10e925a84dbe187ccdf5e444cb8b3dd4b7bb4676
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101668434"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102608001"
 ---
 # <a name="create-scoped-resource-set-configuration-rules"></a>Erstellen von Konfigurationsregeln für bereichsbezogene Ressourcensätze
 
@@ -24,20 +24,29 @@ Beim Überprüfen eines Speicherkontos verwendet Azure Purview eine Reihe defini
 
 Führen Sie die folgenden Schritte aus, um eine neue Konfiguration für bereichsbezogene Ressourcensätze zu erstellen:
 
-1. Navigieren Sie zum Verwaltungscenter. Wählen Sie im Menü **Scoped resource sets** (Bereichsbezogene Ressourcensätze) aus. Klicken Sie auf **+ Neu**, um einen neuen Konfigurationsregelsatz zu erstellen.
-        :::image type="content" source="media/how-to-scoped-resource-sets/create-new-scoped-resource-set-rule.png" alt-text="Erstellen einer neuen Regel für bereichsbezogene Ressourcensätze" border="true":::
+1. Navigieren Sie zum Verwaltungscenter. Wählen Sie im Menü **Scoped resource sets** (Bereichsbezogene Ressourcensätze) aus. Wählen Sie **+ Neu** aus, um einen neuen Konfigurationsregelsatz zu erstellen.
 
-1. Geben Sie den Bereich für die Konfiguration des bereichsbezogenen Ressourcensatzes ein. Wählen Sie den Speicherkontotyp und den Namen des Speicherkontos aus, für das Sie einen Regelsatz erstellen möchten. Jeder Regelsatz wird in Relation zu einem Ordnerpfadbereich angewendet, der im Feld **Ordnerpfad** angegeben ist. 
-        :::image type="content" source="media/how-to-scoped-resource-sets/create-new-scoped-resource-set-scope.png" alt-text="Erstellen einer neuen Regel für bereichsbezogene Ressourcensätze" border="true":::
+   :::image type="content" source="media/how-to-scoped-resource-sets/create-new-scoped-resource-set-rule.png" alt-text="Erstellen einer neuen Regel für bereichsbezogene Ressourcensätze" border="true":::
+
+1. Geben Sie den Bereich für die Konfiguration des bereichsbezogenen Ressourcensatzes ein. Wählen Sie den Speicherkontotyp und den Namen des Speicherkontos aus, für das Sie einen Regelsatz erstellen möchten. Jeder Regelsatz wird in Relation zu einem Ordnerpfadbereich angewendet, der im Feld **Ordnerpfad** angegeben ist.
+
+   :::image type="content" source="media/how-to-scoped-resource-sets/create-new-scoped-resource-set-scope.png" alt-text="Erstellen von Konfigurationen für bereichsbezogene Ressourcensätze" border="true":::
 
 1. Um eine Regel für einen Konfigurationsbereich einzugeben, wählen Sie **+ Neue Regel** aus.
+
 1. Füllen Sie die folgenden Felder aus, um eine Regel zu erstellen:
-    1. **Regelname:** Der Name der Konfigurationsregel. Dieses Feld hat keine Auswirkung auf die Ressourcen, für die die Regel gilt.
-    1. **Qualifizierter Name:** Ein qualifizierter Pfad, in dem eine Kombination aus Text, dynamischen Ersetzungsfunktionen und statischen Ersetzungsfunktionen verwendet wird, um Ressourcen mit der Konfigurationsregel zu vergleichen. Dieser Pfad ist relativ zum Bereich der Konfigurationsregel. Ausführliche Anweisungen zum Angeben qualifizierter Namen finden Sie im Abschnitt [Syntax](#syntax) weiter unten. 
-    1. **Anzeigename:** Der Anzeigename der Ressource. Dieses Feld ist optional. Verwenden Sie Nur-Text und statische Ersetzungsfunktionen, um die Darstellung von Ressourcen im Katalog anzupassen. Ausführlichere Anweisungen finden Sie im Abschnitt [Syntax](#syntax) weiter unten.
-    1. **Do not group as resource set** (Nicht als Ressourcensatz gruppieren): Wenn diese Option aktiviert ist, wird die übereinstimmende Ressource nicht in einem Ressourcensatz gruppiert. 
-        :::image type="content" source="media/how-to-scoped-resource-sets/scoped-resource-set-rule-example.png" alt-text="Erstellen einer neuen Regel für bereichsbezogene Ressourcensätze" border="true"::: 
-1. Speichern Sie die Regel, indem Sie auf **Hinzufügen** klicken. 
+
+   1. **Regelname:** Der Name der Konfigurationsregel. Dieses Feld hat keine Auswirkung auf die Ressourcen, für die die Regel gilt.
+
+   1. **Qualifizierter Name:** Ein qualifizierter Pfad, in dem eine Kombination aus Text, dynamischen Ersetzungsfunktionen und statischen Ersetzungsfunktionen verwendet wird, um Ressourcen mit der Konfigurationsregel zu vergleichen. Dieser Pfad ist relativ zum Bereich der Konfigurationsregel. Ausführliche Anweisungen zum Angeben qualifizierter Namen finden Sie im Abschnitt [Syntax](#syntax) weiter unten.
+
+   1. **Anzeigename:** Der Anzeigename der Ressource. Dieses Feld ist optional. Verwenden Sie Nur-Text und statische Ersetzungsfunktionen, um die Darstellung von Ressourcen im Katalog anzupassen. Ausführlichere Anweisungen finden Sie im Abschnitt [Syntax](#syntax) weiter unten.
+
+   1. **Do not group as resource set** (Nicht als Ressourcensatz gruppieren): Wenn diese Option aktiviert ist, wird die übereinstimmende Ressource nicht in einem Ressourcensatz gruppiert.
+
+      :::image type="content" source="media/how-to-scoped-resource-sets/scoped-resource-set-rule-example.png" alt-text="Erstellen einer neuen Konfigurationsregel." border="true":::
+
+1. Speichern Sie die Regel, indem Sie auf **Hinzufügen** klicken.
 
 ## <a name="scoped-resource-set-syntax"></a><a name="syntax"></a> Syntax für bereichsbezogene Ressourcensätze
 
@@ -69,21 +78,23 @@ Im Folgenden finden Sie die Typen, die in statischen und dynamischen Ersetzungsf
 | ---- | --------- |
 | Zeichenfolge | Ein oder mehrere Unicode-Zeichen, die Trennzeichen, z. B. Leerzeichen, enthalten. |
 | INT | Ein oder mehrere ASCII-Zeichen von 0 bis 9. 0 kann als Präfix verwendet werden (Beispiel: 0001). |
-| guid | Eine Zeichenfolgendarstellung einer UUID im Format 32-Bit oder im Format 8-4-4-4-12 gemäß der Definition in https://tools.ietf.org/html/rfc4122 |
-| date | 6 oder 8 ASCII-Zeichen von 0 bis 9 mit optionalen Trennzeichen: yyyymmdd, yyyy-mm-dd, yymmdd, yy-mm-dd, gemäß der Definition in https://tools.ietf.org/html/rfc3339 |
-| time | 4 oder 6 ASCII-Zeichen von 0 bis 9 mit optionalen Trennzeichen: HHmm, HH:mm, HHmmss, HH:mm:ss, gemäß der Definition in https://tools.ietf.org/html/rfc3339 |
-| timestamp | 12 oder 14 ASCII-Zeichen von 0 bis 9 mit optionalen Trennzeichen: yyyy-mm-ddTHH:mm, yyyymmddhhmm, yyyy-mm-ddTHH:mm:ss, yyyymmddHHmmss, gemäß der Definition in https://tools.ietf.org/html/rfc3339 |
-| boolean | Kann „true“ oder „false“ enthalten, keine Beachtung von Groß-/Kleinschreibung |
-| number | 0 oder mehr ASCII-Zeichen von 0 bis 9. 0 kann als Präfix verwendet werden (Beispiel: 0001), gefolgt von einem optionalen Punkt „.“ und ein oder mehrere ASCII-Zeichen von 0–9. 0 kann nachgestellt werden (Beispiel: 100). | 
+| guid | Eine Zeichenfolgendarstellung einer UUID im Format 32-Bit oder im Format 8-4-4-4-12 gemäß der Definition in [RFC 4122](https://tools.ietf.org/html/rfc4122). |
+| date | 6 oder 8 ASCII-Zeichen von 0 bis 9 mit optionalen Trennzeichen: yyyymmdd, yyyy-mm-dd, yymmdd, yy-mm-dd, gemäß der Definition in [RFC 3339](https://tools.ietf.org/html/rfc3339). |
+| time | 4 oder 6 ASCII-Zeichen von 0 bis 9 mit optionalen Trennzeichen: HHmm, HH:mm, HHmmss, HH:mm:ss, gemäß der Definition in [RFC 3339](https://tools.ietf.org/html/rfc3339). |
+| timestamp | 12 oder 14 ASCII-Zeichen von 0 bis 9 mit optionalen Trennzeichen: yyyy-mm-ddTHH:mm, yyyymmddhhmm, yyyy-mm-ddTHH:mm:ss, yyyymmddHHmmss, gemäß der Definition in [RFC 3339](https://tools.ietf.org/html/rfc3339). |
+| boolean | Kann „true“ oder „false“ enthalten, keine Beachtung von Groß-/Kleinschreibung. |
+| number | 0 oder mehr ASCII-Zeichen von 0 bis 9 mit optional vorangestellter 0 (z. B. 0001) und gefolgt von einem optionalen Punkt „.“ sowie 1 oder mehr ASCII-Zeichen von 0 bis 9 mit optional nachgestellter 0 (z. B. .100). |
 | hex | Ein oder mehrere ASCII-Zeichen aus dem Satz 0–1 und A–F. Dem Wert kann 0 vorangestellt werden. |
-| locale | Eine Zeichenfolge, die der in https://tools.ietf.org/html/rfc5646 angegebenen Syntax entspricht. |
+| locale | Eine Zeichenfolge, die der in [RFC 5646](https://tools.ietf.org/html/rfc5646) angegebenen Syntax entspricht. |
 
-## <a name="order-of-scoped-resource-set-rules-getting-applied"></a>Die Reihenfolge, in der Regeln für bereichsbezogene Ressourcensätze angewendet werden.
+## <a name="order-of-scoped-resource-set-rules-getting-applied"></a>Die Reihenfolge, in der Regeln für bereichsbezogene Ressourcensätze angewendet werden
 
 Im Folgenden wird die Reihenfolge der Vorgänge zum Anwenden von Regeln für bereichsbezogene Ressourcensätze angegeben:
 
-1. Wenn eine Ressource zwei Regeln erfüllt, haben die spezielleren Bereiche Vorrang. Beispielsweise werden Regeln im Bereich `container/folder` vor Regeln im Bereich `container` angewendet. 
+1. Wenn eine Ressource zwei Regeln erfüllt, haben die spezielleren Bereiche Vorrang. Beispielsweise werden Regeln im Bereich `container/folder` vor Regeln im Bereich `container` angewendet.
+
 1. Die Reihenfolge der Regeln in einem bestimmten Bereich. Diese kann auf der Benutzeroberfläche bearbeitet werden.
+
 1. Wenn eine Ressource keine angegebene Regel erfüllt, wird die standardmäßige Ressourcensatzheuristik angewendet.
 
 ## <a name="examples"></a>Beispiele
@@ -95,16 +106,16 @@ SAP-Datenextraktion in vollständige Ladevorgänge und Deltaladevorgänge
 #### <a name="inputs"></a>Eingaben
 
 Dateien:
--   `https://myazureblob.blob.core.windows.net/bar/customer/full/2020/01/13/saptable_customer_20200101_20200102_01.txt`
--   `https://myazureblob.blob.core.windows.net/bar/customer/full/2020/01/13/saptable_customer_20200101_20200102_02.txt`
--   `https://myazureblob.blob.core.windows.net/bar/customer/delta/2020/01/15/saptable_customer_20200101_20200102_01.txt`
--   `https://myazureblob.blob.core.windows.net/bar/customer/full/2020/01/17/saptable_customer_20200101_20200102_01.txt`
--   `https://myazureblob.blob.core.windows.net/bar/customer/full/2020/01/17/saptable_customer_20200101_20200102_02.txt`
 
+- `https://myazureblob.blob.core.windows.net/bar/customer/full/2020/01/13/saptable_customer_20200101_20200102_01.txt`
+- `https://myazureblob.blob.core.windows.net/bar/customer/full/2020/01/13/saptable_customer_20200101_20200102_02.txt`
+- `https://myazureblob.blob.core.windows.net/bar/customer/delta/2020/01/15/saptable_customer_20200101_20200102_01.txt`
+- `https://myazureblob.blob.core.windows.net/bar/customer/full/2020/01/17/saptable_customer_20200101_20200102_01.txt`
+- `https://myazureblob.blob.core.windows.net/bar/customer/full/2020/01/17/saptable_customer_20200101_20200102_02.txt`
 
-#### <a name="scoped-resource-set-rule"></a>Regel für bereichsbezogene Ressourcensätze 
+#### <a name="scoped-resource-set-rule"></a>Regel für bereichsbezogene Ressourcensätze
 
-**Bereich:** https://myazureblob.blob.core.windows.net/bar/
+**Bereich:** `https://myazureblob.blob.core.windows.net/bar/`
 
 **Anzeigename:** 'External Customer'
 
@@ -112,7 +123,7 @@ Dateien:
 
 **Ressourcensatz:** true
 
-#### <a name="output"></a>Ausgabe 
+#### <a name="output"></a>Ausgabe
 
 Eine Ressourcengruppenressource
 
@@ -124,17 +135,18 @@ Eine Ressourcengruppenressource
 
 IoT-Daten im Avro-Format
 
-#### <a name="inputs"></a>Eingaben 
+#### <a name="inputs"></a>Eingaben
 
 Dateien:
--   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-001.avro`
--   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-002.avro`
--   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/02-01-2020/22:33:22-001.avro`
--   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-90/01-01-2020/22:33:22-001.avro`
 
-#### <a name="scoped-resource-set-rules"></a>Regeln für bereichsbezogene Ressourcensätze 
+- `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-001.avro`
+- `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-002.avro`
+- `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/02-01-2020/22:33:22-001.avro`
+- `https://myazureblob.blob.core.windows.net/bar/raw/machinename-90/01-01-2020/22:33:22-001.avro`
 
-**Bereich:** https://myazureblob.blob.core.windows.net/bar/
+#### <a name="scoped-resource-set-rules"></a>Regeln für bereichsbezogene Ressourcensätze
+
+**Bereich:** `https://myazureblob.blob.core.windows.net/bar/`
 
 Regel 1
 
@@ -150,11 +162,11 @@ Regel 2
 
 **Qualifizierter Name:** `raw/machinename-90/{date:date}/{time:time}-{id:int}.avro`
 
-#### <a name="resource-set-true"></a>*Ressourcensatz:* true 
+#### <a name="resource-set-true"></a>*Ressourcensatz:* true
 
-#### <a name="outputs"></a>Ausgaben 
+#### <a name="outputs"></a>Ausgaben
 
-2 Ressourcensätze 
+2 Ressourcensätze
 
 Ressourcensatz 1
 
@@ -172,17 +184,18 @@ Ressourcensatz 2
 
 IoT-Daten im Avro-Format
 
-#### <a name="inputs"></a>Eingaben 
+#### <a name="inputs"></a>Eingaben
 
 Dateien:
--   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-001.avro`
--   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-002.avro`
--   `https://myazureblob.blob.core.windows.netbar/raw/machinename-89/02-01-2020/22:33:22-001.avro`
--   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-90/01-01-2020/22:33:22-001.avro`
 
-#### <a name="scoped-resource-set-rule"></a>Regel für bereichsbezogene Ressourcensätze 
+- `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-001.avro`
+- `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-002.avro`
+- `https://myazureblob.blob.core.windows.netbar/raw/machinename-89/02-01-2020/22:33:22-001.avro`
+- `https://myazureblob.blob.core.windows.net/bar/raw/machinename-90/01-01-2020/22:33:22-001.avro`
 
-**Bereich:** https://myazureblob.blob.core.windows.net/bar/
+#### <a name="scoped-resource-set-rule"></a>Regel für bereichsbezogene Ressourcensätze
+
+**Bereich:** `https://myazureblob.blob.core.windows.net/bar/`
 
 **Anzeigename:** 'Machine-{{machineid}}'
 
@@ -190,7 +203,7 @@ Dateien:
 
 **Ressourcensatz:** true
 
-#### <a name="outputs"></a>Ausgaben 
+#### <a name="outputs"></a>Ausgaben
 
 Ressourcensatz 1
 
@@ -206,27 +219,28 @@ Ressourcensatz 2
 
 ### <a name="example-4"></a>Beispiel 4
 
-Don’t group into resource sets (Nicht in Ressourcensätzen gruppieren)
+Nicht in Ressourcensätzen gruppieren
 
-#### <a name="inputs"></a>Eingaben 
+#### <a name="inputs"></a>Eingaben
 
 Dateien:
--   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-001.avro`
--   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-002.avro`
--   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/02-01-2020/22:33:22-001.avro`
--   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-90/01-01-2020/22:33:22-001.avro`
 
-#### <a name="scoped-resource-set-rule"></a>Regel für bereichsbezogene Ressourcensätze 
+- `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-001.avro`
+- `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-002.avro`
+- `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/02-01-2020/22:33:22-001.avro`
+- `https://myazureblob.blob.core.windows.net/bar/raw/machinename-90/01-01-2020/22:33:22-001.avro`
 
-**Bereich:** https://myazureblob.blob.core.windows.net/bar/
+#### <a name="scoped-resource-set-rule"></a>Regel für bereichsbezogene Ressourcensätze
 
-**Anzeigename:** 'Machine-{{machineid}}'
+**Bereich:** `https://myazureblob.blob.core.windows.net/bar/`
+
+**Anzeigename:** `Machine-{{machineid}}`
 
 **Qualifizierter Name:** `raw/machinename-{{machineid:int}}/{{:date}}/{{:time}}-{{:int}}.avro`
 
 **Ressourcensatz:** false
 
-#### <a name="outputs"></a>Ausgaben 
+#### <a name="outputs"></a>Ausgaben
 
 4 einzelne Ressourcen
 

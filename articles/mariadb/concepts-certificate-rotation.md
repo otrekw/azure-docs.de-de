@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/18/2021
 ms.openlocfilehash: 105bc7f14f9ddcc4a64564edc1eebcd17b898bc6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101698993"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mariadb"></a>Grundlegendes zu den Änderungen im Zusammenhang mit der Stammzertifizierungsstelle für Azure Database for MariaDB
@@ -81,7 +81,7 @@ Es ist keine Änderung auf Clientseite erforderlich. Wenn Sie die frühere Empfe
 - Ersetzen Sie die ursprüngliche PEM-Datei der Stammzertifizierungsstelle durch die kombinierte Datei der Stammzertifizierungsstelle, und starten Sie die Anwendung bzw. den Client neu.
 - Nachdem das neue Zertifikat auf der Serverseite bereitgestellt wurde, können Sie die PEM-Datei der Zertifizierungsstelle in Zukunft in „DigiCertGlobalRootG2.crt.pem“ ändern.
 
-## <a name="why-was-baltimorecybertrustroot-certificate-not-replaced-to-digicertglobalrootg2-during-this-change-on-february-15-2021"></a>Warum wurde das BaltimoreCyberTrustRoot-Zertifikat während dieser Änderung am 15. Februar 2021 nicht durch DigiCertGlobalRootG2 ersetzt?
+## <a name="why-was-baltimorecybertrustroot-certificate-not-replaced-to-digicertglobalrootg2-during-this-change-on-february-15-2021"></a>Warum wurde das BaltimoreCyberTrustRoo-Zertifikat während dieser Änderung am 15. Februar 2021 nicht durch DigiCertGlobalRootG2 ersetzt?
 
 Wir haben die Bereitschaft der Kunden für diese Änderung bewertet und erkannt, dass viele Kunden noch zusätzliche Vorlaufzeit zur Abwicklung dieser Änderung benötigen. Um den Kunden eine längere Vorlaufzeit zur Vorbereitung zu bieten, haben wir uns entschieden, die Zertifikatänderung in DigiCertGlobalRootG2 um mindestens ein Jahr zu verschieben, um Kunden und Endbenutzern genügend Vorlaufzeit zu geben. 
 
@@ -116,7 +116,7 @@ Wenn Sie einen Client verwenden, der die Verbindungszeichenfolge abstrahiert, le
 Für Azure App Service-Instanzen, die eine Verbindung mit Azure Database for MariaDB herstellen, gibt es zwei mögliche Szenarien, abhängig davon, wie Sie SSL mit Ihrer Anwendung verwenden.
 
 - Dieses neue Zertifikat wurde App Service auf Plattformebene hinzugefügt. Wenn Sie die SSL-Zertifikate verwenden, die in der App Service-Plattform in Ihrer Anwendung enthalten sind, ist keine Aktion erforderlich. Dies ist das häufigste Szenario. 
-- Wenn Sie den Pfad zur SSL-Zertifikatsdatei explizit in Ihren Code einschließen, müssen Sie das neue Zertifikat herunterladen und den Code so aktualisieren, dass das neue Zertifikat verwendet wird. Ein gutes Beispiel für dieses Szenario ist die Verwendung von benutzerdefinierten Containern in App Service, wie es in der [App Service-Dokumentation](../app-service/tutorial-multi-container-app.md#configure-database-variables-in-wordpress) beschrieben ist. Dies ist ein ungewöhnliches Szenario, doch haben wir festgestellt, dass es von einigen Benutzern verwendet wird.
+- Wenn Sie den Pfad zur SSL-Zertifikatsdatei explizit in Ihren Code einschließen, müssen Sie das neue Zertifikat herunterladen und den Code so aktualisieren, dass das neue Zertifikat verwendet wird. Ein gutes Beispiel für dieses Szenario: Wenn Sie benutzerdefinierte Container in App Service so verwenden, wie in der [App Service-Dokumentation](../app-service/tutorial-multi-container-app.md#configure-database-variables-in-wordpress) zu lesen ist. Dies ist ein ungewöhnliches Szenario, doch haben wir festgestellt, dass es von einigen Benutzern verwendet wird.
 
 ### <a name="5-what-is-the-impact-if-using-azure-kubernetes-services-aks-with-azure-database-for-mariadb"></a>5. Welche Auswirkungen hat es, wenn Azure Kubernetes Service (AKS) mit Azure Database for MariaDB verwendet wird?
 

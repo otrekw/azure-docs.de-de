@@ -1,15 +1,15 @@
 ---
 title: Erstellen von Richtlinien für Gastkonfigurationen für Linux
 description: Hier wird beschrieben, wie Sie eine Azure Policy-Richtlinie für Gastkonfigurationen für Linux erstellen.
-ms.date: 08/17/2020
+ms.date: 03/31/2021
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 352c8b1936c38c9b5f706ac88bd4fd06e008b892
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d356960987ecfe9a1e1858a28b93060dbf4aa634
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99525346"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106096562"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>Erstellen von Richtlinien für Gastkonfigurationen für Linux
 
@@ -90,9 +90,7 @@ DSC fungiert als Wrapper für InSpec, um dessen Ausführung, die Bereitstellung 
 
 Der Name der benutzerdefinierten Konfiguration muss überall einheitlich sein. Der Name der ZIP-Datei für das Inhaltspaket, der Konfigurationsname in der MOF-Datei und der Name der Gastzuweisung in der Azure Resource Manager-Vorlage (ARM-Vorlage) müssen identisch sein.
 
-Zum Erstellen des Pakets können PowerShell-Cmdlets verwendet werden.
-Es ist kein Ordner auf Stammebene oder Versionsordner erforderlich.
-Das Paketformat muss eine ZIP-Datei sein. Die Gesamtgröße darf unkomprimiert 100 MB nicht überschreiten.
+Zum Erstellen des Pakets können PowerShell-Cmdlets verwendet werden. Es ist kein Ordner auf Stammebene oder Versionsordner erforderlich. Das Paketformat muss eine ZIP-Datei sein, deren Gesamtgröße unkomprimiert 100 MB nicht überschreiten darf.
 
 ### <a name="custom-guest-configuration-configuration-on-linux"></a>Benutzerdefinierte Konfiguration für Gastkonfigurationen unter Linux
 
@@ -211,7 +209,7 @@ Parameter des Cmdlets `Publish-GuestConfigurationPackage`:
 - **Pfad**: Speicherort des Pakets, das veröffentlicht werden soll
 - **ResourceGroupName**: Name der Ressourcengruppe, in der sich das Speicherkonto befindet
 - **StorageAccountName**: Der Name des Speicherkontos, in dem das Paket veröffentlicht werden soll
-- **StorageContainerName:** (Standard: *guestconfiguration*) Name des Speichercontainers im Speicherkonto
+- **StorageContainerName:** (Standard: _guestconfiguration_) Name des Speichercontainers im Speicherkonto
 - **Force:** Vorhandenes Paket im Speicherkonto mit demselben Namen überschreiben
 
 Im nachfolgenden Beispiel wird das Paket im Speichercontainer „guestconfiguration“ veröffentlicht.
@@ -277,7 +275,7 @@ Bei der in Azure erstellten Richtlinie ist der letzte Schritt das Zuweisen der D
 
 ### <a name="using-parameters-in-custom-guest-configuration-policies"></a>Verwenden von Parametern in benutzerdefinierten Richtlinien für Gastkonfigurationen
 
-Die Gastkonfiguration unterstützt das Außerkraftsetzen von Eigenschaften einer Konfiguration während der Laufzeit. Dieses Feature bewirkt, dass die Werte in der MOF-Datei im Paket nicht als statisch angesehen werden müssen. Die Überschreibungswerte werden über Azure Policy bereitgestellt und wirken sich nicht darauf aus, wie die Konfigurationen erstellt oder kompiliert werden.
+Die Gastkonfiguration unterstützt das Außerkraftsetzen von Eigenschaften einer Konfiguration während der Laufzeit. Dieses Feature bewirkt, dass die Werte in der MOF-Datei im Paket nicht als statisch angesehen werden müssen. Die Überschreibungswerte werden über Azure Policy bereitgestellt und ändern nicht, wie die Konfigurationen erstellt oder kompiliert werden.
 
 Mit InSpec werden Parameter in der Regel entweder als Eingabe zur Laufzeit oder als Code mithilfe von Attributen gehandhabt. Die Gastkonfiguration verbirgt diesen Prozess, sodass die Eingabe beim Zuweisen der Richtlinie bereitgestellt werden kann. Es wird automatisch eine Attributdatei auf dem Computer erstellt. Sie müssen keine Datei in Ihrem Projekt erstellen und hinzufügen. Zum Hinzufügen von Parametern zum Linux-Überwachungsprojekt müssen zwei Schritte ausgeführt werden.
 
@@ -350,8 +348,7 @@ Wenn Sie ein Update für die Richtlinie freigeben möchten, ändern Sie die Deta
 > [!NOTE]
 > Die Eigenschaft `version` der Gastkonfigurationszuweisung wirkt sich nur auf Pakete aus, die von Microsoft gehostet werden. Bei der Versionsverwaltung für benutzerdefinierte Inhalte hat sich die Best Practice etabliert, die Version in den Dateinamen aufzunehmen.
 
-Geben Sie zunächst beim Ausführen von `New-GuestConfigurationPackage` einen Namen für das Paket an, der es gegenüber früheren Versionen eindeutig kennzeichnet. Sie können z. B. eine Versionsnummer in den Namen einschließen wie in `PackageName_1.0.0`.
-Die Zahl in diesem Beispiel dient nur dazu, das Paket eindeutig zu machen, und nicht dazu, das Paket als neuer oder älter als andere Pakete zu kennzeichnen.
+Geben Sie zunächst beim Ausführen von `New-GuestConfigurationPackage` einen Namen für das Paket an, der es gegenüber früheren Versionen eindeutig kennzeichnet. Sie können z. B. eine Versionsnummer in den Namen einschließen wie in `PackageName_1.0.0`. Die Zahl in diesem Beispiel dient nur dazu, das Paket eindeutig zu machen, und nicht dazu, das Paket als neuer oder älter als andere Pakete zu kennzeichnen.
 
 Aktualisieren Sie als Zweites die Parameter für das Cmdlet `New-GuestConfigurationPolicy` gemäß den folgenden Erläuterungen.
 

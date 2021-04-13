@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 47531da9c1e508281a57074df7aa10ffffe78810
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: c258ac62617cb6ac954e0b8c59928225c7f477b1
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102518737"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105935571"
 ---
 # <a name="monitor-and-view-ml-run-logs-and-metrics"></a>Überwachen und Anzeigen von ML-Ausführungsprotokollen und -metriken
 
@@ -110,15 +110,16 @@ Sie können auch die Tabelle der Ausführungsliste bearbeiten, um mehrere Ausfü
 
 ![Ausführungsdetails im Azure Machine Learning-Studio](media/how-to-track-experiments/experimentation-tab.gif)
 
-### <a name="view-log-files-for-a-run"></a>Anzeigen der Protokolldateien zu einer Ausführung 
+### <a name="view-and-download-log-files-for-a-run"></a>Anzeigen und Herunterladen von Protokolldateien für eine Ausführung 
 
 Protokolldateien sind eine wichtige Ressource zum Debuggen von Azure Machine Learning-Workloads. Führen Sie einen Drilldown für einen bestimmten Testlauf aus, um die zugehörigen Protokolle und Ausgaben anzuzeigen:  
 
 1. Navigieren Sie zur Registerkarte **Experimente**.
 1. Wählen Sie die runID für eine bestimmte Ausführung aus.
 1. Wählen Sie oben auf der Seite **Ausgaben und Protokolle** aus.
+2. Wählen Sie **Alle herunterladen** aus, um alle Ihre Protokolle in einen ZIP-Ordner herunterzuladen.
 
-:::image type="content" source="media/how-to-monitor-view-training-logs/view-logs.png" alt-text="Screenshot des Abschnitts „Ausgaben und Protokolle“ einer Ausführung":::
+:::image type="content" source="media/how-to-monitor-view-training-logs/download-logs.png" alt-text="Screenshot des Abschnitts „Ausgaben und Protokolle“ einer Ausführung.":::
 
 In den folgenden Tabellen werden die Inhalte der Protokolldateien in den Ordnern aufgelistet, die in diesem Abschnitt angezeigt werden.
 

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 3f348a5005f28fdd1d02be706ca2742d77368288
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: aa224a09317aafd49ae10c89ae0c50455ddd4602
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100592363"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105709921"
 ---
 # <a name="monitor-operations-and-activity-of-azure-cognitive-search"></a>Überwachen von Vorgängen und Aktivitäten von Azure Cognitive Search
 
@@ -38,9 +38,9 @@ Auf dem folgenden Screenshot sehen Sie, wie Sie Überwachungsinformationen im Po
 
 * Auf der Registerkarte **Überwachen** auf der Hauptübersichtsseite werden das Abfragevolumen, die Latenz und die Dienstauslastung angezeigt.
 * Das **Aktivitätsprotokoll** im linken Navigationsbereich ist mit Azure Resource Manager verbunden. Im Aktivitätsprotokoll werden die Aktionen von Resource Manager erfasst: Dienstverfügbarkeit und Status, Kapazitätsänderungen (Replikate und Partitionen) sowie auf den API-Schlüssel bezogene Aktivitäten.
-* In den **Überwachungseinstellungen** weiter unten finden Sie konfigurierbare Warnungen, Metriken und Diagnoseprotokolle. Erstellen Sie diese, wenn Sie sie benötigen. Nachdem die Daten gesammelt und gespeichert wurden, können Sie sie abfragen oder visualisieren, um Erkenntnisse zu erhalten.
+* In den **Überwachungseinstellungen** weiter unten finden Sie konfigurierbare Warnungen, Metrikvisualisierungen und Diagnoseprotokolle. Erstellen Sie diese, wenn Sie sie benötigen. Nachdem die Daten gesammelt und gespeichert wurden, können Sie sie abfragen oder visualisieren, um Erkenntnisse zu erhalten.
 
-![Azure Monitor-Integration mit einem Suchdienst](./media/search-monitor-usage/azure-monitor-search.png
+  ![Azure Monitor-Integration mit einem Suchdienst](./media/search-monitor-usage/azure-monitor-search.png
  "Azure Monitor-Integration mit einem Suchdienst")
 
 > [!NOTE]
@@ -94,7 +94,7 @@ Azure Monitor verfügt über eine eigene Abrechnungsstruktur, und für die in di
 
 ## <a name="monitor-user-access"></a>Überwachen des Benutzerzugriffs
 
-Da Suchindizes eine Komponente einer größeren Clientanwendung sind, gibt es keine integrierte Methode, um den Zugriff einzelner Benutzer auf einen Index zu steuern oder zu überwachen. Es wird davon ausgegangen, dass Anforderungen von einer Clientanwendung von Administrator- oder von Abfrageanforderungen stammen. Lese-/Schreibvorgänge von Administratoren umfassen das Erstellen, Aktualisieren und Löschen von Objekten für den gesamten Dienst. Schreibgeschützte Vorgänge sind Abfragen der Dokumentensammlung, die auf einen einzelnen Index bezogen sind. 
+Da Suchindizes eine Komponente einer größeren Clientanwendung sind, gibt es keine integrierte Methode, um den Zugriff einzelner Benutzer auf einen Index zu steuern oder zu überwachen. Es wird davon ausgegangen, dass Anforderungen von einer Clientanwendung stammen, die entweder eine Administrator- oder Abfrageanforderung darstellen. Lese-/Schreibvorgänge von Administratoren umfassen das Erstellen, Aktualisieren und Löschen von Objekten für den gesamten Dienst. Schreibgeschützte Vorgänge sind Abfragen der Dokumentensammlung, die auf einen einzelnen Index bezogen sind. 
 
 Daher werden in den Aktivitätsprotokollen Verweise auf Aufrufe mithilfe von Administrator- oder Abfrageschlüsseln angezeigt. Der zugehörige Schlüssel ist in Anforderungen enthalten, die aus Clientcode stammen. Der Dienst ist nicht für die Verarbeitung von Identitätstoken oder Identitätswechseln ausgelegt.
 

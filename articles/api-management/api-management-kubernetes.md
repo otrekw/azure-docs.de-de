@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/14/2019
 ms.author: apimpm
-ms.openlocfilehash: 293a47bc3e8499d7eda4e64bb68bc95eb4c85ab0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 36dfc8c906c52c6822e583db3a08c891306f7e78
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98108397"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105047931"
 ---
 # <a name="use-azure-api-management-with-microservices-deployed-in-azure-kubernetes-service"></a>Verwenden von API Management mit in Azure Kubernetes Service bereitgestellten Microservices
 
@@ -95,7 +95,7 @@ Um einen Abonnementschlüssel für den API-Zugriff zu erhalten, ist ein Abonneme
 
 ### <a name="option-3-deploy-apim-inside-the-cluster-vnet"></a>Option 3: Bereitstellen von APIM im Cluster-VNET
 
-In einigen Fällen sind die Optionen 1 und 2 für Kunden mit gesetzlichen Einschränkungen oder strengen Sicherheitsanforderungen aufgrund öffentlich sichtbarer Endpunkte möglicherweise keine praktikablen Lösungen. In anderen Fällen befinden sich der AKS-Cluster und die Anwendungen, die die Microservices nutzen, möglicherweise im selben VNET. Daher gibt es keinen Grund, den Cluster öffentlich verfügbar zu machen, da der gesamte API-Datenverkehr innerhalb des VNETs verbleibt. In diesen Szenarien können Sie API Management im Cluster-VNET bereitstellen. Der [API Management-Premium-Tarif](https://aka.ms/apimpricing) unterstützt die VNET-Bereitstellung. 
+In einigen Fällen sind die Optionen 1 und 2 für Kunden mit gesetzlichen Einschränkungen oder strengen Sicherheitsanforderungen aufgrund öffentlich sichtbarer Endpunkte möglicherweise keine praktikablen Lösungen. In anderen Fällen befinden sich der AKS-Cluster und die Anwendungen, die die Microservices nutzen, möglicherweise im selben VNET. Daher gibt es keinen Grund, den Cluster öffentlich verfügbar zu machen, da der gesamte API-Datenverkehr innerhalb des VNETs verbleibt. In diesen Szenarien können Sie API Management im Cluster-VNET bereitstellen. [Die Tarife „Developer“ und „Premium“ von API Management](https://aka.ms/apimpricing) unterstützen VNet-Bereitstellung. 
 
 Es gibt zwei Modi für die [Bereitstellung von API Management in einem VNET](./api-management-using-with-vnet.md) – extern und intern. 
 

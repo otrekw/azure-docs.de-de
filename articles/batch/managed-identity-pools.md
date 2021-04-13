@@ -2,14 +2,14 @@
 title: Konfigurieren verwalteter Identitäten in Azure Batch-Pools
 description: Erfahren Sie, wie Sie benutzerseitig zugewiesene verwaltete Identitäten auf Azure Batch-Pools aktivieren und verwaltete Identitäten innerhalb der Knoten verwenden.
 ms.topic: conceptual
-ms.date: 02/10/2021
+ms.date: 03/23/2021
 ms.custom: references_regions
-ms.openlocfilehash: 4a59383d119f88bb3ee180f629ba0a6ea6ac2f44
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: d69e983a4b17298150942c924a3c694e2cceaf72
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100416671"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105967250"
 ---
 # <a name="configure-managed-identities-in-batch-pools"></a>Konfigurieren verwalteter Identitäten in Azure Batch-Pools
 
@@ -53,7 +53,7 @@ var poolParameters = new Pool(name: "yourPoolName")
                     "18.04-LTS",
                     "latest"),
                 "batch.node.ubuntu 18.04")
-        };
+        },
         Identity = new BatchPoolIdentity
         {
             Type = PoolIdentityType.UserAssigned,
@@ -100,3 +100,4 @@ Weitere Informationen finden Sie unter [Verwenden von verwalteten Identitäten f
 
 - Weitere Informationen zu [verwalteten Identitäten für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/overview.md).
 - Erfahren Sie, wie Sie [vom Kunden verwaltete Schlüssel mit benutzerseitig verwalteten Identitäten](batch-customer-managed-key.md) verwenden.
+- Erfahren Sie, wie Sie die [automatische Zertifikatsrotation in einem Batch-Pool aktivieren](automatic-certificate-rotation.md).

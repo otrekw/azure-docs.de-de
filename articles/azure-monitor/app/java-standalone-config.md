@@ -6,12 +6,12 @@ ms.date: 11/04/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 32b1558bf4af2ee151fef33a8c0cbe7df82f1e84
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: e58d69634712a9cc640ba9e4785a7bf1effaf88c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102201752"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103224655"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>Konfigurationsoptionen – Azure Monitor Application Insights für Java
 
@@ -61,7 +61,7 @@ Eine Verbindungszeichenfolge ist erforderlich. Die Verbindungszeichenfolge finde
 }
 ```
 
-Sie können auch die Verbindungszeichenfolge mit der Umgebungsvariablen `APPLICATIONINSIGHTS_CONNECTION_STRING` festlegen.
+Sie können die Verbindungszeichenfolge auch über die Umgebungsvariable `APPLICATIONINSIGHTS_CONNECTION_STRING` festlegen (die dann Vorrang hat, wenn die Verbindungszeichenfolge auch in der JSON-Konfiguration angegeben ist).
 
 Wird die Verbindungszeichenfolge nicht festgelegt, wird der Java-Agent deaktiviert.
 
@@ -81,7 +81,7 @@ Wenn Sie den Cloudrollennamen festlegen möchten:
 
 Falls der Cloudrollenname nicht festgelegt ist, wird der Name der Application Insights-Ressource zur Beschriftung der Komponente in der Anwendungsübersicht verwendet.
 
-Sie können den Namen der Cloudrolle auch mithilfe der Umgebungsvariablen `APPLICATIONINSIGHTS_ROLE_NAME` festlegen.
+Sie können den Cloudrollennamen auch über die Umgebungsvariable `APPLICATIONINSIGHTS_ROLE_NAME` festlegen (die dann Vorrang hat, wenn der Cloudrollenname auch in der JSON-Konfiguration angegeben ist).
 
 ## <a name="cloud-role-instance"></a>Cloudrolleninstanz
 
@@ -98,7 +98,7 @@ Wenn Sie für die Cloudrolleninstanz einen anderen Namen festlegen möchten:
 }
 ```
 
-Sie können den Namen der Cloudrolleninstanz auch mithilfe der Umgebungsvariablen `APPLICATIONINSIGHTS_ROLE_INSTANCE` festlegen.
+Sie können die Cloudrolleninstanz auch über die Umgebungsvariable `APPLICATIONINSIGHTS_ROLE_INSTANCE` festlegen (die dann Vorrang hat, wenn die Cloudrolleninstanz auch in der JSON-Konfiguration angegeben ist).
 
 ## <a name="sampling"></a>Stichproben
 
@@ -117,7 +117,7 @@ Hier sehen Sie ein Beispiel für das Festlegen der Stichprobenentnahme, um ungef
 }
 ```
 
-Sie können den Prozentsatz für die Stichprobenentnahme auch mithilfe der Umgebungsvariablen `APPLICATIONINSIGHTS_SAMPLING_PERCENTAGE` festlegen.
+Sie können den Prozentsatz der Stichprobenentnahme auch über die Umgebungsvariable `APPLICATIONINSIGHTS_SAMPLING_PERCENTAGE` festlegen (die dann Vorrang hat, wenn der Prozentsatz der Stichprobenentnahme auch in der JSON-Konfiguration angegeben ist).
 
 > [!NOTE]
 > Für den Prozentsatz der Stichprobenerstellung wählen Sie einen Prozentsatz, der sich als Bruch darstellen lässt (100/N, wobei N eine Ganzzahl ist). Andere Werte werden bei der Stichprobenerstellung gegenwärtig nicht unterstützt.
@@ -150,9 +150,6 @@ Verwenden Sie folgenden JSON-Code, wenn Sie einige zusätzliche JMX-Metriken erf
 `attribute` entspricht dem Attributnamen innerhalb des verwalteten Beans (MBean) von JMX, das Sie erfassen möchten.
 
 Numerische und boolesche JMX-Metrikwerte werden unterstützt. Boolesche JMX-Metriken werden `0` für „false“ und `1` für „true“ zugeordnet.
-
-[//]: # "HINWEIS: APPLICATIONINSIGHTS_JMX_METRICS ist hier nicht dokumentiert."
-[//]: # "In Umgebungsvariable eingebettete JSON-Daten sind verwirrend und sollten nur für das Szenario zum Anfügen ohne Code dokumentiert werden."
 
 ## <a name="custom-dimensions"></a>Benutzerdefinierte Dimensionen
 
@@ -189,7 +186,9 @@ Weitere Informationen finden Sie in der [Dokumentation zu Telemetrieprozessoren]
 
 Eine Protokollierung erfolgt nur, wenn erstens der für das Protokollierungsframework konfigurierte Schwellenwert und zweitens auch der in Application Insights konfigurierte Schwellenwert erreicht wird.
 
-Der Application Insights-Standardschwellenwert lautet `INFO`. Wenn Sie diesen Wert ändern möchten, ist das folgendermaßen möglich:
+Wenn Ihr Protokollierungsframework z. B. so konfiguriert ist, dass es `WARN` (und höher) aus Paket `com.example` protokolliert, und Application Insights so konfiguriert ist, dass es `INFO` (und höher) aufzeichnet, dann wird Application Insights nur `WARN` (und höher) aus Paket `com.example` aufzeichnen.
+
+Die für Application Insights konfigurierte Standardebene ist `INFO`. Wenn Sie diesen Wert ändern möchten, ist das folgendermaßen möglich:
 
 ```json
 {
@@ -201,7 +200,7 @@ Der Application Insights-Standardschwellenwert lautet `INFO`. Wenn Sie diesen We
 }
 ```
 
-Sie können den Schwellenwert auch mithilfe der Umgebungsvariable `APPLICATIONINSIGHTS_INSTRUMENTATION_LOGGING_LEVEL` festlegen.
+Sie können die Ebene auch über die Umgebungsvariable `APPLICATIONINSIGHTS_INSTRUMENTATION_LOGGING_LEVEL` festlegen (die dann Vorrang hat, wenn die Ebene auch in der JSON-Konfiguration angegeben ist).
 
 Nachfolgend werden die gültigen `level`-Werte, die Sie in der Datei `applicationinsights.json` angeben können, und deren Zuordnung zu den Protokolliergraden in verschiedenen Protokollierungsframeworks aufgeführt:
 
@@ -284,7 +283,7 @@ Application Insights Java 3.0 sendet standardmäßig alle 15 Minuten eine Hear
 ```
 
 > [!NOTE]
-> Es ist nicht möglich, die Häufigkeit der Heartbeats zu verringern, weil die Heartbeatdaten auch zum Überwachen der Application Insights-Nutzung verwendet werden.
+> Sie können das Intervall nicht auf mehr als 15 Minuten erhöhen, da die Heartbeat-Daten auch zur Nachverfolgung der Application Insights-Nutzung verwendet werden.
 
 ## <a name="http-proxy"></a>HTTP-Proxy
 
@@ -300,6 +299,30 @@ Wenn sich Ihre Anwendung hinter einer Firewall befindet und nicht direkt mit App
 ```
 
 Application Insights Java 3.0 respektiert auch die globalen Werte `-Dhttps.proxyHost` und `-Dhttps.proxyPort`, wenn diese festgelegt sind.
+
+## <a name="metric-interval"></a>Metrikintervall
+
+Dieses Feature befindet sich in der Vorschauphase.
+
+Standardmäßig werden Metriken alle 60 Sekunden aufgezeichnet.
+
+Ab Version 3.0.3-BETA können Sie dieses Intervall ändern:
+
+```json
+{
+  "preview": {
+    "metricIntervalSeconds": 300
+  }
+}
+```
+
+Diese Einstellung gilt für alle folgenden Metriken:
+
+* Standardleistungsindikatoren, z. B. CPU und Arbeitsspeicher
+* Standardmäßige benutzerdefinierte Metriken, z. B. die zeitliche Steuerung der automatischen Speicherbereinigung
+* Konfigurierte JMX-Metriken ([siehe oben](#jmx-metrics))
+* Mikrometermetriken ([siehe oben](#auto-collected-micrometer-metrics-including-spring-boot-actuator-metrics))
+
 
 [//]: # "HINWEIS: Die OpenTelemetry-Unterstützung befindet sich in der privaten Vorschau, bis die OpenTelemetry-API Version 1.0 erreicht."
 
@@ -349,7 +372,7 @@ Application Insights Java 3.0 protokolliert standardmäßig auf Ebene `INFO` in
 
 `maxHistory` entspricht der Anzahl der beibehaltenen Protokolldateien, für die ein Rollover durchgeführt wurde (zusätzlich zur aktuellen Protokolldatei).
 
-Ab Version 3.0.2 können Sie auch das `level` der Selbstdiagnose mithilfe der Umgebungsvariable `APPLICATIONINSIGHTS_SELF_DIAGNOSTICS_LEVEL` festlegen.
+Ab Version 3.0.2 können Sie auch das `level` der Selbstdiagnose über die Umgebungsvariable `APPLICATIONINSIGHTS_SELF_DIAGNOSTICS_LEVEL` festlegen (die dann Vorrang hat, wenn das `level` der Selbstdiagnose auch in der JSON-Konfiguration angegeben wird).
 
 ## <a name="an-example"></a>Beispiel
 

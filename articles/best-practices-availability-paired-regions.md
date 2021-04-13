@@ -5,15 +5,15 @@ author: martinekuan
 manager: martinekuan
 ms.service: multiple
 ms.topic: conceptual
-ms.date: 03/03/2020
+ms.date: 03/30/2021
 ms.author: martinek
 ms.custom: references_regions
-ms.openlocfilehash: 3310d4a7d86db9dee7d5f71fc9410545817886f3
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 9fda6f913fcb5325c811671cd6476dcbf2413766
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97511228"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106058016"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>Business Continuity & Disaster Recovery (BCDR): Azure-Regionspaare
 
@@ -51,14 +51,15 @@ Nein. Kunden können Azure-Dienste nutzen, um einen robusten Dienst zu entwerfen
 |:--- |:--- |:--- |
 | Asien-Pazifik |Asien, Osten (Hongkong) | Asien, Südosten (Singapur) |
 | Australien |Australien (Osten) |Australien, Südosten |
-| Australien |Australien, Mitte |Australien, Mitte 2 |
+| Australien |Australien, Mitte |Australien, Mitte 2* |
 | Brasilien |Brasilien Süd |USA Süd Mitte |
+| Brasilien |Brasilien, Südosten* |Brasilien Süd |
 | Canada |Kanada, Mitte |Kanada, Osten |
 | China |China, Norden |China, Osten|
 | China |China, Norden 2 |China, Osten 2|
 | Europa |Europa, Norden (Irland) |Europa, Westen (Niederlande) |
-| Frankreich |Frankreich, Mitte|Frankreich, Süden|
-| Deutschland |Deutschland, Mitte |Deutschland, Nordosten |
+| Frankreich |Frankreich, Mitte|Frankreich, Süden*|
+| Deutschland |Deutschland, Westen-Mitte |Deutschland, Norden* |
 | Indien |Indien, Mitte |Indien (Süden) |
 | Indien |Indien, Westen |Indien (Süden) |
 | Japan |Japan, Osten |Japan, Westen |
@@ -67,15 +68,17 @@ Nein. Kunden können Azure-Dienste nutzen, um einen robusten Dienst zu entwerfen
 | Nordamerika |USA (Ost) 2 |USA (Mitte) |
 | Nordamerika |USA Nord Mitte |USA Süd Mitte |
 | Nordamerika |USA, Westen 2 |USA, Westen-Mitte |
-| Norwegen | Norwegen, Osten | Norwegen, Westen |
-| Südafrika | Südafrika, Norden |Südafrika, Westen |
-| Schweiz | Schweiz, Norden |Schweiz, Westen |
+| Norwegen | Norwegen, Osten | Norwegen, Westen* |
+| Südafrika | Südafrika, Norden |Südafrika, Westen* |
+| Schweiz | Schweiz, Norden |Schweiz, Westen* |
 | UK |UK, Westen |UK, Süden |
-| Vereinigte Arabische Emirate | Vereinigte Arabische Emirate, Norden | VAE, Mitte
-| US-Verteidigungsministerium |US DoD, Osten |US DoD, Mitte |
-| US Government |US Gov Arizona |US Gov Texas |
-| US Government |US Gov Iowa |US Government, Virginia |
-| US Government |US Government, Virginia |US Gov Texas |
+| Vereinigte Arabische Emirate | Vereinigte Arabische Emirate, Norden | VAE, Mitte* |
+| US-Verteidigungsministerium |US DoD, Osten* |US DoD, Mitte* |
+| US Government |US Gov Arizona* |US Gov Texas* |
+| US Government |US Gov Iowa* |US Gov Virginia* |
+| US Government |US Gov Virginia* |US Gov Texas* |
+
+(*) Bestimmte Regionen unterliegen Zugriffseinschränkungen, um bestimmte Kundenszenarien zu unterstützen, z. B. landesinterne Notfallwiederherstellung. Diese Regionen sind nur auf Anforderung verfügbar, indem Sie [eine neue Supportanfrage im Azure-Portal erstellen](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
 > [!Important]
 > - „Indien, Westen“ wird nur in einer Richtung zugeordnet. Die sekundäre Region von Indien (Westen) ist Indien (Süden), aber die sekundäre Region für Indien (Süden) ist Indien (Mitte).

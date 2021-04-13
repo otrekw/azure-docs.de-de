@@ -3,27 +3,20 @@ title: Verwenden von Podsicherheitsrichtlinien in Azure Kubernetes Service (AKS)
 description: Hier erfahren Sie, wie Sie den Podzugang mittels Podsicherheitsrichtlinie in Azure Kubernetes Service (AKS) steuern.
 services: container-service
 ms.topic: article
-ms.date: 02/12/2021
-ms.openlocfilehash: cb317e5e0d1f558121e675f569bad37811768ca6
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/25/2021
+ms.openlocfilehash: d95cdb51136511bdd8529c829c3f680d19e14ba9
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102180308"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105611768"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>Vorschauversion: Schützen Ihres Clusters mithilfe von Podsicherheitsrichtlinien in Azure Kubernetes Service (AKS)
 
 > [!WARNING]
-> **Das in diesem Dokument beschriebene Feature „Podsicherheitsrichtlinie (Vorschau)“ wurde als veraltet markiert und steht nach dem 30. Juni 2021 nicht mehr zur Verfügung.** Es wird durch [Azure Policy für AKS](use-azure-policy.md) ersetzt. Das Ablaufdatum wurde gegenüber dem vorherigen Datum, dem 15. Oktober 2020, verlängert.
+> **Die Einstellung des in diesem Dokument beschriebenen Features „Podsicherheitsrichtlinie (Vorschau)“ beginnt mit der Kubernetes Version 1.21, und es wird in Version 1.25 entfernt.** Da sich Kubernetes Upstream diesen Meilenstein nähert, arbeitet die Kubernetes-Community an der Dokumentation funktionsfähiger Alternativen. Die vorherige Einstellungsankündigung wurde zu dem Zeitpunkt vorgenommen, als es noch keine funktionsfähige Option für Kunden gab. Nun, da die Kubernetes-Community an einer Alternative arbeitet, ist es nicht mehr zwingend erforderlich, vor Kubernetes einzustellen.
 >
 > Wenn die Podsicherheitsrichtlinie (Vorschauversion) veraltet ist, müssen Sie das Feature für alle vorhandenen Cluster deaktivieren, die das veraltete Feature verwenden, um zukünftige Clusterupgrades ausführen und weiterhin Azure-Support erhalten zu können.
->
-> Es wird dringend empfohlen, mit Testszenarien mit Azure Policy für AKS zu beginnen. Azure Policy für AKS bietet integrierte Richtlinien zum Schützen von Pods und integrierte Initiativen, die Podsicherheitsrichtlinien entsprechen. Sie müssen die folgenden Maßnahmen auf einem Cluster ergreifen, um von der Podsicherheitsrichtlinie zu migrieren.
-> 
-> 1. [Deaktivieren Sie die Podsicherheitsrichtlinie](#clean-up-resources) auf dem Cluster.
-> 1. Aktivieren Sie das [Azure Policy-Add-On][kubernetes-policy-reference].
-> 1. Aktivieren Sie die gewünschten Azure-Richtlinien aus den [verfügbaren integrierten Richtlinien][policy-samples].
-> 1. Sehen Sie sich die Informationen zu [Verhaltensänderungen zwischen der Podsicherheitsrichtlinie und Azure Policy](#behavior-changes-between-pod-security-policy-and-azure-policy) an.
 
 Zur Verbesserung der Sicherheit Ihres AKS-Clusters können Sie einschränken, welche Pods geplant werden können. Pods, die von Ihnen nicht zugelassene Ressourcen anfordern, können im AKS-Cluster nicht ausgeführt werden. Dieser Zugriff wird mithilfe von Podsicherheitsrichtlinien definiert. In diesem Artikel erfahren Sie, wie Sie Podsicherheitsrichtlinien verwenden, um die Bereitstellung von Pods in AKS einzuschränken.
 
@@ -462,7 +455,6 @@ Weitere Informationen zum Einschränken des Netzwerkdatenverkehrs von Pods finde
 [kubectl-logs]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
 [kubernetes-policy-reference]: https://kubernetes.io/docs/concepts/policy/pod-security-policy/#policy-reference
-
 <!-- LINKS - internal -->
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
@@ -479,3 +471,4 @@ Weitere Informationen zum Einschränken des Netzwerkdatenverkehrs von Pods finde
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
 [policy-samples]: ./policy-reference.md#microsoftcontainerservice
+[azure-policy-add-on]: ../governance/policy/concepts/policy-for-kubernetes.md

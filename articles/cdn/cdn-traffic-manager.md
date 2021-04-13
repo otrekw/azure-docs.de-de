@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 10/08/2020
 ms.author: allensu
 ms.custom: ''
-ms.openlocfilehash: d2d3bd43a0f17167e855d7e678a96cd79fe42237
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a003becba0bc1e42d8fe0c0c5b199402a430a8e1
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92777740"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105034757"
 ---
 # <a name="failover-across-multiple-endpoints-with-azure-traffic-manager"></a>Failover für mehrere Endpunkte mit Azure Traffic Manager
 
@@ -94,7 +94,10 @@ Nachdem Sie Ihre CDN- und Traffic Manager-Profile konfiguriert haben, führen Si
     > [!NOTE]
     > Wenn Ihre Domäne derzeit live geschaltet ist und nicht unterbrochen werden soll, führen Sie diesen Schritt zuletzt aus. Überprüfen Sie, ob die CDN-Endpunkte und Traffic Manager-Domänen live geschaltet sind, bevor Sie das DNS der benutzerdefinierten Domäne in Traffic Manager aktualisieren.
     >
-
+   
+    > [!NOTE]
+    > Zum Implementieren dieses Failoverszenarios müssen sich beide Endpunkte in unterschiedlichen Profilen befinden, und die verschiedenen Profile müssen von unterschiedlichen CDN-Anbietern stammen, um Domänennamenskonflikte zu vermeiden.
+    > 
 
 2.  Wählen Sie in Ihrem Azure CDN-Profil den ersten CDN-Endpunkt (Akamai) aus. Wählen Sie **Benutzerdefinierte Domäne hinzufügen** aus, und geben Sie **cdndemo101.dustydogpetcare.online** ein. Vergewissern Sie sich, dass das Häkchen zum Überprüfen der benutzerdefinierten Domäne grün ist. 
 

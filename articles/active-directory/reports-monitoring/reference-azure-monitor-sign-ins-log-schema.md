@@ -13,16 +13,16 @@ ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 04/18/2019
+ms.date: 03/12/2021
 ms.author: markvi
-ms.reviewer: dhanyahk
+ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d912707a1f41a0c3063d6f3fb67aa6914bd2d390
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: bad8ae86827144269e816a6c2e01d6af3f4d88ac
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100592310"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103225417"
 ---
 # <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor"></a>Interpretieren des Azure AD-Anmeldeprotokollschemas in Azure Monitor
 
@@ -143,29 +143,31 @@ Dieser Artikel beschreibt das Azure Active Directory-Anmeldeprotokollschema (Azu
 
 ## <a name="field-descriptions"></a>Feldbeschreibungen
 
-| Feldname | BESCHREIBUNG |
-|------------|-------------|
-| Time | Das Datum und die Uhrzeit in UTC. |
-| resourceId | Dieser Wert wird nicht zugeordnet, sodass das Feld ignoriert werden kann.  |
-| Vorgangsname | Für Anmeldungen ist dieser Wert immer *Anmeldeaktivität*. |
-| OperationVersion | Die vom Client angeforderte REST-API-Version. |
-| Category | Für Anmeldungen ist dieser Wert immer *SignIn*. | 
-| TenantId | Die mit den Protokollen verknüpfte Mandanten-GUID. |
-| ResultType | Das Ergebnis des Anmeldevorgangs ist *Erfolgreich* oder *Fehler*. | 
-| ResultSignature | Gibt den Fehlercode (falls vorhanden) des Anmeldevorgangs an. |
-| ResultDescription | Gibt die Fehlerbeschreibung des Anmeldevorgangs an. |
+| Feldname | Schlüssel | BESCHREIBUNG |
+| --- | --- | --- | 
+| Time |  - | Das Datum und die Uhrzeit in UTC. |
+| resourceId | - | Dieser Wert wird nicht zugeordnet, sodass das Feld ignoriert werden kann.  |
+| Vorgangsname | - | Für Anmeldungen ist dieser Wert immer *Anmeldeaktivität*. |
+| OperationVersion | - | Die vom Client angeforderte REST-API-Version. |
+| Category | - | Für Anmeldungen ist dieser Wert immer *SignIn*. | 
+| TenantId | - | Die mit den Protokollen verknüpfte Mandanten-GUID. |
+| ResultType | - | Das Ergebnis des Anmeldevorgangs ist *Erfolgreich* oder *Fehler*. | 
+| ResultSignature | - | Gibt den Fehlercode (falls vorhanden) des Anmeldevorgangs an. |
+| ResultDescription | Nicht zutreffend oder leer | Gibt die Fehlerbeschreibung des Anmeldevorgangs an. |
 | riskDetail | riskDetail | Gibt den „Grund“ für einen bestimmten Zustand eines riskanten Benutzers, einer Anmeldung oder einer Risikoerkennung an. Die möglichen Werte sind: `none`, `adminGeneratedTemporaryPassword`, `userPerformedSecuredPasswordChange`, `userPerformedSecuredPasswordReset`, `adminConfirmedSigninSafe`, `aiConfirmedSigninSafe`, `userPassedMFADrivenByRiskBasedPolicy`, `adminDismissedAllRiskForUser`, `adminConfirmedSigninCompromised`, `unknownFutureValue`. Der Wert `none` bedeutet, dass für den Benutzer bzw. die Anmeldung bisher keine Aktion ausgeführt wurde. <br>**Hinweis:** Die Details für diese Eigenschaft erfordern eine Azure AD Premium P2-Lizenz. Andere Lizenzen geben den Wert `hidden` zurück. |
 | riskEventTypes | riskEventTypes | Der der Anmeldung zugeordnete Risikoerkennungstyp. Die möglichen Werte sind: `unlikelyTravel`, `anonymizedIPAddress`, `maliciousIPAddress`, `unfamiliarFeatures`, `malwareInfectedIPAddress`, `suspiciousIPAddress`, `leakedCredentials`, `investigationsThreatIntelligence`, `generic` und `unknownFutureValue`. |
+| authProcessingDetails | Azure AD-App-Authentifizierungsbibliothek | Enthält Informationen zu Familie, Bibliothek und Plattform im Format: „Familie: ADAL Bibliothek: ADAL.JS 1.0.0 Plattform: JS“. |
+| authProcessingDetails | IsCAEToken | Die Werte sind „True“ und „False“. |
 | riskLevelAggregated | riskLevel | Aggregierte Risikostufe. Die möglichen Werte sind: `none`, `low`, `medium`, `high`, `hidden` und `unknownFutureValue`. Der Wert `hidden` bedeutet, dass der Benutzer oder die Anmeldung nicht für Azure AD Identity Protection aktiviert war. **Hinweis:** Details für diese Eigenschaft sind nur für Azure AD Premium P2-Kunden verfügbar. Für alle anderen Kunden wird `hidden` zurückgegeben. |
 | riskLevelDuringSignIn | riskLevel | Risikostufe während der Anmeldung. Die möglichen Werte sind: `none`, `low`, `medium`, `high`, `hidden` und `unknownFutureValue`. Der Wert `hidden` bedeutet, dass der Benutzer oder die Anmeldung nicht für Azure AD Identity Protection aktiviert war. **Hinweis:** Details für diese Eigenschaft sind nur für Azure AD Premium P2-Kunden verfügbar. Für alle anderen Kunden wird `hidden` zurückgegeben. |
 | riskState | riskState | Meldet den Status des riskanten Benutzers, der Anmeldung oder einer Risikoerkennung. Die möglichen Werte sind: `none`, `confirmedSafe`, `remediated`, `dismissed`, `atRisk`, `confirmedCompromised`, `unknownFutureValue`. |
-| DurationMs |  Dieser Wert wird nicht zugeordnet, sodass das Feld ignoriert werden kann. |
-| CallerIpAddress | Die IP-Adresse des Clients, der die Anforderung gestellt hat. | 
-| CorrelationId | Die optionale GUID, die vom Client übergeben wird. Dieser Wert kann dabei helfen, clientseitige Vorgänge mit serverseitigen Vorgängen zu korrelieren und Protokolle zu verfolgen, die sich über mehrere Dienste erstrecken. |
-| Identity | Die Identität des Tokens, das beim Erstellen der Anforderung angegeben wurde. Dies kann ein Benutzerkonto, ein Systemkonto oder einen Dienstprinzipal sein. |
-| Ebene | Gibt den Typ der Nachricht an. Bei Überwachungen ist es immer *Information*. |
-| Standort | Gibt den Standort der Anmeldeaktivität an. |
-| Eigenschaften | Listet alle Eigenschaften auf, die mit Anmeldungen verknüpft sind. Weitere Informationen finden Sie in der [Microsoft Graph-API-Referenz](/graph/api/resources/signin?view=graph-rest-beta). Dieses Schema verwendet zur besseren Lesbarkeit die gleichen Attributnamen wie die Anmelderessource.
+| DurationMs | - | Dieser Wert wird nicht zugeordnet, sodass das Feld ignoriert werden kann. |
+| CallerIpAddress | - | Die IP-Adresse des Clients, der die Anforderung gestellt hat. | 
+| CorrelationId | - | Die optionale GUID, die vom Client übergeben wird. Dieser Wert kann dabei helfen, clientseitige Vorgänge mit serverseitigen Vorgängen zu korrelieren und Protokolle zu verfolgen, die sich über mehrere Dienste erstrecken. |
+| Identity | - | Die Identität des Tokens, das beim Erstellen der Anforderung angegeben wurde. Dies kann ein Benutzerkonto, ein Systemkonto oder einen Dienstprinzipal sein. |
+| Ebene | - | Gibt den Typ der Nachricht an. Bei Überwachungen ist es immer *Information*. |
+| Standort | - | Gibt den Standort der Anmeldeaktivität an. |
+| Eigenschaften | - | Listet alle Eigenschaften auf, die mit Anmeldungen verknüpft sind.|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 06/10/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 92046b3a944a747ce76d2426855eec7b6bc2cd70
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 1e644d81c2a47ec07833010ae93f4dbb0c57474b
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "84790245"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106077838"
 ---
 # <a name="list-azure-deny-assignments-using-the-azure-portal"></a>Auflisten von Ablehnungszuweisungen über das Azure-Portal
 
@@ -54,7 +54,7 @@ Führen Sie die folgenden Schritte aus, um Ablehnungszuweisungen für ein Abonne
 
     ![Ablehnungszuweisungen: Spalten](./media/deny-assignments-portal/deny-assignments-columns.png)
 
-    |  |  |
+    | Column | BESCHREIBUNG  |
     | --- | --- |
     | **Name** | Der Name der Ablehnungszuweisung. |
     | **Prinzipaltyp** | Benutzer, Gruppe, vom System definierte Gruppe oder Dienstprinzipal. |
@@ -79,7 +79,7 @@ Führen Sie die folgenden Schritte aus, um zusätzliche Details zu einer Ablehnu
 
     Das Blatt **Benutzer** umfasst die folgenden zwei Abschnitte.
 
-    |  |  |
+    | Ablehnungseinstellung  | BESCHREIBUNG |
     | --- | --- |
     | **Die Ablehnungszuweisung gilt für**  | Sicherheitsprinzipale, auf die die Ablehnungszuweisung angewendet wird. |
     | **Die Ablehnungszuweisung schließt Folgendes aus** | Gibt Sicherheitsprinzipale an, die von der Ablehnungszuweisung ausgeschlossen sind. |

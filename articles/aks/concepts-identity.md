@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: dc1e54106e2f31c7390d784cba6f92cf775e963c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 12900a64d9e023e4bddd5b5862b6a127fcba1d36
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100572704"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104949990"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Zugriffs- und Identitätsoptionen für Azure Kubernetes Service (AKS)
 
@@ -42,6 +42,7 @@ Die folgenden Berechtigungen werden von der AKS-Clusteridentität verwendet, die
 
 | Berechtigung | `Reason` |
 |---|---|
+| Microsoft.ContainerService/managedClusters/*  <br/> | Zum Erstellen von Benutzern und zum Betreiben des Clusters erforderlich
 | Microsoft.Network/loadBalancers/delete <br/> Microsoft.Network/loadBalancers/read <br/> Microsoft.Network/loadBalancers/write | Erforderlich zum Konfigurieren des Lastenausgleichs für einen LoadBalancer-Dienst. |
 | Microsoft.Network/publicIPAddresses/delete <br/> Microsoft.Network/publicIPAddresses/read <br/> Microsoft.Network/publicIPAddresses/write | Erforderlich zum Ermitteln und Konfigurieren von öffentlichen IP-Adressen für einen LoadBalancer-Dienst. |
 | Microsoft.Network/publicIPAddresses/join/action | Erforderlich zum Konfigurieren von öffentlichen IP-Adressen für einen LoadBalancer-Dienst. |
@@ -72,6 +73,7 @@ Die folgenden zusätzlichen Berechtigungen werden von der Clusteridentität ben�
 | Microsoft.Network/virtualNetworks/subnets/read <br/> Microsoft.Network/virtualNetworks/subnets/join/action | Erforderlich, wenn ein Subnetz in einer anderen Ressourcengruppe, z. B. einem benutzerdefinierten VNET, verwendet wird. |
 | Microsoft.Network/routeTables/routes/read <br/> Microsoft.Network/routeTables/routes/write | Erforderlich, wenn ein Subnetz mit einer zugeordneten Routingtabelle in einer anderen Ressourcengruppe, z. B. einem VNET mit einer benutzerdefinierten Routingtabelle, verwendet wird. Erforderlich zum Überprüfen, ob für das Subnetz in der anderen Ressourcengruppe bereits ein Subnetz vorhanden ist. |
 | Microsoft.Network/virtualNetworks/subnets/read | Erforderlich, wenn ein internes Lastenausgleichsmodul in einer anderen Ressourcengruppe verwendet wird. Erforderlich für die Überprüfung, ob für das interne Lastenausgleichsmodul in der Ressourcengruppe bereits ein Subnetz vorhanden ist. |
+| Microsoft.Network/privatednszones/* | Erforderlich, wenn eine private DNS-Zone in einer anderen Ressourcengruppe, z. B. einer benutzerdefinierten privaten DNS-Zone, verwendet wird. |
 
 ## <a name="kubernetes-role-based-access-control-kubernetes-rbac"></a>Rollenbasierte Zugriffssteuerung in Kubernetes (Kubernetes RBAC)
 

@@ -1,23 +1,23 @@
 ---
 title: Unterstützung der VMware-Bewertung in Azure Migrate
-description: Informationen zur Unterstützung der Bewertung von VMware-VMs mit der Azure Migrate-Serverbewertung
+description: Erfahren Sie mehr über die Unterstützung für die Bewertung von in einer VMware-Umgebung ausgeführten Servern mit der Ermittlung und Bewertung von Azure Migrate.
 author: vineetvikram
 ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: conceptual
-ms.date: 11/10/2020
-ms.openlocfilehash: cea13d0037a8b8074a78177794c553668d3cd31b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.date: 03/17/2021
+ms.openlocfilehash: 4d51fc13e3587c21a7340b35db10d3cf36ab74b5
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100590601"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105557546"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>Unterstützungsmatrix für die VMware-Bewertung 
 
-Dieser Artikel bietet eine Übersicht über die Voraussetzungen und Unterstützungsanforderungen bei der Ermittlung und Bewertung von VMware-VMs für die Migration zu Azure mithilfe des Tools [Azure Migrate-Serverbewertung](migrate-services-overview.md#azure-migrate-server-assessment-tool). Zum Bewerten von VMware-VMs erstellen Sie ein Azure Migrate-Projekt, und fügen Sie dem Projekt das Serverbewertungstool hinzu. Nachdem das Tool hinzugefügt wurde, stellen Sie die Azure Migrate-Appliance bereit. Die Appliance ermittelt kontinuierlich lokale Computer und sendet Computermetadaten und Leistungsdaten an Azure. Nach Abschluss der Ermittlung ordnen Sie die ermittelten Computer in Gruppen und führen eine Bewertung für die Gruppen aus. 
+Dieser Artikel bietet eine Übersicht über die Voraussetzungen und Unterstützungsanforderungen bei der Ermittlung und Bewertung von Servern in einer VMware-Umgebung für die Migration zu Azure mithilfe des Tools [Azure Migrate: Ermittlung und Bewertung](migrate-services-overview.md#azure-migrate-discovery-and-assessment-tool). Zum Bewerten von Servern erstellen Sie ein Projekt. Hierdurch wird dem Projekt das Azure Migrate-Tool zur Ermittlung und Bewertung hinzugefügt. Nachdem das Tool hinzugefügt wurde, stellen Sie die Azure Migrate-Appliance bereit. Die Appliance ermittelt kontinuierlich lokale Server und sendet Konfigurations- und Leistungsmetadaten an Azure. Nach Abschluss der Ermittlung ordnen Sie die ermittelten Server in Gruppen und führen eine Bewertung für die Gruppen aus.
 
-Wenn Sie VMware-VMs zu Azure migrieren möchten, überprüfen Sie die [Migrationsunterstützungsmatrix](migrate-support-matrix-vmware-migration.md).
+Wenn Sie VMware-Server zu Azure migrieren möchten, überprüfen Sie die [Migrationsunterstützungsmatrix](migrate-support-matrix-vmware-migration.md).
 
 
 
@@ -25,9 +25,9 @@ Wenn Sie VMware-VMs zu Azure migrieren möchten, überprüfen Sie die [Migration
 
 **Anforderung** | **Details**
 --- | ---
-**Projekteinschränkungen** | Sie können mehrere Projekte in einem Azure-Abonnement erstellen.<br/><br/> In einem [Projekt](migrate-support-matrix.md#azure-migrate-projects) können bis zu 35.000 VMware-VMs ermittelt und bewertet werden. Ein Projekt kann im Rahmen der jeweiligen Bewertungseinschränkungen auch physische Server und Hyper-V-VMs umfassen.
-**Ermittlung** | Die Azure Migrate-Appliance kann bis zu 10.000 virtuelle VMware-Computer in einer vCenter Server-Instanz ermitteln.
-**Bewertung** | Sie können einer einzelnen Gruppe bis zu 35.000 Computer hinzufügen.<br/><br/> Sie können bis zu 35.000 virtuelle Computer in einem einzelnen Vorgang bewerten.
+**Projekteinschränkungen** | Sie können mehrere Projekte in einem Azure-Abonnement erstellen.<br/><br/> In einem [Projekt](migrate-support-matrix.md#project) können bis zu 50.000 Server in einer VMware-Umgebung ermittelt und bewertet werden. Ein Projekt kann im Rahmen der Bewertungseinschränkungen auch physische Server und Server in einer Hyper-V-Umgebung umfassen.
+**Ermittlung** | Die Azure Migrate-Appliance kann bis zu 10.000 Server in einer vCenter Server-Instanz ermitteln.
+**Bewertung** | Sie können einer einzelnen Gruppe bis zu 35.000 Server hinzufügen.<br/><br/> Sie können bis zu 35.000 Server in einem einzelnen Vorgang bewerten.
 
 [Hier erfahren Sie mehr](concepts-assessment-calculation.md) über Bewertungen.
 
@@ -36,19 +36,19 @@ Wenn Sie VMware-VMs zu Azure migrieren möchten, überprüfen Sie die [Migration
 
 **VMware** | **Details**
 --- | ---
-**vCenter Server** | Computer, die ermittelt und bewertet werden sollen, müssen mit vCenter Server Version 5.5, 6.0, 6.5, 6.7 oder 7.0 verwaltet werden.<br/><br/> Die Ermittlung von VMware-VMs durch Bereitstellen von ESXi-Hostdetails in der Appliance wird derzeit nicht unterstützt.
-**Berechtigungen** | Die Serverbewertung erfordert ein schreibgeschütztes vCenter Server-Konto für die Ermittlung und Bewertung.<br/><br/> Wenn Sie Anwendungen ermitteln oder Abhängigkeiten visualisieren möchten, müssen für das Konto Berechtigungen für **Virtuelle Computer** > **Gastvorgänge** aktiviert sein.
+**vCenter Server** | Server, die ermittelt und bewertet werden sollen, müssen mit vCenter Server Version 5.5, 6.0, 6.5, 6.7 oder 7.0 verwaltet werden.<br/><br/> Die Ermittlung von Servern durch Bereitstellen von ESXi-Hostdetails in der Appliance wird derzeit nicht unterstützt.
+**Berechtigungen** | Die Azure Migrate-Ermittlung und -Bewertung erfordert ein schreibgeschütztes vCenter Server-Konto für die Ermittlung und Bewertung.<br/><br/> Wenn Sie die Ermittlung von Softwareinventar und die Abhängigkeitsanalyse ohne Agent durchführen möchten, erfordert das Konto aktivierte Berechtigungen für **Virtual Machines** > **Gastvorgänge**.
 
-## <a name="vm-requirements"></a>VM-Anforderungen
+## <a name="server-requirements"></a>Serveranforderungen
 **VMware** | **Details**
 --- | ---
-**Virtuelle VMware-Computer** | Alle Betriebssysteme können für die Migration ausgewertet werden. 
+**Unterstütztes Betriebssystem** | Alle Windows- und Linux-Betriebssysteme können für die Migration bewertet werden.
 **Storage** | An SCSI-, IDE-und SATA-basierte Controller angefügte Datenträger werden unterstützt.
 
 
 ## <a name="azure-migrate-appliance-requirements"></a>Anforderungen für die Azure Migrate-Appliance
 
-In Azure Migrate erfolgt die Ermittlung und Bewertung über die [Azure Migrate-Appliance](migrate-appliance.md). Sie können die Appliance mithilfe einer in vCenter Server importierten OVA-Vorlage oder mit einem [PowerShell-Skript](deploy-appliance-script.md) als VMware-VM bereitstellen.
+In Azure Migrate erfolgt die Ermittlung und Bewertung über die [Azure Migrate-Appliance](migrate-appliance.md). Sie können die Appliance mithilfe einer in vCenter Server importierten OVA-Vorlage oder mit einem [PowerShell-Skript](deploy-appliance-script.md) als Server in der VMware-Umgebung bereitstellen.
 
 - Erfahren Sie etwas über die [Anforderungen für die Appliance](migrate-appliance.md#appliance---vmware) für VMware.
 - In Azure Government müssen Sie die Appliance [mithilfe des Skripts](deploy-appliance-script-government.md) bereitstellen.
@@ -61,56 +61,73 @@ In Azure Migrate erfolgt die Ermittlung und Bewertung über die [Azure Migrate-A
 --- | ---
 **Appliance** | Eingehende Verbindungen an TCP-Port 3389, um Remotedesktopverbindungen mit der Appliance zu ermöglichen<br/><br/> Eingehende Verbindungen an Port 44368, um über Remotezugriff über die URL ```https://<appliance-ip-or-name>:44368``` auf die Applianceverwaltungs-App zugreifen zu können. <br/><br/>Ausgehende Verbindungen an Port 443 (HTTPS), um Ermittlungs- und Leistungsmetadaten an Azure Migrate zu senden
 **vCenter-Server** | Eingehende Verbindungen an TCP-Port 443, damit die Appliance Konfigurations- und Leistungsmetadaten für Bewertungen sammeln kann <br/><br/> Die Appliance stellt standardmäßig über Port 443 eine Verbindung mit vCenter her. Wenn der vCenter-Server an einem anderen Port lauscht, können Sie den Port beim Einrichten der Ermittlung ändern.
-**ESXi-Hosts** | Wenn Sie eine [App-Ermittlung](how-to-discover-applications.md) oder [Abhängigkeitsanalyse ohne Agent](concepts-dependency-visualization.md#agentless-analysis) durchführen möchten, stellt die Appliance eine Verbindung mit ESXi-Hosts am TCP-Port 443 her, um Anwendungen zu ermitteln und Abhängigkeitsvisualisierungen ohne Agent auf den VMs auszuführen.
+**ESXi-Hosts** | Wenn Sie eine [Ermittlung von Softwareinventar](how-to-discover-applications.md) oder [Abhängigkeitsanalyse ohne Agent](concepts-dependency-visualization.md#agentless-analysis) durchführen möchten, stellt die Appliance eine Verbindung mit ESXi-Hosts am TCP-Port 443 her, um Softwareinventar bzw. Abhängigkeiten auf den Servern zu ermitteln.
 
 ## <a name="application-discovery-requirements"></a>Anforderungen für die Anwendungsermittlung
 
-Mit der Serverbewertung können nicht nur Computer, sondern auch die auf Computern ausgeführten Anwendungen, Rollen und Features ermittelt werden. Durch das Ermitteln Ihres App-Bestands können Sie einen maßgeschneiderten Migrationspfad für Ihre lokalen Workloads festlegen und planen. 
+Zusätzlich zu Servern kann die Azure Migrate-Ermittlung und -Bewertung das Softwareinventar auf Servern ermitteln. Durch die Anwendungsermittlung können Sie einen maßgeschneiderten Migrationspfad für Ihre lokalen Workloads festlegen und planen.
 
 **Unterstützung** | **Details**
 --- | ---
-**Unterstützte Computer** | Zurzeit nur unterstützt für VMware-VMs. Sie können installierte Apps auf bis zu 10000 VMware-VMs von jeder Azure Migrate-Appliance ermitteln.
-**Betriebssysteme** | Es werden virtuelle Computer mit beliebigen Windows- und Linux-Versionen unterstützt.
-**VM-Anforderungen** | Auf virtuellen Computern, auf denen Sie Apps ermitteln möchten, müssen VMware-Tools installiert sein und ausgeführt werden. <br/><br/> Die Version von VMware Tools muss höher als 10.2.0 sein.<br/><br/> Auf den VMs muss PowerShell, Version 2.0 oder höher, installiert sein.
-**Ermittlung** | Informationen zu Apps, die auf einem virtuellen Computer installiert sind, werden mithilfe von VMware-Tools, die auf dem virtuellen Computer installiert sind, aus vCenter Server erfasst. Die Appliance sammelt die App-Informationen aus vCenter Server mithilfe von vSphere-APIs. Die App-Ermittlung erfolgt ohne Agent. Es wird nichts auf virtuellen Computern installiert, und die Appliance stellt keine direkte Verbindung mit virtuellen Computern her. WMI/SSH muss auf virtuellen Computern aktiviert und verfügbar sein.
-**vCenter** | Das für die Bewertung verwendete schreibgeschützte vCenter Server-Konto benötigt für **Virtuelle Computer** > **Gastvorgänge** aktivierte Berechtigungen, um mit der VM für die Anwendungsermittlung interagieren zu können.
-**VM-Zugriff** | Die App-Ermittlung erfordert ein lokales Benutzerkonto auf dem virtuellen Computer für die Anwendungsermittlung.<br/><br/> Azure Migrate unterstützt derzeit die Verwendung von Anmeldeinformationen für alle Windows-Server sowie einen Satz Anmeldeinformationen für alle Linux-Server.<br/><br/> Sie erstellen ein Gastbenutzerkonto für Windows-VMs und ein normales Benutzerkonto (ohne sudo-Zugriff) für alle Linux-VMs.
-**Portzugriff** | Auf ESXi-Hosts, auf denen virtuelle Computer ausgeführt werden, auf denen Sie Apps ermitteln möchten, muss die Azure Migrate-Appliance eine Verbindung mit dem TCP-Port 443 herstellen können. vCenter Server gibt eine ESXI-Hostverbindung zurück, um die Datei mit den App-Informationen herunterzuladen.
+**Unterstützte Server** | Wird derzeit nur für Server in einer VMware-Umgebung unterstützt. Sie können die Anwendungsermittlung auf bis zu 10.000 Servern durchführen, und zwar über jede Azure Migrate Appliance.
+**Betriebssysteme** | Alle auf Servern ausgeführten Windows- und Linux-Versionen werden unterstützt.
+**VM-Anforderungen** | Für die Ermittlung von Softwareinventar müssen VMware-Tools installiert sein und auf den Servern ausgeführt werden. <br/><br/> Die Version von VMware Tools muss höher als 10.2.0 sein.<br/><br/> Auf Windows-Servern muss PowerShell ab Version 2.0 installiert sein.
+**Ermittlung** | Die Anwendungsermittlung auf Servern wird über vCenter Server mit den auf den Servern installierten VMware-Tools ausgeführt. Die Appliance sammelt über vCenter Server mithilfe von vSphere-APIs die Informationen zum Softwareinventar. Die Anwendungsermittlung erfolgt ohne Agenten. Auf dem Server ist kein Agent installiert, und die Appliance stellt keine direkte Verbindung mit den Servern her. WMI oder SSH sollte auf Windows- bzw. Linux-Servern aktiviert und verfügbar sein.
+**vCenter Server-Benutzerkonto** | Das für die Bewertung verwendete schreibgeschützte vCenter Server-Konto benötigt für **Virtuelle Computer** > **Gastvorgänge** aktivierte Berechtigungen, um mit den Servern für die Anwendungsermittlung interagieren zu können.
+**Serverzugriff** | Sie können im Appliance-Konfigurations-Manager mehrere Anmeldeinformationen für Domänen und ohne Domäne (Windows/Linux) für die Anwendungsermittlung hinzufügen.<br/><br/> Sie müssen für Windows-Server ein Gastbenutzerkonto und für alle Linux-Server ein normales Benutzerkonto (ohne sudo-Zugriff) erstellen.
+**Portzugriff** | Auf ESXi-Hosts, auf denen Server ausgeführt werden, auf denen Sie die Anwendungsermittlung durchführen möchten, muss die Azure Migrate-Appliance eine Verbindung mit dem TCP-Port 443 herstellen können. vCenter Server gibt eine ESXi-Hostverbindung zurück, um die Datei mit den Details zum Softwareinventar herunterzuladen.
 
+## <a name="requirements-for-discovery-of-sql-server-instances-and-databases"></a>Anforderungen für die Ermittlung von SQL Server-Instanzen und -Datenbanken
 
+Bei der [Anwendungsermittlung](how-to-discover-applications.md) werden die SQL Server-Instanzen identifiziert. Anhand dieser Informationen versucht die Appliance, mithilfe der in der Appliance angegebenen Anmeldeinformationen für die Windows-Authentifizierung oder SQL Server-Authentifizierung eine Verbindung mit den entsprechenden SQL Server-Instanzen herzustellen. Sobald die Verbindung hergestellt wurde, sammelt die Appliance Konfigurations- und Leistungsdaten von SQL Server-Instanzen und -Datenbanken. Die SQL Server-Konfigurationsdaten werden alle 24 Stunden aktualisiert, und die Leistungsdaten werden alle 30 Sekunden aufgezeichnet.
+
+**Unterstützung** | **Details**
+--- | ---
+**Unterstützte Server** | Wird derzeit nur für SQL Server-Instanzen in einer VMware-Umgebung unterstützt. Sie können bis zu 300 SQL Server-Instanzen oder 6.000 SQL-Datenbanken ermitteln, je nachdem, welcher Wert niedriger ist.
+**Windows-Server** | Windows Server 2008 und höher werden unterstützt.
+**Linux-Server** | Wird derzeit nicht unterstützt.
+**Authentifizierungsmechanismus** | Sowohl Windows- als auch SQL Server-Authentifizierung werden unterstützt. Sie können im Appliance-Konfigurations-Manager Anmeldeinformationen für beide Authentifizierungstypen angeben.
+**SQL-Serverzugriff** | Für Azure Migrate ist ein Windows-Benutzerkonto erforderlich, das Mitglied der sysadmin-Serverrolle ist.
+**SQL Server-Versionen** | SQL Server 2008 und höher werden unterstützt.
+**SQL Server-Editionen** | Die Enterprise, Standard, Developer und Express Edition werden unterstützt.
+**Unterstützte SQL-Konfiguration** | Derzeit wird nur die Ermittlung von eigenständigen SQL Server-Instanzen und der entsprechenden Datenbanken unterstützt.<br/> Die Identifizierung von Failoverclustern und Always On-Verfügbarkeitsgruppen wird nicht unterstützt.
+**Unterstützte SQL-Dienste** | Nur die SQL Server-Datenbank-Engine wird unterstützt. <br/> Die Ermittlung von SQL Server Reporting Services (SSRS), SQL Server Integration Services (SSIS) und SQL Server Analysis Services (SSAS) wird nicht unterstützt.
+
+> [!Note]
+> Azure Migrate verschlüsselt die Kommunikation zwischen der Azure Migrate-Appliance und den SQL Server-Quellinstanzen (durch auf TRUE festgelegte Eigenschaft „Verbindung verschlüsseln“). Diese Verbindungen sind mit (auf TRUE festgelegter Option) [**TrustServerCertificate**](/dotnet/api/system.data.sqlclient.sqlconnectionstringbuilder.trustservercertificate) verschlüsselt. Die Transportschicht verwendet SSL, um den Kanal zu verschlüsseln und die Zertifikatskette zum Überprüfen der Vertrauenswürdigkeit zu umgehen. Der Server der Appliance muss so eingerichtet sein, dass er die [**Stammzertifizierungsstelle des Zertifikats als vertrauenswürdig einstuft**](/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine).<br/>
+Wenn auf dem Server beim Start kein Zertifikat bereitgestellt wird, erstellt SQL Server ein selbstsigniertes Zertifikat, mit dem Anmeldungspakete verschlüsselt werden. [**Weitere Informationen**](/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine)
 
 ## <a name="dependency-analysis-requirements-agentless"></a>Anforderungen der Abhängigkeitsanalyse (ohne Agent)
 
-Mit der [Abhängigkeitsanalyse](concepts-dependency-visualization.md) können Sie Abhängigkeiten zwischen lokalen Computern identifizieren, die Sie bewerten und zu Azure migrieren möchten. In der Tabelle werden die Anforderungen zum Einrichten der Abhängigkeitsanalyse ohne Agent zusammengefasst. 
+Mit der [Abhängigkeitsanalyse](concepts-dependency-visualization.md) können Sie Abhängigkeiten zwischen lokalen Servern identifizieren, die Sie bewerten und zu Azure migrieren möchten. In der Tabelle werden die Anforderungen zum Einrichten der Abhängigkeitsanalyse ohne Agent zusammengefasst.
 
 **Unterstützung** | **Details**
 --- | --- 
-**Unterstützte Computer** | Zurzeit nur unterstützt für VMware-VMs.
-**Virtuelle Windows-Computer** | Windows Server 2016<br/> Windows Server 2012 R2<br/> Windows Server 2012<br/> Windows Server 2008 R2 (64-Bit)<br/>Microsoft Windows Server 2008 R2 (32-Bit). 
-**Virtuelle Linux-Computer** | Red Hat Enterprise Linux 7, 6, 5<br/> Ubuntu Linux 14.04, 16.04<br/> Debian 7, 8<br/> Oracle Linux 6, 7<br/> CentOS 5, 6, 7.<br/> SUSE Linux Enterprise Server 11 und höher
-**VM-Anforderungen** | Auf VMs, die Sie analysieren möchten, muss VMware Tools (höhere Version als 10.2.0) installiert sein und ausgeführt werden.<br/><br/> Auf den VMs muss PowerShell, Version 2.0 oder höher, installiert sein.
-**Ermittlungsmethode** |  Informationen zu Abhängigkeiten zwischen VMs werden mithilfe von VMware-Tools, die auf dem virtuellen Computer installiert sind, aus vCenter Server erfasst. Die Appliance sammelt die Informationen aus vCenter Server mithilfe von vSphere-APIs. Die Ermittlung erfolgt ohne Agent. Es wird nichts auf dem virtuellen Computer installiert, und die Appliance stellt keine direkte Verbindung mit virtuellen Computern her. WMI/SSH muss auf virtuellen Computern aktiviert und verfügbar sein.
+**Unterstützte Server** | Wird derzeit nur für Server in einer VMware-Umgebung unterstützt.
+**Windows-Server** | Windows Server 2016<br/> Windows Server 2012 R2<br/> Windows Server 2012<br/> Windows Server 2008 R2 (64-Bit)<br/>Microsoft Windows Server 2008 R2 (32-Bit).
+**Linux-Server** | Red Hat Enterprise Linux 7, 6, 5<br/> Ubuntu Linux 14.04, 16.04<br/> Debian 7, 8<br/> Oracle Linux 6, 7<br/> CentOS 5, 6, 7.<br/> SUSE Linux Enterprise Server 11 und höher
+**Serveranforderungen** | Auf Servern, die Sie analysieren möchten, muss VMware Tools (höhere Version als 10.2.0) installiert sein und ausgeführt werden.<br/><br/> Auf den Servern muss PowerShell, Version 2.0 oder höher, installiert sein.
+**Ermittlungsmethode** |  Informationen zu Abhängigkeiten zwischen Servern werden mithilfe von VMware-Tools, die auf dem Server installiert sind, aus vCenter Server erfasst. Die Appliance sammelt die Informationen aus vCenter Server mithilfe von vSphere-APIs. Auf dem Server ist kein Agent installiert, und die Appliance stellt keine direkte Verbindung mit den Servern her. WMI oder SSH sollte auf Windows- bzw. Linux-Servern aktiviert und verfügbar sein.
 **vCenter-Konto** | Für das Konto mit reinem Lesezugriff, das von Azure Migrate für die Bewertung verwendet wird, müssen Berechtigungen für **Virtuelle Computer > Gastvorgänge** aktiviert werden.
-**Windows-VM-Berechtigungen** |  Ein Konto (lokaler Administrator oder Domäne) mit lokalen Administratorberechtigungen für VMs.
+**Windows Server-Berechtigungen** |  Ein Benutzerkonto (lokal oder Domäne) mit Administratorberechtigungen für Server.
 **Linux-Konto** | Das Root-Benutzerkonto oder ein Konto mit den folgenden Berechtigungen in den Dateien „/bin/netstat“ und „/bin/ls“: CAP_DAC_READ_SEARCH und CAP_SYS_PTRACE.<br/><br/> Legen Sie diese Funktionen mithilfe der folgenden Befehle fest: <br/><br/> sudo setcap CAP_DAC_READ_SEARCH,CAP_SYS_PTRACE=ep /bin/ls<br/><br/> sudo setcap CAP_DAC_READ_SEARCH,CAP_SYS_PTRACE=ep /bin/netstat
-**Portzugriff** | Auf ESXi-Hosts, auf denen die virtuellen Computer ausgeführt werden, deren Abhängigkeiten Sie ermitteln möchten, muss die Azure Migrate-Appliance eine Verbindung mit dem TCP-Port 443 herstellen können. vCenter Server gibt eine ESXI-Hostverbindung zurück, um die Datei mit den Abhängigkeitsinformationen herunterzuladen.
+**Portzugriff** | Auf ESXi-Hosts, auf denen die Server ausgeführt werden, deren Abhängigkeiten Sie ermitteln möchten, muss die Azure Migrate-Appliance eine Verbindung mit dem TCP-Port 443 herstellen können. vCenter Server gibt eine ESXi-Hostverbindung zurück, um die Datei mit den Abhängigkeitsdaten herunterzuladen.
 
 
 ## <a name="dependency-analysis-requirements-agent-based"></a>Anforderungen der Abhängigkeitsanalyse (Agent-basiert)
 
-Mit der [Abhängigkeitsanalyse](concepts-dependency-visualization.md) können Sie Abhängigkeiten zwischen lokalen Computern identifizieren, die Sie bewerten und zu Azure migrieren möchten. In der Tabelle werden die Anforderungen zum Einrichten der Agent-basierten Abhängigkeitsanalyse zusammengefasst. 
+Mit der [Abhängigkeitsanalyse](concepts-dependency-visualization.md) können Sie Abhängigkeiten zwischen lokalen Servern identifizieren, die Sie bewerten und zu Azure migrieren möchten. In der Tabelle werden die Anforderungen zum Einrichten der Agent-basierten Abhängigkeitsanalyse zusammengefasst.
 
 **Anforderung** | **Details** 
 --- | --- 
-**Vor der Bereitstellung** | Sie sollten über ein Azure Migrate-Projekt verfügen, dem das Azure Migrate-Tool zur Serverbewertung hinzugefügt wurde.<br/><br/>  Sie stellen die Abhängigkeitsvisualisierung nach dem Einrichten einer Azure Migrate-Appliance zum Ermitteln Ihrer lokalen Computer bereit.<br/><br/> [Erfahren Sie](create-manage-projects.md), wie Sie erstmalig ein Projekt erstellen.<br/> [Erfahren Sie](how-to-assess.md), wie Sie einem vorhandenen Projekt ein Bewertungstool hinzufügen.<br/> Erfahren Sie, wie Sie eine Azure Migrate-Appliance für die Bewertung von [Hyper-V](how-to-set-up-appliance-hyper-v.md)-, [VMware](how-to-set-up-appliance-vmware.md)- oder physischen Servern einrichten.
-**Unterstützte Computer** | Für alle Computer unterstützt.
-**Azure Government** | Abhängigkeitsvisualisierung ist in Azure Government nicht verfügbar.
-**Log Analytics** | Azure Migrate verwendet für die Abhängigkeitsvisualisierung die [Dienstzuordnung](../azure-monitor/vm/service-map.md) in [Azure Monitor-Protokolle](../azure-monitor/logs/log-query-overview.md).<br/><br/> Sie ordnen einem Azure Migrate-Projekt einen neuen oder vorhandenen Log Analytics-Arbeitsbereich zu. Der Arbeitsbereich für ein Azure Migrate-Projekt kann nach dem Hinzufügen nicht mehr geändert werden. <br/><br/> Der Arbeitsbereich muss sich im selben Abonnement befinden wie das Azure Migrate-Projekt.<br/><br/> Der Arbeitsbereich muss sich in einer der Regionen „USA, Osten“, „Asien, Südosten“ oder „Europa, Westen“ befinden. Arbeitsbereiche in anderen Regionen können keinem Projekt zugeordnet werden.<br/><br/> Der Arbeitsbereich muss sich in einer Region befinden, in der die [Dienstzuordnung unterstützt wird](../azure-monitor/vm/vminsights-configure-workspace.md#supported-regions).<br/><br/> In Log Analytics wird der Arbeitsbereich, der Azure Migrate zugeordnet ist, mit dem Schlüssel des Migrationsprojekts und dem Projektnamen gekennzeichnet.
-**Erforderliche Agents** | Installieren Sie auf jedem Computer, den Sie analysieren möchten, die folgenden Agents:<br/><br/> [Microsoft Monitoring Agent (MMA)](../azure-monitor/agents/agent-windows.md).<br/> [Dependency-Agent](../azure-monitor/agents/agents-overview.md#dependency-agent).<br/><br/> Wenn lokale Computer nicht mit dem Internet verbunden sind, müssen Sie das Log Analytics-Gateway auf diesen Computern herunterladen und installieren.<br/><br/> Erfahren Sie mehr über das Installieren von [Dependency-Agent](how-to-create-group-machine-dependencies.md#install-the-dependency-agent) und [MMA](how-to-create-group-machine-dependencies.md#install-the-mma).
-**Log Analytics-Arbeitsbereich** | Der Arbeitsbereich muss sich im selben Abonnement befinden wie das Azure Migrate-Projekt.<br/><br/> Azure Migrate unterstützt die Erstellung von Arbeitsbereichen in den Regionen „USA, Osten“, „Asien, Südosten“ und „Europa, Westen“.<br/><br/>  Der Arbeitsbereich muss sich in einer Region befinden, in der die [Dienstzuordnung unterstützt wird](../azure-monitor/vm/vminsights-configure-workspace.md#supported-regions).<br/><br/> Der Arbeitsbereich für ein Azure Migrate-Projekt kann nach dem Hinzufügen nicht mehr geändert werden.
-**Kosten** | Für die Dienstzuordnungslösung fallen in den ersten 180 Tagen (ab dem Tag der Zuordnung des Log Analytics-Arbeitsbereichs zum Azure Migrate-Projekt) keine Kosten an.<br/><br/> Nach 180 Tagen fallen die Log Analytics-Standardgebühren an.<br/><br/> Für andere Lösungen als die Dienstzuordnung im zugeordneten Log Analytics-Arbeitsbereich fallen die [Standardgebühren](https://azure.microsoft.com/pricing/details/log-analytics/) für Log Analytics an.<br/><br/> Wenn das Azure Migrate-Projekt gelöscht wurde, wird der Arbeitsbereich nicht zusammen mit dem Projekt gelöscht. Nach dem Löschen des Projekts ist die Nutzung der Dienstzuordnung nicht mehr kostenlos, und für jeden Knoten werden Kosten gemäß dem kostenpflichtigen Tarif für den Log Analytics-Arbeitsbereich berechnet.<br/><br/>Wenn Sie über Projekte verfügen, die Sie vor der allgemeinen Verfügbarkeit von Azure Migrate (28. Februar 2018) erstellt haben, fallen für Sie möglicherweise zusätzliche Gebühren für die Dienstzuordnung an. Um sicherzustellen, dass Sie wirklich erst nach 180 Tagen bezahlen müssen, wird empfohlen, ein neues Projekt zu erstellen, da vorhandene Arbeitsbereiche, die vor der allgemeinen Verfügbarkeit erstellt wurden, noch immer kostenpflichtig sind.
-**Verwaltung** | Wenn Sie Agents im Arbeitsbereich registrieren, verwenden Sie die ID und den Schlüssel, die vom Azure Migrate-Projekt bereitgestellt werden.<br/><br/> Sie können den Log Analytics-Arbeitsbereich außerhalb von Azure Migrate verwalten.<br/><br/> Wenn Sie das zugehörige Azure Migrate-Projekt löschen, wird der Arbeitsbereich nicht automatisch gelöscht. [Löschen Sie ihn manuell](../azure-monitor/logs/manage-access.md).<br/><br/> Löschen Sie den von Azure Migrate erstellten Arbeitsbereich nur, wenn Sie auch das Azure Migrate-Projekt löschen. Wenn Sie dies tun, funktioniert die Abhängigkeitsvisualisierung nicht wie erwartet.
-**Internetkonnektivität** | Wenn Computer nicht mit dem Internet verbunden sind, müssen Sie das Log Analytics-Gateway auf diesen Computern installieren.
+**Vor der Bereitstellung** | Sie sollten über ein Projekt verfügen, dem das Azure Migrate-Tool zur Ermittlung und Bewertung hinzugefügt wurde.<br/><br/>  Sie stellen die Abhängigkeitsvisualisierung nach dem Einrichten einer Azure Migrate-Appliance zum Ermitteln Ihrer lokalen Server bereit.<br/><br/> [Erfahren Sie](create-manage-projects.md), wie Sie erstmalig ein Projekt erstellen.<br/> [Erfahren Sie](how-to-assess.md), wie Sie einem vorhandenen Projekt ein Ermittlungs- und Bewertungstool hinzufügen.<br/> Erfahren Sie, wie Sie eine Azure Migrate-Appliance für die Bewertung von [Hyper-V](how-to-set-up-appliance-hyper-v.md)-, [VMware](how-to-set-up-appliance-vmware.md)- oder physischen Servern einrichten.
+**Unterstützte Server** | Wird für alle Server in Ihrer lokalen Umgebung unterstützt.
+**Log Analytics** | Azure Migrate verwendet für die Abhängigkeitsvisualisierung die [Dienstzuordnung](../azure-monitor/insights/service-map.md) in [Azure Monitor-Protokolle](../azure-monitor/log-query/log-query-overview.md).<br/><br/> Sie ordnen einem Projekt einen neuen oder vorhandenen Log Analytics-Arbeitsbereich zu. Der Arbeitsbereich für ein Projekt kann nach dem Hinzufügen nicht mehr geändert werden. <br/><br/> Der Arbeitsbereich muss sich in demselben Abonnement befinden wie das Projekt.<br/><br/> Der Arbeitsbereich muss sich in einer der Regionen „USA, Osten“, „Asien, Südosten“ oder „Europa, Westen“ befinden. Arbeitsbereiche in anderen Regionen können keinem Projekt zugeordnet werden.<br/><br/> Der Arbeitsbereich muss sich in einer Region befinden, in der die [Dienstzuordnung unterstützt wird](../azure-monitor/insights/vminsights-configure-workspace.md#supported-regions).<br/><br/> In Log Analytics wird der Arbeitsbereich, der Azure Migrate zugeordnet ist, mit dem Schlüssel des Projekts und dem Projektnamen gekennzeichnet.
+**Erforderliche Agents** | Installieren Sie auf jedem Server, den Sie analysieren möchten, die folgenden Agents:<br/><br/> [Microsoft Monitoring Agent (MMA)](../azure-monitor/platform/agent-windows.md).<br/> [Dependency-Agent](../azure-monitor/platform/agents-overview.md#dependency-agent).<br/><br/> Wenn lokale Server nicht mit dem Internet verbunden sind, müssen Sie das Log Analytics-Gateway auf diesen Servern herunterladen und installieren.<br/><br/> Erfahren Sie mehr über das Installieren von [Dependency-Agent](how-to-create-group-machine-dependencies.md#install-the-dependency-agent) und [MMA](how-to-create-group-machine-dependencies.md#install-the-mma).
+**Log Analytics-Arbeitsbereich** | Der Arbeitsbereich muss sich in demselben Abonnement befinden wie das Projekt.<br/><br/> Azure Migrate unterstützt die Erstellung von Arbeitsbereichen in den Regionen „USA, Osten“, „Asien, Südosten“ und „Europa, Westen“.<br/><br/>  Der Arbeitsbereich muss sich in einer Region befinden, in der die [Dienstzuordnung unterstützt wird](../azure-monitor/insights/vminsights-configure-workspace.md#supported-regions).<br/><br/> Der Arbeitsbereich für ein Projekt kann nach dem Hinzufügen nicht mehr geändert werden.
+**Kosten** | Für die Dienstzuordnungslösung fallen in den ersten 180 Tagen (ab dem Tag der Zuordnung des Log Analytics-Arbeitsbereichs zum Projekt) keine Kosten an.<br/><br/> Nach 180 Tagen fallen die Log Analytics-Standardgebühren an.<br/><br/> Für andere Lösungen als die Dienstzuordnung im zugeordneten Log Analytics-Arbeitsbereich fallen die [Standardgebühren](https://azure.microsoft.com/pricing/details/log-analytics/) für Log Analytics an.<br/><br/> Beim Löschen des Projekts wird der Arbeitsbereich nicht zusammen mit dem Projekt gelöscht. Nach dem Löschen des Projekts ist die Nutzung der Dienstzuordnung nicht mehr kostenlos, und für jeden Knoten werden Kosten gemäß dem kostenpflichtigen Tarif für den Log Analytics-Arbeitsbereich berechnet.<br/><br/>Wenn Sie über Projekte verfügen, die Sie vor der allgemeinen Verfügbarkeit von Azure Migrate (28. Februar 2018) erstellt haben, fallen für Sie möglicherweise zusätzliche Gebühren für die Dienstzuordnung an. Um sicherzustellen, dass Sie wirklich erst nach 180 Tagen bezahlen müssen, wird empfohlen, ein neues Projekt zu erstellen, da vorhandene Arbeitsbereiche, die vor der allgemeinen Verfügbarkeit erstellt wurden, noch immer kostenpflichtig sind.
+**Verwaltung** | Wenn Sie Agents im Arbeitsbereich registrieren, verwenden Sie die ID und den Schlüssel, die vom Projekt bereitgestellt werden.<br/><br/> Sie können den Log Analytics-Arbeitsbereich außerhalb von Azure Migrate verwalten.<br/><br/> Wenn Sie das zugehörige Projekt löschen, wird der Arbeitsbereich nicht automatisch gelöscht. [Löschen Sie ihn manuell](../azure-monitor/platform/manage-access.md).<br/><br/> Löschen den von Azure Migrate erstellten Arbeitsbereich nur, wenn Sie auch das Projekt löschen. Wenn Sie dies tun, funktioniert die Abhängigkeitsvisualisierung nicht wie erwartet.
+**Internetkonnektivität** | Wenn Server nicht mit dem Internet verbunden sind, müssen Sie das Log Analytics-Gateway auf diesen Servern installieren.
 **Azure Government** | Die Agent-basierte Abhängigkeitsanalyse wird nicht unterstützt.
 
 

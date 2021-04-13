@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 09/16/2020
+ms.date: 03/10/2021
 ms.author: b-juche
-ms.openlocfilehash: eab55f881c250c2e07717604d4ba00587a8b6031
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 5b1c1a5216b7a1ad5b23167e776f2b0bbb0a578f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95243204"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104590992"
 ---
 # <a name="manage-disaster-recovery-using-cross-region-replication"></a>Verwalten der Notfallwiederherstellung mithilfe der regionsübergreifenden Replikation 
 
@@ -38,10 +38,10 @@ Zur Aktivierung des Zielvolumes (wenn Sie etwa ein Failover zur Zielregion ausf�
 1. Wählen Sie zur Unterbrechung des Replikationspeerings zunächst das Zielvolume aus. Klicken Sie unter „Speicherdienst“ auf **Replikation**.  
 
 2.  Überprüfen Sie die folgenden Felder, bevor Sie fortfahren:  
-    * Stellen Sie sicher, dass bei „Spiegelungsstatus“ ***Gespiegelt** _ angezeigt wird.   
-        Fahren Sie mit der Unterbrechung des Replikationspeerings nicht fort, wenn bei „Spiegelungsstatus“ _Nicht initialisiert* angezeigt wird.
-    * Stellen Sie sicher, dass bei „Beziehungsstatus“ ***Im Leerlauf** _ angezeigt wird.   
-        Fahren Sie mit der Unterbrechung des Replikationspeerings nicht fort, wenn bei „Beziehungsstatus“ _Übertragung wird ausgeführt* angezeigt wird.   
+    * Stellen Sie sicher, dass bei „Spiegelungsstatus“ ***Gespiegelt*** angezeigt wird.   
+        Fahren Sie mit der Unterbrechung des Replikationspeerings nicht fort, wenn bei „Spiegelungsstatus“ *Nicht initialisiert* angezeigt wird.
+    * Stellen Sie sicher, dass bei „Beziehungsstatus“ ***Im Leerlauf*** angezeigt wird.   
+        Fahren Sie mit der Unterbrechung des Replikationspeerings nicht fort, wenn bei „Beziehungsstatus“ *Übertragung wird ausgeführt* angezeigt wird.   
 
     Weitere Informationen finden Sie unter [Anzeigen des Integritätsstatus der Replikationsbeziehung](cross-region-replication-display-health-status.md). 
 
@@ -80,10 +80,10 @@ Nach Abschluss des Neusynchronisierungsvorgangs vom Ziel zur Quelle müssen Sie 
 1. Unterbrechen Sie das Replikationspeering:  
     a. Wählen Sie das Volume *Ziel* aus. Klicken Sie unter „Speicherdienst“ auf **Replikation**.  
     b. Überprüfen Sie die folgenden Felder, bevor Sie fortfahren:   
-    * Stellen Sie sicher, dass bei „Spiegelungsstatus“ ***Gespiegelt** _ angezeigt wird.   
-    Do not attempt to break replication peering if Mirror State shows _uninitialized*.  
-    * Stellen Sie sicher, dass bei „Beziehungsstatus“ ***Im Leerlauf** _ angezeigt wird.   
-    Fahren Sie mit der Unterbrechung des Replikationspeerings nicht fort, wenn bei „Beziehungsstatus“ _Übertragung wird ausgeführt* angezeigt wird.    
+    * Stellen Sie sicher, dass bei „Spiegelungsstatus“ ***Gespiegelt*** angezeigt wird.   
+    Fahren Sie mit der Unterbrechung des Replikationspeerings nicht fort, wenn bei „Spiegelungsstatus“ *Nicht initialisiert* angezeigt wird.  
+    * Stellen Sie sicher, dass bei „Beziehungsstatus“ ***Im Leerlauf*** angezeigt wird.   
+    Fahren Sie mit der Unterbrechung des Replikationspeerings nicht fort, wenn bei „Beziehungsstatus“ *Übertragung wird ausgeführt* angezeigt wird.    
 
         Weitere Informationen finden Sie unter [Anzeigen des Integritätsstatus der Replikationsbeziehung](cross-region-replication-display-health-status.md). 
 
@@ -102,6 +102,7 @@ Nach Abschluss des Neusynchronisierungsvorgangs vom Ziel zur Quelle müssen Sie 
 * [Regionsübergreifende Replikation](cross-region-replication-introduction.md)
 * [Regionsübergreifende Replikation: Anforderungen und Überlegungen](cross-region-replication-requirements-considerations.md)
 * [Anzeigen des Integritätsstatus der Replikationsbeziehung](cross-region-replication-display-health-status.md)
+* [Ändern der Größe eines regionsübergreifenden Replikationszielvolumes](azure-netapp-files-resize-capacity-pools-or-volumes.md#resize-a-cross-region-replication-destination-volume)
 * [Metriken für die Volumereplikation](azure-netapp-files-metrics.md#replication)
 * [Löschen von Volumereplikationen oder Volumes](cross-region-replication-delete.md)
 * [Problembehandlung für die regionsübergreifende Replikation](troubleshoot-cross-region-replication.md)

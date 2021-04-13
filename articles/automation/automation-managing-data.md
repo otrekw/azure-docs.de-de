@@ -3,14 +3,14 @@ title: Datensicherheit in Azure Automation
 description: In diesem Artikel erfahren Sie, wie Azure Automation Ihre Privatsphäre schützt und Ihre Daten sichert.
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 03/02/2021
+ms.date: 03/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: 2bdf25ef24f1fbf4aaf4dec154ea6af3421b915a
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: c3d1dfc5d6ea16a128f5f3bc1129f5f50bc9cb61
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102050816"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104954672"
 ---
 # <a name="management-of-azure-automation-data"></a>Verwaltung von Azure Automation-Daten
 
@@ -22,11 +22,11 @@ Um die Sicherheit von Daten bei der Übertragung an Azure Automation zu gewährl
 
 * Webhookaufrufe
 
-* Hybrid Runbook Worker, einschließlich Computern, die über die Updateverwaltung sowie „Änderungsnachverfolgung und Bestand“ verwaltet werden.
+* Hybrid Runbook Workers, einschließlich Computern, die über die Updateverwaltung sowie „Änderungsnachverfolgung und Bestand“ verwaltet werden.
 
 * DSC-Knoten
 
-Bei älteren Versionen von TLS/Secure Sockets Layer (SSL) wurde ein Sicherheitsrisiko festgestellt. Sie funktionieren aus Gründen der Abwärtskompatibilität zwar noch, werden jedoch **nicht empfohlen**. Es wird nicht empfohlen, Ihren Agent explizit so einzurichten, dass nur TLS 1.2 verwendet wird, es sei denn, dies ist unbedingt erforderlich. Denn dadurch können Sicherheitsfeatures auf Plattformebene deaktiviert werden, mit deren Hilfe neuere, sicherere Protokolle wie TLS 1.3 automatisch erkannt und genutzt werden können, sobald diese verfügbar sind.
+Bei älteren Versionen von TLS/Secure Sockets Layer (SSL) wurde ein Sicherheitsrisiko festgestellt. Sie funktionieren aus Gründen der Abwärtskompatibilität zwar noch, werden jedoch **nicht empfohlen**. Es wird nicht empfohlen, Ihren Agent explizit so einzurichten, dass nur TLS 1.2 verwendet wird, es sei denn, dies ist erforderlich. Denn dadurch können Sicherheitsfeatures auf Plattformebene deaktiviert werden, mit deren Hilfe neuere, sicherere Protokolle wie TLS 1.3 automatisch erkannt und genutzt werden können, sobald diese verfügbar sind.
 
 Informationen zur TLS 1.2-Unterstützung mit dem Log Analytics-Agent für Windows und Linux, bei dem es sich um eine Abhängigkeit für die Hybrid Runbook Worker-Rolle handelt, finden Sie unter [Übersicht über den Log Analytics-Agent – TLS 1.2](..//azure-monitor/agents/log-analytics-agent.md#tls-12-protocol).
 
@@ -41,7 +41,7 @@ Informationen zur TLS 1.2-Unterstützung mit dem Log Analytics-Agent für Windo
 
 ## <a name="data-retention"></a>Beibehaltung von Daten
 
-Wenn Sie eine Ressource in Azure Automation löschen, wird diese zu Überwachungszwecken für eine Anzahl von Tagen aufbewahrt, bevor sie endgültig gelöscht wird. In diesem Zeitraum kann die Ressource weder angezeigt noch verwendet werden. Diese Richtlinie gilt auch für Ressourcen, die zu einem gelöschten Automation-Konto gehören. Die Datenaufbewahrungsrichtlinie gilt für alle Benutzer und kann zurzeit nicht angepasst werden. Wenn Sie jedoch Daten für einen längeren Zeitraum aufbewahren müssen, können Sie [Azure Automation-Auftragsdaten an Azure Monitor-Protokolle weiterleiten](automation-manage-send-joblogs-log-analytics.md).
+Wenn Sie eine Ressource in Azure Automation löschen, wird diese zu Überwachungszwecken für viele Tagen aufbewahrt, bevor sie endgültig gelöscht wird. In diesem Zeitraum kann die Ressource weder angezeigt noch verwendet werden. Diese Richtlinie gilt auch für Ressourcen, die zu einem gelöschten Automation-Konto gehören. Die Datenaufbewahrungsrichtlinie gilt für alle Benutzer und kann zurzeit nicht angepasst werden. Wenn Sie jedoch Daten für einen längeren Zeitraum aufbewahren müssen, können Sie [Azure Automation-Auftragsdaten an Azure Monitor-Protokolle weiterleiten](automation-manage-send-joblogs-log-analytics.md).
 
 Die folgende Tabelle zeigt die Aufbewahrungsrichtlinie für unterschiedliche Ressourcen.
 
@@ -56,7 +56,7 @@ Die folgende Tabelle zeigt die Aufbewahrungsrichtlinie für unterschiedliche Res
 | Knotenberichte |Ein Knotenbericht wird 90 Tage nach dem Generieren eines neuen Berichts für diesen Knoten endgültig entfernt. |
 | Runbooks |Ein Runbook wird 30 Tage, nachdem ein Benutzer die Ressource gelöscht hat, oder 30 Tage, nachdem ein Benutzer das Konto gelöscht hat, das die Ressource enthält, endgültig entfernt.<sup>1</sup> |
 
-<sup>1</sup> Das Runbook kann innerhalb des 30-tägigen Zeitfensters wiederhergestellt werden. Hierzu muss ein Azure-Supportfall für den Microsoft Azure-Support erstellt werden. Besuchen Sie die [Azure-Supportwebsite](/support/options), und **erstellen Sie eine Supportanfrage**.
+<sup>1</sup> Das Runbook kann innerhalb des 30-tägigen Zeitfensters wiederhergestellt werden. Hierzu muss ein Azure-Supportfall für den Microsoft Azure-Support erstellt werden. Besuchen Sie die [Azure-Supportwebsite](https://azure.microsoft.com/support/options/), und **erstellen Sie eine Supportanfrage**.
 
 ## <a name="data-backup"></a>Datensicherung
 
@@ -68,7 +68,7 @@ Sie können Ihre Runbooks entweder unter Verwendung des Azure-Portals oder mithi
 
 ### <a name="integration-modules"></a>Integrationsmodule
 
-Integrationsmodule können nicht aus Azure Automation exportiert werden. Sie müssen sie außerhalb des Automation-Kontos verfügbar machen.
+Integrationsmodule können nicht aus Azure Automation exportiert werden, sondern müssen außerhalb des Automation-Kontos zur Verfügung gestellt werden.
 
 ### <a name="assets"></a>Objekte
 
@@ -84,7 +84,10 @@ Sie können Ihre DSC-Konfigurationen unter Verwendung des Azure-Portals oder mit
 
 Georeplikation ist Standard in Azure Automation-Kontos. Bei der Einrichtung Ihres Kontos wählen Sie eine primäre Region aus. Der interne Automation-Georeplikationsdienst weist dem Konto automatisch eine sekundäre Region zu. Der Dienst sichert dann kontinuierlich Kontodaten aus der primären Region in der sekundären Region. Die vollständige Liste der primären und sekundären Regionen finden Sie unter [Business Continuity und Disaster Recovery (BCDR): Azure-Regionspaare](../best-practices-availability-paired-regions.md).
 
-Die vom Automation-Georeplikationsdienst erstellte Sicherung ist eine vollständige Kopie der Automation-Objekte, -Konfigurationen usw. Diese Sicherung kann verwendet werden, wenn die primäre Region ausfällt und Daten verloren gehen. Microsoft versucht im unwahrscheinlichen Fall, dass Daten in einer primären Region verloren gehen, diese wiederherzustellen. Wenn das Unternehmen die primären Daten nicht wiederherstellen kann, verwendet es automatisches Failover und informiert Sie über die Situation über Ihr Azure-Abonnement.
+Die vom Automation-Georeplikationsdienst erstellte Sicherung ist eine vollständige Kopie der Automation-Objekte, -Konfigurationen usw. Diese Sicherung kann verwendet werden, wenn die primäre Region ausfällt und Daten verloren gehen. Microsoft versucht im unwahrscheinlichen Fall, dass Daten in einer primären Region verloren gehen, diese wiederherzustellen.
+
+> [!NOTE]
+> Azure Automation speichert Kundendaten in der vom Kunden ausgewählten Region. Für BCDR werden für alle Regionen außer „Brasilien, Süden“ und „Asien, Südosten“ die Azure Automation-Daten in einer anderen Region (Azure-Regionspaar) gespeichert. Nur für die Region „Brasilien, Süden“ (Sao Paulo) im Großraum „Brasilien“ und die Region „Asien, Südosten“ (Singapur) im Großraum „Asien-Pazifik“ werden Azure Automation-Daten in derselben Region gespeichert, um die Anforderungen an die Datenresidenz für diese Regionen zu erfüllen.
 
 Externe Kunden können nicht direkt auf den Automation-Georeplikationsdienst zugreifen, wenn es zu einem regionalen Ausfall kommt. Wenn Sie Automation-Konfigurationen und -Runbooks während regionaler Ausfälle beibehalten möchten:
 

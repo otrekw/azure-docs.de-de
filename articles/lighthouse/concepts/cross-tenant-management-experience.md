@@ -1,14 +1,14 @@
 ---
 title: Mandantenübergreifende Verwaltungsmöglichkeiten
 description: Die delegierte Azure-Ressourcenverwaltung ermöglicht eine mandantenübergreifende Verwaltungserfahrung.
-ms.date: 02/08/2021
+ms.date: 03/23/2021
 ms.topic: conceptual
-ms.openlocfilehash: 644cac70ef6459a1b0be45e9ab8f2757fafddeed
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ba3cee2ecd7efcbb33c19d7ed159083e843c84a8
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101699248"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952115"
 ---
 # <a name="cross-tenant-management-experiences"></a>Mandantenübergreifende Verwaltungsmöglichkeiten
 
@@ -33,7 +33,7 @@ Azure Lighthouse ermöglicht größere Flexibilität bei der Verwaltung von Ress
 
 Sie können Verwaltungsaufgaben für delegierte Ressourcen direkt im Portal oder mithilfe von APIs und Verwaltungstools (z. B. Azure-Befehlszeilenschnittstelle und Azure PowerShell) durchführen. Alle vorhandenen APIs können für die Arbeit mit delegierten Ressourcen verwendet werden, solange die Funktionalität für mandantenübergreifende Verwaltung unterstützt wird und der Benutzer über die entsprechenden Berechtigungen verfügt.
 
-Das Azure PowerShell-Cmdlet [Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription) zeigt die Attribute `HomeTenantId` und `ManagedByTenantIds` für jedes Abonnement, sodass Sie ermitteln können, ob ein zurückgegebenes Abonnement zu einem verwalteten Mandanten oder Ihrem verwaltenden Mandanten gehört.
+Das Azure PowerShell-[Cmdlet „Get-AzSubscription“](/powershell/module/Az.Accounts/Get-AzSubscription) zeigt standardmäßig die `TenantId` für den verwaltenden Mandanten an. Sie können die Attribute `HomeTenantId` und `ManagedByTenantIds` für jedes Abonnement verwenden. Dadurch können Sie ermitteln, ob ein zurückgegebenes Abonnement zu einem verwalteten Mandanten oder Ihrem verwaltenden Mandanten gehört.
 
 Ebenso zeigen Azure CLI-Befehle wie [az account list](/cli/azure/account#az-account-list) die Attribute `homeTenantId` und `managedByTenants` an. Wenn diese Werte bei Verwendung der Azure-Befehlszeilenschnittstelle nicht angezeigt werden, löschen Sie den Cache, indem Sie `az account clear` gefolgt von `az login --identity` ausführen.
 
@@ -67,6 +67,7 @@ Die meisten Aufgaben und Dienste können auf delegierten Ressourcen über verwal
 [Azure Backup](../../backup/index.yml):
 
 - Sichern und Wiederherstellen von Kundendaten [aus lokalen Workloads, Azure VMs, Azure-Dateifreigaben und mehr](../..//backup/backup-overview.md#what-can-i-back-up)
+- Anzeigen von Daten für alle delegierten Kundenressourcen in [Backup Center](../../backup/backup-center-overview.md)
 - Verwenden des [Backup-Explorers](../../backup/monitor-azure-backup-with-backup-explorer.md) zum Anzeigen von Betriebsinformationen zu Sicherungselementen (einschließlich noch nicht für die Sicherung konfigurierten Azure-Ressourcen) und Überwachungsinformationen (Aufträge und Warnungen) zu delegierten Abonnements. Der Backup-Explorer ist zurzeit nur für Azure-VM-Daten verfügbar.
 - Verwenden Sie übergreifende [Sicherungsberichte](../../backup/configure-reports.md) für delegierte Abonnements, um historische Trends nachzuverfolgen, den Sicherungsspeicherverbrauch zu analysieren und Sicherungen/Wiederherstellungen zu überwachen.
 
@@ -113,9 +114,11 @@ Die meisten Aufgaben und Dienste können auf delegierten Ressourcen über verwal
 [Azure Policy](../../governance/policy/index.yml):
 
 - Erstellen und Bearbeiten von Richtliniendefinitionen innerhalb delegierter Abonnements
+- Bereitstellen von Richtliniendefinitionen und -zuweisungen für mehrere Mandanten
 - Zuweisen der von Kunden definierten Richtliniendefinitionen innerhalb delegierter Abonnements
 - Kunden werden Richtlinien, die vom Dienstanbieter erstellt wurden, zusammen mit allen Richtlinien angezeigt, die sie selbst erstellt haben.
 - [Beheben von „deployIfNotExists“ oder Ändern von Zuweisungen innerhalb des verwalteten Mandanten](../how-to/deploy-policy-remediation.md)
+- Beachten Sie, dass das Anzeigen von Konformitätsdetails für nicht konforme Ressourcen in Kundenmandanten aktuell nicht unterstützt wird.
 
 [Azure Resource Graph](../../governance/resource-graph/index.yml):
 

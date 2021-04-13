@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/02/2021
+ms.date: 03/26/2021
 ms.custom: references_regions
-ms.openlocfilehash: be72cae8d109bfeccd60e8c821625f75357568e3
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 52ac3ee4ea2f71e285d21c7b6d082e84fa090da1
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103232357"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105625907"
 ---
 # <a name="add-spell-check-to-queries-in-cognitive-search"></a>Hinzufügen der Rechtschreibprüfung zu Abfragen in Azure Cognitive Search
 
@@ -25,7 +25,7 @@ Sie können die Trefferquote (Recall) verbessern, indem Sie die Rechtschreibung 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-+ Ein vorhandener Suchindex mit englischem Inhalt
++ Ein bestehender Suchindex, der englischen Inhalt enthält. Derzeit funktioniert die Rechtschreibkorrektur nicht mit [Synonymen](search-synonyms.md). Vermeiden Sie deren Verwendung in Indizes mit Synonymzuordnungen in beliebigen Felddefinitionen.
 
 + Ein Suchclient zum Senden von Abfragen
 

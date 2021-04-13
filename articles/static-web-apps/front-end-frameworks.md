@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 07/18/2020
 ms.author: cshoe
-ms.openlocfilehash: 14564b0591ef0146131b3f9324556b613e25daac
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9f02c9ad10e2b03bddc7c3ca2cfb54932464b69a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97901231"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105731750"
 ---
 # <a name="configure-front-end-frameworks-and-libraries-with-azure-static-web-apps-preview"></a>Konfigurieren von Front-End-Frameworks und Bibliotheken mit Azure Static Web Apps (Vorschauversion)
 
@@ -52,6 +52,7 @@ Die Absicht der Tabellenspalten wird durch die folgenden Punkte erläutert:
 | [Polymer](https://www.polymer-project.org/) | `build/default` | – |
 | [Preact](https://preactjs.com/) | `build` | – |
 | [React](https://reactjs.org/) | `build` | – |
+| [RedwoodJS](https://redwoodjs.com/) | `web/dist` | `yarn rw build` |
 | [Stencil](https://stenciljs.com/) | `www` | – |
 | [Svelte](https://svelte.dev/) | `public` | – |
 | [Three.js](https://threejs.org/) | `/` | – |

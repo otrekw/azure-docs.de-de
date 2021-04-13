@@ -7,17 +7,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/14/2020
+ms.date: 03/04/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: ad9bd8dec94660d94cf3a106d31dafdad06f47a8
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 3a3cdb93ee4cbf4a2e15540b9daf78b6c231d393
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97584509"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579738"
 ---
 # <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>Konfigurieren des Sitzungsverhaltens in Azure Active Directory B2C
 
@@ -71,9 +71,9 @@ Die Anwendungssitzung kann eine cookiebasierte Sitzung sein, die unter dem Domä
 
 Sie können das Verhalten der Azure AD B2C-Sitzung konfigurieren, einschließlich:
 
-- **Lebensdauer der Web-App-Sitzung (Minuten):** die Zeitspanne, in der das Azure AD B2C-Sitzungscookie nach erfolgreicher Authentifizierung im Browser des Benutzers gespeichert wird. Für die Gültigkeitsdauer der Sitzung können Sie einen Wert zwischen 15 und 720 Minuten festlegen.
+- **Lebensdauer der Web-App-Sitzung (Minuten):** die Zeitspanne, in der das Azure AD B2C-Sitzungscookie nach erfolgreicher Authentifizierung im Browser des Benutzers gespeichert wird. Die Sitzungslebensdauer kann auf bis zu 24 Stunden festgelegt werden.
 
-- **Timeout für Web-App-Sitzung:** gibt an, wie eine Sitzung durch die Einstellung der Lebensdauer der Sitzung oder die Festlegung der Funktion „Angemeldet bleiben“ verlängert wird.
+- **Timeout für Web-App-Sitzung**: Gibt an, wie eine Sitzung durch die Einstellung der Sitzungslebensdauer oder durch die Einstellung „Angemeldet bleiben“ (Keep Me Signed In, KMSI) verlängert wird.
   - **Rollierend**: Gibt an, dass die Sitzung jedes Mal verlängert wird, wenn der Benutzer eine cookiebasierte Authentifizierung ausführt (Standardeinstellung).
   - **Absolut**: Gibt an, dass sich der Benutzer nach dem angegebenen Zeitraum erneut authentifizieren muss.
 
@@ -81,10 +81,8 @@ Sie können das Verhalten der Azure AD B2C-Sitzung konfigurieren, einschließli
   - **Mandant**: Dies ist die Standardeinstellung. Mit dieser Einstellung können mehrere Anwendungen und Benutzerflows in Ihrem B2C-Mandanten die gleiche Benutzersitzung gemeinsam nutzen. Beispiel: Sobald sich ein Benutzer bei einer Anwendung angemeldet hat, kann er sich auch beim Zugriff auf eine andere Anwendung nahtlos anmelden.
   - **Anwendung**: Mit dieser Einstellung können Sie eine Benutzersitzung ausschließlich für eine Anwendung beibehalten, unabhängig von anderen Anwendungen. Beispiel: Diese Einstellung können Sie verwenden, wenn sich der Benutzer bei Contoso Pharmacy anmelden soll, auch wenn er sich bereits bei Contoso Groceries angemeldet hat.
   - **Richtlinie**: Mit dieser Einstellung können Sie eine Benutzersitzung ausschließlich für einen Benutzerflow beibehalten, unabhängig von den Anwendungen, die diesen verwenden. Beispiel: Wenn sich der Benutzer bereits angemeldet und einen Multi-Factor Authentication-Schritt (MFA) abgeschlossen hat, kann er Zugriff auf Bestandteile mit höherer Sicherheitsstufe von mehreren Anwendungen erhalten, solange die an den Benutzerflow gebundene Sitzung nicht abläuft.
-  - **Deaktiviert**: Diese Einstellung zwingt den Benutzer, bei jeder Ausführung der Richtlinie den gesamten Benutzerflow zu durchlaufen.
-::: zone pivot="b2c-custom-policy"
-- **Angemeldet bleiben:** verlängert die Lebensdauer der Sitzung durch die Verwendung eines permanenten Cookies. Die Sitzung bleibt auch nach Schließen und erneutem Öffnen des Browsers aktiv. Die Sitzung wird nur widerrufen, wenn sich der Benutzer abmeldet. Die Funktion „Angemeldet bleiben“ gilt nur für die Anmeldung mit lokalen Konten. Die Funktion „Angemeldet bleiben“ hat Vorrang vor der Gültigkeitsdauer der Sitzung. Wenn die Funktion „Angemeldet bleiben“ aktiviert ist und der Benutzer sie auswählt, gibt diese Funktion vor, wann die Sitzung abläuft. 
-::: zone-end
+  - **Unterdrückt**: Diese Einstellung zwingt den Benutzer, bei jeder Ausführung der Richtlinie den gesamten Benutzerflow zu durchlaufen.
+- **Angemeldet bleiben**: Verlängert die Sitzungslebensdauer durch die Verwendung eines beständigen Cookies. Wenn dieses Feature aktiviert ist und der Benutzer es auswählt, bleibt die Sitzung aktiv, auch wenn der Benutzer den Browser schließt und wieder öffnet. Die Sitzung wird erst widerrufen, wenn sich der Benutzer abmeldet. Das Feature „Angemeldet bleiben“ gilt nur für Anmeldungen mit lokalen Konten. Das Feature „Angemeldet bleiben“ hat Vorrang vor der Sitzungslebensdauer.
 
 ::: zone pivot="b2c-user-flow"
 
@@ -112,12 +110,43 @@ Zum Ändern Ihres Sitzungsverhaltens und der SSO-Konfigurationen ist es erforder
    <SessionExpiryInSeconds>86400</SessionExpiryInSeconds>
 </UserJourneyBehaviors>
 ```
+::: zone-end
 
 ## <a name="enable-keep-me-signed-in-kmsi"></a>Aktivieren von „Angemeldet bleiben“
 
-Sie können die Funktion „Angemeldet bleiben“ (Keep Me Signed In, KMSI) für Benutzer Ihrer webbasierten und nativen Anwendungen aktivieren, die über lokale Konten in Ihrem Azure AD B2C-Verzeichnis (Azure Active Directory B2C) verfügen. Dieses Feature gewährt wiederkehrenden Benutzern Zugriff auf Ihre Anwendung, ohne dass sie zur erneuten Eingabe von Benutzername und Kennwort aufgefordert werden. Dieser Zugriff wird widerrufen, wenn sich der Benutzer abmeldet.
+Sie können das Feature „Angemeldet bleiben“ für Benutzer Ihrer webbasierten und nativen Anwendungen aktivieren, die über lokale Konten in Ihrem Azure AD B2C-Verzeichnis verfügen. Wenn Sie das Feature aktivieren, haben Benutzer die Möglichkeit, angemeldet zu bleiben, was dazu führt, dass die Sitzung auch nach dem Schließen des Browsers aktiv bleibt. Dadurch werden die Benutzer nach dem erneuten Öffnen des Browsers nicht erneut zur Eingabe ihres Benutzernamens und Kennworts aufgefordert. Dieser Zugriff wird widerrufen, wenn sich der Benutzer abmeldet.
 
 ![Beispiel für eine Seite zur Registrierung/Anmeldung mit dem Kontrollkästchen „Angemeldet bleiben“](./media/session-behavior/keep-me-signed-in.png)
+
+
+::: zone pivot="b2c-user-flow"
+
+„Angemeldet bleiben“ kann auf der Ebene individueller Benutzerflows konfiguriert werden. Beachten Sie Folgendes, bevor Sie „Angemeldet bleiben“ für Ihre Benutzerflows aktivieren:
+
+- „Angemeldet bleiben“ wird nur für die **empfohlenen** Versionen der Benutzerflows für Registrierung und Anmeldung (Sign-Up/Sign-In, SUSI), Anmeldung und Profilbearbeitung unterstützt. Wenn Sie aktuell Versionen vom Typ **Standard** oder **Legacyvorschau v2** dieser Benutzerflows verwenden und „Angemeldet bleiben“ aktivieren möchten, müssen Sie neue, **empfohlene** Versionen dieser Benutzerflows erstellen.
+- „Angemeldet bleiben“ wird bei Benutzerflows für Kennwortzurücksetzung oder Registrierung nicht unterstützt.
+- Wenn Sie „Angemeldet bleiben“ für alle Anwendungen in Ihrem Mandanten aktivieren möchten, empfiehlt es sich, „Angemeldet bleiben“ für alle Benutzerflows in Ihrem Mandanten zu aktivieren. Da einem Benutzer im Zuge einer Sitzung mehrere Richtlinien begegnen können, kann es vorkommen, dass ein Benutzer auf eine Richtlinie trifft, für die „Angemeldet bleiben“ nicht aktiviert ist, was dazu führen würde, dass das Cookie für „Angemeldet bleiben“ aus der Sitzung entfernt wird.
+- Auf öffentlichen Computern sollte „Angemeldet bleiben“ nicht aktiviert werden.
+
+### <a name="configure-kmsi-for-a-user-flow"></a>Konfigurieren von „Angemeldet bleiben“ für einen Benutzerflow
+
+So aktivieren Sie „Angemeldet bleiben“ für Ihren Benutzerflow:
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+2. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie im Hauptmenü den **Verzeichnis- und Abonnementfilter** und anschließend das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
+3. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C**, und wählen Sie diese Option aus.
+4. Wählen Sie **Benutzerflows (Richtlinien)** aus.
+5. Öffnen Sie den Benutzerflow, den Sie zuvor erstellt haben.
+6. Wählen Sie **Eigenschaften** aus.
+
+7. Wählen Sie unter  **Sitzungsverhalten** die Option **"Angemeldet bleiben" in Sitzung aktivieren** aus. Geben Sie als Nächstes neben **Bei Sitzung angemeldet bleiben (Tage)** einen Wert zwischen 1 und 90 ein, um die Anzahl von Tagen anzugeben, für die eine Sitzung geöffnet bleiben kann.
+
+
+   ![Aktivieren von „Angemeldet bleiben“ für eine Sitzung](media/session-behavior/enable-keep-me-signed-in.png)
+
+::: zone-end
+
+::: zone pivot="b2c-custom-policy"
 
 Benutzer sollten diese Option nicht auf öffentlichen Computern aktivieren.
 
@@ -165,7 +194,7 @@ Um das Kontrollkästchen KMSI zur Registrierungs-und Anmeldeseite hinzuzufügen,
 
 ### <a name="configure-a-relying-party-file"></a>Konfigurieren einer Datei der vertrauenden Seite
 
-Aktualisieren Sie als Nächstes die Datei der vertrauenden Seite, mit der die erstellte User Journey initiiert wird.
+Aktualisieren Sie als Nächstes die Datei der vertrauenden Seite, mit der die erstellte User Journey initiiert wird. Mithilfe des Parameters „keepAliveInDays“ können Sie konfigurieren, wie lange das Sitzungscookie für „Angemeldet bleiben“ erhalten bleiben soll. Wenn Sie den Wert beispielsweise auf 30 festlegen, bleibt das Sitzungscookie für „Angemeldet bleiben“ 30 Tage lang erhalten. Der zulässige Bereich für diesen Wert liegt zwischen 1 und 90 Tagen.
 
 1. Öffnen Sie Ihre benutzerdefinierte Richtliniendatei. Beispiel: *SignUpOrSignin.xml*.
 1. Fügen Sie dem Knoten `<RelyingParty>` einen untergeordneten Knoten `<UserJourneyBehaviors>` hinzu, falls dieser noch nicht vorhanden ist. Er muss direkt nach `<DefaultUserJourney ReferenceId="User journey Id" />` angeordnet werden. Beispiel: `<DefaultUserJourney ReferenceId="SignUpOrSignIn" />`.
@@ -220,9 +249,9 @@ Auf die Abmeldeanforderung reagiert Azure AD B2C wie folgt:
 ::: zone-end
 ::: zone pivot="b2c-custom-policy"
 3. Azure AD B2C versucht, den Benutzer vom Verbundidentitätsanbieter abzumelden:
-   - OpenId Connect, wenn der bekannte Konfigurationsendpunkt des Identitätsanbieters eine `end_session_endpoint`-Adresse angibt.
+   - OpenId Connect, wenn der bekannte Konfigurationsendpunkt des Identitätsanbieters eine `end_session_endpoint`-Adresse angibt. Die Abmeldeanforderung übergibt den `id_token_hint`-Parameter nicht. Wenn der Verbundidentitätsanbieter diesen Parameter erfordert, tritt bei der Abmeldeanforderung ein Fehler auf.
    - OAuth2, wenn die [Metadaten des Identitätsanbieters](oauth2-technical-profile.md#metadata) die `end_session_endpoint`-Adresse enthalten.
-   - SAML, wenn die [Metadaten des Identitätsanbieters](saml-identity-provider-technical-profile.md#metadata) die `SingleLogoutService`-Adresse enthalten.
+   - SAML, wenn die [Metadaten des Identitätsanbieters](identity-provider-generic-saml.md) die `SingleLogoutService`-Adresse enthalten.
 4. Optional nimmt Azure AD B2C die Abmeldung bei anderen Anwendungen vor. Weitere Informationen finden Sie im Abschnitt [Einmaliges Abmelden](#single-sign-out).
 
 > [!NOTE]

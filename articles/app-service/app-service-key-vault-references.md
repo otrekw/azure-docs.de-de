@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 02/05/2021
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 69fc0d6f3c4e18b34555a099f4e28e278ca3bdad
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e0bba85cc99e1751f39172ac320fe721d6f02e87
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "100635386"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106076784"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>Verwenden von Key Vault-Verweisen für App Service und Azure Functions
 
@@ -30,8 +30,19 @@ Um Geheimnisse aus Key Vault auslesen zu können, müssen Sie einen Tresor erste
 
 1. Erstellen Sie eine [Zugriffsrichtlinie im Schlüsseltresor](../key-vault/general/secure-your-key-vault.md#key-vault-access-policies) für die zuvor von Ihnen erstellte Anwendungsidentität. Aktivieren Sie die „Get“-Geheimnisberechtigung für diese Richtlinie. Konfigurieren Sie nicht die Einstellungen „Autorisierte Anwendung“ oder `applicationId`, da dies mit einer verwalteten Identität nicht kompatibel ist.
 
-   > [!IMPORTANT]
-   > Key Vault-Verweise können derzeit keine Geheimnisse in einem Schlüsseltresor mit [Netzwerkeinschränkungen](../key-vault/general/overview-vnet-service-endpoints.md) auflösen, es sei denn, die App wird in einer [App Service-Umgebung](./environment/intro.md) gehostet.
+### <a name="access-network-restricted-vaults"></a>Zugriff auf Werte mit Netzwerkeinschränkungen
+
+> [!NOTE]
+> Linux-basierte Anwendungen können derzeit keine Geheimnisse aus einem Schlüsseltresor mit Netzwerkeinschränkungen auflösen, es sei denn, die App wird in einer [App Service-Umgebung](./environment/intro.md) gehostet.
+
+Wenn Ihr Tresor mit [Netzwerkeinschränkungen](../key-vault/general/overview-vnet-service-endpoints.md) konfiguriert ist, müssen Sie auch sicherstellen, dass die Anwendung über Netzwerkzugriff verfügt.
+
+1. Stellen Sie sicher, dass für die Anwendung ausgehende Netzwerkfunktionen konfiguriert sind, wie in [App Service-Netzwerkfunktionen](./networking-features.md) und [Azure Functions-Netzwerkoptionen](../azure-functions/functions-networking-options.md) beschrieben.
+
+2. Stellen Sie sicher, dass die Konfiguration des Tresors das Netzwerk oder Subnetz berücksichtigt, über das Ihre App darauf zugreifen wird.
+
+> [!IMPORTANT]
+> Der Zugriff auf einen Tresor über die Integration von virtuellen Netzwerken ist zurzeit nicht mit [automatischen Updates für Geheimnisse ohne eine angegebene Version](#rotation) kompatibel.
 
 ## <a name="reference-syntax"></a>Verweissyntax
 
@@ -56,6 +67,9 @@ Alternativ:
 ```
 
 ## <a name="rotation"></a>Drehung
+
+> [!IMPORTANT]
+> [Der Zugriff auf einen Tresor über die Integration von virtuellen Netzwerken](#access-network-restricted-vaults) ist zurzeit nicht mit automatischen Updates für Geheimnisse ohne eine angegebene Version kompatibel.
 
 Wenn in der Referenz keine Version angegeben ist, verwendet die App die neueste in Key Vault vorhandene Version. Sobald neuere Versionen verfügbar werden, z. B. bei einem Rotationsereignis, wird die App automatisch aktualisiert und beginnt innerhalb eines Tages mit der Nutzung der neuesten Version. Jede Konfigurationsänderung in der App führt zu einer sofortigen Aktualisierung auf die neuesten Versionen aller referenzierten Geheimnisse.
 

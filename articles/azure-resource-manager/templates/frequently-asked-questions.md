@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 03/03/2021
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 24baa0dc7444f632040ddaf9fcc2266f9e4ccae5
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: e64253aa79cfaeb2655bb091d038dc7c98b198bd
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102036139"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103419404"
 ---
 # <a name="frequently-asked-questions-about-arm-templates"></a>Häufig gestellte Fragen zu Resource Manager-Vorlagen
 
@@ -100,7 +100,7 @@ In diesem Artikel finden Sie Antworten auf häufig gestellte Fragen zu Azure Res
 
 * **Werden Sie ein Tool anbieten, um JSON-Vorlagen in die neue Vorlagensprache zu konvertieren?**
 
-  Ja. Siehe [Dekompilieren von JSON in Bicep](compare-template-syntax.md#decompile-json-to-bicep).
+  Ja. Weitere Informationen finden Sie unter [Konvertieren von ARM-Vorlagen zwischen JSON und Bicep](bicep-decompile.md).
 
 ## <a name="template-specs"></a>Vorlagenspezifikationen
 

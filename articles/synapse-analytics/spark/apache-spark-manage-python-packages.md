@@ -5,16 +5,16 @@ services: synapse-analytics
 author: midesa
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.date: 03/01/2020
+ms.date: 02/26/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 296bd3a4a75cdd7f5dab3b6eb5fdcb00a889703d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2d6ac02402414f096a46fec0340c3074d8e1784a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101695870"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104586640"
 ---
 # <a name="manage-python-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Verwalten von Python-Bibliotheken für Apache Spark in Azure Synapse Analytics
 
@@ -42,7 +42,7 @@ Es gibt zwei Hauptmethoden zum Installieren einer Bibliothek auf einem Cluster:
 > [!IMPORTANT]
 > - Wenn das Paket, das Sie installieren, groß ist oder seine Installation lange dauert, wirkt sich dies auf die Startzeit der Spark-Instanz aus.
 > - Das Ändern der Version von PySpark, Python, Scala/Java, .NET oder Spark wird nicht unterstützt.
-> - Das Installieren von Paketen aus PypI wird in DEP-fähigen Arbeitsbereichen nicht unterstützt.
+> - Das Installieren von Paketen aus externen Repositorys wie PyPI, Conda-Forge oder den standardmäßigen Conda-Kanälen wird in DEP-fähigen Arbeitsbereichen nicht unterstützt.
 
 ### <a name="install-python-packages"></a>Installieren von Python-Paketen
 Python-Pakete können aus Repositorys wie PyPI und Conda-Forge durch Bereitstellen einer Umgebungsspezifikationsdatei installiert werden. 
@@ -68,13 +68,13 @@ In diesem Beispiel werden die Kanäle und die Conda-/PyPI-Abhängigkeiten angege
 ```
 name: stats2
 channels:
-  - defaults
+- defaults
 dependencies:
-  - bokeh=0.9.2
-  - numpy=1.9.*
-  - flask
-  - pip:
-    - matplotlib
+- bokeh
+- numpy
+- pip:
+  - matplotlib
+  - koalas==1.7.0
 ```
 Ausführliche Informationen zum Erstellen einer Umgebung aus dieser Datei „environment.yml“ finden Sie unter [Erstellen einer Umgebung aus einer Datei „environment.yml“](https://docs.conda.io/projects/conda/latest/user-guide/tasks/manage-environments.html#creating-an-environment-file-manually).
 
@@ -140,8 +140,10 @@ So fügen Sie Arbeitsbereichspakete hinzu
 
 ![Screenshot mit Arbeitsbereichspaketen.](./media/apache-spark-azure-portal-add-libraries/studio-add-workspace-package.png "Anzeigen von Arbeitsbereichspaketen")
 
-> [!IMPORTANT]
-> Das Installieren von Arbeitsbereichspaketen wird innerhalb von DEP-Arbeitsbereichen (Data Exfiltration Protection) derzeit noch nicht unterstützt.
+>[!WARNING]
+>- Innerhalb von Azure Synapse kann ein Apache Spark-Pool benutzerdefinierte Bibliotheken nutzen, die entweder als Workspace-Pakete oder innerhalb eines bekannten Azure Data Lake Storage-Pfads hochgeladen werden. Allerdings können diese beiden Optionen nicht gleichzeitig innerhalb desselben Apache Spark-Pools verwendet werden. Bei Bereitstellung von Paketen mit beiden Methoden werden nur die in der Liste der Arbeitsbereichspakete angegebenen Wheel-Dateien installiert. 
+>
+>- Sobald Arbeitsbereichspakete (Vorschau) verwendet werden, um Pakete in einem bestimmten Apache Spark-Pool zu installieren, gibt es die Einschränkung, dass Sie keine Pakete mehr mit dem Pfad des Speicherkontos in demselben Pool angeben können.  
 
 ### <a name="storage-account"></a>Speicherkonto
 Benutzerdefiniert erstellte Wheel-Pakete können im Apache Spark-Pool installiert werden, indem alle Wheel-Dateien in Azure Data Lake Storage (Gen2)-Konto hochgeladen werden, das mit dem Synapse-Arbeitsbereich verknüpft ist. 
@@ -152,16 +154,15 @@ Die Dateien sollten in den folgenden Pfad im Standardcontainer des Speicherkonto
 abfss://<file_system>@<account_name>.dfs.core.windows.net/synapse/workspaces/<workspace_name>/sparkpools/<pool_name>/libraries/python/
 ```
 
-Sie müssen möglicherweise den Ordner ```python``` innerhalb des Ordners ```libraries``` hinzufügen, wenn er nicht bereits vorhanden ist.
+>[!WARNING]
+> In manchen Fällen müssen Sie den Dateipfad anhand der obigen Struktur erstellen, wenn er nicht bereits vorhanden ist. Als Beispiel müssen Sie möglicherweise den Ordner ```python``` innerhalb des Ordners ```libraries``` hinzufügen, wenn er nicht bereits vorhanden ist.
 
 > [!IMPORTANT]
 > Um benutzerdefinierte Bibliotheken über die Azure Data Lake Storage-Methode zu installieren, müssen Sie über die Berechtigung **Mitwirkender an Storage-Blobdaten** oder **Besitzer von Speicherblobdaten** für das primäre Gen2-Speicherkonto verfügen, das mit dem Azure Synapse Analytics-Arbeitsbereich verknüpft ist.
 
->[!WARNING]
-> Beim Bereitstellen benutzerdefinierter Wheel-Dateien können Benutzer die Wheel-Dateien nicht sowohl im Speicherkonto als auch in der Schnittstelle für Arbeitsbereichsbibliotheken bereitstellen. Bei Bereitstellung an beiden Stellen werden nur die in der Liste der Arbeitsbereichspakete angegebenen Wheel-Dateien installiert. 
 
-## <a name="session-scoped-libraries-preview"></a>Sitzungsbezogene Bibliotheken (Vorschau)
-Zusätzlich zu den Bibliotheken auf Poolebene können Sie zu Beginn einer Notebook-Sitzung auch sitzungsbezogene Bibliotheken angeben.  Mithilfe sitzungsbezogener Bibliotheken können Sie benutzerdefinierte Python-Umgebungen innerhalb einer Notebook-Sitzung angeben und verwenden. 
+## <a name="session-scoped-packages-preview"></a>Sitzungsbezogene Pakete (Vorschau)
+Zusätzlich zu den Paketen auf Poolebene können Sie zu Beginn einer Notebook-Sitzung auch sitzungsbezogene Bibliotheken angeben.  Mithilfe sitzungsbezogener Bibliotheken können Sie benutzerdefinierte Python-Umgebungen innerhalb einer Notebook-Sitzung angeben und verwenden. 
 
 Bei der Verwendung sitzungsbezogener Bibliotheken sind folgende Punkte zu berücksichtigen:
    - Wenn Sie sitzungsbezogene Bibliotheken installieren, kann nur das aktuelle Notebook auf die angegebenen Bibliotheken zugreifen. 
@@ -187,3 +188,4 @@ Um die Paketversionen aus Conda anzeigen zu können, müssen Sie in einigen Fäl
 ## <a name="next-steps"></a>Nächste Schritte
 - Anzeigen der Standardbibliotheken: [Versionsunterstützung für Apache Spark](apache-spark-version-support.md)
 - Beheben von Fehler bei der Bibliotheksinstallation: [Beheben von Fehlern bei der Bibliotheksinstallation](apache-spark-troubleshoot-library-errors.md)
+- Erstellen eines privaten Conda-Kanals mit Ihrem Azure Data Lake Storage-Konto: [Erstellen eines benutzerdefinierten Conda-Kanals für die Paketverwaltung](./spark/../apache-spark-custom-conda-channel.md).

@@ -12,21 +12,21 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/05/2021
+ms.date: 03/29/2021
 ms.author: b-juche
-ms.openlocfilehash: 12807e83f7841bc67999ce385d0cb82bf15f4c71
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 52e855cb4ab42ed78a055ecdc31cffa886dc9bf2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102175990"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105731988"
 ---
 # <a name="what-changing-to-volume-hard-quota-means-for-your-azure-netapp-files-service"></a>Auswirkungen der Änderungen am festen Volumekontingent auf Ihren Azure NetApp Files-Dienst
 
 Seit der Veröffentlichung des Azure NetApp Files-Diensts werden zwei Mechanismen eingesetzt: die Kapazitätspoolbereitstellung und die automatische Vergrößerung. Azure NetApp Files-Volumes werden einem zugrunde liegenden, vom Kunden bereitgestellten Kapazitätspool mit einer bestimmten Dienstebene und Größe schlank zugewiesen. Die Volumegrößen (Kontingente) stellen die Leistung und Kapazität bereit und können jederzeit dynamisch angepasst werden. Das bedeutet, dass das Volumekontingent derzeit die Leistung – also die Bandbreite – kontrolliert, die das Volume nutzen kann. Die zugrunde liegenden Kapazitätspools werden derzeit automatisch vergrößert, wenn die Kapazität ausgelastet ist.   
 
 > [!IMPORTANT] 
-> Das Verhalten von Azure NetApp Files für die Volume- und Kapazitätspoolbereitstellung wird in einen *manuellen*, *kontrollierbaren* Mechanismus geändert. **Ab dem 1. April 2021 (aktualisiert) entscheidet die Volumegröße (Kontingent) über die Bandbreitenleistung und die bereitgestellte Kapazität. Außerdem werden zugrunde liegende Kapazitätspools nicht mehr automatisch vergrößert.** 
+> Das Verhalten von Azure NetApp Files für die Volume- und Kapazitätspoolbereitstellung wird in einen *manuellen*, *kontrollierbaren* Mechanismus geändert. **Ab dem 30. April 2021 (aktualisiert) entscheidet die Volumegröße (Kontingent) über die Bandbreitenleistung und die bereitgestellte Kapazität. Außerdem werden zugrunde liegende Kapazitätspools nicht mehr automatisch vergrößert.** 
 
 ## <a name="reasons-for-the-change-to-volume-hard-quota"></a>Gründe für die Änderung des festen Volumekontingents
 

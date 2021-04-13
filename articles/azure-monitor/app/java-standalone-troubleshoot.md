@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie Probleme mit dem Java-Agent für Azure Monito
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 45f45e71546909b71c71c66303c1459edd74548f
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 9bcd0ead2516b040a5a5aee4a7fae042a5f678a2
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102199610"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449986"
 ---
 # <a name="troubleshooting-guide-azure-monitor-application-insights-for-java"></a>Handbuch zur Problembehandlung: Azure Monitor Application Insights für Java
 
@@ -17,7 +17,7 @@ In diesem Artikel werden einige der häufigsten Probleme behandelt, die beim Ins
 
 ## <a name="check-the-self-diagnostic-log-file"></a>Überprüfen der Protokolldatei zur Selbstdiagnose
 
-Standardmäßig wird vom Java 3.0-Agent für Application Insights eine Protokolldatei mit dem Namen `applicationinsights.log` in dem Verzeichnis erstellt, in dem sich auch die Datei `applicationinsights-agent-3.0.2.jar` befindet.
+Standardmäßig wird vom Java 3.0-Agent für Application Insights eine Protokolldatei mit dem Namen `applicationinsights.log` in dem Verzeichnis erstellt, in dem sich auch die Datei `applicationinsights-agent-3.0.3.jar` befindet.
 
 Diese Protokolldatei sollten Sie als Erstes auf Hinweise auf aufgetretene Probleme untersuchen.
 
@@ -42,6 +42,8 @@ Zu diesen Änderungen zählen die folgenden:
 ## <a name="some-logging-is-not-auto-collected"></a>Keine automatische Erfassung bestimmter Protokolle
 
 Eine Protokollierung erfolgt nur, wenn erstens der für das Protokollierungsframework konfigurierte Schwellenwert und zweitens auch der in Application Insights konfigurierte Schwellenwert erreicht wird.
+
+Wenn Ihr Protokollierungsframework z. B. so konfiguriert ist, dass es `WARN` (und höher) aus Paket `com.example` protokolliert, und Application Insights so konfiguriert ist, dass es `INFO` (und höher) aufzeichnet, dann wird Application Insights nur `WARN` (und höher) aus Paket `com.example` aufzeichnen.
 
 Wenn Sie wissen möchten, ob eine bestimmte Protokollierungsanweisung den konfigurierten Schwellenwert des Protokollierungsframeworks erreicht, überprüfen Sie am besten, ob er in Ihrem normalen Anwendungsprotokoll (z. B. in einer Datei oder an der Konsole) angezeigt wird.
 

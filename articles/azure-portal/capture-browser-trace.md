@@ -1,14 +1,14 @@
 ---
 title: Erfassen einer Browserablaufverfolgung zur Problembehandlung
 description: Erfassen Sie Netzwerkinformationen aus einer Browserablaufverfolgung, um Probleme mit dem Azure-Portal zu beheben.
-ms.date: 05/11/2020
+ms.date: 03/25/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 504a32fb63022f97e8049c7c1ccc7721bbac31ab
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 63bc3e93187274db607b5f60216de461729801dc
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96745994"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105563485"
 ---
 # <a name="capture-a-browser-trace-for-troubleshooting"></a>Erfassen einer Browserablaufverfolgung zur Problembehandlung
 
@@ -190,13 +190,13 @@ In den folgenden Schritten wird das Verwenden der Entwicklertools in Firefox gez
 
     ![Screenshot der Ergebnisse der Browserablaufverfolgung](media/capture-browser-trace/firefox-browser-trace-results.png)
 
-1. Nachdem Sie das unerwartete Portalverhalten reproduziert haben, wählen Sie **HAR Export/Import** und dann **Save All As HAR** (Alles als HAR speichern) aus.
+1. Nachdem Sie das unerwartete Portalverhalten reproduziert haben, wählen Sie **Save ALL As HAR** (Alle als HAR speichern) aus.
 
     ![Screenshot: „HAR exportieren“](media/capture-browser-trace/firefox-network-export-har.png)
 
 1. Halten Sie die Schrittaufzeichnung unter Windows bzw. die Bildschirmaufzeichnung auf dem Mac an, und speichern Sie die Aufzeichnung.
 
-1. Wählen Sie im Bereich mit dem Entwicklertools des Browsers die Registerkarte **Konsole** aus. Klicken Sie mit der rechten Maustaste auf eine der Nachrichten, wählen Sie **Export Visible Message To** (Sichtbare Nachricht exportieren nach) aus, und speichern Sie die Konsolenausgabe in einer Textdatei.
+1. Wählen Sie im Bereich mit dem Entwicklertools des Browsers die Registerkarte **Konsole** aus. Klicken Sie mit der rechten Maustaste auf eine der Nachrichten, wählen Sie **Export Visible Messages To** (Sichtbare Nachrichten exportieren nach) aus, und speichern Sie die Konsolenausgabe in einer Textdatei.
 
     ![Screenshot der Konsolenausgabe](media/capture-browser-trace/firefox-console-select.png)
 

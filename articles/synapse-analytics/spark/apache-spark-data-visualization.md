@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: spark
 ms.date: 09/13/2020
-ms.openlocfilehash: f11693b34048b11c02668e086561b9a6521a5213
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7e57cdca1d212e6077d685d95a8f869c12e546a8
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98121524"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105627947"
 ---
 # <a name="visualize-data"></a>Visualisieren von Daten
 Azure Synapse ist ein integrierter Analysedienst zur schnelleren Gewinnung von Erkenntnissen aus Data Warehouses und Big Data-Analysesystemen. Die Datenvisualisierung ist eine Schlüsselkomponente, um Erkenntnisse über Ihre Daten gewinnen zu können. Sie hilft, sowohl Big Data als auch kleine Datenmengen für den Menschen verständlicher zu gestalten. Sie erleichtert auch die Erkennung von Mustern, Trends und Ausreißern in Datengruppen. 
@@ -34,6 +34,7 @@ So greifen Sie auf die Diagrammoptionen zu
    ![Integrierte Diagramme](./media/apache-spark-development-using-notebooks/synapse-built-in-charts.png#lightbox)
 
 3. Sie können Ihre Visualisierung jetzt anpassen, indem Sie die folgenden Werte angeben:
+
    | Konfiguration | BESCHREIBUNG |
    |--|--| 
    | Diagrammtyp | Die Funktion ```display``` unterstützt eine breite Palette von Diagrammtypen, einschließlich Balkendiagramme, Punktdiagramme, Liniendiagramme und weitere. |
@@ -62,14 +63,14 @@ Die folgende Abbildung ist ein Beispiel für das Erstellen von Visualisierungen 
 Führen Sie den folgenden Code aus, um die obige Visualisierung zu erstellen.
 
 ```python
-displayHTML("""<!DOCTYPE html>
-<meta charset="utf-8">
+displayHTML("&quot;&quot;<!DOCTYPE html>
+<meta charset=&quot;utf-8&quot;>
 
 <!-- Load d3.js -->
-<script src="https://d3js.org/d3.v4.js"></script>
+<script src=&quot;https://d3js.org/d3.v4.js&quot;></script>
 
 <!-- Create a div where the graph will take place -->
-<div id="my_dataviz"></div>
+<div id=&quot;my_dataviz&quot;></div>
 <script>
 
 // set the dimensions and margins of the graph
@@ -78,7 +79,7 @@ var margin = {top: 10, right: 30, bottom: 30, left: 40},
   height = 400 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
-var svg = d3.select("#my_dataviz")
+var svg = d3.select(&quot;#my_dataviz")
 .append("svg")
   .attr("width", width + margin.left + margin.right)
   .attr("height", height + margin.top + margin.bottom)
@@ -148,44 +149,6 @@ svg
 ## <a name="popular-libraries"></a>Beliebte Bibliotheken
 Wenn es um Datenvisualisierung geht, bietet Python mehrere Grafikbibliotheken, die über viele verschiedene Features verfügen. Standardmäßig enthält jeder Apache Spark-Pool in Azure Synapse Analytics eine Reihe von zusammengestellten und beliebten Open-Source-Bibliotheken. Sie können auch zusätzliche Bibliotheken und Versionen hinzufügen oder verwalten, indem Sie die Bibliotheksverwaltungsfunktionen von Azure Synapse Analytics verwenden. 
 
-### <a name="bokeh"></a>Bokeh
-Sie können HTML-oder interaktive Bibliotheken wie **bokeh** mithilfe von ```displayHTML(df)``` rendern. 
-
-Das folgende Bild ist ein Beispiel für das Zeichnen von Glyphen auf einer Karte mithilfe von **bokeh**.
-
-   ![bokeh-Beispiel](./media/apache-spark-development-using-notebooks/synapse-bokeh-image.png#lightbox)
-
-Führen Sie den folgenden Beispielcode aus, um das obige Bild zu zeichnen.
-
-```python
-from bokeh.plotting import figure, output_file
-from bokeh.tile_providers import get_provider, Vendors
-from bokeh.embed import file_html
-from bokeh.resources import CDN
-from bokeh.models import ColumnDataSource
-
-tile_provider = get_provider(Vendors.CARTODBPOSITRON)
-
-# range bounds supplied in web mercator coordinates
-p = figure(x_range=(-9000000,-8000000), y_range=(4000000,5000000),
-           x_axis_type="mercator", y_axis_type="mercator")
-p.add_tile(tile_provider)
-
-# plot datapoints on the map
-source = ColumnDataSource(
-    data=dict(x=[ -8800000, -8500000 , -8800000],
-              y=[4200000, 4500000, 4900000])
-)
-
-p.circle(x="x", y="y", size=15, fill_color="blue", fill_alpha=0.8, source=source)
-
-# create an html document that embeds the Bokeh plot
-html = file_html(p, CDN, "my plot1")
-
-# display this html
-displayHTML(html)
-```
-
 ### <a name="matplotlib"></a>Matplotlib
 Sie können standardmäßige Zeichnungsbibliotheken wie Matplotlib mithilfe der integrierten Renderingfunktionen für die einzelnen Bibliotheken rendern.
 
@@ -216,11 +179,88 @@ plt.legend()
 plt.show()
 ```
 
+
+### <a name="bokeh"></a>Bokeh
+Sie können HTML-oder interaktive Bibliotheken wie **bokeh** mithilfe von ```displayHTML(df)``` rendern. 
+
+Das folgende Bild ist ein Beispiel für das Zeichnen von Glyphen auf einer Karte mithilfe von **bokeh**.
+
+   ![bokeh-Beispiel](./media/apache-spark-development-using-notebooks/synapse-bokeh-image.png#lightbox)
+
+Führen Sie den folgenden Beispielcode aus, um das obige Bild zu zeichnen.
+
+```python
+from bokeh.plotting import figure, output_file
+from bokeh.tile_providers import get_provider, Vendors
+from bokeh.embed import file_html
+from bokeh.resources import CDN
+from bokeh.models import ColumnDataSource
+
+tile_provider = get_provider(Vendors.CARTODBPOSITRON)
+
+# range bounds supplied in web mercator coordinates
+p = figure(x_range=(-9000000,-8000000), y_range=(4000000,5000000),
+           x_axis_type="mercator&quot;, y_axis_type=&quot;mercator")
+p.add_tile(tile_provider)
+
+# plot datapoints on the map
+source = ColumnDataSource(
+    data=dict(x=[ -8800000, -8500000 , -8800000],
+              y=[4200000, 4500000, 4900000])
+)
+
+p.circle(x="x", y="y", size=15, fill_color="blue", fill_alpha=0.8, source=source)
+
+# create an html document that embeds the Bokeh plot
+html = file_html(p, CDN, "my plot1")
+
+# display this html
+displayHTML(html)
+```
+
+
+### <a name="plotly"></a>Plotly
+Sie können HTML-oder interaktive Bibliotheken wie **Plotly** mithilfe von **displayHTML()** rendern.
+
+Führen Sie den folgenden Beispielcode aus, um das unten stehende Bild zu zeichnen.
+
+   ![plotly-example](./media/apache-spark-development-using-notebooks/synapse-plotly-image.png#lightbox)
+
+
+```python
+from urllib.request import urlopen
+import json
+with urlopen('https://raw.githubusercontent.com/plotly/datasets/master/geojson-counties-fips.json') as response:
+    counties = json.load(response)
+
+import pandas as pd
+df = pd.read_csv("https://raw.githubusercontent.com/plotly/datasets/master/fips-unemp-16.csv",
+                   dtype={"fips": str})
+
+import plotly.express as px
+
+fig = px.choropleth(df, geojson=counties, locations='fips', color='unemp',
+                           color_continuous_scale="Viridis",
+                           range_color=(0, 12),
+                           scope="usa",
+                           labels={'unemp':'unemployment rate'}
+                          )
+fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
+
+# create an html document that embeds the Plotly plot
+h = plotly.offline.plot(fig, output_type='div')
+
+# display this html
+displayHTML(h)
+```
+
+
 ### <a name="additional-libraries"></a>Weitere Bibliotheken 
 Über diese Bibliotheken hinaus enthält die Azure Synapse Analytics-Runtime auch den folgenden Satz von Bibliotheken, die häufig für die Visualisierung von Daten verwendet werden:
 - [Matplotlib](https://matplotlib.org/)
 - [Bokeh](https://bokeh.org/)
 - [Seaborn](https://seaborn.pydata.org/) 
+- [Plotly](https://plotly.com/)
 
 Die aktuellsten Informationen zu den verfügbaren Bibliotheken und Versionen finden Sie in der [Dokumentation](./spark/../apache-spark-version-support.md) zur Azure Synapse Analytics-Runtime.
 

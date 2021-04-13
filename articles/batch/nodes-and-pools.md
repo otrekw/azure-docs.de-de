@@ -2,13 +2,13 @@
 title: Knoten und Pools in Azure Batch
 description: Erfahren Sie mehr über Computeknoten und Pools und deren Verwendung in einem Azure Batch-Workflow aus Entwicklersicht.
 ms.topic: conceptual
-ms.date: 11/20/2020
-ms.openlocfilehash: be38d4f91afcaa1ac31e9b9bbc6d2547da2ee99e
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.date: 03/11/2021
+ms.openlocfilehash: 7d4c2d45849deb011498efe4c8a1ae91724b9acd
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102183657"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103563894"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Knoten und Pools in Azure Batch
 
@@ -65,7 +65,7 @@ Wenn Sie einen Batch-Pool erstellen, können Sie die Konfiguration der Azure-VM 
 In Batch sind zwei Arten von Poolkonfigurationen verfügbar.
 
 > [!IMPORTANT]
-> Pools sollten gemäß „VM-Konfiguration“ konfiguriert werden, nicht als „Cloud Services-Konfiguration“. Alle Batch-Features werden von Pools mit „VM-Konfiguration“ unterstützt, und neue Features werden hinzugefügt. Pools mit „Cloud Services-Konfiguration“ unterstützen nicht alle Features, und es sind keine neuen Funktionen geplant.
+> Obwohl Sie derzeit Pools mithilfe einer der beiden Konfigurationen erstellen können, sollten neue Pools mit VM-Konfiguration und nicht mit Cloud Services-Konfiguration konfiguriert werden. Alle aktuellen und neuen Batch-Funktionen werden von den Pools der Konfiguration des virtuellen Computers unterstützt. Pools mit Cloud Services-Konfiguration unterstützen nicht alle Features, und es sind keine neuen Funktionen geplant. Sie können [nach dem 29. Februar 2024](https://azure.microsoft.com/updates/azure-batch-cloudserviceconfiguration-pools-will-be-retired-on-29-february-2024/) weder neue CloudServiceConfiguration-Pools erstellen noch vorhandenen Pools neue Knoten hinzuzufügen.
 
 ### <a name="virtual-machine-configuration"></a>VM-Konfiguration
 
@@ -76,13 +76,13 @@ Der [Batch-Knoten-Agent](https://github.com/Azure/Batch/blob/master/changelogs/n
 ### <a name="cloud-services-configuration"></a>Konfiguration „Cloud Services“
 
 > [!WARNING]
-> Clouddienst-Konfigurationspools sind veraltet. Verwenden Sie stattdessen Konfigurationspools für virtuelle Computer.
+> Cloud Services-Konfigurationspools sind [veraltet](https://azure.microsoft.com/updates/azure-batch-cloudserviceconfiguration-pools-will-be-retired-on-29-february-2024/). Verwenden Sie stattdessen VM-Konfigurationspools. Weitere Informationen finden Sie unter [Migrieren der Batch-Poolkonfiguration von Cloud Services zu Virtual Machines](batch-pool-cloud-service-to-virtual-machine-configuration.md).
 
 Die **Konfiguration „Cloud Services“** gibt an, dass der Pool aus Azure Cloud Services-Knoten besteht. Cloud Services stellt nur Windows-Computeknoten bereit.
 
 Die verfügbaren Betriebssysteme für Pools zur Konfiguration der Clouddienste sind unter [Azure-Gastbetriebssystemversionen und SDK-Kompatibilitätsmatrix](../cloud-services/cloud-services-guestos-update-matrix.md) aufgeführt, und die verfügbaren Größen für Computeknoten sind unter [Größen für Clouddienste](../cloud-services/cloud-services-sizes-specs.md) aufgelistet. Beim Erstellen eines Pools, der Cloud Services-Knoten enthält, geben Sie die Knotengröße und *Betriebssystemfamilie* an (die bestimmt, welche Versionen von .NET mit dem Betriebssystem installiert werden). Cloud Services wird in Azure schneller bereitgestellt als virtuelle Computer mit Windows. Wenn Sie Pools von Windows-Serverknoten benötigen, werden Sie möglicherweise feststellen, dass die Konfiguration „Cloud Services“ im Hinblick auf die Bereitstellungszeit einen Leistungsvorteil bietet.
 
-Genau wie bei Workerrollen innerhalb von Cloud Services können Sie eine *Betriebssystemversion* angeben. (Weitere Informationen zu Workerrollen finden Sie unter [Übersicht über Cloud Services](../cloud-services/cloud-services-choose-me.md).) Es empfiehlt sich auch bei der *Betriebssystemversion* die Angabe von `Latest (*)`, damit die Knoten automatisch per Upgrade aktualisiert werden und für neue Versionen kein Zusatzaufwand entsteht. Mit der Wahl einer bestimmten Betriebssystemversion wird in erster Linie die Anwendungskompatibilität sichergestellt. Hierzu wird die Überprüfung der Abwärtskompatibilität vor der Versionsaktualisierung ermöglicht. Nach der Überprüfung können die *Betriebssystemversion* für den Pool aktualisiert und das neue Betriebssystemimage installiert werden. Alle laufenden Tasks werden unterbrochen und erneut in die Warteschlange gestellt.
+Wie bei Workerrollen innerhalb von Cloud Services können Sie eine *Betriebssystemversion* angeben. Es empfiehlt sich auch bei der *Betriebssystemversion* die Angabe von `Latest (*)`, damit die Knoten automatisch per Upgrade aktualisiert werden und für neue Versionen kein Zusatzaufwand entsteht. Mit der Wahl einer bestimmten Betriebssystemversion wird in erster Linie die Anwendungskompatibilität sichergestellt. Hierzu wird die Überprüfung der Abwärtskompatibilität vor der Versionsaktualisierung ermöglicht. Nach der Überprüfung können die *Betriebssystemversion* für den Pool aktualisiert und das neue Betriebssystemimage installiert werden. Alle laufenden Tasks werden unterbrochen und erneut in die Warteschlange gestellt.
 
 ### <a name="node-agent-skus"></a>Knoten-Agent-SKUs
 
@@ -208,3 +208,4 @@ Wenn Sie einem bestehenden Pool ein Zertifikat hinzufügen, müssen Sie dessen C
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Erfahren Sie mehr zu [Aufträgen und Tasks](jobs-and-tasks.md).
+- Erfahren Sie, wie Sie [Fehler in Pool- und Knotenhintergrundvorgängen erkennen und vermeiden](batch-pool-node-error-checking.md) können.

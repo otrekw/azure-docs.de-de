@@ -2,15 +2,15 @@
 title: Erstellen und Bereitstellen von Vorlagenspezifikationen
 description: Beschreibt, wie Sie Vorlagenspezifikationen erstellen und diese mit anderen Benutzern in Ihrer Organisation teilen.
 ms.topic: conceptual
-ms.date: 03/02/2021
+ms.date: 03/26/2021
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 76573e4415dffb2212dd025ed486d834446d3851
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2f4aec6d9fa07edf36dea68a23ba12eb5f72d308
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102043897"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105626083"
 ---
 # <a name="azure-resource-manager-template-specs-preview"></a>Azure Resource Manager-Vorlagenspezifikationen (Vorschau)
 
@@ -25,9 +25,16 @@ Zum Bereitstellen der Vorlagenspezifikation verwenden Sie Azure-Standardtools wi
 
 ## <a name="why-use-template-specs"></a>Gründe zur Verwendung von Vorlagenspezifikationen
 
-Wenn Sie Ihre Vorlagen derzeit in einem GitHub-Repository oder Speicherkonto aufbewahren, stellen sich mehrere Herausforderungen in Ihren Weg, wenn Sie versuchen, die Vorlagen freizugeben und zu verwenden. Damit ein Benutzer eine Vorlage bereitstellen kann, muss diese entweder lokal vorhanden sein oder die URL für die Vorlage muss öffentlich zugänglich sein. Zum Umgehen dieser Einschränkung können Sie Kopien der Vorlage für Benutzer freigeben, die sie bereitstellen müssen, oder den Zugriff auf das Repository oder das Speicherkonto öffnen. Wenn Benutzer über lokale Kopien einer Vorlage verfügen, können diese Kopien von der ursprünglichen Vorlage abweichen. Wenn Sie den öffentlichen Zugriff auf ein Repository oder Speicherkonto gestatten, erlauben Sie möglicherweise auch unerwünschten Benutzern den Zugriff auf die Vorlage.
+Vorlagenspezifikationen bieten die folgenden Vorteile:
 
-Der Vorteil von Vorlagenspezifikationen besteht darin, dass Sie kanonische Vorlagen erstellen und mit Teams in Ihrer Organisation teilen können. Die Vorlagenspezifikationen sind sicher, weil sie für die Bereitstellung für den Azure Resource Manager verfügbar aber nicht für Benutzer ohne Berechtigungen der rollenbasierten Zugriffssteuerung in Azure zugänglich sind. Benutzer benötigen nur Lesezugriff auf die Vorlagenspezifikation, um die zugehörige Vorlage bereitzustellen, sodass Sie die Vorlage teilen können, ohne anderen Benutzern das Ändern zu gestatten.
+* Sie verwenden ARM-Standardvorlagen für Ihre Vorlagenspezifikation.
+* Sie verwalten den Zugriff über Azure RBAC, statt mit SAS-Token.
+* Benutzer können die Vorlagenspezifikation ohne Schreibzugriff auf die Vorlage bereitstellen.
+* Sie können die Vorlagenspezifikation in den vorhandenen Bereitstellungsprozess integrieren, z. B. ein PowerShell-Skript oder eine DevOps-Pipeline.
+
+Vorlagenspezifikationen ermöglichen es Ihnen, kanonische Vorlagen zu erstellen und mit Teams in Ihrer Organisation zu teilen. Die Vorlagenspezifikationen sind sicher, weil sie für die Bereitstellung für den Azure Resource Manager verfügbar aber nicht für Benutzer ohne die richtigen Berechtigungen zugänglich sind. Benutzer benötigen nur Lesezugriff auf die Vorlagenspezifikation, um die zugehörige Vorlage bereitzustellen, sodass Sie die Vorlage teilen können, ohne anderen Benutzern das Ändern zu gestatten.
+
+Wenn Sie Ihre Vorlagen derzeit in einem GitHub-Repository oder Speicherkonto aufbewahren, stellen sich mehrere Herausforderungen in Ihren Weg, wenn Sie versuchen, die Vorlagen freizugeben und zu verwenden. Zum Bereitstellen der Vorlage müssen Sie entweder die Vorlage öffentlich zugänglich machen oder den Zugriff mit SAS-Token verwalten. Um diese Einschränkung zu umgehen, können Benutzer lokale Kopien erstellen, die letztendlich von Ihrer ursprünglichen Vorlage abweichen. Vorlagenspezifikationen vereinfachen das Teilen von Vorlagen.
 
 Die Vorlagen, die Sie in eine Vorlagenspezifikation aufnehmen, sollten von Administratoren in Ihrer Organisation überprüft werden, damit sie die Anforderungen und Richtlinien der Organisation einhalten.
 

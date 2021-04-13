@@ -11,10 +11,10 @@ ms.date: 09/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.openlocfilehash: bc159452c81a673ca4a7ed46aa7eff19fd9209eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "73176028"
 ---
 # <a name="understanding-azure-ad-connect-14xxx-and-device-disappearance"></a>Grundlegendes zu Azure AD Connect 1.4.xx.x und zum Verschwinden von Geräten
@@ -33,7 +33,7 @@ In dieser Version von Azure AD Connect werden nur Windows 10-Geräte synchroni
 ## <a name="down-level-windows-devices"></a>Kompatible Windows-Geräte
 In Azure AD Connect sollten niemals [Windows-Geräte mit früheren Versionen](../devices/hybrid-azuread-join-plan.md#windows-down-level-devices) synchronisiert werden. Alle Geräte in Azure AD, die zuvor falsch synchronisiert wurden, werden nun aus Azure AD gelöscht. Wenn Azure AD Connect versucht, [kompatible Windows-Geräte](../devices/hybrid-azuread-join-plan.md#windows-down-level-devices) zu löschen, entspricht ein solches Gerät nicht mehr dem Gerät, das über den [MSI-Installer für Microsoft Workplace Join für Nicht-Windows 10-Computer](https://www.microsoft.com/download/details.aspx?id=53554) erstellt wurde, sodass auf dem Gerät keine anderen Azure AD-Funktionen verwendet werden können.
 
-Einige Kunden sollten sich möglicherweise unter [Anleitung: Planen der Implementierung einer Azure Active Directory-Hybrideinbindung](../devices/hybrid-azuread-join-plan.md) erneut informieren und ihre Windows-Geräte ordnungsgemäß registrieren, um sicherzustellen, dass der gerätebasierte bedingte Zugriff auf diesen Geräten in vollem Umfang genutzt werden kann. 
+Einige Kunden müssen möglicherweise erneut [Anleitung: Planen der Implementierung einer Azure Active Directory-Hybrideinbindung](../devices/hybrid-azuread-join-plan.md) zur ordnungsgemäßen Registrierung ihrer Windows-Geräte durchgehen und um sicherzustellen, dass der gerätebasierte bedingte Zugriff auf diesen Geräten in vollem Umfang genutzt werden kann. 
 
 ## <a name="how-can-i-verify-which-devices-are-deleted-with-this-update"></a>Wie kann ich überprüfen, welche Geräte mit diesem Update gelöscht werden?
 

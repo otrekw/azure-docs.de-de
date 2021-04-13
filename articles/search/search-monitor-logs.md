@@ -8,16 +8,16 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: e29e20d071e992b941b2f6bd803c8dade044fbfd
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 3c8dd5cd9da2fd1e741635a6471c0662066d147e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100592464"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105709938"
 ---
 # <a name="collect-and-analyze-log-data-for-azure-cognitive-search"></a>Sammeln und Analysieren von Protokolldaten für Azure Cognitive Search
 
-Diagnose- oder Betriebsprotokolle bieten Einblicke in die detaillierten Vorgänge von Azure Cognitive Search und sind für die Überwachung von Dienst- und Workloadprozessen nützlich. Intern werden für einen kurzen Zeitraum bestimmte Systeminformationen im Back-End gespeichert, der für den Fall, dass Sie ein Supportticket erstellen, für die Untersuchung und Analyse ausreicht. Wenn Sie jedoch eine Selbststeuerung der Betriebsdaten wünschen, sollten Sie eine Diagnoseeinstellung konfigurieren, um anzugeben, wo die Protokollinformationen gesammelt werden.
+Diagnose- oder Betriebsprotokolle bieten Einblicke in die detaillierten Vorgänge von Azure Cognitive Search und sind für die Überwachung von Dienst- und Workloadprozessen nützlich. Intern speichert Microsoft Systeminformationen für einen kurzen Zeitraum (etwa 30 Tage) im Back-End, was für den Fall, dass Sie ein Supportticket erstellen, für die Untersuchung und Analyse ausreicht. Wenn Sie jedoch die Besitzrechte an den Betriebsdaten wünschen, sollten Sie eine Diagnoseeinstellung konfigurieren, um anzugeben, wo die Protokollinformationen gesammelt werden.
 
 Die Diagnoseprotokollierung wird durch Integration in [Azure Monitor](../azure-monitor/index.yml) aktiviert. 
 
@@ -76,14 +76,14 @@ Zwei Tabellen enthalten Protokolle und Metriken für Azure Cognitive Search: **A
 
 1. Geben Sie die folgende Abfrage ein, um ein tabellarisches Resultset zurückzugeben.
 
-   ```
+   ```kusto
    AzureMetrics
-    | project MetricName, Total, Count, Maximum, Minimum, Average
+   | project MetricName, Total, Count, Maximum, Minimum, Average
    ```
 
 1. Wiederholen Sie die vorherigen Schritte, beginnend mit **AzureDiagnostics**, um alle Spalten zu Informationszwecken zurückzugeben, gefolgt von einer selektiveren Abfrage, mit der interessantere Informationen extrahiert werden.
 
-   ```
+   ```kusto
    AzureDiagnostics
    | project OperationName, resultSignature_d, DurationMs, Query_s, Documents_d, IndexName_s
    | where OperationName == "Query.Search" 
@@ -99,7 +99,7 @@ Wenn Sie die Diagnoseprotokollierung aktiviert haben, können Sie **AzureDiagnos
 
 So geben Sie eine Liste der Vorgänge und die Anzahl dieser Vorgänge zurück
 
-```
+```kusto
 AzureDiagnostics
 | summarize count() by OperationName
 ```
@@ -108,7 +108,7 @@ AzureDiagnostics
 
 So korrelieren Sie die Abfrageanforderung mit Indizierungsvorgängen und rendern die Datenpunkte in einem Zeitdiagramm, um die Vorgänge abzugleichen
 
-```
+```kusto
 AzureDiagnostics
 | summarize OperationName, Count=count()
 | where OperationName in ('Query.Search', 'Indexing.Index')

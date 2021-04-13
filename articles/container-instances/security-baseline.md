@@ -4,22 +4,20 @@ description: Die Container Instances-Sicherheitsbaseline enthält Anleitungen un
 author: msmbaldwin
 ms.service: container-instances
 ms.topic: conceptual
-ms.date: 02/17/2021
+ms.date: 03/30/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 07eaa9fd9add14f136d68c50bca15807ef4037ed
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: be742de41979a218aeca588ce72a8ce80c8c59e5
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101738088"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078604"
 ---
 # <a name="azure-security-baseline-for-container-instances"></a>Azure-Sicherheitsbaseline für Container Instances
 
-Diese Sicherheitsbaseline wendet Empfehlungen aus [Version 1.0 des Azure-Sicherheitsvergleichstests](../security/benchmarks/overview-v1.md) auf Container Instances an. Der Azure-Sicherheitsvergleichstest enthält Empfehlungen zum Schutz Ihrer Cloudlösungen in Azure.
-Der Inhalt wird anhand der **Sicherheitskontrollen** gruppiert, die durch den Azure-Sicherheitsvergleichstest und die entsprechenden für Container Instances geltenden Empfehlungen definiert werden. Nicht auf Container Instances anwendbare **Kontrollen** wurden ausgeschlossen.
+Diese Sicherheitsbaseline wendet Empfehlungen aus [Version 1.0 des Azure-Sicherheitsvergleichstests](../security/benchmarks/overview-v1.md) auf Container Instances an. Der Azure-Sicherheitsvergleichstest enthält Empfehlungen zum Schutz Ihrer Cloudlösungen in Azure. Der Inhalt wird anhand der **Sicherheitskontrollen** gruppiert, die durch den Azure-Sicherheitsvergleichstest und die entsprechenden für Container Instances geltenden Empfehlungen definiert werden. Nicht auf Container Instances anwendbare **Kontrollen** oder Kontrollen, für die Microsoft die Verantwortung trägt, wurden ausgeschlossen.
 
- 
 Die vollständige Zuordnung von Container Instances zum Azure-Sicherheitsvergleichstest finden Sie in der [vollständigen Zuordnungsdatei der Container Instances-Sicherheitsbaseline](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines).
 
 ## <a name="network-security"></a>Netzwerksicherheit
@@ -254,9 +252,9 @@ Sie können umfangreiche Azure-Bereitstellungen mithilfe von Azure Blueprints ve
 
 Wenn Sie eine cloudbasierte private Registrierung wie Azure-Containerregistrierung mit Azure Container Instances verwenden, verfolgen Sie für jede Azure-Containerregistrierung nach, ob das integrierte Administratorkonto aktiviert oder deaktiviert ist. Deaktivieren Sie das Konto, wenn es nicht verwendet wird.
 
-- [Abrufen einer Verzeichnisrolle in Azure AD mit PowerShell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0&amp;preserve-view=true)
+- [Abrufen einer Verzeichnisrolle in Azure AD mit PowerShell](/powershell/module/azuread/get-azureaddirectoryrole)
 
-- [Abrufen von Mitgliedern einer Verzeichnisrolle in Azure AD mit PowerShell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0&amp;preserve-view=true)
+- [Abrufen von Mitgliedern einer Verzeichnisrolle in Azure AD mit PowerShell](/powershell/module/azuread/get-azureaddirectoryrolemember)
 
 - [Azure Container Registry-Administratorkonto](https://docs.microsoft.com/azure/container-registry/container-registry-authentication#admin-account)
 
@@ -604,7 +602,7 @@ Obwohl klassische Azure-Ressourcen über das Resource Graph ermittelt werden kö
 
 - [Erstellen von Abfragen mit Azure Resource Graph](../governance/resource-graph/first-query-portal.md)
 
-- [Anzeigen Ihrer Azure-Abonnements](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-4.8.0&amp;preserve-view=true)
+- [Anzeigen Ihrer Azure-Abonnements](/powershell/module/az.accounts/get-azsubscription)
 
 - [Grundlegendes zu Azure RBAC](../role-based-access-control/overview.md)
 
@@ -728,7 +726,7 @@ Verwenden Sie Azure Resource Graph, um Ressourcen in ihren Abonnements abzufrage
 
 **Leitfaden**: Verwenden Sie betriebssystemspezifische Konfigurationen oder Ressourcen von Drittanbietern, um die Möglichkeiten der Benutzer einzuschränken, Skripts innerhalb der Azure-Computeressourcen auszuführen.
 
-- [Set-ExecutionPolicy](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-7&amp;preserve-view=true)
+- [Set-ExecutionPolicy](/powershell/module/microsoft.powershell.security/set-executionpolicy)
 
 **Verantwortlichkeit**: Kunde
 
@@ -802,9 +800,9 @@ Wenn Sie eine cloudbasierte private Registrierung wie Azure Container Registry (
 
 **Leitfaden**: Wenn Sie benutzerdefinierte Azure-Richtliniendefinitionen verwenden, nutzen Sie Azure Repos, um Code sicher zu speichern und zu verwalten.
 
-- [Speichern von Code in Azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&amp;preserve-view=true)
+- [Speichern von Code in Azure DevOps](/azure/devops/repos/git/gitworkflow)
 
-- [Dokumentation zu Azure Repos](https://docs.microsoft.com/azure/devops/repos/?view=azure-devops&amp;preserve-view=true)
+- [Dokumentation zu Azure Repos](/azure/devops/repos/)
 
 **Verantwortlichkeit**: Kunde
 
@@ -964,7 +962,7 @@ Sichern Sie kundenseitig verwaltete Schlüssel in Azure Key Vault mithilfe von A
 
 - [Importieren von Containerimages in eine Containerregistrierung](../container-registry/container-registry-import-images.md)
 
-- [Sichern von Schlüsseltresorschlüsseln in Azure](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
+- [Sichern von Schlüsseltresorschlüsseln in Azure](/powershell/module/az.keyvault/backup-azkeyvaultkey)
 
 - [Verschlüsseln von Bereitstellungsdaten mit Container Instances](container-instances-encrypt-data.md)
 
@@ -976,7 +974,7 @@ Sichern Sie kundenseitig verwaltete Schlüssel in Azure Key Vault mithilfe von A
 
 **Leitfaden**: Testen Sie die Wiederherstellung von kundenseitig verwalteten Schlüsseln in Azure Key Vault mithilfe von Azure-Befehlszeilentools oder SDKs.
 
-- [Wiederherstellen von Azure Key Vault-Schlüsseln in Azure](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
+- [Wiederherstellen von Azure Key Vault-Schlüsseln in Azure](/powershell/module/az.keyvault/restore-azkeyvaultkey)
 
 **Verantwortlichkeit**: Kunde
 

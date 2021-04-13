@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 03/15/2021
 ms.author: duau
 ms.openlocfilehash: 531f4a9c9f535779e451ca316a8a5867f6cdaba5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103573896"
 ---
 # <a name="azure-front-door-standardpremium-preview-logging"></a>Protokollierung in Azure Front Door Standard/Premium (Vorschau)
@@ -73,7 +73,7 @@ Azure Front Door bietet derzeit einzelne API-Anforderungen, wobei jeder Eintrag 
 | Eigenschaft | BESCHREIBUNG |
 |----------|-------------| 
 | TrackingReference | Die eindeutige Verweiszeichenfolge zur Identifizierung einer Anforderung, die von AFD verarbeitet wird. Diese wird auch als X-Azure-Ref-Header an den Client gesendet. Sie ist für die Suche nach Informationen in den Zugriffsprotokollen für eine bestimmte Anforderung erforderlich. |
-| Time | Das Datum und die Uhrzeit, zu denen das AFD-Edge den angeforderten Inhalt an den Client gesendet hat (in UTC). |
+| Zeit | Das Datum und die Uhrzeit, zu denen das AFD-Edge den angeforderten Inhalt an den Client gesendet hat (in UTC). |
 | HttpMethod | Die von der Anforderung verwendete HTTP-Methode: DELETE, GET, HEAD, OPTIONS, PATCH, POST oder PUT. |
 | HttpVersion | Die HTTP-Version, die der Viewer in der Anforderung angegeben hat. |
 | RequestUri | URI der empfangenen Anforderung Dieses Feld ist ein vollständiger URI mit Schema, Port, Domäne, Pfad und Abfragezeichenfolge. |
@@ -103,7 +103,7 @@ Azure Front Door bietet derzeit einzelne API-Anforderungen, wobei jeder Eintrag 
 
 ## <a name="health-probe-log"></a>Integritätstestprotokoll
 
-In Integritätstestprotokollen erfolgt eine Protokollierung für jeden fehlgeschlagenen Test, um Ihnen die Diagnose des Ursprungs zu erleichtern. Die Protokolle enthalten Informationen, die Sie verwenden können, um den Ursprung wieder in Betrieb zu nehmen. Szenarien, in denen dieses Protokoll hilfreich sein kann:
+In Integritätstestprotokollen erfolgt eine Protokollierung für jeden fehlgeschlagenen Test, um Ihnen die Diagnose des Ursprungs zu erleichtern.Die Protokolle enthalten Informationen, die Sie verwenden können, um den Ursprung wieder in Betrieb zu nehmen. Szenarien, in denen dieses Protokoll hilfreich sein kann:
 
 * Sie haben bemerkt, dass Azure Front Door-Datenverkehr an einige der Ursprünge gesendet wurde. Beispielsweise wird nur an drei von vier Ursprüngen Datenverkehr empfangen. Sie möchten wissen, ob die Ursprünge Tests empfangen, und wenn dies nicht der Fall ist, die Fehlerursache ermitteln.  
 
@@ -116,7 +116,7 @@ Jedes Integritätstestprotokoll weist das folgende Schema auf.
 | Eigenschaft | BESCHREIBUNG |
 | --- | --- |
 | HealthProbeId  | Eine eindeutige ID zur Identifizierung der Anforderung. |
-| Time | Die Abschlusszeit des Tests. |
+| Zeit | Die Abschlusszeit des Tests. |
 | HttpMethod | Die von der Integritätstestanforderung verwendete HTTP-Methode. Zu den Werten zählen GET und HEAD, abhängig von der Integritätstestkonfiguration. |
 | Ergebnis | Der Status des Integritätstests für den Ursprung. Der Wert enthält die Erfolgsmeldung und ggf. Fehlertext. |
 | HttpStatusCode  | Der HTTP-Statuscode, der vom Ursprung zurückgegeben wurde. |

@@ -5,14 +5,14 @@ author: christopheranderson
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
-ms.date: 03/02/2021
+ms.date: 03/19/2021
 ms.author: chrande
-ms.openlocfilehash: 1818838a68c2712336a3515b2a82b5fdd518d237
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 8865a16c2840b65f432de679c6dd63b285b1f760
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101661170"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104771805"
 ---
 # <a name="upgrade-the-api-version-of-your-azure-cosmos-db-api-for-mongodb-account"></a>Upgrade der API-Version Ihrer Azure Cosmos DB-API für das MongoDB-Konto
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -67,42 +67,35 @@ Beim Upgrade von Version 3.2 müssen Sie den vorhandenen Endpunkt in Ihren Anwe
 
 ## <a name="how-to-upgrade"></a>Ausführen eines Upgrades
 
-1. Wechseln Sie zum Azure-Portal, und navigieren Sie zum Übersichtsblatt für Ihre Azure Cosmos DB-API für das MongoDB-Konto. Vergewissern Sie sich, dass die aktuelle Serverversion Ihren Erwartungen entspricht.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
-    :::image type="content" source="./media/mongodb-version-upgrade/1.png" alt-text="Azure-Portal mit MongoDB-Konto – Übersicht" border="false":::
+1. Navigieren Sie zu Ihrem Konto für die Azure Cosmos DB-API für MongoDB. Öffnen Sie den Bereich **Übersicht** und überprüfen Sie, ob die aktuelle **Serverversion** 3.2 or 3.6 ist.
 
-2. Wählen Sie in den Optionen auf der linken Seite das Blatt `Features` aus. Dadurch werden die Features auf Kontoebene angezeigt, die für Ihr Datenbankkonto zur Verfügung stehen.
+    :::image type="content" source="./media/mongodb-version-upgrade/check-current-version.png" alt-text="Überprüfen Sie die aktuelle Version Ihres MongoDB-Kontos im Azure-Portal." border="true":::
 
-    :::image type="content" source="./media/mongodb-version-upgrade/2.png" alt-text="Übersicht über das Azure-Portal mit dem MongoDB-Konto; das Blatt „Features“ ist hervorgehoben" border="false":::
+1. Öffnen Sie im Menü auf der linken Seite den Bereich `Features`. Dieser Bereich zeigt die Features auf Kontoebene an, die für Ihr Datenbankkonto zur Verfügung stehen.
 
-3. Klicken Sie auf die Zeile `Upgrade Mongo server version`. Wenn diese Option nicht angezeigt wird, ist Ihr Konto für dieses Upgrade möglicherweise nicht qualifiziert. Wenn das zutrifft, erstellen Sie [ein Supportticket](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+1. Wählen Sie die Zeile `Upgrade MongoDB server version` aus. Wenn diese Option nicht angezeigt wird, ist Ihr Konto für dieses Upgrade möglicherweise nicht qualifiziert. Wenn das zutrifft, erstellen Sie [ein Supportticket](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
-    :::image type="content" source="./media/mongodb-version-upgrade/3.png" alt-text="Blatt „Features“ mit Optionen." border="false":::
+    :::image type="content" source="./media/mongodb-version-upgrade/upgrade-server-version.png" alt-text="Öffnen Sie das Blatt „Features“, und aktualisieren Sie Ihr Konto." border="true":::
 
-4. Überprüfen Sie die für das Upgrade angezeigten Informationen. Sobald Sie zum Starten des Prozesses bereit sind, klicken Sie auf `Enable`.
+1. Überprüfen Sie die für das Upgrade angezeigten Informationen. Wählen Sie `Set server version to 4.0` (oder je nach aktueller Version 3.6) aus.
 
-    :::image type="content" source="./media/mongodb-version-upgrade/4.png" alt-text="Erweiterte Upgradeanleitung." border="false":::
+    :::image type="content" source="./media/mongodb-version-upgrade/select-upgrade.png" alt-text="Befolgen Sie den Upgradeleitfaden, und wählen Sie „Upgrade“ aus." border="true":::
 
-5. Nachdem der Prozess gestartet wurde, wird im Menü `Features` der Status des Upgrades angezeigt. Der Status wechselt von `Pending` über `In Progress` zu `Upgraded`. Dieser Prozess wirkt sich nicht auf die vorhandenen Funktionen oder Vorgänge des Datenbankkontos aus.
+1. Nachdem Sie das Upgrade gestartet haben, ist das **Feature**-Menü abgeblendet, und der Status wird auf *Ausstehend* gesetzt. Für das Upgrade werden etwa 15 Minuten benötigt. Dieser Prozess wirkt sich nicht auf die vorhandenen Funktionen oder Vorgänge Ihres Datenbankkontos aus. Nach Abschluss des Vorgangs wird im Status **Aktualisieren der MongoDB-Serverversion** die aktualisierte Version angezeigt. Wenn beim Verarbeiten Ihrer Anforderung ein Problem aufgetreten ist, [wenden Sie sich an den Support](https://azure.microsoft.com/en-us/support/create-ticket/).
 
-    :::image type="content" source="./media/mongodb-version-upgrade/5.png" alt-text="Upgradestatus nach dem Initiieren." border="false":::
+1. Nach dem Upgrade Ihres Kontos sind einige Überlegungen zu beachten:
 
-6. Sobald das Upgrade abgeschlossen ist, wird der Status als `Upgraded` angezeigt. Klicken Sie darauf, um weitere Informationen zu den nächsten Schritten und Aktionen zu erhalten, die Sie zum Abschließen des Prozesses ausführen müssen. Wenn beim Verarbeiten Ihrer Anforderung ein Problem aufgetreten ist, [wenden Sie sich an den Support](https://azure.microsoft.com/en-us/support/create-ticket/).
+    1. Wenn Sie ein Upgrade von 3.2 durchgeführt haben, kehren Sie zum Bereich **Übersicht** zurück, und kopieren Sie die neue Verbindungszeichenfolge für die Verwendung in Ihrer Anwendung. Die alte Verbindungszeichenfolge, mit der 3.2 ausgeführt wird, wird nicht unterbrochen. Zur Gewährleistung eines konsistenten Verhaltens müssen alle Ihre Anwendungen den neuen Endpunkt verwenden.
 
-    :::image type="content" source="./media/mongodb-version-upgrade/6.png" alt-text="Kontostatus „Upgraded“." border="false":::
-
-7. 
-    1. Wenn Sie ein Upgrade von 3.2 durchgeführt haben, kehren Sie zum Blatt `Overview` zurück, und kopieren Sie die neue Verbindungszeichenfolge für die Verwendung in Ihrer Anwendung. Die alte Verbindungszeichenfolge, mit der 3.2 ausgeführt wird, wird nicht unterbrochen. Zur Gewährleistung eines konsistenten Verhaltens müssen alle Ihre Anwendungen den neuen Endpunkt verwenden.
-    2. Wenn Sie ein Upgrade von 3.6 durchgeführt haben, wird die vorhandene Verbindungszeichenfolge auf die angegebene Version aktualisiert und sollte weiterhin verwendet werden.
-
-    :::image type="content" source="./media/mongodb-version-upgrade/7.png" alt-text="Neues Übersichtsblatt." border="false":::
-
+    1. Wenn Sie ein Upgrade von 3.6 durchgeführt haben, wird die vorhandene Verbindungszeichenfolge auf die angegebene Version aktualisiert und sollte weiterhin verwendet werden.
 
 ## <a name="how-to-downgrade"></a>Ausführen eines Downgrades
-Anhand der gleichen Schritte im Abschnitt „Ausführen eines Upgrades“ können Sie auch ein Downgrade Ihres Kontos von 4.0 auf 3.6 durchführen. 
+
+Anhand der gleichen Schritte im Abschnitt „Ausführen eines Upgrades“ können Sie auch ein Downgrade Ihres Kontos von 4.0 auf 3.6 durchführen.
 
 Wenn Sie ein Upgrade von 3.2 auf 4.0 oder 3.6 durchgeführt haben und nun ein Downgrade auf 3.2 vornehmen möchten, können Sie einfach mit dem Host `accountname.documents.azure.com`, auf dem auch nach dem Upgrade noch Version 3.2 aktiv bleibt, zurück zur vorherigen Verbindungszeichenfolge (3.2) wechseln.
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

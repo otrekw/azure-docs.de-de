@@ -9,12 +9,12 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: troubleshooting
 ms.date: 12/07/2017
-ms.openlocfilehash: e8806bc4f761214e6740a22093b7e18030fdf881
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 40fff49aa3ed46417cdd9a6190f928707e41accb
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96018323"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105608611"
 ---
 # <a name="microsoft-genomics-common-questions"></a>Microsoft Genomics: Häufig gestellte Fragen
 
@@ -58,6 +58,10 @@ Sie benötigen zwei Zugriffsschlüssel, wenn Sie diese aktualisieren (neu erstel
 
 ## <a name="do-you-save-my-storage-account-keys"></a>Speichern Sie meine Speicherkontoschlüssel?
 Ihr Speicherkontoschlüssel wird verwendet, um kurzfristige Zugriffstoken für den Microsoft Genomics-Dienst zu erstellen, um Ihre Eingabedateien zu lesen und die Ausgabedateien zu schreiben. Die Standardgültigkeitsdauer von Token beträgt 48 Stunden. Die Tokendauer kann mit der Option `-sas/--sas-duration` des „submit“-Befehls geändert werden. Der Wert wird in Stunden angegeben.
+
+## <a name="does-microsoft-genomics-store-customer-data"></a>Speichert Microsoft Genomics Kundendaten?
+
+Nein. Microsoft Genomics speichert keine Kundendaten.
 
 ## <a name="what-genome-references-can-i-use"></a>Welche Genomreferenzen kann ich verwenden?
 

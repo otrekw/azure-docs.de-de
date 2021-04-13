@@ -5,16 +5,16 @@ ms.topic: conceptual
 ms.date: 12/03/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 451323058ad743d6e26fc8bcea27d1b44c76f543
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 31e30b4853da03e28a4a2d15292050805f5bc292
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97674041"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106064143"
 ---
 # <a name="default-test-cases-for-arm-template-test-toolkit"></a>Standardtestfälle für das Resource Manager-Vorlagen-Testtoolkit
 
-In diesem Artikel werden die Standardtests beschrieben, die mit dem [Vorlagen-Testtoolkit](test-toolkit.md) ausgeführt werden. Er enthält Beispiele, bei denen der Test erfolgreich ist oder fehlschlägt, sowie den Namen der einzelnen Tests.
+In diesem Artikel werden die Standardtests beschrieben, die mit dem [Vorlagentest-Toolkit](test-toolkit.md) für Azure Resource Manager-Vorlagen (ARM-Vorlagen) ausgeführt werden. Er enthält Beispiele, bei denen der Test erfolgreich ist oder fehlschlägt, sowie den Namen der einzelnen Tests. Informationen zum Ausführen eines bestimmten Tests finden Sie unter [Testparameter](test-toolkit.md#test-parameters).
 
 ## <a name="use-correct-schema"></a>Verwendung des richtigen Schemas
 
@@ -137,7 +137,7 @@ Im folgenden Beispiel ist der Test **erfolgreich**.
 
 Testname: **Location Should Not Be Hardcoded**
 
-Ihre Vorlagen sollten einen Parameter mit dem Namen „location“ aufweisen. Verwenden Sie diesen Parameter, um den Standort der Ressourcen in der Vorlage festzulegen. In der Hauptvorlage (mit dem Namen „azuredeploy.json“ oder „mainTemplate.json“) kann dieser Parameter standardmäßig auf den Standort der Ressourcengruppe festgelegt werden. In verknüpften oder geschachtelten Vorlagen sollte der location-Parameter keinen Standardstandort aufweisen.
+Ihre Vorlagen sollten einen Parameter mit dem Namen „location“ aufweisen. Verwenden Sie diesen Parameter, um den Standort der Ressourcen in der Vorlage festzulegen. In der Hauptvorlage (mit dem Namen _azuredeploy.json_ oder _mainTemplate.json_) kann dieser Parameter standardmäßig auf den Standort der Ressourcengruppe festgelegt werden. In verknüpften oder geschachtelten Vorlagen sollte der location-Parameter keinen Standardstandort aufweisen.
 
 Benutzern Ihrer Vorlage stehen möglicherweise begrenzte Regionen zur Verfügung. Wenn Sie den Ressourcenstandort hartcodieren, können Benutzer möglicherweise keine Ressource in dieser Region erstellen. Benutzer können auch dann blockiert werden, wenn Sie den Ressourcenstandort auf `"[resourceGroup().location]"` festlegen. Es besteht die Möglichkeit, dass die Ressourcengruppe in einer Region erstellt wurde, auf die andere Benutzer nicht zugreifen können. Diese Benutzer können die Vorlage nicht verwenden.
 
@@ -393,11 +393,11 @@ Wenn Sie Parameter für `_artifactsLocation` und `_artifactsLocationSasToken` hi
 * Wenn Sie einen Parameter bereitstellen, müssen Sie auch den anderen Parameter angeben.
 * `_artifactsLocation` muss eine Zeichenfolge (**string**) sein.
 * `_artifactsLocation` muss in der Hauptvorlage über einen Standardwert verfügen.
-* `_artifactsLocation` darf in der geschachtelten Vorlage keinen Standardwert haben. 
+* `_artifactsLocation` darf in der geschachtelten Vorlage keinen Standardwert haben.
 * `_artifactsLocation` muss entweder `"[deployment().properties.templateLink.uri]"` oder die Basis-URL des Repositorys als Standardwert aufweisen.
 * `_artifactsLocationSasToken` muss eine sichere Zeichenfolge (**secureString**) sein.
 * `_artifactsLocationSasToken` darf nur eine leere Zeichenfolge als Standardwert aufweisen.
-* `_artifactsLocationSasToken` darf in einer geschachtelten Vorlage keinen Standardwert haben. 
+* `_artifactsLocationSasToken` darf in einer geschachtelten Vorlage keinen Standardwert haben.
 
 ## <a name="declared-variables-must-be-used"></a>Verwendung deklarierter Variablen
 
@@ -520,7 +520,7 @@ Im nächsten Beispiel ist der Test **erfolgreich**.
 
 Testname: **ResourceIds should not contain**
 
-Verwenden Sie keine unnötigen Funktionen für optionale Parameter, wenn Sie Ressourcen-IDs generieren. Die [resourceId](template-functions-resource.md#resourceid)-Funktion verwendet standardmäßig das aktuelle Abonnement und die aktuelle Ressourcengruppe. Sie müssen diese Werte nicht angeben.  
+Verwenden Sie keine unnötigen Funktionen für optionale Parameter, wenn Sie Ressourcen-IDs generieren. Die [resourceId](template-functions-resource.md#resourceid)-Funktion verwendet standardmäßig das aktuelle Abonnement und die aktuelle Ressourcengruppe. Sie müssen diese Werte nicht angeben.
 
 Im folgenden Beispiel ist der Test **nicht erfolgreich**, weil Sie die aktuelle Abonnement-ID und den aktuellen Ressourcengruppennamen nicht angeben müssen.
 
@@ -691,7 +691,40 @@ Im folgenden Beispiel ist der Test **nicht erfolgreich**, weil eine [list*](temp
 }
 ```
 
+## <a name="use-protectedsettings-for-commandtoexecute-secrets"></a>Verwenden von „protectedSettings“ für „commandToExecute“-Geheimnisse
+
+Testname: **„CommandToExecute“ muss „ProtectedSettings“ für Geheimnisse verwenden**
+
+Verwenden Sie in einer benutzerdefinierten Skripterweiterung die verschlüsselte Eigenschaft `protectedSettings`, wenn `commandToExecute` Geheimnisdaten wie z. B. ein Kennwort enthält. Beispiele für Geheimnisdatentypen sind `secureString`, `secureObject`, `list()`-Funktionen oder Skripts.
+
+Weitere Informationen zur benutzerdefinierten Skripterweiterung für virtuelle Computer finden Sie unter [Windows](
+/azure/virtual-machines/extensions/custom-script-windows), [Linux](/azure/virtual-machines/extensions/custom-script-linux) und dem Schema [Microsoft.Compute virtualMachines/extensions](/azure/templates/microsoft.compute/virtualmachines/extensions).
+
+In diesem Beispiel **übergibt** eine Vorlage mit einem Parameter namens `adminPassword` vom Typ `secureString` den Test, da die verschlüsselte Eigenschaft `protectedSettings` den Wert `commandToExecute` enthält.
+
+```json
+"properties": [
+  {
+    "protectedSettings": {
+      "commandToExecute": "[parameters('adminPassword')]"
+    }
+  }
+]
+```
+
+Der Test **schlägt fehl**, wenn die unverschlüsselte Eigenschaft `settings` den Wert `commandToExecute` enthält.
+
+```json
+"properties": [
+  {
+    "settings": {
+      "commandToExecute": "[parameters('adminPassword')]"
+    }
+  }
+]
+```
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zum Ausführen des Testtoolkits finden Sie unter [Verwenden des Resource Manager-Vorlagen-Testtoolkits](test-toolkit.md).
-- Ein Microsoft Learn-Modul, das die Verwendung des Testtoolkits behandelt, finden Sie unter [Anzeigen einer Vorschau von Änderungen und Überprüfen von Azure-Ressourcen mithilfe von „Was-wäre-wenn“ und dem ARM-Vorlagen-Testtoolkit](/learn/modules/arm-template-test/).
+* Weitere Informationen zum Ausführen des Testtoolkits finden Sie unter [Verwenden des Resource Manager-Vorlagen-Testtoolkits](test-toolkit.md).
+* Ein Microsoft Learn-Modul, das die Verwendung des Testtoolkits behandelt, finden Sie unter [Anzeigen einer Vorschau von Änderungen und Überprüfen von Azure-Ressourcen mithilfe von „Was-wäre-wenn“ und dem ARM-Vorlagen-Testtoolkit](/learn/modules/arm-template-test/).

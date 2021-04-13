@@ -4,15 +4,15 @@ description: Erfahren Sie, wie Sie Continuous Integration und Continuous Deliver
 ms.service: data-factory
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.topic: conceptual
-ms.date: 02/18/2021
-ms.openlocfilehash: 2fd8911ca11ee6dfcf795347e1fe7f2c36a2b636
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/11/2021
+ms.openlocfilehash: aa2c5801e61fb73219934c5d38e894520c41ab26
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101716522"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104784032"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Continuous Integration und Continuous Delivery in Azure Data Factory
 
@@ -204,7 +204,7 @@ Wenn Ihre Entwicklungsfactory ein zugeordnetes Git-Repository hat, können Sie d
 * Sie verwenden automatisierte CI/CD und möchten einige Eigenschaften während der Resource Manager-Bereitstellung ändern, die Eigenschaften sind standardmäßig aber nicht parametrisiert.
 * Die Resource Manager-Standardvorlage ist aufgrund der Größe Ihrer Factory ungültig, da sie mehr als die maximal zulässige Parameteranzahl (256) enthält.
 
-    In Bezug auf das Limit von 256 für benutzerdefinierte Parameter gibt es drei Optionen:    
+    In Bezug auf das Limit von 256 für benutzerdefinierte Parameter gibt es drei Optionen:    
   
     * Verwenden Sie die benutzerdefinierte Parameterdatei, und entfernen Sie Eigenschaften, die keine Parametrisierung erfordern, d. h. Eigenschaften, die einen Standardwert beibehalten und somit die Parameteranzahl verringern können.
     * Gestalten Sie die Logik im Datenfluss zur Reduzierung von Parametern um. Wenn z. B. alle Pipelineparameter denselben Wert aufweisen, können Sie stattdessen globale Parameter verwenden.
@@ -333,6 +333,10 @@ Im Folgenden wird das Erstellen der obigen Vorlage mit einer Aufschlüsselung na
 #### <a name="datasets"></a>Datasets
 
 * Für Datasets steht zwar eine typspezifische Anpassung zur Verfügung, aber Sie können die Konfiguration durchführen, ohne dass eine explizite Konfiguration auf der Ebene \* vorhanden sein muss. Im vorherigen Beispiel werden alle Dataseteigenschaften unter `typeProperties` parametrisiert.
+
+> [!NOTE]
+> **Azure-Warnungen und -Matrizen** werden, wenn sie für eine Pipeline konfiguriert sind, derzeit nicht als Parameter für ARM-Bereitstellungen unterstützt. Befolgen Sie [Überwachen von Data Factory, Warnungen und Matrizen](https://docs.microsoft.com/azure/data-factory/monitor-using-azure-monitor#data-factory-metrics), um die Warnungen und Matrizen in der neuen Umgebung erneut anzuwenden.
+> 
 
 ### <a name="default-parameterization-template"></a>Standardvorlage für die Parametrisierung
 
@@ -679,6 +683,8 @@ Wenn Sie die Git-Integration mit Ihrer Data Factory verwenden und über eine CI/
 
 -   Es ist derzeit nicht möglich, Projekte in Bitbucket zu hosten.
 
+-   Es ist derzeit nicht möglich, Alarme und Matrizen als Parameter zu exportieren und zu importieren. 
+
 ## <a name="sample-pre--and-post-deployment-script"></a><a name="script"></a> Beispielskript für vor und nach der Bereitstellung
 
 Das folgende Beispielskript kann verwendet werden, um Trigger vor der Bereitstellung zu beenden und anschließend neu starten. Außerdem enthält das Skript den Code zum Löschen von Ressourcen, die entfernt wurden. Speichern Sie das Skript in einem Azure DevOps-Git-Repository, und verweisen Sie es über eine Azure PowerShell Aufgabe unter Verwendung von „Version 4.*“.
@@ -867,7 +873,7 @@ if ($predeployment -eq $true) {
     #Stop all triggers
     Write-Host "Stopping deployed triggers`n"
     $triggersToStop | ForEach-Object {
-        if ($_.TriggerType -eq "BlobEventsTrigger") {
+        if ($_.TriggerType -eq "BlobEventsTrigger" -or $_.TriggerType -eq "CustomEventsTrigger") {
             Write-Host "Unsubscribing" $_.Name "from events"
             $status = Remove-AzDataFactoryV2TriggerSubscription -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.Name
             while ($status.Status -ne "Disabled"){
@@ -917,7 +923,7 @@ else {
         Write-Host "Deleting trigger "  $_.Name
         $trig = Get-AzDataFactoryV2Trigger -name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName
         if ($trig.RuntimeState -eq "Started") {
-            if ($_.TriggerType -eq "BlobEventsTrigger") {
+            if ($_.TriggerType -eq "BlobEventsTrigger" -or $_.TriggerType -eq "CustomEventsTrigger") {
                 Write-Host "Unsubscribing trigger" $_.Name "from events"
                 $status = Remove-AzDataFactoryV2TriggerSubscription -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.Name
                 while ($status.Status -ne "Disabled"){
@@ -976,7 +982,7 @@ else {
     #Start active triggers - after cleanup efforts
     Write-Host "Starting active triggers"
     $triggersToStart | ForEach-Object { 
-        if ($_.TriggerType -eq "BlobEventsTrigger") {
+        if ($_.TriggerType -eq "BlobEventsTrigger" -or $_.TriggerType -eq "CustomEventsTrigger") {
             Write-Host "Subscribing" $_.Name "to events"
             $status = Add-AzDataFactoryV2TriggerSubscription -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.Name
             while ($status.Status -ne "Enabled"){

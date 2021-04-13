@@ -4,15 +4,15 @@ description: Nutzen Sie eine Zusammenfassung der Marketplace-Webanalysen im Part
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 11/09/2020
+ms.date: 03/23/2021
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: a8a53a54d30df9a2f7079d705f754e554328c3f7
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: f6ed2029ec333120e3942570c951f5da6e846c7a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102553934"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104953271"
 ---
 # <a name="marketplace-insights-dashboard-in-commercial-marketplace-analytics"></a>Dashboard „Marketplace-Erkenntnisse“ in Analysen für den kommerziellen Marketplace
 
@@ -115,7 +115,9 @@ Diese Tabelle enthält eine Listenansicht der Seitenbesuche und Handlungsaufford
 | Kontaktformular | Kontaktformular | Die Anzahl der Klicks auf die Handlungsaufforderung „Kontakt mit mir aufnehmen“ auf der Angebotsseite für ein bestimmtes Datum | ContactMe |
 | Testversion | Testversion | Die Anzahl der Klicks auf die Handlungsaufforderung „Testlaufwerk“ auf der Angebotsseite für ein bestimmtes Datum | TestDrive |
 | Kostenlose Testversion | Kostenlose Testversion | Die Anzahl der Klicks auf die Handlungsaufforderung „Kostenlose Testversion“ auf der Angebotsseite für ein bestimmtes Datum | FreeTrial |
-|||||
+| Kampagne | Name der Kampagne | Das Verständnis von Webtelemetrie (Seitenbesuch und Klicks auf Handlungsaufforderungen) anhand des Kampagnennamens. | Kampagne |
+| – | Website | Der Name der Storefront, von der aus der Seitenbesuch oder Klick auf die Handlungsaufforderung erfolgte. Mögliche Werte sind:<br><ul><li>AZUREMARKETPLACE<li>APPSOURCE</ul> | Website |
+|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

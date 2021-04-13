@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: how-to
 ms.date: 02/23/2021
 ms.author: alkemper
-ms.openlocfilehash: 7d343e07414dd1c3f9786c1684eb6f14d5f45e51
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e1a4fb52a5f9622758e9ed805bf9380f5f608870
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101718181"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106068251"
 ---
 # <a name="push-settings-to-app-configuration-with-azure-pipelines"></a>Pushen von Einstellungen an App Configuration mit Azure Pipelines
 
@@ -32,7 +32,10 @@ Mit der Aufgabe [Azure App Configuration Push](https://marketplace.visualstudio.
 1. Navigieren Sie in Azure DevOps zu dem Projekt mit Ihrer Zielpipeline, und öffnen Sie links unten die **Projekteinstellungen**.
 1. Wählen Sie unter **Pipelines** die Option **Dienstverbindungen** und anschließend rechts oben die Option **Neue Dienstverbindung** aus.
 1. Wählen Sie **Azure Resource Manager** aus.
-1. Wählen Sie **Dienstprinzipal (automatisch)** aus.
+![Screenshot des Auswählens von Azure Resource Manager in der Dropdownliste „Neue Dienstverbindung“.](./media/new-service-connection.png)
+1. Wählen Sie im Dialogfeld **Authentifizierungsmethode** die Option **Dienstprinzipal (automatisch)** aus.
+    > [!NOTE]
+    > Authentifizierung mit **verwalteter Identität** wird zurzeit für die App Configuration-Aufgabe nicht unterstützt.
 1. Geben Sie Ihr Abonnement und Ihre Ressource an. Benennen Sie Ihre Dienstverbindung.
 
 Suchen Sie im Anschluss an die Erstellung der Dienstverbindung nach dem Namen des zugewiesenen Dienstprinzipals. Diesem Dienstprinzipal wird im nächsten Schritt eine neue Rollenzuweisung hinzugefügt.
@@ -41,6 +44,7 @@ Suchen Sie im Anschluss an die Erstellung der Dienstverbindung nach dem Namen de
 1. Wählen Sie die Dienstverbindung aus, die Sie im vorherigen Abschnitt erstellt haben.
 1. Wählen Sie **Dienstprinzipal verwalten** aus.
 1. Notieren Sie sich den unter **Anzeigename** angegebenen Wert.
+![Screenshot des Anzeigenamens des Dienstprinzipals.](./media/service-principal-display-name.png)
 
 ## <a name="add-role-assignment"></a>Rollenzuweisung hinzufügen
 
@@ -48,19 +52,27 @@ Weisen Sie den im Rahmen der Aufgabe verwendeten Anmeldeinformationen die passen
 
 1. Navigieren Sie zu Ihrem App Configuration-Zielspeicher. 
 1. Wählen Sie auf der linken Seite **Zugriffssteuerung (IAM)** aus.
-1. Wählen Sie im oberen Bereich **+ Hinzufügen** und anschließend **Rollenzuweisung hinzufügen** aus.
+1. Klicken Sie auf der rechten Seite auf die Schaltfläche **Rollenzuweisungen hinzufügen**.
+![Screenshot der Schaltfläche „Rollenzuweisungen hinzufügen“.](./media/add-role-assignment-button.png)
 1. Wählen Sie unter **Rolle** die Option **App Configuration-Datenbesitzer** aus. Diese Rolle ermöglicht der Aufgabe das Ausführen von Lese- und Schreibvorgängen für den App Configuration-Speicher. 
 1. Wählen Sie den Dienstprinzipal aus, der der Dienstverbindung zugeordnet ist, die Sie im vorherigen Abschnitt erstellt haben.
+![Screenshot des Dialogfelds „Rollenzuweisung hinzufügen“.](./media/add-role-assignment.png)
+
   
 ## <a name="use-in-builds"></a>Verwenden in Builds
 
 In diesem Abschnitt erfahren Sie, wie Sie die Aufgabe „Azure App Configuration Push“ in einer Azure DevOps-Buildpipeline verwenden.
 
 1. Klicken Sie auf **Pipelines** > **Pipelines**, um zur Seite für Buildpipelines zu navigieren. Die Dokumentation zu Buildpipelines finden Sie [hier](/azure/devops/pipelines/create-first-pipeline?tabs=tfs-2018-2).
-      - Falls Sie eine neue Buildpipeline erstellen möchten, wählen Sie auf der rechten Seite der Pipeline die Option **Assistent anzeigen** aus, und suchen Sie nach der Aufgabe **Azure App Configuration Push**.
-      - Falls Sie eine bereits vorhandene Buildpipeline verwenden möchten, navigieren Sie im Rahmen der Pipelinebearbeitung zur Registerkarte **Aufgaben**, und suchen Sie nach der Aufgabe **Azure App Configuration Push**.
-2. Konfigurieren Sie die erforderlichen Parameter für die Aufgabe, um die Schlüsselwerte aus der Konfigurationsdatei in den App Configuration-Speicher zu pushen. Der Parameter **Konfigurationsdateipfad** beginnt am Stamm des Dateirepositorys.
-3. Speichern Sie Ihre Angaben, und reihen Sie einen Build in die Warteschlange ein. Im Buildprotokoll werden alle Fehler angezeigt, die ggf. bei der Aufgabenausführung aufgetreten sind.
+      - Wenn Sie eine neue Buildpipeline erstellen, wählen Sie im letzten Schritt des Vorgangs auf der Registerkarte **Review** (Überprüfen) auf der rechten Seite der Pipeline **Show assistant** (Assistenten anzeigen) aus.
+      ![Screenshot der Schaltfläche „Show assistant“ für eine neue Pipeline.](./media/new-pipeline-show-assistant.png)
+      - Wenn Sie eine vorhandene Buildpipeline verwenden, klicken Sie oben rechts auf die Schaltfläche **Bearbeiten**.
+      ![Screenshot der Schaltfläche „Bearbeiten“ für eine vorhandene Pipeline.](./media/existing-pipeline-show-assistant.png)
+1. Suchen Sie nach der Aufgabe **Azure App Configuration Push**.
+![Screenshot des Dialogfelds „Aufgabe hinzufügen“ mit „Azure App Configuration Push“ im Suchfeld.](./media/add-azure-app-configuration-push-task.png)
+1. Konfigurieren Sie die erforderlichen Parameter für die Aufgabe, um die Schlüsselwerte aus der Konfigurationsdatei in den App Configuration-Speicher zu pushen. Die Parameter werden weiter unten im Abschnitt **Parameter** sowie in QuickInfos neben dem jeweiligen Parameter erläutert.
+![Screenshot der „Parameter“ für die Aufgabe „App Configuration Push“.](./media/azure-app-configuration-push-parameters.png)
+1. Speichern Sie Ihre Angaben, und reihen Sie einen Build in die Warteschlange ein. Im Buildprotokoll werden alle Fehler angezeigt, die ggf. bei der Aufgabenausführung aufgetreten sind.
 
 ## <a name="use-in-releases"></a>Verwenden in Releases
 
@@ -69,8 +81,11 @@ In diesem Abschnitt erfahren Sie, wie Sie die Aufgabe „Azure App Configuration
 1. Wählen Sie **Pipelines** > **Releases** aus, um zur Seite für Releasepipelines zu navigieren. Die Dokumentation zu Releasepipelines finden Sie [hier](/azure/devops/pipelines/release).
 1. Wählen Sie eine vorhandene Releasepipeline aus. Sollten Sie über keine verfügen, wählen Sie **+ Neu** aus, um eine zu erstellen.
 1. Wählen Sie rechts oben die Schaltfläche **Bearbeiten** aus, um die Releasepipeline zu bearbeiten.
-1. Wählen Sie die **Phase** aus, um die Aufgabe hinzuzufügen. Weitere Informationen zu Phasen finden Sie [hier](/azure/devops/pipelines/release/environments).
-1. Wählen Sie **+** für diesen Auftrag aus, und fügen Sie auf der Registerkarte **Bereitstellen** die Aufgabe **Azure App Configuration Push** hinzu.
+1. Wählen Sie im Dropdown **Tasks** (Aufgaben) die **Stage** (Phase) aus, in der Sie die Aufgabe hinzufügen möchten. Weitere Informationen zu Phasen finden Sie [hier](/azure/devops/pipelines/release/environments).
+![Screenshot der ausgewählten Phase im Dropdown „Tasks“.](./media/pipeline-stage-tasks.png)
+1. Klicken Sie neben dem Auftrag, dem Sie eine neue Aufgabe hinzufügen möchten, auf **+** .
+![Screenshot der Plus-Schaltfläche neben dem Auftrag.](./media/add-task-to-job.png)
+1. Geben Sie im Dialogfeld **Add tasks** (Aufgaben hinzufügen) die Zeichenfolge **Azure App Configuration Push** in das Suchfeld ein, und wählen Sie es aus.
 1. Konfigurieren Sie die erforderlichen Parameter in der Aufgabe, um Ihre Schlüsselwerte aus Ihrer Konfigurationsdatei in Ihren App Configuration-Speicher zu pushen. Die Parameter werden weiter unten im Abschnitt **Parameter** sowie in QuickInfos neben dem jeweiligen Parameter erläutert.
 1. Speichern Sie Ihre Angaben, und reihen Sie ein Release in die Warteschlange ein. Im Releaseprotokoll werden alle Fehler angezeigt, die ggf. bei der Aufgabenausführung aufgetreten sind.
 
@@ -80,7 +95,15 @@ Von der Aufgabe „Azure App Configuration Push“ werden folgende Parameter ver
 
 - **Azure-Abonnement**: Eine Dropdownliste mit Ihren verfügbaren Azure-Dienstverbindungen. Klicken Sie zum Aktualisieren der Liste mit den verfügbaren Azure-Dienstverbindungen rechts neben dem Textfeld auf die Schaltfläche **Refresh Azure subscription** (Azure-Abonnement aktualisieren).
 - **App Configuration Name** (App Configuration-Name): Eine Dropdownliste mit Ihren verfügbaren Konfigurationsspeichern unter dem ausgewählten Abonnement. Klicken Sie zum Aktualisieren der Liste mit den verfügbaren Konfigurationsspeichern rechts neben dem Textfeld auf die Schaltfläche **Refresh App Configuration Name** (App Configuration-Name aktualisieren).
-- **Konfigurationsdateipfad**: Der Pfad zu Ihrer Konfigurationsdatei. Sie können Ihr Buildartefakt durchsuchen, um eine Konfigurationsdatei auszuwählen. (Verwenden Sie hierzu die Schaltfläche `...` rechts neben dem Textfeld.) Die unterstützten Dateiformate sind: YAML, JSON und Eigenschaften.
+- **Konfigurationsdateipfad**: Der Pfad zu Ihrer Konfigurationsdatei. Der Parameter **Konfigurationsdateipfad** beginnt am Stamm des Dateirepositorys. Sie können Ihr Buildartefakt durchsuchen, um eine Konfigurationsdatei auszuwählen. (Verwenden Sie hierzu die Schaltfläche `...` rechts neben dem Textfeld.) Die unterstützten Dateiformate sind: YAML, JSON und Eigenschaften. Im Folgenden sehen Sie eine Beispielkonfigurationsdatei im JSON-Format.
+    ```json
+    {
+        "TestApp:Settings:BackgroundColor":"#FFF",
+        "TestApp:Settings:FontColor":"#000",
+        "TestApp:Settings:FontSize":"24",
+        "TestApp:Settings:Message": "Message data"
+    }
+    ```
 - **Trennzeichen**: Das Trennzeichen zum Vereinfachen von JSON- und YML-Dateien.
 - **Tiefe**: Die Tiefe für die Vereinfachung der JSON- und YML-Dateien.
 - **Präfix:** Eine Zeichenfolge, die jedem Schlüssel vorangestellt wird, der in den App Configuration-Speicher gepusht wird.
@@ -91,7 +114,7 @@ Von der Aufgabe „Azure App Configuration Push“ werden folgende Parameter ver
   - **Aktiviert**: Alle Schlüsselwerte, die sowohl dem angegebenen Präfix als auch der angegebenen Bezeichnung entsprechen, werden aus dem App Configuration-Speicher gelöscht, bevor neue Schlüsselwerte aus der Konfigurationsdatei gepusht werden.
   - **Nicht aktiviert**: Alle Schlüsselwerte werden aus der Konfigurationsdatei in den App Configuration-Speicher gepusht, und alles andere im App Configuration-Speicher bleibt erhalten.
 
-Nachdem Sie die erforderlichen Parameter angegeben haben, können Sie die Pipeline ausführen. Alle Schlüsselwerte in der angegebenen Konfigurationsdatei werden in App Configuration hochgeladen.
+
 
 ## <a name="troubleshooting"></a>Problembehandlung
 

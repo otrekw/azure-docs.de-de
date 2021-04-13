@@ -10,12 +10,12 @@ ms.date: 10/19/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: d5ff3fb988a7e907308ccccc8d0900d45a0601c0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c5dfd442bb52a5b1d319bd0a40b656d549134e7e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101671605"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105612312"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-notebooks-in-azure-synapse-analytics"></a>Erstellen, Entwickeln und Verwalten von Synapse Studio-Notebooks in Azure Synapse Analytics
 
@@ -41,9 +41,6 @@ Das Synapse-Team brachte die neue Notebookkomponente in Synapse Studio ein, um d
 |%%html| Nicht unterstützt |&#9745;|
 |Drag & Drop zum Verschieben einer Zelle| Nicht unterstützt |&#9745;|
 |Persistente Display()-Ausgabe|&#9745;| Nicht verfügbar |
-|Alles abbrechen| &#9745;| Nicht verfügbar|
-|Alle Zellen oberhalb ausführen|&#9745;| Nicht verfügbar |
-|Alle Zellen unterhalb ausführen|&#9745;| Nicht verfügbar |
 |Textzelle mit Symbolleisten-Schaltflächen formatieren|&#9745;| Nicht verfügbar |
 |Rückgängigmachen des Zellenvorgangs| &#9745;| Nicht verfügbar |
 
@@ -115,7 +112,7 @@ Die folgende Abbildung zeigt ein Beispiel dafür, wie Sie eine PySpark-Abfrage m
 
    ![Synapse-Spark-Magic-Befehle](./media/apache-spark-development-using-notebooks/synapse-spark-magics.png)
 
-### <a name="use-temp-tables-to-reference-data-across-languages"></a>Verwenden von temporären Tabellen zum Verweisen auf Daten in verschiedenen Sprachen
+### <a name="use-temp-tables-to-reference-data-across-languages&quot;></a>Verwenden von temporären Tabellen zum Verweisen auf Daten in verschiedenen Sprachen
 
 Sie können nicht direkt auf Daten oder Variablen in verschiedenen Sprachen einem Synapse Studio-Notebook verweisen. In Spark kann auf eine temporäre Tabelle in verschiedenen Sprachen verwiesen werden. Im Folgenden finden Sie ein Beispiel, wie Sie einen `Scala`-Datenrahmen in `PySpark` und `SparkSQL` mittels einer temporären Spark-Tabelle als Problemumgehung lesen können.
 
@@ -123,7 +120,7 @@ Sie können nicht direkt auf Daten oder Variablen in verschiedenen Sprachen eine
 
    ```scala
    %%scala
-   val scalaDataFrame = spark.read.sqlanalytics("mySQLPoolDatabase.dbo.mySQLPoolTable")
+   val scalaDataFrame = spark.read.sqlanalytics(&quot;mySQLPoolDatabase.dbo.mySQLPoolTable")
    scalaDataFrame.createOrReplaceTempView( "mydataframetable" )
    ```
 
@@ -273,28 +270,38 @@ Wählen Sie die Schaltfläche **Alle ausführen** aus, um alle Zellen im aktuell
    ![alle-Zellen-ausführen](./media/apache-spark-development-using-notebooks/synapse-run-all.png)
 
 
-# <a name="classical-notebook"></a>[Klassisches Notebook](#tab/classical)
-
 ### <a name="run-all-cells-above-or-below"></a>Ausführen aller darüber- oder darunterliegenden Zellen
+
+# <a name="classical-notebook"></a>[Klassisches Notebook](#tab/classical)
 
 Um ganz rechts auf das Menü mit zusätzlichen Zellenaktionen zuzugreifen, wählen Sie die Auslassungspunkte ( **...** ) aus. Wählen Sie dann **Zellen oberhalb ausführen** aus, um alle Zellen oberhalb der aktuellen nacheinander auszuführen. Wählen Sie **Zellen unterhalb ausführen** aus, um alle Zellen unterhalb der aktuellen nacheinander auszuführen.
 
    ![Zellen-oberhalb-oder-unterhalb-ausführen](./media/apache-spark-development-using-notebooks/synapse-run-cells-above-or-below.png)
 
+# <a name="preview-notebook"></a>[Notebook der Vorschau](#tab/preview)
+
+Erweitern Sie die Dropdownliste über die Schaltfläche **Alle ausführen**, und wählen Sie dann **Zellen oberhalb ausführen** aus, um alle Zellen oberhalb der aktuellen Zelle nacheinander auszuführen. Wählen Sie **Zellen unterhalb ausführen** aus, um alle Zellen unterhalb der aktuellen nacheinander auszuführen.
+
+   ![azure-notebook-run-cells-above-or-below](./media/apache-spark-development-using-notebooks/synapse-aznb-run-cells-above-or-below.png)
+
+---
 
 ### <a name="cancel-all-running-cells"></a>Abbrechen aller ausgeführten Zellen
+
+# <a name="classical-notebook"></a>[Klassisches Notebook](#tab/classical)
 Wählen Sie die Schaltfläche **Alle abbrechen** aus, um die ausgeführten oder in der Warteschlange wartenden Zellen abzubrechen. 
    ![cancel-all-cells](./media/apache-spark-development-using-notebooks/synapse-cancel-all.png) 
 
 # <a name="preview-notebook"></a>[Notebook der Vorschau](#tab/preview)
 
-Das Abbrechen aller aktiven Zellen ist für das Notebook der Vorschau noch nicht verfügbar. 
+Wählen Sie die Schaltfläche **Alle abbrechen** aus, um die ausgeführten oder in der Warteschlange wartenden Zellen abzubrechen. 
+   ![azure-notebook-cancel-all-cells](./media/apache-spark-development-using-notebooks/synapse-aznb-cancel-all.png) 
 
 ---
 
 
 
-### <a name="reference-notebook"></a>Referenznotebook
+### <a name="notebook-reference"></a>Notebookverweis
 
 # <a name="classical-notebook"></a>[Klassisches Notebook](#tab/classical)
 
@@ -305,6 +312,11 @@ Wird nicht unterstützt.
 Sie können den Magic-Befehl ```%run <notebook path>``` verwenden, um im Kontext des aktuellen Notebooks auf ein anderes Notebook zu verweisen. Alle im Referenznotebook definierten Variablen sind im aktuellen Notebook verfügbar. Der Magic-Befehl ```%run``` unterstützt geschachtelte Aufrufe, aber keine rekursiven Aufrufe. Sie erhalten eine Ausnahme, wenn die Anweisungstiefe größer als fünf ist. Der Befehl ```%run``` unterstützt derzeit nur die Übergabe eines Notebookpfads als Parameter. 
 
 Beispiel: ``` %run /path/notebookA ```.
+
+> [!NOTE]
+> Notebookverweise werden in einer Synapse-Pipeline nicht unterstützt.
+>
+>
 
 ---
 
@@ -346,7 +358,10 @@ Sie können auch Spark-Sitzungseinstellungen über einen **%%configure**-Magic-B
     }
 }
 ```
-
+> [!NOTE]
+> Der Magic-Befehl für die Konfiguration der Spark-Sitzung wird in einer Synapse-Pipeline nicht unterstützt.
+>
+>
 
 ## <a name="bring-data-to-a-notebook"></a>Einfügen von Daten in ein Notebook
 
@@ -420,6 +435,11 @@ In den Notebook-Eigenschaften können Sie konfigurieren, ob die Zellenausgabe be
 ## <a name="magic-commands"></a>Magic-Befehle
 Sie können vertraute Jupyter-Magic-Befehle in Azure Synapse Studio-Notebooks verwenden. In der folgenden Liste finden Sie die derzeit verfügbaren Magic-Befehle. [Teilen Sie uns Ihre Anwendungsfälle auf GitHub mit](https://github.com/MicrosoftDocs/azure-docs/issues/new), damit wir weitere Magic-Befehle erstellen können, um Ihre Anforderungen zu erfüllen.
 
+> [!NOTE]
+> Nur die folgenden Magic-Befehle werden in einer Synapse-Pipeline unterstützt: %%pyspark, %%spark, %%csharp, %%sql. 
+>
+>
+
 # <a name="classical-notebook"></a>[Klassisches Notebook](#tab/classical)
 
 Verfügbare Zeilen-Magics: [%lsmagic](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-lsmagic), [%time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time), [%timeit](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit)
@@ -430,7 +450,7 @@ Verfügbare Zeilen-Magics: [%%time](https://ipython.readthedocs.io/en/stable/int
 
 # <a name="preview-notebook"></a>[Notebook der Vorschau](#tab/preview)
 
-Verfügbare Zeilen-Magics: [%lsmagic](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-lsmagic), [%time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time), [%timeit](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit), [%history](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-history), [%run](#reference-notebook), [%load](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-load)
+Verfügbare Zeilen-Magics: [%lsmagic](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-lsmagic), [%time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time), [%timeit](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit), [%history](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-history), [%run](#notebook-reference), [%load](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-load)
 
 Verfügbare Zeilen-Magics: [%%time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time), [%%timeit](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit), [%%capture](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-capture), [%%writefile](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-writefile), [%%sql](#use-multiple-languages), [%%pyspark](#use-multiple-languages), [%%spark](#use-multiple-languages), [%%csharp](#use-multiple-languages), [%%html](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-html), [%%configure](#spark-session-config-magic-command)
 

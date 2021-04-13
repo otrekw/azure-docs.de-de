@@ -3,12 +3,12 @@ title: Einrichten von Aufbewahrungsrichtlinien in Azure DevTest Labs | Microsoft
 description: Erfahren Sie, wie Sie eine Aufbewahrungsrichtlinie konfigurieren, die Factory bereinigen und alte Images von DevTest Labs ausmustern.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 85384e88f8d456c7bf67302a57618d7a9703a5ee
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4e642d7dc0733e55caa4ed62e3382ef4422030f9
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102550024"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105727534"
 ---
 # <a name="set-up-retention-policy-in-azure-devtest-labs"></a>Einrichten von Aufbewahrungsrichtlinien in Azure DevTest Labs
 In diesem Artikel wird das Festlegen einer Aufbewahrungsrichtlinie, das Bereinigen der Factory und das Ausmustern alter Images aus allen anderen DevTest Labs in der Organisation behandelt. 
@@ -60,11 +60,11 @@ Sobald die Builddefinition vollständig ist, stellen Sie einen neuen Build in di
 ## <a name="summary"></a>Zusammenfassung
 Sie haben nun eine aktive Image Factory, die bei Bedarf benutzerdefinierte Images generieren und an Ihre Labs verteilen kann. An dieser Stelle geht es nur darum, Ihre Images richtig einzurichten und die Ziellabs zu bestimmen. Wie im vorherigen Artikel erwähnt, gibt die Datei **Labs.json** in Ihrem Ordner **Configuration** an, welche Images in jedem der Ziellabs verfügbar gemacht werden sollen. Wenn Sie andere DevTest-Labs zu Ihrer Organisation hinzufügen, müssen Sie lediglich einen Eintrag in der Datei „Labs.json“ für das neue Lab hinzufügen.
 
-Das Hinzufügen eines neuen Image zu Ihrer Factory ist ebenfalls einfach. Wenn Sie ein neues Image in Ihre Factory einbinden möchten, öffnen Sie das [Azure-Portal](https://portal.azure.com), navigieren Sie zu den DevTest-Labs Ihrer Factory, klicken Sie auf die Schaltfläche zum Hinzufügen einer VM, und wählen Sie das gewünschte Marketplace-Image und Artefakte. Anstatt auf die Schaltfläche **Erstellen** zu klicken, um die neue VM zu erstellen, wählen Sie **Azure Resource Manager-Vorlage anzeigen** aus und speichern die Vorlage als JSON-Datei im Ordner **GoldenImages** in Ihrem Repository. Beim nächsten Ausführen der Image Factory wird Ihr benutzerdefiniertes Image erstellt.
+Das Hinzufügen eines neuen Image zu Ihrer Factory ist ebenfalls einfach. Wenn Sie ein neues Image in Ihre Factory einbinden möchten, öffnen Sie das [Azure-Portal](https://portal.azure.com), navigieren Sie zu den DevTest-Labs Ihrer Factory, klicken Sie auf die Schaltfläche zum Hinzufügen einer VM, und wählen Sie das gewünschte Marketplace-Image und Artefakte. Anstatt die Schaltfläche **Erstellen** auszuwählen, um die neue VM zu erstellen, wählen Sie **Azure Resource Manager-Vorlage anzeigen** aus, und speichern Sie die Vorlage als JSON-Datei im Ordner **GoldenImages** in Ihrem Repository. Beim nächsten Ausführen der Image Factory wird Ihr benutzerdefiniertes Image erstellt.
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 1. [Planen Sie für Ihren Build/Ihr Release](/azure/devops/pipelines/build/triggers?tabs=designer) die regelmäßige Ausführung der Image Factory. Dadurch werden die von Ihrer Factory generierten Images regelmäßig aktualisiert.
 2. Erstellen Sie weitere Golden Images für Ihre Factory. Sie können auch in Betracht ziehen, [Artefakte](devtest-lab-artifact-author.md) zu erstellen, um zusätzliche Teile Ihrer VM-Einrichtungsaufgaben in ein Skript einzubinden und die Artefakte in Ihre Factory-Images aufzunehmen.
-4. Erstellen Sie einen [separaten Build bzw. ein separates Release](/azure/devops/pipelines/overview?view=azure-devops-2019), um das Skript **DistributeImages** getrennt auszuführen. Sie können dieses Skript ausführen, wenn Sie Änderungen an „Labs.json“ vornehmen und Images in Ziellabs kopieren lassen, ohne alle Images erneut erstellen zu müssen.
+4. Erstellen Sie einen [separaten Build bzw. ein separates Release](/azure/devops/pipelines/overview), um das Skript **DistributeImages** getrennt auszuführen. Sie können dieses Skript ausführen, wenn Sie Änderungen an „Labs.json“ vornehmen und Images in Ziellabs kopieren lassen, ohne alle Images erneut erstellen zu müssen.
 

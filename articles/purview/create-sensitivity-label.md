@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 03/09/2021
-ms.openlocfilehash: 37ac292acc76c681ea38b2ae881ff8cd2ae5ec3c
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 5f6e2474a533f5619d5544b674a87b6412323cc3
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102502445"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106166733"
 ---
 # <a name="automatically-label-your-data-in-azure-purview"></a>Automatisches Bezeichnen Ihrer Daten in Azure Purview
 
@@ -38,7 +38,7 @@ Im Gegensatz dazu werden **Vertraulichkeitsbezeichnungen** angewendet, wenn eine
 
 Vertraulichkeitsbezeichnungen in Azure Purview können zum automatischen Anwenden von Bezeichnungen auf Dateien und Datenbankspalten verwendet werden.
 
-   Weitere Informationen finden Sie unter
+Weitere Informationen finden Sie unter
 
 - [Informationen zu Vertraulichkeitsbezeichnungen](/microsoft-365/compliance/sensitivity-labels) in der Microsoft 365-Dokumentation
 - [Was sind Regeln für die automatische Bezeichnung?](#what-are-auto-labeling-rules)
@@ -76,7 +76,7 @@ Weitere Informationen finden Sie unter [SQL-Datenermittlung und -klassifizierung
 
 Wenn Sie nicht bereits über Vertraulichkeitsbezeichnungen verfügen, müssen Sie sie erstellen und für Azure Purview verfügbar machen. Vorhandene Vertraulichkeitsbezeichnungen können auch geändert werden, um sie für Azure Purview verfügbar zu machen.
 
-   Weitere Informationen finden Sie unter
+Weitere Informationen finden Sie unter
 
 - [Lizenzanforderungen](#licensing-requirements)
 - [Erweitern von Vertraulichkeitsbezeichnungen auf Azure Purview](#extending-sensitivity-labels-to-azure-purview)
@@ -96,7 +96,7 @@ Zum Anwenden von MIP-Vertraulichkeitsbezeichnungen auf Azure-Ressourcen in Azure
 Durch die Erweiterung der MIP-Vertraulichkeitsbezeichnungen mit Azure Purview können Organisationen die Vertraulichkeit nun für eine breitere Palette von Datenquellen erkennen und klassifizieren und Erkenntnisse dazu erhalten. Dies minimiert das Risiko in Bezug auf die Compliance.
 
 > [!NOTE]
-> Da Microsoft 365 und Azure Purview separate Dienste sind, werden sie möglicherweise in verschiedenen Regionen bereitgestellt. Bezeichnungsnamen und Namen benutzerdefinierter Vertraulichkeitsinformationstypen werden als Kundendaten betrachtet und standardmäßig am gleichen geografischen Standort aufbewahrt, um die Vertraulichkeit Ihrer Daten zu schützen und die Vorschriften der DSGVO einzuhalten.
+> Da Microsoft 365 und Azure Purview separate Dienste sind, werden sie möglicherweise in verschiedenen Regionen bereitgestellt. Bezeichnungsnamen und Namen benutzerdefinierter Vertraulichkeitsinformationstypen werden als Kundendaten betrachtet und standardmäßig am gleichen geografischen Standort aufbewahrt, um die Vertraulichkeit Ihrer Daten zu schützen und die Datenschutzbestimmungen einzuhalten.
 >
 > Aus diesem Grund werden Bezeichnungen und benutzerdefinierte vertrauliche Informationstypen nicht standardmäßig für Azure Purview freigegeben, sondern erfordern zur Verwendung in Azure Purview Ihre Zustimmung.
 

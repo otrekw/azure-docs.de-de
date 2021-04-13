@@ -1,17 +1,17 @@
 ---
 title: Erstellen einer Java-Funktion in Azure Functions mithilfe von IntelliJ
 description: Erfahren Sie, wie Sie IntelliJ zum Erstellen einer einfachen, durch HTTP ausgelösten Java-Funktion verwenden, die Sie dann veröffentlichen, um sie in einer serverlosen Umgebung in Azure auszuführen.
-author: jeffhollan
+author: yucwan
 ms.topic: how-to
 ms.date: 07/01/2018
-ms.author: jehollan
+ms.author: yucwan
 ms.custom: mvc, devcenter, devx-track-java
-ms.openlocfilehash: 1edfbca2f2a16aeebc1244b298426dc46d72c6d5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 45fb62b446e6b589dc0cb9287a8aebe7f4e699b1
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101708814"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105543640"
 ---
 # <a name="create-your-first-java-function-in-azure-using-intellij"></a>Erstellen Ihrer ersten Java-Funktion in Azure mit IntelliJ
 
@@ -104,17 +104,9 @@ In diesem Abschnitt wird mithilfe des Azure-Toolkits für IntelliJ ein lokales A
 
     ![Bereitstellen des Projekts in Azure](media/functions-create-first-java-intellij/deploy-functions-to-azure.png)
 
-1. Falls Sie noch keine Funktions-App besitzen, klicken Sie auf *No available function, click to create a new one* (Keine verfügbare Funktion. Zum Erstellen einer neuen Funktion klicken).
+1. Falls Sie noch keine Funktions-App besitzen, klicken Sie auf *+* in der Zeile *Function*. Geben Sie den Namen der Funktions-App ein, und wählen Sie die geeignete Plattform aus. Hier können wir einfach die Standardeinstellung akzeptieren. Klicken Sie auf *OK*, und die neue Funktions-App, die Sie soeben erstellt haben, wird automatisch ausgewählt. Klicken Sie zum Bereitstellen der Funktionen auf *Ausführen*.
 
     ![Funktions-App in Azure erstellen](media/functions-create-first-java-intellij/deploy-functions-create-app.png)
-
-1. Geben Sie den Namen der Funktions-App ein, und wählen Sie die entsprechenden Angaben für das Abonnement, die Plattform, die Ressourcengruppe und den App Service-Plan aus. Sie können hier auch eine Ressourcengruppe oder einen App Service-Plan erstellen. Übernehmen Sie die App-Einstellungen, klicken Sie auf *OK*, und warten Sie einige Minuten, bis die neue Funktions-App erstellt wird. Die Statusleiste *Creating New Function App...* (Neue Funktions-App wird erstellt...) wird nicht mehr angezeigt.
-
-    ![Bereitstellen der Funktions-App in Azure: Assistent zum Erstellen von Apps](media/functions-create-first-java-intellij/deploy-functions-create-app-wizard.png)
-
-1. Wählen Sie die Funktions-App aus, in der die Bereitstellung vorgenommen werden soll. (Die von Ihnen soeben erstellte Funktions-App ist automatisch ausgewählt.) Klicken Sie zum Bereitstellen der Funktionen auf *Ausführen*.
-
-    ![Screenshot des Dialogfelds zum Bereitstellen von Azure-Funktionen.](media/functions-create-first-java-intellij/deploy-functions-run.png)
 
     ![Bereitstellen der Funktions-App in Azure: Protokoll](media/functions-create-first-java-intellij/deploy-functions-log.png)
 

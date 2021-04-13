@@ -4,12 +4,12 @@ description: Knotentypen, Dauerhaftigkeit, Zuverlässigkeit und andere Faktoren 
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: pepogors
-ms.openlocfilehash: b3361337bb0cf60e47efe198aad7aa8cc20ae7b3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9268dfef15d8302eb31cc1b649c7fd713aab6721
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101714934"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105732583"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Überlegungen zur Kapazitätsplanung für Service Fabric-Cluster
 
@@ -111,7 +111,7 @@ Berücksichtigen Sie die folgenden Empfehlungen für die Verwaltung von Knotenty
 * Verwalten Sie mindestens fünf Knoten für alle VM-Skalierungsgruppen, für die die Dauerhaftigkeitsstufen „Gold“ oder „Silber“ aktiviert wurden. Der Cluster wechselt in den Fehlerzustand, wenn Sie unter diesem Schwellenwert abskalieren, und Sie müssen den Status (`Remove-ServiceFabricNodeState`) für die entfernten Knoten manuell bereinigen.
 * Jede VM-Skalierungsgruppe mit der Dauerhaftigkeitsstufe „Silber“ oder „Gold“ muss einem eigenen Knotentyp im Service Fabric-Cluster zugeordnet werden. Das Zuordnen mehrerer VM-Skalierungsgruppen zu einem einzelnen Knotentyp verhindert die ordnungsgemäße Koordinierung zwischen dem Service Fabric-Cluster und der Azure-Infrastruktur.
 * Löschen Sie keine zufälligen VM-Instanzen, sondern verwenden Sie immer die Funktion zum Abskalieren für VM-Skalierungsgruppen. Das Löschen von zufälligen VM-Instanzen kann zu Ungleichheiten in der auf [Upgradedomänen](service-fabric-cluster-resource-manager-cluster-description.md#upgrade-domains) und [Fehlerdomänen](service-fabric-cluster-resource-manager-cluster-description.md#fault-domains) verteilten VM-Instanz führen. Durch eine solche Ungleichheit kann das System ggf. keinen ordnungsgemäßen Lastenausgleich zwischen den Dienstinstanzen und Dienstreplikaten mehr durchführen.
-* Wenn Sie die Autoskalierung verwenden, legen Sie die Regeln so fest, dass die Abskalierung (Entfernung von VM-Instanzen) jeweils nur für einen Knoten ausgeführt wird. Es ist nicht sicher, mehrere Instanzen gleichzeitig herunterzuskalieren.
+* Wenn Sie die Autoskalierung verwenden, legen Sie die Regeln so fest, dass die Abskalierung (Entfernung von VM-Instanzen) jeweils nur für einen Knoten ausgeführt wird. Es ist nicht sicher, mehrere Instanzen gleichzeitig zu skalieren.
 * Beim Löschen oder Freigeben von VMs auf dem primären Knotentyp sollten Sie niemals die Anzahl der zugeordneten virtuellen Computer unter die Anforderungen des Zuverlässigkeitsgrads reduzieren. Diese Vorgänge werden in einer Skalierungsgruppe mit der Dauerhaftigkeitsstufe „Silber“ oder „Gold“ auf unbestimmte Zeit blockiert.
 
 ### <a name="changing-durability-levels"></a>Ändern von Dauerhaftigkeitsstufen

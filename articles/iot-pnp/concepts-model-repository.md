@@ -7,20 +7,20 @@ ms.date: 11/17/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: b567efe2541bb33c905def73bb78398799b4ed69
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 33ff96b4e51dbf80bfdb924bc37786a344cdfdc6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94920541"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104582645"
 ---
-# <a name="device-model-repository"></a>Gerätemodellrepository
+# <a name="device-models-repository"></a>Gerätemodellrepository
 
-Das Gerätemodellrepository (Device Model Repository, DMR) ermöglicht Geräteentwicklern das Verwalten und Freigeben von IoT Plug & Play-Gerätemodellen. Bei den Gerätemodellen handelt es sich um JSON LD-Dokumente, die mit der [Digital Twins-Modellierungssprache (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md) definiert werden.
+Das Gerätemodellrepository (Device Models Repository, DMR) ermöglicht Geräteentwicklern das Verwalten und Freigeben von IoT Plug & Play-Gerätemodellen. Bei den Gerätemodellen handelt es sich um JSON LD-Dokumente, die mit der [Digital Twins-Modellierungssprache (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md) definiert werden.
 
 Das DMR definiert ein Muster zum Speichern von DTDL-Schnittstellen in einer Ordnerstruktur auf der Grundlage des Gerätezwilling-Modellbezeichners (Device Twin Model Identifier, DTMI). Sie können eine Schnittstelle im DMR auffinden, indem Sie den DTMI in einen relativen Pfad konvertieren. Beispielsweise übersetzt sich der DTMI `dtmi:com:example:Thermostat;1` in `/dtmi/com/example/thermostat-1.json`.
 
-## <a name="public-device-model-repository"></a>Öffentliches Gerätemodellrepository
+## <a name="public-device-models-repository"></a>Öffentliches Gerätemodellrepository
 
 Microsoft hostet einen öffentlichen DMR mit folgenden Merkmalen:
 
@@ -28,7 +28,7 @@ Microsoft hostet einen öffentlichen DMR mit folgenden Merkmalen:
 - Unveränderlichkeit.  Schnittstellen können nach der Veröffentlichung nicht aktualisiert werden.
 - Hyperskalierung. Microsoft stellt die erforderliche Infrastruktur zum Erstellen eines sicheren, skalierbaren Endpunkts bereit, in dem Sie Gerätemodelle veröffentlichen und nutzen können.
 
-## <a name="custom-device-model-repository"></a>Benutzerdefiniertes Gerätemodellrepository
+## <a name="custom-device-models-repository"></a>Benutzerdefiniertes Gerätemodellrepository
 
 Verwenden Sie in jedem Speichermedium dasselbe DMR-Muster, z. B. ein lokales Dateisystem oder benutzerdefinierte HTTP-Webserver, um ein benutzerdefiniertes DMR zu erstellen. Sie können Gerätemodelle aus dem benutzerdefinierten DMR genauso wie aus dem öffentlichen DMR abrufen, indem Sie die für den Zugriff auf das DMR verwendete Basis-URL ändern.
 
@@ -47,38 +47,50 @@ Alle Schnittstellen in den `dtmi`-Ordnern stehen auch über den öffentlichen En
 
 ### <a name="resolve-models"></a>Auflösen von Modellen
 
-Für den programmgesteuerten Zugriff auf diese Schnittstellen müssen Sie einen DTMI in einen relativen Pfad konvertieren, den Sie zum Abfragen des öffentlichen Endpunkts verwenden können.
+Für einen programmgesteuerten Zugriff auf diese Schnittstellen können Sie den `ModelsRepositoryClient` im NuGet-Paket [Azure.IoT.ModelsRepository](https://www.nuget.org/packages/Azure.IoT.ModelsRepository) verwenden. Dieser Client ist standardmäßig so konfiguriert, dass er das unter [devicemodels.azure.com](https://devicemodels.azure.com/) verfügbare öffentliche DMR abfragt. Er kann für ein beliebiges benutzerdefiniertes Repository konfiguriert werden.
 
-Verwenden Sie zum Konvertieren eines DTMI in einen absoluten Pfad die Funktion `DtmiToPath` mit `IsValidDtmi`:
-
-```cs
-static string DtmiToPath(string dtmi)
-{
-    if (!IsValidDtmi(dtmi))
-    {
-        return null;
-    }
-    // dtmi:com:example:Thermostat;1 -> dtmi/com/example/thermostat-1.json
-    return $"/{dtmi.ToLowerInvariant().Replace(":", "/").Replace(";", "-")}.json";
-}
-
-static bool IsValidDtmi(string dtmi)
-{
-    // Regex defined at https://github.com/Azure/digital-twin-model-identifier#validation-regular-expressions
-    Regex rx = new Regex(@"^dtmi:[A-Za-z](?:[A-Za-z0-9_]*[A-Za-z0-9])?(?::[A-Za-z](?:[A-Za-z0-9_]*[A-Za-z0-9])?)*;[1-9][0-9]{0,8}$");
-    return rx.IsMatch(dtmi);
-}
-```
-
-Mit dem resultierenden Pfad und der Basis-URL für das Repository können wir die Schnittstelle abrufen:
+Der Client akzeptiert einen `DTMI` als Eingabe und gibt ein Wörterbuch mit allen erforderlichen Schnittstellen zurück:
 
 ```cs
-const string _repositoryEndpoint = "https://devicemodels.azure.com";
+using Azure.IoT.ModelsRepository;
 
-string dtmiPath = DtmiToPath(dtmi.ToString());
-string fullyQualifiedPath = $"{_repositoryEndpoint}{dtmiPath}";
-string modelContent = await _httpClient.GetStringAsync(fullyQualifiedPath);
+var client = new ModelsRepositoryClient();
+IDictionary<string, string> models = client.GetModels("dtmi:com:example:TemperatureController;1");
+models.Keys.ToList().ForEach(k => Console.WriteLine(k));
 ```
+
+Die erwartete Ausgabe sollte den `DTMI` der drei in der Abhängigkeitskette gefundenen Schnittstellen anzeigen:
+
+```txt
+dtmi:com:example:TemperatureController;1
+dtmi:com:example:Thermostat;1
+dtmi:azure:DeviceManagement:DeviceInformation;1
+```
+
+Der `ModelsRepositoryClient` kann so konfiguriert werden, dass ein benutzerdefiniertes Modell-Repository über HTTP(s) abgefragt wird. Die Abhängigkeitsauflösung kann mithilfe der verfügbaren `ModelDependencyResolution` angegeben werden:
+
+- Deaktiviert. Gibt nur die angegebene Schnittstelle zurück, ohne jegliche Abhängigkeit.
+- Aktiviert. Gibt alle Schnittstellen in der Abhängigkeitskette zurück.
+- TryFromExpanded. Verwendet die `.expanded.json`-Datei, um die vorab berechneten Abhängigkeiten abzurufen. 
+
+> [!Tip] 
+> Benutzerdefinierte Repositorys machen die `.expanded.json`-Datei möglicherweise nicht verfügbar. Wenn diese nicht verfügbar ist, greift der Client auf eine lokale Verarbeitung der einzelnen Abhängigkeiten zurück.
+
+Das nächste Codebeispiel zeigt, wie der `ModelsRepositoryClient` mit einer benutzerdefinierten Repository-Basis-URL initialisiert wird, in diesem Fall mit den `raw`-URLs aus der GitHub-API ohne Verwendung der `expanded`-Variante, da diese am `raw`-Endpunkt nicht verfügbar ist. Der `AzureEventSourceListener` wird initialisiert, um die vom Client ausgeführte HTTP-Anforderung zu überprüfen:
+
+```cs
+using AzureEventSourceListener listener = AzureEventSourceListener.CreateConsoleLogger();
+
+var client = new ModelsRepositoryClient(
+    new Uri("https://raw.githubusercontent.com/Azure/iot-plugandplay-models/main"),
+    new ModelsRepositoryClientOptions(dependencyResolution: ModelDependencyResolution.Enabled));
+
+IDictionary<string, string> models = client.GetModels("dtmi:com:example:TemperatureController;1");
+
+models.Keys.ToList().ForEach(k => Console.WriteLine(k));
+```
+
+Im Quellcode des Azure SDK-Repository auf GitHub finden Sie weitere Beispiele: [Azure.Iot.ModelsRepository/samples](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/modelsrepository/Azure.IoT.ModelsRepository/samples).
 
 ## <a name="publish-a-model"></a>Veröffentlichen eines Modells
 

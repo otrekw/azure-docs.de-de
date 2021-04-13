@@ -1,14 +1,14 @@
 ---
 title: Renderinganwendungen
 description: Mit Azure Batch können beliebige Renderinganwendungen verwendet werden. In Azure Marketplace-VM-Images sind gängige Anwendungen jedoch bereits vorinstalliert.
-ms.date: 02/12/2021
+ms.date: 03/12/2021
 ms.topic: how-to
-ms.openlocfilehash: 18fc142d2fa9c819b9872c64ef7aae4c73cc2428
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: c98e2e0a81051dad47c201de9eda9f89cc311cf2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100635335"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103496642"
 ---
 # <a name="pre-installed-applications-on-batch-rendering-vm-images"></a>Vorinstallierte Anwendungen in VM-Images für das Batch-Rendering
 
@@ -17,6 +17,9 @@ Mit Azure Batch können beliebige Renderinganwendungen verwendet werden. In Azur
 Für vorinstallierte Renderinganwendungen ist ggf. Lizenzierung mit nutzungsbasierter Zahlung verfügbar. Bei der Erstellung eines Batch-Pools können die erforderlichen Anwendungen angegeben werden, und die Kosten des virtuellen Computers sowie der Anwendungen werden pro Minute abgerechnet. Anwendungspreise sind auf der [Seite mit den Preisen für Azure Batch](https://azure.microsoft.com/pricing/details/batch/#graphic-rendering) aufgeführt.
 
 Einige Anwendungen unterstützen nur Windows, die meisten werden jedoch unter Windows und Linux unterstützt.
+
+> [!IMPORTANT]
+> Das Rendern von VM-Images und die nutzungsbasierte Lizenzierung wurden [als veraltet markiert und werden am 29. Februar 2024 eingestellt](https://azure.microsoft.com/updates/azure-batch-rendering-vm-images-licensing-will-be-retired-on-29-february-2024/). Um mit Batch zu rendern, [sollten ein benutzerdefiniertes VM-Image und eine Standardanwendungslizenz verwendet werden](batch-rendering-functionality.md#batch-pools-using-custom-vm-images-and-standard-application-licensing).
 
 ## <a name="applications-on-latest-centos-7-rendering-image"></a>Anwendungen für das neueste CentOS 7-Renderingimage
 

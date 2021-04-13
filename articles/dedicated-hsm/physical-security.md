@@ -10,14 +10,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/07/2018
-ms.author: mbaldwin
-ms.openlocfilehash: ede1af4625d06af4e280eda86d09ae1db3dfdfd1
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/25/2021
+ms.author: keithp
+ms.openlocfilehash: 8437d12075a148a3e8062f62e195bc019d89a85b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "70881031"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105606962"
 ---
 # <a name="azure-dedicated-hsm-physical-security"></a>Azure-Dienst für dedizierte HSMs – physische Sicherheit
 
@@ -25,7 +25,7 @@ Mit dem Azure-Dienst für dedizierte HSMs erfüllen Sie die erweiterten Sicherhe
 
 ## <a name="security-through-procurement"></a>Sicherheit durch Beschaffung
 
-Microsoft hält einen sicheren Beschaffungsprozess ein. Wir verwalten die Verwahrungskette und stellen sicher, dass das jeweilige bestellte und ausgelieferte Gerät auch das Gerät ist, das bei unseren Rechenzentren eintrifft. Die Geräte befinden sich in manipulationssicheren Kunststoffbeuteln. Sie werden in einem sicheren Bereich gelagert, bis sie im Datenkatalog des Rechenzentrums bearbeitet werden.  Die Racks, in denen sich die HSM-Geräte befinden, gelten als Geräte mit erheblichen Geschäftsauswirkungen (HBI, High Business Impact). Die Geräte sind gesperrt und stehen jederzeit an Vorder- und Rückseite unter Videoüberwachung.
+Microsoft hält einen sicheren Beschaffungsprozess ein. Wir verwalten die Verwahrungskette und stellen sicher, dass das jeweilige bestellte und ausgelieferte Gerät auch das Gerät ist, das bei unseren Rechenzentren eintrifft. Die Geräte befinden sich in serialisierten, manipulationssicheren Kunststoffbeuteln und -behältern. Sie werden in einem sicheren Bereich gelagert, bis sie im Datenkatalog des Rechenzentrums bearbeitet werden.  Die Racks, in denen sich die HSM-Geräte befinden, gelten als Geräte mit erheblichen Geschäftsauswirkungen (HBI, High Business Impact). Die Geräte sind gesperrt und stehen jederzeit an Vorder- und Rückseite unter Videoüberwachung.
 
 ## <a name="security-through-deployment"></a>Sicherheit durch Bereitstellung
 
@@ -49,7 +49,7 @@ Wenn ein Microsoft-Techniker auf das von HSM-Geräten verwendete Rack zugreifen 
 
 ## <a name="logical-level-security-considerations"></a>Überlegungen zur Sicherheit auf logischer Ebene
 
-HSMs werden für ein vom Kunden erstelltes virtuelles Netzwerk bereitgestellt. Dies ist der private IUP-Adressraum eines Kunden.  Diese Konfiguration bietet eine wertvolle Isolierung auf logischer Netzwerkebene und gewährleistet den ausschließlichen Zugriff durch den Kunden. Dies bedeutet, dass alle Sicherheitskontrollen auf logischer Ebene in der Verantwortung des Kunden liegen.
+HSMs werden in einem virtuellen Netzwerk bereitgestellt, das vom Kunden innerhalb des privaten IP-Adressraums des Kunden erstellt wurde.  Diese Konfiguration bietet eine wertvolle Isolierung auf logischer Netzwerkebene und gewährleistet den ausschließlichen Zugriff durch den Kunden. Dies bedeutet, dass alle Sicherheitskontrollen auf logischer Ebene in der Verantwortung des Kunden liegen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

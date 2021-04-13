@@ -3,14 +3,14 @@ title: Datei „CreateUiDefinition.json“ für den Portalbereich
 description: Hier wird das Erstellen von Benutzeroberflächendefinitionen für die Azure-Portal beschrieben. Wird zum Definieren von Azure Managed Applications-Instanzen verwendet.
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 07/14/2020
+ms.date: 03/26/2021
 ms.author: tomfitz
-ms.openlocfilehash: 327fa1d7eb73d8e65bb4f81c1dff0fe2bec2913b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 586237c6dd909312780163cf316220d2f3fddd8c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "89319565"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105641655"
 ---
 # <a name="createuidefinitionjson-for-azure-managed-applications-create-experience"></a>Die Datei „CreateUiDefinition.json“ für die Benutzeroberfläche zum Erstellen verwalteter Azure-Anwendungen
 
@@ -63,25 +63,29 @@ Die `config`-Eigenschaft ist optional. Verwenden Sie sie entweder, um das Standa
             "constraints": {
                 "validations": [
                     {
-                        "isValid": "[expression for checking]",
-                        "message": "Please select a valid subscription."
+                        "isValid": "[not(contains(subscription().displayName, 'Test'))]",
+                        "message": "Can't use test subscription."
                     },
                     {
-                        "permission": "<Resource Provider>/<Action>",
-                        "message": "Must have correct permission to complete this step."
+                        "permission": "Microsoft.Compute/virtualmachines/write",
+                        "message": "Must have write permission for the virtual machine."
+                    },
+                    {
+                        "permission": "Microsoft.Compute/virtualMachines/extensions/write",
+                        "message": "Must have write permission for the extension."
                     }
                 ]
             },
             "resourceProviders": [
-                "<Resource Provider>"
+                "Microsoft.Compute"
             ]
         },
         "resourceGroup": {
             "constraints": {
                 "validations": [
                     {
-                        "isValid": "[expression for checking]",
-                        "message": "Please select a valid resource group."
+                        "isValid": "[not(contains(resourceGroup().name, 'test'))]",
+                        "message": "Resource group name can't contain 'test'."
                     }
                 ]
             },
@@ -103,6 +107,8 @@ Die `config`-Eigenschaft ist optional. Verwenden Sie sie entweder, um das Standa
 },
 ```
 
+Schreiben Sie für die Eigenschaft `isValid` einen Ausdruck, der zu „true“ oder „false“ aufgelöst wird. Geben Sie für die Eigenschaft `permission` eine der [Ressourcenanbieteraktionen](../../role-based-access-control/resource-provider-operations.md) an.
+
 ### <a name="wizard"></a>Assistent
 
 Die `isWizard`-Eigenschaft ermöglicht Ihnen, eine erfolgreiche Überprüfung jedes Schritts zu erzwingen, bevor mit dem nächsten Schritt fortgefahren wird. Wenn die `isWizard`-Eigenschaft nicht angegeben wird, ist der Standardwert **false**, und die schrittweise Validierung ist nicht erforderlich.
@@ -117,7 +123,7 @@ Mit der Grundlagenkonfiguration können Sie den Grundlagenschritt anpassen.
 
 Geben Sie für `description` eine markdownaktivierte Zeichenfolge an, in der Ihre Ressource beschrieben wird. Mehrzeilige Formate und Verknüpfungen werden unterstützt.
 
-Die Elemente `subscription` und `resourceGroup` ermöglichen es Ihnen, zusätzliche Validierungen anzugeben. Die Syntax zum Angeben von Validierungen ist identisch mit der benutzerdefinierten Validierung für ein [Textfeld](microsoft-common-textbox.md). Sie können auch `permission`-Validierungen für das Abonnement oder die Ressourcengruppe angeben.  
+Die Elemente `subscription` und `resourceGroup` ermöglichen es Ihnen, mehr Validierungen anzugeben. Die Syntax zum Angeben von Validierungen ist identisch mit der benutzerdefinierten Validierung für ein [Textfeld](microsoft-common-textbox.md). Sie können auch `permission`-Validierungen für das Abonnement oder die Ressourcengruppe angeben.  
 
 Das Abonnement-Steuerelement (subscription) akzeptiert eine Liste mit Ressourcenanbieter-Namespaces. Beispielsweise können Sie **Microsoft.Compute** angeben. Es zeigt eine Fehlermeldung an, wenn der Benutzer ein Abonnement auswählt, das den Ressourcenanbieter nicht unterstützt. Der Fehler tritt auf, wenn der Ressourcenanbieter für dieses Abonnement nicht registriert ist und der Benutzer nicht über die Berechtigung zum Registrieren des Ressourcenanbieters verfügt.  
 
@@ -150,7 +156,7 @@ Das folgende Beispiel zeigt ein Textfeld, das den Standardelementen hinzugefügt
 
 ## <a name="steps"></a>Schritte
 
-Die steps-Eigenschaft (Schritte) enthält null oder mehr zusätzliche Schritte, die nach dem „basics“-Schritt angezeigt werden sollen. Jeder Schritt enthält mindestens ein Element. Ziehen Sie das Hinzufügen von steps-Elementen pro Rolle oder Ebene der bereitgestellten Anwendung in Betracht. Fügen Sie beispielsweise ein „steps“-Element für Masterknoteneingaben und ein „steps“-Element für die Workerknoten in einem Cluster hinzu.
+Die Eigenschaft „steps“ enthält null oder mehr nach „basics“ anzuzeigende Schritte. Jeder Schritt enthält mindestens ein Element. Ziehen Sie das Hinzufügen von steps-Elementen pro Rolle oder Ebene der bereitgestellten Anwendung in Betracht. Fügen Sie beispielsweise ein „steps“-Element für primäre Knoteneingaben und ein „steps“-Element für die Workerknoten in einem Cluster hinzu.
 
 ```json
 "steps": [

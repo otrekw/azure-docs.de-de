@@ -7,16 +7,16 @@ ms.service: data-catalog
 ms.subservice: data-catalog-gen2
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: 149a70ea9b3fad919e771e8eb279e01d1492b3b3
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 4dc1af590a1965c155a7af7b233b431f982a73d2
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104952455"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105024233"
 ---
-# <a name="how-to-bulk-edit-assets-to-tag-glossary-terms"></a>Massenbearbeitung von Ressourcen zum Taggen mit Glossarbegriffen
+# <a name="how-to-bulk-edit-assets-to-annotate-classifications-glossary-terms-and-modify-contacts"></a>Massenbearbeitung von Ressourcen zur Kommentierung von Klassifizierungen, Glossarbegriffen und zum Ändern von Kontakten
 
-In diesem Artikel wird beschrieben, wie Sie eine Liste ausgewählter Objekte in einer einzigen Aktion mit mehreren Glossarbegriffen markieren.
+In diesem Artikel wird beschrieben, wie Sie eine Liste ausgewählter Objekte in einer einzigen Aktion mit mehreren Glossarbegriffen, Klassifizierungen, Besitzern und Experten markieren.
 
 ### <a name="add-assets-to-view-selected-list-using-search"></a>Hinzufügen von Ressourcen zur Liste „Ausgewählte anzeigen“ mithilfe der Suche
 

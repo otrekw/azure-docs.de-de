@@ -1,6 +1,6 @@
 ---
 title: Zuweisen einer Azure Key Vault-Zugriffsrichtlinie (Befehlszeilenschnittstelle)
-description: Verwenden der Azure-Befehlszeilenschnittstelle zum Zuweisen einer Key Vault-Zugriffsrichtlinie zu einem Dienstprinzipal oder einer Anwendungsidentität.
+description: Verwenden der Azure-Befehlszeilenschnittstelle zum Zuweisen einer Key Vault-Zugriffsrichtlinie zu einem Sicherheitsprinzipal oder einer Anwendungsidentität.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,16 +10,16 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/27/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 0c7910ac149c8de43eeac92913a0d314fcc1854e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a9dc03f776ac430072e456332955cbfc75d73bf2
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97934576"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105968848"
 ---
 # <a name="assign-a-key-vault-access-policy"></a>Zuweisen einer Key Vault-Zugriffsrichtlinie
 
-Eine Key Vault-Zugriffsrichtlinie legt fest, ob ein bestimmter Dienstprinzipal (eine Anwendung oder eine Benutzergruppe) verschiedene Vorgänge für [Geheimnisse](../secrets/index.yml), [Schlüssel](../keys/index.yml) und [Zertifikate](../certificates/index.yml) in Key Vault ausführen kann. Sie können mithilfe des [Azure-Portals](assign-access-policy-portal.md), der Azure-Befehlszeilenschnittstelle (dieser Artikel) oder von [Azure PowerShell](assign-access-policy-powershell.md) Zugriffsrichtlinien zuweisen.
+Eine Key Vault-Zugriffsrichtlinie legt fest, ob ein bestimmter Sicherheitsprinzipal (eine Anwendung oder eine Benutzergruppe) verschiedene Vorgänge für [Geheimnisse](../secrets/index.yml), [Schlüssel](../keys/index.yml) und [Zertifikate](../certificates/index.yml) in Key Vault ausführen kann. Sie können mithilfe des [Azure-Portals](assign-access-policy-portal.md), der Azure-Befehlszeilenschnittstelle (dieser Artikel) oder von [Azure PowerShell](assign-access-policy-powershell.md) Zugriffsrichtlinien zuweisen.
 
 [!INCLUDE [key-vault-access-policy-limits.md](../../../includes/key-vault-access-policy-limits.md)]
 
@@ -69,7 +69,7 @@ Verwenden Sie den Befehl [az keyvault set-policy](/cli/azure/keyvault#az-keyvaul
 az keyvault set-policy --name myKeyVault --object-id <object-id> --secret-permissions <secret-permissions> --key-permissions <key-permissions> --certificate-permissions <certificate-permissions>
 ```
 
-Ersetzen Sie `<object-id>` durch die Objekt-ID des Dienstprinzipals.
+Ersetzen Sie `<object-id>` durch die Objekt-ID des Sicherheitsprinzipals.
 
 Sie müssen `--secret-permissions`, `--key-permissions` und `--certificate-permissions` nur einschließen, wenn Sie diesen spezifischen Typen Berechtigungen zuweisen. Die zulässigen Werte für `<secret-permissions>`, `<key-permissions>` und `<certificate-permissions>` sind in der Dokumentation zu [az keyvault set-policy](/cli/azure/keyvault#az-keyvault-set-policy) angegeben.
 

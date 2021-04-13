@@ -8,12 +8,12 @@ ms.service: private-link
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: allensu
-ms.openlocfilehash: 3ed349616ae6456913c19bb073f6e9ea28e7d549
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c3218d8781377e76f05d10a8da2c954ac0b685a7
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100575125"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105641994"
 ---
 # <a name="use-azure-firewall-to-inspect-traffic-destined-to-a-private-endpoint"></a>Verwenden der Azure Firewall zum Überprüfen des Datenverkehrs für einen privaten Endpunkt
 
@@ -25,8 +25,8 @@ Möglicherweise müssen Sie den Datenverkehr von Clients zu den über private En
 
 Es gelten die folgenden Einschränkungen:
 
-* Netzwerksicherheitsgruppen (NSGs) gelten nicht für private Endpunkte
-* Benutzerdefinierte Routen (UDR) gelten nicht für private Endpunkte
+* Netzwerksicherheitsgruppen werden von Datenverkehr, der von privaten Endpunkten stammt, umgangen.
+* Benutzerdefinierte Routen werden von Datenverkehr, der von privaten Endpunkten stammt, umgangen.
 * Eine einzelne Routingtabelle kann an ein Subnetz angefügt werden
 * Eine Routingtabelle unterstützt bis zu 400 Routen
 
@@ -35,7 +35,8 @@ Azure Firewall filtert den Datenverkehr mit einer der folgenden Optionen:
 * [FQDN in Netzwerkregeln](../firewall/fqdn-filtering-network-rules.md) für TCP- und UDP-Protokolle
 * [FQDN in Anwendungsregeln](../firewall/features.md#application-fqdn-filtering-rules) für HTTP, HTTPS und MSSQL. 
 
-Die meisten Dienste, die über private Endpunkte verfügbar gemacht werden, verwenden HTTPS. Bei Verwendung von Azure SQL wird die Anwendung von Anwendungsregeln über Netzwerkregeln empfohlen.
+> [!IMPORTANT] 
+> Es wird empfohlen Anwendungsregeln anstelle von Netzwerkregeln wird empfohlen, wenn Sie Datenverkehr überprüfen, der an private Endpunkte gerichtet ist, um die Flusssymmetrie zu erhalten. Wenn Netzwerkregeln verwendet werden oder ein virtuelles Netzwerkgerät anstelle der Azure Firewall, muss SNAT für Datenverkehr konfiguriert werden, der an private Endpunkte gerichtet ist.
 
 > [!NOTE]
 > Die SQL-FQDN-Filterung wird nur im [Proxymodus](../azure-sql/database/connectivity-architecture.md#connection-policy) unterstützt (Port 1433). Im Modus **Proxy** kommt es unter Umständen zu längeren Wartezeiten als im Modus *Umleiten*. Wenn Sie weiterhin den Umleitungsmodus (Standardmodus für Clients, die eine Verbindung innerhalb von Azure herstellen) verwenden möchten, können Sie den Zugriff mit dem FQDN in Netzwerkregeln der Firewall filtern.
@@ -46,12 +47,9 @@ Die meisten Dienste, die über private Endpunkte verfügbar gemacht werden, verw
 
 Dieses Szenario ist die erweiterbarste Architektur, um über private Endpunkte eine private Verbindung mit mehreren Azure-Diensten herzustellen. Es wird eine Route erstellt, die auf den Netzwerkadressraum verweist, in dem die privaten Endpunkte bereitgestellt werden. Diese Konfiguration reduziert den Verwaltungsaufwand und verhindert, dass die Grenze von 400 Routen erreicht wird.
 
-Verbindungen von einem virtuellen Clientnetzwerk zur Azure Firewall in einem virtuellen Hub-Netzwerk sind kostenpflichtig, wenn die virtuellen Netzwerke mit Peering miteinander verbunden sind.
+Verbindungen von einem virtuellen Clientnetzwerk zur Azure Firewall in einem virtuellen Hub-Netzwerk sind kostenpflichtig, wenn die virtuellen Netzwerke mit Peering miteinander verbunden sind. Für Verbindungen von der Azure Firewall in einem virtuellen Hubnetzwerk mit privaten Endpunkten in einem virtuellen Peeringnetzwerk fallen keine Gebühren an.
 
 Weitere Informationen zu den Gebühren im Zusammenhang mit Verbindungen mit virtuellen Netzwerken finden Sie im Abschnitt mit den häufig gestellten Fragen auf der Seite [Preise](https://azure.microsoft.com/pricing/details/private-link/).
-
->[!NOTE]
-> Dieses Szenario kann unter Verwendung beliebiger NVA- oder Azure Firewall-Netzwerkregeln von Drittanbietern anstelle von Anwendungsregeln implementiert werden.
 
 ## <a name="scenario-2-hub-and-spoke-architecture---shared-virtual-network-for-private-endpoints-and-virtual-machines"></a>Szenario 2: Hub-and-Spoke-Architektur – Freigegebenes virtuelles Netzwerk für private Endpunkte und virtuelle Computer
 
@@ -69,21 +67,15 @@ Der Verwaltungsaufwand für die Wartung der Routingtabelle nimmt zu, da die Dien
 
 Abhängig von Ihrer Gesamtarchitektur ist es möglich, den Grenzwert von 400 Routen zu erreichen. Es wird empfohlen, wann immer möglich Szenario 1 zu verwenden.
 
-Verbindungen von einem virtuellen Clientnetzwerk zur Azure Firewall in einem virtuellen Hub-Netzwerk sind kostenpflichtig, wenn die virtuellen Netzwerke mit Peering miteinander verbunden sind.
+Verbindungen von einem virtuellen Clientnetzwerk zur Azure Firewall in einem virtuellen Hub-Netzwerk sind kostenpflichtig, wenn die virtuellen Netzwerke mit Peering miteinander verbunden sind. Für Verbindungen von der Azure Firewall in einem virtuellen Hubnetzwerk mit privaten Endpunkten in einem virtuellen Peeringnetzwerk fallen keine Gebühren an.
 
 Weitere Informationen zu den Gebühren im Zusammenhang mit Verbindungen mit virtuellen Netzwerken finden Sie im Abschnitt mit den häufig gestellten Fragen auf der Seite [Preise](https://azure.microsoft.com/pricing/details/private-link/).
-
->[!NOTE]
-> Dieses Szenario kann unter Verwendung beliebiger NVA- oder Azure Firewall-Netzwerkregeln von Drittanbietern anstelle von Anwendungsregeln implementiert werden.
 
 ## <a name="scenario-3-single-virtual-network"></a>Szenario 3: Einzelnes virtuelles Netzwerk
 
 :::image type="content" source="./media/inspect-traffic-using-azure-firewall/single-vnet.png" alt-text="Einzelnes virtuelles Netzwerk" border="true":::
 
-Es gibt einige Einschränkungen bei der Implementierung: Eine Migration zu einer Hub-and-Spoke-Architektur ist nicht möglich. Es gelten dieselben Überlegungen wie in Szenario 2. In diesem Szenario fallen keine Gebühren für das Peering virtueller Netzwerke an.
-
->[!NOTE]
-> Wenn Sie dieses Szenario mit einer NVA- oder Azure Firewall eines Drittanbieters implementieren möchten, sind Netzwerkregeln anstelle von Anwendungsregeln für den SNAT-Datenverkehr erforderlich, der für die privaten Endpunkte bestimmt ist. Andernfalls tritt ein Fehler bei der Kommunikation zwischen den virtuellen Computern und privaten Endpunkten auf.
+Verwenden Sie dieses Muster, wenn eine Migration zu einer Hub-and-Spoke-Architektur nicht möglich ist. Es gelten dieselben Überlegungen wie in Szenario 2. In diesem Szenario fallen keine Gebühren für das Peering virtueller Netzwerke an.
 
 ## <a name="scenario-4-on-premises-traffic-to-private-endpoints"></a>Szenario 4: Lokaler Datenverkehr zu privaten Endpunkten
 
@@ -97,9 +89,6 @@ Diese Architektur kann implementiert werden, wenn Sie die Konnektivität mit Ihr
 Wenn Ihre Sicherheitsanforderungen erfordern, dass der Datenverkehr von Clients zu Diensten, die über private Endpunkte verfügbar gemacht werden, über eine Sicherheitsappliance geleitet wird, stellen Sie dieses Szenario bereit.
 
 Es gelten dieselben Überlegungen wie oben in Szenario 2. In diesem Szenario fallen keine Gebühren für das Peering virtueller Netzwerke an. Weitere Informationen zum Konfigurieren Ihrer DNS-Server, damit lokale Workloads auf private Endpunkte zugreifen können, finden Sie unter [Lokale Workloads mit DNS-Weiterleitung](./private-endpoint-dns.md#on-premises-workloads-using-a-dns-forwarder).
-
->[!NOTE]
-> Wenn Sie dieses Szenario mit einer NVA- oder Azure Firewall eines Drittanbieters implementieren möchten, sind Netzwerkregeln anstelle von Anwendungsregeln für den SNAT-Datenverkehr erforderlich, der für die privaten Endpunkte bestimmt ist. Andernfalls tritt ein Fehler bei der Kommunikation zwischen den virtuellen Computern und privaten Endpunkten auf.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -128,6 +117,7 @@ Erstellen Sie drei virtuelle Netzwerke und ihre entsprechenden Subnetze für Fol
 Ersetzen Sie die folgenden Parameter in den Schritten durch die folgenden Informationen:
 
 ### <a name="azure-firewall-network"></a>Azure Firewall-Netzwerk
+
 | Parameter                   | Wert                 |
 |-----------------------------|----------------------|
 | **\<resource-group-name>**  | myResourceGroup |
@@ -138,6 +128,7 @@ Ersetzen Sie die folgenden Parameter in den Schritten durch die folgenden Inform
 | **\<subnet-address-range>** | 10.0.0.0/24          |
 
 ### <a name="virtual-machine-network"></a>Netzwerk für virtuelle Computer
+
 | Parameter                   | Wert                |
 |-----------------------------|----------------------|
 | **\<resource-group-name>**  | myResourceGroup |
@@ -148,13 +139,14 @@ Ersetzen Sie die folgenden Parameter in den Schritten durch die folgenden Inform
 | **\<subnet-address-range>** | 10.1.0.0/24          |
 
 ### <a name="private-endpoint-network"></a>Netzwerk des privaten Endpunkts
+
 | Parameter                   | Wert                 |
 |-----------------------------|----------------------|
 | **\<resource-group-name>**  | myResourceGroup |
 | **\<virtual-network-name>** | myPEVNet         |
 | **\<region-name>**          | USA Süd Mitte      |
 | **\<IPv4-address-space>**   | 10.2.0.0/16          |
-| **\<subnet-name>**          | PrivateEndpointSubnet    |        |
+| **\<subnet-name>**          | PrivateEndpointSubnet |
 | **\<subnet-address-range>** | 10.2.0.0/24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
@@ -575,7 +567,7 @@ In diesem Abschnitt stellen Sie über den privaten Endpunkt eine private Verbind
     Address: 10.2.0.4
     ```
 
-2. Installieren Sie [SQL Server-Befehlszeilentools](/sql/linux/quickstart-install-connect-ubuntu?view=sql-server-ver15#tools).
+2. Installieren Sie [SQL Server-Befehlszeilentools](/sql/linux/quickstart-install-connect-ubuntu#tools).
 
 3. Führen Sie den folgenden Befehl aus, um eine Verbindung mit dem SQL Server herzustellen. Verwenden Sie den Serveradministrator und das zugehörige Kennwort, das Sie beim Erstellen des SQL-Servers in den vorherigen Schritten definiert haben.
 

@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: victorh
-ms.openlocfilehash: e18267d5a810826e41e05eb3dde3cd82a8eb9197
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 32d96ce79844cd89e06035036bfa68703a738ed1
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98065319"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104950483"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Back-End-Integrität und Diagnoseprotokolle für Application Gateway
 
@@ -306,7 +306,7 @@ Das Firewallprotokoll wird nur generiert, wenn Sie es für jedes Anwendungsgatew
 |ruleSetVersion     | Verwendete Regelsatzversion. Verfügbare Werte sind 2.2.9 und 3.0.     |
 |ruleId     | Regel-ID des auslösenden Ereignisses        |
 |message     | Benutzerfreundliche Meldung für das auslösende Ereignis. Weitere Details im Abschnitt „Details“.        |
-|action     |  Aktion, die für die Anforderung durchgeführt wird. Verfügbare Werte sind „Matched“ und „Blocked“.      |
+|action     |  Aktion, die für die Anforderung durchgeführt wird. Verfügbare Werte sind „Blocked“ (Blockiert) und „Allowed“ (Zulässig) für benutzerdefinierte Regeln, „Matched“ (Übereinstimmend), wenn eine Regel mit einem Teil der Anforderung übereinstimmt, und „Detected“ (Erkannt) und „Blocked“ (Blockiert), beide für obligatorische Regeln, je nachdem, ob sich die WAF im Erkennungs- oder Präventionsmodus befindet.      |
 |site     | Standort, für den das Protokoll generiert wurde. Derzeit ist nur „Global“ aufgeführt, da Regeln global sind.|
 |Details     | Details zum auslösenden Ereignis        |
 |details.message     | Beschreibung der Regel        |

@@ -2,14 +2,14 @@
 title: Simulieren von Fehlern in Azure-Microservices
 description: Dieser Artikel befasst sich mit den Prüfbarkeitsaktionen von Microsoft Azure Service Fabric.
 ms.topic: conceptual
-ms.date: 06/07/2017
+ms.date: 03/26/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c57f54096a9593f5ab25a5722d3f2d2b9878b511
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9f8221d92ded33350b182cce5d28dd889beae4a5
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100595030"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105732872"
 ---
 # <a name="testability-actions"></a>Testability-Aktionen
 Zur Simulierung einer unzuverlässigen Infrastruktur bietet Azure Service Fabric Ihnen, dem Entwickler, die Möglichkeit, verschiedene Ausfälle und Statusübergänge aus der Praxis zu simulieren. Diese werden als Testability-Aktionen verfügbar gemacht. Bei den Aktionen handelt es sich um Low-Level-APIs, die eine bestimmte Fault Injection, einen Statusübergang oder eine Überprüfung bewirken. Diese Aktionen können von Ihnen zu umfassenden Testszenarien für Ihre Dienste kombiniert werden.
@@ -34,6 +34,7 @@ Führen Sie zur besseren Überprüfung der Qualität die Dienst- und Unternehmen
 | InvokeQuorumLoss |Versetzt eine bestimmte zustandsbehaftete Dienstpartition in den Zustand eines Quorumverlusts. |InvokeQuorumLossAsync |Invoke-ServiceFabricQuorumLoss |Ordnungsgemäß |
 | MovePrimary |Verschiebt das angegebene primäre Replikat eines zustandsbehafteten Diensts auf den angegebenen Clusterknoten. |MovePrimaryAsync |Move-ServiceFabricPrimaryReplica |Ordnungsgemäß |
 | MoveSecondary |Verschiebt das aktuelle sekundäre Replikat des zustandsbehafteten Diensts auf einen anderen Clusterknoten. |MoveSecondaryAsync |Move-ServiceFabricSecondaryReplica |Ordnungsgemäß |
+| MoveInstance | Verschiebt die aktuelle Instanz eines zustandsbehafteten Diensts auf einen anderen Clusterknoten. | MoveInstanceAsync | Move-ServiceFabricInstance | Ordnungsgemäß |
 | RemoveReplica |Simuliert einen Replikatausfall, indem ein Replikat aus einem Cluster entfernt wird. Das Replikat wird geschlossen, und es wird der Übergang zur Rolle „Keine“ durchgeführt, sodass alle dazugehörigen Zustände aus dem Cluster entfernt werden. |RemoveReplicaAsync |Remove-ServiceFabricReplica |Ordnungsgemäß |
 | RestartDeployedCodePackage |Simuliert den Ausfall eines Codepaketprozesses, indem ein Codepaket neu gestartet wird, das auf einem Knoten in einem Cluster bereitgestellt wurde. Dadurch wird der Codepaketprozess abgebrochen, und alle unter dem Prozess gehosteten Benutzerdienstreplikate werden neu gestartet. |RestartDeployedCodePackageAsync |Restart-ServiceFabricDeployedCodePackage |Nicht ordnungsgemäß |
 | RestartNode |Simuliert den Ausfall eines Service Fabric-Clusterknotens, indem ein Knoten neu gestartet wird. |RestartNodeAsync |Restart-ServiceFabricNode |Nicht ordnungsgemäß |
