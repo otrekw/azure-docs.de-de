@@ -11,28 +11,28 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.custom: mvc, seodec18
-ms.date: 12/07/2018
-ms.author: mbaldwin
-ms.openlocfilehash: 6eb82400b2f598b4b54da4b238f4bce71d83de6b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/25/2021
+ms.author: keithp
+ms.openlocfilehash: 0e07839c3c5ce542335eeadc92e6a3c98fe87856
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "90970212"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105606979"
 ---
 # <a name="what-is-azure-dedicated-hsm"></a>Was ist Azure Dedicated HSM?
 
 Azure Dedicated HSM ist ein Azure-Dienst, der Speicherung von kryptografischen Schlüsseln in Azure bietet. Dedicated HSM erfüllt die strengsten Sicherheitsanforderungen. Es ist die optimale Lösung für Kunden, die Geräte mit der Zertifizierung „FIPS 140-2 Level 3“ sowie die vollständige und uneingeschränkte Kontrolle über die HSM-Appliance benötigen. 
 
- HSM-Geräte werden weltweit über mehrere Azure-Regionen hinweg bereitgestellt. Sie können einfach als ein Gerätepaar bereitgestellt und für Hochverfügbarkeit konfiguriert werden. HSM-Geräte können zum Schutz vor regionalen Ausfällen auch regionsübergreifend bereitgestellt werden. Microsoft stellt den Dedicated HSM-Dienst mithilfe der Appliance [SafeNet Luna Network HSM 7 (Modell A790)](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/) von Gemalto bereit. Dieses Gerät bietet ein Höchstmaß an Leistung und kryptografischen Integrationsoptionen. 
+ HSM-Geräte werden weltweit über mehrere Azure-Regionen hinweg bereitgestellt. Sie können einfach als ein Gerätepaar bereitgestellt und für Hochverfügbarkeit konfiguriert werden. HSM-Geräte können zum Schutz vor regionalen Ausfällen auch regionsübergreifend bereitgestellt werden. Microsoft stellt den Dedicated HSM-Dienst mithilfe von Geräten vom Typ [Thales Luna 7 HSM Modell A790](https://cpl.thalesgroup.com/encryption/hardware-security-modules/network-hsms) bereit. Dieses Gerät bietet ein Höchstmaß an Leistung und kryptografischen Integrationsoptionen. 
 
-Nachdem sie bereitgestellt wurden, sind die HSM-Geräte direkt mit dem virtuellen Netzwerk eines Kunden verbunden. Auf sie können auch lokale Anwendungen und Verwaltungstools zugreifen, wenn Sie Point-to-Site- oder Site-to-Site-VPN-Konnektivität konfigurieren. Kunden erhalten die Software und die Dokumentation für die Konfiguration und Verwaltung von HSM-Geräten über das Supportportal von Gemalto.
+Nachdem sie bereitgestellt wurden, sind die HSM-Geräte direkt mit dem virtuellen Netzwerk eines Kunden verbunden. Auf sie können auch lokale Anwendungen und Verwaltungstools zugreifen, wenn Sie Point-to-Site- oder Site-to-Site-VPN-Konnektivität konfigurieren. Kunden erhalten die Software und die Dokumentation für die Konfiguration und Verwaltung von HSM-Geräten über das [Thales-Portal für den Kundensupport](https://supportportal.thalesgroup.com/csm).
 
 ## <a name="why-use-azure-dedicated-hsm"></a>Argumente für die Verwendung von Azure Dedicated HSM
 
 ### <a name="fips-140-2-level-3-compliance"></a>Konformität mit „FIPS 140-2 Level 3“
 
-Aufgrund strenger branchenspezifischer Vorschriften muss in vielen Organisationen der kryptografische Schlüsselspeicher die Anforderungen von [FIPS 140-2 Level 3](https://csrc.nist.gov/publications/detail/fips/140/2/final) erfüllen. Der mehrinstanzenfähige Azure Key Vault-Dienst von Microsoft bietet derzeit nur eine Zertifizierung für „FIPS 140-2 Level 2“. Azure Dedicated HSM ist besonders für Finanzdienstleister, Behörden und andere Kunden interessant, die die Anforderungen von „FIPS 140-2 Level 3“ erfüllen müssen.
+Aufgrund strenger branchenspezifischer Vorschriften müssen in vielen Organisationen die kryptografischen Schlüssel in HSMs gespeichert werden, die gemäß [FIPS 140-2 Level 3](https://csrc.nist.gov/publications/detail/fips/140/2/final) überprüft wurden. Azure Dedicated HSM und das neue Einzelmandantangebot [Verwaltetes Azure Key Vault-HSM (Vorschau)](https://docs.microsoft.com/azure/key-vault/managed-hsm) unterstützen Kunden aus verschiedenen Branchensegmenten (etwa Finanzdienstleister, Behörden usw.) dabei, die Anforderungen von „TPS 140-2 Level 3“ zu erfüllen. Der mehrinstanzenfähige [Azure Key Vault](https://docs.microsoft.com/azure/key-vault)-Dienst von Microsoft nutzt derzeit nur HSMs, die gemäß „FIPS 140-2 Level 2“ überprüft wurden. 
 
 ### <a name="single-tenant-devices"></a>Geräte mit nur einem Mandanten
 
@@ -48,7 +48,7 @@ Viele Kunden benötigen die vollständige administrative Kontrolle und den allei
 
 ### <a name="high-performance"></a>Hohe Leistung
 
-Das Gemalto-Gerät wurde aus verschiedenen Gründen für diesen Dienst ausgewählt. Es bietet eine breite Palette an kryptographischer Algorithmusunterstützung, eine Vielzahl von unterstützten Betriebssystemen und eine breite API-Unterstützung. Das bereitgestellte Modell bietet eine ausgezeichnete Leistung von 10.000 Vorgängen pro Sekunde für RSA-2048. Es unterstützt zehn Partitionen, die jeweils für individuelle Anwendungsinstanzen verwendet werden können. Dieses Gerät zeichnet sich durch geringe Latenz, hohe Kapazität und hohen Durchsatz aus.
+Das Thales-Gerät wurde aus verschiedenen Gründen für diesen Dienst gewählt. Es bietet eine breite Palette an kryptographischer Algorithmusunterstützung, eine Vielzahl von unterstützten Betriebssystemen und eine breite API-Unterstützung. Das bereitgestellte Modell bietet eine ausgezeichnete Leistung von 10.000 Vorgängen pro Sekunde für RSA-2048. Es unterstützt zehn Partitionen, die jeweils für individuelle Anwendungsinstanzen verwendet werden können. Dieses Gerät zeichnet sich durch geringe Latenz, hohe Kapazität und hohen Durchsatz aus.
 
 ### <a name="unique-cloud-based-offering"></a>Einzigartiges cloudbasiertes Angebot
 
@@ -72,7 +72,7 @@ Azure Dedicated HSM ist für die folgende Art von Szenario nicht gut geeignet: F
 
 ### <a name="it-depends"></a>Das ist unterschiedlich.
 
-Ob Azure Dedicated HSM für Sie funktioniert, hängt von einer potenziell komplexen Mischung aus Anforderungen und Kompromissen ab, die Sie eingehen können oder auch nicht. Ein Beispiel ist die FIPS 140-2 Level 3-Anforderung. Diese Anforderung ist verbreitet, und Dedicated HSM ist zurzeit die einzige Möglichkeit, sie zu erfüllen. Wenn diese gesetzlichen Anforderungen nicht relevant sind, besteht häufig die Wahl zwischen Azure Key Vault und Dedicated HSM. Werten Sie Ihre Anforderungen vor einer Entscheidung aus.
+Ob Azure Dedicated HSM für Sie funktioniert, hängt von einer potenziell komplexen Mischung aus Anforderungen und Kompromissen ab, die Sie eingehen können oder auch nicht. Ein Beispiel ist die FIPS 140-2 Level 3-Anforderung. Diese Anforderung ist üblich, und derzeit wird sie nur von Azure Dedicated HSM und dem neuen Einzelmandantangebot [Verwaltetes HSM von Azure Key Vault (Vorschauversion)](https://docs.microsoft.com/azure/key-vault/managed-hsm) erfüllt. Wenn diese gesetzlichen Anforderungen nicht relevant sind, besteht häufig die Wahl zwischen Azure Key Vault und Azure Dedicated HSM. Werten Sie Ihre Anforderungen vor einer Entscheidung aus.
 
 Zu den Situationen, in denen Sie Ihre Optionen abwägen müssen, gehören unter anderem: 
 
@@ -85,7 +85,7 @@ Zu den Situationen, in denen Sie Ihre Optionen abwägen müssen, gehören unter 
 
 Dies ist ein hochgradig spezialisierter Dienst. Daher empfehlen wir Ihnen, die Schlüsselkonzepte in dieser Dokumentationssammlung (einschließlich Preisgestaltung, Support und SLAs) vollständig zu verstehen. 
 
-Die [Gemalto-Integrationsleitfäden](https://safenet.gemalto.com/partners/microsoft/) helfen dabei, die Bereitstellung von HSMs in einer vorhandenen virtuellen Netzwerkumgebung zu erleichtern. Es gibt auch Anleitungen, die Sie beim Bestimmen der Einrichtung Ihrer Bereitstellungsarchitektur unterstützen.
+Die [Thales-Integrationsleitfäden](https://cpl.thalesgroup.com/partners/overview) helfen dabei, die Bereitstellung von HSMs in einer vorhandenen virtuellen Netzwerkumgebung zu erleichtern. Es gibt auch Schrittanleitungen, die Sie beim Bestimmen der Einrichtung Ihrer Bereitstellungsarchitektur unterstützen.
 
 * [Hohe Verfügbarkeit](high-availability.md)
 * [Physische Sicherheit](physical-security.md)

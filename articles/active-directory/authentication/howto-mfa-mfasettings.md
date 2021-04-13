@@ -5,19 +5,19 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 03/16/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 4625b0a750c2b3ff63879bb9ea306bc69b1bb64e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 78972c4db1802b479a698a22c456561170add4bf
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103471644"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105932912"
 ---
 # <a name="configure-azure-ad-multi-factor-authentication-settings"></a>Konfigurieren von Azure AD Multi-Factor Authentication-Einstellungen
 
@@ -231,7 +231,7 @@ Auf die Diensteinstellungen kann über das Azure-Portal zugegriffen werden, inde
 
 ## <a name="trusted-ips"></a>Vertrauenswürdige IP-Adressen
 
-Das Feature _Vertrauenswürdige IPs_ von Azure AD MFA umgeht MFA-Eingabeaufforderungen für Benutzer, die sich über einen definierten IP-Adressbereich anmelden. Sie können vertrauenswürdige IP-Adressbereiche für Ihre lokalen Umgebungen festlegen, damit Benutzer, die sich an diesen Standorten befinden, keine Azure AD MFA-Eingabeaufforderung erhalten.
+Das Feature _Vertrauenswürdige IPs_ von Azure AD MFA umgeht MFA-Eingabeaufforderungen für Benutzer, die sich über einen definierten IP-Adressbereich anmelden. Sie können vertrauenswürdige IP-Adressbereiche für Ihre lokalen Umgebungen festlegen, damit Benutzer, die sich an diesen Standorten befinden, keine Azure AD MFA-Eingabeaufforderung erhalten. Das Feature _Vertrauenswürdige IPs_ von Azure AD Multi-Factor Authentication setzt die Edition Azure AD Premium P1 voraus. 
 
 > [!NOTE]
 > Private IP-Adressbereiche können nur als vertrauenswürdige IPs festgelegt werden, wenn Sie MFA-Server verwenden. Für cloudbasierte Azure AD MFA können Sie nur öffentliche IP-Adressbereiche verwenden.

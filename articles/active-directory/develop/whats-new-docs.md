@@ -11,16 +11,45 @@ ms.subservice: develop
 ms.topic: reference
 ms.workload: identity
 ms.author: marsma
-ms.openlocfilehash: 56e6d859293b91a56252372574f59c8dcc2cd80e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 68136cc259e0be4a2f9449aa9ec15f4a14a63890
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101687327"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106074980"
 ---
 # <a name="microsoft-identity-platform-docs-whats-new"></a>Dokumentation zur Microsoft Identity Platform: Neues
 
 Willkommen bei den Neuerungen in der Dokumentation zu Microsoft Identity Platform. In diesem Artikel werden neu hinzugefügte Dokumente aufgelistet sowie Dokumente, die in den letzten drei Monaten grundlegend überarbeitet wurden.
+
+## <a name="march-2021"></a>März 2021
+
+### <a name="new-articles"></a>Neue Artikel
+
+- [Wiederherstellen oder Entfernen einer kürzlich gelöschten Anwendung mit der Microsoft Identity Platform](quickstart-restore-app.md)
+
+### <a name="updated-articles"></a>Aktualisierte Artikel
+
+- [Administratoreinwilligung auf Microsoft Identity Platform](v2-admin-consent.md)
+- [Konfigurationsanforderungen und Tipps zur Problembehandlung für Xamarin Android mit MSAL.NET](msal-net-xamarin-android-considerations.md)
+- [Daemon-App, die Web-APIs aufruft – Aufruf eines Tokens](scenario-daemon-acquire-token.md)
+- [Daemon-App, die Web-APIs aufruft – Codekonfiguration](scenario-daemon-app-configuration.md)
+- [Daemon-App, die Web-APIs aufruft – Aufrufen einer Web-API aus der App](scenario-daemon-call-api.md)
+- [Daemon-App, die Web-APIs aufruft (Übergang in die Produktion)](scenario-daemon-production.md)
+- [Desktop-App, die Web-APIs aufruft: Abrufen eines Token](scenario-desktop-acquire-token.md)
+- [Desktop-App, die Web-APIs aufruft: Codekonfiguration](scenario-desktop-app-configuration.md)
+- [Desktop-App, die Web-APIs aufruft: Aufrufen einer Web-API](scenario-desktop-call-api.md)
+- [Gewusst wie: Anpassen von in Token ausgegebenen Ansprüchen für eine bestimmte App in einem Mandanten (Vorschau)](active-directory-claims-mapping.md)
+- [Protokollierung in MSAL für Python](msal-logging-python.md)
+- [Microsoft Enterprise SSO-Plug-In für Apple-Geräte (Vorschau)](apple-sso-plugin.md)
+- [Schnellstart: Hinzufügen der Microsoft Identity Platform-Anmeldung zu einer ASP.NET-Web-App](quickstart-v2-aspnet-webapp.md)
+- [Schnellstart: Hinzufügen von „Bei Microsoft anmelden“ zu einer ASP.NET Core-Web-App](quickstart-v2-aspnet-core-webapp.md)
+- [Schnellstart: Abrufen eines Tokens und Aufrufen der Microsoft Graph-API über die Identität einer Konsolen-App](quickstart-v2-netcore-daemon.md)
+- [Schnellstart: Schützen einer ASP.NET Core-Web-API mit Microsoft Identity Platform](quickstart-v2-aspnet-core-web-api.md)
+- [Schnellstart: Anmelden von Benutzern und Abrufen eines Zugriffstokens in einer Angular-Single-Page-Webanwendung](quickstart-v2-angular.md)
+- [Support- und Hilfeoptionen für Entwickler](developer-support-help-options.md)
+- [Web-App für Benutzeranmeldungen: Codekonfiguration](scenario-web-app-sign-user-app-configuration.md)
+- [Web-App für Benutzeranmeldungen: An- und Abmeldung](scenario-web-app-sign-user-sign-in.md)
 
 ## <a name="february-2021"></a>Februar 2021
 
@@ -65,25 +94,3 @@ Willkommen bei den Neuerungen in der Dokumentation zu Microsoft Identity Platfor
 - [Konfigurieren von Richtlinien zur Tokenlebensdauer (Vorschau)](configure-token-lifetimes.md)
 - [Microsoft Identity Plattform: Authentifizierungsbibliotheken](reference-v2-libraries.md)
 - [Microsoft Identity Platform und der OAuth 2.0-Autorisierungscodeflow](v2-oauth2-auth-code-flow.md)
-
-## <a name="december-2020"></a>Dezember 2020
-
-### <a name="new-articles"></a>Neue Artikel
-
-- [Schnellstart: ASP.NET Core-Web-App, die Benutzer anmeldet und Microsoft Graph in deren Namen aufruft](quickstart-v2-aspnet-core-webapp-calls-graph.md)
-- [Behandeln von Fehlern und Ausnahmen in MSAL.NET](msal-error-handling-dotnet.md)
-- [Behandeln von Fehlern und Ausnahmen in MSAL für iOS/macOS](msal-error-handling-ios.md)
-- [Behandeln von Fehlern und Ausnahmen in MSAL für Java](msal-error-handling-java.md)
-- [Behandeln von Fehlern und Ausnahmen in MSAL.js](msal-error-handling-js.md)
-- [Behandeln von Fehlern und Ausnahmen in MSAL für Python](msal-error-handling-python.md)
-- [Microsoft Identity Platform-Tokenaustauschszenarien mit SAML und OIDC/OAuth](scenario-token-exchange-saml-oauth.md)
-
-### <a name="updated-articles"></a>Aktualisierte Artikel
-
-- [Schnellstart: Hinzufügen von „Mit Microsoft anmelden“ zu einer Java-Web-App](quickstart-v2-java-webapp.md)
-- [Tutorial: Erstellen eines mehrinstanzenfähigen Daemons, der Microsoft Identity Platform verwendet](tutorial-v2-aspnet-daemon-web-app.md)
-- [Web-App für Benutzeranmeldungen: App-Registrierung](scenario-web-app-sign-user-app-registration.md)
-- [Microsoft Identity Platform und der Flow für die implizite Genehmigung](v2-oauth2-implicit-grant-flow.md)
-- [Microsoft Identity Platform-Zugriffstoken](access-tokens.md)
-- [Web-API, die Web-APIs aufruft: Abrufen eines Tokens für die App](scenario-web-api-call-api-acquire-token.md)
-

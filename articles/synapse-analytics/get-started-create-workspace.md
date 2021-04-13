@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 03/17/2021
-ms.openlocfilehash: ee8a192bcfe20c77e47ee9c89dfc3286a979e358
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: a4fa902268d9a19cd0003a2fdaa4c5e58989a4ff
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104722292"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106218939"
 ---
 # <a name="creating-a-synapse-workspace"></a>Erstellen eines Synapse-Arbeitsbereichs
 
@@ -33,24 +33,26 @@ Um die Schritte dieses Tutorials ausführen zu können, benötigen Sie Zugriff a
 1. Wählen Sie **Hinzufügen** aus, um einen Arbeitsbereich zu erstellen.
 
 ## <a name="basics-tab--project-details"></a>Registerkarte „Grundlegende Einstellungen“ > „Projektdetails“
-1. Füllen Sie auf der Registerkarte **Grundlagen** unter **Projektdetails** die folgenden Felder aus:
-      1. **Abonnement**: Wählen Sie ein beliebiges Abonnement.
-      2. **Ressourcengruppe**: Wählen Sie eine beliebige Ressourcengruppe.
-      3. **Ressourcengruppe**: Lassen Sie dieses Feld leer.
+Füllen Sie die folgenden Felder aus:
 
+1. **Abonnement**: Wählen Sie ein beliebiges Abonnement.
+1. **Ressourcengruppe**: Wählen Sie eine beliebige Ressourcengruppe.
+1. **Verwaltete Ressourcengruppe**: Lassen Sie dieses Feld leer.
 
 ## <a name="basics-tab--workspace-details"></a>Registerkarte „Grundlegende Einstellungen“ > „Details zum Arbeitsbereich“
-1. Füllen Sie auf der Registerkarte **Grundlagen** unter **Arbeitsbereichsdetails** die folgenden Felder aus:
-      1. **Arbeitsbereichsname**: Wählen Sie einen beliebigen global eindeutigen Namen. In diesem Tutorial wird **myworkspace** verwendet.
-      1. **Region**: Wählen Sie eine beliebige Region.
-      1. **Auswählen von Data Lake Storage Gen 2**
-        1. Klicken Sie auf die Schaltfläche **Aus Abonnement**.
-        1. Klicken Sie unter **Kontoname** auf **Neu erstellen**, und geben Sie für das neue Speicherkonto den Namen **contosolake** oder einen ähnlichen Namen ein. Dieser Name muss eindeutig sein.
-        1. Klicken Sie unter **Dateisystemname** auf **Neu erstellen**, und geben Sie den Namen **Benutzer** ein. Dadurch wird ein Speichercontainer namens **Benutzer** erstellt. Der Arbeitsbereich verwendet dieses Speicherkonto als primäres Speicherkonto für Spark-Tabellen und Spark-Anwendungsprotokolle.
-        1. Aktivieren Sie das Kästchen „Mir die Rolle "Mitwirkender an Storage-Blobdaten" für das Data Lake Storage Gen2-Konto zuweisen“. 
+Füllen Sie die folgenden Felder aus:
 
-### <a name="completing-the-process"></a>Abschließen des Vorgangs
-5. Wählen Sie **Bewerten + erstellen** > **Erstellen** aus. Ihr Arbeitsbereich steht nach wenigen Minuten zur Verfügung.
+1. **Arbeitsbereichsname**: Wählen Sie einen beliebigen global eindeutigen Namen. In diesem Tutorial wird **myworkspace** verwendet.
+1. **Region**: Wählen Sie eine beliebige Region.
+
+Gehen Sie unter **Data Lake Storage Gen 2 auswählen** wie folgt vor:
+
+1. Klicken Sie unter **Kontoname** auf **Neu erstellen**, und geben Sie für das neue Speicherkonto den Namen **contosolake** oder einen ähnlichen Namen ein. Dieser Name muss eindeutig sein.
+1. Klicken Sie unter **Dateisystemname** auf **Neu erstellen**, und geben Sie den Namen **Benutzer** ein. Dadurch wird ein Speichercontainer namens **Benutzer** erstellt. Der Arbeitsbereich verwendet dieses Speicherkonto als primäres Speicherkonto für Spark-Tabellen und Spark-Anwendungsprotokolle.
+1. Aktivieren Sie das Kästchen „Mir die Rolle "Mitwirkender an Storage-Blobdaten" für das Data Lake Storage Gen2-Konto zuweisen“. 
+
+## <a name="completing-the-process"></a>Abschließen des Vorgangs
+Wählen Sie **Bewerten + erstellen** > **Erstellen** aus. Ihr Arbeitsbereich steht nach wenigen Minuten zur Verfügung.
 
 > [!NOTE]
 > Wie Sie Arbeitsbereichsfunktionen für einen vorhandenen dedizierten SQL-Pool (ehemals SQL DW) aktivieren, erfahren Sie unter [Aktivieren von Synapse-Arbeitsbereichsfunktionen für einen dedizierten SQL-Pool (ehemals SQL DW)](./sql-data-warehouse/workspace-connected-create.md).
@@ -62,16 +64,6 @@ Nachdem Ihr Azure Synapse-Arbeitsbereich erstellt wurde, haben Sie zwei Möglich
 
 * Öffnen Sie Ihren Synapse-Arbeitsbereich im [Azure-Portal](https://portal.azure.com), und wählen Sie im Abschnitt **Übersicht** des Synapse-Arbeitsbereichs im Feld „Synapse Studio öffnen“ den Eintrag **Öffnen** aus.
 * Navigieren Sie zu `https://web.azuresynapse.net`, und melden Sie sich bei Ihrem Arbeitsbereich an.
-
-
-
-
-
-
-
-
-
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

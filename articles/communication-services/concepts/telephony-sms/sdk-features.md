@@ -1,45 +1,45 @@
 ---
-title: Übersicht über die Clientbibliothek für SMS von Azure Communication Services
+title: Übersicht über das SMS SDK für Azure Communication Services
 titleSuffix: An Azure Communication Services concept document
-description: Hier finden Sie eine Übersicht über die Clientbibliothek für SMS und über ihre Funktionen.
+description: Hier finden Sie eine Übersicht über das SMS SDK und seine Funktionen.
 author: mikben
 manager: jken
 services: azure-communication-services
-ms.author: mikben
-ms.date: 03/10/2021
+ms.author: prakulka
+ms.date: 03/26/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 11ab634ed4b25c5fd8c0079263094c393e9dcbe6
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: c25dfea077510580daf2c1aab584ab9ff5caa7fe
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103496591"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105930427"
 ---
-# <a name="sms-client-library-overview"></a>Übersicht über die Clientbibliothek für SMS
+# <a name="sms-sdk-overview"></a>Übersicht über das SMS SDK
 
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
-
+[!INCLUDE [Public Preview Notice](../../includes/public-preview-include-phone-numbers.md)]
 
 [!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
 
-Mit den Azure Communication Services-Clientbibliotheken für SMS können Sie Ihren Anwendungen SMS-Messagingfunktionen hinzufügen.
+Mit den Azure Communication Services SMS SDKs können Sie Ihren Anwendungen SMS-Messagingfunktionen hinzufügen.
 
-## <a name="sms-client-library-capabilities"></a>Funktionen der Clientbibliothek für SMS
+## <a name="sms-sdk-capabilities"></a>Funktionen der SMS SDKs
 
-Die folgende Liste enthält die Features, die aktuell in unseren Clientbibliotheken verfügbar sind:
+Die folgende Liste enthält die Features, die aktuell in unseren SDKs verfügbar sind:
 
 | Featuregruppe | Funktion                                                                            | JS  | Java | .NET | Python |
 | ----------------- | ------------------------------------------------------------------------------------- | --- | ---- | ---- | ------ |
-| Grundlegende Funktionen | Senden und Empfangen von SMS-Nachrichten </br> *Unicode-Emojis werden unterstützt.*                        | ✔️   | ✔️    | ✔️    | ✔️      |
-|                   | Empfangen von Zustellberichten für gesendete Nachrichten                                            | ✔️   | ✔️    | ✔️    | ✔️      |
+| Grundlegende Funktionen | Senden und Empfangen von SMS-Nachrichten                                                         | ✔️   | ✔️    | ✔️    | ✔️      |
+|                   | Aktivieren von Zustellberichten für gesendete Nachrichten                                             | ✔️   | ✔️    | ✔️    | ✔️      |
 |                   | Alle Zeichensätze (Sprach-/Unicode-Unterstützung)                                         | ✔️   | ✔️    | ✔️    | ✔️      |
-|                   | Unterstützung langer Nachrichten (bis zu 2.048 Zeichen)                                           | ✔️   | ✔️    | ✔️    | ✔️      |
+|                   | Unterstützung langer Nachrichten (bis zu 2.048 Bytes)                                          | ✔️   | ✔️    | ✔️    | ✔️      |
 |                   | Automatische Verkettung langer Nachrichten                                                   | ✔️   | ✔️    | ✔️    | ✔️      |
+|                   | Senden von Nachrichten an mehrere Empfänger gleichzeitig                                        | ✔️   | ✔️    | ✔️    | ✔️      |
+|                   | Unterstützung für Idempotenz                                                               | ✔️   | ✔️    | ✔️    | ✔️      |
+|                   | Benutzerdefinierte Tags für Nachrichten                                                             | ✔️   | ✔️    | ✔️    | ✔️      |
 | Ereignisse            | Verwenden von Event Grid, um Webhooks für den Empfang von eingehenden Nachrichten und Zustellberichten zu konfigurieren | ✔️   | ✔️    | ✔️    | ✔️      |
 | Rufnummer      | Gebührenfreie Nummern                                                                     | ✔️   | ✔️    | ✔️    | ✔️      |
-| Gesetzliche Bestimmungen        | Behandlung von Abmeldungen                                                                      | ✔️   | ✔️    | ✔️    | ✔️      |
-| Überwachung        | Überwachen der Nutzung für gesendete und empfangene Nachrichten                                          | ✔️   | ✔️    | ✔️    | ✔️      |
 | PSTN-Anrufe      | Hinzufügen von PSTN-Anruffunktionen zu Ihrer für SMS geeigneten gebührenfreien Telefonnummer                    | ✔️   | ✔️    | ✔️    | ✔️      |
 
 ## <a name="next-steps"></a>Nächste Schritte

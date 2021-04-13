@@ -10,16 +10,19 @@ ms.topic: quickstart
 ms.custom: mvc,subject-armqs
 ms.date: 10/14/2020
 ms.author: sebansal
-ms.openlocfilehash: d68ec580f25bfd5f9c1a994efc15abd8835ac8a5
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 48686fb78dc4295da3bd390d92ae3837cd09a4d0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101093515"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105639420"
 ---
-# <a name="quickstart-create-an-azure-key-vault-and-a-key-by-using-arm-template-preview"></a>Schnellstart: Erstellen eines Azure-Schlüsseltresors und eines Schlüssels mithilfe einer ARM-Vorlage (Vorschau)
+# <a name="quickstart-create-an-azure-key-vault-and-a-key-by-using-arm-template"></a>Schnellstart: Erstellen eines Azure-Schlüsseltresors und eines Schlüssels mithilfe einer ARM-Vorlage 
 
 [Azure Key Vault](../general/overview.md) ist ein Clouddienst, der einen sicheren Speicher für Geheimnisse bereitstellt, z. B. für Schlüssel, Kennwörter, Zertifikate usw. In dieser Schnellstartanleitung geht es um die Bereitstellung einer Azure Resource Manager-Vorlage (ARM-Vorlage) zum Erstellen eines Schlüsseltresors und eines Schlüssels.
+
+> [!NOTE]
+> Dieses Feature ist nicht für Azure Government verfügbar.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -163,6 +166,9 @@ In der Vorlage sind zwei Ressourcen definiert:
 - Microsoft.KeyVault/vaults/keys
 
 Weitere Vorlagenbeispiele für Azure Key Vault finden Sie in [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Keyvault&pageNumber=1&sort=Popular).
+
+## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
+Sie können auch das [Azure-Portal](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal), Azure PowerShell, die Azure CLI oder die REST-API verwenden. Informationen zu Bereitstellungsmethoden finden Sie unter [Bereitstellen von Vorlagen](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-powershell).
 
 ## <a name="review-deployed-resources"></a>Überprüfen der bereitgestellten Ressourcen
 

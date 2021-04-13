@@ -11,29 +11,29 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.custom: mvc, seodec18
-ms.date: 12/07/2018
-ms.author: mbaldwin
-ms.openlocfilehash: 42bfa52721160a469db2aa0507dadfa85ff41389
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/25/2021
+ms.author: keithp
+ms.openlocfilehash: 0791f2e8d5119c2087286a24cf83b4259ee9e7af
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97508270"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105611649"
 ---
 # <a name="troubleshooting-the-azure-dedicated-hsm-service"></a>Behandeln von Problemen mit dem Azure Dedicated HSM-Dienst
 
-Der Dienst „Azure Dedicated HSM“ verfügt über zwei besondere Facetten. Die erste Facette ist die Registrierung und Bereitstellung der HSM-Geräte mit den zugrunde liegenden Netzwerkkomponenten in Azure. Die zweite Facette ist die Konfiguration der HSM-Geräte als Vorbereitung auf die Nutzung bzw. Integration mit einer bestimmten Workload oder Anwendung. Die Thales Luna Network-HSM-Geräte sind in Azure mit den Geräten identisch, die Sie direkt bei Thales erhalten. Aber die Tatsache, dass es sich um eine Ressource in Azure handelt, macht dies zu einem Spezialfall mit besonderen Aspekten. Diese Aspekte und die sich daraus ergebenden Erkenntnisse in Bezug auf die Problembehandlung oder die bewährten Methoden sind hier dokumentiert, um eine hohe Transparenz und den Zugang zu wichtigen Informationen sicherzustellen. Wenn der Dienst verwendet wird, können Sie definitive Informationen erhalten, indem Sie Supportanfragen an Microsoft oder direkt an Thales senden. 
+Der Dienst „Azure Dedicated HSM“ verfügt über zwei besondere Facetten. Die erste Facette ist die Registrierung und Bereitstellung der HSM-Geräte mit den zugrunde liegenden Netzwerkkomponenten in Azure. Die zweite Facette ist die Konfiguration der HSM-Geräte als Vorbereitung auf die Nutzung bzw. Integration mit einer bestimmten Workload oder Anwendung. Die [Thales Luna 7-HSM](https://cpl.thalesgroup.com/encryption/hardware-security-modules/network-hsms)-Geräte sind in Azure mit den Geräten identisch, die Sie direkt bei Thales erhalten. Aber die Tatsache, dass es sich um eine Ressource in Azure handelt, macht dies zu einem Spezialfall mit besonderen Aspekten. Diese Aspekte und die sich daraus ergebenden Erkenntnisse in Bezug auf die Problembehandlung oder die bewährten Methoden sind hier dokumentiert, um eine hohe Transparenz und den Zugang zu wichtigen Informationen sicherzustellen. Wenn der Dienst verwendet wird, können Sie definitive Informationen erhalten, indem Sie Supportanfragen an Microsoft oder direkt an Thales senden. 
 
 > [!NOTE]
 > Beachten Sie, dass für ein neu bereitgestelltes HSM-Gerät eine Aktualisierung mit allen relevanten Patches durchgeführt werden sollte, bevor die Konfiguration erfolgt. Ein spezifischer erforderlicher Patch ist [KB0019789](https://supportportal.gemalto.com/csm?id=kb_article_view&sys_kb_id=19a81c8bdb9a1fc8d298728dae96197d&sysparm_article=KB0019789) im Portal des Thales-Supports, mit dem ein Problem behoben wird, bei dem das System beim Neustart nicht mehr reagiert.
 
 ## <a name="hsm-registration"></a>HSM-Registrierung
 
-Dedicated HSM ist nicht frei für die Nutzung zugänglich, weil bei diesem Dienst Hardwareressourcen in der Cloud bereitgestellt werden und es sich daher um eine wertvolle Ressource handelt, die geschützt werden muss. Aus diesem Grund nutzen wir einen Positivlistenprozess per E-Mail über HSMrequest@microsoft.com. 
+Dedicated HSM ist nicht frei für die Nutzung zugänglich, weil bei diesem Dienst Hardwareressourcen in der Cloud bereitgestellt werden und es sich daher um eine wertvolle Ressource handelt, die geschützt werden muss. Aus diesem Grund nutzen Sie einen Positivlistenprozess per E-Mail über HSMrequest@microsoft.com. 
 
 ### <a name="getting-access-to-dedicated-hsm"></a>Anfordern des Zugriffs auf Dedicated HSM
 
-Wenn Sie der Meinung sind, dass Dedicated HSM Ihre Schlüsselspeicheranforderungen erfüllt, können Sie eine E-Mail an HSMrequest@microsoft.com senden und den Zugriff anfordern. Beschreiben Sie Ihre Anwendung, die gewünschten Regionen für HSMs und den gewünschten HSM-Umfang. Falls Sie mit einem Microsoft-Vertreter zusammenarbeiten, z. B. einem Kundenbetreuer oder Cloud Solution Architect, sollten Sie diese Person bei Anfragen auf Kopie setzen.
+Überlegen Sie zunächst, für welche Ihrer Anwendungsfälle weder [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/general/overview) noch [Azure Managed HSM](https://docs.microsoft.com/azure/key-vault/managed-hsm/overview) verwendet werden kann. Wenn Sie dann der Meinung sind, dass nur Dedicated HSM Ihre Schlüsselspeicheranforderungen erfüllt, können Sie eine E-Mail an HSMrequest@microsoft.com senden und den Zugriff anfordern. Beschreiben Sie Ihre Anwendung und Anwendungsfälle, die gewünschten Regionen für HSMs und den gewünschten HSM-Umfang. Falls Sie mit einem Microsoft-Vertreter zusammenarbeiten, z. B. einem Kundenbetreuer oder Cloud Solution Architect, sollten Sie diese Person bei Anfragen auf Kopie setzen.
 
 ## <a name="hsm-provisioning"></a>HSM-Bereitstellung
 
@@ -66,7 +66,7 @@ az resource show --ids /subscriptions/<subid>/resourceGroups/<myresourcegroup>/p
 Für Bereitstellungen kann ein Fehler auftreten, wenn Sie zwei HSMs pro Stempel und vier HSMs pro Region überschreiten. Stellen Sie zur Vermeidung dieser Situation sicher, dass Sie die Ressourcen der vorherigen fehlgeschlagenen Bereitstellungen gelöscht haben, bevor Sie eine erneute Bereitstellung durchführen. Informationen zum Überprüfen der Ressourcen finden Sie unten unter „Anzeigen von HSMs nach der Bereitstellung“. Falls Sie dieses Kontingent, das hauptsächlich aus Sicherheitsgründen eingerichtet wurde, überschreiten möchten, können Sie eine E-Mail mit den Details an HSMrequest@microsoft.com senden.
 
 ### <a name="deployment-failure-based-on-capacity"></a>Bereitstellungsfehler aufgrund der Kapazität
-Wenn die Kapazitätsgrenze für einen bestimmten Stempel oder eine Region nahezu erreicht ist (also fast alle verfügbaren HSMs bereitgestellt wurden), kann dies zu Bereitstellungsfehlern führen. Jeder Stempel verfügt über 11 HSMs für Kunden. Dies sind also 22 pro Region. Pro Stempel sind zudem drei Ersatzgeräte und ein Testgerät vorhanden. Wenn Sie der Meinung sind, dass Sie ggf. eine Grenze erreicht haben, können Sie eine E-Mail an HSMrequest@microsoft.com senden, um Informationen zum Stand bestimmter Stempel zu erhalten.
+Wenn die Kapazitätsgrenze für einen bestimmten Stempel oder eine Region nahezu erreicht ist (also fast alle verfügbaren HSMs bereitgestellt wurden), kann dies zu Bereitstellungsfehlern führen. Jeder Stempel verfügt über 12 HSMs für Kunden. Dies sind also 24 pro Region. Pro Stempel sind zudem zwei Ersatzgeräte und ein Testgerät vorhanden. Wenn Sie der Meinung sind, dass Sie ggf. eine Grenze erreicht haben, können Sie eine E-Mail an HSMrequest@microsoft.com senden, um Informationen zum Stand bestimmter Stempel zu erhalten.
 
 ###  <a name="how-do-i-see-hsms-when-provisioned"></a>Anzeigen von HSMs nach der Bereitstellung
 Da Dedicated HSM ein auf die Positivliste gesetzter Dienst ist, wird er im Azure-Portal als „Ausgeblendeter Typ“ angesehen. Zum Anzeigen der HSM-Ressourcen müssen Sie das Kontrollkästchen „Ausgeblendete Typen anzeigen“ wie unten dargestellt aktivieren. Die NIC-Ressource folgt immer auf das HSM und ist ein guter Ort, um die IP-Adresse des HSM zu ermitteln, bevor SSH für die Verbindungsherstellung genutzt wird.
@@ -112,7 +112,7 @@ Die Angabe falscher Anmeldeinformationen für HSMs kann sehr negative Folgen hab
 Die folgenden Punkte beschreiben eine Situation, in der Konfigurationsfehler entweder häufig auftreten oder eine zu beachtende Auswirkung haben:
 
 ### <a name="hsm-documentation-and-software"></a>HSM-Dokumentation und -Software
-Software und Dokumentation für die Thales SafeNet Luna 7-HSM-Geräte ist nicht bei Microsoft erhältlich, sondern muss direkt von Thales heruntergeladen werden. Die Registrierung mit der Thales-Kunden-ID, die während des Registrierungsvorgangs erzeugt wurde, ist erforderlich. Die von Microsoft bereitgestellten Geräte verfügen über Softwareversion 7.2 und Firmwareversion 7.0.3. Anfang 2020 hat Thales seine Dokumentation veröffentlicht, die Sie [hier](https://thalesdocs.com/gphsm/luna/7.2/docs/network/Content/Home_network.htm) finden.  
+Software und Dokumentation für die [Thales Luna 7-HSM](https://cpl.thalesgroup.com/encryption/hardware-security-modules/network-hsms)-Geräte ist nicht bei Microsoft erhältlich, sondern muss direkt von Thales heruntergeladen werden. Die Registrierung mit der Thales-Kunden-ID, die während des Registrierungsvorgangs erzeugt wurde, ist erforderlich. Die von Microsoft bereitgestellten Geräte verfügen über Softwareversion 7.2 und Firmwareversion 7.0.3. Anfang 2020 hat Thales seine Dokumentation veröffentlicht, die Sie [hier](https://thalesdocs.com/gphsm/luna/7.2/docs/network/Content/Home_network.htm) finden.  
 
 ### <a name="hsm-networking-configuration"></a>HSM-Netzwerkkonfiguration
 
@@ -120,7 +120,7 @@ Gehen Sie beim Konfigurieren des Netzwerks auf dem HSM mit Bedacht vor.  Das HSM
 
 ### <a name="hsm-device-reboot"></a>Neustart des HSM-Geräts
 
-Für einige Konfigurationsänderungen muss das HSM aus- und wieder eingeschaltet bzw. neu gestartet werden. Bei von Microsoft durchgeführten Tests des HSM in Azure stellte sich heraus, dass ein Neustart in einigen Fällen zum Ausbleiben einer Reaktion führen kann. Zur Behebung muss im Azure-Portal eine Supportanfrage erstellt werden, um einen „harten Neustart“ durchführen zu lassen. Die Erledigung kann hierbei bis zu 48 Stunden dauern, weil es sich um einen manuellen Prozess in einem Azure-Rechenzentrum handelt.  Stellen Sie zur Vermeidung dieser Situation sicher, dass Sie den Neustartpatch direkt von Thales verwenden. Unter [KB0019789](https://supportportal.gemalto.com/csm?sys_kb_id=d66911e2db4ffbc0d298728dae9619b0&id=kb_article_view&sysparm_rank=1&sysparm_tsqueryId=d568c35bdb9a4850d6b31f3b4b96199e&sysparm_article=KB0019789) im Downloadabschnitt zu Thales Luna Network HSM 7.2 finden Sie einen empfohlenen Patch zur Behebung eines Problems, bei dem das System beim Neustart nicht mehr reagiert. (Hinweis: Sie müssen im Thales-Supportportal registriert sein, um den Download durchführen zu können.)
+Für einige Konfigurationsänderungen muss das HSM aus- und wieder eingeschaltet bzw. neu gestartet werden. Bei von Microsoft durchgeführten Tests des HSM in Azure stellte sich heraus, dass ein Neustart in einigen Fällen zum Ausbleiben einer Reaktion führen kann. Zur Behebung muss im Azure-Portal eine Supportanfrage erstellt werden, um einen „harten Neustart“ durchführen zu lassen. Die Erledigung kann hierbei bis zu 48 Stunden dauern, weil es sich um einen manuellen Prozess in einem Azure-Rechenzentrum handelt.  Stellen Sie zur Vermeidung dieser Situation sicher, dass Sie den Neustartpatch direkt von Thales verwenden. Unter [KB0019789](https://supportportal.gemalto.com/csm?sys_kb_id=d66911e2db4ffbc0d298728dae9619b0&id=kb_article_view&sysparm_rank=1&sysparm_tsqueryId=d568c35bdb9a4850d6b31f3b4b96199e&sysparm_article=KB0019789) im Downloadabschnitt zu Thales Luna 7 HSM 7.2 finden Sie einen empfohlenen Patch zur Behebung eines Problems, bei dem das System beim Neustart nicht mehr reagiert. (Hinweis: Sie müssen im [Thales-Portal für den Kundensupport](https://supportportal.thalesgroup.com/csm) registriert sein, um den Download durchführen zu können.)
 
 ### <a name="ntls-certificates-out-of-sync"></a>Fehlende Synchronisierung von NTLS-Zertifikaten
 Unter Umständen verliert ein Client die Konnektivität mit einem HSM, wenn ein Zertifikat abläuft oder bei Konfigurationsaktualisierungen überschrieben wurde. Die Clientkonfiguration für den Zertifikataustausch sollte für jedes HSM neu angewendet werden.

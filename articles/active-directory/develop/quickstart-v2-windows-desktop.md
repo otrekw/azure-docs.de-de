@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: a084b8d14acc02c67b0678cd7fa9e5993b629a51
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: eb5bf0bc6e211d83d2de2eb8d327ee6b2d577721
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104578521"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075014"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>Schnellstart: Abrufen eines Tokens und Aufrufen der Microsoft Graph-API von einer Windows Desktop-App aus
 
@@ -99,13 +99,15 @@ Eine Abbildung finden Sie unter [Funktionsweise des Beispiels](#how-the-sample-w
 >
 > Hierbei gilt:
 > - `Enter_the_Application_Id_here` ist die **Anwendungs-ID (Client)** für die von Ihnen registrierte Anwendung.
+>    
+>    Den Wert für **Anwendungs-ID (Client)** finden Sie im Azure-Portal auf der Seite **Übersicht** der App.
 > - `Enter_the_Tenant_Info_Here` wird auf eine der folgenden Optionen festgelegt:
 >   - Unterstützt Ihre Anwendung **Nur Konten in diesem Organisationsverzeichnis**, ersetzen Sie diesen Wert durch die **Mandanten-ID** oder den **Mandantennamen** (etwa „contoso.microsoft.com“).
 >   - Unterstützt Ihre Anwendung **Konten in einem beliebigen Organisationsverzeichnis**, ersetzen Sie diesen Wert durch `organizations`.
 >   - Unterstützt Ihre Anwendung **Konten in allen Organisationsverzeichnissen und persönliche Microsoft-Konten**, ersetzen Sie diesen Wert durch `common`.
 >
-> > [!TIP]
-> > Die Werte für **Anwendungs-ID (Client)** , **Verzeichnis-ID (Mandant)** und **Unterstützte Kontotypen** finden Sie im Azure-Portal auf der Seite **Übersicht** der App.
+>     Die Werte für **Verzeichnis-ID (Mandant)** und **Unterstützte Kontotypen** finden Sie im Azure-Portal auf der Seite **Übersicht** der App.
+>
 
 ## <a name="more-information"></a>Weitere Informationen
 
@@ -137,9 +139,9 @@ PublicClientApplicationBuilder.Create(ClientId)
                 .Build();
 ```
 
-> |Hierbei gilt: | BESCHREIBUNG |
-> |---------|---------|
-> | `ClientId` | Die **Anwendungs-ID (Client)** für die im Azure-Portal registrierte Anwendung. Dieser Wert befindet sich im Azure-Portal auf der Seite **Übersicht** der App. |
+|Hierbei gilt: | BESCHREIBUNG |
+|---------|---------|
+| `ClientId` | Die **Anwendungs-ID (Client)** für die im Azure-Portal registrierte Anwendung. Dieser Wert befindet sich im Azure-Portal auf der Seite **Übersicht** der App. |
 
 ### <a name="requesting-tokens"></a>Anfordern von Token
 
@@ -159,9 +161,9 @@ authResult = await App.PublicClientApp.AcquireTokenInteractive(_scopes)
                                       .ExecuteAsync();
 ```
 
-> |Hierbei gilt:| BESCHREIBUNG |
-> |---------|---------|
-> | `_scopes` | Enthält die angeforderten Bereiche (etwa `{ "user.read" }` für Microsoft Graph oder `{ "api://<Application ID>/access_as_user" }` für benutzerdefinierte Web-APIs). |
+|Hierbei gilt:| BESCHREIBUNG |
+|---------|---------|
+| `_scopes` | Enthält die angeforderten Bereiche (etwa `{ "user.read" }` für Microsoft Graph oder `{ "api://<Application ID>/access_as_user" }` für benutzerdefinierte Web-APIs). |
 
 #### <a name="get-a-user-token-silently"></a>Automatisches Abrufen eines Benutzertokens
 
@@ -174,10 +176,10 @@ authResult = await App.PublicClientApp.AcquireTokenSilent(scopes, firstAccount)
                                       .ExecuteAsync();
 ```
 
-> |Hierbei gilt: | BESCHREIBUNG |
-> |---------|---------|
-> | `scopes` | Enthält die angeforderten Bereiche (etwa `{ "user.read" }` für Microsoft Graph oder `{ "api://<Application ID>/access_as_user" }` für benutzerdefinierte Web-APIs). |
-> | `firstAccount` | Gibt den ersten Benutzer im Cache an. (MSAL unterstützt mehrere Benutzer in einer App.) |
+|Hierbei gilt: | BESCHREIBUNG |
+|---------|---------|
+| `scopes` | Enthält die angeforderten Bereiche (etwa `{ "user.read" }` für Microsoft Graph oder `{ "api://<Application ID>/access_as_user" }` für benutzerdefinierte Web-APIs). |
+| `firstAccount` | Gibt den ersten Benutzer im Cache an. (MSAL unterstützt mehrere Benutzer in einer App.) |
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 

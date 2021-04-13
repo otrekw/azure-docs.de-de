@@ -6,12 +6,12 @@ ms.date: 03/23/2021
 ms.topic: quickstart
 ms.author: thweiss
 zone_pivot_groups: programming-languages-set-functions-temp
-ms.openlocfilehash: 91d27ce0d6f999ac5d13b079c877e49cdf3fcd61
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 0a0c63ee54699185bcd02104b1a3f4d0070ea808
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104962334"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105023247"
 ---
 # <a name="connect-azure-functions-to-azure-cosmos-db-using-visual-studio-code"></a>Verbinden von Azure Functions mit Azure Cosmos DB mithilfe von Visual Studio Code
 
@@ -20,11 +20,11 @@ ms.locfileid: "104962334"
 In diesem Artikel wird gezeigt, wie Sie Visual Studio Code verwenden, um [Azure Cosmos DB](../cosmos-db/introduction.md) mit der Funktion zu verbinden, die Sie im vorherigen Schnellstartartikel erstellt haben. Die Ausgabebindung, die Sie dieser Funktion hinzufügen, schreibt Daten aus der HTTP-Anforderung in ein JSON-Dokument, das in einem Azure Cosmos DB-Container gespeichert ist. 
 
 ::: zone pivot="programming-language-csharp"
-Zunächst müssen Sie den Artikel [Schnellstart: Erstellen Ihrer ersten Funktion über die Befehlszeile mithilfe der Azure-Befehlszeilenschnittstelle](create-first-function-cli-csharp.md) durcharbeiten. Falls Sie die Ressourcen am Ende dieses Artikels bereits bereinigt haben, sollten Sie die Schritte erneut ausführen, um die Funktions-App und die zugehörigen Ressourcen neu zu erstellen.
+Bevor Sie beginnen, müssen Sie die Schritte unter [Schnellstart: Erstellen einer C#-Funktion in Azure mit Visual Studio Code](create-first-function-vs-code-csharp.md) ausführen. Falls Sie die Ressourcen am Ende dieses Artikels bereits bereinigt haben, sollten Sie die Schritte erneut ausführen, um die Funktions-App und die zugehörigen Ressourcen neu zu erstellen.
 ::: zone-end
 ::: zone pivot="programming-language-javascript"  
-Zunächst müssen Sie den Artikel [Schnellstart: Erstellen Ihrer ersten Funktion über die Befehlszeile mithilfe der Azure-Befehlszeilenschnittstelle](create-first-function-cli-node.md) durcharbeiten. Falls Sie die Ressourcen am Ende dieses Artikels bereits bereinigt haben, sollten Sie die Schritte erneut ausführen, um die Funktions-App und die zugehörigen Ressourcen neu zu erstellen.  
-::: zone-end   
+Bevor Sie beginnen, müssen Sie die Schritte unter [Schnellstart: Erstellen einer Java-Funktion in Azure mit Visual Studio Code](create-first-function-vs-code-node.md) ausführen. Falls Sie die Ressourcen am Ende dieses Artikels bereits bereinigt haben, sollten Sie die Schritte erneut ausführen, um die Funktions-App und die zugehörigen Ressourcen neu zu erstellen.  
+::: zone-end
 
 ## <a name="configure-your-environment"></a>Konfigurieren Ihrer Umgebung
 
@@ -43,9 +43,9 @@ Installieren Sie die [Erweiterung „Azure-Datenbanken“](https://marketplace.v
 
 3. Geben Sie auf der Seite **Azure Cosmos DB-Konto erstellen** die Einstellungen für Ihr neues Azure Cosmos DB-Konto ein. 
  
-    Einstellung|Wert|BESCHREIBUNG
+    Einstellung|Wert|Beschreibung
     ---|---|---
-    Subscription|*Ihr Abonnement*|Wählen Sie das Azure-Abonnement aus, in dem Sie im [vorherigen Artikel](./create-first-function-vs-code-csharp.md) Ihre Funktions-App erstellt haben.
+    Abonnement|*Ihr Abonnement*|Wählen Sie das Azure-Abonnement aus, in dem Sie im [vorherigen Artikel](./create-first-function-vs-code-csharp.md) Ihre Funktions-App erstellt haben.
     Ressourcengruppe|*Ihre Ressourcengruppe*|Wählen Sie die Ressourcengruppe aus, in der Sie im [vorherigen Artikel](./create-first-function-vs-code-csharp.md) Ihre Funktions-App erstellt haben.
     Kontoname|*Eindeutigen Namen eingeben*|Geben Sie einen eindeutigen Namen ein, der Ihr Azure Cosmos DB-Konto identifiziert.<br><br>Der Kontoname darf nur Kleinbuchstaben, Ziffern und Bindestriche (-) enthalten und muss zwischen 3 und 31 Zeichen lang sein.
     API|Core (SQL)|Wählen Sie **Core (SQL)** aus, um eine Dokumentdatenbank zu erstellen, die Sie mit einer SQL-Syntax abfragen können. [Erfahren Sie mehr über die SQL-API von Azure Cosmos DB](../cosmos-db/introduction.md).|
@@ -150,7 +150,7 @@ public static async Task<IActionResult> Run(
 
 Bindungsattribute werden direkt in der Datei „function.json“ definiert. Abhängig vom Bindungstyp sind möglicherweise zusätzliche Eigenschaften erforderlich. Die [Azure Cosmos DB-Ausgabekonfiguration](./functions-bindings-cosmosdb-v2-output.md#configuration) beschreibt die für eine Azure Cosmos DB-Ausgabebindung erforderlichen Felder. Mit der Erweiterung können Bindungen einfach in der Datei „function.json“ hinzugefügt werden. 
 
-Klicken Sie zum Erstellen einer Bindung mit der rechten Maustaste (CTRL+Klicken unter macOS) auf die Datei `function.json` im Ordner „HttpTrigger“, und wählen Sie **Bindung hinzufügen** aus. Befolgen Sie die Anweisungen, um die folgenden Bindungseigenschaften für die neue Bindung zu definieren:
+Klicken Sie zum Erstellen einer Bindung im Ordner „HttpTrigger“ mit der rechten Maustaste (STRG+Klicken unter macOS) auf die Datei `function.json`, und wählen Sie **Bindung hinzufügen...** aus. Befolgen Sie die Anweisungen, um die folgenden Bindungseigenschaften für die neue Bindung zu definieren:
 
 | Prompt | Wert | BESCHREIBUNG |
 | -------- | ----- | ----------- |

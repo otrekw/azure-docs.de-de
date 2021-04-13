@@ -7,13 +7,13 @@ ms.date: 09/23/2020
 ms.service: key-vault
 ms.subservice: keys
 ms.topic: quickstart
-ms.custom: devx-track-csharp
-ms.openlocfilehash: cecf8330b7060a4cbc4691f64571a3c7865c575c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.custom: devx-track-csharp, devx-track-azurepowershell
+ms.openlocfilehash: 52e33660b4076f8119ddb5d77e2dbbf7ee201913
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97935256"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105968457"
 ---
 # <a name="quickstart-azure-key-vault-key-client-library-for-net-sdk-v4"></a>Schnellstart: Azure Key Vault-Schlüsselclientbibliothek für .NET (SDK v4)
 
@@ -34,21 +34,26 @@ Weitere Informationen zu Key Vault und Schlüsseln finden Sie unter folgenden Li
 * [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli)
 * Eine Key Vault-Instanz. Diese kann über das [Azure-Portal](../general/quick-create-portal.md), die [Azure CLI](../general/quick-create-cli.md) oder mithilfe von [Azure PowerShell](../general/quick-create-powershell.md) erstellt werden.
 
-In dieser Schnellstartanleitung werden `dotnet` und die Azure CLI verwendet.
-
 ## <a name="setup"></a>Einrichten
 
-In dieser Schnellstartanleitung wird die Azure Identity-Bibliothek mit der Azure CLI verwendet, um den Benutzer bei Azure-Diensten zu authentifizieren. Entwickler können auch Visual Studio oder Visual Studio Code verwenden, um ihre Aufrufe zu authentifizieren. Weitere Informationen finden Sie unter [Authentifizieren des Clients mit der Azure Identity-Clientbibliothek](/dotnet/api/overview/azure/identity-readme?#authenticate-the-client&preserve-view=true).
+In dieser Schnellstartanleitung wird die Azure Identity-Bibliothek verwendet, um den Benutzer bei Azure-Diensten zu authentifizieren. Entwickler können auch Visual Studio oder Visual Studio Code verwenden, um ihre Aufrufe zu authentifizieren. Weitere Informationen finden Sie unter [Authentifizieren des Clients mit der Azure Identity-Clientbibliothek](/dotnet/api/overview/azure/identity-readme?#authenticate-the-client&preserve-view=true).
 
 ### <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
 1. Führen Sie den Befehl `login` aus.
 
+    # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
     ```azurecli-interactive
     az login
     ```
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+    
+    ```azurepowershell-interactive
+    Connect-AzAccount
+    ```
+    ---
 
-    Die CLI öffnet Ihren Standardbrowser, sofern sie dazu in der Lage ist, und lädt eine Azure-Anmeldeseite.
+    Die Azure CLI oder Azure PowerShell öffnet Ihren Standardbrowser, sofern sie oder der Dienst dazu in der Lage ist, und lädt eine Azure-Anmeldeseite.
 
     Öffnen Sie andernfalls die Browserseite [https://aka.ms/devicelogin](https://aka.ms/devicelogin), und geben Sie den in Ihrem Terminal angezeigten Autorisierungscode ein.
 
@@ -58,9 +63,16 @@ In dieser Schnellstartanleitung wird die Azure Identity-Bibliothek mit der Azure
 
 Erstellen Sie eine Zugriffsrichtlinie für Ihren Schlüsseltresor, die Ihrem Benutzerkonto Schlüsselberechtigungen erteilt:
 
-```console
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+```azurecli-interactive
 az keyvault set-policy --name <your-key-vault-name> --upn user@domain.com --key-permissions delete get list create purge
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell-interactive
+Set-AzKeyVaultAccessPolicy -VaultName <your-key-vault-name> -UserPrincipalName user@domain.com -PermissionsToSecrets delete,get,list,set,purge
+```
+---
 
 ### <a name="create-new-net-console-app"></a>Erstellen einer neuen .NET-Konsolen-App
 
@@ -107,7 +119,7 @@ Windows
 set KEY_VAULT_NAME=<your-key-vault-name>
 ````
 Windows PowerShell
-```powershell
+```azurepowershell
 $Env:KEY_VAULT_NAME="<your-key-vault-name>"
 ```
 

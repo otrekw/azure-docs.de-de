@@ -11,14 +11,14 @@ ms.topic: sample
 ms.date: 12/05/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: a04b66b4b3e1901a0c8ecaf2c47dec21b94fe0ee
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: a45333b9df2e75e443ed40568943c03c703799f3
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102548897"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105044106"
 ---
-# <a name="get-all-azure-ad-proxy-application-apps-that-are-published-with-the-identical-certificate"></a>Abrufen aller Azure AD-Proxyanwendungs-Apps, die mit einem identischen Zertifikat veröffentlicht wurden
+# <a name="get-all-application-proxy-apps-that-are-published-with-the-identical-certificate"></a>Abrufen aller Anwendungsproxy-Apps, die mit einem identischen Zertifikat veröffentlicht werden
 
 Dieses PowerShell-Beispiel listet alle Anwendungsproxyanwendungen von Azure Active Directory (Azure AD) auf, die mit einem identischen Zertifikat veröffentlicht wurden.
 

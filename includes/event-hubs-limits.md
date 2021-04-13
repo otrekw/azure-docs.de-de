@@ -1,5 +1,5 @@
 ---
-title: include file description: include file services: event-hubs author: spelluru ms.service: event-hubs ms.topic: include ms.date: 02/01/2021 ms.author: spelluru ms.custom: "include file","fasttrack-edit","iot","event-hubs"
+title: include file description: include file services: event-hubs author: spelluru ms.service: event-hubs ms.topic: include ms.date: 03/31/2021 ms.author: spelluru ms.custom: "include file","fasttrack-edit","iot","event-hubs"
 
 ---
 
@@ -13,13 +13,12 @@ Die folgenden Grenzwerte sind gängig für alle Ebenen:
 | Anzahl von Event Hubs-Namespaces pro Abonnement |- |100 |
 | Anzahl von Event Hubs pro Namespace | Nachfolgende Anforderungen für die Erstellung eines neuen Event Hub werden zurückgewiesen. |10 |
 | Größe eines Event Hub-Namens |- | 256 Zeichen |
-| Größe eines Consumergruppennamens |- | 256 Zeichen |
+| Größe eines Consumergruppennamens | Das Kafka-Protokoll erfordert nicht die Erstellung einer Consumergruppe. | <p>Kafka: 256 Zeichen</p><p>AMQP: 50 Zeichen |
 | Anzahl nicht epochenbezogener Empfänger pro Consumergruppe |- |5 |
 | Anzahl von Autorisierungsregeln pro Namespace | Nachfolgende Anforderungen zur Erstellung von Autorisierungsregeln werden abgelehnt.|12 |
 | Die Anzahl der Aufrufe der GetRuntimeInformation-Methode |  - | 50 pro Sekunde | 
 | Anzahl von virtuellen Netzwerken (VNETs) | - | 128 | 
 | Anzahl von IP-Konfigurationsregeln | - | 128 | 
-
 
 ### <a name="basic-vs-standard-tiers"></a>Basic- und Standard-Tarif
 Die folgende Tabelle enthält die Grenzwerte, die sich für die Ebenen „Basic“ und „Standard“ unter Umständen unterscheiden: 

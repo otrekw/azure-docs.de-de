@@ -1,15 +1,15 @@
 ---
 title: Informationen zur Einhaltung der gesetzlichen Bestimmungen gemäß „Durch New Zealand ISM eingeschränkt“
 description: Details zur integrierten Initiative zur Einhaltung der gesetzlichen Bestimmungen gemäß „Durch New Zealand ISM eingeschränkt“ Jede Steuerung wird mindestens einer Azure Policy-Definition zugeordnet, die Sie bei der Bewertung unterstützt.
-ms.date: 03/17/2021
+ms.date: 03/31/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: f72ca23e2c2237efcf19b629c2759a1ad5d0f879
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 4369a11a037f2e966d6f485fbbc970057818b233
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104590312"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106093910"
 ---
 # <a name="details-of-the-new-zealand-ism-restricted-regulatory-compliance-built-in-initiative"></a>Details zur integrierten Initiative zur Einhaltung der gesetzlichen Bestimmungen gemäß „Durch New Zealand ISM eingeschränkt“
 
@@ -18,6 +18,8 @@ Weitere Informationen zu diesem Compliancestandard finden Sie unter [Durch New Z
 
 Die folgenden Zuordnungen gelten für die Steuerungen in **Durch New Zealand ISM eingeschränkt**. Über den rechten Navigationsbereich können Sie direkt zu einem bestimmten **Steuerungsbereich** springen. Viele der Steuerungen werden über die Definition einer [Azure Policy](../overview.md)-Initiative implementiert. Zum Anzeigen der vollständigen Initiativendefinition öffnen Sie **Policy** im Azure-Portal und wählen dann die Seite **Definitionen** aus.
 Suchen Sie anschließend nach der integrierten Initiativendefinition zur Einhaltung der gesetzlichen Bestimmungen von **Durch New Zealand ISM eingeschränkt**, und wählen Sie sie aus.
+
+Diese integrierte Initiative wird als Teil des [Blaupausenbeispiels „Durch New Zealand ISM eingeschränkt“](../../blueprints/samples/new-zealand-ism.md) bereitgestellt.
 
 > [!IMPORTANT]
 > Jede Steuerung unten ist einer oder mehreren [Azure Policy](../overview.md)-Definitionen zugeordnet.

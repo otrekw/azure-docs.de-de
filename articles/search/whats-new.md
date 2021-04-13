@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 03/12/2021
 ms.custom: references_regions
-ms.openlocfilehash: 8e78fa46125b8aca378598c673ba76829e11d70e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b9ae576a2d0ab8aee00be5b755c348806b412bef
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104600427"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106108488"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Neuerungen in der kognitiven Azure-Suche
 
@@ -23,10 +23,12 @@ Informieren Sie sich über die Neuerungen im Dienst. Legen Sie ein Lesezeichen f
 
 |Funktion&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  BESCHREIBUNG | Verfügbarkeit  |
 |------------------------------|---------------|---------------|
-| [Semantische Suche](semantic-search-overview.md) | Eine Sammlung von abfragebezogenen Features, die die Relevanz von Suchergebnissen mit sehr geringem Aufwand erheblich verbessern. </br></br>Die [semantische Rangfolge](semantic-ranking.md) berechnet Relevanzbewertungen mithilfe der semantischen Bedeutung von Wörtern und Inhalten. </br></br>[Semantische Beschriftungen](semantic-how-to-query-request.md) sind relevante Passagen aus dem Dokument, die das Dokument am besten zusammenfassen. Die wichtigsten Begriffe oder Ausdrücke sind hervorgehoben. </br></br>[Semantische Antworten](semantic-answers.md) sind aus einem Suchdokument extrahierte Schlüsselpassagen, die als direkte Antwort auf eine Abfrage formuliert werden, die wie eine Frage aussieht. | Öffentliche Vorschau ([auf Anforderung](https://aka.ms/SemanticSearchPreviewSignup)). </br></br>Verwenden Sie [Suchdokumente (REST)](/rest/api/searchservice/preview-api/search-documents) api-version=2020-06-30-Preview und [Suchexplorer](search-explorer.md) im Azure-Portal. </br></br>Es gelten Regions- und Tarifeinschränkungen. |
+| [Semantische Suche](semantic-search-overview.md) | Eine Sammlung von abfragebezogenen Features, die die Relevanz von Suchergebnissen mit sehr geringen Anpassungen einer Abfrageanforderung erheblich verbessern. </br></br>Die [semantische Rangfolge](semantic-ranking.md) berechnet Relevanzbewertungen mithilfe der semantischen Bedeutung von Wörtern und Inhalten. </br></br>[Semantische Beschriftungen](semantic-how-to-query-request.md) geben relevante Passagen aus dem Dokument zurück, die das Dokument am besten zusammenfassen. Die wichtigsten Begriffe oder Ausdrücke sind hervorgehoben. </br></br>[Semantische Antworten](semantic-answers.md) geben aus einem Suchdokument extrahierte Schlüsselpassagen zurück, die als direkte Antwort auf eine Abfrage formuliert werden, die wie eine Frage aussieht. | Öffentliche Vorschau ([auf Anforderung](https://aka.ms/SemanticSearchPreviewSignup)). </br></br>Verwenden Sie [Suchdokumente (REST)](/rest/api/searchservice/preview-api/search-documents) api-version=2020-06-30-Preview oder den [Suchexplorer](search-explorer.md) im Azure-Portal. </br></br>Es gelten Regions- und Tarifeinschränkungen. |
 | [Rechtschreibprüfung für Abfragebegriffe](speller-how-to-add.md) | Bevor die Abfragebegriffe die Suchmaschine erreichen, können sie auf Rechtschreibfehler überprüft werden. Die Option `speller` kann mit jedem Abfragetyp verwendet werden (einfach, vollständig oder semantisch). |  Öffentliche Vorschau, nur Rest, api-version=2020-06-30-Preview|
 | [SharePoint Online-Indexer](search-howto-index-sharepoint-online.md) | Dieser Indexer verbindet Sie mit einer SharePoint Online-Website, sodass Sie Inhalte aus einer Dokumentbibliothek indizieren können. | Öffentliche Vorschau, nur Rest, api-version=2020-06-30-Preview |
 | [Normalisierungsfunktionen](search-normalizers.md) | Normalisierungsfunktionen bieten einfache Textvorverarbeitung wie Groß-/Kleinschreibung, Entfernung von Akzenten, Asciifolding usw., ohne die gesamte Analysekette zu durchlaufen.| Öffentliche Vorschau, nur Rest, api-version=2020-06-30-Preview |
+[**Skill für benutzerdefinierte Entitätssuche**](cognitive-search-skill-custom-entity-lookup.md ) |  Eine kognitive Fähigkeit, die nach Text aus einer benutzerdefinierten Liste von Wörtern und Ausdrücken sucht. Mithilfe dieser Liste werden alle Dokumente mit übereinstimmenden Entitäten mit einer Bezeichnung markiert. Die Qualifikation unterstützt auch einen gewissen Grad an Fuzzyübereinstimmung, der für die Suche nach ähnlichen, aber nicht exakten Übereinstimmungen verwendet werden kann. | Allgemein verfügbar. |
+|
 
 ## <a name="february-2021"></a>Februar 2021
 

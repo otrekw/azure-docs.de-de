@@ -5,14 +5,14 @@ services: attestation
 author: msmbaldwin
 ms.service: attestation
 ms.topic: overview
-ms.date: 08/31/2020
+ms.date: 03/26/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 92080f119567d185ca6a5bccf0e89d8d10213f3b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8ff2e73a8557c6b1761c852ac58a46037a122ddb
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101732308"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105628525"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-azure-powershell"></a>Schnellstart: Erstellen eines privaten Endpunkts mit Azure PowerShell
 
@@ -21,7 +21,7 @@ Steigen Sie in Azure Private Link ein, indem Sie einen privaten Endpunkt verwend
 In dieser Schnellstartanleitung erstellen Sie einen privaten Endpunkt für Azure Attestation und stellen einen virtuellen Computer bereit, um die private Verbindung zu testen.  
 
 > [!NOTE]
-> Die aktuelle Implementierung umfasst nur die Option für die automatische Genehmigung. Das Abonnement muss auf der Whitelist sein, damit die Erstellung des privaten Endpunkts fortgesetzt werden kann. Wenden Sie sich an das Serviceteam, oder senden Sie eine Azure-Supportanfrage über die [Azure-Supportseite](https://azure.microsoft.com/support/options/), bevor Sie mit den folgenden Schritten beginnen.
+> Die aktuelle Implementierung umfasst nur die Option für die automatische Genehmigung. Das Abonnement muss einer Positivliste hinzugefügt werden, damit die Erstellung des privaten Endpunkts fortgesetzt werden kann. Wenden Sie sich an das Serviceteam, oder senden Sie eine Azure-Supportanfrage über die [Azure-Supportseite](https://azure.microsoft.com/support/options/), bevor Sie mit den folgenden Schritten beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

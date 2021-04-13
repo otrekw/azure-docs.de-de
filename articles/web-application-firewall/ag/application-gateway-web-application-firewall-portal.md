@@ -5,14 +5,14 @@ services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: tutorial
-ms.date: 09/16/2020
+ms.date: 03/25/2021
 ms.author: victorh
-ms.openlocfilehash: b9733eeb0d9941f6e23dcc9c0fa4dba60f4e4d30
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 35bede052f06c0fcffe46460a376d10690fd4417
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94561028"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105559626"
 ---
 # <a name="tutorial-create-an-application-gateway-with-a-web-application-firewall-using-the-azure-portal"></a>Tutorial: Erstellen eines Anwendungsgateways mit einer Web Application Firewall über das Azure-Portal
 
@@ -42,11 +42,9 @@ Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim 
 
 ## <a name="create-an-application-gateway"></a>Erstellen eines Anwendungsgateways
 
-Azure benötigt ein virtuelles Netzwerk für die Kommunikation zwischen Ressourcen. Sie können ein neues virtuelles Netzwerk erstellen oder ein bereits vorhandenes virtuelles Netzwerk auswählen. In diesem Beispiel erstellen Sie ein neues virtuelles Netzwerk. Sie können ein virtuelles Netzwerk zum gleichen Zeitpunkt erstellen wie das Anwendungsgateway. Application Gateway-Instanzen werden in separaten Subnetzen erstellt. In diesem Beispiel erstellen Sie zwei Subnetze: eins für das Anwendungsgateway und eins für die Back-End-Server.
+1. Klicken Sie im Azure-Portal im Menü auf der linken Seite auf **Ressource erstellen**. Das Fenster **Neu** wird angezeigt.
 
-Klicken Sie im Azure-Portal im Menü auf der linken Seite auf **Ressource erstellen**. Das Fenster **Neu** wird angezeigt.
-
-Klicken Sie auf **Netzwerk**, und wählen Sie dann in der Liste **Ausgewählte** die Option **Application Gateway** aus.
+2. Klicken Sie auf **Netzwerk**, und wählen Sie dann in der Liste **Ausgewählte** die Option **Application Gateway** aus.
 
 ### <a name="basics-tab"></a>Registerkarte „Grundlagen“
 
@@ -60,7 +58,7 @@ Klicken Sie auf **Netzwerk**, und wählen Sie dann in der Liste **Ausgewählte**
 
 2.  Für die Kommunikation in Azure zwischen den von Ihnen erstellten Ressourcen ist ein virtuelles Netzwerk erforderlich. Sie können ein neues virtuelles Netzwerk erstellen oder ein bereits vorhandenes virtuelles Netzwerk auswählen. In diesem Beispiel erstellen Sie gleichzeitig mit dem Anwendungsgateway ein virtuelles Netzwerk. Application Gateway-Instanzen werden in separaten Subnetzen erstellt. In diesem Beispiel erstellen Sie zwei Subnetze: eins für das Anwendungsgateway und eins für die Back-End-Server.
 
-    Erstellen Sie unter **Virtuelles Netzwerk konfigurieren** ein neues virtuelles Netzwerk, indem Sie **Neu erstellen** auswählen. Geben Sie im Fenster **Virtuelles Netzwerk erstellen**, das geöffnet wird, die folgenden Werte ein,um das virtuelle Netzwerk und zwei Subnetze zu erstellen:
+    Wählen Sie unter **Virtuelles Netzwerk konfigurieren** die Option **Neu erstellen** aus, um ein neues virtuelles Netzwerk zu erstellen. Geben Sie im Fenster **Virtuelles Netzwerk erstellen**, das geöffnet wird, die folgenden Werte ein,um das virtuelle Netzwerk und zwei Subnetze zu erstellen:
 
     - **Name**: Geben Sie *myVNet* als Namen des virtuellen Netzwerks ein.
 
@@ -82,7 +80,7 @@ Klicken Sie auf **Netzwerk**, und wählen Sie dann in der Liste **Ausgewählte**
    > [!NOTE]
    > Für die Application Gateway v2-SKU können Sie nur die **öffentliche** Front-End-IP-Konfiguration wählen. Die private Front-End-IP-Konfiguration ist derzeit für diese v2-SKU nicht aktiviert.
 
-2. Wählen Sie **Neu erstellen** für die **Öffentliche IP-Adresse** aus, und geben Sie *myAGPublicIPAddress* als Namen der öffentlichen IP-Adresse ein. Wählen Sie dann **OK** aus. 
+2. Wählen Sie **Neu hinzufügen** für **Öffentliche IP-Adresse** aus, und geben Sie *myAGPublicIPAddress* als Namen der öffentlichen IP-Adresse ein. Wählen Sie dann **OK** aus. 
 
      ![Erstellen eines neuen Anwendungsgateways: Front-Ends](../media/application-gateway-web-application-firewall-portal/application-gateway-create-frontends.png)
 
@@ -90,9 +88,9 @@ Klicken Sie auf **Netzwerk**, und wählen Sie dann in der Liste **Ausgewählte**
 
 ### <a name="backends-tab"></a>Registerkarte „Back-Ends“
 
-Der Back-End-Pool wird zum Weiterleiten von Anforderungen an die Back-End-Server verwendet, die die Anforderung verarbeiten. Back-End-Pools können Netzwerkkarten, VM-Skalierungsgruppen, öffentliche IP-Adressen, interne IP-Adressen, vollqualifizierte Domänennamen (Fully Qualified Domain Names, FQDN) und Back-Ends mit mehreren Mandanten wie Azure App Service umfassen. In diesem Beispiel erstellen Sie mit Ihrem Anwendungsgateway einen leeren Back-End-Pool und fügen dann Back-End-Ziele zum Back-End-Pool hinzu.
+Der Back-End-Pool wird zum Weiterleiten von Anforderungen an die Back-End-Server verwendet, die die Anforderung verarbeiten. Back-End-Pools können Netzwerkkarten, VM-Skalierungsgruppen, öffentliche IP-Adressen, interne IP-Adressen, vollqualifizierte Domänennamen (Fully Qualified Domain Names, FQDN) und Back-Ends mit mehreren Mandanten wie Azure App Service umfassen. In diesem Beispiel erstellen Sie einen leeren Back-End-Pool mit Ihrem Anwendungsgateway und fügen ihm später Back-End-Ziele hinzu.
 
-1. Wählen Sie auf der Registerkarte **Back-Ends** die Option **+Back-End-Pool hinzufügen** aus.
+1. Wählen Sie auf der Registerkarte **Back-Ends** die Option **Back-End-Pool hinzufügen** aus.
 
 2. Geben Sie im Fenster **Back-End-Pool hinzufügen**, das geöffnet wird, die folgenden Werte ein, um einen leeren Back-End-Pool zu erstellen:
 
@@ -109,7 +107,7 @@ Der Back-End-Pool wird zum Weiterleiten von Anforderungen an die Back-End-Server
 
 Auf der Registerkarte **Konfiguration** verbinden Sie das Front-End und den von Ihnen erstellten Back-End-Pool mithilfe einer Routingregel.
 
-1. Wählen Sie **Regel hinzufügen** in der Spalte **Routingregeln** aus.
+1. Wählen Sie in der Spalte **Routingregeln** die Option **Routingregel hinzufügen** aus.
 
 2. Geben Sie im Fenster **Routingregel hinzufügen**, das geöffnet wird, *myRoutingRule* als **Regelname** ein.
 
@@ -124,7 +122,7 @@ Auf der Registerkarte **Konfiguration** verbinden Sie das Front-End und den von 
 
 4. Wählen Sie auf der Registerkarte **Back-End-Ziele** den Pool **myBackendPool** als **Back-End-Ziel** aus.
 
-5. Wählen Sie für die **HTTP-Einstellung** die Option **Neu erstellen** aus, um eine neue HTTP-Einstellung zu erstellen. Die HTTP-Einstellung bestimmt das Verhalten der Routingregel. Geben Sie im Fenster **HTTP-Einstellung hinzufügen**, das geöffnet wird, *myHTTPSetting* als **Name der HTTP-Einstellung** ein. Übernehmen Sie im Fenster **HTTP-Einstellung hinzufügen** die Standardwerte für die übrigen Einstellungen, und wählen Sie dann **Hinzufügen** aus, um zum Fenster **Routingregel hinzufügen** zurückzukehren. 
+5. Wählen Sie für die **HTTP-Einstellung** die Option **Neu hinzufügen** aus, um eine neue HTTP-Einstellung zu erstellen. Die HTTP-Einstellung bestimmt das Verhalten der Routingregel. Geben Sie im Fenster **HTTP-Einstellung hinzufügen**, das geöffnet wird, *myHTTPSetting* als **Name der HTTP-Einstellung** ein. Übernehmen Sie im Fenster **HTTP-Einstellung hinzufügen** die Standardwerte für die übrigen Einstellungen, und wählen Sie dann **Hinzufügen** aus, um zum Fenster **Routingregel hinzufügen** zurückzukehren. 
 
      ![Erstellen eines neuen Anwendungsgateways: HTTP-Einstellung](../media/application-gateway-web-application-firewall-portal/application-gateway-create-httpsetting.png)
 
@@ -158,12 +156,12 @@ Gehen Sie dazu wie folgt vor:
 
     - **Ressourcengruppe**: Wählen Sie **myResourceGroupAG** als Namen der Ressourcengruppe aus.
     - **Name des virtuellen Computers**: Geben Sie *myVM* als Namen der VM ein.
-    - **Benutzername**: Geben *azureuser* als Namen des Administratorbenutzers ein.
-    - **Kennwort**: Geben Sie *Azure123456!* als Administratorkennwort ein.
+    - **Benutzername**: Geben Sie einen Benutzernamen für den Administrator ein.
+    - **Kennwort**: Geben Sie ein Administratorkennwort ein.
 4. Übernehmen Sie für die anderen Einstellungen die Standardwerte, und klicken Sie auf **Weiter: Datenträger**.  
 5. Übernehmen Sie auf der Registerkarte **Datenträger** die Standardwerte, und klicken Sie auf **Weiter: Netzwerk**.
 6. Vergewissern Sie sich auf der Registerkarte **Netzwerk**, dass **myVNet** für **Virtuelles Netzwerk** ausgewählt und **Subnetz** auf **myBackendSubnet** festgelegt ist. Übernehmen Sie für die anderen Einstellungen die Standardwerte, und klicken Sie auf **Weiter: Verwaltung** aus.<br>Application Gateway kann mit Instanzen außerhalb des eigenen virtuellen Netzwerks kommunizieren, es muss jedoch sichergestellt werden, dass eine IP-Verbindung besteht.
-7. Legen Sie auf der Registerkarte **Verwaltung** die Option **Startdiagnose** auf **Aus** fest. Übernehmen Sie für die anderen Einstellungen die Standardwerte, und klicken Sie auf **Bewerten + erstellen**.
+7. Legen Sie auf der Registerkarte **Verwaltung** die Option **Startdiagnose** auf **Deaktivieren** fest. Übernehmen Sie für die anderen Einstellungen die Standardwerte, und klicken Sie auf **Bewerten + erstellen**.
 8. Überprüfen Sie auf der Registerkarte **Bewerten + erstellen** die Einstellungen, beheben Sie alle Validierungsfehler, und wählen Sie dann **Erstellen** aus.
 9. Warten Sie, bis die Erstellung des virtuellen Computers abgeschlossen ist, bevor Sie fortfahren.
 
@@ -175,7 +173,7 @@ In diesem Beispiel installieren Sie IIS auf den virtuellen Computern nur, um zu 
 
     ![Installieren der benutzerdefinierten Erweiterung](../media/application-gateway-web-application-firewall-portal/application-gateway-extension.png)
 
-2. Führen Sie den folgenden Befehl aus, um IIS auf dem virtuellen Computer zu installieren: 
+2. Legen Sie den location-Parameter für Ihre Umgebung fest, und führen Sie anschließend den folgenden Befehl aus, um IIS auf dem virtuellen Computer zu installieren: 
 
     ```azurepowershell-interactive
     Set-AzVMExtension `
@@ -199,48 +197,49 @@ In diesem Beispiel installieren Sie IIS auf den virtuellen Computern nur, um zu 
 
 3. Wählen Sie **myBackendPool** aus.
 
-4. Wählen Sie unter **Ziele** in der Dropdownliste die Option **Virtueller Computer** aus.
+4. Wählen Sie unter **Zieltyp** in der Dropdownliste die Option **Virtueller Computer** aus.
 
-5. Wählen Sie unter **VIRTUELLER COMPUTER** und **NETZWERKSCHNITTSTELLEN** in den Dropdownlisten die VMs **myVM** und **myVM2** sowie die zugehörigen Netzwerkschnittstellen aus.
+5. Wählen Sie unter **Ziel** in der Dropdownliste die zugehörige Netzwerkschnittstelle für **myVM** aus.
+1. Wiederholen Sie den Schritt für **myVM2**.
 
-    ![Hinzufügen von Back-End-Servern](../media/application-gateway-web-application-firewall-portal/application-gateway-backend.png)
+   :::image type="content" source="../media/application-gateway-web-application-firewall-portal/application-gateway-backend.png" alt-text="Hinzufügen von Back-End-Servern":::
+
 
 6. Wählen Sie **Speichern** aus.
 
 7. Warten Sie, bis die Bereitstellung abgeschlossen ist, bevor Sie mit dem nächsten Schritt fortfahren.
 
-## <a name="create-a-storage-account-and-configure-diagnostics"></a>Erstellen eines Speicherkontos und Konfigurieren der Diagnose
-
-### <a name="create-a-storage-account"></a>Speicherkonto erstellen
-
-In diesem Artikel verwendet das Anwendungsgateway ein Speicherkonto, um Daten zum Zweck der Erkennung und Prävention zu speichern. Sie können auch Azure Monitor-Protokolle oder Event Hub verwenden, um Daten aufzuzeichnen.
-
-1. Wählen Sie im Azure-Portal links oben die Option **Ressource erstellen** aus.
-1. Wählen Sie die Option **Speicher** und anschließend **Speicherkonto** aus.
-1. Wählen Sie für *Ressourcengruppe* die Option **myResourceGroupAG** aus.
-1. Geben Sie *myagstore1* für den Namen des Speicherkontos ein.
-1. Übernehmen Sie die Standardwerte für die anderen Einstellungen, und klicken Sie dann auf **Überprüfen und erstellen**.
-1. Überprüfen Sie die Einstellungen, und wählen Sie dann die Option **Erstellen**.
-
-### <a name="configure-diagnostics"></a>Konfigurieren der Diagnose
-
-Konfigurieren Sie die Diagnose so, dass Daten in den Protokollen „ApplicationGatewayAccessLog“, „ApplicationGatewayPerformanceLog“ und „ApplicationGatewayFirewallLog“ aufgezeichnet werden.
-
-1. Wählen Sie im linken Menü die Option **Alle Ressourcen** und dann *myAppGateway* aus.
-2. Wählen Sie unter „Überwachung“ die Option **Diagnoseeinstellungen** aus.
-3. Wählen Sie **Diagnoseeinstellung hinzufügen** aus.
-4. Geben Sie als Name für die Diagnoseeinstellungen *myDiagnosticsSettings* ein.
-5. Aktivieren Sie **In einem Speicherkonto archivieren**, und wählen Sie dann **Konfigurieren** aus, um das zuvor erstellte Speicherkonto *myagstore1* auszuwählen. Wählen Sie dann **OK** aus.
-6. Wählen Sie die Anwendungsgatewayprotokolle aus, die erfasst und aufbewahrt werden sollen.
-7. Wählen Sie **Speichern** aus.
-
-    ![Konfigurieren der Diagnose](../media/application-gateway-web-application-firewall-portal/application-gateway-diagnostics.png)
-
+   
 ## <a name="create-and-link-a-web-application-firewall-policy"></a>Erstellen und Verknüpfen einer Web Application Firewall-Richtlinie
 
-Alle WAF-Anpassungen und -Einstellungen befinden sich in einem separaten Objekt, das als WAF-Richtlinie bezeichnet wird. Die Richtlinie muss Ihrem Anwendungsgateway zugeordnet werden. Informationen zum Erstellen einer WAF-Richtlinie finden Sie unter [Erstellen von Web Application Firewall-Richtlinien für Application Gateway](create-waf-policy-ag.md). Die erstellte Richtlinie kann über die WAF-Richtlinie auf der Registerkarte **Zugeordnete Anwendungsgateways** Ihrer WAF (oder einem einzelnen Listener) zugeordnet werden. 
+Alle WAF-Anpassungen und -Einstellungen befinden sich in einem separaten Objekt, das als WAF-Richtlinie bezeichnet wird. Die Richtlinie muss Ihrem Anwendungsgateway zugeordnet werden. 
 
-![Zugeordnete Anwendungsgateways](../media/application-gateway-web-application-firewall-portal/associated-application-gateways.png)
+Erstellen Sie mithilfe des verwalteten Standardregelsatzes (Default Rule Set, DRS) eine einfache WAF-Richtlinie.
+
+1. Wählen Sie links oben im Portal die Option **Ressource erstellen** aus. Suchen Sie nach **WAF**, wählen Sie **Web Application Firewall** aus, und wählen Sie dann **Erstellen** aus.
+2. Geben Sie auf der Seite **WAF-Richtlinie erstellen** auf der Registerkarte **Grundlagen** die folgenden Informationen ein, oder wählen Sie sie aus. Übernehmen Sie die Standardwerte für die übrigen Einstellungen, und wählen Sie **Überprüfen + erstellen** aus:
+
+   |Einstellung  |Wert  |
+   |---------|---------|
+   |Richtlinie für     |Regionale WAF (Application Gateway)|
+   |Subscription     |Wählen Sie Ihren Abonnementnamen aus.|
+   |Resource group     |Wählen Sie **myResourceGroupAG** aus.|
+   |Richtlinienname     |Geben Sie einen eindeutigen Namen für Ihre WAF-Richtlinie ein.|
+1. Wählen Sie **Weiter: Richtlinieneinstellungen** aus.
+1. Übernehmen Sie die Standardeinstellungen, und wählen Sie **Weiter: Verwaltete Regeln** aus.
+1. Übernehmen Sie die Standardeinstellungen, und wählen Sie **Weiter: Benutzerdefinierte Regeln** aus.
+1. Wählen Sie **Weiter: Zuordnung** aus.
+1. Wählen Sie **Zuordnung hinzufügen** und dann **Application Gateway** aus.
+1. Aktivieren Sie das Kontrollkästchen **Web Application Firewall-Richtlinienkonfiguration auch dann anwenden, wenn sie von der aktuellen Konfiguration abweicht**.
+1. Wählen Sie **Hinzufügen**.
+1. Wählen Sie auf der Registerkarte **Zuordnung** die Option **Zuordnung hinzufügen** und dann **Application Gateway** aus.
+
+   > [!NOTE]
+   > Wenn Sie Ihrer Application Gateway-Instanz (oder Ihrem Listener) eine Richtlinie zuweisen, jedoch gilt dafür bereits eine Richtlinie, wird die ursprüngliche Richtlinie überschrieben und durch die neue Richtlinie ersetzt.
+4. Klicken Sie auf **Überprüfen + erstellen** und dann auf **Erstellen**.
+1. Klicken Sie auf **Weiter: Tags**.
+1. Klicken Sie auf **Überprüfen + erstellen**.
+1. Klicken Sie auf **Erstellen**.
 
 ## <a name="test-the-application-gateway"></a>Testen des Anwendungsgateways
 

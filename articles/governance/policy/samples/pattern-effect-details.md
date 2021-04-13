@@ -1,18 +1,18 @@
 ---
 title: 'Muster: Auswirkungen einer Richtliniendefinition'
 description: Dieses Azure Policy-Muster enthält ein Beispiel für die Verwendung der verschiedenen Auswirkungen einer Richtliniendefinition.
-ms.date: 10/14/2020
+ms.date: 03/31/2021
 ms.topic: sample
-ms.openlocfilehash: f1da9bd153707db35c07ed3c176542797a694d7a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 9fa95fdc793e7762c39525a83f38ae952f532a60
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92073035"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106092839"
 ---
 # <a name="azure-policy-pattern-effects"></a>Azure Policy-Muster: Auswirkungen
 
-Azure Policy verfügt über eine Reihe von [Auswirkungen](../concepts/effects.md), die bestimmen, wie der Dienst auf nicht kompatible Ressourcen reagiert. Einige Auswirkungen sind einfach und erfordern keine weiteren Eigenschaften in der Richtliniendefinition. Für andere sind dagegen mehrere Eigenschaften erforderlich.
+Azure Policy verfügt zahlreiche [Auswirkungen](../concepts/effects.md), die bestimmen, wie der Dienst auf nicht kompatible Ressourcen reagiert. Einige Auswirkungen sind einfach und erfordern keine weiteren Eigenschaften in der Richtliniendefinition. Für andere sind dagegen mehrere Eigenschaften erforderlich.
 
 ## <a name="sample-1-simple-effect"></a>Beispiel 1: Einfache Auswirkung
 

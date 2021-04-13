@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 562c90dcc4f802290b0ed8b4d544fce9d526fa10
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 80ee161944a48135778d12942964a88455ab756e
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99524667"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106055772"
 ---
 # <a name="continuous-access-evaluation"></a>Fortlaufende Zugriffsevaluierung
 
@@ -52,6 +52,9 @@ Die fortlaufende Zugriffsevaluierung wird implementiert, indem für Dienste wie 
 
 Dies ermöglicht ein Szenario, bei dem Benutzer innerhalb von wenigen Minuten nach einem dieser kritischen Ereignisse den Zugriff auf SharePoint Online-Dateien, E-Mails, Kalender oder Aufgaben der Organisation und Teams aus Microsoft 365-Client-Apps verlieren. 
 
+> [!NOTE] 
+> Teams unterstützt noch keine Benutzerrisikoereignisse.
+
 ### <a name="conditional-access-policy-evaluation-preview"></a>Auswertung von Richtlinien für bedingten Zugriff (Vorschau)
 
 In Exchange und SharePoint können wichtige Richtlinien für bedingten Zugriff synchronisiert werden, sodass sie im Dienst selbst ausgewertet werden können.
@@ -63,7 +66,7 @@ Dies ermöglicht ein Szenario, bei dem Benutzer unmittelbar nach Änderungen der
 
 | | Outlook Web | Outlook Win32 | Outlook iOS | Outlook Android | Outlook Mac |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| **SharePoint Online** | Unterstützt | Unterstützt | Nicht unterstützt | Nicht unterstützt | Unterstützt |
+| **SharePoint Online** | Unterstützt | Unterstützt | Unterstützt | Unterstützt | Unterstützt |
 | **Exchange Online** | Unterstützt | Unterstützt | Unterstützt | Unterstützt | Unterstützt |
 
 | | Office-Web-Apps | Office Win32-Apps | Office für iOS | Office für Android | Office für Mac |
@@ -71,23 +74,20 @@ Dies ermöglicht ein Szenario, bei dem Benutzer unmittelbar nach Änderungen der
 | **SharePoint Online** | Nicht unterstützt | Unterstützt | Unterstützt | Unterstützt | Unterstützt |
 | **Exchange Online** | Nicht unterstützt | Unterstützt | Unterstützt | Unterstützt | Unterstützt |
 
+| | OneDrive Web | OneDrive Win32 | OneDrive iOS | OneDrive Android | OneDrive Mac |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| **SharePoint Online** | Unterstützt | Unterstützt | Unterstützt | Unterstützt | Unterstützt |
+
 ### <a name="client-side-claim-challenge"></a>Clientseitige Anspruchsaufforderung
 
 Vor der fortlaufenden Zugriffsevaluierung versuchten Clients immer, das Zugriffstoken aus dem Cache wiederzugeben, solange es nicht abgelaufen war. Mit der fortlaufenden Zugriffsevaluierung wird ein neuer Fall eingeführt. Ein Ressourcenanbieter kann ein Token ablehnen, auch wenn es nicht abgelaufen ist. Um Clients zu informieren, den Cache zu umgehen, auch wenn die zwischengespeicherten Token nicht abgelaufen sind, führen wir einen Mechanismus mit dem Namen **Anspruchsaufforderung** ein, um anzugeben, dass das Token abgelehnt wurde und ein neues Zugriffstoken in Azure AD ausgegeben werden muss. Für die fortlaufende Zugriffsevaluierung ist ein Client-Update erforderlich, damit der Client die Anspruchsaufforderung verstehen kann. Die aktuelle Version der folgenden Anwendungen unterstützt die Anspruchsaufforderung:
 
-- Outlook Windows
-- Outlook iOS
-- Outlook Android
-- Outlook Mac
-- Outlook Web App
-- Teams für Windows (nur für die Teams-Ressource)
-- Teams iOS (nur für die Teams-Ressource)
-- Teams Android (nur für die Teams-Ressource)
-- Teams Mac (nur für die Teams-Ressource)
-- Word, Excel, PowerPoint für Windows
-- Word, Excel, PowerPoint für iOS
-- Word, Excel, PowerPoint für Android
-- Word, Excel, PowerPoint für Mac
+| | Web | Win32 | iOS | Android | Mac |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| **Outlook** | Unterstützt | Unterstützt | Unterstützt | Unterstützt | Unterstützt |
+| **Teams** | Unterstützt | Unterstützt | Unterstützt | Unterstützt | Unterstützt |
+| **Office** | Nicht unterstützt | Unterstützt | Unterstützt | Unterstützt | Unterstützt |
+| **OneDrive** | Unterstützt | Unterstützt | Unterstützt | Unterstützt | Unterstützt |
 
 ### <a name="token-lifetime"></a>Lebensdauer von Token
 
@@ -163,11 +163,11 @@ Wenn dieses Szenario in Ihrer Umgebung besteht, um Endlosschleifen zu vermeiden,
 
 Eine Erläuterung der Office-Updatekanäle finden Sie unter [Übersicht über die Updatekanäle von Microsoft 365 Apps](/deployoffice/overview-update-channels). Es wird Organisationen empfohlen, Web Account Manager (WAM) nicht zu deaktivieren.
 
-### <a name="policy-change-timing"></a>Zeitliche Steuerung von Richtlinienänderungen
+### <a name="group-membership-and-policy-update-effective-time"></a>Zeitraum bis zur Wirksamkeit einer Aktualisierung von Gruppenmitgliedschaft und Richtlinien
 
-Aufgrund der Möglichkeit einer Replikationsverzögerung zwischen Azure AD und Ressourcenanbietern kann es bis zu 2 Stunden dauern, bis Richtlinienänderungen von Administratoren für Exchange Online wirksam werden.
+Bis die von Administratoren vorgenommene Aktualisierung von Gruppenmitgliedschaft und Richtlinien wirksam wird, kann bis zu einem Tag vergehen. Für Richtlinienaktualisierungen wurde eine Optimierung vorgenommen, die die Verzögerung auf zwei Stunden reduziert. Allerdings werden noch nicht alle Szenarien abgedeckt. 
 
-Beispiel: Der Administrator fügt um 11:00 Uhr eine Richtlinie hinzu, um einen Bereich von IP-Adressen für den Zugriff auf E-Mails zu sperren. Ein Benutzer aus diesem IP-Adressbereich kann möglicherweise bis 13:00 Uhr weiterhin auf E-Mails zugreifen.
+Wenn Sie die Richtlinienaktualisierung oder die Änderung der Gruppenmitgliedschaft in einer Notfallsituation für bestimmte Benutzer sofort angewendet werden muss, sollten Sie diesen [PowerShell-Befehl](/powershell/module/azuread/revoke-azureaduserallrefreshtoken) oder „Revoke Session“ (Sitzung sperren) auf der Benutzerprofilseite verwenden, um die Benutzersitzung zu sperren. Dadurch wird sichergestellt, dass die aktualisierten Richtlinien sofort angewendet werden.
 
 ### <a name="coauthoring-in-office-apps"></a>Gemeinsame Dokumenterstellung in Office-Apps
 

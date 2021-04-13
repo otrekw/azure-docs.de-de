@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 03/11/2021
 ms.custom: mvc
-ms.openlocfilehash: 4f6dc61b0e05fcb16a03a1183518069b98aa575f
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 17740763777372a5eaed6941974c120860839279
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104771412"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106382708"
 ---
 # <a name="tutorial-discover-physical-servers-with-azure-migrate-discovery-and-assessment"></a>Tutorial: Ermitteln physischer Server mit der Ermittlung und Bewertung von Azure Migrate
 
@@ -80,6 +80,9 @@ Wenn Sie gerade erst ein kostenloses Azure-Konto erstellt haben, sind Sie der Be
 Richten Sie ein Konto ein, das von der Appliance für den Zugriff auf die physischen Server verwendet werden kann.
 
 - Verwenden Sie für **Windows-Server** ein Domänenkonto für in die Domäne eingebundene Server und ein lokales Konto für nicht in die Domäne eingebundene Server. Das Benutzerkonto sollte diesen Gruppen hinzugefügt werden: Remoteverwaltungsbenutzer, Leistungsüberwachungsbenutzer und Leistungsprotokollbenutzer.
+    > [!Note]
+    > Stellen Sie bei Windows Server 2008 und 2008 R2 sicher, dass WMF 3.0 auf den Servern installiert ist und dass das Domänenkonto/das lokale Konto, das für den Serverzugriff verwendet wird, den folgenden Gruppen hinzugefügt wird: „Systemmonitorbenutzer“, „Leistungsprotokollbenutzer“ und „WinRMRemoteWMIUsers“.
+
 - Für **Linux-Server** benötigen Sie ein root-Konto auf den Linux-Servern, die Sie ermitteln möchten. Alternativ dazu können Sie auch mithilfe der folgenden Befehle ein Konto mit den erforderlichen Funktionen festlegen, bei dem es sich nicht um das root-Konto handelt:
 
 **Befehl** | **Zweck**

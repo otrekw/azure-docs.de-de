@@ -3,12 +3,12 @@ title: Was ist Azure Event Grid?
 description: Senden Sie Ereignisdaten mit Azure Event Grid aus einer Quelle an Handler. Erstellen Sie ereignisbasierte Anwendungen, und integrieren Sie sie in Azure-Dienste.
 ms.topic: overview
 ms.date: 01/28/2021
-ms.openlocfilehash: e53665c88c3860d37b3512c6498ab626b02a6400
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a410f56da9e28403fb98d92332e6d67c064bac4d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99055132"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105934863"
 ---
 # <a name="what-is-azure-event-grid"></a>Was ist Azure Event Grid?
 
@@ -22,7 +22,8 @@ Dieser Artikel enthält eine Übersicht zu Azure Event Grid. Wenn Sie in die Ver
 
 :::image type="content" source="./media/overview/functional-model.png" alt-text="Event Grid-Modell von Quellen und Handlern" lightbox="./media/overview/functional-model-big.png":::
 
-Diese Abbildung zeigt, wie Event Grid Quellen und Handler verbindet, stellt jedoch keine vollständige Liste der unterstützten Integrationen dar.
+> [!NOTE]
+> Diese Abbildung zeigt, wie Event Grid Quellen und Handler verbindet, stellt jedoch keine vollständige Liste der unterstützten Integrationen dar. Eine Liste aller unterstützten Ereignisquellen finden Sie im folgenden Abschnitt. 
 
 ## <a name="event-sources"></a>Ereignisquellen
 
@@ -38,6 +39,7 @@ Derzeit unterstützen die folgenden Azure-Dienste das Senden von Ereignissen an 
 - [Azure Machine Learning](event-schema-machine-learning.md)
 - [Azure Maps](event-schema-azure-maps.md)
 - [Azure Media Services](event-schema-media-services.md)
+- [Azure Policy](./event-schema-policy.md)
 - [Azure-Ressourcengruppen](event-schema-resource-groups.md)
 - [Azure Service Bus](event-schema-service-bus.md)
 - [Azure SignalR](event-schema-azure-signalr.md)

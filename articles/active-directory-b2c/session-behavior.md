@@ -13,10 +13,10 @@ ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
 ms.openlocfilehash: 3a3cdb93ee4cbf4a2e15540b9daf78b6c231d393
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104579738"
 ---
 # <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>Konfigurieren des Sitzungsverhaltens in Azure Active Directory B2C
@@ -82,7 +82,7 @@ Sie können das Verhalten der Azure AD B2C-Sitzung konfigurieren, einschließli
   - **Anwendung**: Mit dieser Einstellung können Sie eine Benutzersitzung ausschließlich für eine Anwendung beibehalten, unabhängig von anderen Anwendungen. Beispiel: Diese Einstellung können Sie verwenden, wenn sich der Benutzer bei Contoso Pharmacy anmelden soll, auch wenn er sich bereits bei Contoso Groceries angemeldet hat.
   - **Richtlinie**: Mit dieser Einstellung können Sie eine Benutzersitzung ausschließlich für einen Benutzerflow beibehalten, unabhängig von den Anwendungen, die diesen verwenden. Beispiel: Wenn sich der Benutzer bereits angemeldet und einen Multi-Factor Authentication-Schritt (MFA) abgeschlossen hat, kann er Zugriff auf Bestandteile mit höherer Sicherheitsstufe von mehreren Anwendungen erhalten, solange die an den Benutzerflow gebundene Sitzung nicht abläuft.
   - **Unterdrückt**: Diese Einstellung zwingt den Benutzer, bei jeder Ausführung der Richtlinie den gesamten Benutzerflow zu durchlaufen.
-- **Angemeldet bleiben**: Verlängert die Sitzungslebensdauer durch die Verwendung eines beständigen Cookies. Wenn dieses Feature aktiviert ist und der Benutzer es auswählt, bleibt die Sitzung aktiv, auch wenn der Benutzer den Browser schließt und wieder öffnet. Die Sitzung wird erst widerrufen, wenn sich der Benutzer abmeldet. Das Feature „Angemeldet bleiben“ gilt nur für Anmeldungen mit lokalen Konten. Das Feature „Angemeldet bleiben“ hat Vorrang vor der Sitzungslebensdauer.
+- **Angemeldet bleiben**: Verlängert die Sitzungslebensdauer durch die Verwendung eines beständigen Cookies. Wenn dieses Feature aktiviert ist und der Benutzer es auswählt, bleibt die Sitzung aktiv, auch wenn der Benutzer den Browser schließt und wieder öffnet. Die Sitzung wird nur widerrufen, wenn sich der Benutzer abmeldet. Die Funktion „Angemeldet bleiben“ gilt nur für die Anmeldung mit lokalen Konten. Das Feature „Angemeldet bleiben“ hat Vorrang vor der Sitzungslebensdauer.
 
 ::: zone pivot="b2c-user-flow"
 

@@ -9,12 +9,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 08/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 8a76a37de64733ba3e0126c7885d8690d2d83c1b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ea5a443caba25b7b5e6d843408c12e61a55b9e10
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93099719"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105047438"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-python-sdk-and-azure-cosmos-db"></a>Schnellstart: Erstellen einer Cassandra-App mit dem Python-SDK und Azure Cosmos DB
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -33,7 +33,7 @@ In dieser Schnellstartanleitung erstellen Sie ein Azure Cosmos DB-Cassandra-API-
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Ein Azure-Konto mit einem aktiven Abonnement. [Erstellen Sie ein kostenloses Konto.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) Oder [testen Sie Azure Cosmos DB kostenlos](https://azure.microsoft.com/try/cosmosdb/) ohne ein Azure-Abonnement.
-- [Python 2.7.14 oder höher bzw. 3.4 oder höher](https://www.python.org/downloads/)
+- [Python 2.7 bzw. 3.6 oder höher](https://www.python.org/downloads/)
 - [Git](https://git-scm.com/downloads).
 - [Python-Treiber für Apache Cassandra](https://github.com/datastax/python-driver)
 

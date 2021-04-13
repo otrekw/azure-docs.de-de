@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
-ms.date: 11/12/2020
-ms.openlocfilehash: a225989f0670e9b62b00a35bac719c9357c8a130
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/24/2021
+ms.openlocfilehash: ccfda4975b6453ed67edc2640520bc0a76df5709
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96017048"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105644881"
 ---
 # <a name="tutorial-accept-and-receive-data-using-azure-data-share"></a>Tutorial: Akzeptieren und Empfangen von Daten mithilfe von Azure Data Share  
 
@@ -42,23 +42,10 @@ Stellen Sie sicher, dass alle Voraussetzungen erfüllt sind, bevor Sie die Einla
 Wenn Sie Daten in Azure SQL-Datenbank oder Azure Synapse Analytics empfangen möchten, finden Sie nachfolgend eine Liste mit Voraussetzungen, die erfüllt sein müssen. 
 
 #### <a name="prerequisites-for-receiving-data-into-azure-sql-database-or-azure-synapse-analytics-formerly-azure-sql-dw"></a>Voraussetzungen für den Empfang von Daten in Azure SQL-Datenbank oder Azure Synapse Analytics (ehemals Azure SQL DW)
-Beim Konfigurieren der Voraussetzungen können Sie sich an der [Schritt-für-Schritt-Demo](https://youtu.be/aeGISgK1xro) orientieren.
 
 * Eine Instanz von Azure SQL-Datenbank oder Azure Synapse Analytics (ehemals Azure SQL DW).
 * Berechtigung zum Schreiben in Datenbanken auf dem SQL-Server (unter *Microsoft.Sql/servers/databases/write*). Diese Berechtigung ist in der Rolle **Mitwirkender** vorhanden. 
-* Berechtigung zum Zugreifen auf die Azure SQL-Datenbank- oder Azure Synapse Analytics-Instanz für die verwaltete Identität der Data Share-Ressource. Die Berechtigung kann mit folgenden Schritten gewährt werden: 
-    1. Navigieren Sie im Azure-Portal zur SQL Server-Instanz, und legen Sie sich selbst als **Azure Active Directory-Administrator** fest.
-    1. Stellen Sie mit dem [Abfrage-Editor](../azure-sql/database/connect-query-portal.md#connect-using-azure-active-directory) oder SQL Server Management Studio mit Azure Active Directory-Authentifizierung eine Verbindung mit Azure SQL-Datenbank/Data Warehouse her. 
-    1. Führen Sie das folgende Skript aus, um die verwaltete Data Share-Identität als „db_datareader, db_datawriter, db_ddladmin“ hinzuzufügen. Sie müssen mithilfe von Active Directory und nicht über die SQL Server-Authentifizierung eine Verbindung herstellen. 
-
-        ```sql
-        create user "<share_acc_name>" from external provider; 
-        exec sp_addrolemember db_datareader, "<share_acc_name>"; 
-        exec sp_addrolemember db_datawriter, "<share_acc_name>"; 
-        exec sp_addrolemember db_ddladmin, "<share_acc_name>";
-        ```      
-        Beachten Sie, dass *<share_acc_name>* der Name Ihrer Data Share-Ressource ist. Falls Sie noch keine Data Share-Ressource erstellt haben, können Sie später zu dieser Voraussetzung zurückkehren.         
-
+* **Azure Active Directory-Administrator** von SQL Server
 * SQL Server-Firewallzugriff. Die Berechtigung kann mit folgenden Schritten gewährt werden: 
     1. Navigieren Sie in SQL Server im Azure-Portal zu *Firewalls und virtuelle Netzwerke*.
     1. Klicken Sie auf **Ja** für *Azure-Diensten und -Ressourcen den Zugriff auf diesen Server gestatten*.
@@ -92,7 +79,6 @@ Beim Konfigurieren der Voraussetzungen können Sie sich an der [Schritt-für-Sch
 
 * Ein Azure Data Explorer-Cluster im gleichen Azure-Rechenzentrum wie der Data Explorer-Cluster des Datenanbieters: Sollten Sie über keinen solchen Cluster verfügen, können Sie einen [Azure Data Explorer-Cluster erstellen](/azure/data-explorer/create-cluster-database-portal). Falls Ihnen das Azure-Rechenzentrum des Datenanbieterclusters nicht bekannt ist, können Sie den Cluster später in diesem Prozess erstellen.
 * Berechtigung zum Schreiben in den Azure Data Explorer-Cluster (unter *Microsoft.Kusto/clusters/write*). Diese Berechtigung ist in der Rolle „Mitwirkender“ vorhanden. 
-* Berechtigung zum Hinzufügen einer Rollenzuweisung zum Azure Data Explorer-Cluster (unter *Microsoft.Authorization/role assignments/write*). Diese Berechtigung ist in der Rolle „Besitzer“ vorhanden. 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 
@@ -175,13 +161,13 @@ Führen Sie die folgenden Schritte aus, um zu konfigurieren, wo Sie Daten empfan
 
    ![Dem Ziel zuordnen](./media/dataset-map-target.png "Dem Ziel zuordnen") 
 
-1. Wählen Sie einen Zieldatenspeichertyp aus, in dem die Daten gespeichert werden sollen. Alle Datendateien oder -tabellen im Zieldatenspeicher mit demselben Pfad und Namen werden überschrieben. 
+1. Wählen Sie einen Zieldatenspeichertyp aus, in dem die Daten gespeichert werden sollen. Alle Datendateien oder -tabellen im Zieldatenspeicher mit demselben Pfad und Namen werden überschrieben. Wenn Sie Daten in Azure SQL-Datenbank oder Azure Synapse Analytics (vormals Azure SQL DW) empfangen, aktivieren Sie das Kontrollkästchen **Allow Data Share to run the above 'create user' script on my behalf** (Data Share die Ausführung des obigen Skripts „Benutzer erstellen“ in meinem Namen erlauben).
 
    Wählen Sie für die direkte Freigabe einen Datenspeicher am angegebenen Speicherort aus. Der Speicherort ist das Azure-Rechenzentrum, in dem sich der Quelldatenspeicher des Datenanbieters befindet. Nach der Zuordnung des Datasets können Sie über den Link im Zielpfad auf die Daten zugreifen.
 
    ![Zielspeicherkonto](./media/dataset-map-target-sql.png "Zielspeicher") 
 
-1. Wenn der Datenanbieter für die momentaufnahmebasierte Freigabe einen Momentaufnahmezeitplan erstellt hat, um die Daten regelmäßig zu aktualisieren, können Sie auch den Momentaufnahmezeitplan aktivieren, indem Sie die Registerkarte **Momentaufnahmezeitplan** auswählen. Aktivieren Sie das Kontrollkästchen neben „Momentaufnahmezeitplan“, und wählen Sie **+ Aktivieren** aus.
+1. Wenn der Datenanbieter für die momentaufnahmebasierte Freigabe einen Momentaufnahmezeitplan erstellt hat, um die Daten regelmäßig zu aktualisieren, können Sie auch den Momentaufnahmezeitplan aktivieren, indem Sie die Registerkarte **Momentaufnahmezeitplan** auswählen. Aktivieren Sie das Kontrollkästchen neben „Momentaufnahmezeitplan“, und wählen Sie **+ Aktivieren** aus. Beachten Sie, dass die erste geplante Momentaufnahme innerhalb einer Minute ab der geplanten Zeit beginnt und nachfolgende Momentaufnahmen innerhalb von Sekunden ab der geplanten Zeit gestartet werden.
 
    ![Aktivieren von „Momentaufnahmezeitplan“](./media/enable-snapshot-schedule.png "Aktivieren des Momentaufnahmezeitplans")
 
