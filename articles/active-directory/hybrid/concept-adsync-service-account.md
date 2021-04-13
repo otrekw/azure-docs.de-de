@@ -11,75 +11,100 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/27/2019
+ms.date: 03/17/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8dddfb8426b769c06cb5b7494431b7eee34dbf9e
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: ca99a997d621bfd2455e909b36b6802775b20ac2
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410894"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106074606"
 ---
 # <a name="adsync-service-account"></a>ADSync-Dienstkonto
 Azure AD Connect installiert einen lokalen Dienst, der die Synchronisierung zwischen Active Directory und Azure Active Directory orchestriert.  Der Synchronisierungsdienst Microsoft Azure AD Sync (ADSync) wird auf einem Server in Ihrer lokalen Umgebung ausgeführt.  Die Anmeldeinformationen für den Dienst sind in den Express-Installationen standardmäßig festgelegt, können aber an die Sicherheitsanforderungen Ihrer Organisation angepasst werden.  Diese Anmeldeinformationen werden nicht verwendet, um eine Verbindung mit Ihren lokalen Gesamtstrukturen oder Azure Active Directory herzustellen.
 
 Die Wahl des ADSync-Dienstkontos ist eine wichtige Planungsentscheidung, die vor der Installation von Azure AD Connect getroffen werden muss.  Jeder Versuch, die Anmeldeinformationen nach der Installation zu ändern, führt dazu, dass der Dienst nicht gestartet werden kann, den Zugriff auf die Synchronisierungsdatenbank verliert und sich nicht bei Ihren verbundenen Verzeichnissen (Azure und AD DS) authentifiziert.  Es erfolgt keine Synchronisierung, bis die ursprünglichen Anmeldeinformationen wiederhergestellt sind.
 
-## <a name="the-default-adsync-service-account"></a>Das standardmäßige Azure ADSync-Dienstkonto
+Der Synchronisierungsdienst kann unter verschiedenen Konten ausgeführt werden. Er kann unter einem virtuellen Dienstkonto (VSA), einem verwalteten Dienstkonto (gMSA/sMSA) oder einem normalen Benutzerkonto ausgeführt werden. Die unterstützten Optionen wurden mit der Azure AD Connect-Version von April 2017 und März 2021 geändert und treten in Kraft, wenn Sie eine Neuinstallation durchführen. Wenn Sie ein Upgrade von einer früheren Version von Azure AD Connect durchführen, sind diese zusätzlichen Optionen nicht verfügbar. 
 
-Bei Ausführung auf einem Mitgliedsserver wird der AdSync-Dienst im Rahmen eines virtuellen Dienstkontos (Virtual Service Account, VSA) ausgeführt.  Aufgrund einer Produktbeschränkung wird bei der Installation auf einem Domänencontroller ein benutzerdefiniertes Dienstkonto erstellt.  Wenn das Dienstkonto mit den Express-Einstellungen nicht den Sicherheitsanforderungen Ihrer Organisation entspricht, stellen Sie Azure AD Connect mit der Option „Anpassen“ bereit.  Wählen Sie dann die Dienstkontooption, die den Anforderungen Ihrer Organisation entspricht.
 
->[!NOTE]
->Das Standarddienstkonto bei Installation auf einem Domänencontroller hat das Format „Domäne\AAD-Installations-ID“.  Das Kennwort für dieses Konto wird nach dem Zufallsprinzip generiert und stellt eine große Herausforderung für die Wiederherstellung und Rotation des Kennworts dar.  Microsoft empfiehlt, das Dienstkonto bei der Erstinstallation auf einem Domänencontroller so anzupassen, dass entweder ein eigenständiges oder ein gruppenbasiertes verwaltetes Dienstkonto (sMSA/gMSA) verwendet wird.
+|Kontotyp|Installationsoption|BESCHREIBUNG| 
+|-----|------|-----|
+|virtuellen Dienstkonto|Express und benutzerdefiniert, April 2017 und höher| Ein virtuelles Dienstkonto wird für alle Expressinstallationen mit Ausnahme von Installationen auf einem Domänencontroller verwendet. Für benutzerdefinierte Installationen ist es die Standardoption, sofern keine andere Option verwendet wird.| 
+|Verwaltetes Dienstkonto|Benutzerdefiniert, April 2017 und höher|Wenn Sie einen Remoteserver mit SQL Server verwenden, empfehlen wir den Einsatz eines gruppenverwalteten Dienstkontos. |
+|Verwaltetes Dienstkonto|Express und benutzerdefiniert, März 2021 und höher|Ein eigenständig verwaltetes Dienstkonto mit dem Präfix „ADSyncMSA_“ wird während einer Expressinstallation auf einem Domänencontroller erstellt. Für benutzerdefinierte Installationen ist es die Standardoption, sofern keine andere Option verwendet wird.|
+|Benutzerkonto|Express und benutzerdefiniert, April 2017 bis März 2021|Ein Benutzerkonto mit dem Präfix „AAD_“ wird während einer Expressinstallation auf einem Domänencontroller erstellt. Für benutzerdefinierte Installationen ist es die Standardoption, sofern keine andere Option verwendet wird.|
+|Benutzerkonto|Express und benutzerdefiniert, März 2017 und früher|Ein Benutzerkonto mit dem Präfix „AAD_“ wird während einer Expressinstallation erstellt. Bei der benutzerdefinierten Installation kann ein anderes Konto angegeben werden.| 
 
-|Azure AD Connect-Speicherort|Erstelltes Dienstkonto|
-|-----|-----|
-|Mitgliedsserver|NT-SERVICE\ADSync|
-|Domänencontroller|Domäne\AAD_74dc30c01e80 (siehe Hinweis)|
+>[!IMPORTANT]
+> Wenn Sie Connect mit einem Build von März 2017 und früher verwenden, setzen Sie das Kennwort für das Dienstkonto nicht zurück, da Windows die Verschlüsselungsschlüssel aus Sicherheitsgründen zerstört. Sie können das Konto nicht in ein anderes Konto ändern, ohne Azure AD Connect neu zu installieren. Wenn Sie ein Upgrade auf einen Build von April 2017 oder höher durchführen, wird das Ändern des Kennworts für das Dienstkonto unterstützt. Sie können jedoch nicht das verwendete Konto ändern. 
 
-## <a name="custom-adsync-service-accounts"></a>Benutzerdefinierte ADSync-Dienstkonten
-Microsoft empfiehlt, den ADSync-Dienst entweder im Rahmen eines virtuellen Dienstkontos oder eines eigenständigen oder gruppenbasierten verwalteten Dienstkontos auszuführen.  Ihr Domänenadministrator kann auch ein Dienstkonto erstellen, das den spezifischen Sicherheitsanforderungen Ihrer Organisation entspricht.   Um das bei der Installation verwendete Dienstkonto anzupassen, wählen Sie unten auf der Seite „Express-Einstellungen“ die Option „Anpassen“.   Die folgenden Optionen sind verfügbar:
+> [!IMPORTANT]
+> Sie können das Dienstkonto nur bei der erstmaligen Installation festlegen. Das Ändern des Dienstkontos nach Abschluss der Installation wird nicht unterstützt. Das Ändern des Kennworts für das Dienstkonto wird unterstützt. Anweisungen finden Sie [hier](how-to-connect-sync-change-serviceacct-pass.md).
 
-- Standardkonto: Azure AD Connect stellt das Dienstkonto wie oben beschrieben bereit.
-- Verwaltetes Dienstkonto: Verwenden Sie ein eigenständiges oder gruppenbasiertes verwaltetes Dienstkonto, das von Ihrem Administrator bereitgestellt wird.
-- Domänenkonto: Verwenden Sie ein Domänendienstkonto, das von Ihrem Administrator bereitgestellt wird.
+Im Folgenden sehen Sie eine Tabelle mit den Standard-, den empfohlenen und den unterstützten Optionen für das Synchronisierungsdienstkonto. 
 
-![Screenshot: Azure AD Connect-Seite „Express-Einstellungen“ mit den Schaltflächen „Anpassen“ und „Express-Einstellungen verwenden“](media/concept-adsync-service-account/adsync1.png)
+Legende: 
 
-![Screenshot: Azure AD Connect-Seite „Erforderliche Komponenten installieren“ mit ausgewählter Option zur Verwendung eines vorhandenen verwalteten Dienstkontos](media/concept-adsync-service-account/adsync2.png)
+- **Fettformatierung** kennzeichnet die Standardoption, die in den meisten Fällen der empfohlenen Option entspricht. 
+- *Kursivformatierung* kennzeichnet die empfohlene Option, sofern diese nicht mit der Standardoption übereinstimmt. 
+- Nicht fett formatiert: unterstützte Option 
+- Lokales Konto: lokales Benutzerkonto auf dem Server 
+- Domänenkonto: Domänenbenutzerkonto 
+- sMSA: [eigenständig verwaltetes Dienstkonto](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd548356(v=ws.10))
+- gMSA: [gruppenverwaltetes Dienstkonto](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831782(v=ws.11)) 
 
-## <a name="diagnosing-adsync-service-account-changes"></a>Untersuchen von Änderungen am ADSync-Dienstkonto
-Das Ändern der Anmeldeinformationen nach der Installation führt dazu, dass der Dienst nicht gestartet werden kann, den Zugriff auf die Synchronisierungsdatenbank verliert und sich nicht bei Ihren verbundenen Verzeichnissen (Azure und AD DS) authentifiziert.  Dem neuen ADSync-Dienstkonto den Datenbankzugriff zu gewähren, reicht nicht aus, um dieses Problem zu beheben. Es erfolgt keine Synchronisierung, bis die ursprünglichen Anmeldeinformationen wiederhergestellt sind.
+|Computertyp |**LocalDB</br> Express**|**LocalDB/LocalSQL</br> Benutzerdefiniert**|**SQL-Remotecomputer </br> Benutzerdefiniert**|
+|-----|-----|-----|-----|
+|**In die Domäne eingebundener Computer**|**VSA**|**VSA**</br> *sMSA*</br> *gMSA*</br> Lokales Konto</br> Domänenkonto| *gMSA* </br>Domänenkonto|
+|Domänencontroller| **sMSA**|**sMSA** </br>*gMSA*</br> Domänenkonto|*gMSA*</br>Domänenkonto| 
 
-Der ADSync-Dienst gibt eine Fehlermeldung im Ereignisprotokoll aus, wenn er nicht gestartet werden kann.  Der Inhalt der Meldung variiert je nachdem, ob die integrierte Datenbank (localdb) oder die Vollversion von SQL Server verwendet wird.  Es folgen Beispiele von eventuell vorhandenen Ereignisprotokolleinträgen.
+## <a name="virtual-service-account"></a>virtuellen Dienstkonto 
 
-### <a name="example-1"></a>Beispiel 1
+Ein virtuelles Dienstkonto ist ein besonderer Typ eines verwalteten lokalen Kontos, das nicht über ein Kennwort verfügt und von Windows automatisch verwaltet wird. 
 
-Die AdSync-Dienstverschlüsselungsschlüssel konnten nicht gefunden werden und wurden erneut erstellt.  Die Synchronisierung erfolgt erst wieder, nachdem dieses Problem behoben wurde.
+ ![Virtuelles Dienstkonto](media/concept-adsync-service-account/account-1.png)
 
-Problembehandlung: Auf die Microsoft Azure AD Sync-Verschlüsselungsschlüssel kann nicht mehr zugegriffen werden, wenn die Anmeldeinformationen für den AdSync-Dienst geändert werden.  Wenn die Anmeldeinformationen geändert wurden, legen Sie das Anmeldekonto mithilfe der Anwendung „Dienste“ wieder auf den ursprünglich konfigurierten Wert (beispielsweise NT SERVICE\AdSync) fest, und starten Sie den Dienst neu.  Dadurch wird der ordnungsgemäße Betrieb des AdSync-Diensts sofort wiederhergestellt.
+Das virtuelle Dienstkonto ist für den Einsatz in Szenarien vorgesehen, in denen das Synchronisierungsmodul und SQL sich auf demselben Server befinden. Wenn Sie einen SQL-Remotecomputer verwenden, empfehlen wir stattdessen den Einsatz eines gruppenverwalteten Dienstkontos. 
 
-Im folgenden [Artikel](./whatis-hybrid-identity.md) finden Sie weitere Informationen.
+Das virtuelle Dienstkonto kann aufgrund von Problemen mit der [Windows-Datenschutz-API (DPAPI)](https://msdn.microsoft.com/library/ms995355.aspx) nicht auf einem Domänencontroller verwendet werden. 
 
-### <a name="example-2"></a>Beispiel 2
+## <a name="managed-service-account"></a>Verwaltetes Dienstkonto 
 
-Der Dienst konnte nicht gestartet werden, da keine Verbindung mit der lokalen Datenbank (localdb) hergestellt werden konnte.
+Wenn Sie einen Remoteserver mit SQL Server verwenden, empfehlen wir den Einsatz eines gruppenverwalteten Dienstkontos. Weitere Informationen zum Vorbereiten von Active Directory für das gruppenverwaltete Dienstkonto finden Sie unter [Gruppenverwaltete Dienstkonten: Übersicht](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831782(v=ws.11)). 
 
-Problembehandlung: Der Microsoft Azure AD Sync-Dienst verliert die Berechtigung zum Zugriff auf den lokalen Datenbankanbieter, wenn die Anmeldeinformationen des AdSync-Diensts geändert werden.  Wenn die Anmeldeinformationen geändert wurden, legen Sie das Anmeldekonto mithilfe der Anwendung „Dienste“ wieder auf den ursprünglich konfigurierten Wert (beispielsweise NT SERVICE\AdSync) fest, und starten Sie den Dienst neu.  Dadurch wird der ordnungsgemäße Betrieb des AdSync-Diensts sofort wiederhergestellt.
+Um diese Option zu verwenden, wählen Sie auf der Seite [Erforderliche Komponenten installieren](how-to-connect-install-custom.md#install-required-components) die Optionen **Vorhandenes Dienstkonto verwenden** und **Verwaltetes Dienstkonto**. 
 
-Im folgenden [Artikel](./whatis-hybrid-identity.md) finden Sie weitere Informationen.
+ ![Verwaltetes Dienstkonto](media/concept-adsync-service-account/account-2.png)
 
-Weitere Details: Die folgenden Fehlerinformationen wurden vom Anbieter zurückgegeben:
- 
+Die Verwendung eines eigenständig verwalteten Dienstkontos wird ebenfalls unterstützt. Diese Konten können jedoch nur auf dem lokalen Computer verwendet werden, und es gibt keinen praktischen Vorteil gegenüber dem virtuellen Standarddienstkonto. 
 
-``` 
-OriginalError=0x80004005 OLEDB Provider error(s): 
-Description  = 'Login timeout expired'
-Failure Code = 0x80004005
-Minor Number = 0 
-Description  = 'A network-related or instance-specific error has occurred while establishing a connection to SQL Server. Server is not found or not accessible. Check if instance name is correct and if SQL Server is configured to allow remote connections. For more information see SQL Server Books Online.'
-```
+### <a name="auto-generated-standalone-managed-service-account"></a>Automatisch generiertes eigenständig verwaltetes Dienstkonto 
+
+Wenn Sie Azure AD Connect auf einem Domänencontroller installieren, wird vom Installations-Assistenten ein eigenständig verwaltetes Dienstkonto erstellt (es sei denn, Sie geben in den benutzerdefinierten Einstellungen das zu verwendende Konto an). Das Konto ist mit dem Präfix **ADSyncMSA_** versehen und wird zur Ausführung des eigentlichen Synchronisierungsdiensts verwendet. 
+
+Bei diesem Konto handelt es sich um ein verwaltetes Domänenkonto, das nicht über ein Kennwort verfügt und von Windows automatisch verwaltet wird. 
+
+Dieses Konto ist für den Einsatz in Szenarien vorgesehen, in denen das Synchronisierungsmodul und SQL sich auf dem Domänencontroller befinden. 
+
+## <a name="user-account"></a>Benutzerkonto 
+
+Der Installations-Assistent erstellt ein lokales Dienstkonto (sofern das Konto nicht zur Verwendung in benutzerdefinierten Einstellungen angegeben wird). Das Konto ist mit dem Präfix AAD_ versehen und wird zur Ausführung des eigentlichen Synchronisierungsdiensts verwendet. Wenn Sie Azure AD Connect auf einem Domänencontroller installieren, wird das Konto in der Domäne erstellt. Das Dienstkonto AAD_ muss sich in folgenden Fällen in der Domäne befinden: 
+- Sie verwenden einen Remoteserver, auf dem SQL Server ausgeführt wird. 
+- Sie verwenden einen Proxy, der Authentifizierung erfordert. 
+
+ ![Benutzerkonto](media/concept-adsync-service-account/account-3.png)
+
+Das Konto wird mit einem langen, komplexen Kennwort erstellt, das nicht abläuft. 
+
+Dieses Konto wird verwendet, um die Kennwörter für die anderen Konten auf sichere Weise zu speichern. Die Kennwörter dieser Konten sind verschlüsselt in der Datenbank gespeichert. Die privaten Schlüssel für die Verschlüsselungsschlüssel sind mit der Verschlüsselung mit geheimem Schlüssel für kryptografische Dienste mithilfe der Windows-Datenschutz-API (DPAPI) geschützt. 
+
+Bei Verwendung einer SQL Server-Instanz mit vollem Funktionsumfang wird das Dienstkonto zum DBO der Datenbank, die für das Synchronisierungsmodul erstellt wurde. Der Dienst funktioniert mit anderen Berechtigungen nicht wie vorgesehen. Darüber hinaus wird eine SQL-Anmeldung erstellt. 
+
+Das Konto erhält auch eine Berechtigung für Dateien, Registrierungsschlüssel und andere Objekte im Zusammenhang mit dem Synchronisierungsmodul. 
+
+
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](whatis-hybrid-identity.md).

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 03/15/2021
 ms.custom: references_regions, devx-track-azurecli
 ms.openlocfilehash: c1ecaa88dd5329d86818565983a6ba891a6d8424
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104577823"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>Erstellen und Konfigurieren eines AKS-Clusters zur Verwendung von virtuellen Knoten im Azure-Portal
@@ -62,7 +62,7 @@ Klicken Sie auf **Weiter: Knotenpools**.
 
 Wählen Sie auf der Seite **Knotenpools** die Option *Virtuelle Knoten aktivieren* aus.
 
-:::image type="content" source="media/virtual-nodes-portal/enable-virtual-nodes.png" alt-text=" Zeigt in einem Browser das Erstellen eines Clusters mit aktivierten virtuellen Knoten im Azure-Portal. Die Option „Virtuelle Knoten aktivieren“ ist hervorgehoben.":::
+:::image type="content" source="media/virtual-nodes-portal/enable-virtual-nodes.png" alt-text="In einem Browser; zeigt das Erstellen eines Clusters mit aktivierten virtuellen Knoten im Azure-Portal. Die Option „Virtuelle Knoten aktivieren“ ist hervorgehoben.":::
 
 Standardmäßig wird eine Clusteridentität erstellt. Diese Clusteridentität wird für die Clusterkommunikation und die Integration in andere Azure-Dienste verwendet. Diese Clusteridentität ist standardmäßig eine verwaltete Identität. Weitere Informationen finden Sie unter [Verwenden verwalteter Identitäten](use-managed-identity.md). Sie können auch einen Dienstprinzipal als Ihre Clusteridentität verwenden.
 

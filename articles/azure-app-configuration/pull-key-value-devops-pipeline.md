@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: how-to
 ms.date: 11/17/2020
 ms.author: drewbat
-ms.openlocfilehash: 7bd163781203a277f4c9d6866a156c11e4d5d520
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 1c01984f6a359c0fd1f5d06d26d97d4a84973f57
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99979571"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106056744"
 ---
 # <a name="pull-settings-to-app-configuration-with-azure-pipelines"></a>Pullen von Einstellungen aus App Configuration mit Azure Pipelines
 
@@ -33,7 +33,10 @@ Mit der Aufgabe [Azure App Configuration](https://marketplace.visualstudio.com/i
 1. Wählen Sie unter **Pipelines** die Option **Dienstverbindungen** aus.
 1. Wenn noch keine Dienstverbindungen vorhanden sind, klicken Sie in der Mitte des Bildschirms auf die Schaltfläche **Dienstverbindung erstellen**. Klicken Sie andernfalls rechts oben auf der Seite auf **Neue Dienstverbindung**.
 1. Wählen Sie **Azure Resource Manager** aus.
-1. Wählen Sie **Dienstprinzipal (automatisch)** aus.
+![Screenshot des Auswählens von Azure Resource Manager in der Dropdownliste „Neue Dienstverbindung“.](./media/new-service-connection.png)
+1. Wählen Sie im Dialogfeld **Authentifizierungsmethode** die Option **Dienstprinzipal (automatisch)** aus.
+    > [!NOTE]
+    > Authentifizierung mit **verwalteter Identität** wird zurzeit für die App Configuration-Aufgabe nicht unterstützt.
 1. Geben Sie Ihr Abonnement und Ihre Ressource an. Benennen Sie Ihre Dienstverbindung.
 
 Suchen Sie im Anschluss an die Erstellung der Dienstverbindung nach dem Namen des zugewiesenen Dienstprinzipals. Diesem Dienstprinzipal wird im nächsten Schritt eine neue Rollenzuweisung hinzugefügt.
@@ -49,9 +52,11 @@ Weisen Sie der für die Aufgabe verwendeten Dienstverbindung die passende App Co
 
 1. Navigieren Sie zu Ihrem App Configuration-Zielspeicher. Eine exemplarische Vorgehensweise zum Einrichten eines App Configuration-Speichers finden Sie unter [Erstellen eines App Configuration-Speichers](./quickstart-dotnet-core-app.md#create-an-app-configuration-store) in einem der Schnellstarts zu Azure App Configuration.
 1. Wählen Sie auf der linken Seite **Zugriffssteuerung (IAM)** aus.
-1. Wählen Sie im oberen Bereich **+ Hinzufügen** und anschließend **Rollenzuweisung hinzufügen** aus.
+1. Klicken Sie auf der rechten Seite auf die Schaltfläche **Rollenzuweisungen hinzufügen**.
+![Screenshot der Schaltfläche „Rollenzuweisungen hinzufügen“.](./media/add-role-assignment-button.png)
 1. Wählen Sie unter **Rolle** die Option **App Configuration-Datenleser** aus. Diese Rolle ermöglicht der Aufgabe das Lesen im App Configuration-Speicher. 
 1. Wählen Sie den Dienstprinzipal aus, der der Dienstverbindung zugeordnet ist, die Sie im vorherigen Abschnitt erstellt haben.
+![Screenshot des Dialogfelds „Rollenzuweisung hinzufügen“.](./media/add-role-assignment-reader.png)
 
 > [!NOTE]
 > Um Azure Key Vault-Verweise in App Configuration aufzulösen, muss der Dienstverbindung auch die Berechtigung zum Lesen von Geheimnissen in den referenzierten Azure Key Vault-Instanzen erteilt werden.
@@ -61,12 +66,17 @@ Weisen Sie der für die Aufgabe verwendeten Dienstverbindung die passende App Co
 In diesem Abschnitt erfahren Sie, wie Sie die Aufgabe „Azure App Configuration“ in einer Azure DevOps-Buildpipeline verwenden.
 
 1. Klicken Sie auf **Pipelines** > **Pipelines**, um zur Seite für Buildpipelines zu navigieren. Eine Dokumentation zur Buildpipeline finden Sie unter [Erstellen Ihrer ersten Pipeline](/azure/devops/pipelines/create-first-pipeline?tabs=net%2Ctfs-2018-2%2Cbrowser).
-      - Wenn Sie eine neue Buildpipeline erstellen, klicken Sie auf **Neue Pipeline**, und wählen Sie das Repository für die Pipeline aus. Wählen Sie auf der rechten Seite der Pipeline die Option **Assistent anzeigen** aus, und suchen Sie nach der Aufgabe **Azure App Configuration**.
-      - Wenn Sie eine vorhandene Buildpipeline verwenden, wählen Sie **Bearbeiten** aus, um die Pipeline zu bearbeiten. Suchen Sie auf der Registerkarte **Aufgaben** nach der Aufgabe **Azure App Configuration**.
+      - Wenn Sie eine neue Buildpipeline erstellen, wählen Sie im letzten Schritt des Vorgangs auf der Registerkarte **Review** (Überprüfen) auf der rechten Seite der Pipeline **Show assistant** (Assistenten anzeigen) aus.
+      ![Screenshot der Schaltfläche „Show assistant“ für eine neue Pipeline.](./media/new-pipeline-show-assistant.png)
+      - Wenn Sie eine vorhandene Buildpipeline verwenden, klicken Sie oben rechts auf die Schaltfläche **Bearbeiten**.
+      ![Screenshot der Schaltfläche „Bearbeiten“ für eine vorhandene Pipeline.](./media/existing-pipeline-show-assistant.png)
+1. Suchen Sie nach der Aufgabe **Azure App Configuration**.
+![Screenshot des Dialogfelds „Aufgabe hinzufügen“ mit „Azure App Configuration“ im Suchfeld.](./media/add-azure-app-configuration-task.png)
 1. Konfigurieren Sie die erforderlichen Parameter für die Aufgabe, um die Schlüsselwerte aus dem App Configuration-Speicher zu pullen. Die Parameter werden weiter unten im Abschnitt **Parameter** sowie in QuickInfos neben dem jeweiligen Parameter beschrieben.
       - Legen Sie den Parameter **Azure subscription** (Azure-Abonnement) auf den Namen der Dienstverbindung fest, die Sie in einem vorherigen Schritt erstellt haben.
       - Legen Sie **App Configuration name** (App Configuration-Name) auf den Ressourcennamen Ihres App Configuration-Speichers fest.
       - Behalten Sie für die übrigen Parameter die Standardwerte bei.
+![Screenshot der „Parameter“ für die Aufgabe „App Configuration“.](./media/azure-app-configuration-parameters.png)
 1. Speichern Sie Ihre Angaben, und reihen Sie einen Build in die Warteschlange ein. Im Buildprotokoll werden alle Fehler angezeigt, die ggf. bei der Aufgabenausführung aufgetreten sind.
 
 ## <a name="use-in-releases"></a>Verwenden in Releases
@@ -76,8 +86,12 @@ In diesem Abschnitt erfahren Sie, wie Sie die Aufgabe „Azure App Configuration
 1. Wählen Sie **Pipelines** > **Releases** aus, um zur Seite für Releasepipelines zu navigieren. Eine Dokumentation zu Releasepipelines finden Sie unter [Releasepipelines](/azure/devops/pipelines/release).
 1. Wählen Sie eine vorhandene Releasepipeline aus. Sollten Sie nicht über eine verfügen, wählen Sie **Neue Pipeline** aus, um eine zu erstellen.
 1. Wählen Sie rechts oben die Schaltfläche **Bearbeiten** aus, um die Releasepipeline zu bearbeiten.
-1. Wählen Sie die **Phase** aus, um die Aufgabe hinzuzufügen. Weitere Informationen zu Stages finden Sie unter [Hinzufügen von Stages, Abhängigkeiten und Bedingungen](/azure/devops/pipelines/release/environments).
-1. Klicken Sie für „Auf Agent ausführen“ auf **+** , und fügen Sie dann die Aufgabe **Azure App Configuration** auf der Registerkarte **Aufgaben hinzufügen** hinzu.
+1. Wählen Sie im Dropdown **Tasks** (Aufgaben) die **Stage** (Phase) aus, in der Sie die Aufgabe hinzufügen möchten. Weitere Informationen zu Phasen finden Sie [hier](/azure/devops/pipelines/release/environments).
+![Screenshot der ausgewählten Phase im Dropdown „Tasks“.](./media/pipeline-stage-tasks.png)
+1. Klicken Sie neben dem Auftrag, dem Sie eine neue Aufgabe hinzufügen möchten, auf **+** .
+![Screenshot der Plus-Schaltfläche neben dem Auftrag.](./media/add-task-to-job.png)
+1. Suchen Sie nach der Aufgabe **Azure App Configuration**.
+![Screenshot des Dialogfelds „Aufgabe hinzufügen“ mit „Azure App Configuration“ im Suchfeld.](./media/add-azure-app-configuration-task.png)
 1. Konfigurieren Sie die erforderlichen Parameter in der Aufgabe, um Ihre Schlüsselwerte aus Ihrem App Configuration-Speicher zu pullen. Die Parameter werden weiter unten im Abschnitt **Parameter** sowie in QuickInfos neben dem jeweiligen Parameter beschrieben.
       - Legen Sie den Parameter **Azure subscription** (Azure-Abonnement) auf den Namen der Dienstverbindung fest, die Sie in einem vorherigen Schritt erstellt haben.
       - Legen Sie **App Configuration name** (App Configuration-Name) auf den Ressourcennamen Ihres App Configuration-Speichers fest.

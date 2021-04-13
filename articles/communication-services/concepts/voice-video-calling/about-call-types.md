@@ -6,22 +6,19 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/10/2021
+ms.date: 03/25/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: eea54be9d159c6aacbbc24e2fe8edf874f8e2d83
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 8a25f69019e194650bb6aa2f5b8ae19dd37fbc48
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103492335"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105729166"
 ---
 # <a name="voice-and-video-concepts"></a>Sprach- und Videokonzepte
 
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
-
-
-Mit Azure Communication Services können Sie Sprach- und Videoanrufe (1:1 oder in der Gruppe) tätigen und empfangen. Es können sowohl andere Geräte mit Internetverbindung als auch herkömmliche Telefone angerufen werden. Mit den JavaScript-, Android- oder iOS-Clientbibliotheken von Communication Services können Sie Anwendungen erstellen, die es Benutzern ermöglichen, sich privat oder in Gruppendiskussionen miteinander zu unterhalten. Von Azure Communication Services werden aus- und eingehende Anrufe mit Diensten oder Bots unterstützt.
+Mit Azure Communication Services können Sie Sprach- und Videoanrufe (1:1 oder in der Gruppe) tätigen und empfangen. Es können sowohl andere Geräte mit Internetverbindung als auch herkömmliche Telefone angerufen werden. Mit den JavaScript, Android oder iOS SDKs von Communication Services können Sie Anwendungen erstellen, die es Benutzern ermöglichen, sich privat oder in Gruppendiskussionen miteinander zu unterhalten. Von Azure Communication Services werden aus- und eingehende Anrufe mit Diensten oder Bots unterstützt.
 
 ## <a name="call-types-in-azure-communication-services"></a>Anruftypen in Azure Communication Services
 
@@ -37,7 +34,7 @@ Wenn Ihre Benutzer mit einer herkömmlichen Telefonnummer interagieren, werden A
 
 ### <a name="one-to-one-call"></a>1:1-Anruf
 
-Ein 1:1-Anruf in Azure Communication Services erfolgt, wenn einer Ihrer Benutzer unter Verwendung einer unserer Clientbibliotheken eine Verbindung mit einem anderen Benutzer herstellt. Bei dem Anruf kann es sich um einen VoIP- oder um einen PSTN-Anruf handeln.
+Ein 1:1-Anruf in Azure Communication Services erfolgt, wenn einer Ihrer Benutzer unter Verwendung eines unserer SDKs eine Verbindung mit einem anderen Benutzer herstellt. Bei dem Anruf kann es sich um einen VoIP- oder um einen PSTN-Anruf handeln.
 
 ### <a name="group-call"></a>Gruppenanruf
 
@@ -49,10 +46,6 @@ Wir unterstützen H.264 (MPEG-4).
 ### <a name="video-quality"></a>Videoqualität
 In den nativen SDKs (iOS, Android) wird maximal Full HD mit 1080p unterstützt. Für das Web SDK (JS) wird Standard HD mit 720p unterstützt. Die Qualität hängt von der verfügbaren Bandbreite ab.
 
-### <a name="rooms-concept"></a>Raumkonzept
-Bei Räumen handelt es sich um eine Gruppe von APIs und SDKs, mit denen Sie Ihrer Website oder nativen Anwendung mühelos Audio-, Video-, Bildschirmfreigabe- und PSTN-Funktionen sowie SMS-Interaktionen hinzufügen können.
-Während der Vorschauphase können Sie die Gruppen-ID verwenden, um an der gleichen Konversation teilzunehmen. Sie können beliebig viele Gruppen-IDs erstellen und die Benutzer durch die Verwendung von „Räumen“ voneinander trennen. Die Steuerungsmöglichkeiten im Zusammenhang mit Räumen werden von uns noch erweitert.
-
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
@@ -61,4 +54,4 @@ Während der Vorschauphase können Sie die Gruppen-ID verwenden, um an der gleic
 Weitere Informationen finden Sie in den folgenden Artikeln:
 - Machen Sie sich mit allgemeinen [Anrufflows](../call-flows.md) vertraut.
 - [Telefonnummerntypen](../telephony-sms/plan-solution.md)
-- Informieren Sie sich über die [Funktionen der Clientbibliothek für Telefonie](../voice-video-calling/calling-sdk-features.md).
+- Informieren Sie sich über die [Funktionen des Calling SDK](../voice-video-calling/calling-sdk-features.md).

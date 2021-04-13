@@ -12,12 +12,12 @@ author: emlisa
 ms.author: emlisa
 ms.reviewer: sstein, emlisa
 ms.date: 10/28/2020
-ms.openlocfilehash: 1c210eab0332d01fc6514edc790d729172ed2174
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: fbf2a30d029a579026fa9c590f59bedff594f4b8
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104889058"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109202"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Hochverfügbarkeit für Azure SQL-Datenbank und SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -48,22 +48,22 @@ Bei jedem Upgrade der Datenbank-Engine oder des Betriebssystems sowie beim Erken
 
 ## <a name="general-purpose-service-tier-zone-redundant-availability-preview"></a>Zonenredundante Verfügbarkeit der Dienstebene „Universell“ (Vorschau)
 
-Die zonenredundante Konfiguration für die Dienstebene „Universell“ verwendet [Azure-Verfügbarkeitszonen](../../availability-zones/az-overview.md)  , um Datenbanken über mehrere physische Standorte innerhalb einer Azure-Region zu replizieren. Durch die Auswahl der Zonenredundanz können Sie Ihre neuen und vorhandenen Einzeldatenbanken vom Typ „Universell“ und Pools für elastische Datenbanken für eine viel größere Anzahl von Fehlern, einschließlich schwerwiegender Ausfälle des Rechenzentrums, resilient gestalten, ohne dass die Anwendungslogik geändert werden muss.
+Zonenredundante Konfiguration für die Dienstebene „Universell“ wird sowohl für serverlose als auch bereitgestellte Compute angeboten. Diese Konfiguration nutzt [Azure-Verfügbarkeitszonen](../../availability-zones/az-overview.md)  zum Replizieren von Datenbanken über mehrere physische Standorte innerhalb einer Azure-Region hinweg.Durch die Auswahl der Zonenredundanz können Sie Ihre neuen und vorhandenen serverlosen und bereitgestellten Einzeldatenbanken vom Typ „Universell“ und Pools für elastische Datenbanken für eine viel größere Anzahl von Fehlern – einschließlich schwerwiegender Ausfälle des Rechenzentrums – resilient gestalten, ohne die Anwendungslogik ändern zu müssen.
 
 Die zonenredundante Konfiguration für die Dienstebene „Universell“ besitzt zwei Ebenen:  
 
-- Eine zustandsbehaftete Datenebene mit den Datenbankdateien (.mdf/.ldf), die in ZRS PFS (zonenredundante [Premium-Dateifreigabe](../../storage/files/storage-how-to-create-file-share.md)) gespeichert sind. Mithilfe des [zonenredundanten Speichers](../../storage/common/storage-redundancy.md) werden die Daten und Protokolldateien synchron über drei physisch isolierte Azure-Verfügbarkeitszonen kopiert.
-- Eine zustandslose Compute-Ebene, auf der der Prozess „sqlservr.exe“ ausgeführt wird und die nur vorübergehende und zwischengespeicherte Daten enthält, z. B. TempDB, Modelldatenbanken auf der angefügten SSD, Plancache, Puffer- und Columnstore-Pool im Arbeitsspeicher. Dieser zustandslose Knoten wird von Azure Service Fabric gesteuert, die „sqlservr.exe“ initialisiert, die Integrität des Knotens steuert und bei Bedarf ein Failover zu einem anderen Knoten durchführt. Für zonenredundante Datenbanken vom Typ „Universell“ stehen Knoten mit freier Kapazität in anderen Verfügbarkeitszonen für den Failover bereit.
+- Eine zustandsbehaftete Datenebene mit den Datenbankdateien (.mdf/.ldf), die in ZRS (zonenredundanter Speicher) gespeichert sind. Mithilfe von [ZRS](../../storage/common/storage-redundancy.md) werden die Daten- und Protokolldateien synchron über drei physisch isolierte Azure-Verfügbarkeitszonen hinweg kopiert.
+- Eine zustandslose Compute-Ebene, auf der der Prozess „sqlservr.exe“ ausgeführt wird und die nur vorübergehende und zwischengespeicherte Daten enthält, z. B. TempDB, Modelldatenbanken auf der angefügten SSD, Plancache, Puffer- und Columnstore-Pool im Arbeitsspeicher. Dieser zustandslose Knoten wird von Azure Service Fabric gesteuert, die „sqlservr.exe“ initialisiert, die Integrität des Knotens steuert und bei Bedarf ein Failover zu einem anderen Knoten durchführt. Für zonenredundante serverlose und bereitgestellte Datenbanken vom Typ „Universell“ stehen Knoten mit freier Kapazität in anderen Verfügbarkeitszonen für den Failover bereit.
 
 Die zonenredundante Version der Hochverfügbarkeitsarchitektur für die Dienstebene vom Typ „Universell“ wird im folgenden Diagramm veranschaulicht:
 
 ![Zonenredundante Konfiguration für „Universell“](./media/high-availability-sla/zone-redundant-for-general-purpose.png)
 
 > [!IMPORTANT]
-> Die zonenredundante Konfiguration ist nur verfügbar, wenn die Gen5-Computehardware ausgewählt ist. Dieses Feature steht in einer SQL Managed Instance nicht zur Verfügung. Die zonenredundante Konfiguration für die universelle Ebene ist nur in den folgenden Regionen verfügbar: USA, Osten; USA, Osten 2; USA, Westen 2; Europa, Norden; Europa, Westen; Asien, Südosten; Australien, Osten; Japan, Osten; Vereinigtes Königreich, Süden und Frankreich, Mitte.
+> Die zonenredundante Konfiguration ist nur verfügbar, wenn die Gen5-Computehardware ausgewählt ist. Dieses Feature steht in einer SQL Managed Instance nicht zur Verfügung. Die zonenredundante Konfiguration für die serverlose und bereitgestellte Dienstebene „Universell“ steht nur in den folgenden Regionen zur Verfügung: USA, Osten; USA, Osten 2; USA, Westen 2; Europa, Norden; Europa, Westen; Asien, Südosten; Australien, Osten; Japan, Osten; Vereinigtes Königreich, Süden; Frankreich, Mitte.
 
 > [!NOTE]
-> Bei Datenbanken vom Typ „Universell“ mit einer Größe von 80 virtuellen Kernen kann es bei zonenredundanter Konfiguration zu Leistungseinbußen kommen. Darüber hinaus können Vorgänge wie Sicherung, Wiederherstellung, Datenbankkopie und das Einrichten von Geo-DR-Beziehungen (georedundante Notfallwiederherstellung) bei einzelnen Datenbanken, die größer als 1 TB sind, zu geringerer Leistung führen. 
+> Bei Datenbanken vom Typ „Universell“ mit einer Größe von 80 virtuellen Kernen kann es bei zonenredundanter Konfiguration zu Leistungseinbußen kommen. Darüber hinaus kann es bei Vorgängen wie Sicherung, Wiederherstellung, Datenbankkopie, Einrichten von Beziehungen für georedundante Notfallwiederherstellung und Herabstufen einer zonenredundanten Datenbank von „Unternehmenskritisch“ auf „Universell“ bei einzelnen Datenbanken, die größer als 1 TB sind, zu einer langsameren Leistung kommen. Weitere Informationen finden Sie in unserer [Latenzdokumentation zum Skalieren einer Datenbank](single-database-scale.md).
 > 
 > [!NOTE]
 > Die Vorschauversion wird von der reservierten Instanz nicht abgedeckt.
@@ -119,7 +119,7 @@ Die [schnellere Datenbankwiederherstellung (Accelerated Database Recovery, ADR)]
 
 ## <a name="testing-application-fault-resiliency"></a>Testen der Resilienz von Anwendungsfehlern
 
-Hochverfügbarkeit ist ein wesentlicher Bestandteil der Azure SQL-Datenbank- und SQL Managed Instance-Plattform, der für Ihre Datenbankanwendung transparent ausgeführt wird. Es ist uns jedoch bewusst, dass Sie möglicherweise testen möchten, wie sich die bei geplanten oder ungeplanten Ereignissen eingeleiteten automatischen Failovervorgänge ggf. auf eine Anwendung auswirken, ehe Sie sie in der Produktionsumgebung einsetzen. Sie können ein Failover manuell auslösen, indem Sie eine spezielle API zum Neustarten einer Datenbank, eines Pools für elastische Datenbanken oder einer verwalteten Instanz aufrufen. Bei einer zonenredundanten Datenbank oder einem Pool für elastische Datenbanken führt der API-Aufruf dazu, dass Clientverbindungen von der Verfügbarkeitszone der alten primären Datenbank zur neuen primären Datenbank in einer anderen Verfügbarkeitszone umgeleitet werden. Zusätzlich zu den Tests, wie sich das Failover auf bestehende Datenbanksitzungen auswirkt, können Sie also auch prüfen, ob sich aufgrund von Änderungen an der Netzwerklatenz auch die Gesamtleistung ändert. Weil Neustartvorgänge aufwendig sind und eine große Anzahl davon die Plattform belasten könnte, ist für jede Datenbank, jeden Pool für elastische Datenbanken oder jede verwaltete Instanz ein Failoveraufruf nur alle 15 Minuten erlaubt.
+Hochverfügbarkeit ist ein wesentlicher Bestandteil der Azure SQL-Datenbank- und SQL Managed Instance-Plattform, der für Ihre Datenbankanwendung transparent ausgeführt wird. Es ist uns jedoch bewusst, dass Sie möglicherweise testen möchten, wie sich die bei geplanten oder ungeplanten Ereignissen eingeleiteten automatischen Failovervorgänge ggf. auf eine Anwendung auswirken, ehe Sie sie in der Produktionsumgebung einsetzen. Sie können ein Failover manuell auslösen, indem Sie eine spezielle API zum Neustarten einer Datenbank, eines Pools für elastische Datenbanken oder einer verwalteten Instanz aufrufen. Bei einer zonenredundanten serverlosen oder bereitgestellten Datenbank vom Typ „Universell“ oder aber einem Pool für elastische Datenbanken führt der API-Aufruf dazu, dass Clientverbindungen von der Verfügbarkeitszone der alten primären Datenbank zur neuen primären Datenbank in einer anderen Verfügbarkeitszone umgeleitet werden. Zusätzlich zu den Tests, wie sich das Failover auf bestehende Datenbanksitzungen auswirkt, können Sie also auch prüfen, ob sich aufgrund von Änderungen an der Netzwerklatenz auch die Gesamtleistung ändert. Weil Neustartvorgänge aufwendig sind und eine große Anzahl davon die Plattform belasten könnte, ist für jede Datenbank, jeden Pool für elastische Datenbanken oder jede verwaltete Instanz ein Failoveraufruf nur alle 15 Minuten erlaubt.
 
 Ein Failover kann mithilfe von PowerShell, der Rest-API oder Azure CLI initiiert werden:
 

@@ -10,42 +10,42 @@ ms.topic: reference
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
-ms.date: 02/02/2021
-ms.openlocfilehash: 34613633b6b27fc3387e6a9fa63caf4a194ba963
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/25/2021
+ms.openlocfilehash: 5e95bc50a74413389bd2583beb90128b3fd0810a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101691228"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105543515"
 ---
 # <a name="resource-limits-for-azure-sql-database-and-azure-synapse-analytics-servers"></a>Ressourcenlimits für Azure SQL-Datenbank und Azure Synapse Analytics-Server.
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
-Dieser Artikel bietet eine Übersicht über die Ressourcenlimits für den logischen Server, der von Azure SQL-Datenbank und Azure Synapse Analytics verwendet wird. Hier erfahren Sie, was passiert, wenn diese Ressourcenlimits erreicht oder überschritten werden. Außerdem werden die zum Erzwingen dieser Grenzwerte verwendeten Ressourcenkontrollmechanismen beschrieben.
+Dieser Artikel bietet eine Übersicht über die Ressourcenlimits für den [logischen Server](logical-servers.md), der von Azure SQL-Datenbank und Azure Synapse Analytics verwendet wird. Hier erfahren Sie, was passiert, wenn diese Ressourcenlimits erreicht oder überschritten werden. Außerdem werden die zum Erzwingen dieser Grenzwerte verwendeten Ressourcenkontrollmechanismen beschrieben.
 
 > [!NOTE]
-> Informationen zu den Grenzwerten für Azure SQL Managed Instance finden Sie unter [Ressourcenlimits bei SQL-Datenbank für verwaltete Instanzen](../managed-instance/resource-limits.md).
+> Informationen zu den Limits für Azure SQL Managed Instance finden Sie unter [Ressourcenlimits für verwaltete Instanzen](../managed-instance/resource-limits.md).
 
 ## <a name="maximum-resource-limits"></a>Maximale Ressourcenlimits
 
 | Resource | Begrenzung |
 | :--- | :--- |
-| Datenbanken pro Server | 5.000 |
-| Standardanzahl von Servern pro Abonnement in beliebiger Region | 20 |
-| Maximale Anzahl von Servern pro Abonnement in beliebiger Region | 200 |  
-| DTU/eDTU-Kontingent pro Server | 54.000 |  
-| Virtuelle Kerne pro Server/Instanz | 540 |
-| Maximale Anzahl von Pools pro Server | Begrenzt durch die Anzahl von DTUs oder virtuellen Kernen. Beispiel: Wenn jeder Pool 1.000 DTUs umfasst, kann ein Server 54 Pools unterstützen.|
+| Datenbanken pro logischem Server | 5.000 |
+| Standardanzahl von logischen Servern pro Abonnement in einer Region | 20 |
+| Maximale Anzahl von logischen Servern pro Abonnement in einer Region | 200 |  
+| DTU-/eDTU-Kontingent pro logischem Server | 54.000 |  
+| Kontingent von virtuellen Kernen pro logischem Server | 540 |
+| Maximal Anzahl von Pools pro logischem Server | Begrenzt durch die Anzahl von DTUs oder virtuellen Kernen. Beispiel: Wenn jeder Pool 1.000 DTUs umfasst, kann ein Server 54 Pools unterstützen.|
 |||
 
 > [!IMPORTANT]
-> Wenn sich die Anzahl der Datenbanken dem Grenzwert pro Server nähert, kann Folgendes geschehen:
+> Wenn sich die Anzahl der Datenbanken dem Grenzwert pro logischem Server nähert, kann Folgendes geschehen:
 >
-> - Höhere Latenz bei der Ausführung von Abfragen, die die Masterdatenbank betreffen.  Dies bezieht sich auch auf die Ansichten der Ressourcennutzungsstatistiken (z. B. sys.resource_stats) ein.
+> - Höhere Latenz bei der Ausführung von Abfragen, die die Masterdatenbank betreffen.  Dies bezieht sich auch auf die Ansichten der Ressourcennutzungsstatistiken wie z. B. `sys.resource_stats`.
 > - Höhere Latenz bei Verwaltungsvorgängen und dem Rendern von Portalblickpunkten. Dazu gehört auch das Aufzählen von Datenbanken auf dem Server.
 
 > [!NOTE]
-> Wenn Sie ein höheres DTU-/eDTU-Kontingent oder eine höhere Anzahl von virtuellen Kernen oder Servern als die Standardanzahl erhalten möchten, übermitteln Sie im Azure-Portal eine neue Supportanfrage. Weitere Informationen finden Sie unter [Anfordern von Kontingenterhöhungen für Azure SQL-Datenbank](quota-increase-request.md).
+> Wenn Sie ein höheres DTU-/eDTU-Kontingent, ein höheres Kontingent von virtuellen Kernen oder eine höhere Anzahl von logischen Servern als die Standardanzahl erhalten möchten, übermitteln Sie im Azure-Portal eine neue Supportanfrage. Weitere Informationen finden Sie unter [Anfordern von Kontingenterhöhungen für Azure SQL-Datenbank](quota-increase-request.md).
 
 ### <a name="storage-size"></a>Speichergröße
 

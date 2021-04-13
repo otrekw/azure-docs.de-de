@@ -10,13 +10,13 @@ ms.topic: reference
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 01/22/2021
-ms.openlocfilehash: 1fec13eefad7f27bcaac8f2c690b99909cd24e59
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.date: 03/23/2021
+ms.openlocfilehash: a3cd68b610b0e0db05f60450009bc83a80c3037b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100518044"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105107600"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>Ressourcenlimits für Singletons mit dem auf virtuellen Kernen (V-Kernen) basierenden Kaufmodell
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -43,7 +43,7 @@ Der [serverlose Computetarif](serverless-tier-overview.md) ist derzeit nur auf G
 |Min-Max-Arbeitsspeicher (GB)|2,02 - 3|2,05 - 6|2,10 - 12|2,25 - 18|3,00 - 24|
 |Min. bis max. Verzögerung für automatische Pause (Minuten)|60-10080|60-10080|60-10080|60-10080|60-10080|
 |Columnstore-Unterstützung|Ja*|Ja|Ja|Ja|Ja|
-|In-Memory-OLTP-Speicher (GB)|–|–|–|–|–|
+|In-Memory-OLTP-Speicher (GB)|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|–|
 |Maximale Datengröße (GB)|512|1024|1024|1024|1536|
 |Maximale Protokollgröße (GB)|154|307|307|307|461|
 |Max. Datengröße von TempDB (GB)|32|64|128|192|256|
@@ -54,8 +54,8 @@ Der [serverlose Computetarif](serverless-tier-overview.md) ist derzeit nur auf G
 |Max. gleichzeitige Worker (Anforderungen)|75|150|300|450|600|
 |Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|30.000|
 |Anzahl von Replikaten|1|1|1|1|1|
-|Multi-AZ|–|–|–|–|–|
-|Horizontale Leseskalierung|–|–|–|–|–|
+|Multi-AZ|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|–|
+|Horizontale Leseskalierung|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|–|
 |Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
 
 \* Dienstziele mit niedrigeren Konfigurationen für die maximale Anzahl virtueller Kerne verfügen möglicherweise nicht über genügend Arbeitsspeicher zum Erstellen und Verwenden von Columnstore-Indizes.  Wenn beim Columnstore Leistungsprobleme auftreten, erhöhen Sie die Konfiguration für die maximalen virtuellen Kerne, um den maximal verfügbaren Arbeitsspeicher zu steigern.  
@@ -70,19 +70,19 @@ Der [serverlose Computetarif](serverless-tier-overview.md) ist derzeit nur auf G
 |Min-Max-Arbeitsspeicher (GB)|3,75 - 30|4,50 - 36|5,25 - 42|6,00 - 48|
 |Min. bis max. Verzögerung für automatische Pause (Minuten)|60-10080|60-10080|60-10080|60-10080|
 |Columnstore-Unterstützung|Ja|Ja|Ja|Ja|
-|In-Memory-OLTP-Speicher (GB)|–|–|Nicht zutreffend|–|
+|In-Memory-OLTP-Speicher (GB)|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|–|
 |Maximale Datengröße (GB)|1536|3072|3072|3072|
 |Maximale Protokollgröße (GB)|461|461|461|922|
 |Max. Datengröße von TempDB (GB)|320|384|448|512|
 |Speichertyp|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|
 |E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
 |Max. Datenrate, IOPS*|3200|3840|4480|5120|
-|Max. Protokollrate (MBit/s)|36|36|36|36|
+|Max. Protokollrate (MBit/s)|45|50|50|50|
 |Max. gleichzeitige Worker (Anforderungen)|750|900|1050|1200|
 |Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|
 |Anzahl von Replikaten|1|1|1|1|
-|Multi-AZ|–|–|Nicht zutreffend|–|
-|Horizontale Leseskalierung|–|–|Nicht zutreffend|–|
+|Multi-AZ|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|–|
+|Horizontale Leseskalierung|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|–|
 |Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
 
 \* Der maximale Wert für E/A-Größen im Bereich von 8 KB bis 64 KB. Die tatsächlichen IOPS sind von der Arbeitsauslastung abhängig. Weitere Informationen finden Sie unter [Daten-E/A-Governance](resource-limits-logical-server.md#resource-governance).
@@ -96,19 +96,19 @@ Der [serverlose Computetarif](serverless-tier-overview.md) ist derzeit nur auf G
 |Min-Max-Arbeitsspeicher (GB)|6,75-54|7,5-60|9-72|12-96|15-120|
 |Min. bis max. Verzögerung für automatische Pause (Minuten)|60-10080|60-10080|60-10080|60-10080|60-10080|
 |Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|
-|In-Memory-OLTP-Speicher (GB)|–|–|–|Nicht zutreffend|–|
+|In-Memory-OLTP-Speicher (GB)|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|–|
 |Maximale Datengröße (GB)|3072|3072|4096|4096|4096|
 |Maximale Protokollgröße (GB)|922|922|1024|1024|1024|
 |Max. Datengröße von TempDB (GB)|576|640|768|1024|1280|
 |Speichertyp|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|
 |E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
 |Max. Datenrate, IOPS*|5760|6400|7680|10.240|12800|
-|Max. Protokollrate (MBit/s)|36|36|36|36|36|
+|Max. Protokollrate (MBit/s)|50|50|50|50|50|
 |Max. gleichzeitige Worker (Anforderungen)|1350|1500|1800|2400|3000|
 |Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|30.000|
 |Anzahl von Replikaten|1|1|1|1|1|
-|Multi-AZ|–|–|–|Nicht zutreffend|–|
-|Horizontale Leseskalierung|–|–|–|Nicht zutreffend|–|
+|Multi-AZ|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|–|
+|Horizontale Leseskalierung|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|–|
 |Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
 
 \* Der maximale Wert für E/A-Größen im Bereich von 8 KB bis 64 KB. Die tatsächlichen IOPS sind von der Arbeitsauslastung abhängig. Weitere Informationen finden Sie unter [Daten-E/A-Governance](resource-limits-logical-server.md#resource-governance).
@@ -125,7 +125,7 @@ Der [serverlose Computetarif](serverless-tier-overview.md) ist derzeit nur auf G
 |Arbeitsspeicher (GB)|7|14|21|28|35|42|
 |[RBPEX](service-tier-hyperscale.md#compute)-Größe|3 × Arbeitsspeicher|3 × Arbeitsspeicher|3 × Arbeitsspeicher|3 × Arbeitsspeicher|3 × Arbeitsspeicher|3 × Arbeitsspeicher|
 |Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|
-|In-Memory-OLTP-Speicher (GB)|–|–|–|–|Nicht zutreffend|–|
+|In-Memory-OLTP-Speicher (GB)|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|–|
 |Maximale Datengröße (TB)|100 |100 |100 |100 |100 |100|
 |Maximale Protokollgröße (TB)|Unbegrenzt |Unbegrenzt |Unbegrenzt |Unbegrenzt |Unbegrenzt |Unbegrenzt |
 |Max. Datengröße von TempDB (GB)|32|64|96|128|160|192|
@@ -136,7 +136,7 @@ Der [serverlose Computetarif](serverless-tier-overview.md) ist derzeit nur auf G
 |Max. gleichzeitige Worker (Anforderungen)|200|400|600|800|1000|1200|
 |Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|30.000|30.000|
 |Sekundäre Replikate|0–4|0–4|0–4|0–4|0–4|0–4|
-|Multi-AZ|–|–|–|–|Nicht zutreffend|–|
+|Multi-AZ|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|–|
 |Horizontale Leseskalierung|Ja|Ja|Ja|Ja|Ja|Ja|
 |Vermerkdauer im Sicherungsspeicher|7 Tage|7 Tage|7 Tage|7 Tage|7 Tage|7 Tage|
 |||
@@ -152,7 +152,7 @@ Der [serverlose Computetarif](serverless-tier-overview.md) ist derzeit nur auf G
 |Arbeitsspeicher (GB)|49|56|63|70|112|159,5|
 |[RBPEX](service-tier-hyperscale.md#compute)-Größe|3 × Arbeitsspeicher|3 × Arbeitsspeicher|3 × Arbeitsspeicher|3 × Arbeitsspeicher|3 × Arbeitsspeicher|3 × Arbeitsspeicher|
 |Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|
-|In-Memory-OLTP-Speicher (GB)|–|–|–|–|Nicht zutreffend|–|
+|In-Memory-OLTP-Speicher (GB)|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|–|
 |Maximale Datengröße (TB)|100 |100 |100 |100 |100 |100 |
 |Maximale Protokollgröße (TB)|Unbegrenzt |Unbegrenzt |Unbegrenzt |Unbegrenzt |Unbegrenzt |Unbegrenzt |
 |Max. Datengröße von TempDB (GB)|224|256|288|320|512|768|
@@ -163,7 +163,7 @@ Der [serverlose Computetarif](serverless-tier-overview.md) ist derzeit nur auf G
 |Max. gleichzeitige Worker (Anforderungen)|1400|1600|1800|2000|3200|4800|
 |Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|30.000|30.000|
 |Sekundäre Replikate|0–4|0–4|0–4|0–4|0–4|0–4|
-|Multi-AZ|–|–|–|–|Nicht zutreffend|–|
+|Multi-AZ|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|–|
 |Horizontale Leseskalierung|Ja|Ja|Ja|Ja|Ja|Ja|
 |Vermerkdauer im Sicherungsspeicher|7 Tage|7 Tage|7 Tage|7 Tage|7 Tage|7 Tage|
 |||
@@ -181,7 +181,7 @@ Der [serverlose Computetarif](serverless-tier-overview.md) ist derzeit nur auf G
 |Arbeitsspeicher (GB)|10,4|20,8|31,1|41,5|51,9|62,3|72,7|
 |[RBPEX](service-tier-hyperscale.md#compute)-Größe|3 × Arbeitsspeicher|3 × Arbeitsspeicher|3 × Arbeitsspeicher|3 × Arbeitsspeicher|3 × Arbeitsspeicher|3 × Arbeitsspeicher|3 × Arbeitsspeicher|
 |Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
-|In-Memory-OLTP-Speicher (GB)|–|–|–|–|–|Nicht zutreffend|–|
+|In-Memory-OLTP-Speicher (GB)|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|–|
 |Maximale Datengröße (TB)|100 |100 |100 |100 |100 |100 |100|
 |Maximale Protokollgröße (TB)|Unbegrenzt |Unbegrenzt |Unbegrenzt |Unbegrenzt |Unbegrenzt |Unbegrenzt |Unbegrenzt |
 |Max. Datengröße von TempDB (GB)|64|128|192|256|320|384|448|
@@ -192,7 +192,7 @@ Der [serverlose Computetarif](serverless-tier-overview.md) ist derzeit nur auf G
 |Max. gleichzeitige Worker (Anforderungen)|200|400|600|800|1000|1200|1400|
 |Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|30.000|30.000|30.000|
 |Sekundäre Replikate|0–4|0–4|0–4|0–4|0–4|0–4|0–4|
-|Multi-AZ|–|–|–|–|–|Nicht zutreffend|–|
+|Multi-AZ|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|–|
 |Horizontale Leseskalierung|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
 |Vermerkdauer im Sicherungsspeicher|7 Tage|7 Tage|7 Tage|7 Tage|7 Tage|7 Tage|7 Tage|
 |||
@@ -208,7 +208,7 @@ Der [serverlose Computetarif](serverless-tier-overview.md) ist derzeit nur auf G
 |Arbeitsspeicher (GB)|83|93,4|103,8|124,6|166,1|207,6|415,2|
 |[RBPEX](service-tier-hyperscale.md#compute)-Größe|3 × Arbeitsspeicher|3 × Arbeitsspeicher|3 × Arbeitsspeicher|3 × Arbeitsspeicher|3 × Arbeitsspeicher|3 × Arbeitsspeicher|3 × Arbeitsspeicher|
 |Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
-|In-Memory-OLTP-Speicher (GB)|–|–|–|–|–|Nicht zutreffend|–|
+|In-Memory-OLTP-Speicher (GB)|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|–|
 |Maximale Datengröße (TB)|100 |100 |100 |100 |100 |100 |100 |
 |Maximale Protokollgröße (TB)|Unbegrenzt |Unbegrenzt |Unbegrenzt |Unbegrenzt |Unbegrenzt |Unbegrenzt |Unbegrenzt |
 |Max. Datengröße von TempDB (GB)|512|576|640|768|1024|1280|2560|
@@ -219,7 +219,7 @@ Der [serverlose Computetarif](serverless-tier-overview.md) ist derzeit nur auf G
 |Max. gleichzeitige Worker (Anforderungen)|1600|1800|2000|2400|3200|4000|8.000|
 |Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|30.000|30.000|30.000|
 |Sekundäre Replikate|0–4|0–4|0–4|0–4|0–4|0–4|0–4|
-|Multi-AZ|–|–|–|–|–|Nicht zutreffend|–|
+|Multi-AZ|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|–|
 |Horizontale Leseskalierung|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
 |Vermerkdauer im Sicherungsspeicher|7 Tage|7 Tage|7 Tage|7 Tage|7 Tage|7 Tage|7 Tage|
 |||
@@ -241,18 +241,18 @@ Der [serverlose Computetarif](serverless-tier-overview.md) ist derzeit nur auf G
 |Arbeitsspeicher (GB)|9|18|27|36|
 |[RBPEX](service-tier-hyperscale.md#compute)-Größe|3 × Arbeitsspeicher|3 × Arbeitsspeicher|3 × Arbeitsspeicher|3 × Arbeitsspeicher|
 |Columnstore-Unterstützung|Ja|Ja|Ja|Ja|
-|In-Memory-OLTP-Speicher (GB)|Nicht zutreffend|–|Nicht zutreffend|–|
+|In-Memory-OLTP-Speicher (GB)|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|–|
 |Maximale Datengröße (TB)|100 |100 |100 |100 |
 |Maximale Protokollgröße (TB)|Unbegrenzt |Unbegrenzt |Unbegrenzt |Unbegrenzt |
 |Max. Datengröße von TempDB (GB)|64|128|192|256|
 |Speichertyp| [Hinweis 1](#notes) |[Hinweis 1](#notes)|[Hinweis 1](#notes) |[Hinweis 1](#notes) |
-|Max. IOPS der lokalen SSD*|8.000 |16000 |24.000 |32000 |
+|Max. IOPS der lokalen SSD*|14000|28000|42000|44800|
 |Max. Protokollrate (MBit/s)|100 |100 |100 |100 |
 |E/A-Wartezeit (ungefähr)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|
 |Max. gleichzeitige Worker (Anforderungen)|160|320|480|640|
 |Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|
 |Sekundäre Replikate|0–4|0–4|0–4|0–4|
-|Multi-AZ|Nicht zutreffend|–|Nicht zutreffend|–|
+|Multi-AZ|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|–|
 |Horizontale Leseskalierung|Ja|Ja|Ja|Ja|
 |Vermerkdauer im Sicherungsspeicher|7 Tage|7 Tage|7 Tage|7 Tage|
 |||
@@ -276,7 +276,7 @@ Der [serverlose Computetarif](serverless-tier-overview.md) ist derzeit nur auf G
 |V-Kerne|1|2|3|4|5|6|
 |Arbeitsspeicher (GB)|7|14|21|28|35|42|
 |Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|
-|In-Memory-OLTP-Speicher (GB)|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|–|Nicht zutreffend|–|
+|In-Memory-OLTP-Speicher (GB)|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|–|
 |Maximale Datengröße (GB)|1024|1024|1536|1536|1536|3072|
 |Maximale Protokollgröße (GB)|307|307|461|461|461|922|
 |Max. Datengröße von TempDB (GB)|32|64|96|128|160|192|
@@ -287,8 +287,8 @@ Der [serverlose Computetarif](serverless-tier-overview.md) ist derzeit nur auf G
 |Max. gleichzeitige Worker (Anforderungen)|200|400|600|800|1000|1200|
 |Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|30.000|30.000|
 |Anzahl von Replikaten|1|1|1|1|1|1|
-|Multi-AZ|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|–|Nicht zutreffend|–|
-|Horizontale Leseskalierung|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|–|Nicht zutreffend|–|
+|Multi-AZ|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|–|
+|Horizontale Leseskalierung|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|–|
 |Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
 
 \* Der maximale Wert für E/A-Größen im Bereich von 8 KB bis 64 KB. Die tatsächlichen IOPS sind von der Arbeitsauslastung abhängig. Weitere Informationen finden Sie unter [Daten-E/A-Governance](resource-limits-logical-server.md#resource-governance).
@@ -301,19 +301,19 @@ Der [serverlose Computetarif](serverless-tier-overview.md) ist derzeit nur auf G
 |V-Kerne|7|8|9|10|16|24|
 |Arbeitsspeicher (GB)|49|56|63|70|112|159,5|
 |Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|
-|In-Memory-OLTP-Speicher (GB)|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|–|Nicht zutreffend|–|
+|In-Memory-OLTP-Speicher (GB)|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|–|
 |Maximale Datengröße (GB)|3072|3072|3072|3072|4096|4096|
 |Maximale Protokollgröße (GB)|922|922|922|922|1229|1229|
 |Max. Datengröße von TempDB (GB)|224|256|288|320|512|768|
 |Speichertyp|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|
 |E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)
 |Max. Datenrate, IOPS*|2240|2560|2880|3200|5120|7680|
-|Max. Protokollrate (MBit/s)|31,5|36|36|36|36|36|
+|Max. Protokollrate (MBit/s)|31,5|36|40,5|45|50|50|
 |Max. gleichzeitige Worker (Anforderungen)|1400|1600|1800|2000|3200|4800|
 |Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|30.000|30.000|
 |Anzahl von Replikaten|1|1|1|1|1|1|
-|Multi-AZ|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|–|Nicht zutreffend|–|
-|Horizontale Leseskalierung|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|–|Nicht zutreffend|–|
+|Multi-AZ|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|–|
+|Horizontale Leseskalierung|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|–|
 |Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
 
 \* Der maximale Wert für E/A-Größen im Bereich von 8 KB bis 64 KB. Die tatsächlichen IOPS sind von der Arbeitsauslastung abhängig. Weitere Informationen finden Sie unter [Daten-E/A-Governance](resource-limits-logical-server.md#resource-governance).
@@ -328,19 +328,19 @@ Der [serverlose Computetarif](serverless-tier-overview.md) ist derzeit nur auf G
 |V-Kerne|2|4|6|8|10|12|14|
 |Arbeitsspeicher (GB)|10,4|20,8|31,1|41,5|51,9|62,3|72,7|
 |Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
-|In-Memory-OLTP-Speicher (GB)|–|–|–|Nicht zutreffend|–|Nicht zutreffend|–|
+|In-Memory-OLTP-Speicher (GB)|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|–|
 |Maximale Datengröße (GB)|1024|1024|1536|1536|1536|3072|3072|
 |Maximale Protokollgröße (GB)|307|307|461|461|461|922|922|
 |Max. Datengröße von TempDB (GB)|64|128|192|256|320|384|384|
 |Speichertyp|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|
 |E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
 |Max. Datenrate, IOPS*|640|1280|1920|2560|3200|3840|4480|
-|Max. Protokollrate (MBit/s)|9|18|27|36|36|36|36|
+|Max. Protokollrate (MBit/s)|9|18|27|36|45|50|50|
 |Max. gleichzeitige Worker (Anforderungen)|200|400|600|800|1000|1200|1400|
 |Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|30.000|30.000|30.000|
 |Anzahl von Replikaten|1|1|1|1|1|1|1|
 |Multi-AZ|[In der Vorschau verfügbar](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[In der Vorschau verfügbar](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[In der Vorschau verfügbar](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[In der Vorschau verfügbar](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[In der Vorschau verfügbar](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[In der Vorschau verfügbar](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[In der Vorschau verfügbar](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|
-|Horizontale Leseskalierung|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|–|Nicht zutreffend|–|
+|Horizontale Leseskalierung|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|–|
 |Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
 
 \* Der maximale Wert für E/A-Größen im Bereich von 8 KB bis 64 KB. Die tatsächlichen IOPS sind von der Arbeitsauslastung abhängig. Weitere Informationen finden Sie unter [Daten-E/A-Governance](resource-limits-logical-server.md#resource-governance).
@@ -353,19 +353,19 @@ Der [serverlose Computetarif](serverless-tier-overview.md) ist derzeit nur auf G
 |V-Kerne|16|18|20|24|32|40|80|
 |Arbeitsspeicher (GB)|83|93,4|103,8|124,6|166,1|207,6|415,2|
 |Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
-|In-Memory-OLTP-Speicher (GB)|–|–|–|Nicht zutreffend|–|Nicht zutreffend|–|
+|In-Memory-OLTP-Speicher (GB)|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|–|
 |Maximale Datengröße (GB)|3072|3072|3072|4096|4096|4096|4096|
 |Maximale Protokollgröße (GB)|922|922|922|1024|1024|1024|1024|
 |Max. Datengröße von TempDB (GB)|512|576|640|768|1024|1280|2560|
 |Speichertyp|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|
 |E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
 |Max. Datenrate, IOPS*|5120|5760|6400|7680|10.240|12800|12800|
-|Max. Protokollrate (MBit/s)|36|36|36|36|36|36|36|
+|Max. Protokollrate (MBit/s)|50|50|50|50|50|50|50|
 |Max. gleichzeitige Worker (Anforderungen)|1600|1800|2000|2400|3200|4000|8.000|
 |Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|30.000|30.000|30.000|
 |Anzahl von Replikaten|1|1|1|1|1|1|1|
 |Multi-AZ|[In der Vorschau verfügbar](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[In der Vorschau verfügbar](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[In der Vorschau verfügbar](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[In der Vorschau verfügbar](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[In der Vorschau verfügbar](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[In der Vorschau verfügbar](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[In der Vorschau verfügbar](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|
-|Horizontale Leseskalierung|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|–|Nicht zutreffend|–|
+|Horizontale Leseskalierung|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|–|
 |Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
 
 \* Der maximale Wert für E/A-Größen im Bereich von 8 KB bis 64 KB. Die tatsächlichen IOPS sind von der Arbeitsauslastung abhängig. Weitere Informationen finden Sie unter [Daten-E/A-Governance](resource-limits-logical-server.md#resource-governance).
@@ -380,20 +380,20 @@ Der [serverlose Computetarif](serverless-tier-overview.md) ist derzeit nur auf G
 |V-Kerne|8|10|12|14|16|
 |Arbeitsspeicher (GB)|15,1|18,9|22,7|26,5|30,2|
 |Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|
-|In-Memory-OLTP-Speicher (GB)|Nicht zutreffend|Nicht zutreffend|–|Nicht zutreffend|–|
+|In-Memory-OLTP-Speicher (GB)|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|–|
 |Maximale Datengröße (GB)|1024|1024|1024|1024|1536|
 |Maximale Protokollgröße (GB)|336|336|336|336|512|
-|Max. Datengröße von TempDB (GB)|333|333|333|333|333|
+|Max. Datengröße von TempDB (GB)|37|46|56|65|74|
 |Speichertyp|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|
 |E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
 |Max. Datenrate, IOPS*|2560|3200|3840|4480|5120|
-|Max. Protokollrate (MBit/s)|36|36|36|36|36|
+|Max. Protokollrate (MBit/s)|36|45|50|50|50|
 |Max. gleichzeitige Worker (Anforderungen)|400|500|600|700|800|
 |Maximale Anzahl gleichzeitiger Anmeldungen|800|1000|1200|1400|1600|
 |Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|30.000|
 |Anzahl von Replikaten|1|1|1|1|1|
-|Multi-AZ|Nicht zutreffend|Nicht zutreffend|–|Nicht zutreffend|–|
-|Horizontale Leseskalierung|Nicht zutreffend|Nicht zutreffend|–|Nicht zutreffend|–|
+|Multi-AZ|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|–|
+|Horizontale Leseskalierung|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|–|
 |Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
 
 \* Der maximale Wert für E/A-Größen im Bereich von 8 KB bis 64 KB. Die tatsächlichen IOPS sind von der Arbeitsauslastung abhängig. Weitere Informationen finden Sie unter [Daten-E/A-Governance](resource-limits-logical-server.md#resource-governance).
@@ -406,20 +406,20 @@ Der [serverlose Computetarif](serverless-tier-overview.md) ist derzeit nur auf G
 |V-Kerne|18|20|24|32|36|72|
 |Arbeitsspeicher (GB)|34,0|37,8|45,4|60,5|68,0|136,0|
 |Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|
-|In-Memory-OLTP-Speicher (GB)|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|–|Nicht zutreffend|–|
+|In-Memory-OLTP-Speicher (GB)|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|–|
 |Maximale Datengröße (GB)|1536|1536|1536|3072|3072|4096|
 |Maximale Protokollgröße (GB)|512|512|512|1024|1024|1024|
-|Max. Datengröße von TempDB (GB)|83,25|92,5|111|148|166,5|333|
+|Max. Datengröße von TempDB (GB)|83|93|111|148|167|333|
 |Speichertyp|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|
 |E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
 |Max. Datenrate, IOPS*|5760|6400|7680|10.240|11.520|12800|
-|Max. Protokollrate (MBit/s)|36|36|36|36|36|36|
+|Max. Protokollrate (MBit/s)|50|50|50|50|50|50|
 |Max. gleichzeitige Worker (Anforderungen)|900|1000|1200|1600|1800|3600|
 |Maximale Anzahl gleichzeitiger Anmeldungen|1800|2000|2400|3200|3600|7200|
 |Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|30.000|30.000|
 |Anzahl von Replikaten|1|1|1|1|1|1|
-|Multi-AZ|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|–|Nicht zutreffend|–|
-|Horizontale Leseskalierung|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|–|Nicht zutreffend|–|
+|Multi-AZ|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|–|
+|Horizontale Leseskalierung|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|–|
 |Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
 
 \* Der maximale Wert für E/A-Größen im Bereich von 8 KB bis 64 KB. Die tatsächlichen IOPS sind von der Arbeitsauslastung abhängig. Weitere Informationen finden Sie unter [Daten-E/A-Governance](resource-limits-logical-server.md#resource-governance).
@@ -432,7 +432,7 @@ Der [serverlose Computetarif](serverless-tier-overview.md) ist derzeit nur auf G
 |V-Kerne|2|4|6|8|
 |Arbeitsspeicher (GB)|9|18|27|36|
 |Columnstore-Unterstützung|Ja|Ja|Ja|Ja|
-|In-Memory-OLTP-Speicher (GB)|Nicht zutreffend|–|Nicht zutreffend|–|
+|In-Memory-OLTP-Speicher (GB)|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|–|
 |Maximale Datengröße (GB)|1024|1536|3072|3072|
 |Maximale Protokollgröße (GB)|307|461|922|922|
 |Max. Datengröße von TempDB (GB)|64|128|192|256|
@@ -443,8 +443,8 @@ Der [serverlose Computetarif](serverless-tier-overview.md) ist derzeit nur auf G
 |Max. gleichzeitige Worker (Anforderungen)|160|320|480|640|
 |Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|
 |Anzahl von Replikaten|1|1|1|1|
-|Multi-AZ|Nicht zutreffend|–|Nicht zutreffend|–|
-|Horizontale Leseskalierung|Nicht zutreffend|–|Nicht zutreffend|–|
+|Multi-AZ|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|–|
+|Horizontale Leseskalierung|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|–|
 |Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
 
 
@@ -635,7 +635,7 @@ Der [serverlose Computetarif](serverless-tier-overview.md) ist derzeit nur auf G
 |Max. Datengröße von TempDB (GB)|64|128|192|256|
 |Speichertyp|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|
 |E/A-Wartezeit (ungefähr)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|
-|Max. Datenrate, IOPS*|14000|28000|42000|56000|
+|Max. Datenrate, IOPS*|14000|28000|42000|44800|
 |Max. Protokollrate (MBit/s)|24|48|72|96|
 |Max. gleichzeitige Worker (Anforderungen)|200|400|600|800|
 |Maximale Anzahl gleichzeitiger Anmeldungen|200|400|600|800|

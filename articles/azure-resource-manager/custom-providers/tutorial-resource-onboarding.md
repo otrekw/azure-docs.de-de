@@ -6,10 +6,10 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 09/17/2019
 ms.openlocfilehash: 22d1dcd997a4ddb94aba184c5dace4c00509054d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "75648607"
 ---
 # <a name="tutorial-resource-onboarding-with-azure-custom-providers"></a>Tutorial: Onboarding von Ressourcen mit benutzerdefinierten Azure-Anbietern
@@ -235,9 +235,9 @@ Lassen Sie uns die Infrastruktur des benutzerdefinierten Anbieters bereitstellen
 
 8. Geben Sie die Einstellungen für die erforderlichen Felder ein, und wählen Sie dann das Abonnement und die Ressourcengruppe aus. Sie können das Feld für die **ID des benutzerdefinierten Ressourcenanbieters** leer lassen.
 
-   | Einstellungsname | Erforderlich? | BESCHREIBUNG |
+   | Name der Einstellung | Erforderlich? | BESCHREIBUNG |
    | ------------ | -------- | ----------- |
-   | Position | Ja | Der Standort für die Ressourcen in der Vorlage. |
+   | Standort | Ja | Der Standort für die Ressourcen in der Vorlage. |
    | Logik-App-Name | Nein | Der Name der Logik-App. |
    | Name des benutzerdefinierten Ressourcenanbieters | Nein | Der Name des benutzerdefinierten Ressourcenanbieters. |
    | ID des benutzerdefinierten Ressourcenanbieters | Nein | Ein vorhandener benutzerdefinierter Ressourcenanbieter, der die Zuordnungsressource unterstützt. Wenn Sie hier einen Wert angeben, werden die Logik-App und die benutzerdefinierte Anbieterbereitstellung übersprungen. |

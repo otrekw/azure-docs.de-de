@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 03/19/2021
+ms.date: 03/24/2021
 ms.author: b-juche
-ms.openlocfilehash: add907923cc2284939acd972237fd4ec74ee2d12
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: d238b566c1286b9b765fb574cd72ee68ccf4b4a7
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104864005"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105048373"
 ---
 # <a name="create-and-manage-active-directory-connections-for-azure-netapp-files"></a>Erstellen und Verwalten von Active Directory-Verbindungen für Azure NetApp Files
 
@@ -86,6 +86,8 @@ Ein Subnetz muss an Azure NetApp Files delegiert werden.
 * Azure NetApp Files unterstützt [LDAP-Signatur](/troubleshoot/windows-server/identity/enable-ldap-signing-in-windows-server), was eine sichere Übertragung des LDAP-Datenverkehrs zwischen dem Azure NetApp Files-Dienst und den [Active Directory-Zieldomänencontrollern](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview) ermöglicht. Wenn Sie den Leitfaden von Microsoft Advisory [ADV190023](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023) für LDAP-Signatur befolgen, sollten Sie das LDAP-Signaturfeature in Azure NetApp Files aktivieren, indem Sie das Kontrollkästchen **LDAP-Signatur** im Fenster [Active Directory beitreten](#create-an-active-directory-connection) aktivieren. 
 
     Die Konfiguration der [LDAP-Kanalbindung](https://support.microsoft.com/help/4034879/how-to-add-the-ldapenforcechannelbinding-registry-entry) hat allein keine Auswirkungen auf den Azure NetApp Files-Dienst. Wenn Sie jedoch sowohl die LDAP-Kanalbindung als auch sicheres LDAP verwenden (z. B. LDAPS oder `start_tls`), tritt bei der Erstellung des SMB-Volumes ein Fehler auf.
+
+* Für nicht in AD integriertes DNS sollten Sie einen A/PTR-DNS-Eintrag hinzufügen, um Azure NetApp Files die Funktion mit einem „Anzeigenamen“ zu ermöglichen. 
 
 ## <a name="decide-which-domain-services-to-use"></a>Festlegen der zu verwendenden Domänendienste 
 

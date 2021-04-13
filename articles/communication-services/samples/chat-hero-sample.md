@@ -9,28 +9,22 @@ ms.author: dademath
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 0eb396935b42b040ab9f152a4965922664deb451
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 5547e49cd7ea7f6c0cc97b5559564b64e0deda7c
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103487825"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168840"
 ---
 # <a name="get-started-with-the-group-chat-hero-sample"></a>Erste Schritte mit dem Hero-Beispiel für Gruppenchats
 
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
-
-
-<!----
-> [!WARNING]
-> links to our Hero Sample repo need to be updated when the sample is publicly available.
----->
+[!INCLUDE [Public Preview Notice](../includes/public-preview-include-chat.md)]
 
 > [!IMPORTANT]
-> [Dieses Beispiel ist auf GitHub verfügbar.](https://github.com/Azure-Samples/communication-services-web-chat-hero)
+> [Dieses Beispiel ist auf **GitHub** verfügbar.](https://github.com/Azure-Samples/communication-services-web-chat-hero)
 
 
-Das **Hero-Beispiel für Gruppenchats** von Azure Communication Services veranschaulicht, wie die Communication Services-Webclientbibliothek für Chats verwendet werden kann, um eine Benutzeroberfläche für Gruppenchats zu erstellen.
+Das **Hero-Beispiel für Gruppenchats** von Azure Communication Services veranschaulicht, wie das Communication Services Chat Web SDK verwendet werden kann, um eine Benutzeroberfläche für Gruppenchats zu erstellen.
 
 In dieser Beispiel-Schnellstartanleitung wird beschrieben, wie das Beispiel funktioniert, bevor wir es auf Ihrem lokalen Computer ausführen. Anschließend stellen wir das Beispiel in Azure bereit, indem wir Ihre eigenen Azure Communication Services-Ressourcen verwenden.
 
@@ -111,7 +105,7 @@ Wenn Sie ein Communication Services-Abonnement bereinigen und entfernen möchten
 Weitere Informationen finden Sie in den folgenden Artikeln:
 
 - Informieren Sie sich über [Chatkonzepte](../concepts/chat/concepts.md).
-- Machen Sie sich mit unserer [Chatclientbibliothek](../concepts/chat/sdk-features.md) vertraut.
+- Machen Sie sich mit dem [Chat SDK](../concepts/chat/sdk-features.md) vertraut.
 - Sehen Sie sich das Beispiel für die [Contoso Med-App](https://github.com/Azure-Samples/communication-services-contoso-med-app) an.
 
 ## <a name="additional-reading"></a>Zusätzliche Lektüre

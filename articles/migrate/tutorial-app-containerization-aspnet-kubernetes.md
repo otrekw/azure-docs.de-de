@@ -7,14 +7,14 @@ manager: bsiva
 ms.topic: tutorial
 ms.date: 3/2/2021
 ms.author: rahugup
-ms.openlocfilehash: ffc97984a335b72a3aa8c8d8cca65a3fddf7af38
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 464e2450b4d4dea9fc650ad8869af4215d3db1a7
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104780734"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105561796"
 ---
-# <a name="containerize-aspnet-applications-and-migrate-to-azure-kubernetes-service"></a>Containerisieren von ASP.NET-Anwendungen und Migrieren zu Azure Kubernetes Service
+# <a name="aspnet-app-containerization-and-migration-to-azure-kubernetes-service"></a>Containerisieren und Migrieren von ASP.NET-Apps zu Azure Kubernetes Service
 
 In diesem Artikel erfahren Sie, wie Sie unter ASP.NET-Anwendungen mit dem App-Containerisierungstool von Azure Migrate containerisieren und zu [Azure Kubernetes Service (AKS)](https://azure.microsoft.com/services/kubernetes-service/) migrieren können. Für den Containerisierungsvorgang ist kein Zugriff auf Ihre Codebasis erforderlich, zudem erfolgt die Containerisierung vorhandener Apps mühelos. Das Tool ermittelt anhand des Ausführungsstatus der Apps auf dem Server die App-Komponenten und packt diese in ein Containerimage. Die containerisierte Anwendung kann dann in Azure Kubernetes Service (AKS) bereitgestellt werden.
 
@@ -60,7 +60,7 @@ Bevor Sie mit diesem Tutorial beginnen, sollten folgende Voraussetzungen erfüll
 **Anforderung** | **Details**
 --- | ---
 **Computer für die Installation des Tools** | Sie benötigen einen Windows-Computer, auf dem das App-Containerisierungstool von Azure Migrate installiert und ausgeführt werden kann. Auf diesem Windows-Computer kann ein Server- (Windows Server 2016 oder höher) oder ein Clientbetriebssystem (Windows 10) ausgeführt werden. Das Tool ist also für Desktopcomputer geeignet. <br/><br/> Der Windows-Computer, auf dem das Tool ausgeführt wird, sollte über eine Netzwerkverbindung zu den Servern bzw. VMs verfügen, auf denen die ASP.NET-Apps gehostet werden, die containerisiert werden sollen.<br/><br/> Auf dem Windows-Computer, auf dem das App-Containerisierungstool von Azure Migrate ausgeführt wird, muss mindestens 6 GB freier Speicherplatz für die Anwendungsartefakte vorhanden sein. <br/><br/> Der Windows-Computer sollte direkt oder über einen Proxy auf das Internet zugreifen können. <br/> <br/>Installieren Sie (falls noch nicht geschehen) das Microsoft Web Deploy-Tool auf dem Computer, auf dem das App-Containerisierungstool und der Anwendungsserver ausgeführt werden. Sie können das Tool [hier](https://aka.ms/webdeploy3.6) herunterladen.
-**Anwendungsserver** | Aktivieren Sie das PowerShell-Remoting auf den Anwendungsservern: Melden Sie sich beim Anwendungsserver an, und befolgen Sie [diesen Anweisungen](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/enable-psremoting), um das PowerShell-Remoting zu aktivieren. <br/><br/> Wenn auf dem Anwendungsserver Windows Server 2008 R2 ausgeführt wird, stellen Sie sicher, dass PowerShell 5.1 auf dem Anwendungsserver installiert ist. Befolgen Sie [dieser Anweisung](https://docs.microsoft.com/powershell/scripting/windows-powershell/wmf/setup/install-configure), um PowerShell 5.1 auf dem Anwendungsserver herunterzuladen und zu installieren. <br/><br/> Installieren Sie (falls noch nicht geschehen) das Microsoft Web Deploy-Tool auf dem Computer, auf dem das App-Containerisierungstool und der Anwendungsserver ausgeführt werden. Sie können das Tool [hier](https://aka.ms/webdeploy3.6) herunterladen.
+**Anwendungsserver** | Aktivieren Sie das PowerShell-Remoting auf den Anwendungsservern: Melden Sie sich beim Anwendungsserver an, und befolgen Sie [diesen Anweisungen](/powershell/module/microsoft.powershell.core/enable-psremoting), um das PowerShell-Remoting zu aktivieren. <br/><br/> Wenn auf dem Anwendungsserver Windows Server 2008 R2 ausgeführt wird, stellen Sie sicher, dass PowerShell 5.1 auf dem Anwendungsserver installiert ist. Befolgen Sie [dieser Anweisung](/powershell/scripting/windows-powershell/wmf/setup/install-configure), um PowerShell 5.1 auf dem Anwendungsserver herunterzuladen und zu installieren. <br/><br/> Installieren Sie (falls noch nicht geschehen) das Microsoft Web Deploy-Tool auf dem Computer, auf dem das App-Containerisierungstool und der Anwendungsserver ausgeführt werden. Sie können das Tool [hier](https://aka.ms/webdeploy3.6) herunterladen.
 **ASP.NET-Anwendung** | Das Tool unterstützt zurzeit: <br/><br/> – ASP.NET-Anwendungen, die Microsoft .NET Framework 3.5 oder höher verwenden<br/> – Anwendungsserver, auf denen Windows Server 2008 R2 oder höher ausgeführt wird (auf Anwendungsservern muss PowerShell Version 5.1 ausgeführt werden) <br/> – Anwendungen, die auf Internetinformationsdiensten Version 7.5 (IIS) oder höher ausgeführt werden <br/><br/> Das Tool unterstützt zurzeit nicht: <br/><br/> – Anwendungen, die eine Windows-Authentifizierung erfordern (gMSA wird derzeit nicht von AKS unterstützt) <br/> – Anwendungen, die von anderen Windows-Diensten abhängen, die außerhalb von IIS gehostet werden
 
 
@@ -180,7 +180,7 @@ Durch das Parametrisieren der Konfiguration steht diese zur Bereitstellungszeit 
 
 ### <a name="externalize-file-system-dependencies"></a>Externalisieren von Dateisystemabhängigkeiten
 
- Sie können weitere Ordner hinzufügen, die von der Anwendung verwendet werden. Legen Sie fest, ob diese Teil des Containerimages werden oder mithilfe persistenter Volumes in Azure-Dateifreigabe externalisiert werden sollen. Persistente Volumes sind für zustandsbehaftete Anwendungen ideal, die den Zustand außerhalb des Containers speichern oder statische Inhalte im Dateisystem gespeichert haben. [Weitere Informationen](https://docs.microsoft.com/azure/aks/concepts-storage)
+ Sie können weitere Ordner hinzufügen, die von der Anwendung verwendet werden. Legen Sie fest, ob diese Teil des Containerimages werden oder mithilfe persistenter Volumes in Azure-Dateifreigabe externalisiert werden sollen. Persistente Volumes sind für zustandsbehaftete Anwendungen ideal, die den Zustand außerhalb des Containers speichern oder statische Inhalte im Dateisystem gespeichert haben. [Weitere Informationen](../aks/concepts-storage.md)
 
 1. Klicken Sie unter „App-Ordner“ auf **Bearbeiten**, um die erkannten Anwendungsordner anzuzeigen. Bei den erkannten Anwendungsordnern handelt es sich um für die Anwendung erforderliche Artefakte, deshalb werden sie ins Containerimage kopiert.
 
@@ -195,7 +195,7 @@ Durch das Parametrisieren der Konfiguration steht diese zur Bereitstellungszeit 
 ## <a name="build-container-image"></a>Erstellen des Containerimage
 
 
-1. **Azure Container Registry-Instanz auswählen**: Wählen Sie über das Dropdownmenü eine [Azure Container Registry-Instanz](https://docs.microsoft.com/azure/container-registry/) aus, die zum Erstellen und Speichern der Containerimages für die App verwendet werden soll. Sie können eine vorhandene Azure Container Registry-Instanz wählen oder über die Option „Create new registry“ (Neue Registrierung erstellen) eine neue erstellen.
+1. **Azure Container Registry-Instanz auswählen**: Wählen Sie über das Dropdownmenü eine [Azure Container Registry-Instanz](../container-registry/index.yml) aus, die zum Erstellen und Speichern der Containerimages für die App verwendet werden soll. Sie können eine vorhandene Azure Container Registry-Instanz wählen oder über die Option „Create new registry“ (Neue Registrierung erstellen) eine neue erstellen.
 
     ![Screenshot: ACR-Auswahl für die App](./media/tutorial-containerize-apps-aks/build-aspnet-app.png)
 

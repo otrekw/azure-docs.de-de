@@ -2,17 +2,17 @@
 title: Bereitstellen von Anwendungspaketen für Computeknoten
 description: Verwenden Sie das Feature „Anwendungspakete“ von Azure Batch zur einfachen Verwaltung mehrerer Anwendungen und Versionen für die Installation auf Batch-Serverknoten.
 ms.topic: how-to
-ms.date: 09/24/2020
+ms.date: 03/24/2021
 ms.custom:
 - H1Hack27Feb2017
 - devx-track-csharp
 - contperf-fy21q1
-ms.openlocfilehash: b4c6ab99b0fa93e5fdea4256d6f232cc0fe4218e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: d0ed5cc47694d6576e6aea46b62dfab8ecb73459
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97033730"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105045789"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Bereitstellen von Anwendungen auf Computeknoten mit Batch-Anwendungspaketen
 
@@ -59,6 +59,9 @@ Bei Anwendungspaketen muss die Startaufgabe Ihres Pools keine lange Liste einzel
 ## <a name="upload-and-manage-applications"></a>Hochladen und Verwalten von Anwendungen
 
 Sie können die Anwendungspakete in Ihrem Batch-Konto über das [Azure-Portal](https://portal.azure.com) oder die Batch Management-APIs verwalten. In den folgenden Abschnitten wird erläutert, wie Sie ein Speicherkonto verknüpfen sowie Anwendungen und Anwendungspakete im Azure-Portal hinzufügen und verwalten.
+
+> [!NOTE]
+> Sie können zwar Anwendungswerte in der [Microsoft.Batch/batchAccount](/templates/microsoft.batch/batchaccounts)-Ressource einer [ARM-Vorlage](quick-create-template.md)definieren. Derzeit ist es aber nicht möglich, eine ARM-Vorlage zum Hochladen von Anwendungspaketen zu verwenden, die in Ihrem Batch-Konto verwendet werden sollen. Sie müssen sie wie [unten](#add-a-new-application) beschrieben in das verknüpfte Speicherkonto hochladen.
 
 ### <a name="link-a-storage-account"></a>Verknüpfen eines Storage-Kontos
 

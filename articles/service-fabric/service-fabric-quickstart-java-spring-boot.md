@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 01/29/2019
 ms.custom: mvc, devcenter, seo-java-august2019, seo-java-september2019, devx-track-java
 ms.openlocfilehash: 84ce5920af95113801f468e3149421f3b9bd8901
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91529999"
 ---
 # <a name="quickstart-deploy-a-java-spring-boot-app-on-azure-service-fabric"></a>Schnellstart: Bereitstellen einer Java Spring Boot-App in Azure Service Fabric
@@ -21,13 +21,13 @@ In dieser Schnellstartanleitung stellen Sie eine Java Spring Boot-Anwendung in A
 
 - [Java-Umgebung](./service-fabric-get-started-linux.md#set-up-java-development) und [Yeoman](./service-fabric-get-started-linux.md#set-up-yeoman-generators-for-containers-and-guest-executables)
 - [Service Fabric SDK und die Service Fabric-Befehlszeilenschnittstelle (Command Line Interface, CLI)](./service-fabric-get-started-linux.md#installation-methods)
-- [Git](https://git-scm.com/downloads)
+- [Git-Client](https://git-scm.com/downloads)
 
 #### <a name="macos"></a>[MacOS](#tab/macos)
 
 - [Java-Umgebung und Yeoman](./service-fabric-get-started-mac.md#create-your-application-on-your-mac-by-using-yeoman)
 - [Service Fabric SDK und die Service Fabric-Befehlszeilenschnittstelle (Command Line Interface, CLI)](./service-fabric-cli.md#cli-mac)
-- [Git](https://git-scm.com/downloads)
+- [Git-Client](https://git-scm.com/downloads)
 
 --- 
 

@@ -5,37 +5,66 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 05/26/2020
+ms.date: 03/29/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
-ms.reviewer: calebb, rogoya
+ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e99f7466bd3b7ed5517157ca3fa45e7c3241217
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 38ddd825321a3cb7947eb76c4f5f6cdbc6cb3414
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98599758"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106055704"
 ---
 # <a name="conditional-access-securing-security-info-registration"></a>Bedingter Zugriff: Sichere Registrierung von Sicherheitsinformationen
 
-Mit Benutzeraktionen in der Richtlinie für bedingten Zugriff kann jetzt sichergestellt werden, wann und wie sich Benutzer für Azure AD Multi-Factor Authentication registrieren, und auch die Self-Service-Kennwortzurücksetzung ist möglich. Diese Previewfunktion ist für Organisationen verfügbar, die die [kombinierte Registrierung (Vorschauversion)](../authentication/concept-registration-mfa-sspr-combined.md) aktiviert haben. Diese Funktionalität kann in Organisationen aktiviert werden, bei denen Bedingungen, z. B. ein vertrauenswürdiger Netzwerkstandort, verwendet werden sollen, um den Zugriff auf die Registrierung für Azure AD Multi-Factor Authentication und die Self-Service-Kennwortzurücksetzung (SSPR) zu beschränken. Weitere Informationen zu anwendbaren Bedingungen finden Sie im Artikel [Bedingter Zugriff: Bedingungen](concept-conditional-access-conditions.md).
+Mit Benutzeraktionen in der Richtlinie für bedingten Zugriff kann sichergestellt werden, wann und wie sich Benutzer für Azure AD Multi-Factor Authentication registrieren, und auch die Self-Service-Kennwortzurücksetzung ist möglich. Dieses Feature ist für Organisationen verfügbar, die die [kombinierte Registrierung](../authentication/concept-registration-mfa-sspr-combined.md) aktiviert haben. Diese Funktion ermöglicht es Organisationen, den Registrierungsprozess wie jede beliebige Anwendung in einer Richtlinie für bedingten Zugriff zu behandeln und die volle Leistungsfähigkeit bedingter Zugriffe zu nutzen, um die Funktionalität zu schützen. 
 
-## <a name="create-a-policy-to-require-registration-from-a-trusted-location"></a>Erstellen einer Richtlinie zum Erzwingen der Registrierung von einem vertrauenswürdigen Standort
+Einige Organisationen haben in der Vergangenheit möglicherweise vertrauenswürdige Netzwerkadressen oder Gerätekonformität zum Schützen der Registrierung verwendet. Durch das Hinzufügen eines [befristeten Zugriffspasses](../authentication/howto-authentication-temporary-access-pass.md) in Azure AD können Administratoren zeitlich begrenzte Anmeldeinformationen für Benutzer bereitstellen, damit diese sich an jedem Gerät oder Standort registrieren können. Die Anmeldeinformationen eines befristeten Zugriffspasses erfüllen die Anforderungen für bedingte Zugriffe für eine mehrstufige Authentifizierung.
 
-Die folgende Richtlinie gilt für alle ausgewählten Benutzer, die versuchen, sich über die Benutzeroberfläche für die kombinierte Registrierung zu registrieren. Der Zugriff wird blockiert, sofern die Verbindung nicht von einem Standort aus hergestellt wird, der als ein vertrauenswürdiges Netzwerk gekennzeichnet ist.
+## <a name="create-a-policy-to-secure-registration"></a>Erstellen einer Richtlinie für eine sichere Registrierung
+
+Die folgende Richtlinie wird auf die ausgewählten Benutzer angewendet, die versuchen, sich mit der kombinierten Registrierung anzumelden. Die Richtlinie setzt voraus, dass Benutzer eine mehrstufige Authentifizierung durchführen oder Anmeldeinformationen eines befristeten Zugriffspasses verwenden.
+
+1. Navigieren Sie im **Azure-Portal** zu **Azure Active Directory** > **Sicherheit** > **Bedingter Zugriff**.
+1. Wählen Sie **Neue Richtlinie**.
+1. Geben Sie unter „Name“ einen Namen für diese Richtlinie ein. Beispiel: **Kombinierte Registrierung mit Sicherheitsinformationen mit TAP**.
+1. Wählen Sie unter **Zuweisungen** die Option **Benutzer und Gruppen** und dann die Benutzer und Gruppen aus, auf die Sie diese Richtlinie anwenden möchten.
+   1. Wählen Sie unter **Einschließen** die Option **Alle Benutzer** aus.
+
+      > [!WARNING]
+      > Benutzer müssen für die [kombinierte Registrierung](../authentication/howto-registration-mfa-sspr-combined.md) aktiviert sein.
+
+   1. Führen Sie unter **Ausschließen** die folgenden Schritte aus.
+      1. Wählen Sie **Alle Gastbenutzer und externen Benutzer** aus.
+      
+         > [!NOTE]
+         > Der befristete Zugriffspass funktioniert nicht für Gastbenutzer.
+
+      1. Wählen Sie **Benutzer und Gruppen** und dann die Konten für den Notfallzugriff Ihres Unternehmens aus. 
+1. Wählen Sie unter **Cloud-Apps oder -aktionen** die Option **Benutzeraktionen** aus, und aktivieren Sie **Sicherheitsinformationen registrieren**.
+1. Unter **Zugriffssteuerungen** > **Erteilen**:
+   1. Wählen Sie **Zugriff gewähren** aus.
+   1. Wählen Sie **Mehrstufige Authentifizierung erforderlich** aus.
+   1. Klicken Sie auf **Auswählen**.
+1. Legen Sie **Richtlinie aktivieren** auf **Ein** fest.
+1. Klicken Sie anschließend auf **Erstellen**.
+
+Administratoren müssen jetzt Anmeldeinformationen für befristete Zugriffspässe für neue Benutzer ausstellen, damit die Anforderungen für die mehrstufige Authentifizierung bei der Registrierung erfüllt werden können. Die Schritte zum Ausführen dieser Aufgabe finden Sie im Abschnitt zum [Erstellen eines befristeten Zugriffspasses im Azure AD-Portal](../authentication/howto-authentication-temporary-access-pass.md#create-a-temporary-access-pass).
+
+Organisationen können zusätzlich zur oder anstelle der **mehrstufigen Authentifizierung** in Schritt 6b weitere erforderliche Steuerelemente für die Erteilung von Berechtigungen festlegen. Bei Auswahl mehrerer Steuerelemente muss der entsprechende Optionsumschalter aktiviert werden, um festzulegen, ob bei dieser Änderung **alle** oder **ein** ausgewähltes Steuerelement erforderlich ist.
+
+### <a name="guest-user-registration"></a>Gastbenutzerregistrierung
+
+Für [Gastbenutzer](../external-identities/what-is-b2b.md), die sich für die mehrstufige Authentifizierung im Verzeichnis registrieren müssen, können Sie die Registrierung von nicht [vertrauenswürdigen Netzwerkadressen](concept-conditional-access-conditions.md#locations) wie nachstehend beschrieben blockieren.
 
 1. Navigieren Sie im **Azure-Portal** zu **Azure Active Directory** > **Sicherheit** > **Bedingter Zugriff**.
 1. Wählen Sie **Neue Richtlinie**.
 1. Geben Sie unter „Name“ einen Namen für diese Richtlinie ein. Beispiel: **Kombinierte Registrierung mit Sicherheitsinformationen in vertrauenswürdigen Netzwerken**.
 1. Wählen Sie unter **Zuweisungen** die Option **Benutzer und Gruppen** und dann die Benutzer und Gruppen aus, auf die Sie diese Richtlinie anwenden möchten.
-
-   > [!WARNING]
-   > Benutzer müssen für die [kombinierte Registrierung](../authentication/howto-registration-mfa-sspr-combined.md) aktiviert sein.
-
-   1. Wählen Sie unter **Ausschließen** die Option **Benutzer und Gruppen** und dann die Konten für den Notfallzugriff Ihres Unternehmens aus. 
-   1. Wählen Sie **Fertig** aus.
+   1. Wählen Sie unter **Einschließen** die Option **Alle Gastbenutzer und externen Benutzer** aus.
 1. Wählen Sie unter **Cloud-Apps oder -aktionen** die Option **Benutzeraktionen** aus, und aktivieren Sie **Sicherheitsinformationen registrieren**.
 1. Unter **Bedingungen** > **Standorte**:
    1. Konfigurieren Sie **Ja**.
@@ -43,27 +72,11 @@ Die folgende Richtlinie gilt für alle ausgewählten Benutzer, die versuchen, si
    1. Schließen Sie **Alle vertrauenswürdigen Standorte** aus.
    1. Wählen Sie auf dem Blatt „Standorte“ die Option **Fertig** aus.
    1. Wählen Sie auf dem Blatt „Bedingungen“ die Option **Fertig** aus.
-1. Legen Sie unter **Bedingungen** > **Client-Apps (Vorschau)** die Option **Konfigurieren** auf **Ja** fest, und wählen Sie **Fertig** aus.
 1. Unter **Zugriffssteuerungen** > **Erteilen**:
    1. Wählen Sie **Zugriff blockieren** aus.
    1. Klicken Sie dann auf **Auswählen**.
 1. Legen Sie **Richtlinie aktivieren** auf **Ein** fest.
 1. Klicken Sie dann auf **Speichern**.
-
-In Schritt 6 dieser Richtlinie können Organisationen unterschiedliche Auswahlmöglichkeiten festlegen. In der Richtlinie oben muss die Registrierung über einen vertrauenswürdigen Netzwerkstandort erfolgen. Organisationen können anstelle von **Standorte** beliebige verfügbare Bedingungen verwenden. Beachten Sie, dass diese Richtlinie eine Sperrrichtlinie ist, d. h., alle enthaltenen Elemente sind gesperrt, und alle nicht mit den enthaltenen Elementen übereinstimmenden Elemente sind zulässig. 
-
-Einige Organisationen wählen möglicherweise anstelle des in Schritt 6 oben ausgewählten Standorts den Gerätestatus aus:
-
-6. Gehen Sie unter **Bedingungen** > **Gerätestatus (Vorschau)** wie folgt vor.
-   1. Konfigurieren Sie **Ja**.
-   1. Schließen Sie **Alle Gerätezustände** ein.
-   1. Schließen Sie **Gerät in Hybrid-Azure AD eingebunden** oder **Gerät als konform markiert** aus.
-   1. Wählen Sie auf dem Blatt „Standorte“ die Option **Fertig** aus.
-   1. Wählen Sie auf dem Blatt „Bedingungen“ die Option **Fertig** aus.
-
-> [!WARNING]
-> Wenn Sie den Gerätestatus als Bedingung in Ihrer Richtlinie verwenden, kann dies Auswirkungen auf Gastbenutzer im Verzeichnis haben. Die Auswirkungen von Richtlinienoptionen können im [reinen Berichtsmodus](concept-conditional-access-report-only.md) ermittelt werden.
-> Beachten Sie, dass der reine Berichtsmodus für Richtlinien für bedingten Zugriff mit dem Bereich „Benutzeraktionen“ nicht anwendbar ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

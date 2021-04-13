@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 03/04/2021
+ms.date: 03/16/2021
 ms.author: justinha
 author: sopand
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0865fb2bda04f5a7e9ba2ef73a717946fa656a5
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5a1cb71917fdb30ffccda21bedffe1c7f2a428c1
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102175310"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105557954"
 ---
 # <a name="authentication-methods-activity"></a>Aktivität für Authentifizierungsmethoden 
 
@@ -135,6 +135,7 @@ In den **Registrierungs- und Zurücksetzungsereignissen** werden Registrierungs-
 
 - Die Daten im Bericht werden nicht in Echtzeit aktualisiert und können daher bereits einige Stunden alt sein.
 - TAP-Registrierungen (Temporary Access Pass, befristeter Zugriffspass) werden auf der Registrierungsregisterkarte des Berichts nicht berücksichtigt, da sie nur für kurze Zeit gültig sind.
+- Die Methoden **PhoneAppNotification** oder **PhoneAppOTP**, die ein Benutzer möglicherweise konfiguriert hat, werden im Dashboard nicht angezeigt. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

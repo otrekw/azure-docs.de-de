@@ -2,19 +2,19 @@
 title: 'Tutorial: Verbinden und Überwachen von Azure Synapse Spark-Metriken auf Anwendungsebene'
 description: 'Tutorial: Erfahren Sie, wie Sie Ihren vorhandenen lokalen Prometheus-Server über den Synapse-Prometheus-Connector in einen Azure Synapse-Arbeitsbereich integrieren, um Azure Spark-Anwendungsmetriken zu erhalten.'
 services: synapse-analytics
-author: hrasheed-msft
+author: jejiang
 ms.author: jejiang
 ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 01/22/2021
-ms.openlocfilehash: cb27401b2925c800ebde3b554c076f0d8cb747ca
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: d22975199eedae353f2dc12588671ae4b54c85ab
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104593015"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105109317"
 ---
 # <a name="tutorial-connect-and-monitor-azure-synapse-spark-application-level-metrics"></a>Tutorial: Verbinden und Überwachen von Azure Synapse Spark-Metriken auf Anwendungsebene
 

@@ -5,14 +5,14 @@ author: vineetvikram
 ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: tutorial
-ms.date: 03/17/2021
+ms.date: 03/25/2021
 ms.custom: mvc
-ms.openlocfilehash: f394fd4b1b4124c259489580fb5dc320fedf73fa
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 09b04c67519bfa920a3781612823c5755cbc6d2d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104863648"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105627794"
 ---
 # <a name="tutorial-discover-servers-running-in-vmware-environment-with-azure-migrate-discovery-and-assessment"></a>Tutorial: Ermitteln von in einer VMware-Umgebung ausgeführten Servern mit der Ermittlung und Bewertung von Azure Migrate
 
@@ -34,11 +34,9 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) erstellen, bevor Sie beginnen.
 
-
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Bevor Sie mit diesem Tutorial beginnen, überprüfen Sie, ob die folgenden Voraussetzungen erfüllt sind:
-
 
 **Anforderung** | **Details**
 --- | ---
@@ -98,7 +96,6 @@ Richten Sie im vSphere-Webclient wie folgt ein Konto ein:
 
     :::image type="content" source="./media/tutorial-discover-vmware/guest-operations.png" alt-text="Kontrollkästchen zum Zulassen von Gastvorgängen für die Rolle „Schreibgeschützt“":::
 
-
 > [!NOTE]
 > Sie können die Ermittlung auf bestimmte vCenter Server-Rechenzentren, Cluster, einen Ordner mit Clustern, Hosts, einen Ordner mit Hosts oder einzelne Server beschränken, indem Sie das vCenter Server-Konto einschränken. [**Erfahren Sie mehr**](set-discovery-scope.md) zum Einschränken des vCenter Server-Benutzerkontos.
 
@@ -106,7 +103,7 @@ Richten Sie im vSphere-Webclient wie folgt ein Konto ein:
 
 Sie benötigen ein Benutzerkonto mit den erforderlichen Berechtigungen für die Server, um die Ermittlung installierter Anwendungen, Abhängigkeitsanalyse ohne Agent und Ermittlung von SQL Server-Instanzen und -Datenbanken durchzuführen. Sie können das Benutzerkonto im Appliance-Konfigurations-Manager angeben. Die Appliance installiert keine Agents auf den Servern.
 
-1. Erstellen Sie für Server unter Windows ein Konto (lokales Konto oder Domänenkonto) mit Administratorberechtigungen für die Server. Um SQL Server Instanzen und -Datenbanken zu ermitteln, muss das Windows- oder SQL Server-Konto Mitglied der Serverrolle sysadmin sein. [Erfahren Sie mehr](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/server-level-roles) darüber, wie Sie dem Benutzerkonto die erforderliche Rolle zuweisen.
+1. Erstellen Sie für Server unter Windows ein Konto (lokales Konto oder Domänenkonto) mit Administratorberechtigungen für die Server. Um SQL Server Instanzen und -Datenbanken zu ermitteln, muss das Windows- oder SQL Server-Konto Mitglied der Serverrolle sysadmin sein. [Erfahren Sie mehr](/sql/relational-databases/security/authentication-access/server-level-roles) darüber, wie Sie dem Benutzerkonto die erforderliche Rolle zuweisen.
 2. Erstellen Sie für Server unter Linux ein Konto mit Root-Berechtigungen. Alternativ können Sie ein Konto mit den folgenden Berechtigungen in den Dateien „/bin/netstat“ und „/bin/ls“ erstellen: CAP_DAC_READ_SEARCH und CAP_SYS_PTRACE.
 
 > [!NOTE]
@@ -118,7 +115,7 @@ Richten Sie ein neues Projekt ein.
 
 1. Wählen Sie im Azure-Portal **Alle Dienste** aus, und suchen Sie nach **Azure Migrate**.
 2. Wählen Sie unter **Dienste** die Option **Azure Migrate** aus.
-3. Wählen Sie unter **Übersicht** die Option **Create project** (Projekt erstellen) aus.
+3. Wählen Sie unter **Übersicht** basierend auf Ihren Migrationszielen Folgendes aus: **Windows, Linux und SQL Server** oder **SQL Server (ausschließlich)** . Wählen Sie alternativ **Weitere Szenarios erkunden** > **Projekt erstellen** aus.
 5. Wählen Sie unter **Create project** (Projekt erstellen) Ihr Azure-Abonnement und die Ressourcengruppe aus. Falls noch keine vorhanden ist, erstellen Sie eine Ressourcengruppe.
 6. Geben Sie unter **Projektdetails** den Projektnamen und die geografische Region an, in der Sie das Projekt erstellen möchten. Beachten Sie die unterstützten geografischen Regionen für [öffentliche Clouds](migrate-support-matrix.md#supported-geographies-public-cloud) und [Azure Government-Clouds](migrate-support-matrix.md#supported-geographies-azure-government).
 
@@ -197,11 +194,9 @@ Importieren Sie die heruntergeladene Datei, und erstellen Sie in der VMware-Umge
 8. Geben Sie unter **Netzwerkzuordnung** das Netzwerk an, mit dem der Server eine Verbindung herstellt. Das Netzwerk benötigt Internetkonnektivität, um Metadaten an Azure Migrate zu senden.
 9. Überprüfen Sie die Einstellungen, und klicken Sie dann auf **Fertig stellen**.
 
-
 ### <a name="verify-appliance-access-to-azure"></a>Überprüfen des Appliancezugriffs auf Azure
 
 Stellen Sie sicher, dass der Server auf der Appliance eine Verbindung mit Azure-URLs für [öffentliche](migrate-appliance.md#public-cloud-urls) und [Government](migrate-appliance.md#government-cloud-urls)-Clouds herstellen kann.
-
 
 ### <a name="4-configure-the-appliance"></a>4. Konfigurieren der Appliance
 
@@ -282,6 +277,8 @@ Wenn Sie diese Features nutzen möchten, können Sie Serveranmeldeinformationen 
 - Sie können den **Überprüfungsstatus** aller Domänenanmeldeinformationen in der Tabelle mit den Anmeldeinformationen einsehen. Nur Domänenanmeldeinformationen werden überprüft.
 - Wenn die Überprüfung fehlschlägt, können Sie auf den Status **Fehlgeschlagen** klicken, um den aufgetretenen Fehler einzusehen, und nach Behebung des Problems auf **Anmeldeinformationen erneut überprüfen** klicken, um die fehlgeschlagenen Domänenanmeldeinformationen erneut zu überprüfen.
 
+     :::image type="content" source="./media/tutorial-discover-vmware/add-server-credentials-multiple.png" alt-text="Bereich 3 im Appliance-Konfigurations-Manager zur Angabe mehrerer Anmeldeinformationen":::
+
 ### <a name="start-discovery"></a>Ermittlung starten
 
 1. Klicken Sie auf **Ermittlung starten**, um die vCenter Server-Ermittlung zu starten. Nachdem die Ermittlung erfolgreich gestartet wurde, können Sie den Ermittlungsstatus anhand von IP-Adresse/FQDN von vCenter Server in der Tabelle mit den Quellen überprüfen.
@@ -290,8 +287,8 @@ Wenn Sie diese Features nutzen möchten, können Sie Serveranmeldeinformationen 
 1. Bei der Softwareinventur werden die hinzugefügten Serveranmeldeinformationen mit Servern abgeglichen und für die Abhängigkeitsanalyse ohne Agent überprüft. Sie können die Abhängigkeitsanalyse ohne Agent für Server im Portal aktivieren. Nur die Server mit erfolgreicher Überprüfung können ausgewählt werden, um die Abhängigkeitsanalyse ohne Agent zu aktivieren.
 
 > [!Note]
->Azure Migrate verschlüsselt die Kommunikation zwischen der Azure Migrate-Appliance und den SQL Server-Quellinstanzen (durch auf TRUE festgelegte Eigenschaft „Verbindung verschlüsseln“). Diese Verbindungen sind mit (auf TRUE festgelegter Option) [**TrustServerCertificate**](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlconnectionstringbuilder.trustservercertificate) verschlüsselt. Die Transportschicht verwendet SSL, um den Kanal zu verschlüsseln und die Zertifikatskette zum Überprüfen der Vertrauenswürdigkeit zu umgehen. Der Server der Appliance muss so eingerichtet sein, dass er die [**Stammzertifizierungsstelle des Zertifikats als vertrauenswürdig einstuft**](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine).<br/>
-Wenn auf dem Server beim Start kein Zertifikat bereitgestellt wird, erstellt SQL Server ein selbstsigniertes Zertifikat, mit dem Anmeldungspakete verschlüsselt werden. [**Weitere Informationen**](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine)
+>Azure Migrate verschlüsselt die Kommunikation zwischen der Azure Migrate-Appliance und den SQL Server-Quellinstanzen (durch auf TRUE festgelegte Eigenschaft „Verbindung verschlüsseln“). Diese Verbindungen sind mit (auf TRUE festgelegter Option) [**TrustServerCertificate**](/dotnet/api/system.data.sqlclient.sqlconnectionstringbuilder.trustservercertificate) verschlüsselt. Die Transportschicht verwendet SSL, um den Kanal zu verschlüsseln und die Zertifikatskette zum Überprüfen der Vertrauenswürdigkeit zu umgehen. Der Server der Appliance muss so eingerichtet sein, dass er die [**Stammzertifizierungsstelle des Zertifikats als vertrauenswürdig einstuft**](/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine).<br/>
+Wenn auf dem Server beim Start kein Zertifikat bereitgestellt wird, erstellt SQL Server ein selbstsigniertes Zertifikat, mit dem Anmeldungspakete verschlüsselt werden. [**Weitere Informationen**](/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine)
 
 Die Ermittlung funktioniert wie folgt:
 

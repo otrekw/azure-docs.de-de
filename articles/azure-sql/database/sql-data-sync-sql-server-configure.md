@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/14/2019
-ms.openlocfilehash: d6b5bab1c1b6c8db4821fdf84728eb66eb55b899
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6b7ead2e54889327bfbea188ad464012c3861556
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98882228"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105968610"
 ---
 # <a name="tutorial-set-up-sql-data-sync-between-databases-in-azure-sql-database-and-sql-server"></a>Tutorial: Einrichten der SQL-Datensynchronisierung zwischen Datenbanken in Azure SQL-Datenbank und SQL Server
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -64,7 +64,7 @@ PowerShell-Beispiele für die Konfiguration der SQL-Datensynchronisierung finden
    | **Use private link** (Private Verbindung verwenden) | Wählen Sie einen dienstseitig verwalteten privaten Endpunkt aus, um eine sichere Verbindung zwischen dem Synchronisierungsdienst und der Hub-Datenbank einzurichten. |
 
    > [!NOTE]
-   > Microsoft empfiehlt, eine neue, leere Datenbank als **Datenbank für Synchronisierungsmetadaten** zu erstellen. Durch die Datensynchronisierung werden Tabellen in Datenbanken erstellt und eine häufige Workload ausgeführt. Diese Datenbank wird als **Datenbank für Synchronisierungsmetadaten** für alle Synchronisierungsgruppen in einer ausgewählten Region und in einem ausgewählten Abonnement freigegeben. Sie können die Datenbank oder den Datenbanknamen nicht ändern, ohne alle Synchronisierungsgruppen und Synchronisierungs-Agents in der Region zu entfernen.
+   > Microsoft empfiehlt, eine neue, leere Datenbank als **Datenbank für Synchronisierungsmetadaten** zu erstellen. Durch die Datensynchronisierung werden Tabellen in Datenbanken erstellt und eine häufige Workload ausgeführt. Diese Datenbank wird als **Datenbank für Synchronisierungsmetadaten** für alle Synchronisierungsgruppen in einer ausgewählten Region und in einem ausgewählten Abonnement freigegeben. Sie können die Datenbank oder den Datenbanknamen nicht ändern, ohne alle Synchronisierungsgruppen und Synchronisierungs-Agents in der Region zu entfernen. Außerdem kann eine Datenbank für elastische Aufträge nicht als Datenbank für SQL-Datensynchronisierungsmetadaten verwendet werden und umgekehrt.  
 
    Wählen Sie **OK** aus, und warten Sie, bis die Synchronisierungsgruppe erstellt und bereitgestellt wurde.
    

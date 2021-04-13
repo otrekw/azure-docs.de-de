@@ -2,23 +2,25 @@
 title: include file
 description: include file
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: include
-ms.date: 03/22/2018
-ms.author: cherylmc
+ms.date: 04/05/2021
+ms.author: duau
 ms.custom: include file
-ms.openlocfilehash: bf526ebeebb18e22f133383e7956d68584db2486
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 27f5755ce8b7d204cad6cdc2281d7992bf86615a
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67178625"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504685"
 ---
 Beim Erstellen eines Gateways des virtuellen Netzwerks müssen Sie die gewünschte Gateway-SKU angeben. Wenn Sie eine höhere Gateway-SKU wählen, werden dem Gateway mehr CPUs und eine höhere Bandbreite zugewiesen. Infolgedessen unterstützt das Gateway einen höheren Netzwerkdurchsatz im virtuellen Netzwerk. 
 
-Virtuelle ExpressRoute-Netzwerkgateways können folgende SKUs verwenden: 
+Virtuelle ExpressRoute-Netzwerkgateways können folgende SKUs verwenden:
 
-* Standard
-* HighPerformance
-* UltraPerformance
+|     | Gemeinsame Verwendung von VPN-Gateway und ExpressRoute | FastPath | Maximale Anzahl von Leitungsverbindungen |
+| --- | --- | --- | --- |
+| **Standard** | Ja | Nein | 4 |
+| **HighPerformance** | Ja | Nein | 4 |
+| **UltraPerformance** | Ja | Ja | 16 |

@@ -10,10 +10,10 @@ services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc, devx-track-csharp
 ms.openlocfilehash: f9a14ee6ee3e10b36d64ec11fc23807efe2bfaf2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94966563"
 ---
 # <a name="tutorial-enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>Tutorial: Registrieren des Geräts für eine IoT Hub-Instanz mithilfe des Azure IoT Hub-Bereitstellungsdienstclients (.NET)
@@ -129,7 +129,7 @@ Es gibt zwei Möglichkeiten zum Registrieren des Geräts beim Device Provisionin
     Console.ReadLine();
     ```
         
-1. Klicken Sie in Visual Studio im Projektmappen-Explorer mit der rechten Maustaste auf Ihre Projektmappe, und klicken Sie dann auf **Startprojekte festlegen...** . Wählen Sie **Einzelnes Startprojekt** und dann im Dropdownmenü das Projekt **DeviceProvisioning** aus.  
+1. Klicken Sie in Visual Studio im Projektmappen-Explorer mit der rechten Maustaste auf Ihre Projektmappe, und klicken Sie dann auf **Startprojekte festlegen...** . Wählen Sie anschließend **Einzelnes Startprojekt** und dann im Dropdownmenü das Projekt **DeviceProvisioning** aus.  
 
 1. Führen Sie die .NET-Geräte-App **DeviceProvisiong** aus. Die Bereitstellung für das Gerät wird eingerichtet: 
 

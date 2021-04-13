@@ -7,7 +7,6 @@ documentationcenter: network-watcher
 author: damendo
 editor: ''
 tags: azure-resource-manager
-Customer intent: I need to diagnose virtual machine (VM) network routing problem that prevents communication to different destinations.
 ms.assetid: ''
 ms.service: network-watcher
 ms.devlang: na
@@ -17,16 +16,16 @@ ms.workload: infrastructure
 ms.date: 01/07/2021
 ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: bfcf9568f37a26f234a417a86eebf1b0bde67ab0
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: d5cd9c5d7f4a14a9a93e6984a8ef7367e5cbafc4
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98014500"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106055092"
 ---
 # <a name="tutorial-diagnose-a-virtual-machine-network-routing-problem-using-the-azure-portal"></a>Tutorial: Diagnostizieren von Problemen mit dem Netzwerkrouting eines virtuellen Computers über das Azure-Portal
 
-Wenn Sie einen virtuellen Computer bereitstellen, erstellt Azure mehrere Standardrouten für ihn. Sie können benutzerdefinierte Routen erstellen, um die Standardrouten von Azure außer Kraft zu setzen. In manchen Fällen kann eine benutzerdefinierte Route dazu führen, dass ein virtueller Computer nicht mit anderen Ressourcen kommunizieren kann. In diesem Tutorial lernen Sie Folgendes:
+Wenn Sie einen virtuellen Computer bereitstellen, erstellt Azure mehrere Standardrouten für ihn. Sie können benutzerdefinierte Routen erstellen, um die Standardrouten von Azure außer Kraft zu setzen. In manchen Fällen kann eine benutzerdefinierte Route dazu führen, dass ein virtueller Computer nicht mit anderen Ressourcen kommunizieren kann. In diesem Tutorial lernen Sie, wie die folgenden Aufgaben ausgeführt werden:
 
 > [!div class="checklist"]
 > * Erstellen einer VM
@@ -55,7 +54,7 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
     |Kennwort| Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) erfüllen.|
     |Subscription| Wählen Sie Ihr Abonnement aus.|
     |Resource group| Klicken Sie auf **Neu erstellen**, und geben Sie **myResourceGroup** ein.|
-    |Position| Wählen Sie **USA, Osten** aus.|
+    |Standort| Wählen Sie **USA, Osten** aus.|
 
 4. Wählen Sie eine Größe für den virtuellen Computer aus, und klicken Sie dann auf **Auswählen**.
 5. Übernehmen Sie unter **Einstellungen** alle Standardwerte, und klicken Sie auf **OK**.
