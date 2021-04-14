@@ -3,12 +3,12 @@ title: Was ist Azure Event Hubs? – ein Big Data-Erfassungsdienst | Microsoft-D
 description: Erfahren Sie mehr über Azure Event Hubs, einem Big Data-Streamingdienst, der Millionen von Ereignissen pro Sekunde erfasst.
 ms.topic: overview
 ms.date: 01/13/2021
-ms.openlocfilehash: 36eeb38d9ed1696c9524ae9b346065756ce49c46
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 35e89f60e93ec759d852641653ad138d7672cc37
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98195760"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107303048"
 ---
 # <a name="azure-event-hubs--a-big-data-streaming-platform-and-event-ingestion-service"></a>Azure Event Hubs: Big Data-Streamingplattform und Ereigniserfassungsdienst
 Bei Azure Event Hubs handelt es sich um eine Big Data-Streamingplattform und einen Ereigniserfassungsdienst. Mit diesem Dienst können Millionen von Ereignissen pro Sekunde empfangen und verarbeitet werden. An einen Event Hub gesendete Daten können transformiert und mit einem beliebigen Echtzeitanalyse-Anbieter oder Batchverarbeitungs-/Speicheradapter gespeichert werden.
@@ -92,4 +92,4 @@ Lesen Sie zum Einstieg in die Verwendung von Event Hubs die Tutorials zum **Send
 Weitere Informationen zu Event Hubs finden Sie in den folgenden Artikeln:
 
 - [Event Hubs-Features im Überblick](event-hubs-features.md)
-- [Häufig gestellte Fragen zu Event Hubs](event-hubs-faq.md)
+- [Häufig gestellte Fragen zu Event Hubs](event-hubs-faq.yml)

@@ -6,13 +6,13 @@ ms.author: csugunan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 03/08/2021
-ms.openlocfilehash: 8812806e535e8e34ca07fdb13e6223bfa0c91d6b
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.date: 03/24/2021
+ms.openlocfilehash: c9f2a21a1183637ec4648868cccd6f343b003f0c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102449610"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105026622"
 ---
 # <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>Verbinden von Azure Data Factory und Azure Purview
 
@@ -147,6 +147,11 @@ Wenn Sie die folgenden Funktionen der Kopieraktivität verwenden, wird die Erfas
 - Option zur Quellpartitionsermittlung für dateibasierte Speicher
 - Kopieren von Daten in eine dateibasierte Senke mit Einstellung für maximale Zeilenanzahl pro Datei
 - Hinzufügen zusätzlicher Spalten während des Kopiervorgangs
+
+Zusätzlich zur Datenherkunft wird das Datenobjektschema (siehe Registerkarte Objekte -> Schema) für die folgenden Konnektoren gemeldet:
+
+- CSV-und Parquet-Dateien in Azure BLOB, Azure File Storage, ADLS Gen1, ADLS Gen2 und Amazon S3
+- Azure Daten-Explorer, Azure SQL-Datenbank, Azure SQL Managed Instance, Azure Synapse Analytics, SQL Server, Teradata
 
 ### <a name="data-factory-data-flow-support"></a>Data Factory – Unterstützung für Datenflüsse
 

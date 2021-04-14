@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
 ms.openlocfilehash: 99fb41542dff28997438881abad71da11e927a78
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "96014889"
 ---
 # <a name="clip-values"></a>Beschneiden von Werten
@@ -38,17 +38,17 @@ Wenn Sie auf einige Spalten Beschneidungsmethoden oder andere Kriterien anwenden
   
 1.  Wählen Sie für **Set of thresholds** (Satz von Schwellenwerten) in der Dropdownliste eine der folgenden Optionen aus. Diese Optionen legen fest, wie die Ober- und Untergrenze für zulässige Werte bzw. Werte, die beschnitten werden müssen, festgelegt werden.  
   
-    - **ClipPeaks:** Wenn Sie Werte nach Spitzenwerten beschneiden, geben Sie nur eine Obergrenze an. Werte, die größer als dieser Grenzwert sind, werden ersetzt.
+    - **ClipPeaks:** Wenn Sie Werte anhand von Spitzenwerten abschneiden, geben Sie nur einen oberen Grenzwert ein. Werte, die größer als dieser Grenzwert sind, werden ersetzt.
   
-    -  **ClipSubpeaks:** Wenn Sie Werte nach Unterspitzenwerten beschneiden, geben Sie nur eine Untergrenze an. Werte, die kleiner als dieser Grenzwert sind, werden ersetzt.  
+    -  **ClipSubpeaks:** Wenn Sie Werte anhand von Unterspitzenwerten abschneiden, geben Sie nur einen unteren Grenzwert ein. Werte, die kleiner als dieser Grenzwert sind, werden ersetzt.  
   
-    - **ClipPeaksAndSubpeaks:** Wenn Sie Werte nach Spitzen- und Unterspitzenwerten beschneiden, können Sie die Ober- und die Untergrenze angeben. Werte, die außerhalb dieses Bereichs liegen, werden ersetzt. Werte, die den Grenzwerten entsprechen, werden nicht geändert.
+    - **ClipPeaksAndSubpeaks:** Wenn Sie Werte anhand von Spitzen- und Unterspitzenwerten abschneiden, können Sie sowohl einen oberen als auch einen unteren Grenzwert angeben. Werte, die außerhalb dieses Bereichs liegen, werden ersetzt. Werte, die den Grenzwerten entsprechen, werden nicht geändert.
   
 1.  Abhängig von Ihrer Auswahl im vorherigen Schritt können Sie die folgenden Schwellenwerte festlegen: 
 
-    + **Unterer Schwellenwert:** Wird nur angezeigt, wenn Sie **ClipSubpeaks** auswählen.
-    + **Oberer Schwellenwert:** Wird nur angezeigt, wenn Sie **ClipPeaks** auswählen.
-    + **Schwellenwert**: Wird nur angezeigt, wenn Sie **ClipPeaksAndSubPeaks** auswählen.
+    + **Unterer Schwellenwert:** wird nur angezeigt, wenn Sie **ClipSubPeaks** auswählen.
+    + **Oberer Schwellenwert:** wird nur angezeigt, wenn Sie **ClipPeaks** auswählen.
+    + **Schwellenwert:** wird nur angezeigt, wenn Sie **ClipPeaksAndSubPeaks** auswählen.
 
     Wählen Sie für jeden Schwellenwert **Konstante** oder **Perzentil** aus.
 
@@ -64,23 +64,23 @@ Wenn Sie auf einige Spalten Beschneidungsmethoden oder andere Kriterien anwenden
 
     Zahlen, die genau mit den angegebenen Grenzwerten übereinstimmen, werden als innerhalb des zulässigen Wertebereichs angesehen und daher nicht ersetzt. Alle Zahlen, die außerhalb des angegebenen Bereichs liegen, werden durch den Ersatzwert ersetzt. 
   
-    + **Ersatzwert für Spitzenwerte:** Definiert den Wert, der für alle Spaltenwerte, die größer als der angegebene Schwellenwert sind, ersetzt werden soll.  
-    + **Ersatzwert für Unterspitzenwerte:** Definiert den Wert, der für alle Spaltenwerte, die kleiner als der angegebene Schwellenwert sind, ersetzt werden soll.  
+    + **Ersatzwert für Spitzen:** definiert den Ersatzwert für alle Spaltenwerte, die über dem angegebenen Schwellenwert liegen.  
+    + **Ersatzwert für Unterspitzen:** definiert den Ersatzwert für alle Spaltenwerte, die unter dem angegebenen Schwellenwert liegen.  
     + Wenn Sie die Option **ClipPeaksAndSubpeaks** verwenden, können Sie separate Ersatzwerte für die oberen und unteren abgeschnittenen Werte angeben.  
 
     Die folgenden Ersatzwerte werden unterstützt:  
   
-    -   **Schwellenwert**: Ersetzt beschnittene Werte durch den angegebenen Schwellenwert.  
+    -   **Schwellenwert:** ersetzt abgeschnittene Werte durch den angegebenen Schwellenwert.  
   
-    -   **Mittelwert:** Ersetzt beschnittene Werte durch den Mittelwert der Spaltenwerte. Der Mittelwert wird berechnet, bevor Werte abgeschnitten werden.  
+    -   **Mittelwert:** ersetzt abgeschnittene Werte durch den Mittelwert der Spaltenwerte. Der Mittelwert wird berechnet, bevor Werte abgeschnitten werden.  
   
-    -   **Median:** Ersetzt beschnittene Werte durch den Medianwert der Spaltenwerte. Der Median wird berechnet, bevor Werte abgeschnitten werden.   
+    -   **Median:** ersetzt abgeschnittene Werte durch den Median der Spaltenwerte. Der Median wird berechnet, bevor Werte abgeschnitten werden.   
   
     -   **Fehlend:** Ersetzt beschnittene Werte durch einen fehlenden (leeren) Wert.  
   
-1.  **Indikatorspalten hinzufügen:** Wählen Sie diese Option aus, wenn Sie eine neue Spalte generieren möchten, die Aufschluss darüber gibt, ob der angegebene Beschneidungsvorgang auf die Daten in dieser Zeile angewandt wurde. Diese Option ist nützlich, wenn Sie einen neuen Satz von Beschneidungs- und Ersetzungswerten testen.  
+1.  **Indikatorspalten hinzufügen:** Wählen Sie diese Option aus, wenn Sie eine neue Spalte generieren möchten, die Aufschluss darüber gibt, ob der angegebene Abschneidungsvorgang auf die Daten in dieser Zeile angewandt wurde. Diese Option ist nützlich, wenn Sie einen neuen Satz von Beschneidungs- und Ersetzungswerten testen.  
   
-1. **Flag für Überschreiben:** Gibt an, wie die neuen Werte generiert werden sollen. Standardmäßig erstellt **Clip Values** eine neue Spalte mit den am gewünschten Schwellenwert abgeschnittenen Spitzenwerten. Neue Werte überschreiben die ursprüngliche Spalte.  
+1. **Flag für Überschreiben:** Geben Sie an, wie die neuen Werte generiert werden sollen. Standardmäßig erstellt **Clip Values** eine neue Spalte mit den am gewünschten Schwellenwert abgeschnittenen Spitzenwerten. Neue Werte überschreiben die ursprüngliche Spalte.  
   
     Deaktivieren Sie diese Option, um die ursprüngliche Spalte beizubehalten und eine neue Spalte mit den beschnittenen Werten hinzuzufügen.  
   
@@ -96,17 +96,17 @@ Um zu verstehen, wie das Beschneiden nach Perzentilen funktioniert, stellen Sie 
   
 - Wenn Sie ein Perzentil als unteren Schwellenwert verwenden, müssen bei dem Wert für das 10. Perzentil 10 % aller Werte im Dataset kleiner als dieser Wert sein.  
   
-1.  Wählen Sie für **Set of thresholds** (Satz von Schwellenwerten) die Option **ClipPeaksAndSubPeaks** aus.  
+1.  Wählen Sie für **Set of thresholds** die Option **ClipPeaksAndSubPeaks** aus.  
   
-1.  Wählen Sie für **Upper threshold** (Oberer Schwellenwert) die Option **Percentile** (Perzentil) aus, und geben Sie für **Percentile number** (Perzentilwert) den Wert „90“ ein.  
+1.  Wählen Sie für **Upper threshold** die Option **Percentile** aus, und geben Sie für **Percentile number** den Wert 90 ein.  
   
-1.  Wählen Sie für **Upper substitute value** (Oberer Ersatzwert) die Option **Missing Value** (Fehlender Wert) aus.  
+1.  Wählen Sie für **Upper substitute value** die Option **Missing Value** aus.  
   
-1.  Wählen Sie für **Lower threshold** (Unterer Schwellenwert) die Option **Percentile** (Perzentil) aus, und geben Sie für **Percentile number** (Perzentilwert) den Wert „10“ ein.  
+1.  Wählen Sie für **Lower threshold** die Option **Percentile** aus, und geben Sie für **Percentile number** den Wert 10 ein.  
   
-1.  Wählen Sie für **Lower substitute value** (Unterer Ersatzwert) die Option **Missing Value** (Fehlender Wert) aus.  
+1.  Wählen Sie für **Lower substitute value** die Option **Missing Value** aus.  
   
-1.  Deaktivieren Sie die Option **Flag für Überschreiben**, und aktivieren Sie die Option **Add indicator column** (Indikatorspalte hinzufügen).  
+1.  Deaktivieren Sie die Option **Overwrite flag**, und wählen Sie die Option **Add indicator column** aus.  
   
 Probieren Sie nun dieselbe Pipeline mit 60 als oberem Perzentilschwellenwert und 30 als unterem Perzentilschwellenwert aus, und verwenden Sie den Schwellenwert als Ersatzwert. In der folgenden Tabelle werden die beiden Ergebnisse verglichen:  
   

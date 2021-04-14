@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 01/01/2020
 ms.openlocfilehash: c82f9cbfaf2e23ddaa5e4b05f4aac4795d3e16a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "76903051"
 ---
 # <a name="create-custom-tracking-schemas-that-monitor-end-to-end-workflows-in-azure-logic-a"></a>Erstellen benutzerdefinierter Nachverfolgungsschemas zur Überwachung von End-to-End-Workflows in Azure Logic Apps
@@ -64,7 +64,7 @@ Azure Logic Apps verfügt über eine integrierte Nachverfolgung, die Sie für Te
 | correlationId | Nein | String | Korrelations-ID zum Korrelieren der Nachrichten |
 | clientRequestId | Nein | String | Der Client kann diese Eigenschaft auffüllen, um Nachrichten zu korrelieren |
 | eventLevel | Ja | String | Ebene des Ereignisses |
-| eventTime | Ja | Datetime | Zeitpunkt des Ereignisses im UTC-Format: *YYYY-MM-DDTHH:MM:SS.00000Z* |
+| eventTime | Ja | Datetime | Zeit des Ereignisses im UTC-Format: *YYYY-MM-DDTHH:MM:SS.00000Z* |
 | recordType | Ja | String | Der Typ des Nachverfolgungseintrags mit nur diesem zulässigen Wert: `custom` |
 | Datensatz (record) | Ja | JToken | Benutzerdefinierter Eintragstyp nur im JToken-Format |
 |||||

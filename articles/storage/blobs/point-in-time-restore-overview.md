@@ -10,12 +10,12 @@ ms.date: 03/03/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 4e6dac1ab7350caeb29e23b21eace433568b38ea
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: b959038753dd15282de357da746ef9b0e0cf2be5
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102031632"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104802266"
 ---
 # <a name="point-in-time-restore-for-block-blobs"></a>Point-in-Time-Wiederherstellung für Blockblobs
 
@@ -47,15 +47,17 @@ Der Vorgang **Restore Blob Ranges** gibt eine Wiederherstellungs-ID zurück, die
 > Lesevorgänge aus dem sekundären Speicherort können während des Wiederherstellungsvorgangs fortgesetzt werden, wenn das Speicherkonto georepliziert wird.
 
 > [!CAUTION]
-> Point-in-Time-Wiederherstellung unterstützt nur Wiederherstellungsvorgänge für Blockblobs. Vorgänge für Container können nicht wiederhergestellt werden. Wenn Sie einen Container aus dem Speicherkonto löschen, indem Sie den Vorgang [Container löschen](/rest/api/storageservices/delete-container) aufrufen, kann dieser Container nicht mit einem Wiederherstellungsvorgang wiederhergestellt werden. Löschen Sie die einzelnen Blobs, anstatt einen ganzen Container zu löschen, wenn Sie sie möglicherweise später wiederherstellen möchten.
+> Die Zeitpunktwiederherstellung unterstützt Wiederherstellungen für Vorgänge, die nur Blockblobs betroffen haben. Alle Vorgänge, die Container betreffen, können nicht wiederhergestellt werden. Wenn Sie beispielsweise einen Container aus dem Speicherkonto löschen, indem Sie den Vorgang [Delete Container](/rest/api/storageservices/delete-container) (Container löschen) aufrufen, kann dieser Container nicht mit einer Zeitpunktwiederherstellung wiederhergestellt werden. Löschen Sie die einzelnen Blobs, anstatt einen ganzen Container zu löschen, wenn Sie sie möglicherweise später wiederherstellen möchten.
 
 ### <a name="prerequisites-for-point-in-time-restore"></a>Voraussetzungen für Point-in-Time-Wiederherstellung
 
 Die Point-in-Time-Wiederherstellung erfordert, dass die folgenden Azure Storage-Features aktiviert sind. Erst danach können Sie die Point-in-Time-Wiederherstellung aktivieren:
 
-- [Vorläufiges Löschen](./soft-delete-blob-overview.md)
+- [Vorläufiges Löschen](soft-delete-blob-overview.md)
 - [Änderungsfeed](storage-blob-change-feed.md)
 - [Blobversionsverwaltung](versioning-overview.md)
+
+Wenn Sie diese Features aktivieren, können zusätzliche Gebühren anfallen. Stellen Sie sicher, dass Sie die Auswirkungen auf die Abrechnung verstanden haben, bevor Sie die Zeitpunktwiederherstellung und die erforderlichen Features aktivieren.
 
 ### <a name="retention-period-for-point-in-time-restore"></a>Beibehaltungsdauer für Point-in-Time-Wiederherstellung
 
@@ -88,6 +90,8 @@ Die Point-in-Time-Wiederherstellung für Blockblobs weist die folgenden Einschr�
 > Wenn Sie Blockblobs an einem Punkt wiederherstellen, der vor dem 22. September 2020 liegt, sind die Einschränkungen der Vorschau für die Point-in-Time-Wiederherstellung wirksam. Microsoft empfiehlt, einen Wiederherstellungspunkt auszuwählen, der gleich ist oder nach dem 22. September 2020 liegt, um die allgemein verfügbare Point-in-Time-Wiederherstellungsfunktion zu nutzen.
 
 ## <a name="pricing-and-billing"></a>Preise und Abrechnung
+
+Zum Aktivieren der Zeitpunktwiederherstellung fallen keine Gebühren an. Allerdings werden beim Aktivieren der Zeitpunktwiederherstellung auch die Blobversionsverwaltung, das vorläufige Löschen und der Änderungsfeed aktiviert, für die jeweils zusätzliche Gebühren anfallen können.
 
 Die Abrechnung für Point-in-Time-Wiederherstellung hängt von der Menge der für die Ausführung des Wiederherstellungsvorgangs verarbeiteten Daten ab. Die Menge der verarbeiteten Daten basiert auf der Anzahl von Änderungen, die zwischen dem Wiederherstellungspunkt und dem aktuellen Zeitpunkt aufgetreten sind. Geht man beispielsweise von einer relativ konstanten Änderungsrate für Blockblobdaten in einem Speicherkonto aus, würde ein Wiederherstellungsvorgang, der 1 Tag in der Zeit zurückliegt, ein Zehntel einer Wiederherstellung kosten, die 10 Tage in der Zeit zurückliegt.
 

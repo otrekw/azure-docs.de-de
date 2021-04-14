@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/27/2020
 ms.author: alkohli
 ms.openlocfilehash: fa65a7354112a2b220686372459b348d45832dd9
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96465463"
 ---
 Gehen Sie auf der lokalen Webbenutzeroberfläche Ihres Geräts wie folgt vor. Dieser Schritt dauert einschließlich des Uploads der VPN-Konfigurationsdatei (oder der Diensttagdatei) etwa 15 Minuten. 
@@ -49,7 +49,7 @@ Gehen Sie auf der lokalen Webbenutzeroberfläche Ihres Geräts wie folgt vor. Di
 4. Zum Hinzufügen clientspezifischer Routen konfigurieren Sie IP-Adressbereiche, auf die nur über das VPN zugegriffen werden soll. 
 
     - Wählen Sie unter **IP-Adressbereiche, auf die nur über VPN zugegriffen werden soll** die Option **Konfigurieren** aus.
-    - Geben Sie einen gültigen IPv4-Bereich an, und wählen Sie **Hinzufügen** aus. Wiederholen Sie die Schritte zum Hinzufügen weiterer Bereiche.
+    - Geben Sie einen gültigen IPv4-Bereich an, und wählen Sie **Hinzufügen** aus. Wiederholen Sie die Schritte, um weitere Bereiche hinzuzufügen.
     - Wählen Sie **Übernehmen**.
 
         ![Konfigurieren der lokalen Benutzeroberfläche 5](../articles/databox-online/media/azure-stack-edge-pro-r-configure-vpn-powershell/configure-vpn-local-ui-5.png)

@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/18/2020
+ms.date: 03/22/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 079dcdc9d1667809779489c5d1126bc85cafb881
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: fa9861dd1ffbdd33f59abe76c7ebbd1befe3e7a6
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511315"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104799427"
 ---
 # <a name="activate-my-azure-ad-roles-in-pim"></a>Aktivieren meiner Azure AD-Rollen in PIM
 
@@ -110,11 +110,7 @@ Sollten Sie die Aktivierung einer Rolle, für die eine Genehmigung erforderlich 
 
 ### <a name="permissions-are-not-granted-after-activating-a-role"></a>Keine Gewährung von Berechtigungen nach der Aktivierung einer Rolle
 
-Wenn Sie in Privileged Identity Management eine Rolle aktivieren, wird die Aktivierung möglicherweise nicht sofort an alle Portale weitergegeben, für die diese privilegierte Rolle benötigt wird. In einigen Fällen kann die Web-Zwischenspeicherung im Portal auch dann dazu führen, dass die Änderung nicht sofort wirksam ist, wenn diese weitergegeben wurde. Falls die Aktivierung verzögert ist, sollten Sie Folgendes tun.
-
-1. Melden Sie sich vom Azure-Portal ab und dann wieder an.
-
-1. Überprüfen Sie in Privileged Identity Management, ob Sie als Mitglied der Rolle aufgeführt sind.
+Wenn Sie in Privileged Identity Management eine Rolle aktivieren, wird die Aktivierung möglicherweise nicht sofort an alle Portale weitergegeben, für die diese privilegierte Rolle benötigt wird. In einigen Fällen kann die Web-Zwischenspeicherung im Portal auch dann dazu führen, dass die Änderung nicht sofort wirksam ist, wenn diese weitergegeben wurde. Wenn Ihre Aktivierung verzögert ist, melden Sie sich vom Portal ab, in dem Sie die Aktion durchführen möchten, und melden Sie sich neu an. Im Azure-Portal werden Sie automatisch von PIM (Privileged Identity Management) abgemeldet und wieder angemeldet.
 
 # <a name="previous-version"></a>[Vorherige Version](#tab/previous)
 
@@ -216,13 +212,7 @@ Sollten Sie die Aktivierung einer Rolle, für die eine Genehmigung erforderlich 
 
 ### <a name="permissions-are-not-granted-after-activating-a-role"></a>Keine Gewährung von Berechtigungen nach der Aktivierung einer Rolle
 
-Wenn Sie in Privileged Identity Management eine Rolle aktivieren, wird die Aktivierung möglicherweise nicht sofort an alle Portale weitergegeben, für die diese privilegierte Rolle benötigt wird. In einigen Fällen kann die Web-Zwischenspeicherung im Portal auch dann dazu führen, dass die Änderung nicht sofort wirksam ist, wenn diese weitergegeben wurde. Falls die Aktivierung verzögert ist, sollten Sie Folgendes tun.
-
-1. Melden Sie sich vom Azure-Portal ab und dann wieder an.
-
-    Wenn Sie eine Azure AD-Rolle aktivieren, werden die Phasen Ihrer Aktivierung angezeigt. Nach Abschluss aller Phasen wird der Link **Abmelden** angezeigt. Sie können diesen Link verwenden, um sich abzumelden. Hiermit werden die meisten Fälle von Verzögerungen bei der Aktivierung gelöst.
-
-1. Überprüfen Sie in Privileged Identity Management, ob Sie als Mitglied der Rolle aufgeführt sind.
+Wenn Sie eine Rolle in Privileged Identity Management aktivieren, erfolgt Ihre Aktivierung in anderen Verwaltungsportalen als dem Azure-Portal möglicherweise verzögert (z. B. im Office 365-Portal). Wenn Ihre Aktivierung verzögert ist, melden Sie sich vom jeweiligen Portal ab, und melden Sie sich dann neu an. Verwenden Sie dann Privileged Identity Management, um zu überprüfen, ob Sie als Mitglied der Rolle aufgeführt werden.
 
  ---
 

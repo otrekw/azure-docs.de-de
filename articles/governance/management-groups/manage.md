@@ -3,12 +3,12 @@ title: 'Verwenden von Verwaltungsgruppen: Azure Governance'
 description: Hier erfahren Sie, wie Sie die Verwaltungsgruppenhierarchie anzeigen, verwalten, aktualisieren und löschen.
 ms.date: 01/15/2021
 ms.topic: conceptual
-ms.openlocfilehash: 05e78d66c29e500842d14a6eeb563c4569ecf0bd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 09d11450ff63046ab458f930f64534d10863f451
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100596479"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258349"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Verwalten von Ressourcen mit Verwaltungsgruppen
 
@@ -388,5 +388,5 @@ Weitere Informationen zu Verwaltungsgruppen finden Sie unter folgenden Links:
 - [Erstellen von Verwaltungsgruppen zum Organisieren von Azure-Ressourcen](./create-management-group-portal.md)
 - [Ändern, Löschen oder Verwalten Ihrer Verwaltungsgruppen](./manage.md)
 - [Überprüfen von Verwaltungsgruppen im Azure PowerShell-Ressourcenmodul](/powershell/module/az.resources#resources)
-- [Überprüfen von Verwaltungsgruppen in der REST-API](/rest/api/resources/managementgroups)
+- [Überprüfen von Verwaltungsgruppen in der REST-API](/rest/api/managementgroups/managementgroups)
 - [Überprüfen von Verwaltungsgruppen in der Azure CLI](/cli/azure/account/management-group)

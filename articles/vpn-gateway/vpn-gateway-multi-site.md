@@ -1,5 +1,5 @@
 ---
-title: 'Verbinden eines VNets mit mehreren Sites über VPN Gateway: Klassisch'
+title: 'Verbinden eines VNet mit mehreren Sites über VPN Gateway: klassisch'
 description: Verbinden Sie mehrere lokale Standorte mithilfe eines VPN-Gateways mit einem klassischen virtuellen Netzwerk.
 services: vpn-gateway
 titleSuffix: Azure VPN Gateway
@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: yushwang
 ms.openlocfilehash: 168bb9e06c73ec27ec1304813023889c9549b8e6
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94660694"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection-classic"></a>Hinzufügen einer Standort-zu-Standort-Verbindung mit einem VNet über eine vorhandene VPN-Gatewayverbindung (klassisch)
@@ -71,8 +71,8 @@ Sie verfügen bereits über ein Standort-zu-Standort-VPN mit einem Gateway mit d
 2. Konfigurieren Sie das neue Gateway, und erstellen Sie den VPN-Tunnel. Eine Anleitung finden Sie im Abschnitt [Angeben der SKU und des VPN-Typs](vpn-gateway-howto-site-to-site-classic-portal.md#sku). Achten Sie darauf, als Routingtyp „Dynamisch“ anzugeben.
 
 ### <a name="if-you-dont-have-a-site-to-site-virtual-network"></a>Wenn Sie nicht über ein virtuelles Standort-zu-Standort-Netzwerk verfügen, gehen Sie wie folgt vor:
-1. Erstellen Sie Ihr virtuelles Site-to-Site-Netzwerk mithilfe der folgenden Anleitung: [Erstellen eines virtuellen Netzwerks mit einer Site-to-Site-VPN-Verbindung](./vpn-gateway-howto-site-to-site-classic-portal.md).  
-2. Konfigurieren Sie mithilfe der folgenden Anleitung ein Gateway mit dynamischem Routing: [Konfigurieren eines VPN-Gateways](./vpn-gateway-howto-site-to-site-classic-portal.md). Denken Sie daran, **dynamisches Routing** als Gatewaytyp auszuwählen.
+1. Erstellen Sie mithilfe der Anweisungen unter [Erstellen eines virtuellen Netzwerks mit einer Site-to-Site-VPN-Verbindung](./vpn-gateway-howto-site-to-site-classic-portal.md) das Site-to-Site-VPN-Netzwerk.  
+2. Konfigurieren Sie anhand der folgenden Anweisungen ein Gateway mit dynamischem Routing: [Konfigurieren eines VPN Gateways](./vpn-gateway-howto-site-to-site-classic-portal.md). Denken Sie daran, **dynamisches Routing** als Gatewaytyp auszuwählen.
 
 ## <a name="2-export-the-network-configuration-file"></a><a name="export"></a>2. Exportieren der Netzwerkkonfigurationsdatei
 

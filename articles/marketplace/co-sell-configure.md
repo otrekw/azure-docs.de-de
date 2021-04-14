@@ -8,12 +8,12 @@ author: palanis-MSFT
 ms.author: palanis
 ms.reviewer: stmummer
 ms.date: 3/17/2021
-ms.openlocfilehash: db502f4652a6ae541a504249475898e3e771f90d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ab7a0c3fa947fdf62672013b5a557d0447eb67c5
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105563394"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107106852"
 ---
 # <a name="configure-co-sell-for-a-commercial-marketplace-offer"></a>Konfigurieren von Co-Selling für ein Angebot im kommerziellen Marketplace
 
@@ -38,7 +38,7 @@ Die Co-Selling-Option ist für die folgenden Angebotstypen verfügbar.
 1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/home) an.
 1. Wählen Sie im linken Navigationsmenü **Kommerzieller Marketplace** > **Übersicht** aus.
     > [!TIP]
-    > Wenn im Navigationsbereich links die Option **Kommerzieller Marketplace** nicht angezeigt wird, [erstellen Sie ein Konto für den kommerziellen Marketplace in Partner Center](./partner-center-portal/create-account.md), und stellen Sie sicher, dass Ihr Konto im kommerziellen Marketplace-Programm registriert ist.
+    > Wenn im Navigationsbereich links die Option **Kommerzieller Marketplace** nicht angezeigt wird, [erstellen Sie ein Konto für den kommerziellen Marketplace in Partner Center](create-account.md), und stellen Sie sicher, dass Ihr Konto im kommerziellen Marketplace-Programm registriert ist.
 1. Wählen Sie auf der Registerkarte **Übersicht** das Angebot für das Co-Selling aus.
     > [!NOTE]
     > Sie können Co-Selling für ein neues, noch nicht veröffentlichtes Angebot oder für ein Angebot konfigurieren, das bereits veröffentlicht wurde.

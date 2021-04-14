@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 658fd9178495f14274c85eab2129c9dcd3be7693
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "67178122"
 ---
 | **Begrenzungsbezeichner** | **Begrenzung** | **Kommentare** |
@@ -16,12 +16,12 @@ ms.locfileid: "67178122"
 | Gesamtkapazität (einschließlich Cloud) |Bis zu 64 TB pro virtuellem Gerät |Sie können ein Failover eines vollständigen virtuellen StorSimple-Arrays in ein anderes leeres Array durchführen. Wenn Sie versuchen, die Wiederherstellung auf demselben Gerät durchzuführen, sollten Sie sich vergewissern, dass auf dem Gerät ausreichend Speicherplatz zum Durchführen dieses Vorgangs vorhanden ist. Nachdem 32 TB überschritten wurden, können Sie keine Wiederherstellung auf dasselbe Gerät mehr durchführen. |
 | Maximale Anzahl von Anmeldeinformationen für das Speicherkonto pro Gerät |1 | |
 | Maximale Anzahl von Volumes/Freigaben |16 | |
-| Mindestgröße einer mehrstufigen Freigabe |500 GB | |
+| Mindestgröße einer mehrstufigen Freigabe |500 GB | |
 | Mindestgröße eines mehrstufigen Volumes |500 GB | |
 | Maximale Größe einer mehrstufigen Freigabe |20 TB | |
 | Maximale Größe eines mehrstufigen Volumes |5 TB | |
-| Mindestgröße einer lokalen Freigabe |50 GB | |
-| Mindestgröße eines lokalen Volumes |50 GB | |
+| Mindestgröße einer lokalen Freigabe |50 GB | |
+| Mindestgröße eines lokalen Volumes |50 GB | |
 | Maximale Größe einer lokalen Freigabe |2 TB | |
 | Maximale Größe eines lokalen Volumes |200 GB | |
 | Maximale Anzahl von iSCSI-Verbindungen von Initiatoren |512 | |

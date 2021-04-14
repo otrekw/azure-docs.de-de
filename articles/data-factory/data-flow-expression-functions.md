@@ -6,13 +6,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/04/2021
-ms.openlocfilehash: dee896c8e4946cb4f6406d2f9f50547d2723da05
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.date: 03/26/2021
+ms.openlocfilehash: 313cca7a0db81502ac68a2cb7e9981f712a82548
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448981"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105933110"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>Datentransformationsausdrücke in Mapping Data Flow
 
@@ -143,23 +143,15 @@ Gibt den ersten Wert ungleich NULL aus einem Satz von Eingaben zurück. Alle Ein
 * ``coalesce(10, 20) -> 10``  
 * ``coalesce(toString(null), toString(null), 'dumbo', 'bo', 'go') -> 'dumbo'``  
 ___
-### <code>collect</code>
-<code><b>collect(<i>&lt;value1&gt;</i> : any) => array</b></code><br/><br/>
-Sammelt alle Werte des Ausdrucks in der aggregierten Gruppe in einem Array. Während dieses Prozesses können Strukturen gesammelt und in alternative Strukturen transformiert werden. Die Anzahl der Elemente ist gleich der Anzahl der Zeilen in dieser Gruppe und kann NULL-Werte enthalten. Die Anzahl der gesammelten Elemente sollte klein sein.  
-* ``collect(salesPerson)``
-* ``collect(firstName + lastName))``
-* ``collect(@(name = salesPerson, sales = salesAmount) )``
-___
 ### <code>columnNames</code>
 <code><b>columnNames(<i>&lt;value1&gt;</i> : string) => array</b></code><br/><br/>
-Ruft alle Ausgabespalten für einen Stream ab. Sie können einen optionalen Streamnamen als zweites Argument übergeben.  
+Ruft die Namen aller Ausgabespalten für einen Stream ab. Sie können einen optionalen Streamnamen als zweites Argument übergeben.  
 * ``columnNames()``
 * ``columnNames('DeriveStream')``
-
 ___
 ### <code>columns</code>
 <code><b>columns([<i>&lt;stream name&gt;</i> : string]) => any</b></code><br/><br/>
-Ruft alle Ausgabespalten für einen Stream ab. Sie können einen optionalen Streamnamen als zweites Argument übergeben.   
+Ruft die Werte aller Ausgabespalten für einen Stream ab. Sie können einen optionalen Streamnamen als zweites Argument übergeben.   
 * ``columns()``
 * ``columns('DeriveStream')``
 ___
@@ -278,6 +270,10 @@ ___
 <code><b>escape(<i>&lt;string_to_escape&gt;</i> : string, <i>&lt;format&gt;</i> : string) => string</b></code><br/><br/>
 Versieht eine Zeichenfolge mit einem Escapezeichen entsprechend einem Format. Literalwerte für zulässige Formate sind „json“, „xml“, „ecmascript“, „html“ und „java“.
 ___
+### <code>expr</code>
+<code><b>expr(<i>&lt;expr&gt;</i> : string) => any</b></code><br/><br/>
+Führt zu einem Ausdruck aus einer Zeichenfolge. Dies ist das gleiche wie das Schreiben dieses Ausdrucks in einer nicht literalen Form. Dies kann verwendet werden, um Parameter als Zeichenfolgen-Darstellungen zu übergeben.
+*   expr(‘price * discount’) => alle ___
 ### <code>factorial</code>
 <code><b>factorial(<i>&lt;value1&gt;</i> : number) => long</b></code><br/><br/>
 Berechnet die Fakultät einer Zahl.  
@@ -857,6 +853,13 @@ ___
 Ruft den Durchschnitt der Werte einer Spalte basierend auf einem Kriterium ab.  
 * ``avgIf(region == 'West', sales)``  
 ___
+### <code>collect</code>
+<code><b>collect(<i>&lt;value1&gt;</i> : any) => array</b></code><br/><br/>
+Sammelt alle Werte des Ausdrucks in der aggregierten Gruppe in einem Array. Während dieses Prozesses können Strukturen gesammelt und in alternative Strukturen transformiert werden. Die Anzahl der Elemente ist gleich der Anzahl der Zeilen in dieser Gruppe und kann NULL-Werte enthalten. Die Anzahl der gesammelten Elemente sollte klein sein.  
+* ``collect(salesPerson)``
+* ``collect(firstName + lastName))``
+* ``collect(@(name = salesPerson, sales = salesAmount) )``
+___
 ### <code>count</code>
 <code><b>count([<i>&lt;value1&gt;</i> : any]) => long</b></code><br/><br/>
 Ruft die aggregierte Anzahl von Werten ab. Wenn optionale Spalten angegeben sind, werden NULL-Werte in der Anzahl ignoriert.  
@@ -901,6 +904,10 @@ Ruft den ersten Wert einer Spaltengruppe ab. Wenn der zweite Parameter ignoreNul
 * ``first(sales)``  
 * ``first(sales, false)``  
 ___
+### <code>isDistinct</code>
+<code><b>isDistinct(<i>&lt;value1&gt;</i> : any , <i>&lt;value1&gt;</i> : any) => boolean</b></code><br/><br/>
+Stellt fest, ob eine Spalte oder eine Gruppe von Spalten eindeutig ist. Null wird nicht als eigener Wert gezählt *   ``isDistinct(custId, custName) => boolean``
+*   ___
 ### <code>kurtosis</code>
 <code><b>kurtosis(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
 Ruft die Kurtosis einer Spalte ab.  
@@ -1098,9 +1105,18 @@ ___
 * ``map([1, 2, 3, 4], #item + 2) -> [3, 4, 5, 6]``  
 * ``map(['a', 'b', 'c', 'd'], #item + '_processed') -> ['a_processed', 'b_processed', 'c_processed', 'd_processed']``  
 ___
+### <code>mapIf</code>
+<code><b>mapIf (<value1> : array, <value2> : binaryfunction, <value3>: binaryFunction) => any</b></code><br/><br/> Ein Array wird bedingt einem anderen Array der gleichen Größe oder einer geringeren Größe zugeordnet. Die Werte können einen beliebigen Datentyp aufweisen, einschließlich structTypes. Es erfordert eine Zuordnungsfunktion, bei der Sie das Element im Array als „#item“ und den aktuellen Index als „#index“ adressieren können. Für tief geschachtelte Zuordnungen können Sie auf die übergeordneten t maps using the ``#item_[n](#item_1, #index_1...)`` notation.
+*   ``mapIf([10, 20, 30], #item > 10, #item + 5) -> [25, 35]``
+* ``mapIf(['icecream', 'cake', 'soda'], length(#item) > 4, upper(#item)) -> ['ICECREAM', 'C-Notation verweisen.AKE']``
+___
 ### <code>mapIndex</code>
 <code><b>mapIndex(<i>&lt;value1&gt;</i> : array, <i>&lt;value2&gt;</i> : binaryfunction) => any</b></code><br/><br/> Ordnet anhand des bereitgestellten Ausdrucks jedes Element des Arrays einem neuen Element zu. Die map-Funktion erwartet einen Verweis auf ein einzelnes Element in der Ausdrucksfunktion als „#item“ und einen Verweis auf den Elementindex as #index.  
 * ``mapIndex([1, 2, 3, 4], #item + 2 + #index) -> [4, 6, 8, .10]``  
+___
+### <code>mapLoop</code>
+<code><b>mapLoop(<value1> : integer, <value2> : unaryfunction) => any</b></code><br/><br/> Es wird eine Schleife von 1 für die Länge durchlaufen um ein Array dieser Länge zu erstellen. Es erfordert eine Zuordnungsfunktion, bei der Sie den Index im Array als „#index“ adressieren können. Für tief geschachtelte Zuordnungen können Sie mithilfe der Notation „#index_n(#index_1, #index_2...) notation.
+*   ``mapLoop(3, #index * 10) -> [10, 20“ auf die übergeordneten Zuordnungen verweisen., 30]``
 ___
 ### <code>reduce</code>
 <code><b>reduce(<i>&lt;value1&gt;</i> : array, <i>&lt;value2&gt;</i> : any, <i>&lt;value3&gt;</i> : binaryfunction, <i>&lt;value4&gt;</i> : unaryfunction) => any</b></code><br/><br/> Akkumuliert Elemente in einem Array. Die reduce-Funktion erwartet einen Verweis auf einen Akkumulator und ein einzelnes Element in der ersten Ausdrucksfunktion als „#acc“ und „#item“. Außerdem wird erwartet, dass der resultierende Wert in der zweiten Ausdrucksfunktion als „#result“ verwendet wird (ession function.  
@@ -1139,10 +1155,21 @@ Maps each element of the array to a new element using the provided expression. M
 * ``map([1, 2, 3, 4], #item + 2) -> [3, 4, 5, 6]``  
 * ``map(['a', 'b', 'c', 'd'], #item + '_processed') -> ['a_processed', 'b_processed', 'c_processed', 'd_processed']``  
 ___
+### <code>mapIf</code>
+<code><b>mapIf (<value1> : array, <value2> : binaryfunction, <value3>: binaryFunction) => any</b></code><br/><br/>
+Conditionally maps an array to another array of same or smaller length. The values can be of any datatype including structTypes. It takes a mapping function where you can address the item in the array as #item and current index as #index. For deeply nested maps you can refer to the parent maps using the ``#item_[n](#item_1, #index_1...)`` notation.
+*   ``mapIf([10, 20, 30], #item > 10, #item + 5) -> [25, 35]``
+* ``mapIf(['icecream', 'cake', 'soda'], length(#item) > 4, upper(#item)) -> ['ICECREAM', 'CAKE']``
+___
 ### <code>mapIndex</code>
 <code><b>mapIndex(<i>&lt;value1&gt;</i> : array, <i>&lt;value2&gt;</i> : binaryfunction) => any</b></code><br/><br/>
 Maps each element of the array to a new element using the provided expression. Map expects a reference to one element in the expression function as #item and a reference to the element index as #index.  
 * ``mapIndex([1, 2, 3, 4], #item + 2 + #index) -> [4, 6, 8, 10]``  
+___
+### <code>mapLoop</code>
+<code><b>mapLoop(<value1> : integer, <value2> : unaryfunction) => any</b></code><br/><br/>
+Loops through from 1 to length to create an array of that length. It takes a mapping function where you can address the index in the array as #index. For deeply nested maps you can refer to the parent maps using the #index_n(#index_1, #index_2...) notation.
+*   ``mapLoop(3, #index * 10) -> [10, 20, 30]``
 ___
 ### <code>reduce</code>
 <code><b>reduce(<i>&lt;value1&gt;</i> : array, <i>&lt;value2&gt;</i> : any, <i>&lt;value3&gt;</i> : binaryfunction, <i>&lt;value4&gt;</i> : unaryfunction) => any</b></code><br/><br/>
@@ -1198,6 +1225,14 @@ ___
 
 Konvertierungsfunktionen dienen zum Konvertieren von Daten und Testen von Datentypen.
 
+### <code>isBitSet</code>
+<code><b>isBitSet (<value1> : array, <value2>:integer ) => boolean</b></code><br/><br/>
+Überprüft, ob in diesem Bitset eine Bitposition festgelegt ist * ``isBitSet(toBitSet([10, 32, 98]), 10) => true``
+___
+### <code>setBitSet</code>
+<code><b>setBitSet (<value1> : array, <value2>:array) => array</b></code><br/><br/>
+Legt Bitpositionen in diesem Bitset fest * ``setBitSet(toBitSet([10, 32]), [98]) => [4294968320L, 17179869184L]``
+___  
 ### <code>isBoolean</code>
 <code><b>isBoolean(<value1> : string) => boolean</b></code><br/><br/>
 Diese Funktion überprüft, ob der Zeichenfolgenwert ein boolescher Wert gemäß den Regeln von ``toBoolean()``
@@ -1412,6 +1447,11 @@ Wählen Sie ein Array von Spalten nach Name im Stream aus. Sie können einen opt
 * ``toString(byNames(['a Column'], 'DeriveStream'))``
 * ``byNames(['orderItem']) ? (itemName as string, itemQty as integer)``
 ___
+### <code>byPath</code>
+<code><b>byPath(<i>&lt;value1&gt;</i> : string, [<i>&lt;streamName&gt;</i> : string]) => any</b></code><br/><br/>
+Sucht einen hierarchischen Pfad anhand des Namens im Stream. Sie können einen optionalen Streamnamen als zweites Argument übergeben. Wenn kein solcher Pfad gefunden wird, wird NULL zurückgegeben. Spaltennamen/-pfade, die zur Entwurfszeit bekannt sind, sollten nur anhand ihres Namens oder Punktnotationspfades adressiert werden. Berechnete Eingaben werden nicht unterstützt. Sie können aber Parameterersetzungen verwenden.  
+* ``byPath('grandpa.parent.child') => column`` 
+___
 ### <code>byPosition</code>
 <code><b>byPosition(<i>&lt;position&gt;</i> : integer) => any</b></code><br/><br/>
 Wählt einen Spaltenwert nach seiner relativen Position (1-basiert) im Stream aus. Liegt die Position außerhalb des gültigen Bereichs, wird ein NULL-Wert zurückgegeben. Für den zurückgegebenen Wert muss eine Typkonvertierung anhand einer der Typkonvertierungsfunktionen (TO_DATE, TO_STRING, ...) durchgeführt werden. Berechnete Eingaben werden nicht unterstützt. Sie können aber Parameterersetzungen verwenden.  
@@ -1420,6 +1460,11 @@ Wählt einen Spaltenwert nach seiner relativen Position (1-basiert) im Stream au
 * ``toBoolean(byName(4))``  
 * ``toString(byName($colName))``  
 * ``toString(byPosition(1234))``  
+___
+### <code>hasPath</code>
+<code><b>hasPath(<i>&lt;value1&gt;</i> : string, [<i>&lt;streamName&gt;</i> : string]) => boolean</b></code><br/><br/>
+Überprüft, ob ein bestimmter hierarchischer Pfad nach dem Namen im Stream vorhanden ist. Sie können einen optionalen Streamnamen als zweites Argument übergeben. Spaltennamen/-pfade, die zur Entwurfszeit bekannt sind, sollten nur anhand ihres Namens oder Punktnotationspfades adressiert werden. Berechnete Eingaben werden nicht unterstützt. Sie können aber Parameterersetzungen verwenden.  
+* ``hasPath('grandpa.parent.child') => boolean``
 ___
 ### <code>hex</code>
 <code><b>hex(<value1>: binary) => string</b></code><br/><br/>

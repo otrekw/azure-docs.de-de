@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/01/2021
+ms.date: 03/16/2021
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: 8d04d1bd758480ec33a7480e4045d28ed750f22e
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: d1d77e508e627520878dcc27b5a643473d11dd1d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102430937"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104800719"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>Speichern unternehmenskritischer Blobdaten mit unveränderlichem Speicher
 
@@ -63,13 +63,15 @@ Weitere Informationen zum Festlegen und Sperren zeitbasierter Aufbewahrungsricht
 ## <a name="time-based-retention-policies"></a>Zeitbasierte Aufbewahrungsrichtlinien
 
 > [!IMPORTANT]
-> Eine zeitbasierte Aufbewahrungsrichtlinie muss *gesperrt* sein, damit das Blob zur Erzielung von Konformität mit SEC 17a-4(f) und anderen gesetzlichen Bestimmungen in einem konformen unveränderlichen Zustand ist (Schreib- und Löschschutz). Sie sollten die Richtlinie in einem angemessenen Zeitraum sperren – in der Regel weniger als 24 Stunden. Der ursprüngliche Zustand einer angewendeten zeitbasierten Aufbewahrungsrichtlinie lautet *Entsperrt*, damit Sie das Feature testen und Änderungen an der Richtlinie vornehmen können, bevor Sie das Sperren durchführen. Der Zustand *Entsperrt* bietet zwar Unveränderlichkeitsschutz, aber wir empfehlen Ihnen, *Entsperrt* nicht für andere Zwecke als für kurzfristige Featuretests zu verwenden. 
+> Eine zeitbasierte Aufbewahrungsrichtlinie muss *gesperrt* sein, damit das Blob zur Erzielung von Konformität mit SEC 17a-4(f) und anderen gesetzlichen Bestimmungen in einem konformen unveränderlichen Zustand ist (Schreib- und Löschschutz). Microsoft empfiehlt, die Richtlinie in einem angemessenen Zeitraum zu sperren (in der Regel weniger als 24 Stunden). Der ursprüngliche Zustand einer angewendeten zeitbasierten Aufbewahrungsrichtlinie lautet *Entsperrt*, damit Sie das Feature testen und Änderungen an der Richtlinie vornehmen können, bevor Sie das Sperren durchführen. Der Zustand *Entsperrt* bietet zwar Unveränderlichkeitsschutz, allerdings wird die Verwendung des Zustands *Entsperrt* nicht für andere Zwecke als für kurzfristige Featuretests empfohlen.
+>
+> Nachdem eine zeitbasierte Aufbewahrungsrichtlinie gesperrt wurde, kann die Richtlinie nicht mehr entfernt werden, und es sind maximal fünf Erhöhungen des effektiven Aufbewahrungszeitraums zulässig. Der Aufbewahrungszeitraum kann nicht verkürzt werden.
 
 Wenn eine zeitbasierte Aufbewahrungsrichtlinie auf einen Container angewendet wird, bleiben alle Blobs im Container so lange im unveränderlichen Zustand, wie der Aufbewahrungszeitraum *gilt*. Die Gültigkeit des Aufbewahrungszeitraums für Blobs entspricht der Differenz zwischen der **Erstellungszeit** des Blobs und dem vom Benutzer angegebenen Aufbewahrungszeitraum. Da Benutzer den Aufbewahrungszeitraum verlängern können, nutzt unveränderlicher Speicher den letzten Wert des vom Benutzer angegebenen Aufbewahrungszeitraums, um den effektiven Aufbewahrungszeitraum zu berechnen.
 
 Ein Beispiel: Angenommen, der Benutzer erstellt eine zeitbasierte Aufbewahrungsrichtlinie mit einem Aufbewahrungszeitraum von fünf Jahren. Ein in diesem Container vorhandenes Blob (_testblob1_) wurde vor einem Jahr erstellt. Der effektive Aufbewahrungszeitraum für _testblob1_ beträgt also vier Jahre. Wenn ein neues Blob (_testblob2_) in den Container hochgeladen wird, beträgt der effektive Aufbewahrungszeitraum für _testblob2_ fünf Jahre ab dem Zeitpunkt seiner Erstellung.
 
-Eine zeitbasierte Aufbewahrungsrichtlinie im Zustand „Entsperrt“ wird nur für Featuretests empfohlen, und eine Richtlinie muss gesperrt sein, um mit SEC 17a-4(f) konform zu sein und andere gesetzliche Bestimmungen zu erfüllen. Nachdem eine zeitbasierte Aufbewahrungsrichtlinie gesperrt wurde, kann die Richtlinie nicht mehr entfernt werden, und es sind maximal fünf Erhöhungen des effektiven Aufbewahrungszeitraums zulässig.
+Eine zeitbasierte Aufbewahrungsrichtlinie im Zustand „Entsperrt“ wird nur für Featuretests empfohlen, und eine Richtlinie muss gesperrt sein, um mit SEC 17a-4(f) konform zu sein und andere gesetzliche Bestimmungen zu erfüllen.
 
 Für Aufbewahrungsrichtlinien gelten folgende Grenzwerte:
 

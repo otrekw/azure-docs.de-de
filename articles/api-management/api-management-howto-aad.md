@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/04/2019
+ms.date: 03/22/2021
 ms.author: apimpm
-ms.openlocfilehash: 2d3f382635e9a8b8a562f7a7f60f256d68b90b8f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 743a7e7d34457405aa4be42b196dc994506c6587
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91363204"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105035800"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Autorisieren von Entwicklerkonten mithilfe von Azure Active Directory in Azure API Management
 
@@ -47,7 +47,15 @@ Dieser Artikel zeigt, wie Sie den Zugriff auf das Entwicklerportal für Benutzer
     Im Bereich werden Steuerelemente angezeigt, mit denen Sie weitere erforderliche Informationen eingeben können. Zu den Steuerelementen gehören **Client-ID** und **Clientgeheimnis**. (Sie erhalten weiter unten in diesem Artikel Informationen zu diesen Steuerelementen.)
 9. Notieren Sie sich den Inhalt der **Umleitungs-URL**.
     
-   ![Schritte zum Hinzufügen eines Identitätsanbieters im Azure-Portal](./media/api-management-howto-aad/api-management-with-aad001.png)  
+
+    :::image type="content" source="media/api-management-howto-aad/api-management-with-aad001.png" alt-text="Identitätsanbieter im Azure-Portal hinzufügen":::
+    > [!NOTE]
+    > Es gibt zwei Umleitungs-URLs:<br/>
+    > **Umleitungs-URL**-Punkten zum neuesten Entwicklerportal der API Management.<br/>
+    > **Umleitungs-URL (veraltet Portal)** : verweist auf das als veraltet markierte Entwicklerportal von API Management.
+    >
+    > Es wird empfohlen, die neueste Umleitungs-URL des Entwicklerportals zu verwenden.
+   
 10. Öffnen Sie in Ihrem Browser eine weitere Registerkarte. 
 11. Navigieren Sie im Microsoft Azure-Portal zu [App-Registrierungen](https://go.microsoft.com/fwlink/?linkid=2083908), um eine App in Active Directory Domain Services zu registrieren.
 12. Wählen Sie unter **Verwalten** die Option **App-Registrierungen** aus.

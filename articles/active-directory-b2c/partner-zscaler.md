@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 12/09/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: dbeb3cd4fccf80f434e6c7ac08c658632f64b135
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9cd193eb6ff2858440f1cd9a62bdd53d58d6047d
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102096852"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256292"
 ---
 # <a name="tutorial-configure-zscaler-private-access-with-azure-active-directory-b2c"></a>Tutorial: Konfigurieren von Zscaler Private Access (ZPA) mit Azure Active Directory B2C
 
@@ -96,7 +96,7 @@ Die übrige IdP-Konfiguration wird nach dem Konfigurieren von Azure AD B2C fort
 >[!Note]
 >Dieser Schritt ist nur erforderlich, wenn Sie noch keine benutzerdefinierten Richtlinien konfiguriert haben. Wenn Sie bereits über eine oder mehrere benutzerdefinierte Richtlinien verfügen, können Sie diesen Schritt überspringen.
 
-Weitere Informationen zum Konfigurieren benutzerdefinierter Richtlinien in Ihrem Azure AD B2C-Mandanten finden Sie unter [Erste Schritte für benutzerdefinierte Richtlinien in Azure Active Directory B2C](./custom-policy-get-started.md).
+Weitere Informationen zum Konfigurieren benutzerdefinierter Richtlinien in Ihrem Azure AD B2C-Mandanten finden Sie unter [Erste Schritte für benutzerdefinierte Richtlinien in Azure Active Directory B2C](./tutorial-create-user-flows.md?pivots=b2c-custom-policy).
 
 ### <a name="step-3-register-zpa-as-a-saml-application-in-azure-ad-b2c"></a>Schritt 3: Registrieren von ZPA als SAML-Anwendung in Azure AD B2C
 
@@ -149,7 +149,7 @@ Wechseln Sie zu einem ZPA-Benutzerportal oder einer Browserzugriffsanwendung, un
 
 Weitere Informationen finden Sie in den folgenden Artikeln:
 
-- [Erste Schritte mit benutzerdefinierten Richtlinien in Azure AD B2C](./custom-policy-get-started.md)
+- [Erste Schritte mit benutzerdefinierten Richtlinien in Azure AD B2C](./tutorial-create-user-flows.md?pivots=b2c-custom-policy)
 - [Registrieren einer SAML-Anwendung in Azure AD B2C](./saml-service-provider.md)
 - [Step-by-Step Configuration Guide for ZPA](https://help.zscaler.com/zpa/step-step-configuration-guide-zpa) (Leitfaden zur ZPA-Konfiguration in einzelnen Schritten)
 - [Configuring an IdP for Single Sign-On](https://help.zscaler.com/zpa/configuring-idp-single-sign) (Konfigurieren eines IdP für einmaliges Anmelden)

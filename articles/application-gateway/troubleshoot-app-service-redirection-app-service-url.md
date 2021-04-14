@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 11/14/2019
 ms.author: absha
 ms.openlocfilehash: 1cc7df755198461643703cac988c8c31f2ac25db
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96182885"
 ---
 # <a name="troubleshoot-app-service-issues-in-application-gateway"></a>Behandeln von App Service-Problemen in Application Gateway
@@ -39,10 +39,10 @@ Wenn Sie App-Dienste hinter einem Anwendungsgateway verwenden, unterscheidet sic
 
 ## <a name="sample-configuration"></a>Beispielkonfiguration
 
-- HTTP-Listener: Basislistener oder Listener für mehrere Standorte
+- HTTP-Listener: einfach oder mehrere Standorte
 - Back-End-Adresspool: App Service
 - HTTP-Einstellungen: **Pick Hostname from Backend Address** (Hostnamen aus Back-End-Adresse auswählen) aktiviert
-- Test: **Pick Hostname from Backend HTTP Settings** (Hostnamen aus Back-End-HTTP-Einstellungen auswählen) aktiviert
+- Test: **Pick Hostname from HTTP Settings** (Hostnamen aus HTTP-Einstellungen auswählen) aktiviert
 
 ## <a name="cause"></a>Ursache
 
@@ -85,7 +85,7 @@ Legen Sie den Hostnamen im Adressheader auf den Domänennamen des Anwendungsgate
 > [!NOTE]
 > Die Unterstützung für das erneute Generieren von HTTP-Headern ist nur für die [Standard_v2- und WAF_v2-SKU](./application-gateway-autoscaling-zone-redundant.md) von Application Gateway verfügbar. Bei Verwendung der v1-SKU empfehlen wir Ihnen die [Migration von v1 zu v2](./migrate-v1-v2.md). Es ist ratsam, das erneute Generieren und andere [erweiterte Funktionen](./application-gateway-autoscaling-zone-redundant.md#feature-comparison-between-v1-sku-and-v2-sku) zu nutzen, die für die v2-SKU verfügbar sind.
 
-## <a name="alternate-solution-use-a-custom-domain-name"></a>Alternativlösung: Verwenden eines benutzerdefinierten Domänennamens
+## <a name="alternate-solution-use-a-custom-domain-name"></a>Alternativlösung: Verwenden Sie einen benutzerdefinierten Domänennamen
 
 Bei Verwendung der v1-SKU können Sie den Adressheader nicht erneut generieren. Diese Funktion ist nur für die v2-SKU verfügbar. Übergeben Sie zum Beheben des Umleitungsproblems den gleichen Hostnamen, der vom Anwendungsgateway empfangen wird, auch an den App-Dienst, anstatt eine Außerkraftsetzung des Hosts durchzuführen.
 

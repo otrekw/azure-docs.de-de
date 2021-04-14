@@ -9,10 +9,10 @@ ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 08cca67455df4b2d28bba0a7410fccc11446fcdc
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96010696"
 ---
 Dieser Artikel bietet weitere Details zum Schützen Ihrer auf Azure IoT basierenden IoT-Infrastruktur (Internet of Things, Internet der Dinge). Geboten werden Links zu Details auf Implementierungsebene für die Konfiguration und Bereitstellung der einzelnen Komponenten. Darüber hinaus finden Sie Vergleiche, um aus verschiedenen konkurrierenden Methoden die gewünschte zu wählen.
@@ -49,7 +49,7 @@ Weitere Informationen zur Struktur des Sicherheitstokens und seiner Verwendung f
 
 Jeder IoT Hub verfügt über eine [Identitätsregistrierung](../articles/iot-hub/iot-hub-devguide-identity-registry.md), die Sie zum Erstellen von gerätebasierten Ressourcen im Dienst verwenden können. Hierzu zählt beispielsweise eine Warteschlange mit gesendeten C2D-Nachrichten. Außerdem wird der Zugriff auf geräteseitige Endpunkte ermöglicht. Die IoT Hub-Identitätsregistrierung ermöglicht die sichere Speicherung von Geräteidentitäten und Sicherheitsschlüsseln für eine Lösung. Geräteidentitäten können einzeln oder in Gruppen einer Zulassungsliste oder Blockierungsliste hinzugefügt werden, um die vollständige Kontrolle über den Gerätezugriff zu haben. Die folgenden Artikel enthalten weitere Informationen zur Struktur der Identitätsregistrierung und zu unterstützten Vorgängen.
 
-[IoT Hub unterstützt Protokolle wie MQTT, AMQP und HTTP.](../articles//iot-hub/iot-hub-devguide-security.md) Jedes dieser Protokolle verwendet Sicherheitstoken des IoT-Geräts für IoT Hub unterschiedlich:
+[IoT Hub unterstützt Protokolle wie MQTT, AMQP und HTTP](../articles//iot-hub/iot-hub-devguide-security.md). Jedes dieser Protokolle verwendet Sicherheitstoken des IoT-Geräts für IoT Hub unterschiedlich:
 
 * AMQP: SASL PLAIN- und AMQP Claims-basierte Sicherheit (`{policyName}@sas.root.{iothubName}` bei Token auf Ebene des IoT-Hubs, `{deviceId}` bei auf Geräte bezogenen Token).
 
@@ -61,7 +61,7 @@ Mithilfe der Identitätsregistrierung von IoT Hub können Sie Sicherheitsanmelde
 
 ### <a name="x509-certificate-based-device-authentication"></a>Auf X.509-Zertifikat basierende Geräteauthentifizierung
 
-Die Verwendung eines [gerätebasierten X.509-Zertifikats](../articles/iot-hub/iot-hub-devguide-security.md) und des zugehörigen Paares aus privatem und öffentlichem Schlüssel ermöglicht eine zusätzliche Authentifizierung auf physischer Ebene. Der private Schlüssel wird sicher auf dem Gerät gespeichert und ist außerhalb des Geräts nicht ermittelbar. Das X.509-Zertifikat enthält Informationen zum Gerät, z.B. die Geräte-ID und andere organisatorische Details. Eine Signatur des Zertifikats wird mithilfe des privaten Schlüssels generiert.
+Die Verwendung eines [gerätebasierten X.509-Zertifikats](../articles/iot-hub/iot-hub-devguide-security.md) und des zugehörigen Paares aus privatem und öffentlichem Schlüssel ermöglicht eine zusätzliche Authentifizierung in der Bitübertragungsschicht. Der private Schlüssel wird sicher auf dem Gerät gespeichert und ist außerhalb des Geräts nicht ermittelbar. Das X.509-Zertifikat enthält Informationen zum Gerät, z.B. die Geräte-ID und andere organisatorische Details. Eine Signatur des Zertifikats wird mithilfe des privaten Schlüssels generiert.
 
 Allgemeiner Ablauf der Gerätebereitstellung:
 
@@ -81,7 +81,7 @@ Die Internetverbindung zwischen IoT-Gerät und IoT Hub wird standardmäßig mit 
 
 ## <a name="securing-the-cloud"></a>Schützen der Cloud
 
-Azure IoT Hub ermöglicht für jeden Sicherheitsschlüssel die Definition von [Richtlinien für die Zugriffssteuerung](../articles/iot-hub/iot-hub-devguide-security.md). IoT Hub verwendet den folgenden Satz von Berechtigungen, um Zugriff auf die Endpunkte jedes IoT Hubs zu gewähren. Berechtigungen beschränken den Zugriff auf einen IoT Hub basierend auf der Funktionalität.
+Azure IoT Hub ermöglicht für jeden Sicherheitsschlüssel die Definition von [Richtlinien für die Zugriffssteuerung](../articles/iot-hub/iot-hub-devguide-security.md). IoT Hub verwendet den folgenden Satz von Berechtigungen, um Zugriff auf die Endpunkte jedes IoT Hubs zu gewähren. Berechtigungen beschränken den Zugriff auf einen IoT-Hub basierend auf der Funktionalität.
 
 * **RegistryRead**. Diese Berechtigung gewährt Lesezugriff auf die Identitätsregistrierung. Weitere Informationen finden Sie unter [Identitätsregistrierung](../articles/iot-hub/iot-hub-devguide-identity-registry.md).
 
@@ -101,13 +101,13 @@ Von Azure IoT Hub erfasste Daten können von einer Vielzahl von Diensten wie Azu
 
 * [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/): Ein skalierbarer, vollständig indizierter Datenbankdienst für semistrukturierte Daten, mit dem die Metadaten für die bereitgestellten Geräte verwaltet werden, z.B. Attribute, Konfiguration und Sicherheitseigenschaften. Azure Cosmos DB bietet eine Verarbeitung mit hoher Leistung und hohem Durchsatz, eine schemaagnostische Indizierung von Daten und eine umfassende SQL-Abfrageschnittstelle.
 
-* [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/): Datenstromverarbeitung in Echtzeit in der Cloud, mit der eine schnelle Entwicklung und Bereitstellung einer kostengünstigen Analyselösung ermöglicht wird, mit der Sie in Echtzeit basierend auf Geräte-, Sensor-, Infrastruktur- und Anwendungsdaten wichtige Einblicke erhalten. Die Daten aus diesem vollständig verwalteten Dienst können auf beliebige Volumina skaliert werden, während trotzdem ein hoher Durchsatz, eine geringe Latenz und Resilienz erzielt werden.
+* [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/): Datenstromverarbeitung in Echtzeit in der Cloud. Dadurch wird eine schnelle Entwicklung und Bereitstellung einer kostengünstigen Analyselösung ermöglicht, mit der Sie in Echtzeit – basierend auf Geräte-, Sensor-, Infrastruktur- und Anwendungsdaten – wichtige Einblicke erhalten. Die Daten aus diesem vollständig verwalteten Dienst können auf beliebige Volumina skaliert werden, während trotzdem ein hoher Durchsatz, eine geringe Latenz und Resilienz erzielt werden.
 
-* [Azure App Services](https://azure.microsoft.com/services/app-service/): Cloudplattform für leistungsstarke mobile Apps und Web-Apps, für die eine Verbindung mit cloudbasierten oder lokalen Datenquellen hergestellt werden kann. Entwickeln Sie benutzerfreundliche mobile Apps für iOS, Android und Windows. Profitieren Sie von einer Integration in Ihre SaaS- (Software as a Service) und Unternehmensanwendungen und vom standardmäßigen Zugriff auf Dutzende von cloudbasierten Diensten und Unternehmensanwendungen. Programmieren Sie in Ihrer bevorzugten Sprache und IDE, z.B. .NET, Node.js, PHP, Python oder Java, um schneller als je zuvor Web-Apps und APIs zu entwickeln.
+* [Azure App Services](https://azure.microsoft.com/services/app-service/): Eine Cloudplattform für leistungsstarke mobile und Web-Apps, für die eine Verbindung mit cloudbasierten oder lokalen Datenquellen hergestellt werden kann. Entwickeln Sie benutzerfreundliche mobile Apps für iOS, Android und Windows. Profitieren Sie von einer Integration in Ihre SaaS- (Software as a Service) und Unternehmensanwendungen und vom standardmäßigen Zugriff auf Dutzende von cloudbasierten Diensten und Unternehmensanwendungen. Programmieren Sie in Ihrer bevorzugten Sprache und IDE, z.B. .NET, Node.js, PHP, Python oder Java, um schneller als je zuvor Web-Apps und APIs zu entwickeln.
 
 * [Logic Apps](https://azure.microsoft.com/services/app-service/logic/): Das Logic Apps-Feature von Azure App Service dient als Hilfe bei der Integration Ihrer IoT-Lösung in Ihre vorhandenen branchenspezifischen Systeme und bei der Automatisierung von Workflowprozessen. Mit Logik-Apps können Entwickler Workflows entwerfen, die über einen Auslöser gestartet werden und dann eine Reihe von Schritten ausführen – Regeln und Aktionen, für die leistungsfähige Connectors zur Integration in Ihre Geschäftsprozesse eingesetzt werden. Logik-Apps ermöglichen standardmäßig Verbindungen mit einem umfassenden Ökosystem von SaaS-, cloudbasierten und lokalen Anwendungen.
 
-* [Azure Blob Storage](https://azure.microsoft.com/services/storage/): zuverlässiger, kostengünstiger Cloudspeicher für die Daten, die von Ihren Geräten an die Cloud gesendet werden.
+* [Azure Blob Storage](https://azure.microsoft.com/services/storage/): Ein zuverlässiger, kostengünstiger Cloudspeicher für die Daten, die von Ihren Geräten an die Cloud gesendet werden.
 
 ## <a name="conclusion"></a>Zusammenfassung
 

@@ -8,22 +8,22 @@ ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/14/2020
-ms.openlocfilehash: 0dbf418d0a673dd0799f0f638e454c484f837fd7
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: fc3662d8198e6ab6ab215ac1e9e8eac585f4250b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516606"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104801586"
 ---
 # <a name="lucene-query-syntax-in-azure-cognitive-search"></a>Lucene-Abfragesyntax in Azure Cognitive Search
 
 Beim Erstellen von Abfragen können Sie die Syntax des [Lucene-Abfrageparsers](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) für spezielle Abfrageformen verwenden: Platzhaltersuche, Fuzzysuche, NEAR-Suche und Suche mit regulären Ausdrücken. Der Großteil der Syntax des Lucene-Abfrageparsers wird [in Azure Cognitive Search unverändert implementiert](search-lucene-query-architecture.md). Die einzige Ausnahme sind *Bereichssuchen*, die mit **`$filter`** -Ausdrücken erstellt werden. 
 
-Die vollständige Lucene-Syntax wird für Abfrageausdrücke verwendet, die im Parameter **`search`** einer Anforderung zum [Durchsuchen von Dokumenten (REST-API)](/rest/api/searchservice/search-documents) übergeben werden. Sie ist nicht zu verwechseln mit der [OData-Syntax](query-odata-filter-orderby-syntax.md), die für die Ausdrücke [ **`$filter`**](search-filters.md) und [ **`$orderby`** ](search-query-odata-orderby.md) in derselben Anforderung verwendet wird. Für OData-Parameter gelten eine andere Syntax und andere Regeln für das Erstellen von Abfragen, das Auskommentieren von Zeichenfolgen usw.
+Wenn Sie die vollständige Lucene-Syntax verwenden möchten, legen Sie „queryType“ auf „full“ fest und übergeben einen Abfrageausdruck, der für Platzhalterzeichen, die Fuzzysuche oder eines der anderen von der vollständigen Syntax unterstützten Abfrageformulare vorgesehen ist. In REST werden Abfrageausdrücke im **`search`** -Parameter einer Anforderung zum [Durchsuchen von Dokumenten (REST-API)](/rest/api/searchservice/search-documents) bereitgestellt.
 
 ## <a name="example-full-syntax"></a>Beispiel (vollständige Syntax)
 
-Legen Sie den Parameter **`queryType`** fest, um die vollständige Lucene-Syntax anzugeben. Im folgenden Beispiel wird die in-Field-Suche und die Begriffsverstärkung aufgerufen. Diese Abfrage sucht nach Hotels, bei denen das Kategoriefeld den Begriff „budget“ enthält. Allen Dokumenten, die den Ausdruck „recently renovated“ enthalten, wird aufgrund des Werts für die Begriffsverstärkung (3) ein höherer Rang zugewiesen.  
+Das folgende Beispiel zeigt eine Suchanforderung, die mit der vollständigen Syntax erstellt wurde. In diesem speziellen Beispiel werden die In-Field-Suche und die Begriffsverstärkung veranschaulicht. Dabei werden Hotels gesucht, bei denen das Kategorienfeld den Begriff „budget“ enthält. Allen Dokumenten, die den Ausdruck „recently renovated“ enthalten, wird aufgrund des Werts für die Begriffsverstärkung (3) ein höherer Rang zugewiesen.  
 
 ```http
 POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
@@ -34,9 +34,9 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
 }
 ```
 
-Der Parameter **`searchMode`** ist in diesem Beispiel relevant. Bei Abfragen mit Operatoren sollten Sie generell `searchMode=all` festlegen, um sicherzustellen, dass *alle* Kriterien abgeglichen werden.  
+Der **`searchMode`** -Parameter ist zwar nicht spezifisch für einen Abfragetyp, in diesem Beispiel aber relevant. Bei Abfragen mit Operatoren sollten Sie generell `searchMode=all` festlegen, um sicherzustellen, dass *alle* Kriterien abgeglichen werden.  
 
-Weitere Beispiele finden Sie unter [Beispiele für die Lucene-Abfragesyntax](search-query-lucene-examples.md). Ausführliche Informationen zur Abfrageanforderung und zu den entsprechenden Parametern finden Sie unter [Durchsuchen von Dokumenten (REST-API)](/rest/api/searchservice/Search-Documents).
+Weitere Beispiele finden Sie unter [Beispiele für die Lucene-Abfragesyntax](search-query-lucene-examples.md). Ausführliche Informationen zur Abfrageanforderung und zu den Parametern (einschließlich „searchMode“) finden Sie unter [Durchsuchen von Dokumenten (REST-API)](/rest/api/searchservice/Search-Documents).
 
 ## <a name="syntax-fundamentals"></a><a name="bkmk_syntax"></a> Grundlagen der Syntax  
 

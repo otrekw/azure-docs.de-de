@@ -5,25 +5,25 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: e2d258f327ade2149adc92bdb7fb4bcc87cdd58c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "67178132"
 ---
 #### <a name="to-install-the-storsimple-adapter-for-sharepoint"></a>So installieren Sie den StorSimple-Adapter für SharePoint
 1. Kopieren Sie den Installer auf den Web Front End (WFE)-Server, der auch für die Ausführung der Webanwendung SharePoint-Zentraladministration konfiguriert ist. 
 2. Verwenden Sie ein Konto mit Administratorrechten, um sich beim WFE-Server anzumelden.
-3. Doppelklicken Sie auf den Installer. Der StorSimple-Adapter für den SharePoint-Setup-Assistenten wird gestartet. Klicken Sie auf **Weiter** , um die Installation zu starten.
+3. Doppelklicken Sie auf den Installer. Der StorSimple-Adapter für den SharePoint-Setup-Assistenten wird gestartet. Klicken Sie auf **Weiter**, um die Installation zu starten.
    
     ![StorSimple-Adaptereinrichtung – Startseite](./media/storsimple-install-sharepoint-adapter/HCS_SSASP_Setup1-include.png)
 4. Wählen Sie auf der Konfigurationsseite für den StorSimple-Adapter für die SharePoint-Einrichtung einen Installationsort aus, geben Sie auf Ihrem StorSimple-Gerät die IP-Adresse für die DATA 0-Netzwerkschnittstelle ein, und klicken Sie auf **Weiter**. 
    
     ![StorSimple-Adaptereinrichtung – Konfigurationsseite](./media/storsimple-install-sharepoint-adapter/HCS_SSASP_Setup2-include.png) 
-5. Klicken Sie auf der Bestätigungsseite für die Einrichtung auf **Installieren**.
+5. Klicken Sie auf der Setupbestätigungsseite auf **Installieren**.
    
     ![StorSimple-Adaptereinrichtung – Bestätigungsseite](./media/storsimple-install-sharepoint-adapter/HCS_SSASP_Confirm_Setup-include.png) 
-6. Klicken Sie auf **Fertig stellen** , um den Setup-Assistenten zu schließen.
+6. Klicken Sie auf **Fertig stellen**, um den Setup-Assistenten zu schließen.
    
     ![StorSimple-Adaptereinrichtung – Seite „Abgeschlossen“](./media/storsimple-install-sharepoint-adapter/HCS_SSASP_Setup_finish-include.png) 
 7. Öffnen Sie die Seite für die SharePoint-Zentraladministration. Hier sollte eine StorSimple-Konfigurationsgruppe angezeigt werden, die den StorSimple-Adapter für SharePoint-Links enthält.

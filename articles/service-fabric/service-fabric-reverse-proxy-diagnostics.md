@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: kavyako
 ms.openlocfilehash: bbc1fe5a76ecb5720bc49e0a082d5e9151b403d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "75645462"
 ---
 # <a name="monitor-and-diagnose-request-processing-at-the-reverse-proxy"></a>Überwachen und Diagnostizieren der Anforderungsverarbeitung beim Reverseproxy
@@ -77,7 +77,7 @@ Hier sind einige Beispiele zum Interpretieren der allgemeinen Fehlerprotokolle, 
     
     Im Folgenden finden Sie ein Beispielereignis, bei dem der Reverseproxy 404 zurückgibt, da er den passenden Dienstendpunkt nicht finden konnte.
     Die interessanten Nutzlasteinträge sind in diesem Fall:
-   * **processRequestPhase**: Gibt die Phase während der Anforderungsverarbeitung an, in der der Fehler aufgetreten ist: ***TryGetEndpoint***, d.h. beim Versuch, den Dienstendpunkt für die Weiterleitung abzurufen. 
+   * **processRequestPhase**: Gibt die Phase während der Anforderungsverarbeitung an, in der der Fehler aufgetreten ist: **_TryGetEndpoint_**, d. h. beim Versuch, den Dienstendpunkt für die Weiterleitung abzurufen. 
    * **errorDetails**: Listet die Endpunktsuchkriterien auf. Hier sehen Sie, dass der angegebene listenerName = **FrontEndListener** war, während der Replikatendpunkt nur einen Listener mit dem Namen **OldListener** enthält.
     
      ```

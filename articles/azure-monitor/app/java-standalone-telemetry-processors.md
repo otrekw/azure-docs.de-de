@@ -6,12 +6,12 @@ ms.date: 10/29/2020
 author: kryalama
 ms.custom: devx-track-java
 ms.author: kryalama
-ms.openlocfilehash: 35e53454e5b2c6265082bbedb4a8b60e82df7191
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 991e52c13a5730b83552abb6b922d4d7a57c5429
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101734569"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105024114"
 ---
 # <a name="telemetry-processors-preview---azure-monitor-application-insights-for-java"></a>Telemetrieprozessoren (Vorschau): Azure Monitor Application Insights für Java
 
@@ -21,12 +21,15 @@ ms.locfileid: "101734569"
 Der Java 3.0-Agent für Application Insights kann Telemetriedaten verarbeiten, bevor die Daten exportiert werden.
 
 Hier sehen Sie einige Anwendungsfälle für Telemetrieprozessoren:
- * Erstellen vertraulicher Daten
+ * Maskieren vertraulicher Daten
  * Bedingtes Hinzufügen benutzerdefinierter Dimensionen
  * Aktualisieren des Namens des span-Elements, das zum Aggregieren ähnlicher Telemetriedaten im Azure-Portal verwendet wird
- * Verwerfen von span-Attributen zur Senkung von Erfassungskosten
+ * Verwerfen bestimmter span-Attribute zur Senkung von Erfassungskosten
 
-## <a name="terminology"></a>Terminologie
+> [!NOTE]
+> Wenn Sie bestimmte (ganze) Span-Elemente zur Senkung von Erfassungskosten verwerfen möchten, finden Sie Informationen dazu unter [Stichprobenüberschreibungen](./java-standalone-sampling-overrides.md).
+
+## <a name="terminology"></a>Begriff
 
 Bevor Sie mehr über Telemetrieprozessoren erfahren, müssen Sie wissen, was genau der Begriff *span* bedeutet. Ein span ist eine allgemeine Bezeichnung für Folgendes:
 
@@ -331,7 +334,7 @@ In diesem Abschnitt werden einige gängige span-Attribute aufgelistet, die von T
 
 ### <a name="http-spans"></a>HTTP-span-Elemente
 
-| attribute  | type | BESCHREIBUNG | 
+| attribute  | Typ | Beschreibung | 
 |---|---|---|
 | `http.method` | Zeichenfolge | HTTP-Anforderungsmethode.|
 | `http.url` | Zeichenfolge | Vollständige Anforderungs-URL in HTTP in Form von `scheme://host[:port]/path?query[#fragment]`. Das Fragment wird üblicherweise nicht über HTTP übertragen. Wenn das Fragment jedoch bekannt ist, sollte es eingeschlossen werden.|
@@ -341,7 +344,7 @@ In diesem Abschnitt werden einige gängige span-Attribute aufgelistet, die von T
 
 ### <a name="jdbc-spans"></a>JDBC-span-Elemente
 
-| attribute  | type | BESCHREIBUNG  |
+| attribute  | Typ | Beschreibung  |
 |---|---|---|
 | `db.system` | Zeichenfolge | Der Bezeichner für das verwendete DBMS-Produkt (Datenbank-Managementsystem). |
 | `db.connection_string` | Zeichenfolge | Verbindungszeichenfolge, mit der die Verbindung zur Datenbank hergestellt wird. Es empfiehlt sich, eingebettete Anmeldeinformationen zu entfernen.|

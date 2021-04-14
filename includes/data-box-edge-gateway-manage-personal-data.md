@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 04/16/2019
 ms.author: alkohli
 ms.openlocfilehash: af4c3829c8b12bfcaae0602dde8f459de7e50f3a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "67178732"
 ---
 - **Auftragsdetails**. Wenn ein Auftrag erstellt wird, werden die Versandadresse, die E-Mail-Adresse und die Kontaktinformationen des Benutzers im Azure-Portal gespeichert. Zu den gespeicherten Informationen gehört Folgendes:

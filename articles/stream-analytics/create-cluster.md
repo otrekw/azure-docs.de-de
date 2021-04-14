@@ -6,13 +6,13 @@ author: sidramadoss
 ms.author: sidram
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 09/22/2020
-ms.openlocfilehash: 6b7a7c5feb6165f5b2c7c0ea052318a255e8025c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/09/2021
+ms.openlocfilehash: 7298862d29c02709afe737558421b4a8743ca5b0
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104600223"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305486"
 ---
 # <a name="quickstart-create-a-dedicated-azure-stream-analytics-cluster-using-azure-portal"></a>Schnellstart: Erstellen eines dedizierten Azure Stream Analytics-Clusters mithilfe des Azure-Portals
 
@@ -35,7 +35,7 @@ In diesem Abschnitt erstellen Sie eine Stream Analytics-Clusterressource.
 
 1. Geben Sie auf der Seite **Stream Analytics-Cluster erstellen** die grundlegenden Einstellungen für Ihren neuen Cluster ein.
 
-   |Einstellung|Wert|Beschreibung |
+   |Einstellung|Wert|BESCHREIBUNG |
    |---|---|---|
    |Subscription|Abonnementname|Wählen Sie das Azure-Abonnement aus, das Sie für diesen Stream Analytics-Cluster verwenden möchten. |
    |Ressourcengruppe|Ressourcengruppenname|Wählen Sie eine Ressourcengruppe aus, oder wählen Sie **Neu erstellen** aus, und geben Sie einen eindeutigen Namen für die Ressourcengruppe ein. |

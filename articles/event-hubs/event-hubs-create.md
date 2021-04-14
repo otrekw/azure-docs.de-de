@@ -3,12 +3,12 @@ title: 'Azure-Schnellstart: Erstellen eines Event Hubs mithilfe des Azure-Portal
 description: In diesem Schnellstart erfahren Sie, wie Sie einen Azure Event Hub im Azure-Portal erstellen.
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 6bd9d247db6cd5a956ff4bce9b70f1f8a5a7499a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: bf83c53792c4934f43e0039d092bb3e36954bf7b
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101742040"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107303116"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-portal"></a>Schnellstart: Erstellen eines Event Hubs mithilfe des Azure-Portals
 Azure Event Hubs ist eine Big Data-Streamingplattform und ein Ereigniserfassungsdienst, der Millionen von Ereignissen pro Sekunde empfangen und verarbeiten kann. Event Hubs kann Ereignisse, Daten oder Telemetriedaten, die von verteilter Software und verteilten Geräten erzeugt wurden, verarbeiten und speichern. An einen Event Hub gesendete Daten können transformiert und mit einem beliebigen Echtzeitanalyse-Anbieter oder Batchverarbeitungs-/Speicheradapter gespeichert werden. Eine ausführliche Übersicht über Event Hubs finden Sie unter [Was ist Azure Event Hubs?](event-hubs-about.md) und [Event Hubs-Features im Überblick](event-hubs-features.md).
@@ -54,7 +54,7 @@ Ein Event Hubs-Namespace bietet einen Container mit einem eindeutigen Bereich, i
    1. Wählen Sie die **Ressourcengruppe** aus, die Sie im vorherigen Schritt erstellt haben.   
    1. Geben Sie einen **Namen** für den Namespace ein. Das System überprüft sofort, ob dieser Name verfügbar ist.  
    1. Wählen Sie einen **Standort** für den Namespace aus.
-   1. Wählen Sie den **Tarif** (Basic oder Standard) aus. Informationen zu den Unterschieden zwischen den Tarifen „Basic“ und „Standard“ finden Sie unter [Event Hubs – Preise](https://azure.microsoft.com/pricing/details/event-hubs/), [Was ist der Unterschied zwischen den Event Hubs-Ebenen Basic und Standard?](event-hubs-faq.md#what-is-the-difference-between-event-hubs-basic-and-standard-tiers) und [Kontingente und Grenzwerte in Azure Event Hubs](event-hubs-quotas.md). 
+   1. Wählen Sie den **Tarif** (Basic oder Standard) aus. Informationen zu den Unterschieden zwischen den Tarifen „Basic“ und „Standard“ finden Sie unter [Event Hubs – Preise](https://azure.microsoft.com/pricing/details/event-hubs/), [Was ist der Unterschied zwischen den Event Hubs-Ebenen Basic und Standard?](event-hubs-faq.yml#what-is-the-difference-between-event-hubs-basic-and-standard-tiers-) und [Kontingente und Grenzwerte in Azure Event Hubs](event-hubs-quotas.md). 
    1. Lassen Sie die Einstellungen für **Durchsatzeinheiten** unverändert. Durchsatzeinheiten werden vorab als Kapazitätseinheiten erworben. Weitere Informationen zu Durchsatzeinheiten finden Sie unter [Skalierung mit Event Hubs](event-hubs-scalability.md#throughput-units).  
    1. Wählen Sie am unteren Rand der Seite die Option **Bewerten + erstellen** aus.
       

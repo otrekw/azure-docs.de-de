@@ -13,12 +13,12 @@ ms.reviewer: ''
 ms.date: 11/30/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b47a4a79fd423806693e86aef1edd132d844069e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 53cdbfb3ba531330c37f86233cbed990da4efaf4
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105557903"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258383"
 ---
 # <a name="resilient-end-user-experience"></a>Resiliente Endbenutzerumgebung
 
@@ -40,9 +40,9 @@ Um Ihnen bei der Einrichtung der gängigsten Identitätsaufgaben zu helfen, stel
 
 Wählen Sie integrierte Benutzerflows aus, wenn Ihre Geschäftsanforderungen durch diese erfüllt werden können. Da sie von Microsoft ausgiebig getestet wurden, können Sie den Testaufwand für die Validierung der Funktion, Leistung oder Skalierung dieser Identitätsbenutzerflows auf Richtlinienebene minimieren. Sie müssen Ihre Anwendungen weiterhin auf Funktionalität, Leistung und Skalierung testen.
 
-Sollten Sie sich aufgrund Ihrer Geschäftsanforderungen für [benutzerdefinierte Richtlinien](../../active-directory-b2c/custom-policy-get-started.md) entscheiden, stellen Sie sicher, dass Sie zusätzlich zu den Tests auf Anwendungsebene auch Tests auf Richtlinienebene hinsichtlich Funktionalität, Leistung oder Skalierung durchführen.
+Sollten Sie sich aufgrund Ihrer Geschäftsanforderungen für [benutzerdefinierte Richtlinien](../../active-directory-b2c/user-flow-overview.md) entscheiden, stellen Sie sicher, dass Sie zusätzlich zu den Tests auf Anwendungsebene auch Tests auf Richtlinienebene hinsichtlich Funktionalität, Leistung oder Skalierung durchführen.
 
-Lesen Sie den Artikel, in dem [Benutzerflows und benutzerdefinierte Richtlinien verglichen werden](../../active-directory-b2c/custom-policy-overview.md#comparing-user-flows-and-custom-policies), um Sie bei Ihrer Entscheidung zu unterstützen.
+Lesen Sie den Artikel, in dem [Benutzerflows und benutzerdefinierte Richtlinien verglichen werden](../../active-directory-b2c/user-flow-overview.md#comparing-user-flows-and-custom-policies), um Sie bei Ihrer Entscheidung zu unterstützen.
 
 ## <a name="choose-multiple-idps"></a>Auswählen mehrerer IDPs
 

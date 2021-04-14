@@ -7,12 +7,12 @@ ms.topic: article
 author: sayantanroy83
 ms.author: sroy
 ms.date: 3/08/2021
-ms.openlocfilehash: 1cdd3dba8203ce9e8daeaa963f1722389d89d19d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b61608c0cb53ab808c5d3d789ec5ddc318c6923d
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105563819"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107106801"
 ---
 # <a name="prerequisites-to-programmatically-access-analytics-data"></a>Voraussetzungen für den programmgesteuerten Zugriff auf Analysedaten
 
@@ -20,7 +20,7 @@ Bevor Sie programmgesteuert auf Analysedaten für den kommerziellen Marketplace 
 
 ## <a name="commercial-marketplace-enrollment"></a>Registrierung beim kommerziellen Marketplace
 
-Um programmgesteuert auf Analysedaten für den kommerziellen Marketplace zugreifen zu können, müssen Sie im Programm „Kommerzieller Marketplace“ registriert sein und über ein Partner Center-Konto verfügen. Informationen dazu finden Sie unter [Erstellen eines Kontos im kommerziellen Marketplace in Partner Center](./partner-center-portal/create-account.md).
+Um programmgesteuert auf Analysedaten für den kommerziellen Marketplace zugreifen zu können, müssen Sie im Programm „Kommerzieller Marketplace“ registriert sein und über ein Partner Center-Konto verfügen. Informationen dazu finden Sie unter [Erstellen eines Kontos im kommerziellen Marketplace in Partner Center](create-account.md).
 
 ## <a name="create-azure-active-directory-application"></a>Erstellen der Azure Active Directory-Anwendung
 

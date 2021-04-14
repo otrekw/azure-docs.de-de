@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: v-demjoh
 keywords: Absichtserkennung
-ms.openlocfilehash: 215b25e440b8cad76e0656e47d32b184edf4ac66
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 532101c8cc307e6a5bb65022702b516c492a51fe
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "95018700"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210363"
 ---
 # <a name="what-is-intent-recognition"></a>Was ist die Absichtserkennung?
 
@@ -33,7 +33,7 @@ Mithilfe der Absichtserkennung können Ihre Anwendungen, Tools und Geräte besti
 
 ## <a name="get-started"></a>Erste Schritte
 
-Verwenden Sie den [Schnellstart](quickstarts/intent-recognition.md), um mit der Absichtserkennung zu beginnen.
+Verwenden Sie den [Schnellstart](get-started-intent-recognition.md), um mit der Absichtserkennung zu beginnen.
 
 ## <a name="sample-code"></a>Beispielcode
 
@@ -53,6 +53,6 @@ Beispielcode für Absichtserkennung:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Arbeiten Sie die [Schnellstartanleitung](quickstarts/intent-recognition.md) für die Absichtserkennung durch.
+* Arbeiten Sie die [Schnellstartanleitung](get-started-intent-recognition.md) für die Absichtserkennung durch.
 * [Kostenloses Testen des Speech-Diensts](overview.md#try-the-speech-service-for-free)
 * [Abrufen des Speech SDK](speech-sdk.md)

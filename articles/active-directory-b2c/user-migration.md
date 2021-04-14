@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 03/11/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d2d4a61f653c5bedb31223d2eb3d37b92a076821
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3e60b80a4ebeaef7d31d4c0c1d9d4bfc41ec3a56
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103010166"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256207"
 ---
 # <a name="migrate-users-to-azure-ad-b2c"></a>Migrieren von Benutzern zu Azure AD B2C
 
@@ -43,7 +43,7 @@ Verwenden Sie die nahtlose Migration, wenn im alten Identitätsanbieter nicht au
 - Das Kennwort ist in einem unidirektionalen verschlüsselten Format gespeichert (etwa mit einer Hashfunktion).
 - Das Kennwort wurde vom alten Identitätsanbieter so gespeichert, dass Sie keinen Zugriff darauf haben. Dies kann beispielsweise der Fall sein, wenn der Identitätsanbieter Anmeldeinformationen per Webdienstaufruf überprüft.
 
-Bei der nahtlose Migration ist zwar ebenfalls eine Prämigration von Benutzerkonten erforderlich, anschließend wird jedoch eine [benutzerdefinierte Richtlinie](custom-policy-get-started.md) verwendet, um eine (von Ihnen erstellte) [REST-API](custom-policy-rest-api-intro.md) abzufragen und das Kennwort der einzelnen Benutzer jeweils bei der ersten Anmeldung festzulegen.
+Bei der nahtlose Migration ist zwar ebenfalls eine Prämigration von Benutzerkonten erforderlich, anschließend wird jedoch eine [benutzerdefinierte Richtlinie](user-flow-overview.md) verwendet, um eine (von Ihnen erstellte) [REST-API](custom-policy-rest-api-intro.md) abzufragen und das Kennwort der einzelnen Benutzer jeweils bei der ersten Anmeldung festzulegen.
 
 Die nahtlose Migration umfasst somit zwei Phasen: *Prämigration* und *Festlegen der Anmeldeinformationen*.
 

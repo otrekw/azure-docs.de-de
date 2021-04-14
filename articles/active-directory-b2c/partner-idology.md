@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2b6001932b6f53a60eda76b6136611a10011391a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: df0fcaf7987e30f9c2599346aaef5fcabb4f04e9
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96928680"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256649"
 ---
 # <a name="tutorial-for-configuring-idology-with-azure-active-directory-b2c"></a>Tutorial zum Konfigurieren von IDology mit Azure Active Directory B2C 
 
@@ -93,7 +93,7 @@ Für die Beispielrichtlinie werden diese Schlüsselnamen verwendet:
 
 ### <a name="part-4---configure-the-azure-ad-b2c-policy"></a>Teil 4: Konfigurieren der Azure AD B2C-Richtlinie
 
-1. Befolgen Sie die Anleitung in [diesem Dokument](custom-policy-get-started.md?tabs=applications#custom-policy-starter-pack), um das [LocalAccounts-Startpaket herunterzuladen](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts) und die Richtlinie für den Azure AD B2C-Mandanten zu konfigurieren. Befolgen Sie die Anleitung, bis Sie den Abschnitt **Testen der benutzerdefinierten Richtlinie** abgeschlossen haben.
+1. Befolgen Sie die Anleitung in [diesem Dokument](tutorial-create-user-flows.md?pivots=b2c-custom-policy#custom-policy-starter-pack), um das [LocalAccounts-Startpaket herunterzuladen](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts) und die Richtlinie für den Azure AD B2C-Mandanten zu konfigurieren. Befolgen Sie die Anleitung, bis Sie den Abschnitt **Testen der benutzerdefinierten Richtlinie** abgeschlossen haben.
 
 2. Laden Sie die beiden Beispielrichtlinien [hier](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/IDology/policy) herunter.
 
@@ -145,4 +145,4 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 
 - [Benutzerdefinierte Richtlinien in Azure AD B2C](custom-policy-overview.md)
 
-- [Erste Schritte mit benutzerdefinierten Richtlinien in Azure AD B2C](custom-policy-get-started.md?tabs=applications)
+- [Erste Schritte mit benutzerdefinierten Richtlinien in Azure AD B2C](tutorial-create-user-flows.md?pivots=b2c-custom-policy)

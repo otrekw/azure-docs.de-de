@@ -8,16 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 03/22/2021
+ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: fa34e8ea71c307b75a3f345861f8ed99d131b3fd
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: f451d08dfbde643d91705f54296e9757a51c9d88
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102447927"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104798392"
 ---
 # <a name="set-up-a-password-reset-flow-in-azure-active-directory-b2c"></a>Einrichten eines Kennwortzurücksetzungsflows in Azure Active Directory B2C
 
@@ -34,6 +35,9 @@ Im Rahmen des [Registrierungs- und Anmeldeflows](add-sign-up-and-sign-in-policy.
 ![Kennwortzurücksetzungsflow](./media/add-password-reset-policy/password-reset-flow.png)
 
 Der Kennwortzurücksetzungsflow wird für lokale Konten in Azure AD B2C verwendet, bei denen für die Anmeldung eine [E-Mail-Adresse](identity-provider-local.md#email-sign-in) oder ein [Benutzername](identity-provider-local.md#username-sign-in) und ein Kennwort verwendet werden.
+
+> [!TIP]
+> Mithilfe der Schritte zur Self-Service-Kennwortzurücksetzung können Benutzer, die ihr Kennwort vergessen haben und es zurücksetzen möchten, ihr Kennwort ändern. Konfigurieren Sie ggf. einen [Kennwortänderungsflow](add-password-change-policy.md) für Fälle, in denen ein Benutzer sein Kennwort zwar nicht vergessen hat, es aber ändern möchte.
 
 Nach einer Benutzermigration zu Azure AD B2C mit zufallsbasierten Kennwörtern ist es gängige Praxis, dass die Benutzer bei der ersten Anmeldung ihre E-Mail-Adresse verifizieren und ihr Kennwort zurücksetzen. Darüber hinaus müssen Benutzer üblicherweise ihr Kennwort zurücksetzen, wenn ihr Kennwort von einem Administrator geändert wurde. Weitere Informationen zur Aktivierung dieses Features finden Sie unter [Einrichten eines Flows zur Erzwingung der Kennwortzurücksetzung in Azure Active Directory B2C](force-password-reset.md).
 

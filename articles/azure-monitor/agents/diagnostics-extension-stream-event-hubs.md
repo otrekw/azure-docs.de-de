@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/18/2020
-ms.openlocfilehash: 19c39632a1ed040636372d6bad53bf6859960b94
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6aa960eb7aed7a579c3fc95748b6e32601201a61
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101732036"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305122"
 ---
 # <a name="send-data-from-windows-azure-diagnostics-extension-to-azure-event-hubs"></a>Senden von Daten aus der Windows Azure-Diagnoseerweiterung an Azure Event Hubs
 Die Azure-Diagnoseerweiterung ist ein Agent in Azure Monitor, der Überwachungsdaten vom Gastbetriebssystem und Workloads von virtuellen Azure-Computern und anderen Computeressourcen sammelt. In diesem Artikel wird beschrieben, wie Daten aus der Windows Azure-Diagnoseerweiterung (WAD) an [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) gesendet werden, damit Sie diese an Speicherorte außerhalb von Azure weiterleiten können.
@@ -177,7 +177,7 @@ Sie können anhand einer Vielzahl von Methoden überprüfen, ob Daten an den Eve
 
 * [Übersicht über Event Hubs](../../event-hubs/event-hubs-about.md)
 * [Erstellen eines Event Hubs](../../event-hubs/event-hubs-create.md)
-* [Event Hubs – häufig gestellte Fragen](../../event-hubs/event-hubs-faq.md)
+* [Event Hubs – häufig gestellte Fragen](../../event-hubs/event-hubs-faq.yml)
 
 <!-- Images. -->
 [0]: ../../event-hubs/media/event-hubs-streaming-azure-diags-data/dashboard.png

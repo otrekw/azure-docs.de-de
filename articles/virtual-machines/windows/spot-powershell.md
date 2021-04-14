@@ -6,15 +6,15 @@ ms.service: virtual-machines
 ms.subservice: spot
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 06/26/2020
+ms.date: 03/22/2021
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: 33172004ac4361de51b92389fbf56bd699f7124f
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 9a2ad2eb197af613919efa4414da1759cd47e2e7
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102096444"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104802742"
 ---
 # <a name="deploy-azure-spot-virtual-machines-using-azure-powershell"></a>Bereitstellen von Azure-Spot-VMs mithilfe von Azure PowerShell
 
@@ -76,20 +76,53 @@ Get-AzVM -ResourceGroupName $resourceGroup | `
 
 ## <a name="simulate-an-eviction"></a>Simulieren einer Entfernung
 
-Sie können die Entfernung einer Azure-Spot-VM [simulieren](/rest/api/compute/virtualmachines/simulateeviction), um zu testen, wie gut die Anwendung auf einen plötzlichen Entfernungsvorgang reagiert. 
+Sie können die Entfernung einer Azure Spot-VM mithilfe von REST, PowerShell oder der CLI simulieren, um zu testen, wie gut die Anwendung auf einen plötzlichen Entfernungsvorgang reagiert.
 
-Ersetzen Sie Folgendes durch Ihre Informationen: 
+In den meisten Fällen ist für automatisierte Tests von Anwendungen die Nutzung der REST-API [Virtual Machines – Simulate Eviction](/rest/api/compute/virtualmachines/simulateeviction) (Simulieren der Entfernung von virtuellen Computern) sinnvoll. Bei REST bedeutet `Response Code: 204`, dass die simulierte Entfernung erfolgreich war. Wenn Sie die Reaktion Ihrer App auf die Entfernung der VM automatisieren möchten, können Sie die simulierte Entfernung mit dem Dienst [Geplantes Ereignis](scheduled-events.md) kombinieren.
 
-- `subscriptionId`
-- `resourceGroupName`
-- `vmName`
+Ein Video zur Nutzung von geplanten Ereignissen finden Sie unter [Azure Friday – Using Azure Scheduled Events to Prepare for VM Maintenance](https://channel9.msdn.com/Shows/Azure-Friday/Using-Azure-Scheduled-Events-to-Prepare-for-VM-Maintenance) (Azure Friday: Vorbereiten einer VM-Wartung mithilfe von geplanten Ereignissen in Azure).
 
 
-```rest
-POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/simulateEviction?api-version=2020-06-01
+### <a name="quick-test"></a>Schnelltest
+
+Damit Sie schnell die Funktionsweise einer simulierten Entfernung testen können, führen Sie die Schritte zum Abfragen des Diensts für geplante Ereignisse aus, um eine simulierte Entfernung mithilfe von PowerShell anzuzeigen.
+
+Der Dienst für geplante Ereignisse wird für Ihren Dienst aktiviert, wenn Sie zum ersten Mal Ereignisse anfordern. 
+
+Stellen Sie eine Remoteverbindung mit dem virtuellen Computer her, und öffnen Sie eine Eingabeaufforderung. 
+
+Geben Sie in der Eingabeaufforderung Ihres virtuellen Computers folgenden Code ein:
+
+```
+curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-version=2019-08-01
 ```
 
-`Response Code: 204` bedeutet, dass der simulierte Entfernungs Vorgang erfolgreich war. 
+Die erste Antwort kann bis zu zwei Minuten dauern. Anschließend sollten die Ausgaben nahezu sofort angezeigt werden.
+
+Ist auf einem Computer das Azure PowerShell-Modul installiert (wie etwa auf Ihrem lokalen Computer), simulieren Sie die Entfernung mit [Set-AzVM](https://docs.microsoft.com/powershell/module/az.compute/set-azvm). Ersetzen Sie die Namen der Ressourcengruppe und der VM durch Ihre eigenen. 
+
+```azurepowershell-interactive
+Set-AzVM -ResourceGroupName "mySpotRG" -Name "mySpotVM" -SimulateEviction
+```
+
+Bei erfolgreicher Durchführung der Anforderung enthält die Antwortausgabe `Status: Succeeded`.
+
+Wechseln Sie schnell zurück zur Remoteverbindung mit Ihrer Azure Spot-VM, und führen Sie die Abfrage an den Endpunkt für geplante Ereignisse noch mal aus. Wiederholen Sie den folgenden Befehl, bis Sie eine Ausgabe mit weiteren Informationen erhalten:
+
+```
+curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-version=2019-08-01
+```
+
+Sobald der Dienst für geplante Ereignisse die Benachrichtigung zur Entfernung erhält, wird Ihnen eine Antwort ähnlich der folgenden zurückgegeben:
+
+```output
+{"DocumentIncarnation":1,"Events":[{"EventId":"A123BC45-1234-5678-AB90-ABCDEF123456","EventStatus":"Scheduled","EventType":"Preempt","ResourceType":"VirtualMachine","Resources":["myspotvm"],"NotBefore":"Tue, 16 Mar 2021 00:58:46 GMT","Description":"","EventSource":"Platform"}]}
+```
+
+Wie Sie sehen, wird als Ereignistyp `"EventType":"Preempt"` und als VM-Ressource `"Resources":["myspotvm"]` angezeigt. 
+
+Zudem können Sie anhand des Werts `"NotBefore"` erkennen, wann der virtuelle Computer entfernt wird. Da der virtuelle Computer nicht vor der in `NotBefore` angegebenen Zeit entfernt wird, kann die Anwendung bis zu diesem Zeitpunkt ordnungsgemäß geschlossen werden.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

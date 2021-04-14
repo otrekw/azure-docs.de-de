@@ -3,12 +3,18 @@
 - name: Übersicht
   expanded: true
   items:
-    - name: Worum handelt es sich bei der Anomalieerkennung?
+    - name: Worum handelt es sich bei der Anomalieerkennung (Multivariat)?
+      href: overview-multivariate.md
+    - name: Worum handelt es sich bei der Anomalieerkennung (Univariat)?
       href: overview.md
     - name: Preise und Einschränkungen
       href: 'https://aka.ms/adpricing'
-- name: Schnellstart für die Anomalieerkennung
-  href: ./quickstarts/client-libraries.md
+- name: Schnellstarts für die Anomalieerkennung
+  items:
+    - name: Multivariate Clientbibliotheken
+      href: ./quickstarts/client-libraries-multivariate.md
+    - name: Univariate Clientbibliotheken
+      href: ./quickstarts/client-libraries.md
 - name: Beispiele
   items:
     - name: Interaktive Demo
@@ -39,10 +45,18 @@
               href: how-to/deploy-anomaly-detection-on-container-instances.md
 - name: Konzepte
   items:
-    - name: Bewährte Methoden für die Anomalieerkennungs-API
+    - name: Bewährte Methoden für die Anomalieerkennungs-API (Multivariat)
+      href: concepts/best-practices-multivariate.md
+    - name: Bewährte Methoden für die Anomalieerkennungs-API (Univariat)
       href: concepts/anomaly-detection-best-practices.md
+    - name: Predictive Maintenance-Architektur (Multivariat)
+      href: concepts/multivariate-architecture.md
+    - name: Problembehandlung bei multivariaten Anomalien
+      href: concepts/troubleshoot.md
     - name: SR- und CNN-Anomalieerkennung (Spectral Residual und Convolutional Neural Net)
       href: 'https://arxiv.org/abs/1906.03821'
+    - name: Multivariate Zeitreihen-Anomalieerkennung über ein Graph-Aufmerksamkeitsnetzwerk
+      href: 'https://arxiv.org/abs/2009.02040'
 - name: Tutorials
   items:
     - name: Visualisieren von Anomalien als Batch mithilfe von Power BI

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80ee161944a48135778d12942964a88455ab756e
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: d707106d66c77ad1f3a1156906add8bb85fd0ce0
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106055772"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305972"
 ---
 # <a name="continuous-access-evaluation"></a>Fortlaufende Zugriffsevaluierung
 
@@ -142,7 +142,7 @@ Auf dieser Seite können Sie optional die Benutzer und Gruppen für die Vorschau
 Für die fortlaufende Zugriffsevaluierung sind nur Erkenntnisse zu benannten Standorten auf der Basis der IP-Adresse möglich. Erkenntnisse zu anderen Standorteinstellungen, z. B. [durch MFA bestätigte IP-Adressen](../authentication/howto-mfa-mfasettings.md#trusted-ips), oder in länderbasierte Standorte sind dagegen nicht möglich. Wenn der Benutzer von einer durch MFA bestätigten IP-Adresse, von vertrauenswürdigen Standorten, die durch MFA bestätigte IP-Adressen enthalten, oder von einem länderbasierten Standort stammt, wird die fortlaufende Zugriffsevaluierung erst nach dem Wechsel des Benutzers zu einem anderen Standort erzwungen. In diesen Fällen wird ein 1-stündiges CAE-Token ohne sofortige erzwungene Überprüfung der IP-Adresse ausgegeben.
 
 > [!IMPORTANT]
-> Verwenden Sie bei der Konfiguration von Standorten für die fortlaufende Zugriffsevaluierung nur die [Standortbedingung für den auf IP-Adressen basierenden bedingten Zugriff](../conditional-access/location-condition.md#preview-features), und konfigurieren Sie alle IP-Adressen, **einschließlich IPv4- und IPv6-Adressbereichen**, die vom Identitätsanbieter und Ressourcenanbieter angezeigt werden können. Verwenden Sie keine länderspezifischen Standortbedingungen und auch nicht die Funktion für vertrauenswürdige IP-Adressen, die auf der Seite der Diensteinstellungen für Azure AD Multi-Factor Authentication verfügbar ist.
+> Verwenden Sie bei der Konfiguration von Standorten für die fortlaufende Zugriffsevaluierung nur die [Standortbedingung für den auf IP-Adressen basierenden bedingten Zugriff](../conditional-access/location-condition.md), und konfigurieren Sie alle IP-Adressen, **einschließlich IPv4- und IPv6-Adressbereichen**, die vom Identitätsanbieter und Ressourcenanbieter angezeigt werden können. Verwenden Sie keine länderspezifischen Standortbedingungen und auch nicht die Funktion für vertrauenswürdige IP-Adressen, die auf der Seite der Diensteinstellungen für Azure AD Multi-Factor Authentication verfügbar ist.
 
 ### <a name="ip-address-configuration"></a>IP-Adresskonfiguration
 

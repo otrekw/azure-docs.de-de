@@ -4,16 +4,16 @@ description: Hier erfahren Sie, wie Sie das vorläufige Löschen für Azure-Date
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/01/2020
+ms.date: 03/23/2021
 ms.author: rogarana
 ms.subservice: files
 services: storage
-ms.openlocfilehash: 77381700f4257006b50e56ab7ffc037ef99d297c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 428ef41340cd565bef0fa3c1e6519fb8862b091a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102218552"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105727568"
 ---
 # <a name="enable-soft-delete-on-azure-file-shares"></a>Aktivieren des vorläufigen Löschens für Azure-Dateifreigaben
 
@@ -26,12 +26,12 @@ In den folgenden Abschnitten erfahren Sie, wie Sie vorläufiges Löschen für Az
 ## <a name="getting-started"></a>Erste Schritte
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-1. Navigieren Sie zu Ihrem Speicherkonto, und wählen Sie unter **Dateidienst** die Option **Vorläufiges Löschen** aus.
-1. Wählen Sie für **Vorläufiges Löschen von Dateifreigaben** die Option **Aktiviert** aus.
+1. Navigieren Sie zu Ihrem Speicherkonto und wählen Sie **Freigabe** unter **Dateidienst** aus.
+1. Wählen Sie **aktiviert** für **vorläufiges Löschen für alle Dateifreigaben** aus.
 1. Wählen Sie **Aufbewahrungsdauer für Dateifreigabe in Tagen** aus, und geben Sie eine Zahl Ihrer Wahl ein.
 1. Wählen Sie **Speichern** aus, um die Einstellungen für die Datenaufbewahrung zu bestätigen.
 
-:::image type="content" source="media/storage-how-to-recover-deleted-account/enable-soft-delete-files.png" alt-text="Screenshot: Speicherkontobereich mit den Einstellungen für vorläufiges Löschen. Hervorgehoben sind der Dateifreigabebereich, die Aktivierungsoption, das Festlegen eines Aufbewahrungszeitraums, und die Speicheroption. Dadurch wird vorläufiges löschen für alle Dateifreigaben in Ihrem Speicherkonto aktiviert.":::
+:::image type="content" source="media/storage-how-to-recover-deleted-account/enable-soft-delete-files.png" alt-text="Screenshot: Speicherkontobereich mit den Einstellungen für vorläufiges Löschen. Hervorgehoben sind der Dateifreigabebereich, die Aktivierungsoption, das Festlegen eines Aufbewahrungszeitraums, und die Speicheroption. Dadurch wird vorläufiges Löschen für alle Dateifreigaben in Ihrem Speicherkonto aktiviert.":::
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
@@ -125,12 +125,12 @@ Restore-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $account
 
 ## <a name="disable-soft-delete"></a>Deaktivieren des vorläufigen Löschens
 
-Wenn Sie das vorläufige Löschen nicht mehr verwenden oder eine Dateifreigabe endgültig löschen möchten, gehen Sie wie folgt vor:
+Wenn Sie das vorläufige Löschen nicht mehr verwenden möchten, gehen Sie wie folgt vor: Wenn Sie eine Dateifreigabe dauerhaft löschen möchten, die vorläufig gelöscht wurde, müssen Sie sie wiederherstellen, das vorläufige Löschen deaktivieren und dann erneut löschen. 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. Navigieren Sie zu Ihrem Speicherkonto, und wählen Sie unter **Einstellungen** die Option **Vorläufiges Löschen** aus.
-1. Wählen Sie unter **Dateifreigaben** für **Vorläufiges Löschen von Dateifreigaben** die Option **Deaktiviert** aus.
+1. Navigieren Sie zu Ihrem Speicherkonto und wählen Sie **Freigabe** unter **Dateidienst** aus.
+1. Wählen Sie **deaktiviert** für **vorläufiges Löschen für alle Dateifreigaben** aus.
 1. Wählen Sie **Speichern** aus, um die Einstellungen für die Datenaufbewahrung zu bestätigen.
 
     :::image type="content" source="media/storage-how-to-recover-deleted-account/disable-soft-delete-files.png" alt-text="Wenn Sie das vorläufige Löschen deaktivieren, können Sie nach Belieben alle Dateifreigaben in Ihrem Speicherkonto sofort und endgültig löschen.":::

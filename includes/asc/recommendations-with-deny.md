@@ -2,18 +2,18 @@
 author: memildin
 ms.service: security-center
 ms.topic: include
-ms.date: 03/14/2021
+ms.date: 03/21/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: c142f6a00275b4b21b6bbc64e51a5c4d7d957258
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.openlocfilehash: 5fc36e327a9530105182f0a23b3ef22ab324e01c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103468006"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104803200"
 ---
-- Der Zugriff auf Speicherkonten mit Firewall- und VNet-Konfigurationen sollte eingeschränkt werden Netzwerkzugriff auf Speicherkonten einschränken
-- Automation-Kontovariablen müssen verschlüsselt werden Automation-Kontovariablen müssen verschlüsselt werden
+- Der Zugriff auf Speicherkonten mit Konfiguration für Firewall und virtuelle Netzwerke sollte eingeschränkt werden.
+- Automation-Kontovariablen sollten verschlüsselt werden.
 - Azure Cache for Redis muss sich in einem virtuellen Netzwerk befinden.
 - Azure Cosmos DB-Konten sollten kundenseitig verwaltete Schlüssel zur Verschlüsselung ruhender Daten verwenden.
 - Azure Machine Learning-Arbeitsbereiche müssen mit einem kundenseitig verwalteten Schlüssel (CMK) verschlüsselt werden
@@ -31,21 +31,21 @@ ms.locfileid: "103468006"
 - Für Schlüsseltresore sollte der Löschschutz aktiviert sein.
 - Für Schlüsseltresore sollte vorläufiges Löschen aktiviert sein.
 - Linux-Funktionen mit den niedrigsten Berechtigungen für Container erzwingen
-- Für Ihren Redis Cache dürfen nur sichere Verbindungen aktiviert sein Für Ihren Azure Cache for Redis dürfen nur sichere Verbindungen aktiviert sein
+- Nur sichere Verbindungen mit Ihrer Redis Cache-Instanz sollten aktiviert werden
 - Überschreiben oder Deaktivieren des AppArmor-Profils für Container einschränken
 - Privilegierte Container müssen vermieden werden
 - Das Ausführen von Containern als Root-Benutzer muss vermieden werden
-- Für Speicherkonten muss die sichere Übertragung aktiviert sein Für Speicherkonten muss die sichere Übertragung aktiviert sein
-- Für Service Fabric-Cluster muss die ClusterProtectionLevel-Eigenschaft auf EncryptAndSign festgelegt sein Für Service Fabric-Cluster muss die ClusterProtectionLevel-Eigenschaft auf EncryptAndSign festgelegt sein
-- Service Fabric-Cluster dürfen nur Azure Active Directory für die Clientauthentifizierung verwenden Service Fabric-Cluster dürfen nur Azure Active Directory für die Clientauthentifizierung verwenden
+- Sichere Übertragung in Speicherkonten sollte aktiviert werden.
+- Service Fabric Cluster sollten die Eigenschaft ClusterProtectionLevel auf EncryptAndSign setzen
+- Service Fabric-Cluster sollten nur Azure Active Directory für die Clientauthentifizierung verwenden.
 - Dienste dürfen nur an zulässigen Ports lauschen
 - Der öffentliche Zugriff auf Speicherkonten muss untersagt sein
-- Speicherkonten müssen zu neuen Azure Resource Manager-Ressourcen migriert werden Speicherkonten müssen zu neuen Azure Resource Manager-Ressourcen migriert werden
+- Speicherkonten sollten zu neuen Azure Resource Manager-Ressourcen migriert werden.
 - Speicherkonten müssen den Netzwerkzugriff mithilfe von VNET-Regeln einschränken
 - Verwendung von Hostnetzwerken und -ports einschränken
 - Verwendung von HostPath-Volumeeinbindungen von Pods sollte auf eine bekannte Liste beschränkt sein, um den Knotenzugriff von kompromittierten Containern zu begrenzen
 - Gültigkeitszeitraum für in Azure Key Vault gespeicherte Zertifikate sollte zwölf Monate nicht überschreiten
-- VMs müssen zu neuen Azure Resource Manager-Ressourcen migriert werden VMs müssen zu neuen Azure Resource Manager-Ressourcen migriert werden
+- VMs sollten zu neuen Azure Resource Manager-Ressourcen migriert werden
 - Web Application Firewall (WAF) muss für Application Gateway aktiviert sein.
 - Web Application Firewall (WAF) muss für Azure Front Door Service aktiviert sein
 

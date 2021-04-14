@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: juliako
 ms.openlocfilehash: 065cb4daa9501ee658d364dad43b9e03798e4083
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "67178505"
 ---
 Mit dem Auftrag wird eine JSON-Ausgabedatei erzeugt, die Metadaten zu erkannten und nachverfolgten Gesichtern enthält. Die Metadaten enthalten Koordinaten, die die Position der Gesichter sowie eine Gesichts-ID angeben, um die Nachverfolgung einer einzelnen Person kenntlich zu machen. Gesichts-IDs können zurückgesetzt werden, wenn die Frontalansicht des Gesichts verloren geht oder im Frame überlappt wird, sodass einigen Personen möglicherweise mehrere IDs zugewiesen werden.

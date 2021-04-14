@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 11/24/2020
+ms.date: 03/17/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5f0a84af0c7a4105327405cfb809f5101ab42931
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: d01a750948f8e3c264b9bcffdaad3ae72fa40ac0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98938390"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104579109"
 ---
 # <a name="conditional-access-grant"></a>Bedingter Zugriff: Erteilen
 
@@ -51,6 +51,8 @@ Für den bedingten Zugriff sind standardmäßig alle ausgewählten Steuerelement
 ### <a name="require-multi-factor-authentication"></a>Mehrstufige Authentifizierung erforderlich
 
 Wenn Sie dieses Kontrollkästchen aktivieren, müssen Benutzer Azure AD Multi-Factor Authentication ausführen. Weitere Informationen zum Bereitstellen von Azure AD Multi-Factor Authentication finden Sie im Artikel [Planen einer cloudbasierten Bereitstellung von Azure AD Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md).
+
+[Windows Hello for Business](/windows/security/identity-protection/hello-for-business/hello-overview) erfüllt die Anforderungen für Multifactor Authentication in Richtlinien für bedingten Zugriff. 
 
 ### <a name="require-device-to-be-marked-as-compliant"></a>Markieren des Geräts als kompatibel erforderlich
 
