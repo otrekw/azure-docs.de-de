@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
 ms.date: 01/25/2019
-ms.openlocfilehash: 07334d62cee94be8b5b8dd6188c1d6354c4d584b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7f45e7d1515f0d6fc4467b36d95242ef8697c75d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92792598"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105641398"
 ---
 # <a name="how-to-use-batching-to-improve-azure-sql-database-and-azure-sql-managed-instance-application-performance"></a>Gewusst wie: Verbessern der Leistung von Azure SQL-Datenbank- und Azure SQL Managed Instance-Anwendungen mithilfe der Batchverarbeitung
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -93,7 +93,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 }
 ```
 
-Transaktionen werden genau genommen in beiden Beispielen verwendet. Im ersten Beispiel ist jeder einzelne Aufruf eine implizite Transaktion. Im zweiten Beispiel umschließt eine explizite Transaktion alle Aufrufe. Gemäß der Dokumentation für das [Write-Ahead-Transaktionsprotokoll](/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide?view=sql-server-ver15#WAL)werden Protokolldatensätze auf die Festplatte geleert, wenn für die Transaktion ein Commit ausgeführt wird. Wenn also mehr Aufrufe in eine Transaktion eingeschlossen werden, kann der Schreibvorgang für das Transaktionsprotokoll bis zum Commit der Transaktion hinausgezögert werden. Dadurch ermöglichen Sie im Endeffekt eine Batchverarbeitung der Schreibvorgänge für das Transaktionsprotokoll des Servers.
+Transaktionen werden genau genommen in beiden Beispielen verwendet. Im ersten Beispiel ist jeder einzelne Aufruf eine implizite Transaktion. Im zweiten Beispiel umschließt eine explizite Transaktion alle Aufrufe. Gemäß der Dokumentation für das [Write-Ahead-Transaktionsprotokoll](/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide?view=sql-server-ver15&preserve-view=true#WAL)werden Protokolldatensätze auf die Festplatte geleert, wenn für die Transaktion ein Commit ausgeführt wird. Wenn also mehr Aufrufe in eine Transaktion eingeschlossen werden, kann der Schreibvorgang für das Transaktionsprotokoll bis zum Commit der Transaktion hinausgezögert werden. Dadurch ermöglichen Sie im Endeffekt eine Batchverarbeitung der Schreibvorgänge für das Transaktionsprotokoll des Servers.
 
 Die folgende Tabelle zeigt einige Ad-hoc-Testergebnisse. Bei den Tests wurden jeweils die gleichen sequenziellen Einfügevorgänge mit und ohne Transaktionen ausgeführt. Zur Verbesserung der Aussagekraft wurde der erste Testsatz remote auf einem Laptop ausgeführt und an die Datenbank in Microsoft Azure gerichtet. Der zweite Testsatz wurde über einen Clouddienst und eine Clouddatenbank ausgeführt, die sich beide im selben Microsoft Azure-Datencenter (USA, Westen) befanden. Die folgende Tabelle zeigt die Dauer sequenzieller Einfügevorgänge mit und ohne Transaktionen (in Millisekunden).
 

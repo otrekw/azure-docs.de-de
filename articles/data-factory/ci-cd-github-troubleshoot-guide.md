@@ -6,13 +6,13 @@ ms.author: susabat
 ms.reviewer: susabat
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 12/03/2020
-ms.openlocfilehash: d96c467807af868c07be12f52d913f881b82f732
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.date: 03/12/2021
+ms.openlocfilehash: 2b6f97f0966cb2c92dbd88c4a70188282ed3ed27
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102175871"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104802032"
 ---
 # <a name="troubleshoot-ci-cd-azure-devops-and-github-issues-in-adf"></a>Beheben von CI/CD-, Azure DevOps- und GitHub-Problemen in ADF 
 
@@ -101,8 +101,7 @@ Beim Versuch, Änderungen an einer Data Factory zu veröffentlichen, erhalten Si
         "details": null
     }
 `
-
-#### <a name="symptom"></a>Symptom
+### <a name="cause"></a>Ursache
 
 Sie haben die Git-Konfiguration getrennt und mit ausgewähltem Flag „Import resources“ erneut eingerichtet. Damit wird die Data Factory auf „synchron“ festgelegt. Das bedeutet, dass keine Änderungen zur Veröffentlichung vorhanden sind.
 
@@ -150,11 +149,7 @@ Sie haben als Benutzer eine Kundenrolle erstellt und verfügten nicht über die 
 
 Um dieses Problem zu lösen, müssen Sie Ihrer Rolle die folgende Berechtigung hinzufügen: *Microsoft.DataFactory/factories/queryFeaturesValue/action*. Diese Berechtigung sollte standardmäßig in der Rolle „Data Factory-Mitwirkender“ enthalten sein.
 
-###  <a name="automatic-publishing-for-cicd-without-clicking-publish-button"></a>Automatisches Veröffentlichen für CI/CD ohne Klick auf die Schaltfläche „Veröffentlichen“  
-
-#### <a name="issue"></a>Problem
-
-Beim manuellen Veröffentlichen per Klick auf die Schaltfläche im ADF-Portal wird der automatische CI/CD-Vorgang nicht aktiviert.
+###  <a name="cannot-automate-publishing-for-cicd"></a>Automatisierung der Veröffentlichung für CI/CD nicht möglich 
 
 #### <a name="cause"></a>Ursache
 
@@ -178,7 +173,7 @@ Für Azure Resource Manager ist die Vorlagengröße auf 4 MB beschränkt. Begre
 
 Bei kleinen bis mittelgroßen Lösungen lässt sich eine Einzelvorlage einfacher verstehen und verwalten. Sie können alle Ressourcen und Werte in einer einzelnen Datei anzeigen. In erweiterten Szenarien können Sie mithilfe verknüpfter Vorlagen die Lösung in Zielkomponenten unterteilen. Halten Sie sich an die bewährte Methode unter [Verwenden von verknüpften und geschachtelten Vorlagen bei der Bereitstellung von Azure-Ressourcen](../azure-resource-manager/templates/linked-templates.md?tabs=azure-powershell).
 
-### <a name="cannot-connect-to-git-enterprise"></a>Ich kann keine Verbindung mit Git Enterprise herstellen 
+### <a name="cannot-connect-to-git-enterprise"></a>Ich kann keine Verbindung mit Git Enterprise herstellen  
 
 ##### <a name="issue"></a>Problem
 
@@ -186,13 +181,14 @@ Aufgrund von Berechtigungsproblemen können Sie keine Verbindung mit Git Enterpr
 
 #### <a name="cause"></a>Ursache
 
-Sie haben OAuth für ADF nicht konfiguriert. Ihre URL ist falsch konfiguriert.
+* Sie haben OAuth für ADF nicht konfiguriert. 
+* Ihre URL ist falsch konfiguriert.
 
 ##### <a name="resolution"></a>Lösung
 
-Sie gewähren zuerst den OAuth-Zugriff auf ADF. Anschließend müssen Sie durch Angabe der richtigen URL eine Verbindung mit Git Enterprise herstellen. Die Konfiguration muss auf die Kundenorganisation(en) festgelegt werden. Beispielsweise probiert der ADF-Dienst zuerst *https://hostname/api/v3/search/repositories?q=user%3<customer credential>....* aus und schlägt dann fehl. Anschließend probiert er *https://hostname/api/v3/orgs/<org>/<repo>...* aus und ist dabei erfolgreich. 
+Sie gewähren zuerst den OAuth-Zugriff auf ADF. Anschließend müssen Sie durch Angabe der richtigen URL eine Verbindung mit Git Enterprise herstellen. Die Konfiguration muss auf die Kundenorganisation(en) festgelegt werden. Beispielsweise versucht ADF zunächst *https://hostname/api/v3/search/repositories?q=user%3<customer credential>....* , was fehlschlägt. Anschließend probiert er *https://hostname/api/v3/orgs/<org>/<repo>...* aus und ist dabei erfolgreich. 
  
-### <a name="recover-from-a-deleted-data-factory"></a>Wiederstellen aus einer gelöschten Data Factory
+### <a name="cannot-recover-from-a-deleted-data-factory"></a>Wiederstellen aus einer gelöschten Data Factory nicht möglich
 
 #### <a name="issue"></a>Problem
 Der Kunde hat die Data Factory oder die Ressourcengruppe mit der Data Factory gelöscht. Er möchte wissen, wie er eine gelöschte Data Factory wiederherstellen kann.

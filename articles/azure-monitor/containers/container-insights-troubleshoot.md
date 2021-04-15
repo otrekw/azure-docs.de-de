@@ -2,13 +2,13 @@
 title: Beheben von Problemen mit Container Insights | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie Probleme mit Container Insights behandeln und lösen können.
 ms.topic: conceptual
-ms.date: 07/21/2020
-ms.openlocfilehash: 60a6e76d43d954b27336b9631c48328aeff0b69b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/25/2021
+ms.openlocfilehash: b7618e9073308da67a8e17c82375a0f05925a542
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101708304"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105627114"
 ---
 # <a name="troubleshooting-container-insights"></a>Problembehandlung für Container Insights
 
@@ -113,6 +113,54 @@ Pods des Container Insights-Agents verwenden den cAdvisor-Endpunkt auf dem Knote
 ## <a name="non-azure-kubernetes-cluster-are-not-showing-in-container-insights"></a>Nicht-Azure Kubernetes-Cluster werden in Container Insights nicht angezeigt
 
 Um den Nicht-Azure Kubernetes-Cluster in Container Insights anzuzeigen, ist Lesezugriff für den Log Analytics-Arbeitsbereich, der diese Einblicke unterstützt, und für die Container Insights-Lösungsressource **ContainerInsights (*Arbeitsbereich*)** erforderlich.
+
+## <a name="metrics-arent-being-collected"></a>Metriken werden nicht erfasst
+
+1. Überprüfen Sie, ob sich das Cluster in einer [unterstützten Region für benutzerdefinierte Metriken](../essentials/metrics-custom-overview.md#supported-regions)befindet.
+
+2. Überprüfen Sie mithilfe des folgenden CLI-Befehls, ob die Rollenzuweisung des **Herausgebers für Überwachungsmetriken** vorhanden ist
+
+    ``` azurecli
+    az role assignment list --assignee "SP/UserassignedMSI for omsagent" --scope "/subscriptions/<subid>/resourcegroups/<RG>/providers/Microsoft.ContainerService/managedClusters/<clustername>" --role "Monitoring Metrics Publisher"
+    ```
+    Bei Clustern mit MSI ändert sich die vom Benutzer zugewiesene Client-ID für omsagent bei jedem Aktivieren und Deaktivieren der Überwachung. Daher sollte die Rollenzuweisung in der aktuellen MSI-Client-ID vorhanden sein. 
+
+3. Für Cluster mit aktivierter Azure Active Directory Pod-Identität und Verwendung von MSI:
+
+   - Überprüfen Sie mithilfe des folgenden Befehls, ob die erforderliche Bezeichnung **kubernetes.Azure.com/ManagedBy: aks**  auf den omsagent-Pods vorhanden ist:
+
+        `kubectl get pods --show-labels -n kube-system | grep omsagent`
+
+    - Überprüfen Sie, ob Ausnahmen aktiviert sind, wenn die Pod-Identität mithilfe einer der unterstützten Methoden unter https://github.com/Azure/aad-pod-identity#1-deploy-aad-pod-identity aktiviert ist.
+
+        Führen Sie zur Überprüfung den folgenden Befehl aus:
+
+        `kubectl get AzurePodIdentityException -A -o yaml`
+
+        Die Ausgabe sollte in etwa wie folgt aussehen:
+
+        ```
+        apiVersion: "aadpodidentity.k8s.io/v1"
+        kind: AzurePodIdentityException
+        metadata:
+        name: mic-exception
+        namespace: default
+        spec:
+        podLabels:
+        app: mic
+        component: mic
+        ---
+        apiVersion: "aadpodidentity.k8s.io/v1"
+        kind: AzurePodIdentityException
+        metadata:
+        name: aks-addon-exception
+        namespace: kube-system
+        spec:
+        podLabels:
+        kubernetes.azure.com/managedby: aks
+        ```
+
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

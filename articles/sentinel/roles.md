@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/28/2020
 ms.author: yelevin
-ms.openlocfilehash: f9b50c831b435a6189a9b9e4d79a934a2661b033
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 77a8e208e463b8ab20d563421d447813b1ce84ee
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100570409"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104772551"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Berechtigungen in Azure Sentinel
 
@@ -42,6 +42,8 @@ Es gibt drei dedizierte integrierte Azure Sentinel-Rollen.
 
 - [Azure Sentinel-Mitwirkende](../role-based-access-control/built-in-roles.md#azure-sentinel-contributor) können zusätzlich zu den oben aufgeführten Aktionen Arbeitsmappen, Analyseregeln und andere Azure Sentinel-Ressourcen erstellen und bearbeiten.
 
+- Die Rolle [Mitwirkender für Azure Sentinel-Automatisierung](../role-based-access-control/built-in-roles.md#azure-sentinel-contributor) ermöglicht es Azure Sentinel, Playbooks zu Automatisierungsregeln hinzuzufügen. Sie ist nicht für Benutzerkonten vorgesehen.
+
 > [!NOTE]
 >
 > - Um optimale Ergebnisse zu erzielen, sollten diese Rollen für die **Ressourcengruppe** zugewiesen werden, die den Azure Sentinel-Arbeitsbereich enthält. Auf diese Weise gelten die Rollen für alle Ressourcen, die zur Unterstützung von Azure Sentinel bereitgestellt werden, da diese Ressourcen auch in derselben Ressourcengruppe platziert werden sollten.
@@ -54,7 +56,7 @@ Benutzern mit besonderen Arbeitsanforderungen müssen möglicherweise zusätzlic
 
 - Arbeiten mit Playbooks zur Automatisierung von Reaktionen auf Bedrohungen
 
-    Azure Sentinel verwendet **Playbooks** für automatische Reaktionen auf Bedrohungen. Playbooks nutzen **Azure Logic Apps** und sind eine separate Azure-Ressource. Sie können bestimmten Mitgliedern Ihres Security Operations-Teams die Option zuweisen, Logic Apps für SOAR-Vorgänge (Sicherheitsorchestrierung, Automatisierung und Reaktion) zu verwenden. Sie können die Rolle [Logik-App-Mitwirkender](../role-based-access-control/built-in-roles.md#logic-app-contributor) oder die Rolle [Logik-App-Operator](../role-based-access-control/built-in-roles.md#logic-app-operator) verwenden, um eine explizite Berechtigung für die Verwendung von Playbooks zu erteilen.
+    Azure Sentinel verwendet **Playbooks** für automatische Reaktionen auf Bedrohungen. Playbooks nutzen **Azure Logic Apps** und sind eine separate Azure-Ressource. Sie können bestimmten Mitgliedern Ihres Security Operations-Teams die Option zuweisen, Logic Apps für SOAR-Vorgänge (Sicherheitsorchestrierung, Automatisierung und Reaktion) zu verwenden. Sie können die Rolle [Mitwirkender für Logik-Apps](../role-based-access-control/built-in-roles.md#logic-app-contributor) verwenden, um eine explizite Berechtigung für die Verwendung von Playbooks zu erteilen.
 
 - Verbinden von Datenquellen mit Azure Sentinel
 
@@ -89,12 +91,19 @@ In der folgenden Tabelle sind die Rollen und zulässigen Aktionen in Azure Senti
 
 ## <a name="custom-roles-and-advanced-azure-rbac"></a>Benutzerdefinierte Rollen und erweiterte Azure RBAC-Rollen
 
-- Zusätzlich zu integrierten Azure-Rollen oder anstelle von diesen können Sie benutzerdefinierte Azure-Rollen für Azure Sentinel erstellen. Benutzerdefinierte Azure-Rollen für Azure Sentinel werden genauso wie andere [benutzerdefinierte Azure-Rollen](../role-based-access-control/custom-roles-rest.md#create-a-custom-role) basierend auf [bestimmten Berechtigungen für Azure Sentinel](../role-based-access-control/resource-provider-operations.md#microsoftsecurityinsights) und für [Azure Log Analytics-Ressourcen](../role-based-access-control/resource-provider-operations.md#microsoftoperationalinsights) erstellt.
+- **Benutzerdefinierte Rollen**. Zusätzlich zu integrierten Azure-Rollen oder anstelle von diesen können Sie benutzerdefinierte Azure-Rollen für Azure Sentinel erstellen. Benutzerdefinierte Azure-Rollen für Azure Sentinel werden genauso wie andere [benutzerdefinierte Azure-Rollen](../role-based-access-control/custom-roles-rest.md#create-a-custom-role) basierend auf [bestimmten Berechtigungen für Azure Sentinel](../role-based-access-control/resource-provider-operations.md#microsoftsecurityinsights) und für [Azure Log Analytics-Ressourcen](../role-based-access-control/resource-provider-operations.md#microsoftoperationalinsights) erstellt.
 
-- Sie können die erweiterte rollenbasierte Zugriffssteuerung in Azure von Log Analytics für die Daten in Ihrem Azure Sentinel-Arbeitsbereich verwenden. Dies umfasst sowohl auf dem Datentyp basierendes Azure RBAC als auch ressourcenzentriertes Azure RBAC. Weitere Informationen zu den Log Analytics-Rollen finden Sie unter [Verwalten von Protokolldaten und Arbeitsbereichen in Azure Monitor](../azure-monitor/logs/manage-access.md#manage-access-using-workspace-permissions).
+- **RBAC in Log Analytics**. Sie können die erweiterte rollenbasierte Zugriffssteuerung in Azure von Log Analytics für die Daten in Ihrem Azure Sentinel-Arbeitsbereich verwenden. Dies umfasst sowohl auf dem Datentyp basierendes Azure RBAC als auch Azure RBAC im Ressourcenkontext. Weitere Informationen finden Sie unter:
+
+    - [Verwalten von Protokolldaten und Arbeitsbereichen in Azure Monitor](../azure-monitor/logs/manage-access.md#manage-access-using-workspace-permissions)
+
+    - [Verwalten des Zugriffs auf Azure Sentinel-Daten nach Ressource](resource-context-rbac.md)
+    - [Table-level RBAC (RBAC auf Tabellenebene)](https://techcommunity.microsoft.com/t5/azure-sentinel/table-level-rbac-in-azure-sentinel/ba-p/965043)
+
+    Die rollenbasierte Zugriffssteuerung (RBAC) im Ressourcenkontext und RBAC auf Tabellenebene sind zwei Methoden der Bereitstellung von Zugriff auf bestimmte Daten im Azure Sentinel-Arbeitsbereich, ohne Zugriff auf die gesamte Azure Sentinel-Umgebung zu gewähren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Dokument haben Sie erfahren, wie Sie mit Rollen für Azure Sentinel-Benutzer arbeiten und was die einzelnen Rollen den Benutzern ermöglichen.
 
-* [Azure Sentinel-Blog](https://aka.ms/azuresentinelblog). Hier finden Sie Blogbeiträge zur Sicherheit und Compliance von Azure.
+Blogbeiträge zur Sicherheit und Compliance von Azure finden Sie im [Azure Sentinel-Blog](https://aka.ms/azuresentinelblog).

@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 11/11/2020
-ms.openlocfilehash: ef916e0e8b32c96382a731d4a307e2b2a98ba1ea
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 1c2be47060004d464003c00cbbddb3b58a136e3c
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753857"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871145"
 ---
 # <a name="build-migration-plan-with-azure-migrate"></a>Erstellen eines Migrationsplans mit Azure Migrate
 
@@ -31,33 +31,33 @@ Reaktion auf Änderungen bezüglich der Einhaltung gesetzlicher Bestimmungen | V
 Neue Anforderungen an die Datenhoheit | Skalierung entsprechend den Marktanforderungen
 Reduzierung von Unterbrechungen und Verbesserungen an der IT-Stabilität | Skalierung entsprechend den geografischen Anforderungen
 
-Das Ermitteln Ihrer Beweggründe hilft Ihnen beim Festlegen Ihrer strategischen Migrationsziele. Der nächste Schritt ist die Ermittlung und Planung eines Migrationspfads, der auf Ihre Workloads zugeschnitten ist. Das Tool [Azure Migrate- Serverbewertung](migrate-services-overview.md#azure-migrate-server-assessment-tool) hilft Ihnen bei der Bewertung lokaler Workloads und stellt Anleitungen und Tools zur Verfügung, die Sie bei der Migration unterstützen.
+Das Ermitteln Ihrer Beweggründe hilft Ihnen beim Festlegen Ihrer strategischen Migrationsziele. Der nächste Schritt ist die Ermittlung und Planung eines Migrationspfads, der auf Ihre Workloads zugeschnitten ist. Das Tool [Azure Migrate: Ermittlung und Bewertung](migrate-services-overview.md#azure-migrate-discovery-and-assessment-tool) hilft Ihnen bei der Bewertung lokaler Workloads und stellt Anleitungen und Tools zur Verfügung, die Sie bei der Migration unterstützen.
 
 ## <a name="understand-your-digital-estate"></a>Verstehen Ihrer digitalen Ressourcen
 
-Ermitteln Sie zunächst Ihre lokale Infrastruktur, Anwendungen und Abhängigkeiten. So können Sie Workloads für die Migration zu Azure identifizieren und optimierte Kostenprojektionen erfassen. Mit dem Serverbewertungstool können Sie die derzeit verwendeten Workloads, die Abhängigkeiten zwischen Workloads und die Optimierung der Workloads ermitteln.
+Ermitteln Sie zunächst Ihre lokale Infrastruktur, Anwendungen und Abhängigkeiten. So können Sie Workloads für die Migration zu Azure identifizieren und optimierte Kostenprojektionen erfassen. Mit dem Ermittlungs- und Bewertungstool können Sie die derzeit verwendeten Workloads, die Abhängigkeiten zwischen Workloads und Möglichkeiten zur Optimierung der Workloads ermitteln.
 
 ### <a name="workloads-in-use"></a>Derzeit verwendete Workloads
 
-Azure Migrate verwendet eine einfache Azure Migrate-Appliance, um Ihre lokalen VMware-VMs, Hyper-V-VMs, anderen VMs und physischen Servern ohne Agent zu ermitteln. Bei der kontinuierlichen Ermittlung werden Computerkonfigurationsinformationen, Leistungsmetadaten und Anwendungsdaten erfasst. Von lokalen Computern erfasst die Appliance Folgendes: 
+Azure Migrate verwendet eine einfache Azure Migrate-Appliance, um Ihre lokalen VMware-VMs, Hyper-V-VMs und anderen virtualisierten oder physischen Server zu ermitteln. Bei der kontinuierlichen Ermittlung werden Serverkonfigurationsinformationen, Leistungsmetadaten und Anwendungsdaten erfasst. Von lokalen Servern erfasst die Appliance Folgendes: 
 
-- Computer- und Datenträgermetadaten sowie NIC-Metadaten
+- Server-, Datenträger- und NIC-Metadaten.
 
 - Installierte Anwendungen, Rollen und Features
 
 - Leistungsdaten, einschließlich CPU- und Arbeitsspeicherauslastung, Datenträger-IOPS und Durchsatz
 
-Nachdem Sie die Daten gesammelt haben, können Sie die Anwendungsbestandsliste exportieren, um nach auf Ihren Computern ausgeführten Apps und SQL Server-Instanzen zu suchen. Sie können Azure Migrate: Datenbankbewertungstool verwenden, um die SQL Server-Bereitschaft nachzuvollziehen.
+Nachdem Sie die Daten gesammelt haben, können Sie die Anwendungsbestandsliste exportieren, um nach auf Ihren Servern ausgeführten Apps und SQL Server-Instanzen zu suchen. Sie können Azure Migrate: Datenbankbewertungstool verwenden, um die SQL Server-Bereitschaft nachzuvollziehen.
 
  ![Anwendungsbestand im Portal](./media/concepts-migration-planning/application-inventory-portal.png)
 
  ![Export des Anwendungsbestands](./media/concepts-migration-planning/application-inventory-export.png)
 
-Zusammen mit den durch das Serverbewertungstool entdeckten Daten können Sie die Daten aus Ihrer Konfigurationsverwaltungsdatenbank (CMDB) zum Erstellen einer Ansicht Ihrer Server- und Datenbankbestände verwenden. Zudem können Sie nachvollziehen, wie Ihre Server über Geschäftseinheiten, Anwendungsbesitzer, geografische Regionen usw. verteilt sind. Dies hilft bei der Entscheidung, welche Workloads für die Migration priorisiert werden sollen. 
+Zusammen mit den durch das Ermittlungs- und Bewertungstool entdeckten Daten können Sie die Daten aus Ihrer Konfigurationsverwaltungsdatenbank (CMDB) zum Erstellen einer Ansicht Ihrer Server- und Datenbankbestände verwenden. Außerdem können Sie nachvollziehen, wie Ihre Server über Geschäftseinheiten, Anwendungsbesitzer, geografische Regionen usw. verteilt sind. Dies hilft bei der Entscheidung, welche Workloads für die Migration priorisiert werden sollen. 
 
 ### <a name="dependencies-between-workloads"></a>Abhängigkeiten zwischen Workloads
 
-Nach der Serverermittlung können Sie [Abhängigkeiten analysieren](concepts-dependency-visualization.md), um serverübergreifende Abhängigkeiten und Optimierungsstrategien für die Verlagerung voneinander abhängiger Server zu Azure zu visualisieren und zu identifizieren. Die Visualisierung hilft zu verstehen, ob bestimmte Computer verwendet werden oder ob sie stillgelegt werden können, anstatt migriert zu werden.  Die Analyse von Abhängigkeiten trägt dazu bei, dass nichts übersehen wird. Außerdem werden unerwartete Ausfälle während der Migration vermieden. Nachdem die Anwendungsinventarisierung und Abhängigkeitsanalyse abgeschlossen sind, können Sie Servergruppen mit hoher Vertrauenswürdigkeit erstellen und beginnen, diese zu bewerten.
+Nach der Serverermittlung können Sie [Abhängigkeiten analysieren](concepts-dependency-visualization.md), um serverübergreifende Abhängigkeiten und Optimierungsstrategien für die Verlagerung voneinander abhängiger Server zu Azure zu visualisieren und zu identifizieren. Die Visualisierung hilft zu verstehen, ob bestimmte Server verwendet werden oder ob sie außer Betrieb genommen werden können, anstatt migriert zu werden.  Die Analyse von Abhängigkeiten trägt dazu bei, dass nichts übersehen wird. Außerdem werden unerwartete Ausfälle während der Migration vermieden. Nachdem die Anwendungsinventarisierung und Abhängigkeitsanalyse abgeschlossen sind, können Sie Servergruppen mit hoher Vertrauenswürdigkeit erstellen und beginnen, diese zu bewerten.
 
  ![Zuordnung der Abhängigkeiten](./media/concepts-migration-planning/expand-client-group.png)
 
@@ -72,10 +72,10 @@ Dank der Flexibilität von Azure können Sie die Größe Ihrer Cloudkapazität i
 
 Sie können den Bewertungsbericht exportieren und nach diesen Kategorien filtern, um die Azure-Bereitschaft nachvollziehen zu können:
 
-- **Bereit für Azure**: Computer können ohne Änderungen zu Azure migriert werden. 
-- **Bedingt bereit für Azure:** Computer können zu Azure migriert werden, müssen entsprechend des in der Bewertung bereitgestellten Wartungsleitfadens jedoch geringfügig geändert werden.
-- **Nicht bereit für Azure**: Computer können ohne Änderungen nicht zu Azure migriert werden. Vor der Migration müssen die Probleme entsprechend des Wartungsleitfadens behoben werden. 
-- **Bereitschaft unbekannt**: Azure Migrate kann die Bereitschaft des Computers aufgrund unzureichender Metadaten nicht ermitteln.
+- **Bereit für Azure:** Server können unverändert zu Azure migriert werden. 
+- **Bedingt bereit für Azure:** Server können zu Azure migriert werden, müssen entsprechend dem in der Bewertung bereitgestellten Wartungsleitfaden jedoch geringfügig geändert werden.
+- **Nicht bereit für Azure:** Server können nur mit Änderungen zu Azure migriert werden. Vor der Migration müssen die Probleme entsprechend des Wartungsleitfadens behoben werden. 
+- **Bereitschaft unbekannt:** Azure Migrate kann die Bereitschaft des Servers aufgrund unzureichender Metadaten nicht ermitteln.
 
 Mithilfe von Datenbankbewertungen können Sie die Bereitschaft Ihrer SQL Server-Datenbestände für die Migration zu Azure SQL-Datenbank oder Instanzen von Azure SQL Managed Instance beurteilen. Die Bewertung zeigt für jede Ihrer SQL Server-Instanzen den prozentualen Status der Bereitschaft für die Migration an. Außerdem werden für jede Instanz das empfohlene Ziel in Azure, potenzielle Migrationshindernisse, die Anzahl von Breaking Changes, die Bereitschaft für Azure SQL-Datenbank/Azure SQL-VM und der Kompatibilitätsgrad angezeigt. Sie können sich eingehender mit den Auswirkungen der Migrationshindernisse und Empfehlungen zu deren Behebung beschäftigen.
 
@@ -83,7 +83,7 @@ Mithilfe von Datenbankbewertungen können Sie die Bereitschaft Ihrer SQL Server-
 
 ### <a name="sizing-recommendations"></a>Größenempfehlungen
 
-Nachdem ein Computer als bereit für Azure markiert wurde, erhalten Sie bei der Serverbewertung Größenempfehlungen zur Identifizierung der Azure-VM-SKU und des Datenträgertyps für Ihre Computer. Sie können sich die Größenempfehlungen basierend auf dem Leistungsverlauf (zum Optimieren von Ressourcen bei der Migration) oder basierend auf den lokalen Computereinstellungen, ohne Leistungsverlauf, anzeigen lassen. Bei einer Datenbankbewertung können Sie Empfehlungen zu Datenbank-SKU, Tarif und Computeebene einsehen.  
+Nachdem ein Server als bereit für Azure markiert wurde, gibt das Ermittlungs- und Bewertungstool Größenempfehlungen zur Bestimmung der Azure-VM-SKU und des Datenträgertyps für Ihre Server. Sie können sich die Größenempfehlungen basierend auf dem Leistungsverlauf (zum Optimieren von Ressourcen bei der Migration) oder basierend auf den lokalen Servereinstellungen ohne Leistungsverlauf anzeigen lassen. Bei einer Datenbankbewertung können Sie Empfehlungen zu Datenbank-SKU, Tarif und Computeebene einsehen.  
 
 ### <a name="get-compute-costs"></a>Ermitteln der Computekosten
 
@@ -93,18 +93,18 @@ Mithilfe der leistungsbasierten Dimensionierungsoption in Azure Migrate können 
 - **Azure Hybrid Benefit** (Azure-Hybridvorteil): Mit dem [Azure-Hybridvorteil](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go/) können Sie lokale Windows Server-Lizenzen mit aktiver Software Assurance oder Linux-Abonnements zu Azure übertragen und mit der Option für reservierte Instanzen kombinieren.
 - **Enterprise Agreement**: Mit Azure [Enterprise Agreements (EA)](../cost-management-billing/manage/ea-portal-agreements.md) können Sie von Rabatten für Azure-Abonnements und -Dienste profitieren.
 - **Angebote**: Es gibt mehrere [Azure-Angebote](https://azure.microsoft.com/support/legal/offer-details/). Beispiele sind die Angebote [Dev/Test Pay-As-You-Go](https://azure.microsoft.com/pricing/dev-test/) oder [Enterprise Dev/Test](https://azure.microsoft.com/offers/ms-azr-0148p/), bei denen Sie von niedrigeren Tarifen für Dev/Test-VMs profitieren.
-- **VM-Uptime:** Sie können überprüfen, an wie vielen Tagen pro Monat und an wie vielen Stunden pro Tag Azure-VMs ausgeführt werden. Durch das Herunterfahren von Computern bei Nichtverwendung können Kosten gespart werden (gilt nicht für RIs).
+- **VM-Uptime:** Sie können überprüfen, an wie vielen Tagen pro Monat und an wie vielen Stunden pro Tag Azure-VMs ausgeführt werden. Durch das Herunterfahren von Servern bei Nichtverwendung können Kosten gespart werden (gilt nicht für RIs).
 - **Zielregion**: Sie können Bewertungen in verschiedenen Regionen erstellen, um herauszufinden, ob die Migration zu einer bestimmten Region kostengünstiger sein könnte. 
 
 ### <a name="visualize-data"></a>Visualisieren von Daten
 
-Serverbewertungsberichte (mit Informationen zur Azure-Bereitschaft und der monatlichen Kostenverteilung) können im Portal angezeigt werden. Sie können die Bewertung auch exportieren und Ihren Migrationsplan mit zusätzlichen Visualisierungen erweitern. Sie können mehrere Bewertungen mit verschiedenen Kombinationen von Eigenschaften erstellen und sich dann für die Eigenschaften entscheiden, die sich für Ihr Unternehmen am besten eignen.  
+Die Berichte des Ermittlungs- und Bewertungstools (mit Informationen zur Azure-Bereitschaft und der monatlichen Kostenverteilung) können im Portal angezeigt werden. Sie können die Bewertung auch exportieren und Ihren Migrationsplan mit zusätzlichen Visualisierungen erweitern. Sie können mehrere Bewertungen mit verschiedenen Kombinationen von Eigenschaften erstellen und sich dann für die Eigenschaften entscheiden, die sich für Ihr Unternehmen am besten eignen.  
 
  ![Bewertungsübersicht](./media/concepts-migration-planning/assessment-summary.png)
 
 ### <a name="evaluate-gapsblockers"></a>Auswerten von Lücken/Hindernissen
 
-Identifizieren Sie beim Ermitteln der zu migrierenden Apps und Workloads Downtimeeinschränkungen für diese, und suchen Sie nach operativen Abhängigkeiten zwischen Ihren Apps und der zugrunde liegenden Infrastruktur. Diese Analyse hilft Ihnen bei der Planung von Migrationen, die Ihre Wiederherstellungszeit-Zielsetzung (RTO) erfüllen und gewährleisten, dass nur minimal bis gar keine Daten verloren gehen. Vor der Migration empfiehlt es sich, alle Kompatibilitätsprobleme oder nicht unterstützten Features zu überprüfen und zu beheben, die die Servermigration/SQL-Datenbank-Migration blockieren könnten. Der Serverbewertungsbericht und die Datenbankbewertung von Azure Migrate können Sie dabei unterstützen. 
+Identifizieren Sie beim Ermitteln der zu migrierenden Apps und Workloads Downtimeeinschränkungen für diese, und suchen Sie nach operativen Abhängigkeiten zwischen Ihren Apps und der zugrunde liegenden Infrastruktur. Diese Analyse hilft Ihnen bei der Planung von Migrationen, die Ihre Wiederherstellungszeit-Zielsetzung (RTO) erfüllen und gewährleisten, dass nur minimal bis gar keine Daten verloren gehen. Vor der Migration empfiehlt es sich, alle Kompatibilitätsprobleme oder nicht unterstützten Features zu überprüfen und zu beheben, die die Servermigration/SQL-Datenbank-Migration blockieren könnten. Der Bericht des Ermittlungs- und Bewertungstools von Azure und die Datenbankbewertung von Azure Migrate können Sie dabei unterstützen. 
 
 ### <a name="prioritize-workloads"></a>Priorisieren von Workloads
 
@@ -118,12 +118,12 @@ Einige Empfehlungen:
 
     **State** | **Aktion**
     --- | ---
-    **Für Azure bereite VMs** | Exportieren Sie den Bewertungsbericht, und filtern Sie nach allen Computern mit dem Status *Bereit für Azure*. Dies könnte die erste Gruppe von Computern sein, die Sie mithilfe des [Servermigrationstools von Azure Migrate](migrate-services-overview.md#azure-migrate-server-migration-tool) zu Azure migrieren.
-    **Betriebssysteme am Ende des Supports** | Exportieren Sie den Bewertungsbericht, und filtern Sie nach allen Computern, die unter Windows Server 2008 R2/Windows Server 2008 ausgeführt werden. Für diese Betriebssysteme endet der Support, und nur Azure bietet Ihnen drei Jahre lang kostenlose Sicherheitsupdates, wenn Sie diese zu Azure migrieren. Wenn Sie den Azure-Hybridvorteil kombinieren und RIs verwenden, könnten Sie noch viel mehr einsparen.
+    **Für Azure bereite VMs** | Exportieren Sie den Bewertungsbericht, und filtern Sie nach allen Servern mit dem Status *Bereit für Azure*. Dies könnte die erste Gruppe von Servern sein, die Sie mithilfe des [Servermigrationstools von Azure Migrate](migrate-services-overview.md#azure-migrate-server-migration-tool) zu Azure migrieren.
+    **Betriebssysteme am Ende des Supports** | Exportieren Sie den Bewertungsbericht, und filtern Sie nach allen Servern, die unter Windows Server 2008 R2/Windows Server 2008 ausgeführt werden. Für diese Betriebssysteme endet der Support, und nur Azure bietet Ihnen drei Jahre lang kostenlose Sicherheitsupdates, wenn Sie diese zu Azure migrieren. Wenn Sie den Azure-Hybridvorteil kombinieren und RIs verwenden, könnten Sie noch viel mehr einsparen.
     **SQL Server-Migration** | Verwenden Sie die Empfehlungen aus der Datenbankbewertung, um Datenbanken, die für Azure SQL-Datenbank bereit sind, mithilfe des Datenbankmigrationstools von Azure Migrate zu migrieren. Migrieren Sie die für die Azure SQL-VM bereiten Datenbanken mithilfe des Servermigrationstools von Azure Migrate.
     **Software am Ende des Supports** | Exportieren Sie Ihren Anwendungsbestand, und filtern Sie nach Software/Erweiterungen, die womöglich das Ende des Supports erreichen. Priorisieren Sie diese Anwendungen für die Migration.
-    **Gering ausgelastete Computer** | Exportieren Sie den Bewertungsbericht, und filtern Sie nach Computern mit geringer CPU-Auslastung (%) und Arbeitsspeicherauslastung (%).  Migrieren Sie diese zu einer richtig dimensionierten Azure-VM, und sparen Sie Kosten für gering ausgelastete Ressourcen.
-    **Überlastete Computer** | Exportieren Sie den Bewertungsbericht, und filtern Sie nach Computern mit hoher CPU-Auslastung (%) und Arbeitsspeicherauslastung (%).  Lösen Sie Kapazitätseinschränkungen, verhindern Sie den Ausfall von überlasteten Computern, und steigern Sie die Leistung, indem Sie diese Computer zu Azure migrieren. Verwenden Sie in Azure die Funktionen zur automatischen Skalierung, um die Anforderungen zu erfüllen.<br/><br/> Analysieren Sie Bewertungsberichte, um Speichereinschränkungen zu untersuchen. Analysieren Sie den Datenträger-IOPS und den Durchsatz sowie den empfohlenen Datenträgertyp.
+    **Gering ausgelastete Server** | Exportieren Sie den Bewertungsbericht, und filtern Sie nach Servern mit geringer CPU-Auslastung (%) und Arbeitsspeicherauslastung (%).  Migrieren Sie diese zu einer richtig dimensionierten Azure-VM, und sparen Sie Kosten für gering ausgelastete Ressourcen.
+    **Überdimensionierte Server** | Exportieren Sie den Bewertungsbericht, und filtern Sie nach Servern mit hoher CPU-Auslastung (%) und Arbeitsspeicherauslastung (%).  Beheben Sie Kapazitätseinschränkungen, verhindern Sie den Ausfall von überlasteten Servern, und steigern Sie die Leistung, indem Sie diese Server zu Azure migrieren. Verwenden Sie in Azure die Funktionen zur automatischen Skalierung, um die Anforderungen zu erfüllen.<br/><br/> Analysieren Sie Bewertungsberichte, um Speichereinschränkungen zu untersuchen. Analysieren Sie den Datenträger-IOPS und den Durchsatz sowie den empfohlenen Datenträgertyp.
 
 - **Fangen Sie klein an, und steigern Sie sich dann:** Beginnen Sie mit dem Verschieben von Apps und Workloads, die ein minimales Risiko bergen und weniger komplex sind, um Vertrauen in Ihre Migrationsstrategie zu schaffen. Analysieren Sie Azure Migrate-Bewertungsempfehlungen in Verbindung mit Ihrem CMDB-Repository, um Dev/Test-Workloads zu suchen und zu migrieren, die sich als Kandidaten für Pilotmigrationen eignen könnten. Feedback und Erkenntnisse aus Pilotmigrationen können beim Start der Migration von Produktionsworkloads hilfreich sein.  
 - **Compliance:** Azure verwaltet mit seinem breiten und detaillierten Angebot das größte Complianceportfolio der gesamten Branche. Verwenden Sie Complianceanforderungen zum Priorisieren von Migrationen, sodass Apps und Workloads die nationalen, regionalen und branchenspezifischen Standards und Gesetze einhalten. Dies gilt insbesondere für Organisationen, die mit unternehmenskritischen Prozessen arbeiten, vertrauliche Informationen aufbewahren oder in streng regulierten Branchen angesiedelt sind. Bei solchen Organisationen gilt es viele Standards und gesetzliche Regelungen zu berücksichtigen. Da sich diese oft ändern können, ist es schwer, den Überblick zu behalten.  

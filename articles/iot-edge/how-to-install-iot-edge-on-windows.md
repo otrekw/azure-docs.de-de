@@ -10,14 +10,16 @@ ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: v-tcassi
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: c12dbeb81fd2b3d67863b5b84fa30cf77e165549
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 98b312066294f2c4ed7f9b089e0f8ea1a68fe4be
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102123189"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106059699"
 ---
 # <a name="install-and-provision-azure-iot-edge-for-linux-on-a-windows-device-preview"></a>Installieren und Bereitstellen von Azure IoT Edge für Linux auf einem Windows-Gerät (Vorschau)
+
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
 
 Die Azure IoT Edge-Runtime verwandelt ein Gerät in ein IoT Edge-Gerät. Die Runtime kann auf verschiedensten Geräten bereitgestellt werden: von der einfachen PC-Klasse bis zu Industrieservern. Wenn ein Gerät mit der IoT Edge-Runtime konfiguriert wurde, können Sie darauf Geschäftslogik aus der Cloud bereitstellen. Weitere Informationen finden Sie unter [Grundlegendes zur Azure IoT Edge-Runtime und ihrer Architektur](iot-edge-runtime.md).
 
@@ -40,21 +42,19 @@ In diesem Artikel werden die Schritte zum Einrichten von IoT Edge auf einem Wind
 
   * Windows 10 ab Version 1809, Build 17763 oder höher
   * Professional, Enterprise oder Server Edition
-  * Minimaler RAM: 4 GB (8 GB empfohlen)
-  * Minimale Speichergröße: 10 GB
+  * Mindestens erforderlicher freier Arbeitsspeicher: 2 GB
+  * Mindestens erforderlicher freier Speicherplatz: 10 GB
+  * Wenn Sie eine neue Bereitstellung mit Windows 10 erstellen, stellen Sie sicher, dass Sie Hyper-V aktivieren. Weitere Informationen finden Sie unter [Installieren von Hyper-V auf Windows 10](/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v).
+  * Wenn Sie eine neue Bereitstellung mithilfe von Windows Server erstellen, müssen Sie sicherstellen, dass Sie die Hyper-V-Rolle installieren. Weitere Informationen finden Sie unter [Installieren der Hyper-V-Rolle auf Windows Server](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server).
+  * Wenn Sie eine neue Bereitstellung mit einem virtuellen Computer erstellen, stellen Sie sicher, dass Sie die verschachtelte Virtualisierung (Nested Virtualization) ordnungsgemäß konfigurieren. Weitere Informationen finden Sie im Leitfaden für die [Verschachtelte Virtualisierung (Nested Virtualization)](nested-virtualization.md).
 
-* Zugriff auf den Insider-Build von Windows Admin Center mit installierter Azure IoT Edge-Erweiterung für Windows Admin Center:  <!-- The link below needs the language localization to work; otherwise broken -->
-   1. Besuchen Sie dazu die [Windows-Insider-Vorschau](https://www.microsoft.com/en-us/software-download/windowsinsiderpreviewserver).
+* Zugriff auf Windows Admin Center mit installierter Azure IoT Edge-Erweiterung für Windows Admin Center:
 
-   1. Wählen Sie in der Dropdownliste mit den Vorschauversionen **Windows Admin Center Preview – Build 2012** und dann **Bestätigen** aus.
+   1. Laden Sie das [Windows Admin Center-Installationsprogramm](https://aka.ms/wacdownload) herunter.
 
-      ![Auswählen von „Windows Admin Center Preview – Build 2012“ in der Dropdownliste der verfügbaren Vorschauversionen](./media/how-to-install-iot-edge-on-windows/select-windows-admin-center-preview-build.png)
+   1. Führen Sie das heruntergeladene Installationsprogramm aus, und befolgen Sie die Anweisungen im Installations-Assistenten, um Windows Admin Center zu installieren. 
 
-   1. Wählen Sie in der Dropdownliste **Sprache auswählen** die Option **Englisch** und dann **Bestätigen** aus.
-
-   1. Wählen Sie **Jetzt herunterladen** aus, um die Datei *WindowsAdminCenterPreview2012.msi* herunterzuladen.
-
-   1. Führen Sie die Datei *WindowsAdminCenterPreview2012.msi* aus, und befolgen Sie die Anweisungen im Installations-Assistenten, um Windows Admin Center zu installieren. Öffnen Sie Windows Admin Center nach Abschluss der Installation.
+   1. Verwenden Sie nach der Installation einen unterstützten Browser, um das Windows Admin Center zu öffnen. Zu den unterstützten Browsern gehören Microsoft Edge (Windows 10, Version 1709 oder höher), Google Chrome und Microsoft Edge Insider.
 
    1. Bei der ersten Verwendung von Windows Admin Center werden Sie aufgefordert, ein Zertifikat auszuwählen. Wählen Sie als Zertifikat **Windows Admin Center-Client** aus.
 
@@ -63,12 +63,6 @@ In diesem Artikel werden die Schritte zum Einrichten von IoT Edge auf einem Wind
       ![Auswählen des Zahnradsymbols in der rechten oberen Ecke des Dashboards zum Öffnen der Einstellungen](./media/how-to-install-iot-edge-on-windows/select-gear-icon.png)
 
    1. Wählen Sie im Menü **Einstellungen** unter **Gateway** die Option **Erweiterungen** aus.
-
-   1. Wählen Sie die Registerkarte **Feeds** und dann **Hinzufügen** aus.
-
-   1. Geben Sie https://aka.ms/wac-insiders-feed in das Textfeld ein, und wählen Sie **Hinzufügen** aus.
-
-   1. Nachdem der Feed hinzugefügt wurde, navigieren Sie zur Registerkarte **Verfügbare Erweiterungen**. Es kann einen Moment dauern, bis die Liste der Erweiterungen aktualisiert wird.
 
    1. Suchen Sie auf der Registerkarte **Verfügbare Erweiterungen** in der Liste der Erweiterungen nach **Azure IoT Edge**. Markieren Sie diese Option, und wählen Sie über der Liste der Erweiterungen die Aufforderung **Installieren** aus.
 
@@ -123,7 +117,16 @@ Wenn Sie die Bereitstellung nicht auf dem lokalen Gerät, sondern auf einem Remo
 
    ![Auswählen des Geräts zur Überprüfung der Unterstützung](./media/how-to-install-iot-edge-on-windows/evaluate-supported-device.png)
 
-1. Übernehmen Sie auf der Registerkarte **2.2 Einstellungen** die Standardeinstellungen.
+1. Überprüfen Sie auf der Registerkarte **2.2 Einstellungen** die Konfigurationseinstellungen der Bereitstellung. Wenn Sie mit den Einstellungen zufrieden sind, wählen Sie **Weiter** aus.
+
+   ![Überprüfen Sie die Konfigurationseinstellungen der Bereitstellung.](./media/how-to-install-iot-edge-on-windows/default-deployment-configuration-settings.png)
+
+   >[!NOTE]
+   >Wenn Sie einen virtuellen Windows-Computer verwenden, empfiehlt es sich, anstelle eines externen Tasters einen Standardtaster zu verwenden, um sicherzustellen, dass der in der Bereitstellung erstellte virtuelle Linux-Computer eine IP-Adresse abrufen kann.
+   >
+   >Durch die Verwendung eines Standardtasters wird dem virtuellen Linux-Computer eine interne IP-Adresse zugewiesen. Diese interne IP-Adresse kann von außerhalb des virtuellen Windows-Computers nicht erreicht werden, Sie kann jedoch lokal angemeldet werden, wenn Sie auf dem virtuellen Windows-Computer angemeldet sind.
+   >
+   >Wenn Sie Windows Server verwenden, beachten Sie, dass Azure IoT Edge für Linux auf Windows den Standardtaster nicht automatisch unterstützt. Stellen Sie für einen lokalen virtuellen Windows Server-Computer sicher, dass der virtuelle Linux-Computer eine IP-Adresse über den externen Taster abrufen kann. Richten Sie für einen virtuellen Windows Server-Computer in Azure einen internen Taster ein, bevor Sie IoT Edge für Linux auf Windows bereitstellen.
 
 1. Auf der Registerkarte **2.3 Bereitstellung** können Sie den Fortschritt der Bereitstellung überwachen. Der gesamte Prozess umfasst das Herunterladen und Installieren des Pakets von Azure IoT Edge für Linux unter Windows, das Konfigurieren des Hostgeräts und das Einrichten der Linux-VM. Es kann einige Minuten dauern, bis dieser Vorgang abgeschlossen ist. Eine erfolgreiche Bereitstellung ist unten dargestellt.
 
@@ -143,7 +146,7 @@ Installieren Sie IoT Edge für Linux unter Windows auf dem Zielgerät, sofern di
    ```azurepowershell-interactive
    $msiPath = $([io.Path]::Combine($env:TEMP, 'AzureIoTEdge.msi'))
    $ProgressPreference = 'SilentlyContinue'
-   Invoke-WebRequest "https://aka.ms/AzureEdgeForLinuxOnWindowsMSI" -OutFile $msiPath
+   Invoke-WebRequest "https://aka.ms/AzEflowMSI" -OutFile $msiPath
    ```
 
 1. Installieren Sie IoT Edge für Linux unter Windows auf Ihrem Gerät.
@@ -174,7 +177,7 @@ Installieren Sie IoT Edge für Linux unter Windows auf dem Zielgerät, sofern di
    ```
 
    > [!NOTE]
-   > Sie können diesen Befehl ohne Parameter ausführen oder die Bereitstellung optional mit Parametern anpassen. Weitere Informationen zu den Bedeutungen der einzelnen Parameter finden Sie in der [Skriptreferenz zu IoT Edge für Linux in Windows PowerShell](reference-iot-edge-for-linux-on-windows-scripts.md#deploy-eflow).
+   > Sie können diesen Befehl ohne Parameter ausführen oder die Bereitstellung optional mit Parametern anpassen. Weitere Informationen zu den Bedeutungen der einzelnen Parameter und Standardwerte finden Sie in der [Skriptreferenz zu IoT Edge für Linux in Windows PowerShell](reference-iot-edge-for-linux-on-windows-scripts.md#deploy-eflow).
 
 1. Geben Sie „Y“ ein, um den Lizenzbedingungen zuzustimmen.
 
@@ -349,6 +352,9 @@ Vergewissern Sie sich, dass IoT Edge für Linux unter Windows erfolgreich auf Ih
    Ssh-EflowVm
    ```
 
+   >[!NOTE]
+   >Das einzige Konto, das zum Herstellen eines SSH mit dem virtuellen Computer zulässig ist, ist der Benutzer, der es erstellt.
+
 1. Sobald Sie angemeldet sind, können Sie die Liste der laufenden IoT Edge-Module mithilfe des folgenden Linux-Befehls überprüfen:
 
    ```bash
@@ -373,4 +379,6 @@ Vergewissern Sie sich, dass IoT Edge für Linux unter Windows erfolgreich auf Ih
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sie können nun mit dem Artikel zum [Bereitstellen von IoT Edge-Modulen](how-to-deploy-modules-portal.md) fortfahren, um zu erfahren, wie Sie Module auf Ihrem Gerät bereitstellen.
+* Sie können nun mit dem Artikel zum [Bereitstellen von IoT Edge-Modulen](how-to-deploy-modules-portal.md) fortfahren, um zu erfahren, wie Sie Module auf Ihrem Gerät bereitstellen.
+* Erfahren Sie, wie Sie [Zertifikate auf Ihrem IoT Edge für Linux auf einem virtuellen Windows-Computer verwalten](how-to-manage-device-certificates.md) und Dateien vom Host-Betriebssystem auf Ihren virtuellen Linux-Computer übertragen.
+* Erfahren Sie, wie [Sie Ihre IoT Edge-Geräte für die Kommunikation über einen Proxy-Server konfigurieren](how-to-configure-proxy-support.md).

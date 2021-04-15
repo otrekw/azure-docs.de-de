@@ -4,14 +4,14 @@ description: Hier erfahren Sie, wie Sie die Ausführung der Kopieraktivität in 
 author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 08/06/2020
+ms.date: 03/22/2021
 ms.author: jingwang
-ms.openlocfilehash: 58860e404dff3030e51ff2977eaee081a15247f7
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 4aefeea33e61b6ee2541e929dbeb3fc36343cac5
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388293"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104771378"
 ---
 # <a name="monitor-copy-activity"></a>Überwachen der Kopieraktivität
 
@@ -59,7 +59,7 @@ Ausführungsdetails und Leistungsmerkmale zur Kopieraktivität werden auch im Ab
 | rowsCopied | Anzahl der in die Senke kopierten Datensätze. Diese Metrik wird nicht angewendet, wenn Dateien im aktuellen Zustand kopiert werden, ohne sie zu parsen, z. B. wenn die Quellen- und Senkendatasets den Binärformattyp aufweisen oder einen anderen Formattyp mit identischen Einstellungen.  | Int64-Wert (ohne Einheit) |
 | rowsSkipped | Die Anzahl der übersprungenen, nicht kompatiblen Zeilen. Nicht kompatible Zeilen können übersprungen werden, indem Sie `enableSkipIncompatibleRow` auf „true“ festlegen. | Int64-Wert (ohne Einheit) |
 | copyDuration | Die Dauer des Kopiervorgangs. | Int32-Wert in Sekunden |
-| throughput | Die Datenübertragungsrate. | Gleitkommazahl in KB/s |
+| throughput | Dies ist die Datenübertragungsrate, die durch die Division von `dataRead` durch `copyDuration` berechnet wird. | Gleitkommazahl in KB/s |
 | sourcePeakConnections | Die maximale Anzahl gleichzeitiger Verbindungen mit dem Quelldatenspeicher während der Ausführung der Kopieraktivität. | Int32-Wert (ohne Einheit) |
 | sinkPeakConnections| Die maximale Anzahl gleichzeitiger Verbindungen mit dem Senkendatenspeicher während der Ausführung der Kopieraktivität.| Int32-Wert (ohne Einheit) |
 | sqlDwPolyBase | Gibt an, ob PolyBase beim Kopieren von Daten in Azure Synapse Analytics verwendet wird. | Boolean |

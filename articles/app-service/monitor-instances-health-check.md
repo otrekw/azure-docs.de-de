@@ -6,12 +6,12 @@ author: msangapu-msft
 ms.topic: article
 ms.date: 12/03/2020
 ms.author: msangapu
-ms.openlocfilehash: 7d6f9564328f81b71c62a4243c5f4cc209a29d8f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: e9d92c60e74ac9106246ccd445afaca926065e5f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101714475"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104871196"
 ---
 # <a name="monitor-app-service-instances-using-health-check"></a>Überwachen von App Service-Instanzen mit der Integritätsprüfung
 
@@ -57,11 +57,15 @@ Zusätzlich zum Konfigurieren der Optionen der Integritätsprüfung können Sie 
 
 Die Integritätsprüfung integriert sich in die Authentifizierungs- und Autorisierungsfunktionen von App Service. Es sind keine zusätzlichen Einstellungen erforderlich, wenn diese Sicherheitsfeatures aktiviert sind. Wenn Sie aber Ihr eigenes Authentifizierungssystem verwenden, muss der Pfad der Integritätsüberprüfung anonymen Zugriff zulassen. Wenn für den Standort „Nur HTTP **S**“ aktiviert ist, wird die Anforderung einer Integritätsprüfung über HTTP **S** gesendet.
 
-Entwicklungsteams in großen Unternehmen müssen häufig Sicherheitsanforderungen für verfügbar gemachte APIs erfüllen. Um den Endpunkt der Integritätsprüfung zu sichern, sollten Sie zunächst Features wie [IP-Einschränkungen](app-service-ip-restrictions.md#set-an-ip-address-based-rule), [Clientzertifikate](app-service-ip-restrictions.md#set-an-ip-address-based-rule) oder ein virtuelles Netzwerk verwenden, um den Anwendungszugriff einzuschränken. Sie können den Endpunkt der Integritätsprüfung sichern, indem Sie anfordern, dass der `User-Agent` der eingehenden Anforderung `ReadyForRequest/1.0` entspricht. Der Benutzer-Agent kann nicht manipuliert werden, da die Anforderung bereits durch die vorherigen Sicherheitsfeatures gesichert wäre.
+Entwicklungsteams in großen Unternehmen müssen häufig Sicherheitsanforderungen für verfügbar gemachte APIs erfüllen. Um den Endpunkt der Integritätsprüfung zu sichern, sollten Sie zunächst Features wie [IP-Einschränkungen](app-service-ip-restrictions.md#set-an-ip-address-based-rule), [Clientzertifikate](app-service-ip-restrictions.md#set-an-ip-address-based-rule) oder ein virtuelles Netzwerk verwenden, um den Anwendungszugriff einzuschränken. Sie können den Endpunkt der Integritätsprüfung sichern, indem Sie anfordern, dass der `User-Agent` der eingehenden Anforderung `HealthCheck/1.0` entspricht. Der Benutzer-Agent kann nicht manipuliert werden, da die Anforderung bereits durch die vorherigen Sicherheitsfeatures gesichert wäre.
 
 ## <a name="monitoring"></a>Überwachung
 
 Nachdem Sie den Pfad der Integritätsüberprüfung der Anwendung angegeben haben, können Sie die Integrität Ihres Standorts mithilfe von Azure Monitor überwachen. Klicken Sie im Portal auf dem Blatt **Integrität überprüfen** auf der oberen Symbolleiste auf **Metriken**. Daraufhin wird ein neues Blatt geöffnet, auf dem Sie den Verlauf des Integritätsstatus der Site anzeigen und eine neue Warnungsregel erstellen können. Weitere Informationen zum Überwachen Ihrer Standorte finden Sie im [Handbuch zu Azure Monitor](web-sites-monitor.md).
+
+## <a name="limitations"></a>Einschränkungen
+
+Die Integritätsprüfung sollte auf Premium Functions-Websites nicht aktiviert werden. Aufgrund der schnellen Skalierung von Premium Functions können Anforderungen zur Integritätsprüfung unnötige Schwankungen im HTTP-Datenverkehr verursachen. Premium Functions verfügt über eigene interne Integritätstests, die für Skalierungsentscheidungen verwendet werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Erstellen einer Aktivitätsprotokollwarnung, um alle Vorgänge der Engine für die automatische Skalierung für Ihr Abonnement zu überwachen](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)

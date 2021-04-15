@@ -6,12 +6,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 01/28/2020
-ms.openlocfilehash: 7b74a41f7d6b636dddce0388d5ee0e0a12658d52
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 4cbb7b96610a56f3b6049038bb5c9c6bc0870b57
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944607"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104871362"
 ---
 # <a name="use-apache-pig-with-apache-hadoop-on-hdinsight"></a>Verwenden von Apache Pig mit Apache Hadoop in HDInsight
 
@@ -27,11 +27,11 @@ Pig ermöglicht Ihnen, die Verarbeitung als eine Reihe von Transformationen zu d
 
 Mit der Pig Latin-Sprache können Sie den Datenfluss von Rohdaten durch eine oder mehrere Transformationen beschreiben, um die gewünschte Ausgabe zu erzeugen. Pig Latin-Programme folgen diesem allgemeinen Muster:
 
-* **Laden**: Lesen der zu ändernden Daten aus dem Dateisystem
+* **Laden:** Lesen der zu verändernden Daten aus dem Dateisystem
 
-* **Transformieren**: Manipulieren der Daten
+* **Transformieren:** Manipulation der Daten
 
-* **Ablage oder Speicherung**: Ausgeben der Daten auf dem Bildschirm oder Speicherung zur Weiterverarbeitung
+* **Ablage oder Speicherung:** Ausgabe der Daten auf dem Bildschirm oder Speicherung zur Weiterverarbeitung
 
 ### <a name="user-defined-functions"></a>Benutzerdefinierte Funktionen
 
@@ -70,7 +70,7 @@ DUMP RESULT;
 
 In der folgenden Abbildung ist zusammengefasst, wie sich die einzelnen Transformationen auf die Daten auswirken.
 
-![Grafische Darstellung der Transformationen][image-hdi-pig-data-transformation]
+:::image type="content" source="./media/use-pig/hdi-data-transformation.gif" alt-text="Grafische Darstellung der Transformationen" border="false":::
 
 ## <a name="run-the-pig-latin-job"></a><a id="run"></a>Pig Latin-Auftrag ausführen
 
@@ -84,7 +84,7 @@ Sie können mit SQL Server Integration Services (SSIS) einen Pig-Auftrag ausfüh
 
 * [Verbindungs-Manager für Azure-Abonnements][connectionmanager]
 
-[Hier][ssispack] erfahren Sie mehr über das Azure Feature Pack für SSIS.
+[Hier][ssispack] erfahren Sie mehr zum Azure Feature Pack für SSIS.
 
 ## <a name="next-steps"></a><a id="nextsteps"></a>Nächste Schritte
 
@@ -113,4 +113,3 @@ Nachdem Sie erfahren haben, wie Sie Pig mit HDInsight verwenden, können Sie mit
 [powershell-start]: https://technet.microsoft.com/library/hh847889.aspx
 
 
-[image-hdi-pig-data-transformation]: ./media/use-pig/hdi-data-transformation.gif

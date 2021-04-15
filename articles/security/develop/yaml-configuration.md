@@ -4,7 +4,7 @@ description: In diesem Artikel werden die YAML-Konfigurationsoptionen zum Anpass
 author: sukhans
 manager: sukhans
 ms.author: terrylan
-ms.date: 11/29/2019
+ms.date: 03/22/2021
 ms.topic: article
 ms.service: security
 services: azure
@@ -12,14 +12,17 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 6985107dd8f13e26875cf5ea7428b3280d00cea1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a41a788a84770201996fd369d9b47031674afee3
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85367256"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104799546"
 ---
 # <a name="yaml-configuration-options-to-customize-the-build-tasks"></a>YAML-Konfigurationsoptionen zum Anpassen der Buildtasks
+
+> [!Note]
+> Ab dem 1. März 2022 wird die Erweiterung „Microsoft-Sicherheitscodeanalyse“ (Microsoft Security Code Analysis, MSCA) eingestellt. MSCA-Kunden behalten ihren Zugriff auf die MSCA bis zum 1. März 2022. Das [OWASP-Tool für die Quellcodeanalyse](https://owasp.org/www-community/Source_Code_Analysis_Tools) bietet alternative Möglichkeiten in Azure DevOps. Kunden, die eine Migration zu GitHub planen, können sich über [GitHub Advanced Security](https://docs.github.com/github/getting-started-with-github/about-github-advanced-security) informieren.
 
 In diesem Artikel sind alle YAML-Konfigurationsoptionen aufgeführt, die in den einzelnen Buildtasks verfügbar sind. Zunächst werden in diesem Artikel die Tasks für die Tools der Sicherheitscodeanalyse erläutert. Zum Schluss werden die Tasks für die Nachbearbeitung beschrieben.
 

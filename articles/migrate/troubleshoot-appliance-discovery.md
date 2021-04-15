@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: c952fe33b434aac972be6a1eb03b63698eb64fc6
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 995914fab0e7112327ebf6ab8e32fb67181f481e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104782315"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105608917"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Behandeln von Problemen bei der Azure Migrate-Appliance und der Ermittlung
 
@@ -260,6 +260,34 @@ Typische Fehler bei der App-Ermittlung sind in der Tabelle zusammengefasst.
 | 10007: Die ermittelten Metadaten können nicht verarbeitet werden. | Fehler beim Versuch, die JSON zu deserialisieren. | Wenden Sie sich an den Microsoft-Support, um eine Lösung zu erhalten. |
 | 10008: Es kann keine Datei auf dem Server erstellt werden. | Das Problem kann aufgrund eines internen Fehlers auftreten. | Wenden Sie sich an den Microsoft-Support, um eine Lösung zu erhalten. |
 | 10009: Die ermittelten Metadaten können nicht in eine Datei auf dem Server geschrieben werden. | Das Problem kann aufgrund eines internen Fehlers auftreten. | Wenden Sie sich an den Microsoft-Support, um eine Lösung zu erhalten. |
+
+## <a name="common-sql-server-instances-and-database-discovery-errors"></a>Häufige Fehler bei der Ermittlung von SQL Server-Instanzen und -Datenbanken
+
+Azure Migrate unterstützt die Ermittlung von SQL Server-Instanzen und -Datenbanken, die auf lokalen Computern ausgeführt werden, mit Azure Migrate: Ermittlung und Bewertung. Die SQL-Ermittlung wird derzeit nur für VMware unterstützt. Weitere Informationen zum Einstieg finden Sie im [Tutorial zur Ermittlung](tutorial-discover-vmware.md).
+
+Typische Fehler bei der SQL-Ermittlung sind in der Tabelle zusammengefasst.
+
+| **Fehler** | **Ursache** | **Aktion** |
+|--|--|--|
+|30000: Die dieser SQL Server-Instanz zugeordneten Anmeldeinformationen haben nicht funktioniert.|Entweder sind manuell zugeordnete Anmeldeinformationen ungültig, oder automatisch zugeordnete Anmeldeinformationen können nicht mehr auf die SQL Server-Instanz zugreifen.|Fügen Sie Anmeldeinformationen für SQL Server auf der Appliance hinzu, und warten Sie bis zum nächsten SQL-Ermittlungszyklus, oder erzwingen Sie eine Aktualisierung.|
+|30001: Von der Appliance aus kann keine Verbindung mit der SQL Server-Instanz hergestellt werden.|1. Die Appliance hat keine Netzwerk-Sichtverbindung zum SQL Server.<br/>2. Die Firewall blockiert die Verbindung zwischen SQL Server und der Appliance.|1. Machen Sie SQL Server für die Appliance erreichbar.<br/>2. Lassen Sie eingehende Verbindungen von der Appliance zum SQL Server zu.|
+|30003: Das Zertifikat ist nicht vertrauenswürdig.|Auf dem Computer, auf dem SQL Server ausgeführt wird, ist kein vertrauenswürdiges Zertifikat installiert.|Richten Sie ein vertrauenswürdiges Zertifikat auf dem Server ein. [Weitere Informationen](https://go.microsoft.com/fwlink/?linkid=2153616)|
+|30004: Unzureichende Berechtigungen.|Dieser Fehler kann dadurch verursacht werden, dass keine ausreichenden Berechtigungen zum Überprüfen von SQL Server-Instanzen vorhanden sind. |Weisen Sie den für die Appliance angegebenen Anmeldeinformationen bzw. dem angegebenen Konto die Rolle „sysadmin“ zu, um SQL Server-Instanzen und -Datenbanken zu ermitteln. [Weitere Informationen](https://go.microsoft.com/fwlink/?linkid=2153511)|
+|30005: SQL Server-Anmeldung konnte aufgrund eines Problems mit der Standard-Masterdatenbank keine Verbindung herstellen.|Entweder ist die Datenbank ungültig, oder der Anmeldename besitzt keine CONNECT-Berechtigung für die Datenbank.|Verwenden Sie ALTER LOGIN, um die Standarddatenbank auf die Masterdatenbank festzulegen.<br/>Weisen Sie den für die Appliance angegebenen Anmeldeinformationen bzw. dem angegebenen Konto die Rolle „sysadmin“ zu, um SQL Server-Instanzen und -Datenbanken zu ermitteln. [Weitere Informationen](https://go.microsoft.com/fwlink/?linkid=2153615)|
+|30006: SQL Server-Anmeldung kann nicht mit der Windows-Authentifizierung verwendet werden.|1. Die Anmeldung ist möglicherweise eine SQL Server-Anmeldung, aber der Server akzeptiert nur Windows-Authentifizierung.<br/>2. Sie versuchen, eine Verbindung mit SQL Server-Authentifizierung herzustellen, aber die Anmeldeinformationen sind in SQL Server nicht vorhanden.<br/>3. Die Anmeldung verwendet möglicherweise die Windows-Authentifizierung, aber die Anmeldung ist ein nicht erkannter Windows-Prinzipal. Ein nicht erkannter Windows-Prinzipal bedeutet, dass die Anmeldung nicht von Windows überprüft werden kann. Das konnte daran liegen, dass die Windows-Anmeldung von einer nicht vertrauenswürdigen Domäne stammt.|Wenn Sie versuchen, eine Verbindung mithilfe der SQL Server-Authentifizierung herzustellen, vergewissern Sie sich, dass SQL Server im gemischten Authentifizierungsmodus konfiguriert ist und die SQL Server-Anmeldung vorhanden ist.<br/>Wenn Sie versuchen, eine Verbindung mit Windows-Authentifizierung herzustellen, überprüfen Sie, dass Sie ordnungsgemäß bei der richtigen Domäne angemeldet sind. [Weitere Informationen](https://go.microsoft.com/fwlink/?linkid=2153421)|
+|30007: Kennwort abgelaufen.|Das Kennwort für das Konto ist abgelaufen.|Das Kennwort für die SQL Server-Anmeldung ist möglicherweise abgelaufen. Setzen Sie das Kennwort zurück, oder verlängern Sie das Datum für das Kennwort. [Weitere Informationen](https://go.microsoft.com/fwlink/?linkid=2153419)|
+|30008: Das Kennwort muss geändert werden.|Das Kennwort für das Konto muss geändert werden.|Ändern Sie das Kennwort der für die SQL Server-Ermittlung angegebenen Anmeldeinformation. [Weitere Informationen](https://go.microsoft.com/fwlink/?linkid=2153318)|
+|30009: Ein interner Fehler ist aufgetreten.|Interner Fehler beim Ermitteln von SQL Server-Instanzen und -Datenbanken. |Falls das Problem weiterhin besteht, wenden Sie sich an den Microsoft-Support.|
+|30010: Es wurden keine Datenbanken gefunden.|Auf der ausgewählten Serverinstanz wurden keine Datenbanken gefunden.|Weisen Sie den für die Appliance angegebenen Anmeldeinformationen bzw. dem angegebenen Konto die Rolle „sysadmin“ zu, um SQL-Datenbanken zu ermitteln.|
+|30011: Interner Fehler beim Bewerten einer SQL-Instanz oder -Datenbank.|Interner Fehler beim Ausführen der Bewertung.|Falls das Problem weiterhin besteht, wenden Sie sich an den Microsoft-Support.|
+|30012: SQL-Verbindungsfehler.|1. Die Firewall auf dem Server hat die Verbindung abgelehnt.<br/>2. Der SQL Server-Browserdienst (sqlbrowser) wurde nicht gestartet.<br/>3. Keine Antwort von SQL Server auf die Clientanforderung, da der Server wahrscheinlich nicht gestartet wurde.<br/>4. Der SQL Server-Client kann keine Verbindung mit dem Server herstellen. Dieser Fehler ist möglicherweise darauf zurückzuführen, dass der Server nicht für die Annahme von Remoteverbindungen konfiguriert ist.<br/>5. Der SQL Server-Client kann keine Verbindung mit dem Server herstellen. Der Fehler ist möglicherweise darauf zurückzuführen, dass entweder der Name des Servers durch den Client nicht aufgelöst werden kann oder der Name des Servers falsch ist.<br/>6. Die TCP- oder Named Pipe-Protokolle sind nicht aktiviert.<br/>7. Der angegebene Name der SQL Server-Instanz ist ungültig.|Verwenden Sie [diesen](https://go.microsoft.com/fwlink/?linkid=2153317) interaktiven Benutzerleitfaden für die Behandlung des Verbindungsproblems. Nachdem Sie die Schritte im Leitfaden befolgt haben, warten Sie 24 Stunden, bis die Daten im Dienst aktualisiert wurden. Wenden Sie sich an den Microsoft-Support, wenn das Problem weiterhin besteht.|
+|30013: Fehler beim Herstellen einer Verbindung mit der SQL Server-Instanz.|1. Der SQL Server-Name kann von der Appliance nicht aufgelöst werden.<br/>2. SQL Server lässt keine Remoteverbindungen zu.|Wenn Sie SQL Server von der Appliance aus anpingen können, warten Sie 24 Stunden, und prüfen Sie dann, ob das Problem automatisch gelöst ist. Wenn nicht, wenden Sie sich an den Microsoft-Support. [Weitere Informationen](https://go.microsoft.com/fwlink/?linkid=2153316)|
+|30014: Benutzername oder Kennwort ist falsch.| Dieser Fehler kann auf einen Authentifizierungsfehler aufgrund eines ungültigen Kennworts oder Benutzernamens zurückzuführen sein.|Geben Sie Anmeldeinformationen mit gültigem Benutzernamen und Kennwort an. [Weitere Informationen](https://go.microsoft.com/fwlink/?linkid=2153315)|
+|30015: Interner Fehler beim Ermitteln der SQL-Instanz.|Beim Ermitteln der SQL-Instanz ist ein interner Fehler aufgetreten.|Falls das Problem weiterhin besteht, wenden Sie sich an den Microsoft-Support.|
+|30016: Aufgrund eines Timeouts konnte keine Verbindung mit der Instanz „%instance;“ hergestellt werden.| Dieses Problem kann auftreten, wenn die Firewall auf dem Server die Verbindung ablehnt.|Überprüfen Sie, ob die Firewall der SQL Server-Instanz für die Annahme von Verbindungen konfiguriert ist. Wenden Sie sich an den Microsoft-Support, wenn der Fehler weiterhin besteht. [Weitere Informationen](https://go.microsoft.com/fwlink/?linkid=2153611)|
+|30017: Interner Fehler.|Ausnahmefehler.|Falls das Problem weiterhin besteht, wenden Sie sich an den Microsoft-Support.|
+|30018: Interner Fehler.|Interner Fehler beim Erfassen von Daten wie z. B. der Größe der temporären Datenbank, der Dateigröße der SQL-Instanz usw.|Warten Sie 24 Stunden, und wenden Sie sich an den Microsoft-Support, falls das Problem weiterhin besteht.|
+|30019: Ein interner Fehler ist aufgetreten.|Interner Fehler beim Erfassen von Leistungsmetriken wie z. B. der Arbeitsspeicherauslastung einer Datenbank oder Instanz.|Warten Sie 24 Stunden, und wenden Sie sich an den Microsoft-Support, falls das Problem weiterhin besteht.|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

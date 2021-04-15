@@ -7,16 +7,19 @@ author: viv-liu
 ms.author: viviali
 ms.date: 10/4/2019
 ms.topic: conceptual
-ms.openlocfilehash: 191b57b08ba04844824dd5cf26875c21e494c5ef
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ea4a47f1ba3eac39820e839a10330840f57afe42
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92123336"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105629069"
 ---
 # <a name="visualize-and-analyze-your-azure-iot-central-data-in-a-power-bi-dashboard"></a>Visualisieren und Analysieren der Azure IoT Central-Daten in einem Power BI-Dashboard
 
 *Dieses Thema richtet sich an Administratoren und Lösungsentwickler.*
+
+> [!Note] 
+> Diese Lösung verwendet [Legacy-Datenexport-Features](./howto-export-data-legacy.md). Bleiben Sie auf dem neuesten Stand, um eine aktualisierte Anleitung zum Herstellen einer Verbindung mit Power BI mithilfe des neuesten Datenexports zu erhalten.
 
 :::image type="content" source="media/howto-connect-powerbi/iot-continuous-data-export.png" alt-text="Power BI-Lösungspipeline":::
 
@@ -27,7 +30,7 @@ Verwenden Sie die Power BI-Lösung für Azure IoT Central V3, um ein leistung
 - Filtern nach Daten, die von bestimmten Geräten gesendet wurden
 - Anzeigen der neuesten Telemetriedaten in einer Tabelle
 
-Durch diese Lösung wird eine Pipeline eingerichtet, mit der Daten aus Ihrem Azure Blob Storage-Konto mit [kontinuierlichem Datenexport](./howto-export-data.md) gelesen werden. Die Daten werden von der Pipeline unter Verwendung von Azure Functions, Azure Data Factory und Azure SQL-Datenbank verarbeitet und transformiert. Sie können die Daten in einem als PBIX-Datei herunterladbaren Power BI-Bericht visualisieren und analysieren. Die Ressourcen werden jeweils in Ihrem Azure-Abonnement erstellt, sodass Sie die einzelnen Komponenten gemäß Ihren Anforderungen anpassen können.
+Durch diese Lösung wird eine Pipeline eingerichtet, mit der Daten aus Ihrem Azure Blob Storage-Konto mit [kontinuierlichem Datenexport](./howto-export-data-legacy.md) gelesen werden. Die Daten werden von der Pipeline unter Verwendung von Azure Functions, Azure Data Factory und Azure SQL-Datenbank verarbeitet und transformiert. Sie können die Daten in einem als PBIX-Datei herunterladbaren Power BI-Bericht visualisieren und analysieren. Die Ressourcen werden jeweils in Ihrem Azure-Abonnement erstellt, sodass Sie die einzelnen Komponenten gemäß Ihren Anforderungen anpassen können.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -36,7 +39,7 @@ Um die in dieser Anleitung aufgeführten Schritte ausführen zu können, benöti
 Zum Einrichten der Lösung benötigen Sie Folgendes:
 
 - Eine IoT Central-Anwendung der Version 3. Informationen zum Überprüfen Ihrer Anwendungsversion finden Sie unter [Über Ihre Anwendung](./howto-get-app-info.md). Informationen zum Erstellen einer IoT Central--Anwendung finden Sie unter [Erstellen einer Azure IoT Central-Anwendung](./quick-deploy-iot-central.md).
-- Kontinuierlicher Datenexport, der zum Exportieren von Telemetriedaten, Geräten und Gerätevorlagen in Azure Blob Storage konfiguriert ist. Weitere Informationen finden Sie unter [Exportieren von IoT-Daten zu Zielen in Azure](howto-export-data.md).
+- Kontinuierlicher Legacy-Datenexport, der zum Exportieren von Telemetriedaten, Geräten und Gerätevorlagen in Azure Blob Storage konfiguriert ist. Weitere Informationen finden Sie in der [Dokumentation zum Legacy-Datenexport](howto-export-data-legacy.md).
   - Vergewissern Sie sich, dass nur Ihre IoT Central-Anwendung Daten in den Blobcontainer exportiert.
   - Ihre [Geräte müssen JSON-codierte Nachrichten senden](../../iot-hub/iot-hub-devguide-messages-d2c.md). Von Geräten müssen in den Nachrichtensystemeigenschaften `contentType:application/JSON` und `contentEncoding:utf-8` oder `contentEncoding:utf-16` oder `contentEncoding:utf-32` angegeben werden.
 - Power BI Desktop (neueste Version). Siehe [Power BI-Tools und -Apps herunterladen](https://powerbi.microsoft.com/downloads/).

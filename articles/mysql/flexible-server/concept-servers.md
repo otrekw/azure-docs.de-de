@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: 2cce4810a9e1a4d7143e2bab384d4b26471b7238
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: a7978410dbe28a5da5dae81cb380d118fe13a159
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93240748"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104869377"
 ---
 # <a name="server-concepts-in-azure-database-for-mysql-flexible-server-preview"></a>Serverkonzepte in Azure Database for MySQL Flexible Server (Vorschau)
 
@@ -38,24 +38,31 @@ Eine Azure Database for MySQL Flexible Server-Instanz:
 - Bietet eine virtuelle Netzwerkintegration für den Zugriff auf den Datenbankserver
 - Bietet die Möglichkeit, Kosten zu sparen, indem der flexible Server angehalten wird, wenn er nicht benutzt wird
 - Sie stellt den Bereich für Verwaltungsrichtlinien bereit, die auf die jeweiligen Datenbanken angewendet werden (Anmeldungen, Firewalls, Benutzer, Rollen, Konfigurationen etc.).
-- Wird derzeit mit der Version MySQL 5.7 unterstützt. Weitere Informationen finden Sie unter [Unterstützte Azure Database for MySQL-Engine-Versionen](./concepts-supported-versions.md).
+- Unterstützt die Hauptversion MySQL 5.7 und MySQL 8.0. Weitere Informationen finden Sie unter [Unterstützte Azure Database for MySQL-Engine-Versionen](./../concepts-supported-versions.md).
 
 Sie können in einer Instanz von Azure Database for MySQL Flexible Server eine oder mehrere Datenbanken erstellen. Sie können eine Einzeldatenbank pro Server erstellen, die alle Ressourcen nutzt, oder Sie können mehrere Datenbanken erstellen, um die Ressourcen gemeinsam zu verwenden. Die Preise gelten pro Server und basieren auf der Konfiguration der Computeebene, der virtuellen Kerne und des Speichers (GB). Weitere Informationen finden Sie unter [Compute und Speicher](./concepts-compute-storage.md).
 
 ## <a name="stopstart-an-azure-database-for-mysql-flexible-server"></a>Anhalten/Starten einer Azure Database for MySQL Flexible Server-Instanz
 
-Azure Database for MySQL Flexible Server bietet Ihnen die Möglichkeit, den Server **anzuhalten** , wenn er nicht benutzt wird, und den Server zu **starten** , wenn Sie die Aktivität wieder aufnehmen. Dies erfolgt im Wesentlichen, um Kosten auf den Datenbankservern zu sparen und für die Ressource nur dann zu bezahlen, wenn sie in Gebrauch ist. Dies wird noch wichtiger bei Dev-Test-Workloads und wenn Sie den Server nur für einen Teil des Tages benutzen. Wenn Sie den Server anhalten, werden alle aktiven Verbindungen beendet. Wenn Sie den Server später wieder online bringen möchten, können Sie entweder das [Azure-Portal](how-to-stop-start-server-portal.md) oder die CLI verwenden.
+Azure Database for MySQL Flexible Server bietet Ihnen die Möglichkeit, den Server **anzuhalten**, wenn er nicht benutzt wird, und den Server zu **starten**, wenn Sie die Aktivität wieder aufnehmen. Dies erfolgt im Wesentlichen, um Kosten auf den Datenbankservern zu sparen und für die Ressource nur dann zu bezahlen, wenn sie in Gebrauch ist. Dies wird noch wichtiger bei Dev-Test-Workloads und wenn Sie den Server nur für einen Teil des Tages benutzen. Wenn Sie den Server anhalten, werden alle aktiven Verbindungen beendet. Wenn Sie den Server später wieder online bringen möchten, können Sie entweder das [Azure-Portal](how-to-stop-start-server-portal.md) oder die CLI verwenden.
 
 Wenn sich der Server im Status **Angehalten** befindet, wird das Compute des Servers nicht in Rechnung gestellt. Der Speicher wird jedoch weiterhin in Rechnung gestellt, da der Speicher des Servers verbleibt, um sicherzustellen, dass die Datendateien verfügbar sind, wenn der Server wieder gestartet wird.
 
 > [!IMPORTANT]
-> Wenn Sie den Server **anhalten** , bleibt er für die nächsten sieben Tage in diesem Zustand. Wenn Sie ihn während dieser Zeit nicht manuell **starten** , wird der Server nach Ablauf von sieben Tagen automatisch gestartet. Wenn Sie den Server nicht verwenden, können Sie ihn wieder **anhalten**.
+> Wenn Sie den Server **anhalten**, bleibt er für die nächsten sieben Tage in diesem Zustand. Wenn Sie ihn während dieser Zeit nicht manuell **starten**, wird der Server nach Ablauf von sieben Tagen automatisch gestartet. Wenn Sie den Server nicht verwenden, können Sie ihn wieder **anhalten**.
 
 Während der Zeit, in der der Server angehalten ist, können keine Verwaltungsvorgänge auf dem Server durchgeführt werden. Sie müssen [den Server starten](how-to-stop-start-server-portal.md), um Konfigurationseinstellungen auf dem Server zu ändern. Weitere Informationen finden Sie unter den [Einschränkungen zum Anhalten/Starten](./concepts-limitations.md#stopstart-operation).
 
 ## <a name="how-do-i-manage-a-server"></a>Wie verwalte ich einen Server?
 
-Sie können Azure Database for MySQL Flexible Server mithilfe des [Azure-Portals](./quickstart-create-server-portal.md) oder der [Azure CLI](./quickstart-create-server-cli.md) verwalten.
+Sie können die Erstellung, Löschung, Serverparameterkonfiguration (my.cnf), Skalierung, Sicherheit, Hochverfügbarkeit, Sicherung und Wiederherstellung, Überwachung und das Netzwerk Ihres flexiblen Azure Database for MySQL-Servers mithilfe des [Azure-Portals](./quickstart-create-server-portal.md) oder der [Azure CLI](./quickstart-create-server-cli.md) verwalten. Außerdem sind die folgenden gespeicherten Prozeduren in Azure Database for MySQL verfügbar, um bestimmte Datenbankverwaltungsaufgaben auszuführen, die erforderlich sind, da Administratorrechte auf dem Server nicht unterstützt werden.
+
+|**Name der gespeicherten Prozedur**|**Eingabeparameter**|**Ausgabeparameter**|**Hinweis zur Verwendung**|
+|-----|-----|-----|-----|
+|*mysql.az_kill*|processlist_id|–|Entspricht dem Befehl [`KILL CONNECTION`](https://dev.mysql.com/doc/refman/8.0/en/kill.html). Beendet die der angegebenen „processlist_id“ zugeordnete Verbindung nach dem Beenden einer beliebigen Anweisung, die von der Verbindung ausgeführt wird.|
+|*mysql.az_kill_query*|processlist_id|–|Entspricht dem Befehl [`KILL QUERY`](https://dev.mysql.com/doc/refman/8.0/en/kill.html). Beendet die Anweisung, die derzeit von der Verbindung ausgeführt wird. Die Verbindung bleibt unverändert erhalten.|
+|*mysql.az_load_timezone*|–|–|Lädt [Zeitzonentabellen](../howto-server-parameters.md#working-with-the-time-zone-parameter), damit der `time_zone`-Parameter auf benannte Werte festgelegt werden kann (z. B. „USA/Pazifik“).|
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/17/2020
+ms.date: 04/02/2021
 ms.author: jeedes
-ms.openlocfilehash: 8435cab1855e9df871d17ff7fa393b6ab2cf0cb1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5f07e9dbd574d8a27e6048154c72b9afc24b6ba4
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98736338"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106286119"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netskope-administrator-console"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Netskope Administrator Console
 
@@ -42,8 +42,7 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 > [!NOTE]
 > Der Bezeichner dieser Anwendung ist ein fester Zeichenfolgenwert, daher kann in einem Mandanten nur eine Instanz konfiguriert werden.
 
-
-## <a name="adding-netskope-administrator-console-from-the-gallery"></a>Hinzufügen von Netskope Administrator Console aus dem Katalog
+## <a name="add-netskope-administrator-console-from-the-gallery"></a>Hinzufügen von Netskope Administrator Console aus dem Katalog
 
 Um die Integration von Netskope Administrator Console in Azure AD zu konfigurieren, müssen Sie Netskope Administrator Console aus dem Katalog zur Liste mit den verwalteten SaaS-Apps hinzufügen.
 
@@ -142,19 +141,19 @@ In diesem Abschnitt ermöglichen Sie B. Simon das einmalige Anmelden von Azure,
 
 1. Klicken Sie im linken Navigationsbereich auf **Settings** (Einstellungen).
 
-    ![Screenshot: Auswahl von „Settings“ (Einstellungen) im Navigationsbereich](./media/netskope-cloud-security-tutorial/config-settings.png)
+    ![Screenshot: Auswahl von „Settings“ (Einstellungen) im Navigationsbereich](./media/netskope-cloud-security-tutorial/configure-settings.png)
 
 1. Klicken Sie auf die Registerkarte **Administration**.
 
-    ![Screenshot: Auswahl von „Administration“ unter „Settings“ (Einstellungen)](./media/netskope-cloud-security-tutorial/config-administration.png)
+    ![Screenshot: Auswahl von „Administration“ unter „Settings“ (Einstellungen)](./media/netskope-cloud-security-tutorial/administration.png)
 
 1. Klicken Sie auf die Registerkarte **SSO**.
 
-    ![Screenshot: Auswahl von „SSO“ unter „Administration“](./media/netskope-cloud-security-tutorial/config-sso.png)
+    ![Screenshot: Auswahl von „SSO“ unter „Administration“](./media/netskope-cloud-security-tutorial/tab.png)
 
 1. Führen Sie im Abschnitt **Network Settings** (Netzwerkeinstellungen) die folgenden Schritte aus:
     
-    ![Screenshot: Abschnitt „Network Settings“ (Netzwerkeinstellungen), in dem Sie die beschriebenen Werte eingeben können](./media/netskope-cloud-security-tutorial/config-pasteurls.png)
+    ![Screenshot: Abschnitt „Network Settings“ (Netzwerkeinstellungen), in dem Sie die beschriebenen Werte eingeben können](./media/netskope-cloud-security-tutorial/network.png)
 
     a. Kopieren Sie den Wert im Feld **Assertion Consumer Service URL**, und fügen Sie ihn im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration** in das Textfeld **Antwort-URL** ein.
 
@@ -162,7 +161,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon das einmalige Anmelden von Azure,
 
 1. Klicken Sie im Abschnitt **SSO/SLO Settings** (SSO/SLO-Einstellungen) auf **EDIT SETTINGS** (EINSTELLUNGEN BEARBEITEN).
 
-    ![Screenshot: Abschnitt „SSO/SLO Settings“ (SSO/SLO-Einstellungen), in dem Sie „EDIT SETTINGS“ (EINSTELLUNGEN BEARBEITEN) auswählen können](./media/netskope-cloud-security-tutorial/config-editsettings.png)
+    ![Screenshot: Abschnitt „SSO/SLO Settings“ (SSO/SLO-Einstellungen), in dem Sie „EDIT SETTINGS“ (EINSTELLUNGEN BEARBEITEN) auswählen können](./media/netskope-cloud-security-tutorial/settings.png)
 
 1. Führen Sie im Popupfenster **Settings** die folgenden Schritte aus:
 
@@ -188,11 +187,11 @@ In diesem Abschnitt ermöglichen Sie B. Simon das einmalige Anmelden von Azure,
 
 1. Klicken Sie im linken Navigationsbereich auf **Settings** (Einstellungen).
 
-    ![Screenshot: Auswahl von „Settings“ (Einstellungen)](./media/netskope-cloud-security-tutorial/config-settings.png)
+    ![Screenshot: Auswahl von „Settings“ (Einstellungen)](./media/netskope-cloud-security-tutorial/configure-settings.png)
 
 1. Klicken Sie auf die Registerkarte **Active Platform** (Aktive Plattform).
 
-    ![Screenshot: Auswahl von „Active Platform“ (Aktive Plattform) unter „Settings“ (Einstellungen)](./media/netskope-cloud-security-tutorial/user1.png)
+    ![Screenshot: Auswahl von „Active Platform“ (Aktive Plattform) unter „Settings“ (Einstellungen)](./media/netskope-cloud-security-tutorial/user-1.png)
 
 1. Klicken Sie auf die Registerkarte **Benutzer**.
 

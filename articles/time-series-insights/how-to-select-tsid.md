@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 09/30/2020
+ms.date: 03/23/2021
 ms.custom: seodec18
-ms.openlocfilehash: c3f6f6a5ac1068f2eabca351e85376b8e16d1058
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 8aefa6efa5f10dae8a28e7126b91b7b5f6ac77a6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95016750"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104950738"
 ---
 # <a name="best-practices-for-choosing-a-time-series-id"></a>Bewährte Methoden für die Auswahl einer Time Series-ID
 
@@ -25,6 +25,11 @@ Dieser Artikel fasst die Wichtigkeit der Time Series-ID für Ihre Azure Time Ser
 
 Die Auswahl einer geeigneten Time Series-ID ist entscheidend. Das Auswählen einer Time Series-ID ist wie das Auswählen eines Partitionsschlüssels für eine Datenbank. Dies ist erforderlich, wenn Sie eine Azure Time Series Insights Gen2-Umgebung erstellen.
 
+Sehen Sie sich das Tutorial zur Umgebungsbereitstellung an, das eine ausführliche Erläuterung der Zeitreihen-ID umfasst. Sie sehen zwei verschiedene Beispiele für JSON-Telemetrienutzdaten mit jeweils der richtigen Auswahl der Zeitreihen-ID.</br>
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RWzk3P]
+
+
 > [!IMPORTANT]
 > Für Zeitreihen-IDs gilt Folgendes:
 >
@@ -32,11 +37,11 @@ Die Auswahl einer geeigneten Time Series-ID ist entscheidend. Das Auswählen ein
 > * Sie sind *unveränderliche* Eigenschaften: Nach dem Erstellen können sie nicht mehr geändert werden.
 
 > [!TIP]
-> Wenn es sich bei Ihrer Ereignisquelle um einen IoT-Hub handelt, lautet Ihre Zeitreihen-ID wahrscheinlich ***iothub-connection-device-id** _.
+> Wenn es sich bei Ihrer Ereignisquelle um einen IoT-Hub handelt, lautet Ihre Zeitreihen-ID wahrscheinlich ***iothub-connection-device-id***.
 
 Zu den wichtigsten bewährten Methoden gehören:
 
-_ Wählen Sie einen Partitionsschlüssel mit vielen unterschiedlichen Werten (z. B. Hunderten oder Tausenden) aus. In vielen Fällen kann dies die Geräte-ID, die Sensor-ID oder die Tag-ID in Ihrem JSON sein.
+* Wählen Sie einen Partitionsschlüssel mit vielen unterschiedlichen Werten (z. B. Hunderten oder Tausenden) aus. In vielen Fällen kann dies die Geräte-ID, die Sensor-ID oder die Tag-ID in Ihrem JSON sein.
 * Die Time Series-ID sollte auf Blattknotenebene Ihres [Zeitreihenmodells](./concepts-model-overview.md) eindeutig sein.
 * Das Zeichenlimit für die Zeichenfolge des Eigenschaftsnamens der Time Series-ID ist 128. Für den Eigenschaftswert der Time Series-ID ist das Zeichenlimit 1.024.
 * Wenn ein eindeutiger Eigenschaftswert für die Time Series-ID fehlt, wird er als Nullwert behandelt und folgt derselben Regel der Eindeutigkeitseinschränkung.

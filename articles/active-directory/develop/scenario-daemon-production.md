@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 8dc9bff86a07f3d4a0ec6fd224de6d5633165a6d
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: d903f04055d1607ee782bd502d99a8fd9cde87ca
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99582840"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104578446"
 ---
 # <a name="daemon-app-that-calls-web-apis---move-to-production"></a>Daemon-App, die Web-APIs aufruft (Übergang in die Produktion)
 
@@ -54,18 +54,43 @@ Sie müssen Ihren Kunden erklären, wie diese Vorgänge durchgeführt werden. We
 
     ![Topologie](media/scenario-daemon-app/damon-app-sample-web.svg)
 
+# <a name="java"></a>[Java](#tab/java)
+
+Arbeiten Sie den Schnellstart [Abrufen eines Tokens und Aufrufen der Microsoft Graph-API über eine Java-Konsolen-App anhand der Identität einer App](quickstart-v2-java-daemon.md) durch.
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+- Weitere Informationen finden Sie unter:
+  - Grundlegendes zur [Konfiguration](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-node/docs/configuration.md)
+  - Instanziieren von [ConfidentialClientApplication](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-node/docs/initialize-confidential-client-application.md)
+  - [Häufig gestellte Fragen](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-node/docs/faq.md)
+- Weitere Beispiele und Tutorials:
+  - [Beispiel für den Konsolen-Daemon des MSAL-Knotens](https://github.com/Azure-Samples/ms-identity-javascript-nodejs-console)
+
+# <a name="python"></a>[Python](#tab/python)
+
+Arbeiten Sie den Schnellstart [Abrufen eines Tokens und Aufrufen der Microsoft Graph-API über eine Python-Konsolen-App anhand der Identität einer App](quickstart-v2-python-daemon.md) durch.
+
 ---
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Im Folgenden finden Sie Links zu weiteren Informationen:
 
-# <a name="python"></a>[Python](#tab/python)
+# <a name="net"></a>[.NET](#tab/dotnet)
 
-Arbeiten Sie den Schnellstart [Abrufen eines Tokens und Aufrufen der Microsoft Graph-API über eine Python-Konsolen-App anhand der Identität einer App](./quickstart-v2-python-daemon.md) durch.
+Arbeiten Sie den Schnellstart [Abrufen eines Tokens und Aufrufen der Microsoft Graph-API über eine .NET Core-Konsolen-App anhand der Identität einer App](quickstart-v2-netcore-daemon.md) durch.
 
 # <a name="java"></a>[Java](#tab/java)
 
-Arbeiten Sie den Schnellstart [Abrufen eines Tokens und Aufrufen der Microsoft Graph-API über eine Java-Konsolen-App anhand der Identität einer App](./quickstart-v2-java-daemon.md) durch.
+Arbeiten Sie den Schnellstart [Abrufen eines Tokens und Aufrufen der Microsoft Graph-API über eine Java-Konsolen-App anhand der Identität einer App](quickstart-v2-java-daemon.md) durch.
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+Arbeiten Sie den Schnellstart [Abrufen eines Tokens und Aufrufen der Microsoft Graph-API über eine Node.js-Konsolen-App anhand der Identität einer App](quickstart-v2-nodejs-console.md) durch.
+
+# <a name="python"></a>[Python](#tab/python)
+
+Arbeiten Sie den Schnellstart [Abrufen eines Tokens und Aufrufen der Microsoft Graph-API über eine Python-Konsolen-App anhand der Identität einer App](quickstart-v2-python-daemon.md) durch.
 
 ---

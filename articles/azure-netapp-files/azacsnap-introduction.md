@@ -14,16 +14,25 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/14/2020
 ms.author: phjensen
-ms.openlocfilehash: b168167ce4f44d87c396746cca3f271f95f83163
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 4ba679459686340396e0e4d65344295c0fa9c4be
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97632124"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104869955"
 ---
 # <a name="what-is-azure-application-consistent-snapshot-tool-preview"></a>Grundlegendes zum Tool für konsistente Momentaufnahmen in Azure-Anwendungen für Azure NetApp Files (Vorschau)
 
-Das Tool für konsistente Momentaufnahmen in Azure-Anwendungen (AzAcSnap) ist ein Befehlszeilentool, mit dem Sie Datenschutz für Datenbanken von Drittanbietern (SAP HANA) in Linux-Umgebungen (z. B SUSE und RHEL) vereinfachen können.  
+Das Tools für konsistente Momentaufnahmen in Azure-Anwendungen (AzAcSnap) ist ein Befehlszeilentool, das den Datenschutz für Datenbanken von Drittanbietern ermöglicht, indem es die gesamte Orchestrierung abwickelt, die erforderlich ist, damit die Anwendungsdaten konsistent sind, bevor eine Speichermomentaufnahme erstellt wird, nach der die Daten in einem Betriebszustand zurückgegeben werden.
+
+## <a name="supported-platforms-and-os"></a>Unterstützte Plattformen und Betriebssysteme
+
+- **Datenbanken**
+  - SAP HANA (Details finden Sie in der [Unterstützungsmatrix](azacsnap-get-started.md#snapshot-support-matrix-from-sap))
+
+- **Betriebssysteme**
+  - SUSE Linux Enterprise Server 12 und höher
+  - Red Hat Enterprise Linux 7 und höher
 
 ## <a name="benefits-of-using-azacsnap"></a>Vorteile von AzAcSnap
 

@@ -9,12 +9,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: ac71d8d7830f1d740d0156886a364b1d53ab247f
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: d78b106464bfbd3c86b9899a5c3543eed5dc0924
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100519557"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104888956"
 ---
 # <a name="machine-learning-and-data-science-tools-on-azure-data-science-virtual-machines"></a>Tools für maschinelles Lernen und Data Science in virtuellen Azure-Data Science Virtual Machines
 Azure Data Science Virtual Machine-Instanzen (DSVMs) verfügen über ein umfangreiches Angebot an Tools und Bibliotheken für maschinelles Lernen in gängigen Sprachen wie Python, R und Julia.
@@ -99,7 +99,7 @@ Es gibt mehrere weitere Machine Learning-Bibliotheken auf DSVMs, z. B. das beli
 | Unterstützte Editionen     | Windows, Linux     |
 | Typische Verwendung      | Allgemeine Bibliothek für maschinelles Lernen      |
 | Konfiguration/Installation      |  Installiert mit GPU-Unterstützung   |
-| Verwendung/Ausführung      | Als Python-Bibliothek (2.7 und 3.5), R-Paket und pfadbasiertes Befehlszeilentool (`C:\dsvm\tools\xgboost\bin\xgboost.exe` für Windows und `/dsvm/tools/xgboost/xgboost` für Linux)    |
+| Verwendung/Ausführung      | Als Python-Bibliothek (2.7 und 3.6 und höher ), R-Paket und pfadbasiertes Befehlszeilentool (`C:\dsvm\tools\xgboost\bin\xgboost.exe` für Windows und `/dsvm/tools/xgboost/xgboost` für Linux)    |
 | Links zu Beispielen      | Beispiele stehen auf dem virtuellen Computer unter `/dsvm/tools/xgboost/demo` (Linux) bzw. unter `C:\dsvm\tools\xgboost\demo` (Windows) zur Verfügung.   |
 | Verwandte Tools      | LightGBM, MXNet   |
 

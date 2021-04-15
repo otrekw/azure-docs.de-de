@@ -6,16 +6,16 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 01/19/2020
-ms.openlocfilehash: 45954a42613fb1716e3b66305c0485a3966b8e37
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 232475c50ab56fe6fb7a39a3497a8de3947fe851
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753687"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104780309"
 ---
 # <a name="assess-large-numbers-of-physical-servers-for-migration-to-azure"></a>Bewerten einer großen Anzahl physischer Server für die Migration zu Azure
 
-In diesem Artikel wird beschrieben, wie eine große Anzahl lokaler physischer Server mithilfe des Azure Migrate-Serverbewertungstools für die Migration zu Azure bewertet wird.
+In diesem Artikel wird beschrieben, wie eine große Anzahl lokaler physischer Server mithilfe des Ermittlungs- und Bewertungstools von Azure Migrate für die Migration zu Azure bewertet wird.
 
 [Azure Migrate](migrate-services-overview.md) stellt einen Hub mit Tools bereit, die Ihnen dabei helfen, Apps, Infrastrukturen und Workloads zu ermitteln, zu bewerten und zu Microsoft Azure zu migrieren. Der Hub umfasst Azure Migrate-Tools sowie Angebote von unabhängigen Drittanbietern (Independent Software Vendors, ISVs). 
 
@@ -36,7 +36,7 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 Bei der Planung für die Bewertung einer großen Anzahl von physischen Servern sind einige Dinge zu berücksichtigen:
 
 - **Planen von Azure Migrate-Projekten**: Finden Sie heraus, wie Azure Migrate-Projekte bereitgestellt werden. Wenn sich Ihre Rechenzentren beispielsweise in verschiedenen geografischen Regionen befinden oder Sie ermittlungs-, bewertungs- oder migrationsspezifische Metadaten in einer anderen geografischen Region speichern müssen, benötigen Sie möglicherweise mehrere Projekte.
-- **Planen von Appliances**: Azure Migrate verwendet eine lokale Azure Migrate-Appliance, die auf einem Windows-Computer bereitgestellt wird, um Server kontinuierlich für die Bewertung und Migration zu identifizieren. Die Appliance überwacht Umgebungsänderungen wie z.B. das Hinzufügen von VMs, Datenträgern oder Netzwerkadaptern. Sie sendet außerdem deren Meta- und Leistungsdaten an Azure. Sie müssen herausfinden, wie viele Appliances bereitgestellt werden sollen.
+- **Planen von Appliances**: Azure Migrate verwendet eine lokale Azure Migrate-Appliance, die auf einem Windows-Server bereitgestellt wird, um Server kontinuierlich für die Bewertung und Migration zu identifizieren. Die Appliance überwacht Umgebungsänderungen wie z. B. das Hinzufügen von Servern, Datenträgern oder Netzwerkadaptern. Sie sendet außerdem deren Meta- und Leistungsdaten an Azure. Sie müssen herausfinden, wie viele Appliances bereitgestellt werden sollen.
 
 
 ## <a name="planning-limits"></a>Planen von Einschränkungen
@@ -57,7 +57,7 @@ Orientieren Sie sich bei der Planung an den in dieser Tabelle zusammengefassten 
 
 ## <a name="prepare-for-assessment"></a>Vorbereiten für die Bewertung
 
-Bereiten Sie Azure und die physischen Server auf die Serverbewertung vor. 
+Vorbereiten von Azure und physischen Servern für das Ermittlungs- und Bewertungstool:  
 
 1. Überprüfen Sie die [Unterstützungsanforderungen und -einschränkungen für physische Server](migrate-support-matrix-physical.md).
 2. Richten Sie Berechtigungen für Ihr Azure-Konto zur Interaktion mit Azure Migrate ein.
@@ -70,7 +70,7 @@ Befolgen Sie die Anweisungen in [diesem Tutorial](./tutorial-discover-physical.m
 Führen Sie in Übereinstimmung mit Ihren Planungsanforderungen folgende Schritte aus:
 
 1. Erstellen eines Azure Migrate-Projekts
-2. Fügen Sie den Projekten das Azure Migrate-Serverbewertungstool hinzu.
+2. Hinzufügen des Ermittlungs- und Bewertungstools von Azure Migrate zu den Projekten
 
 [Weitere Informationen](./create-manage-projects.md)
 
