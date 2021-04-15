@@ -7,16 +7,16 @@ manager: CelesteDG
 ms.service: app-service-web
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 11/09/2020
+ms.date: 04/02/2021
 ms.author: ryanwi
 ms.reviewer: stsoneff
 ms.custom: azureday1
-ms.openlocfilehash: a8bd2ef1348692bf57f7e5cb7b6606cfcfd324fe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b17cb6906a37d2cab4383fac18400b35dc8adb2f
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96905569"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106223183"
 ---
 # <a name="tutorial-add-authentication-to-your-web-app-running-on-azure-app-service"></a>Tutorial: Hinzufügen der Authentifizierung zu Ihrer Web-App in Azure App Service
 
@@ -41,7 +41,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Für dieses Tutorial benötigen Sie eine in App Service bereitgestellte Web-App. Sie können eine vorhandene Web-App verwenden oder die [ASP.NET Core-Schnellstartanleitung](quickstart-dotnetcore.md) befolgen, um eine neue Web-App für App Service zu erstellen und zu veröffentlichen.
 
-Unabhängig davon, ob Sie eine vorhandene Web-App verwenden oder eine neue erstellen, sollten Sie sich den Namen der Web-App und den Namen der Ressourcengruppe notieren, in der die Web-App bereitgestellt wurde. Sie benötigen diese Namen in diesem Tutorial. Im gesamten Tutorial enthalten die Beispielnamen in Prozeduren und Screenshots die Zeichenfolge *SecureWebApp*.
+Unabhängig davon, ob Sie eine vorhandene Web-App verwenden oder eine neue erstellen, sollten Sie sich den Namen der Web-App und den Namen der Ressourcengruppe notieren, in der die Web-App bereitgestellt wurde. Sie benötigen diese Namen in diesem Tutorial. 
 
 ## <a name="configure-authentication-and-authorization"></a>Konfigurieren der Authentifizierung und Autorisierung
 
@@ -53,17 +53,19 @@ Navigieren Sie in **Ressourcengruppen** zu Ihrer Ressourcengruppe, und wählen S
 
 :::image type="content" alt-text="Screenshot: Auswählen der Verwaltungsseite Ihrer App" source="./media/scenario-secure-app-authentication-app-service/select-app-service.png":::
 
-Klicken Sie im linken Menü Ihrer App auf **Authentifizierung/Autorisierung**, und aktivieren Sie anschließend die App Service-Authentifizierung, indem Sie **Ein** auswählen.
+Wählen Sie im linken Menü der APP **Authentifizierung** aus, und klicken Sie dann auf **Identitäts Anbieter hinzufügen**.
 
-Wählen Sie unter **Die auszuführende Aktion, wenn die Anforderung nicht authentifiziert ist** die Option **Mit Azure Active Directory anmelden**.
+Wählen Sie auf der Seite **Identitäts Anbieter hinzufügen die Option** **Microsoft** als **Identitäts Anbieter** aus, um Microsoft-und Azure AD Identitäten anzumelden.
 
-Wählen Sie unter **Authentifizierungsanbieter** die Option **Azure Active Directory** aus. Wählen Sie **Express** aus, und übernehmen Sie die Standardeinstellungen, um eine neue Active Directory-App zu erstellen. Klicken Sie auf **OK**.
+Wählen Sie für **App** Registration App Registration  >  **Type** die Option **Create New App Registration** aus.
 
-:::image type="content" alt-text="Screenshot: Express-Authentifizierung" source="./media/scenario-secure-app-authentication-app-service/configure-authentication.png":::
+Wählen Sie für die **App-Registrierung**  >  **unterstützte Konto Typen** die Option **Aktueller Mandant-einzelner** Mandant aus.
 
-Wählen Sie auf der Seite **Authentifizierung/Autorisierung** die Option **Speichern** aus.
+Belassen Sie im Abschnitt "Einstellungen für die **App Service Authentifizierung** " die **Einstellung Authentifizierung** **erforderlich**, und **nicht authentifizierte Anforderungen** auf **HTTP 302-Umleitung finden: empfohlen für Websites**.
 
-Aktualisieren Sie die Portalseite, wenn die Benachrichtigung mit der Meldung `Successfully saved the Auth Settings for <app-name> App` angezeigt wird.
+Klicken Sie am unteren Rand der Seite **Identitäts Anbieter hinzufügen** auf **Hinzufügen**, um die Authentifizierung für Ihre Web-App zu aktivieren.
+
+:::image type="content" alt-text="Screenshot: Konfigurieren einer Authentifizierung." source="./media/scenario-secure-app-authentication-app-service/configure-authentication.png":::
 
 Sie verfügen nun über eine App, die per App Service-Authentifizierung und -Autorisierung geschützt ist.
 

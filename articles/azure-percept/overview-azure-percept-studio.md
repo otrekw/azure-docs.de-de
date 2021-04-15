@@ -1,39 +1,37 @@
 ---
 title: Übersicht über Azure Percept Studio
 description: Weitere Informationen zu Azure Percept Studio
-author: elqu20
-ms.author: v-elqu
+author: mimcco
+ms.author: mimcco
 ms.service: azure-percept
 ms.topic: conceptual
-ms.date: 02/18/2021
+ms.date: 03/23/2021
 ms.custom: template-concept
-ms.openlocfilehash: d850b47078f504b8ccb23d8c0a43811e99dc71d8
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: e6f9641179a9c2490dcb65316a80b4ba7fd4b639
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102098348"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105567694"
 ---
 # <a name="azure-percept-studio-overview"></a>Übersicht über Azure Percept Studio
 
-Azure Percept Studio ist der einzelne Startpunkt zum Erstellen von Edge-KI-Modellen und -Lösungen. Mit Azure Percept Studio können Sie geführte Workflows entdecken und absolvieren, die die Integration von Edge-KI-fähiger Hardware und leistungsfähigen Azure KI- und IoT-Clouddiensten erleichtern.
+[Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819) ist der einzelne Startpunkt zum Erstellen von Edge-KI-Modellen und -Lösungen. Mit Azure Percept Studio können Sie geführte Workflows entdecken und absolvieren, die die Integration von Edge-KI-fähiger Hardware und leistungsfähigen Azure KI- und IoT-Clouddiensten erleichtern.
 
-In Studio können Sie Ihre Edge-KI-fähigen Geräte als Endpunkte für die Erfassung anfänglicher und fortlaufender Trainingsdaten sowie als Bereitstellungsziele für Modelliterationen anzeigen. Der Zugriff auf Geräte und Trainingsdaten ermöglicht schnelle Prototypenerstellung und iterative Edge-AI-Modellentwicklung für sowohl [Vision](./tutorial-nocode-vision.md)- als auch [Sprach](./tutorial-no-code-speech.md)szenarien.
+In Studio können Sie Ihre Edge-KI-fähigen Geräte als Endpunkte für die Erfassung anfänglicher und fortlaufender Trainingsdaten sowie als Bereitstellungsziele für Modelliterationen anzeigen. Der Zugriff auf Geräte und Trainingsdaten ermöglicht eine schnelle Prototypenerstellung und iterative Edge-KI-Modellentwicklung für Szenarios in den Bereichen [maschinelles Sehen](./tutorial-nocode-vision.md) und [Sprache](./tutorial-no-code-speech.md).
 
-:::image type="content" source="./media/overview-azure-percept-studio/percept-studio-flow.png" alt-text="Flow von der Startseite in Azure Percept Studio":::
+Die Workflows in Azure Percept Studio integrieren viele Azure KI- und IoT-Dienste wie Azure IoT Hub, Custom Vision, Speech Studio und Azure ML, sodass Sie diese Dienste verwenden können, um ohne wesentliche Vorkenntnisse eine Komplettlösung zu erstellen. Wenn Sie mit diesen Azure-Diensten bereits vertraut sind, können Sie auch eine Verbindung mit vorhandenen Ressourcen aus Azure-Diensten außerhalb von Azure Percept Studio herstellen und diese ändern.
 
-Die Workflows in Azure Percept Studio integrieren viele zugrunde liegende Azure KI- und IoT-Dienste wie Azure IoT Hub, Custom Vision, Speech Studio und Azure ML Services, sodass Sie diese Dienste verwenden können, um eine End-to-End-Lösung zu erstellen, ohne dass wesentliche Vorkenntnisse vorhanden sein müssten. Wenn Sie mit diesen Azure-Diensten bereits vertraut sind, können Sie auch eine Verbindung mit vorhandenen Ressourcen außerhalb von Azure Percept Studio herstellen und diese ändern.
+Unabhängig davon, ob Sie Anfänger sind oder über fortgeschrittene Kenntnisse in Bezug auf das Entwickeln komplexer KI-Modelle und -Lösungen verfügen, an einem Prototyp arbeiten oder zu einer Produktionslösung wechseln: Azure Percept Studio bietet Zugriff auf Workflows, die Sie verwenden können, um die Schwierigkeiten beim Erstellen von Edge-KI-Lösungen zu reduzieren.
 
-:::image type="content" source="./media/overview-azure-percept-studio/device-flow.png" alt-text="Gerätefluss in Azure Percept Studio.":::
+## <a name="video-walkthrough"></a>Exemplarische Vorgehensweise per Video
 
-Unabhängig davon, ob Sie Anfänger oder schon fortgeschrittener sind bei der Entwicklung komplexer KI-Modelle und -Lösungen, ob Sie an einem Prototyp arbeiten oder zu einer Produktionslösung wechseln – Azure Percept Studio bietet für Sprach- und Vision-Edge-KI Zugriff auf Workflows, die Sie verwenden können, um die Reibungsverluste beim Erstellen von Edge-KI-Lösungen zu verringern.
+</br>
 
-:::image type="content" source="./media/overview-azure-percept-studio/image-flow.png" alt-text="Bildaufnahmefluss in Azure Percept Studio.":::
+> [!VIDEO https://www.youtube.com/embed/rZsUuCytZWY]
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-<!-- [here](https://go.microsoft.com/fwlink/?linkid=2135819). -->
-
+- Erkunden von [Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819)
 - Holen Sie sich das Azure Percept DK und das Azure Percept-Audiozubehör im [Microsoft Online Store](https://go.microsoft.com/fwlink/p/?LinkId=2155270).
-- Führen Sie die [Schnellstartanleitung](./quickstart-percept-dk-set-up.md) für die Azure Percept DK-Einrichtung aus.
-- Testen Sie die Tutorials zum Erstellen von [Vision](./tutorial-nocode-vision.md)- und [Sprach](./tutorial-no-code-speech.md)-Lösungen ohne Code.
+- Weitere Informationen zu [Azure Percept-KI-Modellen und -Lösungen](./overview-ai-models.md)

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 10/14/2019
-ms.openlocfilehash: 50a72d0400b23162e05b17b37bdad48783261072
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: ff963e661a2b258c1eb452ed63f41f4e7d84c6a0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944760"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104867779"
 ---
 # <a name="use-apache-zeppelin-to-run-apache-phoenix-queries-over-apache-hbase-in-azure-hdinsight"></a>Verwenden von Apache Zeppelin zum Ausführen von Apache Phoenix-Abfragen per Apache HBase in Azure HDInsight
 
@@ -30,68 +30,68 @@ Ein Apache HBase-Cluster in HDInsight. Weitere Informationen finden Sie unter [E
 
 1. Wählen Sie auf der Zeppelin-Seite die Option **Neue Notiz erstellen** aus.
 
-    ![HDInsight Interactive Query Zeppelin](./media/apache-hbase-phoenix-zeppelin/hbase-zeppelin-create-note.png)
+   :::image type="content" source="./media/apache-hbase-phoenix-zeppelin/hbase-zeppelin-create-note.png" alt-text="HDInsight Interactive Query Zeppelin" border="true":::
 
 1. Geben Sie im Dialogfeld **Neue Notiz erstellen** die folgenden Werte ein oder wählen Sie sie aus:
 
-    - Notizname: Geben Sie einen Namen für die Notiz ein.
-    - Standardinterpreter: Wählen Sie **jdbc** aus der Dropdownliste aus.
+   - „Note Name“ (Name der Notiz): Geben Sie einen Namen für die Notiz ein.
+   - „Default interpreter“ (Standardinterpreter): Wählen Sie **jdbc** aus der Dropdownliste aus.
 
-    Klicken Sie anschließend auf **Notiz erstellen**.
+   Klicken Sie anschließend auf **Notiz erstellen**.
 
 1. Stellen Sie sicher, dass im Header des Notebooks der Status „Verbunden“ angezeigt wird. Dies wird durch einen grünen Punkt in der oberen rechten Ecke angezeigt.
 
-    ![Zeppelin Notebook-Status](./media/apache-hbase-phoenix-zeppelin/hbase-zeppelin-connected.png "Zeppelin Notebook-Status")
+   :::image type="content" source="./media/apache-hbase-phoenix-zeppelin/hbase-zeppelin-connected.png" alt-text="Zeppelin Notebook-Status" border="true":::
 
 1. Erstellen Sie eine HBase-Tabelle. Geben Sie den folgenden Befehl ein, und drücken Sie dann **UMSCHALT+EINGABETASTE**:
 
-    ```sql
-    %jdbc(phoenix)
-    CREATE TABLE Company (
-        company_id INTEGER PRIMARY KEY,
-        name VARCHAR(225)
-    );
-    ```
+   ```sql
+   %jdbc(phoenix)
+   CREATE TABLE Company (
+       company_id INTEGER PRIMARY KEY,
+       name VARCHAR(225)
+   );
+   ```
 
-    Die Anweisung **%jdbc(phoenix)** in der ersten Zeile gibt dem Notebook an, dass es den Phoenix-JDBC-Interpreter verwenden soll.
+   Die Anweisung **%jdbc(phoenix)** in der ersten Zeile gibt dem Notebook an, dass es den Phoenix-JDBC-Interpreter verwenden soll.
 
 1. Sehen Sie sich die erstellten Tabellen an.
 
-    ```sql
-    %jdbc(phoenix)
-    SELECT DISTINCT table_name
-    FROM SYSTEM.CATALOG
-    WHERE table_schem is null or table_schem <> 'SYSTEM';
-    ```
+   ```sql
+   %jdbc(phoenix)
+   SELECT DISTINCT table_name
+   FROM SYSTEM.CATALOG
+   WHERE table_schem is null or table_schem <> 'SYSTEM';
+   ```
 
 1. Fügen Sie Werte in die Tabelle ein.
 
-    ```sql
-    %jdbc(phoenix)
-    UPSERT INTO dbo.Company VALUES(1, 'Microsoft');
-    UPSERT INTO dbo.Company (name, company_id) VALUES('Apache', 2);
-    ```
+   ```sql
+   %jdbc(phoenix)
+   UPSERT INTO dbo.Company VALUES(1, 'Microsoft');
+   UPSERT INTO dbo.Company (name, company_id) VALUES('Apache', 2);
+   ```
 
 1. Fragen Sie die Tabelle ab.
 
-    ```sql
-    %jdbc(phoenix)
-    SELECT * FROM dbo.Company;
-    ```
+   ```sql
+   %jdbc(phoenix)
+   SELECT * FROM dbo.Company;
+   ```
 
 1. Löschen Sie einen Datensatz.
 
-    ```sql
-    %jdbc(phoenix)
-    DELETE FROM dbo.Company WHERE COMPANY_ID=1;
-    ```
+   ```sql
+   %jdbc(phoenix)
+   DELETE FROM dbo.Company WHERE COMPANY_ID=1;
+   ```
 
 1. Löschen Sie die Tabelle.
 
-    ```sql
-    %jdbc(phoenix)
-    DROP TABLE dbo.Company;
-    ```
+   ```sql
+   %jdbc(phoenix)
+   DROP TABLE dbo.Company;
+   ```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

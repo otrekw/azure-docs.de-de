@@ -1,37 +1,32 @@
 ---
-title: Erstellen und Verwalten von Verschlüsselungsbereichen (Vorschauversion)
+title: Erstellen und Verwalten von Verschlüsselungsbereichen
 description: Erfahren Sie, wie Sie einen Verschlüsselungsbereich erstellen, um Blobdaten auf Container- oder Blobebene zu isolieren.
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 03/05/2021
+ms.date: 03/26/2021
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: d5590ff275ce821c81f5751f4d92972c49adaafc
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c29282637f6854248c98dff59f8fae46ad1a9d39
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102209590"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105640548"
 ---
-# <a name="create-and-manage-encryption-scopes-preview"></a>Erstellen und Verwalten von Verschlüsselungsbereichen (Vorschauversion)
+# <a name="create-and-manage-encryption-scopes"></a>Erstellen und Verwalten von Verschlüsselungsbereichen
 
-Verschlüsselungsbereiche (Vorschauversion) ermöglichen Ihnen die Verwaltung der Verschlüsselung auf der Ebene einzelner Blobs oder Container. Ein Verschlüsselungsbereich isoliert Blobdaten in einer Secure Enclave innerhalb eines Speicherkontos. Sie können Verschlüsselungsbereiche verwenden, um sichere Grenzen zwischen Daten zu erstellen, die sich im selben Speicherkonto befinden, aber zu unterschiedlichen Kunden gehören. Weitere Informationen zu Verschlüsselungsbereichen finden Sie unter [Verschlüsselungsbereiche für Blobspeicher (Vorschau)](encryption-scope-overview.md).
+Verschlüsselungsbereiche ermöglichen die Verwaltung der Verschlüsselung auf der Ebene einzelner Blobs oder Container. Sie können Verschlüsselungsbereiche verwenden, um sichere Grenzen zwischen Daten zu erstellen, die sich im selben Speicherkonto befinden, aber zu unterschiedlichen Kunden gehören. Weitere Informationen zu Verschlüsselungsbereichen finden Sie unter [Verschlüsselungsbereiche für Blobspeicher](encryption-scope-overview.md).
 
 In diesem Artikel wird gezeigt, wie Sie einen Verschlüsselungsbereich erstellen. Darüber hinaus wird erläutert, wie Sie beim Erstellen eines Blobs oder Containers einen Verschlüsselungsbereich angeben.
-
-> [!IMPORTANT]
-> Verschlüsselungsbereiche befinden sich zurzeit in der **VORSCHAU**. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten rechtliche Bedingungen. Sie gelten für diejenigen Azure-Features, die sich in der Beta- oder Vorschauversion befinden oder aber anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
->
-> Achten Sie darauf, alle derzeit nicht benötigten Verschlüsselungsbereiche zu deaktivieren, um unerwartete Kosten zu vermeiden.
 
 [!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 ## <a name="create-an-encryption-scope"></a>Erstellen eines Verschlüsselungsbereichs
 
-Sie können Verschlüsselungsbereiche mit einem von Microsoft verwalteten Schlüssel oder mit einem kundenseitig verwalteten Schlüssel erstellen, der in Azure Key Vault oder in Azure Key Vault Managed Hardware Security Model (HSM) (Vorschauversion) gespeichert ist. Zum Erstellen eines Verschlüsselungsbereichs mit einem kundenseitig verwalteten Schlüssel müssen Sie zunächst einen Schlüsseltresor oder ein verwaltetes HSM erstellen und den Schlüssel hinzufügen, den Sie für den Bereich verwenden möchten. Für den Schlüsseltresor oder das verwaltete HSM muss der Löschschutz aktiviert sein. Außerdem muss sich der Schlüsseltresor oder das verwaltete HSM in derselben Region befinden wie das Speicherkonto.
+Sie können einen Verschlüsselungsbereich erstellen, der mit einem von Microsoft verwalteten Schlüssel oder mit einem kundenseitig verwalteten Schlüssel geschützt ist, der in Azure Key Vault oder in Azure Key Vault Managed Hardware Security Model (HSM) (Vorschauversion) gespeichert ist. Zum Erstellen eines Verschlüsselungsbereichs mit einem kundenseitig verwalteten Schlüssel müssen Sie zunächst einen Schlüsseltresor oder ein verwaltetes HSM erstellen und den Schlüssel hinzufügen, den Sie für den Bereich verwenden möchten. Für den Schlüsseltresor oder das verwaltete HSM muss der Löschschutz aktiviert sein. Außerdem muss sich der Schlüsseltresor oder das verwaltete HSM in derselben Region befinden wie das Speicherkonto.
 
 Ein Verschlüsselungsbereich wird bei der Erstellung immer automatisch aktiviert. Nach der Erstellung des Verschlüsselungsbereichs können Sie diesen beim Erstellen eines Blobs angeben. Sie können beim Erstellen eines Containers auch einen Standardverschlüsselungsbereich angeben, der automatisch für alle Blobs im Container gilt.
 
@@ -44,21 +39,15 @@ Führen Sie die folgenden Schritte aus, um einen Verschlüsselungsbereich im Azu
 1. Wählen Sie die Registerkarte **Verschlüsselungsbereiche** aus.
 1. Klicken Sie auf die Schaltfläche **Hinzufügen**, um einen neuen Verschlüsselungsbereich hinzuzufügen.
 1. Geben Sie im Bereich **Verschlüsselungsbereich erstellen** einen Namen für den neuen Bereich ein.
-1. Wählen Sie den Verschlüsselungstyp aus: **Von Microsoft verwaltete Schlüssel** oder **Kundenseitig verwaltete Schlüssel**.
+1. Wählen Sie den gewünschten Typ der Verschlüsselungsschlüsselunterstützung aus: **Von Microsoft verwaltete Schlüssel** oder **Kundenseitig verwaltete Schlüssel**.
     - Wenn Sie **Von Microsoft verwaltete Schlüssel** ausgewählt haben, klicken Sie auf **Erstellen**, um den Verschlüsselungsbereich zu erstellen.
-    - Wenn Sie **Kundenseitig verwaltete Schlüssel** ausgewählt haben, geben Sie einen Schlüsseltresor oder ein verwaltetes HSM, einen Schlüssel und die Schlüsselversion an, die für diesen Verschlüsselungsbereich verwendet werden sollen, wie in der folgenden Abbildung gezeigt.
+    - Wenn Sie **Kundenseitig verwaltete Schlüssel** ausgewählt haben, wählen Sie ein Abonnement aus, und geben Sie einen Schlüsseltresor oder ein verwaltetes HSM und einen Schlüssel an, die für diesen Verschlüsselungsbereich verwendet werden sollen, wie in der folgenden Abbildung gezeigt.
 
     :::image type="content" source="media/encryption-scope-manage/create-encryption-scope-customer-managed-key-portal.png" alt-text="Screenshot: Erstellen eines Verschlüsselungsbereichs über das Azure-Portal":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Installieren Sie zum Erstellen eines Verschlüsselungsbereichs mithilfe von PowerShell zunächst das Az.Storage-Vorschaumodul. Die Verwendung der aktuellen Vorschauversion wird empfohlen, Verschlüsselungsbereiche werden jedoch ab Version 1.13.4-preview unterstützt. Entfernen Sie alle anderen Versionen des Moduls Az.Storage.
-
-Mit dem folgenden Befehl wird das Modul Az.Storage [2.1.1-preview](https://www.powershellgallery.com/packages/Az.Storage/2.1.1-preview) installiert:
-
-```powershell
-Install-Module -Name Az.Storage -RequiredVersion 2.1.1-preview -AllowPrerelease
-```
+Installieren Sie zum Erstellen eines Verschlüsselungsbereichs mithilfe von PowerShell das PowerShell-Modul [Az.Storage](https://www.powershellgallery.com/packages/Az.Storage), Version 3.4.0 oder höher.
 
 ### <a name="create-an-encryption-scope-protected-by-microsoft-managed-keys"></a>Erstellen eines Verschlüsselungsbereichs, der durch von Microsoft verwaltete Schlüssel geschützt wird
 
@@ -89,9 +78,8 @@ Denken Sie daran, die Platzhalterwerte in diesem Beispiel durch Ihre eigenen Wer
 $rgName = "<resource-group>"
 $accountName = "<storage-account>"
 $keyVaultName = "<key-vault>"
-$keyUri = "<key-uri-with-version>"
+$keyUri = "<key-uri>"
 $scopeName2 = "customer2scope"
-
 
 # Assign a system managed identity to the storage account.
 $storageAccount = Set-AzStorageAccount -ResourceGroupName $rgName `
@@ -105,7 +93,9 @@ Set-AzKeyVaultAccessPolicy `
     -PermissionsToKeys wrapkey,unwrapkey,get
 ```
 
-Rufen Sie als Nächstes den Befehl **New-AzStorageEncryptionScope** mit dem Parameter `-KeyvaultEncryption` auf, und geben Sie den Schlüssel-URI an. Geben Sie unbedingt die Schlüsselversion im Schlüssel-URI an. Denken Sie daran, die Platzhalterwerte in diesem Beispiel durch Ihre eigenen Werte zu ersetzen:
+Rufen Sie als Nächstes den Befehl **New-AzStorageEncryptionScope** mit dem Parameter `-KeyvaultEncryption` auf, und geben Sie den Schlüssel-URI an. Das Einbeziehen der Schlüsselversion in den Schlüssel-URI ist optional. Wenn Sie die Schlüsselversion auslassen, verwendet der Verschlüsselungsbereich automatisch die neueste Schlüsselversion. Wenn Sie die Schlüsselversion mit einbeziehen, dann müssen Sie die Schlüsselversion manuell aktualisieren, um eine andere Version zu verwenden.
+
+Denken Sie daran, die Platzhalterwerte in diesem Beispiel durch Ihre eigenen Werte zu ersetzen:
 
 ```powershell
 New-AzStorageEncryptionScope -ResourceGroupName $rgName `
@@ -117,7 +107,7 @@ New-AzStorageEncryptionScope -ResourceGroupName $rgName `
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/cli)
 
-Installieren Sie zum Erstellen eines Verschlüsselungsbereichs mit der Azure CLI zunächst mindestens Version 2.4.0 der CLI.
+Installieren Sie zum Erstellen eines Verschlüsselungsbereichs mit der Azure CLI zunächst mindestens Version 2.20.0 der CLI.
 
 ### <a name="create-an-encryption-scope-protected-by-microsoft-managed-keys"></a>Erstellen eines Verschlüsselungsbereichs, der durch von Microsoft verwaltete Schlüssel geschützt wird
 
@@ -163,7 +153,9 @@ az keyvault set-policy \
     --key-permissions get unwrapKey wrapKey
 ```
 
-Rufen Sie als Nächstes den Befehl **az storage account encryption-scope create** mit dem Parameter `--key-uri` auf, und geben Sie den Schlüssel-URI an. Geben Sie unbedingt die Schlüsselversion im Schlüssel-URI an. Denken Sie daran, die Platzhalterwerte in diesem Beispiel durch Ihre eigenen Werte zu ersetzen:
+Rufen Sie als Nächstes den Befehl **az storage account encryption-scope create** mit dem Parameter `--key-uri` auf, und geben Sie den Schlüssel-URI an. Das Einbeziehen der Schlüsselversion in den Schlüssel-URI ist optional. Wenn Sie die Schlüsselversion auslassen, verwendet der Verschlüsselungsbereich automatisch die neueste Schlüsselversion. Wenn Sie die Schlüsselversion mit einbeziehen, dann müssen Sie die Schlüsselversion manuell aktualisieren, um eine andere Version zu verwenden.
+
+Denken Sie daran, die Platzhalterwerte in diesem Beispiel durch Ihre eigenen Werte zu ersetzen:
 
 ```azurecli-interactive
 az storage account encryption-scope create \
@@ -176,7 +168,10 @@ az storage account encryption-scope create \
 
 ---
 
-Informationen zum Konfigurieren der Azure Storage-Verschlüsselung mit kundenseitig verwalteten Schlüsseln in einem Schlüsseltresor finden Sie unter [Konfigurieren der Verschlüsselung mit kundenseitig verwalteten Schlüsseln, die in Azure Key Vault gespeichert sind](../common/customer-managed-keys-configure-key-vault.md). Informationen zum Konfigurieren von kundenseitig verwalteten Schlüsseln in einem verwalteten HSM finden Sie unter [Konfigurieren der Verschlüsselung mit kundenseitig verwalteten Schlüsseln, die in Azure Key Vault Managed HSM (Vorschau) gespeichert sind](../common/customer-managed-keys-configure-key-vault-hsm.md).
+Wie Sie die Azure Storage-Verschlüsselung mit kundenseitig verwalteten Schlüsseln in einem Schlüsseltresor oder verwalteten HSM konfigurieren können, erfahren Sie in den folgenden Artikeln:
+
+- [Konfigurieren der Verschlüsselung mit kundenseitig verwalteten Schlüsseln, die in Azure Key Vault gespeichert sind](../common/customer-managed-keys-configure-key-vault.md)
+- [Konfigurieren der Verschlüsselung mit kundenseitig verwalteten Schlüsseln, die in Azure Key Vault Managed HSM (Vorschau) gespeichert sind](../common/customer-managed-keys-configure-key-vault-hsm.md).
 
 ## <a name="list-encryption-scopes-for-storage-account"></a>Auflisten der Verschlüsselungsbereiche für das Speicherkonto
 
@@ -185,6 +180,10 @@ Informationen zum Konfigurieren der Azure Storage-Verschlüsselung mit kundensei
 Navigieren Sie zum Anzeigen der Verschlüsselungsbereiche für ein Speicherkonto im Azure-Portal zur Einstellung **Verschlüsselungsbereiche** für das Speicherkonto. In diesem Bereich können Sie einen Verschlüsselungsbereich aktivieren oder deaktivieren oder den Schlüssel für einen Verschlüsselungsbereich ändern.
 
 :::image type="content" source="media/encryption-scope-manage/list-encryption-scopes-portal.png" alt-text="Screenshot: Liste der Verschlüsselungsbereiche im Azure-Portal":::
+
+Zum Anzeigen von Details für einen kundenseitig verwalteten Schlüssel, einschließlich Schlüssel-URI und -version und ob die Schlüsselversion automatisch aktualisiert wird, folgen Sie dem Link in der Spalte **Schlüssel**.
+
+:::image type="content" source="media/encryption-scope-manage/customer-managed-key-details-portal.png" alt-text="Screenshot: Details für einen Schlüssel, der mit einem Verschlüsselungsbereich verwendet wird":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -217,7 +216,7 @@ az storage account encryption-scope list \
 
 Wenn Sie einen Container erstellen, können Sie einen standardmäßigen Verschlüsselungsbereich angeben. Blobs in diesem Container verwenden dann standardmäßig diesen Bereich.
 
-Ein einzelnes Blob kann mit einem eigenen Verschlüsselungsbereich erstellt werden, es sei denn, der Container ist so konfiguriert, dass er die Verwendung des Standardbereichs für alle Blobs erfordert.
+Ein einzelnes Blob kann mit einem eigenen Verschlüsselungsbereich erstellt werden, sofern der Container nicht so konfiguriert ist, dass alle Blobs den Standardbereich verwenden. Weitere Informationen finden Sie unter [Verschlüsselungsbereiche für Container und Blobs](encryption-scope-overview.md#encryption-scopes-for-containers-and-blobs).
 
 # <a name="portal"></a>[Portal](#tab/portal)
 
@@ -232,18 +231,15 @@ Wenn Sie einen Container mit einem Standardverschlüsselungsbereich im Azure-Por
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Wenn Sie einen Container mit einem Standardverschlüsselungsbereich mit PowerShell erstellen möchten, rufen Sie den Befehl [New-AzRmStorageContainer](/powershell/module/az.storage/new-azrmstoragecontainer) auf, und geben Sie dabei den Bereich für den Parameter `-DefaultEncryptionScope` an. Mit dem Befehl **New-AzRmStorageContainer** wird ein Container unter Verwendung des Azure Storage-Ressourcenanbieters erstellt. Dadurch werden die Konfiguration von Verschlüsselungsbereichen und andere Ressourcenverwaltungsvorgänge ermöglicht.
-
-Legen Sie den Parameter `-PreventEncryptionScopeOverride` auf `true` fest, um zu erzwingen, dass alle Blobs in einem Container den Standardbereich des Containers verwenden.
+Wenn Sie einen Container mit einem Standardverschlüsselungsbereich mit PowerShell erstellen möchten, rufen Sie den Befehl [New-AzStorageContainer](/powershell/module/az.storage/new-azstoragecontainer) auf, und geben Sie dabei den Bereich für den Parameter `-DefaultEncryptionScope` an. Legen Sie den Parameter `-PreventEncryptionScopeOverride` auf `true` fest, um zu erzwingen, dass alle Blobs in einem Container den Standardbereich des Containers verwenden.
 
 ```powershell
 $containerName1 = "container1"
-$containerName2 = "container2"
+$ctx = New-AzStorageContext -StorageAccountName $accountName -UseConnectedAccount
 
 # Create a container with a default encryption scope that cannot be overridden.
-New-AzRmStorageContainer -ResourceGroupName $rgName `
-    -StorageAccountName $accountName `
-    -Name $containerName1 `
+New-AzStorageContainer -Name $containerName1 `
+    -Context $ctx `
     -DefaultEncryptionScope $scopeName1 `
     -PreventEncryptionScopeOverride $true
 ```
@@ -286,22 +282,28 @@ Wenn Sie ein Blob hochladen und den Verschlüsselungsbereich über das Azure-Por
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Wenn Sie ein Blob hochladen und den Verschlüsselungsbereich mithilfe von PowerShell angeben möchten, rufen Sie den Befehl [Set-AzStorageBlobContent](/powershell/module/az.storage/set-azstorageblobcontent) auf, und geben Sie den Verschlüsselungsbereich für das Blob an.
+Wenn Sie ein Blob mit einem Verschlüsselungsbereich über PowerShell hochladen möchten, rufen Sie den Befehl [Set-AzStorageBlobContent](/powershell/module/az.storage/set-azstorageblobcontent) auf, und geben Sie den Verschlüsselungsbereich für das Blob an.
 
 ```powershell
 $containerName2 = "container2"
 $localSrcFile = "C:\temp\helloworld.txt"
-$ctx = (Get-AzStorageAccount -ResourceGroupName $rgName -StorageAccountName $accountName).Context
+$ctx = New-AzStorageContext -StorageAccountName $accountName -UseConnectedAccount
 
 # Create a new container with no default scope defined.
 New-AzStorageContainer -Name $containerName2 -Context $ctx
+
 # Upload a block upload with an encryption scope specified.
-Set-AzStorageBlobContent -Context $ctx -Container $containerName2 -File $localSrcFile -Blob "helloworld.txt" -BlobType Block -EncryptionScope $scopeName2
+Set-AzStorageBlobContent -Context $ctx `
+    -Container $containerName2 `
+    -File $localSrcFile `
+    -Blob "helloworld.txt" `
+    -BlobType Block `
+    -EncryptionScope $scopeName2
 ```
 
-# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/cli)
 
-Wenn Sie ein Blob hochladen und den Verschlüsselungsbereich mithilfe der Azure CLI angeben möchten, rufen Sie den Befehl [az storage blob upload](/cli/azure/storage/blob#az-storage-blob-upload) auf, und geben Sie den Verschlüsselungsbereich für das Blob an.
+Wenn Sie ein Blob mit einem Verschlüsselungsbereich über die Azure CLI hochladen möchten, rufen Sie den Befehl [az storage blob upload](/cli/azure/storage/blob#az-storage-blob-upload) auf, und geben Sie den Verschlüsselungsbereich für das Blob an.
 
 Wenn Sie Azure Cloud Shell verwenden, führen Sie die unter [Hochladen eines Blobs](storage-quickstart-blobs-cli.md#upload-a-blob) beschriebenen Schritte aus, um eine Datei im Stammverzeichnis zu erstellen. Anschließend können Sie diese Datei mithilfe des folgenden Beispiels in ein Blob hochladen:
 
@@ -406,10 +408,13 @@ az storage account encryption-scope update \
     --state Disabled
 ```
 
+> [!IMPORTANT]
+> Das Löschen eines Verschlüsselungsbereichs ist nicht möglich. Achten Sie darauf, alle derzeit nicht benötigten Verschlüsselungsbereiche zu deaktivieren, um unerwartete Kosten zu vermeiden.
+
 ---
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Azure Storage encryption for data at rest (Azure Storage-Verschlüsselung für ruhende Daten)](../common/storage-service-encryption.md)
-- [Verschlüsselungsbereiche für Blobspeicher (Vorschau)](encryption-scope-overview.md)
+- [Verschlüsselungsbereiche für Blobspeicher](encryption-scope-overview.md)
 - [Kundenseitig verwaltete Schlüssel für die Azure Storage-Verschlüsselung](../common/customer-managed-keys-overview.md)

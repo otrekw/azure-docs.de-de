@@ -11,16 +11,16 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 03/08/2021
 ms.custom: how-to, devx-track-python, data4ml, synapse-azureml
-ms.openlocfilehash: dd62fb5e3c7450d50b9837ee5484ca480cab78aa
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 511ee1aa5f5036f5ca5450def0e4481c0608db33
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105640831"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107227346"
 ---
 # <a name="link-azure-synapse-analytics-and-azure-machine-learning-workspaces-preview"></a>Verknüpfen von Azure Synapse Analytics- und Azure Machine Learning-Arbeitsbereichen (Vorschauversion)
 
-In diesem Artikel wird beschrieben, wie Sie einen verknüpften Dienst erstellen, mit dem Ihr [Azure Synapse Analytics-Arbeitsbereich](/synapse-analytics/overview-what-is.md) und [Azure Machine Learning-Arbeitsbereich](concept-workspace.md) verknüpft werden.
+In diesem Artikel wird beschrieben, wie Sie einen verknüpften Dienst erstellen, mit dem Ihr [Azure Synapse Analytics-Arbeitsbereich](/azure/synapse-analytics/overview-what-is) und [Azure Machine Learning-Arbeitsbereich](concept-workspace.md) verknüpft werden.
 
 Nachdem Ihr Azure Machine Learning-Arbeitsbereich mit Ihrem Azure Synapse-Arbeitsbereich verknüpft wurde, können Sie einen Apache Spark-Pool als dedizierte Compute-Umgebung für Data Wrangling im großen Stil anfügen und das Modelltraining über dasselbe Notebook durchführen.
 

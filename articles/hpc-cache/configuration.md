@@ -1,30 +1,33 @@
 ---
 title: Konfigurieren von Azure HPC Cache-Einstellungen
-description: Erläutert, wie zusätzliche Einstellungen für den Cache konfiguriert werden, z. B. MTU und no-root-squash, und wie auf die Expressmomentaufnahmen von Azure Blob Storage-Zielen zugegriffen wird.
+description: In diesem Artikel wird erläutert, wie Sie zusätzliche Einstellungen wie die MTU-, benutzerdefinierte NTP- und DNS-Konfiguration für den Cache konfigurieren und auf die Expressmomentaufnahmen von Azure Blob Storage-Zielen zugreifen.
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 12/21/2020
+ms.date: 03/17/2021
 ms.author: v-erkel
-ms.openlocfilehash: 02bf862cdc3b20ef3e5fdb024f474267efa0c70d
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.openlocfilehash: 6e1e1283cb82dcb900da6473de65ef087a5cea82
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97760502"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104773231"
 ---
 # <a name="configure-additional-azure-hpc-cache-settings"></a>Konfigurieren zusätzlicher Azure HPC Cache-Einstellungen
 
-Auf der Seite **Konfiguration** im Azure-Portal finden Sie Optionen zum Anpassen mehrerer Einstellungen. Die meisten Benutzer müssen für diese Einstellungen keine Änderungen gegenüber den Standardwerten vornehmen.
+Auf der Seite **Netzwerk** im Azure-Portal finden Sie Optionen zum Anpassen mehrerer Einstellungen. Die meisten Benutzer müssen für diese Einstellungen keine Änderungen gegenüber den Standardwerten vornehmen.
 
 In diesem Artikel wird außerdem beschrieben, wie Sie die Momentaufnahmefunktion für Azure Blob Storage-Ziel verwenden. Die Momentaufnahmefunktion besitzt keine konfigurierbaren Einstellungen.
 
-Um die Einstellungen anzuzeigen, öffnen Sie die Seite **Konfiguration** des Caches im Azure-Portal.
+Öffnen Sie die Seite **Netzwerk** des Caches im Azure-Portal, um die Einstellungen anzuzeigen.
 
-![Screenshot der Seite „Konfiguration“ im Azure-Portal](media/configuration.png)
+![Screenshot: Seite „Netzwerk“ im Azure-Portal](media/networking-page.png)
 
-> [!TIP]
-> Im [Video „Verwalten von Azure HPC Cache“](https://azure.microsoft.com/resources/videos/managing-hpc-cache/) sehen Sie die Konfigurationsseite und deren Einstellungen.
+> [!NOTE]
+> Eine frühere Version dieser Seite umfasste eine Root-Squash-Einstellung auf Cacheebene, jedoch wurde diese Einstellung zu den [Clientzugriffsrichtlinien](access-policies.md) verschoben.
+
+<!-- >> [!TIP]
+> The [Managing Azure HPC Cache video](https://azure.microsoft.com/resources/videos/managing-hpc-cache/) shows the networking page and its settings. -->
 
 ## <a name="adjust-mtu-value"></a>Anpassen des MTU-Werts
 <!-- linked from troubleshoot-nas article -->
@@ -42,21 +45,41 @@ Wenn Sie die MTU-Einstellungen für andere Systemkomponenten nicht ändern möch
 
 Weitere Informationen zu den MTU-Einstellungen in virtuellen Azure-Netzwerken finden Sie unter [Optimierung der TCP/IP-Leistung für Azure-VMs](../virtual-network/virtual-network-tcpip-performance-tuning.md).
 
-## <a name="configure-root-squash"></a>Konfigurieren von Root-Squash
-<!-- linked from troubleshoot and from access policies -->
+## <a name="customize-ntp"></a>Anpassen von NTP
 
-Die Einstellung **Root-Squash aktivieren** steuert, wie Azure HPC Cache Anforderungen des Stammbenutzers auf Clientcomputern verarbeitet.
+Ihr Cache verwendet standardmäßig den auf Azure basierenden Zeitserver time.microsoft.com. Wenn Sie Ihr Cache einen anderen NTP-Server verwenden soll, legen Sie diesen im Abschnitt **NTP-Konfiguration** fest. Verwenden Sie einen vollqualifizierten Domänennamen (FQDN) oder eine IP-Adresse.
 
-Wenn der Root-Squash aktiviert ist, werden Stammbenutzer auf einem Client automatisch dem Benutzer „Nobody“ (niemand) zugeordnet, wenn sie Anforderungen über Azure HPC Cache senden. Die Einstellung verhindert außerdem, dass Clientanforderungen set-UID-Berechtigungsbits verwenden.
+## <a name="set-a-custom-dns-configuration"></a>Festlegen einer benutzerdefinierten DNS-Konfiguration
 
-Bei deaktiviertem Root-Squash werden Anforderungen vom Stammbenutzer des Clients (UID 0) als Stamm an ein Back-End-NFS-Speichersystem übergeben. Diese Konfiguration kann einen unangemessenen Dateizugriff ermöglichen.
+> [!CAUTION]
+> Ändern Sie die DNS-Konfiguration Ihres Caches nicht, wenn dies nicht erforderlich ist. Konfigurationsfehler können maßgebliche Konsequenzen haben. Wenn Ihre Konfiguration keine Namen von Azure-Diensten auflösen kann, ist die HPC-Cache-Instanz dauerhaft nicht erreichbar.
 
-Wenn der Root-Squash für den Cache festgelegt wird, kann diese Einstellung dazu beitragen, die erforderliche Einstellung ``no_root_squash`` in NAS-Systemen auszugleichen, die als Speicherziele verwendet werden. (Weitere Informationen zu [Voraussetzungen für NFS-Speicherziele](hpc-cache-prerequisites.md#nfs-storage-requirements).) Außerdem kann dadurch die Sicherheit verbessert werden, wenn sie mit Azure-Blobspeicherzielen verwendet wird.
+Azure HPC Cache wird automatisch zur Verwendung des sicheren und praktischen Azure DNS-Systems konfiguriert. Allerdings erfordern einige ungewöhnliche Konfigurationen, dass der Cache anstelle des Azure-Systems ein separates lokales DNS-System verwendet. Der Abschnitt **DNS-Konfiguration** der Seite **Netzwerk** wird zum Festlegen dieser Art von System verwendet.
 
-Die Standardeinstellung ist **Ja**. (Caches, die vor April 2020 erstellt wurden, haben die Standardeinstellung **Nein**.)
+Wenden Sie sich an Azure-Vertriebsmitarbeiter oder den Microsoft-Dienstsupport, um in Erfahrung zu bringen, ob Sie eine benutzerdefinierte Cache-DNS-Konfiguration verwenden müssen.
 
-> [!TIP]
-> Sie können auch Root-Squash für bestimmte Speicherexporte festlegen, indem Sie [Clientzugriffsrichtlinien](access-policies.md#root-squash) anpassen.
+Wenn Sie Ihr eigenes lokales DNS-System für Azure HPC Cache konfigurieren, müssen Sie sicherstellen, dass die Konfiguration Azure-Endpunktnamen für Azure-Dienste auflösen kann. Sie müssen Ihre benutzerdefinierte DNS-Umgebung bei Bedarf zur Weiterleitung bestimmter Namensauflösungsanforderungen an Azure DNS oder einen anderen Server konfigurieren.
+
+Stellen Sie sicher, dass Ihre DNS-Konfiguration diese Elemente erfolgreich auflösen kann, bevor Sie sie für Azure HPC Cache verwenden:
+
+* ``*.core.windows.net``
+* Zertifikatssperrlisten-Download und OCSP-Überprüfungsdienste (Online Certificate Status-Protokoll) Im Abschnitt zu [Firewallregeln](../security/fundamentals/tls-certificate-changes.md#will-this-change-affect-me) des [Azure-TLS-Artikels](../security/fundamentals/tls-certificate-changes.md) wird eine unvollständige Liste bereitgestellt, Sie sollten sich jedoch an einen technischen Vertreter von Microsoft wenden, um Informationen zu allen Anforderungen zu erhalten.
+* Den vollqualifizierten Domänennamen Ihres NTP-Servers (time.microsoft.com oder ein benutzerdefinierter Server)
+
+Wenn Sie einen benutzerdefinierten DNS-Server für Ihren Cache festlegen müssen, verwenden Sie die bereitgestellten Felder:
+
+* **DNS-Suchdomäne** (optional): Geben Sie Ihre Suchdomäne ein, z. B. ``contoso.com``. Ein einzelner Wert ist zulässig. Alternativ können Sie diesen leer lassen.
+* **DNS-Server:** Geben Sie bis zu drei DNS-Server ein. Geben Sie diese anhand der IP-Adresse an.
+
+<!-- 
+  > [!NOTE]
+  > The cache will use only the first DNS server it successfully finds. -->
+
+Verwenden Sie einen Test-Cache, um das DNS-Setup zu überprüfen und zu verfeinern, bevor Sie es in einer Produktionsumgebung verwenden.
+
+### <a name="refresh-storage-target-dns"></a>Aktualisieren des Speicherziel-DNS
+
+Wenn Ihr DNS-Server IP-Adressen aktualisiert, sind die zugehörigen NFS-Speicherziele vorübergehend nicht verfügbar. Informationen zum Aktualisieren der IP-Adressen Ihres benutzerdefinierten DNS-Systems finden Sie unter [Bearbeiten von Speicherzielen](hpc-cache-edit-storage.md#update-ip-address-custom-dns-configurations-only).
 
 ## <a name="view-snapshots-for-blob-storage-targets"></a>Anzeigen von Momentaufnahmen für Blobspeicherziele
 
@@ -73,10 +96,10 @@ Diese Funktion ist nur für Azure-Blobspeicherziele verfügbar, und Ihre Konfigu
 
 Momentaufnahmen werden alle acht Stunden (UTC 0:00, 08:00 und 16:00) erstellt.
 
-Azure HPC Cache speichert tägliche, wöchentliche und monatliche Momentaufnahmen, bis sie durch neue ersetzt werden. Die Limits sind:
+Azure HPC Cache speichert tägliche, wöchentliche und monatliche Momentaufnahmen, bis sie durch neue ersetzt werden. Die Aufbewahrungsfristen für Momentaufnahmen sind:
 
-* bis zu 20 tägliche Momentaufnahmen
-* bis zu 8 wöchentliche Momentaufnahmen
-* bis zu 3 monatliche Momentaufnahmen
+* Bis zu 20 tägliche Momentaufnahmen
+* Bis zu 8 wöchentliche Momentaufnahmen
+* Bis zu 3 monatliche Momentaufnahmen
 
-Der Zugriff auf die Momentaufnahmen erfolgt über das `.snapshot`-Verzeichnis im Namespace Ihres Blobspeicherziels.
+Greifen Sie auf die Momentaufnahmen aus dem `.snapshot` Verzeichnis im Stammverzeichnis des eingebundenen BLOB Storage-Ziels zu.

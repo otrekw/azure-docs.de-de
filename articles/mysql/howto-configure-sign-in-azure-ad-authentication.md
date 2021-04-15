@@ -1,17 +1,17 @@
 ---
 title: Verwenden von Azure Active Directory – Azure Database for MySQL
 description: Informieren Sie sich, wie Sie Azure Active Directory (Azure AD) für die Authentifizierung mit Azure Database for MySQL einrichten.
-author: lfittl-msft
-ms.author: lufittl
+author: sunilagarwal
+ms.author: sunila
 ms.service: mysql
 ms.topic: how-to
 ms.date: 07/23/2020
-ms.openlocfilehash: f5890ddb2a4b1599dbcfd1e624c9fbe71a564de7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 492e56e09129f9d47b863624cd72cd508801c143
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102442756"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105728265"
 ---
 # <a name="use-azure-active-directory-for-authentication-with-mysql"></a>Verwenden von Azure Active Directory für die Authentifizierung mit MySQL
 
@@ -78,7 +78,6 @@ Beispiel (für die öffentliche Cloud):
 ```azurecli-interactive
 az account get-access-token --resource https://ossrdbms-aad.database.windows.net
 ```
-
 Der oben genannte Ressourcenwert muss genau wie gezeigt angegeben werden. Für andere Clouds kann der Ressourcenwert wie folgt nachgeschlagen werden:
 
 ```azurecli-interactive
@@ -90,6 +89,13 @@ Für Version 2.0.71 oder höher der Azure CLI kann der Befehl in der folgenden, 
 ```azurecli-interactive
 az account get-access-token --resource-type oss-rdbms
 ```
+Mithilfe von PowerShell können Sie den folgenden Befehl verwenden, um ein Zugriffstoken abzurufen:
+
+```azurepowershell-interactive
+$accessToken = Get-AzAccessToken -ResourceUrl https://ossrdbms-aad.database.windows.net
+$accessToken.Token | out-file C:\temp\MySQLAccessToken.txt
+```
+
 
 Nachdem die Authentifizierung erfolgreich war, gibt Azure AD ein Zugriffstoken zurück:
 
@@ -105,13 +111,17 @@ Nachdem die Authentifizierung erfolgreich war, gibt Azure AD ein Zugriffstoken z
 
 Das Token ist eine Base-64-Zeichenfolge, die alle Informationen zum authentifizierten Benutzer codiert und die für den Azure Database for MySQL-Dienst bestimmt ist.
 
-> [!NOTE]
-> Die Gültigkeitsdauer des Zugriffstokens liegt zwischen 5 Minuten und 60 Minuten. Es wird empfohlen, das Zugriffstoken erst kurz vor dem Initiieren der Anmeldung bei Azure Database for MySQL abzurufen.
+Die Gültigkeitsdauer des Zugriffstokens liegt zwischen ***5 Minuten und 60 Minuten***. Es wird empfohlen, das Zugriffstoken erst kurz vor dem Initiieren der Anmeldung bei Azure Database for MySQL abzurufen. Sie können den folgenden PowerShell-Befehl verwenden, um die Gültigkeitsdauer des Tokens anzuzeigen. 
+
+```azurepowershell-interactive
+$accessToken.ExpiresOn.DateTime
+```
 
 ### <a name="step-3-use-token-as-password-for-logging-in-with-mysql"></a>Schritt 3: Verwenden des Tokens als Kennwort für die Anmeldung bei MySQL
 
 Beim Herstellen einer Verbindung müssen Sie das Zugriffstoken als MySQL-Benutzerkennwort verwenden. Wenn Sie GUI-Clients wie MySQLWorkbench verwenden, können Sie das Token mit der oben beschriebenen Methode abrufen. 
 
+#### <a name="using-mysql-cli"></a>Verwenden der MySQL CLI
 Bei Verwendung der CLI können Sie zum Herstellen einer Verbindung die folgende Kurzform verwenden: 
 
 **Beispiel (Linux/macOS):**
@@ -121,8 +131,15 @@ mysql -h mydb.mysql.database.azure.com \
   --enable-cleartext-plugin \ 
   --password=`az account get-access-token --resource-type oss-rdbms --output tsv --query accessToken`
 ```
+#### <a name="using-mysql-workbench"></a>Über MySQL Workbench
+* Starten Sie MySQL Workbench, und klicken Sie auf die Option „Database“ (Datenbank) und dann auf „Connect to database“ (Verbindung mit der Datenbank herstellen).
+* Geben Sie in das Feld „Hostname“ den MySQL-FQDN ein. Beispiel: mydb.mysql.database.azure.com
+* Geben Sie im Feld „username“ (Benutzername) den Namen des MySQL Azure Active Directory-Administrators ein, und fügen Sie diesen an den MySQL-Servernamen an, nicht an den FQDN. Beispiel: user@tenant.onmicrosoft.com@mydb.
+* Klicken Sie im Feld „Password“ (Kennwort) auf „Store in Vault“ (Im Tresor speichern), und fügen Sie das Zugriffstoken aus der Datei ein. Beispiel: „C:\temp\MySQLAccessToken.txt“.
+* Klicken Sie auf die Registerkarte „Advanced“ (Erweitert), und stellen Sie sicher, dass Sie „Enable Cleartext Authentication Plugin“ (Plug-In für die Klartextauthentifizierungs aktivieren) aktivieren.
+* Klicken Sie auf „OK“, um die Verbindung mit der Datenbank herzustellen.
 
-Wichtige Aspekte beim Herstellen einer Verbindung:
+#### <a name="important-considerations-when-connecting"></a>Wichtige Aspekte beim Herstellen einer Verbindung:
 
 * `user@tenant.onmicrosoft.com` ist der Name des Azure AD-Benutzers bzw. der Azure AD-Gruppe, mit dem oder der Sie die Verbindung herstellen möchten.
 * Fügen Sie dem Namen des Azure AD-Benutzers oder der Azure AD-Gruppe immer den Servernamen an (z. B. `@mydb`).

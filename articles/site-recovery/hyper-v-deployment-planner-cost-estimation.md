@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: 29457f2f5021fed9d8785f5764c4119de4be1fa9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8e5a1f727f32fda7740b958cb3f03a3a4a3ae03f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95999211"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105727551"
 ---
 # <a name="cost-estimation-report-by-azure-site-recovery-deployment-planner"></a>Azure Site Recovery-Bereitstellungsplaner-Bericht zur Kostenvorkalkulation 
 
@@ -168,13 +168,13 @@ eastus, eastus2, westus, centralus, northcentralus, southcentralus, northeurope,
 Der Site Recovery-Bereitstellungsplaner kann den Kostenbericht für die folgenden Währungen erstellen:
 
 |Währung|Name|Währung|Name|Währung|Name|
-|---|---|---|---|---|---|---|---|
+|---|---|---|---|---|---|
 |ARS|Argentinische Pesos ($)|AUD|Australischer Dollar ($)|BRL|Brasilianischer Real (R$)|
 |CAD|Kanadischer Dollar ($)|CHF|Schweizer Franken (CHF)|DKK|Dänische Krone (kr)|
-|EUR|Euro (€)|GBP|Britisches Pfund (£)|HKD|Hongkong-Dollar (HK$)|
+|EUR|Euro (&euro;)|GBP|Britisches Pfund (£)|HKD|Hongkong-Dollar (HK$)|
 |IDR|Indonesische Rupiah (Rp)|INR|Indische Rupie (₹)|JPY|Japanischer Yen (¥)|
 |KRW|Südkoreanische Won (₩)|MXN|Mexikanischer Peso (MX$)|MYR|Malaysischer Ringgit (RM$)|
-|NOK|Norwegische Krone (kr)||NZD|Neuseeländischer Dollar ($)||RUB|Russische Rubel (руб)|
+|NOK|Norwegische Krone (kr)|NZD|Neuseeländischer Dollar ($)|RUB|Russische Rubel (руб)|
 |SAR|Saudi-Riyal (SR)|SEK|Schwedische Krone (kr)|TWD|Taiwanesische Dollar (NT$)|
 |TRY|Türkische Lira (TL)|USD| US-Dollar ($)|ZAR|Südafrikanischer Rand (R)|
 

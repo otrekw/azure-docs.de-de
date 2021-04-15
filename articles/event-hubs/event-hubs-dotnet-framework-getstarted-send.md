@@ -4,12 +4,12 @@ description: 'Schnellstart: Dieser Artikel enthält eine exemplarische Vorgehens
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ea3ad7e90a947269833a03a4cacf3d4fe76a6620
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3c2ce58f86fa27544641c0917e96fa3172017232
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91334275"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107309355"
 ---
 # <a name="quickstart-send-events-to-or-receive-events-from-azure-event-hubs-using-net-framework"></a>Schnellstart: Senden von Ereignissen an oder Empfangen von Ereignissen aus Event Hubs mithilfe von .NET Framework
 Azure Event Hubs ist eine Big Data-Streamingplattform und ein Ereigniserfassungsdienst, der pro Sekunde Millionen von Ereignissen empfangen und verarbeiten kann. Event Hubs kann Ereignisse, Daten oder Telemetriedaten, die von verteilter Software und verteilten Geräten erzeugt wurden, verarbeiten und speichern. An einen Event Hub gesendete Daten können transformiert und mit einem beliebigen Echtzeitanalyse-Anbieter oder Batchverarbeitungs-/Speicheradapter gespeichert werden. Eine ausführliche Übersicht über Event Hubs finden Sie unter [Was ist Azure Event Hubs?](event-hubs-about.md) und [Event Hubs-Features im Überblick](event-hubs-features.md).
@@ -208,7 +208,7 @@ Lesen Sie die folgenden Artikel:
 
 - [EventProcessorHost](event-hubs-event-processor-host.md)
 - [Features und Terminologie in Azure Event Hubs](event-hubs-features.md)
-- [Event Hubs – häufig gestellte Fragen](event-hubs-faq.md)
+- [Event Hubs – häufig gestellte Fragen](event-hubs-faq.yml)
 
 
 <!-- Links -->

@@ -1,14 +1,14 @@
 ---
-title: 'Schnellstart: Clientbibliothek für maschinelles Sehen'
+title: 'Schnellstart: LesenClientbibliothek oder REST-API'
 titleSuffix: Azure Cognitive Services
-description: Hier erfahren Sie, wie Sie maschinelles Sehen von Azure in Ihrer Anwendung über eine native Clientbibliothek in der Sprache Ihrer Wahl verwenden.
+description: Hier erfahren Sie, wie Sie optische Zeichenerkennung (OCR) in Ihrer Anwendung über eine native Clientbibliothek in der Sprache Ihrer Wahl verwenden.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 12/15/2020
+ms.date: 03/21/2020
 ms.author: pafarley
 ms.custom:
 - devx-track-python
@@ -17,16 +17,16 @@ ms.custom:
 - cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-computer-vision
 keywords: maschinelles Sehen, Dienst für maschinelles Sehen
-ms.openlocfilehash: 50976de4a60e5330740bcbf387d74c505316c0cf
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 865002fbc9e492b43b9c572468f722c85c6cc4b8
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97560813"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106284773"
 ---
-# <a name="quickstart-use-the-computer-vision-client-library"></a>Schnellstart: Verwenden der Clientbibliothek für maschinelles Sehen
+# <a name="quickstart-use-the-read-client-library-or-rest-api"></a>Schnellstart: Verwenden der Lesen-Clientbibliothek oder REST-API
 
-Hier erhalten Sie Informationen zu den ersten Schritten mit der REST-API oder den Clientbibliotheken für maschinelles Sehen. Der Dienst für maschinelles Sehen stellt KI-Algorithmen für die Bildverarbeitung und die Rückgabe von Informationen zu visuellen Merkmalen bereit. Führen Sie die nachfolgenden Schritte zum Installieren eines Pakets in Ihrer Anwendung aus, und testen Sie den Beispielcode für grundlegende Aufgaben.
+Hier erhalten Sie Informationen zu den ersten Schritten mit der REST-API oder den Clientbibliotheken. Der Lesedienst stellt Ki-Algorithmen zum Extrahieren von sichtbarem Text aus Bildern und zur Rückgabe als strukturierte Zeichen folgen bereit. Führen Sie die nachfolgenden Schritte zum Installieren eines Pakets in Ihrer Anwendung aus, und testen Sie den Beispielcode für grundlegende Aufgaben.
 
 
 

@@ -3,12 +3,12 @@ title: Azure Relay-Porteinstellungen | Microsoft-Dokumentation
 description: Dieser Artikel enthält eine Tabelle, die die erforderliche Konfiguration für Portwerte für Azure Relay beschreibt.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 97640debe81041ff7e2b082c6a9ac606d6088664
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 81551055d967babaac6f12c3a23ce6b1e78afbd5
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85314273"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107314166"
 ---
 # <a name="azure-relay-port-settings"></a>Azure Relay-Porteinstellungen
 
@@ -42,4 +42,4 @@ Hybrid Connections verwendet WebSockets an Port 443 mit TLS als zugrunde liegen
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu Azure Relay finden Sie unter diesen Links:
 * [Was ist Azure Relay?](relay-what-is-it.md)
-* [Relay – häufig gestellte Fragen](relay-faq.md)
+* [Relay – häufig gestellte Fragen](relay-faq.yml)

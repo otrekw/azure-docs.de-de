@@ -1,19 +1,16 @@
 ---
 title: Unterstützung für die VMware-/physische Notfallwiederherstellung an einem sekundären Standort mit Azure Site Recovery
 description: Dieser Artikel fasst die Unterstützung der Notfallwiederherstellung für VMware-VMs und physische Server in einem sekundären Standort mit Azure Site Recovery zusammen.
-author: rayne-wiselman
-manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
-ms.author: raynew
-ms.openlocfilehash: ac67e3cf8f057738b76b0de7cbcb821ef290e0cb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b3b0cf6387da3f1cb7a9b6ef3a5020e022b5e22b
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98757575"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106579842"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>Unterstützungsmatrix für die Notfallwiederherstellung von VMware-VMs und physischen Servern
 

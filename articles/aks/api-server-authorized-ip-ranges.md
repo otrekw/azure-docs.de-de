@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie Ihre Cluster durch Verwendung von IP-Adressbe
 services: container-service
 ms.topic: article
 ms.date: 09/21/2020
-ms.openlocfilehash: ca6e1c06b3ad90ef12c9bf375bae50d46c5f7c37
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 20c3d46e9a19c66c727e5a21bccd6caa0dc5f0ba
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98890634"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104771922"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Sicherer Zugriff auf den API-Server mit autorisierten IP-Adressbereichen in Azure Kubernetes Service (AKS)
 
@@ -27,7 +27,7 @@ Azure CLI-Version 2.0.76 oder höher muss installiert und konfiguriert sein. Fü
 
 Für die Funktion „vom API-Server autorisierte IP-Adressbereiche“ gelten die folgenden Einschränkungen:
 - In Clustern, die nach Beendigung der Vorschauphase (Oktober 2019) für vom API-Server autorisierte IP-Adressbereiche erstellt wurden, werden vom API-Server autorisierte IP-Adressbereiche nur für den Lastenausgleich mit der *Standard*-SKU unterstützt. Bestehende Cluster mit einem Lastenausgleich mit *Basic*-SKU und den von API-Servern autorisierten IP-Adressbereichen bleiben weiterhin funktionsfähig. Sie können jedoch nicht zu einem Lastenausgleich mit *Standard*-SKU migriert werden. Diese vorhandenen Cluster funktionieren auch dann weiter, wenn ihre Kubernetes-Version oder die Steuerungsebene aktualisiert werden. Vom API-Server autorisierte IP-Adressbereiche werden für private Cluster nicht unterstützt.
-- Diese Funktion ist nicht kompatibel mit Clustern, die die [Previewfunktion „Öffentliche IP-Adresse pro Knoten“-Knotenpools](use-multiple-node-pools.md#assign-a-public-ip-per-node-for-your-node-pools-preview) verwenden.
+- Diese Funktion ist nicht kompatibel mit Clustern, die die Funktion [Öffentliche IP-Adresse pro Knoten](use-multiple-node-pools.md#assign-a-public-ip-per-node-for-your-node-pools) verwenden.
 
 ## <a name="overview-of-api-server-authorized-ip-ranges"></a>Übersicht über vom API-Server autorisierte IP-Adressbereiche
 

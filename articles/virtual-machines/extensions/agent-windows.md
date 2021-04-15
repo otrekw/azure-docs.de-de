@@ -8,12 +8,12 @@ ms.author: amjads
 author: amjads1
 ms.collection: windows
 ms.date: 07/20/2019
-ms.openlocfilehash: 33db214013111b0dd4540a1b1d2947b7d1854db9
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: bd845c5ef5a06e3a0bca1cebe54ded2e49355617
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104607482"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107309814"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Übersicht über den Agent für virtuelle Azure-Computer
 Der Agent für virtuelle Microsoft Azure-Computer (VM-Agent) ist ein sicherer, einfacher Prozess zur Verwaltung der VM-Interaktion mit dem Azure Fabric Controller. Der VM-Agent spielt eine primäre Rolle bei der Aktivierung und Ausführung von Azure-VM-Erweiterungen. VM-Erweiterungen ermöglichen es, VMs nach der Bereitstellung zu konfigurieren (beispielsweise, um Software zu installieren und zu konfigurieren). Außerdem ermöglichen VM-Erweiterungen den Einsatz von Wiederherstellungsfeatures wie das Zurücksetzen des Administratorkennworts einer VM. Ohne den Azure-VM-Agent können keine VM-Erweiterungen ausgeführt werden.
@@ -121,7 +121,7 @@ Um ein Zertifikat dauerhaft zu entfernen, müssen Sie es aus `OSProfile` entfern
 
 Verwenden Sie für einen virtuellen Computer [Remove-AzVMSecret](), um Zertifikate aus `OSProfile` zu entfernen.
 
-Weitere Informationen zu VMSS-Zertifikaten finden Sie unter [Virtual Machine Scale Sets – How do I remove deprecated certificates?](../../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.md#how-do-i-remove-deprecated-certificates) (Skalierungsgruppen für virtuelle Computer – Wie entferne ich veraltete Zertifikate?).
+Weitere Informationen zu VMSS-Zertifikaten finden Sie unter [Virtual Machine Scale Sets – How do I remove deprecated certificates?](../../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.yml#how-do-i-remove-deprecated-certificates-) (Skalierungsgruppen für virtuelle Computer – Wie entferne ich veraltete Zertifikate?).
 
 
 ## <a name="next-steps"></a>Nächste Schritte

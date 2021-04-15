@@ -2,14 +2,14 @@
 title: Bereitstellen eines Pools in einem virtuellen Netzwerk
 description: Hier erfahren Sie, wie Sie einen Batch-Pool in einem virtuellen Netzwerk erstellen, damit Computeknoten sicher mit anderen VMs (z. B. Dateiserver) im Netzwerk kommunizieren können.
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 03/26/2021
 ms.custom: seodec18
-ms.openlocfilehash: d6e5de75164e098fc95f6c086d9f98a652dcee4a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7213637e89cfccd1352861002c47a696d942d30f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103561911"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105629307"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>Erstellen eines Azure Batch-Pools in einem virtuellen Netzwerk
 
@@ -56,6 +56,8 @@ Um sicherzustellen, dass die Knoten im Pool in einem VNET funktionieren, in dem 
 - Der Batch-Dienst muss für die zeitliche Planung von Tasks mit den Knoten kommunizieren. Um diese Kommunikation zu ermöglichen, fügen Sie eine UDR für jede IP-Adresse hinzu, die vom Batch-Dienst in der Region Ihres Batch-Kontos verwendet werden. Informationen zum Abrufen der Liste mit IP-Adressen des Batch-Diensts finden Sie unter [Lokale Diensttags](../virtual-network/service-tags-overview.md).
 
 - Stellen Sie sicher, dass ausgehender Datenverkehr an Azure Storage (also URLs im Format `<account>.table.core.windows.net`, `<account>.queue.core.windows.net` und `<account>.blob.core.windows.net`) nicht durch das lokale Netzwerk blockiert wird.
+
+- Wenn Sie virtuelle Dateieinbindung verwenden, überprüfen Sie die [Netzwerkanforderungen](virtual-file-mount.md#networking-requirements) und stellen Sie sicher, dass kein erforderlicher Datenverkehr blockiert ist.
 
 Wenn Sie eine UDR hinzufügen, definieren Sie die Route für jedes zugehörige Batch-IP-Adresspräfix, und legen Sie den **Typ des nächsten Hops** auf **Internet** fest.
 

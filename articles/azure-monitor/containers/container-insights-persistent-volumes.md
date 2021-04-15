@@ -3,12 +3,12 @@ title: Konfigurieren der PV-Überwachung mit Container Insights | Microsoft-Doku
 description: In diesem Artikel erfahren Sie, wie Sie die Überwachung von Kubernetes-Clustern mit persistenten Volumes mit Container Insights konfigurieren können.
 ms.topic: conceptual
 ms.date: 03/03/2021
-ms.openlocfilehash: 578cfe128b7445f8b09771999d1e653e92c4befa
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 7c6ddd62bf06d313987289e444962378cea43fc8
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102200698"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105627896"
 ---
 # <a name="configure-pv-monitoring-with-container-insights"></a>Konfigurieren der PV-Überwachung mit Container Insights
 
@@ -17,9 +17,11 @@ Ab der Agent-Version *ciprod10052020* unterstützt der integrierte Agent von Azu
 
 Container Insights beginnt automatisch mit der Überwachung der PV-Nutzung. Hierzu werden die folgenden Metriken in 60-Sekunden-Intervallen erfasst und in der Tabelle **InsightMetrics** gespeichert:
 
-|Metrikname |Metrikdimension (Tags) | Metrikbeschreibung | | `pvUsedBytes`|podUID, podName, pvcName, pvcNamespace, capacityBytes, clusterId, clusterName|Verwendeter Speicherplatz in Bytes für ein bestimmtes persistentes Volume mit einem von einem bestimmten Pod verwendeten Anspruch. `capacityBytes` wird als Dimension in das Feld „Tags“ integriert, um die Datenerfassungskosten zu verringern und Abfragen zu vereinfachen.|
+| Metrikname | Metrikdimension (Tags) | Beschreibung der Metrik |
+|-----|-----------|----------|
+| `pvUsedBytes`| podUID, podName, pvcName, pvcNamespace, capacityBytes, clusterId, clusterName| Verwendeter Speicherplatz in Bytes für ein bestimmtes persistentes Volume mit einem von einem bestimmten Pod verwendeten Anspruch. `capacityBytes` wird als Dimension in das Feld „Tags“ integriert, um die Datenerfassungskosten zu verringern und Abfragen zu vereinfachen.|
 
-Weitere Informationen zum Konfigurieren erfasster PV-Metriken finden Sie [hier](https://aka.ms/ci/pvconfig).
+Weitere Informationen zum Konfigurieren erfasster PV-Metriken finden Sie [hier](./container-insights-agent-config.md).
 
 ## <a name="pv-inventory"></a>PV-Bestand
 
@@ -27,7 +29,7 @@ Azure Monitor für Container beginnt automatisch mit der Überwachung von PVs. H
 
 |Daten |Datenquelle| Datentyp| Felder|
 |-----|-----------|----------|-------|
-|Bestand der persistenten Volumes in einem Kubernetes-Cluster |Kube-API |`KubePVInventory` | PVName, PVCapacityBytes, PVCName, PVCNamespace, PVStatus, PVAccessModes, PVType, PVTypeInfo, PVStorageClassName, PVCreationTimestamp, TimeGenerated, ClusterId, ClusterName, _ResourceId |
+|Bestand der persistenten Volumes in einem Kubernetes-Cluster |Kube-API |`KubePVInventory` |    PVName, PVCapacityBytes, PVCName, PVCNamespace, PVStatus, PVAccessModes, PVType, PVTypeInfo, PVStorageClassName, PVCreationTimestamp, TimeGenerated, ClusterId, ClusterName, _ResourceId |
 
 ## <a name="monitor-persistent-volumes"></a>Überwachen persistenter Volumes
 
@@ -48,7 +50,7 @@ Eine Übersicht über den PV-Bestand finden Sie in der Arbeitsmappe **Details zu
 :::image type="content" source="./media/container-insights-persistent-volumes/pv-details-workbook-example.PNG" alt-text="Azure Monitor: Beispielarbeitsmappe für PV-Details":::
 
 ### <a name="persistent-volume-usage-recommended-alert"></a>Empfohlene Warnung für die Nutzung des persistenten Volumes
-Sie können eine empfohlene Warnung aktivieren, um benachrichtigt zu werden, wenn die durchschnittliche PV-Auslastung für einen Pod 80 Prozent übersteigt. Weitere Informationen zu Warnungen finden Sie [hier](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-metric-alerts). Informationen zum Überschreiben des Standardschwellenwerts finden Sie [hier](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-metric-alerts#configure-alertable-metrics-in-configmaps).
+Sie können eine empfohlene Warnung aktivieren, um benachrichtigt zu werden, wenn die durchschnittliche PV-Auslastung für einen Pod 80 Prozent übersteigt. Weitere Informationen zu Warnungen finden Sie [hier](./container-insights-metric-alerts.md). Informationen zum Überschreiben des Standardschwellenwerts finden Sie [hier](./container-insights-metric-alerts.md#configure-alertable-metrics-in-configmaps).
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Weitere Informationen zu erfassten PV-Metriken finden Sie [hier](./container-insights-agent-config.md).
