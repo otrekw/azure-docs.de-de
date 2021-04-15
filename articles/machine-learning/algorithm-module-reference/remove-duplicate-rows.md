@@ -1,5 +1,5 @@
 ---
-title: 'Remove Duplicate Rows: Modulreferenz'
+title: 'Entfernen doppelter Zeilen: Modulreferenz'
 titleSuffix: Azure Machine Learning
 description: Erfahren Sie, wie Sie das Modul „Remove Duplicate Rows“ (Doppelte Zeilen entfernen) in Azure Machine Learning verwenden, um potenzielle Duplikate aus einem Dataset zu entfernen.
 services: machine-learning
@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
 ms.openlocfilehash: bf35d08128aa8a3e8f545ed7184866694219f2cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "90905219"
 ---
 # <a name="remove-duplicate-rows-module"></a>Modul „Remove Duplicate Rows“
@@ -24,7 +24,7 @@ Mit diesem Modul können Sie potenzielle Duplikate aus einem Dataset entfernen.
 
 Angenommen beispielsweise, Ihre Daten sehen wie die folgenden aus und stellen mehrere Datensätze für Patienten dar. 
 
-| Patienten-ID | Initials| Geschlecht|Age|Aufgenommen|
+| Patienten-ID | Initialen| Geschlecht|Age|Aufgenommen|
 |----|----|----|----|----|
 |1|W.M.| M| 53| Jan|
 |2| W.J.M.| M| 53| Jan|
@@ -61,8 +61,8 @@ Wenn Sie das Modul ausführen, erstellt es ein Kandidaten-Dataset und gibt eine 
 
     Beispiele:
 
-    + „Ich möchte sicherstellen, dass IDs eindeutig sind“: Wählen Sie nur die Spalte „ID“ aus.
-    + „Ich möchte sicherstellen, dass die Kombination aus Vorname, Nachname und ID eindeutig ist“: Wählen Sie alle drei Spalten aus.
+    + „Ich möchte sicherstellen, dass IDs eindeutig sind“: Wählen Sie nur die ID-Spalte aus.
+    + „Ich möchte sicherstellen, dass die Kombination des Vornamens, des Nachnamens und der ID eindeutig ist“: Wählen Sie alle drei Spalten aus.
 
 4. Geben Sie mithilfe des Kontrollkästchens **Retain first duplicate row** (Erste doppelte Zeile beibehalten) an, welche Zeile zurückgegeben werden soll, wenn Duplikate gefunden werden:
 

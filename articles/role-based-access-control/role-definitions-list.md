@@ -2,24 +2,19 @@
 title: Auflisten von Azure-Rollendefinitionen – Azure RBAC
 description: Erfahren Sie, wie Sie integrierte und benutzerdefinierte Rollen in Azure mit dem Azure-Portal, Azure PowerShell, der Azure-Befehlszeilenschnittstelle oder der REST-API auflisten.
 services: active-directory
-documentationcenter: ''
 author: rolyon
 manager: mtillman
-ms.assetid: 8078f366-a2c4-4fbb-a44b-fc39fd89df81
 ms.service: role-based-access-control
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/17/2020
+ms.date: 03/26/2021
 ms.author: rolyon
-ms.reviewer: bagovind
-ms.openlocfilehash: 3c9018322c9e5075ff59024f9d791e7431035e3d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f354e3bb7fc0f7ced17d43acacf29c726ce1329c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100555957"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105629155"
 ---
 # <a name="list-azure-role-definitions"></a>Auflisten von Azure-Rollendefinitionen
 
@@ -33,6 +28,10 @@ Eine Liste mit Administratorrollen für Azure Active Directory finden Sie unter 
 
 Führen Sie diese Schritte aus, um alle Rollen im Azure-Portal aufzulisten.
 
+Wenn Sie an der Anzeige einer aktualisierten Rollenansicht interessiert sind, sehen Sie sich die Registerkarte **Rollen (Vorschau)** an, die sich zurzeit in der öffentlichen Vorschau befindet. Auf der Registerkarte **Rollen (Vorschau)** wird die gleiche Rollenliste wie auf der Registerkarte **Rollen** mit einigen zusätzlichen Features angezeigt. Sie können die Registerkarte „Rollen“ verwenden, um mit ihren Rollen zu arbeiten. Wenn Sie jedoch benutzerdefinierte Rollen erstellen oder löschen, müssen Sie die Seite möglicherweise manuell aktualisieren, um die neuesten Änderungen anzuzeigen.
+
+#### <a name="roles"></a>[Rollen](#tab/roles/)
+
 1. Klicken Sie im Azure-Portal auf **Alle Dienste**, und wählen Sie anschließend einen Bereich aus. Sie können beispielsweise **Verwaltungsgruppen**, **Abonnements**, **Ressourcengruppen** oder eine Ressource auswählen.
 
 1. Klicken Sie auf die gewünschte Ressource.
@@ -43,7 +42,29 @@ Führen Sie diese Schritte aus, um alle Rollen im Azure-Portal aufzulisten.
 
    Sie können die Anzahl von Benutzern und Gruppen anzeigen, die jeder Rolle für den aktuellen Bereich zugewiesen sind.
 
-   ![Rollenliste](./media/role-definitions-list/roles-list.png)
+   ![Rollenliste](./media/role-definitions-list/roles-list-current.png)
+
+#### <a name="roles-preview"></a>[Rollen (Vorschau)](#tab/roles-preview/)
+
+1. Klicken Sie im Azure-Portal auf **Alle Dienste**, und wählen Sie anschließend einen Bereich aus. Sie können beispielsweise **Verwaltungsgruppen**, **Abonnements**, **Ressourcengruppen** oder eine Ressource auswählen.
+
+1. Klicken Sie auf die gewünschte Ressource.
+
+1. Klicken Sie auf **Zugriffssteuerung (IAM)** .
+
+1. Klicken Sie auf die Registerkarte **Rollen (Vorschau)** , um eine Liste aller integrierten und benutzerdefinierten Rollen anzuzeigen.
+
+   ![Rollenliste mit Vorschau](./media/role-definitions-list/roles-list.png)
+
+1. Klicken Sie in der Spalte **Details** auf den Link **Ansicht**, um die Berechtigungen für eine bestimmte Rolle anzuzeigen.
+
+    Der Bereich „Erforderliche Berechtigungen“ erscheint
+
+1. Klicken Sie auf die Registerkarte **Berechtigungen**, um die Berechtigungen für die ausgewählte Rolle anzuzeigen und zu durchsuchen.
+
+   ![Rollenberechtigungen mithilfe der Vorschau](./media/role-definitions-list/role-permissions.png)
+
+---
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 

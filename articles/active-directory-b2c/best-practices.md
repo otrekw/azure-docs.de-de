@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/06/2020
 ms.author: vigunase
 ms.subservice: B2C
-ms.openlocfilehash: d8c0a5ce6f3befd41c0e1399363fd73726693837
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2c8a9121d0e36eb51cd02c2c884ddcaa0dd79a79
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96750219"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107226208"
 ---
 # <a name="recommendations-and-best-practices-for-azure-active-directory-b2c"></a>Empfehlungen und bewährte Methoden für Azure Active Directory B2C
 
@@ -26,7 +26,7 @@ Die folgenden bewährten Methoden und Empfehlungen decken einige der wichtigsten
 
 | Bewährte Methode | BESCHREIBUNG |
 |--|--|
-| Auswählen von Benutzerflows für die meisten Szenarien | Identity Experience Framework von Azure AD B2C ist die Kernkompetenz des Diensts. Die Richtlinien beschreiben Benutzeroberflächen im Zusammenhang mit der Identität, z.B. Registrierung, Anmeldung oder Profilbearbeitung. Um Ihnen die Einrichtung der gängigsten Identitätsaufgaben zu erleichtern, enthält das Azure AD B2C-Portal vordefinierte und konfigurierbare Richtlinien, die als „Benutzerflows“ bezeichnet werden. Mit Benutzerflows können Sie mit nur wenigen Klicks innerhalb von Minuten tolle Benutzeroberflächen erstellen. [Erfahren Sie, wann Benutzerflows und wann benutzerdefinierte Richtlinien verwendet werden](custom-policy-overview.md#comparing-user-flows-and-custom-policies).|
+| Auswählen von Benutzerflows für die meisten Szenarien | Identity Experience Framework von Azure AD B2C ist die Kernkompetenz des Diensts. Die Richtlinien beschreiben Benutzeroberflächen im Zusammenhang mit der Identität, z.B. Registrierung, Anmeldung oder Profilbearbeitung. Um Ihnen die Einrichtung der gängigsten Identitätsaufgaben zu erleichtern, enthält das Azure AD B2C-Portal vordefinierte und konfigurierbare Richtlinien, die als „Benutzerflows“ bezeichnet werden. Mit Benutzerflows können Sie mit nur wenigen Klicks innerhalb von Minuten tolle Benutzeroberflächen erstellen. [Erfahren Sie, wann Benutzerflows und wann benutzerdefinierte Richtlinien verwendet werden](user-flow-overview.md#comparing-user-flows-and-custom-policies).|
 | App-Registrierungen | Jede Anwendung (Web- oder native Anwendung) und API, die gesichert ist, muss in Azure AD B2C registriert werden. Wenn eine App sowohl eine Web- als auch eine native Version von iOS und Android umfasst, können Sie sie als eine Anwendung in Azure AD B2C mit derselben Client-ID registrieren. Erfahren Sie, wie Sie [OIDC-, SAML-, Web- und native Apps registrieren](./tutorial-register-applications.md?tabs=applications). Weitere Informationen zu [in Azure Active Directory B2C verwendbaren Anwendungstypen](./application-types.md). |
 | Wechsel zum MAU-Abrechnungsmodell | Azure AD B2C ist beim Abrechnungsmodell von monatlich aktiven Authentifizierungen auf monatlich aktive Benutzer (Monthly Active User, MAU) umgestiegen. Die meisten Kunden finden dieses Modell kostengünstig. [Weitere Informationen zum MAU-Abrechnungsmodell](https://azure.microsoft.com/updates/mau-billing/). |
 

@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 03/17/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 578a248de3ee6aacc0db7c5116b66031b404c9ae
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 008d47fe7086322ea0bb7ef26a6c4b449f4269d2
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448165"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107028823"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-salesforce-account-using-azure-active-directory-b2c"></a>Einrichten der Registrierung und Anmeldung mit einem Salesforce-Konto mithilfe von Azure Active Directory B2C
 
@@ -48,7 +48,7 @@ Damit Sie die Anmeldung für Benutzer mit einem Salesforce-Konto in Azure Active
     1. **API-Name** 
     1. **Contact Email** (Kontakt-E-Mail-Adresse): Geben Sie hier die Kontakt-E-Mail-Adresse für Salesforce an.
 1. Wählen Sie unter **API (OAuth-Einstellungen aktivieren)** die Option **OAuth-Einstellungen aktivieren** aus.
-    1. Geben Sie unter **Rückmeldungs-URL** `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` an. Ersetzen Sie `your-tenant-name` durch den Namen Ihres Mandanten. Bei der Eingabe Ihres Mandantennamens dürfen Sie nur Kleinbuchstaben verwenden, auch wenn der Mandant in Azure AD B2C Großbuchstaben enthält.
+    1. Geben Sie `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` in **Callback URL** ein. Bei Verwendung einer [benutzerdefinierten Domäne](custom-domain.md) geben Sie `https://your-domain-name/your-tenant-name.onmicrosoft.com/oauth2/authresp` ein. Ersetzen Sie `your-tenant-name` durch den Namen Ihres Mandanten und `your-domain-name` durch Ihre benutzerdefinierte Domäne. Bei der Eingabe Ihres Mandantennamens dürfen Sie nur Kleinbuchstaben verwenden, auch wenn der Mandant in Azure AD B2C Großbuchstaben enthält.
     1. Wählen Sie unter **Selected OAuth Scopes** (Ausgewählte OAuth-Bereiche) **Zugriff auf Ihre grundlegenden Informationen (id, profile, email, address, phone)** und **Zugriff auf Ihre eindeutige Kennung zulassen (openid)** aus.
     1. Wählen Sie **Geheimnis für Webserver-Flow erforderlich** aus.
 1. Wählen Sie **Configure ID Token** (ID-Token konfigurieren) aus. 
@@ -87,6 +87,8 @@ Damit Sie die Anmeldung für Benutzer mit einem Salesforce-Konto in Azure Active
 1. Wählen Sie **Speichern** aus.
 
 ## <a name="add-salesforce-identity-provider-to-a-user-flow"></a>Hinzufügen des Salesforce-Identitätsanbieters zu einem Benutzerflow 
+
+Der Salesforce-Identitätsanbieter wurde nun eingerichtet, aber er ist noch auf keiner der Anmeldeseiten verfügbar. Hinzufügen des Salesforce-Identitätsanbieters zu einem Benutzerflow:
 
 1. Wählen Sie in Ihrem Azure AD B2C-Mandanten die Option **Benutzerflows** aus.
 1. Klicken Sie auf den Benutzerflow, dem Sie den Salesforce-Identitätsanbieter hinzufügen möchten.
@@ -198,7 +200,7 @@ Sie können ein Salesforce-Konto als Anspruchsanbieter definieren, indem Sie es 
 ## <a name="test-your-custom-policy"></a>Testen der benutzerdefinierten Richtlinie
 
 1. Wählen Sie die Richtliniendatei für die vertrauende Seite aus, z. B. `B2C_1A_signup_signin`.
-1. Wählen Sie für **Anwendung** eine Webanwendung aus, die Sie [zuvor registriert haben](troubleshoot-custom-policies.md#troubleshoot-the-runtime). Als **Antwort-URL** sollte `https://jwt.ms` angezeigt werden.
+1. Wählen Sie für **Anwendung** eine Webanwendung aus, die Sie [zuvor registriert haben](tutorial-register-applications.md). Als **Antwort-URL** sollte `https://jwt.ms` angezeigt werden.
 1. Wählen Sie die Schaltfläche **Jetzt ausführen** aus.
 1. Wählen Sie auf der Registrierungs- oder Anmeldeseite die Option **Salesforce** aus, um sich mit dem Salesforce-Konto anzumelden.
 

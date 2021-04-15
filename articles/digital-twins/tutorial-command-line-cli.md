@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 2/26/2021
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: d155d0c4a18b254f66ff5fb58ea91dbee22d2c34
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 578befe3e26ebb42fa2172976e07d0a5836e3743
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103496608"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107141"
 ---
 # <a name="tutorial-create-an-azure-digital-twins-graph-using-the-azure-cli"></a>Tutorial: Erstellen eines Azure Digital Twins-Graphen unter Verwendung der Azure CLI
 
@@ -20,7 +20,7 @@ ms.locfileid: "103496608"
 
 In diesem Tutorial wird in Azure Digital Twins ein Graph mit Modellen, Zwillingen und Beziehungen erstellt. Als Tool wird in diesem Tutorial der [Azure Digital Twins-Befehlssatz für die **Azure CLI**](how-to-use-cli.md) verwendet. 
 
-Diese CLI-Befehle ermöglichen grundlegende Azure Digital Twins-Aktionen wie das Hochladen von Modellen, das Erstellen und Ändern von Zwillingen und das Erstellen von Beziehungen. Den vollständigen CLI-Befehlssatz finden Sie in der [Referenzdokumentation zum Befehlssatz *az dt*](/cli/azure/ext/azure-iot/dt?preserve-view=true&view=azure-cli-latest).
+Diese CLI-Befehle ermöglichen grundlegende Azure Digital Twins-Aktionen wie das Hochladen von Modellen, das Erstellen und Ändern von Zwillingen und das Erstellen von Beziehungen. Den vollständigen CLI-Befehlssatz finden Sie in der [Referenzdokumentation zum Befehlssatz *az dt*](/cli/azure/dt).
 
 In diesem Tutorial lernen Sie Folgendes:
 > [!div class="checklist"]
@@ -91,7 +91,7 @@ Nach dem Entwerfen von Modellen müssen Sie diese in Ihre Azure Digital Twins-In
     
     Navigieren Sie zur Datei *Room.json* auf Ihrem Computer, und wählen Sie „Öffnen“ aus. Wiederholen Sie diesen Schritt anschließend für die Datei *Floor.js*.
 
-1. Verwenden Sie als Nächstes den Befehl [**az dt model create**](/cli/azure/ext/azure-iot/dt/model?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_model_create), wie im Anschluss gezeigt, um das aktualisierte Raummodell (*Room*) in Ihre Azure Digital Twins-Instanz hochzuladen. Mit dem zweiten Befehl wird ein weiteres Modell (*Floor*) hochgeladen. Dieses wird auch im nächsten Abschnitt verwendet, um verschiedene Arten von Zwillingen zu erstellen.
+1. Verwenden Sie als Nächstes den Befehl [**az dt model create**](/cli/azure/dt/model#az_dt_model_create), wie im Anschluss gezeigt, um das aktualisierte Raummodell (*Room*) in Ihre Azure Digital Twins-Instanz hochzuladen. Mit dem zweiten Befehl wird ein weiteres Modell (*Floor*) hochgeladen. Dieses wird auch im nächsten Abschnitt verwendet, um verschiedene Arten von Zwillingen zu erstellen.
 
     ```azurecli-interactive
     az dt model create -n <ADT_instance_name> --models Room.json
@@ -101,9 +101,9 @@ Nach dem Entwerfen von Modellen müssen Sie diese in Ihre Azure Digital Twins-In
     Die Ausgabe des jeweiligen Befehls enthält Informationen zum erfolgreich hochgeladenen Modell.
 
     >[!TIP]
-    >Sie können auch alle Modelle in einem Verzeichnis auf einmal hochladen, indem Sie die Option `--from-directory` für den Befehl „model create“ verwenden. Weitere Informationen finden Sie in den [optionalen Parametern für *az dt model create*](/cli/azure/ext/azure-iot/dt/model?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_model_create-optional-parameters).
+    >Sie können auch alle Modelle in einem Verzeichnis auf einmal hochladen, indem Sie die Option `--from-directory` für den Befehl „model create“ verwenden. Weitere Informationen finden Sie in den [optionalen Parametern für *az dt model create*](/cli/azure/dt/model#az_dt_model_create-optional-parameters).
 
-1. Vergewissern Sie sich wie im Anschluss gezeigt mithilfe des Befehls [**az dt model list**](/cli/azure/ext/azure-iot/dt/model?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_model_list), dass die Modelle erstellt wurden. Dieser Befehl gibt eine Liste mit allen Modellen, die in die Azure Digital Twins-Instanz hochgeladen wurden, sowie mit ausführlichen Informationen zu den Modellen aus. 
+1. Vergewissern Sie sich wie im Anschluss gezeigt mithilfe des Befehls [**az dt model list**](/cli/azure/dt/model#az_dt_model_list), dass die Modelle erstellt wurden. Dieser Befehl gibt eine Liste mit allen Modellen, die in die Azure Digital Twins-Instanz hochgeladen wurden, sowie mit ausführlichen Informationen zu den Modellen aus. 
 
     ```azurecli-interactive
     az dt model list -n <ADT_instance_name> --definition
@@ -129,7 +129,7 @@ Da Modelle nicht überschrieben werden können, wird nun der Fehlercode `ModelId
 
 Sie haben einige Modelle in Ihre Azure Digital Twins-Instanz hochgeladen und können nun basierend auf den Modelldefinitionen [**digitale Zwillinge**](concepts-twins-graph.md) erstellen. Digitale Zwillinge stellen die Entitäten in Ihrer Geschäftsumgebung dar, etwa Sensoren in einer Farm, Räume in einem Gebäude oder Beleuchtung in einem Fahrzeug. 
 
-Verwenden Sie zum Erstellen eines digitalen Zwillings den Befehl [**az dt twin create**](/cli/azure/ext/azure-iot/dt/twin?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_twin_create). Sie müssen auf das Modell verweisen, auf dem der Zwilling basiert, und können optional Anfangswerte für Eigenschaften im Modell definieren. Sie müssen in dieser Phase keine Beziehungsinformationen übergeben.
+Verwenden Sie zum Erstellen eines digitalen Zwillings den Befehl [**az dt twin create**](/cli/azure/dt/twin#az_dt_twin_create). Sie müssen auf das Modell verweisen, auf dem der Zwilling basiert, und können optional Anfangswerte für Eigenschaften im Modell definieren. Sie müssen in dieser Phase keine Beziehungsinformationen übergeben.
 
 1. Führen Sie diesen Code in Cloud Shell aus, um mehrere Zwillinge basierend auf dem zuvor aktualisierten Modell *Room* (Raum) und einem anderen Modell (*Floor*) zu erstellen. Denken Sie daran, dass *Room* drei Eigenschaften hat, sodass Sie Argumente mit den Anfangswerten für diese angeben können. (Die Initialisierung von Eigenschaftswerten ist grundsätzlich optional, für dieses Tutorial werden sie allerdings benötigt.)
 
@@ -151,7 +151,7 @@ Verwenden Sie zum Erstellen eines digitalen Zwillings den Befehl [**az dt twin c
     
     Die Ausgabe der einzelnen Befehle enthält Informationen zum erfolgreich erstellten Zwilling (einschließlich Eigenschaften für die Raumzwillinge, die mit ihnen initialisiert wurden).
 
-1. Mithilfe des im Anschluss gezeigten Befehls [**az dt twin query**](/cli/azure/ext/azure-iot/dt/twin?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_twin_query) können Sie sich vergewissern, dass die Zwillinge erstellt wurden. Mit der gezeigten Abfrage wird nach allen digitalen Zwillingen in Ihrer Azure Digital Twins-Instanz gesucht.
+1. Mithilfe des im Anschluss gezeigten Befehls [**az dt twin query**](/cli/azure/dt/twin#az_dt_twin_query) können Sie sich vergewissern, dass die Zwillinge erstellt wurden. Mit der gezeigten Abfrage wird nach allen digitalen Zwillingen in Ihrer Azure Digital Twins-Instanz gesucht.
     
     ```azurecli-interactive
     az dt twin query -n <ADT_instance_name> -q "SELECT * FROM DIGITALTWINS"
@@ -165,7 +165,7 @@ Verwenden Sie zum Erstellen eines digitalen Zwillings den Befehl [**az dt twin c
 
 Sie können auch die Eigenschaften eines von Ihnen erstellten Zwillings ändern. 
 
-1. Führen Sie den Befehl [**az dt twin update**](/cli/azure/ext/azure-iot/dt/twin?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_twin_update) aus, um den RoomName-Wert für *room0* von *Room0* in *PresidentialSuite* zu ändern:
+1. Führen Sie den Befehl [**az dt twin update**](/cli/azure/dt/twin#az_dt_twin_update) aus, um den RoomName-Wert für *room0* von *Room0* in *PresidentialSuite* zu ändern:
 
     ```azurecli-interactive
     az dt twin update -n <ADT_instance_name> --twin-id room0 --json-patch '{"op":"add", "path":"/RoomName", "value": "PresidentialSuite"}'
@@ -183,7 +183,7 @@ Sie können auch die Eigenschaften eines von Ihnen erstellten Zwillings ändern.
 
     :::image type="content" source="media/tutorial-command-line/cli/output-update-twin.png" alt-text="Screenshot: Cloud Shell mit dem Ergebnis des Aktualisierungsbefehls (mit dem RoomName-Wert „PresidentialSuite“)" lightbox="media/tutorial-command-line/cli/output-update-twin.png":::
 
-1. Sie können den Befehl [**az dt twin show**](/cli/azure/ext/azure-iot/dt/twin?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_twin_show) ausführen, um die Informationen zu *room0* anzuzeigen und sich zu vergewissern, dass die Aktualisierung erfolgreich war:
+1. Sie können den Befehl [**az dt twin show**](/cli/azure/dt/twin#az_dt_twin_show) ausführen, um die Informationen zu *room0* anzuzeigen und sich zu vergewissern, dass die Aktualisierung erfolgreich war:
 
     ```azurecli-interactive
     az dt twin show -n <ADT_instance_name> --twin-id room0
@@ -197,7 +197,7 @@ Im nächsten Schritt können Sie einige **Beziehungen** zwischen diesen Zwilling
 
 Die Arten von Beziehungen, die Sie zwischen Zwillingen erstellen können, werden in den zuvor hochgeladenen [Modellen](#model-a-physical-environment-with-dtdl) definiert. In den [Modelldefinition für *Floor*](https://github.com/azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Floor.json) ist angegeben, dass Etagen eine Beziehung vom Typ *contains* (enthält) haben können. Dies ermöglicht die Erstellung einer Beziehung vom Typ *enthält* zwischen jedem Etagenzwilling (*Floor*) und dem entsprechenden enthaltenen Raum.
 
-Verwenden Sie zum Hinzufügen einer Beziehung den Befehl [**az dt twin relationship create**](/cli/azure/ext/azure-iot/dt/twin/relationship?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_twin_relationship_create). Geben Sie den Zwilling, von dem die Beziehung ausgeht, die Art der Beziehung sowie den Zwilling an, mit dem die Beziehung hergestellt wird. Geben Sie abschließend eine eindeutige ID für die Beziehung an. Wenn eine Beziehung mit Eigenschaften definiert wurde, können Sie in diesem Befehl auch die Beziehungseigenschaften initialisieren.
+Verwenden Sie zum Hinzufügen einer Beziehung den Befehl [**az dt twin relationship create**](/cli/azure/dt/twin/relationship#az_dt_twin_relationship_create). Geben Sie den Zwilling, von dem die Beziehung ausgeht, die Art der Beziehung sowie den Zwilling an, mit dem die Beziehung hergestellt wird. Geben Sie abschließend eine eindeutige ID für die Beziehung an. Wenn eine Beziehung mit Eigenschaften definiert wurde, können Sie in diesem Befehl auch die Beziehungseigenschaften initialisieren.
 
 1. Führen Sie den folgenden Code aus, um eine Beziehung vom Typ *contains* (enthält) zwischen jedem der zuvor erstellten Etagenzwillinge (*Floor*) um dem entsprechenden Raumzwilling (*Room*) hinzuzufügen. Die Beziehungen heißen *relationship0* und *relationship1*.
 
@@ -240,7 +240,7 @@ Die Zwillinge und Beziehungen, die Sie in diesem Tutorial eingerichtet haben, bi
 
 ## <a name="query-the-twin-graph-to-answer-environment-questions"></a>Abfragen des Zwillingsgraphen zum Beantworten von Umgebungsfragen
 
-Eine Hauptfunktion von Azure Digital Twins ist das einfache [Abfragen](concepts-query-language.md) des Zwillingsgraphen und das effiziente Beantworten von Fragen zur Umgebung. In der Azure CLI wird dazu der Befehl [**az dt twin query**](/cli/azure/ext/azure-iot/dt/twin?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_twin_query) verwendet.
+Eine Hauptfunktion von Azure Digital Twins ist das einfache [Abfragen](concepts-query-language.md) des Zwillingsgraphen und das effiziente Beantworten von Fragen zur Umgebung. In der Azure CLI wird dazu der Befehl [**az dt twin query**](/cli/azure/dt/twin#az_dt_twin_query) verwendet.
 
 Führen Sie in Cloud Shell die folgenden Abfragen aus, um einige Fragen zur Beispielumgebung zu beantworten.
 
@@ -308,7 +308,7 @@ Nach Abschluss dieses Tutorials können Sie die zu entfernenden Ressourcen ausw�
 
 * **Wenn Sie mit dem nächsten Tutorial fortfahren möchten**, können Sie die hier eingerichteten Ressourcen behalten und die Azure Digital Twins-Instanz wiederverwenden, ohne dazwischen etwas zu löschen.
 
-* **Wenn Sie die Azure Digital Twins-Instanz weiterverwenden, aber alle zugehörigen Modelle, Zwillinge und Beziehungen entfernen möchten**, können Sie die Befehle [**az dt twin relationship delete**](/cli/azure/ext/azure-iot/dt/twin/relationship?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_twin_relationship_delete), [**az dt twin delete**](/cli/azure/ext/azure-iot/dt/twin?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_twin_delete) und [**az dt model delete**](/cli/azure/ext/azure-iot/dt/model?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_model_delete) verwenden, um die Beziehungen, Zwillinge und Modelle in Ihrer Instanz zu löschen.
+* **Wenn Sie die Azure Digital Twins-Instanz weiterverwenden, aber alle zugehörigen Modelle, Zwillinge und Beziehungen entfernen möchten**, können Sie die Befehle [**az dt twin relationship delete**](/cli/azure/dt/twin/relationship#az_dt_twin_relationship_delete), [**az dt twin delete**](/cli/azure/dt/twin#az_dt_twin_delete) und [**az dt model delete**](/cli/azure/dt/model#az_dt_model_delete) verwenden, um die Beziehungen, Zwillinge und Modelle in Ihrer Instanz zu löschen.
 
 [!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 

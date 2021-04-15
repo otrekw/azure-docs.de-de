@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 07/28/2020
-ms.openlocfilehash: c6e3d56958168cd279c98a4ba4c021c2362c2694
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.date: 03/19/2021
+ms.openlocfilehash: 90755aef66fa51084d83d036722187b61449a6fc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421310"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104656905"
 ---
 # <a name="export-data-module"></a>Modul „Export Data“ (Daten exportieren)
 
@@ -51,7 +51,10 @@ Bevor Sie Ihre Daten exportieren können, müssen Sie einen Datenspeicher in Ihr
 
     Wenn sie ausgewählt ist, führt das System das Modul erneut aus, um die Ausgabe neu zu generieren.
 
-1. Geben Sie den Pfad im Datenspeicher an, an dem sich die Daten befinden. Der Pfad ist ein relativer Pfad. Leere Pfade oder URL-Pfade sind nicht zulässig.
+1. Geben Sie den Pfad im Datenspeicher an, an dem sich die Daten befinden. Bei dem Pfad handelt es sich um einen relativen Pfad. Am Beispiel `data/testoutput` wird ersichtlich, dass die bei **Daten exportieren** eingegebenen Daten in `data/testoutput` in dem Datenspeicher gespeichert werden, den Sie bei den **Ausgabeeinstellungen** des Moduls festlegen.
+
+    > [!NOTE]
+    > Leere Pfade oder **URL-Pfade** sind nicht zulässig.
 
 
 1. Wählen Sie für **File format** (Dateiformat) das Format aus, in dem die Daten gespeichert werden sollen.

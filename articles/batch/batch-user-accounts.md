@@ -2,21 +2,22 @@
 title: Ausführen von Aufgaben unter Benutzerkonten
 description: Erfahren Sie mehr über die Typen von Benutzerkonten und deren Konfiguration.
 ms.topic: how-to
-ms.date: 08/20/2020
+ms.date: 03/25/2021
 ms.custom: seodec18
-ms.openlocfilehash: cce374e7d7ffb513bed882b048ea54bcbad81b0b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b19e0c10834b3c5215d14c6c5ae20caaacb4bc64
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "88719358"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105606605"
 ---
 # <a name="run-tasks-under-user-accounts-in-batch"></a>Ausführen von Aufgaben unter Benutzerkonten in Batch
 
 > [!NOTE]
 > Die in diesem Artikel beschriebenen Benutzerkonten unterscheiden sich aus Sicherheitsgründen von den Benutzerkonten für RDP (Remote Desktop Protocol) oder SSH (Secure Shell).
 >
-> Um eine Verbindung mit einem Knoten herzustellen, auf dem die Linux-VM-Konfiguration über SSH ausgeführt wird, lesen Sie den Artikel [Installieren und Konfigurieren von Remotedesktop zum Herstellen einer Verbindung mit einem virtuellen Linux-Computer in Azure](../virtual-machines/linux/use-remote-desktop.md). Um eine Verbindung mit Knoten herzustellen, auf denen Windows über RDP ausgeführt wird, lesen Sie den Artikel [Gewusst wie: Herstellen einer Verbindung mit einem virtuellen Azure-Computer unter Windows und Anmelden auf diesem Computer](../virtual-machines/windows/connect-logon.md).<br /><br />
+> Informationen zum Herstellen einer Verbindung mit einem Knoten, auf dem die Konfiguration des virtuellen Linux-Computers über SSH ausgeführt wird, finden Sie unter [Installieren und Konfigurieren von xrdp zur Remotedesktop-Verwendung mit Ubuntu](../virtual-machines/linux/use-remote-desktop.md) Informationen zum Herstellen einer Verbindung zu Knoten unter Windows über RDP finden Sie unter[Herstellen einer Verbindung mit einem virtuellen Azure-Computer unter Windows und Anmelden auf diesem Computer](../virtual-machines/windows/connect-logon.md).
+>
 > Um eine Verbindung mit einem Knoten herzustellen, auf dem die Clouddienstkonfiguration über RDP ausgeführt wird, lesen Sie den Artikel [Aktivieren einer Remotedesktopverbindung für eine Rolle in Azure Cloud Services](../cloud-services/cloud-services-role-enable-remote-desktop-new-portal.md).
 
 Eine Aufgabe wird in Azure Batch immer unter einem Benutzerkonto ausgeführt. Standardmäßig werden Aufgaben unter Standardbenutzerkonten ohne Administratorberechtigungen ausgeführt. In bestimmten Szenarien möchten Sie jedoch möglicherweise das Benutzerkonto konfigurieren, unter dem eine Aufgabe ausgeführt werden soll. In diesem Artikel werden die Arten von Benutzerkonten beschrieben, und Sie erfahren, wie Sie sie für Ihr Szenario konfigurieren können.
@@ -30,7 +31,7 @@ Azure Batch bietet zwei Typen von Benutzerkonten zum Ausführen von Aufgaben an:
 - **Ein benanntes Benutzerkonto.** Sie können eine oder mehrere benannte Benutzerkonten für einen Pool angeben, wenn Sie den Pool erstellen. Jedes Benutzerkonto wird auf jedem Knoten des Pools erstellt. Geben Sie neben dem Kontonamen das Kennwort des Benutzerkontos, die Rechteerweiterungsebene und, für Linux-Pools, den privaten SSH-Schlüssel ein. Wenn Sie eine Aufgabe hinzufügen, können Sie das benannte Benutzerkonto angeben, unter dem diese Aufgabe ausgeführt werden soll.
 
 > [!IMPORTANT]
-> Mit der Batch-Dienstversion 2017-01-01.4.0 wird eine entscheidende Änderung eingeführt, die erfordert, dass Sie den Code zum Aufrufen dieser Version aktualisieren. Wenn Sie Code von einer älteren Batch-Version migrieren, beachten Sie, dass die **runElevated**-Eigenschaft in den REST-API- oder Batch-Clientbibliotheken nicht mehr unterstützt wird. Verwenden Sie die neue **userIdentity**-Eigenschaft einer Aufgabe, um die Rechteerweiterungsebene anzugeben. Unter [Aktualisieren Ihres Codes auf die aktuelle Batch-Clientbibliothek](#update-your-code-to-the-latest-batch-client-library) finden Sie kurze Richtlinien für die Aktualisierung des Batch-Codes, wenn Sie eine der Clientbibliotheken verwenden.
+> Mit der Batch-Dienstversion 2017-01-01.4.0 wird eine entscheidende Änderung eingeführt, die erfordert, dass Sie den Code zum Aufrufen dieser oder einer älteren Version aktualisieren. Unter [Aktualisieren Ihres Codes auf die aktuelle Batch-Clientbibliothek](#update-your-code-to-the-latest-batch-client-library) finden Sie kurze Richtlinien für die Aktualisierung des Batch-Codes einer älteren Version.
 
 ## <a name="user-account-access-to-files-and-directories"></a>Benutzerkontenzugriff auf Dateien und Verzeichnisse
 
@@ -77,6 +78,7 @@ Die folgenden Codeausschnitte veranschaulichen das Konfigurieren der automatisch
 ```csharp
 task.UserIdentity = new UserIdentity(new AutoUserSpecification(elevationLevel: ElevationLevel.Admin, scope: AutoUserScope.Task));
 ```
+
 #### <a name="batch-java"></a>Batch Java
 
 ```java
@@ -278,7 +280,7 @@ task.UserIdentity = new UserIdentity(AdminUserAccountName);
 
 ## <a name="update-your-code-to-the-latest-batch-client-library"></a>Aktualisieren Ihres Codes auf die aktuelle Batch-Clientbibliothek
 
-Mit der Batch-Dienstversion 2017-01-01.4.0 wird eine entscheidende Änderung eingeführt: Die in früheren Versionen verfügbare **runElevated**-Eigenschaft wird durch die **userIdentity**-Eigenschaft ersetzt. Die folgenden Tabellen enthalten eine einfache Zuordnung, die Sie zum Aktualisieren des Codes aus früheren Versionen der Clientbibliotheken verwenden können.
+Mit der Batch-Dienstversion 2017-01-01.4.0 wurde eine entscheidende Änderung eingeführt: Die in früheren Versionen verfügbare **runElevated**-Eigenschaft wird durch die **userIdentity**-Eigenschaft ersetzt. Die folgenden Tabellen enthalten eine einfache Zuordnung, die Sie zum Aktualisieren des Codes aus früheren Versionen der Clientbibliotheken verwenden können.
 
 ### <a name="batch-net"></a>Batch .NET
 

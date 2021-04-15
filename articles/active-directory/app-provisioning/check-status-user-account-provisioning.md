@@ -11,14 +11,14 @@ ms.topic: how-to
 ms.date: 09/09/2018
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: e6839026c83a10a4acebd7b7a6ab55b210e7ef14
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 5d93cec201feeb43700fe849f2fddc8eaf22488a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99256676"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104579483"
 ---
-# <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Tutorial: Berichterstellung zur automatischen Benutzerkontobereitstellung
+# <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Tutorial: Meldung zur automatischen Benutzerkontobereitstellung
 
 Azure Active Directory beinhaltet einen [Dienst zur Benutzerkontobereitstellung](user-provisioning.md), mit dem die Bereitstellung bzw. die Aufhebung der Bereitstellung von Benutzerkonten in SaaS-Apps und anderen Systemen für End-to-End-Identity Lifecycle Management automatisiert werden kann. Azure AD unterstützt vorab integrierte Benutzerbereitstellungsconnectors für alle Anwendungen und Systeme mit [hier](../saas-apps/tutorial-list.md) erhältlichen Tutorials für die Benutzerbereitstellung.
 
@@ -35,12 +35,12 @@ Bereitstellungsconnectors werden über das [Azure-Portal](https://portal.azure.c
 
 In diesem Artikel werden die folgenden Bezeichnungen verwendet, die wie folgt definiert sind:
 
-* **Quellsystem** – Das Repository von Benutzern, von dem aus der Azure AD-Bereitstellungsdienst synchronisiert. Azure Active Directory ist das Quellsystem für die meisten vorab integrierten Bereitstellungsconnectors, es gibt jedoch einige Ausnahmen (z. B. Workday Inbound Synchronization).
-* **Zielsystem** – Das Repository von Benutzern, in dem der Azure AD-Bereitstellungsdienst synchronisiert. Dies ist in der Regel eine SaaS-Anwendung (z. B. Salesforce, ServiceNow, Google Apps, Dropbox für Unternehmen), in manchen Fällen kann es sich jedoch um ein lokales System wie Active Directory handeln (z. B. Workday Inbound Synchronization in Active Directory).
+* **Quellsystem** – Das Repository von Benutzern, von dem aus der Azure AD-Bereitstellungsdienst synchronisiert. Azure Active Directory ist das Quellsystem für die meisten vorab integrierten Bereitstellungsconnectors, es gibt jedoch einige Ausnahmen (z.B. Workday Inbound Synchronization).
+* **Zielsystem** – Das Repository von Benutzern, in dem der Azure AD-Bereitstellungsdienst synchronisiert. Dabei handelt es sich in der Regel um eine SaaS-Anwendung (z. B. Salesforce, ServiceNow, G Suite, Dropbox for Business), dies kann in einigen Fällen jedoch auch ein lokales System wie Active Directory sein (z. B. Workday Inbound Synchronization in Active Directory).
 
 ## <a name="getting-provisioning-reports-from-the-azure-portal"></a>Abrufen von Bereitstellungsberichten aus dem Azure-Portal
 
-Um Berichtsinformationen zur Bereitstellung für eine bestimmte Anwendung abzurufen, starten Sie zunächst das [Azure-Portal](https://portal.azure.com), und navigieren Sie im Abschnitt **Aktivität** zu **Azure Active Directory** &gt; **Unternehmensanwendungen** &gt; **Bereitstellungsprotokolle (Vorschau)** . Sie können auch zu der Unternehmensanwendung navigieren, für die die Bereitstellung konfiguriert wird. Wenn Sie beispielsweise Benutzer für LinkedIn Elevate bereitstellen, lautet der Navigationspfad zu den Anwendungsdetails wie folgt:
+Um Berichtsinformationen zur Bereitstellung für eine bestimmte Anwendung abzurufen, starten Sie zunächst das [Azure-Portal](https://portal.azure.com), und navigieren Sie im Abschnitt **Aktivität** zu **Azure Active Directory** &gt; **Unternehmensanwendungen** &gt; **Bereitstellungsprotokolle (Vorschau)**. Sie können auch zu der Unternehmensanwendung navigieren, für die die Bereitstellung konfiguriert wird. Wenn Sie beispielsweise Benutzer für LinkedIn Elevate bereitstellen, lautet der Navigationspfad zu den Anwendungsdetails wie folgt:
 
 **Azure Active Directory &gt; Unternehmensanwendungen &gt; Alle Anwendungen &gt; LinkedIn Elevate**
 
@@ -48,7 +48,7 @@ Um Berichtsinformationen zur Bereitstellung für eine bestimmte Anwendung abzuru
 
 ## <a name="provisioning-progress-bar"></a>Statusanzeige für die Bereitstellung
 
-Die [Statusanzeige für die Bereitstellung](application-provisioning-when-will-provisioning-finish-specific-user.md#view-the-provisioning-progress-bar) wird auf der Registerkarte **Bereitstellung** für die jeweilige Anwendung angezeigt. Sie befindet sich unter **Einstellungen** im Abschnitt **Aktueller Status** und zeigt den Status des aktuellen Start- oder inkrementellen Zyklus an. Außerdem wird in diesem Abschnitt Folgendes angezeigt:
+Die [Statusanzeige für die Bereitstellung](application-provisioning-when-will-provisioning-finish-specific-user.md#view-the-provisioning-progress-bar) wird auf der Registerkarte **Bereitstellung** für die jeweilige Anwendung angezeigt. Sie befindet sich im Abschnitt **Aktueller Status** und zeigt den Status des aktuellen Startzyklus oder inkrementellen Zyklus an. Außerdem wird in diesem Abschnitt Folgendes angezeigt:
 
 * Die Gesamtanzahl von Benutzern und/oder -gruppen, die synchronisiert wurden und derzeit von der Bereitstellung zwischen dem Quell- und Zielsystem eingeschlossen werden.
 * Der Zeitpunkt, an dem die Synchronisierung zuletzt ausgeführt wurde. Synchronisierungen werden nach Abschluss eines [Startzyklus](../app-provisioning/how-provisioning-works.md#provisioning-cycles-initial-and-incremental) in der Regel alle 20 bis 40 Minuten durchgeführt.

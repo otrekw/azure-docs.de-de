@@ -4,12 +4,12 @@ description: Informationen zum Skalieren in Azure Kubernetes Service (AKS) einsc
 services: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
-ms.openlocfilehash: b72ed7cefc6a16eb484e1337dbd64e5f069a2201
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f6d2121403361c4225a7e0e64411875d83d93194
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94686037"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305734"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Skalierungsoptionen für Anwendungen in Azure Kubernetes Service (AKS)
 
@@ -26,7 +26,7 @@ In diesem Artikel werden die wichtigsten Konzepte vorgestellt, mit denen Sie Anw
 
 Sie können Replikate (Pods) und Knoten manuell skalieren, um zu testen, wie Ihre Anwendung auf eine Änderung in verfügbaren Ressourcen und Status reagiert. Durch manuelles Skalieren von Ressourcen können Sie auch eine festgelegte Anzahl zu verwendender Ressourcen definieren, wie z.B. die Anzahl der Knoten, um feste Kosten einzuhalten. Zum manuellen Skalieren definieren Sie die Replikat- oder Knotenanzahl. Die Kubernetes-API plant dann das Erstellen zusätzlicher Pods oder Entfernen von Knoten auf Basis dieser Replikat- oder Knotenanzahl.
 
-Beim horizontalen Herunterskalieren von Knoten ruft die Kubernetes-API die relevante Azure-Compute-API auf, die an den von Ihrem Cluster verwendeten Computetyp gebunden ist. Beispielsweise wird für Cluster, die auf VM Scale Sets basieren, die Logik für die Auswahl der zu entfernenden Knoten durch die VM Scale Sets-API bestimmt. Weitere Informationen dazu, wie Knoten beim horizontalen Herunterskalieren für die Entfernung ausgewählt werden, finden Sie in den [Häufig gestellte Fragen zu VMSS](../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.md#if-i-reduce-my-scale-set-capacity-from-20-to-15-which-vms-are-removed).
+Beim horizontalen Herunterskalieren von Knoten ruft die Kubernetes-API die relevante Azure-Compute-API auf, die an den von Ihrem Cluster verwendeten Computetyp gebunden ist. Beispielsweise wird für Cluster, die auf VM Scale Sets basieren, die Logik für die Auswahl der zu entfernenden Knoten durch die VM Scale Sets-API bestimmt. Weitere Informationen dazu, wie Knoten beim horizontalen Herunterskalieren für die Entfernung ausgewählt werden, finden Sie in den [Häufig gestellte Fragen zu VMSS](../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.yml#if-i-reduce-my-scale-set-capacity-from-20-to-15--which-vms-are-removed-).
 
 Informationen zu ersten Schritten mit der manuellen Skalierung von Pods und Knoten finden Sie unter [Skalieren von Anwendungen in AKS][aks-scale].
 

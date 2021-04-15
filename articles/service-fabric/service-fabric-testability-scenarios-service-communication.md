@@ -4,13 +4,13 @@ description: Die Kommunikation von Dienst zu Dienst ist ein wichtiger Integratio
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.openlocfilehash: fbf889422d69d031d777acd80cf3becfb3184568
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96575923"
 ---
-# <a name="service-fabric-testability-scenarios-service-communication"></a>Szenarien für die Service Fabric-Prüfbarkeit: Dienstkommunikation
+# <a name="service-fabric-testability-scenarios-service-communication"></a>Service Fabric-Testability-Szenarien: Dienstkommunikation
 Microservices und dienstorientierte Architekturstile können in Azure Service Fabric auf natürliche Weise genutzt werden. Bei diesen Arten von verteilten Architekturen setzen sich komponentenbasierte Microserviceanwendungen in der Regel aus mehreren Diensten zusammen, die miteinander kommunizieren müssen. Sogar im einfachsten Fall verfügen Sie im Allgemeinen mindestens über einen zustandslosen Webdienst und einen zustandsbehafteten Datenspeicherdienst, die miteinander kommunizieren müssen.
 
 Die Kommunikation von Dienst zu Dienst ist ein entscheidender Integrationspunkt einer Anwendung, da von jedem Dienst eine Remote-API für andere Dienste verfügbar gemacht wird. Die Verwendung einer Gruppe von API-Grenzen mit E/A erfordert häufig besondere Sorgfalt und einen relativ hohen Test- und Überprüfungsaufwand.

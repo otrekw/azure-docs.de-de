@@ -1,17 +1,17 @@
 ---
 title: Übersicht über zonenredundante Hochverfügbarkeit mit Azure Database for MySQL Flexible Server
 description: In diesem Artikel lernen Sie die Konzepte der zonenredundanten Hochverfügbarkeit mit Azure Database for MySQL Flexible Server kennen.
-author: ambhatna
-ms.author: ambhatna
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/29/2021
-ms.openlocfilehash: f01a0869f7786ee6197835610456f4bb1cbd6b03
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6629beacb5c3edc6fe1d21509051b915c0894479
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99097116"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105109691"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-mysql-flexible-server-preview"></a>Hochverfügbarkeitskonzepte in Azure Database for MySQL Flexible Server (Vorschau)
 
@@ -45,13 +45,13 @@ Eine Übersicht über die verschiedenen Replikationsstatus finden Sie unten:
 
 Unten finden Sie einige Vorteile der Verwendung des Features für zonenredundante Hochverfügbarkeit: 
 
--   Standbyreplikate werden hinsichtlich Anzahl virtueller Kerne, Speicher und Netzwerkeinstellungen (virtuelles Netzwerk, Firewall) mit der exakt gleichen VM-Konfiguration wie das primäre Replikat bereitgestellt.
--   Es besteht die Möglichkeit, Standbyreplikate zu entfernen, indem die Hochverfügbarkeit deaktiviert wird.
--   Automatische Sicherungen basieren auf Momentaufnahmen, werden auf dem primären Datenbankserver durchgeführt und in einem zonenredundanten Speicher gespeichert.
--   Bei einem Failover führt der flexible Azure Database for MySQL-Server automatisch ein Failover zum Standbyreplikat aus, wenn Hochverfügbarkeit aktiviert ist. Das Hochverfügbarkeitssetup überwacht den primären Server und schaltet ihn wieder online.
--   Clients stellen immer eine Verbindung mit dem primären Datenbankserver her.
--   Wenn ein Datenbankabsturz oder Knotenfehler auftritt, wird der Neustartversuch zuerst auf demselben Knoten durchgeführt. Wenn dies nicht erfolgreich ist, wird das automatische Failover ausgelöst.
--   Es besteht die Möglichkeit, den Server neu zu starten, sodass alle Änderungen an statischen Serverparametern übernommen werden.
+- Standbyreplikate werden hinsichtlich Anzahl virtueller Kerne, Speicher und Netzwerkeinstellungen (virtuelles Netzwerk, Firewall) mit der exakt gleichen VM-Konfiguration wie das primäre Replikat bereitgestellt.
+- Es besteht die Möglichkeit, Standbyreplikate zu entfernen, indem die Hochverfügbarkeit deaktiviert wird.
+- Automatische Sicherungen basieren auf Momentaufnahmen, werden auf dem primären Datenbankserver durchgeführt und in einem zonenredundanten Speicher gespeichert.
+- Bei einem Failover führt der flexible Azure Database for MySQL-Server automatisch ein Failover zum Standbyreplikat aus, wenn Hochverfügbarkeit aktiviert ist. Das Hochverfügbarkeitssetup überwacht den primären Server und schaltet ihn wieder online.
+- Clients stellen immer eine Verbindung mit dem primären Datenbankserver her.
+- Wenn ein Datenbankabsturz oder Knotenfehler auftritt, wird der Neustartversuch zuerst auf demselben Knoten durchgeführt. Wenn dies nicht erfolgreich ist, wird das automatische Failover ausgelöst.
+- Es besteht die Möglichkeit, den Server neu zu starten, sodass alle Änderungen an statischen Serverparametern übernommen werden.
 
 ## <a name="steady-state-operations"></a>Vorgänge mit stabilem Zustand
 
@@ -75,7 +75,7 @@ Zu nicht geplanten Dienstdowntimes gehören Softwarefehler oder Infrastrukturaus
 Flexible Server bieten die Möglichkeit, die Wartung zu planen. Dabei können Sie ein dreißigminütiges Zeitfenster an einem Tag Ihrer Wahl auswählen, während dem Wartungsarbeiten in Azure wie Patchimplementierungen oder Nebenversionsupgrades durchgeführt werden. Für Ihre flexiblen Server mit konfigurierter Hochverfügbarkeit werden diese Wartungsaktivitäten zuerst auf dem Standbyreplikat durchgeführt. 
 
 ## <a name="point-in-time-restore"></a>Wiederherstellung bis zu einem bestimmten Zeitpunkt 
-Da Flexible Server mit konfigurierter Hochverfügbarkeit Daten synchron repliziert, sind Standbyserver und primärer Server immer auf dem gleichen aktuellen Stand. Fehler durch Benutzer auf dem primären Replikat, z. B. das versehentliche Löschen einer Tabelle oder fehlerhafte Aktualisierungen, werden identisch für den Standbyserver übernommen. Folglich können Standbyserver nicht dazu verwendet werden, Wiederherstellungen für solche logischen Fehler durchzuführen. Zur Wiederherstellung solcher logischen Fehler müssen Sie eine Zeitpunktwiederherstellung für einen Zeitpunkt durchführen, der vor dem Auftreten des Fehlers liegt. Mithilfe der Zeitpunktwiederherstellungsfunktion von Flexible Server wird beim Wiederherstellen einer Datenbank mit Hochverfügbarkeit ein neuer Datenbankserver als neuer flexibler Server mit einem vom Benutzer angegebenen Namen wiederhergestellt. Sie können dann das Objekt vom Datenbankserver exportieren und in Ihren Produktionsdatenbankserver importieren. Wenn Sie Ihren Datenbankserver für Test- und Entwicklungszwecke klonen möchten oder wenn Sie ihn aus anderen Gründen wiederherstellen möchten, können Sie in ähnlicher Weise entweder den neuesten Wiederherstellungspunkt oder einen benutzerdefinierten Wiederherstellungspunkt auswählen. Beim Wiederherstellungsvorgang wird ein flexibler Server mit einzelner Zone erstellt.
+Da Flexible Server mit konfigurierter Hochverfügbarkeit Daten synchron repliziert, sind Standbyserver und primärer Server immer auf dem gleichen aktuellen Stand. Fehler durch Benutzer auf dem primären Replikat, z. B. das versehentliche Löschen einer Tabelle oder fehlerhafte Aktualisierungen, werden identisch für den Standbyserver übernommen. Folglich können Standbyserver nicht dazu verwendet werden, Wiederherstellungen für solche logischen Fehler durchzuführen. Zur Wiederherstellung solcher logischen Fehler müssen Sie eine Zeitpunktwiederherstellung für einen Zeitpunkt durchführen, der vor dem Auftreten des Fehlers liegt. Mithilfe der Zeitpunktwiederherstellungsfunktion von Flexible Server wird beim Wiederherstellen einer Datenbank mit Hochverfügbarkeit ein neuer Datenbankserver als neuer Flexible Server mit einem vom Benutzer angegebenen Namen wiederhergestellt. Sie können dann das Objekt vom Datenbankserver exportieren und in Ihren Produktionsdatenbankserver importieren. Wenn Sie Ihren Datenbankserver für Test- und Entwicklungszwecke klonen möchten oder wenn Sie ihn aus anderen Gründen wiederherstellen möchten, können Sie in ähnlicher Weise entweder den neuesten Wiederherstellungspunkt oder einen benutzerdefinierten Wiederherstellungspunkt auswählen. Beim Wiederherstellungsvorgang wird ein flexibler Server mit einzelner Zone erstellt.
 
 ## <a name="mitigate-downtime"></a>Minimieren von Downtime 
 Wenn Sie nicht das Feature für zonenredundante Hochverfügbarkeit nutzen, müssen Sie dennoch in der Lage sein, die Downtime für Ihre Anwendung zu minimieren. Dienstdowntimes, z. B. im Rahmen geplanter Patches, Upgrades für Nebenversionen oder von Benutzern ausgehenden Vorgängen, können innerhalb geplanter Wartungsfensters eingeschlossen werden. Geplante Dienstdowntimes, z. B. geplante Patches, Upgrades für Nebenversionen oder von Benutzern ausgehende Vorgänge wie die Skalierung von Computekapazitäten, sorgen für Downtime. Sie können sich dazu entschließen, von Azure ausgehende Wartungstasks für die Wochentage und die Uhrzeiten zu planen, die sich am wenigsten auf die Anwendung auswirken, um die Beeinträchtigungen möglichst gering zu halten. 
@@ -86,19 +86,19 @@ Während ungeplanter Downtimes, beispielsweise als Folge eines Datenbankabsturze
 
 Unten finden Sie einige Hinweise, die Sie beachten sollten, wenn Sie die zonenredundante Hochverfügbarkeit nutzen: 
 
--   Hochverfügbarkeit kann **ausschließlich** während der Erstellung eines flexiblen Servers festgelegt werden.
--   Hochverfügbarkeit wird für burstfähige Computeebenen nicht unterstützt.
--   Aufgrund der synchronen Replikation in eine andere Verfügbarkeitszone kann es beim primären Datenbankserver zu einer erhöhten Latenz für Schreib- und Commitvorgänge kommen.
--   Standbyreplikate können nicht für schreibgeschützte Abfragen verwendet werden.
--   Je nach Aktivität des primären Servers zum Zeitpunkt eines Failovers kann es zwischen 60 und 120 Sekunden oder länger dauern, bis das Failover abgeschlossen ist.
--   Ein Neustart des primären Datenbankservers für eine Übernahme von Änderungen an statischen Parametern führt auch zu einem Neustart des Standbyreplikats.
--   Die Konfiguration von Lesereplikaten für Server mit zonenredundanter Hochverfügbarkeit wird nicht unterstützt.
--   Das Konfigurieren von Verwaltungsaufgaben, die vom Kunden ausgehen, kann während eines verwalteten Wartungsfensters nicht automatisiert werden.
--   Geplante Ereignisse wie das Skalieren von Computekapazitäten und Upgrades für Nebenversionen werden für den primären Server und das Standbyreplikat zur selben Zeit durchgeführt. 
+- Hochverfügbarkeit kann **ausschließlich** während der Erstellung eines flexiblen Servers festgelegt werden.
+- Hochverfügbarkeit wird für burstfähige Computeebenen nicht unterstützt.
+- Aufgrund der synchronen Replikation in eine andere Verfügbarkeitszone kann es beim primären Datenbankserver zu einer erhöhten Latenz für Schreib- und Commitvorgänge kommen.
+- Standbyreplikate können nicht für schreibgeschützte Abfragen verwendet werden.
+- Je nach Aktivität des primären Servers zum Zeitpunkt eines Failovers kann es zwischen 60 und 120 Sekunden oder länger dauern, bis das Failover abgeschlossen ist.
+- Ein Neustart des primären Datenbankservers für eine Übernahme von Änderungen an statischen Parametern führt auch zu einem Neustart des Standbyreplikats.
+- Die Konfiguration von Lesereplikaten für Server mit zonenredundanter Hochverfügbarkeit wird nicht unterstützt.
+- Das Konfigurieren von Verwaltungsaufgaben, die vom Kunden ausgehen, kann während eines verwalteten Wartungsfensters nicht automatisiert werden.
+- Geplante Ereignisse wie das Skalieren von Computekapazitäten und Upgrades für Nebenversionen werden für den primären Server und das Standbyreplikat zur selben Zeit durchgeführt. 
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
--   Weitere Informationen zur [Geschäftskontinuität](./concepts-business-continuity.md)
--   Weitere Informationen zur [zonenredundanten Hochverfügbarkeit](./concepts-high-availability.md)
--   Weitere Informationen zu [Sicherung und Wiederherstellung](./concepts-backup-restore.md)
+- Weitere Informationen zur [Geschäftskontinuität](./concepts-business-continuity.md)
+- Weitere Informationen zur [zonenredundanten Hochverfügbarkeit](./concepts-high-availability.md)
+- Weitere Informationen zu [Sicherung und Wiederherstellung](./concepts-backup-restore.md)

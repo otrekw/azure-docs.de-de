@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 02/29/2020
 ms.author: kenwith
 ms.reviewer: baselden
-ms.openlocfilehash: f63a8fd05e1a6ed5e41eeb64aa852ff01db295af
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5184639d8c34be705aeeb691f1cf38486f850673
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101645466"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105543957"
 ---
 # <a name="plan-azure-active-directory-my-apps-configuration"></a>Planen der Konfiguration von „Meine Apps“ in Azure Active Directory
 
@@ -74,31 +74,19 @@ Administratoren können Folgendes konfigurieren:
 
 ## <a name="plan-consent-configuration"></a>Planen der Zustimmungskonfiguration
 
-Es gibt zwei Zustimmungsarten: Benutzerzustimmung und Zustimmung für Apps, die auf Daten zugreifen.
-
-![Screenshot: Zustimmungskonfiguration](./media/my-apps-deployment-plan/my-apps-consent.png)
-
 ### <a name="user-consent-for-applications"></a>Benutzerzustimmung für Anwendungen 
 
-Benutzer oder Administratoren müssen den Nutzungsbedingungen und den Datenschutzrichtlinien jeder Anwendung zustimmen. Sie müssen entscheiden, ob Benutzer oder nur Administratoren Anwendungen zustimmen können. **Wenn Ihre Geschäftsregeln dies zulassen, empfiehlt es sich, die Administratorzustimmung zu verwenden, um die Kontrolle über die Anwendungen in Ihrem Mandanten zu behalten**.
+Damit sich ein Benutzer bei einer Anwendung anmelden kann und die Anwendung auf die Daten Ihrer Organisation zugreifen kann, muss ein Benutzer oder Administrator die Anwendungsberechtigungen erteilen. Sie können konfigurieren, ob die Zustimmung des Benutzers zulässig ist, und unter welchen Bedingungen. **Microsoft empfiehlt Ihnen, die Zustimmung des Benutzers nur für Anwendungen von verifizierten Verlegern zuzulassen.**
 
-Damit Sie die Einwilligung des Administrators nutzen können, müssen Sie ein globaler Administrator der Organisation sein, und die Anwendungen müssen eine der folgenden Anforderungen erfüllen:
-
-* Sie sind in Ihrer Organisation registriert.
-
-* Sie sind in einer anderen Azure AD-Organisation registriert, und mindestens ein Benutzer hat zuvor seine Zustimmung erteilt.
-
-Wenn Sie Benutzern die Zustimmung erlauben möchten, müssen Sie entscheiden, ob diese jeder App oder nur unter bestimmten Umständen zustimmen können.
-
-Weitere Informationen finden Sie unter [Konfigurieren der Art der Endbenutzerzustimmung für eine Anwendung in Azure Active Directory](../manage-apps/configure-user-consent.md).
+Weitere Informationen finden Sie unter [Konfigurieren der Zustimmung von Endbenutzern zu Anwendungen](../manage-apps/configure-user-consent.md) .
 
 ### <a name="group-owner-consent-for-apps-accessing-data"></a>Gruppenbesitzereinwilligung für Apps, die auf Daten zugreifen
 
-Legen Sie fest, ob Besitzer von Azure AD-Sicherheitsgruppen oder M365-Gruppen Anwendungen den Zugriff auf Daten für die Gruppen, die sie besitzen, erlauben können. Mögliche Auswahl: Gruppenbenutzereinwilligung nicht zulassen,für alle Gruppenbesitzer zulassen oder für ausgewählte Gruppenbesitzer zulassen.
+Gruppen- und Teambesitzer können Anwendungen (z. B. von Drittanbietern veröffentlichte Anwendungen) autorisieren, auf die einer Gruppe zugeordneten Daten Ihrer Organisation zuzugreifen. Weitere Informationen finden Sie unter [Resource-specific consent in Microsoft Teams](https://docs.microsoft.com/microsoftteams/resource-specific-consent) (Ressourcenspezifische Einwilligung in Microsoft Teams). 
+
+Sie können konfigurieren, ob Sie diese Funktion aktivieren oder deaktivieren möchten.
 
 Weitere Informationen finden Sie unter [Konfigurieren der Gruppenbesitzereinwilligung](../manage-apps/configure-user-consent-groups.md).
-
-Konfigurieren Sie dann Ihre [Einstellungen für die Benutzer- und Gruppenbesitzereinwilligung](https://portal.azure.com/) im Azure-Portal.
 
 ### <a name="plan-communications"></a>Planen der Benachrichtigungen
 

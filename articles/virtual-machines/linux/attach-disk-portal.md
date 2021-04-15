@@ -8,12 +8,12 @@ ms.date: 08/28/2020
 ms.author: cynthn
 ms.subservice: disks
 ms.collection: linux
-ms.openlocfilehash: a6ef2cd62fc14958e8505a03e69e4b20cf6ce49f
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 0fe584ea8559c285ee7e25caca958ff56aa9454d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102556824"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104601828"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>Anfügen eines Datenträgers an einen virtuellen Linux-Computer mithilfe des Portals 
 In diesem Artikel wird beschrieben, wie Sie über das Azure-Portal neue und vorhandene Datenträger an einen virtuellen Linux-Computer anfügen können. Sie können auch [einen Datenträger an eine Windows-VM im Azure-Portal anfügen](../windows/attach-managed-disk-portal.md). 
@@ -81,7 +81,7 @@ In diesem Beispiel wurde der Datenträger `sdc` hinzugefügt. Hierbei handelt es
 
 Das folgende komplexere Beispiel zeigt, wie mehrere Datenträger im Portal aussehen:
 
-:::image type="content" source="./media/attach-disk-portal/create-new-md.png" alt-text="Überprüfen der Datenträgereinstellungen":::
+:::image type="content" source="./media/attach-disk-portal/find-disk.png" alt-text="Screenshot verschiedener Datenträger im Portal":::
 
 In der Abbildung sehen Sie, dass drei Datenträger vorhanden sind: 4 GB in LUN 0, 16 GB in LUN 1 und 32 GB in LUN 2.
 
@@ -227,6 +227,6 @@ Es gibt zwei Methoden, TRIM-Unterstützung auf Ihrem virtuellen Linux-Computer z
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen und Informationen zur Problembehandlung bei Datenträgerproblemen finden Sie unter [Behandeln von Problemen mit geänderten Gerätenamen von Linux-VMs](../troubleshooting/troubleshoot-device-names-problems.md).
+Weitere Informationen und Informationen zur Problembehandlung bei Datenträgerproblemen finden Sie unter [Behandeln von Problemen mit geänderten Gerätenamen von Linux-VMs](/troubleshoot/azure/virtual-machines/troubleshoot-device-names-problems).
 
 Sie können auch [einen Datenträger mithilfe der Azure CLI anfügen](add-disk.md).

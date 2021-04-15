@@ -7,14 +7,14 @@ manager: carmonm
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/26/2019
+ms.date: 02/20/2021
 ms.author: bwren
-ms.openlocfilehash: 8ecfd74a4d486a83add490501c2f7af4a4003b85
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3c99002a4f8613ff40a116eeceded4b3bada1c15
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101700973"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105936154"
 ---
 # <a name="azure-monitor-metrics-overview"></a>Überblick über Metriken in Azure Monitor
 Metriken in Azure Monitor sind ein Feature von Azure Monitor, das numerische Daten aus [überwachten Ressourcen](../monitor-reference.md) in einer Zeitreihendatenbank erfasst. Metriken sind numerische Werte, die in regelmäßigen Abständen erfasst werden und einen Aspekt eines Systems zu einem bestimmten Zeitpunkt beschreiben. Metriken in Azure Monitor sind einfach gehalten und unterstützen Szenarien vom Typ „Nahezu in Echtzeit“, sodass sie besonders für Warnungen und die schnelle Erkennung von Problemen hilfreich sind. Sie können sie interaktiv mit dem Metrik-Explorer analysieren, sich proaktiv mit einer Warnung benachrichtigen lassen, wenn ein Wert einen Schwellenwert überschreitet, oder sie in einer Arbeitsmappe oder einem Dashboard visualisieren.
@@ -27,13 +27,13 @@ Metriken in Azure Monitor sind ein Feature von Azure Monitor, das numerische Dat
 ## <a name="what-can-you-do-with-azure-monitor-metrics"></a>Welche Möglichkeiten haben Sie mit Azure Monitor-Metriken?
 In der folgenden Tabelle sind die unterschiedlichen Optionen zur Nutzung von Metriken in Azure Monitor aufgeführt.
 
-|  |  |
+|  | BESCHREIBUNG |
 |:---|:---|
 | **Analysieren** | Verwenden Sie den [Metrik-Explorer](metrics-charts.md) zum Analysieren von erfassten Metriken in einem Diagramm und Vergleichen von Metriken verschiedener Ressourcen. |
 | **Warnung** | Konfigurieren einer [Warnungsregel für eine Metrik](../alerts/alerts-metric.md), die eine Benachrichtigung sendet oder eine [automatisierte Aktion](../alerts/action-groups.md) ausführt, sobald der Metrikwert einen Schwellenwert überschreitet. |
 | **Visualisieren** | Heften Sie ein Diagramm aus dem Metrik-Explorer an ein [Azure-Dashboard](../app/tutorial-app-dashboards.md) an.<br>Erstellen Sie eine [Arbeitsmappe](../visualize/workbooks-overview.md) zum Kombinieren mehrerer Datasets in einem interaktiven Bericht. Exportieren Sie die Ergebnisse einer Abfrage für [Grafana](../visualize/grafana-plugin.md), um die Dashboardfunktionen zu nutzen und die Daten mit anderen Datenquellen zu kombinieren. |
 | **Automatisieren** |  Verwenden von [Autoskalierung](../autoscale/autoscale-overview.md), um Ressourcen basierend auf einem Schwellenwert, der von einem Metrikwert über- oder unterschritten wird, herauf- oder herabzusetzen. |
-| **Abrufen** | Zugreifen auf Metrikwerte über eine Befehlszeile mit [PowerShell-Cmdlets](/powershell/module/az.applicationinsights).<br>Zugreifen auf Metrikwerte über eine benutzerdefinierte Anwendung per [REST-API](./rest-api-walkthrough.md).<br>Zugreifen auf Metrikwerte über eine Befehlszeile per [CLI](/cli/azure/monitor/metrics). |
+| **Abrufen** | Zugreifen auf Metrikwerte über eine Befehlszeile mit [PowerShell-Cmdlets](/powershell/module/az.monitor).<br>Zugreifen auf Metrikwerte über eine benutzerdefinierte Anwendung per [REST-API](./rest-api-walkthrough.md).<br>Zugreifen auf Metrikwerte über eine Befehlszeile per [CLI](/cli/azure/monitor/metrics). |
 | **Export** | [Weiterleiten von Metriken an Protokolle](./resource-logs.md#send-to-azure-storage), um Daten in Azure Monitor-Metriken zusammen mit Daten in Azure Monitor-Protokollen zu analysieren und Metrikwerte länger als 93 Tage zu speichern.<br>Streamen von Metriken an einen [Event Hub](./stream-monitoring-data-event-hubs.md), um sie an externe Systeme zu leiten. |
 | **Archivieren** | [Archivieren](./platform-logs-overview.md) des Leistungs- oder Integritätsverlaufs Ihrer Ressourcen zu Kompatibilitäts-/Überwachungszwecken oder zur Offline-Berichterstellung. |
 
@@ -104,7 +104,7 @@ Diese Metrik kann Fragen wie die folgenden beantworten: „Wie hoch war der Netz
 Für die meisten Ressourcen in Azure werden Metriken für 93 Tage gespeichert. Es gibt einige Ausnahmen:
 
 **Gastbetriebssystemmetriken**
--   **Klassische Gastbetriebssystemmetriken:** Dies ist Leistungsindikatoren, die von der [Diagnose-Erweiterung für Windows (WAD)](../agents/diagnostics-extension-overview.md) oder der [Diagnose-Erweiterung für Linux (LAD)](../../virtual-machines/extensions/diagnostics-linux.md) erfasst und an ein Azure Storage-Konto weitergeleitet werden. Die Vermerkdauer für diese Metriken beträgt 14 Tage.
+-   **Klassische Gastbetriebssystemmetriken:** Dies ist Leistungsindikatoren, die von der [Diagnose-Erweiterung für Windows (WAD)](../agents/diagnostics-extension-overview.md) oder der [Diagnose-Erweiterung für Linux (LAD)](../../virtual-machines/extensions/diagnostics-linux.md) erfasst und an ein Azure Storage-Konto weitergeleitet werden. Diese Metriken werden garantiert mindestens 14 Tage aufbewahrt, obwohl kein tatsächliches Ablaufdatum in das Speicherkonto geschrieben wird. Aus Leistungsgründen begrenzt das Portal die angezeigte Datenmenge basierend auf dem Volumen. Daher kann die tatsächliche Anzahl der Tage, die vom Portal abgerufen werden, mehr als 14 Tage umfassen, wenn das zu schreibende Datenvolumen nicht sehr groß ist.  
 -   **An Azure Monitor-Metriken gesendete Gastbetriebssystemmetriken:** Dies sind Leistungsindikatoren, die von der [Diagnose-Erweiterung für Windows (WAD)](../agents/diagnostics-extension-overview.md) erfasst und an die [Azure Monitor-Datensenke](../agents/diagnostics-extension-overview.md#data-destinations) gesendet werden. Alternativ können sie auch über den [InfluxData Telegraf-Agent](https://www.influxdata.com/time-series-platform/telegraf/) auf Linux-Computern gesendet werden. Die Vermerkdauer für diese Metriken beträgt 93 Tage.
 -   **Vom Log Analytics-Agent erfasste Gastbetriebssystemmetriken:** Dies sind Leistungsindikatoren, die vom Log Analytics-Agent erfasst und an einen Log Analytics-Arbeitsbereich gesendet werden. Die Vermerkdauer für diese Metriken beträgt 31 Tage. Sie kann auf bis zu 2 Jahre verlängert werden.
 

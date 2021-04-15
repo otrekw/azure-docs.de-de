@@ -6,16 +6,21 @@ manager: nitinme
 ms.author: lajanuar
 author: laujan
 ms.date: 02/11/2021
-ms.openlocfilehash: fc75bfc3b79cd6aed51a44fc47787532a9d61e8b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0d9ef13de29ac140d94e9e4c05b14f35b9e5834c
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101713013"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105968168"
 ---
 # <a name="what-is-document-translation-preview"></a>Was ist die Dokumentübersetzung (Vorschau)?
 
 Die Dokumentübersetzung ist ein cloudbasiertes Feature des [Azure-Übersetzerdiensts](../translator-info-overview.md) und ist Teil der Azure Cognitive Service-Familie von REST-APIs. Die API für die Dokumentübersetzung übersetzt Dokumente in und aus 90 Sprachen und Dialekten, wobei Dokumentstruktur und Datenformat beibehalten werden.
+
+Diese Dokumentation enthält die folgenden Arten von Artikeln:  
+
+* [**Schnellstarts**](get-started-with-document-translation.md) sind Anleitungen zu den ersten Schritten, die Sie durch das Senden von Anforderungen an den Dienst führen.
+* [**Schrittanleitungen**](create-sas-tokens.md) enthalten Anweisungen zur spezifischeren oder individuelleren Verwendung des Diensts.  
 
 ## <a name="document-translation-key-features"></a>Wichtige Features für die Dokumentübersetzung
 
@@ -49,7 +54,6 @@ Die folgenden Dokumentdateitypen werden von der Dokumentübersetzung unterstütz
 |Microsoft Word|.docx| Eine Textdokumentdatei.|
 |Per Tabulator getrennte Werte/TAB|.tsv/.tab| Eine durch Tabulator getrennte Datei mit Rohdaten, die von Tabellenkalkulationsprogrammen verwendet wird.|
 |Text|.txt| Ein unformatiertes Textdokument.|
-|Translation Memory Exchange|.tmx|Ein offener XML-Standard, der für den Austausch von TM-Daten (Translation Memory) verwendet wird, die von CAT- (Computer Aided Translation) und Lokalisierungsanwendungen erstellt wurden.|
 
 ## <a name="supported-glossary-formats"></a>Unterstützte Glossarformate
 
@@ -64,5 +68,3 @@ Die folgenden Glossardateitypen werden von der Dokumentübersetzung unterstützt
 
 > [!div class="nextstepaction"]
 > [Erste Schritte bei der Dokumentübersetzung](get-started-with-document-translation.md)
->
->

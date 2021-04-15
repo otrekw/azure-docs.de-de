@@ -1,18 +1,15 @@
 ---
 title: Architektur für die VMware-/physische Notfallwiederherstellung an einem sekundären Standort mit Azure Site Recovery
 description: Dieser Artikel enthält eine Übersicht über die Komponenten und die Architektur, die bei der Notfallwiederherstellung für lokale VMware-VMs oder physische Server unter Windows oder Linux an einem sekundären VMware-Standort mit Azure Site Recovery verwendet werden.
-author: rayne-wiselman
-manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.author: raynew
-ms.openlocfilehash: d400e6bcda0a2114d798a3289f01f52b677a6f94
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 032f8619a1f8d4299af1eb069fdccba1307542d4
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97656494"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106579509"
 ---
 # <a name="architecture-for-vmwarephysical-server-replication-to-a-secondary-on-premises-site"></a>Architektur für die Replikation von VMware- oder physischen Servern an einem sekundären lokalen Standort
 

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 3/18/2019
 ms.author: mjbrown
 ms.openlocfilehash: 0f08ca84597b08b9a236b7bfb0fc9c849423a752
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93335890"
 ---
 # <a name="query-an-azure-cosmos-container"></a>Abfragen eines Azure Cosmos-Containers
@@ -59,9 +59,9 @@ Azure Cosmos DB SDKs ab Version 1.9.0 unterstützen Optionen für die Ausführun
 
 Sie können die parallele Ausführung von Abfragen verwalten, indem Sie die folgenden Parameter optimieren:
 
-- **MaxConcurrency** : Legt die maximale Anzahl gleichzeitiger Verbindungen mit den Partitionen des Containers fest. Wenn Sie diese Eigenschaft auf `-1` festlegen, verwaltet das SDK den Grad der Parallelität. Wenn  `MaxConcurrency` auf `0` festgelegt ist, gibt es eine einzelne Netzwerkverbindung mit den Partitionen des Containers.
+- **MaxConcurrency:** Hiermit wird die maximale Anzahl gleichzeitiger Netzwerkverbindungen mit den Partitionen des Containers festgelegt. Wenn Sie diese Eigenschaft auf `-1` festlegen, verwaltet das SDK den Grad der Parallelität. Wenn  `MaxConcurrency` auf `0` festgelegt ist, gibt es eine einzelne Netzwerkverbindung mit den Partitionen des Containers.
 
-- **MaxBufferedItemCount** : Steuert das Verhältnis zwischen Abfragewartezeit und clientseitiger Arbeitsspeichernutzung. Wird diese Option weggelassen oder auf „-1“ festgelegt, verwaltet das SDK die Anzahl von Elementen, die während der Ausführung paralleler Abfragen gepuffert werden.
+- **MaxBufferedItemCount**: Steuert das Verhältnis zwischen Abfragewartezeit und clientseitiger Arbeitsspeichernutzung. Wird diese Option weggelassen oder auf „-1“ festgelegt, verwaltet das SDK die Anzahl von Elementen, die während der Ausführung paralleler Abfragen gepuffert werden.
 
 Aufgrund der Fähigkeit von Azure Cosmos DB, partitionsübergreifende Abfragen zu parallelisieren, wird die Abfragelatenz im Allgemeinen gut skaliert, da das System [physische Partitionen](partitioning-overview.md#physical-partitions) hinzufügt. Die RU-Rechnungstellung steigt jedoch erheblich, wenn die Gesamtzahl der physischen Partitionen zunimmt.
 

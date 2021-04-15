@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: ed6d5d676fd2c6eefd3288b7609446eb61611ed6
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: cb8394de49c2c5daeae156a9316466928eded148
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100517976"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105628474"
 ---
 # <a name="server-concepts-in-azure-database-for-mysql"></a>Serverkonzepte in Azure-Datenbank für MySQL
 
@@ -38,7 +38,7 @@ Sie können in einer Instanz von Azure-Datenbank für MySQL-Server eine oder meh
 
 Mithilfe der folgenden Elemente kann ein sicherer Zugriff auf Ihre Datenbank sichergestellt werden.
 
-|     |     |
+| Sicherheitskonzept | Beschreibung     |
 | :-- | :-- |
 | **Authentifizierung und Autorisierung** | Azure-Datenbank für MySQL-Server unterstützen die systemeigene MySQL-Authentifizierung. Mithilfe der Anmeldeinformationen des Serveradministrators können Sie eine Verbindung mit dem Server herstellen und sich authentifizieren. |
 | **Protokoll** | Der Dienst unterstützt ein nachrichtenbasiertes Protokoll, das von MySQL verwendet wird. |
@@ -62,7 +62,13 @@ Während der Zeit, in der der Server angehalten ist, können keine Verwaltungsvo
 
 ## <a name="how-do-i-manage-a-server"></a>Wie verwalte ich einen Server?
 
-Sie können Azure-Datenbank für MySQL-Server mithilfe des Azure-Portals oder der Azure CLI verwalten.
+Sie können die Erstellung, Löschung, Serverparameterkonfiguration (my.cnf), Skalierung, Sicherheit, Hochverfügbarkeit, Sicherung und Wiederherstellung, Überwachung und das Netzwerk Ihrer Azure Database for MySQL-Server mithilfe des Azure-Portals oder der Azure CLI verwalten. Außerdem sind die folgenden gespeicherten Prozeduren in Azure Database for MySQL verfügbar, um bestimmte Datenbankverwaltungsaufgaben auszuführen, die erforderlich sind, da Administratorrechte auf dem Server nicht unterstützt werden.
+
+|**Name der gespeicherten Prozedur**|**Eingabeparameter**|**Ausgabeparameter**|**Hinweis zur Verwendung**|
+|-----|-----|-----|-----|
+|*mysql.az_kill*|processlist_id|–|Entspricht dem Befehl [`KILL CONNECTION`](https://dev.mysql.com/doc/refman/8.0/en/kill.html). Beendet die der angegebenen „processlist_id“ zugeordnete Verbindung nach dem Beenden einer beliebigen Anweisung, die von der Verbindung ausgeführt wird.|
+|*mysql.az_kill_query*|processlist_id|–|Entspricht dem Befehl [`KILL QUERY`](https://dev.mysql.com/doc/refman/8.0/en/kill.html). Beendet die Anweisung, die derzeit von der Verbindung ausgeführt wird. Die Verbindung bleibt unverändert erhalten.|
+|*mysql.az_load_timezone*|–|–|Lädt [Zeitzonentabellen](howto-server-parameters.md#working-with-the-time-zone-parameter), damit der `time_zone`-Parameter auf benannte Werte festgelegt werden kann (z. B. „USA/Pazifik“).|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

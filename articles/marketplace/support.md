@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 01/19/2020
-ms.openlocfilehash: a1726b29c153bf680d29fe821ac34aa958064335
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cfe365af868f01b868e737a409724e92f1d57f81
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98879240"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107106988"
 ---
 # <a name="support-for-the-commercial-marketplace-program-in-partner-center"></a>Support für das Programm „Kommerzieller Marketplace“ in Partner Center
 
@@ -24,7 +24,7 @@ Microsoft bietet Support für eine Vielzahl von Produkten und Diensten. Um eine 
 
 ## <a name="get-help-or-open-a-support-ticket"></a>Anfordern von Hilfe oder Eröffnen eines Supporttickets
 
-1. Melden Sie sich mit Ihrem Geschäftskonto an. [Erstellen Sie ein Partner Center-Konto](partner-center-portal/create-account.md), falls Sie dies noch nicht getan haben.
+1. Melden Sie sich mit Ihrem Geschäftskonto an. [Erstellen Sie ein Partner Center-Konto](create-account.md), falls Sie dies noch nicht getan haben.
 
 1. Wählen Sie im Menü oben rechts auf der Seite das Symbol **Support** aus. Der Bereich **Hilfe und Support** wird rechts auf der Seite angezeigt.
 

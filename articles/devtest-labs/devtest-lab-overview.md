@@ -4,10 +4,10 @@ description: Erfahren Sie, wie DevTest Labs das Erstellen, Verwalten und Überwa
 ms.topic: article
 ms.date: 06/20/2020
 ms.openlocfilehash: b7e6493e5fb1c99dfa7962ed464dca3ebc6b0c7e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85480200"
 ---
 # <a name="about-azure-devtest-labs"></a>Informationen zu Azure DevTest Labs
@@ -19,7 +19,7 @@ Mit DevTest Labs können Sie die neueste Version Ihrer Anwendungen testen, indem
 
 - Schnelles Bereitstellen von Linux- und Windows-Umgebungen mithilfe wiederverwendbarer Vorlagen und Artefakte.
 - Integrieren Sie Ihre Bereitstellungspipeline einfach mit DevTest Labs, um Umgebungen bei Bedarf bereitstellen zu können.
-- Hochskalieren Ihrer Auslastungstests, indem mehrere Test-Agents bereitgestellt werden, und Erstellen vorab bereitgestellter Umgebungen für Training und Demos
+- Zentrales Hochskalieren Ihrer Auslastungstests, indem mehrere Test-Agents bereitgestellt werden, und Erstellen vorab bereitgestellter Umgebungen für Training und Demos
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/What-is-Azure-DevTest-Labs/player]
 
@@ -77,4 +77,4 @@ Nutzen Sie unsere sofort einsatzbereiten Plug-Ins oder die API, um Entwicklungs-
 Weitere Informationen finden Sie in folgenden Artikeln:
 
 - Weitere Informationen zu DevTest Labs finden Sie unter [DevTest Labs-Konzepte](devtest-lab-concepts.md).
-- Eine exemplarische Vorgehensweise mit Schritt-für-Schritt-Anleitung finden Sie unter [Tutorial: Einrichten eines Labs mithilfe von Azure DevTest Labs](tutorial-create-custom-lab.md).
+- Eine exemplarische Vorgehensweise mit Schritt-für-Schritt-Anleitung finden Sie im Tutorial [Erstellen eines Labs mithilfe von Azure DevTest Labs](tutorial-create-custom-lab.md).

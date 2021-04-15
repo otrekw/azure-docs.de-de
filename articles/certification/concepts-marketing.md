@@ -1,18 +1,18 @@
 ---
 title: Marketingeigenschaften
 description: Eine Beschreibung der verschiedenen Marketingfelder, die im Portal gesammelt werden, und wie diese im Azure Certified Device-Katalog angezeigt werden.
-author: nikuntjo
+author: nkuntjoro
 ms.author: nikuntjo
 ms.service: certification
 ms.topic: conceptual
 ms.date: 03/15/2021
 ms.custom: template-concept
-ms.openlocfilehash: 45ecab18451ca0915ee3891278db47feb7469915
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 262616ca82e9c06baec0d7a1b81a0e3dff2ed8db
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105975842"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304510"
 ---
 # <a name="marketing-properties"></a>Marketingeigenschaften
 

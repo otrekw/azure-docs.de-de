@@ -11,10 +11,10 @@ ms.workload: genomics
 ms.topic: troubleshooting
 ms.date: 10/29/2018
 ms.openlocfilehash: c508c10d619cde1a16d89b446c5cfd1a3ce81daf
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96023822"
 ---
 # <a name="troubleshooting-guide"></a>Handbuch zur Problembehandlung
@@ -98,8 +98,8 @@ In diesem Abschnitt werden die häufigsten Fehler kurz vorgestellt, die vom Micr
 
 Der Microsoft Genomics-Dienst (msgen) kann die folgenden zwei Arten von Fehlern auslösen:
 
-1. Interne Dienstfehler: Fehler, die dienstintern sind und nicht durch Korrigieren von Parametern oder Eingabedateien behoben werden können. Manchmal kann ein erneutes Übermitteln des Workflows diese Fehler beheben.
-2. Eingabefehler: Fehler, die durch Verwenden der richtigen Argumente oder Korrigieren von Dateiformaten behoben werden können.
+1. Interne Dienstfehler: Fehler, die dienstintern sind und nicht durch das Korrigieren von Parametern oder Eingabedateien behoben werden können. Manchmal kann ein erneutes Übermitteln des Workflows diese Fehler beheben.
+2. Eingabefehler: Fehler, die durch die Verwendung der richtigen Argumente oder das Korrigieren von Dateiformaten behoben werden können.
 
 ### <a name="1-internal-service-errors"></a>1. Interne Dienstfehler
 
@@ -107,7 +107,7 @@ Ein interner Dienstfehler ist vom Benutzer nicht behebbar. Sie können den Workf
 
 | Fehlermeldung                                                                                                                            | Empfohlene Schritte zur Problembehandlung                                                                                                                                   |
 |------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Ein interner Fehler ist aufgetreten. Versuchen Sie, den Workflow erneut zu übermitteln. Wenn dieser Fehler erneut auftritt, wenden Sie sich an den Microsoft Genomics-Support, um Unterstützung zu erhalten. | Übermitteln Sie den Workflow erneut. Wenden Sie sich an den Microsoft Genomics-Support, wenn das Problem weiterhin besteht, indem Sie ein Support[ticket](file-support-ticket-genomics.md ) erstellen, um Unterstützung zu erhalten. |
+| Interner Fehler. Versuchen Sie, den Workflow erneut zu übermitteln. Wenn dieser Fehler erneut auftritt, wenden Sie sich an den Microsoft Genomics-Support, um Unterstützung zu erhalten. | Übermitteln Sie den Workflow erneut. Wenden Sie sich an den Microsoft Genomics-Support, wenn das Problem weiterhin besteht, indem Sie ein Support[ticket](file-support-ticket-genomics.md ) erstellen, um Unterstützung zu erhalten. |
 
 ### <a name="2-input-errors"></a>2. Eingabefehler
 
