@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: 27d9d5d30dc4c96516d23acba6a11b411827071e
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: b283cacf94ff3567428787e50a3d7db9ba91fd9c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100378705"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104864039"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Verwenden des Azure Maps-Kartensteuerelements
 
@@ -258,10 +258,10 @@ Wenn Sie direkt auf die Azure Maps-REST-Dienste zugreifen, ändern Sie die URL-D
 
 Bei Entwicklungen mit einem JavaScript-Framework kann eins der folgenden Open-Source-Projekte nützlich sein:
 
-- [ng-azure-maps](https://github.com/arnaudleclerc/ng-azure-maps): Angular 10-Wrapper zur Umschließung von Azure-Karten.
-- [AzureMapsControl.Components](https://github.com/arnaudleclerc/AzureMapsControl.Components): Eine Blazor-Komponente für Azure Maps.
-- [Azure Maps React Component](https://github.com/WiredSolutions/react-azure-maps): Ein React-Wrapper für das Azure Maps-Steuerelement.
-- [Vue Azure Maps](https://github.com/rickyruiz/vue-azure-maps): Eine Azure Maps-Komponente für die Vue-Anwendung.
+* [ng-azure-maps](https://github.com/arnaudleclerc/ng-azure-maps): Angular 10-Wrapper zur Umschließung von Azure-Karten.
+* [AzureMapsControl.Components](https://github.com/arnaudleclerc/AzureMapsControl.Components): Eine Blazor-Komponente für Azure Maps.
+* [Azure Maps React Component](https://github.com/WiredSolutions/react-azure-maps): Ein React-Wrapper für das Azure Maps-Steuerelement.
+* [Vue Azure Maps](https://github.com/rickyruiz/vue-azure-maps): Eine Azure Maps-Komponente für die Vue-Anwendung.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -275,10 +275,10 @@ Erfahren Sie, wie Sie den Stil einer Karte auswählen:
 > [!div class="nextstepaction"]
 > [Auswählen eines Kartenstils](choose-map-style.md)
 
-So fügen Sie Ihrer Karte weitere Daten hinzu:
+Informieren Sie sich über bewährte Methoden, und sehen Sie sich die folgenden Beispiele an:
 
 > [!div class="nextstepaction"]
-> [Erstellen einer Karte](map-create.md)
+> [bewährten Methoden](web-sdk-best-practices.md)
 
 > [!div class="nextstepaction"]
 > [Codebeispiele](/samples/browse/?products=azure-maps)

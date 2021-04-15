@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 02/04/2020
 ms.author: kumud
-ms.openlocfilehash: f373afae03357ffb65eb459f806fe441e29b21b9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 890e02812fb06cf0b0ebe990b0175311d5c85ab5
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87047088"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312925"
 ---
 # <a name="customize-a-language-model-with-the-video-indexer-api"></a>Anpassen eines Sprachmodells mit der Video Indexer-API
 
@@ -27,7 +27,7 @@ Sie können die Video Indexer-APIs verwenden, um benutzerdefinierte Sprachmodell
 
 ## <a name="create-a-language-model"></a>Erstellen eines Sprachmodells
 
-Die API zum [Erstellen eines Sprachmodells](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Create-Language-Model?) erstellt ein neues benutzerdefiniertes Sprachmodell im angegebenen Konto. Sie können Dateien für das Sprachmodell in diesem Aufruf hochladen. Alternativ können Sie das Sprachmodell hier erstellen und Dateien für das Modell später durch Aktualisieren des Sprachmodells hochladen.
+Die API zum [Erstellen eines Sprachmodells](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Create-Language-Model) erstellt ein neues benutzerdefiniertes Sprachmodell im angegebenen Konto. Sie können Dateien für das Sprachmodell in diesem Aufruf hochladen. Alternativ können Sie das Sprachmodell hier erstellen und Dateien für das Modell später durch Aktualisieren des Sprachmodells hochladen.
 
 > [!NOTE]
 > Sie müssen das Modell mit seinen aktivierten Dateien weiterhin trainieren, damit das Modell den Inhalt seiner Dateien erlernen kann. Anleitungen zum Trainieren einer Sprache finden Sie im nächsten Abschnitt.
@@ -70,7 +70,7 @@ Die Antwort stellt Metadaten zum neu erstellten Sprachmodell zusammen mit Metada
 
 ## <a name="train-a-language-model"></a>Trainieren eines Sprachmodells
 
-Die API zum [Trainieren eines Sprachmodells](https://api-portal.videoindexer.ai/docs/services/operations/operations/Train-Language-Model?&pattern=train) trainiert ein benutzerdefiniertes Sprachmodell im angegebenen Konto mit dem Inhalt der Dateien, die in das Sprachmodell hochgeladen und in ihm aktiviert wurden.
+Die API zum [Trainieren eines Sprachmodells](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Train-Language-Model) trainiert ein benutzerdefiniertes Sprachmodell im angegebenen Konto mit dem Inhalt der Dateien, die in das Sprachmodell hochgeladen und in ihm aktiviert wurden.
 
 > [!NOTE]
 > Zunächst müssen Sie das Sprachmodell erstellen und seine Dateien hochladen. Sie können Dateien beim Erstellen des Sprachmodells oder durch Aktualisieren des Sprachmodells hochladen.
@@ -105,11 +105,11 @@ Die Antwort stellt Metadaten zum neu trainierten Sprachmodell zusammen mit Metad
 }
 ```
 
-Die zurückgegebene `id` ist eine eindeutige ID, die zur Unterscheidung von Sprachmodellen genutzt wird. `languageModelId` wird dagegen sowohl für APIs zum [Hochladen eines Videos in den Index](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) als auch [zum erneuten Indizieren eines Videos](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?) (in Video Indexer-APIs für Upload bzw. Neuindizierung auch als `linguisticModelId` bezeichnet) verwendet.
+Die zurückgegebene `id` ist eine eindeutige ID, die zur Unterscheidung von Sprachmodellen genutzt wird. `languageModelId` wird dagegen sowohl für APIs zum [Hochladen eines Videos in den Index](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Upload-Video) als auch [zum erneuten Indizieren eines Videos](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Re-Index-Video) (in Video Indexer-APIs für Upload bzw. Neuindizierung auch als `linguisticModelId` bezeichnet) verwendet.
 
 ## <a name="delete-a-language-model"></a>Löschen eines Sprachmodells
 
-Die API zum [Löschen eines Sprachmodells](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Language-Model?&pattern=delete) löscht ein benutzerdefiniertes Sprachmodell aus dem angegebenen Konto. Jedes Video, das das gelöschte Sprachmodell verwendet hat, behält den gleichen Index bei, bis Sie das Video erneut indizieren. Wenn Sie das Video erneut indizieren, können Sie dem Video ein neues Sprachmodell zuweisen. Andernfalls verwendet Video Indexer das Standardmodell, um das Video erneut zu indizieren.
+Die API zum [Löschen eines Sprachmodells](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Delete-Language-Model) löscht ein benutzerdefiniertes Sprachmodell aus dem angegebenen Konto. Jedes Video, das das gelöschte Sprachmodell verwendet hat, behält den gleichen Index bei, bis Sie das Video erneut indizieren. Wenn Sie das Video erneut indizieren, können Sie dem Video ein neues Sprachmodell zuweisen. Andernfalls verwendet Video Indexer das Standardmodell, um das Video erneut zu indizieren.
 
 ### <a name="response"></a>Antwort
 
@@ -117,7 +117,7 @@ Es wird kein Inhalt zurückgegeben, wenn das Sprachmodell erfolgreich gelöscht 
 
 ## <a name="update-a-language-model"></a>Aktualisieren eines Sprachmodells
 
-Die API zum [Aktualisieren eines Sprachmodells](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Language-Model?&pattern=update) aktualisiert ein benutzerdefiniertes Sprachmodell im angegebenen Konto.
+Die API zum [Aktualisieren eines Sprachmodells](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Update-Language-Model) aktualisiert ein benutzerdefiniertes Sprachmodell im angegebenen Konto.
 
 > [!NOTE]
 > Sie müssen das Sprachmodell bereits erstellt haben. Mit diesem Aufruf können Sie alle Dateien im Modell aktivieren oder deaktivieren, den Namen des Sprachmodells aktualisieren und Dateien hochladen, die dem Sprachmodell hinzugefügt werden sollen.
@@ -161,7 +161,7 @@ Verwenden Sie die `id` der in der Antwort zurückgegebenen Dateien, um den Inhal
 
 ## <a name="update-a-file-from-a-language-model"></a>Aktualisieren einer Datei aus einem Sprachmodell
 
-Die API zum [Aktualisieren einer Datei](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Language-Model-file?&pattern=update) ermöglicht Ihnen, den Namen und den `enable`-Zustand einer Datei in einem benutzerdefinierten Sprachmodell im angegebenen Konto zu aktualisieren.
+Die API zum [Aktualisieren einer Datei](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Update-Language-Model-file) ermöglicht Ihnen, den Namen und den `enable`-Zustand einer Datei in einem benutzerdefinierten Sprachmodell im angegebenen Konto zu aktualisieren.
 
 ### <a name="response"></a>Antwort
 
@@ -181,7 +181,7 @@ Verwenden Sie die `id` der in der Antwort zurückgegebenen Datei, um den Inhalt 
 
 ## <a name="get-a-specific-language-model"></a>Abrufen eines bestimmten Sprachmodells
 
-Die API [get](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Model?&pattern=get) gibt Informationen zum angegebenen Sprachmodell im angegebenen Konto zurück, z. B. die Sprache und die Dateien, die sich im Sprachmodell befinden.
+Die API [get](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Get-Language-Model) gibt Informationen zum angegebenen Sprachmodell im angegebenen Konto zurück, z. B. die Sprache und die Dateien, die sich im Sprachmodell befinden.
 
 ### <a name="response"></a>Antwort
 
@@ -217,7 +217,7 @@ Verwenden Sie die `id` der in der Antwort zurückgegebenen Datei, um den Inhalt 
 
 ## <a name="get-all-the-language-models"></a>Abrufen aller Sprachmodelle
 
-Die API [get all](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Models?&pattern=get) gibt alle benutzerdefinierten Sprachmodelle im angegebenen Konto in einer Liste zurück.
+Die API [get all](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Get-Language-Models) gibt alle benutzerdefinierten Sprachmodelle im angegebenen Konto in einer Liste zurück.
 
 ### <a name="response"></a>Antwort
 
@@ -261,7 +261,7 @@ Die Antwort enthält eine Liste mit allen Sprachmodellen in Ihrem Konto und dere
 
 ## <a name="delete-a-file-from-a-language-model"></a>Löschen einer Datei aus einem Sprachmodell
 
-Die API [delete](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Language-Model-File?&pattern=delete) löscht die angegebene Datei aus dem angegebenen Sprachmodell im angegebenen Konto.
+Die API [delete](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Delete-Language-Model-File) löscht die angegebene Datei aus dem angegebenen Sprachmodell im angegebenen Konto.
 
 ### <a name="response"></a>Antwort
 
@@ -269,7 +269,7 @@ Es wird kein Inhalt zurückgegeben, wenn die Datei erfolgreich aus dem Sprachmod
 
 ## <a name="get-metadata-on-a-file-from-a-language-model"></a>Abrufen von Metadaten für eine Datei aus einem Sprachmodell
 
-Die API zum [Abrufen der Metadaten einer Datei](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Model-File-Data?&pattern=get%20language%20model) gibt die Inhalte und Metadaten für die angegebene Datei aus dem ausgewählten Sprachmodell in Ihrem Konto zurück.
+Die API zum [Abrufen der Metadaten einer Datei](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Get-Language-Model-File-Data) gibt die Inhalte und Metadaten für die angegebene Datei aus dem ausgewählten Sprachmodell in Ihrem Konto zurück.
 
 ### <a name="response"></a>Antwort
 
@@ -291,7 +291,7 @@ Die Antwort enthält die Inhalte und Metadaten der Datei im JSON-Format, ähnlic
 
 ## <a name="download-a-file-from-a-language-model"></a>Herunterladen einer Datei aus einem Sprachmodell
 
-Die API zum [Herunterladen einer Datei](https://api-portal.videoindexer.ai/docs/services/operations/operations/Download-Language-Model-File-Content?) lädt eine Textdatei mit dem Inhalt der angegebenen Datei aus dem angegebenen Sprachmodell im angegebenen Konto herunter. Diese Textdatei sollte mit dem Inhalt der Textdatei übereinstimmen, die ursprünglich hochgeladen wurde.
+Die API zum [Herunterladen einer Datei](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Download-Language-Model-File-Content) lädt eine Textdatei mit dem Inhalt der angegebenen Datei aus dem angegebenen Sprachmodell im angegebenen Konto herunter. Diese Textdatei sollte mit dem Inhalt der Textdatei übereinstimmen, die ursprünglich hochgeladen wurde.
 
 ### <a name="response"></a>Antwort
 

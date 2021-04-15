@@ -8,12 +8,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/02/2020
-ms.openlocfilehash: 9894da7486ec3c0dfb92c94c7c7f4db2247ebeb7
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 70d0fc456b3697e3c74a5ec45cc936a02b77e591
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98210204"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104657653"
 ---
 # <a name="train-vowpal-wabbit-model"></a>Trainieren von Vowpal Wabbit-Modellen
 In diesem Artikel wird beschrieben, wie Sie das Modul **Train Vowpal Wabbit Model** (Vowpal Wabbit-Modell trainieren) im Azure Machine Learning-Designer verwenden, um mithilfe von Vowpal Wabbit ein Machine Learning-Modell zu erstellen.  
@@ -91,6 +91,13 @@ Vowpal Wabbit unterstützt inkrementelles Training durch Hinzufügen neuer Daten
 
 6. Übermitteln Sie die Pipeline.  
 7. Wählen Sie das Modul aus, und klicken Sie im rechten Bereich auf der Registerkarte **Outputs+logs** (Ausgaben und Protokolle) auf **Register dataset** (Dataset registrieren), um das aktualisierte Modell in Ihrem Azure Machine Learning-Arbeitsbereich beizubehalten.  Wenn Sie keinen neuen Namen angeben, wird das vorhandene gespeicherte Modell durch das aktualisierte Modell überschrieben.
+
+## <a name="results"></a>Ergebnisse
+
++ Verwenden Sie zum Generieren von Bewertungen das Modul [Vowpal Wabbit-Modell bewerten](score-vowpal-wabbit-model.md).
+
+> [!NOTE]
+> Wenn Sie das trainierte Modell im Designer bereitstellen müssen, vergewissern Sie sich, dass in der Rückschlusspipeline die Option [Vowpal Wabbit-Modell bewerten](score-vowpal-wabbit-model.md) anstelle von **Modell bewerten** mit der Eingabe des Moduls [Webdienstausgabe](web-service-input-output.md) verbunden ist.
 
 ## <a name="technical-notes"></a>Technische Hinweise
 

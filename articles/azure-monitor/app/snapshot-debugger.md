@@ -7,12 +7,12 @@ ms.date: 10/23/2019
 author: cweining
 ms.author: cweining
 ms.reviewer: cweining
-ms.openlocfilehash: bd196e60fed8a18064bfa59e343e51a878a11237
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: b0c26aa95d8c3aba5df164fb0707b4833accd052
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102217396"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104786480"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>Debugmomentaufnahmen von Ausnahmen in .NET-Apps
 Wenn eine Ausnahme auftritt, können Sie automatisch eine Debugmomentaufnahme von Ihrer aktiven Webanwendung erfassen. Die Momentaufnahme zeigt den Status des Quellcodes und der Variablen in dem Moment, in dem die Ausnahme ausgelöst wurde. Der Momentaufnahmedebugger in [Azure Application Insights](./app-insights-overview.md) überwacht Ausnahmetelemetriedaten aus Ihrer Web-App. Er erfasst Momentaufnahmen Ihrer am häufigsten ausgelösten Ausnahmen, damit Sie die erforderlichen Informationen zur Diagnose von Problemen in der Produktion erhalten. Binden Sie das [NuGet-Paket des Momentaufnahmesammlers](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) in Ihre Anwendung ein, und konfigurieren Sie optional Parameter für die Datensammlung in [ApplicationInsights.config](./configuration-with-applicationinsights-config.md). Momentaufnahmen finden Sie im Application Insights-Portal unter [Ausnahmen](./asp-net-exceptions.md).
@@ -24,7 +24,10 @@ Debugmomentaufnahmen werden 15 Tage lang gespeichert. Diese Aufbewahrungsrichtli
 ## <a name="enable-application-insights-snapshot-debugger-for-your-application"></a>Aktivieren des Application Insights-Momentaufnahmedebuggers für Ihre Anwendung
 Die Momentaufnahmesammlung ist für folgende Anwendungen verfügbar:
 * .NET Framework- und ASP.NET-Anwendungen, die mit .NET Framework 4.5 oder höher ausgeführt werden
-* .NET Core 2.0- und ASP.NET Core 2.0-Anwendungen, die unter Windows ausgeführt werden
+* .NET Core- und ASP.NET Core-Anwendungen, auf denen .NET Core 2.1 (LTS) oder 3.1 (LTS) unter Windows ausgeführt wird
+* .NET 5.0-Anwendungen unter Windows
+
+Die Verwendung von .NET Core 2.0, 2.2 oder 3.0 wird nicht empfohlen, da diese Versionen nicht mehr unterstützt werden.
 
 Die folgenden Umgebungen werden unterstützt:
 

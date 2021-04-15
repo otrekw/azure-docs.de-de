@@ -6,14 +6,15 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 3/30/2020
-ms.openlocfilehash: a20510ee2800a54f9a51a2f498ee8ae8a3e51d55
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 38b85748ad810002dc9cfd456ef6c138e8732ece
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94543148"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105605483"
 ---
 # <a name="how-to-use-sys_schema-for-performance-tuning-and-database-maintenance-in-azure-database-for-mysql"></a>Verwenden von sys_schema zum Optimieren der Leistung und Datenbankwartung in Azure Database for MySQL
+[!INCLUDE[applies-to-single-flexible-server](includes/applies-to-single-flexible-server.md)]
 
 Das Schema performance_schema von MySQL wurde zuerst in MySQL 5.5 eingeführt und ermöglicht die Instrumentierung für viele wichtige Serverressourcen, z.B. Speicherzuteilung, gespeicherte Programme, Metadatensperrung usw. Allerdings enthält performance_schema mehr als 80 Tabellen, und häufig erfordert das Abrufen der erforderlichen Informationen das Verknüpfen von Tabellen in performance_schema sowie von Tabellen aus information_schema. Das auf performance_schema und information_schema basierende sys_schema bietet eine leistungsstarke Auflistung von [benutzerfreundlichen Sichten](https://dev.mysql.com/doc/refman/5.7/en/sys-schema-views.html) in einer schreibgeschützten Datenbank bei vollständiger Verfügbarkeit in Azure Database for MySQL Version 5.7.
 
@@ -83,4 +84,4 @@ Indizes sind hervorragende Tools zur Verbesserung der Leistung bei Lesevorgänge
 Zusammenfassend lässt sich sagen, dass sys_schema ein großartiges Tool sowohl für die Leistungsoptimierung als auch für die Datenbankwartung ist. Nutzen Sie dieses Feature in Ihrer Instanz von Azure Database for MySQL. 
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Um Antworten anderer Benutzer auf häufig gestellte Fragen zu erhalten oder eine neue Frage/Antwort zu veröffentlichen, besuchen Sie die [Frageseite von Microsoft Q&A (Fragen und Antworten)](/answers/topics/azure-database-mysql.html) oder [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql).
+- Um Antworten anderer Benutzer auf häufige Fragen zu erhalten oder eine neue Frage/Antwort zu veröffentlichen, besuchen Sie [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql).

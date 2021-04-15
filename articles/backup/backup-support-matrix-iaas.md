@@ -4,12 +4,12 @@ description: Enthält eine Zusammenfassung der Unterstützungseinstellungen und 
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: 2536ae0d33767de5ad53740407622e67c582cc37
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a0150a4c1a8fbd756de6fc16142f0115b05098ed
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101710667"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105967828"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Unterstützungsmatrix für die Sicherung virtueller Azure-Computer
 
@@ -72,6 +72,7 @@ Hier ist die Unterstützung für den Fall angegeben, dass Sie Linux-Computer sic
 Sicherung virtueller Linux-Azure-Computer mit dem Linux-Azure-VM-Agent | Dateikonsistente Sicherung<br/><br/> App-konsistente Sicherung mit [benutzerdefinierten Skripts](backup-azure-linux-app-consistent.md).<br/><br/> Während der Wiederherstellung können Sie eine neue VM erstellen oder einen Datenträger wiederherstellen und damit eine VM erstellen oder einen Datenträger auf einer vorhandenen VM ersetzen. Zudem können Sie einzelne Dateien und Ordner wiederherstellen.
 Sicherung virtueller Linux-Azure-Computer mit dem MARS-Agent | Wird nicht unterstützt.<br/><br/> Der MARS-Agent kann nur auf Windows-Computern installiert werden.
 Sicherung virtueller Linux-Azure-Computer mit DPM/MABS | Wird nicht unterstützt.
+Sicherung von Linux-Azure-VMs mit Docker-Bereitstellungspunkten | Derzeit unterstützt Azure Backup das Ausschließen von Docker-Bereitstellungspunkten nicht, da diese jedes Mal unter verschiedenen Pfaden eingebunden werden.
 
 ## <a name="operating-system-support-linux"></a>Unterstützte Betriebssysteme (Linux)
 
@@ -152,6 +153,7 @@ Sicherung virtueller Azure-Computer mit Sperren | Wird für nicht verwaltete vir
 [Spot-VMs](../virtual-machines/spot-vms.md) | Nicht unterstützt. Azure Backup stellt Spot-VMs als reguläre Azure-VMs wieder her.
 [Azure Dedicated Host](../virtual-machines/dedicated-hosts.md) | Unterstützt
 Konfiguration von „Windows-Speicherplätze“ für eigenständige virtuelle Azure-Computer | Unterstützt
+[Skaliersets für virtuelle Azure-Computer](../virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes.md#scale-sets-with-flexible-orchestration) | Wird sowohl für einheitliche als auch flexible Orchestrierungsmodelle zum Sichern und Wiederherstellen einzelner virtueller Azure-Computer unterstützt.
 
 ## <a name="vm-storage-support"></a>Unterstützung für VM-Speicher
 
@@ -170,6 +172,7 @@ Freigegebener Speicher| Das Sichern von VMs mit freigegebenem Clustervolume (Clu
 [Freigegebene Datenträger](../virtual-machines/disks-shared-enable.md) | Wird nicht unterstützt.
 SSD Ultra-Datenträger | Wird nicht unterstützt. Weitere Informationen finden Sie unter [Einschränkungen](selective-disk-backup-restore.md#limitations).
 [Temporäre Datenträger](../virtual-machines/managed-disks-overview.md#temporary-disk) | Temporäre Datenträger werden nicht von Azure Backup gesichert.
+NVMe- oder kurzlebige Datenträger | Wird nicht unterstützt.
 
 ## <a name="vm-network-support"></a>Netzwerkunterstützung bei virtuellen Computern
 

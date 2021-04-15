@@ -4,7 +4,7 @@ description: In diesem Artikel sind die bewährten Methoden beschrieben, die in 
 author: TerryLanfear
 manager: barbkess
 ms.author: terrylan
-ms.date: 06/12/2019
+ms.date: 03/21/2021
 ms.topic: article
 ms.service: security
 ms.subservice: security-develop
@@ -13,15 +13,16 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 52c93bef4529f27ad38677f17209e7b48e997368
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 8edceb31a0cdde36c987076e91350116a4f81255
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102548443"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104782400"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Entwickeln sicherer Anwendungen in Azure
-In diesem Artikel werden Sicherheitsaktivitäten und -kontrollen vorgestellt, die Sie berücksichtigen sollten, wenn Sie Anwendungen für die Cloud entwickeln. Es werden Sicherheitsfragen und -konzepten behandelt, die Sie während der Implementierungs- und Überprüfungsphase von Microsoft [Security Development Lifecycle (SDL)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) berücksichtigen müssen. Das Ziel ist, Ihnen das Festlegen von Aktivitäten und Azure-Diensten zu ermöglichen, mit denen Sie eine sicherere Anwendung entwickeln können.
+
+In diesem Artikel werden Sicherheitsaktivitäten und -kontrollen vorgestellt, die Sie bei der Entwicklung von Anwendungen für die Cloud berücksichtigen sollten. Es werden Sicherheitsfragen und -konzepten behandelt, die Sie während der Implementierungs- und Überprüfungsphase von Microsoft [Security Development Lifecycle (SDL)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) berücksichtigen müssen. Das Ziel ist, Ihnen das Festlegen von Aktivitäten und Azure-Diensten zu ermöglichen, mit denen Sie eine sicherere Anwendung entwickeln können.
 
 In diesem Artikel werden die folgenden SDL-Phasen behandelt:
 
@@ -29,6 +30,7 @@ In diesem Artikel werden die folgenden SDL-Phasen behandelt:
 - Überprüfung
 
 ## <a name="implementation"></a>Implementierung
+
 Der Schwerpunkt der Implementierungsphase besteht darin, bewährte Methoden für die frühe Prävention einzurichten und Sicherheitsprobleme im Code zu erkennen und daraus zu entfernen.
 Angenommen, Ihre Anwendung wird auf Arten verwendet, für die sie nicht beabsichtigt war. Dies hilft dabei, Sie vor versehentlichem oder vorsätzlichem Missbrauch Ihrer Anwendung zu schützen.
 
@@ -89,7 +91,7 @@ Dies bedeutet, dass weniger Personen Zugriff auf Ihre echten Daten haben, wodurc
 
 Zur Abwehr von Brute-Force- und wörterbuchbasierten Angriffen muss eine Richtlinie für sichere Kennwörter implementiert werden, um sicherzustellen, dass Benutzer komplexe Kennwörter erstellen (beispielsweise mit einer Mindestlänge von 12 Zeichen und einer verpflichtenden Kombination aus alphanumerischen Zeichen und Sonderzeichen).
 
-Sie können ein Identitätsframework verwenden, um Kennwortrichtlinien zu erstellen und zu erzwingen. Azure AD B2C hilft Ihnen bei der Kennwortverwaltung durch die Bereitstellung von [integrierten Richtlinien](../../active-directory-b2c/tutorial-create-user-flows.md#create-a-password-reset-user-flow), [Self-service-Kennwortzurücksetzung](../../active-directory-b2c/user-flow-self-service-password-reset.md) und vielem mehr.
+Azure Active Directory B2C ist durch die Bereitstellung von Funktionen wie [Self-Service-Kennwortzurücksetzung](../../active-directory-b2c/add-password-reset-policy.md), [Erzwingen der Kennwortzurücksetzung](../../active-directory-b2c/force-password-reset.md) usw. bei der Verwaltung von Kennwörtern nützlich.
 
 Vergewissern Sie sich zur Abwehr von Angriffen auf Standardkonten, dass alle Schlüssel und Kennwörter ersetzbar sind und nach der Installation von Ressourcen generiert oder ersetzt werden.
 
@@ -108,6 +110,7 @@ Antischadsoftware-Schutz hilft dabei, Viren, Spyware und andere Schadsoftware zu
 Speichern Sie keine vertraulichen Inhalte im Browser zwischen. Browser können Informationen für die Zwischenspeicherung und den Verlauf/die Chronik speichern. Zwischengespeicherte Dateien werden in einem Ordner abgelegt, z. B. dem Ordner „Temporäre Internetdateien“ bei Internet Explorer. Wenn auf diese Seite erneut zugegriffen wird, zeigt der Browser diese Seiten aus dem Cache an. Falls dem Benutzer vertrauliche Informationen (z. B. Adresse, Kreditkartendaten, Sozialversicherungsnummer oder Benutzername) angezeigt werden, können diese Informationen im Cache des Browsers gespeichert werden und abrufbar sein, indem der Cache des Browsers untersucht wird oder im Browser einfach auf die Schaltfläche **Zurück** geklickt wird.
 
 ## <a name="verification"></a>Überprüfung
+
 Die Überprüfungsphase beinhaltet umfassende Bemühungen, um sicherzustellen, dass der Code die Grundsätze für Sicherheit und Datenschutz erfüllt, die in den vorangehenden Phasen festgelegt wurden.
 
 ### <a name="find-and-fix-vulnerabilities-in-your-application-dependencies"></a>Auffinden und Beheben von Sicherheitsrisiken in Ihren Anwendungsabhängigkeiten
@@ -151,6 +154,7 @@ Die Bereitstellung von Anwendungssicherheit ist genauso wichtig wie das Testen j
 [Secure DevOps Kit für Azure](https://azsk.azurewebsites.net/index.html) (AzSK) enthält Sicherheitsüberprüfungstests für mehrere Dienste der Azure-Plattform. Sie führen diese Sicherheitsüberprüfungstests regelmäßig aus, um sicherzustellen, dass sich Ihr Azure-Abonnement und die verschiedenen Ressourcen, aus denen Ihre Anwendung besteht, in einem sicheren Zustand befinden. Sie können diese Tests auch mithilfe der AzSK-Funktion für CI/CD-Erweiterungen (Continuous Integration/Continuous Deployment) automatisieren, wodurch Sicherheitsüberprüfungstests als Visual Studio-Erweiterungen zur Verfügung gestellt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 In den folgenden Artikeln empfehlen wir die Sicherheitskontrollen und -aktivitäten, die Ihnen beim Entwerfen und Bereitstellen von sicheren Anwendungen helfen können.
 
 - [Entwerfen sicherer Anwendungen](secure-design.md)

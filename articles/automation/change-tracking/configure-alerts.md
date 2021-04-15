@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 10/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4faa7837a75bab6dfab651862754cd92394c5137
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 91be2f8641a061d009962cdcd03a8d56048594da
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100585915"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104594500"
 ---
 # <a name="how-to-create-alerts-for-change-tracking-and-inventory"></a>Erstellen von Warnungen für „Änderungsnachverfolgung und Bestand“
 
@@ -50,11 +50,11 @@ Nachdem Sie Ihre Warnungen konfiguriert haben, können Sie eine Aktionsgruppe ei
 
 3. Geben Sie unter **Aktionen** einen Namen ein, der die Aktion angibt, z. B. **E-Mail-Benachrichtigung**.
 
-4. Wählen Sie für **Aktionstyp** den entsprechenden Typ aus, z. B. **Email/SMS/Push/Voice** (E-Mail/SMS/Push/Sprache).
+4. Wählen Sie für **Aktionstyp** den entsprechenden Typ aus (z. B. **Email/SMS message/Push/Voice** (E-Mail/SMS/Push/Sprache)).
 
-5. Wählen Sie **Details bearbeiten** aus.
+5. Klicken Sie auf das Stiftsymbol, um die Aktionsdetails zu bearbeiten.
 
-6. Füllen Sie den Bereich für den Aktionstyp aus. Wenn Sie beispielsweise **Email/SMS/Push/Voice** (E-Mail/SMS/Push/Sprache) verwenden, geben Sie einen Aktionsnamen ein, aktivieren Sie das Kontrollkästchen **E-Mail**, geben Sie eine gültige E-Mail-Adresse ein, und wählen Sie dann **OK** aus.
+6. Füllen Sie den Bereich für den Aktionstyp aus. Wenn Sie beispielsweise **Email/SMS message/Push/Voice** (E-Mail/SMS/Push/Sprache) zum Senden einer E-Mail verwenden, geben Sie einen Aktionsnamen ein, aktivieren Sie das Kontrollkästchen **E-Mail**, geben Sie eine gültige E-Mail-Adresse ein, und klicken Sie dann auf **OK**.
 
     ![Konfigurieren der E-Mail-Aktionsgruppe](./media/configure-alerts/configure-email-action-group.png)
 

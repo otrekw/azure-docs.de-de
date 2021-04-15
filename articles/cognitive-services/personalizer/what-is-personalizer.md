@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 08/27/2020
 ms.custom: cog-serv-seo-aug-2020
 keywords: Personalisierung, Azure Personalisierung, Machine Learning
-ms.openlocfilehash: 913b4d989865a50b23d58c5493368997248f8db8
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: b2577502907b69e134651c93ab7a98fc51e9aaa6
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98928543"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106169248"
 ---
 # <a name="what-is-personalizer"></a>Was ist die Personalisierung?
 
@@ -21,11 +21,14 @@ Die Azure-Personalisierung ist ein cloudbasierter Dienst, mit dessen Hilfe Ihre 
 > [!TIP]
 > Der Inhalt ist eine beliebige Informationseinheit, z. B. Text, Bilder, URLs, E-Mails oder andere Elemente, die zum Treffen einer Auswahl zum Anzeigen für Ihre Benutzer genutzt werden soll.
 
-Bevor Sie beginnen, können Sie die [Personalisierung mit dieser interaktiven Demo](https://personalizationdemo.azurewebsites.net/) ausprobieren.
+Diese Dokumentation enthält die folgenden Arten von Artikeln:  
 
-<!--
-![What is personalizer animation](./media/what-is-personalizer.gif)
--->
+* [**Schnellstarts**](quickstart-personalizer-sdk.md) sind Anleitungen zu den ersten Schritten, die Sie durch das Senden von Anforderungen an den Dienst führen.  
+* [**Schrittanleitungen**](how-to-settings.md) enthalten Anweisungen zur spezifischeren oder individuelleren Verwendung des Diensts.  
+* Die Artikel zu [**Konzepten**](how-personalizer-works.md) enthalten ausführliche Erläuterungen der Dienstfunktionen und -features.  
+* [**Tutorials**](tutorial-use-personalizer-web-app.md) sind ausführlichere Leitfäden, in denen die Verwendung des Diensts als Komponente in umfassenderen Unternehmenslösungen veranschaulicht wird.  
+
+Bevor Sie beginnen, können Sie die [Personalisierung mit dieser interaktiven Demo](https://personalizationdemo.azurewebsites.net/) ausprobieren.
 
 ## <a name="how-does-personalizer-select-the-best-content-item"></a>Wie wählt die Personalisierung das beste Inhaltselement aus?
 
@@ -100,18 +103,6 @@ Da für die Personalisierung die gesamten Informationen nahezu in Echtzeit genut
         * Unmittelbar nach dem Anzeigen Ihrer Inhalte
         * Oder später in einem Offlinesystem
     1. [Werten Sie Ihre Schleife aus](concepts-offline-evaluation.md), indem Sie nach einer gewissen Nutzungsdauer eine Offlineauswertung durchführen. Bei der Offlineauswertung können Sie die Wirksamkeit des Personalisierungsdiensts testen und bewerten, ohne Ihren Code zu ändern oder die Benutzererfahrung zu beeinträchtigen.
-
-## <a name="complete-a-quickstart"></a>Abschließen einer Schnellstartanleitung
-
-Wir stellen Schnellstartanleitungen in C#, JavaScript und Python bereit. Jede Schnellstartanleitung enthält Informationen zu grundlegenden Entwurfsmustern und ist jeweils so konzipiert, dass Sie in weniger als zehn Minuten über ausführbaren Code verfügen. 
-
-* [Schnellstart: Personalisierungsclientbibliothek](./quickstart-personalizer-sdk.md)
-
-Nachdem Sie Gelegenheit hatten, erste Schritte mit dem Personalisierungsdienst auszuführen, erfahren Sie in unseren Tutorials mehr dazu, wie Sie die Personalisierung in Webanwendungen, Chatbots oder in einer Azure Notebooks-Instanz verwenden.
-
-* [Tutorial: Verwenden der Personalisierung in einer .NET-Web-App](tutorial-use-personalizer-web-app.md)
-* [Tutorial: Verwenden der Personalisierung in einem .NET-Chatbot](tutorial-use-personalizer-chat-bot.md)
-* [Tutorial: Verwenden der Personalisierung in Azure Notebook](tutorial-use-azure-notebook-generate-loop-data.md)
 
 ## <a name="reference"></a>Verweis 
 

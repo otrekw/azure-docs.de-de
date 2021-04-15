@@ -1,5 +1,5 @@
 ---
-title: 'SQL Server zu SQL-Datenbank: Migrationsleitfaden'
+title: 'Migrationsleitfaden: SQL Server zu Azure SQL-Datenbank'
 description: Befolgen Sie diese Anleitung, um Ihre SQL Server-Datenbanken zu Azure SQL-Datenbank zu migrieren.
 ms.service: sql-database
 ms.subservice: migration-guide
@@ -10,14 +10,14 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 03/19/2021
-ms.openlocfilehash: 9205301cb77941e4ea7ca026710d44ba82f6a937
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: e2de694a153276dcace1070d35af44dec1056e03
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103563843"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105564924"
 ---
-# <a name="migration-guide-sql-server-to-sql-database"></a>Migrationsleitfaden: SQL Server zu SQL-Datenbank
+# <a name="migration-guide-sql-server-to-azure-sql-database"></a>Migrationsleitfaden: SQL Server zu Azure SQL-Datenbank
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
 
 Mithilfe dieses Leitfadens können Sie Ihre SQL Server-Instanzen zu Azure SQL-Datenbank migrieren. 
@@ -30,7 +30,7 @@ Sie können SQL Server-Instanzen migrieren, die lokal oder auf folgenden Plattfo
 - Compute Engine (Google Cloud Platform – GCP)  
 - Cloud SQL für SQL Server (Google Cloud Platform – GCP) 
 
-Weitere Informationen zur Migration finden Sie in [dieser Übersicht](sql-server-to-sql-database-overview.md). Informationen zu anderen Szenarios finden Sie im [Leitfaden zur Datenbankmigration](https://datamigration.microsoft.com/).
+Weitere Informationen zur Migration finden Sie in [dieser Übersicht](sql-server-to-sql-database-overview.md). Weitere Migrationsleitfäden finden Sie im [Leitfaden zur Azure-Datenbankmigration](https://docs.microsoft.com/data-migration). 
 
 :::image type="content" source="media/sql-server-to-database-overview/migration-process-flow-small.png" alt-text="Ablauf des Migrationsprozesses":::
 
@@ -38,9 +38,11 @@ Weitere Informationen zur Migration finden Sie in [dieser Übersicht](sql-server
 
 Stellen Sie sicher, dass Sie die folgenden Voraussetzungen erfüllen, um Ihre SQL Server-Instanzen zu Azure SQL-Datenbank zu migrieren: 
 
-- Sie haben eine [Migrationsmethode](sql-server-to-sql-database-overview.md#compare-migration-options) ausgewählt und verfügen über entsprechende Tools. 
+- Sie haben eine [Migrationsmethode](sql-server-to-sql-database-overview.md#compare-migration-options) ausgewählt und verfügen über entsprechende Tools.
 - Sie haben den [Datenmigrations-Assistenten (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) auf einem Computer installiert, der eine Verbindung mit Ihrer SQL Server-Quelldatenbank herstellen kann.
-- Sie verfügen über eine [Azure SQL-Datenbank](../../database/single-database-create-quickstart.md)-Zielinstanz.
+- Sie benötigen eine [Azure SQL-Datenbank](../../database/single-database-create-quickstart.md)-Zielinstanz. 
+- Konnektivität und geeignete Berechtigungen für den Zugriff auf die Quelle und das Ziel. 
+
 
 
 ## <a name="pre-migration"></a>Vor der Migration
@@ -150,7 +152,7 @@ Wenn Migrationsoptionen angewendet werden, die Datenänderungen kontinuierlich v
 Nachdem Sie sich vergewissert haben, dass die Daten in der Quelle und im Ziel identisch sind, können Sie die Übernahme von der Quell- zur Zielumgebung durchführen. Sie sollten den Übernahmeprozess mit den Geschäfts- und Anwendungsteams planen, um Unterbrechungen so geringfügig wie möglich zu halten und die Geschäftskontinuität nicht zu beeinträchtigen. 
 
 > [!IMPORTANT]
-> Weitere Informationen zu den Schritten für eine Übernahmemigration mithilfe von DMS finden Sie unter [Durchführen der Migrationsübernahme](../../../dms/tutorial-sql-server-azure-sql-online.md#perform-migration-cutover).
+> Weitere Informationen zu den Schritten für eine Übernahmemigration mithilfe von DMS finden Sie unter [Durchführen der Migrationsübernahme](../../../dms/tutorial-sql-server-to-azure-sql.md).
 
 ## <a name="migration-recommendations"></a>Empfehlungen zur Migration
 

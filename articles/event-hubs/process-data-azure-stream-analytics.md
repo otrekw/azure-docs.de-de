@@ -4,10 +4,10 @@ description: In diesem Artikel wird veranschaulicht, wie Sie Daten aus Ihrem Azu
 ms.date: 06/23/2020
 ms.topic: article
 ms.openlocfilehash: 2db4fba59a1a06a24ee2939c51ecdf65aa06cef3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85312897"
 ---
 # <a name="process-data-from-your-event-hub-using-azure-stream-analytics"></a>Verarbeiten von Daten aus einem Event Hub mit Azure Stream Analytics 
@@ -44,7 +44,7 @@ Hier sind die wichtigsten Vorteile der Integration von Azure Event Hubs mit Azur
     - Sie können eine Vorschau der eingehenden Daten im Tabellenformat oder unformatiert anzeigen. 
     - Wenn die angezeigten Daten nicht aktuell sind, wählen Sie **Aktualisieren** aus, um die neuesten Ereignisse anzuzeigen. 
 
-        Dies ist ein Beispiel für Daten im **Tabellenformat**:   ![Ergebnisse im Tabellenformat](./media/process-data-azure-stream-analytics/snapshot-results.png)
+        Im folgenden finden Sie ein Beispiel für Daten im **Tabellenformat**: ![Ergebnisse im Tabellenformat](./media/process-data-azure-stream-analytics/snapshot-results.png)
 
         Dies ist ein Beispiel für **unformatierte** Daten: 
 

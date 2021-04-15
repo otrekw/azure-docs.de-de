@@ -3,12 +3,12 @@ title: Leitfaden zum Azure Relay-Hybridverbindungsprotokoll | Microsoft-Dokument
 description: In diesem Artikel werden die clientseitigen Interaktionen mit dem Hybridverbindungsrelay für die Verbindung von Clients in Listener- und Absenderrollen beschrieben.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 36321f88de173a37c9aa6615c4c0f2b29aec9f20
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 95eb6a66ac7580f115c85ddb258768b9eef62321
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97976961"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107314217"
 ---
 # <a name="azure-relay-hybrid-connections-protocol"></a>Azure Relay-Hybridverbindungsprotokoll
 
@@ -498,7 +498,7 @@ Im Fall eines Fehlers kann der Dienst wie folgt reagieren. Anhand des Vorhandens
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Relay – häufig gestellte Fragen](relay-faq.md)
+* [Relay – häufig gestellte Fragen](relay-faq.yml)
 * [Erstellen eines Namespaces](relay-create-namespace-portal.md)
 * [Erste Schritte mit .NET](relay-hybrid-connections-dotnet-get-started.md)
 * [Erste Schritte mit Node](relay-hybrid-connections-node-get-started.md)

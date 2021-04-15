@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/4/2020
-ms.openlocfilehash: 43d616bc82c608918f5e7ee51481a393dd55a284
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b13e8e088eff95071247a53ad1a4a18879f94053
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105566069"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101742193"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Migrieren von Azure HDInsight 3.6-Hive-Workloads zu HDInsight 4.0
 
@@ -30,7 +30,7 @@ Die Migration von Hive-Tabellen zu einem neuen Speicherkonto muss als separater 
 
 ## <a name="steps-to-upgrade"></a>Schritte zum Upgrade
 
-### <a name="1-prepare-the-data"></a>1. Vorbereiten der Daten
+### <a name="1-prepare-the-data"></a>1. Aufbereiten der Daten
 
 * HDInsight 3.6 unterstützt standardmäßig keine ACID-Tabellen. Wenn jedoch ACID-Tabellen vorhanden sind, führen Sie eine MAJOR-Komprimierung für diese aus. Ausführliche Informationen zur Komprimierung finden Sie im [Handbuch zur Hive-Sprache](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL#LanguageManualDDL-AlterTable/Partition/Compact).
 
@@ -71,7 +71,7 @@ In diesem Schritt wird das [`Hive Schema Tool`](https://cwiki.apache.org/conflue
     > [!NOTE]
     > Dieses Hilfsprogramm verwendet Client-`beeline` zum Ausführen von SQL-Skripts in `/usr/hdp/$STACK_VERSION/hive/scripts/metastore/upgrade/mssql/upgrade-*.mssql.sql`.
     >
-    > Die SQL-Syntax in diesen Skripts ist nicht unbedingt mit anderen Clienttools kompatibel. Beispielsweise verlangen [SSMS](/sql/ssms/download-sql-server-management-studio-ssms) und der [Abfrage-Editor im Azure-Portal](../../azure-sql/database/connect-query-portal.md) nach jedem Befehl das Schlüsselwort `GO`.
+    > Die SQL-Syntax in diesen Skripts ist nicht unbedingt mit anderen Clienttools kompatibel. Beispielsweise verlangen [SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) und der [Abfrage-Editor im Azure-Portal](../../azure-sql/database/connect-query-portal.md) nach jedem Befehl das Schlüsselwort `GO`.
     >
     > Wenn ein Skript aufgrund der Ressourcenkapazität oder von Transaktionstimeouts fehlschlägt, skalieren Sie die SQL-Datenbank hoch.
 
@@ -131,7 +131,7 @@ HDInsight kann optional mit dem HDInsight-Enterprise-Sicherheitspaket (ESP) in A
 
 Weitere Änderungen finden Sie in der [Ankündigung von HDInsight 4.0](../hdinsight-version-release.md).
 
-## <a name="further-reading"></a>Weiterführende Themen
+## <a name="further-reading"></a>Weitere Informationsquellen
 
 * [Ankündigung von HDInsight 4.0](../hdinsight-version-release.md)
 * [HDInsight 4.0 deep dive](https://azure.microsoft.com/blog/deep-dive-into-azure-hdinsight-4-0/) (Ausführliche Informationen zu HDInsight 4.0)

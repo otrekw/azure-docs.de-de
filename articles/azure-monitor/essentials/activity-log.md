@@ -6,12 +6,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 06/12/2020
 ms.author: bwren
-ms.openlocfilehash: 557fc6e358f371b47c1df314508e3565d843a28c
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 7583b4037d350b9190d6eae30c28b907b1d41d86
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102049184"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104722853"
 ---
 # <a name="azure-activity-log"></a>Azure-Aktivitätsprotokoll
 Das Aktivitätsprotokoll ist ein [Plattformprotokoll](./platform-logs-overview.md) in Azure, das einen Einblick in Ereignisse auf Abonnementebene ermöglicht. Dies sind beispielsweise Informationen wie das Ändern einer Ressource oder das Starten eines virtuellen Computers. Sie können das Aktivitätsprotokoll im Azure-Portal anzeigen oder Einträge mit PowerShell und der CLI abrufen. Um zusätzliche Funktionen zu erhalten, sollten Sie eine Diagnoseeinstellung erstellen, mit der das Aktivitätsprotokoll an [Azure Monitor-Protokolle](../logs/data-platform-logs.md) gesendet wird, an Azure Event Hubs außerhalb von Azure weitergeleitet oder für die Archivierung an Azure Storage gesendet wird. In diesem Artikel wird ausführlich beschrieben, wie das Aktivitätsprotokoll angezeigt und an verschiedene Ziele gesendet wird.
@@ -27,6 +27,11 @@ Auf das Aktivitätsprotokoll können Sie über die meisten Menüs im Azure-Porta
 ![Anzeigen des Aktivitätsprotokolls](./media/activity-log/view-activity-log.png)
 
 Eine Beschreibung der einzelnen Kategorien des Aktivitätsprotokolls finden Sie unter [Ereignisschema des Azure-Aktivitätsprotokolls](activity-log-schema.md#categories).
+
+## <a name="download-the-activity-log"></a>Herunterladen des Aktivitätsprotokolls
+Klicken Sie auf **Als CSV-Datei herunterladen**, um die Ereignisse in der aktuellen Ansicht herunterzuladen.
+
+![Herunterladen des Aktivitätsprotokolls](media/activity-log/download-activity-log.png)
 
 ### <a name="view-change-history"></a>Anzeigen des Änderungsverlaufs
 

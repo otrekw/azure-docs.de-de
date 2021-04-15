@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: c5c50787ef3e287d164e051ece26da4e83199d47
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 3a26f7c63b639f9aeb6a8f526e77dacb37fb4d87
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102555634"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106068063"
 ---
 # <a name="customers-dashboard-in-commercial-marketplace-analytics"></a>Dashboard „Kunden“ in Analysen für den kommerziellen Marketplace
 
@@ -163,6 +163,7 @@ _**Tabelle 1: Wörterbuch mit Datenbegriffen**_
 | CommerceRootCustomer | Handelsstammkunde | Eine Abrechnungskonto-ID kann mehreren Kunden-IDs zugeordnet werden.<br>Eine Kombination aus Abrechnungskonto-ID und Kunden-ID kann mehreren Abonnements für den kommerziellen Marketplace zugeordnet werden.<br>Der Handelsstammkunde ist der Name des Kunden, der dem Abonnement zugeordnet ist. | CommerceRootCustomer |
 | Customer ID | Customer ID | Der eindeutige, einem Kunden zugewiesene Bezeichner. Ein Kunde kann keine oder mehrere Azure Marketplace-Abonnements besitzen. | CustomerId |
 | ID des Abrechnungskontos | ID des Abrechnungskontos | Der Bezeichner des Kontos, für das die Abrechnung generiert wird. Ordnen Sie die **ID des Abrechnungskontos** zu **customerID** zu, um Ihren Auszahlungstransaktionsbericht mit den Kunden-, Bestellungs- und Verbrauchsberichten zu verbinden. | BillingAccountId |
+| Kundentyp | Kundentyp | Der Wert dieses Felds gibt den Kunden-Typ an. Mögliche Werte sind:<ul><li>Einzelkonto</li> <li>organization</li></ul> | CustomerType |
 |||||
 
 ### <a name="customers-page-filters"></a>Filter auf der Seite „Kunden“

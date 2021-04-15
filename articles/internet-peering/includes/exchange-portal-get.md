@@ -9,15 +9,15 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: e139954e6550e33edb75d01ab9dbec0bba543ea6
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92548067"
 ---
 Nach erfolgreicher Bereitstellung der **Peeringressource** können Sie sie anhand der folgenden Schritte anzeigen.
 
-1. Navigieren Sie zu **Ressourcengruppen** , und wählen Sie die Ressourcengruppe aus, die Sie beim Erstellen der **Peeringressource** ausgewählt haben. Verwenden Sie das Feld **Filter** , wenn zu viele Ressourcengruppen aufgeführt werden.
+1. Navigieren Sie zu **Ressourcengruppen**, und wählen Sie die Ressourcengruppe aus, die Sie beim Erstellen der **Peeringressource** ausgewählt haben. Verwenden Sie das Feld **Filter**, wenn zu viele Ressourcengruppen aufgeführt werden.
 
     > [!div class="mx-imgBorder"]
     > ![Ressourcengruppen](../media/setup-direct-get-resourcegroup.png)
@@ -44,7 +44,7 @@ Nach erfolgreicher Bereitstellung der **Peeringressource** können Sie sie anhan
 
     * **Verbindungsstatus** gibt den Status der eingerichteten Peeringverbindung an. Die in diesem Feld angezeigten Zustände entsprechen dem Statusdiagramm, das in der [exemplarischen Vorgehensweise zum Exchange-Peering](../walkthrough-exchange-all.md) abgebildet ist.
     * **IPv4-Sitzungsstatus** und **IPv6-Sitzungsstatus** entsprechen den Statuswerten der IPv4- bzw. IPv6-BGP-Sitzung.  
-    * Wenn Sie oben auf dem Bildschirm eine Zeile auswählen, werden im Abschnitt **Verbindung** im unteren Bereich Details zu den einzelnen Verbindungen angezeigt. Wählen Sie die Pfeile aus, um **Konfiguration** , **IPv4-Adresse** und **IPv6-Adresse** zu erweitern.
+    * Wenn Sie oben auf dem Bildschirm eine Zeile auswählen, werden im Abschnitt **Verbindung** im unteren Bereich Details zu den einzelnen Verbindungen angezeigt. Wählen Sie die Pfeile aus, um **Konfiguration**, **IPv4-Adresse** und **IPv6-Adresse** zu erweitern.
 
     > [!div class="mx-imgBorder"]
     > ![Screenshot mit Hervorhebung eines Pfeils zum Aufklappen eines Abschnitt.](../media/setup-exchange-get-connectionsipv4.png)

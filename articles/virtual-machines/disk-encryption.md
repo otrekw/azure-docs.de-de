@@ -2,26 +2,26 @@
 title: Serverseitige Verschlüsselung von verwalteten Azure-Datenträgern
 description: Azure Storage schützt Ihre Daten, indem der Dienst diese im Ruhezustand verschlüsselt, bevor diese auf Storage-Clustern gespeichert werden. Sie können mit kundenseitig verwalteten Schlüsseln die Verschlüsselung mit Ihren eigenen Schlüsseln verwalten, oder Sie können sich bei der Verschlüsselung Ihrer verwalteten Datenträger auf von Microsoft verwaltete Schlüssel verlassen.
 author: roygara
-ms.date: 03/02/2021
+ms.date: 03/11/2021
 ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: ee4dd539119457086c9b109579b7e6ab195fea96
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: 786ecef5d62c7dd18e3992fa0b233b27a80d762b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103014382"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104721850"
 ---
 # <a name="server-side-encryption-of-azure-disk-storage"></a>Serverseitige Verschlüsselung von Azure Disk Storage
 
-Die serverseitige Verschlüsselung (Server-side Encryption, SSE) schützt Ihre Daten und unterstützt Sie beim Einhalten der Sicherheits- und Complianceanforderungen Ihrer Organisation. Durch SSE werden Ihre auf verwalteten Azure-Datenträgern (Betriebssystemdatenträger und reguläre Datenträger) gespeicherten ruhenden Daten standardmäßig automatisch verschlüsselt, wenn sie in der Cloud gespeichert werden. 
+Die meisten von Azure verwalteten Datenträger werden mit der Azure Storage-Verschlüsselung verschlüsselt, die die serverseitige Verschlüsselung verwendet, um Ihre Daten zu schützen und Ihnen dabei zu helfen, die Sicherheits- und Complianceanforderungen Ihrer Organisation zu erfüllen. Die Azure Storage-Verschlüsselung verschlüsselt Ihre auf verwalteten Azure-Datenträgern (Betriebssystemdatenträger und reguläre Datenträger) gespeicherten ruhenden Daten standardmäßig, wenn sie in der Cloud gespeichert werden. Datenträger mit aktivierter Verschlüsselung auf dem Host werden jedoch nicht über Azure Storage verschlüsselt. Für Datenträger mit aktivierter Verschlüsselung auf dem Host stellt der Server, der Ihre VM hostet, die Verschlüsselung für Ihre Daten bereit, und die verschlüsselten Daten werden an Azure Storage übermittelt.
 
 Daten in verwalteten Azure-Datenträgern werden transparent mit 256-Bit-[AES-Verschlüsselung](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) – einer der stärksten verfügbaren Blockverschlüsselungen – FIPS 140-2-konform ver- und entschlüsselt. Weitere Informationen zu den kryptografischen Modulen, die verwalteten Azure-Datenträgern zugrunde liegen, finden Sie unter [Kryptografie-API: Die nächste Generation](/windows/desktop/seccng/cng-portal).
 
-Die serverseitige Verschlüsselung wirkt sich nicht auf die Leistung verwalteter Datenträger aus, und es fallen keine zusätzlichen Kosten an. 
+Die Azure Storage-Verschlüsselung wirkt sich nicht auf die Leistung verwalteter Datenträger aus, und es fallen keine zusätzlichen Kosten an. Weitere Informationen über die Azure Storage-Verschlüsselung finden Sie unter [Azure Storage-Verschlüsselung](/azure/storage/common/storage-service-encryption).
 
 > [!NOTE]
 > Temporäre Datenträger sind keine verwalteten Datenträger und werden nicht von SSE verschlüsselt, es sei denn, Sie aktivieren die Verschlüsselung auf dem Host.

@@ -1,14 +1,14 @@
 ---
 title: Programmgesteuertes Erstellen von Richtlinien
 description: In diesem Artikel wird Schritt für Schritt das programmgesteuerte Erstellen und Verwalten von Richtlinien für Azure Policy per Azure-Befehlszeilenschnittstelle, Azure PowerShell und REST-API beschrieben.
-ms.date: 08/17/2020
+ms.date: 03/16/2021
 ms.topic: how-to
-ms.openlocfilehash: 4c3a503e8d48573441093879511490608437b1e1
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: b4f15241799469da2e479cb758f648ec3131a149
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98033862"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104598489"
 ---
 # <a name="programmatically-create-policies"></a>Programmgesteuertes Erstellen von Richtlinien
 
@@ -244,5 +244,5 @@ Weitere Informationen zu den in diesem Artikel verwendeten Befehlen und Abfragen
 - [Azure-REST-API-Ressourcen](/rest/api/resources/)
 - [Azure PowerShell-Module](/powershell/module/az.resources/#policy)
 - [Befehle für Azure CLI-Richtlinien](/cli/azure/policy)
-- [Azure-Ressourcenanbieter „Policy Insights“ – REST-API-Referenz](/rest/api/policy-insights)
+- [Ressourcenanbieter Azure Policy – REST-API-Referenz](/rest/api/policy)
 - [Organisieren Ihrer Ressourcen mit Azure-Verwaltungsgruppen](../../management-groups/overview.md)

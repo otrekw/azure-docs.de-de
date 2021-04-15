@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.date: 11/03/2019
 ms.topic: conceptual
-ms.openlocfilehash: d4fa7348df647cf699ebd55dd6415a79454ab5f1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5309fd60640c45ade42bab4c5727cf1f0a8d9d70
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93397949"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105025474"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>Häufig gestellte Fragen sind: Azure-zu-Azure-Notfallwiederherstellung
 
@@ -73,7 +73,7 @@ Ja, Sie können Azure-VMs in ein beliebiges Abonnement im selben Azure AD-Manda
 
 ### <a name="can-i-replicate-vms-in-an-availability-zone-to-another-region"></a>Kann ich VMs in einer Verfügbarkeitszone in eine andere Region replizieren?
 
-Ja, Sie können VMs in Verfügbarkeitszonen in eine andere Azure-Region replizieren. Die Ziel-VM kann als Einzelinstanz, in einer Verfügbarkeitsgruppe oder in einer Verfügbarkeitszone bereitgestellt werden, sofern dies in der Zielregion unterstützt wird. 
+Ja, Sie können VMs in Verfügbarkeitszonen in eine andere Azure-Region replizieren. 
 
 ### <a name="can-i-replicate-non-zone-vms-to-a-zone-within-the-same-region"></a>Kann ich VMs ohne Zone in eine Zone innerhalb derselben Region replizieren? 
 
@@ -81,7 +81,7 @@ Dieser Vorgang wird im Portal nicht unterstützt. Sie können dazu die REST-API 
 
 ### <a name="can-i-replicate-zoned-vms-to-a-different-zone-in-the-same-region"></a>Kann ich VMs aus einer Zone in eine andere Zone in derselben Region replizieren?
 
-Dies wird lediglich in einigen wenigen Regionen unterstützt. [Weitere Informationen](azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery.md)
+Dies wird lediglich in einigen Regionen unterstützt. [Weitere Informationen](azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery.md)
 
 ### <a name="can-i-exclude-disks-from-replication"></a>Kann ich Datenträger von der Replikation ausschließen?
 
