@@ -10,13 +10,15 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: dedea2a622cb0eece92bb8b57871c76daa05fb68
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 30dcda4d7bb95ac59add104452415a0ddfc3c016
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103495408"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106178333"
 ---
+[!INCLUDE [Public Preview Notice](../../../includes/public-preview-include-chat.md)]
+
 ## <a name="prerequisites"></a>Voraussetzungen
 Führen Sie die folgenden Schritte aus, bevor Sie beginnen:
 
@@ -128,9 +130,9 @@ Die Erstellung einer Dienstebene zum Verwalten von Token für Ihre Chatanwendung
 Informieren Sie sich über [Benutzerzugriffstoken](../../access-tokens.md).
 
 ## <a name="object-model"></a>Objektmodell 
-Die folgenden Klassen und Schnittstellen werden für einige der wichtigsten Features der JavaScript-Clientbibliothek für Chats von Azure Communication Services verwendet.
+Die folgenden Klassen und Schnittstellen werden für einige der wichtigsten Features des JavaScript-SDKs für Chats von Azure Communication Services verwendet.
 
-| Name                                   | Beschreibung                                                                                                                                                                           |
+| name                                   | Beschreibung                                                                                                                                                                           |
 | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ChatClient | Diese Klasse wird für die Chatfunktionalität benötigt. Sie instanziieren sie mit Ihren Abonnementinformationen und verwenden sie zum Erstellen, Abrufen und Löschen von Threads. |
 | ChatThreadClient | Diese Klasse wird für die Chatthreadfunktionalität benötigt. Sie rufen eine Instanz über den ChatClient ab und verwenden sie zum Senden/Empfangen/Aktualisieren/Löschen von Nachrichten, Hinzufügen/Entfernen/Abrufen von Benutzern, Senden von Eingabebenachrichtigungen und Lesebestätigungen und Abonnieren von Chatereignissen. |
@@ -275,5 +277,4 @@ Ersetzen Sie `<USER ID>` durch die Communication Services-Benutzer-ID des Teiln
 ## <a name="run-the-code"></a>Ausführen des Codes
 
 Klicken Sie in Xcode auf die Ausführungsschaltfläche, um das Projekt zu erstellen und auszuführen. In der Konsole können Sie sich die Ausgabe des Codes sowie die Protokollierungsausgabe des Chatclients ansehen.
-
 

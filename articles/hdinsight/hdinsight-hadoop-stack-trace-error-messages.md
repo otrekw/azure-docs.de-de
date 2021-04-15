@@ -6,10 +6,10 @@ ms.topic: troubleshooting
 ms.custom: hdinsightactive
 ms.date: 01/03/2020
 ms.openlocfilehash: 980c98b6b222ca4a0bb5d2ba2ae53f38de12c931
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98945439"
 ---
 # <a name="index-of-apache-hadoop-in-hdinsight-troubleshooting-articles"></a>Übersicht über Artikel zur Problembehandlung für Apache Hadoop in HDInsight
@@ -18,11 +18,11 @@ Die Artikel sind nach Art der Fehler unterteilt.
 
 ## <a name="out-of-memory-error"></a>Fehler durch ungenügenden Arbeitsspeicher
 
-* [Beheben eines Fehlers vom Typ „Nicht genügend Hive-Arbeitsspeicher“ in Azure HDInsight:](hdinsight-hadoop-hive-out-of-memory-error-oom.md) Beheben Sie einen OOM-Fehler (Out Of Memory; nicht genügend Arbeitsspeicher) bei einer Hive-Abfrage. Das Kundenszenario enthält eine Abfrage über viele große Tabellen.
+* [Beheben eines Fehlers vom Typ „Nicht genügend Apache Hive-Arbeitsspeicher“ in Azure HDInsight](hdinsight-hadoop-hive-out-of-memory-error-oom.md): Hier erfahren Sie, wie Sie einen Fehler beheben, der aufgrund ungenügenden Arbeitsspeichers bei einer Hive-Abfrage auftritt. Das Kundenszenario enthält eine Abfrage über viele große Tabellen.
 
 ## <a name="apache-hive-query-performance"></a>Apache Hive-Abfrageleistung
 
-* [Optimieren von Apache Hive-Abfragen in Azure HDInsight:](hdinsight-hadoop-optimize-hive-query.md) In diesem Artikel werden einige der gängigsten Methoden für die Optimierung der Leistung von Hive vorgestellt, die Sie auf Hive-Abfragen anwenden können.
+* [Optimieren von Apache Hive-Abfragen für Apache Hadoop in HDInsight](hdinsight-hadoop-optimize-hive-query.md): Dieser Artikel erläutert die gängigsten Methoden zum Optimieren der Hive-Leistung, die Sie auf Hive-Abfragen anwenden können.
 * [Behandeln von Problemen mit Apache Hive unter Verwendung von Azure HDInsight](hdinsight-troubleshoot-hive.md)
 
 ## <a name="more-troubleshooting-articles"></a>Weitere Artikel zur Problembehandlung

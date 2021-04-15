@@ -5,10 +5,10 @@ ms.service: iot-pnp
 ms.topic: include
 ms.date: 10/20/2020
 ms.openlocfilehash: a92e37326cf9db0eba186b2bdca44c452c02ea91
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92521382"
 ---
 Die folgende Ressourcen stehen ebenfalls zur Verfügung:
@@ -19,7 +19,7 @@ Die folgende Ressourcen stehen ebenfalls zur Verfügung:
 
 ## <a name="iot-hub-service-client-examples"></a>Beispiele für den IoT Hub-Dienstclient
 
-In diesem Abschnitt werden C#-Beispiele gezeigt, die den IoT Hub-Dienstclient und die Klassen **RegistryManager** und **ServiceClient** verwenden. Die **RegistryManager** -Klasse dient dazu, mithilfe von Gerätezwillingen mit dem Gerätestatus zu interagieren. Sie können die **RegistryManager** -Klasse außerdem verwenden, um in Ihrem IoT Hub [Geräteregistrierungen abzufragen](../articles/iot-hub/iot-hub-devguide-query-language.md). Die **ServiceClient** -Klasse verwenden Sie, um Befehle auf dem Gerät aufzurufen. Das [DTDL](../articles/iot-pnp/concepts-digital-twin.md)-Modell für das Gerät definiert die Eigenschaften und Befehle, die vom Gerät implementiert werden. In den Codeausschnitten enthält die `deviceTwinId`-Variable die Geräte-ID des bei Ihrem IoT-Hub registrierten IoT Plug & Play-Geräts.
+In diesem Abschnitt werden C#-Beispiele gezeigt, die den IoT Hub-Dienstclient und die Klassen **RegistryManager** und **ServiceClient** verwenden. Die **RegistryManager**-Klasse dient dazu, mithilfe von Gerätezwillingen mit dem Gerätestatus zu interagieren. Sie können die **RegistryManager**-Klasse außerdem verwenden, um in Ihrem IoT Hub [Geräteregistrierungen abzufragen](../articles/iot-hub/iot-hub-devguide-query-language.md). Die **ServiceClient**-Klasse verwenden Sie, um Befehle auf dem Gerät aufzurufen. Das [DTDL](../articles/iot-pnp/concepts-digital-twin.md)-Modell für das Gerät definiert die Eigenschaften und Befehle, die vom Gerät implementiert werden. In den Codeausschnitten enthält die `deviceTwinId`-Variable die Geräte-ID des bei Ihrem IoT-Hub registrierten IoT Plug & Play-Geräts.
 
 ### <a name="get-the-device-twin-and-model-id"></a>Abrufen von Gerätezwilling und Modell-ID
 
@@ -141,7 +141,7 @@ catch (DeviceNotFoundException)
 
 ## <a name="iot-hub-digital-twin-examples"></a>Beispiele für IoT Hub Digital Twins
 
-Sie können die **DigitalTwinClient** -Klasse verwenden, um mithilfe digitaler Zwillinge mit dem Gerätestatus zu interagieren. Das [DTDL](../articles/iot-pnp/concepts-digital-twin.md)-Modell für das Gerät definiert die Eigenschaften und Befehle, die vom Gerät implementiert werden.
+Sie können die **DigitalTwinClient**-Klasse verwenden, um mithilfe digitaler Zwillinge mit dem Gerätestatus zu interagieren. Das [DTDL](../articles/iot-pnp/concepts-digital-twin.md)-Modell für das Gerät definiert die Eigenschaften und Befehle, die vom Gerät implementiert werden.
 
 In diesem Abschnitt werden C#-Beispiele zum Verwenden der Digital Twins-API gezeigt. In den folgenden Codeausschnitten werden die folgenden Klassen verwendet, um den digitalen Zwilling der Geräte „Thermostat“ und „Temperatursteuerung“ darzustellen:
 

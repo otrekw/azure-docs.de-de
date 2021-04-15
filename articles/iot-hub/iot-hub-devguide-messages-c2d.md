@@ -9,12 +9,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/15/2018
 ms.custom: mqtt, devx-track-azurecli
-ms.openlocfilehash: ba58f7897827cf7ce7f6156df1434733d89d7f42
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 154b496a6c14d307c09ddcd1b42bf4ba568cb315
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844453"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104607890"
 ---
 # <a name="send-cloud-to-device-messages-from-an-iot-hub"></a>Senden von C2D-Nachrichten von einem IoT-Hub
 
@@ -76,20 +76,22 @@ Beim Senden einer C2D-Nachricht kann der Dienst das Übermitteln von Feedback au
 
 | Ack-Eigenschaftswert | Verhalten |
 | ------------ | -------- |
-| none     | Der IoT-Hub generiert keine Feedbacknachricht (Standardverhalten). |
+| Keine     | Der IoT-Hub generiert keine Feedbacknachricht (Standardverhalten). |
 | Positiv | Wenn die C2D-Nachricht den Status *Abgeschlossen* erreicht, generiert der IoT-Hub eine Feedbacknachricht. |
 | Negativ | Wenn die C2D-Nachricht den Status *Unzustellbar* erreicht, generiert der IoT-Hub eine Feedbacknachricht. |
 | Voll     | Der IoT-Hub generiert in beiden Fällen eine Feedbacknachricht. |
 
 Wenn der **Ack**-Wert auf *Voll* festgelegt ist und Sie keine Feedbacknachricht erhalten, bedeutet dies, dass die Feedbacknachricht abgelaufen ist. Der Dienst kann nicht wissen, was mit der ursprünglichen Nachricht geschehen ist. In der Praxis sollte ein Dienst sicherstellen, dass Feedback verarbeitet werden kann, bevor es abläuft. Die maximale Ablaufzeit beträgt zwei Tage, sodass ausreichend Zeit verbleibt, um den Dienst wieder zu starten, wenn ein Fehler auftritt.
 
-Wie im Abschnitt [Endpunkte](iot-hub-devguide-endpoints.md) erläutert, übermittelt der IoT-Hub Feedback in Form von Nachrichten über einen dienstseitigen Endpunkt ( */messages/servicebound/feedback*). Die Semantik für den Empfang von Feedback entspricht der Semantik für C2D-Nachrichten. Nachrichtenfeedback wird nach Möglichkeit in einer einzigen Nachricht zusammengefasst, die das folgende Format aufweist:
+Wie im Abschnitt [Endpunkte](iot-hub-devguide-endpoints.md) erläutert, übermittelt der IoT-Hub Feedback in Form von Nachrichten über einen dienstseitigen Endpunkt (*/messages/servicebound/feedback*). Die Semantik für den Empfang von Feedback entspricht der Semantik für C2D-Nachrichten. Nachrichtenfeedback wird nach Möglichkeit in einer einzigen Nachricht zusammengefasst, die das folgende Format aufweist:
 
-| Eigenschaft     | BESCHREIBUNG |
+| Eigenschaft     | Beschreibung |
 | ------------ | ----------- |
 | EnqueuedTime | Ein Zeitstempel, der angibt, wann die Feedbacknachricht vom Hub empfangen wurde |
 | UserId       | `{iot hub name}` |
 | ContentType  | `application/vnd.microsoft.iothub.feedback.json` |
+
+Das System sendet Feedback, sobald eine der folgenden Bedingungen erfüllt ist: Der Batch umfasst 64 Nachrichten, oder es sind seit dem letzten Sendevorgang 15 Sekunden vergangen. 
 
 Der Nachrichtenkörper ist ein serialisiertes JSON-Array aus Datensätzen, von denen jeder die folgenden Eigenschaften aufweist:
 
@@ -97,8 +99,8 @@ Der Nachrichtenkörper ist ein serialisiertes JSON-Array aus Datensätzen, von d
 | ------------------ | ----------- |
 | EnqueuedTimeUtc    | Ein Zeitstempel, der angibt, wann das Ergebnis der Nachricht zustande gekommen ist (z.B. hat der Hub die Feedbacknachricht erhalten, oder die ursprüngliche Nachricht ist abgelaufen) |
 | OriginalMessageId  | Die *MessageId* der C2D-Nachricht, auf die sich das Feedback bezieht |
-| StatusCode         | Eine in Feedbacknachrichten verwendete erforderliche Zeichenfolge, die vom IoT-Hub generiert wird: <br/> *Erfolgreich* <br/> *Abgelaufen* <br/> *DeliveryCountExceeded* <br/> *Abgelehnt* <br/> *Gelöscht* |
-| BESCHREIBUNG        | Zeichenfolgenwerte für *StatusCode* |
+| StatusCode         | Eine in Feedbacknachrichten verwendete erforderliche Zeichenfolge, die vom IoT-Hub generiert wird: <br/> *Erfolgreich* <br/> *Abgelaufen* <br/> *DeliveryCountExceeded* <br/> *Rejected (Abgelehnt)* <br/> *Gelöscht* |
+| Beschreibung        | Zeichenfolgenwerte für *StatusCode* |
 | deviceId           | Die *DeviceId* des Zielgeräts für die C2D-Nachricht, auf die sich das Feedback bezieht |
 | DeviceGenerationId | Die *DeviceGenerationId* des Zielgeräts für die C2D-Nachricht, auf die sich das Feedback bezieht |
 
@@ -135,19 +137,19 @@ Jede IoT Hub-Instanz legt die folgenden Konfigurationsoptionen für das C2D-Mess
 
 | Eigenschaft                  | BESCHREIBUNG | Bereich und Standardwert |
 | ------------------------- | ----------- | ----------------- |
-| defaultTtlAsIso8601       | Standardmäßige Gültigkeitsdauer für C2D-Nachrichten | ISO_8601-Intervall bis zu 2 Tage (mindestens 1 Minute); Standardwert: 1 Stunde |
+| defaultTtlAsIso8601       | Standardmäßige Gültigkeitsdauer für C2D-Nachrichten | ISO_8601-Intervall bis zu zwei Tage (mindestens eine Minute); Standardwert: Eine Stunde |
 | maxDeliveryCount          | Maximale Zustellungsanzahl für C2D-Gerätewarteschlangen pro Gerät | 1 bis 100; Standard: 10 |
-| feedback.ttlAsIso8601     | Aufbewahrungsdauer für dienstgebundene Feedbacknachrichten | ISO_8601-Intervall bis zu 2 Tage (mindestens 1 Minute); Standardwert: 1 Stunde |
+| feedback.ttlAsIso8601     | Aufbewahrungsdauer für dienstgebundene Feedbacknachrichten | ISO_8601-Intervall bis zu zwei Tage (mindestens eine Minute). Standardwert: Eine Stunde |
 | feedback.maxDeliveryCount | Maximale Zustellungsanzahl für die Feedbackwarteschlange | 1 bis 100; Standard: 10 |
-| feedback.lockDurationAsIso8601 | Maximale Zustellungsanzahl für die Feedbackwarteschlange | ISO_8601-Intervall von 5 bis 300 Sekunden (mindestens 5 Sekunden). Standard: 60 Sekunden. |
+| feedback.lockDurationAsIso8601 | Maximale Zustellungsanzahl für die Feedbackwarteschlange | ISO_8601-Intervall zwischen fünf und 300 Sekunden (mindestens fünf Sekunden). Standardwert: 60 Sekunden |
 
 Sie können die Konfigurationsoptionen auf eine der folgenden Weisen festlegen:
 
-* **Azure-Portal**: Wählen Sie auf Ihrem IoT-Hub unter **Einstellungen** die Option **Integrierten Endpunkte** aus, und erweitern Sie **Cloud-zu-Gerät-Nachrichten**. (Das Festlegen der Eigenschaften **feedback.maxDeliveryCount** und **feedback.lockDurationAsIso8601** im Azure-Portal wird derzeit nicht unterstützt.)
+* **Azure-Portal:** Wählen Sie für Ihren IoT-Hub unter **Einstellungen** die Option **Integrierte Endpunkte** aus, und erweitern Sie **Cloud-zu-Gerät-Nachrichten**. (Das Festlegen der Eigenschaften **feedback.maxDeliveryCount** und **feedback.lockDurationAsIso8601** im Azure-Portal wird derzeit nicht unterstützt.)
 
     ![Festlegen von Konfigurationsoptionen für Cloud-zu-Gerät-Nachrichten im Portal](./media/iot-hub-devguide-messages-c2d/c2d-configuration-portal.png)
 
-* **Azure CLI**: Verwenden Sie den Befehl [az iot hub update](/cli/azure/iot/hub?view=azure-cli-latest#az-iot-hub-update):
+* **Azure CLI:** Verwenden Sie den Befehl [az iot hub update](/cli/azure/iot/hub#az-iot-hub-update):
 
     ```azurecli
     az iot hub update --name {your IoT hub name} \

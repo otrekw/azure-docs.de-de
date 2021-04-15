@@ -4,10 +4,10 @@ description: Erfahren Sie, wie Sie Azure DevTest Labs in Ihre Azure Pipelines f�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 96f99d41d0a7ea07bf3854292f9c3bd6245414b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87288919"
 ---
 # <a name="integrate-azure-devtest-labs-into-your-azure-pipelines-cicd-pipeline"></a>Integrieren von Azure DevTest Labs in Ihre CI/CD-Pipeline in Azure Pipelines
@@ -16,7 +16,7 @@ Sie können die Erweiterung *Azure DevTest Labs-Aufgaben* verwenden, um Ihren Az
 
 - Erstellen eines virtuellen Computers (VM)
 - Erstellen eines benutzerdefinierten Images von einem virtuellen Computer
-- Löschen eines virtuellen Computers 
+- Löschen einer VM 
 
 Diese Aufgaben ermöglichen es beispielsweise, eine *Golden Image*-VM für eine bestimmte Testaufgabe schnell bereitzustellen und die VM nach Abschluss des Tests wieder zu löschen.
 
@@ -143,7 +143,7 @@ Führen Sie das zuvor erstellte Skript aus, um die Details der DevTest Labs-VM z
    
 1. Wählen Sie unter **Aufgaben hinzufügen** die Option **Azure PowerShell** und dann **Hinzufügen** aus. 
    
-1. Wählen Sie **Azure PowerShell-Skript: FilePath** im linken Bereich aus. 
+1. Wählen Sie im Bereich auf der linken Seite **Azure PowerShell script: FilePath** (Azure PowerShell-Skript: FilePath) aus. 
    
 1. Füllen Sie im rechten Bereich das Formular wie folgt aus:
    
@@ -173,7 +173,7 @@ Die nächste Aufgabe ist das Erstellen eines Image der neu bereitgestellten VM i
    |**Labname**|Wählen Sie den Namen eines vorhandenen Labs aus, in dem das Image erstellt werden soll.|
    |**Name des benutzerdefinierten Images**|Geben Sie einen Namen für das benutzerdefinierte Image ein.|
    |**Beschreibung** (optional)|Geben Sie eine Beschreibung ein, um die spätere Auswahl des richtigen Images zu erleichtern.|
-   |**Quell-Lab-VM** > **Quell-Lab-VM-ID**|Wenn Sie den Standardnamen der Variablen „LabVMId“ geändert haben, geben Sie sie hier ein. Der Standardwert lautet **$(labVMId)** .|
+   |**Quell-Lab-VM** > **Quell-Lab-VM-ID**|Wenn Sie den Standardnamen der Variablen „LabVMId“ geändert haben, geben Sie sie hier ein. Der Standardwert lautet **$(labVMId)**.|
    |**Ausgabevariablen** > **ID des benutzerdefinierten Images**|Sie können den Standardnamen der Variablen bei Bedarf bearbeiten.|
    
 ### <a name="deploy-your-app-to-the-devtest-labs-vm-optional"></a>Bereitstellen Ihrer App in der DevTest Labs-VM (optional)
@@ -193,7 +193,7 @@ Die letzte Aufgabe ist das Löschen der VM, die Sie in der Azure DevTest Labs-In
 1. Konfigurieren Sie die Aufgabe wie folgt:
    
    - Wählen Sie unter **Azure RM-Abonnement** Ihre Dienstverbindung oder Ihr Abonnement aus. 
-   - Wenn Sie bei **Lab-VM-ID** den Standardnamen der Variablen „LabVMId“ geändert haben, geben Sie sie hier ein. Der Standardwert lautet **$(labVMId)** .
+   - Wenn Sie bei **Lab-VM-ID** den Standardnamen der Variablen „LabVMId“ geändert haben, geben Sie sie hier ein. Der Standardwert lautet **$(labVMId)**.
    
 ### <a name="save-the-release-pipeline"></a>Speichern der Releasepipeline
 

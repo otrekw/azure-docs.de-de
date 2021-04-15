@@ -4,16 +4,16 @@ description: Informationen zu Ultra-Datenträgern für virtuelle Azure-Computer
 author: roygara
 ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 12/10/2020
+ms.date: 03/16/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 9c3c1acbc2606d882ad45744457137be5014bc4c
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 43dac1692dd6ee4ed1ab67a9b18ca69738e0a0f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97093484"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104580502"
 ---
 # <a name="using-azure-ultra-disks"></a>Verwenden von Azure Ultra-Datenträgern
 
@@ -133,31 +133,31 @@ Nachdem der virtuelle Computer bereitgestellt wurde, können Sie die Datenträge
 
 In diesem Abschnitt wird die Bereitstellung eines virtuellen Computers mit einem Ultra-Datenträger als Datenträger beschrieben. Dabei wird davon ausgegangen, dass Sie mit der Bereitstellung eines virtuellen Computers vertraut sind. Andernfalls finden Sie entsprechende Informationen in [Schnellstart: Erstellen eines virtuellen Windows-Computers im Azure-Portal](./windows/quick-create-portal.md).
 
-- Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an und navigieren Sie zur Bereitstellung eines virtuellen Computers.
-- Achten Sie darauf, dass Sie eine [unterstützte VM-Größe und Region](#ga-scope-and-limitations) auswählen.
-- Wählen Sie **Verfügbarkeitszone** in **Verfügbarkeitsoptionen** aus.
-- Geben Sie die gewünschten Werte für die restlichen Einstellungen an.
-- Wählen Sie **Datenträger** aus.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an und navigieren Sie zur Bereitstellung eines virtuellen Computers.
+1. Achten Sie darauf, dass Sie eine [unterstützte VM-Größe und Region](#ga-scope-and-limitations) auswählen.
+1. Wählen Sie **Verfügbarkeitszone** in **Verfügbarkeitsoptionen** aus.
+1. Geben Sie die gewünschten Werte für die restlichen Einstellungen an.
+1. Wählen Sie **Datenträger** aus.
 
-![Screenshot des Arbeitsablaufs zur VM-Erstellung, Blatt „Grundlegendes“.](media/virtual-machines-disks-getting-started-ultra-ssd/create-ultra-disk-enabled-vm.png)
+    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/new-ultra-vm-create.png" alt-text="Screenshot des Arbeitsablaufs zur VM-Erstellung, Blatt „Basiseinstellungen“" lightbox="media/virtual-machines-disks-getting-started-ultra-ssd/new-ultra-vm-create.png":::
 
-- Wählen Sie auf dem Blatt „Datenträger“ **Ja** für **Ultra-Datenträgerkompatibilität aktivieren** aus.
-- Wählen Sie **Neuen Datenträger erstellen und anfügen** aus, um jetzt einen Ultra-Datenträger anzufügen.
+1. Wählen Sie auf dem Blatt „Datenträger“ **Ja** für **Ultra-Datenträgerkompatibilität aktivieren** aus.
+1. Wählen Sie **Neuen Datenträger erstellen und anfügen** aus, um jetzt einen Ultra-Datenträger anzufügen.
 
-![Screenshot: Arbeitsablauf zur VM-Erstellung, Blatt „Datenträger“, „Ultra“ ist aktiviert, die Optionen zum Erstellen und Anfügen eines neuen Datenträgers sind hervorgehoben.](media/virtual-machines-disks-getting-started-ultra-ssd/enable-and-attach-ultra-disk.png)
+    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/new-ultra-vm-disk-enable.png" alt-text="Screenshot: Arbeitsablauf zur VM-Erstellung, Blatt „Datenträger“, „Ultra“ ist aktiviert, die Optionen zum Erstellen und Anfügen eines neuen Datenträgers sind hervorgehoben." :::
 
-- Geben Sie auf dem Blatt **Neuen Datenträger erstellen** einen Namen ein und wählen Sie dann **Größe ändern** aus.
+1. Geben Sie auf dem Blatt **Neuen Datenträger erstellen** einen Namen ein und wählen Sie dann **Größe ändern** aus.
 
-    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/ultra-disk-create-new-disk-flow.png" alt-text="Screenshot des Blatts „Neuen Datenträger erstellen“ mit hervorgehobener Option zum Ändern der Größe.":::
+    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/new-ultra-create-disk.png" alt-text="Screenshot des Blatts „Neuen Datenträger erstellen“ mit hervorgehobener Option zum Ändern der Größe.":::
 
 
-- Ändern Sie den **Speichertyp** in **Disk Ultra**.
-- Ändern Sie die Werte für **Benutzerdefinierte Datenträgergröße (GiB)** , **Datenträger-IOPS** und **Datenträgerdurchsatz** in die gewünschten Werte.
-- Wählen Sie in beiden Blättern **OK** aus.
+1. Ändern Sie die **Datenträger-SKU** in **Disk Ultra**.
+1. Ändern Sie die Werte für **Benutzerdefinierte Datenträgergröße (GiB)** , **Datenträger-IOPS** und **Datenträgerdurchsatz** in die gewünschten Werte.
+1. Wählen Sie in beiden Blättern **OK** aus.
 
-    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/ultra-disk-select-new-disk.png" alt-text="Screenshot des Blatts zur Auswahl der Datenträgergröße mit ausgewähltem Speichertyp „Disk Ultra“, weitere Werte hervorgehoben.":::
+    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/new-select-ultra-disk-size.png" alt-text="Screenshot des Blatts zur Auswahl der Datenträgergröße mit ausgewähltem Speichertyp „Disk Ultra“, weitere Werte hervorgehoben.":::
 
-- Setzen Sie die VM-Bereitstellung wie bei der Bereitstellung jeder anderen VM fort.
+1. Setzen Sie die VM-Bereitstellung wie bei der Bereitstellung jeder anderen VM fort.
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
@@ -230,7 +230,21 @@ Update-AzVM -VM $vm -ResourceGroupName $resourceGroup
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Das Azure-Portal unterstützt derzeit nicht die Erstellung eines Ultra-Datenträgers mit einer Sektorgröße von 512 Byte. Sie können für die Erstellung eines Ultra-Datenträgers mit einer Sektorgröße von 512 Byte stattdessen das Azure PowerShell-Modul oder die Azure-Befehlszeilenschnittstelle verwenden.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, suchen Sie nach **Datenträger**, und wählen Sie diese Option aus.
+1. Wählen Sie **+ Neu** aus, um einen neuen Datenträger zu erstellen.
+1. Wählen Sie eine Region aus, die Ultra-Datenträger unterstützt, wählen Sie eine Verfügbarkeitszone aus, und geben Sie die restlichen Werte wie gewünscht an.
+1. Wählen Sie **Größe ändern** aus.
+
+    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/create-managed-disk-basics-workflow.png" alt-text="Screenshot des Blatts „Datenträger erstellen“ mit Hervorhebung der Region, der Verfügbarkeitszone und der Option „Größe ändern“":::
+
+1. Wählen Sie für **Datenträger-SKU** die Option **Disk Ultra** aus, geben Sie die Werte für die gewünschte Leistung ein, und wählen Sie **OK** aus.
+
+    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/select-disk-size-ultra.png" alt-text="Screenshot: Erstellen eines Ultra-Datenträgers":::
+
+1. Wählen Sie auf dem Blatt **Basiseinstellungen** die Registerkarte **Erweitert** aus.
+1. Wählen Sie **512** als **Größe des logischen Sektors** und dann **Überprüfen + Erstellen** aus.
+
+    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/select-different-sector-size-ultra.png" alt-text="Screenshot des Selektors zum Ändern der Größe des logischen Sektors des Ultra-Datenträgers in 512":::
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
@@ -303,32 +317,25 @@ Update-AzVM -VM $vm -ResourceGroupName $resourceGroup
 
 Alternativ können Sie, wenn sich Ihre vorhandene VM in einer Region/Verfügbarkeitszone befindet, in der Ultra-Datenträger verwendet werden können, Ultra-Datenträger verwenden, ohne eine neue VM erstellen zu müssen. Dazu aktivieren Sie Ultra-Datenträger in der vorhandenen VM und fügen diese dann als Datenträger an. Sie müssen den virtuellen Computer beenden, um die Disk Ultra-Datenträgerkompatibilität zu aktivieren. Nach dem Beenden der VM können Sie Kompatibilität aktivieren und die VM dann erneut starten. Nachdem Kompatibilität aktiviert wurde, können Sie einen Disk Ultra-Datenträger anfügen:
 
-- Navigieren Sie zu Ihrem virtuellen Computer, beenden Sie ihn, und warten Sie die Aufhebung seiner Zuordnung ab.
-- Nachdem die Zuordnung Ihrer VM aufgehoben wurde, wählen Sie **Datenträger** aus.
-- Wählen Sie **Bearbeiten** aus.
+1. Navigieren Sie zu Ihrem virtuellen Computer, beenden Sie ihn, und warten Sie die Aufhebung seiner Zuordnung ab.
+1. Nachdem die Zuordnung Ihrer VM aufgehoben wurde, wählen Sie **Datenträger** aus.
+1. Wählen Sie **Zusätzliche Einstellungen** aus.
 
-![Screenshot eines vorhandenen Blatts für einen VM-Datenträger mit hervorgehobener Option „Bearbeiten“.](media/virtual-machines-disks-getting-started-ultra-ssd/options-selector-ultra-disks.png)
+    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/new-ultra-disk-additional-settings.png" alt-text="Screenshot des Datenträgerblatts mit Hervorhebung zusätzlicher Einstellungen":::
 
-- Wählen Sie **Ja** für **Ultra-Datenträgerkompatibilität aktivieren** aus.
+1. Wählen Sie **Ja** für **Ultra-Datenträgerkompatibilität aktivieren** aus.
 
-![Screenshot zum Aktivieren der Disk Ultra-Datenträgerkompatibilität.](media/virtual-machines-disks-getting-started-ultra-ssd/ultra-options-yes-enable.png)
+    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/enable-ultra-disks-existing-vm.png" alt-text="Screenshot zum Aktivieren der Disk Ultra-Datenträgerkompatibilität.":::
 
-- Wählen Sie **Speichern** aus.
-- Wählen Sie **Datenträger hinzufügen** und dann im Dropdown für **Name** die Option **Datenträger erstellen** aus.
+1. Wählen Sie **Speichern** aus.
+1. Wählen Sie **Neuen Datenträger erstellen und anfügen** aus, und geben Sie einen Namen für den neuen Datenträger ein.
+1. Wählen Sie als **Speichertyp** die Option **Disk Ultra** aus.
+1. Ändern Sie die Werte für **Größe (GiB)** , **Maximale IOPS** und **Maximaler Durchsatz** nach Belieben.
+1. Wählen Sie nach Rückkehr zum Blatt für den Datenträger **Speichern** aus.
 
-![Screenshot eines Datenträgerblatts, Hinzufügen eines neuen Datenträgers.](media/virtual-machines-disks-getting-started-ultra-ssd/create-and-attach-new-ultra-disk.png)
+    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/new-create-ultra-disk-existing-vm.png" alt-text="Screenshot des Datenträgerblatts beim Hinzufügen eines neuen Ultra-Datenträgers":::
 
-- Geben Sie einen Namen für den neuen Datenträger ein und wählen Sie dann **Größe ändern** aus.
-- Ändern Sie den **Kontotyp** in **Ultra-Datenträger**.
-- Ändern Sie die Werte für **Benutzerdefinierte Datenträgergröße (GiB)** , **Datenträger-IOPS** und **Datenträgerdurchsatz** in die gewünschten Werte.
-
-    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/ultra-disk-select-new-disk.png" alt-text="Screenshot des Blatts zur Auswahl der Datenträgergröße mit ausgewähltem Speichertyp „Disk Ultra“, weitere Werte hervorgehoben.":::
-
-- Wählen Sie **OK** und anschließend **Erstellen** aus.
-- Wählen Sie nach Rückkehr zum Blatt für den Datenträger **Speichern** aus.
-- Starten Sie Ihre VM erneut.
-
-![Screenshot des Datenträgerblatts für Ihre VM.](media/virtual-machines-disks-getting-started-ultra-ssd/saving-and-attaching-new-ultra-disk.png)
+1. Starten Sie Ihre VM erneut.
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
@@ -444,15 +451,15 @@ Update-AzVM -VM $vm -ResourceGroupName $resourceGroup
 
 Ultra-Datenträger haben eine einzigartige Funktion, mit der Sie deren Leistung anpassen können. Sie können diese Anpassung über das Azure-Portal für die jeweiligen Datenträger durchführen.
 
-- Navigieren Sie zur VM und wählen Sie **Datenträger** aus.
-- Wählen Sie den Ultra-Datenträger aus, dessen Leistung Sie ändern möchten.
+1. Navigieren Sie zur VM und wählen Sie **Datenträger** aus.
+1. Wählen Sie den Ultra-Datenträger aus, dessen Leistung Sie ändern möchten.
 
-![Screenshot des Datenträgerblatts Ihrer VM mit hervorgehobenem Disk Ultra-Datenträger.](media/virtual-machines-disks-getting-started-ultra-ssd/selecting-ultra-disk-to-modify.png)
+    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/select-ultra-disk-to-modify.png" alt-text="Screenshot des Datenträgerblatts Ihrer VM mit hervorgehobenem Disk Ultra-Datenträger.":::
 
-- Wählen Sie **Konfiguration** aus und nehmen Sie dann die gewünschten Änderungen vor.
-- Wählen Sie **Speichern** aus.
+1. Wählen Sie **Größe und Leistung** aus, und nehmen Sie dann Ihre Änderungen vor.
+1. Wählen Sie **Speichern** aus.
 
-![Screenshot des Konfigurationsblatts für Ihren Disk Ultra-Datenträger mit hervorgehobenen Optionen für Datenträgergröße, IOPS, Durchsatz und Speichern.](media/virtual-machines-disks-getting-started-ultra-ssd/configuring-ultra-disk-performance-and-size.png)
+    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/modify-ultra-disk-performance.png" alt-text="Screenshot des Konfigurationsblatts für Ihren Disk Ultra-Datenträger mit hervorgehobenen Optionen für Datenträgergröße, IOPS, Durchsatz und Speichern.":::
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 

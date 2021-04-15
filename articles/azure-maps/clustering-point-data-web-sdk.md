@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 0af327f624d0fed648012ce1d12bacabca688cec
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: f798b4a7964eba112ed9948b2db4f6d5c3edd1e3
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102044186"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105608356"
 ---
 # <a name="clustering-point-data"></a>Clustering von Punktdaten
 
@@ -26,7 +26,7 @@ Wenn auf der Karte viele Datenpunkte visualisiert werden, kann es bei diesen Dat
 
 ## <a name="enabling-clustering-on-a-data-source"></a>Aktivieren des Clusterings für eine Datenquelle
 
-Clustering aktivieren Sie in der `DataSource`-Klasse, indem Sie die Option `cluster` auf „true“ festlegen. Durch Festlegen von `clusterRadius` werden nahe gelegene Punkte ausgewählt und zu einem Cluster kombiniert. Der Wert von `clusterRadius` wird in Pixel angegeben. Verwenden Sie `clusterMaxZoom`, um einen Zoomfaktor anzugeben, ab dem die Clusteringlogik deaktiviert werden soll. Hier folgt ein Beispiel, wie Sie das Clustering in einer Datenquelle aktivieren können.
+Aktivieren des Clusterings in der `DataSource`-Klasse, indem Sie die Option `cluster` auf `true` festlegen. Durch Festlegen von `clusterRadius` werden nahe gelegene Punkte ausgewählt und zu einem Cluster kombiniert. Der Wert von `clusterRadius` wird in Pixel angegeben. Verwenden Sie `clusterMaxZoom`, um einen Zoomfaktor anzugeben, ab dem die Clusteringlogik deaktiviert werden soll. Hier folgt ein Beispiel, wie Sie das Clustering in einer Datenquelle aktivieren können.
 
 ```javascript
 //Create a data source and enable clustering.
@@ -92,7 +92,7 @@ Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azure
 
 Wenn Mausereignisse auf einer Ebene auftreten, die gruppierte Datenpunkte enthält, wird der gruppierte Datenpunkt als GeoJSON-Punktfeatureobjekt an das Ereignis zurückgegeben. Dieses Punktfeature weist die folgenden Eigenschaften auf:
 
-| Eigenschaftenname             | type    | BESCHREIBUNG   |
+| Eigenschaftenname             | type    | Beschreibung   |
 |---------------------------|---------|---------------|
 | `cluster`                 | boolean | Gibt an, ob das Feature einen Cluster darstellt. |
 | `cluster_id`              | Zeichenfolge  | Eine eindeutige ID für den Cluster, die mit den DataSource-Methoden `getClusterExpansionZoom`, `getClusterChildren` und `getClusterLeaves` verwendet werden kann. |

@@ -3,12 +3,12 @@ title: Azure Event Grid – Sicherheit und Authentifizierung
 description: In diesem Artikel werden Azure Event Grid und die zugehörigen Begriffe beschrieben.
 ms.topic: conceptual
 ms.date: 02/12/2021
-ms.openlocfilehash: 326fa00645302eb4b9c9bc59f17c1ca153bdb0b7
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: e9bcf00e832e4deaaf9c5f81ba5af51609a1c412
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100371719"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104601039"
 ---
 # <a name="authorizing-access-to-event-grid-resources"></a>Autorisieren des Zugriffs auf Event Grid-Ressourcen
 Azure Event Grid bietet die Möglichkeit, den Umfang zu steuern, in dem unterschiedliche Benutzer Zugriff auf verschiedene **Verwaltungsvorgänge** erhalten, z. B. Auflisten und Erstellen von Ereignisabonnements und Generieren von Schlüsseln. Event Grid verwendet die rollenbasierte Zugriffssteuerung von Azure (Azure Role-Based Access Control, Azure RBAC).
@@ -31,80 +31,23 @@ Die folgenden Vorgänge geben potenziell geheime Informationen zurück, die aus 
 
 
 ## <a name="built-in-roles"></a>Integrierte Rollen
+In Event Grid sind die folgenden drei integrierten Rollen verfügbar. 
 
-Event Grid stellt zwei integrierte Rollen zum Verwalten von Ereignisabonnements bereit. Sie sind wichtig beim Implementieren von [Ereignisdomänen](event-domains.md), da sie Benutzern die erforderlichen Berechtigungen erteilen, um Themen in Ihrer Ereignisdomäne zu abonnieren. Diese Rollen gelten für Ereignisabonnements und gewähren keinen Zugriff auf Aktionen. Das heißt, sie berechtigen Sie beispielsweise nicht zum Erstellen von Themen.
+Die Rollen „Event Grid-Abonnementleser“ und „Event Grid-Abonnementmitwirkender“ dienen der Verwaltung von Ereignisabonnements. Sie sind wichtig beim Implementieren von [Ereignisdomänen](event-domains.md), da sie Benutzern die erforderlichen Berechtigungen erteilen, um Themen in Ihrer Ereignisdomäne zu abonnieren. Diese Rollen gelten für Ereignisabonnements und gewähren keinen Zugriff auf Aktionen. Das heißt, sie berechtigen Sie beispielsweise nicht zum Erstellen von Themen.
 
-Sie können [diese Rollen einem Benutzer oder Gruppen zuweisen](../role-based-access-control/quickstart-assign-role-user-portal.md).
+Mit der Rolle „Event Grid-Mitwirkender“ können Sie Event Grid-Ressourcen erstellen und verwalten. 
 
-**EventGrid EventSubscription Mitwirkender:** Verwalten von Event Grid-Abonnementvorgängen
 
-```json
-[
-  {
-    "Description": "Lets you manage EventGrid event subscription operations.",
-    "IsBuiltIn": true,
-    "Id": "428e0ff05e574d9ca2212c70d0e0a443",
-    "Name": "EventGrid EventSubscription Contributor",
-    "IsServiceRole": false,
-    "Permissions": [
-      {
-        "Actions": [
-          "Microsoft.Authorization/*/read",
-          "Microsoft.EventGrid/eventSubscriptions/*",
-          "Microsoft.EventGrid/systemtopics/eventsubscriptions/*",
-          "Microsoft.EventGrid/partnertopics/eventsubscriptions/*",
-          "Microsoft.EventGrid/topicTypes/eventSubscriptions/read",
-          "Microsoft.EventGrid/locations/eventSubscriptions/read",
-          "Microsoft.EventGrid/locations/topicTypes/eventSubscriptions/read",
-          "Microsoft.Insights/alertRules/*",
-          "Microsoft.Resources/deployments/*",
-          "Microsoft.Resources/subscriptions/resourceGroups/read",
-          "Microsoft.Support/*"
-        ],
-        "NotActions": [],
-        "DataActions": [],
-        "NotDataActions": [],
-        "Condition": null
-      }
-    ],
-    "Scopes": [
-      "/"
-    ]
-  }
-]
-```
+| Role | Beschreibung |
+| ---- | ----------- | 
+| [Event Grid-Abonnementleser](../role-based-access-control/built-in-roles.md#eventgrid-eventsubscription-reader) | Ermöglicht die Verwaltung von Vorgängen des Event Grid-Ereignisabonnements. |
+| [Event Grid-Abonnementmitwirkender](../role-based-access-control/built-in-roles.md#eventgrid-eventsubscription-contributor) | Ermöglicht das Lesen von Event Grid-Ereignisabonnements. |
+| [Event Grid-Mitwirkender](../role-based-access-control/built-in-roles.md#eventgrid-contributor) | Ermöglich das Erstellen und Verwalten von Event Grid-Ressourcen. |
 
-**EventGrid EventSubscription Reader:** Lesen von Event Grid-Abonnements
 
-```json
-[
-  {
-    "Description": "Lets you read EventGrid event subscriptions.",
-    "IsBuiltIn": true,
-    "Id": "2414bbcf64974faf8c65045460748405",
-    "Name": "EventGrid EventSubscription Reader",
-    "IsServiceRole": false,
-    "Permissions": [
-      {
-        "Actions": [
-          "Microsoft.Authorization/*/read",
-          "Microsoft.EventGrid/eventSubscriptions/read",
-          "Microsoft.EventGrid/topicTypes/eventSubscriptions/read",
-          "Microsoft.EventGrid/locations/eventSubscriptions/read",
-          "Microsoft.EventGrid/locations/topicTypes/eventSubscriptions/read",
-          "Microsoft.Resources/subscriptions/resourceGroups/read"
-        ],
-        "NotActions": [],
-        "DataActions": [],
-        "NotDataActions": []
-       }
-    ],
-    "Scopes": [
-      "/"
-    ]
-  }
-]
-```
+> [!NOTE]
+> Klicken Sie für weitere Informationen zu den Rollen auf den jeweiligen Link in der linken Spalte, um zu dem entsprechenden Artikel zu gelangen. Eine Anleitung zur Zuweisung von Benutzern oder Gruppen zu RBAC-Rollen finden Sie in [diesem Artikel](../role-based-access-control/quickstart-assign-role-user-portal.md).
+
 
 ## <a name="custom-roles"></a>Benutzerdefinierte Rollen
 

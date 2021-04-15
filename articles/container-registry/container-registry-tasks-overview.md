@@ -3,12 +3,12 @@ title: Übersicht über ACR Tasks
 description: 'Einführung in ACR Tasks: eine Suite mit Features in Azure Container Registry für sichere, automatisierte Build- und Patchvorgänge für Containerimages und Verwaltung in der Cloud.'
 ms.topic: article
 ms.date: 08/12/2020
-ms.openlocfilehash: b6df415bd55979ef00f6921321dbc254ef7a7e59
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 1cf9faf934cebfb5abe0d2e1b26ffd7da2d6c549
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562853"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104606785"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>Automatisieren von Containerimage-Builds und Wartung mit ACR Tasks
 
@@ -39,7 +39,7 @@ Der „interne“ Entwicklungszyklus, der iterative Prozess, der das Schreiben v
 
 Bevor Sie Ihre erste Zeile Code committen, kann das Feature [Schnelltask](container-registry-tutorial-quick-task.md) von ACR Tasks eine integrierte Entwicklungsumgebung bereitstellen, indem Ihre Containerimage-Buildvorgänge in Azure ausgelagert werden. Mit Schnelltasks können Sie Ihre automatisierten Builddefinitionen überprüfen und potenzielle Probleme abfangen, bevor Sie Ihren Code committen.
 
-Der Befehl [az acr build][az-acr-build] der Azure CLI verwendet das vertraute `docker build`-Format. Er akzeptiert einen [Kontext](#context-locations) (Satz zu erstellender Dateien), sendet ihn an ACR Tasks und pusht das erstellte Image nach dessen Fertigstellung standardmäßig in die entsprechende Registrierung.
+Der Befehl [az acr build][az-acr-build] der Azure-Befehlszeilenschnittstelle verwendet das vertraute `docker build`-Format. Er akzeptiert einen [Kontext](#context-locations) (Satz zu erstellender Dateien), sendet ihn an ACR Tasks und pusht das erstellte Image nach dessen Fertigstellung standardmäßig in die entsprechende Registrierung.
 
 Eine Einführung finden Sie im Schnellstart: [Erstellen und Ausführen eines Containerimages](container-registry-quickstart-task-cli.md) in Azure Container Registry.  
 

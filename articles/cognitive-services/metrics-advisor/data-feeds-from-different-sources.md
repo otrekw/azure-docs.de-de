@@ -10,16 +10,16 @@ ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 10/12/2020
 ms.author: mbullwin
-ms.openlocfilehash: c4d1d23da5fd9678cc5b9477ddeed0daf4f5ac36
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4fd01256d94fbcb18fe8437be00c84e49d98f7d0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96348618"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105606146"
 ---
 # <a name="add-data-feeds-from-different-data-sources-to-metrics-advisor"></a>Hinzufügen von Datenfeeds aus unterschiedlichen Datenquellen zu Metrics Advisor
 
-Verwenden Sie diesen Artikel, um die Einstellungen und Anforderungen zum Herstellen einer Verbindung von verschiedenen Arten von Datenquellen mit Metrics Advisor zu ermitteln. Lesen Sie unbedingt, wie das [Onboarding Ihrer Daten](how-tos/onboard-your-data.md) funktioniert, um sich mit den wichtigsten Konzepten für die Verwendung Ihrer Daten mit Metrics Advisor vertraut zu machen. 
+Verwenden Sie diesen Artikel, um die Einstellungen und Anforderungen zum Herstellen einer Verbindung von verschiedenen Arten von Datenquellen mit Metrics Advisor zu ermitteln. Lesen Sie unbedingt, wie das [Onboarding Ihrer Daten](how-tos/onboard-your-data.md) funktioniert, um sich mit den wichtigsten Konzepten für die Verwendung Ihrer Daten mit Metrics Advisor vertraut zu machen. \
 
 ## <a name="supported-authentication-types"></a>Unterstützte Authentifizierungstypen
 
@@ -51,7 +51,7 @@ Verwenden Sie diesen Artikel, um die Einstellungen und Anforderungen zum Herstel
 |[**MySQL**](#mysql) | Basic |
 |[**PostgreSQL**](#pgsql)| Basic|
 
-Erstellen Sie eine **Credential Entity** (Anmeldeinformationsentität), und verwenden Sie sie zum Authentifizieren bei Ihren Datenquellen. In den folgenden Abschnitten werden die Parameter angegeben, die für die *Standardauthentifizierung* erforderlich sind. 
+Erstellen Sie eine Credential Entity** (Anmeldeinformationsentität), und verwenden Sie sie zum Authentifizieren bei Ihren Datenquellen. In den folgenden Abschnitten werden die Parameter angegeben, die für die *Standardauthentifizierung* erforderlich sind. 
 
 ## <a name="span-idappinsightsazure-application-insightsspan"></a><span id="appinsights">Azure Application Insights</span>
 
@@ -212,15 +212,14 @@ The timestamp field must match one of these two formats:
 
 ## <a name="span-idtableazure-table-storagespan"></a><span id="table">Azure Table Storage</span>
 
-* **Verbindungszeichenfolge**: Informationen zum Abrufen der Verbindungszeichenfolge aus Azure Table Storage finden Sie unter [Anzeigen und Kopieren einer Verbindungszeichenfolge](../../storage/common/storage-account-keys-manage.md?tabs=azure-portal&toc=%2fazure%2fstorage%2ftables%2ftoc.json#view-account-access-keys).
+* **Verbindungszeichenfolge**: Erstellen Sie eine SAS-URL (Shared Access Signature, SAS), und füllen Sie diese aus. Die einfachste Möglichkeit, eine SAS-URL zu generieren, ist die Verwendung des Azure-Portals. Im Azure-Portal können Sie grafisch navigieren. Zum Erstellen einer SAS-URL über den Azure-Portal navigieren Sie zunächst zu dem Speicherkonto, auf das Sie im Abschnitt „Einstellungen“ zugreifen möchten, und klicken Sie dann auf Shared Access Signature (SAS). Aktivieren Sie mindestens die Kontrollkästchen „Tabelle“ und „Objekt“, und klicken Sie dann auf die Schaltfläche „SAS und Verbindungszeichenfolge generieren“. Die SAS-URL für den Tabellenspeicherdienst ist das, was Sie kopieren und in das Textfeld im Arbeitsbereich „Metrik“ eingeben müssen.
 
 * **Tabellenname**: Geben Sie eine Tabelle an, die abgefragt werden soll. Dies finden Sie in Ihrer Azure Storage-Kontoinstanz. Klicken Sie im Abschnitt **Tabellendienst** auf **Tabellen**.
 
-* **Abfrage**: Sie können `@StartTime` in der Abfrage verwenden. `@StartTime` wird durch eine Zeichenfolge im Format JJJJ-MM-TTThh:mm:ss im Skript ersetzt.
+* **Abfrage**: Sie können `@StartTime` in der Abfrage verwenden. `@StartTime` wird durch eine Zeichenfolge im Format JJJJ-MM-TTThh:mm:ss im Skript ersetzt. Tipp: Verwenden Sie den Azure Storage-Explorer, um eine Abfrage mit einem bestimmten Zeitbereich zu erstellen, und stellen Sie sicher, dass sie einwandfrei ausgeführt wird.
 
     ``` mssql
-    let StartDateTime = datetime(@StartTime); let EndDateTime = StartDateTime + 1d; 
-    SampleTable | where Timestamp >= StartDateTime and Timestamp < EndDateTime | project Timestamp, Market, RPM
+    date ge datetime'@StartTime' and date lt datetime'@EndTime'
     ```
 
 ## <a name="span-ideselasticsearchspan"></a><span id="es">Elasticsearch</span>
@@ -232,7 +231,7 @@ The timestamp field must match one of these two formats:
 
 ## <a name="span-idhttphttp-requestspan"></a><span id="http">HTTP-Anforderung</span>
 
-* **Anforderungs-URL:** : Eine HTTP-URL, die einen JSON-Wert zurückgeben kann. Die Platzhalter %Y, %m, %d, %h, %M werden unterstützt: % y = Jahr im Format JJJJ, % m = Monat im Format MM, % d = Tag im Format TT, %h = Stunde im Format HH, % m = Minute im Format MM. Beispiel: `http://microsoft.com/ProjectA/%Y/%m/X_%Y-%m-%d-%h-%M`.
+* **Anforderungs-URL**: eine HTTP-URL, die einen JSON-Wert zurückgeben kann. Die Platzhalter %Y, %m, %d, %h, %M werden unterstützt: % y = Jahr im Format JJJJ, % m = Monat im Format MM, % d = Tag im Format TT, %h = Stunde im Format HH, % m = Minute im Format MM. Beispiel: `http://microsoft.com/ProjectA/%Y/%m/X_%Y-%m-%d-%h-%M`.
 * **HTTP-Methode der Anforderung**: Verwenden Sie GET oder POST.
 * **Anforderungsheader:** Kann die Standardauthentifizierung hinzufügen. 
 * **Anforderungsnutzlast**: Nur die JSON-Payload wird unterstützt. Der Platzhalter @StartTime wird in der Payload unterstützt. Die Antwort sollte das folgende JSON-Format aufweisen: [{"timestamp": "2018-01-01T00:00:00Z", "market":"en-us", "count":11, "revenue":1.23}, {"timestamp": "2018-01-01T00:00:00Z", "market":"zh-cn", "count":22, "revenue":4.56}].(z. B. wenn Daten vom 2020-06-21T00:00:00Z erfasst werden, @StartTime = 2020-06-21T00:00:00.0000000+00:00)

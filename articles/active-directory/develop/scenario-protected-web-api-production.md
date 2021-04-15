@@ -12,18 +12,18 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: bf8eb144ab23d45e57ee8d52f06363ea37b600ec
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 98be47200c12ab3097f9416b5647abf6465a89e7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94375277"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "104675973"
 ---
 # <a name="protected-web-api---move-to-production"></a>Geschützte Web-API: Übergang in die Produktion
 
-Da Sie nun wissen, wie Sie Ihre Web-API schützen, erfahren Sie hier nun, wie Sie den Übergang in die Produktion durchführen.
+Da Sie nun wissen, wie Sie Ihre Web-API schützen können, sollten Sie die folgenden Punkte beachten, wenn Sie Ihre Anwendung in die Produktion verschieben.
 
-[!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
+[!INCLUDE [Common steps to move to production](../../../includes/active-directory-develop-scenarios-production.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

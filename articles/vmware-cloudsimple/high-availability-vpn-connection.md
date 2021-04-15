@@ -9,17 +9,17 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 80805aaa172518c40c7ad123ca24361ee0f15e69
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97895698"
 ---
 # <a name="configure-a-high-availability-connection-from-on-premises-to-cloudsimple-vpn-gateway"></a>Konfigurieren einer Hochverfügbarkeitsverbindung zwischen einem lokalen Standort und einem CloudSimple VPN-Gateway
 
 Netzwerkadministratoren können eine hochverfügbare IPsec-Site-to-Site-VPN-Verbindung aus ihrer lokalen Umgebung mit einem CloudSimple VPN-Gateway konfigurieren.
 
-In diesem Leitfaden werden Schritte zur Konfiguration einer lokalen Firewall für eine IPsec-Site-to-Site-VPN-Hochverfügbarkeitsverbindung beschrieben. Die detaillierten Schritte sind spezifisch für den Typ der lokalen Firewall. In diesem Handbuch werden als Beispiele die Schritte für zwei Firewalltypen aufgeführt: Cisco ASA und Palo Alto Networks.
+In diesem Leitfaden werden Schritte zur Konfiguration einer lokalen Firewall für eine IPsec-Site-to-Site-VPN-Hochverfügbarkeitsverbindung beschrieben. Die detaillierten Schritte sind spezifisch für den Typ der lokalen Firewall. In diesem Leitfaden werden beispielhaft Schritte für zwei Firewalltypen beschrieben: Cisco ASA und Palo Alto Networks.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
@@ -152,11 +152,11 @@ Melden Sie sich bei der Palo Alto-Firewall an, wählen Sie **Network (Netzwerk)*
 * Interface Name (Schnittstellenname). Das erste Feld wird automatisch mit dem Schlüsselwort „tunnel“ aufgefüllt. Geben Sie im angrenzenden Feld eine beliebige Zahl zwischen 1 und 9.999 ein. Diese Schnittstelle wird als primäre Tunnelschnittstelle verwendet, um Site-to-Site-Datenverkehr zwischen dem lokalen Rechenzentrum und der privaten Cloud zu übertragen.
 * Comment (Kommentar). Geben Sie Kommentare ein, um den Zweck des Tunnels leicht identifizieren zu können.
 * NetFlow Profile (NetFlow-Profil). Behalten Sie den Standardwert bei.
-* Config (Konfiguration). Weisen Sie die Schnittstelle zu: Virtual Router (Virtueller Router): Wählen Sie **default** (Standard) aus. 
-        Security Zone (Sicherheitszone): Wählen Sie die Zone für vertrauenswürdigen LAN-Datenverkehr aus. In diesem Beispiel lautet der Name der Zone für den LAN-Datenverkehr „Trust“.
+* Config (Konfiguration). Schnittstelle zuweisen zu: Virtueller Router: Wählen Sie **Standard** aus. 
+        Sicherheitszone: Wählen Sie die Zone für vertrauenswürdigen LAN-Datenverkehr aus. In diesem Beispiel lautet der Name der Zone für den LAN-Datenverkehr „Trust“.
 * IPv4. Klicken Sie auf **Add** (Hinzufügen), und fügen Sie eine beliebige nicht überlappende /32-IP-Adresse in Ihrer Umgebung hinzu, die der primären Tunnelschnittstelle zugewiesen und zum Überwachen der Tunnel verwendet wird (dies wird später erläutert).
 
-Da diese Konfiguration für ein Hochverfügbarkeits-VPN gilt, sind zwei Tunnelschnittstellen erforderlich: Eine primäre und eine sekundäre Schnittstelle. Wiederholen Sie die vorherigen Schritte, um die sekundäre Tunnelschnittstelle zu erstellen. Wählen Sie eine andere Tunnel-ID und eine andere nicht verwendete /32-IP-Adresse aus.
+Da diese Konfiguration für ein Hochverfügbarkeits-VPN gilt, sind zwei Tunnelschnittstellen erforderlich: eine primäre und eine sekundäre. Wiederholen Sie die vorherigen Schritte, um die sekundäre Tunnelschnittstelle zu erstellen. Wählen Sie eine andere Tunnel-ID und eine andere nicht verwendete /32-IP-Adresse aus.
 
 ### <a name="2-set-up-static-routes-for-private-cloud-subnets-to-be-reached-over-the-site-to-site-vpn"></a>2. Einrichten von statischen Routen für Subnetze der privaten Cloud, die über das Site-to-Site-VPN erreicht werden sollen
 
@@ -166,8 +166,8 @@ Wählen Sie **Network (Netzwerk)**  > **Virtual Routers (Virtuelle Router)**  > 
 
 * Name. Geben Sie einen beliebigen Namen ein, um den Zweck der Route leicht identifizieren zu können.
 * Destination. Geben Sie die Subnetze der privaten CloudSimple-Cloud an, die über S2S-Tunnelschnittstellen vom lokalen Standort aus erreicht werden sollen.
-* Interface (Schnittstelle). Wählen Sie in der Dropdownliste die primäre Tunnelschnittstelle aus, die Sie in Schritt-1 (Abschnitt 2) erstellt haben. In diesem Beispiel handelt es sich um „tunnel.20“.
-* Next Hop (Nächster Hop). Wählen Sie **Keine**.
+* Schnittstelle Wählen Sie in der Dropdownliste die primäre Tunnelschnittstelle aus, die Sie in Schritt-1 (Abschnitt 2) erstellt haben. In diesem Beispiel handelt es sich um „tunnel.20“.
+* Next Hop (Nächster Hop). Wählen Sie **Keine** aus.
 * Admin Distance (Administratorabstand). Behalten Sie den Standardwert bei.
 * Metric (Metrik). Geben Sie einen beliebigen Wert zwischen 1 und 65.535 ein. Der Schlüssel besteht darin, eine niedrigere Metrik für die Route einzugeben, die der primären Tunnelschnittstelle entspricht, verglichen mit der Metrik der Route, die der sekundären Tunnelschnittstelle entspricht, wodurch die erstgenannte Route bevorzugt wird. Wenn „tunnel.20“ einen Metrikwert von 20 gegenüber einem Metrikwert von 30 für „tunnel.30“ aufweist, wird „tunnel.20“ bevorzugt.
 * Route Table (Routingtabelle). Behalten Sie den Standardwert bei.
@@ -200,7 +200,7 @@ Registerkarte „General“ (Allgemein):
 * Name. Geben Sie den Namen für das IKE-Gateway ein, für das Peering mit dem primären CloudSimple-VPN-Peer ausgeführt werden soll.
 * Version. Wählen Sie **IKEv1 only mode** (Nur IKEv1-Modus) aus.
 * Address Type (Adresstyp). Wählen Sie **IPv4** aus.
-* Interface (Schnittstelle). Wählen Sie die öffentliche oder externe Schnittstelle aus.
+* Schnittstelle Wählen Sie die öffentliche oder externe Schnittstelle aus.
 * Local IP Address (Lokale IP-Adresse). Behalten Sie den Standardwert bei.
 * Peer IP Address Type (Typ der IP-Peeradresse). Wählen Sie **IP** aus.
 * Peer Address (Peeradresse). Geben Sie die primäre CloudSimple-VPN-IP-Peeradresse ein.
@@ -263,7 +263,7 @@ Registerkarte „General“ (Allgemein):
 * Destination IP (Ziel-IP). Geben Sie eine beliebige IP-Adresse ein, die zum Subnetz der privaten CloudSimple-Cloud gehört, die über die Site-to-Site-Verbindung zulässig ist. Stellen Sie sicher, dass die Tunnelschnittstellen (z.B. „tunnel.20 - 10.64.5.2/32“ and „tunnel.30 - 10.64.6.2/32“) für Palo Alto die IP-Adresse der privaten CloudSimple-Cloud über das Site-to-Site-VPN erreichen dürfen. Die folgende Konfiguration zeigt dies für Proxy-IDs.
 * Profil. Wählen Sie das Überwachungsprofil aus.
 
-Registerkarte „Proxy IDs“: Klicken Sie auf **IPv4** > **Add (Hinzufügen)** , und konfigurieren Sie Folgendes:
+Registerkarte „Proxy-IDs“: Klicken Sie auf **IPv4** > **Hinzufügen**, und konfigurieren Sie folgende Option:
 
 * Proxy ID. Geben Sie einen beliebigen Namen für den relevanten Datenverkehr ein. Es können mehrere Proxy-IDs in einen IPSec-Tunnel übertragen werden.
 * Lokal. Geben Sie die lokalen Subnetze an, die über das Site-to-Site-VPN mit Subnetzen der privaten Cloud kommunizieren dürfen.

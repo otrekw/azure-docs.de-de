@@ -1,14 +1,14 @@
 ---
 title: Details zur Richtlinienzuweisungsstruktur
 description: Beschreibt die Definition der Richtlinienzuweisung, die von Azure Policy verwendet wird, um Richtliniendefinitionen und -parameter zur Bewertung mit Ressourcen in Beziehung zu setzen.
-ms.date: 01/29/2021
+ms.date: 03/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: 625314a8b83a4d0cc76eae51eae8d357e39d2a6a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 909c1c361e092c512a73854a40e22a67efe5f2f8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100581961"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104604864"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure Policy-Zuweisungsstruktur
 
@@ -89,6 +89,9 @@ Dieses Feld muss der vollständige Pfadname einer Richtlinien- oder einer Initia
 ## <a name="non-compliance-messages"></a>Meldungen zu Complianceverstößen
 
 Legen Sie `nonComplianceMessages` in der Zuweisungsdefinition fest, um eine benutzerdefinierte Meldung festzulegen, in der beschrieben wird, weshalb eine Ressource nicht der Richtlinien- oder Initiativendefinition entspricht. Dieser Knoten ist ein Array von `message`-Einträgen. Diese benutzerdefinierte Meldung wird zusätzlich zur Standardfehlermeldung für Nichtkonformität verwendet und ist optional.
+
+> [!IMPORTANT]
+> Benutzerdefinierte Nachrichten bei Nichtkonformität werden nur für Definitionen oder Initiativen mit Definitionen von [Resource Manager-Modi](./definition-structure.md#resource-manager-modes) unterstützt.
 
 ```json
 "nonComplianceMessages": [

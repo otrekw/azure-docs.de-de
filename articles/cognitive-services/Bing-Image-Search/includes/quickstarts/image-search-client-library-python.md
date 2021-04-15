@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: aahi
-ms.openlocfilehash: d5d47f097fa216d69b8ed59fdb057378724c2228
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 338e4f0c1c47a7786e21ad98bb3e56a1505f9bb2
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94625222"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105104276"
 ---
 Führen Sie mithilfe dieses Schnellstarts Ihre erste Bildersuche mit der Bing-Bildersuche-Clientbibliothek aus, die ein Wrapper für die API ist und die gleichen Funktionen enthält. Diese einfache Python-Anwendung sendet eine Bildersuchabfrage, analysiert die JSON-Antwort und zeigt die URL des ersten zurückgegebenen Bilds an.
 
@@ -21,7 +21,7 @@ Der Quellcode für dieses Beispiel ist auf [GitHub](https://github.com/Azure-Sam
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* [Python 2.7 oder 3.4](https://www.python.org/) und höher
+* [Python 2.7 oder 3.6+](https://www.python.org/).
 
 * Die [Bildersuche-Clientbibliothek in Azure](https://pypi.org/project/azure-cognitiveservices-search-imagesearch/) für Python
     * Installation mithilfe von `pip install azure-cognitiveservices-search-imagesearch`

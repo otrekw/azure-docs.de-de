@@ -8,12 +8,12 @@ ms.date: 01/04/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 517bcdab375db819b0942306df82e7285b9473b1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a253ff5fde0667c80be5a5b3af00e74abebdc609
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103487699"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107030252"
 ---
 # <a name="prepare-your-development-and-test-environment-for-iot-edge"></a>Vorbereiten Ihrer Entwicklungs- und Testumgebung für IoT Edge
 
@@ -123,5 +123,4 @@ Weitere Informationen, Anleitungen und Beispiele finden Sie auf den folgenden Se
 
 * [Continuous Integration und Continuous Deployment für Azure IoT Edge](how-to-continuous-integration-continuous-deployment.md)
 * [Erstellen einer CI/CD-Pipeline für IoT Edge mit Azure DevOps Starter](how-to-devops-starter.md)
-* [Azure IoT Edge-Jenkins-Plug-In](https://plugins.jenkins.io/azure-iot-edge)
 * [IoT Edge-DevOps-GitHub-Repository](https://github.com/toolboc/IoTEdge-DevOps)

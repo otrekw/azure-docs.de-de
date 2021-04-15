@@ -8,13 +8,13 @@ ms.topic: how-to
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 03/04/2021
-ms.openlocfilehash: 210f0c52a2b27492bfa2181473043df3537157d2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/23/2021
+ms.openlocfilehash: 8688458d85084f3d3dab4678fa91ed827a337739
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102183198"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105047350"
 ---
 # <a name="configure-maintenance-window-preview"></a>Konfigurieren von Wartungsfenstern (Vorschau)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -27,7 +27,7 @@ Das als *Systemstandard* vordefinierte Wartungsfenster ist täglich auf die Zeit
 Die Möglichkeit, zu einem anderen Wartungsfenster zu wechseln, ist nicht für jede Dienstebene oder in jeder Region verfügbar. Weitere Informationen zur Verfügbarkeit finden Sie unter [Verfügbarkeit von Wartungsfenstern](maintenance-window.md#availability).
 
 > [!Important]
-> Das Konfigurieren des Wartungsfensters ist ein zeitintensiver, asynchroner Vorgang, ähnlich dem Ändern der Dienstebene der Azure SQL-Ressource. Die Ressource bleibt während des Vorgangs verfügbar, mit Ausnahme eines kurzen Failovers, das am Ende des Vorgangs erfolgt und in der Regel etwa 8 Sekunden dauert (auch bei unterbrochenen zeitintensiven Transaktionen). Um die Auswirkungen des Failovers zu minimieren, sollten Sie den Vorgang außerhalb von Spitzenzeiten durchführen.
+> Das Konfigurieren des Wartungsfensters ist ein zeitintensiver, asynchroner Vorgang, ähnlich dem Ändern der Dienstebene der Azure SQL-Ressource. Die Ressource bleibt während des Vorgangs verfügbar – mit Ausnahme einer kurzen Neukonfiguration, die am Ende des Vorgangs erfolgt und normalerweise etwa 8 Sekunden dauert (auch bei unterbrochenen zeitintensiven Transaktionen). Wenn Sie die Auswirkungen der Neukonfiguration minimieren möchten, sollten Sie den Vorgang außerhalb der Spitzenzeiten durchführen.
 
 ## <a name="configure-maintenance-window-during-database-creation"></a>Konfigurieren des Wartungsfensters beim Erstellen der Datenbank 
 

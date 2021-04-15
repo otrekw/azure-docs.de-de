@@ -10,15 +10,15 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: a563a7776e84289e38743057778e8fe10fd17503
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96904702"
 ---
 # <a name="getting-started-with-the-azure-maps-power-bi-visual"></a>Erste Schritte mit dem Azure Maps-Visual in Power BI
 
-<Token>**GILT FÜR:** ![Grünes Häkchen.](media/power-bi-visual/yes.png) Power BI-Dienst für **_Consumer_** ![Grünes Häkchen.](media/power-bi-visual/yes.png) Power BI-Dienst für Designer und Entwickler ![Grünes Häkchen.](media/power-bi-visual/yes.png) Power BI Desktop ![X, das Nein anzeigt.](media/power-bi-visual/no.png) Erfordert eine Pro- oder Premium-Lizenz </Token>
+<Token>**GILT FÜR:** ![Grünes Häkchen.](media/power-bi-visual/yes.png) Power BI-Dienst für **_Consumer_** ![Grünes Häkchen.](media/power-bi-visual/yes.png) Power BI-Dienst für Designer und Entwickler ![Grünes Häkchen.](media/power-bi-visual/yes.png) Power BI Desktop ![X, das Nein anzeigt.](media/power-bi-visual/no.png) Erfordert eine Pro- oder Premium-Lizenz </Token>
 
 Dieser Artikel zeigt die Verwendung des Microsoft Azure Maps-Visuals für Power BI.
 

@@ -7,13 +7,13 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 52f0151fd4be7505cf7beea0eeb54f8e34404997
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+manager: femila
+ms.openlocfilehash: a1094004bc523a59c3fcf7eb77c6f11bc4554080
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97577561"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106445855"
 ---
 # <a name="built-in-roles-for-windows-virtual-desktop"></a>Integrierte Rollen für Windows Virtual Desktop
 
@@ -146,7 +146,7 @@ In der folgenden Liste wird beschrieben, auf welche Berechtigungen diese Rolle z
 
 ## <a name="session-host-operator"></a>Sitzungshostoperator
 
-Mit der Rolle „Sitzungshostmitwirkender“ können Sie Sitzungshosts anzeigen und entfernen sowie den Ausgleichsmodus ändern. Diese Rolle kann nicht Sitzungshosts mithilfe des Azure-Portals hinzufügen, da sie nicht über die Schreibberechtigung für Hostpoolobjekte verfügt. Wenn das Registrierungstoken gültig ist (generiert und nicht abgelaufen), können Sie diese Rolle außerhalb des Azure-Portals verwenden, um dem Hostpool Sitzungshosts hinzuzufügen, wenn der Administrator über die Rolle „Mitwirkender von virtuellen Computern“ über Computeberechtigungen verfügt.
+Mit der Rolle „Session Host Operator“ (Sitzungshostoperator) können Sie Sitzungshosts anzeigen und entfernen sowie den Ausgleichsmodus ändern. Diese Rolle kann nicht Sitzungshosts mithilfe des Azure-Portals hinzufügen, da sie nicht über die Schreibberechtigung für Hostpoolobjekte verfügt. Wenn das Registrierungstoken gültig ist (generiert und nicht abgelaufen), können Sie diese Rolle außerhalb des Azure-Portals verwenden, um dem Hostpool Sitzungshosts hinzuzufügen, wenn der Administrator über die Rolle „Mitwirkender von virtuellen Computern“ über Computeberechtigungen verfügt.
 
 In der folgenden Liste wird beschrieben, auf welche Berechtigungen diese Rolle zugreifen kann:
 

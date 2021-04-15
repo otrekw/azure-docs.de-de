@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: a5c62c67cd401c043352b06e6e6070a7fc0f1296
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95995426"
 ---
 #### <a name="to-connect-through-the-serial-console"></a>So stellen Sie über die serielle Konsole eine Verbindung her
@@ -18,7 +18,7 @@ ms.locfileid: "95995426"
    
      ![Herstellen einer Verbindung über die serielle Konsole](./media/storsimple-use-putty/HCS_ConnectingDeviceS-include.png)
 4. Starten Sie PuTTY. 
-5. Ändern Sie im rechten Bereich den **Verbindungstyp** in **Seriell**.
+5. Ändern Sie im rechten Bereich **Connection type** in **Serial**.
 6. Geben Sie im rechten Bereich den entsprechenden COM-Anschluss ein. Stellen Sie sicher, dass die Parameter für die serielle Konfiguration wie folgt festgelegt sind:
    
    * Geschwindigkeit: 115.200
@@ -35,5 +35,5 @@ ms.locfileid: "95995426"
      > Wenn die Standardeinstellungen für die Flusssteuerung nicht funktionieren, versuchen Sie, die Flusssteuerung auf "XON/XOFF" festzulegen.
      > 
      > 
-7. Klicken Sie auf **Öffnen** , um eine serielle Sitzung zu starten.
+7. Klicken Sie auf **Open**, um eine serielle Sitzung zu starten.
 

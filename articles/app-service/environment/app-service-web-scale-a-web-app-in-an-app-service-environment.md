@@ -8,10 +8,10 @@ ms.date: 10/17/2016
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 0e665ec27da0a898e754817f946b965ac7360fda
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86220557"
 ---
 # <a name="scaling-apps-in-an-app-service-environment-v1"></a>Skalieren von Apps in einer ASE v1
@@ -39,11 +39,11 @@ Sie können mehrere App Service-Pläne mit Computeressourcen aus verschiedenen W
 ### <a name="scaling-the-number-of-instances"></a>Skalieren der Anzahl von Instanzen
 Wenn Sie Ihre Web-App in einer App Service-Umgebung erstellen, beginnt sie mit einer Instanz.  Sie können dann auf zusätzliche Instanzen aufskalieren, um zusätzliche Computeressourcen für Ihre App bereitzustellen.   
 
-Wenn Ihre App Service-Umgebung über ausreichend Kapazität verfügt, ist dies ganz einfach.  Wechseln Sie zum App Service-Plan, der die hochzuskalierenden Websites umfasst, und wählen Sie die Option zum Skalieren.  Daraufhin wird die Benutzeroberfläche geöffnet, auf der Sie manuell die Skalierung für Ihren ASP festlegen oder Regeln für das automatische Skalieren Ihres ASP konfigurieren können.  Zum manuellen Skalieren der App legen Sie einfach ***Skalieren nach*** auf ***Eine Anzahl von Instanzen, die ich manuell festlege*** fest.  Von hier aus können Sie entweder den Schieberegler auf die gewünschte Menge einstellen oder diese in das Feld neben dem Schieberegler eingeben.  
+Wenn Ihre App Service-Umgebung über ausreichend Kapazität verfügt, ist dies ganz einfach.  Wechseln Sie zum App Service-Plan, der die hochzuskalierenden Websites umfasst, und wählen Sie die Option zum Skalieren.  Daraufhin wird die Benutzeroberfläche geöffnet, auf der Sie manuell die Skalierung für Ihren ASP festlegen oder Regeln für das automatische Skalieren Ihres ASP konfigurieren können.  Zum manuellen Skalieren der App legen Sie einfach ***Skalieren nach** _ auf _*_Eine Anzahl von Instanzen, die ich manuell festlege_** fest.  Von hier aus können Sie entweder den Schieberegler auf die gewünschte Menge einstellen oder diese in das Feld neben dem Schieberegler eingeben.  
 
 ![Screenshot, der zeigt, wo Sie die Skalierung für Ihren ASP festlegen oder Regeln für das automatische Skalieren Ihres ASP konfigurieren können.][2] 
 
-Die Regeln für das automatische Skalieren eines ASPs in einer App Service-Umgebung funktionieren wie gewohnt.  Sie können ***CPU-Prozentsatz*** unter ***Skalieren nach*** auswählen und Regeln für das automatische Skalieren des ASPs basierend auf einem CPU-Prozentsatz erstellen, oder Sie können komplexere Regeln erstellen, die ***Zeitpläne und Leistungsregeln*** verwenden.  Ausführlichere Informationen zur Konfiguration der automatischen Skalierung finden Sie in der Anleitung unter [Skalieren einer App in Azure App Service][AppScale]. 
+Die Regeln für das automatische Skalieren eines ASPs in einer App Service-Umgebung funktionieren wie gewohnt.  Sie können ***CPU-Prozentsatz** _ unter _*_Skalieren nach_*_ auswählen und Regeln für das automatische Skalieren des ASP basierend auf einem CPU-Prozentsatz erstellen, oder Sie können komplexere Regeln erstellen, die _*_Zeitpläne und Leistungsregeln_** verwenden.  Ausführlichere Informationen zur Konfiguration der automatischen Skalierung finden Sie in der Anleitung unter [Skalieren einer App in Azure App Service][AppScale]. 
 
 ### <a name="worker-pool-selection"></a>Auswahl der Workerpools
 Wie bereits erwähnt erfolgt die Auswahl des Workerpools über die Benutzeroberfläche des App Service-Plans.  Öffnen Sie das Blatt für den App Service-Plan, den Sie skalieren und für den Sie einen Workerpool auswählen möchten.  Es werden alle Workerpools angezeigt, die Sie in der App Service-Umgebung konfiguriert haben.  Wenn Sie nur über einen Workerpool verfügen, wird nur dieser Pool aufgeführt.  Um den Workerpool für Ihren ASP zu ändern, wählen Sie einfach den Workerpool aus, in den Sie Ihren App Service-Plan verschieben möchten.  

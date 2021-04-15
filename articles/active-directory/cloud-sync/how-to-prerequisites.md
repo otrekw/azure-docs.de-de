@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/02/2021
+ms.date: 03/17/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac247b9dc70c565621d3544d14e2f76ff12fda47
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0277d4ce263610576178e3844a0665ab6506fbfa
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101689316"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104579160"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-sync"></a>Voraussetzungen für die Azure AD Connect-Cloudsynchronisierung
 Dieser Artikel enthält Anleitungen zur Auswahl und Verwendung der Azure Active Directory Connect-Cloudsynchronisierung (Azure AD) als Identitätslösung.
@@ -33,10 +33,10 @@ Für die Verwendung der Azure AD Connect-Cloudsynchronisierung benötigen Sie Fo
 Ein gruppenverwaltetes Dienstkonto ist ein verwaltetes Domänenkonto, das eine automatische Kennwortverwaltung, eine vereinfachte Verwaltung von Dienstprinzipalnamen (Service Principal Name, SPN) und die Möglichkeit bietet, die Verwaltung an andere Administratoren zu delegieren, wobei diese Funktionalität auch auf mehrere Server erweitert wird.  Die Azure AD Connect-Cloudsynchronisierung unterstützt und verwendet ein gMSA zum Ausführen des Agents.  Sie werden während des Setups zur Eingabe administrativer Anmeldeinformationen aufgefordert, um das Konto zu erstellen.  Das Konto wird als (domain\provAgentgMSA$) angezeigt.  Weitere Informationen zu einem gruppenverwalteten Dienstkonto (Group Managed Service Account, GMSA) finden Sie unter [Gruppenverwaltete Dienstkonten](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview). 
 
 ### <a name="prerequisites-for-gmsa"></a>Voraussetzungen für das gMSA:
-1.  Das Active Directory-Schema in der Gesamtstruktur der gMSA-Domäne muss auf Windows Server 2012 aktualisiert werden.
+1.  Das Active Directory-Schema in der Gesamtstruktur der gMSA-Domäne muss auf Windows Server 2016 aktualisiert werden.
 2.  [PowerShell-RSAT-Module](/windows-server/remote/remote-server-administration-tools) auf einem Domänencontroller
-3.  Auf mindestens einem Domänencontroller in der Domäne muss Windows Server 201 ausgeführt werden.
-4.  Ein in eine Domäne eingebundener Server, auf dem der Agent installiert ist, muss Windows Server 2012 oder höher aufweisen.
+3.  Auf mindestens einem Domänencontroller in der Domäne muss Windows Server 2016 ausgeführt werden.
+4.  Ein in eine Domäne eingebundener Server, auf dem der Agent installiert ist, muss Windows Server 2016 oder höher aufweisen.
 
 ### <a name="custom-gmsa-account"></a>Benutzerdefiniertes gMSA-Konto
 Wenn Sie ein benutzerdefiniertes gMSA-Konto erstellen, müssen Sie sicherstellen, dass das Konto über die folgenden Berechtigungen verfügt.

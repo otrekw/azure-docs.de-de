@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie die Überwachung eines Azur
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.custom: devx-track-terraform, devx-track-azurecli
-ms.openlocfilehash: e84e1c4ad3aa3950a433218255ccac3d91435231
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: fba12fb8dd5c6c91883a88d4acfdca6c6d332c24
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101717671"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105109623"
 ---
 # <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>Aktivieren der Überwachung von bereits bereitgestellten Azure Kubernetes Service-Clustern (AKS)
 
@@ -21,6 +21,8 @@ Sie können die Überwachung eines bereits bereitgestellten AKS-Clusters mit ein
 * Terraform
 * [Von Azure Monitor aus](#enable-from-azure-monitor-in-the-portal) oder [direkt von dem AKS-Cluster aus](#enable-directly-from-aks-cluster-in-the-portal) im Azure-Portal
 * Mit der [bereitgestellten Azure Resource Manager-Vorlage](#enable-using-an-azure-resource-manager-template) mithilfe des Azure PowerShell-Cmdlets `New-AzResourceGroupDeployment` oder mit der Azure CLI.
+
+Wenn Sie einen vorhandenen AKS-Cluster mit einem Azure Log Analytics-Arbeitsbereich in einem anderen Abonnement verbinden, muss der Microsoft.ContainerService-Ressourcenanbieter in dem Abonnement registriert werden, in dem der Log Analytics Arbeitsbereich erstellt wurde. Weitere Informationen finden Sie unter [Registrieren des Ressourcenanbieters](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 

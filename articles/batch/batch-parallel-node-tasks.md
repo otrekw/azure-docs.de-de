@@ -2,20 +2,20 @@
 title: Gleichzeitige Ausführung von Tasks zur optimalen Nutzung von Batch-Computeknoten
 description: Steigern der Effizienz und Reduzieren von Kosten durch Verringerung der Anzahl von Computeknoten und parallele Ausführung von Aufgaben auf jedem Knoten in einem Azure Batch-Pool
 ms.topic: how-to
-ms.date: 10/08/2020
+ms.date: 03/25/2021
 ms.custom: H1Hack27Feb2017, devx-track-csharp
-ms.openlocfilehash: 8bc9f03f05d52df6e400be5c57033ab2a38fa8eb
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2a8f2d6a040bee0e32359f4860d7b346ac08c48e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92102964"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105607982"
 ---
 # <a name="run-tasks-concurrently-to-maximize-usage-of-batch-compute-nodes"></a>Gleichzeitige Ausführung von Tasks zur optimalen Nutzung von Batch-Computeknoten
 
 Sie können die Ressourcenauslastung auf einer kleineren Zahl von Computeknoten in Ihrem Pool maximieren, indem Sie auf jedem Knoten mehrere Aufgaben gleichzeitig ausführen.
 
-In einigen Fällen ist es zwar am besten, wenn alle Ressourcen eines Knotens dediziert für nur eine Aufgabe genutzt werden, aber für bestimmte Workloads kann ggf. eine Verringerung der Auftragsdauer und der Kosten erzielt werden, wenn diese Ressourcen für mehrere Aufgaben gemeinsam verwendet werden:
+In einigen Fällen ist es zwar am besten, wenn alle Ressourcen eines Knotens dediziert für nur eine Aufgabe genutzt werden, aber für bestimmte Workloads kann ggf. eine Verringerung der Auftragsdauer und der Kosten erzielt werden, wenn diese Ressourcen für mehrere Aufgaben gemeinsam verwendet werden. Betrachten Sie die folgenden Szenarien:
 
 - **Minimieren Sie den Datenübertragungsaufwand** für Aufgaben, bei denen Daten gemeinsam genutzt werden können. Sie können die Gebühren für die Datenübertragung deutlich reduzieren, indem Sie freigegebene Daten auf eine kleinere Zahl von Knoten kopieren und anschließend Aufgaben parallel auf jedem Knoten ausführen. Dies trifft besonders dann zu, wenn die zu jedem Knoten zu kopierenden Daten zwischen verschiedenen geografischen Regionen übertragen werden müssen.
 - **Maximieren Sie die Speicherauslastung** für Aufgaben, die zwar viel Speicherplatz beanspruchen, aber nur für kurze Zeiträume und zu unterschiedlichen Zeiten während der Ausführung. Sie können weniger, aber dafür größere Computeknoten mit mehr Arbeitsspeicher einsetzen, um solche Spitzen effizient zu bewältigen. Auf diesen Knoten werden dann mehrere Aufgaben parallel ausgeführt, doch jede Aufgabe kann den reichlich vorhandenen Arbeitsspeicher zu verschiedenen Zeiten nutzen.
@@ -24,13 +24,13 @@ In einigen Fällen ist es zwar am besten, wenn alle Ressourcen eines Knotens ded
 
 ## <a name="example-scenario"></a>Beispielszenario
 
-Stellen Sie sich beispielsweise eine Aufgabenanwendung mit CPU- und Arbeitsspeicheranforderungen vor, für die Knoten vom Typ [Standard\_D1](../cloud-services/cloud-services-sizes-specs.md) ausreichen. Um den Auftrag in der geforderten Zeit abzuschließen, sind aber 1.000 dieser Knoten nötig.
+Stellen Sie sich beispielsweise eine Aufgabenanwendung mit CPU- und Arbeitsspeicheranforderungen vor, für die Knoten vom Typ [Standard\_D1](../cloud-services/cloud-services-sizes-specs.md#d-series) ausreichen. Um den Auftrag in der geforderten Zeit abzuschließen, sind aber 1.000 dieser Knoten nötig.
 
-Anstatt Standard\_D1-Knoten mit einem CPU-Kern zu verwenden, können Sie [Standard\_D14](../cloud-services/cloud-services-sizes-specs.md)-Knoten mit je 16 Kernen verwenden und so die parallele Ausführung von Aufgaben ermöglichen. Dies bedeutet, dass *etwa ein Sechzehntel der Knoten* ausreicht. Es wären nicht 1.000 Knoten erforderlich, sondern nur 63. Falls große Anwendungsdateien oder umfangreiche Verweisdaten für jeden Knoten erforderlich sind, ergibt sich für die Auftragsdauer und Effizienz eine weitere Verbesserung, da die Daten nur auf 63 Knoten kopiert werden.
+Anstatt Standard\_D1-Knoten mit einem CPU-Kern zu verwenden, können Sie [Standard\_D14](../cloud-services/cloud-services-sizes-specs.md#d-series)-Knoten mit je 16 Kernen verwenden und so die parallele Ausführung von Aufgaben ermöglichen. Dies bedeutet, dass etwa ein Sechzehntel der Knoten ausreicht. Es wären nicht 1.000 Knoten erforderlich, sondern nur 63. Falls große Anwendungsdateien oder umfangreiche Verweisdaten für jeden Knoten erforderlich sind, ergibt sich für die Auftragsdauer und Effizienz eine Verbesserung, da die Daten nur auf 63 Knoten kopiert werden.
 
 ## <a name="enable-parallel-task-execution"></a>Aktivieren der parallelen Aufgabenausführung
 
-Sie konfigurieren die Computeknoten für die parallele Aufgabenausführung auf der Pool-Ebene. Bei der Batch-.NET-Bibliothek legen Sie die Eigenschaft [CloudPool.TaskSlotsPerNode](/dotnet/api/microsoft.azure.batch.cloudpool) fest, wenn Sie einen Pool erstellen. Bei Verwendung der Batch-REST-API legen Sie das [taskSlotsPerNode](/rest/api/batchservice/pool/add)-Element im Anforderungstext fest, wenn Sie einen Pool erstellen.
+Sie konfigurieren die Computeknoten für die parallele Aufgabenausführung auf der Pool-Ebene. Bei der Batch-.NET-Bibliothek legen Sie die Eigenschaft [CloudPool.TaskSlotsPerNode](/dotnet/api/microsoft.azure.batch.cloudpool.taskslotspernode) fest, wenn Sie einen Pool erstellen. Bei Verwendung der Batch-REST-API legen Sie das [taskSlotsPerNode](/rest/api/batchservice/pool/add)-Element im Anforderungstext fest, wenn Sie einen Pool erstellen.
 
 > [!NOTE]
 > Sie können das Element `taskSlotsPerNode` und die [TaskSlotsPerNode](/dotnet/api/microsoft.azure.batch.cloudpool)-Eigenschaft nur zum Zeitpunkt der Poolerstellung festlegen. Nach der Erstellung eines Pools können diese Elemente nicht mehr geändert werden.
@@ -44,9 +44,9 @@ In Azure Batch können Sie die Anzahl von Aufgabenslots pro Knoten auf die bis z
 
 Beim Aktivieren von gleichzeitigen Aufgaben ist es wichtig, dass Sie angeben, wie die Aufgaben auf die Knoten des Pools verteilt werden sollen.
 
-Mithilfe der [CloudPool.TaskSchedulingPolicy](/dotnet/api/microsoft.azure.batch.cloudpool)-Eigenschaft können Sie angeben, dass Aufgaben gleichmäßig über alle Knoten im Pool zugewiesen werden sollen („Verteilen“). Oder Sie können angeben, dass jedem Knoten so viele Aufgaben wie möglich zugewiesen werden sollen, bevor sie einem anderen Knoten im Pool zugewiesen werden („Packen“).
+Mithilfe der [CloudPool.TaskSchedulingPolicy](/dotnet/api/microsoft.azure.batch.cloudpool.taskschedulingpolicy)-Eigenschaft können Sie angeben, dass Aufgaben gleichmäßig über alle Knoten im Pool zugewiesen werden sollen („Verteilen“). Oder Sie können angeben, dass jedem Knoten so viele Aufgaben wie möglich zugewiesen werden sollen, bevor sie einem anderen Knoten im Pool zugewiesen werden („Packen“).
 
-Stellen Sie sich beispielsweise vor, dass der Pool mit [Standard\_D14](../cloud-services/cloud-services-sizes-specs.md)-Knoten (aus dem obigen Beispiel) für [CloudPool.TaskSlotsPerNode](/dotnet/api/microsoft.azure.batch.cloudpool) den Wert „16“ aufweist. Bei Konfiguration von [CloudPool.TaskSchedulingPolicy](/dotnet/api/microsoft.azure.batch.cloudpool) mit einem [ComputeNodeFillType](/dotnet/api/microsoft.azure.batch.common.computenodefilltype) der Art *Pack* wird die Auslastung aller 16 Kerne für die einzelnen Knoten maximiert, und es wird zugelassen, dass von einem [Pool mit automatischer Skalierung](batch-automatic-scaling.md) nicht verwendete Knoten (Knoten ohne zugewiesene Aufgaben) aus dem Pool entfernt werden. Dies minimiert die Ressourcenverwendung und spart Geld.
+Stellen Sie sich beispielsweise vor, dass der Pool mit [Standard\_D14](../cloud-services/cloud-services-sizes-specs.md#d-series)-Knoten (aus dem obigen Beispiel) für [CloudPool.TaskSlotsPerNode](/dotnet/api/microsoft.azure.batch.cloudpool.taskslotspernode) den Wert „16“ aufweist. Bei Konfiguration von [CloudPool.TaskSchedulingPolicy](/dotnet/api/microsoft.azure.batch.cloudpool.taskschedulingpolicy) mit einem [ComputeNodeFillType](/dotnet/api/microsoft.azure.batch.common.computenodefilltype) der Art *Pack* wird die Auslastung aller 16 Kerne für die einzelnen Knoten maximiert, und es wird zugelassen, dass von einem [Pool mit automatischer Skalierung](batch-automatic-scaling.md) nicht verwendete Knoten (Knoten ohne zugewiesene Aufgaben) aus dem Pool entfernt werden. Dies minimiert die Ressourcenverwendung und spart Geld.
 
 ## <a name="define-variable-slots-per-task"></a>Definieren von variablen Slots pro Aufgabe
 
@@ -54,13 +54,12 @@ Eine Aufgabe kann mit der [CloudTask.RequiredSlots](/dotnet/api/microsoft.azure.
 
 Beispielsweise können Sie für einen Pool mit der Eigenschaft `taskSlotsPerNode = 8` CPU-intensive Aufgaben, die mehrere Kerne benötigen, mit `requiredSlots = 8` übermitteln und für andere Aufgaben die Einstellung `requiredSlots = 1` verwenden. Wenn diese gemischte Workload geplant wird, werden die CPU-intensiven Aufgaben ausschließlich auf den zugehörigen Computeknoten ausgeführt. Andere Aufgaben können gleichzeitig (maximal acht parallel) auf anderen Knoten ausgeführt werden. So können Sie die Workload auf mehrere Computeknoten verteilen und die Effizienz der Ressourcennutzung verbessern.
 
+Stellen Sie sicher, dass Sie für die `requiredSlots`-Eigenschaft einer Aufgabe keinen größeren Wert als für die `taskSlotsPerNode`-Eigenschaft des Pools angeben. Dies würde dazu führen, dass die Aufgabe niemals ausgeführt werden kann. Vom Batch-Dienst wird dieser Konflikt derzeit nicht überprüft, wenn Sie Aufgaben übermitteln. Der Grund ist, dass ein Auftrag bei der Übermittlung ggf. nicht über einen angebundenen Pool verfügt oder dass durch das Deaktivieren und anschließende erneute Aktivieren ggf. eine Änderung in einen anderen Pool erfolgt.
+
 > [!TIP]
 > Bei variablen Aufgabenslots kann es passieren, dass umfangreiche Aufgaben, die mehr Slots erfordern, vorübergehend nicht geplant werden können, weil auf keinem Computeknoten genügend Slots vorhanden sind. Dies gilt auch dann, wenn einige andere Knoten noch über ungenutzte Slots verfügen. Sie können die Auftragspriorität für diese Aufgaben erhöhen, damit diese eine bessere Chance haben, die auf Knoten verfügbaren Slots zu erhalten.
 >
 > Der Batch-Dienst gibt [TaskScheduleFailEvent](batch-task-schedule-fail-event.md) aus, wenn die Ausführung einer Aufgabe nicht geplant werden kann. Die Planung wird so lange wiederholt, bis die erforderlichen Slots zur Verfügung stehen. Sie können auf dieses Ereignis lauschen, um potenzielle Probleme bei der Aufgabenplanung zu erkennen und entsprechend zu beheben.
-
-> [!NOTE]
-> Geben Sie für die `requiredSlots`-Eigenschaft einer Aufgabe keinen größeren Wert als für die `taskSlotsPerNode`-Eigenschaft des Pools an. Dies würde dazu führen, dass die Aufgabe niemals ausgeführt werden kann. Vom Batch-Dienst wird dieser Konflikt derzeit nicht überprüft, wenn Sie Aufgaben übermitteln. Der Grund ist, dass ein Auftrag bei der Übermittlung ggf. nicht über einen angebundenen Pool verfügt oder dass durch das Deaktivieren und anschließende erneute Aktivieren ggf. eine Änderung in einen anderen Pool erfolgt.
 
 ## <a name="batch-net-example"></a>Beispiel für Batch .NET
 
@@ -70,7 +69,7 @@ Die folgenden Codeausschnitte der [Batch .NET](/dotnet/api/microsoft.azure.batch
 
 Dieser Codeausschnitt zeigt eine Anforderung zum Erstellen eines Pools aus vier Knoten mit vier zulässigen Aufgabenslots pro Knoten. Er gibt eine Richtlinie für die Aufgabenplanung vor, die besagt, dass jeder Knoten mit Aufgaben gefüllt werden soll, bevor diese den anderen Knoten im Pool zugewiesen werden.
 
-Weitere Informationen zum Hinzufügen von Pools mit der Batch .NET-API finden Sie unter [BatchClient.PoolOperations.CreatePool](/dotnet/api/microsoft.azure.batch.pooloperations).
+Weitere Informationen zum Hinzufügen von Pools mit der Batch .NET-API finden Sie unter [BatchClient.PoolOperations.CreatePool](/dotnet/api/microsoft.azure.batch.pooloperations.createpool).
 
 ```csharp
 CloudPool pool =
@@ -169,7 +168,7 @@ Dieser Codeausschnitt zeigt eine Anforderung zum Hinzufügen einer Aufgabe mit e
 
 ## <a name="code-sample-on-github"></a>Codebeispiel auf GitHub
 
-Das [ParallelTasks](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/ParallelTasks)-Projekt auf GitHub veranschaulicht die Verwendung der [CloudPool.TaskSlotsPerNode](/dotnet/api/microsoft.azure.batch.cloudpool)-Eigenschaft.
+Das [ParallelTasks](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/ParallelTasks)-Projekt auf GitHub veranschaulicht die Verwendung der [CloudPool.TaskSlotsPerNode](/dotnet/api/microsoft.azure.batch.cloudpool.taskslotspernode)-Eigenschaft.
 
 Diese C#-Konsolenanwendung verwendet die [Batch-Bibliothek für .NET](/dotnet/api/microsoft.azure.batch) zum Erstellen eines Pools mit einem oder mehreren Serverknoten. Sie führt eine konfigurierbare Anzahl von Aufgaben auf diesen Knoten aus, um eine variable Auslastung zu simulieren. Die Ausgabe der Anwendung enthält die Informationen dazu, welcher Knoten welche Aufgabe ausgeführt hat. Die Anwendung liefert auch eine Zusammenfassung der Aufgabenparameter und der -dauer.
 

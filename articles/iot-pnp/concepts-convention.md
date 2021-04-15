@@ -7,12 +7,12 @@ ms.date: 07/10/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 86c6ea9dded423e7bd513faf73adfd293f2bd38f
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: a8dfb3cacf798559273361ec75cab4570a8a5228
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302611"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104582679"
 ---
 # <a name="iot-plug-and-play-conventions"></a>IoT Plug & Play-Konventionen
 
@@ -25,7 +25,7 @@ Die Telemetriedaten, Eigenschaften und Befehle, die ein Gerät in IoT Plug & Pla
 - **Ohne Komponenten**: Ein Modell ohne Komponenten. Bei diesem Modell werden Telemetriedaten, Eigenschaften und Befehle im Inhaltsabschnitt der Hauptschnittstelle als Eigenschaften der obersten Ebene deklariert. Im Azure IoT-Explorer-Tool wird dieses Modell als einzelne _Standardkomponente_ angezeigt.
 - **Mit mehreren Komponenten**: Ein Modell, das aus mindestens zwei Schnittstellen besteht. Eine Hauptschnittstelle, die als _Standardkomponente_ mit Telemetriedaten, Eigenschaften und Befehlen angezeigt wird. Und aus mindestens einer Schnittstelle, die als Komponente mit zusätzlichen Telemetriedaten, Eigenschaften und Befehlen deklariert wird.
 
-Weitere Informationen finden Sie unter [IoT Plug & Play-Komponenten in Modellen](concepts-components.md).
+Weitere Informationen finden Sie unter [Leitfaden: Modellierung mit IoT Plug & Play](concepts-modeling-guide.md).
 
 ## <a name="identify-the-model"></a>Identifizieren des Modells
 
@@ -353,4 +353,4 @@ Nachdem Sie sich mit IoT Plug & Play-Konventionen vertraut gemacht haben, finden
 - [Digital Twins Definition Language (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl)
 - [C-Geräte-SDK](/azure/iot-hub/iot-c-sdk-ref/)
 - [IoT-REST-API](/rest/api/iothub/device)
-- [Modellkomponenten](./concepts-components.md)
+- [Leitfaden: Modellierung mit IoT Plug & Play](concepts-modeling-guide.md)

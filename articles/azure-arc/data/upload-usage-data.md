@@ -10,12 +10,12 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 zone_pivot_groups: client-operating-system-macos-and-linux-windows-powershell
-ms.openlocfilehash: 578f0d1ca742fe4445b8aeed6876d1a73fd3f79e
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 0c72eda59f375c70274b17796ca53614ef95505b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92373900"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "104669507"
 ---
 # <a name="upload-usage-data-to-azure-monitor"></a>Hochladen von Nutzungsdaten in Azure Monitor
 
@@ -64,7 +64,7 @@ Nutzungsdaten wie Bestand und Ressourcenverbrauch können wie folgt in zwei Schr
 
 Wenn Sie Metriken und Protokolle nach einem Zeitplan hochladen möchten, können Sie ein Skript erstellen und es mit einem Timer alle paar Minuten ausführen. Im Folgenden finden Sie ein Beispiel für die Automatisierung der Uploads mithilfe eines Linux-Shellskripts.
 
-Fügen Sie in Ihrem bevorzugten Text-Editor oder Code-Editor das folgende Skript in eine Datei ein, und speichern Sie die Datei als ausführbare Skriptdatei, z. B. als SH-Datei (Linux/Mac) oder als CMD-, BAT- oder PS1-Datei.
+Fügen Sie in dem von Ihnen bevorzugten Text- oder Code-Editor das folgende Skript in eine Datei ein, und speichern Sie die Datei als ausführbare Skriptdatei, z. B. `.sh` (Linux/Mac) oder `.cmd`, `.bat` oder `.ps1`.
 
 ```console
 azdata arc dc export --type metrics --path metrics.json --force

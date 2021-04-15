@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: how-to
-ms.date: 03/09/2021
+ms.date: 03/18/2021
 ms.author: victorh
-ms.openlocfilehash: fba95214a6bbb0482166eab8f77f30911986fbb7
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 38d83186c06eac0fc3a49834172c2a4b8542caff
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102525453"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104590465"
 ---
 # <a name="deploy-and-configure-enterprise-ca-certificates-for-azure-firewall-preview"></a>Bereitstellen und Konfigurieren von Zertifikaten der Unternehmenszertifizierungsstelle für die Vorschauversion von Azure Firewall Premium
 
@@ -42,7 +42,7 @@ Wenn Sie ein Zertifikat zum Einsatz bei der Vorschauversion von Azure Firewall P
 1. Greifen Sie auf die Webregistrierungswebsite in der Stammzertifizierungsstelle zu, normalerweise `https://<servername>/certsrv`, und wählen Sie **Zertifikat anfordern** aus.
 1. Wählen Sie **Erweiterte Zertifikatanforderung** aus.
 1. Wählen Sie **Eine Anforderung an diese Zertifizierungsstelle erstellen und einreichen** aus.
-1. Füllen Sie das Formular mithilfe der Vorlage „Untergeordnete Zertifizierungsstelle“ aus, wie hier gezeigt wird:
+1. Füllen Sie das Formular mithilfe der Vorlage „Untergeordnete Zertifizierungsstelle“ aus.
 1. Reichen Sie die Anforderung ein, und installieren Sie das Zertifikat.
 1. Wenn diese Anforderung von einem Windows-Server mithilfe von Internet Explorer ausgeführt wird, öffnen Sie **Internetoptionen**.
 1. Navigieren Sie zur Registerkarte **Inhalt**, und wählen Sie **Zertifikate** aus.

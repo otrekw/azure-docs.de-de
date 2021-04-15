@@ -9,18 +9,18 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 292c82624103fc2eae46d8aecb5e85b2181e7938
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b3192c3ee8458623f3724da5f875cc09032a42bf
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103463050"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219415"
 ---
 # <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>Tutorial: Bereitstellen von Azure Machine Learning als IoT Edge-Modul (Vorschauversion)
 
 [!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
-Verwenden Sie Azure Notebooks, um ein Modul für maschinelles Lernen zu entwickeln und es auf einem Linux-Gerät bereitzustellen, das Azure IoT Edge ausführt.
+Verwenden Sie Azure Notebooks, um ein Modul für maschinelles Lernen zu entwickeln und es auf einem Gerät bereitzustellen, das Azure IoT Edge mit Linux-Containern ausführt.
 Mithilfe von IoT Edge-Modulen können Sie Code bereitstellen, mit dem Ihre Geschäftslogik direkt auf Ihren IoT Edge-Geräten implementiert wird. In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie ein Azure Machine Learning-Modul bereitstellen, das anhand der Temperaturdaten eines simulierten Computers den Ausfall eines Geräts vorhersagt. Weitere Informationen zu Azure Machine Learning in IoT Edge finden Sie in der [Azure Machine Learning-Dokumentation](../machine-learning/how-to-deploy-and-where.md).
 
 >[!NOTE]

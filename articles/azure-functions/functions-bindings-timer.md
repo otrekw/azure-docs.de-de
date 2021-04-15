@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 11/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: c6b3bd61386cbde0e8de63055eee9218e372dfcd
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: f99f9d240a0a9220d3b7f57cddd0a4f8ba6b6101
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100547841"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104595990"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Trigger mit Timer für Azure Functions
 
@@ -342,7 +342,7 @@ Dieser Wert wird als Zeichenfolge ausgedrückt, und das `TimeSpan`-Format ist `h
 |--------------|----------------|
 | "01:00:00"   | stündlich     |
 | "00:01:00"   | minütlich   |
-| "24:00:00"   | alle 24 Tage  |
+| "25:00:00"   | Alle 25 Tage  |
 | „1.00:00:00“ | täglich      |
 
 ## <a name="scale-out"></a>Horizontales Skalieren
@@ -365,6 +365,16 @@ Der Trigger mit Timer verwendet eine Speichersperre, um sicherzustellen, dass nu
 ## <a name="retry-behavior"></a>Wiederholungsverhalten
 
 Im Gegensatz zum Warteschlangentrigger führt der Trigger mit Timer nach dem Fehlschlagen einer Funktion keine Wiederholung aus. Wenn eine Funktion fehlerhaft ist, wird sie erst beim nächsten Termin im Zeitplan erneut aufgerufen.
+
+## <a name="manually-invoke-a-timer-trigger"></a>Manuelles Aufrufen eines Triggers mit Timer
+
+Der Trigger mit Timer für Azure Functions bietet einen HTTP-Webhook, der aufgerufen werden kann, um die Funktion manuell auszulösen. Dies kann in den folgenden Szenarios besonders hilfreich sein.
+
+* Testen der Integration
+* Slotaustausch im Rahmen einer Feuerprobe oder Aufwärmaktivität
+* Anfängliche Bereitstellung einer Funktion zum sofortigen Auffüllen eines Caches oder einer Nachschlagetabelle in einer Datenbank
+
+Details zum manuellen Aufrufen einer mit einem Timer ausgelösten Funktion finden Sie unter [Manuelles Ausführen einer Funktion ohne HTTP-Trigger](./functions-manually-run-non-http.md).
 
 ## <a name="troubleshooting"></a>Problembehandlung
 

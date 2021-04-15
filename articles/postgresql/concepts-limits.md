@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/28/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 6f48245983898c542197deb7e0b3cd53bd39be33
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c8fa6e108550b1417f736d1caff5cafd3e16f63a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91707522"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104595004"
 ---
 # <a name="limits-in-azure-database-for-postgresql---single-server"></a>Beschränkungen in Azure Database for PostgreSQL – Einzelserver
 In den folgenden Abschnitten werden die Kapazitäts- und funktionalen Beschränkungen im Datenbankdienst beschrieben. Informationen zu den Tarifen für Ressourcen (Compute, Arbeitsspeicher, Speicher) finden Sie im Artikel [Tarife](concepts-pricing-tiers.md).
@@ -71,6 +71,9 @@ Eine PostgreSQL-Verbindung, selbst im Leerlauf, kann ungefähr 10 MB Arbeitsspe
 Falls ein Fehler zu **GSS** angezeigt wird, verwenden Sie wahrscheinlich eine neuere Client-/Treiberversion, die von Azure Postgres Single Server noch nicht vollständig unterstützt wird. Dieser Fehler wirkt sich auf die [JDBC-Treiberversionen 42.2.15 und 42.2.16](https://github.com/pgjdbc/pgjdbc/issues/1868) aus.
    - Es ist geplant, das Update bis Ende November fertigzustellen. In der Zwischenzeit ist es ratsam, eine funktionierende Treiberversion zu verwenden.
    - Alternativ kann die GSS-Anforderung deaktiviert werden.  Verwenden Sie einen Verbindungsparameter wie `gssEncMode=disable`.
+
+### <a name="storage-size-reduction"></a>Verringerung der Speichergröße
+Die Speichergröße kann nicht verringert werden. Sie müssen einen neuen Server mit der gewünschten Speichergröße erstellen, einen manuellen [Sicherungs- und Wiederherstellungsprozess](./howto-migrate-using-dump-and-restore.md) durchführen und Ihre Datenbanken zum neuen Server migrieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Informationen zu den [verfügbaren Funktionen in jedem Tarif](concepts-pricing-tiers.md)

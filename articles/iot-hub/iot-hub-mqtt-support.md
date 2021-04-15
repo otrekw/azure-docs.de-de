@@ -15,12 +15,12 @@ ms.custom:
 - contperf-fy21q1
 - fasttrack-edit
 - iot
-ms.openlocfilehash: cbc4bbf73c65d4d7eddad556f3776bc0bbd653ba
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 9678648b6417138e216ba2dce3a3605bb4c1bce4
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102431260"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106169231"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Kommunikation mit Ihrem IoT Hub mithilfe des Protokolls MQTT
 
@@ -151,6 +151,8 @@ Wenn ein Gerät die SDKs von Geräten nicht verwenden kann, lässt es sich denno
 
     `contoso.azure-devices.net/MyDevice01/?api-version=2018-06-30`
 
+    Es wird dringend empfohlen, die API-Version in das Feld einzubeziehen. Andernfalls kann dies zu unerwartetem Verhalten führen. 
+    
 * Verwenden Sie im Feld **Kennwort** ein SAS-Token. Das Format des SAS-Tokens ist das gleiche wie das für die Protokolle HTTPS und AMQP:
 
   `SharedAccessSignature sig={signature-string}&se={expiry}&sr={URL-encoded-resourceURI}`
@@ -355,7 +357,7 @@ Der Text der Antwort enthält den Abschnitt mit den Eigenschaften des Gerätezwi
 
 Die möglichen Statuscodes lauten:
 
-|Status | Beschreibung |
+|Status | BESCHREIBUNG |
 | ----- | ----------- |
 | 200 | Erfolg |
 | 429 | Zu viele Anforderungen (gedrosselt), siehe [IoT Hub-Drosselung](iot-hub-devguide-quotas-throttling.md) |
@@ -386,7 +388,7 @@ Der Nachrichtentext der Anforderung enthält ein JSON-Dokument mit neuen Werten 
 
 Die möglichen Statuscodes lauten:
 
-|Status | Beschreibung |
+|Status | BESCHREIBUNG |
 | ----- | ----------- |
 | 204 | Erfolg (kein Inhalt) |
 | 400 | Ungültige Anforderung; falsch formatierter JSON-Code |
@@ -448,7 +450,7 @@ Weitere Informationen zum MQTT-Protokoll finden Sie in der [MQTT-Dokumentation](
 
 Weitere Informationen zum Planen Ihrer IoT Hub-Bereitstellung finden Sie unter:
 
-* [Katalog mit Azure Certified for IoT-Geräten](https://catalog.azureiotsolutions.com/)
+* [Katalog mit Azure Certified for IoT-Geräten](https://devicecatalog.azure.com/)
 * [Unterstützen zusätzlicher Protokolle](iot-hub-protocol-gateway.md)
 * [Vergleich mit Event Hubs](iot-hub-compare-event-hubs.md)
 * [Skalierung, Hochverfügbarkeit und Notfallwiederherstellung](iot-hub-scaling.md)

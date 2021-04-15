@@ -8,19 +8,16 @@ ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-web-ios-android
-ms.openlocfilehash: 65a968747e7ed12e6ee03bd5fea4b7b4af7ee10e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a24b62875fedcb976b06517cf61ddd69ab9abcf1
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104729514"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105726735"
 ---
 # <a name="quickstart-call-to-phone"></a>Schnellstart: Auf Telefon anrufen
 
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
-
-
-Steigen Sie in Azure Communication Services ein, indem Sie die Communication Services-Clientbibliothek für Telefonie nutzen, um Ihrer App PSTN-Anrufe hinzuzufügen.
+Steigen Sie in Azure Communication Services ein, indem Sie das Communication Services Calling SDK nutzen, um Ihrer App PSTN-Anruffunktionen hinzuzufügen.
 
 ::: zone pivot="platform-web"
 [!INCLUDE [Calling with JavaScript](./includes/pstn-call-js.md)]
@@ -42,5 +39,5 @@ Wenn Sie ein Communication Services-Abonnement bereinigen und entfernen möchten
 
 Weitere Informationen finden Sie in den folgenden Artikeln:
 
-- Informieren Sie sich über die [Funktionen der Clientbibliothek für Anrufe](./calling-client-samples.md).
+- Informieren Sie sich über die [Funktionen des Calling SDK](./calling-client-samples.md).
 - Informieren Sie sich über die [Funktionsweise von Anrufen](../../concepts/voice-video-calling/about-call-types.md).

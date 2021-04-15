@@ -2,36 +2,19 @@
 title: Anzeigen von Azure Event Grid-Metriken und Festlegen von Warnungen
 description: In diesem Artikel wird beschrieben, wie Sie im Azure-Portal Metriken für Azure Event Grid-Themen und Abonnements anzeigen und Warnungen hierfür erstellen.
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 8f8d7e15475ce74dc1af55dc7f6116d5d8b79cc8
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.date: 03/17/2021
+ms.openlocfilehash: 6f6c119c16452246ec6eeb57ab392b29608938a2
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100577400"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104598557"
 ---
 # <a name="monitor-event-grid-message-delivery"></a>Überwachen der Event Grid-Nachrichtenübermittlung 
 In diesem Artikel wird beschrieben, wie Sie über das Portal Metriken für Event Grid-Themen und Abonnements anzeigen und Warnungen hierfür erstellen. 
 
-## <a name="metrics"></a>Metriken
-
-Das Portal zeigt Metriken für den Status der Übermittlung von Ereignisnachrichten an.
-
-In den folgenden Themen finden Sie einige der Metriken:
-
-* **Veröffentlichung erfolgreich**: Das Ereignis wurde erfolgreich an das Thema gesendet und mit einer Antwort des Typs 2xx verarbeitet.
-* **Fehler beim Veröffentlichen**: Das Ereignis wurde an das Thema gesendet, aber mit einem Fehlercode abgelehnt.
-* **Ohne Übereinstimmung**: Das Ereignis wurde erfolgreich im Thema veröffentlicht, stimmt aber mit keinem Ereignisabonnement überein. Das Ereignis wurde gelöscht.
-
-Für Abonnements sind hier einige Metriken aufgeführt:
-
-* **Übermittlung erfolgreich**: Das Ereignis wurde erfolgreich an den Endpunkt des Abonnements übermittelt und hat eine Antwort des Typs 2xx erhalten.
-* **Übermittlungsfehler**: Jedes Mal, wenn der Dienst eine Übermittlung versucht und der Ereignishandler keinen 2xx-Erfolgscode zurückgibt, wird der Zähler **Übermittlungsfehler** erhöht. Wenn Sie versuchen, dasselbe Ereignis mehrmals zu übermitteln, und dies fehlschlägt, wird der Zähler **Übermittlungsfehler** für jeden Fehler erhöht.
-* **Abgelaufene Ereignisse**: Das Ereignis wurde nicht übermittelt, und alle Wiederholungsversuche wurden gesendet. Das Ereignis wurde gelöscht.
-* **Übereinstimmende Ereignisse**: Das Ereignis im Thema stimmt mit dem Ereignisabonnement überein.
-
-    > [!NOTE]
-    > Die vollständige Liste der Metriken finden Sie unter [Von Azure Event Grid unterstützte Metriken](metrics.md).
+> [!IMPORTANT]
+> Eine Liste der von Azure Event Grid unterstützten Metriken finden Sie unter [Von Azure Event Grid unterstützte Metriken](metrics.md).
 
 ## <a name="view-custom-topic-metrics"></a>Anzeigen von Metriken für benutzerdefinierte Themen
 
@@ -48,15 +31,13 @@ Wenn Sie ein benutzerdefiniertes Thema veröffentlicht haben, können Sie die Me
 
     :::image type="content" source="./media/monitor-event-delivery/custom-topic-metrics.png" alt-text="Ereignismetriken anzeigen":::
 
-Auf der Registerkarte **Metriken** auf der Seite **Event Grid-Thema** können Sie Diagramme mit unterstützten Metriken erstellen.
+    Auf der Registerkarte **Metriken** auf der Seite **Event Grid-Thema** können Sie Diagramme mit unterstützten Metriken erstellen.
 
-:::image type="content" source="./media/monitor-event-delivery/topics-metrics-page.png" alt-text="Seite „Themen“ – „Metriken“":::
+    :::image type="content" source="./media/monitor-event-delivery/topics-metrics-page.png" alt-text="Seite „Themen“ – „Metriken“":::
 
-Weitere Informationen zu Metriken finden Sie unter [Metriken in Azure Monitor](../azure-monitor/essentials/data-platform-metrics.md).
+    Beispiel: Metrikendiagramm für die Metrik **Veröffentlichte Ereignisse**.
 
-Beispiel: Metrikendiagramm für die Metrik **Veröffentlichte Ereignisse**.
-
-:::image type="content" source="./media/monitor-event-delivery/custom-topic-metrics-example.png" alt-text="Metrik „Veröffentlichte Ereignisse“":::
+    :::image type="content" source="./media/monitor-event-delivery/custom-topic-metrics-example.png" alt-text="Metrik „Veröffentlichte Ereignisse“":::
 
 
 ## <a name="view-subscription-metrics"></a>Anzeigen von Metriken für Abonnements
@@ -70,7 +51,7 @@ Beispiel: Metrikendiagramm für die Metrik **Veröffentlichte Ereignisse**.
     :::image type="content" source="./media/monitor-event-delivery/event-subscriptions-page.png" alt-text="Ereignisabonnement auf der Seite „Event Grid-Abonnements“ auswählen":::        
 
     Wählen Sie für benutzerdefinierte Themen **Event Grid-Themen** unter **Thementyp** aus. Wählen Sie für Systemthemen den Typ der Azure-Ressource aus, z. B. **Speicherkonten (BLOB, GPv2)** . 
-3. Die Metriken für das Abonnement werden auf der Homepage für das Abonnement in einem Diagramm angezeigt. Sie können die Metriken **Allgemein**, **Fehler**, **Latenz** und **Unzustellbare Nachrichten** für die letzte Stunde, 6 Stunden, 12 Stunden, 1 Tag, 7 Tage und 30 Tage anzeigen. 
+3. Die Metriken für das Abonnement werden auf der Homepage für das Abonnement in einem Diagramm angezeigt. Sie können die Metriken **Allgemein**, **Fehler** und **Latenz** für die letzte Stunde, die letzten sechs oder zwölf Stunden, den letzten Tag, die letzten sieben Tage oder die letzten 30 Tage anzeigen. 
 
     :::image type="content" source="./media/monitor-event-delivery/subscription-home-page-metrics.png" alt-text="Metriken auf der Homepage des Abonnements":::    
 
@@ -87,12 +68,12 @@ Beispiel: Metrikendiagramm für die Metrik **Veröffentlichte Ereignisse**.
 
     :::image type="content" source="./media/monitor-event-delivery/system-topic-overview-metrics.png" alt-text="Metriken für Systemthemen auf der Übersichtsseite anzeigen":::
 
-Auf der Registerkarte **Metriken** auf der Seite **Event Grid-Thema** können Sie Diagramme mit unterstützten Metriken erstellen.
+    Auf der Registerkarte **Metriken** auf der Seite **Event Grid-Thema** können Sie Diagramme mit unterstützten Metriken erstellen.
 
-:::image type="content" source="./media/monitor-event-delivery/system-topic-metrics-page.png" alt-text="Seite „Systemthema“ – „Metriken“":::
+    :::image type="content" source="./media/monitor-event-delivery/system-topic-metrics-page.png" alt-text="Seite „Systemthema“ – „Metriken“":::
 
-Weitere Informationen zu Metriken finden Sie unter [Metriken in Azure Monitor](../azure-monitor/essentials/data-platform-metrics.md).
-
+    > [!IMPORTANT]
+    > Eine Liste der von Azure Event Grid unterstützten Metriken finden Sie unter [Von Azure Event Grid unterstützte Metriken](metrics.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen finden Sie in folgenden Artikeln:

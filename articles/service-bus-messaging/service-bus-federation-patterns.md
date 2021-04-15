@@ -4,17 +4,17 @@ description: Dieser Artikel enthält eine ausführliche Anleitung zur Implementi
 ms.topic: article
 ms.date: 12/12/2020
 ms.openlocfilehash: d823ee7ccd4f53bfc3e10211a4f44908273a110d
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97663453"
 ---
 # <a name="message-replication-tasks-patterns"></a>Muster für Nachrichtenreplikationsaufgaben
 
 Unter [Übersicht über Verbund](service-bus-federation-overview.md) und [Übersicht über Replikatorfunktionen](service-bus-federation-replicator-functions.md) werden die Gründe für die Nutzung von Replikationsaufgaben und deren wesentliche Bestandteile beschrieben. Wir empfehlen Ihnen, sich hiermit vertraut zu machen, bevor Sie mit diesem Artikel fortfahren.
 
-In diesem Artikel finden Sie eine ausführliche Anleitung zur Implementierung einiger Muster, die in der Übersicht erwähnt werden. 
+In diesem Artikel finden Sie eine ausführliche Anleitung zur Implementierung einiger der in der Übersicht erwähnten Muster. 
 
 ## <a name="replication"></a>Replikation 
 
@@ -40,7 +40,7 @@ Wenn Sie die Replikation für die Notfallwiederherstellung, als Schutz bei Nachr
 
 Für alle Failoverszenarien wird davon ausgegangen, dass die erforderlichen Elemente der Namespaces strukturell identisch sind. Dies bedeutet, dass Warteschlangen und Themen identisch benannt und Regeln für SAS (Shared Access Signature) und/oder die rollenbasierte Zugriffssteuerung auf die gleiche Weise eingerichtet sind. Sie können einen sekundären Namespace erstellen (und aktualisieren), indem Sie die [Anleitung zum Verschieben von Namespaces](move-across-regions.md) befolgen und den Bereinigungsschritt auslassen.
 
-Um Producer und Consumer zum Umstieg zu zwingen, müssen Sie die Informationen darüber, welcher Namespace verwendet werden soll, an einem leicht zu erreichenden und zu aktualisierenden Ort zum Nachschlagen bereitstellen. Wenn Producer oder Consumer auf häufige oder anhaltende Fehler stoßen, sollten sie diesen Ort konsultieren und ihre Konfiguration anpassen. Es gibt zahlreiche Möglichkeiten zum Freigeben dieser Konfiguration. Nachstehend stellen wir zwei davon vor: DNS und Dateifreigaben.
+Um Producer und Consumer zum Umstieg zu zwingen, müssen Sie die Informationen darüber, welcher Namespace verwendet werden soll, an einem leicht zu erreichenden und zu aktualisierenden Ort zum Lookup bereitstellen. Wenn Producer oder Consumer auf häufige oder anhaltende Fehler stoßen, sollten sie diesen Ort konsultieren und ihre Konfiguration anpassen. Es gibt zahlreiche Möglichkeiten zur Freigabe dieser Konfiguration. Nachstehend stellen wir zwei davon vor: DNS und Dateifreigaben.
 
 #### <a name="dns-based-failover-configuration"></a>Auf DNS basierende Failoverkonfiguration
 
@@ -61,7 +61,7 @@ In der Zone Ihrer Anwendung erstellen Sie dann einen CNAME-Eintrag mit einem Ver
 |------------------------------|-------------------------------------------------------------
 | `servicebus.test.example.com`  | `test1.test.example.com`
 
-Mit einem DNS-Client, der das Abfragen von CNAME- und SRV-Einträgen explizit zulässt (die integrierten Clients von Java und .NET lassen nur die einfache Auflösung von Namen in IP-Adressen zu), können Sie dann den gewünschten Endpunkt auflösen. Bei [DnsClient.NET](https://dnsclient.michaco.net/) lautet die Suchfunktion beispielsweise wie folgt:
+Mit einem DNS-Client, der das Abfragen von CNAME- und SRV-Einträgen explizit zulässt (die integrierten Clients von Java und .NET lassen nur die einfache Auflösung von Namen in IP-Adressen zu), können Sie dann den gewünschten Endpunkt auflösen. Bei [DnsClient.NET](https://dnsclient.michaco.net/) ist die Lookupfunktion beispielsweise wie folgt:
 
 ``` C#
 static string GetServiceBusName(string aliasName)
@@ -76,9 +76,9 @@ static string GetServiceBusName(string aliasName)
 }
 ```
 
-Die Funktion gibt den Namen des Ziel-Hosts zurück, der für Port 5671 der Zone registriert ist, für die derzeit der CNAME als Alias verwendet wird (wie oben dargestellt). 
+Die Funktion gibt den Namen des Zielhosts zurück, der für Port 5671 der Zone registriert ist, die derzeit als Alias den CNAME hat, wie oben gezeigt. 
 
-Um ein Failover auszuführen, müssen Sie den CNAME-Eintrag so bearbeiten, dass er auf die alternative Zone verweist. 
+Um ein Failover durchzuführen, müssen Sie den CNAME-Eintrag so bearbeiten, dass er auf die alternative Zone verweist. 
 
 Der Vorteil von DNS und speziell von [Azure DNS](../dns/dns-overview.md) ist, dass Azure DNS-Informationen global repliziert werden und daher resilient gegen Ausfälle einzelner Regionen sind.
 
@@ -105,24 +105,24 @@ Das letzte Szenario erfordert das Ausschließen bereits replizierter Nachrichten
 
 ## <a name="editor"></a>Editor
 
-Das Editor-Muster baut auf dem Muster [Replikation](#replication) auf, wobei Nachrichten vor dem Weiterleiten aber geändert werden. Beispiele für Änderungen dieser Art:
+Das Editor-Muster baut auf dem Muster [Replikation](#replication) auf, wobei Nachrichten jedoch geändert werden, ehe sie weitergeleitet werden. Beispiele für solche Änderungen:
 
-- **_Transcodierung_*: Wenn der Inhalt der Nachricht (auch als „Text“ oder „Nutzdaten“ bezeichnet) von der Quelle im Apache Avro-Format oder mit Codierung in einem anderen proprietären Serialisierungsformat eingeht, das Zielsystem aber erwartet, dass der Inhalt mit *JSON* codiert ist, werden mithilfe einer Replikationsaufgabe für die Transcodierung zunächst die Nutzdaten von *Apache Avro* in einen In-Memory-Objektgraphen deserialisiert. Anschließend wird dieser Graph in das *JSON*-Format für die weiterzuleitende Nachricht serialisiert. Die Transcodierung umfasst auch Aufgaben zur **Komprimierung** und Dekomprimierung des Inhalts.
-- **_Transformation_*: Nachrichten mit strukturierten Daten müssen möglicherweise umgestaltet werden, damit sie von nachgeschalteten Consumern leichter verarbeitet werden können. Dies kann Aufgaben wie die Abflachung geschachtelter Strukturen, das Ausschneiden überflüssiger Datenelemente oder die Anpassung der Nutzdaten an ein bestimmtes Schema bedeuten.
-- _*_Batchverarbeitung_*_: Nachrichten können in Batches (mehrere Nachrichten in einer einzelnen Übertragung) von einer Quelle empfangen werden, müssen aber einzeln an ein Ziel weitergeleitet werden (oder umgekehrt). Eine Aufgabe kann daher mehrere Nachrichten basierend auf nur einer Übertragung einer Eingangsnachricht weiterleiten oder eine Reihe von Nachrichten aggregieren, die dann gemeinsam übertragen werden. 
-- _*_Validierung_*_: Nachrichtendaten aus externen Quellen müssen oft daraufhin überprüft werden, ob sie mit einer Reihe von Regeln übereinstimmen, ehe sie weitergeleitet werden dürfen. Die Regeln können mithilfe von Schemas oder Code ausgedrückt werden. Nicht konforme Nachrichten können verworfen werden, wobei das Problem in den Protokollen vermerkt wird, oder zur weiteren Behandlung an ein spezielles Ziel weitergeleitet werden.   
-- _*_Anreicherung_*_: Aus bestimmten Quellen stammende Nachrichtendaten müssen möglicherweise mit weiterem Kontext angereichert werden, damit sie in Zielsystemen verwendet werden können. Hierfür kann Folgendes erforderlich sein: das Nachschlagen von Referenzdaten und Einbetten dieser Daten in die Nachricht oder das Hinzufügen von Informationen zur Quelle, die der Replikationsaufgabe bekannt sind, aber nicht in den Nachrichten enthalten sind. 
-- _*_Filterung_*_: Bestimmte aus einer Quelle eingehende Nachrichten müssen dem Ziel möglicherweise aufgrund einer Regel vorenthalten werden. Ein Filter testet die Nachricht anhand einer Regel und verwirft die Nachricht, falls sie nicht mit der Regel übereinstimmt. Eine Form der Filterung ist das Herausfiltern duplizierter Nachrichten, indem bestimmte Kriterien berücksichtigt werden und nachfolgende Nachrichten mit den gleichen Werten verworfen werden.
-- _*_Routing und Partitionierung_*_: Bei einigen Replikationsaufgaben sind ggf. zwei oder mehr alternative Ziele zulässig. Basierend auf den Metadaten oder dem Inhalt der Nachricht werden Regeln dazu definiert, welches Replikationsziel für eine bestimmte Nachricht ausgewählt wird. Eine spezielle Form des Routings ist die Partitionierung. Hierbei werden Partitionen von der Aufgabe anhand von Regeln explizit einem Replikationsziel zugewiesen.
-- _*_Kryptografie_*_: Eine Replikationsaufgabe muss möglicherweise von der Quelle eingehende Inhalte entschlüsseln bzw. an ein Ziel weitergeleitete Inhalte verschlüsseln und/oder die Integrität von Inhalten und Metadaten in Bezug auf eine in der Nachricht übertragene Signatur überprüfen oder eine solche Signatur anfügen. 
-- _*_Nachweis_*_: Eine Replikationsaufgabe kann Metadaten, die möglicherweise durch eine digitale Signatur geschützt sind, an eine Nachricht anfügen. Hiermit wird nachgewiesen, dass die Nachricht über einen bestimmten Kanal oder zu einem bestimmten Zeitpunkt empfangen wurde.     
-- _ *_Verkettung_**: Von einer Replikationsaufgabe können Signaturen so auf Nachrichtensequenzen angewendet werden, dass die Integrität der Sequenz geschützt wird und fehlende Nachrichten erkannt werden können.
+- ***Transcodierung:*** Wenn der Inhalt der Nachricht (auch als „Text“ oder „Nutzdaten“ bezeichnet) von der Quelle im *Apache Avro*-Format oder mit Codierung in einem anderen proprietären Serialisierungsformat eingeht, das Zielsystem aber erwartet, dass der Inhalt mit *JSON* codiert ist, werden mithilfe einer Replikationsaufgabe für die Transcodierung zunächst die Nutzdaten von *Apache Avro* in einen In-Memory-Objektgraphen deserialisiert. Anschließend wird dieser Graph in das *JSON*-Format für die weiterzuleitende Nachricht serialisiert. Die Transcodierung umfasst auch Aufgaben zur **Komprimierung** und Dekomprimierung des Inhalts.
+- ***Transformation:*** Nachrichten mit strukturierten Daten müssen möglicherweise umgestaltet werden, damit sie von nachgeschalteten Consumern leichter verarbeitet werden können. Dies kann Aufgaben wie das Abflachen geschachtelter Strukturen, das Ausschneiden überflüssiger Datenelemente oder das Anpassen der Nutzdaten an ein bestimmtes Schema bedeuten.
+- ***Batchverarbeitung***: Nachrichten können in Batches (mehrere Nachrichten in einer einzelnen Übertragung) von einer Quelle empfangen werden, müssen aber einzeln an ein Ziel weitergeleitet werden (oder umgekehrt). Eine Aufgabe kann daher mehrere Nachrichten basierend auf nur einer Übertragung einer Eingangsnachricht weiterleiten oder eine Reihe von Nachrichten aggregieren, die dann gemeinsam übertragen werden. 
+- ***Validierung***: Nachrichtendaten aus externen Quellen müssen oft daraufhin überprüft werden, ob sie mit einer Reihe von Regeln übereinstimmen, ehe sie weitergeleitet werden dürfen. Die Regeln können mithilfe von Schemas oder Code ausgedrückt werden. Nicht konforme Nachrichten können verworfen werden, wobei das Problem in den Protokollen vermerkt wird, oder zur weiteren Behandlung an ein spezielles Ziel weitergeleitet werden.   
+- ***Anreicherung***: Aus bestimmten Quellen stammende Nachrichtendaten müssen möglicherweise mit weiterem Kontext angereichert werden, damit sie in Zielsystemen verwendet werden können. Hierfür kann Folgendes erforderlich sein: das Nachschlagen von Referenzdaten und Einbetten dieser Daten in die Nachricht oder das Hinzufügen von Informationen zur Quelle, die der Replikationsaufgabe bekannt sind, aber nicht in den Nachrichten enthalten sind. 
+- ***Filterung***: Bestimmte aus einer Quelle eingehende Nachrichten müssen dem Ziel möglicherweise aufgrund einer Regel vorenthalten werden. Ein Filter testet die Nachricht anhand einer Regel und verwirft die Nachricht, falls sie nicht mit der Regel übereinstimmt. Eine Form der Filterung ist das Herausfiltern duplizierter Nachrichten, indem bestimmte Kriterien berücksichtigt werden und nachfolgende Nachrichten mit den gleichen Werten verworfen werden.
+- ***Routing und Partitionierung***: Bei einigen Replikationsaufgaben sind ggf. zwei oder mehr alternative Ziele zulässig. Basierend auf den Metadaten oder dem Inhalt der Nachricht werden Regeln dazu definiert, welches Replikationsziel für eine bestimmte Nachricht ausgewählt wird. Eine spezielle Form des Routings ist die Partitionierung. Hierbei werden Partitionen von der Aufgabe anhand von Regeln explizit einem Replikationsziel zugewiesen.
+- ***Kryptografie***: Eine Replikationsaufgabe muss möglicherweise von der Quelle eingehende Inhalte entschlüsseln bzw. an ein Ziel weitergeleitete Inhalte verschlüsseln und/oder die Integrität von Inhalten und Metadaten in Bezug auf eine in der Nachricht übertragene Signatur überprüfen oder eine solche Signatur anfügen. 
+- ***Nachweis***: Eine Replikationsaufgabe kann Metadaten, die möglicherweise durch eine digitale Signatur geschützt sind, an eine Nachricht anfügen. Hiermit wird nachgewiesen, dass die Nachricht über einen bestimmten Kanal oder zu einem bestimmten Zeitpunkt empfangen wurde.     
+- ***Verkettung:*** Von einer Replikationsaufgabe können Signaturen so auf Nachrichtensequenzen angewendet werden, dass die Integrität der Sequenz geschützt wird und fehlende Nachrichten erkannt werden können.
 
 Alle diese Muster können mit Azure Functions implementiert werden, wobei der [Trigger für Nachrichtenhubs](../azure-functions/functions-bindings-service-bus-trigger.md) für das Erfassen von Nachrichten und die [Ausgabebindung für Warteschlangen/Themen](../azure-functions/functions-bindings-service-bus-output.md) für deren Zustellung verwendet wird. 
 
 ## <a name="routing"></a>Routing
 
-Das Routingmuster baut auf dem Muster für die [Replikation](#replication) auf, aber statt einer Quelle und einem Ziel hat die Replikationsaufgabe mehrere Ziele. Dies ist hier in C# dargestellt:
+Das Routingmuster baut auf dem Muster [Replikation](#replication) auf, aber statt einer Quelle und einem Ziel hat die Replikationsaufgabe mehrere Ziele, wie hier in C# dargestellt:
 
 ``` csharp
 [FunctionName("SBRouter")]

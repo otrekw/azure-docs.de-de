@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 9/30/2020
+ms.date: 03/18/2021
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: f1ff679bddf2afc355516f2a04b3307d4a260a5c
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 000aeffa982c59f1efbb6ecae73f6b48e95f981e
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063619"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105967318"
 ---
 # <a name="confidential-client-assertions"></a>Assertionen für vertrauliche Clients
 
@@ -48,9 +48,18 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
                                           .Build();
 ```
 
-[Von Azure AD werden die folgenden Ansprüche erwartet](active-directory-certificate-credentials.md):
+Sie können auch das Delegatformular verwenden, das Ihnen die Just-in-Time-Berechnung der Assertionen ermöglicht:
 
-Anspruchstyp | value | BESCHREIBUNG
+```csharp
+string signedClientAssertion = ComputeAssertion();
+app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
+                                          .WithClientAssertion(() => { return GetSignedClientAssertion(); } )
+                                          .Build();
+```
+
+Die [von Azure AD erwarteten Ansprüche](active-directory-certificate-credentials.md) in der signierten Assertion lauten:
+
+Anspruchstyp | Wert | BESCHREIBUNG
 ---------- | ---------- | ----------
 aud | `https://login.microsoftonline.com/{tenantId}/v2.0` | Der Anspruch „aud“ (audience, Zielgruppe) identifiziert die Empfänger, für die das JWT vorgesehen ist (hier Azure AD). Weitere Informationen finden Sie unter [RFC 7519, Abschnitt 4.1.3](https://tools.ietf.org/html/rfc7519#section-4.1.3).  In diesem Fall ist dieser Empfänger der Anmeldeserver (login.microsoftonline.com).
 exp | 1601519414 | Der Anspruch „exp“ (Ablaufzeit) gibt die Ablaufzeit an, ab oder nach der das JWT NICHT für die Bearbeitung akzeptiert werden darf. Weitere Informationen finden Sie unter [RFC 7519, Abschnitt 4.1.4](https://tools.ietf.org/html/rfc7519#section-4.1.4).  So kann die Assertion bis zu diesem Zeitpunkt verwendet werden. Daher sollte der Zeitraum kurz ausfallen, d. h. höchstens 5–10 Minuten nach `nbf` liegen.  In Azure AD sind derzeit keine Einschränkungen für den `exp`-Zeitpunkt vorgesehen. 
@@ -121,11 +130,11 @@ string GetSignedClientAssertion()
     var header = new Dictionary<string, string>()
          {
               { "alg", "RS256"},
-              { "kid", Encode(Certificate.GetCertHash()) }
+              { "kid", Encode(certificate.GetCertHash()) }
          };
 
     //Please see the previous code snippet on how to craft claims for the GetClaims() method
-    string token = Encode(Encoding.UTF8.GetBytes(JObject.FromObject(header).ToString())) + "." + Encode(Encoding.UTF8.GetBytes(JObject.FromObject(GetClaims())));
+    string token = Encode(Encoding.UTF8.GetBytes(JObject.FromObject(header).ToString())) + "." + Encode(Encoding.UTF8.GetBytes(JObject.FromObject(GetClaims()).ToString()));
 
     string signature = Encode(rsa.SignData(Encoding.UTF8.GetBytes(token), new SHA256Cng()));
     string signedClientAssertion = string.Concat(token, ".", signature);

@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: a8f015085baa8fffa6f208e9d8dd749e397c76c3
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93397432"
 ---
 # <a name="autoscale-your-aks-pods-using-application-gateway-metrics-beta"></a>Automatische Skalierung Ihrer AKS-Pods mit Application Gateway-Metriken (Betaversion)
 
-Mit zunehmendem eingehenden Datenverkehr wird es immer wichtiger, Ihre Anwendungen bedarfsgerecht hochzuskalieren.
+Mit zunehmendem eingehenden Datenverkehr wird es immer wichtiger, Ihre Anwendungen bedarfsgerecht zentral hochzuskalieren.
 
-Im folgenden Tutorial wird erläutert, wie Sie die `AvgRequestCountPerHealthyHost`-Metrik des Application Gateway verwenden können, um Ihre Anwendung hochzuskalieren. `AvgRequestCountPerHealthyHost` misst die durchschnittlichen Anforderungen, die an eine bestimmte Back-End-Pool- und eine bestimmte Back-End-HTTP-Einstellungskombination gesendet werden.
+Im folgenden Tutorial wird erläutert, wie Sie die `AvgRequestCountPerHealthyHost`-Metrik des Application Gateway verwenden können, um Ihre Anwendung zentral hochzuskalieren. `AvgRequestCountPerHealthyHost` misst die durchschnittlichen Anforderungen, die an eine bestimmte Back-End-Pool- und eine bestimmte Back-End-HTTP-Einstellungskombination gesendet werden.
 
 Wir werden die folgenden beiden Komponenten verwenden:
 
@@ -90,11 +90,11 @@ kubectl get --raw "/apis/external.metrics.k8s.io/v1beta1/namespaces/default/appg
 # }
 ```
 
-## <a name="using-the-new-metric-to-scale-up-the-deployment"></a>Verwendung der neuen Metrik zum Hochskalieren der Bereitstellung
+## <a name="using-the-new-metric-to-scale-up-the-deployment"></a>Verwendung der neuen Metrik zum zentralen Hochskalieren der Bereitstellung
 
 Nachdem wir in der Lage sind, `appgw-request-count-metric` über den Metrikserver verfügbar zu machen, sind wir bereit, unsere Zielbereitstellung mit [`Horizontal Pod Autoscaler`](../aks/concepts-scale.md#horizontal-pod-autoscaler) hochzuskalieren.
 
-Im folgenden Beispiel wird eine Beispielbereitstellung von `aspnet` als Ziel verwendet. Die Pods werden hochskaliert, wenn `appgw-request-count-metric` &gt; 200 pro Pod bis zu einem Maximum von `10` Pods.
+Im folgenden Beispiel wird eine Beispielbereitstellung von `aspnet` als Ziel verwendet. Die Pods werden zentral hochskaliert, wenn `appgw-request-count-metric` > 200 pro Pod bis zu einem Maximum von `10` Pods.
 
 Ersetzen Sie den Namen Ihrer Zielbereitstellung, und wenden Sie die folgende automatische Skalierungskonfiguration an:
 ```yaml
@@ -122,4 +122,4 @@ ab -n10000 http://<applicaiton-gateway-ip-address>/
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [**Problembehandlung für den Eingangscontroller**](ingress-controller-troubleshoot.md): Beheben Sie alle Probleme beim Eingangscontroller.
+- [**Behandeln häufig auftretender Fragen oder Probleme mit dem Eingangscontroller:** ](ingress-controller-troubleshoot.md) Beheben Sie alle Probleme beim Eingangscontroller.

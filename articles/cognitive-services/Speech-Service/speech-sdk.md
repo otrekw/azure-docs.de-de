@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: 4c8ee3a65c26d1eb3acb7b9f4c18f11e870e4b82
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 65e55d8e9d81f4045dde29c943f034ed0a24bf4c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102434453"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105608084"
 ---
 # <a name="about-the-speech-sdk"></a>Informationen zum Speech SDK
 
@@ -67,9 +67,9 @@ Die [Spracherkennung](speech-to-text.md) (auch als *Speech-to-Text* bezeichnet) 
   - Java/Windows und Linux und macOS und Android (Speech Devices SDK)
   - Go
 
-#### <a name="keyword-spotting"></a>Schlüsselworterkennung
+#### <a name="keyword-recognition"></a>Schlüsselworterkennung
 
-Das Konzept der [-Schlüsselworterkennung](./custom-keyword-basics.md) wird im Speech SDK unterstützt. Bei der Schlüsselworterkennung wird ein Schlüsselwort in der Sprache erkannt, und nach der Erfassung des Schlüsselworts folgt eine Aktion. Mit dem Schlüsselwort „Hey Cortana“ wird beispielsweise der Cortana-Assistent aktiviert.
+Das Konzept der [Schlüsselworterkennung](./custom-keyword-basics.md) wird im Speech SDK unterstützt. Bei der Schlüsselworterkennung wird ein Schlüsselwort in der Sprache erkannt, und nach der Erfassung des Schlüsselworts folgt eine Aktion. Mit dem Schlüsselwort „Hey Cortana“ wird beispielsweise der Cortana-Assistent aktiviert.
 
 **Schlüsselworterkennung** ist auf den folgenden Plattformen verfügbar:
 
@@ -77,7 +77,7 @@ Das Konzept der [-Schlüsselworterkennung](./custom-keyword-basics.md) wird im S
   - C#/Windows und Linux
   - Python/Windows und Linux
   - Java/Windows und Linux und Android (Speech Devices SDK)
-  - Die Funktionalität zur Schlüsselworterkennung (Keyword Spotting, KWS) kann eventuell mit allen Mikrofontypen verwendet werden, offiziell wird KWS derzeit jedoch nur für die Mikrofonarrays in der Azure Kinect DK-Hardware oder im Speech-Geräte-SDK unterstützt.
+  - Die Funktionalität für die Schlüsselworterkennung kann u. U. mit jedem Mikrofontyp verwendet werden, offiziell wird die Schlüsselworterkennung derzeit jedoch nur für die Mikrofonarrays in der Azure Kinect DK-Hardware oder im Speech Devices SDK unterstützt.
 
 ### <a name="meeting-scenarios"></a>Besprechungsszenarien
 
@@ -114,7 +114,7 @@ Die [Callcentertranskription](call-center-transcription.md) ist ein häufiges Sz
 
 ### <a name="codec-compressed-audio-input"></a>Per Codec komprimierte Audioeingabe
 
-Einige der Speech SDK-Programmiersprachen unterstützen per Codec komprimierte Audioeingabestreams. Weitere Informationen finden Sie unter <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams" target="_blank">Verwenden komprimierter Audioeingabeformate</a>.
+Einige der Speech SDK-Programmiersprachen unterstützen per Codec komprimierte Audioeingabestreams. Weitere Informationen finden Sie unter <a href="/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams" target="_blank">Verwenden komprimierter Audioeingabeformate</a>.
 
 **Per Codec komprimierte Audioeingabe** ist auf den folgenden Plattformen verfügbar:
 

@@ -7,17 +7,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/04/2021
+ms.date: 03/10/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: c9453f2fc5803fb6ce09d8749cbf7fa1c7c2ec46
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 17c73257db371bbec0c72a23b1303847a8d14102
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102174818"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102607916"
 ---
 # <a name="define-custom-attributes-in-azure-active-directory-b2c"></a>Definieren benutzerdefinierter Attribute in Azure Active Directory B2C
 
@@ -30,6 +30,8 @@ Ihr Azure AD B2C-Verzeichnis verfügt über [mehrere integrierte Attribute](user
 * Für eine Kundenanwendung muss ein Attribut wie **LoyaltyNumber** persistent gespeichert werden.
 * Ein Identitätsanbieter hat eine eindeutige Benutzer-ID, die persistent gespeichert werden muss, z. B. **uniqueUserGUID**.
 * Für eine benutzerdefinierte User Journey muss der Status eines Benutzers persistent gespeichert werden, z. B. **migrationStatus**.
+
+Die Begriffe *Erweiterungseigenschaft*, *benutzerdefiniertes Attribut* und *benutzerdefinierter Anspruch* beziehen sich im Kontext dieses Artikels auf die gleiche Sache. Der Name variiert je nach Kontext (Anwendung, Objekt, Richtlinie).
 
 Azure AD B2C ermöglicht Ihnen, die für die einzelnen Benutzerkonten gespeicherte Gruppe von Attributen zu erweitern. Außerdem können Sie diese Attribute mit der [Microsoft Graph-API](microsoft-graph-operations.md) lesen und schreiben.
 
@@ -66,11 +68,7 @@ Nach dem Erstellen eines neuen Benutzers über einen Benutzerflow, der das neu e
 
 ## <a name="azure-ad-b2c-extensions-app"></a>Erweiterungs-App für Azure AD B2C
 
-Erweiterungsattribute können nur für ein Anwendungsobjekt registriert werden, obwohl sie Daten für einen Benutzer enthalten können. Das Erweiterungsattribut wird an die Anwendung namens b2c-extensions-app angefügt. Ändern Sie diese Anwendung nicht, da sie von Azure AD B2C zum Speichern von Benutzerdaten genutzt wird. Sie finden diese Anwendung unter Azure AD B2C, App-Registrierungen.
-
-Die Begriffe *Erweiterungseigenschaft*, *benutzerdefiniertes Attribut* und *benutzerdefinierter Anspruch* beziehen sich im Kontext dieses Artikels auf die gleiche Sache. Der Name variiert je nach Kontext (Anwendung, Objekt, Richtlinie).
-
-## <a name="get-the-application-properties"></a>Abrufen der Anwendungseigenschaften
+Erweiterungsattribute können nur für ein Anwendungsobjekt registriert werden, obwohl sie Daten für einen Benutzer enthalten können. Das Erweiterungsattribut wird an die Anwendung namens `b2c-extensions-app` angefügt. Ändern Sie diese Anwendung nicht, da sie von Azure AD B2C zum Speichern von Benutzerdaten genutzt wird. Sie finden diese Anwendung unter Azure AD B2C, App-Registrierungen. Rufen Sie die Anwendungseigenschaften ab:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Wählen Sie im oberen Menü den Filter **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
@@ -80,14 +78,6 @@ Die Begriffe *Erweiterungseigenschaft*, *benutzerdefiniertes Attribut* und *benu
 1. Kopieren Sie die folgenden Bezeichner in die Zwischenablage, und speichern Sie sie:
     * **Anwendungs-ID**. Beispiel: `11111111-1111-1111-1111-111111111111`.
     * **Objekt-ID** Beispiel: `22222222-2222-2222-2222-222222222222`.
-
-## <a name="using-custom-attribute-with-ms-graph-api"></a>Verwenden benutzerdefinierter Attribute mit der Microsoft Graph-API
-
-Die Microsoft Graph-API unterstützt das Erstellen und Aktualisieren eines Benutzers mit Erweiterungsattributen. Erweiterungsattribute in der Microsoft Graph-API werden gemäß der Konvention `extension_ApplicationClientID_attributename` benannt, wobei `ApplicationClientID` die **Anwendungs-ID (Client)** der Anwendung `b2c-extensions-app` ist. Beachten Sie, dass die **Anwendungs-ID (Client)** in der Darstellung im Namen des Erweiterungsattributs keine Bindestriche enthält. Beispiel:
-
-```json
-"extension_831374b3bd5041bfaa54263ec9e050fc_loyaltyNumber": "212342"
-``` 
 
 ::: zone pivot="b2c-custom-policy"
 
@@ -172,6 +162,14 @@ Das folgende Beispiel veranschaulicht die Verwendung eines benutzerdefinierten A
 ```
 
 ::: zone-end
+
+## <a name="using-custom-attribute-with-ms-graph-api"></a>Verwenden benutzerdefinierter Attribute mit der Microsoft Graph-API
+
+Die Microsoft Graph-API unterstützt das Erstellen und Aktualisieren eines Benutzers mit Erweiterungsattributen. Erweiterungsattribute in der Microsoft Graph-API werden gemäß der Konvention `extension_ApplicationClientID_attributename` benannt, wobei `ApplicationClientID` die **Anwendungs-ID (Client)** der Anwendung `b2c-extensions-app` ist. Beachten Sie, dass die **Anwendungs-ID (Client)** in der Darstellung im Namen des Erweiterungsattributs keine Bindestriche enthält. Beispiel:
+
+```json
+"extension_831374b3bd5041bfaa54263ec9e050fc_loyaltyId": "212342" 
+``` 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

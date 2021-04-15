@@ -10,26 +10,50 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 02/05/2020
-ms.author: mbaldwin
-ms.openlocfilehash: 6a0767b077886337331f24b15715247006f3fe2c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/25/2021
+ms.author: keithp
+ms.openlocfilehash: c454b2e4df7a9ce5fadd33386e5bb413b503c6e4
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94888894"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105608424"
 ---
 # <a name="azure-dedicated-hsm-deployment-architecture"></a>Azure Dedicated HSM-Bereitstellungsarchitektur
 
 Azure Dedicated HSM bietet Speicherung von kryptografischen Schlüsseln in Azure. Azure Dedicated HSM erfüllt strenge Sicherheitsanforderungen. Kunden profitieren von der Verwendung von Azure Dedicated HSM, wenn sie:
 
-* Die FIPS 140-2 Level 3-Zertifizierung erfüllen müssen.
+* Die [FIPS 140-2 Level 3](https://csrc.nist.gov/publications/detail/fips/140/2/final)-Zertifizierung erfüllen müssen.
 * Exklusiven Zugriff auf das HSM benötigen.
 * Vollständige Kontrolle über ihre Geräte haben müssen.
 
 Die HSMs sind auf die Datencenter von Microsoft verteilt und können problemlos als Gerätepaar als Basis für eine hochverfügbare Lösung bereitgestellt werden. Sie können auch regionsübergreifend bereitgestellt werden, um eine notfallresistente Lösung zu bieten. Sie finden die Regionen, in denen Dedicated HSM verfügbar ist, auf der Seite [Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=azure-dedicated-hsm). 
 
-Jede der Regionen verfügt über HSM-Racks, die entweder in zwei unabhängigen Rechenzentren oder in mindestens zwei unabhängigen Verfügbarkeitszonen bereitgestellt werden. „Asien, Südosten“ verfügt z. B. über drei Verfügbarkeitszonen und „USA, Osten 2“ über zwei. Es gibt insgesamt acht Regionen in Europa, Asien und den USA, die den Dedicated HSM-Dienst zur Verfügung stellen. Dies wird sich in Zukunft ändern, wenn wir weitere HSM-Racks in zusätzlichen Regionen bereitstellen. Weitere Informationen zu Azure-Regionen finden Sie in den offiziellen [Informationen zu Azure-Regionen](https://azure.microsoft.com/global-infrastructure/regions/).
+* East US
+* USA (Ost) 2
+* USA (Westen)
+* USA, Westen 2
+* USA Süd Mitte
+* Asien, Südosten
+* Asien, Osten
+* Indien, Mitte
+* Indien, Süden
+* Japan, Osten
+* Japan, Westen
+* Nordeuropa
+* Europa, Westen
+* UK, Süden
+* UK, Westen
+* Kanada, Mitte
+* Kanada, Osten
+* Australien (Osten)
+* Australien, Südosten
+* Schweiz, Norden
+* Schweiz, Westen
+* US Government, Virginia
+* US Gov Texas
+
+Jede dieser Regionen verfügt über HSM-Racks, die entweder in zwei unabhängigen Datencentern oder in mindestens zwei unabhängigen Verfügbarkeitszonen bereitgestellt werden. „Asien, Südosten“ verfügt über drei Verfügbarkeitszonen und „USA, Osten 2“ über zwei. Es gibt insgesamt dreiundzwanzig Regionen in Europa, Asien und Nordamerika, die den Dedicated HSM-Dienst zur Verfügung stellen. Weitere Informationen zu Azure-Regionen finden Sie in den offiziellen [Informationen zu Azure-Regionen](https://azure.microsoft.com/global-infrastructure/regions/).
 Einige Entwurfsfaktoren für jede Dedicated HSM-basierte Lösung sind Standort/Latenz, Hochverfügbarkeit und Unterstützung für andere verteilte Anwendungen.
 
 ## <a name="device-location"></a>Gerätestandort
@@ -46,7 +70,7 @@ Dedicated HSM-Geräte werden typischerweise zur Unterstützung von Anwendungen b
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem die Bereitstellungsarchitektur festgelegt wurde, werden die meisten Konfigurationsaktivitäten zur Implementierung dieser Architektur von Thales bereitgestellt. Dazu gehören sowohl die Gerätekonfiguration als auch Anwendungsintegrationsszenarien. Weitere Informationen finden Sie im [Thales-Kundensupportportal](https://supportportal.gemalto.com/csm/). Sie können außerdem die Administrations- und Konfigurationsleitfäden herunterladen. Die Microsoft-Partnerwebsite verfügt über eine Vielzahl von Integrationsleitfäden.
+Nachdem die Bereitstellungsarchitektur festgelegt wurde, werden die meisten Konfigurationsaktivitäten zur Implementierung dieser Architektur von Thales bereitgestellt. Dazu gehören sowohl die Gerätekonfiguration als auch Anwendungsintegrationsszenarien. Weitere Informationen finden Sie im [Thales-Kundensupportportal](https://supportportal.thalesgroup.com/csm). Sie können außerdem die Administrations- und Konfigurationsleitfäden herunterladen. Die Microsoft-Partnerwebsite verfügt über eine Vielzahl von Integrationsleitfäden.
 Es wird empfohlen, sich mit allen Schlüsselkonzepten des Diensts (z.B. Hochverfügbarkeit und Sicherheit) vor der Gerätebereitstellung oder dem Entwurf und der Bereitstellung von Anwendungen vertraut zu machen.
 Weitere Themen auf Konzeptebene:
 

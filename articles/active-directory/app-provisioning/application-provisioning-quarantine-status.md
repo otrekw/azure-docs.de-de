@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 09/24/2020
+ms.date: 03/18/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: d997c85f96fa9f87ca6d017cb555b3732007e21c
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 49590c46588ad0d0f1c1b7b095679a3c3fce96eb
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99256304"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104579500"
 ---
 # <a name="application-provisioning-in-quarantine-status"></a>Anwendungsbereitstellung im Quarantänestatus
 
@@ -85,7 +85,7 @@ Beheben Sie zuerst das Problem, das dazu geführt hat, dass die Anwendung unter 
 
 Nachdem Sie das Problem behoben haben, können Sie den Bereitstellungsauftrag neu starten. Durch bestimmte Änderungen an den Bereitstellungseinstellungen (wie Attributzuordnungen oder Bereichsfilter) der Anwendung wird die Bereitstellung automatisch neu gestartet. Die Statusanzeige auf der Seite **Bereitstellung** der Anwendung gibt an, wann die Bereitstellung zuletzt gestartet wurde. Wenn Sie den Bereitstellungsauftrag manuell neu starten müssen, verwenden Sie eine der folgenden Methoden:  
 
-- Verwenden Sie das Azure-Portal, um den Bereitstellungsauftrag neu zu starten. Wählen Sie auf der Seite **Bereitstellung** der Anwendung unter **Einstellungen** die Option **Aktuellen Status löschen und Synchronisierung neu starten** aus, und legen Sie **Bereitstellungsstatus** auf **Ein** fest. Durch diese Aktion wird der Bereitstellungsdienst vollständig neu gestartet. Dieser Vorgang kann einige Zeit in Anspruch nehmen. Ein vollständiger Startzyklus wird erneut ausgeführt. Dabei werden Hinterlegungen gelöscht, die App wird aus der Quarantäne entfernt, und alle Wasserzeichen werden gelöscht.
+- Verwenden Sie das Azure-Portal, um den Bereitstellungsauftrag neu zu starten. Klicken Sie auf der **Bereitstellungsseite** der Anwendung auf **Bereitstellung erneut starten**. Durch diese Aktion wird der Bereitstellungsdienst vollständig neu gestartet. Dieser Vorgang kann einige Zeit in Anspruch nehmen. Ein vollständiger Startzyklus wird erneut ausgeführt. Dabei werden Hinterlegungen gelöscht, die App wird aus der Quarantäne entfernt, und alle Wasserzeichen werden gelöscht. Der Dienst wertet dann alle Benutzer im Quellsystem nochmal aus und ermittelt, ob sie für die Bereitstellung zulässig sind. Dies kann sich als nützlich erweisen, wenn sich Ihre Anwendung wie in diesem Artikel beschrieben gerade in Quarantäne befindet oder wenn Sie eine Änderung an den Attributzuordnungen vornehmen müssen. Beachten Sie, dass die Ausführung des Startzyklus aufgrund der Anzahl der auszuwertenden Objekte länger dauert als herkömmliche inkrementelle Zyklen. Weitere Informationen zur Leistung von Startzyklen und inkrementellen Zyklen finden Sie [hier](application-provisioning-when-will-provisioning-finish-specific-user.md).
 
 - Verwenden Sie Microsoft Graph, um [den Bereitstellungsauftrag neu zu starten](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta&preserve-view=true). Sie haben vollständige Kontrolle über die Elemente, die Sie neu starten. Sie können auswählen, ob Hinterlegungen (zum Neustarten des Hinterlegungszählers, der in Richtung Quarantänestatus läuft) gelöscht, die Quarantäne (zum Entfernen der Anwendung aus der Quarantäne) oder die Wasserzeichen gelöscht werden soll(en). Verwenden Sie die folgende Anforderung:
  

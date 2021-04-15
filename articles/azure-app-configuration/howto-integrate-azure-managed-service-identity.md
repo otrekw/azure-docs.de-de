@@ -7,13 +7,13 @@ ms.author: alkemper
 ms.service: azure-app-configuration
 ms.custom: devx-track-csharp, fasttrack-edit
 ms.topic: conceptual
-ms.date: 2/25/2020
-ms.openlocfilehash: 386a0e27c0f73f5bcd42397ed515f7561d5097fd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/08/2021
+ms.openlocfilehash: b4b67a6bf4eea72b3a81bd01398cc60cc33c0d0a
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104955056"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107227040"
 ---
 # <a name="use-managed-identities-to-access-app-configuration"></a>Verwenden verwalteter Identitäten für den Zugriff auf App Configuration
 
@@ -145,7 +145,7 @@ Um eine verwaltete Entität im Portal einzurichten, erstellen Sie zuerst eine An
     >config.AddAzureAppConfiguration(options =>
     >   options.Connect(new Uri(settings["AppConfig:Endpoint"]), new ManagedIdentityCredential(<your_clientId>)));
     >```
-    >Wie in den [Häufig gestellten Fragen zu verwalteten Identitäten für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/known-issues.md#what-identity-will-imds-default-to-if-dont-specify-the-identity-in-the-request) erläutert, gibt es eine Standardmethode, um aufzulösen, welche verwaltete Identität verwendet wird. In diesem Fall erzwingt die Azure-Identitätsbibliothek, dass Sie die gewünschte Identität angeben, um in Zukunft mögliche Laufzeitprobleme zu vermeiden (z. B. wenn eine neue benutzerseitig zugewiesene verwaltete Identität hinzugefügt wird, oder wenn die systemseitig zugewiesene verwaltete Identität aktiviert ist). Daher müssen Sie die clientId auch dann angeben, wenn nur eine benutzerseitig zugewiesene verwaltete Identität definiert ist und keine systemseitig zugewiesene verwaltete Identität vorhanden ist.
+    >Wie in den [Häufig gestellten Fragen zu verwalteten Identitäten für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/managed-identities-faq.md#what-identity-will-imds-default-to-if-dont-specify-the-identity-in-the-request) erläutert, gibt es eine Standardmethode, um aufzulösen, welche verwaltete Identität verwendet wird. In diesem Fall erzwingt die Azure-Identitätsbibliothek, dass Sie die gewünschte Identität angeben, um in Zukunft mögliche Laufzeitprobleme zu vermeiden (z. B. wenn eine neue benutzerseitig zugewiesene verwaltete Identität hinzugefügt wird, oder wenn die systemseitig zugewiesene verwaltete Identität aktiviert ist). Daher müssen Sie die clientId auch dann angeben, wenn nur eine benutzerseitig zugewiesene verwaltete Identität definiert ist und keine systemseitig zugewiesene verwaltete Identität vorhanden ist.
 
 
 1. Um sowohl App Configuration-Werte als auch Key Vault-Verweise zu verwenden, aktualisieren Sie *Program.cs*, wie unten gezeigt. Mit diesem Code wird `SetCredential` als Teil von `ConfigureKeyVault` aufgerufen, um dem Konfigurationsanbieter mitzuteilen, welche Anmeldeinformationen für die Authentifizierung bei Key Vault verwendet werden sollen.

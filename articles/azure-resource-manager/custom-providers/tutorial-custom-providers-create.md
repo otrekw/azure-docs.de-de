@@ -7,10 +7,10 @@ ms.date: 06/19/2019
 ms.author: jobreen
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 4f425af7681b666b42fbcc70ac0e4c31d9df6d49
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87503751"
 ---
 # <a name="create-and-use-a-custom-provider"></a>Erstellen und Verwenden eines benutzerdefinierten Anbieters
@@ -218,7 +218,7 @@ Parameter | Erforderlich | BESCHREIBUNG
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie Grundlegendes über benutzerdefiniert Anbieter gelernt. Weitere Informationen finden Sie unter
+In diesem Artikel haben Sie Grundlegendes über benutzerdefiniert Anbieter gelernt. Weitere Informationen finden Sie unter:
 
 - [Vorgehensweise: Hinzufügen benutzerdefinierter Aktionen zur Azure-REST-API](./custom-providers-action-endpoint-how-to.md)
-- [Vorgehensweise: Hinzufügen benutzerdefinierter Ressourcen zur Azure-REST-API](./custom-providers-resources-endpoint-how-to.md)
+- [Hinzufügen benutzerdefinierter Ressourcen zur Azure-REST-API](./custom-providers-resources-endpoint-how-to.md)

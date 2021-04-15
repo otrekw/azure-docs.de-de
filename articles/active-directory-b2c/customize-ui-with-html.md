@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/28/2021
+ms.date: 03/16/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 78ad2540029d78084485ae2004194f9f7c2d6052
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: e694a5f6144cee65be074d05ce0015d31bfdf65e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99050542"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104675824"
 ---
 # <a name="customize-the-user-interface-with-html-templates-in-azure-active-directory-b2c"></a>Anpassen der Benutzeroberfläche mit HTML-Vorlagen in Azure Active Directory B2C
 
@@ -363,26 +363,31 @@ https://contoso.blob.core.windows.net/fr/myHTML/unified.html
 Beispielvorlagen für die Benutzeroberflächenanpassung finden Sie hier:
 
 ```bash
-git clone https://github.com/Azure-Samples/Azure-AD-B2C-page-templates
+git clone https://github.com/azure-ad-b2c/html-templates
 ```
 
 Dieses Projekt enthält die folgenden Vorlagen:
-- [Ozeanblau](https://github.com/Azure-Samples/Azure-AD-B2C-page-templates/tree/master/ocean_blue)
-- [Schiefergrau](https://github.com/Azure-Samples/Azure-AD-B2C-page-templates/tree/master/slate_gray)
+- [Ozeanblau](https://github.com/azure-ad-b2c/html-templates/tree/main/templates/AzureBlue)
+- [Schiefergrau](https://github.com/azure-ad-b2c/html-templates/tree/main/templates/MSA)
+- [Klassisch](https://github.com/azure-ad-b2c/html-templates/tree/main/templates/classic)
+- [Vorlagenressourcen](https://github.com/azure-ad-b2c/html-templates/tree/main/templates/src)
 
 So verwenden Sie das Beispiel
 
-1. Klonen Sie das Repository auf Ihrem lokalen Computer. Wählen Sie den Vorlagenordner `/ocean_blue` oder `/slate_gray` aus.
-1. Laden Sie alle Dateien aus dem Vorlagenordner und dem Ordner `/assets` in den Blob-Speicher hoch, wie in den vorherigen Abschnitten beschrieben.
-1. Öffnen Sie als Nächstes jede `\*.html`-Datei im Stammverzeichnis von `/ocean_blue` bzw. `/slate_gray`, und ersetzen Sie alle Vorkommen relativer URLs durch die URLs in den CSS-, Bild- und Schriftartdateien, die Sie in Schritt 2 hochgeladen haben. Beispiel:
+1. Klonen Sie das Repository auf Ihrem lokalen Computer. Wählen Sie den Vorlagenordner `/AzureBlue`, `/MSA` oder `/classic` aus.
+1. Laden Sie alle Dateien aus dem Vorlagenordner und dem Ordner `/src` in den Blob-Speicher hoch, wie in den vorherigen Abschnitten beschrieben.
+1. Öffnen Sie dann die einzelnen `\*.html`-Dateien im Vorlagenordner. Ersetzen Sie anschließend alle Instanzen von `https://login.microsoftonline.com`-URLs durch die URL, die Sie in Schritt 2 hochgeladen haben. Beispiel:
+    
+    Von:
     ```html
-    <link href="./css/assets.css" rel="stylesheet" type="text/css" />
+    https://login.microsoftonline.com/templates/src/fonts/segoeui.WOFF
     ```
 
-    Beschreibung
+    Nach:
     ```html
-    <link href="https://your-storage-account.blob.core.windows.net/your-container/css/assets.css" rel="stylesheet" type="text/css" />
+    https://your-storage-account.blob.core.windows.net/your-container/templates/src/fonts/segoeui.WOFF
     ```
+    
 1. Speichern Sie die `\*.html`-Dateien, und laden Sie sie in den Blob-Speicher hoch.
 1. Ändern Sie nun die Richtlinie, die auf Ihre HTML-Datei verweist, wie zuvor erwähnt.
 1. Falls Schriftarten, Bilder oder CSS-Dateien fehlen, überprüfen Sie die Verweise in der Erweiterungsrichtlinie und die HTML-Dateien (\*.html).

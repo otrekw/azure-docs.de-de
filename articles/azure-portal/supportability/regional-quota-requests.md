@@ -7,10 +7,10 @@ ms.date: 01/27/2020
 ms.topic: how-to
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
 ms.openlocfilehash: eadf740c6b5caccbf678a1238f993d4ec0b34095
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96745416"
 ---
 # <a name="standard-quota-increase-limits-by-region"></a>Standardkontingent: Erhöhen der Grenzwerte nach Region
@@ -41,7 +41,7 @@ Sie können auf zwei Arten eine Erhöhung der Grenzwerte des vCPU-Standardkontin
 
 So fordern Sie eine vCPU-Kontingenterhöhung nach Region über **Hilfe und Support** an
 
-1. Wählen Sie auf dem Menü des [Azure-Portals](https://portal.azure.com) die Option **Hilfe und Support** aus.
+1. Wählen Sie im Menü des [Azure-Portals](https://portal.azure.com) die Option **Hilfe und Support** aus.
 
    ![Der Link „Hilfe und Support“](./media/resource-manager-core-quotas-request/help-plus-support.png)
 
@@ -53,13 +53,13 @@ So fordern Sie eine vCPU-Kontingenterhöhung nach Region über **Hilfe und Suppo
 
    ![Auswählen eines Problemtyps](./media/resource-manager-core-quotas-request/select-quota-issue-type.png)
 
-1. Wählen Sie für **Abonnement** das Abonnement aus, dessen Kontingent Sie erhöhen möchten.
+1. Wählen Sie unter **Abonnement** das Abonnement aus, dessen Kontingent Sie erhöhen möchten.
 
    ![Auswählen eines Abonnements](./media/resource-manager-core-quotas-request/select-subscription-support-request.png)
 
 1. Wählen Sie für **Kontingenttyp** die Option **Andere Anforderungen** aus.
 
-   ![Kontingenttyp auswählen](./media/resource-manager-core-quotas-request/regional-quotatype.png)
+   ![Auswählen eines Kontingenttyps](./media/resource-manager-core-quotas-request/regional-quotatype.png)
 
 1. Klicken Sie auf **Weiter: Lösungen**, um **PROBLEMDETAILS** zu öffnen. Geben Sie unter **Beschreibung** die folgenden Informationen ein:
 

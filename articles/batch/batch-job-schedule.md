@@ -4,12 +4,12 @@ description: Verwenden Sie die Auftragsplanung, um Ihre Tasks zu verwalten.
 ms.topic: how-to
 ms.date: 02/20/2020
 ms.custom: seodec18
-ms.openlocfilehash: 7da3c78e00f5d7e41a5396603cf4885a50cb6e5c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4661c9fc22868870af147998467c9f355f30580e
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89146350"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219683"
 ---
 # <a name="schedule-jobs-for-efficiency"></a>Planen von Aufträgen für Effizienz
 
@@ -33,7 +33,7 @@ Der Vorteil der Auftragsplanung besteht darin, dass Sie einen Zeitplan für die 
 
 **Auftragszeitplan-ID**: Der eindeutige Bezeichner für diesen Auftragszeitplan.
 
-**Anzeigename**: Der Anzeigename für den Auftrag muss nicht eindeutig sein, ist aber auf maximal 1024 Zeichen begrenzt.
+**Anzeigename**: Der Anzeigename für den Auftrag muss nicht eindeutig sein, ist aber auf maximal 1024 Zeichen begrenzt.
 
 **Nicht ausführen bis**: Gibt den frühesten Zeitpunkt für die Auftragsausführung an. Wenn Sie diese Option nicht festlegen, ist der Zeitplan sofort zur Ausführung von Aufträgen verfügbar.
 
@@ -52,7 +52,7 @@ Unten im Basisformular geben Sie den Pool an, in dem der Auftrag ausgeführt wer
 
 **Task „Auftragskonfiguration“** : Wählen Sie **Aktualisieren** aus, um die Task im Auftrags-Manager sowie die Auftragsvorbereitungs- und Freigabe-Tasks zu benennen, falls Sie diese verwenden.
 
-**Priorität:** Weisen Sie dem Auftrag eine Priorität zu.
+**Priorität**: Weisen Sie dem Auftrag eine Priorität zu.
 
 **Max. Gesamtbetrachtungszeit**: Legen Sie die maximale Zeitspanne für die Ausführung des Auftrags fest. Wenn er nicht innerhalb des Zeitraums abgeschlossen wird, beendet Batch den Auftrag. Wenn Sie diese Option nicht festgelegen, gibt es keine zeitliche Beschränkung für den Auftrag.
 
@@ -77,7 +77,7 @@ Informationen zum Verwalten eines Auftrags mit der Azure-Befehlszeilenschnittste
 
 
 
-[1]: ./media/batch-job-schedule/add_job_schedule-02.png
-[2]: ./media/batch-job-schedule/add_job_schedule-03.png
+[1]: ./media/batch-job-schedule/add-job-schedule-02.png
+[2]: ./media/batch-job-schedule/add-job-schedule-03.png
 
 

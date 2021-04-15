@@ -5,12 +5,12 @@ author: cachai2
 ms.topic: conceptual
 ms.date: 1/21/2021
 ms.author: cachai
-ms.openlocfilehash: f826c947b1e47c1c996a8e9102492e85adafa326
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: c35780ae2c4741454685d7d9740a660e965df19e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102215152"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104606989"
 ---
 # <a name="azure-functions-networking-options"></a>Netzwerkoptionen von Azure Functions
 
@@ -81,34 +81,15 @@ Informationen zum Einrichten der Integration virtueller Netzwerke finden Sie unt
 
 ## <a name="connect-to-service-endpoint-secured-resources"></a>Herstellen einer Verbindung mit durch den Dienstendpunkt gesicherten Ressourcen
 
-Um eine höhere Sicherheitsstufe zu gewährleisten, können Sie eine Reihe von Azure-Diensten auf ein virtuelles Netzwerk beschränken, indem Sie Dienstendpunkte verwenden. Sie müssen Ihre Funktions-App dann in dieses virtuelle Netzwerk integrieren, um auf die Ressource zugreifen zu können. Diese Konfiguration wird für alle Pläne unterstützt, die die Integration in ein virtuelles Netzwerk unterstützen.
+Um eine höhere Sicherheitsstufe zu gewährleisten, können Sie eine Reihe von Azure-Diensten auf ein virtuelles Netzwerk beschränken, indem Sie Dienstendpunkte verwenden. Sie müssen Ihre Funktions-App dann in dieses virtuelle Netzwerk integrieren, um auf die Ressource zugreifen zu können. Diese Konfiguration wird für alle [Pläne](functions-scale.md#networking-features) unterstützt, welche die Integration in ein virtuelles Netzwerk unterstützen.
 
 Weitere Informationen finden Sie unter [VNET-Dienstendpunkte](../virtual-network/virtual-network-service-endpoints-overview.md).
 
 ## <a name="restrict-your-storage-account-to-a-virtual-network"></a>Einschränken Ihres Speicherkontos auf ein virtuelles Netzwerk 
 
-Beim Erstellen einer Funktions-App müssen Sie ein allgemeines Azure Storage-Konto erstellen oder verknüpfen, das Blob-, Queue- und Table Storage unterstützt. Sie können dieses Speicherkonto durch eines ersetzen, das mit Dienstendpunkten oder einem privaten Endpunkt geschützt ist. Dieses Feature funktioniert derzeit für alle von virtuellen Netzwerken unterstützten SKUs, d. h. Standard und Premium, mit Ausnahme von flexiblen Zeitstempeln, bei denen virtuelle Netzwerke nur für Premium-SKUs verfügbar sind. Einrichten einer Funktion mit einem auf ein privates Netzwerk beschränkten Speicherkonto:
+Beim Erstellen einer Funktions-App müssen Sie ein allgemeines Azure Storage-Konto erstellen oder verknüpfen, das Blob-, Queue- und Table Storage unterstützt. Sie können dieses Speicherkonto durch eines ersetzen, das mit Dienstendpunkten oder einem privaten Endpunkt geschützt ist. 
 
-1. Erstellen Sie eine Funktion mit einem Speicherkonto, für das keine Dienstendpunkte aktiviert sind.
-1. Konfigurieren Sie die Funktion so, dass eine Verbindung zum virtuellen Netzwerk hergestellt wird.
-1. Erstellen oder konfigurieren Sie ein anderes Speicherkonto.  Dabei handelt es sich um das Speicherkonto, in dem die Dienstendpunkte abgesichert und die Verbindung zur Funktion hergestellt werden sollen.
-1. [Erstellen Sie eine Dateifreigabe](../storage/files/storage-how-to-create-file-share.md#create-file-share) im abgesicherten Speicherkonto.
-1. Aktivieren Sie Dienstendpunkte oder einen privaten Endpunkt für das Speicherkonto.  
-    * Bei der Verwendung von Verbindungen mit privaten Endpunkten ist für das Speicherkonto ein privater Endpunkt für die Subressourcen `file` und `blob` erforderlich.  Wenn bestimmte Funktionen wie Durable Functions verwendet werden, muss der Zugriff auf `queue` und `table` außerdem über eine Verbindung mit einem privaten Endpunkt möglich sein.
-    * Wenn Sie Dienstendpunkte verwenden, aktivieren Sie das für ihre Funktions-Apps dedizierte Subnetz für Speicherkonten.
-1. Kopieren Sie die Datei und den Blobinhalt aus dem Speicherkonto der Funktions-App in das geschützte Speicherkonto und die Dateifreigabe.
-1. Kopieren Sie die Verbindungszeichenfolge für dieses Speicherkonto.
-1. Aktualisieren Sie die **Anwendungseinstellungen** unter **Konfiguration** für die Funktions-App folgendermaßen:
-    - Legen Sie `AzureWebJobsStorage` als Verbindungszeichenfolge für das geschützte Speicherkonto fest.
-    - Legen Sie `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` als Verbindungszeichenfolge für das geschützte Speicherkonto fest.
-    - Legen Sie `WEBSITE_CONTENTSHARE` für den Namen der Dateifreigabe fest, die im geschützten Speicherkonto erstellt wurde.
-    - Erstellen Sie eine neue Einstellung mit dem Namen `WEBSITE_CONTENTOVERVNET` und einem Wert von `1`.
-    - Wenn das Speicherkonto Verbindungen mit privaten Endpunkten verwendet, überprüfen Sie die folgenden Einstellungen, oder fügen Sie sie hinzu:
-        - `WEBSITE_VNET_ROUTE_ALL` mit dem Wert `1`
-        - `WEBSITE_DNS_SERVER` mit dem Wert `168.63.129.16` 
-1. Speichern Sie die Anwendungseinstellungen.  
-
-Die Funktions-App wird neu gestartet und ist nun mit einem geschützten Speicherkonto verbunden.
+Diese Funktion funktioniert zurzeit für alle von Windows Virtual Network unterstützten SKUs im Dedicated-(App Service)-Plan und beim Premium-Plan. Der Verbrauchsplan wird nicht unterstützt. Informationen zum Einrichten einer Funktion mit einem Speicherkonto, das auf ein privates Netzwerk beschränkt ist, finden Sie unter [Einschränken des Speicher Kontos für ein virtuelles Netzwerk](configure-networking-how-to.md#restrict-your-storage-account-to-a-virtual-network).
 
 ## <a name="use-key-vault-references"></a>Verwenden von Key Vault-Verweisen
 
@@ -173,6 +154,8 @@ Weitere Informationen finden Sie in der [App Service-Dokumentation zu Hybrid Con
 IP-Einschränkungen für ausgehenden Datenverkehr sind in einem Premium-Plan, einem App Service-Plan oder in einer App Service-Umgebung verfügbar. Sie können ausgehende Einschränkungen für das virtuelle Netzwerk konfigurieren, wo Ihre App Service-Umgebung bereitgestellt wird.
 
 Wenn Sie eine Funktions-App in einen Premium-Tarif oder einen App Service-Plan mit einem virtuellen Netzwerk integrieren, kann die App standardmäßig weiterhin ausgehende Aufrufe ins Internet vornehmen. Durch Hinzufügen der Anwendungseinstellung `WEBSITE_VNET_ROUTE_ALL=1` erzwingen Sie, dass der gesamte ausgehende Datenverkehr an das virtuelle Netzwerk gesendet wird. Dort können Netzwerksicherheitsgruppen-Regeln verwendet werden, um den Datenverkehr einzuschränken.
+
+Informationen zum Steuern der ausgehenden IP-Adresse mithilfe eines virtuellen Netzwerks finden Sie unter [Tutorial: Steuern der ausgehenden IP-Adresse von Azure Functions mit einem Azure Virtual Network-NAT-Gateway](functions-how-to-use-nat-gateway.md). 
 
 ## <a name="automation"></a>Automation
 Die folgenden APIs ermöglichen es Ihnen, regionale Integrationen virtueller Netzwerke programmgesteuert zu verwalten:

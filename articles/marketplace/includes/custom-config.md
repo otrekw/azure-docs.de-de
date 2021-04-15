@@ -8,10 +8,10 @@ author: emuench
 ms.author: mingshen
 ms.date: 10/09/2020
 ms.openlocfilehash: a1bc7cf1fd339ca3660c7b39326f37d2763c74b2
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92283205"
 ---
 Falls eine zusätzliche Konfiguration erforderlich ist, können Sie eine geplante Aufgabe einrichten, die beim Start ausgeführt wird. So ist es möglich, nach der Bereitstellung der VM letzte Änderungen vorzunehmen. Berücksichtigen Sie außerdem folgende Punkte:

@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
-ms.openlocfilehash: 58148e3a20ba41ae9707543be290f2d632cb1185
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 9d11d17f90dcd6335fcaf6bd48a44037777a087e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100375288"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104601384"
 ---
 # <a name="configure-data-persistence-for-a-premium-azure-cache-for-redis-instance"></a>Konfigurieren von Datenpersistenz für Premium-Instanzen von Azure Cache for Redis
 
@@ -19,7 +19,7 @@ ms.locfileid: "100375288"
 
 Azure Cache for Redis bietet Redis-Persistenz über die folgenden Modelle:
 
-* RDB-Persistenz: Wenn RDB-Persistenz (Redis-Datenbank) konfiguriert ist, speichert Azure Cache for Redisbasierend auf einer wählbaren Sicherungshäufigkeit eine Momentaufnahme des Azure Cache for Redis in einem binären Redis-Format dauerhaft auf dem Datenträger. Bei einem schwerwiegenden Fehler, bei dem der primäre sowie der Replikatcache deaktiviert werden, wird der Cache mithilfe der neuesten Momentaufnahme wiederhergestellt. Erfahren Sie mehr über die [Vorteile](https://redis.io/topics/persistence#rdb-advantages) und [Nachteile](https://redis.io/topics/persistence#rdb-disadvantages) der RDB-Persistenz.
+* **RDB-Persistenz:** Wenn die RDB-Persistenz (Redis-Datenbank) konfiguriert ist, speichert Azure Cache for Redis basierend auf einer wählbaren Sicherungshäufigkeit eine Momentaufnahme der Azure Cache for Redis-Instanz in einem binären Redis-Format dauerhaft auf dem Datenträger (in einem Azure Storage-Konto). Bei einem schwerwiegenden Fehler, bei dem der primäre sowie der Replikatcache deaktiviert werden, wird der Cache mithilfe der neuesten Momentaufnahme wiederhergestellt. Erfahren Sie mehr über die [Vorteile](https://redis.io/topics/persistence#rdb-advantages) und [Nachteile](https://redis.io/topics/persistence#rdb-disadvantages) der RDB-Persistenz.
 * **AOF-Persistenz:** Wenn die AOF-Persistenz (Append only file, nur Datei anhängen) konfiguriert ist, speichert Azure Cache for Redis jeden Schreibvorgang in einem Protokoll, das mindestens einmal pro Sekunde in einem Azure Storage-Konto gespeichert wird. Bei einem schwerwiegenden Fehler, bei dem der primäre und der Replikatcache deaktiviert werden, wird der Cache mithilfe der gespeicherten Schreibvorgänge wiederhergestellt. Erfahren Sie mehr über die [Vorteile](https://redis.io/topics/persistence#aof-advantages) und [Nachteile](https://redis.io/topics/persistence#aof-disadvantages) der AOF-Persistenz.
 
 Durch die Persistenz werden Redis-Daten in ein Azure Storage-Konto geschrieben, das sich in Ihrem Besitz befindet und von Ihnen verwaltet wird. Dies kann bei der Cacheerstellung auf dem Blatt **Neuer Azure Cache for Redis** sowie für vorhandene Premium-Caches im **Ressourcenmenü** konfiguriert werden.
@@ -60,7 +60,7 @@ Durch die Persistenz werden Redis-Daten in ein Azure Storage-Konto geschrieben,
 
 8. Zum Aktivieren der RDB-Persistenz klicken Sie auf **RDB** und konfigurieren die Einstellungen. 
    
-   | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG |
+   | Einstellung      | Vorgeschlagener Wert  | Beschreibung |
    | ------------ |  ------- | -------------------------------------------------- |
    | **Sicherungshäufigkeit** | Öffnen Sie die Dropdownliste, und wählen Sie ein Sicherungsintervall aus. Zur Auswahl stehen **15 Minuten**, **30 Minuten**, **60 Minuten**, **6 Stunden**, **12 Stunden** und **24 Stunden**. | Dieses Intervall wird ab dem Moment rückwärts gezählt, an dem der vorherige Sicherungsvorgang erfolgreich abgeschlossen wird. Wenn das Intervall abgelaufen ist, wird eine neue Sicherung gestartet. | 
    | **Speicherkonto** | Öffnen Sie die Dropdownliste, und wählen Sie Ihr Speicherkonto aus. | Sie müssen ein Speicherkonto auswählen, das aus derselben Region und demselben Abonnement wie der Cache stammt, und wir empfehlen ein **Storage Premium** -Konto, da dieses einen höheren Durchsatz aufweist.  | 
@@ -73,7 +73,7 @@ Durch die Persistenz werden Redis-Daten in ein Azure Storage-Konto geschrieben,
 
 9. Zum Aktivieren der AOF-Persistenz klicken Sie auf **AOF** und konfigurieren die Einstellungen. 
    
-   | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG |
+   | Einstellung      | Vorgeschlagener Wert  | Beschreibung |
    | ------------ |  ------- | -------------------------------------------------- |
    | **Erstes Speicherkonto** | Öffnen Sie die Dropdownliste, und wählen Sie Ihr Speicherkonto aus. | Dieses Speicherkonto muss aus derselben Region und demselben Abonnement wie der Cache stammen. Es wird empfohlen, ein **Storage Premium**-Konto zu verwenden, da dieses einen höheren Durchsatz aufweist. | 
    | **Erster Speicherschlüssel** | Öffnen Sie die Dropdownliste, und wählen Sie **Primärer Schlüssel** oder **Sekundärer Schlüssel** aus. | Wenn der Speicherschlüssel für Ihr Persistenzkonto neu generiert wird, müssen Sie den gewünschten Schlüssel über die Dropdownliste **Speicherschlüssel** neu konfigurieren. | 

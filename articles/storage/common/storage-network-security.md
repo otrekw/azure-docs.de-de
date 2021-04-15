@@ -5,16 +5,16 @@ services: storage
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/05/2021
+ms.date: 03/16/2021
 ms.author: normesta
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 62f61549ffd6312b94589b9cabbc347edafd0ff2
-ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
+ms.openlocfilehash: 3d71a7ad2507909dacf54e7f1c49b6e768033113
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103601966"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104600478"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurieren von Azure Storage-Firewalls und virtuellen Netzwerken
 
@@ -244,24 +244,31 @@ VNET-Regeln für Speicherkonten können über das Azure-Portal, über PowerShell
 
 ## <a name="grant-access-from-an-internet-ip-range"></a>Gewähren von Zugriff aus einem Internet-IP-Adressbereich
 
-Sie können Speicherkonten so konfigurieren, dass der Zugriff über bestimmte öffentliche Internet-IP-Adressbereichen zugelassen wird. Diese Konfiguration gewährt bestimmten internetbasierten Diensten und lokalen Netzwerken Zugriff und blockiert gleichzeitig den allgemeinen Internetdatenverkehr.
+Sie können IP-Netzwerkregeln verwenden, um den Zugriff aus spezifischen öffentlichen IP-Adressbereichen über das Internet zuzulassen, indem Sie IP-Netzwerkregeln erstellen. Jedes Speicherkonto unterstützt bis zu 200 Regeln. Diese Regeln gewähren bestimmten internetbasierten Diensten und lokalen Netzwerken Zugriff und blockieren den allgemeinen Internetdatenverkehr.
 
-Geben Sie zulässige Internetadressbereiche in [CIDR-Notation](https://tools.ietf.org/html/rfc4632) im Format *16.17.18.0/24* oder als einzelne IP-Adressen (beispielsweise *16.17.18.19*) an.
+Die folgenden Einschränkungen gelten für IP-Adressbereiche.
 
-   > [!NOTE]
-   > Kleine Adressbereiche mit der Präfixgröße „/ 31“ oder „/ 32“ werden nicht unterstützt. Diese Bereiche müssen mit einzelnen IP-Adressregeln konfiguriert werden.
+- IP-Netzwerkregeln sind nur für IP-Adressen des **öffentlichen Internet** zulässig. 
 
-IP-Netzwerkregeln sind nur für **öffentliche Internet**-IP-Adressen zulässig. Für private Netzwerke reservierte IP-Adressbereiche (wie in [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3) definiert) sind in IP-Adressregeln nicht zulässig. Private Netzwerke enthalten Adressen, die mit _10.*_ , _172.16.*_  - _172.31.*_ und _192.168.*_ beginnen.
+  Für private Netzwerke reservierte IP-Adressbereiche (wie in [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3) definiert) sind in IP-Adressregeln nicht zulässig. Private Netzwerke enthalten Adressen, die mit _10.*_ , _172.16.*_  - _172.31.*_ und _192.168.*_ beginnen.
 
-   > [!NOTE]
-   > IP-Netzwerkregeln haben keine Auswirkungen auf Anforderungen, die aus der Azure-Region stammen, in der sich auch das Speicherkonto befindet. Verwenden Sie [VNET-Regeln](#grant-access-from-a-virtual-network), um Anforderungen aus der gleichen Region zuzulassen.
+- Sie müssen zulässige Internetadressbereiche in der [CIDR-Notation](https://tools.ietf.org/html/rfc4632) im Format *16.17.18.0/24* oder als einzelne IP-Adressen (beispielsweise *16.17.18.19*) angeben. 
 
-  > [!NOTE]
-  > Dienste, die in derselben Region wie das Speicherkonto bereitgestellt werden, verwenden für die Kommunikation private Azure-IP-Adressen. Deshalb können Sie den Zugriff auf bestimmte Azure-Dienste nicht basierend auf deren IP-Adressbereich für öffentlichen ausgehenden Datenverkehr einschränken.
+- Kleine Adressbereiche mit der Präfixgröße „/ 31“ oder „/ 32“ werden nicht unterstützt. Diese Bereiche müssen mit einzelnen IP-Adressregeln konfiguriert werden. 
 
-Für die Konfiguration von Storage-Firewallregeln werden nur IPv4-Adressen unterstützt.
+- Für die Konfiguration von Storage-Firewallregeln werden nur IPv4-Adressen unterstützt.
 
-Jedes Speicherkonto unterstützt bis zu 200 IP-Netzwerkregeln.
+IP-Netzwerkregeln können in den folgenden Fällen nicht verwendet werden:
+
+- Zum Einschränken des Zugriffs auf Clients in derselben Azure-Region wie das Speicherkonto
+  
+  IP-Netzwerkregeln haben keine Auswirkungen auf Anforderungen, die aus der Azure-Region stammen, in der sich auch das Speicherkonto befindet. Verwenden Sie [VNET-Regeln](#grant-access-from-a-virtual-network), um Anforderungen aus der gleichen Region zuzulassen. 
+
+- Zum Einschränken des Zugriffs auf Clients in einer [gekoppelten Region](../../best-practices-availability-paired-regions.md), die sich in einem VNet mit einem Dienstendpunkt befinden
+
+- Zum Einschränken des Zugriffs auf Azure-Dienste, die in derselben Region wie das Speicherkonto bereitgestellt wurden
+
+  Dienste, die in derselben Region wie das Speicherkonto bereitgestellt werden, verwenden für die Kommunikation private Azure-IP-Adressen. Daher können Sie den Zugriff auf bestimmte Azure-Dienste nicht anhand ihres IP-Adressbereichs für öffentlichen ausgehenden Datenverkehr einschränken.
 
 ### <a name="configuring-access-from-on-premises-networks"></a>Konfigurieren des Zugriffs aus lokalen Netzwerken
 

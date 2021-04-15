@@ -1,6 +1,6 @@
 ---
-title: 'Oracle zu SQL Server auf Azure-VMs: Migrationsleitfaden'
-description: In diesem Leitfaden erfahren Sie, wie Sie Ihre Oracle-Schemata mithilfe von SQL Server Migration Assistant für Oracle zu SQL Server auf Azure-VMs migrieren.
+title: 'Oracle zu SQL Server auf Azure Virtual Machines: Migrationsleitfaden'
+description: In diesem Leitfaden erfahren Sie, wie Sie Ihre Oracle-Schemata mithilfe von SQL Server Migration Assistant für Oracle zu SQL Server auf Azure Virtual Machines migrieren.
 ms.service: virtual-machines-sql
 ms.subservice: migration-guide
 ms.custom: ''
@@ -10,218 +10,237 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 1767f1f990326e513393b8ce47e1ed8485f73849
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d4fb33e8e904d12e242f7eeaf9c2dc50a02eff4d
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104656475"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105961250"
 ---
-# <a name="migration-guide-oracle-to-sql-server-on-azure-vm"></a>Migrationsleitfaden: Oracle zu SQL Server auf Azure-VMs
+# <a name="migration-guide-oracle-to-sql-server-on-azure-virtual-machines"></a>Migrationsleitfaden: Oracle zu SQL Server auf Azure Virtual Machines
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
 
-In diesem Leitfaden erfahren Sie, wie Sie Ihre Oracle-Schemata mithilfe von SQL Server Migration Assistant für Oracle zu SQL Server auf Azure-VMs migrieren. 
+In diesem Leitfaden erfahren Sie, wie Sie Ihre Oracle-Schemata mithilfe von SQL Server Migration Assistant für Oracle zu SQL Server auf Azure Virtual Machines migrieren. 
 
-Informationen zu anderen Szenarios finden Sie im [Leitfaden zur Datenbankmigration](https://datamigration.microsoft.com/).
+Weitere Migrationsleitfäden finden Sie im [Leitfaden zur Azure-Datenbankmigration](https://docs.microsoft.com/data-migration). 
 
 ## <a name="prerequisites"></a>Voraussetzungen 
 
-Für die Migration Ihres Oracle-Schemas zu SQL Server auf Azure-VMs sind folgende Schritte bzw. Voraussetzungen erforderlich:
+Für die Migration Ihres Oracle-Schemas zu SQL Server auf Azure Virtual Machines sind folgende Schritte bzw. Voraussetzungen erforderlich:
 
-- Überprüfen, ob Ihre Quellumgebung unterstützt wird.
-- Herunterladen von [SQL Server Migration Assistant (SSMA) für Oracle](https://www.microsoft.com/en-us/download/details.aspx?id=54258).
+- Eine unterstützte Quellumgebung.
+- [SQL Server Migration Assistant (SSMA) für Oracle](https://www.microsoft.com/en-us/download/details.aspx?id=54258)
 - Eine [SQL Server-Ziel-VM](../../virtual-machines/windows/sql-vm-create-portal-quickstart.md).
-- Die [erforderlichen Berechtigungen für SSMA für Oracle](/sql/ssma/oracle/connecting-to-oracle-database-oracletosql) und [Anbieter](/sql/ssma/oracle/connect-to-oracle-oracletosql).
+- Richten Sie die [erforderlichen Berechtigungen für SSMA für Oracle](/sql/ssma/oracle/connecting-to-oracle-database-oracletosql) und den [Anbieter](/sql/ssma/oracle/connect-to-oracle-oracletosql) ein.
+- Konnektivität und ausreichende Berechtigungen für den Zugriff auf die Quelle und das Ziel. 
+
 
 ## <a name="pre-migration"></a>Vor der Migration
 
-Überprüfen Sie bei der Vorbereitung Ihrer Migration zur Cloud, ob Ihre Quellumgebung unterstützt wird und alle Voraussetzungen erfüllt sind. Durch diese Maßnahmen wird eine effiziente und erfolgreiche Migration sichergestellt.
+Überprüfen Sie bei der Vorbereitung Ihrer Migration zur Cloud, ob Ihre Quellumgebung unterstützt wird und alle Voraussetzungen erfüllt sind. Dadurch wird eine effiziente und erfolgreiche Migration sichergestellt.
 
-Diese Schritte umfassen eine Bestandsaufnahme der Datenbanken, die migriert werden müssen, eine Untersuchung dieser Datenbanken auf potenzielle Migrationsprobleme oder Hindernisse sowie das Behandeln eventuell entdeckter Probleme. 
+Dieser Teil des Prozesses umfasst Folgendes: 
+- Durchführen einer Inventur für die Datenbanken, die Sie migrieren müssen.
+- Bewerten dieser Datenbanken auf mögliche Migrationsprobleme oder -blockierungen. 
+- Beheben aller Probleme, die Sie aufdecken. 
 
 ### <a name="discover"></a>Entdecken
 
-Ermitteln Sie mithilfe des [MAP Toolkits](https://go.microsoft.com/fwlink/?LinkID=316883) vorhandene Datenquellen und Details zu den Features, die von Ihrem Unternehmen verwendet werden. Dadurch erhalten Sie einen besseren Überblick und können die Migration besser planen. Bei diesem Vorgang ermitteln Sie u. a. alle Oracle-Instanzen Ihrer Organisation, die innerhalb des Netzwerks ausgeführt werden, sowie die jeweilige Version und die verwendeten Features.
+Verwenden Sie das [MAP Toolkit](https://go.microsoft.com/fwlink/?LinkID=316883), um vorhandene Datenquellen und Details zu den von Ihrem Unternehmen verwendeten Features zu identifizieren. Dadurch erhalten Sie ein besseres Verständnis für die Migration und können diese besser planen. Bei diesem Vorgang wird das Netzwerk überprüft, um die Oracle-Instanzen Ihrer Organisation sowie die verwendeten Versionen und Features zu identifizieren.
 
-Führen Sie für eine Inventarüberprüfung mithilfe des MAP Toolkits die folgenden Schritte aus: 
+Gehen Sie folgendermaßen vor, um mit dem MAP Toolkit eine Bestandsprüfung durchzuführen: 
+
 
 1. Öffnen Sie das [MAP Toolkit](https://go.microsoft.com/fwlink/?LinkID=316883).
-1. Wählen Sie **Datenbank erstellen/auswählen** aus.
-
-   ![Datenbank auswählen](./media/oracle-to-sql-on-azure-vm-guide/select-database.png)
-
-1. Wählen Sie **Inventardatenbank erstellen** aus, geben Sie einen Namen und eine kurze Beschreibung für die neue Datenbank ein, und wählen Sie dann **OK** aus. 
-
-   :::image type="content" source="media/oracle-to-sql-on-azure-vm-guide/create-inventory-database.png" alt-text="Bestandsdatenbank erstellen":::
-
-1. Wählen Sie **Inventardaten sammeln** aus, um den **Assistenten für Inventar und Bewertung** zu öffnen. 
-
-   :::image type="content" source="media/oracle-to-sql-on-azure-vm-guide/collect-inventory-data.png" alt-text="Sammeln von Bestandsdaten":::
-
-1. Wählen Sie im **Assistenten für Inventar und Bewertung** die Option **Oracle** und dann **Weiter** aus. 
-
-   ![„Oracle“ auswählen](./media/oracle-to-sql-on-azure-vm-guide/choose-oracle.png)
-
-1. Wählen Sie die Option für die Computersuche aus, die sich am besten für Ihre Geschäftsanforderungen und Umgebung eignet, und wählen Sie dann **Weiter** aus: 
-
-   ![Wählen Sie die Option für die Computersuche aus, die Ihren Geschäftsanforderungen am besten entspricht](./media/oracle-to-sql-on-azure-vm-guide/choose-search-option.png)
-
-1. Geben Sie Anmeldeinformationen für die Systeme ein, die untersucht werden sollen, oder erstellen Sie neue Anmeldeinformationen, und wählen Sie dann **Weiter** aus.
-
-    ![Eingeben von Anmeldeinformationen](./media/oracle-to-sql-on-azure-vm-guide/choose-credentials.png)
-
-1. Legen Sie die Reihenfolge der Anmeldeinformationen fest, und wählen Sie dann **Weiter** aus. 
-
-   ![Festlegen der Reihenfolge der Anmeldeinformationen](./media/oracle-to-sql-on-azure-vm-guide/set-credential-order.png)  
-
-1. Geben Sie die Anmeldeinformationen für die einzelnen Computer ein, die entdeckt werden sollen. Sie können individuelle Anmeldeinformationen für jeden Computer bzw. jede VM verwenden oder **Liste aller Computeranmeldeinformationen verwenden** auswählen.  
 
 
-   ![Geben Sie die Anmeldeinformationen für die einzelnen Computer ein, die ermittelt werden sollen.](./media/oracle-to-sql-on-azure-vm-guide/specify-credentials-for-each-computer.png)
+1. Wählen Sie **Datenbank erstellen/auswählen** aus:
+
+   ![Screenshot: Option „Datenbank erstellen/auswählen“](./media/oracle-to-sql-on-azure-vm-guide/select-database.png)
+
+1. Wählen Sie **Bestandsdatenbank erstellen** aus. Geben Sie einen Namen und eine kurze Beschreibung für die neue Datenbank ein, und wählen Sie dann **OK** aus: 
+
+   :::image type="content" source="media/oracle-to-sql-on-azure-vm-guide/create-inventory-database.png" alt-text="Screenshot: Schnittstelle zum Erstellen einer Bestandsdatenbank":::
+
+1. Wählen Sie **Inventardaten sammeln** aus, um den **Assistenten für Inventar und Bewertung** zu öffnen:
+
+   :::image type="content" source="media/oracle-to-sql-on-azure-vm-guide/collect-inventory-data.png" alt-text="Screenshot: Link zum Erfassen von Bestandsdaten":::
 
 
-1. Überprüfen Sie Ihre Auswahl in der Zusammenfassung, und wählen Sie dann **Fertig stellen** aus.
+1. Wählen Sie im **Assistenten für Inventar und Bewertung** die Option **Oracle** und dann **Weiter** aus:
 
-   ![Überprüfen der Zusammenfassung](./media/oracle-to-sql-on-azure-vm-guide/review-summary.png)
+   ![Screenshot: Seite für Bestandsszenarien des Assistenten für Inventar und Bewertung](./media/oracle-to-sql-on-azure-vm-guide/choose-oracle.png)
 
-1. Zeigen Sie nach Abschluss der Überprüfung die Zusammenfassung der **Datensammlung** an. Die Überprüfung kann einige Minuten dauern (abhängig von der Anzahl von Datenbanken). Wenn Sie fertig sind, wählen Sie **Schließen** aus. 
+1. Wählen Sie die Option für die Computersuche aus, die sich am besten für Ihre Geschäftsanforderungen und Ihre Umgebung eignet, und wählen Sie dann **Weiter** aus: 
 
-   ![Zusammenfassungsbericht für die Sammlung](./media/oracle-to-sql-on-azure-vm-guide/collection-summary-report.png)
+   ![Screenshot: Seite für Ermittlungsmethoden des Assistenten für Inventar und Bewertung](./media/oracle-to-sql-on-azure-vm-guide/choose-search-option.png)
+
+1. Geben Sie Anmeldeinformationen für die Systeme ein, die untersucht werden sollen, oder erstellen Sie neue Anmeldeinformationen, und wählen Sie dann **Weiter** aus:
+
+    ![Screenshot: Seite „Alle Computeranmeldeinformationen“ des Assistenten für Inventar und Bewertung](./media/oracle-to-sql-on-azure-vm-guide/choose-credentials.png)
 
 
-1. Wählen Sie **Optionen** aus, um einen Bericht zur Oracle-Bewertung und den Datenbankdetails zu generieren. Wählen Sie beide Optionen (einzeln) aus, um den Bericht zu generieren.
+1. Legen Sie die Reihenfolge der Anmeldeinformationen fest, und wählen Sie dann **Weiter** aus: 
+
+   ![Screenshot: Seite für die Reihenfolge der Anmeldeinformationen des Assistenten für Inventar und Bewertung](./media/oracle-to-sql-on-azure-vm-guide/set-credential-order.png)  
+
+
+1. Geben Sie die Anmeldeinformationen für die einzelnen Computer ein, die ermittelt werden sollen. Sie können individuelle Anmeldeinformationen für jeden Computer bzw. jede VM oder die Liste aller Computeranmeldeinformationen auswählen.  
+
+   ![Screenshot: Seite „Computer und Anmeldeinformationen angeben“ des Assistenten für Inventar und Bewertung](./media/oracle-to-sql-on-azure-vm-guide/specify-credentials-for-each-computer.png)
+
+
+1. Überprüfen Sie Ihre Auswahl, und wählen Sie dann **Fertig** aus:
+
+   ![Screenshot: Seite „Zusammenfassung“ des Assistenten für Inventar und Bewertung](./media/oracle-to-sql-on-azure-vm-guide/review-summary.png)
+
+
+1. Nachdem die Überprüfung abgeschlossen ist, zeigen Sie die Zusammenfassung **Datensammlung** an. Die Überprüfung kann je nach Anzahl der Datenbanken einige Minuten dauern. Wählen Sie **Schließen** aus, wenn Sie fertig sind: 
+
+   ![Screenshot: Zusammenfassung der Datensammlung](./media/oracle-to-sql-on-azure-vm-guide/collection-summary-report.png)
+
+
+1. Wählen Sie **Optionen** aus, um einen Bericht zur Oracle-Bewertung und zu den Datenbankdetails zu generieren. Wählen Sie beide Optionen aus, eine nach der anderen, um den Bericht zu erstellen.
 
 
 ### <a name="assess"></a>Bewerten
 
-Nachdem Sie die Datenquellen ermittelt haben, verwenden Sie [SQL Server Migration Assistant (SSMA) für Oracle](https://www.microsoft.com/en-us/download/details.aspx?id=54258), um die Oracle-Instanzen zu bewerten, die zur SQL Server-VM migriert werden sollen. Bei diesem Schritt lassen sich mögliche Lücken oder Probleme ermitteln. Mithilfe des Migrations-Assistenten können Sie Datenbankobjekte und Daten überprüfen, Datenbanken für die Migration bewerten und Datenbankobjekte bzw. anschließend Daten zu SQL Server migrieren.
+Nachdem Sie die Datenquellen identifiziert haben, verwenden Sie [SQL Server Migration Assistant für Oracle](https://www.microsoft.com/en-us/download/details.aspx?id=54258), um die Oracle-Instanzen zu bewerten, die zur SQL Server-VM migriert werden. Der Assistent hilft Ihnen, die Lücken zwischen der Quell- und Zieldatenbank zu verstehen. Sie können Datenbankobjekte und Daten überprüfen, Datenbanken für die Migration bewerten und Datenbankobjekte bzw. anschließend Daten zu SQL Server migrieren.
 
 Führen Sie die folgenden Schritte aus, um eine Bewertung zu erstellen: 
 
-1. Öffnen Sie [SQL Server Migration Assistant (SSMA) für Oracle](https://www.microsoft.com/en-us/download/details.aspx?id=54258). 
-1. Klicken Sie auf **File** (Datei) und dann auf **New Project** (Neues Projekt). 
-1. Geben Sie einen Projektnamen und einen Speicherort für das Projekt an, und wählen Sie dann in der Dropdownliste ein SQL Server-Migrationsziel aus. Klicken Sie auf **OK**. 
 
-   ![Neues Projekt](./media/oracle-to-sql-on-azure-vm-guide/new-project.png)
+1. Öffnen Sie [SQL Server Migration Assistant für Oracle](https://www.microsoft.com/en-us/download/details.aspx?id=54258). 
+1. Wählen Sie im Menü **Datei** die Option **Neues Projekt** aus. 
+1. Geben Sie einen Projektnamen und einen Speicherort für das Projekt an, und wählen Sie dann in der Liste ein SQL Server-Migrationsziel aus. Wählen Sie **OK** aus: 
 
-1. Wählen Sie **Verbindung mit Oracle herstellen** aus. Geben Sie im Dialogfeld **Mit Oracle verbinden** Werte für die Oracle-Verbindungsdetails ein.
+   ![Screenshot: Dialogfeld „Neues Projekt“](./media/oracle-to-sql-on-azure-vm-guide/new-project.png)
 
-   ![Herstellen einer Verbindung mit Oracle](./media/oracle-to-sql-on-azure-vm-guide/connect-to-oracle.png)
+
+1. Wählen Sie **Verbindung mit Oracle herstellen** aus. Geben Sie im Dialogfeld **Verbindung mit Oracle herstellen** Werte für die Oracle-Verbindung ein:
+
+   ![Screenshot: Dialogfeld „Verbindung mit Oracle herstellen“](./media/oracle-to-sql-on-azure-vm-guide/connect-to-oracle.png)
 
    Wählen Sie die Oracle-Schemas aus, die migriert werden sollen: 
 
-   ![Wählen Sie das Oracle-Schema aus](./media/oracle-to-sql-on-azure-vm-guide/select-schema.png)
+   ![Screenshot: Liste der Oracle-Schemas, die migriert werden können](./media/oracle-to-sql-on-azure-vm-guide/select-schema.png)
 
-1. Klicken Sie im **Oracle-Metadaten-Explorer** mit der rechten Maustaste auf das Oracle-Schema, das migriert werden soll, und wählen Sie dann **Create report** (Bericht erstellen) aus. Dadurch wird ein HTML-Bericht generiert. Alternativ können Sie nach der Auswahl der Datenbank in der Navigationsleiste auf **Create report** (Bericht erstellen) klicken.
 
-   ![Erstellen von Berichten](./media/oracle-to-sql-on-azure-vm-guide/create-report.png)
+1. Klicken Sie im **Metadaten-Explorer von Oracle** mit der rechten Maustaste auf das zu migrierende Oracle-Schema, und wählen Sie dann **Bericht erstellen** aus. Dadurch wird ein HTML-Bericht generiert. Alternativ können Sie die Datenbank auswählen und dann **Bericht erstellen** im oberen Menü auswählen.
 
-1. Wählen Sie im **Oracle-Metadaten-Explorer** das Oracle-Schema und dann **Create report** (Bericht erstellen) aus, um einen HTML-Bericht mit Konvertierungsstatistiken und Fehlern/Warnungen (sofern vorhanden) zu generieren.
-1. Überprüfen Sie den HTML-Bericht auf Konvertierungsstatistiken sowie auf Fehler und Warnungen. Analysieren Sie diese Informationen, um Konvertierungsprobleme und mögliche Lösungen zu bestimmen.
+   ![Screenshot: Erstellung eines Berichts](./media/oracle-to-sql-on-azure-vm-guide/create-report.png)
 
-   Auf diesen Bericht kann auch über den SSMA-Projektordner zugegriffen werden (wie im ersten Bildschirm gezeigt). Suchen Sie im obigen Beispiel nach der Datei „report.xml“: 
+1. Überprüfen Sie den HTML-Bericht für Konvertierungsstatistiken, Fehler und Warnungen. Analysieren Sie diese Informationen, um Konvertierungsprobleme und mögliche Lösungen zu bestimmen.
 
-   `drive:\<username>\Documents\SSMAProjects\MyOracleMigration\report\report_2016_11_12T02_47_55\`
+    Sie können den Bericht auch in Excel öffnen, um ein Inventar der Oracle-Objekte sowie Informationen zum Aufwand für Schemakonvertierungen zu erhalten. Der Standardspeicherort für den Bericht ist der Berichtsordner in SSMAProjects. 
 
-    Sie können den Bericht in Excel öffnen, um ein Inventar der Oracle-Objekte sowie Informationen zum für die Durchführung von Schemakonvertierungen erforderlichen Aufwand zu erhalten.
+   Beispiel: `drive:\<username>\Documents\SSMAProjects\MyOracleMigration\report\report_2016_11_12T02_47_55\`
 
-   ![Konvertierungsbericht](./media/oracle-to-sql-on-azure-vm-guide/conversion-report.png)
 
+   ![Screenshot: Konvertierungsbericht](./media/oracle-to-sql-on-azure-vm-guide/conversion-report.png)
 
 
 ### <a name="validate-data-types"></a>Überprüfen von Datentypen
 
 Überprüfen Sie die standardmäßig festgelegten Datentypzuordnungen, und ändern Sie sie bei Bedarf basierend auf den Anforderungen. Gehen Sie dazu folgendermaßen vor: 
 
-1. Klicken Sie im Menü auf **Tools**. 
-1. Klicken auf **Project Settings** (Projekteinstellungen). 
-1. Klicken Sie auf die Registerkarte **Type Mappings** (Typzuordnungen). 
 
-   ![Typzuordnungen](./media/oracle-to-sql-on-azure-vm-guide/type-mappings.png)
+1. Wählen Sie im Menü **Tools** die Option **Projekteinstellungen** aus. 
+1. Klicken Sie auf die Registerkarte **Typzuordnungen**. 
 
-1. Zum Ändern der Typzuordnung für jede Tabelle wählen Sie die Tabelle im **Oracle-Metadaten-Explorer** aus. 
+   ![Screenshot: Registerkarte „Typzuordnungen“](./media/oracle-to-sql-on-azure-vm-guide/type-mappings.png)
 
+1. Sie können die Typzuordnung für jede Tabelle ändern, indem Sie die Tabelle im **Metadaten-Explorer von Oracle** auswählen. 
 
-
-### <a name="convert-schema"></a>Schema konvertieren
+### <a name="convert-the-schema"></a>Konvertieren des Schemas
 
 Führen Sie die folgenden Schritte aus, um das Schema zu konvertieren: 
 
-1. (Optional) Zum Konvertieren von dynamischen oder Ad-hoc-Abfragen klicken Sie mit der rechten Maustaste auf den Knoten und wählen **Anweisung hinzufügen** aus.
-1. Wählen Sie in der oberen Navigationsleiste **Mit SQL Server verbinden** aus, und geben Sie die Verbindungsdetails für Ihre SQL Server-Instanz auf der Azure-VM an. Sie können eine Verbindung mit einer vorhandenen Datenbank herstellen oder einen neuen Namen angeben. In diesem Fall wird auf dem Zielserver eine Datenbank erstellt.
+1. Optional: Zum Konvertieren von dynamischen Abfragen oder Ad-hoc-Abfragen klicken Sie mit der rechten Maustaste auf den Knoten, und wählen Sie **Anweisung hinzufügen** aus.
 
-   ![Herstellen einer Verbindung mit SQL](./media/oracle-to-sql-on-azure-vm-guide/connect-to-sql-vm.png)
+1. Wählen Sie **Verbindung mit SQL Server herstellen** im oberen Menü aus. 
+     1. Geben Sie die Verbindungsdetails für Ihren SQL Server auf dem virtuellen Azure-Computer ein. 
+     1. Wählen Sie Ihre Zieldatenbank aus der Liste aus, oder geben Sie einen neuen Namen ein. Wenn Sie einen neuen Namen angeben, wird eine Datenbank auf dem Zielserver erstellt. 
+     1. Geben Sie Details zur Authentifizierung an. 
+     1. Wählen Sie **Verbinden** aus. 
 
-1. Klicken Sie im **Oracle Metadata Explorer** mit der rechten Maustaste auf das Oracle-Schema, und klicken Sie dann auf **Schema konvertieren**.
 
-   ![Schema konvertieren](./media/oracle-to-sql-on-azure-vm-guide/convert-schema.png)
+   ![Screenshot: Herstellen einer Verbindung mit SQL Server](./media/oracle-to-sql-on-azure-vm-guide/connect-to-sql-vm.png)
 
-1. Nachdem das Schema konvertiert wurde, vergleichen und überprüfen Sie die Struktur des Schemas, um potenzielle Probleme zu ermitteln.
+1. Klicken Sie im **Metadaten-Explorer von Oracle** mit der rechten Maustaste auf das Oracle-Schema, und klicken Sie dann auf **Schema konvertieren**. Alternativ können Sie auch **Schema konvertieren** im oberen Menü auswählen:
 
-   ![Überprüfen der Empfehlungen](./media/oracle-to-sql-on-azure-vm-guide/table-mapping.png)
+   ![Screenshot: Konvertierung des Schemas](./media/oracle-to-sql-on-azure-vm-guide/convert-schema.png)
+
+
+1. Nachdem die Schemakonvertierung abgeschlossen ist, überprüfen Sie die konvertierten Objekte und vergleichen Sie sie mit den ursprünglichen Objekten, um mögliche Probleme zu identifizieren. Verwenden Sie die Empfehlungen, um eventuelle Probleme zu beheben:
+
+   ![Screenshot: Vergleich zweier Schemas](./media/oracle-to-sql-on-azure-vm-guide/table-mapping.png)
 
    Vergleichen Sie den konvertierten Transact-SQL-Text mit den ursprünglichen gespeicherten Prozeduren, und prüfen Sie die Empfehlungen: 
 
-   ![Code zum Überprüfen der Empfehlungen](./media/oracle-to-sql-on-azure-vm-guide/procedure-comparison.png)
+   ![Screenshot: Transact-SQL, gespeicherte Prozeduren und eine Warnung](./media/oracle-to-sql-on-azure-vm-guide/procedure-comparison.png)
 
-   Sie können das Projekt lokal speichern, um offline eine Problembehandlung für das Schema durchzuführen. Wählen Sie dazu im Menü **Datei** die Option **Projekt speichern** aus. So können Sie das Quell- und das Zielschema offline auswerten und Probleme behandeln, bevor Sie das Schema für SQL Server veröffentlichen.
+   Sie können das Projekt lokal speichern, um offline eine Problembehandlung für das Schema durchzuführen. Wählen Sie dazu **Projekt speichern** im Menü **Datei** aus. Wenn Sie das Projekt lokal speichern, können Sie die Quell- und Zielschemas offline bewerten und die Problembehebung durchführen, bevor Sie das Schema auf SQL Server veröffentlichen.
+
+1. Wählen Sie im Bereich **Ausgabe** die Option **Ergebnisse überprüfen** aus, und überprüfen Sie dann die Fehler im Bereich **Fehlerliste**. 
+1. Speichern Sie das Projekt für eine Übung zur Offlineschemakorrektur lokal. Wählen Sie **Projekt speichern** im Menü **Datei** aus. So können Sie das Quell- und Zielschema offline auswerten und Probleme behandeln, bevor Sie das Schema für SQL Server auf Azure Virtual Machines veröffentlichen.
 
 
-## <a name="migrate"></a>Migrieren
+## <a name="migrate"></a>Migrate
 
-Sobald die Voraussetzungen erfüllt sind, und Sie die Aufgaben **vor der Migration** ausgeführt haben, können Sie die Schema- und Datenmigration durchführen. Die Migration umfasst zwei Schritte: Veröffentlichen des Schemas und Migrieren der Daten. 
+Wenn die Voraussetzungen erfüllt sind und Sie die Aufgaben vor der Migration ausgeführt haben, können Sie die Schema- und Datenmigration starten. Die Migration umfasst zwei Schritte: das Veröffentlichen des Schemas und das Migrieren der Daten. 
 
 
 Führen Sie die folgenden Schritte aus, um das Schema zu veröffentlichen und die Daten zu migrieren: 
 
-1. Klicken Sie im **SQL Server-Metadaten-Explorer** mit der rechten Maustaste auf die Datenbank, und wählen Sie **Mit Datenbank synchronisieren** aus. Mit dieser Aktion wird das Oracle-Schema für SQL Server auf Azure-VMs veröffentlicht. 
+1. Veröffentlichen des Schemas: Klicken Sie im **Metadaten-Explorer für SQL Server** mit der rechten Maustaste auf die Datenbank, und wählen Sie **Mit Datenbank synchronisieren** aus. Dadurch wird das Oracle-Schema für SQL Server auf Azure Virtual Machines veröffentlicht. 
 
-   ![Synchronisieren mit der Datenbank](./media/oracle-to-sql-on-azure-vm-guide/synchronize-database.png)
+   ![Screenshot: Befehl „Mit Datenbank synchronisieren“](./media/oracle-to-sql-on-azure-vm-guide/synchronize-database.png)
 
-   Überprüfen Sie den Synchronisierungsstatus: 
+   Überprüfen Sie die Zuordnung zwischen dem Quellprojekt und dem Ziel:
 
-   ![Synchronisierungsstatus überprüfen](./media/oracle-to-sql-on-azure-vm-guide/synchronize-database-review.png)
-
-
-1. Klicken Sie im **Oracle-Metadaten-Explorer** mit der rechten Maustaste auf das Oracle-Schema, und klicken Sie dann auf **Migrate Data** (Daten migrieren). Alternativ können Sie in der oberen Navigationsleiste die Option zur Datenmigration auswählen.
-
-   ![Migrieren von Daten](./media/oracle-to-sql-on-azure-vm-guide/migrate-data.png)
-
-1. Geben Sie im Dialogfeld die Verbindungsdetails für Oracle und SQL Server auf Azure-VMs ein.
-1. Zeigen Sie nach Abschluss der Migration den Bericht zur Datenmigration an:
-
-    ![Bericht zur Datenmigration](./media/oracle-to-sql-on-azure-vm-guide/data-migration-report.png)
-
-1. Stellen Sie über [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) eine Verbindung mit SQL Server auf Azure-VMs her, um die Daten und das Schema auf Ihrer SQL Server-Instanz zu überprüfen. 
-
-   ![Überprüfung in SSMA](./media/oracle-to-sql-on-azure-vm-guide/validate-in-ssms.png)
+   ![Screenshot: Synchronisierungsstatus](./media/oracle-to-sql-on-azure-vm-guide/synchronize-database-review.png)
 
 
 
+1. Migrieren der Daten: Klicken Sie mit der rechten Maustaste auf die zu migrierende Datenbank oder das zu migrierende Objekt im **Metadaten-Explorer für Oracle**, und wählen Sie **Daten migrieren** aus. Alternativ können Sie **Daten migrieren** im oberen Menü auswählen.
 
-Zusätzlich zu SSMA können Sie auch SQL Server Integration Services (SSIS) für die Migration der Daten verwenden. Weitere Informationen finden Sie unter: 
-- [Erste Schritte mit SQL Server Integration Services](https://docs.microsoft.com//sql/integration-services/sql-server-integration-services).
-- [SQL Server Integration Services: SSIS für Azure und Hybriddatenverschiebung](https://download.microsoft.com/download/D/2/0/D20E1C5F-72EA-4505-9F26-FEF9550EFD44/SSIS%20Hybrid%20and%20Azure.docx).
+   Aktivieren Sie das Kontrollkästchen neben dem Datenbanknamen, um die Daten einer gesamten Datenbank zu migrieren. Wenn Sie Daten aus einzelnen Tabellen migrieren möchten, erweitern Sie die Datenbank, erweitern Sie **Tabellen**, und aktivieren Sie dann das Kontrollkästchen neben der gewünschten Tabelle. Deaktivieren Sie die entsprechenden Kontrollkästchen, um Daten aus einzelnen Tabellen auszulassen.
 
+   ![Screenshot: Befehl „Daten migrieren“](./media/oracle-to-sql-on-azure-vm-guide/migrate-data.png)
+
+1. Geben Sie im Dialogfeld die Verbindungsdetails für Oracle und SQL Server auf Azure Virtual Machines ein.
+1. Zeigen Sie nach Abschluss der Migration den **Bericht zur Datenmigration** an:
+
+    ![Screenshot: Bericht zur Datenmigration](./media/oracle-to-sql-on-azure-vm-guide/data-migration-report.png)
+
+1. Stellen Sie mit Ihrer Instanz von SQL Server auf Azure Virtual Machines eine Verbindung her, indem Sie [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) verwenden. Validieren Sie die Migration, indem Sie die Daten und das Schema überprüfen:
+
+
+   ![Screenshot: SQL Server-Instanz in SSMA](./media/oracle-to-sql-on-azure-vm-guide/validate-in-ssms.png)
+
+Anstatt SSMA zu verwenden, könnten Sie die SQL Server Integration Services (SSIS) verwenden, um die Daten zu migrieren. Weitere Informationen finden Sie unter: 
+- [SQL Server Integration Services](https://docs.microsoft.com//sql/integration-services/sql-server-integration-services).
+- [SSIS für Azure und Hybriddatenverschiebung](https://download.microsoft.com/download/D/2/0/D20E1C5F-72EA-4505-9F26-FEF9550EFD44/SSIS%20Hybrid%20and%20Azure.docx).
 
 
 ## <a name="post-migration"></a>Nach der Migration 
 
-Nach dem erfolgreichen Abschluss der **Migrationsphase** müssen Sie eine Reihe von Aufgaben ausführen, um sicherzustellen, dass alles so reibungslos und effizient wie möglich funktioniert.
+Nachdem Sie die Migrationsphase abgeschlossen haben, müssen Sie eine Reihe von Aufgaben nach der Migration erledigen, um einen möglichst reibungslosen und effizienten Ablauf sicherzustellen.
 
 ### <a name="remediate-applications"></a>Korrigieren von Anwendungen
 
-Wenn die Daten in die Zielumgebung migriert wurden, müssen alle Anwendungen, die zuvor die Quelle verwendet haben, beginnen das Ziel zu verwenden. Hierfür sind in einigen Fällen Änderungen an den Anwendungen erforderlich.
+Nachdem die Daten in die Zielumgebung migriert wurden, müssen alle Anwendungen, die zuvor die Quelle verwendet haben, mit der Verwendung der Zielumgebung beginnen. Die Durchführung dieser Änderungen kann Änderungen an den Anwendungen erfordern.
 
-Das [Data Access Migration Toolkit](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit) ist eine Erweiterung für Visual Studio Code, mit dem Sie Ihren Java-Quellcode analysieren und API-Aufrufe und Abfragen für den Datenzugriff ermitteln können. Mit diesem Toolkit profitieren Sie von einer zentralen Übersicht über Themen oder Probleme, die für das neue Datenbank-Back-End behandelt werden müssen. Weitere Informationen finden Sie im Blog [Migrate our Java application from Oracle](https://techcommunity.microsoft.com/t5/microsoft-data-migration/migrate-your-java-applications-from-oracle-to-sql-server-with/ba-p/368727). 
+Das [Data Access Migration Toolkit](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit) ist eine Erweiterung für Visual Studio Code. Es ermöglicht Ihnen, Ihren Java-Quellcode zu analysieren und API-Aufrufe und -Abfragen für den Datenzugriff zu erkennen. Das Toolkit zeigt auf einen Blick, was für die Unterstützung des neuen Datenbank-Back-Ends erforderlich ist. Weitere Informationen finden Sie unter [Migrieren einer Java-Anwendung von Oracle](https://techcommunity.microsoft.com/t5/microsoft-data-migration/migrate-your-java-applications-from-oracle-to-sql-server-with/ba-p/368727). 
 
 ### <a name="perform-tests"></a>Durchführen von Tests
 
-Das Testvorgehen für die Datenbankmigration umfasst die folgenden Aktivitäten:
+Führen Sie die folgenden Aktionen aus, um Ihre Datenbankmigration zu testen:
 
-1. **Entwickeln der Validierungstests**. Für das Testen der Datenbankmigration müssen Sie SQL-Abfragen verwenden. Sie müssen die Validierungsabfragen erstellen, die für die Quell- und die Zieldatenbank ausgeführt werden sollen. Ihre Validierungsabfragen sollten den von Ihnen definierten Bereich abdecken.
+1. **Entwickeln der Validierungstests**. Für das Testen der Datenbankmigration müssen Sie SQL-Abfragen verwenden. Erstellen Sie die Validierungsabfragen, die für die Quell- und die Zieldatenbanken ausgeführt werden sollen. Ihre Validierungsabfragen sollten den von Ihnen definierten Bereich abdecken.
 
-2. **Einrichten der Testumgebung**. Die Testumgebung sollte eine Kopie der Quelldatenbank und der Zieldatenbank enthalten. Stellen Sie sicher, dass Sie die Testumgebung isolieren.
+2. **Einrichten einer Testumgebung**. Die Testumgebung sollte eine Kopie der Quelldatenbank und der Zieldatenbank enthalten. Stellen Sie sicher, dass Sie die Testumgebung isolieren.
 
 3. **Ausführen der Validierungstests**. Führen Sie die Validierungstests für die Quelle und das Ziel aus, und analysieren Sie anschließend die Ergebnisse.
 
@@ -229,47 +248,49 @@ Das Testvorgehen für die Datenbankmigration umfasst die folgenden Aktivitäten:
 
 ### <a name="optimize"></a>Optimieren
 
-Die Postmigrationsphase ist unerlässlich, um Datengenauigkeitsprobleme abzustimmen, die Vollständigkeit zu bestätigen und Leistungsprobleme der Workload zu beheben.
+Die Phase nach der Migration ist entscheidend für den Abgleich von Problemen mit der Datengenauigkeit und die Überprüfung der Vollständigkeit. Sie ist auch entscheidend für die Behandlung von Leistungsproblemen mit der Workload.
 
 > [!Note]
-> Weitere Einzelheiten zu diesen Problemen sowie die erforderlichen Schritte zur Problembehandlung finden Sie im [Handbuch für die Validierung und Optimierung nach der Migration](/sql/relational-databases/post-migration-validation-and-optimization-guide).
+> Weitere Informationen zu diesen Problemen und spezifische Schritte zu ihrer Minimierung finden Sie im [Leitfaden zur Überprüfung und Optimierung nach der Migration](/sql/relational-databases/post-migration-validation-and-optimization-guide).
 
 
-## <a name="migration-assets"></a>Migrationsressourcen 
+## <a name="migration-resources"></a>Migrationsressourcen 
 
-Weitere Unterstützung zu diesem Migrationsszenario erhalten Sie in Form der folgenden Ressourcen, die im Rahmen eines Auftrags für ein echtes Migrationsprojekt entwickelt wurden.
+Weitere Hilfe beim Abschließen dieses Migrationsszenarios finden Sie in den folgenden Ressourcen, die zur Unterstützung eines realen Migrationsprojekts entwickelt wurden.
 
 | **Titel/Link**                                                                                                                                          | **Beschreibung**                                                                                                                                                                                                                                                                                                   |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Data Workload Assessment Model and Tool](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool) | Dieses Tool stellt für eine bestimmte Arbeitsauslastung Informationen zu empfohlenen optimalen Zielplattformen, zur Cloudbereitschaft und zum Korrekturbedarf für Anwendungen/Datenbanken bereit. Es bietet eine einfache Berechnung und Berichterstellung mit nur einem Klick, die Ihnen durch die Bereitstellung eines automatisierten und einheitlichen Zielplattform-Entscheidungsprozesses dabei helfen, umfangreiche Bewertungen zu beschleunigen.                                                          |
-| [Oracle Inventory Script Artifacts](https://github.com/Microsoft/DataMigrationTeam/tree/master/Oracle%20Inventory%20Script%20Artifacts)                 | Diese Ressource umfasst eine PL/SQL-Abfrage für Oracle-Systemtabellen, die die Anzahl von Objekten nach Schematyp, Objekttyp und Status bereitstellt. Darüber hinaus erhalten Sie eine grobe Schätzung zu den „Rohdaten“ sowie zur Größe der Tabellen in jedem Schema. Die Ergebnisse werden im CSV-Format gespeichert.                                                                                                               |
-| [Automate SSMA Oracle Assessment Collection & Consolidation](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Automate%20SSMA%20Oracle%20Assessment%20Collection%20%26%20Consolidation)                                             | Diese Ressource verwendet eine CSV-Datei als Eingabe („sources.csv“ in den Projektordnern), um die XML-Dateien zu erstellen, die zum Ausführen der SSMA-Bewertung im Konsolenmodus benötigt werden. Die Datei „source.csv“ wird vom Kunden bereitgestellt und basiert auf einer Inventarisierung vorhandener Oracle-Instanzen. Die Ausgabedateien sind „AssessmentReportGeneration_source_1.xml“, „ServersConnectionFile.xml“ und „VariableValueFile.xml“.|
-| [SSMA: Probleme und Problemumgehungen bei der Migration von Oracle-Datenbanken](https://aka.ms/dmj-wp-ssma-oracle-errors)                                                           | Bei Oracle kann eine nicht skalare Bedingung in der WHERE-Klausel zugewiesen werden. Dieser Bedingungstyp wird von SQL Server jedoch nicht unterstützt. Folglich konvertiert SQL Server Migration Assistant (SSMA) für Oracle Abfragen mit nicht skalarer Bedingung in der WHERE-Klausel nicht. Stattdessen wird der Fehler O2SS0001 ausgegeben. In diesem Whitepaper finden Sie weitere Einzelheiten zu diesem Problem sowie die erforderlichen Schritte zur Problembehandlung.          |
-| [Handbuch für die Migration von Oracle zu SQL Server](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20SQL%20Server%20Migration%20Handbook.pdf)                | In diesem Whitepaper sind die Aufgaben bei der Migration eines Oracle-Schemas zur neuesten Version von SQL Server beschrieben. Wenn für die Migration Änderungen an Features/Funktionen erforderlich sind, müssen Sie die Auswirkungen dieser Änderungen auf die Anwendungen, die die Datenbank verwenden, sorgfältig untersuchen.                                                     |
+| [Data Workload Assessment Model and Tool](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool) | Dieses Tool stellt für eine bestimmte Arbeitsauslastung Informationen zu empfohlenen optimalen Zielplattformen, zur Cloudbereitschaft und zum Korrekturbedarf für Anwendungen/Datenbanken bereit. Es bietet eine einfache Berechnung und Berichterstellung mit nur einem Klick, die Ihnen durch einen automatisierten und einheitlichen Entscheidungsprozess für die Zielplattform dabei helfen, Bewertungen von umfangreichen Datenbeständen zu beschleunigen.                                                          |
+| [Oracle Inventory Script Artifacts](https://github.com/Microsoft/DataMigrationTeam/tree/master/Oracle%20Inventory%20Script%20Artifacts)                 | Diese Ressource umfasst eine auf Oracle-Systemtabellen ausgerichtete PL/SQL-Abfrage, die die Anzahl der Objekte nach Schematyp, Objekttyp und Status bereitstellt. Darüber hinaus erhalten Sie eine grobe Schätzung zu den „Rohdaten“ sowie zur Größe der Tabellen in jedem Schema. Die Ergebnisse werden im CSV-Format gespeichert.                                                                                                               |
+| [Automate SSMA Oracle Assessment Collection & Consolidation](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Automate%20SSMA%20Oracle%20Assessment%20Collection%20%26%20Consolidation)                                             | Diese Ressourcensammlung verwendet eine CSV-Datei als Eingabe („sources.csv“ in den Projektordnern), um die XML-Dateien zu erstellen, die zum Ausführen der SSMA-Bewertung im Konsolenmodus benötigt werden. Sie stellen die Datei „source.csv“ bereit, indem Sie eine Inventur der vorhandenen Oracle-Instanzen durchführen. Die Ausgabedateien sind „AssessmentReportGeneration_source_1.xml“, „ServersConnectionFile.xml“ und „VariableValueFile.xml“.|
+| [SSMA-Probleme und mögliche Abhilfemaßnahmen beim Migrieren von Oracle-Datenbanken](https://aka.ms/dmj-wp-ssma-oracle-errors)                                                           | In Oracle kann eine nicht skalare Bedingung in einer WHERE-Klausel zugewiesen werden. Dieser Bedingungstyp wird von SQL Server nicht unterstützt. SSMA für Oracle konvertiert also keine Abfragen, die eine nicht skalare Bedingung in der WHERE-Klausel aufweisen. Stattdessen wird ein Fehler generiert: O2SS0001. In diesem Whitepaper finden Sie Einzelheiten zu diesem Problem sowie die erforderlichen Schritte zur Problembehandlung.          |
+| [Handbuch für die Migration von Oracle zu SQL Server](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20SQL%20Server%20Migration%20Handbook.pdf)                | In diesem Whitepaper sind die Aufgaben bei der Migration eines Oracle-Schemas zur neuesten Version von SQL Server beschrieben. Wenn für die Migration Änderungen an Features/Funktionen erforderlich sind, müssen Sie die möglichen Auswirkungen jeder Änderung auf die Anwendungen, die die Datenbank verwenden, sorgfältig berücksichtigen.                                                     |
 
-Diese Ressourcen wurden im Rahmen des Data SQL Ninja-Programms entwickelt, das vom Azure Data Group-Entwicklungsteam gesponsert wird. Der Hauptzweck des Data SQL Ninja-Programms besteht darin, Hindernisse für komplexe Modernisierung zu beseitigen und Letztere zu beschleunigen sowie den Wettbewerb in Bezug auf Möglichkeiten zur Migration von Datenplattformen zur Azure-Datenplattform von Microsoft zu fördern. Wenn Sie denken, dass Ihre Organisation an einer Teilnahme am Data SQL Ninja-Programm interessiert wäre, wenden Sie sich an Ihr Kundenteam, und bitten Sie es, eine Nominierung einzureichen.
+
+Das Data SQL Engineering-Team hat diese Ressourcen entwickelt. Die Hauptaufgabe dieses Teams ist die Aufhebung der Blockierung und Beschleunigung komplexer Modernisierungsprojekte für die Migration von Datenplattformen zur Microsoft Azure-Datenplattform.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Die Verfügbarkeit der mit SQL Server kompatiblen Dienste finden Sie auf der Seite für die [globale Azure-Infrastruktur](https://azure.microsoft.com/global-infrastructure/services/?regions=all&amp;products=synapse-analytics,virtual-machines,sql-database).
 
-- Eine Übersicht über die Dienste und Tools von Microsoft und Drittanbietern, mit denen Sie verschiedene Datenbank- und Datenmigrationsszenarios und Spezialaufgaben ausführen können, finden Sie im Artikel [Dienste und Tools für die Datenmigration](../../../dms/dms-tools-matrix.md).
+- Eine Übersicht über die Dienste und Tools von Microsoft und Drittanbietern, mit denen Sie verschiedene Datenbank- und Datenmigrationsszenarios sowie Spezialaufgaben ausführen können, finden Sie unter [Dienste und Tools für die Datenmigration](../../../dms/dms-tools-matrix.md).
 
 - Hier finden Sie weitere Informationen zu Azure SQL:
    - [Bereitstellungsoptionen](../../azure-sql-iaas-vs-paas-what-is-overview.md)
-   - [SQL Server auf Azure-VMs](../../virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)
-   - [Azure-Gesamtkostenrechner](https://azure.microsoft.com/pricing/tco/calculator/) 
+   - [SQL Server auf virtuellen Azure-Computern](../../virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)
+   - [Azure-Gesamtkostenrechner](https://azure.microsoft.com/pricing/tco/calculator/)
 
 
 - Weitere Informationen zum Framework und zum Einführungszyklus von Cloudmigrationen finden Sie unter:
    -  [Cloud Adoption Framework für Azure](/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)
-   -  [Bewährte Methoden für die Kostenermittlung und Größenanpassung von zu Azure migrierten Workloads](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs) 
+   -  [Bewährte Methoden für Kostenermittlung und Größenanpassung von zu Azure migrierten Workloads](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs) 
 
 - Hier finden Sie weitere Informationen zur Lizenzierung:
    - [Bring-Your-Own-License mit dem Azure-Hybridvorteil](../../virtual-machines/windows/licensing-model-azure-hybrid-benefit-ahb-change.md)
    - [Erweiterter Support für SQL Server 2008 und SQL Server 2008 R2](../../virtual-machines/windows/sql-server-2008-extend-end-of-support.md)
 
+- Für die Bewertung der Anwendungszugriffsebene verwenden Sie das [Data Access Migration Toolkit (Vorschauversion)](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit).
+- Ausführliche Informationen zum Ausführen von A/B-Tests auf Datenzugriffsebene finden Sie unter [Übersicht über den Assistenten für Datenbankexperimente](/sql/dea/database-experimentation-assistant-overview).
 
-- Informationen zum Bewerten der Anwendungszugriffsebene finden Sie unter [Data Access Migration Toolkit (Vorschauversion)](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit).
-- Ausführliche Informationen zum Ausführen von A/B-Tests auf Datenzugriffsebene finden Sie unter [Assistent für Datenbankexperimente](/sql/dea/database-experimentation-assistant-overview).
 

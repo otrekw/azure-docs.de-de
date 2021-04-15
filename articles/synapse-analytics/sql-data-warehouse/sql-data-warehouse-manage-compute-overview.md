@@ -1,6 +1,6 @@
 ---
 title: Verwalten von Computeressourcen für dedizierte SQL-Pools (ehemals SQL DW)
-description: Erfahren Sie mehr über die Leistungsfunktionen für das Aufskalieren in einem dedizierten SQL-Pool (ehemals SQL DW) in Azure Synapse Analytics. Skalieren Sie durch Anpassen der DWUs auf, oder senken Sie die Kosten durch Anhalten des dedizierten SQL-Pools.
+description: Erfahren Sie mehr über die Leistungsfunktionen für das Aufskalieren in einem dedizierten SQL-Pool (ehemals SQL DW) in Azure Synapse Analytics. Skalieren Sie durch Anpassen der DWUs auf, oder senken Sie die Kosten durch Anhalten des dedizierten SQL-Pools (früher SQL DW).
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -11,12 +11,12 @@ ms.date: 11/12/2019
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 4a2ce18f4a02ccaadf66a96049b00f3837b927e4
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 8c44e0570b08bba852d57fbb25da05d778ea8a0d
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98677036"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105960111"
 ---
 # <a name="manage-compute-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Verwalten der Computeressourcen für einen dedizierten SQL-Pool (ehemals SQL DW) in Azure Synapse Analytics
 
@@ -92,6 +92,7 @@ Wenn Sie einen dedizierten SQL-Pool (ehemals SQL DW) anhalten:
 - Die Kosten für Data Warehouse-Einheiten sind für die Dauer der Pause gleich null.
 - Die Speicherung von Daten ist nicht betroffen, und Ihre Daten bleiben intakt.
 - Alle laufenden oder in die Warteschlange eingereihten Vorgänge werden abgebrochen.
+- DMV-Zähler werden zurückgesetzt.
 
 Wenn Sie einen dedizierten SQL-Pool (ehemals SQL DW) fortsetzen:
 

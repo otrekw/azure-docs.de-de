@@ -1,5 +1,5 @@
 ---
-title: 'Azure ExpressRoute: Umstellen von öffentlichem Peering auf Microsoft-Peering'
+title: 'Azure ExpressRoute: Umstellen vom öffentlichem Peering auf Microsoft-Peering'
 description: In diesem Artikel erfahren Sie, wie Sie Ihr öffentliches Peering über ExpressRoute auf Microsoft-Peering umstellen.
 services: expressroute
 author: duongau
@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 12/12/2019
 ms.author: duau
 ms.openlocfilehash: 608d6c87442821e904fde16c6b75841fe792e3f0
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92206287"
 ---
 # <a name="move-a-public-peering-to-microsoft-peering"></a>Umstellen von öffentlichem Peering auf Microsoft-Peering
@@ -49,7 +49,7 @@ Wenn die Ebene 3 von Ihnen verwaltet wird, benötigen Sie die folgenden Informa
 * Angekündigte Präfixe: Sie müssen eine Liste mit allen Präfixen bereitstellen, die Sie über die BGP-Sitzung ankündigen möchten. Nur öffentliche IP-Adresspräfixe werden akzeptiert. Wenn Sie planen, einen Satz mit Präfixen zu senden, können Sie eine durch Komma getrennte Liste senden. Diese Präfixe müssen über eine RIR/IRR-Registrierung für Sie verfügen.<br>
 * Routing-Registrierungsname: Sie können den RIR/IRR-Wert angeben, unter dem die AS-Nummer und die Präfixe registriert sind.
 
-* **Optional:** Kunden-ASN: Wenn Sie Präfixe ankündigen, die nicht für die Peering-AS-Nummer registriert sind, können Sie die AS-Nummer angeben, unter der sie registriert sind.<br>
+* **Optional** – Kunden-ASN: Wenn Sie Präfixe ankündigen, die nicht für die Peering-AS-Nummer registriert sind, können Sie die AS-Nummer angeben, unter der sie registriert sind.<br>
 * **Optional:** Einen MD5-Hash, wenn Sie sich für dessen Einsatz entscheiden.
 
 Eine ausführliche Anleitung zum Aktivieren des Microsoft-Peerings finden Sie in den folgenden Artikeln:

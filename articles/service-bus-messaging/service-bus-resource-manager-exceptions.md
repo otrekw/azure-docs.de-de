@@ -4,10 +4,10 @@ description: Liste der Service Bus-Ausnahmen, die durch Azure Resource Manager a
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: a0b0338da0f002c7b667748ffd2bf5a40c91c580
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85336969"
 ---
 # <a name="service-bus-resource-manager-exceptions"></a>Service Bus Resource Manager-Ausnahmen
@@ -19,7 +19,7 @@ In diesem Artikel werden die Ausnahmen aufgelistet, die bei der Interaktion mit 
 
 Im Folgenden finden Sie die verschiedenen Ausnahmen/Fehler, die durch Azure Resource Manager angezeigt werden.
 
-## <a name="error-bad-request"></a>Error: Ungültige Anforderung
+## <a name="error-bad-request"></a>Fehler: Ungültige Anforderung
 
 „Ungültige Anforderung“ impliziert, dass die von Resource Manager empfangene Anforderung die Überprüfung nicht bestanden hat.
 
@@ -27,7 +27,7 @@ Im Folgenden finden Sie die verschiedenen Ausnahmen/Fehler, die durch Azure Reso
 | ---------- | ------------- | ------------- | ----------- | -------------- |
 | Ungültige Anforderung | 40.000 | SubCode=40000. Die Eigenschaft *'Eigenschaftsname'* kann beim Erstellen einer Warteschlange nicht festgelegt werden, weil der Namespace *' Namespacename'* den Tarif 'Basic' verwendet. Dieser Vorgang wird nur im Tarif 'Basic' oder 'Premium' unterstützt. | Im Tarif Basic von Azure Service Bus können die folgenden Eigenschaften nicht festgelegt oder aktualisiert werden: <ul> <li> RequiresDuplicateDetection </li> <li> AutoDeleteOnIdle </li> <li>RequiresSession</li> <li>DefaultMessageTimeToLive </li> <li> DuplicateDetectionHistoryTimeWindow </li> <li> EnableExpress </li> <li> ForwardTo </li> <li> Themen </li> </ul> | Führen Sie ein Upgrade von Basic auf Standard oder Premium durch, um diese Funktion zu verwenden. |
 | Ungültige Anforderung | 40.000 | SubCode=40000. Der Wert für die Eigenschaft 'requiresDuplicateDetection' einer vorhandenen Warteschlange (oder eines Themas) kann nicht geändert werden. | Die Duplikaterkennung muss zum Zeitpunkt der Erstellung der Entität aktiviert/deaktiviert werden. Der Konfigurationsparameter für die Duplikaterkennung kann nach der Erstellung nicht mehr geändert werden. | Um die Duplikaterkennung für eine zuvor erstellte Warteschlange/ein Thema zu aktivieren, können Sie eine neue Warteschlange/ein neues Thema mit Duplikaterkennung erstellen und dann aus der ursprünglichen Warteschlange an die neue Warteschlange/das neue Thema weiterleiten. |
-| Ungültige Anforderung | 40.000 | SubCode=40000. Der angegebene Wert 16384 ist ungültig. Die Eigenschaft 'MaxSizeInMegabytes' muss einen der folgenden Werte aufweisen: 1024;2048;3072;4096;5120. | Der Wert für MaxSizeInMegabytes ist ungültig. | Stellen Sie sicher, dass MaxSizeInMegabytes einer der folgenden Werte ist: 1024, 2048, 3072, 4096, 5120. |
+| Ungültige Anforderung | 40.000 | SubCode=40000. Der angegebene Wert 16384 ist ungültig. Die MaxSizeInMegabytes-Eigenschaft muss einen der folgenden Werte aufweisen: 1024, 2048, 3072, 4096, 5120. | Der Wert für MaxSizeInMegabytes ist ungültig. | Stellen Sie sicher, dass MaxSizeInMegabytes einer der folgenden Werte ist: 1024, 2048, 3072, 4096, 5120. |
 | Ungültige Anforderung | 40.000 | SubCode=40000. Die Partitionierung kann für die Warteschlange/das Thema nicht geändert werden. | Die Partitionierung kann für die Entität nicht geändert werden. | Erstellen Sie eine neue Entität (Warteschlange oder Thema), und aktivieren Sie Partitionen. | 
 | Ungültige Anforderung | none | Der Namespace *'Namespacename'* ist nicht vorhanden. | Der Namespace ist in Ihrem Azure-Abonnement nicht vorhanden. | Versuchen Sie Folgendes, um diesen Fehler zu beheben: <ul> <li> Stellen Sie sicher, dass das Azure-Abonnement richtig ist. </li> <li> Stellen Sie sicher, dass der Namespace vorhanden ist. </li> <li> Vergewissern Sie sich, dass der Namespacename richtig ist (keine Rechtschreibfehler oder NULL-Zeichenfolgen). </li> </ul> | 
 | Ungültige Anforderung | 40400 | SubCode=40400. Die Zielentität für die automatische Weiterleitung ist nicht vorhanden. | Das Ziel für die Zielentität für die automatische Weiterleitung ist nicht vorhanden. | Die Zielentität (Warteschlange oder Thema) muss vorhanden sein, bevor die Quelle erstellt wird. Versuchen Sie es nach dem Erstellen der Zielentität erneut. |

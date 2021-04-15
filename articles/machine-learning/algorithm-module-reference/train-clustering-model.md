@@ -1,5 +1,5 @@
 ---
-title: 'Train Clustering Model: Modulreferenz'
+title: 'Trainieren eines Clusteringmodells: Modulreferenz'
 titleSuffix: Azure Machine Learning
 description: Erfahren Sie, wie Sie das Modul Train Clustering Model in Azure Machine Learning verwenden, um Clusteringmodelle zu trainieren.
 services: machine-learning
@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 11/19/2019
-ms.openlocfilehash: 0dfde6fef7cc91edf2101095018bc031d392c4ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/17/2021
+ms.openlocfilehash: ea6673a04bf9f5f568c660658e51036f2d2712e0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90898184"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104654729"
 ---
 # <a name="train-clustering-model"></a>Trainieren eines Clusteringmodells
 
@@ -29,7 +29,7 @@ In diesem Modul wird ein untrainiertes Clusteringmodell verwendet, das Sie berei
   
 ## <a name="how-to-use-train-clustering-model"></a>Verwenden des Moduls „Train Clustering Model“  
 
-1.  Fügen Sie das Modul **Train Clustering Model** Ihrer Pipeline im Designer hinzu. Sie finden das Modul unter **Machine Learning Modules**in der Kategorie **Train**.  
+1.  Fügen Sie das Modul **Train Clustering Model** Ihrer Pipeline im Designer hinzu. Sie finden das Modul unter **Machine Learning Modules** in der Kategorie **Train**.  
   
 2. Fügen Sie das Modul [K-Means Clustering](k-means-clustering.md) oder ein anderes benutzerdefiniertes Modul hinzu, mit dem ein kompatibles Clusteringmodell erstellt wird, und legen Sie dessen Parameter fest.  
     
@@ -49,9 +49,12 @@ In diesem Modul wird ein untrainiertes Clusteringmodell verwendet, das Sie berei
 
 Nach Abschluss des Trainings:
 
-+ Um eine Momentaufnahme des trainierten Modells zu speichern, wählen Sie die Registerkarte **Ausgaben** im rechten Bereich des Moduls **Train model** (Trainieren des Modells) aus. Wählen Sie das Symbol **Register dataset** (Dataset registrieren) aus, um das Modell als wiederverwendbares Modul zu speichern.
++ Um eine Momentaufnahme des trainierten Modells zu speichern, wählen Sie die Registerkarte **Ausgaben** im rechten Bereich des Moduls **Train model** aus. Wählen Sie das Symbol **Register dataset** (Dataset registrieren) aus, um das Modell als wiederverwendbares Modul zu speichern.
 
 + Verwenden Sie zum Generieren von Ergebnissen aus dem Modell [Assign Data to Clusters](assign-data-to-clusters.md) (Zuweisen von Daten zu Clustern).
+
+> [!NOTE]
+> Wenn Sie das trainierte Modell im Designer bereitstellen müssen, vergewissern Sie sich, dass in der Rückschlusspipeline die Option [Assign Data to Clusters](assign-data-to-clusters.md) (Clustern Daten zuweisen) anstelle von **Modell bewerten** mit der Eingabe des Moduls [Webdienstausgabe](web-service-input-output.md) verbunden ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

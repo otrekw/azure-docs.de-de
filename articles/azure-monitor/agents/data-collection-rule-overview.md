@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/19/2021
-ms.openlocfilehash: a0c5e9f89b983871224e79c2fc4f518a15d42a6f
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: a52d6dca423565e7b5e4b6ac059bcf21b637c87c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102039613"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104586334"
 ---
 # <a name="data-collection-rules-in-azure-monitor-preview"></a>Datensammlungsregeln in Azure Monitor (Vorschau)
 Mit Datensammlungsregeln werden die in Azure Monitor eingehenden Daten definiert, und es wird angegeben, wohin die Daten gesendet bzw. wo sie gespeichert werden sollen. Dieser Artikel enthält eine Übersicht über die Datensammlungsregeln, z. B. zu Inhalt und Struktur und zur Erstellung und Nutzung.
@@ -81,6 +81,10 @@ Die unten angegebene Beispielregel für die Datensammlung gilt für virtuelle Co
   - Sammelt Ereignisse vom Typ „Warnung“, „Kritisch“ und „Notfall“ für die Syslog-Komponente.
 - Destinations
   - Sendet alle Daten an einen Log Analytics-Arbeitsbereich mit dem Namen „centralWorkspace“.
+
+> [!NOTE]
+> Eine Erläuterung zu XPath-Abfragen, die verwendet werden, um Angaben zu einer Ereignissammlung in Datensammlungsregeln zu machen, finden Sie unter [Einschränken der Datensammlung mithilfe von benutzerdefinierten XPath-Abfragen](data-collection-rule-azure-monitor-agent.md#limit-data-collection-with-custom-xpath-queries).
+
 
 ```json
 {

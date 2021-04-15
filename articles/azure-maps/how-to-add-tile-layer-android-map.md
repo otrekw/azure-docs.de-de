@@ -3,18 +3,18 @@ title: Hinzufügen einer Kachelebene zu Android-Karten | Microsoft Azure Maps
 description: Erfahren Sie, wie Sie einer Karte eine Kachelebene hinzufügen. Sehen Sie sich ein Beispiel an, in dem das Azure Maps Android SDK verwendet wird, um einer Karte eine Wetterradarüberlagerung hinzuzufügen.
 author: rbrundritt
 ms.author: richbrun
-ms.date: 2/26/2021
+ms.date: 3/25/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: 6a920dc222cae4aedd77b667644de317637bbb69
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: ac37a4e6d68decdf6780560963a0c534689e8dbb
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102047501"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105608980"
 ---
 # <a name="add-a-tile-layer-to-a-map-android-sdk"></a>Hinzufügen einer Kachelebene zu einer Karte (Android SDK)
 
@@ -24,12 +24,12 @@ Eine Kachelebene wird in Kacheln von einem Server geladen. Diese Bilder können 
 
 * Notation von X, Y, Zoomfaktor: Basierend auf dem Zoomfaktor ist X die Spalten- und Y die Zeilenposition der Kachel im Kachelraster.
 * Quadkey-Notation: Kombination der Informationen X, Y und Zoomfaktor in einem einzelnen Zeichenfolgenwert, der ein eindeutiger Bezeichner für eine Kachel ist.
-* Begrenzungsrahmen: Koordinaten des Begrenzungsrahmens können verwendet werden, um ein Bild im Format `{west},{south},{east},{north}` anzugeben, welches häufig von [Web Mapping Services (WMS)](https://www.opengeospatial.org/standards/wms) verwendet wird.
+* Begrenzungsrahmen: Koordinaten des Begrenzungsrahmens können verwendet werden, um ein Bild im Format `{west},{south},{east},{north}` anzugeben, welches häufig von [Webkartendiensten (Web Mapping Services, WMS)](https://www.opengeospatial.org/standards/wms) verwendet wird.
 
 > [!TIP]
 > Ein TileLayer-Element (Kachelebene) ist eine gute Möglichkeit, große Datasets auf der Karte zu visualisieren. Eine Kachelebene lässt sich nicht nur aus einem Bild generieren, sondern auch Vektordaten können als Kachelebene gerendert werden. Durch das Rendern von Vektordaten als Kachelebene muss das Kartensteuerelement nur die Kacheln laden. Diese können eine viel kleinere Dateigröße aufweisen als die Vektordaten, die sie darstellen. Diese Technik wird von vielen verwendet, die Millionen von Datenzeilen auf der Karte rendern müssen.
 
-Die in eine Kachelebene übergebene Kachel-URL muss eine HTTP/HTTPS-URL zu einer TileJSON-Ressource oder eine Kachel-URL-Vorlage sein, die die folgenden Parameter verwendet: 
+Die in eine Kachelebene übergebene Kachel-URL muss eine HTTP/HTTPS-URL zu einer TileJSON-Ressource oder eine Kachel-URL-Vorlage sein, die die folgenden Parameter verwendet:
 
 * `{x}`: X-Position der Kachel. Benötigt auch `{y}` und `{z}`.
 * `{y}`: Y-Position der Kachel. Benötigt auch `{x}` und `{z}`.
@@ -82,6 +82,82 @@ map.layers.add(layer, "labels")
 Der folgende Screenshot zeigt, wie durch den oben aufgeführten Code eine Kachelebene mit nautischen Informationen auf einer Karte mit dem Stil „Graustufen dunkel“ angezeigt wird.
 
 ![Android-Karte mit einer Kachelebene](media/how-to-add-tile-layer-android-map/xyz-tile-layer-android.png)
+
+## <a name="add-an-ogc-web-mapping-service-wms"></a>Hinzufügen eines OGC-Webkartendiensts (WMS)
+
+Ein Webkartendienst (Web Mapping Service, WMS) ist ein OGC-Standard (Open Geospatial Consortium) zum Bereitstellen von Bildern von Kartendaten. In diesem Format stehen viele offene Datasets zur Verfügung, die Sie mit Azure Maps verwenden können. Dieser Diensttyp kann mit einer Kachelebene verwendet werden, wenn der Dienst das Referenzkoordinatensystem `EPSG:3857` unterstützt. Bei Verwendung eines WMS-Diensts legen Sie die Parameter für Breite und Höhe auf den vom Dienst unterstützten Wert fest. Achten Sie darauf, dass Sie denselben Wert in der Option `tileSize` festlegen. In der formatierten URL legen Sie den Parameter `BBOX` des Diensts auf den Platzhalter `{bbox-epsg-3857}` fest.
+
+::: zone pivot="programming-language-java-android"
+
+``` java
+TileLayer layer = new TileLayer(
+    tileUrl("https://mrdata.usgs.gov/services/gscworld?FORMAT=image/png&HEIGHT=1024&LAYERS=geology&REQUEST=GetMap&STYLES=default&TILED=true&TRANSPARENT=true&WIDTH=1024&VERSION=1.3.0&SERVICE=WMS&CRS=EPSG:3857&BBOX={bbox-epsg-3857}"),
+    tileSize(1024)
+);
+
+map.layers.add(layer, "labels");
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+val layer = TileLayer(
+    tileUrl("https://mrdata.usgs.gov/services/gscworld?FORMAT=image/png&HEIGHT=1024&LAYERS=geology&REQUEST=GetMap&STYLES=default&TILED=true&TRANSPARENT=true&WIDTH=1024&VERSION=1.3.0&SERVICE=WMS&CRS=EPSG:3857&BBOX={bbox-epsg-3857}"),
+    tileSize(1024)
+)
+
+map.layers.add(layer, "labels")
+```
+
+::: zone-end
+
+Der folgende Screenshot zeigt den obigen Code zum Überlagern einer Karte mit einem Webkartendienst für geologische Daten von der [USGS (U.S. Geological Survey)](https://mrdata.usgs.gov/) unter den Bezeichnungen.
+
+![Android-Karte mit einer WMS-Kachelebene](media/how-to-add-tile-layer-android-map/android-tile-layer-wms.jpg)
+
+## <a name="add-an-ogc-web-mapping-tile-service-wmts"></a>Hinzufügen eines OGC-Webkartenkacheldiensts (WMTS)
+
+Ein Webkartenkacheldienst (Web Mapping Tile Service, WMTS) ist ein OGC-Standard (Open Geospatial Consortium) zum Bereitstellen von kachelbasierten Überlagerungen für Karten. In diesem Format stehen viele offene Datasets zur Verfügung, die Sie mit Azure Maps verwenden können. Dieser Diensttyp kann mit einer Kachelebene verwendet werden, wenn der Dienst das Referenzkoordinatensystem `EPSG:3857` oder `GoogleMapsCompatible` unterstützt. Bei Verwendung eines WMTS-Diensts legen Sie die Parameter für Breite und Höhe auf den vom Dienst unterstützten Wert fest. Achten Sie darauf, dass Sie denselben Wert in der Option `tileSize` festlegen. In der formatierten URL ersetzen Sie die folgenden Platzhalter entsprechend:
+
+* `{TileMatrix}` => `{z}`
+* `{TileRow}` => `{y}`
+* `{TileCol}` => `{x}`
+
+::: zone pivot="programming-language-java-android"
+
+``` java
+TileLayer layer = new TileLayer(
+    tileUrl("https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryOnly/MapServer/WMTS/tile/1.0.0/USGSImageryOnly/default/GoogleMapsCompatible/{z}/{y}/{x}"),
+    tileSize(256),
+    bounds(-173.25000107492872, 0.0005794121990209753, 146.12527718104752, 71.506811402077),
+    maxSourceZoom(18)
+);
+
+map.layers.add(layer, "transit");
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+val layer = TileLayer(
+    tileUrl("https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryOnly/MapServer/WMTS/tile/1.0.0/USGSImageryOnly/default/GoogleMapsCompatible/{z}/{y}/{x}"),
+    tileSize(256),
+    bounds(-173.25000107492872, 0.0005794121990209753, 146.12527718104752, 71.506811402077),
+    maxSourceZoom(18)
+)
+
+map.layers.add(layer, "transit")
+```
+
+::: zone-end
+
+Der folgende Screenshot zeigt den obigen Code zum Überlagern einer Karte mit einem Webkartenkacheldienst für Bilder des [USGS National Map Service (U.S. Geological Survey)](https://viewer.nationalmap.gov/services/) unter den Straßen und Bezeichnungen.
+
+![Android-Karte mit einer WMTS-Kachelebene](media/how-to-add-tile-layer-android-map/android-tile-layer-wmts.jpg)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

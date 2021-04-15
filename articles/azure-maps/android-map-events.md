@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: 86d1b9ec8a507a5cfaa5502efcb239bceabca665
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: ebe61e5956dc0f35794211a336eb7d884ee18d76
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102097345"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105608900"
 ---
 # <a name="interact-with-the-map-android-sdk"></a>Interagieren mit der Karte (Android SDK)
 
@@ -30,13 +30,13 @@ Die Karte verwaltet alle Ereignisse über ihre `events`-Eigenschaft. In der folg
 | `OnCameraMove`         | `()`                 | Wird während eines animierten Übergangs von einer Ansicht zu einer anderen wiederholt ausgelöst, entweder infolge einer Benutzerinteraktion oder durch Methoden. |
 | `OnCameraMoveCanceled` | `()`                 | Wird ausgelöst, wenn eine Bewegungsanforderung an die Kamera abgebrochen wurde. |
 | `OnCameraMoveStarted`  | `(int reason)`       | Wird ausgelöst, kurz bevor die Karte den Übergang von einer Ansicht zu einer anderen beginnt, entweder infolge einer Benutzerinteraktion oder durch Methoden. Das Argument `reason` des Ereignislistener gibt einen ganzzahligen Wert zurück, der Aufschluss darüber gibt, wie die Kamerabewegung initiiert wurde. Im Folgenden finden Sie eine Liste möglicher Gründe:<ul><li>1: Geste</li><li>2: Entwickleranimation</li><li>3: API-Animation</li></ul>   |
-| `OnClick`              | `(double lat, double lon)` | Wird ausgelöst, wenn die Karte an derselben Stelle gedrückt und wieder losgelassen wird. |
-| `OnFeatureClick`       | `(List<Feature>)`    | Wird ausgelöst, wenn die Karte an derselben Stelle eines Features gedrückt und wieder losgelassen wird.  |
+| `OnClick`              | `(double lat, double lon): boolean` | Wird ausgelöst, wenn die Karte an derselben Stelle gedrückt und wieder losgelassen wird. Dieser Ereignishandler gibt einen booleschen Wert zurück, der angibt, ob das Ereignis verarbeitet oder an andere Ereignislistener weitergeleitet werden soll. |
+| `OnFeatureClick`       | `(List<Feature>): boolean`    | Wird ausgelöst, wenn die Karte an derselben Stelle eines Features gedrückt und wieder losgelassen wird. Dieser Ereignishandler gibt einen booleschen Wert zurück, der angibt, ob das Ereignis verarbeitet oder an andere Ereignislistener weitergeleitet werden soll. |
 | `OnLayerAdded` | `(Layer layer)` | Wird ausgelöst, wenn der Karte eine Ebene hinzugefügt wird. |
 | `OnLayerRemoved` | `(Layer layer)` | Wird ausgelöst, wenn aus der Karte eine Ebene entfernt wird. |
 | `OnLoaded` | `()` | Wird sofort ausgelöst, nachdem alle erforderlichen Ressourcen heruntergeladen wurden und das erste visuell vollständige Rendering der Karte stattgefunden hat. |
-| `OnLongClick`          | `(double lat, double lon)` | Wird ausgelöst, wenn die Karte gedrückt wird, für einen Moment gehalten und dann an derselben Stelle auf der Karte wieder losgelassen wird. |
-| `OnLongFeatureClick `  | `(List<Feature>)`    | Wird ausgelöst, wenn die Karte gedrückt wird, für einen Moment gehalten und dann an derselben Stelle eines Features losgelassen wird. |
+| `OnLongClick`          | `(double lat, double lon): boolean` | Wird ausgelöst, wenn die Karte gedrückt wird, für einen Moment gehalten und dann an derselben Stelle auf der Karte wieder losgelassen wird. Dieser Ereignishandler gibt einen booleschen Wert zurück, der angibt, ob das Ereignis verarbeitet oder an andere Ereignislistener weitergeleitet werden soll. |
+| `OnLongFeatureClick `  | `(List<Feature>): boolean`    | Wird ausgelöst, wenn die Karte gedrückt wird, für einen Moment gehalten und dann an derselben Stelle eines Features losgelassen wird. Dieser Ereignishandler gibt einen booleschen Wert zurück, der angibt, ob das Ereignis verarbeitet oder an andere Ereignislistener weitergeleitet werden soll. |
 | `OnReady`              | `(AzureMap map)`     | Wird ausgelöst, wenn die Karte anfänglich geladen wird oder wenn sich die App-Ausrichtung ändert und die erforderlichen Kartenressourcen geladen sind und die Karte bereit ist, programmgesteuert interaktiv genutzt zu werden. |
 | `OnSourceAdded` | `(Source source)` | Wird ausgelöst, wenn der Karte `DataSource` oder `VectorTileSource` hinzugefügt wird. |
 | `OnSourceRemoved` | `(Source source)` | Wird ausgelöst, wenn aus der Karte `DataSource` oder `VectorTileSource` entfernt wird. |
@@ -49,10 +49,16 @@ Der folgende Code zeigt, wie die `OnClick`-, `OnFeatureClick`- und `OnCameraMove
 ```java
 map.events.add((OnClick) (lat, lon) -> {
     //Map clicked.
+
+    //Return true indicating if event should be consumed and not passed further to other listeners registered afterwards, false otherwise.
+    return true;
 });
 
 map.events.add((OnFeatureClick) (features) -> {
     //Feature clicked.
+
+    //Return true indicating if event should be consumed and not passed further to other listeners registered afterwards, false otherwise.
+    return true;
 });
 
 map.events.add((OnCameraMove) () -> {
@@ -67,10 +73,16 @@ map.events.add((OnCameraMove) () -> {
 ```kotlin
 map.events.add(OnClick { lat: Double, lon: Double -> 
     //Map clicked.
+
+    //Return true indicating if event should be consumed and not passed further to other listeners registered afterwards, false otherwise.
+    return false
 })
 
 map.events.add(OnFeatureClick { features: List<Feature?>? -> 
     //Feature clicked.
+
+    //Return true indicating if event should be consumed and not passed further to other listeners registered afterwards, false otherwise.
+    return false
 })
 
 map.events.add(OnCameraMove {
@@ -103,11 +115,17 @@ map.layers.add(layer);
 //Add a feature click event to the map and pass the layer ID to limit the event to the specified layer.
 map.events.add((OnFeatureClick) (features) -> {
     //One or more features clicked.
+
+    //Return true indicating if event should be consumed and not passed further to other listeners registered afterwards, false otherwise.
+    return true;
 }, layer);
 
 //Add a long feature click event to the map and pass the layer ID to limit the event to the specified layer.
 map.events.add((OnLongFeatureClick) (features) -> {
     //One or more features long clicked.
+
+    //Return true indicating if event should be consumed and not passed further to other listeners registered afterwards, false otherwise.
+    return true;
 }, layer);
 ```
 
@@ -131,6 +149,9 @@ map.layers.add(layer)
 map.events.add(
     OnFeatureClick { features: List<Feature?>? -> 
         //One or more features clicked.
+
+        //Return true indicating if event should be consumed and not passed further to other listeners registered afterwards, false otherwise.
+        return false
     },
     layer
 )
@@ -139,6 +160,9 @@ map.events.add(
 map.events.add(
     OnLongFeatureClick { features: List<Feature?>? -> 
          //One or more features long clicked.
+
+        //Return true indicating if event should be consumed and not passed further to other listeners registered afterwards, false otherwise.
+        return false
     },
     layer
 )

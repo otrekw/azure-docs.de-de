@@ -3,12 +3,12 @@ title: Aktualisieren eines Clusters, um den allgemeinen Namen des Zertifikats zu
 description: Hier erfahren Sie, wie Sie ein Azure Service Fabric-Clusterzertifikat so konvertieren, dass keine fingerabdruckbasierten Deklarationen, sondern allgemeine Namen verwendet werden.
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: f719b1eb39da776827c6babec61e9e6701bb4602
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: daf8d55e156f30b1f9e9ec5c50d60714e6f17884
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97900789"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308012"
 ---
 # <a name="convert-cluster-certificates-from-thumbprint-based-declarations-to-common-names"></a>Konvertieren von Clusterzertifikaten von der Verwendung fingerabdruckbasierter Deklarationen zur Verwendung allgemeiner Namen
 
@@ -45,7 +45,7 @@ Zu Testzwecken *könnte* ein selbstsigniertes Zertifikat per CN deklariert werde
 
 ## <a name="upload-the-certificate-and-install-it-in-the-scale-set"></a>Hochladen des Zertifikats und Installieren in der Skalierungsgruppe
 
-In Azure umfasst der empfohlene Mechanismus zum Abrufen und Bereitstellen von Zertifikaten Azure Key Vault und die zugehörigen Tools. Ein Zertifikat, das der Clusterzertifikatdeklaration entspricht, muss auf jedem Knoten der VM-Skalierungsgruppen bereitgestellt werden, aus denen der Cluster besteht. Weitere Informationen finden Sie unter [Wie übertrage ich ein Zertifikat sicher auf den virtuellen Computer?](../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.md#how-do-i-securely-ship-a-certificate-to-the-vm).
+In Azure umfasst der empfohlene Mechanismus zum Abrufen und Bereitstellen von Zertifikaten Azure Key Vault und die zugehörigen Tools. Ein Zertifikat, das der Clusterzertifikatdeklaration entspricht, muss auf jedem Knoten der VM-Skalierungsgruppen bereitgestellt werden, aus denen der Cluster besteht. Weitere Informationen finden Sie unter [Wie übertrage ich ein Zertifikat sicher auf den virtuellen Computer?](../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.yml#how-do-i-securely-ship-a-certificate-to-the-vm-).
 
 Es ist wichtig, dass sowohl aktuelle als auch zukünftig zu verwendende Clusterzertifikate auf den virtuellen Computern aller Knotentypen des Clusters installiert werden, bevor Sie Änderungen an den Zertifikatdeklarationen des Clusters vornehmen. Der gesamte Prozess von der Ausstellung des Zertifikats bis hin zur Bereitstellung auf einem Service Fabric-Knoten wird detailliert unter [Der Weg eines Zertifikats](cluster-security-certificate-management.md#the-journey-of-a-certificate) erläutert.
 
