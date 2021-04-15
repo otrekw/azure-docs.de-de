@@ -4,10 +4,10 @@ description: Es wird beschrieben, wie Sie virtuelle Computer in einem Lab in Azu
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 231e79d594aab7c59fa21f9ee512abaa9ac67043
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87282261"
 ---
 # <a name="start-virtual-machines-in-a-lab-in-order-by-using-azure-automation-runbooks"></a>Starten von virtuellen Computern in einem Lab nach einer bestimmten Reihenfolge mit Azure Automation-Runbooks
@@ -129,4 +129,4 @@ While ($current -le 10) {
 In einem umfassenderen Fall, wenn mehrere Abonnements mit mehreren Labs verwendet werden, sollten Sie die Parameterinformationen für verschiedene Labs in einer zentralen Datei speichern und die Datei anstelle der einzelnen Parameter an das Skript übergeben. Das Skript müsste geändert werden, aber die eigentliche Ausführung wäre identisch. In diesem Beispiel wird Azure Automation zum Ausführen des PowerShell-Skripts verwendet, aber es gibt auch andere Optionen, z. B. die Verwendung einer Aufgabe in einer Build-/Releasepipeline.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zu Azure Automation finden Sie im folgenden Artikel: [Einführung in Azure Automation](../automation/automation-intro.md)
+Im folgenden Artikel finden Sie weitere Informationen zu Azure Automation: [An introduction to Azure Automation (Einführung in Azure Automation)](../automation/automation-intro.md).

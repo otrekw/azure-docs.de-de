@@ -3,12 +3,12 @@ title: Verwenden der Funktionalität öffentlicher IP-Adressen in Azure VMware S
 description: In diesem Artikel wird erläutert, wie Sie die Funktion „öffentliche IP-Adresse“ in Azure Virtual WAN verwenden.
 ms.topic: how-to
 ms.date: 02/04/2021
-ms.openlocfilehash: 640f359ed8934048bffd7f58b36e8a3eef71c2f1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 794e24e531d464adf58d5a06b5a411ada18c4a60
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99581379"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105023655"
 ---
 # <a name="how-to-use-the-public-ip-functionality-in-azure-vmware-solution"></a>Verwenden der Funktionalität öffentlicher IP-Adressen in Azure VMware Solution
 
@@ -47,6 +47,9 @@ Der Webserver empfängt die Anforderung und antwortet der Firewall mit den angef
 
 ## <a name="test-case"></a>Testfall
 In diesem Szenario veröffentlichen Sie den IIS-Webserver im Internet. Verwenden Sie die Funktion „öffentliche IP-Adresse“ in Azure VMware Solution, um die Website unter einer öffentlichen IP-Adresse zu veröffentlichen.  Sie konfigurieren NAT-Regeln für die Firewall und greifen auf die Azure VMware Solution-Ressource (VMs mit einem Webserver) mit öffentlicher IP-Adresse zu.
+
+>[!TIP]
+>Um den ausgehenden Datenverkehr zu aktivieren, müssen Sie Sicherheitskonfiguration > Internetdatenverkehr auf **Azure Firewall** festlegen.
 
 ## <a name="deploy-virtual-wan"></a>Bereitstellen von Virtual WAN
 
@@ -152,7 +155,7 @@ Nachdem alle Komponenten bereitgestellt wurden, können Sie diese in der hinzuge
 
 ## <a name="limitations"></a>Einschränkungen
 
-Pro SDDC sind 100 öffentliche IP-Adressen zulässig.
+Pro privater Cloud sind 100 öffentliche IP-Adressen zulässig.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

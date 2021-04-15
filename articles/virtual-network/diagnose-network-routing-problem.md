@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 05/30/2018
 ms.author: kumud
 ms.openlocfilehash: 1c23244707179e05c63ed44b5915e58eefd3f4a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "84705048"
 ---
 # <a name="diagnose-a-virtual-machine-routing-problem"></a>Diagnose des Routingproblems einer VM
@@ -38,15 +38,15 @@ Die folgenden Schritte setzen voraus, dass Sie über einen virtuellen Computer v
 2. Geben Sie oben im Azure-Portal in das Suchfeld den Namen eines virtuellen Computers ein, der sich im Ausführungsstatus befindet. Wenn der Name der VM in den Suchergebnissen angezeigt wird, wählen Sie sie aus.
 3. Wählen Sie unter **Einstellungen** auf der linken Seite **Netzwerk** aus und navigieren Sie zur Netzwerkschnittstellenressource, indem Sie deren Namen auswählen.
      ![Anzeigen von Netzwerkschnittstellen](./media/diagnose-network-routing-problem/view-nics.png)
-4. Wählen Sie auf der linken Seite **Effektive Routen** aus. Die effektiven Routen für eine Netzwerkschnittstelle namens **myVMNic1** sind in der folgenden Abbildung dargestellt: ![Anzeigen effektiver Routen](./media/diagnose-network-routing-problem/view-effective-routes.png)
+4. Wählen Sie auf der linken Seite **Effektive Routen** aus. Die effektiven Routen für eine Netzwerkschnittstelle namens **myVMNic1** werden in der folgenden Abbildung dargestellt:![Anzeigen effektiver Routen](./media/diagnose-network-routing-problem/view-effective-routes.png)
 
     Wenn dem virtuellen Computer mehrere Netzwerkschnittstellen angefügt sind, können Sie die effektiven Routen für eine Netzwerkschnittstelle anzeigen, indem Sie sie auswählen. Da sich jede Netzwerkschnittstelle in einem anderen Subnetz befinden kann, kann jede Netzwerkschnittstelle über unterschiedliche effektive Routen verfügen.
 
     In dem in der vorherigen Abbildung gezeigten Beispiel sind die aufgelisteten Routen Standardrouten, die Azure für jedes Subnetz erstellt. Ihre Liste verfügt mindestens über diese Routen, aber möglicherweise über zusätzliche Routen, je nach den Funktionen, die Sie für Ihr virtuelles Netzwerk aktiviert haben, z.B. seine Verbindung im Peering mit einem anderen virtuellen Netzwerk oder seine Verbindung mit dem lokalen Netzwerk über ein Azure-VPN-Gateway. Weitere Informationen zu den einzelnen Routen und anderen Routen, die möglicherweise für die Netzwerkschnittstelle angezeigt werden, finden Sie unter [Routing von Datenverkehr für virtuelle Netzwerke](virtual-networks-udr-overview.md). Wenn die Liste eine große Anzahl von Routen aufweist, ist es einfacher, wenn Sie **Herunterladen** auswählen, um eine CSV-Datei mit der Liste der Routen herunterzuladen.
 
 Effektive Routen können nicht nur, wie in den vorherigen Schritten, über die VM angezeigt werden, sondern auch folgendermaßen:
-- **Individuelle Netzwerkschnittstelle:** Erfahren Sie, wie Sie [eine Netzwerkschnittstelle anzeigen](virtual-network-network-interface.md#view-network-interface-settings).
-- **Individuelle Routingtabelle:** Erfahren Sie, wie Sie [eine Routingtabelle anzeigen](manage-route-table.md#view-details-of-a-route-table).
+- **Jeweilige Netzwerkschnittstelle**: Erfahren Sie, wie [eine Netzwerkschnittstelle angezeigt wird](virtual-network-network-interface.md#view-network-interface-settings).
+- **Individuelle Routingtabelle**: Erfahren Sie, wie [eine Routingtabelle angezeigt wird](manage-route-table.md#view-details-of-a-route-table).
 
 ## <a name="diagnose-using-powershell"></a>Diagnose mit PowerShell
 
@@ -85,7 +85,7 @@ In der vorangehenden Ausgabe ist der Netzwerkschnittstellenname *myVMNic1*.
 
 ## <a name="diagnose-using-azure-cli"></a>Diagnose über die Azure CLI
 
-Sie können die nachfolgenden Befehle in [Azure Cloud Shell](https://shell.azure.com/bash) oder über die CLI auf Ihrem Computer ausführen. Für diesen Artikel ist die Azure CLI-Version 2.0.32 oder höher erforderlich. Führen Sie `az --version` aus, um die installierte Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli). Wenn Sie die Azure CLI lokal ausführen, müssen Sie auch `az login` ausführen, um sich bei Azure mit einem Konto anzumelden, das über die [erforderlichen Berechtigungen](virtual-network-network-interface.md#permissions) verfügt.
+Sie können die nachfolgenden Befehle in [Azure Cloud Shell](https://shell.azure.com/bash) oder über die CLI auf Ihrem Computer ausführen. Für diesen Artikel ist die Azure CLI-Version 2.0.32 oder höher erforderlich. Führen Sie `az --version` aus, um die installierte Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli). Wenn Sie die Azure CLI lokal ausführen, müssen Sie auch `az login` ausführen, um sich bei Azure mit einem Konto anzumelden, das über die [erforderlichen Berechtigungen](virtual-network-network-interface.md#permissions) verfügt.
 
 Rufen Sie mit [az network nic show-effective-route-table](/cli/azure/network/nic#az-network-nic-show-effective-route-table) die effektiven Routen für eine Netzwerkschnittstelle ab. Im folgenden Beispiel werden die effektiven Routen für eine Netzwerkschnittstelle namens *myVMNic1* abgerufen, die sich in einer Ressourcengruppe mit dem Namen *myResourceGroup* befindet:
 

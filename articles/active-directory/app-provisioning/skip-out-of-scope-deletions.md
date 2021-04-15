@@ -12,18 +12,19 @@ ms.date: 12/10/2019
 ms.author: kenwith
 ms.reviewer: celested
 ms.openlocfilehash: a6cbabe35b223020528d1cf48aa9e0ef9b9f7c05
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99256118"
 ---
 # <a name="skip-deletion-of-user-accounts-that-go-out-of-scope"></a>Überspringen des Löschens von Benutzerkonten außerhalb des gültigen Bereichs
 
 Standardmäßig werden Benutzer, die sich außerhalb des gültigen Bereichs befinden, vom Azure AD-Bereitstellungsmodul vorläufig gelöscht oder deaktiviert. In bestimmten Szenarien (z. B. bei der eingehenden Benutzerbereitstellung von Workday in AD) ist dieses Verhalten jedoch möglicherweise nicht das erwartete Verhalten, sodass Sie dieses Standardverhalten außer Kraft setzen möchten.  
 
-In diesem Artikel wird beschrieben, wie Sie die Microsoft Graph-API und den Microsoft Graph-Tester verwenden, um das Flag ***SkipOutOfScopeDeletions** _ festzulegen, das die Verarbeitung von Konten steuert, die außerhalb des gültigen Bereichs liegen. Wenn ***SkipOutOfScopeDeletions** _ auf „0“ (FALSE) festgelegt ist, werden Konten, die außerhalb des gültigen Bereichs liegen, im Ziel deaktiviert.
-Wenn ***SkipOutOfScopeDeletions** _ auf „1“ (TRUE) festgelegt ist, werden Konten, die außerhalb des gültigen Bereichs liegen, nicht im Ziel deaktiviert. Dieses Flag wird auf der Ebene der _Bereitstellungs-App* festgelegt und kann mithilfe der Graph-API konfiguriert werden. 
+In diesem Artikel wird beschrieben, wie Sie die Microsoft Graph-API und den Microsoft Graph-Tester verwenden, um das Flag ***SkipOutOfScopeDeletions*** festzulegen, das die Verarbeitung von Konten steuert, die sich außerhalb des gültigen Bereichs befinden. 
+* Wenn ***SkipOutOfScopeDeletions*** auf „0“ (false) festgelegt ist, werden Konten, die sich außerhalb des gültigen Bereichs befinden, im Ziel deaktiviert.
+* Wenn ***SkipOutOfScopeDeletions** _ auf „1“ (TRUE) festgelegt ist, werden Konten, die außerhalb des gültigen Bereichs liegen, nicht im Ziel deaktiviert. Dieses Flag wird auf der Ebene der _Bereitstellungs-App* festgelegt und kann mithilfe der Graph-API konfiguriert werden. 
 
 Da diese Konfiguration häufig bei der App für die *Benutzerbereitstellung von Workday in Active Directory* verwendet wird, enthalten die folgenden Schritte Screenshots der Workday-Anwendung. Die Konfiguration kann jedoch auch mit *allen anderen Apps* wie etwa ServiceNow, Salesforce und Dropbox verwendet werden.
 
@@ -68,9 +69,9 @@ Nachfolgend sehen Sie den JSON-Block, der der Zuordnung hinzugefügt werden soll
 
 ## <a name="step-4-update-the-secrets-endpoint-with-the-skipoutofscopedeletions-flag"></a>Schritt 4: Aktualisieren des Endpunkts für Geheimnisse mit dem Flag „SkipOutOfScopeDeletions“
 
-Führen Sie im Graph-Tester den folgenden Befehl aus, um den Endpunkt für Geheimnisse mit dem Flag **_SkipOutOfScopeDeletions_* _ zu aktualisieren. 
+Führen Sie im Graph-Tester den folgenden Befehl aus, um den Endpunkt für Geheimnisse mit dem Flag ***SkipOutOfScopeDeletions*** zu aktualisieren. 
 
-Ersetzen Sie in der folgenden URL den Platzhalter „[servicePrincipalId]“ durch die _ *ServicePrincipalId**, die Sie in [Schritt 1](#step-1-retrieve-your-provisioning-app-service-principal-id-object-id) extrahiert haben. 
+Ersetzen Sie in der folgenden URL den Platzhalter „[servicePrincipalId]“ durch die **ServicePrincipalId**, die Sie in [Schritt 1](#step-1-retrieve-your-provisioning-app-service-principal-id-object-id) extrahiert haben. 
 
 ```http
    PUT https://graph.microsoft.com/beta/servicePrincipals/[servicePrincipalId]/synchronization/secrets

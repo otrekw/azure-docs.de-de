@@ -1,5 +1,5 @@
 ---
-title: 'Agent für die Azure AD Connect-Cloudbereitstellung: Automatisches Upgrade | Microsoft-Dokumentation'
+title: 'Agent für die Azure AD Connect-Cloudbereitstellung: automatisches Upgrade | Microsoft-Dokumentation'
 description: In diesem Artikel wird das integrierte automatische Upgradefeature im Agent für die Azure AD Connect-Cloudbereitstellung beschrieben.
 services: active-directory
 documentationcenter: ''
@@ -16,23 +16,23 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 26c0b47dd358826b843143aaf23c469d852e93b3
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98612676"
 ---
-# <a name="azure-ad-connect-cloud-provisioning-agent-automatic-upgrade"></a>Agent für die Azure AD Connect-Cloudbereitstellung: automatische Upgrade
+# <a name="azure-ad-connect-cloud-provisioning-agent-automatic-upgrade"></a>Agent für die Azure AD Connect-Cloudbereitstellung: automatisches Upgrade
 
 Mit dem automatischen Upgradefeature können Sie ganz leicht sicherstellen, dass Ihre Installation des Agents für die Azure AD Connect-Cloudbereitstellung (Azure Active Directory) immer auf dem neuesten Stand ist.
 
-Hier ist der Agent installiert: Programme\Azure AD Connect Provisioning Agent\AADConnectProvisioningAgent.exe.
+Hier ist der Agent installiert: „Programme\Azure AD Connect Provisioning Agent\AADConnectProvisioningAgent.exe“.
 
 Klicken Sie zum Überprüfen Ihrer Version mit der rechten Maustaste auf die ausführbare Datei, und wählen Sie Eigenschaften sowie Details aus.
 
 ![Agent-Dateiversion](media/how-to-automatic-upgrade/agent-1.png)
 
-Hier ist der Agent-Updater installiert: Programme\Azure AD Connect Provisioning Agent Updater\AzureADConnectAgentUpdater.exe.
+Hier ist der Agent-Updater installiert: „Programme\Azure AD Connect Provisioning Agent Updater\AzureADConnectAgentUpdater.exe“.
 
 Klicken Sie zum Überprüfen Ihrer Version mit der rechten Maustaste auf die ausführbare Datei, und wählen Sie Eigenschaften sowie Details aus.
 

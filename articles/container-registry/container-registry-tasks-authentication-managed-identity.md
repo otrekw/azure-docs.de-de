@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 01/14/2020
 ms.author: danlep
 ms.openlocfilehash: 8f2749a18a5ac6aed0822553d59beaacc9060228
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98915946"
 ---
 # <a name="use-an-azure-managed-identity-in-acr-tasks"></a>Verwenden einer verwalteten Azure-Identität in ACR Tasks 
@@ -64,7 +64,7 @@ az acr task create \
     --assign-identity
 ```
 
-Wenn Sie eine benutzerseitig zugewiesene Identität aktivieren möchten, übergeben Sie `--assign-identity` mit einem Wert der  *Ressourcen-ID* der Identität. Der folgende Beispielbefehl erstellt einen Linux-Task aus einem öffentlichen GitHub-Repository, der das `hello-world`-Image erstellt und eine vom Benutzer zugewiesene verwaltete Identität aktiviert:
+Wenn Sie eine benutzerseitig zugewiesene Identität aktivieren möchten, übergeben Sie `--assign-identity` mit einem Wert der *Ressourcen-ID* der Identität. Der folgende Beispielbefehl erstellt einen Linux-Task aus einem öffentlichen GitHub-Repository, der das `hello-world`-Image erstellt und eine vom Benutzer zugewiesene verwaltete Identität aktiviert:
 
 ```azurecli
 az acr task create \
@@ -115,7 +115,7 @@ az acr task credential add \
     --use-identity [system]
 ```
 
-Wenn Sie Anmeldeinformationen für eine benutzerseitig zugewiesene Identität hinzufügen möchten, um eine Authentifizierung mit der Registrierung *targetregistry* durchzuführen, übergeben Sie `use-identity` mit dem Wert *client ID* der Identität. Beispiel:
+Wenn Sie Anmeldeinformationen für eine benutzerseitig zugewiesene Identität hinzufügen möchten, um eine Authentifizierung mit der Registrierung *targetregistry* durchzuführen, übergeben Sie `use-identity` mit dem Wert *client ID* der Identität. Zum Beispiel:
 
 ```azurecli
 az acr task credential add \

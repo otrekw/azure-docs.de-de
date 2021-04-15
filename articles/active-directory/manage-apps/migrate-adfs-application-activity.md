@@ -13,18 +13,18 @@ ms.devlang: na
 ms.date: 01/14/2019
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3665c5b82095004ddf7dc1f503b54f5164d49c7f
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 88a4d0f108d4e3c27ce17aaa83aafca38063c9ae
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99260061"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104589462"
 ---
-# <a name="use-the-ad-fs-application-activity-report-preview-to-migrate-applications-to-azure-ad"></a>Verwenden Sie den AD FS-Anwendungsaktivitätsbericht (Vorschau), um Anwendungen zu Azure AD zu migrieren.
+# <a name="use-the-ad-fs-application-activity-report-to-migrate-applications-to-azure-ad"></a>Verwenden des AD FS-Anwendungsaktivitätsberichts, um Anwendungen zu Azure AD zu migrieren
 
 Viele Organisationen verwenden Active Directory-Verbunddienste (AD FS), um Cloudanwendungen einmaliges Anmelden bereitzustellen. Die Migration Ihrer AD FS Anwendungen zu Azure AD bietet bedeutende Vorteile für die Authentifizierung, insbesondere im Hinblick auf Kostenverwaltung, Risikomanagement, Produktivität, Compliance und Governance. Es kann jedoch zeitaufwändig sein, zu ermitteln, ob Anwendungen mit Azure AD kompatibel sind, und spezifische Migrationsschritte zu identifizieren.
 
-Mit dem AD FS-Anwendungsaktivitätsbericht (Vorschau) im Azure-Portal können Sie schnell ermitteln, welche Ihrer Anwendungen zu Azure AD migriert werden können. Es werden alle AD FS-Anwendungen im Hinblick auf die Kompatibilität mit Azure AD bewertet und auf Probleme überprüft sowie Anleitungen zum Vorbereiten einzelner Anwendungen für die Migration bereitgestellt. Mit dem AD FS-Anwendungsaktivitätsbericht können Sie folgende Aktionen ausführen:
+Mit dem AD FS-Anwendungsaktivitätsbericht im Azure-Portal können Sie schnell ermitteln, welche Ihrer Anwendungen zu Azure AD migriert werden können. Es werden alle AD FS-Anwendungen im Hinblick auf die Kompatibilität mit Azure AD bewertet und auf Probleme überprüft sowie Anleitungen zum Vorbereiten einzelner Anwendungen für die Migration bereitgestellt. Mit dem AD FS-Anwendungsaktivitätsbericht können Sie folgende Aktionen ausführen:
 
 * **Ermitteln der AD FS-Anwendungen und Planen des Migrationsumfangs.** Der AD FS-Anwendungsaktivitätsbericht enthält alle AD FS-Anwendungen in Ihrer Organisation, bei denen in den letzten 30 Tagen aktive Benutzeranmeldungen aufgetreten sind. Der Bericht gibt an, ob eine App für die Migration zu Azure AD bereit ist. Er zeigt jedoch keine Microsoft-bezogenen vertrauenden Seiten in AD FS (wie z. B. Office 365) an. Ein Beispiel wäre eine vertrauende Seite mit dem Namen „urn:federation:MicrosoftOnline“.
 
@@ -52,7 +52,7 @@ Der AD FS-Anwendungsaktivitätsbericht ist im Azure-Portal unter Azure AD-Berich
 
 2. Wählen Sie **Azure Active Directory** und dann **Unternehmensanwendungen** aus.
 
-3. Wählen Sie unter **Aktivität** die Option **Nutzung und Erkenntnisse (Vorschau)** und dann **AD FS-Anwendungsaktivität** aus, um eine Liste aller AD FS-Anwendungen in Ihrer Organisation zu öffnen.
+3. Wählen Sie unter **Aktivität** die Option **Nutzung und Erkenntnisse** und dann **AD FS-Anwendungsaktivität** aus, um eine Liste aller AD FS-Anwendungen in Ihrer Organisation zu öffnen.
 
    ![AD FS-Anwendungsaktivität](media/migrate-adfs-application-activity/adfs-application-activity.png)
 

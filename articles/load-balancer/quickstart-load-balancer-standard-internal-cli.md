@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 12/19/2020
 ms.author: allensu
 ms.custom: mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: f728e1f1e2186188135666ed54e02c9ed3507509
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 66b3db9a7aec45a2a0881379db6f7ef51950b5c5
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106056537"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107364310"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-by-using-the-azure-cli"></a>Schnellstart: Erstellen eines internen Load Balancers mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -30,9 +30,6 @@ Beginnen Sie mit der Verwendung von Azure Load Balancer, indem Sie mithilfe der 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)] 
 
 Für diesen Schnellstart ist mindestens Version 2.0.28 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert.
-
->[!NOTE]
->Azure Load Balancer Standard ist die empfohlene Wahl für Produktionsworkloads. Dieser Artikel enthält Informationen zu Azure Load Balancer Standard und Azure Load Balancer Basic. Weitere Informationen zu SKUs finden Sie unter [Azure Load Balancer-SKUs](skus.md).
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
@@ -47,7 +44,11 @@ Erstellen Sie mit [az group create](/cli/azure/group#az_group_create) eine Resso
 
 ```
 
-## <a name="azure-load-balancer-standard"></a>Azure Load Balancer Standard
+---
+# <a name="standard-sku"></a>[**Standard-SKU**](#tab/option-1-create-load-balancer-standard)
+
+>[!NOTE]
+>Ein Lastenausgleich mit Standard-SKU wird für Produktionsworkloads empfohlen. Weitere Informationen zu SKUs finden Sie unter **[Azure Load Balancer-SKUs](skus.md)** .
 
 In diesem Abschnitt wird ein Lastenausgleich für virtuelle Computer erstellt. Wenn Sie einen internen Lastenausgleich erstellen, wird ein virtuelles Netzwerk als Netzwerk für den Lastenausgleich konfiguriert. Im folgenden Diagramm werden die in dieser Schnellstartanleitung erstellten Ressourcen angezeigt:
 
@@ -335,7 +336,10 @@ Fügen Sie mit [az network nic ip-config address-pool add](/cli/azure/network/ni
 
 ```
 
-## <a name="azure-load-balancer-basic"></a>Azure Load Balancer Basic
+# <a name="basic-sku"></a>[**Basic-SKU**](#tab/option-1-create-load-balancer-basic)
+
+>[!NOTE]
+>Ein Lastenausgleich mit Standard-SKU wird für Produktionsworkloads empfohlen. Weitere Informationen zu SKUs finden Sie unter **[Azure Load Balancer-SKUs](skus.md)** .
 
 In diesem Abschnitt wird ein Lastenausgleich für virtuelle Computer erstellt. Wenn Sie einen internen Lastenausgleich erstellen, wird ein virtuelles Netzwerk als Netzwerk für den Lastenausgleich konfiguriert. Im folgenden Diagramm werden die in dieser Schnellstartanleitung erstellten Ressourcen angezeigt:
 
@@ -636,7 +640,7 @@ Fügen Sie mit [az network nic ip-config address-pool add](/cli/azure/network/ni
   done
 
 ```
-
+---
 ## <a name="test-the-load-balancer"></a>Testen des Lastenausgleichs
 
 Erstellen Sie die Netzwerkschnittstelle mit [az network nic create](/cli/azure/network/nic#az-network-nic-create). Geben Sie Folgendes an:

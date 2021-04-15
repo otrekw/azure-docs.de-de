@@ -1,5 +1,5 @@
 ---
-title: Bewertungsregeln für die Migration von SQL Server zu SQL Managed Instance
+title: Bewertungsregeln für die Migration von SQL Server zu Azure SQL Managed Instance
 description: Bewertungsregeln zum Identifizieren von Problemen mit der SQL Server-Quellinstanz, die behoben werden müssen, bevor die Migration zu Azure SQL Managed Instance erfolgt.
 ms.service: sql-managed-instance
 ms.subservice: migration-guide
@@ -10,14 +10,14 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: MashaMSFT
 ms.date: 12/15/2020
-ms.openlocfilehash: 760a6496ff297ae6328810589f780b430d55b18a
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: fc8959d44fbacd90916a045d23db4bee872c4670
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102054152"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105026035"
 ---
-# <a name="assessment-rules-for-sql-server-to-sql-managed-instance-migration"></a>Bewertungsregeln für die Migration von SQL Server zu SQL Managed Instance
+# <a name="assessment-rules-for-sql-server-to--azure-sql-managed-instance-migration"></a>Bewertungsregeln für die Migration von SQL Server zu Azure SQL Managed Instance
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
 
 Mit Migrationstools wird Ihre SQL Server-Quellinstanz überprüft, indem einige Bewertungsregeln angewendet werden. Hiermit sollen Probleme identifiziert werden, die behoben werden müssen, bevor für Ihre SQL Server-Datenbank die Migration zu Azure SQL Managed Instance durchgeführt wird. 

@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 10/28/2019
 ms.author: kgremban
 ms.custom: mvc
-ms.openlocfilehash: e6c8e83838240b989c8c782840d8c771a6f6b7db
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b9b768d7af276b8bff0db2acd00d27eca03023c5
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103487801"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105026733"
 ---
 # <a name="what-is-azure-iot-edge"></a>Was ist Azure IoT Edge?
 
@@ -76,4 +76,19 @@ Azure IoT Edge kann nahtlos in Azure IoT Solution Accelerators integriert werden
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Probieren Sie diese Konzepte aus, indem Sie [IoT Edge auf einem simulierten Gerät bereitstellen](quickstart.md).
+Probieren Sie diese Konzepte aus, indem Sie Ihr erstes IoT Edge-Modul auf einem Gerät bereitstellen:
+
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+
+* [Bereitstellen von Modulen auf einem Linux-IoT Edge-Gerät](quickstart-linux.md)
+* [Bereitstellen von Modulen auf einem Windows-IoT Edge-Gerät](quickstart.md)
+
+:::moniker-end
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+[Bereitstellen von Modulen auf einem IoT Edge-Gerät](quickstart-linux.md)
+
+:::moniker-end

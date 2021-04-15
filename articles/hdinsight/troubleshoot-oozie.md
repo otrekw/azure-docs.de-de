@@ -5,10 +5,10 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 04/27/2020
 ms.openlocfilehash: 2cdd20a5d639f74916657edc3f73183a403204a5
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98944658"
 ---
 # <a name="troubleshoot-apache-oozie-in-azure-hdinsight"></a>Problembehandlung für Apache Oozie in Azure HDInsight
@@ -23,7 +23,7 @@ Mithilfe der Apache Oozie-Benutzeroberfläche können Sie die Oozie-Protokolle a
 
 Im Folgenden sehen Sie Fehlermeldungen, die auftreten können, und Möglichkeiten zur Behebung.
 
-## <a name="ja009-cant-initialize-cluster"></a>JA009: Cluster kann nicht initialisiert werden.
+## <a name="ja009-cant-initialize-cluster"></a>JA009: Cluster kann nicht initialisiert werden
 
 ### <a name="issue"></a>Problem
 
@@ -43,7 +43,7 @@ Die in der Datei **job.xml** verwendeten Azure-Blobspeicheradressen enthalten ni
 
 ---
 
-## <a name="ja002-oozie-isnt-allowed-to-impersonate-ltusergt"></a>JA002: Oozie darf nicht die Identität von &lt;USER&gt; annehmen.
+## <a name="ja002-oozie-isnt-allowed-to-impersonate-ltusergt"></a>JA002: Oozie darf die Identität von &lt;USER&gt; nicht annehmen
 
 ### <a name="issue"></a>Problem
 

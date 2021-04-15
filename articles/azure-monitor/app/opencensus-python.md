@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 09/24/2020
 ms.reviewer: mbullwin
 ms.custom: devx-track-python
-ms.openlocfilehash: d22174b269ba9cea3b2c9cb9de2b5521df2786fa
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 69472da4f774a1dfae86e1891255907ad711175a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101704411"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105047421"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application"></a>Einrichten von Azure Monitor für Ihre Python-Anwendung
 
@@ -19,7 +19,7 @@ Azure Monitor unterstützt durch die Integration mit [OpenCensus](https://opence
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
-- Python-Installation. In diesem Artikel wird [Python 3.7.0](https://www.python.org/downloads/release/python-370/) verwendet, doch können wahrscheinlich auch andere Versionen mit kleineren Änderungen verwendet werden. Das SDK unterstützt nur Python v2.7 und v3.4 bis v3.7.
+- Python-Installation. In diesem Artikel wird [Python 3.7.0](https://www.python.org/downloads/release/python-370/) verwendet, doch können wahrscheinlich auch andere Versionen mit kleineren Änderungen verwendet werden. Die SDK unterstützt die Python-Versionen 2.7 und 3.6+
 - Erstellen Sie eine Application Insights-[Ressource](./create-new-resource.md). Ihnen wird ein eigener Instrumentierungsschlüssel (iKey) für Ihre Ressource zugewiesen.
 
 ## <a name="instrument-with-opencensus-python-sdk-for-azure-monitor"></a>Instrumentieren mit dem OpenCensus Python SDK für Azure Monitor

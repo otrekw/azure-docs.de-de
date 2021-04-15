@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: 3b816ddc0eccf8c406cfed37d6bfc594e27d3629
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85850362"
 ---
 # <a name="expose-an-aks-service-over-http-or-https-using-application-gateway"></a>Bereitstellen eines AKS-Diensts über HTTP oder HTTPS mit Application Gateway 
@@ -21,8 +21,8 @@ Diese Tutorials helfen dabei, die Verwendung von [Kubernetes-Eingangsressourcen]
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Installiertes `ingress-azure`-Helm-Diagramm.
-  - [**Greenfield-Bereitstellung**](ingress-controller-install-new.md): Wenn Sie von Grund auf neu beginnen, lesen Sie diese Installationsanleitungen, in denen die Schritte zum Bereitstellen eines AKS-Clusters mit Application Gateway und zum Installieren des Application Gateway-Eingangscontrollers im AKS-Cluster erläutert werden.
-  - [**Brownfield-Bereitstellung**](ingress-controller-install-existing.md): Wenn Sie über einen vorhandenen AKS-Cluster und eine Application Gateway-Instanz verfügen, lesen Sie diese Anleitungen zum Installieren des Application Gateway-Eingangscontrollers im AKS-Cluster.
+  - [**Greenfield-Bereitstellung:** ](ingress-controller-install-new.md) Wenn Sie von Grund auf neu beginnen, lesen Sie diese Installationsanleitungen, in denen die Schritte zum Bereitstellen eines AKS-Clusters mit Application Gateway und zum Installieren des Application Gateway-Eingangsdatencontrollers im AKS-Cluster erläutert werden.
+  - [**Brownfield-Bereitstellung:** ](ingress-controller-install-existing.md) Wenn Sie über einen vorhandenen AKS-Cluster und eine Application Gateway-Instanz verfügen, lesen Sie diese Anleitungen zum Installieren des Application Gateway-Eingangsdatencontrollers im AKS-Cluster.
 - Wenn Sie HTTPS für diese Anwendung verwenden möchten, benötigen Sie ein x509-Zertifikat und den zugehörigen privaten Schlüssel.
 
 ## <a name="deploy-guestbook-application"></a>Bereitstellen der `guestbook`-Anwendung

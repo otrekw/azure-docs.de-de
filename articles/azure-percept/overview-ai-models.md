@@ -1,22 +1,22 @@
 ---
 title: Azure Percept-KI-Modelle
 description: Weitere Informationen zu den für die Prototypenerstellung und Bereitstellung verfügbaren KI-Modellen
-author: elqu20
-ms.author: v-elqu
+author: mimcco
+ms.author: mimcco
 ms.service: azure-percept
 ms.topic: conceptual
-ms.date: 02/16/2021
+ms.date: 03/23/2021
 ms.custom: template-concept
-ms.openlocfilehash: d0cdabb3b22d642a7903810181106b09c549e1a2
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: f10a330de52d40f728cd628a1d7cb83b54ad1ff6
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102218161"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105557359"
 ---
 # <a name="azure-percept-ai-models"></a>Azure Percept-KI-Modelle
 
-Azure Percept ermöglicht Ihnen das Entwickeln und Bereitstellen von KI-Modellen direkt in Ihrem Azure Percept DK aus [Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819). Die Modellimplementierung verwendet [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) und [Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/#iotedge-overview).
+Azure Percept ermöglicht Ihnen das Entwickeln und Bereitstellen von KI-Modellen direkt in Ihrer [Azure Percept DK](./overview-azure-percept-dk.md)-Instanz aus [Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819). Die Modellimplementierung verwendet [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) und [Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/#iotedge-overview).
 
 ## <a name="sample-ai-models"></a>KI-Beispielmodelle
 
@@ -27,7 +27,7 @@ Azure Percept Studio enthält Beispielmodelle für die folgenden Anwendungen:
 - Allgemeine Objekterkennung
 - Erkennung von Produkten in Regalen
 
-Bei vortrainierten Modellen ist keine Codierungs-oder Sammlung von Trainingsdaten erforderlich. Stellen Sie einfach das gewünschte Modell aus dem Portal in Ihrem Azure Percept DK bereit, und öffnen Sie den Videostream Ihres DevKits, um die Modellrückschlüsse in Aktion zu sehen. Sie können auch über das [Azure IoT-Explorer](https://github.com/Azure/azure-iot-explorer/releases)-Tool auf Telemetriedaten der Modellrückschlüsse zugreifen.
+Bei vortrainierten Modellen ist keine Codierungs-oder Sammlung von Trainingsdaten erforderlich. [Stellen Sie einfach das gewünschte Modell](./how-to-deploy-model.md) aus dem Portal in Ihrer Azure Percept DK-Instanz bereit, und öffnen Sie den [Videostream](./how-to-view-video-stream.md) Ihres DevKits, um die Modellrückschlüsse in Aktion zu sehen. Sie können auch über das [Azure IoT-Explorer-Tool](https://github.com/Azure/azure-iot-explorer/releases) auf [Telemetriedaten der Modellrückschlüsse](./how-to-view-telemetry.md) zugreifen.
 
 ## <a name="reference-solutions"></a>Referenzlösungen
 
@@ -37,9 +37,13 @@ Eine [Referenzlösung zur Zählung von Personen](https://github.com/microsoft/Az
 
 ## <a name="custom-no-code-solutions"></a>Benutzerdefinierte Lösungen ohne Code
 
-Mithilfe von Azure Percept Studio können Sie benutzerdefinierte [Vision](./tutorial-nocode-vision.md)- und Sprachlösungen entwickeln, ohne dass Programmierung dafür erforderlich wäre.
+Mithilfe von Azure Percept Studio können Sie benutzerdefinierte [Vision](./tutorial-nocode-vision.md)- und [Sprachlösungen](./tutorial-no-code-speech.md) entwickeln, ohne dass Sie dazu programmieren müssen.
 
-Für benutzerdefinierte Vision-Lösungen sind KI-Modelle sowohl für die Objekterkennung als auch -klassifizierung verfügbar. Laden Sie einfach Ihre Trainingsbilder hoch, und kennzeichnen Sie sie. Die Bilder können, falls gewünscht, direkt mit dem Azure Percept Vision SoM des Azure Percept DK aufgenommen werden. Training und Auswertung von Modellen können problemlos in [Custom Vision](https://www.customvision.ai/) ausgeführt werden, das Bestandteil von [Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/#overview) ist.
+Für benutzerdefinierte Vision-Lösungen sind KI-Modelle sowohl für die Objekterkennung als auch -klassifizierung verfügbar. Laden Sie einfach Ihre Trainingsbilder hoch, und kennzeichnen Sie sie. Die Bilder können, falls gewünscht, direkt mit dem Azure Percept Vision-SoM von Azure Percept DK aufgenommen werden. Training und Auswertung von Modellen können problemlos in [Custom Vision](https://www.customvision.ai/) ausgeführt werden, das Bestandteil von [Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/#overview) ist.
+
+</br>
+
+> [!VIDEO https://www.youtube.com/embed/9LvafyazlJM]
 
 Für benutzerdefinierte Sprachlösungen sind derzeit Sprach-Assistenten-Vorlagen für folgende Anwendungen verfügbar:
 
@@ -54,6 +58,6 @@ Vorgefertigte Sprach-Assistenten-Schlüsselwörter und -Befehle sind direkt übe
 
 Aktuelle Anleitungen, Tutorials und Beispiele zu den folgenden Themen finden Sie im [GitHub-Repository zur erweiterten Entwicklung mit Azure Percept DK](https://github.com/microsoft/azure-percept-advanced-development):
 
-* Bereitstellen eines benutzerdefinierten KI-Modells auf dem Gerät
-* Aktualisieren eines bereits unterstützten Modells mit Lerntransfer
-* und mehr...
+- Bereitstellen eines benutzerdefinierten KI-Modells in Azure Percept DK
+- Aktualisieren eines unterstützten Modells mit dem Lerntransfer
+- und mehr...

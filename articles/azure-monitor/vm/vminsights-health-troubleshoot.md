@@ -4,16 +4,44 @@ description: Enthält eine Beschreibung der Problembehandlungsschritte, die Sie 
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 09/08/2020
-ms.openlocfilehash: d8b37569ebaa8e75be601a1efd65a23a61aeaa75
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 02/25/2021
+ms.openlocfilehash: 834c70e02ab25fa6dcadb5f6c997be09aaf5e353
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102051938"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105932776"
 ---
 # <a name="troubleshoot-vm-insights-guest-health-preview"></a>Problembehandlung für das Feature „Gastintegrität“ von VM Insights (Vorschau)
 Dieser Artikel enthält eine Beschreibung der Problembehandlungsschritte, die Sie ausführen können, wenn Probleme mit der Integrität in VM Insights auftreten.
+
+
+## <a name="upgrade-available-message-is-still-displayed-after-upgrading-guest-health"></a>Meldung „Upgrade verfügbar“ wird nach dem Upgrade des Features „Gastintegrität“ weiterhin angezeigt 
+
+- Vergewissern Sie sich, dass die VM in Azure weltweit ausgeführt wird. Server mit Arc-Unterstützung werden noch nicht unterstützt.
+- Überprüfen Sie, ob die Region und die Betriebssystemversion des virtuellen Computers unterstützt werden, wie es unter [Aktivieren des Features „Gastintegrität“ von Azure Monitor für VMs (Vorschau)](vminsights-health-enable.md) beschrieben ist.
+- Vergewissern Sie sich, dass die Erweiterung für die Gastintegrität erfolgreich mit Exitcode 0 installiert wurde.
+- Stellen Sie sicher, dass die Azure Monitor-Agent-Erweiterung erfolgreich installiert wurde.
+- Vergewissern Sie sich, dass die systemseitig zugewiesene verwaltete Identität für den virtuellen Computer aktiviert ist.
+- Stellen Sie sicher, dass für den virtuellen Computer keine benutzerseitig zugewiesenen verwalteten Identitäten angegeben sind.
+- Überprüfen Sie, ob das Gebietsschema für virtuelle Windows-Computer auf *Englisch (USA)* festgelegt ist. Die Lokalisierung wird von Azure Monitor-Agent derzeit nicht unterstützt.
+- Vergewissern Sie sich, dass der virtuelle Computer nicht den Netzwerkproxy verwendet. Der Azure Monitor-Agent unterstützt derzeit keine Proxys.
+- Überprüfen Sie, ob der Integritätserweiterungs-Agent fehlerfrei gestartet wurde. Wenn der Agent nicht gestartet werden kann, ist der Status des Agents möglicherweise beschädigt. Löschen Sie den Inhalt des Ordners mit dem Agentstatus, und starten Sie den Agent neu.
+  - Für Linux: Der Daemon ist *vmGuestHealthAgent*. Der Statusordner ist */var/opt/vmGuestHealthAgent/* *.
+  - Für Windows: Der Dienst ist *VM-Gastintegritäts-Agent*. Der Statusordner ist _%ProgramData%\Microsoft\VMGuestHealthAgent\\*_ .
+- Überprüfen Sie, ob der Azure Monitor-Agent über Netzwerkkonnektivität verfügt. 
+  - Versuchen Sie, vom virtuellen Computer einen Pingbefehl an _<region>.handler.control.monitor.azure.com_ zu senden. Bei einem virtuellen Computer in Westeuropa versuchen Sie beispielsweise, den Pingbefehl _westeurope.handler.control.monitor.azure.com:443_ zu senden.
+- Vergewissern Sie sich, dass der virtuelle Computer eine Zuordnung zu einer Datensammlungsregel in derselben Region wie der Log Analytics-Arbeitsbereich aufweist.
+  -  Informationen zur Überprüfung, ob die Struktur der Datensammlungsregel korrekt ist, finden Sie im Abschnitt **Erstellen einer Datensammlungsregel** unter [Aktivieren des Features „Gastintegrität“ von Azure Monitor für VMs (Vorschau)](vminsights-health-enable.md). Achten Sie insbesondere auf das Vorhandensein des Abschnitts *performanceCounters* für die Datenquellen, die zum Abrufen von drei Leistungsindikatoren eingerichtet wurden, und auf das Vorhandensein des Abschnitts *inputDataSources* in der Konfiguration der Integritätserweiterung, um Leistungsindikatoren an die Erweiterung zu senden.
+-  Überprüfen Sie den virtuellen Computer auf Fehler bei der Erweiterung für die Gastintegrität.
+   -  Für Linux: Überprüfen Sie die Protokolle unter _/var/log/Azure/Microsoft.Azure.Monitor.VirtualMachines.GuestHealthLinuxAgent/*.log_.
+   -  Für Windows: Überprüfen Sie die Protokolle unter _C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Monitor.VirtualMachines.GuestHealthWindowsAgent\{Erweiterungsversion}\*.log_.
+-  Überprüfen Sie den virtuellen Computer auf Fehler des Azure Monitor-Agents.
+   -  Für Linux: Überprüfen Sie die Protokolle unter _/var/log/mdsd.*_ .
+   -  Für Windows: Überprüfen Sie die Protokolle unter _C:\WindowsAzure\Resources\*{vmName}.AMADataStore_.
+ 
+
+
 
 ## <a name="error-message-that-no-data-is-available"></a>Fehlermeldung: Keine Daten verfügbar 
 
@@ -44,6 +72,15 @@ Vergewissern Sie sich, dass die Datensammlungsregel, mit der die Integritätserw
 Dieser Fehler ist ein Hinweis darauf, dass der Ressourcenanbieter **Microsoft.WorkloadMonitor** unter dem Abonnement nicht registriert wurde. Ausführliche Informationen zum Registrieren dieses Ressourcenanbieters finden Sie unter [Azure-Ressourcenanbieter und -typen](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider). 
 
 ![Ungültige Anforderung](media/vminsights-health-troubleshoot/bad-request.png)
+
+## <a name="health-shows-as-unknown-after-guest-health-is-enabled"></a>Integrität wird nach Aktivieren der Gastintegrität als „unbekannt“ angezeigt
+
+### <a name="verify-that-performance-counters-on-windows-nodes-are-working-correctly"></a>Überprüfen, ob die Leistungsindikatoren auf Windows-Knoten ordnungsgemäß funktionieren 
+Die Gastintegrität basiert darauf, dass der Agent Leistungsindikatoren vom Knoten sammeln kann. Der Basissatz der Leistungsindikatorbibliotheken ist möglicherweise beschädigt und muss neu erstellt werden. Folgen Sie den Anweisungen unter [Manuelles Neuerstellen von Leistungsindikatorbibliothekswerten](/troubleshoot/windows-server/performance/rebuild-performance-counter-library-values), um die Leistungsindikatoren neu zu erstellen.
+
+
+
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

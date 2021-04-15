@@ -10,10 +10,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: fb597cc71d228a1daaaa4e52d76b301764ff9292
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97899302"
 ---
 # <a name="monitor-vmware-solution-by-cloudsimple-activity"></a>Überwachen der VMware Solution by CloudSimple-Aktivität
@@ -49,15 +49,15 @@ Die folgenden Spalten mit Informationen sind für Warnungen verfügbar. Klicken 
 | Column | BESCHREIBUNG |
 ------------ | ------------- |
 | Warnungstyp | Kategorie der Warnung.|
-| Time | Zeitpunkt, zu dem die Warnung auftrat. |
-| severity | Bedeutung der Warnung.|
+| Zeit | Zeitpunkt, zu dem die Warnung auftrat. |
+| Schweregrad | Bedeutung der Warnung.|
 | Ressourcenname | Name, der der Ressource zugewiesen ist, z. B. der Name der privaten Cloud. |
-| Ressourcentyp | Kategorie der Ressource: Private Cloud, Cloud-Rack. |
+| Ressourcentyp | Kategorie der Ressource: Private Cloud, Cloud Rack. |
 | Ressourcen-ID | Bezeichner der Ressource. |
 | BESCHREIBUNG | Beschreibung des Auslösers der Warnung. |
 | Bestätigt | Angabe, ob die Warnung bestätigt wurde. |
 
-## <a name="events"></a>Events
+## <a name="events"></a>Ereignisse
 
 Mit Ereignissen werden Benutzer- und Systemaktivitäten im CloudSimple-Portal angezeigt. Auf der Seite „Ereignisse“ werden die mit einer bestimmten Ressource verknüpften Aktivitäten sowie der Schweregrad der Auswirkungen angezeigt.
 
@@ -67,9 +67,9 @@ Die folgenden Spalten mit Informationen sind für Warnungen verfügbar. Klicken 
 ------------ | ------------- |
 | Time | Angabe des Zeitpunkts, zu dem das Ereignis aufgetreten ist, mit Datum und Uhrzeit. |
 | Ereignistyp | Numerischer Code, der das Ereignis identifiziert. |
-| severity | Ereignisschweregrad.|
+| Schweregrad | Ereignisschweregrad.|
 | Ressourcenname | Name, der der Ressource zugewiesen ist, z. B. der Name der privaten Cloud. |
-| Ressourcentyp | Kategorie der Ressource: Private Cloud, Cloud-Rack. |
+| Ressourcentyp | Kategorie der Ressource: Private Cloud, Cloud Rack. |
 | BESCHREIBUNG | Beschreibung des Auslösers der Warnung. |
 
 ## <a name="tasks"></a>Aufgaben
@@ -80,11 +80,11 @@ Die folgenden Spalten mit Informationen sind für Warnungen verfügbar. Klicken 
 
 | Column | BESCHREIBUNG |
 ------------ | ------------- |
-| Task-ID | Eindeutiger Bezeichner für die Aufgabe. |
+| Aufgaben-ID | Eindeutiger Bezeichner für die Aufgabe. |
 | Vorgang | Aktion, die die Aufgabe ausführt. |
-| Benutzer | Der Benutzer, dem die Durchführung der Aufgabe zugewiesen ist. |
+| User | Der Benutzer, dem die Durchführung der Aufgabe zugewiesen ist. |
 | Ressourcenname | Name, der der Ressource zugewiesen ist. |
-| Ressourcentyp | Kategorie der Ressource: Private Cloud, Cloud-Rack. |
+| Ressourcentyp | Kategorie der Ressource: Private Cloud, Cloud Rack. |
 | Ressourcen-ID | Bezeichner der Ressource. |
 | Start | Startzeit für die Aufgabe. |
 | Ende | Endzeit für die Aufgabe. |
@@ -102,9 +102,9 @@ Die folgenden Spalten mit Informationen sind für Warnungen verfügbar. Klicken 
 ------------ | ------------- |
 | Time | Zeitpunkt des Überwachungseintrags. |
 | Vorgang | Aktion, die die Aufgabe ausführt. |
-| Benutzer | Benutzer, der der Aufgabe zugewiesen ist. |
+| User | Benutzer, der der Aufgabe zugewiesen ist. |
 | Ressourcenname | Name, der der Ressource zugewiesen ist. |
-| Ressourcentyp | Kategorie der Ressource: Private Cloud, Cloud-Rack. |
+| Ressourcentyp | Kategorie der Ressource: Private Cloud, Cloud Rack. |
 | Ressourcen-ID | Bezeichner der Ressource. |
 | Ergebnis | Ergebnis der Aktivität, z. B. **Erfolg**. |
 | Benötigte Zeit | Zeitspanne zum Durchführen dieser Aufgabe. |

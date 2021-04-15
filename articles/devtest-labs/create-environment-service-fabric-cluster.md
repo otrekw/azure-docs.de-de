@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 06/26/2020
 ms.author: enewman
 ms.openlocfilehash: 530cf3b20820e34913612419d0ffa731a70f6a58
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85484008"
 ---
 # <a name="create-an-environment-with-self-contained-service-fabric-cluster-in-azure-devtest-labs"></a>Erstellen einer Umgebung mit einem eigenständigen Service Fabric-Cluster in Azure DevTest Labs
@@ -34,13 +34,13 @@ Service Fabric-Cluster werden in DevTest Labs mithilfe von Umgebungen erstellt. 
     ![Auswählen von „Service Fabric-Lab-Cluster“ in der Liste](./media/create-environment-service-fabric-cluster/select-service-fabric-cluster.png)
 4. Führen Sie auf der Seite **Einstellungen konfigurieren** die folgenden Schritte aus: 
     1. Geben Sie einen **Namen** für Ihre Cluster-**Umgebung** an. Dies ist der Name der Ressourcengruppe in Azure, in welcher der Service Fabric-Cluster erstellt werden soll. 
-    2. Wählen Sie das **Betriebssystem** für die virtuellen Computer im Cluster aus. Der Standardwert lautet: **Windows**.
+    2. Wählen Sie das **Betriebssystem** für die virtuellen Computer im Cluster aus. Der Standardwert lautet **Windows**.
     3. Geben Sie einen Namen für den **Administrator** des Clusters an. 
     4. Geben Sie ein **Kennwort** für den Administrator an. 
     5. Geben Sie als **Zertifikat** Ihre Zertifikatinformationen als Base64-codierte Zeichenfolge ein. Führen Sie zum Erstellen eines Zertifikats die folgenden Schritte aus:
         1. Laden Sie die Datei **Create-ClusterCertificate.ps1** aus dem [Git-Repository](https://github.com/Azure/azure-devtestlab/tree/master/Environments/ServiceFabric-LabCluster) herunter. Klonen Sie alternativ das Repository auf Ihrem Computer. 
         2. Starten Sie **PowerShell**. 
-        3. Führen Sie die **PS1**-Datei mit dem Befehl `.\Create-ClusterCertificate.ps1` aus. Daraufhin wird eine Textdatei im Editor mit den Informationen, die Sie zum Ausfüllen der zertifikatspezifischen Felder auf dieser Seite benötigen, geöffnet. erforderlich. 
+        3. Führen Sie die **PS1**-Datei mit dem Befehl `.\Create-ClusterCertificate.ps1` aus. Daraufhin wird eine Textdatei im Editor mit den Informationen, die Sie zum Ausfüllen der zertifikatspezifischen Felder auf dieser Seite benötigen, geöffnet. . 
     6. Geben Sie das **Kennwort für das Zertifikat** ein.
     7. Geben Sie den **Fingerabdruck** für Ihr Zertifikat an.
     8. Wählen Sie auf der Seite **Einstellungen konfigurieren** die Option **Hinzufügen** aus. 
@@ -58,7 +58,7 @@ Sie können den Cluster entweder direkt auf der Seite „DevTest Lab“ oder auf
 ### <a name="from-the-devtest-lab-page"></a>Seite „DevTest Lab“
 Auf der Seite „DevTest Lab“ für Ihr Lab können Sie den Cluster starten oder beenden. 
 
-1. Wählen Sie die **drei Punkte (...)**  für den Service Fabric-Cluster aus, wie in der folgenden Abbildung gezeigt: 
+1. Wählen Sie die **drei Punkte (...)** für den Service Fabric-Cluster aus, wie in der folgenden Abbildung gezeigt: 
 
     ![Befehle zum Starten und Beenden des Clusters](./media/create-environment-service-fabric-cluster/start-stop-on-devtest-lab-page.png)
 

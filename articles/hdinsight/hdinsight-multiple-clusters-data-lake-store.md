@@ -6,16 +6,16 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/18/2019
 ms.openlocfilehash: 6e220592f53103320c3bdb586fcbd0106219bfed
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98939545"
 ---
 # <a name="use-multiple-hdinsight-clusters-with-an-azure-data-lake-storage-account"></a>Verwenden von mehreren HDInsight-Clustern mit einem Azure Data Lake Storage-Konto
 
 Ab HDInsight Version 3.5 können Sie HDInsight-Cluster mit Azure Data Lake Storage-Konten als Standarddateisystem erstellen.
-Data Lake Storage unterstützt unbegrenzten Speicher, wodurch es nicht nur für das Hosten von großen Datenmengen, sondern auch für das Hosten von HDInsight Clustern ideal ist, die ein gemeinsames Data Lake Storage-Konto haben. Anweisungen zum Erstellen eines HDInsight-Clusters mit Data Lake Storage als Speicher finden Sie unter [Schnellstart: Einrichten von Clustern in HDInsight](./hdinsight-hadoop-provision-linux-clusters.md).
+Data Lake Storage unterstützt unbegrenzten Speicher, wodurch es nicht nur für das Hosten von großen Datenmengen, sondern auch für das Hosten von HDInsight Clustern ideal ist, die ein gemeinsames Data Lake Storage-Konto haben. Anweisungen zur Erstellung eines HDInsight-Clusters mit Data Lake Storage als Speicher finden Sie unter [Schnellstart: Einrichten von Hadoop-Clustern in HDInsight](./hdinsight-hadoop-provision-linux-clusters.md).
 
 Dieser Artikel bietet Empfehlungen für Data Lake Storage-Administratoren bezüglich des Einrichtens eines einzelnen und eines geteilten Data Lake Storage-Kontos, das über mehrere **aktive** HDInsight-Cluster hinweg verwendet werden kann. Diese Empfehlungen gelten für das Hosten von mehreren sicheren sowie nicht-sicheren Apache Hadoop-Clustern in einem geteilten Data Lake Storage-Konto.
 
@@ -45,10 +45,10 @@ Anweisungen zum Erstellen einer AAD-Anwendung (die auch einen Dienstprinzipal er
 
 Zu berücksichtigende Punkte:
 
-- Die Ordnerstruktur mit zwei Ebenen ( **/clusters/finance/** ) muss mit entsprechenden Berechtigungen vom Data Lake Storage-Administrator erstellt und bereitgestellt werden, **bevor** das Speicherkonto für Cluster verwendet wird. Diese Struktur wird nicht automatisch beim Erstellen von Clustern erstellt.
+- Die Ordnerstruktur mit zwei Ebenen (**/clusters/finance/**) muss mit entsprechenden Berechtigungen vom Data Lake Storage-Administrator erstellt und bereitgestellt werden, **bevor** das Speicherkonto für Cluster verwendet wird. Diese Struktur wird nicht automatisch beim Erstellen von Clustern erstellt.
 - Im oben stehenden Beispiel wird empfohlen, die Gruppe von **/clusters/finance** auf **FINGRP** festzulegen und **r-x** Zugriff auf „FINGRP“ und auf die gesamte Ordnerhierarchie vom Stamm aus zu gewähren. So wird sichergestellt, dass die Member von FINGRP vom Stamm aus durch die Ordnerstruktur navigieren können.
 - Wenn verschiedene AAD-Dienstprinzipale Cluster unter **/clusters/finance** erstellen können, stellt das Sticky Bit (wenn es auf den Ordner **Finanzen** festgelegt ist) sicher, dass Ordner, die von einem Dienstprinzipal erstellt wurden, nicht von dem anderen gelöscht werden können.
-- Sobald die Ordnerstruktur und Berechtigungen eingerichtet wurden, erstellt der HDInsight-Clustererstellungsprozess einen clusterspezifischen Speicherort unter **/clusters/finance/** . Der Speicher für einen Cluster mit dem Namen „fincluster01“ könnte z.B. **/clusters/finance/fincluster01** sein. Diese Tabelle zeigt die Zuständigkeit und die Berechtigungen für die vom HDInsight-Cluster erstellten Ordner.
+- Sobald die Ordnerstruktur und Berechtigungen eingerichtet wurden, erstellt der HDInsight-Clustererstellungsprozess einen clusterspezifischen Speicherort unter **/clusters/finance/**. Der Speicher für einen Cluster mit dem Namen „fincluster01“ könnte z.B. **/clusters/finance/fincluster01** sein. Diese Tabelle zeigt die Zuständigkeit und die Berechtigungen für die vom HDInsight-Cluster erstellten Ordner.
 
     |Ordner  |Berechtigungen  |zuständige Benutzer  |zuständige Gruppe  | Benannter Benutzer | Berechtigungen für benannte Benutzer | Benannte Gruppe | Berechtigungen für benannte Gruppen |
     |---------|---------|---------|---------|---------|---------|---------|---------|
@@ -84,9 +84,9 @@ Wie im bereits verlinkten JIRA von YARN angegeben, überprüft der Lokalisierer 
 
 #### <a name="workaround"></a>Problemumgehung
 
-Legen Sie die Lese- und Ausführberechtigungen für **andere** über die Hierarchie fest, beispielsweise über **/** , **/clusters** und **/clusters/finance**, wie in oben stehender Tabelle gezeigt.
+Legen Sie die Lese- und Ausführberechtigungen für **andere** über die Hierarchie fest, beispielsweise über **/**, **/clusters** und **/clusters/finance**, wie in oben stehender Tabelle gezeigt.
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="see-also"></a>Siehe auch
 
 - [Schnellstart: Set up clusters in HDInsight](./hdinsight-hadoop-provision-linux-clusters.md) (Schnellstart: Einrichten von Clustern in HDInsight)
 - [Verwenden von Azure Data Lake Storage Gen2 mit Azure HDInsight-Clustern](hdinsight-hadoop-use-data-lake-storage-gen2.md)

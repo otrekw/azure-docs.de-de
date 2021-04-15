@@ -4,10 +4,10 @@ description: Hier erfahren Sie, wie Sie Azure DevTest Labs-Umgebungen in Ihre CI
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: be726b2a3f67fd3dada4fdc3cf794922a3c18d06
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85483022"
 ---
 # <a name="integrate-environments-into-your-azure-devops-cicd-pipelines"></a>Integrieren von Umgebungen in Ihre Azure DevOps-CI/CD-Pipelines
@@ -25,7 +25,7 @@ Um Ihre CI/CD-Pipeline in Azure DevTest Labs integrieren zu können, müssen Sie
 In diesem Abschnitt erfahren Sie, wie Sie ein Lab für die Bereitstellung der Azure-Umgebung erstellen und konfigurieren.
 
 1. [Erstellen Sie ein Lab](devtest-lab-create-lab.md), falls Sie noch keines besitzen. 
-2. Konfigurieren Sie das Lab, und erstellen Sie eine Umgebungsvorlage, wie im folgenden Artikel beschrieben: [Erstellen von Umgebungen mit mehreren virtuellen Computern und PaaS-Ressourcen mit Azure Resource Manager-Vorlagen](devtest-lab-create-environment-from-arm.md).
+2. Konfigurieren Sie das Lab, und erstellen Sie eine Umgebungsvorlage. Befolgen Sie hierzu die Anweisungen im folgenden Artikel: [Erstellen von Umgebungen mit mehreren VMs und PaaS-Ressourcen mit Azure Resource Manager-Vorlagen](devtest-lab-create-environment-from-arm.md).
 3. Verwenden Sie für dieses Beispiel die bereits vorhandene Azure-Schnellstartvorlage [https://azure.microsoft.com/resources/templates/201-web-app-redis-cache-sql-database/](https://azure.microsoft.com/resources/templates/201-web-app-redis-cache-sql-database/).
 4. Kopieren Sie den Ordner **201-web-app-redis-cache-sql-database** in den Ordner **ArmTemplate** des Repositorys, das Sie in Schritt 2 konfiguriert haben.
 
@@ -35,7 +35,7 @@ So erstellen Sie die Releasedefinition
 1.  Wählen Sie im Hub **Build und Release** auf der Registerkarte **Releases** die Schaltfläche **mit dem Pluszeichen (+)** aus.
 2.  Wählen Sie im Fenster **Releasedefinition erstellen** die Vorlage **Leer** aus, und klicken Sie dann auf **Weiter**.
 3.  Klicken Sie auf **Später auswählen** und dann auf **Erstellen**, um eine neue Releasedefinition mit einer Standardumgebung ohne verknüpfte Artefakte zu erstellen.
-4.  Klicken Sie zum Öffnen des Kontextmenüs in der neuen Releasedefinition auf die Auslassungspunkte ( **...** ) neben dem Umgebungsnamen, und wählen Sie dann **Variablen konfigurieren** aus.
+4.  Klicken Sie zum Öffnen des Kontextmenüs in der neuen Releasedefinition auf die Auslassungspunkte (**...**) neben dem Umgebungsnamen, und wählen Sie dann **Variablen konfigurieren** aus.
 5.  Geben Sie im Fenster **Konfigurieren – Umgebung** die folgenden Werte für die Variablen ein, die Sie in den Releasedefinitionsaufgaben verwenden:
 1.  Geben Sie für **administratorLogin** den Anmeldenamen des SQL-Administrators ein.
 2.  Geben Sie für **administratorLoginPassword** das gewünschte Kennwort für die SQL-Administratoranmeldung ein. Verwenden Sie das Schlosssymbol, um das Kennwort auszublenden und zu schützen.

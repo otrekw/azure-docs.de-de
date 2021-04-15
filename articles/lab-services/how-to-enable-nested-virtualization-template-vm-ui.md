@@ -6,30 +6,30 @@ ms.topic: article
 ms.date: 06/26/2020
 ms.author: enewman
 ms.openlocfilehash: f8135e11fb7b7ddb588ab3a8ed01227712072fd2
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94647918"
 ---
 # <a name="enable-nested-virtualization-on-a-template-virtual-machine-in-azure-lab-services-manually"></a>Manuelles Aktivieren der geschachtelten Virtualisierung auf einem virtuellen Vorlagencomputer in Azure Lab Services
 
-Eine geschachtelte Virtualisierung ermöglicht Ihnen, innerhalb einer Vorlage für virtuelle Computer in einem Lab eine Umgebung mit mehreren virtuellen Computern zu erstellen. Wenn diese Vorlage veröffentlicht wird, wird für jeden Benutzer im Lab ein eingerichteter virtueller Computer bereitgestellt, in dem weitere virtuelle Computer eingeschlossen sind.  Weitere Informationen zur geschachtelten Virtualisierung zu und Azure Lab Services finden Sie unter [Aktivieren der geschachtelten Virtualisierung auf einem virtuellen Vorlagencomputer in Azure Lab Services](how-to-enable-nested-virtualization-template-vm.md).
+Geschachtelte Virtualisierung ermöglicht Ihnen, innerhalb einer Vorlage für virtuelle Computer in einem Lab eine Umgebung mit mehreren virtuellen Computern zu erstellen. Wenn diese Vorlage veröffentlicht wird, wird für jeden Benutzer im Lab ein eingerichteter virtueller Computer bereitgestellt, in dem weitere virtuelle Computer eingeschlossen sind.  Weitere Informationen zur geschachtelten Virtualisierung zu und Azure Lab Services finden Sie unter [Aktivieren der geschachtelten Virtualisierung auf einem virtuellen Vorlagencomputer in Azure Lab Services](how-to-enable-nested-virtualization-template-vm.md).
 
 Dieser Artikel behandelt die Vorgehensweise zum Einrichten der geschachtelten Virtualisierung auf einem Vorlagencomputer in Azure Lab Services unter direkter Verwendung von Windows-Rollen und -Tools.  Es sind einige Schritte erforderlich, damit eine Klasse die geschachtelte Virtualisierung nutzen kann.  In den folgenden Schritten wird beschrieben, wie Sie eine Lab Services-Computervorlage mithilfe von Hyper-V manuell einrichten.  Die Schritte müssen unter Windows Server 2016 oder Windows Server 2019 ausgeführt werden.  
 
 >[!IMPORTANT]
->Wählen Sie bei der Erstellung des Labs als Größe für die VM **Groß (geschachtelte Virtualisierung)** oder **Mittel (geschachtelte Virtualisierung)** aus.  Andernfalls funktioniert die verschachtelte Virtualisierung nicht.  
+>Wählen Sie bei der Erstellung des Labs als Größe für die VM **Large (nested virtualization)** (Groß (geschachtelte Virtualisierung)) oder **Medium (nested virtualization)** (Mittel (geschachtelte Virtualisierung)) aus.  Andernfalls funktioniert die verschachtelte Virtualisierung nicht.  
 
 ## <a name="enable-hyper-v-role"></a>Aktivieren der Hyper-V-Rolle
 
 In den folgenden Schritten werden Aktionen beschrieben, die erforderlich sind, um Hyper-V unter Windows Server mit einem der beiden Server-Manager zu aktivieren.  Nach erfolgreicher Installation steht der Hyper-V-Manager zur Verfügung, um virtuelle Client-VMs hinzuzufügen, zu ändern und zu löschen.
 
 1. Klicken Sie im **Server-Manager** auf der Seite „Dashboard“ auf **Rollen und Features hinzufügen**.
-2. Klicken Sie auf der Seite **Voraussetzungen** auf **Weiter**.
+2. Klicken Sie auf der Seite **Vorbereitung** auf **Weiter**.
 3. Behalten Sie auf der Seite **Installationstyp auswählen** die Standardoption **Rollenbasierte oder featurebasierte Installation** bei, und klicken Sie anschließend auf „Weiter“.
-4. Wählen Sie auf der Seite **Zielserver auswählen** die Option „Einen Server aus Serverpool auswählen“ aus.   Der aktuelle Server ist bereits ausgewählt.  Klicken Sie auf „Weiter“.
-5. Wählen Sie auf der Seite **Serverrollen auswählen** die Option **Hyper-V** aus.  
+4. Wählen Sie auf der Seite **Zielserver auswählen** die Option „Einen Server aus Serverpool auswählen“ aus.   Der aktuelle Server ist bereits ausgewählt.  Klicken Sie auf Weiter.
+5. Wählen Sie auf der Seite **Serverrollen auswählen** die Option **Hyper-V**.  
 6. Der **Assistent zum Hinzufügen von Rollen und Features** wird geöffnet.  Wählen Sie **Verwaltungstools einschließen (falls vorhanden)** aus.  Klicken Sie auf die Schaltfläche **Features hinzufügen**.
 7. Klicken Sie auf der Seite **Serverrollen auswählen** auf **Weiter**.
 8. Klicken Sie auf der Seite **Features auswählen** auf **Weiter**.
@@ -48,8 +48,8 @@ In den folgenden Schritten werden Aktionen beschrieben, die erforderlich sind, u
 Alle erstellten virtuellen Hyper-V-Clientcomputer benötigen eine IP-Adresse im NAT-Netzwerk.  Wir erstellen das NAT-Netzwerk zu einem späteren Zeitpunkt.  Eine Möglichkeit zum Zuweisen von IP-Adressen besteht darin, den Host, in diesem Fall die Vorlage für virtuelle Maschinen des Labs, als DHCP-Server einzurichten.  Es folgen die zum Aktivieren der DHCP-Rolle erforderlichen Schritte.
 
 1. Klicken Sie im **Server-Manager** auf der Seite **Dashboard** auf **Rollen und Features hinzufügen**.
-2. Klicken Sie auf der Seite **Voraussetzungen** auf **Weiter**.
-3. Wählen Sie auf der Seite **Installationstyp auswählen** die Option **Rollenbasierte oder featurebasierte Installation** aus, und klicken Sie anschließend auf **Weiter**.
+2. Klicken Sie auf der Seite **Vorbereitung** auf **Weiter**.
+3. Wählen Sie auf der Seite **Installationstyp auswählen** die Option **Rollenbasierte oder featurebasierte Installation**, und klicken Sie anschließend auf **Weiter**.
 4. Wählen Sie auf der Seite **Zielserver auswählen** einen Server aus dem Serverpool aus, und klicken Sie auf **Weiter**.
 5. Wählen Sie auf der Seite **Serverrollen auswählen** die Option **DHCP-Server** aus.  
 6. Der **Assistent zum Hinzufügen von Rollen und Features** wird geöffnet.  Wählen Sie **Verwaltungstools einschließen (falls vorhanden)** aus.  Klicken Sie auf **Features hinzufügen**.
@@ -62,13 +62,13 @@ Alle erstellten virtuellen Hyper-V-Clientcomputer benötigen eine IP-Adresse im 
 9. Klicken Sie auf der Seite **DHCP-Server** auf **Weiter**.
 10. Klicken Sie auf der Seite **Installationsauswahl bestätigen** auf **Installieren**.
 11. Warten Sie, bis auf der Seite **Installationsstatus** angezeigt wird, dass die DHCP-Rolle vollständig eingerichtet ist.
-12. Klicken Sie auf „Schließen“.
+12. Klicken Sie auf Schließen.
 
 ## <a name="enable-routing-and-remote-access-role"></a>Aktivieren der Rolle „Routing- und RAS“
 
 1. Klicken Sie im **Server-Manager** auf der Seite **Dashboard** auf **Rollen und Features hinzufügen**.
-2. Klicken Sie auf der Seite **Voraussetzungen** auf **Weiter**.
-3. Wählen Sie auf der Seite **Installationstyp auswählen** die Option **Rollenbasierte oder featurebasierte Installation** aus, und klicken Sie anschließend auf **Weiter**.
+2. Klicken Sie auf der Seite **Vorbereitung** auf **Weiter**.
+3. Wählen Sie auf der Seite **Installationstyp auswählen** die Option **Rollenbasierte oder featurebasierte Installation**, und klicken Sie anschließend auf **Weiter**.
 4. Wählen Sie auf der Seite **Zielserver auswählen** einen Server aus dem Serverpool aus, und klicken Sie auf **Weiter**.
 5. Wählen Sie auf der Seite **Serverrollen auswählen** die Option **Remotezugriff** aus. Klicken Sie auf **OK**.
 6. Klicken Sie auf der Seite **Features auswählen** auf **Weiter**.
@@ -76,7 +76,7 @@ Alle erstellten virtuellen Hyper-V-Clientcomputer benötigen eine IP-Adresse im 
 8. Wählen Sie auf der Seite **Rollendienste** die Option **Routing** aus.
 9. Der **Assistent zum Hinzufügen von Rollen und Features** wird geöffnet.  Wählen Sie **Verwaltungstools einschließen (falls vorhanden)** aus.  Klicken Sie auf **Features hinzufügen**.
 10. Klicken Sie auf **Weiter**.
-11. Klicken Sie auf der Seite **Rolle „Webserver“ (IIS)** auf **Weiter**.
+11. Klicken Sie auf der Seite **Webserverrolle (IIS)** auf **Weiter**.
 12. Klicken Sie auf der Seite **Rollendienste auswählen** auf **Weiter**.
 13. Klicken Sie auf der Seite **Installationsauswahl bestätigen** auf **Installieren**.
 14. Warten Sie, bis auf der Seite **Installationsstatus** angezeigt wird, dass die Rolle „Remotezugriff“ vollständig eingerichtet ist.  
@@ -90,7 +90,7 @@ Nachdem alle erforderlichen Rollen installiert wurden, ist es Zeit, das NAT-Netz
 
 1. Öffnen Sie in der Windows-Verwaltung **Hyper-V-Manager**.
 2. Wählen Sie im linken Navigationsmenü den aktuellen Server aus.
-3. Klicken Sie auf der rechten Seite im **Hyper-V-Manager** im Menü **Aktionen** auf **Manager für virtuelle Switches…** .
+3. Klicken Sie auf **Virtual Switch Manager** (Manager für virtuelle Switches) im Menü **Aktionen** auf der rechten Seite des **Hyper-V-Managers**.
 4. Wählen Sie im Popupelement **Manager für virtuelle Switches** als Typ des zu erstellenden Switches **Intern** aus.  Klicken Sie auf **Virtuellen Switch erstellen**.
 5. Legen Sie für den neu erstellten virtuellen Switch einen einprägsamen Namen fest.  In diesem Beispiel verwenden wir LabServicesSwitch.  Klicken Sie auf **OK**.
 6. Ein neuer Netzwerkadapter wird erstellt.  Der Name ähnelt „vEthernet (LabServicesSwitch)“.  Öffnen Sie zur Überprüfung die **Systemsteuerung**. Klicken Sie auf **Netzwerk und Internet** und dann auf **Netzwerkstatus und -aufgaben anzeigen**.  Klicken Sie links auf **Adaptereinstellungen ändern**.
@@ -125,9 +125,9 @@ Der Netzwerkadapter wird der IP-Adresse zugeordnet, die als standardmäßige Gat
     >[!NOTE]
     > Der Bereich für unser NAT-Netzwerk in CIDR-Notation ist 192.168.0.0/24.  Dadurch wird ein Bereich verwendbarer IP-Adressen von 192.168.0.1 bis 192.168.0.254 erstellt.  Laut Konvention haben Gateways die erste IP-Adresse in einem Subnetzbereich.
 
-7. Klicken Sie auf „OK“.
+7. Klicken Sie auf OK.
 
-## <a name="create-dhcp-scope"></a>Erstellen des DHCP-Bereichs
+## <a name="create-dhcp-scope"></a>DHCP-Bereich erstellen
 
 Die folgenden Schritte sind Anweisungen zum Hinzufügen des DHCP-Bereichs.  In diesem Artikel ist unser NAT-Netzwerk in CIDR-Notation 192.168.0.0/24.  Dadurch wird ein Bereich verwendbarer IP-Adressen von 192.168.0.1 bis 192.168.0.254 erstellt.  Der erstellte Bereich muss in diesem Bereich nutzbarer Adressen liegen, wobei die bereits zuvor erstellte IP-Adresse ausgeschlossen ist.
 

@@ -1,5 +1,5 @@
 ---
-title: Bewährte Methoden
+title: Empfehlungen
 description: Erfahren Sie etwas über bewährte Methoden und häufige Problembehandlungsszenarien für Ihre in Azure App Service ausgeführten Apps.
 author: dariagrigoriu
 ms.assetid: f3359464-fa44-4f4a-9ea6-7821060e8d0d
@@ -8,10 +8,10 @@ ms.date: 07/01/2016
 ms.author: dariac
 ms.custom: seodec18
 ms.openlocfilehash: 91fd974c730037907258cb4a670f6fa836bfda6c
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92144870"
 ---
 # <a name="best-practices-for-azure-app-service"></a>Empfohlene Methoden für Azure App Service
@@ -31,7 +31,7 @@ Wenn Sie durch Überwachung oder Dienstempfehlungen feststellen, dass eine App m
 ## <a name="when-apps-consume-more-cpu-than-expected"></a><a name="CPUresources"></a>Wenn Apps mehr CPU-Leistung als erwartet beanspruchen
 Wenn Sie feststellen, dass eine App mehr CPU-Leistung als erwartet beansprucht, oder wenn laut Überwachung oder Dienstempfehlungen wiederholt Rechenlastspitzen zu verzeichnen sind, sollten Sie in Betracht ziehen, den App Service-Plan zentral oder horizontal hochzuskalieren. Bei einer zustandsbehafteten Anwendung ist eine zentrale Hochskalierung die einzige Option. Wenn Ihre Anwendung jedoch zustandslos ist, erreichen Sie mit einer horizontalen Hochskalierung mehr Flexibilität und ein höheres Skalierungspotenzial. 
 
-Weitere Informationen zu „zustandsbehafteten“ und „zustandslosen“ Anwendungen bietet das Video über das [Planen einer skalierbaren End-to-End-Anwendung mit mehreren Ebenen in Azure App Service](https://channel9.msdn.com/Events/TechEd/NorthAmerica/2014/DEV-B414#fbid=?hashlink=fbid). Weitere Informationen zur Skalierung von App Service und Optionen zur automatischen Skalierung finden Sie unter [Skalieren einer Web-App in Azure App Service](manage-scale-up.md).  
+Weitere Informationen zu zustandsbehafteten und zustandslosen Anwendungen bietet das Video zum [Planen einer skalierbaren umfassenden Anwendung mit mehreren Ebenen in Azure App Service](https://channel9.msdn.com/Events/TechEd/NorthAmerica/2014/DEV-B414#fbid=?hashlink=fbid). Weitere Informationen zur Skalierung von App Service und Optionen zur automatischen Skalierung finden Sie unter [Skalieren einer Web-App in Azure App Service](manage-scale-up.md).  
 
 ## <a name="when-socket-resources-are-exhausted"></a><a name="socketresources"></a>Wenn Socketressourcen erschöpft sind
 Eine häufige Ursache für das Erschöpfen ausgehender TCP-Verbindungen ist die Verwendung von Clientbibliotheken, die nicht zur Wiederverwendung von TCP-Verbindungen implementiert wurden, oder im Fall eines übergeordneten Protokolls wie HTTP die fehlende Nutzung von Keep-Alive. Informieren Sie sich in den Dokumentationen der einzelnen Bibliotheken, auf die von den Apps in Ihrem App Service-Plan verwiesen wird, ob sie konfiguriert sind oder in Ihrem Code darauf zugegriffen wird, um so eine effiziente Wiederverwendung ausgehender Verbindungen zu gewährleisten. Befolgen Sie auch den Leitfaden zur Bibliotheksdokumentation für eine ordnungsgemäße Erstellung und Freigabe oder Bereinigung, um Verbindungsverluste zu vermeiden. Während diese Clientbibliotheksuntersuchungen ausgeführt werden, können die Auswirkungen durch ein horizontales Hochskalieren auf mehrere Instanzen verringert werden.

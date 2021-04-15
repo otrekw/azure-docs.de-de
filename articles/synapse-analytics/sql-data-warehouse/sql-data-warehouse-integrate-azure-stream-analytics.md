@@ -2,21 +2,21 @@
 title: Verwenden von Azure Stream Analytics im dedizierten SQL-Pool
 description: Tipps für die Verwendung von Azure Stream Analytics beim dedizierten SQL-Pool in Azure Synapse zum Entwickeln von Echtzeitlösungen.
 services: synapse-analytics
-author: kevinvngo
+author: gaursa
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 9/25/2020
-ms.author: kevin
+ms.author: gaursa
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 8fbe546beb1004214e544f8eb160884c0f64ef9e
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 023cf55a01f34277dd5c5707d0d123f54c1674df
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "96458225"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104600087"
 ---
 # <a name="use-azure-stream-analytics-with-dedicated-sql-pool-in-azure-synapse-analytics"></a>Verwenden von Azure Stream Analytics beim dediziertem SQL-Pool in Azure Synapse Analytics
 
@@ -52,8 +52,8 @@ Geben Sie die folgenden Werte ein:
 
 * *Ausgabealias:* Geben Sie einen Anzeigenamen für diese Auftragsausgabe ein.
 * *Abonnement*:
-  * Wenn Ihr dedizierter SQL-Pool im selben Abonnement wie der Stream Analytics-Auftrag enthalten ist, klicken Sie auf ***Select Azure Synapse Analytics from your subscriptions** _ (Azure Synapse Analytics aus Abonnements auswählen).
-  _ Wenn Ihr dedizierter SQL-Pool in einem anderen Abonnement enthalten ist, klicken Sie auf „Provide Azure Synapse Analytics settings manually“ (Azure Synapse Analytics-Einstellungen manuell angeben).
+  * Befindet sich Ihr dedizierter SQL-Pool im selben Abonnement wie der Stream Analytics-Auftrag, klicken Sie auf ***Azure Synapse Analytics aus Abonnements auswählen***.
+  * Befindet sich Ihr dedizierter SQL-Pool in einem anderen Abonnement, klicken Sie auf „Azure Synapse Analytics-Einstellungen manuell angeben“.
 * *Datenbank*: Wählen Sie in der Dropdownliste die Zieldatenbank aus.
 * *Benutzername*: Geben Sie den Benutzernamen eines Kontos mit Schreibberechtigungen für die Datenbank an.
 * *Kennwort*: Geben Sie das Kennwort für das angegebene Benutzerkonto an.
@@ -100,23 +100,23 @@ WITH (DISTRIBUTION = ROUND_ROBIN)
 
 ### <a name="step-5"></a>Schritt 5
 
-Klicken Sie im Azure-Portal für Ihren Stream Analytics-Auftrag auf den Auftragsnamen.  Klicken Sie im Bereich _*_Ausgabedetails_*_ auf die Schaltfläche **_Testen_* _.
+Klicken Sie im Azure-Portal für Ihren Stream Analytics-Auftrag auf den Auftragsnamen.  Klicken Sie im Bereich _ *_Ausgabedetails_** auf die Schaltfläche ***Testen** _.
 
 ![Schaltfläche „Testen“ für Ausgabedetails](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asatest.png): Wenn die Verbindung mit der Datenbank erfolgreich hergestellt wurde, wird im Portal eine entsprechende Meldung angezeigt.
 
 ### <a name="step-6"></a>Schritt 6
 
-Klicken Sie unter _*_Auftragstopologie_*_ auf das Menü _*_Abfrage_*_, und ändern Sie die Abfrage so, dass Daten in die von Ihnen erstellte Streamausgabe eingefügt werden.  Klicken Sie auf die Schaltfläche _*_Ausgewählte Abfrage testen_*_, um die Abfrage zu testen.  Klicken Sie auf die Schaltfläche _*_Abfrage speichern_*_, wenn der Abfragetest erfolgreich war.
+Klicken Sie unter _*_Auftragstopologie_*_ auf das Menü ***Abfrage** _, und ändern Sie die Abfrage so, dass Daten in die von Ihnen erstellte Stream-Ausgabe eingefügt werden.  Klicken Sie auf die Schaltfläche _*_Ausgewählte Abfrage testen_*_, um die Abfrage zu testen.  Klicken Sie auf die Schaltfläche _ *_Abfrage speichern_**, wenn der Abfragetest erfolgreich war.
 
 ![Speichern der Abfrage](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asaquery.png)
 
 ### <a name="step-7"></a>Schritt 7
 
-Starten Sie den Azure Stream Analytics-Auftrag.  Klicken Sie im Menü _*_Übersicht_*_ auf die Schaltfläche _*_Starten_*_.
+Starten Sie den Azure Stream Analytics-Auftrag.  Klicken Sie im Menü _ *_Übersicht_** auf die Schaltfläche ***Starten** _.
 
 ![Starten des Stream Analytics-Auftrags](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asastart.png)
 
-Klicken Sie im Bereich „Auftrag starten“ auf die Schaltfläche _ *_Starten_**.
+Klicken Sie im Bereich „Auftrag starten“ auf die Schaltfläche ***Starten***.
 
 ![Klicken auf „Starten“](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asastartconfirm.png)
 

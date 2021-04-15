@@ -9,26 +9,23 @@ ms.author: mariusu
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 824fd19e8acfed75ab3d64048a00f579b70286d2
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 35c3bd0213b6d895a81605f5858f924182e1e307
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103496234"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168857"
 ---
 # <a name="get-started-with-the-web-calling-sample"></a>Erste Schritte mit dem Webanrufbeispiel
 
-Das Webanrufbeispiel ist eine Webanwendung, die als schrittweise exemplarische Vorgehensweise für die verschiedenen Funktionen der Webanruf-Clientclibliothek von Communication Services fungiert.
+Das Webanrufbeispiel ist eine Webanwendung, die als schrittweise exemplarische Vorgehensweise für die verschiedenen Funktionen des Communication Services Web Calling SDK fungiert.
 
 Dieses Beispiel wurde für Entwickler erstellt und erleichtert Ihnen den Einstieg in Communication Services. Seine Benutzeroberfläche ist in mehrere Abschnitte unterteilt, die jeweils eine Schaltfläche „Show Code“ (Code anzeigen) aufweisen, mit der Sie Code direkt aus Ihrem Browser in Ihre eigene Communication Services-Anwendung kopieren können.
 
 ## <a name="get-started-with-the-web-calling-sample"></a>Erste Schritte mit dem Webanrufbeispiel
 
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
-
-
 > [!IMPORTANT]
-> [Dieses Beispiel ist auf GitHub ](https://github.com/Azure-Samples/communication-services-web-calling-tutorial/) verfügbar.
+> [Dieses Beispiel ist auf **Github** verfügbar](https://github.com/Azure-Samples/communication-services-web-calling-tutorial/).
 
 Halten Sie sich an „/Project/readme.md“, um das Projekt einzurichten und lokal auf Ihrem Computer auszuführen.
 Wenn das [Webanrufbeispiel](https://github.com/Azure-Samples/communication-services-web-calling-tutorial) auf dem Computer ausgeführt wird, wird die folgende Landing Page angezeigt:
@@ -51,7 +48,7 @@ Sie sind jetzt bereit, mit der Communication Services-Ressource Anrufe zu tätig
 
 ## <a name="placing-and-receiving-calls"></a>Tätigen und Annehmen von Anrufen
 
-Das Webanruf-SDK für Communication Services ermöglicht **1:1**-, **1:N**- und **Gruppenanrufe**.
+Das Communication Services Web Calling SDK ermöglicht **1:1**-, **1:N**- und **Gruppenanrufe**.
 
 Bei ausgehenden 1:1- oder 1:N-Anrufen können Sie mehrere anzurufende Communication Services-Benutzeridentitäten angeben, indem Sie durch Trennzeichen getrennte Werte verwenden. Sie können auch anzurufende herkömmliche Telefonnummern (PSTN) angeben, indem Sie durch Trennzeichen getrennte Werte verwenden.
 
@@ -86,7 +83,7 @@ Dieses Beispiel enthält auch Codeausschnitte für die folgenden Funktionen:
 
 Weitere Informationen finden Sie in den folgenden Artikeln:
 
-- Machen Sie sich mit der [Verwendung der Clientbibliothek für Anrufe](../quickstarts/voice-video-calling/calling-client-samples.md) vertraut.
+- Machen Sie sich mit der Verwendung des [Calling SDK](../quickstarts/voice-video-calling/calling-client-samples.md) vertraut.
 - Informieren Sie sich über die [Funktionsweise von Anrufen](../concepts/voice-video-calling/about-call-types.md).
 - Lesen Sie die [API-Referenzdokumentation](/javascript/api/azure-communication-services/@azure/communication-calling/).
 - Sehen Sie sich das Beispiel für die [Contoso Med-App](https://github.com/Azure-Samples/communication-services-contoso-med-app) an.

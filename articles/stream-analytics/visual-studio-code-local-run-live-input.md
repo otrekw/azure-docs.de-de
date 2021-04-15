@@ -7,10 +7,10 @@ ms.author: sujie
 ms.date: 11/14/2019
 ms.topic: how-to
 ms.openlocfilehash: dd4966ee75e9dc0ff401823e4291f8d299c8893c
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93122893"
 ---
 # <a name="test-stream-analytics-queries-locally-against-live-stream-input-by-using-visual-studio-code"></a>Lokales Testen von Stream Analytics-Abfragen unter Verwendung einer Livestreameingabe mithilfe von Visual Studio Code
@@ -25,17 +25,17 @@ Mit Azure Stream Analytics-Tools für Visual Studio Code können Sie Ihre Stream
 
 ## <a name="define-a-live-stream-input"></a>Definieren einer Livestreameingabe
 
-1. Klicken Sie in Ihrem Stream Analytics-Projekt mit der rechten Maustaste auf den Ordner **Inputs**. Wählen Sie anschließend **ASA: Eingabe hinzufügen** im Kontextmenü aus.
+1. Klicken Sie im Stream Analytics-Projekt mit der rechten Maustaste auf den Ordner **Inputs**. Wählen Sie anschließend **ASA: Eingabe hinzufügen** im Kontextmenü aus.
 
-   ![Hinzufügen einer Eingabe aus dem Ordner „Inputs“](./media/quick-create-visual-studio-code/add-input-from-inputs-folder.png)
+   ![Hinzufügen von Eingaben aus dem Ordner „Inputs“](./media/quick-create-visual-studio-code/add-input-from-inputs-folder.png)
 
-   Drücken Sie alternativ **STRG+UMSCHALT+P** , um die Befehlspalette zu öffnen, und geben Sie **ASA: Eingabe hinzufügen** ein.
+   Drücken Sie alternativ **STRG+UMSCHALT+P**, um die Befehlspalette zu öffnen, und geben Sie **ASA: Eingabe hinzufügen** ein.
 
-   ![Hinzufügen einer Stream Analytics-Eingabe in Visual Studio Code](./media/quick-create-visual-studio-code/add-input.png)
+   ![Hinzufügen einer Stream Analytics-Eingabe in Visual Studio Code](./media/quick-create-visual-studio-code/add-input.png)
 
 2. Wählen Sie in der Dropdownliste einen Eingabequellentyp aus.
 
-   ![Auswählen von „IoT Hub“ als Eingabeoption](./media/quick-create-visual-studio-code/iot-hub.png)
+   ![Auswählen von „IoT Hub“ als Eingabeoption](./media/quick-create-visual-studio-code/iot-hub.png)
 
 3. Wenn Sie die Eingabe über die Befehlspalette hinzugefügt haben, wählen Sie das Stream Analytics-Abfrageskript aus, von dem die Eingabe verwendet werden soll. Es sollte automatisch mit dem Dateipfad zu **myASAproj.asaql** aufgefüllt werden.
 
@@ -45,7 +45,7 @@ Mit Azure Stream Analytics-Tools für Visual Studio Code können Sie Ihre Stream
 
     ![Auswählen aus Abonnements](./media/quick-create-visual-studio-code/add-input-select-subscription.png)
 
-5. Konfigurieren Sie die neu generierte JSON-Datei. Sie können das CodeLens-Feature verwenden, um sich bei der Eingabe einer Zeichenfolge, der Auswahl aus einer Dropdownliste oder der direkten Änderung von Text in der Datei unterstützen zu lassen. Der folgende Screenshot zeigt **Select from your Subscriptions** (Aus Ihren Abonnements auswählen) als Beispiel.
+5. Konfigurieren Sie die neu generierte JSON-Datei. Sie können das CodeLens-Feature verwenden, um sich bei der Eingabe einer Zeichenfolge, der Auswahl aus einer Dropdownliste oder direkten Änderungen von Text in der Datei unterstützen zu lassen. Der folgende Screenshot zeigt **Select from your Subscriptions** (Aus Ihren Abonnements auswählen) als Beispiel.
 
    ![Konfigurieren von Eingaben in Visual Studio Code](./media/quick-create-visual-studio-code/configure-input.png)
 
@@ -53,7 +53,7 @@ Mit Azure Stream Analytics-Tools für Visual Studio Code können Sie Ihre Stream
 
 Wählen Sie in Ihrer Liveeingabe-Konfigurationsdatei in der oberen Zeile die Option **Datenvorschau** aus, um sich zu vergewissern, dass Eingabedaten eingehen. Eingabedaten von einem IoT-Hub gehen ein und werden im Vorschaufenster angezeigt. Es dauert möglicherweise ein paar Sekunden, bis die Vorschau angezeigt wird.
 
- ![Anzeigen einer Vorschau der Liveeingabe](./media/quick-create-visual-studio-code/preview-live-input.png)
+ ![Vorschau der Liveeingabe](./media/quick-create-visual-studio-code/preview-live-input.png)
 
 ## <a name="run-queries-locally"></a>Lokales Ausführen von Abfragen
 

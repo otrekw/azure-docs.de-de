@@ -7,10 +7,10 @@ ms.date: 12/10/2019
 ms.author: mayg
 ms.topic: conceptual
 ms.openlocfilehash: c4842172ff181b5cdbe7f6fecf69da8755ae43fa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86129877"
 ---
 # <a name="exclude-disks-from-vmware-vm-replication-to-azure"></a>Ausschließen von Datenträgern von der Replikation virtueller VMware-Computer zu Azure
@@ -30,13 +30,13 @@ Führen Sie vor dem Ausschließen von Datenträgern aus der Replikation folgende
 
  Beachten Sie zunächst Folgendes:
 
-- **Replikation**: Standardmäßig werden alle Datenträger auf einem Computer repliziert.
-- **Datenträgertyp**: Nur Basisdatenträger können von der Replikation ausgeschlossen werden. Sie können kein Betriebssystem und keine dynamischen Datenträger ausschließen.
-- **Mobilitätsdienst**: Um einen Datenträger aus der Replikation auszuschließen, muss der Mobilitätsdienst vor der Aktivierung der Replikation manuell auf dem Computer installiert werden. Die Pushinstallation kann nicht verwendet werden, da diese Methode den Mobilitätsdienst nur auf einem virtuellen Computer installiert, nachdem die Replikation aktiviert wurde.  
-- **Hinzufügen/Entfernen/Ausschließen von Datenträgern**: Nach Aktivierung der Replikation können Sie keine Datenträger für die Replikation hinzufügen, entfernen oder ausschließen. Wenn Sie Datenträger hinzufügen/entfernen möchten, müssen Sie den Schutz für den Computer deaktivieren und anschließend wieder aktivieren.
-- **Failover**: Wenn Apps, für die ein Failover durchgeführt wurde, nach einem Failover ausgeschlossene Datenträger benötigen, damit die App funktioniert, müssen Sie diese Datenträger manuell erstellen. Alternativ können Sie Azure Automation in einen Wiederherstellungsplan integrieren, um den Datenträger während des Failovers des Computers zu erstellen.
-- **Failback – Windows**: Wenn Sie nach einem Failover ein Failback zum lokalen Standort durchführen, wird für Windows-Datenträger, die Sie manuell in Azure erstellt haben, kein Failback ausgeführt. Wenn Sie also beispielsweise ein Failover für drei Datenträger durchführen und zwei Datenträger direkt auf Azure-VMs erstellen, erfolgt nur für die drei Datenträger, für die das Failover ausgeführt wurde, ein Failback.
-- **Failback – Linux**: Bei Linux-Computern wird für Datenträger, die Sie manuell in Azure erstellen, ein Failback durchgeführt. Wenn Sie beispielsweise ein Failover für drei Datenträger ausführen und zwei Datenträger direkt auf Azure-VMs erstellen, wird für alle fünf ein Failback ausgeführt. Manuell erstellte Datenträger können nicht aus dem Failback oder dem erneuten Schützen von VMs ausgeschlossen werden.
+- **Replikation:** Standardmäßig werden alle Datenträger auf einem Computer repliziert.
+- **Datenträgertyp:** Nur Basisdatenträger können von der Replikation ausgeschlossen werden. Sie können kein Betriebssystem und keine dynamischen Datenträger ausschließen.
+- **Mobilitätsdienst:** Um einen Datenträger von der Replikation auszuschließen, muss der Mobilitätsdienst vor der Aktivierung der Replikation manuell auf dem Computer installiert werden. Die Pushinstallation kann nicht verwendet werden, da diese Methode den Mobilitätsdienst nur auf einem virtuellen Computer installiert, nachdem die Replikation aktiviert wurde.  
+- **Hinzufügen/Entfernen/Ausschließen von Datenträgern:** Nach Aktivierung der Replikation können Sie keine Datenträger für die Replikation hinzufügen, entfernen oder ausschließen. Wenn Sie Datenträger hinzufügen/entfernen möchten, müssen Sie den Schutz für den Computer deaktivieren und anschließend wieder aktivieren.
+- **Failover:** Wenn Apps nach einem Failover ausgeschlossene Datenträger benötigen, um zu funktionieren, müssen Sie diese Datenträger manuell erstellen. Alternativ können Sie Azure Automation in einen Wiederherstellungsplan integrieren, um den Datenträger während des Failovers des Computers zu erstellen.
+- **Failback – Windows:** Wenn Sie nach einem Failover ein Failback zum lokalen Standort durchführen, wird für Windows-Datenträger, die Sie manuell in Azure erstellt haben, kein Failback ausgeführt. Wenn Sie also beispielsweise ein Failover für drei Datenträger durchführen und zwei Datenträger direkt auf Azure-VMs erstellen, erfolgt nur für die drei Datenträger, für die das Failover ausgeführt wurde, ein Failback.
+- **Failback – Linux:** Bei Linux-Computern wird für Datenträger, die Sie manuell in Azure erstellen, ein Failback ausgeführt. Wenn Sie beispielsweise ein Failover für drei Datenträger ausführen und zwei Datenträger direkt auf Azure-VMs erstellen, wird für alle fünf ein Failback ausgeführt. Manuell erstellte Datenträger können nicht aus dem Failback oder dem erneuten Schützen von VMs ausgeschlossen werden.
 
 
 

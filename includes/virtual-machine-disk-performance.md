@@ -9,10 +9,10 @@ ms.date: 09/25/2020
 ms.author: albecker1
 ms.custom: include file
 ms.openlocfilehash: 4770ac0181c64ef800aa02ba87284c8add357e36
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92518058"
 ---
 In diesem Artikel wird die Leistung von Datenträgern verdeutlicht und beschrieben, wie Sie Azure Virtual Machines und Azure-Datenträger kombinieren. Es wird auch beschrieben, wie Sie Engpässe für Ihre Datenträger-E/A diagnostizieren können und welche Änderungen Sie zur Leistungsoptimierung vornehmen können.

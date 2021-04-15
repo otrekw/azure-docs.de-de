@@ -8,10 +8,10 @@ author: emuench
 ms.author: mingshen
 ms.date: 10/09/2020
 ms.openlocfilehash: f4e34e850391696506beed9f6f386f85528dff24
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92283202"
 ---
 Wenn Sie eine der VMs ausgewählt haben, die mit einem Betriebssystem (und optional weiteren Diensten) vorkonfiguriert sind, verfügen Sie bereits über eine Azure-VM mit einer Standardgröße. Ein Starten Ihrer Lösung mit einem vorkonfigurierten Betriebssystem ist die empfohlene Vorgehensweise. Wenn Sie ein Betriebssystem aber manuell installieren, müssen Sie die Größe Ihrer primären VHD in Ihrem VM-Image festlegen. Stellen Sie sicher, dass die Größe des Betriebssystemdatenträgers innerhalb der Grenzwerte für Linux bzw. Windows liegt.

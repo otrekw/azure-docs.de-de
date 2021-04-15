@@ -3,16 +3,16 @@ title: Problembehandlung bei der Pipelineorchestrierung und Pipelinetriggern in 
 description: Wenden Sie verschiedene Methoden an, um Probleme mit Pipelinetriggern in Azure Data Factory zu beheben.
 author: ssabat
 ms.service: data-factory
-ms.date: 03/13/2021
+ms.date: 04/01/2021
 ms.topic: troubleshooting
 ms.author: susabat
 ms.reviewer: susabat
-ms.openlocfilehash: f5039e5a49da202b2dbfa20e56639365ed597c79
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 49205025e26f7c0eb609638e70a58c9c0c14748e
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103461996"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106385410"
 ---
 # <a name="troubleshoot-pipeline-orchestration-and-triggers-in-azure-data-factory"></a>Problembehandlung bei der Pipelineorchestrierung und Pipelinetriggern in Azure Data Factory
 
@@ -83,7 +83,26 @@ Sie haben die Kapazitätsgrenze der Integration Runtime erreicht. Möglicherweis
 - Führen Sie Ihre Pipelines zu verschiedenen Triggerzeiten aus.
 - Erstellen Sie eine neue Integration Runtime, und teilen Sie Ihre Pipelines auf mehrere Integration Runtimes auf.
 
-### <a name="how-to-perform-activity-level-errors-and-failures-in-pipelines"></a>Behandeln von Fehlern auf Aktivitätsebene und in Pipelines
+### <a name="a-pipeline-run-error-while-invoking-rest-api-in-a-web-activity"></a>Fehler der Pipelineausführung beim Aufrufen der REST-API in einer Webaktivität
+
+**Problem**
+
+Fehlermeldung:
+
+`
+Operation on target Cancel failed: {“error”:{“code”:”AuthorizationFailed”,”message”:”The client ‘<client>’ with object id ‘<object>’ does not have authorization to perform action ‘Microsoft.DataFactory/factories/pipelineruns/cancel/action’ over scope ‘/subscriptions/<subscription>/resourceGroups/<resource group>/providers/Microsoft.DataFactory/factories/<data factory name>/pipelineruns/<pipeline run id>’ or the scope is invalid. If access was recently granted, please refresh your credentials.”}}
+`
+
+**Ursache**
+
+Pipelines können die Webaktivität nur dann zum Aufrufen der REST-API-Methoden von ADF verwenden, wenn dem Azure Data Factory-Mitglied die Rolle „Mitwirkender“ zugewiesen ist. Sie müssen zuerst die verwaltete Azure Data Factory-Identität der Sicherheitsrolle „Mitwirkender“ hinzufügen. 
+
+**Auflösung**
+
+Bevor Sie die REST-API von Azure Data Factory auf der Registerkarte „Einstellungen“ einer Webaktivität verwenden, muss die Sicherheit konfiguriert werden. Azure Data Factory-Pipelines können die Webaktivität nur dann zum Aufrufen der REST-API-Methoden von ADF verwenden, wenn der verwalteten Azure Data Factory-Identität die Rolle *Mitwirkender* zugewiesen ist. Öffnen Sie zunächst das Azure-Portal, und klicken Sie im linken Menü auf den Link **Alle Ressourcen**. Wählen Sie **Azure Data Factory** aus, um die verwaltete ADF-Identität mit der Rolle „Mitwirkender“ hinzuzufügen. Klicken Sie dazu im Feld *Rollenzuweisung hinzufügen* auf die Schaltfläche **Hinzufügen**.
+
+
+### <a name="how-to-check-and-branch-on-activity-level-success-and-failure-in-pipelines"></a>Überprüfen und Verzweigen nach Erfolg und Fehler in Pipelines auf Aktivitätsebene
 
 **Ursache**
 
@@ -95,7 +114,7 @@ Azure Data Factory wertet das Ergebnis aller Aktivitäten auf Blattebene aus. Di
 
 * Implementieren Sie Überprüfungen auf Aktivitätsebene. Lesen Sie dazu [Informationen zu Pipelinefehlern und zur Fehlerbehandlung](https://techcommunity.microsoft.com/t5/azure-data-factory/understanding-pipeline-failures-and-error-handling/ba-p/1630459).
 * Verwenden Sie Azure Logic Apps, um Pipelines in regelmäßigen Abständen wie unter [Abfragen nach Factory](/rest/api/datafactory/pipelineruns/querybyfactory) beschrieben zu überwachen.
-* [Visuelles Überwachen der Pipeline](https://docs.microsoft.com/azure/data-factory/monitor-visually)
+* [Visuelles Überwachen der Pipeline](./monitor-visually.md)
 
 ### <a name="how-to-monitor-pipeline-failures-in-regular-intervals"></a>Überwachen von Pipelinefehlern in regelmäßigen Abständen
 
@@ -105,7 +124,7 @@ Es ist häufig erforderlich, fehlerhafte Data Factory-Pipelines in Intervallen z
 
 **Auflösung**
 * Sie können eine Azure-Logik-App einrichten, um alle fehlerhaften Pipelines alle 5 Minuten abzufragen. Dieser Vorgang wird unter [Abfragen nach Factory](/rest/api/datafactory/pipelineruns/querybyfactory) beschrieben. Anschließend können Sie Incidents in Ihrem Ticketsystem melden.
-* [Visuelles Überwachen der Pipeline](https://docs.microsoft.com/azure/data-factory/monitor-visually)
+* [Visuelles Überwachen der Pipeline](./monitor-visually.md)
 
 ### <a name="degree-of-parallelism--increase-does-not-result-in-higher-throughput"></a>Ein höherer Grad an Parallelität führt nicht zu einem höheren Durchsatz.
 
@@ -115,7 +134,7 @@ Der Grad an Parallelität in *ForEach* ist tatsächlich der maximale Grad an Par
 
 Bekannte Fakten zu *ForEach*
  * ForEach verfügt über eine Eigenschaft mit dem Namen „batch count(n)“ mit dem Standardwert 20 und dem Höchstwert 50.
- * Die Batchanzahl n wird zum Erstellen von n Warteschlangen verwendet. Weiter unten wird ausführlich erläutert, wie diese Warteschlangen erstellt werden.
+ * Die Batchanzahl n wird zum Erstellen von n Warteschlangen verwendet. 
  * Jede Warteschlange wird sequenziell ausgeführt, Sie können jedoch mehrere Warteschlangen parallel ausführen.
  * Die Warteschlangen werden vorab erstellt. Dies bedeutet, dass die Warteschlangen während der Laufzeit nicht neu verteilt werden.
  * Zu jedem Zeitpunkt gibt es höchstens ein Element, das pro Warteschlange verarbeitet wird. Dies bedeutet, dass zu einem bestimmten Zeitpunkt höchstens n Elemente verarbeitet werden.
@@ -124,7 +143,8 @@ Bekannte Fakten zu *ForEach*
 **Auflösung**
 
  * Sie sollten keine *SetVariable*-Aktivität in *ForEach* verwenden, die parallel ausgeführt wird.
- * Wenn Sie die Art und Weise berücksichtigen, in der die Warteschlangen erstellt werden, können Kunden die Leistung von ForEach verbessern, indem sie mehrere *ForEach-Vorgänge* festlegen, wobei jedes ForEach-Element Elemente mit ähnlicher Verarbeitungszeit enthält. Dadurch wird sichergestellt, dass lange Ausführungen parallel und nicht sequenziell verarbeitet werden.
+ * Wenn Sie die Art und Weise berücksichtigen, in der die Warteschlangen erstellt werden, können Kunden die Leistung von ForEach verbessern, indem sie mehrere *ForEach-Vorgänge* festlegen, wobei jedes *ForEach-Element* Elemente mit ähnlicher Verarbeitungszeit enthält. 
+ * Dadurch wird sichergestellt, dass lange Ausführungen parallel und nicht sequenziell verarbeitet werden.
 
  ### <a name="pipeline-status-is-queued-or-stuck-for-a-long-time"></a>Eine Pipeline befindet sich für längere Zeit in einer Warteschlange oder ist für längere Zeit hängen geblieben
  
@@ -146,8 +166,8 @@ Dies kann vorkommen, wenn Sie keine Gültigkeitsdauer für den Datenfluss oder e
 
 **Auflösung**
 
-* Wenn das Starten jeder Kopieraktivität bis zu zwei Minuten dauert und das Problem hauptsächlich bei einem VNET-Beitritt auftritt (nicht in der Azure IR), handelt es sich ggf. um ein Problem mit der Kopierleistung. Informationen zu den Problembehandlungsschritten finden Sie unter [Kopierleistungsverbesserung.](https://docs.microsoft.com/azure/data-factory/copy-activity-performance-troubleshooting)
-* Sie können die Gültigkeitsdauer verwenden, um die Startzeit des Clusters für Datenflussaktivitäten zu verkürzen. Weitere Informationen finden Sie unter [Datenfluss-Integration Runtime.](https://docs.microsoft.com/azure/data-factory/control-flow-execute-data-flow-activity#data-flow-integration-runtime)
+* Wenn das Starten jeder Kopieraktivität bis zu zwei Minuten dauert und das Problem hauptsächlich bei einem VNET-Beitritt auftritt (nicht in der Azure IR), handelt es sich ggf. um ein Problem mit der Kopierleistung. Informationen zu den Problembehandlungsschritten finden Sie unter [Kopierleistungsverbesserung.](./copy-activity-performance-troubleshooting.md)
+* Sie können die Gültigkeitsdauer verwenden, um die Startzeit des Clusters für Datenflussaktivitäten zu verkürzen. Weitere Informationen finden Sie unter [Datenfluss-Integration Runtime.](./control-flow-execute-data-flow-activity.md#data-flow-integration-runtime)
 
  ### <a name="hitting-capacity-issues-in-shirself-hosted-integration-runtime"></a>Kapazitätsprobleme in SHIR (selbstgehostete Integration Runtime)
  
@@ -157,7 +177,7 @@ Dies kann vorkommen, wenn Sie die SHIR nicht gemäß Ihrer Arbeitsauslastung hoc
 
 **Auflösung**
 
-* Wenn für die SHIR ein Kapazitätsproblem auftritt, sollten Sie für die VM ein Upgrade durchführen, um den Knoten zu vergrößern und so eine bessere Verteilung der Aktivitäten zu ermöglichen. Falls Sie eine Fehlermeldung im Zusammenhang mit einem allgemeinen Fehler, einem Upgrade oder einem Konnektivitätsproblem für eine selbstgehostete IR erhalten, was eine lange Warteschlange zur Folge haben kann, helfen Ihnen die Informationen zur [Problembehandlung für die selbstgehostete Integration Runtime](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-troubleshoot-guide) weiter.
+* Wenn für die SHIR ein Kapazitätsproblem auftritt, sollten Sie für die VM ein Upgrade durchführen, um den Knoten zu vergrößern und so eine bessere Verteilung der Aktivitäten zu ermöglichen. Falls Sie eine Fehlermeldung im Zusammenhang mit einem allgemeinen Fehler, einem Upgrade oder einem Konnektivitätsproblem für eine selbstgehostete IR erhalten, was eine lange Warteschlange zur Folge haben kann, helfen Ihnen die Informationen zur [Problembehandlung für die selbstgehostete Integration Runtime](./self-hosted-integration-runtime-troubleshoot-guide.md) weiter.
 
 ### <a name="error-messages-due-to-long-queues-for-adf-copy-and-data-flow"></a>Fehlermeldungen aufgrund von langen Warteschlangen für ADF-Kopieraktivitäten und den Datenfluss
 
@@ -166,10 +186,10 @@ Dies kann vorkommen, wenn Sie die SHIR nicht gemäß Ihrer Arbeitsauslastung hoc
 Fehlermeldungen im Zusammenhang mit langen Warteschlangen können aus verschiedenen Gründen auftreten. 
 
 **Auflösung**
-* Falls Sie über Connectors eine Fehlermeldung von einer beliebigen Quelle oder einem beliebigen Ziel erhalten, was eine lange Warteschlange zur Folge haben kann, lesen Sie den [Leitfaden zur Problembehandlung für Connectors](https://docs.microsoft.com/azure/data-factory/connector-troubleshoot-guide).
-* Falls Sie eine Fehlermeldung im Zusammenhang mit dem Zuordnungsdatenfluss erhalten, was eine lange Warteschlange zur Folge haben kann, lesen Sie den [Leitfaden zur Problembehandlung für Datenflüsse](https://docs.microsoft.com/azure/data-factory/data-flow-troubleshoot-guide).
-* Falls Sie eine Fehlermeldung im Zusammenhang mit anderen Aktivitäten (z. B. Databricks, benutzerdefinierten Aktivitäten oder HDI) erhalten, was eine lange Warteschlange zur Folge haben kann, helfen Ihnen die Informationen im [Leitfaden zur Problembehandlung für Aktivitäten](https://docs.microsoft.com/azure/data-factory/data-factory-troubleshoot-guide) weiter.
-* Falls Sie eine Fehlermeldung im Zusammenhang mit der Ausführung von SSIS-Paketen erhalten, was eine lange Warteschlange zur Folge haben kann, finden Sie weitere Informationen unter [Behandeln von Problemen bei der Paketausführung in der SSIS Integration Runtime](https://docs.microsoft.com/azure/data-factory/ssis-integration-runtime-ssis-activity-faq) und [Problembehandlung bei der SSIS Integration Runtime-Verwaltung in Azure Data Factory](https://docs.microsoft.com/azure/data-factory/ssis-integration-runtime-management-troubleshoot).
+* Falls Sie über Connectors eine Fehlermeldung von einer beliebigen Quelle oder einem beliebigen Ziel erhalten, was eine lange Warteschlange zur Folge haben kann, lesen Sie den [Leitfaden zur Problembehandlung für Connectors](./connector-troubleshoot-guide.md).
+* Falls Sie eine Fehlermeldung im Zusammenhang mit dem Zuordnungsdatenfluss erhalten, was eine lange Warteschlange zur Folge haben kann, lesen Sie den [Leitfaden zur Problembehandlung für Datenflüsse](./data-flow-troubleshoot-guide.md).
+* Falls Sie eine Fehlermeldung im Zusammenhang mit anderen Aktivitäten (z. B. Databricks, benutzerdefinierten Aktivitäten oder HDI) erhalten, was eine lange Warteschlange zur Folge haben kann, helfen Ihnen die Informationen im [Leitfaden zur Problembehandlung für Aktivitäten](./data-factory-troubleshoot-guide.md) weiter.
+* Falls Sie eine Fehlermeldung im Zusammenhang mit der Ausführung von SSIS-Paketen erhalten, was eine lange Warteschlange zur Folge haben kann, finden Sie weitere Informationen unter [Behandeln von Problemen bei der Paketausführung in der SSIS Integration Runtime](./ssis-integration-runtime-ssis-activity-faq.md) und [Problembehandlung bei der SSIS Integration Runtime-Verwaltung in Azure Data Factory](./ssis-integration-runtime-management-troubleshoot.md).
 
 
 ## <a name="next-steps"></a>Nächste Schritte

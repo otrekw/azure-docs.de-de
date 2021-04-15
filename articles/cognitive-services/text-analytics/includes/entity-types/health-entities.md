@@ -7,36 +7,33 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 10/02/2020
+ms.date: 03/11/2021
 ms.author: aahi
-ms.openlocfilehash: 614d0fe69cee88791559758d5e08dda66672669b
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 805c726d33f2050f6f2797c0689069aa5ec4ee71
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99097264"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104599320"
 ---
-[Gewusst wie: Verwenden von Text Analytics for Health (Vorschauversion)](../../how-tos/text-analytics-for-health.md) erkennt medizinische Begriffe in den folgenden Kategorien.  (Beachten Sie, dass in dieser Containervorschau nur englischer Text unterstützt wird und nur eine einzige Modellversion in jedem Containerimage bereitgestellt wird.)
+[Text Analytics for Health](../../how-tos/text-analytics-for-health.md) verarbeitet und extrahiert Informationen aus unstrukturierten medizinischen Daten. Der Dienst erkennt medizinische Begriffe, zeigt diese an, weist ihnen Assertionen zu, leitet semantische Beziehungen zwischen ihnen ab und verknüpft sie mit häufigen medizinischen Ontologien.
 
+Gewusst wie: Verwenden von Text Analytics for Health (Vorschauversion) erkennt medizinische Begriffe in den folgenden Kategorien. In dieser Vorschau wird nur englischsprachiger Text unterstützt, und es steht nur eine einzige Modellversion zur Verfügung.
 
-| Kategorie  | BESCHREIBUNG  |
+| Category  | BESCHREIBUNG  |
 |---------|---------|
-| [ANATOMY](#anatomy) | Begriffe zur Erfassung von Informationen über den Körper und anatomische Systeme und Bereiche. |
+| [ANATOMY](#anatomy) | Begriffe, die Informationen zum Körper, anatomischen Systemen, Körperstellen oder -regionen erfassen. |
  | [DEMOGRAPHICS](#demographics) | Begriffe, die Informationen über Geschlecht und Alter erfassen. |
  | [EXAMINATION](#examinations) | Begriffe, die Informationen zu Diagnoseverfahren und Tests erfassen. |
+ | [GENERAL ATTRIBUTES](#general-attributes) | Begriffe, die Informationen zu anderen Begriffen der oben genannten Kategorien erfassen. |
  | [GENOMICS](#genomics) | Begriffe, die Informationen zu Genen und Varianten erfassen. |
- | [HEALTHCARE](#healthcare) | Begriffe, die Informationen zu Verwaltungsvorgängen, Pflegeumgebungen und Berufen im Gesundheitswesen erfassen. |
- | [MEDICAL CONDITION](#medical-condition) | Begriffe, die Informationen zu Diagnoseverfahren, Symptomen oder Anzeichen erfassen. |
- | [MEDICATION](#medication) | Begriffe, die Informationen zu Medikamenten einschließlich Name, Klasse, Dosierung und Verwaltungsabläufen erfassen. |
+ | [HEALTHCARE](#healthcare) | Begriffe, die Informationen zu Verwaltungsereignissen, Pflegeumgebungen und Berufen im Gesundheitswesen erfassen. |
+ | [MEDICAL CONDITION](#medical-condition) | Begriffe, die Informationen zu Diagnosen, Symptomen oder Anzeichen erfassen. |
+ | [MEDICATION](#medication) | Begriffe, die Informationen zu Arzneiverordnungen einschließlich Name, Klasse, Dosierung und Verabreichungsweg erfassen. |
  | [SOCIAL](#social) | Begriffe, die Informationen über medizinisch relevante soziale Aspekte wie z. B. Verwandschaftsverhältnisse erfassen. |
  | [TREATMENT](#treatment) | Begriffe, die Informationen zu Therapieverfahren erfassen. |
-  
-Jede Kategorie kann zwei Begriffsgruppen beinhalten:
 
-* **Entitäten**: Benennungen, die medizinische Begriffe wie Diagnose, Medikamentenname oder den Namen der Behandlung erfassen.  Beispielsweise ist *Bronchitis* eine Diagnose und *Aspirin* ein Medikamentenname.  Erwähnungen in dieser Gruppe sind möglicherweise mit einer UMLS-Begriffs-ID verknüpft.
-* **Attribute**: Ausdrücke, die weitere Informationen zur erkannten Entität bieten; *schwerwiegende* ist z. B. ein Bedingungsqualifizierer für *Bronchitis*, und *81 mg* ist eine Dosierung für *Aspirin*.  Erwähnungen in dieser Kategorie werden NICHT mit einer UMLS-Begriffs-ID verknüpft.
-
-Außerdem erkennt der Dienst Beziehungen zwischen den verschiedenen Begriffen, einschließlich der Beziehungen zwischen Attributen und Entitäten, z. B. *Richtung* und *Körperstruktur* oder *Dosierung* und *Medikamentenname* und Beziehungen zwischen Entitäten, z. B. beim Erkennen von Abkürzungen.
+Weitere Informationen und Beispiele finden Sie weiter unten.
 
 ## <a name="anatomy"></a>Aufbau
 
@@ -49,21 +46,11 @@ Außerdem erkennt der Dienst Beziehungen zwischen den verschiedenen Begriffen, e
 
 :::image type="content" source="../../media/ta-for-health/anatomy-entities-body-structure-2.png" alt-text="Ein erweitertes Beispiel für die Körperstrukturentität.":::
 
-### <a name="attributes"></a>Attribute
-
-**DIRECTION**: Richtungsbenennungen wie „links“, „seitlich“, „oben“, „hinten“, die eine Körperstruktur kennzeichnen.
-
-:::image type="content" source="../../media/ta-for-health/anatomy-attributes.png" alt-text="Ein Beispiel für ein Richtungsattribut.":::
-
-### <a name="supported-relations"></a>Unterstützte Beziehungen
-
-* **DIRECTION_OF_BODY_STRUCTURE**
-
 ## <a name="demographics"></a>Demografische Informationen
 
 ### <a name="entities"></a>Entitäten
 
-**AGE**: Alle Benennungen und Ausdrücke in Bezug auf das Alter von Patienten, Familienmitgliedern und anderen. Beispielsweise „40-jährig“, „51 Jahre“, „3 Monate alt“, „erwachsen“, „älterer“, „jung“, „minderjährig“, „mittleren Alters“.
+**AGE**: Alle Bezeichnungen und Ausdrücke in Bezug auf das Alter von Patienten, Familienmitgliedern und anderen. Beispielsweise „40-jährig“, „51 Jahre“, „3 Monate alt“, „erwachsen“, „älterer“, „jung“, „minderjährig“, „mittleren Alters“.
 
 :::image type="content" source="../../media/ta-for-health/age-entity.png" alt-text="Ein Beispiel für eine Altersentität.":::
 
@@ -74,61 +61,43 @@ Außerdem erkennt der Dienst Beziehungen zwischen den verschiedenen Begriffen, e
 
 :::image type="content" source="../../media/ta-for-health/gender-entity.png" alt-text="Ein Beispiel für eine Geschlechtsentität.":::
 
-### <a name="attributes"></a>Attribute
-
-**RELATIONAL_OPERATOR**: Ausdrücke, die die Beziehung zwischen einer demographischen Entität und zusätzlichen Informationen ausdrücken.
-
-:::image type="content" source="../../media/ta-for-health/relational-operator.png" alt-text="Ein Beispiel für einen relationalen Operator.":::
-
 ## <a name="examinations"></a>Untersuchungen
 
 ### <a name="entities"></a>Entitäten
 
-**EXAMINATION_NAME**: Diagnoseverfahren und Tests. Beispielsweise „MRT“, „EKG“, „HIV-Test“, „Hämoglobin“, „Blutplättchenanzahl“, „Skalensysteme“ wie *Bristol-Stuhlformen-Skala*.
+**EXAMINATION_NAME**: Diagnoseverfahren und Tests einschließlich Vitalzeichen und Körpermaße. Beispielsweise „MRT“, „EKG“, „HIV-Test“, „Hämoglobin“, „Blutplättchenanzahl“, „Skalensysteme“ wie *Bristol-Stuhlformen-Skala*.
 
 :::image type="content" source="../../media/ta-for-health/exam-name-entities.png" alt-text="Ein Beispiel für eine Untersuchungsentität.":::
 
 :::image type="content" source="../../media/ta-for-health/exam-name-entities-2.png" alt-text="Ein weiteres Beispiel für eine Untersuchungsnamenentität.":::
 
-### <a name="attributes"></a>Attribute
+## <a name="general-attributes"></a>Allgemeine Attribute
 
-**DIRECTION**: Richtungsbenennungen, die eine Untersuchung charakterisieren.
+### <a name="entities"></a>Entitäten
 
-:::image type="content" source="../../media/ta-for-health/exam-direction-attribute.png" alt-text="Ein Beispiel für ein Richtungsattribut mit einer Untersuchungsnamenentität.":::
+**DATE**: Vollständiges Datum einer Erkrankung, Untersuchung, Behandlung, Arzneiverordnung oder eines Verwaltungsereignisses.
 
-**MEASUREMENT_UNIT**: Die Maßeinheit für eine Untersuchung. Beispielsweise ist in *Hämoglobin > 9,5 g/dl* die Benennung *g/dl* die Einheit für den *Hämoglobintest*.
+**DIRECTION**: Begriffe zur lokalen Bestimmung im Zusammenhang mit dem Körperbau, einer Erkrankung, Untersuchung oder Behandlung. Beispiel: links, seitlich, oberhalb von, hinter.
 
-:::image type="content" source="../../media/ta-for-health/exam-unit-attribute.png" alt-text="Ein Beispiel für ein Maßeinheitsattribut mit einer Untersuchungsnamenentität.":::
+**FREQUENCY**: Beschreibt, wie häufig eine Erkrankung, Untersuchung, Behandlung oder Arzneiverordnung stattfand, stattfindet oder stattfinden sollte.
 
-**MEASUREMENT_VALUE**: Der Wert für eine Untersuchung. Beispielsweise ist in *Hämoglobin > 9,5 g/dl* die Benennung *9,5* der Wert für den *Hämoglobintest*.
+**MEASUREMENT_VALUE**: Messwert im Zusammenhang mit einer Untersuchung oder einer Erkrankung.
 
-:::image type="content" source="../../media/ta-for-health/exam-value-attribute.png" alt-text="Ein Beispiel für ein Messwertsattribut mit einer Untersuchungsnamenentität.":::
+**MEASUREMENT_UNIT**: Einheit des Messwerts im Zusammenhang mit einer Untersuchung oder einer Erkrankung.
 
-**RELATIONAL_OPERATOR**: Ausdrücke, die die Beziehung zwischen einer Untersuchung und zusätzlichen Informationen ausdrücken. Beispielsweise der erforderliche Messwert für eine Untersuchung.
+**RELATIONAL_OPERATOR**: Ausdrücke für die quantitative Beziehung zwischen einer Entität und zusätzlichen Informationen.
 
-:::image type="content" source="../../media/ta-for-health/exam-relational-operator-attribute.png" alt-text="Ein Beispiel für einen relationalen Operator mit einer Untersuchungsnamenentität.":::
-
-**TIME**: Zeitliche Benennungen, die sich auf den Anfang und/oder die Dauer einer Untersuchung beziehen. Beispielsweise, wann der Test stattgefunden hat.
-
-:::image type="content" source="../../media/ta-for-health/exam-time-attribute.png" alt-text="Ein Beispiel für ein Zeitattribut mit einer Untersuchungsnamenentität.":::
-
-### <a name="supported-relations"></a>Unterstützte Beziehungen
-
-+ **DIRECTION_OF_EXAMINATION**
-+   **RELATION_OF_EXAMINATION**
-+   **TIME_OF_EXAMINATION**
-+   **UNIT_OF_EXAMINATION**
-+   **VALUE_OF_EXAMINATION**
+**TIME**: Zeitliche Begriffe zur Angabe des Beginns und/oder der Dauer einer Erkrankung, Untersuchung, Behandlung, Arzneiverordnung oder eines Verwaltungsereignisses. 
 
 ## <a name="genomics"></a>Genomics
 
 ### <a name="entities"></a>Entitäten
 
-**GENE**: Alle Erwähnungen von Genen. Beispiel: „MTRR“, „F2“.
+**GENE_OR_PROTEIN**: Alle Erwähnungen von Namen und Symbolen menschlicher Gene sowie von Chromosomen und Chromosomen-/Proteinteilen. Beispiel: „MTRR“, „F2“.
 
 :::image type="content" source="../../media/ta-for-health/genomics-entities.png" alt-text="Ein Beispiel für eine Genentität.":::
 
-**VARIANT**: Alle Erwähnungen von Genvarianten. Beispielsweise „c.524C>T“, „(MTRR):r.1462_1557del96“.
+**VARIANT**: Alle Erwähnungen von Genvarianten und -mutationen. Beispiel: `c.524C>T`, `(MTRR):r.1462_1557del96`.
   
 ## <a name="healthcare"></a>Integritätsressourcen
 
@@ -164,9 +133,7 @@ Außerdem erkennt der Dienst Beziehungen zwischen den verschiedenen Begriffen, e
 
 :::image type="content" source="../../media/ta-for-health/medical-condition-symptom-entity-2.png" alt-text="Ein weiteres Beispiel für eine Anzeichen- oder Symptomentität für den medizinischen Zustand.":::
 
-### <a name="attributes"></a>Attribute
-
-**CONDITION_QUALIFIER**: Qualitätsbenennungen, die zur Beschreibung eines medizinischen Zustands verwendet werden. Alle folgenden Unterkategorien gelten als berücksichtigte Qualifizierer:
+**CONDITION_QUALIFIER**: Qualitative Angaben zur Beschreibung eines medizinischen Zustands oder einer Erkrankung. Alle folgenden Unterkategorien gelten als Qualifizierer:
 
 1.  Zeitbezogene Ausdrücke: Dies sind Benennungen, die die Zeitdimension qualitativ beschreiben, z. B. „plötzlich“, „akut“, „chronisch“, „langjährig“. 
 2.  Qualitätsausdrücke:  Dabei handelt es sich um Benennungen, die die „Art“ des medizinischen Zustands beschreiben, z. B. „brennen“, „scharf“.
@@ -186,40 +153,6 @@ Außerdem erkennt der Dienst Beziehungen zwischen den verschiedenen Begriffen, e
 
 :::image type="content" source="../../media/ta-for-health/condition-qualifier-symptom.png" alt-text="Screenshot: Weiteres Beispiel für ein Zustandsqualifiziererattribut mit einer Diagnoseentität":::
 
-**DIRECTION**: Auf den Körper bezogene Richtungsbenennungen, die einen medizinischen Zustand charakterisieren.
-
-:::image type="content" source="../../media/ta-for-health/medical-condition-direction-attribute.png" alt-text="Ein Beispiel für ein Richtungsattribut mit einer Entität für den medizinischen Zustand.":::
-
-**FREQUENCY**: Häufigkeit, in der ein medizinischer Zustand aufgetreten ist, auftritt oder auftreten sollte.
-
-:::image type="content" source="../../media/ta-for-health/medical-condition-frequency-attribute.png" alt-text="Ein Beispiel für ein Häufigkeitsattribut mit einer Entität für den medizinischen Zustand.":::
-
-:::image type="content" source="../../media/ta-for-health/medical-condition-frequency-attribute-2.png" alt-text="Ein Beispiel für ein Richtungsattribut mit einer Symptom- oder Anzeichenentität.":::
-
-**MEASUREMENT_UNIT**: Die Einheit, die einen medizinischen Zustand kennzeichnet. Beispielsweise ist in *1,5x2x1 cm-Tumor* die Benennung *cm* die Maßeinheit für den *Tumor*. 
-
-:::image type="content" source="../../media/ta-for-health/medical-condition-measure-unit-attribute.png" alt-text="Ein Beispiel für ein Maßeinheitsattribut mit einer Entität für den medizinischen Zustand.":::
-
-**MEASUREMENT_VALUE**: Der Wert, der einen medizinischen Zustand kennzeichnet. Beispielsweise ist in *1,5x2x1 cm-Tumor* die Benennung *1,5x2x1* der Messwert für den *Tumor*. 
-
-:::image type="content" source="../../media/ta-for-health/medical-condition-measure-value-attribute.png" alt-text="Screenshot: Beispiel für ein Richtungsattribut mit einer Symptom- oder Anzeichenentität":::
-
-**RELATIONAL_OPERATOR**: Ausdrücke, die die Beziehung zwischen einem medizinischen Zustand und zusätzlichen Informationen ausdrücken. Beispiel: Zeit oder Messwert. 
-
-:::image type="content" source="../../media/ta-for-health/medical-condition-relational-operator.png" alt-text="Screenshot: Weiteres Beispiel für ein Richtungsattribut mit einer Symptom- oder Anzeichenentität":::
-
-**TIME**: Zeitliche Benennungen, die sich auf den Anfang und/oder die Dauer eines medizinischen Zustands beziehen. Beispielsweise der Zeitpunkt, zu dem ein Symptom oder eine Krankheit aufgetreten ist.
-
-:::image type="content" source="../../media/ta-for-health/medical-condition-time-attribute.png" alt-text="Screenshot: Weiteres Beispiel für ein Richtungsattribut mit einer Symptom- oder Anzeichenentität":::
-
-### <a name="supported-relations"></a>Unterstützte Beziehungen
-
-+ **DIRECTION_OF_CONDITION**
-+   **QUALIFIER_OF_CONDITION**
-+   **TIME_OF_CONDITION**
-+   **UNIT_OF_CONDITION**
-+   **VALUE_OF_CONDITION**
-
 ## <a name="medication"></a>Medikament
 
 ### <a name="entities"></a>Entitäten
@@ -228,21 +161,13 @@ Außerdem erkennt der Dienst Beziehungen zwischen den verschiedenen Begriffen, e
 
 :::image type="content" source="../../media/ta-for-health/medication-entities-class.png" alt-text="Ein Beispiel für eine Medikamentenklassenentität.":::
 
-**MEDICATION_NAME**: Erwähnungen von Medikamenten einschließlich urheberrechtlich geschützter Markennamen und Namen, die keine Markennamen sind. Beispielsweise „Advil“, „Ibuprofen“.
+**MEDICATION_NAME**: Erwähnungen von Medikamenten einschließlich urheberrechtlich geschützter Markennamen und Namen, die keine Markennamen sind. Beispiel: Ibuprofen.
 
 :::image type="content" source="../../media/ta-for-health/medication-entities-name.png" alt-text="Ein Beispiel für eine Medikamentennamenentität.":::
-
-### <a name="attributes"></a>Attribute
 
 **DOSAGE**: Menge der bestellten Medikamente. Beispielsweise „*1.000 ml* Natriumchlorid-Infusionslösung“.
 
 :::image type="content" source="../../media/ta-for-health/medication-dosage.png" alt-text="Ein Beispiel für ein Medikamentdosierungsattribut.":::
-
-**FREQUENCY**: Häufigkeit, mit der ein Medikament eingenommen werden sollte.
-
-:::image type="content" source="../../media/ta-for-health/medication-frequency.png" alt-text="Ein Beispiel für ein Attribut zur Häufigkeit der Medikamenteneinnahme.":::
-
-:::image type="content" source="../../media/ta-for-health/medication-frequency-2.png" alt-text="Ein weiteres Beispiel für ein Attribut zur Häufigkeit der Medikamenteneinnahme.":::
 
 **MEDICATION_FORM**: Die Form des Medikaments. Beispielsweise „Lösung“, „Pille“, „Kapsel“, „Tablette“, „Pflaster“, „Gel“, „Paste“, „Schaum“, „Spray“, „Drops“, „Creme“, „Sirup“.
 
@@ -251,20 +176,6 @@ Außerdem erkennt der Dienst Beziehungen zwischen den verschiedenen Begriffen, e
 **MEDICATION_ROUTE**: Die Methode der Medikamenteneinnahme. Beispielsweise „oral“, „vaginal“, „IV“, „epidural“, „inhalieren“.
 
 :::image type="content" source="../../media/ta-for-health/medication-route.png" alt-text="Ein Beispiel für ein Attribut für die Methode der Medikamenteneinnahme.":::
-
-**RELATIONAL_OPERATOR**: Ausdrücke, die die Beziehung zwischen Medikamenten und zusätzlichen Informationen ausdrücken. Beispielsweise der erforderliche Messwert.
-
-:::image type="content" source="../../media/ta-for-health/medication-relational-operator.png" alt-text="Screenshot: Beispiel für ein Relationaler-Operator-Attribut mit einer Medikamententität":::
-
-:::image type="content" source="../../media/ta-for-health/medication-time.png" alt-text="Screenshot: Weiteres Beispiel für ein Relationaler-Operator-Attribut mit einer Medikamententität":::
-
-### <a name="supported-relations"></a>Unterstützte Beziehungen
-
-+ **DOSAGE_OF_MEDICATION**
-+   **FORM_OF_MEDICATION**
-+   **FREQUENCY_OF_MEDICATION**
-+   **ROUTE_OF_MEDICATION**
-+   **TIME_OF_MEDICATION**
 
 ## <a name="social"></a>Soziale Netzwerke
 
@@ -281,27 +192,3 @@ Außerdem erkennt der Dienst Beziehungen zwischen den verschiedenen Begriffen, e
 **TREATMENT_NAME**: Therapeutische Verfahren. Beispielsweise „Knieprothesenchirurgie“, „Knochenmarktransplantation“, „TAVI“, „Diät“.
 
 :::image type="content" source="../../media/ta-for-health/treatment-entities-name.png" alt-text="Ein Beispiel für eine Behandlungsnamenentität.":::
-
-### <a name="attributes"></a>Attribute
-
-**DIRECTION**: Richtungsbenennungen, die eine Behandlung charakterisieren.
-
-:::image type="content" source="../../media/ta-for-health/treatment-direction.png" alt-text="Screenshot: Beispiel für ein Behandlungsrichtungsattribut":::
-
-**FREQUENCY**: Häufigkeit, mit der eine Behandlung durchgeführt wird oder durchgeführt werden sollte.
-
-:::image type="content" source="../../media/ta-for-health/treatment-frequency.png" alt-text="Screenshot: Weiteres Beispiel für ein Behandlungsrichtungsattribut":::
- 
-**RELATIONAL_OPERATOR**: Ausdrücke, die die Beziehung zwischen der Behandlung und zusätzlichen Informationen ausdrücken.  Beispielsweise, wieviel Zeit seit der vorherigen Behandlung vergangen ist.
-
-:::image type="content" source="../../media/ta-for-health/treatment-relational-operator.png" alt-text="Ein Beispiel für ein Relationaler-Operator-Attribut für eine Behandlung.":::
-
-**TIME**: Zeitliche Benennungen, die sich auf den Anfang und/oder die Dauer einer Behandlung beziehen. Beispielsweise das Datum, an dem die Behandlung erfolgte.
-
-:::image type="content" source="../../media/ta-for-health/treatment-time.png" alt-text="Screenshot: Beispiel für ein Behandlungszeitattribut":::
-
-### <a name="supported-relations"></a>Unterstützte Beziehungen
-
-+ **DIRECTION_OF_TREATMENT**
-+   **TIME_OF_TREATMENT**
-+   **FREQUENCY_OF_TREATMENT**

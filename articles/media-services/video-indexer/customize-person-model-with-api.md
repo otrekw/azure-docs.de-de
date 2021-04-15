@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 01/14/2020
 ms.author: kumud
-ms.openlocfilehash: 09366dea1a0d77052b6f99e9f5ab52c270e341b4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dced3cde1aae082bd64d785212b40e100013e0bf
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87047014"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312891"
 ---
 # <a name="customize-a-person-model-with-the-video-indexer-api"></a>Anpassen eines Personenmodells mit der Video Indexer-API
 
@@ -35,7 +35,7 @@ Jedes Konto hat ein Limit von 50 Personenmodellen. Wenn Sie keine Unterstützung
 
 ## <a name="create-a-new-person-model"></a>Erstellen eines neuen Personenmodells
 
-Um ein neues Personenmodell im angegebenen Konto zu erstellen, verwenden Sie die API zum [Erstellen eines neuen Personenmodells](https://api-portal.videoindexer.ai/docs/services/operations/operations/Create-Person-Model?).
+Um ein neues Personenmodell im angegebenen Konto zu erstellen, verwenden Sie die API zum [Erstellen eines neuen Personenmodells](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Create-Person-Model).
 
 Die Antwort stellt den Namen und die generierte Modell-ID des Personenmodells bereit, das Sie gerade im Format des folgenden Beispiels erstellt haben.
 
@@ -46,11 +46,11 @@ Die Antwort stellt den Namen und die generierte Modell-ID des Personenmodells be
 }
 ```
 
-Sie verwenden dann den Wert **id** für den Parameter **personModelId**, wenn [ein zu indizierendes Video hochgeladen](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) oder [ein Video neu indiziert](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?) wird.
+Sie verwenden dann den Wert **id** für den Parameter **personModelId**, wenn [ein zu indizierendes Video hochgeladen](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Upload-Video) oder [ein Video neu indiziert](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Re-Index-Video) wird.
 
 ## <a name="delete-a-person-model"></a>Löschen eines Personenmodells
 
-Um ein benutzerdefiniertes Personenmodell im angegebenen Konto zu löschen, verwenden Sie die API zum [Löschen eines Personenmodells](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Person-Model?).
+Um ein benutzerdefiniertes Personenmodell im angegebenen Konto zu löschen, verwenden Sie die API zum [Löschen eines Personenmodells](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Delete-Person-Model).
 
 Sobald das Personenmodell erfolgreich gelöscht wurde, bleibt der Index Ihrer aktuellen Videos, die das gelöschte Modell verwendet haben, unverändert, bis Sie sie neu indizieren. Beim erneuten Indizieren werden die Gesichter, die im gelöschten Modell benannt wurden, von Video Indexer in Ihren aktuellen Videos, die mit diesem Modell indiziert wurden, nicht erkannt. Die Gesichter werden jedoch weiterhin ermittelt. Ihre aktuellen Videos, die mit dem gelöschten Modell indiziert wurden, verwenden nun das Standardpersonenmodell Ihres Kontos. Wenn Gesichter aus dem gelöschten Modell auch im Standardmodell Ihres Kontos benannt sind, werden diese Gesichter in den Videos weiterhin erkannt.
 
@@ -58,7 +58,7 @@ Es wird kein Inhalt zurückgegeben, wenn das Personenmodell erfolgreich gelösch
 
 ## <a name="get-all-person-models"></a>Abrufen aller Personenmodelle
 
-Um alle Personenmodelle im angegebenen Konto abzurufen, verwenden Sie die API zum [Abrufen eines Personenmodells](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Person-Models?).
+Um alle Personenmodelle im angegebenen Konto abzurufen, verwenden Sie die API zum [Abrufen eines Personenmodells](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Get-Person-Models).
 
 Die Antwort enthält eine Liste aller Personenmodelle in Ihrem Konto (einschließlich des Standardpersonenmodells in dem angegebenen Konto) sowie deren Namen und IDs im Format des folgenden Beispiels.
 
@@ -75,7 +75,7 @@ Die Antwort enthält eine Liste aller Personenmodelle in Ihrem Konto (einschlie�
 ]
 ```
 
-Sie können auswählen, welches Modell Sie für ein Video verwenden möchten, indem Sie den Wert `id` des Personenmodells für den Parameter `personModelId` verwenden, wenn Sie [ein zu indizierendes Video hochladen](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) oder [ein Video neu indizieren](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?).
+Sie können auswählen, welches Modell Sie für ein Video verwenden möchten, indem Sie den Wert `id` des Personenmodells für den Parameter `personModelId` verwenden, wenn Sie [ein zu indizierendes Video hochladen](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Upload-Video) oder [ein Video neu indizieren](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Re-Index-Video).
 
 ## <a name="update-a-face"></a>Gesicht aktualisieren
 
@@ -85,7 +85,7 @@ Das System erkennt dann die Vorkommen desselben Gesichts in Ihren anderen aktuel
 
 Sie können ein Gesicht, das von Video Indexer als Prominenten erkannt wurde, mit einem neuen Namen aktualisieren. Der neue Name, den Sie vergeben, hat Vorrang vor der integrierten Erkennung von Prominenten.
 
-Um das Gesicht zu aktualisieren, verwenden Sie die API zum [Aktualisieren eines Gesichts im Video](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Video-Face?).
+Um das Gesicht zu aktualisieren, verwenden Sie die API zum [Aktualisieren eines Gesichts im Video](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Update-Video-Face).
 
 Namen sind für Personenmodelle eindeutig. Wenn Sie zwei verschiedenen Gesichtern in demselben Personenmodell denselben Parameterwert für `name` zuweisen, betrachtet Video Indexer die Gesichter als dieselbe Person und führt sie zusammen, nachdem Sie Ihr Video neu indizieren.
 

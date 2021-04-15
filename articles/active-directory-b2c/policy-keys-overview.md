@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 30348d7ca12ded2d1f4b0522a7cabeadf0553a07
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 37ff3300935e90304754b5f2b375df0adecdaefa
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94953354"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256241"
 ---
 # <a name="overview-of-policy-keys-in-azure-active-directory-b2c"></a>Übersicht über Richtlinienschlüsseln in Azure Active Directory B2C
 
@@ -28,7 +28,7 @@ Azure Active Directory B2C (Azure AD B2C) speichert geheime Schlüssel und Zerti
  In diesem Artikel wird erläutert, was Sie über die Richtlinienschlüssel wissen müssen, die von Azure AD B2C verwendet werden.
 
 > [!NOTE]
-> Derzeit ist die Konfiguration von Richtlinienschlüsseln auf [benutzerdefinierte Richtlinien](./custom-policy-get-started.md) beschränkt.
+> Derzeit ist die Konfiguration von Richtlinienschlüsseln auf [benutzerdefinierte Richtlinien](./user-flow-overview.md) beschränkt.
 
 Sie können geheime Schlüssel und Zertifikate für das Einrichten von Vertrauensstellungen zwischen Diensten in der Azure-Portal im Menü **Richtlinienschlüssel** konfigurieren. Schlüssel können symmetrisch oder asymmetrisch sein. Bei *symmetrischer* Kryptografie oder Kryptografie mit privatem Schlüssel wird ein gemeinsamer geheimer Schlüssel verwendet, um die Daten zu verschlüsseln und zu entschlüsseln. *Asymmetrische* Kryptografie oder Kryptografie mit öffentlichem Schlüssel ist ein kryptografisches System, das Schlüsselpaare verwendet. Es besteht aus öffentlichen Schlüsseln, die mit der Anwendung der vertrauenden Seite und privaten Schlüsseln gemeinsam genutzt werden, die nur Azure AD B2C bekannt sind.
 

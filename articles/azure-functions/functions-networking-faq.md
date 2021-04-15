@@ -4,12 +4,12 @@ description: Hier finden Sie Antworten auf einige der häufigsten Fragen und Sze
 ms.topic: troubleshooting
 ms.date: 4/11/2019
 ms.reviewer: glenga
-ms.openlocfilehash: 3e8a992aac95b6c2688cb45aa980bf0b01883a53
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 24afeeee3207127bb9404156dc390433671dd5da
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578228"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104592301"
 ---
 # <a name="frequently-asked-questions-about-networking-in-azure-functions"></a>Häufig gestellte Fragen zu Netzwerken in Azure Functions
 
@@ -17,7 +17,9 @@ In diesem Artikel sind häufig gestellte Fragen zu Netzwerken in Azure Functions
 
 ## <a name="how-do-i-set-a-static-ip-in-functions"></a>Wie richte ich eine statische IP-Adresse in Azure Functions ein?
 
-Das Bereitstellen einer Funktion in einer App Service-Umgebung ist derzeit die einzige Möglichkeit, um eine statische ein- und ausgehende IP-Adresse für Ihre Funktion einzurichten. Details zur Verwendung einer App Service-Umgebung finden Sie im Artikel [Erstellen und Verwenden eines internen Lastenausgleichs mit einer App Service-Umgebung](../app-service/environment/create-ilb-ase.md).
+Das Bereitstellen einer Funktion in einer App Service-Umgebung ist die bevorzugte Möglichkeit, um statische IP-Adressen für eingehenden und ausgehenden Datenverkehr für Ihre Funktion einzurichten. Details zur Verwendung einer App Service-Umgebung finden Sie im Artikel [Erstellen und Verwenden eines internen Lastenausgleichs mit einer App Service-Umgebung](../app-service/environment/create-ilb-ase.md).
+
+Sie können auch ein NAT-Gateway für ein virtuelles Netzwerk verwenden, um ausgehenden Datenverkehr über eine von Ihnen verwaltete öffentliche IP-Adresse weiterzuleiten. Weitere Informationen finden Sie unter [Tutorial: Steuern der IP-Adresse für ausgehenden Datenverkehr von Azure Functions mit einem Virtual Network NAT-Gateway in Azure](functions-how-to-use-nat-gateway.md). 
 
 ## <a name="how-do-i-restrict-internet-access-to-my-function"></a>Wie schränke ich den Internetzugriff auf meine Funktion ein?
 
@@ -33,7 +35,7 @@ Beachten Sie hierbei, dass für den Editor im Azure-Portal direkter Zugriff auf 
 
 Sie können **eingehenden** Datenverkehr für eine Funktions-App mithilfe von [Dienstendpunkten](./functions-networking-options.md#use-service-endpoints) auf ein virtuelles Netzwerk einschränken. Diese Konfiguration ermöglicht der Funktions-App immer noch, ausgehende Aufrufe an das Internet zu senden.
 
-Wenn Sie eine Funktion so einschränken möchten, dass der gesamte Datenverkehr ein virtuelles Netzwerk durchläuft, können Sie einen [privaten Endpunkt](./functions-networking-options.md#private-endpoint-connections) mit VNET-Integration (ausgehend) oder eine App Service-Umgebung verwenden.
+Wenn Sie eine Funktion so einschränken möchten, dass der gesamte Datenverkehr ein virtuelles Netzwerk durchläuft, können Sie [private Endpunkte](./functions-networking-options.md#private-endpoint-connections) mit VNET-Integration für ausgehenden Datenverkehr oder eine App Service-Umgebung verwenden. Weitere Informationen finden Sie unter [Tutorial: Integrieren von Azure Functions in ein virtuelles Azure-Netzwerk mithilfe privater Endpunkte](functions-create-vnet.md).
 
 ## <a name="how-can-i-access-resources-in-a-virtual-network-from-a-function-app"></a>Wie kann ich über eine Funktions-App auf Ressourcen in einem virtuellen Netzwerk zugreifen?
 

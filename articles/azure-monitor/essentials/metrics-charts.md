@@ -6,12 +6,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
-ms.openlocfilehash: d728dfb364cb0f82326a472196cb28d79b85b1e9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 444185dc41532bfa55c271e2f0027eb8b71de42f
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102031484"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105959902"
 ---
 # <a name="advanced-features-of-the-azure-metrics-explorer"></a>Erweiterte Funktionen des Azure-Metrik-Explorers
 
@@ -78,6 +78,23 @@ Wenn Sie mehrere Metriken in demselben Diagramm anzeigen möchten, [erstellen Si
 Zum Erstellen eines weiteren Diagramms mit einer anderen Metrik wählen Sie **Diagramm hinzufügen** aus.
 
 Wenn Sie mehrere Diagramme neu anordnen oder löschen möchten, wählen Sie die Schaltfläche mit den Auslassungszeichen ( **...** ) aus, um das Diagrammmenü zu öffnen. Wählen Sie dann **Nach oben**, **Nach unten** oder **Löschen** aus.
+
+## <a name="time-range-controls"></a>Zeitbereichssteuerungen
+
+Zusätzlich zum Ändern des Zeitraums mithilfe des [Zeitauswahlbereichs](metrics-getting-started.md#select-a-time-range) können Sie auch die Steuerelemente im Diagrammbereich zum Schwenken und Zoomen verwenden.
+### <a name="pan"></a>Schwenken
+
+Zum Schwenken klicken Sie am Rand des Diagramms auf die Pfeile nach links und rechts.  Dadurch wird der ausgewählte Zeitbereich um die halbe Zeitspanne des Diagramms vor und zurück verschoben.  Wenn Sie z. B. die letzten 24 Stunden anzeigen und auf den Pfeil nach links klicken, wird der Zeitbereich so verschoben, dass er den Zeitraum vor anderthalb Tagen bis vor 12 Stunden umfasst.
+
+Die meisten Metriken unterstützen eine Aufbewahrungsdauer von 93 Tagen, doch können jeweils nur 30 Tage auf einmal angezeigt werden.  Mithilfe der Steuerelemente zum Schwenken können Sie sich die letzten 30 Tage ansehen und dann jeweils um 15 Tage zurückgehen, um den restlichen Aufbewahrungszeitraum anzuzeigen.
+
+![Animiertes GIF mit den Steuerelementen zum Schwenken nach links und rechts](./media/metrics-charts/metrics-pan-controls.gif)
+
+### <a name="zoom"></a>Zoom
+
+Sie können auf das Diagramm klicken und ziehen, um einen Abschnitt des Diagramms zu vergrößern.  Durch Zoomen wird der Zeitbereich des Diagramms so aktualisiert, dass er Ihre Auswahl umfasst. Außerdem wird ein kleineres Aggregationsintervall ausgewählt, sofern das Intervall auf „Automatisch“ festgelegt ist.  Der neue Zeitbereich gilt für alle Diagramme in den Metriken.
+
+![Animiertes GIF mit der Funktion zum Zoomen von Metriken](./media/metrics-charts/metrics-zoom-control.gif)
 
 ## <a name="aggregation"></a>Aggregation
 
@@ -261,7 +278,7 @@ Wenn Sie auf die Fehleroption klicken, werden Sie zu einem benutzerdefinierten F
 
 ### <a name="common-problems-with-drill-into-logs"></a>Häufige Probleme mit „Drilldown für Protokolle ausführen“
 
-* Protokoll und Abfragen sind deaktiviert: Damit empfohlene Protokolle und Abfragen angezeigt werden, müssen Sie Ihre Diagnoseprotokolle an Log Analytics weiterleiten. [In diesem Artikel](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings) erfahren Sie, wie dies funktioniert. 
+* Protokoll und Abfragen sind deaktiviert: Damit empfohlene Protokolle und Abfragen angezeigt werden, müssen Sie Ihre Diagnoseprotokolle an Log Analytics weiterleiten. [In diesem Artikel](./diagnostic-settings.md) erfahren Sie, wie dies funktioniert. 
 * Aktivitätsprotokolle werden nur bereitgestellt: Das Feature „Drilldown für Protokolle ausführen“ ist nur für ausgewählte Ressourcenanbieter verfügbar. Aktivitätsprotokolle werden standardmäßig bereitgestellt. 
 
  
@@ -278,4 +295,3 @@ Wenn im Diagramm keine Daten angezeigt werden, sehen Sie sich die folgenden Info
 ## <a name="next-steps"></a>Nächste Schritte
 
 Informationen zum Erstellen von Dashboards mit ausführbaren Aktionen mithilfe von Metriken finden Sie unter [Erstellen von benutzerdefinierten KPI-Dashboards](../app/tutorial-app-dashboards.md).
-

@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: f2294ccb1d958b229a71e45bb502b8134d8d5c7f
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "93305667"
 ---
 # <a name="customer-acceptance-stage-of-the-team-data-science-process-lifecycle"></a>Phase „Kundenakzeptanz“ des Team Data Science-Prozesslebenszyklus
@@ -34,17 +34,17 @@ Dies ist eine visuelle Darstellung des TDSP-Lebenszyklus:
 
 
 ## <a name="goal"></a>Zielsetzung
-**Abschließen der Projektergebnisse:** Vergewissern Sie sich, dass die Pipeline, das Modell und die Bereitstellung in einer Produktionsumgebung die Anforderungen an die Kundenziele erfüllen.
+**Abschließen von Projektergebnissen:** Vergewissern Sie sich, dass die Pipeline, das Modell und die Bereitstellung in einer Produktionsumgebung die Kundenziele erfüllen.
 
 ## <a name="how-to-do-it"></a>Vorgehensweise
 In dieser Phase werden zwei Hauptaufgaben durchgeführt:
 
-   * **Systemüberprüfung** : Vergewissern Sie sich, dass das bereitgestellte Modell und die Pipeline die Kundenanforderungen erfüllen.
-   * **Projektübergabe** : Übergeben Sie das Projekt an die Entität, die das System in der Produktion ausführen soll.
+   * **Systemüberprüfung:** Vergewissern Sie sich, dass das bereitgestellte Modell und die Pipeline die Kundenanforderungen erfüllen.
+   * **Projektübergabe:** Übergeben Sie das Projekt an die Entität, die das System in der Produktion ausführen soll.
 
 Der Kunde muss überprüfen, ob das System seine geschäftlichen Anforderungen erfüllt und ob die Fragen mit akzeptabler Genauigkeit beantwortet werden, damit das System in der Produktion zur Nutzung durch die Clientanwendung bereitgestellt werden kann. Die gesamte Dokumentation wird abgeschlossen und überprüft. Die Übergabe des Projekts an die Entität, die für den Betrieb zuständig ist, wird vollzogen. Diese Entität kann beispielsweise ein IT-Team bzw. Data Science-Team des Kunden oder ein Agent des Kunden sein, das bzw. der für die Ausführung des Systems in der Produktion zuständig ist. 
 
-## <a name="artifacts"></a>Artefakte
+## <a name="artifacts"></a>Artifacts
 Das Hauptartefakt, das in dieser letzten Phase produziert wird, ist **Exit report of the project for the customer** (Abschlussbericht des Projekts für den Kunden). Dieser technische Bericht enthält alle Details des Projekts, die für den Betrieb des Systems hilfreich sind. TDSP bietet dazu die Vorlage [Abschlussbericht](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Project/Exit%20Report.md) an. Sie können die Vorlage ohne Änderungen verwenden oder sie an bestimmte Clientanforderungen anpassen. 
 
 

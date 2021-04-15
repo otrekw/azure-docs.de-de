@@ -18,10 +18,10 @@ ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.custom: devx-track-java
 ms.openlocfilehash: 09553f587916e8204541b36f259a450d72c1b270
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87322940"
 ---
 # <a name="how-to-use-notification-hubs-from-java"></a>Verwenden von Notification Hubs von Java aus
@@ -303,7 +303,7 @@ List<NotificationHubJob> jobs = hub.getAllNotificationHubJobs();
 
 Das Benachrichtigungsobjekt ist lediglich ein Text mit Headern. Einige Dienstprogrammmethoden helfen beim Erstellen von system- oder vorlagenbasierten Benachrichtigungsobjekten.
 
-* **Windows Store und Windows Phone 8.1 (nicht-Silverlight)**
+* **Windows Store und Windows Phone 8.1 (nicht Silverlight)**
 
 ```java
 String toast = "<toast><visual><binding template=\"ToastText01\"><text id=\"1\">Hello from Java!</text></binding></visual></toast>";
@@ -379,7 +379,7 @@ Beim Ausführen des Java-Codes sollte jetzt eine Benachrichtigung erstellt werde
 
 In diesem Thema wurde veranschaulicht, wie Sie einen einfachen Java REST-Client für Notification Hubs erstellen. Hier können Sie folgende Aktionen ausführen:
 
-* Laden Sie das vollständige [Java SDK]herunter, das den gesamten SDK-Code enthält.
+* Laden Sie das vollständige [Java-SDK]herunter, das den gesamten SDK-Code enthält.
 * Arbeiten Sie die Beispiele durch:
   * [Erste Schritte mit Notification Hubs]
   * [Senden aktueller Nachrichten]

@@ -13,13 +13,13 @@ ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1b3d7c47ff0a2c533bf12a67958a913b22915f75
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87907537"
 ---
-# <a name="example-direct-federation-with-active-directory-federation-services-ad-fs-preview"></a>Beispiel: Direkter Verbund mit Active Directory-Verbunddienste (AD FS) (Vorschauversion)
+# <a name="example-direct-federation-with-active-directory-federation-services-ad-fs-preview"></a>Beispiel: direkter Verbund mit Active Directory-Verbunddienste (AD FS) (Vorschau)
 
 > [!NOTE]
 > Ein direkter Verbund ist eine Public Previewfunktion von Azure Active Directory. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
@@ -34,7 +34,7 @@ Azure AD B2B kann so konfiguriert werden, dass es einen Verbund mit Identitätsa
 
 Die folgenden Attribute müssen in der SAML 2.0-Antwort vom Identitätsanbieter empfangen werden, um einen direkten Verbund einzurichten. Diese Attribute können durch Verlinkung mit der XML-Datei des Online-Sicherheitstokendiensts oder durch manuelle Eingabe konfiguriert werden. Schritt 12 unter [Erstellen einer AD FS-Testinstanz](https://medium.com/in-the-weeds/create-a-test-active-directory-federation-services-3-0-instance-on-an-azure-virtual-machine-9071d978e8ed) beschreibt, wie Sie die AD FS-Endpunkte finden oder wie Sie Ihre Metadaten-URL generieren, z. B. `https://fs.iga.azure-test.net/federationmetadata/2007-06/federationmetadata.xml`. 
 
-|attribute  |Wert  |
+|Attribut  |Wert  |
 |---------|---------|
 |AssertionConsumerService     |`https://login.microsoftonline.com/login.srf`         |
 |Zielgruppe     |`urn:federation:MicrosoftOnline`         |
@@ -43,7 +43,7 @@ Die folgenden Attribute müssen in der SAML 2.0-Antwort vom Identitätsanbieter 
 Die folgenden Ansprüche müssen in dem vom Identitätsanbieter ausgegebenen SAML 2.0-Token konfiguriert werden:
 
 
-|attribute  |Wert  |
+|Attribut  |Wert  |
 |---------|---------|
 |NameID-Format     |`urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`         |
 |emailaddress     |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`         |
@@ -62,7 +62,7 @@ Ein AD FS-Server muss bereits eingerichtet und funktionsfähig sein, bevor Sie m
 3. Klicken Sie unter **Aktionen** auf **Anspruchsbeschreibung hinzufügen**.
 4. Geben Sie im Fenster **Anspruchsbeschreibung hinzufügen** die folgenden Werte an:
 
-   - **Anzeigename**: Persistenter Bezeichner
+   - **Anzeigename:** persistenter Bezeichner
    - **Anspruchsbezeichner**: `urn:oasis:names:tc:SAML:2.0:nameid-format:persistent` 
    - Aktivieren Sie das Kontrollkästchen **Diese Anspruchsbeschreibung in Verbundmetadaten als Anspruchstyp veröffentlichen, den dieser Verbunddienst akzeptiert**.
    - Aktivieren Sie das Kontrollkästchen **Diese Anspruchsbeschreibung in Verbundmetadaten als Anspruchstyp veröffentlichen, den dieser Verbunddienst senden kann**.
@@ -79,10 +79,10 @@ Ein AD FS-Server muss bereits eingerichtet und funktionsfähig sein, bevor Sie m
 6. Wählen Sie im Assistenten zum **Bearbeiten von Anspruchsregeln** die Option **Regel hinzufügen** aus. Wählen Sie unter **Regeltyp auswählen** die Option **LDAP-Attribute als Ansprüche senden** aus. Wählen Sie **Weiter** aus.
 7. Geben Sie unter **Anspruchsregel konfigurieren** die folgenden Werte an: 
 
-   - **Name der Anspruchsregel**: E-Mail-Anspruchsregel 
-   - **Attributspeicher**: Active Directory 
-   - **LDAP-Attribut**: E-Mail-Adressen 
-   - **Typ des ausgehenden Anspruchs**: E-Mail-Adresse
+   - **Anspruchsregelname:** E-Mail-Anspruchsregel 
+   - **Attributspeicher:** Active Directory 
+   - **LDAP-Attribut:** E-Mail-Adressen 
+   - **Typ des ausgehenden Anspruchs:** E-Mail-Adresse
 
 8. Wählen Sie **Fertig stellen** aus.
 9. Im Fenster **Anspruchsregeln bearbeiten** wird die neue Regel angezeigt. Klicken Sie auf **Anwenden**. 
@@ -92,10 +92,10 @@ Ein AD FS-Server muss bereits eingerichtet und funktionsfähig sein, bevor Sie m
 1. Wechseln Sie zu **Anspruchsregeln bearbeiten**, und klicken Sie auf **Regel hinzufügen**. Wählen Sie unter **Regeltyp auswählen** die Option **Eingehenden Anspruch transformieren** aus, und klicken Sie auf **Weiter**. 
 2. Geben Sie unter **Anspruchsregel konfigurieren** die folgenden Werte an: 
 
-   - **Name der Anspruchsregel**: E-Mail-Transformationsregel 
-   - **Typ des eingehenden Anspruchs**: E-Mail-Adresse 
-   - **Typ des ausgehenden Anspruchs**: Namens-ID 
-   - **Format der ausgehenden Namens-ID**: Persistenter Bezeichner 
+   - **Anspruchsregelname:** E-Mail-Transformationsregel 
+   - **Typ des eingehenden Anspruchs:** E-Mail-Adresse 
+   - **Typ des ausgehenden Anspruchs:** Namens-ID 
+   - **Format der ausgehenden Namens-ID:** persistenter Bezeichner 
    - Wählen Sie **Durchlauf aller Anspruchswerte**.
 
 3. Klicken Sie auf **Fertig stellen**. 
@@ -107,7 +107,7 @@ Azure AD B2B kann so konfiguriert werden, dass es einen Verbund mit Identitätsa
 
 Zum Einrichten eines direkten Verbunds müssen die folgenden Attribute in der WS-Verbund-Nachricht vom Identitätsanbieter empfangen werden. Diese Attribute können durch Verlinkung mit der XML-Datei des Online-Sicherheitstokendiensts oder durch manuelle Eingabe konfiguriert werden. Schritt 12 unter [Erstellen einer AD FS-Testinstanz](https://medium.com/in-the-weeds/create-a-test-active-directory-federation-services-3-0-instance-on-an-azure-virtual-machine-9071d978e8ed) beschreibt, wie Sie die AD FS-Endpunkte finden oder wie Sie Ihre Metadaten-URL generieren, z. B. `https://fs.iga.azure-test.net/federationmetadata/2007-06/federationmetadata.xml`.
  
-|attribute  |Wert  |
+|Attribut  |Wert  |
 |---------|---------|
 |PassiveRequestorEndpoint     |`https://login.microsoftonline.com/login.srf`         |
 |Zielgruppe     |`urn:federation:MicrosoftOnline`         |
@@ -135,7 +135,7 @@ Ein AD FS-Server muss bereits eingerichtet und funktionsfähig sein, bevor Sie m
 1. Wählen Sie im Assistenten zum **Bearbeiten von Anspruchsregeln** die Option **Regel hinzufügen** aus. Wählen Sie unter **Regeltyp auswählen** die Option **Ansprüche mithilfe einer benutzerdefinierten Regel senden** aus. Wählen Sie *Weiter* aus. 
 1. Geben Sie unter **Anspruchsregel konfigurieren** die folgenden Werte an:
 
-   - **Name der Anspruchsregel**: Unveränderliche ID herausgeben  
+   - **Anspruchsregelname:** unveränderliche ID ausstellen  
    - **Benutzerdefinierte Regel**: `c:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccountname"] => issue(store = "Active Directory", types = ("http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID"), query = "samAccountName={0};objectGUID;{1}", param = regexreplace(c.Value, "(?<domain>[^\\]+)\\(?<user>.+)", "${user}"), param = c.Value);`
 
 1. Wählen Sie **Fertig stellen** aus. 
@@ -143,10 +143,10 @@ Ein AD FS-Server muss bereits eingerichtet und funktionsfähig sein, bevor Sie m
 1. Wählen Sie im gleichen Assistenten zum **Bearbeiten von Anspruchsregeln** die Option **Regel hinzufügen** aus. Wählen Sie unter **Regeltyp auswählen** die Option **LDAP-Attribute als Ansprüche senden** aus. Wählen Sie **Weiter** aus.
 1. Geben Sie unter **Anspruchsregel konfigurieren** die folgenden Werte an: 
 
-   - **Name der Anspruchsregel**: E-Mail-Anspruchsregel  
-   - **Attributspeicher**: Active Directory  
-   - **LDAP-Attribut**: E-Mail-Adressen  
-   - **Typ des ausgehenden Anspruchs**: E-Mail-Adresse 
+   - **Anspruchsregelname:** E-Mail-Anspruchsregel  
+   - **Attributspeicher:** Active Directory  
+   - **LDAP-Attribut:** E-Mail-Adressen  
+   - **Typ des ausgehenden Anspruchs:** E-Mail-Adresse 
 
 1.  Wählen Sie **Fertig stellen** aus. 
 1.  Im Fenster **Anspruchsregeln bearbeiten** wird die neue Regel angezeigt. Klicken Sie auf **Anwenden**.  

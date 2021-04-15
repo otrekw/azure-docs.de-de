@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 3fedfbe55fd8ea3d2b4cc910df631e40bc74e210
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97899064"
 ---
 # <a name="connect-azure-virtual-network-to-cloudsimple-using-expressroute"></a>Verbinden des virtuellen Azure-Netzwerks mit CloudSimple mithilfe von ExpressRoute
@@ -26,9 +26,9 @@ Ein Autorisierungsschlüssel ist für die ExpressRoute-Verbindung zwischen Ihrer
 * Problemtyp: **Technisch**
 * Abonnement: **Wählen Sie das Abonnement aus, in dem der CloudSimple-Dienst bereitgestellt wird.**
 * Dienst: **VMware Solution by CloudSimple**
-* Problemtyp: **Dienstanforderung**
+* Problemtyp: **Service Request**
 * Problemuntertyp: **Autorisierungsschlüssel für Azure VNET-Verbindung**
-* Antragsteller: **Anforderung eines Autorisierungsschlüssels für Azure VNET-Verbindung**
+* Betreff: **Anforderung eines Autorisierungsschlüssels für Azure VNET-Verbindung**
 
 ## <a name="get-peering-information-from-cloudsimple-portal"></a>Abrufen von Informationen zum Peering aus dem CloudSimple-Portal
 

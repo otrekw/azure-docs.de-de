@@ -8,10 +8,10 @@ ms.date: 4/9/2019
 ms.topic: conceptual
 ms.author: ramamill
 ms.openlocfilehash: 4b86d0c189bcf0687a703f2338188df2090feaf0
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92368025"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>Planen der Kapazität und Skalierung der VMware-Notfallwiederherstellung für Azure
@@ -28,7 +28,7 @@ Der Site Recovery-Bereitstellungsplaner stellt einen Bericht mit vollständigen 
 
 Komponente | Details
 --- | ---
-**Replikation** | **Maximale tägliche Änderungsrate** : Für einen geschützten Computer kann nur ein Prozessserver verwendet werden. Ein einzelner Prozessserver kann eine tägliche Änderungsrate von bis zu 2 TB verarbeiten. Daher beträgt die maximale Datenänderungsrate pro Tag, die für einen geschützten Computer unterstützt wird, 2 TB.<br /><br /> **Maximaler Durchsatz** : Ein replizierter Computer kann zu einem einzigen Speicherkonto in Azure gehören. Ein Azure Storage-Standardkonto kann maximal 20.000 Anforderungen pro Sekunde verarbeiten. Es wird empfohlen, die Anzahl der Ein-/Ausgabevorgänge pro Sekunde (IOPS) auf einem Quellcomputer auf 20.000 zu begrenzen. Wenn Ihr Quellcomputer z.B. fünf Datenträger aufweist und jeder Datenträger 120 IOPS (mit einer Größe von 8 KB) auf dem Quellcomputer generiert, wird das Azure-Limit von 500 IOPS pro Datenträger für den Quellcomputer eingehalten. (Die Anzahl der erforderlichen Speicherkonten entspricht dem IOPS-Gesamtwert der Quellcomputer, geteilt durch 20.000.)
+**Replikation** | **Maximale tägliche Änderungsrate**: Für einen geschützten Computer kann nur ein Prozessserver verwendet werden. Ein einzelner Prozessserver kann eine tägliche Änderungsrate von bis zu 2 TB verarbeiten. Daher beträgt die maximale Datenänderungsrate pro Tag, die für einen geschützten Computer unterstützt wird, 2 TB.<br /><br /> **Maximaler Durchsatz**: Ein replizierter Computer kann zu einem einzelnen Speicherkonto in Azure gehören. Ein Azure Storage-Standardkonto kann maximal 20.000 Anforderungen pro Sekunde verarbeiten. Es wird empfohlen, die Anzahl der Ein-/Ausgabevorgänge pro Sekunde (IOPS) auf einem Quellcomputer auf 20.000 zu begrenzen. Wenn Ihr Quellcomputer z.B. fünf Datenträger aufweist und jeder Datenträger 120 IOPS (mit einer Größe von 8 KB) auf dem Quellcomputer generiert, wird das Azure-Limit von 500 IOPS pro Datenträger für den Quellcomputer eingehalten. (Die Anzahl der erforderlichen Speicherkonten entspricht dem IOPS-Gesamtwert der Quellcomputer, geteilt durch 20.000.)
 **Konfigurationsserver** | Der Konfigurationsserver muss in der Lage sein, die tägliche Änderungsratenkapazität über alle Workloads hinweg zu bewältigen, die auf geschützten Computern ausgeführt werden. Der Konfigurationscomputer muss über eine ausreichende Bandbreite verfügen, um Daten kontinuierlich in Azure Storage zu replizieren.<br /><br /> Als bewährte Methode sollten Sie den Konfigurationsserver im selben Netzwerk und LAN-Segment platzieren, in dem sich auch die zu schützenden Computer befinden. Sie können den Konfigurationsserver in einem anderen Netzwerk platzieren, aber die zu schützenden Computer sollten für ihn über Layer-3-Netzwerksichtbarkeit verfügen.<br /><br /> Die empfohlenen Größen für den Konfigurationsserver werden in der Tabelle im folgenden Abschnitt zusammengefasst.
 **Prozessserver** | Der erste Prozessserver wird standardmäßig auf dem Konfigurationsserver installiert. Sie können zusätzliche Prozessserver bereitstellen, um Ihre Umgebung zu skalieren. <br /><br /> Der Prozessserver empfängt Replikationsdaten von den geschützten Computern. Der Prozessserver optimiert Daten mithilfe von Zwischenspeicherung, Komprimierung und Verschlüsselung. Anschließend sendet der Prozessserver die Daten an Azure. Der Prozessservercomputer muss über ausreichende Ressourcen zum Ausführen dieser Aufgaben verfügen.<br /><br /> Der Prozessserver verwendet einen datenträgerbasierten Cache. Verwenden Sie einen separaten Cachedatenträger mit einer Größe von mindestens 600 GB, um Datenänderungen bei einem Netzwerkengpass oder -ausfall zwischenspeichern und verarbeiten zu können.
 
@@ -51,7 +51,7 @@ In diesen Konfigurationen gilt Folgendes:
 
 ## <a name="size-recommendations-for-the-process-server"></a>Empfohlene Größen für den Prozessserver
 
-Der Prozessserver ist die Komponente, die die Datenreplikation in Azure Site Recovery verarbeitet. Wenn die tägliche Änderungsrate 2 TB überschreitet, müssen Sie einen Prozessserver für die horizontale Skalierung hinzufügen, um die Replikationslast zu verarbeiten. Zum Aufskalieren haben Sie folgende Möglichkeiten:
+Der Prozessserver ist die Komponente, die die Datenreplikation in Azure Site Recovery verarbeitet. Wenn die tägliche Änderungsrate 2 TB überschreitet, müssen Sie einen Prozessserver für die horizontale Skalierung hinzufügen, um die Replikationslast zu verarbeiten. Zum horizontalen Hochskalieren haben Sie folgende Möglichkeiten:
 
 * Erhöhen Sie die Anzahl der Konfigurationsserver, indem Sie die Bereitstellung mit einer [OVF-Vorlage](vmware-azure-deploy-configuration-server.md#deploy-a-configuration-server-through-an-ova-template) ausführen. Beispielsweise können Sie mit zwei Konfigurationsservern bis zu 400 Computer schützen.
 * Fügen Sie [horizontal skalierte Prozessserver](vmware-azure-set-up-process-server-scale.md#download-installation-file) hinzu. Verwenden Sie die Prozessserver für horizontale Skalierung anstelle des Konfigurationsservers (oder als Ergänzung zu diesem) für die Verarbeitung des Replikationsdatenverkehrs.
@@ -68,7 +68,7 @@ Zusätzlicher Prozessserver | Größe des Cachedatenträgers | Datenänderungsra
 8 vCPUs (2 Sockets mit jeweils 4 Kernen mit\@ 2,5 GHz), 12 GB Arbeitsspeicher | 600 GB | 251 GB bis 1 TB | Wird verwendet, um 86 bis 150 Computer zu replizieren.
 12 vCPUs (2 Sockets mit jeweils 6 Kernen mit\@ 2,5 GHz), 24 GB Arbeitsspeicher | 1 TB | Mehr als 1 TB bis 2 TB | Wird verwendet, um 151 bis 225 Computer zu replizieren.
 
-Wie Sie Ihre Server skalieren, hängt davon ab, ob Sie das zentrale Hochskalieren oder das horizontale Hochskalieren als Modell bevorzugen. Zum Hochskalieren stellen Sie einige High-End-Konfigurationsserver und Prozessserver bereit. Zum Aufskalieren stellen Sie weitere Server mit weniger Ressourcen bereit. Wenn Sie beispielsweise 200 Computer mit einer täglichen Datenänderungsrate von insgesamt 1,5 TB schützen möchten, können Sie eine der folgenden Maßnahmen ergreifen:
+Wie Sie Ihre Server skalieren, hängt davon ab, ob Sie das zentrale Hochskalieren oder das horizontale Hochskalieren als Modell bevorzugen. Zum zentralen Hochskalieren stellen Sie einige High-End-Konfigurationsserver und Prozessserver bereit. Zum horizontalen Hochskalieren stellen Sie weitere Server mit weniger Ressourcen bereit. Wenn Sie beispielsweise 200 Computer mit einer täglichen Datenänderungsrate von insgesamt 1,5 TB schützen möchten, können Sie eine der folgenden Maßnahmen ergreifen:
 
 * Richten Sie einen einzelnen Prozessserver (16 vCPU, 24 GB RAM) ein.
 * Richten Sie zwei Prozessserver ein (jeweils 8 vCPUs und 12 GB RAM).
@@ -77,22 +77,22 @@ Wie Sie Ihre Server skalieren, hängt davon ab, ob Sie das zentrale Hochskaliere
 
 Nachdem Sie den [Site Recovery-Bereitstellungsplaner](site-recovery-deployment-planner.md) verwendet haben, um die Bandbreite zu berechnen, die Sie für die Replikation benötigen (anfängliche Replikation plus Delta), bestehen einige Möglichkeiten, die Bandbreite zu steuern, die für die Replikation verwendet wird:
 
-* **Bandbreite drosseln** : VMware-Datenverkehr, der nach Azure repliziert wird, wird über einen speziellen Prozessserver geleitet. Sie können die Bandbreite auf den Computern begrenzen, die als Prozessserver ausgeführt werden.
-* **Bandbreite beeinflussen** : Die für die Replikation genutzte Bandbreite lässt sich mithilfe einiger Registrierungsschlüssel beeinflussen:
+* **Bandbreite drosseln**: VMware-Datenverkehr, der nach Azure repliziert wird, wird über einen speziellen Prozessserver geleitet. Sie können die Bandbreite auf den Computern begrenzen, die als Prozessserver ausgeführt werden.
+* **Bandbreite beeinflussen**: Die für die Replikation genutzte Bandbreite lässt sich mithilfe einiger Registrierungsschlüssel beeinflussen:
   * Der Registrierungswert **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication\UploadThreadsPerVM** gibt die Anzahl von Threads an, die für die Datenübertragung (erste Replikation oder Deltareplikation) eines Datenträgers verwendet werden. Bei einem höheren Wert wird die Netzwerkbandbreite für die Replikation erhöht.
   * Der Registrierungswert **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication\DownloadThreadsPerVM** gibt die Anzahl von Threads an, die für die Datenübertragung während eines Failbacks verwendet werden.
 
-### <a name="throttle-bandwidth"></a>Bandbreite einschränken
+### <a name="throttle-bandwidth"></a>Bandbreitendrosselung
 
-1. Öffnen Sie das Azure Backup-MMC-Snap-In auf dem Computer, den Sie als Prozessserver verwenden. Standardmäßig ist eine Verknüpfung für Backup auf dem Desktop oder im folgenden Ordner verfügbar: C:\Programme\Microsoft Azure Recovery Services Agent\bin.
+1. Öffnen Sie das Azure Backup-MMC-Snap-In auf dem Computer, den Sie als Prozessserver verwenden. Standardmäßig ist auf dem Desktop oder im Ordner „C:\Programme\Microsoft Azure Recovery Services Agent\bin“ eine Verknüpfung für Backup verfügbar.
 2. Wählen Sie im Snap-In **Eigenschaften ändern** aus.
 
     ![Screenshot der Azure Backup-MMC-Snap-In-Option zum Ändern von Eigenschaften](./media/site-recovery-vmware-to-azure/throttle1.png)
-3. Aktivieren Sie auf der Registerkarte **Drosselung** die Option **Internet-Bandbreiteneinschränkung für Sicherungsvorgänge aktivieren** . Legen Sie die Grenzwerte für Arbeitsstunden und arbeitsfreie Stunden fest. Der gültige Bereich reicht von 512 KBit/s bis 1,023 MBit/s.
+3. Aktivieren Sie auf der Registerkarte **Drosselung** die Option **Internet-Bandbreiteneinschränkung für Sicherungsvorgänge aktivieren**. Legen Sie die Grenzwerte für Arbeitsstunden und arbeitsfreie Stunden fest. Der gültige Bereich reicht von 512 KBit/s bis 1,023 MBit/s.
 
     ![Screenshot des Dialogfelds „Eigenschaften von Azure Backup“](./media/site-recovery-vmware-to-azure/throttle2.png)
 
-Sie können auch das Cmdlet [Set-OBMachineSetting](/previous-versions/windows/powershell-scripting/hh770409(v=wps.640)) verwenden, um die Drosselung festzulegen. Hier sehen Sie ein Beispiel:
+Sie können auch das Cmdlet [Set-OBMachineSetting](/previous-versions/windows/powershell-scripting/hh770409(v=wps.640)) verwenden, um die Drosselung festzulegen. Ein Beispiel:
 
 ```azurepowershell-interactive
 $mon = [System.DayOfWeek]::Monday
@@ -104,10 +104,10 @@ Set-OBMachineSetting -WorkDay $mon, $tue -StartWorkHour "9:00:00" -EndWorkHour "
 
 ### <a name="alter-the-network-bandwidth-for-a-vm"></a>Ändern der Netzwerkbandbreite für eine VM
 
-1. Navigieren Sie in der Registrierung der VM zu **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication** .
-   * Um die Bandbreite für den Datenverkehr auf einem replizierenden Datenträger zu ändern, ändern Sie den Wert von **UploadThreadsPerVM** . Erstellen Sie den Schlüssel, falls dieser nicht vorhanden ist.
-   * Um die Bandbreite für den Failbackdatenverkehr von Azure zu ändern, ändern Sie den Wert von **DownloadThreadsPerVM** .
-2. Der Standardwert für jeden dieser Schlüssel ist **4** . In einem absichtlich mit großen Reserven ausgestatteten Netzwerk müssen die Standardwerte dieser Registrierungsschlüssel geändert werden. Der maximale Wert, der verwendet werden kann, ist **32** . Überwachen Sie den Datenverkehr, um den Wert zu optimieren.
+1. Navigieren Sie in der Registrierung der VM zu **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication**.
+   * Um die Bandbreite für den Datenverkehr auf einem replizierenden Datenträger zu ändern, ändern Sie den Wert von **UploadThreadsPerVM**. Erstellen Sie den Schlüssel, falls dieser nicht vorhanden ist.
+   * Um die Bandbreite für den Failbackdatenverkehr von Azure zu ändern, ändern Sie den Wert von **DownloadThreadsPerVM**.
+2. Der Standardwert für jeden dieser Schlüssel ist **4**. In einem absichtlich mit großen Reserven ausgestatteten Netzwerk müssen die Standardwerte dieser Registrierungsschlüssel geändert werden. Der maximale Wert, der verwendet werden kann, ist **32**. Überwachen Sie den Datenverkehr, um den Wert zu optimieren.
 
 ## <a name="set-up-the-site-recovery-infrastructure-to-protect-more-than-500-vms"></a>Einrichten der Site Recovery-Infrastruktur zum Schützen von mehr als 500 VMs
 
@@ -122,14 +122,14 @@ Bevor Sie die Site Recovery-Infrastruktur einrichten, greifen Sie auf die Umgebu
 
 ## <a name="deploy-additional-process-servers"></a>Bereitstellen zusätzlicher Prozessserver
 
-Wenn Sie Ihre Bereitstellung über 200 Quellcomputer oder eine gesamte tägliche Änderungsrate von 2 TB hinaus aufskalieren, müssen Sie weitere Prozessserver zur Bewältigung des Datenverkehrsaufkommens hinzufügen. Wir haben das Produkt in Version 9.24 erweitert, um beim Einrichten eines Prozessservers für die horizontale Skalierung das [Verarbeiten von Serverwarnungen](vmware-physical-azure-monitor-process-server.md#process-server-alerts) zu ermöglichen. [Richten Sie den Prozessserver so ein](vmware-azure-set-up-process-server-scale.md), dass er neue Quellcomputer schützt oder [für einen Lastenausgleich sorgt](vmware-azure-manage-process-server.md#move-vms-to-balance-the-process-server-load).
+Wenn Sie Ihre Bereitstellung über 200 Quellcomputer oder eine gesamte tägliche Änderungsrate von 2 TB hinaus horizontal hochskalieren, müssen Sie weitere Prozessserver zur Bewältigung des Datenverkehrsaufkommens hinzufügen. Wir haben das Produkt in Version 9.24 erweitert, um beim Einrichten eines Prozessservers für die horizontale Skalierung das [Verarbeiten von Serverwarnungen](vmware-physical-azure-monitor-process-server.md#process-server-alerts) zu ermöglichen. [Richten Sie den Prozessserver so ein](vmware-azure-set-up-process-server-scale.md), dass er neue Quellcomputer schützt oder [für einen Lastenausgleich sorgt](vmware-azure-manage-process-server.md#move-vms-to-balance-the-process-server-load).
 
 ### <a name="migrate-machines-to-use-the-new-process-server"></a>Migrieren der Computer für die Verwendung des neuen Prozessservers
 
-1. Wählen Sie **Einstellungen** > **Site Recovery-Server** aus. Wählen Sie den Konfigurationsserver aus, und erweitern Sie dann die **Prozessserver** .
+1. Wählen Sie **Einstellungen** > **Site Recovery-Server** aus. Wählen Sie den Konfigurationsserver aus, und erweitern Sie dann die **Prozessserver**.
 
     ![Screenshot des Dialogfelds „Prozessserver“](./media/site-recovery-vmware-to-azure/migrate-ps2.png)
-2. Klicken Sie mit der rechten Maustaste auf den aktuell verwendeten Prozessserver, und klicken Sie dann auf **Wechseln** .
+2. Klicken Sie mit der rechten Maustaste auf den aktuell verwendeten Prozessserver, und klicken Sie dann auf **Wechseln**.
 
     ![Screenshot des Dialogfelds „Konfigurationsserver“](./media/site-recovery-vmware-to-azure/migrate-ps3.png)
 3. Wählen Sie unter **Zielprozessserver auswählen** den neuen Prozessserver aus, den Sie verwenden möchten. Wählen Sie anschließend die virtuellen Computer aus, die vom neuen Server verarbeitet werden. Um weitere Informationen zum Server zu erhalten, wählen Sie das Informationssymbol aus. Der durchschnittliche zum Replizieren jedes ausgewählten virtuellen Computers auf den neuen Prozessserver erforderliche Speicherplatz wird angezeigt, um Sie bei Lastenentscheidungen zu unterstützen. Klicken Sie auf das Häkchen, um mit dem Replizieren auf den neuen Prozessserver zu beginnen.
@@ -146,7 +146,7 @@ Informationen zum Hinzufügen eines Masterzielservers für einen Linux-basierten
 
 So fügen Sie einen neuen Masterzielserver für einen Linux-basierten virtuellen Computer hinzu:
 
-1. Navigieren Sie zu **Recovery Services-Tresor** > **Site Recovery-Infrastruktur** > **Konfigurationsserver** .
+1. Navigieren Sie zu **Recovery Services-Tresor** > **Site Recovery-Infrastruktur** > **Konfigurationsserver**.
 2. Wählen Sie den erforderlichen Konfigurationsserver aus, und wählen Sie dann **Masterzielserver** aus.
 
     ![Screenshot der Schaltfläche „Masterzielserver hinzufügen“](media/site-recovery-plan-capacity-vmware/add-master-target-server.png)
@@ -157,13 +157,13 @@ So fügen Sie einen neuen Masterzielserver für einen Linux-basierten virtuellen
 5. Wählen Sie den Standardspeicherort für die Installation aus, und wählen Sie dann **Installieren** aus.
 
      ![Screenshot mit dem Standardspeicherort für die Installation](media/site-recovery-plan-capacity-vmware/MT-installation.PNG)
-6. Um das Masterziel beim Konfigurationsserver zu registrieren, klicken Sie auf **Mit der Konfiguration fortfahren** .
+6. Um das Masterziel beim Konfigurationsserver zu registrieren, klicken Sie auf **Mit der Konfiguration fortfahren**.
 
     ![Screenshot mit der Schaltfläche „Mit der Konfiguration fortfahren“](media/site-recovery-plan-capacity-vmware/MT-proceed-configuration.PNG)
 7. Geben Sie die IP-Adresse des Konfigurationsservers und dann die Passphrase ein. Informationen zum Generieren einer Passphrase finden Sie unter [Generieren einer Passphrase für den Konfigurationsserver](vmware-azure-manage-configuration-server.md#generate-configuration-server-passphrase). 
 
     ![Screenshot, der zeigt, wo die IP-Adresse und die Passphrase für den Konfigurationsserver eingegeben wird.](media/site-recovery-plan-capacity-vmware/cs-ip-passphrase.PNG)
-8. Wählen Sie **Registrieren** . Wenn die Registrierung abgeschlossen ist, wählen Sie **Fertig stellen** aus.
+8. Wählen Sie **Registrieren**. Wenn die Registrierung abgeschlossen ist, wählen Sie **Fertig stellen** aus.
 
 Wenn die Registrierung erfolgreich abgeschlossen wurde, wird der Server im Azure-Portal unter **Recovery Services-Tresor** > **Site Recovery-Infrastruktur** > **Konfigurationsserver** in den Masterzielservern des Konfigurationsservers aufgeführt.
 

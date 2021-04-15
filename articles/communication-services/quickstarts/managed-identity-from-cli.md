@@ -9,22 +9,22 @@ ms.topic: how-to
 ms.date: 03/10/2021
 ms.author: jbeauregardb
 ms.reviewer: mikben
-ms.openlocfilehash: e708536395807fc74dc5bfd73836e050832cca39
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2ef5a3b162d62fa79ed01a156345070ee12b4862
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103493338"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105110677"
 ---
 # <a name="authorize-access-with-managed-identity-to-your-communication-resource-in-your-development-environment"></a>Autorisieren des Zugriffs mit der verwalteten Identität auf die Kommunikationsressource in Ihrer Entwicklungsumgebung
 
-Mit der Azure-Identitätsclientbibliothek wird die Azure AD-Tokenauthentifizierung (Azure Active Directory) für das Azure SDK unterstützt. Die neuesten Versionen der Azure Communication Services-Clientbibliotheken für .NET, Java, Python und JavaScript sind in die Azure-Identitätsbibliothek integriert und stellen so eine einfache und sichere Möglichkeit dar, ein OAuth 2.0-Token für die Autorisierung von Azure Communication Services-Anforderungen abzurufen.
+Mit dem Azure Identity SDK wird die Azure AD-Tokenauthentifizierung (Azure Active Directory) für das Azure SDK unterstützt. Die neuesten Versionen der Azure Communication Services-SDKs für .NET, Java, Python und JavaScript sind in die Azure-Identitätsbibliothek integriert und stellen so eine einfache und sichere Möglichkeit dar, ein OAuth 2.0-Token für die Autorisierung von Azure Communication Services-Anforderungen abzurufen.
 
-Ein Vorteil der Azure-Identitätsclientbibliothek besteht darin, dass Sie den gleichen Code verwenden können, um in mehreren Diensten zu authentifizieren, ob Ihre Anwendung in der Entwicklungsumgebung oder in Azure ausgeführt wird. Mit der Azure Identity-Clientbibliothek wird ein Sicherheitsprinzipal authentifiziert. Wenn Ihr Code in Azure ausgeführt wird, ist der Sicherheitsprinzipal eine verwaltete Identität für Azure-Ressourcen. In der Entwicklungsumgebung ist die verwaltete Identität nicht vorhanden, sodass die Clientbibliothek für Testzwecke entweder den Benutzer oder eine registrierte Anwendung authentifiziert.
+Ein Vorteil der Azure Identity SDKs besteht darin, dass Sie den gleichen Code verwenden können, um in mehreren Diensten zu authentifizieren, ob Ihre Anwendung in der Entwicklungsumgebung oder in Azure ausgeführt wird. Mit dem Azure Identity SDK wird ein Sicherheitsprinzipal authentifiziert. Wenn Ihr Code in Azure ausgeführt wird, ist der Sicherheitsprinzipal eine verwaltete Identität für Azure-Ressourcen. In der Entwicklungsumgebung ist die verwaltete Identität nicht vorhanden, sodass das SDK für Testzwecke entweder den Benutzer oder eine registrierte Anwendung authentifiziert.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
- - Azure-Befehlszeilenschnittstelle. [Installationshandbuch](https://docs.microsoft.com/cli/azure/install-azure-cli)
+ - Azure-Befehlszeilenschnittstelle. [Installationshandbuch](/cli/azure/install-azure-cli)
  - Ein Azure-Konto mit einem aktiven Abonnement. [Kostenlos ein Konto erstellen](https://azure.microsoft.com/free)
 
 ## <a name="setting-up"></a>Einrichten
@@ -35,7 +35,7 @@ Verwaltete Identitäten sollten für die autorisierten Azure-Ressourcen aktivier
 - [Azure PowerShell](../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
 - [Azure-Befehlszeilenschnittstelle](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
 - [Azure Resource Manager-Vorlage](../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
-- [Azure Resource Manager-Clientbibliotheken](../../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
+- [Azure Resource Manager-SDKs](../../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
 - [App Services](../../app-service/overview-managed-identity.md)
 
 ## <a name="authenticate-a-registered-application-in-the-development-environment"></a>Authentifizieren einer registrierten Anwendung in der Entwicklungsumgebung
@@ -68,7 +68,7 @@ Mit dem Befehl `az ad sp create-for-rbac` wird eine Liste der Dienstprinzipaleig
 
 #### <a name="set-environment-variables"></a>Festlegen von Umgebungsvariablen
 
-Über die Azure-Identitätsclientbibliothek werden zur Laufzeit Werte aus drei Umgebungsvariablen gelesen, um die Anwendung zu authentifizieren. In der folgenden Tabelle sind die für die einzelnen Umgebungsvariablen festzulegenden Werte beschrieben.
+Über das Azure Identity SDK werden zur Laufzeit Werte aus drei Umgebungsvariablen gelesen, um die Anwendung zu authentifizieren. In der folgenden Tabelle sind die für die einzelnen Umgebungsvariablen festzulegenden Werte beschrieben.
 
 |Umgebungsvariable|value
 |-|-

@@ -8,10 +8,10 @@ services: web-application-firewall
 ms.date: 09/05/2019
 ms.author: victorh
 ms.openlocfilehash: 158bfe30bf48ee420be8efb9ff32fff0e555d9e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "79475823"
 ---
 #  <a name="custom-rules-for-web-application-firewall-with-azure-front-door"></a>Benutzerdefinierte Regeln für Web Application Firewall mit Azure Front Door
@@ -42,7 +42,7 @@ Sie können den Zugriff mit einer benutzerdefinierten WAF-Regel steuern, die ein
     - Cookies
   - **Operator:**
     - Beliebig: wird häufig verwendet, um die Standardaktion zu definieren, wenn mit keiner Regel Übereinstimmung vorliegt. Der Beliebig-Operator stimmt mit allem überein.
-    - Gleich
+    - Equal
     - Enthält
     - LessThan: Größenbeschränkung
     - GreaterThan: Größenbeschränkung

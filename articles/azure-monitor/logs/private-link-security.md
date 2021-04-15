@@ -5,12 +5,12 @@ author: noakup
 ms.author: noakuper
 ms.topic: conceptual
 ms.date: 10/05/2020
-ms.openlocfilehash: 65af5810152034fd7b6014041edd07835eebd194
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 76c6d7caf3c63779e12443304688192f7311720a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102101476"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594562"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Verwenden von Azure Private Link zum sicheren Verbinden von Netzwerken mit Azure Monitor
 
@@ -51,14 +51,16 @@ Einige Azure Monitor-Dienste verwenden globale Endpunkte. Dies bedeutet, dass si
 Wenn Sie eine Private Link-Verbindung einrichten, wird das DNS so aktualisiert, dass Azure Monitor-Endpunkte den privaten IP-Adressen aus dem IP-Adressbereich Ihres VNET zugeordnet werden. Durch diese Änderung wird jede vorherige Zuordnung dieser Endpunkte außer Kraft gesetzt, was sinnvolle Auswirkungen haben kann, wie Sie im Folgenden erfahren werden. 
 
 ### <a name="azure-monitor-private-link-applies-to-all-azure-monitor-resources---its-all-or-nothing"></a>Azure Monitor Private Link wird auf alle Azure Monitor-Ressourcen angewandt – hier gilt alles oder nichts
-Da einige Azure Monitor-Endpunkte global sind, ist es nicht möglich, eine Private Link-Verbindung mit einer bestimmten Komponente oder einem bestimmten Arbeitsbereich herzustellen. Wenn Sie stattdessen eine Private Link-Verbindung mit einer einzelnen Application Insights-Komponente herstellen, werden Ihre DNS-Einträge für **alle** Application Insights-Komponenten aktualisiert. Jeder Versuch, eine Komponente zu erfassen oder abzufragen, erfolgt über Private Link, und möglicherweise kann dabei ein Fehler auftreten. Entsprechend führt das Einrichten einer Private Link-Instanz für einen einzelnen Arbeitsbereich dazu, dass alle Log Analytics-Abfragen den Private Link-Abfrageendpunkt durchlaufen (aber nicht Erfassungsanforderungen, die arbeitsbereichsspezifische Endpunkte aufweisen).
+Da einige Azure Monitor-Endpunkte global sind, ist es nicht möglich, eine Private Link-Verbindung mit einer bestimmten Komponente oder einem bestimmten Arbeitsbereich herzustellen. Wenn Sie stattdessen eine Private Link-Verbindung mit einer einzelnen Application Insights-Komponente oder einem Log Analytics-Arbeitsbereich herstellen, werden Ihre DNS-Einträge für **alle** Application Insights-Komponenten aktualisiert. Jeder Versuch, eine Komponente zu erfassen oder abzufragen, erfolgt über Private Link, und möglicherweise kann dabei ein Fehler auftreten. Bei Log Analytics sind Erfassungs- und Konfigurationsendpunkte arbeitsbereichsabhängig, d. h., das Private Link-Setup gilt nur für die jeweiligen Arbeitsbereiche. Die Erfassung und Konfiguration von anderen Arbeitsbereichen wird an die standardmäßigen öffentlichen Log Analytics-Endpunkte geleitet.
 
 ![Diagramm der DNS-Außerkraftsetzungen in einem einzelnen VNET](./media/private-link-security/dns-overrides-single-vnet.png)
 
 Dies gilt nicht nur für ein bestimmtes VNET, sondern für alle VNETs, die denselben DNS-Server nutzen (siehe [Das Problem der DNS-Außerkraftsetzungen](#the-issue-of-dns-overrides)). Beispielsweise werden an eine beliebige Application Insights-Komponente gerichtete Anforderungen zum Erfassen von Protokollen immer über die Private Link-Route gesendet. Komponenten, die nicht mit dem AMPLS verknüpft sind, bestehen die Private Link-Validierung nicht und können nicht passieren.
 
 > [!NOTE]
-> Zusammenfassend: Nachdem Sie eine Private Link-Verbindung mit einer einzelnen Ressource eingerichtet haben, wird sie auf alle Azure Monitor-Ressourcen in Ihrem Netzwerk angewandt – hier gilt alles oder nichts. Dies bedeutet, dass Sie alle Azure Monitor-Ressourcen in Ihrem Netzwerk oder keine Ihrer AMPLS-Instanz hinzufügen sollten.
+> Zusammenfassend: Nachdem Sie eine Private Link-Verbindung mit einer einzelnen Ressource eingerichtet haben, wird sie auf Azure Monitor-Ressourcen in Ihrem Netzwerk angewandt. Für Application Insights-Ressourcen gilt alles oder nichts. Dies bedeutet, dass Sie alle Application Insights-Ressourcen in Ihrem Netzwerk oder keine Ihrer AMPLS-Instanz hinzufügen sollten.
+> 
+> Zum Schutz vor Datenexfiltration wird empfohlen, alle Application Insights- und Log Analytics-Ressourcen zur AMPLS-Instanz hinzuzufügen und den ausgehenden Datenverkehr im Netzwerk weitestgehend einzuschränken.
 
 ### <a name="azure-monitor-private-link-applies-to-your-entire-network"></a>Azure Monitor Private Link gilt für Ihr gesamtes Netzwerk
 Einige Netzwerke bestehen aus mehreren VNETs. Wenn die VNETs denselben DNS-Server verwenden, setzen sie sich gegenseitig ihre DNS-Zuordnungen außer Kraft und unterbrechen sich möglicherweise gegenseitig die Kommunikation mit Azure Monitor (siehe [Das Problem der DNS-Außerkraftsetzungen](#the-issue-of-dns-overrides)). Letztendlich kann nur das letzte VNET mit Azure Monitor kommunizieren, da Azure Monitor-Endpunkte vom DNS privaten IP-Adressen aus dem Bereich dieses VNET zugeordnet werden (der möglicherweise von anderen VNETs aus nicht erreichbar ist).
