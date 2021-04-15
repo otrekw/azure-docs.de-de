@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seodec18, devx-track-java
 ms.date: 12/24/2019
 ms.openlocfilehash: 13616cf99db39ec4dac1d13e3dcd2cefc5a44614
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98942954"
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>Erstellen von Java-Anwendungen für die Apache-HBase
@@ -56,7 +56,7 @@ cd C:\HDI
 
     Dieser Befehl erstellt am aktuellen Speicherort ein neues Verzeichnis namens `hbaseapp`, das ein einfaches Maven-Projekt enthält. Der zweite Befehl ändert das Arbeitsverzeichnis in `hbaseapp`. Der dritte Befehl erstellt ein neues Verzeichnis (`conf`) zur späteren Verwendung. Das `hbaseapp`-Verzeichnis enthält die folgenden Elemente:
 
-    * `pom.xml`:  Das Projektobjektmodell ([POM](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html)) enthält Informationen und Konfigurationsdetails zum Erstellen des Projekts.
+    * `pom.xml`: Das Projektobjektmodell ([POM](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html)) enthält Informationen und Konfigurationsdetails zum Erstellen des Projekts.
     * `src\main\java\com\microsoft\examples`: Enthält Ihren Anwendungscode.
     * `src\test\java\com\microsoft\examples`: Enthält Tests für Ihre Anwendung.
 

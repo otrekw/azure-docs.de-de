@@ -7,12 +7,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: e071692a1c6fe423b048dab884164d9b3c98f1fd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e606e21fe2b80683737970b92d57ce87b9103144
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102613611"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107106869"
 ---
 # <a name="frequently-asked-questions-about-transitioning-from-the-cloud-partner-portal-to-partner-center"></a>Häufig gestellte Fragen zur Umstellung vom Cloud-Partnerportal auf Partner Center
 
@@ -24,7 +24,7 @@ Sie können im Partner Center weiterarbeiten:
 
 | Bereich | Änderungen |
 | --- | --- |
-| Konto | Sie müssen kein neues Partner Center-Konto erstellen, und Sie können Ihre vorhandenen Anmeldeinformationen für das Cloud-Partnerportal verwenden, um sich an Partner Center anzumelden. In Partner Center verwalten Sie nun Ihr Konto, die Benutzer, die Berechtigungen und die Abrechnung. Der Herausgebervertrag und die Informationen zum Unternehmensprofil werden zu Ihrem neuen Partner Center-Konto migriert. Dies gilt auch für alle Auszahlungsprofilinformationen, Benutzerkonten und Berechtigungen sowie für die aktiven Angebote. Weitere Informationen finden Sie unter [Verwalten Ihres Kontos im kommerziellen Marketplace in Partner Center](partner-center-portal/manage-account.md). |
+| Konto | Sie müssen kein neues Partner Center-Konto erstellen, und Sie können Ihre vorhandenen Anmeldeinformationen für das Cloud-Partnerportal verwenden, um sich an Partner Center anzumelden. In Partner Center verwalten Sie nun Ihr Konto, die Benutzer, die Berechtigungen und die Abrechnung. Der Herausgebervertrag und die Informationen zum Unternehmensprofil werden zu Ihrem neuen Partner Center-Konto migriert. Dies gilt auch für alle Auszahlungsprofilinformationen, Benutzerkonten und Berechtigungen sowie für die aktiven Angebote. Weitere Informationen finden Sie unter [Verwalten Ihres Kontos im kommerziellen Marketplace in Partner Center](manage-account.md). |
 | Benutzerumgebung für die Veröffentlichung und Verwaltung von Angeboten | Wir haben Ihre Angebotsdaten aus dem Cloud-Partnerportal in Partner Center verschoben. Sie greifen auf Ihre Angebote nun in Partner Center zu und können die verbesserte Benutzerumgebung und eine intuitive Benutzeroberfläche verwenden. Informieren Sie sich über das [Aktualisieren eines bestehenden Angebots im kommerziellen Marketplace](partner-center-portal/update-existing-offer.md). |
 | Verfügbarkeit Ihrer Angebote auf dem kommerziellen Marketplace | Keine Änderungen. Wenn Ihr Angebot im kommerziellen Marketplace live geschaltet ist, bleibt dieser Livezustand unverändert. |
 | Neue Käufe und Bereitstellungen | Keine Änderungen. Ihre Kunden können Ihre Angebote ohne Unterbrechung weiter erwerben und bereitstellen. |

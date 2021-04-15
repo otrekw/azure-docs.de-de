@@ -3,12 +3,12 @@ title: 'Schnellstart: Erstellen einer Verwaltungsgruppe mit der REST-API'
 description: In dieser Schnellstartanleitung erstellen Sie mithilfe der REST-API eine Verwaltungsgruppe, um Ihre Ressourcen in einer Ressourcenhierarchie zu organisieren.
 ms.date: 02/05/2021
 ms.topic: quickstart
-ms.openlocfilehash: ff1487bf25945c733402ddb74d1e102bea80b4b1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 26a1c0a8025a00155bcf0498e6dfa89a8a73d983
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99592499"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259131"
 ---
 # <a name="quickstart-create-a-management-group-with-rest-api"></a>Schnellstart: Erstellen einer Verwaltungsgruppe mit der REST-API
 
@@ -28,7 +28,7 @@ Es kann bis zu 15 Minuten dauern, bis die Erstellung der ersten Verwaltungsgrupp
 
 ### <a name="create-in-rest-api"></a>Erstellen über die REST-API
 
-Verwenden Sie für die REST-API den Endpunkt [Verwaltungsgruppen – Erstellen oder Aktualisieren](/rest/api/resources/managementgroups/createorupdate), um eine neue Verwaltungsgruppe zu erstellen. In diesem Beispiel ist für **groupId** der Verwaltungsgruppe _Contoso_ angegeben.
+Verwenden Sie für die REST-API den Endpunkt [Verwaltungsgruppen – Erstellen oder Aktualisieren](/rest/api/managementgroups/managementgroups/createorupdate), um eine neue Verwaltungsgruppe zu erstellen. In diesem Beispiel ist für **groupId** der Verwaltungsgruppe _Contoso_ angegeben.
 
 - REST-API-URI
 
@@ -81,7 +81,7 @@ In den vorstehenden Beispielen wird die neue Verwaltungsgruppe unter der Stammve
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Verwenden Sie zum Entfernen der oben erstellten Verwaltungsgruppe den Endpunkt [Verwaltungsgruppen – Löschen](/rest/api/resources/managementgroups/delete):
+Verwenden Sie zum Entfernen der oben erstellten Verwaltungsgruppe den Endpunkt [Verwaltungsgruppen – Löschen](/rest/api/managementgroups/managementgroups/delete):
 
 - REST-API-URI
 

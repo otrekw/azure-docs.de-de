@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 08/26/2019
 ms.author: allensu
 ms.openlocfilehash: 0a80c731e4245b1a295364e5b8c87f90290f7f74
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98223307"
 ---
 # <a name="move-an-azure-virtual-network-to-another-region-by-using-the-azure-portal"></a>Verschieben eines virtuellen Azure-Netzwerks in eine andere Region im Azure-Portal
@@ -109,7 +109,7 @@ Gehen Sie folgendermaßen vor, um das virtuelle Netzwerk zu exportieren und das 
 
         ```
 
-    * **Subnetz**: Sie können den Subnetznamen und den Adressraum des Subnetzes ändern oder hinzufügen, indem Sie den Abschnitt **subnets** der Vorlage ändern. Sie können den Namen des Subnetzes ändern, indem Sie die Eigenschaft **name** ändern. Sie können den Adressraum des Subnetzes ebenfalls ändern, indem Sie die Eigenschaft **addressPrefix** ändern:
+    * **Subnetz:** Sie können den Subnetznamen und den Adressraum des Subnetzes ändern oder hinzufügen, indem Sie den Abschnitt **subnets** der Vorlage ändern. Sie können den Namen des Subnetzes ändern, indem Sie die Eigenschaft **name** ändern. Sie können den Adressraum des Subnetzes ebenfalls ändern, indem Sie die Eigenschaft **addressPrefix** ändern:
 
         ```json
                 "subnets": [
@@ -194,13 +194,13 @@ Gehen Sie folgendermaßen vor, um das virtuelle Netzwerk zu exportieren und das 
 
 ## <a name="delete-the-target-virtual-network"></a>Löschen des virtuellen Zielnetzwerks
 
-Wenn Sie das virtuelle Zielnetzwerk verwerfen möchten, löschen Sie die Ressourcengruppe, die das virtuelle Zielnetzwerk enthält. Gehen Sie folgendermaßen vor:
+Wenn Sie das virtuelle Zielnetzwerk verwerfen möchten, löschen Sie die Ressourcengruppe, die das virtuelle Zielnetzwerk enthält. Dazu gehen Sie wie folgt vor:
 1. Wählen Sie im Dashboard des Azure-Portals die Ressourcengruppe aus.
 1. Wählen Sie oben im Bereich **Übersicht** die Option **Löschen** aus.
 
-## <a name="clean-up"></a>Bereinigung
+## <a name="clean-up"></a>Bereinigen
 
-Um die Änderungen zu übernehmen und die Verschiebung des virtuellen Netzwerks abzuschließen, löschen Sie das virtuelle Quellnetzwerk oder die Ressourcengruppe. Gehen Sie folgendermaßen vor:
+Um die Änderungen zu übernehmen und die Verschiebung des virtuellen Netzwerks abzuschließen, löschen Sie das virtuelle Quellnetzwerk oder die Ressourcengruppe. Dazu gehen Sie wie folgt vor:
 1. Wählen Sie im Dashboard des Azure-Portals das virtuelle Netzwerk oder die Ressourcengruppe aus.
 1. Wählen Sie oben in jedem Bereich die Option **Löschen** aus.
 

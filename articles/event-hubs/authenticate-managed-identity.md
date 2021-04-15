@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 01/25/2021
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 2070cfd94b39a08afb86ffd3579f1116faac72d5
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98805298"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-event-hubs-resources"></a>Authentifizieren einer verwalteten Identität mit Azure Active Directory für den Zugriff auf Event Hubs-Ressourcen
@@ -57,8 +57,8 @@ Navigieren Sie im Azure-Portal zur jeweiligen Ressource, um Event Hubs-Ressource
 1. Navigieren Sie im Azure-Portal zu Ihrem Event Hubs-Namespace, und zeigen Sie die **Übersicht** für den Namespace an. 
 1. Wählen Sie im linken Menü die Option **Zugriffssteuerung (IAM)** aus, um Zugriffssteuerungseinstellungen für den Event Hub anzuzeigen.
 1.  Wählen Sie die Registerkarte **Rollenzuweisungen** aus, um die Liste mit den Rollenzuweisungen anzuzeigen.
-3.  Wählen Sie **Hinzufügen** und dann **Rollenzuweisung hinzufügen** aus.
-4.  Führen Sie auf der Seite _ *Rollenzuweisung hinzufügen** die folgenden Schritte aus:
+3.  Klicken Sie auf **Hinzufügen** und dann auf **Rollenzuweisung hinzufügen***.
+4.  Führen Sie auf der Seite **Rollenzuweisung hinzufügen** die folgenden Schritte aus:
     1. Wählen Sie unter **Rolle** die Event Hubs-Rolle aus, die Sie zuweisen möchten. In diesem Beispiel ist dies **Azure Event Hubs-Datenbesitzer**.
     1. Wählen Sie für das Feld **Zugriff zuweisen zu** unter **Systemseitig zugewiesene verwaltete Identität** die Option **App Service** aus. 
     1. Wählen Sie das **Abonnement** aus, in dem die verwaltete Identität für die Web-App erstellt wurde.

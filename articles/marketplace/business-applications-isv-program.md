@@ -7,12 +7,12 @@ ms.topic: article
 author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 11/19/2020
-ms.openlocfilehash: ce9927a66da64d64e83f10e3dfd906005635e5ed
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e4cd22418c4f8a2f9504baf665c67a4a57f7f6f5
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99507535"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107103384"
 ---
 # <a name="microsoft-business-applications-independent-software-vendor-isv-connect-program-onboarding-guide"></a>Onboardingleitfaden für das Microsoft Business Applications-ISV-Connect-Programm
 
@@ -25,7 +25,7 @@ Arbeiten Sie die folgenden Abschnitte dieses Artikels durch, um sich zu registri
 
 ## <a name="set-up-your-microsoft-partner-center-account"></a>Einrichten Ihres Microsoft Partner Center-Kontos
 
-Führen Sie die Schritte im folgenden Artikel aus, um Ihr Konto für das ISV Connect-Programm einzurichten und zu verwalten: [Erstellen eines Kontos im kommerziellen Marketplace in Partner Center](./partner-center-portal/create-account.md). Dieser Artikel enthält alle Schritte zum Erstellen eines neuen Kontos sowie Informationen zum Hinzufügen von neuen Herausgebern zum Programm „Kommerzieller Marketplace“.
+Führen Sie die Schritte im folgenden Artikel aus, um Ihr Konto für das ISV Connect-Programm einzurichten und zu verwalten: [Erstellen eines Kontos im kommerziellen Marketplace in Partner Center](create-account.md). Dieser Artikel enthält alle Schritte zum Erstellen eines neuen Kontos sowie Informationen zum Hinzufügen von neuen Herausgebern zum Programm „Kommerzieller Marketplace“.
 
 > [!NOTE]
 > Für diesen Schritt ist die Rolle *Besitzer* oder *Verwalter* in Partner Center erforderlich.

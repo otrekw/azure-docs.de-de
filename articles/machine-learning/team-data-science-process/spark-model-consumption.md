@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: bb38a76de41885b6f39a1c6dce7c44bcb52a4d60
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4a8d46b5ff10fdaa62f7747aac654e0b1ca78c42
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86027442"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259148"
 ---
 # <a name="operationalize-spark-built-machine-learning-models"></a>Operationalisieren von Machine Learning-Modellen, die mit Spark erstellt wurden
 
@@ -266,7 +266,8 @@ Für die Ausführung der obigen Zelle benötigte Zeit: 5,37 Sekunden
 ### <a name="create-rdd-objects-with-feature-arrays-for-input-into-models"></a>Erstellen von RDD-Objekten mit Featurearrays für die Eingabe in Modelle
 Dieser Abschnitt enthält Code, der zeigt, wie Sie kategorische Textdaten als RDD-Objekt indizieren und one-hot-codieren, sodass sie zum Trainieren und Testen logistischer Regression gemäß MLlib und anderer strukturbasierter Modelle verwendet werden können. Die indizierten Daten sind in [RDD](https://spark.apache.org/docs/latest/api/java/org/apache/spark/rdd/RDD.html) -Objekten (robuste verteilte Datasets) gespeichert. Die RDDs sind die grundlegende Abstraktion in Spark. Ein RDD-Objekt repräsentiert eine unveränderliche, partitionierte Sammlung von Elementen, die parallel in Spark verarbeitet werden können.
 
-Es enthält auch Code, der zeigt, wie Daten mit dem von MLlib bereitgestellten `StandardScalar` für die Verwendung bei der linearen Regression mit dem stochastischen Gradientenverfahren (SGD), einem verbreiteten Algorithmus für das Training einer Vielzahl von Machine Learning-Modellen, skaliert werden. Der [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) wird zum Skalieren der Features auf Einheitenvarianz verwendet. Featureskalierung, auch bekannt als Datennormalisierung, stellt sicher, dass Features mit weit verteilten Werten keine übermäßige Gewichtung in der Zielfunktion erhalten. 
+Es enthält auch Code, der zeigt, wie Daten mit dem von MLlib bereitgestellten `StandardScalar` für die Verwendung bei der linearen Regression mit dem stochastischen Gradientenverfahren (SGD), einem verbreiteten Algorithmus für das Training einer Vielzahl von Machine Learning-Modellen, skaliert werden. Der [StandardScaler](https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.mllib.tree.RandomForest.html#pyspark.mllib.tree.RandomForest
+) wird zum Skalieren der Features auf Einheitenvarianz verwendet. Featureskalierung, auch bekannt als Datennormalisierung, stellt sicher, dass Features mit weit verteilten Werten keine übermäßige Gewichtung in der Zielfunktion erhalten. 
 
 ```python
 # CREATE RDD OBJECTS WITH FEATURE ARRAYS FOR INPUT INTO MODELS
@@ -373,7 +374,8 @@ print "Time taken to execute above cell: " + str(timedelta) + " seconds";
 Für die Ausführung der obigen Zelle benötigte Zeit: 19,22 Sekunden
 
 ## <a name="score-a-linear-regression-model"></a>Bewerten eines linearen Regressionsmodells
-Wir verwendeten [LinearRegressionWithSGD](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.regression.LinearRegressionWithSGD) zum Trainieren eines linearen Regressionsmodells mit dem stochastischen Gradientenverfahren (SGD) für die Optimierung der Vorhersage der gezahlten Trinkgeldbeträge. 
+Wir verwendeten [LinearRegressionWithSGD](https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.mllib.regression.LinearRegressionWithSGD.html
+) zum Trainieren eines linearen Regressionsmodells mit dem stochastischen Gradientenverfahren (SGD) für die Optimierung der Vorhersage der gezahlten Trinkgeldbeträge. 
 
 Der Code in diesem Abschnitt zeigt, wie ein lineares Regressionsmodell aus Azure Blob Storage geladen und mittels skalierter Variablen bewertet wird und dann die Ergebnisse wieder im Blob gespeichert werden.
 
@@ -545,7 +547,7 @@ BoostedTreeRegressionFileLoc: GradientBoostingTreeRegression_2016-05-0317_23_56.
 Spark stellt einen Mechanismus zur Remoteübermittlung von Batchaufträgen oder interaktiven Abfragen über eine REST-Schnittstelle mit einer Komponente namens Livy bereit. Livy ist standardmäßig auf dem HDInsight Spark-Cluster aktiviert. Weitere Informationen zu Livy finden Sie hier: [Remoteübermittlung von Spark-Aufträgen mithilfe von Livy](../../hdinsight/spark/apache-spark-livy-rest-interface.md). 
 
 Livy können Sie zur Remoteübermittlung eines Auftrags verwenden, der eine Datei im Batch bewertet, die in einem Azure-Blob gespeichert ist, und dann die Ergebnisse in einen anderen Blob schreibt. Laden Sie zu diesem Zweck das Python-Skript von  
-[GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/Spark/Python/ConsumeGBNYCReg.py) in das Blob des Spark-Clusters hoch. Sie können zum Kopieren des Skripts in das Clusterblob ein Tool wie **Microsoft Azure Storage-Explorer** oder **AzCopy** verwenden. In unserem Fall haben wir das Skript in ***wasb:///example/python/ConsumeGBNYCReg.py*** hochgeladen.   
+[GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/Spark/Python/ConsumeGBNYCReg.py) in das Blob des Spark-Clusters hoch. Sie können zum Kopieren des Skripts in das Clusterblob ein Tool wie **Microsoft Azure Storage-Explorer** oder **AzCopy** verwenden. In unserem Fall haben wir das Skript in **_wasb:///example/python/ConsumeGBNYCReg.py_** hochgeladen.   
 
 > [!NOTE]
 > Die benötigten Zugriffsschlüssel finden Sie im Portal für das Speicherkonto, das dem Spark-Cluster zugeordnet ist. 

@@ -5,10 +5,10 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/14/2019
 ms.openlocfilehash: 2cc6556f681ece170bdfe02b985f56274c0faa1e
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98936963"
 ---
 # <a name="scenario-apache-phoenix-connectivity-issues-in-azure-hdinsight"></a>Szenario: Konnektivitätsprobleme bei Apache Phoenix in Azure HDInsight
@@ -19,7 +19,7 @@ In diesem Artikel werden Schritte zur Problembehandlung und mögliche Lösungen 
 
 Verbindung von Apache Phoenix mit Apache HBase kann nicht hergestellt werden Die Gründe können variieren.
 
-## <a name="cause-incorrect-ip"></a>Ursache: Falsche IP
+## <a name="cause-incorrect-ip"></a>Ursache: falsche IP-Adresse
 
 Falsche IP-Adresse des aktiven ZooKeeper-Knotens.
 

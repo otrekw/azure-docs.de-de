@@ -6,13 +6,14 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
-ms.date: 02/24/2021
-ms.openlocfilehash: 9c788109b014be244560fb652de830ba14a44d68
-ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
+ms.reviewer: stmummer
+ms.date: 03/17/2021
+ms.openlocfilehash: d45b46f69480f24f5b2724116984a903093ffc62
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103225012"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104593355"
 ---
 # <a name="verify-co-sell-status-of-a-commercial-marketplace-offer"></a>Überprüfen des Co-Selling-Status für ein Angebot im kommerziellen Marketplace
 
@@ -33,7 +34,7 @@ In der folgenden Tabelle sind alle möglichen Co-Selling-Status aufgeführt: Inf
 | Not Co-Sell Ready (Nicht für Co-Selling bereit) | Die [Mindestanforderungen für den Status „Co-Sell Ready“](co-sell-requirements.md#requirements-for-co-sell-ready-status) (Bereit für Co-Selling) wurden nicht erfüllt. |
 | Co-Sell Ready | Alle [Anforderungen für den Status „Co-Sell Ready“](co-sell-requirements.md#requirements-for-co-sell-ready-status) wurden erfüllt. |
 | Azure IP Co-Sell Incentivized | Die Anforderungen für den Status „Co-Sell Ready“ sowie [diese zusätzlichen Anforderungen](co-sell-requirements.md#requirements-for-azure-ip-co-sell-incentivized-status) wurden erfüllt. |
-| Biz Apps ISV Connect Premium Incentive  | Dieser Status gilt für Dynamics 365- und Power Apps-Angebote und gibt an, dass alle [Anforderungen für diesen Status](co-sell-requirements.md#requirements-for-biz-apps-isv-connect-premium-incentive-status) erfüllt wurden. |
+| Business Applications – Co-Sell Incentivized | Dieser Status gilt für Dynamics 365- und Power Apps-Angebote im [ISV Connect Program](business-applications-isv-program.md) und gibt an, dass alle [Anforderungen für diesen Status](co-sell-requirements.md#requirements-for-business-applications-co-sell-incentivized-status) erfüllt wurden. |
 |||
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -5,14 +5,13 @@ ms.date: 11/03/2020
 ms.topic: quickstart
 ms.custom:
 - devx-track-java
-- devx-track-azurecli
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 32d91f01fcebec3e1ae0d19b1bff29a71f41c0d1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b5bc453e2e0371ee0412824f01d99863b12d91e2
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102050425"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107375371"
 ---
 # <a name="quickstart-create-a-java-function-in-azure-from-the-command-line"></a>Schnellstart: Erstellen einer Java-Funktion über die Befehlszeile in Azure
 
@@ -57,7 +56,7 @@ Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
 
 ## <a name="2-create-a-local-function-project"></a>2. Erstellen eines lokalen Funktionsprojekts
 
-In Azure Functions handelt es sich bei einem Funktionsprojekt um einen Container für eine oder mehrere einzelne Funktionen, die jeweils auf einen bestimmten <abbr title="Der Typ des Ereignisses, das den Funktionscode aufruft, etwa eine HTTP-Anforderung, eine Warteschlangennachricht oder eine bestimmte Uhrzeit.">Trigger</abbr>. Für alle Funktionen eines Projekts werden die gleichen lokalen Konfigurationen und Hostkonfigurationen gemeinsam genutzt. In diesem Abschnitt erstellen Sie ein Funktionsprojekt, das nur eine Funktion enthält.
+In Azure Functions handelt es sich bei einem Funktionsprojekt um einen Container für eine oder mehrere einzelne Funktionen, die jeweils auf einen bestimmten <abbr title="Der Typ des Ereignisses, das den Funktionscode aufruft, etwa eine HTTP-Anforderung, eine Warteschlangennachricht oder eine bestimmte Uhrzeit.">Trigger (trigger)</abbr>. Für alle Funktionen eines Projekts werden die gleichen lokalen Konfigurationen und Hostkonfigurationen gemeinsam genutzt. In diesem Abschnitt erstellen Sie ein Funktionsprojekt, das nur eine Funktion enthält.
 
 1. Führen Sie in einem leeren Ordner den folgenden Befehl aus, um das Functions-Projekt über einen [Maven-Archetyp](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html) zu generieren. 
 

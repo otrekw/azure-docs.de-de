@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: d14fdc4e2b2b1dfca8194077acc0453808611946
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97897942"
 ---
 # <a name="use-azure-application-gateway-with-vmware-virtual-machines-in-the-cloudsimple-private-cloud-environment"></a>Verwenden von Azure Application Gateway mit virtuellen VMware-Computern in der privaten CloudSimple-Cloudumgebung
@@ -71,7 +71,7 @@ Ausführlich Anleitungen dazu finden Sie unter [Erstellen eines Anwendungsgatewa
 
 1. Erstellen Sie ein virtuelles Netzwerk in Ihrem Abonnement und eine Ressourcengruppe.
 2. Erstellen Sie ein Subnetz (das als dediziertes Subnetz verwendet wird) in Ihrem virtuellen Netzwerk.
-3. Erstellen Sie ein Standardanwendungsgateway (aktivieren Sie optional WAF):  Klicken Sie auf der Homepage des Azure-Portals oben links auf der Seite auf **Resource (Ressource)**  > **Networking (Netzwerk)**  > **Application Gateway (Anwendungsgateway)** . Wählen Sie die Standard-SKU und -Größe aus, und geben Sie das Azure-Abonnement, die Ressourcengruppe und Standortinformationen an. Erstellen Sie bei Bedarf eine neue öffentliche IP-Adresse für dieses Anwendungsgateway, und geben Sie Details zum virtuellen Netzwerk und zum dedizierten Subnetz für das Anwendungsgateway an.
+3. Erstellen Sie ein Standardanwendungsgateway (aktivieren Sie optional WAF): Klicken Sie auf der Homepage im Azure-Portal links oben auf der Seite auf **Ressourcen** > **Netzwerk** > **Application Gateway**. Wählen Sie die Standard-SKU und -Größe aus, und geben Sie das Azure-Abonnement, die Ressourcengruppe und Standortinformationen an. Erstellen Sie bei Bedarf eine neue öffentliche IP-Adresse für dieses Anwendungsgateway, und geben Sie Details zum virtuellen Netzwerk und zum dedizierten Subnetz für das Anwendungsgateway an.
 4. Fügen Sie einen Back-End-Pool mit virtuellen Computern hinzu, und fügen Sie diesen Ihrem Anwendungsgateway hinzu.
 
 ## <a name="4-create-and-configure-a-web-server-vm-pool-in-your-private-cloud"></a>4. Erstellen und Konfigurieren eines Webserver-VM-Pools in Ihrer privaten Cloud

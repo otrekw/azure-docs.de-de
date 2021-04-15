@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 10/28/2020
+ms.date: 03/24/2021
 ms.author: alkohli
-ms.openlocfilehash: f00be43d023d912d4b0b6e825dfe9d3e0ca2d250
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a2cc0707c344c3ca537795666a3f60f648026596
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96465744"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105043766"
 ---
 # <a name="use-the-local-web-ui-to-manage-wireless-connectivity-on-your-azure-stack-edge-mini-r"></a>Verwenden der lokalen Webbenutzeroberfläche, um die drahtlose Konnektivität für Azure Stack Edge Mini R zu verwalten
 
@@ -55,6 +55,8 @@ Führen Sie die folgenden Schritte auf der lokalen Benutzeroberfläche Ihres Ger
     ![Seite mit den Netzwerkeinstellungen für den WLAN-Port auf der lokalen Webbenutzeroberfläche 1](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/add-wifi-profile-1.png)
     
     Ein Funknetzwerkprofil enthält die SSID (Netzwerkname), den Kennwortschlüssel sowie Sicherheitsinformationen für die Verbindungsherstellung mit einem Funknetzwerk. Das WLAN-Profil für Ihre Umgebung erhalten Sie von Ihrem Netzwerkadministrator.
+
+    Weitere Informationen zum Vorbereiten Ihrer Wi-Fi-Profile finden Sie unter [Verwenden von Wi-Fi-Profilen mit Azure Stack Edge Mini R-Geräten](azure-stack-edge-mini-r-use-wifi-profiles.md).
 
     ![Seite mit den Netzwerkeinstellungen für den WLAN-Port auf der lokalen Webbenutzeroberfläche 2](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/add-wifi-profile-2.png)
 

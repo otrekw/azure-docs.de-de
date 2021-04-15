@@ -4,10 +4,10 @@ description: Beschreibt das Entwickeln, Bereitstellen, Testen, Aktualisieren, Ve
 ms.topic: conceptual
 ms.date: 1/19/2018
 ms.openlocfilehash: ae0c79cdaafc8fc016d463a01046f0a02121330a
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98785734"
 ---
 # <a name="service-fabric-application-lifecycle"></a>Lebenszyklus der Service Fabric-Anwendung
@@ -18,16 +18,16 @@ ms.locfileid: "98785734"
 ## <a name="service-model-roles"></a>Rollen des Dienstmodells
 Es gibt folgende Rollen im Dienstmodell:
 
-* **Dienstentwickler**: Entwickelt modulare und generische Dienste, die für neue Zwecke in mehreren Anwendungen des gleichen Typs oder in anderen Anwendungstypen wiederverwendet werden können. Ein Warteschlangendienst kann beispielsweise zum Erstellen einer Ticketing-Anwendung (Helpdesk) oder einer E-Commerce-Anwendung (Warenkorb) verwendet werden.
-* **Anwendungsentwickler**: Erstellt Anwendungen durch das Integrieren einer Sammlung von Diensten, um bestimmte Anforderungen zu erfüllen oder bestimmte Szenarien abzudecken. Beispielsweise können „Zustandsloser Front-End-Dienst für JSON“, „Zustandsbehafteter Dienst für Auktion“ und „Zustandsbehafteter Dienst für Warteschlange“ in einer E-Commerce-Website integriert werden, um eine Auktionslösung zu erstellen.
+* **Service developer** (Dienstentwickler): Dieser entwickelt modulare und generische Dienste, die für neue Zwecke in mehreren Anwendungen des gleichen Typs oder in anderen Anwendungstypen wiederverwendet werden können. Ein Warteschlangendienst kann beispielsweise zum Erstellen einer Ticketing-Anwendung (Helpdesk) oder einer E-Commerce-Anwendung (Warenkorb) verwendet werden.
+* **Anwendungsentwickler**: Erstellt Anwendungen durch Integrieren einer Sammlung von Diensten, um bestimmte Anforderungen zu erfüllen oder bestimmte Szenarien abzudecken. Beispielsweise können „Zustandsloser Front-End-Dienst für JSON“, „Zustandsbehafteter Dienst für Auktion“ und „Zustandsbehafteter Dienst für Warteschlange“ in einer E-Commerce-Website integriert werden, um eine Auktionslösung zu erstellen.
 * **Anwendungsadministrator**: Trifft Entscheidungen zur Anwendungskonfiguration (Ausfüllen der Konfigurationsvorlagenparameter), zur Bereitstellung (Zuordnung zu den verfügbaren Ressourcen) und zur Servicequalität. Ein Anwendungsadministrator legt z. B. das Sprachgebietsschema (Englisch für die USA oder Japanisch für Japan) der Anwendung fest. Für eine andere bereitgestellte Anwendung können andere Einstellungen festgelegt werden.
 * **Operator**: Stellt Anwendungen entsprechend der Anwendungskonfiguration und den vom Anwendungsadministrator angegebenen Anforderungen bereit. Ein Operator stellt z. B. die Anwendung bereit und stellt sicher, dass sie in Azure ausgeführt wird. Operatoren überwachen den Anwendungszustand und die Leistungsinformationen und verwalten bei Bedarf die physische Infrastruktur.
 
 ## <a name="develop"></a>Entwickeln
 1. Ein *Dienstentwickler* entwickelt unter Verwendung der Programmiermodell [Reliable Actors](service-fabric-reliable-actors-introduction.md) oder [Reliable Services](service-fabric-reliable-services-introduction.md) verschiedene Diensttypen.
-2. Ein *Dienstentwickler* beschreibt die entwickelten Diensttypen deklarativ in einer Dienstmanifestdatei, die aus einem oder mehreren Code-, Konfigurations- und Datenpaketen besteht.
-3. Ein *Anwendungsentwickler* erstellt dann mit verschiedenen Diensttypen eine Anwendung.
-4. Der *Anwendungsentwickler* beschreibt den Anwendungstyp deklarativ in einem Anwendungsmanifest, indem er auf die Dienstmanifeste der zugehörigen Dienste verweist und verschiedene Konfigurations- und Bereitstellungseinstellungen der zugehörigen Dienste entsprechend überschreibt und parametrisiert.
+2. Ein *Dienstentwickler* stellt eine deklarative Beschreibung der entwickelten Diensttypen in einer Dienstmanifestdatei bereit, die aus mindestens einem Code-, Konfigurations- und Datenpaket besteht.
+3. Ein *Anwendungsentwickler* erstellt dann unter Verwendung verschiedener Diensttypen eine Anwendung.
+4. Ein *Anwendungsentwickler* stellt eine deklarative Beschreibung des Anwendungstyps in einem Anwendungsmanifest bereit, indem er auf die Dienstmanifeste der konstituierenden Dienste verweist und unterschiedliche Konfigurations- und Bereitstellungseinstellungen der konstituierenden Dienste entsprechend überschreibt und parametrisiert.
 
 Beispiele finden Sie unter [Erste Schritte mit Reliable Actors](service-fabric-reliable-actors-get-started.md) und [Erste Schritte mit Reliable Services](service-fabric-reliable-services-quick-start.md).
 
@@ -51,7 +51,7 @@ Weitere Informationen finden Sie unter [Testability – Übersicht](service-fabr
 ## <a name="upgrade"></a>Aktualisieren
 1. Ein *Dienstentwickler* aktualisiert die zugehörigen Dienste der instanziierten Anwendung und/oder behebt Fehler und stellt eine neue Version des Dienstmanifests bereit.
 2. Ein *Anwendungsentwickler* überschreibt und parametrisiert die Konfigurations- und Bereitstellungseinstellungen der zugehörigen Dienste und stellt eine neue Version des Anwendungsmanifests bereit. Der Anwendungsentwickler bindet dann die neuen Versionen der Dienstmanifeste in der Anwendung ein und stellt eine neue Version des Anwendungstyps in einem aktualisierten Anwendungspaket bereit.
-3. Ein *Anwendungsadministrator* bindet durch Aktualisieren der entsprechenden Parameter die neue Version des Anwendungstyps in der Zielanwendung ein.
+3. Ein *Anwendungsadministrator* integriert die neue Version des Anwendungstyps in die Zielanwendung, indem er die entsprechenden Parameter aktualisiert.
 4. Ein *Operator* lädt das aktualisierte Anwendungspaket mit der [**CopyApplicationPackage**-Methode](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient) oder dem [**Copy-ServiceFabricApplicationPackage**-Cmdlet](/powershell/module/servicefabric/copy-servicefabricapplicationpackage) in den Clusterimagespeicher hoch. Das Anwendungspaket enthält das Anwendungsmanifest und die Auflistung der Dienstpakete.
 5. Ein *Operator* stellt die neue Version der Anwendung mit der [**ProvisionApplicationAsync**-Methode](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient), dem [**Register-ServiceFabricApplicationType**-Cmdlet](/powershell/module/servicefabric/register-servicefabricapplicationtype) oder dem [REST-Vorgang **Anwendung bereitstellen**](/rest/api/servicefabric/provision-an-application) im Zielcluster bereit.
 6. Ein *Operator* führt mit der [**UpgradeApplicationAsync**-Methode](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient), dem [**Start-ServiceFabricApplicationUpgrade**-Cmdlet](/powershell/module/servicefabric/start-servicefabricapplicationupgrade) oder dem [REST-Vorgang **Upgrade einer Anwendung ausführen**](/rest/api/servicefabric/upgrade-an-application) ein Upgrade der Zielanwendung auf die neue Version aus.
@@ -69,7 +69,7 @@ Beispiele finden Sie im [Tutorial für Anwendungsupgrades](service-fabric-applic
 4. Ein *Operator* fügt die vom *Anwendungsadministrator* angegebenen Knoten hinzu oder entfernt sie.
 5. Wenn neue Knoten im Cluster hinzugefügt oder vorhandene Knoten aus dem Cluster entfernt werden, nimmt Service Fabric einen Lastenausgleich der in allen Knoten des Clusters ausgeführten Anwendungen vor, um eine optimale Leistung zu erzielen.
 
-## <a name="remove"></a>Remove (Entfernen)
+## <a name="remove"></a>Entfernen
 1. Ein *Operator* kann mithilfe der [**DeleteServiceAsync**-Methode](/dotnet/api/system.fabric.fabricclient.servicemanagementclient), des [**Remove-ServiceFabricService**-Cmdlets](/powershell/module/servicefabric/remove-servicefabricservice) oder des [REST-Vorgangs **Dienst löschen**](/rest/api/servicefabric/delete-a-service) eine bestimmte Instanz eines ausgeführten Diensts im Cluster löschen, ohne die gesamte Anwendung zu entfernen.  
 2. Ein *Operator* kann mithilfe der [**DeleteApplicationAsync**-Methode](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient), des [**Remove-ServiceFabricApplication**-Cmdlets](/powershell/module/servicefabric/remove-servicefabricapplication) oder des [REST-Vorgangs **Anwendung löschen**](/rest/api/servicefabric/delete-an-application) auch eine Anwendungsinstanz und all ihre Dienste löschen.
 3. Sobald die Anwendung und die Dienste beendet wurden, kann der *Operator* mithilfe der [**UnprovisionApplicationAsync**-Methode](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient), des [**Unregister-ServiceFabricApplicationType**-Cmdlets](/powershell/module/servicefabric/unregister-servicefabricapplicationtype) oder des [REST-Vorgangs **Bereitstellung einer Anwendung aufheben**](/rest/api/servicefabric/unprovision-an-application) die Bereitstellung des Anwendungstyps aufheben. Beim Aufheben der Bereitstellung des Anwendungstyps wird das Anwendungspaket nicht aus dem ImageStore entfernt. Sie müssen das Anwendungspaket manuell entfernen.

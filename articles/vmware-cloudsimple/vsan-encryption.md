@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: f5da05c7f3c6878b0804799360e512676b9002d3
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97899047"
 ---
 # <a name="configure-vsan-encryption-for-cloudsimple-private-cloud"></a>Konfigurieren der vSAN-Verschlüsselung für die private CloudSimple-Cloud
@@ -43,7 +43,7 @@ Der Bereitstellungsprozess umfasst die folgenden Schritte:
 2. [CloudSimple-Portal: Abrufen von ExpressRoute-Peeringinformationen](#cloudsimple-portal-obtain-expressroute-peering-information)
 3. [Azure-Portal: Herstellen einer Verbindung Ihres virtuellen Netzwerks mit der privaten Cloud](#azure-portal-connect-your-virtual-network-to-your-private-cloud)
 4. [Azure-Portal: Bereitstellen eines HyTrust KeyControl-Clusters in Ihrem virtuellen Netzwerk](#azure-portal-deploy-a-hytrust-keycontrol-cluster-in-the-azure-resource-manager-in-your-virtual-network)
-5. [HyTrust WebUI: Konfigurieren des KMIP-Servers](#hytrust-webui-configure-the-kmip-server)
+5. [HyTrust WebUI: Konfigurieren eines KMIP-Servers](#hytrust-webui-configure-the-kmip-server)
 6. [vCenter-Benutzeroberfläche: Konfigurieren der vSAN-Verschlüsselung für die Verwendung des KMS-Clusters in Ihrem virtuellen Azure-Netzwerk](#vcenter-ui-configure-vsan-encryption-to-use-kms-cluster-in-your-azure-virtual-network)
 
 ### <a name="verify-prerequisites-are-met"></a>Überprüfen der Erfüllung von Voraussetzungen
@@ -60,7 +60,7 @@ Der Bereitstellungsprozess umfasst die folgenden Schritte:
 
 Um das Setup fortzusetzen, benötigen Sie den Autorisierungsschlüssel und den Peer-Verbindungs-URI für ExpressRoute sowie Zugriff auf Ihr Azure-Abonnement. Diese Informationen sind im CloudSimple-Portal auf der Seite „Virtual Network Connection“ (Virtuelle Netzwerkverbindung) verfügbar. Eine Anleitung finden Sie unter [Einrichten einer VNET-Verbindung mit der privaten Cloud](virtual-network-connection.md). Erstellen Sie eine [Supportanfrage](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest), falls Sie Probleme beim Abrufen dieser Informationen haben.
 
-### <a name="azure-portal-connect-your-virtual-network-to-your-private-cloud"></a>Azure-Portal: Herstellen einer Verbindung Ihres virtuellen Netzwerks mit Ihrer privaten Cloud
+### <a name="azure-portal-connect-your-virtual-network-to-your-private-cloud"></a>Azure-Portal: Herstellen einer Verbindung Ihres virtuellen Netzwerks mit der privaten Cloud
 
 1. Erstellen Sie für Ihr VNET ein Gateway für virtuelle Netzwerke, indem Sie die Anleitung unter [Konfigurieren eines virtuellen Netzwerkgateways für ExpressRoute mit dem Azure-Portal](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md) befolgen.
 2. Verknüpfen Sie Ihr virtuelles Netzwerk mit der CloudSimple-ExpressRoute-Leitung, indem Sie die Anleitung unter [Verbinden eines virtuellen Netzwerks mit einer ExpressRoute-Verbindung mithilfe des Portals](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md) befolgen.

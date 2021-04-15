@@ -1,14 +1,14 @@
 ---
 title: Mandantenübergreifende Verwaltungsmöglichkeiten
 description: Die delegierte Azure-Ressourcenverwaltung ermöglicht eine mandantenübergreifende Verwaltungserfahrung.
-ms.date: 03/23/2021
+ms.date: 03/29/2021
 ms.topic: conceptual
-ms.openlocfilehash: ba3cee2ecd7efcbb33c19d7ed159083e843c84a8
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 12c4aaa4dda159862344675c802603fcbda2f254
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104952115"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105934324"
 ---
 # <a name="cross-tenant-management-experiences"></a>Mandantenübergreifende Verwaltungsmöglichkeiten
 
@@ -56,8 +56,8 @@ Die meisten Aufgaben und Dienste können auf delegierten Ressourcen über verwal
   - Sicherstellen der Anwendung derselben Richtlinien für die Hybridumgebungen von Kunden
   - Verwenden von Azure Security Center zum Überwachen der Compliance der Hybridumgebungen von Kunden
 - Verwalten von Kubernetes-Hybridclustern im großen Stil – [Kubernetes mit Azure Arc-Aktivierung (Vorschauversion):](../../azure-arc/kubernetes/overview.md)
-  - [Verwalten von verbundenen Kubernetes-Clustern](../../azure-arc/kubernetes/connect-cluster.md) mit delegierten Abonnements und/oder Ressourcengruppen in Azure
-  - [Verwenden von GitOps](../../azure-arc/kubernetes/use-gitops-connected-cluster.md) für verbundene Cluster
+  - [Verwalten von verbundenen Kubernetes-Clustern](../../azure-arc/kubernetes/quickstart-connect-cluster.md) mit delegierten Abonnements und/oder Ressourcengruppen in Azure
+  - [Verwenden von GitOps](../../azure-arc/kubernetes/tutorial-use-gitops-connected-cluster.md) für verbundene Cluster
   - Erzwingen von Richtlinien für verbundene Cluster
 
 [Azure Automation](../../automation/index.yml):
@@ -77,7 +77,7 @@ Die meisten Aufgaben und Dienste können auf delegierten Ressourcen über verwal
 
 [Azure-Kostenverwaltung und -Abrechnung](../../cost-management-billing/index.yml):
 
-- Über den verwaltenden Mandanten können CSP-Partner für Kunden, die dem Azure-Plan unterliegen, Verbrauchskosten vor Steuern anzeigen, verwalten und analysieren. (Käufe werden hierbei nicht berücksichtigt.) Die Kosten basieren auf Einzelhandelspreisen sowie auf dem Umfang des Azure RBAC-Zugriffs (Role-Based Access Control) des Partners für das Abonnement des Kunden.
+- Über den verwaltenden Mandanten können CSP-Partner für Kunden, die dem Azure-Plan unterliegen, Verbrauchskosten vor Steuern anzeigen, verwalten und analysieren. (Käufe werden hierbei nicht berücksichtigt.) Die Kosten basieren auf Einzelhandelspreisen sowie auf dem Umfang des Azure RBAC-Zugriffs (Role-Based Access Control) des Partners für das Abonnement des Kunden. Derzeit können Sie die Verbrauchskosten zu Einzelhandelspreisen für jedes einzelne Kundenabonnement anzeigen, basierend auf dem Azure RBAC-Zugriff.
 
 [Azure Key Vault](../../key-vault/general/index.yml):
 

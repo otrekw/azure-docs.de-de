@@ -2,13 +2,13 @@
 title: Sicherungslösungen für virtuelle Azure VMware Solution-Computer
 description: Hier finden Sie Informationen zu führenden Sicherungs- und Wiederherstellungslösungen für Ihre virtuellen Azure VMware Solution-Computer.
 ms.topic: how-to
-ms.date: 01/11/2021
-ms.openlocfilehash: 6a404f6e57f6e278f60dd63df36a90bb5f6664f1
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/17/2021
+ms.openlocfilehash: 92726cae8a6f99140e4401763d14506f71884cc1
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101738462"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106166342"
 ---
 # <a name="backup-solutions-for-azure-vmware-solution-virtual-machines-vms"></a>Sicherungslösungen für virtuelle Azure VMware Solution-Computer (virtual machines, VMs)
 
@@ -22,4 +22,5 @@ Weitere Informationen zu diesen Sicherungslösungen finden Sie hier:
 - [Commvault](https://documentation.commvault.com/11.21/essential/128997_support_for_azure_vmware_solution.html)
 - [Veritas](https://vrt.as/nb4avs)
 - [Veeam](https://www.veeam.com/kb4012)
-- [Cohesity](https://www.cohesity.com/resource-assets/solution-brief/Cohesity-Azure-Solution-Brief.pdf)
+- [Cohesity](https://www.cohesity.com/blogs/expanding-cohesitys-support-for-microsofts-ecosystem-azure-stack-and-azure-vmware-solution/)
+- [Dell Technologies](https://www.delltechnologies.com/resources/en-us/asset/briefs-handouts/solutions/dell-emc-data-protection-for-avs.pdf)

@@ -10,10 +10,10 @@ ms.date: 01/30/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt
 ms.openlocfilehash: 3271041b9f4db100cd05588129c7d714d4478f10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "83121030"
 ---
 # <a name="sequence-extension-provisioning-in-virtual-machine-scale-sets"></a>Bereitstellen des Sequenzierens von Erweiterungen in VM-Skalierungsgruppen
@@ -243,7 +243,7 @@ az vmss extension set \
 
 ### <a name="not-able-to-add-extension-with-dependencies"></a>Sie können keine Erweiterung mit Abhängigkeiten hinzufügen?
 1. Stellen Sie sicher, dass die in provisionAfterExtensions angegebenen Erweiterungen im Skalierungsgruppenmodell definiert sind.
-2. Stellen Sie sicher, dass keine zirkulären Abhängigkeiten eingeführt werden. Beispielsweise ist die folgende Sequenz nicht zulässig: ExtensionA -> ExtensionB -> ExtensionC -> ExtensionA
+2. Stellen Sie sicher, dass keine zirkulären Abhängigkeiten eingeführt werden. Die folgende Sequenz ist beispielsweise nicht zulässig: ExtensionA -> ExtensionB -> ExtensionC -> ExtensionA.
 3. Stellen Sie sicher, dass alle Erweiterungen, von denen Abhängigkeiten bestehen sollen, über eine Eigenschaft „settings“ unter „properties“ verfügen. Wenn z.B. ExtensionB nach ExtensionA bereitgestellt werden muss, dann muss unter „properties“ für ExtensionA das Feld „settings“ vorhanden sein. Sie können eine leere „settings“-Eigenschaft angeben, wenn die Erweiterung keine erforderlichen Einstellungen voraussetzt.
 
 ### <a name="not-able-to-remove-extensions"></a>Sie können keine Erweiterungen entfernen?

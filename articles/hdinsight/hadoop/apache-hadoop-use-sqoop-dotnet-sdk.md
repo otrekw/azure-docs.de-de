@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive, hdiseo17may2017, devx-track-csharp
 ms.date: 01/14/2020
 ms.openlocfilehash: a06326f5b4cf34a06475c10e368c6dcbb49ca9e4
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98928350"
 ---
 # <a name="run-apache-sqoop-jobs-by-using-net-sdk-for-apache-hadoop-in-hdinsight"></a>Ausführen von Apache Sqoop-Aufträgen mit .NET SDK für Apache Hadoop in HDInsight
@@ -112,7 +112,7 @@ Aus Hive in SQL Server:  In diesem Beispiel werden Daten aus der Hive-Tabelle `
 
 ## <a name="sqoop-import"></a>Sqoop-Import
 
-Aus SQL Server in Azure Storage. Dieses Beispiel setzt voraus, dass der oben aufgeführte Exportvorgang durchgeführt wurde.  In diesem Beispiel werden Daten aus der Tabelle `mobiledata` in SQL-Datenbank in das Verzeichnis `wasb:///tutorials/usesqoop/importeddata` unter dem Standardspeicherkonto des Clusters importiert.
+Aus SQL Server in Azure Storage. Dieses Beispiel setzt voraus, dass der oben aufgeführte Exportvorgang durchgeführt wurde.  In diesem Beispiel werden Daten aus der Tabelle `mobiledata` in SQL-Datenbank in das Verzeichnis `wasb:///tutorials/usesqoop/importeddata` unter dem Standardspeicherkonto des Clusters importiert.
 
 1. Ersetzen Sie den oben angegebenen Code im Block `//sqoop start //sqoop end` durch den folgenden Code:
 
@@ -134,7 +134,7 @@ Für Linux-basiertes HDInsight gelten die folgenden Einschränkungen:
 
 * Massenexport: Derzeit unterstützt der zum Exportieren von Daten nach Microsoft SQL Server oder Azure SQL-Datenbank verwendete Sqoop-Connector keine Masseneinfügungen.
 
-* Batchverarbeitung: Wenn Sie den Schalter `-batch` verwenden, führt Sqoop mehrere Einfügevorgänge aus, anstatt diese zu einem Batch zusammenzufassen.
+* Batchverarbeitung: Wenn Sie die Option `-batch` verwenden, führt Sqoop mehrere Einfügevorgänge aus, anstatt diese zu einem Batch zusammenzufassen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

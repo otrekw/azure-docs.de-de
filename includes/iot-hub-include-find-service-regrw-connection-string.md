@@ -9,10 +9,10 @@ ms.date: 04/03/2020
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 1a0502568c1673bcd7f57d3e9bc9c95ed90bbefa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "80756916"
 ---
 <!-- This tells how to create a custom shared access policy that has service connect and registry RW permissions for your IoT hub and get the connection string for it-->
@@ -25,7 +25,7 @@ Wenn Sie eine SAS-Richtlinie, die die Berechtigungen **Dienstverbindung** und **
 
 1. Wählen Sie im Menü über der Richtlinienliste die Option **Hinzufügen** aus.
 
-1. Geben Sie unter **Richtlinie für den gemeinsamen Zugriff hinzufügen** einen aussagekräftigen Namen für Ihre Richtlinie ein (z. B. *serviceAndRegistryReadWrite*). Wählen Sie unter **Berechtigungen** die Berechtigungen **Schreibvorgänge in Registrierung** und **Dienstverbindung** und anschließend **Erstellen** aus. (Die Berechtigung **Lesevorgänge in Registrierung** wird automatisch einbezogen, wenn Sie **Schreibvorgänge in Registrierung**auswählen.)
+1. Geben Sie unter **Richtlinie für den gemeinsamen Zugriff hinzufügen** einen aussagekräftigen Namen für Ihre Richtlinie ein (z. B. *serviceAndRegistryReadWrite*). Wählen Sie unter **Berechtigungen** die Berechtigungen **Schreibvorgänge in Registrierung** und **Dienstverbindung** und anschließend **Erstellen** aus. (Die Berechtigung **Lesevorgänge in Registrierung** wird automatisch einbezogen, wenn Sie **Schreibvorgänge in Registrierung** auswählen.)
 
     ![Hinzufügen einer neuen SAS-Richtlinie](./media/iot-hub-include-find-service-regrw-connection-string/iot-hub-add-svc-regrw-policy.png)
 

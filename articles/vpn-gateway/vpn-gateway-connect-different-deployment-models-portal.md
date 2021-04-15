@@ -1,5 +1,5 @@
 ---
-title: 'Verbinden von klassischen virtuellen Netzwerken mit Azure Resource Manager-VNETs: Portal | Microsoft-Dokumentation'
+title: 'Verbinden von klassischen virtuellen Netzwerken mit Azure Resource Manager-VNETs: Portal | Microsoft Docs'
 description: Schritte zum Verbinden klassischer VNETs mit Resource Manager-VNETs mithilfe von VPN Gateway und des Portals
 services: vpn-gateway
 author: cherylmc
@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 02/10/2021
 ms.author: cherylmc
 ms.openlocfilehash: 9d31bcaad01b9b762e57bd619d45c1f53ffb201e
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100376801"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>Verbinden von virtuellen Netzwerken aus unterschiedlichen Bereitstellungsmodellen über das Portal
@@ -114,7 +114,7 @@ Wenn Sie bereits ein VNET mit einem VPN-Gateway besitzen, stellen Sie sicher, da
 2. Klicken Sie auf **Optionale Gatewaykonfiguration**, um die Seite **Gatewaykonfiguration** zu öffnen.
 
    ![Öffnen der Seite „Gatewaykonfiguration“](./media/vpn-gateway-connect-different-deployment-models-portal/optionalgatewayconfiguration.png "Öffnen der Seite „Gatewaykonfiguration“")
-3. Klicken Sie auf **Subnetz – Erforderliche Einstellungen konfigurieren**, um die Seite **Subnetz hinzufügen** zu öffnen. Der **Name** ist bereits mit dem erforderlichen Wert konfiguriert: **GatewaySubnet**.
+3. Klicken Sie auf **Subnetz – Erforderliche Einstellungen konfigurieren**, um die Seite **Subnetz hinzufügen** zu öffnen. Der **Name** ist bereits mit dem erforderlichen Wert **GatewaySubnet** konfiguriert.
 4. **Adressbereich** bezieht sich auf den Bereich für das Gatewaysubnetz. Obwohl Sie ein Gatewaysubnetz mit einem /29-Adressbereich (3 Adressen) erstellen können, wird empfohlen, ein Gatewaysubnetz mit einer höheren Anzahl von IP-Adressen zu erstellen. Dadurch werden zukünftige Konfigurationen unterstützt, die möglicherweise eine höhere Anzahl von verfügbaren IP-Adressen erfordern. Verwenden Sie möglichst /27 oder /28. Sie können die [Beispielwerte](#values) nutzen, wenn Sie diese Schritte als Übung verwenden. In diesem Beispiel verwenden wir 10.0.0.32/28. Klicken Sie auf **OK**, um das Gatewaysubnetz zu erstellen.
 5. Auf der Seite **Gatewaykonfiguration** bezieht sich **Größe** auf die Gateway-SKU. Wählen Sie die Gateway-SKU für das VPN-Gateway aus.
 6. Vergewissern Sie sich, dass für **Routingtyp** der Wert **Dynamisch** festgelegt wurde, und klicken Sie auf **OK**, um zur Seite **Neue VPN-Verbindung** zurückzukehren.
@@ -207,7 +207,7 @@ In den folgenden Schritten konfigurieren Sie mithilfe des Azure-Portals die Verb
 2. Klicken Sie auf **Konfiguration** und stellen Sie sicher, dass es sich beim IP-Adresswert um das VPN-Gateway für das klassische VNET handelt. Aktualisieren Sie diesen bei Bedarf und klicken Sie dann auf **Speichern**. Schließen Sie die Seite.
 3. Klicken Sie unter **Alle Ressourcen** auf das lokale Netzwerkgateway.
 4. Klicken Sie auf **Verbindungen**, um die Seite „Verbindungen“ zu öffnen.
-5. Klicken Sie auf der Seite **Verbindungen** auf **+** , um eine Verbindung hinzuzufügen.
+5. Klicken Sie auf der Seite **Verbindungen** auf **+**, um eine Verbindung hinzuzufügen.
 6. Geben Sie auf der Seite **Verbindung hinzufügen** einen Namen für die Verbindung ein. Beispiel: „RMtoClassic“.
 7. **Standort-zu-Standort-** ist bereits auf dieser Seite ausgewählt.
 8. Wählen Sie das Gateway des virtuellen Netzwerks aus, das Sie diesem Standort zuweisen möchten.
@@ -258,7 +258,7 @@ Select-AzureSubscription -SubscriptionName "Name of subscription"
 
 ### <a name="2-view-the-network-configuration-file-values"></a>2. Anzeigen der Werte der Netzwerkkonfigurationsdatei
 
-Wenn Sie im Azure-Portal ein VNet erstellen, ist der vollständige von Azure verwendet Name im Azure-Portal nicht zu sehen. Beispielsweise kann ein VNET, das im Azure-Portal als „ClassicVNet“ angezeigt wird, in der Netzwerkkonfigurationsdatei einen viel längeren Namen haben. Der Name sieht möglicherweise wie folgt aus: 'Gruppe ClassicRG ClassicVNet'. In den folgenden Schritten laden Sie die Netzwerkkonfigurationsdatei herunter und zeigen die Werte an.
+Wenn Sie im Azure-Portal ein VNet erstellen, ist der vollständige von Azure verwendet Name im Azure-Portal nicht zu sehen. Beispielsweise kann ein VNET, das im Azure-Portal als „ClassicVNet“ angezeigt wird, in der Netzwerkkonfigurationsdatei einen viel längeren Namen haben. Der Name kann etwa wie folgt aussehen: „Group ClassicRG ClassicVNet“. In den folgenden Schritten laden Sie die Netzwerkkonfigurationsdatei herunter und zeigen die Werte an.
 
 Erstellen Sie auf Ihrem Computer ein Verzeichnis, und exportieren Sie die Netzwerkkonfigurationsdatei in das Verzeichnis. In diesem Beispiel wird die Netzwerkkonfigurationsdatei in das Verzeichnis „C:\AzureNet“ exportiert.
 

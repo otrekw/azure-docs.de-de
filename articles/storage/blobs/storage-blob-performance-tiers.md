@@ -9,10 +9,10 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
 ms.openlocfilehash: cf0b5d29e0dc375a07fe024ef0763c8200275055
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98880707"
 ---
 # <a name="performance-tiers-for-block-blob-storage"></a>Leistungsstufen für Blockblobspeicher
@@ -45,7 +45,7 @@ Speicher mit Premium-Leistung eignet sich ideal für Workloads, die schnelle und
 
 - **Interaktive Workloads**. Für diese Workloads sind sofortige Updates und Benutzerfeedback erforderlich (z. B. bei E-Commerce- und Kartierungsanwendungen). Beispielsweise werden in einer E-Commerce-Anwendung weniger häufig angezeigte Elemente wahrscheinlich nicht zwischengespeichert. Sie müssen dem Kunden jedoch sofort bei Bedarf angezeigt werden.
 
-- **Analysen**. In einem IoT-Szenario können jede Sekunde viele kleinere Schreibvorgänge in die Cloud übermittelt werden. Große Datenmengen können aufgenommen, zu Analysezwecken aggregiert und dann fast unmittelbar gelöscht werden. Dank der hohen Aufnahmefähigkeiten des Premium-Blockblobspeichers kann er für diesen Workloadtyp effizient eingesetzt werden.
+- **Analysen:** In einem IoT-Szenario können jede Sekunde viele kleinere Schreibvorgänge in die Cloud übermittelt werden. Große Datenmengen können aufgenommen, zu Analysezwecken aggregiert und dann fast unmittelbar gelöscht werden. Dank der hohen Aufnahmefähigkeiten des Premium-Blockblobspeichers kann er für diesen Workloadtyp effizient eingesetzt werden.
 
 - **Künstliche Intelligenz/Machine Learning (KI/ML)** . Bei AI/ML geht es um den Nutzung und Verarbeitung verschiedener Datentypen wie visuelle Elemente, Sprache und Text. Dieser High Performance Compting-Workloadtyp verarbeitet große Datenmengen, die eine schnelle Reaktion und effiziente Erfassungszeiten für die Datenanalyse erfordern.
 
@@ -71,8 +71,8 @@ Zum Kopieren von Blobs zwischen Speicherkonten können Sie die neueste Version d
 
 Die Blob Storage-Lebenszyklusverwaltung bietet eine umfassende, regelbasierte Richtlinie:
 
-- **Premium**: Daten laufen am Ende ihres Lebenszyklus ab.
-- **Standard**: Daten werden auf die bestmögliche Zugriffsebene übertragen und am Ende des Lebenszyklus laufen die Daten ab.
+- **Premium:** Die Daten laufen am Ende ihres Lebenszyklus ab.
+- **Standard:** Die Daten werden auf die bestmögliche Zugriffsebene übertragen und am Ende des Lebenszyklus laufen die Daten ab.
 
 Weitere Informationen finden Sie unter [Verwalten des Azure Blob Storage-Lebenszyklus](storage-lifecycle-management-concepts.md).
 

@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
 ms.openlocfilehash: 0890e13acbba8dae31de28d7c78a81bd9b516853
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "76312259"
 ---
 # <a name="evaluate-recommender"></a>Evaluate Recommender
@@ -35,7 +35,7 @@ Im Modul werden außerdem die entsprechenden Leistungsmetriken anhand des Typs d
 
 Im Modul „Evaluate Recommender“ wird eine Vorhersage, die von einem Empfehlungsmodell ausgegeben wurde, mit den entsprechenden „Ground Truth“-Daten verglichen. Beispielsweise werden mit dem Modul [Score SVD Recommender](score-svd-recommender.md) bewertete Datasets erzeugt, die Sie mit „Evaluate Recommender“ analysieren können.
 
-### <a name="requirements"></a>Requirements (Anforderungen)
+### <a name="requirements"></a>Anforderungen
 
 Für „Evaluate Recommender“ sind die folgenden Datasets als Eingabe erforderlich. 
   

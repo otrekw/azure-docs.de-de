@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: how-to,automl,contperf-fy21q2
 ms.date: 12/18/2020
 ms.openlocfilehash: c90ef9fe49a87c18c7f4f55175bafaebfd31d722
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "98610300"
 ---
 # <a name="data-featurization-in-automated-machine-learning"></a>Datenfeaturisierung mit automatisiertem maschinellem Lernen
@@ -65,11 +65,11 @@ In der folgenden Tabelle sind die Verfahren zusammengefasst, die automatisch auf
 
 |Schritte zur&nbsp;Featurisierung| BESCHREIBUNG |
 | ------------- | ------------- |
-|**Löschen von Features mit hoher Kardinalität oder ohne Varianz** _ |Löschen Sie diese Features aus Trainings-und Validierungssätzen. Gilt für Features, denen alle Werte fehlen, die denselben Wert für alle Zeilen haben oder die eine sehr hohe Kardinalität (z. B. Hashes, IDs oder GUIDs) aufweisen.|
-|_*Imputieren von fehlenden Werten**_ |Bei numerischen Features werden fehlende Werte mit dem Durchschnitt der Werte in der Spalte imputiert.<br/><br/>Bei kategorischen Features werden fehlende Werte mit dem am häufigsten vorkommenden Wert imputiert.|
-|_*Generieren weiterer Features**_ |Für DateTime-Funktionen: Jahr, Monat, Tag, Tag der Woche, Tag des Jahres, Quartal, Woche des Jahres, Stunde, Minute, Sekunde.<br><br> _Für Vorhersageaufgaben* werden diese zusätzlichen DateTime-Features erstellt: ISO-Jahr, Halb – Halbjahr, Kalendermonat als Zeichenfolge, Woche, Wochentag als Zeichenfolge, Quartalstag, Tag des Jahres, AM/PM (0, wenn die Stunde vor Mittag ist (12 pm), andernfalls 1), AM/PM als Zeichenfolge, Tageszeit (12-Stunden-Basis)<br/><br/>Für Text-Funktionen: Ausdruckshäufigkeit basierend auf Unigrammen, Bigrammen und Trigrammen. Informieren Sie sich, [wie Sie hierzu BERT verwenden](#bert-integration).|
-|**Transformieren und Codieren** _|Numerische Features mit wenigen eindeutigen Werten werden in kategorische Features transformiert.<br/><br/>One-Hot-Codierung wird für kategorische Features mit geringer Kardinalität verwendet. One-Hot-Hashcodierung wird für kategorische Features mit hoher Kardinalität verwendet.|
-|_ *Worteinbettungen**|Ein Textfeaturizer konvertiert Vektoren von Texttoken mithilfe eines vortrainierten Modells in Satzvektoren. Der Einbettungsvektor jedes Worts in einem Dokument wird mit dem Rest zusammengefasst und produziert so einen Dokumentenfeaturevektor.|
+|**Löschen von Features mit hoher Kardinalität oder ohne Varianz*** |Löschen Sie diese Features aus Trainings-und Validierungssätzen. Gilt für Features, denen alle Werte fehlen, die denselben Wert für alle Zeilen haben oder die eine sehr hohe Kardinalität (z. B. Hashes, IDs oder GUIDs) aufweisen.|
+|**Imputieren von fehlenden Werten*** |Bei numerischen Features werden fehlende Werte mit dem Durchschnitt der Werte in der Spalte imputiert.<br/><br/>Bei kategorischen Features werden fehlende Werte mit dem am häufigsten vorkommenden Wert imputiert.|
+|**Generieren weiterer Features** _ |Für DateTime-Funktionen: Jahr, Monat, Tag, Tag der Woche, Tag des Jahres, Quartal, Woche des Jahres, Stunde, Minute, Sekunde.<br><br> _Für Vorhersageaufgaben* werden diese zusätzlichen DateTime-Features erstellt: ISO-Jahr, Halb – Halbjahr, Kalendermonat als Zeichenfolge, Woche, Wochentag als Zeichenfolge, Quartalstag, Tag des Jahres, AM/PM (0, wenn die Stunde vor Mittag ist (12 pm), andernfalls 1), AM/PM als Zeichenfolge, Tageszeit (12-Stunden-Basis)<br/><br/>Für Text-Funktionen: Ausdruckshäufigkeit basierend auf Unigrammen, Bigrammen und Trigrammen. Informieren Sie sich, [wie Sie hierzu BERT verwenden](#bert-integration).|
+|**Transformieren und Codieren***|Numerische Features mit wenigen eindeutigen Werten werden in kategorische Features transformiert.<br/><br/>One-Hot-Codierung wird für kategorische Features mit geringer Kardinalität verwendet. One-Hot-Hashcodierung wird für kategorische Features mit hoher Kardinalität verwendet.|
+|**Worteinbettungen**|Ein Textfeaturizer konvertiert Vektoren von Texttoken mithilfe eines vortrainierten Modells in Satzvektoren. Der Einbettungsvektor jedes Worts in einem Dokument wird mit dem Rest zusammengefasst und produziert so einen Dokumentenfeaturevektor.|
 |**Clusterabstand**|Trainiert ein k-Means-Clusteringmodell für alle numerischen Spalten. Gibt *k* neue Features aus (ein neues numerisches Feature pro Cluster), die den Abstand jeder Stichprobe zum Schwerpunkt jedes Clusters enthalten.|
 
 ## <a name="data-guardrails"></a>Schutzmaßnahmen für Daten

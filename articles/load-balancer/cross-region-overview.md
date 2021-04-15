@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: allensu
 ms.custom: references_regions
-ms.openlocfilehash: b0e51d11797bc5767f19b25a92a2d29a66ea1bb2
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 8e14b22895c4734f1efd8688a5b20c946422a080
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102176721"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103225624"
 ---
 # <a name="cross-region-load-balancer-preview"></a>Regionsübergreifender Lastenausgleich (Vorschau)
 
@@ -94,7 +94,7 @@ Der Back-End-Pool des regionsübergreifenden Lastenausgleichs enthält mindesten
 
 Fügen Sie Ihre vorhandenen Lastenausgleichsbereitstellungen einem regionsübergreifenden Lastenausgleich für eine hochverfügbare, regionsübergreifende Bereitstellung hinzu.
 
-In der **Startregion** wird der regionsübergreifende Lastenausgleich bereitgestellt. Diese Region wirkt sich nicht darauf aus, wie der Datenverkehr weitergeleitet wird. Wenn eine Startregion ausfällt, wirkt sich dies nicht auf den Fluss des Datenverkehrs aus.
+In der **Startregion** wird der regionsübergreifende Load Balancer oder die öffentliche IP-Adresse der globalen Ebene bereitgestellt. Diese Region wirkt sich nicht darauf aus, wie der Datenverkehr weitergeleitet wird. Wenn eine Startregion ausfällt, wirkt sich dies nicht auf den Fluss des Datenverkehrs aus.
 
 ### <a name="home-regions"></a>Startregionen
 * USA (Ost) 2
@@ -106,9 +106,9 @@ In der **Startregion** wird der regionsübergreifende Lastenausgleich bereitgest
 * Asien, Osten
 
 > [!NOTE]
-> Sie können Ihren regionsübergreifenden Lastenausgleich nur in einer der acht oben aufgeführten Regionen bereitstellen.
+> Sie können Ihren regionsübergreifenden Load Balancer oder die öffentliche IP-Adresse der globalen Ebene nur in einer der sieben oben aufgeführten Regionen bereitstellen.
 
-In einer **teilnehmenden Region** ist die globale öffentliche IP-Adresse des Lastenausgleichs verfügbar. 
+In einer **teilnehmenden Region** ist die globale öffentliche IP-Adresse des Load Balancers verfügbar. 
 
 Der vom Benutzer gestartete Datenverkehr wird über das Microsoft-Kernnetzwerk in die nächstgelegene teilnehmende Region übertragen. 
 

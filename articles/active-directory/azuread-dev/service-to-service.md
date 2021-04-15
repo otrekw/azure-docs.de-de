@@ -14,10 +14,10 @@ ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 179034533d90dbbb6ca362fc6f72996f32873729
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "80154762"
 ---
 # <a name="service-to-service-apps"></a>Dienst-zu-Dienst-Apps
@@ -57,7 +57,7 @@ Im folgenden Ablauf wird davon ausgegangen, dass ein Benutzer in einer anderen A
 
 ## <a name="code-samples"></a>Codebeispiele
 
-Sehen Sie sich die Codebeispiele für Szenarios vom Typ „Daemon- oder Serveranwendung zu Web-API“ an. [Server- oder Daemon-Anwendung zu Web-API](sample-v1-code.md#daemon-applications-accessing-web-apis-with-the-applications-identity)
+Sehen Sie sich die Codebeispiele für Szenarios vom Typ „Daemon- oder Serveranwendung zu Web-API“ an: [Server or Daemon Application to Web API](sample-v1-code.md#daemon-applications-accessing-web-apis-with-the-applications-identity)
 
 ## <a name="app-registration"></a>App-Registrierung
 

@@ -13,10 +13,10 @@ ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
 ms.openlocfilehash: efaf6060c0b09e071546038d9e30f2c8065059e7
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98600138"
 ---
 # <a name="what-are-security-defaults"></a>Was sind Sicherheitsstandards?
@@ -131,11 +131,11 @@ Diese kostenlosen Sicherheitsstandards ermöglichen die Registrierung für und V
 | App-Kennwörter |   | X*** |
 
 - ** Benutzer können Prüfcodes von der Microsoft Authenticator-App verwenden, können sich jedoch nur mit der Benachrichtigungsoption registrieren.
-- *** App-Kennwörter sind nur in Szenarien mit benutzerbasierter MFA mit Legacyauthentifizierung verfügbar, wenn diese Methode von Administratoren aktiviert wurde.
+- ** App-Kennwörter sind nur in Szenarien mit benutzerbasierter MFA mit Legacyauthentifizierung verfügbar, wenn diese Methode von Administratoren aktiviert wurde.
 
 ### <a name="disabled-mfa-status"></a>Deaktivierter MFA-Status
 
-Wenn Ihre Organisation früher benutzerbasierte Azure AD Multi-Factor Authentication verwendet hat, sollten Sie nicht beunruhigt sein, wenn Sie auf der Statusseite der mehrstufigen Authentifizierung keine Benutzer mit dem Status _ *Aktiviert** oder **Erzwungen** sehen. **Deaktiviert** ist der geeignete Status für Benutzer, die Sicherheitsstandards oder auf bedingtem Zugriff basierende Azure AD Multi-Factor Authentication verwenden.
+Wenn Ihre Organisation früher benutzerbasierte Azure AD Multi-Factor Authentication verwendet hat, sollten Sie nicht beunruhigt sein, wenn auf der Statusseite der mehrstufigen Authentifizierung keine Benutzer mit dem Status **Aktiviert** oder **Erzwungen** angezeigt werden. **Deaktiviert** ist der geeignete Status für Benutzer, die Sicherheitsstandards oder auf bedingtem Zugriff basierende Azure AD Multi-Factor Authentication verwenden.
 
 ### <a name="conditional-access"></a>Bedingter Zugriff
 

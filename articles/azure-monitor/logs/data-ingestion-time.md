@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/18/2019
-ms.openlocfilehash: 56ef6563982c315d34cfeb87070b9ebfa3d27a30
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 49122421f04ee6eef8828ca305cfb235aceee3fb
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102500426"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105035692"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Protokolldatenerfassungszeit in Azure Monitor
 Azure Monitor ist ein Hochleistungs-Datendienst, der Tausende Kunden bedient, die mit zunehmender Tendenz jeden Monat Terabytes von Daten senden. Häufig werden Fragen nach dem Zeitbedarf gestellt, der nach dem Sammeln der Protokolldaten bis zu ihrer Verfügbarkeit zu veranschlagen ist. Dieser Artikel erläutert die verschiedenen Faktoren, die sich auf diese Wartezeit auswirken.
@@ -81,8 +81,8 @@ Die Erfassungszeit kann für verschiedene Ressourcen unter verschiedenen Umstän
 | Schritt | Eigenschaft oder Funktion | Kommentare |
 |:---|:---|:---|
 | Erstellung des Datensatzes in der Datenquelle | [TimeGenerated](./log-standard-columns.md#timegenerated-and-timestamp) <br>Falls die Datenquelle diesen Wert nicht festgelegt, wird er auf die gleiche Zeit festgelegt wie „_TimeReceived“. |
-| Eingang des Datensatzes beim Azure Monitor-Erfassungsendpunkt | [_TimeReceived](./log-standard-columns.md#_timereceived) | |
-| Speicherung des Datensatzes im Arbeitsbereich, sodass er für Abfragen zur Verfügung steht | [ingestion_time()](/azure/kusto/query/ingestiontimefunction) | |
+| Eingang des Datensatzes beim Azure Monitor-Erfassungsendpunkt | [_TimeReceived](./log-standard-columns.md#_timereceived) | Dieses Feld ist nicht für die Massenverarbeitung optimiert und sollte nicht zum Filtern großer Datasets verwendet werden. |
+| Speicherung des Datensatzes im Arbeitsbereich, sodass er für Abfragen zur Verfügung steht | [ingestion_time()](/azure/kusto/query/ingestiontimefunction) | Es wird empfohlen, ingestion_time () zu verwenden, wenn nur Datensätze gefiltert werden müssen, die in einem bestimmten Zeitfenster erfasst wurden. In diesem Fall empfiehlt es sich, einen TimeGenerated-Filter mit einem größeren Bereich hinzuzufügen. |
 
 ### <a name="ingestion-latency-delays"></a>Verzögerungen der Erfassungswartezeit
 Sie können die Wartezeit eines bestimmten Datensatzes messen, indem Sie das Ergebnis der Funktion [ingestion_time()](/azure/kusto/query/ingestiontimefunction) mit der Eigenschaft _TimeGenerated_ vergleichen. Diese Daten können mit verschiedenen Aggregationen verwendet werden, um das Verhalten der Erfassungswartezeit zu ermitteln. Untersuchen Sie ein Perzentil der Erfassungszeit, um Einblicke für große Datenmengen zu erhalten. 

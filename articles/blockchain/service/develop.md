@@ -5,10 +5,10 @@ ms.date: 03/26/2020
 ms.topic: conceptual
 ms.reviewer: janders
 ms.openlocfilehash: 4a98e5ea025894303bc5c77bba0c6154a08315f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "80348376"
 ---
 # <a name="azure-blockchain-service-development-overview"></a>Übersicht über die Entwicklung mit dem Azure Blockchain-Dienst
@@ -25,26 +25,26 @@ Sie können eine Verbindung mit Konsortiumsmitgliedern herstellen, indem Sie die
 
 Für die Entwicklung von professionellen Blockchainlösungen für Unternehmen ist ein Entwicklungsframework erforderlich, um Verbindungen mit verschiedenen Blockchainnetzwerken herzustellen und den Lebenszyklus von Smart Contracts zu verwalten. Die meisten Projekte interagieren mit mindestens zwei Blockchainknoten. Entwickler verwenden bei der Entwicklung eine lokale Blockchain. Wenn die Anwendung für Tests oder Release bereit ist, stellt der Entwickler sie in einem Blockchainnetzwerk bereit. Beispiele hierfür sind das öffentliche Ethereum-Hauptnetzwerk oder der Azure Blockchain-Dienst. Das Azure Blockchain Development Kit für die Ethereum-Erweiterung in Visual Studio Code verwendet Truffle. Truffle ist ein beliebtes Blockchainentwicklungsframework zum Schreiben, Kompilieren, Bereitstellen und Testen von dezentralisierten Anwendungen für Ethereum-Blockchains. Sie können sich Truffle als Framework vorstellen, das versucht, die Smart Contract-Entwicklung und die traditionelle Webentwicklung nahtlos zu integrieren.
 
-Weitere Informationen finden Sie unter [Quickstart: Herstellen einer Verbindung mit einem Azure Blockchain Service-Konsortiumsnetzwerk mithilfe von Visual Studio Code](connect-vscode.md) durch.
+Weitere Informationen finden Sie unter [Schnellstart: Herstellen einer Verbindung mit einem Azure Blockchain Service-Konsortiumsnetzwerk mithilfe von Visual Studio Code](connect-vscode.md).
 
 ### <a name="metamask"></a>MetaMask
 
 MetaMask ist ein browserbasierter Wallet (Remoteclient), RPC-Client und einfacher Vertrags-Explorer. Im Gegensatz zu anderen browserbasierten Wallets injiziert MetaMask eine Web3-Instanz in den JavaScript-Kontext des Browsers und dient als RPC-Client, der eine Verbindung mit mehreren Ethereum-Blockchains (*mainnet*, *Ropsten testnet*, *Kovan testnet*, lokaler RPC-Knoten usw.) herstellt. Sie können einen benutzerdefinierten RPC einrichten, um mithilfe von Remix mühelos eine Verbindung mit den Azure Blockchain-Dienst herzustellen und mit der Blockchainentwicklung zu beginnen.
 
-Weitere Informationen finden Sie unter [Quickstart: Verwenden von MetaMask zum Verbinden und Bereitstellen eines Smart Contract](connect-metamask.md)
+Weitere Informationen finden Sie unter [Schnellstart: Verwenden von MetaMask zum Verbinden und Bereitstellen eines Smart Contracts](connect-metamask.md).
 
 ### <a name="geth"></a>Geth
 
 Geth ist die Befehlszeilenschnittstelle zum Ausführen eines vollständigen Ethereum-Knotens, der in Go implementiert ist. Sie müssen keinen vollständigen Knoten ausführen, jedoch können Sie dessen interaktive Konsole starten, die eine JavaScript-Laufzeitumgebung bereitstellt, die wiederum eine JavaScript-API für die Interaktion mit Azure Blockchain zur Verfügung stellt.
 
-Weitere Informationen finden Sie unter [Quickstart: Anfügen an einen Azure Blockchain Service-Transaktionsknoten mithilfe von Geth](connect-geth.md).
+Weitere Informationen finden Sie unter [Schnellstart: Anfügen an einen Azure Blockchain Service-Transaktionsknoten mithilfe von Geth](connect-geth.md).
 
 ## <a name="ethereum-quorum-private-transactions"></a>Private Ethereum Quorum-Transaktionen
 
 Quorum ist ein auf Ethereum basierendes verteiltes Ledgerprotokoll mit Datenschutz für Transaktionen und Verträge sowie neuen Konsensmechanismen. Die folgenden wichtigen Verbesserungen gegenüber Go-Ethereum sind enthalten:
 
 * **Datenschutz**: Quorum unterstützt private Transaktionen und Verträge über die Aufteilung privater Zustände und nutzt den Peer-to-Peer-Austausch verschlüsselter Nachrichten für die direkte Übertragung privater Daten zwischen Netzwerkteilnehmern.
-* **Alternative Konsensmechanismen**: Proof-of-Work oder Proof-of-Stake sind für ein berechtigtes Netzwerk nicht erforderlich. Quorum stellt mehrere Konsensmechanismen bereit, die für Konsortiumblockchains wie RAFT und IBFT entwickelt wurden.  Azure Blockchain Service nutzt den IBFT-Konsensmechanismus.
+* **Alternative Konsensmechanismen**: Proof-of-Work oder Proof-of-Stake sind für ein berechtigtes Netzwerk nicht erforderlich. Quorum stellt mehrere Konsensmechanismen bereit, die für Konsortiumblockchains wie RAFT und IBFT entwickelt wurden.  Azure Blockchain Service nutzt den IBFT-Konsensmechanismus.
 * **Peer-Berechtigungsvergabe**: Die Berechtigung von Knoten und Peers erfolgt mithilfe von Smart Contracts, wodurch sichergestellt wird, dass nur bekannte Parteien dem Netzwerk beitreten können.
 * **Bessere Leistung**: Quorum bietet bessere Leistung als die öffentliche Geth-Schnittstelle.
 

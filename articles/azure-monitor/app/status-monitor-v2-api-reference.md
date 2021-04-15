@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 2278b9d70e888fa546dc64da4743b2bf5b6c45e8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7c5c2f1d055ec6270892873548872b20b17b4158
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100587524"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105566896"
 ---
 # <a name="azure-monitor-application-insights-agent-api-reference"></a>API-Referenz für den Azure Monitor Application Insights-.NET-Agent
 
@@ -100,6 +100,8 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap
 
 ```
 
+> [!NOTE]
+> Die Benennung von „AppFilter“ in diesem Kontext kann verwirrend sein. `AppFilter` legt den RegEx-Filter für den Anwendungsnamen fest („HostingEnvironment.SiteName“ im Fall von .NET unter IIS). `VirtualPathFilter` legt den Regex-Filter für den virtuellen Pfad fest („HostingEnvironment.ApplicationVirtualPath“ im Fall von .NET unter IIS). Zum Instrumentieren einer einzelnen App verwenden Sie dann „VirtualPathFilter“ wie folgt: `Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap @(@{VirtualPathFilter="^/MyAppName$"; InstrumentationSettings=@{InstrumentationKey='<your ikey>'}})`
 
 ### <a name="parameters"></a>Parameter
 

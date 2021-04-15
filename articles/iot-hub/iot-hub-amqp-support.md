@@ -11,10 +11,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 7b3dcfc51df7f0fe4291e9c5babccc1444ad32e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "81730752"
 ---
 # <a name="communicate-with-your-iot-hub-by-using-the-amqp-protocol"></a>Kommunikation mit Ihrem IoT-Hub mithilfe des Protokolls AMQP
@@ -131,7 +131,7 @@ for msg in batch:
 
 Wie im vorherigen Code gezeigt, hat eine Cloud-zu-Gerät-Feedbacknachricht den Inhaltstyp *application/vnd.microsoft.iothub.feedback.json*. Sie können die Eigenschaften im JSON-Textkörper der Nachricht verwenden, um den Zustellungsstatus der ursprünglichen Nachricht herzuleiten:
 
-* Der Schlüssel `statusCode` im Feedbacktext hat einen der folgenden Werte: *Success*, *Expired*, *DeliveryCountExceeded*, *Rejected* oder *Purged*.
+* Der Schlüssel `statusCode` im Feedbacktext verfügt einen der folgenden Werte: *Success* (Erfolg), *Expired* (Abgelaufen), *DeliveryCountExceeded* (LieferanzahlÜberschritten), *Rejected* (Abgelehnt) oder *Purged* (Gelöscht).
 
 * Der Schlüssel `deviceId` im Feedbacktext enthält die ID des Zielgeräts.
 
@@ -375,6 +375,6 @@ Weitere Informationen zum Protokoll AMQP finden Sie in der [AMQP 1.0-Spezifikati
 
 Weitere Informationen zum IoT Hub-Messaging finden Sie unter:
 
-* [Cloud-zu-Gerät-Nachrichten](./iot-hub-devguide-messages-c2d.md)
+* [C2D-Nachrichten](./iot-hub-devguide-messages-c2d.md)
 * [Unterstützung zusätzlicher Protokolle](iot-hub-protocol-gateway.md)
 * [Unterstützung des Protokolls MQTT (Message Queuing Telemetry Transport)](./iot-hub-mqtt-support.md)

@@ -1,14 +1,14 @@
 ---
-title: Übersicht über den Connected Machine-Agent für Windows
+title: Übersicht über den Connected Machine-Agent
 description: Dieser Artikel bietet eine ausführliche Übersicht über den Agent für Azure Arc-fähige Server, der die Überwachung von VMs unterstützt, die in Hybridumgebungen gehostet werden.
-ms.date: 02/18/2021
+ms.date: 03/15/2021
 ms.topic: conceptual
-ms.openlocfilehash: ebd9412849b4a0b3081e892d7472e598ca6e8365
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 1fd863ccacc7768401e35254a98c7bb494b3d358
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101651092"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103470488"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Übersicht über den Agent für Azure Arc-fähige Server
 
@@ -90,9 +90,11 @@ Für den Azure Connected Machine-Agent werden offiziell folgende Windows- und 
 
 ### <a name="required-permissions"></a>Erforderliche Berechtigungen
 
-* Zum Durchführen des Onboardings von Computern müssen Sie der Rolle **Onboarding verbundener Azure-Computer** angehören.
+* Zum Onboarding von Computern müssen Sie Mitglied der Ressourcengruppe mit der Rolle **Onboarding von Azure Connected Machine** oder der Rolle [Mitwirkender](../../role-based-access-control/built-in-roles.md#contributor) sein.
 
-* Zum Lesen, Ändern oder Löschen eines Computers müssen Sie der Rolle **Ressourcenadministrator für Azure Connected Machine** angehören. 
+* Zum Lesen, Ändern oder Löschen eines Computers müssen Sie Mitglied der Ressourcengruppe mit der Rolle **Ressourcenadministrator für Azure Connected Machine** sein.
+
+* Wenn Sie bei Verwendung der Methode **Skript generieren** eine Ressourcengruppe aus der Dropdownliste auswählen möchten, müssen Sie Mitglied der Ressourcengruppe mit mindestens der Rolle [Leser](../../role-based-access-control/built-in-roles.md#reader) sein.
 
 ### <a name="azure-subscription-and-service-limits"></a>Einschränkungen von Azure-Abonnements und -Diensten
 

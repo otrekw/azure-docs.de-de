@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 96fbe676d4b929d2c1ee2efce0d10f3b5dc7c6ab
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 920249aa252469c3db2be284fc010d775d04c921
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100103191"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104578276"
 ---
 # <a name="web-app-that-signs-in-users-app-registration"></a>Web-App für Benutzeranmeldungen: App-Registrierung
 
@@ -94,6 +94,21 @@ Im Beispiel wird standardmäßig Folgendes verwendet:
    1. Wählen Sie als Schlüsseldauer die Option **In 1 Jahr** aus.
    1. Wählen Sie **Hinzufügen**.
    1. Wenn der Schlüsselwert angezeigt wird, kopieren Sie ihn für später. Dieser Wert wird nicht noch einmal angezeigt, und er kann nicht auf andere Weise abgerufen werden.
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+1. Geben Sie auf der daraufhin angezeigten Seite **Anwendung registrieren** die Registrierungsinformationen Ihrer Anwendung ein:
+   1. Geben Sie unter **Name** einen Namen für Ihre Anwendung ein (beispielsweise `node-webapp`). Benutzern Ihrer App wird wahrscheinlich dieser Namen angezeigt. Sie können ihn später ändern.
+   1. Ändern Sie **Unterstützte Kontotypen** in **Konten in allen Organisationsverzeichnissen und persönliche Microsoft-Konten (z. B. Skype, Xbox, Outlook.com)** .
+   1. Wählen Sie im Abschnitt **Umleitungs-URI (optional)** im Kombinationsfeld die Option **Web** aus, und geben Sie den folgenden Umleitungs-URI ein: `http://localhost:3000/redirect` .
+   1. Wählen Sie **Registrieren** aus, um die Anwendung zu erstellen.
+1. Suchen Sie auf der Seite **Übersicht** der App den Wert **Anwendungsclient-ID**, und notieren Sie ihn zur späteren Verwendung. Sie benötigen diesen Wert, um die Konfigurationsdatei für dieses Projekt zu konfigurieren.
+1. Wählen Sie unter **Verwalten** die Option **Zertifikate und Geheimnisse** aus.
+1. Wählen Sie im Abschnitt **Geheime Clientschlüssel** die Option **Neuer geheimer Clientschlüssel** aus, und führen Sie dann folgende Schritte aus:
+   1. Geben Sie eine Beschreibung für den Schlüssel ein.
+   1. Wählen Sie als Schlüsseldauer die Option **In 1 Jahr** aus.
+   1. Wählen Sie **Hinzufügen**.
+   1. Wenn der Schlüsselwert angezeigt wird, kopieren Sie ihn für die spätere Verwendung. Sie benötigen die Information später.
 
 # <a name="python"></a>[Python](#tab/python)
 

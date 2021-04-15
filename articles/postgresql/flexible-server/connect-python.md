@@ -1,19 +1,19 @@
 ---
 title: 'Schnellstart: Herstellen einer Verbindung unter Verwendung von Python: Azure Database for PostgreSQL Flexible Server'
 description: Diese Schnellstartanleitung enthält mehrere Python-Codebeispiele, mit deren Hilfe Sie eine Verbindung von Azure Database for PostgreSQL Flexible Server herstellen und Daten abfragen können.
-author: ambhatna
-ms.author: ambhatna
+author: rothja
+ms.author: jroth
 ms.service: postgresql
 ms.custom: mvc
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 09/22/2020
-ms.openlocfilehash: 89dc36a9b1b1fee9ad10d55945c7fc17bf72f476
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 948972c1d47e550395a280e62c0491800e716663
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "90945028"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106550641"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-postgresql---flexible-server"></a>Schnellstart: Verwenden von Python zum Herstellen einer Verbindung mit Azure Database for PostgreSQL Flexible Server sowie zum Abfragen von Daten
 
@@ -28,7 +28,7 @@ In diesem Artikel wird davon ausgegangen, dass Sie mit der Python-Entwicklung ve
 
 * Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 * Eine Instanz von Azure Database for PostgreSQL Flexible Server. Wie Sie einen flexiblen Server erstellen, erfahren Sie unter [Erstellen einer flexiblen Azure Database for PostgreSQL Flexible Server-Instanz im Azure-Portal](./quickstart-create-server-portal.md).
-* [Python](https://www.python.org/downloads/) 2.7.9+ oder 3.4+.
+* [Python](https://www.python.org/downloads/) 2.7 bzw. 3.6 oder höher
 * Aktuelles [pip](https://pip.pypa.io/en/stable/installing/)-Paketinstallationsprogramm.
 
 ## <a name="preparing-your-client-workstation"></a>Vorbereiten der Clientarbeitsstation

@@ -3,12 +3,12 @@ title: Ereignisfilter für Azure Event Grid
 description: Hier erfahren Sie, wie Sie Ereignisse beim Erstellen eines Azure Event Grid-Abonnements filtern können.
 ms.topic: conceptual
 ms.date: 03/04/2021
-ms.openlocfilehash: 94445341891149d5d02c7f33caef20bf45123e9b
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: fa63296f97bfa888cb0f425d0c03a5e4a7e46525
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102197774"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103419846"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Grundlegendes zur Ereignisfilterung für Event Grid-Abonnements
 
@@ -57,7 +57,7 @@ Um nach Werten in den Datenfeldern zu filtern und den Vergleichsoperator anzugeb
 * Schlüssel – Feld in den Ereignisdaten, die Sie für die Filterung verwenden. Dabei kann es sich um eine Zahl, einen booleschen Wert, eine Zeichenfolge oder ein Array handeln.
 * Werte – Werte, die mit dem Schlüssel verglichen werden sollen.
 
-## <a name="key"></a>Schlüssel
+## <a name="key"></a>Key
 Das Feld „key“ in den Ereignisdaten wird für die Filterung verwendet. Mögliche Typen:
 
 - Number
@@ -355,6 +355,7 @@ FOR_EACH filter IN (a, b, c)
         IF key CONTAINS filter
             FAIL_MATCH
 ```
+Weitere Informationen zur aktuellen Einschränkung dieses Operators finden Sie im Abschnitt [Einschränkungen](#limitations).
 
 ## <a name="stringbeginswith"></a>StringBeginsWith
 Der **StringBeginsWith**-Operator wird als „true“ ausgewertet, wenn der **key**-Wert mit einem der angegebenen **filter**-Werte **beginnt**. Im folgenden Beispiel wird überprüft, ob der Wert des Attributs `key1` im Abschnitt `data` mit `event` oder `grid` beginnt. `event hubs` beginnt beispielsweise mit `event`.  
@@ -634,6 +635,7 @@ Für die erweiterte Filterung gelten folgende Einschränkungen:
 * 5 erweiterte Filter und 25 Filterwerte für alle Filter pro Event Grid-Abonnement
 * 512 Zeichen pro Zeichenfolgenwert
 * Fünf Werte für **in**- und **not in**-Operatoren
+* Der Operator `StringNotContains` ist zurzeit nicht im Portal verfügbar.
 * Schlüssel mit enthaltenem **`.` (Punktzeichen)** . Zum Beispiel: `http://schemas.microsoft.com/claims/authnclassreference` oder `john.doe@contoso.com`. Derzeit gibt es keine Unterstützung für Escapezeichen in Schlüsseln. 
 
 Der gleiche Schlüssel kann in mehr als einem Filter verwendet werden.

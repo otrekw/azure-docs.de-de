@@ -7,10 +7,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.openlocfilehash: 51043f0a1009994528783a1b56ec5ccec68e99b3
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98931782"
 ---
 # <a name="selecting-the-right-vm-size-for-your-azure-hdinsight-cluster"></a>Auswählen der richtigen VM-Größe für Ihren Azure HDInsight-Cluster
@@ -52,10 +52,10 @@ Die folgende Tabelle beschreibt die Cluster- und Knotentypen, die mit den VMs de
 
 | Clustertyp | Version | Workerknoten | Hauptknoten | ZooKeeper-Knoten |
 |---|---|---|---|---|
-| Spark | All | F4 und höher | nein | nein |
-| Hadoop | All | F4 und höher | nein | nein |
-| Kafka | All | F4 und höher | nein | nein |
-| hbase | All | F4 und höher | nein | nein |
+| Spark | Alle | F4 und höher | nein | nein |
+| Hadoop | Alle | F4 und höher | nein | nein |
+| Kafka | Alle | F4 und höher | nein | nein |
+| hbase | Alle | F4 und höher | nein | nein |
 | LLAP | deaktiviert | nein | nein | nein |
 | Storm | deaktiviert | nein | nein | nein |
 | ML-Dienst | NUR HDI 3.6 | F4 und höher | nein | nein |

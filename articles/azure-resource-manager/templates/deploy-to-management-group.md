@@ -2,13 +2,13 @@
 title: Bereitstellen von Ressourcen in einer Verwaltungsgruppe
 description: In diesem Artikel wird beschrieben, wie Sie Ressourcen auf der Verwaltungsgruppenebene in einer Azure Resource Manager-Vorlage bereitstellen.
 ms.topic: conceptual
-ms.date: 01/13/2021
-ms.openlocfilehash: a203dd2c52bdc889452a6755fb025c7ed5721a59
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.date: 03/18/2021
+ms.openlocfilehash: dc7418d9e93fb50590c5e2502b3a3ffb3847273f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99491624"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105043307"
 ---
 # <a name="management-group-deployments-with-arm-templates"></a>Bereitstellung von Verwaltungsgruppen mit ARM-Vorlagen
 
@@ -25,7 +25,7 @@ Verwenden Sie für Azure Blueprints:
 * [blueprintAssignments](/azure/templates/microsoft.blueprint/blueprintassignments)
 * [versions](/azure/templates/microsoft.blueprint/blueprints/versions)
 
-Verwenden Sie für Azure-Richtlinien:
+Verwenden Sie für Azure Policy Folgendes:
 
 * [policyAssignments](/azure/templates/microsoft.authorization/policyassignments)
 * [policyDefinitions](/azure/templates/microsoft.authorization/policydefinitions)
@@ -164,7 +164,7 @@ Informationen zur Verwendung einer Verwaltungsgruppenbereitstellung zum Erstelle
 
 ### <a name="scope-to-tenant"></a>Bereich: Mandant
 
-Zum Erstellen von Ressourcen auf dem Mandanten legen Sie `scope` auf `/` fest. Der Benutzer, der die Vorlage bereitstellt, muss über den [zum Bereitstellen erforderlichen Zugriff auf dem Mandanten](deploy-to-tenant.md#required-access) verfügen.
+Zum Erstellen von Ressourcen auf dem Mandanten legen Sie `scope` auf `/` fest. Der Benutzer, der die Vorlage bereitstellt, muss über den [erforderlichen Zugriff zum Bereitstellen im Mandanten](deploy-to-tenant.md#required-access) verfügen.
 
 Legen Sie `scope` und `location` fest, um eine geschachtelte Bereitstellung zu verwenden.
 
@@ -219,6 +219,16 @@ Im nächsten Beispiel wird eine neue Verwaltungsgruppe in der Verwaltungsgruppe 
     }
 }
 ```
+
+## <a name="subscriptions"></a>Abonnements
+
+Informationen zur Verwendung einer ARM-Vorlage zum Erstellen eines neuen Azure-Abonnements in einer Verwaltungsgruppe finden Sie unter:
+
+* [Programmgesteuertes Erstellen von Azure Enterprise-Abonnements](../../cost-management-billing/manage/programmatically-create-subscription-enterprise-agreement.md)
+* [Programmgesteuertes Erstellen von Azure-Abonnements für eine Microsoft-Kundenvereinbarung](../../cost-management-billing/manage/programmatically-create-subscription-microsoft-customer-agreement.md)
+* [Programmgesteuertes Erstellen von Azure-Abonnements für eine Microsoft Partner-Vereinbarung](../../cost-management-billing/manage/programmatically-create-subscription-microsoft-partner-agreement.md)
+
+Informationen zum Bereitstellen einer Vorlage, die ein vorhandenes Azure-Abonnement in eine neue Verwaltungsgruppe verschiebt, finden Sie unter [Verschieben von Abonnements in ARM-Vorlagen](../../governance/management-groups/manage.md#move-subscriptions-in-arm-template).
 
 ## <a name="azure-policy"></a>Azure Policy
 
@@ -317,7 +327,7 @@ Aus einer Bereitstellung auf Verwaltungsgruppenebene können Sie ein Abonnement 
     "resources": [
         {
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2020-06-01",
+            "apiVersion": "2020-10-01",
             "name": "nestedSub",
             "location": "[parameters('nestedLocation')]",
             "subscriptionId": "[parameters('nestedSubId')]",
@@ -333,7 +343,7 @@ Aus einer Bereitstellung auf Verwaltungsgruppenebene können Sie ein Abonnement 
                     "resources": [
                         {
                             "type": "Microsoft.Resources/resourceGroups",
-                            "apiVersion": "2020-06-01",
+                            "apiVersion": "2020-10-01",
                             "name": "[parameters('nestedRG')]",
                             "location": "[parameters('nestedLocation')]"
                         }
@@ -343,7 +353,7 @@ Aus einer Bereitstellung auf Verwaltungsgruppenebene können Sie ein Abonnement 
         },
         {
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2020-06-01",
+            "apiVersion": "2020-10-01",
             "name": "nestedRG",
             "subscriptionId": "[parameters('nestedSubId')]",
             "resourceGroup": "[parameters('nestedRG')]",

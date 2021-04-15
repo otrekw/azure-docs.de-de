@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 05/15/2019
 ms.openlocfilehash: 0b4356c74b2e0c1494456d5d1082efd7b8953a15
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98693374"
 ---
 # <a name="use-the-azure-stream-analytics-cicd-nuget-package-for-integration-and-development"></a>Verwenden des CI/CD-NuGet-Pakets von Azure Stream Analytics für die Integration und Entwicklung 
@@ -91,6 +91,6 @@ Beispiel:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Schnellstart: Erstellen eines Azure Stream Analytics-Cloudauftrags in Visual Studio](stream-analytics-quick-create-vs.md)
+* [Quickstart: Create an Azure Stream Analytics job using Visual Studio (Schnellstart: Erstellen eines Azure Stream Analytics-Auftrags mithilfe von Visual Studio)](stream-analytics-quick-create-vs.md)
 * [Lokales Testen von Stream Analytics-Abfragen mit Visual Studio](stream-analytics-vs-tools-local-run.md)
 * [Erkunden von Azure Stream Analytics-Aufträgen mit Visual Studio](stream-analytics-vs-tools.md)

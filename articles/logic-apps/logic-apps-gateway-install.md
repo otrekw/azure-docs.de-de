@@ -4,18 +4,18 @@ description: Bevor Sie über Azure Logic Apps lokal auf Daten zugreifen können,
 services: logic-apps
 ms.suite: integration
 ms.reviewer: arthii, logicappspm
-ms.topic: article
-ms.date: 05/15/2020
-ms.openlocfilehash: 799e879b4d9fd54367d54c17b3d275acfc5f34c1
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.topic: how-to
+ms.date: 03/16/2021
+ms.openlocfilehash: 4b2559ad20036870c6df5c0662bb973f35155bfa
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054770"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104576797"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Installieren des lokalen Datengateways für Azure Logic Apps
 
-Bevor Sie eine [Verbindung mit lokalen Datenquellen aus Azure Logic Apps](../logic-apps/logic-apps-gateway-connection.md) herstellen können, müssen Sie das [lokale Datengateway](https://aka.ms/on-premises-data-gateway-installer) herunterladen und auf einem lokalen Computer installieren. Das Gateway fungiert als Brücke, die schnelle Datenübertragung und Verschlüsselung zwischen lokalen Datenquellen und Ihren Logik-Apps bereitstellt. Sie können die gleiche Gatewayinstallation für andere Clouddienste verwenden, etwa für Power BI, Power Automate, PowerApps und Azure Analysis Services. Weitere Informationen zum Verwenden des Gateways mit diesen Diensten finden Sie in den folgenden Artikeln:
+Bevor Sie eine [Verbindung mit lokalen Datenquellen aus Azure Logic Apps](../logic-apps/logic-apps-gateway-connection.md) herstellen können, müssen Sie das [lokale Datengateway](https://aka.ms/on-premises-data-gateway-installer) herunterladen und auf einem lokalen Computer installieren. Das Gateway fungiert als Brücke, die schnelle Datenübertragung und Verschlüsselung zwischen lokalen Datenquellen und Ihren Logik-Apps bereitstellt. Sie können die gleiche Gatewayinstallation für andere Clouddienste verwenden, etwa für Power Automate, Power BI, Power Apps und Azure Analysis Services. Weitere Informationen zum Verwenden des Gateways mit diesen Diensten finden Sie in den folgenden Artikeln:
 
 * [Microsoft Power Automate für das lokale Datengateway](/power-automate/gateway-reference)
 * [Microsoft Power BI | Lokales Datengateway](/power-bi/service-gateway-onprem)
@@ -71,7 +71,12 @@ Dieser Artikel zeigt, wie Sie Ihr lokales Datengateway herunterladen, installier
 
   * Wenn Sie planen, Windows-Authentifizierung zu verwenden, stellen Sie sicher, dass Sie das Gateway auf einem Computer installieren, der Mitglied derselben Active Directory-Umgebung ist wie Ihre Datenquellen.
 
-  * Die Region, die Sie für Ihre Gatewayinstallation auswählen, ist die gleiche Region, die Sie auswählen müssen, wenn Sie später die Azure-Gatewayressource für Ihre Logik-App erstellen. Standardmäßig ist diese Region derselbe Standort wie Ihr Azure AD-Mandant, der Ihr Azure-Konto verwaltet. Der Standort kann jedoch während der Gatewayinstallation geändert werden.
+  * Die Region, die Sie für Ihre Gatewayinstallation auswählen, ist die gleiche Region, die Sie auswählen müssen, wenn Sie später die Azure-Gatewayressource für Ihre Logik-App erstellen. Standardmäßig ist diese Region derselbe Standort wie Ihr Azure AD-Mandant, der Ihr Azure-Benutzerkonto verwaltet. Der Standort kann jedoch während der Gatewayinstallation oder später geändert werden.
+
+    > [!IMPORTANT]
+    > Während des Gatewaysetups ist der Befehl **Change Region** nicht verfügbar, wenn Sie mit Ihrem Azure Government-Konto angemeldet sind, das mit einem Azure AD-Mandanten (Azure Active Directory) in der [Azure Government-Cloud](../azure-government/compare-azure-government-global-azure.md) verknüpft ist. Das Gateway verwendet automatisch dieselbe Region wie der Azure AD-Mandant Ihres Benutzerkontos.
+    > 
+    > Melden Sie sich bei der Gatewayinstallation zuerst mit dem Benutzernamen `prod@microsoft.com` an, um weiterhin Ihr Azure Government-Konto zu verwenden, das Gateway aber so einzurichten, dass es stattdessen in der globalen kommerziellen Azure-Cloud mit mehreren Mandanten ausgeführt wird. Diese Lösung zwingt das Gateway dazu, die globale Azure-Cloud mit mehreren Mandanten zu verwenden, aber Sie können weiterhin Ihr Azure Government-Konto nutzen.
 
   * Wenn Sie Ihre Gatewayinstallation aktualisieren, deinstallieren Sie zuerst Ihr aktuelles Gateway, um die Erfahrung zu bereinigen.
 

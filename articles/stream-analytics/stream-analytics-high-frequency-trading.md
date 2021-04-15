@@ -5,14 +5,14 @@ author: enkrumah
 ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 12/07/2018
+ms.date: 03/16/2021
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 3f8f7744e07abb56d825ce44d5bb30190e7e87c4
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: f632c916c3de61b94532e96be23da511ad5863ea
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98020416"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104593032"
 ---
 # <a name="high-frequency-trading-simulation-with-stream-analytics"></a>Hochfrequenzhandel-Simulation mit Stream Analytics
 Die Kombination aus SQL-Sprache und benutzerdefinierten JavaScript-Funktionen (User-Defined Functions, UDFs) bzw. benutzerdefinierten Aggregaten (User-Defined Aggregates, UDAs) in Azure Stream Analytics ermöglicht Benutzern die Nutzung von Advanced Analytics. Beispiele für Analysen mit Advanced Analytics sind das Online-Trainieren und -Bewerten für Machine Learning und die Simulation zustandsbehafteter Prozesse. In diesem Artikel wird beschrieben, wie Sie die lineare Regression in einem Azure Stream Analytics-Auftrag durchführen, mit dem ständig Trainings- und Bewertungsschritte für ein Hochfrequenzhandel-Szenario ausgeführt werden.
@@ -349,7 +349,7 @@ Mit dem JavaScript-UDA werden Akkumulatoren in der `init`-Funktion initialisiert
 - Aktien verkaufen, wenn ein Verkaufssignal empfangen wird und Aktien gehalten werden.
 - Leerverkauf durchführen, falls keine Aktien gehalten werden. 
 
-Wenn eine Short-Position vorhanden ist und ein Kaufsignal empfangen wird, Aktien kaufen, um den Bestand zu decken. In dieser Simulation halten oder „leerverkaufen“ wir niemals zehn Anteilsscheine einer bestimmten Aktie. Die Transaktionskosten liegen genau bei 8 US-Dollar.
+Wenn eine Short-Position vorhanden ist und ein Kaufsignal empfangen wird, Aktien kaufen, um den Bestand zu decken. In dieser Simulation halten oder „leerverkaufen“ Sie zehn Anteilsscheine einer bestimmten Aktie. Die Transaktionskosten liegen genau bei 8 US-Dollar.
 
 ```javascript
 function main() {

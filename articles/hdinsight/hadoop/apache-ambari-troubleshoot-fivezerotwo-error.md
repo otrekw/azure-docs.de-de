@@ -5,10 +5,10 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/05/2019
 ms.openlocfilehash: 750232b19bd5ef0674a9df79fdf3972a679eda7d
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98946783"
 ---
 # <a name="scenario-apache-ambari-ui-502-error-in-azure-hdinsight"></a>Szenario: Apache Ambari-Benutzeroberfläche: Fehler 502 in Azure HDInsight
@@ -17,7 +17,7 @@ In diesem Artikel werden Schritte zur Problembehandlung und mögliche Lösungen 
 
 ## <a name="issue"></a>Problem
 
-Wenn Sie versuchen, auf die Apache Ambari-Benutzeroberfläche für Ihren HDInsight-Cluster zuzugreifen, erhalten Sie eine Meldung ähnlich der folgenden: „502 – Webserver hat als Gateway oder Proxyserver eine ungültige Antwort erhalten.“
+Wenn Sie versuchen, auf die Apache Ambari-Benutzeroberfläche für Ihren HDInsight-Cluster zuzugreifen, erhalten Sie eine Meldung ähnlich der folgenden: „502 – Webserver hat als Gateway oder Proxyserver eine ungültige Antwort erhalten“.
 
 ## <a name="cause"></a>Ursache
 

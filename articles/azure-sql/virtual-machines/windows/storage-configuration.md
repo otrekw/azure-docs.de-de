@@ -1,5 +1,5 @@
 ---
-title: Speicherkonfiguration für SQL Server-VMs | Microsoft Docs
+title: Konfigurieren von Speicher für SQL Server-VMs | Microsoft-Dokumentation
 description: In diesem Thema wird beschrieben, wie Azure den Speicher für SQL Server-VMs während der Bereitstellung konfiguriert (Azure Resource Manager-Bereitstellungsmodell). Außerdem wird erläutert, wie Sie den Speicher für Ihre vorhandenen SQL Server-VMs konfigurieren können.
 services: virtual-machines-windows
 documentationcenter: na
@@ -13,27 +13,26 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/26/2019
 ms.author: mathoma
-ms.openlocfilehash: d713faf7062f82110be5fa8378faca368b9bb7a2
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 982bd9239c5e95c9b7af09b5f54c5a09067ca7c6
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97356711"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105565418"
 ---
-# <a name="storage-configuration-for-sql-server-vms"></a>Speicherkonfiguration für SQL Server-VMs
+# <a name="configure-storage-for-sql-server-vms"></a>Konfigurieren von Speicher für SQL Server-VMs
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-Wenn Sie in Azure ein Image einer SQL Server-VM konfigurieren, unterstützt Sie das Portal beim Automatisieren Ihrer Speicherkonfiguration. Hierzu gehören auch das Anfügen von Speicher an die VM, das Verfügbarmachen dieses Speichers für SQL Server und die anschließende Konfiguration, um eine Optimierung in Bezug auf Ihre besonderen Leistungsanforderungen zu erzielen.
+In diesem Artikel erfahren Sie, wie Sie den Speicher für Ihre SQL Server-Instanz auf Azure Virtual Machines (VMs) konfigurieren.
 
-In diesem Thema wird erläutert, wie der Speicher unter Azure für Ihre SQL Server-VMs konfiguriert wird – sowohl während der Bereitstellung als auch für vorhandene VMs. Diese Konfiguration basiert auf den [bewährten Methoden für die Leistung](performance-guidelines-best-practices.md) für Azure-VMs, auf denen SQL Server ausgeführt wird.
+SQL Server-VMs, die über Marketplace-Images bereitgestellt werden, folgen automatisch den standardmäßigen [bewährten Methoden für die Speicherung](performance-guidelines-best-practices-storage.md), die während der Bereitstellung geändert werden können. Einige dieser Konfigurationseinstellungen können nach der Bereitstellung geändert werden. 
 
-[!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Zur Verwendung der Einstellungen für die automatische Speicherkonfiguration muss Ihr virtueller Computer über die folgenden Merkmale verfügen:
 
-* Bereitstellung mit einem [SQL Server-Katalogimage](sql-server-on-azure-vm-iaas-what-is-overview.md#payasyougo)
+* Mit einem [SQL Server-Katalogimage](sql-server-on-azure-vm-iaas-what-is-overview.md#payasyougo) bereitgestellt oder mit der [SQL IaaS-Erweiterung]() registriert.
 * Verwendung des [Resource Manager-Bereitstellungsmodells](../../../azure-resource-manager/management/deployment-models.md)
 * Verwendung von [SSD Premium](../../../virtual-machines/disks-types.md)
 
@@ -47,7 +46,9 @@ Wenn Sie eine Azure-VM mithilfe eines SQL Server-Katalogimages bereitstellen, w�
 
 ![Screenshot mit Hervorhebung der Registerkarte „SQL Server-Einstellungen“ und der Option „Konfiguration ändern“.](./media/storage-configuration/sql-vm-storage-configuration-provisioning.png)
 
-Wählen Sie unter **Speicheroptimierung** den Typ der Workload aus, für den Sie SQL Server bereitstellen. Mit der Optimierungsoption **Allgemein** verfügen Sie standardmäßig über einen Datenträger mit maximal 5.000 IOPS, und Sie verwenden dasselbe Laufwerk für Ihre Daten, das Transaktionsprotokoll und den TempDB-Speicher. Wenn Sie entweder **Transaktionale Verarbeitung** (OLTP) oder **Data Warehousing** auswählen, wird ein separater Datenträger für Daten, ein separater Datenträger für das Transaktionsprotokoll und eine lokale SSD für TempDB erstellt. Es gibt keine Speicherunterschiede zwischen **Transaktionale Verarbeitung** und **Datenlagerung**, aber die jeweilige Option ändert Ihre [Stripesetkonfiguration und Ablaufverfolgungsflags](#workload-optimization-settings). Wenn Sie Storage Premium auswählen, wird die Zwischenspeicherung auf *Schreibgeschützt* für das Datenlaufwerk und *Keine* für das Protokolllaufwerk festgelegt, wie unter [Bewährte Methoden für die SQL Server-VM-Leistung](performance-guidelines-best-practices.md) beschrieben. 
+Wählen Sie unter **Speicheroptimierung** den Typ der Workload aus, für den Sie SQL Server bereitstellen. Mit der Optimierungsoption **Allgemein** verfügen Sie standardmäßig über einen Datenträger mit maximal 5.000 IOPS, und Sie verwenden dasselbe Laufwerk für Ihre Daten, das Transaktionsprotokoll und den TempDB-Speicher. 
+
+Wenn Sie entweder **Transaktionale Verarbeitung** (OLTP) oder **Data Warehousing** auswählen, wird ein separater Datenträger für Daten, ein separater Datenträger für das Transaktionsprotokoll und eine lokale SSD für TempDB erstellt. Es gibt keine Speicherunterschiede zwischen **Transaktionale Verarbeitung** und **Datenlagerung**, aber die jeweilige Option ändert Ihre [Stripesetkonfiguration und Ablaufverfolgungsflags](#workload-optimization-settings). Wenn Sie Storage Premium auswählen, wird die Zwischenspeicherung auf *Schreibgeschützt* für das Datenlaufwerk und *Keine* für das Protokolllaufwerk festgelegt, wie unter [Bewährte Methoden für die SQL Server-VM-Leistung](performance-guidelines-best-practices.md) beschrieben. 
 
 ![SQL Server-VM-Speicherkonfiguration während der Bereitstellung](./media/storage-configuration/sql-vm-storage-configuration.png)
 
@@ -74,7 +75,7 @@ Je nach Ihrer Auswahl führt Azure nach dem Erstellen der VM die folgenden Aufga
 * Ordnet dem Speicherpool ein neues Laufwerk auf dem virtuellen Computer zu.
 * Optimiert dieses neue Laufwerk basierend auf Ihrem angegebenen Workloadtyp („Data Warehousing“, „Transaktionsverarbeitung“ oder „Allgemein“).
 
-Weitere Details dazu, wie unter Azure Speichereinstellungen konfiguriert werden, finden Sie im [Abschnitt zur Speicherkonfiguration](#storage-configuration). Eine vollständige exemplarische Vorgehensweise zur Erstellung einer SQL Server-VM im Azure-Portal finden Sie unter [Tutorial zur Bereitstellung](../../../azure-sql/virtual-machines/windows/create-sql-vm-portal.md).
+Eine vollständige exemplarische Vorgehensweise zur Erstellung einer SQL Server-VM im Azure-Portal finden Sie unter [Tutorial zur Bereitstellung](../../../azure-sql/virtual-machines/windows/create-sql-vm-portal.md).
 
 ### <a name="resource-manager-templates"></a>Resource Manager-Vorlagen
 
@@ -111,7 +112,7 @@ Sie können die Datenträgereinstellungen für die Laufwerke ändern, die währe
 ![Konfigurieren von Speicher für vorhandene SQL Server-VM](./media/storage-configuration/sql-vm-storage-extend-drive.png)
 
 
-## <a name="storage-configuration"></a>Speicherkonfiguration
+## <a name="automated-changes"></a>Automatisierte Änderungen
 
 Dieser Abschnitt dient als Referenz für die Änderungen der Speicherkonfiguration, die von Azure automatisch vorgenommen werden, während die SQL Server-VM-Bereitstellung oder -Konfiguration im Azure-Portal durchgeführt wird.
 
@@ -137,7 +138,7 @@ In Azure werden die folgenden Einstellungen verwendet, um den Speicherpool auf S
 <sup>1</sup> Nach der Erstellung des Speicherpools können Sie die Anzahl von Spalten im Speicherpool nicht mehr ändern.
 
 
-## <a name="workload-optimization-settings"></a>Einstellungen für die Workloadoptimierung
+### <a name="workload-optimization-settings"></a>Einstellungen für die Workloadoptimierung
 
 In der folgenden Tabelle sind die drei verfügbaren Optionen für den Workloadtyp und die entsprechenden Optimierungen beschrieben:
 
@@ -149,6 +150,78 @@ In der folgenden Tabelle sind die drei verfügbaren Optionen für den Workloadty
 
 > [!NOTE]
 > Beim Bereitstellen eines virtuellen SQL Server-Computers können Sie den Workloadtyp nur angeben, indem Sie ihn im Schritt für die Speicherkonfiguration auswählen.
+
+## <a name="enable-caching"></a>Aktivieren der Zwischenspeicherung 
+
+Ändern Sie die Richtlinie für das Zwischenspeichern auf Datenträgerebene. Sie können dies über das Azure-Portal, [PowerShell](/powershell/module/az.compute/set-azvmdatadisk) oder die [Azure CLI](/cli/azure/vm/disk) erreichen. 
+
+Gehen Sie folgendermaßen vor, um Ihre Richtlinie für das Zwischenspeichern im Azure-Portal zu ändern:
+
+1. Beenden Sie den SQL Server-Dienst. 
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. 
+1. Navigieren Sie zu Ihrem virtuellen Computer, und wählen Sie **Datenträger** unter **Einstellungen** aus. 
+   
+   ![Screenshot: Blatt „VM-Datenträgerkonfiguration“ im Azure-Portal](./media/storage-configuration/disk-in-portal.png)
+
+1. Wählen Sie in der Dropdownliste die entsprechende Richtlinie für die Zwischenspeicherung für den Datenträger aus. 
+
+   ![Screenshot: Konfiguration der Richtlinie für die Zwischenspeicherung im Azure-Portal](./media/storage-configuration/azure-disk-config.png)
+
+1. Nachdem die Änderung wirksam geworden ist, starten Sie die SQL Server-VM neu. Anschließend starten Sie den SQL Server-Dienst. 
+
+
+## <a name="enable-write-accelerator"></a>Aktivieren der Schreibbeschleunigung
+
+Die Schreibbeschleunigung ist ein Datenträgerfeature, das nur für die virtuellen Computer (VMs) der M-Serie verfügbar ist. Der Zweck der Schreibbeschleunigung besteht darin, die E/A-Wartezeit von Schreibvorgängen für Azure Storage Premium zu verbessern, wenn Sie aufgrund von unternehmenskritischen OLTP-Workloads mit hohem Volumen oder Data Warehouse-Umgebungen eine einstellige E/A-Wartezeit benötigen. 
+
+Beenden Sie alle SQL Server-Aktivitäten, und fahren Sie den SQL Server-Dienst herunter, bevor Sie Änderungen an der Richtlinie für die Schreibbeschleunigung vornehmen. 
+
+Wenn Ihre Datenträger Stripesetdatenträger sind, aktivieren Sie die Schreibbeschleunigung für jeden Datenträger einzeln und Ihre Azure-VM sollte heruntergefahren sein, bevor Sie Änderungen vornehmen. 
+
+Gehen Sie folgendermaßen vor, um die Schreibbeschleunigung über das Azure-Portal zu aktivieren:
+
+1. Beenden Sie den SQL Server-Dienst. Wenn Ihre Datenträger Stripesetdatenträger sind, fahren Sie den virtuellen Computer herunter. 
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. 
+1. Navigieren Sie zu Ihrem virtuellen Computer, und wählen Sie **Datenträger** unter **Einstellungen** aus. 
+   
+   ![Screenshot: Blatt „VM-Datenträgerkonfiguration“ im Azure-Portal](./media/storage-configuration/disk-in-portal.png)
+
+1. Wählen Sie die Option zum Zwischenspeichern mit **Schreibbeschleunigung** für Ihren Datenträger im Dropdownmenü aus. 
+
+   ![Screenshot: Richtlinie für die Zwischenspeicherung für die Schreibbeschleunigung](./media/storage-configuration/write-accelerator.png)
+
+1. Nachdem die Änderung wirksam geworden ist, starten Sie den virtuellen Computer und den SQL Server-Dienst. 
+
+## <a name="disk-striping"></a>Datenträgerstriping
+
+Für einen höheren Durchsatz können Sie zusätzliche Datenträger für Daten hinzufügen und Datenträgerstriping verwenden. Um die Anzahl der Datenträger für Daten zu bestimmen, analysieren Sie den Durchsatz und die Bandbreite, die für Ihre SQL Server-Datendateien erforderlich sind, einschließlich Protokoll und tempdb. Die Grenzwerte für Durchsatz und Bandbreite variieren je nach VM-Größe. Weitere Informationen finden Sie unter [VM-Größe](../../../virtual-machines/sizes.md).
+
+
+* Verwenden Sie [Speicherplätze](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831739(v=ws.11)) für Windows 8 und Windows Server 2012 oder höher mit den folgenden Richtlinien:
+
+  1. Legen Sie die Überlappung (Stripesetgröße) auf 64 KB (65.536 Byte) fest, um Leistungseinbußen durch falsche Partitionsausrichtung zu vermeiden. Dies muss mit PowerShell festgelegt werden.
+
+  2. Festgelegte Anzahl der Spalten = Anzahl der physischen Datenträger. Verwenden Sie PowerShell, wenn Sie mehr als 8 Datenträger (keine Server-Manager-Benutzeroberfläche) konfigurieren.
+
+Mit PowerShell erstellen Sie z. B. wie folgt einen neuen Speicherpool mit einer Überlappungsgröße von 64 KB und einer Anzahl der Spalten, die der Anzahl der physischen Datenträger im Speicherpool entspricht:
+
+  ```powershell
+  $PhysicalDisks = Get-PhysicalDisk | Where-Object {$_.FriendlyName -like "*2" -or $_.FriendlyName -like "*3"}
+  
+  New-StoragePool -FriendlyName "DataFiles" -StorageSubsystemFriendlyName "Storage Spaces*" `
+      -PhysicalDisks $PhysicalDisks | New- VirtualDisk -FriendlyName "DataFiles" `
+      -Interleave 65536 -NumberOfColumns $PhysicalDisks .Count -ResiliencySettingName simple `
+      –UseMaximumSize |Initialize-Disk -PartitionStyle GPT -PassThru |New-Partition -AssignDriveLetter `
+      -UseMaximumSize |Format-Volume -FileSystem NTFS -NewFileSystemLabel "DataDisks" `
+      -AllocationUnitSize 65536 -Confirm:$false 
+  ```
+
+  * Für Windows 2008 R2 oder früher können Sie dynamische Datenträger (Betriebssystem-Stripesetvolumes) verwenden, und die Stripesetgröße ist immer 64 KB. Diese Option ist seit Windows 8/Windows Server 2012 veraltet. Informationen hierzu finden Sie in der Supporterklärung unter [Virtual Disk Service is transitioning to Windows Storage Management API](https://docs.microsoft.com/windows/win32/w8cookbook/vds-is-transitioning-to-wmiv2-based-windows-storage-management-api)(Übergang des Diensts für virtuelle Datenträger in die Windows-Speicherverwaltungs-API, in englischer Sprache).
+ 
+  * Bei Verwendung von [Direkte Speicherplätze](https://docs.microsoft.com/windows-server/storage/storage-spaces/storage-spaces-direct-in-vm) (Storage Spaces Direct, S2D) mit [SQL Server-Failoverclusterinstanzen](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/failover-cluster-instance-storage-spaces-direct-manually-configure) müssen Sie einen einzelnen Pool konfigurieren. Auch wenn für einen einzelnen Pool unterschiedliche Volumes erstellt werden können, weisen diese alle die gleichen Merkmale (z.B. die gleiche Cacherichtlinie) auf.
+ 
+  * Bestimmen Sie auf Basis der erwarteten Auslastung die Anzahl der jedem Speicherpool zugeordneten Datenträger. Bedenken Sie, dass verschiedene VM-Größen unterschiedlich viele angefügte Datenträger für Daten unterstützen. Weitere Informationen finden Sie unter [Größen für virtuelle Computer](../../../virtual-machines/sizes.md?toc=/azure/virtual-machines/windows/toc.json).
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

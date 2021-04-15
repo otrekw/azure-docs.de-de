@@ -3,17 +3,17 @@ title: 'Azure Machine Learning Studio (klassisch): Migrieren zu Azure Machine Le
 description: Hier erfahren Sie mehr über das Migrieren von Studio (klassisch) zu Microsoft Azure Machine Learning für eine modernisierte Data-Science-Plattform.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 03/08/2021
-ms.openlocfilehash: 7cdf016d7de66c33973ec7818fa92df28c4639dd
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: fafb9f7e84263c33cf1b15a52742ec9cd0380a40
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105566953"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311854"
 ---
 # <a name="migrate-to-azure-machine-learning"></a>Migrieren zu Azure Machine Learning
 

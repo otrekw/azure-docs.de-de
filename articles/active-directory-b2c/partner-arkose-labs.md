@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/18/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: c2aceedd57bcc7cd88c4e822c7b696e36b28bd8f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c10a39b050fa66192f762ba642b4c8ac2e080250
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104579789"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258140"
 ---
 # <a name="tutorial-configure-arkose-labs-with-azure-active-directory-b2c"></a>Tutorial: Konfigurieren von Arkose Labs mit Azure Active Directory B2C
 
@@ -46,7 +46,7 @@ Im folgenden Diagramm ist beschrieben, wie Arkose Labs mit Azure AD B2C integrie
 
 ![Abbildung des Arkose Labs-Architekturdiagramms](media/partner-arkose-labs/arkose-labs-architecture-diagram.png)
 
-| Schritt  | Beschreibung |
+| Schritt  | BESCHREIBUNG |
 |---|---|
 |1     | Ein Benutzer registriert sich und erstellt ein Konto. Wenn der Benutzer die Option „Senden“ auswählt, wird eine Arkose Labs-Abfrage angezeigt.         |
 |2     |  Nachdem der Benutzer die Abfrage abgeschlossen hat, sendet Azure AD B2C den Status zwecks Generierung eines Tokens an Arkose Labs. |
@@ -234,4 +234,4 @@ Um den API-Connector zu aktivieren, wählen Sie in den Einstellungen der **API-C
 
 - [Benutzerdefinierte Richtlinien in Azure AD B2C](./custom-policy-overview.md)
 
-- [Erste Schritte mit benutzerdefinierten Richtlinien in Azure AD B2C](./custom-policy-get-started.md?tabs=applications)
+- [Erste Schritte mit benutzerdefinierten Richtlinien in Azure AD B2C](./tutorial-create-user-flows.md?pivots=b2c-custom-policy)

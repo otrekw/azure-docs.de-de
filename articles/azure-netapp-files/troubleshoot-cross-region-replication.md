@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 11/18/2020
+ms.date: 03/10/2021
 ms.author: b-juche
-ms.openlocfilehash: b30ed0cca680013b85efe064d59fb7cb73d753d2
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: d3d944646689e9e6189b0343e8bf67c8fb0abcbd
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95239549"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104590924"
 ---
 # <a name="troubleshoot-cross-region-replication"></a>Problembehandlung für die regionsübergreifende Replikation
 
@@ -71,6 +71,12 @@ In diesem Artikel werden Fehlermeldungen und Lösungen beschrieben, mit denen Si
 |     `Snapshot   cannot be deleted, parent volume is a Data Protection volume with a   replication object`    |     Überprüfen Sie, ob Sie die Replikation des Volumes unterbrochen haben, wenn Sie diese Momentaufnahme löschen möchten.    |
 |     `Cannot delete   volume replication generated snapshot`    |     Das Löschen von Replikationsbaselinemomentaufnahmen ist nicht zulässig.    |
 
+## <a name="errors-resizing-volumes"></a>Fehler bei der Größenänderung eines Volumes
+
+|     Fehlermeldung    |     Lösung    |
+|-|-|
+|   Bei der Größenänderung eines Quellvolumes tritt folgender Fehler auf: `"PoolSizeTooSmall","message":"Pool size too small for total volume size."`  |  Vergewissern Sie sich, dass in den Kapazitätspools genügend Toleranzbereich für die Quell- und Zielvolumes der regionsübergreifenden Replikation vorhanden ist. Wenn Sie die Größe des Quellvolumes ändern, wird automatisch auch die Größe des Zielvolumes geändert. Sollte der Kapazitätspool des Zielvolumes jedoch nicht über genügend Toleranzbereich verfügen, tritt ein Fehler für die Größenänderung von Quell- und Zielvolume auf. Ausführliche Informationen finden Sie unter [Ändern der Größe eines Volumes](azure-netapp-files-resize-capacity-pools-or-volumes.md#resize-a-cross-region-replication-destination-volume).   |
+
 ## <a name="next-steps"></a>Nächste Schritte  
 
 * [Regionsübergreifende Replikation](cross-region-replication-introduction.md)
@@ -78,4 +84,5 @@ In diesem Artikel werden Fehlermeldungen und Lösungen beschrieben, mit denen Si
 * [Erstellen der Volumereplikation](cross-region-replication-create-peering.md)
 * [Anzeigen des Integritätsstatus der Replikationsbeziehung](cross-region-replication-display-health-status.md)
 * [Verwalten der Notfallwiederherstellung](cross-region-replication-manage-disaster-recovery.md)
+* [Ändern der Größe eines Volumes](azure-netapp-files-resize-capacity-pools-or-volumes.md#resize-a-cross-region-replication-destination-volume)
 * [Problembehandlung für die regionsübergreifende Replikation](troubleshoot-cross-region-replication.md)
