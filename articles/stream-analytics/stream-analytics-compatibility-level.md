@@ -5,29 +5,30 @@ author: enkrumah
 ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 03/10/2020
-ms.openlocfilehash: 07df391e664fe04b9c7d2eda34960666c44a2e06
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.date: 03/18/2021
+ms.openlocfilehash: a040aecbdee40832bd21256e26a140a986b65e39
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99094081"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104606241"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Kompatibilitätsgrad für Azure Stream Analytics-Aufträge
 
-In diesem Artikel werden die Optionen für den Kompatibilitätsgrad in Azure Stream Analytics beschrieben. Stream Analytics ist ein verwalteter Dienst mit regelmäßigen Funktionsupdates und Leistungsverbesserungen. Bei den meisten Dienstruntimes sind Updates automatisch für Endbenutzer verfügbar. 
+In diesem Artikel werden die Optionen für den Kompatibilitätsgrad in Azure Stream Analytics beschrieben.
 
-Allerdings können einige neue Funktionen bei einem Dienst zu einer grundlegenden Veränderung führen, z. B. beim Verhalten eines vorhandenen Auftrags oder der Datennutzung ausgeführter Aufträge. Sie können Ihre vorhandenen Stream Analytics-Aufträge ohne wesentliche Änderungen weiter ausführen, indem Sie einen niedrigen Kompatibilitätsgrad festlegen. Wenn Sie die aktuellsten Runtimefunktionen umsetzen möchten, können Sie einfach den Kompatibilitätsgrad erhöhen, um die Änderungen zu übernehmen. 
+Stream Analytics ist ein verwalteter Dienst mit [regelmäßigen Funktionsupdates und Leistungsverbesserungen](https://azure.microsoft.com/updates/?product=stream-analytics). Bei den meisten Dienstruntimes sind Updates automatisch und unabhängig vom Kompatibilitätsgrad für Endbenutzer verfügbar. Wenn allerdings einzelne neue Funktionen zu Veränderungen beim Verhalten eines vorhandenen Auftrags oder der Datennutzung ausgeführter Aufträge führen, wird diese Änderung unter einem neuen Kompatibilitätsgrad veröffentlicht. Sie können Ihre vorhandenen Stream Analytics-Aufträge ohne wesentliche Änderungen weiter ausführen, indem Sie einen niedrigen Kompatibilitätsgrad festlegen. Wenn Sie die aktuellsten Runtimefunktionen umsetzen möchten, können Sie einfach den Kompatibilitätsgrad erhöhen, um die Änderungen zu übernehmen.
+
 
 ## <a name="choose-a-compatibility-level"></a>Auswählen eines Kompatibilitätsgrads
 
-Der Kompatibilitätsgrad steuert das Laufzeitverhalten eines Stream Analytics-Auftrags. 
+Der Kompatibilitätsgrad steuert das Laufzeitverhalten eines Stream Analytics-Auftrags.
 
 Azure Stream Analytics unterstützt zurzeit drei Kompatibilitätsgrade:
 
-* 1.0 – Ursprünglicher Kompatibilitätsgrad, der mit der allgemeinen Verfügbarkeit von Azure Stream Analytics vor einigen Jahren eingeführt wurde
-* 1.1 – Vorheriges Verhalten
 * 1.2 – neuestes Verhalten mit den neuesten Verbesserungen
+* 1.1 – Vorheriges Verhalten
+* 1.0 – Ursprünglicher Kompatibilitätsgrad, der mit der allgemeinen Verfügbarkeit von Azure Stream Analytics vor einigen Jahren eingeführt wurde 
 
 Wenn Sie einen neuen Stream Analytics-Auftrag erstellen, gilt es als bewährte Methode, diesen mit dem neuesten Kompatibilitätsgrad zu erstellen. Starten Sie Ihren Auftragsentwurf mit dem aktuellsten Verhalten, damit Sie später keine Änderungen vornehmen müssen und so die Komplexität erhöhen.
 

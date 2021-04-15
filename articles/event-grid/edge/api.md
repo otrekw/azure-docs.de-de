@@ -8,10 +8,10 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: 414487d460d897eff787b11915db560706b29eb4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86171753"
 ---
 # <a name="rest-api"></a>REST-API
@@ -86,7 +86,7 @@ Alle APIs geben einen Fehler mit der folgenden Nutzlast zurück:
     }
 ```
 
-**Antwort**: HTTP 200
+**Antwort:** HTTP 200
 
 **Nutzlast**:
 
@@ -107,7 +107,7 @@ Alle APIs geben einen Fehler mit der folgenden Nutzlast zurück:
 
 **Anforderung**: ``` GET /topics/<topic_name>?api-version=2019-01-01-preview ```
 
-**Antwort**: HTTP 200
+**Antwort:** HTTP 200
 
 **Nutzlast**:
 ```json
@@ -127,7 +127,7 @@ Alle APIs geben einen Fehler mit der folgenden Nutzlast zurück:
 
 **Anforderung**: ``` GET /topics?api-version=2019-01-01-preview ```
 
-**Antwort**: HTTP 200
+**Antwort:** HTTP 200
 
 **Nutzlast**:
 ```json
@@ -159,7 +159,7 @@ Alle APIs geben einen Fehler mit der folgenden Nutzlast zurück:
 
 **Anforderung**: ``` DELETE /topics/<topic_name>?api-version=2019-01-01-preview ```
 
-**Antwort**: HTTP 200, leere Nutzlast
+**Antwort:** HTTP 200, leere Nutzdaten
 
 ## <a name="manage-event-subscriptions"></a>Verwalten von Ereignisabonnements
 Beispiele in diesem Abschnitt verwenden `EndpointType=Webhook;`. Die JSON-Beispiele für `EndpointType=EdgeHub / EndpointType=EventGrid` befinden sich im nächsten Abschnitt. 
@@ -266,7 +266,7 @@ Beispiele in diesem Abschnitt verwenden `EndpointType=Webhook;`. Die JSON-Beispi
 }
 ```
 
-**Antwort**: HTTP 200
+**Antwort:** HTTP 200
 
 **Nutzlast**:
 
@@ -373,7 +373,7 @@ Beispiele in diesem Abschnitt verwenden `EndpointType=Webhook;`. Die JSON-Beispi
 
 **Anforderung**: ``` GET /topics/<topic_name>/eventSubscriptions/<subscription_name>?api-version=2019-01-01-preview ```
 
-**Antwort**: HTTP 200
+**Antwort:** HTTP 200
 
 **Nutzlast**:
 ```json
@@ -478,7 +478,7 @@ Beispiele in diesem Abschnitt verwenden `EndpointType=Webhook;`. Die JSON-Beispi
 
 **Anforderung**: ``` GET /topics/<topic_name>/eventSubscriptions?api-version=2019-01-01-preview ```
 
-**Antwort**: HTTP 200
+**Antwort:** HTTP 200
 
 **Nutzlast**:
 ```json
@@ -496,7 +496,7 @@ Beispiele in diesem Abschnitt verwenden `EndpointType=Webhook;`. Die JSON-Beispi
 
 **Anforderung**: ``` DELETE /topics/<topic_name>/eventSubscriptions/<subscription_name>?api-version=2019-01-01-preview ```
 
-**Antwort**: HTTP 200, keine Nutzlast
+**Antwort:** HTTP 200, keine Nutzdaten
 
 
 ## <a name="publish-events-api"></a>API zum Veröffentlichen von Ereignissen
@@ -521,7 +521,7 @@ Beispiele in diesem Abschnitt verwenden `EndpointType=Webhook;`. Die JSON-Beispi
 ]
 ```
 
-**Antwort**: HTTP 200, leere Nutzlast
+**Antwort:** HTTP 200, leere Nutzdaten
 
 
 **Nutzlastfeldbeschreibungen**
@@ -546,7 +546,7 @@ Beispiele in diesem Abschnitt verwenden `EndpointType=Webhook;`. Die JSON-Beispi
 ]
 ```
 
-**Antwort**: HTTP 200, leere Nutzlast
+**Antwort:** HTTP 200, leere Nutzdaten
 
 
 **Nutzlasteinschränkungen**

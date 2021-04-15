@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
 ms.openlocfilehash: 501f3e8946023d28d67a33fbbfca661afbc6306d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "90898287"
 ---
 # <a name="smote"></a>SMOTE
@@ -44,8 +44,8 @@ Um die Anzahl von Fällen zu erhöhen, können Sie den Wert von **SMOTE percenta
 |-|-------------|-------------|-----------|  
 |Ursprüngliches Dataset<br /><br /> (entspricht **SMOTE percentage** = **0**)|570<br /><br /> 76 %|178<br /><br /> 24 %|748|  
 |**SMOTE percentage** = **100**|570<br /><br /> 62 %|356<br /><br /> 38 %|926|  
-|**SMOTE percentage** = **200**|570<br /><br /> 52 %|534<br /><br /> 48 %|1\.104|  
-|**SMOTE percentage** = **300**|570<br /><br /> 44 %|712<br /><br /> 56 %|1\.282|  
+|**SMOTE percentage** = **200**|570<br /><br /> 52 %|534<br /><br /> 48 %|1.104|  
+|**SMOTE percentage** = **300**|570<br /><br /> 44 %|712<br /><br /> 56 %|1.282|  
   
 > [!WARNING]
 > Das Erhöhen der Anzahl von Fällen über SMOTE garantiert nicht, dass genauere Modelle erzeugt werden. Versuchen Sie, die Pipelineverarbeitung mit unterschiedlichen Prozentsätzen, unterschiedlichen Merkmalssätzen und unterschiedlich vielen nächsten Nachbarn auszuprobieren, um zu ermitteln, wie sich das Hinzufügen von Fällen auf Ihr Modell auswirkt.  
@@ -90,7 +90,7 @@ Um die Anzahl von Fällen zu erhöhen, können Sie den Wert von **SMOTE percenta
 
 + Sie können häufig bessere Ergebnisse erzielen, indem Sie die Bereinigung fehlender Werte oder andere Transformationen anwenden, um Daten vor dem Anwenden von SMOTE zu korrigieren. 
 
-+ Einige Forscher haben untersucht, ob SMOTE für Daten mit vielen Dimensionen oder mit geringer Dichte geeignet ist, z. B. in Textklassifizierungs- oder Genomikdatasets verwendete Daten. Der folgende Artikel enthält eine gute Zusammenfassung der Auswirkungen und der theoretischen Gültigkeit des Anwendens von SMOTE in solchen Fällen: [Blagus und Lusa: SMOTE für hochdimensionale Daten mit Unausgeglichenheit bei Klassen](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-14-106).
++ Einige Forscher haben untersucht, ob SMOTE für Daten mit vielen Dimensionen oder mit geringer Dichte geeignet ist, z. B. in Textklassifizierungs- oder Genomikdatasets verwendete Daten. Im folgenden Artikel finden Sie eine gute Zusammenfassung der Effekte und der theoretischen Gültigkeit bei der Anwendung von SMOTE: [Blagus and Lusa: SMOTE for high-dimensional class-imbalanced data](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-14-106) (Blagus und Lusa: SMOTE für hochdimensionierte Daten mit Unausgeglichenheit bei Klassen).
 
 + Falls Sie mit SMOTE für Ihr Dataset keine gut Wirksamkeit erzielen, können Sie beispielsweise die folgenden anderen Ansätze in Erwägung ziehen:
   + Methoden zur Überquotierung von Minderheitsfällen oder zur Unterquotierung von Mehrheitsfällen

@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: pepogors
 ms.openlocfilehash: f8a9025a50b2815f0e6030e7baf317b261c8c462
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86256345"
 ---
 # <a name="set-up-and-configure-reverse-proxy-in-azure-service-fabric"></a>Einrichten und Konfigurieren des Reverseproxys in Service Fabric
@@ -74,7 +74,7 @@ Nachdem Sie die Resource Manager-Vorlage erstellt haben, aktivieren Sie den Reve
         ...
     }
     ```
-3. Um TLS/SSL-Zertifikate für den Port des Reverseproxys zu konfigurieren, fügen Sie das Zertifikat der ***reverseProxyCertificate***-Eigenschaft in **Microsoft.ServiceFabric/clusters** im Abschnitt [Resource type](../azure-resource-manager/templates/template-syntax.md) hinzu.
+3. Fügen Sie das Zertifikat der **reverseProxyCertificate**-Eigenschaft in *Microsoft.ServiceFabric/clusters* im * [Ressourcentypenabschnitt](../azure-resource-manager/templates/template-syntax.md) hinzu, um TLS-/SSL-Zertifikate für den Port des Reverseproxys zu konfigurieren.
 
     ```json
     {

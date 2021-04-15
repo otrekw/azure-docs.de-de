@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: corywink
 ms.openlocfilehash: f6c45b8d9804f16c4e59d259f562cc03f187e6a0
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92122976"
 ---
 # <a name="manage-users-and-roles-in-your-iot-central-application"></a>Verwalten von Benutzern und Rollen in Ihrer IoT Central-Anwendung
@@ -25,7 +25,7 @@ Um auf den Abschnitt **Verwaltung** zugreifen und diesen verwenden zu können, m
 
 Jeder Benutzer muss ein Benutzerkonto besitzen, um sich bei einer Azure IoT Central-Anwendung anmelden und auf diese zugreifen zu können. Azure IoT Central unterstützt Microsoft- und Azure Active Directory-Konten. Azure Active Directory-Gruppen werden in Azure IoT Central derzeit nicht unterstützt.
 
-Weitere Informationen finden Sie in der [Hilfe zum Microsoft-Konto](https://support.microsoft.com/products/microsoft-account?category=manage-account) und unter [Schnellstart: Hinzufügen neuer Benutzer zu Azure Active Directory](../../active-directory/fundamentals/add-users-azure-active-directory.md).
+Weitere Informationen finden Sie unter [Hilfe zum Microsoft-Konto](https://support.microsoft.com/products/microsoft-account?category=manage-account) und [Vorgehensweise: Hinzufügen oder Löschen von Benutzern in Azure Active Directory](../../active-directory/fundamentals/add-users-azure-active-directory.md).
 
 1. Um einen Benutzer einer IoT Central-Anwendung hinzuzufügen, rufen Sie im Abschnitt **Verwaltung** die Seite **Benutzer** auf.
     
@@ -96,60 +96,60 @@ Wenn Sie eine benutzerdefinierte Rolle definieren, wählen Sie den Berechtigungs
 | Name | Abhängigkeiten |
 | ---- | -------- |
 | Sicht | Keine     |
-| Verwalten | Sicht <br/> Andere Abhängigkeiten: Geräteinstanzen anzeigen  |
-| Vollzugriff | Anzeigen, verwalten <br/> Andere Abhängigkeiten: Geräteinstanzen anzeigen |
+| Verwalten | Sicht <br/> Weitere Abhängigkeiten: Anzeigen von Geräteinstanzen  |
+| Vollzugriff | Anzeigen, verwalten <br/> Weitere Abhängigkeiten: Anzeigen von Geräteinstanzen |
 
 **Berechtigungen für Geräteinstanzen**
 
 | Name | Abhängigkeiten |
 | ---- | -------- |
-| Sicht | Keine <br/> Andere Abhängigkeiten: Gerätevorlagen und Gerätegruppen anzeigen |
-| Aktualisieren | Sicht <br/> Andere Abhängigkeiten: Gerätevorlagen und Gerätegruppen anzeigen  |
-| Erstellen | Sicht <br/> Andere Abhängigkeiten:  Gerätevorlagen und Gerätegruppen anzeigen  |
-| Löschen | Sicht <br/> Andere Abhängigkeiten: Gerätevorlagen und Gerätegruppen anzeigen  |
-| Befehle ausführen | Aktualisieren, anzeigen <br/> Andere Abhängigkeiten: Gerätevorlagen und Gerätegruppen anzeigen  |
-| Vollzugriff | Anzeigen, aktualisieren, erstellen, löschen, Befehle ausführen <br/> Andere Abhängigkeiten: Gerätevorlagen und Gerätegruppen anzeigen  |
+| Sicht | Keine <br/> Weitere Abhängigkeiten: Anzeigen von Gerätevorlagen und Gerätegruppen |
+| Aktualisieren | Sicht <br/> Weitere Abhängigkeiten: Anzeigen von Gerätevorlagen und Gerätegruppen  |
+| Erstellen | Sicht <br/> Weitere Abhängigkeiten: Anzeigen von Gerätevorlagen und Gerätegruppen  |
+| Löschen | Sicht <br/> Weitere Abhängigkeiten: Anzeigen von Gerätevorlagen und Gerätegruppen  |
+| Befehle ausführen | Aktualisieren, anzeigen <br/> Weitere Abhängigkeiten: Anzeigen von Gerätevorlagen und Gerätegruppen  |
+| Vollzugriff | Anzeigen, aktualisieren, erstellen, löschen, Befehle ausführen <br/> Weitere Abhängigkeiten: Anzeigen von Gerätevorlagen und Gerätegruppen  |
 
 **Berechtigungen für Gerätegruppen**
 
 | Name | Abhängigkeiten |
 | ---- | -------- |
-| Sicht | Keine <br/> Andere Abhängigkeiten: Gerätevorlagen und Geräteinstanzen anzeigen |
-| Aktualisieren | Sicht <br/> Andere Abhängigkeiten: Gerätevorlagen und Geräteinstanzen anzeigen   |
-| Erstellen | Anzeigen, aktualisieren <br/> Andere Abhängigkeiten:  Gerätevorlagen und Geräteinstanzen anzeigen   |
-| Löschen | Sicht <br/> Andere Abhängigkeiten:  Gerätevorlagen und Geräteinstanzen anzeigen   |
-| Vollzugriff | Anzeigen, aktualisieren, erstellen, löschen <br/> Andere Abhängigkeiten: Gerätevorlagen und Geräteinstanzen anzeigen |
+| Sicht | Keine <br/> Weitere Abhängigkeiten: Anzeigen von Gerätevorlagen und Geräteinstanzen |
+| Aktualisieren | Sicht <br/> Weitere Abhängigkeiten: Anzeigen von Gerätevorlagen und Geräteinstanzen   |
+| Erstellen | Anzeigen, aktualisieren <br/> Weitere Abhängigkeiten: Anzeigen von Gerätevorlagen und Geräteinstanzen   |
+| Löschen | Sicht <br/> Weitere Abhängigkeiten: Anzeigen von Gerätevorlagen und Geräteinstanzen   |
+| Vollzugriff | Anzeigen, aktualisieren, erstellen, löschen <br/> Weitere Abhängigkeiten: Anzeigen von Gerätevorlagen und Geräteinstanzen |
 
 **Berechtigungen für die Gerätekonnektivitätsverwaltung**
 
 | Name | Abhängigkeiten |
 | ---- | -------- |
-| Instanz lesen | Keine <br/> Andere Abhängigkeiten: Gerätevorlagen, Gerätegruppen und Geräteinstanzen anzeigen |
+| Instanz lesen | Keine <br/> Weitere Abhängigkeiten: Anzeigen von Gerätevorlagen, Gerätegruppen und Geräteinstanzen |
 | Instanz verwalten | Keine |
 | Global lesen | Keine   |
 | Global verwalten | Global lesen |
-| Vollzugriff | Instanz lesen, Instanz verwalten, global lesen, global verwalten <br/> Andere Abhängigkeiten: Gerätevorlagen, Gerätegruppen und Geräteinstanzen anzeigen |
+| Vollzugriff | Instanz lesen, Instanz verwalten, global lesen, global verwalten <br/> Weitere Abhängigkeiten: Anzeigen von Gerätevorlagen, Gerätegruppen und Geräteinstanzen |
 
 **Berechtigungen für Aufträge**
 
 | Name | Abhängigkeiten |
 | ---- | -------- |
-| Sicht | Keine <br/> Andere Abhängigkeiten: Gerätevorlagen, Geräteinstanzen und Gerätegruppen anzeigen |
-| Aktualisieren | Sicht <br/> Andere Abhängigkeiten: Gerätevorlagen, Geräteinstanzen und Gerätegruppen anzeigen |
-| Erstellen | Anzeigen, aktualisieren <br/> Andere Abhängigkeiten:  Gerätevorlagen, Geräteinstanzen und Gerätegruppen anzeigen |
-| Löschen | Sicht <br/> Andere Abhängigkeiten:  Gerätevorlagen, Geräteinstanzen und Gerätegruppen anzeigen |
-| Execute | Sicht <br/> Andere Abhängigkeiten: Gerätevorlagen, Geräteinstanzen und Gerätegruppen anzeigen; Geräteinstanzen aktualisieren; Befehle auf Geräteinstanzen ausführen |
-| Vollzugriff | Anzeigen, aktualisieren, erstellen, löschen, ausführen <br/> Andere Abhängigkeiten:  Gerätevorlagen, Geräteinstanzen und Gerätegruppen anzeigen; Geräteinstanzen aktualisieren; Befehle auf Geräteinstanzen ausführen |
+| Sicht | Keine <br/> Weitere Abhängigkeiten: Anzeigen von Gerätevorlagen, Geräteinstanzen und Gerätegruppen |
+| Aktualisieren | Sicht <br/> Weitere Abhängigkeiten: Anzeigen von Gerätevorlagen, Geräteinstanzen und Gerätegruppen |
+| Erstellen | Anzeigen, aktualisieren <br/> Weitere Abhängigkeiten: Anzeigen von Gerätevorlagen, Geräteinstanzen und Gerätegruppen |
+| Löschen | Sicht <br/> Weitere Abhängigkeiten: Anzeigen von Gerätevorlagen, Geräteinstanzen und Gerätegruppen |
+| Execute | Sicht <br/> Weitere Abhängigkeiten: Anzeigen von Gerätevorlagen, Geräteinstanzen und Gerätegruppen; Aktualisieren von Geräteinstanzen; Ausführen von Befehlen auf Geräteinstanzen |
+| Vollzugriff | Anzeigen, aktualisieren, erstellen, löschen, ausführen <br/> Weitere Abhängigkeiten: Anzeigen von Gerätevorlagen, Geräteinstanzen und Gerätegruppen; Aktualisieren von Geräteinstanzen; Ausführen von Befehlen auf Geräteinstanzen |
 
 **Berechtigungen für Regeln**
 
 | Name | Abhängigkeiten |
 | ---- | -------- |
-| Sicht | Keine <br/> Andere Abhängigkeiten: Gerätevorlagen anzeigen |
-| Aktualisieren | Sicht <br/> Andere Abhängigkeiten: Gerätevorlagen anzeigen |
-| Erstellen | Anzeigen, aktualisieren <br/> Andere Abhängigkeiten:  Gerätevorlagen anzeigen |
-| Löschen | Sicht <br/> Andere Abhängigkeiten: Gerätevorlagen anzeigen |
-| Vollzugriff | Anzeigen, aktualisieren, erstellen, löschen <br/> Andere Abhängigkeiten: Gerätevorlagen anzeigen |
+| Sicht | Keine <br/> Weitere Abhängigkeiten: Anzeigen von Gerätevorlagen |
+| Aktualisieren | Sicht <br/> Weitere Abhängigkeiten: Anzeigen von Gerätevorlagen |
+| Erstellen | Anzeigen, aktualisieren <br/> Weitere Abhängigkeiten: Anzeigen von Gerätevorlagen |
+| Löschen | Sicht <br/> Weitere Abhängigkeiten: Anzeigen von Gerätevorlagen |
+| Vollzugriff | Anzeigen, aktualisieren, erstellen, löschen <br/> Weitere Abhängigkeiten: Anzeigen von Gerätevorlagen |
 
 #### <a name="managing-the-app"></a>App verwalten
 
@@ -159,17 +159,17 @@ Wenn Sie eine benutzerdefinierte Rolle definieren, wählen Sie den Berechtigungs
 | ---- | -------- |
 | Sicht | Keine     |
 | Aktualisieren | Sicht   |
-| Kopieren | Sicht <br/> Andere Abhängigkeiten: Gerätevorlagen, Geräteinstanzen, Gerätegruppen, Dashboards, Datenexporte, Branding, Hilfelinks, benutzerdefinierte Rollen, Regeln anzeigen |
+| Kopieren | Sicht <br/> Weitere Abhängigkeiten: Anzeigen von Gerätevorlagen, Geräteinstanzen, Gerätegruppen, Dashboards, Datenexporten, Brandings, Hilfelinks, benutzerdefinierten Rollen und Regeln |
 | Löschen | Sicht   |
-| Vollzugriff | Anzeigen, aktualisieren, kopieren, löschen <br/> Andere Abhängigkeiten: Gerätevorlagen, Gerätegruppen, Anwendungsdashboards, Datenexporte, Branding, Hilfelinks, benutzerdefinierte Rollen, Regeln anzeigen |
+| Vollzugriff | Anzeigen, aktualisieren, kopieren, löschen <br/> Weitere Abhängigkeiten: Anzeigen von Gerätevorlagen, Gerätegruppen, Anwendungsdashboards, Datenexporten, Brandings, Hilfelinks, benutzerdefinierten Rollen und Regeln |
 
 **Berechtigungen für den Export von Anwendungsvorlagen**
 
 | Name | Abhängigkeiten |
 | ---- | -------- |
 | Sicht | Keine     |
-| Exportieren | Sicht <br/> Andere Abhängigkeiten:  Gerätevorlagen, Geräteinstanzen, Gerätegruppen, Dashboards, Datenexporte, Branding, Hilfelinks, benutzerdefinierte Rollen, Regeln anzeigen |
-| Vollzugriff | Anzeigen, exportieren <br/> Andere Abhängigkeiten:  Gerätevorlagen, Gerätegruppen, Anwendungsdashboards, Datenexporte, Branding, Hilfelinks, benutzerdefinierte Rollen, Regeln anzeigen |
+| Exportieren | Sicht <br/> Weitere Abhängigkeiten: Anzeigen von Gerätevorlagen, Geräteinstanzen, Gerätegruppen, Dashboards, Datenexporten, Brandings, Hilfelinks, benutzerdefinierten Rollen und Regeln |
+| Vollzugriff | Anzeigen, exportieren <br/> Weitere Abhängigkeiten: Anzeigen von Gerätevorlagen, Gerätegruppen, Anwendungsdashboards, Datenexporten, Brandings, Hilfelinks, benutzerdefinierten Rollen und Regeln |
 
 **Berechtigungen für die Abrechnung**
 
@@ -194,10 +194,10 @@ Wenn Sie eine benutzerdefinierte Rolle definieren, wählen Sie den Berechtigungs
 
 | Name | Abhängigkeiten |
 | ---- | -------- |
-| Sicht | Keine <br/> Andere Abhängigkeiten: Benutzerdefinierte Rollen anzeigen |
-| Hinzufügen | Sicht <br/> Andere Abhängigkeiten:  Benutzerdefinierte Rollen anzeigen |
-| Löschen | Sicht <br/> Andere Abhängigkeiten:  Benutzerdefinierte Rollen anzeigen |
-| Vollzugriff | Anzeigen, hinzufügen, löschen <br/> Andere Abhängigkeiten:  Benutzerdefinierte Rollen anzeigen |
+| Sicht | Keine <br/> Weitere Abhängigkeiten: Anzeigen benutzerdefinierter Rollen |
+| Hinzufügen | Sicht <br/> Weitere Abhängigkeiten: Anzeigen benutzerdefinierter Rollen |
+| Löschen | Sicht <br/> Weitere Abhängigkeiten: Anzeigen benutzerdefinierter Rollen |
+| Vollzugriff | Anzeigen, hinzufügen, löschen <br/> Weitere Abhängigkeiten: Anzeigen benutzerdefinierter Rollen |
 
 > [!NOTE]
 > Ein Benutzer mit einer benutzerdefinierten Rolle, die ihm die Berechtigung zum Hinzufügen anderer Benutzer gewährt, kann nur Benutzer einer Rolle mit denselben oder niedrigeren Berechtigungen wie die eigene Rolle hinzufügen.

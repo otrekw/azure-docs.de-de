@@ -5,20 +5,20 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: article
-ms.date: 05/25/2019
+ms.date: 03/22/2021
 ms.author: duau
-ms.openlocfilehash: 2a5730cd75ccb76d25897e9109555113f7355c2f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: d0aa9e8bfd565eeb7599d52adc0ac5b854e750bb
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92202412"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105937225"
 ---
 # <a name="designing-for-disaster-recovery-with-expressroute-private-peering"></a>Entwurf für die Notfallwiederherstellung mit privatem ExpressRoute-Peering
 
 ExpressRoute wurde für Hochverfügbarkeit entwickelt, um Konnektivität für private Netzwerke mit Microsoft-Ressourcen auf Netzbetreiberniveau bereitzustellen. Das heißt, gibt es keine einzelne Fehlerquelle im ExpressRoute-Pfad im Microsoft-Netzwerk. Entwurfsüberlegungen zum Maximieren der Verfügbarkeit einer ExpressRoute-Verbindung finden Sie unter [Entwerfen für Hochverfügbarkeit mit ExpressRoute][HA].
 
-Wir wollen jedoch Murphys populäres Sprichwort nicht vergessen: *Alles, was schiefgehen kann, wird auch schiefgehen*. Konzentrieren wir uns in diesem Artikel also auf Lösungen, die über Fehler hinausgehen, die mit einer einzigen ExpressRoute-Verbindung behoben werden können. Mit anderen Worten, lassen Sie uns in diesem Artikel Überlegungen zur Netzwerkarchitektur anstellen, um eine robuste Back-End-Netzwerkverbindung für die Notfallwiederherstellung mit georedundanten ExpressRoute-Verbindungen aufzubauen.
+Wir wollen jedoch Murphys populäres Sprichwort nicht vergessen: *Alles, was schiefgehen kann, wird auch schiefgehen*. Konzentrieren wir uns in diesem Artikel also auf Lösungen, die über Fehler hinausgehen, die mit einer einzigen ExpressRoute-Verbindung behoben werden können. Wir werden Überlegungen zur Netzwerkarchitektur anstellen, um eine robuste Back-End-Netzwerkverbindung für die Notfallwiederherstellung mit georedundanten ExpressRoute-Verbindungen aufzubauen.
 
 >[!NOTE]
 >Die in diesem Artikel beschriebenen Konzepte gelten gleichermaßen, wenn eine ExpressRoute-Leitung innerhalb oder außerhalb eine Virtual WAN erstellt wird.
@@ -39,7 +39,17 @@ Wenn Sie sich bei unternehmenskritischen Vorgängen auf die ExpressRoute-Konnekt
 
 Wenn Sie dieselbe Gruppe von Netzwerken über mehrere Verbindungen miteinander verbinden, führen Sie parallele Pfade zwischen den Netzwerken ein. Parallele Pfade können, wenn sie nicht richtig entworfen werden, zu asymmetrischem Routing führen. Wenn Sie zustandsbehaftete Entitäten (z.B. NAT, Firewall) im Pfad haben, kann asymmetrisches Routing den Datenfluss blockieren.  In der Regel werden Sie über den privaten ExpressRoute-Peeringpfad auf keine zustandsbehafteten Entitäten wie NAT oder Firewalls treffen. Daher blockiert asymmetrisches Routing über privates ExpressRoute-Peering nicht unbedingt den Datenfluss.
  
-Wenn Sie jedoch für Datenverkehr einen Lastenausgleich über georedundante parallele Pfade durchführen, würden Sie unabhängig davon, ob zustandsbehaftete Entitäten vorhanden sind, eine inkonsistente Netzwerkleistung feststellen. In diesem Artikel sehen wir uns an, wie diese Herausforderungen gelöst werden können.
+Wenn Sie jedoch für Datenverkehr einen Lastenausgleich über georedundante parallele Pfade durchführen, würden Sie unabhängig davon, ob zustandsbehaftete Entitäten vorhanden sind, eine inkonsistente Netzwerkleistung feststellen. Diese georedundanten parallelen Pfade können über das gleiche Metro oder eine andere Metro auf der Seite [Anbieter nach Standort](expressroute-locations-providers.md#partners) gefunden werden. 
+
+### <a name="same-metro"></a>Gleiches Metro
+
+[Viele Metro s](expressroute-locations-providers.md#global-commercial-azure) verfügen über zwei ExpressRoute-Standorte. Ein Beispiel hierfür ist *Amsterdam* und *Amsterdam2*. Beim Entwerfen der Redundanz können Sie zwei parallele Pfade zu Azure erstellen, die beide Standorte in derselben Metro haben. Der Vorteil dieses Entwurfs ist, wenn ein Anwendungs-Failover erfolgt, bleibt die End-to-End-Latenz zwischen Ihren lokalen Anwendungen und Microsoft ungefähr gleich. Wenn jedoch eine Naturkatastrophe wie ein Erdbeben vorliegt, ist die Konnektivität für beide Pfade möglicherweise nicht mehr verfügbar.
+
+### <a name="different-metros"></a>Verschiedene Metros
+
+Wenn Sie unterschiedliche Metros für Redundanz verwenden, sollten Sie den sekundären Standort in derselben Region für die [georedundante Region](expressroute-locations-providers.md#locations)auswählen. Um einen Standort außerhalb der geopolitischen Region zu wählen, müssen Sie Premium SKU für beide Stromkreise in den Parallelpfaden verwenden. Der Vorteil dieser Konfiguration besteht darin, dass eine Naturkatastrophe, bei der es zu einem Ausfall kommt, zu beiden Verknüpfungen weitaus geringer ist, aber mit den Kosten für die End-to-End-Latenz bei erhöhter Latenz.
+
+In diesem Artikel wird erläutert, wie Sie Probleme beheben, die bei der Konfiguration von georedundanten Pfaden auftreten können.
 
 ## <a name="small-to-medium-on-premises-network-considerations"></a>Überlegungen zu kleinen bis mittelgroßen lokalen Netzwerken
 
@@ -100,13 +110,13 @@ Wenn Sie Azure mithilfe einer dieser Techniken so beeinflussen, dass eine Ihrer 
 
 ## <a name="large-distributed-enterprise-network"></a>Großes verteiltes Unternehmensnetzwerk
 
-Wenn Sie über ein großes verteiltes Unternehmensnetzwerk verfügen, verwenden Sie wahrscheinlich mehrere ExpressRoute-Verbindungen. In diesem Abschnitt sehen wir uns an, wie eine Notfallwiederherstellung mithilfe der Aktiv-Aktiv-ExpressRoute-Verbindungen entworfen wird, ohne zusätzliche Standbyverbindungen zu benötigen. 
+Wenn Sie über ein großes verteiltes Unternehmensnetzwerk verfügen, verwenden Sie wahrscheinlich mehrere ExpressRoute-Verbindungen. In diesem Abschnitt sehen wir uns an, wie eine Notfallwiederherstellung mithilfe der Aktiv-Aktiv-ExpressRoute-Verbindungen entworfen wird, ohne dass zusätzliche Standbyverbindungen benötigt werden. 
 
 Sehen Sie sich das Beispiel an, das in der folgenden Abbildung dargestellt wird. Im Beispiel verfügt Contoso über zwei lokale Standorte, die mit zwei Contoso-IaaS-Bereitstellungen in zwei verschiedenen Azure-Regionen über ExpressRoute-Verbindungen an zwei verschiedenen Peeringstandorten verbunden sind. 
 
 [![6]][6]
 
-Die Art und Weise, wie wir die Notfallwiederherstellung planen, besitzt Einfluss darauf, wie regionsübergreifender Datenverkehr an standortübergreifenden Datenverkehr (/region1/region2 an location2/location1) weitergeleitet wird. Betrachten wir zwei verschiedene Notfallarchitekturen, die regions-/standortübergreifenden Datenverkehr auf verschiedene Weise weiterleiten.
+Die Art und Weise, wie wir die Notfallwiederherstellung planen, hat Einfluss darauf, wie regionsübergreifender Datenverkehr an standortübergreifenden Datenverkehr (/region1/region2 an location2/location1) weitergeleitet wird. Betrachten wir zwei verschiedene Notfallarchitekturen, die regions-/standortübergreifenden Datenverkehr auf verschiedene Weise weiterleiten.
 
 ### <a name="scenario-1"></a>Szenario 1
 

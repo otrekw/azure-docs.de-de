@@ -7,12 +7,12 @@ ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 10/19/2020
-ms.openlocfilehash: e5fb425afdd4b212a0b28ce91418eb0ee9e3632f
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: c700cce5f50fda7f7a5773e07549e93da1c9f7a2
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964427"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104956253"
 ---
 # <a name="how-to-create-plans-for-a-virtual-machine-offer"></a>Erstellen von Plänen für ein VM-Angebot
 
@@ -221,6 +221,8 @@ Datenträger (wählen Sie **Datenträger hinzufügen (max. 16)** aus) sind ebenf
 Fügen Sie unabhängig vom verwendeten Betriebssystem immer nur die für die Lösung erforderliche Mindestanzahl von Datenträgern für Daten hinzu. Bei der Bereitstellung können Kunden Datenträger, die Teil eines Images sind, nicht entfernen. Sie haben aber immer die Möglichkeit, während oder nach der Bereitstellung Datenträger hinzuzufügen.
 
 Wählen Sie **Entwurf speichern** und dann oben links **Planübersicht** aus, um den soeben erstellten Plan anzuzeigen.
+
+Nach der Veröffentlichung des VM-Images können Sie das Image aus Ihrem Azure-Speicher löschen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

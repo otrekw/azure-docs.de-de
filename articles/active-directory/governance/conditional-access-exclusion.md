@@ -17,10 +17,10 @@ ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 426e28048ae370919529ea710717a3a3867d999d
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97746251"
 ---
 # <a name="use-azure-ad-access-reviews-to-manage-users-excluded-from-conditional-access-policies"></a>Verwenden von Azure AD-Zugriffsüberprüfungen zum Verwalten von Benutzern, die aus Richtlinien für den bedingten Zugriff ausgeschlossen sind
@@ -104,7 +104,7 @@ Sie können jetzt eine Richtlinie für bedingten Zugriff erstellen, die diese Au
   
 Im Folgenden werden zwei Beispiele beschrieben, in denen Sie Zugriffsüberprüfungen nutzen können, um Ausschlüsse in Richtlinien für bedingten Zugriff zu verwalten.
 
-## <a name="example-1-access-review-for-users-accessing-from-blocked-countriesregions"></a>Beispiel 1: Zugriffsüberprüfung für Benutzer, die aus blockierten Ländern/Regionen zugreifen
+## <a name="example-1-access-review-for-users-accessing-from-blocked-countriesregions"></a>Beispiel 1: Zugriffsüberprüfung für Benutzer, die aus blockierten Ländern/Regionen zugreifen
 
 Angenommen, Sie verfügen über eine Richtlinie für bedingten Zugriff, die den Zugriff aus bestimmten Ländern/Regionen blockiert. Sie enthält eine Gruppe, die von der Richtlinie ausgeschlossen ist. Hier ist eine empfohlene Zugriffsüberprüfung angegeben, mit der die Mitglieder der Gruppe überprüft werden.
 

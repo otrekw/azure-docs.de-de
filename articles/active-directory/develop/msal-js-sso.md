@@ -14,10 +14,10 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 8080d4cf4c3f0091f7837b3fccead5474c42db55
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "84690777"
 ---
 # <a name="single-sign-on-with-msaljs"></a>Einmaliges Anmelden mit MSAL.js
@@ -116,7 +116,7 @@ Standardmäßig erfordert MSAL.js, dass eine Anmeldemethode aufgerufen wird, um 
 
 Es gibt bestimmte Fälle, in denen Anwendungen Zugriff auf den authentifizierten Benutzerkontext oder das ID-Token haben, über den bzw. das die Authentifizierung in einer anderen Anwendung initiiert wurde. Diese Anwendungen können kann einmaliges Anmelden verwenden, um Token ohne vorherige Anmeldung über MSAL.js abzurufen.
 
-Beispiel: Ein Benutzer meldet sich in einer übergeordneten Webanwendung an, die eine andere JavaScript-Anwendung hostet, die als ein Add-On oder Plug-In ausgeführt wird.
+Beispiel: Ein Benutzer meldet sich bei einer übergeordneten Webanwendung an, die eine andere JavaScript-Anwendung hostet, die als Add-On oder Plug-In ausgeführt wird.
 
 In diesem Szenario kann einmaliges Anmelden wie folgt erreicht werden:
 

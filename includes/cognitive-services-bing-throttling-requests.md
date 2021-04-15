@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: nitinme
 ms.openlocfilehash: 1d8340054ace25a0cdc36eef9c3d5b4238a6f99b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "67178375"
 ---
 Der Dienst und Ihr Abonnementtyp bestimmen die zulässige Anzahl von Abfragen pro Sekunde (Queries Per Second, QPS). Stellen Sie sicher, dass Ihre Anwendung die erforderliche Logik enthält, um das Kontingent nicht zu überschreiten. Wenn der QPS-Grenzwert erreicht oder überschritten wird, ist die Anforderung nicht erfolgreich, und es wird ein HTTP 429-Statuscode zurückgegeben. Die Antwort enthält den Header `Retry-After`, der angibt, wie lange bis zum Senden einer weiteren Anforderung gewartet werden muss.

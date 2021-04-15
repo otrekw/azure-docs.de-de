@@ -2,22 +2,22 @@
 title: Konfigurieren der Art der Endbenutzereinwilligung für Anwendungen in Azure AD
 description: Erfahren Sie, wie Sie verwalten können, wie und wann Benutzer Anwendungen zustimmen können, die Zugriff auf die Daten Ihrer Organisation haben.
 services: active-directory
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
 ms.date: 06/01/2020
-ms.author: kenwith
+ms.author: iangithinji
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 68bb846ebb0199691161bc501441df908eb8ad87
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 95a651f6201c9f60500c9191821edb7eb76b8535
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101643608"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107374436"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>Konfigurieren der Art und Weise, wie Endbenutzer Anwendungen zustimmen können
 

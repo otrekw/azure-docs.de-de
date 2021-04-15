@@ -4,15 +4,15 @@ description: Informationen zum Nutzen der HPC- und GPU-VM-Größen in Azure Batc
 ms.topic: how-to
 ms.date: 12/17/2018
 ms.openlocfilehash: 016da7669c9e6a6586a53d379f9665c9ea048b64
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86147345"
 ---
 # <a name="use-rdma-or-gpu-instances-in-batch-pools"></a>Verwenden RDMA-fähiger oder GPU-fähiger Instanzen in Batch-Pools
 
-Für die Ausführung bestimmter Batch-Aufträge können Sie die Vorteile von Azure-VM-Größen nutzen, die speziell für umfangreiche Berechnungen entwickelt wurden. Beispiel:
+Für die Ausführung bestimmter Batch-Aufträge können Sie die Vorteile von Azure-VM-Größen nutzen, die speziell für umfangreiche Berechnungen entwickelt wurden. Zum Beispiel:
 
 * Wenn Sie [MPI-Workloads](batch-mpi.md) mit mehreren Instanzen ausführen, wählen Sie die H-Serie oder andere Größen aus, die über eine Netzwerkschnittstelle für Remote Direct Memory Access (RDMA) verfügen. Diese Größen stellen für die knotenübergreifende Kommunikation eine Verbindung mit einem InfiniBand-Netzwerk her, um so MPI-Anwendungen zu beschleunigen. 
 
@@ -88,7 +88,7 @@ Für das Konfigurieren einer speziellen VM-Größe für Ihren Batch-Pool stehen 
 * [Batch Shipyard](https://github.com/Azure/batch-shipyard) konfiguriert automatisch die GPU- und RDMA-Treiber für die transparente Arbeit mit Containerworkloads in Azure Batch. Batch Shipyard wird vollständig über Konfigurationsdateien gesteuert. Es gibt eine Vielzahl von Beispielkonfigurationen, die GPU- und RDMA-Workloads ermöglichen, z.B. das [CNTK GPU Recipe](https://github.com/Azure/batch-shipyard/tree/master/recipes/CNTK-GPU-OpenMPI), das GPU-Treiber auf virtuellen Computern der N-Serie vorkonfiguriert und die Software des Microsoft Cognitive Toolkit als Docker-Image lädt.
 
 
-## <a name="example-nvidia-gpu-drivers-on-windows-nc-vm-pool"></a>Beispiel: NVIDIA GPU-Treiber in einem Windows-NC-VM-Pool
+## <a name="example-nvidia-gpu-drivers-on-windows-nc-vm-pool"></a>Beispiel: NVIDIA-GPU-Treiber in einem NC-VM-Pool unter Windows
 
 Um CUDA-Anwendungen in einem Pool von Windows-NC-Knoten ausführen zu können, müssen Sie NVDIA GPU-Treiber installieren. In den folgenden Beispielschritten wird ein Anwendungspaket zum Installieren der NVIDIA GPU-Treiber verwendet. Sie können diese Option auswählen, wenn Ihre Workload von einer bestimmten GPU-Treiberversion abhängig ist.
 
@@ -100,14 +100,14 @@ Um CUDA-Anwendungen in einem Pool von Windows-NC-Knoten ausführen zu können, m
 | Einstellung | Wert |
 | ---- | ----- | 
 | **Imagetyp** | Marketplace (Linux/Windows) |
-| **Herausgeber** | MicrosoftWindowsServer |
+| **Publisher** | MicrosoftWindowsServer |
 | **Angebot** | Windows Server |
 | **sku** | 2016-Datacenter |
 | **Knotengröße** | NC6 Standard |
 | **Anwendungspaketverweise** | GPUDriver, Version 411.82 |
-| **Startaufgabe aktiviert** | True<br>**Befehlszeile** - `cmd /c "%AZ_BATCH_APP_PACKAGE_GPUDriver#411.82%\\GPUDriverSetup.exe /s"`<br/>**Benutzeridentität:** autouser, admin für den Pool<br/>**Erfolg abwarten:** TRUE
+| **Startaufgabe aktiviert** | Richtig<br>**Befehlszeile** - `cmd /c "%AZ_BATCH_APP_PACKAGE_GPUDriver#411.82%\\GPUDriverSetup.exe /s"`<br/>**Benutzeridentität:** autouser, admin für den Pool<br/>**Erfolg abwarten:** TRUE
 
-## <a name="example-nvidia-gpu-drivers-on-a-linux-nc-vm-pool"></a>Beispiel: NVIDIA GPU-Treiber in einem Linux-NC-VM-Pool
+## <a name="example-nvidia-gpu-drivers-on-a-linux-nc-vm-pool"></a>Beispiel: NVIDIA-GPU-Treiber in einem NC-VM-Pool unter Linux
 
 Um CUDA-Anwendungen in einem Pool von Linux-NC-Knoten ausführen zu können, müssen Sie die erforderlichen NVIDIA Tesla GPU-Treiber aus dem CUDA Toolkit installieren. Mit den folgenden Beispielschritten wird ein benutzerdefiniertes Ubuntu 16.04 LTS-Image mit GPU-Treibern erstellt und bereitgestellt:
 
@@ -142,7 +142,7 @@ Um Windows-MPI-Anwendungen in einem Pool von Azure H16r-VM-Knoten ausführen zu 
 | **Benutzerdefiniertes Image** | *Name des Image* |
 | **Knoten-Agent-SKU** | batch.node.windows amd64 |
 | **Knotengröße** | H16r Standard |
-| **Kommunikation zwischen Knoten aktiviert** | True |
+| **Kommunikation zwischen Knoten aktiviert** | Richtig |
 | **Max. Aufgaben pro Knoten** | 1 |
 
 ## <a name="example-intel-mpi-on-a-linux-h16r-vm-pool"></a>Beispiel: Intel MPI in einem H16r-VM-Pool unter Linux
@@ -154,11 +154,11 @@ Erstellen Sie mit den Batch-APIs oder im Azure-Portal einen Pool mit diesem Imag
 | Einstellung | Wert |
 | ---- | ---- |
 | **Imagetyp** | Marketplace (Linux/Windows) |
-| **Herausgeber** | OpenLogic |
+| **Publisher** | OpenLogic |
 | **Angebot** | CentOS-HPC |
 | **sku** | 7.4 |
 | **Knotengröße** | H16r Standard |
-| **Kommunikation zwischen Knoten aktiviert** | True |
+| **Kommunikation zwischen Knoten aktiviert** | Richtig |
 | **Max. Aufgaben pro Knoten** | 1 |
 
 ## <a name="next-steps"></a>Nächste Schritte

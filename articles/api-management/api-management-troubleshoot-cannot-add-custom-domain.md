@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/19/2019
 ms.author: tehnoonr
 ms.openlocfilehash: a09c15466a4a9f62b2696b087cb7ab23cc767379
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "75430579"
 ---
 # <a name="failed-to-update-api-management-service-hostnames"></a>Fehler beim Aktualisieren von Hostnamen des API Management-Diensts
@@ -28,7 +28,7 @@ In diesem Artikel wird die Fehlermeldung „Fehler beim Aktualisieren von Hostna
 
 Wenn Sie versuchen, mithilfe eines Zertifikats von Azure Key Vault eine benutzerdefinierte Domäne für den API Management-Dienst hinzuzufügen, erhalten Sie die folgende Fehlermeldung:
 
-- Fehler beim Aktualisieren von Hostnamen des API Management-Diensts. Fehler bei Anforderung an Ressource „https://vaultname.vault.azure.net/secrets/secretname/?api-version=7.0“ StatusCode: Verboten für RequestID: . Ausnahmemeldung: Der Vorgang hat einen ungültigen Statuscode „Verboten“ zurückgegeben.
+- Fehler beim Aktualisieren von Hostnamen des API Management-Diensts. Fehler bei Anforderung an Ressource „https://vaultname.vault.azure.net/secrets/secretname/?api-version=7.0“ StatusCode: Verboten für RequestId: . Ausnahmemeldung: Der Vorgang hat einen ungültigen Statuscode „Verboten“ zurückgegeben.
 
 ## <a name="cause"></a>Ursache
 
@@ -44,11 +44,11 @@ Gehen Sie folgendermaßen vor, um das Problem zu beheben:
 1. Wählen Sie **Zugriffsrichtlinien** aus, und überprüfen Sie, ob ein Dienstprinzipal vorhanden ist, der mit dem Namen der API Management-Dienstinstanz übereinstimmt. Wenn dies der Fall ist, wählen Sie den Dienstprinzipal aus, und vergewissern Sie sich, dass die **Get**-Berechtigung unter **Berechtigungen für Geheimnis** aufgeführt ist.  
     ![Hinzufügen einer Zugriffsrichtlinie für den Dienstprinzipal](./media/api-management-troubleshoot-cannot-add-custom-domain/access-policy.png)
 1. Wenn der API Management-Dienst nicht in der Liste enthalten ist, wählen Sie **Zugriffsrichtlinie hinzufügen** aus, und erstellen Sie dann die folgende Zugriffsrichtlinie:
-    - **Anhand einer Vorlage konfigurieren**: Keine
-    - **Prinzipal auswählen**: Suchen Sie den Namen des API Management-Diensts, und wählen Sie ihn in der Liste aus.
-    - **Schlüsselberechtigungen**: Keine
-    - **Berechtigungen für Geheimnis**: Herunterladen
-    - **Zertifikatberechtigungen**: Keine
+    - **Anhand einer Vorlage konfigurieren:** Keine
+    - **Prinzipal auswählen:** Suchen Sie den Namen des API Management-Diensts, und wählen Sie ihn in der Liste aus.
+    - **Schlüsselberechtigungen:** Keine
+    - **Geheimnisberechtigungen:** Abrufen
+    - **Zertifikatberechtigungen:** Keine
 1. Wählen Sie **OK** aus, um die Zugriffsrichtlinie zu erstellen.
 1. Klicken Sie zum Speichern der Änderungen auf **Speichern**.
 

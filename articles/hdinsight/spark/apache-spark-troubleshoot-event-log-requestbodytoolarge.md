@@ -5,10 +5,10 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 07/29/2019
 ms.openlocfilehash: 73ae646cb083841ee1d55b6c7ce6af7180cef08e
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98929428"
 ---
 # <a name="nativeazurefilesystemrequestbodytoolarge-appear-in-apache-spark-streaming-app-log-in-hdinsight"></a>„NativeAzureFileSystem...RequestBodyTooLarge“ wird im Apache Spark-Streaming-App-Protokoll in HDInsight angezeigt.
@@ -25,11 +25,11 @@ Die Größe Ihrer Spark-Ereignisprotokolldatei übersteigt vermutlich die Dateil
 
 In Spark 2.3 generiert jede Spark-App eine Spark-Ereignisprotokolldatei. Die Spark-Ereignisprotokolldatei für eine Spark-Streaming-App wird während der App-Ausführung immer größer. Heutzutage gilt für eine Datei in WASB ein Blocklimit von 50.000, und die Standardblockgröße beträgt 4 MB. Also beträgt die maximale Dateigröße in der Standardkonfiguration 195 GB. In Azure Storage wurde jedoch die maximale Blockgröße auf 100 MB angehoben und dadurch die Beschränkung für einzelne Dateien auf 4,75 TB erhöht. Weitere Informationen finden Sie unter [Skalierbarkeits- und Leistungsziele für Blob Storage](../../storage/blobs/scalability-targets.md).
 
-## <a name="resolution"></a>Lösung
+## <a name="resolution"></a>Auflösung
 
 Für diesen Fehler gibt es drei Lösungen:
 
-* Vergrößern Sie die Blockgröße auf bis zu 100 MB. Ändern Sie auf der Ambari-Benutzeroberfläche die HDFS-Konfigurationseigenschaft `fs.azure.write.request.size` (oder erstellen Sie sie im Abschnitt `Custom core-site`). Legen Sie die Eigenschaft auf einen größeren Wert fest, z. B.: 33554432. Speichern Sie die aktualisierte Konfiguration, und starten Sie die betroffenen Komponenten neu.
+* Vergrößern Sie die Blockgröße auf bis zu 100 MB. Ändern Sie auf der Ambari-Benutzeroberfläche die HDFS-Konfigurationseigenschaft `fs.azure.write.request.size` (oder erstellen Sie sie im Abschnitt `Custom core-site`). Legen Sie die Eigenschaft auf einen größeren Wert fest, z. B. 33554432. Speichern Sie die aktualisierte Konfiguration, und starten Sie die betroffenen Komponenten neu.
 
 * Beenden Sie den Spark-Streamingauftrag regelmäßig, und übermitteln Sie ihn erneut.
 

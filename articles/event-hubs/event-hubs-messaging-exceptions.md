@@ -3,12 +3,12 @@ title: 'Azure Event Hubs: Ausnahmen (Legacy)'
 description: Dieser Artikel stellt eine Liste von Azure Event Hubs-Messagingausnahmen und vorgeschlagenen Aktionen zur Verfügung.
 ms.topic: article
 ms.date: 02/10/2021
-ms.openlocfilehash: a76c98ec7d6d1f3370ed8787bf10d1d16a7baaa5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b7c5016214bfa3e5813417177e5d113299e0284f
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100390894"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311922"
 ---
 # <a name="event-hubs-messaging-exceptions---net-legacy"></a>Event Hubs-Messagingausnahmen: .NET (Legacy)
 In diesem Abschnitt werden die von .NET Framework-APIs generierten .NET-Ausnahmen aufgelistet. 
@@ -142,4 +142,4 @@ Weitere Informationen zu Event Hubs finden Sie unter den folgenden Links:
 
 * [Übersicht über Event Hubs](./event-hubs-about.md)
 * [Erstellen eines Event Hubs](event-hubs-create.md)
-* [Event Hubs – häufig gestellte Fragen](event-hubs-faq.md)
+* [Event Hubs – häufig gestellte Fragen](event-hubs-faq.yml)

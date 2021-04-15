@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 78972c4db1802b479a698a22c456561170add4bf
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9d2c42a664c8d8a591d95a312cdf1c0034c4d031
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105932912"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305462"
 ---
 # <a name="configure-azure-ad-multi-factor-authentication-settings"></a>Konfigurieren von Azure AD Multi-Factor Authentication-Einstellungen
 
@@ -236,7 +236,7 @@ Das Feature _Vertrauenswürdige IPs_ von Azure AD MFA umgeht MFA-Eingabeaufford
 > [!NOTE]
 > Private IP-Adressbereiche können nur als vertrauenswürdige IPs festgelegt werden, wenn Sie MFA-Server verwenden. Für cloudbasierte Azure AD MFA können Sie nur öffentliche IP-Adressbereiche verwenden.
 >
-> IPv6-Bereiche werden nur in der Schnittstelle [Benannter Standort (Vorschau)](../conditional-access/location-condition.md#preview-features) unterstützt.
+> IPv6-Bereiche werden nur in der Schnittstelle [Benannter Standort (Vorschau)](../conditional-access/location-condition.md) unterstützt.
 
 Wenn Ihre Organisation die NPS-Erweiterung bereitstellt, um MFA für lokale Anwendungen bereitzustellen, beachten Sie, dass als Quell-IP-Adresse immer die des NPS-Servers angezeigt wird, über den der Authentifizierungsversuch verläuft.
 

@@ -7,12 +7,12 @@ ms.custom:
 - H1Hack27Feb2017
 - devx-track-csharp
 - contperf-fy21q1
-ms.openlocfilehash: d0ed5cc47694d6576e6aea46b62dfab8ecb73459
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 17729b2b6a2c4faba0554339a382cad559e9894a
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105045789"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210498"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Bereitstellen von Anwendungen auf Computeknoten mit Batch-Anwendungspaketen
 
@@ -61,7 +61,7 @@ Bei Anwendungspaketen muss die Startaufgabe Ihres Pools keine lange Liste einzel
 Sie können die Anwendungspakete in Ihrem Batch-Konto über das [Azure-Portal](https://portal.azure.com) oder die Batch Management-APIs verwalten. In den folgenden Abschnitten wird erläutert, wie Sie ein Speicherkonto verknüpfen sowie Anwendungen und Anwendungspakete im Azure-Portal hinzufügen und verwalten.
 
 > [!NOTE]
-> Sie können zwar Anwendungswerte in der [Microsoft.Batch/batchAccount](/templates/microsoft.batch/batchaccounts)-Ressource einer [ARM-Vorlage](quick-create-template.md)definieren. Derzeit ist es aber nicht möglich, eine ARM-Vorlage zum Hochladen von Anwendungspaketen zu verwenden, die in Ihrem Batch-Konto verwendet werden sollen. Sie müssen sie wie [unten](#add-a-new-application) beschrieben in das verknüpfte Speicherkonto hochladen.
+> Sie können zwar Anwendungswerte in der [Microsoft.Batch/batchAccount](/azure/templates/microsoft.batch/batchaccounts)-Ressource einer [ARM-Vorlage](quick-create-template.md)definieren. Derzeit ist es aber nicht möglich, eine ARM-Vorlage zum Hochladen von Anwendungspaketen zu verwenden, die in Ihrem Batch-Konto verwendet werden sollen. Sie müssen sie wie [unten](#add-a-new-application) beschrieben in das verknüpfte Speicherkonto hochladen.
 
 ### <a name="link-a-storage-account"></a>Verknüpfen eines Storage-Kontos
 

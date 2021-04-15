@@ -11,12 +11,12 @@ ms.date: 04/19/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 218803d0b7e1f5add2f033a7ce01e0a8f6ffc956
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 450a089c6cc1c77ac26cb0aa339277d5c49b41c8
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101674091"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104594783"
 ---
 # <a name="statistics-in-synapse-sql"></a>Statistiken in Synapse SQL
 
@@ -92,7 +92,7 @@ Wenn Ihr Data Warehouse allerdings nur ein Land oder eine Region enthält und Si
 
 Im Folgenden finden Sie Empfehlungen für Updates für Statistiken:
 
-|||
+|type|Empfehlung|
 |-|-|
 | **Aktualisierungshäufigkeit für Statistiken**  | Konservativ: Täglich </br> Nach dem Laden oder Transformieren von Daten |
 | **Stichproben** |  Bei weniger als 1 Milliarde Zeilen Standard-Stichprobenentnahme verwenden (20 Prozent). </br> Bei mehr als 1 Milliarde Zeilen Stichprobenentnahme von zwei Prozent verwenden. |
@@ -884,6 +884,6 @@ WHERE   st.[user_created] = 1
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zur weiteren Verbesserung der Abfrageleistung bei einem dedizierten SQL-Pool finden Sie unter [Überwachen Ihrer Workload](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) und [Bewährte Methoden für den dedizierten SQL-Pool](best-practices-sql-pool.md#maintain-statistics).
+Informationen zur weiteren Verbesserung der Abfrageleistung bei einem dedizierten SQL-Pool finden Sie unter [Überwachen Ihrer Workload](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) und [Bewährte Methoden für den dedizierten SQL-Pool](best-practices-dedicated-sql-pool.md#maintain-statistics).
 
-Informationen zur weiteren Verbesserung der Abfrageleistung bei einem serverlosen SQL-Pool finden Sie unter [Bewährte Methoden für den serverlosen SQL-Pool](best-practices-sql-on-demand.md)
+Informationen zur weiteren Verbesserung der Abfrageleistung bei einem serverlosen SQL-Pool finden Sie unter [Bewährte Methoden für den serverlosen SQL-Pool](best-practices-serverless-sql-pool.md)

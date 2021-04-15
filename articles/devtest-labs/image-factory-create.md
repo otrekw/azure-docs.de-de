@@ -4,10 +4,10 @@ description: In diesem Artikel wird beschrieben, wie Sie eine benutzerdefinierte
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 14c8338d6a5ae21847da3a9c774ea6dcdac33ae4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85482070"
 ---
 # <a name="create-a-custom-image-factory-in-azure-devtest-labs"></a>Erstellen einer benutzerdefinierten Image Factory in Azure DevTest Labs
@@ -49,4 +49,4 @@ Für ein komplexeres Szenario gibt es eine alternative Implementierung mit einem
 - PowerShell-Skripts müssen wiederverwendbar sein, damit bei Bedarf zusätzliche Factorys eingerichtet werden können.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Fahren Sie mit dem nächsten Artikel in diesem Abschnitt fort: [Ausführen einer Image Factory in Azure DevOps](image-factory-set-up-devops-lab.md)
+Fahren Sie mit dem nächsten Artikel in diesem Abschnitt fort: [Ausführen einer Image Factory aus AzureDevOps](image-factory-set-up-devops-lab.md).

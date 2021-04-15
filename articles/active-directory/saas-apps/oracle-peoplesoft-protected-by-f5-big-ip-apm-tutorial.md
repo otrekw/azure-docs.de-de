@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/14/2020
+ms.date: 03/22/2021
 ms.author: jeedes
-ms.openlocfilehash: 3b7c8e024ac8361c08cc41195531a114bb12fcb4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3af149f0c1db7f354be6bd968bbd0cf858493d4c
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92522290"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219296"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-oracle-peoplesoft---protected-by-f5-big-ip-apm"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Oracle PeopleSoft – Protected by F5 BIG-IP APM
 
@@ -40,19 +40,19 @@ Für die ersten Schritte benötigen Sie Folgendes:
     2. Eigenständige Lizenz für F5 BIG-IP Access Policy Manager™ (APM) 
     3. Add-On-Lizenz für F5 BIG-IP Access Policy Manager™ (APM) für eine bereits vorhandene Instanz von F5 BIG-IP® Local Traffic Manager™ (LTM)
     4. Zusätzlich zur obigen Lizenz kann das F5-System auch mit Folgendem lizenziert werden: 
-        * Abonnement der URL-Filterung zur Verwendung der URL-Kategoriedatenbank 
+        * Abonnement der URL-Filterung zur Verwendung der URL-Kategoriedatenbank. 
         * F5 IP Intelligence-Abonnement zur Erkennung und Blockierung von bekannten Angreifern und schädlichem Datenverkehr 
-        * Netzwerk-HSM (Hardwaresicherheitsmodul) zum Schutz und zur Verwaltung digitaler Schlüssel für eine sichere Authentifizierung
-1. Das F5 BIG-IP-System wird mit APM-Modulen bereitgestellt. (LTM ist optional.) 
+        * Netzwerk-HSM (Hardwaresicherheitsmodul) zum Schutz und zur Verwaltung digitaler Schlüssel für eine sichere Authentifizierung.
+1. Das F5 BIG-IP-System wird mit APM-Modulen bereitgestellt. (LTM ist optional).
 1. Es wird zwar dringend empfohlen, die F5-Systeme in einer [Synchronisierungs-/Failovergerätegruppe](https://techdocs.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/big-ip-device-service-clustering-administration-14-1-0.html) (Sync/Failover Device Group, S/F DG), die das aktive Standbypaar enthält, mit einer Floating IP-Adresse für Hochverfügbarkeit (High Availability, HA) bereitzustellen, dies ist jedoch optional. Eine noch höhere Schnittstellenredundanz kann durch Verwendung des Link Aggregation Control-Protokolls (LACP) erzielt werden. LACP verwaltet die verbundenen physischen Schnittstellen als einzelne virtuelle Schnittstelle (Aggregatgruppe) und erkennt alle Schnittstellenfehler innerhalb der Gruppe.
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-* Für Oracle PeopleSoft – Protected by F5 BIG-IP APM wird **SP- und IDP**-initiiertes einmaliges Anmelden (SSO) unterstützt.
+* Für Oracle PeopleSoft – Protected by F5 BIG-IP APM wird **SP- und IDP** initiiertes einmaliges Anmelden (SSO) unterstützt.
 
-## <a name="adding-oracle-peoplesoft---protected-by-f5-big-ip-apm-from-the-gallery"></a>Hinzufügen von Oracle PeopleSoft – Protected by F5 BIG-IP APM aus dem Katalog
+## <a name="add-oracle-peoplesoft---protected-by-f5-big-ip-apm-from-the-gallery"></a>Hinzufügen von Oracle PeopleSoft – Protected by F5 BIG-IP APM aus dem Katalog
 
 Zum Konfigurieren der Integration von Oracle PeopleSoft – Protected by F5 BIG-IP APM in Azure AD müssen Sie Oracle PeopleSoft – Protected by F5 BIG-IP APM aus dem Katalog Ihrer Liste mit den verwalteten SaaS-Apps hinzufügen.
 
@@ -83,7 +83,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Oracle PeopleSoft – Protected by F5 BIG-IP APM** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
-1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
@@ -302,7 +302,7 @@ Führen Sie die folgenden Schritte aus, um die Unterstützung des einmaligen Abm
 
     * Navigieren Sie zu **Local Traffic > Virtual Servers > Virtual Server List > PeopleSoftApp > Resources** (Lokaler Datenverkehr > Virtuelle Server > Liste der virtuellen Server > PeopleSoftApp > Ressourcen). Klicken Sie auf die Schaltfläche **Manage…** (Verwalten…) :   
 
-    * Geben Sie `<Name>` als aktivierte iRule an, und klicken Sie auf **Finished** (Fertig gestellt).
+    * Geben Sie `<Name>` als aktivierte iRule an, und klicken Sie auf **Abgeschlossen**.
 
         ![_iRule_PeopleSoftApp ](./media/oracle-peoplesoft-protected-by-f5-big-ip-apm-tutorial/irule-people-soft.png)
 
@@ -327,11 +327,10 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 #### <a name="idp-initiated"></a>IDP-initiiert:
 
-* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Hierdurch sollten Sie automatisch bei der Instanz von Oracle PeopleSoft – Protected by F5 BIG-IP APM angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. 
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen** und dadurch sollten Sie automatisch bei der Instanz von Oracle PeopleSoft – Protected by F5 BIG-IP APM angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. 
 
-Sie können auch den Microsoft-Zugriffsbereich verwenden, um die Anwendung in einem beliebigen Modus zu testen. Sobald Sie im Zugriffsbereich auf die Kachel „Oracle PeopleSoft – Protected by F5 BIG-IP APM“ klicken, geschieht Folgendes: Wenn Sie den SP-Modus konfiguriert haben, werden Sie zum Initiieren des Anmeldeablaufs zur Anmeldeseite der Anwendung weitergeleitet, und wenn Sie den IDP-Modus konfiguriert haben, werden Sie automatisch bei der Instanz von Oracle PeopleSoft – Protected by F5 BIG-IP APM angemeldet, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
-
+Sie können auch den Microsoft-Bereich „Meine Apps“ verwenden, um die Anwendung in einem beliebigen Modus zu testen. Sobald Sie im Zugriffsbereich auf die Kachel „Oracle PeopleSoft – Protected by F5 BIG-IP APM“ klicken, geschieht Folgendes: Wenn Sie den SP-Modus konfiguriert haben, werden Sie zum Initiieren des Anmeldeablaufs zur Anmeldeseite der Anwendung weitergeleitet, und wenn Sie den IDP-Modus konfiguriert haben, werden Sie automatisch bei der Instanz von Oracle PeopleSoft – Protected by F5 BIG-IP APM angemeldet, für die Sie SSO eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nach dem Konfigurieren von Oracle PeopleSoft – Protected by F5 BIG-IP APM können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+Nach dem Konfigurieren von Oracle PeopleSoft – Protected by F5 BIG-IP APM können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.

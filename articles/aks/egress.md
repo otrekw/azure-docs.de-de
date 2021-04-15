@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: Erfahren Sie, wie Sie eine statische öffentliche IP-Adresse für ausgehenden Datenverkehr in einem AKS-Cluster erstellen und verwenden
 services: container-service
 ms.topic: article
-ms.date: 03/04/2019
-ms.openlocfilehash: 2eefeecfa550683dafcf66d936837e2a891c4c84
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/16/2021
+ms.openlocfilehash: e1f81bf4c4d35108557449a8bebd126bdf744191
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101726545"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104592369"
 ---
 # <a name="use-a-static-public-ip-address-for-egress-traffic-with-a-basic-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Verwenden einer statischen öffentlichen IP-Adresse für ausgehenden Datenverkehr mit einem Lastenausgleich der SKU *Basic* in Azure Kubernetes Service (AKS)
 
@@ -107,7 +107,7 @@ Sie können einen DNS-Lookup-Dienst wie `checkip.dyndns.org` verwenden, um zu ü
 Beginnen Sie zunächst mit dem Anfügen eines einfachen *Debian*-Pods:
 
 ```console
-kubectl run -it --rm aks-ip --image=debian
+kubectl run -it --rm aks-ip --image=mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11
 ```
 
 Verwenden Sie `apt-get` zum Installieren von `curl` im Container, um innerhalb des Containers auf eine Website zuzugreifen.

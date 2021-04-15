@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/18/2020
 ms.author: yushwang
 ms.openlocfilehash: 2b298185866d16da02fe8d3b3fdb41f0b0b1f726
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98878543"
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections-azure-portal"></a>Konfigurieren der IPsec/IKE-Richtlinie für S2S-VPN- oder VNet-zu-VNet-Verbindungen: Azure-Portal
@@ -28,8 +28,10 @@ Dieser Artikel enthält Anweisungen zum Erstellen und Konfigurieren einer IPsec-
 ### <a name="considerations"></a>Überlegungen
 
 * Die IPsec-/IKE-Richtlinie kann nur für folgende Gateway-SKUs verwendet werden:
-  * ***VpnGw1~5 und VpnGw1AZ~5AZ** _ _ ***Standard** _ und _*_HighPerformance_*_ _ Sie können nur ***eine** _ Richtlinienkombination für eine angegebene Verbindung festlegen.
-  _ Sie müssen alle Algorithmen und Parameter für IKE (Hauptmodus) und IPsec (Schnellmodus) angeben. Partielle Richtlinien sind nicht zulässig.
+  * ***VpnGw1–5 und VpnGw1AZ–5AZ***
+  * ***Standard** _ und _ *_HighPerformance_**
+* Pro Verbindung kann jeweils nur ***eine*** Richtlinienkombination angegeben werden.
+* Sie müssen alle Algorithmen und Parameter für IKE (Hauptmodus) und IPsec (Schnellmodus) angeben. Partielle Richtlinien sind nicht zulässig.
 * Vergewissern Sie sich in den Spezifikationen Ihres VPN-Geräteanbieters, dass die Richtlinie von Ihren lokalen VPN-Geräten unterstützt wird. S2S- bzw. VNet-zu-VNet-Verbindungen können nicht hergestellt werden, wenn die Richtlinien inkompatibel sind.
 
 ## <a name="workflow"></a><a name ="workflow"></a>Workflow

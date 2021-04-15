@@ -8,14 +8,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 03/09/2021
+ms.date: 03/17/2021
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 82445ce7c1ebfc365459bbeba7e04d660221eaf2
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 8513127f4a79c9c94323140462ad2d2648a0130d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102551653"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104577703"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Überwachen von Azure SQL-Datenbank und Azure Synapse Analytics
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -99,7 +99,7 @@ Die Überwachung von Azure SQL-Datenbank und Azure Synapse speichert 4.000 Date
 Der folgende Abschnitt beschreibt die Konfiguration der Überwachung über das Azure-Portal.
 
   > [!NOTE]
-  > - Die Überwachung kann bei einem angehaltenen dedizierten SQL-Pool nicht aktiviert werden. Zum Aktivieren der Überwachung setzen Sie den Pool fort. Informieren Sie sich ausführlicher über den [dedizierten SQL-Pool](../..//synapse-analytics/sql/best-practices-sql-pool.md).
+  > - Die Überwachung kann bei einem angehaltenen dedizierten SQL-Pool nicht aktiviert werden. Zum Aktivieren der Überwachung setzen Sie den Pool fort. Informieren Sie sich ausführlicher über den [dedizierten SQL-Pool](../..//synapse-analytics/sql/best-practices-dedicated-sql-pool.md).
   > - Wenn die Überwachung mit einem Log Analytics-Arbeitsbereich oder Event Hub als Ziel über das Azure-Portal oder ein PowerShell-Cmdlet konfiguriert wird, wird eine [Diagnoseeinstellung](../../azure-monitor/essentials/diagnostic-settings.md) mit aktivierter Kategorie "SQLSecurityAuditEvents" erstellt.
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
@@ -134,16 +134,16 @@ AzureDiagnostics
 
 ### <a name="audit-to-storage-destination"></a><a id="audit-storage-destination"></a>Überwachung in Speicherziel
 
-Um das Schreiben von Überwachungsprotokollen in ein Speicherkonto zu konfigurieren, wählen Sie **Storage** aus, und öffnen Sie **Speicherdetails**. Wählen Sie das Azure Storage-Konto, in dem die Protokolle gespeichert werden sollen, und dann die Beibehaltungsdauer aus. Klicken Sie dann auf **OK**. Protokolle, die älter als die Aufbewahrungsdauer sind, werden gelöscht.
+Sie können das Schreiben von Überwachungsprotokollen in ein Speicherkonto konfigurieren, indem Sie im Abschnitt **Überwachung** auf **Speicher** klicken. Wählen Sie erst das Azure-Speicherkonto, in dem die Protokolle gespeichert werden sollen, und dann die Beibehaltungsdauer aus, indem Sie die **erweiterten Eigenschaften** öffnen. Klicken Sie anschließend auf **Speichern**. Protokolle, die älter als die Aufbewahrungsdauer sind, werden gelöscht.
 
-- Der Standardwert für die Beibehaltungsdauer ist „0“ (unbegrenzte Aufbewahrung). Sie können diesen Wert ändern, indem Sie den Schieberegler **Beibehaltung (Tage)** in **Speichereinstellungen** verschieben, wenn Sie das Speicherkonto für die Überwachung konfigurieren.
+- Der Standardwert für die Beibehaltungsdauer ist „0“ (unbegrenzte Aufbewahrung). Sie können diesen Wert ändern, indem Sie den Schieberegler **Beibehaltung (Tage)** in den **erweiterten Einstellungen** verschieben, wenn Sie das Speicherkonto für die Überwachung konfigurieren.
   - Wenn Sie die Beibehaltungsdauer von „0“ (unbegrenzte Aufbewahrung) in einen anderen Wert ändern, beachten Sie, dass die Beibehaltung nur auf Protokolle angewendet wird, die nach dem Ändern des Beibehaltungswerts geschrieben wurden (Protokolle, die in dem Zeitraum geschrieben wurden, in dem die Beibehaltung auf unbegrenzt festgelegt war, bleiben auch nach Aktivieren der Beibehaltung erhalten).
 
   ![Speicherkonto](./media/auditing-overview/auditing_select_storage.png)
 
 ### <a name="audit-to-log-analytics-destination"></a><a id="audit-log-analytics-destination"></a>Überwachen in Log Analytics-Ziel
   
-Wählen Sie zum Konfigurieren des Schreibens von Überwachungsprotokollen in einen Log Analytics-Arbeitsbereich **Log Analytics** aus, und öffnen Sie **Details zu Log Analytics**. Wählen Sie den Log Analytics-Arbeitsbereich aus (oder erstellen Sie ihn), in den Protokolle geschrieben werden sollen, und klicken Sie dann auf **OK**.
+Wählen Sie zum Konfigurieren des Schreibens von Überwachungsprotokollen in einen Log Analytics-Arbeitsbereich **Log Analytics** aus, und öffnen Sie **Details zu Log Analytics**. Wählen Sie den Log Analytics-Arbeitsbereich aus, in den Protokolle geschrieben werden sollen, und klicken Sie dann auf **OK**. Wenn Sie noch keinen Log Analytics-Arbeitsbereich erstellt haben, finden Sie unter [Erstellen eines Log Analytics-Arbeitsbereichs im Azure-Portal](../../azure-monitor/logs/quick-create-workspace.md) eine Anleitung.
 
    ![LogAnalyticsworkspace](./media/auditing-overview/auditing_select_oms.png)
 
@@ -151,7 +151,7 @@ Weitere Informationen zum Azure Monitor Log Analytics-Arbeitsbereich finden Sie 
    
 ### <a name="audit-to-event-hub-destination"></a><a id="audit-event-hub-destination"></a>Überwachen in Event Hub-Ziel
 
-Wählen Sie zum Konfigurieren des Schreibens von Überwachungsprotokollen in einen Event Hub **Event Hub**  aus, und öffnen Sie **Event Hub-Details**. Wählen Sie den Event Hub aus, in den die Protokolle geschrieben werden sollen, und klicken Sie dann auf **OK**. Achten Sie darauf, dass sich der Event Hub in derselben Region wie Ihre Datenbank und der Server befindet.
+Klicken Sie zum Konfigurieren des Schreibvorgangs für Überwachungsprotokolle in einen Event Hub auf **Event Hub**. Wählen Sie den Event Hub aus, in den die Protokolle geschrieben werden sollen, und klicken Sie dann auf **Speichern**. Achten Sie darauf, dass sich der Event Hub in derselben Region wie Ihre Datenbank und der Server befindet.
 
    ![Eventhub](./media/auditing-overview/auditing_select_event_hub.png)
 
@@ -191,13 +191,12 @@ Wenn Sie die Überwachungsprotokolle in ein Azure-Speicherkonto schreiben möcht
 
 - Verwenden Sie das [Azure-Portal](https://portal.azure.com).  Öffnen Sie die entsprechende Datenbank. Klicken Sie in der Datenbank oben auf der Seite **Überwachung** auf **Überwachungsprotokolle anzeigen**.
 
-    ![Der Screenshot zeigt die Schaltfläche „Überwachungsprotokolle anzeigen“, die auf dem Blatt für die Datenbanküberwachung hervorgehoben ist.](./media/auditing-overview/7_auditing_get_started_blob_view_audit_logs.png)
+    ![Überwachungsprotokolle anzeigen](./media/auditing-overview/auditing-view-audit-logs.png)
 
     Der Bereich **Überwachungsdatensätze** wird geöffnet, in dem Sie die Protokolle anzeigen können.
 
   - Sie können Protokolle für einen bestimmten Zeitraum anzeigen, indem Sie im oberen Bereich der Seite **Überwachungsdatensätze** auf **Filter** klicken.
   - Sie können zwischen Überwachungsdatensätzen wechseln, die anhand der *Serverüberwachungsrichtlinie* oder der *Datenbanküberwachungsrichtlinie* erstellt wurden, indem Sie die Option unter **Überwachungsquelle** ändern.
-  - Sie können nur Überwachungsdatensätze zur Einschleusung von SQL-Befehlen anzeigen, indem Sie das Kontrollkästchen **Nur Überwachungsdatensätze zur Einschleusung von SQL-Befehlen anzeigen** aktivieren.
 
        ![Der Screenshot zeigt die Optionen zum Anzeigen der Überwachungsdatensätze.]( ./media/auditing-overview/8_auditing_get_started_blob_audit_records.png)
 
@@ -242,7 +241,7 @@ Wenn Sie bei georeplizierten Datenbanken die Überwachung für die primäre Date
 
 In einer Produktionsumgebung werden Sie Ihre Speicherschlüssel wahrscheinlich regelmäßig aktualisieren. Wenn Sie Überwachungsprotokolle in Azure Storage schreiben, müssen Sie Ihre Überwachungsrichtlinie neu speichern, wenn Sie die Schlüssel aktualisieren. Der Prozess sieht folgendermaßen aus:
 
-1. Öffnen Sie **Speicherdetails**. Wählen Sie im Feld **Speicherzugriffsschlüssel** die Option **Sekundär** aus, und klicken Sie dann auf **OK**. Klicken Sie anschließend oben auf der Seite für die Überwachungskonfiguration auf **Speichern**.
+1. Öffnen Sie die **erweiterten Eigenschaften** unter **Speicher**. Wählen Sie im Feld **Speicherzugriffsschlüssel** die Option **Sekundär** aus. Klicken Sie anschließend oben auf der Seite für die Überwachungskonfiguration auf **Speichern**.
 
     ![Der Screenshot zeigt den Prozess zum Auswählen eines sekundären Speicherzugriffsschlüssels.](./media/auditing-overview/5_auditing_get_started_storage_key_regeneration.png)
 2. Wechseln Sie zur Seite für die Speicherkonfiguration, und generieren Sie erneut den primären Zugriffsschlüssel.

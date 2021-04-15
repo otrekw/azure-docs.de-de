@@ -10,10 +10,10 @@ ms.reviewer: jowargo
 ms.lastreviewed: 10/16/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: df8560bec3671a9f05628ee6ed8ea95c31e9b16f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88998049"
 ---
 # <a name="azure-notification-hubs-updates-for-ios-13"></a>Azure Notification Hubs-Updates für iOS 13
@@ -24,7 +24,7 @@ Apple hat kürzlich einige Änderungen am öffentlichen Pushdienst vorgenommen. 
 
 ### <a name="apns-push-type"></a>APNs-Pushtyp
 
-Apple verlangt nun, dass Entwickler Benachrichtigungen als Warn- oder Hintergrundbenachrichtigungen über den neuen `apns-push-type`-Header in der APNs-API identifizieren. Gemäß der [Apple Dokumentation](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/sending_notification_requests_to_apns) gilt Folgendes: „Der Wert dieses Headers muss den Inhalt der Nutzlast Ihrer Benachrichtigung genau widerspiegeln. Wenn keine Übereinstimmung vorliegt oder wenn der Header für erforderliche Systeme fehlt, gibt APNs möglicherweise einen Fehler zurück, verzögert die Übermittlung der Benachrichtigung oder verwirft sie vollständig.“
+Apple verlangt nun, dass Entwickler Benachrichtigungen als Warn- oder Hintergrundbenachrichtigungen über den neuen `apns-push-type`-Header in der APNs-API identifizieren. In der [Apple-Dokumentation](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/sending_notification_requests_to_apns) steht hierzu: „Der Wert dieses Headers muss den Inhalt der Nutzlast Ihrer Benachrichtigung genau widerspiegeln. Wenn keine Übereinstimmung vorliegt oder wenn der Header für erforderliche Systeme fehlt, gibt APNs möglicherweise einen Fehler zurück, verzögert die Übermittlung der Benachrichtigung oder verwirft sie vollständig.“
 
 Entwickler müssen diesen Header jetzt in Anwendungen festlegen, die Benachrichtigungen über Azure Notification Hubs senden. Aufgrund einer technischen Einschränkung müssen Kunden tokenbasierte Authentifizierung für APNs-Anmeldeinformationen mit Anforderungen verwenden, die dieses Attribut enthalten. Wenn Sie zertifikatbasierte Authentifizierung für Ihre APNs-Anmeldeinformationen verwenden, müssen Sie auf tokenbasierte Authentifizierung umsteigen.
 

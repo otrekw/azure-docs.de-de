@@ -6,12 +6,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: vitalyg
-ms.openlocfilehash: bc1978f6ed0aa3e38f25fa03fc54ddc7d4efb9c3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6acab9618566766b12b4b236c75aa58386100513
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102033332"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105961063"
 ---
 # <a name="troubleshooting-metrics-charts"></a>Problembehandlung für Metrikdiagramme
 
@@ -43,7 +43,7 @@ Einige Ressourcen geben ihre Metriken nicht kontinuierlich aus. Beispielsweise s
 
 [Die meisten Metriken werden in Azure 93 Tage lang gespeichert](../essentials/data-platform-metrics.md#retention-of-metrics). Sie können jedoch nur Daten für maximal 30 Tage in einem einzelnen Diagramm abfragen. Diese Einschränkung gilt nicht für [protokollbasierte Metriken](../app/pre-aggregated-metrics-log-metrics.md#log-based-metrics).
 
-**Lösung:** Wenn ein leeres Diagramm angezeigt wird oder Ihr Diagramm nur einen Teil der Metrikdaten anzeigt, stellen Sie sicher, dass die Differenz zwischen Start- und Enddatum in der Zeitauswahl das Intervall von 30 Tagen nicht überschreitet.
+**Lösung:** Wenn ein leeres Diagramm angezeigt wird oder Ihr Diagramm nur einen Teil der Metrikdaten anzeigt, stellen Sie sicher, dass die Differenz zwischen Start- und Enddatum in der Zeitauswahl das Intervall von 30 Tagen nicht überschreitet. Nachdem Sie ein Intervall von 30 Tagen ausgewählt haben, können Sie das Diagramm [schwenken](metrics-charts.md#pan), um die gesamte Aufbewahrungsdauer anzuzeigen.
 
 ### <a name="all-metric-values-were-outside-of-the-locked-y-axis-range"></a>Alle Metrikwerte lagen außerhalb des gesperrten y-Achsenbereichs
 

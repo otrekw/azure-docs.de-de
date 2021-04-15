@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 02/10/2021
 ms.author: cherylmc
 ms.openlocfilehash: 7012a696684a4e7bc1d3b52943b11ba413c43037
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100376487"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-powershell"></a>Verbinden von virtuellen Netzwerken aus verschiedenen Bereitstellungsmodellen mit PowerShell
@@ -45,17 +45,17 @@ Sie können diese Werte zum Erstellen einer Testumgebung verwenden oder zum bess
 
 **Einstellungen für das klassische VNet**
 
-VNet-Name = ClassicVNet <br>
+VNet-Name = ClassicVNet  <br>
 Standort = USA, Westen <br>
 Adressräume des virtuellen Netzwerks = 10.0.0.0/24 <br>
 Subnet-1 = 10.0.0.0/27 <br>
 GatewaySubnet = 10.0.0.32/29 <br>
 Name des lokalen Netzwerks = RMVNetLocal <br>
-Gatewaytyp = DynamicRouting
+ Gatewaytyp = DynamicRouting
 
 **Einstellungen für das Resource Manager-VNet**
 
-VNet-Name = RMVNet <br>
+VNet-Name = RMVNet  <br>
 Ressourcengruppe = RG1 <br>
 IP-Adressräume des virtuellen Netzwerks = 192.168.0.0/16 <br>
 Subnet-1 = 192.168.1.0/24 <br>
@@ -64,7 +64,7 @@ Standort = USA, Osten <br>
 Name der öffentlichen Gateway-IP = gwpip <br>
 Lokales Netzwerkgateway = ClassicVNetLocal <br>
 Name des Gateways für virtuelle Netzwerke = RMGateway <br>
-Gateway-IP-Adressierungskonfiguration = gwipconfig
+ Gateway-IP-Adressierungskonfiguration = gwipconfig
 
 ## <a name="section-1---configure-the-classic-vnet"></a><a name="createsmgw"></a>Abschnitt 1 – Konfigurieren des klassischen VNet
 ### <a name="1-download-your-network-configuration-file"></a>1. Herunterladen der Netzwerkkonfigurationsdatei
@@ -274,7 +274,7 @@ In diesem Abschnitt arbeiten Sie mit dem klassischen VNet. Sie ersetzen die Plat
 ## <a name="section-4---create-a-connection-between-the-gateways"></a><a name="connect"></a>Abschnitt 4 – Erstellen einer Verbindung zwischen den Gateways
 Zum Erstellen einer Verbindung zwischen den Gateways ist PowerShell erforderlich. Sie müssen Ihr Azure-Konto hinzufügen, um die klassische Version der PowerShell-Cmdlets zu verwenden. Verwenden Sie hierzu **Add-AzureAccount**.
 
-1. Legen Sie in der PowerShell-Konsole die gemeinsam verwendeten Schlüssel fest. Vor dem Ausführen der Cmdlets schlagen Sie in der heruntergeladenen Netzwerkkonfigurationsdatei die exakten Namen nach, die von Azure erwartet werden. Wenn Sie einen VNet-Namen angeben, der Leerzeichen enthält, setzen Sie den Wert in einfache Anführungszeichen.<br><br>Im folgenden Beispiel ist **-VNetName** der Name des klassischen VNet und **-LocalNetworkSiteName** der Name, den Sie für den Standort des lokalen Netzwerks angegeben haben. **-SharedKey** ist ein Wert, den Sie generieren und angeben. Im Beispiel wurde 'abc123' verwendet, Sie können jedoch einen komplexeren Wert generieren und verwenden. In erster Linie muss der hier angegebene Wert mit dem Wert identisch sein, den Sie im nächsten Schritt beim Erstellen der Verbindung angeben. Es sollte **Status: Erfolgreich** zurückgegeben werden.
+1. Legen Sie in der PowerShell-Konsole die gemeinsam verwendeten Schlüssel fest. Vor dem Ausführen der Cmdlets schlagen Sie in der heruntergeladenen Netzwerkkonfigurationsdatei die exakten Namen nach, die von Azure erwartet werden. Wenn Sie einen VNet-Namen angeben, der Leerzeichen enthält, setzen Sie den Wert in einfache Anführungszeichen.<br><br>Im folgenden Beispiel ist **-VNetName** der Name des klassischen VNet und **-LocalNetworkSiteName** der Name, den Sie für den Standort des lokalen Netzwerks angegeben haben. **-SharedKey** ist ein Wert, den Sie generieren und angeben. Im Beispiel wurde 'abc123' verwendet, Sie können jedoch einen komplexeren Wert generieren und verwenden. In erster Linie muss der hier angegebene Wert mit dem Wert identisch sein, den Sie im nächsten Schritt beim Erstellen der Verbindung angeben. Der Status **Erfolgreich** sollte zurückgegeben werden.
 
    ```azurepowershell
    Set-AzureVNetGatewayKey -VNetName ClassicVNet `

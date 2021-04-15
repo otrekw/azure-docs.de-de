@@ -4,15 +4,15 @@ description: Erfahren Sie, wie Sie Azure Private Link für den Zugriff auf ein A
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 03/02/2021
+ms.date: 03/26/2021
 ms.author: thweiss
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d21943c90e1f77bd4a43cdfd27b183df018f6cc7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 034eb35eeef975be23cc318aa797282008d71728
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101690667"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105936902"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>Konfigurieren von Azure Private Link für ein Azure Cosmos-Konto
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -70,7 +70,7 @@ Führen Sie die folgenden Schritte aus, um über das Azure-Portal einen privaten
     | Virtuelles Netzwerk| Wählen Sie Ihr virtuelles Netzwerk aus. |
     | Subnet | Wählen Sie das Subnetz aus. |
     |**Private DNS-Integration**||
-    |Integration in eine private DNS-Zone |Wählen Sie **Ja** aus. <br><br/> Für die Herstellung einer privaten Verbindung mit Ihrem privaten Endpunkt benötigen Sie einen DNS-Eintrag. Es wird empfohlen, den privaten Endpunkt in eine private DNS-Zone zu integrieren. Sie können auch Ihre eigenen DNS-Server verwenden oder DNS-Einträge mithilfe der Hostdateien auf Ihren virtuellen Computern erstellen. |
+    |Integration in eine private DNS-Zone |Wählen Sie **Ja** aus. <br><br/> Für die Herstellung einer privaten Verbindung mit Ihrem privaten Endpunkt benötigen Sie einen DNS-Eintrag. Es wird empfohlen, den privaten Endpunkt in eine private DNS-Zone zu integrieren. Sie können auch Ihre eigenen DNS-Server verwenden oder DNS-Einträge mithilfe der Hostdateien auf Ihren virtuellen Computern erstellen. <br><br/> Wenn Sie für diese Option Ja auswählen, wird ebenfalls eine private DNS-Zonengruppe erstellt. Die DNS-Zonengruppe ist eine Verknüpfung zwischen der privaten DNS-Zone und dem privaten Endpunkt. Mit diesem Link können Sie die private DNS-Zone automatisch aktualisieren, wenn ein Update für den privaten Endpunkt vorliegt. Wenn Sie z. B. Regionen hinzufügen oder entfernen, wird die private DNS-Zone automatisch aktualisiert. |
     |Private DNS-Zone |Wählen Sie **privatelink.documents.azure.com** aus. <br><br/> Die private DNS-Zone wird automatisch bestimmt. Sie können sie nicht über das Azure-Portal ändern.|
     |||
 
@@ -78,6 +78,8 @@ Führen Sie die folgenden Schritte aus, um über das Azure-Portal einen privaten
 1. Wenn die Meldung **Überprüfung erfolgreich** angezeigt wird, wählen Sie **Erstellen** aus.
 
 Wenn Sie Private Link für ein Azure Cosmos-Konto genehmigt haben, ist die Option **Alle Netzwerke** im Bereich **Firewall und virtuelle Netzwerke** im Azure-Portal nicht verfügbar.
+
+## <a name="api-types-and-private-zone-names"></a><a id="private-zone-name-mapping"></a>API-Typen und private Zonennamen
 
 Die folgende Tabelle veranschaulicht die Zuordnung zwischen verschiedenen Arten von Azure Cosmos-Konto-APIs, unterstützten Unterressourcen und entsprechenden Namen für die private Zone. Sie können auch über die SQL-API auf das Gremlin- und das Tabellen-API-Konto zugreifen, sodass für diese APIs zwei Einträge vorhanden sind.
 
@@ -145,6 +147,8 @@ Nachdem Sie den privaten Endpunkt erstellt haben, können Sie ihn mithilfe des f
 
 ```azurepowershell-interactive
 Import-Module Az.PrivateDns
+
+# Zone name differs based on the API type and group ID you are using. 
 $zoneName = "privatelink.documents.azure.com"
 $zone = New-AzPrivateDnsZone -ResourceGroupName $ResourceGroupName `
   -Name $zoneName
@@ -159,19 +163,19 @@ $pe = Get-AzPrivateEndpoint -Name $PrivateEndpointName `
 
 $networkInterface = Get-AzResource -ResourceId $pe.NetworkInterfaces[0].Id `
   -ApiVersion "2019-04-01"
- 
-foreach ($ipconfig in $networkInterface.properties.ipConfigurations) { 
-foreach ($fqdn in $ipconfig.properties.privateLinkConnectionProperties.fqdns) { 
-Write-Host "$($ipconfig.properties.privateIPAddress) $($fqdn)"  
-$recordName = $fqdn.split('.',2)[0] 
-$dnsZone = $fqdn.split('.',2)[1] 
-New-AzPrivateDnsRecordSet -Name $recordName `
-  -RecordType A -ZoneName $zoneName  `
-  -ResourceGroupName $ResourceGroupName -Ttl 600 `
-  -PrivateDnsRecords (New-AzPrivateDnsRecordConfig `
-  -IPv4Address $ipconfig.properties.privateIPAddress)  
-}
-}
+
+# Create DNS configuration
+
+$PrivateDnsZoneId = $zone.ResourceId
+
+$config = New-AzPrivateDnsZoneConfig -Name $zoneName`
+ -PrivateDnsZoneId $PrivateDnsZoneId
+
+## Create a DNS zone group
+New-AzPrivateDnsZoneGroup -ResourceGroupName $ResourceGroupName`
+ -PrivateEndpointName $PrivateEndpointName`
+ -Name "MyPrivateZoneGroup"`
+ -PrivateDnsZoneConfig $config
 ```
 
 ### <a name="fetch-the-private-ip-addresses"></a>Abrufen der privaten IP-Adressen
@@ -242,6 +246,7 @@ az network private-endpoint create \
 Nachdem Sie den privaten Endpunkt erstellt haben, können Sie ihn mithilfe des folgenden Azure CLI-Skripts in eine private DNS-Zone integrieren:
 
 ```azurecli-interactive
+#Zone name differs based on the API type and group ID you are using. 
 zoneName="privatelink.documents.azure.com"
 
 az network private-dns zone create --resource-group $ResourceGroupName \
@@ -253,15 +258,13 @@ az network private-dns link vnet create --resource-group $ResourceGroupName \
    --virtual-network $VNetName \
    --registration-enabled false 
 
-#Query for the network interface ID  
-networkInterfaceId=$(az network private-endpoint show --name $PrivateEndpointName --resource-group $ResourceGroupName --query 'networkInterfaces[0].id' -o tsv)
- 
-# Copy the content for privateIPAddress and FQDN matching the Azure Cosmos account 
-az resource show --ids $networkInterfaceId --api-version 2019-04-01 -o json 
- 
-#Create DNS records 
-az network private-dns record-set a create --name recordSet1 --zone-name privatelink.documents.azure.com --resource-group $ResourceGroupName
-az network private-dns record-set a add-record --record-set-name recordSet2 --zone-name privatelink.documents.azure.com --resource-group $ResourceGroupName -a <Private IP Address>
+#Create a DNS zone group
+az network private-endpoint dns-zone-group create \
+   --resource-group $ResourceGroupName \
+   --endpoint-name $PrivateEndpointName \
+   --name "MyPrivateZoneGroup" \
+   --private-dns-zone $zoneName \
+   --zone-name "myzone"
 ```
 
 ## <a name="create-a-private-endpoint-by-using-a-resource-manager-template"></a>Erstellen eines privaten Endpunkts mithilfe einer Resource Manager-Vorlage
@@ -460,38 +463,6 @@ Erstellen Sie mit dem folgenden Code die Resource Manager-Vorlage „PrivateZone
 }
 ```
 
-Erstellen Sie mit dem folgenden Code die Resource Manager-Vorlage „PrivateZoneRecords_template.json“.
-
-```json
-{
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "DNSRecordName": {
-            "type": "string"
-        },
-        "IPAddress": {
-            "type":"string"
-        }        
-    },
-    "resources": [
-         {
-            "type": "Microsoft.Network/privateDnsZones/A",
-            "apiVersion": "2018-09-01",
-            "name": "[parameters('DNSRecordName')]",
-            "properties": {
-                "ttl": 300,
-                "aRecords": [
-                    {
-                        "ipv4Address": "[parameters('IPAddress')]"
-                    }
-                ]
-            }
-        }    
-    ]
-}
-```
-
 **Definieren der Parameterdatei für die Vorlage**
 
 Erstellen Sie die beiden folgenden Parameterdateien für die Vorlage. Erstellen Sie die Datei „PrivateZone_parameters.json“. durch den folgenden Code:
@@ -511,18 +482,65 @@ Erstellen Sie die beiden folgenden Parameterdateien für die Vorlage. Erstellen 
 }
 ```
 
-Erstellen Sie die Datei „PrivateZoneRecords_parameters.json“. durch den folgenden Code:
+Erstellen Sie mit dem folgenden Code die Resource Manager-Vorlage „PrivateZone_template.json“. Mit dieser Vorlage wird eine private DNS-Zone für ein vorhandenes Azure Cosmos-SQL-API-Konto in einem vorhandenen virtuellen Netzwerk erstellt.
+
+```json
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "privateZoneName": {
+            "type": "string"
+        },
+        "PrivateEndpointDnsGroupName": {
+            "value": "string"
+        },
+        "privateEndpointName":{
+            "value": "string"
+        }        
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Network/privateEndpoints/privateDnsZoneGroups",
+            "apiVersion": "2020-06-01",
+            "name": "[parameters('PrivateEndpointDnsGroupName')]",
+            "location": "global",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/privateDnsZones', parameters('privateZoneName'))]",
+                "[variables('privateEndpointName')]"
+            ],
+          "properties": {
+            "privateDnsZoneConfigs": [
+              {
+                "name": "config1",
+                "properties": {
+                  "privateDnsZoneId": "[resourceId('Microsoft.Network/privateDnsZones', parameters('privateZoneName'))]"
+                }
+              }
+            ]
+          }
+        }
+    ]
+}
+```
+
+**Definieren der Parameterdatei für die Vorlage**
+
+Erstellen Sie die beiden folgenden Parameterdateien für die Vorlage. Erstellen Sie die Datei „PrivateZone_parameters.json“. durch den folgenden Code:
 
 ```json
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "DNSRecordName": {
+        "privateZoneName": {
             "value": ""
         },
-        "IPAddress": {
-            "type":"object"
+        "PrivateEndpointDnsGroupName": {
+            "value": ""
+        },
+        "privateEndpointName":{
+            "value": ""
         }
     }
 }
@@ -555,15 +573,18 @@ $PrivateZoneName = "myPrivateZone.documents.azure.com"
 # Name of the private endpoint to create
 $PrivateEndpointName = "myPrivateEndpoint"
 
+# Name of the DNS zone group to create
+$PrivateEndpointDnsGroupName = "myPrivateDNSZoneGroup"
+
 $cosmosDbResourceId = "/subscriptions/$($SubscriptionId)/resourceGroups/$($ResourceGroupName)/providers/Microsoft.DocumentDB/databaseAccounts/$($CosmosDbAccountName)"
 $VNetResourceId = "/subscriptions/$($SubscriptionId)/resourceGroups/$($ResourceGroupName)/providers/Microsoft.Network/virtualNetworks/$($VNetName)"
 $SubnetResourceId = "$($VNetResourceId)/subnets/$($SubnetName)"
 $PrivateZoneTemplateFilePath = "PrivateZone_template.json"
 $PrivateZoneParametersFilePath = "PrivateZone_parameters.json"
-$PrivateZoneRecordsTemplateFilePath = "PrivateZoneRecords_template.json"
-$PrivateZoneRecordsParametersFilePath = "PrivateZoneRecords_parameters.json"
 $PrivateEndpointTemplateFilePath = "PrivateEndpoint_template.json"
 $PrivateEndpointParametersFilePath = "PrivateEndpoint_parameters.json"
+$PrivateZoneGroupTemplateFilePath = "PrivateZoneGroup_template.json"
+$PrivateZoneGroupParametersFilePath = "PrivateZoneGroup_parameters.json"
 
 ## Step 2: Login your Azure account and select the target subscription
 Login-AzAccount 
@@ -594,21 +615,15 @@ $deploymentOutput = New-AzResourceGroupDeployment -Name "PrivateCosmosDbEndpoint
     -PrivateEndpointName $PrivateEndpointName
 $deploymentOutput
 
-## Step 6: Map the private endpoint to the private zone
-$networkInterface = Get-AzResource -ResourceId $deploymentOutput.Outputs.privateEndpointNetworkInterface.Value -ApiVersion "2019-04-01"
-foreach ($ipconfig in $networkInterface.properties.ipConfigurations) {
-    foreach ($fqdn in $ipconfig.properties.privateLinkConnectionProperties.fqdns) {
-        $recordName = $fqdn.split('.',2)[0]
-        $dnsZone = $fqdn.split('.',2)[1]
-        Write-Output "Deploying PrivateEndpoint DNS Record $($PrivateZoneName)/$($recordName) Template on $($resourceGroupName)"
-        New-AzResourceGroupDeployment -Name "PrivateEndpointDNSDeployment" `
-            -ResourceGroupName $ResourceGroupName `
-            -TemplateFile $PrivateZoneRecordsTemplateFilePath `
-            -TemplateParameterFile $PrivateZoneRecordsParametersFilePath `
-            -DNSRecordName "$($PrivateZoneName)/$($RecordName)" `
-            -IPAddress $ipconfig.properties.privateIPAddress
-    }
-}
+## Step 6: Create the private zone
+New-AzResourceGroupDeployment -Name "PrivateZoneGroupDeployment" `
+    -ResourceGroupName $ResourceGroupName `
+    -TemplateFile $PrivateZoneGroupTemplateFilePath `
+    -TemplateParameterFile $PrivateZoneGroupParametersFilePath `
+    -PrivateZoneName $PrivateZoneName `
+    -PrivateEndpointName $PrivateEndpointName`
+    -PrivateEndpointDnsGroupName $PrivateEndpointDnsGroupName
+
 ```
 
 ## <a name="configure-custom-dns"></a>Konfigurieren von benutzerdefiniertem DNS
@@ -653,13 +668,17 @@ Wenn Sie Private Link mit einem Azure Cosmos-Konto über eine Verbindung im dire
 
 ## <a name="update-a-private-endpoint-when-you-add-or-remove-a-region"></a>Aktualisieren eines privaten Endpunkts beim Hinzufügen oder Entfernen einer Region
 
-Sofern Sie keine private DNS-Zonengruppe verwenden, müssen Sie beim Hinzufügen oder Entfernen von Regionen in einem Azure Cosmos-Konto die DNS-Einträge für dieses Konto hinzufügen oder entfernen. Nachdem Regionen hinzugefügt oder entfernt wurden, können Sie die private DNS-Zone des Subnetzes aktualisieren, damit diese den hinzugefügten oder entfernten DNS-Einträgen und den zugehörigen privaten IP-Adressen entspricht.
+Angenommen, Sie stellen ein Azure Cosmos-Konto in drei Regionen bereit: „USA, Westen“, „USA, Mitte“ und „Europa, Westen“. Wenn Sie einen privaten Endpunkt für das Konto erstellen, werden vier private IP-Adressen im Subnetz reserviert. Es gibt eine IP-Adresse für jede der drei Regionen, und es gibt eine IP-Adresse für den globalen/regionsunabhängigen Endpunkt. Später fügen Sie dem Azure Cosmos-Konto möglicherweise eine neue Region hinzu (z. B. „USA, Osten“). Die private DNS-Zone wird wie folgt aktualisiert:
 
-Angenommen, Sie stellen ein Azure Cosmos-Konto in drei Regionen bereit: „USA, Westen“, „USA, Mitte“ und „Europa, Westen“. Wenn Sie einen privaten Endpunkt für das Konto erstellen, werden vier private IP-Adressen im Subnetz reserviert. Es gibt eine IP-Adresse für jede der drei Regionen, und es gibt eine IP-Adresse für den globalen/regionsunabhängigen Endpunkt.
+* **Wenn private DNS-Zonengruppe verwendet wird:**
 
-Später fügen Sie dem Azure Cosmos-Konto möglicherweise eine neue Region hinzu (z. B. „USA, Osten“). Nach dem Hinzufügen der neuen Region müssen Sie einen entsprechenden DNS-Eintrag zu Ihrer privaten DNS-Zone oder zu Ihrem benutzerdefinierten DNS hinzufügen.
+  Wenn Sie eine private DNS-Zonengruppe verwenden, wird die private DNS-Zone automatisch aktualisiert, wenn der private Endpunkt aktualisiert wird. Im vorherigen Beispiel wird die private DNS-Zone nach dem Hinzufügen einer neuen Region automatisch aktualisiert.
 
-Beim Entfernen einer Region können die gleichen Schritte verwendet werden. Nach dem Entfernen der Region müssen Sie den entsprechenden DNS-Eintrag aus Ihrer privaten DNS-Zone oder Ihrem benutzerdefinierten DNS entfernen.
+* **Wenn private DNS-Zonengruppe nicht verwendet wird:**
+
+  Sofern Sie keine private DNS-Zonengruppe verwenden, müssen Sie beim Hinzufügen oder Entfernen von Regionen in einem Azure Cosmos-Konto die DNS-Einträge für dieses Konto hinzufügen oder entfernen. Nachdem Regionen hinzugefügt oder entfernt wurden, können Sie die private DNS-Zone des Subnetzes aktualisieren, damit diese den hinzugefügten oder entfernten DNS-Einträgen und den zugehörigen privaten IP-Adressen entspricht.
+
+  Nach dem Hinzufügen der neuen Region müssen Sie einen entsprechenden DNS-Eintrag zu Ihrer privaten DNS-Zonen oder zu Ihrem benutzerdefinierten DNS hinzufügen. Beim Entfernen einer Region können die gleichen Schritte verwendet werden. Nach dem Entfernen der Region müssen Sie den entsprechenden DNS-Eintrag aus Ihrer privaten DNS-Zone oder Ihrem benutzerdefinierten DNS entfernen.
 
 ## <a name="current-limitations"></a>Aktuelle Einschränkungen
 

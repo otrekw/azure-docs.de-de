@@ -5,13 +5,13 @@ ms.service: data-factory
 ms.topic: conceptual
 author: dcstwh
 ms.author: weetok
-ms.date: 03/04/2021
-ms.openlocfilehash: 06d04eb8679b4484f330b69a8cffb263d353bdcd
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.date: 03/15/2021
+ms.openlocfilehash: 3110ce8cb97379fd4690903ec769cc1dfc7f1326
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102197876"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103492760"
 ---
 # <a name="global-parameters-in-azure-data-factory"></a>Globale Parameter in Azure Data Factory
 
@@ -49,7 +49,10 @@ Es gibt zwei Möglichkeiten, globale Parameter in Ihre Continuous Integration- u
 Für die meisten Anwendungsfälle empfiehlt es sich, globale Parameter in die ARM-Vorlage einzuschließen. Dies ist nativ in die in der [Dokumentation zu CI/CD](continuous-integration-deployment.md) beschriebenen Lösung integriert. Globale Parameter werden standardmäßig als ARM-Vorlagenparameter hinzugefügt, da sie häufig zwischen Umgebungen geändert werden. Sie können das Einschließen globaler Parameter in die ARM-Vorlage über den Hub **Verwalten** aktivieren.
 
 > [!NOTE]
-> Die Konfiguration **In ARM-Vorlage einschließen** ist nur im Git-Modus verfügbar. Im Livemodus und Data Factory-Modus ist sie derzeit deaktiviert.
+> Die Konfiguration **In ARM-Vorlage einschließen** ist nur im Git-Modus verfügbar. Im Livemodus und Data Factory-Modus ist sie derzeit deaktiviert. 
+
+> [!WARNING]
+>Sie können das Zeichen „-“ nicht im Parameternamen verwenden. Wenn Sie das tun, wird die Fehlermeldung „{"code":"BadRequest","message":"ErrorCode=InvalidTemplate,ErrorMessage=Der Ausdruck >'pipeline().globalParameters.myparam-dbtest-url' ist ungültig: .....}“ angezeigt. Stattdessen können Sie das Zeichen „_“ im Parameternamen verwenden.
 
 ![Einschließen in eine ARM-Vorlage](media/author-global-parameters/include-arm-template.png)
 

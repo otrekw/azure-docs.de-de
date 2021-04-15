@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: f8fa5532a5664741c9ddb9b78b35d5eed8e2e4e0
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 10ddee404de21c5bc04672fdb6dd32c30f481ba3
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98937849"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104578242"
 ---
 # <a name="web-app-that-signs-in-users-sign-in-and-sign-out"></a>Web-App für Benutzeranmeldungen: An- und Abmeldung
 
@@ -95,6 +95,16 @@ In unserem Java-Schnellstart befindet sich die Anmeldeschaltfläche in der Datei
 </html>
 ```
 
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+Im Node.js-Schnellstart gibt es keine Schaltfläche für die Anmeldung. Beim Erreichen des Stamms der Web-App wird der Benutzer vom CodeBehind automatisch aufgefordert, sich anzumelden.
+
+```javascript
+app.get('/', (req, res) => {
+    // authentication logic
+});
+```
+
 # <a name="python"></a>[Python](#tab/python)
 
 Im Python-Schnellstart gibt es keine Schaltfläche für die Anmeldung. Beim Erreichen des Stamms der Web-App wird der Benutzer vom CodeBehind automatisch aufgefordert, sich anzumelden. Siehe [app.py#L14-L18](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/0.1.0/app.py#L14-L18).
@@ -158,6 +168,43 @@ public class AuthPageController {
     }
 
     // More code omitted for simplicity
+```
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+Im Gegensatz zu anderen Plattformen sorgt hier MSAL für Node.js dafür, dass sich der Benutzer über die Anmeldeseite anmelden kann.
+
+```javascript
+
+// 1st leg of auth code flow: acquire a code
+app.get('/', (req, res) => {
+    const authCodeUrlParameters = {
+        scopes: ["user.read"],
+        redirectUri: REDIRECT_URI,
+    };
+
+    // get url to sign user in and consent to scopes needed for application
+    pca.getAuthCodeUrl(authCodeUrlParameters).then((response) => {
+        res.redirect(response);
+    }).catch((error) => console.log(JSON.stringify(error)));
+});
+
+// 2nd leg of auth code flow: exchange code for token
+app.get('/redirect', (req, res) => {
+    const tokenRequest = {
+        code: req.query.code,
+        scopes: ["user.read"],
+        redirectUri: REDIRECT_URI,
+    };
+
+    pca.acquireTokenByCode(tokenRequest).then((response) => {
+        console.log("\nResponse: \n:", response);
+        res.sendStatus(200);
+    }).catch((error) => {
+        console.log(error);
+        res.status(500).send(error);
+    });
+});
 ```
 
 # <a name="python"></a>[Python](#tab/python)
@@ -229,6 +276,10 @@ Bei der Anwendungsregistrierung registrieren Sie eine Front-Channel-Abmelde-URL.
 Bei der Anwendungsregistrierung müssen Sie keine zusätzliche Front-Channel-Abmelde-URL registrieren. Die App wird über die Haupt-URL zurückgerufen. 
 
 # <a name="java"></a>[Java](#tab/java)
+
+Bei der Anwendungsregistrierung ist keine Front-Channel-Abmelde-URL erforderlich.
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
 Bei der Anwendungsregistrierung ist keine Front-Channel-Abmelde-URL erforderlich.
 
@@ -305,6 +356,10 @@ In unserem Java-Schnellstart befindet sich die Abmeldeschaltfläche in der Datei
 ...
 ```
 
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+Diese Beispielanwendung implementiert keine Abmeldung.
+
 # <a name="python"></a>[Python](#tab/python)
 
 Im Python-Schnellstart befindet sich die Abmeldeschaltfläche in der Datei [templates/index.html#L10](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/e03be352914bfbd58be0d4170eba1fb7a4951d84/templates/index.html#L10).
@@ -377,6 +432,10 @@ In Java wird die Abmeldung behandelt, indem der `logout`-Endpunkt der Microsoft 
     }
 ```
 
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+Diese Beispielanwendung implementiert keine Abmeldung.
+
 # <a name="python"></a>[Python](#tab/python)
 
 Der Code, mit dem der Benutzer abgemeldet wird, befindet sich in [app.py#L46-L52](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/48637475ed7d7733795ebeac55c5d58663714c60/app.py#L47-L48).
@@ -420,6 +479,10 @@ public class AccountController : Controller
 # <a name="java"></a>[Java](#tab/java)
 
 Im Java-Schnellstart zeigt der Umleitungs-URI nach der Abmeldung nur die Seite „index.html“ an.
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+Diese Beispielanwendung implementiert keine Abmeldung.
 
 # <a name="python"></a>[Python](#tab/python)
 

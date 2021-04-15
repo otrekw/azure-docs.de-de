@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: b01afe60a78a746eb0dc5f03cc7b45989f8cf81e
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97898758"
 ---
 # <a name="create-a-virtual-machine-in-azure-using-vm-templates-on-the-vmware-infrastructure"></a>Erstellen eines virtuellen Computers in Azure mithilfe von VM-Vorlagen für die VMware-Infrastruktur
@@ -45,7 +45,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
     | Subscription | Das mit Ihrer privaten Cloud verknüpfte Azure-Abonnement.  |
     | Ressourcengruppe | Die Ressourcengruppe, der die VM zugewiesen wird. Wählen Sie eine vorhandene Gruppe auswählen oder eine neue erstellen. |
     | Name | Der Name zur Identifizierung der VM.  |
-    | Position | Azure-Region, in der die VM gehostet wird.  |
+    | Standort | Azure-Region, in der die VM gehostet wird.  |
     | Private Cloud | Die private CloudSimple-Cloud, in der Sie den virtuellen Computer erstellen möchten. |
     | Ressourcenpool | Zugeordneter Ressourcenpool für die VM. Wählen Sie aus den verfügbaren Ressourcenpools aus. |
     | vSphere-Vorlage | vSphere-Vorlage für die VM.  |
@@ -76,7 +76,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
     | Name | Geben Sie einen Namen zur Identifizierung des Datenträgers ein.  |
     | Size | Wählen Sie eine der verfügbaren Größen aus.  |
     | SCSI-Controller | Wählen Sie einen SCSI-Controller für den Datenträger aus.  |
-    | Mode | Bestimmt, wie der Datenträger in Momentaufnahmen beteiligt ist. Wählen Sie eine der Optionen aus: <br> - Unabhängig dauerhaft: Alle Daten, die auf den Datenträger geschrieben werden, werden dauerhaft geschrieben.<br> - Unabhängig nicht dauerhaft: Auf dem Datenträger geschriebene Änderungen werden verworfen, wenn Sie den Computer ausschalten oder zurücksetzen.  Der unabhängige, nicht dauerhafte Modus ermöglicht es Ihnen, die VM immer im gleichen Zustand neu zu starten. Weitere Informationen finden Sie in der [VMware-Dokumentation](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-8B6174E6-36A8-42DA-ACF7-0DA4D8C5B084.html).
+    | Mode | Bestimmt, wie der Datenträger in Momentaufnahmen beteiligt ist. Wählen Sie eine der Optionen aus: <br> – Unabhängig, persistent: Alle Daten, die auf den Datenträger geschrieben werden, werden dauerhaft geschrieben.<br> – Unabhängig, nicht persistent: Auf dem Datenträger geschriebene Änderungen werden verworfen, wenn Sie die VM ausschalten oder zurücksetzen.  Der unabhängige, nicht dauerhafte Modus ermöglicht es Ihnen, die VM immer im gleichen Zustand neu zu starten. Weitere Informationen finden Sie in der [VMware-Dokumentation](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-8B6174E6-36A8-42DA-ACF7-0DA4D8C5B084.html).
 
 7. Sobald die Validierung abgeschlossen ist, überprüfen Sie die Einstellungen und klicken Sie auf **Erstellen**. Um Änderungen vorzunehmen, klicken Sie auf die Registerkarten oben.
 

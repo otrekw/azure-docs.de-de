@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 4e4081ecca4714c713d105d363a83a4f96a0d3fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84697842"
 ---
 # <a name="http-api-reference"></a>HTTP-API-Referenz
@@ -28,7 +28,7 @@ Alle HTTP-APIs, die von der Erweiterung implementiert werden, benötigen die fol
 
 In den nächsten Abschnitten werden die spezifischen HTTP-APIs behandelt, die von der Erweiterung unterstützt werden, und es sind Anwendungsbeispiele vorhanden.
 
-## <a name="start-orchestration"></a>Orchestrierung starten
+## <a name="start-orchestration"></a>Starten der Orchestrierung
 
 Startet die Ausführung einer neuen Instanz der angegebenen Orchestratorfunktion.
 
@@ -58,14 +58,14 @@ Anforderungsparameter für diese API enthalten den bereits erwähnten Standardsa
 |--------------------|-----------------|-------------|
 | **`functionName`** | URL             | Der Name der zu startenden Orchestratorfunktion. |
 | **`instanceId`**   | URL             | Dieser Parameter ist optional. ID der Orchestrierungsinstanz Wenn kein Wert angegeben wird, beginnt die Orchestratorfunktion mit einer zufälligen Instanz-ID. |
-| **`{content}`**    | Inhalt anfordern | Optional. Die Eingabe für die JSON-formatierte Orchestratorfunktion. |
+| **`{content}`**    | Inhalt anfordern | Dies ist optional. Die Eingabe für die JSON-formatierte Orchestratorfunktion. |
 
 ### <a name="response"></a>Antwort
 
 Es können mehrere mögliche Statuscodewerte zurückgegeben werden.
 
-* **HTTP 202 (Akzeptiert)** : Der Beginn der Ausführung der angegebenen Orchestratorfunktion wurde geplant. Der `Location`-Antwortheader enthält eine URL zum Abrufen des Orchestrierungsstatus.
-* **HTTP 400 (Ungültige Anforderung)** : Die angegebene Orchestratorfunktion ist nicht vorhanden, die angegebene Instanz-ID war ungültig oder der Anforderungsinhalt war kein gültiger JSON-Code.
+* **HTTP 202 (Accepted):** Der Beginn der Ausführung der angegebenen Orchestratorfunktion wurde geplant. Der `Location`-Antwortheader enthält eine URL zum Abrufen des Orchestrierungsstatus.
+* **HTTP 400 (Bad request):** Die angegebene Orchestratorfunktion ist nicht vorhanden, die angegebene Instanz-ID war ungültig oder der Anforderungsinhalt war kein gültiger JSON-Code.
 
 Die folgende Beispielanforderung startet eine `RestartVMs`-Orchestratorfunktion und umfasst die JSON-Objektnutzlast:
 
@@ -107,8 +107,8 @@ Diese Beispielantwortnutzlast für eine Orchestrierungsinstanz hat `abc123` als 
 
 Die HTTP-Antwort muss mit dem *Polling Consumer Pattern* (Consumerabrufmuster) kompatibel sein. Sie enthält auch die folgenden bedeutenden Antwortheader:
 
-* **Standort**: Die URL des Statusendpunkts. Diese URL enthält denselben Wert wie das `statusQueryGetUri`-Feld.
-* **Retry-After**: Die Anzahl der Sekunden, für die zwischen Abrufvorgängen gewartet werden soll. Standardwert: `10`.
+* **Location** (Standort): Hierbei handelt es sich um die URL des Statusendpunkts. Diese URL enthält denselben Wert wie das `statusQueryGetUri`-Feld.
+* **Retry-After** (Wiederholung nach): Hierbei handelt es sich um die Anzahl der Sekunden, für die zwischen Abrufvorgängen gewartet werden soll. Standardwert: `10`.
 
 Weitere Informationen zum asynchronen HTTP-Abrufmuster finden Sie in der Dokumentation [Nachverfolgen von asynchronen Vorgängen](durable-functions-http-features.md#async-operation-tracking).
 
@@ -158,11 +158,11 @@ Anforderungsparameter für diese API enthalten den bereits erwähnten Standardsa
 
 Es können mehrere mögliche Statuscodewerte zurückgegeben werden.
 
-* **HTTP 200 (OK)** : Die angegebene Instanz befindet sich im Status „Completed“ (Abgeschlossen).
-* **HTTP 202 (Akzeptiert)** : Die angegebene Instanz befindet sich in Bearbeitung.
-* **HTTP 400 (Ungültige Anforderung)** : Bei der angegebenen Instanz ist ein Fehler aufgetreten, oder sie wurde beendet.
-* **HTTP 404 (Nicht gefunden)** : Die angegebene Instanz ist nicht vorhanden, oder die Ausführung wurde noch nicht gestartet.
-* **HTTP 500 (Interner Serverfehler)** : Bei der angegebenen Instanz ist ein Ausnahmefehler aufgetreten.
+* **HTTP 200 (OK)**: Die angegebene Instanz befindet sich im Status „Completed“ (Abgeschlossen).
+* **HTTP 202 (Accepted)**: Die angegebene Instanz befindet sich in der Bearbeitung.
+* **HTTP 400 (Bad Request)**: Für die angegebene Instanz ist ein Fehler aufgetreten, oder sie wurde beendet.
+* **HTTP 404 (Not Found)**: Die angegebene Instanz ist nicht vorhanden, oder die Ausführung wurde noch nicht gestartet.
+* **HTTP 500 (Internal Server Error)**: Für die angegebene Instanz ist ein Fehler mit einer unbehandelten Ausnahme aufgetreten.
 
 Die Antwortnutzlast für die Fälle **HTTP 200** und **HTTP 202** ist ein JSON-Objekt mit den folgenden Feldern:
 
@@ -378,8 +378,8 @@ Anforderungsparameter für diese API enthalten den bereits erwähnten Standardsa
 
 Die folgenden HTTP-Statuscodewerte können zurückgegeben werden:
 
-* **HTTP 200 (OK)** : Der Instanzverlauf wurde erfolgreich gelöscht.
-* **HTTP 404 (Nicht gefunden)** : Die angegebene Instanz ist nicht vorhanden.
+* **HTTP 200 (OK):** Der Instanzverlauf wurde erfolgreich gelöscht.
+* **HTTP 404 (Not Found):** Die angegebene Instanz existiert nicht.
 
 Die Antwortnutzlast für den Fall **HTTP 200** ist ein JSON-Objekt mit dem folgenden Feld:
 
@@ -440,8 +440,8 @@ Anforderungsparameter für diese API enthalten den bereits erwähnten Standardsa
 
 Die folgenden HTTP-Statuscodewerte können zurückgegeben werden:
 
-* **HTTP 200 (OK)** : Der Instanzverlauf wurde erfolgreich gelöscht.
-* **HTTP 404 (Nicht gefunden)** : Es wurden keine Instanzen gefunden, die dem Filterausdruck entsprechen.
+* **HTTP 200 (OK):** Der Instanzverlauf wurde erfolgreich gelöscht.
+* **HTTP 404 (Not Found):** Es wurden keine Instanzen gefunden, die dem Filterausdruck entsprechen.
 
 Die Antwortnutzlast für den Fall **HTTP 200** ist ein JSON-Objekt mit dem folgenden Feld:
 
@@ -493,10 +493,10 @@ Anforderungsparameter für diese API enthalten den bereits erwähnten Standardsa
 
 Es können mehrere mögliche Statuscodewerte zurückgegeben werden.
 
-* **HTTP 202 (Akzeptiert)** : Das ausgelöste Ereignis wurde zur Verarbeitung akzeptiert.
-* **HTTP 400 (Ungültige Anforderung)** : Der Anforderungsinhalt war nicht vom Typ `application/json` oder war kein gültiger JSON-Code.
-* **HTTP 404 (Nicht gefunden)** : Die angegebene Instanz wurde nicht gefunden.
-* **HTTP 410 (Fehlend)** : Die angegebene Instanz wurde abgeschlossen, oder es ist ein Fehler aufgetreten, sodass sie keine ausgelösten Ereignisse verarbeiten kann.
+* **HTTP 202 (Accepted)**: Das ausgelöste Ereignis wurde zur Verarbeitung akzeptiert.
+* **HTTP 400 (Bad request)**: Der Anforderungsinhalt hatte nicht den Typ `application/json` oder war kein gültiger JSON-Code.
+* **HTTP 404 (Not Found)**: Die angegebene Instanz wurde nicht gefunden.
+* **HTTP 410 (Gone)**: Die angegebene Instanz wurde abgeschlossen, oder es ist ein Fehler aufgetreten, sodass keine ausgelösten Ereignisse verarbeitet werden können.
 
 Hier ist eine Beispielanforderung angegeben, bei der die JSON-Zeichenfolge `"incr"` an eine Instanz gesendet wird, die auf ein Ereignis mit dem Namen **operation** wartet:
 
@@ -541,15 +541,15 @@ Anforderungsparameter für diese API enthalten den bereits erwähnten Standardsa
 | Feld             | Parametertyp  | BESCHREIBUNG |
 |-------------------|-----------------|-------------|
 | **`instanceId`**  | URL             | ID der Orchestrierungsinstanz |
-| **`reason`**      | Abfragezeichenfolge    | Optional. Gibt den Grund für die Beendigung der Orchestrierungsinstanz an. |
+| **`reason`**      | Abfragezeichenfolge    | Dies ist optional. Gibt den Grund für die Beendigung der Orchestrierungsinstanz an. |
 
 ### <a name="response"></a>Antwort
 
 Es können mehrere mögliche Statuscodewerte zurückgegeben werden.
 
-* **HTTP 202 (Akzeptiert)** : Die Beendigungsanforderung wurde zur Verarbeitung akzeptiert.
-* **HTTP 404 (Nicht gefunden)** : Die angegebene Instanz wurde nicht gefunden.
-* **HTTP 410 (Fehlend)** : Die angegebene Instanz wurde abgeschlossen, oder es ist ein Fehler aufgetreten.
+* **HTTP 202 (Accepted)**: Die Beendigungsanforderung wurde zur Verarbeitung akzeptiert.
+* **HTTP 404 (Not Found)**: Die angegebene Instanz wurde nicht gefunden.
+* **HTTP 410 (Gone)**: Die angegebene Instanz wurde abgeschlossen, oder es ist ein Fehler aufgetreten.
 
 Hier ist eine Beispielanforderung angegeben, mit der eine ausgeführte Instanz beendet und als Grund **buggy** (fehlerhaft) angegeben wird:
 
@@ -590,15 +590,15 @@ Anforderungsparameter für diese API enthalten den bereits erwähnten Standardsa
 | Feld             | Parametertyp  | BESCHREIBUNG |
 |-------------------|-----------------|-------------|
 | **`instanceId`**  | URL             | ID der Orchestrierungsinstanz |
-| **`reason`**      | Abfragezeichenfolge    | Optional. Gibt den Grund für das Zurückspulen der Orchestrierungsinstanz an. |
+| **`reason`**      | Abfragezeichenfolge    | Dies ist optional. Gibt den Grund für das Zurückspulen der Orchestrierungsinstanz an. |
 
 ### <a name="response"></a>Antwort
 
 Es können mehrere mögliche Statuscodewerte zurückgegeben werden.
 
-* **HTTP 202 (Akzeptiert)** : Die Anforderung zum Zurückspulen wurde zur Verarbeitung akzeptiert.
-* **HTTP 404 (Nicht gefunden)** : Die angegebene Instanz wurde nicht gefunden.
-* **HTTP 410 (Fehlend)** : Die angegebene Instanz wurde abgeschlossen oder beendet.
+* **HTTP 202 (Accepted)**: Die Anforderung zum Zurückspulen wurde zur Verarbeitung akzeptiert.
+* **HTTP 404 (Not Found)**: Die angegebene Instanz wurde nicht gefunden.
+* **HTTP 410 (Gone)**: Die angegebene Instanz wurde abgeschlossen oder abgebrochen.
 
 Hier ist eine Beispielanforderung angegeben, die eine fehlerhafte Instanz zurückspult und einen Grund für **fixed** (behoben) angibt:
 
@@ -633,7 +633,7 @@ Anforderungsparameter für diese API enthalten den bereits erwähnten Standardsa
 |-------------------|-----------------|-------------|
 | **`entityName`**  | URL             | Der Name (Typ) der Entität |
 | **`entityKey`**   | URL             | Der Schlüssel (eindeutige ID) der Entität |
-| **`op`**          | Abfragezeichenfolge    | Optional. Der Name des aufzurufenden benutzerdefinierten Vorgangs |
+| **`op`**          | Abfragezeichenfolge    | Dies ist optional. Der Name des aufzurufenden benutzerdefinierten Vorgangs |
 | **`{content}`**   | Inhalt anfordern | Ereignisnutzlast in JSON-Formatierung |
 
 Nachfolgend sehen Sie eine Beispielanforderung, die eine benutzerdefinierte Meldung vom Typ „Add“ (Hinzufügen) an eine `Counter`-Entität namens `steps` sendet. Der Inhalt der Meldung ist der Wert `5`. Wenn die Entität nicht bereits vorhanden ist, wird sie von dieser Anforderung erstellt:
@@ -652,9 +652,9 @@ Content-Type: application/json
 
 Für diesen Vorgang sind mehrere Antworten möglich:
 
-* **HTTP 202 (Akzeptiert)** : Der Signalvorgang wurde für die asynchrone Verarbeitung akzeptiert.
-* **HTTP 400 (Ungültige Anforderung)** : Der Anforderungsinhalt war nicht vom Typ `application/json`, war kein gültiger JSON-Code oder enthielt einen ungültigen Wert für `entityKey`.
-* **HTTP 404 (Nicht gefunden)** : Das angegebene `entityName`-Element wurde nicht gefunden.
+* **HTTP 202 (Accepted):** Der Signalvorgang wurde für die asynchrone Verarbeitung akzeptiert.
+* **HTTP 400 (Bad request):** Der Anforderungsinhalt war nicht vom Typ `application/json`, war kein gültiger JSON-Code oder enthielt einen ungültigen `entityKey`-Wert.
+* **HTTP 404 (Not Found):** Die angegebene `entityName`-Entität wurde nicht gefunden.
 
 Bei einer erfolgreichen HTTP-Anforderung enthält die Antwort keinen Inhalt. Eine fehlgeschlagene HTTP-Anforderung kann im Antwortinhalt JSON-formatierte Fehlerinformationen enthalten.
 
@@ -677,8 +677,8 @@ GET /runtime/webhooks/durabletask/entities/{entityName}/{entityKey}
 
 Für diesen Vorgang sind zwei Antworten möglich:
 
-* **HTTP 200 (OK)** : Die angegebene Entität ist vorhanden.
-* **HTTP 404 (Nicht gefunden)** : Die angegebene Entität wurde nicht gefunden.
+* **HTTP 200 (OK):** Die angegebene Entität ist vorhanden.
+* **HTTP 404 (Not Found):** Die angegebene Entität wurde nicht gefunden.
 
 Eine erfolgreiche Antwort enthält den JSON-serialisierten Zustand der Entität als Inhalt.
 
@@ -697,7 +697,7 @@ Wenn die Entität `Counter` einfach eine Reihe von Schritten enthält, die im Fe
 }
 ```
 
-## <a name="list-entities"></a>Listenentitäten
+## <a name="list-entities"></a>Auflisten von Entitäten
 
 Sie können mehrere Entitäten anhand des Entitätsnamens oder des Datums des letzten Vorgangs abfragen.
 
@@ -720,7 +720,7 @@ Anforderungsparameter für diese API enthalten den bereits erwähnten Standardsa
 
 | Feld                       | Parametertyp  | BESCHREIBUNG |
 |-----------------------------|-----------------|-------------|
-| **`entityName`**            | URL             | Optional. Wenn dieser Parameter angegeben wird, wird die Liste der zurückgegebenen Entitäten anhand der Entitätsnamen gefiltert (dabei wird die Groß-/Kleinschreibung nicht beachtet). |
+| **`entityName`**            | URL             | Dies ist optional. Wenn dieser Parameter angegeben wird, wird die Liste der zurückgegebenen Entitäten anhand der Entitätsnamen gefiltert (dabei wird die Groß-/Kleinschreibung nicht beachtet). |
 | **`fetchState`**            | Abfragezeichenfolge    | Dieser Parameter ist optional. Wenn dieser Parameter auf `true` festgelegt wird, wird der Zustand der Entität in die Antwortnutzlast eingefügt. |
 | **`lastOperationTimeFrom`** | Abfragezeichenfolge    | Dieser Parameter ist optional. Wenn dieser Parameter angegeben wird, werden die Entitäten aus der Liste der zurückgegebenen Entitäten herausgefiltert, die Vorgänge nach dem angegebenen ISO8601-Zeitstempel verarbeitet haben. |
 | **`lastOperationTimeTo`**   | Abfragezeichenfolge    | Dieser Parameter ist optional. Wenn dieser Parameter angegeben wird, werden die Entitäten aus der Liste der zurückgegebenen Entitäten herausgefiltert, die Vorgänge vor dem angegebenen ISO8601-Zeitstempel verarbeitet haben. |

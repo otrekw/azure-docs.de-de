@@ -1,19 +1,19 @@
 ---
 title: Leistungsstufen für Blockblobspeicher – Azure Storage
 description: Hierin wird der Unterschied zwischen den Premium- und Standard-Leistungsstufen für Azure-Blockblobspeicher erläutert.
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.date: 11/12/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: cf0b5d29e0dc375a07fe024ef0763c8200275055
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4affed8a1226f02970928b2c227b0295167959de
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98880707"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277096"
 ---
 # <a name="performance-tiers-for-block-blob-storage"></a>Leistungsstufen für Blockblobspeicher
 
@@ -21,8 +21,8 @@ Da Unternehmen leistungsrelevante cloudbasierte Anwendungen bereitstellen, ist e
 
 Azure-Blockblobspeicher bietet zwei verschiedene Leistungsstufen:
 
-- **Premium**: optimiert für hohe Transaktionsraten und einstellige konsistente Speicherlatenzen
-- **Standard**: optimiert für hohe Kapazität und hohen Durchsatz
+- **Premium:** Diese Leistungsstufe ist für hohe Transaktionsraten und einstellige konsistente Speicherlatenzen optimiert.
+- **Standard:** Diese Leistungsstufe ist für hohe Kapazität und hohen Durchsatz optimiert.
 
 Die folgenden Überlegungen gelten für die unterschiedlichen Leistungsstufen:
 

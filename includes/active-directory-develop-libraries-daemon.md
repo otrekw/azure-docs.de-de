@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: 0837c0a23c837065dc2214f947912ee25e4f1d2d
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103007996"
 ---
 | Programmiersprache/Framework | Projekt auf<br/>GitHub                                                                 | Paket                                                                                | Erste Schritte<br/>gestartet                           | Anmelden von Benutzern                                            | Zugriff auf Web-APIs                                                 | Allgemein verfügbar (Generally Available, GA) *oder*<br/>Öffentliche Vorschau<sup>1</sup> |

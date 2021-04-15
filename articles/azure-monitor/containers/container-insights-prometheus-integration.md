@@ -3,12 +3,12 @@ title: Konfigurieren der Prometheus-Integration in Container Insights | Microsof
 description: In diesem Artikel wird beschrieben, wie Sie den Container Insights-Agent so konfigurieren können, dass Metriken aus Prometheus mit Ihrem Kubernetes-Cluster abgerufen werden.
 ms.topic: conceptual
 ms.date: 04/22/2020
-ms.openlocfilehash: 8affeb472b9452e4d234e99e5ea6bb4509770fac
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 149cdc8613d5034989c7660608a29309353cdabe
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101731730"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105109640"
 ---
 # <a name="configure-scraping-of-prometheus-metrics-with-container-insights"></a>Konfigurieren des Abrufs von Prometheus-Metriken mit Container Insights
 
@@ -48,7 +48,7 @@ Wenn eine URL angegeben wird, erfasst Container Insights nur den Endpunkt. Wenn 
 |------|-----|-----------|-------|-------------|
 | Clusterweit | | | | Geben Sie eine der folgenden drei Methoden zum Abrufen von Endpunkten für Metriken an. |
 | | `urls` | String | Durch Trennzeichen getrenntes Array | HTTP-Endpunkt (entweder IP-Adresse oder gültiger URL-Pfad angegeben). Beispiel: `urls=[$NODE_IP/metrics]`. („$NODE_IP“ ist ein spezifischer Container Insights-Parameter und kann anstelle der Knoten-IP-Adresse verwendet werden. Muss alles in Großbuchstaben sein.) |
-| | `kubernetes_services` | String | Durch Trennzeichen getrenntes Array | Ein Array von Kubernetes Services zum Abrufen von Metriken aus „kube-state-metrics“. Beispiel: `kubernetes_services = ["https://metrics-server.kube-system.svc.cluster.local/metrics",http://my-service-dns.my-namespace:9100/metrics]`.|
+| | `kubernetes_services` | String | Durch Trennzeichen getrenntes Array | Ein Array von Kubernetes Services zum Abrufen von Metriken aus „kube-state-metrics“. Hier müssen vollqualifizierte Domänennamen verwendet werden. Beispiel: `kubernetes_services = ["https://metrics-server.kube-system.svc.cluster.local/metrics",http://my-service-dns.my-namespace.svc.cluster.local:9100/metrics]`.|
 | | `monitor_kubernetes_pods` | Boolean | true oder false | Wenn die Option in den clusterweiten Einstellungen auf `true` festgelegt ist, ruft der Container Insights-Agent Kubernetes Pods aus dem gesamten Cluster für die folgenden Prometheus-Anmerkungen ab:<br> `prometheus.io/scrape:`<br> `prometheus.io/scheme:`<br> `prometheus.io/path:`<br> `prometheus.io/port:` |
 | | `prometheus.io/scrape` | Boolean | true oder false | Ermöglicht das Abrufen des Pods. `monitor_kubernetes_pods` muss auf `true` festgelegt werden. |
 | | `prometheus.io/scheme` | String | HTTP oder HTTPS | Nimmt den Standardwert Abrufen über HTTP an. Legen Sie diesen Wert bei Bedarf auf `https` fest. | 

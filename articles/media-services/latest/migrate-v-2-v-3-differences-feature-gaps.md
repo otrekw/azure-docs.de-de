@@ -9,14 +9,14 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 1/14/2020
+ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: f77a41a172bc868ad056d74d018b50f734286f0f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 564f3127fc6901695890daa520152a7aa1a2337f
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101702452"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105962967"
 ---
 # <a name="feature-gaps-between-azure-media-services-v2-and-v3"></a>Unterschiede bei den Funktionen zwischen Azure Media Services V2 und V3
 
@@ -42,12 +42,12 @@ Die V3-API weist in Bezug auf die V2-API die folgenden Funktionslücken auf. Ein
     - Im Media Encoder Standard wurde Unterstützung für die Audiokanalzuordnung hinzugefügt.  Weitere Informationen finden Sie in der Dokumentation zu [Audiodaten bei der Media Services-Codierung mit Swagger](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/Encoding.json).
     - Wenn Sie erweiterte Funktionen oder Ausgabeformate des lizenzierten Produkts eines Drittanbieters wie MXF oder ProRes verwenden, setzen Sie die Azure-Partnerlösung von Telestream ein, die nach der Einstellung von V2 transaktional ist. Alternativ können Sie auch Imagine Communications oder [Bitmovin](http://bitmovin.com) verwenden.
 
-- Die Eigenschaft „Verfügbarkeitsgruppe“ für den Streamingendpunkt wird in V2 wird nicht mehr unterstützt. Weitere Informationen finden Sie im Beispielprojekt und im Leitfaden zur Übertragung von [VoD mit Hochverfügbarkeit](./media-services-high-availability-encoding.md) in der V3-API.
+- Die Eigenschaft „Verfügbarkeitsgruppe“ für den Streamingendpunkt wird in V2 wird nicht mehr unterstützt. Weitere Informationen finden Sie im Beispielprojekt und im Leitfaden zur Übertragung von [VoD mit Hochverfügbarkeit](./architecture-high-availability-encoding-concept.md) in der V3-API.
 
 - In Media Services V3 kann FairPlay IV nicht angegeben werden. Obwohl es keine Auswirkungen auf Kunden hat, die Media Services sowohl für das Packen als auch für die Lizenzbereitstellung nutzen, kann es ein Problem darstellen, wenn ein DRM-System eines Drittanbieters zur Bereitstellung der FairPlay-Lizenzen verwendet wird (Hybridmodus).
 
 - Die clientseitige Speicherverschlüsselung für den Schutz von ruhenden Medienobjekten wurde in der V3-API entfernt und durch die Verschlüsselung des Storage-Diensts für ruhende Daten ersetzt. Die V3-APIs funktionieren auch weiterhin mit vorhandenen speicherverschlüsselten Medienobjekten, lassen jedoch nicht die Erstellung neuer Objekte zu.
 
-## <a name="next-steps"></a>Nächste Schritte
+## <a name="terminology-and-entity-changes"></a>Terminologie- und Entitätsänderungen
 
-[!INCLUDE [migration guide next steps](./includes/migration-guide-next-steps.md)]
+Informationen zu weiteren Änderungen an der API finden Sie unter [Terminologie- und Entitätsänderungen](migrate-v-2-v-3-differences-terminology.md).

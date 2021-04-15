@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fcc482e215e646fec20516f35641bd05398d2f2d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cbe465c41363e8c0779440affeae78f999b4632d
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96928714"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257431"
 ---
 # <a name="manage-azure-ad-b2c-custom-policies-with-azure-powershell"></a>Verwalten von benutzerdefinierten Azure AD B2C-Richtlinien mit Azure PowerShell
 
@@ -30,7 +30,7 @@ Azure PowerShell stellt mehrere Cmdlets für die befehlszeilen- und skriptgestü
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * [Azure AD B2C-Mandant](tutorial-create-tenant.md) und Anmeldeinformationen für einen Benutzer im Verzeichnis mit der Rolle [B2C-IEF-Richtlinienadministrator](../active-directory/roles/permissions-reference.md#b2c-ief-policy-administrator)
-* [Benutzerdefinierte Richtlinien](custom-policy-get-started.md), die in Ihren Mandanten hochgeladen wurden
+* [Benutzerdefinierte Richtlinien](tutorial-create-user-flows.md?pivots=b2c-custom-policy), die in Ihren Mandanten hochgeladen wurden
 * [Azure AD PowerShell-Modul für Graph (**Vorschauversion**](/powershell/azure/active-directory/install-adv2))
 
 ## <a name="connect-powershell-session-to-b2c-tenant"></a>Verbinden der PowerShell-Sitzung mit dem B2C-Mandanten

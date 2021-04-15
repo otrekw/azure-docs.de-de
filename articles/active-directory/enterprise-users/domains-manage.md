@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/20/2020
+ms.date: 03/12/2021
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47c991457925664c82baed1a47d89f77a323ff45
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: a201452a9c708d898ee1762385955b63684876c7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102561533"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104577970"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Verwalten von benutzerdefinierten Domänennamen in Azure Active Directory
 
@@ -43,7 +43,7 @@ Sie können den primären Domänennamen für Ihre Organisation in jede überprü
 
 ## <a name="add-custom-domain-names-to-your-azure-ad-organization"></a>Hinzufügen benutzerdefinierter Domänennamen zur Azure AD-Organisation
 
-Sie können bis zu 900 Namen für verwaltete Domänen hinzufügen. Wenn Sie alle Ihre Domänen für den Verbund mit der lokalen Active Directory-Instanz konfigurieren, können Sie in jeder Organisation bis zu 450 Domänennamen hinzufügen.
+Sie können bis zu 5.000 Namen für verwaltete Domänen hinzufügen. Wenn Sie alle Ihre Domänen für den Verbund mit der lokalen Active Directory-Instanz konfigurieren, können Sie in jeder Organisation bis zu 2.500 Domänennamen hinzufügen.
 
 ## <a name="add-subdomains-of-a-custom-domain"></a>Hinzufügen von Unterdomänen einer benutzerdefinierten Domäne
 

@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 090b7711ab061b989eae13113fe7048e8dd875ee
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97895188"
 ---
 # <a name="manage-your-cloudsimple-private-cloud-virtual-machines-in-azure"></a>Verwalten Ihrer virtuellen Computer in der privaten CloudSimple-Cloud in Azure
@@ -28,7 +28,7 @@ Die folgenden Steuerelemente sind auf der Seite **Übersicht** für den ausgewä
 | Verbinden | Herstellen einer Verbindung mit dem angegebenen virtuellen Computer.  |
 | Start | Starten des angegebenen virtuellen Computers.  |
 | Neu starten | Herunterfahren und anschließendes Einschalten des angegebenen virtuellen Computers.  |
-| Beenden | Herunterfahren des jeweiligen virtuellen Computers.  |
+| Stop | Herunterfahren des jeweiligen virtuellen Computers.  |
 | Erfassung | Erfassen eines Images der angegebenen VM, damit es als Image zum Erstellen anderer VMs verwendet werden kann. Weitere Informationen finden Sie unter [Erstellen eines verwalteten Images eines generalisierten virtuellen Computers in Azure](../virtual-machines/windows/capture-image-resource.md).   |
 | Move | Verschieben des angegebenen virtuellen Computers.  |
 | Löschen | Entfernen des angegebenen virtuellen Computers.  |
@@ -56,7 +56,7 @@ Um einen VM-Datenträger hinzuzufügen, öffnen Sie die Seite **Datenträger** f
    | Name | Geben Sie einen Namen zur Identifizierung des Datenträgers ein.  |
    | Size | Wählen Sie eine der verfügbaren Größen aus.  |
    | SCSI-Controller | Wählen Sie einen SCSI-Controller aus. Die verfügbaren Controller sind für die unterstützten Betriebssysteme unterschiedlich.  |
-   | Mode | Bestimmt, wie der Datenträger in Momentaufnahmen beteiligt ist. Wählen Sie eine der Optionen aus: <br> - Unabhängig dauerhaft: Alle Daten, die auf den Datenträger geschrieben werden, werden dauerhaft geschrieben.<br> - Unabhängig, nicht persistent: Auf dem Datenträger geschriebene Änderungen werden verworfen, wenn Sie den Computer ausschalten oder zurücksetzen.  Dieser Modus ermöglicht es Ihnen, die VM immer im gleichen Zustand neu zu starten. Weitere Informationen finden Sie in der [VMware-Dokumentation](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-8B6174E6-36A8-42DA-ACF7-0DA4D8C5B084.html). |
+   | Mode | Bestimmt, wie der Datenträger in Momentaufnahmen beteiligt ist. Wählen Sie eine der Optionen aus: <br> - Unabhängig, persistent: Alle Daten, die auf den Datenträger geschrieben werden, werden dauerhaft geschrieben.<br> - Unabhängig, nicht persistent: Auf dem Datenträger geschriebene Änderungen werden verworfen, wenn Sie die VM ausschalten oder zurücksetzen.  Dieser Modus ermöglicht es Ihnen, die VM immer im gleichen Zustand neu zu starten. Weitere Informationen finden Sie in der [VMware-Dokumentation](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-8B6174E6-36A8-42DA-ACF7-0DA4D8C5B084.html). |
 
 Zum Löschen eines Datenträgers wählen Sie ihn aus und klicken dann auf **Löschen**.
 

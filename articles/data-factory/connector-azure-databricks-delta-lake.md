@@ -6,13 +6,13 @@ author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 11/24/2020
-ms.openlocfilehash: bdf71276d59dec9a19e29ae7f49cb92a0512c05a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 03/29/2021
+ms.openlocfilehash: fcf533ad95e2567e62d44d6997752df6f3145ecb
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100364238"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105726786"
 ---
 # <a name="copy-data-to-and-from-azure-databricks-delta-lake-by-using-azure-data-factory"></a>Kopieren von Daten in und aus Azure Databricks Delta Lake mithilfe von Azure Data Factory
 
@@ -42,7 +42,7 @@ Um diesen Azure Databricks Delta Lake-Connector zu verwenden, müssen Sie einen 
 
 Der Databricks-Cluster muss Zugriff auf das Azure Blob- oder Azure Data Lake Storage Gen2-Konto haben, sowohl auf den Speichercontainer/das Dateisystem, der/das für Quelle/Senke/Staging verwendet wird, als auch auf den Container/das Dateisystem, in den/das Sie die Delta Lake-Tabellen schreiben möchten.
 
-- Zur Verwendung von **Azure Data Lake Storage Gen2** können Sie einen **Dienstprinzipal** oder **Zugriffsschlüssel für das Speicherkonto** auf dem Databricks-Cluster im Rahmen der Apache Spark-Konfiguration konfigurieren. Befolgen Sie die Schritte in [Direkter Zugriff mit Dienstprinzipal](/azure/databricks/data/data-sources/azure/azure-datalake-gen2#--access-directly-with-service-principal-and-oauth-20) oder [Direkter Zugriff mithilfe des Zugriffsschlüssels für das Speicherkonto](/azure/databricks/data/data-sources/azure/azure-datalake-gen2#--access-directly-using-the-storage-account-access-key).
+- Zur Verwendung von **Azure Data Lake Storage Gen2** können Sie im Rahmen der Apache Spark-Konfiguration einen **Dienstprinzipal** auf dem Databricks-Cluster konfigurieren. Führen Sie die Schritte unter [Direkter Zugriff mit Dienstprinzipal](/azure/databricks/data/data-sources/azure/azure-datalake-gen2#--access-directly-with-service-principal-and-oauth-20) aus.
 
 - Zur Verwendung von **Azure-Blobspeicher** können Sie einen **Zugriffsschlüssel für das Speicherkonto** oder ein **SAS-Token** auf dem Databricks-Cluster im Rahmen der Apache Spark-Konfiguration konfigurieren. Befolgen Sie die Schritte in [Zugreifen auf Azure-Blobspeicher mithilfe der RDD-API](/azure/databricks/data/data-sources/azure/azure-storage#access-azure-blob-storage-using-the-rdd-api).
 
