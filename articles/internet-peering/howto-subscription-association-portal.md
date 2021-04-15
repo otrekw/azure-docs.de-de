@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 5/18/2020
 ms.author: derekol
 ms.openlocfilehash: 22cb179925f95fd0762371cc904fcbd02675339a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91540267"
 ---
 # <a name="associate-peer-asn-to-azure-subscription-using-the-portal"></a>Zuordnen der Peer-ASN zum Azure-Abonnement über das Portal
@@ -39,7 +39,7 @@ Registrieren Sie sich in Ihrem Abonnement für den Peeringressourcenanbieter, in
     > [!div class="mx-imgBorder"]
     > ![Starten des Abonnements](./media/rp-subscriptions-launch.png)
 
-1. Klicken Sie nach dem Öffnen des Abonnements auf der linken Seite auf **Ressourcenanbieter**. Suchen Sie dann im rechten Bereich im Suchfenster nach *Peering*, oder verwenden Sie die Scrollleiste, um **Microsoft.Peering** zu finden, und sehen Sie sich den **Status** an. Wenn der Status ***Registriert*** angezeigt wird, überspringen Sie die Schritte unten, und fahren Sie mit dem Abschnitt **PeerAsn erstellen** fort. Wenn der Status ***NIcht registriert*** ist, wählen Sie **Microsoft.Peering** aus, und klicken Sie auf **Registrieren**.
+1. Klicken Sie nach dem Öffnen des Abonnements auf der linken Seite auf **Ressourcenanbieter**. Suchen Sie dann im rechten Bereich im Suchfenster nach *Peering*, oder verwenden Sie die Scrollleiste, um **Microsoft.Peering** zu finden, und sehen Sie sich den **Status** an. Wird der Status **_Registriert_ *_ angezeigt, überspringen Sie die Schritte unten, und fahren Sie mit dem Abschnitt _* PeerAsn erstellen** fort. Lautet der Status **_Nicht registriert_ *_, wählen Sie die Option _* Microsoft.Peering** aus, und klicken Sie auf **Registrieren**.
 
     > [!div class="mx-imgBorder"]
     > ![Beginn der Registrierung](./media/rp-register-start.png)
@@ -49,7 +49,7 @@ Registrieren Sie sich in Ihrem Abonnement für den Peeringressourcenanbieter, in
     > [!div class="mx-imgBorder"]
     > ![Registrierung wird ausgeführt](./media/rp-register-progress.png)
 
-1. Warten Sie etwa eine Minute lang bis zum Abschluss der Registrierung. Klicken Sie dann auf **Aktualisieren**, und überprüfen Sie, ob der Status jetzt ***Registriert*** ist.
+1. Warten Sie etwa eine Minute lang bis zum Abschluss der Registrierung. Klicken Sie dann auf **Aktualisieren**, und überprüfen Sie, ob der Status jetzt **_Registriert_** lautet.
 
     > [!div class="mx-imgBorder"]
     > ![Registrierung abgeschlossen](./media/rp-register-completed.png)

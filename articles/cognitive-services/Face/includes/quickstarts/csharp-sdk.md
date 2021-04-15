@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
-ms.openlocfilehash: b06a35274082e09ec0973c5123b39935a93e354d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ab99d574588989c84783e532fcf801dcaffdd54d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102445667"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105958004"
 ---
 Erste Schritte mit Gesichtserkennung unter Verwendung der Gesichtserkennungs-Clientbibliothek für .NET. Führen Sie die nachfolgenden Schritte zum Installieren des Pakets aus, und testen Sie den Beispielcode für grundlegende Aufgaben. Über den Gesichtserkennungsdienst haben Sie Zugriff auf erweiterte Algorithmen für die Erkennung von menschlichen Gesichtern in Bildern.
 
@@ -22,7 +22,7 @@ Verwenden Sie die Clientbibliothek zur Gesichtserkennung für .NET für Folgende
 
 * [Gesichtserkennung in einem Bild](#detect-faces-in-an-image)
 * [Suchen ähnlicher Gesichter](#find-similar-faces)
-* [Erstellen einer Personengruppe](#create-a-person-group)
+* [Erstellen einer PersonGroup](#create-a-persongroup)
 * [Identifizieren eines Gesichts](#identify-a-face)
 
 [Referenzdokumentation](/dotnet/api/overview/azure/cognitiveservices/client/faceapi) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.Face) | [Paket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.6.0-preview.1) | [Beispiele](/samples/browse/?products=azure&term=face)
@@ -124,7 +124,7 @@ Die folgenden Codeausschnitte veranschaulichen, wie die folgenden Aufgaben mit d
 * [Authentifizieren des Clients](#authenticate-the-client)
 * [Gesichtserkennung in einem Bild](#detect-faces-in-an-image)
 * [Suchen ähnlicher Gesichter](#find-similar-faces)
-* [Erstellen einer Personengruppe](#create-a-person-group)
+* [Erstellen einer PersonGroup](#create-a-persongroup)
 * [Identifizieren eines Gesichts](#identify-a-face)
 
 ## <a name="authenticate-the-client"></a>Authentifizieren des Clients
@@ -186,7 +186,7 @@ Mit dem folgenden Code werden Übereinstimmungsdetails an der Konsole ausgegeben
 
 Der Identifizierungsvorgang verwendet ein Bild einer Person (oder mehrerer Personen) und sucht im Bild nach der Identität der einzelnen Gesichter (Gesichtserkennungssuche). Er vergleicht jedes erkannte Gesicht mit einem **PersonGroup**-Objekt, einer Datenbank mit verschiedenen **Person**-Objekten,deren Gesichtsmerkmale bekannt sind. Für den Identifizierungsvorgang müssen Sie zunächst ein **PersonGroup**-Element erstellen und trainieren.
 
-### <a name="create-a-person-group"></a>Erstellen einer Personengruppe
+### <a name="create-a-persongroup"></a>Erstellen einer PersonGroup
 
 Mit dem folgenden Code wird ein **PersonGroup**-Objekt mit sechs verschiedenen **Person**-Objekten erstellt. Er ordnet jedem **Person**-Objekt eine Reihe von Beispielbildern zu. Danach folgt ein Trainingsschritt, um die einzelnen Personen anhand ihrer Gesichtsmerkmale zu erkennen. **Person**- und **PersonGroup**-Objekte werden in den Überprüfungs-, Identifizierungs- und Gruppierungsvorgängen verwendet.
 

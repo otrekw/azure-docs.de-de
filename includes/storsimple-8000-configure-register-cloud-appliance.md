@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: d004de75284011f4ceaaca88fd19e61900824f51
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "67178151"
 ---
 #### <a name="to-configure-and-register-the-cloud-appliance"></a>So konfigurieren und registrieren Sie das Cloudgerät
@@ -18,7 +18,7 @@ ms.locfileid: "67178151"
     ![StorSimple Cloud Appliance in der Liste der Geräte](./media/storsimple-8000-create-cloud-appliance-u2/sca-create3.png)
 2. Führen Sie auf dem Blatt **Gerät konfigurieren** folgende Schritte aus:
     
-    1. Geben Sie den **Verschlüsselungsschlüssel für Dienstdaten** in das entsprechende Feld ein. Dieser Schlüssel wird generiert, wenn Sie das erste physische Gerät bei Ihrem StorSimple-Geräte-Manager-Dienst registrieren.
+    1. Geben Sie den **Verschlüsselungsschlüssel für Dienstdaten** im vorgesehenen Bereich ein. Dieser Schlüssel wird generiert, wenn Sie das erste physische Gerät bei Ihrem StorSimple-Geräte-Manager-Dienst registrieren.
 
     2. Geben Sie das **Geräteadministratorkennwort** und das **Snapshot Manager**-Kennwort mit der angegebenen Länge und gemäß der Einstellungen an.
 

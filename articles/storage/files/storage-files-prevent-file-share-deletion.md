@@ -4,16 +4,16 @@ description: Erfahren Sie, wie Sie das vorläufige Löschen für Azure-Dateifrei
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/28/2020
+ms.date: 03/29/2021
 ms.author: rogarana
 ms.subservice: files
 services: storage
-ms.openlocfilehash: 0fecc9fc954a1ac648e8f60badf69ad1d2e8f1cc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a879aff7c3fcaa7ac2c15be295c6c5bdca25ccdf
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93126939"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105937293"
 ---
 # <a name="prevent-accidental-deletion-of-azure-file-shares"></a>Verhindern eines versehentlichen Löschens von Azure-Dateifreigaben
 
@@ -33,7 +33,7 @@ Bei vorläufig gelöschten Premium-Dateifreigaben wird das Dateifreigabekontinge
 
 ### <a name="enabling-or-disabling-soft-delete"></a>Aktivieren oder Deaktivieren des vorläufigen Löschens
 
-Weil vorläufiges Löschen für Dateifreigaben auf Speicherkontoebene aktiviert wird, gelten die Einstellungen für vorläufiges Löschen für alle Dateifreigaben eines Speicherkontos. Sie können vorläufiges Löschen jederzeit aktivieren oder deaktivieren. Wenn Sie ein neues Speicherkonto erstellen, ist vorläufiges Löschen für Dateifreigaben standardmäßig deaktiviert. Sie können diese Funktion während der Bereitstellung oder zu jedem späteren Zeitpunkt aktivieren. Vorläufiges Löschen bleibt auch für vorhandene Speicherkonten standardmäßig deaktiviert. Wenn Sie [Sichern von Azure-Dateifreigaben](../../backup/azure-file-share-backup-overview.md) für eine Azure-Dateifreigabe konfiguriert haben, wird das vorläufige Löschen für Azure-Dateifreigaben automatisch für das Speicherkonto dieser Freigabe aktiviert.
+Weil vorläufiges Löschen für Dateifreigaben auf Speicherkontoebene aktiviert wird, gelten die Einstellungen für vorläufiges Löschen für alle Dateifreigaben eines Speicherkontos. Vorläufiges Löschen ist standardmäßig für neue Speicherkonten aktiviert und kann jederzeit deaktiviert oder aktiviert werden. Vorläufiges Löschen wird nicht automatisch für vorhandene Speicherkonten aktiviert, es sei denn, die [Sicherung der Azure-Dateifreigabe](../../backup/azure-file-share-backup-overview.md) wurde für eine Azure-Dateifreigabe in diesem Speicherkonto konfiguriert. Wenn Sie das Sichern von Azure-Dateifreigaben für eine Azure-Dateifreigabe konfiguriert haben, wird das vorläufige Löschen für Azure-Dateifreigaben automatisch für das Speicherkonto dieser Freigabe aktiviert.
 
 Wenn Sie vorläufiges Löschen für Dateifreigaben aktivieren, einige Dateifreigaben löschen und dann vorläufiges Löschen deaktivieren, können Sie, wenn die Freigaben in diesem Zeitraum gespeichert wurden, weiterhin auf diese Dateifreigaben zugreifen und sie wiederherstellen. Wenn Sie vorläufiges Löschen aktivieren, müssen Sie auch den Aufbewahrungszeitraum festlegen.
 

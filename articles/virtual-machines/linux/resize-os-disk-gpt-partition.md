@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.date: 05/03/2020
 ms.author: kaib
 ms.custom: seodec18
-ms.openlocfilehash: 46b6ceff74dd3a296d26cc018b380c1c3f76664c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0db79728bbb963aa360743afc70aecc213bfb7bc
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102552948"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107011680"
 ---
 # <a name="resize-an-os-disk-that-has-a-gpt-partition"></a>Ändern der Größe eines Betriebssystem-Datenträgers, der eine GPT-Partition aufweist
 
@@ -400,9 +400,8 @@ Wenn der virtuelle Computer neu gestartet wurde, führen Sie diese Schritte aus:
 > [!NOTE]
 > Um die gleiche Vorgehensweise zum Ändern der Größe jedes beliebigen anderen logischen Volumes zu verwenden, ändern Sie in Schritt 12 den LV-Namen.
 
+
 ### <a name="rhel-raw"></a>RHEL RAW
->[!NOTE] 
->Erstellen Sie immer eine Momentaufnahme des virtuellen Computers, bevor Sie den Betriebssystemdatenträger vergrößern.
 
 So setzen Sie die Größe des Betriebssystemdatenträgers in einer RHEL-RAW-Partition herauf:
 
@@ -410,120 +409,114 @@ So setzen Sie die Größe des Betriebssystemdatenträgers in einer RHEL-RAW-Part
 1. Heraufsetzen der Größe des Betriebssystem-Datenträgers im Portal.
 1. Starten Sie den virtuellen Computer.
 
-Wenn der Neustart der VM erfolgt ist, führen Sie die folgenden Schritte aus:
+Wenn der virtuelle Computer neu gestartet wurde, führen Sie diese Schritte aus:
 
 1. Greifen Sie als **Root**-Benutzer auf Ihre VM zu, und verwenden Sie dazu den folgenden Befehl:
- 
-   ```
-   sudo su
+
+   ```bash
+   [root@dd-rhel7vm ~]# sudo -i
    ```
 
-1. Installieren Sie das **gptfdisk**-Paket, das erforderlich ist, um die Größe des Betriebssystem-Datenträgers heraufzusetzen.
+1. Wenn der Neustart der VM erfolgt ist, führen Sie die folgenden Schritte aus:
 
-   ```
-   yum install gdisk -y
-   ```
+   - Installieren Sie das Paket **cloud-utils-growpart**, um den Befehl **growpart** bereitzustellen, der zum Vergrößern des Betriebssystemdatenträgers und des gdisk-Handlers für GPT-Datenträgerlayouts erforderlich ist. Dieses Paket ist auf den meisten Marketplace-Images vorinstalliert.
 
-1.  Um alle Sektoren anzuzeigen, die auf dem Datenträger verfügbar sind, führen Sie den folgenden Befehl aus:
-    ```
-    gdisk -l /dev/sda
-    ```
-
-1. Es werden die Informationen zum Partitionstyp angezeigt. Stellen Sie sicher, dass es sich um GPT handelt. Identifizieren Sie die Stammpartition. Ändern oder löschen Sie nicht die Startpartition (BIOS-Startpartition) und die Systempartition („EFI-Systempartition“).
-
-1. Verwenden Sie den folgenden Befehl, um die Partitionierung zum ersten Mal zu starten. 
-    ```
-    gdisk /dev/sda
-    ```
-
-1. Jetzt wird eine Nachricht angezeigt, die zur Eingabe des nächsten Befehls auffordert („Befehl: ? für Hilfe“). 
-
-   ```
-   w
+   ```bash
+   [root@dd-rhel7vm ~]# yum install cloud-utils-growpart gdisk
    ```
 
-1. Sie erhalten eine Warnung mit der Meldung „Warnung! Der sekundäre Header wird zu früh auf dem Datenträger platziert! Möchten Sie dieses Problem beheben? (J/N):“. Sie müssen „J“ drücken.
+1. Überprüfen Sie mit dem Befehl **lsblk -f** die Partition und den Dateisystemtyp mit der Stammpartition ( **/** ):
 
-   ```
-   Y
-   ```
-
-1. Es sollte eine Meldung angezeigt werden, die Sie darüber informiert, dass die abschließenden Prüfungen abgeschlossen sind, und Sie zur Bestätigung auffordert. Drücken Sie „J“.
-
-   ```
-   Y
-   ```
-
-1. Überprüfen Sie mit dem Befehl „partprobe“, ob alles ordnungsgemäß abgelaufen ist.
-
-   ```
-   partprobe
+   ```bash
+   [root@vm-dd-cent7 ~]# lsblk -f
+   NAME    FSTYPE LABEL UUID                                 MOUNTPOINT
+   sda
+   ├─sda1  xfs          2a7bb59d-6a71-4841-a3c6-cba23413a5d2 /boot
+   ├─sda2  xfs          148be922-e3ec-43b5-8705-69786b522b05 /
+   ├─sda14
+   └─sda15 vfat         788D-DC65                            /boot/efi
+   sdb
+   └─sdb1  ext4         923f51ff-acbd-4b91-b01b-c56140920098 /mnt/resource
    ```
 
-1. Die obigen Schritte haben sichergestellt, dass der sekundäre GPT-Header am Ende platziert wird. Der nächste Schritt besteht darin, den Prozess der Größenänderung mithilfe des Tools „gdisk“ erneut zu starten. Verwenden Sie den folgenden Befehl.
+1. Zur Überprüfung müssen Sie zunächst die Partitionstabelle des SDA-Datenträgers mit **gdisk** auflisten. In diesem Beispiel sehen wir einen 48-GB-Datenträger mit Partition 2 bei 29,0 GiB. Der Datenträger wurde im Azure-Portal von 30 auf 48 GB erweitert.
 
-   ```
-   gdisk /dev/sda
-   ```
-1. Drücken Sie im Befehlsmenü auf „p“, um die Liste der Partition anzuzeigen. Identifizieren Sie die Stammpartition (in den Schritten wird „sda2“ als Stammpartition betrachtet) und die Startpartition (in den Schritten wird „sda3“ als Startpartition betrachtet). 
+   ```bash
+   [root@vm-dd-cent7 ~]# gdisk -l /dev/sda
+   GPT fdisk (gdisk) version 0.8.10
 
-   ```
-   p
-   ```
-    ![Stammpartition und Startpartition](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw1.png)
+   Partition table scan:
+   MBR: protective
+   BSD: not present
+   APM: not present
+   GPT: present
 
-1. Drücken Sie „d“, um die Partition zu löschen, und wählen Sie die dem Startvorgang zugewiesene Partitionsnummer aus (in diesem Beispiel ist es „3“).
-   ```
-   d
-   3
-   ```
-1. Drücken Sie „d“, um die Partition zu löschen, und wählen Sie die dem Startvorgang zugewiesene Partitionsnummer aus (in diesem Beispiel ist es „2“).
-   ```
-   d
-   2
-   ```
-    ![Löschen der Stammpartition und Startpartition](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw2.png)
+   Found valid GPT with protective MBR; using GPT.
+   Disk /dev/sda: 100663296 sectors, 48.0 GiB
+   Logical sector size: 512 bytes
+   Disk identifier (GUID): 78CDF84D-9C8E-4B9F-8978-8C496A1BEC83
+   Partition table holds up to 128 entries
+   First usable sector is 34, last usable sector is 62914526
+   Partitions will be aligned on 2048-sector boundaries
+   Total free space is 6076 sectors (3.0 MiB)
 
-1. Um eine vergrößerte Stammpartition neu zu erstellen, drücken Sie „n“, geben Sie die Partitionsnummer ein, die Sie zuvor für Root gelöscht haben („2“ für dieses Beispiel), und wählen Sie den ersten Sektor als „Standardwert“, den letzten Sektor als „Letzter Sektorwert – Startgrößensektor“ („4096 in diesem Fall“ entspricht einem 2 MB Start) und den Hexadezimalcode als „8300“ aus.
-   ```
-   n
-   2
-   (Enter default)
-   (Calculateed value of Last sector value - 4096)
-   8300
-   ```
-1. Um eine Startpartition neu zu erstellen, drücken Sie „n“, geben Sie die Partitionsnummer ein, die Sie zuvor für das Starten gelöscht haben („3“ für dieses Beispiel), und wählen Sie den ersten Sektor als „Standardwert“, den letzten Sektor als „Standardwert“ und den Hexadezimalcode „EF02“ aus.
-   ```
-   n
-   3
-   (Enter default)
-   (Enter default)
-   EF02
+   Number  Start (sector)    End (sector)  Size       Code  Name
+      1         1026048         2050047   500.0 MiB   0700
+      2         2050048        62912511   29.0 GiB    0700
+   14            2048           10239   4.0 MiB     EF02
+   15           10240         1024000   495.0 MiB   EF00  EFI System Partition
    ```
 
-1. Schreiben Sie die Änderungen mit dem Befehl „w“, und drücken Sie zur Bestätigung „J“.
-   ```
-   w
-   Y
-   ```
-1. Führen Sie den Befehl „partprobe“ aus, um die Datenträgerstabilität zu prüfen.
-   ```
-   partprobe
-   ```
-1. Starten Sie den virtuellen Computer neu, und die Stammpartition sollte vergrößert sein.
-   ```
-   reboot
+1. Erweitern Sie die Partition für das Stammverzeichnis, in diesem Fall sda2, mit dem **growpart**-Befehl. Mit diesem Befehl wird die Partition so erweitert, dass der gesamte zusammenhängende Speicherplatz auf dem Datenträger verwendet wird.
+
+   ```bash
+   [root@vm-dd-cent7 ~]# growpart /dev/sda 2
+   CHANGED: partition=2 start=2050048 old: size=60862464 end=62912512 new: size=98613214 end=100663262
    ```
 
-   ![Neue Stammpartition und Startpartition](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw3.png)
+1. Geben Sie nun die neue Partitionstabelle mit **gdisk** aus.  Beachten Sie, dass Partition 2 auf 47,0 GiB erweitert wurde:
 
-1. Führen Sie den Befehl „xfs_growfs“ für die Partition aus, um ihre Größe zu ändern.
+   ```bash
+   [root@vm-dd-cent7 ~]# gdisk -l /dev/sda
+   GPT fdisk (gdisk) version 0.8.10
+
+   Partition table scan:
+   MBR: protective
+   BSD: not present
+   APM: not present
+   GPT: present
+
+   Found valid GPT with protective MBR; using GPT.
+   Disk /dev/sda: 100663296 sectors, 48.0 GiB
+   Logical sector size: 512 bytes
+   Disk identifier (GUID): 78CDF84D-9C8E-4B9F-8978-8C496A1BEC83
+   Partition table holds up to 128 entries
+   First usable sector is 34, last usable sector is 100663262
+   Partitions will be aligned on 2048-sector boundaries
+   Total free space is 4062 sectors (2.0 MiB)
+
+   Number  Start (sector)    End (sector)  Size       Code  Name
+      1         1026048         2050047   500.0 MiB   0700
+      2         2050048       100663261   47.0 GiB    0700
+   14            2048           10239   4.0 MiB     EF02
+   15           10240         1024000   495.0 MiB   EF00  EFI System Partition
    ```
-   xfs_growfs /dev/sda2
+
+1. Erweitern Sie das Dateisystem auf der Partition mit **xfs_growfs**. Dies eignet sich für ein standardmäßiges vom Marketplace generiertes RedHat-System:
+
+   ```bash
+   [root@vm-dd-cent7 ~]# xfs_growfs /
+   meta-data=/dev/sda2              isize=512    agcount=4, agsize=1901952 blks
+            =                       sectsz=4096  attr=2, projid32bit=1
+            =                       crc=1        finobt=0 spinodes=0
+   data     =                       bsize=4096   blocks=7607808, imaxpct=25
+            =                       sunit=0      swidth=0 blks
+   naming   =version 2              bsize=4096   ascii-ci=0 ftype=1
+   log      =internal               bsize=4096   blocks=3714, version=2
+            =                       sectsz=4096  sunit=1 blks, lazy-count=1
+   realtime =none                   extsz=4096   blocks=0, rtextents=0
+   data blocks changed from 7607808 to 12326651
    ```
-
-   ![XFS Grow FS](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw4.png)
-
 
 1. Vergewissern Sie sich mit dem Befehl **df**, dass die neue Größe wiedergegeben wird:
 

@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
-ms.openlocfilehash: 2c693c9e972cdfc66cce0d52323c113b6006bd97
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ab3fdd24446448e9c21a1e4867c26c960f814c7a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102444875"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105958126"
 ---
 Erste Schritte mit Gesichtserkennung unter Verwendung der Gesichtserkennungs-Clientbibliothek für Go. Führen Sie die nachfolgenden Schritte zum Installieren des Pakets aus, und testen Sie den Beispielcode für grundlegende Aufgaben. Über den Gesichtserkennungsdienst haben Sie Zugriff auf erweiterte Algorithmen für die Erkennung von menschlichen Gesichtern in Bildern.
 
@@ -22,7 +22,7 @@ Die Gesichtserkennungsdienst-Clientbibliothek für Go kann für Folgendes verwen
 
 * [Gesichtserkennung in einem Bild](#detect-faces-in-an-image)
 * [Suchen ähnlicher Gesichter](#find-similar-faces)
-* [Erstellen und Trainieren einer Personengruppe](#create-and-train-a-person-group)
+* [Erstellen und Trainieren einer Personengruppe](#create-and-train-a-persongroup)
 * [Identifizieren eines Gesichts](#identify-a-face)
 
 [Referenzdokumentation](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v1.0/face) | [SDK-Download](https://github.com/Azure/azure-sdk-for-go)
@@ -106,7 +106,7 @@ In den folgenden Codebeispielen werden einfache Aufgaben mithilfe der Gesichtser
 * [Authentifizieren des Clients](#authenticate-the-client)
 * [Gesichtserkennung in einem Bild](#detect-faces-in-an-image)
 * [Suchen ähnlicher Gesichter](#find-similar-faces)
-* [Erstellen und Trainieren einer Personengruppe](#create-and-train-a-person-group)
+* [Erstellen und Trainieren einer Personengruppe](#create-and-train-a-persongroup)
 * [Identifizieren eines Gesichts](#identify-a-face)
 
 ## <a name="authenticate-the-client"></a>Authentifizieren des Clients
@@ -161,7 +161,7 @@ Mit dem folgenden Code werden Übereinstimmungsdetails in der Konsole ausgegeben
 [!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_similar_print)]
 
 
-## <a name="create-and-train-a-person-group"></a>Erstellen und Trainieren einer Personengruppe
+## <a name="create-and-train-a-persongroup"></a>Erstellen und Trainieren einer Personengruppe
 
 Für dieses Szenario müssen Sie die folgenden Bilder im Stammverzeichnis Ihres Projekts speichern: https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images.
 
@@ -202,11 +202,11 @@ Nach dem Zuweisen von Gesichtern muss die Personengruppe (**PersonGroup**) train
 Der Identifizierungsvorgang verwendet ein Bild einer Person (oder mehrerer Personen) und sucht im Bild nach der Identität der einzelnen Gesichter (Gesichtserkennungssuche). Er vergleicht jedes erkannte Gesicht mit einem **PersonGroup**-Objekt, einer Datenbank mit verschiedenen **Person**-Objekten,deren Gesichtsmerkmale bekannt sind.
 
 > [!IMPORTANT]
-> Damit Sie dieses Beispiel ausführen können, müssen Sie zunächst den Code unter [Erstellen und Trainieren einer Personengruppe](#create-and-train-a-person-group) ausführen.
+> Damit Sie dieses Beispiel ausführen können, müssen Sie zunächst den Code unter [Erstellen und Trainieren einer Personengruppe](#create-and-train-a-persongroup) ausführen.
 
 ### <a name="get-a-test-image"></a>Abrufen eines Testbilds
 
-Der folgende Code sucht im Stammverzeichnis des Projekts nach dem Bild _test-image-person-group.jpg_ und lädt es in den Programmspeicher. Das Bild befindet sich im gleichen Repository wie die Bilder, die im Abschnitt [Erstellen und Trainieren einer Personengruppe](#create-and-train-a-person-group) verwendet werden: https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images.
+Der folgende Code sucht im Stammverzeichnis des Projekts nach dem Bild _test-image-person-group.jpg_ und lädt es in den Programmspeicher. Das Bild befindet sich im gleichen Repository wie die Bilder, die im Abschnitt [Erstellen und Trainieren einer Personengruppe](#create-and-train-a-persongroup) verwendet werden: https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images.
 
 [!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_id_source_get)]
 

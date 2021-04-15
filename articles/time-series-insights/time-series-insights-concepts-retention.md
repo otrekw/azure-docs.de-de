@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 4f236679d0662df852581a6a8408ed6bc0d4e3fe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 26363031aea37c53cce098e2b6cbc2b4d93b918f
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91535688"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107307077"
 ---
 # <a name="understand-data-retention-in-azure-time-series-insights-gen1"></a>Grundlagen der Datenaufbewahrung in Azure Time Series Insights Gen1
 
@@ -85,7 +85,7 @@ Anschließend wird in der Umgebung dasselbe Dataset angezeigt, bis der Dateneing
 Bei Fortsetzung des Dateneingangs:
 
 - Daten fließen in der Reihenfolge, in der sie von der Ereignisquelle empfangen wurden.
-- Die Ereignisse werden basierend auf ihrem Zeitstempel indiziert, sofern Sie nicht gegen die Aufbewahrungsrichtlinien auf Ihrer Ereignisquelle verstoßen haben. Weitere Informationen zur Konfiguration der Aufbewahrung auf der Ereignisquelle finden Sie unter [Häufig gestellte Fragen zu Event Hubs](../event-hubs/event-hubs-faq.md).
+- Die Ereignisse werden basierend auf ihrem Zeitstempel indiziert, sofern Sie nicht gegen die Aufbewahrungsrichtlinien auf Ihrer Ereignisquelle verstoßen haben. Weitere Informationen zur Konfiguration der Aufbewahrung auf der Ereignisquelle finden Sie unter [Häufig gestellte Fragen zu Event Hubs](../event-hubs/event-hubs-faq.yml).
 
 > [!IMPORTANT]
 > Sie sollten Warnungen festlegen, damit Hinweise angezeigt werden und möglichst verhindert wird, dass der Dateneingang angehalten wird. Es kann zu Datenverlust kommen, da die Standardaufbewahrungsdauer für Azure-Ereignisquellen einen Tag beträgt. Nachdem der Dateneingang angehalten wurde, gehen daher vermutlich die aktuellsten Daten verloren, sofern Sie nicht weitere Maßnahmen ergreifen. Sie müssen die Kapazität erhöhen oder das Verhalten auf **Purge old data** (Alte Daten bereinigen) festlegen, um potenzielle Datenverluste zu vermeiden.

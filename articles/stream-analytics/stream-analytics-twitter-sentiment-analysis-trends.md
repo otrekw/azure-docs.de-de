@@ -1,21 +1,21 @@
 ---
-title: Twitter-Standpunktanalyse in Echtzeit mit Azure Stream Analytics
-description: In diesem Artikel erfahren Sie, wie Sie Stream Analytics für Twitter-Standpunktanalysen in Echtzeit verwenden. Schrittweise Anleitung von der Ereignisgenerierung bis hin zu Daten im Live-Dashboard.
+title: Social-Media-Analyse mit Azure Stream Analytics
+description: In diesem Artikel wird beschrieben, wie Sie Stream Analytics für Social-Media-Analysen mithilfe der Client-API für Twitter verwenden. Schrittweise Anleitung von der Ereignisgenerierung bis hin zu Daten im Live-Dashboard.
 services: stream-analytics
 author: enkrumah
 ms.author: ebnkruma
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 02/10/2020
-ms.openlocfilehash: 6a461ad906f7611c8a13e2ee495f4d2f62fedd53
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.date: 03/16/2021
+ms.openlocfilehash: e2369e8f4349a3b4a83c1729c6414d319dd8419e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98734836"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104589666"
 ---
-# <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Twitter-Standpunktanalyse in Echtzeit in Azure Stream Analytics
+# <a name="social-media-analysis-with-azure-stream-analytics"></a>Social-Media-Analyse mit Azure Stream Analytics
 
 In diesem Artikel lernen Sie, wie Sie eine Lösung für Standpunktanalysen in sozialen Medien durch die Einbindung von Twitter-Echtzeitereignissen in Azure Event Hubs erstellen können. Schreiben Sie eine Azure Stream Analytics-Abfrage, um die Daten zu analysieren, und speichern Sie die Ergebnisse zur späteren Verwendung, oder erstellen Sie ein [Power BI](https://powerbi.com/)-Dashboard, um Einblicke in Echtzeit zu ermöglichen.
 

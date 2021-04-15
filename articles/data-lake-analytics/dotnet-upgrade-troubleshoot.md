@@ -6,10 +6,10 @@ ms.service: data-lake-analytics
 ms.topic: troubleshooting
 ms.date: 10/11/2019
 ms.openlocfilehash: ab03ea8a88187289f5dce55f8a396a9d51346a3f
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92217676"
 ---
 # <a name="azure-data-lake-analytics-is-upgrading-to-the-net-framework-v472"></a>Azure Data Lake Analytics wird auf .NET Framework 4.7.2 aktualisiert
@@ -53,49 +53,49 @@ Sie können den Auftrag mit der alten Runtimeversion (die als Ziel für 4.5.2 er
 
 ### <a name="what-are-the-most-common-backwards-compatibility-issues-you-may-encounter"></a>Gängigste Probleme mit der Abwärtskompatibilität
 
-Nachfolgend sind die gängigsten Abwärtsinkompatibilitäten, die bei der Überprüfung wahrscheinlich ermittelt werden (wir haben diese Liste durch Ausführen der Überprüfung für unsere internen ADLA-Aufträge erstellt), die betroffenen Bibliotheken (Beachten Sie, dass die Bibliotheken nur indirekt aufgerufen werden können. Daher ist es wichtig, Aktion 1 auszuführen, um zu überprüfen, ob Ihre Aufträge betroffen sind.) und mögliche Maßnahmen zur Behebung aufgeführt. Hinweis: In fast allen Fällen erwiesen sich die Warnungen für unsere Aufträge aufgrund der engen Grenzen der meisten Breaking Changes als False Positive.
+Nachfolgend sind die gängigsten Abwärtsinkompatibilitäten, die bei der Überprüfung wahrscheinlich ermittelt werden (wir haben diese Liste durch Ausführen der Überprüfung für unsere internen ADLA-Aufträge erstellt), die betroffenen Bibliotheken (Beachten Sie, dass die Bibliotheken nur indirekt aufgerufen werden können. Daher ist es wichtig, Aktion 1 auszuführen, um zu überprüfen, ob Ihre Aufträge betroffen sind.) und mögliche Maßnahmen zur Behebung aufgeführt. Hinweis: In fast allen Fällen erwiesen sich die Warnungen für unsere Aufträge aufgrund der engen Grenzen der meisten Breaking Changes als falsch positiv.
 
-- IAsyncResult.CompletedSynchronously-Eigenschaft muss korrekt sein, damit die resultierende Aufgabe abgeschlossen wird
-  - Beim Aufruf von TaskFactory.FromAsync muss die Implementierung der IAsyncResult.CompletedSynchronously-Eigenschaft korrekt sein, damit die resultierende Aufgabe abgeschlossen wird. Das heißt, die Eigenschaft muss genau dann TRUE zurückgeben, wenn die Implementierung synchron abgeschlossen wurde. Bisher wurde die Eigenschaft nicht geprüft.
+- Die IAsyncResult.CompletedSynchronously-Eigenschaft muss korrekt sein, damit die resultierende Aufgabe abgeschlossen wird
+  - Beim Aufruf von TaskFactory.FromAsync muss die Implementierung der IAsyncResult.CompletedSynchronously-Eigenschaft korrekt sein, damit die resultierende Aufgabe abgeschlossen wird. Das heißt, die Eigenschaft muss für den Fall, und ausschließlich für den Fall, dass die Implementierung synchron abgeschlossen wurde, „true“ zurückgeben. Zuvor wurde die Eigenschaft nicht überprüft.
   - Betroffene Bibliotheken: mscorlib, System.Threading.Tasks
   - Vorgeschlagene Aktion: Stellen Sie sicher, dass TaskFactory.FromAsync korrekt TRUE zurückgibt.
 
-- DataObject.GetData ruft nun Daten im UTF-8-Format ab
+- DataObject.GetData ruft Daten jetzt als UTF-8 ab
   - Bei Anwendungen, die .NET Framework 4 als Ziel verwenden oder die in .NET Framework 4.5.1 oder früheren Versionen ausgeführt werden, ruft DataObject.GetData Daten im HTML-Format als ASCII-Zeichenfolge ab. Demzufolge werden ASCII fremde Zeichen (Zeichen mit ASCII-Codes größer als 0x7F) durch zwei zufällige Zeichen dargestellt (#N##N#). Bei Anwendungen, die .NET Framework 4.5 oder höher als Ziel verwenden und in .NET Framework 4.5.2 ausgeführt werden, ruft `DataObject.GetData` HTML-formatierte Daten im UTF-8-Format ab, in dem Zeichen größer als 0x7F korrekt dargestellt werden.
   - Betroffene Bibliotheken: Glo
   - Vorgeschlagene Aktion: Stellen Sie sicher, dass die abgerufenen Daten das gewünschte Format aufweisen.
 
-- XmlWriter löst eine Ausnahme aufgrund ungültiger Ersatzzeichenpaare aus
-  - Bei Anwendungen, die .NET Framework 4.5.2 oder frühere Versionen als Ziel verwenden, wird beim Schreiben eines Ersatzzeichenpaars unter Verwendung der Fallbackverarbeitung für Ausnahmen nicht immer eine Ausnahme ausgelöst. Bei Anwendungen, die .NET Framework 4.6 als Ziel verwenden, wird beim Versuch, ein ungültiges Ersatzzeichenpaar zu schreiben, `ArgumentException` ausgelöst.
+- XmlWriter löst bei ungültigen Ersatzzeichenpaaren Ausnahmen aus
+  - Bei Apps, die auf .NET Framework 4.5.2 oder niedrigere Versionen abzielen, löst das Schreiben eines ungültigen Ersatzzeichenpaars mithilfe der Fallbackbehandlung nicht immer eine Ausnahme aus. Bei Apps mit der Zielplattform .NET Framework 4.6 löst der Versuch, ein ungültiges Ersatzzeichenpaar zu schreiben, eine `ArgumentException` aus.
   - Betroffene Bibliotheken: System.Xml, System.Xml.ReaderWriter
   - Vorgeschlagene Aktion: Stellen Sie sicher, dass Sie kein ungültiges Ersatzzeichenpaar schreiben, das eine Argumentausnahme verursacht.
 
-- HtmlTextWriter rendert das `<br/>`-Element nicht ordnungsgemäß
-  - Ab .NET Framework 4.6 wird beim Aufruf von `HtmlTextWriter.RenderBeginTag()` und `HtmlTextWriter.RenderEndTag()` mit einem `<BR />`-Element ordnungsgemäß nur ein `<BR />`-Element (anstelle von zwei Elementen) eingefügt.
+- HtmlTextWriter rendert das Element `<br/>` nicht ordnungsgemäß
+  - Ab .NET Framework 4.6 fügt der Aufruf von `HtmlTextWriter.RenderBeginTag()` und `HtmlTextWriter.RenderEndTag()` mit einem `<BR />`-Element ordnungsgemäß nur ein (anstatt zwei) `<BR />` ein.
   - Betroffene Bibliotheken: System.Web
-  - Vorgeschlagene Aktion: Achten Sie darauf, dass Sie die Anzahl der `<BR />`-Elemente eingeben, die angezeigt werden sollen, um ein zufälliges Verhalten im Produktionsauftrag zu vermeiden.
+  - Vorgeschlagene Aktion: Stellen Sie sicher, dass Sie die erwartete Anzahl der `<BR />`-Elemente eingeben, um ein zufälliges Verhalten im Produktionsauftrag zu vermeiden.
 
-- Aufruf von CreateDefaultAuthorizationContext mit einem NULL-Argument wurde geändert
+- Das Aufrufen von CreateDefaultAuthorizationContext mit einem NULL-Argument wurde geändert
   - Die Implementierung des AuthorizationContext-Elements, das bei einem Aufruf von `CreateDefaultAuthorizationContext(IList<IAuthorizationPolicy>)` mit einem authorizationPolicies-Argument mit dem Wert NULL zurückgegeben wird, wurde in .NET Framework 4.6 geändert.
   - Betroffene Bibliotheken: System.IdentityModel
   - Vorgeschlagene Aktion: Stellen Sie sicher, dass das neue erwartete Verhalten verarbeitet wird, wenn eine NULL-Autorisierungsrichtlinie vorliegt.
   
-- RSACng lädt nun RSA-Schlüssel mit nicht standardmäßiger Schlüsselgröße ordnungsgemäß
-  - In .NET Framework-Versionen vor Version 4.6.2 können Kunden mit Schlüsselgrößen für RSA-Zertifikate, die nicht dem Standard entsprechen, über die `GetRSAPublicKey()`- und `GetRSAPrivateKey()`-Erweiterungsmethoden nicht auf diese Schlüssel zugreifen. Eine `CryptographicException` mit der Meldung „The requested key size is not supported“ (Angeforderte Schlüsselgröße wird nicht unterstützt) wird ausgelöst. Bei .NET Framework 4.6.2 wurde dieses Problem behoben. Ebenso werden `RSA.ImportParameters()` und `RSACng.ImportParameters()` jetzt mit nicht standardmäßigen Schlüsselgrößen ausgeführt, ohne dass `CryptographicException` ausgelöst wird.
+- RSACng lädt nun fehlerfrei RSA-Schlüssel, die nicht der Standardschlüsselgröße entsprechen
+  - In .NET Framework-Versionen, die älter sind als Version 4.6.2, können Kunden, die keine Standardschlüsselgrößen für RSA-Zertifikate verwenden, auf diese Schlüssel nicht über die Erweiterungsmethoden `GetRSAPublicKey()` und `GetRSAPrivateKey()` zugreifen. Eine `CryptographicException` mit der Meldung „The requested key size is not supported“ (Angeforderte Schlüsselgröße wird nicht unterstützt) wird ausgelöst. Bei .NET Framework 4.6.2 wurde dieses Problem behoben. Ebenso werden `RSA.ImportParameters()` und `RSACng.ImportParameters()` jetzt mit nicht standardmäßigen Schlüsselgrößen ausgeführt, ohne dass `CryptographicException` ausgelöst wird.
   - Betroffene Bibliotheken: mscorlib, System.Core
-  - Vorgeschlagene Aktion: Stellen Sie sicher, dass RSA-Schlüssel wie erwartet funktionieren.
+  - Vorgeschlagene Aktion: Stellen Sie sicher, dass die RSA-Schlüssel wie erwartet funktionieren.
 
-- Prüfungen von Trennzeichen in Pfaden sind strikter
-  - In .NET Framework 4.6.2 wurde eine Reihe von Änderungen vorgenommen, um zuvor nicht unterstützte Pfade (in Länge und Format) zu unterstützen. Prüfungen der korrekten Trennzeichensyntax (Doppelpunkt) wurden korrigiert. Dies hatte den Nebeneffekt, dass einige URI-Pfade in einigen ausgewählten Pfad-APIs blockiert wurden, in denen sie bisher toleriert wurden.
+- Die Überprüfung von Pfaden auf Doppelpunkte ist genauer
+  - In .NET Framework 4.6.2 wurde eine Reihe von Änderungen vorgenommen, um zuvor nicht unterstützte Pfade zu unterstützen (hinsichtlich Länge und Format). Prüfungen der korrekten Trennzeichensyntax (Doppelpunkt) wurden korrigiert. Dies hatte den Nebeneffekt, dass einige URI-Pfade in einigen ausgewählten Pfad-APIs blockiert wurden, in denen sie bisher toleriert wurden.
   - Betroffene Bibliotheken: mscorlib, System.Runtime.Extensions
   - Vorgeschlagene Aktion:
 
 - Aufrufe von ClaimsIdentity-Konstruktoren
-  - Ab .NET Framework 4.6.2 gibt es eine Änderung in der Art und Weise, wie `T:System.Security.Claims.ClaimsIdentity`-Konstruktoren mit einem `T:System.Security.Principal.IIdentity`-Parameter die `P:System.Security.Claims.ClaimsIdentify.Actor`-Eigenschaft festlegen. Wenn das `T:System.Security.Principal.IIdentity`-Argument ein `T:System.Security.Claims.ClaimsIdentity`-Objekt ist und die `P:System.Security.Claims.ClaimsIdentify.Actor`-Eigenschaft dieses `T:System.Security.Claims.ClaimsIdentity`-Objekts ungleich `null` ist, wird die `P:System.Security.Claims.ClaimsIdentify.Actor`-Eigenschaft mithilfe der `M:System.Security.Claims.ClaimsIdentity.Clone`-Methode angefügt. In .NET Framework 4.6.1 und früheren Versionen wird die `P:System.Security.Claims.ClaimsIdentify.Actor`-Eigenschaft als vorhandener Verweis angefügt. Aufgrund dieser Änderung entspricht die `P:System.Security.Claims.ClaimsIdentify.Actor`-Eigenschaft des neuen `T:System.Security.Claims.ClaimsIdentity`-Objekts ab .NET Framework 4.6.2 nicht der `P:System.Security.Claims.ClaimsIdentify.Actor`-Eigenschaft des `T:System.Security.Principal.IIdentity`-Arguments des Konstruktors. In .NET Framework 4.6.1 und früheren Versionen ist sie identisch.
+  - Ab .NET Framework 4.6.2 legen `T:System.Security.Claims.ClaimsIdentity`-Konstruktoren mit einem `T:System.Security.Principal.IIdentity`-Parameter die Eigenschaft `P:System.Security.Claims.ClaimsIdentify.Actor` anders fest. Wenn es sich bei dem `T:System.Security.Principal.IIdentity`-Argument um ein `T:System.Security.Claims.ClaimsIdentity`-Objekt handelt und die `P:System.Security.Claims.ClaimsIdentify.Actor`-Eigenschaft des `T:System.Security.Claims.ClaimsIdentity`-Objekts nicht `null` ist, wird die `P:System.Security.Claims.ClaimsIdentify.Actor`-Eigenschaft mithilfe der `M:System.Security.Claims.ClaimsIdentity.Clone`-Methode angefügt. In .NET Framework 4.6.1 und früheren Versionen wird die `P:System.Security.Claims.ClaimsIdentify.Actor`-Eigenschaft als vorhandener Verweis angefügt. Aufgrund dieser Änderung entspricht die `P:System.Security.Claims.ClaimsIdentify.Actor`-Eigenschaft des neuen `T:System.Security.Claims.ClaimsIdentity`-Objekts ab .NET Framework 4.6.2 nicht der `P:System.Security.Claims.ClaimsIdentify.Actor`-Eigenschaft des `T:System.Security.Principal.IIdentity`-Arguments des Konstruktors. In .NET Framework 4.6.1 und früheren Versionen sind die Eigenschaften gleich.
   - Betroffene Bibliotheken: mscorlib
-  - Vorgeschlagene Aktion: Achten Sie darauf, dass ClaimsIdentity in der neuen Runtime wie erwartet ausgeführt wird.
+  - Vorgeschlagene Aktion: Stellen Sie sicher, dass ClaimsIdentity in der neuen Laufzeit wie erwartet funktioniert.
 
-- Serialisierung von Steuerzeichen mit DataContractJsonSerializer ist nun mit ECMAScript V6 und V8 kompatibel
+- Die Serialisierung von Steuerzeichen in DataContractJsonSerializer ist jetzt konform mit ECMAScript V6 und V8
   - In .NET Framework 4.6.2 und früheren Versionen wurden einige Sondersteuerzeichen, z. B. „\b“, „\f“ und „\t“, mit DataContractJsonSerializer nicht so serialisiert, dass dies mit den ECMAScript V6- und V8-Standards kompatibel war. Ab .NET Framework 4.7 ist die Serialisierung dieser Steuerzeichen mit ECMAScript V6 und V8 kompatibel.
   - Betroffene Bibliotheken: System.Runtime.Serialization.Json
-  - Vorgeschlagene Aktion: Achten Sie auf das Verhalten mit DataContractJsonSerializer.
+  - Vorgeschlagene Aktion: Achten Sie darauf, dass das Verhalten mit DataContractJsonSerializer identisch ist.

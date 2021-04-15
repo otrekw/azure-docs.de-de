@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 12/17/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: fea189952b1452c680255ceb99e38609775a8bd6
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 420dade645d1a4ee32bb888aecb76b033d5756e1
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102502687"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105731297"
 ---
 # <a name="set-up-azure-app-service-access-restrictions"></a>Einrichten von Azure App Service-Zugriffseinschränkungen
 
@@ -97,26 +97,25 @@ Bei Dienstendpunkten können Sie Ihre App mit Anwendungsgateways oder anderen WA
 > [!NOTE]
 > - Dienstendpunkte werden derzeit nicht für Web-Apps unterstützt, für die eine virtuelle IP (VIP) vom Typ „Secure Sockets Layer“ (SSL) genutzt wird.
 >
-#### <a name="set-a-service-tag-based-rule-preview"></a>Festlegen einer diensttagbasierten Regel (Vorschau)
+#### <a name="set-a-service-tag-based-rule"></a>Festlegen einer diensttagbasierten Regel
 
-* Wählen Sie in Schritt 4 in der Dropdownliste **Typ** die Option **Diensttag (Vorschau)**  aus.
+* Wählen Sie in Schritt 4 in der Dropdownliste **Typ** die Option **Diensttag** aus.
 
-   :::image type="content" source="media/app-service-ip-restrictions/access-restrictions-service-tag-add.png" alt-text="Screenshot des Bereichs „Einschränkung hinzufügen“ mit ausgewähltem Typ „Diensttag“.":::
+   :::image type="content" source="media/app-service-ip-restrictions/access-restrictions-service-tag-add.png?v2" alt-text="Screenshot des Bereichs „Einschränkung hinzufügen“ mit ausgewähltem Typ „Diensttag“.":::
 
 Jedes Diensttag steht für eine Liste von IP-Adressbereichen aus Azure-Diensten. Eine Liste dieser Dienste und Verknüpfungen mit den spezifischen Bereichen finden Sie in der [Diensttagdokumentation][servicetags].
 
-Die folgende Liste mit Diensttags wird in Zugriffseinschränkungsregeln während der Vorschauphase unterstützt:
+Alle verfügbaren Diensttags werden in Zugriffseinschränkungsregeln unterstützt. Der Einfachheit halber ist im Azure-Portal nur eine Liste der gängigsten Tags verfügbar. Verwenden Sie Azure Resource Manager-Vorlagen oder Skripts, um komplexere Regeln zu konfigurieren, z. B. für regionale Bereiche. Diese Tags sind über das Azure-Portal verfügbar:
+
 * ActionGroup
+* ApplicationInsightsAvailability
 * AzureCloud
 * AzureCognitiveSearch
-* AzureConnectors
 * AzureEventGrid
 * AzureFrontDoor.Backend
 * AzureMachineLearning
-* AzureSignalR
 * AzureTrafficManager
 * LogicApps
-* ServiceFabric
 
 ### <a name="edit-a-rule"></a>Bearbeiten einer Regel
 
@@ -137,6 +136,31 @@ Wählen Sie zum Löschen einer Regel auf der Seite **Zugriffseinschränkungen** 
 
 ## <a name="access-restriction-advanced-scenarios"></a>Erweiterte Szenarien für die Zugriffseinschränkung
 In den folgenden Abschnitten werden einige erweiterte Szenarien beschrieben, in denen Zugriffseinschränkungen verwendet werden.
+
+### <a name="filter-by-http-header"></a>Filtern nach HTTP-Header
+
+Im Rahmen einer beliebigen Regel können Sie weitere Filter nach HTTP-Header hinzufügen. Die folgenden HTTP-Headernamen werden unterstützt:
+* X-Forwarded-For
+* X-Forwarded-Host
+* X-Azure-FDID
+* X-FD-HealthProbe
+
+Für jeden Headernamen können Sie bis zu acht durch Trennzeichen getrennte Werte hinzufügen. Die Filter nach HTTP-Header werden nach der Regel selbst ausgewertet, und nur wenn beide Bedingungen erfüllt sind, wird die Regel angewandt.
+
+### <a name="multi-source-rules"></a>Regeln für mehrere Quellen
+
+Mithilfe von Regeln für mehrere Quellen können Sie bis zu acht IP-Bereiche oder acht Diensttags in einer einzigen Regel kombinieren. Dies kann hilfreich sein, wenn Sie über mehr als 512 IP-Adressbereiche verfügen oder logische Regeln erstellen möchten, bei denen mehrere IP-Adressbereiche mit einem einzelnen Filter für HTTP-Header kombiniert werden.
+
+Regeln mit mehreren Quellen werden auf die gleiche Weise definiert wie Regeln mit einer Quelle, wobei die einzelnen Bereiche durch Kommas voneinander getrennt werden.
+
+PowerShell-Beispiel:
+
+  ```azurepowershell-interactive
+  Add-AzWebAppAccessRestrictionRule -ResourceGroupName "ResourceGroup" -WebAppName "AppName" `
+    -Name "Multi-source rule" -IpAddress "192.168.1.0/24,192.168.10.0/24,192.168.100.0/24" `
+    -Priority 100 -Action Allow
+  ```
+
 ### <a name="block-a-single-ip-address"></a>Blockieren einer einzelnen IP-Adresse
 
 Wenn Sie Ihre erste Zugriffseinschränkungsregel hinzufügen, fügt der Dienst eine explizite Regel vom Typ *Alle ablehnen* mit der Priorität 2147483647 hinzu. In der Praxis ist die explizite Regel *Alle ablehnen* die letzte Regel, die ausgeführt wird. Hiermit wird der Zugriff auf alle IP-Adressen blockiert, der nicht durch eine *Zulassen*-Regel explizit zugelassen ist.
@@ -151,17 +175,20 @@ Neben der Möglichkeit, den Zugriff auf Ihre App zu steuern, können Sie auch de
 
 :::image type="content" source="media/app-service-ip-restrictions/access-restrictions-scm-browse.png" alt-text="Screenshot der Seite „Zugriffseinschränkungen“ im Azure-Portal ohne festgelegte Zugriffseinschränkungen für die SCM-Website oder die App.":::
 
-### <a name="restrict-access-to-a-specific-azure-front-door-instance-preview"></a>Einschränken des Zugriffs auf eine bestimmte Azure Front Door-Instanz (Vorschau)
-Datenverkehr von Azure Front Door zu Ihrer Anwendung stammt aus einer bekannten Gruppe von IP-Bereichen, die im Diensttag „AzureFrontDoor.Backend“ definiert sind. Mithilfe einer Einschränkungsregel für Diensttags können Sie den Ursprung des Datenverkehrs auf ausschließlich Azure Front Door einschränken. Um sicherzustellen, dass der Datenverkehr nur von Ihrer spezifischen Instanz stammt, müssen Sie die eingehenden Anforderungen noch weiter filtern, basierend auf dem eindeutigen HTTP-Header, der von Azure Front Door gesendet wird. Während der Vorschauphase können Sie dies mit PowerShell oder REST/ARM erreichen. 
+### <a name="restrict-access-to-a-specific-azure-front-door-instance"></a>Einschränken des Zugriffs auf eine bestimmte Azure Front Door-Instanz
+Datenverkehr von Azure Front Door zu Ihrer Anwendung stammt aus einer bekannten Gruppe von IP-Bereichen, die im Diensttag „AzureFrontDoor.Backend“ definiert sind. Mithilfe einer Einschränkungsregel für Diensttags können Sie den Ursprung des Datenverkehrs auf ausschließlich Azure Front Door einschränken. Um sicherzustellen, dass der Datenverkehr nur von Ihrer spezifischen Instanz stammt, müssen Sie die eingehenden Anforderungen noch weiter filtern, basierend auf dem eindeutigen HTTP-Header, der von Azure Front Door gesendet wird.
 
-* PowerShell-Beispiel (die Front Door-ID finden Sie im Azure-Portal):
+:::image type="content" source="media/app-service-ip-restrictions/access-restrictions-frontdoor.png?v2" alt-text="Screenshot der Seite „Zugriffsbeschränkungen“ im Azure-Portal, der zeigt, wie die Azure Front Door-Einschränkung hinzugefügt wird":::
 
-   ```azurepowershell-interactive
-    $frontdoorId = "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-    Add-AzWebAppAccessRestrictionRule -ResourceGroupName "ResourceGroup" -WebAppName "AppName" `
-      -Name "Front Door example rule" -Priority 100 -Action Allow -ServiceTag AzureFrontDoor.Backend `
-      -HttpHeader @{'x-azure-fdid' = $frontdoorId}
-    ```
+PowerShell-Beispiel:
+
+  ```azurepowershell-interactive
+  $afd = Get-AzFrontDoor -Name "MyFrontDoorInstanceName"
+  Add-AzWebAppAccessRestrictionRule -ResourceGroupName "ResourceGroup" -WebAppName "AppName" `
+    -Name "Front Door example rule" -Priority 100 -Action Allow -ServiceTag AzureFrontDoor.Backend `
+    -HttpHeader @{'x-azure-fdid' = $afd.FrontDoorId}
+  ```
+
 ## <a name="manage-access-restriction-rules-programmatically"></a>Programmgesteuertes Verwalten von Zugriffseinschränkungsregeln
 
 Sie können Zugriffseinschränkungen programmgesteuert hinzufügen, indem Sie eine der folgenden Vorgehensweisen wählen: 
@@ -181,7 +208,7 @@ Sie können Zugriffseinschränkungen programmgesteuert hinzufügen, indem Sie ei
       -Name "Ip example rule" -Priority 100 -Action Allow -IpAddress 122.133.144.0/24
   ```
    > [!NOTE]
-   > Das Arbeiten mit Diensttags, HTTP-Headern oder Regeln mit mehreren Quellen erfordert mindestens Version 5.1.0. Sie können die Version des installierten Moduls wie folgt überprüfen: **Get-InstalledModule -Name Az**
+   > Das Arbeiten mit Diensttags, HTTP-Headern oder Regeln mit mehreren Quellen erfordert mindestens Version 5.7.0. Sie können die Version des installierten Moduls wie folgt überprüfen: **Get-InstalledModule -Name Az**
 
 Sie können Werte auch manuell festlegen, indem Sie wie folgt vorgehen:
 

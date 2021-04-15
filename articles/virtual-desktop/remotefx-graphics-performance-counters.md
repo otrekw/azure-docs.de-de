@@ -7,10 +7,10 @@ ms.date: 05/23/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: dc5c6499fa47a1e32a517032d5cc2a97b3f2677f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88007165"
 ---
 # <a name="diagnose-graphics-performance-issues-in-remote-desktop"></a>Diagnostizieren von Problemen mit der Grafikleistung in Remotedesktop
@@ -23,8 +23,8 @@ Sie benötigen den Namen der Remotesitzung, um Grafikleistungsindikatoren zu ide
 
 1. Öffnen Sie die Windows-Eingabeaufforderung aus der Remotesitzung.
 2. Führen Sie den Befehl **qwinsta** aus, und suchen Sie den Namen Ihrer Sitzung.
-    - Wenn die Sitzung auf einem virtuellen Computer (VM) mit mehreren Sitzungen gehostet wird: Ihrer Instanz jedes Leistungsindikators wird die gleiche Nummer als Suffix vorangestellt, die Ihrem Sitzungsnamen vorangestellt ist, z. B. „rdp-tcp 37“.
-    - Wenn die Sitzung auf einem virtuellen Computer gehostet wird, der virtuelle Grafikprozessoren (vGPU) unterstützt: Ihre Instanz jedes Leistungsindikators wird auf dem Server und nicht auf Ihrem virtuellen Computer gespeichert. Ihre Instanzen der Leistungsindikatoren enthalten den Namen des virtuellen Computers anstelle der Zahl im Sitzungsnamen, z.B. „Win8 Enterprise VM“.
+    - Wenn Ihre Sitzung auf einer VM mit mehreren Sitzungen gehostet wird: Ihrer Instanz jedes Leistungsindikators wird die gleiche Nummer als Suffix vorangestellt, die Ihrem Sitzungsnamen vorangestellt ist, z. B. „rdp-tcp 37“.
+    - Wenn die Sitzung auf einer VM gehostet wird, die virtuelle Grafikprozessoren (vGPU) unterstützt: Ihre Instanz jedes Leistungsindikators wird auf dem Server und nicht auf Ihrem virtuellen Computer gespeichert. Ihre Instanzen der Leistungsindikatoren enthalten den Namen des virtuellen Computers anstelle der Zahl im Sitzungsnamen, z.B. „Win8 Enterprise VM“.
 
 >[!NOTE]
 > Während Leistungsindikatoren RemoteFX in ihrem Namen enthalten, sind in vGPU-Szenarien auch Remotedesktopgrafiken enthalten.

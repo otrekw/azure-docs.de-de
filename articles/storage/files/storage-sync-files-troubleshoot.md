@@ -4,15 +4,15 @@ description: Beheben von häufigen Problemen in einer Bereitstellung in der Azur
 author: jeffpatt24
 ms.service: storage
 ms.topic: troubleshooting
-ms.date: 2/1/2021
+ms.date: 4/12/2021
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: f20ebfdf9bdd1272ac1cb16e1ad88b4cbc287e5d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 54a2493d930069142a8cd6965421dd588b8d76b8
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105727602"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107366299"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Problembehandlung für Azure-Dateisynchronisierung
 Mit der Azure-Dateisynchronisierung können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -1053,24 +1053,6 @@ if ($role -eq $null) {
 }
 ```
 ---
-
-### <a name="how-do-i-prevent-users-from-creating-files-containing-unsupported-characters-on-the-server"></a>Wie verhindere ich, dass Benutzer Dateien auf dem Server erstellen, die nicht unterstützte Zeichen enthalten?
-Mit den [Dateiprüfungen des Ressourcen-Managers für Dateiserver (File Server Resource Manager, FSRM)](/windows-server/storage/fsrm/file-screening-management) können Sie verhindern, dass Dateien mit nicht unterstützten Zeichen in deren Namen auf dem Server erstellt werden. Möglicherweise müssen Sie dazu PowerShell verwenden, da der Großteil der nicht unterstützten Zeichen nicht druckbar ist, und daher zuerst ihre hexadezimalen Darstellungen in Zeichen umwandeln.
-
-Erstellen Sie zunächst mit dem [Cmdlet „New-FsrmFileGroup“](/powershell/module/fileserverresourcemanager/new-fsrmfilegroup) eine FSRM-Dateigruppe. Dieses Beispiel definiert, dass die Gruppe nur zwei der nicht unterstützten Zeichen enthalten darf, Sie können jedoch so viele Zeichen wie erforderlich in Ihrer Dateigruppe einschließen.
-
-```powershell
-New-FsrmFileGroup -Name "Unsupported characters" -IncludePattern @(("*"+[char]0x00000090+"*"),("*"+[char]0x0000008F+"*"))
-```
-
-Nachdem Sie eine FSRM-Dateigruppe definiert haben, können Sie mit dem Cmdlet „New-FsrmFileScreen“ eine FSRM-Dateiprüfung erstellen.
-
-```powershell
-New-FsrmFileScreen -Path "E:\AFSdataset" -Description "Filter unsupported characters" -IncludeGroup "Unsupported characters"
-```
-
-> [!Important]  
-> Beachten Sie, dass Dateiprüfungen nur dazu verwendet werden sollten, die Erstellung von Zeichen zu unterbinden, die von der Azure-Dateisynchronisierung nicht unterstützt werden. Wenn Dateiprüfungen in anderen Szenarios verwendet werden, wird bei der Synchronisierung fortlaufend versucht, die Dateien von der Azure-Dateifreigabe auf dem Server herunterzuladen. Die Synchronisierung wird aufgrund der Dateiprüfung dann gesperrt, wodurch ein hohes Volumen an ausgehenden Daten entsteht. 
 
 ## <a name="cloud-tiering"></a>Cloudtiering 
 Es gibt beim Cloudtiering zwei Fehlerpfade:

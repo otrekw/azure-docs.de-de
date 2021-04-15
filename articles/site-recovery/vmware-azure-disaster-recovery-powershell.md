@@ -8,10 +8,10 @@ ms.date: 01/10/2020
 ms.topic: conceptual
 ms.author: sutalasi
 ms.openlocfilehash: de25a3f9df04b09a7337dc889a688a171d98db28
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86129909"
 ---
 # <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>Einrichten der Notfallwiederherstellung von virtuellen VMware-Computern in Azure mithilfe von PowerShell
@@ -172,7 +172,7 @@ In diesem Beispiel liegt Folgendes vor:
    1     ConfigurationServer
    ```
 
-   In obiger Ausgabe gehört ***$ProcessServers[0]*** zu *ScaleOut-ProcessServer*, und ***$ProcessServers[1]*** gehört zu der Prozessserverrolle auf *ConfigurationServer*.
+   In obiger Ausgabe gehört * **$ProcessServers[0]** _ zu _ScaleOut-ProcessServer*, und * **$ProcessServers[1]**_ gehört zur Prozessserverrolle auf _ConfigurationServer*.
 
 3. Identifizieren Sie Konten, die auf dem Konfigurationsserver eingerichtet wurden.
 
@@ -189,7 +189,7 @@ In diesem Beispiel liegt Folgendes vor:
    3         LinuxAccount
    ```
 
-   In obiger Ausgabe gehört ***$AccountHandles[0]*** zum Konto *vCenter_account*, ***$AccountHandles[1]*** zu *WindowsAccount* und ***$AccountHandles[2]*** zu *LinuxAccount*.
+   In obiger Ausgabe gehört * **$AccountHandles[0]** _ zum Konto _vCenter_account*, * **$AccountHandles[1]**_ zum Konto _WindowsAccount* und * **$AccountHandles[2]**_ zum Konto _LinuxAccount*.
 
 ## <a name="create-a-replication-policy"></a>Erstellen einer Replikationsrichtlinie
 
@@ -342,7 +342,7 @@ Sie benötigen die folgenden Details zum Schützen eines erkannten virtuellen Co
 * Das zu replizierende schützbare Element.
 * Das Speicherkonto, in das der virtuelle Computer repliziert wird (nur, wenn Sie in ein Speicherkonto replizieren). 
 * Ein Protokollspeicher ist erforderlich, um virtuelle Computer in einem Storage Premium-Konto oder auf einem verwalteten Datenträger zu schützen.
-* Der für die Replikation verwendete Prozessserver. Die Liste der verfügbaren Prozessserver wurde abgerufen und in den Variablen ***$ProcessServers[0]*** *(ScaleOut-ProcessServer)* und ***$ProcessServers[1]*** *(ConfigurationServer)* gespeichert.
+* Der für die Replikation verwendete Prozessserver. Die Liste der verfügbaren Prozessserver wurde abgerufen und in den Variablen * **$ProcessServers[0]** _  _(ScaleOut-ProcessServer)* und * **$ProcessServers[1]**_ _(ConfigurationServer)* gespeichert.
 * Das Konto, über das die Mobility Service-Clientsoftware per Push auf den Computern installiert werden soll. Die Liste der verfügbaren Konten wurde abgerufen und in der Variable ***$AccountHandles*** gespeichert.
 * Die Schutzcontainerzuordnung der Replikationsrichtlinie, die für die Replikation verwendet werden soll.
 * Die Ressourcengruppe, in der virtuelle Computer bei einem Failover erstellt werden müssen.

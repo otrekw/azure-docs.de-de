@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
-ms.openlocfilehash: 238ef9ec80b01470e28535d0eb42dbb3a377b005
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: fb1514c146dcd352451597e6182c6d99ed8836d6
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96746436"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105044718"
 ---
 # <a name="how-to-create-plans-for-your-saas-offer"></a>Erstellen von Plänen für Ihr SaaS-Angebot
 
@@ -149,6 +149,10 @@ Die Aktionen, die in der Spalte **Aktion** der Registerkarte **Planübersicht** 
 
 - Wenn der Planstatus **Entwurf** lautet, wird in der Spalte **Aktion** die Option **Entwurf löschen** angezeigt.
 - Wenn der Planstatus **Live** lautet, wird in der Spalte **Aktion** der Link **Stop sell plan** (Verkauf des Plans einstellen) oder der Link **Sync private audience** (Private Zielgruppe synchronisieren) angezeigt. Über den Link **Sync private audience** (Private Zielgruppe synchronisieren) werden nur die Änderungen an Ihren privaten Zielgruppen veröffentlicht, ohne dass weitere Aktualisierungen veröffentlicht werden, die Sie möglicherweise am Angebot vorgenommen haben.
+
+## <a name="before-you-publish-your-offer"></a>Vor dem Veröffentlichen Ihres Angebots
+
+Falls noch nicht geschehen, erstellen Sie ein Entwicklungs- und Testangebot (DEV), um Ihr Angebot zu testen, bevor Sie es als Produktionsangebot live veröffentlichen. Weitere Informationen finden Sie unter [Erstellen eines Entwicklungs- und Testangebots](create-saas-dev-test-offer.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

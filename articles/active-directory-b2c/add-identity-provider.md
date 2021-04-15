@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: dbb2aeefc22fae4a3c83956dd7681b49fc435500
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5495e84d23b6723cfc7d4fbdb99e7509e378087f
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102033995"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257176"
 ---
 # <a name="add-an-identity-provider-to-your-azure-active-directory-b2c-tenant"></a>Hinzufügen eines Identitätsanbieters zu Ihrem Azure Active Directory B2C-Mandanten
 
@@ -27,7 +27,7 @@ Azure AD B2C bietet auf der Registrierungs- oder Anmeldeseite eine Liste externe
 
 ![Beispiel für die mobile Anmeldung mit einem Konto für soziale Netzwerke (Facebook)](media/add-identity-provider/external-idp.png)
 
-Sie können die von Azure Active Directory B2C (Azure AD B2C) unterstützten Identitätsanbieter über das Azure-Portal Ihren [Benutzerflows](user-flow-overview.md) hinzufügen. Sie können Identitätsanbieter auch zu [benutzerdefinierten Richtlinien](custom-policy-get-started.md) hinzufügen.
+Sie können die von Azure Active Directory B2C (Azure AD B2C) unterstützten Identitätsanbieter über das Azure-Portal Ihren [Benutzerflows](user-flow-overview.md) hinzufügen. Sie können Identitätsanbieter auch zu [benutzerdefinierten Richtlinien](user-flow-overview.md) hinzufügen.
 
 ## <a name="select-an-identity-provider"></a>Auswählen eines Identitätsanbieters
 

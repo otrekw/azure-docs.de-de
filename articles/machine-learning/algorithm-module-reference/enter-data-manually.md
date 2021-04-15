@@ -1,5 +1,5 @@
 ---
-title: 'Enter Data Manually: Modulreferenz'
+title: 'Manuelles Eingeben von Daten: Modulreferenz'
 titleSuffix: Azure Machine Learning
 description: Erfahren Sie, wie Sie mit dem Modul „Enter Data Manually“ (Manuelles Eingeben von Daten) in Azure Machine Learning ein kleines Dataset durch Eingabe von Werten erstellen können. Das Dataset kann mehrere Spalten enthalten.
 services: machine-learning
@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
 ms.openlocfilehash: 3bff9a91f06649487560faef3ab554b2a3d56af3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "90908076"
 ---
 # <a name="enter-data-manually-module"></a>Modul „Enter Data Manually“ (Manuelles Eingeben von Daten)
@@ -34,10 +34,10 @@ Dieses Modul kann in folgenden Szenarien hilfreich sein:
   
 1. Wählen Sie für **DataFormat** eine der folgenden Optionen aus. Diese Optionen bestimmen, wie die von Ihnen bereitgestellten Daten analysiert werden sollen. Die Anforderungen für jedes Format sind sehr unterschiedlich, weshalb Sie die entsprechenden Themen unbedingt lesen sollten.  
   
-   - **ARFF**: „Attribute-Relation File Format“, das von Weka verwendet wird.   
-   - **CSV**: Format mit durch Trennzeichen getrennte Werte. Weitere Informationen finden Sie unter [Convert to CSV](./convert-to-csv.md) (Konvertieren in das CSV-Format).    
+   - **ARFF**: Das von Weka verwendete Dateiformat mit Attributbeziehungen (Attribute Relation File Format)   
+   - **CSV**: Format mit durch Trennzeichen getrennten Werten. Weitere Informationen finden Sie unter [Convert to CSV](./convert-to-csv.md) (Konvertieren in das CSV-Format).    
    - **SVMLight**: Ein Format, das von Vowpal Wabbit und anderen Frameworks für maschinelles Lernen verwendet wird.    
-   - **TSV**: Format mit per Tabulator getrennten Werten.
+   - **TSV**: Format mit durch Tabulator getrennten Werten.
 
    Wenn Sie ein Format wählen und keine Daten bereitstellen, die den Formatvorgaben entsprechen, tritt ein Laufzeitfehler auf.
   
@@ -55,7 +55,7 @@ Dieses Modul kann in folgenden Szenarien hilfreich sein:
   
      Wenn Sie diese Option deaktivieren, werden die Spaltennamen (Col1, Col2 usw.) verwendet. Sie können Spaltennamen später mit der Option [Edit Metadata](./edit-metadata.md) (Metadaten bearbeiten) hinzufügen oder ändern.  
   
-   - **ARFF**: Fügen Sie Daten in eine vorhandene Datei im ARFF-Format ein. Wenn Sie Werte direkt eingeben, fügen Sie die optionalen Kopfzeilen- und erforderlichen Attributfelder am Anfang der Daten hinzu. 
+   - **ARFF**: Fügen Sie eine vorhandene ARFF-Formatdatei ein. Wenn Sie Werte direkt eingeben, fügen Sie die optionalen Kopfzeilen- und erforderlichen Attributfelder am Anfang der Daten hinzu. 
 
      Beispielsweise können die folgenden Kopf- und Attributzeilen einer einfachen Liste hinzugefügt werden. Die Überschrift der Spalte lautet dann `SampleText`. Beachten Sie, dass der Zeichenfolgentyp nicht unterstützt wird.
     

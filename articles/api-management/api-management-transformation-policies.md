@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: c0c7a6b25c15be2e521e0985c315baf819650aa5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 48f8445e30bd186681d1a4384d16f228a3382473
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99491755"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107012436"
 ---
 # <a name="api-management-transformation-policies"></a>Azure API Management-Transformationsrichtlinien
 Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](./api-management-policies.md).
@@ -366,7 +366,7 @@ Die Richtlinie `set-body` kann so konfiguriert werden, dass Sie den Hauptteil ei
 > [!IMPORTANT]
 > Die Implementierung von Liquid, verwendet in der `set-body`-Richtlinie, wird im „C#-Modus“ konfiguriert. Dies ist beim Ausführen von Aktionen wie z.B. dem Filtern besonders wichtig. Beispielsweise erfordert die Verwendung eines Datumfilters das Verwenden der Pascal-Schreibweise und die C#-Datumsformatierung, z.B.:
 >
-> {{body.foo.startDateTime| Date:"yyyyMMddTHH:mm:ddZ"}}
+> {{body.foo.startDateTime| Date:"yyyyMMddTHH:mm:ssZ"}}
 
 > [!IMPORTANT]
 > Zum ordnungsgemäßen Binden an ein XML-Text mithilfe der Vorlage für Liquid, verwenden Sie eine `set-header`-Richtlinie, um Content-Typ entweder auf Anwendung/xml, Text/xml (oder jeder Typ endend mit +xml) festzulegen. Für einen JSON-Text, muss es Anwendung/JSON, Text/JSON (oder jeder Typ endend mit +JSON) sein.

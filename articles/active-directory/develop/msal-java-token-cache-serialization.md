@@ -14,19 +14,19 @@ ms.author: sagonzal
 ms.reviewer: nacanuma
 ms.custom: aaddev, devx-track-java
 ms.openlocfilehash: e85cfb8c03111b889a9f95509f337d415c517163
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87312366"
 ---
 # <a name="custom-token-cache-serialization-in-msal-for-java"></a>Benutzerdefinierte Tokencacheserialisierung in MSAL für Java
 
 Sie müssen die Serialisierung anpassen, um den Tokencache zwischen den Instanzen Ihrer Anwendung beizubehalten. Die Java-Klassen und -Schnittstellen, die an der Serialisierung über den Tokencache beteiligt sind, weisen die folgenden Typen auf:
 
-- [ITokenCache](https://static.javadoc.io/com.microsoft.azure/msal4j/0.5.0-preview/com/microsoft/aad/msal4j/ITokenCache.html):  Schnittstelle, die den Sicherheitstokencache darstellt
-- [ITokenCacheAccessAspect](https://static.javadoc.io/com.microsoft.azure/msal4j/0.5.0-preview/com/microsoft/aad/msal4j/ITokenCacheAccessAspect.html): Schnittstelle, die den Vorgang der Codeausführung vor und nach dem Zugriff darstellt. Dazu überschreiben (@Override) Sie *beforeCacheAccess* und *afterCacheAccess* mit der Logik für die Serialisierung und Deserialisierung des Caches.
-- [ITokenCacheContext](https://static.javadoc.io/com.microsoft.azure/msal4j/0.5.0-preview/com/microsoft/aad/msal4j/ITokenCacheAccessContext.html): Schnittstelle, die den Kontext darstellt, in dem auf den Tokencache zugegriffen wird. 
+- [ITokenCache:](https://static.javadoc.io/com.microsoft.azure/msal4j/0.5.0-preview/com/microsoft/aad/msal4j/ITokenCache.html) Dies ist die Schnittstelle, die den Sicherheitstokencache darstellt.
+- [ITokenCacheAccessAspect:](https://static.javadoc.io/com.microsoft.azure/msal4j/0.5.0-preview/com/microsoft/aad/msal4j/ITokenCacheAccessAspect.html) Dies ist die Schnittstelle, die den Vorgang der Codeausführung vor und nach dem Zugriff darstellt. Dazu überschreiben () Sie @Override *beforeCacheAccess* und *afterCacheAccess* mit der Logik für die Serialisierung und Deserialisierung des Caches.
+- [ITokenCacheContext:](https://static.javadoc.io/com.microsoft.azure/msal4j/0.5.0-preview/com/microsoft/aad/msal4j/ITokenCacheAccessContext.html) Dies ist die Schnittstelle, die den Kontext darstellt, in dem auf den Tokencache zugegriffen wird. 
 
 Unten sehen Sie eine native Implementierung der benutzerdefinierten Serialisierung der Tokencacheserialisierung bzw. -deserialisierung. Kopieren und fügen Sie dies nicht in eine Produktionsumgebung ein.
 
@@ -60,6 +60,6 @@ PublicClientApplication app =
 PublicClientApplication.builder("my_client_id").setTokenCacheAccessAspect(persistenceAspect).build();
 ```
 
-## <a name="learn-more"></a>Weitere Informationen
+## <a name="learn-more"></a>Erfahren Sie mehr
 
 Weitere Informationen finden Sie unter [Aufrufen und Entfernen von Konten aus dem Tokencache mithilfe von MSAL für Java](msal-java-get-remove-accounts-token-cache.md).

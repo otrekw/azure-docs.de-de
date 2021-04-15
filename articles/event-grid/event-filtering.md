@@ -3,12 +3,12 @@ title: Ereignisfilter für Azure Event Grid
 description: Hier erfahren Sie, wie Sie Ereignisse beim Erstellen eines Azure Event Grid-Abonnements filtern können.
 ms.topic: conceptual
 ms.date: 03/04/2021
-ms.openlocfilehash: fa63296f97bfa888cb0f425d0c03a5e4a7e46525
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b5439b77b86d42d062cf9da66ce678f04f46f813
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103419846"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256088"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Grundlegendes zur Ereignisfilterung für Event Grid-Abonnements
 
@@ -57,7 +57,7 @@ Um nach Werten in den Datenfeldern zu filtern und den Vergleichsoperator anzugeb
 * Schlüssel – Feld in den Ereignisdaten, die Sie für die Filterung verwenden. Dabei kann es sich um eine Zahl, einen booleschen Wert, eine Zeichenfolge oder ein Array handeln.
 * Werte – Werte, die mit dem Schlüssel verglichen werden sollen.
 
-## <a name="key"></a>Key
+## <a name="key"></a>Schlüssel
 Das Feld „key“ in den Ereignisdaten wird für die Filterung verwendet. Mögliche Typen:
 
 - Number
@@ -454,7 +454,7 @@ FOR_EACH filter IN (a, b, c)
 ```
 
 ## <a name="stringin"></a>StringIn
-Der **StringIn**-Operator überprüft, ob der **key**-Wert **exakt** mit einem der angegebenen **filter**-Werte übereinstimmt. Im folgenden Beispiel wird überprüft, ob der Wert des Attributs `key1` im Abschnitt `data` genau `exact`, `string` oder `matches` ist. 
+Der **StringIn**-Operator überprüft, ob der **key**-Wert **exakt** mit einem der angegebenen **filter**-Werte übereinstimmt. Im folgenden Beispiel wird überprüft, ob der Wert des Attributs `key1` im Abschnitt `data` genau `contoso`, `fabrikam` oder `factory` ist. 
 
 ```json
 "advancedFilters": [{

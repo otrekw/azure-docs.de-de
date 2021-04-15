@@ -5,10 +5,10 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 02/14/2020
 ms.openlocfilehash: 3fab06f5e269f311f798c096a6465c8c6ce75fc2
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98946750"
 ---
 # <a name="manage-ssh-access-for-domain-accounts-in-azure-hdinsight"></a>Verwalten des SSH-Zugriffs für Domänenkonten in Azure HDInsight
@@ -39,7 +39,7 @@ Um den SSH-Zugriff auf bestimmte Benutzer oder Gruppen zu ändern, aktualisieren
     AllowGroups groupname1 groupname2
     ```
 
-    Speichern Sie dann die Änderungen: **STRG + X**, **Y**, **EINGABETASTE**.
+    Speichern Sie dann die Änderungen wie folgt: **STRG+X** > **Y** > **EINGABETASTE**.
 
 1. Starten Sie sshd neu.
 
