@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/19/2019
 ms.author: duau
-ms.openlocfilehash: 0dc2b48d02eb8a69afc947891c263ef1510257a7
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: c65825a6d8d2d7f9059e91a1f248367fa1788e1a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101721836"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104799495"
 ---
 # <a name="expressroute-routing-requirements"></a>ExpressRoute-Routinganforderungen
 Zum Herstellen einer Verbindung mit Microsoft-Clouddiensten per ExpressRoute müssen Sie das Routing einrichten und verwalten. Einige Konnektivitätsanbieter bieten das Einrichten und Verwalten des Routings als verwalteten Dienst an. Fragen Sie bei Ihrem Konnektivitätsanbieter nach, ob dieser Dienst angeboten wird. Ist dies nicht der Fall, müssen Sie folgende Anforderungen erfüllen:
@@ -106,7 +106,7 @@ Stellen Sie sicher, dass Ihre IP-Adresse und die AS-Nummer für Sie in einer der
 
 Falls Ihre Präfixe und Ihre AS-Nummer in den obigen Registrierungen nicht Ihnen zugewiesen sind, müssen Sie eine Supportanfrage zur manuellen Überprüfung Ihrer Präfixe und ASN stellen. Dazu benötigt der Support Belege – beispielsweise ein Autorisierungsschreiben, das beweist, dass Sie zur Verwendung der Ressourcen berechtigt sind.
 
-Für Microsoft-Peering kann eine private AS-Nummer verwendet werden, dies erfordert jedoch ebenfalls eine manuelle Überprüfung. Darüber hinaus entfernen wir private AS-Nummern in „AS PATH“ für die empfangenen Präfixe. Dadurch können Sie in „AS PATH“ keine privaten AS-Nummern anfügen, um das [Routing für Microsoft-Peering zu beeinflussen](expressroute-optimize-routing.md). 
+Für Microsoft-Peering kann eine private AS-Nummer verwendet werden, dies erfordert jedoch ebenfalls eine manuelle Überprüfung. Darüber hinaus entfernen wir private AS-Nummern in „AS PATH“ für die empfangenen Präfixe. Dadurch können Sie in „AS PATH“ keine privaten AS-Nummern anfügen, um das [Routing für Microsoft-Peering zu beeinflussen](expressroute-optimize-routing.md). Außerdem sind die von IANA für Dokumentationszwecke reservierten AS-Nummern 64496–64511 im Pfad nicht zulässig.
 
 > [!IMPORTANT]
 > Kündigen Sie nicht die gleiche öffentliche IP-Route mit dem öffentlichen Internet und über ExpressRoute an. Um das Risiko zu reduzieren, dass es durch eine Fehlkonfiguration zu asymmetrischem Routing kommt, empfehlen wir dringend, Microsoft über ExpressRoute [NAT-IP-Adressen](expressroute-nat.md) aus einem Bereich anzukündigen, der im Internet nicht angekündigt wird. Falls dies nicht möglich ist, müssen Sie sicherstellen, dass Sie über ExpressRoute einen spezifischeren Bereich ankündigen als über die Internetverbindung. Neben der öffentliche Route für die NAT können Sie auch für Routen über ExpressRoute die öffentlichen IP-Adressen ankündigen, die von den Servern in Ihrem lokalen Netzwerk verwendet werden, die mit Microsoft 365-Endpunkten innerhalb von Microsoft kommunizieren. 

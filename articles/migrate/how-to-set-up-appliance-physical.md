@@ -1,26 +1,26 @@
 ---
 title: Einrichten einer Azure Migrate-Appliance für physische Server
-description: Erfahren Sie, wie eine Azure Migrate-Appliance für die Bewertung physischer Server eingerichtet wird.
-author: vikram1988
-ms.author: vibansa
+description: Hier erfahren Sie, wie Sie eine Azure Migrate-Appliance für die Ermittlung und Bewertung physischer Server einrichten.
+author: vineetvikram
+ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: how-to
-ms.date: 04/15/2020
-ms.openlocfilehash: 73c3d529978c91946632ed599f02b8938830621e
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.date: 03/13/2021
+ms.openlocfilehash: 9052cbd3dc728b50b62c33f3a11a5e36a7504f29
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705318"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104771565"
 ---
 # <a name="set-up-an-appliance-for-physical-servers"></a>Einrichten einer Appliance für physische Server
 
-In diesem Artikel wird beschrieben, wie Sie die Azure Migrate-Appliance einrichten, wenn Sie physische Server mithilfe der Azure Migrate-Serverbewertung bewerten.
+In diesem Artikel wird beschrieben, wie Sie die Azure Migrate-Appliance einrichten, wenn Sie mithilfe des Azure Migrate-Tools für die Ermittlung und Bewertung physische Server bewerten.
 
-Die Azure Migrate-Appliance ist eine einfache Appliance, die von der Azure Migrate-Serverbewertung für folgende Aufgaben verwendet wird:
+Die Azure Migrate-Appliance ist eine einfache Appliance, die vom Azure Migrate-Tool zur Ermittlung und Bewertung für folgende Aufgaben verwendet wird:
 
 - Ermitteln lokaler Server
-- Senden von Meta- und Leistungsdaten für ermittelte Server an die Azure Migrate-Serverbewertung
+- Senden von Meta- und Leistungsdaten für ermittelte Server an das Azure Migrate-Tool für die Ermittlung und Bewertung
 
 [Erfahren Sie mehr](migrate-appliance.md) über die Azure Migrate-Appliance.
 
@@ -28,19 +28,20 @@ Die Azure Migrate-Appliance ist eine einfache Appliance, die von der Azure Migr
 ## <a name="appliance-deployment-steps"></a>Schritte für die Appliancebereitstellung
 
 Die Einrichtung der Appliance umfasst Folgendes:
-- Geben Sie einen Appliancenamen ein, und generieren Sie einen Azure Migrate-Projektschlüssel im Portal.
+
+- Geben Sie einen Appliancenamen ein, und generieren Sie einen Projektschlüssel im Portal.
 - Herunterladen einer gezippten Datei mit dem Azure Migrate-Installationsskript aus dem Azure-Portal.
 - Extrahieren der Inhalte aus der gezippten Datei. Starten der PowerShell-Konsole mit Administratorrechten.
 - Ausführen des PowerShell-Skripts zum Starten der Appliancewebanwendung.
-- Führen Sie eine Erstkonfiguration für die Appliance aus, und registrieren Sie die Appliance beim Azure Migrate-Projekt unter Verwendung des Azure Migrate-Projektschlüssels.
+- Führen Sie die Erstkonfiguration der Appliance aus, und registrieren Sie sie unter Verwendung des Projektschlüssels im Projekt.
 
-### <a name="generate-the-azure-migrate-project-key"></a>Generieren des Azure Migrate-Projektschlüssels
+### <a name="generate-the-project-key"></a>Generieren des Projektschlüssels
 
-1. Klicken Sie unter **Migrationsziele** > **Server** > **Azure Migrate: Server Assessment** (Azure Migrate-Serverbewertung) auf **Ermitteln**.
-2. Wählen Sie unter **Computer ermitteln** > **Sind Ihre Computer virtualisiert?** die Option **Physisch/Andere (AWS, GCP, Xen usw.)** aus.
-3. Geben Sie in **1: Generieren eines Azure Migrate-Projektschlüssels** einen Namen für die Azure Migrate-Appliance an, die Sie für die Ermittlung von physischen oder virtuellen Servern einrichten möchten. Der Name muss alphanumerisch sein und darf höchstens 14 Zeichen enthalten.
-1. Klicken Sie auf **Schlüssel generieren**, um mit der Erstellung der erforderlichen Azure-Ressourcen zu beginnen. Schließen Sie die Seite „Computer ermitteln“ nicht, während die Ressourcen erstellt werden.
-1. Nach der erfolgreichen Erstellung der Azure-Ressourcen wird ein **Azure Migrate-Projektschlüssel** generiert.
+1. Wählen Sie unter **Migration Goals** > **Windows, Linux and SQL Servers** > **Azure Migrate: Discovery and assessment** („Migrationsziele“ > „Windows, Linux und SQL Server“ > „Azure Migrate-Tool für die Ermittlung und Bewertung) die Option **Ermitteln** aus.
+2. Wählen Sie unter **Discover servers** > **Are your servers virtualized?** („Server ermitteln“ > „Sind Ihre Server virtualisiert?“) die Option **Physical or other (AWS, GCP, Xen, etc.)** (Physische oder andere (AWS, GCP, Xen usw.)) aus.
+3. Geben Sie unter **1: Generate project key** (Projektschlüssel generieren) einen Namen für die Azure Migrate-Appliance ein, die Sie für die Ermittlung physischer oder virtueller Server einrichten. Für den Namen können bis zu 14 alphanumerische Zeichen angegeben werden.
+1. Klicken Sie auf **Schlüssel generieren**, um mit der Erstellung der erforderlichen Azure-Ressourcen zu beginnen. Schließen Sie die Seite „Discover servers“ (Server ermitteln) nicht, während die Ressourcen erstellt werden.
+1. Nach der erfolgreichen Erstellung der Azure-Ressourcen wird ein **Projektschlüssel** generiert.
 1. Kopieren Sie den Schlüssel, da Sie ihn benötigen, um die Registrierung der Appliance während der Konfiguration abzuschließen.
 
 ### <a name="download-the-installer-script"></a>Herunterladen des Installationsskripts
@@ -56,7 +57,7 @@ Klicken Sie in **2: Azure Migrate-Appliance herunterladen** auf **Herunterladen*
 
 Vergewissern Sie sich vor der Bereitstellung, dass die gezippte Datei sicher ist.
 
-1. Öffnen Sie auf dem Computer, auf den Sie die Datei heruntergeladen haben, ein Administratorbefehlsfenster.
+1. Öffnen Sie auf den Servern, auf denen Sie die Datei heruntergeladen haben, ein Administratorbefehlsfenster.
 2. Führen Sie den folgenden Befehl aus, um den Hash für die gezippte Datei zu generieren:
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Beispielverwendung für die öffentliche Cloud: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-Public.zip SHA256 ```
@@ -77,7 +78,7 @@ Das Installationsskript führt folgende Schritte aus:
 
 Führen Sie das Skript wie folgt aus:
 
-1. Extrahieren Sie die gezippte Datei in einem Ordner auf dem Server, der die Appliance hostet.  Führen Sie das Skript nicht auf einem Computer auf einer vorhandenen Azure Migrate-Appliance aus.
+1. Extrahieren Sie die gezippte Datei in einem Ordner auf dem Server, der die Appliance hostet.  Führen Sie das Skript nicht auf einem Server mit einer vorhandenen Azure Migrate-Appliance aus.
 2. Starten Sie PowerShell auf dem oben genannten Server mit Administratorberechtigungen (erhöhten Rechten).
 3. Ändern Sie das PowerShell-Verzeichnis in den Ordner, in den die Inhalte der gezippten Datei extrahiert wurden, die Sie heruntergeladen haben.
 4. Führen Sie das Skript mit dem Namen **AzureMigrateInstaller.ps1** aus, indem Sie den folgenden Befehl ausführen:
@@ -97,7 +98,7 @@ Bei Problemen können Sie zum Troubleshooting unter „C:\ProgramData\Microsoft 
 
 ### <a name="verify-appliance-access-to-azure"></a>Überprüfen des Appliancezugriffs auf Azure
 
-Stellen Sie sicher, dass die Appliance-VM eine Verbindung mit Azure-URLs für [öffentliche](migrate-appliance.md#public-cloud-urls) und [Government](migrate-appliance.md#government-cloud-urls)-Clouds herstellen kann.
+Stellen Sie sicher, dass die Appliance eine Verbindung mit Azure-URLs für [öffentliche](migrate-appliance.md#public-cloud-urls) Clouds und [Azure Government](migrate-appliance.md#government-cloud-urls)-Clouds herstellen kann.
 
 ### <a name="configure-the-appliance"></a>Konfigurieren der Appliance
 
@@ -109,16 +110,16 @@ Führen Sie die Ersteinrichtung der Appliance durch.
 2. Akzeptieren Sie die **Lizenzbedingungen**, und lesen Sie die Drittanbieterinformationen.
 1. Gehen Sie in der Web-App unter **Erforderliche Komponenten einrichten** wie folgt vor:
     - **Konnektivität**: Die App überprüft, ob der Server über Internetzugriff verfügt. Wenn der Server einen Proxy verwendet:
-        - Klicken Sie auf **Proxy einrichten**, um die Proxyadresse im Format http://ProxyIPAddress oder http://ProxyFQDN) und den überwachenden Port anzugeben.
+        - Klicken Sie auf **Proxy einrichten**, um die Proxyadresse (im Format http://ProxyIPAddress oder http://ProxyFQDN) ) und den Überwachungsport anzugeben.
         - Geben Sie die Anmeldeinformationen an, wenn der Proxy eine Authentifizierung erfordert.
         - Es werden nur HTTP-Proxys unterstützt.
         - Wenn Sie Proxydetails hinzugefügt oder den Proxy und/oder die Authentifizierung deaktiviert haben, klicken Sie auf **Speichern**, um die Konnektivitätsprüfung erneut auszulösen.
     - **Uhrzeitsynchronisierung**: Die Uhrzeit wird überprüft. Die Uhrzeit der Appliance muss mit der Internetzeit synchronisiert werden, damit die Ermittlung ordnungsgemäß funktioniert.
-    - **Updates installieren**: Azure Migrate-Serverbewertung prüft, ob die neuesten Updates für die Appliance installiert sind. Nachdem die Prüfung abgeschlossen ist, können Sie auf **Appliancedienste anzeigen** klicken, um den Status und die Versionen der auf der Appliance ausgeführten Komponenten anzuzeigen.
+    - **Updates installieren**: Das Tool „Azure Migrate: Ermittlung und Bewertung“ überprüft, ob auf der Appliance die neuesten Updates installiert sind. Nachdem die Prüfung abgeschlossen ist, können Sie auf **Appliancedienste anzeigen** klicken, um den Status und die Versionen der auf der Appliance ausgeführten Komponenten anzuzeigen.
 
 ### <a name="register-the-appliance-with-azure-migrate"></a>Registrieren der Appliance bei Azure Migrate
 
-1. Fügen Sie den aus dem Portal kopierten **Azure Migrate-Projektschlüssel** ein. Wenn Sie den Schlüssel nicht haben, wechseln Sie zu **Serverbewertung > Ermitteln > Vorhandene Appliances verwalten**, wählen Sie den Appliancenamen aus, den Sie bei der Generierung des Schlüssels angegeben haben, und kopieren Sie den entsprechenden Schlüssel.
+1. Fügen Sie den aus dem Portal kopierten **Projektschlüssel** ein. Wenn Sie den Schlüssel nicht haben, wechseln Sie zu **Azure Migrate: Ermittlung und Bewertung > Ermitteln > Vorhandene Appliances verwalten**, wählen Sie den Appliancenamen aus, den Sie bei der Generierung des Schlüssels angegeben haben, und kopieren Sie den entsprechenden Schlüssel.
 1. Für die Authentifizierung bei Azure benötigen Sie einen Gerätecode. Wenn Sie auf **Anmelden** klicken, wird ein modales Dialogfeld mit dem Gerätecode angezeigt. Dies ist in der folgenden Abbildung dargestellt.
 
     ![Modales Dialogfeld mit Gerätecode](./media/tutorial-discover-vmware/device-code.png)
@@ -139,10 +140,10 @@ Stellen Sie nun eine Verbindung zwischen der Appliance und den zu ermittelnden p
 
 1. Wählen Sie in **Schritt 1: Angeben von Anmeldeinformationen für die Ermittlung von physischen oder virtuellen Windows- und Linux-Servern** die Option **Anmeldeinformationen hinzufügen** aus.
 1. Wählen Sie für Windows-Server den Quelltyp **Windows-Server** aus, geben Sie einen Anzeigenamen für die Anmeldeinformationen ein, und fügen Sie den Benutzernamen und das Kennwort hinzu. Klicken Sie auf **Speichern**.
-1. Wenn Sie kennwortbasierte Authentifizierung für Linux-Server verwenden, wählen Sie den Quelltyp **Linux-Server (kennwortbasiert)** aus, geben Sie einen Anzeigenamen für die Anmeldeinformationen ein, und fügen Sie den Benutzernamen und das Kennwort hinzu. Klicken Sie auf **Speichern**.
-1. Wenn Sie auf SSH-Schlüsseln basierende Authentifizierung für Linux-Server verwenden, wählen Sie den Quelltyp **Linux-Server (auf SSH-Schlüsseln basierend)** aus, geben Sie einen Anzeigenamen für die Anmeldeinformationen ein, fügen Sie den Benutzernamen hinzu, suchen Sie nach der Datei mit dem privaten SSH-Schlüssel, und wählen Sie diese aus. Klicken Sie auf **Speichern**.
+1. Wenn Sie die kennwortbasierte Authentifizierung für Linux-Server verwenden, wählen Sie den Quelltyp **Linux Server (Password-based)** (Linux-Server (kennwortbasiert)) aus, geben Sie einen Anzeigenamen für die Anmeldeinformationen ein, und fügen Sie den Benutzernamen und das Kennwort hinzu. Klicken Sie auf **Speichern**.
+1. Wenn Sie die auf SSH-Schlüsseln basierende Authentifizierung für Linux-Server verwenden, wählen Sie den Quelltyp **Linux Server (SSH key-based)** (Linux-Server (auf SSH-Schlüsseln basierend)) aus, geben Sie einen Anzeigenamen für die Anmeldeinformationen ein, fügen Sie den Benutzernamen hinzu, suchen Sie nach der Datei mit dem privaten SSH-Schlüssel, und wählen Sie diese aus. Klicken Sie auf **Speichern**.
 
-    - Azure Migrate unterstützt den privaten SSH-Schlüssel, der vom Befehl ssh-keygen mithilfe von RSA-, DSA-, ECDSA- und ed25519-Algorithmen generiert wird.
+    - Azure Migrate unterstützt den privaten SSH-Schlüssel, der vom Befehl „ssh-keygen“ mithilfe von RSA-, DSA-, ECDSA- und ed25519-Algorithmen generiert wird.
     - Zurzeit unterstützt Azure Migrate keinen auf einer Passphrase basierenden SSH-Schlüssel. Verwenden Sie einen SSH-Schlüssel ohne eine Passphrase.
     - Derzeit wird die von PuTTY generierte Datei mit dem privaten SSH-Schlüssel von Azure Migrate nicht unterstützt.
     - Azure Migrate unterstützt das OpenSSH-Format der Datei mit dem privaten SSH-Schlüssel. Dies ist hier dargestellt:
@@ -154,14 +155,14 @@ Stellen Sie nun eine Verbindung zwischen der Appliance und den zu ermittelnden p
 
     ![Auswahloptionen zum Hinzufügen der Ermittlungsquelle](./media/tutorial-assess-physical/add-discovery-source-physical.png)
 
-    - Wenn Sie **ein einzelnes Element hinzufügen**, können Sie den Betriebssystemtyp auswählen, den Anzeigenamen für die Anmeldeinformationen angeben, den **IP-Adresse/FQDN**-Wert des Servers hinzufügen und dann auf **Speichern** klicken.
-    - Wenn Sie **mehrere Elemente hinzufügen**, können Sie mehrere Datensätze auf einmal hinzufügen, indem Sie den **IP-Adresse/FQDN**-Wert des Servers mit dem Anzeigenamen für die Anmeldeinformationen im Textfeld angeben.  **Überprüfen** Sie die hinzugefügten Datensätze, und klicken Sie auf **Speichern**.
+    - Wenn Sie auf **Add single item** (Einzelnes Element hinzufügen) klicken, können Sie den Betriebssystemtyp auswählen, den Anzeigenamen für die Anmeldeinformationen angeben, den **IP-Adresse/FQDN**-Wert des Servers hinzufügen und dann auf **Speichern** klicken.
+    - Wenn Sie auf **Add multiple items** (Mehrere Elemente hinzufügen) klicken, können Sie mehrere Datensätze auf einmal hinzufügen, indem Sie **IP-Adresse/FQDN** für den Server mit dem Anzeigenamen für die Anmeldeinformationen im Textfeld angeben. Überprüfen** Sie die hinzugefügten Einträge, und klicken Sie auf **Speichern**.
     - Wenn Sie **CSV importieren** _(standardmäßig ausgewählt)_ auswählen, können Sie eine CSV-Vorlagendatei herunterladen, die Datei mit dem **IP-Adresse/FQDN**-Wert des Servers und einem Anzeigenamen für die Anmeldeinformationen auffüllen. Importieren Sie die Datei dann in die Appliance, **überprüfen** Sie die Datensätze in der Datei, und klicken Sie auf **Speichern**.
 
 1. Wenn Sie auf „Speichern“ klicken, versucht die Appliance, die Verbindung zu den hinzugefügten Servern zu überprüfen, und zeigt den **Überprüfungszustand** in der Tabelle für jeden Server an.
     - Sollte bei der Überprüfung eines Servers ein Fehler auftreten, sehen Sie sich den Fehler an, indem Sie auf **Fehler bei der Überprüfung** in der Spalte „Status“ klicken. Beheben Sie das Problem, und wiederholen Sie die Überprüfung.
     - Um einen Server zu entfernen, klicken Sie auf **Löschen**.
-1. Sie können die Verbindung zu Servern jederzeit vor Beginn der Ermittlung **erneut überprüfen**.
+1. Sie können die Verbindung mit Servern jederzeit vor Beginn der Ermittlung **erneut überprüfen**.
 1. Klicken Sie auf **Ermittlung starten**, um die Ermittlung der erfolgreich überprüften Server zu starten. Nachdem die Ermittlung erfolgreich gestartet wurde, können Sie den Ermittlungsstatus für jeden Server in der Tabelle überprüfen.
 
 
@@ -172,9 +173,9 @@ Daraufhin wird die Ermittlung gestartet. Es dauert ca. 2 Minuten pro Server, bi
 Nach Abschluss der Ermittlung können Sie überprüfen, ob die Server im Portal angezeigt werden.
 
 1. Öffnen Sie das Azure Migrate-Dashboard.
-2. Klicken Sie unter **Azure Migrate – Server** > **Azure Migrate: Server Assessment** (Azure Migrate-Serverbewertung) auf das Symbol mit der Anzahl für **Ermittelte Server**.
+2. Klicken Sie auf **Azure Migrate - Windows, Linux and SQL Servers (Azure Migrate: Windows-/Linux-Server und SQL Server-Instanzen)**  > **Azure Migrate: Ermittlung und Bewertung** und dann auf das Symbol mit der Anzahl für **Ermittelte Server**.
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Testen Sie die [Bewertung physischer Server](tutorial-assess-physical.md) mit der Azure Migrate-Serverbewertung.
+Testen Sie die [Bewertung physischer Server](tutorial-assess-physical.md) mit dem Azure Migrate-Tool für die Ermittlung und Bewertung.

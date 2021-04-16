@@ -7,14 +7,14 @@ ms.subservice: cosmosdb-sql
 ms.devlang: python
 ms.topic: reference
 ms.date: 08/12/2020
-ms.author: anfeldma
+ms.author: rosouz
 ms.custom: devx-track-python
-ms.openlocfilehash: 77cde4fb580ebea14c09856b9ad2e7f093e20db3
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 470ae497acab4c75e83a13e485d1bcb118485ab9
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102505068"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104799512"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Python SDK für die SQL-API: Versionshinweise und Ressourcen
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -38,17 +38,26 @@ ms.locfileid: "102505068"
 > * [Bulk Executor – .NET  v2](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Bulk Executor – Java](sql-api-sdk-bulk-executor-java.md)
 
-| |  |
+| Seite| Link |
 |---|---|
 |**SDK herunterladen**|[PyPI](https://pypi.org/project/azure-cosmos)|
-|**API-Dokumentation**|[Python-API-Referenzdokumentation](/python/api/azure-cosmos/)|
+|**API-Dokumentation**|[Python-API-Referenzdokumentation](https://docs.microsoft.com/python/api/azure-cosmos/azure.cosmos?view=azure-python&preserve-view=true)|
 |**SDK-Installationsanweisungen**|[Python-SDK-Installationsanweisungen](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cosmos/azure-cosmos)|
 |**Erste Schritte**|[Erste Schritte mit dem Python-SDK](create-sql-api-python.md)|
-|**Aktuell unterstützte Plattform**|[Python 2.7](https://www.python.org/downloads/) und [Python 3.5.3+](https://www.python.org/downloads/)|
+|**Aktuell unterstützte Plattform**|[Python 2.7](https://www.python.org/downloads/) und [Python 3.6+](https://www.python.org/downloads/)|
 
 ## <a name="release-history"></a>Releaseverlauf
 
-### <a name="410-2020-08-10"></a>4.1.0 (10.08.2020)
+## <a name="420"></a>4.2.0
+
+**Fehlerbehebungen**
+- Ein Fehler wurde behoben, bei dem das Fortsetzungstoken nicht berücksichtigt wurde, wenn query_iterable zum Abrufen der Ergebnisse nach Seiten verwendet wurde.
+- Ein Fehler wurde behoben, bei dem Ressourcentoken für Lese- und Löschvorgänge von Dokumenten nicht berücksichtigt wurden. 
+
+**Neue Features**
+- Unterstützung für die Übergabe von `partitionKey` beim Abfragen des Änderungsfeeds wurde hinzugefügt.
+
+## <a name="410"></a>4.1.0
 
 - Warnung bezüglich der Einstellung des Modus der verzögerten Indizierung hinzugefügt. Das Back-End lässt das Erstellen von Containern mit diesem Modus nicht mehr zu und legt sie stattdessen auf konsistent fest.
 
@@ -56,13 +65,14 @@ ms.locfileid: "102505068"
 - Die Möglichkeit zum Festlegen der Gültigkeitsdauer des analytischen Speichers beim Erstellen eines neuen Containers wurde hinzugefügt.
 
 **Fehlerbehebungen**
-- Die Unterstützung von Wörterbüchern als Eingaben für get_client-APIs wurde korrigiert.
+- Die Unterstützung von `dicts` als Eingaben für get_client-APIs wurde korrigiert.
 - Die Kompatibilität mit Python 2/3 in Abfrageiteratoren wurde korrigiert.
-- Typhinweisfehler wurde behoben (Problem Nr. 12570).
-- Der Fehler wurde behoben, aufgrund dessen der upsert_item-Funktion keine Optionsheader hinzugefügt wurden. Problem Nr. 11791 – vielen Dank an @aalapatirvbd.
-- Der Fehler wurde behoben, der bei Verwendung einer Nicht-Zeichenfolgen-ID in einem Element ausgelöst wurde. Jetzt wird ein TypeError anstelle eines AttributeError ausgelöst (Problem Nr. 11793).
+- Typhinweisfehler wurde behoben.
+- Der Fehler wurde behoben, aufgrund dessen der upsert_item-Funktion keine Optionsheader hinzugefügt wurden. 
+- Der Fehler wurde behoben, der bei Verwendung einer Nicht-Zeichenfolgen-ID in einem Element ausgelöst wurde. Jetzt wird ein TypeError anstelle eines AttributeError ausgelöst.
 
-### <a name="400"></a>4.0.0
+
+## <a name="400"></a>4.0.0
 
 * Stabiles Release.
 * Der Pipeline wurde „HttpLoggingPolicy“ hinzugefügt, um die Übergabe in einer benutzerdefinierten Protokollierung für Anforderungs- und Antwortheader zu ermöglichen.
@@ -80,8 +90,8 @@ ms.locfileid: "102505068"
 * Unterstützung von LIMIT, OFFSET und DISTINCT für Abfragen wurde hinzugefügt.
 * Der Standardausführungskontext für Dokumentabfragen wird jetzt für folgende Abfragen verwendet:
 
-  * ChangeFeed-Abfragen
-  * Abfragen in einer einzelnen Partition („partitionkey“, „partitionKeyRangeId“ ist in den Optionen vorhanden)
+  * Änderungsfeedabfragen
+  * Abfragen in einer einzelnen Partition (`partitionkey`, `partitionKeyRangeId` ist in den Optionen vorhanden)
   * Andere Abfragen als Dokumentabfragen
 
 * Beendigung für Aggregate in mehreren Partitionen, wenn das Aktivieren partitionsübergreifender Abfragen auf „true“ festgelegt ist, das value-Schlüsselwort jedoch fehlt
@@ -324,6 +334,8 @@ Wenn Microsoft ein SDK deaktiviert, werden Sie mindestens **12 Monate** vorher b
 
 | Version | Veröffentlichungsdatum | Deaktivierungstermine |
 | --- | --- | --- |
+| [4.2.0](#420) |09. Oktober 2020 |--- |
+| [4.1.0](#410) |10. August 2020 |--- |
 | [4.0.0](#400) |20. Mai 2020 |--- |
 | [3.0.2](#302) |15. November 2018 |--- |
 | [3.0.1](#301) |4\. Oktober 2018 |--- |

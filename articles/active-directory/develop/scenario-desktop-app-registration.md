@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 8a1a2d7f5272def78cd162da1f6ac0265d4fb30b
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 263397aa2cd09ba24fa750131b76047801869a65
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102517735"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104798934"
 ---
 # <a name="desktop-app-that-calls-web-apis-app-registration"></a>Desktop-App, die Web-APIs aufruft: App-Registrierung
 
@@ -40,12 +40,17 @@ Wenn Ihre Desktopanwendung die interaktive Authentifizierung verwendet, können 
 
 Die in einer Desktopanwendung zu verwendenden Umleitungs-URIs hängen von dem Flow ab, den Sie verwenden möchten.
 
-- Bei Verwendung der interaktiven Authentifizierung oder des Gerätecodeflows verwenden Sie `https://login.microsoftonline.com/common/oauth2/nativeclient`. Um diese Konfiguration zu erzielen, wählen Sie im Abschnitt **Authentifizierung** für Ihre Anwendung die entsprechende URL aus.
+Geben Sie den Umleitungs-URI für Ihre App an, indem Sie im Azure-Portal unter **App-Registrierungen** die [Plattformeinstellungen konfigurieren](quickstart-register-app.md#add-a-redirect-uri).
+
+- Für Apps mit interaktiver Authentifizierung:
+  - Apps mit eingebettetem Browser: `https://login.microsoftonline.com/common/oauth2/nativeclient`
+  - Apps mit Systembrowser: `http://localhost`
 
   > [!IMPORTANT]
-  > Die Verwendung von `https://login.microsoftonline.com/common/oauth2/nativeclient` als Umleitungs-URI wird als bewährte Sicherheitsmaßnahme empfohlen.  Wenn kein Umleitungs-URI angegeben wird, verwendet MSAL.NET standardmäßig `urn:ietf:wg:oauth:2.0:oob`, was nicht empfohlen wird.  Diese Standardeinstellung wird als Breaking Change in der nächsten Hauptversion aktualisiert.
+  > Als bewährte Sicherheitsmaßnahme wird empfohlen, als Umleitungs-URI `https://login.microsoftonline.com/common/oauth2/nativeclient` oder `http://localhost` festzulegen. Manche Authentifizierungsbibliotheken wie MSAL.NET verwenden als Standardeinstellung `urn:ietf:wg:oauth:2.0:oob` (nicht empfohlen), wenn kein anderer Umleitungs-URI angegeben wird. Diese Standardeinstellung wird als Breaking Change in der nächsten Hauptversion aktualisiert.
 
 - Wenn Sie eine native Objective-C-oder Swift-App für macOS erstellen, sollten Sie den Umleitungs-URI basierend auf der Paket-ID Ihrer Anwendung im folgenden Format registrieren: `msauth.<your.app.bundle.id>://auth`. Ersetzen Sie `<your.app.bundle.id>` durch die Paket-ID Ihrer Anwendung.
+- Wenn Sie eine Node.js Electron-App erstellen möchten, verwenden Sie anstelle eines regulären Web-Umleitungs-URIs (https://) ein benutzerdefiniertes Dateiprotokoll (z. B. `msal://redirect`), um den Umleitungsschritt im Autorisierungsablauf zu verarbeiten. Der Name des benutzerdefinierten Dateiprotokolls sollte nicht offensichtlich und somit leicht zu erraten sein. Befolgen Sie hierfür die Vorschläge in der [OAuth 2.0-Spezifikation für native Apps](https://tools.ietf.org/html/rfc8252#section-7.1).
 - Wenn Ihre App nur die integrierte Windows-Authentifizierung oder Benutzername und Kennwort verwendet, müssen Sie für Ihre Anwendung keinen Umleitungs-URI registrieren. Diese Flows führen einen Roundtrip zum Microsoft Identity Platform v 2.0-Endpunkt aus. Ihre Anwendung wird nicht über einen bestimmten URI zurückgerufen.
 - Konfigurieren Sie Ihre Anwendung als öffentliche Clientanwendung, um [Gerätecodeflow](scenario-desktop-acquire-token.md#device-code-flow), [Integrierte Windows-Authentifizierung](scenario-desktop-acquire-token.md#integrated-windows-authentication) sowie [Benutzername und Kennwort](scenario-desktop-acquire-token.md#username-and-password) von einer vertraulichen Clientanwendung mit einem Clientanmeldeinformationsflow zu unterscheiden, der in [Daemonanwendungen](scenario-daemon-overview.md) verwendet wird, die alle keinen Umleitungs-URI benötigen. Gehen Sie für diese Konfiguration wie folgt vor:
 

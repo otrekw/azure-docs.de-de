@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2f3d1d47bd26167253296f06af5470818760850
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a532ae9485efa9571137130d32ba0827728e8094
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99257979"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106166869"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Platzhalteranwendungen im Azure Active Directory-Anwendungsproxy
 
@@ -68,11 +68,23 @@ Aus Sicherheitsgründen ist dies eine zwingende Anforderung, und es werden keine
 
 ### <a name="dns-updates"></a>DNS-Updates
 
-Bei der Verwendung benutzerdefinierter Domänen müssen Sie einen DNS-Eintrag mit einem CNAME-Eintrag für die externe URL (z.B. `*.adventure-works.com`) erstellen, der auf die externe URL des Anwendungsproxy-Endpunkts verweist. Bei Platzhalteranwendungen muss der CNAME-Eintrag auf die entsprechenden externen URLs verweisen:
+Wenn Sie benutzerdefinierte Domänen verwenden, müssen Sie einen DNS-Eintrag mit einem CNAME-Eintrag für die externe URL (z. b.) erstellen, der  `*.adventure-works.com` auf die externe URL des Endpunktes der Anwendungsproxy zeigt. Bei Wildcard-Anwendungen muss der CNAME-Eintrag auf die entsprechende externe URL zeigen:
 
 > `<yourAADTenantId>.tenant.runtime.msappproxy.net`
 
 Um sicherzustellen, dass Sie den CNAME-Eintrag ordnungsgemäß konfiguriert haben, können Sie [nslookup](/windows-server/administration/windows-commands/nslookup) für einen der Zielendpunkte, z.B. `expenses.adventure-works.com`, ausführen.  Die Antwort sollte den bereits erwähnten Alias (`<yourAADTenantId>.tenant.runtime.msappproxy.net`) enthalten.
+
+### <a name="using-connector-groups-assigned-to-an-app-proxy-cloud-service-region-other-than-the-default-region"></a>Verwenden von Connector-Gruppen, die einer anderen APP-Proxy-Cloud-Dienst Region als der Standard Region zugewiesen sind
+Wenn Sie Connectors in Regionen installiert haben, die sich von Ihrer Tentant-Region unterscheiden, kann eine Änderung der Region, für die Ihre Connectorgruppe optimiert ist, von Vorteil sein, um die Leistung beim Zugriff auf diese Anwendungen zu verbessern. Weitere Informationen finden Sie unter [Optimieren von Konnektorgruppen für die Verwendung des engsten Anwendungsproxy-Cloud-Dienstes](application-proxy-network-topology.md#optimize-connector-groups-to-use-closest-application-proxy-cloud-service-preview).
+ 
+Wenn die der Platzhalteranwendung zugewiesene Connector-Gruppe eine **andere Region als Ihre Standardregion** verwendet, müssen Sie den CNAME-Eintrag aktualisieren, damit er auf eine regionalspezifische externe URL verweist. Verwenden Sie die folgende Tabelle, um die entsprechende URL zu ermitteln:
+
+| Der Connector zugewiesene Region | Externe URL |
+| ---   | ---         |
+| Asia | `<yourAADTenantId>.asia.tenant.runtime.msappproxy.net`|
+| Australien  | `<yourAADTenantId>.aus.tenant.runtime.msappproxy.net` |
+| Europa  | `<yourAADTenantId>.eur.tenant.runtime.msappproxy.net`|
+| Nordamerika  | `<yourAADTenantId>.nam.tenant.runtime.msappproxy.net` |
 
 ## <a name="considerations"></a>Überlegungen
 

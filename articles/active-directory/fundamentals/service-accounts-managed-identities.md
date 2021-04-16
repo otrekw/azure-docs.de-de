@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4584b0a605bd63c1f71082014d3c0622ca7d2c37
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 8b08231f254ea47fc3c9d65de42966301bd3378f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104587830"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105640049"
 ---
 # <a name="securing-managed-identities"></a>Sichern von verwalteten Identitäten
 
@@ -38,7 +38,7 @@ Verwaltete Identitäten werden am besten für die Kommunikation zwischen Dienste
 
 Ein Quellsystem fordert den Zugriff auf einen Zieldienst an. Jede Azure-Ressource kann ein Quellsystem sein. Beispielsweise unterstützen eine Azure-VM, eine Azure Functions-Instanz und Azure App Service-Instanzen verwaltete Identitäten.
 
-[!VIDEO https://www.youtube.com/embed/5lqayO_oeEo]
+   > [!VIDEO https://www.youtube.com/embed/5lqayO_oeEo]
 
 ### <a name="how-authentication-and-authorization-work"></a>Die Funktionsweise von Authentifizierung und Autorisierung
 
@@ -86,7 +86,7 @@ Es gibt mehrere Möglichkeiten, verwaltete Identitäten zu finden:
 
 ### <a name="using-the-azure-portal"></a>Verwenden des Azure-Portals
 
-1. Wählen Sie in Azure AD die Option „Unternehmensanwendung“ aus.
+1. Wählen Sie in Azure Active Directory „Unternehmensanwendungen“ aus.
 
 2. Wählen Sie den Filter für „Verwaltete Identitäten“ aus. 
 
@@ -100,7 +100,7 @@ Sie können eine Liste aller verwalteten Identitäten in Ihrem Mandanten erhalte
 
 `https://graph.microsoft.com/v1.0/servicePrincipals?$filter=(servicePrincipalType eq 'ManagedIdentity') `
 
-Sie können diese Anforderungen filtern. Weitere Informationen finden Sie in der Graph-Dokumentation [Abrufen des Dienstprinzipals](/graph/api/serviceprincipal-get?view=).
+Sie können diese Anforderungen filtern. Weitere Informationen finden Sie in der Graph-Dokumentation [Abrufen des Dienstprinzipals](/graph/api/serviceprincipal-get).
 
 ## <a name="assess-the-security-of-managed-identities"></a>Bewerten der Sicherheit verwalteter Identitäten 
 

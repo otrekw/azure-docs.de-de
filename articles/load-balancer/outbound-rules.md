@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: contperf-fy21q1
 ms.date: 10/13/2020
 ms.author: allensu
-ms.openlocfilehash: 6b73eb51831238f23400ef60d0a6162bca38ea85
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 339bbd7edf48737113de360812165dc8148c5b93
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033152"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107375864"
 ---
 # <a name="outbound-rules-azure-load-balancer"></a><a name="outboundrules"></a>Ausgangsregeln – Azure Load Balancer
 
@@ -36,11 +36,11 @@ Mit Ausgangsregeln können Sie das Verhalten von ausgehenden **SNAT**-Verbindung
 Mit Ausgangsregeln können Sie steuern:
 
 * **Welchen IP-Adressen von VMs in welche öffentlichen IP-Adressen übersetzt werden.**
-     * Zwei Regeln,durch die Back-End-Pool A die IP-Adressen A und B verwendet und Back-End-Pool B die IP-Adressen C und D.
+     * Zwei Regeln, in denen Back-End-Pool 1 die blaue IP-Adresse 1 und 2 und Back-End-Pool 2 das gelbe IP-Präfix verwendet.
 * **Die Art der Zuordnung ausgehender SNAT-Ports.**
-     * Back-End-Pool B ist der einzige Pool, der ausgehende Verbindungen ermöglicht, alle SNAT-Ports werden Back-End-Pool B und kein Port Back-End-Pool A zugewiesen.
+     * Back-End-Pool 2 ist der einzige Pool, der ausgehende Verbindungen ermöglicht, alle SNAT-Ports werden Back-End-Pool 2 und kein Port Back-End-Pool 1 zugewiesen.
 * **Welche Protokolle zum Übersetzen ausgehenden Datenverkehrs verwendet werden.**
-     * Back-End-Pool B benötigt UDP-Ports für ausgehenden Datenverkehr. Back-End-Pool A benötigt TCP. Weisen Sie TCP-Ports A und UDP-Ports B zu.
+     * Wenn Back-End-Pool 2 UDP-Ports für ausgehenden Datenverkehr und Back-End-Pool 1 TCP benötigt, weisen Sie Pool 1 TCP-Ports und Pool 2 UDP-Ports zu.
 * **Wie lange das Leerlauftimeout für ausgehende Verbindungen dauert (4 bis 120 Minuten).**
      * Wenn zeitintensive Verbindungen mit Keepalives vorhanden sind, reservieren Sie für zeitintensive Verbindungen bis zu 120 Minuten lang Ports mit Leerlauf. Gehen Sie davon aus, dass veraltete Verbindungen eingestellt werden, und geben Sie Ports innerhalb von 4 Minuten für neue Verbindungen frei. 
 * **Ob eine TCP-Zurücksetzung bei Leerlauftimeout gesendet wird.**
@@ -135,7 +135,7 @@ Gehen Sie folgendermaßen vor, um andere als die von einer Lastenausgleichsregel
 5. Konfigurieren Sie eine Ausgangsregel in der öffentlichen Load Balancer-Instanz, um die NAT für ausgehenden Datenverkehr für diese VMs über das Front-End zu aktivieren. Es wird nicht empfohlen, eine Lastenausgleichsregel für ausgehenden Datenverkehr zu verwenden. Deaktivieren Sie die ausgehende SNAT in der Lastenausgleichsregel.
 
 
-### <a name="scenario-2-modify-snatport-allocation"></a><a name="scenario2out"></a>Szenario 2: Ändern der [SNAT](load-balancer-outbound-connections.md)-Portzuordnung
+### <a name="scenario-2-modify-snat-port-allocation"></a><a name="scenario2out"></a>Szenario 2: Ändern der [SNAT](load-balancer-outbound-connections.md)-Portzuordnung
 
 
 #### <a name="details"></a>Details
@@ -144,13 +144,13 @@ Gehen Sie folgendermaßen vor, um andere als die von einer Lastenausgleichsregel
 Sie können Ausgangsregeln verwenden, um die [automatische SNAT-Portzuweisung basierend auf der Back-End-Poolgröße](load-balancer-outbound-connections.md#preallocatedports) anzupassen. 
 
 
-Wenn Sie eine SNAT-Überlastung feststellen, vergrößern Sie die Anzahl von [SNAT](load-balancer-outbound-connections.md)-Ports über den Standardwert von 1.024 hinaus. 
+Wenn Sie eine SNAT-Überlastung feststellen, vergrößern Sie die Anzahl von [SNAT](load-balancer-outbound-connections.md)-Ports über den Standardwert von 1024 hinaus. 
 
 
-Jede öffentliche IP-Adresse stellt bis zu 64.000 kurzlebige Ports bereit. Die Anzahl von VMs im Back-End-Pool bestimmt die Anzahl von Ports, die an jede VM verteilt werden. Eine VM im Back-End-Pool kann auf maximal 64.000 Ports zugreifen. Bei zwei VMs können maximal 32.000 [SNAT](load-balancer-outbound-connections.md)-Ports mit einer Ausgangsregel zugeordnet werden (2 × 32.000 = 64.000). 
+Jede öffentliche IP-Adresse stellt bis zu 64.000 kurzlebige Ports bereit. Die Anzahl von VMs im Back-End-Pool bestimmt die Anzahl von Ports, die an jede VM verteilt werden. Eine VM im Back-End-Pool kann auf maximal 64.000 Ports zugreifen. Bei zwei VMs können maximal 32.000 [SNAT](load-balancer-outbound-connections.md)-Ports mit einer Ausgangsregel zugeordnet werden (2 × 32.000 = 64.000). 
 
 
-Sie können Ausgangsregeln verwenden, um die standardmäßig zugeordneten SNAT-Ports zu optimieren. Sie können einen höheren oder einen niedrigeren Wert als den Wert der standardmäßigen [SNAT](load-balancer-outbound-connections.md)-Portzuweisung verwenden. Jede öffentliche IP-Adresse in einem Front-End einer Ausgangsregel stellt bis zu 64.000 kurzlebige Ports zur Verwendung als [SNAT](load-balancer-outbound-connections.md)-Ports bereit. 
+Sie können Ausgangsregeln verwenden, um die standardmäßig zugeordneten SNAT-Ports zu optimieren. Sie können einen höheren oder einen niedrigeren Wert als den der standardmäßigen [SNAT](load-balancer-outbound-connections.md)-Portzuweisung verwenden. Jede öffentliche IP-Adresse in einem Front-End einer Ausgangsregel stellt bis zu 64.000 kurzlebige Ports zur Verwendung als [SNAT](load-balancer-outbound-connections.md)-Ports bereit. 
 
 
 Der Lastenausgleich weist [SNAT](load-balancer-outbound-connections.md)-Ports als Vielfache von 8 zu. Wenn Sie einen Wert angeben, der nicht durch 8 teilbar ist, wird der Konfigurationsvorgang abgelehnt. Jede Lastenausgleichsregel und jede NAT-Regel für eingehenden Datenverkehr benötigt einen Bereich von 8 Ports. Wenn eine Lastenausgleichsregel oder eine NAT-Regel für eingehenden Datenverkehr denselben Bereich von 8 Ports verwendet wie eine andere Regel, werden keine zusätzlichen Ports benötigt.

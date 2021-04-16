@@ -4,12 +4,12 @@ description: Verschiedene OutOfMemoryError-Ausnahmen für Apache Spark-Cluster i
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: a15d79f2ae9c3d20a73ec557c57a5c189b18111b
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: dd33972810ab3b0d51bbd82282d0e6cf6cd9d96c
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946352"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868663"
 ---
 # <a name="outofmemoryerror-exceptions-for-apache-spark-in-azure-hdinsight"></a>OutOfMemoryError-Ausnahmen für Apache Spark in Azure HDInsight
 
@@ -53,13 +53,13 @@ java.lang.OutOfMemoryError
 
 Die wahrscheinlichste Ursache dieser Ausnahme besteht darin, dass den Java Virtual Machines (JVMs) kein ausreichender Heapspeicher zugeordnet ist. Diese JVMs werden als Executors oder Treiber im Rahmen der Apache Spark-Anwendung gestartet.
 
-### <a name="resolution"></a>Lösung
+### <a name="resolution"></a>Auflösung
 
 1. Ermitteln Sie die maximale Größe der Daten, die von die Spark-Anwendung verarbeitet werden. Schätzen Sie die Größe basierend auf der maximalen Größe der Eingabedaten, den bei der Transformation der Eingabedaten erzeugten Zwischendaten und den erzeugten Ausgabedaten, mit denen die Zwischendaten weiter transformiert werden. Wenn die anfängliche Schätzung nicht ausreichend ist, sollten Sie die Größe um einen geringen Wert erhöhen und diesen Vorgang wiederholen, bis die Arbeitsspeicherfehler nicht mehr angezeigt werden.
 
 1. Stellen Sie sicher, dass der zu verwendende HDInsight-Cluster über genügend Ressourcen im Hinblick auf Arbeitsspeicher und Kerne verfügt, um die Spark-Anwendung auszuführen. Dazu zeigen Sie den Abschnitt mit Clustermetriken der YARN-Benutzeroberfläche des Clusters an und vergleichen die Werte von **Verwendeter Arbeitsspeicher** mit **Gesamtspeicher** und die von **VCores Used** (Verwendete virtuelle Kerne) mit **VCores Total** (VCores insgesamt) betrachten.
 
-    ![Ansicht des YARN Core-Arbeitsspeichers](./media/apache-spark-ts-outofmemory/yarn-core-memory-view.png)
+    :::image type="content" source="./media/apache-spark-ts-outofmemory/yarn-core-memory-view.png" alt-text="Ansicht des YARN Core-Arbeitsspeichers" border="true":::
 
 1. Legen Sie die folgenden Spark-Konfigurationseinstellungen auf geeignete Werte fest. Gleichen Sie die Anwendungsanforderungen mit den verfügbaren Ressourcen im Cluster ab. Diese Werte sollten 90 % des verfügbaren Arbeitsspeichers und der verfügbaren Kerne aus Sicht von YARN nicht überschreiten und zudem die minimalen Arbeitsspeicheranforderungen der Spark-Anwendung erfüllen:
 
@@ -87,7 +87,7 @@ Die wahrscheinlichste Ursache dieser Ausnahme besteht darin, dass den Java Virtu
 
 ---
 
-## <a name="scenario-java-heap-space-error-when-trying-to-open-apache-spark-history-server"></a>Szenario: Java-Heapspeicher-Fehler beim Öffnen des Apache Spark-Verlaufsservers
+## <a name="scenario-java-heap-space-error-when-trying-to-open-apache-spark-history-server"></a>Szenario: Java-Heapspeicherfehler beim Öffnen des Apache Spark-Verlaufsservers
 
 ### <a name="issue"></a>Problem
 
@@ -111,17 +111,17 @@ hadoop fs -du -s -h wasb:///hdp/spark2-events/application_1503957839788_0264_1/
 **2.1 G**  wasb:///hdp/spark2-events/application_1503957839788_0264_1
 ```
 
-### <a name="resolution"></a>Lösung
+### <a name="resolution"></a>Auflösung
 
 Sie können den Arbeitsspeicher des Spark-Verlaufsservers erhöhen, indem Sie in der Spark-Konfiguration die `SPARK_DAEMON_MEMORY`-Eigenschaft bearbeiten und alle Dienste neu starten.
 
 Hierzu können Sie auf der Ambari-Browserbenutzeroberfläche den Abschnitt „Spark2/Config/Advanced spark2-env“ auswählen.
 
-![Abschnitt „Advanced spark2-env“](./media/apache-spark-ts-outofmemory-heap-space/apache-spark-image01.png)
+:::image type="content" source="./media/apache-spark-ts-outofmemory-heap-space/apache-spark-image01.png" alt-text="Abschnitt „Advanced spark2-env“" border="true":::
 
 Fügen Sie die folgende Eigenschaft hinzu, um den Arbeitsspeicher des Spark-Verlaufsservers von 1 GB auf 4 GB zu erhöhen: `SPARK_DAEMON_MEMORY=4g`.
 
-![Spark-Eigenschaft](./media/apache-spark-ts-outofmemory-heap-space/apache-spark-image02.png)
+:::image type="content" source="./media/apache-spark-ts-outofmemory-heap-space/apache-spark-image02.png" alt-text="Spark-Eigenschaft" border="true":::
 
 Anschließend müssen alle betroffenen Dienste über Ambari neu gestartet werden.
 
@@ -197,7 +197,7 @@ Wenn der Livy-Server unerwartet beendet wird, werden auch alle Verbindungen mit 
 
 Wenn über Livy eine große Anzahl von Aufträgen übermittelt wird, werden die Sitzungszustände im Rahmen der Hochverfügbarkeit für den Livy-Server in ZooKeeper (in HDInsight-Clustern) gespeichert und wiederhergestellt, wenn der Livy-Dienst neu gestartet wird. Im Falle eines Neustarts nach unerwarteter Beendigung erstellt Livy jeweils einen Thread pro Sitzung. Hierdurch ergibt sich eine bestimmte Anzahl wiederherzustellender Sitzungen, was wiederum zur Erstellung einer zu großen Zahl von Threads führt.
 
-### <a name="resolution"></a>Lösung
+### <a name="resolution"></a>Auflösung
 
 Führen Sie die im Anschluss beschriebenen Schritte aus, um alle Einträge zu löschen.
 

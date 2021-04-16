@@ -10,14 +10,14 @@ ms.date: 03/11/2021
 ms.topic: include
 ms.custom: include file
 ms.author: bertong
-ms.openlocfilehash: 0d142c477e1de2a2a34a8abfd948800cc0b607ee
-ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
+ms.openlocfilehash: 8fe8b853fe07af40603950a61c0dd2a1df74d14e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103622359"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105644365"
 ---
-Steigen Sie in Azure Communication Services ein, indem Sie die JavaScript-Clientbibliothek für SMS von Communication Services nutzen, um SMS-Nachrichten zu senden.
+Steigen Sie ein in Azure Communication Services, indem Sie das JavaScript-SDK für SMS von Communication Services nutzen, um SMS-Nachrichten zu senden.
 
 Im Rahmen dieser Schnellstartanleitung fallen in Ihrem Azure-Konto ggf. geringfügige Kosten im Centbereich an.
 
@@ -57,7 +57,7 @@ Verwenden Sie einen Text-Editor, um im Stammverzeichnis des Projekts die Datei *
 
 ### <a name="install-the-package"></a>Installieren des Pakets
 
-Verwenden Sie den Befehl `npm install`, um die JavaScript-Clientbibliothek für SMS von Azure Communication Services zu installieren.
+Verwenden Sie den Befehl `npm install`, um das Azure Communication Services SMS SDK für JavaScript zu installieren.
 
 ```console
 npm install @azure/communication-sms --save
@@ -67,20 +67,20 @@ Durch die Option `--save` wird die Bibliothek als Abhängigkeit in der Datei **p
 
 ## <a name="object-model"></a>Objektmodell
 
-Die folgenden Klassen und Schnittstellen werden für einige der wichtigsten Features der Node.js-Clientbibliothek für SMS von Azure Communication Services verwendet:
+Die folgenden Klassen und Schnittstellen dienen zur Behandlung einiger der wichtigsten Features des SMS SDK für Node.js von Azure Communication Services.
 
-| Name                                  | Beschreibung                                                  |
+| name                                  | Beschreibung                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
 | SmsClient | Diese Klasse ist für alle SMS-Funktionen erforderlich. Sie instanziieren sie mit Ihren Abonnementinformationen und verwenden sie zum Senden von SMS-Nachrichten. |
-| SmsSendResult               | Diese Klasse enthält das Ergebnis des SMS-Diensts.                                          |
-| SmsSendOptions | Diese Schnittstelle bietet Optionen zum Konfigurieren von Zustellberichten. Ist `enableDeliveryReport` auf `true` festgelegt, wird bei erfolgreicher Zustellung ein Ereignis ausgegeben. |
 | SmsSendRequest | Bei dieser Schnittstelle handelt es sich um das Modell für die Erstellung der SMS-Anforderung (beispielsweise zum Konfigurieren der Ausgangs- und Zieltelefonnummer und des SMS-Inhalts). |
+| SmsSendOptions | Diese Schnittstelle bietet Optionen zum Konfigurieren von Zustellberichten. Ist `enableDeliveryReport` auf `true` festgelegt, wird bei erfolgreicher Zustellung ein Ereignis ausgegeben. |
+| SmsSendResult               | Diese Klasse enthält das Ergebnis des SMS-Diensts.                                          |
 
 ## <a name="authenticate-the-client"></a>Authentifizieren des Clients
 
-Importieren Sie den SMS-Client (**SmsClient**) aus der Clientbibliothek, und instanziieren Sie ihn mit Ihrer Verbindungszeichenfolge. Im folgenden Code wird die Verbindungszeichenfolge für die Ressource aus einer Umgebungsvariablen namens `COMMUNICATION_SERVICES_CONNECTION_STRING` abgerufen. Informationen zur Verwaltung der Verbindungszeichenfolge Ihrer Ressource finden Sie [hier](../../create-communication-resource.md#store-your-connection-string).
+Importieren Sie **SmsClient** aus dem SDK, und instanziieren Sie ihn mit Ihrer Verbindungszeichenfolge. Im folgenden Code wird die Verbindungszeichenfolge für die Ressource aus einer Umgebungsvariablen namens `COMMUNICATION_SERVICES_CONNECTION_STRING` abgerufen. Informationen zur [Verwaltung der Verbindungszeichenfolge Ihrer Ressource](../../create-communication-resource.md#store-your-connection-string).
 
-Fügen Sie **send-sms.js** den folgenden Code hinzu:
+Erstellen und öffnen Sie eine Datei mit dem Namen **send-sms.js**, und fügen Sie folgenden Code hinzu:
 
 ```javascript
 const { SmsClient } = require('@azure/communication-sms');
@@ -95,7 +95,7 @@ const smsClient = new SmsClient(connectionString);
 
 ## <a name="send-a-1n-sms-message"></a>Senden einer SMS: 1:N
 
-Zum Senden einer SMS-Nachricht an eine Empfängerliste rufen Sie über SmsClient die Funktion `send` mit einer Liste der Telefonnummern der Empfänger auf. (Wenn Sie eine Nachricht an einen einzelnen Empfänger senden möchten, fügen Sie nur eine Telefonnummer in die Liste ein.) Fügen Sie am Ende der Methode **send-sms.js** den folgenden Code hinzu:
+Zum Senden einer SMS-Nachricht an eine Empfängerliste rufen Sie über SmsClient die Funktion `send` mit einer Liste der Telefonnummern der Empfänger auf. (Wenn Sie eine Nachricht an einen einzelnen Empfänger senden möchten, fügen Sie nur eine Telefonnummer in die Liste ein.) Fügen Sie am Ende von **send-sms.js** den folgenden Code hinzu:
 
 ```javascript
 async function main() {
@@ -118,7 +118,10 @@ async function main() {
 
 main();
 ```
-Ersetzen Sie `<from-phone-number>` durch eine für SMS geeignete Telefonnummer, die Ihrer Communication Services-Ressource zugeordnet ist, und ersetzen Sie `<to-phone-number>` durch die Telefonnummer, an die Sie eine Nachricht senden möchten.
+Ersetzen Sie `<from-phone-number>` durch eine für SMS geeignete Telefonnummer, die Ihrer Communication Services-Ressource zugeordnet ist, und ersetzen Sie `<to-phone-number-1>` und `<to-phone-number-2>` durch die Telefonnummern, an die Sie eine Nachricht senden möchten.
+
+> [!WARNING]
+> Beachten Sie, dass Telefonnummern im internationalen Standardformat E.164 angegeben werden sollten. (Beispiel: +14255550123).
 
 ## <a name="send-a-1n-sms-message-with-options"></a>Senden einer SMS mit Optionen: 1:N
 
@@ -127,12 +130,12 @@ Sie können auch ein options-Objekt übergeben, um anzugeben, ob der Zustellberi
 ```javascript
 
 async function main() {
-  await smsClient.send({
+  const sendResults = await smsClient.send({
     from: "<from-phone-number>",
     to: ["<to-phone-number-1>", "<to-phone-number-2>"],
     message: "Weekly Promotion!"
   }, {
-    //Optional parameter
+    //Optional parameters
     enableDeliveryReport: true,
     tag: "marketing"
   });
@@ -150,6 +153,11 @@ async function main() {
 
 main();
 ```
+
+Ersetzen Sie `<from-phone-number>` durch eine für SMS geeignete Telefonnummer, die Ihrer Communication Services-Ressource zugeordnet ist, und ersetzen Sie `<to-phone-number-1>` und `<to-phone-number-2>` durch die Telefonnummern, an die Sie eine Nachricht senden möchten.
+
+> [!WARNING]
+> Beachten Sie, dass Telefonnummern im internationalen Standardformat E.164 angegeben werden sollten. (Beispiel: +14255550123).
 
 Der Parameter `enableDeliveryReport` ist ein optionaler Parameter zum Konfigurieren von Zustellberichten. Dies ist in Szenarien hilfreich, in denen Ereignisse ausgegeben werden sollen, wenn SMS-Nachrichten zugestellt wurden. Informationen zum Konfigurieren von Zustellberichten für SMS-Nachrichten finden Sie in der Schnellstartanleitung [Behandeln von SMS-Ereignissen](../handle-sms-events.md).
 `tag` ist ein optionaler Parameter zum Anwenden eines Tags auf den Zustellbericht.

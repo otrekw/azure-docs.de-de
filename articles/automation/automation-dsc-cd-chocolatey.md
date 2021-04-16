@@ -6,12 +6,12 @@ ms.subservice: dsc
 ms.date: 08/08/2018
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: bb5f7b5e8214bd3b04bd7b9544ab4bc589f6c4bf
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 955e6b22c22d9cbe5891bcd0109806cb9270a456
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98896324"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168653"
 ---
 # <a name="set-up-continuous-deployment-with-chocolatey"></a>Einrichten von Continuous Deployment mit Chocolatey
 
@@ -73,8 +73,8 @@ Den vollständigen Quellcode für dieses Anwendungsbeispiel finden Sie in [diese
 An einer authentifizierten (`Connect-AzAccount`) PowerShell-Befehlszeile. (Die Einrichtung des Pullservers kann einige Minuten dauern.)
 
 ```azurepowershell-interactive
-New-AzResourceGroup –Name MY-AUTOMATION-RG –Location MY-RG-LOCATION-IN-QUOTES
-New-AzAutomationAccount –ResourceGroupName MY-AUTOMATION-RG –Location MY-RG-LOCATION-IN-QUOTES –Name MY-AUTOMATION-ACCOUNT
+New-AzResourceGroup -Name MY-AUTOMATION-RG -Location MY-RG-LOCATION-IN-QUOTES
+New-AzAutomationAccount -ResourceGroupName MY-AUTOMATION-RG -Location MY-RG-LOCATION-IN-QUOTES -Name MY-AUTOMATION-ACCOUNT
 ```
 
 Sie können Ihr Automation-Konto in einer der folgenden Regionen (auch als Standort bezeichnet) einrichten: „USA, Osten 2“, „USA, Süden-Mitte“, „US Gov Virginia“, „Europa, Westen“, „Asien, Südosten“, „Japan, Osten“, „Indien, Mitte“, „Australien, Südosten“, „Kanada, Mitte“, „Europa, Norden“.
@@ -103,7 +103,7 @@ Es gibt auch ein manuelles Verfahren, das nur einmal pro Ressource verwendet wir
 2. Installieren Sie das Integrationsmodul.
 
     ```azurepowershell-interactive
-    Install-Module –Name MODULE-NAME`    <—grabs the module from the PowerShell Gallery
+    Install-Module -Name MODULE-NAME`    <—grabs the module from the PowerShell Gallery
     ```
 
 3. Kopieren Sie den Modulordner aus **C:\Programme\WindowsPowerShell\Modules\MODULNAME** in einen temporären Ordner.
@@ -119,7 +119,7 @@ Es gibt auch ein manuelles Verfahren, das nur einmal pro Ressource verwendet wir
     ```azurepowershell-interactive
     New-AzAutomationModule `
       -ResourceGroupName MY-AUTOMATION-RG -AutomationAccountName MY-AUTOMATION-ACCOUNT `
-      -Name MODULE-NAME –ContentLinkUri 'https://STORAGE-URI/CONTAINERNAME/MODULE-NAME.zip'
+      -Name MODULE-NAME -ContentLinkUri 'https://STORAGE-URI/CONTAINERNAME/MODULE-NAME.zip'
     ```
 
 Im enthaltenen Beispiel werden diese Schritte für cChoco und xNetworking implementiert. 
@@ -175,18 +175,18 @@ Dies ist das Skript **New-ConfigurationScript.ps1** (für die Verwendung des Az-
 
 ```powershell
 Import-AzAutomationDscConfiguration `
-    -ResourceGroupName MY-AUTOMATION-RG –AutomationAccountName MY-AUTOMATION-ACCOUNT `
+    -ResourceGroupName MY-AUTOMATION-RG -AutomationAccountName MY-AUTOMATION-ACCOUNT `
     -SourcePath C:\temp\AzureAutomationDsc\ISVBoxConfig.ps1 `
-    -Published –Force
+    -Published -Force
 
 $jobData = Start-AzAutomationDscCompilationJob `
-    -ResourceGroupName MY-AUTOMATION-RG –AutomationAccountName MY-AUTOMATION-ACCOUNT `
+    -ResourceGroupName MY-AUTOMATION-RG -AutomationAccountName MY-AUTOMATION-ACCOUNT `
     -ConfigurationName ISVBoxConfig
 
 $compilationJobId = $jobData.Id
 
 Get-AzAutomationDscCompilationJob `
-    -ResourceGroupName MY-AUTOMATION-RG –AutomationAccountName MY-AUTOMATION-ACCOUNT `
+    -ResourceGroupName MY-AUTOMATION-RG -AutomationAccountName MY-AUTOMATION-ACCOUNT `
     -Id $compilationJobId
 ```
 

@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: keli19
 author: likebupt
-ms.date: 04/06/2020
+ms.date: 03/06/2021
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 6efb0f095f8a157f723a3b7c0c2b229546ebb36b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ed5f59fc1d751f92a7c016aa3586497659f778fd
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97708465"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105962950"
 ---
 # <a name="use-pipeline-parameters-to-retrain-models-in-the-designer"></a>Verwenden von Pipelineparametern zum erneuten Trainieren von Modellen im Designer
 
@@ -120,3 +120,5 @@ Sie benötigen einen OAuth 2.0-Authentifizierungsheader vom Typ Bearer, um einen
 In diesem Artikel haben Sie erfahren, wie Sie mit dem Designer einen parametrisierten Trainingspipelineendpunkt erstellen können.
 
 Eine vollständige exemplarische Vorgehensweise, wie Sie ein Modell bereitstellen können, um Vorhersagen zu treffen, finden Sie im [Designer-Tutorial](tutorial-designer-automobile-price-train-score.md) zum Trainieren und Bereitstellen eines Regressionsmodells.
+
+Informationen zum Veröffentlichen und übermitteln eines Run-to-Pipeline-Endpunkts mithilfe des SDK finden Sie in [diesem Artikel](how-to-deploy-pipelines.md).

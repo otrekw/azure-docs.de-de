@@ -6,12 +6,13 @@ ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/30/2020
-ms.openlocfilehash: 9fb6e94062639d32707f52f66e0b99531884a636
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.custom: synapse-cosmos-db
+ms.openlocfilehash: d871a33b6d8adbae179e592122878eee5db1c0b5
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101692265"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104869003"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>Häufig gestellte Fragen zu Azure Synapse Link für Azure Cosmos DB
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -33,6 +34,10 @@ Wenn Sie die Konfiguration eines Azure Cosmos DB-Kontos in mehreren Regionen mi
 ### <a name="can-i-choose-to-enable-azure-synapse-link-for-only-certain-region-and-not-all-regions-in-a-multi-region-account-set-up"></a>Kann ich auswählen, dass Azure Synapse Link in einem Konto mit mehreren Regionen nur für eine bestimmte Region und nicht für alle Regionen eingerichtet werden soll?
 
 Wenn Azure Synapse Link für ein Konto mit mehreren Regionen aktiviert ist, wird der Analysespeicher in allen Regionen erstellt. Die zugrunde liegenden Daten sind für Durchsatz und Transaktionskonsistenz im Transaktionsspeicher optimiert.
+
+### <a name="is-analytical-store-supported-in-all-azure-cosmos-db-regions"></a>Wird der Analysespeicher in allen Azure Cosmos DB-Regionen unterstützt?
+
+Ja.
 
 ### <a name="is-backup-and-restore-supported-for-azure-synapse-link-enabled-accounts"></a>Wird die Sicherung und Wiederherstellung für Konten mit aktiviertem Azure Synapse Link unterstützt?
 
@@ -165,6 +170,10 @@ Diese Funktion ist derzeit nicht verfügbar.
 ### <a name="can-i-do-spark-structured-streaming-from-analytical-store"></a>Kann ich strukturiertes Spark-Streaming aus dem Analysespeicher durchführen?
 
 Die Unterstützung für strukturiertes Spark-Streaming für Azure Cosmos DB wird derzeit mithilfe der Änderungsfeedfunktion des Transaktionsspeichers implementiert. Im Analysespeicher wird dies noch nicht unterstützt.
+
+### <a name="is-streaming-supported"></a>Wird das Streaming unterstützt?
+
+Das Streamen von Daten aus dem Analysespeicher wird nicht unterstützt.
 
 ## <a name="azure-synapse-studio"></a>Azure Synapse Studio
 

@@ -5,14 +5,14 @@ services: vpn-gateway
 author: chadmath
 ms.service: vpn-gateway
 ms.topic: troubleshooting
-ms.date: 09/16/2019
+ms.date: 03/22/2021
 ms.author: genli
-ms.openlocfilehash: 674b8ab8266921a4eef8bbf212f3c556b1e587d7
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: cebb05b35379573fc9797e89dee3c0c2bf3de6e2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658348"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104867286"
 ---
 # <a name="troubleshooting-an-azure-site-to-site-vpn-connection-cannot-connect-and-stops-working"></a>Problembehandlung: Azure-Site-to-Site-VPN-Verbindung kann nicht hergestellt werden und reagiert nicht mehr
 
@@ -46,7 +46,7 @@ Vergleichen Sie den gemeinsam verwendeten Schlüssel des lokalen VPN-Geräts und
 
 Verwenden Sie zum Anzeigen des gemeinsamen Schlüssels für die Azure-VPN-Verbindung eine der folgenden Methoden:
 
-**Azure portal**
+**Azure-Portal**
 
 1. Gehen Sie zu der von Ihnen erstellen VPN-Gateway-Site-to-Site-Verbindung.
 
@@ -70,7 +70,7 @@ Für das klassische Bereitstellungsmodell:
 Get-AzureVNetGatewayKey -VNetName -LocalNetworkSiteName
 ```
 
-### <a name="step-3-verify-the-vpn-peer-ips"></a>Schritt 3: Überprüfen Sie die VPN-Peer-IP-Adressen
+### <a name="step-3-verify-the-vpn-peer-ips"></a>Schritt 3: Überprüfen Sie die VPN-Peer-IP-Adressen
 
 -   Die IP-Definition im Objekt **Lokales Netzwerkgateway** in Azure muss mit der IP-Adresse des lokalen Geräts übereinstimmen.
 -   Die Azure-Gateway-IP-Definition, die auf dem lokalen Gerät festgelegt ist, muss der Azure-Gateway-IP-Adresse entsprechen.
@@ -81,9 +81,7 @@ Suchen und Entfernen Sie benutzerdefiniertes routing (UDR) oder Netzwerksicherhe
 
 ### <a name="step-5-check-the-on-premises-vpn-device-external-interface-address"></a>Schritt 5: Überprüfen der Adresse der externen Schnittstelle des lokalen VPN-Geräts
 
-- Wenn die IP-Adresse des VPN-Geräts mit Internetzugriff in der Definition **Lokales Netzwerk** in Azure enthalten ist, kann es vereinzelt zur Trennung der Verbindung kommen.
-- Die externe Schnittstelle des Geräts muss sich direkt im Internet befinden. Es darf sich keine Netzwerkadressübersetzung oder Firewall zwischen dem Internet und dem Gerät befinden.
-- Um Firewallclustering konfigurieren, um über eine virtuelle IP-Adresse zu verfügen, müssen Sie den Cluster unterbrechen und das VPN-Gerät direkt an eine öffentliche Schnittstelle anschließen, mit der das Gateway kompatibel ist.
+Wenn die IP-Adresse des VPN-Geräts mit Internetzugriff in der Definition **Lokales Netzwerk** in Azure enthalten ist, kann es vereinzelt zur Trennung der Verbindung kommen.
 
 ### <a name="step-6-verify-that-the-subnets-match-exactly-azure-policy-based-gateways"></a>Schritt 6: Überprüfen, ob die Subnetze genau übereinstimmen (Auf Azure-Richtlinien basierende Gateways)
 
@@ -110,5 +108,5 @@ Die Funktion Perfect Forward Secrecy kann die Probleme mit der Trennung der Verb
 
 ## <a name="next-steps"></a>Nächste Schritte
 
--   [Erstellen einer Site-to-Site-Verbindung im Azure-Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+-   [Erstellen einer Site-to-Site-Verbindung im Azure-Portal](./tutorial-site-to-site-portal.md)
 -   [Konfigurieren einer IPsec/IKE-Richtlinie für Site-to-Site-VPN-Verbindungen](vpn-gateway-ipsecikepolicy-rm-powershell.md)

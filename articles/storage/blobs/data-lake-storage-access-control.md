@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: d8ef616ef059424846d5c42a91262881b8f6d30b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 50c6b4f309eb78acee0cfa59d1b540adba65cab2
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101701806"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104774812"
 ---
 # <a name="access-control-lists-acls-in-azure-data-lake-storage-gen2"></a>Zugriffssteuerungslisten (ACLs) in Azure Data Lake Storage Gen2
 
@@ -40,6 +40,7 @@ Informationen zum Festlegen von Berechtigungen auf Datei- und Verzeichnisebene f
 |.NET |[Verwenden von .NET zum Festlegen von Zugriffssteuerungslisten in Azure Data Lake Storage Gen2](data-lake-storage-acl-dotnet.md)|
 |Java|[Verwenden von Java zum Festlegen von Zugriffssteuerungslisten in Azure Data Lake Storage Gen2](data-lake-storage-acl-java.md)|
 |Python|[Verwenden von Python zum Festlegen von Zugriffssteuerungslisten in Azure Data Lake Storage Gen2](data-lake-storage-acl-python.md)|
+|JavaScript (Node.js)|[Verwenden des JavaScript SDKs in Node.js zum Festlegen von Zugriffssteuerungslisten in Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-javascript.md)|
 |PowerShell|[Verwenden von PowerShell zum Verwalten von Zugriffssteuerungslisten in Azure Data Lake Storage Gen2](data-lake-storage-acl-powershell.md)|
 |Azure CLI|[Verwenden der Azure-Befehlszeilenschnittstelle zum Festlegen von Zugriffssteuerungslisten in Azure Data Lake Storage Gen2](data-lake-storage-acl-cli.md)|
 |REST-API |[Pfad – Aktualisierung](/rest/api/storageservices/datalakestoragegen2/path/update)|
@@ -285,7 +286,7 @@ Azure-Rollenzuweisungen werden vererbt. Zuweisungen werden aus Abonnement-, Ress
 
 ### <a name="does-data-lake-storage-gen2-support-inheritance-of-acls"></a>Unterstützt Data Lake Storage Gen2 die Vererbung von ACLs?
 
-Standard-ACLs können zum Festlegen von ACLs für neue untergeordnete Unterverzeichnisse und Dateien verwendet werden, die im übergeordneten Verzeichnis erstellt wurden. Zum Aktualisieren von ACLs für vorhandene untergeordnete Elemente müssen Sie ACLs für die gewünschte Verzeichnishierarchie rekursiv hinzufügen, aktualisieren oder entfernen. Weitere Informationen finden Sie unter [Festlegen von Zugriffssteuerungslisten (ACLs) für Azure Data Lake Storage Gen2](#set-access-control-lists). 
+Standard-ACLs können zum Festlegen von ACLs für neue untergeordnete Unterverzeichnisse und Dateien verwendet werden, die im übergeordneten Verzeichnis erstellt wurden. Zum Aktualisieren von ACLs für vorhandene untergeordnete Elemente müssen Sie ACLs für die gewünschte Verzeichnishierarchie rekursiv hinzufügen, aktualisieren oder entfernen. Eine Anleitung hierzu finden Sie in diesem Artikel im Abschnitt [Festlegen von ACLs](#set-access-control-lists). 
 
 ### <a name="which-permissions-are-required-to-recursively-delete-a-directory-and-its-contents"></a>Welche Berechtigungen werden zum rekursiven Löschen eines Verzeichnisses und seines Inhalts benötigt?
 

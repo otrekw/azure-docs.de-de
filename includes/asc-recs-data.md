@@ -2,17 +2,17 @@
 author: memildin
 ms.service: security-center
 ms.topic: include
-ms.date: 03/14/2021
+ms.date: 03/29/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: fe1b9fc8754ae959abf088526b5d71e0e43c158e
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.openlocfilehash: 164c5e199bcb17dfe7a8ce92b169b26ecd389703
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103466185"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105958014"
 ---
-Diese Kategorie enthält **64** Empfehlungen.
+Diese Kategorie enthält **65** Empfehlungen.
 
 |Empfehlung |BESCHREIBUNG |severity |
 |---|---|---|
@@ -24,6 +24,7 @@ Diese Kategorie enthält **64** Empfehlungen.
 |Die Aufbewahrung der Überprüfung für SQL-Server sollte auf mindestens 90 Tage festgelegt sein |Hiermit werden SQL Server-Instanzen überwacht, die mit einer Überwachungsaufbewahrungsdauer von weniger als 90 Tagen konfiguriert sind.<br />(Zugehörige Richtlinie: [SQL Server-Instanzen müssen mit einer Aufbewahrungsdauer von 90 Tagen oder mehr konfiguriert werden](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f89099bee-89e0-4b26-a5f4-165451757743)) |Niedrig |
 |Die Überwachung in SQL Server muss aktiviert werden. |Aktivieren Sie die Überwachung für Ihre SQL Server-Instanz, um Datenbankaktivitäten in allen Datenbanken auf dem Server nachzuverfolgen und in einem Überwachungsprotokoll zu speichern.<br />(Zugehörige Richtlinie: [Die Überwachung in SQL Server muss aktiviert werden](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fa6fb4358-5bf4-4ad7-ba82-2cd2f41ce5e9)) |Niedrig |
 |Für Ihr Abonnement sollte die automatische Bereitstellung des Log Analytics-Agents aktiviert sein. |Azure Security Center sammelt Daten von Ihren Azure-VMs, um diese auf Sicherheitslücken und Bedrohungen zu überwachen. Die Daten werden mit dem Log Analytics-Agent (ehemals Microsoft Monitoring Agent, MMA) gesammelt. Der Agent liest verschiedene sicherheitsrelevante Konfigurationen und Ereignisprotokolle auf dem Computer und kopiert die Daten zur Analyse in den Log Analytics-Arbeitsbereich. Wir empfehlen Ihnen, die automatische Bereitstellung zu aktivieren, damit der Agent auf allen unterstützten und allen neu erstellten Azure-VMs automatisch bereitgestellt wird.<br />(Zugehörige Richtlinie: [Für Ihr Abonnement muss die automatische Bereitstellung des Log Analytics-Agents aktiviert sein](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f475aae12-b88a-4572-8b36-9b712b2b3a17)) |Niedrig |
+|Für Azure Arc-fähige Kubernetes-Cluster muss die Azure Defender-Erweiterung installiert sein |Die Azure Defender-Erweiterung für Azure Arc bietet Bedrohungsschutz für Ihre Arc-fähigen Kubernetes-Cluster. Die Erweiterung sammelt Daten aus allen Knoten der Steuerungsebene (Master) im Cluster und sendet sie zur weiteren Analyse an das Azure Defender für Kubernetes-Back-End in der Cloud. Weitere Informationen finden Sie unter https://docs.microsoft.com/azure/security-center/defender-for-kubernetes-azure-arc.<br />(Keine zugehörige Richtlinie) |High |
 |Azure Cache for Redis muss sich in einem virtuellen Netzwerk befinden. |Die Bereitstellung von Azure Virtual Network (VNet) bietet erweiterte Sicherheit und Isolierung für Ihre Azure Cache for Redis-Instanz sowie Subnetze, Zugriffskontrollrichtlinien und andere Funktionen zur weiteren Einschränkung des Zugriffs. Wenn eine Azure Cache for Redis-Instanz mit einem VNet konfiguriert ist, kann sie nicht öffentlich adressiert, sondern nur von VMs und Anwendungen innerhalb des VNet aufgerufen werden.<br />(Zugehörige Richtlinie: [Azure Cache for Redis muss sich in einem virtuellen Netzwerk befinden](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f7d092e0a-7acd-40d2-a975-dca21cae48c4)) |Medium |
 |Azure Cosmos DB-Konten müssen über Firewallregeln verfügen. |Für Ihre Azure Cosmos DB Konten sollten Firewallregeln definiert werden, um Datenverkehr von nicht autorisierten Quellen zu verhindern. Konten, für die mindestens eine IP-Regel mit aktiviertem VNET-Filter definiert ist, werden als konform eingestuft. Konten, die den öffentlichen Zugriff deaktivieren, werden ebenfalls als konform eingestuft.<br />(Zugehörige Richtlinie: [Azure Cosmos DB-Konten sollten Firewallregeln aufweisen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f862e97cf-49fc-4a5c-9de4-40d4e2e7c8eb)) |Medium |
 |Azure Cosmos DB-Konten sollten kundenseitig verwaltete Schlüssel zur Verschlüsselung ruhender Daten verwenden. |Verwenden Sie kundenseitig verwaltete Schlüssel, um die Verschlüsselung ruhender Daten Ihrer Azure Cosmos DB-Instanzen zu verwalten. Standardmäßig werden die Daten im Ruhezustand mit dienstseitig verwalteten Schlüsseln verschlüsselt. Kundenseitig verwaltete Schlüssel (Customer-Managed Key, CMK) sind jedoch häufig zur Einhaltung gesetzlicher Bestimmungen erforderlich. Mit CMKs können die Daten mit einem Azure Key Vault-Schlüssel verschlüsselt werden, der von Ihnen erstellt wird und sich in Ihrem Besitz befindet. Sie verfügen über die volle Kontrolle über und Verantwortung für den Schlüssellebenszyklus, einschließlich Rotation und Verwaltung. Weitere Informationen zur CMK-Verschlüsselung finden Sie unter https://aka.ms/cosmosdb-cmk.<br />(Zugehörige Richtlinie: [Azure Cosmos DB-Konten müssen kundenseitig verwaltete Schlüssel zur Verschlüsselung ruhender Daten verwenden](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f1f905d99-2ab7-462c-a6b0-f709acca6c8f)) |High |

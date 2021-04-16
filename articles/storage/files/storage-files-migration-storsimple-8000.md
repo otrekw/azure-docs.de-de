@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 814a2f7e32f173111e45fff02f00c3e4d2a9a670
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 1d2de439e661ef5b1d1669187355621f25400bc4
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103601082"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075576"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100- und 8600-Migration zur Azure-Dateisynchronisierung
 
@@ -65,11 +65,11 @@ Als Sie Ihr StorSimple-Gerät erstmalig eingerichtet haben, wurde ein Dienstdate
 
 Der Dienstdatenverschlüsselungs-Schlüssel ist für eine erfolgreiche Migration erforderlich. Daher ist es nun erforderlich, dass Sie diesen Schlüssel für jedes der Geräte in Ihrem Bestand aus Ihren Aufzeichnungen abrufen.
 
-Sollten Sie den jeweiligen Schlüssel nicht in Ihren Aufzeichnungen finden, können Sie ihn vom Gerät abrufen. Jedes Gerät hat einen eindeutigen Verschlüsselungsschlüssel. Rufen Sie den Schlüssel wie folgt ab:
+Wenn Sie die Schlüssel in Ihren Aufzeichnungen nicht finden können, können Sie einen neuen Schlüssel aus der Appliance generieren. Jedes Gerät hat einen eindeutigen Verschlüsselungsschlüssel.
 
-* Senden Sie eine Supportanfrage mit Microsoft Azure über die Azure-Portal. Die Anforderung sollte die Seriennummer(n) Ihres StorSimple-Geräts und eine Anforderung zum Abrufen des „Dienstdatenverschlüsselungs-Schlüssels“ enthalten.
-* Ein StorSimple-Supporttechniker wird Kontakt mit Ihnen aufnehmen und Sie auffordern, eine virtuelle Sitzung einzurichten.
-* Stellen Sie vor Beginn der Sitzung [über eine serielle Konsole](../../storsimple/storsimple-8000-windows-powershell-administration.md#connect-to-windows-powershell-for-storsimple-via-the-device-serial-console) oder über eine [Remote-PowerShell-Sitzung](../../storsimple/storsimple-8000-windows-powershell-administration.md#connect-remotely-to-storsimple-using-windows-powershell-for-storsimple) eine Verbindung mit Ihrer StorSimple-Appliance her.
+#### <a name="change-the-service-data-encryption-key"></a>Ändern des Verschlüsselungsschlüssels für Dienstdaten
+
+[!INCLUDE [storage-files-migration-generate-key](../../../includes/storage-files-migration-generate-key.md)]
 
 > [!CAUTION]
 > Bei der Entscheidung, wie Sie die Verbindung mit Ihrer StorSimple-Appliance herstellen, sollten Sie Folgendes beachten:

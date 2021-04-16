@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: overview
 ms.date: 09/14/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 36a15560b88c823ff2ae41f160839796bf21e4f8
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+manager: femila
+ms.openlocfilehash: 7e14dbf5aab68f5ea2d96274606306378feedad2
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98730784"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106445991"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Was ist Windows Virtual Desktop?
 
@@ -124,7 +124,7 @@ Weitere Informationen zu URLs, die Sie für die Verwendung der Clients entsperre
 Windows Virtual Desktop unterstützt die folgenden Images von x64-Betriebssystemen:
 
 * Windows 10 Enterprise mit mehreren Sitzungen, Version 1809 oder höher
-* Windows 10 Enterprise, Version 1809 oder höher
+* Windows 10 Enterprise, Version 1809 oder höher (nur halbjährlicher Kanal)
 * Windows 7 Enterprise
 * Windows Server 2019
 * Windows Server 2016

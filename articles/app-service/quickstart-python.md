@@ -9,19 +9,16 @@ adobe-target: true
 adobe-target-activity: DocsExp–377467–A/B– Quickstarts/Python App–12.11
 adobe-target-experience: Experience B
 adobe-target-content: ./quickstart-python-1
-ms.openlocfilehash: 36c1b112127fadd5149c62a92ca469322db65edd
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7fa0939dabdef27366d6c5d211a4d9879046c681
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104592352"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106382663"
 ---
 # <a name="quickstart-create-a-python-app-using-azure-app-service-on-linux"></a>Schnellstart: Erstellen einer Python-App mithilfe von Azure App Service für Linux
 
-In diesem Schnellstart stellen Sie eine Python-Web-App für [App Service für Linux](overview.md#app-service-on-linux) bereit. Dies ist der überaus skalierbare Webhostingdienst von Azure mit automatisiertem Patchen. Sie verwenden die lokale [Azure-Befehlszeilenschnittstelle (CLI)](/cli/azure/install-azure-cli) auf einem Macintosh-, Linux- oder Windows-Computer, um ein Beispiel mit dem Flask- oder Django-Framework bereitzustellen. Die Web-App, die Sie konfigurieren, nutzt einen kostenlosen App-Service-Tarif, sodass Ihnen im Laufe dieses Artikels keine Kosten entstehen.
-
-> [!TIP]
-> Falls Sie die Verwendung von Visual Studio Code vorziehen, sollten Sie **[Tutorial: Bereitstellen von Python-Apps in Azure App Service für Linux aus Visual Studio Code](/azure/developer/python/tutorial-deploy-app-service-on-linux-01)** durcharbeiten.
+In diesem Schnellstart stellen Sie eine Python-Web-App für [App Service für Linux](overview.md#app-service-on-linux) bereit. Dies ist der überaus skalierbare Webhostingdienst von Azure mit automatisiertem Patchen. Sie verwenden die lokale [Azure-Befehlszeilenschnittstelle (CLI)](/cli/azure/install-azure-cli) auf einem Macintosh-, Linux- oder Windows-Computer, um ein Beispiel mit dem Flask- oder Django-Framework bereitzustellen. Die Web-App, die Sie konfigurieren, verwendet eine grundlegende App Service-Ebene, die in Ihrem Azure-Abonnement geringe Kosten verursacht.
 
 ## <a name="set-up-your-initial-environment"></a>Einrichten der anfänglichen Umgebung
 

@@ -5,7 +5,7 @@ description: In diesem Artikel wird beschrieben, wie die Tasks in der Erweiterun
 author: sukhans
 manager: sukhans
 ms.author: terrylan
-ms.date: 07/31/2019
+ms.date: 03/22/2021
 ms.topic: article
 ms.service: security
 services: azure
@@ -13,14 +13,17 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 4016e1dd055b45f9cd59a172d0e71ef95fec1c40
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ad395e1b782edb28845bb7db0607d2bab5b5697c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96008683"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104802011"
 ---
 # <a name="configure-and-customize-the-build-tasks"></a>Konfigurieren und Anpassen der Buildtasks
+
+> [!Note]
+> Ab dem 1. März 2022 wird die Erweiterung für die Microsoft-Sicherheitscodeanalyse (Microsoft Security Code Analysis, MSCA) eingestellt. MSCA-Kunden behalten ihren Zugriff auf die MSCA bis zum 1. März 2022. Das [OWASP-Tool für die Quellcodeanalyse](https://owasp.org/www-community/Source_Code_Analysis_Tools) bietet alternative Möglichkeiten in Azure DevOps. Kunden, die eine Migration zu GitHub planen, können sich über [GitHub Advanced Security](https://docs.github.com/github/getting-started-with-github/about-github-advanced-security) informieren.
 
 In diesem Artikel werden die in den einzelnen Buildtasks verfügbaren Konfigurationsoptionen ausführlich beschrieben. Zunächst werden in diesem Artikel die Tasks für die Tools der Sicherheitscodeanalyse erläutert. Zum Schluss werden die Tasks für die Nachbearbeitung beschrieben.
 

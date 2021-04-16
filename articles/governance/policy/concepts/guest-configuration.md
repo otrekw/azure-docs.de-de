@@ -3,14 +3,15 @@ title: Informationen zum Überwachen der Inhalte virtueller Computer
 description: Hier erfahren Sie, wie Azure Policy mithilfe des Gastkonfigurationsclients Einstellungen in VMs überwacht.
 ms.date: 01/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: 5d1503680ea2ca7d0ff7c8adae19c05abfe441c0
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: a18f230c1b7b1eb2c953542e276127f4f47cbb39
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100104806"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802521"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Informationen zu Guest Configuration von Azure Policy
+
 
 Mit Azure Policy können Einstellungen innerhalb eines Computers überwacht werden. Dies gilt für in Azure ausgeführte Computer sowie für [über Arc verbundene Computer](../../../azure-arc/servers/overview.md). Für die Überprüfung verwenden Sie die Erweiterung und den Client Guest Configuration. Die Erweiterung überprüft über den Client u. a. die folgenden Einstellungen:
 
@@ -20,13 +21,15 @@ Mit Azure Policy können Einstellungen innerhalb eines Computers überwacht werd
 
 Derzeit wird für die meisten Richtliniendefinitionen der Azure Policy-Gastkonfiguration nur eine Überprüfung der Einstellungen auf dem Computer durchgeführt. Es werden keine Konfigurationen angewendet. Eine Ausnahme ist hierbei eine integrierte Richtlinie, die [weiter unten beschrieben ist](#applying-configurations-using-guest-configuration).
 
+[Für dieses Dokument ist ein Video zur exemplarischen Vorgehensweise verfügbar](https://youtu.be/Y6ryD3gTHOs).
+
 ## <a name="enable-guest-configuration"></a>Aktivieren der Gastkonfiguration
 
 Überprüfen Sie die folgenden Details, um den Status von Computern in Ihrer Umgebung zu überwachen, einschließlich Computern in Azure und über Arc verbundener Computer.
 
 ## <a name="resource-provider"></a>Ressourcenanbieter
 
-Bevor Sie Guest Configuration verwenden können, müssen Sie den Ressourcenanbieter registrieren. Der Ressourcenanbieter wird automatisch registriert, wenn die Zuweisung einer Guest Configuration-Richtlinie über das Portal erfolgt. Hierfür können Sie über das [Portal](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal), die [Azure PowerShell](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-powershell) oder [Azure CLI](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-cli) manuell registrieren.
+Bevor Sie Guest Configuration verwenden können, müssen Sie den Ressourcenanbieter registrieren. Wenn die Zuweisung einer Gastkonfigurationsrichtlinie über das Portal erfolgt oder das Abonnement in Azure Security Center registriert ist, wird der Ressourcenanbieter automatisch registriert. Hierfür können Sie über das [Portal](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal), die [Azure PowerShell](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-powershell) oder [Azure CLI](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-cli) manuell registrieren.
 
 ## <a name="deploy-requirements-for-azure-virtual-machines"></a>Bereitstellen von Anforderungen für virtuelle Azure-Computer
 
@@ -54,7 +57,7 @@ In der folgenden Tabelle sind die lokalen Tools aufgeführt, die unter den jewei
 
 ### <a name="validation-frequency"></a>Validierungshäufigkeit
 
-Der Guest Configuration-Client prüft alle 5 Minuten, ob neuer Inhalt vorliegt. Nachdem eine Gastzuweisung empfangen wurde, werden die Einstellungen für diese Konfiguration alle 15 Minuten erneut überprüft. Die Ergebnisse werden an den Guest Configuration-Ressourcenanbieter gesendet, wenn die Überwachung abgeschlossen ist. Wenn eine [Auswertungsauslöser](../how-to/get-compliance-data.md#evaluation-triggers)-Richtlinie auftritt, wird der Zustand des Computers an den Guest Configuration-Ressourcenanbieter geschrieben. Dieses Update bewirkt, dass Azure Policy die Azure Resource Manager-Eigenschaften auswertet. Eine bedarfsgesteuerte Auswertung durch Azure Policy ruft den aktuellen Wert beim Guest Configuration-Ressourcenanbieter ab. Es wird jedoch keine neue Überwachung der Konfiguration auf dem Computer ausgelöst.
+Der Guest Configuration-Client überprüft alle 5 Minuten, ob Gastzuweisungen hinzugefügt oder geändert wurden. Nachdem eine Gastzuweisung empfangen wurde, werden die Einstellungen für diese Konfiguration alle 15 Minuten erneut überprüft. Die Ergebnisse werden an den Guest Configuration-Ressourcenanbieter gesendet, wenn die Überwachung abgeschlossen ist. Wenn eine [Auswertungsauslöser](../how-to/get-compliance-data.md#evaluation-triggers)-Richtlinie auftritt, wird der Zustand des Computers an den Guest Configuration-Ressourcenanbieter geschrieben. Dieses Update bewirkt, dass Azure Policy die Azure Resource Manager-Eigenschaften auswertet. Eine bedarfsgesteuerte Auswertung durch Azure Policy ruft den aktuellen Wert beim Guest Configuration-Ressourcenanbieter ab. Es wird jedoch keine neue Überwachung der Konfiguration auf dem Computer ausgelöst. Der Status wird gleichzeitig in Azure Resource Graph geschrieben.
 
 ## <a name="supported-client-types"></a>Unterstützte Clienttypen
 
@@ -62,13 +65,13 @@ Richtliniendefinitionen der Gastkonfiguration enthalten die neuen Versionen. Äl
 
 |Herausgeber|Name|Versionen|
 |-|-|-|
-|Canonical|Ubuntu Server|14.04–18.04|
-|Credativ|Debian|8 und höher|
-|Microsoft|Windows Server|2012 und höher|
+|Canonical|Ubuntu Server|14.04–20.04|
+|Credativ|Debian|8–10|
+|Microsoft|Windows Server|2012–2019|
 |Microsoft|Windows-Client|Windows 10|
-|OpenLogic|CentOS|7.3 und höher|
-|Red Hat|Red Hat Enterprise Linux|7.4 bis 7.8|
-|Suse|SLES|12 SP3-SP5|
+|OpenLogic|CentOS|7.3–8|
+|Red Hat|Red Hat Enterprise Linux|7.4–8|
+|Suse|SLES|12 SP3–SP5, 15|
 
 Benutzerdefinierte Images von virtuellen Computern werden von Richtliniendefinitionen der Gastkonfiguration unterstützt, sofern es sich um eines der Betriebssysteme in der obigen Tabelle handelt.
 
@@ -114,9 +117,26 @@ Die Richtliniendefinitionen der Gastkonfiguration verwenden den Effekt **AuditIf
 Die **AuditIfNotExists**-Richtliniendefinitionen geben erst dann Konformitätsergebnisse zurück, wenn alle Anforderungen auf dem Computer erfüllt sind. Eine Beschreibung der Anforderungen finden Sie im Abschnitt [Bereitstellen von Anforderungen für virtuelle Azure-Computer](#deploy-requirements-for-azure-virtual-machines).
 
 > [!IMPORTANT]
-> In einem früheren Release der Gastkonfiguration war eine Initiative erforderlich, um die Definitionen **DeployIfNoteExists** und **AuditIfNotExists** zu kombinieren. **DeployIfNotExists**-Definitionen sind nicht mehr erforderlich. Die Definitionen und Initiaitiven sind als `[Deprecated]` gekennzeichnet, aber vorhandene Zuweisungen funktionieren weiterhin. Informationen finden Sie in folgendem Blogbeitrag: [Wichtige Änderung für Überwachungsrichtlinien für Gastkonfigurationen](https://techcommunity.microsoft.com/t5/azure-governance-and-management/important-change-released-for-guest-configuration-audit-policies/ba-p/1655316)
+> In einem früheren Release der Gastkonfiguration war eine Initiative erforderlich, um die Definitionen **DeployIfNoteExists** und **AuditIfNotExists** zu kombinieren. **DeployIfNotExists**-Definitionen sind nicht mehr erforderlich. Die Definitionen und Initiativen sind als `[Deprecated]` gekennzeichnet, aber vorhandene Zuweisungen funktionieren weiterhin. Informationen finden Sie in folgendem Blogbeitrag: [Wichtige Änderung für Überwachungsrichtlinien für Gastkonfigurationen](https://techcommunity.microsoft.com/t5/azure-governance-and-management/important-change-released-for-guest-configuration-audit-policies/ba-p/1655316)
 
-Azure Policy verwendet die Eigenschaft **complianceStatus** des Gastkonfigurations-Ressourcenanbieters, um die Konformität im Knoten **Konformität** zu melden. Weitere Informationen finden Sie unter [Abrufen von Konformitätsdaten](../how-to/get-compliance-data.md).
+### <a name="what-is-a-guest-assignment"></a>Was ist eine Gastzuweisung?
+
+Wenn eine Azure Policy-Richtlinie zugewiesen ist, enthält die Kategorie „Gastkonfiguration“ Metadaten, die eine Gastzuweisung beschreiben.
+Sie können sich eine Gastzuweisung als Verknüpfung zwischen einem Computer und einem Azure Policy-Szenario vorstellen.
+Beispielsweise ordnet der folgende Codeausschnitt allen Computern im Geltungsbereich der Richtlinie die Azure Windows-Baselinekonfiguration mit der Mindestversion `1.0.0` zu. Standardmäßig wird von der Gastzuweisung nur eine Überwachung des Computers durchgeführt.
+
+```json
+"metadata": {
+    "category": "Guest Configuration",
+    "guestConfiguration": {
+        "name": "AzureWindowsBaseline",
+        "version": "1.*"
+    }
+//additional metadata properties exist
+```
+
+Gastzuweisungen werden vom Gastkonfigurationsdienst automatisch pro Computer erstellt. Der Ressourcentyp lautet `Microsoft.GuestConfiguration/guestConfigurationAssignments`.
+Azure Policy verwendet die **complianceStatus**-Eigenschaft der Gastzuweisungsressource, um den Konformitätsstatus zu melden. Weitere Informationen finden Sie unter [Abrufen von Konformitätsdaten](../how-to/get-compliance-data.md).
 
 #### <a name="auditing-operating-system-settings-following-industry-baselines"></a>Überwachen von Betriebssystemeinstellungen anhand von Branchenrichtlinien
 
@@ -201,6 +221,12 @@ Beispiele für integrierte Gastkonfigurationsrichtlinien finden Sie unter:
 - [Integrierte Richtliniendefinitionen: Gastkonfiguration](../samples/built-in-policies.md#guest-configuration)
 - [Integrierte Initiativen: Gastkonfiguration](../samples/built-in-initiatives.md#guest-configuration)
 - [Azure Policy-Beispiele: GitHub-Repository](https://github.com/Azure/azure-policy/tree/master/built-in-policies/policySetDefinitions/Guest%20Configuration)
+
+### <a name="video-overview"></a>Videoübersicht
+
+Die folgende Übersicht über die Azure Policy-Gastkonfiguration stammt aus den ITOps Talks 2021.
+
+[Governing baselines in hybrid server environments using Azure Policy Guest Configuration](https://techcommunity.microsoft.com/t5/itops-talk-blog/ops114-governing-baselines-in-hybrid-server-environments-using/ba-p/2109245)(Steuern von Baselines in Hybridserverumgebungen mit der Azure Policy-Gastkonfiguration, in englischer Sprache)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

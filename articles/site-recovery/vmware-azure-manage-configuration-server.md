@@ -1,17 +1,18 @@
 ---
 title: Verwalten des Konfigurationsservers für die Notfallwiederherstellung mit Azure Site Recovery
+description: Erfahren Sie mehr über die allgemeinen Aufgaben zur Verwaltung eines lokalen Konfigurationsservers für die Notfallwiederherstellung von VMware VMs und physischen Servern in Azure mit Azure Site Recovery.
 author: Rajeswari-Mamilla
+ms.author: ramamill
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.author: ramamill
-ms.openlocfilehash: 2f1edc14efdeaf70bf4c2acc0e31e1517753ed3e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 67f25c97e0b4433ed09cb8c6337afe671424ba0b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92546346"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105048543"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vmphysical-server-disaster-recovery"></a>Verwalten des Konfigurationsservers für die Notfallwiederherstellung von virtuellen VMware-Computern/physischen Servern
 
@@ -212,7 +213,7 @@ Führen Sie die Installationsdatei wie folgt aus:
 
 ### <a name="parameters"></a>Parameter
 
-|Parametername| type | BESCHREIBUNG| Werte|
+|Parametername| type | Beschreibung| Werte|
 |-|-|-|-|
 | /ServerMode|Erforderlich|Gibt an, ob die Installation sowohl den Konfigurations- als auch den Prozessserver oder nur den Prozessserver umfassen soll.|CS<br>PS|
 |/InstallLocation|Erforderlich|Der Ordner, in dem die Komponenten installiert werden.| Beliebiger Ordner auf dem Computer|

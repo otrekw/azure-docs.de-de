@@ -8,32 +8,32 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 8bb1f8bb2aaeab88e5a9ea19534c8983af8c1626
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6c80b9fd65588fe6c390f44b34509168f3bfb549
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97895749"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106077685"
 ---
 # <a name="ensure-application-high-availability-when-running-in-vmware-on-azure"></a>Sicherstellen der Hochverfügbarkeit von Anwendungen bei Ausführung in VMware in Azure
 
 Die CloudSimple-Lösung bietet Hochverfügbarkeit für Ihre Anwendungen, die in VMware in der Azure-Umgebung ausgeführt werden. In der folgenden Tabelle werden Fehlerszenarien und die entsprechenden Hochverfügbarkeitsfunktionen aufgeführt.
 
-| Fehlerszenario | Anwendung geschützt? | Hochverfügbarkeitsfunktion für Plattform | Hochverfügbarkeitsfunktion für VMware | Hochverfügbarkeitsfunktion für Azure |
------------- | ------------- | ------------ | ------------ | ------------- |
-| Datenträgerfehler | YES | Schnelles Ersetzen des fehlerhaften Knotens | [Informationen zur vSAN-Standardspeicher-Richtlinie](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.virtualsan.doc/GUID-C228168F-6807-4C2A-9D74-E584CAF49A2A.html) |
-| Lüfterausfall | YES | Redundante Lüfter, schnelles Ersetzen des fehlerhaften Knotens |  |  |
-| NIC-Fehler | YES | Redundante NIC, schnelles Ersetzen des fehlerhaften Knotens
-| Stromausfall bei Host | YES | Redundante Stromversorgung |  |  |
-| ESXi-Hostfehler | YES | Schnelles Ersetzen des fehlerhaften Knotens | [VMware vSphere-Hochverfügbarkeit](https://www.vmware.com/products/vsphere/high-availability.html) |  |  |
-| VM-Fehler | YES | [Load Balancer](load-balancers.md)  | [VMware vSphere-Hochverfügbarkeit](https://www.vmware.com/products/vsphere/high-availability.html) | Azure Load Balancer für zustandslose VMware-VMs |
-| Fehler an Blattknoten-Switchport | YES | Redundante NIC |  |  |
-| Fehler an Blattknoten-Switch | YES | Redundante Blattknoten-Switches |  |  |
-| Rack-Fehler | YES | Platzierungsgruppen |  |  |
-| Netzwerkkonnektivität zum lokalen Rechenzentrum | YES  | Redundante Netzwerkdienste |  | Redundante ExpressRoute-Leitungen |
-| Netzwerkkonnektivität mit Azure | YES | |  | Redundante ExpressRoute-Leitungen |
-| Datacenter-Fehler | YES |  |  | Verfügbarkeitszonen |
-| Regionaler Fehler | YES  |  |  | Azure-Regionen |
+|  Fehlerszenario  |  Anwendung geschützt?  |  Hochverfügbarkeitsfunktion für Plattform  |  Hochverfügbarkeitsfunktion für VMware  |  Hochverfügbarkeitsfunktion für Azure  |
+|----------------------------------------|------------------------|-------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------|
+|  Datenträgerfehler  |  YES  |  Schnelles Ersetzen des fehlerhaften Knotens  |  [Informationen zur vSAN-Standardspeicher-Richtlinie](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.virtualsan.doc/GUID-C228168F-6807-4C2A-9D74-E584CAF49A2A.html)  |  |
+|  Lüfterausfall  |  YES  |  Redundante Lüfter, schnelles Ersetzen des fehlerhaften Knotens  |  |  |
+|  NIC-Fehler  |  YES  |  Redundante NIC, schnelles Ersetzen des fehlerhaften Knotens  |  |  |
+|  Stromausfall bei Host  |  YES  |  Redundante Stromversorgung  |  |  |
+|  ESXi-Hostfehler  |  YES  |  Schnelles Ersetzen des fehlerhaften Knotens  |  [VMware vSphere-Hochverfügbarkeit](https://www.vmware.com/products/vsphere/high-availability.html)  |  |
+|  VM-Fehler  |  YES  |  [Lastenausgleichsmodule](load-balancers.md)  |  [VMware vSphere-Hochverfügbarkeit](https://www.vmware.com/products/vsphere/high-availability.html)  |  Azure Load Balancer für zustandslose VMware-VMs  |
+|  Fehler an Blattknoten-Switchport  |  YES  |  Redundante NIC  |  |  |
+|  Fehler an Blattknoten-Switch  |  YES  |  Redundante Blattknoten-Switches  |  |  |
+|  Rack-Fehler  |  YES  |  Platzierungsgruppen  |  |  |
+|  Netzwerkkonnektivität zum lokalen Rechenzentrum  |  YES  |  Redundante Netzwerkdienste  |  |  Redundante ExpressRoute-Leitungen  |
+|  Netzwerkkonnektivität mit Azure  |  YES  |  |  |  Redundante ExpressRoute-Leitungen  |
+|  Rechenzentrumsfehler  |  YES  |  |  |  Verfügbarkeitszonen  |
+|  Regionaler Fehler  |  YES  |  |  |  Azure-Regionen  |
 
 Azure VMware Solution by CloudSimple bietet die folgenden Hochverfügbarkeitsfunktionen.
 

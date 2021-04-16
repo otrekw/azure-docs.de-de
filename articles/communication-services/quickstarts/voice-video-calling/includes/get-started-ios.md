@@ -1,22 +1,24 @@
 ---
 title: Schnellstart – Hinzufügen von Telefonie zu einer iOS-App mithilfe von Azure Communication Services
-description: In diesem Schnellstart erfahren Sie, wie Sie die Clientbibliothek für Telefonie von Azure Communication Services für iOS verwenden.
-author: matthewrobertson
-ms.author: marobert
-ms.date: 07/24/2020
+description: In dieser Schnellstartanleitung erfahren Sie, wie Sie das Calling SDK von Azure Communication Services für iOS verwenden.
+author: chpalm
+ms.author: mikben
+ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 36ec27f3a0e69126a91b52bed26dc645ec89e46e
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 22c9d8f8bdf3e6195bf152fa0431ad5ce9bcdfeb
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101656656"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "106073250"
 ---
-In diesem Schnellstart erfahren Sie, wie Sie einen Anruf mithilfe der Clientbibliothek für Telefonie von Azure Communication Services für iOS beginnen.
+In diesem Schnellstartanleitung erfahren Sie, wie Sie einen Anruf mithilfe des Calling SDK von Azure Communication Services für iOS beginnen.
+
+[!INCLUDE [Public Preview Notice](../../../includes/public-preview-include-android-ios.md)]
 
 > [!NOTE]
-> Dieses Dokument verwendet Version 1.0.0-beta.8 der aufrufenden Clientbibliothek.
+> Dieses Dokument verwendet Version 1.0.0-beta.8 des Calling SDK.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -37,7 +39,8 @@ Erstellen Sie in Xcode ein neues iOS-Projekt, und wählen Sie die Vorlage **Sing
 
 ### <a name="install-the-package-and-dependencies-with-cocoapods"></a>Installieren des Pakets und der Abhängigkeiten mit CocoaPods
 
-1. Erstellen Sie wie folgt eine Podfile für die Anwendung:
+1. Um eine Podfile-Datei für Ihre Anwendung zu erstellen, müssen Sie das Terminal öffnen, zum Projektordner navigieren und ```pod init``` ausführen
+3. Fügen Sie den folgenden Code in die Podfile-Datei ein, und speichern Sie die Datei (stellen Sie sicher, dass „target (Ziel)“ mit dem Namen Ihres Projekts übereinstimmt):
 
    ```
    platform :ios, '13.0'
@@ -50,7 +53,7 @@ Erstellen Sie in Xcode ein neues iOS-Projekt, und wählen Sie die Vorlage **Sing
    end
    ```
 
-2. Führen Sie `pod install` aus.
+3. Führen Sie `pod install` aus.
 3. Öffnen Sie `.xcworkspace` mit Xcode.
 
 ### <a name="request-access-to-the-microphone"></a>Anfordern des Zugriffs auf das Mikrofon
@@ -118,11 +121,11 @@ struct ContentView: View {
 
 ## <a name="object-model"></a>Objektmodell
 
-Die folgenden Klassen und Schnittstellen befassen sich mit einigen der wichtigsten Features der Azure Communication Services-Clientbibliothek „Calling“:
+Die folgenden Klassen und Schnittstellen befassen sich mit einigen der wichtigsten Features des Azure Communication Services Calling SDK:
 
-| Name                                  | Beschreibung                                                  |
+| name                                  | Beschreibung                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
-| CallClient | CallClient ist der Haupteinstiegspunkt in die Clientbibliothek „Calling“.|
+| CallClient | „CallClient“ ist der Haupteinstiegspunkt des Calling SDK.|
 | CallAgent | CallAgent dient zum Starten und Verwalten von Anrufen. |
 | CommunicationTokenCredential | „CommunicationTokenCredential“ dient als tokengestützte Anmeldeinformation zum Instanziieren von „CallAgent“.| 
 | CommunicationUserIdentifier | „CommunicationUserIdentifier“ wird zur Darstellung der Identität des Benutzers verwendet, wie u. a. die folgenden: CommunicationUserIdentifier/PhoneNumberIdentifier/CallingApplication. |

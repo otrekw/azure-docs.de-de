@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: f0673523c74a0ea298e7d2d520952c3e98877e91
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: f4940da47b832c2b3c39ab2fa225a229d1d730bf
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98930048"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106062708"
 ---
 # <a name="manage-spark-application-dependencies"></a>Verwalten der Abhängigkeiten von Spark-Anwendungen
 
@@ -31,7 +31,7 @@ Mithilfe der Direktlinks gelangen Sie jeweils zu dem für Ihren Anwendungsfall p
 Wenn eine Spark-Sitzung in Jupyter Notebook im Spark-Kernel für Scala gestartet wird, können Pakete über folgende Optionen konfiguriert werden:
 
 * [Maven Repository](https://search.maven.org/) oder von der Community bereitgestellte Pakete unter [Spark Packages](https://spark-packages.org/) (Spark-Pakete).
-* JAR-Dateien, die im primären Speicher Ihres Clusters gespeichert sind.
+* JAR-Dateien, die im primären Speicher Ihres Clusters gespeichert sind
 
 Verwenden Sie den Magic-Befehl `%%configure`, um das Notebook so zu konfigurieren, dass es ein externes Paket verwendet. Stellen Sie sicher, dass Notebooks, die externe Pakete verwenden, die `%%configure` -Magic in der ersten Codezelle aufrufen. Dadurch wird sichergestellt, dass der Kernel für die Verwendung des Pakets konfiguriert ist, bevor die Sitzung gestartet wird.
 
@@ -43,7 +43,7 @@ Verwenden Sie den Magic-Befehl `%%configure`, um das Notebook so zu konfiguriere
 
 Nachdem Sie das Paket von Maven Repository geladen haben, sammeln Sie die Werte für **GroupId**, **ArtifactId** und **Version**. Verketten Sie die drei Werte, getrennt durch einen Doppelpunkt ( **:** ).
 
-   ![Schema für die Verkettung von Paketen](./media/apache-spark-manage-dependencies/spark-package-schema.png "Schema für die Verkettung von Paketen")
+   :::image type="content" source="./media/apache-spark-manage-dependencies/spark-package-schema.png " alt-text="Schema für die Verkettung von Paketen" border="true":::kage schema" border="true":::
 
 Vergewissern Sie sich, dass die erfassten Werte Ihrem Cluster entsprechen. In diesem Fall wird das Spark Cosmos DB-Connectorpaket für Scala 2.11 und Spark 2.3 für das Spark-Cluster in HDInsight 3.6 verwendet. Wenn Sie nicht sicher sind, führen Sie `scala.util.Properties.versionString` in einer Codezelle im Spark-Kernel aus, um die Scala-Clusterversion abzurufen. Führen Sie `sc.version` aus, um die Spark-Clusterversion abzurufen.
 
@@ -70,7 +70,7 @@ import com.microsoft.azure.cosmosdb.spark._
 ### <a name="use-azure-toolkit-for-intellij"></a>Verwenden von Azure-Toolkit für IntelliJ
 Das Plug-In [Azure-Toolkit für IntelliJ](./apache-spark-intellij-tool-plugin.md) stellt eine Benutzeroberfläche zum Übermitteln von Spark Scala-Anwendungen an einen HDInsight-Cluster bereit. Es enthält die Eigenschaften `Referenced Jars` und `Referenced Files`, mit denen Sie beim Übermitteln einer Spark-Anwendung JAR-Bibliothekspfade konfigurieren können. Weitere Informationen finden Sie unter [Verwenden von Azure-Toolkit für IntelliJ für HDInsight](./apache-spark-intellij-tool-plugin.md#run-a-spark-scala-application-on-an-hdinsight-spark-cluster).
 
-![Dialogfeld für die Spark-Übermittlung](./media/apache-spark-intellij-tool-plugin/hdi-submit-spark-app-02.png)
+:::image type="content" source="./media/apache-spark-intellij-tool-plugin/hdi-submit-spark-app-02.png" alt-text="Dialogfeld für die Spark-Übermittlung" border="true":::
 
 ## <a name="jar-libs-for-cluster"></a>JAR-Bibliotheken für Cluster
 Gelegentlich sollten Sie die JAR-Abhängigkeiten auf Clusterebene konfigurieren, sodass jede Anwendung standardmäßig mit denselben Abhängigkeiten eingerichtet wird. In diesem Fall fügen Sie die JAR-Pfade einem Treiber- oder Executor-Klassenpfad von Spark hinzu.
@@ -89,11 +89,11 @@ Gelegentlich sollten Sie die JAR-Abhängigkeiten auf Clusterebene konfigurieren,
     spark.executor.extraClassPath=/usr/libs/sparklibs/*
     ```
 
-   ![Ändern der Standardkonfiguration von Spark](./media/apache-spark-manage-dependencies/change-spark-default-config.png "Ändern der Standardkonfiguration von Spark")
+   :::image type="content" source="./media/apache-spark-manage-dependencies/change-spark-default-config.png " alt-text="Ändern der Standardkonfiguration von Spark" border="true":::ult config" border="true":::
 
 3. Speichern Sie die geänderten Konfigurationen, und starten Sie die betreffenden Dienste neu.
 
-   ![Neustart der betreffenden Dienste](./media/apache-spark-manage-dependencies/restart-impacted-services.png "Neustart der betreffenden Dienste")
+   :::image type="content" source="./media/apache-spark-manage-dependencies/restart-impacted-services.png " alt-text="Neustart betroffener Dienste" border="true":::ted services" border="true":::
 
 Mithilfe von [Skriptaktionen](../hdinsight-hadoop-customize-cluster-linux.md) können Sie diese Schritte automatisieren. Die Skriptaktion zum [Hinzufügen von benutzerdefinierten Hive-Bibliotheken](https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh) ist eine gute Quelle. Verwenden Sie beim Ändern der Konfiguration von Spark-Diensten Ambari-APIs, statt die Konfigurationsdateien direkt zu ändern. 
 

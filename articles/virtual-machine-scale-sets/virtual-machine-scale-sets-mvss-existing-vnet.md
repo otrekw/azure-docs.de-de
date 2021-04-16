@@ -6,44 +6,53 @@ ms.author: jushiman
 ms.topic: how-to
 ms.service: virtual-machine-scale-sets
 ms.subservice: networking
-ms.date: 04/26/2019
+ms.date: 03/30/2021
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: fab6e6742fa43e1e38ee661b67896ae4aa11b3ed
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f15fddc54f4b7c5a03843da1bcc11d1991b70d02
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "83124821"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106076665"
 ---
-# <a name="add-reference-to-an-existing-virtual-network-in-an-azure-scale-set-template"></a>Hinzufügen eines Verweises auf ein vorhandenes virtuelles Netzwerk in einer Vorlage für eine Azure-Skalierungsgruppe
+# <a name="reference-an-existing-virtual-network-in-an-azure-scale-set-template"></a>Verweisen auf ein vorhandenes virtuelles Netzwerk in einer Vorlage für eine Azure-Skalierungsgruppe
 
 In diesem Artikel wird gezeigt, wie die [Vorlage für eine grundlegende Skalierungsgruppe](virtual-machine-scale-sets-mvss-start.md) geändert wird, um die Bereitstellung in einem vorhandenen virtuellen Netzwerk durchzuführen, statt ein neues zu erstellen.
 
-## <a name="change-the-template-definition"></a>Ändern der Vorlagendefinition
+## <a name="prerequisites"></a>Voraussetzungen
 
-In einem [vorherigen Artikel](virtual-machine-scale-sets-mvss-start.md) haben wir eine grundlegende Vorlage für eine Skalierungsgruppe erstellt. Wir verwenden nun diese frühere Vorlage und ändern sie, um eine Vorlage zu erstellen, die eine Skalierungsgruppe in einem vorhandenen virtuellen Netzwerk bereitstellt. 
+In einem [vorherigen Artikel](virtual-machine-scale-sets-mvss-start.md) haben wir eine grundlegende Vorlage für eine Skalierungsgruppe erstellt. Sie benötigen diese frühere Vorlage, damit Sie sie ändern können, um eine Vorlage zu erstellen, die ein Skalierungsset in einem vorhandenen virtuellen Netzwerk einsetzt.
 
-Fügen Sie zunächst einen `subnetId`-Parameter hinzu. Diese Zeichenfolge wird an die Skalierungsgruppenkonfiguration übergeben und ermöglicht der Skalierungsgruppe das Identifizieren des vorab erstellten Subnetzes, in dem virtuelle Computer bereitgestellt werden sollen. Diese Zeichenfolge muss folgendes Format aufweisen: `/subscriptions/<subscription-id>resourceGroups/<resource-group-name>/providers/Microsoft.Network/virtualNetworks/<virtual-network-name>/subnets/<subnet-name>`.
+## <a name="identify-subnet"></a>Subnetz identifizieren
 
-Beispiel: Zum Bereitstellen der Skalierungsgruppe in einem vorhandenen virtuellen Netzwerk mit dem Namen `myvnet`, dem Subnetz `mysubnet`, der Ressourcengruppe `myrg`, und dem Abonnement `00000000-0000-0000-0000-000000000000`, wäre „subnetId“: `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myrg/providers/Microsoft.Network/virtualNetworks/myvnet/subnets/mysubnet`.
+Fügen Sie zunächst einen `subnetId`-Parameter hinzu. Diese Zeichenfolge wird an die Skalierungsgruppenkonfiguration übergeben und ermöglicht der Skalierungsgruppe das Identifizieren des vorab erstellten Subnetzes, in dem virtuelle Computer bereitgestellt werden sollen. Diese Zeichenfolge muss folgendes Format aufweisen: .
+
+`/subscriptions/<subscription-id>resourceGroups/<resource-group-name>/providers/Microsoft.Network/virtualNetworks/<virtual-network-name>/subnets/<subnet-name>`
+
+
+Beispiel: Zum Bereitstellen der Skalierungsgruppe in einem vorhandenen virtuellen Netzwerk mit dem Namen `myvnet`, dem Subnetz `mysubnet`, der Ressourcengruppe `myrg`, und dem Abonnement `00000000-0000-0000-0000-000000000000`, wäre „subnetId“: 
+
+`/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myrg/providers/Microsoft.Network/virtualNetworks/myvnet/subnets/mysubnet`.
 
 ```diff
-     },
-     "adminPassword": {
-       "type": "securestring"
+      },
+      "adminPassword": {
+        "type": "securestring"
 +    },
 +    "subnetId": {
 +      "type": "string"
-     }
-   },
+      }
+    },
 ```
+
+## <a name="delete-extra-virtual-network-resource"></a>Zusätzliche virtuelle Netzwerkressource löschen
 
 Löschen Sie als Nächstes die Ressource für das virtuelle Netzwerk aus dem `resources`-Array, da Sie ein vorhandenes virtuelles Netzwerk verwenden und kein neues bereitstellen müssen.
 
 ```diff
-   "variables": {},
-   "resources": [
+    "variables": {},
+    "resources": [
 -    {
 -      "type": "Microsoft.Network/virtualNetworks",
 -      "name": "myVnet",
@@ -66,37 +75,38 @@ Löschen Sie als Nächstes die Ressource für das virtuelle Netzwerk aus dem `re
 -      }
 -    },
 ```
+## <a name="remove-dependency-clause"></a>Abhängigkeitsklausel entfernen
 
-Das virtuelle Netzwerk ist bereits vorhanden, bevor die Vorlage bereitgestellt wird, daher besteht keine Notwendigkeit, eine dependsOn-Klausel in der Skalierungsgruppe für das virtuelle Netzwerk anzugeben. Löschen Sie die folgenden Zeilen:
+Das virtuelle Netzwerk ist bereits vorhanden, bevor die Vorlage bereitgestellt wird, daher ist es nicht erforderlich, `dependsOn` eine Klausel vom Skalensatz zum virtuellen Netzwerk anzugeben. Löschen Sie die folgenden Zeilen:
 
 ```diff
-     {
-       "type": "Microsoft.Compute/virtualMachineScaleSets",
-       "name": "myScaleSet",
-       "location": "[resourceGroup().location]",
-       "apiVersion": "2019-03-01",
+      {
+        "type": "Microsoft.Compute/virtualMachineScaleSets",
+        "name": "myScaleSet",
+        "location": "[resourceGroup().location]",
+        "apiVersion": "2019-03-01",
 -      "dependsOn": [
 -        "Microsoft.Network/virtualNetworks/myVnet"
 -      ],
-       "sku": {
-         "name": "Standard_A1",
-         "capacity": 2
+        "sku": {
+          "name": "Standard_A1",
+          "capacity": 2
 ```
+
+## <a name="pass-subnet-parameter"></a>Übergeben von Subnetz-Parametern
 
 Schließlich übergeben Sie den `subnetId`-Parameter, der vom Benutzer festgelegt wird (statt `resourceId`, um die ID des VNET in der gleichen Bereitstellung abzurufen, was von der Vorlage für die grundlegende Skalierungsgruppe ausgeführt wird).
 
 ```diff
-                       "name": "myIpConfig",
-                       "properties": {
-                         "subnet": {
+                        "name": "myIpConfig",
+                        "properties": {
+                          "subnet": {
 -                          "id": "[concat(resourceId('Microsoft.Network/virtualNetworks', 'myVnet'), '/subnets/mySubnet')]"
 +                          "id": "[parameters('subnetId')]"
-                         }
-                       }
-                     }
+                          }
+                        }
+                      }
 ```
-
-
 
 
 ## <a name="next-steps"></a>Nächste Schritte

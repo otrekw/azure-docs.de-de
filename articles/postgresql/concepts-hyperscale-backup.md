@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 9656e6ab608665e325ac5f772e06df9ac296c521
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 90b2a39b9a5f3b4d011ff1a1ef3651dff75a1cf6
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92485374"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105968304"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---hyperscale-citus"></a>Sicherung und Wiederherstellung in Azure Database for PostgreSQL: Hyperscale (Citus)
 
@@ -58,7 +58,7 @@ Die Firewalleinstellungen und PostgreSQL-Dienstparameter der ursprünglichen Ser
 Nach beiden Wiederherstellungsverfahren sollten Sie die folgenden Aufgaben durchführen, um Ihre Benutzer und Anwendungen wieder in einen betriebsbereiten Zustand zu versetzen:
 
 * Umleiten von Clients und Clientanwendungen an den neuen Server, wenn der neue Server den ursprünglichen Server ersetzen soll
-* Sicherstellen, dass geeignete Firewallregeln auf Serverebene und VNet-Regeln vorhanden sind, damit Benutzer eine Verbindung herstellen können Diese Regeln werden nicht von der ursprünglichen Servergruppe kopiert.
+* Sicherstellen, dass eine geeignete Firewall auf Serverebene vorhanden ist, damit Benutzer eine Verbindung herstellen können. Diese Regeln werden nicht von der ursprünglichen Servergruppe kopiert.
 * Passen Sie PostgreSQL-Serverparameter nach Bedarf an. Diese Parameter werden nicht von der ursprünglichen Servergruppe kopiert.
 * Sicherstellen, dass geeignete Anmeldungen und Berechtigungen auf Datenbankebene vorhanden sind
 * Konfigurieren der erforderlichen Warnungen

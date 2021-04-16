@@ -10,12 +10,12 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 80d6c4d3f0b2eef5bc6012f2aab3fcbeab0e31b8
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 4c8bd66dde54ff90ea2191fba58f10c87c45cf68
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103495404"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105958403"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 Führen Sie die folgenden Schritte aus, bevor Sie beginnen:
@@ -43,24 +43,24 @@ dotnet build
 
 ### <a name="install-the-package"></a>Installieren des Pakets
 
-Installieren der .NET-Clientbibliothek für Chats von Azure Communication Services
+Installieren des .NET SDK für Chats von Azure Communication Services
 
 ```PowerShell
-dotnet add package Azure.Communication.Chat --version 1.0.0-beta.5
+dotnet add package Azure.Communication.Chat --version 1.0.0
 ```
 
 ## <a name="object-model"></a>Objektmodell
 
-Die folgenden Klassen werden für einige der wichtigsten Features der C#-Clientbibliothek für Chats von Azure Communication Services verwendet.
+Die folgenden Klassen werden für einige der wichtigsten Features des C#-SDK für Chats von Azure Communication Services verwendet.
 
-| Name                                  | Beschreibung                                                  |
+| name                                  | Beschreibung                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
 | ChatClient | Diese Klasse wird für die Chatfunktionalität benötigt. Sie instanziieren sie mit Ihren Abonnementinformationen und verwenden sie zum Erstellen, Abrufen und Löschen von Threads. |
 | ChatThreadClient | Diese Klasse wird für die Chatthreadfunktionalität benötigt. Sie rufen eine Instanz über den Chatclient ab und verwenden sie zum Senden/Empfangen/Aktualisieren/Löschen von Nachrichten, zum Hinzufügen/Entfernen/Abrufen von Teilnehmern und zum Senden von Eingabebenachrichtigungen und Lesebestätigungen. |
 
 ## <a name="create-a-chat-client"></a>Erstellen eines Chatclients
 
-Zum Erstellen eines Chatclients verwenden Sie Ihren Communication Services-Endpunkt und das Zugriffstoken, das im Rahmen der erforderlichen Schritte zur Vorbereitung generiert wurde. Sie müssen die `CommunicationIdentityClient`-Klasse über die Identitätsclientbibliothek verwenden, um einen Benutzer zu erstellen und ein Token auszustellen, das Sie an Ihren Chatclient übergeben können.
+Zum Erstellen eines Chatclients verwenden Sie Ihren Communication Services-Endpunkt und das Zugriffstoken, das im Rahmen der erforderlichen Schritte zur Vorbereitung generiert wurde. Sie müssen die `CommunicationIdentityClient`-Klasse über das Identitäts-SDK verwenden, um einen Benutzer zu erstellen und ein Token auszustellen, das Sie an Ihren Chatclient übergeben können.
 
 Informieren Sie sich über [Benutzerzugriffstoken](../../access-tokens.md).
 
@@ -115,6 +115,17 @@ string threadId = "<THREAD_ID>";
 ChatThreadClient chatThreadClient = chatClient.GetChatThreadClient(threadId: threadId);
 ```
 
+## <a name="list-all-chat-threads"></a>Auflisten aller Chatthreads
+Verwenden Sie `GetChatThreads`, um alle Chatthreads abzurufen, zu denen der Benutzer gehört.
+
+```csharp
+AsyncPageable<ChatThreadItem> chatThreadItems = chatClient.GetChatThreadsAsync();
+await foreach (ChatThreadItem chatThreadItem in chatThreadItems)
+{
+    Console.WriteLine($"{ chatThreadItem.Id}");
+}
+```
+
 ## <a name="send-a-message-to-a-chat-thread"></a>Senden einer Nachricht an einen Chatthread
 
 Verwenden Sie `SendMessage`, um eine Nachricht an einen Thread zu senden.
@@ -124,17 +135,8 @@ Verwenden Sie `SendMessage`, um eine Nachricht an einen Thread zu senden.
 - Verwenden Sie `senderDisplayName`, um den Anzeigenamen des Absenders anzugeben. Ohne Angabe wird eine leere Zeichenfolge festgelegt.
 
 ```csharp
-var messageId = await chatThreadClient.SendMessageAsync(content:"hello world", type: ChatMessageType.Text);
-```
-## <a name="get-a-message"></a>Abrufen einer Nachricht
-
-Verwenden Sie `GetMessage`, um eine Nachricht vom Dienst abzurufen.
-`messageId` ist die eindeutige ID der Nachricht.
-
-`ChatMessage` ist die Antwort, die nach dem Abrufen einer Nachricht zurückgegeben wird. Sie enthält unter anderem eine ID, bei der es sich um den eindeutigen Bezeichner der Nachricht handelt. Weitere Informationen finden Sie unter „Azure.Communication.Chat.ChatMessage“.
-
-```csharp
-ChatMessage chatMessage = await chatThreadClient.GetMessageAsync(messageId: messageId);
+SendChatMessageResult sendChatMessageResult = await chatThreadClient.SendMessageAsync(content:"hello world", type: ChatMessageType.Text);
+string messageId = sendChatMessageResult.Id;
 ```
 
 ## <a name="receive-chat-messages-from-a-chat-thread"></a>Empfangen von Chatnachrichten aus einem Chatthread
@@ -167,25 +169,6 @@ Mit `GetMessages` werden unterschiedliche Nachrichtentypen zurückgegeben, die m
 
 Weitere Details finden Sie unter [Nachrichtentypen](../../../concepts/chat/concepts.md#message-types).
 
-## <a name="update-a-message"></a>Aktualisieren einer Nachricht
-
-Sie können eine bereits gesendete Meldung aktualisieren, indem Sie `UpdateMessage` für `ChatThreadClient` aufrufen.
-
-```csharp
-string id = "id-of-message-to-edit";
-string content = "updated content";
-await chatThreadClient.UpdateMessageAsync(messageId: id, content: content);
-```
-
-## <a name="deleting-a-message"></a>Löschen einer Nachricht
-
-Sie können eine Nachricht löschen, indem Sie `DeleteMessage` für `ChatThreadClient` aufrufen.
-
-```csharp
-string id = "id-of-message-to-delete";
-await chatThreadClient.DeleteMessageAsync(messageId: id);
-```
-
 ## <a name="add-a-user-as-a-participant-to-the-chat-thread"></a>Hinzufügen eines Benutzers als Teilnehmer des Chatthreads
 
 Nach der Erstellung eines Threads können Sie dafür Benutzer hinzufügen und entfernen. Durch Hinzufügen von Benutzern gewähren Sie ihnen Zugriff zum Senden von Nachrichten an den Thread und zum Hinzufügen/Entfernen anderer Teilnehmer. Stellen Sie vor dem Aufrufen von `AddParticipants` sicher, dass Sie ein neues Zugriffstoken und eine Identität für den Benutzer beschafft haben. Der Benutzer benötigt dieses Zugriffstoken, um den Chatclient initialisieren zu können.
@@ -209,14 +192,6 @@ var participants = new[]
 
 await chatThreadClient.AddParticipantsAsync(participants: participants);
 ```
-## <a name="remove-user-from-a-chat-thread"></a>Entfernen eines Benutzers aus einem Chatthread
-
-Sie können Benutzer einem Thread nicht nur hinzufügen, sondern diese auch aus einem Chatthread entfernen. Hierfür müssen Sie die Identität `CommunicationUser` des von Ihnen hinzugefügten Teilnehmers nachverfolgen.
-
-```csharp
-var gloria = new CommunicationUserIdentifier(id: "<Access_ID_For_Gloria>");
-await chatThreadClient.RemoveParticipantAsync(identifier: gloria);
-```
 
 ## <a name="get-thread-participants"></a>Abrufen der Threadteilnehmer
 
@@ -230,14 +205,6 @@ await foreach (ChatParticipant participant in allParticipants)
 }
 ```
 
-## <a name="send-typing-notification"></a>Senden einer Eingabebenachrichtigung
-
-Verwenden Sie `SendTypingNotification`, um anzugeben, dass der Benutzer eine Antwort für den Thread eingibt.
-
-```csharp
-await chatThreadClient.SendTypingNotificationAsync();
-```
-
 ## <a name="send-read-receipt"></a>Senden einer Lesebestätigung
 
 Verwenden Sie `SendReadReceipt`, um andere Teilnehmer darüber zu informieren, dass die Nachricht vom Benutzer gelesen wurde.
@@ -246,17 +213,6 @@ Verwenden Sie `SendReadReceipt`, um andere Teilnehmer darüber zu informieren, d
 await chatThreadClient.SendReadReceiptAsync(messageId: messageId);
 ```
 
-## <a name="get-read-receipts"></a>Abrufen von Lesebestätigungen
-
-Verwenden Sie `GetReadReceipts`, um den Status von Nachrichten zu überprüfen und zu ermitteln, welche Nachrichten von anderen Teilnehmern eines Chatthreads gelesen wurden.
-
-```csharp
-AsyncPageable<ChatMessageReadReceipt> allReadReceipts = chatThreadClient.GetReadReceiptsAsync();
-await foreach (ChatMessageReadReceipt readReceipt in allReadReceipts)
-{
-    Console.WriteLine($"{readReceipt.ChatMessageId}:{((CommunicationUserIdentifier)readReceipt.Sender).Id}:{readReceipt.ReadOn}");
-}
-```
 ## <a name="run-the-code"></a>Ausführen des Codes
 
 Führen Sie die Anwendung mit dem Befehl `dotnet run` aus dem Anwendungsverzeichnis aus.

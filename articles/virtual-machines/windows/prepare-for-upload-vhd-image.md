@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 09/02/2020
 ms.author: genli
-ms.openlocfilehash: 12ef839cbbbc69230b314bf7c56a63f57a0d6b20
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 573f97c7f592186173b13ea592d151ee291b8249
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102556263"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105967964"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Vorbereiten einer Windows-VHD oder -VHDX zum Hochladen in Azure
 
@@ -113,6 +113,10 @@ Nachdem die SFC-Prüfung abgeschlossen wurde, versuchen Sie, Windows-Updates zu 
    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment' -Name TEMP -Value "%SystemRoot%\TEMP" -Type ExpandString -Force
    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment' -Name TMP -Value "%SystemRoot%\TEMP" -Type ExpandString -Force
    ```
+1. Stellen Sie für virtuelle Computer mit älteren Betriebssystemen (Windows Server 2012 R2 oder Windows 8.1 und niedriger) sicher, dass die aktuellen Hyper-V-Integrations Komponenten-Dienste installiert sind. Weitere Informationen finden Sie unter [Hyper-V-Integrations- Komponenten Update für Windows-VM](https://support.microsoft.com/topic/hyper-v-integration-components-update-for-windows-virtual-machines-8a74ffad-576e-d5a0-5a2f-d6fb2594f990).
+
+> [!NOTE]
+> In einem Szenario, in dem VMs mit einer Disaster-Recovery-Lösung zwischen dem VMware-Server vor Ort und Azure aufgesetzt werden sollen, können die Hyper-V Integration Component Services nicht verwendet werden. Wenn dies der Fall ist, wenden Sie sich an den VMware-Support, um den virtuellen Computer zu Azure zu migrieren und ihn auf dem VMware-Server zusammenzustellen.
 
 ## <a name="check-the-windows-services"></a>Überprüfen der Windows-Dienste
 
@@ -266,6 +270,8 @@ Stellen Sie sicher, dass die VM fehlerfrei und sicher ist und dass per RDP darau
 1. Legen Sie die Einstellungen für die Startkonfigurationsdaten (Boot Configuration Data, BCD) fest.
 
    ```powershell
+   cmd
+
    bcdedit.exe /set "{bootmgr}" integrityservices enable
    bcdedit.exe /set "{default}" device partition=C:
    bcdedit.exe /set "{default}" integrityservices enable
@@ -279,6 +285,8 @@ Stellen Sie sicher, dass die VM fehlerfrei und sicher ist und dass per RDP darau
    bcdedit.exe /set "{bootmgr}" bootems yes
    bcdedit.exe /ems "{current}" ON
    bcdedit.exe /emssettings EMSPORT:1 EMSBAUDRATE:115200
+
+   exit
    ```
 
 1. Das Abbildprotokoll kann bei der Problembehandlung nach Windows-Abstürzen hilfreich sein. Aktivieren Sie die Sammlung von Abbildprotokollen:
@@ -351,6 +359,10 @@ Stellen Sie sicher, dass die VM fehlerfrei und sicher ist und dass per RDP darau
 1. Deinstallieren Sie jegliche Drittanbietersoftware und -treiber im Zusammenhang mit physischen Komponenten oder einer anderen Virtualisierungstechnologie.
 
 ### <a name="install-windows-updates"></a>Installieren von Windows-Updates
+
+> [!NOTE]
+> Um einen versehentlichen Neustart während der VM-Bereitstellung zu vermeiden, wird empfohlen, alle Windows Update-Installationen abzuschließen und sicherzustellen, dass kein Neustart aussteht. Eine Möglichkeit besteht darin, alle Windows-Updates zu installieren und den virtuellen Computer neu zu starten, bevor die Migration zu Azure durchgeführt wird. </br><br>
+>Wenn Sie auch eine Generalisierung des Betriebssystems (syoberp) ausführen müssen, müssen Sie Windows aktualisieren und den virtuellen Computer neu starten, bevor Sie den Befehl syoberp ausführen.
 
 Im Idealfall sollten Sie den Computer auf die *Patchebene* aktualisieren. Wenn dies nicht möglich ist, stellen Sie sicher, dass die folgenden Updates installiert sind. Informieren Sie sich auf den Verlaufsseiten von Windows Update, um die neuesten Updates herunterzuladen: [Windows 10 und Windows Server 2019](https://support.microsoft.com/help/4000825), [Windows 8.1 und Windows Server 2012 R2](https://support.microsoft.com/help/4009470) sowie [Windows 7 SP1 und Windows Server 2008 R2 SP1](https://support.microsoft.com/help/4009469).
 
@@ -522,4 +534,4 @@ Die folgenden Einstellungen wirken sich nicht auf das Hochladen von VHDs aus. Es
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Hochladen eines Windows-VM-Images an Azure für Resource Manager-Bereitstellungen](upload-generalized-managed.md)
-- [Beheben von Problemen bei der Aktivierung virtueller Windows-Computer](../troubleshooting/troubleshoot-activation-problems.md)
+- [Beheben von Problemen bei der Aktivierung virtueller Windows-Computer](/troubleshoot/azure/virtual-machines/troubleshoot-activation-problems)

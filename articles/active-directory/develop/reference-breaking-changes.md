@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: reference
-ms.date: 2/22/2021
+ms.date: 3/30/2021
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: c5e7f556f37a1d6d53e0a938490f1099a7be776a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: eb75450527fc31d6ea4a9f9d60d676718ad79bda
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101647420"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167582"
 ---
 # <a name="whats-new-for-authentication"></a>Neuerungen bei der Authentifizierung
 
@@ -35,9 +35,21 @@ Für das Authentifizierungssystem werden fortlaufend Änderungen vorgenommen und
 
 ## <a name="upcoming-changes"></a>Bevorstehende Änderungen
 
+### <a name="bug-fix-azure-ad-will-no-longer-url-encode-the-state-parameter-twice"></a>Behebung von Programmfehlern: Azure AD kodiert den Statusparameter nicht mehr zweimal in der URL.
+
+**Gültig ab**: Mai 2021
+
+**Betroffene Endpunkte:** v1.0 und v2.0 
+
+**Betroffenes Protokoll**: alle Flows, die den `/authorize` Endpunkt aufrufen (impliziter Fluss-und Autorisierungs-Code-Fluss)
+
+Ein Fehler wurde in der Azure AD Autorisierungs-Antwort gefunden und behoben. Während der `/authorize` Authentifizierung wird der- `state` Parameter aus der Anforderung in die Antwort eingeschlossen, um den App-Status beizubehalten und CSRF-Angriffe zu verhindern. Azure AD falsche URL-Codierung für den `state` Parameter vor dem Einfügen in die Antwort, in der er nochmal codiert wurde.  Dies würde dazu führen, dass Anwendungen die Antwort von Azure AD fälschlicherweise ablehnen. 
+
+Azure AD wird diesen Parameter nicht mehr doppelt codieren, sodass Apps das Ergebnis ordnungsgemäß analysieren können. Diese Änderung wird für alle Anwendungen vorgenommen. 
+
 ### <a name="conditional-access-will-only-trigger-for-explicitly-requested-scopes"></a>Bedingter Zugriff wird nur für explizit angeforderte Bereiche ausgelöst.
 
-**Gültig ab**: März 2021
+**Gültigkeitsdatum** : Mai 2021, mit einem schrittweisen Rollout ab April. 
 
 **Betroffene Endpunkte**: v2.0
 
@@ -48,6 +60,8 @@ Anwendungen, in denen derzeit dynamische Einwilligung verwendet wird, werden all
 In Azure AD wurde jetzt die Bereitstellung nicht angeforderter Bereiche für Anwendungen geändert, um die Anzahl unnötiger Eingabeaufforderungen für bedingten Zugriff zu verringern. Diese Änderung bewirkt, dass nur explizit angeforderte Bereiche den bedingten Zugriff auslösen. Dies kann dazu führen, dass Apps, die das bisherige Verhalten von Azure AD erfordern (d. h. Bereitstellen aller Berechtigungen, auch wenn sie nicht angefordert wurden), nicht mehr ausgeführt werden, weil Berechtigungen für die von ihnen angeforderten Token fehlen.
 
 Apps erhalten jetzt Zugriffstoken mit einer Kombination von Berechtigungen: angeforderte Berechtigungen sowie Berechtigungen, für die sie über eine Einwilligung verfügen, die jedoch keine Eingabeaufforderung für bedingten Zugriff erfordern.  Die Bereiche des Zugriffstokens werden im Parameter `scope` der Tokenantwort angegeben. 
+
+Diese Änderung wird für alle Apps durchgeführt, mit Ausnahme derjenigen, die eine beobachtete Abhängigkeit von diesem Verhalten aufweisen.  Wenn Sie von dieser Änderung ausgenommen sind, erhalten Entwickler eine entsprechende Kontaktaufnahme, da Sie möglicherweise eine Abhängigkeit von den zusätzlichen Eingabe Aufforderungen für den bedingten Zugriff haben. 
 
 **Beispiele**
 

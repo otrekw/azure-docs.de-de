@@ -9,19 +9,16 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 21c247c2fb9e1532c4580eea894c97e2bff84f92
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e1b7e091fe09bc2c093cc84473bd07917347f26d
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104657041"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220790"
 ---
 # <a name="communication-services-notifications"></a>Communication Services-Benachrichtigungen
 
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
-
-
-Der Chat von Azure Communication Services und die Bibliotheken für Telefonie-Clients erstellen einen Kanal für Echtzeitnachrichten, der es ermöglicht, Signalisierungsnachrichten per Push effizient und zuverlässig an verbundene Clients zu übermitteln. Dadurch können Sie umfangreiche Echtzeit-Kommunikationsfunktionen in Ihre Anwendungen integrieren, ohne dass Sie eine komplizierte HTTP-Abruflogik implementieren müssen. Bei mobilen Anwendungen bleibt die Verbindung dieses Signalisierungskanals jedoch nur dann bestehen, wenn die Anwendung im Vordergrund aktiv ist. Wenn Sie möchten, dass Ihre Benutzer eingehende Anrufe oder Chatnachrichten empfangen, während sich die Anwendung im Hintergrund befindet, sollten Sie Pushbenachrichtigungen verwenden.
+Der Chat von Azure Communication Services und die SDKs für Telefonie erstellen einen Kanal für Echtzeitnachrichten, der es ermöglicht, Signalisierungsnachrichten per Push effizient und zuverlässig an verbundene Clients zu übermitteln. Dadurch können Sie umfangreiche Echtzeit-Kommunikationsfunktionen in Ihre Anwendungen integrieren, ohne dass Sie eine komplizierte HTTP-Abruflogik implementieren müssen. Bei mobilen Anwendungen bleibt die Verbindung dieses Signalisierungskanals jedoch nur dann bestehen, wenn die Anwendung im Vordergrund aktiv ist. Wenn Sie möchten, dass Ihre Benutzer eingehende Anrufe oder Chatnachrichten empfangen, während sich die Anwendung im Hintergrund befindet, sollten Sie Pushbenachrichtigungen verwenden.
 
 Mithilfe von Pushbenachrichtigungen können Sie Informationen von der Anwendung an die mobilen Geräte der Benutzer senden. Sie können Pushbenachrichtigungen verwenden, um ein Dialogfeld anzuzeigen, einen Ton wiederzugeben oder die Benutzeroberfläche für eingehenden Anrufe anzuzeigen. Azure Communication Services bietet Integrationen in [Azure Event Grid](../../event-grid/overview.md) und [Azure Notification Hubs](../../notification-hubs/notification-hubs-push-notification-overview.md), mit denen Sie zu Ihren Apps Pushbenachrichtigungen hinzufügen können.
 
@@ -70,13 +67,24 @@ armclient POST /subscriptions/<sub_id>/resourceGroups/<resource_group>/providers
 
 #### <a name="using-the-azure-portal-to-link-your-notification-hub"></a>Verwenden des Azure-Portals zum Herstellen einer Verknüpfung mit Ihrem Notification Hub
 
-Navigieren Sie im Azure-Portal zu Ihrer Azure Communication Services-Ressource. Wählen Sie in der Communication Services-Ressource im linken Menü der Seite „Communication Services“ die Option „Pushbenachrichtigungen“ aus, und stellen Sie eine Verbindung mit dem zuvor bereitgestellten Benachrichtigungshub her. Sie müssen hier die Verbindungszeichenfolge und die Ressourcen-ID (resourceId) angeben:
+1. Wechseln Sie im Azure-Portal zu Ihrer Azure Communication Services-Ressource.
 
-:::image type="content" source="./media/notifications/acs-anh-portal-int.png" alt-text="Screenshot: Einstellungen für Pushbenachrichtigungen im Azure-Portal":::
+1. Wählen Sie in der Communication Services-Ressource im linken Menü der Seite „Communication Services“ die Option **Pushbenachrichtigungen** aus, und stellen Sie eine Verbindung mit dem zuvor bereitgestellten Notification Hub her.
+
+1. Wählen Sie **Verbinden mit Notification Hub**. Nun wird eine Liste der Notification Hubs angezeigt, die zum Herstellen einer Verbindung verfügbar sind.
+ 
+1. Wählen Sie den Notification Hub aus, den Sie für diese Ressource verwenden möchten.
+ 
+   - Wenn Sie einen neuen Hub erstellen müssen, wählen Sie **Neuen Notification Hub erstellen** aus, um einen neuen Hub für diese Ressource bereitzustellen.
+
+   :::image type="content" source="./media/notifications/acs-anh-portal-int.png" alt-text="Screenshot: Einstellungen für Pushbenachrichtigungen im Azure-Portal":::
+
+Nun wird der Notification Hub, zu dem Sie die Verbindung hergestellt haben, mit dem Status „Verbunden“ angezeigt.
+
+Wenn Sie für die Ressource einen anderen Hub verwenden möchten, wählen Sie **Trennen** aus, und wiederholen Sie dann die Schritte zum Verknüpfen mit einem anderen Notification Hub.
 
 > [!NOTE]
-> Wenn die Azure Notification Hub-Verbindungszeichenfolge aktualisiert wird, muss auch die Communication Services-Ressource aktualisiert werden.
-Jede Änderung im Zusammenhang mit der Art der Hubverknüpfung wird auf der Datenebene (also beim Senden einer Benachrichtigung) innerhalb von maximal ``10`` Minuten widergespiegelt. Das gilt auch, wenn der Hub zum ersten Mal verknüpft wird – **vorausgesetzt**, es wurden zuvor bereits Benachrichtigungen gesendet.
+> Jede Veränderung im Zusammenhang mit der Art der Hubverbindung spiegelt sich auf der Datenebene (also beim Senden einer Benachrichtigung) innerhalb von maximal 10 Minuten wider. Das gleiche Verhalten tritt auf, wenn der Hub zum ersten Mal verknüpft wird, **sofern** vor der Veränderung Benachrichtigungen gesendet wurden.
 
 ### <a name="device-registration"></a>Geräteregistrierung
 
