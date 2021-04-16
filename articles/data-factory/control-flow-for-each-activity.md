@@ -7,12 +7,12 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/23/2019
-ms.openlocfilehash: a0c3a3cbaa71d627f54550cf92c067afbb1eb3f0
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: d0fd9ab8286496b9801d6c10682761f1264e040a
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104786208"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106120910"
 ---
 # <a name="foreach-activity-in-azure-data-factory"></a>ForEach-Aktivität in Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -79,7 +79,7 @@ activities | Die Aktivitäten, die ausgeführt werden sollen. | Liste der Aktivi
 Wenn **isSequential** auf „false“ festgelegt ist, erfolgen maximal 20 gleichzeitige Iterationen der Aktivität parallel. Diese Einstellung sollte vorsichtig verwendet werden. Wenn die gleichzeitigen Iterationen in den gleichen Ordner, aber in andere Dateien schreiben, ist dieser Ansatz gut. Wenn die gleichzeitigen Iterationen gleichzeitig in genau dieselbe Datei schreiben, verursacht dieser Ansatz wahrscheinlich einen Fehler. 
 
 ## <a name="iteration-expression-language"></a>Sprache für Iterationsausdrücke
-Geben Sie in der ForEach-Aktivität für die Eigenschaft **items** ein Array an, das durchlaufen werden soll. Verwenden Sie `@item()` zum Durchlaufen einer einzelnen Enumeration in der ForEach-Aktivität. Beispiel: Wenn **items** ein Array wie [1, 2, 3] ist, gibt `@item()` in der ersten Iteration 1 zurück, in der zweiten Iteration 2 und in der dritten Iteration 3.
+Geben Sie in der ForEach-Aktivität für die Eigenschaft **items** ein Array an, das durchlaufen werden soll. Verwenden Sie `@item()` zum Durchlaufen einer einzelnen Enumeration in der ForEach-Aktivität. Beispiel: Wenn **items** ein Array wie [1, 2, 3] ist, gibt `@item()` in der ersten Iteration 1 zurück, in der zweiten Iteration 2 und in der dritten Iteration 3. Sie können `@range(0,10)` den auch „Gefällt mir“ Ausdruck verwenden, um zehnmal zu iterieren, beginnend mit 0 bis 9.
 
 ## <a name="iterating-over-a-single-activity"></a>Durchlaufen einer einzelnen Aktivität
 **Szenario:** Kopieren aus einer Quelldatei im Azure-Blob in mehrere Zieldateien im Azure-Blob.

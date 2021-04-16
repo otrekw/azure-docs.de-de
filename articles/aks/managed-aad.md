@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 02/1/2021
 ms.author: miwithro
-ms.openlocfilehash: b7918ecc31fe152bd25153ac8c899ce3ff8fdacb
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0e912de4cf3a9759abe4cb3df78255c0a9ba1557
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105640595"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107105863"
 ---
 # <a name="aks-managed-azure-active-directory-integration"></a>Von AKS verwaltete Azure Active Directory-Integration
 
@@ -20,7 +20,7 @@ Die von AKS verwaltete Azure AD-Integration vereinfacht deren Nutzung, weil es f
 
 Clusteradministratoren können die rollenbasierte Zugriffssteuerung von Kubernetes (Kubernetes RBAC) auf Grundlage einer Benutzeridentität oder Verzeichnisgruppenmitgliedschaft konfigurieren. Die Azure AD-Authentifizierung wird für AKS-Cluster mit OpenID Connect bereitgestellt. OpenID Connect ist eine Identitätsebene, die auf dem OAuth 2.0-Protokoll aufbaut. Weitere Informationen zu OpenID Connect finden Sie in der [OpenID Connect-Dokumentation][open-id-connect].
 
-Informieren Sie sich in der [Dokumentation zu den Konzepten der Azure Active Directory-Integration](concepts-identity.md#azure-active-directory-integration) über den Ablauf der Azure AD-Integration.
+Informieren Sie sich in der [Dokumentation zu den Konzepten der Azure Active Directory-Integration](concepts-identity.md#azure-ad-integration) über den Ablauf der Azure AD-Integration.
 
 ## <a name="limitations"></a>Einschränkungen 
 

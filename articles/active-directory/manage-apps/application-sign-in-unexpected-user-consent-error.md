@@ -2,26 +2,22 @@
 title: Unerwarteter Fehler beim Vorgang des Genehmigens einer Anwendung | Microsoft-Dokumentation
 description: Erläuterungen von Fehlern, die während des Vorgangs des Genehmigens einer Anwendung auftreten können, und Abhilfemöglichkeiten
 services: active-directory
-documentationcenter: ''
-author: kenwith
-manager: daveba
-ms.assetid: ''
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 07/11/2017
-ms.author: kenwith
+ms.author: iangithinji
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f829672f88ea848e4611000b54d9cc200bc166d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ad216d0062928fc16b0f2226daabb6258d09063c
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99259976"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107378124"
 ---
 # <a name="unexpected-error-when-performing-consent-to-an-application"></a>Unerwarteter Fehler beim Vorgang des Genehmigens einer Anwendung
 

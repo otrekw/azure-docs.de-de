@@ -4,23 +4,25 @@ description: Die Azure DDoS Protection Standard-Sicherheitsbaseline enthält S
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 08/05/2020
+ms.date: 03/29/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 51d1b3dcf66c124d113d63c3c5a46d5f41fd531d
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: c7b0d8b6c315c8224cfefbd98a50e11044c8bc69
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102615294"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105966995"
 ---
 # <a name="azure-security-baseline-for-azure-ddos-protection-standard"></a>Azure-Sicherheitsbaseline für Azure DDoS Protection Standard
 
-Diese Sicherheitsbaseline wendet Empfehlungen des [Azure-Sicherheitsvergleichstest](../benchmarks/overview.md) auf Azure DDoS Protection Standard an. Der Azure-Sicherheitsvergleichstest enthält Empfehlungen zum Schutz Ihrer Cloudlösungen in Azure. Der Inhalt wird nach den **Sicherheitskontrollen** gruppiert, die durch den Azure-Sicherheitsvergleichstest und durch die entsprechenden, für Azure DDoS Protection geltenden Empfehlungen definiert werden. Nicht auf DDoS Protection anwendbare **Steuerungen** wurden ausgeschlossen. Zum Anzeigen der vollständigen Zuordnung von DDoS Protection zum Vergleichstest für die Azure-Sicherheit sehen Sie sich die [vollständige Zuordnungsdatei der DDoS Protection-Sicherheitsbaseline](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines) an.
+Diese Sicherheitsbaseline wendet Empfehlungen der Version 1.0 des[Azure-Sicherheitsvergleichstests](../benchmarks/overview-v1.md) auf Azure DDoS Protection Standard an. Der Azure-Sicherheitsvergleichstest enthält Empfehlungen zum Schutz Ihrer Cloudlösungen in Azure. Der Inhalt wird nach den **Sicherheitskontrollen** gruppiert, die durch den Azure-Sicherheitsvergleichstest und durch die entsprechenden, für den Azure DDoS Protection-Standard geltenden Empfehlungen definiert werden. **Steuerungen** nicht auf den Azure DDoS Protection-Standard anwendbar sind oder für die die Verantwortung bei Microsoft liegt, wurden ausgeschlossen.
+
+Um zu sehen, wie der Azure DDoS Protection Standard vollständig auf den Azure Security Benchmark abgebildet wird, sehen Sie sich die [vollständige Azure DDoS Protection Standard Security Baseline Mapping-Datei an](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines).
 
 ## <a name="logging-and-monitoring"></a>Protokollierung und Überwachung
 
-*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Protokollierung und Überwachung](../benchmarks/security-control-logging-monitoring.md).*
+*Weitere Informationen finden Sie unter [Azure-Sicherheitsvergleichstest: Protokollierung und Überwachung](../benchmarks/security-control-logging-monitoring.md).*
 
 ### <a name="22-configure-central-security-log-management"></a>2.2: Konfigurieren der zentralen Sicherheitsprotokollverwaltung
 
@@ -28,9 +30,9 @@ Diese Sicherheitsbaseline wendet Empfehlungen des [Azure-Sicherheitsvergleichste
 
 - [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../../azure-monitor/essentials/activity-log.md)
 
-**Azure Security Center-Überwachung**: Ja
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3: Aktivieren der Überwachungsprotokollierung für Azure-Ressourcen
 
@@ -42,33 +44,33 @@ Aktivieren Sie die Diagnoseeinstellungen für das Azure-Aktivitätsprotokoll, un
 
 - [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../../azure-monitor/essentials/activity-log.md)
 
-**Azure Security Center-Überwachung**: Ja
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="25-configure-security-log-storage-retention"></a>2.5: Konfigurieren der Sicherheitsprotokoll-Aufbewahrungsdauer im Speicher
 
 **Leitfaden**: Legen Sie in Azure Monitor den Aufbewahrungszeitraum für Protokolle für Log Analytics-Arbeitsbereiche, die Ihren Azure DDoS Protection-Plänen zugeordnet sind, gemäß den Compliancevorschriften Ihrer Organisation fest.
 
-- [Ändern des Datenaufbewahrungszeitraums](../../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
-
-**Azure Security Center-Überwachung**: Nicht verfügbar
+- [Ändern des Datenaufbewahrungszeitraums](https://docs.microsoft.com/azure/azure-monitor/logs/manage-cost-storage#change-the-data-retention-period)
 
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="26-monitor-and-review-logs"></a>2.6: Überwachen und Überprüfen von Protokollen
 
 **Leitfaden**: Aktivieren Sie die Diagnoseeinstellungen für das Azure-Aktivitätsprotokoll, und senden Sie die Protokolle an einen Log Analytics-Arbeitsbereich. Außerdem können Sie Abfragen in Log Analytics durchführen, um Suchbegriffe zu ermitteln, Trends auszumachen, Muster zu analysieren und viele weitere Erkenntnisse auf Grundlage der Aktivitätsprotokolldaten zu gewinnen, die möglicherweise für Recovery Services-Tresore gesammelt wurden.
 
-- [ Informationen über den Zugriff auf Telemetrie, Protokolle und Angriffsanalysen für den DDoS Protection Standard-Dienst](../../ddos-protection/telemetry.md)
+- [ Informationen über den Zugriff auf Telemetrie, Protokolle und Angriffsanalysen für den DDoS Protection Standard-Dienst](/azure/ddos-protection/telemetry-monitoring-alerting#configure-alerts-for-ddos-protection-metrics)
 
 - [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../../azure-monitor/essentials/activity-log.md)
 
 - [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../../azure-monitor/essentials/activity-log.md)
-
-**Azure Security Center-Überwachung**: Ja
 
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="27-enable-alerts-for-anomalous-activities"></a>2.7: Aktivieren von Warnungen bei anomalen Aktivitäten
 
@@ -82,19 +84,19 @@ Integrieren Sie einen Log Analytics-Arbeitsbereich in Azure Sentinel, da er eine
 
 - [Erstellen, Anzeigen und Verwalten von Protokollwarnungen mithilfe von Azure Monitor](../../azure-monitor/alerts/alerts-log.md)
 
-**Azure Security Center-Überwachung**: Nicht verfügbar
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ## <a name="identity-and-access-control"></a>Identität und Zugriffssteuerung
 
-*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Identität und Zugriffssteuerung](../benchmarks/security-control-identity-access-control.md).*
+*Weitere Informationen finden Sie unter [Azure-Sicherheitsvergleichstest: Identität und Zugriffssteuerung](../benchmarks/security-control-identity-access-control.md).*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1: Verwalten eines Bestands von Administratorkonten
 
 **Leitfaden**: Zum Arbeiten mit DDoS Protection-Plänen muss Ihr Konto der Rolle „Netzwerkmitwirkender“ oder einer benutzerdefinierten Rolle zugewiesen sein, der die entsprechenden Aktionen zugewiesen wurden.
 
-Außerdem umfasst Azure Active Directory (AAD) integrierte Rollen, die explizit zugewiesen werden müssen und abgefragt werden können. Verwenden Sie das Azure AD PowerShell-Modul, um Ad-hoc-Abfragen zum Ermitteln von Konten auszuführen, die Mitglieder von administrativen Gruppen sind.
+Außerdem umfasst Azure Active Directory (Azure AD) integrierte Rollen, die explizit zugewiesen werden müssen und abgefragt werden können. Verwenden Sie das Azure AD PowerShell-Modul, um Ad-hoc-Abfragen zum Ermitteln von Konten auszuführen, die Mitglieder von administrativen Gruppen sind.
 
 - [Grundlegendes zu Berechtigungen in Azure DDoS Protection](../../ddos-protection/manage-permissions.md)
 
@@ -102,17 +104,17 @@ Außerdem umfasst Azure Active Directory (AAD) integrierte Rollen, die explizit 
 
 - [Abrufen von Mitgliedern einer Verzeichnisrolle in Azure AD mit PowerShell](/powershell/module/azuread/get-azureaddirectoryrolemember)
 
-**Azure Security Center-Überwachung**: Ja
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3.2: Ändern von Standardkennwörtern bei Bedarf
 
-**Leitfaden**: Azure AD verfügt nicht über das Konzept von Standardkennwörtern. Bei anderen Azure-Ressourcen, für die ein Kennwort erforderlich ist, wird erzwungen, dass ein Kennwort mit komplexen Anforderungen und einer minimalen Kennwortlänge, die sich je nach Dienst unterscheiden, erstellt wird. Sie sind verantwortlich für Anwendungen und Marketplace-Dienste von Drittanbietern, bei denen möglicherweise Standardkennwörter verwendet werden.
-
-**Azure Security Center-Überwachung**: Nicht verfügbar
+**Leitfaden**: Azure Active Directory (Azure AD) verfolgt nicht das Konzept der Standardkennwörter. Bei anderen Azure-Ressourcen, für die ein Kennwort erforderlich ist, wird erzwungen, dass ein Kennwort mit komplexen Anforderungen und einer minimalen Kennwortlänge, die sich je nach Dienst unterscheiden, erstellt wird. Sie sind verantwortlich für Anwendungen und Marketplace-Dienste von Drittanbietern, bei denen möglicherweise Standardkennwörter verwendet werden.
 
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3.3: Verwenden dedizierter Administratorkonten
 
@@ -126,13 +128,15 @@ Zusätzlich können Sie, um den Überblick über dedizierte Verwaltungskonten zu
 
 - Externe Konten mit Besitzerberechtigungen sollten aus Ihrem Abonnement entfernt werden.
 
+Weitere Informationen finden Sie in den folgenden Referenzen:
+
 - [Überwachen der Identität und des Zugriffs](../../security-center/security-center-identity-access.md)
 
 - [Tutorial: Erstellen und Verwalten von Richtlinien zur Konformitätserzwingung](../../governance/policy/tutorials/create-and-manage.md)
 
-**Azure Security Center-Überwachung**: Ja
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="34-use-azure-active-directory-single-sign-on-sso"></a>3.4: Verwenden des einmaligen Anmeldens (SSO) in Azure Active Directory
 
@@ -140,37 +144,37 @@ Zusätzlich können Sie, um den Überblick über dedizierte Verwaltungskonten zu
 
 - [Aufrufen von Azure-REST-APIs mit Postman](/rest/api/azure/#how-to-call-azure-rest-apis-with-postman)
 
-- [Registrieren Ihrer Clientanwendung mit Azure AD](/rest/api/azure/#register-your-client-application-with-azure-ad)
+- [Registrieren Ihrer Clientanwendung (Dienstprinzipal) bei Azure Active Directory (Azure AD)](/rest/api/azure/#register-your-client-application-with-azure-ad)
 
 - [Informationen zur Azure DDoS Protection-API](/rest/api/virtual-network/)
 
-**Azure Security Center-Überwachung**: Nicht verfügbar
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5: Verwenden der mehrstufigen Authentifizierung für den gesamten Azure Active Directory-basierten Zugriff
 
-**Leitfaden**: Aktivieren Sie die mehrstufige Authentifizierung für Azure Active Directory, und befolgen Sie die Empfehlungen für die Identitäts- und Zugriffsverwaltung in Azure Security Center.
+**Leitfaden**: Aktivieren Sie die mehrstufige Authentifizierung für Azure Active Directory (Azure AD), und befolgen Sie die Empfehlungen für die Identitäts- und Zugriffsverwaltung in Azure Security Center.
 
-- [Aktivieren von MFA in Azure](../../active-directory/authentication/howto-mfa-getstarted.md)
+- [So aktivieren Sie die Azure Active Directory Multi-Faktor-Authentifizierung](../../active-directory/authentication/howto-mfa-getstarted.md)
 
 - [Überwachen von Identität und Zugriff in Azure Security Center](../../security-center/security-center-identity-access.md)
 
-**Azure Security Center-Überwachung**: Ja
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6: Verwenden dedizierter Computer (Arbeitsstationen mit privilegiertem Zugriff) für alle administrativen Aufgaben 
 
-**Leitfaden**: Verwenden Sie eine sichere, von Azure verwaltete Arbeitsstation mit Azure AD Multi-Factor Authentication (MFA), um sich anzumelden und Ihre Anforderungen für die Azure-Kunden-Lockbox zu konfigurieren.
+**Leitfaden**: Verwenden Sie eine sichere, von Azure verwaltete Arbeitsstation mit aktivierter Azure Active Directory Multi-Faktor-Authentifizierung, um sich bei Ihren Azure Customer Lockbox-Anfragen anzumelden und diese zu konfigurieren.
 
-- [Bereitstellen einer sicheren, von Azure verwalteten Arbeitsstation](/security/compass/privileged-access-deployment)
+- [Bereitstellen einer sicheren, von Azure verwalteten Arbeitsstation](/security/compass/overview)
 
 - [Planen einer cloudbasierten Azure AD Multi-Factor Authentication-Bereitstellung](../../active-directory/authentication/howto-mfa-getstarted.md)
 
-**Azure Security Center-Überwachung**: Nicht verfügbar
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="37-log-and-alert-on-suspicious-activities-from-administrative-accounts"></a>3.7: Protokollieren von und Warnen bei verdächtigen Aktivitäten in Administratorkonten
 
@@ -182,19 +186,19 @@ Verwenden Sie zusätzlich die Azure AD-Risikoerkennung, um Warnungen und Bericht
 
 - [Azure Active Directory-Risikoerkennung](../../active-directory/identity-protection/overview-identity-protection.md)
 
-**Azure Security Center-Überwachung**: Ja
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3.8: Verwalten von Azure-Ressourcen nur über genehmigte Standorte
 
-**Leitfaden**: Verwenden Sie benannte Azure AD-Standorte, um den Zugriff auf das Azure-Portal nur über bestimmte logische Gruppierungen von IP-Adressbereichen oder Ländern/Regionen zuzulassen.
+**Leitfaden**: Verwenden Sie benannte Azure Active Directory (Azure AD), um den Zugriff auf das Azure-Portal nur über bestimmte logische Gruppierungen von IP-Adressbereichen oder Ländern/Regionen zuzulassen.
 
 - [Schnellstart: Konfigurieren benannter Orte in Azure Active Directory](../../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
-**Azure Security Center-Überwachung**: Nicht verfügbar
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="39-use-azure-active-directory"></a>3.9: Verwenden von Azure Active Directory
 
@@ -202,21 +206,21 @@ Verwenden Sie zusätzlich die Azure AD-Risikoerkennung, um Warnungen und Bericht
 
 - [Erstellen und Konfigurieren einer Azure AD-Instanz](../../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
-**Azure Security Center-Überwachung**: Nicht verfügbar
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10: Regelmäßiges Überprüfen und Abstimmen des Benutzerzugriffs
 
 **Leitfaden**: Azure Active Directory (Azure AD) enthält Protokolle zum Ermitteln von veralteten Konten. Verwenden Sie zusätzlich Azure AD-Zugriffsüberprüfungen, um Gruppenmitgliedschaften den Zugriff auf Unternehmensanwendungen und Rollenzuweisungen effizient zu verwalten. Der Benutzerzugriff sollte regelmäßig überprüft werden, um sicherzustellen, dass nur die richtigen Benutzer weiterhin Zugriff haben.
 
-- [Grundlegendes zur Azure AD-Berichterstellung](../../active-directory/reports-monitoring/index.yml)
+- [Grundlegendes zur Azure AD-Berichterstellung](/azure/active-directory/reports-monitoring/)
 
 - [Verwenden von Azure AD-Zugriffsüberprüfungen](../../active-directory/governance/access-reviews-overview.md)
 
-**Azure Security Center-Überwachung**: Ja
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="311-monitor-attempts-to-access-deactivated-credentials"></a>3.11: Überwachen von Zugriffsversuchen auf deaktivierte Anmeldeinformationen
 
@@ -226,17 +230,17 @@ Sie haben Zugriff auf Azure AD-Anmeldeaktivitäten sowie auf Quellen für Überw
 
 Sie können diesen Prozess optimieren, indem Sie Diagnoseeinstellungen für Azure AD-Benutzerkonten erstellen und die Überwachungs- und Anmeldeprotokolle an einen Log Analytics-Arbeitsbereich senden. Sie können gewünschte Warnungen in Log Analytics konfigurieren.
 
-- [Integrieren von Azure-Aktivitätsprotokollen in Azure Monitor](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
+- [Integrieren von Azure-Aktivitätsprotokollen in Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
 
 - [Schnellstart: Ausführen des Onboardings für Azure Sentinel](../../sentinel/quickstart-onboard.md)
 
-**Azure Security Center-Überwachung**: Nicht verfügbar
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="312-alert-on-account-sign-in-behavior-deviation"></a>3.12: Warnung bei abweichendem Verhalten bei der Kontoanmeldung
 
-**Leitfaden**: Verwenden Sie für abweichendes Verhalten bei der Kontoanmeldung auf Steuerungsebene (z. B. Azure-Portal) Azure AD Identity Protection und Risikoerkennungsfeatures, um automatisierte Antworten auf erkannte verdächtige Aktionen im Zusammenhang mit Benutzeridentitäten zu konfigurieren. Außerdem können Sie Daten zur weiteren Untersuchung in Azure Sentinel erfassen.
+**Leitfaden**: Falls bei der Kontoanmeldung auf Steuerungsebene (z. B. Azure-Portal) ein abweichendes Anmeldeverhalten auftritt, sollten Sie Azure Active Directory (Azure AD) Identity Protection und Risikoerkennungsfeatures verwenden, um automatisierte Reaktionen auf erkannte verdächtige Aktionen im Zusammenhang mit Benutzeridentitäten zu konfigurieren. Außerdem können Sie Daten zur weiteren Untersuchung in Azure Sentinel erfassen.
 
 - [Bericht „Riskante Anmeldungen“ im Azure Active Directory-Portal](../../active-directory/identity-protection/overview-identity-protection.md)
 
@@ -244,13 +248,13 @@ Sie können diesen Prozess optimieren, indem Sie Diagnoseeinstellungen für Azur
 
 - [Durchführen des Onboardings für Azure Sentinel](../../sentinel/quickstart-onboard.md)
 
-**Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
-
 **Verantwortlichkeit**: Kunde
 
-## <a name="data-protection"></a>Schutz von Daten
+**Azure Security Center-Überwachung:** Keine
 
-*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Datenschutz](../benchmarks/security-control-data-protection.md).*
+## <a name="data-protection"></a>Datenschutz
+
+*Weitere Informationen finden Sie unter [Azure-Sicherheitsvergleichstest: Schutz von Daten](../benchmarks/security-control-data-protection.md).*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1: Verwalten eines Bestands an vertraulichen Informationen
 
@@ -258,19 +262,19 @@ Sie können diesen Prozess optimieren, indem Sie Diagnoseeinstellungen für Azur
 
 - [Erstellen und Verwenden von Tags](../../azure-resource-manager/management/tag-resources.md)
 
-**Azure Security Center-Überwachung**: Nicht verfügbar
-
 **Verantwortlichkeit**: Kunde
 
-### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6: Verwenden von Azure RBAC zum Steuern des Zugriffs auf Ressourcen
+**Azure Security Center-Überwachung:** Keine
+
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6: Verwenden von Azure RBAC zum Steuern des Zugriffs auf Ressourcen 
 
 **Leitfaden**: Zum Arbeiten mit Azure DDoS Protection-Plänen muss Ihr Konto der Rolle „Netzwerkmitwirkender“ oder einer benutzerdefinierten Rolle zugewiesen sein, der bestimmte Aktionen zugewiesen wurden.
 
-- [Verwalten rollenbasierter Zugriffssteuerung in Azure (Azure RBAC) in Azure DDoS Protection](../../ddos-protection/manage-ddos-protection.md)
-
-**Azure Security Center-Überwachung**: Nicht verfügbar
+- [Verwalten von Azure RBAC in Azure DDoS Protection](/azure/virtual-network/manage-ddos-protection)
 
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9: Protokollieren und Warnen bei Änderungen an wichtigen Azure-Ressourcen
 
@@ -278,17 +282,17 @@ Sie können diesen Prozess optimieren, indem Sie Diagnoseeinstellungen für Azur
 
 - [Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls](../../azure-monitor/alerts/alerts-activity-log.md)
 
-**Azure Security Center-Überwachung**: Ja
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ## <a name="inventory-and-asset-management"></a>Bestands- und Ressourcenverwaltung
 
-*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Bestands- und Ressourcenverwaltung](../benchmarks/security-control-inventory-asset-management.md).*
+*Weitere Informationen finden Sie unter [Azure-Sicherheitsvergleichstest: Bestands- und Ressourcenverwaltung](../benchmarks/security-control-inventory-asset-management.md).*
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6.1: Verwenden der automatisierten Asset Discovery-Lösung
 
-**Leitfaden**: Verwenden Sie Azure Resource Graph, um alle Ressourcen (z. B. Computeressourcen, Speicher, Netzwerke, Ports und Protokolle usw.) in Ihren Abonnements abzufragen bzw. zu ermitteln.  Stellen Sie entsprechende (Lese-) Berechtigungen in Ihrem Mandanten sicher, und zählen Sie alle Azure-Abonnements sowie Ressourcen in ihren Abonnements auf.
+**Leitfaden**: Verwenden Sie Azure Resource Graph, um alle Ressourcen (z. B. Computeressourcen, Speicher, Netzwerke, Ports und Protokolle usw.) in Ihren Abonnements abzufragen bzw. zu ermitteln. Stellen Sie entsprechende (Lese-) Berechtigungen in Ihrem Mandanten sicher, und zählen Sie alle Azure-Abonnements sowie Ressourcen in ihren Abonnements auf.
 
 Obwohl klassische Azure-Ressourcen über Resource Graph ermittelt werden können, wird dringend empfohlen, Azure Resource Manager-Ressourcen zu erstellen und zu verwenden.
 
@@ -296,9 +300,9 @@ Obwohl klassische Azure-Ressourcen über Resource Graph ermittelt werden können
 
 - [Anzeigen Ihrer Azure-Abonnements](/powershell/module/az.accounts/get-azsubscription)
 
-**Azure Security Center-Überwachung**: Nicht verfügbar
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="62-maintain-asset-metadata"></a>6.2: Verwalten von Ressourcenmetadaten
 
@@ -306,9 +310,9 @@ Obwohl klassische Azure-Ressourcen über Resource Graph ermittelt werden können
 
 - [Erstellen und Verwenden von Tags](../../azure-resource-manager/management/tag-resources.md)
 
-**Azure Security Center-Überwachung**: Nicht verfügbar
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="63-delete-unauthorized-azure-resources"></a>6.3: Löschen nicht autorisierter Azure-Ressourcen
 
@@ -320,23 +324,25 @@ Verwenden Sie darüber hinaus Azure Policy, um Einschränkungen für die Ressour
 
 - Zulässige Ressourcentypen
 
+Weitere Informationen finden Sie in den folgenden Referenzen:
+
 - [Erstellen zusätzlicher Azure-Abonnements](../../cost-management-billing/manage/create-subscription.md)
 
 - [Erstellen von Verwaltungsgruppen](../../governance/management-groups/create-management-group-portal.md)
 
 - [Erstellen und Verwenden von Tags](../../azure-resource-manager/management/tag-resources.md)
 
-**Azure Security Center-Überwachung**: Nicht verfügbar
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="64-define-and-maintain-inventory-of-approved-azure-resources"></a>6.4: Definieren und Verwalten des Bestands an genehmigten Azure-Ressourcen
 
 **Leitfaden**: Erstellen Sie einen Bestand an genehmigten Azure-Ressourcen und genehmigter Software für Computeressourcen gemäß den Anforderungen Ihrer Organisation.
 
-**Azure Security Center-Überwachung**: Nicht verfügbar
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5: Überwachung auf nicht genehmigte Azure-Ressourcen
 
@@ -348,25 +354,26 @@ Verwenden Sie Azure Resource Graph, um Ressourcen in ihren Abonnements abzufrage
 
 - [Erstellen von Abfragen mit Azure Resource Graph](../../governance/resource-graph/first-query-portal.md)
 
-**Azure Security Center-Überwachung**: Nicht verfügbar
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="69-use-only-approved-azure-services"></a>6.9: Ausschließliche Verwendung genehmigter Azure-Dienste
 
 **Leitfaden**: Verwenden Sie Azure Policy, um Einschränkungen für den Typ der Ressourcen anzugeben, die in Kundenabonnements erstellt werden können. Nutzen Sie dazu die folgenden integrierten Richtliniendefinitionen:
 
 - Not allowed resource types (Unzulässige Ressourcentypen)
-
 - Zulässige Ressourcentypen
+
+Weitere Informationen finden Sie in den folgenden Referenzen:
 
 - [Konfigurieren und Verwalten von Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
 - [Ablehnen eines bestimmten Ressourcentyps mit Azure Policy](../../governance/policy/samples/index.md)
 
-**Azure Security Center-Überwachung**: Nicht verfügbar
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="611-limit-users-ability-to-interact-with-azure-resource-manager"></a>6.11: Einschränken der Möglichkeiten von Benutzern zur Interaktion mit Azure Resource Manager
 
@@ -374,13 +381,13 @@ Verwenden Sie Azure Resource Graph, um Ressourcen in ihren Abonnements abzufrage
 
 - [Verwalten des Zugriffs auf die Azure-Verwaltung mit bedingtem Zugriff](../../role-based-access-control/conditional-access-azure-management.md)
 
-**Azure Security Center-Überwachung**: Nicht verfügbar
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ## <a name="secure-configuration"></a>Sichere Konfiguration
 
-*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Sichere Konfiguration](../benchmarks/security-control-secure-configuration.md).*
+*Weitere Informationen finden Sie unter [Azure-Sicherheitsvergleichstest: Sichere Konfiguration](../benchmarks/security-control-secure-configuration.md).*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1: Einrichten sicherer Konfigurationen für alle Azure-Ressourcen
 
@@ -390,9 +397,9 @@ Verwenden Sie Azure Resource Graph, um Ressourcen in ihren Abonnements abzufrage
 
 - [Konfigurieren und Verwalten von Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
-**Azure Security Center-Überwachung**: Nicht verfügbar
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3: Verwalten von sicheren Konfigurationen für Azure-Ressourcen
 
@@ -402,9 +409,9 @@ Verwenden Sie Azure Resource Graph, um Ressourcen in ihren Abonnements abzufrage
 
 - [Grundlegendes zu Azure Policy-Auswirkungen](../../governance/policy/concepts/effects.md)
 
-**Azure Security Center-Überwachung**: Nicht verfügbar
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5: Sicheres Speichern der Konfiguration von Azure-Ressourcen
 
@@ -412,11 +419,11 @@ Verwenden Sie Azure Resource Graph, um Ressourcen in ihren Abonnements abzufrage
 
 - [Speichern von Code in Azure DevOps](/azure/devops/repos/git/gitworkflow)
 
-- [Dokumentation zu Azure Repos](/azure/devops/repos/index)
-
-**Azure Security Center-Überwachung**: Nicht verfügbar
+- [Dokumentation zu Azure Repos](/azure/devops/repos/)
 
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="77-deploy-configuration-management-tools-for-azure-resources"></a>7.7: Bereitstellen von Konfigurationsverwaltungstools für Azure-Ressourcen
 
@@ -424,9 +431,9 @@ Verwenden Sie Azure Resource Graph, um Ressourcen in ihren Abonnements abzufrage
 
 - [Konfigurieren und Verwalten von Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
-**Azure Security Center-Überwachung**: Nicht verfügbar
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="79-implement-automated-configuration-monitoring-for-azure-resources"></a>7.9: Implementieren der automatisierten Konfigurationsüberwachung für Azure-Ressourcen
 
@@ -434,9 +441,9 @@ Verwenden Sie Azure Resource Graph, um Ressourcen in ihren Abonnements abzufrage
 
 - [Konfigurieren und Verwalten von Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
-**Azure Security Center-Überwachung**: Nicht verfügbar
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="713-eliminate-unintended-credential-exposure"></a>7.13: Beheben der unbeabsichtigten Offenlegung von Anmeldeinformationen
 
@@ -444,13 +451,13 @@ Verwenden Sie Azure Resource Graph, um Ressourcen in ihren Abonnements abzufrage
 
 - [Einrichten von Credential Scanner](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
-**Azure Security Center-Überwachung**: Nicht verfügbar
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ## <a name="malware-defense"></a>Schutz vor Schadsoftware
 
-*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Schutz vor Schadsoftware](../benchmarks/security-control-malware-defense.md).*
+*Weitere Informationen finden Sie unter [Azure-Sicherheitsvergleichstest: Schutz vor Schadsoftware](../benchmarks/security-control-malware-defense.md).*
 
 ### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2: Vorabprüfen von in computefremde Azure-Ressourcen hochzuladenden Dateien
 
@@ -458,13 +465,13 @@ Verwenden Sie Azure Resource Graph, um Ressourcen in ihren Abonnements abzufrage
 
 Es liegt in Ihrer Verantwortung, alle Inhalte vorab zu überprüfen, die auf computefremde Azure-Ressourcen hochgeladen werden. Microsoft kann nicht auf Kundendaten zugreifen und kann daher keine Antischadsoftwarescans von Kundeninhalten in Ihrem Namen durchführen.
 
-**Azure Security Center-Überwachung**: Nicht verfügbar
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ## <a name="incident-response"></a>Reaktion auf Vorfälle
 
-*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Reaktion auf Vorfälle](../benchmarks/security-control-incident-response.md).*
+*Weitere Informationen finden Sie unter [Azure-Sicherheitsvergleichstest: Reaktion auf Vorfälle](../benchmarks/security-control-incident-response.md).*
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1: Erstellen eines Leitfadens für die Reaktion auf Vorfälle
 
@@ -476,9 +483,9 @@ Es liegt in Ihrer Verantwortung, alle Inhalte vorab zu überprüfen, die auf com
 
 - [Nutzen des Computer Security Incident Handling Guide des US-amerikanischen National Institute of Standards and Technology (NIST) als Hilfe bei der Entwicklung eines eigenen Plans zur Reaktion auf Vorfälle](https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final)
 
-**Azure Security Center-Überwachung**: Nicht verfügbar
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2: Erstellen eines Verfahrens zur Bewertung und Priorisierung von Vorfällen
 
@@ -490,9 +497,9 @@ Kennzeichnen Sie außerdem die Abonnements (z. B. Produktion, Nicht-Produktion)
 
 - [Verwenden von Tags zum Organisieren von Azure-Ressourcen](../../azure-resource-manager/management/tag-resources.md)
 
-**Azure Security Center-Überwachung**: Ja
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="103-test-security-response-procedures"></a>10.3: Verfahren zum Testen der Reaktion auf Sicherheitsvorfälle
 
@@ -504,9 +511,9 @@ Testen Sie Ihre Annahmen darüber, wie Ihre Dienste auf einen Angriff reagieren,
 
 - [NIST-Veröffentlichung: Leitfaden zum Testen, Trainieren und Ausführen von Programmen für IT-Pläne und -Funktionen](https://csrc.nist.gov/publications/detail/sp/800-84/final)
 
-**Azure Security Center-Überwachung**: Nicht verfügbar
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10.4: Angeben von Kontaktdaten für Sicherheitsvorfälle und Konfigurieren von Warnungsbenachrichtigungen für Sicherheitsvorfälle
 
@@ -514,9 +521,9 @@ Testen Sie Ihre Annahmen darüber, wie Ihre Dienste auf einen Angriff reagieren,
 
 - [Festlegen der Kontaktinformationen in Azure Security Center](../../security-center/security-center-provide-security-contact-details.md)
 
-**Azure Security Center-Überwachung**: Ja
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5: Integrieren von Sicherheitswarnungen in das System zur Reaktion auf Vorfälle
 
@@ -530,9 +537,9 @@ Wählen Sie mithilfe der Warnungskonfiguration von Azure Monitor jede der verfü
 
 - [Streamen von Warnungen in Azure Sentinel](../../sentinel/connect-azure-security-center.md)
 
-**Azure Security Center-Überwachung**: Nicht verfügbar
-
 **Verantwortlichkeit**: Kunde
+
+**Azure Security Center-Überwachung:** Keine
 
 ### <a name="106-automate-the-response-to-security-alerts"></a>10.6: Automatisieren der Reaktion auf Sicherheitswarnungen
 
@@ -540,13 +547,13 @@ Wählen Sie mithilfe der Warnungskonfiguration von Azure Monitor jede der verfü
 
 - [Konfigurieren von Workflowautomatisierung und Logic Apps](../../security-center/workflow-automation.md)
 
-**Azure Security Center-Überwachung**: Nicht verfügbar
-
 **Verantwortlichkeit**: Kunde
 
-## <a name="penetration-tests-and-red-team-exercises"></a>Penetrationstests und Red Team-Übungen
+**Azure Security Center-Überwachung:** Keine
 
-*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Penetrationstests und Red Team-Übungen](../benchmarks/security-control-penetration-tests-red-team-exercises.md).*
+## <a name="penetration-tests-and-red-team-exercises"></a>Penetrationstests und Red Team-Übungen
+
+*Weitere Informationen finden Sie unter [Azure-Sicherheitsvergleichstest: Penetrationstests und Red Team-Übungen](../benchmarks/security-control-penetration-tests-red-team-exercises.md).*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1: Durchführen regelmäßiger Penetrationstests Ihrer Azure-Ressourcen und Sicherstellen der Behebung aller kritischen Sicherheitsergebnissen
 
@@ -556,11 +563,11 @@ Wählen Sie mithilfe der Warnungskonfiguration von Azure Monitor jede der verfü
 
 - [Microsoft Cloud Red Teaming](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
-**Azure Security Center-Überwachung**: Nicht verfügbar
-
 **Verantwortlichkeit**: Shared
+
+**Azure Security Center-Überwachung:** Keine
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Lesen Sie den [Vergleichstest für die Azure-Sicherheit](../benchmarks/overview.md).
-- Erfahren Sie mehr über [Azure-Sicherheitsbaselines](../benchmarks/security-baselines-overview.md).
+- Sehen Sie sich die [Übersicht über Version 2 des Azure-Sicherheitsvergleichstests](/azure/security/benchmarks/overview) an.
+- Erfahren Sie mehr über [Azure-Sicherheitsbaselines](/azure/security/benchmarks/security-baselines-overview).

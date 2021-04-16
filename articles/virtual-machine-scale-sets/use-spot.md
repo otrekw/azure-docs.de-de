@@ -9,12 +9,12 @@ ms.subservice: spot
 ms.date: 02/26/2021
 ms.reviewer: cynthn
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: b20a5bd9c06c3948097389d5439defa219a7931b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ec73d1363fb18d1d6c46589fe69879a8f6df1dab
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101694987"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104722564"
 ---
 # <a name="azure-spot-virtual-machines-for-virtual-machine-scale-sets"></a>Azure-Spot-VMs und VM-Skalierungsgruppen 
 
@@ -44,9 +44,9 @@ Mit Ausnahme von Microsoft Azure China 21ViaNet können Azure-Spot-VMs in jeder 
 Folgende [Angebotstypen](https://azure.microsoft.com/support/legal/offer-details/) werden derzeit unterstützt:
 
 -   Enterprise Agreement
--   Angebotscode für nutzungsbasierte Bezahlung: 003P
--   Sponsoren
-- Informationen zu Cloud-Dienstanbietern (CSP) finden Sie in [Partner Center](https://docs.microsoft.com/partner-center/azure-plan-get-started), oder indem Sie sich direkt an Ihren Partner wenden.
+-   Angebotscode für nutzungsbasierte Bezahlung (003P)
+-   Gesponsert (0036P und 0136P)
+- Informationen zu Cloud-Dienstanbietern (CSP) finden Sie in [Partner Center](/partner-center/azure-plan-get-started), oder indem Sie sich direkt an Ihren Partner wenden.
 
 ## <a name="eviction-policy"></a>Entfernungsrichtlinie
 
@@ -168,7 +168,7 @@ $vmssConfig = New-AzVmssConfig `
     -SkuName "Standard_DS2" `
     -UpgradePolicyMode Automatic `
     -Priority "Spot" `
-    --max-price -1
+    -max-price -1
 ```
 
 ## <a name="resource-manager-templates"></a>Resource Manager-Vorlagen
@@ -202,7 +202,7 @@ Um die Instanz nach dem Entfernen zu löschen, ändern Sie den `evictionPolicy`-
 
 ## <a name="simulate-an-eviction"></a>Simulieren einer Entfernung
 
-Sie können die Entfernung einer Azure-Spot-VM [simulieren](https://docs.microsoft.com/rest/api/compute/virtualmachines/simulateeviction), um zu testen, wie gut die Anwendung auf einen plötzlichen Entfernungsvorgang reagiert. 
+Sie können die Entfernung einer Azure-Spot-VM [simulieren](/rest/api/compute/virtualmachines/simulateeviction), um zu testen, wie gut die Anwendung auf einen plötzlichen Entfernungsvorgang reagiert. 
 
 Ersetzen Sie Folgendes durch Ihre Informationen: 
 

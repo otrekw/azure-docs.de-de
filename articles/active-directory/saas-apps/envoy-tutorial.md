@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/29/2019
+ms.date: 04/01/2021
 ms.author: jeedes
-ms.openlocfilehash: 9b7e5626eeb65b5bc92c27dbb0a772e85a54d4ff
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: bbf961e7b99efe29fd8b13c2104c33e42ae7d4be
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92453969"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106286510"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-envoy"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Envoy
 
@@ -25,8 +25,6 @@ In diesem Tutorial erfahren Sie, wie Sie Envoy in Azure Active Directory (Azure�
 * Steuern Sie in Azure AD, wer Zugriff auf Envoy hat.
 * Ermöglichen Sie es Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei Envoy anzumelden.
 * Verwalten Sie Ihre Konten zentral im Azure-Portal.
-
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -46,18 +44,18 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 > [!NOTE]
 > Der Bezeichner dieser Anwendung ist ein fester Zeichenfolgenwert, daher kann in einem Mandanten nur eine Instanz konfiguriert werden.
 
-## <a name="adding-envoy-from-the-gallery"></a>Hinzufügen von Envoy aus dem Katalog
+## <a name="add-envoy-from-the-gallery"></a>Hinzufügen von Envoy aus dem Katalog
 
 Zum Konfigurieren der Integration von Envoy in Azure AD müssen Sie Envoy über den Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim Azure-Portal an.
 1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** aus.
 1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie dann **Alle Anwendungen** aus.
 1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Envoy** in das Suchfeld ein.
 1. Wählen Sie im Ergebnisbereich **Envoy** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-envoy"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Envoy
+## <a name="configure-and-test-azure-ad-sso-for-envoy"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Envoy
 
 Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Envoy mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Envoy eingerichtet werden.
 
@@ -74,9 +72,9 @@ Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD 
 
 Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Envoy** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
+1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Envoy** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
-1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
@@ -118,15 +116,9 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
 1. Wählen Sie in der Anwendungsliste **Envoy** aus.
 1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
-
-   ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
-
 1. Wählen Sie **Benutzer hinzufügen** und anschließend im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
-
-    ![Link „Benutzer hinzufügen“](common/add-assign-user.png)
-
 1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen**.
-1. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer in der Liste aus, und klicken Sie dann im unteren Bildschirmbereich auf die Schaltfläche **Auswählen**.
+1. Wenn den Benutzern eine Rolle zugewiesen werden soll, können Sie sie im Dropdownmenü **Rolle auswählen** auswählen. Wurde für diese App keine Rolle eingerichtet, ist die Rolle „Standardzugriff“ ausgewählt.
 1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
 ## <a name="configure-envoy-sso"></a>Konfigurieren des einmaligen Anmeldens für Envoy
@@ -143,19 +135,19 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 4. Klicken Sie oben auf der Symbolleiste auf **Einstellungen**.
 
-    ![Envoy](./media/envoy-tutorial/ic776782.png "Envoy")
+    ![Envoy](./media/envoy-tutorial/envoy-1.png "Envoy")
 
 5. Klicken Sie auf **Unternehmen**.
 
-    ![Company](./media/envoy-tutorial/ic776783.png "Company")
+    ![Company](./media/envoy-tutorial/envoy-2.png "Company")
 
 6. Klicken Sie auf **SAML**.
 
-    ![SAML](./media/envoy-tutorial/ic776784.png "SAML")
+    ![SAML](./media/envoy-tutorial/envoy-3.png "SAML")
 
 7. Führen Sie im Konfigurationsabschitt **SAML-Authentifizierung** die folgenden Schritte aus:
 
-    ![SAML-Authentifizierung](./media/envoy-tutorial/ic776785.png "SAML-Authentifizierung")
+    ![SAML-Authentifizierung](./media/envoy-tutorial/envoy-4.png "SAML-Authentifizierung")
     
     >[!NOTE]
     >Der Wert für die HQ-Speicherort-ID wird automatisch von der Anwendung generiert.
@@ -172,16 +164,14 @@ In diesem Abschnitt wird ein Benutzer mit dem Namen Britta Simon in Envoy erste
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 
-In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen: 
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Envoy“ klicken, sollten Sie automatisch bei der Envoy-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für Envoy weitergeleitet, wo Sie den Anmeldeflow initiieren können. 
 
-## <a name="additional-resources"></a>Zusätzliche Ressourcen
+* Rufen Sie direkt die Envoy-Anmelde-URL auf, und initiieren Sie den Anmeldeflow.
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie in „Meine Apps“auf die Kachel „Envoy“ klicken, werden Sie zur Anmelde-URL für Envoy weitergeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+## <a name="next-steps"></a>Nächste Schritte
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](../conditional-access/overview.md)
-
-- [Envoy mit Azure AD ausprobieren](https://aad.portal.azure.com/)
+Nach dem Konfigurieren von Envoy können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.

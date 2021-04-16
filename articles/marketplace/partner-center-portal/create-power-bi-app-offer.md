@@ -7,18 +7,18 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 07/22/2020
-ms.openlocfilehash: bff20468e8185073f5c192c1e115bc405dd089eb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d5eb253fb24f463106866f8b0fe17f634e805cbb
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97693605"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107476"
 ---
 # <a name="create-a-power-bi-app-offer"></a>Erstellen eines Power BI-App-Angebots
 
 In diesem Artikel wird beschrieben, wie Sie ein Power BI-App-Angebot erstellen und in [Microsoft AppSource](https://appsource.microsoft.com/) veröffentlichen.
 
-Bevor Sie beginnen, [erstellen Sie ein Konto im kommerziellen Marketplace in Partner Center](create-account.md), sofern Sie dies noch nicht getan haben. Vergewissern Sie sich, dass Ihr Konto im Programm „Kommerzieller Marketplace“ registriert ist.
+Bevor Sie beginnen, [erstellen Sie ein Konto im kommerziellen Marketplace in Partner Center](../create-account.md), sofern Sie dies noch nicht getan haben. Vergewissern Sie sich, dass Ihr Konto im Programm „Kommerzieller Marketplace“ registriert ist.
 
 ## <a name="create-a-new-offer"></a>Erstellen eines neuen Angebots
 

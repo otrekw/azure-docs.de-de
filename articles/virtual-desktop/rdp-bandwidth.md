@@ -6,18 +6,19 @@ author: gundarev
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: denisgun
-ms.openlocfilehash: c9ef72241ac62efd8555de59bb52949321364035
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6fe12c985f5d9a519380d1d9b5a7d6c2820630c6
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96325178"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105932334"
 ---
 # <a name="remote-desktop-protocol-rdp-bandwidth-requirements"></a>Bandbreitenanforderungen des Remotedesktopprotokolls
 
 Das Remotedesktopprotokoll (Remote Desktop Protocol, RDP) ist eine ausgereifte Technologie, die verschiedene Techniken anwendet, um die Bereitstellung von Remotegrafiken durch den Server an den Client zu perfektionieren. Je nach Anwendungsfall, Verfügbarkeit von Computingressourcen und Netzwerkbandbreite passt das RDP dynamisch verschiedene Parameter an, um für ein optimales Benutzererlebnis zu sorgen.
 
-Das Remotedesktopprotokoll vereint mehrere dynamische virtuelle Kanäle (Dynamic Virtual Channels, DVCs) per Multiplexing in einem einzigen Datenkanal, der über verschiedene Methoden für den Netzwerktransport gesendet wird. Es gibt separate DVCs für Remotegrafiken, Eingabe, Geräteumleitung, Druckvorgänge und vieles mehr. WVD-Partner können auch eigene Erweiterungen implementieren, die DVC-Schnittstellen verwenden.
+Das Remotedesktopprotokoll vereint mehrere dynamische virtuelle Kanäle (Dynamic Virtual Channels, DVCs) per Multiplexing in einem einzigen Datenkanal, der über verschiedene Methoden für den Netzwerktransport gesendet wird. Es gibt separate DVCs für Remotegrafiken, Eingabe, Geräteumleitung, Druckvorgänge und vieles mehr. Virtuelle Windows-Desktop Partner können auch Ihre Erweiterungen verwenden, die DVC-Schnittstellen verwenden.
+
 Die Menge der über RDP gesendeten Daten richtet sich nach der Benutzeraktivität. Ein Beispiel: Ein Benutzer arbeitet während des größten Teils einer Sitzung mit einfachen Textinhalten und benötigt dafür nur sehr wenig Bandbreite, sendet dann aber einen Druckauftrag für ein 200-seitigen Dokument an den Drucker. Dieser Druckauftrag verbraucht eine erhebliche Menge an Netzwerkbandbreite.
 
 Bei Verwendung einer Remotesitzung hat die verfügbare Netzwerkbandbreite erhebliche Auswirkungen auf das Benutzererlebnis. Verschiedene Anwendungen und Anzeigeauflösungen erfordern unterschiedliche Netzwerkkonfigurationen. Daher müssen Sie unbedingt sicherstellen, dass Ihre Netzwerkkonfiguration Ihren Anforderungen entspricht.

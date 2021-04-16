@@ -6,10 +6,10 @@ ms.subservice: personalizer
 ms.date: 02/20/2020
 ms.topic: conceptual
 ms.openlocfilehash: f3249ba2089c3d9650aa46f665353ad392d0e773
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "94365566"
 ---
 # <a name="reward-scores-indicate-success-of-personalization"></a>Relevanzbewertungen geben den Erfolg der Personalisierung an.
@@ -72,8 +72,8 @@ Sie können die Relevanz-API auch mit derselben Ereignis-ID aufrufen und dabei u
 
 Aggregationswerte:
 
-*  **Erstes:** Die erste empfangene Relevanzbewertung für das Ereignis wird angewandt, alle späteren werden verworfen.
-* **Sum** : Alle für die eventId erfassten Relevanzbewertungen werden übernommen und zusammenführt.
+*  **First** (Erste): Die erste empfangene Relevanzbewertung für das Ereignis wird angewendet, alle späteren werden verworfen.
+* **Sum** (Summe): Alle für die eventId erfassten Relevanzbewertungen werden übernommen und addiert.
 
 Sämtliche nach der **Reward Wait Time** (Relevanzwartezeit) empfangenen Bewertungen für ein Ereignis werden verworfen und nicht in das Training von Modellen einbezogen.
 
@@ -81,15 +81,15 @@ Durch die Addition der Relevanzbewertungen kann das Endergebnis für die Relevan
 
 ## <a name="best-practices-for-calculating-reward-score"></a>Bewährte Methoden für die Berechnung von Relevanzbewertungen
 
-* **Berücksichtigen Sie nur „echte“ Indikatoren für eine erfolgreiche Personalisierung:** Auch wenn es so scheint, als seien Klicks ein gutes Kriterium, hängt ein gutes Relevanzergebnis davon ab, was Ihre Benutzer *erreichen* sollen – und nicht davon, was sie *machen* sollen.  Beispielsweise kann eine Relevanz auf der Grundlage von Klicks zur Auswahl von Inhalten führen, die lediglich Clickbait darstellen.
+* **Verwenden Sie geeignete Indikatoren für eine erfolgreiche Personalisierung**: Auch wenn es so scheint, als seien Klicks ein gutes Kriterium, hängt ein gutes Relevanzergebnis davon ab, was die Benutzer *erreichen* sollen – und nicht davon, was sie *machen* sollen.  Beispielsweise kann eine Relevanz auf der Grundlage von Klicks zur Auswahl von Inhalten führen, die lediglich Clickbait darstellen.
 
-* **Verwenden Sie eine Relevanzbewertung, um die Qualität der Personalisierung einzuschätzen:** Die Personalisierung von Filmvorschlägen sollte im besten Fall dazu führen, dass die Benutzer den Film ansehen und ihm eine hohe Bewertung geben. Da die Filmbewertung wahrscheinlich von vielen Dingen abhängt (Qualität der Schauspieler, Stimmung des Benutzers), stellt sie kein gutes Kriterium für die Relevanz der *Personalisierung* dar. Ein Benutzer, der sich die ersten Minuten des Films ansieht, stellt jedoch ein besseres Kriterium für die Effektivität der Personalisierung dar, sodass die Übermittlung der Relevanzbewertung 1 nach 5 Minuten ein besseres Signal darstellt.
+* **Verwenden Sie eine Relevanzbewertung, um die Qualität der Personalisierung einzuschätzen:** : Das Personalisieren einer Filmempfehlung soll nach Möglichkeit bewirken, dass sich der Benutzer den Film ansieht und eine hohe Bewertung für ihn abgibt. Da die Filmbewertung wahrscheinlich von vielen Dingen abhängt (Qualität der Schauspieler, Stimmung des Benutzers), stellt sie kein gutes Kriterium für die Relevanz der *Personalisierung* dar. Ein Benutzer, der sich die ersten Minuten des Films ansieht, stellt jedoch ein besseres Kriterium für die Effektivität der Personalisierung dar, sodass die Übermittlung der Relevanzbewertung 1 nach 5 Minuten ein besseres Signal darstellt.
 
-* **Die Relevanz gilt ausschließlich für die RewardActionID:** Die Personalisierung wendet die Relevanz an, um die Wirksamkeit der in der RewardActionID angegebenen Aktion zu verstehen. Wenn Sie andere Aktionen anzeigen und der Benutzer darauf klickt, sollte die Relevanz 0 (null) sein.
+* **Die Relevanz gilt ausschließlich für die RewardActionID**: Die Personalisierung wendet die Relevanz an, um die Wirksamkeit der in der RewardActionID angegebenen Aktion zu verstehen. Wenn Sie andere Aktionen anzeigen und der Benutzer darauf klickt, sollte die Relevanz 0 (null) sein.
 
-* **Berücksichtigen Sie unbeabsichtigte Folgen:** Erstellen Sie Relevanzfunktionen, die zu fundierten Ergebnissen auf der Basis von [Ethik und verantwortungsvoller Verwendung](ethics-responsible-use.md) führen.
+* [Berücksichtigen Sie unbeabsichtigte Folgen](ethics-responsible-use.md): Erstellen Sie Relevanzfunktionen, die zu fundierten Ergebnissen auf der Basis von **Ethik und verantwortungsvoller Verwendung** führen.
 
-* **Nutzen Sie inkrementelle Relevanzwerte:** Das Addieren partieller Relevanzwerte für weniger bedeutsames Benutzerverhalten kann zu einer höheren Gesamtrelevanz durch die Personalisierung führen. Durch diese inkrementelle Relevanz wissen Algorithmen, wann der richtige Zeitpunkt ist, um den Benutzer an das gewünschte Verhalten heranzuführen.
+* **Nutzen Sie inkrementelle Relevanzwerte**: Das Addieren partieller Relevanzwerte für weniger bedeutsames Benutzerverhalten kann zu einer höheren Gesamtrelevanz durch die Personalisierung führen. Durch diese inkrementelle Relevanz wissen Algorithmen, wann der richtige Zeitpunkt ist, um den Benutzer an das gewünschte Verhalten heranzuführen.
     * Wenn Sie eine Liste mit Filmen präsentieren und der Benutzer eine Weile mit der Maus auf den ersten Film zeigt, um Informationen anzuzeigen, wissen Sie, dass eine gewisse Benutzerbindung eingesetzt hat. Das Verhalten kann mit einer Relevanzbewertung von 0,1 gewertet werden.
     * Wenn der Benutzer die Seite geöffnet und dann geschlossen hat, kann das Relevanzergebnis 0,2 lauten.
 

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 12/09/2020
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q2, automl
-ms.openlocfilehash: 6d8c56bc306a7ab0bf118d04f64d6523fc385cdd
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: b60e5f656b675a1382b8b4776975723a437183bc
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102520777"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104773112"
 ---
 # <a name="evaluate-automated-machine-learning-experiment-results"></a>Auswerten der Ergebnisse von Experimenten des automatisierten maschinellen Lernens
 
@@ -91,6 +91,8 @@ weighted_accuracy|Die gewichtete Genauigkeit ist eine Genauigkeit, bei der jede 
 Automatisiertes ML unterscheidet nicht zwischen Binär- und Multiklassenmetriken. Für Datasets mit zwei Klassen werden die gleichen Validierungsmetriken gemeldet wie für Datasets mit mehr als zwei Klassen. Einige Metriken sind jedoch für die Klassifizierung mit mehreren Klassen vorgesehen. Wenn eine solche Metrik auf ein binäres Dataset angewendet wird, wird keine Klasse als `true` behandelt. Metriken, die eindeutig für mehrere Klassen vorgesehen sind, sind mit dem Suffix `micro`, `macro`oder `weighted` gekennzeichnet. Beispiele hierfür sind etwa `average_precision_score`, `f1_score`, `precision_score`, `recall_score` und `AUC`.
 
 Anstatt beispielsweise den Abruf als `tp / (tp + fn)` zu berechnen, wird beim Durchschnittsabruf mit mehreren Klassen (`micro`, `macro` oder `weighted`) für beide Klassen eines Datasets mit Binärklassifizierung ein Durchschnitt gebildet. Dies entspricht der separaten Berechnung des Abrufs für die Klassen `true` und `false` und der anschließenden Bildung des Durchschnitts der beiden Klassen.
+
+Durch automatisiertes ML werden keine binären Metriken, d. h. Metriken für Datasets mit binärer Klassifizierung, berechnet. Diese Metriken können jedoch mithilfe der [Konfusionsmatrix](#confusion-matrix), die durch automatisiertes ML für die jeweilige Ausführung generiert wurde, manuell berechnet werden. Beispielsweise können Sie die Genauigkeit `tp / (tp + fp)` mit den in einem 2 x 2-Konfusionsmatrixdiagramm angezeigten True Positive- und False Positive-Werten berechnen.
 
 ## <a name="confusion-matrix"></a>Konfusionsmatrix
 

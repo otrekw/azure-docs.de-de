@@ -8,13 +8,13 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: 2a7cc864366bd9a35c96dd453c0dc68f77d8abd9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86171447"
 ---
-# <a name="tutorial-publish-subscribe-to-events-locally"></a>Tutorial: Lokales Veröffentlichen und Abonnieren von Ereignissen
+# <a name="tutorial-publish-subscribe-to-events-locally"></a>Tutorial: Veröffentlichen und Abonnieren von Ereignissen lokal
 
 Dieser Artikel führt Sie durch alle Schritte, die erforderlich sind, um Ereignisse mithilfe von Event Grid in IoT Edge zu veröffentlichen und zu abonnieren.
 
@@ -76,7 +76,7 @@ Ein Bereitstellungsmanifest ist ein JSON-Dokument, das beschreibt, welche Module
         }
     ```    
  1. Klicken Sie unten auf der Seite auf **Speichern**.
- 1. Fahren Sie mit dem nächsten Abschnitt fort, um vor der gemeinsamen Bereitstellung das Azure Event Grid-Abonnentenmodul hinzuzufügen.
+ 1. Fahren Sie mit dem nächsten Abschnitt fort, um vor der gemeinsamen Bereitstellung das Azure Event Grid-Abonnent-Modul hinzuzufügen.
 
     >[!IMPORTANT]
     > In diesem Tutorial stellen Sie das Event Grid-Modul mit deaktivierter Clientauthentifizierung bereit. Für Produktionsworkloads empfiehlt es sich, die Clientauthentifizierung zu aktivieren. Weitere Informationen zum sicheren Konfigurieren des Event Grid-Moduls finden Sie unter [Sicherheit und Authentifizierung](security-authentication.md).
@@ -108,7 +108,7 @@ Behalten Sie Standardrouten bei, und wählen Sie **Weiter** aus, um mit dem Absc
 
 1. Im Abschnitt zur Überprüfung wird das JSON-Bereitstellungsmanifest angezeigt, das basierend auf Ihrer Auswahl in den vorherigen Abschnitten erstellt wurde. Bestätigen Sie, dass beide der in der JSON aufgeführten Module angezeigt werden: **eventgridmodule** und **subscriber**. 
 1. Überprüfen Sie die Bereitstellungsinformationen, und klicken Sie dann auf **Senden**. Nach Übermittlung der Bereitstellung wird wieder die Seite **Gerät** angezeigt.
-1. Überprüfen Sie im Abschnitt**Module**, dass die beiden Module **eventgrid** und **subscriber** aufgelistet sind. Stellen Sie außerdem sicher, dass die Spalten **In Bereitstellung angegeben** und **Vom Gerät gemeldet** auf **Ja** festgelegt sind.
+1. Überprüfen Sie im Abschnitt **Module**, dass die beiden Module **eventgrid** und **subscriber** aufgelistet sind. Stellen Sie außerdem sicher, dass die Spalten **In Bereitstellung angegeben** und **Vom Gerät gemeldet** auf **Ja** festgelegt sind.
 
     Unter Umständen dauert es einen Moment, bis das Modul auf dem Gerät gestartet und an IoT Hub gemeldet wurde. Aktualisieren Sie die Seite, um einen aktualisierten Status anzuzeigen.
 
@@ -288,5 +288,5 @@ In diesem Tutorial haben Sie ein Event Grid-Thema und ein Abonnement erstellt un
 - Befolgen Sie die Informationen zum Konfigurieren der Clientauthentifizierung in der [Dokumentation](configure-client-auth.md).
 - Arbeiten Sie dieses [Tutorial](pub-sub-events-webhook-cloud.md) durch, um Ereignisse an Azure Functions in der Cloud weiterzuleiten.
 - Erfahren Sie mehr über das [Reagieren auf Blob Storage-Ereignisse in IoT Edge](react-blob-storage-events-locally.md).
-- [Überwachen von Themen und Abonnements am Edge](monitor-topics-subscriptions.md)
+- [Überwachen von Themen und Ereignisabonnements](monitor-topics-subscriptions.md)
 

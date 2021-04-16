@@ -3,12 +3,12 @@ title: Programmgesteuertes Erstellen von Richtlinien
 description: In diesem Artikel wird Schritt für Schritt das programmgesteuerte Erstellen und Verwalten von Richtlinien für Azure Policy per Azure-Befehlszeilenschnittstelle, Azure PowerShell und REST-API beschrieben.
 ms.date: 03/16/2021
 ms.topic: how-to
-ms.openlocfilehash: b4f15241799469da2e479cb758f648ec3131a149
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: fb20509fe6d699050e0c98e82873ccdb6a0137b2
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104598489"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313690"
 ---
 # <a name="programmatically-create-policies"></a>Programmgesteuertes Erstellen von Richtlinien
 
@@ -141,7 +141,7 @@ Verwenden Sie das folgende Verfahren, um eine Richtliniendefinition zu erstellen
 
    Ersetzen Sie „{subscriptionId}“ durch die ID Ihres Abonnements oder „{managementGroupId}“ durch die ID Ihrer [Verwaltungsgruppe](../../management-groups/overview.md).
 
-   Weitere Informationen zur Struktur der Abfrage finden Sie unter [Policy Definitions – Create Or Update](/rest/api/resources/policydefinitions/createorupdate) (Richtliniendefinitionen: Erstellen oder Aktualisieren) sowie unter [Policy Definitions – Create Or Update At Management Group](/rest/api/resources/policydefinitions/createorupdateatmanagementgroup) (Richtliniendefinitionen: Erstellen oder Aktualisieren in einer Verwaltungsgruppe).
+   Weitere Informationen zur Struktur der Abfrage finden Sie unter [Policy Definitions – Create Or Update](/rest/api/policy/policydefinitions/createorupdate) (Richtliniendefinitionen: Erstellen oder Aktualisieren) sowie unter [Policy Definitions – Create Or Update At Management Group](/rest/api/policy/policydefinitions/createorupdateatmanagementgroup) (Richtliniendefinitionen: Erstellen oder Aktualisieren in einer Verwaltungsgruppe).
 
 Verwenden Sie das folgende Verfahren, um eine Richtlinienzuweisung zu erstellen und die Richtliniendefinition auf Ressourcengruppenebene zuzuweisen.
 

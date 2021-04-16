@@ -2,13 +2,13 @@
 title: Übersicht über Sicherheits-Agents
 description: In dieser Schnellstartanleitung erhalten Sie grundlegende Informationen zur Sicherheits-Agent-Architektur für die im Dienst „Azure Defender für IoT“ verwendeten Agents.
 ms.topic: quickstart
-ms.date: 01/24/2021
-ms.openlocfilehash: 2e7d7d1e6770667b1ce966724611cc003116409d
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.date: 4/4/2021
+ms.openlocfilehash: 0937cccb0335f4eee16ca3590babe9574320b89f
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104778507"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384976"
 ---
 # <a name="quickstart-security-agent-reference-architecture"></a>Schnellstart: Sicherheits-Agent-Referenzarchitektur
 
@@ -33,7 +33,7 @@ Sicherheits-Agents von Defender für IoT werden als Open-Source-Projekte entwick
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Keine
+- Keine
 
 ## <a name="agent-supported-platforms"></a>Vom Agent unterstützte Plattformen
 
@@ -48,8 +48,7 @@ Defender für IoT bietet verschiedene Installer-Agents für 32-Bit- und 64-Bit-W
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Artikel erhalten Sie eine allgemeine Übersicht über die Architektur des Defender-IoT-Micro-Agents von Defender für IoT und die verfügbaren Installationsprogramme.
-
-Um mit der Defender für IoT-Bereitstellung fortzufahren, lesen Sie die folgenden Artikel:
+Um mit der Defender für IoT-Bereitstellung fortzufahren, 
 
 > [!div class="nextstepaction"]
 > [Authentifizierungsmethoden des Sicherheits-Agents](concept-security-agent-authentication-methods.md)

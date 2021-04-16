@@ -2,13 +2,13 @@
 title: Neuerungen im Agent für Azure Arc-fähige Server
 description: Dieser Artikel enthält Versionshinweise für den Agent für Azure Arc-fähige Server. Für viele der zusammengefassten Issues werden Links zu ausführlicheren Informationen bereitgestellt.
 ms.topic: conceptual
-ms.date: 12/21/2020
-ms.openlocfilehash: 4b7fd97d5b7e1cddc1d78e0d24205890e74c45c1
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.date: 03/31/2021
+ms.openlocfilehash: ecff23225f4d482cc1e9a4f7b7724c8ffe0a1d73
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97722520"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109066"
 ---
 # <a name="whats-new-with-azure-arc-enabled-servers-agent"></a>Neuerungen im Agent für Azure Arc-fähige Server
 
@@ -18,13 +18,27 @@ Der Connected Machine-Agent für Azure Arc-fähige Server wird ständig verbesse
 - Bekannte Probleme
 - Behebung von Programmfehlern
 
+## <a name="march-2021"></a>März 2021
+
+Version 1.4
+
+## <a name="new-feature"></a>Neues Feature
+
+- Unterstützung für private Endpunkte, die sich derzeit in der eingeschränkten Vorschau befinden, wurde hinzugefügt.
+- Die Liste der Exitcodes für azcmagent wurde erweitert.
+- Agent-Konfigurationsparameter können nun aus einer Datei mit dem `--config` Parameter gelesen werden.
+
+## <a name="fixed"></a>Fest
+
+Netzwerkendpunktüberprüfungen sind nun schneller.
+
 ## <a name="december-2020"></a>Dezember 2020
 
 Version: 1.3
 
 ### <a name="new-feature"></a>Neues Feature
 
-Hinzugefügt: Unterstützung für Windows Server 2008 R2
+Unterstützung für Windows Server 2008 R2 wurde hinzugefügt.
 
 ### <a name="fixed"></a>Fest
 
@@ -47,7 +61,7 @@ Version: 1.1
 - Es wurde ein Proxyskript korrigiert, sodass der Speicherort einer alternativen GC-Daemon-Moduldatei verarbeitet werden kann.
 - Änderungen an der Zuverlässigkeit des GuestConfig-Agent.
 - Unterstützung des GuestConfig-Agent für die Region „US Gov Virginia“.
-- Berichtsmeldungen der GuestConfig-Agent-Erweiterung sind bei Fehlern ausführlicherer.
+- Die Berichtsmeldungen der GuestConfig-Agent-Erweiterung, die bei Fehlern angezeigt werden, sind nun ausführlicher.
 
 ## <a name="september-2020"></a>September 2020
 
