@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 12/27/2019
-ms.openlocfilehash: 591804a31c100e5c8211ec6d73fc483c9ac85c72
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: d99bf914d3ef746fe328d2447426565fc15e52b4
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98940306"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104866317"
 ---
 # <a name="analyze-website-logs-using-a-custom-python-library-with-apache-spark-cluster-on-hdinsight"></a>Analysieren von Websiteprotokollen mithilfe einer benutzerdefinierten Python-Bibliothek mit Apache Spark-Cluster unter HDInsight
 
@@ -30,11 +30,11 @@ Nachdem Ihre Daten als Apache Hive-Tabelle gespeichert wurden, können wir im n�
 
 1. Erstellen Sie ein neues Notebook. Wählen Sie **Neu** und dann **PySpark** aus.
 
-    ![Erstellen eines neuen Apache-Jupyter-Notebooks](./media/apache-spark-custom-library-website-log-analysis/hdinsight-create-jupyter-notebook.png "Erstellen eines neuen Jupyter-Notebooks")
+    :::image type="content" source="./media/apache-spark-custom-library-website-log-analysis/hdinsight-create-jupyter-notebook.png " alt-text="Erstellen eines neuen Apache-Jupyter-Notebooks" border="true":::Notebook" border="true":::
 
 1. Ein neues Notebook mit dem Namen „Untitled.pynb“ wird erstellt und geöffnet. Wählen Sie oben den Namen des Notebooks aus, und geben Sie einen Anzeigenamen ein.
 
-    ![Angeben eines Namens für das Notebook](./media/apache-spark-custom-library-website-log-analysis/hdinsight-name-jupyter-notebook.png "Angeben eines neuen Namens für das Notebook")
+    :::image type="content" source="./media/apache-spark-custom-library-website-log-analysis/hdinsight-name-jupyter-notebook.png " alt-text="Angeben eines neuen Namens für das Notebook" border="true":::tebook" border="true":::
 
 1. Da Sie ein Notebook mit dem PySpark-Kernel erstellt haben, müssen Sie keine Kontexte explizit erstellen. Die Spark- und Hive-Kontexte werden automatisch für Sie erstellt, wenn Sie die erste Codezelle ausführen. Sie können zunächst die Typen importieren, die für dieses Szenario erforderlich sind. Fügen Sie den folgenden Codeausschnitt in eine leere Zelle ein, und drücken Sie **UMSCHALT+EINGABETASTE**.
 
@@ -173,7 +173,7 @@ Nachdem Ihre Daten als Apache Hive-Tabelle gespeichert wurden, können wir im n�
 
    Die Ausgabe sollte wie das folgende Bild aussehen:
 
-   ![Ausgabe der HDinsight Jupyter SQL-Abfrage](./media/apache-spark-custom-library-website-log-analysis/hdinsight-jupyter-sql-qyery-output.png "SQL-Abfrageausgabe")
+   :::image type="content" source="./media/apache-spark-custom-library-website-log-analysis/hdinsight-jupyter-sql-qyery-output.png " alt-text="Ausgabe der SQL-Abfrage für HDInsight Jupyter" border="true":::yter sql query output" border="true":::
 
    Weitere Informationen zur `%%sql`-Magic finden Sie unter [Mit %%sql-Magic unterstützte Parameter](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic).
 
@@ -191,7 +191,7 @@ Nachdem Ihre Daten als Apache Hive-Tabelle gespeichert wurden, können wir im n�
 
    Die Ausgabe sollte wie das folgende Bild aussehen:
 
-   ![Apache Spark-Webprotokollanalyse – Plot](./media/apache-spark-custom-library-website-log-analysis/hdinsight-apache-spark-web-log-analysis-plot.png "Matplotlib-Ausgabe")
+   :::image type="content" source="./media/apache-spark-custom-library-website-log-analysis/hdinsight-apache-spark-web-log-analysis-plot.png " alt-text="Apache Spark-Webprotokollanalyse" border="true":::eb log analysis plot" border="true":::
 
 1. Nach dem Ausführen der Anwendung empfiehlt es sich, das Notebook herunterzufahren, um die Ressourcen freizugeben. Wählen Sie hierzu im Menü **Datei** des Notebooks die Option **Schließen und Anhalten** aus. Durch diese Aktion wird das Notebook heruntergefahren und geschlossen.
 

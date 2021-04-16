@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 06d2305c209011e4fb1b8ee05a016d2e15a49833
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97898027"
 ---
 # <a name="choose-a-load-balancing-solution-for-cloudsimple-private-clouds"></a>Auswählen einer Lastenausgleichslösung für private CloudSimple-Clouds
@@ -25,7 +25,7 @@ Sie können einen virtuellen oder softwarebasierten Lastenausgleich in ihrer pri
 
 Sie können virtuelle Lastenausgleichsgeräte in Ihrer VMware-Umgebung über die vCenter-Schnittstelle bereitstellen und diese so konfigurieren, dass Sie als Front-End für Ihren Anwendungsdatenverkehr dienen.
 
-Einige beliebte Anbieter sind: NginX: http://nginx.org/en/docs/http/load_balancing.html F5- BigIP: Traffic Manager: https://www.f5.com/products/big-ip-services/virtual-editions Citrix ADC: https://www.citrix.com/products/citrix-adc/
+Einige beliebte Anbieter sind: NGINX: http://nginx.org/en/docs/http/load_balancing.html F5-BigIP-Traffic Manager: https://www.f5.com/products/big-ip-services/virtual-editions Citrix ADC: https://www.citrix.com/products/citrix-adc/
 
 ## <a name="azure-l7-load-balancer"></a>Azure L7-Lastenausgleich
 

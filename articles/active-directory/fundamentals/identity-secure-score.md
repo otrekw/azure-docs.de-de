@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 02/20/2020
+ms.date: 03/23/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
-ms.reviewer: tilarso
+ms.reviewer: guptashi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c319489fe4c884cd5de48ac2d3e47e7beb3026f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 23832d9f1205105f1f9711cdf3260b74ee4a9bb1
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90705485"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104952260"
 ---
 # <a name="what-is-the-identity-secure-score-in-azure-active-directory"></a>Was ist der Identity Secure Score in Azure Active Directory?
 
@@ -24,7 +24,7 @@ Wie sicher ist Ihr Azure AD-Mandant? Wenn Sie diese Frage nicht beantworten kön
 
 ## <a name="what-is-an-identity-secure-score"></a>Was ist ein Identity Secure Score?
 
-Der Identity Secure Score ist eine Zahl zwischen 1 und 223, die Aufschluss darüber gibt, in welchem Maße Sie die von Microsoft empfohlenen bewährten Sicherheitsmethoden befolgen. Im Identity Secure Score ist jede Verbesserungsaktion auf Ihre spezifische Konfiguration zugeschnitten.  
+Die Identitätssicherheitsbewertung stellt eine Prozentangabe dar, die als Indikator für die Übereinstimmung mit den bewährten Sicherheitsmethoden von Microsoft fungiert. Im Identity Secure Score ist jede Verbesserungsaktion auf Ihre spezifische Konfiguration zugeschnitten.  
 
 ![Sicherheitsbewertung](./media/identity-secure-score/identity-secure-score-overview.png)
 
@@ -78,7 +78,7 @@ Der Identity Secure Score kann von Benutzern mit den folgenden Rollen verwendet 
 
 ### <a name="how-are-controls-scored"></a>Wie werden die Kontrollen bewertet?
 
-Die Bewertung der Kontrollen kann auf zwei Arten erfolgen. Einige werden auf binäre Weise bewertet: Sie erhalten eine Bewertung von 100 %, wenn die Funktion oder Einstellung gemäß unserer Empfehlung konfiguriert ist. Andere Bewertungen werden als Prozentsatz der Gesamtkonfiguration berechnet. Wenn beispielsweise die Verbesserungsempfehlung besagt, dass Sie 30 Punkte erhalten, wenn Sie alle Ihre Benutzer mit MFA schützen, aber nur 5 von insgesamt 100 Benutzern geschützt werden, erhalten Sie eine Teilbewertung von ca. 2 Punkten (5 geschützt/100 insgesamt * 30 max. Punkte = 2 Punkte Teilbewertung).
+Die Bewertung der Kontrollen kann auf zwei Arten erfolgen. Einige werden auf binäre Weise bewertet: Sie erhalten eine Bewertung von 100 %, wenn die Funktion oder Einstellung gemäß unserer Empfehlung konfiguriert ist. Andere Bewertungen werden als Prozentsatz der Gesamtkonfiguration berechnet. Wenn beispielsweise die Verbesserungsempfehlung besagt, dass Sie maximal 10,71 Prozent erhalten, wenn Sie alle Ihre Benutzer mit MFA schützen, aber nur 5 von insgesamt 100 Benutzern geschützt werden, erhalten Sie eine Teilbewertung von ca. 0,53 Prozent (5 geschützt/100 insgesamt × max. 10,71 % = 0,53 % Teilbewertung).
 
 ### <a name="what-does-not-scored-mean"></a>Was bedeutet der Hinweis „[Not Scored]“ (Nicht bewertet)?
 
@@ -98,7 +98,7 @@ Kurz gesagt: Nein. Die Sicherheitsbewertung ist kein absolutes Maß dafür, wie 
 
 ### <a name="how-should-i-interpret-my-score"></a>Wie interpretiere ich meine Bewertung?
 
-Sie erhalten Hinweise zur Konfiguration empfohlener Sicherheitsfunktionen oder Durchführung sicherheitsrelevanter Aufgaben (z. B. das Lesen von Berichten). Einige Aktionen werden bewertet, wenn sie teilweise abgeschlossen wurden, beispielsweise das Aktivieren von Multi-Factor Authentication (MFA) für Ihre Benutzer. Ihre Sicherheitsbewertung spiegelt die von Ihnen verwendeten Microsoft-Sicherheitsdienste direkt wider. Denken Sie daran, dass ein Gleichgewicht zwischen Sicherheit und Benutzerfreundlichkeit bestehen muss. Alle Sicherheitsmaßnahmen wirken sich auf Benutzer aus. Kontrollen mit geringen Benutzerauswirkungen sollten wenig oder gar keinen Einfluss auf das Tagesgeschäft Ihrer Benutzer haben.
+Ihre Bewertung für die Konfiguration empfohlener Sicherheitsfeatures oder die Durchführung sicherheitsrelevanter Aufgaben (z. B. das Lesen von Berichten) verbessert sich. Einige Aktionen werden bewertet, wenn sie teilweise abgeschlossen wurden, beispielsweise das Aktivieren von Multi-Factor Authentication (MFA) für Ihre Benutzer. Ihre Sicherheitsbewertung spiegelt die von Ihnen verwendeten Microsoft-Sicherheitsdienste direkt wider. Denken Sie daran, dass ein Gleichgewicht zwischen Sicherheit und Benutzerfreundlichkeit bestehen muss. Alle Sicherheitsmaßnahmen wirken sich auf Benutzer aus. Kontrollen mit geringen Benutzerauswirkungen sollten wenig oder gar keinen Einfluss auf das Tagesgeschäft Ihrer Benutzer haben.
 
 Wenn Sie Ihren Bewertungsverlauf anzeigen möchten, navigieren Sie zum [Microsoft 365 Security Center](https://security.microsoft.com/), und sehen Sie sich Ihre gesamte Microsoft-Sicherheitsbewertung an. Sie können die Änderungen Ihrer gesamten Sicherheitsbewertung überprüfen, indem Sie auf „Verlauf anzeigen“ klicken. Wählen Sie ein Datum aus, um anzuzeigen, welche Kontrollen für diesen Tag aktiviert waren und welche Bewertung Sie für die einzelnen Kontrollen erhalten haben.
 

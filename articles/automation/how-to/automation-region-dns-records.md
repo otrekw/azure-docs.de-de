@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 11/25/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8630afa7410aad81a7a3c61540fc74702fc6481c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d41d825c7bc33e05815c7528b436c85873859928
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100576001"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168925"
 ---
 # <a name="dns-records-for-azure-regions-used-by-azure-automation"></a>DNS-Einträge für von Azure Automation genutzte Azure-Regionen
 
@@ -98,7 +98,7 @@ Es wird empfohlen, beim Definieren von [Ausnahmen](../automation-runbook-executi
 * [Azure IP Ranges and Service Tags – Public Cloud](https://www.microsoft.com/download/details.aspx?id=56519) (Azure-IP-Bereiche und -Diensttags – öffentliches Azure)
 * [Azure IP Ranges and Service Tags- Azure Government](https://www.microsoft.com/download/details.aspx?id=57063) (Azure-IP-Bereiche und -Diensttags – Azure Government)
 * [Azure IP Ranges and Service Tags – Public Cloud](https://www.microsoft.com/download/details.aspx?id=57064) (Azure-IP-Bereiche und -Diensttags – Azure Deutschland)
-* [Azure IP Ranges and Service Tags – Public Cloud](https://www.microsoft.com/download/details.aspx?id=57062) (Azure-IP-Bereiche und -Diensttags – Azure China 21Vianet)
+* [Azure IP Ranges and Service Tags – Public Cloud](https://www.microsoft.com/download/details.aspx?id=57062) (Azure-IP-Bereiche und -Diensttags – Azure China Vianet 21)
 
 Die Datei mit den IP-Adressen enthält die IP-Adressbereiche, die in den Microsoft Azure-Rechenzentren verwendet werden. Sie umfasst die jeweils aktuellen bereitgestellten Compute-, SQL- und Speicherbereiche sowie alle anstehenden Änderungen an den IP-Adressbereichen. In der Datei enthaltene neue Bereiche werden frühestens nach einer Woche in den Rechenzentren verwendet.
 

@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: v-erkel
-ms.openlocfilehash: e8f1b3fffefcdf1d2ec8bd3e9b1aaea93697ca8a
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.openlocfilehash: f587de4ee2ce051cb771db90d7f9ce00ce66b07f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103471963"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104772704"
 ---
 # <a name="use-customer-managed-encryption-keys-for-azure-hpc-cache"></a>Verwenden von kundenseitig verwalteten Verschlüsselungsschlüsseln für Azure HPC Cache
 
@@ -21,8 +21,6 @@ Sie können Azure Key Vault verwenden, um den Besitz der Schlüssel zu steuern, 
 > Alle in Azure gespeicherten Daten, einschließlich auf Cachedatenträgern, werden ruhend standardmäßig mithilfe der von Microsoft verwalteten Schlüssel verschlüsselt. Sie müssen die Schritte in diesem Artikel nur ausführen, wenn Sie die zum Verschlüsseln Ihrer Daten verwendeten Schlüssel verwalten möchten.
 
 Azure HPC Cache wird darüber hinaus durch [VM-Hostverschlüsselung](../virtual-machines/disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data) auf den verwalteten Datenträgern geschützt, die Ihre zwischengespeicherten Daten enthalten, auch wenn Sie einen Kundenschlüssel für die Cachedatenträger hinzufügen. Durch das Hinzufügen eines kundenseitig verwalteten Schlüssels für die doppelte Verschlüsselung wird für Kunden mit hohen Sicherheitsanforderungen die Sicherheit erhöht. Ausführliche Informationen finden Sie unter [Serverseitige Verschlüsselung von Azure Disk Storage](../virtual-machines/disk-encryption.md).
-
-<!-- This feature is available only in some of the Azure regions where Azure HPC Cache is available. Refer to the [Region availability](hpc-cache-overview.md#region-availability) list for details. -->
 
 Das Aktivieren der kundenseitig verwalteten Schlüsselverschlüsselung für Azure HPC Cache umfasst drei Schritte:
 
@@ -69,14 +67,14 @@ Zum Zeitpunkt der Cacheerstellung müssen Sie einen Tresor, Schlüssel und eine 
 Details finden Sie in der [Azure Key Vault-Dokumentation](../key-vault/general/overview.md).
 
 > [!NOTE]
-> Azure Key Vault muss dasselbe Abonnement verwenden und sich in derselben Region wie Azure HPC Cache befinden. Stellen Sie sicher, dass die von Ihnen gewählte Region die [Funktion „Kundenseitig verwaltete Schlüssel“ unterstützt](hpc-cache-overview.md#region-availability).
+> Azure Key Vault muss dasselbe Abonnement verwenden und sich in derselben Region wie Azure HPC Cache befinden. Stellen Sie sicher, dass die von Ihnen ausgewählte Region [beide Produkte unterstützt](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=hpc-cache,key-vault).
 
 ## <a name="2-create-the-cache-with-customer-managed-keys-enabled"></a>2. Erstellen des Caches mit aktivierten kundenseitig verwalteten Schlüsseln
 
 Sie müssen die Verschlüsselungsschlüsselquelle angeben, wenn Sie Ihren Azure HPC Cache erstellen. Befolgen Sie die Anweisungen unter [Erstellen eines Azure HPC Cache](hpc-cache-create.md), und geben Sie den Schlüsseltresor und Schlüssel auf der Seite **Datenträger-Verschlüsselungsschlüssel** an. Sie können einen neuen Schlüsseltresor und Schlüssel während der Erstellung des Caches erstellen.
 
 > [!TIP]
-> Wenn die Seite **Datenträger-Verschlüsselungsschlüssel** nicht angezeigt wird, stellen Sie sicher, dass sich Ihr Cache in einer der unterstützten Regionen befindet.
+> Wenn die Seite **Datenträgerverschlüsselungsschlüssel** nicht angezeigt wird, stellen Sie sicher, dass sich Ihr Cache in einer der [unterstützten Regionen](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=hpc-cache,key-vault) befindet.
 
 Der Benutzer, der den Cache erstellt, muss über Berechtigungen verfügen, die der Rolle [Key Vault-Mitwirkender](../role-based-access-control/built-in-roles.md#key-vault-contributor) oder höher entsprechen.
 

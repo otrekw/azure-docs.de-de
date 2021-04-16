@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 5a088d5918a957036b905db9136f9b16e5f0527e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "93307163"
 ---
 # <a name="process-azure-blob-data-with-advanced-analytics"></a><a name="heading"></a>Verarbeiten von Azure-Blobdaten mit erweiterter Analyse
@@ -169,7 +169,7 @@ Zum Generieren von klassifizierten Funktionen gehen Sie wie folgt vor:
     ```  
 
 ## <a name="writing-data-back-to-azure-blob-and-consuming-in-azure-machine-learning"></a><a name="sql-featuregen"></a>Zurückschreiben von Daten in das Azure-Blob und Verwenden in Azure Machine Learning
-Nachdem Sie die Daten untersucht und die erforderlichen Features erstellt haben, können Sie die Daten (als Stichproben oder Features) mithilfe der folgenden Schritte in ein Azure-Blob hochladen und in Azure Machine Learning verwenden: Zusätzliche Features können auch in Azure Machine Learning Studio (Classic) erstellt werden. 
+Nachdem Sie die Daten untersucht und die erforderlichen Funktionen erstellt haben, können Sie die Daten (als Stichproben oder über Funktionen) mithilfe der folgenden Schritte in ein Azure-Blob hochladen und in Azure Machine Learning verwenden. In Azure Machine Learning Studio (Klassisch) können ebenfalls weitere Funktionen erstellt werden. 
 
 1. Schreiben Sie den DataFrame in eine lokale Datei:
    

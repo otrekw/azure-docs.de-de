@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/17/2021
 ms.author: jingwang
 ms.openlocfilehash: b8e518ba23c877ee80197ad94a6bc01b23b044a3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "104588986"
 ---
 # <a name="copy-data-from-google-cloud-storage-by-using-azure-data-factory"></a>Kopieren von Daten aus Google Cloud Storage mithilfe von Azure Data Factory
@@ -59,7 +59,7 @@ Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren 
 
 Folgende Eigenschaften werden für mit Google Cloud Storage verknüpfte Dienste unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die **type**-Eigenschaft muss auf **GoogleCloudStorage** festgelegt werden. | Ja |
 | accessKeyId | ID des geheimen Zugriffsschlüssels. Informationen zum Ermitteln des Zugriffsschlüssels und des Geheimnisses finden Sie unter [Voraussetzungen](#prerequisites). |Ja |
@@ -96,7 +96,7 @@ Hier sehen Sie ein Beispiel:
 
 Folgende Eigenschaften werden für Google Cloud Storage unter `location`-Einstellungen in einem formatbasierten Dataset unterstützt:
 
-| Eigenschaft   | Beschreibung                                                  | Erforderlich |
+| Eigenschaft   | BESCHREIBUNG                                                  | Erforderlich |
 | ---------- | ------------------------------------------------------------ | -------- |
 | type       | Die **type**-Eigenschaft unter `location` im Dataset muss auf **GoogleCloudStorageLocation** festgelegt werden. | Ja      |
 | bucketName | Der Name des GCS-Buckets.                                          | Ja      |
@@ -140,7 +140,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren vo
 
 Folgende Eigenschaften werden für Google Cloud Storage unter `storeSettings`-Einstellungen in einer formatbasierten Kopierquelle unterstützt:
 
-| Eigenschaft                 | Beschreibung                                                  | Erforderlich                                                    |
+| Eigenschaft                 | BESCHREIBUNG                                                  | Erforderlich                                                    |
 | ------------------------ | ------------------------------------------------------------ | ----------------------------------------------------------- |
 | type                     | Die **type**-Eigenschaft unter `storeSettings` muss auf **GoogleCloudStorageReadSettings** festgelegt werden. | Ja                                                         |
 | ***Suchen Sie die zu kopierenden Dateien:*** |  |  |

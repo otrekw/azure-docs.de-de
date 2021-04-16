@@ -1,18 +1,22 @@
 ---
-title: Erstellen eines IoT-Micro-Agent-Modulzwillings für Defender (Vorschau)
-description: Hier erfahren Sie, wie Sie einzelne Modulzwillinge vom Typ „DefenderIotMicroAgent“ für neue Geräte erstellen.
+title: Schnellstart: Erstellen eines IoT-Micro-Agent-Modulzwillings für Defender (Vorschau)
+description: In dieser Schnellstartanleitung erfahren Sie, wie Sie einzelne Modulzwillinge vom Typ „DefenderIotMicroAgent“ für neue Geräte erstellen.
 ms.date: 1/20/2021
 ms.topic: quickstart
-ms.openlocfilehash: 5036eefbd77a22d492f6ce7d3c7d15f50a081490
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: e1bcaa76e9bfbe417bfd0d4b539b8e0c7ff95c7b
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104781057"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384510"
 ---
-# <a name="create-a-defender-iot-micro-agent-module-twin-preview"></a>Erstellen eines IoT-Micro-Agent-Modulzwillings für Defender (Vorschau)
+# <a name="quickstart-create-a-defender-iot-micro-agent-module-twin-preview"></a>Schnellstart: Erstellen eines IoT-Micro-Agent-Modulzwillings für Defender (Vorschau)
 
 Sie können einzelne Modulzwillinge vom Typ **DefenderIotMicroAgent** für neue Geräte erstellen. Alternativ können Sie eine Batcherstellung von Modulzwillingen für alle Geräte in einem IoT Hub durchführen. 
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+- Keine
 
 ## <a name="device-twins"></a>Gerätezwillinge 
 
@@ -70,4 +74,5 @@ So erstellen Sie manuell einen neuen Modellzwilling vom Typ  **DefenderIotMicr
 
 ## <a name="next-steps"></a>Nächste Schritte 
 
-Im [nächsten Artikel](quickstart-investigate-security-recommendations.md) erfahren Sie, wie Sie Sicherheitsempfehlungen untersuchen.
+> [!div class="nextstepaction"]
+> [Untersuchen von Sicherheitsempfehlungen](quickstart-investigate-security-recommendations.md)

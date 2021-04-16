@@ -6,14 +6,14 @@ author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 08/05/2020
+ms.date: 3/22/2021
 ms.author: pafarley
-ms.openlocfilehash: 7da10fbdff0b6771fcffb6cc303d5ab183df190a
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 1ecfd58e961e70182bfc2e0cc8eaf77f5053eb77
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98948550"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104879646"
 ---
 [Referenzdokumentation](/dotnet/api/overview/azure/cognitiveservices/management) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Microsoft.Azure.Management.CognitiveServices) | [Paket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Management.CognitiveServices/) | [Beispiele](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Microsoft.Azure.Management.CognitiveServices/tests)
 
@@ -122,7 +122,9 @@ dotnet run
 
 ## <a name="see-also"></a>Siehe auch
 
-* [Referenzdokumentation für das Azure Management SDK](/dotnet/api/overview/azure/cognitiveservices/management)
-* [Was ist Azure Cognitive Services?](../../what-are-cognitive-services.md)
-* [Authentifizieren von Anforderungen an Azure Cognitive Services](../../authentication.md)
-* [Erstellen einer neuen Ressource über das Azure-Portal](../../cognitive-services-apis-create-account.md)
+* Informationen zum sicheren Arbeiten mit Cognitive Services finden Sie unter **[Authentifizieren von Anforderungen an Azure Cognitive Services](../../authentication.md)** .
+* Eine Liste der verschiedenen Kategorien in Cognitive Services finden Sie unter **[Was ist Azure Cognitive Services?](../../what-are-cognitive-services.md)** .
+* Eine Liste der natürlichen Sprachen, die von Cognitive Services unterstützt werden, finden Sie unter **[Unterstützung für natürliche Sprachen in Azure Cognitive Services](../../language-support.md)** .
+* Informationen zur lokalen Verwendung von Cognitive Services finden Sie unter **[Azure Cognitive Services-Container](../../cognitive-services-container-support.md)** .
+* Informationen zum Schätzen der Kosten für die Verwendung von Cognitive Services finden Sie unter **[Planen und Verwalten von Kosten für Azure Cognitive Services](../../plan-manage-costs.md)** .
+* Weitere Informationen zum Management SDK finden Sie in der **[Kognitive Services SDK-Referenz Dokumentation](/dotnet/api/overview/azure/cognitiveservices/management)** .

@@ -6,10 +6,10 @@ ms.topic: conceptual
 description: Beschreibt die Funktionsweise der Vorbereitung eines Projekts für Azure Dev Spaces.
 keywords: azds.yaml, Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container
 ms.openlocfilehash: d2da69dd8a8c2683ff584dfd0ffc61cb023f2ece
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91968156"
 ---
 # <a name="how-preparing-a-project-for-azure-dev-spaces-works"></a>Funktionsweise der Vorbereitung eines Projekts für Azure Dev Spaces
@@ -36,7 +36,7 @@ Der `prep`-Befehl analysiert die Dateien in Ihrem Projekt und versucht, die Dock
 
 Sie *müssen* den `prep`-Befehl aus einem Verzeichnis ausführen, das Quellcode enthält. Wird der `prep`-Befehl aus dem richtigen Verzeichnis ausgeführt, können die clientseitigen Tools die Sprache erkennen und eine entsprechende Dockerfile-Datei erstellen, um Ihre Anwendung zu containerisieren. Sie können den `prep`-Befehl auch aus einem Verzeichnis ausführen, das eine *pom.xml*-Datei für Java-Projekte enthält.
 
-Wenn Sie den `prep`-Befehl aus einem Verzeichnis ausführen, das keinen Quellcode enthält, erstellen die clientseitigen Tools keine Dockerfile-Datei. Außerdem wird die folgende Fehlermeldung angezeigt: *Aufgrund einer nicht unterstützten Sprache konnte keine Dockerfile generiert werden*. Dieser Fehler tritt auch auf, wenn die clientseitigen Tools den Projekttyp nicht erkennen können.
+Wenn Sie den `prep`-Befehl aus einem Verzeichnis ausführen, das keinen Quellcode enthält, erstellen die clientseitigen Tools keine Dockerfile-Datei. Außerdem wird der folgende Fehler angezeigt: *Aufgrund einer nicht unterstützten Sprache konnte kein Dockerfile generiert werden.* Dieser Fehler tritt auch auf, wenn die clientseitigen Tools den Projekttyp nicht erkennen können.
 
 Wenn Sie den `prep`-Befehl ausführen, können Sie das Flag `--enable-ingress` angeben. Dieses Flag weist den Controller an, einen über das Internet zugänglichen Endpunkt für diesen Dienst zu erstellen. Wenn Sie dieses Flag nicht angeben, kann nur aus dem Cluster oder über den localhost-Tunnel, der von den clientseitigen Tools erstellt wurde, auf den Dienst zugegriffen werden. Sie können dieses Verhalten nach dem Ausführen des `prep`-Befehls aktivieren oder deaktivieren, indem Sie das generierte Helm-Chart aktualisieren.
 

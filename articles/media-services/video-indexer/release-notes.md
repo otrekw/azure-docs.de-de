@@ -10,14 +10,15 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 02/16/2021
+ms.custom: references_regions
+ms.date: 03/30/2021
 ms.author: juliako
-ms.openlocfilehash: 618617d3602e45ebb15314c7cc5f6898a73bb71f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c2465d845da9dd9c2c1690c39a8f1d1c7e86899f
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102203724"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075711"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer: Versionshinweise
 
@@ -32,9 +33,31 @@ Damit Sie bezüglich der aktuellen Entwicklungen auf dem neuesten Stand bleiben,
 
 ## <a name="march-2021"></a>März 2021
 
+### <a name="audio-analysis"></a>Audioanalyse 
+
 Die Audioanalyse ist jetzt in einem zusätzlichen neuen Paket mit Audiofeatures zu einem anderen Preis verfügbar. Die neue Analysevoreinstellung **Grundlegende Audiofunktionen** bietet eine kostengünstige Option zum reinen Extrahieren von Transkriptionen für gesprochenen Text sowie zum Übersetzen und Formatieren von Beschriftungstext und Untertiteln. Durch die Voreinstellung **Grundlegende Audiofunktionen** werden auf Ihrer Rechnung zwei separate Verbrauchseinheiten generiert. Diese umfassen eine Zeile für die Transkription und eine separate Zeile für die Formatierung von Beschriftungstext und Untertiteln. Weitere Preisinformationen finden Sie auf der Seite mit [Media Services-Preisen](https://azure.microsoft.com/pricing/details/media-services/).
 
 Das neu hinzugefügte Paket ist verfügbar, wenn Sie beim Indizieren oder Neuindizieren Ihrer Datei die Voreinstellung **Erweiterte Option** -> **Grundlegende Audiofunktionen** (im Dropdownfeld **Video- und Audioindizierung**) auswählen.
+
+### <a name="new-developer-portal"></a>Neues Entwicklerportal 
+
+Video Indexer verfügt über ein [Neues Entwicklerportal](https://api-portal.videoindexer.ai/) – testen Sie die neuen Video Indexer-APIs, und finden Sie alle relevanten Ressourcen an einem Ort: [GitHub-Repository](https://github.com/Azure-Samples/media-services-video-indexer), [Stack Overflow](https://stackoverflow.com/questions/tagged/video-indexer), [Video Indexer Tech Community](https://techcommunity.microsoft.com/t5/azure-media-services/bg-p/AzureMediaServices/label-name/Video%20Indexer) mit relevanten Blogbeiträgen, [Häufig gestellte Fragen (FAQs) zu Video Indexer](faq.md), [User Voice](https://feedback.azure.com/forums/932041-cognitive-services?category_id=399016), um Feedback zu geben und Features vorzuschlagen, und ["CodePen"-Link](https://codepen.io/videoindexer) mit Codebeispielen für Widgets. 
+ 
+### <a name="advanced-customization-capabilities-for-insight-widget"></a>Erweiterte Anpassungsmöglichkeiten für das Erkenntnis-Widget 
+
+Das SDK ist jetzt verfügbar, um das Erkenntnis-Widget von Video Indexer in Ihren eigenen Dienst einzubetten und dessen Formatvorlage und Daten anzupassen. Das SDK unterstützt das Erkenntnis-Standard-Widget von Video Indexer und ein vollständig anpassbares Erkenntnis-Widget. Das Codebeispiel ist im [Video Indexer GitHub-Repository](https://github.com/Azure-Samples/media-services-video-indexer/tree/master/Embedding%20widgets/widget-customization) verfügbar. Mit diesen erweiterten Anpassungsfunktionen kann der Lösungsentwickler benutzerdefinierte Formatvorlagen anwenden und die eigenen KI-Daten des Kunden im Erkenntnis-Widget präsentieren (mit oder ohne Video Indexer-Erkenntnisse). 
+
+### <a name="video-indexer-deployed-in-the-us-north-central--us-west-and-canada-central"></a>Video Indexer in USA, Norden-Mitte, USA, Westen und Kanada, Mitte bereitgestellt 
+
+Sie können jetzt in den Regionen USA, Norden-Mitte, USA, Westen und Kanada, Mitte ein gebührenpflichtiges Video Indexer-Konto erstellen.
+ 
+### <a name="new-source-languages-support-for-speech-to-text-stt-translation-and-search"></a>Unterstützung neuer Quellsprachen für Sprache-in-Text (STT), Übersetzung und Suche 
+
+Video Indexer unterstützt jetzt STT, Übersetzung und Suche in Dänisch ('da-DK'), Norwegisch ('nb-NO'), Schwedisch ('sv-SE'), Finnisch ('fi-FI'), Französisch (Kanada) ('fr-CA'), Thai ('th-TH'), Arabisch ('ar-BH', 'ar-EG', 'ar-IQ', 'ar-JO', 'ar-KW', 'ar-LB', 'ar-OM', 'ar-QA', 'ar-S' und 'ar-SY') und Türkisch ('tr-TR'). Diese Sprachen sind sowohl in der API als auch auf der Video Indexer-Website verfügbar. 
+ 
+### <a name="search-by-topic-in-video-indexer-website"></a>Themensuche auf Video Indexer-Website 
+
+Sie können jetzt die Suchfunktion oben auf der Seite der [Video Indexer-Website](https://www.videoindexer.ai/account/login) zum Suchen nach Videos mit bestimmten Themen verwenden. 
 
 ## <a name="february-2021"></a>Februar 2021
 

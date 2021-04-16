@@ -1,17 +1,17 @@
 ---
 title: Apache Yarn-Protokoll nicht lesbar in Azure HDInsight
-description: Schritte zur Problembehandlung und mögliche Lösungen für Probleme bei der Interaktion mit Azure HDInsight-Clustern
+description: Hier finden Sie Schritte zur Problembehandlung und mögliche Lösungen für Probleme bei der Interaktion mit Azure HDInsight-Clustern.
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/23/2020
 ms.openlocfilehash: 02a79de8aee169f5f702d5fae67194c62363e8c4
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98943051"
 ---
-# <a name="scenario-unable-to-read-apache-yarn-log-in-azure-hdinsight"></a>Szenario: Apache Yarn-Protokoll nicht lesbar in Azure HDInsight
+# <a name="scenario-unable-to-read-apache-yarn-log-in-azure-hdinsight"></a>Szenario: Das Apache YARN-Protokoll kann in Azure HDInsight nicht gelesen werden
 
 In diesem Artikel werden Schritte zur Problembehandlung und mögliche Lösungen für Probleme bei der Interaktion mit Azure HDInsight-Clustern beschrieben.
 
@@ -33,9 +33,9 @@ Das Apache Yarn-Protokoll wird im Format `IndexFile` aggregiert, das vom Dateipa
 
 1. Navigieren Sie über die Ambari-Benutzeroberfläche zu **YARN** > **Configs** > **Advanced** > **Advanced yarn-site** (YARN > Konfigurationen > Erweitert > Erweiterte Yarn-Website).
 
-1. Für WASB-Speicher: Der Standardwert für `yarn.log-aggregation.file-formats` ist `IndexedFormat,TFile`. Ändern Sie den Wert in `TFile`.
+1. WASB-Speicher: Der Standardwert für `yarn.log-aggregation.file-formats` lautet `IndexedFormat,TFile`. Ändern Sie den Wert in `TFile`.
 
-1. Für ADLS-Speicher: Der Standardwert für `yarn.nodemanager.log-aggregation.compression-type` ist `gz`. Ändern Sie den Wert in `none`.
+1. ADLS-Speicher: Der Standardwert für `yarn.nodemanager.log-aggregation.compression-type` lautet `gz`. Ändern Sie den Wert in `none`.
 
 1. Speichern Sie die Änderung, und starten Sie alle betroffenen Dienste neu.
 

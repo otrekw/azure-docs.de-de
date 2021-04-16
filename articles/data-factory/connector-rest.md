@@ -4,14 +4,14 @@ description: Erfahren Sie, wie Sie eine Kopieraktivität in einer Azure Data Fac
 author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 12/08/2020
+ms.date: 03/16/2021
 ms.author: jingwang
-ms.openlocfilehash: 972a7b32e6308c3aa8a3b42705038838dae9b2be
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 779a8745688e6a1fb8a15bc9119c6fbc1803ca2c
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100369882"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078926"
 ---
 # <a name="copy-data-from-and-to-a-rest-endpoint-by-using-azure-data-factory"></a>Kopieren von Daten von und zu einem REST-Endpunkt mithilfe von Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -57,7 +57,8 @@ Folgende Eigenschaften werden für den mit REST verknüpften Dienst unterstützt
 | type | Die **type**-Eigenschaft muss auf **RestService** festgelegt werden. | Ja |
 | url | Die Basis-URL des REST-Diensts. | Ja |
 | enableServerCertificateValidation | Hiermit wird festgelegt, ob das serverseitige TLS-/SSL-Zertifikat beim Herstellen einer Verbindung mit dem Endpunkt überprüft werden soll. | Nein<br /> (der Standardwert ist **TRUE**) |
-| authenticationType | Typ der Authentifizierung für die Verbindung mit dem REST-Dienst. Zulässige Werte: **Anonymous**, **Basic**, **AadServicePrincipal** und **ManagedServiceIdentity**. Weitere Informationen zu anderen Eigenschaften und Beispiele finden Sie weiter unten in den jeweiligen Abschnitten. | Ja |
+| authenticationType | Typ der Authentifizierung für die Verbindung mit dem REST-Dienst. Zulässige Werte: **Anonymous**, **Basic**, **AadServicePrincipal** und **ManagedServiceIdentity**. OAuth auf Benutzerbasis wird nicht unterstützt. Außerdem können Sie Authentifizierungsheader in der `authHeader`-Eigenschaft konfigurieren. Weitere Informationen zu anderen Eigenschaften und Beispiele finden Sie weiter unten in den jeweiligen Abschnitten.| Ja |
+| authHeaders | Zusätzliche HTTP-Anforderungsheader für die Authentifizierung.<br/> Wenn Sie beispielsweise die Authentifizierung mit einem API-Schlüssel verwenden möchten, können Sie als Authentifizierungstyp „Anonym“ auswählen und im Header den API-Schlüssel angeben. | Nein |
 | connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden soll. Weitere Informationen finden Sie im Abschnitt [Voraussetzungen](#prerequisites). Wenn keine Option angegeben ist, verwendet diese Eigenschaft die standardmäßige Azure Integration Runtime. |Nein |
 
 ### <a name="use-basic-authentication"></a>Verwenden der Standardauthentifizierung
@@ -150,6 +151,35 @@ Legen Sie die **authenticationType**-Eigenschaft auf **ManagedServiceIdentity** 
             "url": "<REST endpoint e.g. https://www.example.com/>",
             "authenticationType": "ManagedServiceIdentity",
             "aadResourceId": "<AAD resource URL e.g. https://management.core.windows.net>"
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+### <a name="using-authentication-headers"></a>Authentifizierungs-Header verwenden
+
+Darüber hinaus können Sie neben den integrierten Authentifizierungstypen auch Anforderungsheader für die Authentifizierung konfigurieren.
+
+**Beispiel: Verwenden der Authentifizierung mit API-Schlüssel**
+
+```json
+{
+    "name": "RESTLinkedService",
+    "properties": {
+        "type": "RestService",
+        "typeProperties": {
+            "url": "<REST endpoint>",
+            "authenticationType": "Anonymous",
+            "authHeader": {
+                "x-api-key": {
+                    "type": "SecureString",
+                    "value": "<API key>"
+                }
+            }
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -463,9 +493,9 @@ Die Vorlage definiert zwei Parameter:
 
 5. Wählen Sie die Aktivität **Web** aus. Geben Sie in **Einstellungen** die entsprechenden Werte für **URL**, **Methode**, **Header** und **Body** an, um das OAuth-Bearertoken aus der Anmelde-API des Diensts abzurufen, aus dem Sie Daten kopieren möchten. Der Platzhalter in der Vorlage zeigt ein Beispiel für Azure Active Directory (AAD) OAuth. Beachten Sie, dass die AAD-Authentifizierung vom REST-Connector systemintern unterstützt wird. Dies hier ist nur ein Beispiel für den OAuth-Fluss. 
 
-    | Eigenschaft | Beschreibung |
-    |:--- |:--- |:--- |
-    | URL |Geben Sie die URL an, aus der das OAuth-Bearertoken abgerufen werden soll. Im Beispiel hier ist dies https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/token. |. 
+    | Eigenschaft | BESCHREIBUNG |
+    |:--- |:--- |
+    | URL |Geben Sie die URL an, aus der das OAuth-Bearertoken abgerufen werden soll. Im Beispiel hier ist dies https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/token. |
     | Methode | Die HTTP-Methode. Zulässige Werte sind **Post** und **Get**. | 
     | Header | Der Header wird vom Benutzer definiert und verweist auf einen einzigen Headernamen in der HTTP-Anforderung. | 
     | Body | Der Text der HTTP-Anforderung. | 
@@ -475,7 +505,7 @@ Die Vorlage definiert zwei Parameter:
 6. Wählen Sie in der Aktivität **Daten kopieren** die Registerkarte *Quelle* aus. Dann können Sie sehen, dass das aus dem vorherigen Schritt abgerufene Bearertoken („access_token“) unter „Zusätzliche Header“ als **Autorisierung** an die Aktivität übergeben wird. Bestätigen Sie die Einstellungen für die folgenden Eigenschaften, bevor Sie eine Pipelineausführung starten.
 
     | Eigenschaft | BESCHREIBUNG |
-    |:--- |:--- |:--- | 
+    |:--- |:--- |
     | Anforderungsmethode | Die HTTP-Methode. Zulässige Werte sind **Get** (Standardwert) und **Post**. | 
     | Zusätzliche Header | Zusätzliche HTTP-Anforderungsheader| 
 

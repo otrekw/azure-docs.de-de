@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 038e1394c68df63221d99b87449e5502ae62fadc
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 10491733d7473932a3eeb0e93dabe74a71d99fc8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102521032"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104889041"
 ---
 # <a name="create--use-software-environments-in-azure-machine-learning"></a>Erstellen und Verwenden von Softwareumgebungen in Azure Machine Learning
 
@@ -126,7 +126,7 @@ myenv.docker.base_image_registry="your_registry_location"
 > Azure Machine Learning unterstützt nur Docker-Images, die die folgende Software enthalten:
 > * Ubuntu 16.04 oder höher.
 > * Conda 4.5.# oder höher.
-> * Python 3.5 oder höher.
+> * Python 3.6 oder höher
 
 #### <a name="use-your-own-dockerfile"></a>Verwenden Ihres eigenen Dockerfiles 
 

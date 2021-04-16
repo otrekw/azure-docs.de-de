@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/23/2019
-ms.openlocfilehash: 9f179981aa39402681b4830d58a29f5b1259c7e2
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: a9a1788473cb31f8e78aac0bbd5979b3d681ad32
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946131"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867592"
 ---
 # <a name="create-apache-hbase-clusters-on-hdinsight-in-azure-virtual-network"></a>Erstellen von Apache HBase-Clustern in HDInsight in Azure Virtual Network
 
@@ -29,14 +29,14 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 In diesem Abschnitt erstellen Sie mit einer [Azure Resource Manager-Vorlage](../../azure-resource-manager/templates/deploy-powershell.md) einen Linux-basierten Apache HBase-Cluster mit dem abhängigen Azure Storage-Konto in einem virtuellen Azure-Netzwerk. Andere Methoden zur Erstellung von Clustern und Informationen zu den Einstellungen finden Sie unter [Erstellen von Linux-basierten Hadoop-Clustern in HDInsight](../hdinsight-hadoop-provision-linux-clusters.md). Weitere Informationen zur Verwendung einer Vorlage zum Erstellen von Apache Hadoop-Clustern in HDInsight finden Sie unter [Erstellen Linux-basierter Apache Hadoop-Cluster in HDInsight mithilfe von Azure Resource Manager-Vorlagen](../hdinsight-hadoop-create-linux-clusters-arm-templates.md).
 
 > [!NOTE]  
-> Einige Eigenschaften sind in der Vorlage hartcodiert. Beispiel:
+> Einige Eigenschaften sind in der Vorlage hartcodiert. Zum Beispiel:
 >
-> * **Standort**: USA (Ost) 2
-> * **Clusterversion:** 3.6
-> * **Anzahl der Workerknoten im Cluster:** 2
+> * **Standort:** USA, Osten 2
+> * **Clusterversion**: 3.6
+> * **Anzahl von Workerknoten im Cluster**: 2
 > * **Standard-Speicherkonto**: eine eindeutige Zeichenfolge
-> * **Name des virtuellen Netzwerks:** CLUSTERNAME-vnet
-> * **Adressraum des virtuellen Netzwerks:** 10.0.0.0/16
+> * **Name des virtuellen Netzwerks**: CLUSTERNAME-vnet
+> * **Adressraum des virtuellen Netzwerks**: 10.0.0.0/16
 > * **Subnetzname**: subnet1
 > * **Subnetzadressbereich:** 10.0.0.0/24
 >
@@ -44,7 +44,7 @@ In diesem Abschnitt erstellen Sie mit einer [Azure Resource Manager-Vorlage](../
 
 1. Wählen Sie die folgende Abbildung aus, um die Vorlage im Azure-Portal zu öffnen. Die Vorlage finden Sie unter [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-linux-vnet/).
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux-vnet%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-provision-vnet/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
+   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux-vnet%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-provision-vnet/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 
 1. Wählen Sie im Dialogfeld **Benutzerdefinierte Bereitstellung** die Option **Vorlage bearbeiten** aus.
 
@@ -56,7 +56,7 @@ In diesem Abschnitt erstellen Sie mit einer [Azure Resource Manager-Vorlage](../
     |---|---|
     |Subscription|Wählen Sie ein Azure-Abonnement aus, um den HDInsight-Cluster, das abhängige Speicherkonto und das virtuelle Azure-Netzwerk zu erstellen.|
     Resource group|Wählen Sie **Neu erstellen** aus, und geben Sie einen neuen Ressourcengruppennamen ein.|
-    |Position|Wählen Sie einen Speicherort für die Ressourcengruppe aus.|
+    |Standort|Wählen Sie einen Speicherort für die Ressourcengruppe aus.|
     |Clustername|Geben Sie einen Namen für den zu erstellenden Hadoop-Cluster ein.|
     |Benutzername und Kennwort für Clusteranmeldung|Der Standardbenutzername lautet **admin**. Geben Sie ein Kennwort an.|
     |SSH-Benutzername und -Kennwort|Der Standardbenutzername lautet **sshuser**.  Geben Sie ein Kennwort an.|
@@ -75,7 +75,7 @@ Führen Sie die Schritte unter [Erste Schritte mit einem Apache HBase-Beispiel i
 
 Erstellen Sie einen virtuellen IaaS-Computer (Infrastructure-as-a-Service) im gleichen virtuellen Azure-Netzwerk und im gleichen Subnetz. Anweisungen zum Erstellen eines neuen virtuellen IaaS-Computers finden Sie im Abschnitt zum [Erstellen eines virtuellen Computers unter Windows Server](../../virtual-machines/windows/quick-create-portal.md). Beim Ausführen der in diesem Dokument beschriebenen Schritte müssen Sie die folgenden Werte für die Netzwerkkonfiguration verwenden:
 
-* **Virtuelles Netzwerk:** CLUSTERNAME-vnet
+* **Virtuelles Netzwerk**: CLUSTERNAME-vnet
 * **Subnetz**: subnet1
 
 > [!IMPORTANT]  
@@ -102,34 +102,19 @@ Für Remote-Verbindungen zwischen Java-Anwendungen und HBase müssen Sie den vol
     curl -u <username>:<password> -k https://CLUSTERNAME.azurehdinsight.net/ambari/api/v1/clusters/CLUSTERNAME.azurehdinsight.net/services/hbase/components/hbrest
     ```
 
-Suchen Sie in den zurückgegebenen JSON-Daten (JavaScript Object Notation) den Eintrag "host_name". Er enthält den vollqualifizierten Domänennamen (FQDN) für die Knoten im Cluster. Beispiel:
+Suchen Sie in den zurückgegebenen JSON-Daten (JavaScript Object Notation) den Eintrag "host_name". Er enthält den vollqualifizierten Domänennamen (FQDN) für die Knoten im Cluster. Zum Beispiel:
 
-```
+```json
 "host_name" : "hn0-hbaseg.hjfrnszlumfuhfk4pi1guh410c.bx.internal.cloudapp.net"
 ```
 
 Der Teil des Domänennamens, der mit dem Clusternamen beginnt, ist das DNS-Suffix. Beispiel: `hjfrnszlumfuhfk4pi1guh410c.bx.internal.cloudapp.net`.
 
-<!--
-3.    Change the primary DNS suffix configuration of the virtual machine. This enables the virtual machine to automatically resolve the host name of the HBase cluster without explicit specification of the suffix. For example, the *workernode0* host name will be correctly resolved to workernode0 of the HBase cluster.
-
-    To make the configuration change:
-
-    1. RDP into the virtual machine.
-    2. Open **Local Group Policy Editor**. The executable is gpedit.msc.
-    3. Expand **Computer Configuration**, expand **Administrative Templates**, expand **Network**, and then click **DNS Client**.
-    - Set **Primary DNS Suffix** to the value obtained in step 2:
-
-        ![hdinsight.hbase.primary.dns.suffix](./media/apache-hbase-provision-vnet/hdi-primary-dns-suffix.png)
-    4. Click **OK**.
-    5. Reboot the virtual machine.
--->
-
 ### <a name="verify-communication-inside-virtual-network"></a>Überprüfen der Kommunikation innerhalb des virtuellen Netzwerks
 
 Führen Sie den Befehl `ping headnode0.<dns suffix>` auf dem virtuellen Computer aus, um zu überprüfen, ob der virtuelle Computer mit dem HBase-Cluster kommunizieren kann. Beispiel: `ping hn0-hbaseg.hjfrnszlumfuhfk4pi1guh410c.bx.internal.cloudapp.net`.
 
-Führen Sie die unter [Erstellen von Java-Anwendungen für die Apache-HBase](./apache-hbase-build-java-maven-linux.md) beschriebenen Schritte aus, um diese Informationen in einer Java-Anwendung zu verwenden. Wenn die Anwendung eine Verbindung mit einem HBase-Remoteserver herstellen soll, müssen Sie den FQDN für Zookeeper in der Datei **hbase-site.xml** eintragen. Beispiel:
+Führen Sie die unter [Erstellen von Java-Anwendungen für die Apache-HBase](./apache-hbase-build-java-maven-linux.md) beschriebenen Schritte aus, um diese Informationen in einer Java-Anwendung zu verwenden. Wenn die Anwendung eine Verbindung mit einem HBase-Remoteserver herstellen soll, müssen Sie den FQDN für Zookeeper in der Datei **hbase-site.xml** eintragen. Zum Beispiel:
 
 ```xml
 <property>

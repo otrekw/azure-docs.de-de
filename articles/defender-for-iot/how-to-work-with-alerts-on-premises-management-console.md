@@ -3,12 +3,12 @@ title: Arbeiten mit Warnungen auf der lokalen Verwaltungskonsole
 description: Mithilfe der lokalen Verwaltungskonsole können Sie eine Unternehmensübersicht über die aktuellen Bedrohungen in Ihrem Netzwerk erhalten und besser verstehen, wie diese von den Sensorbenutzern behandelt werden.
 ms.date: 12/06/2020
 ms.topic: how-to
-ms.openlocfilehash: a99c489c54b2671a463c0c3dad1909c74b4fa203
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 604650f0cb08eac4a3ab1cfd3fdcbf2e7ff0d19e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104781465"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105032139"
 ---
 # <a name="work-with-alerts-on-the-on-premises-management-console"></a>Arbeiten mit Warnungen auf der lokalen Verwaltungskonsole 
 
@@ -242,6 +242,7 @@ Regeln, die Sie mithilfe der API erstellen, sind im Fenster **Ausschlussregel** 
 
 :::image type="content" source="media/how-to-work-with-alerts-on-premises-management-console/edit-exclusion-rule-screen.png" alt-text="Screenshot der Ansicht „Edit Exclusion Rule“ (Ausschlussregel bearbeiten)":::
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="next-steps"></a>Nächste Schritte
 
-[Arbeiten mit Sensorwarnungen](how-to-work-with-alerts-on-your-sensor.md)
+[Arbeiten mit Warnungen auf dem Sensor](how-to-work-with-alerts-on-your-sensor.md).
+Warnungen der [Defender für IoT-Engine](alert-engine-messages.md) ansehen.

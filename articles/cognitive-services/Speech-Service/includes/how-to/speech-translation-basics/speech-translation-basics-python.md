@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/13/2020
 ms.author: trbye
-ms.openlocfilehash: 679104a1941e677dd78190fb80964a5d39813e61
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: bea61ac9a8c5700cd4f18cfb567b054de6b5613d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102445024"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105104687"
 ---
 Eines der zentralen Features des Speech-Diensts ist die Fähigkeit, menschliche Sprache zu erkennen und in andere Sprachen zu übersetzen. In diesem Schnellstart erfahren Sie, wie Sie das Speech SDK in Ihren Apps und Produkten verwenden, um hochwertige Sprachübersetzungen durchzuführen. In diesem Schnellstart werden folgende Themen behandelt:
 
@@ -27,7 +27,7 @@ In diesem Artikel wird vorausgesetzt, dass Sie über ein Azure-Konto und über e
 
 ## <a name="install-the-speech-sdk"></a>Installieren des Speech SDK
 
-Zuallererst muss das Speech SDK installiert werden. Folgen Sie je nach Plattform den Anweisungen im Abschnitt <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk#get-the-speech-sdk" target="_blank">Abrufen des Speech SDK</a> des Artikels _Abrufen des Speech SDK_.
+Zuallererst muss das Speech SDK installiert werden. Folgen Sie je nach Plattform den Anweisungen im Abschnitt <a href="/azure/cognitive-services/speech-service/speech-sdk#get-the-speech-sdk" target="_blank">Abrufen des Speech SDK</a> des Artikels _Abrufen des Speech SDK_.
 
 ## <a name="import-dependencies"></a>Importieren von Abhängigkeiten
 

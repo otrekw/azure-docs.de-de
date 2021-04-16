@@ -4,17 +4,17 @@ ms.service: storage
 ms.topic: include
 ms.date: 09/28/2020
 ms.author: normesta
-ms.openlocfilehash: 61576de4a57d55ea9d1ea209c52df556f0069617
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ca8963ed8928745a6d5918c86021199432339c83
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101750103"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104612785"
 ---
 | Eigenschaft | BESCHREIBUNG |
 |:--- |:---|
 |**identity / type** | Hierbei handelt es sich um den für die Anforderung verwendeten Authentifizierungstyp, Beispiel: `OAuth`, `Kerberos`, `SAS Key`, `Account Key` oder `Anonymous` |
-|**identity / tokenHash**|Dieses Feld ist ausschließlich zur internen Verwendung vorgesehen. |
+|**identity / tokenHash**|Der SHA-256-Hash des Authentifizierungstokens, das für die Anforderung verwendet wird. <br>Wenn der Authentifizierungstyp `Account Key` lautet, wird das Format „key1 \| key2 (SHA256-Hash des Schlüssels)“ verwendet. Beispiel: `key1(5RTE343A6FEB12342672AFD40072B70D4A91BGH5CDF797EC56BF82B2C3635CE)`. <br>Wenn der Authentifizierungstyp `SAS Key` lautet, wird das Format „key1 \| key2 (SHA 256-Hash des Schlüssels),SasSignature(SHA 256-Hash des SAS-Tokens)“ verwendet. Beispiel: `key1(0A0XE8AADA354H19722ED12342443F0DC8FAF3E6GF8C8AD805DE6D563E0E5F8A),SasSignature(04D64C2B3A704145C9F1664F201123467A74D72DA72751A9137DDAA732FA03CF)`. Wenn der Authentifizierungstyp `OAuth` lautet, wird das Format „SHA 256-Hash des OAuth-Tokens“ verwendet. Beispiel: `B3CC9D5C64B3351573D806751312317FE4E910877E7CBAFA9D95E0BE923DW25C`<br> Bei anderen Authentifizierungstypen ist kein tokenHash-Feld vorhanden. |
 |**authorization / action** | Hierbei handelt es sich um die der Anforderung zugewiesene Aktion. |
 |**authorization / roleAssignmentId** | Hierbei handelt es sich um die Rollenzuweisungs-ID. Beispiel: `4e2521b7-13be-4363-aeda-111111111111`.|
 |**authorization / roleDefinitionId** | Hierbei handelt es sich um die Rollendefinitions-ID. Beispiel: `ba92f5b4-2d11-453d-a403-111111111111"`.|

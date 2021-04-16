@@ -3,12 +3,12 @@ title: Ausführen Ihrer App aus einem ZIP-Paket
 description: Hier erfahren Sie, wie Sie das ZIP-Paket Ihrer App mit Unteilbarkeit bereitstellen. Verbessern Sie die Vorhersagbarkeit und Zuverlässigkeit des Verhaltens Ihrer App während der ZIP-Bereitstellung.
 ms.topic: article
 ms.date: 01/14/2020
-ms.openlocfilehash: 3440653455626af4e3705d89349a66d6bf2fbfc0
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 036dd8c86251af2ed5553939e74a0d85fc303ecb
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008128"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104577545"
 ---
 # <a name="run-your-app-in-azure-app-service-directly-from-a-zip-package"></a>Direktes Ausführen Ihrer App in Azure App Service aus einem ZIP-Paket
 
@@ -67,10 +67,11 @@ Wenn Sie ein aktualisiertes Paket mit dem gleichen Namen in Blob Storage veröff
 
 - Beim direkten Ausführen aus einem Paket wird `wwwroot` schreibgeschützt. Wenn Ihre App versucht, Dateien in dieses Verzeichnis zu schreiben, tritt ein Fehler auf.
 - Das TAR- und das GZIP-Format werden nicht unterstützt.
+- Die ZIP-Datei kann höchstens 1 GB groß sein.
 - Dieses Feature ist nicht mit [lokalem Cache](overview-local-cache.md) kompatibel.
 - Um die Kaltstartleistung zu verbessern, verwenden Sie die lokale ZIP-Option (`WEBSITE_RUN_FROM_PACKAGE`=1).
 
 ## <a name="more-resources"></a>Weitere Ressourcen
 
 - [Continuous Deployment in Azure App Service](deploy-continuous-deployment.md)
-- [Bereitstellen der App in Azure App Service mit einer ZIP- oder WAR-Datei](deploy-zip.md)
+- [Bereitstellen von Code mit einer ZIP- oder WAR-Datei](deploy-zip.md)

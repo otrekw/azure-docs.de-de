@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 09/21/2020
-ms.openlocfilehash: 17e97503996b53868f12e74ed5a38dba63285426
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 9faaf79958443c252a8d913fbd7448389c610e09
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102503197"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105628576"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zu Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -135,7 +135,7 @@ Die verwaltete Instanz bietet die gleichen Leistungsstufen pro Compute- und Spei
 
 Eine Option ist das [Exportieren einer Datenbank in eine BACPAC-Datei](../database/database-export.md) und das anschließende [Importieren der BACPAC-Datei](../database/database-import.md). Dieser Ansatz wird empfohlen, wenn die Datenbank kleiner als 100 GB ist.
 
-[Transaktionsreplikation](replication-two-instances-and-sql-server-configure-tutorial.md?view=sql-server-2017&preserve-view=true) kann verwendet werden, wenn alle Tabellen in der Datenbank *Primärschlüssel* aufweisen und in der Datenbank keine In-Memory-OLTP-Objekte vorhanden sind.
+[Transaktionsreplikation](replication-two-instances-and-sql-server-configure-tutorial.md) kann verwendet werden, wenn alle Tabellen in der Datenbank *Primärschlüssel* aufweisen und in der Datenbank keine In-Memory-OLTP-Objekte vorhanden sind.
 
 Native COPY_ONLY-Sicherungen einer verwalteten Instanz können nicht in SQL Server wiederhergestellt werden, da eine verwaltete Instanz eine höhere Datenbankversion als SQL Server aufweist. Weitere Informationen finden Sie unter [Kopiesicherung](/sql/relational-databases/backup-restore/copy-only-backups-sql-server?preserve-view=true&view=sql-server-ver15).
 
@@ -171,7 +171,7 @@ Weitere Informationen finden Sie unter [Hauptursache für Leistungsunterschiede 
 
 Sie können die Leistung Ihrer verwalteten Instanz wie folgt optimieren:
 - [Die automatische Optimierung](../database/automatic-tuning-overview.md), die aufgrund einer kontinuierlichen Leistungsoptimierung, die auf künstlicher Intelligenz und maschinellem Lernen basiert, für hohe Leistung und stabile Workloads sorgt.
--   [In-Memory-OLTP](../in-memory-oltp-overview.md), das den Durchsatz und die Latenz bei transaktionalen Verarbeitungsworkloads verbessert und schnellere geschäftliche Erkenntnisse liefert. 
+-    [In-Memory-OLTP](../in-memory-oltp-overview.md), das den Durchsatz und die Latenz bei transaktionalen Verarbeitungsworkloads verbessert und schnellere geschäftliche Erkenntnisse liefert. 
 
 Wenn Sie die Leistung noch weiter optimieren möchten, wenden Sie einige der *Best Practices* für die [Anwendungs- und Datenbankoptimierung](../database/performance-guidance.md#tune-your-database) an.
 Wenn Ihre Workload aus vielen kleinen Transaktionen besteht, sollten Sie den [Verbindungstyp von Proxymodus in Umleitungsmodus ändern](connection-types-overview.md#changing-connection-type), um eine niedrigere Latenz und höheren Durchsatz zu erreichen.
@@ -214,7 +214,7 @@ Ja, Sie können Add-On-Speicher unabhängig von Computeressourcen in gewissem Um
 
 **Wie kann ich die Speicherleistung auf der universellen Dienstebene optimieren?**
 
-Informationen zur Optimierung der Speicherleistung finden Sie unter [Best Practices für die Speicherleistung auf universeller Dienstebene](https://techcommunity.microsoft.com).
+Informationen zur Optimierung der Speicherleistung finden Sie unter [Best Practices für die Speicherleistung auf universeller Dienstebene](https://techcommunity.microsoft.com/t5/datacat/storage-performance-best-practices-and-considerations-for-azure/ba-p/305525).
 
 ## <a name="backup-and-restore"></a>Sichern und Wiederherstellen
 
@@ -263,9 +263,9 @@ Ja. Nachdem eine verwaltete Instanz bereitgestellt wurde, können Sie eine NSG f
 **Kann ich das virtuelle Netzwerkgerät oder die lokale Firewall so festlegen, dass der ausgehende Verwaltungsdatenverkehr basierend auf FQDNs gefiltert wird?**
 
 Nein. Dies wird aus verschiedenen Gründen nicht unterstützt:
--   Das Routing von Datenverkehr als Antwort auf eine eingehende Verwaltungsanforderung wäre asymmetrisch und würde nicht funktionieren.
--   Das Routing von Datenverkehr in den Speicher würde durch Durchsatzeinschränkungen und Latenz beeinträchtigt werden. Auf diese Weise ist es also nicht möglich, die erwartete Dienstqualität und -verfügbarkeit bereitzustellen.
--   Die Erfahrung hat gezeigt, dass diese Konfigurationen fehleranfällig sind und nicht unterstützt werden.
+-    Das Routing von Datenverkehr als Antwort auf eine eingehende Verwaltungsanforderung wäre asymmetrisch und würde nicht funktionieren.
+-    Das Routing von Datenverkehr in den Speicher würde durch Durchsatzeinschränkungen und Latenz beeinträchtigt werden. Auf diese Weise ist es also nicht möglich, die erwartete Dienstqualität und -verfügbarkeit bereitzustellen.
+-    Die Erfahrung hat gezeigt, dass diese Konfigurationen fehleranfällig sind und nicht unterstützt werden.
 
 **Kann ich das virtuelle Netzwerkgerät oder die Firewall für ausgehenden Datenverkehr festlegen, bei dem es sich nicht um Verwaltungsdatenverkehr handelt?**
 
@@ -416,9 +416,9 @@ Für SQL Managed Instance ist das [vCore-basierte Kaufmodell](sql-managed-instan
 **Welche Kostenvorteile sind für SQL Managed Instance verfügbar?**
 
 Sie können mit den Azure SQL-Vorteilen wie folgt Kosten sparen:
--   Maximieren Sie die vorhandenen Investitionen in lokale Lizenzen, um mit dem [Azure-Hybridvorteil](../azure-hybrid-benefit.md?tabs=azure-powershell) bis zu 55 Prozent an Kosten zu sparen. 
--   Gehen Sie eine Verpflichtung zur Reservierung von Computeressourcen ein, um mit dem [Vorteil für reservierte Instanzen](../database/reserved-capacity-overview.md) bis zu 33 Prozent der Kosten zu sparen. Kombinieren Sie dies mit dem Azure-Hybridvorteil, um Kosten in Höhe von bis zu 82 Prozent zu sparen. 
--   Sparen Sie bis zu 55 Prozent gegenüber den Listenpreisen, indem Sie den [Vorteil in Bezug auf Preise für Azure Dev/Test](https://azure.microsoft.com/pricing/dev-test/) nutzen. Hierbei erhalten Sie vergünstigte Preise für Ihre laufenden Entwicklungs- und Testworkloads.
+-    Maximieren Sie die vorhandenen Investitionen in lokale Lizenzen, um mit dem [Azure-Hybridvorteil](../azure-hybrid-benefit.md?tabs=azure-powershell) bis zu 55 Prozent an Kosten zu sparen. 
+-    Gehen Sie eine Verpflichtung zur Reservierung von Computeressourcen ein, um mit dem [Vorteil für reservierte Instanzen](../database/reserved-capacity-overview.md) bis zu 33 Prozent der Kosten zu sparen. Kombinieren Sie dies mit dem Azure-Hybridvorteil, um Kosten in Höhe von bis zu 82 Prozent zu sparen. 
+-    Sparen Sie bis zu 55 Prozent gegenüber den Listenpreisen, indem Sie den [Vorteil in Bezug auf Preise für Azure Dev/Test](https://azure.microsoft.com/pricing/dev-test/) nutzen. Hierbei erhalten Sie vergünstigte Preise für Ihre laufenden Entwicklungs- und Testworkloads.
 
 **Wer ist für den Vorteil für reservierte Instanzen berechtigt?**
 

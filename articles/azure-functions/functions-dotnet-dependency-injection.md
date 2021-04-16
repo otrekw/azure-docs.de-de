@@ -4,15 +4,15 @@ description: Verwenden von Abhängigkeitsinjektionen für die Registrierung und 
 author: ggailey777
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.date: 01/27/2021
+ms.date: 03/24/2021
 ms.author: glenga
 ms.reviewer: jehollan
-ms.openlocfilehash: 66e2cd22f4bcb95be65d6d04345dcac622436a04
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 32cd2760eadc94466cdf55883611c78ac0cf24e6
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98955087"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105608118"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Verwenden der Abhängigkeitsinjektion in Azure Functions (.NET)
 
@@ -21,6 +21,11 @@ Azure Functions unterstützt das Softwareentwurfsmuster „Abhängigkeitsinjekti
 - Die Abhängigkeitsinjektion in Azure Functions basiert auf den .NET Core-Features für die Abhängigkeitsinjektion. Vertrautheit mit der [.NET Core- Abhängigkeitsinjektion](/aspnet/core/fundamentals/dependency-injection) wird empfohlen. Es bestehen Unterschiede darin, wie Sie Abhängigkeiten überschreiben und wie Konfigurationswerte mit Azure Functions im Verbrauchstarif gelesen werden.
 
 - Die Unterstützung der Abhängigkeitsinjektion beginnt mit Azure Functions 2.x.
+
+- Abhängigkeitsinjektionsmuster unterscheiden sich abhängig davon, ob Ihre C#-Funktionen[ in-Process](functions-dotnet-class-library.md) oder [außerhalb des Prozesses](dotnet-isolated-process-guide.md)ausgeführt werden.  
+
+> [!IMPORTANT]
+> Die Anleitung in diesem Artikel gilt nur für [Funktionen der C#-Klassenbibliothek](functions-dotnet-class-library.md), die in-Process mit der Laufzeit ausgeführt werden. Dieses benutzerdefinierte Abhängigkeitsinjektionsmodell gilt nicht für [isolierte .NET-Funktionen](dotnet-isolated-process-guide.md), mit denen Sie .NET 5.0-Funktionen außerhalb des Prozesses ausführen können. Das isolierte .NET-Prozessmodell basiert auf regulären ASP.net Core Abhängigkeitsinjektionsmustern. Weitere Informationen finden Sie unter [Abhängigkeitsinjektion](dotnet-isolated-process-guide.md#dependency-injection) im isolierten Prozess Handbuch für .NET.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

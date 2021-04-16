@@ -9,16 +9,26 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 7b71fc2f3afb67d766bfe267888674b55af6a3a5
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 62035b2fe6c3db71e392a05946ea3f230dfa030e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102503912"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104604625"
 ---
 # <a name="how-to-enable-key-vault-logging"></a>Aktivieren der Protokollierung in Key Vault
 
 Nachdem Sie einen oder mehrere Schlüsseltresore erstellt haben, möchten Sie vermutlich überwachen, wie, wann und von wem auf die Schlüsseltresore zugegriffen wird. Ausführliche Informationen zum Feature finden Sie unter [Key Vault-Protokollierung](logging.md).
+
+Protokollierte Inhalte
+
+* Alle authentifizierten REST-API-Anforderungen, z. B. auch Anforderungen, die aufgrund von Zugriffsberechtigungen, Systemfehlern oder fehlerhaften Anforderungen nicht erfolgreich sind.
+* Vorgänge im Schlüsseltresor selbst, z. B. Erstellung, Löschung und Festlegung von Schlüsseltresor-Zugriffsrichtlinien und Aktualisierung von Schlüsseltresor-Attributen wie Tags.
+* Vorgänge mit Schlüsseln und Geheimnissen im Schlüsseltresor, einschließlich:
+  * Erstellen, Ändern oder Löschen dieser Schlüssel oder Geheimnisse.
+  * Signieren, Verifizieren, Verschlüsseln, Entschlüsseln, Ver- und Entpacken von Schlüsseln, Erhalten von Geheimnissen und Auflisten von Schlüsseln und Geheimnissen (und deren Versionen).
+* Bei nicht authentifizierten Anforderungen wird eine 401-Antwort zurückgegeben. Beispiele sind Anforderungen ohne Bearertoken, falsch formatierte oder abgelaufene Anforderungen oder Anforderungen, deren Token ungültig ist.  
+* Event Grid-Benachrichtigungsereignisse für „Läuft demnächst ab“, „Abgelaufen“ und „Tresorzugriffsrichtlinie geändert“ (neues Versionsereignis wird nicht protokolliert). Ereignisse werden unabhängig davon protokolliert, ob im Schlüsseltresor ein Ereignisabonnement erstellt wurde. Weitere Informationen finden Sie unter [Event Grid-Ereignisschema für Schlüsseltresor](../../event-grid/event-schema-key-vault.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -58,7 +68,7 @@ Um die Verwaltung noch weiter zu vereinfachen, verwenden wir auch die gleiche Re
 
 Geben Sie außerdem einen Speicherkontonamen an. Speicherkontonamen müssen eindeutig und zwischen drei und 24 Zeichen lang sein und dürfen nur Zahlen und Kleinbuchstaben enthalten.  Zuletzt wird ein Speicherkonto mit der SKU „Standard_LRS“ erstellt.
 
-Verwenden Sie in der Azure CLI den Befehl [az storage account create](/cli/azure/storage/account#az_storage_account_create).
+Verwenden Sie in der Azure CLI den Befehl [az storage account create](/cli/azure/storage/account#az_storage_account_create). 
 
 ```azurecli-interactive
 az storage account create --name "<your-unique-storage-account-name>" -g "myResourceGroup" --sku "Standard_LRS"
@@ -100,15 +110,31 @@ Get-AzKeyVault -VaultName "<your-unique-keyvault-name>"
 
 Die Ressourcen-ID für Ihren Schlüsseltresor weist das folgende Format auf: /Abonnements/<Ihre-Abonnement-ID>/Ressourcengruppen/meineRessourcengruppe/Anbieter/Microsoft.KeyVault/Tresore/<Ihr-eindeutiger-Schlüsseltresorname>. Speichern Sie ihn für den nächsten Schritt.
 
-## <a name="enable-logging-using-azure-powershell"></a>Aktivieren der Protokollierung mithilfe von Azure PowerShell
+## <a name="enable-logging"></a>Aktivieren der Protokollierung
 
-Für die Aktivierung der Protokollierung in Azure Key Vault verwenden Sie den Azure CLI-Befehl [az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings) bzw. das Cmdlet [Set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) zusammen mit der Speicherkonto-ID und der Ressourcen-ID des Schlüsseltresors.
+Sie können die Protokollierung für Key Vault mithilfe der Azure CLI, Azure PowerShell oder dem Azure-Portal aktivieren.
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+### <a name="azure-cli"></a>Azure CLI
+
+Verwenden Sie den Azure CLI-Befehl [az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings) zusammen mit der Speicherkonto-ID und der Ressourcen-ID für den Schlüsseltresor.
 
 ```azurecli-interactive
 az monitor diagnostic-settings create --storage-account "<storage-account-id>" --resource "<key-vault-resource-id>" --name "Key vault logs" --logs '[{"category": "AuditEvent","enabled": true}]' --metrics '[{"category": "AllMetrics","enabled": true}]'
 ```
 
-In Azure PowerShell wird das Cmdlet [Set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) verwendet. Das **-Enabled**-Flag wird dabei auf **$true** festgelegt, und die Kategorie ist auf `AuditEvent` festgelegt. Dabei handelt es sich um die einzige Kategorie für die Protokollierung in Azure Key Vault:
+Optional können Sie eine Aufbewahrungsrichtlinie für Ihre Protokolle festlegen, mit der ältere Protokolle nach einer angegeben Dauer automatisch gelöscht werden. Sie könnten beispielsweise eine Aufbewahrungsrichtlinie so festlegen, dass alle Protokolle, die älter als 90 Tage sind, automatisch gelöscht werden.
+
+Verwenden Sie den Befehl [az monitor diagnostic-settings update](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_update) mithilfe der Azure CLI. 
+
+```azurecli-interactive
+az monitor diagnostic-settings update --name "Key vault retention policy" --resource "<key-vault-resource-id>" --set retentionPolicy.days=90
+```
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+Verwenden Sie das Cmdlet [Set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting). Legen Sie das **-Enabled**-Flag dabei auf **$true** und die Kategorie auf `AuditEvent` fest. Dabei handelt es sich um die einzige Kategorie für die Protokollierung in Azure Key Vault:
 
 ```powershell-interactive
 Set-AzDiagnosticSetting -ResourceId "<key-vault-resource-id>" -StorageAccountId $sa.id -Enabled $true -Category "AuditEvent"
@@ -116,28 +142,35 @@ Set-AzDiagnosticSetting -ResourceId "<key-vault-resource-id>" -StorageAccountId 
 
 Optional können Sie eine Aufbewahrungsrichtlinie für Ihre Protokolle festlegen, mit der ältere Protokolle nach einer angegeben Dauer automatisch gelöscht werden. Sie könnten beispielsweise eine Aufbewahrungsrichtlinie so festlegen, dass alle Protokolle, die älter als 90 Tage sind, automatisch gelöscht werden.
 
-<!-- With the Azure CLI, use the [az monitor diagnostic-settings update](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_update) command. 
-
-```azurecli-interactive
-az monitor diagnostic-settings update 
-```
--->
-
-In Azure PowerShell verwenden Sie das Cmdlet [Set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting). 
+In Azure PowerShell verwenden Sie das Cmdlet [Set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting).
 
 ```powershell-interactive
 Set-AzDiagnosticSetting "<key-vault-resource-id>" -StorageAccountId $sa.id -Enabled $true -Category AuditEvent -RetentionEnabled $true -RetentionInDays 90
 ```
 
-Protokollierte Inhalte
+# <a name="azure-portal"></a>[Azure-Portal](#tab/azure-portal)
 
-* Alle authentifizierten REST-API-Anforderungen, z. B. auch Anforderungen, die aufgrund von Zugriffsberechtigungen, Systemfehlern oder fehlerhaften Anforderungen nicht erfolgreich sind.
-* Vorgänge im Schlüsseltresor selbst, z. B. Erstellung, Löschung und Festlegung von Schlüsseltresor-Zugriffsrichtlinien und Aktualisierung von Schlüsseltresor-Attributen wie Tags.
-* Vorgänge mit Schlüsseln und Geheimnissen im Schlüsseltresor, einschließlich:
-  * Erstellen, Ändern oder Löschen dieser Schlüssel oder Geheimnisse.
-  * Signieren, Verifizieren, Verschlüsseln, Entschlüsseln, Ver- und Entpacken von Schlüsseln, Erhalten von Geheimnissen und Auflisten von Schlüsseln und Geheimnissen (und deren Versionen).
-* Bei nicht authentifizierten Anforderungen wird eine 401-Antwort zurückgegeben. Beispiele sind Anforderungen ohne Bearertoken, falsch formatierte oder abgelaufene Anforderungen oder Anforderungen, deren Token ungültig ist.  
-* Event Grid-Benachrichtigungsereignisse für „Läuft demnächst ab“, „Abgelaufen“ und „Tresorzugriffsrichtlinie geändert“ (neues Versionsereignis wird nicht protokolliert). Ereignisse werden unabhängig davon protokolliert, ob im Schlüsseltresor ein Ereignisabonnement erstellt wurde. Weitere Informationen finden Sie unter [Event Grid-Ereignisschema für Schlüsseltresor](../../event-grid/event-schema-key-vault.md).
+Führen Sie die folgenden Schritte aus, um die Diagnoseeinstellungen im Portal zu konfigurieren.
+
+1. Klicken Sie im Ressourcenblattmenü auf „Diagnoseeinstellungen“.
+
+    :::image type="content" source="../media/diagnostics-portal-1.png" alt-text="Diagnoseeinstellungen im Portal 1":::
+
+1. Klicken Sie auf die Option „+ Diagnoseeinstellung hinzufügen“.
+
+    :::image type="content" source="../media/diagnostics-portal-2.png" alt-text="Diagnoseeinstellungen im Portal 2":::
+ 
+1. Wählen Sie einen Namen aus, um alle Ihre Diagnoseeinstellungen aufzurufen. Wählen Sie die Option „AuditEvent“ aus, und klicken Sie dann auf „An Log Analytics-Arbeitsbereich senden“, um die Protokollierung für Azure Monitor für Key Vault zu konfigurieren. Wählen Sie dann das Abonnement und den Log Analytics-Arbeitsbereich aus, an die Sie Ihre Protokolle senden möchten.
+
+    :::image type="content" source="../media/diagnostics-portal-3.png" alt-text="Diagnoseeinstellungen im Portal 3":::
+
+    Wählen Sie andernfalls die Optionen aus, die sich auf die Protokolle beziehen, die Sie auswählen möchten.
+
+1. Nachdem Sie die gewünschten Optionen ausgewählt haben, klicken Sie auf „Speichern“.
+
+    :::image type="content" source="../media/diagnostics-portal-4.png" alt-text="Diagnoseeinstellungen im Portal 4":::
+
+---
 
 ## <a name="access-your-logs"></a>Zugreifen auf Ihre Protokolle
 

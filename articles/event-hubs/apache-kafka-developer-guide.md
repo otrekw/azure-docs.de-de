@@ -3,12 +3,12 @@ title: Apache Kafka-Entwicklerleitfaden für Event Hubs
 description: Dieser Artikel enthält Links zu Artikeln, in denen beschrieben wird, wie Sie Ihre Kafka-Anwendungen in Azure Event Hubs integrieren können.
 ms.date: 06/23/2020
 ms.topic: article
-ms.openlocfilehash: 757db4faf2a933e366bc818d5cf6aab04d0b08ba
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 84fa40d7cc4b09f31d78665f901b49adacf3267f
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90061732"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107303082"
 ---
 # <a name="apache-kafka-developer-guide-for-azure-event-hubs"></a>Apache Kafka-Entwicklerleitfaden für Azure Event Hubs
 Dieser Artikel enthält Links zu Artikeln, in denen beschrieben wird, wie Sie Ihre Apache Kafka-Anwendungen in Azure Event Hubs integrieren können. 
@@ -78,7 +78,7 @@ Sehen Sie sich die Beispiele im GitHub-Repository [azure-event-hubs-for-kafka](h
 Lesen Sie auch die folgenden Artikel:
 
 - [Apache Kafka-Leitfaden zur Problembehandlung für Event Hubs](apache-kafka-troubleshooting-guide.md)
-- [Häufig gestellte Fragen (FAQ) zu Event Hubs für Apache Kafka](apache-kafka-frequently-asked-questions.md)
+- [Häufig gestellte Fragen (FAQ) zu Event Hubs für Apache Kafka](apache-kafka-frequently-asked-questions.yml)
 - [Apache Kafka-Migrationsleitfaden für Event Hubs](apache-kafka-migration-guide.md)
 
 

@@ -6,15 +6,14 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc, contperf-fy21q1
-ms.date: 03/10/2021
+ms.date: 04/05/2021
 ms.author: victorh
-Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: 0982f0293b452c29a1c9fbb46cb24d47e70c0f5e
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: bb89b6acbc76a4020ee721e87272b154bab6d0a4
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102615566"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106385172"
 ---
 # <a name="what-is-azure-firewall"></a>Was ist Azure Firewall?
 
@@ -55,7 +54,6 @@ Azure Firewall weist die folgenden bekannten Probleme auf:
 
 |Problem  |BESCHREIBUNG  |Minderung  |
 |---------|---------|---------|
-|Wenn Sie über das Portal eine Regel aus einer IP-Adresse in einer IP-Gruppe oder umgekehrt aktualisieren, werden beide Typen gespeichert, aber nur einer im Portal angezeigt.|Dieses Problem tritt bei klassischen Regeln auf.<br><br>Wenn Sie das Portal verwenden, um den Quelltyp einer NAT-Regel aus einer IP-Adresse in einer IP-Gruppe oder umgekehrt zu aktualisieren, werden beide Typen im Back-End gespeichert, aber nur der neu aktualisierte Typ wird angezeigt.<br><br>Dasselbe Problem tritt auf, wenn Sie den Zieltyp einer Netzwerk- oder Anwendungsregel einer IP-Adresse in einer IP-Gruppe oder umgekehrt aktualisieren.|Ein Fix für das Portal ist für März 2021 geplant.<br><br>Verwenden Sie bis dahin Azure PowerShell, die Azure CLI oder eine API, um eine Regel aus einer IP-Adresse in einer IP-Gruppe oder umgekehrt zu ändern.|
 |Netzwerkfilterregeln für andere Protokolle als TCP/UDP (z.B. ICMP) funktionieren nicht für den Internetdatenverkehr|Netzwerkfilterregeln für andere Protokolle als TCP/UDP funktionieren nicht mit SNAT für Ihre öffentliche IP-Adresse. Nicht-TCP/UDP-Protokolle werden zwischen Spoke-Subnetzen und VNets unterstützt.|Azure Firewall verwendet Standard Load Balancer, [das SNAT für IP-Protokolle derzeit nicht unterstützt](../load-balancer/load-balancer-overview.md). Wir prüfen Möglichkeiten, um dieses Szenario in einer zukünftigen Version zu unterstützen.|
 |Fehlende PowerShell- und CLI-Unterstützung für ICMP|Azure PowerShell und CLI weisen keine Unterstützung von ICMP als gültiges Protokoll in Netzwerkregeln auf.|Es ist weiterhin möglich, ICMP über das Portal und die REST-API als Protokoll zu verwenden. Wir arbeiten daran, ICMP in Kürze in PowerShell und CLI hinzuzufügen.|
 |Für FQDN-Tags muss ein Protokoll/Port festgelegt werden|Für Anwendungsregeln mit FQDN-Tags ist eine „Port: Protokoll“-Definition erforderlich.|Sie können **https** als port:-Protokollwert verwenden. Wir arbeiten daran, dieses Feld optional zu machen, wenn FQDN-Tags verwendet werden.|
@@ -79,6 +77,7 @@ Azure Firewall weist die folgenden bekannten Probleme auf:
 |Starten/Beenden funktioniert nicht bei einer Firewall, für die der Tunnelerzwingungsmodus konfiguriert ist.|Starten/Beenden funktioniert nicht bei einer Azure Firewall-Instanz, für die der Tunnelerzwingungsmodus konfiguriert ist. Der Versuch, Azure Firewall mit konfigurierter Tunnelerzwingung zu starten, führt zu folgendem Fehler:<br><br>*Set-AzFirewall: Es ist nicht möglich, die Verwaltungs-IP-Konfiguration für AzureFirewall "FW-xx" einer vorhandenen Firewall hinzuzufügen. Wiederholen Sie die Bereitstellung mit einer Verwaltungs-IP-Konfiguration, wenn Sie eine Tunnelerzwingung unterstützen möchten.<br>Statuscode: 400<br>ReasonPhrase: Ungültige Anforderung*|Wird untersucht<br><br>Um das Problem zu umgehen, können Sie die vorhandene Firewall löschen und eine neue mit denselben Parametern erstellen.|
 |Tags der Firewallrichtlinie können nicht über das Portal hinzugefügt werden.|Die Azure Firewall-Richtlinie verfügt über eine Patchunterstützungseinschränkung, die verhindert, dass Sie über das Azure-Portal ein Tag hinzufügen können. Der folgende Fehler wird generiert: *Die Tags für die Ressource konnten nicht gespeichert werden*.|Es wird bereits nach einer Lösung gesucht. Alternativ können Sie das Azure PowerShell-Cmdlet `Set-AzFirewallPolicy` verwenden, um Tags zu aktualisieren.|
 |Noch keine IPv6-Unterstützung|Wenn Sie einer Regel eine IPv6-Adresse hinzufügen, tritt ein Firewallfehler auf.|Verwenden Sie nur IPv4-Adressen. Die IPv6-Unterstützung wird geprüft.|
+|Das Aktualisieren mehrerer IP-Gruppen schlägt mit einem Konfliktfehler fehl.|Wenn Sie zwei oder mehr IPGroups aktualisieren, die an dieselbe Firewall angefügt sind, wechselt eine der Ressourcen in den Fehlerzustand.|Dies ist ein bekanntes Problem/eine bekannte Einschränkung. <br><br>Wenn Sie eine IPGroup aktualisieren, wird für alle Firewalls, an die die IPGroup angefügt ist, ein Update ausgelöst. Wenn ein Update zu einer zweiten IPGroup gestartet wird, während sich die Firewall noch im Status *Aktualisieren* befindet, schlägt die Aktualisierung der IPGroup fehl.<br><br>Um den Fehler zu vermeiden, müssen IPGroups, die an dieselbe Firewall angefügt sind, nacheinander aktualisiert werden. Lassen Sie zwischen den Updates genügend Zeit, damit die Firewall den Status *Aktualisieren* beenden kann.| 
 
 
 ## <a name="next-steps"></a>Nächste Schritte

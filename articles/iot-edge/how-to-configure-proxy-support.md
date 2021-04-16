@@ -10,12 +10,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - contperf-fy21q1
-ms.openlocfilehash: 888761bb976b9d7a87211a77cb6504a44f108bbd
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: 9f2ca089a6d885227bd61940d71ec7bb7960fbd6
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103200055"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105043154"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>Konfigurieren eines IoT Edge-Geräts für die Kommunikation über einen Proxyserver
 
@@ -69,7 +69,11 @@ Ob Ihr IoT Edge-Gerät unter Windows oder Linux ausgeführt wird, Sie müssen ü
 
 Wenn Sie IoT Edge-Runtime auf einem Linux-Gerät installieren, konfigurieren Sie den Paket-Manager so, dass er über den Proxyserver auf das Installationspaket zugreift. Beispiel: [Richten Sie „apt-get“ zur Verwendung eines http-Proxys ein](https://help.ubuntu.com/community/AptGet/Howto/#Setting_up_apt-get_to_use_a_http-proxy). Nachdem Sie Ihren Paket-Manager konfiguriert haben, befolgen Sie die Anweisungen unter [Installieren oder Deinstallieren von Azure IoT Edge-Runtime](how-to-install-iot-edge.md) wie gewohnt.
 
-### <a name="windows-devices"></a>Windows-Geräte
+### <a name="windows-devices-using-iot-edge-for-linux-on-windows"></a>Windows-Geräte mit IoT Edge für Linux unter Windows
+
+Wenn Sie die IoT Edge Runtime mit IoT Edge für Linux unter Windows installieren, wird IoT Edge auf Ihrem virtuellen Linux-Computer standardmäßig installiert. Es sind keine zusätzlichen Installations- oder Aktualisierungsschritte erforderlich.
+
+### <a name="windows-devices-using-windows-containers"></a>Windows-Geräte mit Windows-Containern
 
 Wenn Sie IoT Edge-Runtime auf einem Windows-Gerät installieren, müssen Sie den Proxyserver zwei Mal durchlaufen. Mit der ersten Verbindung wird die Installationsskriptdatei heruntergeladen, und die zweite Verbindung erfolgt während der Installation, um die erforderlichen Komponenten herunterzuladen. Sie können Proxyinformationen in den Windows-Einstellungen konfigurieren oder Ihre Proxyinformationen direkt in die PowerShell-Befehle aufnehmen.
 
@@ -206,7 +210,17 @@ systemctl show --property=Environment aziot-identityd
 :::moniker-end
 <!--end 1.2-->
 
-#### <a name="windows"></a>Windows
+#### <a name="windows-using-iot-edge-for-linux-on-windows"></a>Windows mit IoT Edge für Linux unter Windows
+
+Melden Sie sich auf dem virtuellen Windows-Computer bei IoT Edge für Linux an:
+
+```azurepowershell-interactive
+Ssh-EflowVm
+```
+
+Führen Sie dieselben Schritte wie im vorstehenden Linux-Abschnitt aus, um den IoT Edge Daemon zu konfigurieren.
+
+#### <a name="windows-using-windows-containers"></a>Windows mit Windows-Containern
 
 Öffnen Sie ein PowerShell-Fenster als Administrator, und führen Sie den folgenden Befehl zum Bearbeiten der Registrierung mit der neuen Umgebungsvariable aus. Ersetzen Sie **\<proxy url>** durch die Adresse und den Port Ihres Proxyservers.
 
@@ -249,13 +263,13 @@ Dieser Schritt erfolgt einmalig auf dem IoT Edge-Gerät während der anfänglich
 
 5. Speichern Sie die Änderungen an „config.yaml“, und schließen Sie den Editor. Starten Sie IoT Edge neu, damit die Änderungen wirksam werden.
 
-   * Linux:
+   * Linux und IoT Edge für Linux unter Windows:
 
       ```bash
       sudo systemctl restart iotedge
       ```
 
-   * Windows:
+   * Windows mit Windows-Containern:
 
       ```powershell
       Restart-Service iotedge

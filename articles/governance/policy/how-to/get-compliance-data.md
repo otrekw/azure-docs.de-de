@@ -1,14 +1,14 @@
 ---
 title: Abrufen von Daten zur Richtlinienkonformität
 description: Azure Policy-Auswertungen und -Effekte bestimmen die Konformität. Erfahren Sie, wie Sie Konformitätsinformationen Ihrer Azure-Ressourcen abrufen.
-ms.date: 10/05/2020
+ms.date: 03/16/2021
 ms.topic: how-to
-ms.openlocfilehash: 3c1c128b414444c6004f32f3f3173548f81a82e1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: cdd23d685750fb8a5d3803f4b6030e7e67bbddce
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100577116"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104598540"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Abrufen von Compliancedaten von Azure-Ressourcen
 
@@ -26,7 +26,7 @@ Bevor wir uns die Methoden zur Berichterstellung zur Konformität ansehen, besch
 
 ## <a name="evaluation-triggers"></a>Auswertungsauslöser
 
-Die Ergebnisse eines abgeschlossenen Auswertungszyklus stehen im Ressourcenanbieter `Microsoft.PolicyInsights` über die Vorgänge `PolicyStates` und `PolicyEvents` zur Verfügung. Weitere Informationen zu den Vorgängen der Azure Policy Insights-REST-API finden Sie unter [Policy Insights](/rest/api/policy-insights/).
+Die Ergebnisse eines abgeschlossenen Auswertungszyklus stehen im Ressourcenanbieter `Microsoft.PolicyInsights` über die Vorgänge `PolicyStates` und `PolicyEvents` zur Verfügung. Weitere Informationen zu den Vorgängen der Azure Policy Insights-REST-API finden Sie unter [Policy Insights](/rest/api/policy/).
 
 Auswertungen zugewiesener Richtlinien und Initiativen geschehen im Zuge unterschiedlicher Ereignisse:
 
@@ -237,13 +237,13 @@ Wenn Ressourcen als **nicht kompatibel** bestimmt werden, sind hierfür viele Ur
 
 ## <a name="command-line"></a>Befehlszeile
 
-Die gleichen Informationen, die im Portal verfügbar sind, können über die REST-API (u. a. mit [ARMClient](https://github.com/projectkudu/ARMClient)), Azure PowerShell und die Azure CLI abgerufen werden. Ausführliche Informationen zur REST-API finden Sie in der Referenz zu [Azure Policy Insights](/rest/api/policy-insights/). Die Referenzseiten zur REST-API verfügen über eine grüne „Ausprobieren“-Schaltfläche, mit der Sie jeden Vorgang direkt im Browser testen können.
+Die gleichen Informationen, die im Portal verfügbar sind, können über die REST-API (u. a. mit [ARMClient](https://github.com/projectkudu/ARMClient)), Azure PowerShell und die Azure CLI abgerufen werden. Ausführliche Informationen zur REST-API finden Sie in der Referenz zu [Azure Policy](/rest/api/policy/). Die Referenzseiten zur REST-API verfügen über eine grüne „Ausprobieren“-Schaltfläche, mit der Sie jeden Vorgang direkt im Browser testen können.
 
 Verwenden Sie ARMClient oder ein ähnliches Tool, um die Authentifizierung in Azure für die REST-API-Beispiele vorzunehmen.
 
 ### <a name="summarize-results"></a>Zusammenfassen der Ergebnisse
 
-Mithilfe der REST-API kann die Zusammenfassung nach Container, Definition oder Zuweisung erfolgen. Hier sehen Sie ein Beispiel der Zusammenfassung auf Abonnementebene mithilfe der Option [Summarize For Subscription](/rest/api/policy-insights/policystates/summarizeforsubscription) (Für Abonnement zusammenfassen) von Azure Policy Insights:
+Mithilfe der REST-API kann die Zusammenfassung nach Container, Definition oder Zuweisung erfolgen. Hier sehen Sie ein Beispiel der Zusammenfassung auf Abonnementebene mithilfe der Option [Summarize For Subscription](/rest/api/policy/policystates/summarizeforsubscription) (Für Abonnement zusammenfassen) von Azure Policy Insights:
 
 ```http
 POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/summarize?api-version=2019-10-01
@@ -353,7 +353,7 @@ Ihre Ergebnisse sollten in etwa wie im folgenden Beispiel aussehen:
 }
 ```
 
-Weitere Informationen zum Abfragen von Richtlinienereignissen finden Sie im Referenzartikel zu [Azure Policy-Ereignissen](/rest/api/policy-insights/policyevents).
+Weitere Informationen zum Abfragen von Richtlinienereignissen finden Sie im Referenzartikel zu [Azure Policy-Ereignissen](/rest/api/policy/policyevents).
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -648,7 +648,7 @@ $policyEvents = Get-AzPolicyEvent -Filter "ResourceType eq '/Microsoft.Network/v
 $policyEvents | ConvertTo-Csv | Out-File 'C:\temp\policyEvents.csv'
 ```
 
-Die Ausgabe des `$policyEvents`-Objekts sieht wie folgt aus:
+Die Ausgabe des `$policyEvents`-Objekts ähnelt der folgenden Ausgabe:
 
 ```output
 Timestamp                  : 9/19/2020 5:18:53 AM

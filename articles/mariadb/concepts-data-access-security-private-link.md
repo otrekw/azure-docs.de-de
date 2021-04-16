@@ -3,15 +3,15 @@ title: Private Link – Azure Database for MariaDB
 description: Erfahren Sie, wie Private Link für Azure Database for MariaDB funktioniert.
 author: mksuni
 ms.author: sumuth
-ms.service: jroth
+ms.service: mariadb
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 12f52cd497d606fda6bbea9b54f467522373eeb7
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: a1b97586eeeab1d5d1917f2d1cec9e0f71e9e329
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98665139"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104867456"
 ---
 # <a name="private-link-for-azure-database-for-mariadb"></a>Private Link für Azure Database for MariaDB
 
@@ -85,7 +85,8 @@ Nachdem der Netzwerkadministrator den privaten Endpunkt (PE) erstellt hat, kann 
 
 ## <a name="use-cases-of-private-link-for-azure-database-for-mariadb"></a>Anwendungsfälle von Private Link für Azure Database for MariaDB
 
-Clients können eine Verbindung mit dem privaten Endpunkt über das gleiche VNET, über das mittels Peering verbundene VNET in der gleichen Region oder regionsübergreifend über eine VNET-zu-VNET-Verbindung herstellen. Darüber hinaus können Clients von der lokalen Umgebung aus eine Verbindung über ExpressRoute, privates Peering oder VPN-Tunneling herstellen. Die gängigen Anwendungsfälle sind im folgenden Diagramm vereinfacht dargestellt:
+
+Clients können eine Verbindung mit dem privaten Endpunkt über das gleiche VNet, über das [mittels Peering verbundene VNet](../virtual-network/virtual-network-peering-overview.md) in der gleichen Region oder regionsübergreifend über eine [VNet-to-VNet-Verbindung](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md) herstellen. Darüber hinaus können Clients von der lokalen Umgebung aus eine Verbindung über ExpressRoute, privates Peering oder VPN-Tunneling herstellen. Die gängigen Anwendungsfälle sind im folgenden Diagramm vereinfacht dargestellt:
 
 ![Übersicht zum Auswählen des privaten Endpunkts](media/concepts-data-access-and-security-private-link/show-private-link-overview.png)
 

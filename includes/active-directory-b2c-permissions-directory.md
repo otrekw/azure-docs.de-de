@@ -3,14 +3,14 @@ author: msmimart
 ms.service: active-directory-b2c
 ms.subservice: B2C
 ms.topic: include
-ms.date: 02/12/2020
+ms.date: 04/05/2021
 ms.author: mimart
-ms.openlocfilehash: f8c972bdb9195008c2983d3993e8d9369749b284
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5a2382146cd8b85b8eef54b924a206dda7107b0f
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85200174"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106382458"
 ---
 #### <a name="app-registrations"></a>[App-Registrierungen](#tab/app-reg-ga/) 
 
@@ -19,8 +19,9 @@ ms.locfileid: "85200174"
 1. Wählen Sie die Registerkarte **Microsoft-APIs** und dann **Microsoft Graph** aus.
 1. Wählen Sie **Anwendungsberechtigungen**.
 1. Erweitern Sie die entsprechende Berechtigungsgruppe, und aktivieren Sie das Kontrollkästchen neben der Berechtigung, die Sie Ihrer Verwaltungsanwendung gewähren möchten. Beispiel:
+    * **User** > **User.ReadWrite.All**: Für Benutzermigrations- oder Benutzerverwaltungsszenarien
+    * **Group** > **Group.ReadWrite.All**: Zum Erstellen von Gruppen, Lesen und Aktualisieren von Gruppenmitgliedschaften und Löschen von Gruppen
     * **AuditLog** > **AuditLog.Read.All**: Zum Lesen der Überwachungsprotokolle des Verzeichnisses.
-    * **Directory** > **Directory.ReadWrite.All**: Für Benutzermigrations- oder Benutzerverwaltungsszenarien.
     * **Policy** > **Policy.ReadWrite.TrustFramework**: Für CI-/CD-Szenarien (Continuous Integration/Continuous Delivery). Zum Beispiel für die Bereitstellung benutzerdefinierter Richtlinien mit Azure Pipelines.
 1. Wählen Sie **Berechtigungen hinzufügen** aus. Warten Sie einige Minuten, bevor Sie mit dem nächsten Schritt fortfahren.
 1. Wählen Sie **Administratorzustimmung für (Name Ihres Mandanten) erteilen** aus.

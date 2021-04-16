@@ -4,14 +4,14 @@ description: Erfahren Sie, wie Daten aus einer Cloud- oder lokalen HTTP-Quelle m
 author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 12/10/2019
+ms.date: 03/17/2021
 ms.author: jingwang
-ms.openlocfilehash: f3184602bad8aabf654c8fa94d33372d08c11a66
-ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.openlocfilehash: 247bec30e9933dfd75b7c31cbce15ff043959243
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103573199"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104588884"
 ---
 # <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory"></a>Kopieren von Daten von einem HTTP-Endpunkt mithilfe von Azure Data Factory
 
@@ -66,7 +66,8 @@ Folgende Eigenschaften werden für den mit HTTP verknüpften Dienst unterstützt
 | type | Die **type**-Eigenschaft muss auf **HttpServer** festgelegt werden. | Ja |
 | url | Die Basis-URL zum Webserver. | Ja |
 | enableServerCertificateValidation | Geben Sie an, ob die Überprüfung des TLS-/SSL-Zertifikats des Servers aktiviert werden soll, wenn eine Verbindung mit einem HTTP-Endpunkt hergestellt wird. Wenn der HTTPS-Server ein selbstsigniertes Zertifikat verwendet, legen Sie diese Eigenschaft auf **FALSE** fest. | Nein<br /> (der Standardwert ist **TRUE**) |
-| authenticationType | Gibt den Authentifizierungstyp an. Zulässige Werte: **Anonymous**, **Basic**, **Digest**, **Windows** und **ClientCertificate**. <br><br> Weitere Eigenschaften und JSON-Beispiele für diese Authentifizierungstypen, finden Sie in den Abschnitten, die auf diese Tabelle folgen. | Ja |
+| authenticationType | Gibt den Authentifizierungstyp an. Zulässige Werte: **Anonymous**, **Basic**, **Digest**, **Windows** und **ClientCertificate**. OAuth auf Benutzerbasis wird nicht unterstützt. Außerdem können Sie Authentifizierungsheader in der `authHeader`-Eigenschaft konfigurieren. Weitere Eigenschaften und JSON-Beispiele für diese Authentifizierungstypen, finden Sie in den Abschnitten, die auf diese Tabelle folgen. | Ja |
+| authHeaders | Zusätzliche HTTP-Anforderungsheader für die Authentifizierung.<br/> Wenn Sie beispielsweise die Authentifizierung mit einem API-Schlüssel verwenden möchten, können Sie als Authentifizierungstyp „Anonym“ auswählen und im Header den API-Schlüssel angeben. | Nein |
 | connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden soll. Weitere Informationen finden Sie im Abschnitt [Voraussetzungen](#prerequisites). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein |
 
 ### <a name="using-basic-digest-or-windows-authentication"></a>Verwenden der Authentifizierung des Typs „Basic“, „Digest“ oder „Windows“
@@ -163,6 +164,35 @@ Wenn Sie **certThumbprint** für die Authentifizierung verwenden und das Zertifi
 }
 ```
 
+### <a name="using-authentication-headers"></a>Verwenden von Authentifizierungsheadern
+
+Darüber hinaus können Sie neben den integrierten Authentifizierungstypen auch Anforderungsheader für die Authentifizierung konfigurieren.
+
+**Beispiel: Verwenden der Authentifizierung mit API-Schlüssel**
+
+```json
+{
+    "name": "HttpLinkedService",
+    "properties": {
+        "type": "HttpServer",
+        "typeProperties": {
+            "url": "<HTTP endpoint>",
+            "authenticationType": "Anonymous",
+            "authHeader": {
+                "x-api-key": {
+                    "type": "SecureString",
+                    "value": "<API key>"
+                }
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
 ## <a name="dataset-properties"></a>Dataset-Eigenschaften
 
 Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel zu [Datasets](concepts-datasets-linked-services.md). 
@@ -224,7 +254,7 @@ Folgende Eigenschaften werden für HTTP unter den `storeSettings`-Einstellungen 
 | additionalHeaders         | Zusätzliche HTTP-Anforderungsheader                             | Nein       |
 | requestBody              | Der Text der HTTP-Anforderung.                               | Nein       |
 | httpRequestTimeout           | Das Timeout (der Wert **TimeSpan**) für die HTTP-Anforderung, um eine Antwort zu empfangen. Bei diesem Wert handelt es sich um das Timeout zum Empfangen einer Antwort, nicht um das Timeout zum Lesen von Antwortdaten. Der Standardwert ist **00:01:40**. | Nein       |
-| maxConcurrentConnections | Die Anzahl von Verbindungen, die gleichzeitig mit einem Speicher hergestellt werden können. Geben Sie diesen Wert nur an, wenn Sie die gleichzeitigen Verbindungen mit dem Datenspeicher begrenzen möchten. | Nein       |
+| maxConcurrentConnections |Die Obergrenze gleichzeitiger Verbindungen mit dem Datenspeicher während der Aktivitätsausführung. Geben Sie diesen Wert nur an, wenn Sie die Anzahl der gleichzeitigen Verbindungen begrenzen möchten.| Nein       |
 
 **Beispiel:**
 

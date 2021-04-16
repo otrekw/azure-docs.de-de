@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 11/23/2020
-ms.openlocfilehash: 9a4ed5542945b8d281ec750d9bbd3a8f444e44d2
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 37f3748b4f0f3db47bbd6fbe9bc06a307781c2f8
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96752259"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104786803"
 ---
 # <a name="add-assessment-tools"></a>Hinzufügen von Bewertungstools
 
@@ -25,23 +25,23 @@ In diesem Artikel wird beschrieben, wie Sie in [Azure Migrate](./migrate-service
 1. Klicken Sie im Azure Migrate-Projekt auf **Übersicht**.
 2. Wählen Sie das Bewertungsszenario aus:
 
-    - Wählen Sie **Server bewerten und migrieren**, um Computer und Workloads zu ermitteln und für die Migration zu Azure zu bewerten.
+    - Wählen Sie **Discover, assess and migrate** (Ermitteln, Bewerten und Migrieren) aus, um (physische oder virtuelle) Server in Ihrem Rechenzentrum oder anderen Clouds zu ermitteln und zu bewerten oder zu Azure zu migrieren. Sie können jetzt auch SQL Server-Instanzen in Ihrer VMware-Umgebung mithilfe dieses Migrationsziels ermitteln und bewerten.
     - Um lokale SQL Server-Datenbanken zu bewerten, wählen Sie die Option **Datenbanken bewerten und migrieren** aus.
     - Um lokale Web-Apps zu bewerten oder zu migrieren, wählen Sie **Mehr entdecken** > **Web-Apps** aus.
     - Wählen Sie zum Bewerten Ihrer virtuellen Desktopinfrastruktur die Option **Mehr entdecken** > **Virtuelle Desktopinfrastruktur** aus.
 
     ![Optionen für die Auswahl eines Bewertungsszenarios](./media/how-to-assess/assess-scenario.png)
 
-## <a name="select-a-server-assessment-tool"></a>Auswählen eines Tools für die Serverbewertung 
+## <a name="select-a-discovery-and-assessment-tool"></a>Auswählen eines Ermittlungs- und Bewertungstools 
 
 
 1. Fügen Sie ein Tool hinzu:
 
-    - Wenn Sie ein Azure Migrate-Projekt über die Option **Server bewerten und migrieren** im Portal erstellt haben, wird das Tool für die Azure Migrate-Serverbewertung automatisch im Projekt hinzugefügt. Wählen Sie zum Hinzufügen zusätzlicher Bewertungstools unter **Server** neben **Bewertungstools** die Option **Weitere Tools hinzufügen** aus.
-    
+    - Wenn Sie ein Azure Migrate-Projekt mithilfe der Option **Server bewerten und migrieren** im Portal erstellt haben, wird das Azure Migrate-Tool für die Ermittlung und Bewertung automatisch zum Projekt hinzugefügt. Klicken Sie unter **Windows, Linux and SQL Server** (Windows, Linux und SQL Server) neben **Bewertungstools** auf **Weitere Tools hinzufügen**, um zusätzliche Bewertungstools hinzuzufügen.
+
          ![Schaltfläche zum Hinzufügen weiterer Bewertungstools](./media/how-to-assess/add-assessment-tool.png)
 
-    - Wenn Sie ein Projekt über eine andere Option erstellt haben und noch keine Bewertungstools vorhanden sind, wählen Sie unter **Server** > **Bewertungstools** den Link **Hier klicken** aus.
+    - Wenn Sie ein Projekt über eine andere Option erstellt haben und noch keine Bewertungstools vorhanden sind, klicken Sie unter **Windows, Linux and SQL Server** > **Assessment tools** („Windows, Linux und SQL Server“ > „Bewertungstools“) auf den Link **Hier klicken**.
 
         ![Schaltfläche zum Hinzufügen des ersten Bewertungstools](./media/how-to-assess/no-assessment-tool.png)
 
@@ -83,4 +83,4 @@ Wenn Sie ein Azure Migrate-Projekt über **Mehr entdecken** > **WebApps** im Por
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Entdecken Sie lokale Computer für die Bewertung mithilfe des Azure Migrate Server-Bewertungstools für [VMware](./tutorial-discover-vmware.md)-VMs, [Hyper-V](./tutorial-discover-hyper-v.md)- oder [physische Server](./tutorial-discover-physical.md).
+Informieren Sie sich über lokale Server für die Bewertung mithilfe des Azure Migrate-Tools für die Ermittlung und Bewertung für [VMware-Server](./tutorial-discover-vmware.md), [Hyper-V-Server](./tutorial-discover-hyper-v.md) oder [physische Server](./tutorial-discover-physical.md).
