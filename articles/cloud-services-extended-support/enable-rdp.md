@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 53f873013a6f16ce5a28ee5d915afa556057f643
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 94827916f28c9028d46bf7b5461a4fbd941b2a96
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98743974"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104773401"
 ---
 # <a name="apply-the-remote-desktop-extension-to-azure-cloud-services-extended-support"></a>Anwenden der Remotedesktoperweiterung auf Azure Cloud Services (erweiterter Support)
 
@@ -27,8 +27,9 @@ Das Azure-Portal verwendet die Remotedesktoperweiterung, damit Remotedesktop auc
 2. Wählen Sie **Hinzufügen**.
 3. Wählen Sie die Rollen aus, für die Remotedesktop aktiviert werden soll.
 4. Füllen Sie die erforderlichen Felder für Benutzername, Kennwort, Ablauf und Zertifikat aus (nicht erforderlich).
+> [Hinweis] Das Kennwort für Remotedesktop muss zwischen 8 und 123 Zeichen lang sein und mindestens 3 der folgenden Kennwortkomplexitätsanforderungen erfüllen: 1) Enthält einen Großbuchstaben 2) Enthält einen Kleinbuchstaben 3) Enthält eine Ziffer 4) Enthält ein Sonderzeichen 5) Steuerzeichen sind unzulässig.
 
-    :::image type="content" source="media/remote-desktop-2.png" alt-text="Die Abbildung zeigt das Eingeben der Informationen, die zum Herstellen einer Verbindung mit dem Remotedesktop erforderlich sind.":::
+   :::image type="content" source="media/remote-desktop-2.png" alt-text="Die Abbildung zeigt das Eingeben der Informationen, die zum Herstellen einer Verbindung mit dem Remotedesktop erforderlich sind.":::
 
 5. Wenn Sie fertig sind, wählen Sie **Speichern** aus. Es dauert einige Minuten, bis die Rolleninstanzen Verbindungen empfangen können.
 

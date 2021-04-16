@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 01/30/2017
 ms.author: duau
 ms.openlocfilehash: 7c83b6d25936e184c70d4bf0a51636a3986bf4b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89394838"
 ---
 # <a name="getting-arp-tables-in-the-classic-deployment-model"></a>Abrufen von ARP-Tabellen im klassischen Bereitstellungsmodell
@@ -142,7 +142,7 @@ Age InterfaceProperty IpAddress  MacAddress
 ```
 
 
-## <a name="how-to-use-this-information"></a>Nutzen dieser Informationen
+## <a name="how-to-use-this-information"></a>Verwenden dieser Informationen
 Die ARP-Tabelle eines Peerings dient zum Bestimmen und Überprüfen der Schicht-2-Konfiguration und -Konnektivität. Dieser Abschnitt enthält eine Übersicht über ARP-Tabellen in verschiedenen Szenarien.
 
 ### <a name="arp-table-when-a-circuit-is-in-an-operational-expected-state"></a>ARP-Tabelle einer Verbindung im Betriebszustand (d.h. dem erwarteten Zustand)

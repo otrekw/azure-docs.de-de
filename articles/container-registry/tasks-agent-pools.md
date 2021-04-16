@@ -4,12 +4,12 @@ description: Richten Sie einen dedizierten Computepool (Agentpool) in Ihrer Regi
 ms.topic: article
 ms.date: 10/12/2020
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: eeb9a71854f52da5c1a9f4befae93c377ad67b05
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8b1f077d6216443ad267f8620f87882439cb355c
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98920306"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106284140"
 ---
 # <a name="run-an-acr-task-on-a-dedicated-agent-pool"></a>Ausführen eines ACR Tasks mit einem dedizierten Agentpool
 
@@ -31,7 +31,7 @@ Diese Funktion ist auf der Dienstebene **Premium** der Containerregistrierung ve
 ## <a name="preview-limitations"></a>Einschränkungen der Vorschau
 
 - Taskagentpools unterstützen derzeit Linux-Knoten. Windows-Knoten werden zurzeit nicht unterstützt.
-- Taskagentpools sind als Vorschau in den folgenden Regionen verfügbar: „USA, Westen 2“, „USA, Süden-Mitte“, „USA, Osten 2“, „USA, Osten“, „USA, Mitte“, „USGov, Arizona“, „USGov, Texas“ und „USGov, Virginia“.
+- Taskagentpools sind als Vorschau in den folgenden Regionen verfügbar: „USA, Westen 2“, „USA, Süden-Mitte“, „USA, Osten 2“, „USA, Osten“, „USA, Mitte“, „Europa, Westen“, „Kanada, Mitte“, „USGov, Arizona“, „USGov, Texas“ und „USGov, Virginia“.
 - Für jede Registrierung hat das standardmäßige vCPU-Kontingent (Core) für alle Standard-Agentpools den Wert 16 und den Wert 0 für isolierte Agentpools. Öffnen Sie eine [Supportanfrage][open-support-ticket], um zusätzliche Zuordnungen zu erhalten.
 - Sie können zurzeit keine Aufgaben abbrechen, die in einem Agentpool ausgeführt werden.
 

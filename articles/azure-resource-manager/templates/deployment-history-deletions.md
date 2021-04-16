@@ -2,13 +2,13 @@
 title: Löschung des Bereitstellungsverlaufs
 description: Hier erfahren Sie, wie Azure Resource Manager Bereitstellungen automatisch aus dem Bereitstellungsverlauf löscht. Bereitstellungen werden gelöscht, wenn der Verlauf den Grenzwert von 800 Einträgen überschreitet.
 ms.topic: conceptual
-ms.date: 10/01/2020
-ms.openlocfilehash: 13c65f3311e308708034bb5befb7e3c3ee158d38
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/23/2021
+ms.openlocfilehash: fc4f7f33cdd7ccce3158aa95bd002f12c8c44c00
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91652481"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104951962"
 ---
 # <a name="automatic-deletions-from-deployment-history"></a>Automatische Löschungen aus dem Bereitstellungsverlauf
 
@@ -53,6 +53,12 @@ Wenn Sie die Azure CLI zum Löschen einer Sperre verwenden möchten, führen Sie
 lockid=$(az lock show --resource-group lockedRG --name deleteLock --output tsv --query id)
 az lock delete --ids $lockid
 ```
+
+## <a name="required-permissions"></a>Erforderliche Berechtigungen
+
+Die Löschungen werden unter der Identität des Benutzers angefordert, der die Vorlage bereitgestellt hat. Zum Löschen von Bereitstellungen muss der Benutzer über Zugriff auf die Aktion **Microsoft.Resources/deployments/delete** verfügen. Wenn der Benutzer nicht über die erforderlichen Berechtigungen verfügt, werden die Bereitstellungen nicht aus dem Verlauf gelöscht.
+
+Wenn der aktuelle Benutzer nicht über die erforderlichen Berechtigungen verfügt, wird der automatische Löschvorgang während der nächsten Bereitstellung noch mal versucht.
 
 ## <a name="opt-out-of-automatic-deletions"></a>Deaktivieren der automatischen Löschungen
 

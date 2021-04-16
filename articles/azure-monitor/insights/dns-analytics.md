@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/20/2018
-ms.openlocfilehash: df9efef1000ab6a824c869e6684ab1424e8462f4
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: f01a1204aefbcaabe0ddac254b24bc014c3d5a64
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101708100"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104654525"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>Sammeln von Erkenntnissen zu Ihrer DNS-Infrastruktur mit der DNS Analytics-Vorschaulösung
 
@@ -54,7 +54,7 @@ Die Lösung beginnt ohne weitere Konfiguration mit dem Sammeln von Daten. Allerd
 
 ### <a name="configure-the-solution"></a>Konfigurieren der Projektmappe
 
-Klicken Sie im Lösungsdashboard auf **Konfiguration**, um die DNS Analytics-Konfigurationsseite zu öffnen. Es gibt zwei Arten von Konfigurationsänderungen, die Sie vornehmen können:
+Wählen Sie im Log Analytics-Arbeitsbereich im Azure-Portal **Zusammenfassung des Arbeitsbereichs** aus, und klicken Sie dann auf die Kachel **DNS-Analyse**. Klicken Sie im Lösungsdashboard auf **Konfiguration**, um die DNS Analytics-Konfigurationsseite zu öffnen. Es gibt zwei Arten von Konfigurationsänderungen, die Sie vornehmen können:
 
 - **Domänennamen auf der Positivliste**. Die Lösung verarbeitet nicht alle Suchabfragen. Sie verwaltet eine Positivliste mit Domänennamensuffixen. Die Suchabfragen, die in Domänennamen aufgelöst werden, die mit Domänennamensuffixen in dieser Positivliste übereinstimmen, werden von der Lösung nicht verarbeitet. Da die in der Positivliste enthalten Domänennamen nicht verarbeitet werden, werden die an Azure Monitor gesendeten Daten optimiert. Die Standardpositivliste enthält gängige öffentliche Domänennamen, z. B. www.google.com und www.facebook.com. Sie können die vollständige Standardliste mittels Scrollen anzeigen.
 

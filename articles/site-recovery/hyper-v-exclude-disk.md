@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.author: mayg
 ms.date: 11/12/2019
 ms.openlocfilehash: 373cffe96119af4a2fc0d74e2090e6cc24dcaf8f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86131259"
 ---
 # <a name="exclude-disks-from-replication"></a>Ausschließen von Datenträgern von der Replikation
@@ -30,14 +30,14 @@ Führen Sie vor dem Ausschließen von Datenträgern aus der Replikation folgende
 
 Beachten Sie zunächst Folgendes:
 
-- **Replikation**: Standardmäßig werden alle Datenträger auf einem Computer repliziert.
+- **Replikation:** Standardmäßig werden alle Datenträger auf einem Computer repliziert.
 - **Datenträgertyp**:
     - Sie können Basisdatenträger von der Replikation ausschließen.
     - Sie können keine Betriebssystemdatenträger ausschließen.
     - Es wird empfohlen, keine dynamischen Datenträger auszuschließen. Site Recovery kann nicht feststellen, welche VHD in der Gast-VM eine einfache oder dynamische VHD ist.  Wenn nicht alle abhängigen dynamischen Volumedatenträger ausgeschlossen werden, wird der geschützte dynamische Datenträger auf einer Failover-VM zu einem fehlerhaften Datenträger, sodass die Daten auf diesem Datenträger nicht zugänglich sind.
-- **Hinzufügen/Entfernen/Ausschließen von Datenträgern**: Nach Aktivierung der Replikation können Sie keine Datenträger für die Replikation hinzufügen, entfernen oder ausschließen. Wenn Sie einen Datenträger hinzufügen/entfernen oder ausschließen möchten, müssen Sie den VM-Schutz deaktivieren und anschließend wieder aktivieren.
-- **Failover**: Wenn Apps, für die ein Failover durchgeführt wurde, nach einem Failover ausgeschlossene Datenträger benötigen, damit die App funktioniert, müssen Sie diese Datenträger manuell erstellen. Alternativ können Sie Azure Automation in einen Wiederherstellungsplan integrieren, um den Datenträger während des Failovers des Computers zu erstellen.
-- **Failback**: Wenn Sie nach einem Failover ein Failback zum lokalen Standort durchführen, wird für Datenträger, die Sie manuell in Azure erstellt haben, kein Failback ausgeführt. Wenn Sie also beispielsweise ein Failover für drei Datenträger durchführen und zwei Datenträger direkt in einem virtuellen Azure-Computer erstellen, erfolgt nur für die drei Datenträger, für die das Failover durchgeführt wurde, ein Failback. Manuell erstellte Datenträger können nicht in das Failback oder in die umgekehrte Replikation von virtuellen Computern einbezogen werden.
+- **Hinzufügen/Entfernen/Ausschließen von Datenträgern:** Nach Aktivierung der Replikation können Sie keine Datenträger für die Replikation hinzufügen, entfernen oder ausschließen. Wenn Sie einen Datenträger hinzufügen/entfernen oder ausschließen möchten, müssen Sie den VM-Schutz deaktivieren und anschließend wieder aktivieren.
+- **Failover:** Wenn Apps nach einem Failover ausgeschlossene Datenträger benötigen, um zu funktionieren, müssen Sie diese Datenträger manuell erstellen. Alternativ können Sie Azure Automation in einen Wiederherstellungsplan integrieren, um den Datenträger während des Failovers des Computers zu erstellen.
+- **Failback:** Wenn Sie nach einem Failover ein Failback zum lokalen Standort durchführen, wird für Datenträger, die Sie manuell in Azure erstellt haben, kein Failback ausgeführt. Wenn Sie also beispielsweise ein Failover für drei Datenträger durchführen und zwei Datenträger direkt in einem virtuellen Azure-Computer erstellen, erfolgt nur für die drei Datenträger, für die das Failover durchgeführt wurde, ein Failback. Manuell erstellte Datenträger können nicht in das Failback oder in die umgekehrte Replikation von virtuellen Computern einbezogen werden.
 
 ## <a name="exclude-disks"></a>Ausschließen von Datenträgern
 

@@ -5,14 +5,15 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: conceptual
-ms.date: 03/08/2021
+ms.date: 04/07/2021
 ms.author: victorh
-ms.openlocfilehash: a3f72d235d6c52ce91ae351c2606ee6cf4285159
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.custom: references_regions
+ms.openlocfilehash: fdf0113d73b0b2e82ec889caf2a82c77bb7a040c
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102453426"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107226700"
 ---
 # <a name="azure-firewall-premium-preview-features"></a>Features der Azure Firewall Premium-Vorschau
 
@@ -100,6 +101,42 @@ oder
 
 Sie können gerne eine Anforderung über [https://aka.ms/azfw-webcategories-request](https://aka.ms/azfw-webcategories-request) senden.
  
+## <a name="supported-regions"></a>Unterstützte Regionen
+
+Die Vorschauversion von Azure Firewall mit Premium-Tarif wird aktuell in den folgenden Regionen unterstützt:
+
+- Australien, Mitte (Öffentlich/Australien)
+- Australien, Mitte 2 (Öffentlich/Australien)
+- Australien, Osten (Öffentlich/Australien)
+- Australien, Südosten (Öffentlich/Australien)
+- Brasilien, Süden (Öffentlich/Brasilien)
+- Kanada, Mitte (Öffentlich/Kanada)
+- Kanada, Osten (Öffentlich/Kanada)
+- USA, Mitte (Öffentlich/USA)
+- USA, Mitte EUAP (Öffentlich/Canary (US))
+- Asien, Osten (Öffentlich/Asien-Pazifik)
+- USA, Osten (Öffentlich/USA)
+- USA, Osten 2 (Öffentlich/USA)
+- Frankreich, Mitte (Öffentlich/Frankreich)
+- Frankreich, Süden (Öffentlich/Frankreich)
+- Japan, Osten (Öffentlich/Japan)
+- Japan, Westen (Öffentlich/Japan)
+- Zentralkorea (Öffentlich/Korea)
+- Südkorea, Süden (Öffentlich/Korea)
+- USA, Norden-Mitte (Öffentlich/USA)
+- Europa, Norden (Öffentlich/Europa)
+- Südafrika, Norden (Öffentlich/Südafrika)
+- USA, Süden-Mitte (Öffentlich/USA)
+- Asien, Südosten (Öffentlich/Asien-Pazifik)
+- VAE, Mitte (Öffentlich/VAE)
+- Vereinigtes Königreich, Süden (Öffentlich/Vereinigtes Königreich)
+- Vereinigtes Königreich, Westen (Öffentlich/Vereinigtes Königreich)
+- USA, Westen-Mitte (Öffentlich/USA)
+- Europa, Westen (Öffentlich/Europa)
+- Indien, Westen (Öffentlich/Indien)
+- USA, Westen (Öffentlich/USA)
+- USA, Westen 2 (Öffentlich/USA)
+
 
 ## <a name="known-issues"></a>Bekannte Probleme
 
@@ -111,15 +148,13 @@ Für die Vorschauversion von Azure Firewall Premium sind die folgenden Probleme 
 |ESNI-Unterstützung für FQDN-Auflösung in HTTPS|Verschlüsselte SNI wird im HTTPS-Handshake nicht unterstützt|Derzeit unterstützt nur Firefox ESNI über die benutzerdefinierte Konfiguration. Zur Problemumgehung wird empfohlen, dieses Feature zu deaktivieren.|
 |Clientzertifikate (TLS)|Clientzertifikate werden verwendet, um ein gegenseitiges Vertrauen hinsichtlich der Identität zwischen dem Client und dem Server aufzubauen. Clientzertifikate werden während einer TLS-Aushandlung verwendet. Die Azure-Firewall handelt eine Verbindung mit dem Server erneut aus und hat keinen Zugriff auf den privaten Schlüssel der Clientzertifikate.|Keine|
 |QUIC/HTTP3|QUIC ist die neue Hauptversion von HTTP. Dabei handelt es sich um ein UDP-basiertes Protokoll über 80 (PLAN) und 443 (SSL). Die FQDN/URL/TLS-Inspektion wird nicht unterstützt.|Konfigurieren Sie die Übergabe von UDP 80/443 als Netzwerkregeln.|
-|Geschützter Hub und Tunnelerzwingung werden in Premium nicht unterstützt.|Derzeit wird die Firewall Premium SKU in geschützten Hubbereitstellungen und erzwungenen Tunnelkonfigurationen nicht unterstützt.|Die Korrektur ist geplant für die allgemeine Verfügbarkeit.|
 Nicht vertrauenswürdige, vom Kunden signierte Zertifikate|Vom Kunden signierte Zertifikate werden von der Firewall nicht als vertrauenswürdig eingestuft, sobald sie von einem intranetbasierten Webserver empfangen werden.|Die Korrektur ist geplant für die allgemeine Verfügbarkeit.
 |Falsche Quell- und Ziel-IP-Adressen in Warnungen für IDPS mit TLS-Inspektion.|Wenn Sie die TLS-Inspektion aktivieren und IDPS eine neue Warnung ausgibt, ist die angezeigte Quell-/Ziel-IP-Adresse falsch (die interne IP-Adresse wird anstelle der ursprünglichen IP-Adresse angezeigt).|Die Korrektur ist geplant für die allgemeine Verfügbarkeit.|
 |Falsche Quell-IP-Adresse in Warnungen mit IDPS für HTTP (ohne TLS-Inspektion).|Wenn HTTP-Nur-Text-Datenverkehr verwendet wird und IDPS eine neue Warnung ausgibt und das Ziel eine öffentliche IP-Adresse ist, ist die angezeigte Quell-IP-Adresse falsch (die interne IP-Adresse wird anstelle der ursprünglichen IP-Adresse angezeigt).|Die Korrektur ist geplant für die allgemeine Verfügbarkeit.|
 |Zertifikatverteilung|Nachdem ein Zertifizierungsstellenzertifikat auf die Firewall angewendet wurde, kann es zwischen 5-10 Minuten dauern, bis das Zertifikat wirksam wird.|Die Korrektur ist geplant für die allgemeine Verfügbarkeit.|
 |IDPS-Umgehung|Die IDPS-Umgehung funktioniert nicht für TLS-terminierten Datenverkehr und Quell-IP-Adressen und Quell-IP-Gruppen werden nicht unterstützt.|Die Korrektur ist geplant für die allgemeine Verfügbarkeit.|
 |Unterstützung für TLS 1.3|TLS 1.3 wird teilweise unterstützt. Der TLS-Tunnel vom Client zur Firewall basiert auf TLS 1.2 und der von der Firewall zum externen Webserver auf TLS 1.3.|Updates werden derzeit untersucht.|
-
-
+|Privater KeyVault-Endpunkt|Key Vault unterstützt den Zugriff auf private Endpunkte, um die Netzwerk-Präsenz einzuschränken. Vertrauenswürdige Azure-Dienste können diese Einschränkung umgehen, wenn eine Ausnahme konfiguriert ist, wie in der [KeyvVault-Dokumentation](../key-vault/general/overview-vnet-service-endpoints.md#trusted-services)beschrieben. Die Azure-Firewall ist derzeit nicht als vertrauenswürdiger Dienst aufgeführt und kann nicht auf die Key Vault zugreifen.|Die Korrektur ist geplant für die allgemeine Verfügbarkeit.|
 
 
 ## <a name="next-steps"></a>Nächste Schritte

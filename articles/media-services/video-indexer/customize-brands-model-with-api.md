@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 01/14/2020
 ms.author: kumud
-ms.openlocfilehash: c3056415d3432dbe64dd1f2bcf974a676bbf6c6b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 03c74e9108b27856259eb4f17d7ba521007c4fa3
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97586056"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312959"
 ---
 # <a name="customize-a-brands-model-with-the-video-indexer-api"></a>Anpassen eines Markenmodells mit der Video Indexer-API
 
@@ -28,7 +28,7 @@ Sie können die Video Indexer-APIs zum Erstellen, Verwenden und Bearbeiten von b
 
 ## <a name="create-a-brand"></a>Erstellen einer Marke
 
-Mit der API zum [Erstellen einer Marke](https://api-portal.videoindexer.ai/docs/services/operations/operations/Create-Brand) wird eine neue benutzerdefinierte Marke erstellt und dem benutzerdefinierten Markenmodell für das angegebene Konto hinzugefügt.
+Mit der API zum [Erstellen einer Marke](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Create-Brand) wird eine neue benutzerdefinierte Marke erstellt und dem benutzerdefinierten Markenmodell für das angegebene Konto hinzugefügt.
 
 > [!NOTE]
 > Wenn Sie `enabled` (im Text) auf TRUE festlegen, wird die Marke in die *Einschlussliste* aufgenommen, damit sie von Video Indexer erkannt wird. Wenn Sie `enabled` auf FALSE festlegen, wird die Marke in die *Ausschlussliste* aufgenommen, damit sie von Video Indexer nicht erkannt wird.
@@ -62,7 +62,7 @@ Die Antwort liefert Informationen über die soeben erstellte Marke gemäß dem F
 
 ## <a name="delete-a-brand"></a>Löschen einer Marke
 
-Die API zum [Löschen einer Marke](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Brand?) entfernt eine Marke aus dem benutzerdefinierten Markenmodell für das angegebene Konto. Das Konto wird im Parameter `accountId` angegeben. Nach einem erfolgreichen Aufruf wird die Marke nicht mehr in den Markenlisten *Einbeziehen* oder *Ausschließen* enthalten sein.
+Die API zum [Löschen einer Marke](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Delete-Brand) entfernt eine Marke aus dem benutzerdefinierten Markenmodell für das angegebene Konto. Das Konto wird im Parameter `accountId` angegeben. Nach einem erfolgreichen Aufruf wird die Marke nicht mehr in den Markenlisten *Einbeziehen* oder *Ausschließen* enthalten sein.
 
 ### <a name="response"></a>Antwort
 
@@ -70,7 +70,7 @@ Es wird kein Inhalt zurückgegeben, wenn die Marke erfolgreich gelöscht wurde.
 
 ## <a name="get-a-specific-brand"></a>Abrufen einer bestimmten Marke
 
-Mit der API zum [Abrufen einer Marke](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brand?) können Sie im benutzerdefinierten Markenmodell für das angegebene Konto nach den Details einer Marke anhand der Marken-ID suchen.
+Mit der API zum [Abrufen einer Marke](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Get-Brand) können Sie im benutzerdefinierten Markenmodell für das angegebene Konto nach den Details einer Marke anhand der Marken-ID suchen.
 
 ### <a name="response"></a>Antwort
 
@@ -99,7 +99,7 @@ Die Antwort liefert Informationen über die gesuchte Marke (mithilfe der Marken-
 
 ## <a name="update-a-specific-brand"></a>Aktualisieren einer bestimmten Marke
 
-Mit der API zum [Aktualisieren einer Marke](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Brand?) können Sie im benutzerdefinierten Markenmodell für das angegebene Konto nach den Details einer Marke anhand der Marken-ID suchen.
+Mit der API zum [Aktualisieren einer Marke](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Update-Brand) können Sie im benutzerdefinierten Markenmodell für das angegebene Konto nach den Details einer Marke anhand der Marken-ID suchen.
 
 ### <a name="response"></a>Antwort
 
@@ -125,7 +125,7 @@ Die Antwort liefert aktualisierte Informationen über die aktualisierte Marke ge
 
 ## <a name="get-all-of-the-brands"></a>Abrufen aller Marken
 
-Die API zum [Abrufen aller Marken](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brands?) gibt alle Marken im benutzerdefinierten Markenmodell für das angegebene Konto zurück, unabhängig davon, ob die Marke in der *Einschlussliste* oder der *Ausschlussliste* für Marken enthalten sein soll.
+Die API zum [Abrufen aller Marken](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Get-Brands) gibt alle Marken im benutzerdefinierten Markenmodell für das angegebene Konto zurück, unabhängig davon, ob die Marke in der *Einschlussliste* oder der *Ausschlussliste* für Marken enthalten sein soll.
 
 ### <a name="response"></a>Antwort
 
@@ -165,7 +165,7 @@ Die Antwort enthält eine Liste mit allen Marken in Ihrem Konto und deren Detail
 
 ## <a name="get-brands-model-settings"></a>Abrufen der Einstellungen für das Markenmodell
 
-Die API zum [Abrufen der Markeneinstellungen](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brands) gibt die Einstellungen des Markenmodells im angegebenen Konto zurück. Die Einstellungen des Markenmodells geben an, ob die Erkennung über die Bing-Markendatenbank aktiviert ist. Wenn Bing-Marken nicht aktiviert sind, erkennt Video Indexer nur Marken aus dem benutzerdefinierten Markenmodell des angegebenen Kontos.
+Die API zum [Abrufen der Markeneinstellungen](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Get-Brands) gibt die Einstellungen des Markenmodells im angegebenen Konto zurück. Die Einstellungen des Markenmodells geben an, ob die Erkennung über die Bing-Markendatenbank aktiviert ist. Wenn Bing-Marken nicht aktiviert sind, erkennt Video Indexer nur Marken aus dem benutzerdefinierten Markenmodell des angegebenen Kontos.
 
 ### <a name="response"></a>Antwort
 
@@ -183,7 +183,7 @@ Die Antwort zeigt, ob Bing-Marken im Format des folgenden Beispiels aktiviert si
 
 ## <a name="update-brands-model-settings"></a>Aktualisieren der Einstellungen für das Markenmodell
 
-Die API zum [Aktualisieren von Marken](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Brands-Model-Settings?) aktualisiert die Einstellungen des Markenmodells im angegebenen Konto. Die Einstellungen des Markenmodells geben an, ob die Erkennung über die Bing-Markendatenbank aktiviert ist. Wenn Bing-Marken nicht aktiviert sind, erkennt Video Indexer nur Marken aus dem benutzerdefinierten Markenmodell des angegebenen Kontos.
+Die API zum [Aktualisieren von Marken](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Update-Brands-Model-Settings) aktualisiert die Einstellungen des Markenmodells im angegebenen Konto. Die Einstellungen des Markenmodells geben an, ob die Erkennung über die Bing-Markendatenbank aktiviert ist. Wenn Bing-Marken nicht aktiviert sind, erkennt Video Indexer nur Marken aus dem benutzerdefinierten Markenmodell des angegebenen Kontos.
 
 Wenn das `useBuiltIn`-Flag auf „true“ festgelegt ist, bedeutet dies, dass die Bing-Marken aktiviert sind. Wenn `useBuiltin` auf „false“ festgelegt ist, bedeutet dies, dass die Bing-Marken deaktiviert sind.
 

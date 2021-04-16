@@ -2,25 +2,22 @@
 title: SAML-Tokenverschlüsselung in Azure Active Directory
 description: Erfahren Sie, wie Sie die SAML-Tokenverschlüsselung in Azure Active Directory konfigurieren.
 services: active-directory
-documentationcenter: ''
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/13/2020
-ms.author: kenwith
+ms.author: iangithinji
 ms.reviewer: paulgarn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 32a6034f407bd81e5d2d2ab8227d08a67f034d4c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5c06a499cccb03e6726ee19542d7eb79e0c99b43
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99258641"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107375728"
 ---
 # <a name="how-to-configure-azure-ad-saml-token-encryption"></a>Konfigurieren der Azure AD-SAML-Tokenverschlüsselung
 
@@ -124,7 +121,7 @@ Wenn Sie ein keyCredential-Objekt mit Graph, PowerShell oder im Anwendungsmanife
 
 1. Verwenden Sie das neueste Azure AD PowerShell-Modul, um eine Verbindung mit Ihrem Mandanten herzustellen.
 
-1. Legen Sie die Tokenverschlüsselungseinstellungen mit dem Befehl **[Set-AzureApplication](/powershell/module/azuread/set-azureadapplication?view=azureadps-2.0-preview)** fest.
+1. Legen Sie die Tokenverschlüsselungseinstellungen mit dem Befehl **[Set-AzureApplication](/powershell/module/azuread/set-azureadapplication?view=azureadps-2.0-preview&preserve-view=true)** fest.
 
     ```
     Set-AzureADApplication -ObjectId <ApplicationObjectId> -KeyCredentials "<KeyCredentialsObject>"  -TokenEncryptionKeyId <keyID>

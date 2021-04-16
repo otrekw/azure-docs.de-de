@@ -1,20 +1,20 @@
 ---
 title: Verwalten und Finden von Azure-Blobdaten mit Blobindextags (Vorschau)
 description: Erfahren Sie, wie Sie Blobindextags verwenden, um Blobobjekte zu kategorisieren, zu verwalten und abzufragen.
-author: mhopkins-msft
-ms.author: mhopkins
-ms.date: 03/05/2021
+author: twooley
+ms.author: twooley
+ms.date: 03/18/2021
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: klaasl
 ms.custom: references_regions
-ms.openlocfilehash: bfaee493c25f882b8beeed565a155db93efd0083
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 2188aaea0cf5a4616291d3fdad839aefb2dbc413
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102431753"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106280699"
 ---
 # <a name="manage-and-find-azure-blob-data-with-blob-index-tags-preview"></a>Verwalten und Finden von Azure-Blobdaten mit Blobindextags (Vorschau)
 
@@ -30,7 +30,7 @@ Blobindextags ermöglichen Ihnen Folgendes:
 Stellen Sie sich ein Szenario vor, bei dem Sie über Millionen von Blobs in Ihrem Speicherkonto verfügen, auf die von vielen verschiedenen Anwendungen zugegriffen wird. Sie möchten alle zugehörigen Daten eines einzelnen Projekts finden. Sie sind sich nicht sicher, was alles dazugehört, weil die Daten über mehrere Container mit unterschiedlichen Namenskonventionen verteilt sein können. Alle Daten werden von Ihren Anwendungen aber mit projektabhängigen Tags hochgeladen. Anstatt Millionen von Blobs zu durchsuchen, um Namen und Eigenschaften zu vergleichen, können Sie `Project = Contoso` als Kriterium für die Ermittlung verwenden. Per Blobindex werden alle Container innerhalb Ihres gesamten Speicherkontos gefiltert, um in kürzester Zeit nur die 50 Blobs aus `Project = Contoso` zurückzugeben.
 
 > [!IMPORTANT]
-> Blobindextags befinden sich zurzeit in der **VORSCHAU**. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten rechtliche Bedingungen. Sie gelten für diejenigen Azure-Features, die sich in der Beta- oder Vorschauversion befinden oder aber anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
+> Blobindextags befinden sich zurzeit in der **VORSCHAU** und sind in allen öffentlichen Regionen verfügbar. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten rechtliche Bedingungen. Sie gelten für diejenigen Azure-Features, die sich in der Beta- oder Vorschauversion befinden oder aber anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
 
 Beispiele für den Einstieg in die Verwendung des Blobindex finden Sie unter [Verwenden von Blobindextags (Vorschau) zum Verwalten und Suchen von Daten in Azure Blob Storage](storage-blob-index-how-to.md).
 
@@ -117,7 +117,7 @@ Für die Filterung des Blobindex gelten folgende Kriterien:
 
 In der Tabelle unten sind alle zulässigen Operatoren für `Find Blobs by Tags` aufgeführt:
 
-|  Operator  |  Beschreibung  | Beispiel |
+|  Operator  |  BESCHREIBUNG  | Beispiel |
 |------------|---------------|---------|
 |     =      |     Gleich     | `"Status" = 'In Progress'` |
 |     >      |  Größer als | `"Date" > '2018-06-18'` |
@@ -142,7 +142,7 @@ Der Header `x-ms-if-tags` kann mit den übrigen vorhandenen bedingten HTTP-Heade
 
 In der Tabelle unten sind die zulässigen Operatoren für bedingte Vorgänge aufgeführt:
 
-|  Operator  |  Beschreibung  | Beispiel |
+|  Operator  |  BESCHREIBUNG  | Beispiel |
 |------------|---------------|---------|
 |     =      |     Gleich     | `"Status" = 'In Progress'` |
 |     <>     |   Ungleich   | `"Status" <> 'Done'` |
@@ -289,12 +289,7 @@ Blobindextags sind nur für GPv2-Knoten (General Purpose v2, Universell V2) ver
 
 Indextags werden für Storage Premium-Konten nicht unterstützt. Weitere Informationen zu Speicherkonten finden Sie unter [Azure-Speicherkonto – Übersicht](../common/storage-account-overview.md).
 
-In der öffentlichen Vorschauphase sind Blobindextags nur in den folgenden Regionen verfügbar:
-
-- Kanada, Mitte
-- Kanada, Osten
-- Frankreich, Mitte
-- Frankreich, Süden
+Blobindextags sind derzeit in allen öffentlichen Regionen verfügbar.
 
 Weitere Informationen zum Einstieg in Blobindex finden Sie unter [Verwenden von Blobindextags (Vorschau) zum Verwalten und Suchen von Daten in Azure Blob Storage](storage-blob-index-how-to.md).
 

@@ -8,12 +8,12 @@ ms.author: ddematheu2
 ms.date: 03/10/2021
 ms.topic: include
 ms.service: azure-communication-services
-ms.openlocfilehash: 41d959468e3183af00d2ab514e7c1bf0a134a1f8
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 5b71a0581bf4f9d8239171e6abc56f87e7ae8183
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103490472"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105152819"
 ---
 ## <a name="download-code"></a>Herunterladen des Codes
 
@@ -76,7 +76,7 @@ Wir fahren jetzt mit der Installation von Azure Communication Services-Bibliothe
 
 Wir verwenden die `Identity`-Bibliothek, um Benutzerzugriffstoken (`User Access Tokens`) zu generieren.
 
-Verwenden Sie den Befehl `npm install`, um die Clientbibliothek für Identitäten von Azure Communication Services für JavaScript zu installieren.
+Verwenden Sie den Befehl `npm install`, um das Azure Communication Services Identity SDK für JavaScript zu installieren.
 
 ```console
 
@@ -104,7 +104,7 @@ const connectionString = 'INSERT YOUR RESOURCE CONNECTION STRING'
 
 Als Nächstes ändern wir die ursprüngliche Funktion, um Benutzerzugriffstoken (`User Access Tokens`) zu generieren.
 
-Benutzerzugriffstoken (`User Access Tokens`) werden generiert, indem ein Benutzer mit der `createUser`-Methode erstellt wird. Sobald der Benutzer erstellt wurde, können wir die `issueToken`-Methode verwenden, um ein Token für diesen Benutzer zu generieren, den die Azure-Funktion zurückgibt.
+Benutzerzugriffstoken (`User Access Tokens`) werden generiert, indem ein Benutzer mit der `createUser`-Methode erstellt wird. Sobald der Benutzer erstellt wurde, können wir die `getToken`-Methode verwenden, um ein Token für diesen Benutzer zu generieren, den die Azure-Funktion zurückgibt.
 
 In diesem Beispiel konfigurieren wir den Tokenbereich auf `voip`. Für Ihre Anwendung sind möglicherweise andere Bereiche erforderlich. Erfahren Sie mehr über [Bereiche](../../quickstarts/access-tokens.md).
 
@@ -114,7 +114,7 @@ module.exports = async function (context, req) {
 
     const user = await tokenClient.createUser();
 
-    const userToken = await tokenClient.issueToken(user, ["voip"]);
+    const userToken = await tokenClient.getToken(user, ["voip"]);
 
     context.res = {
         body: userToken

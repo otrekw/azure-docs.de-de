@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 02/18/2021
 ms.author: cshoe
-ms.openlocfilehash: 324a8e75488d74fc6aa52e499b8dde616cd9beb5
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 280c13fdee281acc4f805aba27a10277eb3988c2
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102034046"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106218973"
 ---
 # <a name="configure-azure-static-web-apps"></a>Konfigurieren von Azure Static Web Apps
 
@@ -39,6 +39,7 @@ Details finden Sie unter [Beispielkonfigurationsdatei](#example-configuration-fi
 
 Mit Routenregeln können Sie das Muster der URLs definieren, die den Zugriff auf Ihre Anwendung im Web erlauben. Routen werden als Array von Routingregeln definiert. Beispiele der Nutzung finden Sie unter [Beispielkonfigurationsdatei](#example-configuration-file).
 
+- Regeln werden im `routes`-Array definiert, auch wenn sie nur über eine Route verfügen.
 - Regeln werden in der Reihenfolge ausgeführt, in der sie im Array `routes` angezeigt werden.
 - Die Regelauswertung endet bei der ersten Übereinstimmung, denn Routingregeln werden nicht miteinander verkettet.
 - Sie haben die vollständige Kontrolle über benutzerdefinierte Rollennamen.
@@ -50,7 +51,7 @@ Die Standarddatei für statische Inhalte ist *index.html*.
 
 ## <a name="defining-routes"></a>Definieren von Routen
 
-Jede Regel besteht aus einem Routenmuster und einer oder mehreren optionalen Regeleigenschaften. Beispiele der Nutzung finden Sie unter [Beispielkonfigurationsdatei](#example-configuration-file).
+Jede Regel besteht aus einem Routenmuster und einer oder mehreren optionalen Regeleigenschaften. Routenregeln werden im `routes`-Array definiert. Beispiele der Nutzung finden Sie unter [Beispielkonfigurationsdatei](#example-configuration-file).
 
 | Regeleigenschaft  | Erforderlich | Standardwert | Comment                                                      |
 | -------------- | -------- | ------------- | ------------------------------------------------------------ |
@@ -275,7 +276,7 @@ Die folgende Beispielkonfiguration zeigt, wie Sie einen Fehlercode überschreibe
         },
         {
             "route": "/.auth/login/twitter",
-            "statusCode": 404,
+            "statusCode": 404
         },
         {
             "route": "/logout",
@@ -315,7 +316,7 @@ Die folgende Beispielkonfiguration zeigt, wie Sie einen Fehlercode überschreibe
     },
     "mimeTypes": {
         ".json": "text/json"
-    },
+    }
 }
 ```
 
@@ -324,7 +325,7 @@ Die folgende Beispielkonfiguration zeigt, wie Sie einen Fehlercode überschreibe
 | Anforderungen an | Ergebnis |
 | --- | --- |
 | _/profile_ | Für authentifizierte Benutzer wird die Datei _/profile/index.html_ bereitgestellt. Nicht authentifizierte Benutzer werden zu _/login_ umgeleitet. |
-| _/admin/_ | Für authentifizierte Benutzer mit der Rolle _administrator_ wird die Datei _/admin/index.html_ bereitgestellt. Für authentifizierte Benutzer ohne die Rolle _administrator_ wird ein `403`-Fehler<sup>1</sup> angezeigt. Nicht authentifizierte Benutzer werden zu _/login_ umgeleitet. |
+| _/admin/_ | Für authentifizierte Benutzer mit der Rolle _administrator_ wird die Datei _/admin/index.html_ bereitgestellt. Für authentifizierte Benutzer ohne die Rolle _administrator_ wird ein `403`-Fehler <sup>1</sup> angezeigt. Nicht authentifizierte Benutzer werden zu _/login_ umgeleitet. |
 | _/logo.png_ | Stellt das Image mit einer benutzerdefinierten Cacheregel bereit, deren maximales Alter bei etwas mehr als 182 Tagen (15.770.000 Sekunden) liegt. |
 | _/api/admin_ | `GET`-Anforderungen von authentifizierten Benutzern in der Rolle _registeredusers_ werden an die API gesendet. Authentifizierte Benutzer ohne die Rolle _registeredusers_ und nicht authentifizierte Benutzer erhalten den Fehler `401`.<br/><br/>Die Anforderungen `POST`, `PUT`, `PATCH` und `DELETE` von authentifizierten Benutzern mit der Rolle _administrator_ werden an die API gesendet. Für authentifizierte Benutzer ohne die Rolle _administrator_ und nicht authentifizierte Benutzer wird der Fehler `401` angezeigt. |
 | _/customers/contoso_ | Für authentifizierte Benutzer mit entweder der Rolle _administrator_ oder _customers\_contoso_ wird die Datei _/customers/contoso/index.html_ bereitgestellt. Für authentifizierte Benutzer ohne die Rolle _administrator_ oder _customers\_contoso_ wird der Fehler`403`<sup>1</sup> angezeigt. Nicht authentifizierte Benutzer werden zu _/login_ umgeleitet. |

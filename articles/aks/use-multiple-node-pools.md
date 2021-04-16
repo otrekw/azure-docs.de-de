@@ -3,13 +3,13 @@ title: Verwenden mehrerer Knotenpools in Azure Kubernetes Service (AKS)
 description: Informationen zum Erstellen und Verwalten mehrerer Knotenpools für einen Cluster in Azure Kubernetes Service (AKS)
 services: container-service
 ms.topic: article
-ms.date: 04/08/2020
-ms.openlocfilehash: 3e029695e9dce79473ada0bae3e7f0bbfd30db89
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.date: 02/11/2021
+ms.openlocfilehash: 8f18e19eca8895549f17c9f0f6822ecb4da2914b
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102218484"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104773503"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Erstellen und Verwalten mehrerer Knotenpools für einen Cluster in Azure Kubernetes Service (AKS)
 
@@ -134,7 +134,7 @@ Eine Workload erfordert für die logische Isolation möglicherweise das Aufteile
 * Wenn Sie Ihr VNET nach dem Erstellen Ihres Clusters erweitern, müssen Sie den Cluster aktualisieren (einen beliebigen verwalteten Clustervorgang ausführen, aber Knotenpoolvorgänge werden nicht gezählt), bevor Sie ein Subnetz außerhalb der ursprünglichen CIDR hinzufügen. Wenn der Agentpool hinzugefügt wird, tritt jetzt bei AKS ein Fehler auf, obwohl wir dies ursprünglich zugelassen haben. Falls Sie nicht wissen, wie Sie Ihren Cluster abstimmen können, öffnen Sie ein Supportticket. 
 * Die Calico-Netzwerkrichtlinie wird nicht unterstützt. 
 * Die Azure-Netzwerkrichtlinie wird nicht unterstützt.
-* Kube-Proxy erwartet eine einzelne zusammenhängende CIDR und verwendet sie für drei Optimierungen. Siehe diese [K.E.P.](https://github.com/kubernetes/enhancements/blob/master/keps/sig-network/20191104-iptables-no-cluster-cidr.md ) Einzelheiten zu „Cluster-CIDR“ finden Sie [hier](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-proxy/). In Azure CNI wird das Subnetz Ihres ersten Knotenpools an Kube-Proxy übergeben. 
+* Kube-Proxy erwartet eine einzelne zusammenhängende CIDR und verwendet sie für drei Optimierungen. Siehe diese [K.E.P.](https://github.com/kubernetes/enhancements/tree/master/keps/sig-network/2450-Remove-knowledge-of-pod-cluster-CIDR-from-iptables-rules) Einzelheiten zu „Cluster-CIDR“ finden Sie [hier](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-proxy/). In Azure CNI wird das Subnetz Ihres ersten Knotenpools an Kube-Proxy übergeben. 
 
 Um einen Knotenpool mit einem dedizierten Subnetz zu erstellen, übergeben Sie beim Erstellen des Knotenpools die Subnetzressourcen-ID als zusätzlichen Parameter.
 
@@ -716,33 +716,11 @@ az deployment group create \
 
 Es kann ein paar Minuten dauern, bis Ihr AKS-Cluster aktualisiert wird, abhängig von den Knoteneinstellungen und Vorgängen, die Sie in Ihrer Resource Manager-Vorlage definieren.
 
-## <a name="assign-a-public-ip-per-node-for-your-node-pools-preview"></a>Zuweisen einer öffentlichen IP-Adresse pro Knoten in Ihren Knotenpools (Vorschau)
+## <a name="assign-a-public-ip-per-node-for-your-node-pools"></a>Zuweisen einer öffentlichen IP-Adresse pro Knoten in Ihren Knotenpools
 
-> [!WARNING]
-> Sie müssen die Erweiterung 0.4.43 oder höher der CLI-Vorschauversion installieren, um das Feature „Öffentliche IP-Adresse pro Knoten“ verwenden zu können.
+AKS-Knoten benötigen keine eigene öffentliche IP-Adresse für die Kommunikation. In einigen Szenarien müssen Knoten in einem Knotenpool jedoch möglicherweise jeweils eine eigene dedizierte öffentliche IP-Adresse erhalten. Ein häufiges Szenario hierfür sind Gamingworkloads, bei denen eine Konsole eine direkte Verbindung mit einem virtuellen Cloudcomputer herstellen muss, um Hops zu minimieren. Dieses Szenario kann in AKS durch öffentliche IP-Adressen für Knoten erzielt werden.
 
-AKS-Knoten benötigen keine eigene öffentliche IP-Adresse für die Kommunikation. In einigen Szenarien müssen Knoten in einem Knotenpool jedoch möglicherweise jeweils eine eigene dedizierte öffentliche IP-Adresse erhalten. Ein häufiges Szenario hierfür sind Gamingworkloads, bei denen eine Konsole eine direkte Verbindung mit einem virtuellen Cloudcomputer herstellen muss, um Hops zu minimieren. Dieses Szenario kann in AKS erreicht werden, indem Sie sich für eine Previewfunktion für öffentliche IP-Adressen für Knoten (Vorschau) registrieren.
-
-Um die neueste Erweiterung von aks-preview zu installieren und zu aktualisieren, verwenden Sie die folgenden Azure CLI-Befehle:
-
-```azurecli
-az extension add --name aks-preview
-az extension update --name aks-preview
-az extension list
-```
-
-Registrieren Sie sich für das Feature für öffentliche IP-Adressen von Knoten über den folgenden Azure CLI-Befehl:
-
-```azurecli-interactive
-az feature register --name NodePublicIPPreview --namespace Microsoft.ContainerService
-```
-Die Registrierung des Features kann einige Minuten dauern.  Sie können den Status mit dem folgenden Befehl überprüfen:
-
-```azurecli-interactive
- az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/NodePublicIPPreview')].{Name:name,State:properties.state}"
-```
-
-Erstellen Sie nach erfolgreicher Registrierung eine neue Ressourcengruppe.
+Erstellen Sie zunächst eine neue Ressourcengruppe.
 
 ```azurecli-interactive
 az group create --name myResourceGroup2 --location eastus
@@ -760,12 +738,9 @@ Bei vorhandenen AKS-Clustern können Sie auch einen neuen Knotenpool hinzufügen
 az aks nodepool add -g MyResourceGroup2 --cluster-name MyManagedCluster -n nodepool2 --enable-node-public-ip
 ```
 
-> [!Important]
-> In der Vorschauphase unterstützt der Azure Instance Metadata Service derzeit nicht das Abrufen öffentlicher IP-Adressen für die VM-SKU im Standardtarif. Aufgrund dieser Einschränkung können Sie nicht über kubectl-Befehle die den Knoten zugewiesenen öffentlichen IP-Adressen anzeigen. Die IP-Adressen sind jedoch zugewiesen und funktionieren wie vorgesehen. Die öffentlichen IP-Adressen Ihrer Knoten werden an die Instanzen in Ihrer VM-Skalierungsgruppe angefügt.
-
 Sie können die öffentlichen IP-Adressen Ihrer Knoten auf verschiedene Weise ermitteln:
 
-* Mit dem Azure CLI-Befehl [az vmss list-instance-public-ips][az-list-ips]
+* Verwenden Sie den Azure CLI-Befehl [az vmss list-instance-public-ips][az-list-ips].
 * Mit [PowerShell- oder Bash-Befehlen][vmss-commands] 
 * Sie können die öffentlichen IP-Adressen auch im Azure-Portal anzeigen, indem Sie die Instanzen in der VM-Skalierungsgruppe einsehen.
 
@@ -818,20 +793,20 @@ Verwenden Sie [Näherungsplatzierungsgruppe][reduce-latency-ppg], um die Latenz 
 
 <!-- INTERNAL LINKS -->
 [aks-windows]: windows-container-cli.md
-[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
-[az-aks-create]: /cli/azure/aks#az-aks-create
-[az-aks-get-upgrades]: /cli/azure/aks#az-aks-get-upgrades
-[az-aks-nodepool-add]: /cli/azure/aks/nodepool#az-aks-nodepool-add
-[az-aks-nodepool-list]: /cli/azure/aks/nodepool#az-aks-nodepool-list
-[az-aks-nodepool-update]: /cli/azure/aks/nodepool#az-aks-nodepool-update
-[az-aks-nodepool-upgrade]: /cli/azure/aks/nodepool#az-aks-nodepool-upgrade
-[az-aks-nodepool-scale]: /cli/azure/aks/nodepool#az-aks-nodepool-scale
-[az-aks-nodepool-delete]: /cli/azure/aks/nodepool#az-aks-nodepool-delete
-[az-extension-add]: /cli/azure/extension#az-extension-add
-[az-extension-update]: /cli/azure/extension#az-extension-update
-[az-group-create]: /cli/azure/group#az-group-create
-[az-group-delete]: /cli/azure/group#az-group-delete
-[az-deployment-group-create]: /cli/azure/deployment/group#az_deployment_group_create
+[az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest&preserve-view=true#az_aks_get_credentials
+[az-aks-create]: /cli/azure/aks?view=azure-cli-latest&preserve-view=true#az_aks_create
+[az-aks-get-upgrades]: /cli/azure/aks?view=azure-cli-latest&preserve-view=true#az_aks_get_upgrades
+[az-aks-nodepool-add]: /cli/azure/aks/nodepool?view=azure-cli-latest&preserve-view=true#az_aks_nodepool_add
+[az-aks-nodepool-list]: /cli/azure/aks/nodepool?view=azure-cli-latest&preserve-view=true#az_aks_nodepool_list
+[az-aks-nodepool-update]: /cli/azure/aks/nodepool?view=azure-cli-latest&preserve-view=true#az_aks_nodepool_update
+[az-aks-nodepool-upgrade]: /cli/azure/aks/nodepool?view=azure-cli-latest&preserve-view=true#az_aks_nodepool_upgrade
+[az-aks-nodepool-scale]: /cli/azure/aks/nodepool?view=azure-cli-latest&preserve-view=true#az_aks_nodepool_scale
+[az-aks-nodepool-delete]: /cli/azure/aks/nodepool?view=azure-cli-latest&preserve-view=true#az_aks_nodepool_delete
+[az-extension-add]: /cli/azure/extension?view=azure-cli-latest&preserve-view=true#az_extension_add
+[az-extension-update]: /cli/azure/extension?view=azure-cli-latest&preserve-view=true#az_extension_update
+[az-group-create]: /cli/azure/group?view=azure-cli-latest&preserve-view=true#az_group_create
+[az-group-delete]: /cli/azure/group?view=azure-cli-latest&preserve-view=true#az_group_delete
+[az-deployment-group-create]: /cli/azure/deployment/group?view=azure-cli-latest&preserve-view=true#az_deployment_group_create
 [gpu-cluster]: gpu-cluster.md
 [install-azure-cli]: /cli/azure/install-azure-cli
 [operator-best-practices-advanced-scheduler]: operator-best-practices-advanced-scheduler.md
@@ -844,5 +819,5 @@ Verwenden Sie [Näherungsplatzierungsgruppe][reduce-latency-ppg], um die Latenz 
 [ip-limitations]: ../virtual-network/virtual-network-ip-addresses-overview-arm#standard
 [node-resource-group]: faq.md#why-are-two-resource-groups-created-with-aks
 [vmss-commands]: ../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine
-[az-list-ips]: /cli/azure/vmss.md#az-vmss-list-instance-public-ips
+[az-list-ips]: /cli/azure/vmss?view=azure-cli-latest&preserve-view=true#az_vmss_list_instance_public_ips
 [reduce-latency-ppg]: reduce-latency-ppg.md

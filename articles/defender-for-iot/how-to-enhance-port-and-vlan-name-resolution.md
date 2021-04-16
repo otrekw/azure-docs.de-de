@@ -1,20 +1,16 @@
 ---
 title: Verbessern der Port- und VLAN-Namensauflösung
 description: Hier erfahren Sie, wie Sie Port- und VLAN-Namen auf ihren Sensoren anpassen können, um die Geräteauflösung zu erweitern.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 12/13/2020
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: 9c976671bccb420ae24d8def7a6574098d86ce6d
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: de6fbe70d5a5359ad4e4c276642b9b9ed0cef00f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98803573"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104784168"
 ---
-# <a name="enhance-port-and-vlan-name-resolution"></a>Verbessern der Port- und VLAN-Namensauflösung
+# <a name="enhance-port-vlan-and-os-resolution"></a>Verbessern der Namensauflösung für Ports, VLANs und Betriebssysteme
 
 Sie können Port- und VLAN-Namen in Ihren Sensoren anpassen, um die Geräteauflösung zu erweitern.
 
@@ -72,7 +68,7 @@ VLAN-Namen können bis zu 50 ASCII-Zeichen enthalten.
 > VLAN-Namen werden nicht zwischen dem Sensor und der Verwaltungskonsole synchronisiert. Sie müssen den Namen auch in der Verwaltungskonsole definieren.  
 Fügen Sie für Cisco-Switchs der SPAN-Konfiguration die folgende Zeile hinzu: `monitor session 1 destination interface XX/XX encapsulation dot1q`. In diesem Befehl sind *XX/XX* der Name und die Nummer des Ports.
 
-So konfigurieren Sie VLANs:
+So konfigurieren Sie VLAN-Namen:
 
 1. Wählen Sie im Menü an der Seite **System Settings** (Systemeinstellungen) aus.
 
@@ -81,6 +77,21 @@ So konfigurieren Sie VLANs:
     :::image type="content" source="media/how-to-enrich-asset-information/edit-vlan.png" alt-text="Verwenden Sie die Systemeinstellungen, um Ihre VLANs zu bearbeiten.":::
 
 3. Fügen Sie neben jeder VLAN-ID einen eindeutigen Namen ein.
+
+## <a name="improve-device-operating-system-classification-data-enhancement"></a>Verbessern der Klassifizierung von Gerätebetriebssystemen: Datenaufbereitung
+
+Sensoren erkennen automatisch und kontinuierlich neue Geräte sowie Änderungen an zuvor erkannten Geräten, einschließlich Betriebssystemen.
+
+Unter bestimmten Umständen werden möglicherweise Konflikte bei ermittelten Betriebssystemen erkannt. Das kann beispielsweise der Fall sein, wenn eine Betriebssystemversion vorliegt, die auf Desktop- oder Serversysteme verweist. Wenn ein solcher Konflikt erkannt wird, erhalten Sie eine Benachrichtigung mit optionalen Betriebssystemklassifizierungen.
+
+:::image type="content" source="media/how-to-enrich-asset-information/enhance-data-screen.png" alt-text="Enhance Data (Daten verbessern)":::
+
+Sehen Sie sich die Empfehlungen an, um die Betriebssystemklassifizierung anzureichern. Diese Klassifizierungen werden unter anderem im Gerätebestand und in Data-Mining-Berichten angezeigt. Wenn Sie dafür sorgen, dass diese Informationen auf dem neuesten Stand sind, können Sie die Genauigkeit von Warnungen, Bedrohungen und Risikoanalyseberichten verbessern.
+
+So greifen Sie auf Betriebssystemempfehlungen zu:
+
+1. Wählen Sie **Systemeinstellungen** aus.
+1. Wählen Sie **Datenaufbereitung** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

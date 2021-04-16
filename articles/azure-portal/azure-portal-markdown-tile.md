@@ -1,15 +1,15 @@
 ---
 title: Verwenden einer benutzerdefinierten Markdown-Kachel in Azure-Dashboards
 description: Erfahren Sie, wie Sie einem Azure-Dashboard eine Markdown-Kachel zum Anzeigen von statischen Inhalten hinzufügen.
-ms.date: 01/08/2020
+ms.date: 03/19/2021
 ms.topic: how-to
 ms.custom: devx-track-js
-ms.openlocfilehash: 5121142ecf568aa1ac9a7ec19f7211c6f9a6253f
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 8324b736565cfa353e48cf49b76e2784866f47f7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745756"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104774455"
 ---
 # <a name="use-a-markdown-tile-on-azure-dashboards-to-show-custom-content"></a>Verwenden einer Markdown-Kachel in Azure-Dashboards zum Anzeigen von benutzerdefinierten Inhalten
 
@@ -21,7 +21,7 @@ Sie können in Ihren Azure-Dashboards eine Markdown-Kachel hinzufügen, um benut
 
    ![Screenshot: Randleiste des Portals](./media/azure-portal-markdown-tile/azure-portal-nav.png)
 
-1. Wenn Sie benutzerdefinierte Dashboards erstellt haben, wählen Sie in der Dashboardansicht in der Dropdownliste das Dashboard aus, in dem die benutzerdefinierte Markdown-Kachel angezeigt werden soll. Wählen Sie das Bearbeitungssymbol aus, um den **Kachelkatalog** zu öffnen.
+1. Wählen Sie in der Dashboardansicht das Dashboard aus, auf dem die benutzerdefinierte Markdown-Kachel angezeigt werden soll, und wählen Sie dann **Bearbeiten** aus.
 
    ![Screenshot: Bearbeitungsansicht des Dashboards](./media/azure-portal-markdown-tile/azure-portal-dashboard-edit.png)
 
@@ -54,7 +54,7 @@ Auf der Markdown-Kachel können Sie eine beliebige Kombination von Nur-Text, Mar
 
 * JavaScript: `<script>`-Tags und JavaScript-Inline-Auswertungen werden entfernt.
 * iFrames: `<iframe>`-Tags werden entfernt.
-* style: `<style>`-Tags werden entfernt. Attribute von Inlineformatvorlagen in HTML-Elementen werden offiziell nicht unterstützt. Möglicherweise können Sie einige Inlineelemente von Formatvorlagen verwenden, wenn diese jedoch das Layout des Portals beeinträchtigen, können sie jederzeit nicht mehr funktionieren. Die Markdown-Kachel ist für allgemeine statische Inhalte vorgesehen, für die die Standardformatvorlagen des Portals verwendet werden.
+* Stil: `<style>`-Tags werden entfernt. Attribute von Inlineformatvorlagen in HTML-Elementen werden offiziell nicht unterstützt. Möglicherweise können Sie einige Inlineelemente von Formatvorlagen verwenden, wenn diese jedoch das Layout des Portals beeinträchtigen, können sie jederzeit nicht mehr funktionieren. Die Markdown-Kachel ist für allgemeine statische Inhalte vorgesehen, für die die Standardformatvorlagen des Portals verwendet werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

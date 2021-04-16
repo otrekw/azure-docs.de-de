@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 10/30/2019
 ms.author: v-erkel
 ms.openlocfilehash: f96a0fa264124f9d050e667b003d98579da63b77
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87092336"
 ---
 # <a name="azure-hpc-cache-data-ingest---manual-copy-method"></a>Azure HPC Cache-Datenerfassung: Methode manuelles Kopieren
@@ -136,7 +136,7 @@ Client4: cp -R /mnt/source/dir3/dir3d /mnt/destination/dir3/ &
 
 ## <a name="create-file-manifests"></a>Erstellen von Dateimanifesten
 
-Wenn Sie die oben genannten Ansätze verstanden haben (mehrere Kopierthreads pro Ziel, mehrere Ziele pro Client, mehrere Clients pro netzwerkfähigem Quelldateisystem), sollten Sie die folgende Empfehlung beachten: Erstellen Sie Dateimanifeste, und verwenden Sie sie dann mit Kopierbefehlen für mehrere Clients.
+Nachdem Sie die oben genannten Ansätze verstanden haben (mehrere Kopierthreads pro Ziel, mehrere Ziele pro Client, mehrere Clients pro über das Netzwerk verfügbarem Quelldateisystem), sollten Sie die folgende Empfehlung beachten: Erstellen Sie Dateimanifeste, und verwenden Sie sie dann mit Kopierbefehlen für mehrere Clients.
 
 Dieses Szenario verwendet den UNIX-Befehl ``find``, um Manifeste von Dateien oder Verzeichnissen zu erstellen:
 
