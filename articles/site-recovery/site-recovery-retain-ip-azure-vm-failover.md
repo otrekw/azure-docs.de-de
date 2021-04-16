@@ -7,10 +7,10 @@ author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
 ms.openlocfilehash: 650fb7f0877a98ef53ed3868550f9c084ecb5885
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96023549"
 ---
 # <a name="retain-ip-addresses-during-failover"></a>Beibehalten von IP-Adressen während eines Failovers
@@ -42,9 +42,9 @@ Die Architektur vor dem Failover sieht wie folgt aus.
     - Die primäre Azure-Region ist „Asien, Osten“.
         - „Asien, Osten“ verfügt über ein VNET (**Quell-VNET**) mit dem Adressraum 10.1.0.0/16.
         - „Asien, Osten“ weist Workloads auf, die auf drei Subnetze im VNET aufgeteilt sind:
-            - **Subnetz 1**: 10.1.1.0/24
+            - **Subnetz 1:** 10.1.1.0/24
             - **Subnetz 2**: 10.1.2.0/24
-            - **Subnetz 3**: 10.1.3.0/24
+            - **Subnetz 3:** 10.1.3.0/24
     - Die sekundäre Azure-Region (Zielregion) ist „Asien, Südosten“.
         - „Asien, Südosten“ verfügt über ein Wiederherstellungs-VNET (**Wiederherstellungs-VNET**), das mit **Quell-VNET** identisch ist.
         - „Asien, Südosten“ verfügt über ein weiteres VNET (**Azure VNET**) mit dem Adressraum 10.2.0.0/16.
@@ -98,7 +98,7 @@ Vor dem Failover sieht die Architektur folgendermaßen aus:
     - **Quell-VNET 2** und **Azure VNET**
     - **Quell-VNET 1** und **Quell-VNET 2** sind per Site-to-Site-VPN verbunden.
 - **Wiederherstellungs-VNET 1** und **Wiederherstellungs-VNET 2** sind mit keinen anderen VNETs verbunden.
-- **Unternehmen A** konfiguriert VPN-Gateways für **Wiederherstellungs-VNET 1** und  **2**, um den RTO-Wert zu reduzieren.  
+- **Unternehmen A** konfiguriert VPN-Gateways für **Wiederherstellungs-VNET 1** und **2**, um den RTO-Wert zu reduzieren.  
 - **Wiederherstellungs-VNet1** und **Wiederherstellungs-VNet2** sind nicht mit einem anderen virtuellen Netzwerk verbunden.
 - Zur Reduzierung des RTO-Werts (Recovery Time Objective) werden vor dem Failover VPN-Gateways für **Wiederherstellungs-VNet1** und **Wiederherstellungs-VNet2** konfiguriert.
 
@@ -130,7 +130,7 @@ Vor dem Failover sieht die Netzwerkarchitektur wie folgt aus.
 - Anwendungs-VMs werden in der Azure-Region „Asien, Osten“ gehostet.
 - „Asien, Osten“ verfügt über ein VNET (**Quell-VNET**) mit dem Adressraum 10.1.0.0/16.
   - „Asien, Osten“ weist Workloads auf, die auf drei Subnetze in **Quell-VNET** aufgeteilt sind:
-    - **Subnetz 1**: 10.1.1.0/24
+    - **Subnetz 1:** 10.1.1.0/24
     - **Subnetz 2**: 10.1.2.0/24
     - **Subnetz 3**: 10.1.3.0/24, in dem ein virtuelles Azure-Netzwerk mit dem Adressraum 10.1.0.0/16 verwendet wird. Dieses virtuelle Netzwerk hat den Namen **Quell-VNET**.
       - Die sekundäre Azure-Region (Zielregion) ist „Asien, Südosten“:

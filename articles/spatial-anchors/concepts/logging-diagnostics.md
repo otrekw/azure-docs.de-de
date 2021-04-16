@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.custom: devx-track-csharp
 ms.openlocfilehash: da8ffd7ff0b8473ce558943bb420b36f26c3fc32
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "95494640"
 ---
 # <a name="logging-and-diagnostics-in-azure-spatial-anchors"></a>Protokollierung und Diagnose in Azure Spatial Anchors
@@ -43,9 +43,9 @@ Es sind zwei für den Benutzer relevante Ereignisrückrufe verfügbar. Das folge
 
 Diese Ereignisrückrufe stehen zur Verfügung, um Protokolle und Fehler aus der Sitzung zu verarbeiten:
 
-- [LogLevel:](/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.loglevel) Gibt die Detailebene für die Ereignisse an, die von der Laufzeit empfangen werden.
-- [OnLogDebug:](/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.onlogdebug) Stellt Standardprotokollereignisse zum Debuggen bereit.
-- [Fehler:](/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.error) Stellt Protokollereignisse bereit, die von der Laufzeit als Fehler betrachtet werden.
+- [LogLevel](/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.loglevel):Gibt die Detailebene für die Ereignisse an, die von der Runtime empfangen werden.
+- [OnLogDebug](/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.onlogdebug): Stellt Standardprotokollereignisse zum Debuggen bereit.
+- [Error](/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.error): Stellt Protokollereignisse bereit, die von der Runtime als Fehler betrachtet werden.
 
 ## <a name="diagnostics-logging"></a>Diagnoseprotokollierung
 
@@ -108,6 +108,6 @@ private async Task CreateAndSubmitBundle()
 ### <a name="parts-of-a-diagnostics-bundle"></a>Teile eines Diagnosepakets
 Das Diagnosepaket enthält möglicherweise die folgenden Informationen:
 
-- **Keyframe-Bilder:** Während der Sitzung bei deaktivierter Diagnoseprotokollierung erfasste Bilder der Umgebung.
-- **Protokolle:** Von der Laufzeit erfasste Protokollereignisse.
-- **Sitzungsmetadaten:** Metadaten, die die Sitzung identifizieren.
+- **Keyframebilder**: Während der Sitzung bei aktivierter Diagnoseprotokollierung erfasste Bilder der Umgebung.
+- **Protokolle**: Von der Runtime erfasste Protokollereignisse.
+- **Sitzungsmetadaten**: Metadaten, die die Sitzung identifizieren.

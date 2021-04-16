@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 03/10/2021
 ms.author: b-juche
-ms.openlocfilehash: 62bf154c1dbf1a0d3f12e2cef916b37059ce985b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 869f46207b940521ee0b66b5afa9c6e2718ab04f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012475"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104594477"
 ---
 # <a name="resize-a-capacity-pool-or-a-volume"></a>Ändern der Größe eines Kapazitätspools oder Volumes
 Sie können die Größe eines Kapazitätspools oder eines Volumes nach Bedarf anpassen. 
@@ -39,6 +39,21 @@ Sie können die Größe eines Volumes nach Bedarf anpassen. Der Kapazitätsverbr
 1. Klicken Sie auf dem Blatt „Manage NetApp Account“ auf **Volumes**. 
 2. Klicken Sie mit der rechten Maustaste auf den Namen des Volumes, dessen Größe Sie anpassen möchten, oder klicken Sie auf am Ende der Zeile mit dem Volume auf das Symbol „...“, um das Kontextmenü anzuzeigen.
 3. Mithilfe der Kontextmenüoptionen können Sie die Größe des Volumes ändern oder es löschen.
+
+## <a name="resize-a-cross-region-replication-destination-volume"></a>Ändern der Größe eines regionsübergreifenden Replikationszielvolumes 
+
+In einer [regionsübergreifenden Replikationsbeziehung](cross-region-replication-introduction.md) wird die Größe eines Zielvolumes basierend auf der Größe des Quellvolumes automatisch angepasst. Daher müssen Sie die Größe des Zielvolumes nicht separat ändern. Dieses Verhalten zur automatischen Größenänderung gilt, wenn sich die Volumes in einer aktiven Replikationsbeziehung befinden oder wenn das Replikationspeering mit dem [Vorgang zur Neusynchronisierung](cross-region-replication-manage-disaster-recovery.md#resync-replication) unterbrochen wird. 
+
+In der folgenden Tabelle wird das Verhalten der Größenänderung des Zielvolumes auf dem [Spiegelungsstatus](cross-region-replication-display-health-status.md) basierend beschrieben:
+
+|  Spiegelungsstatus  | Verhalten der Größenänderung des Zielvolumes |
+|-|-|
+| *Gespiegelt* | Wenn das Zielvolume initialisiert wurde und bereit ist, Spiegelungsaktualisierungen zu empfangen, wird bei Änderung der Größe des Quellvolumes automatisch die Größe des Zielvolumes geändert. |
+| *Beschädigt* | Wenn Sie die Größe des Quellvolumes ändern und der Spiegelungsstatus *beschädigt* ist, wird die Größe des Zielvolumes automatisch mit dem [Vorgang zum erneuten Synchronisieren](cross-region-replication-manage-disaster-recovery.md#resync-replication) angepasst.  |
+| *Nicht initialisiert* | Wenn Sie die Größe des Quellvolumes ändern und der Spiegelungsstatus noch *nicht initialisiert* ist, muss die Größenänderung des Zielvolumes manuell erfolgen. Daher sollten Sie auf den Abschluss der Initialisierung warten (d. h., bis zum Spiegelungsstatus *gespiegelt*), um die Größe des Quellvolumes zu ändern. | 
+
+> [!IMPORTANT]
+> Vergewissern Sie sich, dass in den Kapazitätspools genügend Toleranzbereich für die Quell- und Zielvolumes der regionsübergreifenden Replikation vorhanden ist. Wenn Sie die Größe des Quellvolumes ändern, wird automatisch auch die Größe des Zielvolumes geändert. Sollte der Kapazitätspool des Zielvolumes jedoch nicht über genügend Toleranzbereich verfügen, tritt ein Fehler für die Größenänderung von Quell- und Zielvolume auf.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

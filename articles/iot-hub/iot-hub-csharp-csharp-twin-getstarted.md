@@ -11,10 +11,10 @@ ms.date: 08/26/2019
 ms.author: robinsh
 ms.custom: mqtt, devx-track-csharp
 ms.openlocfilehash: 267a69486dc91ef95c0de704346eeb1d1780ef48
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89013757"
 ---
 # <a name="get-started-with-device-twins-net"></a>Erste Schritte mit Gerätezwillingen (.NET)
@@ -234,7 +234,7 @@ In diesem Abschnitt erstellen Sie eine .NET-Konsolen-App, die als **myDeviceId**
 
 1. Wählen Sie unter **Allgemeine Eigenschaften** > **Startprojekt** die Option **Mehrere Startprojekte** aus. Wählen Sie für **ReportConnectivity** die Option **Starten** als **Aktion** aus. Klicken Sie zum Speichern der Änderungen auf **OK** .  
 
-1. Sie führen diese App aus, indem Sie mit der rechten Maustaste auf das Projekt **ReportConnectivity** klicken und **Debuggen** und dann **Neue Instanz starten** auswählen. Sie sollten sehen, wie die Zwillingsinformationen für die App abgerufen und die Konnektivität anschließend als ***gemeldete Eigenschaft*** gesendet wird.
+1. Sie führen diese App aus, indem Sie mit der rechten Maustaste auf das Projekt **ReportConnectivity** klicken und **Debuggen** und dann **Neue Instanz starten** auswählen. Sie sollten sehen, wie die Zwillingsinformationen für die App abgerufen und die Konnektivität anschließend als **_gemeldete Eigenschaft_** gesendet wird.
 
     ![Ausführen der Geräte-App zum Melden der Konnektivität](./media/iot-hub-csharp-csharp-twin-getstarted/rundeviceapp.png)
 

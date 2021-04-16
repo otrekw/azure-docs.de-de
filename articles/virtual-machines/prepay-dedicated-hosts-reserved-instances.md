@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/28/2020
 ms.author: banders
-ms.openlocfilehash: 1450f03ae72e79daca5a5ae2c04506e6bee5180b
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 2f90d3698156e27780bc57e0ac9355b6811d20d3
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101672284"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104607414"
 ---
 # <a name="save-costs-with-azure-dedicated-host-reservations"></a>Einsparen von Kosten mit Azure Dedicated Host-Reservierungen
 
@@ -29,7 +29,7 @@ Beginnen Sie, indem Sie die unterstützten Größen für [virtuellen Windows-Com
 
 Überprüfen Sie dann, ob sie unter Azure Dedicated Hosts unterstützt wird. Die Seite [Preise für Azure Dedicated Hosts](https://aka.ms/ADHPricing) enthält die vollständige Liste der SKUs für dedizierte Hosts, ihre CPU-Informationen sowie verschiedene Preisoptionen (auch für reservierte Instanzen).
 
-Möglicherweise sind mehrere SKUs vorhanden, die Ihre VM-Serie unterstützen (mit unterschiedlichen Typen). Identifizieren Sie die beste SKU, indem Sie die Kapazität des Hosts (Anzahl der vCPUs) vergleichen. Beachten Sie, dass Sie Ihre Reservierung auf mehrere SKUs für dedizierte Hosts anwenden können, die dieselbe VM-Serie unterstützen (z. B. DSv3_Type1 und DSv3_Type2), aber nicht über verschiedene VM-Serien hinweg (z. B. DSv3 und ESv3).
+Möglicherweise sind mehrere SKUs vorhanden, die Ihre ausgewählte VM-Serie unterstützen (mit unterschiedlichen Typen). Identifizieren Sie die beste SKU, indem Sie die Kapazität des Hosts (Anzahl der vCPUs) vergleichen. Beachten Sie, dass Sie Ihre Reservierung auf mehrere SKUs für dedizierte Hosts anwenden können, die dieselbe VM-Serie unterstützen (z. B. DSv3_Type1 und DSv3_Type2), aber nicht über verschiedene VM-Serien hinweg (z. B. DSv3 und ESv3).
 
 
 

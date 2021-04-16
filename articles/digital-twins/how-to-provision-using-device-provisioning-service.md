@@ -1,18 +1,18 @@
 ---
-title: Automatisches Verwalten von Geräten mit DPS
+title: Automatisches Verwalten von Geräten mithilfe des Device Provisioning Service
 titleSuffix: Azure Digital Twins
 description: Hier erfahren Sie, wie Sie einen automatisierten Prozess für die Bereitstellung und Außerbetriebnahme von IoT-Geräten in Azure Digital Twins mit dem Device Provisioning Service (DPS) einrichten.
 author: baanders
 ms.author: baanders
-ms.date: 9/1/2020
+ms.date: 3/21/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: c2e7c9c96f237512d7f28f7243707b097c034aab
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: a571d92dd9663c7d2d0a576b59e5cd2b3352cb76
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102198454"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104951013"
 ---
 # <a name="auto-manage-devices-in-azure-digital-twins-using-device-provisioning-service-dps"></a>Automatisches Verwalten von Geräten in Azure Digital Twins mithilfe des Device Provisioning Service (DPS)
 
@@ -24,23 +24,20 @@ Weitere Informationen zu den Phasen der _Bereitstellung_ und _Außerbetriebnahme
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Bevor Sie die Bereitstellung einrichten können, benötigen Sie eine **Instanz von Azure Digital Twins**, die Modelle und Zwillinge enthält. Diese Instanz sollte auch mit der Möglichkeit eingerichtet werden, Informationen zu digitalen Zwillingen auf der Grundlage von Daten zu aktualisieren. 
-
-Wenn Sie dieses Setup nicht bereits eingerichtet haben, nutzen Sie zum Erstellen die Informationen im Azure Digital Twins-Tutorial [ *Erstellen einer End-to-End-Lösung*](tutorial-end-to-end.md). Das Tutorial führt Sie durch die Einrichtung einer Azure Digital Twins-Instanz mit Modellen und Zwillingen, einem verbundenen Azure [IoT Hub](../iot-hub/about-iot-hub.md) und mehreren [Azure-Funktionen](../azure-functions/functions-overview.md), um den Datenfluss weiterzuleiten.
-
-In dieser Schnellstartanleitung benötigen Sie die folgenden Werte, die Sie bei der Instanzeinrichtung verwendet haben. Wenn Sie diese Werte erneut erfassen müssen, verwenden Sie die folgenden Links, um Anweisungen zu erhalten.
-* Azure Digital Twins-Instanz: **_Hostname_** ([im Portal suchen](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values))
-* Verbindungszeichenfolge für Azure Event Hubs **_Verbindungszeichenfolge_** ([im Portal suchen](../event-hubs/event-hubs-get-connection-string.md#get-connection-string-from-the-portal))
+Bevor Sie die Bereitstellung einrichten können, müssen Sie Folgendes einrichten:
+* Eine **Azure Digital Twins-Instanz**. Befolgen Sie zum Erstellen einer Azure Digital Twins-Instanz die Anweisungen unter [*Vorgehensweise: Einrichten einer Instanz und der Authentifizierung*](how-to-set-up-instance-portal.md). Erfassen Sie den **_Hostnamen_** der Instanz im Azure-Portal ([Anweisungen](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values)).
+* Einen **IoT-Hub**. Anweisungen finden Sie im Abschnitt *Erstellen eines IoT-Hubs* in diesem [IoT Hub-Schnellstart](../iot-hub/quickstart-send-telemetry-cli.md).
+* Eine [**Azure-Funktion**](../azure-functions/functions-overview.md), mit der Digital Twins-Informationen auf Grundlage von IoT-Hub-Daten aktualisiert werden. Befolgen Sie zum Erstellen dieser Azure-Funktion die Anweisungen in der [*Anleitung zum Erfassen von IoT-Hub-Daten*](how-to-ingest-iot-hub-data.md). Erfassen Sie den **_Namen_** der Funktion, um ihn in diesem Artikel zu verwenden.
 
 In diesem Beispiel wird auch ein **Gerätesimulator** verwendet, der die Bereitstellung mithilfe des Device Provisioning Service umfasst. Der Gerätesimulator befindet sich hier: [Beispiel für die Integration von Azure Digital Twins und IoT Hub](/samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/). Laden Sie das Beispielprojekt auf Ihren Computer herunter, indem Sie zum Beispiellink navigieren und die Schaltfläche *ZIP-Datei herunterladen* unter dem Titel auswählen. Extrahieren Sie den heruntergeladenen Ordner.
 
-Der Gerätesimulator basiert auf **Node.js**-Version 10.0. x oder höher. Unter [*Prepare your development environment*](https://github.com/Azure/azure-iot-sdk-node/blob/master/doc/node-devbox-setup.md) (Vorbereiten Ihrer Entwicklungsumgebung) wird beschrieben, wie Sie Node.js für dieses Tutorial unter Windows oder Linux installieren.
+Auf Ihrem Computer muss [**Node.js**](https://nodejs.org/download) installiert sein. Der Gerätesimulator basiert auf **Node.js**-Version 10.0. x oder höher.
 
 ## <a name="solution-architecture"></a>Lösungsarchitektur
 
 Die folgende Abbildung veranschaulicht die Architektur dieser Lösung mit Azure Digital Twins und dem Device Provisioning Service. Sie zeigt den Ablauf für die Bereitstellung und Außerbetriebnahme von Geräten.
 
-:::image type="content" source="media/how-to-provision-using-dps/flows.png" alt-text="Darstellung eines Geräts und mehrerer Azure-Dienste in einem End-to-End-Szenario. Daten werden zwischen einem Thermostat und DPS übermittelt. Außerdem werden Daten über eine Azure-Funktion mit der Bezeichnung „Zuweisung“ aus DPS zu IoT Hub und zu Azure Digital Twins übertragen. Daten aus einer manuellen Aktion zum Löschen des Geräts durchlaufen IoT Hub > Event Hubs > Azure Functions > Azure-Digital Twins.":::
+:::image type="content" source="media/how-to-provision-using-dps/flows.png" alt-text="Diagramm eines Geräts und mehrerer Azure-Dienste in einem End-to-End-Szenario Daten werden zwischen einem Thermostat und DPS übermittelt. Außerdem werden Daten über eine Azure-Funktion mit der Bezeichnung „Zuweisung“ aus DPS zu IoT Hub und zu Azure Digital Twins übertragen. Daten aus einer manuellen Aktion zum Löschen des Geräts durchlaufen IoT Hub > Event Hubs > Azure Functions > Azure-Digital Twins." lightbox="media/how-to-provision-using-dps/flows.png":::
 
 Dieser Artikel ist in zwei Abschnitte unterteilt:
 * [*Bereitstellen eines Geräts mithilfe des Device Provisioning Service*](#auto-provision-device-using-device-provisioning-service)
@@ -52,12 +49,12 @@ Ausführliche Erläuterungen zu den einzelnen Schritten in der Architektur finde
 
 In diesem Abschnitt fügen Sie den Device Provisioning Service an Azure Digital Twins an, um Geräte automatisch über den unten beschriebenen Pfad bereitzustellen. Dies ist ein Auszug aus der [oben dargestellten](#solution-architecture) vollständigen Architektur.
 
-:::image type="content" source="media/how-to-provision-using-dps/provision.png" alt-text="Bereitstellungsfluss: Auszug aus dem Diagramm der Lösungsarchitektur mit nummerierten Abschnitten. Daten werden zwischen einem Thermostat und DPS übermittelt (1 für Gerät > DPS und 5 für DPS > Gerät). Außerdem werden Daten über eine Azure-Funktion mit der Bezeichnung „Zuweisung“ (2) aus DPS zu IoT Hub (4) und zu Azure Digital Twins (3) übertragen.":::
+:::image type="content" source="media/how-to-provision-using-dps/provision.png" alt-text="Diagramm des Bereitstellungsflusses: Auszug aus dem Diagramm der Lösungsarchitektur mit nummerierten Abschnitten Daten werden zwischen einem Thermostat und DPS übermittelt (1 für Gerät > DPS und 5 für DPS > Gerät). Außerdem werden Daten über eine Azure-Funktion mit der Bezeichnung „Zuweisung“ (2) aus DPS zu IoT Hub (4) und zu Azure Digital Twins (3) übertragen." lightbox="media/how-to-provision-using-dps/provision.png":::
 
 Beschreibung des Prozesses:
 1. Das Gerät kontaktiert den DPS-Endpunkt und übergibt Informationen, um seine Identität zu bestätigen.
 2. DPS überprüft die Geräteidentität, indem die Registrierungs-ID und der Schlüssel anhand der Registrierungsliste überprüft werden, und ruft eine [Azure-Funktion](../azure-functions/functions-overview.md) auf, um die Zuordnung durchzuführen.
-3. Die Azure-Funktion erstellt in Azure Digital Twins einen neuen [Zwilling](concepts-twins-graph.md) für das Gerät.
+3. Die Azure-Funktion erstellt in Azure Digital Twins einen neuen [Zwilling](concepts-twins-graph.md) für das Gerät. Der Zwilling erhält denselben Namen wie die **Registrierungs-ID** des Geräts.
 4. DPS registriert das Gerät bei einem IoT-Hub und gibt den gewünschten Zwillingsstatus des Geräts an.
 5. Der IoT-Hub gibt Informationen zur Geräte-ID und zur IoT-Hub-Verbindung an das Gerät zurück. Das Gerät kann nun eine Verbindung mit dem IoT-Hub herstellen.
 
@@ -65,66 +62,104 @@ In den folgenden Abschnitten werden die Schritte zum Einrichten dieses Ablaufs f
 
 ### <a name="create-a-device-provisioning-service"></a>Erstellen einer Device Provisioning Service-Instanz
 
-Wenn ein neues Gerät mit dem Device Provisioning Service bereitgestellt wird, kann ein neuer Zwilling für dieses Gerät in Azure Digital Twins erstellt werden.
+Wenn ein neues Gerät mit dem Device Provisioning Service bereitgestellt wird, kann in Azure Digital Twins ein neuer Zwilling für dieses Gerät erstellt werden, dessen Name mit der Registrierungs-ID identisch ist.
 
 Erstellen Sie eine Instanz des Device Provisioning Service, die zum Bereitstellen von IoT-Geräten verwendet wird. Sie können entweder die folgenden Azure CLI Anweisungen oder das Azure-Portal verwenden: [*Schnellstart: Einrichten des IoT Hub Device Provisioning Service über das Azure-Portal*](../iot-dps/quick-setup-auto-provision.md).
 
-Mit dem folgenden Azure CLI Befehl wird ein Device Provisioning Service erstellt. Sie müssen einen Namen, eine Ressourcengruppe und eine Region angeben. Der Befehl kann in [Cloud Shell](https://shell.azure.com) oder lokal ausgeführt werden, wenn die Azure CLI [auf dem Computer installiert](/cli/azure/install-azure-cli) ist.
+Mit dem folgenden Azure CLI Befehl wird ein Device Provisioning Service erstellt. Sie müssen einen Namen, eine Ressourcengruppe und eine Region für den Device Provisioning Service angeben. Informationen zu Regionen mit Unterstützung des Device Provisioning Service finden Sie unter [*Verfügbare Produkte nach Region*](https://azure.microsoft.com/global-infrastructure/services/?products=iot-hub).
+Der Befehl kann in [Cloud Shell](https://shell.azure.com) oder lokal ausgeführt werden, wenn die Azure CLI [auf dem Computer installiert](/cli/azure/install-azure-cli) ist.
 
 ```azurecli-interactive
-az iot dps create --name <Device Provisioning Service name> --resource-group <resource group name> --location <region; for example, eastus>
+az iot dps create --name <Device Provisioning Service name> --resource-group <resource group name> --location <region>
 ```
 
-### <a name="create-an-azure-function"></a>Erstellen einer Azure-Funktion
+### <a name="add-a-function-to-use-with-device-provisioning-service"></a>Hinzufügen einer mit dem Device Provisioning Service zu verwendenden Funktion
 
-Als Nächstes erstellen Sie eine durch eine HTTP-Anforderung ausgelöste Funktion innerhalb einer Funktions-App. Sie können die im End-to-End-Tutorial ([ *Erstellen einer End-to-End-Lösung*](tutorial-end-to-end.md)) erstellte Funktions-App oder Ihre eigene verwenden.
+Sie erstellen in der Funktions-App, die Sie im Abschnitt [Voraussetzungen](#prerequisites) erstellt haben, eine neue Funktion für die Verwendung mit dem Device Provisioning Service. Diese Funktion wird vom Device Provisioning Service in einer [benutzerdefinierten Zuweisungsrichtlinie](../iot-dps/how-to-use-custom-allocation-policies.md) zur Bereitstellung eines neuen Geräts verwendet.
 
-Diese Funktion wird vom Device Provisioning Service in einer [benutzerdefinierten Zuweisungsrichtlinie](../iot-dps/how-to-use-custom-allocation-policies.md) zur Bereitstellung eines neuen Geräts verwendet. Weitere Informationen zur Verwendung von HTTP-Anforderungen mit Azure-Funktionen finden Sie unter [*HTTP-Trigger in Azure Functions*](../azure-functions/functions-bindings-http-webhook-trigger.md).
+Öffnen Sie zunächst auf dem Computer das Funktions-App-Projekt in Visual Studio, und führen Sie die folgenden Schritte aus.
 
-Fügen Sie im Projekt der Funktions-App eine neue Funktion hinzu. Fügen Sie dem Projekt außerdem ein NuGet-Paket hinzu: `Microsoft.Azure.Devices.Provisioning.Service`.
+#### <a name="step-1-add-a-new-function"></a>Schritt 1: Hinzufügen einer neuen Funktion 
 
-Fügen Sie in der neu erstellten Funktionscodedatei den folgenden Code ein.
+Fügen Sie dem Funktions-App-Projekt in Visual Studio eine neue Funktion vom Typ *HTTP-Trigger* hinzu.
+
+:::image type="content" source="media/how-to-provision-using-dps/add-http-trigger-function-visual-studio.png" alt-text="Screenshot der Visual Studio-Ansicht zum Hinzufügen einer Azure-Funktion vom Typ „HTTP-Trigger“ im Funktions-App-Projekt" lightbox="media/how-to-provision-using-dps/add-http-trigger-function-visual-studio.png":::
+
+#### <a name="step-2-fill-in-function-code"></a>Schritt 2: Angeben des Funktionscodes
+
+Fügen Sie dem Projekt ein neues NuGet-Paket hinzu: [Microsoft.Azure.Devices.Provisioning.Service](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/). Möglicherweise müssen Sie dem Projekt weitere Pakete hinzufügen, wenn die im Code verwendeten Pakete nicht bereits Teil des Projekts sind.
+
+Fügen Sie in der neu erstellten Funktionscodedatei den folgenden Code ein, benennen Sie die Funktion in *DpsAdtAllocationFunc.cs* um, und speichern Sie die Datei.
 
 :::code language="csharp" source="~/digital-twins-docs-samples-dps/functions/DpsAdtAllocationFunc.cs":::
 
-Speichern Sie die Datei, und veröffentlichen Sie die Funktions-App erneut. Anweisungen zum Veröffentlichen der Funktions-App finden Sie im Abschnitt [*Veröffentlichen der App*](tutorial-end-to-end.md#publish-the-app) im End-to-End-Tutorial.
+#### <a name="step-3-publish-the-function-app-to-azure"></a>Schritt 3: Veröffentlichen der Funktions-App in Azure
 
-### <a name="configure-your-function"></a>Konfigurieren Ihrer Funktion
+Veröffentlichen Sie das Projekt mit der Funktion *DpsAdtAllocationFunc.cs* in der Funktions-App in Azure.
 
-Als Nächstes müssen Sie in ihrer Funktions-App von oben Umgebungsvariablen festlegen, die den Verweis auf die von Ihnen erstellte Azure Digital Twins-Instanz enthalten. Wenn Sie das End-to-End-Tutorial verwendet haben ([*Tutorial: Erstellen einer End-to-End-Lösung*](tutorial-end-to-end.md)), ist die Einstellung bereits konfiguriert.
-
-Fügen Sie die Einstellung mit folgendem Azure CLI-Befehl hinzu:
-
-```azurecli-interactive
-az functionapp config appsettings set --settings "ADT_SERVICE_URL=https://<Azure Digital Twins instance _host name_>" -g <resource group> -n <your App Service (function app) name>
-```
-
-Stellen Sie sicher, dass die Berechtigungen und die Rollenzuweisung für verwaltete Identitäten für die Funktions-App ordnungsgemäß konfiguriert wurden. Dies wird im End-to-End-Tutorial im Abschnitt [*Zuweisen von Berechtigungen zur Funktions-App*](tutorial-end-to-end.md#assign-permissions-to-the-function-app) beschrieben.
+[!INCLUDE [digital-twins-publish-and-configure-function-app.md](../../includes/digital-twins-publish-and-configure-function-app.md)]
 
 ### <a name="create-device-provisioning-enrollment"></a>Erstellen der Registrierung für den Device Provisioning Service
 
-Als Nächstes müssen Sie eine Registrierung im Device Provisioning Service mithilfe einer **benutzerdefinierten Zuweisungsfunktion** erstellen. Befolgen Sie hierzu die Anweisungen in den Abschnitten [*Erstellen der Registrierung*](../iot-dps/how-to-use-custom-allocation-policies.md#create-the-enrollment) und [*Ableiten eindeutiger Geräteschlüssel*](../iot-dps/how-to-use-custom-allocation-policies.md#derive-unique-device-keys) im Artikel zu benutzerdefinierten Zuweisungsrichtlinien im Device Provisioning Service.
+Als Nächstes müssen Sie eine Registrierung im Device Provisioning Service mithilfe einer **benutzerdefinierten Zuweisungsfunktion** erstellen. Befolgen Sie hierzu die Anweisungen im Abschnitt [*Erstellen der Registrierung*](../iot-dps/how-to-use-custom-allocation-policies.md#create-the-enrollment) des Artikels über benutzerdefinierte Zuordnungsrichtlinien in der Dokumentation zum Device Provisioning Service.
 
-Beim Durchlaufen dieses Flows verknüpfen Sie die Registrierung mit der Funktion, die Sie gerade erstellt haben, indem Sie die Funktion im Schritt **Wählen Sie, wie Geräte den Hubs zugewiesen werden sollen** auswählen. Nachdem Sie die Registrierung erstellt haben, werden der Registrierungsname und der primäre oder sekundäre SAS-Schlüssel später in diesem Artikel zum Konfigurieren des Gerätesimulators verwendet.
+Achten Sie darauf, dass Sie beim Durchführen dieser Schritte die folgenden Optionen auswählen, um die Registrierung mit der Funktion zu verknüpfen, die Sie soeben erstellt haben.
+
+* **Wählen Sie, wie Geräte den Hubs zugewiesen werden sollen**: Benutzerdefiniert (Azure-Funktion verwenden).
+* **Wählen Sie die IoT-Hubs aus, denen diese Gruppe zugewiesen werden kann**: Wählen Sie den Namen des IoT-Hubs aus, oder klicken Sie auf die Schaltfläche *Neuen IoT-Hub verknüpfen*, und wählen Sie in der Dropdownliste den IoT-Hub aus.
+
+Klicken Sie als Nächstes auf die Schaltfläche *Neue Funktion auswählen*, um die Funktions-App mit der Registrierungsgruppe zu verknüpfen. Geben Sie anschließend die folgenden Werte ein:
+
+* **Abonnement**: Ihr Azure-Abonnement wird automatisch ausgefüllt. Stellen Sie sicher, dass es das richtige Abonnement ist.
+* **Funktions-App**: Wählen Sie den Namen Ihrer Funktions-App aus.
+* **Funktion**: Wählen Sie „DpsAdtAllocationFunc“ aus.
+
+Speichern Sie die Informationen.                  
+
+:::image type="content" source="media/how-to-provision-using-dps/link-enrollment-group-to-iot-hub-and-function-app.png" alt-text="Screenshot: Fenster mit Informationen für die benutzerdefinierte Zuweisung von Registrierungsgruppen mit der Auswahl „Benutzerdefiniert (Azure-Funktion verwenden)“ und dem IoT-Hub-Namen in den Abschnitten „Wählen Sie, wie Geräte den Hubs zugewiesen werden sollen“ und „Wählen Sie die IoT-Hubs aus, denen diese Gruppe zugewiesen werden kann“. Wählen Sie außerdem in den Dropdownlisten Ihr Abonnement und Ihre Funktions-App aus, und wählen Sie „DpsAdtAllocationFunc“ aus." lightbox="media/how-to-provision-using-dps/link-enrollment-group-to-iot-hub-and-function-app.png":::
+
+Nachdem Sie die Registrierung erstellt haben, wird später in diesem Artikel der **Primärschlüssel** für die Registrierung zum Konfigurieren des Gerätesimulators verwendet.
 
 ### <a name="set-up-the-device-simulator"></a>Einrichten des Gerätesimulators
 
 In diesem Beispiel wird ein Gerätesimulator verwendet, der die Bereitstellung mithilfe des Device Provisioning Service umfasst. Der Gerätesimulator befindet sich hier: [Beispiel für die Integration von Azure Digital Twins und IoT Hub](/samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/). Wenn Sie dies noch nicht getan haben, laden Sie das Beispielprojekt auf Ihren Computer herunter, indem Sie zum Beispiellink navigieren und die Schaltfläche *ZIP-Datei herunterladen* unter dem Titel auswählen. Extrahieren Sie den heruntergeladenen Ordner.
 
-Öffnen Sie ein Befehlsfenster, und navigieren Sie zum heruntergeladenen Ordner und dann zum Verzeichnis *device-simulator*. Installieren Sie die Abhängigkeiten für das Projekt, indem Sie den folgenden Befehl ausführen:
+#### <a name="upload-the-model"></a>Hochladen des Modells
+
+Der Gerätesimulator ist ein Gerät vom Typ „Thermostat“, von dem das Modell mit der folgenden ID verwendet wird: `dtmi:contosocom:DigitalTwins:Thermostat;1`. Sie müssen dieses Modell in Azure Digital Twins hochladen, bevor Sie einen Zwilling dieses Typs für das Gerät erstellen können.
+
+[!INCLUDE [digital-twins-thermostat-model-upload.md](../../includes/digital-twins-thermostat-model-upload.md)]
+
+Weitere Informationen zu Modellen finden Sie unter [*Verwalten von Azure Digital Twins-Modellen*](how-to-manage-model.md#upload-models).
+
+#### <a name="configure-and-run-the-simulator"></a>Konfigurieren und Ausführen des Simulators
+
+Navigieren Sie im Befehlsfenster zu dem heruntergeladenen Beispiel für die *Integration von Azure Digital Twins und IoT Hub*, das Sie zuvor entzippt haben, und dann zum Verzeichnis *device-simulator* . Installieren Sie dann die Abhängigkeiten für das Projekt, indem Sie den folgenden Befehl ausführen:
 
 ```cmd
 npm install
 ```
 
-Kopieren Sie dann die Datei *.env.template* in eine neue Datei mit dem Namen *.env*, und geben Sie die folgenden Einstellungen ein:
+Kopieren Sie als Nächstes die Datei mit der Erweiterung „.env.template“ im Verzeichnis „device-simulator“ in eine neue Datei mit der Erweiterung „.env“, und erfassen Sie die folgenden Werte zum Festlegen der Einstellungen:
+
+* PROVISIONING_IDSCOPE: Um diesen Wert zu erhalten, navigieren Sie im [Azure-Portal](https://portal.azure.com/) zum Device Provisioning Service, wählen Sie in den Menüoptionen *Übersicht* aus, und suchen Sie das Feld *ID-Bereich*.
+
+    :::image type="content" source="media/how-to-provision-using-dps/id-scope.png" alt-text="Screenshot der Seite „Übersicht“ für den Device Provisioning Service im Azure-Portal zum Kopieren des Werts für „ID-Bereich“" lightbox="media/how-to-provision-using-dps/id-scope.png":::
+
+* PROVISIONING_REGISTRATION_ID: Sie können eine Registrierungs-ID für Ihr Gerät auswählen.
+* ADT_MODEL_ID: `dtmi:contosocom:DigitalTwins:Thermostat;1`
+* PROVISIONING_SYMMETRIC_KEY: Dies ist der Primärschlüssel für die Registrierung, die Sie zuvor eingerichtet haben. Um diesen Wert erneut zu erhalten, navigieren Sie im Azure-Portal zum Device Provisioning Service, wählen Sie *Registrierungen verwalten* aus, wählen Sie dann die zuvor erstellte Registrierungsgruppe aus, und kopieren Sie den *Primärschlüssel*.
+
+    :::image type="content" source="media/how-to-provision-using-dps/sas-primary-key.png" alt-text="Screenshot der Seite „Registrierungen verwalten“ für den Device Provisioning Service im Azure-Portal zum Kopieren des Werts für den SAS-Primärschlüssel" lightbox="media/how-to-provision-using-dps/sas-primary-key.png":::
+
+Verwenden Sie nun die oben aufgeführten Werte, um die Einstellungen für die ENV-Datei zu aktualisieren.
 
 ```cmd
 PROVISIONING_HOST = "global.azure-devices-provisioning.net"
 PROVISIONING_IDSCOPE = "<Device Provisioning Service Scope ID>"
 PROVISIONING_REGISTRATION_ID = "<Device Registration ID>"
 ADT_MODEL_ID = "dtmi:contosocom:DigitalTwins:Thermostat;1"
-PROVISIONING_SYMMETRIC_KEY = "<Device Provisioning Service enrollment primary or secondary SAS key>"
+PROVISIONING_SYMMETRIC_KEY = "<Device Provisioning Service enrollment primary SAS key>"
 ```
 
 Speichern und schließen Sie die Datei.
@@ -138,24 +173,24 @@ node .\adt_custom_register.js
 ```
 
 Sie sollten sehen, dass das Gerät registriert und mit IoT Hub verbunden ist und Nachrichten sendet.
-:::image type="content" source="media/how-to-provision-using-dps/output.png" alt-text="Befehlsfenster mit Geräteregistrierung und gesendeten Nachrichten":::
+:::image type="content" source="media/how-to-provision-using-dps/output.png" alt-text="Screenshot des Befehlsfensters mit Geräteregistrierung und gesendeten Nachrichten" lightbox="media/how-to-provision-using-dps/output.png":::
 
 ### <a name="validate"></a>Überprüfen
 
-Durch den in diesem Artikel eingerichteten Ablauf wird das Gerät automatisch in Azure Digital Twins registriert. Mit dem folgenden [Azure Digital Twins-CLI-Befehl](how-to-use-cli.md) können Sie den Zwilling des Geräts in der von Ihnen erstellten Azure Digital Twins-Instanz suchen.
+Durch den in diesem Artikel eingerichteten Ablauf wird das Gerät automatisch in Azure Digital Twins registriert. Suchen Sie mit dem folgenden [Azure Digital Twins-CLI-Befehl](how-to-use-cli.md) den Zwilling des Geräts in der von Ihnen erstellten Azure Digital Twins-Instanz.
 
 ```azurecli-interactive
-az dt twin show -n <Digital Twins instance name> --twin-id <Device Registration ID>"
+az dt twin show -n <Digital Twins instance name> --twin-id "<Device Registration ID>"
 ```
 
 Sie sollten den Zwilling des Geräts in der Azure Digital Twins-Instanz sehen.
-:::image type="content" source="media/how-to-provision-using-dps/show-provisioned-twin.png" alt-text="Befehlsfenster mit neu erstelltem Zwilling":::
+:::image type="content" source="media/how-to-provision-using-dps/show-provisioned-twin.png" alt-text="Screenshot des Befehlsfensters mit dem neu erstellten Zwilling" lightbox="media/how-to-provision-using-dps/show-provisioned-twin.png":::
 
 ## <a name="auto-retire-device-using-iot-hub-lifecycle-events"></a>Automatisches Außerbetriebnehmen von Geräten mithilfe von IoT Hub-Lebenszyklusereignissen
 
 In diesem Abschnitt fügen Sie IoT Hub-Lebenszyklusereignisse an Azure Digital Twins an, um Geräte automatisch über den folgenden Ablauf außer Betrieb zu nehmen. Dies ist ein Auszug aus der [oben dargestellten](#solution-architecture) vollständigen Architektur.
 
-:::image type="content" source="media/how-to-provision-using-dps/retire.png" alt-text="Ablauf für die Außerbetriebnahme: Auszug aus dem Diagramm der Lösungsarchitektur mit nummerierten Abschnitten. Das Thermostat wird ohne Verbindungen mit Azure-Diensten im Diagramm angezeigt. Daten aus einer manuellen Aktion zum Löschen des Geräts durchlaufen IoT Hub (1) > Event Hubs (2) > Azure Functions > Azure-Digital Twins (3).":::
+:::image type="content" source="media/how-to-provision-using-dps/retire.png" alt-text="Diagramm des Ablaufs für die Außerbetriebnahme: Auszug aus dem Diagramm der Lösungsarchitektur mit nummerierten Abschnitten Das Thermostat wird ohne Verbindungen mit Azure-Diensten im Diagramm angezeigt. Daten aus einer manuellen Aktion zum Löschen des Geräts durchlaufen IoT Hub (1) > Event Hubs (2) > Azure Functions > Azure-Digital Twins (3)." lightbox="media/how-to-provision-using-dps/retire.png":::
 
 Beschreibung des Prozesses:
 1. Ein externer oder manueller Prozess löst das Löschen eines Geräts in IoT Hub aus.
@@ -166,54 +201,100 @@ In den folgenden Abschnitten werden die Schritte zum Einrichten dieses Ablaufs f
 
 ### <a name="create-an-event-hub"></a>Erstellen eines Ereignis-Hubs
 
-Sie müssen nun einen Azure-[Event Hub](../event-hubs/event-hubs-about.md) erstellen, über den die IoT Hub-Lebenszyklusereignisse empfangen werden. 
+Als Nächstes erstellen Sie einen [Azure Event Hub](../event-hubs/event-hubs-about.md) zum Empfangen von IoT Hub-Lebenszyklusereignissen. 
 
-Führen Sie die Schritte aus, die im Schnellstart [*Erstellen eines Event Hubs*](../event-hubs/event-hubs-create.md) beschrieben werden. Verwenden Sie dabei die folgenden Informationen:
-* Wenn Sie das End-to-End-Tutorial verwenden ([*Tutorial: Erstellen einer End-to-End-Lösung*](tutorial-end-to-end.md)), können Sie die Ressourcengruppe wiederverwenden, die Sie für das End-to-End-Tutorial erstellt haben.
-* Geben Sie als Namen für den Event Hub *lifecycleevents* oder eine eigene Bezeichnung ein, und merken Sie sich den von Ihnen erstellten Namespace. Diese Informationen werden bei der Einrichtung der Lebenszyklusfunktion und der IoT Hub-Route in den nächsten Abschnitten verwendet.
+Führen Sie die in der Schnellstartanleitung zum [*Erstellen eines Event Hubs*](../event-hubs/event-hubs-create.md) beschriebenen Schritte aus. Benennen Sie den Event Hub mit *lifecycleevents*. Sie verwenden diesen Event Hub-Namen, wenn Sie in den nächsten Abschnitten eine IoT Hub-Route und eine Azure-Funktion einrichten.
 
-### <a name="create-an-azure-function"></a>Erstellen einer Azure-Funktion
+Der folgende Screenshot veranschaulicht die Erstellung des Event Hubs.
+:::image type="content" source="media/how-to-provision-using-dps/create-event-hub-lifecycle-events.png" alt-text="Screenshot des Azure-Portal-Fensters zum Erstellen eines Event Hubs mit dem Namen „lifecycleevents“" lightbox="media/how-to-provision-using-dps/create-event-hub-lifecycle-events.png":::
 
-Als Nächstes erstellen Sie eine durch Event Hubs ausgelöste Funktion innerhalb einer Funktions-App. Sie können die im End-to-End-Tutorial ([ *Erstellen einer End-to-End-Lösung*](tutorial-end-to-end.md)) erstellte Funktions-App oder Ihre eigene verwenden. 
+#### <a name="create-sas-policy-for-your-event-hub"></a>Erstellen einer SAS-Richtlinie für den Event Hub
 
-Geben Sie als Namen für den Event Hub *lifecycleevents* ein, und verbinden Sie den Event Hub-Trigger mit dem Event Hub, den Sie im vorherigen Schritt erstellt haben. Wenn Sie einen anderen Namen für den Event Hub verwendet haben, ändern Sie ihn so, dass er mit dem unten angegebenen Namen des Auslösers übereinstimmt.
+Als Nächstes müssen Sie eine [SAS-Richtlinie (Shared Access Signature)](../event-hubs/authorize-access-shared-access-signature.md) erstellen, um den Event Hub mit Ihrer Funktions-App zu konfigurieren.
+Gehen Sie dazu folgendermaßen vor:
+1. Navigieren Sie zu dem Event Hub, die Sie soeben im Azure-Portal erstellt haben, und wählen Sie in den Menüoptionen auf der linken Seite die Option **Freigegebene Zugriffsrichtlinien** aus.
+2. Wählen Sie **Hinzufügen** aus. Geben Sie im daraufhin geöffneten Fenster *SAS-Richtlinie hinzufügen* einen Richtliniennamen Ihrer Wahl ein, und aktivieren Sie das Kontrollkästchen *Lauschen*.
+3. Wählen Sie **Erstellen** aus.
+    
+:::image type="content" source="media/how-to-provision-using-dps/add-event-hub-sas-policy.png" alt-text="Screenshot des Azure-Portals zum Hinzufügen einer Event Hub-SAS-Richtlinie" lightbox="media/how-to-provision-using-dps/add-event-hub-sas-policy.png":::
 
-Diese Funktion verwendet das IoT Hub-Gerätelebenszyklus-Ereignis, um ein vorhandenes Gerät außer Betrieb zu nehmen. Weitere Informationen zu Lebenszyklusereignissen finden Sie unter [*Nicht telemetriebezogene Ereignisse in IoT Hub*](../iot-hub/iot-hub-devguide-messages-d2c.md#non-telemetry-events). Weitere Informationen zur Verwendung von Event Hubs mit Azure-Funktionen finden Sie unter [*Azure Event Hubs-Trigger für Azure Functions*](../azure-functions/functions-bindings-event-hubs-trigger.md).
+#### <a name="configure-event-hub-with-function-app"></a>Konfigurieren des Event Hubs mit der Funktions-App
 
-Fügen Sie in der veröffentlichten Funktions-App eine neue Funktionsklasse des Typs *Event Hub-Trigger* hinzu, und fügen Sie den folgenden Code ein.
+Konfigurieren Sie als Nächstes die Azure-Funktions-App, die Sie im Abschnitt [Voraussetzungen](#prerequisites) eingerichtet haben, für die Verwendung mit dem neuen Event Hub. Dabei legen Sie in der Funktions-App mit der Verbindungszeichenfolge des Event Hubs eine Umgebungsvariable fest.
+
+1. Öffnen Sie die soeben erstellte Richtlinie, und kopieren Sie den Wert von **Verbindungszeichenfolge – Primärschlüssel**.
+
+    :::image type="content" source="media/how-to-provision-using-dps/event-hub-sas-policy-connection-string.png" alt-text="Screenshot des Azure-Portals zum Kopieren des Werts von „Verbindungszeichenfolge – Primärschlüssel“" lightbox="media/how-to-provision-using-dps/event-hub-sas-policy-connection-string.png":::
+
+2. Fügen Sie mit dem folgenden Azure CLI-Befehl die Verbindungszeichenfolge als Variable in den Funktions-App-Einstellungen hinzu. Der Befehl kann in [Cloud Shell](https://shell.azure.com) oder lokal ausgeführt werden, wenn die Azure CLI [auf dem Computer installiert](/cli/azure/install-azure-cli) ist.
+
+    ```azurecli-interactive
+    az functionapp config appsettings set --settings "EVENTHUB_CONNECTIONSTRING=<Event Hubs SAS connection string Listen>" -g <resource group> -n <your App Service (function app) name>
+    ```
+
+### <a name="add-a-function-to-retire-with-iot-hub-lifecycle-events"></a>Hinzufügen einer Funktion zur Außerbetriebnahme mit IoT Hub-Lebenszyklusereignissen
+
+Sie erstellen in dem Funktions-App-Projekt, das Sie im Abschnitt [Voraussetzungen](#prerequisites) erstellt haben, eine neue Funktion, um ein vorhandenes Gerät mithilfe von IoT Hub-Lebenszyklusereignissen außer Betrieb zu nehmen.
+
+Weitere Informationen zu Lebenszyklusereignissen finden Sie unter [*Nicht telemetriebezogene Ereignisse in IoT Hub*](../iot-hub/iot-hub-devguide-messages-d2c.md#non-telemetry-events). Weitere Informationen zur Verwendung von Event Hubs mit Azure-Funktionen finden Sie unter [*Azure Event Hubs-Trigger für Azure Functions*](../azure-functions/functions-bindings-event-hubs-trigger.md).
+
+Öffnen Sie zunächst auf dem Computer das Funktions-App-Projekt in Visual Studio, und führen Sie die folgenden Schritte aus.
+
+#### <a name="step-1-add-a-new-function"></a>Schritt 1: Hinzufügen einer neuen Funktion
+     
+Fügen Sie dem Funktions-App-Projekt in Visual Studio eine neue Funktion vom Typ *Event Hubs-Trigger* hinzu.
+
+:::image type="content" source="media/how-to-provision-using-dps/create-event-hub-trigger-function.png" alt-text="Screenshot des Visual Studio-Fensters zum Hinzufügen einer Azure-Funktion vom Typ „Event Hubs-Trigger“ im Funktions-App-Projekt" lightbox="media/how-to-provision-using-dps/create-event-hub-trigger-function.png":::
+
+#### <a name="step-2-fill-in-function-code"></a>Schritt 2: Angeben des Funktionscodes
+
+Fügen Sie in der neu erstellten Funktionscodedatei den folgenden Code ein, benennen Sie die Funktion in `DeleteDeviceInTwinFunc.cs` um, und speichern Sie die Datei.
 
 :::code language="csharp" source="~/digital-twins-docs-samples-dps/functions/DeleteDeviceInTwinFunc.cs":::
 
-Speichern Sie das Projekt, und veröffentlichen Sie die Funktions-App erneut. Anweisungen zum Veröffentlichen der Funktions-App finden Sie im Abschnitt [*Veröffentlichen der App*](tutorial-end-to-end.md#publish-the-app) im End-to-End-Tutorial.
+#### <a name="step-3-publish-the-function-app-to-azure"></a>Schritt 3: Veröffentlichen der Funktions-App in Azure
 
-### <a name="configure-your-function"></a>Konfigurieren Ihrer Funktion
+Veröffentlichen Sie das Projekt mit der Funktion *DeleteDeviceInTwinFunc.cs* in der Funktions-App in Azure.
 
-Als Nächstes müssen Sie in ihrer Funktions-App von oben Umgebungsvariablen festlegen, die den Verweis auf die von Ihnen erstellte Azure Digital Twins-Instanz und den Event Hub enthalten. Wenn Sie das End-to-End-Tutorial verwendet haben ([*Tutorial: Erstellen einer End-to-End-Lösung*](./tutorial-end-to-end.md)), ist die erste Einstellung bereits konfiguriert.
-
-Fügen Sie die Einstellung mit folgendem Azure CLI-Befehl hinzu. Der Befehl kann in [Cloud Shell](https://shell.azure.com) oder lokal ausgeführt werden, wenn die Azure CLI [auf dem Computer installiert](/cli/azure/install-azure-cli) ist.
-
-```azurecli-interactive
-az functionapp config appsettings set --settings "ADT_SERVICE_URL=https://<Azure Digital Twins instance _host name_>" -g <resource group> -n <your App Service (function app) name>
-```
-
-Als Nächstes müssen Sie die Umgebungsvariable für die Funktion für die Verbindung mit dem neu erstellten Event Hub konfigurieren.
-
-```azurecli-interactive
-az functionapp config appsettings set --settings "EVENTHUB_CONNECTIONSTRING=<Event Hubs SAS connection string Listen>" -g <resource group> -n <your App Service (function app) name>
-```
-
-Stellen Sie sicher, dass die Berechtigungen und die Rollenzuweisung für verwaltete Identitäten für die Funktions-App ordnungsgemäß konfiguriert wurden. Dies wird im End-to-End-Tutorial im Abschnitt [*Zuweisen von Berechtigungen zur Funktions-App*](tutorial-end-to-end.md#assign-permissions-to-the-function-app) beschrieben.
+[!INCLUDE [digital-twins-publish-and-configure-function-app.md](../../includes/digital-twins-publish-and-configure-function-app.md)]
 
 ### <a name="create-an-iot-hub-route-for-lifecycle-events"></a>Erstellen einer IoT Hub-Route für Lebenszyklusereignisse
 
-Nun müssen Sie eine IoT Hub-Route einrichten, um Lebenszyklusereignisse für das Gerät weiterzuleiten. In diesem Fall lauschen Sie speziell auf Ereignisse, bei denen ein Gerät gelöscht wird. Diese sind durch `if (opType == "deleteDeviceIdentity")` gekennzeichnet. Dadurch wird das Löschen des Elements für den digitalen Zwilling und die Außerbetriebnahme eines Geräts und des zugehörigen digitalen Zwillings auslöst.
+Jetzt richten Sie eine IoT Hub-Route ein, um Lebenszyklusereignisse für das Gerät weiterzuleiten. In diesem Fall lauschen Sie speziell auf Ereignisse, bei denen ein Gerät gelöscht wird. Diese sind durch `if (opType == "deleteDeviceIdentity")` gekennzeichnet. Dadurch wird das Löschen des Elements für den digitalen Zwilling und die Außerbetriebnahme eines Geräts und des zugehörigen digitalen Zwillings auslöst.
 
-Anweisungen zum Erstellen einer IoT Hub-Route finden Sie in folgendem Artikel: [*Verwenden des IoT Hub-Nachrichtenroutings zum Senden von D2C-Nachrichten an verschiedene Endpunkte*](../iot-hub/iot-hub-devguide-messages-d2c.md). Im Abschnitt *Nicht telemetriebezogene Ereignisse* wird erläutert, dass Sie **Ereignisse im Gerätelebenszyklus** als Datenquelle für die Route verwenden können.
+Zunächst müssen Sie im IoT-Hub einen Event Hub-Endpunkt erstellen. Anschließend fügen Sie im IoT-Hub eine Route hinzu, um Lebenszyklusereignisse an diesen Event Hub-Endpunkt zu senden.
+Führen Sie die folgenden Schritte aus, um einen Event Hub-Endpunkt zu erstellen:
 
-Für dieses Setup sind folgende Schritte erforderlich:
-1. Erstellen Sie einen benutzerdefinierten Endpunkt für den IoT Hub-Event Hub. Dieser Endpunkt sollte den Event Hub als Ziel verwenden, den Sie im Abschnitt [*Erstellen eines Ereignis-Hubs*](#create-an-event-hub) erstellt haben.
-2. Fügen Sie eine Route für *Ereignisse des Gerätelebenszyklus* hinzu. Wählen Sie den im vorherigen Schritt erstellten Endpunkt aus. Sie können mit der Routing-Abfrage `opType='deleteDeviceIdentity'` die Ereignisse des Gerätelebenszyklus einschränken, sodass nur die Löschereignisse gesendet werden.
-    :::image type="content" source="media/how-to-provision-using-dps/lifecycle-route.png" alt-text="Hinzufügen einer Route":::
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/)zu dem IoT-Hub, den Sie im Abschnitt [Voraussetzungen](#prerequisites) erstellt haben, und wählen Sie in den Menüoptionen auf der linken Seite **Nachrichtenrouting** aus.
+2. Wählen Sie die Registerkarte **Benutzerdefinierte Endpunkte**.
+3. Wählen Sie **+ Hinzufügen** und dann **Event Hubs** aus, um einen Endpunkt vom Typ „Event Hubs“ hinzuzufügen.
+
+    :::image type="content" source="media/how-to-provision-using-dps/event-hub-custom-endpoint.png" alt-text="Screenshot des Visual Studio-Fensters zum Hinzufügen eines benutzerdefinierten Event Hub-Endpunkts" lightbox="media/how-to-provision-using-dps/event-hub-custom-endpoint.png":::
+
+4. Wählen Sie im daraufhin geöffneten Fenster *Event Hub-Endpunkt hinzufügen* die folgenden Werte aus:
+    * **Endpunktname**: Wählen Sie einen Endpunktnamen aus.
+    * **Event Hub-Namespace**: Wählen Sie in der Dropdownliste den Event Hub-Namespace aus.
+    * **Event Hub-Instanz**: Wählen Sie den Event Hub-Namen aus, den Sie im vorherigen Schritt erstellt haben.
+5. Wählen Sie **Erstellen** aus. Lassen Sie dieses Fenster geöffnet, um im nächsten Schritt eine Route hinzuzufügen.
+
+    :::image type="content" source="media/how-to-provision-using-dps/add-event-hub-endpoint.png" alt-text="Screenshot des Visual Studio-Fensters zum Hinzufügen eines Event Hub-Endpunkts" lightbox="media/how-to-provision-using-dps/add-event-hub-endpoint.png":::
+
+Als Nächstes fügen Sie eine Route hinzu, die eine Verbindung mit dem im obigen Schritt erstellten Endpunkt herstellt, mit einer Routingabfrage, die die Löschereignisse sendet. Führen Sie zum Erstellen einer Route die folgenden Schritte aus:
+
+1. Navigieren Sie zur Registerkarte *Routen*, und wählen Sie **Hinzufügen** aus, um eine Route hinzuzufügen.
+
+    :::image type="content" source="media/how-to-provision-using-dps/add-message-route.png" alt-text="Screenshot des Visual Studio-Fensters zum Hinzufügen einer Route zum Senden von Ereignissen" lightbox="media/how-to-provision-using-dps/add-message-route.png":::
+
+2. Wählen Sie auf der daraufhin geöffneten Seite *Route hinzufügen* die folgenden Werte aus:
+
+   * **Name**: Wählen Sie einen Namen für die Route aus. 
+   * **Endpunkt**: Wählen Sie in der Dropdownliste den Event Hubs-Endpunkt aus, den Sie zuvor erstellt haben.
+   * **Datenquelle**: Wählen Sie *Ereignisse im Gerätelebenszyklus* aus.
+   * **Routingabfrage**: Geben Sie `opType='deleteDeviceIdentity'` ein. Diese Abfrage schränkt das Senden der Gerätelebenszklusereignisse auf Löschereignisse ein.
+
+3. Wählen Sie **Speichern** aus.
+
+    :::image type="content" source="media/how-to-provision-using-dps/lifecycle-route.png" alt-text="Screenshot des Azure-Portal-Fensters zum Hinzufügen einer Route, um Lebenszyklusereignissen zu senden" lightbox="media/how-to-provision-using-dps/lifecycle-route.png":::
 
 Wenn Sie diese Schritte durchlaufen haben, ist alles für die End-to-End-Außerbetriebnahme der Geräte vorbereitet.
 
@@ -221,20 +302,25 @@ Wenn Sie diese Schritte durchlaufen haben, ist alles für die End-to-End-Außerb
 
 Um die Außerbetriebnahme auszulösen, müssen Sie das Gerät manuell aus IoT Hub löschen.
 
-In der [ersten Hälfte dieses Artikels](#auto-provision-device-using-device-provisioning-service) haben Sie ein Gerät in IoT Hub und einen entsprechenden digitalen Zwilling erstellt. 
+Dies können Sie mit einem [Azure CLI Befehl](/cli/azure/ext/azure-iot/iot/hub/module-identity#ext_azure_iot_az_iot_hub_module_identity_delete) oder mit dem Azure-Portal durchführen. Führen Sie die folgenden Schritte aus, um das Gerät im Azure Portal zu löschen:
 
-Wechseln Sie nun zu IoT Hub, und löschen Sie dieses Gerät (Sie können dies mit einem [Azure CLI-Befehl](/cli/azure/ext/azure-iot/iot/hub/module-identity#ext_azure_iot_az_iot_hub_module_identity_delete) oder über das [Azure-Portal](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Devices%2FIotHubs) tun). 
+1. Navigieren Sie zum IoT-Hub, und wählen Sie in den Menüoptionen auf der linken Seite **IoT-Geräte** aus. 
+2. Es wird ein Gerät mit der Geräteregistrierungs-ID angezeigt, die Sie in der [ersten Hälfte dieses Artikels](#auto-provision-device-using-device-provisioning-service) ausgewählt haben. Alternativ können Sie auch ein beliebiges anderes Gerät zum Löschen auswählen, solange es über einen Zwilling in Azure Digital Twins verfügt, damit Sie überprüfen können, ob der Zwilling nach dem Löschen des Geräts automatisch gelöscht wird.
+3. Wählen Sie das Gerät aus, und klicken Sie auf **Löschen**.
 
-Das Gerät wird automatisch aus Azure Digital Twins entfernt. 
+:::image type="content" source="media/how-to-provision-using-dps/delete-device-twin.png" alt-text="Screenshot des Azure-Portals zum Löschen des Gerätezwillings von den IoT-Geräten" lightbox="media/how-to-provision-using-dps/delete-device-twin.png":::
+
+Es kann einige Minuten dauern, bis die Änderungen in Azure Digital Twins angezeigt werden.
 
 Mit dem folgenden [Azure Digital Twins CLI-Befehl](how-to-use-cli.md) können Sie überprüfen, ob der Zwilling des Geräts in der Azure Digital Twins-Instanz gelöscht wurde.
 
 ```azurecli-interactive
-az dt twin show -n <Digital Twins instance name> --twin-id <Device Registration ID>"
+az dt twin show -n <Digital Twins instance name> --twin-id "<Device Registration ID>"
 ```
 
 Sie sollten sehen, dass der Zwilling des Geräts in der Azure Digital Twins-Instanz nicht mehr gefunden werden kann.
-:::image type="content" source="media/how-to-provision-using-dps/show-retired-twin.png" alt-text="Befehlsfenster mit Hinweis, dass der Zwilling nicht gefunden werden kann":::
+
+:::image type="content" source="media/how-to-provision-using-dps/show-retired-twin.png" alt-text="Screenshot des Befehlsfensters mit der Information, dass der Zwilling nicht gefunden wurde" lightbox="media/how-to-provision-using-dps/show-retired-twin.png":::
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
@@ -256,6 +342,10 @@ Löschen Sie dann den Beispielordner des Projekts, den Sie heruntergeladen haben
 Die für die Geräte erstellten digitalen Zwillinge werden als flache Hierarchie in Azure Digital Twins gespeichert, können jedoch für die Organisation mit Modellinformationen und einer Hierarchie mit mehreren Ebenen erweitert werden. Weitere Informationen zu diesem Vorgang finden Sie hier:
 
 * [*Konzepte: Digital Twins und der Digital Twins-Graph*](concepts-twins-graph.md)
+
+Weitere Informationen zur Verwendung von HTTP-Anforderungen mit Azure-Funktionen finden Sie unter:
+
+* [*HTTP-Trigger in Azure Functions*](../azure-functions/functions-bindings-http-webhook-trigger.md)
 
 Sie können eine benutzerdefinierte Logik schreiben, um diese Informationen mithilfe der bereits in Azure Digital Twins gespeicherten Modell- und Diagrammdaten automatisch bereitzustellen. Weitere Informationen zum Verwalten, Aktualisieren und Abrufen von Informationen aus dem Zwillingsgraphen finden Sie in den folgenden Referenzen:
 

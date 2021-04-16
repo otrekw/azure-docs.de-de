@@ -5,10 +5,10 @@ ms.date: 02/07/2019
 ms.topic: how-to
 ms.custom: seodec18
 ms.openlocfilehash: 784fd89c3dea88e25a2058713897c7a655c8a3af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "83726518"
 ---
 # <a name="reference-architectures-for-azure-rendering"></a>Referenzarchitekturen für das Rendering in Azure
@@ -21,9 +21,9 @@ Das folgende Diagramm zeigt ein Hybridszenario, das die folgenden Azure-Dienste 
 
 * **Compute**: Azure Batch-Pool oder VM-Skalierungsgruppe.
 
-* **Netzwerk** – lokal: Azure ExpressRoute oder VPN. Azure: Azure VNet.
+* **Netzwerk**: Lokal: Azure Expressroute oder VPN. Azure: Azure VNET.
 
-* **Speicher** – Dateiein- und ausgabe: NFS oder CFS mithilfe von Azure-VMs, synchronisiert mit lokalem Speicher über Azure-Dateisynchronisierung oder RSync. Alternativ: Avere vFXT für die Ein- oder Ausgabe von Dateien von lokalen NAS-Geräten mithilfe von NFS.
+* **Speicher**: Eingabe- und Ausgabedateien: NFS oder CFS mithilfe von Azure-VMs, synchronisiert mit lokalem Speicher über Azure-Dateisynchronisierung oder RSync. Alternative: Avere vFXT für die Ein- oder Ausgabe von Dateien von lokalen NAS-Geräten mithilfe von NFS.
 
   ![Cloudbursting – hybrid mit NFS oder CFS](./media/batch-rendering-architectures/hybrid-nfs-cfs-avere.png)
 
@@ -33,9 +33,9 @@ Das folgende Diagramm zeigt ein Hybridszenario, das die folgenden Azure-Dienste 
 
 * **Compute**: Azure Batch-Pool oder VM-Skalierungsgruppe.
 
-* **Netzwerk** – lokal: Azure ExpressRoute oder VPN. Azure: Azure VNet.
+* **Netzwerk**: Lokal: Azure Expressroute oder VPN. Azure: Azure VNET.
 
-* **Speicher** – Dateiein- und ausgabe: Blobspeicher, eingebunden in Computeressourcen über Azure Blobfuse.
+* **Speicher**: Eingabe- und Ausgabedateien: Blobspeicher, eingebunden in Computeressourcen über Azure Blobfuse.
 
   ![Cloudbursting – hybrid mit Blobfuse](./media/batch-rendering-architectures/hybrid-blob-fuse.png)
 
@@ -45,9 +45,9 @@ Das folgende Diagramm zeigt ein vollständig verbundenes Hybridszenario für Com
 
 * **Compute**: Azure Batch-Pool oder VM-Skalierungsgruppe.
 
-* **Netzwerk** – lokal: Azure ExpressRoute oder VPN. Azure: Azure VNet.
+* **Netzwerk**: Lokal: Azure Expressroute oder VPN. Azure: Azure VNET.
 
-* **Speicher** – standortübergreifend: Avere vFXT. Optionale Archivierung von lokalen Dateien mithilfe von Azure Data Box in Blob Storage oder lokal mit Avere FXT für NAS-Beschleunigung.
+* **Speicher**: Standortübergreifend: Avere vFXT. Optionale Archivierung von lokalen Dateien mithilfe von Azure Data Box in Blob Storage oder lokal mit Avere FXT für NAS-Beschleunigung.
 
   ![Cloudbursting – hybrides Compute und Speichern](./media/batch-rendering-architectures/hybrid-compute-storage-avere.png)
 

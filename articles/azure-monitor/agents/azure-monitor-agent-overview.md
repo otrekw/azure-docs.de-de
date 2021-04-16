@@ -4,13 +4,14 @@ description: Übersicht über den Azure Monitor-Agent (AMA) zur Sammlung von Ü
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/10/2020
-ms.openlocfilehash: 0487e5bd8109c02605e785e74d45589dd5fde5b9
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.date: 03/16/2021
+ms.custom: references_regions
+ms.openlocfilehash: f1f1ea787406d900c8035c0462ef903b848d7e81
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102039596"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104608213"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a>Übersicht über den Azure Monitor-Agent (Vorschauversion)
 Der Azure Monitor-Agent (AMA) sammelt Überwachungsdaten aus dem Gastbetriebssystem virtueller Computer und übermittelt sie an Azure Monitor. Dieser Artikel enthält eine Übersicht über den Azure Monitor-Agent sowie Informationen zur Installation und zur Konfiguration der Datensammlung.
@@ -59,6 +60,35 @@ Während der Public Preview-Phase des Azure Monitor-Agents gelten folgende Ein
   - *.ingest.monitor.azure.com
   - *.control.monitor.azure.com
 
+
+## <a name="supported-regions"></a>Unterstützte Regionen
+Azure Monitor-Agent unterstützt zurzeit Ressourcen in den folgenden Regionen:
+
+- Asien, Osten
+- Asien, Südosten
+- Australien, Mitte
+- Australien (Osten)
+- Australien, Südosten
+- Kanada, Mitte
+- Nordeuropa
+- Europa, Westen
+- Frankreich, Mitte
+- Deutschland, Westen-Mitte
+- Indien, Mitte
+- Japan, Osten
+- Korea, Mitte
+- Südafrika, Norden
+- Schweiz, Norden
+- UK, Süden
+- UK, Westen
+- USA (Mitte)
+- East US
+- USA (Ost) 2
+- USA Nord Mitte
+- USA Süd Mitte
+- USA (Westen)
+- USA, Westen 2
+- USA, Westen-Mitte
 
 ## <a name="coexistence-with-other-agents"></a>Koexistenz mit anderen Agents
 Der Azure Monitor-Agent kann parallel zu den bereits vorhandenen Agents vorhanden sein, sodass deren Funktionen bei der Bewertung oder Migration weiterhin zur Verfügung stehen. Dies ist besonders wichtig, da während der Public Preview-Phase gewisse Einschränkungen bei der Unterstützung bereits vorhandener Lösungen bestehen. Eine doppelte Datensammlung kann jedoch zu einer Verzerrung von Abfrageergebnissen führen und zusätzliche Kosten für die Datenerfassung und -aufbewahrung zur Folge haben.

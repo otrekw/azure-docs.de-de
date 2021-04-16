@@ -11,12 +11,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 03/10/2021
 ms.author: sstein
-ms.openlocfilehash: 0ddd2c96be3513d253537cefd5b9eb83da2b3c12
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 9827a40b2ebc91c17ad7b5457259b8d82565edee
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102634837"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105640079"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>Welche Neuerungen gibt es in Azure SQL-Datenbank und SQL Managed Instance?
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -61,12 +61,12 @@ Diese Tabelle bietet einen schnellen Vergleich der Änderungen in der Terminolog
 
 | Funktion | Details |
 | ---| --- |
-| <a href="/azure/azure-sql/database/elastic-transactions-overview">Verteilte Transaktionen</a> | Verteilte Transaktionen in verwalteten Instanzen |
-| <a href="/azure/sql-database/sql-database-instance-pools">Instanzenpools</a> | Eine praktische und kostengünstige Möglichkeit, um kleinere SQL-Instanzen zur Cloud zu migrieren. |
-| <a href="/en-gb/sql/t-sql/statements/create-login-transact-sql">Azure AD-Serverprinzipale auf Instanzebene (Anmeldungen)</a> | Erstellen Sie Anmeldungen auf Instanzebene mithilfe der Anweisung <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true">CREATE LOGIN FROM EXTERNAL PROVIDER</a>. |
+| [Verteilte Transaktionen](/azure/azure-sql/database/elastic-transactions-overview) | Verteilte Transaktionen in verwalteten Instanzen |
+| [Instanzenpools](/azure/sql-database/sql-database-instance-pools) | Eine praktische und kostengünstige Möglichkeit, um kleinere SQL-Instanzen zur Cloud zu migrieren. |
+| [Azure AD-Serverprinzipale auf Instanzebene (Anmeldungen)](/sql/t-sql/statements/create-login-transact-sql) | Erstellen Sie Anmeldungen auf Instanzebene mithilfe der Anweisung [CREATE LOGIN FROM EXTERNAL PROVIDER](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true). |
 | [Transaktionsreplikation](../managed-instance/replication-transactional-overview.md) | Replizieren Sie die Änderungen aus Ihren Tabellen in andere Datenbanken in SQL Managed Instance, SQL-Datenbank oder SQL Server. Sie können auch Ihre Tabellen aktualisieren, wenn einige Zeilen in anderen Instanzen von SQL Managed Instance oder SQL Server geändert werden. Weitere Informationen finden Sie unter [Konfigurieren der Replikation in Azure SQL Managed Instance](../managed-instance/replication-between-two-instances-configure-tutorial.md). |
 | Bedrohungserkennung |Weitere Informationen finden Sie unter [Konfigurieren der Bedrohungserkennung in Azure SQL Managed Instance](../managed-instance/threat-detection-configure.md).|
-| Langfristiges Aufbewahren von Sicherungen | Weitere Informationen finden Sie unter [Konfigurieren der Langzeitaufbewahrung von Sicherungen für Azure SQL Managed Instance](../managed-instance/long-term-backup-retention-configure.md) (zurzeit in der eingeschränkten Public Preview). | 
+| Langfristiges Aufbewahren von Sicherungen | Weitere Informationen finden Sie unter [Konfigurieren der Langzeitaufbewahrung von Sicherungen für Azure SQL Managed Instance](../managed-instance/long-term-backup-retention-configure.md) (zurzeit in der eingeschränkten Public Preview). |
 
 ---
 

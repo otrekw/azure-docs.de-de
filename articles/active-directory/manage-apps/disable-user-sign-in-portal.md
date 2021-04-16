@@ -17,10 +17,10 @@ ms.reviewer: asteen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 783de636d4520f48f624f3380f811f1f18366330
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99259235"
 ---
 # <a name="disable-user-sign-ins-for-an-enterprise-app-in-azure-active-directory"></a>Deaktivieren von Benutzeranmeldungen für eine Unternehmens-App in Azure Active Directory
@@ -33,8 +33,8 @@ In Azure Active Directory (Azure AD) können Sie auf einfache Weise eine Unterne
 1. Wählen Sie **Alle Dienste** aus, geben Sie **Azure Active Directory** in das Textfeld ein, und drücken Sie die **EINGABETASTE**.
 1. Wählen Sie im Bereich **Azure Active Directory** -  **_Verzeichnisname_ *_ (also dem Azure AD-Bereich für das Verzeichnis, das Sie verwalten) die Option _* Unternehmensanwendungen** aus.
 1. Im Bereich **Unternehmensanwendungen – Alle Anwendungen** wird eine Liste der Apps angezeigt, die Sie verwalten können. Wählen Sie eine App aus.
-1. Wählen Sie im Bereich **_App-Name_ *_ (dem Bereich mit dem Namen der ausgewählten App im Titel) die Option _* Eigenschaften** aus.
-1. Wählen Sie im Bereich **_App-Name_ *_ – _* Eigenschaften** für die Option **Aktiviert für die Benutzeranmeldung?** die Einstellung **Nein** aus.
+1. Wählen Sie im Bereich ***App-Name** _ (dem Bereich mit dem Namen der ausgewählten App im Titel) die Option _*Eigenschaften** aus.
+1. Wählen Sie im Bereich ***App-Name** _ – _ *Eigenschaften** für die Option **Aktiviert für die Benutzeranmeldung?** die Einstellung **Nein** aus.
 1. Klicken Sie auf **Speichern** .
 
 ## <a name="use-azure-ad-powershell-to-disable-an-unlisted-app"></a>Deaktivieren einer nicht aufgelisteten App mit Azure AD PowerShell

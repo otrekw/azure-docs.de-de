@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: ac620909996b03a97a311e5f06c31d6dab8f1a60
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 7932ad3b30910e539acfbff2329a03f80a4d1a0b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92218645"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "104670357"
 ---
 # <a name="delete-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Löschen einer Azure Arc-fähigen PostgreSQL Hyperscale-Servergruppe
 
@@ -37,6 +37,11 @@ Das allgemeine Format des Löschbefehls lautet:
 ```console
 azdata arc postgres server delete -n <server group name>
 ```
+Wenn Sie diesen Befehl ausführen, werden Sie aufgefordert, das Löschen der Servergruppe zu bestätigen. Wenn Sie Skripts zum Automatisieren von Löschvorgängen verwenden, müssen Sie den Parameter „--force“ verwenden, um die Bestätigungsanforderung zu umgehen. Beispielsweise können Sie einen Befehl wie den folgenden ausführen: 
+```console
+azdata arc postgres server delete -n <server group name> --force
+```
+
 Um weitere Informationen zum Löschbefehl zu erhalten, führen Sie Folgendes aus:
 ```console
 azdata arc postgres server delete --help
@@ -50,7 +55,7 @@ azdata arc postgres server delete -n postgres01
 
 ## <a name="reclaim-the-kubernetes-persistent-volume-claims-pvcs"></a>Freigeben von Ansprüchen für persistente Kubernetes-Volumes
 
-Durch das Löschen einer Servergruppe werden nicht deren zugeordnete [PVCs](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) (Persistent Volume Claims, Ansprüche für persistente Volumes) entfernt. Dies ist beabsichtigt. Auf diese Weise kann der Benutzer einfacher auf die Datenbankdateien zugreifen, falls eine Instanz versehentlich gelöscht wurde. Das Löschen von PVCs ist nicht obligatorisch, wird aber empfohlen. Wenn Sie diese PVCs nicht freigeben, treten letztendlich Fehler auf, da der Kubernetes-Cluster davon ausgeht, dass nicht mehr über genügend Speicherplatz verfügbar ist. Führen Sie die folgenden Schritte aus, um die PVCs freizugeben:
+Durch das Löschen einer Servergruppe werden nicht deren zugeordnete [PVCs](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) (Persistent Volume Claims, Ansprüche für persistente Volumes) entfernt. Dies ist beabsichtigt. Auf diese Weise kann der Benutzer einfacher auf die Datenbankdateien zugreifen, falls eine Instanz versehentlich gelöscht wurde. Das Löschen von PVCs ist nicht obligatorisch, Es wird aber empfohlen. Wenn Sie diese PVCs nicht freigeben, treten letztendlich Fehler auf, da der Kubernetes-Cluster davon ausgeht, dass nicht mehr über genügend Speicherplatz verfügbar ist. Führen Sie die folgenden Schritte aus, um die PVCs freizugeben:
 
 ### <a name="1-list-the-pvcs-for-the-server-group-you-deleted"></a>1. Listen Sie die PVCs für die Servergruppe auf, die Sie gelöscht haben.
 

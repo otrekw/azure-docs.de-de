@@ -3,12 +3,12 @@ title: Löschen eines Microsoft Azure Recovery Services-Tresors
 description: In diesem Artikel erfahren Sie, wie Sie die Abhängigkeiten eines Azure Backup-Recovery Services-Tresors aufheben und ihn dann löschen.
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: 28a0c4d5f643b980d93df2592da38f5da12dd01a
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 1526e9aeef1574f261dcb1a58ee12a12fbf08866
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100520458"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104864957"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Löschen eines Azure Backup-Recovery Services-Tresors
 
@@ -48,6 +48,7 @@ Zum ordnungsgemäßen Löschen eines Tresors müssen Sie die Schritte in dieser 
   - **MABS- oder DPM-Verwaltungs Server**: Wählen Sie im Dashbordmenü des Tresors die Option **Sicherungsinfrastruktur** > **Server für die Sicherungsverwaltung** aus. Wenn Sie über DPM- oder Azure Backup Server (MABS) verfügen, müssen alle hier aufgelisteten Elemente zusammen mit den zugehörigen Sicherungsdaten gelöscht werden bzw deren Registrierung muss aufgehoben werden. [Führen Sie die folgenden Schritte aus](#delete-protected-items-on-premises), um die Verwaltungsserver zu löschen.
 
 - **Schritt 4:** Sie müssen sicherstellen, dass alle registrierten Speicherkonten gelöscht werden. Wählen Sie im Dashbordmenü des Tresors die Option **Sicherungsinfrastruktur** > **Speicherkonten** aus. Wenn hier Speicherkonten aufgeführt sind, müssen Sie die Registrierung für alle diese Kosten aufheben. Weitere Informationen zum Aufheben der Registrierung des Kontos finden Sie unter [Aufheben der Registrierung eines Speicherkontos](manage-afs-backup.md#unregister-a-storage-account).
+- **Schritt 5**: Stellen Sie sicher, dass keine privaten Endpunkte für den Tresor erstellt wurden. Wechseln Sie zum Menü „Tresordashboard“ > „Einstellungen“ > **Private Endpunktverbindungen**. Wenn für den Tresor private Endpunktverbindungen erstellt oder zu erstellen versucht wurden, stellen Sie sicher, dass sie entfernt wurden, bevor Sie den Tresor löschen. 
 
 Nachdem Sie diese Schritte abgeschlossen haben, können Sie mit dem [Löschen des Tresors](#delete-the-recovery-services-vault) fortfahren.
 
@@ -73,6 +74,7 @@ Führen Sie die folgenden Schritte aus, um den Schutz zu beenden und die Sicheru
 
          ![Bereich „Sicherungsdaten löschen“](./media/backup-azure-delete-vault/stop-backup-blade-delete-backup-data.png)
 
+   Mit dieser Option werden geplante und bedarfsgesteuerte Sicherungen gelöscht.
 3. Überprüfen Sie das Symbol **Benachrichtigung**: ![Benachrichtigungssymbol](./media/backup-azure-delete-vault/messages.png) Nachdem der Vorgang abgeschlossen ist, zeigt der Dienst die folgende Meldung an: *Sicherung beenden und Sicherungsdaten für „* Sicherungselement *“ löschen*. *Der Vorgang wurde erfolgreich abgeschlossen.*
 4. Wählen Sie im Menü **Sicherungselemente** die Option **Aktualisieren** aus, um sich zu vergewissern, dass das Sicherungselement gelöscht wurde.
 

@@ -5,59 +5,102 @@ author: mimcco
 ms.author: mimcco
 ms.service: azure-percept
 ms.topic: how-to
-ms.date: 02/18/2021
+ms.date: 03/18/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 7f5e5e4da9fea671fc85a55fc8cc191fa14b720f
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: cd6e4e62123b4d4b927cf385aaf64a066eecc1e0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101660385"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104887749"
 ---
 # <a name="how-to-update-azure-percept-dk-over-a-usb-connection"></a>Aktualisieren Ihres Azure Percept DK-Geräts über eine USB-Verbindung
 
-In dieser Anleitung erfahren Sie, wie Sie ein USB-Update für die Trägerplatine Ihres Azure Percept DK-Geräts durchführen.
+Obwohl die Verwendung von OTA-Updates (Over-the-Air) die beste Methode darstellt, das Betriebssystem und die Firmware Ihres Development Kits auf dem neuesten Stand zu halten, gibt es Szenarios, in denen das Aktualisieren (oder Flashen) des Development Kits über eine USB-Verbindung erforderlich ist:
+
+- Ein OTA-Update ist aufgrund von Konnektivitätsproblemen oder anderen technischen Problemen nicht möglich.
+- Das Gerät muss auf die Werkseinstellungen zurückgesetzt werden.
+
+In dieser Anleitung wird beschrieben, wie Sie das Betriebssystem und die Firmware Ihres Development Kits erfolgreich über eine USB-Verbindung aktualisieren.
+
+> [!WARNING]
+> Wenn Sie Ihr Development Kit über eine USB-Verbindung aktualisieren, werden alle vorhandenen Daten auf dem Gerät gelöscht (einschließlich der KI-Modelle und Container).
+>
+> Befolgen Sie alle Anweisungen in der angegebenen Reihenfolge. Wenn Sie Schritte überspringen, kann Ihr Development Kit möglicherweise nicht mehr verwendet werden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-- Hostcomputer mit verfügbarem USB-C- oder USB-A-Anschluss.
-- Azure Percept DK-Trägerplatine (Development Kit) und mitgeliefertes USB-Kabel (USB-C zu USB-C). Sollte Ihr Hostcomputer über keinen USB-C-Anschluss, sondern über einen USB-A-Anschluss verfügen, können Sie ein (separat erhältliches) USB-C-zu-USB-A-Kabel verwenden.
-- Installieren Sie [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) (Administratorzugriff erforderlich).
-- Installieren Sie das NXP-UUU-Tool. Laden Sie [hier](https://github.com/NXPmicro/mfgtools/releases) die neueste Version der Datei „uuu.exe“ (Windows) bzw. der UUU-Datei (Linux) herunter. Diese finden Sie auf der Registerkarte „Assets“ (Ressourcen).
-- [Installieren Sie 7-Zip.](https://www.7-zip.org/) Diese Software wird zum Extrahieren der Rohimagedatei aus der komprimierten XZ-Datei verwendet. Laden Sie die entsprechende EXE-Datei herunter, und installieren Sie sie.
 
-## <a name="steps"></a>Schritte
-1.  Laden Sie die folgenden [drei USB-Updatedateien](https://go.microsoft.com/fwlink/?linkid=2155734) herunter:
-    - pe101-uefi-***&lt;Versionsnummer&gt;***.raw.xz
-    - emmc_full.txt
+- Azure Percept DK
+- Ein auf Windows, Linux oder Mac OS X basierender Hostcomputer mit WLAN-Funktion und einem verfügbaren USB-C- oder USB-A-Anschluss
+- Ein USB-C-zu-USB-A-Kabel (optional, separat erhältlich)
+- SSH-Anmeldung, die während des [Azure Percept DK-Setups](./quickstart-percept-dk-set-up.md) erstellt wurde
+
+## <a name="download-software-tools-and-update-files"></a>Herunterladen von Softwaretools und Updatedateien
+
+1. [NXP UUU-Tool:](https://github.com/NXPmicro/mfgtools/releases) Laden Sie das **neueste Release** der Datei „uuu.exe“ (Windows) bzw. der UUU-Datei (Linux) herunter. Diese finden Sie auf der Registerkarte **Ressourcen**.
+
+1. [7-Zip:](https://www.7-zip.org/) Diese Software wird zum Extrahieren der Rohimagedatei aus der komprimierten XZ-Datei verwendet. Laden Sie die entsprechende EXE-Datei herunter, und installieren Sie sie.
+
+1. [Laden Sie die Updatedateien herunter.](https://go.microsoft.com/fwlink/?linkid=2155734)
+
+1. Stellen Sie sicher, dass alle drei Buildartefakte vorhanden sind:
+    - Azure-Percept-DK- *&lt;Versionsnummer&gt;* .raw.xz
     - fast-hab-fw.raw
- 
-1. Extrahieren Sie die komprimierte Datei „pe101-uefi  **&lt;Versionsnummer&gt;** _**.raw.xz“ zu „pe101-uefi-*_ * _&lt;Versionsnummer.raw&gt;_ “. Benötigen Sie Hilfe beim Extrahieren? Laden Sie 7-Zip herunter, und installieren Sie es. Klicken Sie anschließend mit der rechten Maustaste auf die Imagedatei mit der Erweiterung **.xz**, und wählen Sie „7-Zip“ &gt; „Hier entpacken“ aus.
+    - emmc_full.txt
 
-1. Kopieren Sie die folgenden drei Dateien in den Ordner, der das UUU-Tool enthält:
-    - Extrahierte Datei „pe101-uefi-***&lt;Versionsnummer&gt;***.raw“ (aus Schritt 2)
-    - „emmc_full.txt“ (aus Schritt 1)
-    - „fast-hab-fw.raw“ (aus Schritt 1)
- 
-1. Schalten Sie das Development Kit ein.
-1. [Stellen Sie eine SSH-Verbindung mit dem Development Kit her.](./how-to-ssh-into-percept-dk.md)
-1. Öffnen Sie eine Windows-Eingabeaufforderung („Start“ &gt; „cmd“) oder ein Linux-Terminal, und navigieren Sie zum Ordner mit den Updatedateien. Führen Sie den folgenden Befehl aus, um das Update zu initiieren:
-    - Windows: ```uuu -b emmc_full.txt fast-hab-fw.raw pe101-uefi-<version number>.raw```
-    - Linux: ```sudo ./uuu -b emmc_full.txt fast-hab-fw.raw pe101-uefi-<version number>.raw```
-    
-Nach Ausführung dieser Befehle wird in der Eingabeaufforderung unter Umständen eine Meldung mit dem Hinweis angezeigt, dass auf das Gerät gewartet wird. Das ist normal, und Sie können mit dem nächsten Schritt fortfahren.
-    
-1. Verbinden Sie die Trägerplatine des Development Kits per USB-Kabel mit dem Hostcomputer. Verbinden Sie das Kabel immer zuerst mit dem USB-C-Anschluss der Trägerplatine und dann mit dem USB-C- oder USB-A-Anschluss des Hostcomputers (USB-C-zu-USB-A-Kabel separat erhältlich) – je nachdem, welche Anschlüsse verfügbar sind. 
- 
-1. Geben Sie im SSH-/PuTTY-Terminal die folgenden Befehle ein, um das Development Kit in den USB-Modus zu versetzen und es anschließend neu zu starten.
-    - ```flagutil    -wBfRequestUsbFlash    -v1```
-    - ```reboot -f```
- 
-1. Möglicherweise wird angezeigt, dass das Gerät vom Hostcomputer erkannt wurde, und der Updateprozess wird automatisch gestartet. Kehren Sie zur Eingabeaufforderung zurück, um den Status anzuzeigen. Der Prozess dauert bis zu zehn Minuten. War das Update erfolgreich, wird eine Meldung mit der Angabe angezeigt, dass ein erfolgreicher Prozess durchgeführt wurde und keine Fehler aufgetreten sind.
- 
-1. Schalten Sie nach Abschluss des Updates die Trägerplatine aus. Trennen Sie das USB-Kabel vom PC.  Verbinden Sie das Azure Percept-Vision-Modul wieder mit der Trägerplatine.
+## <a name="set-up-your-environment"></a>Einrichten der Umgebung
 
-1. Schalten Sie die Trägerplatine wieder ein.
+1. Erstellen Sie einen Ordner bzw. ein Verzeichnis auf dem Hostcomputer an einem Speicherort, der über die Befehlszeile leicht zugänglich ist.
+
+1. Kopieren Sie das UUU-Tool (**uuu.exe** oder **uuu**) in den neuen Ordner.
+
+1. Extrahieren Sie die Datei **Azure-Percept-DK- *&lt;Versionsnummer&gt;* .raw** aus der komprimierten Datei, indem Sie mit der rechten Maustaste auf **Azure-Percept-DK- *&lt;Versionsnummer&gt;* .raw.xz** klicken und **7-Zip** &gt; **Extract here** (Hier extrahieren) auswählen.
+
+1. Verschieben Sie die extrahierte Datei **Azure-Percept-DK- *&lt;Versionsnummer&gt;* .raw**, **fast-hab-fw.raw** und **emmc_full.txt** in den Ordner, der das UUU-Tool enthält.
+
+## <a name="update-your-device"></a>Aktualisieren Ihres Geräts
+
+1. [Stellen Sie eine SSH-Verbindung mit Ihrem Development Kit her.](./how-to-ssh-into-percept-dk.md)
+
+1. Öffnen Sie als Nächstes eine Windows-Eingabeaufforderung (**Start** > **CMD**) oder ein Linux-Terminal, und navigieren Sie zum Ordner mit den Updatedateien und dem UUU-Tool. Geben Sie den folgenden Befehl in der Eingabeaufforderung oder im Terminal ein, um Ihren Computer für das Empfangen eines flashbaren Geräts vorzubereiten:
+
+    - Windows:
+
+        ```console
+        uuu -b emmc_full.txt fast-hab-fw.raw Azure-Percept-DK-<version number>.raw 
+        ```
+
+    - Linux:
+
+        ```bash
+        sudo ./uuu -b emmc_full.txt fast-hab-fw.raw Azure-Percept-DK-<version number>.raw
+        ```
+
+1. Trennen Sie das Azure Percept Vision-Gerät vom USB-C-Anschluss der Trägerplatine.
+
+1. Stecken Sie das mitgelieferte USB-C-Kabel in den USB-C-Anschluss der Trägerplatine und in den USB-C-Anschluss des Hostcomputers. Wenn Ihr Computer nur über einen USB-A-Anschluss verfügt, verbinden Sie ein USB-C-zu-USB-A-Kabel (wird separat verkauft) mit der Trägerplatine und dem Hostcomputer.
+
+1. Geben Sie in der SSH-Clienteingabeaufforderung die folgenden Befehle ein:
+
+    1. Legen Sie für das Gerät den USB-Updatemodus fest:
+
+        ```bash
+        sudo flagutil    -wBfRequestUsbFlash    -v1
+        ```
+
+    1. Starten Sie das Gerät neu. Die Updateinstallation wird gestartet.
+
+        ```bash
+        sudo reboot -f
+        ```
+
+1. Navigieren Sie zurück zur anderen Eingabeaufforderung oder zum anderen Terminal. Wenn das Update abgeschlossen ist, wird eine Meldung mit den Informationen ```Success 1    Failure 0``` angezeigt:
+
+    > [!NOTE]
+    > Nach der Aktualisierung wird Ihr Gerät auf die Werkseinstellungen zurückgesetzt, und die WLAN-Verbindung und die SSH-Anmeldung werden gelöscht.
+
+1. Schalten Sie nach Abschluss des Updates die Trägerplatine aus. Trennen Sie das USB-Kabel vom PC.  
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Ihr Development Kit wurde erfolgreich aktualisiert. Sie können die Entwicklung und den Betrieb mit Ihrem Development Kit fortsetzen.
+Nutzen Sie die [Azure Percept DK-Setupfunktion](./quickstart-percept-dk-set-up.md), um Ihr Gerät neu zu konfigurieren.

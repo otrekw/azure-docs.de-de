@@ -4,12 +4,12 @@ description: Hier erhalten Sie Antworten auf häufig gestellte Fragen zum Arbeit
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: b5b8ccbfd3e39415416cfc8fabcf9614f5934042
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 0cd2571276992812327e286ba9b935fcbf6fbbaf
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98931402"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104871808"
 ---
 # <a name="troubleshoot-apache-hadoop-yarn-by-using-azure-hdinsight"></a>Problembehandlung für Apache Hadoop YARN mit Azure HDInsight
 
@@ -17,7 +17,7 @@ Lernen Sie die wichtigsten Probleme und ihre Lösungen bei der Arbeit mit Apache
 
 ## <a name="how-do-i-create-a-new-yarn-queue-on-a-cluster"></a>Wie erstelle ich eine neue YARN-Warteschlange in einem Cluster?
 
-### <a name="resolution-steps"></a>Lösungsschritte
+### <a name="resolution-steps"></a>Schritte zur Behebung
 
 Erstellen Sie mit den folgenden Schritten in Ambari eine neue YARN-Warteschlange, und teilen Sie die Kapazitätszuordnung dann gleichmäßig auf alle Warteschlangen auf.
 
@@ -25,33 +25,33 @@ In diesem Beispiel wird die Kapazität zweier vorhandener Warteschlangen (**defa
 
 | Warteschlange | Capacity | Maximale Kapazität |
 | --- | --- | --- |
-| default | 25 % | 50% |
-| thrftsvr | 25 % | 50% |
+| default | 25% | 50% |
+| thrftsvr | 25% | 50% |
 | spark | 50% | 50% |
 
 1. Wählen Sie das **Ambari-Ansichten**-Symbol und dann das Gittermuster. Wählen Sie als Nächstes **YARN Queue Manager**.
 
-    ![Apache Ambari-Dashboard: YARN Queue Manager](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-1.png)
+    :::image type="content" source="media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-1.png" alt-text="Apache Ambari-Dashboard: YARN Queue Manager" border="false":::
 2. Wählen Sie die Warteschlange **default** aus.
 
-    ![Apache Ambari YARN – Auswählen der Warteschlange „default“](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-2.png)
+    :::image type="content" source="media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-2.png" alt-text="Apache Ambari YARN – Auswählen der Warteschlange „default“" border="false":::
 3. Ändern Sie für die **default**-Warteschlange **capacity** von 50% in 25%. Ändern Sie für die **thriftsvr**-Warteschlange **capacity** in 25%.
 
-    ![Ändern der Kapazität in 25% für die Warteschlangen „default“ und „thriftsvr“](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-3.png)
+    :::image type="content" source="media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-3.png" alt-text="Ändern der Kapazität in 25% für die Warteschlangen „default“ und „thriftsvr“" border="false":::
 4. Wählen Sie zum Erstellen einer neuen Warteschlange **Add Queue**.
 
-    ![Apache Ambari YARN-Dashboard – Hinzufügen einer Warteschlange](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-4.png)
+    :::image type="content" source="media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-4.png" alt-text="Apache Ambari YARN-Dashboard – Hinzufügen einer Warteschlange" border="false":::
 
 5. Benennen Sie die neue Warteschlange.
 
-    ![Apache Ambari YARN-Dashboard – Benennen einer Warteschlange](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-5.png)  
+    :::image type="content" source="media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-5.png" alt-text="Apache Ambari YARN-Dashboard – Benennen einer Warteschlange" border="false":::  
 
 6. Lassen Sie die **capacity**-Werte auf 50%, und wählen Sie die Schaltfläche **Actions**.
 
-    ![Apache Ambari YARN – Auswählen der Aktion](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-6.png)  
+    :::image type="content" source="media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-6.png" alt-text="Apache Ambari YARN – Auswählen der Aktion" border="false":::  
 7. Wählen Sie **Save and Refresh Queues**.
 
-    ![„Save and Refresh Queues“ wählen](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-7.png)  
+    :::image type="content" source="media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-7.png" alt-text="Auswählen von „Save and Refresh Queues“" border="false":::  
 
 Diese Änderungen werden sofort auf der YARN-Scheduler-Benutzeroberfläche angezeigt.
 
@@ -61,7 +61,7 @@ Diese Änderungen werden sofort auf der YARN-Scheduler-Benutzeroberfläche angez
 
 ## <a name="how-do-i-download-yarn-logs-from-a-cluster"></a>Wie lade ich YARN-Protokolle aus einem Cluster herunter?
 
-### <a name="resolution-steps"></a>Lösungsschritte
+### <a name="resolution-steps"></a>Schritte zur Behebung
 
 1. Stellen Sie mit einem Secure Shell-Client (SSH) eine Verbindung mit dem HDInsight-Cluster her. Weitere Informationen finden Sie unter [Zusätzliche Lektüre](#additional-reading-2).
 

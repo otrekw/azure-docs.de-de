@@ -1,22 +1,22 @@
 ---
 title: 'ExpressRoute: Konfigurieren benutzerdefinierter Warnungen für angekündigte Routen'
-description: In diesem Artikel erfahren Sie, wie Sie mit Azure Automation und Logic Apps die Anzahl der Routen überwachen, die vom ExpressRoute-Gateway in lokalen Netzwerken angekündigt werden, um den Grenzwert von 200 Routen nicht zu überschreiten.
+description: In diesem Artikel erfahren Sie, wie Sie mit Azure Automation und Logic Apps die Anzahl der Routen überwachen, die vom ExpressRoute-Gateway in lokalen Netzwerken angekündigt werden, um den Grenzwert von 1.000 Routen nicht zu überschreiten.
 services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: duau
-ms.openlocfilehash: fed7663e2342a708aee70b9a54e6e0a6b6f97e8c
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 2291d1fa7f890296c59661060f5a823d8eb194ba
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102504400"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104654389"
 ---
 # <a name="configure-custom-alerts-to-monitor-advertised-routes"></a>Konfigurieren benutzerdefinierter Warnungen zum Überwachen angekündigter Routen
 
-In diesem Artikel erfahren Sie, wie Sie mit Azure Automation und Logic Apps die Anzahl der Routen fortlaufend überwachen, die vom ExpressRoute-Gateway in lokalen Netzwerken angekündigt werden. Durch die Überwachung soll verhindert werden, dass der [Grenzwert von 200 Routen](expressroute-faqs.md#how-many-prefixes-can-be-advertised-from-a-vnet-to-on-premises-on-expressroute-private-peering) überschritten wird.
+In diesem Artikel erfahren Sie, wie Sie mit Azure Automation und Logic Apps die Anzahl der Routen fortlaufend überwachen, die vom ExpressRoute-Gateway in lokalen Netzwerken angekündigt werden. Die Überwachung kann helfen, das Überschreiten des Grenzwerts von 1.000 Routen zu verhindern](expressroute-faqs.md#how-many-prefixes-can-be-advertised-from-a-vnet-to-on-premises-on-expressroute-private-peering).
 
 Mit **Azure Automation** können Sie die Ausführung eines benutzerdefinierten PowerShell-Skripts, das in einem *Runbook* gespeichert ist, automatisieren. Mit der in diesem Artikel beschriebenen Konfiguration enthält das Runbook ein PowerShell-Skript, mit dem ein oder mehrere ExpressRoute-Gateways abgefragt werden. Es sammelt ein Dataset, das die Ressourcengruppe, den Namen des ExpressRoute-Gateways sowie die Anzahl der lokal angekündigten Netzwerkpräfixe enthält.
 
@@ -48,7 +48,7 @@ Vergewissern Sie sich vor Beginn der Konfiguration, dass die folgenden Vorausset
 
 * Die in diesem Artikel beschriebene benutzerdefinierte Warnung ist ein Add-On zur Verbesserung des Ablaufs und der Steuerung. Sie ersetzt nicht die nativen Warnungen in ExpressRoute.
 * Die Datensammlung für ExpressRoute-Gateways wird im Hintergrund ausgeführt. Der Vorgang kann länger dauern als erwartet. Richten Sie die Wiederholung des Workflows sinnvoll ein, um eine Warteschlange für Aufträge zu vermeiden.
-* Bereitstellungen über Skripts oder ARM-Vorlagen werden möglicherweise schneller ausgeführt als der benutzerdefinierte Warnungstrigger. Dies könnte zu einer steigenden Anzahl von Netzwerkpräfixen im ExpressRoute-Gateway und zu einer Überschreitung des Grenzwerts von 200 Routen führen.
+* Bereitstellungen über Skripts oder ARM-Vorlagen werden möglicherweise schneller ausgeführt als der benutzerdefinierte Warnungstrigger. Dies kann zu einer steigenden Anzahl von Netzwerkpräfixen im ExpressRoute-Gateway und zu einer Überschreitung des Grenzwerts von 1.000 Routen führen.
 
 ## <a name="create-and-configure-accounts"></a><a name="accounts"></a>Erstellen und Konfigurieren von Konten
 
@@ -409,7 +409,7 @@ Nach der JSON-Analyse wird der Inhalt der *Text*-Ausgabe durch die Aktion **JSON
 
    :::image type="content" source="./media/custom-route-alert-portal/peer-2.png" alt-text="numRoutesPeer2":::
 
-9. Die logische Bedingung ist TRUE, wenn eine der beiden dynamischen Variablen „numRoute1“ oder „numRoute2“ über dem Schwellenwert liegt. In diesem Beispiel ist der Schwellenwert auf 160 festgelegt (was 80 % des Grenzwerts von 200 Routen entspricht). Sie können den Schwellenwert an Ihre Anforderungen anpassen. Aus Gründen der Konsistenz sollte dieser Wert mit dem Wert übereinstimmen, der im PowerShell-Skript des Runbooks verwendet wird.
+9. Die logische Bedingung ist TRUE, wenn eine der beiden dynamischen Variablen „numRoute1“ oder „numRoute2“ über dem Schwellenwert liegt. In diesem Beispiel ist der Schwellenwert auf 800 festgelegt (was 80 % des Grenzwerts von 1.000 Routen entspricht). Sie können den Schwellenwert an Ihre Anforderungen anpassen. Aus Gründen der Konsistenz sollte dieser Wert mit dem Wert übereinstimmen, der im PowerShell-Skript des Runbooks verwendet wird.
 
    :::image type="content" source="./media/custom-route-alert-portal/logic-condition.png" alt-text="Logische Bedingung":::
 

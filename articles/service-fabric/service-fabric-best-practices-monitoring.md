@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: a7b1c1b3fc3196557b862c488ee01af8b8e1f04f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0eb9ce24f9ead44b7ba5a4d28d24177e62cb7757
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86529249"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104950517"
 ---
 # <a name="monitoring-and-diagnostic-best-practices-for-azure-service-fabric"></a>Best Practices für Überwachung und Diagnose für Azure Service Fabric
 
@@ -34,7 +34,7 @@ Für Linux-Cluster ist Azure Monitor-Protokolle ebenfalls das empfohlene Tool f�
 
 ## <a name="watchdogs"></a>Watchdogs
 
-Ein Watchdog ist im Allgemeinen ein separater Dienst, der die Integrität und Last dienstübergreifend überwacht, Pings an Endpunkte sendet und unerwartete Integritätsereignisse im Cluster meldet. So können Fehler verhindert werden, die anhand der Leistung eines einzelnen Diensts allein nicht erkannt werden können. Watchdogs sind auch ein guter Ort zum Hosten von Code, mit dem Aktionen zur Problembehebung durchgeführt werden, ohne dass eine Benutzeraktion erforderlich ist, z.B. Bereinigen von Protokolldateien im Speicher nach bestimmten Zeitintervallen. Ein Beispiel für eine Implementierung eines Watchdog-Diensts finden Sie unter [Azure Service Fabric watchdog sample](https://github.com/Azure-Samples/service-fabric-watchdog-service) (Beispiel für Azure Service Fabric-Watchdog).
+Ein Watchdog ist im Allgemeinen ein separater Dienst, der die Integrität und Last dienstübergreifend überwacht, Pings an Endpunkte sendet und unerwartete Integritätsereignisse im Cluster meldet. So können Fehler verhindert werden, die anhand der Leistung eines einzelnen Diensts allein nicht erkannt werden können. Watchdogs sind auch ein guter Ort zum Hosten von Code, mit dem Maßnahmen zur Problembehandlung durchgeführt werden, ohne dass eine Benutzeraktion erforderlich ist (z. B. Bereinigen von Protokolldateien im Speicher nach bestimmten Zeitintervallen). Informieren Sie sich über das [FabricObserver](https://aka.ms/sf/FabricObserver)-Projekt, wenn Sie einen vollständig implementierten Open-Source-Dienst für den SF-Watchdog benötigen, der ein benutzerfreundliches Watchdogerweiterungsmodell umfasst und sowohl in Windows- als auch in Linux-Clustern ausgeführt wird. Bei FabricObserver handelt es sich um produktionsbereite Software. Wir empfehlen, FabricObserver in Ihren Test- und Produktionsclustern bereitzustellen und zu erweitern, um Ihre Anforderungen entweder mithilfe des Plug-In-Modells oder durch Forken der Software und Schreiben Ihres eigenen integrierten Beobachters zu erfüllen. Ersteres (Plug-Ins) stellt den empfohlenen Ansatz dar.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

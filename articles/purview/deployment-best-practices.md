@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/23/2020
-ms.openlocfilehash: 48966e481f9cf8796c866b5c15a4e2a8616eade7
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: e02ad9187743603d46259d70965e49d6839ecd71
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97695855"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104949837"
 ---
 # <a name="azure-purview-deployment-best-practices"></a>Bewährte Methoden zur Bereitstellung von Azure Purview
 
@@ -150,7 +150,7 @@ In Purview gibt es mehrere Bereiche, in denen die Katalogadministratoren die bew
 
 ### <a name="plan-and-implement-different-integration-points-with-purview"></a>Planen und Implementieren verschiedener Integrationspunkte mit Purview
 
-Es ist wahrscheinlich, dass eine ausgereifte Organisation bereits über einen Datenkatalog verfügt. Die Hauptfrage ist, ob die vorhandene Technologie weiterhin verwendet und mit Purview synchronisiert werden soll. Purview ermöglicht das Veröffentlichen von Informationen über die Atlas-APIs, aber sie sind wirklich nicht für die Unterstützung eines derartigen Szenarios vorgesehen. Einige Organisationen entscheiden sich anfänglich, das Bootstrap der Verwendung von Purview durchzuführen, indem sie die vorhandenen Datenressourcen aus anderen Datenkataloglösungen migrieren. Dies kann in einem unidirektionalen Ansatz über die Atlas-APIs erfolgen. Das Synchronisieren zwischen verschiedenen Katalogtechnologien sollte im langfristigen Entwurf nicht berücksichtigt werden. In der Regel verwendet jede Geschäftseinheit möglicherweise weiterhin die vorhandenen Lösungen für ältere Datenressourcen, während Purview verwendet wird, um neuere Datenquellen zu scannen.
+Es ist wahrscheinlich, dass eine ausgereifte Organisation bereits über einen Datenkatalog verfügt. Die Hauptfrage ist, ob die vorhandene Technologie weiterhin verwendet und mit Purview synchronisiert werden soll. Für die Synchronisierung mit vorhandenen Produkten in einer Organisation stellt Purview Atlas-REST-APIs bereit. Atlas-APIs stellen einen leistungsfähigen und flexiblen Mechanismus sowohl für Push- als auch für Pullszenarios zur Verfügung. So können mithilfe von Atlas-APIs Informationen in Purview zum Bootstrapping oder zum Pushen von aktuellen Updates anderen Systemen in Purview veröffentlicht werden. Die in Purview verfügbaren Informationen können zudem mit Atlas-APIs gelesen und anschließend mit vorhandenen Produkten synchronisiert werden. 
 
 Für andere Integrationsszenarios wie Ticketing, benutzerdefinierte Benutzeroberfläche und Orchestrierung können Sie Atlas-APIs und Kafka-Endpunkte verwenden. Im Allgemeinen gibt es vier Integrationspunkte mit Purview:
 

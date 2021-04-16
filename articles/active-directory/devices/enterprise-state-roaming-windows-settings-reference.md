@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6048ee9237640799b7bec37083e607fc74ffb8e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85252966"
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Windows 10-Roamingeinstellungen – Referenz
@@ -26,7 +26,7 @@ Die folgende Liste enthält die Einstellungen, für die unter Windows 10 Roamin
 
 Die folgende Tabelle enthält eine Zusammenfassung der Geräte und Kontotypen, die unter Windows 10 vom Framework für die Synchronisierung, Sicherung und Wiederherstellung unterstützt werden.
 
-| Kontotyp und Vorgang | Desktop | Mobile |
+| Kontotyp und Vorgang | Desktop | Mobil |
 | --- | --- | --- |
 | Azure Active Directory: Synchronisierung |Ja |Nein |
 | Azure Active Directory: Sicherung/Wiederherstellung |Nein |Nein |
@@ -43,16 +43,16 @@ Die folgenden Einstellungsgruppen sind für Endbenutzer verfügbar, um die Einst
 
 * Design: Desktophintergrund, Benutzerkachel, Taskleistenposition usw. 
 * Internet Explorer-Einstellungen: Browserverlauf, eingegebene URLs, Favoriten usw. 
-* Kennwörter: Windows-Anmeldeinformationsverwaltung, einschließlich WLAN-Profilen 
+* Kennwörter: Windows-Anmeldeinformationsverwaltung, einschließlich WLAN-Profile 
 * Spracheinstellungen: Wörterbuch, Einstellungen für Systemsprache 
 * Erleichterte Bedienung: Sprachausgabe, Bildschirmtastatur, Bildschirmlupe 
 * Weitere Windows-Einstellungen: siehe Details zu Windows-Einstellungen
-* Microsoft Edge-Browsereinstellung: Microsoft Edge-Favoriten, Leseliste und andere Einstellungen
+* Microsoft Edge-Browser-Einstellung: Microsoft Edge-Favoriten, Leseliste und andere Einstellungen
 
 ![Synchronisieren Ihrer Einstellungen](./media/enterprise-state-roaming-windows-settings-reference/active-directory-enterprise-state-roaming-syncyoursettings.png)
 
 > [!NOTE]
-> Dieser Artikel bezieht sich auf den älteren HTML-basierten Microsoft Edge-Browser, der im Juli 2015 zusammen mit Windows 10 veröffentlicht wurde. Der Artikel gilt nicht für den neuen Chromium-basierten Microsoft Edge-Browser, der am 15. Januar 2020 veröffentlicht wurde. Weitere Informationen zum Synchronisierungsverhalten des neuen Microsoft Edge-Browsers finden Sie im Artikel [Microsoft Edge-Synchronisierung](/deployedge/microsoft-edge-enterprise-sync).
+> Dieser Artikel bezieht sich auf den älteren HTML-basierten Microsoft Edge-Browser, der im Juli 2015 mit Windows 10 veröffentlicht wurde. Der Artikel gilt nicht für den neuen Chromium-basierten Microsoft Edge-Browser, der am 15. Januar 2020 veröffentlicht wurde. Weitere Informationen zum Synchronisierungsverhalten des neuen Microsoft Edge finden Sie im Artikel [Microsoft Edge-Synchronisierung](/deployedge/microsoft-edge-enterprise-sync).
 
 Die Synchronisierung der Einstellungsgruppe des Microsoft Edge-Browsers (Favoriten, Leseliste) kann von Endbenutzern über das Einstellungsmenü des Microsoft Edge-Browsers aktiviert oder deaktiviert werden.
 
@@ -69,18 +69,18 @@ In der folgenden Tabelle bezieht sich „Sonstige“ in der Spalte „Gruppe“ 
 Die Einträge „Intern“ in der Spalte „Gruppe“ beziehen sich auf Einstellungen und Apps, für die die Synchronisierung nur in der App selbst oder für das gesamte Gerät per MDM- oder Gruppenrichtlinien-Einstellungen deaktiviert werden kann.
 Einstellungen, für die kein Roaming oder keine Synchronisierung durchgeführt wird, gehören keiner Gruppe an.
 
-| Einstellungen | Desktop | Mobile | Group |
+| Einstellungen | Desktop | Mobil | Gruppieren |
 | --- | --- | --- | --- |
 | **Konten**: Kontobild |sync |X |Design |
 | **Konten**: weitere Kontoeinstellungen |X |X | |
-| **Erweitertes mobiles Breitband:** Netzwerkname der Internetverbindungsfreigabe (ermöglicht automatische Ermittlung von mobilen WLAN-Hotspots per Bluetooth) |X |X |Kennwörter |
-| **App-Daten**: einzelne Apps können Daten synchronisieren |Sync.sicherung |Sync.sicherung |Interner Pool (internal) |
-| **App-Liste**: Liste der installierten Apps |X |Sicherung |Andere |
+| **Erweitertes mobiles Breitband**: Netzwerkname der Internetverbindungsfreigabe (ermöglicht automatische Ermittlung von mobilen WLAN-Hotspots per Bluetooth) |X |X |Kennwörter |
+| **App-Daten**: einzelne Apps können Daten synchronisieren |Sync.sicherung |Sync.sicherung |internal |
+| **App-Liste**: Liste der installierten Apps |X |Sicherung |Sonstiges |
 | **Bluetooth**: alle Bluetooth-Einstellungen |X |X | |
-| **Eingabeaufforderung:** Standardeinstellungen für die Eingabeaufforderung |sync |X |Interner Pool (internal) |
+| **Eingabeaufforderung:** Standardeinstellungen für die Eingabeaufforderung |sync |X |internal |
 | **Anmeldeinformationen**: Schließfach für Anmeldeinformationen |sync |sync |password |
 | **Datum, Uhrzeit und Region**: automatische Uhrzeit (Internetzeitsynchronisierung) |sync |sync |language |
-| **Datum, Uhrzeit und Region:** 24-Stunden-Format |sync |X |language |
+| **Datum, Uhrzeit und Region**: 24-Stunden-Format |sync |X |language |
 | **Datum, Uhrzeit und Region**: Datum und Uhrzeit |sync |X |language |
 | **Datum, Uhrzeit und Region**: Zeitzone | |X |language |
 | **Datum, Uhrzeit und Region**: Sommerzeit |sync |X |language |
@@ -95,24 +95,24 @@ Einstellungen, für die kein Roaming oder keine Synchronisierung durchgeführt w
 | **Desktoppersonalisierung**: Diashow-Hintergrundbild |sync |X |Design |
 | **Desktoppersonalisierung**: Einstellungen der Taskleiste (Position, automatisches Ausblenden usw.) |sync |X |Design |
 | **Desktoppersonalisierung**: Layout des Startbildschirms |X |Sicherung | |
-| **Geräte**: verbundene freigegebene Drucker |X |X |Sonstige |
-| **Microsoft Edge-Browser:** Leseliste |sync |sync |Interner Pool (internal) |
-| **Microsoft Edge-Browser:** Favoriten |sync |sync |Interner Pool (internal) |
-| **Microsoft Edge-Browser:** beste Websites <sup>[[1]](#footnote-1)</sup> |sync |sync |Interner Pool (internal) |
-| **Microsoft Edge-Browser:** eingegebene URLs <sup>[[1]](#footnote-1)</sup> |sync |sync |Interner Pool (internal) |
-| **Microsoft Edge-Browser:** Einstellungen der Favoritenleiste <sup>[[1]](#footnote-1)</sup> |sync |sync |Interner Pool (internal) |
-| **Microsoft Edge-Browser:** Schaltfläche „Startseite“ anzeigen <sup>[[1]](#footnote-1)</sup> |sync |sync |Interner Pool (internal) |
-| **Microsoft Edge-Browser:** Popups blockieren <sup>[[1]](#footnote-1)</sup> |sync |sync |Interner Pool (internal) |
-| **Microsoft Edge-Browser:** fragen, wie mit jedem Download verfahren werden soll <sup>[[1]](#footnote-1)</sup> |sync |sync |Interner Pool (internal) |
-| **Microsoft Edge-Browser:** Speichern von Kennwörtern anbieten <sup>[[1]](#footnote-1)</sup> |sync |sync |Interner Pool (internal) |
-| **Microsoft Edge-Browser:** „Do Not Track“-Anforderungen (nicht nachverfolgen) senden <sup>[[1]](#footnote-1)</sup> |sync |sync |Interner Pool (internal) |
-| **Microsoft Edge-Browser:** Formulareinträge speichern <sup>[[1]](#footnote-1)</sup> |sync |sync |Interner Pool (internal) |
-| **Microsoft Edge-Browser:** Such- und Websitevorschläge während der Eingabe anzeigen <sup>[[1]](#footnote-1)</sup> |sync |sync |Interner Pool (internal) |
-| **Microsoft Edge-Browser:** Voreinstellung für Cookies <sup>[[1]](#footnote-1)</sup> |sync |sync |Interner Pool (internal) |
-| **Microsoft Edge-Browser:** Websites das Speichern geschützter Medienlizenzen auf meinem Gerät erlauben <sup>[[1]](#footnote-1)</sup> |sync |sync |Interner Pool (internal) |
-| **Microsoft Edge-Browser:** Einstellung für die Sprachausgabe <sup>[[1]](#footnote-1)</sup> |sync |sync |Interner Pool (internal) |
-| **Hoher Kontrast:** Ein oder Aus |sync |X |Erleichterte Bedienung |
-| **Hoher Kontrast:** Designeinstellungen |sync |X |Erleichterte Bedienung |
+| **Geräte**: verbundene freigegebene Drucker |X |X |andere |
+| **Microsoft Edge-Browser:** Leseliste |sync |sync |internal |
+| **Microsoft Edge-Browser:** Favoriten |sync |sync |internal |
+| **Microsoft Edge-Browser:** beste Websites <sup>[[1]](#footnote-1)</sup> |sync |sync |internal |
+| **Microsoft Edge-Browser:** eingegebene URLs <sup>[[1]](#footnote-1)</sup> |sync |sync |internal |
+| **Microsoft Edge-Browser:** Einstellungen der Favoritenleiste <sup>[[1]](#footnote-1)</sup> |sync |sync |internal |
+| **Microsoft Edge-Browser:** Schaltfläche „Startseite“ anzeigen <sup>[[1]](#footnote-1)</sup> |sync |sync |internal |
+| **Microsoft Edge-Browser:** Popups blockieren <sup>[[1]](#footnote-1)</sup> |sync |sync |internal |
+| **Microsoft Edge-Browser:** fragen, wie mit jedem Download verfahren werden soll <sup>[[1]](#footnote-1)</sup> |sync |sync |internal |
+| **Microsoft Edge-Browser:** Speichern von Kennwörtern anbieten <sup>[[1]](#footnote-1)</sup> |sync |sync |internal |
+| **Microsoft Edge-Browser:** „Do Not Track“-Anforderungen (nicht nachverfolgen) senden <sup>[[1]](#footnote-1)</sup> |sync |sync |internal |
+| **Microsoft Edge-Browser:** Formulareinträge speichern <sup>[[1]](#footnote-1)</sup> |sync |sync |internal |
+| **Microsoft Edge-Browser:** Such- und Websitevorschläge während der Eingabe anzeigen <sup>[[1]](#footnote-1)</sup> |sync |sync |internal |
+| **Microsoft Edge-Browser:** Voreinstellung für Cookies <sup>[[1]](#footnote-1)</sup> |sync |sync |internal |
+| **Microsoft Edge-Browser:** Websites das Speichern geschützter Medienlizenzen auf meinem Gerät erlauben <sup>[[1]](#footnote-1)</sup> |sync |sync |internal |
+| **Microsoft Edge-Browser:** Einstellung für die Sprachausgabe <sup>[[1]](#footnote-1)</sup> |sync |sync |internal |
+| **Hoher Kontrast**: Ein/Aus |sync |X |Erleichterte Bedienung |
+| **Hoher Kontrast**: Designeinstellungen |sync |X |Erleichterte Bedienung |
 | **Internet Explorer**: geöffnete Registerkarten (URL und Titel) |sync |sync |Internet Explorer |
 | **Internet Explorer**: Leseliste |sync |sync |Internet Explorer |
 | **Internet Explorer**: eingegebene URLs |sync |sync |Internet Explorer |
@@ -125,23 +125,23 @@ Einstellungen, für die kein Roaming oder keine Synchronisierung durchgeführt w
 | **Tastatur**: Einrastfunktion einschalten (standardmäßig deaktiviert) |sync |X |Erleichterte Bedienung |
 | **Tastatur**: Anschlagverzögerung einschalten (standardmäßig deaktiviert) |sync |X |Erleichterte Bedienung |
 | **Tastatur**: Umschalttasten einschalten (standardmäßig deaktiviert) |sync |X |Erleichterte Bedienung |
-| **Internet Explorer:** Domänensprache: Chinesisch (CHS) QWERTY – Selbstlernfunktion aktivieren |sync |X |Sprache |
-| **Sprache:** CHS QWERTY – dynamische Kandidateneinstufung aktivieren |sync |X |Sprache |
-| **Sprache:** CHS QWERTY – Zeichensatz Chinesisch (vereinfacht) |sync |X |Sprache |
-| **Sprache:** CHS QWERTY – Zeichensatz Chinesisch (traditionell) |sync |X |Sprache |
-| **Sprache:** CHS QWERTY – Fuzzy Pinyin |sync |Sicherung |Sprache |
-| **Sprache:** CHS QWERTY – Fuzzy Pairs |sync |Sicherung |Sprache |
-| **Sprache:** CHS QWERTY – Pinyin (vollständig) |sync |X |Sprache |
-| **Sprache:** CHS QWERTY – Doppel-Pinyin |sync |X |Sprache |
-| **Sprache:** CHS QWERTY – Autokorrektur beim Lesen |sync |X |Sprache |
-| **Sprache:** CHS QWERTY – C/E-Umschalttaste, UMSCHALT |sync |X |Sprache |
-| **Sprache:** CHS QWERTY – C/E-Umschalttaste, STRG |sync |X |Sprache |
-| **Sprache:** CHS WUBI – Eingabemodus für einzelne Zeichen |sync |X |Sprache |
-| **Sprache:** CHS WUBI – verbleibende Codierung des Kandidaten anzeigen |sync |X |Sprache |
-| **Sprache:** CHS WUBI – Signalton bei ungültigem 4-Code |sync |X |Sprache |
+| **Internet Explorer**: Domänensprache: Chinesisch (CHS) QWERTY – Selbstlernfunktion aktivieren |sync |X |Sprache |
+| **Sprache**: CHS QWERTY – dynamische Kandidateneinstufung aktivieren |sync |X |Sprache |
+| **Sprache**: CHS QWERTY – Zeichensatz Chinesisch (vereinfacht) |sync |X |Sprache |
+| **Sprache**: CHS QWERTY – Zeichensatz Chinesisch (traditionell) |sync |X |Sprache |
+| **Sprache**: CHS QWERTY – Fuzzy Pinyin |sync |Sicherung |Sprache |
+| **Sprache**: CHS QWERTY – Fuzzy Pairs |sync |Sicherung |Sprache |
+| **Sprache**: CHS QWERTY – Pinyin (vollständig) |sync |X |Sprache |
+| **Sprache**: CHS QWERTY – Doppel-Pinyin |sync |X |Sprache |
+| **Sprache**: CHS QWERTY – Autokorrektur beim Lesen |sync |X |Sprache |
+| **Sprache**: CHS QWERTY – C/E-Umschalttaste, UMSCHALT |sync |X |Sprache |
+| **Sprache**: CHS QWERTY – C/E-Umschalttaste, STRG |sync |X |Sprache |
+| **Sprache**: CHS WUBI – Eingabemodus für einzelne Zeichen |sync |X |Sprache |
+| **Sprache**: CHS WUBI – verbleibende Codierung des Kandidaten anzeigen |sync |X |Sprache |
+| **Sprache**: CHS WUBI – Signalton bei ungültigem 4-Code |sync |X |Sprache |
 | **Sprache:** CHT Bopomofo – CJK-Erweiterung A einschließen |sync |X |Sprache |
-| **Sprache:** Japanischer IME – Eingabevorhersage und benutzerdefinierte Wörter |sync |sync |Sprache |
-| **Sprache:** Koreanischer (Südkorea) IME |X |X |Sprache |
+| **Sprache**: Japanisches IME – Eingabevorhersage und benutzerdefinierte Wörter |sync |sync |Sprache |
+| **Sprache**: Koreanisches (KOR) IME |X |X |Sprache |
 | **Sprache**: Handschrifterkennung |X |X |Sprache |
 | **Sprache**: Sprachprofil |sync |Sicherung |Sprache |
 | **Sprache**: Rechtschreibprüfung – AutoKorrektur und Hervorhebung von Rechtschreibfehlern |sync |Sicherung |Sprache |
@@ -152,8 +152,8 @@ Einstellungen, für die kein Roaming oder keine Synchronisierung durchgeführt w
 | **Bildschirmlupe**: Nachverfolgung – dem Tastaturfokus folgen |sync |X |Erleichterte Bedienung |
 | **Bildschirmlupe**: Nachverfolgung – dem Mauszeiger folgen |sync |X |Erleichterte Bedienung |
 | **Bildschirmlupe**: beim Anmelden von Benutzern starten (standardmäßig deaktiviert) |sync |X |Erleichterte Bedienung |
-| **Maus**: Größe des Mauszeigers ändern |sync |X |Sonstige |
-| **Maus**: Farbe des Mauszeigers ändern |sync |X |Sonstige |
+| **Maus**: Größe des Mauszeigers ändern |sync |X |andere |
+| **Maus**: Farbe des Mauszeigers ändern |sync |X |andere |
 | **Maus**: alle anderen Einstellungen |X |X | |
 | **Sprachausgabe**: Schnellstart |sync |X |Erleichterte Bedienung |
 | **Sprachausgabe**: Benutzer können Tonhöhe der Sprachausgabe ändern |sync |X |Erleichterte Bedienung |
@@ -178,7 +178,7 @@ Einstellungen, für die kein Roaming oder keine Synchronisierung durchgeführt w
 | **Eingabe**: beim Doppeltippen auf die UMSCHALTTASTE Großbuchstaben verwenden |sync |Sicherung |Sprache |
 | **Eingabe**: Tastentöne bei der Eingabe |sync |Sicherung |Sprache |
 | **Eingabe**: Personalisierungsdaten für Bildschirmtastatur |sync |Sicherung |Sprache |
-| **WLAN:** WLAN-Profile (nur WPA) |sync |sync |Kennwörter |
+| **WLAN**: WLAN-Profile (nur WPA) |sync |sync |Kennwörter |
 
 ###### <a name="footnote-1"></a>Fußnote 1
 

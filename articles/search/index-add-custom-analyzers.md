@@ -1,35 +1,29 @@
 ---
 title: Hinzufügen von benutzerdefinierten Analysetools zu Zeichenfolgenfeldern
 titleSuffix: Azure Cognitive Search
-description: Konfigurieren Sie Texttokenizer und Zeichenfilter, die in Volltextsuchabfragen der kognitiven Azure-Suche verwendet werden.
+description: Konfigurieren Sie Texttokenizer und Zeichenfilter, um bei der Indizierung und bei Abfragen Textanalysen für Zeichenfolgen auszuführen.
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/05/2020
-ms.openlocfilehash: fef73a9b98fef40aaceeacca43836d4b2f3c5de0
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.date: 03/17/2021
+ms.openlocfilehash: 831e57a68c79c245b96baec0fc3d062c4c9112c5
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97630206"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104604439"
 ---
 # <a name="add-custom-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>Hinzufügen von benutzerdefinierten Analysetools zu Zeichenfolgenfeldern in einem Azure Cognitive Search-Index
 
-Ein *benutzerdefiniertes Analysetool* ist eine bestimmte Art von [Textanalysetool](search-analyzers.md), das aus einer benutzerdefinierten Kombination von bestehendem Tokenizer und optionalen Filtern besteht. Durch die Kombination von Tokenizern und Filtern auf neue Weise können Sie die Textverarbeitung in der Suchmaschine anpassen, um bestimmte Ergebnisse zu erzielen. Sie können beispielsweise ein benutzerdefiniertes Analysetool mit einem *Zeichenfilter* erstellen, um HTML-Markup zu entfernen, bevor Texteingaben tokenisiert werden.
+Ein *benutzerdefiniertes Analysetool* ist eine Kombination aus einem Tokenizer, einem oder mehreren Tokenfiltern und einem oder mehreren Zeichenfiltern, die Sie im Suchindex definieren und dann in Felddefinitionen referenzieren, die eine benutzerdefinierte Analyse erfordern. Der Tokenizer ist für das Aufteilen von Text in Token verantwortlich, und mit den Tokenfiltern werden die Token geändert, die vom Tokenizer ausgegeben werden. Mit Zeichenfiltern wird der Eingabetext vorbereitet, bevor er vom Tokenizer verarbeitet wird. 
 
- Sie können mehrere benutzerdefinierte Analysetools definieren, um die Kombination der Filter zu variieren, aber jedes Feld kann nur ein Analysetool für die Indexierungsanalyse und einen für die Suchanalyse verwenden. Eine Veranschaulichung, wie ein benutzerdefiniertes Analysetool aussieht, finden Sie unter [Beispiel für ein benutzerdefiniertes Analysetool](search-analyzers.md#Custom-analyzer-example).
+Mit einem benutzerdefinierten Analysetool können Sie den Prozess der Konvertierung von Text in indizierbare und durchsuchbare Token steuern, indem Sie auswählen, welche Arten der Analyse oder Filterung aufgerufen werden sollen und in welcher Reihenfolge sie erfolgen. Wenn Sie ein integriertes Analysetool mit benutzerdefinierten Optionen verwenden möchten, z. B. Ändern von „maxTokenLength“ in „Standard“, erstellen Sie ein benutzerdefiniertes Analysetool mit einem benutzerdefinierten Namen, um diese Optionen festzulegen.
 
-## <a name="overview"></a>Übersicht
+Anwendungsfälle für benutzerdefinierte Analysetools:
 
- Einfach ausgedrückt besteht die Rolle einer [Engine für die Volltextsuche](search-lucene-query-architecture.md) darin, Dokumente so zu verarbeiten und zu speichern, dass sie effizient abgefragt und abgerufen werden können. In erster Linie geht es um das Extrahieren wichtiger Wörter aus Dokumenten, das Einfügen der Wörter in einen Index und das anschließende Verwenden des Index zum Suchen nach Dokumenten, die mit Wörtern einer bestimmten Abfrage übereinstimmen. Der Prozess zur Extrahierung von Wörtern aus Dokumenten und Suchabfragen wird als *lexikalische Analyse* bezeichnet. Komponenten, die eine lexikalische Analyse durchführen, werden als *Analysetools* bezeichnet.
-
- In der kognitiven Azure-Suche können Sie aus verschiedenen vordefinierten sprachunabhängigen Analysetools in der Tabelle [Analysetools](#AnalyzerTable) oder aus sprachspezifischen Analysetools in [Sprachanalysetools &#40;REST-API für den Dienst für die kognitive Azure-Suche&#41;](index-add-language-analyzers.md) auswählen. Sie haben auch die Möglichkeit, Ihre eigenen benutzerdefinierten Analysetools zu definieren.  
-
- Mit einem benutzerdefinierten Analysetool können Sie die Kontrolle über den Prozess der Konvertierung von Text in indizierbare und durchsuchbare Token übernehmen. Es handelt sich um eine benutzerdefinierte Konfiguration, die aus einem einzelnen vordefinierten Tokenizer, einem oder mehreren Tokenfiltern und einem oder mehreren Zeichenfiltern besteht. Der Tokenizer ist für das Aufteilen von Text in Token verantwortlich, und mit den Tokenfiltern werden die Token geändert, die vom Tokenizer ausgegeben werden. Zeichenfilter werden verwendet, um den Eingabetext vorzubereiten, bevor er vom Tokenizer verarbeitet wird. Beispielsweise kann ein Zeichenfilter bestimmte Zeichen oder Symbole ersetzen.
-
- Beispiele für häufige Szenarien, die mit benutzerdefinierten Analysemodulen ermöglicht werden:  
+- Verwenden von Zeichenfiltern, um HTML-Markup vor der Tokenisierung von Texteingaben zu entfernen oder bestimmte Zeichen oder Symbole zu ersetzen
 
 - Phonetische Suche. Es wird ein phonetischer Filter hinzugefügt, um Suchen basierend auf der Aussprache eines Worts durchführen zu können, anstatt anhand der Schreibweise.  
 
@@ -41,21 +35,28 @@ Ein *benutzerdefiniertes Analysetool* ist eine bestimmte Art von [Textanalysetoo
 
 - ASCII-Folding. Fügen Sie den standardmäßigen ASCII-Folding-Filter hinzu, um diakritische Zeichen wie ö oder ê in Suchbegriffen zu normalisieren.  
 
-  Diese Seite enthält eine Liste mit unterstützten Analysetools, Tokenizern, Tokenfiltern und Zeichenfiltern. Außerdem finden Sie hier eine Beschreibung von Änderungen an der Indexdefinition mit einem Verwendungsbeispiel. Weitere Hintergrundinformationen zur zugrunde liegenden Technologie, die für die Implementierung der kognitiven Azure-Suche genutzt wird, finden Sie in der [Zusammenfassung des Analysemodulpakets (Lucene)](https://lucene.apache.org/core/6_0_0/core/org/apache/lucene/codecs/lucene60/package-summary.html). Beispiele für Konfigurationen des Analysetools finden Sie unter [Hinzufügen von Analysetools in der kognitiven Azure-Suche](search-analyzers.md#examples).
+Zum Erstellen eines benutzerdefinierten Analysetools geben Sie es zur Entwurfszeit im Abschnitt „analyzers“ eines Index an. Anschließend referenzieren Sie es unter Verwendung der analyzer-Eigenschaft oder dem Paar „indexAnalyzer“ und „searchAnalyzer“ in durchsuchbaren Edm.String-Feldern.
 
-## <a name="validation-rules"></a>Validierungsregeln  
- Die Namen von Analysetools, Tokenizern, Tokenfiltern und Zeichenfiltern müssen eindeutig sein und dürfen nicht den Namen von vordefinierten Analysetools, Tokenizern, Tokenfiltern oder Zeichenfiltern entsprechen. Bereits verwendete Namen finden Sie im [Eigenschaftenverweis](#PropertyReference).
+> [!NOTE]  
+> Benutzerdefinierte Analysemodule, die Sie erstellen, werden im Azure-Portal nicht verfügbar gemacht. Die einzige Möglichkeit, ein benutzerdefiniertes Analysetool hinzuzufügen, ist die Verwendung von Code, mit dem ein Index definiert wird. 
 
-## <a name="create-custom-analyzers"></a>Erstellen von benutzerdefinierten Analysetools
- Sie definieren benutzerdefinierte Analysetools während der Erstellung des Index. Die Syntax zum Angeben eines benutzerdefinierten Analysetools wird in diesem Abschnitt beschrieben. Sie können sich mit der Syntax vertraut machen, indem Sie sich in [Hinzufügen von Analysetools in der kognitiven Azure-Suche](search-analyzers.md#examples) Beispieldefinitionen anschauen.  
+## <a name="create-a-custom-analyzer"></a>Erstellen eines benutzerdefinierten Analysetools
 
- Eine Analysetooldefinition beinhaltet einen Namen, einen Typ, einen oder mehrere Zeichenfilter, maximal einen Tokenizer und einen oder mehrere Tokenfilter für die Verarbeitung nach der Tokenisierung. Zeichenfilter werden vor der Tokenisierung angewendet. Tokenfiltern und Zeichenfiltern werden von links nach rechts angewendet.
+Eine Analysetooldefinition beinhaltet einen Namen, einen Typ, einen oder mehrere Zeichenfilter, maximal einen Tokenizer und einen oder mehrere Tokenfilter für die Verarbeitung nach der Tokenisierung. Zeichenfilter werden vor der Tokenisierung angewandt. Tokenfilter und Zeichenfilter werden von links nach rechts angewandt.
 
- Der `tokenizer_name` ist der Name eines Tokenizers, `token_filter_name_1` und `token_filter_name_2` sind die Namen von Tokenfiltern, und `char_filter_name_1` und `char_filter_name_2` sind die Namen von Zeichenfiltern (gültige Werte finden Sie in den Tabellen [Tokenizer](#Tokenizers), [Tokenfilter](#TokenFilters) und „Zeichenfilter“).
+- Die Namen in einem benutzerdefinierten Analysetool müssen eindeutig sein und dürfen nicht mit den Namen von integrierten Analysetools, Tokenizern, Tokenfiltern oder Zeichenfiltern übereinstimmen. Er darf nur Buchstaben, Ziffern, Leerzeichen, Bindestriche und Unterstriche enthalten. Er muss mit alphanumerischen Zeichen beginnen und enden und darf maximal 128 Zeichen lang sein. 
 
-Die Definition der Analysetools ist ein Teil des größeren Index. Weitere Informationen zum Rest des Index finden Sie unter [Index-API erstellen](/rest/api/searchservice/create-index).
+- Der Typ muss „#Microsoft.Azure.Search.CustomAnalyzer“ sein.
 
-```
+- „charFilters“ kann einen oder mehrere Filter aus [Zeichenfiltern](#CharFilter) enthalten, die vor der Tokenisierung in der angegebenen Reihenfolge verarbeitet werden. Einige Zeichenfilter umfassen Optionen, die im Abschnitt „charFilter“ festgelegt werden können. Zeichenfilter sind optional.
+
+- „tokenizer“ enthält genau einen [Tokenizer](#tokenizers). Ein Wert ist erforderlich. Wenn Sie mehr als einen Tokenizer benötigen, können Sie mehrere benutzerdefinierte Analysetools erstellen und diese feldweise in Ihrem Indexschema zuordnen.
+
+- „tokenFilters“ kann einen oder mehrere Filter aus [Tokenfiltern](#TokenFilters) enthalten, die nach der Tokenisierung in der angegebenen Reihenfolge verarbeitet werden. Fügen Sie für Tokenfilter, die Optionen umfassen, den Abschnitt „tokenFilter“ hinzu, um die Konfiguration anzugeben. Tokenfilter sind optional.
+
+Analysetools dürfen keine Token mit mehr als 300 Zeichen generieren. Andernfalls treten bei der Indizierung Fehler auf. Um lange Token zu kürzen oder auszuschließen, verwenden Sie **TruncateTokenFilter** bzw. **LengthTokenFilter**. Siehe [**Tokenfilter**](#TokenFilters) als Referenz.
+
+```json
 "analyzers":(optional)[
    {
       "name":"name of analyzer",
@@ -107,12 +108,9 @@ Die Definition der Analysetools ist ein Teil des größeren Index. Weitere Infor
 ]
 ```
 
-> [!NOTE]  
->  Benutzerdefinierte Analysemodule, die Sie erstellen, werden im Azure-Portal nicht verfügbar gemacht. Die einzige Möglichkeit, ein benutzerdefiniertes Analysetool hinzuzufügen, ist die Verwendung von Code, mit dem beim Definieren eines Index Aufrufe an die API durchgeführt werden.  
+Innerhalb einer Indexdefinition können Sie diesen Abschnitt an beliebiger Stelle im Hauptteil einer Anforderung zum Erstellen eines Index platzieren, aber normalerweise wird er am Ende platziert:  
 
- Innerhalb einer Indexdefinition können Sie diesen Abschnitt an beliebiger Stelle im Hauptteil einer Anforderung zum Erstellen eines Index platzieren, aber normalerweise wird er am Ende platziert:  
-
-```
+```json
 {
   "name": "name_of_index",
   "fields": [ ],
@@ -127,18 +125,17 @@ Die Definition der Analysetools ist ein Teil des größeren Index. Weitere Infor
 }
 ```
 
-Definitionen für Zeichenfilter, Tokenizer und Tokenfilter werden dem Index nur hinzugefügt, wenn Sie benutzerdefinierte Optionen festlegen. Um einen vorhandenen Filter oder Tokenizer unverändert zu verwenden, geben Sie ihn in der Analysetooldefinition namentlich an.
-
-<a name="Testing custom analyzers"></a>
+Die Definition der Analysetools ist ein Teil des größeren Index. Definitionen für Zeichenfilter, Tokenizer und Tokenfilter werden dem Index nur hinzugefügt, wenn Sie benutzerdefinierte Optionen festlegen. Um einen vorhandenen Filter oder Tokenizer unverändert zu verwenden, geben Sie ihn in der Analysetooldefinition namentlich an. Weitere Informationen finden Sie unter [Create Index (REST-API)](/rest/api/searchservice/create-index). Weitere Beispiele finden Sie unter [Hinzufügen von Analysetools in Azure Cognitive Search](search-analyzers.md#examples).
 
 ## <a name="test-custom-analyzers"></a>Testen von benutzerdefinierten Analysetools
 
-Sie können den Vorgang **Analysetool testen** in der [REST-API](/rest/api/searchservice/test-analyzer) verwenden, um zu sehen, wie ein Analysetool bestimmten Text in Token zerlegt.
+Mit dem [Test Analyzer (REST)](/rest/api/searchservice/test-analyzer) können Sie prüfen, wie ein Analysetool Text in Token aufteilt.
 
 **Anforderung**
-```
+
+```http
   POST https://[search service name].search.windows.net/indexes/[index name]/analyze?api-version=[api-version]
-  Content-Type: application/json
+    Content-Type: application/json
     api-key: [admin key]
 
   {
@@ -146,8 +143,10 @@ Sie können den Vorgang **Analysetool testen** in der [REST-API](/rest/api/searc
      "text": "Vis-à-vis means Opposite"
   }
 ```
+
 **Antwort**
-```
+
+```http
   {
     "tokens": [
       {
@@ -180,147 +179,77 @@ Sie können den Vorgang **Analysetool testen** in der [REST-API](/rest/api/searc
 
 ## <a name="update-custom-analyzers"></a>Aktualisieren von benutzerdefinierten Analysetools
 
-Nach der Definition kann ein Analysetool, ein Tokenizer, Tokenfilter oder Zeichenfilter nicht mehr geändert werden. Neue können nur dann einem vorhandenen Index hinzugefügt werden, wenn das `allowIndexDowntime` -Flag in der Anforderung zur Indexaktualisierung auf „true“ gesetzt ist:
+Nach der Definition können Analysetools, Tokenizer, Tokenfilter oder Zeichenfilter nicht mehr geändert werden. Neue können nur dann einem vorhandenen Index hinzugefügt werden, wenn das `allowIndexDowntime` -Flag in der Anforderung zur Indexaktualisierung auf „true“ gesetzt ist:
 
-```
+```http
 PUT https://[search service name].search.windows.net/indexes/[index name]?api-version=[api-version]&allowIndexDowntime=true
 ```
 
 Mit diesem Vorgang wird Ihr Index für mindestens ein paar Sekunden offline geschaltet, sodass Indizierungs- und Abfrageanforderungen nicht gelingen. Leistung und Schreibverfügbarkeit des Indexes können nach der Indexaktualisierung mehrere Minuten lang eingeschränkt sein, bei sehr großen Indizes auch länger. Aber diese Auswirkungen sind nur vorübergehend und lösen sich von selbst auf.
 
- <a name="ReferenceIndexAttributes"></a>
+<a name="built-in-analyzers"></a>
 
-## <a name="analyzer-reference"></a>Analysetoolreferenz
+## <a name="built-in-analyzers"></a>Integrierte Analysetools
 
-In der folgenden Tabelle sind die Konfigurationseigenschaften für den Abschnitt mit den Analysetools, Tokenizern, Tokenfiltern und Zeichenfilter einer Indexdefinition angegeben. Die Struktur eines Analysetools, Tokenizers oder Filters in Ihrem Index besteht aus diesen Attributen. Informationen zur Zuordnung von Werten finden Sie unter [Eigenschaftenverweis](#PropertyReference).
-
-### <a name="analyzers"></a>Analysemodule
-
-Bei Analysetools variieren die Indexattribute je nachdem, ob Sie vordefinierte oder benutzerdefinierte Analysetools verwenden.
-
-#### <a name="predefined-analyzers"></a>Vordefinierte Analysetools
-
-| type | BESCHREIBUNG |
-| ---- | ----------- |  
-|Name|Er darf nur Buchstaben, Ziffern, Leerzeichen, Bindestriche und Unterstriche enthalten. Er muss mit alphanumerischen Zeichen beginnen und enden und darf maximal 128 Zeichen lang sein.|  
-|type|Analysetooltypen aus der Liste der unterstützten Analysetools. Informationen dazu finden Sie in der Spalte **analyzer_type** in der Tabelle [Analysetool](#AnalyzerTable) unten.|  
-|Tastatur|Es müssen gültige Optionen eines vordefinierten Analysetools sein, die in der folgenden Tabelle [Analysetools ](#AnalyzerTable) aufgeführt sind.|  
-
-#### <a name="custom-analyzers"></a>Benutzerdefinierte Analysetools
-
-| type | BESCHREIBUNG |
-| ---- | ----------- |  
-|Name|Er darf nur Buchstaben, Ziffern, Leerzeichen, Bindestriche und Unterstriche enthalten. Er muss mit alphanumerischen Zeichen beginnen und enden und darf maximal 128 Zeichen lang sein.|  
-|type|Muss "#Microsoft.Azure.Search.CustomAnalyzer" sein.|  
-|CharFilters|Wird entweder auf einen der vordefinierten Zeichenfilter festgelegt, die in der Tabelle [Zeichenfilter](#char-filters-reference) aufgeführt sind, oder auf einen benutzerdefinierten Zeichenfilter, der in der Indexdefinition angegeben ist.|  
-|Tokenizer|Erforderlich. Wird entweder auf einen der vordefinierten Tokenizer festgelegt, die in der Tabelle [Tokenizer](#Tokenizers) aufgeführt sind, oder auf einen benutzerdefinierten Tokenizer, der in der Indexdefinition angegeben ist.|  
-|TokenFilters|Wird entweder auf einen der vordefinierten Tokenfilter festgelegt, die in der Tabelle [Tokenfilter](#TokenFilters) aufgeführt sind, oder auf einen benutzerdefinierten Tokenfilter, der in der Indexdefinition angegeben ist.|  
-
-> [!NOTE]
-> Es ist erforderlich, dass Sie Ihr benutzerdefiniertes Analysetool so konfigurieren, dass keine Token produziert werden, die länger als 300 Zeichen sind. Bei der Indizierung für Dokumente mit solchen Token tritt ein Fehler auf. Um sie zu kürzen oder zu ignorieren verwenden Sie **TruncateTokenFilter** und **LengthTokenFilter**.  Überprüfen Sie [**Tokenfilter**](#TokenFilters) als Referenz.
-
-<a name="CharFilter"></a>
-
-### <a name="char-filters"></a>Zeichenfilter
-
- Zeichenfilter werden verwendet, um den Eingabetext vorzubereiten, bevor er vom Tokenizer verarbeitet wird. Beispielsweise kann er bestimmte Zeichen oder Symbole ersetzen. Sie können in einem benutzerdefinierten Analysemodul mehrere Zeichenfilter verwenden. Zeichenfilter werden in der Reihenfolge ausgeführt, in der sie aufgeführt sind.  
-
-| type | BESCHREIBUNG |
-| ---- | ----------- | 
-|Name|Er darf nur Buchstaben, Ziffern, Leerzeichen, Bindestriche und Unterstriche enthalten. Er muss mit alphanumerischen Zeichen beginnen und enden und darf maximal 128 Zeichen lang sein.|  
-|type|Zeichenfiltertyp aus der Liste der unterstützten Zeichenfilter. Informationen dazu finden Sie in der Spalte **char_filter_type** in der Tabelle [Zeichenfilter](#char-filters-reference) unten.|  
-|Tastatur|Müssen gültige Optionen für einen bestimmten Typ von [Zeichenfilter](#char-filters-reference) sein.|  
-
-### <a name="tokenizers"></a>Tokenizer
-
- Ein Tokenizer teilt fortlaufenden Text in eine Folge von Token, z.B. das Zerlegen eines Satzes in Wörter.  
-
- Sie können genau einen Tokenizer pro benutzerdefiniertem Analysetool angeben. Wenn Sie mehr als einen Tokenizer benötigen, können Sie mehrere benutzerdefinierte Analysetools erstellen und diese feldweise in Ihrem Indexschema zuordnen.  
-Ein benutzerdefiniertes Analysetool kann einen vordefinierten Tokenizer mit den Standard- oder den benutzerdefinierte Optionen verwenden.  
-
-| type | BESCHREIBUNG |
-| ---- | ----------- | 
-|Name|Er darf nur Buchstaben, Ziffern, Leerzeichen, Bindestriche und Unterstriche enthalten. Er muss mit alphanumerischen Zeichen beginnen und enden und darf maximal 128 Zeichen lang sein.|  
-|type|Name der Tokenizer aus der Liste der unterstützten Tokenizer. Informationen dazu finden Sie in der Spalte **tokenizer_type** in der Tabelle [Tokenizer](#Tokenizers) unten.|  
-|Tastatur|Müssen gültige Optionen für einen bestimmten Tokenizertyp aus der Tabelle [Tokenizer](#Tokenizers) unten sein.|  
-
-### <a name="token-filters"></a>Tokenfilter
-
- Ein Tokenfilter wird verwendet, um die von einem Tokenizer generierten Token herauszufiltern oder zu ändern. Sie können beispielsweise einen Filter für Kleinbuchstaben angeben, mit dem alle Zeichen in Kleinbuchstaben konvertiert werden.   
-Sie können in einem benutzerdefinierten Analysemodul mehrere Tokenfilter verwenden. Tokenfilter werden in der Reihenfolge ausgeführt, in der sie aufgeführt sind.  
-
-| type | BESCHREIBUNG |
-| ---- | ----------- |  
-|Name|Er darf nur Buchstaben, Ziffern, Leerzeichen, Bindestriche und Unterstriche enthalten. Er muss mit alphanumerischen Zeichen beginnen und enden und darf maximal 128 Zeichen lang sein.|  
-|type|Name des Tokenfilters aus der Liste der unterstützten Tokenfilter. Informationen dazu finden Sie in der Spalte **token_filter_type** in der Tabelle [Tokenfilter](#TokenFilters) unten.|  
-|Tastatur|Müssen [Tokenfilter](#TokenFilters) eines bestimmten Tokenfiltertyps sein.|  
-
-<a name="PropertyReference"></a>  
-
-## <a name="property-reference"></a>Eigenschaftsverweis
-
-Dieser Abschnitt enthält die gültigen Werte für Attribute, die in der Definition eines benutzerdefinierten Analysetools, Tokenizers, Zeichenfilters oder Tokenfilters in Ihrem Index angegeben sind. Analysetools, Tokenizer und Filter, die mit Apache Lucene implementiert sind, bieten Links zur Lucene-API-Dokumentation.
-
-<a name="AnalyzerTable"></a>
-
-###  <a name="predefined-analyzers-reference"></a>Vordefinierte Analysetoolreferenz
+Wenn Sie ein integriertes Analysetool mit benutzerdefinierten Optionen verwenden möchten, lassen sich diese Optionen durch Erstellen eines benutzerdefinierten Analysetools angeben. Wenn Sie dagegen ein benutzerdefiniertes Analysetool unverändert verwenden möchten, müssen Sie lediglich in der Felddefinition [den entsprechenden Namen angeben](search-analyzers.md#how-to-specify-analyzers).
 
 |**analyzer_name**|**analyzer_type**  <sup>1</sup>|**Beschreibung und Optionen**|  
-|-|-|-|  
+|-----------------|-------------------------------|---------------------------|  
 |[keyword](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html)| (Der Typ gilt nur, wenn Optionen verfügbar sind.) |Behandelt den gesamten Inhalt eines Felds als ein einzelnes Token. Dies ist nützlich für Daten wie Postleitzahlen, IDs und einige Produktnamen.|  
-|[pattern](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/miscellaneous/PatternAnalyzer.html)|PatternAnalyzer|Trennt Text flexibel über ein reguläres Ausdrucksmuster in Begriffe.<br /><br /> **Optionen**<br /><br /> lowercase (Typ: Boolscher Wert) – bestimmt, ob Begriffe klein geschrieben werden. Der Standardwert ist „true“.<br /><br /> [pattern](https://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html?is-external=true) (Typ: Zeichenfolge) – ein reguläres Ausdrucksmuster zum Abgleich von Tokentrennlinien. Der Standardwert ist `\W+`, was zum Abgleich von Nicht-Wortzeichen dient.<br /><br /> [flags](https://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html#field_summary) (Typ: Zeichenfolge) – Flags für einen regulären Ausdruck. Der Standardwert ist eine leere Zeichenfolge. Zulässige Werte: CANON_EQ, CASE_INSENSITIVE, COMMENTS, DOTALL, LITERAL, MULTILINE, UNICODE_CASE, UNIX_LINES<br /><br /> stopwords (Typ: Zeichenfolgenarray) – eine Liste an Stoppwörtern. Der Standardwert ist eine leere Liste.|  
+|[pattern](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/miscellaneous/PatternAnalyzer.html)|PatternAnalyzer|Trennt Text flexibel über ein reguläres Ausdrucksmuster in Begriffe. </br></br>**Optionen** </br></br>lowercase (Typ: Boolscher Wert) – bestimmt, ob Begriffe klein geschrieben werden. Der Standardwert ist „true“. </br></br>[pattern](https://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html?is-external=true) (Typ: Zeichenfolge) – ein reguläres Ausdrucksmuster zum Abgleich von Tokentrennlinien. Der Standardwert ist `\W+`, was zum Abgleich von Nicht-Wortzeichen dient. </br></br>[flags](https://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html#field_summary) (Typ: Zeichenfolge) – Flags für einen regulären Ausdruck. Der Standardwert ist eine leere Zeichenfolge. Zulässige Werte: CANON_EQ, CASE_INSENSITIVE, COMMENTS, DOTALL, LITERAL, MULTILINE, UNICODE_CASE, UNIX_LINES </br></br>stopwords (Typ: Zeichenfolgenarray) – eine Liste an Stoppwörtern. Der Standardwert ist eine leere Liste.|  
 |[simple](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/SimpleAnalyzer.html)|(Der Typ gilt nur, wenn Optionen verfügbar sind.) |Teilt Text an Nicht-Buchstaben und konvertiert ihn in Kleinbuchstaben. |  
-|[standard](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) <br />(Wird auch als standard.lucene bezeichnet.)|StandardAnalyzer|Standardmäßiges Lucene-Analysetool, bestehend aus dem Standardtokenizer, Kleinbuchstabenfilter und Stoppfilter.<br /><br /> **Optionen**<br /><br /> maxTokenLength (Typ: int) – die maximale Tokenlänge. Der Standardwert ist 255. Token, die die maximale Länge überschreiten, werden geteilt. Ein Token darf maximal 300 Zeichen lang sein.<br /><br /> stopwords (Typ: Zeichenfolgenarray) – eine Liste an Stoppwörtern. Der Standardwert ist eine leere Liste.|  
+|[standard](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) </br>(Wird auch als standard.lucene bezeichnet.)|StandardAnalyzer|Standardmäßiges Lucene-Analysetool, bestehend aus dem Standardtokenizer, Kleinbuchstabenfilter und Stoppfilter. </br></br>**Optionen** </br></br>maxTokenLength (Typ: int) – die maximale Tokenlänge. Der Standardwert ist 255. Token, die die maximale Länge überschreiten, werden geteilt. Ein Token darf maximal 300 Zeichen lang sein. </br></br>stopwords (Typ: Zeichenfolgenarray) – eine Liste an Stoppwörtern. Der Standardwert ist eine leere Liste.|  
 |standardasciifolding.Lucene|(Der Typ gilt nur, wenn Optionen verfügbar sind.) |Standardanalysetool mit ASCII-Folding-Filter. |  
-|[stop](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/StopAnalyzer.html)|StopAnalyzer|Teilt Text an Nicht-Buchstaben, wendet die Kleinbuchstaben- und Stoppwort-Tokenfilter an.<br /><br /> **Optionen**<br /><br /> stopwords (Typ: Zeichenfolgenarray) – eine Liste an Stoppwörtern. Der Standard ist eine vordefinierte Liste für Englisch. |  
+|[stop](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/StopAnalyzer.html)|StopAnalyzer|Teilt Text an Nicht-Buchstaben, wendet die Kleinbuchstaben- und Stoppwort-Tokenfilter an. </br></br>**Optionen** </br></br>stopwords (Typ: Zeichenfolgenarray) – eine Liste an Stoppwörtern. Der Standard ist eine vordefinierte Liste für Englisch. |  
 |[whitespace](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/WhitespaceAnalyzer.html)|(Der Typ gilt nur, wenn Optionen verfügbar sind.) |Ein Analysetool, das den Whitespace-Tokenizer verwendet. Token mit mehr als 255 Zeichen werden geteilt.|  
 
- <sup>1</sup> Analysetooltypen wird in Code immer „#Microsoft.Azure.Search“ vorangestellt, sodass „PatternAnalyzer“ als „#Microsoft.Azure.Search.PatternAnalyzer“ angegeben wird. Wir haben das Präfix aus Gründen der Übersichtlichkeit entfernt, aber das Präfix ist in Ihrem Code erforderlich. 
- 
-Der „analyzer_type“ wird nur für Analysetools angegeben, die angepasst werden können. Wenn es keine Optionen gibt, wie es beim Schlüsselwortanalysetool der Fall ist, gibt es keinen zugehörigen #Microsoft.Azure.Search-Typ.
+ <sup>1</sup> Analysetooltypen wird in Code immer „#Microsoft.Azure.Search“ vorangestellt, sodass „PatternAnalyzer“ als „#Microsoft.Azure.Search.PatternAnalyzer“ angegeben wird. Wir haben das Präfix aus Gründen der Übersichtlichkeit entfernt, aber das Präfix ist in Ihrem Code erforderlich.
 
+Der „analyzer_type“ wird nur für Analysetools angegeben, die angepasst werden können. Wenn es keine Optionen gibt, wie es beim Schlüsselwortanalysetool der Fall ist, gibt es keinen zugehörigen #Microsoft.Azure.Search-Typ.
 
 <a name="CharFilter"></a>
 
-###  <a name="char-filters-reference"></a>Zeichenfilterreferenz
+## <a name="character-filters"></a>Zeichenfilter
 
 In der folgenden Tabelle bieten die Zeichenfilter, die mit Apache Lucene implementiert wurden, Links zur Lucene-API-Dokumentation.
 
 |**char_filter_name**|**char_filter_type** <sup>1</sup>|**Beschreibung und Optionen**|  
-|-|-|-|
+|--------------------|---------------------------------|---------------------------|
 |[html_strip](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/charfilter/HTMLStripCharFilter.html)|(Der Typ gilt nur, wenn Optionen verfügbar sind.)  |Ein Zeichenfilter, der versucht, HTML-Konstrukte zu entfernen.|  
-|[mapping](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/charfilter/MappingCharFilter.html)|MappingCharFilter|Ein Zeichenfilter, der anhand der Zuordnungsoptionen definierten Zuordnungen anwendet. Der Abgleich ist umfangreich (der längste Musterabgleich an einem bestimmten Punkt wird verwendet). Eine Ersetzung kann eine leere Zeichenfolge sein.<br /><br /> **Optionen**<br /><br /> mappings (Type: Zeichenfolgenarray) – eine Liste an Zuordnungen im folgenden Format: "a=>b" (alle Vorkommen des Zeichens „a“ werden durch das Zeichen „b“ ersetzt). Erforderlich.|  
-|[pattern_replace](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/pattern/PatternReplaceCharFilter.html)|PatternReplaceCharFilter|Ein Zeichenfilter, der Zeichen in der Eingabezeichenfolge ersetzt. Er verwendet einen regulären Ausdruck, um zu erhaltende Zeichenfolgen zu identifizieren, und ein Ersatzmuster, um zu ersetzende Zeichen zu identifizieren. Beispiel: input text = "aa  bb aa bb", pattern="(aa)\\\s+(bb)" replacement="$1#$2", result = "aa#bb aa#bb".<br /><br /> **Optionen**<br /><br /> pattern (Typ: Zeichenfolge) – erforderlich.<br /><br /> replacement (Typ: Zeichenfolge) – erforderlich.|  
+|[mapping](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/charfilter/MappingCharFilter.html)|MappingCharFilter|Ein Zeichenfilter, der anhand der Zuordnungsoptionen definierten Zuordnungen anwendet. Der Abgleich ist umfangreich (der längste Musterabgleich an einem bestimmten Punkt wird verwendet). Eine Ersetzung kann eine leere Zeichenfolge sein.  </br></br>**Optionen**  </br></br> mappings (Type: Zeichenfolgenarray) – eine Liste an Zuordnungen im folgenden Format: "a=>b" (alle Vorkommen des Zeichens „a“ werden durch das Zeichen „b“ ersetzt). Erforderlich.|  
+|[pattern_replace](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/pattern/PatternReplaceCharFilter.html)|PatternReplaceCharFilter|Ein Zeichenfilter, der Zeichen in der Eingabezeichenfolge ersetzt. Er verwendet einen regulären Ausdruck, um zu erhaltende Zeichenfolgen zu identifizieren, und ein Ersatzmuster, um zu ersetzende Zeichen zu identifizieren. Beispiel: input text = "aa  bb aa bb", pattern="(aa)\\\s+(bb)" replacement="$1#$2", result = "aa#bb aa#bb".  </br></br>**Optionen**  </br></br>pattern (Typ: Zeichenfolge) – erforderlich.  </br></br>replacement (Typ: Zeichenfolge) – erforderlich.|  
 
  <sup>1</sup> Zeichenfiltertypen wird in Code immer „#Microsoft.Azure.Search“ vorangestellt, sodass „MappingCharFilter“ als „#Microsoft.Azure.Search.MappingCharFilter“ angegeben wird. Wir haben das Präfix entfernt, um die Breite der Tabelle zu verringern, denken Sie aber daran, das Präfix in Ihren Code einzubinden. Beachten Sie, dass „char_filter_type“ nur für Filter angegeben wird, die angepasst werden können. Wenn es keine Optionen gibt, wie es bei html_strip der Fall ist, gibt es keinen zugehörigen #Microsoft.Azure.Search-Typ.
 
-<a name="Tokenizers"></a>
+<a name="tokenizers"></a>
 
-###  <a name="tokenizers-reference"></a>Tokenizerreferenz
+## <a name="tokenizers"></a>Tokenizer
 
-In der folgenden Tabelle bieten die Tokenizer, die mit Apache Lucene implementiert wurden, Links zur Lucene-API-Dokumentation.
+Ein Tokenizer teilt fortlaufenden Text in eine Folge von Token, z.B. das Zerlegen eines Satzes in Wörter. In der folgenden Tabelle bieten die Tokenizer, die mit Apache Lucene implementiert wurden, Links zur Lucene-API-Dokumentation.
 
 |**tokenizer_name**|**tokenizer_type** <sup>1</sup>|**Beschreibung und Optionen**|  
-|-|-|-|  
-|[Klassisch](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/standard/ClassicTokenizer.html)|ClassicTokenizer|Grammatikbasierter Tokenizer, der sich für die Verarbeitung der meisten europäischsprachigen Dokumente eignet.<br /><br /> **Optionen**<br /><br /> maxTokenLength (Typ: int) – die maximale Tokenlänge. Standardwert: 255, Maximum: 300. Token, die die maximale Länge überschreiten, werden geteilt.|  
-|[edgeNGram](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/ngram/EdgeNGramTokenizer.html)|EdgeNGramTokenizer|Tokenisiert die Eingabe von einem Edge in N-Gramme einer festgelegten Größe.<br /><br /> **Optionen**<br /><br /> minGram (type: int) – Standard: 1, Maximum: 300.<br /><br /> maxGram (type: int) – Standard: 2, Maximum: 300. Der Wert muss größer als „minGram“.<br /><br /> tokenChars (Typ: Zeichenfolgenarray) – Zeichenklassen, die in den Token beibehalten werden. Zulässige Werte: <br />„letter“, „digit“, „whitespace“, „punctuation“, „symbol“. Der Standardwert ist ein leeres Array – behält alle Zeichen bei. |  
-|[keyword_v2](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordTokenizer.html)|KeywordTokenizerV2|Gibt die gesamte Eingabe als ein einzelnes Token aus.<br /><br /> **Optionen**<br /><br /> maxTokenLength (Typ: int) – die maximale Tokenlänge. Standardwert: 256, Maximum: 300. Token, die die maximale Länge überschreiten, werden geteilt.|  
+|------------------|-------------------------------|---------------------------|  
+|[Klassisch](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/standard/ClassicTokenizer.html)|ClassicTokenizer|Grammatikbasierter Tokenizer, der sich für die Verarbeitung der meisten europäischsprachigen Dokumente eignet.  </br></br>**Optionen**  </br></br>maxTokenLength (Typ: int) – die maximale Tokenlänge. Standardwert: 255, Maximum: 300. Token, die die maximale Länge überschreiten, werden geteilt.|  
+|[edgeNGram](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/ngram/EdgeNGramTokenizer.html)|EdgeNGramTokenizer|Tokenisiert die Eingabe von einem Edge in N-Gramme einer festgelegten Größe.  </br></br> **Optionen**  </br></br>minGram (type: int) – Standard: 1, Maximum: 300.  </br></br>maxGram (type: int) – Standard: 2, Maximum: 300. Der Wert muss größer als „minGram“.  </br></br>tokenChars (Typ: Zeichenfolgenarray) – Zeichenklassen, die in den Token beibehalten werden. Zulässige Werte: </br>„letter“, „digit“, „whitespace“, „punctuation“, „symbol“. Der Standardwert ist ein leeres Array – behält alle Zeichen bei. |  
+|[keyword_v2](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordTokenizer.html)|KeywordTokenizerV2|Gibt die gesamte Eingabe als ein einzelnes Token aus.  </br></br>**Optionen**  </br></br>maxTokenLength (Typ: int) – die maximale Tokenlänge. Standardwert: 256, Maximum: 300. Token, die die maximale Länge überschreiten, werden geteilt.|  
 |[letter](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/LetterTokenizer.html)|(Der Typ gilt nur, wenn Optionen verfügbar sind.)  |Teilt Text in nicht-Buchstaben. Token mit mehr als 255 Zeichen werden geteilt.|  
 |[lowercase](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/LowerCaseTokenizer.html)|(Der Typ gilt nur, wenn Optionen verfügbar sind.)  |Teilt Text an Nicht-Buchstaben und konvertiert ihn in Kleinbuchstaben. Token mit mehr als 255 Zeichen werden geteilt.|  
-| microsoft_language_tokenizer| MicrosoftLanguageTokenizer| Teilt Text mit sprachspezifische Regeln auf.<br /><br /> **Optionen**<br /><br /> maxTokenLength (Typ: int) – die maximale Tokenlänge, Standard: 255, Maximum: 300. Token, die die maximale Länge überschreiten, werden geteilt. Token mit mehr als 300 Zeichen werden zunächst in Token mit 300 Zeichen aufgeteilt und dann wird jeder dieser Token basierend auf "maxTokenLength" unterteilt.<br /><br />isSearchTokenizer (Typ: Boolscher Wert) – wird auf „true“ gesetzt, wenn er als Such-Tokenizer verwendet wird, wird auf „false“ gesetzt, wenn er als Indexierungs-Tokenizer verwendet wird. <br /><br /> language (Type: Zeichenfolge) – zu verwendende Sprache, Standard „english“. Zulässige Werte sind:<br />"bangla", "bulgarian", "catalan", "chineseSimplified",  "chineseTraditional", "croatian", "czech", "danish", "dutch", "english",  "french", "german", "greek", "gujarati", "hindi", "icelandic", "indonesian", "italian", "japanese", "kannada", "korean", "malay", "malayalam", "marathi", "norwegianBokmaal", "polish", "portuguese", "portugueseBrazilian", "punjabi", "romanian", "russian", "serbianCyrillic", "serbianLatin", "slovenian", "spanish", "swedish", "tamil", "telugu", "thai", "ukrainian", "urdu", "vietnamese" |
-| microsoft_language_stemming_tokenizer | MicrosoftLanguageStemmingTokenizer| Teilt Text nach sprachspezifischen Regeln auf und reduziert Wörter auf ihre Grundformen.<br /><br /> **Optionen**<br /><br />maxTokenLength (Typ: int) – die maximale Tokenlänge, Standard: 255, Maximum: 300. Token, die die maximale Länge überschreiten, werden geteilt. Token mit mehr als 300 Zeichen werden zunächst in Token mit 300 Zeichen aufgeteilt und dann wird jeder dieser Token basierend auf "maxTokenLength" unterteilt.<br /><br /> isSearchTokenizer (Typ: Boolscher Wert) – wird auf „true“ gesetzt, wenn er als Such-Tokenizer verwendet wird, wird auf „false“ gesetzt, wenn er als Indexierungs-Tokenizer verwendet wird.<br /><br /> language (Type: Zeichenfolge) – zu verwendende Sprache, Standard „english“. Zulässige Werte sind:<br />"arabic", "bangla", "bulgarian", "catalan", "croatian", "czech", "danish", "dutch", "english", "estonian", "finnish", "french", "german", "greek", "gujarati", "hebrew", "hindi", "hungarian", "icelandic", "indonesian", "italian", "kannada", "latvian", "lithuanian", "malay", "malayalam", "marathi", "norwegianBokmaal", "polish", "portuguese", "portugueseBrazilian", "punjabi", "romanian", "russian", "serbianCyrillic", "serbianLatin", "slovak", "slovenian", "spanish", "swedish", "tamil", "telugu", "turkish", "ukrainian", "urdu" |
-|[nGram](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/ngram/NGramTokenizer.html)|NGramTokenizer|Tokenisiert die Eingabe in N-Gramme einer festgelegten Größe.<br /><br /> **Optionen**<br /><br /> minGram (type: int) – Standard: 1, Maximum: 300.<br /><br /> maxGram (type: int) – Standard: 2, Maximum: 300. Der Wert muss größer als „minGram“. <br /><br /> tokenChars (Typ: Zeichenfolgenarray) – Zeichenklassen, die in den Token beibehalten werden. Zulässige Werte: „letter“, „digit“, „whitespace“, „punctuation“, „symbol“. Der Standardwert ist ein leeres Array – behält alle Zeichen bei. |  
-|[path_hierarchy_v2](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/path/PathHierarchyTokenizer.html)|PathHierarchyTokenizerV2|Tokenizer für pfadähnliche Hierarchien.<br /><br /> **Optionen**<br /><br /> delimiter (type: Zeichenfolge) – Standard: '/.<br /><br /> replacement (Typ: Zeichenfolge) – wenn festgelegt, wird das Trennzeichen ersetzt. Standardmäßig ist dies identisch mit dem Wert für das Trennzeichen.<br /><br /> maxTokenLength (Typ: int) – die maximale Tokenlänge. Standardwert: 300, Maximum: 300. Pfade, die länger sind als „MaxTokenLength“ werden ignoriert.<br /><br /> reverse (Type: Boolscher Wert) – wenn auf „true“ festgelegt, werden Token in umgekehrter Reihenfolge generiert. Standardwert: false.<br /><br /> skip (Typ: Boolscher Wert) – Erste Token, die übersprungen werden. Die Standardeinstellung ist 0.|  
-|[pattern](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/pattern/PatternTokenizer.html)|PatternTokenizer|Dieser Tokenizer verwendet den RegEx-Musterabgleich, um verschiedene Token zu erstellen.<br /><br /> **Optionen**<br /><br /> [pattern](https://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html) (Typ: Zeichenfolge): Ein reguläres Ausdrucksmuster zum Abgleich von Tokentrennlinien. Der Standardwert ist `\W+`, was zum Abgleich von Nicht-Wortzeichen dient. <br /><br /> [flags](https://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html#field_summary) (Typ: Zeichenfolge) – Flags für einen regulären Ausdruck. Der Standardwert ist eine leere Zeichenfolge. Zulässige Werte: CANON_EQ, CASE_INSENSITIVE, COMMENTS, DOTALL, LITERAL, MULTILINE, UNICODE_CASE, UNIX_LINES<br /><br /> group (Typ: Int) – die Gruppe, die in Token extrahiert werden soll. Der Standardwert ist „-1 (split)“.|
-|[standard_v2](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardTokenizer.html)|StandardTokenizerV2|Teilt Text gemäß den [Regeln für Unicode-Textsegmentierung](https://unicode.org/reports/tr29/) auf.<br /><br /> **Optionen**<br /><br /> maxTokenLength (Typ: int) – die maximale Tokenlänge. Standardwert: 255, Maximum: 300. Token, die die maximale Länge überschreiten, werden geteilt.|  
-|[uax_url_email](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/standard/UAX29URLEmailTokenizer.html)|UaxUrlEmailTokenizer|Tokenisiert URLs und E-Mails als ein Token.<br /><br /> **Optionen**<br /><br /> maxTokenLength (Typ: int) – die maximale Tokenlänge. Standardwert: 255, Maximum: 300. Token, die die maximale Länge überschreiten, werden geteilt.|  
+| microsoft_language_tokenizer| MicrosoftLanguageTokenizer| Teilt Text mit sprachspezifische Regeln auf.  </br></br>**Optionen**  </br></br>maxTokenLength (Typ: int) – die maximale Tokenlänge, Standard: 255, Maximum: 300. Token, die die maximale Länge überschreiten, werden geteilt. Token mit mehr als 300 Zeichen werden zunächst in Token mit 300 Zeichen aufgeteilt und dann wird jeder dieser Token basierend auf "maxTokenLength" unterteilt.  </br></br>isSearchTokenizer (Typ: Boolscher Wert) – wird auf „true“ gesetzt, wenn er als Such-Tokenizer verwendet wird, wird auf „false“ gesetzt, wenn er als Indexierungs-Tokenizer verwendet wird. </br></br>language (Type: Zeichenfolge) – zu verwendende Sprache, Standard „english“. Zulässige Werte sind: </br>"bangla", "bulgarian", "catalan", "chineseSimplified",  "chineseTraditional", "croatian", "czech", "danish", "dutch", "english",  "french", "german", "greek", "gujarati", "hindi", "icelandic", "indonesian", "italian", "japanese", "kannada", "korean", "malay", "malayalam", "marathi", "norwegianBokmaal", "polish", "portuguese", "portugueseBrazilian", "punjabi", "romanian", "russian", "serbianCyrillic", "serbianLatin", "slovenian", "spanish", "swedish", "tamil", "telugu", "thai", "ukrainian", "urdu", "vietnamese" |
+| microsoft_language_stemming_tokenizer | MicrosoftLanguageStemmingTokenizer| Teilt Text nach sprachspezifischen Regeln auf und reduziert Wörter auf ihre Grundformen. </br></br>**Optionen** </br></br>maxTokenLength (Typ: int) – die maximale Tokenlänge, Standard: 255, Maximum: 300. Token, die die maximale Länge überschreiten, werden geteilt. Token mit mehr als 300 Zeichen werden zunächst in Token mit 300 Zeichen aufgeteilt und dann wird jeder dieser Token basierend auf "maxTokenLength" unterteilt. </br></br> isSearchTokenizer (Typ: Boolscher Wert) – wird auf „true“ gesetzt, wenn er als Such-Tokenizer verwendet wird, wird auf „false“ gesetzt, wenn er als Indexierungs-Tokenizer verwendet wird. </br></br>language (Type: Zeichenfolge) – zu verwendende Sprache, Standard „english“. Zulässige Werte sind: </br>"arabic", "bangla", "bulgarian", "catalan", "croatian", "czech", "danish", "dutch", "english", "estonian", "finnish", "french", "german", "greek", "gujarati", "hebrew", "hindi", "hungarian", "icelandic", "indonesian", "italian", "kannada", "latvian", "lithuanian", "malay", "malayalam", "marathi", "norwegianBokmaal", "polish", "portuguese", "portugueseBrazilian", "punjabi", "romanian", "russian", "serbianCyrillic", "serbianLatin", "slovak", "slovenian", "spanish", "swedish", "tamil", "telugu", "turkish", "ukrainian", "urdu" |
+|[nGram](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/ngram/NGramTokenizer.html)|NGramTokenizer|Tokenisiert die Eingabe in N-Gramme einer festgelegten Größe. </br></br>**Optionen** </br></br>minGram (type: int) – Standard: 1, Maximum: 300. </br></br>maxGram (type: int) – Standard: 2, Maximum: 300. Der Wert muss größer als „minGram“. </br></br>tokenChars (Typ: Zeichenfolgenarray) – Zeichenklassen, die in den Token beibehalten werden. Zulässige Werte: „letter“, „digit“, „whitespace“, „punctuation“, „symbol“. Der Standardwert ist ein leeres Array – behält alle Zeichen bei. |  
+|[path_hierarchy_v2](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/path/PathHierarchyTokenizer.html)|PathHierarchyTokenizerV2|Tokenizer für pfadähnliche Hierarchien. **Optionen** </br></br>delimiter (type: Zeichenfolge) – Standard: '/. </br></br>replacement (Typ: Zeichenfolge) – wenn festgelegt, wird das Trennzeichen ersetzt. Standardmäßig ist dies identisch mit dem Wert für das Trennzeichen. </br></br>maxTokenLength (Typ: int) – die maximale Tokenlänge. Standardwert: 300, Maximum: 300. Pfade, die länger sind als „MaxTokenLength“ werden ignoriert. </br></br>reverse (Type: Boolscher Wert) – wenn auf „true“ festgelegt, werden Token in umgekehrter Reihenfolge generiert. Standardwert: false. </br></br>skip (Typ: Boolscher Wert) – Erste Token, die übersprungen werden. Die Standardeinstellung ist 0.|  
+|[pattern](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/pattern/PatternTokenizer.html)|PatternTokenizer|Dieser Tokenizer verwendet den RegEx-Musterabgleich, um verschiedene Token zu erstellen. </br></br>**Optionen** </br></br> [pattern](https://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html) (Typ: Zeichenfolge): Ein reguläres Ausdrucksmuster zum Abgleich von Tokentrennlinien. Der Standardwert ist `\W+`, was zum Abgleich von Nicht-Wortzeichen dient. </br></br>[flags](https://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html#field_summary) (Typ: Zeichenfolge) – Flags für einen regulären Ausdruck. Der Standardwert ist eine leere Zeichenfolge. Zulässige Werte: CANON_EQ, CASE_INSENSITIVE, COMMENTS, DOTALL, LITERAL, MULTILINE, UNICODE_CASE, UNIX_LINES </br></br>group (Typ: Int) – die Gruppe, die in Token extrahiert werden soll. Der Standardwert ist „-1 (split)“.|
+|[standard_v2](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardTokenizer.html)|StandardTokenizerV2|Teilt Text gemäß den [Regeln für Unicode-Textsegmentierung](https://unicode.org/reports/tr29/) auf. </br></br>**Optionen** </br></br>maxTokenLength (Typ: int) – die maximale Tokenlänge. Standardwert: 255, Maximum: 300. Token, die die maximale Länge überschreiten, werden geteilt.|  
+|[uax_url_email](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/standard/UAX29URLEmailTokenizer.html)|UaxUrlEmailTokenizer|Tokenisiert URLs und E-Mails als ein Token. </br></br>**Optionen** </br></br> maxTokenLength (Typ: int) – die maximale Tokenlänge. Standardwert: 255, Maximum: 300. Token, die die maximale Länge überschreiten, werden geteilt.|  
 |[whitespace](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/WhitespaceTokenizer.html)|(Der Typ gilt nur, wenn Optionen verfügbar sind.) |Teilt Text an den Leerzeichen auf. Token mit mehr als 255 Zeichen werden geteilt.|  
 
  <sup>1</sup> Tokenizertypen wird in Code immer „#Microsoft.Azure.Search“ vorangestellt, sodass „ClassicTokenizer“ als „#Microsoft.Azure.Search.ClassicTokenizer“ angegeben wird. Wir haben das Präfix entfernt, um die Breite der Tabelle zu verringern, denken Sie aber daran, das Präfix in Ihren Code einzubinden. Beachten Sie, dass „tokenizer_type“ nur für Tokenizer angegeben wird, die angepasst werden können. Wenn es keine Optionen gibt, wie es beim Buchstabentokenizer der Fall ist, gibt es keinen zugehörigen #Microsoft.Azure.Search-Typ.
 
 <a name="TokenFilters"></a>
 
-###  <a name="token-filters-reference"></a>Tokenfilterreferenz
+## <a name="token-filters"></a>Tokenfilter
+
+Ein Tokenfilter wird verwendet, um die von einem Tokenizer generierten Token herauszufiltern oder zu ändern. Sie können beispielsweise einen Filter für Kleinbuchstaben angeben, mit dem alle Zeichen in Kleinbuchstaben konvertiert werden. Sie können in einem benutzerdefinierten Analysemodul mehrere Tokenfilter verwenden. Tokenfilter werden in der Reihenfolge ausgeführt, in der sie aufgeführt sind. 
 
 In der folgenden Tabelle bieten die Tokenfilter, die mit Apache Lucene implementiert wurden, Links zur Lucene-API-Dokumentation.
 
@@ -370,8 +299,8 @@ In der folgenden Tabelle bieten die Tokenfilter, die mit Apache Lucene implement
 
  <sup>1</sup> Tokenfiltertypen wird in Code immer „#Microsoft.Azure.Search“ vorangestellt, sodass „ArabicNormalizationTokenFilter“ als „#Microsoft.Azure.Search.ArabicNormalizationTokenFilter“ angegeben wird.  Wir haben das Präfix entfernt, um die Breite der Tabelle zu verringern, denken Sie aber daran, das Präfix in Ihren Code einzubinden.  
 
+## <a name="see-also"></a>Weitere Informationen
 
-## <a name="see-also"></a>Weitere Informationen  
- [REST-APIs für die kognitive Azure-Suche](/rest/api/searchservice/)   
- [Analysetools in der kognitiven Azure-Suche > Beispiele](search-analyzers.md#examples)    
- [Erstellen eines Index &#40;REST-API für die kognitive Azure-Suche&#41;](/rest/api/searchservice/create-index)
+- [REST-APIs für die kognitive Azure-Suche](/rest/api/searchservice/)
+- [Analysetools in Azure Cognitive Search (Beispiele)](search-analyzers.md#examples)
+- [Erstellen eines Index (REST)](/rest/api/searchservice/create-index)

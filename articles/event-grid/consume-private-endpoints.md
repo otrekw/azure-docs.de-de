@@ -3,12 +3,12 @@ title: Übermitteln von Ereignissen mithilfe einer privaten Verbindung
 description: In diesem Artikel wird beschrieben, wie Sie die Einschränkung umgehen, dass Ereignisse nicht mithilfe einer privaten Verbindung übertragen werden können.
 ms.topic: how-to
 ms.date: 02/12/2021
-ms.openlocfilehash: 9df78e1cc7734ba9e455ed686286658006f9445e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 75ae8ff2c341048c39156e43da3615788e9d0f0a
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105629290"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107309430"
 ---
 # <a name="deliver-events-using-private-link-service"></a>Übermitteln von Ereignissen mithilfe einer privaten Verbindung
 Derzeit ist es nicht möglich, Ereignisse über [private Endpunkte](../private-link/private-endpoint-overview.md) zu übermitteln. Das heißt, es gibt keine Unterstützung, wenn Sie strikte Anforderungen an die Netzwerkisolation haben, bei denen der Datenverkehr der übermittelten Ereignisse den privaten IP-Adressraum nicht verlassen darf. 
@@ -36,7 +36,7 @@ Führen Sie die folgenden Schritte aus, um mithilfe der verwalteten Identität E
 Führen Sie die folgenden Schritte aus, um Ereignisse an Service Bus-Warteschlangen oder -Themen in Ihrem Service Bus-Namespace mithilfe der verwalteten Identität zu übermitteln:
 
 1. Aktivieren der vom System zugewiesenen Identität: [Systemthemen](enable-identity-system-topics.md), [benutzerdefinierte Themen und Domänen](enable-identity-custom-topics-domains.md). 
-1. [Hinzufügen der Identität der Rolle **Azure Service Bus-Datensender**](/service-bus-messaging/service-bus-managed-service-identity#azure-built-in-roles-for-azure-service-bus) für den Service Bus-Namespace
+1. [Hinzufügen der Identität der Rolle **Azure Service Bus-Datensender**](../service-bus-messaging/service-bus-managed-service-identity.md#azure-built-in-roles-for-azure-service-bus) für den Service Bus-Namespace
 1. [Aktivieren Sie in Ihrem Service Bus-Namespace die Option **Vertrauenswürdigen Microsoft-Diensten die Umgehung dieser Firewall erlauben?**](../service-bus-messaging/service-bus-service-endpoints.md#trusted-microsoft-services) 
 1. [Konfigurieren Sie das Ereignisabonnement](managed-service-identity.md), das eine Service Bus-Warteschlange oder ein -Thema als Endpunkt verwendet, um die vom System zugewiesene Identität zu verwenden.
 

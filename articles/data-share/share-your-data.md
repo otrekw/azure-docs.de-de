@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
-ms.date: 11/12/2020
-ms.openlocfilehash: 89c2a725b853b5a2a7578dccc1fd503917e12962
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/24/2021
+ms.openlocfilehash: 8e149270d8f98cbf72d3864d238a3d8ddfd61c67
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94659623"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105639548"
 ---
 # <a name="tutorial-share-data-using-azure-data-share"></a>Tutorial: Freigeben von Daten mithilfe von Azure Data Share  
 
@@ -42,23 +42,10 @@ In diesem Tutorial lernen Sie Folgendes:
 Im Folgenden finden Sie eine Liste der Voraussetzungen für die Freigabe von Daten aus der SQL-Quelle. 
 
 #### <a name="prerequisites-for-sharing-from-azure-sql-database-or-azure-synapse-analytics-formerly-azure-sql-dw"></a>Voraussetzungen für die Freigabe von Daten aus Azure SQL-Datenbank oder Azure Synapse Analytics (ehemals Azure SQL DW)
-Beim Konfigurieren der Voraussetzungen können Sie sich an der [Schritt-für-Schritt-Demo](https://youtu.be/hIE-TjJD8Dc) orientieren.
 
 * Eine Instanz von Azure SQL-Datenbank oder Azure Synapse Analytics (ehemals Azure SQL DW) mit Tabellen und Sichten, die Sie freigeben möchten.
 * Berechtigung zum Schreiben in die Datenbanken in SQL Server (unter *Microsoft.Sql/servers/databases/write*). Diese Berechtigung ist in der Rolle **Mitwirkender** vorhanden.
-* Berechtigung zum Zugreifen auf die Datenbank für die verwaltete Identität der Data Share-Ressource. Die Berechtigung kann mit folgenden Schritten gewährt werden: 
-    1. Navigieren Sie im Azure-Portal zur SQL Server-Instanz, und legen Sie sich selbst als **Azure Active Directory-Administrator** fest.
-    1. Stellen Sie mit dem [Abfrage-Editor](../azure-sql/database/connect-query-portal.md#connect-using-azure-active-directory) oder SQL Server Management Studio mit Azure Active Directory-Authentifizierung eine Verbindung mit Azure SQL-Datenbank/Data Warehouse her. 
-    1. Führen Sie das folgende Skript aus, um die verwaltete Identität der Data Share-Ressource als „db_datareader“ hinzuzufügen. Sie müssen mithilfe von Active Directory und nicht über die SQL Server-Authentifizierung eine Verbindung herstellen. 
-    
-        ```sql
-        create user "<share_acct_name>" from external provider;     
-        exec sp_addrolemember db_datareader, "<share_acct_name>"; 
-        ```                   
-       Beachten Sie, dass *<share_acc_name>* der Name Ihrer Data Share-Ressource ist. Falls Sie noch keine Data Share-Ressource erstellt haben, können Sie später zu dieser Voraussetzung zurückkehren.  
-
-* Ein Azure SQL-Datenbank-Benutzer mit Zugriff vom Typ **db_datareader** zum Navigieren durch Tabellen und/oder Sichten sowie zum Auswählen der Tabellen und/oder Sichten, die Sie freigeben möchten. 
-
+* **Azure Active Directory-Administrator** von SQL Server
 * SQL Server-Firewallzugriff. Die Berechtigung kann mit folgenden Schritten gewährt werden: 
     1. Navigieren Sie im Azure-Portal zu „SQL Server“. Wählen Sie im linken Navigationsbereich die Option *Firewalls und virtuelle Netzwerke* aus.
     1. Klicken Sie auf **Ja** für *Azure-Diensten und -Ressourcen den Zugriff auf diesen Server gestatten*.
@@ -90,7 +77,6 @@ Beim Konfigurieren der Voraussetzungen können Sie sich an der [Schritt-für-Sch
 ### <a name="share-from-azure-data-explorer"></a>Freigeben über Azure Data Explorer
 * Ein Azure Data Explorer-Cluster mit Datenbanken, die Sie freigeben möchten.
 * Berechtigung zum Schreiben in den Azure Data Explorer-Cluster (unter *Microsoft.Kusto/clusters/write*). Diese Berechtigung ist in der Rolle **Mitwirkender** vorhanden.
-* Berechtigung zum Hinzufügen einer Rollenzuweisung zum Azure Data Explorer-Cluster (unter *Microsoft.Authorization/role assignments/write*). Diese Berechtigung ist in der Rolle **Besitzer** vorhanden.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 
@@ -186,7 +172,7 @@ Verwenden Sie die folgenden Befehle, um die Ressource zu erstellen:
 
     ![Hinzufügen von Datasets zu Ihrer Freigabe](./media/datasets.png "Datasets")
 
-1. Wählen Sie den gewünschten Datasettyp für das Hinzufügen aus. Die angezeigte Liste der Datasettypen ist abhängig von der Art der Freigabe (Momentaufnahme oder direkt), die Sie im vorherigen Schritt ausgewählt haben. Wenn Sie für die Freigabe eine Instanz von Azure SQL-Datenbank oder Azure Synapse Analytics (ehemals Azure SQL DW) verwenden, werden Sie beim Auflisten von Tabellen zur Eingabe von SQL-Anmeldeinformationen aufgefordert.
+1. Wählen Sie den gewünschten Datasettyp für das Hinzufügen aus. Die angezeigte Liste der Datasettypen ist abhängig von der Art der Freigabe (Momentaufnahme oder direkt), die Sie im vorherigen Schritt ausgewählt haben. Bei der Freigabe über eine Azure SQL-Datenbank- oder Azure Synapse Analytics-Instanz (vormals Azure SQL DW) werden Sie zur Eingabe einer Authentifizierungsmethode zum Auflisten von Tabellen aufgefordert. Wählen Sie die AAD-Authentifizierung aus, und aktivieren Sie das Kontrollkästchen **Allow Data Share to run the above 'create user' script on my behalf** (Data Share die Ausführung des obigen Skripts „Benutzer erstellen“ in meinem Namen erlauben). 
 
     ![AddDatasets](./media/add-datasets.png "Hinzufügen von Datasets")    
 

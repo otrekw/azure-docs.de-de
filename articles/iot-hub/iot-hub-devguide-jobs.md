@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 05/06/2019
 ms.custom: mqtt
 ms.openlocfilehash: 5c14e8cfcbf8df86b0f71d6b12025594d2e648c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "81730110"
 ---
 # <a name="schedule-jobs-on-multiple-devices"></a>Planen von Aufträgen auf mehreren Geräten
@@ -67,7 +67,7 @@ Die Abfragebedingung kann auch wie unten dargestellt für eine einzelne Geräte-
 "queryCondition" = "deviceId IN ['MyDevice1']"
 ```
 
-Unter [IoT Hub-Abfragesprache](iot-hub-devguide-query-language.md) wird die IoT Hub-Abfragesprache ausführlicher erläutert.
+Im Artikel zur [IoT Hub-Abfragesprache](iot-hub-devguide-query-language.md) wird die IoT Hub-Abfragesprache ausführlicher erläutert.
 
 Der folgende Codeausschnitt zeigt die Anforderung und Antwort für einen Auftrag, der zum Aufrufen einer direkten Methode namens „testMethod“ auf allen Geräten auf „contoso-hub-1“ geplant wurde:
 
@@ -191,15 +191,15 @@ Die folgende Liste enthält die Eigenschaften und entsprechenden Beschreibungen,
 | | **scheduled**: Für einen Zeitpunkt in der Zukunft geplant. |
 | | **running**: Derzeit aktiver Auftrag. |
 | | **canceled**: Der Auftrag wurde abgebrochen. |
-| | **failed**: Fehler beim Ausführen des Auftrags. |
-| | **completed**: Der Auftrag wurde abgeschlossen. |
+| | **failed**: Fehler beim Auftrag. |
+| | **completed**: Auftrag wurde abgeschlossen. |
 | **deviceJobStatistics** |Statistiken zur Ausführung des Auftrags. |
 | | **deviceJobStatistics**-Eigenschaften: |
 | | **deviceJobStatistics.deviceCount**: Anzahl der Geräte im Auftrag. |
-| | **deviceJobStatistics.failedCount**: Anzahl der Geräte, auf denen der Auftrag fehlgeschlagen ist. |
-| | **deviceJobStatistics.succeededCount**: Anzahl der Geräte, auf denen der Auftrag erfolgreich war. |
+| | **deviceJobStatistics.failedCount**: Anzahl der Geräte, bei denen der Auftrag fehlgeschlagen ist. |
+| | **deviceJobStatistics.succeededCount**: Anzahl der Geräte, bei denen der Auftrag erfolgreich ausgeführt wurde. |
 | | **deviceJobStatistics.runningCount**: Anzahl der Geräte, auf denen der Auftrag derzeit ausgeführt wird. |
-| | **deviceJobStatistics.pendingCount**: Anzahl der Geräte, auf denen die Ausführung des Auftrags aussteht. |
+| | **deviceJobStatistics.pendingCount**: Anzahl der Geräte, bei denen die Ausführung des Auftrags aussteht. |
 
 ### <a name="additional-reference-material"></a>Weiteres Referenzmaterial
 
@@ -211,7 +211,7 @@ Weitere Referenzthemen im IoT Hub-Entwicklerhandbuch:
 
 * Unter [Verstehen und Verwenden von Azure IoT Hub SDKs](iot-hub-devguide-sdks.md) werden die verschiedenen Sprach-SDKs aufgelistet, die Sie bei der Entwicklung von Geräte- und Dienst-Apps für die Interaktion mit IoT Hub verwenden können.
 
-* Unter [IoT Hub-Abfragesprache für Gerätezwillinge, Aufträge und Nachrichtenrouting](iot-hub-devguide-query-language.md) wird die IoT Hub-Abfragesprache beschrieben. Verwenden Sie diese Abfragesprache, um aus IoT Hub Informationen zu Gerätezwillingen und Aufträgen abzurufen.
+* [IoT Hub-Abfragesprache für Gerätezwillinge, Aufträge und Nachrichtenrouting](iot-hub-devguide-query-language.md) beschreibt die IoT Hub-Abfragesprache. Verwenden Sie diese Abfragesprache, um aus IoT Hub Informationen zu Gerätezwillingen und Aufträgen abzurufen.
 
 * [Kommunikation mit Ihrem IoT Hub mithilfe des Protokolls MQTT](iot-hub-mqtt-support.md) enthält weitere Informationen zur IoT Hub-Unterstützung für das MQTT-Protokoll.
 

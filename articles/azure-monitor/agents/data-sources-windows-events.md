@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/26/2021
-ms.openlocfilehash: a3baa83e2ae306f1e43aee52e29a151bad6f85d9
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 0eaa73fa7e0a9896a875af7e3a3aab22db2a37d0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102036593"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104657058"
 ---
 # <a name="collect-windows-event-log-data-sources-with-log-analytics-agent"></a>Datenquellen für das Sammeln von Windows-Ereignisprotokolldaten mit dem Log Analytics-Agent
 Windows-Ereignisprotokolle sind eine der gängigsten [Datenquellen](../agents/agent-data-sources.md) für Log Analytics-Agents auf virtuellen Windows-Computern, weil viele Anwendungen Daten in das Windows-Ereignisprotokoll schreiben.  Sie können Ereignisse aus Standardprotokollen wie beispielsweise dem System- und dem Anwendungsprotokoll sammeln und darüber hinaus benutzerdefinierte Protokolle angeben, die von den zu überwachenden Anwendungen erstellt werden.
@@ -28,6 +28,10 @@ Azure Monitor sammelt nur Ereignisse aus den Windows-Ereignisprotokollen, die in
 Während der Eingabe des Namens des Ereignisprotokolls bietet Azure Monitor Vorschläge gängiger Ereignisprotokollnamen an. Wenn das Protokoll, das Sie hinzufügen möchten, nicht in der Liste enthalten ist, können Sie es dennoch durch Eingabe des vollständigen Namens des Protokolls hinzufügen. Mithilfe der Ereignisanzeige können Sie den vollständigen Namen des Protokolls finden. Öffnen Sie in der Ereignisanzeige die Seite *Eigenschaften* des Protokolls, und kopieren Sie die Zeichenfolge aus dem Feld *Vollständiger Name*.
 
 [![Windows-Ereignisse konfigurieren](media/data-sources-windows-events/configure.png)](media/data-sources-windows-events/configure.png#lightbox)
+
+> [!IMPORTANT]
+> Die Erfassung von Sicherheitsereignissen kann nicht im Arbeitsbereich konfiguriert werden. Sie müssen [Azure Security Center](../../security-center/security-center-enable-data-collection.md) oder [Azure Sentinel](../../sentinel/connect-windows-security-events.md) zum Erfassen von Sicherheitsereignissen verwenden.
+
 
 > [!NOTE]
 > Kritische Ereignisse aus dem Windows-Ereignisprotokoll weisen in Azure Monitor-Protokollen den Schweregrad „Fehler“ auf.

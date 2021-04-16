@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: duau
 ms.openlocfilehash: 4ee50b4c7da27df3630c1b4d263f076da44189bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89399938"
 ---
 # <a name="application-layer-security-with-front-door"></a>Sicherheit für die Anwendungsschicht mit Front Door
@@ -25,7 +25,7 @@ Azure Front Door bietet Funktionen für den Schutz von Webanwendungen, um Ihre W
 Der Anwendungsschutz von Front Door ist weltweit in jeder Edge-Umgebung konfiguriert und auf Anwendungen abgestimmt und blockiert Nicht-HTTP(S)-Datenverkehr automatisch, sodass er Ihre Webanwendungen nicht erreicht. Unsere verteilte mehrinstanzenfähige Architektur ermöglicht einen umfangreichen globalen Schutz ohne Leistungseinbußen. Für HTTP(S)-Workloads bietet der Front Door-Schutzdienst für Webanwendungen ein umfassendes Regelmodul für benutzerdefinierte Regeln, einen vorkonfigurierten Regelsatz für verbreitete Angriffe und eine ausführliche Protokollierung für alle Anforderungen, die mit einer Regel übereinstimmen. Flexible Aktionen wie „Zulassen“, „Blockieren“ oder „Nur Protokollieren“ werden unterstützt.
 
 ## <a name="custom-access-control-rules"></a>Benutzerdefinierte Regeln für die Zugriffssteuerung
-- **Liste zugelassener und gesperrter IP-Adressen**: Sie können benutzerdefinierte Regeln zum Steuern des Zugriffs auf Ihre Webanwendungen basierend auf einer Liste von Client-IP-Adressen konfigurieren. Sowohl IPv4 als auch IPv6 werden unterstützt.
+- **Liste mit zugelassenen und gesperrten IP-Adressen**: Sie können benutzerdefinierte Regeln zum Steuern des Zugriffs auf Ihre Webanwendungen basierend auf einer Liste von Client-IP-Adressen konfigurieren. Sowohl IPv4 als auch IPv6 werden unterstützt.
 - **Geografiebasierte Zugriffssteuerung**: Sie können benutzerdefinierte Regeln konfigurieren, um den Zugriff auf Ihre Webanwendungen basierend auf dem Ländercode zu steuern, zu dem eine Client-IP-Adresse gehört.
 - **Filtern von HTTP-Parametern**: Sie können benutzerdefinierte Zugriffsregeln basierend auf übereinstimmenden HTTP(S)-Anforderungsparametern wie URL, Header und Abfragezeichenfolgen konfigurieren.
 

@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 02/17/2021
+ms.date: 03/15/2021
 ms.author: aahi
-ms.openlocfilehash: 97167485dae155670f0eb83fc3ef9cb658952251
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 7484b49ed3c868a1ad3e0f97dffa346f350e127f
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101750404"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106097333"
 ---
 > [!NOTE]
 > Um geschützte Gesundheitsinformationen (PHI) zu ermitteln, verwenden Sie den `domain=phi`-Parameter und die Modellversion `2020-04-01` oder höher.
@@ -54,8 +54,17 @@ Diese Kategorie enthält die folgende Entität:
         **Details**
 
         Namen von Personen Wird auch mit `domain=phi`zurückgegeben
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `Person` hinzu. In der API-Antwort wird `Person` zurückgegeben, falls es erkannt wird.
       
     :::column-end:::
+    
+    :::column span="":::
+      **Unterstützte Dokumentsprachen**
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt`, `pt-br`   
+      
+   :::column-end:::
 :::row-end:::
 
 ### <a name="category-persontype"></a>Kategorie: PersonType
@@ -74,8 +83,17 @@ Diese Kategorie enthält die folgende Entität:
         **Details**
 
         Von einer Person eingenommene Position oder Rolle
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `PersonType` hinzu. In der API-Antwort wird `PersonType` zurückgegeben, falls es erkannt wird.
       
     :::column-end:::
+
+    :::column span="":::
+      **Unterstützte Dokumentsprachen**
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt`, `pt-br`  
+      
+   :::column-end:::
 :::row-end:::
 
 ### <a name="category-phonenumber"></a>Kategorie: PhoneNumber
@@ -93,8 +111,18 @@ Diese Kategorie enthält die folgende Entität:
         **Details**
 
         Telefonnummern (nur US- und EU-Telefonnummern) Wird auch mit `domain=phi`zurückgegeben
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `PhoneNumber` hinzu. In der API-Antwort wird `PhoneNumber` zurückgegeben, falls es erkannt wird.
       
     :::column-end:::
+
+    :::column span="":::
+      **Unterstützte Dokumentsprachen**
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt` `pt-br`
+      
+   :::column-end:::
+
 :::row-end:::
 
 
@@ -112,9 +140,19 @@ Diese Kategorie enthält die folgende Entität:
     :::column span="2":::
         **Details**
 
-        Firmen, politische Gruppen, Musikgruppen, Sportvereine, Regierungsstellen und öffentliche Organisationen Nationalitäten und Religionen werden in diesem Entitätstyp nicht berücksichtigt.
+        Firmen, politische Gruppen, Musikgruppen, Sportvereine, Regierungsstellen und öffentliche Organisationen Nationalitäten und Religionen werden in diesem Entitätstyp nicht berücksichtigt. Wird auch mit `domain=phi`zurückgegeben
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `Organization` hinzu. In der API-Antwort wird `Organization` zurückgegeben, falls es erkannt wird.
       
     :::column-end:::
+
+    :::column span="":::
+      **Unterstützte Dokumentsprachen**
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt`, `pt-br`  
+      
+   :::column-end:::
+
 :::row-end:::
 
 #### <a name="subcategories"></a>Unterkategorien
@@ -125,15 +163,25 @@ Die Entität in dieser Kategorie kann die folgenden Unterkategorien aufweisen.
     :::column span="":::
         **Entitätsunterkategorie**
 
-        Medizin
+        Medizin    
 
     :::column-end:::
     :::column span="2":::
         **Details**
 
         Medizinische Unternehmen und Gruppen
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `OrganizationMedical` hinzu. In der API-Antwort wird `OrganizationMedical` zurückgegeben, falls es erkannt wird.
       
     :::column-end:::
+
+    :::column span="":::
+      **Unterstützte Dokumentsprachen**
+
+      `en`   
+      
+   :::column-end:::
+
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -144,8 +192,17 @@ Die Entität in dieser Kategorie kann die folgenden Unterkategorien aufweisen.
     :::column span="2":::
 
         Börsengruppen 
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `OrganizationStockExchange` hinzu. In der API-Antwort wird `OrganizationStockExchange` zurückgegeben, falls es erkannt wird.
       
     :::column-end:::
+
+    :::column span="":::
+
+      `en`   
+      
+   :::column-end:::
+
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -156,8 +213,16 @@ Die Entität in dieser Kategorie kann die folgenden Unterkategorien aufweisen.
     :::column span="2":::
 
         Sportbezogene Organisationen
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `OrganizationSports` hinzu. In der API-Antwort wird `OrganizationSports` zurückgegeben, falls es erkannt wird.
       
     :::column-end:::
+
+    :::column span="":::
+
+      `en`   
+      
+   :::column-end:::
 
 :::row-end:::
 
@@ -176,9 +241,19 @@ Diese Kategorie enthält die folgende Entität:
     :::column span="2":::
         **Details**
 
-        vollständige Postanschrift
+        vollständige Postanschrift Wird auch mit `domain=phi`zurückgegeben
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `Address` hinzu. In der API-Antwort wird `Address` zurückgegeben, falls es erkannt wird.
       
     :::column-end:::
+
+    :::column span="":::
+      **Unterstützte Dokumentsprachen**
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt`, `pt-br`
+      
+    :::column-end:::
+
 :::row-end:::
 
 ### <a name="category-email"></a>Kategorie: Email
@@ -195,10 +270,19 @@ Diese Kategorie enthält die folgende Entität:
     :::column span="2":::
         **Details**
 
-        E-Mail-Adressen
+        E-Mail-Adressen Wird auch mit `domain=phi`zurückgegeben
+      
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `Email` hinzu. In der API-Antwort wird `Email` zurückgegeben, falls es erkannt wird.
+
+    :::column-end:::
+    :::column span="":::
+      **Unterstützte Dokumentsprachen**
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt`, `pt-br`
       
     :::column-end:::
 :::row-end:::
+
 
 ### <a name="category-url"></a>Kategorie: URL
 
@@ -214,9 +298,19 @@ Diese Kategorie enthält die folgende Entität:
     :::column span="2":::
         **Details**
 
-        URLs zu Websites 
+        URLs zu Websites Wird auch mit `domain=phi`zurückgegeben
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `URL` hinzu. In der API-Antwort wird `URL` zurückgegeben, falls es erkannt wird.
       
     :::column-end:::
+
+    :::column span="":::
+      **Unterstützte Dokumentsprachen**
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt`, `pt-br`
+      
+    :::column-end:::
+
 :::row-end:::
 
 ### <a name="category-ip"></a>Kategorie: IP
@@ -233,7 +327,16 @@ Diese Kategorie enthält die folgende Entität:
     :::column span="2":::
         **Details**
 
-        Netzwerk-IP-Adressen 
+        Netzwerk-IP-Adressen Wird auch mit `domain=phi`zurückgegeben
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `IP` hinzu. In der API-Antwort wird `IP` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+
+    :::column span="":::
+      **Unterstützte Dokumentsprachen**
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt`, `pt-br`
       
     :::column-end:::
 :::row-end:::
@@ -253,8 +356,16 @@ Diese Kategorie enthält die folgenden Entitäten:
         **Details**
 
         Datums- und Uhrzeitangaben 
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `DateTime` hinzu. In der API-Antwort wird `DateTime` zurückgegeben, falls es erkannt wird.
       
     :::column-end:::
+:::column span="":::
+      **Unterstützte Dokumentsprachen**
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt`, `pt-br`
+      
+   :::column-end:::
 :::row-end:::
 
 #### <a name="subcategories"></a>Unterkategorien
@@ -271,7 +382,15 @@ Die Entität in dieser Kategorie kann die folgenden Unterkategorien aufweisen.
     :::column span="2":::
         **Details**
 
-        Kalenderdatumsangaben
+        Kalenderdatumsangaben Wird auch mit `domain=phi`zurückgegeben
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `Date` hinzu. In der API-Antwort wird `Date` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="2":::
+      **Unterstützte Dokumentsprachen**
+      
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt`, `pt-br`   
       
     :::column-end:::
 :::row-end:::
@@ -291,6 +410,14 @@ Diese Kategorie enthält die folgenden Entitäten:
         **Details**
 
         Zahlen und numerische Mengen.
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `Quantity` hinzu. In der API-Antwort wird `Quantity` zurückgegeben, falls es erkannt wird.
+      
+    :::column-end:::
+    :::column span="2":::
+      **Unterstützte Dokumentsprachen**
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt`, `pt-br`
       
     :::column-end:::
 :::row-end:::
@@ -309,9 +436,17 @@ Die Entität in dieser Kategorie kann die folgenden Unterkategorien aufweisen.
     :::column span="2":::
         **Details**
 
-        Altersangaben
+        Altersangaben 
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `Age` hinzu. In der API-Antwort wird `Age` zurückgegeben, falls es erkannt wird.
       
     :::column-end:::
+    :::column span="2":::
+        **Unterstützte Dokumentsprachen**
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt`, `pt-br`  
+      
+   :::column-end:::
 :::row-end:::
 
 ### <a name="azure-information"></a>Azure-Informationen
@@ -329,33 +464,36 @@ Diese Entitätskategorien beinhalten identifizierbare Azure-Informationen (einsc
         **Details**
 
         Autorisierungsschlüssel für einen Azure Cosmos DB-Server.   
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `AzureDocumentDBAuthKey` hinzu. In der API-Antwort wird `AzureDocumentDBAuthKey` zurückgegeben, falls es erkannt wird.
       
+    :::column-end:::
+    :::column span="":::
+      **Unterstützte Dokumentsprachen**
+
+      `en` 
+
     :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
 
         Verbindungszeichenfolge für Azure-IaaS-Datenbank und Azure SQL
+        
 
     :::column-end:::
     :::column span="2":::
 
         Verbindungszeichenfolge für eine Azure-IaaS-Datenbank (Infrastructure-as-a-Service) und Azure SQL
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `AzureIAASDatabaseConnectionAndSQLString` hinzu. In der API-Antwort wird `AzureIAASDatabaseConnectionAndSQLString` zurückgegeben, falls es erkannt wird.
       
     :::column-end:::
-:::row-end:::
-:::row:::
     :::column span="":::
 
-        Azure SQL-Verbindungszeichenfolge
+      `en` 
 
     :::column-end:::
-    :::column span="2":::
-
-        Verbindungszeichenfolge für eine Datenbank in Azure SQL-Datenbank.
-      
-    :::column-end:::
-
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -367,6 +505,13 @@ Diese Entitätskategorien beinhalten identifizierbare Azure-Informationen (einsc
 
         Verbindungszeichenfolge für Azure IoT. 
       
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `AzureIoTConnectionString` hinzu. In der API-Antwort wird `AzureIoTConnectionString` zurückgegeben, falls es erkannt wird.
+
+    :::column-end:::
+    :::column span="":::
+
+      `en` 
+
     :::column-end:::
 :::row-end:::
 :::row:::
@@ -378,7 +523,14 @@ Diese Entitätskategorien beinhalten identifizierbare Azure-Informationen (einsc
     :::column span="2":::
 
         Kennwort für die Azure-Veröffentlichungseinstellungen.
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `AzurePublishSettingPassword` hinzu. In der API-Antwort wird `AzurePublishSettingPassword` zurückgegeben, falls es erkannt wird.
       
+    :::column-end:::
+    :::column span="":::
+
+      `en` 
+
     :::column-end:::
 :::row-end:::
 :::row:::
@@ -390,7 +542,14 @@ Diese Entitätskategorien beinhalten identifizierbare Azure-Informationen (einsc
     :::column span="2":::
 
         Verbindungszeichenfolge für einen Redis-Cache.
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `AzureRedisCacheString` hinzu. In der API-Antwort wird `AzureRedisCacheString` zurückgegeben, falls es erkannt wird.
       
+    :::column-end:::
+    :::column span="":::
+
+      `en` 
+
     :::column-end:::
 :::row-end:::
 :::row:::
@@ -402,7 +561,14 @@ Diese Entitätskategorien beinhalten identifizierbare Azure-Informationen (einsc
     :::column span="2":::
 
         Verbindungszeichenfolge für Azure SaaS (Software-as-a-Service).
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `AzureSAS` hinzu. In der API-Antwort wird `AzureSAS` zurückgegeben, falls es erkannt wird.
       
+    :::column-end:::
+    :::column span="":::
+
+      `en` 
+
     :::column-end:::
 :::row-end:::
 :::row:::
@@ -414,7 +580,14 @@ Diese Entitätskategorien beinhalten identifizierbare Azure-Informationen (einsc
     :::column span="2":::
 
         Verbindungszeichenfolge für eine Azure Service Bus-Instanz.
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `AzureServiceBusString` hinzu. In der API-Antwort wird `AzureServiceBusString` zurückgegeben, falls es erkannt wird.
       
+    :::column-end:::
+    :::column span="":::
+
+      `en` 
+
     :::column-end:::
 :::row-end:::
 :::row:::
@@ -425,8 +598,15 @@ Diese Entitätskategorien beinhalten identifizierbare Azure-Informationen (einsc
     :::column-end:::
     :::column span="2":::
 
-       Schlüssel für ein Azure-Speicherkonto. 
+        Schlüssel für ein Azure-Speicherkonto. 
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `AzureStorageAccountKey` hinzu. In der API-Antwort wird `AzureStorageAccountKey` zurückgegeben, falls es erkannt wird.
       
+    :::column-end:::
+    :::column span="":::
+
+      `en` 
+
     :::column-end:::
 :::row-end:::
 :::row:::
@@ -437,8 +617,15 @@ Diese Entitätskategorien beinhalten identifizierbare Azure-Informationen (einsc
     :::column-end:::
     :::column span="2":::
 
-       Generischer Schlüssel für ein Azure-Speicherkonto.
+        Generischer Schlüssel für ein Azure-Speicherkonto.
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `AzureStorageAccountGeneric` hinzu. In der API-Antwort wird `AzureStorageAccountGeneric` zurückgegeben, falls es erkannt wird.
       
+    :::column-end:::
+    :::column span="":::
+
+      `en` 
+
     :::column-end:::
 :::row-end:::
 :::row:::
@@ -449,8 +636,15 @@ Diese Entitätskategorien beinhalten identifizierbare Azure-Informationen (einsc
     :::column-end:::
     :::column span="2":::
 
-       Verbindungszeichenfolge für einen Computer mit SQL Server.
+        Verbindungszeichenfolge für einen Computer mit SQL Server.
+
+        Fügen Sie zum Abrufen dieser Entitätskategorie dem `pii-categories`-Parameter `SQLServerConnectionString` hinzu. In der API-Antwort wird `SQLServerConnectionString` zurückgegeben, falls es erkannt wird.
       
+    :::column-end:::
+    :::column span="":::
+
+      `en` 
+
     :::column-end:::
 :::row-end:::
 

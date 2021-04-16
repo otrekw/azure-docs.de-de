@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/24/2021
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 6bc45bb6eec9dbf46e039dd1e2c32197820bb09d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b260793cc3c0b5ac3ffce8fac909e2db8991c713
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105626706"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107307808"
 ---
 # <a name="add-autocomplete-and-suggestions-to-client-apps-using-azure-cognitive-search"></a>Hinzufügen von AutoVervollständigen und Vorschlägen zu Client-Apps mithilfe von Azure Cognitive Search
 
@@ -67,7 +67,7 @@ Antworten werden durch die Parameter in der Anforderung gebildet:
 
 + Legen Sie für AutoVervollständigen den [autocompleteMode](/rest/api/searchservice/autocomplete#query-parameters) fest, um zu bestimmen, ob die Textvervollständigung für einen Begriff oder zwei Begriffe erfolgen soll. 
 
-+ Legen Sie für Vorschläge [$select](/rest/api/searchservice/suggestionse#query-parameters) fest, um Felder zurückzugeben, die eindeutige oder differenzierende Werte enthalten, z. B. Namen und Beschreibung. Vermeiden Sie Felder, die doppelte Werte (z. B. eine Kategorie oder Stadt) enthalten.
++ Legen Sie für Vorschläge [$select](/rest/api/searchservice/suggestions#query-parameters) fest, um Felder zurückzugeben, die eindeutige oder differenzierende Werte enthalten, z. B. Namen und Beschreibung. Vermeiden Sie Felder, die doppelte Werte (z. B. eine Kategorie oder Stadt) enthalten.
 
 Die folgenden weiteren Parameter gelten sowohl für AutoVervollständigen als auch für Vorschläge, sind möglicherweise aber für Vorschläge eher erforderlich, besonders wenn eine Vorschlagsfunktion mehrere Felder enthält.
 

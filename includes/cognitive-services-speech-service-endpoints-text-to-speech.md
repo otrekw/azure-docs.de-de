@@ -4,16 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/06/2019
 ms.author: wolfma
-ms.openlocfilehash: 1eefb7097f672552956e90a19e0a7b411cae8a24
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 832cc1d4f9ec3cec4ada6e964e3ab2f6f023dd41
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102455684"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106554209"
 ---
-### <a name="standard-and-neural-voices"></a>Standard- und neuronale Stimmen
+### <a name="neural-and-standard-voices"></a>Neuronale Stimmen und Standardstimmen
 
-Verwenden Sie diese Tabelle, um die **Verfügbarkeit von Standardstimmen** nach Region/Endpunkt zu ermitteln:
+Verwenden Sie diese Tabelle, um die **Verfügbarkeit von neuronalen Stimmen und Standardstimmen** nach Region/Endpunkt zu ermitteln:
 
 | Region | Endpunkt |
 |--------|----------|
@@ -34,26 +34,13 @@ Verwenden Sie diese Tabelle, um die **Verfügbarkeit von Standardstimmen** nach 
 | USA Süd Mitte | `https://southcentralus.tts.speech.microsoft.com/cognitiveservices/v1` |
 | Asien, Südosten | `https://southeastasia.tts.speech.microsoft.com/cognitiveservices/v1` |
 | UK, Süden | `https://uksouth.tts.speech.microsoft.com/cognitiveservices/v1` |
+| USA, Westen-Mitte | `https://westcentralus.tts.speech.microsoft.com/cognitiveservices/v1` |
 | Europa, Westen | `https://westeurope.tts.speech.microsoft.com/cognitiveservices/v1` |
 | USA (Westen) | `https://westus.tts.speech.microsoft.com/cognitiveservices/v1` |
 | USA, Westen 2 | `https://westus2.tts.speech.microsoft.com/cognitiveservices/v1` |
 
 > [!TIP]
 > [Die sich in der Vorschau befindlichen Stimmen](../articles/cognitive-services/Speech-Service/language-support.md#neural-voices-in-preview) sind nur in den folgenden drei Regionen verfügbar: „USA, Osten“, „Europa, Westen“ und „Asien, Südosten“.
-
-Verwenden Sie diese Tabelle, um die **Verfügbarkeit von neuronalen Stimmen** nach Region/Endpunkt zu ermitteln:
-
-| Region | Endpunkt |
-|--------|----------|
-| Australien (Osten) | `https://australiaeast.tts.speech.microsoft.com/cognitiveservices/v1` | 
-| Kanada, Mitte | `https://canadacentral.tts.speech.microsoft.com/cognitiveservices/v1` |
-| East US | `https://eastus.tts.speech.microsoft.com/cognitiveservices/v1` |
-| Indien, Mitte | `https://centralindia.tts.speech.microsoft.com/cognitiveservices/v1` |
-| USA Süd Mitte | `https://southcentralus.tts.speech.microsoft.com/cognitiveservices/v1` |
-| Asien, Südosten | `https://southeastasia.tts.speech.microsoft.com/cognitiveservices/v1` |
-| UK, Süden | `https://uksouth.tts.speech.microsoft.com/cognitiveservices/v1` |
-| Europa, Westen | `https://westeurope.tts.speech.microsoft.com/cognitiveservices/v1` |
-| USA, Westen 2 | `https://westus2.tts.speech.microsoft.com/cognitiveservices/v1` |
 
 ### <a name="custom-voices"></a>Benutzerdefinierte Stimmen
 

@@ -4,17 +4,17 @@ description: Azure Storage schützt Ihre Daten, indem der Dienst diese automatis
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 09/17/2020
+ms.date: 03/23/2021
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: b2471ccd2a412c7cbae9d4e59412ac055697e3d7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0688e14b77d885132d6c3fbaa44bed117cc7cf9d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102180359"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105641129"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>Azure Storage-Verschlüsselung für ruhende Daten
 
@@ -65,50 +65,9 @@ Die Verschlüsselung auf dem Servicelevel unterstützt die Verwendung von Micros
 
 Weitere Informationen zum Erstellen eines Speicherkontos, das die Infrastrukturverschlüsselung ermöglicht, finden Sie unter [Erstellen eines Speicherkontos mit aktivierter Infrastrukturverschlüsselung für die doppelte Datenverschlüsselung](infrastructure-encryption-enable.md).
 
-## <a name="encryption-scopes-for-blob-storage-preview"></a>Verschlüsselungsbereiche für Blobspeicher (Vorschau)
-
-Standardmäßig wird ein Speicherkonto mit einem Schlüssel verschlüsselt, der für das Speicherkonto festgelegt ist. Sie können entweder von Microsoft verwaltete Schlüssel oder kundenseitig verwaltete Schlüssel verwenden, die in Azure Key Vault gespeichert sind, um den Schlüssel, der Ihre Daten verschlüsselt, zu schützen und Zugriff darauf zu steuern.
-
-Verschlüsselungsbereiche ermöglichen Ihnen die optionale Verwaltung der Verschlüsselung auf der Ebene des Containers oder eines einzelnen Blobs. Sie können Verschlüsselungsbereiche verwenden, um sichere Grenzen zwischen Daten zu erstellen, die sich im selben Speicherkonto befinden, aber zu unterschiedlichen Kunden gehören.
-
-Mithilfe des Azure Storage-Ressourcenanbieters können Sie einen oder mehrere Verschlüsselungsbereiche für ein Speicherkonto erstellen. Beim Erstellen eines Verschlüsselungsbereichs geben Sie an, ob der Bereich durch einen von Microsoft verwalteten Schlüssel oder einen kundenseitig verwalteten Schlüssel, der in Azure Key Vault gespeichert ist, geschützt wird. Unterschiedliche Verschlüsselungsbereiche im gleichen Speicherkonto können entweder von Microsoft verwaltete oder kundenseitig verwaltete Schlüssel verwenden.
-
-Nachdem Sie einen Verschlüsselungsbereich erstellt haben, können Sie diesen für eine Anforderung zum Erstellen eines Containers oder Blobs angeben. Weitere Informationen zum Erstellen eines Verschlüsselungsbereichs finden Sie unter [Erstellen und Verwalten von Verschlüsselungsbereichen (Vorschau)](../blobs/encryption-scope-manage.md).
-
-> [!NOTE]
-> Verschlüsselungsbereiche werden bei Konten für den Lesezugriff auf georedundanten Speicher (RA-GRS) und für den Lesezugriff auf geozonenredundanten Speicher (RA-GZRS) während der Vorschau nicht unterstützt.
-
-[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
-
-> [!IMPORTANT]
-> Die Vorschauversion der Verschlüsselungsbereiche ist nur für die Verwendung außerhalb der Produktion bestimmt. Produktions-SLAs (Service Level Agreements, Vereinbarungen zum Servicelevel) sind derzeit nicht verfügbar.
->
-> Achten Sie darauf, alle derzeit nicht benötigten Verschlüsselungsbereiche zu deaktivieren, um unerwartete Kosten zu vermeiden.
-
-### <a name="create-a-container-or-blob-with-an-encryption-scope"></a>Erstellen eines Containers oder Blobs mit einem Verschlüsselungsbereich
-
-Blobs, die unter einem Verschlüsselungsbereich erstellt werden, werden mit dem für diesen Bereich angegebenen Schlüssel verschlüsselt. Sie können einen Verschlüsselungsbereich für ein einzelnes Blob angeben, wenn Sie es erstellen, oder Sie können einen Standardverschlüsselungsbereich angeben, wenn Sie einen Container erstellen. Wenn ein Standardverschlüsselungsbereich auf der Ebene eines Containers angegeben wird, werden alle Blobs in diesem Container mit dem Schlüssel verschlüsselt, der dem Standardbereich zugeordnet ist.
-
-Wenn Sie ein Blob in einem Container erstellen, der über einen Standardverschlüsselungsbereich verfügt, können Sie einen Verschlüsselungsbereich angeben, der den Standardverschlüsselungsbereich außer Kraft setzt, wenn der Container so konfiguriert ist, dass Außerkraftsetzungen des Standardverschlüsselungsbereichs zulässig sind. Um Außerkraftsetzungen des Standardverschlüsselungsbereichs zu verhindern, konfigurieren Sie den Container so, dass Außerkraftsetzungen für ein einzelnes Blob verweigert werden.
-
-Lesevorgänge für ein Blob, das zu einem Verschlüsselungsbereich gehört, erfolgen transparent, sofern der Verschlüsselungsbereich nicht deaktiviert ist.
-
-### <a name="disable-an-encryption-scope"></a>Deaktivieren eines Verschlüsselungsbereichs
-
-Wenn Sie einen Verschlüsselungsbereich deaktivieren, schlagen alle nachfolgenden Lese- oder Schreibvorgänge, die mit dem Verschlüsselungsbereich vorgenommen werden, mit dem HTTP-Fehlercode 403 (unzulässig) fehl. Wenn Sie den Verschlüsselungsbereich erneut aktivieren, werden Lese- und Schreibvorgänge in der Regel wieder normal ausgeführt.
-
-Wenn ein Verschlüsselungsbereich deaktiviert ist, wird Ihnen dieser nicht mehr in Rechnung gestellt. Deaktivieren Sie alle Verschlüsselungsbereiche, die nicht benötigt werden, um unnötige Gebühren zu vermeiden.
-
-Wenn Ihr Verschlüsselungsbereich durch kundenseitig verwaltete Schlüssel für Azure Key Vault geschützt ist, können Sie auch den zugehörigen Schlüssel im Schlüsseltresor löschen, um den Verschlüsselungsbereich zu deaktivieren. Beachten Sie, dass kundenseitig verwaltete Schlüssel in Azure Key Vault gegen vorläufiges und endgültiges Löschen geschützt werden, und ein gelöschter Schlüssel verhält sich diesen Eigenschaften entsprechend. Weitere Information finden Sie in den folgenden Themen in der Azure Key Vault-Dokumentation:
-
-- [Verwenden des vorläufigen Löschens mit PowerShell](../../key-vault/general/key-vault-recovery.md)
-- [Verwenden des vorläufigen Löschens mit der CLI](../../key-vault/general/key-vault-recovery.md)
-
-> [!NOTE]
-> Das Löschen eines Verschlüsselungsbereichs ist nicht möglich.
-
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Was ist der Azure-Schlüsseltresor?](../../key-vault/general/overview.md)
 - [Kundenseitig verwaltete Schlüssel für die Azure Storage-Verschlüsselung](customer-managed-keys-overview.md)
-- [Verschlüsselungsbereiche für Blobspeicher (Vorschau)](../blobs/encryption-scope-overview.md)
+- [Verschlüsselungsbereiche für Blobspeicher](../blobs/encryption-scope-overview.md)
+- [Angeben eines Verschlüsselungsschlüssels bei Richten einer Anforderung an Blob Storage](../blobs/encryption-customer-provided-keys.md)

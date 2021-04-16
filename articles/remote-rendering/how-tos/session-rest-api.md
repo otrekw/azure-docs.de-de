@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: 414dc161d7cba2e89d15c47b8da5abdfb7cb3338
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 4323884b2dee3eeccfe71ec7817d92467450e88e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101712163"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104950024"
 ---
 # <a name="use-the-session-management-rest-api"></a>Verwenden der REST-API für die Sitzungsverwaltung
 
@@ -20,13 +20,13 @@ Um die Azure Remote Rendering-Funktion zu verwenden, müssen Sie eine *Sitzung* 
 
 Informationen zur REST-API finden Sie [hier](/rest/api/mixedreality/2021-01-01preview/remoterendering). Informationen zu den Swagger-Definitionen finden Sie [hier](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mixedreality/data-plane/Microsoft.MixedReality).
 Wir stellen ein PowerShell-Skript im [ARR-Beispielrepository](https://github.com/Azure/azure-remote-rendering) im Ordner *Scripts* bereit, das den Namen *RenderingSession.ps1* trägt. Dieses Skript veranschaulicht die Verwendung unseres Diensts. Das Skript und seine Konfiguration werden hier beschrieben: [PowerShell-Beispielskripts](../samples/powershell-example-scripts.md)
-Es stehen auch SDKs für [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/mixedreality/Azure.MixedReality.RemoteRendering), Java und Python bereit.
+Es stehen auch SDKs für [.NET](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/remoterendering/Azure.MixedReality.RemoteRendering/README.md) und [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/remoterendering/azure-mixedreality-remoterendering/README.md) bereit.
 
 > [!IMPORTANT]
 > Latenz ist ein entscheidender Faktor bei Verwendung des Remoterenderings. Die beste Leistung erzielen Sie, wenn Sie Sitzungen in der Region erstellen, die Ihnen am nächsten liegt. Der [Latenztest von Azure](https://www.azurespeed.com/Azure/Latency) kann verwendet werden, um zu bestimmen, welche Region Ihnen am nächsten liegt.
 
 > [!IMPORTANT]
-> Ein ARR-Runtime-SDK ist erforderlich, damit ein Clientgerät eine Verbindung zu einer Renderingsitzung herstellen kann. Diese SDKs sind für [.NET](/dotnet/api/microsoft.azure.remoterendering?view=remoterendering) und [C++](/cpp/api/remote-rendering/) verfügbar. Abgesehen vom Herstellen einer Verbindung zum Dienst können diese SDKs auch verwendet werden, um Sitzungen zu starten und zu stoppen.
+> Ein ARR-Runtime-SDK ist erforderlich, damit ein Clientgerät eine Verbindung zu einer Renderingsitzung herstellen kann. Diese SDKs sind für [.NET](/dotnet/api/microsoft.azure.remoterendering) und [C++](/cpp/api/remote-rendering/) verfügbar. Abgesehen vom Herstellen einer Verbindung zum Dienst können diese SDKs auch verwendet werden, um Sitzungen zu starten und zu stoppen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
