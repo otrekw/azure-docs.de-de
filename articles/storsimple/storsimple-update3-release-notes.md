@@ -9,10 +9,10 @@ ms.date: 01/09/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: e081acc357c1b8872dd3a25c552d4cbe9785e212
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96007068"
 ---
 # <a name="update-3-release-notes-for-your-storsimple-8000-series-device"></a>Versionshinweise zu Update 3 für Geräte der StorSimple 8000-Serie
@@ -47,7 +47,7 @@ Die folgende Tabelle enthält eine Zusammenfassung der Probleme, die in Update 3
 | 2 |Lokale Volumes |In der vorherigen Version gab es bei lokalen Volumes Probleme im Zusammenhang mit E/A-, Volumekonvertierungs- und Datenpfadfehlern. Diese Probleme gibt es in dieser Version nicht mehr. |Ja |Nein |
 | 3 |Überwachung |Es gab mehrere Probleme im Zusammenhang mit dem Melden von Einheiten und der Überwachung sowie mit Diagrammen im Gerätedashboard, da für lokale Volumes falsche Informationen angezeigt wurden. Diese Probleme wurden in dieser Version behoben. |Ja |Nein |
 | 4 |Schreibintensive E/A-Vorgänge |Wenn StorSimple für Workloads mit vielen Schreibvorgängen verwendet wird, konnte gelegentlich ein Fehler auftreten, bei dem der Arbeitssatz in der Cloud abgestuft wurde. Dieser Fehler wurde in dieser Version behoben. |Ja |Ja |
-| 5 |Backup |Wenn ein Benutzer in den früheren Versionen der Software eine Sicherung eines Remoteklons erstellte, konnte es in seltenen Fällen zu Cloudfehlern kommen, die ein Timeout des Vorgangs verursachten. In dieser Version wurde das Problem behoben, sodass der Vorgang erfolgreich abgeschlossen wird. |Ja |Ja |
+| 5 |Backup |In bestimmten seltenen Fällen kam es in den früheren Versionen der Software zu Cloud-Fehlern, wenn der Benutzer ein Backup eines Remote-Klons erstellte, und der Vorgang wurde abgebrochen. In dieser Version ist das Problem behoben und der Vorgang wird erfolgreich abgeschlossen. |Ja |Ja |
 | 6 |Sicherungsrichtlinie |In einigen seltenen Fällen trat in den früheren Versionen der Software ein Fehler im Zusammenhang mit dem Löschen der Sicherungsrichtlinie auf. Dieses Problem wurde in dieser Version behoben. |Ja |Ja |
 
 ## <a name="known-issues-in-update-3"></a>Bekannte Probleme in Update 3

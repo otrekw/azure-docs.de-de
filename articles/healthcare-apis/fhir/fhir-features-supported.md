@@ -6,14 +6,14 @@ author: caitlinv39
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
-ms.date: 1/30/2021
+ms.date: 4/15/2021
 ms.author: cavoeg
-ms.openlocfilehash: 9bd61d65d6d64dac6081d3491deb8a15efc4a45b
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 56e3ba46ffb43aec907d729a2e74cdf6f7a62c32
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105048418"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107530643"
 ---
 # <a name="features"></a>Features
 
@@ -40,23 +40,23 @@ Derzeit ebenfalls unterstützte vorherige Versionen: `3.0.2`
 | history                        | Ja       | Ja       | Ja       |                                                     |
 | create                         | Ja       | Ja       | Ja       | Unterstützung für POST/PUT                               |
 | create (bedingt)           | Ja       | Ja       | Ja       | Issue [#1382](https://github.com/microsoft/fhir-server/issues/1382) |
-| search                         | Partial   | Partial   | Partial   | Siehe Abschnitt "suchen" weiter unten.                           |
-| Verkettete Suche                 | Ja       | Ja       | Teilweise   | Siehe Hinweis 2 weiter unten.                                   |
-| Umgekehrte verkettete Suche         | Ja       | Ja       | Teilweise   | Siehe Hinweis 2 weiter unten.                                   |
+| search                         | Teilweise   | Teilweise   | Teilweise   | Siehe Abschnitt "Suche" weiter unten.                           |
+| Verkettete Suche                 | Teilweise       | Ja       | Teilweise   | Siehe Hinweis 2 weiter unten.                                   |
+| Umgekehrte verkettete Suche         | Teilweise       | Ja       | Teilweise   | Siehe Hinweis 2 weiter unten.                                   |
 | capabilities                   | Ja       | Ja       | Ja       |                                                     |
 | Batch                          | Ja       | Ja       | Ja       |                                                     |
 | transaction                    | Nein        | Ja       | Nein        |                                                     |
-| paging                         | Teilweise   | Partial   | Teilweise   | `self` und `next` werden unterstützt                     |
+| paging                         | Teilweise   | Teilweise   | Teilweise   | `self` und `next` werden unterstützt                     |
 | intermediaries                 | Nein        | Nein        | Nein        |                                                     |
 
 > [!Note]
-> Der von der fhir-Spezifikation definierte Löschvorgang erfordert, dass nachfolgende nicht versionsspezifische Lesevorgänge einer Ressource den HTTP-Statuscode 410 zurückgibt und die Ressource nicht mehr durchsuchen gefunden wird. Die Azure-API für fhir ermöglicht Ihnen außerdem das vollständige Löschen der Ressource (einschließlich des gesamten Verlaufs). Zum vollständigen Löschen der Ressource können Sie eine Parametereinstellung `hardDelete` an true ( `DELETE {server}/{resource}/{id}?hardDelete=true` ) übergeben. Wenn Sie diesen Parameter nicht übergeben oder `hardDelete` auf false festlegen, sind die früheren Versionen der Ressource weiterhin verfügbar.
+> Der von der FHIR-Spezifikation definierte Löschvorgang erfordert, dass nach dem Löschen nachfolgende nicht versionsspezifische Lesevorgänge einer Ressource den HTTP-Statuscode 410 zurückgeben und die Ressource beim Suchen nicht mehr gefunden wird. Die Azure-API für FHIR ermöglicht Ihnen außerdem das vollständige Löschen der Ressource (einschließlich des gesamten Verlaufs). Zum vollständigen Löschen der Ressource können Sie eine Einstellung des Parameters `hardDelete` auf TRUE (`DELETE {server}/{resource}/{id}?hardDelete=true`) übergeben. Wenn Sie diesen Parameter nicht übergeben oder für `hardDelete` FALSE festlegen, sind die früheren Versionen der Ressource weiterhin verfügbar.
 
 
  **Hinweis 2**
-* Fügt Unterstützung für die verkettete und umgekehrte verkettete Suche in cosmosdb hinzu. 
+* Fügt MVP-Unterstützung für verkettete und umgekehrt verkettete FHIR-Suche in CosmosDB hinzu. 
 
-  In der Azure-API für den Einsatz von Azure und dem Open-Source-Server, der von Cosmos unterstützt wird, ist die verkettete Suche und umgekehrte verkettete Suche eine MVP-Implementierung Um eine verkettete Suche nach Cosmos DB durchzuführen, durchläuft die-Implementierung den Such Ausdruck und gibt Unterabfragen aus, um die entsprechenden Ressourcen aufzulösen. Dies erfolgt für jede Ebene des Ausdrucks. Wenn eine Abfrage mehr als 100 Ergebnisse zurückgibt, wird ein Fehler ausgelöst. Standardmäßig befindet sich die verkettete Suche hinter einem Merkmals Flag. Um die verkettete Suche in Cosmos DB zu verwenden, verwenden Sie den-Header `x-ms-enable-chained-search: true` . Weitere Informationen finden Sie unter [PR 1695](https://github.com/microsoft/fhir-server/pull/1695).
+  In der Azure API for FHIR und dem von Cosmos unterstützten Open-Source-FHIR-Server ist die verkettete Suche und die umgekehrte verkettete Suche eine MVP-Implementierung. Um eine verkettete Suche auf Cosmos DB zu ermöglichen, durchsucht die Implementierung den Suchausdruck und gibt Unterabfragen aus, um die übereinstimmenden Ressourcen zu beheben. Dies erfolgt für jede Ebene des Ausdrucks. Wenn eine Abfrage mehr als 100 Ergebnisse zurückgibt, wird ein Fehler ausgelöst. Standardmäßig befindet sich die verkettete Suche hinter einem Featureflag. Verwenden Sie den Header , um die verkettete Cosmos DB zu `x-ms-enable-chained-search: true` verwenden. Weitere Informationen finden Sie unter [PR 1695](https://github.com/microsoft/fhir-server/pull/1695).
 
 ## <a name="search"></a>Suchen,
 
@@ -98,7 +98,7 @@ Es werden alle Suchparametertypen unterstützt.
 | `_list`                 | Ja       | Ja       | Ja       |         |
 | `_type`                 | Ja       | Ja       | Ja       | Problem [Nr. 1562](https://github.com/microsoft/fhir-server/issues/1562)        |
 | `_security`             | Ja       | Ja       | Ja       |         |
-| `_profile`              | Teilweise   | Partial   | Partial   | In STU3 unterstützt. Wenn Sie Ihre Datenbank **nach** dem 20. Februar 2021 erstellt haben, haben Sie auch Unterstützung in R4. Wir arbeiten daran, _Profile für Datenbanken zu aktivieren, die vor dem 20. Februar 2021 erstellt wurden. |
+| `_profile`              | Teilweise   | Teilweise   | Teilweise   | Unterstützt in STU3. Wenn Sie Ihre Datenbank **nach** dem 20. Februar 2021 erstellt haben, haben Sie auch Unterstützung in R4. Wir arbeiten daran, „_profile“ für Datenbanken zu aktivieren, die vor dem 20. Februar 2021 erstellt wurden. |
 | `_text`                 | Nein        | Nein        | Nein        |         |
 | `_content`              | Nein        | Nein        | Nein        |         |
 | `_has`                  | Nein        | Nein        | Nein        |         |
@@ -108,12 +108,12 @@ Es werden alle Suchparametertypen unterstützt.
 | Suchergebnisparameter | Unterstützt: PaaS | Unterstützt: OSS (SQL) | Unterstützt: OSS (Cosmos DB) | Comment |
 |-------------------------|-----------|-----------|-----------|---------|
 | `_elements`             | Ja       | Ja       | Ja       | Problem [Nr. 1256](https://github.com/microsoft/fhir-server/issues/1256)        |
-| `_count`                | Ja       | Ja       | Ja       | `_count` ist auf 1000 Zeichen beschränkt. Wenn Sie auf einen höheren Wert als 1000 festgelegt ist, wird nur 1000 zurückgegeben, und im Paket wird eine Warnung zurückgegeben. |
+| `_count`                | Ja       | Ja       | Ja       | `_count` ist auf 1.000 Zeichen beschränkt. Wenn hierfür ein höherer Wert als 1.000 festgelegt ist, wird nur 1.000 zurückgegeben, und im Paket wird eine Warnung zurückgegeben. |
 | `_include`              | Ja       | Ja       | Ja       |Enthaltene Elemente sind auf 100 beschränkt. Einschließen in PaaS und OSS in Cosmos DB umfasst keine Unterstützung von :iterate.|
 | `_revinclude`           | Ja       | Ja       | Ja       | Enthaltene Elemente sind auf 100 beschränkt. Einschließen in PaaS und OSS in Cosmos DB umfasst [keine Unterstützung von :iterate](https://github.com/microsoft/fhir-server/issues/1313). Problem [Nr. 1319](https://github.com/microsoft/fhir-server/issues/1319)|
-| `_summary`              | Teilweise   | Partial   | Partial   | `_summary=count` wird unterstützt |
-| `_total`                | Partial   | Partial   | Partial   | `_total=none` und `_total=accurate`      |
-| `_sort`                 | Partial   | Partial   | Partial   |   `_sort=_lastUpdated` wird unterstützt       |
+| `_summary`              | Teilweise   | Teilweise   | Teilweise   | `_summary=count` wird unterstützt |
+| `_total`                | Partial   | Teilweise   | Teilweise   | `_total=none` und `_total=accurate`      |
+| `_sort`                 | Teilweise   | Teilweise   | Teilweise   |   `_sort=_lastUpdated` wird unterstützt       |
 | `_contained`            | Nein        | Nein        | Nein        |         |
 | `containedType`         | Nein        | Nein        | Nein        |         |
 | `_score`                | Nein        | Nein        | Nein        |         |
@@ -146,7 +146,7 @@ Derzeit werden die zulässigen Aktionen für eine bestimmte Rolle *global* auf d
 
 ## <a name="service-limits"></a>Diensteinschränkungen
 
-* [**Anforderungseinheiten (Request Units, RUs):**](../../cosmos-db/concepts-limits.md) Sie können bis zu 10.000 RUs im Portal für Azure API for FHIR konfigurieren. Sie benötigen mindestens 400 RUs oder 10 RUs/GB (je nachdem, welcher Wert größer ist). Wenn Sie mehr als 10.000 RUs benötigen, können Sie über ein Supportticket eine Erhöhung des Werts anfordern. Maximal sind 1.000.000 RUs verfügbar.
+* [**Anforderungseinheiten (Request Units, RUs):**](../../cosmos-db/concepts-limits.md) Sie können bis zu 10.000 RUs im Portal für Azure API for FHIR konfigurieren. Sie benötigen mindestens 400 RUs oder 40 RUs/GB, je nach Größe. Wenn Sie mehr als 10.000 RUs benötigen, können Sie über ein Supportticket eine Erhöhung des Werts anfordern. Maximal sind 1.000.000 RUs verfügbar.
 
 * **Gleichzeitige Verbindungen** und **Instanzen**: Standardmäßig stehen Ihnen fünf gleichzeitige Verbindungen in zwei Instanzen im Cluster (und somit insgesamt zehn gleichzeitige Anforderungen) zur Verfügung. Wenn Sie weitere gleichzeitige Anforderungen benötigen, öffnen Sie ein Supportticket mit Details zu Ihren Anforderungen.
 
@@ -160,12 +160,12 @@ Die Leistung des Systems hängt von der Anzahl der RUs, den gleichzeitigen Verbi
 
 | Anzahl der RUs | Ressourcen/s |    Max. Speicher (GB)*    |
 |----------|---------------|--------|                 
-| 400      | 5-10          |     40   |
-| 1\.000    | 100–150       |      100  |
-| 10.000   | 225–400       |      1\.000  |
-| 100.000  | 2\.500–4.000   |      10.000  |
+| 400      | 5-10          |     10   |
+| 1\.000    | 100–150       |      25  |
+| 10.000   | 225–400       |      250  |
+| 100.000  | 2\.500–4.000   |      2\.500  |
 
-Hinweis: Für Cosmos DB muss mindestens ein Durchsatz von 10 RU/s pro GB Speicher erreicht werden. Weitere Informationen finden Sie unter [Kontingente im Azure Cosmos DB-Dienst](../../cosmos-db/concepts-limits.md).
+Hinweis: Pro Cosmos DB Anforderung ist ein Mindestdurchsatz von 40 RU/s pro GB Speicher erforderlich. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

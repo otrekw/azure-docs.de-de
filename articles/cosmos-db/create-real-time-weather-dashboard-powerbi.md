@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 09/04/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 07a3deaf67c4f269b01d62ea25ddb212c1e01f6f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 73251fcbe9f149979d3fd62d14bbca86d77027f2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101657535"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105640130"
 ---
 # <a name="create-a-real-time-dashboard-using-azure-cosmos-db-and-power-bi"></a>Erstellen eines Echtzeitdashboards mit Azure Cosmos DB und Power BI
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -72,7 +72,7 @@ Richten Sie eine Erfassungspipeline zum Laden von [Wetterdaten](https://catalog.
    
    |Eigenschaft  |Datentyp  |Filtern  |
    |---------|---------|---------|
-   |_ts     |   Numeric      |  [_ts] > Duration.TotalSeconds(RangeStart - #datetime(1970, 1, 1, 0, 0, 0)) and [_ts] < Duration.TotalSeconds(RangeEnd - #datetime(1970, 1, 1, 0, 0, 0)))       |
+   |_ts        |   Numeric      |  [_ts] > Duration.TotalSeconds(RangeStart - #datetime(1970, 1, 1, 0, 0, 0)) and [_ts] < Duration.TotalSeconds(RangeEnd - #datetime(1970, 1, 1, 0, 0, 0)))       |
    |Datum (Beispiel: 2019-08-19)     |   String      | [Document.date]> DateTime.ToText(RangeStart,"yyyy-MM-dd") and [Document.date] < DateTime.ToText(RangeEnd,"yyyy-MM-dd")        |
    |Datum (Beispiel: 2019-08-11 12:00:00)   |  String       |  [Document.date]> DateTime.ToText(RangeStart," yyyy-mm-dd HH:mm:ss") and [Document.date] < DateTime.ToText(RangeEnd,"yyyy-mm-dd HH:mm:ss")       |
 
@@ -100,7 +100,7 @@ Richten Sie eine Erfassungspipeline zum Laden von [Wetterdaten](https://catalog.
 
 1. **Erstellen eines neuen Azure Analysis Services-Clusters** - [Erstellen Sie eine Instanz von Azure Analysis Services](../analysis-services/analysis-services-create-server.md) in derselben Region, in der sich das Azure Cosmos-Konto und der Databricks-Cluster befinden.
 
-1. **Erstellen eines neuen Analysis Services-Tabellenprojekts in Visual Studio** -  [Installieren Sie SQL Server Data Tools (SSDT)](/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017&preserve-view=true), und erstellen Sie in Visual Studio ein Analysis Services-Tabellenprojekt.
+1. **Erstellen eines neuen Analysis Services-Tabellenprojekts in Visual Studio** -  [Installieren Sie SQL Server Data Tools (SSDT)](/sql/ssdt/download-sql-server-data-tools-ssdt), und erstellen Sie in Visual Studio ein Analysis Services-Tabellenprojekt.
 
    :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/create-analysis-services-project.png" alt-text="Erstellen eines Azure Analysis Services-Projekts":::
 

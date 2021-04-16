@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 49edab5ed20749cb705d160e5cdc46a16bdee951
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dadb23b9a8d00d484a9c42db9007d8c5b94b4c78
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99258030"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306788"
 ---
 # <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>Konfigurieren von benutzerdefinierten Domänen per Azure AD-Anwendungsproxy
 
@@ -90,7 +90,7 @@ Veröffentlichen Sie Ihre App wie folgt per Anwendungsproxy mit einer benutzerde
    
    ![Klicken zum Hochladen eines Zertifikats](./media/application-proxy-configure-custom-domain/certificate.png)
    
-7. Navigieren Sie auf der Seite **SSL-Zertifikat** zur PFX-Zertifikatsdatei, und wählen Sie sie aus. Geben Sie das Kennwort für das Zertifikat ein, und wählen Sie **Zertifikat hochladen** aus. Weitere Informationen zu Zertifikaten finden Sie im Abschnitt [Zertifikate für benutzerdefinierte Domänen](#certificates-for-custom-domains). Wenn das Zertifikat nicht gültig ist oder ein anderes Problem mit dem Kennwort besteht, wird eine Fehlermeldung angezeigt. Die [Anwendungsproxy-FAQ](application-proxy-faq.md#application-configuration) enthalten einige Problembehandlungsschritte, die Sie testen können.
+7. Navigieren Sie auf der Seite **SSL-Zertifikat** zur PFX-Zertifikatsdatei, und wählen Sie sie aus. Geben Sie das Kennwort für das Zertifikat ein, und wählen Sie **Zertifikat hochladen** aus. Weitere Informationen zu Zertifikaten finden Sie im Abschnitt [Zertifikate für benutzerdefinierte Domänen](#certificates-for-custom-domains). Wenn das Zertifikat nicht gültig ist oder ein anderes Problem mit dem Kennwort besteht, wird eine Fehlermeldung angezeigt. Die [Anwendungsproxy-FAQ](application-proxy-faq.yml#application-configuration) enthalten einige Problembehandlungsschritte, die Sie testen können.
    
    ![Hochladen des Zertifikats](./media/application-proxy-configure-custom-domain/ssl-certificate.png)
    

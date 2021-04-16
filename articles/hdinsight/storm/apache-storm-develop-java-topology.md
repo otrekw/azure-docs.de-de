@@ -5,16 +5,16 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017,seoapr2020,devx-track-java
 ms.date: 04/27/2020
-ms.openlocfilehash: 620a4e1627b25af22db68173f35924376e26f5f8
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 8e51f99496514e40d6c3f85000384a14baf84946
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98929119"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104865365"
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>Erstellen einer Apache Storm-Topologie in Java
 
-In diesem Artikel erfahren Sie, wie Sie eine Java-basierte Topologie für Apache Storm erstellen. Sie erstellen eine Storm-Topologie, die eine Anwendung zur Wortzählung implementiert. Sie verwenden Apache Maven zum Erstellen und Packen des Projekts. Anschließend erfahren Sie, wie Sie die Topologie mit dem Apache Storm Flux-Framework definieren.
+In diesem Artikel erfahren Sie, wie Sie eine Java-basierte Topologie für Apache Storm erstellen. Sie erstellen eine Storm-Topologie, die eine Anwendung zur Wortzählung implementiert. Sie verwenden Apache Maven zum Erstellen und Verpacken des Projekts. Anschließend erfahren Sie, wie Sie die Topologie mit dem Apache Storm Flux-Framework definieren.
 
 Nach Abschluss der Schritte in diesem Dokument können Sie die Topologie für Apache Storm in HDInsight bereitstellen.
 
@@ -113,7 +113,7 @@ Fügen Sie anschließend nach der Zeile `<url>https://maven.apache.org</url>` de
 </repositories>
 ```
 
-## <a name="add-properties"></a>Eigenschaften hinzufügen
+## <a name="add-properties"></a>Hinzufügen von Eigenschaften
 
 Maven ermöglicht Ihnen das Definieren von Werten auf Projektebene, die als Eigenschaften bezeichnet werden. Fügen Sie in `pom.xml` nach der Zeile `</repositories>` den folgenden Text hinzu:
 
@@ -216,7 +216,7 @@ Dieser Abschnitt wird zum Hinzufügen von Plug-Ins, Ressourcen und anderen Optio
 
 ### <a name="configure-resources"></a>Konfigurieren der Ressourcen
 
-Im Abschnitt „resources“ können Sie nicht codebezogene Ressourcen, z.B. Konfigurationsdateien, hinzufügen, die von Komponenten in der Topologie benötigt werden. Fügen Sie für dieses Beispiel dem Abschnitt `<resources>` der Datei `pom.xml` den folgenden Text hinzu: Speichern und schließen Sie die Datei anschließend.
+Im Abschnitt „resources“ können Sie nicht codebezogene Ressourcen, z.B. Konfigurationsdateien, hinzufügen, die von Komponenten in der Topologie benötigt werden. Fügen Sie für dieses Beispiel dem Abschnitt `<resources>` der Datei `pom.xml` den folgenden Text hinzu: Speichern und schließen Sie dann die Datei.
 
 ```xml
 <resource>
@@ -234,11 +234,11 @@ Dieses Beispiel fügt dem Verzeichnis „resources“ im Stammverzeichnis des Pr
 
 Eine Java-basierte Apache Storm-Topologie besteht aus drei Komponenten, die Sie als Abhängigkeit erstellen (oder referenzieren) müssen.
 
-* **Spouts**: Liest Daten aus externen Quellen und gibt Datenströme in die Topologie aus.
+* **Spouts:** liest Daten aus externen Quellen und gibt Datenströme in die Topologie aus.
 
-* **Bolts**: Mit dieser Komponente werden Datenströme verarbeitet, die von Spouts oder anderen Bolts ausgegeben werden, und ein oder mehrere Datenströme ausgegeben.
+* **Bolts:** Mit dieser Komponente werden Datenströme verarbeitet, die von Spouts oder anderen Bolts ausgegeben werden, und mindestens ein Datenstrom ausgegeben.
 
-* **Topology**: Definiert die Anordnung der Spouts und Bolts und stellt den Einstiegspunkt für die Topologie bereit.
+* **Topology:** definiert die Anordnung der Spouts und Bolts und stellt den Einstiegspunkt für die Topologie bereit.
 
 ### <a name="create-the-spout"></a>Erstellen des Spouts
 
@@ -317,16 +317,16 @@ public class RandomSentenceSpout extends BaseRichSpout {
 > [!NOTE]  
 > Ein Beispiel zu einem Spout, der aus einer externen Datenquelle liest, finden Sie in den folgenden Beispielen:
 >
-> * [TwitterSampleSPout](https://github.com/apache/storm/blob/0.10.x-branch/examples/storm-starter/src/jvm/storm/starter/spout/TwitterSampleSpout.java): Ein Beispiel-Spout, der Daten aus Twitter liest.
-> * [Storm-Kafka](https://github.com/apache/storm/tree/0.10.x-branch/external/storm-kafka): Ein Spout, der Dateien aus Kafka liest.
+> * [TwitterSampleSpout:](https://github.com/apache/storm/blob/0.10.x-branch/examples/storm-starter/src/jvm/storm/starter/spout/TwitterSampleSpout.java) ein Beispiel-Spout, der Daten aus Twitter liest
+> * [Storm-Kafka:](https://github.com/apache/storm/tree/0.10.x-branch/external/storm-kafka) ein Spout, der Dateien aus Kafka liest
 
 ### <a name="create-the-bolts"></a>Erstellen des Bolts
 
 Bolts übernehmen die Datenverarbeitung. Bolts können alle Aufgaben übernehmen, beispielsweise Berechnungen, Persistenz oder Kommunikation mit externen Komponenten. Diese Topologie verwendet zwei Bolts:
 
-* **SplitSentence**: Unterteilt die von **RandomSentenceSpout** ausgegebenen Sätze in einzelne Wörter.
+* **SplitSentence**: unterteilt die von **RandomSentenceSpout** ausgegebenen Sätze in einzelne Wörter.
 
-* **WordCount**: Zählt das Vorkommen der einzelnen Wörter.
+* **WordCount**: zählt das Vorkommen der einzelnen Wörter
 
 #### <a name="splitsentence"></a>SplitSentence
 
@@ -482,7 +482,7 @@ Die Topologie verknüpft die Spouts und Bolts in einem Diagramm. Das Diagramm de
 
 Nachfolgend sehen Sie eine einfache Abbildung des Komponentendiagramms für diese Topologie.
 
-![Diagramm mit der Anordnung von Spouts und Bolts](./media/apache-storm-develop-java-topology/word-count-topology1.png)
+:::image type="content" source="./media/apache-storm-develop-java-topology/word-count-topology1.png" alt-text="Diagramm mit der Anordnung von Spouts und Bolts" border="false":::
 
 Geben Sie zum Implementieren der Topologie den folgenden Befehl ein, um die neue Datei `WordCountTopology.java` zu erstellen und zu öffnen:
 

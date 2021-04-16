@@ -7,12 +7,12 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 10/22/2020
-ms.openlocfilehash: 074b799a4f0e83c47aac0b2b3fca5386bd45429f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 53878384f4eb056f0cb23ec9005043ac26c8fad2
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100521967"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106492575"
 ---
 # <a name="quickstart-use-the-azure-portal-to-create-an-azure-database-for-mysql-flexible-server"></a>Schnellstart: Verwenden des Azure-Portals zum Erstellen einer Azure Database for MySQL Flexible Server-Instanz
 
@@ -51,11 +51,14 @@ Führen Sie die folgenden Schritte aus, um eine Flexible Server-Instanz zu erste
     Subscription|Ihr Abonnementname|Das Azure-Abonnement, das Sie für Ihren Server verwenden möchten. Falls Sie über mehrere Abonnements verfügen, wählen Sie das Abonnement aus, über das die Ressource abgerechnet werden soll.|
     Resource group|**myresourcegroup**| Ein neuer Ressourcengruppenname oder ein bereits vorhandener Name aus Ihrem Abonnement|
     Servername |**mydemoserver**|Ein eindeutiger Name, der Ihre Flexible Server-Instanz identifiziert. Der Domänenname `mysql.database.azure.com` wird an den angegebenen Servernamen angefügt. Der Servername darf nur Kleinbuchstaben, Zahlen und den Bindestrich (-) enthalten. Er muss zwischen 3 und 63 Zeichen lang sein.|
+    Region|Die Region, die Ihren Benutzern am nächsten liegt| Der Standort, der Ihren Benutzern am nächsten ist|
+    Workloadtyp| Entwicklung | Für Produktionsworkloads können Sie je nach [max_connections](concepts-server-parameters.md#max_connections)-Anforderungen eine kleine/mittlere Größe oder eine große Größe auswählen.|
+    Verfügbarkeitszone| Keine Einstellung | Wenn Ihre Anwendung auf virtuellen Azure-Computern, VM-Skalierungsgruppen oder AKS-Instanzen in einer bestimmten Verfügbarkeitszone bereitgestellt wird, können Sie Ihren flexiblen Server in derselben Verfügbarkeitszone angeben, um die Anwendung und die Datenbank gemeinsam anzuordnen und so die Leistung zu verbessern, indem die Netzwerklatenz zonenübergreifend reduziert wird.|
+    Hochverfügbarkeit| Standard | Bei Produktionsservern wird die Aktivierung von zonenredundanter Hochverfügbarkeit (High Availability, HA) zur Gewährleistung von Geschäftskontinuität und Schutz vor Zonenausfällen dringend empfohlen.|
+    MySQL-Version|**5.7**| Eine MySQL-Hauptversion|
     Administratorbenutzername |**mydemouser**| Ihr Anmeldekonto für die Verbindungsherstellung mit dem Server. Der Administratorbenutzername darf nicht **azure_superuser**, **admin**, **administrator**, **root**, **guest** oder **public** lauten.|
     Kennwort |Ihr Kennwort| Ein neues Kennwort für das Serveradministratorkonto. Es muss zwischen acht und 128 Zeichen lang sein. Darüber hinaus muss es Zeichen aus drei der folgenden Kategorien enthalten: Englische Großbuchstaben, englische Kleinbuchstaben, Zahlen (0 bis 9) und nicht alphanumerische Zeichen (!, $, #, % usw.).|
-    Region|Die Region, die Ihren Benutzern am nächsten liegt| Der Standort, der Ihren Benutzern am nächsten ist|
-    Version|**5.7**| Eine MySQL-Hauptversion|
-    Compute und Speicher | **Burstfähig**, **Standard_B1ms**, **10 GiB**, **7 Tage** | Die Compute-, Speicher- und Sicherungskonfigurationen für Ihren neuen Server. Wählen Sie **Server konfigurieren** aus. **Burstfähig**, **Standard_B1ms**, **10 GiB** und **7 Tage** sind die Standardwerte für **Computetarif**, **Computegröße**, **Speichergröße** und **Aufbewahrungszeitraum für Sicherung**. Sie können diese Werte unverändert lassen oder anpassen. Um die Compute- und Speicherauswahl zu speichern und die Konfiguration fortzusetzen, wählen Sie **Speichern** aus. Der folgende Screenshot zeigt die Compute- und Speicheroptionen:|
+    Compute und Speicher | **Burstfähig**, **Standard_B1ms**, **10 GiB**, **100 Tage** | Die Compute-, Speicher-, IOPS- und Sicherungskonfigurationen für Ihren neuen Server. Wählen Sie **Server konfigurieren** aus. **Burstfähig**, **Standard_B1ms**, **10 GiB**, **100 iops** und **7 Tage** sind die Standardwerte für die **Berechnungsebene**, die **Computegröße**, die **Speichergröße** und den **Aufbewahrungszeitraum** für Sicherungen. Sie können diese Werte unverändert lassen oder anpassen. Zum schnelleren Laden von Daten während der Migration wird empfohlen, den Wert für IOPS auf die maximale Größe zu erhöhen, die von der Computegröße unterstützt wird, und Sie später wieder herunterzuskalieren, um Kosten zu sparen. Um die Compute- und Speicherauswahl zu speichern und die Konfiguration fortzusetzen, wählen Sie **Speichern** aus. Der folgende Screenshot zeigt die Compute- und Speicheroptionen:|
     
     > :::image type="content" source="./media/quickstart-create-server-portal/compute-storage.png" alt-text="Screenshot: Compute- und Speicheroptionen":::
 
@@ -89,16 +92,21 @@ Wenn Sie Ihre Flexible Server-Instanz mit privatem Zugriff (VNET-Integration) e
 
 Wenn Sie Ihre Flexible Server-Instanz mit öffentlichem Zugriff (zulässige IP-Adressen) erstellt haben, können Sie die lokale IP-Adresse der Liste der Firewallregeln für die Serverinstanz hinzufügen. Eine Schritt-für-Schritt-Anleitung finden Sie unter [Erstellen und Verwalten von Firewallregeln für Azure Database for MySQL – Flexible Server mit Azure-Portal](how-to-manage-firewall-portal.md).
 
-Sie können [mysql.exe](https://dev.mysql.com/doc/refman/8.0/en/mysql.html) oder [MySQL Workbench](./connect-workbench.md) auswählen, um aus Ihrer lokalen Umgebung eine Verbindung mit dem Server herzustellen. 
+Sie können [mysql.exe](https://dev.mysql.com/doc/refman/8.0/en/mysql.html) oder [MySQL Workbench](./connect-workbench.md) auswählen, um aus Ihrer lokalen Umgebung eine Verbindung mit dem Server herzustellen. Azure Database for MySQL Flexible Server unterstützt das Herstellen einer Verbindung zwischen Ihren Clientanwendungen und dem MySQL-Dienst über TLS (Transport Layer Security), ehemals als SSL (Secure Sockets Layer) bezeichnet. TLS ist ein Standardprotokoll der Branche, das verschlüsselte Netzwerkverbindungen zwischen dem Datenbankserver und Clientanwendungen gewährleistet, sodass Sie Konformitätsanforderungen einhalten können. Um eine Verbindung mit dem flexiblen MySQL Server herzustellen, müssen Sie das [öffentliche SSL-Zertifikat](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem) herunterladen, um es von der Zertifizierungsstelle überprüfen zu lassen.
+
+Das folgende Beispiel zeigt, wie Sie einen flexiblen Server mithilfe der mysql-Befehlszeilenschnittstelle verbinden können. Wenn dies noch nicht geschehen ist, müssen Sie zunächst die MySQL-Befehlszeile installieren. Laden Sie das für SSL-Verbindungen erforderliche DigiCertGlobalRootCA-Zertifikat herunter. Verwenden Sie die Verbindungszeichenfolge --ssl-mode=REQUIRED, um die Überprüfung des TLS-/SSL-Zertifikats zu erzwingen. Übergeben Sie den Pfad der lokalen Zertifikatdatei an den Parameter --ssl-ca. Ersetzen Sie die Werte durch den tatsächlichen Servernamen und das Kennwort.
 
 ```bash
+sudo apt-get install mysql-client
 wget --no-check-certificate https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem
-mysql -h mydemoserver.mysql.database.azure.com -u mydemouser -p --ssl=true --ssl-ca=DigiCertGlobalRootCA.crt.pem
+mysql -h mydemoserver.mysql.database.azure.com -u mydemouser -p --ssl-mode=REQUIRED --ssl-ca=DigiCertGlobalRootCA.crt.pem
 ```
 
 Wenn Sie Ihren flexiblen Server mit **öffentlichem Zugriff** bereitgestellt haben, können Sie auch [Azure Cloud Shell](https://shell.azure.com/bash) verwenden, um über den vorinstallierten MySQL-Client eine Verbindung mit Ihrem flexiblen Server herzustellen:
 
-Wenn Sie Azure Cloud Shell verwenden möchten, um eine Verbindung mit Ihrem flexiblen Server herzustellen, müssen Sie für Azure Cloud Shell Netzwerkzugriff auf Ihren flexiblen Server zulassen. Navigieren Sie hierzu im Azure-Portal zum Blatt **Netzwerk** für Ihren flexiblen MySQL-Server, und aktivieren Sie im Abschnitt **Firewall** das Kontrollkästchen „Öffentlichen Zugriff auf diesen Server über beliebigen Azure-Dienst in Azure gestatten“. Klicken Sie anschließend auf „Speichern“, um die Einstellung zu speichern.
+Wenn Sie Azure Cloud Shell verwenden möchten, um eine Verbindung mit Ihrem flexiblen Server herzustellen, müssen Sie für Azure Cloud Shell Netzwerkzugriff auf Ihren flexiblen Server zulassen. Navigieren Sie hierzu im Azure-Portal zum Blatt **Netzwerk** für Ihren flexiblen MySQL-Server, und aktivieren Sie im Abschnitt **Firewall** das Kontrollkästchen „Öffentlichen Zugriff auf diesen Server über beliebigen Azure-Dienst in Azure gestatten“. Klicken Sie anschließend, wie im folgenden Screenshot gezeigt, auf „Speichern“, um die Einstellung zu speichern.
+
+ > :::image type="content" source="./media/quickstart-create-server-portal/allow-access-to-any-azure-service.png" alt-text="Screenshot: Vorgehensweise zum Erlauben des Azure Cloud Shell-Zugriffs auf einen flexiblen MySQL-Server zum Konfigurieren des Netzwerks für öffentlichen Zugriff.":::
 
 > [!NOTE]
 > Das Kontrollkästchen **Öffentlichen Zugriff auf diesen Server über beliebigen Azure-Dienst in Azure gestatten** sollte nur zu Entwicklungs- und Testzwecken aktiviert werden. Durch diese Option wird die Firewall so konfiguriert, dass Verbindungen von IP-Adressen zugelassen werden, die einem beliebigen Azure-Dienst oder einer beliebigen Azure-Ressource zugeordnet sind. Dies schließt auch Verbindungen aus den Abonnements anderer Kunden mit ein.
@@ -109,6 +117,9 @@ Klicken Sie auf **Jetzt testen**, um Azure Cloud Shell zu starten, und verwenden
 wget --no-check-certificate https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem
 mysql -h mydemoserver.mysql.database.azure.com -u mydemouser -p --ssl=true --ssl-ca=DigiCertGlobalRootCA.crt.pem
 ```
+> [!IMPORTANT]
+> Beim Herstellen einer Verbindung mit Ihrem flexiblen Server mithilfe von Azure Cloud Shell müssen Sie den Parameter „--ssl=true“ und nicht „--ssl-mode=REQUIRED“ verwenden.
+> Der Hauptgrund ist, dass Azure Cloud Shell mit einem vorinstalliertem mysql.exe-Client aus der MariaDB-Distribution kommt, die den Parameter „--ssl-“ erfordert, während der MySQL-Client aus der Distribution von Oracle den Parameter „--ssl-mode“ erfordert.
 
 Sollte bei dem Versuch, mithilfe des obigen Befehls eine Verbindung mit Ihrem flexiblen Server herzustellen, die folgende Fehlermeldung angezeigt werden, haben Sie vergessen, die Firewallregel mithilfe des Kontrollkästchens „Öffentlichen Zugriff auf diesen Server über beliebigen Azure-Dienst in Azure gestatten“ festzulegen, oder die Option wurde nicht gespeichert. Konfigurieren Sie die Firewall, und wiederholen Sie anschließend den Vorgang.
 

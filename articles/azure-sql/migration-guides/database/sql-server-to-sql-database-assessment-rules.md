@@ -1,5 +1,5 @@
 ---
-title: Bewertungsregeln für die Migration von SQL Server zu SQL-Datenbank
+title: Bewertungsregeln für die Migration von Azure SQL Server zu SQL-Datenbank
 description: Bewertungsregeln zum Identifizieren von Problemen mit der SQL Server-Quellinstanz, die behoben werden müssen, bevor die Migration zu Azure SQL-Datenbank erfolgt.
 ms.service: sql-database
 ms.subservice: migration-guide
@@ -10,14 +10,14 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: MashaMSFT
 ms.date: 12/15/2020
-ms.openlocfilehash: bf825572226bf5d7432fd3ad825f2f3a13355c53
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c407b62b5f0308fbb6d9ff7223a3554ca09592db
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102054153"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105027209"
 ---
-# <a name="assessment-rules-for-sql-server-to-sql-database-migration"></a>Bewertungsregeln für die Migration von SQL Server zu SQL-Datenbank
+# <a name="assessment-rules-for-sql-server-to-azure-sql-database-migration"></a>Bewertungsregeln für die Migration von Azure SQL Server zu SQL-Datenbank
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
 
 Mit Migrationstools wird Ihre SQL Server-Quellinstanz überprüft, indem einige Bewertungsregeln angewendet werden. Hiermit sollen Probleme identifiziert werden, die behoben werden müssen, bevor für Ihre SQL Server-Datenbank die Migration zu Azure SQL-Datenbank durchgeführt wird. 

@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 06/21/2019
-ms.openlocfilehash: 322ef3b8ca30396bd4772850ff651f7545a21257
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 11c83a6ec364865eb3478112c9f33add22a5c09d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100580750"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105643270"
 ---
 # <a name="restore-your-azure-sql-database-or-failover-to-a-secondary"></a>Wiederherstellen einer Azure SQL-Datenbank oder Ausführen eines Failovers auf eine sekundäre Datenbank
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -78,7 +78,7 @@ In den folgenden Leitfäden finden Sie Informationen zum Failover auf eine geore
 
 - [Failover auf einen georeplizierten sekundären Server mit dem Azure-Portal](active-geo-replication-configure-portal.md)
 - [Failover auf den sekundären Server mithilfe von PowerShell](scripts/setup-geodr-and-failover-database-powershell.md)
-- [Failover auf einen sekundären Server mit Transact-SQL (T-SQL)](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#e-failover-to-a-geo-replication-secondary)
+- [Failover auf einen sekundären Server mit Transact-SQL (T-SQL)](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current&preserve-view=true#e-failover-to-a-geo-replication-secondary)
 
 ## <a name="recover-using-geo-restore"></a>Wiederherstellen mit Geowiederherstellung
 

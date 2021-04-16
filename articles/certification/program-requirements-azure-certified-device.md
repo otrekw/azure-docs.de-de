@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/15/2021
 ms.custom: Azure Certified Device Certification Requirements
 ms.service: certification
-ms.openlocfilehash: 948fe25da8468e887693fe8c9f75f675dfbea858
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 497ffa4b3026491d6aa95df87708b3b1f2f1619e
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105975751"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308284"
 ---
 # <a name="azure-certified-device-requirements"></a>Azure Certified Device Anforderungen 
 (früher als IOT Hub bezeichnet)
@@ -39,8 +39,8 @@ Die Zusage der Azure Certified-Geräte Zertifizierung lautet:
 | **Zielverfügbarkeit** | Jetzt verfügbar                                                |
 | **Gilt für**          | Blattgerät/Edgegerät                                      |
 | **Betriebssystem**                  | Agnostisch                                                     |
-| **Validierungstyp**     | Automatisiert                                                    |
-| **Überprüfung**          | Das Gerät muss alle Telemetrieschemas an IoT Hub senden. Microsoft stellt den [Portalworkflow](https://certify.azure.come) zum Ausführen der Tests bereit. Gerät an Cloud (erforderlich): **1.** Überprüft, ob das Gerät Nachrichten an den vom AICS verwalteten IoT Hub senden kann **2.** Der Benutzer muss die Anzahl und die Häufigkeit der Nachrichten angeben. **3.** AICS überprüft, ob die Telemetrie von der Hub-Instanz empfangen wird. |
+| **Überprüfungstyp**     | Automatisiert                                                    |
+| **Überprüfung**          | Das Gerät muss alle Telemetrieschemas an IoT Hub senden. Microsoft stellt den [Portalworkflow](https://certify.azure.com/) zum Ausführen der Tests bereit. Gerät an Cloud (erforderlich): **1.** Überprüft, ob das Gerät Nachrichten an den vom AICS verwalteten IoT Hub senden kann **2.** Der Benutzer muss die Anzahl und die Häufigkeit der Nachrichten angeben. **3.** AICS überprüft, ob die Telemetrie von der Hub-Instanz empfangen wird. |
 | **Ressourcen**           | [Zertifizierungsschritte](./overview.md) (enthält alle zusätzlichen Ressourcen) |
 
 **[Erforderlich] DPS: Der Zweck des Tests ist die Überprüfung mit einer der drei Nachweismethoden, ob das Gerät den IoT Hub Device Provisioning Service implementiert und unterstützt**
@@ -50,7 +50,7 @@ Die Zusage der Azure Certified-Geräte Zertifizierung lautet:
 | **Zielverfügbarkeit** | Neu                                                          |
 | **Gilt für**          | Jedes Gerät                                                   |
 | **Betriebssystem**                  | Agnostisch                                                     |
-| **Validierungstyp**     | Automatisiert                                                    |
+| **Überprüfungstyp**     | Automatisiert                                                    |
 | **Überprüfung**          | Das Gerät unterstützt die einfache Eingabe des Besitzes des Ziel-DPS-ID-Bereichs, ohne dass der eingebettete Code neu kompiliert werden muss. Microsoft stellt den [Portalworkflow](https://certify.azure.com) für die Ausführung der Tests zur Verfügung, um zu prüfen, ob das Gerät DPS unterstützt **1.** Der Benutzer muss eine der Nachweismethoden (X.509, TPM und SAS-Schlüssel) auswählen **2.** Je nach gewählter Nachweismethode muss der Benutzer entsprechende Maßnahmen ergreifen, wie etwa **a)** Hochladen eines X.509-Zertifikats in den AICS-verwalteten DPS-Bereich **b)** Implementieren des SAS-Schlüssels oder Endorsement Keys auf dem Gerät |
 | **Ressourcen**           | [Device Provisioning Service – Übersicht](../iot-dps/about-iot-dps.md) |
 
@@ -61,7 +61,7 @@ Die Zusage der Azure Certified-Geräte Zertifizierung lautet:
 | **Zielverfügbarkeit** | Jetzt verfügbar                                            |
 | **Gilt für**          | Blattgerät/Edgegerät                                                   |
 | **Betriebssystem**                  | Agnostisch                                                     |
-| **Validierungstyp**     | Automatisiert                                                    |
+| **Überprüfungstyp**     | Automatisiert                                                    |
 | **Überprüfung**          | Das Gerät muss in der Lage sein, Nachrichten von IoT Hub aus der Cloud an das Gerät zu empfangen. Microsoft stellt den [Portal-Workflow](https://certify.azure.com) zum Ausführen dieser Tests bereit. Cloud zu Gerät (sofern implementiert): **1.** Überprüft, ob das Gerät Nachrichten von IoT Hub empfangen kann **2.** AICS sendet zufällige Nachrichten und prüft anhand der Nachrichten-ACK vom Gerät  |
 | **Ressourcen**           | **a)** [Schritte zur Zertifizierung](./overview.md) (hat alle zusätzlichen Ressourcen) **b)** [Senden von Cloud-to-Device-Nachrichten von einem IoT-Hub](../iot-hub/iot-hub-devguide-messages-c2d.md) |
 
@@ -72,7 +72,7 @@ Die Zusage der Azure Certified-Geräte Zertifizierung lautet:
 | **Zielverfügbarkeit** | Jetzt verfügbar                                            |
 | **Gilt für**          | Blattgerät/Edgegerät                                                   |
 | **Betriebssystem**                  | Agnostisch                                                     |
-| **Validierungstyp**     | Automatisiert                                                    |
+| **Überprüfungstyp**     | Automatisiert                                                    |
 | **Überprüfung**          | Das Gerät muss in der Lage sein, Befehlsanforderungen von IoT Hub zu empfangen und zu beantworten. Microsoft stellt den [Portalworkflow](https://certify.azure.com) zum Ausführen der Tests bereit. Direkte Methoden (falls implementiert): **1.** Der Benutzer muss die Methodennutzlast der direkten Methode angeben. **2.** AICS überprüft, ob die angegebene Nutzlastanforderung vom Hub gesendet und die ACK-Nachricht vom Gerät empfangen wird. |
 | **Ressourcen**           | **a)** [Zertifizierungsschritte](./overview.md) (verfügt über alle zusätzlichen Ressourcen) **b)** [Verstehen direkter Methoden von IOT Hub](../iot-hub/iot-hub-devguide-direct-methods.md) |
 
@@ -83,6 +83,6 @@ Die Zusage der Azure Certified-Geräte Zertifizierung lautet:
 | **Zielverfügbarkeit**                   | Jetzt verfügbar                                            |
 | **Gilt für**                            | Blattgerät/Edgegerät                                                   |
 | **Betriebssystem**                                    | Agnostisch                                                     |
-| **Validierungstyp**                       | Automatisiert                                                       |
+| **Überprüfungstyp**                       | Automatisiert                                                       |
 | **Überprüfung**                            | Das Gerät muss alle Telemetrieschemas an IoT Hub senden. Microsoft stellt den [Portalworkflow](https://certify.azure.com) zum Ausführen der Tests bereit. Gerätezwillingseigenschaft (falls implementiert): **1.** AICS überprüft die Lese-/Schreib-Eigenschaft im JSON des Gerätezwillings **2.** Der Benutzer muss die zu ändernde JSON-Nutzlast angeben **3.** AICS überprüft, ob die angegebenen gewünschten Eigenschaften von IoT Hub gesendet und die ACK-Nachrichten vom Gerät empfangen werden. |
 | **Ressourcen**                             | **a)** [Zertifizierungsschritte](./overview.md) (verfügt über alle zusätzlichen Ressourcen) **b)** [verwenden Gerätezwillinge mit IOT Hub](../iot-hub/iot-hub-devguide-device-twins.md) |

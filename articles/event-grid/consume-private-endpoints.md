@@ -3,12 +3,12 @@ title: Übermitteln von Ereignissen mithilfe einer privaten Verbindung
 description: In diesem Artikel wird beschrieben, wie Sie die Einschränkung umgehen, dass Ereignisse nicht mithilfe einer privaten Verbindung übertragen werden können.
 ms.topic: how-to
 ms.date: 02/12/2021
-ms.openlocfilehash: 7ca15a76d56d9cdcdee741b661981b80c914d0e9
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 9df78e1cc7734ba9e455ed686286658006f9445e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104722326"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105629290"
 ---
 # <a name="deliver-events-using-private-link-service"></a>Übermitteln von Ereignissen mithilfe einer privaten Verbindung
 Derzeit ist es nicht möglich, Ereignisse über [private Endpunkte](../private-link/private-endpoint-overview.md) zu übermitteln. Das heißt, es gibt keine Unterstützung, wenn Sie strikte Anforderungen an die Netzwerkisolation haben, bei denen der Datenverkehr der übermittelten Ereignisse den privaten IP-Adressraum nicht verlassen darf. 
@@ -27,7 +27,7 @@ Bei dieser Konfiguration wird der Datenverkehr über die öffentliche IP-Adresse
 ## <a name="deliver-events-to-event-hubs-using-managed-identity"></a>Übermitteln von Ereignissen an Event Hubs unter Verwendung einer verwalteten Identität
 Führen Sie die folgenden Schritte aus, um mithilfe der verwalteten Identität Ereignisse an Event Hubs in Ihrem Event Hubs-Namespace zu übermitteln:
 
-1. [Aktivieren der systemseitig zugewiesenen Identität für ein Thema oder eine Domäne](managed-service-identity.md#create-a-custom-topic-or-domain-with-an-identity). 
+1. Aktivieren der vom System zugewiesenen Identität: [Systemthemen](enable-identity-system-topics.md), [benutzerdefinierte Themen und Domänen](enable-identity-custom-topics-domains.md).  
 1. [Fügen Sie die Identität der Rolle **Azure Event Hubs-Datensender** im Event Hubs-Namespace hinzu](../event-hubs/authenticate-managed-identity.md#to-assign-azure-roles-using-the-azure-portal).
 1. [Aktivieren Sie in Ihrem Event Hubs-Namespace die Option **Vertrauenswürdigen Microsoft-Diensten die Umgehung dieser Firewall erlauben?**](../event-hubs/event-hubs-service-endpoints.md#trusted-microsoft-services) 
 1. [Konfigurieren Sie dann das Ereignisabonnement](managed-service-identity.md#create-event-subscriptions-that-use-an-identity), das einen Event Hub als Endpunkt verwendet, um die vom System zugewiesene Identität zu verwenden.
@@ -35,16 +35,16 @@ Führen Sie die folgenden Schritte aus, um mithilfe der verwalteten Identität E
 ## <a name="deliver-events-to-service-bus-using-managed-identity"></a>Übermitteln von Ereignissen an Service Bus unter Verwendung einer verwalteten Identität
 Führen Sie die folgenden Schritte aus, um Ereignisse an Service Bus-Warteschlangen oder -Themen in Ihrem Service Bus-Namespace mithilfe der verwalteten Identität zu übermitteln:
 
-1. [Aktivieren der systemseitig zugewiesenen Identität für ein Thema oder eine Domäne](managed-service-identity.md#create-a-custom-topic-or-domain-with-an-identity). 
-1. Hinzufügen der Identität der Rolle [Azure Service Bus-Datensender](/service-bus-messaging/service-bus-managed-service-identity#azure-built-in-roles-for-azure-service-bus) für den Service Bus-Namespace
+1. Aktivieren der vom System zugewiesenen Identität: [Systemthemen](enable-identity-system-topics.md), [benutzerdefinierte Themen und Domänen](enable-identity-custom-topics-domains.md). 
+1. [Hinzufügen der Identität der Rolle **Azure Service Bus-Datensender**](/service-bus-messaging/service-bus-managed-service-identity#azure-built-in-roles-for-azure-service-bus) für den Service Bus-Namespace
 1. [Aktivieren Sie in Ihrem Service Bus-Namespace die Option **Vertrauenswürdigen Microsoft-Diensten die Umgehung dieser Firewall erlauben?**](../service-bus-messaging/service-bus-service-endpoints.md#trusted-microsoft-services) 
-1. [Konfigurieren Sie das Ereignisabonnement](managed-service-identity.md#create-event-subscriptions-that-use-an-identity), das eine Service Bus-Warteschlange oder ein -Thema als Endpunkt verwendet, um die vom System zugewiesene Identität zu verwenden.
+1. [Konfigurieren Sie das Ereignisabonnement](managed-service-identity.md), das eine Service Bus-Warteschlange oder ein -Thema als Endpunkt verwendet, um die vom System zugewiesene Identität zu verwenden.
 
 ## <a name="deliver-events-to-storage"></a>Übermitteln von Ereignissen an Storage 
 Gehen Sie folgendermaßen vor, um Ereignisse mithilfe der verwalteten Identität an Storage-Warteschlangen zu übermitteln:
 
-1. [Aktivieren der systemseitig zugewiesenen Identität für ein Thema oder eine Domäne](managed-service-identity.md#create-a-custom-topic-or-domain-with-an-identity).
-1. Fügen Sie die Identität der Rolle [Absender der Speicherwarteschlangen-Datennachricht](../storage/common/storage-auth-aad-rbac-portal.md) in der Azure Storage-Warteschlange hinzu.
+1. Aktivieren der vom System zugewiesenen Identität: [Systemthemen](enable-identity-system-topics.md), [benutzerdefinierte Themen und Domänen](enable-identity-custom-topics-domains.md). 
+1. [Fügen Sie die Identität der Rolle **Absender der Speicherwarteschlangen-Datennachricht**](../storage/common/storage-auth-aad-rbac-portal.md) in der Azure Storage-Warteschlange hinzu.
 1. [Konfigurieren Sie das Ereignisabonnement](managed-service-identity.md#create-event-subscriptions-that-use-an-identity), das eine Service Bus-Warteschlange oder ein -Thema als Endpunkt verwendet, um die vom System zugewiesene Identität zu verwenden.
 
 

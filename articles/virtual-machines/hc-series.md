@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/05/2021
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: 6ec629629fc774ddb5423db91fe0d71a49305ca1
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: e23a6351b26cc35679bc879e2b62dd76c74f9962
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102566038"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104798339"
 ---
 # <a name="hc-series"></a>HC-Serie
 
@@ -29,14 +29,16 @@ VMs der HC-Serie unterstützen Mellanox EDR InfiniBand mit 100 Gbit/s. Diese VMs
 [Unterstützung von VM-Generationen:](generation-2.md) Generation 1 und 2<br>
 [Beschleunigter Netzwerkbetrieb](../virtual-network/create-vm-accelerated-networking-cli.md): Unterstützt ([Weitere Informationen](https://techcommunity.microsoft.com/t5/azure-compute/accelerated-networking-on-hb-hc-hbv2-and-ndv2/ba-p/2067965) zu Leistung und potenziellen Problemen)<br>
 [Kurzlebige Betriebssystemdatenträger](ephemeral-os-disks.md): Unterstützt <br>
-
 <br>
 
 | Size | vCPU | Prozessor | Arbeitsspeicher (GiB) | Speicherbandbreite GB/s | Basis-CPU-Frequenz (GHz) | Frequenz für alle Kerne (GHz, Spitze) | Frequenz für Einzelkern (GHz, Spitze) | RDMA-Leistung (Gbit/s) | MPI-Unterstützung | Temporärer Speicher (GiB) | Max. Anzahl Datenträger | Max. virtuelle Ethernet-Netzwerkkarten (vNICs) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_HC44rs | 44 | Intel Xeon Platinum 8168 | 352 | 191 | 2.7 | 3.4 | 3,7 | 100 | All | 700 | 4 | 8 |
 
-Erfahren Sie mehr über die zugrunde liegende [Architektur, VM-Topologie](./workloads/hpc/hc-series-overview.md) und erwartete [Leistung](./workloads/hpc/hc-series-performance.md) der VM der HC-Serie.
+Weitere Informationen:
+- [Architektur und VM-Topologie](./workloads/hpc/hc-series-overview.md)
+- Unterstützter [Softwarestapel](./workloads/hpc/hc-series-overview.md#software-specifications) einschließlich unterstützter Betriebssysteme
+- Erwartete [Leistung](./workloads/hpc/hc-series-performance.md) bei VMs der HC-Serie
 
 [!INCLUDE [hpc-include](./workloads/hpc/includes/hpc-include.md)]
 

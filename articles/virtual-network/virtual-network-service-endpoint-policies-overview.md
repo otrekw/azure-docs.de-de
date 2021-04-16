@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2020
 ms.author: rdhillon
-ms.openlocfilehash: 9766379807e6d2708fd6935dd2ffbd7660f9988f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 633d0b9e454fe2906d98624ac2cdbcc9a8b6c7fa
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98216647"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105022261"
 ---
 # <a name="virtual-network-service-endpoint-policies-for-azure-storage"></a>Richtlinien für VNET-Dienstendpunkte für Azure Storage
 
@@ -109,6 +109,8 @@ Für Richtlinien für Dienstendpunkte steht keine zentrale Protokollierung zur V
   - Stellen Sie sicher, dass die Konten keine **klassischen Speicherkonten** mit Dienstendpunktrichtlinien im Subnetz sind.
 - Ein verwalteter Azure-Dienst funktioniert nach dem Anwenden einer Dienstendpunktrichtlinie über das Subnetz nicht mehr.
   - Zu diesem Zeitpunkt werden verwaltete Dienste mit Dienstendpunktrichtlinien nicht unterstützt. *Künftige Aktualisierungen finden Sie hier*.
+- Der Zugriff auf verwaltete Speicherkonten funktioniert nach dem Anwenden einer Dienstendpunktrichtlinie über das Subnetz nicht mehr.
+  - Verwaltete Speicherkonten werden nicht mit Richtlinien für Dienstendpunkte unterstützt. Wenn konfiguriert, verweigern Richtlinien standardmäßig den Zugriff auf alle verwalteten Speicherkonten. Wenn Ihre Anwendung auf verwaltete Speicherkonten zugreifen muss, sollten für diesen Datenverkehr keine Endpunktrichtlinien verwendet werden.
 
 ## <a name="provisioning"></a>Bereitstellung
 

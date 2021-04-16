@@ -3,16 +3,16 @@ title: Switch-Aktivität in Azure Data Factory
 description: Die Switch-Aktivität ermöglicht Ihnen die Steuerung des Verarbeitungsflusses basierend auf einer Bedingung.
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/08/2019
-ms.openlocfilehash: 4d58b032fe0371c9b54cf66ab13f525880867fb6
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 08d93bd3d49dc345b35a942d4d5db4eef937d3de
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100385352"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104786140"
 ---
 # <a name="switch-activity-in-azure-data-factory"></a>Switch-Aktivität in Azure Data Factory
 
@@ -286,7 +286,7 @@ Die Pipeline legt für **folderPath** entweder den Wert des Parameters **outputP
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Bei diesen Befehlen wird davon ausgegangen, dass Sie die JSON-Dateien im folgenden Ordner gespeichert haben: C:\ADF. 
+Bei diesen Befehlen wird davon ausgegangen, dass Sie die JSON-Dateien im Ordner „C:\ADF“ gespeichert haben. 
 
 ```powershell
 Connect-AzAccount

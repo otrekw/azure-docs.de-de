@@ -8,10 +8,10 @@ ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 02fc142a08176aa577250417c0e394218e832f34
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100387341"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>Kopieren von Daten in eine bzw. aus einer lokalen Oracle-Instanz mit Azure Data Factory
@@ -26,7 +26,7 @@ ms.locfileid: "100387341"
 
 Dieser Artikel beschreibt, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten in eine und aus einer lokalen Oracle-Datenbank zu verschieben. Dieser Artikel baut auf dem Artikel zu [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) auf, der eine allgemeine Übersicht zur Datenverschiebung mit der Kopieraktivität bietet.
 
-## <a name="supported-scenarios"></a>Unterstützte Szenarios
+## <a name="supported-scenarios"></a>Unterstützte Szenarien
 
 Sie können Daten *aus Oracle-Datenbank* in die folgenden Datenspeicher kopieren:
 
@@ -49,7 +49,7 @@ Das Gateway ist auch dann erforderlich, wenn Oracle in einer Azure IaaS-VM (Infr
 
 Dieser Connector für Oracle unterstützt zwei Treiberversionen:
 
-- **Microsoft-Treiber für Oracle (empfohlen)** : Ab dem Datenverwaltungsgateway Version 2.7 wird mit dem Gateway automatisch ein Microsoft-Treiber für Oracle installiert. Sie müssen den Treiber nicht installieren oder aktualisieren, um eine Verbindung mit Oracle herzustellen. Sie können auch eine bessere Kopierleistung erzielen, wenn Sie diesen Treiber verwenden. Die folgenden Versionen von Oracle-Datenbanken werden unterstützt:
+- **Microsoft-Treiber für Oracle (empfohlen)**: Ab dem Datenverwaltungsgateway Version 2.7 wird ein Microsoft-Treiber für Oracle automatisch mit dem Gateway installiert. Sie müssen den Treiber nicht installieren oder aktualisieren, um eine Verbindung mit Oracle herzustellen. Sie können auch eine bessere Kopierleistung erzielen, wenn Sie diesen Treiber verwenden. Die folgenden Versionen von Oracle-Datenbanken werden unterstützt:
   - Oracle 12c R1 (12.1)
   - Oracle 11g R1, R2 (11.1, 11.2)
   - Oracle 10g R1, R2 (10.1, 10.2)
@@ -63,7 +63,7 @@ Dieser Connector für Oracle unterstützt zwei Treiberversionen:
     > Der Microsoft-Treiber für Oracle unterstützt zurzeit nur das Kopieren von Daten aus Oracle. Der Treiber unterstützt nicht das Schreiben in Oracle. Die Testverbindungsfunktion auf der Registerkarte **Diagnose** des Datenverwaltungsgateways unterstützt diesen Treiber nicht. Alternativ können Sie den Assistenten zum Kopieren verwenden, um die Konnektivität zu überprüfen.
     >
 
-- **Oracle-Datenanbieter für .NET**: Sie können den Oracle-Datenanbieter verwenden, um Daten aus oder nach Oracle zu kopieren. Diese Komponente ist in [Oracle Data Access Components (ODAC) für Windows](https://www.oracle.com/technetwork/topics/dotnet/downloads/)enthalten. Installieren Sie die entsprechende Version (32-Bit oder 64-Bit) auf dem Computer, auf dem das Gateway installiert ist. Der [Oracle-Datenanbieter .NET 12.1](https://docs.oracle.com/database/121/ODPNT/InstallSystemRequirements.htm#ODPNT149) kann auf Oracle Database 10g, Version 2 oder höher, zugreifen.
+- **Oracle-Datenanbieter für .NET:** Sie können auch den Oracle-Datenanbieter zum Kopieren von Daten aus/in Oracle verwenden. Diese Komponente ist in [Oracle Data Access Components (ODAC) für Windows](https://www.oracle.com/technetwork/topics/dotnet/downloads/)enthalten. Installieren Sie die entsprechende Version (32-Bit oder 64-Bit) auf dem Computer, auf dem das Gateway installiert ist. Der [Oracle-Datenanbieter .NET 12.1](https://docs.oracle.com/database/121/ODPNT/InstallSystemRequirements.htm#ODPNT149) kann auf Oracle Database 10g, Version 2 oder höher, zugreifen.
 
     Wenn Sie **XCopy-Installation** auswählen, führen Sie die in der Datei „readme.htm“ beschriebenen Schritte aus. Es wird empfohlen, den Installer mit der Benutzeroberfläche auszuwählen (nicht den XCopy-Installer).
 
@@ -75,9 +75,9 @@ Wenn Sie zum Kopieren der Pipeline den Kopier-Assistenten verwenden, wird der Tr
 
 Sie können eine Pipeline erstellen, die eine Kopieraktivität aufweist. Die Pipeline verschiebt Daten in eine oder aus einer lokalen Oracle-Datenbank mithilfe verschiedener Tools oder APIs.
 
-Am einfachsten erstellen Sie eine Pipeline mit dem Kopier-Assistenten. Siehe [Tutorial: Erstellen einer Pipeline mit dem Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten.
+Am einfachsten erstellen Sie eine Pipeline mit dem Kopier-Assistenten. Unter [Tutorial: Erstellen einer Pipeline mithilfe des Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten.
 
-Sie können auch eines der folgenden Tools zum Erstellen einer Pipeline verwenden: **Visual Studio**, **Azure PowerShell**, eine **Azure Resource Manager-Vorlage**, die **.NET-API** oder die **REST-API**. Im [Tutorial zur Kopieraktivität](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie eine schrittweise Anleitung, wie Sie eine Pipeline mit einer Kopieraktivität erstellen können.
+Sie können außerdem einer der folgenden Tools zum Erstellen einer Pipeline verwenden: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-Vorlagen** sowie die **.NET-API** und die **REST-API**. Im [Tutorial zur Kopieraktivität](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie eine schrittweise Anleitung, wie Sie eine Pipeline mit einer Kopieraktivität erstellen können.
 
 Führen Sie unabhängig davon, ob Sie Tools oder APIs verwenden, die folgenden Schritte aus, um eine Pipeline zu erstellen, die Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher verschiebt:
 
@@ -104,7 +104,7 @@ In der folgenden Tabelle werden die JSON-Elemente beschrieben, die für den verk
 **Beispiel: Verwenden des Microsoft-Treibers**
 
 > [!TIP]
-> Wenn eine Fehlermeldung mit dem Hinweis „ORA-01025: UPI parameter out of range“ angezeigt wird und Sie die Oracle-Version 8i nutzen, können Sie Ihrer Verbindungszeichenfolge den Zusatz `WireProtocolMode=1` hinzufügen und den Vorgang wiederholen:
+> Wenn der Fehler „ORA-01025: UPI parameter out of range“ angezeigt wird und Sie die Oracle-Version 8i nutzen, können Sie Ihrer Verbindungszeichenfolge den Zusatz `WireProtocolMode=1` hinzufügen und den Vorgang wiederholen:
 
 ```json
 {
@@ -174,7 +174,7 @@ Wenn bei der Kopieraktivität eine Quelle vom Typ **OracleSource** verwendet wir
 
 | Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich |
 | --- | --- | --- | --- |
-| writeBatchTimeout |Die Wartezeit für den Abschluss der Batcheinfügung, bevor ein Timeout auftritt. |**timespan**<br/><br/> Beispiel: 00:30:00 (30 Minuten) |Nein |
+| writeBatchTimeout |Die Wartezeit für den Abschluss der Batcheinfügung, bevor ein Timeout auftritt. |**timespan**<br/><br/> Beispiel: „00:30:00“ (30 Minuten) |Nein |
 | writeBatchSize |Fügt Daten in die SQL-Tabelle ein, wenn die Puffergröße den Wert von **writeBatchSize** erreicht. |Integer (Gesamtanzahl von Zeilen) |Nein (Standardwert: 100) |
 | sqlWriterCleanupScript |Gibt eine Abfrage für die auszuführende Kopieraktivität an, damit die Daten eines bestimmten Slice bereinigt werden. |Eine Abfrageanweisung. |Nein |
 | sliceIdentifierColumnName |Gibt den Spaltennamen der Spalte an, die die Kopieraktivität mit einem automatisch generierten Slicebezeichner auffüllen soll. Der Wert für **sliceIdentifierColumnName** wird verwendet, um Daten eines bestimmten Slice bei erneuter Ausführung zu bereinigen. |Der Spaltenname einer Spalte, die den Datentyp **binary(32)** aufweist. |Nein |
@@ -369,7 +369,7 @@ Die Pipeline enthält eine Kopieraktivität, die für die Verwendung der Ein- un
 }
 ```
 
-**Beispiel: Kopieren von Daten aus Azure Blob Storage nach Oracle**
+**Beispiel: Kopieren von Daten aus Azure Blob Storage in Oracle**
 
 In diesem Beispiel wird gezeigt, wie Sie Daten aus einem Azure Blob Storage-Konto in eine lokale Oracle-Datenbank kopieren. Sie können jedoch Daten *direkt* aus einer der unter [Unterstützte Datenspeicher und Formate](data-factory-data-movement-activities.md#supported-data-stores-and-formats) aufgeführten Quellen kopieren, indem Sie die Kopieraktivität in Azure Data Factory verwenden.
 
@@ -560,13 +560,13 @@ Copy activity met invalid parameters: 'UnknownParameterName', Detailed message: 
 * Der .NET Framework-Datenanbieter für Oracle wurde nicht installiert.
 * Der .NET Framework-Datenanbieter für Oracle wurde für .NET Framework 2.0 installiert und in den Ordnern für .NET Framework 4.0 nicht gefunden.
 
-**Lösung**
+**Auflösung**
 
 * Falls Sie den .NET Framework-Datenanbieter für Oracle nicht installiert haben, [installieren Sie ihn](https://www.oracle.com/technetwork/topics/dotnet/downloads/), und wiederholen Sie anschließend das Szenario.
 * Falls Sie die Fehlermeldung auch nach der Installation des Anbieters erhalten, führen Sie die folgenden Schritte aus:
     1. Öffnen Sie die Computerkonfigurationsdatei für .NET 2.0 aus dem Ordner <Systemdatenträger\>:\Windows\Microsoft.NET\Framework64\v2.0.50727\CONFIG\machine.config.
     2. Suchen Sie nach **Oracle-Datenanbieter für .NET**. Es sollte ein Eintrag vorhanden sein, wie im folgenden Beispiel unter **system.data** > **DbProviderFactories** gezeigt: `<add name="Oracle Data Provider for .NET" invariant="Oracle.DataAccess.Client" description="Oracle Data Provider for .NET" type="Oracle.DataAccess.Client.OracleClientFactory, Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342" />`
-* Kopieren Sie diesen Eintrag in die Datei „machine.config“ im folgenden .NET 4.0-Ordner: <Systemdatenträger\>:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config. Ändern Sie die Version dann in „4.xxx.x.x“.
+* Kopieren Sie diesen Eintrag in die Datei machine.config im folgenden .NET 4.0-Ordner: <system disk\>:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config. Then, change the version to 4.xxx.x.x.
 * Führen Sie **gacutil /i [Anbieterpfad]** aus, um „<ODP.NET-Installationspfad\>\11.2.0\client_1\odp.net\bin\4\Oracle.DataAccess.dll“ im globalen Assemblycache (GAC) zu installieren.
 
 ### <a name="problem-2-datetime-formatting"></a>Problem 2: Datums-/Uhrzeitformat
@@ -577,7 +577,7 @@ Copy activity met invalid parameters: 'UnknownParameterName', Detailed message: 
 Message=Operation failed in Oracle Database with the following error: 'ORA-01861: literal does not match format string'.,Source=,''Type=Oracle.DataAccess.Client.OracleException,Message=ORA-01861: literal does not match format string,Source=Oracle Data Provider for .NET,'.
 ```
 
-**Lösung**
+**Auflösung**
 
 Möglicherweise müssen Sie die Abfragezeichenfolge in Ihrer Kopieraktivität entsprechend der Konfiguration von Datumsangaben in Ihrer Oracle-Datenbank anpassen. Dies ist ein Beispiel (mit der Funktion **to_date**):
 

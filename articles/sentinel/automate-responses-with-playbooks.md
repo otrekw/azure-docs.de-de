@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 03/17/2021
 ms.author: yelevin
 ms.openlocfilehash: 0158c9f5b9debf0c47978e816951e25634621645
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104608834"
 ---
 # <a name="automate-threat-response-with-playbooks-in-azure-sentinel"></a>Automatisieren der Bedrohungsabwehr mit Playbooks in Azure Sentinel
@@ -81,7 +81,7 @@ Azure Logic Apps kommuniziert mit anderen Systemen und Diensten über Konnektore
 - Mit der Rolle **Azure Sentinel Responder** können Sie ein Playbook manuell ausführen.
 - Als **Azure Sentinel Automation Contributor** können Sie mit Automatisierungsregeln Playbooks ausführen. Es wird nicht für andere Zwecke genutzt.
 
-#### <a name="learn-more"></a>Weitere Informationen
+#### <a name="learn-more"></a>Erfahren Sie mehr
 
 - [Weitere Informationen zu Azure-Rollen finden Sie unter Azure Logic Apps](../logic-apps/logic-apps-securing-a-logic-app.md#access-to-logic-app-operations).
 - [Weitere Informationen zu Azure-Rollen finden Sie in Azure Sentinel](roles.md).
@@ -104,7 +104,7 @@ Die Azure Logic Apps Plattform bietet Hunderte von Aktionen und Auslösern, soda
 
 **Sammeln Sie Daten, und fügen Sie an den Incident an, um intelligentere Entscheidungen zu treffen.**
 
-Zum Beispiel:
+Beispiel:
 
 Ein Azure Sentinel-Vorfall wurde aus einem Alarm durch eine Analyseregel erstellt, die IP-Adressen-Entitäten generiert.
 
@@ -120,7 +120,7 @@ Der Incident löst eine Automatisierungsregel aus, die ein Playbook mit den folg
 
 **Playbooks können dazu verwendet werden, Ihre Azure Sentinel Incidents mit anderen Ticketing-Systemen zu synchronisieren.**
 
-Zum Beispiel:
+Beispiel:
 
 Erstellen Sie eine Automatisierungsregel für die Erstellung aller Incidents, und fügen Sie ein Playbook an, das ein Ticket in ServiceNow öffnet:
 
@@ -134,7 +134,7 @@ Erstellen Sie eine Automatisierungsregel für die Erstellung aller Incidents, un
 
 **Verwenden Sie die SOC-Chat-Plattform, um die Warteschlange der Incidents besser zu überwachen.**
 
-Zum Beispiel:
+Beispiel:
 
 Ein Azure Sentinel Incident wurde aus einem Alert durch eine Analyseregel erstellt, die Benutzernamen und IP-Adressen-Entitäten generiert.
 
@@ -144,7 +144,7 @@ Der Incident löst eine Automatisierungsregel aus, die ein Playbook mit den folg
 
 - Es wird eine Nachricht an Ihren Sicherheitskanal in [Microsoft Teams](/connectors/teams/) oder [Slack](/connectors/slack/) gesendet, um Ihre Sicherheitsanalysten auf den Vorfall aufmerksam zu machen.
 
-- Sämtliche Informationen in der Warnung werden per Email an Ihren leitenden Netzwerkadministrator sowie an den leitenden Sicherheitsadministrator gesendet. Die E-Mail-Nachricht enthält die Optionsschaltflächen Benutzer **Blockieren** und **Ignorieren**.
+- Senden Sie alle Informationen in der Warnmeldung per E-Mail an Ihren leitenden Netzwerkadministrator und Sicherheitsadministrator. Die E-Mail-Nachricht enthält die Optionsschaltflächen **Blockieren** und Benutzer **ignorieren**.
 
 - Warten Sie, bis Sie eine Antwort von den Admins erhalten, und fahren Sie dann mit der Ausführung fort.
 

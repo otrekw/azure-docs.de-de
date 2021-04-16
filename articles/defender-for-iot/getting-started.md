@@ -3,12 +3,12 @@ title: 'Schnellstart: Erste Schritte'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie sich mit dem grundlegenden Workflow für die Bereitstellung von Defender für IoT vertraut machen.
 ms.topic: quickstart
 ms.date: 2/18/2021
-ms.openlocfilehash: c6136d734570714b691a4ba3c2a72305c4c85590
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: aa26ea26a3fb0a08d931657cb7ad236c68972e2f
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104784491"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384952"
 ---
 # <a name="quickstart-get-started-with-defender-for-iot"></a>Schnellstart: Erste Schritte mit Defender für IoT
 
@@ -20,7 +20,7 @@ Dieser Artikel bietet eine Übersicht über die erforderlichen Schritte für die
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Keine
+- Keine
 
 ## <a name="permission-requirements"></a>Berechtigungsanforderungen
 
@@ -60,11 +60,14 @@ Zur Registrierung gehört Folgendes:
 So registrieren Sie sich:
 
 1. Navigieren Sie zum Portal für Azure Defender für IoT.
+
 1. Klicken Sie auf **Onboard subscription** (Onboarding für Abonnement durchführen).
+
 1. Wählen Sie auf der Seite **Preise** ein Abonnement aus, oder erstellen Sie ein neues, und fügen Sie die Anzahl committeter Geräte hinzu.
+
 1. Klicken Sie auf die Registerkarte **Download the on-premises management console** (Lokale Verwaltungskonsole herunterladen), und speichern Sie die heruntergeladene Aktivierungsdatei. Diese Datei enthält die aggregierten committeten Geräte, die Sie definiert haben. Die Datei wird nach der ersten Anmeldung in die Verwaltungskonsole hochgeladen.
 
-Informationen dazu, wie das Offboarding für ein Abonnement durchgeführt wird, finden Sie unter [Offboard a subscription](how-to-manage-sensors-on-the-cloud.md#offboard-a-subscription) (Offboarding für ein Abonnement durchführen).
+Informationen dazu, wie das Offboarding für ein Abonnement durchgeführt wird, finden Sie unter [Offboard a subscription](how-to-manage-subscriptions.md#offboard-a-subscription) (Offboarding für ein Abonnement durchführen).
 
 ## <a name="install-and-set-up-the-on-premises-management-console"></a>Installieren und Einrichten der lokalen Verwaltungskonsole
 
@@ -87,6 +90,7 @@ Führen Sie die folgenden Schritte zur Installation und Einrichtung aus:
 Sie führen das Onboarding für einen Sensor durch, indem Sie ihn bei Azure Defender für IoT registrieren und eine Sensoraktivierungsdatei herunterladen:
 
 1. Definieren Sie einen Sensornamen, und verknüpfen Sie ihn mit einem Abonnement.
+
 1. Wählen Sie einen Verwaltungsmodus für den Sensor aus:
 
    - **Mit der Cloud verbundene Sensoren:** Die von Sensoren erkannten Informationen werden in der Sensorkonsole angezeigt. Zusätzlich werden Warnungsinformationen über einen IoT-Hub übermittelt und können für andere Azure-Dienste wie Azure Sentinel freigegeben werden.
@@ -102,9 +106,13 @@ Weitere Informationen finden Sie unter [Durchführen des Onboardings für und Ve
 Laden Sie das ISO-Paket im Portal für Azure Defender für IoT herunter, installieren Sie die Software, und richten Sie den Sensor ein.
 
 1. Klicken Sie im Portal für Azure Defender für IoT auf **Getting Started** (Erste Schritte).
+
 1. Klicken Sie auf **Set up sensor** (Sensor einrichten).
+
 1. Wählen Sie eine Version aus, und klicken Sie auf **Herunterladen**.
+
 1. Installieren Sie die Sensorsoftware. Weitere Informationen finden Sie unter [Installation von Defender für IoT](how-to-install-software.md).
+
 1. Aktivieren Sie Ihren Sensor, und richten Sie ihn ein. Weitere Informationen finden Sie unter [Aktivieren und Einrichten eines Sensors](how-to-activate-and-set-up-your-sensor.md).
 
 ## <a name="connect-sensors-to-an-on-premises-management-console"></a>Verbinden von Sensoren mit einer lokalen Verwaltungskonsole

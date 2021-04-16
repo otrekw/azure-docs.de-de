@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: chez
 ms.reviewer: mariozi
-ms.openlocfilehash: c6c376e44c6135a800e6f7e281f8ea85b828329a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a18d06e3a0324889a4cb9936fb339fd9d8f9b816
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102443873"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106222686"
 ---
 # <a name="encrypt-azure-data-factory-with-customer-managed-keys"></a>Verschlüsseln von Azure Data Factory mit vom Kunden verwalteten Schlüsseln
 
@@ -137,6 +137,23 @@ Wenn Sie den für die Data Factory-Verschlüsselung verwendeten Schlüssel ände
 ## <a name="disable-customer-managed-keys"></a>Deaktivieren kundenseitig verwalteter Schlüssel
 
 Nach der Aktivierung der Funktion für vom Kunden verwaltete Schlüssel können Sie den zusätzlichen Sicherheitsschritt nicht mehr entfernen. Zum Verschlüsseln der Factory und der Daten wird immer ein vom Kunden bereitgestellter Schlüssel erwartet.
+
+## <a name="customer-managed-key-and-continuous-integration-and-continuous-deployment"></a>Vom Kunden verwalteter Schlüssel und Continuous Integration und Continuous Deployment
+
+Standardmäßig ist die CMK-Konfiguration in der Vorlage Factory Azure Resource Manager (ARM) nicht enthalten. Vorgehensweise zum Einschließen der vom Kunden verwalteten Verschlüsselungseinstellungen für Schlüssel in die ARM-Vorlage für Continuous Integration (CI/CD):
+
+1. Stellen Sie sicher, dass sich die Factory im Git-Modus befindet
+1. Navigieren Sie im Verwaltungsportal zu dem Abschnitt für die vom Kunden verwalteten Schlüssel
+1. Aktivieren Sie die Option _in ARM-Vorlage einschließen_
+
+  :::image type="content" source="media/enable-customer-managed-key/07-include-in-template.png" alt-text="Screenshot: Einschließen der Einstellungen für die vom Kunden verwalteten Schlüssel in die ARM-Vorlage.":::
+
+Die folgenden Einstellungen werden zur ARM-Vorlage hinzugefügt. Diese Eigenschaften können in den Continuous Integration- und Delivery-Pipelines parametrisiert werden, indem die [Parameterkonfiguration von Azure Resource Manager](continuous-integration-deployment.md#use-custom-parameters-with-the-resource-manager-template) bearbeitet wird
+
+  :::image type="content" source="media/enable-customer-managed-key/08-template-with-customer-managed-key.png" alt-text="Screenshot: Einschließen der Einstellungen für die vom Kunden verwalteten Schlüssel in die Azure Resource Manager-Vorlage.":::
+
+> [!NOTE]
+> Durch das Hinzufügen der Verschlüsselungseinstellung zu den ARM-Vorlagen wird eine Einstellung auf Factory-Ebene hinzugefügt, die andere Einstellungen auf Factory-Ebene, also z. B. git-Konfigurationen, in anderen Umgebungen überschreibt. Wenn Sie diese Einstellungen in einer erweiterten Umgebung wie UAT oder PROD aktiviert haben, finden Sie weitere Informationen unter [Globale Parameter in CI/CD](author-global-parameters.md#cicd).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

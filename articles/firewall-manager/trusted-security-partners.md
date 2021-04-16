@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: conceptual
-ms.date: 12/01/2020
+ms.date: 03/30/2021
 ms.author: victorh
-ms.openlocfilehash: 923c6b685d20ff68788e7d9cfcb45ebaecb535e3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 622fde49a31105b2f66a678d3e55d48fabea9487
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96490107"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105966910"
 ---
 # <a name="what-are-security-partner-providers"></a>Was sind Sicherheitspartneranbieter?
 
@@ -34,13 +34,19 @@ Mithilfe der Sicherheitspartner können Sie den Internetdatenverkehr in folgende
 
    Nutzen Sie erweiterten, benutzerfähigen Internetschutz für Ihre in Azure ausgeführten Cloudworkloads.
 
-- Filiale zu Internet
+- Branch-to-Internet
 
    Nutzen Sie die Azure-Konnektivität und die globale Verteilung, um auf einfache Weise eine NSaaS-Drittanbieterfilterung für Szenarien vom Typ „Filiale-zu-Internet“ hinzuzufügen. Sie können Ihr globales Übertragungsnetzwerk und die Sicherheitsperipherie mithilfe von Azure Virtual WAN erstellen.
 
 Die folgenden Szenarien werden unterstützt:
-- VNet/Filiale zu Internet über einen Sicherheitspartneranbieter und sonstiger Datenverkehr (Spoke zu Spoke, Spoke zu Filiale, Filiale zu Spoke) über Azure Firewall.
-- VNet/Filiale zu Internet über Sicherheitspartneranbieter
+- Zwei Sicherheitsanbieter im Hub
+
+   VNet/Branch-to-Internet über einen Sicherheitspartner-Anbieter und den anderen Verkehr (Spoke-to-Spoke, Spoke-to-Branch, Branch-to-Spoke) über Azure Firewall.
+- Einzelner Anbieter im Hub
+
+   - Der gesamte Datenverkehr (Spoke-to-Spoke, Spoke-to-Branch, Branch-to-Spoke, VNet/Branch-to-Internet) wird durch Azure Firewall gesichert<br>
+      oder
+   - VNet/Filiale zu Internet über Sicherheitspartneranbieter
 
 ## <a name="best-practices-for-internet-traffic-filtering-in-secured-virtual-hubs"></a>Best Practices für das Filtern von Internetdatenverkehr in geschützten virtuellen Hubs
 

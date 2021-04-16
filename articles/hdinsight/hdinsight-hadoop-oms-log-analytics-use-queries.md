@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/02/2019
-ms.openlocfilehash: 360a9730025dc24eda93868903fcd356c37d06ef
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 3cf97039983ecec44a7c3a32e178fdcf9f9c45ff
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100576329"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104872182"
 ---
 # <a name="query-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>Abfragen von Azure Monitor-Protokollen zum Überwachen von HDInsight-Clustern
 
@@ -37,13 +37,13 @@ Erfahren Sie, wie Sie nach bestimmten Metriken für Ihren HDInsight-Cluster such
     search *
     ```
 
-    ![Apache Ambari-Analysen – Suchen aller Metriken](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-all-metrics.png "Alle Metriken suchen")
+    :::image type="content" source="./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-all-metrics.png" alt-text="Apache Ambari-Analysen – Suchen aller Metriken":::
 
 1. Klicken Sie im Menü links auf die Registerkarte **Filter**.
 
 1. Wählen Sie unter **Typ** die Option **Heartbeat** aus. Klicken Sie anschließend auf **Apply & Run** (Anwenden und ausführen).
 
-    ![Spezifische Metriken der Log Analytics-Suche](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-specific-metrics.png "Nach bestimmten Metriken suchen")
+    :::image type="content" source="./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-specific-metrics.png" alt-text="Spezifische Metriken der Log Analytics-Suche":::
 
 1. Beachten Sie, dass die Abfrage im Textfeld geändert wird:
 
@@ -54,13 +54,13 @@ Erfahren Sie, wie Sie nach bestimmten Metriken für Ihren HDInsight-Cluster such
 
 1. Sie können diese Fehlerliste mithilfe der im linken Bereich des Menüs verfügbaren Optionen näher untersuchen. Beispiel:
 
-    - So zeigen Sie Protokolle von einem bestimmten Knoten an:
+   - So zeigen Sie Protokolle von einem bestimmten Knoten an:
 
-        ![Suchen nach bestimmten Fehlern (Ausgabe 1)](./media/hdinsight-hadoop-oms-log-analytics-use-queries/log-analytics-specific-node.png "Nach bestimmten Fehlern suchen (Ausgabe 1)")
+     :::image type="content" source="./media/hdinsight-hadoop-oms-log-analytics-use-queries/log-analytics-specific-node.png" alt-text="Suchen nach bestimmten Fehlern (Ausgabe 1)":::
 
-    - So zeigen Sie Protokolle zu bestimmten Zeiten an:
+   - So zeigen Sie Protokolle zu bestimmten Zeiten an:
 
-        ![Nach bestimmten Fehlern suchen (Ausgabe 2)](./media/hdinsight-hadoop-oms-log-analytics-use-queries/log-analytics-specific-time.png "Nach bestimmten Fehlern suchen (Ausgabe 2)")
+     :::image type="content" source="./media/hdinsight-hadoop-oms-log-analytics-use-queries/log-analytics-specific-time.png" alt-text="Nach bestimmten Fehlern suchen (Ausgabe 2)":::
 
 1. Klicken Sie auf **Apply & Run** (Anwenden und ausführen), und überprüfen Sie die Ergebnisse. Beachten Sie auch, dass die Abfrage folgendermaßen aktualisiert wurde:
 
@@ -102,11 +102,11 @@ Damit eine Warnung erstellt werden kann, muss eine Abfrage vorhanden sein, auf d
 
 1. Klicken Sie oben auf der Seite auf **New alert rule** (Neue Warnungsregel).
 
-    ![Eingeben der Abfrage zum Erstellen einer Warnung (1)](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-create-alert-query.png "Eingeben der Abfrage zum Erstellen einer Warnung (1)")
+    :::image type="content" source="./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-create-alert-query.png" alt-text="Neue Warnungsregel":::
 
 1. Geben Sie im Fenster **Regel erstellen** die Abfrage und andere Details zum Erstellen einer Warnung ein, und wählen Sie dann **Warnungsregel erstellen**.
 
-    ![Eingeben der Abfrage zum Erstellen einer Warnung (2)](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-create-alert.png "Eingeben der Abfrage zum Erstellen einer Warnung (2)")
+    :::image type="content" source="./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-create-alert.png" alt-text="Definieren einer Warnungsbedingung":::
 
 ### <a name="edit-or-delete-an-existing-alert"></a>Bearbeiten oder Löschen einer vorhandenen Warnung
 
@@ -120,11 +120,11 @@ Damit eine Warnung erstellt werden kann, muss eine Abfrage vorhanden sein, auf d
 
 1. Sie haben folgende Optionen: **Speichern**, **Verwerfen**, **Deaktivieren** und **Löschen**.
 
-    ![Lösch/Bearbeitungswarnung für HDInsight Azure Monitor-Protokolle](media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-edit-alert.png)
+    :::image type="content" source="media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-edit-alert.png" alt-text="Lösch/Bearbeitungswarnung für HDInsight Azure Monitor-Protokolle":::
 
 Weitere Informationen finden Sie unter [Erstellen, Anzeigen und Verwalten von Metrikwarnungen mit Azure Monitor](../azure-monitor/alerts/alerts-metric.md).
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="see-also"></a>Siehe auch
 
 * [Erste Schritte mit Protokollabfragen in Azure Monitor](../azure-monitor/logs/get-started-queries.md)
 * [Erstellen benutzerdefinierter Ansichten mithilfe des Ansicht-Designers in Azure Monitor](../azure-monitor/visualize/view-designer.md)

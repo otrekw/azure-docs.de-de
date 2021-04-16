@@ -4,16 +4,16 @@ description: Übersicht über verfügbare Datenbanksichten in der Azure Blockcha
 ms.date: 09/05/2019
 ms.topic: article
 ms.reviewer: mmercuri
-ms.openlocfilehash: e715bd2297c1e051ae92b15d73c945c9e80c3d94
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 6c7fba590c9c8951e1862c28cb24dbde52c8da8d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "87003320"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105625533"
 ---
 # <a name="azure-blockchain-workbench-database-views"></a>Datenbanksichten in Azure Blockchain Workbench
 
-Azure Blockchain Workbench (Vorschauversion) stellt Daten über Distributed Ledgers in einer *Off-Chain*-SQL-Datenbank bereit. Die Off-Chain-Datenbank ermöglicht es, SQL und vorhandene Tools zu nutzen, z.B. [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017), um mit Blockchain-Daten zu interagieren.
+Azure Blockchain Workbench (Vorschauversion) stellt Daten über Distributed Ledgers in einer *Off-Chain*-SQL-Datenbank bereit. Die Off-Chain-Datenbank ermöglicht es, SQL und vorhandene Tools zu nutzen, z.B. [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms), um mit Blockchain-Daten zu interagieren.
 
 Azure Blockchain Workbench verfügt über einen Satz mit Datenbanksichten, mit denen der Zugriff auf Daten möglich ist, die beim Durchführen Ihrer Abfragen nützlich sind. Die Sichten sind stark denormalisiert, um den schnellen Einstieg in die Erstellung von Berichten und Analysen und die anderweitige Nutzung von Blockchain-Daten mit vorhandenen Tools zu ermöglichen, ohne dass die für Datenbanken zuständigen Mitarbeiter neu geschult werden müssen.
 
@@ -298,7 +298,7 @@ Diese Sicht enthält Details zu den Konsortiumsmitgliedern, die für die Nutzung
 
 ## <a name="vwworkflow"></a>vwWorkflow
 
-Diese Sicht enthält die Details zu den wichtigsten Workflowmetadaten und die Funktionen und Parameter des Workflows. Sie ist auf die Berichterstellung ausgelegt und enthält auch die Metadaten zu der Anwendung, die dem Workflow zugeordnet ist. Diese Sicht enthält Daten aus mehreren zugrunde liegenden Tabellen, um die Berichterstellung für Workflows zu ermöglichen. Für jeden Workflow enthält diese Sicht die folgenden Daten:
+Diese Ansicht enthält die Details zu den wichtigsten Workflow-Metadaten und die Funktionen und Parameter des Workflows. Sie ist auf die Berichterstellung ausgelegt und enthält auch die Metadaten zu der Anwendung, die dem Workflow zugeordnet ist. Diese Sicht enthält Daten aus mehreren zugrunde liegenden Tabellen, um die Berichterstellung für Workflows zu ermöglichen. Für jeden Workflow enthält diese Sicht die folgenden Daten:
 
 -   Zugeordnete Anwendungsdefinition
 -   Zugeordnete Workflowdefinition
@@ -325,7 +325,7 @@ Diese Sicht enthält die Details zu den wichtigsten Workflowmetadaten und die Fu
 
 ## <a name="vwworkflowfunction"></a>vwWorkflowFunction
 
-Diese Sicht enthält die Details zu den wichtigsten Workflowmetadaten und die Funktionen und Parameter des Workflows. Sie ist auf die Berichterstellung ausgelegt und enthält auch die Metadaten zu der Anwendung, die dem Workflow zugeordnet ist. Diese Sicht enthält Daten aus mehreren zugrunde liegenden Tabellen, um die Berichterstellung für Workflows zu ermöglichen. Für jede Workflowfunktion enthält diese Sicht die folgenden Daten:
+Diese Ansicht enthält die Details zu den wichtigsten Workflow-Metadaten und die Funktionen und Parameter des Workflows. Sie ist auf die Berichterstellung ausgelegt und enthält auch die Metadaten zu der Anwendung, die dem Workflow zugeordnet ist. Diese Sicht enthält Daten aus mehreren zugrunde liegenden Tabellen, um die Berichterstellung für Workflows zu ermöglichen. Für jede Workflowfunktion enthält diese Sicht die folgenden Daten:
 
 -   Zugeordnete Anwendungsdefinition
 -   Zugeordnete Workflowdefinition

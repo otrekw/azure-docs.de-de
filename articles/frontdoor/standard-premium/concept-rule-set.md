@@ -5,21 +5,21 @@ services: front-door
 author: duongau
 ms.service: frontdoor
 ms.topic: conceptual
-ms.date: 02/18/2021
+ms.date: 03/31/2021
 ms.author: yuajia
-ms.openlocfilehash: 8e6ceebc9e92dabe66baeb9aeff0ae9692e2bdad
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e3e5333b339101676582cec03dbb960148d59b56
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101097996"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106067553"
 ---
 # <a name="what-is-a-rule-set-for-azure-front-door-standardpremium-preview"></a>Was ist ein Regelsatz für Azure Front Door Standard/Premium (Vorschau)?
 
 > [!Note]
 > Diese Dokumentation ist für Azure Front Door Standard/Premium (Vorschau) gedacht. Suchen Sie nach Informationen zu Azure Front Door? Informationen finden Sie [hier](../front-door-overview.md).
 
-Ein Regelsatz ist eine benutzerdefinierte Regel-Engine, die eine Kombination von Regeln in einem einzelnen Satz gruppiert, den Sie mehreren Routen zuordnen können. Mithilfe des Regelsatzes können Sie anpassen, wie Anforderungen am Edge verarbeitet und von Azure Front Door behandelt werden.
+Ein Regelsatz ist eine benutzerdefinierte Regel-Engine, die eine Kombination von Regeln in einem einzelnen Satz gruppiert. Sie können einem Regelsatz mehrere Routen zuordnen. Mithilfe des Regelsatzes können Sie anpassen, wie Anforderungen am Edge verarbeitet und von Azure Front Door behandelt werden.
 
 > [!IMPORTANT]
 > Azure Front Door Standard/Premium (Vorschau) befindet sich derzeit in der öffentlichen Vorschauversion.
@@ -54,22 +54,25 @@ Im folgenden Diagramm werden zuerst WAF-Richtlinien ausgeführt. Ein Regelsatz w
 
 :::image type="content" source="../media/concept-rule-set/front-door-rule-set-architecture-1.png" alt-text="Diagramm der Architektur des Regelsatzes" lightbox="../media/concept-rule-set/front-door-rule-set-architecture-1-expanded.png":::
 
-## <a name="terminology"></a>Terminologie
+## <a name="terminology"></a>Begriff
 
 Mit dem Azure Front Door-Regelsatz können Sie eine Kombination von Regelsatzkonfigurationen erstellen, die jeweils aus einem Satz von Regeln bestehen. Im Folgenden finden Sie einige hilfreiche Begriffe, auf die Sie bei der Konfiguration eines Regelsatzes stoßen werden.
 
 Weitere Informationen zu Kontingentgrenzen finden Sie unter [Grenzwerte für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../../azure-resource-manager/management/azure-subscription-service-limits.md).
 
-* *Regelsatz*: Ein Satz von Regeln, der einer oder mehreren [Routen](concept-route.md) zugeordnet wird. Jede Konfiguration ist auf 25 Regeln beschränkt. Sie können bis zu 10 Konfigurationen erstellen.
+* *Regelsatz*: Ein Satz von Regeln, der einer oder mehreren [Routen](concept-route.md) zugeordnet wird.
 
 * *Regelsatzregel*: Eine Regel, die bis zu 10 Vergleichsbedingungen und 5 Aktionen umfasst. Regeln sind für einen Regelsatz lokal und können nicht für die Verwendung in mehreren Regelsätzen exportiert werden. Benutzer können dieselbe Regel in mehreren Regelsätzen erstellen.
 
-* *Übereinstimmungsbedingung*: Es gibt eine Vielzahl von Übereinstimmungsbedingungen, anhand derer Ihre eingehenden Anforderungen analysiert werden können. Eine Regel kann bis zu 10 Übereinstimmungsbedingungen enthalten. Übereinstimmungsbedingungen werden mit einem **UND**-Operator ausgewertet. *Reguläre Ausdrücke werden in Bedingungen unterstützt*. Eine vollständige Liste der Vergleichsbedingungen finden Sie unter [Regelsatzbedingung](concept-rule-set-match-conditions.md).
+* *Vergleichsbedingung*: Es gibt eine Vielzahl von Vergleichsbedingungen, anhand derer Ihre eingehenden Anforderungen analysiert werden können. Eine Regel kann bis zu 10 Übereinstimmungsbedingungen enthalten. Übereinstimmungsbedingungen werden mit einem **UND**-Operator ausgewertet. *Reguläre Ausdrücke werden in Bedingungen unterstützt*. Eine vollständige Liste der Vergleichsbedingungen finden Sie unter [Regelsatz für Vergleichsbedingungen](concept-rule-set-match-conditions.md).
 
 * *Aktion*: Aktionen legen fest, wie AFD die eingehenden Anforderungen auf Grundlage der Vergleichsbedingungen behandelt. Sie können das Verhalten beim Zwischenspeichern ändern, Anforderungsheader/Antwortheader ändern sowie URL-Rewrite und URL-Umleitung durchführen. *Servervariablen werden für Aktionen unterstützt*. Eine Regel kann bis zu 10 Übereinstimmungsbedingungen enthalten. Eine vollständige Liste der Aktionen finden Sie unter [Regelsatzaktionen](concept-rule-set-actions.md).
+
+## <a name="arm-template-support"></a>ARM-Vorlagen-Support
+
+Regelsätze können mit Azure Resource Manager-Vorlagen konfiguriert werden. [Eine Beispielvorlage finden Sie hier](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-standard-premium-rule-set). Sie können das Verhalten anpassen, indem Sie die JSON-oder Bicep-Ausschnitte in den Dokumentationsbeispielen für [Vergleichsbedingungen](concept-rule-set-match-conditions.md) und [Aktionen](concept-rule-set-actions.md)verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Informieren Sie sich über das [Erstellen einer Instanz von Front Door Standard/Premium](create-front-door-portal.md).
 * Erfahren Sie, wie Sie Ihren ersten [Regelsatz](how-to-configure-rule-set.md) konfigurieren.
- 
